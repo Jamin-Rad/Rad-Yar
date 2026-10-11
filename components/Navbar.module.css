@@ -30,8 +30,13 @@
 }
 
 /* ── RIGHT ────────────────────────────────────── */
-.right { display:flex; align-items:center; gap:10px; flex-shrink:0; }
-.authSlot { display:inline-flex; align-items:center; }
+.right {
+  --nav-control-bg: rgba(255,255,255,0.06);
+  --nav-control-border: rgba(255,255,255,0.11);
+  --nav-control-color: rgba(240,225,200,0.72);
+  display:flex; align-items:center; gap:8px; flex-shrink:0;
+}
+.authSlot { display:inline-flex; align-items:center; gap:8px; }
 
 .right[data-lang='fa'] .authSlot { order:4; }
 .right[data-lang='fa'] .langToggle { order:3; }
@@ -39,36 +44,39 @@
 .right[data-lang='fa'] .iconBtn { order:1; }
 
 .iconBtn {
-  background:none; border:none; cursor:pointer;
-  color: rgba(240,225,200,0.55);
-  padding:7px; border-radius:8px; display:flex; align-items:center;
-  transition:all .2s;
+  width:38px; height:38px; flex:0 0 38px;
+  background:var(--nav-control-bg); border:1px solid var(--nav-control-border); cursor:pointer;
+  color:var(--nav-control-color);
+  padding:0; border-radius:12px; display:flex; align-items:center; justify-content:center;
+  transition:color .2s, background .2s, border-color .2s, transform .2s;
 }
-.iconBtn:hover { color:#f97316; background:rgba(249,115,22,0.12); }
+.iconBtn:hover { color:#f97316; background:rgba(249,115,22,0.12); border-color:rgba(249,115,22,0.32); transform:translateY(-1px); }
 
 .langToggle {
-  display:flex; align-items:center; gap:2px; direction:ltr;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.11);
-  border-radius:50px; padding:3px 6px;
+  height:38px; display:flex; align-items:center; gap:1px; direction:ltr;
+  background:var(--nav-control-bg);
+  border:1px solid var(--nav-control-border);
+  border-radius:12px; padding:3px 5px;
+  transition:background .2s, border-color .2s, transform .2s;
 }
+.langToggle:hover { background:rgba(249,115,22,0.08); border-color:rgba(249,115,22,0.25); transform:translateY(-1px); }
 .langBtn {
   font-family: var(--font-manrope, sans-serif);
   font-size:11px; font-weight:700; letter-spacing:.08em;
   background:none; border:none; cursor:pointer;
   color: rgba(240,225,200,0.38);
-  padding:3px 8px; border-radius:50px; transition:all .2s;
+  min-width:29px; height:28px; padding:0 6px; border-radius:8px; transition:all .2s;
 }
 .langOn { color:#f97316 !important; background:rgba(249,115,22,0.18) !important; }
 .langSep { color: rgba(255,255,255,0.14); font-size:11px; }
 
 /* ── THEME BUTTON ─────────────────────────────── */
 .themeBtn {
-  width: 32px; height: 32px;
-  border: 1px solid rgba(255,255,255,0.11);
-  border-radius: 999px;
-  background: rgba(255,255,255,0.06);
-  color: rgba(240,225,200,0.72);
+  width:38px; height:38px; flex:0 0 38px;
+  border:1px solid var(--nav-control-border);
+  border-radius:12px;
+  background:var(--nav-control-bg);
+  color:var(--nav-control-color);
   cursor: pointer;
   display: inline-flex; align-items: center; justify-content: center;
   font-size: 15px; line-height: 1;
@@ -87,26 +95,27 @@
   align-items: center;
   gap: 9px;
   min-width: 0;
-  padding: 3px 8px 3px 3px;
-  border: 1px solid transparent;
-  border-radius: 999px;
+  min-height:38px;
+  padding:3px 9px 3px 4px;
+  border:1px solid var(--nav-control-border);
+  border-radius:12px;
+  background:var(--nav-control-bg);
   color: inherit;
   text-decoration: none;
   transition: background .2s, border-color .2s, transform .2s;
 }
 .profileLink:hover {
-  background: rgba(249,115,22,0.1);
-  border-color: rgba(249,115,22,0.24);
+  background:rgba(249,115,22,0.1);
+  border-color:rgba(249,115,22,0.32);
   transform: translateY(-1px);
 }
 .profileAvatar,
 .profileAvatarFallback {
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
-  border-radius: 50%;
-  border: 1px solid rgba(249,115,22,0.55);
-  box-shadow: 0 0 0 3px rgba(249,115,22,0.08);
+  width:30px;
+  height:30px;
+  flex:0 0 30px;
+  border-radius:9px;
+  border:1px solid rgba(249,115,22,0.42);
 }
 .profileAvatar { display: block; object-fit: cover; }
 .profileAvatarFallback {
@@ -147,9 +156,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 38px;
+  min-height:38px;
   padding: 6px 14px;
-  border-radius: 999px;
+  border-radius:12px;
   font-family: var(--font-manrope, sans-serif);
   font-size: 12px;
   font-weight: 700;

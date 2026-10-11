@@ -20,6 +20,9 @@
 .titleIcon { width: 52px; height: 52px; border-radius: 17px; display: grid; place-items: center; color: var(--green); background: var(--green-soft); }
 .titleBlock h1 { margin: 0 0 6px; font-size: clamp(25px, 2.2vw, 36px); line-height: 1.2; letter-spacing: -.03em; }
 .titleBlock p { margin: 0; color: var(--muted); font-size: 14px; }
+.syncBadge { width: fit-content; margin-top: 8px; display: inline-flex; align-items: center; gap: 5px; color: var(--green); font-size: 10px; font-weight: 700; }
+.syncBadge svg { flex: 0 0 auto; }
+.syncError { color: var(--red); }
 .backLink { display: inline-flex; align-items: center; gap: 6px; color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 700; }
 
 .shell { max-width: 1480px; margin: 0 auto; display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 22px; align-items: start; }
@@ -29,9 +32,13 @@
 .railHead span { font-weight: 800; font-size: 16px; }
 .railHead small { color: var(--muted); font-size: 12px; }
 .accountList { display: grid; gap: 7px; margin-top: 12px; }
-.accountButton { width: 100%; border: 0; background: transparent; border-radius: 14px; padding: 11px; display: grid; grid-template-columns: 43px 1fr; gap: 11px; align-items: center; text-align: right; color: var(--ink); cursor: pointer; font-family: inherit; transition: background .18s ease, color .18s ease; }
-.accountButton:hover { background: var(--soft); }
+.accountRow { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; border-radius: 14px; transition: background .18s ease, color .18s ease; }
+.accountRow:hover { background: var(--soft); }
+.accountButton { min-width: 0; width: 100%; border: 0; background: transparent; border-radius: 14px; padding: 11px; display: grid; grid-template-columns: 43px 1fr; gap: 11px; align-items: center; text-align: right; color: inherit; cursor: pointer; font-family: inherit; }
 .accountActive { background: var(--green-soft); color: #075d45; box-shadow: inset -3px 0 0 var(--green); }
+.accountPdfButton { width: 44px; height: 38px; margin-left: 7px; border: 1px solid transparent; border-radius: 10px; display: grid; place-items: center; gap: 0; color: var(--muted); background: transparent; cursor: pointer; font-family: inherit; font-size: 8px; text-decoration: none; }
+.accountPdfButton:hover { color: var(--green); border-color: #b8dacc; background: #fff; }
+.accountPdfButton span { line-height: 1; }
 .avatar { width: 43px; height: 43px; border-radius: 50%; display: grid; place-items: center; background: #edf1f5; font-size: 16px; font-weight: 800; }
 .accountActive .avatar { background: #d6eee4; }
 .accountButton strong, .accountButton small { display: block; }
@@ -47,9 +54,11 @@
 .accountIdentity h2 { margin: 0 0 7px; font-size: clamp(22px, 2vw, 30px); }
 .accountIdentity p { margin: 0; color: var(--muted); font-size: 13px; }
 .heroActions { display: flex; gap: 10px; }
-.primaryButton, .settleButton, .mobileAdd, .emptyState button { height: 46px; padding: 0 18px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--green); font-family: inherit; font-weight: 800; cursor: pointer; }
+.primaryButton, .settleButton, .pdfButton, .mobileAdd, .emptyState button { height: 46px; padding: 0 18px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--green); font-family: inherit; font-weight: 800; cursor: pointer; }
 .primaryButton, .emptyState button { color: #fff; background: var(--green); }
 .settleButton { color: var(--sand); border-color: #b79563; background: #fff; }
+.pdfButton { color: var(--ink); border-color: var(--line); background: #fff; text-decoration: none; }
+.pdfButton:hover { color: var(--green); border-color: #9ecabb; }
 .settleButton:disabled { opacity: .38; cursor: not-allowed; }
 .balanceGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 14px 0; }
 .balanceCard { display: flex; align-items: center; gap: 15px; min-height: 126px; padding: 22px; border-radius: 18px; border: 1px solid var(--line); background: #fff; }
@@ -71,6 +80,17 @@
 .tableWrap td { border-top: 1px solid #e9eef4; padding: 14px 15px; font-size: 12px; vertical-align: middle; }
 .tableWrap td strong, .tableWrap td small { display: block; }
 .tableWrap td small { margin-top: 4px; color: var(--muted); font-size: 10px; }
+.mobileLedger { display: none; }
+.transactionCard { border-bottom: 1px solid var(--line); padding: 15px; }
+.transactionCard:last-child { border-bottom: 0; }
+.transactionHead, .transactionMeta, .exchangeMeta { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.transactionHead > div { min-width: 0; }
+.transactionHead strong, .transactionHead small { display: block; }
+.transactionHead strong { overflow-wrap: anywhere; font-size: 13px; }
+.transactionHead small { margin-top: 5px; color: var(--muted); font-size: 10px; }
+.transactionMeta { margin-top: 13px; }
+.transactionMeta > strong { text-align: left; font-size: 13px; }
+.exchangeMeta { margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--line); color: var(--muted); font-size: 10px; }
 .payerTag { display: inline-flex; border-radius: 8px; padding: 7px 9px; font-size: 11px; font-weight: 700; white-space: nowrap; }
 .paidMe { color: var(--green); background: var(--green-soft); }
 .paidThem { color: var(--red); background: var(--red-soft); }
@@ -114,23 +134,50 @@
   .page { padding-top: 22px; }
   .shell { grid-template-columns: 1fr; }
   .accountRail { position: static; min-height: auto; padding: 14px; }
-  .accountList { display: flex; overflow-x: auto; padding-bottom: 4px; scroll-snap-type: x mandatory; }
-  .accountButton { min-width: 220px; scroll-snap-align: start; }
+  .accountList { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding-bottom: 0; }
+  .accountRow { min-width: 0; border: 1px solid var(--line); }
   .railNote { display: none; }
 }
 
 @media (max-width: 620px) {
-  .page { padding-inline: 12px; }
-  .topbar { align-items: flex-start; }
+  .page { padding: 18px 10px 42px; }
+  .topbar { align-items: flex-start; gap: 10px; margin-bottom: 16px; }
+  .titleBlock { min-width: 0; gap: 0; }
   .titleIcon, .titleBlock p { display: none; }
-  .titleBlock h1 { font-size: 23px; }
-  .backLink { margin-top: 5px; }
-  .accountHero { align-items: flex-start; padding: 18px; }
+  .titleBlock h1 { font-size: 21px; }
+  .syncBadge { margin-top: 6px; font-size: 9px; }
+  .backLink { flex: 0 0 auto; margin-top: 3px; padding: 7px; border: 1px solid var(--line); border-radius: 9px; font-size: 0; }
+  .accountRail { padding: 10px; border-radius: 16px; }
+  .railHead { padding: 2px 4px 10px; }
+  .accountList { margin-top: 9px; gap: 7px; }
+  .accountRow { grid-template-columns: minmax(0, 1fr) 34px; border-radius: 12px; }
+  .accountButton { grid-template-columns: 34px minmax(0, 1fr); gap: 7px; padding: 8px 6px; }
+  .accountButton strong { font-size: 11px; line-height: 1.55; overflow-wrap: anywhere; }
+  .accountButton small { font-size: 9px; }
+  .avatar { width: 34px; height: 34px; font-size: 13px; }
+  .accountPdfButton { width: 30px; height: 34px; margin-left: 3px; border-radius: 8px; }
+  .accountPdfButton span { display: none; }
+  .accountHero { align-items: stretch; flex-direction: column; padding: 16px; gap: 15px; border-radius: 16px; }
   .heroAvatar { width: 48px; height: 48px; font-size: 18px; }
   .accountIdentity h2 { font-size: 18px; }
-  .heroActions { flex-direction: column; }
-  .primaryButton, .settleButton { width: 42px; height: 42px; padding: 0; font-size: 0; }
+  .heroActions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+  .primaryButton, .settleButton, .pdfButton { width: auto; height: 42px; padding: 0 6px; gap: 5px; font-size: 10px; white-space: nowrap; }
+  .primaryButton svg, .settleButton svg, .pdfButton svg { width: 17px; height: 17px; }
   .balanceGrid { grid-template-columns: 1fr; }
-  .balanceCard { min-height: 100px; }
+  .balanceCard { min-height: 96px; padding: 17px; border-radius: 16px; }
+  .balanceCard strong { font-size: 23px; overflow-wrap: anywhere; }
+  .ledgerSection { border-radius: 16px; }
+  .sectionHeading { padding: 16px 14px; }
+  .mobileAdd { width: 38px; padding: 0; font-size: 0; }
+  .tableWrap { display: none; }
+  .mobileLedger { display: block; }
   .drawer form, .drawerHead { padding-inline: 18px; }
+  .drawerHead { padding-top: max(18px, env(safe-area-inset-top)); }
+  .drawer form { padding-bottom: max(34px, env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 380px) {
+  .heroActions { grid-template-columns: 1fr 1fr; }
+  .primaryButton { grid-column: 1 / -1; }
+  .accountIdentity p { font-size: 11px; }
 }

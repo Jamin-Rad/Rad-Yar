@@ -31,6 +31,9 @@ function Icon({ name, size = 22 }) {
   if (name === 'wallet') return <svg {...common}><path d="M20 7V5a2 2 0 0 0-2-2H5a3 3 0 0 0 0 6h15v11H5a3 3 0 0 1-3-3V6"/><path d="M16 13h4"/></svg>
   if (name === 'scale') return <svg {...common}><path d="M12 3v18M6 6h12M5 6 2 12h6L5 6ZM19 6l-3 6h6l-3-6ZM8 21h8"/></svg>
   if (name === 'trash') return <svg {...common}><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v5M14 11v5"/></svg>
+  if (name === 'download') return <svg {...common}><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+  if (name === 'cloud') return <svg {...common}><path d="M17.5 19H7a5 5 0 1 1 1.7-9.7A6 6 0 0 1 20 12a3.5 3.5 0 0 1-2.5 7Z"/><path d="m9 14 2 2 4-4"/></svg>
+  if (name === 'cloudOff') return <svg {...common}><path d="m2 2 20 20M5.8 5.8A5 5 0 0 0 7 19h10.5a3.5 3.5 0 0 0 2.7-1.3M8.7 9.3A6 6 0 0 1 20 12v.5"/></svg>
   return <svg {...common}><path d="m15 18-6-6 6-6"/></svg>
 }
 
@@ -91,18 +94,31 @@ export default function FriendsFinancePage() {
   const [formOpen, setFormOpen] = useState(false)
   const [form, setForm] = useState(EMPTY_FORM)
   const [error, setError] = useState('')
+  const [syncStatus, setSyncStatus] = useState('loading')
+  const [syncError, setSyncError] = useState('')
 
   useEffect(() => {
     let cancelled = false
     const localLedger = loadLedger()
     setLedger(localLedger)
 
-    fetch('/api/andarun/friend-finance')
-      .then(response => response.ok ? response.json() : null)
-      .then(data => {
-        if (!cancelled && data?.state && typeof data.state === 'object') setLedger(data.state)
+    fetch('/api/andarun/friend-finance', { cache: 'no-store' })
+      .then(async response => {
+        const data = await response.json().catch(() => ({}))
+        if (!response.ok) throw new Error(data.error || 'دریافت اطلاعات آنلاین انجام نشد.')
+        return data
       })
-      .catch(() => null)
+      .then(data => {
+        if (cancelled) return
+        if (data?.state && typeof data.state === 'object') setLedger(data.state)
+        setSyncStatus('saved')
+        setSyncError('')
+      })
+      .catch(fetchError => {
+        if (cancelled) return
+        setSyncStatus('error')
+        setSyncError(fetchError.message || 'ارتباط با ذخیره‌سازی آنلاین برقرار نشد.')
+      })
       .finally(() => { if (!cancelled) setReady(true) })
 
     return () => { cancelled = true }
@@ -111,14 +127,31 @@ export default function FriendsFinancePage() {
   useEffect(() => {
     if (!ready) return
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(ledger))
+    const controller = new AbortController()
+    setSyncStatus('saving')
     const timeout = window.setTimeout(() => {
       fetch('/api/andarun/friend-finance', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ state: ledger }),
-      }).catch(() => null)
+        signal: controller.signal,
+      })
+        .then(async response => {
+          const data = await response.json().catch(() => ({}))
+          if (!response.ok || !data.online) throw new Error(data.error || 'ذخیره آنلاین انجام نشد.')
+          setSyncStatus('saved')
+          setSyncError('')
+        })
+        .catch(saveError => {
+          if (saveError.name === 'AbortError') return
+          setSyncStatus('error')
+          setSyncError(saveError.message || 'ذخیره آنلاین انجام نشد.')
+        })
     }, 450)
-    return () => window.clearTimeout(timeout)
+    return () => {
+      window.clearTimeout(timeout)
+      controller.abort()
+    }
   }, [ledger, ready])
 
   const activeAccount = ACCOUNTS.find(account => account.id === activeId) || ACCOUNTS[0]
@@ -192,6 +225,10 @@ export default function FriendsFinancePage() {
           <div>
             <h1>حساب‌های مالی دوستان</h1>
             <p>خرج‌های مشترک، بدهکاری و بستانکاری؛ شفاف و جدا از هزینه‌های ماهانه</p>
+            <span className={`${styles.syncBadge} ${syncStatus === 'error' ? styles.syncError : ''}`} title={syncError || undefined}>
+              <Icon name={syncStatus === 'error' ? 'cloudOff' : 'cloud'} size={15} />
+              {syncStatus === 'loading' ? 'در حال دریافت اطلاعات آنلاین' : syncStatus === 'saving' ? 'در حال ذخیره آنلاین' : syncStatus === 'error' ? 'خطا در همگام‌سازی آنلاین' : 'ذخیره‌شده آنلاین'}
+            </span>
           </div>
         </div>
         <Link href="/andarun" className={styles.backLink}><Icon name="back" size={19} /> بازگشت</Link>
@@ -207,10 +244,13 @@ export default function FriendsFinancePage() {
               const hasDebt = accountBalances.eur < 0 || accountBalances.irr < 0
               const accountStatus = hasCredit && hasDebt ? 'مانده باز' : hasCredit ? 'بستانکار' : hasDebt ? 'بدهکار' : 'تسویه'
               return (
-                <button key={account.id} className={`${styles.accountButton} ${activeId === account.id ? styles.accountActive : ''}`} onClick={() => { setActiveId(account.id); setFormOpen(false) }}>
-                  <span className={styles.avatar}>{account.initials}</span>
-                  <span><strong>{account.name}</strong><small>{accountStatus}</small></span>
-                </button>
+                <div key={account.id} className={`${styles.accountRow} ${activeId === account.id ? styles.accountActive : ''}`}>
+                  <button className={styles.accountButton} onClick={() => { setActiveId(account.id); setFormOpen(false) }}>
+                    <span className={styles.avatar}>{account.initials}</span>
+                    <span><strong>{account.name}</strong><small>{accountStatus}</small></span>
+                  </button>
+                  <Link className={styles.accountPdfButton} href={`/andarun/finanz/freunde/print?account=${account.id}&print=1`} target="_blank" rel="noopener" aria-label={`دریافت PDF ${account.name}`} title={`دریافت PDF ${account.name}`}><Icon name="download" size={17} /><span>PDF</span></Link>
+                </div>
               )
             })}
           </div>
@@ -224,6 +264,7 @@ export default function FriendsFinancePage() {
               <div><h2>{activeAccount.name}</h2><p>تسویه و ثبت هزینه‌های مشترک</p></div>
             </div>
             <div className={styles.heroActions}>
+              <Link className={styles.pdfButton} href={`/andarun/finanz/freunde/print?account=${activeAccount.id}&print=1`} target="_blank" rel="noopener"><Icon name="download" size={19} /> دریافت PDF</Link>
               <button type="button" className={styles.settleButton} onClick={settleAll} disabled={!balances.eur && !balances.irr}><Icon name="scale" size={19} /> تسویه حساب</button>
               <button type="button" className={styles.primaryButton} onClick={openForm}><Icon name="plus" size={20} /> ثبت تراکنش</button>
             </div>
@@ -240,23 +281,40 @@ export default function FriendsFinancePage() {
               <button className={styles.mobileAdd} type="button" onClick={openForm}><Icon name="plus" size={19} /> تراکنش جدید</button>
             </div>
             {entries.length ? (
-              <div className={styles.tableWrap}>
-                <table>
-                  <thead><tr><th>تاریخ</th><th>شرح</th><th>پرداخت‌کننده</th><th>مبلغ</th><th>نرخ هر یورو</th><th aria-label="عملیات" /></tr></thead>
-                  <tbody>
-                    {entries.map(entry => (
-                      <tr key={entry.id}>
-                        <td>{formatDate(entry.date)}</td>
-                        <td><strong>{entry.note}</strong>{entry.kind === 'settlement' ? <small>ثبت تسویه</small> : null}</td>
-                        <td><span className={`${styles.payerTag} ${entry.payer === 'me' ? styles.paidMe : styles.paidThem}`}>{entry.payer === 'me' ? 'من پرداخت کردم' : 'طرف مقابل پرداخت کرد'}</span></td>
-                        <td><strong className={entry.payer === 'me' ? styles.positive : styles.negative}>{entry.payer === 'me' ? '+' : '−'} {formatAmount(entry.amount, entry.currency)}</strong>{entry.currency === 'irr' && entry.euroValue ? <small>معادل {formatAmount(entry.euroValue, 'eur')}</small> : null}</td>
-                        <td>{entry.rate ? formatAmount(entry.rate, 'irr') : '—'}</td>
-                        <td><button className={styles.deleteButton} onClick={() => removeEntry(entry.id)} aria-label={`حذف ${entry.note}`}><Icon name="trash" size={18} /></button></td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+              <>
+                <div className={styles.tableWrap}>
+                  <table>
+                    <thead><tr><th>تاریخ</th><th>شرح</th><th>پرداخت‌کننده</th><th>مبلغ</th><th>نرخ هر یورو</th><th aria-label="عملیات" /></tr></thead>
+                    <tbody>
+                      {entries.map(entry => (
+                        <tr key={entry.id}>
+                          <td>{formatDate(entry.date)}</td>
+                          <td><strong>{entry.note}</strong>{entry.kind === 'settlement' ? <small>ثبت تسویه</small> : null}</td>
+                          <td><span className={`${styles.payerTag} ${entry.payer === 'me' ? styles.paidMe : styles.paidThem}`}>{entry.payer === 'me' ? 'من پرداخت کردم' : 'طرف مقابل پرداخت کرد'}</span></td>
+                          <td><strong className={entry.payer === 'me' ? styles.positive : styles.negative}>{entry.payer === 'me' ? '+' : '−'} {formatAmount(entry.amount, entry.currency)}</strong>{entry.currency === 'irr' && entry.euroValue ? <small>معادل {formatAmount(entry.euroValue, 'eur')}</small> : null}</td>
+                          <td>{entry.rate ? formatAmount(entry.rate, 'irr') : '—'}</td>
+                          <td><button className={styles.deleteButton} onClick={() => removeEntry(entry.id)} aria-label={`حذف ${entry.note}`}><Icon name="trash" size={18} /></button></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className={styles.mobileLedger}>
+                  {entries.map(entry => (
+                    <article className={styles.transactionCard} key={`mobile-${entry.id}`}>
+                      <div className={styles.transactionHead}>
+                        <div><strong>{entry.note}</strong><small>{formatDate(entry.date)}{entry.kind === 'settlement' ? ' · ثبت تسویه' : ''}</small></div>
+                        <button className={styles.deleteButton} onClick={() => removeEntry(entry.id)} aria-label={`حذف ${entry.note}`}><Icon name="trash" size={18} /></button>
+                      </div>
+                      <div className={styles.transactionMeta}>
+                        <span className={`${styles.payerTag} ${entry.payer === 'me' ? styles.paidMe : styles.paidThem}`}>{entry.payer === 'me' ? 'من پرداخت کردم' : 'طرف مقابل پرداخت کرد'}</span>
+                        <strong className={entry.payer === 'me' ? styles.positive : styles.negative}>{entry.payer === 'me' ? '+' : '−'} {formatAmount(entry.amount, entry.currency)}</strong>
+                      </div>
+                      {entry.currency === 'irr' ? <div className={styles.exchangeMeta}><span>نرخ هر یورو: {formatAmount(entry.rate, 'irr')}</span><span>معادل {formatAmount(entry.euroValue, 'eur')}</span></div> : null}
+                    </article>
+                  ))}
+                </div>
+              </>
             ) : (
               <div className={styles.emptyState}>
                 <span><Icon name="wallet" size={29} /></span>

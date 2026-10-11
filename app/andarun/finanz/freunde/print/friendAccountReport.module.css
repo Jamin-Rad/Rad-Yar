@@ -1,0 +1,46 @@
+@page { size: A4 portrait; margin: 14mm; }
+
+.page { min-height: 100vh; padding: 28px; color: #101d38; background: #eef2f6; font-family: Tahoma, Arial, sans-serif; }
+.actions { max-width: 210mm; margin: 0 auto 16px; display: flex; gap: 9px; }
+.actions button { min-height: 42px; padding: 0 16px; border: 1px solid #087454; border-radius: 10px; color: #fff; background: #087454; font: 700 13px Tahoma, Arial, sans-serif; cursor: pointer; }
+.actions .closeButton { color: #101d38; border-color: #d5dde6; background: #fff; }
+.sheet { width: min(210mm, 100%); min-height: 267mm; margin: 0 auto; padding: 14mm; background: #fff; box-shadow: 0 12px 40px rgb(16 29 56 / .1); }
+.header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding-bottom: 16px; border-bottom: 2px solid #087454; }
+.header h1 { margin: 0 0 7px; font-size: 28px; }
+.header p { margin: 0; color: #718096; font-size: 12px; }
+.header > span { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; color: #087454; background: #e9f6f0; font-size: 20px; font-weight: 800; }
+.summary { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 18px 0 22px; }
+.balance { padding: 14px 16px; border: 1px solid #dde4ec; border-radius: 12px; }
+.balance small, .sheet td small { display: block; color: #718096; font-size: 10px; }
+.balance strong { display: block; margin: 6px 0 4px; font-size: 22px; }
+.balance span { font-size: 11px; }
+.green { color: #087454; }
+.red { color: #c3483e; }
+.sectionHead { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.sectionHead h2 { margin: 0; font-size: 18px; }
+.sectionHead span { color: #718096; font-size: 11px; }
+.sheet table { width: 100%; border-collapse: collapse; }
+.sheet thead { display: table-header-group; }
+.sheet tr { break-inside: avoid; }
+.sheet th { padding: 8px 7px; color: #718096; background: #f5f8fb; border: 1px solid #dde4ec; font-size: 9px; text-align: right; }
+.sheet td { padding: 9px 7px; border: 1px solid #e5eaf0; font-size: 10px; vertical-align: top; }
+.sheet td strong { white-space: nowrap; }
+.payer { display: inline-block; padding: 4px 6px; border-radius: 6px; white-space: nowrap; font-size: 9px; }
+.credit { color: #087454; background: #e9f6f0; }
+.debt { color: #c3483e; background: #fff0ef; }
+.empty { padding: 34px; color: #718096; background: #f5f8fb; border: 1px solid #dde4ec; border-radius: 12px; text-align: center; }
+.sheet footer { margin-top: 14px; padding-top: 10px; color: #718096; border-top: 1px solid #dde4ec; font-size: 9px; }
+
+@media print {
+  .page { min-height: auto; padding: 0; background: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .actions { display: none; }
+  .sheet { width: 100%; min-height: 0; margin: 0; padding: 0; box-shadow: none; }
+}
+
+@media (max-width: 700px) {
+  .page { padding: 12px; }
+  .sheet { padding: 18px; }
+  .summary { grid-template-columns: 1fr; }
+  .sheet { overflow-x: auto; }
+  .sheet table { min-width: 700px; }
+}
