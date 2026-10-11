@@ -32,7 +32,7 @@ function formatAmount(value, currency) {
 
 function formatDate(value) {
   if (!value) return '—'
-  return new Intl.DateTimeFormat('fa-IR', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(`${value}T12:00:00`))
+  return new Intl.DateTimeFormat('fa-IR-u-ca-gregory', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(`${value}T12:00:00`))
 }
 
 function balanceLabel(value) {
@@ -110,7 +110,7 @@ export default function FriendAccountReport({ accountId, autoPrint = false }) {
             ))}</tbody>
           </table>
         ) : <div className={styles.empty}>هنوز تراکنشی برای این حساب ثبت نشده است.</div>}
-        <footer>تاریخ تهیه گزارش: {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'long', timeStyle: 'short' }).format(new Date())}</footer>
+        <footer>تاریخ تهیه گزارش: {new Intl.DateTimeFormat('fa-IR-u-ca-gregory', { dateStyle: 'long', timeStyle: 'short' }).format(new Date())}</footer>
       </article>
     </main>
   )

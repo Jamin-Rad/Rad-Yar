@@ -48,7 +48,7 @@ function formatAmount(value, currency) {
 
 function formatDate(value) {
   if (!value) return '—'
-  return new Intl.DateTimeFormat('fa-IR', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(`${value}T12:00:00`))
+  return new Intl.DateTimeFormat('fa-IR-u-ca-gregory', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(`${value}T12:00:00`))
 }
 
 function cleanNumber(value) {
@@ -284,7 +284,7 @@ export default function FriendsFinancePage() {
               <>
                 <div className={styles.tableWrap}>
                   <table>
-                    <thead><tr><th>تاریخ</th><th>شرح</th><th>پرداخت‌کننده</th><th>مبلغ</th><th>نرخ هر یورو</th><th aria-label="عملیات" /></tr></thead>
+                    <thead><tr><th>تاریخ میلادی</th><th>شرح</th><th>پرداخت‌کننده</th><th>مبلغ</th><th>نرخ هر یورو</th><th aria-label="عملیات" /></tr></thead>
                     <tbody>
                       {entries.map(entry => (
                         <tr key={entry.id}>
@@ -336,7 +336,7 @@ export default function FriendsFinancePage() {
               <label className={styles.field}><span>مبلغ</span><input inputMode="decimal" value={form.amount} onChange={event => setForm(previous => ({ ...previous, amount: cleanNumber(event.target.value) }))} placeholder="۰" autoFocus /></label>
               <fieldset className={styles.fieldset}><legend>واحد پول</legend><div className={styles.segmented}><button type="button" className={form.currency === 'eur' ? styles.segmentActive : ''} onClick={() => setForm(previous => ({ ...previous, currency: 'eur', rate: '' }))}>یورو</button><button type="button" className={form.currency === 'irr' ? styles.segmentActive : ''} onClick={() => setForm(previous => ({ ...previous, currency: 'irr' }))}>ریال</button></div></fieldset>
               {form.currency === 'irr' ? <label className={styles.field}><span>نرخ هر یورو <b>الزامی</b></span><input inputMode="decimal" value={form.rate} onChange={event => setForm(previous => ({ ...previous, rate: cleanNumber(event.target.value) }))} placeholder="مثلاً ۱٬۲۰۰٬۰۰۰ ریال" /><small>نرخ در همین تراکنش ذخیره می‌شود و بعداً تغییر نمی‌کند.</small></label> : null}
-              <label className={styles.field}><span>تاریخ</span><div className={styles.dateField}><Icon name="calendar" size={19} /><input type="date" value={form.date} onChange={event => setForm(previous => ({ ...previous, date: event.target.value }))} /></div></label>
+              <label className={styles.field}><span>تاریخ میلادی</span><div className={styles.dateField}><Icon name="calendar" size={19} /><input type="date" value={form.date} onChange={event => setForm(previous => ({ ...previous, date: event.target.value }))} /></div></label>
               <label className={styles.field}><span>شرح</span><textarea rows="3" value={form.note} onChange={event => setForm(previous => ({ ...previous, note: event.target.value }))} placeholder="مثلاً خرید بلیت، رستوران یا هدیه" /></label>
               {error ? <p className={styles.formError} role="alert">{error}</p> : null}
               <button className={styles.submitButton} type="submit">ثبت در گردش حساب</button>
