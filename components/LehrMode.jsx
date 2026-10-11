@@ -211,8 +211,6 @@ export default function LehrMode() {
     let suppressClick = false
     let clickResetTimer = null
     let touchScroll = null
-    let penGesture = null
-    let lastPenTap = null
 
     const pointFromEvent = event => {
       const viewport = annotationViewport(event.target)
@@ -244,40 +242,11 @@ export default function LehrMode() {
       }
       if (!canDrawWith(event)) return
 
-      const now = window.performance.now()
-      const tapDistance = lastPenTap ? Math.hypot(event.clientX - lastPenTap.x, event.clientY - lastPenTap.y) : Infinity
-      if (lastPenTap && now - lastPenTap.time <= 380 && tapDistance <= 44) {
-        event.preventDefault()
-        event.stopPropagation()
-        if (lastPenTap.createdStroke) {
-          const beforeTap = historyRef.current.pop()
-          if (beforeTap) strokesRef.current = beforeTap
-          setCanUndo(historyRef.current.length > 0)
-          scheduleRender()
-        }
-        const nextTool = toolRef.current === 'eraser' ? 'pen' : 'eraser'
-        toolRef.current = nextTool
-        setTool(nextTool)
-        lastPenTap = null
-        suppressClick = true
-        clickResetTimer = window.setTimeout(() => {
-          suppressClick = false
-        }, 0)
-        return
-      }
-
       event.preventDefault()
       event.stopPropagation()
       suppressClick = true
       event.target?.setPointerCapture?.(event.pointerId)
       activePointerRef.current = event.pointerId
-      penGesture = {
-        pointerId: event.pointerId,
-        startX: event.clientX,
-        startY: event.clientY,
-        maxDistance: 0,
-        createdStroke: toolRef.current !== 'eraser',
-      }
       const point = pointFromEvent(event)
 
       if (toolRef.current === 'eraser') {
@@ -322,12 +291,6 @@ export default function LehrMode() {
       if (activePointerRef.current !== event.pointerId) return
       event.preventDefault()
       event.stopPropagation()
-      if (penGesture?.pointerId === event.pointerId) {
-        penGesture.maxDistance = Math.max(
-          penGesture.maxDistance,
-          Math.hypot(event.clientX - penGesture.startX, event.clientY - penGesture.startY),
-        )
-      }
       const coalescedEvents = event.getCoalescedEvents?.()
       const events = coalescedEvents?.length ? coalescedEvents : [event]
 
@@ -370,17 +333,6 @@ export default function LehrMode() {
       if (activePointerRef.current !== event.pointerId) return
       event.preventDefault()
       event.stopPropagation()
-      if (penGesture?.pointerId === event.pointerId) {
-        lastPenTap = penGesture.maxDistance <= 8
-          ? {
-              time: window.performance.now(),
-              x: event.clientX,
-              y: event.clientY,
-              createdStroke: penGesture.createdStroke,
-            }
-          : null
-        penGesture = null
-      }
       activePointerRef.current = null
       eraseSessionRef.current = null
       event.target?.releasePointerCapture?.(event.pointerId)
