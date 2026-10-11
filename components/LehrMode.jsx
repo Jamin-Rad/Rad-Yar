@@ -9,6 +9,7 @@ import styles from './LehrMode.module.css'
 const ADMIN_EMAIL = 'drbenjaminzia@gmail.com'
 const TOGGLE_EVENT = 'radyar:lehr-mode-toggle'
 const STATE_EVENT = 'radyar:lehr-mode-state'
+const CLEAR_EVENT = 'radyar:lehr-mode-clear'
 const TOOLS = {
   pen: { label: 'Stift', color: '#ff5c35', width: 4, alpha: 1 },
   highlighter: { label: 'Textmarker', color: '#ffe45c', width: 22, alpha: 0.34 },
@@ -47,6 +48,27 @@ function strokeTouchesPoint(stroke, point, radius) {
     const dy = candidate.y - point.y
     return (dx * dx) + (dy * dy) <= limit
   })
+}
+
+function annotationViewport(target) {
+  const targetRoot = target instanceof Element ? target.closest('[data-lehr-scroll-root]') : null
+  const root = targetRoot || document.querySelector('[data-lehr-scroll-root]')
+  if (root instanceof HTMLElement) {
+    const rect = root.getBoundingClientRect()
+    return {
+      root,
+      left: rect.left,
+      top: rect.top,
+      scrollLeft: root.scrollLeft,
+      scrollTop: root.scrollTop,
+    }
+  }
+  return { root: null, left: 0, top: 0, scrollLeft: window.scrollX, scrollTop: window.scrollY }
+}
+
+function setViewportScrollTop(root, value) {
+  if (root instanceof HTMLElement) root.scrollTop = value
+  else window.scrollTo({ top: value, behavior: 'auto' })
 }
 
 export default function LehrMode() {
@@ -89,6 +111,7 @@ export default function LehrMode() {
     context.lineCap = 'round'
     context.lineJoin = 'round'
 
+    const viewport = annotationViewport()
     for (const stroke of strokesRef.current) {
       const points = stroke.points
       if (!points.length) continue
@@ -97,8 +120,8 @@ export default function LehrMode() {
       context.globalAlpha = stroke.alpha
       context.lineWidth = stroke.width
       context.beginPath()
-      const startX = points[0].x - window.scrollX
-      const startY = points[0].y - window.scrollY
+      const startX = points[0].x - viewport.scrollLeft + viewport.left
+      const startY = points[0].y - viewport.scrollTop + viewport.top
       context.moveTo(startX, startY)
       if (points.length === 1) {
         context.lineTo(startX + 0.01, startY + 0.01)
@@ -107,14 +130,14 @@ export default function LehrMode() {
           const point = points[index]
           const next = points[index + 1]
           context.quadraticCurveTo(
-            point.x - window.scrollX,
-            point.y - window.scrollY,
-            ((point.x + next.x) / 2) - window.scrollX,
-            ((point.y + next.y) / 2) - window.scrollY,
+            point.x - viewport.scrollLeft + viewport.left,
+            point.y - viewport.scrollTop + viewport.top,
+            ((point.x + next.x) / 2) - viewport.scrollLeft + viewport.left,
+            ((point.y + next.y) / 2) - viewport.scrollTop + viewport.top,
           )
         }
         const last = points[points.length - 1]
-        context.lineTo(last.x - window.scrollX, last.y - window.scrollY)
+        context.lineTo(last.x - viewport.scrollLeft + viewport.left, last.y - viewport.scrollTop + viewport.top)
       }
       context.stroke()
       context.restore()
@@ -125,14 +148,19 @@ export default function LehrMode() {
     if (frameRef.current === null) frameRef.current = window.requestAnimationFrame(renderCanvas)
   }, [renderCanvas])
 
-  const deactivate = useCallback(() => {
-    setActive(false)
+  const clearAnnotations = useCallback(() => {
     strokesRef.current = []
     historyRef.current = []
     activePointerRef.current = null
     eraseSessionRef.current = null
     setCanUndo(false)
-  }, [])
+    scheduleRender()
+  }, [scheduleRender])
+
+  const deactivate = useCallback(() => {
+    setActive(false)
+    clearAnnotations()
+  }, [clearAnnotations])
 
   const undo = useCallback(() => {
     const previous = historyRef.current.pop()
@@ -160,6 +188,11 @@ export default function LehrMode() {
   }, [isAdmin, isExcluded])
 
   useEffect(() => {
+    window.addEventListener(CLEAR_EVENT, clearAnnotations)
+    return () => window.removeEventListener(CLEAR_EVENT, clearAnnotations)
+  }, [clearAnnotations])
+
+  useEffect(() => {
     document.documentElement.classList.toggle('lehr-mode-active', active)
     if (active) {
       document.documentElement.dataset.lehrTool = toolRef.current
@@ -179,17 +212,37 @@ export default function LehrMode() {
 
     let suppressClick = false
     let clickResetTimer = null
+    let touchScroll = null
 
-    const pointFromEvent = event => ({
-      x: event.clientX + window.scrollX,
-      y: event.clientY + window.scrollY,
-      pressure: event.pressure || 0.5,
-    })
+    const pointFromEvent = event => {
+      const viewport = annotationViewport(event.target)
+      return {
+        x: event.clientX - viewport.left + viewport.scrollLeft,
+        y: event.clientY - viewport.top + viewport.scrollTop,
+        pressure: event.pressure || 0.5,
+      }
+    }
     const isToolbarEvent = event => event.target instanceof Element && event.target.closest('[data-lehr-ui]')
+    const isDrawingSurface = event => event.target instanceof Element && event.target.closest('[data-lehr-surface]')
     const canDrawWith = event => event.pointerType === 'pen' || (event.pointerType === 'mouse' && event.button === 0)
 
     function onPointerDown(event) {
-      if (isToolbarEvent(event) || !canDrawWith(event) || toolRef.current === 'arrow') return
+      if (isToolbarEvent(event)) return
+      if (event.pointerType === 'touch') {
+        if (!isDrawingSurface(event)) return
+        const viewport = annotationViewport(event.target)
+        touchScroll = {
+          pointerId: event.pointerId,
+          target: event.target,
+          root: viewport.root,
+          startY: event.clientY,
+          startScrollTop: viewport.scrollTop,
+          moved: false,
+        }
+        event.target?.setPointerCapture?.(event.pointerId)
+        return
+      }
+      if (!canDrawWith(event) || toolRef.current === 'arrow') return
       event.preventDefault()
       event.stopPropagation()
       suppressClick = true
@@ -216,6 +269,18 @@ export default function LehrMode() {
     }
 
     function onPointerMove(event) {
+      if (touchScroll?.pointerId === event.pointerId) {
+        const deltaY = touchScroll.startY - event.clientY
+        if (!touchScroll.moved && Math.abs(deltaY) > 4) touchScroll.moved = true
+        if (touchScroll.moved) {
+          event.preventDefault()
+          event.stopPropagation()
+          setViewportScrollTop(touchScroll.root, touchScroll.startScrollTop + deltaY)
+          scheduleRender()
+        }
+        return
+      }
+
       const arrow = arrowRef.current
       if (toolRef.current === 'arrow' && event.pointerType !== 'touch' && !isToolbarEvent(event)) {
         arrow?.style.setProperty('transform', `translate3d(${event.clientX}px, ${event.clientY}px, 0)`)
@@ -253,6 +318,19 @@ export default function LehrMode() {
     }
 
     function finishPointer(event) {
+      if (touchScroll?.pointerId === event.pointerId) {
+        if (touchScroll.moved) {
+          event.preventDefault()
+          event.stopPropagation()
+          suppressClick = true
+          clickResetTimer = window.setTimeout(() => {
+            suppressClick = false
+          }, 0)
+        }
+        touchScroll.target?.releasePointerCapture?.(event.pointerId)
+        touchScroll = null
+        return
+      }
       if (activePointerRef.current !== event.pointerId) return
       event.preventDefault()
       event.stopPropagation()
@@ -294,7 +372,7 @@ export default function LehrMode() {
     document.addEventListener('pointerleave', hideArrow)
     window.addEventListener('keydown', onKeyDown)
     window.addEventListener('resize', scheduleRender)
-    window.addEventListener('scroll', scheduleRender, { passive: true })
+    document.addEventListener('scroll', scheduleRender, { capture: true, passive: true })
 
     return () => {
       document.removeEventListener('pointerdown', onPointerDown, { capture: true })
@@ -305,7 +383,7 @@ export default function LehrMode() {
       document.removeEventListener('pointerleave', hideArrow)
       window.removeEventListener('keydown', onKeyDown)
       window.removeEventListener('resize', scheduleRender)
-      window.removeEventListener('scroll', scheduleRender)
+      document.removeEventListener('scroll', scheduleRender, { capture: true })
       if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current)
       if (clickResetTimer !== null) window.clearTimeout(clickResetTimer)
       frameRef.current = null

@@ -12,6 +12,7 @@ const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', kind: 'custom', pr
 const LANGUAGE_LABELS = Object.freeze({ fa: 'فارسی', en: 'English', de: 'Deutsch' })
 const LEHR_MODE_TOGGLE_EVENT = 'radyar:lehr-mode-toggle'
 const LEHR_MODE_STATE_EVENT = 'radyar:lehr-mode-state'
+const LEHR_MODE_CLEAR_EVENT = 'radyar:lehr-mode-clear'
 const GERMANY_DATE_FORMATTER = new Intl.DateTimeFormat('fa-IR-u-ca-gregory', {
   dateStyle: 'medium',
   timeStyle: 'short',
@@ -251,6 +252,7 @@ function ExamTeachingPreview({ detail, onBack }) {
 
   function resetCurrentQuestion() {
     if (!currentQuestion) return
+    window.dispatchEvent(new Event(LEHR_MODE_CLEAR_EVENT))
     setSelectedAnswers(current => {
       const next = { ...current }
       delete next[currentQuestion.id]
@@ -259,7 +261,17 @@ function ExamTeachingPreview({ detail, onBack }) {
   }
 
   function moveQuestion(offset) {
-    setQuestionIndex(current => Math.min(Math.max(current + offset, 0), questions.length - 1))
+    const nextQuestionIndex = Math.min(Math.max(questionIndex + offset, 0), questions.length - 1)
+    if (nextQuestionIndex === questionIndex) return
+    window.dispatchEvent(new Event(LEHR_MODE_CLEAR_EVENT))
+    setQuestionIndex(nextQuestionIndex)
+    const scrollRoot = document.querySelector('[data-lehr-scroll-root]')
+    scrollRoot?.scrollTo({ top: 0, behavior: 'auto' })
+  }
+
+  function exitPreview() {
+    window.dispatchEvent(new Event(LEHR_MODE_CLEAR_EVENT))
+    onBack()
   }
 
   if (!currentQuestion) {
@@ -272,9 +284,9 @@ function ExamTeachingPreview({ detail, onBack }) {
   }
 
   return (
-    <section className={`${styles.preview} ${lehrActive ? styles.previewLehrOpen : ''}`} dir="rtl">
+    <section className={`${styles.preview} ${lehrActive ? styles.previewLehrOpen : ''}`} dir="rtl" data-lehr-scroll-root data-lehr-surface>
       <div className={styles.previewTopbar}>
-        <button type="button" className={styles.previewBack} onClick={onBack} data-lehr-ui>
+        <button type="button" className={styles.previewBack} onClick={exitPreview} data-lehr-ui>
           <span aria-hidden="true">×</span> خروج از پیش‌نمایش
         </button>
         <div className={styles.previewTitle}>
@@ -296,7 +308,7 @@ function ExamTeachingPreview({ detail, onBack }) {
         <div className={styles.previewTrack} aria-hidden="true"><span style={{ width: `${((questionIndex + 1) / questions.length) * 100}%` }} /></div>
       </div>
 
-      <article className={styles.previewQuestion} dir={direction}>
+      <article className={styles.previewQuestion} dir={direction} data-lehr-surface>
         <div className={styles.previewQuestionHead}>
           <span>{Number(currentQuestion.points || 1).toLocaleString('fa-IR')} امتیاز</span>
           <b>{responseStats.participantCount.toLocaleString('fa-IR')} شرکت‌کننده</b>
@@ -322,9 +334,8 @@ function ExamTeachingPreview({ detail, onBack }) {
                 type="button"
                 className={optionClass}
                 onClick={() => selectOption(optionIndex)}
-                disabled={revealed}
+                aria-disabled={revealed}
                 aria-pressed={isSelected}
-                data-lehr-ui
                 key={optionIndex}
               >
                 <span className={styles.previewOptionRow}>
