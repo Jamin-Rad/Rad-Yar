@@ -3,19 +3,19 @@ import TearSchematic from './TearSchematic'
 
 const L = (de, en, fa) => ({ de, en, fa })
 const labels = [L('Definition & Verlauf', 'Definition & orientation', 'تعریف و مسیر پارگی'), L('MRT-Merkmale', 'MRI findings', 'یافته‌های MRI'), L('Klinische Bedeutung', 'Clinical significance', 'اهمیت بالینی'), L('Im Befund angeben', 'What to report', 'در گزارش ذکر شود')]
-const makeItem = (id, label, category, texts) => ({ id, label, category, details: texts.map((text, index) => ({ id: String(index), label: labels[index], text })) })
+const makeItem = (id, label, category, texts) => ({ id, label, category, details: texts.map((text, index) => text ? ({ id: String(index), label: labels[index], text }) : null).filter(Boolean) })
 const items = [
   makeItem('horizontal', L('Horizontalriss', 'Horizontal tear', 'پارگی افقی'), L('Parallel zum Tibiaplateau', 'Parallel to the tibial plateau', 'موازی پلاتوی تیبیا'), [
     L('Lineare Signalsteigerung parallel zur Tibiaebene, die die Oberfläche erreicht.', 'Linear increased signal parallel to the tibial plane, reaching the surface.', 'افزایش سیگنال خطی موازی صفحهٔ تیبیا که به سطح منیسک می‌رسد.'),
-    L('Horizontale Signallinie mit Oberflächenkontakt, sagittal oder koronal. Nach einer parameniskalen Zyste suchen.', 'A horizontal surface-reaching signal line on sagittal or coronal images. Look for a parameniscal cyst.', 'خط سیگنال افقی با تماس سطحی در ساژیتال یا کرونال؛ کیست پارامنیسکال همراه را جست‌وجو کنید.'),
+    null,
     L(<><p>Sehr häufig.</p><p>Häufig im degenerativen Kontext.</p><p>Der MRT-Befund allein ist keine OP-Indikation.</p></>, <><p>Very common.</p><p>Often in a degenerative setting.</p><p>The MRI finding alone is not a surgical indication.</p></>, <><p>بسیار شایع.</p><p>اغلب در زمینهٔ دژنراتیو.</p><p>یافتهٔ MRI به‌تنهایی اندیکاسیون جراحی نیست.</p></>),
-    L('Segment, Blattbeteiligung und Zysten. Zusätzlich auf eine Lappenbildung oder Fragmentverlagerung achten.', 'Segment, leaflet involvement and cysts. Also assess flap formation and fragment displacement.', 'سگمان، لایه‌های درگیر و کیست‌ها؛ تشکیل لَپ یا جابه‌جایی قطعه را هم بررسی کنید.'),
+    null,
   ]),
   makeItem('longitudinal', L('Longitudinalriss', 'Longitudinal tear', 'پارگی طولی'), L('Vertikal · parallel zur Peripherie', 'Vertical · parallel to the periphery', 'عمودی · موازی محیط منیسک'), [
-    L('Vertikaler Riss entlang der zirkumferenziellen Fasern, häufig im peripheren Meniskusanteil.', 'A vertical split along the circumferential fibres, often in the peripheral meniscus.', 'شکاف عمودی در امتداد الیاف حلقوی، اغلب در بخش محیطی منیسک.'),
-    L('Oberflächenreichende Risslinie entlang der Peripherie. Verlauf in mehreren Ebenen prüfen und nach einem dislozierten Fragment suchen.', 'A surface-reaching tear line follows the periphery. Confirm in multiple planes and look for a displaced fragment.', 'خط پارگی با تماس سطحی در امتداد محیط دیده می‌شود. در چند صفحه بررسی کنید و دنبال قطعهٔ جابه‌جا‌شده باشید.'),
-    L('Periphere, reparable Risse können für eine Naht geeignet sein. Gefäßzone, Stabilität und Gewebequalität sind entscheidend.', 'Peripheral, repairable tears may be suitable for suturing. Vascular zone, stability and tissue quality matter.', 'پارگی محیطیِ قابل‌ترمیم ممکن است برای بخیه مناسب باشد؛ ناحیهٔ خون‌رسانی، پایداری و کیفیت بافت مهم‌اند.'),
-    L('Meniskus, Segment, Risslänge und Dislokation. Ein zentral verlagertes inneres Fragment spricht für die Korbhenkelvariante.', 'Meniscus, segment, tear length and displacement. A centrally displaced inner fragment suggests the bucket-handle variant.', 'منیسک، سگمان، طول و جابه‌جایی پارگی؛ قطعهٔ داخلی جابه‌جا‌شده به مرکز، گونهٔ دسته‌سطلی را مطرح می‌کند.'),
+    L('Vertikaler Riss parallel zur Meniskusperipherie mit Oberflächenkontakt.', 'A vertical tear parallel to the meniscal periphery, reaching the surface.', 'پارگی عمودی موازی محیط منیسک با تماس سطحی.'),
+    null,
+    L(<><p>Periphere, reparable Risse können genäht werden.</p><p>Gefäßzone, Stabilität und Gewebequalität sind entscheidend.</p><p>Bei zentraler Fragmentverlagerung: Korbhenkelriss.</p></>, <><p>Peripheral, repairable tears may be sutured.</p><p>Vascular zone, stability and tissue quality matter.</p><p>Central fragment displacement: bucket-handle tear.</p></>, <><p>پارگی محیطیِ قابل‌ترمیم ممکن است برای بخیه مناسب باشد.</p><p>ناحیهٔ خون‌رسانی، پایداری و کیفیت بافت مهم‌اند.</p><p>جابه‌جایی قطعه به مرکز: پارگی دسته‌سطلی.</p></>),
+    null,
   ]),
   makeItem('radial', L('Radiärriss', 'Radial tear', 'پارگی شعاعی'), L('Vom freien Rand nach außen', 'From the free edge outward', 'از لبهٔ آزاد به سمت محیط'), [
     L('Der Riss durchtrennt zirkumferenzielle Fasern, meist vom freien Innenrand Richtung Peripherie.', 'The tear crosses circumferential fibres, usually from the free inner edge towards the periphery.', 'پارگی الیاف حلقوی را قطع می‌کند و معمولاً از لبهٔ آزاد داخلی به سمت محیط پیش می‌رود.'),

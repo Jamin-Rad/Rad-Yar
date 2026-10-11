@@ -39,6 +39,8 @@
 .detailList > div { padding-top: 16px; border-top: 1px solid var(--text-border); break-inside: avoid; }
 .detailList dt { margin-bottom: 6px; color: var(--text-accent); font-size: 13px; font-weight: 850; }
 .detailList dd { margin: 0; color: var(--body); font-size: 16px; line-height: 1.8; }
+.detailList dd p { margin: 0; color: inherit; font: inherit; }
+.detailList dd p + p { margin-top: 8px; }
 .panel h4,.tabs button span { overflow-wrap: anywhere; }
 .note { display: grid; grid-template-columns: 120px minmax(0,1fr); gap: 16px; margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--body); font-size: 16px; line-height: 1.8; }
 .note strong { color: var(--ink); font-weight: 800; }
