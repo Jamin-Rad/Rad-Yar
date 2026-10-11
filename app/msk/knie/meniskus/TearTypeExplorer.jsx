@@ -24,10 +24,10 @@ const items = [
     null,
   ]),
   makeItem('radial-complete', L('Vollständiger Radiärriss', 'Complete radial tear', 'پارگی شعاعی کامل'), L('Durch die gesamte Meniskusbreite', 'Across the full meniscal width', 'در تمام عرض منیسک'), [
-    L('Radiärer Riss vom freien Rand bis zur Peripherie; die zirkumferenziellen Fasern sind vollständig unterbrochen.', 'A radial tear from the free edge to the periphery, completely interrupting circumferential fibres.', 'پارگی شعاعی از لبهٔ آزاد تا محیط؛ الیاف حلقوی به‌طور کامل قطع می‌شوند.'),
-    L('Durchgehender Defekt koronal oder axial; sagittal kann ein Ghost-Meniscus-Zeichen auftreten. In mehreren Ebenen bestätigen.', 'A full-width defect on coronal or axial images; sagittal images may show a ghost-meniscus sign. Confirm in multiple planes.', 'نقص تمام‌عرض در کرونال یا اکسیال؛ در ساژیتال ممکن است علامت Ghost meniscus دیده شود. در چند صفحه تأیید کنید.'),
-    L('Die Ringspannung und Lastverteilung sind erheblich beeinträchtigt; Extrusion kann hinzukommen.', 'Hoop-stress transmission and load distribution are substantially impaired; extrusion may coexist.', 'انتقال تنش حلقوی و توزیع بار به‌شدت مختل می‌شود؛ اکستروژن ممکن است همراه باشد.'),
-    L('Vollständigkeit, Lokalisation, Wurzelbezug und Extrusion angeben. Nicht automatisch als Wurzelriss bezeichnen.', 'Report completeness, location, root relationship and extrusion. Do not automatically label it a root tear.', 'کامل‌بودن، محل، ارتباط با ریشه و اکستروژن را ذکر کنید؛ الزاماً پارگی ریشه نیست.'),
+    L('Radiärer Riss durch die gesamte Meniskusbreite, vom freien Rand bis zur Peripherie.', 'A radial tear across the full meniscal width, from the free edge to the periphery.', 'پارگی شعاعی در تمام عرض منیسک، از لبهٔ آزاد تا محیط.'),
+    null,
+    L(<><p>Ringspannung und Lastverteilung sind erheblich beeinträchtigt.</p><p>Eine Meniskusextrusion kann hinzukommen.</p></>, <><p>Hoop-stress transmission and load distribution are substantially impaired.</p><p>Meniscal extrusion may coexist.</p></>, <><p>انتقال تنش حلقوی و توزیع بار به‌شدت مختل می‌شوند.</p><p>اکستروژن منیسک ممکن است همراه باشد.</p></>),
+    null,
   ]),
   makeItem('flap', L('Parrot-beak-tear (Lappenriss)', 'Parrot-beak tear (flap tear)', 'پارگی لَپی'), L('Teilweise angeheftetes Fragment', 'Partly attached fragment', 'قطعه با اتصال باقی‌مانده'), [
     L('Ein schräger Radiärriss bildet einen spitzen, teilweise angehefteten Lappen am freien Rand.', 'An oblique radial tear creates a pointed, partly attached flap at the free edge.', 'پارگی شعاعی مایل، لَپی نوک‌تیز با اتصال باقی‌مانده در لبهٔ آزاد ایجاد می‌کند.'),
