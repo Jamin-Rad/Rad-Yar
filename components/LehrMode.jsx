@@ -13,14 +13,12 @@ const CLEAR_EVENT = 'radyar:lehr-mode-clear'
 const TOOLS = {
   pen: { label: 'Stift', color: '#ff5c35', width: 4, alpha: 1 },
   highlighter: { label: 'Textmarker', color: '#ffe45c', width: 22, alpha: 0.34 },
-  arrow: { label: 'Zeiger', color: '#ff6b00', width: 0, alpha: 1 },
   eraser: { label: 'Radierer', color: '#ffffff', width: 42, alpha: 1 },
 }
 
 function ToolIcon({ name }) {
   if (name === 'pen') return <path d="M5 19l3.9-1 9.8-9.8a2.1 2.1 0 0 0-3-3L5.9 15 5 19zm9-12 3 3" />
   if (name === 'highlighter') return <><path d="M7 15l-2 4 4-2L19 7l-3-3L7 15z" /><path d="M5 20h14" /></>
-  if (name === 'arrow') return <path d="M5 3l14 9-7 1-3 7L5 3z" />
   return <><path d="M8 18l-4-4L14 4l6 6-8 8H8z" /><path d="M11 18h9" /></>
 }
 
@@ -213,6 +211,8 @@ export default function LehrMode() {
     let suppressClick = false
     let clickResetTimer = null
     let touchScroll = null
+    let penGesture = null
+    let lastPenTap = null
 
     const pointFromEvent = event => {
       const viewport = annotationViewport(event.target)
@@ -224,7 +224,7 @@ export default function LehrMode() {
     }
     const isToolbarEvent = event => event.target instanceof Element && event.target.closest('[data-lehr-ui]')
     const isDrawingSurface = event => event.target instanceof Element && event.target.closest('[data-lehr-surface]')
-    const canDrawWith = event => event.pointerType === 'pen' || (event.pointerType === 'mouse' && event.button === 0)
+    const canDrawWith = event => event.pointerType === 'pen'
 
     function onPointerDown(event) {
       if (isToolbarEvent(event)) return
@@ -242,12 +242,42 @@ export default function LehrMode() {
         event.target?.setPointerCapture?.(event.pointerId)
         return
       }
-      if (!canDrawWith(event) || toolRef.current === 'arrow') return
+      if (!canDrawWith(event)) return
+
+      const now = window.performance.now()
+      const tapDistance = lastPenTap ? Math.hypot(event.clientX - lastPenTap.x, event.clientY - lastPenTap.y) : Infinity
+      if (lastPenTap && now - lastPenTap.time <= 380 && tapDistance <= 44) {
+        event.preventDefault()
+        event.stopPropagation()
+        if (lastPenTap.createdStroke) {
+          const beforeTap = historyRef.current.pop()
+          if (beforeTap) strokesRef.current = beforeTap
+          setCanUndo(historyRef.current.length > 0)
+          scheduleRender()
+        }
+        const nextTool = toolRef.current === 'eraser' ? 'pen' : 'eraser'
+        toolRef.current = nextTool
+        setTool(nextTool)
+        lastPenTap = null
+        suppressClick = true
+        clickResetTimer = window.setTimeout(() => {
+          suppressClick = false
+        }, 0)
+        return
+      }
+
       event.preventDefault()
       event.stopPropagation()
       suppressClick = true
       event.target?.setPointerCapture?.(event.pointerId)
       activePointerRef.current = event.pointerId
+      penGesture = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        maxDistance: 0,
+        createdStroke: toolRef.current !== 'eraser',
+      }
       const point = pointFromEvent(event)
 
       if (toolRef.current === 'eraser') {
@@ -282,7 +312,7 @@ export default function LehrMode() {
       }
 
       const arrow = arrowRef.current
-      if (toolRef.current === 'arrow' && event.pointerType !== 'touch' && !isToolbarEvent(event)) {
+      if (event.pointerType === 'mouse' && !isToolbarEvent(event)) {
         arrow?.style.setProperty('transform', `translate3d(${event.clientX}px, ${event.clientY}px, 0)`)
         arrow?.classList.add(styles.arrowVisible)
       } else {
@@ -292,6 +322,12 @@ export default function LehrMode() {
       if (activePointerRef.current !== event.pointerId) return
       event.preventDefault()
       event.stopPropagation()
+      if (penGesture?.pointerId === event.pointerId) {
+        penGesture.maxDistance = Math.max(
+          penGesture.maxDistance,
+          Math.hypot(event.clientX - penGesture.startX, event.clientY - penGesture.startY),
+        )
+      }
       const coalescedEvents = event.getCoalescedEvents?.()
       const events = coalescedEvents?.length ? coalescedEvents : [event]
 
@@ -334,6 +370,17 @@ export default function LehrMode() {
       if (activePointerRef.current !== event.pointerId) return
       event.preventDefault()
       event.stopPropagation()
+      if (penGesture?.pointerId === event.pointerId) {
+        lastPenTap = penGesture.maxDistance <= 8
+          ? {
+              time: window.performance.now(),
+              x: event.clientX,
+              y: event.clientY,
+              createdStroke: penGesture.createdStroke,
+            }
+          : null
+        penGesture = null
+      }
       activePointerRef.current = null
       eraseSessionRef.current = null
       event.target?.releasePointerCapture?.(event.pointerId)
@@ -356,7 +403,7 @@ export default function LehrMode() {
         undo()
       }
       if (event.ctrlKey || event.metaKey || event.altKey || event.target?.matches?.('input, textarea, [contenteditable="true"]')) return
-      const shortcut = { p: 'pen', h: 'highlighter', a: 'arrow', e: 'eraser' }[event.key.toLowerCase()]
+      const shortcut = { p: 'pen', h: 'highlighter', e: 'eraser' }[event.key.toLowerCase()]
       if (shortcut) setTool(shortcut)
     }
 
@@ -396,7 +443,10 @@ export default function LehrMode() {
     <div className={styles.layer} aria-label="Lehr-Mode">
       <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
       <div ref={arrowRef} className={styles.arrowPointer} aria-hidden="true">
-        <svg viewBox="0 0 68 68"><path d="M7 5l52 33-24 4-10 22L7 5z" /></svg>
+        <svg viewBox="0 0 88 88">
+          <path className={styles.pointerBody} d="M9 6 77 47l-30 6-15 29L9 6Z" />
+          <path className={styles.pointerAccent} d="m18 18 40 27" />
+        </svg>
       </div>
       <div className={styles.toolbar} data-lehr-ui role="toolbar" aria-label="Lehr-Mode Werkzeuge">
         <div className={styles.modeLabel}><span />Lehr-Mode</div>
@@ -411,9 +461,6 @@ export default function LehrMode() {
         <button type="button" className={`${styles.actionButton} ${styles.closeButton}`} onClick={deactivate} aria-label="Lehr-Mode beenden" title="Lehr-Mode beenden">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
         </button>
-      </div>
-      <div className={styles.hint} data-lehr-ui>
-        Apple Pencil oder Maus zum Zeichnen · Finger zum Scrollen
       </div>
     </div>
   )
