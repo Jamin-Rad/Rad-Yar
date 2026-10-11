@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   KANGURU_GRADE_GROUPS,
   KANGURU_PARTS,
@@ -392,22 +392,15 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
     setActiveWhiteboardPage(1)
   }, [index])
 
-  if (!question) return null
-
-  const correct = checked && selected === question.correct
-  const marked = Boolean(attempts[question.id]?.needsReview)
-  const score = answers.filter(answer => answer.correct).length
-  const hasVisualOptions = question.options.some(option => option.image)
-
-  const checkAnswer = () => {
-    if (!selected || checked) return
+  const checkAnswer = useCallback(() => {
+    if (!question || !selected || checked) return
     const isCorrect = selected === question.correct
     setChecked(true)
     setAnswers(previous => [...previous, { id: question.id, selected, correct: isCorrect }])
     if (!teaching) onRecord(question, selected, isCorrect, session.mode)
-  }
+  }, [checked, onRecord, question, selected, session.mode, teaching])
 
-  const next = () => {
+  const next = useCallback(() => {
     if (index === questions.length - 1) {
       setFinished(true)
       return
@@ -415,7 +408,42 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
     setIndex(value => value + 1)
     setSelected('')
     setChecked(false)
-  }
+  }, [index, questions.length])
+
+  useEffect(() => {
+    if (!question || finished) return undefined
+
+    function handleKeyDown(event) {
+      if (event.defaultPrevented || event.repeat || event.ctrlKey || event.metaKey || event.altKey) return
+      const target = event.target
+      if (target instanceof Element && target.closest('input, textarea, select, [contenteditable="true"]')) return
+
+      const pressed = event.key.toUpperCase()
+      const option = question.options.find((candidate, optionIndex) => (
+        String(candidate.id).toUpperCase() === pressed || String(optionIndex + 1) === event.key
+      ))
+      if (option && !checked) {
+        event.preventDefault()
+        setSelected(option.id)
+        return
+      }
+
+      if (event.key !== 'Enter' || (!checked && !selected)) return
+      event.preventDefault()
+      if (checked) next()
+      else checkAnswer()
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [checkAnswer, checked, finished, next, question, selected])
+
+  if (!question) return null
+
+  const correct = checked && selected === question.correct
+  const marked = Boolean(attempts[question.id]?.needsReview)
+  const score = answers.filter(answer => answer.correct).length
+  const hasVisualOptions = question.options.some(option => option.image)
 
   const addWhiteboardPage = () => {
     const nextPage = Math.max(...whiteboardPages) + 1
@@ -448,12 +476,11 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
         <span>{index + 1} / {questions.length}</span>
       </header>
       <div className={styles.quizProgress}><span style={{ width: `${((index + (checked ? 1 : 0)) / questions.length) * 100}%` }} /></div>
-      {teaching ? (
-        <div className={styles.lehrBanner}>
-          <div><strong>{LEHR_LABELS.mode}</strong><span>{LEHR_LABELS.hint}</span></div>
-          <button type="button" className={whiteboardOpen ? styles.whiteboardToggleActive : ''} onClick={() => setWhiteboardOpen(value => !value)}><DrawIcon name="board" />{whiteboardOpen ? LEHR_LABELS.closeBoard : LEHR_LABELS.board}</button>
-        </div>
-      ) : null}
+      <div className={`${styles.lehrBanner} ${teaching ? '' : styles.quizToolsBanner}`}>
+        <div><strong>{teaching ? LEHR_LABELS.mode : 'Lösungsbereich'}</strong><span>{teaching ? LEHR_LABELS.hint : 'Nutze bei Bedarf ein Whiteboard für deine Nebenrechnungen.'}</span></div>
+        <span className={styles.keyboardHint}>Tastatur: A–E oder 1–5 · Enter: prüfen / weiter</span>
+        <button type="button" className={whiteboardOpen ? styles.whiteboardToggleActive : ''} onClick={() => setWhiteboardOpen(value => !value)}><DrawIcon name="board" />{whiteboardOpen ? LEHR_LABELS.closeBoard : LEHR_LABELS.board}</button>
+      </div>
       <AnnotationSurface enabled={teaching} title={LEHR_LABELS.mode} resetKey={question.id}>
         <article className={styles.questionCard}>
         <header className={styles.questionHeading}>
@@ -478,7 +505,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
           <section className={styles.answersPanel} aria-labelledby="answers-title">
             <h2 id="answers-title">Antwortmöglichkeiten</h2>
             <div className={`${styles.options} ${hasVisualOptions ? styles.visualOptions : ''}`} role="radiogroup" aria-label="Antwort auswählen">
-              {question.options.map(option => {
+              {question.options.map((option, optionIndex) => {
                 const isSelected = selected === option.id
                 const stateClass = checked
                   ? option.id === question.correct ? styles.optionCorrect : isSelected ? styles.optionWrong : ''
@@ -489,6 +516,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
                     role="radio"
                     aria-checked={isSelected}
                     aria-label={`Antwort ${option.id}: ${option.text}`}
+                    aria-keyshortcuts={`${option.id} ${optionIndex + 1}`}
                     disabled={checked}
                     className={stateClass}
                     onClick={() => setSelected(option.id)}
@@ -504,7 +532,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
             </div>
 
             {!checked ? (
-              <button className={styles.checkButton} type="button" disabled={!selected} onClick={checkAnswer}>Antwort prüfen</button>
+              <button className={styles.checkButton} type="button" disabled={!selected} onClick={checkAnswer} aria-keyshortcuts="Enter">Antwort prüfen</button>
             ) : null}
           </section>
         </div>
@@ -522,13 +550,13 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
             <div className={styles.solutionSteps}>
               <h2>So geht&apos;s</h2>
               {Array.isArray(question.solutionSteps) ? <ol>{question.solutionSteps.map((step, stepIndex) => <li key={stepIndex}>{step}</li>)}</ol> : <p>{question.solution}</p>}
-              <button className={styles.nextButton} type="button" onClick={next}>{index === questions.length - 1 ? 'Ergebnis anzeigen' : 'Nächste Aufgabe'} <ArrowIcon /></button>
+              <button className={styles.nextButton} type="button" onClick={next} aria-keyshortcuts="Enter">{index === questions.length - 1 ? 'Ergebnis anzeigen' : 'Nächste Aufgabe'} <ArrowIcon /></button>
             </div>
           </section>
         ) : null}
         </article>
       </AnnotationSurface>
-      {teaching && whiteboardOpen ? (
+      {whiteboardOpen ? (
         <section className={styles.whiteboardWrap}>
           <div className={styles.whiteboardTabs}>
             {whiteboardPages.map(page => <button key={page} type="button" className={activeWhiteboardPage === page ? styles.whiteboardTabActive : ''} onClick={() => setActiveWhiteboardPage(page)}>{LEHR_LABELS.page} {page}</button>)}
