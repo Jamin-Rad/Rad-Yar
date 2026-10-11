@@ -18,10 +18,10 @@ const items = [
     null,
   ]),
   makeItem('radial', L('Radiärriss', 'Radial tear', 'پارگی شعاعی'), L('Vom freien Rand nach außen', 'From the free edge outward', 'از لبهٔ آزاد به سمت محیط'), [
-    L('Der Riss durchtrennt zirkumferenzielle Fasern, meist vom freien Innenrand Richtung Peripherie.', 'The tear crosses circumferential fibres, usually from the free inner edge towards the periphery.', 'پارگی الیاف حلقوی را قطع می‌کند و معمولاً از لبهٔ آزاد داخلی به سمت محیط پیش می‌رود.'),
-    L('Defekt am freien Rand, verkürzte Meniskusform oder Cleft-/Ghost-Zeichen. In mehreren Ebenen bestätigen.', 'Free-edge defect, meniscal truncation or a cleft/ghost sign. Confirm in multiple planes.', 'نقص لبهٔ آزاد، کوتاه‌شدن نمای منیسک یا علامت Cleft/Ghost؛ در چند صفحه تأیید کنید.'),
-    L('Tiefe oder komplette Risse können die Übertragung der Ringspannung stören. Wurzelnahe Risse besonders beachten.', 'Deep or complete tears can impair hoop-stress transmission. Pay particular attention to root-adjacent tears.', 'پارگی عمیق یا کامل می‌تواند انتقال تنش حلقوی را مختل کند؛ به پارگی نزدیک ریشه توجه ویژه کنید.'),
-    L('Ausdehnung über die Meniskusbreite, Wurzelbezug und Extrusion. Nicht jeder Radiärriss ist ein Wurzelriss.', 'Extension across the meniscal width, root involvement and extrusion. Not every radial tear is a root tear.', 'وسعت در عرض منیسک، ارتباط با ریشه و اکستروژن؛ هر پارگی شعاعی الزاماً پارگی ریشه نیست.'),
+    L('Riss vom freien Innenrand zur Peripherie, quer zu den zirkumferenziellen Fasern.', 'A tear from the free inner edge towards the periphery, crossing the circumferential fibres.', 'پارگی از لبهٔ آزاد داخلی به سمت محیط، در عرض الیاف حلقوی.'),
+    null,
+    L(<><p>Tiefe oder komplette Risse können die Ringspannung beeinträchtigen.</p><p>Wurzelnahe Risse besonders beachten.</p></>, <><p>Deep or complete tears can impair hoop-stress transmission.</p><p>Pay particular attention to root-adjacent tears.</p></>, <><p>پارگی عمیق یا کامل می‌تواند انتقال تنش حلقوی را مختل کند.</p><p>به پارگی‌های نزدیک ریشه توجه ویژه کنید.</p></>),
+    null,
   ]),
   makeItem('radial-complete', L('Vollständiger Radiärriss', 'Complete radial tear', 'پارگی شعاعی کامل'), L('Durch die gesamte Meniskusbreite', 'Across the full meniscal width', 'در تمام عرض منیسک'), [
     L('Radiärer Riss vom freien Rand bis zur Peripherie; die zirkumferenziellen Fasern sind vollständig unterbrochen.', 'A radial tear from the free edge to the periphery, completely interrupting circumferential fibres.', 'پارگی شعاعی از لبهٔ آزاد تا محیط؛ الیاف حلقوی به‌طور کامل قطع می‌شوند.'),
