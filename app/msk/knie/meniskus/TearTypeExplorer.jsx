@@ -24,11 +24,11 @@ const items = [
     null,
   ], [labels[0], L('Cleft sign', 'Cleft sign', 'علامت شکاف (Cleft sign)')]),
   makeItem('radial-complete', L('Vollständiger Radiärriss', 'Complete radial tear', 'پارگی شعاعی کامل'), L('Durch die gesamte Meniskusbreite', 'Across the full meniscal width', 'در تمام عرض منیسک'), [
-    L('Radiärer Riss durch die gesamte Meniskusbreite, vom freien Rand bis zur Peripherie.', 'A radial tear across the full meniscal width, from the free edge to the periphery.', 'پارگی شعاعی در تمام عرض منیسک، از لبهٔ آزاد تا محیط.'),
-    null,
+    L(<><p>Radiärer Riss durch die gesamte Meniskusbreite, vom freien Rand bis zur Peripherie.</p><p>Meist traumatisch, besonders bei jüngeren Patienten.</p></>, <><p>A radial tear across the full meniscal width, from the free edge to the periphery.</p><p>Usually traumatic, particularly in younger patients.</p></>, <><p>پارگی شعاعی در تمام عرض منیسک، از لبهٔ آزاد تا محیط.</p><p>اغلب تروماتیک، به‌ویژه در بیماران جوان‌تر.</p></>),
+    L('Der Meniskus ist im Rissniveau auf einer oder mehreren Schichten nicht mehr erkennbar.', 'The meniscus is no longer visible at the tear level on one or more slices.', 'منیسک در محل پارگی در یک یا چند برش دیگر قابل مشاهده نیست.'),
     L(<><p>Ringspannung und Lastverteilung sind erheblich beeinträchtigt.</p><p>Eine Meniskusextrusion kann hinzukommen.</p></>, <><p>Hoop-stress transmission and load distribution are substantially impaired.</p><p>Meniscal extrusion may coexist.</p></>, <><p>انتقال تنش حلقوی و توزیع بار به‌شدت مختل می‌شوند.</p><p>اکستروژن منیسک ممکن است همراه باشد.</p></>),
     null,
-  ]),
+  ], [labels[0], L('Ghost sign', 'Ghost sign', 'علامت شبح (Ghost sign)'), labels[2]]),
   makeItem('flap', L('Parrot-beak-tear (Lappenriss)', 'Parrot-beak tear (flap tear)', 'پارگی لَپی'), L('Teilweise angeheftetes Fragment', 'Partly attached fragment', 'قطعه با اتصال باقی‌مانده'), [
     L('Schräger Radiärriss mit spitzem, teilweise angeheftetem Lappen am freien Rand.', 'An oblique radial tear with a pointed, partly attached flap at the free edge.', 'پارگی شعاعی مایل با لَپ نوک‌تیز و اتصال باقی‌مانده در لبهٔ آزاد.'),
     null,
