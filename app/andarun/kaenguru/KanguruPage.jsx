@@ -24,6 +24,14 @@ const LEHR_LABELS = {
   closeBoard: 'Whiteboard schließen', addPage: 'Seite hinzufügen', page: 'Seite',
   resetHint: 'Notizen werden bei der nächsten Aufgabe automatisch gelöscht.',
 }
+const STATS_METRICS = {
+  solved: { label: 'Gelöst', icon: '✓', hint: 'Alle bearbeiteten Aufgaben' },
+  open: { label: 'Offen', icon: '⚡', hint: 'Deine nächsten Herausforderungen' },
+  review: { label: 'Zu wiederholen', icon: '↻', hint: 'Aufgaben für deine nächste Runde' },
+}
+const DAY_FORMATTER = new Intl.DateTimeFormat('de-DE', {
+  weekday: 'short', day: '2-digit', month: 'short', year: 'numeric', timeZone: 'Europe/Berlin',
+})
 
 function DrawIcon({ name }) {
   const paths = {
@@ -250,6 +258,101 @@ function buildWeaknesses(questions, attempts) {
     topics.set(topic, entry)
   }
   return [...topics.values()].sort((a, b) => (b.wrong / b.attempted) - (a.wrong / a.attempted))
+}
+
+function formatAttemptDay(value) {
+  if (!value) return 'Noch nicht bearbeitet'
+  const date = new Date(value)
+  return Number.isNaN(date.getTime()) ? 'Datum unbekannt' : DAY_FORMATTER.format(date)
+}
+
+function StatsDialog({ metric, onMetricChange, questions, attempts, gradeGroup, onClose }) {
+  const rows = useMemo(() => questions.map(question => {
+    const attempt = attempts[question.id]
+    const history = Array.isArray(attempt?.history) ? attempt.history : []
+    const latest = history[history.length - 1]
+    return {
+      question,
+      attempt,
+      latest,
+      answeredAt: attempt?.lastAnsweredAt || latest?.at || null,
+    }
+  }), [attempts, questions])
+  const metricRows = useMemo(() => rows.filter(row => {
+    if (metric === 'open') return !row.attempt
+    if (metric === 'review') return Boolean(row.attempt?.needsReview)
+    return Boolean(row.attempt)
+  }).sort((a, b) => {
+    if (a.answeredAt || b.answeredAt) return String(b.answeredAt || '').localeCompare(String(a.answeredAt || ''))
+    return (b.question.year - a.question.year) || a.question.part.localeCompare(b.question.part) || a.question.number - b.question.number
+  }), [metric, rows])
+  const yearCounts = useMemo(() => KANGURU_PLANNED_YEARS.map(year => ({
+    year,
+    count: metricRows.filter(row => row.question.year === year).length,
+  })).filter(item => item.count > 0), [metricRows])
+  const dayCounts = useMemo(() => {
+    const totals = new Map()
+    metricRows.forEach(row => {
+      if (!row.answeredAt) return
+      const day = formatAttemptDay(row.answeredAt)
+      totals.set(day, (totals.get(day) || 0) + 1)
+    })
+    return [...totals.entries()].map(([day, count]) => ({ day, count })).slice(0, 8)
+  }, [metricRows])
+  const active = STATS_METRICS[metric]
+
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [onClose])
+
+  return (
+    <div className={styles.statsBackdrop} role="presentation" onMouseDown={event => event.target === event.currentTarget && onClose()}>
+      <section className={styles.statsDialog} role="dialog" aria-modal="true" aria-labelledby="stats-dialog-title" lang="de" dir="ltr">
+        <button className={styles.statsClose} type="button" onClick={onClose} aria-label="Statistik schließen"><CloseIcon /></button>
+        <header className={`${styles.statsHero} ${styles[`statsHero_${metric}`]}`}>
+          <span className={styles.statsHeroIcon}>{active.icon}</span>
+          <div><small>DEIN KÄNGURU-CHECK</small><h2 id="stats-dialog-title">{active.label}</h2><p>{active.hint} · Klassen {gradeGroup.replace('-', '/')}</p></div>
+          <strong>{metricRows.length}</strong>
+        </header>
+
+        <div className={styles.statsTabs} role="tablist" aria-label="Statistik auswählen">
+          {Object.entries(STATS_METRICS).map(([key, item]) => {
+            const count = rows.filter(row => key === 'open' ? !row.attempt : key === 'review' ? row.attempt?.needsReview : row.attempt).length
+            return <button key={key} type="button" role="tab" aria-selected={metric === key} className={metric === key ? styles.statsTabActive : ''} onClick={() => onMetricChange(key)}><span>{item.icon}</span>{item.label}<b>{count}</b></button>
+          })}
+        </div>
+
+        <div className={styles.statsBreakdown}>
+          <section>
+            <h3>Nach Jahr</h3>
+            <div className={styles.yearBubbles}>{yearCounts.length ? yearCounts.map(item => <div key={item.year}><strong>{item.count}</strong><span>{item.year}</span></div>) : <p>Noch keine Einträge.</p>}</div>
+          </section>
+          <section>
+            <h3>{metric === 'open' ? 'Level' : 'Aktive Tage'}</h3>
+            {metric === 'open' ? <div className={styles.levelCard}><strong>Klassen {gradeGroup.replace('-', '/')}</strong><span>{metricRows.length} Aufgaben warten auf dich</span></div> : <div className={styles.dayChips}>{dayCounts.length ? dayCounts.map(item => <span key={item.day}><b>{item.count}</b>{item.day}</span>) : <p>Noch keine Aktivität.</p>}</div>}
+          </section>
+        </div>
+
+        <section className={styles.statsQuestionList} aria-label={`${active.label} Aufgaben`}>
+          <div className={styles.statsListHeading}><h3>Aufgaben im Detail</h3><span>{metricRows.length} Einträge</span></div>
+          {metricRows.length ? metricRows.map(row => (
+            <article key={row.question.id} className={styles.statsQuestionRow}>
+              <span className={styles.statsQuestionBadge}>{row.question.part}{row.question.number}</span>
+              <div><strong>{row.question.topic}</strong><small>{row.question.year} · Klassen {row.question.gradeGroup.replace('-', '/')} · {row.question.points} Punkte</small></div>
+              <div className={styles.statsQuestionResult}>
+                {row.attempt ? <span className={metric !== 'review' && row.latest?.correct ? styles.resultGood : styles.resultReview}>{metric !== 'review' && row.latest?.correct ? 'Richtig' : 'Wiederholen'}</span> : <span className={styles.resultOpen}>Offen</span>}
+                <time dateTime={row.answeredAt || undefined}>{formatAttemptDay(row.answeredAt)}</time>
+              </div>
+            </article>
+          )) : <div className={styles.statsEmpty}><span>★</span><strong>Hier ist gerade alles leer.</strong><p>Dein nächstes Ergebnis erscheint automatisch an dieser Stelle.</p></div>}
+        </section>
+      </section>
+    </div>
+  )
 }
 
 function JourneyMap({ progressPercent }) {
@@ -502,7 +605,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
             ) : null}
           </section>
 
-          <section className={styles.answersPanel} aria-labelledby="answers-title">
+          <section className={`${styles.answersPanel} ${checked && !correct ? styles.answersLocked : ''}`} aria-labelledby="answers-title">
             <h2 id="answers-title">Antwortmöglichkeiten</h2>
             <div className={`${styles.options} ${hasVisualOptions ? styles.visualOptions : ''}`} role="radiogroup" aria-label="Antwort auswählen">
               {question.options.map((option, optionIndex) => {
@@ -545,7 +648,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
                 <button className={`${styles.reviewToggle} ${marked ? styles.reviewMarked : ''}`} type="button" onClick={() => onToggleReview(question.id, !marked)}>
                   <RepeatIcon /> {marked ? 'Aus Fehlerliste entfernen' : 'Trotzdem zum Wiederholen merken'}
                 </button>
-              ) : !correct && !teaching ? <p className={styles.savedForReview}>Diese Aufgabe wurde zum Wiederholen gespeichert.</p> : null}
+              ) : !correct && !teaching ? <p className={styles.savedForReview}>Antwort gesperrt · sicher unter „Zu wiederholen“ gespeichert.</p> : null}
             </div>
             <div className={styles.solutionSteps}>
               <h2>So geht&apos;s</h2>
@@ -578,6 +681,7 @@ export default function KanguruPage() {
   const [progress, setProgress] = useState(EMPTY_PROGRESS)
   const [ready, setReady] = useState(false)
   const [dialog, setDialog] = useState(null)
+  const [statsMetric, setStatsMetric] = useState(null)
   const [session, setSession] = useState(null)
 
   useEffect(() => {
@@ -639,7 +743,8 @@ export default function KanguruPage() {
   const recordAttempt = (question, selected, correct, mode) => {
     setProgress(current => {
       const previous = current.attempts[question.id] || { history: [], needsReview: false }
-      const needsReview = correct && mode === 'review' ? false : correct ? previous.needsReview : true
+      const answeredAt = new Date().toISOString()
+      const needsReview = correct ? (mode === 'review' ? false : Boolean(previous.needsReview)) : true
       return {
         ...current,
         attempts: {
@@ -648,8 +753,8 @@ export default function KanguruPage() {
             ...previous,
             topic: question.topic,
             needsReview,
-            lastAnsweredAt: new Date().toISOString(),
-            history: [...(previous.history || []), { selected, correct, mode, at: new Date().toISOString() }].slice(-30),
+            lastAnsweredAt: answeredAt,
+            history: [...(previous.history || []), { selected, correct, mode, at: answeredAt }].slice(-30),
           },
         },
         updatedAt: new Date().toISOString(),
@@ -698,17 +803,18 @@ export default function KanguruPage() {
           <div className={styles.progressTrack}><span style={{ width: `${progressPercent}%` }} /></div>
           <p>{gradeQuestions.length ? `Klassen ${gradeGroup.replace('-', '/')}: ${attemptedCount} von ${gradeQuestions.length} Aufgaben bearbeitet.` : `Für die Klassen ${gradeGroup.replace('-', '/')} werden bald Aufgaben ergänzt.`}</p>
         </div>
-        <dl className={styles.stats}>
-          <div><dt>Gelöst</dt><dd>{attemptedCount}</dd></div>
-          <div><dt>Offen</dt><dd>{openCount}</dd></div>
-          <div><dt>Zu wiederholen</dt><dd>{reviewCount}</dd></div>
-        </dl>
+        <div className={styles.stats} aria-label="Detaillierte Statistik öffnen">
+          <button className={styles.statSolved} type="button" onClick={() => setStatsMetric('solved')}><span>Gelöst</span><strong>{attemptedCount}</strong><small>Details ansehen →</small></button>
+          <button className={styles.statOpen} type="button" onClick={() => setStatsMetric('open')}><span>Offen</span><strong>{openCount}</strong><small>Details ansehen →</small></button>
+          <button className={styles.statReview} type="button" onClick={() => setStatsMetric('review')}><span>Zu wiederholen</span><strong>{reviewCount}</strong><small>Details ansehen →</small></button>
+        </div>
         <button className={styles.weaknessButton} type="button" onClick={() => setDialog('weak')} aria-disabled={!weaknesses.length || undefined}>
           <TargetIcon /><span><strong>Prüfung aus deinen Schwächen</strong><small>{weaknesses.length ? weaknesses[0].topic : 'Wird nach deinen ersten Antworten verfügbar'}</small></span><ArrowIcon />
         </button>
       </section>
 
       {dialog ? <SetupDialog type={dialog} gradeGroup={gradeGroup} attempts={progress.attempts} onClose={() => setDialog(null)} onStart={startSession} /> : null}
+      {statsMetric ? <StatsDialog metric={statsMetric} onMetricChange={setStatsMetric} questions={gradeQuestions} attempts={progress.attempts} gradeGroup={gradeGroup} onClose={() => setStatsMetric(null)} /> : null}
     </main>
   )
 }

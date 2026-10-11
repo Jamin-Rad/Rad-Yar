@@ -300,12 +300,15 @@
 .progressMain p { margin: 15px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
 
 .stats { margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); }
-.stats div { padding: 5px 20px; display: grid; gap: 4px; border-left: 1px solid var(--line); }
-.stats dt { color: var(--muted); font-size: 10px; font-weight: 700; }
-.stats dd { margin: 0; font-size: 27px; font-weight: 900; }
-.stats div:nth-child(1) dd { color: var(--mint); }
-.stats div:nth-child(2) dd { color: var(--blue); }
-.stats div:nth-child(3) dd { color: var(--coral); }
+.stats button { position: relative; min-width: 0; padding: 8px 16px; display: grid; gap: 3px; border: 0; border-left: 1px solid var(--line); color: var(--ink); background: transparent; cursor: pointer; font-family: inherit; text-align: left; transition: transform .16s, background .16s; }
+.stats button:hover { z-index: 1; border-radius: 12px; background: #f3f8fd; transform: translateY(-2px); }
+.stats button:focus-visible { z-index: 1; outline: 3px solid rgba(33, 119, 232, .25); outline-offset: 2px; border-radius: 12px; }
+.stats span { color: var(--muted); font-size: 10px; font-weight: 750; }
+.stats strong { font-size: 27px; font-weight: 900; }
+.stats small { margin-top: 2px; color: #7890aa; font-size: 8px; font-weight: 750; white-space: nowrap; }
+.stats .statSolved strong { color: var(--mint); }
+.stats .statOpen strong { color: var(--blue); }
+.stats .statReview strong { color: var(--coral); }
 
 .weaknessButton {
   min-height: 74px;
@@ -327,6 +330,64 @@
 .weaknessButton span { min-width: 0; display: grid; gap: 4px; }
 .weaknessButton strong { font-size: 11px; line-height: 1.3; }
 .weaknessButton small { overflow: hidden; color: var(--muted); font-size: 9px; line-height: 1.3; text-overflow: ellipsis; }
+
+.statsBackdrop { position: fixed; inset: 0; z-index: 130; padding: 24px; display: grid; place-items: center; background: rgba(4, 24, 57, .66); backdrop-filter: blur(11px); animation: fadeIn .2s ease both; }
+.statsDialog { position: relative; width: min(960px, 100%); max-height: calc(100svh - 48px); overflow: auto; border: 2px solid var(--ink); border-radius: 28px; background: #f8fbff; box-shadow: 16px 16px 0 rgba(8, 36, 95, .2); animation: dialogIn .25s ease both; }
+.statsClose { position: absolute; top: 18px; right: 18px; z-index: 3; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.62); border-radius: 50%; color: white; background: rgba(8,36,95,.24); backdrop-filter: blur(8px); cursor: pointer; }
+.statsClose svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.statsHero { min-height: 172px; padding: 32px 80px 30px 34px; display: grid; grid-template-columns: 76px minmax(0, 1fr) auto; align-items: center; gap: 20px; color: white; overflow: hidden; }
+.statsHero_solved { background: radial-gradient(circle at 82% 12%, rgba(255,255,255,.26), transparent 26%), linear-gradient(135deg, #17a765, #43c77d); }
+.statsHero_open { background: radial-gradient(circle at 82% 12%, rgba(255,255,255,.26), transparent 26%), linear-gradient(135deg, #1769d3, #48a2f2); }
+.statsHero_review { background: radial-gradient(circle at 82% 12%, rgba(255,255,255,.26), transparent 26%), linear-gradient(135deg, #ef5239, #ff8a59); }
+.statsHeroIcon { width: 76px; height: 76px; display: grid; place-items: center; border: 3px solid rgba(255,255,255,.65); border-radius: 24px; background: rgba(255,255,255,.18); box-shadow: inset 0 1px rgba(255,255,255,.45), 0 10px 24px rgba(8,36,95,.14); font-size: 38px; font-weight: 900; transform: rotate(-4deg); }
+.statsHero > div { display: grid; gap: 4px; }
+.statsHero small { font-size: 9px; font-weight: 900; letter-spacing: .16em; opacity: .76; }
+.statsHero h2 { margin: 0; font-size: clamp(32px, 5vw, 50px); line-height: 1; letter-spacing: -.05em; }
+.statsHero p { margin: 4px 0 0; font-size: 12px; font-weight: 700; opacity: .86; }
+.statsHero > strong { font-size: clamp(54px, 8vw, 82px); line-height: 1; letter-spacing: -.07em; text-shadow: 0 5px 18px rgba(8,36,95,.16); }
+
+.statsTabs { margin: -18px 28px 0; position: relative; z-index: 2; padding: 6px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; border: 1px solid #cbdced; border-radius: 17px; background: white; box-shadow: 0 12px 28px rgba(25,71,117,.1); }
+.statsTabs button { min-width: 0; min-height: 48px; padding: 7px 10px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 11px; color: #54708e; background: transparent; cursor: pointer; font-family: inherit; font-size: 11px; font-weight: 800; }
+.statsTabs button > span { width: 24px; height: 24px; display: grid; place-items: center; border-radius: 8px; background: #edf4fa; font-size: 14px; }
+.statsTabs button > b { min-width: 24px; padding: 4px 7px; border-radius: 999px; color: var(--ink); background: #e6eef7; font-size: 10px; }
+.statsTabs .statsTabActive { color: white; background: var(--ink); box-shadow: 0 7px 16px rgba(8,36,95,.2); }
+.statsTabs .statsTabActive > span, .statsTabs .statsTabActive > b { color: white; background: rgba(255,255,255,.16); }
+
+.statsBreakdown { padding: 28px 30px 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.statsBreakdown > section { min-width: 0; padding: 18px; border: 1px solid #d9e5f1; border-radius: 17px; background: white; }
+.statsBreakdown h3, .statsListHeading h3 { margin: 0 0 14px; font-size: 12px; letter-spacing: -.01em; }
+.yearBubbles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.yearBubbles > div { min-height: 62px; display: grid; place-items: center; align-content: center; gap: 2px; border-radius: 14px; color: var(--ink); background: linear-gradient(145deg, #eff7ff, #e1eefb); }
+.yearBubbles strong { color: var(--blue); font-size: 20px; }
+.yearBubbles span { font-size: 9px; font-weight: 850; }
+.yearBubbles p, .dayChips p { margin: 8px 0; color: var(--muted); font-size: 11px; }
+.dayChips { max-height: 138px; display: flex; flex-wrap: wrap; gap: 7px; overflow: auto; }
+.dayChips > span { padding: 8px 10px; display: inline-flex; align-items: center; gap: 6px; border-radius: 10px; color: #49647f; background: #f0f5fa; font-size: 9px; font-weight: 750; }
+.dayChips b { width: 20px; height: 20px; display: grid; place-items: center; border-radius: 7px; color: white; background: var(--blue); font-size: 9px; }
+.levelCard { min-height: 76px; padding: 14px 16px; display: grid; align-content: center; gap: 5px; border-radius: 14px; background: linear-gradient(135deg, #fff6d8, #ffe9a4); }
+.levelCard strong { font-size: 16px; }
+.levelCard span { color: #765e1d; font-size: 10px; font-weight: 700; }
+
+.statsQuestionList { padding: 0 30px 30px; }
+.statsListHeading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.statsListHeading h3 { margin: 0; }
+.statsListHeading span { padding: 6px 9px; border-radius: 999px; color: #55708c; background: #e8f0f7; font-size: 9px; font-weight: 800; }
+.statsQuestionRow { margin-top: 9px; padding: 12px 14px; display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; align-items: center; gap: 12px; border: 1px solid #dce7f1; border-radius: 14px; background: white; transition: transform .15s, border-color .15s; }
+.statsQuestionRow:hover { border-color: #aac8e2; transform: translateX(2px); }
+.statsQuestionBadge { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; color: white; background: var(--ink); font-size: 12px; font-weight: 900; }
+.statsQuestionRow > div:nth-child(2) { min-width: 0; display: grid; gap: 4px; }
+.statsQuestionRow > div:nth-child(2) strong { overflow: hidden; color: var(--ink); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.statsQuestionRow > div:nth-child(2) small { color: var(--muted); font-size: 9px; }
+.statsQuestionResult { min-width: 130px; display: grid; justify-items: end; gap: 5px; }
+.statsQuestionResult > span { padding: 5px 8px; border-radius: 7px; font-size: 8px; font-weight: 850; }
+.resultGood { color: #087a42; background: #ddf7e9; }
+.resultReview { color: #a63f2e; background: #ffebe5; }
+.resultOpen { color: #155bc4; background: #e5f1ff; }
+.statsQuestionResult time { color: #71869e; font-size: 8px; font-weight: 700; }
+.statsEmpty { min-height: 180px; margin-top: 10px; display: grid; place-items: center; align-content: center; gap: 6px; border: 2px dashed #ccdae8; border-radius: 18px; color: var(--muted); background: white; text-align: center; }
+.statsEmpty > span { color: var(--yellow); font-size: 28px; }
+.statsEmpty strong { color: var(--ink); font-size: 14px; }
+.statsEmpty p { margin: 0; font-size: 10px; }
 
 .dialogBackdrop {
   position: fixed;
@@ -456,6 +517,7 @@
 .questionFigure { min-height: 220px; margin: 28px 0 0; padding: clamp(16px, 2.4vw, 28px); display: grid; place-items: center; border: 2px solid #d9e9f7; border-radius: 18px; background: #fff; }
 .questionImage { width: 100%; height: auto; max-height: 360px; object-fit: contain; pointer-events: none; user-select: none; -webkit-user-drag: none; }
 .answersPanel { min-width: 0; padding-left: clamp(26px, 3.4vw, 46px); border-left: 1px solid #d7e5f1; }
+.answersLocked .options button { cursor: not-allowed; }
 .answersPanel > h2 { margin: 2px 0 18px; font-size: 20px; font-weight: 900; letter-spacing: -.025em; }
 .options { display: grid; gap: 10px; direction: ltr; }
 .options button { min-height: 58px; padding: 9px 14px; display: grid; grid-template-columns: 42px minmax(0, 1fr); align-items: center; gap: 13px; border: 2px solid #d9e4ef; border-radius: 13px; color: var(--ink); background: white; cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 700; line-height: 1.45; text-align: left; direction: ltr; transition: border-color .15s, background .15s, transform .15s, box-shadow .15s; }
@@ -511,6 +573,7 @@
   .stationButton strong { font-size: 16px; }
   .progressPanel { grid-template-columns: 1fr 1fr; }
   .progressMain { grid-column: 1 / -1; }
+  .statsDialog { width: min(820px, 100%); }
   .questionWorkspace { grid-template-columns: 1fr; gap: 30px; }
   .answersPanel { padding: 28px 0 0; border-top: 1px solid #d7e5f1; border-left: 0; }
   .options:not(.visualOptions) { grid-template-columns: 1fr 1fr; }
@@ -548,10 +611,30 @@
   .stationNotice { display: none; }
   .progressPanel { width: calc(100% - 36px); padding: 22px; grid-template-columns: 1fr; gap: 25px; }
   .stats { grid-template-columns: repeat(3, 1fr); }
-  .stats div { padding: 4px 10px; }
-  .stats div:first-child { border-left: 0; }
-  .stats dd { font-size: 23px; }
+  .stats button { padding: 6px 9px; }
+  .stats button:first-child { border-left: 0; }
+  .stats strong { font-size: 23px; }
+  .stats small { display: none; }
   .weaknessButton { width: 100%; }
+  .statsBackdrop { padding: 10px; align-items: end; }
+  .statsDialog { max-height: calc(100svh - 20px); border-radius: 24px 24px 10px 10px; box-shadow: none; }
+  .statsClose { top: 13px; right: 13px; width: 38px; height: 38px; }
+  .statsHero { min-height: 164px; padding: 25px 56px 28px 20px; grid-template-columns: 58px minmax(0, 1fr); gap: 13px; }
+  .statsHeroIcon { width: 58px; height: 58px; border-radius: 18px; font-size: 29px; }
+  .statsHero h2 { font-size: clamp(30px, 10vw, 42px); }
+  .statsHero p { font-size: 10px; }
+  .statsHero > strong { grid-column: 1 / -1; justify-self: end; margin-top: -20px; font-size: 48px; }
+  .statsTabs { margin: -17px 12px 0; gap: 3px; }
+  .statsTabs button { min-height: 46px; padding: 6px 5px; gap: 4px; font-size: 9px; }
+  .statsTabs button > span { display: none; }
+  .statsTabs button > b { min-width: 21px; padding-inline: 5px; }
+  .statsBreakdown { padding: 22px 14px 14px; grid-template-columns: 1fr; gap: 10px; }
+  .statsBreakdown > section { padding: 14px; }
+  .yearBubbles { grid-template-columns: repeat(4, minmax(54px, 1fr)); }
+  .statsQuestionList { padding: 0 14px 20px; }
+  .statsQuestionRow { grid-template-columns: 38px minmax(0, 1fr); gap: 9px; padding: 10px; }
+  .statsQuestionBadge { width: 38px; height: 38px; border-radius: 11px; }
+  .statsQuestionResult { grid-column: 2; min-width: 0; justify-items: start; grid-auto-flow: column; align-items: center; justify-content: start; }
   .dialogBackdrop { padding: 14px; align-items: end; }
   .dialog { max-height: calc(100svh - 28px); padding: 30px 22px 26px; border-radius: 20px 20px 8px 8px; box-shadow: none; }
   .dialogActions { grid-template-columns: 1fr; }
