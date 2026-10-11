@@ -53,11 +53,11 @@ function SectionIcon({ id, className = '' }) {
 }
 
 const TEAR_CASES = [
+  { id: 'horizontal', caseId: 146646, study: 'https://radiopaedia.org/cases/146646/studies/122223', contributor: "Seamus O'Flaherty", sequence: 'Sagittal · PD fat sat', initialFrame: 13, frames: TEAR_CASE_FRAMES.horizontal },
   { id: 'longitudinal', caseId: 59153, study: 'https://radiopaedia.org/cases/59153/studies/66472', contributor: 'Henry Knipe', sequence: 'Sagittal · PD fat sat', initialFrame: 16, frames: TEAR_CASE_FRAMES.longitudinal },
   { id: 'radial', caseId: 160533, study: 'https://radiopaedia.org/cases/160533/studies/131329', contributor: 'Yahya Baba', sequence: 'Axial · PD fat sat', initialFrame: 26, frames: TEAR_CASE_FRAMES.radial },
-  { id: 'horizontal', caseId: 146646, study: 'https://radiopaedia.org/cases/146646/studies/122223', contributor: "Seamus O'Flaherty", sequence: 'Sagittal · PD fat sat', initialFrame: 13, frames: TEAR_CASE_FRAMES.horizontal },
-  { id: 'bucket', caseId: 29250, study: 'https://radiopaedia.org/cases/29250/studies/29664', contributor: 'Muhammad Essam', sequence: 'Sagittal · PD', initialFrame: 15, frames: TEAR_CASE_FRAMES.bucket },
   { id: 'flap', caseId: 17834, study: 'https://radiopaedia.org/cases/17834/studies/17601', contributor: 'Roberto Schubert', sequence: 'Coronal · STIR', initialFrame: 7, frames: TEAR_CASE_FRAMES.flap },
+  { id: 'bucket', caseId: 29250, study: 'https://radiopaedia.org/cases/29250/studies/29664', contributor: 'Muhammad Essam', sequence: 'Sagittal · PD', initialFrame: 15, frames: TEAR_CASE_FRAMES.bucket },
 ]
 
 const CONTENT = {
