@@ -30,10 +30,10 @@ const items = [
     null,
   ]),
   makeItem('flap', L('Parrot-beak-tear (Lappenriss)', 'Parrot-beak tear (flap tear)', 'پارگی لَپی'), L('Teilweise angeheftetes Fragment', 'Partly attached fragment', 'قطعه با اتصال باقی‌مانده'), [
-    L('Ein schräger Radiärriss bildet einen spitzen, teilweise angehefteten Lappen am freien Rand.', 'An oblique radial tear creates a pointed, partly attached flap at the free edge.', 'پارگی شعاعی مایل، لَپی نوک‌تیز با اتصال باقی‌مانده در لبهٔ آزاد ایجاد می‌کند.'),
-    L('Fehlenden Meniskusanteil und verlagertes Fragment suchen, auch in den oberen und unteren Gelenkrecessus.', 'Look for missing meniscal tissue and a displaced fragment, including the superior and inferior joint recesses.', 'بخش مفقود منیسک و قطعهٔ جابه‌جا‌شده را، از جمله در رِسِس‌های فوقانی و تحتانی مفصل، جست‌وجو کنید.'),
-    L('Ein instabiler Lappen kann mechanische Beschwerden verursachen. Behandlung nach Symptomen, Gewebequalität und Reparabilität.', 'An unstable flap can cause mechanical symptoms. Management depends on symptoms, tissue quality and repairability.', 'لَپ ناپایدار می‌تواند علائم مکانیکی ایجاد کند؛ درمان به علائم، کیفیت بافت و قابلیت ترمیم بستگی دارد.'),
-    L('Größe, Ansatz und Dislokationsrichtung. Neben dem Defekt auch die Lage des Fragments dokumentieren.', 'Size, attachment and displacement direction. Document the fragment location as well as the donor defect.', 'اندازه، محل اتصال و جهت جابه‌جایی؛ علاوه بر نقص مبدأ، محل قطعه را هم ذکر کنید.'),
+    L('Schräger Radiärriss mit spitzem, teilweise angeheftetem Lappen am freien Rand.', 'An oblique radial tear with a pointed, partly attached flap at the free edge.', 'پارگی شعاعی مایل با لَپ نوک‌تیز و اتصال باقی‌مانده در لبهٔ آزاد.'),
+    null,
+    L(<><p>Ein instabiler Lappen kann mechanische Beschwerden verursachen.</p><p>Therapie nach Symptomen, Gewebequalität und Reparabilität.</p></>, <><p>An unstable flap can cause mechanical symptoms.</p><p>Management depends on symptoms, tissue quality and repairability.</p></>, <><p>لَپ ناپایدار می‌تواند علائم مکانیکی ایجاد کند.</p><p>درمان به علائم، کیفیت بافت و قابلیت ترمیم بستگی دارد.</p></>),
+    null,
   ]),
   makeItem('bucket', L('Korbhenkelriss (Bucket-handle tear)', 'Bucket-handle tear', 'پارگی دسته‌سطلی'), L('Dislozierter Längsriss', 'Displaced longitudinal tear', 'پارگی طولی جابه‌جا‌شده'), [
     L('Ausgedehnter vertikaler Längsriss mit zentral verlagertem innerem Fragment; dessen Enden bleiben typischerweise angeheftet.', 'An extensive vertical longitudinal tear with a centrally displaced inner fragment, typically attached at its ends.', 'پارگی طولی عمودی وسیع با قطعهٔ داخلی جابه‌جا‌شده به مرکز؛ دو انتهای قطعه معمولاً متصل می‌مانند.'),
