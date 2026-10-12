@@ -6,11 +6,13 @@ The maintained reference implementation lives at **Andarun → Test** (`/andarun
 
 ## 1. One clinical promise per page
 
-The title and opening sentence must say what the learner will be able to do. A lesson starts with the diagnostic task, not with a long definition.
+The title identifies the topic or diagnostic task. Every lesson header must include a generated schematic image specific to that topic. Do not reuse an unrelated topic's image. The schematic remains visible on desktop and mobile and must not overlap the title or controls.
+
+Use the shared `components/LessonHero.jsx` for the header, with a required topic image and translated alt text. It deliberately accepts no subtitle or explanatory text. **Do not add a description beneath the title.** Definitions, clinical promises and introductory explanations belong at the beginning of the first chapter.
 
 ## 2. Orientation before detail
 
-The first viewport contains three things only: the topic, the high-value mental model, and the next action. A persistent learning path shows where the learner is and what remains.
+The first viewport introduces the topic through its title and schematic, followed by the learning actions and progress. The high-value mental model begins in the first chapter. A persistent learning path shows where the learner is and what remains.
 
 Navigation position and learning progress are separate states. Opening or jumping to a later chapter never marks earlier chapters as read; the progress bar advances only after an explicit “mark section as read” action.
 
