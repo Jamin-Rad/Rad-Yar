@@ -3,21 +3,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import AndarunNav from './AndarunNav'
+import { ANDARUN_HOME_GROUPS, ANDARUN_DAILY_ACTIONS } from '@/data/andarunHome'
 import styles from './page.module.css'
-
-const spaces = [
-  { number: '01', title: 'Routine',    description: 'Dein Rhythmus',     href: '/andarun/routine',    theme: 'cobalt', icon: 'sun'       },
-  { number: '02', title: 'ToDos',      description: 'Klar im Blick',       href: '/andarun/todo',       theme: 'coral',  icon: 'check'     },
-  { number: '03', title: 'Termine',    description: 'Zeit bewusst planen', href: '/andarun/termine',    theme: 'lemon',  icon: 'calendar'  },
-  { number: '04', title: 'Deutsch',    description: 'Jeden Tag weiter',    href: '/andarun/deutsch',    theme: 'lemon',  icon: 'type'      },
-  { number: '05', title: 'Gesundheit', description: 'Körper im Blick',     href: '/andarun/gesundheit', theme: 'mint',   icon: 'heart'     },
-  { number: '06', title: 'Finanzen',   description: 'Sicher planen',       action: 'finance',            theme: 'cobalt', icon: 'chart'     },
-  { number: '07', title: 'Dienste',    description: 'Dienstzeiten planen', href: '/andarun/dienste',    theme: 'mint',   icon: 'briefcase' },
-  { number: '08', title: 'Befunde',    description: 'Fälle & Fragen',      href: '/andarun/befunde',    theme: 'coral',  icon: 'file'      },
-  { number: '09', title: 'Test',       description: 'Lernseiten gestalten', href: '/andarun/test',       theme: 'cobalt', icon: 'test'      },
-  { number: '10', title: 'Medikamente', description: 'Einnahme im Blick', href: '/andarun/medikamente', theme: 'mint',   icon: 'pill'      },
-]
 
 const financeSpaces = [
   { title: 'Monatliche Ausgaben', description: 'Einnahmen, Fixkosten und Budgets im Blick.', href: '/andarun/finanz', icon: 'monthly' },
@@ -29,12 +16,12 @@ const financeSpaces = [
 
 function SpaceIcon({ name }) {
   if (name === 'sun') return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="7"/><path d="M24 4v8M24 36v8M4 24h8M36 24h8M10 10l6 6M32 32l6 6M38 10l-6 6M16 32l-6 6"/></svg>
-  if (name === 'check') return <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="7" width="34" height="34" rx="3"/><path d="m15 24 6 6 13-14"/></svg>
-  if (name === 'calendar') return <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="4"/><path d="M15 6v8M33 6v8M7 19h34M15 27h4M24 27h4M33 27h1M15 34h4M24 34h4"/></svg>
-  if (name === 'type') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 12h30M15 36h18M24 12v24"/></svg>
-  if (name === 'heart') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 39S9 30 9 18a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 12-13 21-13 21Z"/><path d="M15 24h6l3-7 4 13 3-6h4"/></svg>
+  if (name === 'check') return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="m15 24 6 6 13-14"/></svg>
+  if (name === 'calendar') return <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="4"/><path d="M15 6v8M33 6v8M7 19h34"/></svg>
+  if (name === 'book') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 11c-5-5-13-5-19-2v30c6-3 14-3 19 2 5-5 13-5 19-2V9c-6-3-14-3-19 2Zm0 0v30"/></svg>
+  if (name === 'heart') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 39S9 30 9 18a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 12-13 21-13 21Z"/></svg>
   if (name === 'pill') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 35a9 9 0 0 1 0-13L24 11a9 9 0 0 1 13 13L26 35a9 9 0 0 1-13 0Z"/><path d="m18 17 13 13"/></svg>
-  if (name === 'kangaroo') return <Image className={styles.kangarooIconAsset} src="/kanguru/kanguru-app-icon.png" alt="" width={96} height={96} />
+  if (name === 'coins') return <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="18" cy="18" rx="12" ry="5"/><path d="M6 18v18c0 7 24 7 24 0V18M6 24c0 7 24 7 24 0M6 30c0 7 24 7 24 0"/><path d="M24 9c0-7 18-7 18 0v19c0 4-7 6-12 5M24 9c0 6 18 6 18 0M30 17c5 1 12-1 12-4M30 25c5 1 12-1 12-4"/></svg>
   if (name === 'briefcase') return <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="14" width="34" height="25" rx="3"/><path d="M18 14v-3a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3M7 24h34M21 24v4h6v-4"/></svg>
   if (name === 'file') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 6h14l8 8v28H14Z"/><path d="M28 6v9h8M19 24h12M19 31h12M19 17h5"/></svg>
   if (name === 'test') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M18 6h12M21 6v11L10 36a4 4 0 0 0 3.5 6h21a4 4 0 0 0 3.5-6L27 17V6"/><path d="M15 31h18M19 26h10"/></svg>
@@ -50,89 +37,73 @@ function FinanceIcon({ name }) {
 }
 
 export default function AndarunLanding() {
-  const [revealedCards, setRevealedCards] = useState(new Set())
   const [financeOpen, setFinanceOpen] = useState(false)
-  const gridRef = useRef(null)
-
-  useEffect(() => {
-    const cards = gridRef.current?.querySelectorAll('[data-ci]') || []
-    const obs = new IntersectionObserver(
-      entries => entries.forEach(e => {
-        if (e.isIntersecting) setRevealedCards(p => new Set([...p, e.target.dataset.ci]))
-      }),
-      { threshold: 0.1 }
-    )
-    cards.forEach(el => obs.observe(el))
-    return () => obs.disconnect()
-  }, [])
+  const financeRef = useRef(null)
 
   useEffect(() => {
     if (!financeOpen) return
     const previousOverflow = document.body.style.overflow
-    const closeOnEscape = event => event.key === 'Escape' && setFinanceOpen(false)
+    const previousFocus = document.activeElement
+    const handleKey = event => {
+      if (event.key === 'Escape') setFinanceOpen(false)
+      if (event.key !== 'Tab') return
+      const elements = financeRef.current?.querySelectorAll('button, a[href]')
+      if (!elements?.length) return
+      const first = elements[0]
+      const last = elements[elements.length - 1]
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus() }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus() }
+    }
     document.body.style.overflow = 'hidden'
-    document.addEventListener('keydown', closeOnEscape)
+    financeRef.current?.querySelector('button')?.focus()
+    document.addEventListener('keydown', handleKey)
     return () => {
       document.body.style.overflow = previousOverflow
-      document.removeEventListener('keydown', closeOnEscape)
+      document.removeEventListener('keydown', handleKey)
+      if (previousFocus instanceof HTMLElement && previousFocus.isConnected) previousFocus.focus()
     }
   }, [financeOpen])
 
   return (
-    <main className={styles.page}>
-      <AndarunNav />
-
-      <section className={styles.hero} aria-labelledby="andarun-title">
-        <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Dein Universum</p>
-          <h1 id="andarun-title">Alles an<br/><em>einem Ort.</em></h1>
-          <Link className={styles.launch} href="#spaces-title">Entdecken <span>↓</span></Link>
+    <main className={styles.page} lang="de" dir="ltr" data-andarun-home>
+      <div className={styles.galaxyArtwork} aria-hidden="true"><Image src="/andarun-galaxy-dashboard.png" alt="" fill sizes="100vw" priority /></div>
+      <div className={styles.shell}>
+        <header className={styles.homeHeader}><Link href="/andarun" aria-label="Andarun Startseite">ANDARUN</Link></header>
+        <section className={styles.welcome} aria-labelledby="andarun-title">
+          <h1 id="andarun-title">Dein persönlicher Raum.</h1>
+          <p>Alles, was dir wichtig ist, an einem Ort.</p>
+        </section>
+        <div className={styles.dashboard}>
+          <section className={styles.dailyPanel} aria-labelledby="today-title">
+            <header className={styles.dailyHeading}><h2 id="today-title">Heute</h2><p>Dein Tag, in deinem Tempo.</p></header>
+            <div className={styles.dailyActions}>
+              {ANDARUN_DAILY_ACTIONS.map(action => <Link key={action.href} href={action.href} aria-label={action.label} className={`${styles.dailyAction} ${styles[action.tone]}`}>
+                <span className={styles.dailyIcon}><SpaceIcon name={action.icon} /></span>
+                <span className={styles.dailyCopy}><h3>{action.title}</h3><p>{action.description}</p></span>
+                <span className={styles.dailyButton}>{action.label}<ChevronIcon /></span>
+              </Link>)}
+            </div>
+          </section>
+          <aside className={styles.directory} aria-labelledby="all-sections-title">
+            <header className={styles.directoryHeading}><h2 id="all-sections-title">Alle Bereiche</h2><p>Deine Module in ANDARUN.</p></header>
+            {ANDARUN_HOME_GROUPS.map(group => <nav key={group.id} className={`${styles.group} ${styles[group.tone]}`} aria-labelledby={`group-${group.id}`}>
+              <h3 id={`group-${group.id}`}>{group.title}</h3>
+              <ul>{group.items.map(item => <li key={item.title}>
+                {item.action === 'finance' ? <button type="button" className={styles.directoryLink} onClick={() => setFinanceOpen(true)} aria-haspopup="dialog" aria-expanded={financeOpen}>
+                  <SpaceIcon name={item.icon}/><span>{item.title}</span><ChevronIcon />
+                </button> : <Link href={item.href} className={`${styles.directoryLink} ${item.tone ? styles[item.tone] : ''}`}>
+                  <SpaceIcon name={item.icon}/><span>{item.title}</span><ChevronIcon />
+                </Link>}
+              </li>)}</ul>
+            </nav>)}
+          </aside>
         </div>
-        <div className={styles.heroArt} aria-hidden="true">
-          <span className={styles.orbitOne} />
-          <span className={styles.orbitTwo} />
-          <span className={styles.coordinate}>47° 22′ 12″</span>
-        </div>
-      </section>
-
-      <section className={styles.workspace} aria-labelledby="spaces-title">
-        <div className={styles.sectionHead}>
-          <div>
-            <p className={styles.eyebrow}>Deine Welten</p>
-            <h2 id="spaces-title">Wähle dein Ziel.</h2>
-          </div>
-          <p>{String(spaces.length).padStart(2, '0')} Module</p>
-        </div>
-
-        <div className={styles.grid} ref={gridRef}>
-          {spaces.map((space, i) => {
-            const CardTag = space.action === 'finance' ? 'button' : Link
-            return <CardTag
-              key={space.title}
-              data-ci={String(i)}
-              className={`${styles.card} ${styles[space.theme]} ${revealedCards.has(String(i)) ? styles.cardVisible : ''}`}
-              style={{ '--delay': `${i * 0.08}s` }}
-              href={space.href}
-              type={space.action === 'finance' ? 'button' : undefined}
-              onClick={space.action === 'finance' ? () => setFinanceOpen(true) : undefined}
-            >
-              <div className={styles.cardTop}>
-                <span className={styles.number}>{space.number}</span>
-                <span className={styles.arrow} aria-hidden="true">↗</span>
-              </div>
-              <div className={styles.icon}><SpaceIcon name={space.icon} /></div>
-              <div className={styles.cardCopy}>
-                <h3>{space.title}</h3>
-                <p>{space.description}</p>
-              </div>
-            </CardTag>
-          })}
-        </div>
-      </section>
+        <footer className={styles.footer}>ANDARUN · PERSONAL SPACE</footer>
+      </div>
 
       {financeOpen ? (
         <div className={styles.financeOverlay} role="presentation" onMouseDown={event => event.target === event.currentTarget && setFinanceOpen(false)}>
-          <section className={styles.financeModal} role="dialog" aria-modal="true" aria-labelledby="finance-dialog-title">
+          <section ref={financeRef} className={styles.financeModal} role="dialog" aria-modal="true" aria-labelledby="finance-dialog-title">
             <div className={styles.financeModalHead}>
               <div>
                 <p>Finanzen</p>
@@ -148,11 +119,11 @@ export default function AndarunLanding() {
                 <Link className={styles.financeChoice} href={item.href} key={item.title}>
                   <span className={styles.financeChoiceIndex}>0{index + 1}</span>
                   <span className={styles.financeChoiceIcon}><FinanceIcon name={item.icon} /></span>
-                  <span className={styles.financeChoiceCopy}>
+                  <span className={styles.financeChoiceCopy} lang={/[\u0600-\u06ff]/.test(item.title) ? 'fa' : 'de'}>
                     <strong>{item.title}</strong>
                     <small>{item.description}</small>
                   </span>
-                  <span className={styles.financeChoiceArrow} aria-hidden="true">↗</span>
+                  <span className={styles.financeChoiceArrow}><ChevronIcon /></span>
                 </Link>
               ))}
             </div>
@@ -160,10 +131,10 @@ export default function AndarunLanding() {
         </div>
       ) : null}
 
-      <footer className={styles.footer}>
-        <p>ANDARUN <span>✦</span> PERSONAL SPACE</p>
-        <span>2026</span>
-      </footer>
     </main>
   )
+}
+
+function ChevronIcon() {
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
 }

@@ -95,7 +95,7 @@ body {
    Vazirmatn auf RTL-Inhalte, aber NICHT auf lang="en"
    (schützt das RADYAR-Wordmark vor Überschreiben)
 ──────────────────────────────────────────────────── */
-[dir="rtl"] *:not([lang="en"]):not([lang="en"] *):not([data-radyar-navbar]):not([data-radyar-navbar] *) {
+[dir="rtl"] *:not([lang="en"]):not([lang="en"] *):not([data-radyar-navbar]):not([data-radyar-navbar] *):not([data-andarun-home]):not([data-andarun-home] *) {
   font-family: var(--font-persian) !important;
   letter-spacing: 0 !important;
   line-height: 1.9;
