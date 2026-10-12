@@ -74,3 +74,18 @@
   .mobilePanel[hidden] { display: none !important; }
 }
 @media print { .mobilePath { display: none; }.page { padding: 0; }.sources { color: #171426; }.sources a { color: #0d7580; } }
+
+/* Short semantic paragraphs keep the same teaching rhythm in all three languages. */
+.page .paragraph { margin: 0 0 14px; color: var(--body); font-size: 15px; line-height: 1.85; }
+.page .paragraph:last-child { margin-bottom: 0; }
+.page [class*='calloutBody'] .paragraph { color: inherit; }
+.teachingList { margin: 0; }
+.teachingList > div { padding: 18px 0; border-bottom: 1px solid var(--line); }
+.teachingList > div:first-child { padding-top: 0; }
+.teachingList > div:last-child { padding-bottom: 0; border-bottom: 0; }
+.teachingList dt { margin-bottom: 8px; color: var(--ink); font-size: 16px; font-weight: 800; line-height: 1.7; }
+.teachingList dd { margin: 0; }
+.page .table .paragraph { font-size: inherit; line-height: inherit; margin-bottom: 10px; }
+.page .table .paragraph:last-child { margin-bottom: 0; }
+.table th:first-child { width: 23%; }
+.table th:nth-child(2) { width: 28%; }
