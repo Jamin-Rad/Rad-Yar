@@ -141,7 +141,7 @@ export default function RobotAssistant() {
   }
 
   return (
-    <div className={styles.wrap} dir={isRTL ? 'rtl' : 'ltr'} data-print-exclude>
+    <div className={styles.wrap} dir={isRTL ? 'rtl' : 'ltr'} data-print-exclude data-radyar-assistant>
       {open && (
         <section className={styles.bubble} id="radyar-assistant-message" aria-label={t.assistant}>
           <button className={styles.closeBtn} onClick={() => {

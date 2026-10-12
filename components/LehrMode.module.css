@@ -122,3 +122,7 @@
   .actionButton,
   .arrowPointer { transition: none; }
 }
+
+:global(html[data-lehr-recording-ready]) .toolbar { top: max(10px, env(safe-area-inset-top)); }
+:global(html[data-lehr-recording-ready]) .modeLabel, :global(html[data-lehr-recording-ready]) .toolButton span { display: none; }
+:global(html[data-lehr-recording-ready]) .toolButton { width: 40px; padding: 0; }

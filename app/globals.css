@@ -82,6 +82,11 @@ html.lehr-mode-active body * { cursor: none !important; }
 html.lehr-mode-active [data-lehr-ui],
 html.lehr-mode-active [data-lehr-ui] * { cursor: auto !important; }
 
+/* Presentation only: privacy dialogs and teaching controls remain accessible. */
+html[data-lehr-recording-ready] [data-radyar-navbar],
+html[data-lehr-recording-ready] [data-radyar-footer],
+html[data-lehr-recording-ready] [data-radyar-assistant] { display: none !important; }
+
 body {
   background: var(--bg);
   color: var(--text);

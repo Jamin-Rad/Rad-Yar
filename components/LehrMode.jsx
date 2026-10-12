@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { useUser } from '@clerk/nextjs'
 import { usePathname } from 'next/navigation'
 import { canonicalUserEmail } from '@/lib/emailIdentity'
+import LehrRecordingTools from './LehrRecordingTools'
 import styles from './LehrMode.module.css'
 
 const ADMIN_EMAIL = 'drbenjaminzia@gmail.com'
@@ -75,6 +76,7 @@ export default function LehrMode() {
   const isAdmin = isLoaded && canonicalUserEmail(user) === ADMIN_EMAIL
   const isExcluded = pathname === '/andarun' || pathname?.startsWith('/andarun/')
   const [active, setActive] = useState(false)
+  const [recordingReady, setRecordingReady] = useState(false)
   const [tool, setTool] = useState('pen')
   const [canUndo, setCanUndo] = useState(false)
   const canvasRef = useRef(null)
@@ -157,6 +159,7 @@ export default function LehrMode() {
 
   const deactivate = useCallback(() => {
     setActive(false)
+    setRecordingReady(false)
     clearAnnotations()
   }, [clearAnnotations])
 
@@ -176,6 +179,14 @@ export default function LehrMode() {
   useEffect(() => {
     if (!isAdmin || isExcluded) deactivate()
   }, [deactivate, isAdmin, isExcluded])
+
+  useEffect(() => { setRecordingReady(false) }, [active, pathname])
+
+  useEffect(() => {
+    if (active && isAdmin && !isExcluded && recordingReady) document.documentElement.dataset.lehrRecordingReady = 'true'
+    else delete document.documentElement.dataset.lehrRecordingReady
+    return () => { delete document.documentElement.dataset.lehrRecordingReady }
+  }, [active, isAdmin, isExcluded, recordingReady])
 
   useEffect(() => {
     function toggleMode() {
@@ -410,6 +421,7 @@ export default function LehrMode() {
         <button type="button" className={styles.actionButton} onClick={undo} disabled={!canUndo} aria-label="Rückgängig" title="Rückgängig (⌘/Ctrl+Z)">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7l-5 5 5 5" /><path d="M5 12h8a6 6 0 0 1 6 6" /></svg>
         </button>
+        <LehrRecordingTools key={pathname} ready={recordingReady} onToggleReady={() => setRecordingReady(value => !value)} />
         <button type="button" className={`${styles.actionButton} ${styles.closeButton}`} onClick={deactivate} aria-label="Lehr-Mode beenden" title="Lehr-Mode beenden">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
         </button>
