@@ -6,6 +6,7 @@ const NON_LESSON_PATH_PREFIXES = [
 ]
 
 const COMPLETED_LESSON_PATHS = new Set([
+  '/gehirn/vaskulaer/caa',
   '/mamma/bildgebung/mammographie/verkalkungen',
   '/msk/knie/meniskus',
   '/thorax/kardio/myokardinfarkt-differentialdiagnosen',

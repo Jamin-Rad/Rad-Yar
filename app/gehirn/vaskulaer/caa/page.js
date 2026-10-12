@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import InProgressBanner from '@/components/InProgressBanner';
 import LessonHero from '@/components/LessonHero';
 import { useLanguage } from '@/providers/LanguageProvider';
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus';
@@ -129,7 +128,7 @@ export default function CAAPage() {
   const activeIndex = CAA_CHAPTERS.findIndex(s => s.id === openId);
   const navItems = () => CAA_CHAPTERS.filter(s => !s.emphasis).map(section => <button type="button" key={section.id} className={openId === section.id ? reference.activeSideItem : ''} aria-current={openId === section.id ? 'location' : undefined} onClick={() => selectSection(section.id)}><span className={reference.sideIcon}><Icon name={section.icon} /></span><strong>{c(section.title)}{readSections.has(section.id) ? <span className={styles.readTick} aria-label={c(COPY.marked)}> ✓</span> : null}</strong></button>);
   return <main className={`${reference.page} ${styles.page}`} data-lesson-progress-managed="true" data-disable-lesson-explorer="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
-    <header className={reference.header}><InProgressBanner lang={lang} /><div className={reference.topline}><nav className={reference.breadcrumb} aria-label={c(L('Seitennavigation', 'Breadcrumb', 'مسیر صفحه'))}><Link href={withLang('/')}>RadYar</Link><span>/</span><Link href={withLang('/lernen/gehirn')}>{c(L('Kopf', 'Head', 'سر'))}</Link><span>/</span><strong>CAA</strong></nav><span className={reference.author}>Dr. Zia</span></div>
+    <header className={reference.header}><div className={reference.topline}><nav className={reference.breadcrumb} aria-label={c(L('Seitennavigation', 'Breadcrumb', 'مسیر صفحه'))}><Link href={withLang('/')}>RadYar</Link><span>/</span><Link href={withLang('/lernen/gehirn')}>{c(L('Kopf', 'Head', 'سر'))}</Link><span>/</span><strong>CAA</strong></nav><span className={reference.author}>Dr. Zia</span></div>
       <LessonHero title={c(COPY.title)} imageSrc="/educational/caa-hero-schematic.webp" imageAlt={c(L('Schema der CAA: oberflächliche Gefäße, lobäre Mikroblutungen und Amyloid in der Gefäßwand', 'CAA schematic: superficial vessels, lobar microbleeds and amyloid in the vessel wall', 'شماتیک CAA: عروق سطحی، میکروخونریزی‌های لوبار و رسوب آمیلوئید در دیواره رگ'))} lang={lang} />
     <div className={reference.actions}><button type="button" className={reference.takeHomeJump} onClick={() => selectSection('takehome')}><Icon name="spark" />{c(CAA_CHAPTERS[5].title)}</button><Link className={reference.primaryAction} href={withLang(`/ueben/quiz?fach=gehirn&n=8&themen=caa&from=${encodeURIComponent(withLang(PATH))}`)}>{c(COPY.mcq)}<Icon name="arrow" /></Link><Link className={reference.secondaryAction} href={withLang(`/flashcards/caa?from=${encodeURIComponent(withLang(PATH))}`)}><Icon name="case" />{c(COPY.flashcards)}</Link></div>
     <div className={reference.progressBar}><div className={reference.progressTrack} role="progressbar" aria-label={c(COPY.path)} aria-valuemin={0} aria-valuemax={CAA_TRACKED_IDS.length} aria-valuenow={readSections.size}><i style={{

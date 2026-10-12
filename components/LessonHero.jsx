@@ -8,7 +8,7 @@ export default function LessonHero({ title, imageSrc, imageAlt, lang = 'de' }) {
     <h1>{title}</h1>
     <div className={styles.visual}>
       <Image src={imageSrc} alt={imageAlt} fill
-        sizes="(max-width: 760px) 130px, (max-width: 1100px) 260px, 360px"
+        sizes="(max-width: 760px) 160px, (max-width: 1100px) 365px, 525px"
         priority data-no-zoom />
     </div>
   </div>

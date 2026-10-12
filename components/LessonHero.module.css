@@ -1,13 +1,16 @@
-.hero { display: grid; grid-template-columns: minmax(0,1fr) minmax(240px,360px); align-items: center; gap: 32px; min-height: 250px; padding-block: 16px 30px; }
+.hero { position: relative; z-index: 0; display: grid; grid-template-columns: minmax(0,1fr) minmax(260px,420px); align-items: center; gap: 32px; min-height: 250px; padding-block: 16px 30px; }
 .hero h1 { margin: 0; color: #faf5fb; font-family: var(--font-newsreader,var(--font-fraunces,Georgia,serif)); font-size: clamp(36px,4.5vw,62px); font-weight: 900; line-height: 1.08; letter-spacing: -.035em; text-wrap: balance; }
-.visual { position: relative; min-width: 0; height: 250px; }
-.visual img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.visual { position: relative; min-width: 0; height: 250px; pointer-events: none; }
+.visual img { display: block; width: 100%; height: 100%; object-fit: contain; transform: translateY(115px) scale(1.25); transform-origin: center bottom; }
+/* Foreground controls cover the lower part of the enlarged schematic. */
+.hero ~ div { position: relative; z-index: 1; }
 .hero[lang='fa'] h1 { font-family: 'Vazirmatn',sans-serif; font-size: clamp(32px,4vw,52px); line-height: 1.5; letter-spacing: 0; }
-@media(max-width:1100px) { .hero { grid-template-columns: minmax(0,1fr) 260px; gap: 24px; }.visual { height: 220px; } }
+@media(max-width:1100px) { .hero { grid-template-columns: minmax(0,1fr) 290px; gap: 24px; }.visual { height: 220px; } }
 @media(max-width:760px) {
-  .hero { grid-template-columns: minmax(0,1fr) 120px; min-height: 155px; gap: 12px; padding-block: 12px 24px; }
+  .hero { grid-template-columns: minmax(0,1fr) 135px; min-height: 155px; gap: 12px; padding-block: 12px 24px; }
   .hero h1 { font-size: clamp(27px,6.5vw,38px); line-height: 1.15; letter-spacing: -.025em; }
   .visual { height: 145px; }
+  .visual img { transform: translateY(18px) scale(1.1); }
   .hero[lang='fa'] h1 { font-size: clamp(25px,6.5vw,34px); line-height: 1.55; }
 }
-@media print { .hero { min-height: 0; grid-template-columns: 1fr 140px; padding: 0; }.visual { height: 110px; }.hero h1 { color: #171426; } }
+@media print { .hero { min-height: 0; grid-template-columns: 1fr 140px; padding: 0; }.visual { height: 110px; }.visual img { transform: none; }.hero h1 { color: #171426; } }
