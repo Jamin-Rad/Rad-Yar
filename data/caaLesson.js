@@ -33,7 +33,11 @@ export const CAA_COPY = {
     ['FLAIR / T2', L('cSAH und spezifische Marklager-Marker prüfen.', 'Check cSAH and specific white matter markers.', 'cSAH و نشانگرهای اختصاصی ماده سفید را بررسی کنید.'), 'vessel'],
     ['Boston v2.0', L('Klinik, Alter und Ausschlusskriterien einbeziehen.', 'Include clinical presentation, age and exclusions.', 'علائم بالینی، سن و معیارهای رد را در نظر بگیرید.'), 'chart'],
   ],
-  amyloid: L('CAA und Alzheimer teilen die β-Amyloid-Pathologie: Gefäßwand bei CAA, parenchymale Plaques bei Alzheimer. Eine CAA bedeutet nicht automatisch Alzheimer.', 'CAA and Alzheimer disease share β-amyloid pathology: vessel walls in CAA, parenchymal plaques in Alzheimer disease. CAA does not automatically mean Alzheimer disease.', 'CAA و آلزهایمر هر دو با β-آمیلوئید مرتبط‌اند: در CAA رسوب در دیواره رگ و در آلزهایمر به‌صورت پلاک پارانشیمی است. وجود CAA به‌تنهایی به معنای آلزهایمر نیست.'),
+  amyloid: [
+    L('CAA und Alzheimer teilen die β-Amyloid-Pathologie:', 'CAA and Alzheimer disease share β-amyloid pathology:', 'CAA و آلزهایمر هر دو با β-آمیلوئید مرتبط‌اند:'),
+    L('Gefäßwand bei CAA, parenchymale Plaques bei Alzheimer.', 'Vessel walls in CAA, parenchymal plaques in Alzheimer disease.', 'در CAA رسوب در دیواره رگ و در آلزهایمر به‌صورت پلاک پارانشیمی است.'),
+    L('Eine CAA bedeutet aber nicht automatisch Alzheimer.', 'However, CAA does not automatically mean Alzheimer disease.', 'اما وجود CAA به‌تنهایی به معنای آلزهایمر نیست.'),
+  ],
   deepWarning: L('Eine tiefe ICH oder Mikroblutung verhindert die MRT-Einstufung als probable oder possible CAA nach Boston v2.0. Sie schließt eine gleichzeitig bestehende CAA jedoch nicht aus.', 'A deep ICH or microbleed prevents an MRI-based classification as probable or possible CAA under Boston v2.0. It does not exclude coexisting CAA.', 'وجود ICH یا میکروخونریزی عمقی مانع طبقه‌بندی MRI به‌عنوان CAA محتمل یا ممکن طبق Boston v2.0 می‌شود؛ اما هم‌زمانی CAA را رد نمی‌کند.'),
   schematic: L('Entscheidend ist die Verteilung, nicht die Zahl der Punkte.', 'Focus on distribution, not the number of dots.', 'به توزیع توجه کنید، نه تعداد نقطه‌ها.'),
   lobar: L('CAA: lobär', 'CAA: lobar', 'CAA: لوبار'),

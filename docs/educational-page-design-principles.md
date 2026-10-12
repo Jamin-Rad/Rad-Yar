@@ -26,6 +26,8 @@ Chapters are identified by their own meaningful icon, not by a visible sequence 
 
 Whenever possible, organise content as a sequence of diagnostic questions. Tables and facts support the path; they do not replace it.
 
+Use short paragraphs to make educational text easy to scan. Keep one idea per paragraph and separate the core statement, explanation and clinical implication, especially in Merke/CAVE callouts. Use semantic `<p>` elements with visible spacing rather than one dense text block or manual line breaks. Preserve the same paragraph structure in German, English and Persian. Emphasise the important sentences without turning every explanation into a heading or a new card.
+
 ## 5. Distinguish knowledge roles visually
 
 Use a small, stable vocabulary of content roles:
