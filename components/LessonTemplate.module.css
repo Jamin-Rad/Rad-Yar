@@ -432,3 +432,10 @@
 /* Restrained handwritten accents shared by the maintained lesson template. */
 .author { composes: handwritten from './LessonTypography.module.css'; font-size: 23px; line-height: 1.4; }
 .calloutLabel { composes: handwritten from './LessonTypography.module.css'; font-size: 25px; font-weight: 600; line-height: 1.35; letter-spacing: 0; text-transform: none; }
+
+
+/* Stable section measurements after accordion switches; allow short final headers to align. */
+.page { padding-bottom: calc(48px + var(--lesson-scroll-room, 0px)); overflow-anchor: none; }
+.section { content-visibility: visible; contain-intrinsic-size: none; overflow-anchor: none; }
+@media (max-width:760px) { .page { padding-bottom: calc(108px + var(--lesson-scroll-room, 0px)); } }
+@media print { .page { padding-bottom: 0; } }

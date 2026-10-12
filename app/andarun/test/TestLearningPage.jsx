@@ -3,6 +3,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import LessonHero from '@/components/LessonHero'
+import LessonTakeHome from '@/components/LessonTakeHome'
+import { useLessonSectionScroll } from '@/hooks/useLessonSectionScroll'
 import { useEffect, useMemo, useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
@@ -29,11 +31,6 @@ function replaceLessonHash(id) {
   window.history.replaceState(null, '', id ? `${baseUrl}#${id}` : baseUrl)
 }
 
-function scrollToLessonSection(id) {
-  requestAnimationFrame(() => requestAnimationFrame(() => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }))
-}
 
 const COPY = {
   title: L('Akuter ischämischer Schlaganfall', 'Acute ischaemic stroke', 'سکته ایسکمیک حاد'),
@@ -263,21 +260,7 @@ function TableLesson({ lang }) {
 }
 
 function TakeHomeSummary({ lang }) {
-  const [openItems, setOpenItems] = useState(() => new Set())
-  const toggleItem = index => setOpenItems(previous => {
-    const next = new Set(previous)
-    if (next.has(index)) next.delete(index)
-    else next.add(index)
-    return next
-  })
-
-  return <ol className={styles.takeHome}>{LESSON_CONTENT['take-home'].points.map((point, index) => {
-    const open = openItems.has(index)
-    return <li key={pick(point.title, lang)} className={open ? styles.takeHomeItemOpen : ''}>
-      <button type="button" aria-expanded={open} aria-controls={`take-home-detail-${index}`} onClick={() => toggleItem(index)}><span className={styles.takeHomePriority}>{String(index + 1).padStart(2, '0')}</span><strong>{pick(point.title, lang)}</strong><i aria-hidden="true">{open ? '−' : '+'}</i></button>
-      <div id={`take-home-detail-${index}`} hidden={!open} className={styles.takeHomeDetail}><p>{pick(point.detail, lang)}</p></div>
-    </li>
-  })}</ol>
+  return <LessonTakeHome points={LESSON_CONTENT['take-home'].points} lang={lang} idPrefix="test-take-home" />
 }
 
 function LessonSources({ lang }) {
@@ -315,6 +298,7 @@ function MobileLearningPath({ lang, openId, readSections, onSelect }) {
 
 export default function TestLearningPage() {
   const { lang } = useLanguage()
+  const scrollToLessonSection = useLessonSectionScroll()
   const [openId, setOpenId] = useState('start')
   const [summaryOpen, setSummaryOpen] = useState(false)
   const [readSections, setReadSections] = usePersistedSectionProgress('andarun-test', TRACKED_SECTION_IDS)
@@ -322,9 +306,9 @@ export default function TestLearningPage() {
 
   useEffect(() => {
     const hash = window.location.hash.slice(1)
-    if (hash === 'take-home') setSummaryOpen(true)
-    else if (TRACKED_SECTION_IDS.includes(hash)) setOpenId(hash)
-  }, [])
+    if (hash === 'take-home') { setSummaryOpen(true); scrollToLessonSection(hash) }
+    else if (TRACKED_SECTION_IDS.includes(hash)) { setOpenId(hash); scrollToLessonSection(hash) }
+  }, [scrollToLessonSection])
 
   const selectSection = id => {
     if (!TRACKED_SECTION_IDS.includes(id)) return
@@ -338,12 +322,10 @@ export default function TestLearningPage() {
     scrollToLessonSection('take-home')
   }
   const toggleSummary = () => {
-    setSummaryOpen(previous => {
-      const next = !previous
-      replaceLessonHash(next ? 'take-home' : openId)
-      if (next) scrollToLessonSection('take-home')
-      return next
-    })
+    const next = !summaryOpen
+    setSummaryOpen(next)
+    replaceLessonHash(next ? 'take-home' : openId)
+    if (next) scrollToLessonSection('take-home')
   }
   const advance = () => selectSection(PATH_SECTIONS[Math.min(activeIndex + 1, PATH_SECTIONS.length - 1)].id)
   const toggleSectionRead = id => setReadSections(previous => { const next = new Set(previous); if (next.has(id)) next.delete(id); else next.add(id); return next })

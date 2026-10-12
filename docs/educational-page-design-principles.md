@@ -61,3 +61,10 @@ Use a restrained handwritten or calligraphic accent for short teaching-note labe
 ## 10. Definition of done
 
 A lesson is ready only when it works in German, English, and Persian; respects RTL; supports keyboard focus; remains readable on mobile; has no horizontal overflow; and its primary interaction has been tested in the browser.
+
+
+## Shared navigation and Take Home implementation
+
+Use `useLessonSectionScroll` for chapter selections and summary jumps. Request the scroll with the state change; the hook aligns the chapter header below the fixed navbar after React commits the new layout. Repeated selections must realign the header, rapid selections must cancel older requests, and selecting a chapter never marks it read.
+
+Take Home uses `LessonTakeHome` and the shared `LessonTemplate.module.css`: numbered takeaway rows with concise titles and individually expandable explanations. Its outer panel opens independently of the active chapter, does not belong to the tracked learning path, and does not advance lesson progress.
