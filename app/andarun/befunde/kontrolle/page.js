@@ -4,7 +4,7 @@ import AndarunNav from '../../AndarunNav'
 import BefundKontrollePage from './BefundKontrollePage'
 
 export const metadata = {
-  title: 'Befundkontrolle · Andarun',
+  title: 'Befundkontrolle · Jaminova',
   description: 'Offene Befundfragen mit Frist, Priorität und Status nachverfolgen',
   robots: { index: false, follow: false },
 }

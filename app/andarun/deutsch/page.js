@@ -4,7 +4,7 @@ import AndarunNav from '../AndarunNav'
 import DeutschPage from './DeutschPage'
 
 export const metadata = {
-  title: 'Andarun Deutschlernen',
+  title: 'Jaminova Deutschlernen',
   description: 'Private Deutschlektionen mit Wiederholung',
   robots: {
     index: false,

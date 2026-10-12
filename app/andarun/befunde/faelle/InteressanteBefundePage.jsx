@@ -187,7 +187,7 @@ export default function InteressanteBefundePage() {
       <div className={styles.shell}>
         <header className={styles.hero}>
           <div>
-            <span className={styles.eyebrow}>ANDARUN / BEFUNDE / WISSENSARCHIV</span>
+            <span className={styles.eyebrow}>JAMINOVA / BEFUNDE / WISSENSARCHIV</span>
             <h1>Interessante Befunde</h1>
             <p>Wichtige Fälle sammeln, Muster festhalten und später gezielt wiederfinden.</p>
           </div>

@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation'
 import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
 import VacationDetail from '../VacationDetail'
 
-export const metadata = { title: 'Urlaub · Andarun', robots: { index: false, follow: false } }
+export const metadata = { title: 'Urlaub · Jaminova', robots: { index: false, follow: false } }
 export const dynamic = 'force-dynamic'
 
 export default async function VacationDetailPage({ params }) {

@@ -1,7 +1,7 @@
 import AndarunLogin from './AndarunLogin'
 
 export const metadata = {
-  title: 'Andarun Login',
+  title: 'Jaminova Login',
   description: 'Private Anmeldung',
   robots: {
     index: false,

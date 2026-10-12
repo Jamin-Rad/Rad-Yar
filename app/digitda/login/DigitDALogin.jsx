@@ -50,7 +50,7 @@ export default function DigitDALogin() {
           <span aria-hidden="true">↖</span>
         </button>
       </form>
-      <Link className={styles.back} href="/andarun">بازگشت به اندرون ←</Link>
+      <Link className={styles.back} href="/andarun">بازگشت به Jaminova ←</Link>
     </main>
   )
 }

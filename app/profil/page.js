@@ -756,8 +756,8 @@ export default function ProfilPage() {
               {isAdmin && (
                 <div className={styles.portalLinks} aria-label="Persönliche Bereiche">
                   <Link href="/andarun" className={styles.portalLinkAndarun}>
-                    <span aria-hidden="true">A</span>
-                    <strong>Andarun</strong>
+                    <span aria-hidden="true">J</span>
+                    <strong>Jaminova</strong>
                     <small>Persönlicher Bereich</small>
                   </Link>
                   <Link href="/admin" className={styles.portalLinkAdmin}>

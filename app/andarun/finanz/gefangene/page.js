@@ -3,7 +3,7 @@ import { hasPrisonerAidSession } from '@/lib/prisonerAidAuth'
 import PrisonerAidPage from './PrisonerAidPage'
 
 export const metadata = {
-  title: 'کمک به زندانیان | Finanzen · Andarun',
+  title: 'کمک به زندانیان | Finanzen · Jaminova',
   robots: { index: false, follow: false },
 }
 

@@ -3,7 +3,7 @@ import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
 import FriendAccountReport from './FriendAccountReport'
 
 export const metadata = {
-  title: 'گزارش گردش حساب | Andarun',
+  title: 'گزارش گردش حساب | Jaminova',
   robots: { index: false, follow: false },
 }
 

@@ -3,8 +3,8 @@
   --home-ink: #f5f3ff;
   --home-muted: #a2badd;
   --home-line: #22324e;
-  --home-display: var(--font-newsreader), Georgia, serif;
-  --home-ui: var(--font-manrope), system-ui, sans-serif;
+  --home-display: var(--font-fraunces), Georgia, serif;
+  --home-ui: var(--font-inter), system-ui, sans-serif;
   min-height: 100svh;
   position: relative;
   overflow-x: clip;
@@ -19,17 +19,16 @@
 .galaxyArtwork img { object-fit: cover; object-position: top right; }
 .shell { position: relative; width: min(1440px, calc(100% - 96px)); margin: 0 auto; }
 .homeHeader { height: 78px; display: flex; align-items: center; padding-inline: 6px; }
-.homeHeader a { color: var(--home-ink); font: 400 28px/1 var(--home-display); letter-spacing: .3em; text-decoration: none; }
-.welcome { padding: 22px 6px 16px; }
-.welcome h1 { margin: 0; font: 400 clamp(40px, 3.95vw, 60px)/1.12 var(--home-display); }
-.welcome p { margin: 12px 0 0; color: var(--home-muted); font: 400 clamp(20px, 1.97vw, 30px)/1.35 var(--home-ui); }
+.homeHeader a { color: var(--home-ink); font: 700 25px/1 var(--home-ui); letter-spacing: .2em; text-decoration: none; }
+.welcome { padding: 22px 6px 30px; }
+.welcome h1 { margin: 0; font: 400 clamp(40px, 3.75vw, 58px)/1.12 var(--home-display); letter-spacing: -.035em; }
+.welcome h1 em { color: #c1d2f6; font-style: italic; font-weight: 400; }
 .blue { --tone: #99bfff; --tone-surface: rgba(127, 168, 235, .11); }
 .coral { --tone: #ff9989; --tone-surface: rgba(239, 136, 118, .11); }
 .mint { --tone: #6fe7df; --tone-surface: rgba(87, 214, 213, .11); }
 .todayPanel { padding: 22px 24px; border: 1px solid #2c4464; border-radius: 10px; background: rgba(11, 21, 42, .84); }
-.todayHeader { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; margin-bottom: 14px; }
-.todayHeader h2 { margin: 0; font: 500 40px/1.1 var(--home-display); }
-.todayHeader p { margin: 2px 0 0; color: var(--home-muted); font: 400 20px/1.35 var(--home-ui); }
+.todayHeader { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 20px; }
+.todayHeader h2 { margin: 0; font: 400 38px/1.15 var(--home-display); letter-spacing: -.03em; }
 .todayTools { display: flex; gap: 24px; align-items: center; }
 .todayTools time { color: var(--home-muted); font: 400 17px/1.5 var(--home-ui); }
 .refreshButton { width: 54px; height: 54px; flex-shrink: 0; display: grid; place-items: center; border: 1px solid #2c4464; border-radius: 10px; color: #99bfff; background: transparent; cursor: pointer; transition: background .2s, border-color .2s; }
@@ -39,7 +38,7 @@
 .todayGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 18px 0; border: 1px solid var(--home-line); border-radius: 10px; background: rgba(7, 16, 34, .5); }
 .todayColumn { min-width: 0; min-height: 206px; display: flex; flex-direction: column; padding: 0 22px; }
 .todayColumn + .todayColumn { border-left: 1px solid #2c3d59; }
-.todayColumn h3 { display: flex; align-items: center; gap: 18px; margin: 0 0 18px; font: 500 30px/1.25 var(--home-display); }
+.todayColumn h3 { display: flex; align-items: center; gap: 18px; margin: 0 0 18px; font: 400 28px/1.25 var(--home-display); letter-spacing: -.025em; }
 .todayColumn h3 svg { width: 40px; height: 40px; flex-shrink: 0; fill: none; stroke: var(--tone); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .summaryBody { min-width: 0; flex: 1; overflow-wrap: anywhere; }
 .emptyText { margin: 0; color: #c7d7f4; font: 400 22px/1.5 var(--home-ui); }
@@ -51,7 +50,7 @@
 .summaryLink:hover svg { transform: translateX(3px); }
 .dutyList, .eventList { margin: 0; padding: 0 6px 0 0; list-style: none; max-height: 240px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #385174 transparent; }
 .dutyList li + li { border-top: 1px solid var(--home-line); margin-top: 12px; padding-top: 12px; }
-.dutyTitle { display: block; font: 550 28px/1.3 var(--home-display); }
+.dutyTitle { display: block; font: 600 26px/1.3 var(--home-ui); letter-spacing: -.025em; }
 .dutyTitle span { font-size: 22px; color: var(--tone); }
 .dutyTime { margin: 5px 0; color: var(--tone); font: 600 19px/1.4 var(--home-ui); }
 .dutyList .muted { font-size: 14px; }
@@ -64,7 +63,7 @@
 .calorieNumbers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .calorieNumbers > div { min-width: 0; display: flex; flex-direction: column; }
 .calorieNumbers > div + div { border-left: 1px solid #2c3d59; padding-left: 22px; }
-.calorieNumbers strong { font: 550 clamp(27px, 2.25vw, 36px)/1 var(--home-display); white-space: nowrap; }
+.calorieNumbers strong { font: 600 clamp(26px, 2.2vw, 34px)/1.12 var(--home-ui); letter-spacing: -.04em; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .calorieNumbers span { margin-top: 2px; color: var(--home-muted); font: 400 17px/1.25 var(--home-ui); }
 .calorieTrack { height: 16px; margin-top: 10px; border: 1px solid #4c6587; border-radius: 20px; background: #101e33; overflow: hidden; }
 .calorieTrack > span { display: block; height: 100%; background: #6fe7df; border-radius: inherit; transition: width .25s; }
@@ -72,11 +71,10 @@
 .nutritionNote { margin: 7px 0 0; color: var(--home-muted); font: 400 13px/1.4 var(--home-ui); }
 .overNote { color: #ff9989; }
 .directory { margin-top: 24px; }
-.directoryHeading h2 { margin: 0; font: 500 36px/1.2 var(--home-display); }
-.directoryHeading p { margin: 0; color: var(--home-muted); font: 400 20px/1.4 var(--home-ui); }
-.moduleGroups { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; margin-top: 10px; }
+.directoryHeading h2 { margin: 0; font: 400 34px/1.2 var(--home-display); letter-spacing: -.025em; }
+.moduleGroups { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; margin-top: 20px; }
 .group { min-width: 0; }
-.group h3 { margin: 0 0 7px; padding-bottom: 5px; border-bottom: 2px solid var(--tone); color: var(--tone); font: 400 21px/1.2 var(--home-display); }
+.group h3 { margin: 0 0 7px; padding-bottom: 9px; border-bottom: 2px solid var(--tone); color: var(--tone); font: 600 18px/1.3 var(--home-ui); letter-spacing: -.02em; }
 .group ul { margin: 0; padding: 0; list-style: none; }
 .directoryLink { width: 100%; min-height: 40px; display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 4px 10px; border: 0; border-bottom: 1px solid var(--home-line); border-radius: 0; color: var(--home-ink); background: transparent; font: 500 14px/1.5 var(--home-ui); text-align: left; text-decoration: none; cursor: pointer; transition: background .2s; }
 .directoryLink:hover { background: #14223a; }
@@ -137,13 +135,11 @@
   .homeHeader { height: 68px; padding-top: env(safe-area-inset-top, 0px); padding-inline: 0; }
   .homeHeader a { font-size: 22px; }
   .welcome { padding: 22px 0 26px; }
-  .welcome h1 { max-width: 360px; font-size: clamp(36px, 9.5vw, 48px); line-height: 1.12; }
-  .welcome p { max-width: 340px; margin-top: 12px; font-size: 18px; line-height: 1.55; }
+  .welcome h1 { max-width: 360px; font-size: clamp(34px, 9vw, 44px); line-height: 1.18; }
   .galaxyArtwork { width: 950px; right: -170px; left: auto; mask-image: linear-gradient(to bottom, #000, transparent 65%); }
   .todayPanel { padding: 20px 12px 12px; }
   .todayHeader { gap: 12px; align-items: flex-start; padding-inline: 4px; margin-bottom: 18px; }
   .todayHeader h2 { font-size: 34px; }
-  .todayHeader p { font-size: 15px; }
   .todayTools { gap: 0; flex-direction: column-reverse; align-items: flex-end; }
   .todayTools time { max-width: 140px; font-size: 12px; text-align: right; margin-top: 8px; }
   .refreshButton { width: 44px; height: 44px; }
@@ -159,13 +155,12 @@
   .eventTime { font-size: 12px; }
   .dutyTitle { font-size: 26px; }
   .dutyTime { font-size: 17px; }
-  .calorieNumbers strong { font-size: clamp(23px, 7vw, 30px); }
+  .calorieNumbers strong { font-size: clamp(20px, 5.9vw, 26px); }
   .calorieNumbers span { font-size: 14px; }
   .directory { margin-top: 28px; }
   .directoryHeading h2 { font-size: 32px; }
-  .directoryHeading p { font-size: 17px; }
   .moduleGroups { grid-template-columns: minmax(0, 1fr); gap: 26px; margin-top: 22px; }
-  .group h3 { font-size: 24px; margin-bottom: 8px; }
+  .group h3 { font-size: 19px; margin-bottom: 8px; }
   .directoryLink { min-height: 48px; font-size: 15px; padding-inline: 6px; gap: 14px; }
   .directoryLink > svg:first-child { width: 28px; height: 28px; }
   .footer { margin-top: 28px; font-size: 8px; letter-spacing: .18em; }

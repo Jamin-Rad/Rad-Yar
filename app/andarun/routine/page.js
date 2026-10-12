@@ -4,7 +4,7 @@ import AndarunNav from '../AndarunNav'
 import RoutinePage from './RoutinePage'
 
 export const metadata = {
-  title: 'Andarun Routine',
+  title: 'Jaminova Routine',
   description: 'Private Routine-Progress',
   robots: {
     index: false,

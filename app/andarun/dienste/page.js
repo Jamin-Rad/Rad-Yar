@@ -4,7 +4,7 @@ import AndarunNav from '../AndarunNav'
 import WorkPage from './WorkPage'
 
 export const metadata = {
-  title: 'Andarun Dienste',
+  title: 'Jaminova Dienste',
   description: 'Dienstzeiten und Dienstplanung',
   robots: {
     index: false,

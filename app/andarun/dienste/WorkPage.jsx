@@ -651,7 +651,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   return (
     <main className={`${styles.page} ${showShifts && !showFindings ? styles.shiftPage : ''} ${showFindings && !showShifts ? styles.findingsPage : ''}`}>
       <header className={styles.header}>
-        {showHomeLink ? <Link href="/andarun" className={styles.back}>← Andarun</Link> : <span />}
+        {showHomeLink ? <Link href="/andarun" className={styles.back}>← Jaminova</Link> : <span />}
         <div>
           {showFindings && !showShifts ? <span className={styles.kicker}>Befunde</span> : null}
           <h1>{showFindings && !showShifts ? 'Befunde' : 'Dienstzeiten'}</h1>

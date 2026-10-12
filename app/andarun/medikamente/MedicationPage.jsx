@@ -567,7 +567,7 @@ export default function MedicationPage({
   profile = DEFAULT_PROFILE,
   appHref = '/andarun/medikamente',
   homeHref = '/andarun',
-  homeLabel = 'اندرون',
+  homeLabel = 'Jaminova',
   storageKey = STORAGE_KEY,
 }) {
   const [clock, setClock] = useState(() => new Date())

@@ -4,7 +4,7 @@ import AndarunNav from '../AndarunNav'
 import WorkPage from '../dienste/WorkPage'
 
 export const metadata = {
-  title: 'Andarun Befunde',
+  title: 'Jaminova Befunde',
   description: 'Befundzeiten erfassen und Tagesarbeitszeit ansehen',
   robots: {
     index: false,

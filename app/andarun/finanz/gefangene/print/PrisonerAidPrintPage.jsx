@@ -112,7 +112,7 @@ export default function PrisonerAidPrintPage({ type, id, autoPrint }) {
     {!error && !state ? <p className={styles.message}>در حال بارگذاری گزارش آنلاین…</p> : null}
     {state && !canPrint ? <p className={styles.message} role="alert">مورد انتخاب‌شده پیدا نشد. به صفحهٔ گزارش برگردید و دوباره انتخاب کنید.</p> : null}
     {canPrint ? <article className={styles.sheet}>
-      <header className={styles.reportHeader}><div><span>Andarun / Finanzen</span><h1>{titles[type]}</h1><p>کمک به زندانیان · اطلاعات ثبت‌شدهٔ آنلاین</p></div><div><strong>تاریخ تهیه</strong><span>{new Date().toLocaleDateString('fa-IR')}</span></div></header>
+      <header className={styles.reportHeader}><div><span>Jaminova / Finanzen</span><h1>{titles[type]}</h1><p>کمک به زندانیان · اطلاعات ثبت‌شدهٔ آنلاین</p></div><div><strong>تاریخ تهیه</strong><span>{new Date().toLocaleDateString('fa-IR')}</span></div></header>
       {type === 'overview' ? <section className={styles.reportSection}><h2>خلاصه</h2><div className={styles.summaryLine}><span>مبلغ مورد نیاز: <strong>{formatToman(summary.needed)}</strong></span><span>کمک ثبت‌شده: <strong>{formatToman(summary.registered)}</strong></span><span>واریز تأییدشده: <strong>{formatToman(summary.confirmed)}</strong></span><span>زندانی تکمیل‌شده: <strong>{summary.complete}</strong></span></div></section> : null}
       {['overview', 'prisoners', 'prisoner'].includes(type) ? <section className={styles.reportSection}><h2>{type === 'prisoner' ? `زندانی شماره ${prisoner.number} · ${prisoner.name}` : 'زندانیان و ماندهٔ نیاز'}</h2>
         <ReportTable headers={['شماره', 'نام', 'مبلغ مورد نیاز', 'کمک ثبت‌شده', 'واریز تأییدشده', 'ماندهٔ نیاز', 'وضعیت']}>

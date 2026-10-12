@@ -4,7 +4,7 @@ import AndarunNav from '../AndarunNav'
 import TodoPage from '../todo/TodoPage'
 
 export const metadata = {
-  title: 'Andarun Termine',
+  title: 'Jaminova Termine',
   description: 'Persoenliche Termine und Kalender',
 }
 

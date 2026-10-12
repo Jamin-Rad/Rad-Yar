@@ -241,7 +241,7 @@ function estimateMacros(food, grams) {
   }
 }
 
-export default function HealthPage({ apiBase = '/api/andarun/health', homeHref = '', homeLabel = 'Andarun' }) {
+export default function HealthPage({ apiBase = '/api/andarun/health', homeHref = '', homeLabel = 'Jaminova' }) {
   const [tab, setTab] = useState('eintragen')
   const [records, setRecords] = useState([])
   const [customSports, setCustomSports] = useState([])
@@ -451,7 +451,7 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
     sugar: Math.max(25, Math.round((dailyKcalTarget * 0.1) / 4)),
     fat: Math.max(35, Math.round((dailyKcalTarget * 0.3) / 9)),
   }
-  const medicationName = homeLabel === 'Fatima' ? 'Mounjaro' : homeLabel === 'Andarun' ? 'Ozempic' : ''
+  const medicationName = homeLabel === 'Fatima' ? 'Mounjaro' : ['Jaminova', 'Andarun'].includes(homeLabel) ? 'Ozempic' : ''
   const todayWeekday = String(new Date(`${TODAY}T12:00:00`).getDay())
   const injectionDueToday = medicationName && caloriePlan.injectionDay === todayWeekday
   const injectionDoneToday = Array.isArray(caloriePlan.injectionDoneDates) && caloriePlan.injectionDoneDates.includes(TODAY)

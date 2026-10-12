@@ -3,7 +3,7 @@ import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
 import MedicationPage from './MedicationPage'
 
 export const metadata = {
-  title: 'داروی من | اندرون',
+  title: 'داروی من | Jaminova',
   description: 'برنامه ساده و خصوصی مصرف دارو',
   robots: { index: false, follow: false },
 }

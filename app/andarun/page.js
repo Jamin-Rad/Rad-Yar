@@ -4,7 +4,7 @@ import AndarunLanding from './AndarunLanding'
 import { berlinNow } from '@/utils/andarunToday'
 
 export const metadata = {
-  title: 'Andarun',
+  title: 'Jaminova',
   description: 'Privater Bereich',
   robots: {
     index: false,

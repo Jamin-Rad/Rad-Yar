@@ -87,7 +87,7 @@ export default function VacationHub() {
     <AndarunNav />
     <div className={styles.shell}>
       <header className={styles.hero}>
-        <div><Link href="/andarun" className={styles.back}>← Zurück zu Andarun</Link><h1>Urlaubsarchiv</h1><p>Alle Reisen und ihre Kosten an einem Ort.</p></div>
+        <div><Link href="/andarun" className={styles.back}>← Zurück zu Jaminova</Link><h1>Urlaubsarchiv</h1><p>Alle Reisen und ihre Kosten an einem Ort.</p></div>
         <div className={styles.heroActions}><span><i />{loaded ? status : 'Wird geladen …'}</span><button type="button" onClick={() => setShowNew(value => !value)}>+ Neuen Urlaub anlegen</button></div>
       </header>
 

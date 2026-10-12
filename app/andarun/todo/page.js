@@ -4,7 +4,7 @@ import AndarunNav from '../AndarunNav'
 import TodoPage from './TodoPage'
 
 export const metadata = {
-  title: 'Andarun ToDo',
+  title: 'Jaminova ToDo',
   description: 'Private tasks',
   robots: {
     index: false,

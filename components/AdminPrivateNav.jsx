@@ -29,7 +29,7 @@ export default function AdminPrivateNav() {
         </Link>
         <Link href="/andarun" className={`${styles.link} ${pathname?.startsWith('/andarun') ? styles.active : ''}`}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3 3 9l9 6 9-6-9-6Z"/><path d="m3 15 9 6 9-6"/><path d="m3 12 9 6 9-6"/></svg>
-          Andarun
+          Jaminova
         </Link>
       </div>
       <button className={styles.logout} onClick={handleLogout}>

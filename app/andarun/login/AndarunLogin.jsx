@@ -37,7 +37,7 @@ export default function AndarunLogin({ nextPath = '/andarun' }) {
       <form className={styles.panel} onSubmit={handleSubmit}>
         <div className={styles.header}>
           <span>Privater Zugang</span>
-          <h1>Andarun</h1>
+          <h1>Jaminova</h1>
         </div>
 
         <label className={styles.passwordField}>

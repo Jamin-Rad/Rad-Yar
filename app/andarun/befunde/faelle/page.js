@@ -4,7 +4,7 @@ import AndarunNav from '../../AndarunNav'
 import InteressanteBefundePage from './InteressanteBefundePage'
 
 export const metadata = {
-  title: 'Interessante Befunde · Andarun',
+  title: 'Interessante Befunde · Jaminova',
   description: 'Interessante und wichtige radiologische Fälle als Wissensarchiv sammeln',
   robots: { index: false, follow: false },
 }

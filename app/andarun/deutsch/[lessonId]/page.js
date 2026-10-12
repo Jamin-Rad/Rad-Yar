@@ -4,7 +4,7 @@ import AndarunNav from '../../AndarunNav'
 import DeutschPage from '../DeutschPage'
 
 export const metadata = {
-  title: 'Andarun Deutschlektion',
+  title: 'Jaminova Deutschlektion',
   description: 'Private Deutschlektion',
   robots: {
     index: false,

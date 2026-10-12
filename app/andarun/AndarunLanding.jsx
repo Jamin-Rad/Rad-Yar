@@ -26,14 +26,13 @@ export default function AndarunLanding({ initialNow }) {
   return <main className={styles.page} lang="de" dir="ltr" data-andarun-home>
     <div className={styles.galaxyArtwork} aria-hidden="true"><Image src="/andarun-galaxy-dashboard.png" alt="" fill sizes="100vw" priority /></div>
     <div className={styles.shell}>
-      <header className={styles.homeHeader}><Link href="/andarun" aria-label="Andarun Startseite">ANDARUN</Link></header>
+      <header className={styles.homeHeader}><Link href="/andarun" aria-label="Jaminova Startseite">JAMINOVA</Link></header>
       <section className={styles.welcome} aria-labelledby="andarun-title">
-        <h1 id="andarun-title">Dein persönlicher Raum.</h1>
-        <p>Alles, was dir wichtig ist, an einem Ort.</p>
+        <h1 id="andarun-title">Dein <em>persönlicher</em> Raum.</h1>
       </section>
       <section className={styles.todayPanel} aria-labelledby="today-title">
         <header className={styles.todayHeader}>
-          <div><h2 id="today-title">Heute</h2><p>Dein Tag, in deinem Tempo.</p></div>
+          <h2 id="today-title">Heute</h2>
           <div className={styles.todayTools}><time dateTime={now.date}>{dateLabel(now.date)}</time>
             <button type="button" onClick={refresh} disabled={loading} aria-label="Tagesübersicht aktualisieren" className={styles.refreshButton}><SpaceIcon name="refresh" /></button>
           </div>
@@ -45,14 +44,14 @@ export default function AndarunLanding({ initialNow }) {
               {duty.start || duty.end ? <p className={styles.dutyTime}>{dutyTime(duty)}</p> : null}
               {duty.assignment ? <p className={styles.muted}>{duty.assignment}</p> : null}
               {duty.note ? <p className={styles.muted} dir="auto">{duty.note}</p> : null}
-            </li>)}</ul> : <><p className={styles.emptyText}>Kein Dienst eingetragen.</p><p className={styles.muted}>Dein Dienstplan bleibt die Quelle.</p></>}
+            </li>)}</ul> : <p className={styles.emptyText}>Kein Dienst eingetragen.</p>}
           </TodayColumn>
           <TodayColumn title="Termine" icon="calendar" tone="coral" href="/andarun/termine" label="Kalender öffnen" status={sources.events.status}>
             {events.length ? <ul className={styles.eventList}>{events.map(event => <li key={event.id}>
               <time className={styles.eventTime}>{event.allDay ? 'Ganztägig' : event.startTime + (event.endTime ? '–' + event.endTime : '')}</time>
               <strong dir="auto">{event.title}</strong>
               {event.itemType === 'holiday' || event.itemType === 'schoolHoliday' ? <small>{event.itemType === 'schoolHoliday' ? 'Schulferien' : 'Feiertag'} · Baden-Württemberg</small> : null}
-            </li>)}</ul> : <><p className={styles.emptyText}>Keine Termine für heute.</p><p className={styles.muted}>Dein Kalender hält dich auf dem Laufenden.</p></>}
+            </li>)}</ul> : <p className={styles.emptyText}>Keine Termine für heute.</p>}
           </TodayColumn>
           <TodayColumn title="Ernährung" icon="food" tone="mint" href="/andarun/gesundheit" label="Gesundheit öffnen" status={sources.health.status}>
             {nutrition ? <NutritionSummary nutrition={nutrition} /> : null}
@@ -60,7 +59,7 @@ export default function AndarunLanding({ initialNow }) {
         </div>
       </section>
       <section className={styles.directory} aria-labelledby="all-sections-title">
-        <header className={styles.directoryHeading}><h2 id="all-sections-title">Alle Bereiche</h2><p>Deine Module in ANDARUN.</p></header>
+        <header className={styles.directoryHeading}><h2 id="all-sections-title">Alle Bereiche</h2></header>
         <div className={styles.moduleGroups}>{ANDARUN_HOME_GROUPS.map(group => <nav key={group.id} className={[styles.group, styles[group.tone]].join(' ')} aria-labelledby={'group-' + group.id}>
           <h3 id={'group-' + group.id}>{group.title}</h3>
           <ul>{group.items.map(item => <li key={item.title}>
@@ -69,7 +68,7 @@ export default function AndarunLanding({ initialNow }) {
           </li>)}</ul>
         </nav>)}</div>
       </section>
-      <footer className={styles.footer}>ANDARUN · DEIN PERSÖNLICHER RAUM</footer>
+      <footer className={styles.footer}>JAMINOVA · DEIN PERSÖNLICHER RAUM</footer>
     </div>
   </main>
 }

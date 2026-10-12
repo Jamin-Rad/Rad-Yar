@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 import TestLearningPage from './TestLearningPage'
 
 export const metadata = {
-  title: 'Test · Lernseiten | Andarun',
+  title: 'Test · Lernseiten | Jaminova',
   description: 'Dauerhafte Testseite für die Gestaltung zukünftiger RadYar-Lernseiten.',
   robots: { index: false, follow: false },
 }

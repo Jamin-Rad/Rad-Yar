@@ -122,7 +122,7 @@ function LoadedAdminLinks() {
       ) : null}
       <FamilyPortalMenu className={styles.portalAndarun} active={pathname?.startsWith('/andarun')}>
         <span className={styles.portalIcon}>{ICONS.andarun}</span>
-        <span className={styles.portalLabel}>Andarun</span>
+        <span className={styles.portalLabel}>Jaminova</span>
       </FamilyPortalMenu>
     </nav>
   )

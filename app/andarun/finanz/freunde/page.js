@@ -4,7 +4,7 @@ import AndarunNav from '../../AndarunNav'
 import FriendsFinancePage from './FriendsFinancePage'
 
 export const metadata = {
-  title: 'حساب‌های مالی دوستان | Andarun',
+  title: 'حساب‌های مالی دوستان | Jaminova',
   description: 'ثبت بدهکاری، بستانکاری و گردش حساب دوستان',
   robots: { index: false, follow: false },
 }

@@ -2084,7 +2084,7 @@ ${manualEntries.length ? `
         )}
         {!iranOnly && <div className={styles.financeHeader}>
           <div className={styles.financeHeroCopy}>
-            <span className={styles.financeEyebrow}>Andarun / Finanzen</span>
+            <span className={styles.financeEyebrow}>Jaminova / Finanzen</span>
             <h1 className={styles.title}>Finanzen</h1>
             <p className={styles.financeHeroText}>Dein Geld. Klar geordnet.</p>
             <FinanceSyncStatus status={syncStatus} />

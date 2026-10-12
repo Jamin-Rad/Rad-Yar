@@ -1,6 +1,8 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import { ANDARUN_HOME_GROUPS } from '../data/andarunHome.js'
+import { ANDARUN_WEB_APPS, getAndarunPwaMetadata } from '../lib/andarunWebApps.js'
 
 test('four groups retain existing modules and expose finance destinations inline', () => {
   const items = ANDARUN_HOME_GROUPS.flatMap(group => group.items)
@@ -21,4 +23,28 @@ test('all module titles are German and prisoner help has no active destination',
   assert.equal(items.some(item => /[\u0600-\u06ff]|ToDos/.test(item.title)), false)
   assert.deepEqual(items.filter(item => item.disabled), [{ title: 'Hilfe für Gefangene', icon: 'people', disabled: true }])
   assert.equal(items.some(item => item.href === '/andarun/finanz/gefangene'), false)
+})
+
+test('Jaminova branding preserves installed app URLs and uses a refreshed manifest', () => {
+  assert.equal(ANDARUN_WEB_APPS.andarun.name, 'Jaminova')
+  assert.equal(ANDARUN_WEB_APPS.andarun.shortName, 'Jaminova')
+  assert.equal(ANDARUN_WEB_APPS.andarun.startUrl, '/andarun')
+  for (const [key, app] of Object.entries(ANDARUN_WEB_APPS)) {
+    assert.ok(app.startUrl.startsWith('/andarun'))
+    assert.equal(app.name.includes('Andarun'), false)
+    assert.equal(getAndarunPwaMetadata(key).manifest, `/andarun/pwa/${key}/manifest.webmanifest?v=3`)
+  }
+})
+
+test('home keeps essential status messages but removes decorative descriptions', () => {
+  const source = readFileSync(new URL('../app/andarun/AndarunLanding.jsx', import.meta.url), 'utf8')
+  const css = readFileSync(new URL('../app/andarun/page.module.css', import.meta.url), 'utf8')
+  assert.ok(source.includes('JAMINOVA'))
+  for (const phrase of ['Alles, was dir wichtig ist, an einem Ort.', 'Dein Tag, in deinem Tempo.', 'Deine Module in ANDARUN.']) {
+    assert.equal(source.includes(phrase), false)
+  }
+  assert.ok(source.includes('Keine Termine für heute.'))
+  assert.ok(source.includes('Kein Dienst eingetragen.'))
+  assert.ok(css.includes('--home-display: var(--font-fraunces)'))
+  assert.ok(css.includes('--home-ui: var(--font-inter)'))
 })

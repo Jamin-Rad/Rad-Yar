@@ -174,7 +174,7 @@ export default function BefundKontrollePage() {
       <div className={styles.shell}>
         <header className={styles.hero}>
           <div className={styles.heroCopy}>
-            <span className={styles.eyebrow}>ANDARUN / BEFUNDE / KONTROLLE</span>
+            <span className={styles.eyebrow}>JAMINOVA / BEFUNDE / KONTROLLE</span>
             <h1>Befundkontrolle</h1>
             <p>Offene Fragen gezielt nachverfolgen, klären und abschließen.</p>
           </div>

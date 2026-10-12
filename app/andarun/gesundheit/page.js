@@ -4,7 +4,7 @@ import HealthPage from '@/app/admin/health/HealthPage'
 import AndarunNav from '../AndarunNav'
 
 export const metadata = {
-  title: 'Andarun Gesundheit',
+  title: 'Jaminova Gesundheit',
   description: 'Private Gesundheit',
   robots: {
     index: false,
@@ -20,7 +20,7 @@ export default async function AndarunHealthPage() {
   return (
     <>
       <AndarunNav />
-      <HealthPage apiBase="/api/andarun/health" homeLabel="Andarun" />
+      <HealthPage apiBase="/api/andarun/health" homeLabel="Jaminova" />
     </>
   )
 }

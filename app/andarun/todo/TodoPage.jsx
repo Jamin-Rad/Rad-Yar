@@ -297,7 +297,7 @@ function displayLane(todo) {
   return LANES.some(lane => lane.id === todo.lane) ? todo.lane : effectiveLane(todo)
 }
 
-export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/andarun', homeLabel = 'Andarun', theme = 'dark', showHomeLink = true, view = 'all' }) {
+export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/andarun', homeLabel = 'Jaminova', theme = 'dark', showHomeLink = true, view = 'all' }) {
   const [todos, setTodos] = useState([])
   const [workShifts, setWorkShifts] = useState([])
   const [workMessage, setWorkMessage] = useState('')
