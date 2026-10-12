@@ -197,6 +197,26 @@
   color: #be185d;
 }
 
+.lightPage .monthHoliday {
+  border-color: rgba(220, 38, 38, .14);
+  background: linear-gradient(135deg, rgba(254, 226, 226, .98), rgba(255, 247, 237, .94));
+  color: #7f1d1d;
+}
+
+.lightPage .monthHoliday strong {
+  color: #dc2626;
+}
+
+.lightPage .monthSchoolHoliday {
+  border-color: rgba(14, 116, 144, .16);
+  background: linear-gradient(135deg, rgba(224, 242, 254, .98), rgba(236, 254, 255, .94));
+  color: #155e75;
+}
+
+.lightPage .monthSchoolHoliday strong {
+  color: #0891b2;
+}
+
 .lightPage .monthEventDone {
   background: rgba(148, 163, 184, .14);
   color: #64748b;
@@ -765,6 +785,68 @@
   white-space: nowrap;
 }
 
+.monthHoliday {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  min-width: 0;
+  padding: 7px 8px;
+  border: 1px solid rgba(248, 113, 113, .18);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(239, 68, 68, .18), rgba(251, 146, 60, .13));
+  color: #fee2e2;
+  cursor: default;
+  text-align: left;
+}
+
+.monthHoliday strong {
+  color: #fca5a5;
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.monthHoliday span {
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.monthSchoolHoliday {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  min-width: 0;
+  padding: 7px 8px;
+  border: 1px solid rgba(56, 189, 248, .22);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(14, 116, 144, .30), rgba(8, 145, 178, .18));
+  color: #cffafe;
+  cursor: default;
+  text-align: left;
+}
+
+.monthSchoolHoliday strong {
+  color: #67e8f9;
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.monthSchoolHoliday span {
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .monthEventDone {
   background: rgba(148,163,184,.14);
   color: rgba(226,232,240,.72);
@@ -860,6 +942,11 @@
 }
 
 .monthCell .monthEvent {
+  order: 3;
+}
+
+.monthCell .monthHoliday,
+.monthCell .monthSchoolHoliday {
   order: 2;
 }
 
@@ -1643,5 +1730,554 @@
 
   .completedItem button {
     width: fit-content;
+  }
+}
+
+/* Refined personal-calendar surface */
+.eventsPage {
+  --calendar-bg: #081321;
+  --calendar-surface: #0d1a2b;
+  --calendar-surface-raised: #122238;
+  --calendar-line: rgba(148, 163, 184, .18);
+  --calendar-text: #f3f7fb;
+  --calendar-muted: #8ea0b8;
+  --calendar-accent: #51e2c2;
+  min-height: calc(100vh - 68px);
+  padding: clamp(30px, 3vw, 44px) clamp(16px, 3vw, 48px) 48px;
+  background:
+    radial-gradient(circle at 50% -18%, rgba(48, 97, 142, .22), transparent 43%),
+    linear-gradient(180deg, #091625 0%, var(--calendar-bg) 100%);
+  color: var(--calendar-text);
+}
+
+.eventsPage .hero {
+  width: min(1440px, 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 22px;
+}
+
+.eventsPage .heroTitle h1 {
+  margin: 0;
+  color: var(--calendar-text);
+  font-family: var(--font-manrope, sans-serif);
+  font-size: clamp(42px, 5vw, 66px);
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: -.055em;
+  line-height: .98;
+  text-shadow: none;
+}
+
+.eventsPage .heroTitle p {
+  margin: 10px 0 0;
+  color: #9eb0c8;
+  font-size: clamp(15px, 1.4vw, 19px);
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+.heroAddBtn {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 22px;
+  border: 1px solid rgba(105, 245, 213, .52);
+  border-radius: 14px;
+  background: linear-gradient(135deg, #62e9cd, #42d7bb);
+  box-shadow: 0 16px 38px rgba(43, 207, 176, .18);
+  color: #052a25;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 900;
+  transition: transform .16s, box-shadow .16s, filter .16s;
+}
+
+.heroAddBtn:hover {
+  filter: brightness(1.04);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 46px rgba(43, 207, 176, .26);
+}
+
+.heroAddBtn:focus-visible,
+.eventsPage .monthControls button:focus-visible,
+.eventsPage .monthNavigation button:focus-visible {
+  outline: 3px solid rgba(81, 226, 194, .28);
+  outline-offset: 3px;
+}
+
+.toolbarIcon {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 auto;
+}
+
+.eventsPage .message {
+  width: min(1440px, 100%);
+  border-color: rgba(245, 158, 11, .25);
+  border-radius: 12px;
+  background: rgba(120, 53, 15, .18);
+}
+
+.eventsPage .monthPanel {
+  width: min(1440px, 100%);
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--calendar-line);
+  border-radius: 20px;
+  background: rgba(13, 26, 43, .93);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .24);
+  backdrop-filter: none;
+}
+
+.eventsPage .monthHeader {
+  min-height: 78px;
+  margin: 0;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--calendar-line);
+}
+
+.monthNavigation {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.eventsPage .monthNavigation h2 {
+  min-width: 0;
+  margin: 0 18px;
+  color: var(--calendar-text);
+  font-family: var(--font-manrope, sans-serif);
+  font-size: clamp(21px, 2.2vw, 29px);
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: -.035em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.eventsPage .monthNavigation button,
+.eventsPage .monthControls button {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 11px;
+  background: #122238;
+  box-shadow: none;
+  color: #dbe6f4;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 0 15px;
+  transition: border-color .15s, background .15s, color .15s, transform .15s;
+}
+
+.eventsPage .monthNavigation button:not(.todayButton) {
+  width: 42px;
+  padding: 0;
+}
+
+.eventsPage .monthNavigation button:hover,
+.eventsPage .monthControls button:hover {
+  border-color: rgba(81, 226, 194, .4);
+  background: #182b44;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.eventsPage .monthNavigation .todayButton {
+  min-width: 70px;
+  width: auto;
+}
+
+.eventsPage .monthControls {
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+.eventsPage .monthControls button {
+  min-width: 0;
+  min-height: 44px;
+  border-radius: 12px;
+  padding: 0 17px;
+}
+
+.eventsPage .monthControls .notificationBtn,
+.eventsPage .monthControls .notificationActive {
+  min-width: 0;
+}
+
+.eventsPage .monthControls .notificationActive {
+  position: relative;
+  border-color: rgba(81, 226, 194, .34);
+  background: rgba(22, 78, 70, .66);
+  color: #d9fff6;
+}
+
+.eventsPage .monthControls .notificationActive::after {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--calendar-accent);
+  box-shadow: 0 0 0 3px rgba(81, 226, 194, .12);
+  content: '';
+}
+
+.eventsPage .notificationHint,
+.eventsPage .workPlanNotice {
+  margin: 0;
+  padding: 13px 20px;
+  border-bottom: 1px solid var(--calendar-line);
+  background: rgba(7, 17, 30, .38);
+  color: var(--calendar-muted);
+  font-size: 11px;
+  font-weight: 650;
+  text-align: right;
+}
+
+.eventsPage .workPlanNotice + .notificationHint {
+  padding-top: 0;
+}
+
+.eventsPage .calendarScroller {
+  scrollbar-color: rgba(81, 226, 194, .38) transparent;
+}
+
+.eventsPage .monthGrid {
+  min-width: 900px;
+  gap: 0;
+}
+
+.eventsPage .weekday {
+  min-height: 42px;
+  display: grid;
+  place-items: center;
+  border-right: 1px solid var(--calendar-line);
+  border-bottom: 1px solid var(--calendar-line);
+  background: rgba(7, 17, 30, .34);
+  color: #a9b8cb;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: none;
+}
+
+.eventsPage .monthCell {
+  min-height: 116px;
+  gap: 7px;
+  padding: 11px;
+  border: 0;
+  border-right: 1px solid var(--calendar-line);
+  border-bottom: 1px solid var(--calendar-line);
+  border-radius: 0;
+  background: rgba(9, 21, 36, .2);
+  box-shadow: none;
+  transition: background .16s, box-shadow .16s;
+}
+
+.eventsPage .monthCell:hover,
+.eventsPage .monthCell:focus-visible {
+  border-color: var(--calendar-line);
+  background: rgba(30, 53, 79, .62);
+  box-shadow: inset 0 0 0 1px rgba(81, 226, 194, .28);
+  transform: none;
+}
+
+.eventsPage .monthCellEmpty,
+.eventsPage .monthCellEmpty:hover,
+.eventsPage .monthCellEmpty:focus-visible {
+  background: rgba(5, 14, 25, .44);
+  box-shadow: none;
+  opacity: .46;
+}
+
+.eventsPage .monthCellToday {
+  z-index: 1;
+  border-color: var(--calendar-line);
+  background: rgba(26, 73, 77, .36);
+  box-shadow: inset 0 0 0 2px var(--calendar-accent);
+}
+
+.eventsPage .monthCellToday::after {
+  display: none;
+}
+
+.eventsPage .monthDay,
+.eventsPage .monthCellToday .monthDay {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: transparent;
+  color: #dce6f3;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.eventsPage .monthCellToday .monthDay {
+  background: var(--calendar-accent);
+  color: #06352e;
+}
+
+.eventsPage .monthEvent,
+.eventsPage .monthHoliday,
+.eventsPage .monthSchoolHoliday,
+.eventsPage .monthWorkBadge {
+  min-height: 42px;
+  border-radius: 10px;
+  padding: 7px 9px;
+}
+
+.eventsPage .monthEvent {
+  border: 1px solid rgba(96, 125, 255, .48);
+  background: linear-gradient(135deg, rgba(57, 77, 153, .52), rgba(38, 53, 111, .62));
+  color: #dce5ff;
+}
+
+.eventsPage .monthEvent strong {
+  color: #9bb5ff;
+  font-size: 10px;
+}
+
+.eventsPage .monthEvent span,
+.eventsPage .monthHoliday span {
+  font-size: 11px;
+}
+
+.eventsPage .monthHoliday {
+  border-color: rgba(244, 89, 126, .54);
+  background: linear-gradient(135deg, rgba(129, 48, 75, .54), rgba(84, 40, 67, .62));
+  color: #ffdce6;
+}
+
+.eventsPage .monthHoliday strong {
+  color: #ff9eb7;
+}
+
+.eventsPage .monthSchoolHoliday {
+  border-color: rgba(56, 189, 248, .42);
+  background: linear-gradient(135deg, rgba(20, 91, 130, .54), rgba(21, 72, 110, .62));
+  color: #d9f4ff;
+}
+
+.eventsPage .monthSchoolHoliday strong {
+  color: #7dd3fc;
+}
+
+.eventsPage .monthWorkBadge {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(240, 171, 51, .48);
+  background: linear-gradient(135deg, rgba(116, 78, 21, .5), rgba(79, 59, 24, .58));
+  color: #ffd67b;
+  font-size: 10px;
+  text-align: left;
+}
+
+.eventsPage .modalBackdrop {
+  background: rgba(3, 9, 18, .78);
+  backdrop-filter: blur(12px);
+}
+
+.eventsPage .detailModal {
+  border: 1px solid rgba(148, 163, 184, .24);
+  border-radius: 20px;
+  background: #0d1828;
+  box-shadow: 0 32px 90px rgba(0, 0, 0, .46);
+}
+
+.eventsPage .modalHeader {
+  border-bottom-color: rgba(148, 163, 184, .18);
+  background: #101d30;
+}
+
+.eventsPage .modalHeader .kicker {
+  color: #7cebd3;
+  font-size: 10px;
+  letter-spacing: .12em;
+}
+
+.eventsPage .modalHeader h2 {
+  margin-top: 5px;
+  color: var(--calendar-text);
+  font-family: var(--font-manrope, sans-serif);
+  font-size: clamp(32px, 5vw, 46px);
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: -.045em;
+  line-height: 1;
+}
+
+.eventsPage .modalClose {
+  border-color: rgba(148, 163, 184, .24);
+  background: #17263b;
+  color: #dce6f3;
+}
+
+.eventsPage .detailForm label {
+  color: #9eacc0;
+}
+
+.eventsPage .detailForm input {
+  border-color: rgba(148, 163, 184, .24);
+  border-radius: 11px;
+  background: #152238;
+  color: #f3f7fb;
+}
+
+.eventsPage .detailForm input:focus {
+  border-color: rgba(81, 226, 194, .62);
+  box-shadow: 0 0 0 4px rgba(81, 226, 194, .12);
+}
+
+.eventsPage .detailAllDayToggle,
+.eventsPage .detailGhostBtn {
+  border-color: rgba(148, 163, 184, .24);
+  border-radius: 11px;
+  background: #152238;
+  color: #dce6f3;
+}
+
+.eventsPage .detailModal .addBtn {
+  border-radius: 11px;
+  background: linear-gradient(135deg, #62e9cd, #42d7bb);
+  box-shadow: 0 14px 34px rgba(43, 207, 176, .16);
+  color: #052a25;
+}
+
+@media (max-width: 820px) {
+  .eventsPage {
+    padding-top: 28px;
+  }
+
+  .eventsPage .hero {
+    align-items: flex-end;
+  }
+
+  .eventsPage .monthHeader {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .eventsPage .monthControls {
+    justify-content: flex-start;
+  }
+
+  .eventsPage .monthControls button {
+    flex: 0 1 auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .eventsPage {
+    padding: 22px 12px max(28px, env(safe-area-inset-bottom, 0px));
+  }
+
+  .eventsPage .hero {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .eventsPage .heroTitle {
+    flex: 1 1 auto;
+  }
+
+  .eventsPage .heroTitle h1 {
+    font-size: 40px;
+  }
+
+  .eventsPage .heroTitle p {
+    margin-top: 6px;
+    font-size: 13px;
+  }
+
+  .heroAddBtn {
+    width: 46px;
+    min-height: 46px;
+    overflow: hidden;
+    padding: 0;
+    color: transparent;
+    font-size: 0;
+  }
+
+  .heroAddBtn .toolbarIcon {
+    color: #052a25;
+  }
+
+  .eventsPage .monthPanel {
+    border-radius: 16px;
+  }
+
+  .eventsPage .monthHeader {
+    gap: 12px;
+    padding: 13px;
+  }
+
+  .eventsPage .monthNavigation {
+    width: 100%;
+  }
+
+  .eventsPage .monthNavigation h2 {
+    flex: 1 1 auto;
+    margin: 0 8px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .eventsPage .monthNavigation button,
+  .eventsPage .monthControls button {
+    min-height: 40px;
+  }
+
+  .eventsPage .monthNavigation .todayButton {
+    display: none;
+  }
+
+  .eventsPage .monthControls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .eventsPage .monthControls button {
+    width: 100%;
+    min-width: 0;
+    padding: 0 8px;
+    font-size: 11px;
+  }
+
+  .eventsPage .notificationHint,
+  .eventsPage .workPlanNotice {
+    padding: 10px 13px;
+    text-align: left;
+  }
+
+  .eventsPage .monthGrid {
+    min-width: 735px;
+  }
+
+  .eventsPage .weekday {
+    min-height: 36px;
+  }
+
+  .eventsPage .monthCell {
+    min-height: 102px;
+    padding: 7px;
   }
 }

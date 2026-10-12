@@ -1,7 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { getBadenWuerttembergCalendarEntriesInRange } from '@/utils/germanPublicHolidays'
+import { parseIcsEvents } from '@/utils/icsImport'
 import styles from './page.module.css'
 
 const STORAGE_KEY = 'andarun_todos_fallback_v1'
@@ -29,7 +31,21 @@ const LANES = [
   },
 ]
 
-const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+function ToolbarIcon({ name }) {
+  const paths = {
+    add: <><path d="M12 5v14M5 12h14" /></>,
+    upload: <><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5" /><path d="M5 14v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4" /></>,
+    bell: <><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" /><path d="M10 21h4" /></>,
+    left: <path d="m15 18-6-6 6-6" />,
+    right: <path d="m9 18 6-6-6-6" />,
+  }
+
+  return (
+    <svg aria-hidden="true" className={styles.toolbarIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      {paths[name]}
+    </svg>
+  )
+}
 
 function makeId() {
   return `local-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
@@ -117,7 +133,7 @@ function eventNotificationId(todo) {
 
 function formatMonthTitle(monthKey) {
   const [year, month] = monthKey.split('-').map(Number)
-  return `${MONTH_LABELS[month - 1]} ${year}`
+  return new Intl.DateTimeFormat('de-DE', { month: 'long', year: 'numeric' }).format(new Date(year, month - 1, 1))
 }
 
 function workDutyLabel(shift) {
@@ -299,6 +315,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   const [draggingId, setDraggingId] = useState(null)
   const [dropLaneId, setDropLaneId] = useState(null)
   const [notificationPermission, setNotificationPermission] = useState('unsupported')
+  const importInputRef = useRef(null)
   const showWorkPlan = apiBase === '/api/andarun/todos'
   const showTodos = view !== 'events'
   const showEvents = view !== 'todos'
@@ -599,7 +616,60 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
     }
   }
 
+  async function importCalendarFile(event) {
+    const file = event.target.files?.[0]
+    event.target.value = ''
+    if (!file) return
+
+    setMessage('')
+    try {
+      const imported = parseIcsEvents(await file.text())
+      const preview = imported.slice(0, 3).map(item => `${item.deadline}${item.eventTime ? ` ${item.eventTime}` : ' ganztägig'} · ${item.title}`).join('\n')
+      const more = imported.length > 3 ? `\n… und ${imported.length - 3} weitere` : ''
+      if (!window.confirm(`${imported.length} Termin(e) importieren?\n\n${preview}${more}`)) return
+
+      setSaving(true)
+      const results = await Promise.all(imported.map(async item => {
+        const note = [item.location ? `Ort: ${item.location}` : '', item.note].filter(Boolean).join('\n')
+        const payload = {
+          ...item,
+          note,
+          lane: laneFromDeadline(item.deadline),
+        }
+        const response = await fetch(apiBase, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        })
+        if (!response.ok) throw new Error(`„${item.title}“ konnte nicht importiert werden.`)
+        return (await response.json()).todo
+      }))
+
+      setTodos(previous => [...results, ...previous])
+      setMonthView(monthKeyFromDate(results[0]?.deadline || imported[0].deadline))
+      setMessage(`${results.length} Termin(e) wurden importiert.`)
+    } catch (error) {
+      setMessage(error.message || 'Die Kalenderdatei konnte nicht importiert werden.')
+    } finally {
+      setSaving(false)
+    }
+  }
+
   const monthDays = useMemo(() => buildMonthDays(monthView), [monthView])
+
+  const calendarMarkersByDate = useMemo(() => {
+    const map = new Map()
+    const entries = getBadenWuerttembergCalendarEntriesInRange(`${monthView}-01`, `${monthView}-31`)
+    for (const item of entries) {
+      const days = item.endDate && item.endDate !== item.date ? datesBetween(item.date, item.endDate) : [item.date]
+      for (const day of days) {
+        if (!day.startsWith(monthView)) continue
+        if (!map.has(day)) map.set(day, [])
+        map.get(day).push(item)
+      }
+    }
+    return map
+  }, [monthView])
 
   const workByDate = useMemo(() => {
     const map = new Map()
@@ -770,26 +840,38 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   const detailTodo = detailId ? todos.find(todo => todo.id === detailId) : null
 
   return (
-    <main className={`${styles.page} ${theme === 'light' ? styles.lightPage : ''}`}>
+    <main className={`${styles.page} ${view === 'events' ? styles.eventsPage : ''} ${theme === 'light' ? styles.lightPage : ''}`}>
       <section className={styles.hero}>
-        {showHomeLink ? <Link href={homeHref} className={styles.backLink}>← {homeLabel}</Link> : <span />}
-        <div>
-          <span className={styles.kicker}>Private Planung</span>
-          <h1>{view === 'events' ? 'Termine' : 'ToDos'}</h1>
-        </div>
-        {showTodos ? <div className={styles.stats}>
+        {showHomeLink && <Link href={homeHref} className={styles.backLink}>← {homeLabel}</Link>}
+        {view === 'events' ? (
+          <div className={styles.heroTitle}>
+            <h1>Termine</h1>
+            <p>Persönlicher Kalender</p>
+          </div>
+        ) : (
+          <div>
+            <span className={styles.kicker}>Private Planung</span>
+            <h1>ToDos</h1>
+          </div>
+        )}
+        {view === 'events' ? (
+          <button className={styles.heroAddBtn} type="button" onClick={() => openNewEvent(todayValue())}>
+            <ToolbarIcon name="add" />
+            Neuer Termin
+          </button>
+        ) : <div className={styles.stats}>
           <span><strong>{stats.open}</strong> offen</span>
           <span><strong>{stats.dueToday}</strong> heute</span>
           <span><strong>{stats.done}</strong> fertig</span>
           <button className={styles.completedToggle} type="button" onClick={() => setCompletedOpen(true)}>
             Archiv
           </button>
-        </div> : <span />}
+        </div>}
       </section>
 
       {message && <div className={styles.message}>{message}</div>}
 
-      <section className={styles.composer}>
+      {showTodos && <section className={styles.composer}>
         <form onSubmit={createTodo} className={styles.form}>
           <label className={styles.titleField}>
             {view === 'events' ? 'Termin' : 'Aufgabe'}
@@ -866,7 +948,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
             </button>
           </div>
         </form>
-      </section>
+      </section>}
 
       {showTodos && <section className={styles.board} aria-label="ToDo board">
         {LANES.map(lane => (
@@ -932,22 +1014,37 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
 
       {showEvents && <section className={styles.monthPanel} aria-label="Termin month view">
         <header className={styles.monthHeader}>
-          <div>
-            <span className={styles.kicker}>Termine</span>
+          <div className={styles.monthNavigation}>
+            <button type="button" onClick={() => setMonthView(prev => shiftMonth(prev, -1))} aria-label="Vorheriger Monat">
+              <ToolbarIcon name="left" />
+            </button>
+            <button type="button" onClick={() => setMonthView(prev => shiftMonth(prev, 1))} aria-label="Nächster Monat">
+              <ToolbarIcon name="right" />
+            </button>
             <h2>{formatMonthTitle(monthView)}</h2>
+            <button className={styles.todayButton} type="button" onClick={() => setMonthView(monthKeyFromDate())}>Heute</button>
           </div>
           <div className={styles.monthControls}>
+            <input
+              ref={importInputRef}
+              type="file"
+              accept="text/calendar,.ics"
+              onChange={importCalendarFile}
+              hidden
+            />
+            <button type="button" onClick={() => importInputRef.current?.click()} disabled={saving}>
+              <ToolbarIcon name="upload" />
+              .ics importieren
+            </button>
             <button
               className={notificationPermission === 'granted' ? styles.notificationActive : styles.notificationBtn}
               type="button"
               onClick={requestEventNotifications}
               disabled={notificationPermission === 'unsupported'}
             >
-              {notificationPermission === 'granted' ? 'Benachrichtigung an' : 'Benachrichtigung'}
+              <ToolbarIcon name="bell" />
+              {notificationPermission === 'granted' ? 'Erinnerungen an' : 'Erinnerungen'}
             </button>
-            <button type="button" onClick={() => setMonthView(prev => shiftMonth(prev, -1))} aria-label="Previous month">‹</button>
-            <button type="button" onClick={() => setMonthView(monthKeyFromDate())}>Today</button>
-            <button type="button" onClick={() => setMonthView(prev => shiftMonth(prev, 1))} aria-label="Next month">›</button>
           </div>
         </header>
 
@@ -969,6 +1066,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
           ))}
           {monthDays.map((day, index) => {
             const events = day ? eventsByDate.get(day) || [] : []
+            const calendarMarkers = day ? calendarMarkersByDate.get(day) || [] : []
             const shift = day ? workByDate.get(day) : null
             const isToday = day === todayValue()
             return (
@@ -992,6 +1090,16 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                     {workDutyLabel(shift)}
                   </span>
                 )}
+                {calendarMarkers.map(marker => (
+                  <span
+                    className={marker.itemType === 'schoolHoliday' ? styles.monthSchoolHoliday : styles.monthHoliday}
+                    title={marker.itemType === 'schoolHoliday' ? 'Schulferien in Baden-Württemberg' : 'Gesetzlicher Feiertag in Baden-Württemberg'}
+                    key={marker.id}
+                  >
+                    <strong>{marker.itemType === 'schoolHoliday' ? 'Schulferien' : 'Feiertag'}</strong>
+                    <span>{marker.title}</span>
+                  </span>
+                ))}
                 {events.map(event => (
                   <button
                     className={`${styles.monthEvent} ${event.done ? styles.monthEventDone : ''}`}
