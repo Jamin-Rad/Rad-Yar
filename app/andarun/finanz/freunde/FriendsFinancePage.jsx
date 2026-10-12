@@ -1,17 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { FRIEND_ACCOUNTS } from '@/utils/financeState'
 import styles from './friendsFinance.module.css'
 
 const STORAGE_KEY = 'andarun_friend_accounts_v1'
 
-const ACCOUNTS = [
-  { id: 'zia', name: 'خانواده ضیا', initials: 'ض' },
-  { id: 'ebrahimi', name: 'خانواده ابراهیمی نسب', initials: 'ا' },
-  { id: 'mansour', name: 'خانواده منصور مقدم', initials: 'م' },
-  { id: 'amirmohammad', name: 'امیرمحمد ابراهیمی نسب', initials: 'ا' },
-]
+const ACCOUNTS = FRIEND_ACCOUNTS
 
 const EMPTY_FORM = {
   payer: 'me',
@@ -96,6 +92,10 @@ export default function FriendsFinancePage() {
   const [error, setError] = useState('')
   const [syncStatus, setSyncStatus] = useState('loading')
   const [syncError, setSyncError] = useState('')
+  const remoteVersion = useRef(null)
+  const remoteBase = useRef({})
+  const remoteWritesEnabled = useRef(false)
+  const skipRemoteSave = useRef(false)
 
   useEffect(() => {
     let cancelled = false
@@ -110,6 +110,10 @@ export default function FriendsFinancePage() {
       })
       .then(data => {
         if (cancelled) return
+        remoteVersion.current = data.updatedAt ?? null
+        remoteBase.current = data.state || {}
+        remoteWritesEnabled.current = true
+        skipRemoteSave.current = Boolean(data.state)
         if (data?.state && typeof data.state === 'object') setLedger(data.state)
         setSyncStatus('saved')
         setSyncError('')
@@ -127,18 +131,29 @@ export default function FriendsFinancePage() {
   useEffect(() => {
     if (!ready) return
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(ledger))
+    if (!remoteWritesEnabled.current) return
+    if (skipRemoteSave.current) { skipRemoteSave.current = false; return }
     const controller = new AbortController()
     setSyncStatus('saving')
     const timeout = window.setTimeout(() => {
       fetch('/api/andarun/friend-finance', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ state: ledger }),
+        body: JSON.stringify({ state: ledger, expectedUpdatedAt: remoteVersion.current, baseState: remoteBase.current }),
         signal: controller.signal,
       })
         .then(async response => {
           const data = await response.json().catch(() => ({}))
           if (!response.ok || !data.online) throw new Error(data.error || 'ذخیره آنلاین انجام نشد.')
+          // Keep the persisted version even if the browser edited again while
+          // the request was in flight; the next save uses the same merge base.
+          remoteVersion.current = data.updatedAt ?? remoteVersion.current
+          remoteBase.current = data.state || ledger
+          if (controller.signal.aborted) return
+          if (data.state && JSON.stringify(data.state) !== JSON.stringify(ledger)) {
+            skipRemoteSave.current = true
+            setLedger(data.state)
+          }
           setSyncStatus('saved')
           setSyncError('')
         })

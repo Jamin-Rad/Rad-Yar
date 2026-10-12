@@ -43,4 +43,25 @@ details, and then call `add_personal_calendar_event`.
 - `add_personal_calendar_event`: creates one event after the date and time are
   clear. Duplicate events with the same title, date, and time are not recreated.
 
-There are deliberately no update or delete tools in the first version.
+There are deliberately no update or delete tools.
+
+## Personal finance and friends accounts
+
+The same endpoint also exposes four finance tools. No new URL or token is needed:
+
+- `list_personal_finance_entries`: recorded monthly income/expenses and existing categories (EUR). Totals exclude projected recurring charges and vacation ledgers.
+- `add_personal_finance_entry`: record one EUR income/expense in `/andarun/finanz`.
+- `list_friend_finance_entries`: actual account names/IDs, entries, and all-time balances in `/andarun/finanz/freunde`.
+- `add_friend_finance_entry`: record one shared expense or an explicitly requested repayment. `me` means the user paid; `them` means the other party paid. EUR, rial and toman are accepted. Rial/toman entries require the transaction's exchange rate in the SAME stated unit per EUR. Toman converts to rial for website compatibility.
+
+These tools only record ledger entries; they cannot move funds, pay a bill, delete entries, automatically settle an account or change budgets/categories. Each write requires a unique `requestId`, reused on retries only, to prevent duplicate recordings. Missing or ambiguous details must be clarified first. Concurrent writes use an atomic version check and retry; website edits preserve remotely added entries.
+
+After deployment, refresh the **Personal Calendar — ChatGPT** connection in ChatGPT settings to discover the four new tools, and test from a new conversation. The earlier standalone **Personal Calendar** package is desktop-only; creating that package did not register the MCP with ChatGPT web.
+
+Examples:
+
+> امروز ۳۴٫۵۰ یورو از Aldi خرید کردم؛ در هزینه‌های شخصی، دستهٔ Lebensmittel ثبت کن.
+
+> امروز ۵۰ یورو برای خانوادهٔ منصور مقدم پرداخت کردم؛ در حساب دوستان با شرح خرید مشترک ثبت کن.
+
+First test with a typed or dictated message. Live Voice execution must be checked in the user's ChatGPT client; successful text execution alone does not prove live Voice support.

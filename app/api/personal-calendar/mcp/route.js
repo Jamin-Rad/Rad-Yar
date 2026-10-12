@@ -3,6 +3,7 @@ import { WebStandardStreamableHTTPServerTransport } from '@modelcontextprotocol/
 import { z } from 'zod'
 import { safeEqual } from '@/lib/adminAuth'
 import { createPersonalCalendarEvent, listPersonalCalendarEvents } from '@/lib/personalCalendar'
+import { addFriendFinanceEntry, addPersonalFinanceEntry, listFriendFinanceEntries, listPersonalFinanceEntries } from '@/lib/personalFinance'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -42,10 +43,10 @@ function errorResult(message) {
 
 function buildServer() {
   const server = new McpServer(
-    { name: 'personal-calendar', version: '1.0.0' },
+    { name: 'personal-calendar', version: '1.1.0' },
     {
       instructions:
-        'Use this private calendar when the user says “add this to my personal calendar”, “به تقویم شخصی اضافه کن”, or an equivalent phrase. Resolve relative dates in Europe/Berlin. Before calling add_personal_calendar_event, make sure the user has clearly provided or confirmed the title, exact date, and time (or all-day status). Never guess an ambiguous date or time.',
+        'Use this private calendar when the user says “add this to my personal calendar”, “به تقویم شخصی اضافه کن”, or an equivalent phrase. Resolve relative dates in Europe/Berlin. Before calling add_personal_calendar_event, make sure the user has clearly provided or confirmed the title, exact date, and time (or all-day status). Never guess an ambiguous date or time. Finance tools record transactions in the monthly personal budget or the separate friends ledger. Never transfer money. Confirm missing or ambiguous amounts, currency, date, account and payment direction before recording. The monthly budget is EUR only. For friends distinguish rial from toman and ask for the exchange rate instead of estimating it. Generate one unique requestId per financial entry and reuse it only when retrying the same entry. Never record the same payment in both ledgers unless explicitly requested.',
     }
   )
 
@@ -109,6 +110,53 @@ function buildServer() {
       }
     }
   )
+
+  const financeReply = async (operation, args) => {
+    try {
+      const result = await operation(args)
+      return { structuredContent: result, content: [{ type: 'text', text: JSON.stringify(result) }] }
+    } catch (error) { return errorResult(error.message) }
+  }
+  const requestId = z.string().regex(/^[a-zA-Z0-9_-]{8,80}$/).describe('Generate a unique id for this recording, e.g. a UUID. Reuse the exact id on retries of this transaction only.')
+  const amount = z.number().finite().positive().describe('Positive amount explicitly provided by the user. Never guess.')
+  const readOnly = { readOnlyHint: true, destructiveHint: false, openWorldHint: false }
+  const recordOnly = { readOnlyHint: false, destructiveHint: false, openWorldHint: false }
+
+  server.registerTool('list_personal_finance_entries', {
+    title: 'Read personal income and expenses',
+    description: 'Use to read recorded monthly budget transactions and the existing categories in Finanzen/دخل‌وخرج شخصی. Totals exclude projected recurring items and vacation accounts. Dates are Gregorian Europe/Berlin.',
+    inputSchema: { from: dateSchema, to: dateSchema }, annotations: readOnly,
+  }, args => financeReply(listPersonalFinanceEntries, args))
+
+  server.registerTool('add_personal_finance_entry', {
+    title: 'Record personal income or expense',
+    description: 'Record ONE income or expense in the personal monthly budget when the user asks to save it, including by speech/dictation. Requires clear amount, EUR currency, title and date. Read existing categories before specifying a category; leave uncategorized only when the user accepts that. Do not use for a friend debt or transfer real money. Ask about ambiguous details before calling.',
+    inputSchema: {
+      requestId, type: z.enum(['income', 'expense']), amount,
+      currency: z.literal('eur').describe('The monthly budget stores euros only.'),
+      title: z.string().trim().min(1).max(240), date: dateSchema,
+      category: z.string().trim().max(120).optional().describe('Exact existing category name of the matching income/expense type. Do not invent.'),
+      note: z.string().trim().max(500).optional(),
+      paidByFatima: z.boolean().default(false).describe('True only if the user explicitly says Fatima paid this personal expense.'),
+    }, annotations: recordOnly,
+  }, args => financeReply(addPersonalFinanceEntry, args))
+
+  server.registerTool('list_friend_finance_entries', {
+    title: 'Read friends accounts and balances',
+    description: 'Use for حساب‌های دوستان/Freunde. Returns the actual account ids and names, ledger entries and balances in EUR and RIAL. Positive balance means money owed to the user. Use it to resolve the person before recording. Optional date range filters entries, not the full balances.',
+    inputSchema: { accountId: z.string().optional(), from: dateSchema.optional(), to: dateSchema.optional() }, annotations: readOnly,
+  }, args => financeReply(listFriendFinanceEntries, args))
+
+  server.registerTool('add_friend_finance_entry', {
+    title: 'Record a friend payment or receipt',
+    description: 'Record ONE shared expense/payment/receipt in a selected friends ledger. Read accounts first and use the actual accountId; clarify similar names. payer=me means the user paid and increases their credit; payer=them means the other party paid and reduces their credit. Requires explicit amount, currency, date, note and direction. For IRR or toman, ask for the rate per 1 EUR in that SAME unit; do not invent or use today’s rate. kind=settlement only for explicitly stated debt repayment. This only records an entry; it never transfers money or automatically settles a balance.',
+    inputSchema: {
+      requestId, accountId: z.string().min(1), payer: z.enum(['me', 'them']), amount,
+      currency: z.enum(['eur', 'irr', 'toman']),
+      rate: z.number().finite().positive().optional().describe('Required for irr/toman: how many units of the stated currency equal 1 EUR at this transaction.'),
+      date: dateSchema, note: z.string().trim().min(1).max(500), kind: z.enum(['expense', 'settlement']),
+    }, annotations: recordOnly,
+  }, args => financeReply(addFriendFinanceEntry, args))
 
   return server
 }

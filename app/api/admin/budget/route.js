@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/adminAuth'
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
+import { readFinanceState, writeFinanceState } from '@/utils/financeState'
 
 const BUDGET_ID = 'default'
 
@@ -58,45 +59,20 @@ export async function PUT(request) {
 
   const { store, recurring, catBudgets, categories, expectedUpdatedAt } = body
 
-  if (Object.prototype.hasOwnProperty.call(body, 'expectedUpdatedAt')) {
-    const { data: current, error: versionError } = await supabaseAdmin
-      .from('admin_budget_state')
-      .select('updated_at')
-      .eq('id', BUDGET_ID)
-      .maybeSingle()
-
-    if (versionError) {
-      console.error('[admin-budget] version check failed', versionError)
-      return NextResponse.json({ error: versionError.message }, { status: 500 })
+  try {
+    const snapshot = await readFinanceState(supabaseAdmin, 'budget')
+    if (Object.prototype.hasOwnProperty.call(body, 'expectedUpdatedAt') && snapshot.updatedAt !== (expectedUpdatedAt ?? null)) {
+      return NextResponse.json({ error: 'Die Online-Daten wurden inzwischen geändert.', code: 'BUDGET_VERSION_CONFLICT', updatedAt: snapshot.updatedAt }, { status: 409 })
     }
-
-    const currentVersion = current?.updated_at ?? null
-    const clientVersion = expectedUpdatedAt ?? null
-    if (currentVersion !== clientVersion) {
-      return NextResponse.json({
-        error: 'Die Online-Daten wurden inzwischen auf einem anderen Gerät geändert.',
-        code: 'BUDGET_VERSION_CONFLICT',
-        updatedAt: currentVersion,
-      }, { status: 409 })
-    }
-  }
-
-  const updatedAt = new Date().toISOString()
-
-  const { error } = await supabaseAdmin
-    .from('admin_budget_state')
-    .upsert({
-      id: BUDGET_ID,
+    const updatedAt = await writeFinanceState(supabaseAdmin, snapshot, {
       store: store && typeof store === 'object' ? store : {},
       recurring: Array.isArray(recurring) ? recurring : [],
       cat_budgets: catBudgets && typeof catBudgets === 'object' ? catBudgets : {},
       categories: Array.isArray(categories) ? categories : [],
-      updated_at: updatedAt,
-    }, { onConflict: 'id' })
-
-  if (error) {
+    })
+    return NextResponse.json({ ok: true, updatedAt })
+  } catch (error) {
     console.error('[admin-budget] PUT failed', error)
-    return NextResponse.json({ error: error.message }, { status: 500 })
+    return NextResponse.json({ error: error.message, ...(error.status === 409 ? { code: 'BUDGET_VERSION_CONFLICT' } : {}) }, { status: error.status || 500 })
   }
-  return NextResponse.json({ ok: true, updatedAt })
 }
