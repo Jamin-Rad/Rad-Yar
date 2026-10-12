@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import { useLessonSectionScroll } from '@/hooks/useLessonSectionScroll';
 import LessonTakeHome from '@/components/LessonTakeHome';
+import { VesselExplorer, MarkerAtlas, WhiteMatterMarkers, TFNETimeline, BostonExplorer, PatternExplorer } from '@/components/CAALearningTools';
+import { CAA_INTERACTION_COPY } from '@/data/caaInteractions';
 import Link from 'next/link';
 import LessonHero from '@/components/LessonHero';
 import { useLanguage } from '@/providers/LanguageProvider';
@@ -56,12 +58,6 @@ function Table({
 }) {
   return <div className={styles.tableScroll} role="region" aria-label={pick(headers[0], lang)} tabIndex={0}><table className={styles.table}><thead><tr>{headers.map((cell, i) => <th scope="col" key={i}>{pick(cell, lang)}</th>)}</tr></thead><tbody>{rows.map((row, i) => <tr key={i}>{row.map((cell, j) => j === 0 ? <th scope="row" key={j}>{pick(cell, lang)}</th> : <td key={j}>{Array.isArray(cell) ? <Paragraphs values={cell} lang={lang} /> : pick(cell, lang)}</td>)}</tr>)}</tbody></table></div>;
 }
-function DistributionDiagram({
-  lang
-}) {
-  const dots = [[65, 40], [45, 62], [34, 88], [32, 117], [45, 145], [65, 161], [155, 40], [175, 62], [186, 88], [188, 117], [175, 145], [155, 161]];
-  return <figure className={styles.diagram}><div className={styles.brains}>{[false, true].map(deep => <div key={String(deep)}><svg viewBox="0 0 220 190" role="img" aria-label={pick(deep ? COPY.deep : COPY.lobar, lang)} data-no-zoom><path d="M105 23C82 12 58 25 52 42C27 44 19 65 26 81C10 98 18 121 30 129C25 153 45 177 64 170C79 187 100 174 105 164ZM115 23C138 12 162 25 168 42C193 44 201 65 194 81C210 98 202 121 190 129C195 153 175 177 156 170C141 187 120 174 115 164Z" fill="var(--canvas)" stroke="var(--muted)" strokeWidth="2" /><g fill="none" stroke="var(--line)" strokeWidth="2" strokeLinecap="round"><path d="M60 49q20-12 29 4M42 79q16-13 28 2M37 108q18-10 30 3M48 143q19-11 36 4M160 49q-20-12-29 4M178 79q-16-13-28 2M183 108q-18-10-30 3M172 143q-19-11-36 4M88 71q-18 22 2 44M132 71q18 22-2 44" /></g>{(deep ? [[87, 90], [90, 111], [133, 90], [130, 111]] : dots).map(([cx, cy], i) => <circle key={i} cx={cx} cy={cy} r={deep ? 6 : 4.5} fill={deep ? 'var(--teal-700)' : 'var(--plum-800)'} />)}</svg><strong>{pick(deep ? COPY.deep : COPY.lobar, lang)}</strong></div>)}</div><figcaption>{pick(COPY.schematic, lang)}</figcaption></figure>;
-}
 function Paragraphs({ values, lang, lead = false }) {
   return values.map((value, index) => <p key={index} className={lead && index === 0 ? reference.lead : styles.paragraph}>{pick(value, lang)}</p>);
 }
@@ -75,21 +71,23 @@ function ChapterContent({ id, lang }) {
   const c = value => pick(value, lang);
   if (id === 'grundlagen') return <>
     <Paragraphs values={COPY.basics} lang={lang} lead />
+    <VesselExplorer lang={lang} />
     <h3 className={styles.subheading}>{c(COPY.backgroundTitle)}</h3>
     <TeachingList items={COPY.background} lang={lang} />
     <Note warning lang={lang}>{COPY.amyloid.map((paragraph, index) => <p className={styles.caveParagraph} key={index}><strong>{c(paragraph)}</strong></p>)}</Note>
     <h3 className={styles.subheading}>{c(COPY.workflowTitle)}</h3>
     <ol className={`${reference.workflow} ${styles.workflow}`}>{COPY.workflow.map(([title, text, icon]) => <li key={c(title)}><span className={reference.stepIcon}><Icon name={icon} /></span><strong>{c(title)}</strong><p>{c(text)}</p></li>)}</ol>
-    <div className={styles.pattern}><DistributionDiagram lang={lang} /><Note warning lang={lang}><Paragraphs values={[COPY.deepWarning]} lang={lang} /></Note></div>
+    <Note warning lang={lang}><Paragraphs values={[COPY.deepWarning]} lang={lang} /></Note>
   </>;
   if (id === 'mrt-def') return <>
     <Paragraphs values={COPY.markerIntro} lang={lang} lead />
-    <Table headers={COPY.markerHeaders} rows={COPY.markerRows} lang={lang} />
+    <MarkerAtlas copy={COPY} lang={lang}><Table headers={COPY.markerHeaders} rows={COPY.markerRows} lang={lang} /></MarkerAtlas>
     <h3 className={styles.subheading}>{c(COPY.wmTitle)}</h3>
-    <dl className={styles.markers}>{COPY.wm.map(item => <div key={c(item.title)}><dt>{c(item.title)}</dt><dd>{c(item.text)}</dd></div>)}</dl>
+    <WhiteMatterMarkers items={COPY.wm} lang={lang} />
   </>;
   if (id === 'klinik') return <>
     <p className={reference.lead}>{c(COPY.clinicalIntro)}</p>
+    <TFNETimeline lang={lang} />
     <h3 className={styles.subheading}>{c(COPY.acuteTitle)}</h3>
     <TeachingList items={COPY.acute} lang={lang} />
     <Note lang={lang}><Paragraphs values={COPY.tfne} lang={lang} /></Note>
@@ -98,13 +96,17 @@ function ChapterContent({ id, lang }) {
   </>;
   if (id === 'boston') return <>
     <Paragraphs values={COPY.bostonIntro} lang={lang} lead />
+    <BostonExplorer lang={lang} />
+    <details className={styles.ruleOverview}><summary>{c(CAA_INTERACTION_COPY.ruleOverview)}</summary>
     <div className={styles.criteria}><h3>{c(COPY.probable)}</h3><div className={styles.rule}><b><bdi>≥2</bdi></b><span>{c(COPY.hemorrhages)}</span></div><small>{c(COPY.or)}</small><div className={styles.rule}><b><bdi>1 + 1</bdi></b><span>{c(COPY.combination)}</span></div></div>
     <div className={`${styles.criteria} ${styles.possible}`}><h3>{c(COPY.possible)}</h3><p>{c(COPY.possibleRule)}</p></div>
+    </details>
     <Note lang={lang}><Paragraphs values={[COPY.counting]} lang={lang} /></Note>
     <p className={styles.context}>{c(COPY.pathology)}</p>
   </>;
   if (id === 'differenzial') return <>
     <p className={reference.lead}>{c(COPY.ddIntro)}</p>
+    <PatternExplorer lang={lang} />
     <Table headers={COPY.ddHeaders} rows={COPY.ddRows} lang={lang} />
     <h3 className={styles.subheading}>{c(COPY.redFlagsTitle)}</h3>
     <TeachingList items={COPY.redFlags} lang={lang} />

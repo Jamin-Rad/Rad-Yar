@@ -44,6 +44,8 @@ Colour is allowed to change between lessons, but the role and visual weight of e
 
 Images, diagrams, curves, and tables must answer a learning question. Every visual receives a short interpretation or task. Decorative media never competes with the content.
 
+Pair the teaching content with meaningful anatomical schematics or decision diagrams. When the learner selects a finding or phase, update the graphic and its explanation together. Keep controls keyboard-operable and provide explicit selected states. Use an illustrative image base for anatomy and code-native overlays for changing findings; preserve the distinction between a schematic and a patient image. Decision simulations must show their qualifying criteria, exclusion paths and explanation, with medical rules covered by focused tests.
+
 ## 7. Make the learner act
 
 Each lesson includes at least one embedded decision, reveal, comparison, or mini-case. The answer produces immediate, explanatory feedback rather than only correct/incorrect status.
