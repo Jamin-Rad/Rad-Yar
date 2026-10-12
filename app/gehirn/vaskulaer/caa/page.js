@@ -32,6 +32,7 @@ function Icon({
     brain: <><path d="M12 5a3.5 3.5 0 0 0-6 2 4 4 0 0 0-2 7 4 4 0 0 0 7 4V6M12 5a3.5 3.5 0 0 1 6 2 4 4 0 0 1 2 7 4 4 0 0 1-7 4V6" /><path d="M6 10h3M15 10h3M7 15l2-1M17 15l-2-1" /></>,
     scan: <><circle cx="10.5" cy="10.5" r="6" /><path d="m15 15 5 5M10.5 7v7M7 10.5h7" /></>,
     vessel: <path d="M12 21V11L7 6V3M12 11l5-5V3M9 15l-4 4M15 15l4 4" />,
+    clinical: <path d="M3 12h4l3-7 4 14 3-7h4" />,
     chart: <path d="M4 20V10M10 20V4M16 20v-7M2 20h20" />,
     case: <path d="M6 4h12v17H6zM9 4V2h6v2M9 9h6M9 13h6M9 17h4" />,
     spark: <path d="m12 3 2 6 6 2-6 2-2 6-2-6-6-2 6-2z" />,
@@ -84,14 +85,16 @@ function ChapterContent({ id, lang }) {
   if (id === 'mrt-def') return <>
     <Paragraphs values={COPY.markerIntro} lang={lang} lead />
     <Table headers={COPY.markerHeaders} rows={COPY.markerRows} lang={lang} />
+    <h3 className={styles.subheading}>{c(COPY.wmTitle)}</h3>
+    <dl className={styles.markers}>{COPY.wm.map(item => <div key={c(item.title)}><dt>{c(item.title)}</dt><dd>{c(item.text)}</dd></div>)}</dl>
+  </>;
+  if (id === 'klinik') return <>
+    <p className={reference.lead}>{c(COPY.clinicalIntro)}</p>
     <h3 className={styles.subheading}>{c(COPY.acuteTitle)}</h3>
-    <p className={styles.paragraph}>{c(COPY.clinicalIntro)}</p>
     <TeachingList items={COPY.acute} lang={lang} />
     <Note lang={lang}><Paragraphs values={COPY.tfne} lang={lang} /></Note>
     <h3 className={styles.subheading}>{c(COPY.otherClinicalTitle)}</h3>
     <TeachingList items={COPY.otherClinical} lang={lang} />
-    <h3 className={styles.subheading}>{c(COPY.wmTitle)}</h3>
-    <dl className={styles.markers}>{COPY.wm.map(item => <div key={c(item.title)}><dt>{c(item.title)}</dt><dd>{c(item.text)}</dd></div>)}</dl>
   </>;
   if (id === 'boston') return <>
     <Paragraphs values={COPY.bostonIntro} lang={lang} lead />

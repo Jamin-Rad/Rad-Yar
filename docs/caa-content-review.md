@@ -1,11 +1,12 @@
 # CAA reading lesson: content review
 
-Reviewed on 2026-10-13 against the supplied older text and three screenshots. Changes apply to the reading lesson (`data/caaLesson.js`), preserving the four-chapter reference layout, independent Take Home component, navigation and progress. The separate quiz/flashcard bank is outside this review.
+Reviewed on 2026-10-13 against the supplied older text and three screenshots. Changes apply to the reading lesson (`data/caaLesson.js`), preserving the reference layout, independent Take Home component, navigation and progress. The separate quiz/flashcard bank is outside this review.
 
 ## Coverage
 
 - **Foundations:** vessel-wall β-amyloid in cortical/leptomeningeal arteries and arterioles; wall damage and loss of elasticity; distinction from systemic amyloidosis. Restore age, hereditary Dutch type, Alzheimer and Down syndrome associations.
-- **MRI markers and presentation:** four bleeding patterns with location, sequence, appearance and clinical relevance. Restore acute lobar ICH and TFNE, cognitive decline, seizures and headache. Keep cognitive symptoms distinct from mandatory diagnostic criteria.
+- **MRI markers:** four bleeding patterns with location, sequence, appearance and clinical relevance, followed by the two white-matter markers.
+- **Clinical manifestations:** a separate chapter between MRI and Boston, containing acute lobar ICH, TFNE and its teaching note, cognitive decline, seizures and headache. Keep cognitive symptoms distinct from mandatory diagnostic criteria. The desktop and mobile learning paths, continue action and progress denominator derive from the same five tracked chapter IDs; saved valid read IDs remain preserved.
 - **Boston:** explicitly explain clinical–radiological classification without biopsy, age ≥50, qualifying presentation and exclusions; preserve the v2.0 lesion-count and white-matter rules and the neutral treatment of cerebellar bleeding.
 - **Differentials:** restore explicit CAA, hypertensive arteriolosclerosis, AVM, cavernoma and haemorrhagic tumour comparison, with RCVS, venous thrombosis and CAA-related inflammation as additional work-up clues.
 

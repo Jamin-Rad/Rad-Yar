@@ -2,7 +2,8 @@
 const L = (de, en, fa) => ({ de, en, fa })
 export const CAA_CHAPTERS = [
   { id: 'grundlagen', icon: 'brain', title: L('Grundlagen & Verteilung', 'Foundations & distribution', 'مبانی و توزیع ضایعات') },
-  { id: 'mrt-def', icon: 'scan', title: L('MRT-Marker & Klinik', 'MRI markers & presentation', 'نشانگرهای MRI و تظاهرات بالینی') },
+  { id: 'mrt-def', icon: 'scan', title: L('MRT-Marker gezielt lesen', 'Read the MRI markers', 'نشانگرهای MRI را بررسی کنید') },
+  { id: 'klinik', icon: 'clinical', title: L('Klinische Manifestationen', 'Clinical manifestations', 'تظاهرات بالینی') },
   { id: 'boston', icon: 'chart', title: L('Boston v2.0 anwenden', 'Apply Boston v2.0', 'معیارهای Boston v2.0 را به کار ببرید') },
   { id: 'differenzial', icon: 'vessel', title: L('Differenzialdiagnosen abgrenzen', 'Separate the differentials', 'تشخیص‌های افتراقی را تفکیک کنید') },
   { id: 'takehome', icon: 'spark', title: 'Take Home Message', emphasis: true },
