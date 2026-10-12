@@ -7,11 +7,11 @@ import { ANDARUN_HOME_GROUPS, ANDARUN_DAILY_ACTIONS } from '@/data/andarunHome'
 import styles from './page.module.css'
 
 const financeSpaces = [
-  { title: 'Monatliche Ausgaben', description: 'Einnahmen, Fixkosten und Budgets im Blick.', href: '/andarun/finanz', icon: 'monthly' },
-  { title: 'کمک به زندانیان', description: 'نیازها، کمک‌های ثبت‌شده و تأیید واریز.', href: '/andarun/finanz/gefangene', icon: 'help' },
-  { title: 'Urlaub', description: 'Reisen, Kosten und Erinnerungen verwalten.', href: '/andarun/urlaub', icon: 'holiday' },
-  { title: 'حساب‌های مالی دوستان', description: 'بدهکاری، بستانکاری و گردش حساب مشترک.', href: '/andarun/finanz/freunde', icon: 'family' },
-  { title: 'DigitDA Unternehmen', description: 'Umsatz, Kosten und Gewinn des Unternehmens.', href: '/digitda', icon: 'company' },
+  { title: 'Monatliche Ausgaben', description: 'Einnahmen, Fixkosten und Budgets im Blick.', href: '/andarun/finanz', icon: 'monthly', tone: 'blue' },
+  { title: 'کمک به زندانیان', description: 'نیازها، کمک‌های ثبت‌شده و تأیید واریز.', href: '/andarun/finanz/gefangene', icon: 'help', tone: 'coral' },
+  { title: 'Urlaub', description: 'Reisen, Kosten und Erinnerungen verwalten.', href: '/andarun/urlaub', icon: 'holiday', tone: 'mint' },
+  { title: 'حساب‌های مالی دوستان', description: 'بدهکاری، بستانکاری و گردش حساب مشترک.', href: '/andarun/finanz/freunde', icon: 'family', tone: 'blue' },
+  { title: 'DigitDA Unternehmen', description: 'Umsatz, Kosten und Gewinn des Unternehmens.', href: '/digitda', icon: 'company', tone: 'coral' },
 ]
 
 function SpaceIcon({ name }) {
@@ -29,9 +29,9 @@ function SpaceIcon({ name }) {
 }
 
 function FinanceIcon({ name }) {
-  if (name === 'help') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 39S9 30 9 18a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 12-13 21-13 21Z"/><path d="M17 24h14M24 17v14"/></svg>
-  if (name === 'monthly') return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="M24 7v17h17M14 35c3-4 7-7 10-11"/></svg>
-  if (name === 'holiday') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 24c5-11 29-11 34 0M24 13v22M13 24l3 11M35 24l-3 11M8 39h32"/><path d="M24 13c-5 2-8 6-8 11M24 13c5 2 8 6 8 11"/></svg>
+  if (name === 'help') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="m24 37-3 3S6 29 6 17a8 8 0 0 1 14-5 8 8 0 0 1 14 5"/><path d="M28 29h16M36 21v16"/></svg>
+  if (name === 'monthly') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M21 7a17 17 0 1 0 20 20H21Z"/><path d="M27 5v16h16A17 17 0 0 0 27 5Z"/></svg>
+  if (name === 'holiday') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 23a16 16 0 0 1 32 0ZM24 23v15M24 5v2M7 42c5-6 10 6 17 0s12 6 17 0"/></svg>
   if (name === 'family') return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="15" r="6"/><circle cx="10" cy="20" r="4"/><circle cx="38" cy="20" r="4"/><path d="M13 39v-5c0-6 5-10 11-10s11 4 11 10v5M3 39v-4c0-5 4-8 9-8M45 39v-4c0-5-4-8-9-8"/></svg>
   return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 41h34M11 41V18h10v23M27 41V7h10v34M15 23h2M15 29h2M15 35h2M31 13h2M31 19h2M31 25h2M31 31h2M31 37h2"/></svg>
 }
@@ -103,11 +103,11 @@ export default function AndarunLanding() {
 
       {financeOpen ? (
         <div className={styles.financeOverlay} role="presentation" onMouseDown={event => event.target === event.currentTarget && setFinanceOpen(false)}>
-          <section ref={financeRef} className={styles.financeModal} role="dialog" aria-modal="true" aria-labelledby="finance-dialog-title">
+          <section ref={financeRef} className={styles.financeModal} role="dialog" aria-modal="true" aria-labelledby="finance-dialog-title" aria-describedby="finance-dialog-description">
             <div className={styles.financeModalHead}>
               <div>
-                <p>Finanzen</p>
-                <h2 id="finance-dialog-title">Wohin möchtest du?</h2>
+                <h2 id="finance-dialog-title">Finanzen</h2>
+                <p id="finance-dialog-description">Wohin möchtest du?</p>
               </div>
               <button className={styles.financeClose} type="button" onClick={() => setFinanceOpen(false)} aria-label="Dialog schließen">
                 <span aria-hidden="true" />
@@ -115,9 +115,8 @@ export default function AndarunLanding() {
               </button>
             </div>
             <div className={styles.financeChoices}>
-              {financeSpaces.map((item, index) => (
-                <Link className={styles.financeChoice} href={item.href} key={item.title}>
-                  <span className={styles.financeChoiceIndex}>0{index + 1}</span>
+              {financeSpaces.map(item => (
+                <Link className={`${styles.financeChoice} ${styles[item.tone]}`} href={item.href} key={item.title}>
                   <span className={styles.financeChoiceIcon}><FinanceIcon name={item.icon} /></span>
                   <span className={styles.financeChoiceCopy} lang={/[\u0600-\u06ff]/.test(item.title) ? 'fa' : 'de'}>
                     <strong>{item.title}</strong>
