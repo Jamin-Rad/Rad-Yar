@@ -9,7 +9,7 @@ const COPY = {
 export default function TearSchematic({ item, lang }) {
   const copy = COPY[lang] || COPY.de
   const title = item.label[lang] || item.label.de
-  const version = item.id === 'flap' ? 'v4' : 'v1'
+  const version = item.id === 'flap' ? 'v5' : 'v1'
   const src = `/meniskus/tear-${item.id}-mri-drawing-${version}.png`
   return <figure className={styles.tearSchematic} data-tear-illustration={item.id}>
     <a href={src} data-no-zoom target="_blank" rel="noopener noreferrer" aria-label={`${title} · ${copy.open}`}>
