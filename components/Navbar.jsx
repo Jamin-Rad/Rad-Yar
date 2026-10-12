@@ -1,33 +1,40 @@
 'use client'
 import Link from 'next/link'
 import RadYarIcon from './RadYarIcon'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
 import SearchBar from './SearchBar'
 import ClerkNavActions from './ClerkNavActions'
 import AdminHeaderLinks from './AdminHeaderLinks'
 import styles from './Navbar.module.css'
+import { translations } from '@/data/translations'
 
 function HexLogo({ size = 32 }) {
   return <RadYarIcon size={size} />
 }
 
 export default function Navbar() {
-  const { lang, texts, setLang } = useLanguage()
+  const { lang, setLang } = useLanguage()
+  const [lastControlsLang, setLastControlsLang] = useState('de')
+  const controlsLang = lang === 'fa' ? lastControlsLang : lang
+  useEffect(() => {
+    if (lang !== 'fa') setLastControlsLang(lang)
+  }, [lang])
+  const texts = translations[controlsLang]
   const { theme, toggleTheme } = useTheme()
   const [search, setSearch] = useState(false)
   const [authReady, setAuthReady] = useState(false)
-  const signInLabel = lang === 'fa' ? 'ورود' : lang === 'en' ? 'Sign in' : 'Anmelden'
+  const signInLabel = controlsLang === 'en' ? 'Sign in' : 'Anmelden'
 
   const themeLabel = theme === 'dark'
-    ? (lang === 'fa' ? 'تم روشن' : lang === 'en' ? 'Light theme' : 'Helles Theme')
-    : (lang === 'fa' ? 'تم تاریک' : lang === 'en' ? 'Dark theme' : 'Dunkles Theme')
+    ? (controlsLang === 'en' ? 'Light theme' : 'Helles Theme')
+    : (controlsLang === 'en' ? 'Dark theme' : 'Dunkles Theme')
 
 
   return (
     <>
-      <nav className={styles.nav} data-radyar-navbar data-print-exclude>
+      <nav className={styles.nav} dir="ltr" lang={controlsLang} data-radyar-navbar data-print-exclude>
         <div className={styles.brandGroup} dir="ltr">
           <Link href="/" className={styles.brand} dir="ltr">
             <HexLogo size={28} />
@@ -42,7 +49,7 @@ export default function Navbar() {
         <div className={styles.right} data-lang={lang}>
           <div className={styles.authSlot}>
             {!authReady && <Link href="/sign-in" className={styles.signInBtn}>{signInLabel}</Link>}
-            <ClerkNavActions lang={lang} onReady={() => setAuthReady(true)} />
+            <ClerkNavActions lang={lang} controlsLang={controlsLang} onReady={() => setAuthReady(true)} />
           </div>
 
           <div className={styles.langToggle} dir="ltr">

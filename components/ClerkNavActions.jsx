@@ -42,7 +42,7 @@ function LoadedNavActions({ lang, signInLabel }) {
           <span className={styles.profileAvatarFallback}>{initials}</span>
         )}
         <span className={styles.profileCopy}>
-          <span className={styles.greeting}>{greeting}</span>
+          <span className={styles.greeting} lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>{greeting}</span>
           <strong className={styles.profileName}>{displayName}</strong>
         </span>
       </Link>
@@ -57,8 +57,8 @@ function ClerkReady({ onReady }) {
   return null
 }
 
-export default function ClerkNavActions({ lang = 'de', onReady }) {
-  const signInLabel = lang === 'fa' ? 'ورود' : lang === 'en' ? 'Sign in' : 'Anmelden'
+export default function ClerkNavActions({ lang = 'de', controlsLang = lang === 'fa' ? 'de' : lang, onReady }) {
+  const signInLabel = controlsLang === 'en' ? 'Sign in' : 'Anmelden'
 
   return (
     <>
