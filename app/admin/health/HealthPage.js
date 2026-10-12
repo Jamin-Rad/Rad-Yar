@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
 import s from './health.module.css'
+import { calculateCaloriePlan } from '@/utils/healthCalories'
 import {
   sportarten, sportKategorien,
   lebensmittel, kategorien,
@@ -435,23 +436,8 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
     })
   }, [weightOpen, activeWeight])
 
-  const planCurrentWeight = parseFloat(caloriePlan.currentWeight || form.weight || latestWeight || 0)
-  const planTargetWeight = parseFloat(caloriePlan.targetWeight || 0)
-  const planWeeks = Math.max(parseInt(caloriePlan.weeks) || 1, 1)
-  const planHeight = parseFloat(caloriePlan.height || 0)
-  const planAge = parseInt(caloriePlan.age) || 0
-  const activityFactor = ACTIVITY_LEVELS.find(level => level.id === caloriePlan.activity)?.factor || 1.55
-  const bmr = planCurrentWeight && planHeight && planAge
-    ? Math.round((10 * planCurrentWeight) + (6.25 * planHeight) - (5 * planAge) + (caloriePlan.sex === 'female' ? -161 : 5))
-    : null
-  const maintenanceKcal = bmr ? Math.round(bmr * activityFactor) : null
-  const planDailyDelta = planCurrentWeight && planTargetWeight
-    ? Math.round(((planTargetWeight - planCurrentWeight) * 7700) / (planWeeks * 7))
-    : 0
-  const recommendedKcal = maintenanceKcal && planTargetWeight ? Math.max(caloriePlan.sex === 'female' ? 1200 : 1500, maintenanceKcal + planDailyDelta) : null
-  const planWeeklyChange = planCurrentWeight && planTargetWeight
-    ? ((planTargetWeight - planCurrentWeight) / planWeeks).toFixed(2)
-    : null
+  const { planCurrentWeight, planTargetWeight, planWeeks, maintenanceKcal, planDailyDelta, recommendedKcal, planWeeklyChange } =
+    calculateCaloriePlan(caloriePlan, { todayWeight: form.weight, latestWeight })
   const dailyKcalTarget = recommendedKcal || maintenanceKcal || 2000
   const kcalDelta = recommendedKcal ? eatenKcal - recommendedKcal : null
   const foodFraction = Math.min(Math.max(eatenKcal, 0) / dailyKcalTarget, 1)
