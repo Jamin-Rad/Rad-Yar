@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'RadYar Handwritten';
+  src: url('/fonts/lesson-accents/caveat-600.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RadYar Calligraphic';
+  src: url('/fonts/lesson-accents/noto-naskh-arabic-600.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+/* A small handwritten accent for note labels and the author's signature only. */
+.handwritten.handwritten {
+  font-family: 'RadYar Handwritten', cursive !important;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+:global([dir='rtl']) .handwritten {
+  --font-persian: 'RadYar Calligraphic', 'Vazirmatn', serif;
+  font-family: var(--font-persian) !important;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.7;
+}

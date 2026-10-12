@@ -396,3 +396,7 @@
 @keyframes mobilePathIn { from { opacity: 0; transform: translateY(8px) scale(.985); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion:reduce) { .page *,.page *::before,.page *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
 @media print { .page { padding: 0; background: #fff; } .page::before,.heroVisual,.sidebar,.actions,.progressBar,.readButton,.mobileLearningPath { display: none; } .layout { display: block; } .section { break-inside: avoid; content-visibility: visible; } }
+
+/* Shared with real lessons: handwritten accents, readable teaching copy. */
+.author { composes: handwritten from '../../../components/LessonTypography.module.css'; font-size: 23px; line-height: 1.4; }
+.calloutLabel { composes: handwritten from '../../../components/LessonTypography.module.css'; font-size: 25px; font-weight: 600; line-height: 1.35; letter-spacing: 0; text-transform: none; }

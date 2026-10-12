@@ -56,6 +56,8 @@ The final chapter reduces the lesson to three to five portable rules. These rule
 
 The reusable system is layout, hierarchy, spacing, navigation, interaction, content roles, accessibility, and responsive behaviour. Palette, accent colour, illustration mood, and limited signature motifs may change per topic.
 
+Use a restrained handwritten or calligraphic accent for short teaching-note labels and the author's signature, following `components/LessonTypography.module.css`. It softens the page without reducing readability. Keep body paragraphs, tables, clinical values, navigation and controls in the standard readable fonts. Use the Persian calligraphic face for RTL labels rather than a Latin cursive fallback, and preserve comfortable size and line spacing on mobile.
+
 ## 10. Definition of done
 
 A lesson is ready only when it works in German, English, and Persian; respects RTL; supports keyboard focus; remains readable on mobile; has no horizontal overflow; and its primary interaction has been tested in the browser.

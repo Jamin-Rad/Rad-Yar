@@ -428,3 +428,7 @@
   .radiopaediaFile { break-inside: avoid-page; box-shadow: none; }
   .takeHomeDetail[hidden] { display: block; }
 }
+
+/* Restrained handwritten accents shared by the maintained lesson template. */
+.author { composes: handwritten from './LessonTypography.module.css'; font-size: 23px; line-height: 1.4; }
+.calloutLabel { composes: handwritten from './LessonTypography.module.css'; font-size: 25px; font-weight: 600; line-height: 1.35; letter-spacing: 0; text-transform: none; }
