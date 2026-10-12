@@ -1,6 +1,6 @@
 export const metadata = {
   applicationName: 'Känguru',
-  manifest: '/kanguru/manifest.webmanifest?v=1',
+  manifest: '/kanguru/manifest.webmanifest?v=2',
   appleWebApp: {
     capable: true,
     title: 'Känguru',

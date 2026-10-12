@@ -17,7 +17,6 @@ const spaces = [
   { number: '08', title: 'Befunde',    description: 'Fälle & Fragen',      href: '/andarun/befunde',    theme: 'coral',  icon: 'file'      },
   { number: '09', title: 'Test',       description: 'Lernseiten gestalten', href: '/andarun/test',       theme: 'cobalt', icon: 'test'      },
   { number: '10', title: 'Medikamente', description: 'Einnahme im Blick', href: '/andarun/medikamente', theme: 'mint',   icon: 'pill'      },
-  { number: '11', title: 'Känguru',     description: 'Mathe Schritt für Schritt', href: '/andarun/kaenguru', theme: 'lemon', icon: 'kangaroo' },
 ]
 
 const financeSpaces = [

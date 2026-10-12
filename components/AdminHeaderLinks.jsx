@@ -11,6 +11,7 @@ import {
   LESSON_PDF_STATE_REQUEST_EVENT,
 } from '@/lib/lessonPdf'
 import styles from './Navbar.module.css'
+import FamilyPortalMenu from './FamilyPortalMenu'
 
 const ICONS = {
   control: (
@@ -119,17 +120,10 @@ function LoadedAdminLinks() {
           <span className={styles.portalLabel}>{lehrActive ? 'Lehr-Mode aktiv' : 'Lehr-Mode'}</span>
         </button>
       ) : null}
-      <Link
-        href="/andarun"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.portalAndarun}
-        aria-current={pathname?.startsWith('/andarun') ? 'page' : undefined}
-        title="Andarun"
-      >
+      <FamilyPortalMenu className={styles.portalAndarun} active={pathname?.startsWith('/andarun')}>
         <span className={styles.portalIcon}>{ICONS.andarun}</span>
         <span className={styles.portalLabel}>Andarun</span>
-      </Link>
+      </FamilyPortalMenu>
     </nav>
   )
 }

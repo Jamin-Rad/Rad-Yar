@@ -125,9 +125,9 @@ export const KANGURU_QUESTIONS_2025 = [
   {
     id: '2025-56-c2', gradeGroup: '5-6', year: 2025, part: 'C', number: 2, points: 5,
     topic: 'Logik und Summen', image: image('c2'), imageAlt: 'Vier-mal-vier-Gitter mit einer vorgegebenen Null und grauen Feldern',
-    question: 'In jedes Feld eines 4-mal-4-Gitters kommt eine 0 oder 1. Jede Zeile, Spalte und Diagonale soll die Summe 3 haben. Welche Summe haben die vier grauen Felder?',
+      question: 'Fülle das abgebildete 4-mal-4-Gitter ausschließlich mit Nullen und Einsen. Die bereits eingetragene Null bleibt an ihrer Stelle. Die vier Einträge jeder Zeile und jeder Spalte müssen zusammen 3 ergeben; diese Bedingung gilt auch für beide Diagonalen. Wie groß ist die Summe der Einträge in den vier grau markierten Feldern?',
     options: choices([['A', '0'], ['B', '1'], ['C', '2'], ['D', '3'], ['E', '4']]), correct: 'C',
-    solutionSteps: ['In jeder der vier Zeilen fehlt genau eine 0, weil die Zeilensumme 3 ist.', 'Dasselbe gilt für jede Spalte und die beiden Diagonalen.', 'Die vier grauen Felder enthalten zusammen genau zwei Einsen.'],
+      solutionSteps: ['Vier Nullen oder Einsen ergeben genau dann 3, wenn darunter eine Null und drei Einsen sind. Jede Zeile und Spalte enthält also genau eine Null.', 'Die vorgegebene Null liegt in Zeile 2, Spalte 3. Deshalb sind die drei anderen Felder dieser Zeile und dieser Spalte Einsen. Auch jede der beiden Diagonalen muss genau eine Null enthalten.', 'Überträgt man diese Bedingungen auf das Gitter, enthalten genau zwei der vier grauen Felder eine Eins. Ihre Summe ist 2: Antwort C.'],
   },
   {
     id: '2025-56-c3', gradeGroup: '5-6', year: 2025, part: 'C', number: 3, points: 5,

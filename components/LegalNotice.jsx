@@ -12,6 +12,7 @@ const AUTOMATIC_NOTICE_EXCLUDED_PREFIXES = [
   '/mamma/rechner',
   '/design-lab',
   '/andarun',
+  '/mobin/kaenguru',
 ]
 
 function excludesAutomaticNotice(pathname) {

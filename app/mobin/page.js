@@ -3,6 +3,13 @@ import styles from './mobin.module.css'
 
 const pages = [
   {
+    href: '/mobin/kaenguru',
+    title: 'Känguru',
+    meta: 'Mathe üben, auf Aufgaben schreiben & deine Lernserie wachsen lassen',
+    tilt: '2deg',
+    speed: '7.2s',
+  },
+  {
     href: '/mobin/tagesplan',
     title: 'Tagesplan',
     meta: 'Ziele planen, eintragen & auswerten',

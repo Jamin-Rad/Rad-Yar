@@ -1,0 +1,8 @@
+.root { position: relative; display: inline-flex; align-items: center; flex-shrink: 0; }
+.toggle { display: grid; place-items: center; width: 26px; min-height: 31px; padding: 0; border: 0; border-radius: 7px; color: #99f6e4; background: transparent; cursor: pointer; }
+.toggle svg { width: 14px; height: 14px; }
+.toggle:hover, .toggle[aria-expanded='true'] { background: rgba(20,184,166,.18); }
+.toggle:focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
+.menu { position: absolute; top: 100%; left: 0; z-index: 200; width: 180px; padding: 7px; display: grid; gap: 3px; border: 1px solid #334155; border-radius: 12px; background: #0f172a; box-shadow: 0 14px 32px rgba(0,0,0,.3); }
+.menu a { padding: 12px 13px; border-radius: 7px; color: #e2e8f0; font: 700 13px/1.2 var(--font-manrope), sans-serif; text-decoration: none; white-space: nowrap; }
+.menu a:hover, .menu a:focus-visible { color: #99f6e4; background: #17333c; outline: 2px solid transparent; }

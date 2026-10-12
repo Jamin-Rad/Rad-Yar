@@ -292,6 +292,33 @@
   box-shadow: 0 18px 48px rgba(30, 79, 127, .1);
 }
 
+.streakPanel { width: min(1340px, calc(100% - 64px)); margin: 0 auto 16px; padding: 24px 30px; display: grid; grid-template-columns: 1fr auto; gap: 22px 30px; align-items: center; border: 1px solid #e5cd9d; border-radius: 22px; background: #fffaf0; box-shadow: 0 12px 34px rgba(126, 87, 24, .07); }
+.streakHeadline { display: flex; align-items: center; gap: 16px; }
+.streakHeadline h2 { margin: 0; font-size: clamp(21px, 2.3vw, 29px); letter-spacing: -.04em; }
+.streakHeadline p { margin: 6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.streakFlame { width: 52px; height: 60px; flex: 0 0 52px; color: #b6bdc8; }
+.streakFlame svg { width: 100%; height: 100%; }
+.streakFlameActive { color: #ef713c; filter: drop-shadow(0 5px 9px #f9cc98); }
+.streakWeek { display: flex; justify-content: space-between; gap: 7px; list-style: none; margin: 0; padding: 0; }
+.streakWeek li { min-width: 35px; display: grid; justify-items: center; gap: 5px; color: #68768a; font-size: 10px; }
+.streakWeek b { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid #dce3ed; border-radius: 50%; background: white; font-size: 20px; }
+.streakWeek small { font-size: 10px; }
+.streakWeek .streakDayActive b { color: white; background: #ed7442; border-color: #ed7442; }
+.streakWeek .streakDayToday b { outline: 2px solid #f3b443; outline-offset: 3px; }
+.streakMilestone { grid-column: 1 / -1; }
+.streakMilestone > div { display: flex; justify-content: space-between; gap: 12px; font-size: 11px; }
+.streakMilestone span { color: var(--muted); }
+.streakMilestone progress { display: block; width: 100%; height: 8px; margin-top: 10px; border: 0; border-radius: 8px; overflow: hidden; background: #f0e4cf; }
+.streakMilestone progress::-webkit-progress-bar { background: #f0e4cf; }
+.streakMilestone progress::-webkit-progress-value { background: #ee974c; border-radius: 8px; }
+.streakMilestone progress::-moz-progress-bar { background: #ee974c; border-radius: 8px; }
+.syncStatus { width: min(1340px, calc(100% - 64px)); margin: 0 auto 16px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+@media (max-width: 760px) {
+  .streakPanel { width: calc(100% - 36px); padding: 22px; grid-template-columns: 1fr; gap: 22px; }
+  .streakMilestone > div { flex-wrap: wrap; }
+  .syncStatus { width: calc(100% - 36px); }
+}
+
 .progressHeading { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; }
 .progressHeading h2 { margin: 0; font-size: 20px; }
 .progressHeading strong { font-size: 15px; }
@@ -493,6 +520,7 @@
 .annotationStage { position: relative; min-width: 0; }
 .drawingCanvas { position: absolute; inset: 0; z-index: 6; cursor: crosshair; touch-action: none; }
 .canvasPassive { pointer-events: none; }
+.taskPanel h1.longQuestion { font-size: clamp(20px, 2.1vw, 27px); line-height: 1.5; }
 
 .whiteboardWrap { width: min(1180px, 100%); margin: 14px auto 0; }
 .whiteboardPageActive { display: block; }

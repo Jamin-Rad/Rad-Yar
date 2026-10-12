@@ -12,10 +12,12 @@ import {
   questionsForGradeGroup,
 } from '@/data/kanguruQuestions'
 import styles from './page.module.css'
+import { berlinDay, streakSummary } from '@/lib/kanguruStreak'
+import { normalizeProgress, mergeProgress } from '@/lib/kanguruProgress'
 
 const STORAGE_KEY = 'andarun_kaenguru_progress_v1'
-const RESET_KEY = 'andarun_kaenguru_progress_reset_2026-10-10'
-const EMPTY_PROGRESS = { version: 2, gradeGroup: '5-6', attempts: {}, updatedAt: null }
+// Keep the legacy browser key so moving the page does not lose existing answers.
+const EMPTY_PROGRESS = { version: 3, gradeGroup: '5-6', attempts: {}, practiceDays: [], updatedAt: null }
 const DRAW_COLORS = ['#ef4444', '#f97316', '#2563eb', '#111827']
 const LEHR_LABELS = {
   mode: 'Lehr-Mode', hint: 'Aufgabe besprechen, markieren und skizzieren',
@@ -102,6 +104,7 @@ function AnnotationSurface({ children, title, blank = false, resetKey, enabled =
   useEffect(() => {
     strokesRef.current = []
     drawingRef.current = null
+    setTool(blank ? 'pen' : 'cursor')
     setRevision(value => value + 1)
   }, [resetKey])
 
@@ -206,30 +209,6 @@ function readLocalProgress() {
   } catch {
     return EMPTY_PROGRESS
   }
-}
-
-function normalizeProgress(value) {
-  const state = value && typeof value === 'object' ? value : {}
-  return {
-    version: 2,
-    gradeGroup: state.gradeGroup === '7-8' ? '7-8' : '5-6',
-    attempts: state.attempts && typeof state.attempts === 'object' ? state.attempts : {},
-    updatedAt: typeof state.updatedAt === 'string' ? state.updatedAt : null,
-  }
-}
-
-function mergeProgress(localState, remoteState) {
-  const local = normalizeProgress(localState)
-  const remote = normalizeProgress(remoteState)
-  const attempts = { ...remote.attempts }
-  for (const [id, attempt] of Object.entries(local.attempts)) {
-    const remoteAttempt = attempts[id]
-    if (!remoteAttempt || String(attempt?.lastAnsweredAt || '') > String(remoteAttempt?.lastAnsweredAt || '')) {
-      attempts[id] = attempt
-    }
-  }
-  const localIsNewer = String(local.updatedAt || '') > String(remote.updatedAt || '')
-  return { version: 2, gradeGroup: localIsNewer ? local.gradeGroup : remote.gradeGroup, attempts, updatedAt: localIsNewer ? local.updatedAt : remote.updatedAt }
 }
 
 function shuffled(items) {
@@ -352,6 +331,38 @@ function StatsDialog({ metric, onMetricChange, questions, attempts, gradeGroup, 
         </section>
       </section>
     </div>
+  )
+}
+
+function DailyStreak({ progress }) {
+  const [now, setNow] = useState(() => new Date())
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(new Date()), 60000)
+    return () => window.clearInterval(timer)
+  }, [])
+  const summary = streakSummary(progress, now)
+  const goal = [3, 7, 14, 30, 60, 100].find(value => value > summary.current) || Math.ceil((summary.current + 1) / 100) * 100
+  return (
+    <section className={styles.streakPanel} aria-label="Tägliche Lernserie">
+      <div className={styles.streakHeadline}>
+        <span className={`${styles.streakFlame} ${summary.practicedToday ? styles.streakFlameActive : ''}`} aria-hidden="true">
+          <svg viewBox="0 0 24 28" fill="none"><path d="M13 2c1 6-5 7-4 12 2-1 4-3 5-5 5 4 7 8 5 12-3 7-14 6-16 0C1 15 7 10 7 6c1 3 2 4 3 4 2-2 2-5 3-8Z" fill="currentColor"/><path d="M12 16c0 3-3 4-3 6 0 4 6 4 6 0 0-2-2-4-3-6Z" fill="#ffedba"/></svg>
+        </span>
+        <div><h2>{`${summary.current} ${summary.current === 1 ? 'Tag' : 'Tage'} in Folge`}</h2><p role="status">{summary.practicedToday ? 'Heute geschafft! Dein Känguru-Weg wächst weiter.' : 'Prüfe heute eine Antwort und halte deine Serie am Leben.'}</p></div>
+      </div>
+      <ol className={styles.streakWeek} aria-label="Deine letzten sieben Tage">
+        {summary.week.map(({ day, active, today }) => (
+          <li key={day} className={`${active ? styles.streakDayActive : ''} ${today ? styles.streakDayToday : ''}`} aria-label={`${day}: ${active ? 'geübt' : 'noch nicht geübt'}${today ? ' · heute' : ''}`}>
+            <span>{new Intl.DateTimeFormat('de-DE', { weekday: 'short', timeZone: 'UTC' }).format(new Date(`${day}T12:00:00Z`))}</span>
+            <b aria-hidden="true">{active ? '✓' : '·'}</b><small>{day.slice(-2)}</small>
+          </li>
+        ))}
+      </ol>
+      <div className={styles.streakMilestone}>
+        <div><strong>Nächstes Ziel: {goal} Tage</strong><span>Rekord: {summary.best} · Lerntage: {summary.total}</span></div>
+        <progress value={summary.current} max={goal} aria-label={`${summary.current} von ${goal} Tagen bis zum nächsten Ziel`} />
+      </div>
+    </section>
   )
 }
 
@@ -493,6 +504,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
   useEffect(() => {
     setWhiteboardPages([1])
     setActiveWhiteboardPage(1)
+    window.scrollTo({ top: 0 })
   }, [index])
 
   const checkAnswer = useCallback(() => {
@@ -580,11 +592,11 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
       </header>
       <div className={styles.quizProgress}><span style={{ width: `${((index + (checked ? 1 : 0)) / questions.length) * 100}%` }} /></div>
       <div className={`${styles.lehrBanner} ${teaching ? '' : styles.quizToolsBanner}`}>
-        <div><strong>{teaching ? LEHR_LABELS.mode : 'Lösungsbereich'}</strong><span>{teaching ? LEHR_LABELS.hint : 'Nutze bei Bedarf ein Whiteboard für deine Nebenrechnungen.'}</span></div>
+        <div><strong>{teaching ? LEHR_LABELS.mode : 'Lösungsbereich'}</strong><span>{teaching ? LEHR_LABELS.hint : 'Schreibe direkt auf die Aufgabe oder nutze das Whiteboard. Zum Antworten „Bedienen“ wählen.'}</span></div>
         <span className={styles.keyboardHint}>Tastatur: A–E oder 1–5 · Enter: prüfen / weiter</span>
         <button type="button" className={whiteboardOpen ? styles.whiteboardToggleActive : ''} onClick={() => setWhiteboardOpen(value => !value)}><DrawIcon name="board" />{whiteboardOpen ? LEHR_LABELS.closeBoard : LEHR_LABELS.board}</button>
       </div>
-      <AnnotationSurface enabled={teaching} title={LEHR_LABELS.mode} resetKey={question.id}>
+      <AnnotationSurface title={teaching ? LEHR_LABELS.mode : 'Auf der Aufgabe lösen'} resetKey={question.id}>
         <article className={styles.questionCard}>
         <header className={styles.questionHeading}>
           <strong>Aufgabe {question.part}{question.number}</strong>
@@ -597,7 +609,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
 
         <div className={`${styles.questionWorkspace} ${hasVisualOptions ? styles.workspaceVisual : ''} ${!question.image ? styles.workspaceTextOnly : ''}`}>
           <section className={styles.taskPanel} aria-labelledby="question-title">
-            <h1 id="question-title">{question.question}</h1>
+            <h1 id="question-title" className={question.question.length > 220 ? styles.longQuestion : undefined}>{question.question}</h1>
             {question.image ? (
               <figure className={styles.questionFigure}>
                 <Image className={styles.questionImage} src={question.image} alt={question.imageAlt || ''} width={900} height={520} sizes="(max-width: 760px) 92vw, 48vw" draggable={false} unoptimized />
@@ -680,49 +692,38 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
 export default function KanguruPage() {
   const [progress, setProgress] = useState(EMPTY_PROGRESS)
   const [ready, setReady] = useState(false)
+  const [syncState, setSyncState] = useState('loading')
   const [dialog, setDialog] = useState(null)
   const [statsMetric, setStatsMetric] = useState(null)
   const [session, setSession] = useState(null)
 
   useEffect(() => {
     let active = true
-    const needsReset = !localStorage.getItem(RESET_KEY)
-    if (needsReset) {
-      localStorage.removeItem(STORAGE_KEY)
-      setProgress(EMPTY_PROGRESS)
-      fetch('/api/andarun/kaenguru', { method: 'DELETE' })
-        .then(response => response.ok ? response.json() : Promise.reject())
-        .then(payload => {
-          if (!active) return
-          localStorage.setItem(RESET_KEY, '1')
-          setProgress(normalizeProgress(payload.state))
-        })
-        .catch(() => {})
-        .finally(() => active && setReady(true))
-      return () => { active = false }
-    }
-
     const local = readLocalProgress()
     setProgress(local)
-    fetch('/api/andarun/kaenguru')
+    fetch('/api/mobin/kaenguru')
       .then(response => response.ok ? response.json() : Promise.reject())
       .then(payload => {
-        if (active) setProgress(mergeProgress(local, payload.state))
+        if (active) setProgress(current => mergeProgress(current, payload.state))
       })
-      .catch(() => {})
+      .catch(() => { if (active) setSyncState('local') })
       .finally(() => active && setReady(true))
     return () => { active = false }
   }, [])
 
   useEffect(() => {
     if (!ready) return undefined
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress))
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)) } catch { setSyncState('local') }
     const timer = window.setTimeout(() => {
-      fetch('/api/andarun/kaenguru', {
+      setSyncState('saving')
+      fetch('/api/mobin/kaenguru', {
         method: 'PATCH',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ state: progress }),
-      }).catch(() => {})
+      }).then(response => {
+        if (!response.ok) throw new Error('Progress not synced')
+        setSyncState('synced')
+      }).catch(() => setSyncState('local'))
     }, 450)
     return () => window.clearTimeout(timer)
   }, [progress, ready])
@@ -747,6 +748,7 @@ export default function KanguruPage() {
       const needsReview = correct ? (mode === 'review' ? false : Boolean(previous.needsReview)) : true
       return {
         ...current,
+        practiceDays: [...new Set([...current.practiceDays, berlinDay(answeredAt)])].sort(),
         attempts: {
           ...current.attempts,
           [question.id]: {
@@ -754,6 +756,7 @@ export default function KanguruPage() {
             topic: question.topic,
             needsReview,
             lastAnsweredAt: answeredAt,
+            updatedAt: answeredAt,
             history: [...(previous.history || []), { selected, correct, mode, at: answeredAt }].slice(-30),
           },
         },
@@ -763,7 +766,7 @@ export default function KanguruPage() {
   }
   const toggleReview = (questionId, needsReview) => setProgress(current => ({
     ...current,
-    attempts: { ...current.attempts, [questionId]: { ...(current.attempts[questionId] || { history: [] }), needsReview } },
+    attempts: { ...current.attempts, [questionId]: { ...(current.attempts[questionId] || { history: [] }), needsReview, updatedAt: new Date().toISOString() } },
     updatedAt: new Date().toISOString(),
   }))
 
@@ -773,7 +776,7 @@ export default function KanguruPage() {
     <main className={styles.page} lang="de" dir="ltr">
       <header className={styles.header}>
         <div className={styles.brandLockup}><Image className={styles.brandIcon} src="/kanguru/kanguru-app-icon.png" alt="" width={42} height={42} priority /><strong>Känguru</strong></div>
-        <Link href="/andarun"><ArrowIcon direction="left" /> Zurück zu Andarun</Link>
+        <Link href="/mobin"><ArrowIcon direction="left" /> Zurück zu Mobin</Link>
       </header>
 
       <section className={styles.journeyStage}>
@@ -797,6 +800,8 @@ export default function KanguruPage() {
         </section>
       </section>
 
+      <DailyStreak progress={progress} />
+      <p className={styles.syncStatus} role="status">{syncState === 'synced' ? 'Fortschritt und Lernserie gespeichert' : syncState === 'local' ? 'Auf diesem Gerät gespeichert · Cloud-Synchronisierung momentan nicht verfügbar' : syncState === 'saving' ? 'Fortschritt wird gespeichert …' : 'Fortschritt wird geladen …'}</p>
       <section className={styles.progressPanel}>
         <div className={styles.progressMain}>
           <div className={styles.progressHeading}><h2>Dein Fortschritt</h2><strong>{progressPercent} %</strong></div>

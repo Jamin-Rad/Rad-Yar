@@ -23,7 +23,8 @@ export default function MobinLogin() {
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Fehler beim Anmelden')
-      router.push('/mobin')
+      const next = new URLSearchParams(window.location.search).get('next')
+      router.push(next === '/mobin/kaenguru' ? next : '/mobin')
       router.refresh()
     } catch (err) {
       setError(err.message)
