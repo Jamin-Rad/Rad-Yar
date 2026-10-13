@@ -1,7 +1,7 @@
 // Concise, trilingual reading lesson. The quiz/flashcard bank stays in caa.js.
 const L = (de, en, fa) => ({ de, en, fa })
 export const CAA_CHAPTERS = [
-  { id: 'grundlagen', icon: 'brain', title: L('Grundlagen & Verteilung', 'Foundations & distribution', 'مبانی و توزیع ضایعات') },
+  { id: 'grundlagen', icon: 'brain', title: L('Grundlagen', 'Foundations', 'مبانی') },
   { id: 'mrt-def', icon: 'scan', title: L('MRT-Marker gezielt lesen', 'Read the MRI markers', 'نشانگرهای MRI را بررسی کنید') },
   { id: 'klinik', icon: 'clinical', title: L('Klinische Manifestationen', 'Clinical manifestations', 'تظاهرات بالینی') },
   { id: 'boston', icon: 'chart', title: L('Boston v2.0 anwenden', 'Apply Boston v2.0', 'معیارهای Boston v2.0 را به کار ببرید') },
@@ -27,18 +27,22 @@ export const CAA_COPY = {
   warning: L('Cave', 'Caution', 'احتیاط'),
   sources: L('Quellen & Vertiefung', 'Sources & further reading', 'منابع و مطالعه بیشتر'),
   basics: [
-    L('Bei der CAA lagert sich β-Amyloid in den Wänden kleiner, überwiegend kortikaler und leptomeningealer Arterien und Arteriolen ab. Die sporadische β-Amyloid-CAA ist keine Manifestation einer systemischen Amyloidose.', 'In CAA, β-amyloid accumulates in the walls of small arteries and arterioles, predominantly in the cortex and leptomeninges. Sporadic β-amyloid CAA is not a manifestation of systemic amyloidosis.', 'در CAA، β-آمیلوئید در دیواره شریان‌ها و آرتریول‌های کوچک، عمدتاً در قشر و لپتومننژ، رسوب می‌کند. CAA اسپورادیکِ β-آمیلوئیدی تظاهر آمیلوئیدوز سیستمیک نیست.'),
+    L('Die CAA beruht auf der pathologischen Ablagerung von β-Amyloid, insbesondere in den Wänden kleiner und mittelgroßer kortikaler und leptomeningealer Arterien sowie Arteriolen.', 'CAA results from pathological β-amyloid deposition, particularly in the walls of small and medium-sized cortical and leptomeningeal arteries and arterioles.', 'CAA ناشی از رسوب پاتولوژیک β-آمیلوئید، به‌ویژه در دیواره شریان‌های کوچک و متوسط و آرتریول‌های کورتیکال و لپتومننژیال است.'),
     L('Die Ablagerungen schädigen die Gefäßwand, beeinträchtigen ihre Elastizität und machen sie anfällig für Rupturen. Für die Bilddiagnostik ist deshalb zuerst die Verteilung der Blutungen entscheidend.', 'The deposits damage the vessel wall, impair its elasticity and make it vulnerable to rupture. On imaging, the first key question is therefore the distribution of bleeding.', 'این رسوبات به دیواره رگ آسیب می‌زنند، انعطاف‌پذیری آن را کاهش می‌دهند و احتمال پارگی را بالا می‌برند. بنابراین در تصویربرداری، نخست باید توزیع خونریزی‌ها را بررسی کرد.'),
   ],
-  backgroundTitle: L('Häufigkeit, Alter & Assoziationen', 'Frequency, age & associations', 'شیوع، سن و ارتباط‌های مهم'),
+  pathologyTitle: L('Pathologie:', 'Pathology:', 'پاتولوژی:'),
+  systemicWarning: L('Achtung: Die sporadische β-Amyloid-CAA ist keine Manifestation einer systemischen Amyloidose.', 'Warning: Sporadic β-amyloid CAA is not a manifestation of systemic amyloidosis.', 'توجه: CAA اسپورادیک ناشی از β-آمیلوئید، تظاهر آمیلوئیدوز سیستمیک نیست.'),
+  backgroundTitle: L('Häufigkeit & Alter', 'Frequency & age', 'شیوع و سن'),
   background: [
     { title: L('Häufigkeit', 'Frequency', 'شیوع'), paragraphs: [
-      L('CAA gehört zu den wichtigsten Ursachen spontaner lobärer ICH im höheren Lebensalter. Ihr Anteil hängt von Alter, Patientenkollektiv und Diagnoseverfahren ab; eine lobäre Blutung allein beweist keine CAA.', 'CAA is a leading cause of spontaneous lobar ICH in older adults. Its contribution varies with age, patient population and diagnostic method; lobar bleeding alone does not prove CAA.', 'CAA از مهم‌ترین علل ICH لوبار خودبخودی در سالمندان است. سهم آن با سن، جمعیت مورد بررسی و روش تشخیص تغییر می‌کند؛ خونریزی لوبار به‌تنهایی CAA را ثابت نمی‌کند.'),
+      L('CAA gehört zu den wichtigsten Ursachen spontaner lobärer ICH im höheren Lebensalter. Als grobe Orientierung werden etwa 15 % der spontanen intrazerebralen Blutungen im höheren Lebensalter der CAA zugeschrieben; publizierte Schätzungen reichen von 5–20 %. Der Anteil hängt von Alter, Patientenkollektiv und Diagnoseverfahren ab. Eine Subarachnoidalblutung allein beweist keine CAA.', 'CAA is a leading cause of spontaneous lobar ICH in older adults. As a rough guide, about 15% of spontaneous intracerebral haemorrhages in older adults are attributed to CAA; published estimates range from 5–20%. The proportion depends on age, patient population and diagnostic method. Subarachnoid haemorrhage alone does not prove CAA.', 'CAA از مهم‌ترین علل ICH لوبار خودبخودی در سالمندان است. به‌عنوان برآورد تقریبی، حدود ۱۵٪ خونریزی‌های داخل مغزی خودبخودی در سالمندان به CAA نسبت داده می‌شود؛ برآوردهای منتشرشده بین ۵ تا ۲۰٪ است. این سهم به سن، جمعیت مورد بررسی و روش تشخیص وابسته است. خونریزی زیرعنکبوتیه به‌تنهایی CAA را ثابت نمی‌کند.'),
     ] },
     { title: L('Alter & Formen', 'Age & forms', 'سن و انواع بیماری'), paragraphs: [
       L('Die sporadische Form betrifft überwiegend Menschen über 60 Jahre; die Häufigkeit steigt mit dem Alter. Hereditäre Formen, etwa Dutch-type CAA durch eine APP-Mutation, können deutlich früher auftreten.', 'The sporadic form mainly affects people over 60, with prevalence increasing with age. Hereditary forms, such as Dutch-type CAA caused by an APP mutation, may present much earlier.', 'نوع اسپورادیک بیشتر در افراد بالای ۶۰ سال دیده می‌شود و با افزایش سن شایع‌تر است. انواع ارثی، مانند CAA نوع هلندی ناشی از جهش APP، می‌توانند بسیار زودتر بروز کنند.'),
       L('Beide Geschlechter sind betroffen. Das Geschlecht ist kein Boston-Kriterium; eine feste Gleichverteilung lässt sich aus den unterschiedlichen Kohorten nicht ableiten.', 'Both sexes are affected. Sex is not a Boston criterion; a fixed equal distribution cannot be inferred from the different cohorts.', 'هر دو جنس درگیر می‌شوند. جنسیت جزو معیارهای Boston نیست و از مطالعات با جمعیت‌های متفاوت نمی‌توان نسبت دقیق و ثابتی نتیجه گرفت.'),
     ] },
+  ],
+  associations: [
     { title: L('Alzheimer-Assoziation', 'Association with Alzheimer disease', 'ارتباط با آلزهایمر'), paragraphs: [
       L('Bei Alzheimer ist eine begleitende CAA histologisch häufig: Eine Metaanalyse fand milde bis schwere CAA bei etwa 79 % der untersuchten Alzheimer-Fälle. Der Anteil hängt vom erfassten Schweregrad ab und beschreibt keinen festen Wert für alle Patienten.', 'Coexisting CAA is common on histology in Alzheimer disease: a meta-analysis found mild-to-severe CAA in about 79% of the Alzheimer cases studied. The proportion depends on the severity threshold and is not a fixed rate for all patients.', 'همراهی CAA در بررسی بافت‌شناسی آلزهایمر شایع است: یک متاآنالیز، CAA خفیف تا شدید را در حدود ۷۹٪ موارد آلزهایمرِ بررسی‌شده گزارش کرد. این درصد به حد شدت مورد ارزیابی وابسته است و عدد ثابتی برای همه بیماران نیست.'),
     ] },
@@ -54,9 +58,7 @@ export const CAA_COPY = {
     ['Boston v2.0', L('Klinik, Alter und Ausschlusskriterien einbeziehen.', 'Include clinical presentation, age and exclusions.', 'علائم بالینی، سن و معیارهای رد را در نظر بگیرید.'), 'chart'],
   ],
   amyloid: [
-    L('CAA und Alzheimer teilen die β-Amyloid-Pathologie:', 'CAA and Alzheimer disease share β-amyloid pathology:', 'CAA و آلزهایمر هر دو با β-آمیلوئید مرتبط‌اند:'),
-    L('Gefäßwand bei CAA, parenchymale Plaques bei Alzheimer.', 'Vessel walls in CAA, parenchymal plaques in Alzheimer disease.', 'در CAA رسوب در دیواره رگ و در آلزهایمر به‌صورت پلاک پارانشیمی است.'),
-    L('Eine CAA bedeutet aber nicht automatisch Alzheimer.', 'However, CAA does not automatically mean Alzheimer disease.', 'اما وجود CAA به‌تنهایی به معنای آلزهایمر نیست.'),
+    L('CAA und Alzheimer teilen die β-Amyloid-Pathologie, mit unterschiedlichen Ablagerungsorten: Gefäßwand bei CAA, parenchymale Plaques bei Alzheimer.', 'CAA and Alzheimer disease share β-amyloid pathology at different deposit locations: vessel walls in CAA, parenchymal plaques in Alzheimer disease.', 'CAA و آلزهایمر پاتولوژی β-آمیلوئید مشترکی دارند، با محل رسوب متفاوت: دیواره رگ در CAA و پلاک‌های پارانشیمی در آلزهایمر.'),
   ],
   deepWarning: L('Eine tiefe ICH oder Mikroblutung verhindert die MRT-Einstufung als probable oder possible CAA nach Boston v2.0. Sie schließt eine gleichzeitig bestehende CAA jedoch nicht aus.', 'A deep ICH or microbleed prevents an MRI-based classification as probable or possible CAA under Boston v2.0. It does not exclude coexisting CAA.', 'وجود ICH یا میکروخونریزی عمقی مانع طبقه‌بندی MRI به‌عنوان CAA محتمل یا ممکن طبق Boston v2.0 می‌شود؛ اما هم‌زمانی CAA را رد نمی‌کند.'),
   schematic: L('Entscheidend ist die Verteilung, nicht die Zahl der Punkte.', 'Focus on distribution, not the number of dots.', 'به توزیع توجه کنید، نه تعداد نقطه‌ها.'),
@@ -143,6 +145,7 @@ export const CAA_COPY = {
 
 // Sources for the reading lesson; individual claims are mapped in docs/caa-content-review.md.
 export const CAA_SOURCES = [
+  { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3079153/', label: 'Yamada · CAA systematic review: estimated ICH contribution, 2011' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9389452/', label: 'Charidimou et al. · Boston criteria v2.0 · Lancet Neurology, 2022' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11592298/', label: 'Neuroradiological findings in CAA · Imaging review, 2024' },
   { href: 'https://alz-journals.onlinelibrary.wiley.com/doi/10.1002/alz.12366', label: 'Jäkel et al. · CAA prevalence: systematic review & meta-analysis, 2022' },

@@ -32,3 +32,7 @@ Reviewed on 2026-10-13 against the supplied older text and three screenshots. Ch
 ## Layout decisions
 
 The screenshots are evidence of missing teaching content, not instructions to reproduce their dense cards or absolute claims. Use short semantic paragraphs, simple definition lists and three-column tables in German, English and Persian. Separate imaging appearance from clinical significance within each table cell. Mobile tables scroll within their labelled region; they do not overflow the page. Keep the existing topic-specific hero, restrained handwritten labels and shared Test Take Home layout. Do not restore the removed Befund & Selbsttest chapter.
+
+## Editorial update — 2026-10-13
+
+Based on origin/main 22c0b2a0. Foundations now begins with Pathologie, a separate systemic-amyloidosis warning, Alzheimer and Down syndrome associations, and a short Merke on deposit locations. Vessel wall damage is an indented bullet preceding the existing vessel explorer. Frequency and age remain interactive tabs; introductory instructions and the age caption are removed. The approximate 15% ICH contribution is explicitly contextualised within the published 5–20% range for elderly subjects, rather than a fixed population rate ([Yamada, 2011](https://pmc.ncbi.nlm.nih.gov/articles/PMC3079153/)). The existing 79% mild-to-severe histological CAA estimate in Alzheimer disease and age/sex qualifications remain.

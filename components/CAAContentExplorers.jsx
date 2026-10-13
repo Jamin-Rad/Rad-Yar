@@ -16,8 +16,7 @@ function ConceptFigure({ kind, lang }) {
   if (kind === 'age') return <figure className={styles.concept}>
     <div className={styles.ageBand}><span>{pick(COPY.sporadic, lang)}</span><strong><bdi dir="ltr">&gt;60</bdi></strong><p>{pick(COPY.typicalAge, lang)}</p></div>
     <div className={styles.ageBand}><span>{pick(COPY.hereditary, lang)}</span><strong><bdi>APP</bdi></strong><p>{pick(COPY.earlier, lang)}</p></div>
-    <figcaption>{pick(title, lang)}</figcaption>
-  </figure>
+    </figure>
   if (kind === 'amyloid') return <figure className={styles.concept}>
     <svg viewBox="0 0 380 230" role="img" aria-label={pick(title, lang)} data-no-zoom>
       <circle cx="100" cy="100" r="62" fill="#b598bf" stroke="#765287" strokeWidth="3" /><circle cx="100" cy="100" r="38" fill="#b94059" />
@@ -54,8 +53,8 @@ export function BackgroundExplorer({ title, items, lang }) {
   const [topic,setTopic]=useState(0)
   const id='caa-background-'+useId().replaceAll(':','')
   return <div className={shared.panel + ' ' + styles.focused} data-learning-tool="background">
-    <ToolHeader title={title} hint={COPY.backgroundHint} lang={lang} />
-    <div className={styles.fourTabs}><Tabs items={COPY.backgroundTabs} value={topic} onChange={setTopic} id={id} label={title} lang={lang} /></div>
+    <ToolHeader title={title} lang={lang} />
+    <div className={styles.fourTabs}><Tabs items={COPY.backgroundTabs.slice(0, 2)} value={topic} onChange={setTopic} id={id} label={title} lang={lang} /></div>
     <div id={id+'-panel'} role="tabpanel" aria-labelledby={id+'-tab-'+topic} className={shared.explorerBody}>
       {topic===0 ? <BrainFigure pattern="lobar" lang={lang} /> : <ConceptFigure kind={['frequency','age','amyloid','down'][topic]} lang={lang} />}
       <div className={shared.copy}><h4>{pick(items[topic].title,lang)}</h4><Paragraphs values={items[topic].paragraphs} lang={lang} /></div>

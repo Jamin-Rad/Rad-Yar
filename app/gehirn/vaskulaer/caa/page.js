@@ -73,10 +73,14 @@ function TeachingList({ items, lang }) {
 function ChapterContent({ id, lang }) {
   const c = value => pick(value, lang);
   if (id === 'grundlagen') return <>
-    <Paragraphs values={COPY.basics} lang={lang} lead />
+    <h3 className={styles.subheading}>{c(COPY.pathologyTitle)}</h3>
+    <Paragraphs values={[COPY.basics[0]]} lang={lang} lead />
+    <Note warning lang={lang}><Paragraphs values={[COPY.systemicWarning]} lang={lang} /></Note>
+    <TeachingList items={COPY.associations} lang={lang} />
+    <Note lang={lang}><Paragraphs values={COPY.amyloid} lang={lang} /></Note>
+    <ul><li><Paragraphs values={[COPY.basics[1]]} lang={lang} /></li></ul>
     <VesselExplorer lang={lang} />
     <BackgroundExplorer title={COPY.backgroundTitle} items={COPY.background} lang={lang} />
-    <Note warning lang={lang}>{COPY.amyloid.map((paragraph, index) => <p className={styles.caveParagraph} key={index}><strong>{c(paragraph)}</strong></p>)}</Note>
     <h3 className={styles.subheading}>{c(COPY.workflowTitle)}</h3>
     <ol className={`${reference.workflow} ${styles.workflow}`}>{COPY.workflow.map(([title, text, icon]) => <li key={c(title)}><span className={reference.stepIcon}><Icon name={icon} /></span><strong>{c(title)}</strong><p>{c(text)}</p></li>)}</ol>
     <Note warning lang={lang}><Paragraphs values={[COPY.deepWarning]} lang={lang} /></Note>
