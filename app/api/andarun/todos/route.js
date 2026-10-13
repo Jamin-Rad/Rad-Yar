@@ -41,6 +41,7 @@ function toClient(row) {
     endTime: parsedNote.endTime,
     allDay: itemType === 'event' ? (row.all_day != null ? Boolean(row.all_day) : parsedNote.allDay) : false,
     done: Boolean(row.done),
+    cancelled: itemType === 'event' && parsedNote.cancelled,
     completedAt: row.completed_at || null,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
@@ -62,7 +63,7 @@ function cleanTime(value) {
 }
 
 function parseStoredNote(value) {
-  const fallback = { note: value || '', itemType: 'todo', eventTime: '', endDate: '', endTime: '', allDay: false }
+  const fallback = { note: value || '', itemType: 'todo', eventTime: '', endDate: '', endTime: '', allDay: false, cancelled: false }
   if (typeof value !== 'string' || !value.startsWith(META_PREFIX)) return fallback
   const end = value.indexOf(META_SUFFIX)
   if (end < 0) return fallback
@@ -76,13 +77,14 @@ function parseStoredNote(value) {
       endDate: cleanDeadline(meta.endDate) || '',
       endTime: cleanTime(meta.endTime) || '',
       allDay: Boolean(meta.allDay),
+      cancelled: meta.cancelled === true,
     }
   } catch {
     return fallback
   }
 }
 
-function encodeStoredNote(note, itemType, eventTime, allDay, endDate = '', endTime = '') {
+function encodeStoredNote(note, itemType, eventTime, allDay, endDate = '', endTime = '', cancelled = false) {
   if (itemType !== 'event') return note || null
   const meta = JSON.stringify({
     itemType,
@@ -90,6 +92,7 @@ function encodeStoredNote(note, itemType, eventTime, allDay, endDate = '', endTi
     endDate: allDay ? endDate || '' : '',
     endTime: allDay ? '' : endTime || '',
     allDay: Boolean(allDay),
+    cancelled: Boolean(cancelled),
   })
   return `${META_PREFIX}${meta}${META_SUFFIX}${note ? `\n${note}` : ''}`
 }
@@ -169,13 +172,14 @@ export async function POST(request) {
     .insert({
       owner_id: identity.ownerId,
       title,
-      note: itemType === 'event' ? encodeStoredNote(note, itemType, eventTime, allDay, endDate, endTime) : note || null,
+      note: itemType === 'event' ? encodeStoredNote(note, itemType, eventTime, allDay, endDate, endTime, body.cancelled === true) : note || null,
       lane,
       deadline,
       item_type: itemType,
       event_time: eventTime,
       all_day: allDay,
-      done: false,
+      done: body.done === true,
+      completed_at: body.done === true ? new Date().toISOString() : null,
       updated_at: new Date().toISOString(),
     })
     .select('*')
@@ -188,10 +192,11 @@ export async function POST(request) {
         .insert({
           owner_id: identity.ownerId,
           title,
-          note: encodeStoredNote(note, itemType, eventTime, allDay, endDate, endTime),
+          note: encodeStoredNote(note, itemType, eventTime, allDay, endDate, endTime, body.cancelled === true),
           lane,
           deadline,
-          done: false,
+          done: body.done === true,
+          completed_at: body.done === true ? new Date().toISOString() : null,
           updated_at: new Date().toISOString(),
         })
         .select('*')
@@ -223,6 +228,14 @@ export async function PATCH(request) {
   const id = cleanText(body.id, 80)
   if (!id) return NextResponse.json({ error: 'ID is required.' }, { status: 400 })
 
+  const existing = await supabaseAdmin.from('andarun_todos').select('*')
+    .eq('id', id).in('owner_id', lookupOwnerIds(identity)).maybeSingle()
+  if (existing.error) return unavailable()
+  if (!existing.data) return NextResponse.json({ error: 'Todo not found.' }, { status: 404 })
+  const saved = toClient(existing.data)
+  const doneChanged = typeof body.done === 'boolean'
+  body = { ...saved, ...body }
+
   const update = { updated_at: new Date().toISOString() }
   if (typeof body.title === 'string') update.title = cleanText(body.title)
   if (typeof body.lane === 'string' && LANES.has(body.lane)) update.lane = body.lane
@@ -241,7 +254,7 @@ export async function PATCH(request) {
     const endDate = normalizeEndDate(deadline, cleanDeadline(body.endDate), allDay)
     const endTime = itemType === 'event' && !allDay ? cleanTime(body.endTime) : null
     update.note = itemType === 'event'
-      ? encodeStoredNote(cleanText(body.note, 500), itemType, eventTime, allDay, endDate, endTime)
+      ? encodeStoredNote(cleanText(body.note, 500), itemType, eventTime, allDay, endDate, endTime, body.cancelled === true)
       : cleanText(body.note, 500) || null
   }
   if (update.item_type === 'todo') {
@@ -249,8 +262,8 @@ export async function PATCH(request) {
     update.all_day = false
   }
   if (update.all_day) update.event_time = null
-  if (typeof body.done === 'boolean') update.done = body.done
-  if (typeof body.done === 'boolean') {
+  if (doneChanged) update.done = body.done
+  if (doneChanged) {
     update.completed_at = body.done ? new Date().toISOString() : null
   }
 
@@ -261,6 +274,7 @@ export async function PATCH(request) {
     .update(update)
     .eq('id', id)
     .in('owner_id', lookupOwnerIds(identity))
+    .eq('updated_at', existing.data.updated_at)
     .select('*')
     .maybeSingle()
 
@@ -274,13 +288,13 @@ export async function PATCH(request) {
       const endTime = itemType === 'event' && !allDay ? cleanTime(body.endTime) : null
 
       if (typeof body.title === 'string') fallbackUpdate.title = cleanText(body.title)
-      if (typeof body.note === 'string') fallbackUpdate.note = encodeStoredNote(cleanText(body.note, 500), itemType || 'todo', eventTime, allDay, endDate, endTime)
+      if (typeof body.note === 'string') fallbackUpdate.note = encodeStoredNote(cleanText(body.note, 500), itemType || 'todo', eventTime, allDay, endDate, endTime, body.cancelled === true)
       if (typeof body.lane === 'string' && LANES.has(body.lane)) fallbackUpdate.lane = body.lane
       if (typeof body.deadline === 'string') {
         fallbackUpdate.deadline = cleanDeadline(body.deadline)
         if (!fallbackUpdate.lane) fallbackUpdate.lane = laneFromDeadline(fallbackUpdate.deadline, 'today')
       }
-      if (typeof body.done === 'boolean') {
+      if (doneChanged) {
         fallbackUpdate.done = body.done
         fallbackUpdate.completed_at = body.done ? new Date().toISOString() : null
       }
@@ -291,18 +305,19 @@ export async function PATCH(request) {
         .update(fallbackUpdate)
         .eq('id', id)
         .in('owner_id', lookupOwnerIds(identity))
+        .eq('updated_at', existing.data.updated_at)
         .select('*')
         .maybeSingle()
 
       if (!fallback.error && fallback.data) return NextResponse.json({ todo: toClient(fallback.data) })
-      if (!fallback.error && !fallback.data) return NextResponse.json({ error: 'Todo not found.' }, { status: 404 })
+      if (!fallback.error && !fallback.data) return NextResponse.json({ error: 'Der Termin wurde inzwischen geändert. Bitte neu laden.' }, { status: 409 })
       console.error('[andarun-todos] PATCH fallback failed', fallback.error)
       return NextResponse.json({ error: fallback.error.message }, { status: 503 })
     }
     console.error('[andarun-todos] PATCH failed', error)
     return NextResponse.json({ error: error.message }, { status: 503 })
   }
-  if (!data) return NextResponse.json({ error: 'Todo not found.' }, { status: 404 })
+  if (!data) return NextResponse.json({ error: 'Der Termin wurde inzwischen geändert. Bitte neu laden.' }, { status: 409 })
 
   return NextResponse.json({ todo: toClient(data) })
 }

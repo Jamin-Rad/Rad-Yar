@@ -25,7 +25,7 @@ export function todayDuties(shifts, { date, time }) {
 
 export function todayEvents(todos, date, holidays = []) {
   const events = (Array.isArray(todos) ? todos : []).filter(item => {
-    if (item?.itemType !== 'event' || item.done || !item.deadline) return false
+    if (item?.itemType !== 'event' || item.done || item.cancelled || !item.deadline) return false
     return item.deadline === date || (item.allDay && item.deadline < date && item.endDate >= date)
   }).map(item => ({ ...item, date: item.deadline, startTime: item.allDay ? '' : item.eventTime || '' }))
   const existing = new Set(events.map(item => `${item.date}\u0000${item.title}`))

@@ -4,11 +4,10 @@ import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { getBadenWuerttembergCalendarEntriesInRange } from '@/utils/germanPublicHolidays'
 import { parseIcsEvents } from '@/utils/icsImport'
+import CalendarReminders from './CalendarReminders'
 import styles from './page.module.css'
 
 const STORAGE_KEY = 'andarun_todos_fallback_v1'
-const EVENT_NOTIFICATION_KEY = 'andarun_event_notifications_v1'
-const EVENT_REMINDER_MS = 15 * 60 * 1000
 
 const LANES = [
   {
@@ -67,23 +66,10 @@ function clearLocalTodos() {
   } catch {}
 }
 
-function readNotifiedEvents() {
-  try {
-    const parsed = JSON.parse(localStorage.getItem(EVENT_NOTIFICATION_KEY) || '[]')
-    return new Set(Array.isArray(parsed) ? parsed : [])
-  } catch {
-    return new Set()
-  }
-}
-
-function writeNotifiedEvents(items) {
-  try {
-    localStorage.setItem(EVENT_NOTIFICATION_KEY, JSON.stringify([...items].slice(-200)))
-  } catch {}
-}
-
 function todoPayload(todo) {
   return {
+    cancelled: Boolean(todo.cancelled),
+    done: Boolean(todo.done),
     title: todo.title || '',
     note: todo.note || '',
     lane: todo.lane || laneFromDeadline(todo.deadline),
@@ -119,16 +105,6 @@ function formatEventMeta(todo) {
   }
   if (todo.eventTime && todo.endTime) return `${todo.eventTime}-${todo.endTime}`
   return todo.eventTime || 'ohne Uhrzeit'
-}
-
-function eventStartDate(todo) {
-  if (todo?.itemType !== 'event' || todo.allDay || !todo.deadline || !todo.eventTime) return null
-  const date = new Date(`${todo.deadline}T${todo.eventTime}:00`)
-  return Number.isNaN(date.getTime()) ? null : date
-}
-
-function eventNotificationId(todo) {
-  return `${todo.id}:${todo.deadline || ''}:${todo.eventTime || ''}:${todo.title || ''}`
 }
 
 function formatMonthTitle(monthKey) {
@@ -314,7 +290,6 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   const [newEventForm, setNewEventForm] = useState(() => eventFormForDate())
   const [draggingId, setDraggingId] = useState(null)
   const [dropLaneId, setDropLaneId] = useState(null)
-  const [notificationPermission, setNotificationPermission] = useState('unsupported')
   const importInputRef = useRef(null)
   const showWorkPlan = apiBase === '/api/andarun/todos'
   const showTodos = view !== 'events'
@@ -323,10 +298,6 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   function resetComposer() {
     setForm(view === 'events' ? eventFormForDate() : emptyForm())
   }
-
-  useEffect(() => {
-    setNotificationPermission('Notification' in window ? Notification.permission : 'unsupported')
-  }, [])
 
   useEffect(() => {
     let active = true
@@ -414,45 +385,6 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
       localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
     }
   }, [todos, storageMode, loading])
-
-  useEffect(() => {
-    if (notificationPermission !== 'granted') return undefined
-
-    function notifyUpcomingEvents() {
-      const now = Date.now()
-      const notified = readNotifiedEvents()
-      let changed = false
-
-      for (const todo of todos) {
-        const start = eventStartDate(todo)
-        if (!start || todo.done) continue
-        const diff = start.getTime() - now
-        if (diff > EVENT_REMINDER_MS || diff < -5 * 60 * 1000) continue
-
-        const key = eventNotificationId(todo)
-        if (notified.has(key)) continue
-
-        const startsNow = diff <= 60 * 1000
-        const title = startsNow ? 'Termin jetzt' : 'Termin in 15 Minuten'
-        const body = `${todo.title}${todo.eventTime ? ` · ${formatEventMeta(todo)}` : ''}`
-        try {
-          new Notification(title, {
-            body,
-            tag: key,
-            requireInteraction: true,
-          })
-          notified.add(key)
-          changed = true
-        } catch {}
-      }
-
-      if (changed) writeNotifiedEvents(notified)
-    }
-
-    notifyUpcomingEvents()
-    const id = window.setInterval(notifyUpcomingEvents, 60 * 1000)
-    return () => window.clearInterval(id)
-  }, [todos, notificationPermission])
 
   const stats = useMemo(() => {
     const taskTodos = todos.filter(todo => todo.itemType !== 'event')
@@ -750,22 +682,6 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
     setDetailForm(formFromTodo(todo))
   }
 
-  async function requestEventNotifications() {
-    if (!('Notification' in window)) {
-      setNotificationPermission('unsupported')
-      setMessage('Benachrichtigungen werden in diesem Browser nicht unterstützt.')
-      return
-    }
-
-    const permission = await Notification.requestPermission()
-    setNotificationPermission(permission)
-    setMessage(
-      permission === 'granted'
-        ? 'Terminerinnerungen sind aktiv. Die App erinnert 15 Minuten vorher, solange sie geöffnet ist.'
-        : 'Benachrichtigungen sind nicht erlaubt.',
-    )
-  }
-
   function openNewEvent(day) {
     if (!day) return
     setDetailId(null)
@@ -833,6 +749,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
 
   async function deleteDetail() {
     if (!detailId) return
+    if (!window.confirm('Diesen Eintrag endgültig löschen? Zum Behalten bitte „Termin absagen“ verwenden.')) return
     await deleteTodo(detailId)
     closeDetail()
   }
@@ -840,7 +757,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   const detailTodo = detailId ? todos.find(todo => todo.id === detailId) : null
 
   return (
-    <main className={`${styles.page} ${view === 'events' ? styles.eventsPage : ''} ${theme === 'light' ? styles.lightPage : ''}`}>
+    <main dir="ltr" className={`${styles.page} ${view === 'events' ? styles.eventsPage : ''} ${theme === 'light' ? styles.lightPage : ''}`}>
       <section className={styles.hero}>
         {showHomeLink && <Link href={homeHref} className={styles.backLink}>← {homeLabel}</Link>}
         {view === 'events' ? (
@@ -1036,29 +953,11 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
               <ToolbarIcon name="upload" />
               .ics importieren
             </button>
-            <button
-              className={notificationPermission === 'granted' ? styles.notificationActive : styles.notificationBtn}
-              type="button"
-              onClick={requestEventNotifications}
-              disabled={notificationPermission === 'unsupported'}
-            >
-              <ToolbarIcon name="bell" />
-              {notificationPermission === 'granted' ? 'Erinnerungen an' : 'Erinnerungen'}
-            </button>
+            {showWorkPlan && <CalendarReminders />}
           </div>
         </header>
 
         {showWorkPlan && workMessage && <p className={styles.workPlanNotice}>{workMessage}</p>}
-        <p className={styles.notificationHint}>
-          {notificationPermission === 'granted'
-            ? 'Aktiv: Erinnerung 15 Minuten vor Terminen mit Uhrzeit.'
-            : notificationPermission === 'denied'
-              ? 'Blockiert: Benachrichtigungen bitte in den Browser-Einstellungen erlauben.'
-              : notificationPermission === 'unsupported'
-                ? 'Benachrichtigungen werden hier nicht unterstützt.'
-                : 'Optional: Erinnerungen für Termine mit Uhrzeit aktivieren.'}
-        </p>
-
         <div className={styles.calendarScroller}>
         <div className={styles.monthGrid}>
           {['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'].map(day => (
@@ -1069,9 +968,11 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
             const calendarMarkers = day ? calendarMarkersByDate.get(day) || [] : []
             const shift = day ? workByDate.get(day) : null
             const isToday = day === todayValue()
+            const weekday = day ? new Date(`${day}T12:00:00Z`).getUTCDay() : -1
+            const restDay = weekday === 0 || weekday === 6 || calendarMarkers.some(marker => marker.itemType === 'holiday')
             return (
               <div
-                className={`${styles.monthCell} ${!day ? styles.monthCellEmpty : ''} ${isToday ? styles.monthCellToday : ''}`}
+                className={`${styles.monthCell} ${!day ? styles.monthCellEmpty : ''} ${isToday ? styles.monthCellToday : ''} ${restDay ? styles.monthCellRest : ''}`}
                 key={day || `empty-${index}`}
                 onClick={() => openNewEvent(day)}
                 onKeyDown={event => {
@@ -1101,20 +1002,27 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                   </span>
                 ))}
                 {events.map(event => (
-                  <button
-                    className={`${styles.monthEvent} ${event.done ? styles.monthEventDone : ''}`}
-                    type="button"
-                    onClick={clickEvent => {
-                      clickEvent.stopPropagation()
-                      openDetail(event)
-                    }}
-                    onKeyDown={keyEvent => keyEvent.stopPropagation()}
-                    title="Termin bearbeiten"
-                    key={event.id}
-                  >
-                    {!event.allDay && <strong>{formatEventMeta(event)}</strong>}
-                    <span>{event.title}</span>
-                  </button>
+                  <div className={styles.monthEventRow} key={event.id}>
+                    <button
+                      className={`${styles.monthEvent} ${event.done ? styles.monthEventDone : ''} ${event.cancelled ? styles.monthEventCancelled : ''}`}
+                      type="button"
+                      onClick={clickEvent => { clickEvent.stopPropagation(); openDetail(event) }}
+                      onKeyDown={keyEvent => keyEvent.stopPropagation()}
+                      title={event.cancelled ? 'Abgesagt · Termin bearbeiten' : 'Termin bearbeiten'}
+                    >
+                      {!event.allDay && <strong>{formatEventMeta(event)}</strong>}
+                      <span>{event.title}</span>
+                      {event.cancelled && <small>Abgesagt</small>}
+                    </button>
+                    {!event.cancelled && <button
+                      type="button"
+                      className={`${styles.eventCheck} ${event.done ? styles.eventCheckDone : ''}`}
+                      aria-label={`${event.title}: ${event.done ? 'Wieder öffnen' : 'Als erledigt markieren'}`}
+                      aria-pressed={Boolean(event.done)}
+                      onKeyDown={keyEvent => keyEvent.stopPropagation()}
+                      onClick={clickEvent => { clickEvent.stopPropagation(); patchTodo(event.id, { done: !event.done }) }}
+                    >{event.done ? '✓' : ''}</button>}
+                  </div>
                 ))}
               </div>
             )
@@ -1267,7 +1175,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
               </label>
               <label>
                 Datum
-                <input type="date" value={detailForm.deadline} min={todayValue()} onChange={event => {
+                <input type="date" value={detailForm.deadline} onChange={event => {
                   const deadline = event.target.value
                   setDetailForm(prev => ({
                     ...prev,
@@ -1332,7 +1240,10 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
 
               <div className={`${styles.detailActions} ${detailForm.itemType === 'event' ? styles.detailActionsEvent : ''}`}>
                 <button className={styles.detailDeleteBtn} type="button" onClick={deleteDetail}>Löschen</button>
-                {detailForm.itemType !== 'event' && <button className={styles.detailGhostBtn} type="button" onClick={() => patchTodo(detailId, { done: !detailTodo.done }).then(closeDetail)}>
+                {detailForm.itemType === 'event' && <button className={styles.detailGhostBtn} type="button" onClick={() => patchTodo(detailId, { cancelled: !detailTodo.cancelled }).then(closeDetail)}>
+                  {detailTodo.cancelled ? 'Termin wieder aktivieren' : 'Termin absagen'}
+                </button>}
+                {!detailTodo.cancelled && <button className={styles.detailGhostBtn} type="button" onClick={() => patchTodo(detailId, { done: !detailTodo.done }).then(closeDetail)}>
                   {detailTodo.done ? 'Wieder öffnen' : 'Erledigt'}
                 </button>}
                 <button className={styles.addBtn} type="submit">Speichern</button>

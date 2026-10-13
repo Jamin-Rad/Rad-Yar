@@ -2281,3 +2281,56 @@
     padding: 7px;
   }
 }
+.monthCell.monthCellRest {
+  background: rgba(239, 112, 133, .13);
+}
+.monthCell.monthCellRest:hover { background: rgba(239, 112, 133, .21); }
+.eventsPage .monthCell.monthCellRest { background: rgba(230, 100, 122, .14); }
+.eventsPage .monthCell.monthCellRest:hover { background: rgba(230, 100, 122, .23); }
+.lightPage .monthCell.monthCellRest { background: #fff0f1; }
+.lightPage .monthCell.monthCellRest:hover { background: #ffe3e7; }
+.monthCell .monthSchoolHoliday,
+.eventsPage .monthCell .monthSchoolHoliday,
+.lightPage .monthCell .monthSchoolHoliday {
+  border: 1px solid rgba(57, 203, 135, .5);
+  background: rgba(34, 139, 91, .24);
+  color: #bcf8d8;
+}
+.monthCell .monthSchoolHoliday strong,
+.eventsPage .monthCell .monthSchoolHoliday strong { color: #73e9ad; }
+.lightPage .monthCell .monthSchoolHoliday { background: #e1f6e9; color: #176c41; }
+.lightPage .monthCell .monthSchoolHoliday strong { color: #176c41; }
+.monthEventRow { position: relative; min-width: 0; }
+.monthEventRow .monthEvent { width: 100%; padding-right: 42px; }
+.eventCheck {
+  position: absolute; top: 0; right: 0; width: 44px; height: 44px;
+  border: 0; background: transparent; color: #abf4cc;
+  padding: 0; cursor: pointer; font-size: 15px; isolation: isolate;
+}
+.eventCheck::before { content: ''; position: absolute; inset: 11px; border: 1px solid #9caed0; border-radius: 6px; z-index: -1; }
+.eventCheck:focus-visible { outline: 2px solid #7cebd3; outline-offset: 3px; }
+.eventCheck.eventCheckDone::before { background: #175b40; border-color: #73e9ad; }
+.monthEventRow .monthEventDone { opacity: .8; text-decoration: none; }
+.monthEventRow .monthEventDone span,
+.monthEventRow .monthEventDone strong { text-decoration: none; }
+.monthEventRow .monthEventCancelled { opacity: .65; border-style: dashed; }
+.monthEventCancelled span,
+.monthEventCancelled strong { text-decoration: line-through; }
+.monthEventCancelled small { font-size: 9px; text-decoration: none; }
+
+.reminderBody { padding: 24px; color: #dce6f3; }
+.reminderBody p { line-height: 1.6; font-size: 13px; }
+.reminderOptions { display: grid; gap: 18px; border: 0; padding: 12px 0 24px; }
+.reminderOptions legend { font-weight: 700; margin-bottom: 14px; }
+.reminderOptions label { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.reminderOptions input { accent-color: #56d5ad; width: 18px; height: 18px; }
+.reminderActions { display: flex; flex-wrap: wrap; gap: 10px; }
+.reminderActions button { min-height: 44px; }
+.reminderActions button:disabled { opacity: .45; cursor: not-allowed; }
+.lightPage .reminderBody { color: #213249; }
+.detailActions.detailActionsEvent { flex-wrap: wrap; }
+
+.detailModal.reminderModal { border-radius: 20px; background: #0d1828; border: 1px solid rgba(148,163,184,.24); font-family: var(--font-manrope, sans-serif); }
+.reminderModal .modalHeader { background: #101d30; }
+.reminderModal .modalHeader h2 { font-family: var(--font-manrope, sans-serif); font-size: 28px; font-style: normal; color: #edf4ff; }
+.reminderActions .addBtn { background: #4cdbbc; color: #06352e; border: 1px solid #4cdbbc; font-weight: 750; }
