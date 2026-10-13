@@ -80,11 +80,7 @@
 .ruleOverview > summary { padding: 14px 4px; color: var(--ink); font-size: 15px; font-weight: 800; line-height: 1.8; cursor: pointer; }
 .ruleOverview > summary:focus-visible { outline: 3px solid var(--teal-500); outline-offset: 3px; }
 
-/* Two clear headings, with their complete content grouped and indented beneath. */
-.foundationGroup { margin-block: 0 38px; }
-.foundationHeading { margin: 0 0 22px; padding-block-end: 10px; border-bottom: 2px solid color-mix(in srgb,var(--teal-700) 38%,var(--line)); color: var(--teal-700); font: 800 clamp(27px,2.5vw,34px)/1.35 var(--font-newsreader,Georgia,serif); }
-.foundationBody { margin-inline-start: 24px; min-width: 0; }
-:global(html[data-theme='dark']) .foundationHeading { color: #80d6d2; }
-@media(max-width:760px) { .foundationGroup { margin-block-end: 30px; }.foundationHeading { margin-bottom: 18px; font-size: 27px; }.foundationBody { margin-inline-start: 12px; } }
+.foundationBody { margin-block-start: 22px; margin-inline-start: 20px; min-width: 0; }
+@media(max-width:760px) { .foundationBody { margin-inline-start: 8px; } }
 
 .amyloidLocations { margin: 12px 0 0; padding-inline-start: 26px; }.amyloidLocations li { margin-block: 8px; padding-inline-start: 4px; line-height: 1.8; }.amyloidLocations li::marker { color: var(--teal-700); }

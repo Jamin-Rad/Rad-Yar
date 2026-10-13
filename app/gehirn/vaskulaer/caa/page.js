@@ -10,6 +10,7 @@ import { CAA_FOCUSED_COPY } from '@/data/caaFocusedCopy';
 import { CAA_INTERACTION_COPY } from '@/data/caaInteractions';
 import Link from 'next/link';
 import LessonHero from '@/components/LessonHero';
+import { TeachingGroup, TeachingGroups } from '@/components/lesson-template/InteractiveTeachingGroups';
 import { useLanguage } from '@/providers/LanguageProvider';
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus';
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress';
@@ -72,9 +73,8 @@ function TeachingList({ items, lang }) {
 }
 function ChapterContent({ id, lang }) {
   const c = value => pick(value, lang);
-  if (id === 'grundlagen') return <>
-    <section className={styles.foundationGroup} aria-labelledby="caa-pathology-title" data-foundation-group="pathology">
-      <h3 id="caa-pathology-title" className={styles.foundationHeading}>{c(COPY.pathologyTitle)}</h3>
+  if (id === 'grundlagen') return <TeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'}>
+    <TeachingGroup id="caa-pathology" title={c(COPY.pathologyTitle)}>
       <div className={styles.foundationBody}>
         <Paragraphs values={[COPY.basics[0]]} lang={lang} />
         <Note warning lang={lang}><Paragraphs values={[COPY.systemicWarning]} lang={lang} /></Note>
@@ -82,12 +82,11 @@ function ChapterContent({ id, lang }) {
         <AssociationExplorer title={COPY.associationsTitle} items={COPY.associations} lang={lang} />
         <Note lang={lang}><Paragraphs values={[COPY.amyloid[0]]} lang={lang} /><ul className={styles.amyloidLocations}>{COPY.amyloid.slice(1).map((location, index) => <li key={index}>{c(location)}</li>)}</ul></Note>
       </div>
-    </section>
-    <section className={styles.foundationGroup} aria-labelledby="caa-frequency-title" data-foundation-group="frequency">
-      <h3 id="caa-frequency-title" className={styles.foundationHeading}>{c(COPY.backgroundTitle)}</h3>
+    </TeachingGroup>
+    <TeachingGroup id="caa-frequency" title={c(COPY.backgroundTitle)} tone="secondary">
       <div className={styles.foundationBody}><BackgroundExplorer title={COPY.backgroundTitle} items={COPY.background} lang={lang} showTitle={false} /></div>
-    </section>
-  </>;
+    </TeachingGroup>
+  </TeachingGroups>;
   if (id === 'mrt-def') return <>
     <h3 className={styles.subheading}>{c(COPY.workflowTitle)}</h3>
     <ol className={`${reference.workflow} ${styles.workflow}`}>{COPY.workflow.map(([title, text, icon]) => <li key={c(title)}><span className={reference.stepIcon}><Icon name={icon} /></span><strong>{c(title)}</strong><p>{c(text)}</p></li>)}</ol>
@@ -100,9 +99,15 @@ function ChapterContent({ id, lang }) {
   </>;
   if (id === 'klinik') return <>
     <p className={reference.lead}>{c(COPY.clinicalIntro)}</p>
-    <ClinicalExplorer title={COPY.acuteTitle} items={COPY.acute} kind="acute" lang={lang} />
-    <Note lang={lang}><Paragraphs values={COPY.tfne} lang={lang} /></Note>
-    <ClinicalExplorer title={COPY.otherClinicalTitle} items={COPY.otherClinical} kind="other" lang={lang} />
+    <TeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'}>
+      <TeachingGroup id="caa-acute" title={c(COPY.acuteTitle)}>
+        <ClinicalExplorer title={COPY.acuteTitle} items={COPY.acute} kind="acute" lang={lang} showTitle={false} />
+        <Note lang={lang}><Paragraphs values={COPY.tfne} lang={lang} /></Note>
+      </TeachingGroup>
+      <TeachingGroup id="caa-chronic" title={c(COPY.otherClinicalTitle)} tone="secondary">
+        <ClinicalExplorer title={COPY.otherClinicalTitle} items={COPY.otherClinical} kind="other" lang={lang} showTitle={false} />
+      </TeachingGroup>
+    </TeachingGroups>
   </>;
   if (id === 'boston') return <>
     <Paragraphs values={COPY.bostonIntro} lang={lang} lead />

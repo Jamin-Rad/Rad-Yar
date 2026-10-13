@@ -5,6 +5,17 @@ import styles from './InteractiveTeachingGroups.module.css'
 
 const identity = value => value
 
+export function TeachingGroup({ id, title, tone, children }) {
+  return <section className={`${styles.group} ${tone === 'secondary' ? styles.secondary : ''}`} data-lesson-print-teaching-group aria-labelledby={`${id}-heading`}>
+    <header className={styles.groupHeader}><span aria-hidden="true" /><h3 id={`${id}-heading`}>{title}</h3></header>
+    {children}
+  </section>
+}
+
+export function TeachingGroups({ children, direction = 'ltr' }) {
+  return <div className={styles.lesson} data-lesson-print-teaching-groups dir={direction}>{children}</div>
+}
+
 function InteractiveTeachingGroup({ group, resolve, direction, renderVisual, renderExtra }) {
   const [selected, setSelected] = useState(0)
   const tabRefs = useRef([])
@@ -23,11 +34,7 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual, ren
     tabRefs.current[next]?.focus()
   }
 
-  return <section className={`${styles.group} ${group.tone === 'secondary' ? styles.secondary : ''}`} data-lesson-print-teaching-group aria-labelledby={`${prefix}-heading`}>
-    <header className={styles.groupHeader}>
-      <span aria-hidden="true" />
-      <h3 id={`${prefix}-heading`}>{resolve(group.title)}</h3>
-    </header>
+  return <TeachingGroup id={prefix} title={resolve(group.title)} tone={group.tone}>
     {group.intro ? <p className={styles.intro}>{resolve(group.intro)}</p> : null}
     <div className={`${styles.explorer} ${group.categoryInTabs ? styles.labelledTabs : ''} ${group.visualPlacement === 'inline' ? styles.inlineDiagramExplorer : ''}`} dir="ltr">
       <div className={styles.tabs} role="tablist" aria-orientation="vertical" aria-label={resolve(group.title)} dir={direction}>
@@ -73,11 +80,11 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual, ren
       </div>
     </div>
     {group.note ? <p className={styles.note}><strong>{resolve(group.noteTitle)}</strong>{resolve(group.note)}</p> : null}
-  </section>
+  </TeachingGroup>
 }
 
 export default function InteractiveTeachingGroups({ groups, resolve = identity, direction = 'ltr', renderVisual, renderExtra }) {
-  return <div className={styles.lesson} data-lesson-print-teaching-groups dir={direction}>
+  return <TeachingGroups direction={direction}>
     {groups.map(group => <InteractiveTeachingGroup key={group.id} group={group} resolve={resolve} direction={direction} renderVisual={renderVisual} renderExtra={renderExtra} />)}
-  </div>
+  </TeachingGroups>
 }

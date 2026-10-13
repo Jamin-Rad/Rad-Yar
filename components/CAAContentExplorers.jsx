@@ -79,13 +79,13 @@ export function BackgroundExplorer({ title, items, lang, showTitle = true }) {
   </div>
 }
 
-export function ClinicalExplorer({ title, items, kind, lang }) {
+export function ClinicalExplorer({ title, items, kind, lang, showTitle = true }) {
   const [symptom,setSymptom]=useState(0)
   const id='caa-'+kind+'-'+useId().replaceAll(':','')
   const acute=kind==='acute'
   const tfne=acute&&symptom===1
   return <div className={shared.panel + ' ' + styles.focused} data-learning-tool={kind}>
-    <ToolHeader title={title} lang={lang} />
+    {showTitle && <ToolHeader title={title} lang={lang} />}
     <Tabs items={acute?COPY.acuteTabs:COPY.otherTabs} value={symptom} onChange={setSymptom} id={id} label={title} lang={lang} />
     <div id={id+'-panel'} role="tabpanel" aria-labelledby={id+'-tab-'+symptom}>
       {acute&&<div hidden={!tfne}>
