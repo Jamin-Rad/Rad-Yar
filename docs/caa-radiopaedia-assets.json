@@ -1,0 +1,270 @@
+{
+  "reviewed": "2026-10-13",
+  "note": "Selected original slices in viewer order; no anatomy, contrast, annotation or image processing changes. This is a teaching subset, not the complete study.",
+  "assets": [
+    {
+      "case": 46082,
+      "study": 50433,
+      "sequence": "Axial SWI",
+      "file": "/educational/caa-cases/46082/01.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/23576834/b9c277bc14a608e3aefa9602b2e3ba.png",
+      "bytes": 49979
+    },
+    {
+      "case": 46082,
+      "study": 50433,
+      "sequence": "Axial SWI",
+      "file": "/educational/caa-cases/46082/02.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/23576833/a3f98fee30705e4005e3f8aac62df5.png",
+      "bytes": 51001
+    },
+    {
+      "case": 46082,
+      "study": 50433,
+      "sequence": "Axial SWI",
+      "file": "/educational/caa-cases/46082/03.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/23576830/af374bfe95339eba966dfbc32b3390.png",
+      "bytes": 50899
+    },
+    {
+      "case": 46082,
+      "study": 50433,
+      "sequence": "Axial SWI",
+      "file": "/educational/caa-cases/46082/04.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/23576828/7073358781155269de19c498357ae7.png",
+      "bytes": 51024
+    },
+    {
+      "case": 46082,
+      "study": 50433,
+      "sequence": "Axial SWI",
+      "file": "/educational/caa-cases/46082/05.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/23576827/0fda89ee3ff7ac9afc9752e300a0d0.png",
+      "bytes": 50654
+    },
+    {
+      "case": 46082,
+      "study": 50433,
+      "sequence": "Axial SWI",
+      "file": "/educational/caa-cases/46082/06.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/23576824/11f6a23283df697f10ad61bf9f19b0.png",
+      "bytes": 51612
+    },
+    {
+      "case": 46082,
+      "study": 50433,
+      "sequence": "Axial SWI",
+      "file": "/educational/caa-cases/46082/07.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/23576822/f3bb1b7eb0c7e065b64fc2fe599c13.png",
+      "bytes": 51166
+    },
+    {
+      "case": 46082,
+      "study": 50433,
+      "sequence": "Axial SWI",
+      "file": "/educational/caa-cases/46082/08.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/23576820/a91ae3fed4bc51ab1ac582ac74225e.png",
+      "bytes": 51880
+    },
+    {
+      "case": 46082,
+      "study": 50433,
+      "sequence": "Axial SWI",
+      "file": "/educational/caa-cases/46082/09.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/23576818/920c9a48faa6e857368a6c62ea9d5a.png",
+      "bytes": 52620
+    },
+    {
+      "case": 46082,
+      "study": 50433,
+      "sequence": "Axial SWI",
+      "file": "/educational/caa-cases/46082/10.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/23576817/f37720cf0e525da7f0680ab79417fb.png",
+      "bytes": 53084
+    },
+    {
+      "case": 46082,
+      "study": 50433,
+      "sequence": "Axial SWI",
+      "file": "/educational/caa-cases/46082/11.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/23576815/c3967faefac8ec8e4adc498cfc882a.png",
+      "bytes": 53546
+    },
+    {
+      "case": 46082,
+      "study": 50433,
+      "sequence": "Axial SWI",
+      "file": "/educational/caa-cases/46082/12.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/23576812/afe35bebd431a99913e2e8167c2a70.png",
+      "bytes": 53293
+    },
+    {
+      "case": 58758,
+      "study": 65980,
+      "sequence": "Axial non-contrast CT",
+      "file": "/educational/caa-cases/58758/01.jpeg",
+      "url": "https://prod-images-static.radiopaedia.org/images/36601333/808a9b97c17e3c83cc21ec64158091_big_gallery.jpeg",
+      "bytes": 36663
+    },
+    {
+      "case": 58758,
+      "study": 65980,
+      "sequence": "Axial non-contrast CT",
+      "file": "/educational/caa-cases/58758/02.jpeg",
+      "url": "https://prod-images-static.radiopaedia.org/images/36601334/af57080009fa593abdc8becf83a248_big_gallery.jpeg",
+      "bytes": 33797
+    },
+    {
+      "case": 58758,
+      "study": 65980,
+      "sequence": "Axial non-contrast CT",
+      "file": "/educational/caa-cases/58758/03.jpeg",
+      "url": "https://prod-images-static.radiopaedia.org/images/36601335/215fbfb0061b18584dbb941bed2de3_big_gallery.jpeg",
+      "bytes": 36831
+    },
+    {
+      "case": 58758,
+      "study": 65980,
+      "sequence": "Axial non-contrast CT",
+      "file": "/educational/caa-cases/58758/04.jpeg",
+      "url": "https://prod-images-static.radiopaedia.org/images/36601336/2edff2a3f0856eec9989b9b4f9ab33_big_gallery.jpeg",
+      "bytes": 32803
+    },
+    {
+      "case": 58758,
+      "study": 65980,
+      "sequence": "Axial non-contrast CT",
+      "file": "/educational/caa-cases/58758/05.jpeg",
+      "url": "https://prod-images-static.radiopaedia.org/images/36601337/6018fde80b47c87599684346366172_big_gallery.jpeg",
+      "bytes": 32249
+    },
+    {
+      "case": 58758,
+      "study": 65980,
+      "sequence": "Axial non-contrast CT",
+      "file": "/educational/caa-cases/58758/06.jpeg",
+      "url": "https://prod-images-static.radiopaedia.org/images/36601338/76ba0b4d19529dc738c57a1e434f9b_big_gallery.jpeg",
+      "bytes": 35405
+    },
+    {
+      "case": 58758,
+      "study": 65980,
+      "sequence": "Axial non-contrast CT",
+      "file": "/educational/caa-cases/58758/07.jpeg",
+      "url": "https://prod-images-static.radiopaedia.org/images/36601339/ae011d13ef67ac4ed3e847dc529258_big_gallery.jpeg",
+      "bytes": 33182
+    },
+    {
+      "case": 58758,
+      "study": 65980,
+      "sequence": "Axial non-contrast CT",
+      "file": "/educational/caa-cases/58758/08.jpeg",
+      "url": "https://prod-images-static.radiopaedia.org/images/36601340/0b18653cb2c2ac6d8de3cad1fba277_big_gallery.jpeg",
+      "bytes": 33137
+    },
+    {
+      "case": 58758,
+      "study": 65980,
+      "sequence": "Axial non-contrast CT",
+      "file": "/educational/caa-cases/58758/09.jpeg",
+      "url": "https://prod-images-static.radiopaedia.org/images/36601341/08fb91d3bdc0c1e2e847027107139b_big_gallery.jpeg",
+      "bytes": 33966
+    },
+    {
+      "case": 58758,
+      "study": 65980,
+      "sequence": "Axial non-contrast CT",
+      "file": "/educational/caa-cases/58758/10.jpeg",
+      "url": "https://prod-images-static.radiopaedia.org/images/36601342/8c7775c5b8bac487c6eb08e10f8db7_big_gallery.jpeg",
+      "bytes": 35477
+    },
+    {
+      "case": 58758,
+      "study": 65980,
+      "sequence": "Axial non-contrast CT",
+      "file": "/educational/caa-cases/58758/11.jpeg",
+      "url": "https://prod-images-static.radiopaedia.org/images/36601343/181c20738a19dbb7fef2116cbdf3a6_big_gallery.jpeg",
+      "bytes": 36195
+    },
+    {
+      "case": 58758,
+      "study": 65980,
+      "sequence": "Axial non-contrast CT",
+      "file": "/educational/caa-cases/58758/12.jpeg",
+      "url": "https://prod-images-static.radiopaedia.org/images/36601346/e26148954feb8d035ac4b4e1914f4e_big_gallery.jpeg",
+      "bytes": 35133
+    },
+    {
+      "case": 40475,
+      "study": 43048,
+      "sequence": "Axial Gradient Echo",
+      "file": "/educational/caa-cases/40475/01.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/16758669/b8f1cf624dd2463069dab40f054315.png",
+      "bytes": 216480
+    },
+    {
+      "case": 40475,
+      "study": 43048,
+      "sequence": "Axial Gradient Echo",
+      "file": "/educational/caa-cases/40475/02.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/16758684/149226fcba38f8864aca6399a431d9.png",
+      "bytes": 222280
+    },
+    {
+      "case": 40475,
+      "study": 43048,
+      "sequence": "Axial Gradient Echo",
+      "file": "/educational/caa-cases/40475/03.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/16758699/438b10f79e4405133d5cfc979a04d5.png",
+      "bytes": 213793
+    },
+    {
+      "case": 40475,
+      "study": 43048,
+      "sequence": "Axial Gradient Echo",
+      "file": "/educational/caa-cases/40475/04.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/16758718/e980b159df33c82f057373814d7afc.png",
+      "bytes": 209487
+    },
+    {
+      "case": 40475,
+      "study": 43048,
+      "sequence": "Axial Gradient Echo",
+      "file": "/educational/caa-cases/40475/05.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/16758728/b39df57eef60ea62e686f09556a097.png",
+      "bytes": 214341
+    },
+    {
+      "case": 40475,
+      "study": 43048,
+      "sequence": "Axial Gradient Echo",
+      "file": "/educational/caa-cases/40475/06.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/16758739/2d96b90c039ea2ed68f6bd47a56cc4.png",
+      "bytes": 205742
+    },
+    {
+      "case": 40475,
+      "study": 43048,
+      "sequence": "Axial Gradient Echo",
+      "file": "/educational/caa-cases/40475/07.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/16758750/cb2352f934cb2f24b82601ca041272.png",
+      "bytes": 206667
+    },
+    {
+      "case": 40475,
+      "study": 43048,
+      "sequence": "Axial Gradient Echo",
+      "file": "/educational/caa-cases/40475/08.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/16758766/41ae78a9160aec0a7651b596029d77.png",
+      "bytes": 199401
+    },
+    {
+      "case": 40475,
+      "study": 43048,
+      "sequence": "Axial Gradient Echo",
+      "file": "/educational/caa-cases/40475/09.png",
+      "url": "https://prod-images-static.radiopaedia.org/images/16758780/827bd90a95d1df6ac251bd1d78dc88.png",
+      "bytes": 189460
+    }
+  ]
+}

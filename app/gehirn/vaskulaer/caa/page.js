@@ -2,8 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { useLessonSectionScroll } from '@/hooks/useLessonSectionScroll';
+import CAACaseGallery from '@/components/CAACaseGallery';
 import LessonTakeHome from '@/components/LessonTakeHome';
-import { VesselExplorer, MarkerAtlas, WhiteMatterMarkers, TFNETimeline, BostonExplorer, PatternExplorer } from '@/components/CAALearningTools';
+import { VesselExplorer, MarkerAtlas, WhiteMatterMarkers, BostonExplorer, PatternExplorer } from '@/components/CAALearningTools';
+import { BackgroundExplorer, ClinicalExplorer, DifferentialComparison } from '@/components/CAAContentExplorers';
+import { CAA_FOCUSED_COPY } from '@/data/caaFocusedCopy';
 import { CAA_INTERACTION_COPY } from '@/data/caaInteractions';
 import Link from 'next/link';
 import LessonHero from '@/components/LessonHero';
@@ -72,8 +75,7 @@ function ChapterContent({ id, lang }) {
   if (id === 'grundlagen') return <>
     <Paragraphs values={COPY.basics} lang={lang} lead />
     <VesselExplorer lang={lang} />
-    <h3 className={styles.subheading}>{c(COPY.backgroundTitle)}</h3>
-    <TeachingList items={COPY.background} lang={lang} />
+    <BackgroundExplorer title={COPY.backgroundTitle} items={COPY.background} lang={lang} />
     <Note warning lang={lang}>{COPY.amyloid.map((paragraph, index) => <p className={styles.caveParagraph} key={index}><strong>{c(paragraph)}</strong></p>)}</Note>
     <h3 className={styles.subheading}>{c(COPY.workflowTitle)}</h3>
     <ol className={`${reference.workflow} ${styles.workflow}`}>{COPY.workflow.map(([title, text, icon]) => <li key={c(title)}><span className={reference.stepIcon}><Icon name={icon} /></span><strong>{c(title)}</strong><p>{c(text)}</p></li>)}</ol>
@@ -84,15 +86,13 @@ function ChapterContent({ id, lang }) {
     <MarkerAtlas copy={COPY} lang={lang}><Table headers={COPY.markerHeaders} rows={COPY.markerRows} lang={lang} /></MarkerAtlas>
     <h3 className={styles.subheading}>{c(COPY.wmTitle)}</h3>
     <WhiteMatterMarkers items={COPY.wm} lang={lang} />
+    <CAACaseGallery lang={lang} />
   </>;
   if (id === 'klinik') return <>
     <p className={reference.lead}>{c(COPY.clinicalIntro)}</p>
-    <TFNETimeline lang={lang} />
-    <h3 className={styles.subheading}>{c(COPY.acuteTitle)}</h3>
-    <TeachingList items={COPY.acute} lang={lang} />
+    <ClinicalExplorer title={COPY.acuteTitle} items={COPY.acute} kind="acute" lang={lang} />
     <Note lang={lang}><Paragraphs values={COPY.tfne} lang={lang} /></Note>
-    <h3 className={styles.subheading}>{c(COPY.otherClinicalTitle)}</h3>
-    <TeachingList items={COPY.otherClinical} lang={lang} />
+    <ClinicalExplorer title={COPY.otherClinicalTitle} items={COPY.otherClinical} kind="other" lang={lang} />
   </>;
   if (id === 'boston') return <>
     <Paragraphs values={COPY.bostonIntro} lang={lang} lead />
@@ -106,8 +106,8 @@ function ChapterContent({ id, lang }) {
   </>;
   if (id === 'differenzial') return <>
     <p className={reference.lead}>{c(COPY.ddIntro)}</p>
-    <PatternExplorer lang={lang} />
-    <Table headers={COPY.ddHeaders} rows={COPY.ddRows} lang={lang} />
+    <DifferentialComparison rows={COPY.ddRows} lang={lang} />
+    <details className={styles.ruleOverview}><summary>{c(CAA_FOCUSED_COPY.patternDisclosure)}</summary><PatternExplorer lang={lang} /></details>
     <h3 className={styles.subheading}>{c(COPY.redFlagsTitle)}</h3>
     <TeachingList items={COPY.redFlags} lang={lang} />
   </>;

@@ -10,11 +10,11 @@ const corticalDots = [[141, 59], [263, 65], [84, 109], [313, 118], [61, 172], [3
 const deepDots = [[151, 178], [249, 178], [173, 214], [227, 214]]
 const sulci = ['M111 77Q86 88 101 107Q118 125 94 136', 'M70 174Q91 181 82 201Q77 214 103 220', 'M288 89Q314 100 297 119Q282 129 305 147']
 
-function ToolHeader({ title, hint, lang }) {
+export function ToolHeader({ title, hint, lang }) {
   return <header className={styles.toolHeader}><h3>{pick(title, lang)}</h3><p>{pick(hint, lang)}</p></header>
 }
 
-function Tabs({ items, value, onChange, id, label, lang }) {
+export function Tabs({ items, value, onChange, id, label, lang }) {
   const select = (event, index) => {
     const delta = lang === 'fa' ? -1 : 1
     let next = index
@@ -47,6 +47,17 @@ export function BrainFigure({ pattern, caption, lang, lesionCount }) {
       {pattern === 'ich' && <path d="M91 123C68 125 66 153 79 170C91 182 110 169 114 149C119 135 105 118 91 123Z" fill="#d94856" stroke="#8f2547" strokeWidth="3" />}
       {lobar && corticalDots.slice(0, lesionCount ?? corticalDots.length).map(([cx, cy], index) => <circle key={index} cx={cx} cy={cy} r="4.7" fill="#53205f" stroke="#f0c2f0" strokeWidth="1.2" />)}
       {deep && deepDots.map(([cx, cy], index) => <circle key={index} cx={cx} cy={cy} r="5.7" fill="#087e88" stroke="#bceeee" strokeWidth="1.2" />)}
+      {pattern === 'avm' && <g fill="none" strokeLinecap="round">
+        <path d="M63 142Q104 124 87 160Q65 182 113 175Q136 145 99 137Q72 133 107 187Q136 199 141 161" stroke="#bb4460" strokeWidth="6" />
+        <path d="M92 135Q114 104 137 91M117 184Q151 194 163 227" stroke="#367a99" strokeWidth="5" />
+      </g>}
+      {pattern === 'cavernoma' && <g>
+        <path d="M74 146Q68 123 87 116Q103 105 118 118Q139 124 132 145Q139 164 119 171Q101 185 86 171Q65 166 74 146Z" fill="#542556" stroke="#281331" strokeWidth="5" />
+        {[[86,132,'#dd7887'],[106,124,'#b79a73'],[119,141,'#f1b2b8'],[101,152,'#943c59'],[85,157,'#b87f74'],[116,163,'#caa276']].map(([cx,cy,fill],i)=><circle key={i} cx={cx} cy={cy} r="9" fill={fill}/>)}
+      </g>}
+      {pattern === 'tumour' && <g>
+        {[[91,143,20],[290,287,14]].map(([cx,cy,r],i)=><g key={i}><circle cx={cx} cy={cy} r={r+19} fill="#8fb7d5" opacity=".55"/><circle cx={cx} cy={cy} r={r} fill="#ac456c" stroke="#efafba" strokeWidth="4"/><circle cx={cx-3} cy={cy+2} r={r/2} fill="#622550"/></g>)}
+      </g>}
       {['csah', 'css'].includes(pattern) && sulci.map((d, index) => <path key={index} d={d} fill="none" stroke={pattern === 'csah' ? '#df4557' : '#512454'} strokeWidth={pattern === 'csah' ? 7 : 4} strokeLinecap="round" />)}
     </svg>
     <figcaption>{pick(caption || COPY.schematic, lang)}</figcaption>
@@ -121,10 +132,10 @@ export function WhiteMatterMarkers({ items, lang }) {
   </div>)}</dl>
 }
 
-export function TFNETimeline({ lang }) {
+export function TFNETimeline({ lang, embedded = false }) {
   const [stage, setStage] = useState(0)
   const id = 'caa-tfne-' + useId().replaceAll(':', '')
-  return <div className={styles.panel} data-learning-tool="tfne">
+  return <div className={embedded ? styles.embedded : styles.panel} data-learning-tool="tfne">
     <ToolHeader title={COPY.tfneTitle} hint={COPY.tfneHint} lang={lang} />
     <Tabs items={COPY.tfneStages.map(item => item.title)} value={stage} onChange={setStage} id={id} label={COPY.tfneTitle} lang={lang} />
     <div id={id + '-panel'} role="tabpanel" aria-labelledby={id + '-tab-' + stage} className={styles.tfneBody}>

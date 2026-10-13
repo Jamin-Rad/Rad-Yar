@@ -117,3 +117,5 @@
 }
 @media (prefers-reduced-motion:reduce) { .panel button { transition: none; } }
 @media print { .panel,.wmRows { break-inside: avoid; } }
+
+.embedded { margin: 0; padding-top: 20px; }
