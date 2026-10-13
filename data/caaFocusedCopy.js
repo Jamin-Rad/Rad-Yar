@@ -2,6 +2,7 @@ const L = (de, en, fa) => ({ de, en, fa })
 export const CAA_FOCUSED_COPY = {
   backgroundHint: L('Wähle einen Blickwinkel: Die Zusammenhänge werden einzeln sichtbar.', 'Choose a perspective to explore one association at a time.', 'یک موضوع را انتخاب کنید تا ارتباط آن جداگانه روشن شود.'),
   demographicTabs: [L('Häufigkeit', 'Frequency', 'شیوع'), L('Alter', 'Age', 'سن'), L('Geschlechter', 'Sex', 'جنسیت')],
+  sexCaption: L('Ähnliche Häufigkeit bei Männern und Frauen', 'Similar frequency in men and women', 'شیوع تقریباً یکسان در مردان و زنان'),
   men: L('Männer', 'Men', 'مردان'),
   women: L('Frauen', 'Women', 'زنان'),
   appMutation: L('z. B. APP-Mutation', 'e.g. APP mutation', 'مثلاً جهش APP'),

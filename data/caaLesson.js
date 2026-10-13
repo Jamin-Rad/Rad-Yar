@@ -50,9 +50,10 @@ export const CAA_COPY = {
   ],
   associations: [
     { title: L('Alzheimer-Assoziation', 'Association with Alzheimer disease', 'ارتباط با آلزهایمر'), paragraphs: [
-      L('Bei Alzheimer ist eine begleitende CAA histologisch häufig: Eine Metaanalyse fand milde bis schwere CAA bei etwa 79 % der untersuchten Alzheimer-Fälle.', 'Coexisting CAA is common on histology in Alzheimer disease: a meta-analysis found mild-to-severe CAA in about 79% of the Alzheimer cases studied.', 'همراهی CAA در بررسی بافت‌شناسی آلزهایمر شایع است: یک متاآنالیز، CAA خفیف تا شدید را در حدود ۷۹٪ موارد آلزهایمرِ بررسی‌شده گزارش کرد.'),
+      L('Bei Menschen mit Alzheimer kommt eine CAA häufig zusätzlich vor.', 'CAA often coexists with Alzheimer disease.', 'CAA اغلب همراه با بیماری آلزهایمر دیده می‌شود.'),
+      L('In einer Metaanalyse wurde bei etwa 79 % der untersuchten Alzheimer-Fälle eine milde bis schwere CAA im Hirngewebe nachgewiesen.', 'A meta-analysis found mild-to-severe CAA in brain tissue in about 79% of the Alzheimer cases studied.', 'یک متاآنالیز، CAA خفیف تا شدید را در بافت مغز حدود ۷۹٪ موارد آلزهایمرِ بررسی‌شده نشان داد.'),
     ] },
-    { title: L('Down-Syndrom · genetische Prädisposition', 'Down syndrome · genetic predisposition', 'سندرم داون · زمینه ژنتیکی'), paragraphs: [
+    { title: L('Genetische Prädisposition', 'Genetic predisposition', 'زمینه ژنتیکی'), paragraphs: [
       L('Das APP-Gen liegt auf Chromosom 21. Bei Trisomie 21 führt die zusätzliche Genkopie zu mehr Amyloid-Vorläuferprotein und begünstigt frühe β-Amyloid-Ablagerungen, auch in Gefäßwänden.', 'The APP gene is located on chromosome 21. In trisomy 21, the additional gene copy increases amyloid precursor protein and favours early β-amyloid deposition, including in vessel walls.', 'ژن APP روی کروموزوم ۲۱ قرار دارد. در تریزومی ۲۱، نسخه اضافی ژن تولید پروتئین پیش‌ساز آمیلوئید را افزایش می‌دهد و زمینه رسوب زودرس β-آمیلوئید، از جمله در دیواره عروق، را فراهم می‌کند.'),
     ] },
   ],
@@ -140,7 +141,6 @@ export const CAA_COPY = {
   ],
   tfne: [
     L('Wandernde Parästhesien bei älteren Patienten können TFNE im Zusammenhang mit cSAH/cSS sein. Vor der Einordnung als TIA Blut-sensitive Sequenzen und den klinischen Kontext prüfen.', 'Spreading paraesthesias in older patients may be TFNE related to cSAH/cSS. Review blood-sensitive sequences and the clinical context before labelling them TIA.', 'پارستزی گسترش‌یابنده در سالمندان ممکن است TFNE مرتبط با cSAH یا cSS باشد. پیش از نسبت‌دادن به TIA، سکانس‌های حساس به خون و زمینه بالینی را بررسی کنید.'),
-    L('Als Mechanismus wird eine durch oberflächliches Blut ausgelöste kortikale Spreading-Depolarisation vermutet. Das erklärt den TIA-ähnlichen Verlauf ohne die Annahme eines arteriellen Embolus.', 'A cortical spreading depolarisation triggered by superficial blood is the proposed mechanism. It explains the TIA-like course without assuming an arterial embolus.', 'مکانیسم پیشنهادی، دپلاریزاسیون گسترش‌یابنده قشری در اثر خون سطحی است. این مکانیسم سیر شبیه TIA را بدون فرض آمبولی شریانی توضیح می‌دهد.'),
   ],
   takehome: [
     { title: L("Verteilung zuerst.", "Distribution first.", "ابتدا توزیع ضایعات."), detail: L('Verteilung zuerst: lobär spricht für CAA, tief eher für Arteriolosklerose.', 'Distribution first: lobar favours CAA, deep favours arteriolosclerosis.', 'ابتدا توزیع: لوبار به نفع CAA و عمقی بیشتر به نفع آرتریولواسکلروز است.') },

@@ -44,6 +44,11 @@
 
 :global(html[data-theme='dark']) .ageBand strong { color: #80d6d2; }
 
-.textOnly { grid-template-columns: minmax(0,1fr); }
+
 
 .tfneDefinition { padding-top: 22px; }
+
+.sexSchema { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: 14px; align-items: center; padding-block: 24px; }
+.sexSchema span { padding: 20px 8px; border: 1px solid var(--line); border-block-end: 3px solid var(--teal-700); border-radius: 8px; color: var(--ink); font-weight: 800; font-size: 17px; }
+.sexSchema strong { font-size: 36px; color: var(--teal-700); }
+:global(html[data-theme='dark']) .sexSchema strong { color: #80d6d2; }

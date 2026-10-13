@@ -17,6 +17,10 @@ function ConceptFigure({ kind, lang }) {
     <div className={styles.ageBand}><span>{pick(COPY.sporadic, lang)}</span><strong><bdi dir="ltr">&gt;60</bdi></strong></div>
     <div className={styles.ageBand}><span>{pick(COPY.hereditary, lang)}</span><strong className={styles.earlierOnset}>{pick(COPY.earlier, lang)}</strong><p>{pick(COPY.appMutation, lang)}</p></div>
     </figure>
+  if (kind === 'sex') return <figure className={styles.concept}>
+    <div className={styles.sexSchema}><span>{pick(COPY.men,lang)}</span><strong aria-hidden="true">≈</strong><span>{pick(COPY.women,lang)}</span></div>
+    <figcaption>{pick(COPY.sexCaption,lang)}</figcaption>
+  </figure>
   if (kind === 'amyloid') return <figure className={styles.concept}>
     <svg viewBox="0 0 380 230" role="img" aria-label={pick(title, lang)} data-no-zoom>
       <circle cx="100" cy="100" r="62" fill="#b598bf" stroke="#765287" strokeWidth="3" /><circle cx="100" cy="100" r="38" fill="#b94059" />
@@ -68,8 +72,8 @@ export function BackgroundExplorer({ title, items, lang, showTitle = true }) {
   return <div className={shared.panel + ' ' + styles.focused} data-learning-tool="background">
     {showTitle && <ToolHeader title={title} lang={lang} />}
     <div className={styles.demographicTabs}><Tabs items={COPY.demographicTabs} value={topic} onChange={setTopic} id={id} label={title} lang={lang} /></div>
-    <div id={id+'-panel'} role="tabpanel" aria-labelledby={id+'-tab-'+topic} className={shared.explorerBody + (topic === 2 ? ' ' + styles.textOnly : '')}>
-      {topic !== 2 && (topic === 0 ? <BrainFigure pattern="lobar" lang={lang} /> : <ConceptFigure kind="age" lang={lang} />)}
+    <div id={id+'-panel'} role="tabpanel" aria-labelledby={id+'-tab-'+topic} className={shared.explorerBody}>
+      {topic === 0 ? <BrainFigure pattern="lobar" lang={lang} /> : <ConceptFigure kind={topic === 1 ? 'age' : 'sex'} lang={lang} />}
       <div className={shared.copy}><h4>{pick(items[topic].title,lang)}</h4><Paragraphs values={items[topic].paragraphs} lang={lang} /></div>
     </div>
   </div>
