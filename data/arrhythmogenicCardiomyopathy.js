@@ -1,0 +1,91 @@
+export const L = (de, en, fa) => ({ de, en, fa })
+export const pick = (value, lang) => typeof value === 'string' ? value : value?.[lang] || value?.de || ''
+export const ACM_ID = 'arvc'
+export const ACM_PATH = '/thorax/kardio/arvc'
+export const TITLE = L('Arrhythmogene Kardiomyopathie', 'Arrhythmogenic cardiomyopathy', 'کاردیومیوپاتی آریتموژنیک')
+export const CHAPTERS = [
+  { id: 'spektrum', icon: 'heart', title: L('Welcher Ventrikel ist betroffen?', 'Which ventricle is involved?', 'کدام بطن درگیر است؟') },
+  { id: 'cine', icon: 'scan', title: L('Cine: Bewegung und Funktion', 'Cine: motion and function', 'Cine: حرکت و عملکرد') },
+  { id: 'lge', icon: 'layers', title: L('LGE: die Narbe lokalisieren', 'LGE: locate the scar', 'LGE: محل اسکار را پیدا کنید') },
+  { id: 'kriterien', icon: 'chart', title: L('2010 TFC und Padua 2020', '2010 TFC and Padua 2020', 'معیارهای TFC 2010 و Padua 2020') },
+  { id: 'differenzial', icon: 'branch', title: L('Mimics und diagnostische Fallen', 'Mimics and diagnostic pitfalls', 'افتراق‌ها و دام‌های تشخیصی') },
+  { id: 'faelle', icon: 'case', title: L('Zwei Radiopaedia-Fälle', 'Two Radiopaedia cases', 'دو کیس رادیوپدیا') },
+  { id: 'befund', icon: 'report', title: L('Befund und Selbsttest', 'Reporting and self-check', 'گزارش‌نویسی و خودآزمایی') },
+  { id: 'takehome', icon: 'spark', title: L('Take Home', 'Take Home', 'جمع‌بندی'), emphasis: true },
+]
+export const TRACKED_IDS = CHAPTERS.filter(item => !item.emphasis).map(item => item.id)
+export const UI = {
+  path: L('Lernpfad', 'Learning path', 'مسیر یادگیری'), read: L('gelesen', 'read', 'خوانده‌شده'),
+  mark: L('Abschnitt als gelesen markieren', 'Mark section as read', 'علامت‌گذاری بخش به‌عنوان خوانده‌شده'), marked: L('Als gelesen markiert', 'Marked as read', 'خوانده شد'),
+  all: L('Alles als gelesen', 'Mark all read', 'ثبت خواندن کل درس'), allDone: L('Alles gelesen', 'All read', 'کل درس خوانده شد'),
+  next: L('Lektion fortsetzen', 'Continue lesson', 'ادامه درس'), quiz: L('MCQ starten', 'Start MCQs', 'شروع MCQ'), cards: L('Flashcards', 'Flashcards', 'فلش‌کارت‌ها'),
+  key: L('Merke', 'Key point', 'نکته کلیدی'), cave: L('CAVE', 'Caution', 'احتیاط'), schematic: L('Lehrschema · keine Patientenaufnahme', 'Teaching schematic · not a patient scan', 'شماتیک آموزشی · تصویر بیمار نیست'),
+  sources: L('Quellen & Vertiefung', 'Sources & further reading', 'منابع و مطالعه بیشتر'), reveal: L('Besprechung aufdecken', 'Reveal discussion', 'نمایش تحلیل کیس'),
+  hide: L('Besprechung ausblenden', 'Hide discussion', 'پنهان کردن تحلیل'), reset: L('Zurücksetzen', 'Reset', 'شروع دوباره'),
+  correct: L('Richtig.', 'Correct.', 'درست است.'), retry: L('Noch einmal prüfen.', 'Review your answer.', 'پاسخ را دوباره بررسی کنید.'),
+  auth: L('Anmelden, um den Lektionsabschluss im Profil zu speichern.', 'Sign in to save lesson completion to your profile.', 'برای ذخیره پایان درس در پروفایل وارد شوید.'),
+}
+export const PHENOTYPES = [
+  { id: 'rv', name: 'ARVC', text: L('Rechtsdominant: regionale RV-Bewegungsstörung, Dilatation und/oder systolische Dysfunktion. Der LV muss trotzdem untersucht werden.', 'Right dominant: regional RV motion abnormality, dilatation and/or systolic dysfunction. Still examine the LV.', 'غلبه درگیری راست: اختلال حرکت موضعی، اتساع و/یا اختلال عملکرد سیستولیک RV. بطن چپ را هم بررسی کنید.') },
+  { id: 'both', name: L('Biventrikulär', 'Biventricular', 'دو بطنی'), text: L('RV-Merkmale zusammen mit nichtischämischer LV-Narbe. Nicht jede LV-Narbe bei ARVC hat dieselbe Ursache.', 'RV features together with non-ischaemic LV scar. Do not assume that every LV scar in ARVC has the same cause.', 'یافته‌های RV همراه اسکار غیرایسکمیک LV. هر اسکار بطن چپ در بیمار ARVC را خودکار به همان علت نسبت ندهید.') },
+  { id: 'lv', name: 'ALVC', text: L('Linksdominant: subepikardiale/midmyokardiale LV-Narbe, teils bei erhaltener EF. Isolierte ALVC erfordert nach Padua eine passende pathogene/wahrscheinlich pathogene Variante.', 'Left dominant: subepicardial/mid-wall LV scar, sometimes with preserved EF. Isolated ALVC requires a compatible pathogenic/likely pathogenic variant under Padua.', 'غلبه درگیری چپ: اسکار ساب‌اپیکاردیال/میدوال LV، گاهی با EF حفظ‌شده. در Padua، تشخیص ALVC منفرد به واریانت بیماری‌زای یا احتمالاً بیماری‌زای سازگار نیاز دارد.') },
+]
+export const BASICS = L('ACM ist eine häufig erbliche Myokarderkrankung mit Narbenbildung und ventrikulären Arrhythmien. ARVC ist der rechtsdominante Teil dieses Spektrums; linksdominante und biventrikuläre Formen gehören dazu.', 'ACM is an often inherited myocardial disease with scar formation and ventricular arrhythmias. ARVC is its right-dominant phenotype; left-dominant and biventricular forms also occur.', 'ACM بیماری اغلب ارثی میوکارد با تشکیل اسکار و آریتمی‌های بطنی است. ARVC فنوتیپ با غلبه درگیری راست در این طیف است؛ شکل‌های چپ‌غالب و دو بطنی هم وجود دارند.')
+export const CLINIC = L('Synkope, ventrikuläre Extrasystolen/VT, familiärer plötzlicher Herztod oder wiederkehrende myocarditisähnliche Episoden lenken den Verdacht. EKG/Holter, Familienanamnese und Genetik ergänzen die Bildgebung.', 'Syncope, ventricular ectopy/VT, familial sudden death or recurrent myocarditis-like episodes raise suspicion. ECG/Holter, family history and genetics complement imaging.', 'سنکوپ، اکستراسیستول/VT بطنی، مرگ ناگهانی خانوادگی یا حملات تکراری شبیه میوکاردیت شک را افزایش می‌دهند. ECG/هولتر، سابقه خانوادگی و ژنتیک مکمل تصویربرداری‌اند.')
+export const PROTOCOL = [
+  ['Cine bSSFP', L('Vollständiger Kurzachsen-Stack + axiale/Long-axis- und RVOT-Ebenen: Volumetrie beider Ventrikel, regionale Bewegung in ≥2 Ebenen prüfen.', 'Complete short-axis stack plus axial/long-axis and RVOT views: both ventricular volumes, check regional motion in ≥2 planes.', 'پشته کامل محور کوتاه همراه نماهای آگزیال/محور بلند و RVOT: حجم هر دو بطن و بررسی حرکت موضعی در ≥۲ صفحه.')],
+  ['LGE / PSIR', L('RV und LV in orthogonalen Ebenen; dünne RV-Wand und Partialvolumen beachten.', 'RV and LV in orthogonal planes; account for the thin RV wall and partial volume.', 'RV و LV در صفحات عمود بر هم؛ دیواره نازک RV و partial volume را در نظر بگیرید.')],
+  ['T1 / T2 / ECV', L('Bei Entzündungsverdacht ergänzen; scannerabhängige Referenzen. Mapping allein diagnostiziert keine ACM.', 'Add when inflammation is suspected; use scanner-specific references. Mapping alone does not diagnose ACM.', 'در شک به التهاب اضافه شوند؛ مقادیر مرجع وابسته به دستگاه‌اند. Mapping به‌تنهایی ACM را تشخیص نمی‌دهد.')],
+]
+export const CINE_NOTE = L('Dyskinesie = systolische Auswärtsbewegung; Akinesie = fehlende Bewegung. Hypokinesie allein erfüllt das regionale RV-Kriterium der 2010 TFC nicht. Arrhythmieartefakte und normale Anheftungen in mehreren Ebenen prüfen.', 'Dyskinesia = outward systolic motion; akinesia = absent motion. Hypokinesia alone does not fulfil the 2010 TFC regional RV criterion. Check arrhythmia artefacts and normal tethering in multiple planes.', 'دیسکینزی یعنی حرکت رو به بیرون در سیستول؛ آکینزی یعنی نبود حرکت. هیپوکینزی به‌تنهایی معیار موضعی RV در TFC 2010 را برآورده نمی‌کند. آرتیفکت آریتمی و اتصالات طبیعی را در چند صفحه بررسی کنید.')
+export const LGE_PATTERNS = [
+  { id: 'rv', name: L('RV-Narbe', 'RV scar', 'اسکار RV'), text: L('Transmurales RV-LGE in mindestens einer Region, in zwei orthogonalen Ansichten bestätigt: strukturelles Major-Kriterium nach Padua.', 'Transmural RV LGE in at least one region, confirmed in two orthogonal views: a Padua major structural criterion.', 'LGE ترانس‌مورال RV در دست‌کم یک ناحیه، تأییدشده در دو نمای عمود بر هم: معیار ساختاری ماژور Padua.') },
+  { id: 'lv', name: L('LV-Stria / Ring', 'LV stripe / ring', 'نوار / حلقه LV'), text: L('Nichtischämisches subepikardiales oder Mid-wall-LGE in ≥1 LV-Segment, in zwei Ebenen bestätigt; junktionales LGE zählt nicht. Ein Ringmuster ist ein Hinweis, kein Beweis für ALVC.', 'Non-ischaemic subepicardial or mid-wall LGE in ≥1 LV segment, confirmed in two planes; junctional LGE is excluded. A ring pattern is a clue, not proof of ALVC.', 'LGE غیرایسکمیک ساب‌اپیکاردیال یا میدوال در ≥۱ سگمنت LV و تأیید در دو صفحه؛ LGE محل اتصال حساب نمی‌شود. الگوی حلقوی سرنخ است، اثبات ALVC نیست.') },
+  { id: 'insertion', name: L('Insertionen', 'Insertion points', 'محل اتصال RV'), text: L('Isoliertes RV-Insertions-LGE ist unspezifisch. Es erfüllt das LV-Narbenkriterium nach Padua nicht.', 'Isolated RV insertion-point LGE is nonspecific. It does not fulfil the Padua LV scar criterion.', 'LGE منفرد محل اتصال RV غیراختصاصی است و معیار اسکار LV در Padua را برآورده نمی‌کند.') },
+  { id: 'ischaemic', name: L('Ischämisches Muster', 'Ischaemic pattern', 'الگوی ایسکمیک'), text: L('Subendokardiales bis transmurales LV-LGE im Koronarterritorium: zunächst eine ischämische Ursache prüfen.', 'Subendocardial-to-transmural LV LGE in a coronary territory: assess an ischaemic cause first.', 'LGE ساب‌اندوکاردیال تا ترانس‌مورال LV در قلمرو کرونری: ابتدا علت ایسکمیک را بررسی کنید.') },
+]
+export const DIFFERENTIALS = [
+  [L('Sportherz', 'Athlete’s heart', 'قلب ورزشکار'), L('Oft proportionale biventrikuläre Vergrößerung, erhaltene Funktion; Sport-spezifische Normwerte. Größe allein ist kein ACM-Beweis.', 'Often balanced ventricular enlargement with preserved function; use athlete-specific references. Size alone does not prove ACM.', 'اغلب بزرگی متناسب هر دو بطن با عملکرد حفظ‌شده؛ مرجع ویژه ورزشکار. اندازه به‌تنهایی ACM را اثبات نمی‌کند.')],
+  [L('Druck-/Volumenbelastung', 'Pressure / volume overload', 'بار فشاری / حجمی'), L('Pulmonale Hypertonie, Shunt (ASD/PAPVR), schwere Trikuspidalinsuffizienz: Ursache der RV-Dilatation gezielt suchen.', 'Pulmonary hypertension, shunt (ASD/PAPVR), severe tricuspid regurgitation: actively seek a cause of RV dilatation.', 'فشار خون ریوی، شانت ASD/PAPVR و نارسایی شدید تریکوسپید: علت اتساع RV را هدفمند جست‌وجو کنید.')],
+  [L('Myokarditis / DSP', 'Myocarditis / DSP', 'میوکاردیت / DSP'), L('Ödem und subepikardiales LGE können überlappen. Rezidive, Familie und Genetik helfen; eine DSP-Hot-Phase kann Myokarditis imitieren.', 'Oedema and subepicardial LGE overlap. Recurrence, family history and genetics help; a DSP hot phase can mimic myocarditis.', 'ادم و LGE ساب‌اپیکاردیال هم‌پوشانی دارند. عود، سابقه خانوادگی و ژنتیک کمک می‌کنند؛ فاز فعال DSP می‌تواند شبیه میوکاردیت باشد.')],
+  [L('Sarkoidose', 'Sarcoidosis', 'سارکوئیدوز'), L('Multifokales LGE, AV-Block und extrakardiale Zeichen prüfen; FDG-PET kann die Aktivitätsfrage ergänzen.', 'Assess multifocal LGE, AV block and extracardiac clues; FDG-PET can complement assessment of activity.', 'LGE چندکانونی، بلوک AV و نشانه‌های خارج قلبی بررسی شوند؛ FDG-PET می‌تواند ارزیابی فعالیت را تکمیل کند.')],
+  [L('Artefakt / Fett', 'Artefact / fat', 'آرتیفکت / چربی'), L('Epikardiales Fett, Partialvolumen, Moderatorband und Atem-/Gatingartefakte nicht als Erkrankung werten.', 'Do not mistake epicardial fat, partial volume, moderator band or breathing/gating artefacts for disease.', 'چربی اپیکارد، partial volume، moderator band و آرتیفکت تنفس/gating را بیماری تلقی نکنید.')],
+]
+export const CASES = [
+  { id: '57972', author: 'Azza Elgendy', url: 'https://radiopaedia.org/cases/arrhythmogenic-right-ventricular-cardiomyopathy-4', viewer: 'https://radiopaedia.org/cases/57972/studies/64966', label: L('35 Jahre · Dyspnoe und Belastungsintoleranz', 'Age 35 · dyspnoea and exercise intolerance', '۳۵ ساله · تنگی نفس و عدم تحمل فعالیت'), task: L('Cine zuerst: Wo bewegt sich die RV-Wand paradox? Schließt fehlendes LGE eine ARVC aus?', 'Start with cine: where does the RV wall move paradoxically? Does absent LGE exclude ARVC?', 'ابتدا Cine: کدام قسمت دیواره RV حرکت پارادوکسیک دارد؟ آیا نبود LGE، ARVC را رد می‌کند؟'), discussion: L('Die Quelle zeigt RV-Vergrößerung und regionale Dyskinesie, RVEDVi 116 mL/m², RVEF <40%, ohne abnormes LGE. Das ergibt ein Major-Kriterium in der morphofunktionellen CMR-Kategorie, nicht zwei unabhängige Kriterien. Gatingartefakte beachten.', 'The source shows RV enlargement and regional dyskinesia, RVEDVi 116 mL/m² and RVEF <40%, without abnormal LGE. These yield one major criterion within the morphofunctional CMR category, not two independent criteria. Note gating artefacts.', 'در منبع، بزرگی RV و دیسکینزی موضعی، RVEDVi برابر ۱۱۶ و RVEF کمتر از ۴۰٪، بدون LGE غیرطبیعی گزارش شده است. این‌ها یک معیار ماژور در دسته مورفولوژی/عملکرد CMR می‌سازند، نه دو معیار مستقل. آرتیفکت gating را در نظر بگیرید.') },
+  { id: '69431', author: 'Vlad Barskiy', url: 'https://radiopaedia.org/cases/arrhythmogenic-right-ventricular-cardiomyopathy-3', viewer: 'https://radiopaedia.org/cases/69431/studies/79307', label: L('10 Jahre · zufällig entdeckte Arrhythmie', 'Age 10 · incidental arrhythmia', '۱۰ ساله · آریتمی اتفاقی'), task: L('Mehrere RV-Aneurysmen: Bewegung, Volumen und EF zusammen lesen. Welche Einschränkung haben Erwachsenen-Grenzwerte hier?', 'Multiple RV aneurysms: read motion, volume and EF together. What limits adult thresholds in this patient?', 'چند آنوریسم RV: حرکت، حجم و EF را با هم بخوانید. استفاده از آستانه‌های بزرگسالان در این بیمار چه محدودیتی دارد؟'), discussion: L('Die Quelle nennt RVEDVi 154 mL/m² und RVEF 29% sowie prominente LV-Trabekulierung. Bei Kindern altersgerechte Referenzen und spezialisierte Gesamtbeurteilung verwenden. Trabekulierung allein beweist weder LVNC-Erkrankung noch biventrikuläre ACM.', 'The source reports RVEDVi 154 mL/m² and RVEF 29%, with prominent LV trabeculation. In children, use age-appropriate references and specialist integrated assessment. Trabeculation alone proves neither LVNC disease nor biventricular ACM.', 'منبع RVEDVi برابر ۱۵۴ و RVEF برابر ۲۹٪ و ترابکولاسیون برجسته LV را گزارش می‌کند. در کودکان مرجع متناسب با سن و ارزیابی تخصصی یکپارچه لازم است. ترابکولاسیون به‌تنهایی بیماری LVNC یا ACM دو بطنی را اثبات نمی‌کند.') },
+]
+export const REPORT_ITEMS = [
+  L('Bildqualität / Rhythmusartefakte', 'Image quality / rhythm artefacts', 'کیفیت تصویر / آرتیفکت ریتم'),
+  L('RVEDVi, RVESVi, RVEF + Referenz', 'RVEDVi, RVESVi, RVEF + reference', 'RVEDVi، RVESVi، RVEF و مرجع'),
+  L('Regionale Bewegung: Ort + Bestätigung', 'Regional motion: location + confirmation', 'حرکت موضعی: محل و تأیید'),
+  L('LV-Größe, LVEF und regionale Funktion', 'LV size, LVEF and regional function', 'اندازه LV، LVEF و عملکرد موضعی'),
+  L('LGE: Ventrikel, Segmente, Schicht, Ausdehnung', 'LGE: ventricle, segments, layer, extent', 'LGE: بطن، سگمنت، لایه و وسعت'),
+  L('Mimics, Kriterienversion und klinische Korrelation', 'Mimics, criteria version and clinical correlation', 'افتراق‌ها، نسخه معیار و تطبیق بالینی'),
+]
+export const REPORT = L('Lehrfall: RVEDVi 118 mL/m², RVEF 38%. Regionale Dyskinesie der basalen freien RV-Wand, in zwei Cine-Ebenen bestätigt. LV nicht dilatiert, LVEF 57%; subepikardiales inferolaterales LV-LGE in zwei Ebenen. Morphofunktionelles RV-Major-Kriterium nach 2010 TFC erfüllt; zusätzliche LV-Narbe. Bildgebung verdächtig auf biventrikuläre ACM. Integrierte Beurteilung mit EKG/Holter, Familienanamnese und Genetik sowie Ausschluss von Mimics erforderlich.', 'Teaching case: RVEDVi 118 mL/m², RVEF 38%. Regional dyskinesia of the basal RV free wall confirmed in two cine planes. Non-dilated LV, LVEF 57%; subepicardial inferolateral LV LGE in two planes. The 2010 TFC RV morphofunctional major criterion is fulfilled; additional LV scar. Imaging is suspicious for biventricular ACM. Integrate ECG/Holter, family history and genetics and exclude mimics.', 'کیس آموزشی: RVEDVi برابر ۱۱۸ و RVEF برابر ۳۸٪. دیسکینزی موضعی دیواره آزاد بازال RV در دو صفحه Cine تأیید می‌شود. LV غیرمتسع با LVEF برابر ۵۷٪؛ LGE ساب‌اپیکاردیال اینفرولاترال LV در دو صفحه. معیار ماژور مورفولوژی/عملکرد RV طبق TFC 2010 برقرار است؛ اسکار LV نیز وجود دارد. یافته‌ها مشکوک به ACM دو بطنی‌اند. تطبیق با ECG/هولتر، سابقه خانوادگی و ژنتیک و رد افتراق‌ها لازم است.')
+export const TAKEHOME = [
+  L('ACM betrifft RV, LV oder beide: immer beide Ventrikel prüfen.', 'ACM involves RV, LV or both: always examine both ventricles.', 'ACM می‌تواند RV، LV یا هر دو را درگیر کند؛ همیشه هر دو بطن را بررسی کنید.'),
+  L('2010 TFC: regionale RV-Störung UND Volumen-/EF-Grenzwert; eine Kategorie nicht doppelt zählen.', '2010 TFC: regional RV abnormality AND a volume/EF threshold; do not double-count one category.', 'TFC 2010: اختلال موضعی RV و آستانه حجم/EF با هم؛ یک دسته را دوبار نشمارید.'),
+  L('Padua ergänzt RV-/LV-LGE. Normwerte sind alters-, geschlechts- und methodenabhängig.', 'Padua adds RV/LV LGE. Reference ranges depend on age, sex and method.', 'Padua، LGE بطن راست و چپ را اضافه می‌کند. مرجع به سن، جنس و روش وابسته است.'),
+  L('Fett, Dilatation oder Ring-LGE allein beweisen keine ACM; fehlendes LGE schließt frühe Erkrankung nicht aus.', 'Fat, dilatation or ring LGE alone do not prove ACM; absent LGE does not exclude early disease.', 'چربی، اتساع یا LGE حلقوی به‌تنهایی ACM را اثبات نمی‌کنند؛ نبود LGE بیماری زودرس را رد نمی‌کند.'),
+  L('Befund präzise beschreiben, Mimics prüfen und mit Klinik, Rhythmus und Genetik integrieren.', 'Report precisely, assess mimics and integrate clinical, rhythm and genetic findings.', 'گزارش دقیق، بررسی افتراق‌ها و ترکیب یافته‌ها با بالین، ریتم و ژنتیک لازم است.'),
+]
+export const SOURCES = [
+  ['Marcus et al. · Revised Task Force Criteria · 2010', 'https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.108.840827'],
+  ['Corrado et al. · Padua criteria · 2020', 'https://doi.org/10.1016/j.ijcard.2020.06.005'],
+  ['Corrado et al. · Evolving diagnostic criteria · 2021', 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8649536/'],
+  ['ESC · Cardiomyopathy guidelines · 2023', 'https://www.escardio.org/guidelines/clinical-practice-guidelines/all-esc-practice-guidelines/cardiomyopathy/'],
+  ['Smith et al. · Desmoplakin cardiomyopathy · 2020', 'https://doi.org/10.1161/CIRCULATIONAHA.119.044934'],
+  ['Radiopaedia · Azza Elgendy · rID 57972', CASES[0].url],
+  ['Radiopaedia · Vlad Barskiy · rID 69431', CASES[1].url],
+]
+
+// This helper evaluates only the adult 2010 CMR morphofunctional category.
+export function evaluateTfcCmr({ sex, edvi, ef, regional }) {
+  if (!Number.isFinite(edvi) || !Number.isFinite(ef) || edvi <= 0 || ef < 0 || ef > 100) return 'invalid'
+  if (!regional) return 'none'
+  if (edvi >= (sex === 'female' ? 100 : 110) || ef <= 40) return 'major'
+  if (edvi >= (sex === 'female' ? 90 : 100) || ef <= 45) return 'minor'
+  return 'none'
+}

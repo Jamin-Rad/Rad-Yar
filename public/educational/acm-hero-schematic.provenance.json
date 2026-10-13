@@ -1,0 +1,7 @@
+{
+  "asset": "/educational/acm-hero-schematic.webp",
+  "createdAt": "2026-10-13",
+  "method": "Built-in image_gen; resized and compressed to WebP for delivery",
+  "type": "Synthetic conceptual teaching illustration; not a patient image",
+  "prompt": "Use case: scientific-educational. Create a polished anatomical teaching header illustration for a radiology lesson about arrhythmogenic cardiomyopathy. A single stylized cutaway human heart, anatomically recognizable right ventricle as a thin crescent wrapping thicker left ventricle, both ventricular chambers visible. Muted rose myocardium, amber localized fibrous replacement along right ventricular free wall, a subtle subepicardial amber scar on left lateral wall, thin teal ECG trace floating beneath. No words, no letters, no labels, no numerals, no patient MRI, no photographic scan, no UI. Soft realistic 3D medical textbook shading, sophisticated restrained plum and teal highlights. Compact centered composition with generous transparent margin, true transparent background, suitable on dark plum lesson header. This is a conceptual schematic, avoid suggesting fat alone diagnoses disease."
+}

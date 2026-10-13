@@ -37,6 +37,7 @@ import { MAMMA_MRT_SPECIAL_CARCINOMA_QUESTIONS } from './mammaMrtSpecialCarcinom
 import { MAMMOGRAPHY_BASICS_QUESTIONS } from './mammaMammographyBasics'
 import { MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS } from './mammaMammographyCalcifications'
 import { CARDIOMYOPATHY_QUESTIONS } from './cardiomyopathy'
+import { ARVC_QUESTIONS } from './arvcTraining'
 import { MYOCARDIAL_INJURY_QUESTIONS } from './myocardialInjury'
 
 
@@ -595,6 +596,7 @@ export const QUESTION_BANK = {
     ...MAMMOGRAPHY_BASICS_QUESTIONS.de,
     ...MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS.de,
     ...CARDIOMYOPATHY_QUESTIONS.de,
+    ...ARVC_QUESTIONS.de,
     ...MYOCARDIAL_INJURY_QUESTIONS.de,
     ...FLEISCHNER_QUESTIONS.de,
     ...MENISCUS_QUESTIONS.de,
@@ -1757,6 +1759,7 @@ export const QUESTION_BANK = {
     ...MAMMOGRAPHY_BASICS_QUESTIONS.en,
     ...MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS.en,
     ...CARDIOMYOPATHY_QUESTIONS.en,
+    ...ARVC_QUESTIONS.en,
     ...MYOCARDIAL_INJURY_QUESTIONS.en,
     ...FLEISCHNER_QUESTIONS.en,
     ...CONTRAST_QUESTIONS.en,
@@ -2950,6 +2953,7 @@ export const QUESTION_BANK = {
     ...MAMMOGRAPHY_BASICS_QUESTIONS.fa,
     ...MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS.fa,
     ...CARDIOMYOPATHY_QUESTIONS.fa,
+    ...ARVC_QUESTIONS.fa,
     ...MYOCARDIAL_INJURY_QUESTIONS.fa,
     ...FLEISCHNER_QUESTIONS.fa,
     ...CONTRAST_QUESTIONS.fa,
@@ -4146,6 +4150,7 @@ export const MCQ_TOPIC_GROUPS = [
     topics: [
       { id: 'myokardinfarkt-differentialdiagnosen', title: { de: 'Kardio-MRT bei Troponinanstieg', en: 'Cardiac MRI in troponin elevation', fa: 'MRI قلب در افزایش تروپونین' } },
       { id: 'kardiomyopathien', title: { de: 'Kardiomyopathien: Kardio-MRT', en: 'Cardiomyopathies: cardiac MRI', fa: 'کاردیومیوپاتی‌ها: MRI قلب' } },
+      { id: 'arvc', title: { de: 'Arrhythmogene Kardiomyopathie', en: 'Arrhythmogenic cardiomyopathy', fa: 'کاردیومیوپاتی آریتموژنیک' } },
     ],
   },
   {
