@@ -2314,6 +2314,8 @@
 .monthEventRow .monthEventDone span,
 .monthEventRow .monthEventDone strong { text-decoration: none; }
 .monthEventRow .monthEventCancelled { opacity: .65; border-style: dashed; }
+.eventsPage .monthEventRow .monthEventCancelled,
+.monthEventRow .monthEventCancelled { min-height: 0; padding: 5px 9px; }
 .monthEventCancelled span,
 .monthEventCancelled strong { text-decoration: line-through; }
 .monthEventCancelled small { font-size: 9px; text-decoration: none; }

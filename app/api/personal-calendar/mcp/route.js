@@ -2,7 +2,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { WebStandardStreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js'
 import { z } from 'zod'
 import { safeEqual } from '@/lib/adminAuth'
-import { createPersonalCalendarEvent, listPersonalCalendarEvents } from '@/lib/personalCalendar'
+import { createPersonalCalendarEvent, listPersonalCalendarEvents, updatePersonalCalendarEvent } from '@/lib/personalCalendar'
 import { addFriendFinanceEntry, addPersonalFinanceEntry, listFriendFinanceEntries, listPersonalFinanceEntries } from '@/lib/personalFinance'
 
 export const runtime = 'nodejs'
@@ -43,10 +43,10 @@ function errorResult(message) {
 
 function buildServer() {
   const server = new McpServer(
-    { name: 'personal-calendar', version: '1.1.0' },
+    { name: 'personal-calendar', version: '1.2.0' },
     {
       instructions:
-        'Use this private calendar when the user says “add this to my personal calendar”, “به تقویم شخصی اضافه کن”, or an equivalent phrase. Resolve relative dates in Europe/Berlin. Before calling add_personal_calendar_event, make sure the user has clearly provided or confirmed the title, exact date, and time (or all-day status). Never guess an ambiguous date or time. Finance tools record transactions in the monthly personal budget or the separate friends ledger. Never transfer money. Confirm missing or ambiguous amounts, currency, date, account and payment direction before recording. The monthly budget is EUR only. For friends distinguish rial from toman and ask for the exchange rate instead of estimating it. Generate one unique requestId per financial entry and reuse it only when retrying the same entry. Never record the same payment in both ledgers unless explicitly requested.',
+        'Use this private calendar when the user says “add this to my personal calendar”, “به تقویم شخصی اضافه کن”, or an equivalent phrase. Resolve relative dates in Europe/Berlin. Before calling add_personal_calendar_event, make sure the user has clearly provided or confirmed the title, exact date, and time (or all-day status). Never guess an ambiguous date or time. Finance tools record transactions in the monthly personal budget or the separate friends ledger. Never transfer money. Confirm missing or ambiguous amounts, currency, date, account and payment direction before recording. The monthly budget is EUR only. For friends distinguish rial from toman and ask for the exchange rate instead of estimating it. Generate one unique requestId per financial entry and reuse it only when retrying the same entry. Never record the same payment in both ledgers unless explicitly requested. When the user asks to edit an existing calendar event, first list events, resolve an unambiguous existing event, and call update_personal_calendar_event with its id and exact updatedAt. Send only the explicitly requested changes. Include inactive events when editing or restoring cancelled/completed appointments. Never use add_personal_calendar_event as a substitute for editing.',
     }
   )
 
@@ -59,12 +59,13 @@ function buildServer() {
       inputSchema: {
         from: dateSchema.describe('First date of the inclusive range, in Europe/Berlin, formatted YYYY-MM-DD.'),
         to: dateSchema.describe('Last date of the inclusive range, in Europe/Berlin, formatted YYYY-MM-DD.'),
+        includeInactive: z.boolean().default(false).describe('Include cancelled/completed events when finding an existing event to edit or restore.'),
       },
       annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false },
     },
-    async ({ from, to }) => {
+    async ({ from, to, includeInactive }) => {
       try {
-        const events = await listPersonalCalendarEvents({ from, to })
+        const events = await listPersonalCalendarEvents({ from, to, includeInactive })
         return {
           structuredContent: { events, timezone: 'Europe/Berlin' },
           content: [{ type: 'text', text: events.length ? `${events.length} Termin(e) gefunden.` : 'Keine Termine in diesem Zeitraum.' }],
@@ -110,6 +111,28 @@ function buildServer() {
       }
     }
   )
+
+  server.registerTool('update_personal_calendar_event', {
+    title: 'Edit personal calendar event',
+    description: 'Edit ONE existing personal event only when the user explicitly requests the change. First list the relevant date range, use its actual id and updatedAt, and clarify ambiguous matches. Send ONLY explicitly requested changed fields; omitted fields stay unchanged. Dates/times are Europe/Berlin. Never edit holidays or tasks. If a conflict is returned, reread and confirm the intended event before retrying. Cancellation retains the event; done marks completed. Never delete or create a replacement event to perform an edit.',
+    inputSchema: {
+      id: z.string().uuid().describe('Actual event id returned by list_personal_calendar_events.'),
+      expectedUpdatedAt: z.string().min(1).describe('Exact updatedAt from the freshly listed event, for conflict protection.'),
+      title: z.string().trim().min(1).max(240).optional(),
+      date: dateSchema.optional(), startTime: timeSchema.optional(),
+      endTime: z.union([timeSchema,z.literal('')]).optional().describe('Set empty string only if the user explicitly wants to clear the end time.'),
+      allDay: z.boolean().optional(), endDate: dateSchema.optional(),
+      note: z.string().max(500).optional().describe('Replace note only when explicitly asked; empty string clears it.'),
+      cancelled: z.boolean().optional().describe('True to cancel without deletion; false to restore, only on user request.'),
+      done: z.boolean().optional().describe('True to mark completed, false to reopen, only on user request.'),
+    },
+    annotations: { readOnlyHint: false, destructiveHint: true, openWorldHint: false },
+  }, async args => {
+    try {
+      const result = await updatePersonalCalendarEvent(args)
+      return { structuredContent: { ...result, timezone: 'Europe/Berlin' }, content: [{ type: 'text', text: result.updated ? 'Der bestehende Termin wurde aktualisiert.' : 'Der Termin entspricht bereits den gewünschten Angaben.' }] }
+    } catch (error) { return errorResult(error.message) }
+  })
 
   const financeReply = async (operation, args) => {
     try {

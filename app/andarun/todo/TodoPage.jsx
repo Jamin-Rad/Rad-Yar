@@ -1010,9 +1010,8 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                       onKeyDown={keyEvent => keyEvent.stopPropagation()}
                       title={event.cancelled ? 'Abgesagt · Termin bearbeiten' : 'Termin bearbeiten'}
                     >
-                      {!event.allDay && <strong>{formatEventMeta(event)}</strong>}
+                      {!event.cancelled && !event.allDay && <strong>{formatEventMeta(event)}</strong>}
                       <span>{event.title}</span>
-                      {event.cancelled && <small>Abgesagt</small>}
                     </button>
                     {!event.cancelled && <button
                       type="button"
