@@ -3,6 +3,7 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { useState, useEffect, useRef } from 'react'
 import s from './health.module.css'
+import HealthTodayOverview, { HealthIcon } from './HealthTodayOverview'
 import { calculateCaloriePlan } from '@/utils/healthCalories'
 import { photoMealTotals, roundNutrient } from '@/utils/foodPhotoMeals'
 import {
@@ -92,8 +93,6 @@ function todayValue() {
 }
 
 const TODAY = todayValue()
-const RING_R = 50
-const RING_C = 2 * Math.PI * RING_R
 const SPORT_MINUTES = [10, 20, 30, 45, 60, 90]
 const FOOD_AMOUNTS = [0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 4]
 const ACTIVITY_LEVELS = [
@@ -448,7 +447,6 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
   const dailyKcalTarget = recommendedKcal || maintenanceKcal || 2000
   const kcalDelta = recommendedKcal ? eatenKcal - recommendedKcal : null
   const foodFraction = Math.min(Math.max(eatenKcal, 0) / dailyKcalTarget, 1)
-  const sportFraction = Math.min(totalSportKcal / dailyKcalTarget, 1)
   const isKcalOverTarget = recommendedKcal ? eatenKcal > recommendedKcal : false
   const proteinFactor = planTargetWeight && planCurrentWeight && planTargetWeight < planCurrentWeight
     ? 1.6
@@ -676,10 +674,11 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
 
       <div className={s.inner}>
 
+        <div className={s.healthTopbar}>
         <header className={s.simpleHero}>
           {homeHref && (
             <Link className={s.healthBackLink} href={homeHref}>
-              ← {homeLabel || 'Zurück'}
+              <HealthIcon name="left" />{homeLabel || 'Zurück'}
             </Link>
           )}
           <h1 className={s.heroTitle}>Gesundheit</h1>
@@ -687,168 +686,25 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
 
         <div className={s.tabRow}>
           {[['eintragen', 'Heute'], ['verlauf', 'Verlauf'], ['einstellung', 'Einstellung']].map(([id, label]) => (
-            <button key={id} type="button" className={tab === id ? s.tabActive : s.tab} onClick={() => setTab(id)}>
+            <button key={id} type="button" className={tab === id ? s.tabActive : s.tab} aria-pressed={tab === id} onClick={() => setTab(id)}>
               {label}
             </button>
           ))}
         </div>
+        </div>
 
         {tab === 'eintragen' && (
-          <div className={s.todayView}>
-            <div className={s.todayDateBar}>
-              <div className={s.dateHeaderCopy}>
-                <span>{formatHealthDate(form.date)}</span>
-                <div className={s.dateControlGroup}>
-                  <button className={s.dateStepBtn} type="button" onClick={() => shiftEntryDate(-1)} aria-label="Voriger Tag">‹</button>
-                  <label className={s.dateControl}>
-                    <small>Datum</small>
-                    <input
-                      type="date"
-                      max={TODAY}
-                      value={form.date}
-                      onChange={event => selectEntryDate(event.target.value)}
-                    />
-                  </label>
-                  <button
-                    className={s.dateStepBtn}
-                    type="button"
-                    onClick={() => shiftEntryDate(1)}
-                    disabled={form.date >= TODAY}
-                    aria-label="Nächster Tag"
-                  >
-                    ›
-                  </button>
-                  {form.date !== TODAY && (
-                    <button className={s.todayMiniBtn} type="button" onClick={() => selectEntryDate(TODAY)}>
-                      Heute
-                    </button>
-                  )}
-                </div>
-              </div>
-              <strong>{saving ? 'Speichert…' : saveMessage && !saveMessage.includes('fehl') && !saveMessage.includes('nicht') ? 'Gespeichert' : form.date === TODAY ? 'Heute' : 'Eintragen'}</strong>
-            </div>
-
-            <div className={s.todayMainGrid}>
-              <section className={s.todayActionPanel}>
-                <div className={s.todayActions}>
-                  <button className={s.todayActionWeight} type="button" onClick={() => setWeightOpen(true)}>
-                    <i className={s.actionVisual} aria-hidden="true" />
-                    <span>Wiegen</span>
-                    <small>Gewicht für den Tag</small>
-                  </button>
-                  <button className={s.todayActionFood} type="button" onClick={() => openPicker('food')}>
-                    <i className={s.actionVisual} aria-hidden="true" />
-                    <span>Mahlzeit</span>
-                    <small>Essen schnell ergänzen</small>
-                  </button>
-                  <button className={s.todayActionSport} type="button" onClick={() => openPicker('sport')}>
-                    <i className={s.actionVisual} aria-hidden="true" />
-                    <span>Bewegung</span>
-                    <small>Sport oder Alltag</small>
-                  </button>
-                  {apiBase === '/api/andarun/health' && <button className={s.foodPhotoAction} type="button" onClick={() => setPhotoEditor({ date: form.date, meal: null })} disabled={loading}>
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5 9.5 3h5L16 5h4a1 1 0 0 1 1 1v13H3V6a1 1 0 0 1 1-1h4Z" /><circle cx="12" cy="12" r="4" /></svg><span>Essen per Foto</span><small>Schätzen · prüfen · bestätigen</small>
-                  </button>}
-                </div>
-              </section>
-
-              <section className={s.todayDashboard}>
-                {injectionDueToday && (
-                  <button
-                    className={`${s.injectionReminder} ${injectionDoneToday ? s.injectionDone : ''}`}
-                    type="button"
-                    onClick={toggleInjectionDone}
-                  >
-                    <span>{injectionDoneToday ? '✓' : ''}</span>
-                    <strong>{medicationName}</strong>
-                    <small>Spritze heute</small>
-                  </button>
-                )}
-                <div className={s.todayKcalCard}>
-                  <div className={s.todayRing}>
-                    <svg viewBox="0 0 120 120">
-                      <defs>
-                        <linearGradient id="foodGrad" x1="0" y1="0" x2="1" y2="1">
-                          <stop offset="0%" stopColor="#34d399" />
-                          <stop offset="100%" stopColor="#0f766e" />
-                        </linearGradient>
-                        <linearGradient id="sportGrad" x1="0" y1="0" x2="1" y2="1">
-                          <stop offset="0%" stopColor="#a5b4fc" />
-                          <stop offset="100%" stopColor="#4f46e5" />
-                        </linearGradient>
-                      </defs>
-                      <circle cx="60" cy="60" r={RING_R} className={s.ringTrack} />
-                      <circle cx="60" cy="60" r={RING_R} className={`${s.ringFood} ${isKcalOverTarget ? s.ringOver : ''}`}
-                        style={{ strokeDasharray: RING_C, strokeDashoffset: RING_C * (1 - foodFraction) }}
-                      />
-                      {sportFraction > 0 && (
-                        <circle cx="60" cy="60" r={RING_R} className={s.ringSport}
-                          style={{ strokeDasharray: RING_C, strokeDashoffset: RING_C * (1 - sportFraction) }}
-                        />
-                      )}
-                    </svg>
-                    <div>
-                      <strong>{eatenKcal}</strong>
-                      <span>{recommendedKcal ? `gegessen von ${recommendedKcal}` : 'kcal gegessen'}</span>
-                    </div>
-                  </div>
-                  <div className={s.todayKcalRows}>
-                    <div><span>Gegessen</span><strong>+{eatenKcal}</strong></div>
-                    <div><span>Sport</span><strong>−{totalSportKcal}</strong></div>
-                    <div><span>Netto</span><strong>{totalKcal}</strong></div>
-                    <div><span>Empfehlung</span><strong>{recommendedKcal ? recommendedKcal : '—'}</strong></div>
-                    <div className={isKcalOverTarget ? s.kcalOverRow : s.kcalGoodRow}>
-                      <span>{recommendedKcal ? (isKcalOverTarget ? 'Überschritten' : 'Übrig') : 'Status'}</span>
-                      <strong>{recommendedKcal ? `${Math.abs(kcalDelta)} kcal` : 'Einstellung'}</strong>
-                    </div>
-                  </div>
-                </div>
-                <div className={s.macroPanel}>
-                  {[
-                    ['Protein', todayMacros.protein, macroTargets.protein, s.macroProtein, 'Ziel'],
-                    ['Zucker', todayMacros.sugar, macroTargets.sugar, s.macroSugar, 'Limit'],
-                    ['Fett', todayMacros.fat, macroTargets.fat, s.macroFat, 'Limit'],
-                  ].map(([label, value, max, className, targetLabel]) => (
-                    <div className={s.macroRow} key={label}>
-                      <div>
-                        <span>{label}</span>
-                        <div className={s.macroValue}>
-                          <strong>{value} g</strong>
-                          <em>{targetLabel} {max} g</em>
-                        </div>
-                      </div>
-                      <div className={s.macroTrack}><i className={className} style={{ width: `${Math.min((value / max) * 100, 100)}%` }} /></div>
-                    </div>
-                  ))}
-                </div>
-                <div className={s.todayDetailGrid}>
-                  <div>
-                    <h3>Gegessen</h3>
-                    {form.foods.length ? form.foods.map(item => {
-                      const food = activeFoods.find(x => x.id === item.id)
-                      if (!food) return null
-                      const g = item.g ?? (item.count != null ? item.count * food.portionG : 0)
-                      const kcal = Math.round((food.kcalPer100g / 100) * g)
-                      return <span key={item.id}>{food.de} · {foodAmountText(food, g)} · {kcal} kcal</span>
-                    }) : !form.photoMeals.length ? <span>Keine Mahlzeit eingetragen</span> : null}
-                    {form.photoMeals.map(meal => <article className={s.photoMealCard} key={meal.id}>
-                      <strong>{meal.title}</strong><span>≈ {photoMealTotals([meal]).kcal} kcal · bestätigte Schätzung</span>
-                      <small>{meal.items.map(item => `${item.name} (${item.g} g)`).join(' · ')}</small>
-                      <div><button type="button" onClick={() => setPhotoEditor({ date: form.date, meal })}>Bearbeiten</button><button type="button" onClick={() => setForm(current => ({ ...current, photoMeals: current.photoMeals.filter(item => item.id !== meal.id) }))} aria-label={`${meal.title} entfernen`}>Entfernen</button></div>
-                    </article>)}
-                  </div>
-                  <div>
-                    <h3>Sport</h3>
-                    {form.sports.length ? form.sports.map(item => {
-                      const sp = activeSports.find(x => x.id === item.id)
-                      if (!sp) return null
-                      return <span key={item.id}>{sp.de} · {item.min} min · −{Math.round(sp.kcalPerMin * item.min)} kcal</span>
-                    }) : <span>Kein Sport eingetragen</span>}
-                  </div>
-                </div>
-              </section>
-            </div>
-          </div>
+          <HealthTodayOverview form={form} today={TODAY} saving={saving}
+            saved={Boolean(saveMessage && !saveMessage.includes('fehl') && !saveMessage.includes('nicht'))}
+            formatDate={formatHealthDate} shiftDate={shiftEntryDate} selectDate={selectEntryDate}
+            photoEnabled={apiBase === '/api/andarun/health'} openPhoto={meal => setPhotoEditor({ date: form.date, meal })}
+            openFood={() => openPicker('food')} openSport={() => openPicker('sport')} openWeight={() => setWeightOpen(true)}
+            eatenKcal={eatenKcal} totalSportKcal={totalSportKcal} recommendedKcal={recommendedKcal}
+            kcalDelta={kcalDelta} isOver={isKcalOverTarget} foodFraction={foodFraction}
+            macros={todayMacros} targets={macroTargets} activeFoods={activeFoods} activeSports={activeSports}
+            foodAmountText={foodAmountText}
+            removePhoto={id => setForm(current => ({ ...current, photoMeals: current.photoMeals.filter(item => item.id !== id) }))}
+            injectionDue={injectionDueToday} injectionDone={injectionDoneToday} medicationName={medicationName} toggleInjection={toggleInjectionDone} />
         )}
 
         {tab === 'eintragen' && photoEditor && <FoodPhotoEstimator key={`${photoEditor.date}:${photoEditor.meal?.id || 'new'}`} apiBase={apiBase} date={photoEditor.date} initialMeal={photoEditor.meal} onConfirm={confirmPhotoMeal} onClose={() => setPhotoEditor(null)} />}
