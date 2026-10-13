@@ -29,10 +29,8 @@ export const CAA_COPY = {
   basics: [
     L('Die CAA beruht auf der pathologischen Ablagerung von β-Amyloid, insbesondere in den Wänden kleiner und mittelgroßer kortikaler und leptomeningealer Arterien sowie Arteriolen.', 'CAA results from pathological β-amyloid deposition, particularly in the walls of small and medium-sized cortical and leptomeningeal arteries and arterioles.', 'CAA ناشی از رسوب پاتولوژیک β-آمیلوئید، به‌ویژه در دیواره شریان‌های کوچک و متوسط و آرتریول‌های کورتیکال و لپتومننژیال است.'),
     L('Die Ablagerungen schädigen die Gefäßwand, beeinträchtigen ihre Elastizität und machen sie anfällig für Rupturen.', 'The deposits damage the vessel wall, impair its elasticity and make it vulnerable to rupture.', 'این رسوبات به دیواره رگ آسیب می‌زنند، انعطاف‌پذیری آن را کاهش می‌دهند و احتمال پارگی را بالا می‌برند.'),
-    L('Für die Bilddiagnostik ist deshalb zuerst die Verteilung der Blutungen entscheidend.', 'On imaging, the first key question is therefore the distribution of bleeding.', 'بنابراین در تصویربرداری، نخست باید توزیع خونریزی‌ها را بررسی کرد.'),
   ],
   pathologyTitle: L('Pathologie', 'Pathology', 'پاتولوژی'),
-  wallDamageTitle: L('Amyloid-Ablagerung & Gefäßwandschädigung', 'Amyloid deposition & vessel wall damage', 'رسوب آمیلوئید و آسیب دیواره رگ'),
   associationsTitle: L('Alzheimer & genetische Prädisposition', 'Alzheimer disease & genetic predisposition', 'آلزهایمر و زمینه ژنتیکی'),
   systemicWarning: L('Die sporadische β-Amyloid-CAA ist keine Manifestation einer systemischen Amyloidose.', 'Sporadic β-amyloid CAA is not a manifestation of systemic amyloidosis.', 'CAA اسپورادیک ناشی از β-آمیلوئید، تظاهر آمیلوئیدوز سیستمیک نیست.'),
   backgroundTitle: L('Häufigkeit & Alter', 'Frequency & age', 'شیوع و سن'),
@@ -50,7 +48,7 @@ export const CAA_COPY = {
   ],
   associations: [
     { title: L('Alzheimer-Assoziation', 'Association with Alzheimer disease', 'ارتباط با آلزهایمر'), paragraphs: [
-      L('Bei Alzheimer ist eine begleitende CAA histologisch häufig: Eine Metaanalyse fand milde bis schwere CAA bei etwa 79 % der untersuchten Alzheimer-Fälle. Der Anteil hängt vom erfassten Schweregrad ab und beschreibt keinen festen Wert für alle Patienten.', 'Coexisting CAA is common on histology in Alzheimer disease: a meta-analysis found mild-to-severe CAA in about 79% of the Alzheimer cases studied. The proportion depends on the severity threshold and is not a fixed rate for all patients.', 'همراهی CAA در بررسی بافت‌شناسی آلزهایمر شایع است: یک متاآنالیز، CAA خفیف تا شدید را در حدود ۷۹٪ موارد آلزهایمرِ بررسی‌شده گزارش کرد. این درصد به حد شدت مورد ارزیابی وابسته است و عدد ثابتی برای همه بیماران نیست.'),
+      L('Bei Alzheimer ist eine begleitende CAA histologisch häufig: Eine Metaanalyse fand milde bis schwere CAA bei etwa 79 % der untersuchten Alzheimer-Fälle.', 'Coexisting CAA is common on histology in Alzheimer disease: a meta-analysis found mild-to-severe CAA in about 79% of the Alzheimer cases studied.', 'همراهی CAA در بررسی بافت‌شناسی آلزهایمر شایع است: یک متاآنالیز، CAA خفیف تا شدید را در حدود ۷۹٪ موارد آلزهایمرِ بررسی‌شده گزارش کرد.'),
     ] },
     { title: L('Down-Syndrom · genetische Prädisposition', 'Down syndrome · genetic predisposition', 'سندرم داون · زمینه ژنتیکی'), paragraphs: [
       L('Das APP-Gen liegt auf Chromosom 21. Bei Trisomie 21 führt die zusätzliche Genkopie zu mehr Amyloid-Vorläuferprotein und begünstigt frühe β-Amyloid-Ablagerungen, auch in Gefäßwänden.', 'The APP gene is located on chromosome 21. In trisomy 21, the additional gene copy increases amyloid precursor protein and favours early β-amyloid deposition, including in vessel walls.', 'ژن APP روی کروموزوم ۲۱ قرار دارد. در تریزومی ۲۱، نسخه اضافی ژن تولید پروتئین پیش‌ساز آمیلوئید را افزایش می‌دهد و زمینه رسوب زودرس β-آمیلوئید، از جمله در دیواره عروق، را فراهم می‌کند.'),

@@ -64,12 +64,12 @@ export function BrainFigure({ pattern, caption, lang, lesionCount }) {
   </figure>
 }
 
-export function VesselExplorer({ lang, headingLevel = 'h3' }) {
+export function VesselExplorer({ lang, headingLevel = 'h3', description }) {
   const [stage, setStage] = useState(0)
   const id = 'caa-vessel-' + useId().replaceAll(':', '')
   const item = COPY.vesselStages[stage]
   return <div className={styles.panel} data-learning-tool="vessel">
-    <ToolHeader title={COPY.vesselTitle} lang={lang} as={headingLevel} />
+    <ToolHeader title={COPY.vesselTitle} hint={description} lang={lang} as={headingLevel} />
     <Tabs items={COPY.vesselStages.map(item => item.title)} value={stage} onChange={setStage} id={id} label={COPY.vesselTitle} lang={lang} />
     <div id={id + '-panel'} role="tabpanel" aria-labelledby={id + '-tab-' + stage} className={styles.explorerBody}>
       <figure className={styles.figure} data-vessel-stage={stage}>

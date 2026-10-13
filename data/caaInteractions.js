@@ -1,6 +1,6 @@
 const L = (de, en, fa) => ({ de, en, fa })
 export const CAA_INTERACTION_COPY = {
-  vesselTitle: L('Von der Ablagerung zur fragilen Gefäßwand', 'From deposits to a fragile vessel wall', 'از رسوب آمیلوئید تا دیواره شکننده رگ'),
+  vesselTitle: L('Amyloid-Ablagerung und Gefäßwandschädigung', 'Amyloid deposition and vessel wall damage', 'رسوب آمیلوئید و آسیب دیواره رگ'),
   vesselHint: L('Wähle eine Phase und beobachte die Gefäßwand.', 'Choose a stage and inspect the vessel wall.', 'یک مرحله را انتخاب کنید و تغییر دیواره رگ را ببینید.'),
   vesselStages: [
     { title: L('Ohne Amyloid', 'Without amyloid', 'بدون آمیلوئید'), text: L('Die Gefäßwand umgibt das Lumen. Im Schema ist noch kein Amyloid abgelagert.', 'The vessel wall surrounds the lumen. No amyloid is deposited in this schematic stage.', 'دیواره رگ مجرای آن را احاطه می‌کند. در این مرحله شماتیک، رسوب آمیلوئید وجود ندارد.') },

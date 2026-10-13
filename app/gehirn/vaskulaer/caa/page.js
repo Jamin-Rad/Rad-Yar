@@ -78,9 +78,7 @@ function ChapterContent({ id, lang }) {
       <div className={styles.foundationBody}>
         <Paragraphs values={[COPY.basics[0]]} lang={lang} />
         <Note warning lang={lang}><Paragraphs values={[COPY.systemicWarning]} lang={lang} /></Note>
-        <h4 className={styles.foundationSubheading}>{c(COPY.wallDamageTitle)}</h4>
-        <Paragraphs values={COPY.basics.slice(1)} lang={lang} />
-        <VesselExplorer lang={lang} headingLevel="h4" />
+        <VesselExplorer lang={lang} headingLevel="h4" description={COPY.basics[1]} />
         <AssociationExplorer title={COPY.associationsTitle} items={COPY.associations} lang={lang} />
         <Note lang={lang}><Paragraphs values={COPY.amyloid} lang={lang} /></Note>
       </div>
