@@ -1,5 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import config from '../next.config.mjs'
 import { ANDARUN_WEB_APPS, getAndarunPwaMetadata } from '../lib/andarunWebApps.js'
 
@@ -16,6 +17,18 @@ test('every private tool retains a distinct install identity, launch path and Ap
     assert.ok(metadata.manifest.includes(`/pwa/${key}/`))
   }
   assert.equal(ANDARUN_WEB_APPS.termine.startUrl,'/andarun/termine')
+})
+
+test('each generated manifest has a scope containing its own launch URL, including the home app',async()=>{
+  const source=readFileSync(new URL('../app/andarun/pwa/[app]/manifest.webmanifest/route.js',import.meta.url),'utf8').replace(/^import .*\r?\n/gm,'').replace('export async function GET','async function GET')
+  const get=new Function('getAndarunWebApp',source+'\nreturn GET;')(key=>ANDARUN_WEB_APPS[key]||null)
+  for(const [key,app] of Object.entries(ANDARUN_WEB_APPS)){
+    const response=await get(null,{params:Promise.resolve({app:key})})
+    const manifest=await response.json()
+    assert.equal(manifest.start_url,app.startUrl)
+    assert.equal(manifest.id,app.startUrl)
+    assert.ok(manifest.start_url.startsWith(manifest.scope),`${key} starts outside its scope`)
+  }
 })
 
 // Optional local production-server checks; do not print or persist session tokens.
@@ -38,5 +51,6 @@ if (process.env.PWA_TEST_BASE) {
     assert.equal(manifest.id,app.startUrl)
     assert.equal(manifest.start_url,app.startUrl)
     assert.equal(manifest.short_name,app.shortName)
+    assert.ok(manifest.start_url.startsWith(manifest.scope))
   })
 }

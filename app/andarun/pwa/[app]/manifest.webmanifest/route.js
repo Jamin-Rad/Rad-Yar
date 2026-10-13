@@ -20,7 +20,7 @@ export async function GET(_request, { params }) {
     start_url: app.startUrl,
     // A narrow scope lets Android keep every Andarun tool as its own app.
     // The main Andarun app still owns the full /andarun tree.
-    scope: appKey === 'andarun' ? '/andarun/' : app.startUrl,
+    scope: app.startUrl,
     display: 'standalone',
     orientation: 'portrait-primary',
     background_color: app.backgroundColor,
