@@ -82,6 +82,12 @@ html.lehr-mode-active body * { cursor: none !important; }
 html.lehr-mode-active [data-lehr-ui],
 html.lehr-mode-active [data-lehr-ui] * { cursor: auto !important; }
 
+/* Keep Pencil strokes stable while finger scrolling is handled by LehrMode. */
+html.lehr-mode-active body,
+html.lehr-mode-active body * { touch-action: none !important; }
+html.lehr-mode-active [data-lehr-ui],
+html.lehr-mode-active [data-lehr-ui] * { touch-action: manipulation !important; }
+
 /* Presentation only: privacy dialogs and teaching controls remain accessible. */
 html[data-lehr-recording-ready] [data-radyar-navbar],
 html[data-lehr-recording-ready] [data-radyar-footer],

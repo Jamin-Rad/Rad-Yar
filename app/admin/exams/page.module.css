@@ -295,6 +295,8 @@
 .previewTrack span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #3b82f6, #6366f1); transition: width .25s ease; }
 .previewQuestion { width: min(1100px, calc(100% - 48px)); margin: 28px auto 22px; padding: 30px; border: 1px solid #e0e7f0; border-radius: 20px; background: #fff; box-shadow: 0 16px 46px rgba(31,49,83,.075); }
 .previewLehrOpen .previewQuestion { margin-top: 76px; }
+:global(html[data-lehr-recording-ready]) .previewTopbar { display: none; }
+:global(html[data-lehr-recording-ready]) .previewProgress { position: sticky; top: 0; }
 .previewQuestionHead { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
 .previewQuestionHead span, .previewQuestionHead b { min-height: 28px; padding: 5px 10px; border-radius: 999px; background: #f1f5f9; color: #64748b; font-size: 10px; font-weight: 750; }
 .previewQuestionHead b { background: #fff3e9; color: #c44b13; }

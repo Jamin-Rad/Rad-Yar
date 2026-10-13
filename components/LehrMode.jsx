@@ -16,6 +16,26 @@ const TOOLS = {
   highlighter: { label: 'Textmarker', color: '#ffe45c', width: 22, alpha: 0.34 },
   eraser: { label: 'Radierer', color: '#ffffff', width: 42, alpha: 1 },
 }
+const COLOR_PALETTES = {
+  pen: [
+    { label: 'Orange', value: '#ff5c35' },
+    { label: 'Rot', value: '#ef4444' },
+    { label: 'Blau', value: '#2563eb' },
+    { label: 'Grün', value: '#16a34a' },
+    { label: 'Violett', value: '#7c3aed' },
+    { label: 'Schwarz', value: '#111827' },
+    { label: 'Weiß', value: '#ffffff' },
+  ],
+  highlighter: [
+    { label: 'Gelb', value: '#ffe45c' },
+    { label: 'Orange', value: '#fb923c' },
+    { label: 'Rosa', value: '#f9a8d4' },
+    { label: 'Grün', value: '#86efac' },
+    { label: 'Türkis', value: '#67e8f9' },
+    { label: 'Violett', value: '#c4b5fd' },
+  ],
+}
+const INITIAL_TOOL_COLORS = { pen: TOOLS.pen.color, highlighter: TOOLS.highlighter.color }
 
 function ToolIcon({ name }) {
   if (name === 'pen') return <path d="M5 19l3.9-1 9.8-9.8a2.1 2.1 0 0 0-3-3L5.9 15 5 19zm9-12 3 3" />
@@ -23,7 +43,7 @@ function ToolIcon({ name }) {
   return <><path d="M8 18l-4-4L14 4l6 6-8 8H8z" /><path d="M11 18h9" /></>
 }
 
-function ToolbarButton({ name, active, onClick }) {
+function ToolbarButton({ name, active, color, onClick }) {
   const tool = TOOLS[name]
   return (
     <button
@@ -36,6 +56,7 @@ function ToolbarButton({ name, active, onClick }) {
     >
       <svg viewBox="0 0 24 24" aria-hidden="true"><ToolIcon name={name} /></svg>
       <span>{tool.label}</span>
+      {color ? <i className={styles.toolColor} style={{ '--tool-color': color }} aria-hidden="true" /> : null}
     </button>
   )
 }
@@ -78,6 +99,8 @@ export default function LehrMode() {
   const [active, setActive] = useState(false)
   const [recordingReady, setRecordingReady] = useState(false)
   const [tool, setTool] = useState('pen')
+  const [toolColors, setToolColors] = useState(INITIAL_TOOL_COLORS)
+  const [colorMenuOpen, setColorMenuOpen] = useState(false)
   const [canUndo, setCanUndo] = useState(false)
   const canvasRef = useRef(null)
   const arrowRef = useRef(null)
@@ -87,6 +110,12 @@ export default function LehrMode() {
   const eraseSessionRef = useRef(null)
   const frameRef = useRef(null)
   const toolRef = useRef(tool)
+  const toolColorsRef = useRef(INITIAL_TOOL_COLORS)
+
+  const selectToolColor = useCallback((toolName, color) => {
+    toolColorsRef.current = { ...toolColorsRef.current, [toolName]: color }
+    setToolColors(toolColorsRef.current)
+  }, [])
 
   const renderCanvas = useCallback(() => {
     frameRef.current = null
@@ -232,13 +261,11 @@ export default function LehrMode() {
       }
     }
     const isToolbarEvent = event => event.target instanceof Element && event.target.closest('[data-lehr-ui]')
-    const isDrawingSurface = event => event.target instanceof Element && event.target.closest('[data-lehr-surface]')
     const canDrawWith = event => event.pointerType === 'pen'
 
     function onPointerDown(event) {
       if (isToolbarEvent(event)) return
       if (event.pointerType === 'touch') {
-        if (!isDrawingSurface(event)) return
         const viewport = annotationViewport(event.target)
         touchScroll = {
           pointerId: event.pointerId,
@@ -269,7 +296,7 @@ export default function LehrMode() {
       historyRef.current.push(strokesRef.current.slice())
       strokesRef.current = [...strokesRef.current, {
         tool: toolRef.current,
-        color: selected.color,
+        color: toolColorsRef.current[toolRef.current] || selected.color,
         width: selected.width,
         alpha: selected.alpha,
         points: [point],
@@ -412,16 +439,54 @@ export default function LehrMode() {
         </svg>
       </div>
       <div className={styles.toolbar} data-lehr-ui role="toolbar" aria-label="Lehr-Mode Werkzeuge">
+        <div className={styles.recordingTools} aria-label="Lehr-Mode Einstellungen">
+          <LehrRecordingTools key={pathname} ready={recordingReady} onReadyChange={setRecordingReady} />
+        </div>
         <div className={styles.modeLabel}><span />Lehr-Mode</div>
         <div className={styles.tools}>
           {Object.keys(TOOLS).map(name => (
-            <ToolbarButton key={name} name={name} active={tool === name} onClick={() => setTool(name)} />
+            <ToolbarButton
+              key={name}
+              name={name}
+              active={tool === name}
+              color={toolColors[name]}
+              onClick={() => {
+                setTool(name)
+                if (name === 'eraser') setColorMenuOpen(false)
+              }}
+            />
           ))}
         </div>
+        {COLOR_PALETTES[tool] ? <div className={styles.colorControl}>
+          <button
+            type="button"
+            className={`${styles.colorTrigger} ${colorMenuOpen ? styles.colorTriggerOpen : ''}`}
+            onClick={() => setColorMenuOpen(value => !value)}
+            aria-label={`${TOOLS[tool].label}-Farbe wählen`}
+            aria-expanded={colorMenuOpen}
+            title="Farbe wählen"
+          >
+            <span style={{ '--tool-color': toolColors[tool] }} />
+          </button>
+          {colorMenuOpen ? <div className={styles.colorPalette} role="group" aria-label={`${TOOLS[tool].label}-Farben`}>
+            {COLOR_PALETTES[tool].map(color => <button
+              type="button"
+              key={color.value}
+              className={toolColors[tool] === color.value ? styles.colorSelected : ''}
+              style={{ '--palette-color': color.value }}
+              onClick={() => {
+                selectToolColor(tool, color.value)
+                setColorMenuOpen(false)
+              }}
+              aria-label={color.label}
+              aria-pressed={toolColors[tool] === color.value}
+              title={color.label}
+            />)}
+          </div> : null}
+        </div> : null}
         <button type="button" className={styles.actionButton} onClick={undo} disabled={!canUndo} aria-label="Rückgängig" title="Rückgängig (⌘/Ctrl+Z)">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7l-5 5 5 5" /><path d="M5 12h8a6 6 0 0 1 6 6" /></svg>
         </button>
-        <LehrRecordingTools key={pathname} ready={recordingReady} onToggleReady={() => setRecordingReady(value => !value)} />
         <button type="button" className={`${styles.actionButton} ${styles.closeButton}`} onClick={deactivate} aria-label="Lehr-Mode beenden" title="Lehr-Mode beenden">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
         </button>
