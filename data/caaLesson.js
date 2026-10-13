@@ -44,7 +44,7 @@ export const CAA_COPY = {
       L('Hereditäre Formen, zum Beispiel Dutch-type CAA durch eine APP-Mutation, können deutlich früher auftreten.', 'Hereditary forms, such as Dutch-type CAA caused by an APP mutation, may present much earlier.', 'انواع ارثی، مانند CAA نوع هلندی ناشی از جهش APP، می‌توانند بسیار زودتر بروز کنند.'),
     ] },
     { title: L('Geschlechter', 'Sex', 'جنسیت'), paragraphs: [
-      L('Männer und Frauen sind betroffen. Eine feste 1:1-Verteilung ist nicht belegt.', 'Both men and women are affected. A fixed 1:1 distribution is not established.', 'مردان و زنان هر دو درگیر می‌شوند. نسبت ثابت ۱ به ۱ اثبات نشده است.'),
+      L('Männer und Frauen sind ungefähr gleich häufig betroffen.', 'Men and women are affected approximately equally often.', 'مردان و زنان تقریباً به یک اندازه درگیر می‌شوند.'),
       L('Das Geschlecht ist kein Boston-Kriterium.', 'Sex is not a Boston criterion.', 'جنسیت جزو معیارهای Boston نیست.'),
     ] },
   ],
@@ -153,6 +153,7 @@ export const CAA_COPY = {
 
 // Sources for the reading lesson; individual claims are mapped in docs/caa-content-review.md.
 export const CAA_SOURCES = [
+  { href: 'https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2025.1632252/full', label: 'CAA narrative review · Epidemiology and sex distribution, 2025' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3079153/', label: 'Yamada · CAA systematic review: estimated ICH contribution, 2011' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9389452/', label: 'Charidimou et al. · Boston criteria v2.0 · Lancet Neurology, 2022' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11592298/', label: 'Neuroradiological findings in CAA · Imaging review, 2024' },

@@ -43,3 +43,5 @@
 .ageBand .earlierOnset { font-size: 17px; line-height: 1.6; overflow-wrap: anywhere; }
 
 :global(html[data-theme='dark']) .ageBand strong { color: #80d6d2; }
+
+.textOnly { grid-template-columns: minmax(0,1fr); }
