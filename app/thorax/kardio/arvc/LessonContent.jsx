@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { L, pick, UI, BASICS, CLINIC, PHENOTYPES, PROTOCOL, CINE_NOTE, LGE_PATTERNS, DIFFERENTIALS, CASES, REPORT_ITEMS, REPORT, TAKEHOME, evaluateTfcCmr } from '@/data/arrhythmogenicCardiomyopathy'
+import { L, pick, UI, BASICS, CLINIC, PHENOTYPES, CINE_NOTE, LGE_PATTERNS, DIFFERENTIALS, CASES, REPORT_ITEMS, REPORT, TAKEHOME, evaluateTfcCmr } from '@/data/arrhythmogenicCardiomyopathy'
 import reference from '@/app/andarun/test/page.module.css'
 import styles from './page.module.css'
 
@@ -23,9 +23,9 @@ function Note({ warning, lang, children }) {
   return <aside className={warning ? reference.warning : reference.rememberNote}><span className={reference.calloutLabel}><Icon name={warning ? 'warning' : 'spark'} />{pick(warning ? UI.cave : UI.key, lang)}</span><div className={reference.calloutBody}>{children}</div></aside>
 }
 function Table({ headers, rows, lang }) {
-  return <div className={styles.tableScroll} role="region" aria-label={pick(headers[0], lang)} tabIndex={0}><table className={styles.table}><thead><tr>{headers.map((h, i) => <th scope="col" key={i}>{pick(h, lang)}</th>)}</tr></thead><tbody>{rows.map((row, i) => <tr key={i}>{row.map((cell, j) => j === 0 ? <th scope="row" key={j}>{pick(cell, lang)}</th> : <td key={j}>{pick(cell, lang)}</td>)}</tr>)}</tbody></table></div>
+  const cellText = value => pick(value, lang).split(/((?:[≥≤<>]\s*)?[۰-۹0-9]+(?:[.,٫][۰-۹0-9]+)?[%٪]?|mL\/m²|RVEDVi|RVEF)/g).map((part, i) => i % 2 ? <bdi dir="ltr" key={i}>{part}</bdi> : part)
+  return <div className={styles.tableScroll} role="region" aria-label={pick(headers[0], lang)} tabIndex={0}><table className={styles.table}><thead><tr>{headers.map((h, i) => <th scope="col" key={i}>{cellText(h)}</th>)}</tr></thead><tbody>{rows.map((row, i) => <tr key={i}>{row.map((cell, j) => j === 0 ? <th scope="row" key={j}>{cellText(cell)}</th> : <td key={j}>{cellText(cell)}</td>)}</tr>)}</tbody></table></div>
 }
-function Source({ href, children }) { return <p className={styles.sourceLine}><a href={href} target="_blank" rel="noopener noreferrer">{children} ↗</a></p> }
 function ChoiceBar({ items, value, onChange, lang, label }) {
   return <div className={styles.choiceBar} role="group" aria-label={pick(label, lang)}>{items.map(item => <button type="button" key={item.id} aria-pressed={value === item.id} onClick={() => onChange(item.id)}>{pick(item.name, lang)}</button>)}</div>
 }
@@ -92,10 +92,6 @@ function CriteriaLab({ lang }) {
     <button className={styles.inlineButton} type="button" onClick={() => { setSex('male'); setEdvi('118'); setEf('38'); setRegional(true) }}>{pick(UI.reset, lang)}</button>
   </section>
 }
-function ThresholdDiagram({ lang }) {
-  return <figure className={styles.explorer}><h3>{pick(L('RVEDVi: Grenzen sichtbar machen', 'RVEDVi: visualise the thresholds', 'RVEDVi: آستانه‌ها را ببینید'), lang)}</h3><svg viewBox="0 0 620 180" role="img" aria-label={pick(L('Männer: Minor 100 bis unter 110, Major ab 110; Frauen: Minor 90 bis unter 100, Major ab 100 mL/m²', 'Male: minor 100 to below 110, major 110 and above; female: minor 90 to below 100, major 100 and above mL/m²', 'مرد: مینور از ۱۰۰ تا کمتر از ۱۱۰، ماژور از ۱۱۰؛ زن: مینور از ۹۰ تا کمتر از ۱۰۰، ماژور از ۱۰۰ mL/m²'), lang)} data-no-zoom>
-    {[['M',100,110,42],['F',90,100,100]].map(([name,lower,upper,y]) => <g key={name}><text x="10" y={y+19}>{name}</text><rect x="70" y={y} width="500" height="28" rx="7" fill="var(--canvas)" /><rect x={70+(lower-70)*8} y={y} width="80" height="28" fill="#f3c59e" /><rect x={70+(upper-70)*8} y={y} width={500-(upper-70)*8} height="28" fill="#cb795b" /><text x={70+(lower-70)*8} y={y-7}>{lower}</text><text x={70+(upper-70)*8} y={y-7}>{upper}</text></g>)}<text x="70" y="161">70</text><text x="530" y="161">mL/m²</text></svg><figcaption>{pick(L('Hellorange = Minor; dunkelorange = Major. Zusätzlich ist eine regionale RV-Störung erforderlich. EF kann alternativ das quantitative Kriterium erfüllen.', 'Light orange = minor; dark orange = major. A regional RV abnormality is also required. EF can alternatively fulfil the quantitative criterion.', 'نارنجی روشن یعنی مینور و تیره یعنی ماژور. اختلال موضعی RV نیز لازم است. EF می‌تواند به‌جای حجم، شرط کمی را برآورده کند.'), lang)}</figcaption></figure>
-}
 export function SelfCheck({ item, lang }) {
   const [answer, setAnswer] = useState(null)
   return <section className={styles.quiz}><h3>{pick(item.question, lang)}</h3><div className={styles.answers}>{item.options.map((option, index) => <button type="button" key={index} aria-pressed={answer === index} onClick={() => setAnswer(index)}>{pick(option, lang)}</button>)}</div><div aria-live="polite" aria-atomic="true">{answer !== null ? <p className={styles.feedback}><strong>{pick(answer === item.correct ? UI.correct : UI.retry, lang)}</strong> {pick(item.explanation, lang)}</p> : null}</div></section>
@@ -105,14 +101,15 @@ const MIMIC_CHECK = {
   options: [L('Ja, Major wegen Volumen', 'Yes, major because of volume', 'بله، ماژور به‌دلیل حجم'), L('Nein; regionale Störung fehlt', 'No; regional abnormality is absent', 'خیر؛ اختلال موضعی وجود ندارد'), L('Sichere ALVC', 'Definite ALVC', 'ALVC قطعی')], correct: 1,
   explanation: L('Die regionale Störung ist obligat für diese CMR-Kategorie. Sport-spezifische Referenzen und Gesamtbefund prüfen; das ist kein genereller Ausschluss einer ACM.', 'Regional abnormality is mandatory in this CMR category. Review athlete-specific references and all findings; this does not generally exclude ACM.', 'اختلال موضعی برای این دسته CMR الزامی است. مرجع ویژه ورزشکار و کل یافته‌ها بررسی شوند؛ این نتیجه رد کلی ACM نیست.'),
 }
-const REPORT_CHECK = {
-  question: L('RVEDVi 118, RVEF 38% und Dyskinesie: wie viele morphofunktionelle Major-Kriterien?', 'RVEDVi 118, RVEF 38% and dyskinesia: how many morphofunctional major criteria?', 'RVEDVi برابر ۱۱۸، RVEF برابر ۳۸٪ و دیسکینزی: چند معیار ماژور مورفولوژی/عملکرد؟'),
-  options: [L('Drei', 'Three', 'سه'), L('Zwei', 'Two', 'دو'), L('Eines innerhalb einer Kategorie', 'One within one category', 'یک معیار در یک دسته')], correct: 2,
-  explanation: L('Dilatation und EF sind alternative quantitative Wege innerhalb derselben Kategorie. Die endgültige Diagnose braucht Befunde aus unterschiedlichen Kategorien.', 'Dilatation and EF are alternative quantitative routes within the same category. Final diagnosis requires findings from different categories.', 'اتساع و EF دو مسیر کمی جایگزین در یک دسته‌اند. تشخیص نهایی به یافته‌های دسته‌های متفاوت نیاز دارد.'),
-}
 function CaseCard({ item, lang }) {
   const [open, setOpen] = useState(false)
-  return <section className={styles.caseCard}><span className={styles.caseLabel}>Radiopaedia · rID {item.id}</span><h3>{pick(item.label, lang)}</h3><p>{pick(item.task, lang)}</p><div className={styles.caseLinks}><a href={item.viewer} target="_blank" rel="noopener noreferrer">{pick(L('Original-MRI ansehen', 'View original MRI', 'دیدن MRI اصلی'), lang)} ↗</a><a href={item.url} target="_blank" rel="noopener noreferrer">{pick(L('Fall & Quelle', 'Case & source', 'کیس و منبع'), lang)} ↗</a></div><p className={styles.credit}>{item.author} · Radiopaedia.org</p><button type="button" className={styles.inlineButton} aria-expanded={open} aria-controls={`case-${item.id}-answer`} onClick={() => setOpen(v => !v)}>{pick(open ? UI.hide : UI.reveal, lang)}</button><div id={`case-${item.id}-answer`} hidden={!open}><p>{pick(item.discussion, lang)}</p></div></section>
+  return <section className={styles.caseCard}>
+    <span className={styles.caseLabel}>MRI</span><h3>{pick(item.label, lang)}</h3>
+    <p>{pick(item.task, lang)}</p>
+    <div className={styles.caseLinks}><a href={item.viewer} target="_blank" rel="noopener noreferrer">{pick(L('Original-MRI ansehen', 'View original MRI', 'دیدن MRI اصلی'), lang)} ↗</a></div>
+    <button type="button" className={styles.inlineButton} aria-expanded={open} aria-controls={'case-'+item.id+'-answer'} onClick={() => setOpen(v => !v)}>{pick(open ? UI.hide : UI.reveal, lang)}</button>
+    <div id={'case-'+item.id+'-answer'} hidden={!open}><p>{pick(item.discussion, lang)}</p></div>
+  </section>
 }
 function ReportChecklist({ lang }) {
   const [checked, setChecked] = useState(new Set())
@@ -120,19 +117,49 @@ function ReportChecklist({ lang }) {
 }
 export default function ChapterContent({ id, lang }) {
   const c = value => pick(value, lang)
-  if (id === 'spektrum') return <><p className={reference.lead}>{c(BASICS)}</p><PhenotypeExplorer lang={lang} /><p>{c(CLINIC)}</p><ol className={styles.pathway}>{[L('Erbliche Zellkontakt-Störung', 'Inherited cell-adhesion defect', 'اختلال ارثی اتصال سلولی'), L('Myokardschädigung und Narbe', 'Myocardial injury and scar', 'آسیب میوکارد و اسکار'), L('Elektrische Instabilität / VT', 'Electrical instability / VT', 'ناپایداری الکتریکی / VT')].map((item, i) => <li key={i}>{c(item)}</li>)}</ol><Note lang={lang}><p>{c(L('PKP2 und DSP sind Beispiele, keine vollständige Genliste. Eine Variante unklarer Signifikanz (VUS) ist kein krankheitsbeweisender Befund.', 'PKP2 and DSP are examples, not a complete gene list. A variant of uncertain significance (VUS) does not establish disease.', 'PKP2 و DSP نمونه‌اند و فهرست کامل ژن‌ها نیستند. واریانت با اهمیت نامشخص (VUS) اثبات‌کننده بیماری نیست.'))}</p></Note><Source href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8649536/">Corrado et al. · ACM spectrum</Source></>
-  if (id === 'cine') return <><p className={reference.lead}>{c(L('Zuerst Bildqualität, dann beide Ventrikel: regionale Bewegung, indexierte Volumina und EF. Eine auffällige Kontur in nur einer Ebene genügt nicht.', 'Start with image quality, then both ventricles: regional motion, indexed volumes and EF. An abnormal contour in one plane is insufficient.', 'ابتدا کیفیت تصویر، سپس هر دو بطن: حرکت موضعی، حجم ایندکس‌شده و EF. کانتور غیرطبیعی در یک صفحه کافی نیست.'))}</p><Table headers={[L('Sequenz', 'Sequence', 'سکانس'), L('Frage / Aufgabe', 'Question / task', 'سؤال / هدف')]} rows={PROTOCOL} lang={lang} /><CineExplorer lang={lang} /><div className={styles.formula}><bdi>RVEF = (RVEDV − RVESV) / RVEDV × 100</bdi><bdi>RVEDVi = RVEDV / BSA</bdi></div><Note warning lang={lang}><p>{c(CINE_NOTE)}</p></Note><Source href="https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.108.840827">Marcus et al. · 2010 TFC</Source></>
-  if (id === 'lge') return <><p className={reference.lead}>{c(L('LGE kartiert Ersatzfibrose und macht LV-Beteiligung sichtbar, auch wenn die EF erhalten ist. Eine Narbe muss in orthogonalen Ansichten bestätigt werden.', 'LGE maps replacement fibrosis and detects LV involvement even with preserved EF. Confirm scar in orthogonal views.', 'LGE فیبروز جایگزین و درگیری LV را حتی با EF حفظ‌شده نشان می‌دهد. اسکار را در نماهای عمود بر هم تأیید کنید.'))}</p><LgeExplorer lang={lang} /><Note warning lang={lang}><p>{c(L('Dünne RV-Wand: begrenzte räumliche Auflösung und Partialvolumen. Fehlendes RV-LGE schließt ARVC nicht aus; Fett allein ist kein diagnostisches Kriterium.', 'Thin RV wall: limited spatial resolution and partial volume. Absent RV LGE does not exclude ARVC; fat alone is not a diagnostic criterion.', 'دیواره RV نازک است: تفکیک مکانی محدود و partial volume مهم‌اند. نبود LGE در RV، ARVC را رد نمی‌کند؛ چربی به‌تنهایی معیار تشخیصی نیست.'))}</p></Note><Source href="https://doi.org/10.1016/j.ijcard.2020.06.005">Padua · tissue characterisation</Source></>
-  if (id === 'kriterien') return <><p className={reference.lead}>{c(L('2010 TFC fokussiert auf ARVC; Padua 2020 erweitert auf LV und beide Ventrikel und integriert LGE. Die Zahlen unten sind ausschließlich die Erwachsenen-CMR-Grenzen der 2010 TFC.', '2010 TFC focuses on ARVC; Padua 2020 extends to LV/biventricular disease and incorporates LGE. The numbers below are exclusively adult 2010 TFC CMR thresholds.', 'TFC 2010 بر ARVC تمرکز دارد؛ Padua 2020 درگیری LV و دو بطنی و LGE را اضافه می‌کند. اعداد زیر فقط آستانه‌های CMR بزرگسالان در TFC 2010 هستند.'))}</p><Table headers={[L('2010 CMR', '2010 CMR', 'CMR 2010'), L('Quantitative Bedingung PLUS regionale Störung', 'Quantitative condition PLUS regional abnormality', 'شرط کمی همراه اختلال موضعی')]} rows={[
-    ['Major', L('RVEDVi ≥110 (M) / ≥100 (F) mL/m² ODER RVEF ≤40%.', 'RVEDVi ≥110 (M) / ≥100 (F) mL/m² OR RVEF ≤40%.', 'RVEDVi ≥۱۱۰ در مرد / ≥۱۰۰ در زن یا RVEF ≤۴۰٪.')],
-    ['Minor', L('RVEDVi ≥100 bis <110 (M) / ≥90 bis <100 (F) ODER RVEF >40 bis ≤45%.', 'RVEDVi ≥100 to <110 (M) / ≥90 to <100 (F) OR RVEF >40 to ≤45%.', 'RVEDVi از ≥۱۰۰ تا <۱۱۰ در مرد / از ≥۹۰ تا <۱۰۰ در زن، یا RVEF از >۴۰ تا ≤۴۵٪.')],
-  ]} lang={lang} /><ThresholdDiagram lang={lang} /><CriteriaLab lang={lang} /><h3 className={styles.subheading}>{c(L('Was ändert Padua?', 'What does Padua change?', 'Padua چه چیزی را تغییر می‌دهد؟'))}</h3><Table headers={[L('Bereich', 'Domain', 'حیطه'), L('Padua 2020', 'Padua 2020', 'Padua 2020')]} rows={[
-    ['RV', L('Regionale Akinesie/Dyskinesie/Bulging + globale Dilatation oder Dysfunktion: Major. Isolierte regionale Störung: Minor. Alters-, Geschlechts- und methodenspezifische Nomogramme.', 'Regional akinesia/dyskinesia/bulging + global dilatation or dysfunction: major. Isolated regional abnormality: minor. Use age-, sex- and method-specific nomograms.', 'آکینزی/دیسکینزی/bulging موضعی همراه اتساع یا اختلال عملکرد کلی: ماژور. اختلال موضعی منفرد: مینور. نوموگرام متناسب با سن، جنس و روش.')],
-    ['LGE', L('RV-transmural und LV-nichtischämische Stria: strukturelle Major-Kriterien, in zwei Ebenen bestätigt.', 'Transmural RV and non-ischaemic LV stripe: major structural criteria, confirmed in two planes.', 'LGE ترانس‌مورال RV و نوار غیرایسکمیک LV: معیارهای ساختاری ماژور با تأیید در دو صفحه.')],
-    ['ALVC', L('Ohne RV-Beteiligung: LV-Strukturmerkmal plus passende pathogene/wahrscheinlich pathogene Variante; Mimics ausschließen.', 'Without RV involvement: LV structural feature plus compatible pathogenic/likely pathogenic variant; exclude mimics.', 'بدون درگیری RV: یافته ساختاری LV همراه واریانت سازگار بیماری‌زا/احتمالاً بیماری‌زا؛ افتراق‌ها رد شوند.')],
-  ]} lang={lang} /><Note lang={lang}><p>{c(L('Die sechs Kategorien: Morphologie/Funktion, Struktur, Repolarisation, Depolarisation, Arrhythmien, Familie/Genetik. Nach 2010: definite = 2 Major oder 1 Major + 2 Minor oder 4 Minor aus unterschiedlichen Kategorien.', 'Six categories: morphology/function, structure, repolarisation, depolarisation, arrhythmias, family/genetics. Under 2010: definite = 2 major, or 1 major + 2 minor, or 4 minor from different categories.', 'شش دسته: مورفولوژی/عملکرد، ساختار، رپولاریزاسیون، دپولاریزاسیون، آریتمی، خانواده/ژنتیک. در ۲۰۱۰: قطعی یعنی ۲ ماژور، یا ۱ ماژور و ۲ مینور، یا ۴ مینور از دسته‌های متفاوت.'))}</p><p>{c(L('Für Padua muss mindestens ein morphofunktionelles oder strukturelles Kriterium vorhanden sein. Der Rechner oben bewertet nur eine 2010-Kategorie.', 'Padua requires at least one morphofunctional or structural criterion. The lab above assesses only one 2010 category.', 'در Padua دست‌کم یک معیار مورفولوژی/عملکرد یا ساختاری لازم است. ابزار بالا فقط یک دسته از معیارهای ۲۰۱۰ را ارزیابی می‌کند.'))}</p></Note><Source href="https://doi.org/10.1016/j.ijcard.2020.06.005">Padua criteria · 2020</Source></>
-  if (id === 'differenzial') return <><p className={reference.lead}>{c(L('Ist die RV-Vergrößerung eine Myokarderkrankung oder eine Reaktion auf Belastung? Und ist die LV-Narbe genetisch oder entzündlich bedingt?', 'Is RV enlargement myocardial disease or a response to loading? Is LV scar genetic or inflammatory?', 'بزرگی RV بیماری میوکارد است یا پاسخ به بار؟ اسکار LV منشأ ژنتیکی دارد یا التهابی؟'))}</p><Table headers={[L('Mimic', 'Mimic', 'افتراق'), L('Was trennt die Muster?', 'What separates the patterns?', 'چه چیزی الگوها را جدا می‌کند؟')]} rows={DIFFERENTIALS} lang={lang} /><SelfCheck item={MIMIC_CHECK} lang={lang} /><Source href="https://doi.org/10.1161/CIRCULATIONAHA.119.044934">Smith et al. · DSP cardiomyopathy</Source></>
-  if (id === 'faelle') return <><p className={reference.lead}>{c(L('Die Originalserien öffnen, zuerst selbst beobachten und dann die Besprechung aufdecken. Die folgenden Fragen und Analysen sind RadYar-Lehrkommentare zu den verlinkten Fällen.', 'Open the original series, observe first and then reveal the discussion. The questions and analyses below are RadYar teaching commentary on the linked cases.', 'سری تصاویر اصلی را باز کنید، ابتدا خودتان مشاهده کنید و سپس تحلیل را ببینید. سؤال‌ها و تحلیل‌های زیر توضیحات آموزشی RadYar درباره کیس‌های لینک‌شده‌اند.'))}</p><div className={styles.caseGrid}>{CASES.map(item => <CaseCard key={item.id} item={item} lang={lang} />)}</div><Note warning lang={lang}><p>{c(L('Kinderfall: Die Erwachsenen-Grenzen des Rechners nicht als validierte pädiatrische Diagnose verwenden.', 'Paediatric case: do not use the lab’s adult thresholds as a validated paediatric diagnosis.', 'کیس کودک: آستانه‌های بزرگسالان در ابزار را به‌عنوان تشخیص معتبر کودکان استفاده نکنید.'))}</p></Note></>
-  if (id === 'befund') return <><ReportChecklist lang={lang} /><div className={styles.report}><h3>{c(L('Synthetisches Befundbeispiel', 'Synthetic report example', 'نمونه گزارش ساختگی آموزشی'))}</h3><blockquote>{c(REPORT)}</blockquote></div><SelfCheck item={REPORT_CHECK} lang={lang} /></>
+  if (id === 'spektrum') return <>
+    <p className={reference.lead}>{c(BASICS)}</p>
+    <PhenotypeExplorer lang={lang} />
+    <Note lang={lang}><p>{c(CLINIC)}</p></Note>
+  </>
+  if (id === 'cine') return <>
+    <p className={reference.lead}>{c(L('Im Cine prüfen: regionale RV-Bewegung, indexiertes Volumen und EF beider Ventrikel.', 'On cine, assess regional RV motion, indexed volume and EF of both ventricles.', 'در Cine، حرکت موضعی RV، حجم ایندکس‌شده و EF هر دو بطن را بررسی کنید.'))}</p>
+    <CineExplorer lang={lang} />
+    <Note warning lang={lang}><p>{c(CINE_NOTE)}</p></Note>
+  </>
+  if (id === 'lge') return <>
+    <p className={reference.lead}>{c(L('LGE zeigt Narbe, auch bei erhaltener EF. Die Lage der Narbe hilft bei der Einordnung.', 'LGE shows scar, even with preserved EF. Scar location helps interpretation.', 'LGE اسکار را حتی با EF حفظ‌شده نشان می‌دهد. محل اسکار به تفسیر کمک می‌کند.'))}</p>
+    <LgeExplorer lang={lang} />
+    <Note warning lang={lang}><p>{c(L('Fehlendes RV-LGE schließt ARVC nicht aus. Fett allein ist kein ACM-Kriterium.', 'Absent RV LGE does not exclude ARVC. Fat alone is not an ACM criterion.', 'نبود LGE در RV، ARVC را رد نمی‌کند. چربی به‌تنهایی معیار ACM نیست.'))}</p></Note>
+  </>
+  if (id === 'kriterien') return <>
+    <Note lang={lang}><p><strong>{c(L('2010 TFC: regionale RV-Störung UND Volumen-/EF-Kriterium.', '2010 TFC: regional RV abnormality AND a volume/EF criterion.', 'TFC 2010: اختلال موضعی RV و شرط حجم/EF باید با هم وجود داشته باشند.'))}</strong></p><p>{c(L('Volumen und EF nur einmal zählen. Die folgenden Grenzwerte gelten für Erwachsenen-CMR.', 'Count volume and EF only once. These thresholds apply to adult CMR.', 'حجم و EF فقط یک بار حساب می‌شوند. آستانه‌های زیر برای CMR بزرگسالان‌اند.'))}</p></Note>
+    <Table headers={[L('2010 CMR', '2010 CMR', 'CMR 2010'), L('Zusätzlich zur regionalen RV-Störung', 'In addition to regional RV abnormality', 'علاوه بر اختلال موضعی RV')]} rows={[
+      ['Major', L('RVEDVi ≥110 (M) / ≥100 (F) mL/m² ODER RVEF ≤40%.', 'RVEDVi ≥110 (M) / ≥100 (F) mL/m² OR RVEF ≤40%.', 'RVEDVi ≥۱۱۰ در مرد / ≥۱۰۰ در زن (mL/m²)، یا RVEF ≤۴۰٪.')],
+      ['Minor', L('RVEDVi ≥100 bis <110 (M) / ≥90 bis <100 (F) mL/m² ODER RVEF >40 bis ≤45%.', 'RVEDVi ≥100 to <110 (M) / ≥90 to <100 (F) mL/m² OR RVEF >40 to ≤45%.', 'RVEDVi از ≥۱۰۰ تا <۱۱۰ در مرد / از ≥۹۰ تا <۱۰۰ در زن (mL/m²)، یا RVEF از >۴۰ تا ≤۴۵٪.')],
+    ]} lang={lang} />
+    <h3 className={styles.subheading}>{c(L('Padua: was ist neu?', 'Padua: what is new?', 'Padua چه چیزی اضافه می‌کند؟'))}</h3>
+    <p>{c(L('Padua 2020 ergänzt nichtischämische RV-/LV-Narbe im LGE und erfasst linksdominante sowie biventrikuläre Formen. Befunde in zwei orthogonalen Ebenen bestätigen; altersgerechte Normwerte verwenden.', 'Padua 2020 adds non-ischaemic RV/LV scar on LGE and covers left-dominant and biventricular disease. Confirm findings in two orthogonal planes and use age-appropriate reference values.', 'Padua 2020 اسکار غیرایسکمیک RV/LV در LGE و شکل‌های چپ‌غالب و دو بطنی را اضافه می‌کند. یافته‌ها را در دو صفحه عمود بر هم تأیید و از مرجع متناسب با سن استفاده کنید.'))}</p>
+    <details className={styles.optional}><summary>{c(L('Kriterien selbst ausprobieren · optional', 'Try the criteria · optional', 'معیارها را امتحان کنید · اختیاری'))}</summary><CriteriaLab lang={lang} /></details>
+    <details className={styles.optional}><summary>{c(L('Padua-Details · optional', 'Padua details · optional', 'جزئیات Padua · اختیاری'))}</summary>
+      <ul>
+        <li>{c(L('RV: regionale Akinesie/Dyskinesie/Bulging plus globale Dilatation oder Dysfunktion = Major; isolierte regionale Störung = Minor.', 'RV: regional akinesia/dyskinesia/bulging plus global dilatation or dysfunction = major; isolated regional abnormality = minor.', 'RV: آکینزی/دیسکینزی/bulging موضعی همراه اتساع یا اختلال عملکرد کلی = ماژور؛ اختلال موضعی منفرد = مینور.'))}</li>
+        <li>{c(L('LGE: transmural in ≥1 RV-Region oder nichtischämische Stria in ≥1 LV-Segment. Junktionales LV-LGE zählt nicht; in zwei Ebenen bestätigen.', 'LGE: transmural in ≥1 RV region or non-ischaemic stripe in ≥1 LV segment. Junctional LV LGE is excluded; confirm in two planes.', 'LGE: ترانس‌مورال در ≥۱ ناحیه RV یا نوار غیرایسکمیک در ≥۱ سگمنت LV. LGE محل اتصال حساب نمی‌شود؛ تأیید در دو صفحه لازم است.'))}</li>
+        <li>{c(L('Isolierte ALVC braucht eine passende pathogene/wahrscheinlich pathogene Variante; VUS genügt nicht. Mindestens ein morphofunktionelles oder strukturelles Kriterium ist für Padua erforderlich.', 'Isolated ALVC requires a compatible pathogenic/likely pathogenic variant; a VUS is insufficient. Padua requires at least one morphofunctional or structural criterion.', 'ALVC منفرد به واریانت سازگار بیماری‌زا/احتمالاً بیماری‌زا نیاز دارد؛ VUS کافی نیست. در Padua دست‌کم یک معیار مورفولوژی/عملکرد یا ساختاری لازم است.'))}</li>
+      </ul>
+    </details>
+  </>
+  if (id === 'differenzial') return <>
+    <Table headers={[L('Mimic', 'Mimic', 'افتراق'), L('Wichtigster Hinweis', 'Key clue', 'سرنخ مهم')]} rows={DIFFERENTIALS} lang={lang} />
+    <SelfCheck item={MIMIC_CHECK} lang={lang} />
+  </>
+  if (id === 'faelle') return <>
+    <p className={reference.lead}>{c(L('MRI öffnen, selbst beobachten, dann die kurze Besprechung aufdecken.', 'Open the MRI, observe first, then reveal the short discussion.', 'MRI را باز کنید، ابتدا خودتان ببینید و سپس تحلیل کوتاه را نمایش دهید.'))}</p>
+    <div className={styles.caseGrid}>{CASES.map(item => <CaseCard key={item.id} item={item} lang={lang} />)}</div>
+  </>
+  if (id === 'befund') return <>
+    <ReportChecklist lang={lang} />
+    <div className={styles.report}><h3>{c(L('Kurzes Lehrbeispiel', 'Short teaching example', 'نمونه کوتاه آموزشی'))}</h3><blockquote>{c(REPORT)}</blockquote></div>
+  </>
   return <ul className={styles.summary}>{TAKEHOME.map((point, i) => <li key={i}><Icon name="check" /><span>{c(point)}</span></li>)}</ul>
 }

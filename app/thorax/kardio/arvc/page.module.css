@@ -12,11 +12,8 @@
 .choiceBar { display: flex; flex-wrap: wrap; gap: 8px; }
 .choiceBar button,.inlineButton { min-height: 44px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); font: 700 14px/1.6 inherit; cursor: pointer; }
 .choiceBar button[aria-pressed='true'] { background: var(--plum-800); border-color: var(--plum-800); color: white; }
-.pathway { list-style: none; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; margin: 24px 0; padding: 0; }
-.pathway li { padding: 20px; border-inline-start: 3px solid var(--teal-700); background: var(--teal-100); font-size: 15px; line-height: 1.8; font-weight: 700; }
 .rangeLabel { display: grid; grid-template-columns: auto minmax(60px,1fr) auto; align-items: center; gap: 16px; font-size: 14px; line-height: 1.7; }
 .rangeLabel input { width: 100%; accent-color: var(--teal-700); direction: ltr; cursor: pointer; }
-.formula { display: grid; gap: 12px; padding: 20px; background: var(--teal-100); color: var(--ink); font: 700 15px/1.9 system-ui,sans-serif; overflow-wrap: anywhere; }
 .formGrid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
 .formGrid label { display: grid; gap: 8px; font-size: 14px; }
 .formGrid :is(input,select) { width: 100%; min-width: 0; min-height: 46px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); color: var(--ink); font: inherit; }
@@ -31,17 +28,19 @@
 .caseLabel { color: var(--teal-700); font-size: 12px; font-weight: 800; }
 .caseLinks { display: flex; flex-wrap: wrap; gap: 10px; }
 .caseLinks a { display: inline-flex; padding: 10px 14px; min-height: 44px; align-items: center; background: var(--plum-800); color: white; border-radius: 7px; font-size: 13px; font-weight: 700; text-decoration: none; }
-.credit { font-size: 12px; }
-.sourceLine { font-size: 12px; margin-block: 20px 0; }
-.sourceLine a { color: var(--teal-700); }
+.caseCard > .inlineButton { margin-top: 16px; }
+.optional { margin-top: 18px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--canvas); color: var(--body); }
+.optional summary { color: var(--ink); cursor: pointer; font-size: 14px; font-weight: 700; line-height: 1.8; }
+.optional ul { padding-inline-start: 20px; font-size: 14px; line-height: 1.9; }
+.optional li + li { margin-top: 12px; }
+.optional .explorer { margin-bottom: 0; }
 .page :is(button,a,input,select,summary):focus-visible { outline: 3px solid var(--teal-500); outline-offset: 3px; }
 .page [class*='sectionBody'] > p { font-size: 16px; line-height: 1.95; color: var(--body); }
 @media (max-width:760px) {
-  .visualSplit,.caseGrid,.formGrid,.pathway { grid-template-columns: 1fr; }
+  .visualSplit,.caseGrid,.formGrid { grid-template-columns: 1fr; }
   .explorer,.caseCard { padding: 16px; }
   .rangeLabel { grid-template-columns: 1fr; gap: 7px; }
   .choiceBar button { flex: 1 1 auto; }
-  .formula { font-size: 12px; }
 }
 .chapterHeading { margin: 0; }
 .page h2 { color: var(--ink); }
@@ -85,7 +84,6 @@
 :global(html[data-theme='dark']) .page [class*='toggle'],
 :global(html[data-theme='dark']) .page [class*='sideIcon'] { color: #d5acda; }
 :global(html[data-theme='dark']) .page [class*='activeSideItem'] [class*='sideIcon'] { color: #fff; }
-:global(html[data-theme='dark']) .sourceLine a,
 :global(html[data-theme='dark']) .caseLabel { color: #80d8d5; }
 .tableScroll:focus-visible,.sources summary:focus-visible { outline: 3px solid var(--teal-500); outline-offset: 3px; }
 @media (max-width:760px) {
