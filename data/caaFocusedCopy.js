@@ -1,6 +1,10 @@
 const L = (de, en, fa) => ({ de, en, fa })
 export const CAA_FOCUSED_COPY = {
   backgroundHint: L('Wähle einen Blickwinkel: Die Zusammenhänge werden einzeln sichtbar.', 'Choose a perspective to explore one association at a time.', 'یک موضوع را انتخاب کنید تا ارتباط آن جداگانه روشن شود.'),
+  demographicTabs: [L('Häufigkeit', 'Frequency', 'شیوع'), L('Alter', 'Age', 'سن'), L('Geschlechter', 'Sex', 'جنسیت')],
+  men: L('Männer', 'Men', 'مردان'),
+  women: L('Frauen', 'Women', 'زنان'),
+  appMutation: L('z. B. APP-Mutation', 'e.g. APP mutation', 'مثلاً جهش APP'),
   backgroundTabs: [L('Häufigkeit', 'Frequency', 'شیوع'), L('Alter', 'Age', 'سن'), L('Alzheimer', 'Alzheimer', 'آلزهایمر'), L('Down-Syndrom', 'Down syndrome', 'سندرم داون')],
   acuteHint: L('Wähle eine Präsentation und verknüpfe Klinik und Muster.', 'Select a presentation to connect symptoms and patterns.', 'یک تظاهر را انتخاب کنید و ارتباط علائم با الگو را ببینید.'),
   acuteTabs: [L('Lobäre ICH', 'Lobar ICH', 'ICH لوبار'), 'TFNE'],
@@ -10,7 +14,7 @@ export const CAA_FOCUSED_COPY = {
   ageCaption: L('Alter einordnen, keinen festen Beginn ableiten', 'Interpret age without assuming a fixed onset', 'سن را تفسیر کنید؛ شروع ثابتی فرض نکنید'),
   sporadic: L('Sporadisch', 'Sporadic', 'اسپورادیک'),
   typicalAge: L('meist über 60 Jahre', 'usually over 60', 'اغلب بالای ۶۰ سال'),
-  hereditary: L('Hereditär · z. B. Dutch-type', 'Hereditary · e.g. Dutch type', 'ارثی · مانند نوع هلندی'),
+  hereditary: L('Hereditär', 'Hereditary', 'ارثی'),
   earlier: L('früherer Beginn möglich', 'earlier onset possible', 'شروع زودتر ممکن است'),
   amyloidCaption: L('Gleiches Protein, unterschiedliche Ablagerungsorte', 'The same protein, different deposit locations', 'پروتئین یکسان، محل رسوب متفاوت'),
   wall: L('Gefäßwand · CAA', 'Vessel wall · CAA', 'دیواره رگ · CAA'),

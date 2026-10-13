@@ -86,3 +86,5 @@
 .foundationBody { margin-inline-start: 24px; min-width: 0; }
 :global(html[data-theme='dark']) .foundationHeading { color: #80d6d2; }
 @media(max-width:760px) { .foundationGroup { margin-block-end: 30px; }.foundationHeading { margin-bottom: 18px; font-size: 27px; }.foundationBody { margin-inline-start: 12px; } }
+
+.amyloidLocations { margin: 12px 0 0; padding-inline-start: 26px; }.amyloidLocations li { margin-block: 8px; padding-inline-start: 4px; line-height: 1.8; }.amyloidLocations li::marker { color: var(--teal-700); }

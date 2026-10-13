@@ -33,17 +33,19 @@ export const CAA_COPY = {
   pathologyTitle: L('Pathologie', 'Pathology', 'پاتولوژی'),
   associationsTitle: L('Alzheimer & genetische Prädisposition', 'Alzheimer disease & genetic predisposition', 'آلزهایمر و زمینه ژنتیکی'),
   systemicWarning: L('Die sporadische β-Amyloid-CAA ist keine Manifestation einer systemischen Amyloidose.', 'Sporadic β-amyloid CAA is not a manifestation of systemic amyloidosis.', 'CAA اسپورادیک ناشی از β-آمیلوئید، تظاهر آمیلوئیدوز سیستمیک نیست.'),
-  backgroundTitle: L('Häufigkeit & Alter', 'Frequency & age', 'شیوع و سن'),
+  backgroundTitle: L('Häufigkeit, Alter & Geschlechter', 'Frequency, age & sex', 'شیوع، سن و جنسیت'),
   background: [
     { title: L('Häufigkeit', 'Frequency', 'شیوع'), paragraphs: [
       L('CAA gehört zu den wichtigsten Ursachen spontaner lobärer ICH im höheren Lebensalter.', 'CAA is a leading cause of spontaneous lobar ICH in older adults.', 'CAA از مهم‌ترین علل ICH لوبار خودبخودی در سالمندان است.'),
       L('Als grobe Orientierung werden etwa 15 % der spontanen intrazerebralen Blutungen im höheren Lebensalter der CAA zugeschrieben; publizierte Schätzungen reichen von 5–20 %.', 'As a rough guide, about 15% of spontaneous intracerebral haemorrhages in older adults are attributed to CAA; published estimates range from 5–20%.', 'به‌عنوان برآورد تقریبی، حدود ۱۵٪ خونریزی‌های داخل مغزی خودبخودی در سالمندان به CAA نسبت داده می‌شود؛ برآوردهای منتشرشده بین ۵ تا ۲۰٪ است.'),
-      L('Der Anteil hängt von Alter, Patientenkollektiv und Diagnoseverfahren ab.', 'The proportion depends on age, patient population and diagnostic method.', 'این سهم به سن، جمعیت مورد بررسی و روش تشخیص وابسته است.'),
-      L('Eine Subarachnoidalblutung allein beweist keine CAA.', 'Subarachnoid haemorrhage alone does not prove CAA.', 'خونریزی زیرعنکبوتیه به‌تنهایی CAA را ثابت نمی‌کند.'),
     ] },
     { title: L('Alter & Formen', 'Age & forms', 'سن و انواع بیماری'), paragraphs: [
-      L('Die sporadische Form betrifft überwiegend Menschen über 60 Jahre; die Häufigkeit steigt mit dem Alter. Hereditäre Formen, etwa Dutch-type CAA durch eine APP-Mutation, können deutlich früher auftreten.', 'The sporadic form mainly affects people over 60, with prevalence increasing with age. Hereditary forms, such as Dutch-type CAA caused by an APP mutation, may present much earlier.', 'نوع اسپورادیک بیشتر در افراد بالای ۶۰ سال دیده می‌شود و با افزایش سن شایع‌تر است. انواع ارثی، مانند CAA نوع هلندی ناشی از جهش APP، می‌توانند بسیار زودتر بروز کنند.'),
-      L('Beide Geschlechter sind betroffen. Das Geschlecht ist kein Boston-Kriterium; eine feste Gleichverteilung lässt sich aus den unterschiedlichen Kohorten nicht ableiten.', 'Both sexes are affected. Sex is not a Boston criterion; a fixed equal distribution cannot be inferred from the different cohorts.', 'هر دو جنس درگیر می‌شوند. جنسیت جزو معیارهای Boston نیست و از مطالعات با جمعیت‌های متفاوت نمی‌توان نسبت دقیق و ثابتی نتیجه گرفت.'),
+      L('Die sporadische Form betrifft überwiegend Menschen über 60 Jahre und die Häufigkeit steigt mit dem Alter.', 'The sporadic form mainly affects people over 60 and becomes more frequent with age.', 'نوع اسپورادیک بیشتر در افراد بالای ۶۰ سال دیده می‌شود و با افزایش سن شایع‌تر است.'),
+      L('Hereditäre Formen, zum Beispiel Dutch-type CAA durch eine APP-Mutation, können deutlich früher auftreten.', 'Hereditary forms, such as Dutch-type CAA caused by an APP mutation, may present much earlier.', 'انواع ارثی، مانند CAA نوع هلندی ناشی از جهش APP، می‌توانند بسیار زودتر بروز کنند.'),
+    ] },
+    { title: L('Geschlechter', 'Sex', 'جنسیت'), paragraphs: [
+      L('Männer und Frauen sind betroffen. Eine feste 1:1-Verteilung ist nicht belegt.', 'Both men and women are affected. A fixed 1:1 distribution is not established.', 'مردان و زنان هر دو درگیر می‌شوند. نسبت ثابت ۱ به ۱ اثبات نشده است.'),
+      L('Das Geschlecht ist kein Boston-Kriterium.', 'Sex is not a Boston criterion.', 'جنسیت جزو معیارهای Boston نیست.'),
     ] },
   ],
   associations: [
@@ -62,7 +64,9 @@ export const CAA_COPY = {
     ['Boston v2.0', L('Klinik, Alter und Ausschlusskriterien einbeziehen.', 'Include clinical presentation, age and exclusions.', 'علائم بالینی، سن و معیارهای رد را در نظر بگیرید.'), 'chart'],
   ],
   amyloid: [
-    L('CAA und Alzheimer teilen die β-Amyloid-Pathologie, mit unterschiedlichen Ablagerungsorten: Gefäßwand bei CAA, parenchymale Plaques bei Alzheimer.', 'CAA and Alzheimer disease share β-amyloid pathology at different deposit locations: vessel walls in CAA, parenchymal plaques in Alzheimer disease.', 'CAA و آلزهایمر پاتولوژی β-آمیلوئید مشترکی دارند، با محل رسوب متفاوت: دیواره رگ در CAA و پلاک‌های پارانشیمی در آلزهایمر.'),
+    L('CAA und Alzheimer teilen die β-Amyloid-Pathologie mit unterschiedlichen Ablagerungsorten:', 'CAA and Alzheimer disease share β-amyloid pathology at different deposit locations:', 'CAA و آلزهایمر پاتولوژی β-آمیلوئید مشترکی دارند، اما محل رسوب متفاوت است:'),
+    L('Gefäßwand bei CAA.', 'Vessel walls in CAA.', 'دیواره رگ در CAA.'),
+    L('Parenchymale Plaques bei Alzheimer.', 'Parenchymal plaques in Alzheimer disease.', 'پلاک‌های پارانشیمی در آلزهایمر.'),
   ],
   deepWarning: L('Eine tiefe ICH oder Mikroblutung verhindert die MRT-Einstufung als probable oder possible CAA nach Boston v2.0. Sie schließt eine gleichzeitig bestehende CAA jedoch nicht aus.', 'A deep ICH or microbleed prevents an MRI-based classification as probable or possible CAA under Boston v2.0. It does not exclude coexisting CAA.', 'وجود ICH یا میکروخونریزی عمقی مانع طبقه‌بندی MRI به‌عنوان CAA محتمل یا ممکن طبق Boston v2.0 می‌شود؛ اما هم‌زمانی CAA را رد نمی‌کند.'),
   schematic: L('Entscheidend ist die Verteilung, nicht die Zahl der Punkte.', 'Focus on distribution, not the number of dots.', 'به توزیع توجه کنید، نه تعداد نقطه‌ها.'),

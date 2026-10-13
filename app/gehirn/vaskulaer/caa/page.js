@@ -80,7 +80,7 @@ function ChapterContent({ id, lang }) {
         <Note warning lang={lang}><Paragraphs values={[COPY.systemicWarning]} lang={lang} /></Note>
         <VesselExplorer lang={lang} headingLevel="h4" description={COPY.basics[1]} />
         <AssociationExplorer title={COPY.associationsTitle} items={COPY.associations} lang={lang} />
-        <Note lang={lang}><Paragraphs values={COPY.amyloid} lang={lang} /></Note>
+        <Note lang={lang}><Paragraphs values={[COPY.amyloid[0]]} lang={lang} /><ul className={styles.amyloidLocations}>{COPY.amyloid.slice(1).map((location, index) => <li key={index}>{c(location)}</li>)}</ul></Note>
       </div>
     </section>
     <section className={styles.foundationGroup} aria-labelledby="caa-frequency-title" data-foundation-group="frequency">
