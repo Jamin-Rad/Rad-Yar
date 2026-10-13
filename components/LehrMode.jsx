@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { useUser } from '@clerk/nextjs'
 import { usePathname } from 'next/navigation'
 import { canonicalUserEmail } from '@/lib/emailIdentity'
+import { exitPageFullscreen, requestPageFullscreen } from '@/utils/lehrFullscreen'
 import LehrRecordingTools from './LehrRecordingTools'
 import styles from './LehrMode.module.css'
 
@@ -97,7 +98,6 @@ export default function LehrMode() {
   const isAdmin = isLoaded && canonicalUserEmail(user) === ADMIN_EMAIL
   const isExcluded = pathname === '/andarun' || pathname?.startsWith('/andarun/')
   const [active, setActive] = useState(false)
-  const [recordingReady, setRecordingReady] = useState(false)
   const [tool, setTool] = useState('pen')
   const [toolColors, setToolColors] = useState(INITIAL_TOOL_COLORS)
   const [colorMenuOpen, setColorMenuOpen] = useState(false)
@@ -110,6 +110,8 @@ export default function LehrMode() {
   const eraseSessionRef = useRef(null)
   const frameRef = useRef(null)
   const toolRef = useRef(tool)
+  const activeRef = useRef(false)
+  const fullscreenRequestRef = useRef(0)
   const toolColorsRef = useRef(INITIAL_TOOL_COLORS)
 
   const selectToolColor = useCallback((toolName, color) => {
@@ -187,10 +189,24 @@ export default function LehrMode() {
   }, [scheduleRender])
 
   const deactivate = useCallback(() => {
+    const wasActive = activeRef.current
+    activeRef.current = false
+    fullscreenRequestRef.current += 1
     setActive(false)
-    setRecordingReady(false)
+    if (wasActive) exitPageFullscreen().catch(() => {})
     clearAnnotations()
   }, [clearAnnotations])
+
+  const activate = useCallback(() => {
+    activeRef.current = true
+    const request = ++fullscreenRequestRef.current
+    requestPageFullscreen()
+      .then(entered => {
+        if (entered && (request !== fullscreenRequestRef.current || !activeRef.current)) exitPageFullscreen().catch(() => {})
+      })
+      .catch(() => {})
+    setActive(true)
+  }, [])
 
   const undo = useCallback(() => {
     const previous = historyRef.current.pop()
@@ -209,21 +225,15 @@ export default function LehrMode() {
     if (!isAdmin || isExcluded) deactivate()
   }, [deactivate, isAdmin, isExcluded])
 
-  useEffect(() => { setRecordingReady(false) }, [active, pathname])
-
-  useEffect(() => {
-    if (active && isAdmin && !isExcluded && recordingReady) document.documentElement.dataset.lehrRecordingReady = 'true'
-    else delete document.documentElement.dataset.lehrRecordingReady
-    return () => { delete document.documentElement.dataset.lehrRecordingReady }
-  }, [active, isAdmin, isExcluded, recordingReady])
-
   useEffect(() => {
     function toggleMode() {
-      if (isAdmin && !isExcluded) setActive(value => !value)
+      if (!isAdmin || isExcluded) return
+      if (activeRef.current) deactivate()
+      else activate()
     }
     window.addEventListener(TOGGLE_EVENT, toggleMode)
     return () => window.removeEventListener(TOGGLE_EVENT, toggleMode)
-  }, [isAdmin, isExcluded])
+  }, [activate, deactivate, isAdmin, isExcluded])
 
   useEffect(() => {
     window.addEventListener(CLEAR_EVENT, clearAnnotations)
@@ -234,14 +244,17 @@ export default function LehrMode() {
     document.documentElement.classList.toggle('lehr-mode-active', active)
     if (active) {
       document.documentElement.dataset.lehrTool = toolRef.current
+      document.documentElement.dataset.lehrRecordingReady = 'true'
       scheduleRender()
     } else {
       delete document.documentElement.dataset.lehrTool
+      delete document.documentElement.dataset.lehrRecordingReady
     }
     window.dispatchEvent(new CustomEvent(STATE_EVENT, { detail: { active } }))
     return () => {
       document.documentElement.classList.remove('lehr-mode-active')
       delete document.documentElement.dataset.lehrTool
+      delete document.documentElement.dataset.lehrRecordingReady
     }
   }, [active, scheduleRender])
 
@@ -440,7 +453,7 @@ export default function LehrMode() {
       </div>
       <div className={styles.toolbar} data-lehr-ui role="toolbar" aria-label="Lehr-Mode Werkzeuge">
         <div className={styles.recordingTools} aria-label="Lehr-Mode Einstellungen">
-          <LehrRecordingTools key={pathname} ready={recordingReady} onReadyChange={setRecordingReady} />
+          <LehrRecordingTools key={pathname} />
         </div>
         <div className={styles.modeLabel}><span />Lehr-Mode</div>
         <div className={styles.tools}>

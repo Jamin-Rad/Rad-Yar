@@ -8,7 +8,6 @@ import styles from './LehrRecordingTools.module.css'
 function Icon({ name }) {
   return <svg viewBox="0 0 24 24" aria-hidden="true">{name === 'camera'
     ? <><rect x="3" y="6" width="13" height="12" rx="3" /><path d="m16 10 5-3v10l-5-3" /></>
-    : name === 'ready' ? <><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M8 21H3v-5" /></>
     : <path d="M6 6l12 12M18 6 6 18" />}</svg>
 }
 
@@ -17,31 +16,12 @@ function visibleViewport() {
   return { left: viewport?.offsetLeft || 0, top: viewport?.offsetTop || 0, width: viewport?.width || window.innerWidth, height: viewport?.height || window.innerHeight }
 }
 
-function pageFullscreenElement() {
-  return document.fullscreenElement || document.webkitFullscreenElement || null
-}
-
-async function requestPageFullscreen() {
-  const root = document.documentElement
-  const request = root.requestFullscreen || root.webkitRequestFullscreen
-  if (!request) return false
-  await request.call(root)
-  return true
-}
-
-async function exitPageFullscreen() {
-  const exit = document.exitFullscreen || document.webkitExitFullscreen
-  if (pageFullscreenElement() && exit) await exit.call(document)
-}
-
-export default function LehrRecordingTools({ ready, onReadyChange }) {
+export default function LehrRecordingTools() {
   const [cameraOn, setCameraOn] = useState(false)
   const [pending, setPending] = useState(false)
   const [error, setError] = useState('')
   const [paused, setPaused] = useState(false)
   const [large, setLarge] = useState(false)
-  const [showGuide, setShowGuide] = useState(false)
-  const [fullscreenActive, setFullscreenActive] = useState(false)
   const streamRef = useRef(null)
   const requestRef = useRef(0)
   const mountedRef = useRef(false)
@@ -49,7 +29,6 @@ export default function LehrRecordingTools({ ready, onReadyChange }) {
   const videoRef = useRef(null)
   const positionRef = useRef(null)
   const dragRef = useRef(null)
-  const wasFullscreenRef = useRef(false)
 
   const stopCamera = useCallback((update = true) => {
     requestRef.current += 1
@@ -73,25 +52,8 @@ export default function LehrRecordingTools({ ready, onReadyChange }) {
       mountedRef.current = false
       window.removeEventListener('pagehide', leavePage)
       stopCamera(false)
-      exitPageFullscreen().catch(() => {})
     }
   }, [stopCamera])
-
-  useEffect(() => {
-    const syncFullscreen = () => {
-      const next = Boolean(pageFullscreenElement())
-      setFullscreenActive(next)
-      if (wasFullscreenRef.current && !next) onReadyChange(false)
-      wasFullscreenRef.current = next
-    }
-    syncFullscreen()
-    document.addEventListener('fullscreenchange', syncFullscreen)
-    document.addEventListener('webkitfullscreenchange', syncFullscreen)
-    return () => {
-      document.removeEventListener('fullscreenchange', syncFullscreen)
-      document.removeEventListener('webkitfullscreenchange', syncFullscreen)
-    }
-  }, [onReadyChange])
 
   const playVideo = useCallback(() => {
     const video = videoRef.current
@@ -207,39 +169,12 @@ export default function LehrRecordingTools({ ready, onReadyChange }) {
     moveTo({ x: box.left + delta[0] * step, y: box.top + delta[1] * step })
   }
 
-  const toggleRecordingView = async () => {
-    setError('')
-    setShowGuide(!ready)
-    if (ready) {
-      onReadyChange(false)
-      try { await exitPageFullscreen() } catch {}
-      return
-    }
-
-    onReadyChange(true)
-    try {
-      const supported = await requestPageFullscreen()
-      if (!supported) setError('Dieser Browser unterstützt kein echtes Vollbild. Die störungsfreie Aufnahmeansicht ist stattdessen aktiv.')
-    } catch {
-      setError('Vollbild konnte nicht geöffnet werden. Die störungsfreie Aufnahmeansicht ist trotzdem aktiv.')
-    }
-  }
-
   return <>
     <button type="button" className={`${styles.control} ${cameraOn ? styles.selected : ''}`} aria-label={cameraOn ? 'Frontkamera ausschalten' : pending ? 'Kamera wird gestartet' : 'Frontkamera einschalten'} title={cameraOn ? 'Frontkamera ausschalten' : 'Frontkamera einschalten'} aria-pressed={cameraOn} aria-busy={pending} onClick={() => cameraOn ? stopCamera() : startCamera()} disabled={pending}>
       <Icon name="camera" /><span>{pending ? 'Kamera …' : 'Frontkamera'}</span>
     </button>
-    <button type="button" className={`${styles.control} ${ready ? styles.selected : ''}`} aria-label={ready ? 'Vollbild verlassen' : 'Vollbild für Aufnahme'} title={ready ? 'Vollbild verlassen' : 'Vollbild für Aufnahme'} aria-pressed={ready} onClick={toggleRecordingView}>
-      <Icon name="ready" /><span>{ready ? 'Vollbild verlassen' : 'Vollbild'}</span>
-    </button>
-    {(cameraOn || error || (ready && showGuide)) && createPortal(<div className={styles.overlays} data-lehr-ui dir="ltr">
+    {(cameraOn || error) && createPortal(<div className={styles.overlays} data-lehr-ui dir="ltr">
       {error && <div className={styles.notice} role="alert"><p>{error}</p><button type="button" onClick={() => setError('')} aria-label="Kamerahinweis schließen">×</button></div>}
-      {ready && showGuide && <section className={styles.guide} aria-label="Aufnahme vorbereiten">
-        <strong>{fullscreenActive ? 'Vollbild ist bereit — noch keine Aufnahme' : 'Aufnahmeansicht ist bereit — noch keine Aufnahme'}</strong>
-        <p>iPad: Kontrollzentrum öffnen → Bildschirmaufnahme gedrückt halten → Mikrofon einschalten → Aufnahme starten.</p>
-        <p>Das Video wird in Fotos gespeichert. Prüfe zuerst mit einem kurzen Test, ob Kamera und Ton im Video enthalten sind.</p>
-        <button type="button" onClick={() => setShowGuide(false)}>Verstanden · Hinweis ausblenden</button>
-      </section>}
       {cameraOn && <section ref={panelRef} className={`${styles.camera} ${large ? styles.large : ''}`} aria-label="Frontkamera-Vorschau">
         <header>
           <button type="button" className={styles.grip} aria-label="Kamerafenster verschieben" title="Ziehen oder mit Pfeiltasten verschieben" onPointerDown={beginDrag} onPointerMove={drag} onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={() => { dragRef.current = null }} onKeyDown={moveWithKeyboard}>⠿ <span>Kamera</span></button>
