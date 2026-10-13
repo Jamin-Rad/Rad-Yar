@@ -37,7 +37,7 @@ function ConceptFigure({ kind, lang }) {
   if (kind === 'cognition') return <figure className={styles.concept}>
     <div className={styles.contributors}><span>{pick(COPY.vascular,lang)}</span><span>{pick(COPY.alzheimer,lang)}</span></div>
     <svg viewBox="0 0 360 72" aria-hidden="true"><path d="M90 8v22l90 30 90-30V8M180 58v10" fill="none" stroke="var(--caa-outline)" strokeWidth="3" /><path d="m169 58 11 10 11-10" fill="none" stroke="var(--caa-outline)" strokeWidth="3" /></svg>
-    <strong className={styles.cognitionTarget}>{pick(COPY.cognition,lang)}</strong><figcaption>{pick(title,lang)}</figcaption>
+    <strong className={styles.cognitionTarget}>{pick(COPY.cognition,lang)}</strong>
   </figure>
   if (kind === 'seizure') return <figure className={styles.concept}>
     <svg viewBox="0 0 360 220" role="img" aria-label={pick(title,lang)} data-no-zoom>

@@ -20,7 +20,6 @@ export const CAA_FOCUSED_COPY = {
   downCaption: L('Trisomie 21 → zusätzliche APP-Genkopie', 'Trisomy 21 → additional APP gene copy', 'تریزومی ۲۱ ← نسخه اضافی ژن APP'),
   chromosome: L('Chromosom 21', 'Chromosome 21', 'کروموزوم ۲۱'),
   moreAmyloid: L('mehr β-Amyloid', 'more β-amyloid', 'β-آمیلوئید بیشتر'),
-  cognitionCaption: L('Vaskuläre und Alzheimer-Pathologie können gemeinsam beitragen', 'Vascular and Alzheimer pathology may both contribute', 'پاتولوژی عروقی و آلزهایمر می‌توانند هر دو نقش داشته باشند'),
   vascular: L('Vaskuläre Schädigung', 'Vascular injury', 'آسیب عروقی'),
   alzheimer: L('Alzheimer-Pathologie', 'Alzheimer pathology', 'پاتولوژی آلزهایمر'),
   cognition: L('Kognitive Störung', 'Cognitive impairment', 'اختلال شناختی'),
