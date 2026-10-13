@@ -47,7 +47,7 @@ test('cancellation persists through old-schema PATCH and uses owner + concurrent
   assert.match(source,/fallbackUpdate\.note = encodeStoredNote\([^\n]*body\.cancelled === true/)
   assert.match(source,/\.eq\('updated_at', existing\.data\.updated_at\)/)
   const dispatcher = readFileSync(new URL('../app/api/andarun/reminders/dispatch/route.js',import.meta.url),'utf8')
-  assert.match(dispatcher,/timingSafeEqual/)
+  assert.match(dispatcher,/calendarSchedulerAuthorization/)
   assert.match(dispatcher,/claim_calendar_push/)
   assert.match(dispatcher,/dueReminders\(eventFromRow\(fresh\.data\)/)
   const sql = readFileSync(new URL('../supabase/migrations/0024_calendar_push.sql',import.meta.url),'utf8')

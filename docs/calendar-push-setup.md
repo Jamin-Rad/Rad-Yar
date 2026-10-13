@@ -16,14 +16,17 @@ recent authenticated scheduler heartbeat before offering device activation.
    service-role key and NOT the OpenAI API key.
 4. Configure an HTTPS scheduler to GET
    `https://www.rad-yar.com/api/andarun/reminders/dispatch` **every minute** with
-   `Authorization: Bearer <CALENDAR_CRON_SECRET>`. No secret in the URL.
-   Supabase Cron (`pg_cron` + `pg_net`) can do this using Vault. Alternatively,
+   authenticated by a short-lived HMAC (`x-calendar-timestamp` plus
+   `x-calendar-signature`). Use `docs/calendar-push-cron.sql`. The user saves the
+   same `CALENDAR_CRON_SECRET` in Vault as `jaminova_calendar_cron_secret`.
+   No permanent token is placed in a queued request or URL. Alternatively,
    Vercel Pro Cron can call a secured wrapper; Vercel's normal `CRON_SECRET`
    must then be identical. Hobby's once-daily cron is not sufficient.
    No paid plan upgrade or external scheduler account is created by this change.
-   Protect pg_net's request headers: revoke queue access from PUBLIC, anon and
-   authenticated roles, per Supabase's security guidance. Never use a broad
-   database/admin token for this job. Verify HTTP 200 and heartbeat after setup.
+   Supabase does not support restricting pg_net queue grants per project;
+   signatures expire after 90 seconds and reveal no permanent credential.
+   Verify Vault is inaccessible to browser roles. Never use a broad database/admin
+   token for this job. Verify HTTP 200 and heartbeat after setup.
 5. On iOS 16.4+, install via Safari → Share → Add to Home Screen; open that app.
    Termine → Erinnerungen → Auf diesem Gerät aktivieren. Grant permission from
    that button and use **Test senden**. Close the app to verify a real reminder.

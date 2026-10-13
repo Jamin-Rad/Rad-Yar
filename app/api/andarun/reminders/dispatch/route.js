@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { timingSafeEqual } from 'node:crypto'
+import { calendarSchedulerAuthorization } from '@/utils/calendarSchedulerAuth'
 import { supabaseAdmin } from '@/lib/supabase/server'
 import { ANDARUN_OWNER_ID, ANDARUN_LEGACY_OWNER_IDS } from '@/lib/andarunPasswordAuth'
 import { pushConfigured, sendCalendarPush } from '@/lib/calendarPush'
@@ -11,20 +11,18 @@ export const maxDuration = 60
 const reply = (body, status = 200) => NextResponse.json(body, { status, headers: { 'Cache-Control': 'no-store' } })
 
 export async function GET(request) {
-  const expected = process.env.CALENDAR_CRON_SECRET
-  const supplied = request.headers.get('authorization') || ''
-  const suppliedBytes = Buffer.from(supplied)
-  const expectedBytes = Buffer.from(`Bearer ${expected || ''}`)
-  const match = expected && suppliedBytes.length === expectedBytes.length && timingSafeEqual(suppliedBytes, expectedBytes)
-  if (!match) return reply({ error: 'Unauthorized' }, 401)
+  const authorization = calendarSchedulerAuthorization(request,process.env.CALENDAR_CRON_SECRET)
+  if (!authorization) return reply({ error: 'Unauthorized' }, 401)
   if (!pushConfigured()) return reply({ error: 'Push not configured' }, 503)
   const now = Date.now()
   const devices = await supabaseAdmin.from('calendar_push_subscriptions').select('*').eq('owner_id', ANDARUN_OWNER_ID).limit(20)
   const events = await supabaseAdmin.from('andarun_todos').select('*').in('owner_id', [ANDARUN_OWNER_ID, ...ANDARUN_LEGACY_OWNER_IDS]).eq('done', false)
     .gte('deadline', new Date(now).toISOString().slice(0, 10)).lte('deadline', new Date(now + 2 * 86400000).toISOString().slice(0, 10))
   if (devices.error || events.error) return reply({ error: 'Storage unavailable' }, 503)
-  const heartbeat = await supabaseAdmin.from('calendar_push_health').upsert({ id: 1, last_run: new Date(now).toISOString() })
-  if (heartbeat.error) return reply({ error: 'Scheduler storage unavailable' }, 503)
+  if (authorization === 'signed') {
+    const heartbeat = await supabaseAdmin.from('calendar_push_health').upsert({ id: 1, last_run: new Date(now).toISOString() })
+    if (heartbeat.error) return reply({ error: 'Scheduler storage unavailable' }, 503)
+  }
   let sent = 0, failed = 0
   for (const device of devices.data || []) {
     if (!validPushSubscription(device.subscription)) continue
