@@ -12,7 +12,7 @@ function Paragraphs({ values, lang }) {
 }
 
 function ConceptFigure({ kind, lang }) {
-  const title = COPY[kind + 'Caption']
+  const title = COPY[kind + 'ImageAlt'] || COPY[kind + 'Caption']
   if (kind === 'age') return <figure className={styles.concept}>
     <div className={styles.ageBand}><span>{pick(COPY.sporadic, lang)}</span><strong><bdi dir="ltr">&gt;60</bdi></strong></div>
     <div className={styles.ageBand}><span>{pick(COPY.hereditary, lang)}</span><strong className={styles.earlierOnset}>{pick(COPY.earlier, lang)}</strong><p>{pick(COPY.appMutation, lang)}</p></div>
@@ -43,13 +43,13 @@ function ConceptFigure({ kind, lang }) {
     <svg viewBox="0 0 360 220" role="img" aria-label={pick(title,lang)} data-no-zoom>
       <path d="M165 25C97 4 42 62 59 110C37 158 99 198 165 169M195 25C263 4 318 62 301 110C323 158 261 198 195 169M126 52q-50 12-33 49M99 126q8 38 43 28M234 52q50 12 33 49M261 126q-8 38-43 28" fill="var(--caa-brain)" stroke="var(--caa-outline)" strokeWidth="3" />
       <path d="M33 106h65l10-17 12 42 13-73 15 71 11-24h33l10-16 12 31 14-65 15 67 11-16h63" fill="none" stroke="#c9536c" strokeWidth="4" strokeLinejoin="round" />
-    </svg><strong>{pick(COPY.irritation,lang)}</strong><figcaption>{pick(title,lang)}</figcaption>
+    </svg><strong>{pick(COPY.irritation,lang)}</strong>
   </figure>
   return <figure className={styles.concept}>
-    <svg viewBox="0 0 360 220" role="img" aria-label={pick(COPY.headacheCaption,lang)} data-no-zoom>
+    <svg viewBox="0 0 360 220" role="img" aria-label={pick(COPY.headacheImageAlt,lang)} data-no-zoom>
       <path d="M135 180v-25C81 131 78 66 113 35C151 0 227 20 242 65l24 42-23 9-7 41h-44v29" fill="var(--caa-brain)" stroke="var(--caa-outline)" strokeWidth="4" strokeLinejoin="round" />
       <circle cx="157" cy="70" r="24" fill="#df81934d" stroke="#c9536c" strokeWidth="3" /><path d="m154 52-9 19 14-4-6 21" fill="none" stroke="#c9536c" strokeWidth="3" />
-    </svg><strong>{pick(COPY.nonspecific,lang)}</strong><figcaption>{pick(COPY.headacheCaption,lang)}</figcaption>
+    </svg><strong>{pick(COPY.nonspecific,lang)}</strong>
   </figure>
 }
 
