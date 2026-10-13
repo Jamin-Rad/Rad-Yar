@@ -654,7 +654,7 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
     : ''
 
   if (loading) return (
-    <div className={s.page}>
+    <div className={s.page} dir="ltr" lang="de">
       <div aria-hidden="true" className={s.orbA} />
       <div aria-hidden="true" className={s.orbB} />
       <div aria-hidden="true" className={s.orbC} />
@@ -666,7 +666,7 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
   )
 
   return (
-    <div className={s.page}>
+    <div className={s.page} dir="ltr" lang="de">
       {/* Background orbs */}
       <div aria-hidden="true" className={s.orbA} />
       <div aria-hidden="true" className={s.orbB} />

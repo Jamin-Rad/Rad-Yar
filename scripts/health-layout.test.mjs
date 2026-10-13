@@ -11,6 +11,9 @@ test('daily summary precedes entry actions and the meal/activity ledger', () => 
   assert.ok(page.includes('<HealthTodayOverview'))
   assert.ok(!page.includes('className={s.todayActionWeight}'))
 })
+test('German private nutrition layouts do not inherit the public Persian page direction', () => {
+  assert.equal(page.match(/className=\{s.page\} dir="ltr" lang="de"/g)?.length, 2)
+})
 test('the overview uses real values, handles missing targets and preserves medication reminders', () => {
   for (const value of ['eatenKcal', 'Math.abs(kcalDelta)', 'Tagesziel nicht festgelegt', 'injectionDue', 'toggleInjection', 'photoMealTotals([meal]).kcal']) assert.ok(overview.includes(value))
   assert.ok(overview.includes('photoEnabled &&'))
