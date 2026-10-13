@@ -1,12 +1,16 @@
 'use client'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { useState, useEffect, useRef } from 'react'
 import s from './health.module.css'
 import { calculateCaloriePlan } from '@/utils/healthCalories'
+import { photoMealTotals, roundNutrient } from '@/utils/foodPhotoMeals'
 import {
   sportarten, sportKategorien,
   lebensmittel, kategorien,
 } from '@/data/health'
+
+const FoodPhotoEstimator = dynamic(() => import('./FoodPhotoEstimator'), { ssr: false })
 
 const SPORT_ICONS = {
   ausdauer: '🏃', kraft: '💪', entspannung: '🧘',
@@ -134,7 +138,7 @@ async function apiRequest(apiBase, path, method = 'GET', body) {
   return data
 }
 
-const EMPTY_FORM = { date: TODAY, weight: '', note: '', manualKcal: 0, sports: [], foods: [] }
+const EMPTY_FORM = { date: TODAY, weight: '', note: '', manualKcal: 0, sports: [], foods: [], photoMeals: [] }
 
 function formFromRecord(record, date = TODAY) {
   return {
@@ -144,6 +148,7 @@ function formFromRecord(record, date = TODAY) {
     manualKcal: record?.manual_kcal ?? 0,
     sports: Array.isArray(record?.sports) ? record.sports : [],
     foods: Array.isArray(record?.foods) ? record.foods : [],
+    photoMeals: Array.isArray(record?.photo_meals) ? record.photo_meals : [],
   }
 }
 
@@ -164,7 +169,7 @@ function clampEntryDate(value) {
 }
 
 function formHasContent(value) {
-  return Boolean(value.weight || value.note || value.manualKcal || value.sports.length || value.foods.length)
+  return Boolean(value.weight || value.note || value.manualKcal || value.sports.length || value.foods.length || value.photoMeals.length)
 }
 
 function weekDaysFor(value = TODAY) {
@@ -251,6 +256,7 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
   const [loading, setLoading] = useState(true)
 
   const [picker, setPicker] = useState(null)
+  const [photoEditor, setPhotoEditor] = useState(null)
   const [weightOpen, setWeightOpen] = useState(false)
   const [activeId, setActiveId] = useState(null)
   const [form, setForm] = useState(EMPTY_FORM)
@@ -403,7 +409,8 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
     const sp = activeSports.find(x => x.id === item.id)
     return sum + (sp ? Math.round(sp.kcalPerMin * item.min) : 0)
   }, 0)
-  const totalFoodKcal = form.foods.reduce((sum, item) => {
+  const photoTotals = photoMealTotals(form.photoMeals)
+  const totalFoodKcal = photoTotals.kcal + form.foods.reduce((sum, item) => {
     const food = activeFoods.find(x => x.id === item.id)
     return sum + (food ? Math.round((food.kcalPer100g / 100) * (item.g ?? (item.count != null ? item.count * food.portionG : 0))) : 0)
   }, 0)
@@ -413,11 +420,11 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
     const grams = item.g ?? (item.count != null ? item.count * food.portionG : 0)
     const macros = estimateMacros(food, grams)
     return {
-      protein: sum.protein + macros.protein,
-      sugar: sum.sugar + macros.sugar,
-      fat: sum.fat + macros.fat,
+      protein: roundNutrient(sum.protein + macros.protein),
+      sugar: roundNutrient(sum.sugar + macros.sugar),
+      fat: roundNutrient(sum.fat + macros.fat),
     }
-  }, { protein: 0, sugar: 0, fat: 0 })
+  }, { protein: photoTotals.protein, sugar: photoTotals.sugar, fat: photoTotals.fat })
   const eatenKcal = totalFoodKcal + (form.manualKcal || 0)
   const totalKcal = totalFoodKcal + (form.manualKcal || 0) - totalSportKcal
   const latestWeight = [...records].filter(record => record.weight).sort((a, b) => b.date.localeCompare(a.date))[0]?.weight || ''
@@ -524,6 +531,12 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
   function removeSportFromForm(id) { setForm(f => ({ ...f, sports: f.sports.filter(x => x.id !== id) })) }
   function removeFoodFromForm(id)  { setForm(f => ({ ...f, foods:  f.foods.filter(x => x.id !== id) })) }
 
+  function confirmPhotoMeal(meal) {
+    if (photoEditor?.date !== form.date) throw new Error('Das Datum hat sich geändert. Bitte die Mahlzeit erneut öffnen.')
+    setForm(current => ({ ...current, photoMeals: [...current.photoMeals.filter(item => item.id !== meal.id), meal] }))
+    setPhotoEditor(null)
+  }
+
   async function saveCurrentForm(snapshot, serialized) {
     try {
       await api('/records', 'POST', {
@@ -531,6 +544,7 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
         weight: snapshot.weight ? parseFloat(snapshot.weight) : null,
         note: snapshot.note || '', manual_kcal: snapshot.manualKcal || 0,
         sports: snapshot.sports, foods: snapshot.foods,
+        photo_meals: snapshot.photoMeals,
       })
       lastSavedRef.current = serialized
       setRecords(current => {
@@ -542,6 +556,7 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
           manual_kcal: snapshot.manualKcal || 0,
           sports: snapshot.sports,
           foods: snapshot.foods,
+          photo_meals: snapshot.photoMeals,
           updated_at: new Date().toISOString(),
         }
         return [record, ...current.filter(item => item.date !== snapshot.date)]
@@ -595,7 +610,7 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
       const sp = activeSports.find(x => x.id === item.id)
       return sum + (sp ? Math.round(sp.kcalPerMin * item.min) : 0)
     }, 0)
-    const foodKcal = (rec.foods || []).reduce((sum, item) => {
+    const foodKcal = photoMealTotals(rec.photo_meals).kcal + (rec.foods || []).reduce((sum, item) => {
       const food = activeFoods.find(x => x.id === item.id)
       return sum + (food ? Math.round((food.kcalPer100g / 100) * (item.g ?? (item.count != null ? item.count * food.portionG : 0))) : 0)
     }, 0)
@@ -731,6 +746,9 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
                     <span>Bewegung</span>
                     <small>Sport oder Alltag</small>
                   </button>
+                  {apiBase === '/api/andarun/health' && <button className={s.foodPhotoAction} type="button" onClick={() => setPhotoEditor({ date: form.date, meal: null })} disabled={loading}>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5 9.5 3h5L16 5h4a1 1 0 0 1 1 1v13H3V6a1 1 0 0 1 1-1h4Z" /><circle cx="12" cy="12" r="4" /></svg><span>Essen per Foto</span><small>Schätzen · prüfen · bestätigen</small>
+                  </button>}
                 </div>
               </section>
 
@@ -812,7 +830,12 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
                       const g = item.g ?? (item.count != null ? item.count * food.portionG : 0)
                       const kcal = Math.round((food.kcalPer100g / 100) * g)
                       return <span key={item.id}>{food.de} · {foodAmountText(food, g)} · {kcal} kcal</span>
-                    }) : <span>Keine Mahlzeit eingetragen</span>}
+                    }) : !form.photoMeals.length ? <span>Keine Mahlzeit eingetragen</span> : null}
+                    {form.photoMeals.map(meal => <article className={s.photoMealCard} key={meal.id}>
+                      <strong>{meal.title}</strong><span>≈ {photoMealTotals([meal]).kcal} kcal · bestätigte Schätzung</span>
+                      <small>{meal.items.map(item => `${item.name} (${item.g} g)`).join(' · ')}</small>
+                      <div><button type="button" onClick={() => setPhotoEditor({ date: form.date, meal })}>Bearbeiten</button><button type="button" onClick={() => setForm(current => ({ ...current, photoMeals: current.photoMeals.filter(item => item.id !== meal.id) }))} aria-label={`${meal.title} entfernen`}>Entfernen</button></div>
+                    </article>)}
                   </div>
                   <div>
                     <h3>Sport</h3>
@@ -827,6 +850,8 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
             </div>
           </div>
         )}
+
+        {tab === 'eintragen' && photoEditor && <FoodPhotoEstimator key={`${photoEditor.date}:${photoEditor.meal?.id || 'new'}`} apiBase={apiBase} date={photoEditor.date} initialMeal={photoEditor.meal} onConfirm={confirmPhotoMeal} onClose={() => setPhotoEditor(null)} />}
 
         {tab === 'eintragen' && weightOpen && (
           <div className={s.pickerBackdrop} role="dialog" aria-modal="true" aria-label="Gewicht eintragen" onClick={() => setWeightOpen(false)}>

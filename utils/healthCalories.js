@@ -1,3 +1,5 @@
+import { photoMealTotals } from './foodPhotoMeals.js'
+
 // Shared with the health page: the dashboard never invents its own calorie goal.
 export function calculateCaloriePlan(plan = {}, { todayWeight = '', latestWeight = '' } = {}) {
   const planCurrentWeight = parseFloat(plan.currentWeight || todayWeight || latestWeight || 0)
@@ -38,5 +40,6 @@ export function foodCaloriesForRecord(record, foods) {
   }, 0)
   const manual = Number(record?.manual_kcal || 0)
   if (!Number.isFinite(manual)) unknownFoods += 1
-  return { eatenKcal: foodKcal + (Number.isFinite(manual) ? manual : 0), unknownFoods }
+  const photo = photoMealTotals(record?.photo_meals)
+  return { eatenKcal: foodKcal + (Number.isFinite(manual) ? manual : 0) + photo.kcal, unknownFoods: unknownFoods + photo.invalid }
 }
