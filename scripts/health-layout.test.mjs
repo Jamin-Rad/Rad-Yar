@@ -16,6 +16,12 @@ test('the overview uses real values, handles missing targets and preserves medic
   assert.ok(overview.includes('photoEnabled &&'))
   assert.ok(page.includes("apiBase === '/api/andarun/health'"))
 })
+test('long meal cards show a compact weight/count and keep the full title accessible', () => {
+  assert.ok(overview.includes('title={meal.title}'))
+  assert.ok(overview.includes('meal.items.length} Zutaten'))
+  assert.ok(overview.includes('sum + Number(item.g || 0)'))
+  assert.ok(read('HealthTodayOverview.module.css').includes('-webkit-line-clamp: 2'))
+})
 test('nutrient and estimate details start collapsed while quantities remain directly editable', () => {
   assert.ok(modal.includes('<summary>Nährwerte bearbeiten</summary>'))
   assert.ok(modal.includes('<summary>Details zur Schätzung</summary>'))

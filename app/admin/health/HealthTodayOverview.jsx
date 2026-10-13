@@ -67,7 +67,7 @@ export default function HealthTodayOverview({ form, today, saving, saved, format
           return <article className={s.meal} key={item.id}><div><strong>{food.de}</strong><small>{foodAmountText(food, g)}</small></div><b>{Math.round(food.kcalPer100g / 100 * g)} kcal</b><button type="button" onClick={openFood} aria-label={`${food.de} bearbeiten`}>Bearbeiten</button></article>
         })}
         {form.photoMeals.map(meal => <article className={s.meal} key={meal.id}>
-          <div><strong>{meal.title}</strong><small>{meal.items.map(item => `${item.name} ${item.g} g`).join(' · ')}</small></div>
+          <div><strong title={meal.title}>{meal.title}</strong><small>{Math.round(meal.items.reduce((sum, item) => sum + Number(item.g || 0), 0))} g · {meal.items.length} Zutaten</small></div>
           <b>≈ {photoMealTotals([meal]).kcal} kcal</b>
           <div className={s.mealTools}><button type="button" onClick={() => openPhoto(meal)}>Bearbeiten</button><button type="button" aria-label={`${meal.title} entfernen`} onClick={() => removePhoto(meal.id)}><HealthIcon name="trash" /></button></div>
         </article>)}
