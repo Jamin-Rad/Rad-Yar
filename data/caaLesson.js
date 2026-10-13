@@ -28,12 +28,20 @@ export const CAA_COPY = {
   sources: L('Quellen & Vertiefung', 'Sources & further reading', 'منابع و مطالعه بیشتر'),
   basics: [
     L('Die CAA beruht auf der pathologischen Ablagerung von β-Amyloid, insbesondere in den Wänden kleiner und mittelgroßer kortikaler und leptomeningealer Arterien sowie Arteriolen.', 'CAA results from pathological β-amyloid deposition, particularly in the walls of small and medium-sized cortical and leptomeningeal arteries and arterioles.', 'CAA ناشی از رسوب پاتولوژیک β-آمیلوئید، به‌ویژه در دیواره شریان‌های کوچک و متوسط و آرتریول‌های کورتیکال و لپتومننژیال است.'),
-    L('Die Ablagerungen schädigen die Gefäßwand, beeinträchtigen ihre Elastizität und machen sie anfällig für Rupturen. Für die Bilddiagnostik ist deshalb zuerst die Verteilung der Blutungen entscheidend.', 'The deposits damage the vessel wall, impair its elasticity and make it vulnerable to rupture. On imaging, the first key question is therefore the distribution of bleeding.', 'این رسوبات به دیواره رگ آسیب می‌زنند، انعطاف‌پذیری آن را کاهش می‌دهند و احتمال پارگی را بالا می‌برند. بنابراین در تصویربرداری، نخست باید توزیع خونریزی‌ها را بررسی کرد.'),
+    L('Die Ablagerungen schädigen die Gefäßwand, beeinträchtigen ihre Elastizität und machen sie anfällig für Rupturen.', 'The deposits damage the vessel wall, impair its elasticity and make it vulnerable to rupture.', 'این رسوبات به دیواره رگ آسیب می‌زنند، انعطاف‌پذیری آن را کاهش می‌دهند و احتمال پارگی را بالا می‌برند.'),
+    L('Für die Bilddiagnostik ist deshalb zuerst die Verteilung der Blutungen entscheidend.', 'On imaging, the first key question is therefore the distribution of bleeding.', 'بنابراین در تصویربرداری، نخست باید توزیع خونریزی‌ها را بررسی کرد.'),
   ],
   pathologyTitle: L('Pathologie', 'Pathology', 'پاتولوژی'),
   wallDamageTitle: L('Amyloid-Ablagerung & Gefäßwandschädigung', 'Amyloid deposition & vessel wall damage', 'رسوب آمیلوئید و آسیب دیواره رگ'),
-  associationsTitle: L('Ablagerungsorte & Assoziationen', 'Deposit locations & associations', 'محل رسوب و ارتباط‌های بیماری'),
-  systemicWarning: L('Achtung: Die sporadische β-Amyloid-CAA ist keine Manifestation einer systemischen Amyloidose.', 'Warning: Sporadic β-amyloid CAA is not a manifestation of systemic amyloidosis.', 'توجه: CAA اسپورادیک ناشی از β-آمیلوئید، تظاهر آمیلوئیدوز سیستمیک نیست.'),
+  associationsTitle: L('Alzheimer & genetische Prädisposition', 'Alzheimer disease & genetic predisposition', 'آلزهایمر و زمینه ژنتیکی'),
+  otherAmyloidTitle: L('Andere Amyloid-Erkrankungen', 'Other amyloid diseases', 'سایر بیماری‌های آمیلوئیدی'),
+  otherAmyloidIntro: L('Amyloid bezeichnet eine Ablagerungsstruktur, kein einzelnes Protein. Beispiele außerhalb der β-Amyloid-Pathologie sind:', 'Amyloid describes a deposit structure, not a single protein. Examples outside β-amyloid pathology include:', 'آمیلوئید نام یک ساختار رسوبی است، نه یک پروتئین مشخص. نمونه‌هایی خارج از پاتولوژی β-آمیلوئید عبارت‌اند از:'),
+  otherAmyloidTypes: [
+    L('AL-Amyloidose: Immunglobulin-Leichtketten.', 'AL amyloidosis: immunoglobulin light chains.', 'آمیلوئیدوز AL: زنجیره‌های سبک ایمونوگلوبولین.'),
+    L('AA-Amyloidose: Serum-Amyloid A, im Zusammenhang mit chronischer Entzündung.', 'AA amyloidosis: serum amyloid A, associated with chronic inflammation.', 'آمیلوئیدوز AA: آمیلوئید A سرم، مرتبط با التهاب مزمن.'),
+    L('ATTR-Amyloidose: Transthyretin.', 'ATTR amyloidosis: transthyretin.', 'آمیلوئیدوز ATTR: ترانس‌تیرتین.'),
+  ],
+  systemicWarning: L('Die sporadische β-Amyloid-CAA ist keine Manifestation einer systemischen Amyloidose.', 'Sporadic β-amyloid CAA is not a manifestation of systemic amyloidosis.', 'CAA اسپورادیک ناشی از β-آمیلوئید، تظاهر آمیلوئیدوز سیستمیک نیست.'),
   backgroundTitle: L('Häufigkeit & Alter', 'Frequency & age', 'شیوع و سن'),
   background: [
     { title: L('Häufigkeit', 'Frequency', 'شیوع'), paragraphs: [
@@ -51,7 +59,7 @@ export const CAA_COPY = {
     { title: L('Alzheimer-Assoziation', 'Association with Alzheimer disease', 'ارتباط با آلزهایمر'), paragraphs: [
       L('Bei Alzheimer ist eine begleitende CAA histologisch häufig: Eine Metaanalyse fand milde bis schwere CAA bei etwa 79 % der untersuchten Alzheimer-Fälle. Der Anteil hängt vom erfassten Schweregrad ab und beschreibt keinen festen Wert für alle Patienten.', 'Coexisting CAA is common on histology in Alzheimer disease: a meta-analysis found mild-to-severe CAA in about 79% of the Alzheimer cases studied. The proportion depends on the severity threshold and is not a fixed rate for all patients.', 'همراهی CAA در بررسی بافت‌شناسی آلزهایمر شایع است: یک متاآنالیز، CAA خفیف تا شدید را در حدود ۷۹٪ موارد آلزهایمرِ بررسی‌شده گزارش کرد. این درصد به حد شدت مورد ارزیابی وابسته است و عدد ثابتی برای همه بیماران نیست.'),
     ] },
-    { title: L('Down-Syndrom', 'Down syndrome', 'سندرم داون'), paragraphs: [
+    { title: L('Down-Syndrom · genetische Prädisposition', 'Down syndrome · genetic predisposition', 'سندرم داون · زمینه ژنتیکی'), paragraphs: [
       L('Das APP-Gen liegt auf Chromosom 21. Bei Trisomie 21 führt die zusätzliche Genkopie zu mehr Amyloid-Vorläuferprotein und begünstigt frühe β-Amyloid-Ablagerungen, auch in Gefäßwänden.', 'The APP gene is located on chromosome 21. In trisomy 21, the additional gene copy increases amyloid precursor protein and favours early β-amyloid deposition, including in vessel walls.', 'ژن APP روی کروموزوم ۲۱ قرار دارد. در تریزومی ۲۱، نسخه اضافی ژن تولید پروتئین پیش‌ساز آمیلوئید را افزایش می‌دهد و زمینه رسوب زودرس β-آمیلوئید، از جمله در دیواره عروق، را فراهم می‌کند.'),
     ] },
   ],
@@ -150,6 +158,8 @@ export const CAA_COPY = {
 
 // Sources for the reading lesson; individual claims are mapped in docs/caa-content-review.md.
 export const CAA_SOURCES = [
+  { href: 'https://www.niddk.nih.gov/health-information/kidney-disease/amyloidosis', label: 'NIDDK · Amyloidosis: proteins, AL and AA' },
+  { href: 'https://www.mayoclinic.org/diseases-conditions/al-amyloidosis/symptoms-causes/syc-20605091', label: 'Mayo Clinic · Amyloidosis types: AL, AA and ATTR' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3079153/', label: 'Yamada · CAA systematic review: estimated ICH contribution, 2011' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9389452/', label: 'Charidimou et al. · Boston criteria v2.0 · Lancet Neurology, 2022' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11592298/', label: 'Neuroradiological findings in CAA · Imaging review, 2024' },

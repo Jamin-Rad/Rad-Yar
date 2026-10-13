@@ -40,3 +40,8 @@ Based on origin/main 22c0b2a0. Foundations now begins with Pathologie, a separat
 ## Foundations hierarchy — 2026-10-13
 
 Foundations now has two explicit semantic groups: Pathologie and Häufigkeit & Alter. Both use prominent teal subheadings and a logical start-side indent (24px desktop, 12px mobile/RTL). Definition, systemic-amyloidosis caveat, vessel-wall damage and its interactive diagram, plus Alzheimer/Down syndrome associations and deposit-location note remain inside Pathologie. Associations retain selectable diagrams. Frequency is split into four semantic paragraphs in all languages; the reviewed wording and statistics are unchanged. Hereditary forms remain in the age tab. Reading progress and chapter order are unchanged.
+
+
+## Amyloid clarification — 2026-10-13
+
+Removed the redundant Achtung/Warning prefix beneath Cave. Vessel damage and imaging implication are separate paragraphs. Down syndrome is explicitly labelled genetic predisposition, not an amyloid deposit type. A collapsed, short context note distinguishes AL (immunoglobulin light chains), AA (serum amyloid A, chronic inflammation) and ATTR (transthyretin) from beta-amyloid pathology. Sources: [NIDDK](https://www.niddk.nih.gov/health-information/kidney-disease/amyloidosis), [Mayo Clinic](https://www.mayoclinic.org/diseases-conditions/al-amyloidosis/symptoms-causes/syc-20605091).
