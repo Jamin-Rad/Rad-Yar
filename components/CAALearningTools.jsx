@@ -10,8 +10,8 @@ const corticalDots = [[141, 59], [263, 65], [84, 109], [313, 118], [61, 172], [3
 const deepDots = [[151, 178], [249, 178], [173, 214], [227, 214]]
 const sulci = ['M111 77Q86 88 101 107Q118 125 94 136', 'M70 174Q91 181 82 201Q77 214 103 220', 'M288 89Q314 100 297 119Q282 129 305 147']
 
-export function ToolHeader({ title, hint, lang }) {
-  return <header className={styles.toolHeader}><h3>{pick(title, lang)}</h3>{hint && <p>{pick(hint, lang)}</p>}</header>
+export function ToolHeader({ title, hint, lang, as: Heading = 'h3' }) {
+  return <header className={styles.toolHeader}><Heading>{pick(title, lang)}</Heading>{hint && <p>{pick(hint, lang)}</p>}</header>
 }
 
 export function Tabs({ items, value, onChange, id, label, lang }) {
@@ -64,12 +64,12 @@ export function BrainFigure({ pattern, caption, lang, lesionCount }) {
   </figure>
 }
 
-export function VesselExplorer({ lang }) {
+export function VesselExplorer({ lang, headingLevel = 'h3' }) {
   const [stage, setStage] = useState(0)
   const id = 'caa-vessel-' + useId().replaceAll(':', '')
   const item = COPY.vesselStages[stage]
   return <div className={styles.panel} data-learning-tool="vessel">
-    <ToolHeader title={COPY.vesselTitle} lang={lang} />
+    <ToolHeader title={COPY.vesselTitle} lang={lang} as={headingLevel} />
     <Tabs items={COPY.vesselStages.map(item => item.title)} value={stage} onChange={setStage} id={id} label={COPY.vesselTitle} lang={lang} />
     <div id={id + '-panel'} role="tabpanel" aria-labelledby={id + '-tab-' + stage} className={styles.explorerBody}>
       <figure className={styles.figure} data-vessel-stage={stage}>

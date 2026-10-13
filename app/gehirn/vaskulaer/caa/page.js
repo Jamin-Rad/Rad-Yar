@@ -5,7 +5,7 @@ import { useLessonSectionScroll } from '@/hooks/useLessonSectionScroll';
 import CAACaseGallery from '@/components/CAACaseGallery';
 import LessonTakeHome from '@/components/LessonTakeHome';
 import { VesselExplorer, MarkerAtlas, WhiteMatterMarkers, BostonExplorer, PatternExplorer } from '@/components/CAALearningTools';
-import { BackgroundExplorer, ClinicalExplorer, DifferentialComparison } from '@/components/CAAContentExplorers';
+import { AssociationExplorer, BackgroundExplorer, ClinicalExplorer, DifferentialComparison } from '@/components/CAAContentExplorers';
 import { CAA_FOCUSED_COPY } from '@/data/caaFocusedCopy';
 import { CAA_INTERACTION_COPY } from '@/data/caaInteractions';
 import Link from 'next/link';
@@ -73,14 +73,22 @@ function TeachingList({ items, lang }) {
 function ChapterContent({ id, lang }) {
   const c = value => pick(value, lang);
   if (id === 'grundlagen') return <>
-    <h3 className={styles.subheading}>{c(COPY.pathologyTitle)}</h3>
-    <Paragraphs values={[COPY.basics[0]]} lang={lang} lead />
-    <Note warning lang={lang}><Paragraphs values={[COPY.systemicWarning]} lang={lang} /></Note>
-    <TeachingList items={COPY.associations} lang={lang} />
-    <Note lang={lang}><Paragraphs values={COPY.amyloid} lang={lang} /></Note>
-    <ul><li><Paragraphs values={[COPY.basics[1]]} lang={lang} /></li></ul>
-    <VesselExplorer lang={lang} />
-    <BackgroundExplorer title={COPY.backgroundTitle} items={COPY.background} lang={lang} />
+    <section className={styles.foundationGroup} aria-labelledby="caa-pathology-title" data-foundation-group="pathology">
+      <h3 id="caa-pathology-title" className={styles.foundationHeading}>{c(COPY.pathologyTitle)}</h3>
+      <div className={styles.foundationBody}>
+        <Paragraphs values={[COPY.basics[0]]} lang={lang} />
+        <Note warning lang={lang}><Paragraphs values={[COPY.systemicWarning]} lang={lang} /></Note>
+        <h4 className={styles.foundationSubheading}>{c(COPY.wallDamageTitle)}</h4>
+        <Paragraphs values={[COPY.basics[1]]} lang={lang} />
+        <VesselExplorer lang={lang} headingLevel="h4" />
+        <AssociationExplorer title={COPY.associationsTitle} items={COPY.associations} lang={lang} />
+        <Note lang={lang}><Paragraphs values={COPY.amyloid} lang={lang} /></Note>
+      </div>
+    </section>
+    <section className={styles.foundationGroup} aria-labelledby="caa-frequency-title" data-foundation-group="frequency">
+      <h3 id="caa-frequency-title" className={styles.foundationHeading}>{c(COPY.backgroundTitle)}</h3>
+      <div className={styles.foundationBody}><BackgroundExplorer title={COPY.backgroundTitle} items={COPY.background} lang={lang} showTitle={false} /></div>
+    </section>
   </>;
   if (id === 'mrt-def') return <>
     <h3 className={styles.subheading}>{c(COPY.workflowTitle)}</h3>

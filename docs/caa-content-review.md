@@ -36,3 +36,7 @@ The screenshots are evidence of missing teaching content, not instructions to re
 ## Editorial update — 2026-10-13
 
 Based on origin/main 22c0b2a0. Foundations now begins with Pathologie, a separate systemic-amyloidosis warning, Alzheimer and Down syndrome associations, and a short Merke on deposit locations. Vessel wall damage is an indented bullet preceding the existing vessel explorer. Frequency and age remain interactive tabs; introductory instructions and the age caption are removed. The approximate 15% ICH contribution is explicitly contextualised within the published 5–20% range for elderly subjects, rather than a fixed population rate ([Yamada, 2011](https://pmc.ncbi.nlm.nih.gov/articles/PMC3079153/)). The existing 79% mild-to-severe histological CAA estimate in Alzheimer disease and age/sex qualifications remain.
+
+## Foundations hierarchy — 2026-10-13
+
+Foundations now has two explicit semantic groups: Pathologie and Häufigkeit & Alter. Both use prominent teal subheadings and a logical start-side indent (24px desktop, 12px mobile/RTL). Definition, systemic-amyloidosis caveat, vessel-wall damage and its interactive diagram, plus Alzheimer/Down syndrome associations and deposit-location note remain inside Pathologie. Associations retain selectable diagrams. Frequency is split into four semantic paragraphs in all languages; the reviewed wording and statistics are unchanged. Hereditary forms remain in the age tab. Reading progress and chapter order are unchanged.

@@ -37,3 +37,5 @@
   .referencePane figure { display: none; }
   .referencePane dl > div { margin-bottom: 12px; }
 }
+
+.associationTitle { margin: 0 0 14px; color: var(--ink); font: 800 24px/1.4 var(--font-newsreader,Georgia,serif); }

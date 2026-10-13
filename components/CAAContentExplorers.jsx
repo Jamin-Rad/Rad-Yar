@@ -49,11 +49,24 @@ function ConceptFigure({ kind, lang }) {
   </figure>
 }
 
-export function BackgroundExplorer({ title, items, lang }) {
+export function AssociationExplorer({ title, items, lang }) {
+  const [association, setAssociation] = useState(0)
+  const id = 'caa-associations-' + useId().replaceAll(':', '')
+  return <div className={shared.panel + ' ' + styles.focused} data-learning-tool="associations">
+    <ToolHeader title={title} lang={lang} as="h4" />
+    <Tabs items={COPY.backgroundTabs.slice(2)} value={association} onChange={setAssociation} id={id} label={title} lang={lang} />
+    <div id={id + '-panel'} role="tabpanel" aria-labelledby={id + '-tab-' + association} className={shared.explorerBody}>
+      <ConceptFigure kind={association === 0 ? 'amyloid' : 'down'} lang={lang} />
+      <div className={shared.copy}><h5 className={styles.associationTitle}>{pick(items[association].title, lang)}</h5><Paragraphs values={items[association].paragraphs} lang={lang} /></div>
+    </div>
+  </div>
+}
+
+export function BackgroundExplorer({ title, items, lang, showTitle = true }) {
   const [topic,setTopic]=useState(0)
   const id='caa-background-'+useId().replaceAll(':','')
   return <div className={shared.panel + ' ' + styles.focused} data-learning-tool="background">
-    <ToolHeader title={title} lang={lang} />
+    {showTitle && <ToolHeader title={title} lang={lang} />}
     <div className={styles.fourTabs}><Tabs items={COPY.backgroundTabs.slice(0, 2)} value={topic} onChange={setTopic} id={id} label={title} lang={lang} /></div>
     <div id={id+'-panel'} role="tabpanel" aria-labelledby={id+'-tab-'+topic} className={shared.explorerBody}>
       {topic===0 ? <BrainFigure pattern="lobar" lang={lang} /> : <ConceptFigure kind={['frequency','age','amyloid','down'][topic]} lang={lang} />}
