@@ -45,3 +45,5 @@ Foundations now has two explicit semantic groups: Pathologie and Häufigkeit & A
 ## Amyloid clarification — 2026-10-13
 
 Removed the redundant Achtung/Warning prefix beneath Cave. Vessel damage and imaging implication are separate paragraphs. Down syndrome is explicitly labelled genetic predisposition, not an amyloid deposit type. A collapsed, short context note distinguishes AL (immunoglobulin light chains), AA (serum amyloid A, chronic inflammation) and ATTR (transthyretin) from beta-amyloid pathology. Sources: [NIDDK](https://www.niddk.nih.gov/health-information/kidney-disease/amyloidosis), [Mayo Clinic](https://www.mayoclinic.org/diseases-conditions/al-amyloidosis/symptoms-causes/syc-20605091).
+
+Editorial removal: The optional other-amyloid-diseases disclosure, its trilingual copy and its two dedicated source links were removed at the user's request. The Cave correction, paragraph separation and Down syndrome predisposition label remain.

@@ -78,10 +78,6 @@ function ChapterContent({ id, lang }) {
       <div className={styles.foundationBody}>
         <Paragraphs values={[COPY.basics[0]]} lang={lang} />
         <Note warning lang={lang}><Paragraphs values={[COPY.systemicWarning]} lang={lang} /></Note>
-        <details className={styles.ruleOverview} data-amyloid-context><summary>{c(COPY.otherAmyloidTitle)}</summary>
-          <Paragraphs values={[COPY.otherAmyloidIntro]} lang={lang} />
-          <ul>{COPY.otherAmyloidTypes.map((type, index) => <li key={index}>{c(type)}</li>)}</ul>
-        </details>
         <h4 className={styles.foundationSubheading}>{c(COPY.wallDamageTitle)}</h4>
         <Paragraphs values={COPY.basics.slice(1)} lang={lang} />
         <VesselExplorer lang={lang} headingLevel="h4" />

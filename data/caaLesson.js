@@ -34,13 +34,6 @@ export const CAA_COPY = {
   pathologyTitle: L('Pathologie', 'Pathology', 'پاتولوژی'),
   wallDamageTitle: L('Amyloid-Ablagerung & Gefäßwandschädigung', 'Amyloid deposition & vessel wall damage', 'رسوب آمیلوئید و آسیب دیواره رگ'),
   associationsTitle: L('Alzheimer & genetische Prädisposition', 'Alzheimer disease & genetic predisposition', 'آلزهایمر و زمینه ژنتیکی'),
-  otherAmyloidTitle: L('Andere Amyloid-Erkrankungen', 'Other amyloid diseases', 'سایر بیماری‌های آمیلوئیدی'),
-  otherAmyloidIntro: L('Amyloid bezeichnet eine Ablagerungsstruktur, kein einzelnes Protein. Beispiele außerhalb der β-Amyloid-Pathologie sind:', 'Amyloid describes a deposit structure, not a single protein. Examples outside β-amyloid pathology include:', 'آمیلوئید نام یک ساختار رسوبی است، نه یک پروتئین مشخص. نمونه‌هایی خارج از پاتولوژی β-آمیلوئید عبارت‌اند از:'),
-  otherAmyloidTypes: [
-    L('AL-Amyloidose: Immunglobulin-Leichtketten.', 'AL amyloidosis: immunoglobulin light chains.', 'آمیلوئیدوز AL: زنجیره‌های سبک ایمونوگلوبولین.'),
-    L('AA-Amyloidose: Serum-Amyloid A, im Zusammenhang mit chronischer Entzündung.', 'AA amyloidosis: serum amyloid A, associated with chronic inflammation.', 'آمیلوئیدوز AA: آمیلوئید A سرم، مرتبط با التهاب مزمن.'),
-    L('ATTR-Amyloidose: Transthyretin.', 'ATTR amyloidosis: transthyretin.', 'آمیلوئیدوز ATTR: ترانس‌تیرتین.'),
-  ],
   systemicWarning: L('Die sporadische β-Amyloid-CAA ist keine Manifestation einer systemischen Amyloidose.', 'Sporadic β-amyloid CAA is not a manifestation of systemic amyloidosis.', 'CAA اسپورادیک ناشی از β-آمیلوئید، تظاهر آمیلوئیدوز سیستمیک نیست.'),
   backgroundTitle: L('Häufigkeit & Alter', 'Frequency & age', 'شیوع و سن'),
   background: [
@@ -158,8 +151,6 @@ export const CAA_COPY = {
 
 // Sources for the reading lesson; individual claims are mapped in docs/caa-content-review.md.
 export const CAA_SOURCES = [
-  { href: 'https://www.niddk.nih.gov/health-information/kidney-disease/amyloidosis', label: 'NIDDK · Amyloidosis: proteins, AL and AA' },
-  { href: 'https://www.mayoclinic.org/diseases-conditions/al-amyloidosis/symptoms-causes/syc-20605091', label: 'Mayo Clinic · Amyloidosis types: AL, AA and ATTR' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3079153/', label: 'Yamada · CAA systematic review: estimated ICH contribution, 2011' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9389452/', label: 'Charidimou et al. · Boston criteria v2.0 · Lancet Neurology, 2022' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11592298/', label: 'Neuroradiological findings in CAA · Imaging review, 2024' },
