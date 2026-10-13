@@ -8,7 +8,7 @@ The maintained reference implementation lives at **Andarun → Test** (`/andarun
 
 The title identifies the topic or diagnostic task. Every lesson header must include a generated schematic image specific to that topic. Do not reuse an unrelated topic's image. The schematic remains visible on desktop and mobile and must not overlap the title or controls.
 
-Use the shared `components/LessonHero.jsx` for the header, with a required topic image and translated alt text. It deliberately accepts no subtitle or explanatory text. **Do not add a description beneath the title.** Definitions, clinical promises and introductory explanations belong at the beginning of the first chapter.
+Use the shared `components/LessonHero.jsx` for the header, with a required topic image and translated alt text. It deliberately accepts no subtitle or explanatory text. **Do not add a description beneath the title.** Definitions, clinical promises and introductory explanations belong at the beginning of the first chapter. Keep the author/breadcrumb row close to the hero (8px gap), and avoid vertically centering the desktop title in a tall image container; the shared hero positions it 32px below its top edge.
 
 ## 2. Orientation before detail
 
