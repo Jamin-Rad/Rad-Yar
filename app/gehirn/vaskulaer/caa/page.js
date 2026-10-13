@@ -81,11 +81,11 @@ function ChapterContent({ id, lang }) {
     <ul><li><Paragraphs values={[COPY.basics[1]]} lang={lang} /></li></ul>
     <VesselExplorer lang={lang} />
     <BackgroundExplorer title={COPY.backgroundTitle} items={COPY.background} lang={lang} />
+  </>;
+  if (id === 'mrt-def') return <>
     <h3 className={styles.subheading}>{c(COPY.workflowTitle)}</h3>
     <ol className={`${reference.workflow} ${styles.workflow}`}>{COPY.workflow.map(([title, text, icon]) => <li key={c(title)}><span className={reference.stepIcon}><Icon name={icon} /></span><strong>{c(title)}</strong><p>{c(text)}</p></li>)}</ol>
     <Note warning lang={lang}><Paragraphs values={[COPY.deepWarning]} lang={lang} /></Note>
-  </>;
-  if (id === 'mrt-def') return <>
     <Paragraphs values={COPY.markerIntro} lang={lang} lead />
     <MarkerAtlas copy={COPY} lang={lang}><Table headers={COPY.markerHeaders} rows={COPY.markerRows} lang={lang} /></MarkerAtlas>
     <h3 className={styles.subheading}>{c(COPY.wmTitle)}</h3>
