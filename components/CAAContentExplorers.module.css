@@ -45,3 +45,5 @@
 :global(html[data-theme='dark']) .ageBand strong { color: #80d6d2; }
 
 .textOnly { grid-template-columns: minmax(0,1fr); }
+
+.tfneDefinition { padding-top: 22px; }

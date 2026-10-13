@@ -81,15 +81,17 @@ export function ClinicalExplorer({ title, items, kind, lang }) {
   const acute=kind==='acute'
   const tfne=acute&&symptom===1
   return <div className={shared.panel + ' ' + styles.focused} data-learning-tool={kind}>
-    <ToolHeader title={title} hint={acute?COPY.acuteHint:COPY.otherHint} lang={lang} />
+    <ToolHeader title={title} lang={lang} />
     <Tabs items={acute?COPY.acuteTabs:COPY.otherTabs} value={symptom} onChange={setSymptom} id={id} label={title} lang={lang} />
     <div id={id+'-panel'} role="tabpanel" aria-labelledby={id+'-tab-'+symptom}>
-      {acute&&<div hidden={!tfne}><TFNETimeline lang={lang} embedded /></div>}
+      {acute&&<div hidden={!tfne}>
+        <div className={shared.copy + ' ' + styles.tfneDefinition}><h4>{pick(items[1].title,lang)}</h4><Paragraphs values={items[1].paragraphs} lang={lang}/></div>
+        <TFNETimeline lang={lang} embedded />
+      </div>}
       <div className={shared.explorerBody + ' ' + styles.clinicalVisual} hidden={tfne}>
         {acute?<BrainFigure pattern="ich" lang={lang}/>:<ConceptFigure kind={['cognition','seizure','headache'][symptom]} lang={lang}/>}
         <div className={shared.copy}><h4>{pick(items[symptom].title,lang)}</h4><Paragraphs values={items[symptom].paragraphs} lang={lang}/></div>
       </div>
-      {tfne&&<details className={shared.comparison}><summary>{pick(COPY.clinicalDetails,lang)}</summary><div className={shared.copy}><h4>{pick(items[symptom].title,lang)}</h4><Paragraphs values={items[symptom].paragraphs} lang={lang}/></div></details>}
     </div>
   </div>
 }

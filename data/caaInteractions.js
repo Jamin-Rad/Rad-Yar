@@ -19,8 +19,7 @@ export const CAA_INTERACTION_COPY = {
   appearance: L('Bild & Bedeutung', 'Appearance & significance', 'تصویر و اهمیت'),
   schematic: L('Schematische Lokalisation', 'Schematic localisation', 'شماتیک محل ضایعات'),
   allMarkers: L('Alle Marker vergleichen', 'Compare all markers', 'مقایسه همه نشانگرها'),
-  tfneTitle: L('TFNE: den Verlauf verfolgen', 'Follow a TFNE episode', 'سیر یک حمله TFNE را دنبال کنید'),
-  tfneHint: L('Ein Beispiel für wandernde Parästhesien. Die Phasen sind wählbar; sie zeigen keinen festen Zeitmaßstab.', 'An example of spreading paraesthesias. Select the stages; they do not represent a fixed timescale.', 'نمونه‌ای از پارستزی گسترش‌یابنده. مراحل را انتخاب کنید؛ این نمایش مقیاس زمانی ثابتی ندارد.'),
+  tfneTitle: L('TFNE-Verlauf', 'TFNE course', 'سیر TFNE'),
   tfneStages: [
     { title: L('Beginn', 'Onset', 'شروع'), text: L('Parästhesien beginnen zum Beispiel in der Hand. Eine oberflächliche Blutung kann mit TFNE assoziiert sein.', 'Paraesthesias may begin in the hand. Superficial bleeding may be associated with TFNE.', 'پارستزی ممکن است، برای مثال، از دست شروع شود. خونریزی سطحی می‌تواند با TFNE همراه باشد.') },
     { title: L('Ausbreitung', 'Spread', 'گسترش'), text: L('Die Empfindung wandert von der Hand zum Arm. Als Mechanismus wird eine kortikale Spreading-Depolarisation vermutet.', 'The sensation spreads from the hand to the arm. Cortical spreading depolarisation is the proposed mechanism.', 'حس از دست به بازو گسترش می‌یابد. مکانیسم پیشنهادی، دپلاریزاسیون گسترش‌یابنده قشری است.') },

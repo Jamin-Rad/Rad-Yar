@@ -136,7 +136,6 @@ export function TFNETimeline({ lang, embedded = false }) {
   const [stage, setStage] = useState(0)
   const id = 'caa-tfne-' + useId().replaceAll(':', '')
   return <div className={embedded ? styles.embedded : styles.panel} data-learning-tool="tfne">
-    <ToolHeader title={COPY.tfneTitle} hint={COPY.tfneHint} lang={lang} />
     <Tabs items={COPY.tfneStages.map(item => item.title)} value={stage} onChange={setStage} id={id} label={COPY.tfneTitle} lang={lang} />
     <div id={id + '-panel'} role="tabpanel" aria-labelledby={id + '-tab-' + stage} className={styles.tfneBody}>
       <figure className={styles.figure} data-tfne-stage={stage}><svg viewBox="0 0 600 400" role="img" aria-label={pick(COPY.tfneStages[stage].title, lang)} data-no-zoom>
