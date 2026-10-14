@@ -100,32 +100,29 @@ export function ClinicalExplorer({ title, items, kind, lang, showTitle = true })
   </div>
 }
 
-function DiagnosisPane({ row, pattern, lang, findings, reference, id }) {
+function DiagnosisPane({ row, pattern, lang, caption, reference, id }) {
   return <section className={styles.diagnosisPane + (reference?' '+styles.referencePane:'')} aria-labelledby={id}>
-    <h4 id={id}>{pick(row[0],lang)}</h4><BrainFigure pattern={findings?pattern:'none'} lang={lang}/>
+    <h4 id={id}>{pick(row[0],lang)}</h4><BrainFigure pattern={pattern} caption={caption} lang={lang}/>
     <dl className={shared.facts}>
-      <div><dt>{pick(COPY.distribution,lang)}</dt><dd>{pick(row[1],lang)}</dd></div>
-      <div><dt>{pick(COPY.distinction,lang)}</dt><dd>{pick(row[2],lang)}</dd></div>
+      <div><dt>{pick(COPY.distribution,lang)}</dt><dd><Paragraphs values={Array.isArray(row[1]) ? row[1] : [row[1]]} lang={lang}/></dd></div>
+      <div><dt>{pick(COPY.distinction,lang)}</dt><dd><Paragraphs values={Array.isArray(row[2]) ? row[2] : [row[2]]} lang={lang}/></dd></div>
     </dl>
   </section>
 }
 
 export function DifferentialComparison({ rows, lang }) {
-  const [diagnosis,setDiagnosis]=useState(1)
-  const [findings,setFindings]=useState(true)
+  const [diagnosis,setDiagnosis]=useState(0)
   const id='caa-dd-'+useId().replaceAll(':','')
   return <div className={shared.panel} data-learning-tool="differentials">
-    <ToolHeader title={COPY.ddTitle} hint={COPY.ddHint} lang={lang}/>
-    <div className={styles.comparisonControls}>
-      <label htmlFor={id+'-select'}>{pick(COPY.compareWith,lang)}<select id={id+'-select'} value={diagnosis} onChange={event=>setDiagnosis(Number(event.target.value))} aria-controls={id+'-comparison'}>
-        {rows.slice(1).map((row,index)=><option key={index} value={index+1}>{pick(row[0],lang)}</option>)}
-      </select></label>
-      <label className={styles.findingsToggle}><input type="checkbox" checked={findings} onChange={event=>setFindings(event.target.checked)}/><span>{pick(COPY.showFindings,lang)}</span></label>
+    <div className={styles.comparisonChoices}>
+      <Tabs items={COPY.ddTabs} value={diagnosis} onChange={setDiagnosis} id={id} label={COPY.compareWith} lang={lang}/>
     </div>
-    <p className={styles.keyDifference}>{pick(COPY.ddCues[diagnosis-1],lang)}</p>
-    <div className={styles.comparisonGrid} id={id+'-comparison'} data-comparison={diagnosis}>
-      <DiagnosisPane row={rows[0]} pattern="lobar" lang={lang} findings={findings} reference id={id+'-reference'}/>
-      <DiagnosisPane row={rows[diagnosis]} pattern={['none','deep','avm','cavernoma','tumour'][diagnosis]} lang={lang} findings={findings} id={id+'-selected'}/>
+    <div id={id+'-panel'} role="tabpanel" aria-labelledby={id+'-tab-'+diagnosis} tabIndex={0}>
+      <p className={styles.keyDifference}>{pick(COPY.ddCues[diagnosis],lang)}</p>
+      <div className={styles.comparisonGrid} data-comparison={diagnosis+1}>
+        <DiagnosisPane row={rows[0]} pattern="lobar" caption={COPY.ddCaptions[0]} lang={lang} reference id={id+'-reference'}/>
+        <DiagnosisPane row={rows[diagnosis+1]} pattern={['deep','avm','cavernoma','tumour'][diagnosis]} caption={COPY.ddCaptions[diagnosis+1]} lang={lang} id={id+'-selected'}/>
+      </div>
     </div>
   </div>
 }

@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react';
 import { useLessonSectionScroll } from '@/hooks/useLessonSectionScroll';
 import CAACaseGallery from '@/components/CAACaseGallery';
 import LessonTakeHome from '@/components/LessonTakeHome';
-import { VesselExplorer, MarkerAtlas, WhiteMatterMarkers, BostonCountingGuide, BostonCategories, PatternExplorer } from '@/components/CAALearningTools';
+import { VesselExplorer, MarkerAtlas, WhiteMatterMarkers, BostonCountingGuide, BostonCategories } from '@/components/CAALearningTools';
 import { AssociationExplorer, BackgroundExplorer, ClinicalExplorer, DifferentialComparison } from '@/components/CAAContentExplorers';
-import { CAA_FOCUSED_COPY } from '@/data/caaFocusedCopy';
 import { CAA_INTERACTION_COPY } from '@/data/caaInteractions';
 import Link from 'next/link';
 import LessonHero from '@/components/LessonHero';
@@ -137,9 +136,11 @@ function ChapterContent({ id, lang }) {
   if (id === 'differenzial') return <>
     <p className={reference.lead}>{c(COPY.ddIntro)}</p>
     <DifferentialComparison rows={COPY.ddRows} lang={lang} />
-    <details className={styles.ruleOverview}><summary>{c(CAA_FOCUSED_COPY.patternDisclosure)}</summary><PatternExplorer lang={lang} /></details>
-    <h3 className={styles.subheading}>{c(COPY.redFlagsTitle)}</h3>
-    <TeachingList items={COPY.redFlags} lang={lang} />
+    <Note warning lang={lang}><Paragraphs values={COPY.mixedWarning} lang={lang} /></Note>
+    <section className={styles.sequenceOverview} aria-labelledby="caa-dd-clues">
+      <h3 id="caa-dd-clues" className={styles.diagnosticHeading}>{c(COPY.redFlagsTitle)}</h3>
+      <TeachingList items={COPY.redFlags} lang={lang} />
+    </section>
   </>;
   return <LessonTakeHome points={COPY.takehome} lang={lang} idPrefix="caa-take-home" />;
 }
