@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from 'react'
 
-export function usePersistedSectionProgress(lessonId, sectionIds, lessonRead = false) {
+const identity = saved => saved
+
+export function usePersistedSectionProgress(lessonId, sectionIds, lessonRead = false, migrateSaved = identity) {
   const storageKey = `radyar-lesson-sections:${lessonId}`
   const [readSections, setReadSections] = useState(() => new Set())
   const [loadedKey, setLoadedKey] = useState(null)
@@ -11,12 +13,12 @@ export function usePersistedSectionProgress(lessonId, sectionIds, lessonRead = f
     try {
       const saved = JSON.parse(window.localStorage.getItem(storageKey) || '[]')
       const validIds = new Set(sectionIds)
-      setReadSections(new Set(Array.isArray(saved) ? saved.filter(id => validIds.has(id)) : []))
+      setReadSections(new Set(Array.isArray(saved) ? migrateSaved(saved).filter(id => validIds.has(id)) : []))
     } catch {
       setReadSections(new Set())
     }
     setLoadedKey(storageKey)
-  }, [storageKey, sectionIds])
+  }, [storageKey, sectionIds, migrateSaved])
 
   useEffect(() => {
     if (lessonRead && loadedKey === storageKey) setReadSections(new Set(sectionIds))

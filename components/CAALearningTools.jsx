@@ -94,12 +94,12 @@ export function VesselExplorer({ lang, headingLevel = 'h3', description }) {
   </div>
 }
 
-export function MarkerAtlas({ copy, lang, children }) {
+export function MarkerAtlas({ copy, lang, children, headingLevel = 'h3' }) {
   const [marker, setMarker] = useState(0)
   const id = 'caa-marker-' + useId().replaceAll(':', '')
   const row = copy.markerRows[marker]
   return <div className={styles.panel} data-learning-tool="atlas">
-    <ToolHeader title={COPY.atlasTitle} hint={COPY.atlasHint} lang={lang} />
+    <ToolHeader title={COPY.atlasTitle} lang={lang} as={headingLevel} />
     <Tabs items={COPY.markerTabs} value={marker} onChange={setMarker} id={id} label={COPY.atlasTitle} lang={lang} />
     <div id={id + '-panel'} role="tabpanel" aria-labelledby={id + '-tab-' + marker} className={styles.explorerBody}>
       <BrainFigure pattern={['ich', 'cmb', 'csah', 'css'][marker]} lang={lang} />
@@ -161,7 +161,7 @@ const bostonPresets = [
   { age: '74', clinical: true, lobar: 2, pvs: false, wmh: false, deep: true, alternative: false },
 ]
 
-export function BostonExplorer({ lang }) {
+export function BostonExplorer({ lang, headingLevel = 'h3' }) {
   const [findings, setFindings] = useState(bostonPresets[0])
   const [preset, setPreset] = useState(0)
   const id = 'caa-boston-' + useId().replaceAll(':', '')
@@ -172,7 +172,7 @@ export function BostonExplorer({ lang }) {
   const hasMarkers = findings.lobar > 0 || findings.pvs || findings.wmh
   const steps = [[COPY.eligibility, COPY.eligibilityRule, eligible], [COPY.exclusions, COPY.exclusionsRule, exclusions], [COPY.markers, findings.lobar >= 2 ? '≥2' : findings.lobar === 1 && (findings.pvs || findings.wmh) ? '1 + 1' : findings.lobar === 1 ? '1' : findings.pvs || findings.wmh ? 'WM' : '0', hasMarkers]]
   return <div className={styles.panel} data-learning-tool="boston">
-    <ToolHeader title={COPY.bostonTitle} hint={COPY.bostonHint} lang={lang} />
+    <ToolHeader title={COPY.bostonTitle} hint={COPY.bostonHint} lang={lang} as={headingLevel} />
     <div className={styles.presets} role="group" aria-label={pick(COPY.examples, lang)}>{COPY.presets.map((label, index) =>
       <button key={index} type="button" aria-pressed={preset === index} onClick={() => { setPreset(index); setFindings(bostonPresets[index]) }}>{pick(label, lang)}</button>)}</div>
     <div className={styles.mobileOutcome} aria-hidden="true" data-category={result.category}><span>{pick(COPY.result, lang)}</span><strong>{pick(COPY.resultTitles[result.category], lang)}</strong></div>

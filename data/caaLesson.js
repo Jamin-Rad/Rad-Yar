@@ -3,8 +3,7 @@ const L = (de, en, fa) => ({ de, en, fa })
 export const CAA_CHAPTERS = [
   { id: 'grundlagen', icon: 'brain', title: L('Grundlagen', 'Foundations', 'مبانی') },
   { id: 'klinik', icon: 'clinical', title: L('Klinische Manifestationen', 'Clinical manifestations', 'تظاهرات بالینی') },
-  { id: 'mrt-def', icon: 'scan', title: L('MRT-Marker gezielt lesen', 'Read the MRI markers', 'نشانگرهای MRI را بررسی کنید') },
-  { id: 'boston', icon: 'chart', title: L('Boston v2.0 anwenden', 'Apply Boston v2.0', 'معیارهای Boston v2.0 را به کار ببرید') },
+  { id: 'mrt-diagnostik', icon: 'scan', title: L('MRT-Diagnostik', 'MRI diagnosis', 'تشخیص با MRI') },
   { id: 'differenzial', icon: 'vessel', title: L('Differenzialdiagnosen abgrenzen', 'Separate the differentials', 'تشخیص‌های افتراقی را تفکیک کنید') },
   { id: 'takehome', icon: 'spark', title: 'Take Home Message', emphasis: true },
 ]
@@ -57,13 +56,6 @@ export const CAA_COPY = {
       L('Das APP-Gen liegt auf Chromosom 21. Bei Trisomie 21 führt die zusätzliche Genkopie zu mehr Amyloid-Vorläuferprotein und begünstigt frühe β-Amyloid-Ablagerungen, auch in Gefäßwänden.', 'The APP gene is located on chromosome 21. In trisomy 21, the additional gene copy increases amyloid precursor protein and favours early β-amyloid deposition, including in vessel walls.', 'ژن APP روی کروموزوم ۲۱ قرار دارد. در تریزومی ۲۱، نسخه اضافی ژن تولید پروتئین پیش‌ساز آمیلوئید را افزایش می‌دهد و زمینه رسوب زودرس β-آمیلوئید، از جمله در دیواره عروق، را فراهم می‌کند.'),
     ] },
   ],
-  workflowTitle: L('So liest du das Blutungsmuster', 'How to read the bleeding pattern', 'چگونه الگوی خونریزی را بررسی کنیم؟'),
-  workflow: [
-    [L('Lobär oder tief?', 'Lobar or deep?', 'لوبار یا عمقی؟'), L('Kortex und subkortikales Mark von tiefen Kernen unterscheiden.', 'Separate cortex and subcortical white matter from deep nuclei.', 'قشر و ماده سفید زیرقشری را از هسته‌های عمقی تفکیک کنید.'), 'brain'],
-    ['SWI / GRE', L('Mikroblutungen und oberflächliche Siderose suchen.', 'Look for microbleeds and superficial siderosis.', 'میکروخونریزی و سیدروز سطحی را جست‌وجو کنید.'), 'scan'],
-    ['FLAIR / T2', L('cSAH und spezifische Marklager-Marker prüfen.', 'Check cSAH and specific white matter markers.', 'cSAH و نشانگرهای اختصاصی ماده سفید را بررسی کنید.'), 'vessel'],
-    ['Boston v2.0', L('Klinik, Alter und Ausschlusskriterien einbeziehen.', 'Include clinical presentation, age and exclusions.', 'علائم بالینی، سن و معیارهای رد را در نظر بگیرید.'), 'chart'],
-  ],
   amyloid: [
     L('CAA und Alzheimer teilen die β-Amyloid-Pathologie mit unterschiedlichen Ablagerungsorten:', 'CAA and Alzheimer disease share β-amyloid pathology at different deposit locations:', 'CAA و آلزهایمر پاتولوژی β-آمیلوئید مشترکی دارند، اما محل رسوب متفاوت است:'),
     L('Gefäßwand bei CAA.', 'Vessel walls in CAA.', 'دیواره رگ در CAA.'),
@@ -73,10 +65,15 @@ export const CAA_COPY = {
   schematic: L('Entscheidend ist die Verteilung, nicht die Zahl der Punkte.', 'Focus on distribution, not the number of dots.', 'به توزیع توجه کنید، نه تعداد نقطه‌ها.'),
   lobar: L('CAA: lobär', 'CAA: lobar', 'CAA: لوبار'),
   deep: L('Arteriolosklerose: tief', 'Arteriolosclerosis: deep', 'آرتریولواسکلروز: عمقی'),
+  mriTitle: L('MRT-Befunde', 'MRI findings', 'یافته‌های MRI'),
   markerIntro: [
-    L('Vier typische Blutungsmuster prägen die CAA: lobäre ICH, strikt lobäre Mikroblutungen, Konvexitäts-SAH und kortikale superfizielle Siderose. Sie betreffen die lobären oder oberflächlichen Kompartimente; tiefe ICH/CMB sprechen gegen die MRT-Kategorien der Boston-Kriterien.', 'Four typical bleeding patterns characterise CAA: lobar ICH, strictly lobar microbleeds, convexity SAH and cortical superficial siderosis. They involve lobar or superficial compartments; deep ICH/CMB preclude the MRI-based Boston categories.', 'چهار الگوی خونریزی شاخص CAA عبارت‌اند از ICH لوبار، میکروخونریزی صرفاً لوبار، SAH کانوکسیتی و سیدروز سطحی قشری. این الگوها در نواحی لوبار یا سطحی دیده می‌شوند؛ ICH یا CMB عمقی با طبقه‌بندی MRI طبق Boston سازگار نیست.'),
-    L('SWI oder T2*-GRE erfasst Blutabbauprodukte; FLAIR und T2 ergänzen die Beurteilung. Ein dunkler Punkt allein ist noch keine Mikroblutung: Gefäße, Verkalkung und Artefakte ausschließen.', 'SWI or T2*-GRE detects blood products; FLAIR and T2 provide complementary information. A dark dot alone is not a microbleed: exclude vessels, calcification and artefacts.', 'SWI یا T2*-GRE محصولات خون را نشان می‌دهد؛ FLAIR و T2 اطلاعات تکمیلی می‌دهند. هر نقطه تیره میکروخونریزی نیست: رگ، کلسیفیکاسیون و آرتیفکت را کنار بگذارید.'),
+    L('Typisch für CAA sind Blutungen in den Hirnlappen und an der Hirnoberfläche. Entscheidend ist die Verteilung: lobär beziehungsweise kortikal statt in den tiefen Hirnstrukturen.', 'CAA typically causes haemorrhagic lesions in the cerebral lobes and at the brain surface. Distribution is key: lobar or cortical rather than in deep brain structures.', 'الگوی شاخص CAA، ضایعات خونریزی در لوب‌ها و سطح مغز است. نکته اصلی، توزیع لوبار یا قشری به‌جای ساختارهای عمقی مغز است.'),
+    L('SWI oder T2*-GRE zeigt Mikroblutungen und Hämosiderinablagerungen. FLAIR ergänzt die Suche nach akutem sulkalem Blut und Marklagerveränderungen; T2 dient auch zur Beurteilung perivaskulärer Räume.', 'SWI or T2*-GRE shows microbleeds and haemosiderin deposits. FLAIR complements assessment of acute sulcal blood and white matter changes; T2 also assesses perivascular spaces.', 'SWI یا T2*-GRE میکروخونریزی‌ها و رسوب هموسیدرین را نشان می‌دهد. FLAIR برای بررسی خون حاد در شیارها و تغییرات ماده سفید کمک‌کننده است؛ T2 برای ارزیابی فضاهای اطراف عروقی نیز استفاده می‌شود.'),
   ],
+  caseExamples: L('Radiopaedia-Bildbeispiele', 'Radiopaedia imaging examples', 'نمونه‌های تصویری Radiopaedia'),
+  bostonTitle: L('Boston-Kriterien v2.0', 'Boston criteria v2.0', 'معیارهای Boston v2.0'),
+  bostonExercise: L('Kriterien interaktiv anwenden', 'Apply the criteria interactively', 'کاربرد تعاملی معیارها'),
+  pathologyDetails: L('Klinisch-radiologische Diagnose und Gewebeuntersuchung', 'Clinical–radiological diagnosis and tissue examination', 'تشخیص بالینی–رادیولوژیک و بررسی بافت'),
   markerHeaders: [L('Blutungsmuster', 'Bleeding pattern', 'الگوی خونریزی'), L('Lokalisation & Sequenz', 'Location & sequence', 'محل و سکانس'), L('Bild & Bedeutung', 'Appearance & significance', 'تصویر و اهمیت')],
   markerRows: [
     [L('Lobäre ICH', 'Lobar ICH', 'ICH لوبار'), [L('Kortex / subkortikales Mark eines Hirnlappens.', 'Cortex / subcortical white matter of a cerebral lobe.', 'قشر یا ماده سفید زیرقشری یک لوب مغزی.'), 'CT / MRT'], [L('Lobäres Hämatom, oft mit Masseneffekt.', 'Lobar haematoma, often with mass effect.', 'هماتوم لوبار، اغلب با اثر فشاری.'), L('Klinisch besonders wichtig: akute schlaganfallähnliche Ausfälle.', 'A major clinical presentation: acute stroke-like deficits.', 'تظاهر بالینی مهم: نقص عصبی حاد شبیه سکته.')]],
@@ -111,14 +108,17 @@ export const CAA_COPY = {
       L('Neu auftretende, starke Kopfschmerzen müssen abgeklärt werden. Dabei sollte nach einer akuten Hirnblutung und anderen möglichen Ursachen gesucht werden.', 'New severe headache requires assessment for an acute brain bleed and other possible causes.', 'سردرد شدیدِ تازه‌شروع‌شده نیاز به بررسی دارد. در این بررسی باید خونریزی حاد مغزی و سایر علل احتمالی در نظر گرفته شوند.'),
     ] },
   ],
-  wmTitle: L('Nur diese zwei White-Matter-Marker zählen', 'Only these two white matter markers count', 'فقط این دو نشانگر ماده سفید در معیارها حساب می‌شوند'),
+  wmTitle: L('Marklager-Marker für Boston v2.0', 'White matter markers for Boston v2.0', 'نشانگرهای ماده سفید در Boston v2.0'),
   wm: [
     { title: L('Schwere CSO-PVS', 'Severe CSO-PVS', 'CSO-PVS شدید'), text: L('Mehr als 20 sichtbare perivaskuläre Räume im Centrum semiovale einer Hemisphäre auf einer axialen T2-Schicht. Basalganglien-PVS ersetzen diesen Marker nicht.', 'More than 20 visible perivascular spaces in the centrum semiovale of one hemisphere on one axial T2 slice. Basal ganglia PVS do not substitute for this marker.', 'بیش از ۲۰ فضای اطراف عروقی در centrum semiovale یک نیمکره، در یک برش آگزیال T2. PVS عقده‌های قاعده‌ای جایگزین این نشانگر نیست.') },
     { title: L('WMH-Multispot-Muster', 'WMH multispot pattern', 'الگوی چندنقطه‌ای WMH'), text: L('Mehr als 10 kleine rundliche oder ovale T2/FLAIR-Hyperintensitäten im subkortikalen Mark beider Hemisphären. Unspezifische konfluierende WMH allein genügen nicht.', 'More than 10 small round or oval T2/FLAIR hyperintensities in the subcortical white matter of both hemispheres. Nonspecific confluent WMH alone is insufficient.', 'بیش از ۱۰ کانون کوچک گرد یا بیضی با سیگنال بالای T2/FLAIR در ماده سفید زیرقشری دو نیمکره. WMH به‌هم‌پیوسته و غیراختصاصی به‌تنهایی کافی نیست.') },
   ],
-  bostonIntro: [
-    L('Boston v2.0 ermöglicht eine klinisch-radiologische Einstufung als probable oder possible CAA ohne Gewebeprobe. Dafür werden Klinik und MRT-Muster gemeinsam beurteilt.', 'Boston v2.0 allows a clinical–radiological classification as probable or possible CAA without tissue sampling. Clinical presentation and MRI pattern are assessed together.', 'Boston v2.0 امکان طبقه‌بندی بالینی–رادیولوژیک CAA محتمل یا ممکن را بدون نمونه بافت فراهم می‌کند. علائم بالینی و الگوی MRI باید در کنار هم ارزیابی شوند.'),
-    L('Voraussetzungen: Alter ≥50 Jahre und spontane ICH, TFNE oder kognitive Störung / Demenz. Es dürfen keine tiefen ICH/CMB und keine andere Ursache der relevanten Läsionen vorliegen.', 'Prerequisites: age ≥50 and spontaneous ICH, TFNE or cognitive impairment / dementia. There must be no deep ICH/CMB and no alternative cause of the relevant lesions.', 'پیش‌شرط‌ها: سن \u2066≥۵۰\u2069 سال و ICH خودبخودی، TFNE یا اختلال شناختی / دمانس. ICH یا CMB عمقی و علت دیگری برای ضایعات مورد ارزیابی نباید وجود داشته باشد.'),
+  bostonIntro: [L('Die Boston-Kriterien verknüpfen die MRT-Befunde mit Alter und klinischer Präsentation. Sie ermöglichen die Einstufung als probable oder possible CAA ohne Gewebeprobe.', 'The Boston criteria combine MRI findings with age and clinical presentation. They allow classification as probable or possible CAA without tissue sampling.', 'معیارهای Boston یافته‌های MRI را در کنار سن و تظاهرات بالینی قرار می‌دهند و امکان طبقه‌بندی CAA محتمل یا ممکن را بدون نمونه‌برداری بافت فراهم می‌کنند.')],
+  eligibilityTitle: L('Voraussetzungen', 'Prerequisites', 'پیش‌شرط‌ها'),
+  eligibility: [
+    { title: L('Alter und Klinik', 'Age and presentation', 'سن و تظاهرات بالینی'), paragraphs: [L('Mindestens 50 Jahre; spontane intrazerebrale Blutung, TFNE oder kognitive Störung / Demenz.', 'Age at least 50; spontaneous intracerebral haemorrhage, TFNE or cognitive impairment / dementia.', 'سن حداقل ۵۰ سال؛ خونریزی داخل مغزی خودبخودی، TFNE یا اختلال شناختی / دمانس.')] },
+    { title: L('Keine tiefen Blutungsläsionen', 'No deep haemorrhagic lesions', 'نبود ضایعات خونریزی عمقی'), paragraphs: [L('Keine intrazerebrale Blutung und keine Mikroblutung in den tiefen Hirnstrukturen.', 'No intracerebral haemorrhage or microbleed in deep brain structures.', 'نبود خونریزی داخل مغزی یا میکروخونریزی در ساختارهای عمقی مغز.')] },
+    { title: L('Keine andere Ursache', 'No alternative cause', 'نبود علت دیگر'), paragraphs: [L('Die bewerteten Läsionen dürfen nicht durch eine andere Erkrankung erklärt sein, etwa Trauma, Gefäßmalformation oder blutenden Tumor.', 'The lesions being assessed must not be explained by another condition, such as trauma, a vascular malformation or a haemorrhagic tumour.', 'ضایعات مورد ارزیابی نباید با علت دیگری مانند تروما، ناهنجاری عروقی یا تومور خونریزی‌دهنده توضیح داده شوند.')] },
   ],
   probable: L('Probable CAA', 'Probable CAA', 'CAA محتمل · Probable'),
   possible: L('Possible CAA', 'Possible CAA', 'CAA ممکن · Possible'),
@@ -126,7 +126,11 @@ export const CAA_COPY = {
   combination: L('lobäre Blutungsläsion + spezifischer WM-Marker', 'lobar haemorrhagic lesion + specific WM marker', 'ضایعه خونریزی لوبار + نشانگر اختصاصی ماده سفید'),
   possibleRule: L('Eine strikt lobäre Blutungsläsion ODER ein spezifischer WM-Marker, ohne die probable-Kriterien zu erfüllen.', 'One strictly lobar haemorrhagic lesion OR one specific WM marker, without meeting probable criteria.', 'یک ضایعه خونریزی صرفاً لوبار یا یک نشانگر اختصاصی ماده سفید، بدون احراز معیارهای CAA محتمل.'),
   or: L('ODER', 'OR', 'یا'),
-  counting: L('ICH, CMB und cSS/cSAH-Herde zählen in beliebiger Kombination. Räumlich getrennte cSS/cSAH-Herde können mehrere Läsionen darstellen; Blut und Siderose am selben Ort nicht doppelt zählen. Kleinhirnblutungen zählen weder als lobär noch als tief.', 'ICH, CMB and cSS/cSAH foci count in any combination. Spatially separate cSS/cSAH foci can represent multiple lesions; do not double-count blood and siderosis at the same site. Cerebellar haemorrhages count as neither lobar nor deep.', 'ICH، CMB و کانون‌های cSS/cSAH در هر ترکیبی حساب می‌شوند. کانون‌های جدا از هم می‌توانند چند ضایعه باشند؛ خون و سیدروز در یک محل را دوبار نشمارید. خونریزی مخچه نه لوبار و نه عمقی محسوب می‌شود.'),
+  counting: [
+    L('Als Blutungsläsionen zählen lobäre ICH, Mikroblutungen sowie cSS- oder cSAH-Herde. Die Kombination der verschiedenen Typen ist zulässig.', 'Haemorrhagic lesions include lobar ICH, microbleeds and cSS or cSAH foci. Different lesion types may be combined.', 'ICH لوبار، میکروخونریزی و کانون‌های cSS یا cSAH به‌عنوان ضایعات خونریزی حساب می‌شوند. ترکیب انواع مختلف ضایعه مجاز است.'),
+    L('Getrennte cSS/cSAH-Herde können einzeln zählen. Blut und Siderose am selben Ort werden nicht doppelt gezählt.', 'Separate cSS/cSAH foci can count individually. Blood and siderosis at the same site must not be counted twice.', 'کانون‌های جداگانه cSS/cSAH می‌توانند جداگانه شمارش شوند. خون و سیدروز در یک محل را نباید دوبار حساب کرد.'),
+    L('Kleinhirnblutungen zählen für diese Kriterien weder als lobär noch als tief.', 'For these criteria, cerebellar haemorrhages count as neither lobar nor deep.', 'در این معیارها، خونریزی مخچه نه لوبار و نه عمقی محسوب می‌شود.'),
+  ],
   pathology: L('Probable ist eine klinisch-radiologische Kategorie. Definite CAA erfordert die vollständige postmortale Untersuchung; eine Biopsie kann die Kategorie mit unterstützender Pathologie begründen.', 'Probable is a clinical–radiological category. Definite CAA requires full postmortem examination; biopsy can support the category with supporting pathology.', 'CAA محتمل یک طبقه‌بندی بالینی–رادیولوژیک است. CAA قطعی به بررسی کامل پس از مرگ نیاز دارد؛ بیوپسی می‌تواند طبقه «محتمل با پشتیبانی پاتولوژی» را تأیید کند.'),
   ddIntro: L('Die Verteilung ist stärker als eine Hypertonieanamnese: Hypertonie kann auch bei CAA bestehen. Bei gemischten Mustern keine reine CAA aus der MRT ableiten.', 'Distribution is more informative than a history of hypertension: hypertension can coexist with CAA. Do not infer pure CAA from a mixed pattern.', 'توزیع ضایعات از سابقه فشار خون راهگشاتر است؛ پرفشاری خون می‌تواند با CAA هم‌زمان باشد. از الگوی مختلط، CAA خالص نتیجه نگیرید.'),
   ddHeaders: [L('Diagnose', 'Diagnosis', 'تشخیص'), L('Typisches Muster', 'Typical pattern', 'الگوی معمول'), L('Abgrenzung / nächster Schritt', 'Distinction / next step', 'افتراق و گام بعدی')],

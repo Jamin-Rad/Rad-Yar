@@ -14,6 +14,7 @@ import { TeachingGroup, TeachingGroups } from '@/components/lesson-template/Inte
 import { useLanguage } from '@/providers/LanguageProvider';
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus';
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress';
+import { migrateCAAProgress } from '@/lib/caaProgress.mjs';
 import { CAA_CHAPTERS, CAA_TRACKED_IDS, CAA_COPY as COPY, CAA_SOURCES } from '@/data/caaLesson';
 import reference from '@/components/LessonTemplate.module.css';
 import styles from './page.module.css';
@@ -25,6 +26,8 @@ const L = (de, en, fa) => ({
 });
 const PATH = '/gehirn/vaskulaer/caa';
 const ALIASES = {
+  'mrt-def': 'mrt-diagnostik',
+  boston: 'mrt-diagnostik',
   pathophysio: 'grundlagen',
   lokalisation: 'grundlagen',
   befund: 'differenzial',
@@ -87,16 +90,31 @@ function ChapterContent({ id, lang }) {
       <div className={styles.foundationBody}><BackgroundExplorer title={COPY.backgroundTitle} items={COPY.background} lang={lang} showTitle={false} /></div>
     </TeachingGroup>
   </TeachingGroups>;
-  if (id === 'mrt-def') return <>
-    <h3 className={styles.subheading}>{c(COPY.workflowTitle)}</h3>
-    <ol className={`${reference.workflow} ${styles.workflow}`}>{COPY.workflow.map(([title, text, icon]) => <li key={c(title)}><span className={reference.stepIcon}><Icon name={icon} /></span><strong>{c(title)}</strong><p>{c(text)}</p></li>)}</ol>
-    <Note warning lang={lang}><Paragraphs values={[COPY.deepWarning]} lang={lang} /></Note>
-    <Paragraphs values={COPY.markerIntro} lang={lang} lead />
-    <MarkerAtlas copy={COPY} lang={lang}><Table headers={COPY.markerHeaders} rows={COPY.markerRows} lang={lang} /></MarkerAtlas>
-    <h3 className={styles.subheading}>{c(COPY.wmTitle)}</h3>
-    <WhiteMatterMarkers items={COPY.wm} lang={lang} />
-    <CAACaseGallery lang={lang} />
-  </>;
+  if (id === 'mrt-diagnostik') return <TeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'}>
+    <TeachingGroup id="caa-mri-findings" title={c(COPY.mriTitle)}>
+      <div className={styles.diagnosticBody}>
+        <Paragraphs values={COPY.markerIntro} lang={lang} />
+        <MarkerAtlas copy={COPY} lang={lang} headingLevel="h4"><Table headers={COPY.markerHeaders} rows={COPY.markerRows} lang={lang} /></MarkerAtlas>
+        <h4 className={styles.subheading}>{c(COPY.wmTitle)}</h4>
+        <WhiteMatterMarkers items={COPY.wm} lang={lang} />
+        <details className={styles.ruleOverview}><summary>{c(COPY.caseExamples)}</summary><CAACaseGallery lang={lang} headingLevel="h4" /></details>
+      </div>
+    </TeachingGroup>
+    <TeachingGroup id="caa-boston" title={c(COPY.bostonTitle)} tone="secondary">
+      <div className={styles.diagnosticBody}>
+        <Paragraphs values={COPY.bostonIntro} lang={lang} />
+        <h4 className={styles.subheading}>{c(COPY.eligibilityTitle)}</h4>
+        <TeachingList items={COPY.eligibility} lang={lang} />
+        <div className={styles.diagnosticRules}>
+          <div className={styles.criteria}><h4>{c(COPY.probable)}</h4><div className={styles.rule}><b><bdi>≥2</bdi></b><span>{c(COPY.hemorrhages)}</span></div><small>{c(COPY.or)}</small><div className={styles.rule}><b><bdi>1 + 1</bdi></b><span>{c(COPY.combination)}</span></div></div>
+          <div className={`${styles.criteria} ${styles.possible}`}><h4>{c(COPY.possible)}</h4><p>{c(COPY.possibleRule)}</p></div>
+        </div>
+        <Note lang={lang}><Paragraphs values={COPY.counting} lang={lang} /></Note>
+        <details className={styles.ruleOverview}><summary>{c(COPY.bostonExercise)}</summary><BostonExplorer lang={lang} headingLevel="h4" /></details>
+        <details className={styles.ruleOverview}><summary>{c(COPY.pathologyDetails)}</summary><p className={styles.context}>{c(COPY.pathology)}</p></details>
+      </div>
+    </TeachingGroup>
+  </TeachingGroups>;
   if (id === 'klinik') return <>
     <p className={reference.lead}>{c(COPY.clinicalIntro)}</p>
     <TeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'}>
@@ -108,16 +126,6 @@ function ChapterContent({ id, lang }) {
         <ClinicalExplorer title={COPY.otherClinicalTitle} items={COPY.otherClinical} kind="other" lang={lang} showTitle={false} />
       </TeachingGroup>
     </TeachingGroups>
-  </>;
-  if (id === 'boston') return <>
-    <Paragraphs values={COPY.bostonIntro} lang={lang} lead />
-    <BostonExplorer lang={lang} />
-    <details className={styles.ruleOverview}><summary>{c(CAA_INTERACTION_COPY.ruleOverview)}</summary>
-    <div className={styles.criteria}><h3>{c(COPY.probable)}</h3><div className={styles.rule}><b><bdi>≥2</bdi></b><span>{c(COPY.hemorrhages)}</span></div><small>{c(COPY.or)}</small><div className={styles.rule}><b><bdi>1 + 1</bdi></b><span>{c(COPY.combination)}</span></div></div>
-    <div className={`${styles.criteria} ${styles.possible}`}><h3>{c(COPY.possible)}</h3><p>{c(COPY.possibleRule)}</p></div>
-    </details>
-    <Note lang={lang}><Paragraphs values={[COPY.counting]} lang={lang} /></Note>
-    <p className={styles.context}>{c(COPY.pathology)}</p>
   </>;
   if (id === 'differenzial') return <>
     <p className={reference.lead}>{c(COPY.ddIntro)}</p>
@@ -138,7 +146,7 @@ export default function CAAPage() {
     toggleRead,
     authError
   } = useLessonReadStatus('caa');
-  const [readSections, setReadSections] = usePersistedSectionProgress('caa', CAA_TRACKED_IDS, isRead);
+  const [readSections, setReadSections] = usePersistedSectionProgress('caa', CAA_TRACKED_IDS, isRead, migrateCAAProgress);
   const [openId, setOpenId] = useState('grundlagen');
   const [summaryOpen, setSummaryOpen] = useState(false);
   const scrollToSection = useLessonSectionScroll();
@@ -157,7 +165,7 @@ export default function CAAPage() {
       if (id === 'takehome') setSummaryOpen(true);
       else if (id) setOpenId(id);
       else setOpenId('grundlagen');
-      if (id) scrollToSection(id);
+      if (id) scrollToSection(window.location.hash === '#boston' ? 'caa-boston-heading' : id);
     };
     syncHash();
     window.addEventListener('hashchange', syncHash);
