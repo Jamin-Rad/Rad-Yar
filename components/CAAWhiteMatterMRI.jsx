@@ -9,7 +9,7 @@ const examples={
     alt:L('Axiale T2-MRT mit mehreren kleinen subkortikalen WMH im Multispot-Muster, durch weiße Pfeile markiert', 'Axial T2 MRI showing small subcortical WMH in a multispot pattern, indicated by white arrows', 'MRI محوری T2 با کانون‌های کوچک WMH زیرقشری در الگوی چندنقطه‌ای، مشخص‌شده با پیکان‌های سفید'),
     caption:L('Weiße Pfeile: einzelne subkortikale WMH im Multispot-Muster.', 'White arrows: individual subcortical WMH in the multispot pattern.', 'پیکان‌های سفید: کانون‌های WMH زیرقشری در الگوی چندنقطه‌ای.')},
 }
-const copy={zoom:L('Bild vergrößern', 'Enlarge image', 'بزرگ‌نمایی تصویر'),sequence:L('Original-MRT · T2 axial', 'Original MRI · axial T2', 'MRI اصلی · T2 محوری'),figure:L('Abb.', 'Fig.', 'شکل')}
+const copy={zoom:L('Bild vergrößern', 'Enlarge image', 'بزرگ‌نمایی تصویر'),sequence:L('MRT · T2 axial', 'MRI · axial T2', 'MRI · T2 محوری'),figure:L('Abb.', 'Fig.', 'شکل')}
 const pick=(value,lang)=>value[lang] || value.de
 export default function CAAWhiteMatterMRI({marker,lang}) {
   const item=examples[marker]
