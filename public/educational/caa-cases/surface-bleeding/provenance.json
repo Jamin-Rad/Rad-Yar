@@ -1,0 +1,12 @@
+{
+  "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11592298/",
+  "authors": "Ulf Jensen-Kondering, Katharina Heß, Alexander Neumann, Nils G Margraf",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "reviewed": "2026-10-14",
+  "note": "Original publication JPEGs retained unchanged. CSS presents figure 5 panel A and figure 4 panels A, B and C separately; source arrows and anatomy are retained. These are figure panels, not consecutive MRI slices.",
+  "images": [
+    {"file": "css.jpg", "figure": "5A", "sequence": "Axial venBOLD MRI, 3 T, 10 mm MinIP", "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/9943/11592298/1302809809ab/biomolecules-14-01459-g005.jpg", "sha256": "0e0e94ebaa8d9203006bab06d2db127c4b6a583cf5903dfb9bb60e87dc054c38"},
+    {"file": "csah.jpg", "figure": "4A–C", "sequence": "Non-contrast CT, axial FLAIR MRI, follow-up non-contrast CT", "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/9943/11592298/2794d1856a4a/biomolecules-14-01459-g004.jpg", "sha256": "c9e1002b77f154ae027e8f0dcf3f11c2c79afea6396051799fcfe2eefb7098f8"}
+  ]
+}

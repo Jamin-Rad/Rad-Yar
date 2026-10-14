@@ -90,9 +90,9 @@ function CaseSequence({ lang, caseData }) {
   }
 
   const labels = {
-    previous: pick(L('Vorherige Schicht', 'Previous slice', 'برش قبلی'), lang),
-    next: pick(L('Nächste Schicht', 'Next slice', 'برش بعدی'), lang),
-    slider: pick(L('Schicht auswählen', 'Select slice', 'انتخاب برش'), lang),
+    previous: pick(caseData.frameLabels ? L('Vorheriges Bild', 'Previous image', 'تصویر قبلی') : L('Vorherige Schicht', 'Previous slice', 'برش قبلی'), lang),
+    next: pick(caseData.frameLabels ? L('Nächstes Bild', 'Next image', 'تصویر بعدی') : L('Nächste Schicht', 'Next slice', 'برش بعدی'), lang),
+    slider: pick(caseData.frameLabels ? L('Bild auswählen', 'Select image', 'انتخاب تصویر') : L('Schicht auswählen', 'Select slice', 'انتخاب برش'), lang),
     loading: pick(L('Bildserie wird vorbereitet …', 'Preparing image series …', 'در حال آماده‌سازی سری تصاویر …'), lang),
     error: pick(L('Bildserie konnte nicht vollständig geladen werden.', 'The image series could not be fully loaded.', 'سری تصاویر کامل بارگذاری نشد.'), lang),
     retry: pick(L('Erneut laden', 'Retry loading', 'بارگذاری دوباره'), lang),
@@ -131,14 +131,14 @@ function CaseSequence({ lang, caseData }) {
 
   return <div className={styles.caseViewer}>
     <div ref={viewerRef} className={styles.caseViewport} style={caseData.aspectRatio || caseData.autoAspectRatio ? { aspectRatio } : undefined} data-no-zoom data-lesson-print-case-viewport role="group" aria-busy={!seriesReady && !loadFailed} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={() => { pointerStartRef.current = null }} aria-label={pick(alt, lang)}>
-      {frames.map((src, index) => <Image key={`${loadAttempt}-${src}`} src={src} alt={index === frameIndex ? `${pick(alt, lang)} · ${index + 1}/${frames.length}` : ''} aria-hidden={index !== frameIndex} style={{ visibility: index === frameIndex ? 'visible' : 'hidden' }} width={320} height={320} unoptimized loading="eager" draggable={false} onLoad={event => handleFrameLoad(event.currentTarget, index, loadAttempt)} onError={() => { if (loadAttemptRef.current === loadAttempt) setLoadFailed(true) }} />)}
-      <div className={styles.caseImageMeta}><strong dir="ltr" aria-live="polite">{String(frameIndex + 1).padStart(2, '0')} <i>/ {frames.length}</i></strong></div>
+      {frames.map((src, index) => <Image key={`${loadAttempt}-${index}-${src}`} src={src} alt={index === frameIndex ? `${pick(alt, lang)} · ${index + 1}/${frames.length}` : ''} aria-hidden={index !== frameIndex} style={{...caseData.frameStyles?.[index], visibility: index === frameIndex ? 'visible' : 'hidden' }} width={320} height={320} unoptimized loading="eager" draggable={false} onLoad={event => handleFrameLoad(event.currentTarget, index, loadAttempt)} onError={() => { if (loadAttemptRef.current === loadAttempt) setLoadFailed(true) }} />)}
+      <div className={styles.caseImageMeta}><strong dir={caseData.frameLabels ? undefined : 'ltr'} aria-live="polite">{caseData.frameLabels ? pick(caseData.frameLabels[frameIndex],lang) : <>{String(frameIndex + 1).padStart(2, '0')} <i>/ {frames.length}</i></>}</strong></div>
       {!seriesReady || loadFailed ? <small className={styles.caseViewportHint} dir={lang === 'fa' ? 'rtl' : 'ltr'} role="status">{loadFailed ? <>{labels.error} <button type="button" onClick={retrySeries}>{labels.retry}</button></> : labels.loading}</small> : null}
-      <div className={styles.caseControls} dir="ltr" onPointerDown={event => event.stopPropagation()} onPointerMove={event => event.stopPropagation()}>
+      {frames.length > 1 && <div className={styles.caseControls} dir="ltr" onPointerDown={event => event.stopPropagation()} onPointerMove={event => event.stopPropagation()}>
         <button type="button" onClick={() => moveFrame(-1)} disabled={!seriesReady || frameIndex === 0} aria-label={labels.previous} title={labels.previous}><Icon name="previous" /></button>
         <div className={styles.caseRange}><input type="range" disabled={!seriesReady} min="0" max={frames.length - 1} step="1" value={frameIndex} onChange={event => selectFrame(Number(event.target.value))} aria-label={labels.slider} aria-valuetext={`${frameIndex + 1} / ${frames.length}`} /></div>
         <button type="button" onClick={() => moveFrame(1)} disabled={!seriesReady || frameIndex === frames.length - 1} aria-label={labels.next} title={labels.next}><Icon name="next" /></button>
-      </div>
+      </div>}
     </div>
   </div>
 }

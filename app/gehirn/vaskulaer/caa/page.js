@@ -33,6 +33,7 @@ const ALIASES = {
   'take-home': 'takehome'
 };
 const resolveChapter = hash => CAA_CHAPTERS.some(s => s.id === hash) ? hash : ALIASES[hash];
+const bostonHref = lang => `/?ref=rechner&calc=boston-v2&lang=${lang}#referenzen`;
 function Icon({
   name
 }) {
@@ -114,7 +115,7 @@ function ChapterContent({ id, lang }) {
           <h4 id="caa-boston-counting-heading" className={`${styles.subheading} ${styles.diagnosticHeading}`}>{c(COPY.countingGuideTitle)}</h4>
           <BostonCountingGuide copy={COPY} lang={lang} />
         </section>
-        <Link className={styles.bostonCalculatorLink} href={lang === 'de' ? '/?ref=rechner&calc=boston-v2&lang=de#referenzen' : `/?ref=rechner&calc=boston-v2&lang=${lang}#referenzen`}>{c(L('Zum Boston-Rechner', 'Open Boston calculator', 'باز کردن محاسبه‌گر Boston'))}<Icon name="arrow" /></Link>
+        <Link className={styles.bostonCalculatorLink} href={bostonHref(lang)}>{c(L('Zum Boston-Rechner', 'Open Boston calculator', 'باز کردن محاسبه‌گر Boston'))}<Icon name="arrow" /></Link>
       </div>
     </TeachingGroup>
     <TeachingGroup id="caa-case-examples" title={c(COPY.caseExamples)}>
@@ -212,7 +213,7 @@ export default function CAAPage() {
     if (toggleRead()) setReadSections(isRead ? new Set() : new Set(CAA_TRACKED_IDS));
   };
   const activeIndex = Math.max(0, CAA_TRACKED_IDS.indexOf(openId));
-  const navItems = () => CAA_CHAPTERS.filter(s => !s.emphasis).map(section => <button type="button" key={section.id} className={openId === section.id ? reference.activeSideItem : ''} aria-current={openId === section.id ? 'location' : undefined} onClick={() => selectSection(section.id)}><span className={reference.sideIcon}><Icon name={section.icon} /></span><strong>{c(section.title)}{readSections.has(section.id) ? <span className={styles.readTick} aria-label={c(COPY.marked)}> ✓</span> : null}</strong></button>);
+  const navItems = () => <>{CAA_CHAPTERS.filter(s => !s.emphasis).map(section => <button type="button" key={section.id} className={openId === section.id ? reference.activeSideItem : ''} aria-current={openId === section.id ? 'location' : undefined} onClick={() => selectSection(section.id)}><span className={reference.sideIcon}><Icon name={section.icon} /></span><strong>{c(section.title)}{readSections.has(section.id) ? <span className={styles.readTick} aria-label={c(COPY.marked)}> ✓</span> : null}</strong></button>)}<Link className={styles.pathCalculatorLink} href={bostonHref(lang)}><span className={reference.sideIcon}><Icon name="chart" /></span><strong>{c(L('Boston-Rechner', 'Boston calculator', 'محاسبه‌گر Boston'))}</strong></Link></>;
   return <main className={`${reference.page} ${styles.page}`} data-lesson-section-divider="true" data-lesson-progress-managed="true" data-disable-lesson-explorer="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <header className={reference.header}><div className={reference.topline}><nav className={reference.breadcrumb} aria-label={c(L('Seitennavigation', 'Breadcrumb', 'مسیر صفحه'))}><Link href={withLang('/')}>RadYar</Link><span>/</span><Link href={withLang('/lernen/gehirn')}>{c(L('Kopf', 'Head', 'سر'))}</Link><span>/</span><strong>CAA</strong></nav><span className={reference.author}>Dr. Zia</span></div>
       <LessonHero title={c(COPY.title)} imageSrc="/educational/caa-hero-schematic.webp" imageAlt={c(L('Schema der CAA: oberflächliche Gefäße, lobäre Mikroblutungen und Amyloid in der Gefäßwand', 'CAA schematic: superficial vessels, lobar microbleeds and amyloid in the vessel wall', 'شماتیک CAA: عروق سطحی، میکروخونریزی‌های لوبار و رسوب آمیلوئید در دیواره رگ'))} lang={lang} />

@@ -4,7 +4,7 @@ const frames = (id, count, extension) => Array.from({ length: count }, (_, index
 export const CAA_CASE_COPY = {
   title: L('Originalfälle: vom Schema zum Bild', 'Original cases: from schematic to imaging', 'کیس‌های واقعی: از شماتیک به تصویر'),
   hint: L('Wähle einen Fall und blättere durch die Schichten. Achte auf Verteilung und Blutprodukte.', 'Select a case and scroll through the slices. Focus on distribution and blood products.', 'یک کیس را انتخاب کنید و برش‌ها را مرور کنید. به توزیع ضایعات و محصولات خون توجه کنید.'),
-  subset: L('Ausgewählte Originalschichten; die vollständige Untersuchung ist im verlinkten Fall verfügbar.', 'Selected original slices; the complete study is available in the linked case.', 'برش‌های منتخب اصلی؛ مطالعه کامل در لینک کیس در دسترس است.'),
+  subset: L('Ausgewählte Bilder; vollständige Fallserien und Abbildungen sind über die jeweiligen Quellen verlinkt.', 'Selected images; complete case series and figures are linked in the respective sources.', 'تصاویر منتخب؛ سری کامل کیس‌ها و شکل‌ها از طریق منابع مربوط در دسترس هستند.'),
 }
 
 export const CAA_RADIOPAEDIA_CASES = [
@@ -38,17 +38,36 @@ export const CAA_RADIOPAEDIA_CASES = [
     credit: 'Case courtesy of Mark Rodrigues, Radiopaedia.org · rID 58758 · CC BY-NC-SA 3.0',
   },
   {
-    id: 40475,
-    label: L('cSS / CMB · GRE', 'cSS / CMB · GRE', 'cSS / CMB · GRE'),
-    frames: frames(40475, 9, 'png'), initialFrame: 4, autoAspectRatio: true,
-    url: 'https://radiopaedia.org/cases/40475/studies/43048?lang=us',
-    title: L('Sulkale Blutresiduen von CMB trennen', 'Separate sulcal blood residues from CMB', 'تفکیک آثار خون شیاری از CMB'),
+    id: 'css-cortical',
+    label: L('cSS · MRT', 'cSS · MRI', 'cSS · MRI'),
+    frames: ['/educational/caa-cases/surface-bleeding/css.jpg'], initialFrame: 0, aspectRatio: 710/715,
+    frameStyles: [{objectFit:'cover',objectPosition:'center top'}],
+    frameLabels: [L('MRT · venBOLD axial', 'MRI · axial venBOLD', 'MRI · venBOLD محوری')],
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11592298/#biomolecules-14-01459-f005',
+    publication: 'Biomolecules 2024 · Fig. 5A',
+    title: L('Kortikale superfizielle Siderose erkennen', 'Recognise cortical superficial siderosis', 'شناسایی سیدروز سطحی قشری'),
     findings: [
-      L('Sulkale Hämosiderinablagerungen zur Konvexität hin verfolgen.', 'Follow sulcal haemosiderin towards the convexity.', 'رسوب هموسیدرین شیاری را به‌سمت کانوکسیتی دنبال کنید.'),
-      L('Zusätzlich punktförmige Mikroblutungen; postoperative Veränderungen beachten.', 'Additional punctate microbleeds; note postoperative changes.', 'میکروخونریزی‌های نقطه‌ای همراه؛ تغییرات پس از عمل را در نظر بگیرید.'),
+      L('Dunkle, geschwungene Hämosiderinsäume folgen den Sulcuswänden.', 'Dark, curved haemosiderin deposits follow the sulcal walls.', 'رسوبات تیره و منحنی هموسیدرین در امتداد دیواره شیارها دیده می‌شوند.'),
+      L('Die weißen Pfeilspitzen markieren die betroffenen Rindenoberflächen.', 'White arrowheads mark the affected cortical surfaces.', 'نوک پیکان‌های سفید، سطوح قشری درگیر را مشخص می‌کنند.'),
     ],
-    interpretation: L('cSS folgt den Sulci, CMB sind punktförmig. Große postoperative Blutresiduen und Katheterartefakte nicht als zusätzliche CMB zählen.', 'cSS follows sulci; CMB are punctate. Do not count large postoperative blood residues or catheter artefacts as additional CMB.', 'cSS مسیر شیارها را دنبال می‌کند و CMB نقطه‌ای است. آثار بزرگ خون پس از عمل و آرتیفکت کاتتر را CMB اضافی نشمارید.'),
-    alt: L('Axiale GRE bei multiplen Blutungen und kortikaler Siderose, Radiopaedia rID 40475', 'Axial GRE with multiple haemorrhages and cortical siderosis, Radiopaedia rID 40475', 'GRE آگزیال در خونریزی‌های متعدد و سیدروز قشری، Radiopaedia rID 40475'),
-    credit: 'Case courtesy of RMH Neuropathology, Radiopaedia.org · rID 40475 · CC BY-NC-SA 3.0',
+    alt: L('Kortikale superfizielle Siderose mit weißen Pfeilspitzen, Abbildung 5A', 'Cortical superficial siderosis marked by white arrowheads, Figure 5A', 'سیدروز سطحی قشری با نوک پیکان‌های سفید، شکل 5A'),
+    credit: 'Jensen-Kondering et al.',
+  },
+  {
+    id: 'csah-ct-flair',
+    label: L('cSAH · CT / FLAIR', 'cSAH · CT / FLAIR', 'cSAH · CT / FLAIR'),
+    frames: Array(3).fill('/educational/caa-cases/surface-bleeding/csah.jpg'), initialFrame: 0, aspectRatio: 245/268,
+    frameStyles: ['left center','center center','right center'].map(objectPosition=>({objectFit:'cover',objectPosition})),
+    frameLabels: [L('A · CT nativ', 'A · Non-contrast CT', 'A · CT بدون کنتراست'), L('B · MRT FLAIR', 'B · FLAIR MRI', 'B · MRI FLAIR'), L('C · CT im Verlauf', 'C · Follow-up CT', 'C · CT پیگیری')],
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11592298/#biomolecules-14-01459-f004',
+    publication: 'Biomolecules 2024 · Fig. 4A–C',
+    title: L('Konvexitäts-SAH in CT und FLAIR erkennen', 'Recognise convexity SAH on CT and FLAIR', 'شناسایی SAH تحدب در CT و FLAIR'),
+    findings: [
+      L('Rechts frontal liegt Blut in einem oberflächlichen Sulcus; der weiße Pfeil zeigt die Stelle.', 'Blood occupies a superficial right frontal sulcus; the white arrow marks the site.', 'خون در یک شیار سطحی فرونتال راست دیده می‌شود؛ پیکان سفید محل آن را نشان می‌دهد.'),
+      L('CT: hyperdenses sulkales Blut. FLAIR: helles Signal im selben Sulcus.', 'CT shows hyperdense sulcal blood. FLAIR shows high signal in the same sulcus.', 'CT: خون شیاری پرچگال. FLAIR: سیگنال روشن در همان شیار.'),
+      L('In der CT-Verlaufskontrolle ist das Blut resorbiert.', 'On follow-up CT, the blood has cleared.', 'در CT پیگیری، خون جذب شده است.'),
+    ],
+    alt: L('Rechts-frontale Konvexitäts-SAH: CT, FLAIR und CT-Verlauf, Abbildung 4', 'Right frontal convexity SAH: CT, FLAIR and follow-up CT, Figure 4', 'SAH تحدب فرونتال راست: CT، FLAIR و CT پیگیری، شکل 4'),
+    credit: 'Jensen-Kondering et al.',
   },
 ]
