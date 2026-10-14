@@ -16,7 +16,7 @@ function visibleViewport() {
   return { left: viewport?.offsetLeft || 0, top: viewport?.offsetTop || 0, width: viewport?.width || window.innerWidth, height: viewport?.height || window.innerHeight }
 }
 
-export default function LehrRecordingTools() {
+export default function LehrRecordingTools({ ensureFullscreen }) {
   const [cameraOn, setCameraOn] = useState(false)
   const [pending, setPending] = useState(false)
   const [error, setError] = useState('')
@@ -73,6 +73,7 @@ export default function LehrRecordingTools() {
 
   const startCamera = async () => {
     if (pending || streamRef.current) return
+    ensureFullscreen?.()
     setError('')
     if (!window.isSecureContext || !navigator.mediaDevices?.getUserMedia) {
       setError('Kamerazugriff benötigt HTTPS und einen unterstützten Browser. Öffne RadYar direkt in Safari.')
@@ -107,6 +108,9 @@ export default function LehrRecordingTools() {
       }
       setPaused(false)
       setCameraOn(true)
+      // Safari can drop fullscreen while its camera permission sheet is visible.
+      // Try immediately, then the parent also retries on the next trusted pointer gesture.
+      ensureFullscreen?.()
     } catch (failure) {
       if (mountedRef.current && request === requestRef.current) setError(cameraErrorMessage(failure))
     } finally {
@@ -170,7 +174,7 @@ export default function LehrRecordingTools() {
   }
 
   return <>
-    <button type="button" className={`${styles.control} ${cameraOn ? styles.selected : ''}`} aria-label={cameraOn ? 'Frontkamera ausschalten' : pending ? 'Kamera wird gestartet' : 'Frontkamera einschalten'} title={cameraOn ? 'Frontkamera ausschalten' : 'Frontkamera einschalten'} aria-pressed={cameraOn} aria-busy={pending} onClick={() => cameraOn ? stopCamera() : startCamera()} disabled={pending}>
+    <button type="button" className={`${styles.control} ${cameraOn ? styles.selected : ''}`} aria-label={cameraOn ? 'Frontkamera ausschalten' : pending ? 'Kamera wird gestartet' : 'Frontkamera einschalten'} title={cameraOn ? 'Frontkamera ausschalten' : 'Frontkamera einschalten'} aria-pressed={cameraOn} aria-busy={pending} onPointerDown={() => ensureFullscreen?.()} onClick={() => cameraOn ? stopCamera() : startCamera()} disabled={pending}>
       <Icon name="camera" /><span>{pending ? 'Kamera …' : 'Frontkamera'}</span>
     </button>
     {(cameraOn || error) && createPortal(<div className={styles.overlays} data-lehr-ui dir="ltr">
