@@ -6,6 +6,8 @@ import { getBadenWuerttembergCalendarEntriesInRange } from '@/utils/germanPublic
 import { parseIcsEvents } from '@/utils/icsImport'
 import CalendarReminders from './CalendarReminders'
 import CalendarDay from './CalendarDay'
+import EventNoteFields from './EventNoteFields'
+import { splitEventNote, combineEventNote } from '@/utils/eventLocation'
 import styles from './page.module.css'
 
 const STORAGE_KEY = 'andarun_todos_fallback_v1'
@@ -224,6 +226,7 @@ function emptyForm() {
   return {
     title: '',
     note: '',
+    location: '',
     lane: laneFromDeadline(deadline),
     deadline,
     itemType: 'todo',
@@ -238,6 +241,7 @@ function eventFormForDate(deadline = todayValue()) {
   return {
     title: '',
     note: '',
+    location: '',
     lane: laneFromDeadline(deadline),
     deadline,
     itemType: 'event',
@@ -249,9 +253,10 @@ function eventFormForDate(deadline = todayValue()) {
 }
 
 function formFromTodo(todo) {
+  const fields = todo?.itemType === 'event' ? splitEventNote(todo.note) : { note: todo?.note || '', location: '' }
   return {
     title: todo?.title || '',
-    note: todo?.note || '',
+    ...fields,
     lane: todo?.lane || laneFromDeadline(todo?.deadline),
     deadline: todo?.deadline || '',
     itemType: todo?.itemType || 'todo',
@@ -447,7 +452,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
     const optimistic = {
       id: makeId(),
       title,
-      note: form.note.trim(),
+      note: form.itemType === 'event' ? combineEventNote(form.location, form.note) : form.note.trim(),
       lane: form.lane,
       deadline: form.deadline,
       itemType: form.itemType,
@@ -472,7 +477,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
       const response = await fetch(apiBase, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, note: optimistic.note }),
       })
       if (!response.ok) throw new Error('Could not save online.')
       const payload = await response.json()
@@ -498,7 +503,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
     const optimistic = {
       id: makeId(),
       title,
-      note: newEventForm.note.trim(),
+      note: combineEventNote(newEventForm.location, newEventForm.note),
       lane: laneFromDeadline(newEventForm.deadline),
       deadline: newEventForm.deadline,
       itemType: 'event',
@@ -527,7 +532,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
         body: JSON.stringify({
           ...newEventForm,
           title,
-          note: newEventForm.note.trim(),
+          note: optimistic.note,
           lane: laneFromDeadline(newEventForm.deadline),
           itemType: 'event',
           eventTime: newEventForm.allDay ? '' : newEventForm.eventTime,
@@ -735,7 +740,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
 
     const patch = {
       title,
-      note: detailForm.note.trim(),
+      note: detailForm.itemType === 'event' ? combineEventNote(detailForm.location, detailForm.note) : detailForm.note.trim(),
       deadline: detailForm.deadline,
       lane: laneFromDeadline(detailForm.deadline),
       itemType: detailForm.itemType,
@@ -827,10 +832,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
               <input type="date" value={form.endDate || form.deadline} min={form.deadline} onChange={event => setForm(prev => ({ ...prev, endDate: event.target.value }))} />
             </label>
           )}
-          <label>
-            Notiz
-            <input value={form.note} onChange={event => setForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
-          </label>
+          <EventNoteFields form={form} setForm={setForm} />
           <div className={styles.formActions}>
             {view === 'all' && <label className={`${styles.eventToggle} ${form.itemType === 'event' ? styles.eventToggleActive : ''}`}>
               <input
@@ -1155,10 +1157,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                 </label>
               </div>
 
-              <label>
-                Notiz
-                <input value={newEventForm.note} onChange={event => setNewEventForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
-              </label>
+              <EventNoteFields form={newEventForm} setForm={setNewEventForm} />
 
               <div className={styles.newEventActions}>
                 <button className={styles.detailGhostBtn} type="button" onClick={closeNewEvent}>Abbrechen</button>
@@ -1247,10 +1246,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                 </>
               )}
 
-              <label>
-                Notiz
-                <input value={detailForm.note} onChange={event => setDetailForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
-              </label>
+              <EventNoteFields form={detailForm} setForm={setDetailForm} />
 
               <div className={`${styles.detailActions} ${detailForm.itemType === 'event' ? styles.detailActionsEvent : ''}`}>
                 <button className={styles.detailDeleteBtn} type="button" onClick={deleteDetail}>Löschen</button>

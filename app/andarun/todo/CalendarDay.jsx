@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { splitEventNote } from '@/utils/eventLocation'
 import styles from './page.module.css'
 
 export default function CalendarDay({ day, events, markers, duty, formatEventMeta, onClose, onAdd, onEdit, onToggle }) {
@@ -43,14 +44,20 @@ export default function CalendarDay({ day, events, markers, duty, formatEventMet
             {markers.map(marker => <span key={marker.id} className={marker.itemType === 'schoolHoliday' ? styles.monthSchoolHoliday : styles.monthHoliday}>{marker.title}</span>)}
           </div>}
           <div className={styles.dayList}>
-            {events.length ? events.map(event => <div key={event.id} className={`${styles.dayEvent} ${event.cancelled ? styles.dayCancelled : ''}`}>
+            {events.length ? events.map(event => {
+              const fields = splitEventNote(event.note)
+              return <div key={event.id} className={`${styles.dayEvent} ${event.cancelled ? styles.dayCancelled : ''}`}>
               <button type="button" className={styles.dayEventDetails} onClick={() => onEdit(event)} aria-label={`${event.title}: Termin bearbeiten`}>
                 {!event.cancelled && <span className={styles.dayTime}>{formatEventMeta(event)}</span>}
                 <strong>{event.title}</strong>
-                {!event.cancelled && event.note && <span className={styles.dayNote}>{event.note}</span>}
+                {!event.cancelled && event.note && <>
+                  {fields.location && <span className={styles.dayLocation}>Ort: {fields.location}</span>}
+                  {fields.note && <span className={styles.dayNote}>{fields.note}</span>}
+                </>}
               </button>
               {!event.cancelled && <button type="button" className={`${styles.eventCheck} ${event.done ? styles.eventCheckDone : ''}`} aria-label={`${event.title}: ${event.done ? 'Wieder öffnen' : 'Als erledigt markieren'}`} aria-pressed={Boolean(event.done)} onClick={() => onToggle(event)}>{event.done ? '✓' : ''}</button>}
-            </div>) : <p className={styles.dayEmpty}>Keine Termine an diesem Tag.</p>}
+            </div>
+            }) : <p className={styles.dayEmpty}>Keine Termine an diesem Tag.</p>}
           </div>
         </div>
         <footer className={styles.dayFooter}><button type="button" className={styles.dayAdd} onClick={() => onAdd(day)}>+ Neuer Termin</button></footer>
