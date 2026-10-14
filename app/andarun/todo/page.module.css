@@ -2357,7 +2357,7 @@
 .dayEmpty { padding: 32px 12px; text-align: center; opacity: .65; }
 .dayFooter { flex-shrink: 0; padding: 16px 24px; border-top: 1px solid #94a3b82e; }
 .dayAdd { width: 100%; min-height: 48px; border: 0; border-radius: 12px; background: #5ee6c0; color: #082b25; font-weight: 750; font-size: 16px; cursor: pointer; }
-.dayEvent .eventCheck { flex-shrink: 0; width: 40px; height: 40px; }
+.dayEvent .eventCheck { position: relative; top: auto; right: auto; flex-shrink: 0; width: 44px; height: 44px; }
 .dayEventDetails:focus-visible, .dayAdd:focus-visible { outline: 2px solid #5ee6c0; outline-offset: 4px; }
 .lightPage .dayTime { color: #087457; }
 @media (max-width: 600px) {
