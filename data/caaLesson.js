@@ -209,7 +209,7 @@ export const CAA_SOURCES = [
   { href: 'https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2025.1632252/full', label: 'CAA narrative review · Epidemiology and sex distribution, 2025' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3079153/', label: 'Yamada · CAA systematic review: estimated ICH contribution, 2011' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9389452/', label: 'Charidimou et al. · Boston criteria v2.0 · Lancet Neurology, 2022' },
-  { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11592298/', label: 'Neuroradiological findings in CAA · Imaging review, 2024' },
+  { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11592298/', label: 'Jensen-Kondering et al. · CAA imaging review, 2024 · MRT-Abbildungen 6–7 (CC BY 4.0)' },
   { href: 'https://alz-journals.onlinelibrary.wiley.com/doi/10.1002/alz.12366', label: 'Jäkel et al. · CAA prevalence: systematic review & meta-analysis, 2022' },
   { href: 'https://pubmed.ncbi.nlm.nih.gov/34016709/', label: 'Smith et al. · CAA-related transient focal neurological episodes, 2021' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5660938/', label: 'Carmona-Iragui et al. · CAA in Down syndrome and Alzheimer disease, 2017' },

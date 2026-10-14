@@ -1,0 +1,27 @@
+{
+  "publication": "Jensen-Kondering U, Heß K, Neumann A, Margraf NG. Biomolecules. 2024;14(11):1459.",
+  "doi": "10.3390/biom14111459",
+  "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11592298/",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "None. Original JPEG files and author annotations retained; display scaling only.",
+  "sequence": "Axial T2-weighted, 3 T, TE 80 ms, TR 5500 ms, 2 mm slices.",
+  "images": [
+    {
+      "file": "pvs-t2.jpg",
+      "figure": 6,
+      "sourceUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/9943/11592298/6e0737e8b112/biomolecules-14-01459-g006.jpg",
+      "width": 764,
+      "height": 690,
+      "sha256": "fa25fcea09c1fc3a8b71dbb935a7822607e0c13cbcb64f2ea02cacaef8a341f9"
+    },
+    {
+      "file": "wmh-multispot-t2.jpg",
+      "figure": 7,
+      "sourceUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/9943/11592298/11b57e346256/biomolecules-14-01459-g007.jpg",
+      "width": 727,
+      "height": 919,
+      "sha256": "828c3fd9771bb956509c48e366c8c74a62f13cd280210d6ad9711e3fe399a5cb"
+    }
+  ]
+}
