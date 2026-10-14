@@ -138,10 +138,6 @@ function ChapterContent({ id, lang }) {
     <p className={reference.lead}>{c(COPY.ddIntro)}</p>
     <DifferentialComparison rows={COPY.ddRows} lang={lang} />
     <Note warning lang={lang}><Paragraphs values={COPY.mixedWarning} lang={lang} /></Note>
-    <section className={styles.sequenceOverview} aria-labelledby="caa-dd-clues">
-      <h3 id="caa-dd-clues" className={styles.diagnosticHeading}>{c(COPY.redFlagsTitle)}</h3>
-      <TeachingList items={COPY.redFlags} lang={lang} />
-    </section>
   </>;
   return <LessonTakeHome points={COPY.takehome} lang={lang} idPrefix="caa-take-home" />;
 }

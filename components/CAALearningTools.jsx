@@ -71,6 +71,12 @@ export function BrainFigure({ pattern, caption, lang, lesionCount }) {
         {[[104,272],[122,289],[139,255],[134,315]].map(([cx,cy],index)=><circle key={index} cx={cx} cy={cy} r="7" fill="#c33e53"/>)}
       </g>}
       {pattern === 'rcvs' && <path d={sulci[2]} fill="none" stroke="#df4557" strokeWidth="7" strokeLinecap="round"/>}
+      {pattern === 'venous-thrombosis' && <g data-lesion="venous-thrombosis" fill="none" strokeLinecap="round">
+        <path d="M200 32v118" stroke="#3988ad" strokeWidth="13"/>
+        <path d="M200 48v48" stroke="#512454" strokeWidth="11"/>
+        <path d="M200 109Q143 106 111 77M200 132Q267 130 288 89" stroke="#3988ad" strokeWidth="5"/>
+        <path d={sulci[2]} stroke="#df4557" strokeWidth="7"/>
+      </g>}
       {['csah', 'css'].includes(pattern) && sulci.map((d, index) => <path key={index} d={d} fill="none" stroke={pattern === 'csah' ? '#df4557' : '#512454'} strokeWidth={pattern === 'csah' ? 7 : 4} strokeLinecap="round" />)}
     </svg>
     <figcaption>{pick(caption || COPY.schematic, lang)}</figcaption>

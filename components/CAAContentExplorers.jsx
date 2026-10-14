@@ -100,8 +100,8 @@ export function ClinicalExplorer({ title, items, kind, lang, showTitle = true })
   </div>
 }
 
-function DiagnosisPane({ row, pattern, lang, caption, reference, id }) {
-  return <section className={styles.diagnosisPane + (reference?' '+styles.referencePane:'')} aria-labelledby={id}>
+function DiagnosisPane({ row, pattern, lang, caption, id }) {
+  return <section className={styles.diagnosisPane} aria-labelledby={id}>
     <h4 id={id}>{pick(row[0],lang)}</h4>
     {Array.isArray(pattern) ? <div className={styles.pairedFigures}>{pattern.map((item,index)=><BrainFigure key={item} pattern={item} caption={caption[index]} lang={lang}/>)}</div> : <BrainFigure pattern={pattern} caption={caption} lang={lang}/>}
     <dl className={shared.facts}>
@@ -114,16 +114,24 @@ function DiagnosisPane({ row, pattern, lang, caption, reference, id }) {
 export function DifferentialComparison({ rows, lang }) {
   const [diagnosis,setDiagnosis]=useState(0)
   const id='caa-dd-'+useId().replaceAll(':','')
-  return <div className={shared.panel} data-learning-tool="differentials">
-    <div className={styles.comparisonChoices}>
-      <Tabs items={COPY.ddTabs} value={diagnosis} onChange={setDiagnosis} id={id} label={COPY.compareWith} lang={lang}/>
+  const selectWithKeyboard = (event,index) => {
+    let next
+    if (event.key==='ArrowDown') next=(index+1)%COPY.ddTabs.length
+    else if (event.key==='ArrowUp') next=(index-1+COPY.ddTabs.length)%COPY.ddTabs.length
+    else if (event.key==='Home') next=0
+    else if (event.key==='End') next=COPY.ddTabs.length-1
+    else return
+    event.preventDefault()
+    setDiagnosis(next)
+    event.currentTarget.parentElement.children[next].focus()
+  }
+  return <div className={shared.panel+' '+styles.differentialLayout} data-learning-tool="differentials">
+    <div className={styles.comparisonChoices} role="tablist" aria-orientation="vertical" aria-label={pick(COPY.compareWith,lang)}>
+      {COPY.ddTabs.map((item,index)=><button key={index} type="button" role="tab" id={id+'-tab-'+index} aria-selected={diagnosis===index} aria-controls={id+'-panel'} tabIndex={diagnosis===index?0:-1} onClick={()=>setDiagnosis(index)} onKeyDown={event=>selectWithKeyboard(event,index)}>{pick(item,lang)}</button>)}
     </div>
-    <div id={id+'-panel'} role="tabpanel" aria-labelledby={id+'-tab-'+diagnosis} tabIndex={0}>
+    <div className={styles.differentialDetail} id={id+'-panel'} role="tabpanel" aria-labelledby={id+'-tab-'+diagnosis} tabIndex={0}>
       <p className={styles.keyDifference}>{pick(COPY.ddCues[diagnosis],lang)}</p>
-      <div className={styles.comparisonGrid} data-comparison={diagnosis+1}>
-        <DiagnosisPane row={rows[0]} pattern="lobar" caption={COPY.ddCaptions[0]} lang={lang} reference id={id+'-reference'}/>
-        <DiagnosisPane row={rows[diagnosis+1]} pattern={['deep','avm','cavernoma','tumour','rcvs',['contusion','haemorrhagic-infarct']][diagnosis]} caption={COPY.ddCaptions[diagnosis+1]} lang={lang} id={id+'-selected'}/>
-      </div>
+      <DiagnosisPane row={rows[diagnosis+1]} pattern={['deep','avm','cavernoma','tumour','rcvs',['contusion','haemorrhagic-infarct'],'venous-thrombosis'][diagnosis]} caption={COPY.ddCaptions[diagnosis+1]} lang={lang} id={id+'-selected'}/>
     </div>
   </div>
 }

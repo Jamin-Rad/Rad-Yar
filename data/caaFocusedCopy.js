@@ -27,9 +27,9 @@ export const CAA_FOCUSED_COPY = {
   irritation: L('Kortikale Reizung', 'Cortical irritation', 'تحریک قشری'),
   headacheImageAlt: L('Schema: Kopf mit markiertem Schmerzbereich', 'Schematic: head with a highlighted pain area', 'شماتیک سر با مشخص کردن محل درد'),
   nonspecific: L('Unspezifisch', 'Nonspecific', 'غیراختصاصی'),
-  ddTabs: [L('Hypertensive Arteriolosklerose', 'Hypertensive arteriolosclerosis', 'آرتریولواسکلروز فشار خونی'), L('AVM', 'AVM', 'AVM'), L('Kavernom', 'Cavernous malformation', 'کاورنوم'), L('Blutender Tumor', 'Haemorrhagic tumour', 'تومور خونریزی‌دهنده'), 'RCVS', L('Trauma / Infarkt', 'Trauma / infarction', 'تروما / انفارکت')],
+  ddTabs: [L('Hypertensive Arteriolosklerose', 'Hypertensive arteriolosclerosis', 'آرتریولواسکلروز فشار خونی'), L('AVM', 'AVM', 'AVM'), L('Kavernom', 'Cavernous malformation', 'کاورنوم'), L('Blutender Tumor', 'Haemorrhagic tumour', 'تومور خونریزی‌دهنده'), 'RCVS', L('Trauma / Infarkt', 'Trauma / infarction', 'تروما / انفارکت'), L("Zerebrale Venenthrombose", "Cerebral venous thrombosis", "ترومبوز وریدی مغز")],
   compareWith: L('Differenzialdiagnose auswählen', 'Select a differential diagnosis', 'انتخاب تشخیص افتراقی'),
-  distribution: L('Typische MRT-Befunde', 'Typical MRI findings', 'یافته‌های معمول MRI'),
+  distribution: L("Typische Befunde", "Typical findings", "یافته‌های معمول"),
   distinction: L('Worauf achten?', 'What to look for', 'به چه نکاتی توجه کنیم؟'),
   ddCaptions: [
     L('Schema: strikt lobäre Mikroblutungen', 'Schematic: strictly lobar microbleeds', 'شماتیک: میکروخونریزی‌های صرفاً لوبار'),
@@ -39,6 +39,7 @@ export const CAA_FOCUSED_COPY = {
     L('Schema: blutende Raumforderungen mit umgebendem Ödem', 'Schematic: haemorrhagic masses with surrounding oedema', 'شماتیک: توده‌های خونریزی‌دهنده با ادم اطراف'),
     L('Schema: segmentale Gefäßverengungen und mögliche cSAH', 'Schematic: segmental vessel narrowing and possible cSAH', 'شماتیک: تنگی‌های قطعه‌ای عروق و cSAH احتمالی'),
     [L('Schema: hämorrhagische Kontusion', 'Schematic: haemorrhagic contusion', 'شماتیک: کوفتگی خونریزی‌دهنده'), L('Schema: Einblutung in ein Infarktareal', 'Schematic: haemorrhage within an infarct', 'شماتیک: خونریزی در ناحیه انفارکت')],
+    L('Schema: thrombosierter Sinus mit oberflächlicher Blutung', 'Schematic: thrombosed sinus with superficial haemorrhage', 'شماتیک: سینوس ترومبوزه همراه خونریزی سطحی'),
   ],
   ddCues: [
     L('Entscheidend ist die Lage: lobär bei CAA, tief bei hypertensiver Arteriolosklerose.', 'Location is key: lobar in CAA, deep in hypertensive arteriolosclerosis.', 'محل ضایعات کلیدی است: لوبار در CAA و عمقی در آرتریولواسکلروز فشار خونی.'),
@@ -46,6 +47,7 @@ export const CAA_FOCUSED_COPY = {
     L('Ein „Popcorn“-Muster mit Hämosiderinsaum ist typisch für ein Kavernom.', 'A popcorn appearance with a haemosiderin rim is typical of a cavernous malformation.', 'نمای پاپ‌کورن با حاشیه هموسیدرین از یافته‌های معمول کاورنوم است.'),
     L('Eine Raumforderung mit Ödem und Kontrastmittelaufnahme lässt an einen blutenden Tumor denken.', 'A mass with oedema and contrast enhancement raises suspicion of a haemorrhagic tumour.', 'توده همراه ادم و جذب کنتراست، شک به تومور خونریزی‌دهنده را مطرح می‌کند.'),
     L('Wiederholte Donnerschlagkopfschmerzen und segmentale Gefäßverengungen sprechen für RCVS.', 'Recurrent thunderclap headaches and segmental vessel narrowing suggest RCVS.', 'سردردهای رعدآسای تکرارشونده و تنگی قطعه‌ای عروق به نفع RCVS هستند.'),
-    L('Unfallanamnese oder ein zugrunde liegendes Infarktareal können die Blutung erklären.', 'A history of trauma or an underlying infarct may explain the haemorrhage.', 'سابقه تروما یا ناحیه انفارکت زمینه‌ای می‌تواند خونریزی را توضیح دهد.'),
+    L("Trauma und hämorrhagischer Infarkt sind mögliche Ursachen einer lobären Blutung.", "Trauma and haemorrhagic infarction are possible causes of lobar haemorrhage.", "تروما و انفارکت هموراژیک از علل ممکن خونریزی لوبار هستند."),
+    L("Bei Konvexitäts-SAH auch die kortikalen Venen und venösen Sinus prüfen.", "In convexity SAH, also assess the cortical veins and dural venous sinuses.", "در SAH تحدب، وریدهای قشری و سینوس‌های وریدی را هم بررسی کنید."),
   ],
 }
