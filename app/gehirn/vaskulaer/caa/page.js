@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useLessonSectionScroll } from '@/hooks/useLessonSectionScroll';
 import CAACaseGallery from '@/components/CAACaseGallery';
 import LessonTakeHome from '@/components/LessonTakeHome';
-import { VesselExplorer, MarkerAtlas, WhiteMatterMarkers, WhiteMatterRules, BostonCategories, PatternExplorer } from '@/components/CAALearningTools';
+import { VesselExplorer, MarkerAtlas, WhiteMatterMarkers, BostonCountingGuide, BostonCategories, PatternExplorer } from '@/components/CAALearningTools';
 import { AssociationExplorer, BackgroundExplorer, ClinicalExplorer, DifferentialComparison } from '@/components/CAAContentExplorers';
 import { CAA_FOCUSED_COPY } from '@/data/caaFocusedCopy';
 import { CAA_INTERACTION_COPY } from '@/data/caaInteractions';
@@ -101,28 +101,19 @@ function ChapterContent({ id, lang }) {
     <TeachingGroup id="caa-boston" title={c(COPY.bostonTitle)} tone="secondary">
       <div className={styles.diagnosticBody}>
         <Paragraphs values={COPY.bostonIntro} lang={lang} />
-        <section aria-labelledby="caa-boston-prerequisites-heading">
+        <section className={styles.sequenceOverview} aria-labelledby="caa-boston-prerequisites-heading">
           <h4 id="caa-boston-prerequisites-heading" className={`${styles.subheading} ${styles.diagnosticHeading}`}>{c(COPY.eligibilityTitle)}</h4>
           <TeachingList items={COPY.eligibility} lang={lang} />
           <Note warning lang={lang}><Paragraphs values={[COPY.deepWarning]} lang={lang} /></Note>
         </section>
-        <section aria-labelledby="caa-boston-categories-heading">
+        <section className={styles.sequenceOverview} aria-labelledby="caa-boston-categories-heading">
           <h4 id="caa-boston-categories-heading" className={`${styles.subheading} ${styles.diagnosticHeading}`}>{c(COPY.categoryTitle)}</h4>
           <BostonCategories copy={COPY} lang={lang} />
           <Note warning lang={lang}><Paragraphs values={COPY.pathology} lang={lang} /></Note>
         </section>
-        <section aria-labelledby="caa-boston-counting-heading">
+        <section className={styles.sequenceOverview} aria-labelledby="caa-boston-counting-heading">
           <h4 id="caa-boston-counting-heading" className={`${styles.subheading} ${styles.diagnosticHeading}`}>{c(COPY.countingGuideTitle)}</h4>
-          <div className={styles.countingGuide}>
-            <section className={styles.countingSection} aria-labelledby="caa-bleeding-guide-heading">
-              <h5 id="caa-bleeding-guide-heading">{c(COPY.bleedingGuideTitle)}</h5>
-              <Paragraphs values={COPY.counting} lang={lang} />
-            </section>
-            <section className={styles.countingSection} aria-labelledby="caa-wm-guide-heading">
-              <h5 id="caa-wm-guide-heading">{c(COPY.whiteMatterGuideTitle)}</h5>
-              <WhiteMatterRules items={COPY.wm} lang={lang} attention={COPY.attention} />
-            </section>
-          </div>
+          <BostonCountingGuide copy={COPY} lang={lang} />
         </section>
         <Link className={styles.bostonCalculatorLink} href={lang === 'de' ? '/?ref=rechner&calc=boston-v2&lang=de#referenzen' : `/?ref=rechner&calc=boston-v2&lang=${lang}#referenzen`}>{c(L('Zum Boston-Rechner', 'Open Boston calculator', 'باز کردن محاسبه‌گر Boston'))}<Icon name="arrow" /></Link>
       </div>

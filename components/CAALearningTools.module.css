@@ -43,11 +43,13 @@
 .wmCopy h5 { margin: 0 0 12px; color: var(--ink); font: 800 23px/1.45 var(--font-newsreader,Georgia,serif); }
 .wmCopy > p { margin: 0 0 12px; color: var(--body); font-size: 15px; line-height: 1.8; }
 .wmCopy > p:last-child { margin-bottom: 0; }
-.wmRules details { margin-block: 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
-.wmRules summary { padding: 14px 18px; color: var(--ink); font-size: 16px; font-weight: 800; line-height: 1.6; cursor: pointer; }
-.wmRules summary::marker { color: var(--teal-700); }
-.wmRules summary:focus-visible { outline: 2px solid var(--teal-700); outline-offset: 3px; }
-.wmRuleBody { padding: 0 18px 18px; }
+.wmRule { padding-block: 18px; }
+.wmRule + .wmRule { margin-top: 16px; border-top: 1px solid var(--line); }
+.wmRule h5 { margin: 0 0 14px; color: var(--ink); font: 800 22px/1.45 var(--font-newsreader,Georgia,serif); }
+.countingGuide { --caa-outline: #8e679b; --caa-selected: #6a3573; }
+.countingPanel { margin-top: 20px; }
+.countingPanel > p { margin: 0 0 16px; color: var(--body); font-size: 15px; line-height: 1.8; }
+.countingPanel > p:last-child { margin-bottom: 0; }
 .wmFacts { margin: 0 0 14px; border-block: 1px solid var(--line); }
 .wmFacts > div { display: grid; grid-template-columns: 110px minmax(0,1fr); gap: 18px; padding-block: 10px; }
 .wmFacts dt { color: var(--ink); font-size: 14px; font-weight: 800; line-height: 1.8; }
@@ -138,8 +140,6 @@
   .categoryRoute { grid-template-columns: 78px minmax(0,1fr); gap: 12px; padding: 14px; }
   .categoryRoute strong { font-size: 25px; }
   .categoryRoute p { font-size: 15px; }
-  .wmRules summary { padding: 12px 14px; }
-  .wmRuleBody { padding: 0 14px 14px; }
 }
 @media (prefers-reduced-motion:reduce) { .panel button { transition: none; } }
 @media print { .panel,.wmRows { break-inside: avoid; } }

@@ -128,16 +128,25 @@ export function WhiteMatterMarkers({ items, lang, title }) {
   </div>
 }
 
-export function WhiteMatterRules({ items, lang, attention }) {
+function WhiteMatterRules({ items, lang, attention }) {
   return <div className={styles.wmRules} data-learning-tool="wm-rules">{items.map((item, index) =>
-    <details key={index} open={index === 0}>
-      <summary>{pick(item.title, lang)}</summary>
-      <div className={styles.wmRuleBody}>
-        <dl className={styles.wmFacts}>{item.facts.map((fact, i) => <div key={i}><dt>{pick(fact.label, lang)}</dt><dd><bdi>{pick(fact.text, lang)}</bdi></dd></div>)}</dl>
-        <p className={styles.wmNote}><strong>{pick(attention, lang)}:</strong> {pick(item.note, lang)}</p>
-      </div>
-    </details>
+    <section key={index} className={styles.wmRule} aria-labelledby={`caa-wm-rule-${index}`}>
+      <h5 id={`caa-wm-rule-${index}`}>{pick(item.title, lang)}</h5>
+      <dl className={styles.wmFacts}>{item.facts.map((fact, i) => <div key={i}><dt>{pick(fact.label, lang)}</dt><dd><bdi>{pick(fact.text, lang)}</bdi></dd></div>)}</dl>
+      <p className={styles.wmNote}><strong>{pick(attention, lang)}:</strong> {pick(item.note, lang)}</p>
+    </section>
   )}</div>
+}
+
+export function BostonCountingGuide({ copy, lang }) {
+  const [selected, setSelected] = useState(0)
+  const id = 'caa-counting-' + useId().replaceAll(':', '')
+  return <div className={styles.countingGuide} data-learning-tool="counting">
+    <Tabs items={copy.countingTabs} value={selected} onChange={setSelected} id={id} label={copy.countingGuideTitle} lang={lang} />
+    <div className={styles.countingPanel} id={id + '-panel'} role="tabpanel" aria-labelledby={id + '-tab-' + selected} data-counting-kind={selected === 0 ? 'bleeding' : 'wm'}>
+      {selected === 0 ? copy.counting.map((text, index) => <p key={index}>{pick(text, lang)}</p>) : <WhiteMatterRules items={copy.wm} lang={lang} attention={copy.attention} />}
+    </div>
+  </div>
 }
 
 export function BostonCategories({ copy, lang }) {
