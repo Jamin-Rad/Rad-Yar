@@ -1,6 +1,6 @@
 'use client'
 
-import { useId, useState } from 'react'
+import { Fragment, useId, useState } from 'react'
 import { CAA_INTERACTION_COPY as COPY } from '@/data/caaInteractions'
 import { evaluateBoston } from '@/lib/caaBoston.mjs'
 import styles from './CAALearningTools.module.css'
@@ -112,21 +112,6 @@ export function MarkerAtlas({ copy, lang, headingLevel = 'h3', headingClassName 
   </div>
 }
 
-function WhiteMatterFigure({ type, lang }) {
-  const pvs = type === 'pvs'
-  return <svg className={styles.wmFigure} viewBox="0 0 180 160" role="img" aria-label={pick(pvs ? COPY.pvs : COPY.wmh, lang)} data-no-zoom>
-    <path d="M84 15C55 1 20 28 16 72C7 115 35 151 74 147L84 140ZM96 15C125 1 160 28 164 72C173 115 145 151 106 147L96 140Z" fill="var(--caa-brain)" stroke="var(--caa-outline)" strokeWidth="3" />
-    <path d="M72 33C45 22 30 49 32 82C23 110 44 130 73 130M108 33C135 22 150 49 148 82C157 110 136 130 107 130" fill="none" stroke="var(--caa-outline)" strokeWidth="2" opacity=".55" />
-    {pvs ? <g data-pvs-hemisphere="one">
-      <path d="M84 15C55 1 20 28 16 72C7 115 35 151 74 147L84 140Z" fill="none" stroke="var(--caa-pvs)" strokeWidth="3" />
-      {Array.from({ length: 24 }, (_, index) => <path key={index}
-        d={'M' + (43 + (index % 3) * 9) + ' ' + (47 + Math.floor(index / 3) * 9) + 'l2 3'}
-        stroke="var(--caa-pvs)" strokeWidth="2.5" strokeLinecap="round" />)}
-    </g> :
-      [[43, 50], [66, 48], [35, 70], [59, 75], [39, 101], [61, 110], [70, 126], [137, 50], [114, 48], [145, 70], [121, 75], [141, 101], [119, 110], [110, 126]].map(([cx, cy], index) => <circle key={index} cx={cx} cy={cy} r="4" fill="var(--caa-pvs)" />)}
-  </svg>
-}
-
 export function WhiteMatterMarkers({ items, lang, title }) {
   const [selected, setSelected] = useState(0)
   const id = 'caa-wm-' + useId().replaceAll(':', '')
@@ -134,16 +119,40 @@ export function WhiteMatterMarkers({ items, lang, title }) {
   return <div className={styles.wmRows} data-learning-tool="wm">
     <Tabs items={items.map(item => item.tab)} value={selected} onChange={setSelected} id={id} label={title} lang={lang} />
     <div className={styles.wmBody} id={id + '-panel'} role="tabpanel" aria-labelledby={id + '-tab-' + selected}>
-      <figure className={styles.wmIllustration}>
-        <WhiteMatterFigure type={selected === 0 ? 'pvs' : 'wmh'} lang={lang} />
-        <figcaption><strong><bdi dir="ltr">{item.count}</bdi></strong><span>{pick(item.caption, lang)}</span></figcaption>
-      </figure>
       <div className={styles.wmCopy}>
         <h5>{pick(item.title, lang)}</h5>
         {item.paragraphs.map((text, index) => <p key={index}>{pick(text, lang)}</p>)}
-        <dl className={styles.wmFacts}>{item.facts.map((fact, index) => <div key={index}><dt>{pick(fact.label, lang)}</dt><dd><bdi>{pick(fact.text, lang)}</bdi></dd></div>)}</dl>
-        <p className={styles.wmNote}>{pick(item.note, lang)}</p>
       </div>
+    </div>
+  </div>
+}
+
+export function WhiteMatterRules({ items, lang, attention }) {
+  return <div className={styles.wmRules} data-learning-tool="wm-rules">{items.map((item, index) =>
+    <details key={index} open={index === 0}>
+      <summary>{pick(item.title, lang)}</summary>
+      <div className={styles.wmRuleBody}>
+        <dl className={styles.wmFacts}>{item.facts.map((fact, i) => <div key={i}><dt>{pick(fact.label, lang)}</dt><dd><bdi>{pick(fact.text, lang)}</bdi></dd></div>)}</dl>
+        <p className={styles.wmNote}><strong>{pick(attention, lang)}:</strong> {pick(item.note, lang)}</p>
+      </div>
+    </details>
+  )}</div>
+}
+
+export function BostonCategories({ copy, lang }) {
+  const [category, setCategory] = useState(0)
+  const id = 'caa-categories-' + useId().replaceAll(':', '')
+  const routes = category === 0
+    ? [{ value: '≥2', label: copy.hemorrhages }, { value: '1 + 1', label: copy.combination }]
+    : [{ value: '1', label: copy.hemorrhageSingle }, { value: '1', label: copy.wmTitle }]
+  return <div className={styles.categories} data-learning-tool="categories">
+    <div className={styles.categoryTabs}><Tabs items={[copy.probable, copy.possible]} value={category} onChange={setCategory} id={id} label={copy.categoryTitle} lang={lang} /></div>
+    <div className={styles.categoryPanel} id={id + '-panel'} role="tabpanel" aria-labelledby={id + '-tab-' + category} data-category={category === 0 ? 'probable' : 'possible'}>
+      <p className={styles.categoryLead}>{pick(copy.categoryLeads[category], lang)}</p>
+      <div className={styles.categoryRoutes}>{routes.map((route, index) => <Fragment key={route.value + index}>
+        {index > 0 && <span className={styles.categoryOr}>{pick(copy.or, lang)}</span>}
+        <div className={styles.categoryRoute}><strong><bdi dir="ltr">{route.value}</bdi></strong><p>{pick(route.label, lang)}</p></div>
+      </Fragment>)}</div>
     </div>
   </div>
 }
@@ -205,9 +214,9 @@ export function BostonExplorer({ lang, headingLevel = 'h3' }) {
       <div className={styles.decision}><h4>{pick(COPY.decision, lang)}</h4>
         <ol className={styles.decisionPath}>{steps.map(([title, detail, met], index) => <li key={index} data-met={met}>
           <strong>{pick(title, lang)}</strong><span className={styles.stepState} aria-label={pick(met ? COPY.pass : COPY.fail, lang)}>{met ? '✓' : '−'}</span>
-          {index === 2 && <div className={styles.miniBrain}>{!findings.deep && !findings.lobar && (findings.pvs || findings.wmh) ?
-            <WhiteMatterFigure type={findings.pvs ? 'pvs' : 'wmh'} lang={lang} /> :
-            <BrainFigure pattern={findings.deep ? 'mixed' : findings.lobar ? 'lobar' : 'none'} lesionCount={findings.lobar} lang={lang} />}</div>}
+          {index === 2 && (findings.deep || findings.lobar > 0) && <div className={styles.miniBrain}>
+            <BrainFigure pattern={findings.deep ? 'mixed' : 'lobar'} lesionCount={findings.lobar} lang={lang} />
+          </div>}
           <p><bdi>{pick(detail, lang)}</bdi></p>
         </li>)}</ol>
         <div className={styles.result} role="status" aria-live="polite" aria-atomic="true" data-category={result.category} data-reason={result.reason}>

@@ -38,20 +38,32 @@
 .comparison { margin-top: 20px; border-top: 1px solid var(--line); }
 .comparison summary { padding: 16px 4px; color: var(--ink); cursor: pointer; font-size: 14px; font-weight: 800; line-height: 1.7; }
 .wmRows { --caa-brain: #ede0ef; --caa-outline: #8e679b; --caa-pvs: #287e88; --caa-selected: #6a3573; }
-.wmBody { display: grid; grid-template-columns: 180px minmax(0,1fr); gap: 28px; align-items: start; margin-top: 24px; }
-.wmIllustration { margin: 0; min-width: 0; }
-.wmFigure { display: block; width: 100%; }
-.wmIllustration figcaption { display: grid; gap: 6px; text-align: center; color: var(--body); font-size: 13px; line-height: 1.65; }
-.wmIllustration figcaption span { white-space: pre-line; }
-.wmIllustration figcaption strong { color: var(--caa-pvs); font: 850 30px/1.4 var(--font-inter,system-ui,sans-serif); }
+.wmBody { margin-top: 20px; }
 .wmCopy { min-width: 0; }
 .wmCopy h5 { margin: 0 0 12px; color: var(--ink); font: 800 23px/1.45 var(--font-newsreader,Georgia,serif); }
 .wmCopy > p { margin: 0 0 12px; color: var(--body); font-size: 15px; line-height: 1.8; }
-.wmFacts { margin: 18px 0; border-block: 1px solid var(--line); }
+.wmCopy > p:last-child { margin-bottom: 0; }
+.wmRules details { margin-block: 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
+.wmRules summary { padding: 14px 18px; color: var(--ink); font-size: 16px; font-weight: 800; line-height: 1.6; cursor: pointer; }
+.wmRules summary::marker { color: var(--teal-700); }
+.wmRules summary:focus-visible { outline: 2px solid var(--teal-700); outline-offset: 3px; }
+.wmRuleBody { padding: 0 18px 18px; }
+.wmFacts { margin: 0 0 14px; border-block: 1px solid var(--line); }
 .wmFacts > div { display: grid; grid-template-columns: 110px minmax(0,1fr); gap: 18px; padding-block: 10px; }
 .wmFacts dt { color: var(--ink); font-size: 14px; font-weight: 800; line-height: 1.8; }
 .wmFacts dd { margin: 0; color: var(--body); font-size: 15px; line-height: 1.8; }
-.wmCopy .wmNote { margin: 0; padding-inline-start: 12px; border-inline-start: 3px solid var(--caa-pvs); font-size: 14px; }
+.wmNote { margin: 0; padding-inline-start: 12px; border-inline-start: 3px solid var(--teal-700); color: var(--body); font-size: 14px; line-height: 1.8; }
+.wmNote strong { color: var(--ink); }
+.categories { --caa-selected: #0d7580; --caa-outline: #287e88; margin-block: 24px; }
+.categoryTabs .tabs { padding: 0; gap: 8px; border: 0; background: transparent; }
+.categoryTabs button { min-height: 48px; border: 1px solid var(--line); border-bottom-width: 3px; font-size: 16px; }
+.categoryPanel { margin-top: 12px; padding: 22px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
+.categoryLead { margin: 0 0 20px; color: var(--body); font-size: 15px; line-height: 1.8; }
+.categoryRoute { display: grid; grid-template-columns: 100px minmax(0,1fr); align-items: center; gap: 20px; padding: 18px; border-inline-start: 4px solid var(--teal-700); background: color-mix(in srgb,var(--teal-100) 40%,var(--paper)); }
+.categoryRoute strong { color: var(--teal-700); font: 850 30px/1.4 var(--font-inter,system-ui,sans-serif); }
+.categoryRoute p { margin: 0; color: var(--ink); font-size: 17px; font-weight: 750; line-height: 1.65; }
+.categoryOr { display: block; margin-block: 12px; text-align: center; color: var(--muted); font-size: 13px; font-weight: 800; }
+:global(html[data-theme='dark']) .categories { --teal-700: #7ed3d5; --caa-selected: #245d65; --caa-outline: #7ed3d5; }
 .tfneBody { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,.7fr); gap: 24px; align-items: center; padding-top: 22px; }
 .tfneBody .figure svg { aspect-ratio: 1.5; }
 .presets { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
@@ -120,10 +132,14 @@
   .decisionPath li::after { content: '↓'; top: auto; bottom: -22px; inset-inline-end: calc(50% - 8px); transform: none !important; }
   .miniBrain { display: none; }
   .result > strong { font-size: 24px; }
-  .wmBody { grid-template-columns: 1fr; gap: 20px; }
-  .wmIllustration { width: 170px; justify-self: center; }
   .wmFacts > div { grid-template-columns: 1fr; gap: 3px; }
   .wmCopy h5 { font-size: 22px; }
+  .categoryPanel { padding: 16px; }
+  .categoryRoute { grid-template-columns: 78px minmax(0,1fr); gap: 12px; padding: 14px; }
+  .categoryRoute strong { font-size: 25px; }
+  .categoryRoute p { font-size: 15px; }
+  .wmRules summary { padding: 12px 14px; }
+  .wmRuleBody { padding: 0 14px 14px; }
 }
 @media (prefers-reduced-motion:reduce) { .panel button { transition: none; } }
 @media print { .panel,.wmRows { break-inside: avoid; } }

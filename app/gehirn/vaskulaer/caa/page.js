@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useLessonSectionScroll } from '@/hooks/useLessonSectionScroll';
 import CAACaseGallery from '@/components/CAACaseGallery';
 import LessonTakeHome from '@/components/LessonTakeHome';
-import { VesselExplorer, MarkerAtlas, WhiteMatterMarkers, BostonExplorer, PatternExplorer } from '@/components/CAALearningTools';
+import { VesselExplorer, MarkerAtlas, WhiteMatterMarkers, WhiteMatterRules, BostonCategories, BostonExplorer, PatternExplorer } from '@/components/CAALearningTools';
 import { AssociationExplorer, BackgroundExplorer, ClinicalExplorer, DifferentialComparison } from '@/components/CAAContentExplorers';
 import { CAA_FOCUSED_COPY } from '@/data/caaFocusedCopy';
 import { CAA_INTERACTION_COPY } from '@/data/caaInteractions';
@@ -108,11 +108,20 @@ function ChapterContent({ id, lang }) {
         </section>
         <section aria-labelledby="caa-boston-categories-heading">
           <h4 id="caa-boston-categories-heading" className={`${styles.subheading} ${styles.diagnosticHeading}`}>{c(COPY.categoryTitle)}</h4>
-          <div className={styles.diagnosticRules}>
-            <div className={styles.criteria}><h4>{c(COPY.probable)}</h4><div className={styles.rule}><b><bdi>≥2</bdi></b><span>{c(COPY.hemorrhages)}</span></div><small>{c(COPY.or)}</small><div className={styles.rule}><b><bdi>1 + 1</bdi></b><span>{c(COPY.combination)}</span></div></div>
-            <div className={`${styles.criteria} ${styles.possible}`}><h4>{c(COPY.possible)}</h4><p>{c(COPY.possibleRule)}</p></div>
-        </div>
-          <Note lang={lang}><Paragraphs values={COPY.counting} lang={lang} /></Note>
+          <BostonCategories copy={COPY} lang={lang} />
+        </section>
+        <section aria-labelledby="caa-boston-counting-heading">
+          <h4 id="caa-boston-counting-heading" className={`${styles.subheading} ${styles.diagnosticHeading}`}>{c(COPY.countingGuideTitle)}</h4>
+          <div className={styles.countingGuide}>
+            <section className={styles.countingSection} aria-labelledby="caa-bleeding-guide-heading">
+              <h5 id="caa-bleeding-guide-heading">{c(COPY.bleedingGuideTitle)}</h5>
+              <Paragraphs values={COPY.counting} lang={lang} />
+            </section>
+            <section className={styles.countingSection} aria-labelledby="caa-wm-guide-heading">
+              <h5 id="caa-wm-guide-heading">{c(COPY.whiteMatterGuideTitle)}</h5>
+              <WhiteMatterRules items={COPY.wm} lang={lang} attention={COPY.attention} />
+            </section>
+          </div>
         </section>
         <details className={styles.ruleOverview}><summary>{c(COPY.bostonExercise)}</summary><BostonExplorer lang={lang} headingLevel="h4" /></details>
         <details className={styles.ruleOverview}><summary>{c(COPY.pathologyDetails)}</summary><p className={styles.context}>{c(COPY.pathology)}</p></details>

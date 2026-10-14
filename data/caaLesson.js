@@ -120,14 +120,12 @@ export const CAA_COPY = {
   wmTitle: L('spezifischer WM-Marker', 'Specific WM marker', 'نشانگر اختصاصی ماده سفید'),
   wm: [
     {
-      tab: L('Perivaskuläre Räume', 'Perivascular spaces', 'فضاهای اطراف عروقی'),
-      title: L('Viele perivaskuläre Räume', 'Numerous perivascular spaces', 'فضاهای متعدد اطراف عروقی'),
+      tab: L('Erweiterte PVS', 'Enlarged PVS', 'PVS گشادشده'),
+      title: L('Erweiterte perivaskuläre Räume', 'Enlarged perivascular spaces', 'فضاهای گشادشده اطراف عروقی'),
       paragraphs: [
-        L('Perivaskuläre Räume sind mit Liquor gefüllte Räume um kleine Hirngefäße.', 'Perivascular spaces are fluid-filled spaces around small brain vessels.', 'فضاهای اطراف عروقی، فضاهای پر از مایع مغزی–نخاعی در اطراف عروق کوچک مغز هستند.'),
-        L('CSO-PVS bezeichnet diese Räume im Centrum semiovale, dem oberen Marklager.', 'CSO-PVS refers to these spaces in the centrum semiovale, the upper cerebral white matter.', 'CSO-PVS به این فضاها در centrum semiovale، یعنی ماده سفید بالایی مغز، گفته می‌شود.'),
+        L('Perivaskuläre Räume (PVS) begleiten kleine Hirngefäße und enthalten Liquor.', 'Perivascular spaces (PVS) surround small brain vessels and contain cerebrospinal fluid.', 'فضاهای اطراف عروقی (PVS) در کنار عروق کوچک مغز قرار دارند و حاوی مایع مغزی–نخاعی هستند.'),
+        L('CSO-PVS bezeichnet erweiterte PVS im Centrum semiovale, dem oberen Marklager.', 'CSO-PVS refers to enlarged PVS in the centrum semiovale, the upper cerebral white matter.', 'CSO-PVS به PVS گشادشده در centrum semiovale، یعنی ماده سفید بالایی مغز، گفته می‌شود.'),
       ],
-      count: '>20',
-      caption: L('Eine Hemisphäre\nEine T2-Schicht', 'One hemisphere\nOne T2 slice', 'یک نیمکره\nیک برش T2'),
       facts: [
         { label: L('Lokalisation', 'Location', 'محل'), text: L('Centrum semiovale einer Hemisphäre.', 'Centrum semiovale of one hemisphere.', 'Centrum semiovale یک نیمکره.') },
         { label: L('Sequenz', 'Sequence', 'سکانس'), text: L('Axiale T2-Sequenz.', 'Axial T2-weighted imaging.', 'سکانس T2 آگزیال.') },
@@ -137,17 +135,15 @@ export const CAA_COPY = {
     },
     {
       tab: L('Multispot-Muster', 'Multispot pattern', 'الگوی چندنقطه‌ای'),
-      title: L('Punktförmige Marklagerveränderungen', 'Small focal white matter changes', 'تغییرات نقطه‌ای ماده سفید'),
+      title: L('Punktförmige T2-Signalerhöhungen im Marklager', 'Small focal T2 hyperintensities in the white matter', 'کانون‌های کوچک با سیگنال بالای T2 در ماده سفید'),
       paragraphs: [
         L('WMH steht für „white matter hyperintensities“: helle Signalveränderungen der weißen Substanz in T2/FLAIR.', 'WMH means white matter hyperintensities: bright white matter signal changes on T2/FLAIR.', 'WMH مخفف white matter hyperintensities است؛ تغییرات با سیگنال روشن در ماده سفید در T2/FLAIR.'),
         L('„Multispot“ bedeutet viele einzelne kleine Flecken.', 'Multispot means many separate small spots.', '«چندنقطه‌ای» یعنی تعداد زیادی کانون کوچک و جدا از هم.'),
       ],
-      count: '>10',
-      caption: L('Herde in beiden Hemisphären', 'Foci in both hemispheres', 'کانون‌ها در هر دو نیمکره'),
       facts: [
         { label: L('Lokalisation', 'Location', 'محل'), text: L('Subkortikale weiße Substanz beider Hemisphären.', 'Subcortical white matter of both hemispheres.', 'ماده سفید زیرقشری هر دو نیمکره.') },
         { label: L('Sequenz', 'Sequence', 'سکانس'), text: 'T2 / FLAIR' },
-        { label: L('Zählregel', 'Counting rule', 'قاعده شمارش'), text: L('Mehr als 10 kleine, runde oder ovale helle Herde.', 'More than 10 small, round or oval bright foci.', 'بیش از ۱۰ کانون روشن کوچک، گرد یا بیضی.') },
+        { label: L('Zählregel', 'Counting rule', 'قاعده شمارش'), text: L('Mehr als 10 kleine, runde oder ovale helle Herde in beiden Hemisphären.', 'More than 10 small, round or oval bright foci in both hemispheres.', 'بیش از ۱۰ کانون روشن کوچک، گرد یا بیضی در هر دو نیمکره.') },
       ],
       note: L('Große zusammenfließende Marklagerveränderungen allein erfüllen dieses Kriterium nicht.', 'Large confluent white matter changes alone do not meet this criterion.', 'تغییرات بزرگ و به‌هم‌پیوسته ماده سفید به‌تنهایی این معیار را برآورده نمی‌کنند.'),
     },
@@ -155,6 +151,15 @@ export const CAA_COPY = {
   bostonIntro: [L('Die Boston-Kriterien verknüpfen die MRT-Befunde mit Alter und klinischer Präsentation. Sie ermöglichen die Einstufung als probable oder possible CAA ohne Gewebeprobe.', 'The Boston criteria combine MRI findings with age and clinical presentation. They allow classification as probable or possible CAA without tissue sampling.', 'معیارهای Boston یافته‌های MRI را در کنار سن و تظاهرات بالینی قرار می‌دهند و امکان طبقه‌بندی CAA محتمل یا ممکن را بدون نمونه‌برداری بافت فراهم می‌کنند.')],
   eligibilityTitle: L('Voraussetzungen', 'Prerequisites', 'پیش‌شرط‌ها'),
   categoryTitle: L('Diagnostische Kategorien', 'Diagnostic categories', 'طبقه‌بندی تشخیصی'),
+  categoryLeads: [
+    L('Bei erfüllten Voraussetzungen gibt es zwei mögliche MRT-Konstellationen:', 'When the prerequisites are met, either of these two MRI patterns qualifies:', 'در صورت برقرار بودن پیش‌شرط‌ها، یکی از این دو الگوی MRI کافی است:'),
+    L('Die Voraussetzungen sind erfüllt, die probable-Kriterien aber nicht. Es liegt eines dieser MRT-Muster vor:', 'The prerequisites are met, but the probable criteria are not. One of these MRI patterns is present:', 'پیش‌شرط‌ها برقرارند، اما معیارهای probable برآورده نشده‌اند. یکی از این الگوهای MRI وجود دارد:'),
+  ],
+  hemorrhageSingle: L('strikt lobäre Blutungsläsion', 'strictly lobar haemorrhagic lesion', 'ضایعه خونریزی صرفاً لوبار'),
+  countingGuideTitle: L('Worauf ist zu achten?', 'What needs checking?', 'چه نکاتی باید بررسی شوند؟'),
+  bleedingGuideTitle: L('Blutungsläsionen: Typ und Zählung', 'Haemorrhagic lesions: type and counting', 'ضایعات خونریزی: نوع و شمارش'),
+  whiteMatterGuideTitle: L('WM-Marker: Lokalisation, Sequenz und Zählregel', 'WM markers: location, sequence and counting rule', 'نشانگرهای WM: محل، سکانس و قاعده شمارش'),
+  attention: L('Achtung', 'Attention', 'توجه'),
   eligibility: [
     { title: L('Alter und Klinik', 'Age and presentation', 'سن و تظاهرات بالینی'), paragraphs: [L('Mindestens 50 Jahre.', 'Age at least 50.', 'سن حداقل ۵۰ سال.'), L('Spontane intrazerebrale Blutung, TFNE oder kognitive Störung / Demenz.', 'Spontaneous intracerebral haemorrhage, TFNE or cognitive impairment / dementia.', 'خونریزی داخل مغزی خودبخودی، TFNE یا اختلال شناختی / دمانس.')] },
     { title: L('Keine tiefen Blutungsläsionen', 'No deep haemorrhagic lesions', 'نبود ضایعات خونریزی عمقی'), paragraphs: [L('Keine intrazerebrale Blutung und keine Mikroblutung in den tiefen Hirnstrukturen.', 'No intracerebral haemorrhage or microbleed in deep brain structures.', 'نبود خونریزی داخل مغزی یا میکروخونریزی در ساختارهای عمقی مغز.'), L('Kleinhirnblutungen zählen für diese Kriterien weder als lobär noch als tief.', 'For these criteria, cerebellar haemorrhages count as neither lobar nor deep.', 'در این معیارها، خونریزی مخچه نه لوبار و نه عمقی محسوب می‌شود.')] },

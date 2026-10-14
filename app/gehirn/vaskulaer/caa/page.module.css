@@ -109,3 +109,6 @@
 }
 :global(html[data-theme='dark']) .page .diagnosticHeading { color: #ffb56d; }
 .page[dir='rtl'] .diagnosticHeading { --font-persian: 'RadYar Calligraphic', 'Vazirmatn', serif; font-family: var(--font-persian); font-weight: 600; line-height: 1.7; }
+
+.countingGuide { display: grid; gap: 24px; margin-block: 24px; }
+.countingSection h5 { margin: 0 0 14px; color: var(--ink); font: 800 21px/1.45 var(--font-newsreader,Georgia,serif); }
