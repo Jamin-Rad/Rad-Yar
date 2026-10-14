@@ -2,7 +2,6 @@
 
 import { Fragment, useId, useState } from 'react'
 import { CAA_INTERACTION_COPY as COPY } from '@/data/caaInteractions'
-import { evaluateBoston } from '@/lib/caaBoston.mjs'
 import styles from './CAALearningTools.module.css'
 
 const pick = (value, lang) => typeof value === 'string' ? value : value[lang] || value.de
@@ -175,53 +174,6 @@ export function TFNETimeline({ lang, embedded = false }) {
       </svg><figcaption>{pick(COPY.tfneCaption, lang)}</figcaption></figure>
       <div className={styles.copy}><h4>{pick(COPY.tfneStages[stage].title, lang)}</h4><p>{pick(COPY.tfneStages[stage].text, lang)}</p>
         <Legend items={[[COPY.superficialBlood, '#ef637c'], [COPY.spreading, '#43d6cc']]} lang={lang} />
-      </div>
-    </div>
-  </div>
-}
-
-const bostonPresets = [
-  { age: '72', clinical: true, lobar: 2, pvs: false, wmh: false, deep: false, alternative: false },
-  { age: '68', clinical: true, lobar: 1, pvs: true, wmh: false, deep: false, alternative: false },
-  { age: '74', clinical: true, lobar: 2, pvs: false, wmh: false, deep: true, alternative: false },
-]
-
-export function BostonExplorer({ lang, headingLevel = 'h3' }) {
-  const [findings, setFindings] = useState(bostonPresets[0])
-  const [preset, setPreset] = useState(0)
-  const id = 'caa-boston-' + useId().replaceAll(':', '')
-  const result = evaluateBoston(findings)
-  const update = (key, value) => { setPreset(null); setFindings(previous => ({ ...previous, [key]: value })) }
-  const eligible = findings.age.trim() !== '' && Number.isInteger(Number(findings.age)) && Number(findings.age) >= 50 && findings.clinical
-  const exclusions = !findings.deep && !findings.alternative
-  const hasMarkers = findings.lobar > 0 || findings.pvs || findings.wmh
-  const steps = [[COPY.eligibility, COPY.eligibilityRule, eligible], [COPY.exclusions, COPY.exclusionsRule, exclusions], [COPY.markers, findings.lobar >= 2 ? '≥2' : findings.lobar === 1 && (findings.pvs || findings.wmh) ? '1 + 1' : findings.lobar === 1 ? '1' : findings.pvs || findings.wmh ? 'WM' : '0', hasMarkers]]
-  return <div className={styles.panel} data-learning-tool="boston">
-    <ToolHeader title={COPY.bostonTitle} hint={COPY.bostonHint} lang={lang} as={headingLevel} />
-    <div className={styles.presets} role="group" aria-label={pick(COPY.examples, lang)}>{COPY.presets.map((label, index) =>
-      <button key={index} type="button" aria-pressed={preset === index} onClick={() => { setPreset(index); setFindings(bostonPresets[index]) }}>{pick(label, lang)}</button>)}</div>
-    <div className={styles.mobileOutcome} aria-hidden="true" data-category={result.category}><span>{pick(COPY.result, lang)}</span><strong>{pick(COPY.resultTitles[result.category], lang)}</strong></div>
-    <div className={styles.bostonBody}>
-      <fieldset className={styles.parameters}><legend>{pick(COPY.parameters, lang)}</legend>
-        <label className={styles.age} htmlFor={id + '-age'}>{pick(COPY.age, lang)}<input id={id + '-age'} type="number" min="1" step="1" value={findings.age} onChange={event => update('age', event.target.value)} /></label>
-        <label className={styles.check}><input type="checkbox" checked={findings.clinical} onChange={event => update('clinical', event.target.checked)} aria-describedby={id + '-clinical-help'} /><span>{pick(COPY.clinical, lang)}</span></label>
-        <p id={id + '-clinical-help'} className={styles.help}>{pick(COPY.clinicalHelp, lang)}</p>
-        <fieldset className={styles.count}><legend>{pick(COPY.lobarCount, lang)}</legend><div className={styles.countButtons}>
-          {[0, 1, 2].map(value => <button key={value} type="button" aria-pressed={findings.lobar === value} onClick={() => update('lobar', value)}><bdi dir="ltr">{value === 2 ? '≥2' : value}</bdi></button>)}
-        </div><p className={styles.help}>{pick(COPY.countHelp, lang)}</p></fieldset>
-        {['pvs', 'wmh', 'deep', 'alternative'].map(key => <label className={styles.check} key={key}><input type="checkbox" checked={findings[key]} onChange={event => update(key, event.target.checked)} /><span>{pick(COPY[key], lang)}</span></label>)}
-      </fieldset>
-      <div className={styles.decision}><h4>{pick(COPY.decision, lang)}</h4>
-        <ol className={styles.decisionPath}>{steps.map(([title, detail, met], index) => <li key={index} data-met={met}>
-          <strong>{pick(title, lang)}</strong><span className={styles.stepState} aria-label={pick(met ? COPY.pass : COPY.fail, lang)}>{met ? '✓' : '−'}</span>
-          {index === 2 && (findings.deep || findings.lobar > 0) && <div className={styles.miniBrain}>
-            <BrainFigure pattern={findings.deep ? 'mixed' : 'lobar'} lesionCount={findings.lobar} lang={lang} />
-          </div>}
-          <p><bdi>{pick(detail, lang)}</bdi></p>
-        </li>)}</ol>
-        <div className={styles.result} role="status" aria-live="polite" aria-atomic="true" data-category={result.category} data-reason={result.reason}>
-          <span>{pick(COPY.result, lang)}</span><strong>{pick(COPY.resultTitles[result.category], lang)}</strong><p>{pick(COPY.reasons[result.reason], lang)}</p>
-        </div>
       </div>
     </div>
   </div>

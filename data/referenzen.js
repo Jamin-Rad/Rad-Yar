@@ -6,6 +6,8 @@
 // Tabellenzellen dürfen String (sprachneutral, z. B. "TR1") ODER {de,en,fa} sein.
 // ──────────────────────────────────────────────────────────────
 
+import { BOSTON_REFERENCE, BOSTON_CALCULATOR_ENTRY } from './bostonReference'
+
 export function tx(field, lang) {
   if (field == null) return ''
   if (typeof field === 'string') return field
@@ -943,6 +945,7 @@ export const KLASSIFIKATIONEN = [
     id: 'neuro', color: '#7c3aed', iconId: 'neuro',
     name: { de: 'Neuro', en: 'Neuro', fa: 'نورو' },
     items: [
+      BOSTON_REFERENCE,
       {
         id: 'fazekas',
         name: { de: 'Fazekas', en: 'Fazekas', fa: 'فازکاس' },
@@ -2389,6 +2392,7 @@ export const KLASSIFIKATIONEN = [
 ]
 
 const CLASSIFICATION_ENHANCEMENTS = {
+  'boston-v2': { radiologie: BOSTON_REFERENCE.radiologie },
   fazekas: {
     erklaerung: { de: 'Fazekas beschreibt die Ausprägung chronischer Marklagerläsionen in der MRT. Nützlich ist die Skala vor allem, um Mikroangiopathie standardisiert, knapp und verlaufstauglich zu berichten.' },
     radiologie: [
@@ -2867,6 +2871,7 @@ const KLASSIFIKATIONEN_ERWEITERT = KLASSIFIKATIONEN.map(topic => ({
 
 // ── Rechner ──────────────────────────────────────────────────
 export const RECHNER = [
+  BOSTON_CALCULATOR_ENTRY,
 
   // Neuro: Evans-Index
   {

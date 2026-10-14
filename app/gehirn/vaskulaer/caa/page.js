@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useLessonSectionScroll } from '@/hooks/useLessonSectionScroll';
 import CAACaseGallery from '@/components/CAACaseGallery';
 import LessonTakeHome from '@/components/LessonTakeHome';
-import { VesselExplorer, MarkerAtlas, WhiteMatterMarkers, WhiteMatterRules, BostonCategories, BostonExplorer, PatternExplorer } from '@/components/CAALearningTools';
+import { VesselExplorer, MarkerAtlas, WhiteMatterMarkers, WhiteMatterRules, BostonCategories, PatternExplorer } from '@/components/CAALearningTools';
 import { AssociationExplorer, BackgroundExplorer, ClinicalExplorer, DifferentialComparison } from '@/components/CAAContentExplorers';
 import { CAA_FOCUSED_COPY } from '@/data/caaFocusedCopy';
 import { CAA_INTERACTION_COPY } from '@/data/caaInteractions';
@@ -109,6 +109,7 @@ function ChapterContent({ id, lang }) {
         <section aria-labelledby="caa-boston-categories-heading">
           <h4 id="caa-boston-categories-heading" className={`${styles.subheading} ${styles.diagnosticHeading}`}>{c(COPY.categoryTitle)}</h4>
           <BostonCategories copy={COPY} lang={lang} />
+          <Note warning lang={lang}><Paragraphs values={COPY.pathology} lang={lang} /></Note>
         </section>
         <section aria-labelledby="caa-boston-counting-heading">
           <h4 id="caa-boston-counting-heading" className={`${styles.subheading} ${styles.diagnosticHeading}`}>{c(COPY.countingGuideTitle)}</h4>
@@ -123,8 +124,6 @@ function ChapterContent({ id, lang }) {
             </section>
           </div>
         </section>
-        <details className={styles.ruleOverview}><summary>{c(COPY.bostonExercise)}</summary><BostonExplorer lang={lang} headingLevel="h4" /></details>
-        <details className={styles.ruleOverview}><summary>{c(COPY.pathologyDetails)}</summary><p className={styles.context}>{c(COPY.pathology)}</p></details>
       </div>
     </TeachingGroup>
     <TeachingGroup id="caa-case-examples" title={c(COPY.caseExamples)}>

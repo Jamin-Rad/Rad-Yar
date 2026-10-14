@@ -6,6 +6,14 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY, REF_DATA, tx } from '@/data/referenzen'
 import styles from './KlassDetailPage.module.css'
 
+function referenceHref(href, lang) {
+  const [base, hash] = href.split('#')
+  const [path, search] = base.split('?')
+  const params = new URLSearchParams(search)
+  params.set('lang', lang)
+  return path + '?' + params.toString() + (hash ? '#' + hash : '')
+}
+
 const TOPIC_LOGOS = {
   anatomie: '/fach/technik.png',
   'anatomie-neuro': '/fach/gehirn.png',
@@ -341,6 +349,8 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
               {item.radiologie && <DetailList detail={item.radiologie} lang={lang} color={color} />}
             </section>
           )}
+
+          {item.links && <nav className={styles.relatedLinks} aria-label={lang === 'de' ? 'Weiterführende Inhalte' : lang === 'fa' ? 'مطالب مرتبط' : 'Related content'}>{item.links.map(link => <Link key={link.href} href={referenceHref(link.href, lang)}>{tx(link.label, lang)} <span aria-hidden="true">→</span></Link>)}</nav>}
 
           {imageBeforeTables && images.length > 0 && (
             <ImageStack images={images} copy={copy} setZoomSrc={setZoomSrc} />

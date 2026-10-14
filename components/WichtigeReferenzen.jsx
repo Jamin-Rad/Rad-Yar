@@ -1,11 +1,15 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
+
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { getCalculatorDefaultLang, useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY, REF_DATA, tx } from '@/data/referenzen'
 import styles from './WichtigeReferenzen.module.css'
+const BostonCalculator = dynamic(() => import('./BostonCalculator'))
+
 
 const HOME_CARD_VISUALS = {
   anatomie: {
@@ -89,6 +93,7 @@ const CLASSIFICATION_SEARCH_ALIASES = {
   fleischner: ['lungenrundherd', 'lungenrundherde', 'pulmonary nodule', 'milchglas', 'ggo', 'ground glass', 'part solid', 'subsolid', 'nodulus', 'rundherd'],
   'stanford-debakey': ['stanford', 'debakey', 'aortendissektion', 'aortic dissection', 'dissektion'],
   'salter-harris': ['salter harris', 'salterharis', 'salter-haris', 'wachstumsfuge', 'epiphysenfuge', 'physis', 'kindesfraktur', 'child fracture', 'physeal fracture'],
+  'boston-v2': ['boston', 'burson', 'CAA', 'amyloidangiopathie', 'cerebral amyloid angiopathy', 'بوستون'],
   fazekas: ['fazekes', 'marklager', 'white matter'],
   'mta-score': ['mta', 'mediale temporalatrophie', 'hippocampus', 'alzheimer', 'demenz'],
   modic: ['endplatte', 'abschlussplatte', 'wirbelkoerperabschlussplatte', 'wirbelkörperabschlussplatte', 'bone marrow', 'endplate', 'spine'],
@@ -328,6 +333,7 @@ export default function WichtigeReferenzen({ mode = 'section' }) {
     const params = new URLSearchParams(window.location.search)
     if (params.get('ref') === 'anatomie') setModal('anatomie')
     if (params.get('ref') === 'klassifikationen') setModal('klassifikationen')
+    if (params.get('ref') === 'rechner') setModal('rechner')
   }, [])
 
   useEffect(() => {
@@ -866,7 +872,7 @@ const RECHNER_GROUPS = [
     id: 'neuro-gefaesse',
     name: { de: 'Neuro & Gefäße', en: 'Neuro & Vessels', fa: 'نورو و عروق' },
     color: '#7c3aed', iconId: 'neuro',
-    calcIds: ['evans-index', 'icb', 'nascet', 'ecst-nascet'],
+    calcIds: ['boston-v2', 'evans-index', 'icb', 'nascet', 'ecst-nascet'],
   },
   {
     id: 'herz-thorax',
@@ -935,7 +941,7 @@ const MAMMA_TOOL_LINKS = [
 /* ── Rechner-Modal ────────────────────────────── */
 function RechnerModal({ copy, lang, onClose }) {
   const [groupId, setGroupId] = useState(RECHNER_GROUPS[0].id)
-  const [showDetail, setShowDetail] = useState(false)
+  const [showDetail, setShowDetail] = useState(() => typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('calc') === 'boston-v2')
   const group = RECHNER_GROUPS.find(g => g.id === groupId) || RECHNER_GROUPS[0]
   const calcs = group.calcIds.map(id => REF_DATA.rechner.find(c => c.id === id)).filter(Boolean)
   const [openCalcId, setOpenCalcId] = useState(calcs[0]?.id ?? null)
@@ -1060,6 +1066,7 @@ function RechnerCard({ calc, lang, isOpen, onToggle }) {
         <div style={{marginTop:14, borderTop:`1px solid ${calc.color}22`, paddingTop:14}}>
           {calc.formula && <div className={styles.rcFormula} style={{marginBottom:12}}>{calc.formula}</div>}
 
+          {calc.type === 'boston'       && <BostonCalculator lang={lang} />}
           {calc.type === 'single'       && <SingleCalc      calc={calc} lang={lang} />}
           {calc.type === 'multi'        && <MultiCalc       calc={calc} lang={lang} />}
           {calc.type === 'conversion'   && <ConversionCalc  calc={calc} lang={lang} />}
