@@ -16,9 +16,11 @@ export const CAA_RADIOPAEDIA_CASES = [
     title: L('Lobäre Mikroblutungen erkennen', 'Recognise lobar microbleeds', 'تشخیص میکروخونریزی‌های لوبار'),
     findings: [
       L('Zahlreiche punktförmige Suszeptibilitätsverluste, vor allem peripher.', 'Numerous punctate susceptibility foci, predominantly peripheral.', 'کانون‌های متعدد نقطه‌ای افت سیگنال، عمدتاً محیطی.'),
-      L('Verteilung über mehrere Schichten verfolgen, nicht nur dunkle Punkte zählen.', 'Trace the distribution across slices rather than simply counting dark dots.', 'توزیع را در چند برش دنبال کنید؛ تنها نقطه‌های تیره را نشمارید.'),
     ],
-    interpretation: L('Die periphere Verteilung unterstützt CAA. Einzelne Signalverluste immer von Gefäßen und Artefakten unterscheiden.', 'The peripheral distribution supports CAA. Always distinguish individual signal voids from vessels and artefacts.', 'توزیع محیطی به نفع CAA است. افت سیگنال منفرد را از رگ و آرتیفکت تفکیک کنید.'),
+    interpretation: [
+      L('Die periphere Verteilung unterstützt CAA.', 'The peripheral distribution supports CAA.', 'توزیع محیطی به نفع CAA است.'),
+      L('Einzelne Signalverluste immer von Gefäßen und Artefakten unterscheiden.', 'Always distinguish individual signal voids from vessels and artefacts.', 'افت سیگنال منفرد را از رگ و آرتیفکت تفکیک کنید.'),
+    ],
     alt: L('Axiale SWI mit peripheren Mikroblutungen, Radiopaedia rID 46082', 'Axial SWI with peripheral microbleeds, Radiopaedia rID 46082', 'SWI آگزیال با میکروخونریزی‌های محیطی، Radiopaedia rID 46082'),
     credit: 'Case courtesy of Frank Gaillard, Radiopaedia.org · rID 46082 · CC BY-NC-SA 3.0',
   },
@@ -32,7 +34,6 @@ export const CAA_RADIOPAEDIA_CASES = [
       L('Großes rechts-temporales Hämatom mit kortikaler Beteiligung.', 'Large right temporal haematoma involving the cortex.', 'هماتوم بزرگ تمپورال راست با درگیری قشر.'),
       L('Unregelmäßige Ausläufer und begleitende subarachnoidale Blutung im Originalfall suchen.', 'Look for irregular projections and associated subarachnoid bleeding in the original case.', 'در کیس اصلی به‌دنبال زوائد نامنظم هماتوم و خونریزی ساب‌آراکنوئید همراه باشید.'),
     ],
-    interpretation: L('Das Muster lenkt den Verdacht auf CAA; die CT allein ersetzt keine Boston-Einstufung. Im Originalfall erfolgte die pathologische Bestätigung.', 'The pattern raises suspicion for CAA; CT alone does not replace Boston classification. The original case has pathological confirmation.', 'الگو شک به CAA را مطرح می‌کند؛ CT به‌تنهایی جای طبقه‌بندی Boston را نمی‌گیرد. کیس اصلی تأیید پاتولوژیک دارد.'),
     alt: L('Axiale native CT mit rechts-temporaler lobärer Blutung, Radiopaedia rID 58758', 'Axial non-contrast CT with right temporal lobar bleeding, Radiopaedia rID 58758', 'CT آگزیال بدون کنتراست با خونریزی لوبار تمپورال راست، Radiopaedia rID 58758'),
     credit: 'Case courtesy of Mark Rodrigues, Radiopaedia.org · rID 58758 · CC BY-NC-SA 3.0',
   },
