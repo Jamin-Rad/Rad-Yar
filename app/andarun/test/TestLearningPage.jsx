@@ -334,7 +334,7 @@ export default function TestLearningPage() {
   // Template-only CTAs: real lesson pages must replace these two inert buttons
   // with lesson-specific Links to the matching MCQ and flashcard routes.
 
-  return <main className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
+  return <main className={styles.page} data-lesson-section-divider="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <header className={styles.header}>
       <div className={styles.topline}><nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">RadYar</Link><span>/</span><Link href="/andarun">Jaminova</Link><span>/</span><strong>Test</strong></nav><span className={styles.author}>Dr. Zia</span></div>
       <LessonHero title={pick(COPY.title, lang)} imageSrc="/educational/stroke-hero-cutout-v2.png" imageAlt={pick(L('Schema eines Gefäßverschlusses beim ischämischen Schlaganfall', 'Schematic vessel occlusion in ischaemic stroke', 'شماتیک انسداد عروقی در سکته ایسکمیک'), lang)} lang={lang} />

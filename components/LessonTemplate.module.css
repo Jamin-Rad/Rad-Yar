@@ -439,3 +439,16 @@
 .section { content-visibility: visible; contain-intrinsic-size: none; overflow-anchor: none; }
 @media (max-width:760px) { .page { padding-bottom: calc(108px + var(--lesson-scroll-room, 0px)); } }
 @media print { .page { padding-bottom: 0; } }
+
+/* Theme-coloured divider between an expanded chapter header and its content. */
+.page[data-lesson-section-divider='true'] .sectionBody { position: relative; border-top: 0; }
+.page[data-lesson-section-divider='true'] .sectionOpen > .sectionBody::before {
+  content: ''; position: absolute; inset-block-start: 0; inset-inline: 22px;
+  height: 1px; background: var(--accent, #f97316); pointer-events: none;
+}
+@media (max-width:760px) {
+  .page[data-lesson-section-divider='true'] .sectionOpen > .sectionBody::before { inset-inline: 14px; }
+}
+@media print {
+  .page[data-lesson-section-divider='true'] .sectionOpen > .sectionBody::before { display: none; }
+}
