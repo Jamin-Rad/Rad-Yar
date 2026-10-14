@@ -58,13 +58,6 @@ function Note({
 }) {
   return <aside className={warning ? reference.warning : reference.rememberNote}><span className={reference.calloutLabel}><Icon name={warning ? 'warning' : 'spark'} />{pick(warning ? COPY.warning : COPY.key, lang)}</span><div className={reference.calloutBody}>{children}</div></aside>;
 }
-function Table({
-  headers,
-  rows,
-  lang
-}) {
-  return <div className={styles.tableScroll} role="region" aria-label={pick(headers[0], lang)} tabIndex={0}><table className={styles.table}><thead><tr>{headers.map((cell, i) => <th scope="col" key={i}>{pick(cell, lang)}</th>)}</tr></thead><tbody>{rows.map((row, i) => <tr key={i}>{row.map((cell, j) => j === 0 ? <th scope="row" key={j}>{pick(cell, lang)}</th> : <td key={j}>{Array.isArray(cell) ? <Paragraphs values={cell} lang={lang} /> : pick(cell, lang)}</td>)}</tr>)}</tbody></table></div>;
-}
 function Paragraphs({ values, lang, lead = false }) {
   return values.map((value, index) => <p key={index} className={lead && index === 0 ? reference.lead : styles.paragraph}>{pick(value, lang)}</p>);
 }
@@ -98,7 +91,7 @@ function ChapterContent({ id, lang }) {
           <h4 id="caa-sequences-heading">{c(COPY.sequencesTitle)}</h4>
           <TeachingList items={COPY.sequences} lang={lang} />
         </section>
-        <MarkerAtlas copy={COPY} lang={lang} headingLevel="h4"><Table headers={COPY.markerHeaders} rows={COPY.markerRows} lang={lang} /></MarkerAtlas>
+        <MarkerAtlas copy={COPY} lang={lang} headingLevel="h4" />
         <h4 className={styles.subheading}>{c(COPY.wmTitle)}</h4>
         <WhiteMatterMarkers items={COPY.wm} lang={lang} />
         <details className={styles.ruleOverview}><summary>{c(COPY.caseExamples)}</summary><CAACaseGallery lang={lang} headingLevel="h4" /></details>

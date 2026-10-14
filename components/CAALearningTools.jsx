@@ -94,7 +94,7 @@ export function VesselExplorer({ lang, headingLevel = 'h3', description }) {
   </div>
 }
 
-export function MarkerAtlas({ copy, lang, children, headingLevel = 'h3' }) {
+export function MarkerAtlas({ copy, lang, headingLevel = 'h3' }) {
   const [marker, setMarker] = useState(0)
   const id = 'caa-marker-' + useId().replaceAll(':', '')
   const row = copy.markerRows[marker]
@@ -109,7 +109,6 @@ export function MarkerAtlas({ copy, lang, children, headingLevel = 'h3' }) {
         <div><dt>{pick(COPY.appearance, lang)}</dt><dd>{row[2].map((value, index) => <p key={index}>{pick(value, lang)}</p>)}</dd></div>
       </dl></div>
     </div>
-    <details className={styles.comparison}><summary>{pick(COPY.allMarkers, lang)}</summary>{children}</details>
   </div>
 }
 

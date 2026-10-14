@@ -17,7 +17,6 @@ export const CAA_INTERACTION_COPY = {
   sequence: L('Sequenz', 'Sequence', 'سکانس'),
   appearance: L('Bild & Bedeutung', 'Appearance & significance', 'تصویر و اهمیت'),
   schematic: L('Schematische Lokalisation', 'Schematic localisation', 'شماتیک محل ضایعات'),
-  allMarkers: L('Alle Marker vergleichen', 'Compare all markers', 'مقایسه همه نشانگرها'),
   tfneTitle: L('TFNE-Verlauf', 'TFNE course', 'سیر TFNE'),
   tfneStages: [
     { title: L('Beginn', 'Onset', 'شروع'), text: L('Parästhesien beginnen zum Beispiel in der Hand. Eine oberflächliche Blutung kann mit TFNE assoziiert sein.', 'Paraesthesias may begin in the hand. Superficial bleeding may be associated with TFNE.', 'پارستزی ممکن است، برای مثال، از دست شروع شود. خونریزی سطحی می‌تواند با TFNE همراه باشد.') },
