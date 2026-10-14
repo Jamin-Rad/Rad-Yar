@@ -507,3 +507,5 @@
 }
 
 .relatedLinks{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 24px}.relatedLinks a{display:inline-flex;align-items:center;gap:12px;padding:11px 15px;border:1px solid var(--ref-color);border-radius:12px;color:var(--ref-color);font-weight:700;text-decoration:none}.relatedLinks a:focus-visible{outline:3px solid var(--ref-color);outline-offset:3px}
+
+.referenceIntro{margin:0 0 22px;font-size:16px;line-height:1.8}.namedSectionTitle{display:block;margin:0 0 18px;color:var(--ref-color);font:700 24px/1.45 'Segoe Print','Comic Sans MS',var(--font-newsreader),serif}

@@ -3,6 +3,7 @@
 import { Fragment, useId, useState } from 'react'
 import { CAA_INTERACTION_COPY as COPY } from '@/data/caaInteractions'
 import styles from './CAALearningTools.module.css'
+import CAAWhiteMatterSchematic from './CAAWhiteMatterSchematic'
 
 const pick = (value, lang) => typeof value === 'string' ? value : value[lang] || value.de
 const corticalDots = [[141, 59], [263, 65], [84, 109], [313, 118], [61, 172], [331, 188], [65, 246], [329, 254], [105, 311], [288, 320], [148, 360], [250, 360]]
@@ -118,6 +119,7 @@ export function WhiteMatterMarkers({ items, lang, title }) {
   return <div className={styles.wmRows} data-learning-tool="wm">
     <Tabs items={items.map(item => item.tab)} value={selected} onChange={setSelected} id={id} label={title} lang={lang} />
     <div className={styles.wmBody} id={id + '-panel'} role="tabpanel" aria-labelledby={id + '-tab-' + selected}>
+      <CAAWhiteMatterSchematic marker={selected === 0 ? 'pvs' : 'wmh'} lang={lang} />
       <div className={styles.wmCopy}>
         <h5>{pick(item.title, lang)}</h5>
         {item.paragraphs.map((text, index) => <p key={index}>{pick(text, lang)}</p>)}

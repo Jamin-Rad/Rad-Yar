@@ -124,6 +124,7 @@ function ChapterContent({ id, lang }) {
             </section>
           </div>
         </section>
+        <Link className={styles.bostonCalculatorLink} href={lang === 'de' ? '/?ref=rechner&calc=boston-v2&lang=de#referenzen' : `/?ref=rechner&calc=boston-v2&lang=${lang}#referenzen`}>{c(L('Zum Boston-Rechner', 'Open Boston calculator', 'باز کردن محاسبه‌گر Boston'))}<Icon name="arrow" /></Link>
       </div>
     </TeachingGroup>
     <TeachingGroup id="caa-case-examples" title={c(COPY.caseExamples)}>

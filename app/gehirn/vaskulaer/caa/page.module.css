@@ -112,3 +112,5 @@
 
 .countingGuide { display: grid; gap: 24px; margin-block: 24px; }
 .countingSection h5 { margin: 0 0 14px; color: var(--ink); font: 800 21px/1.45 var(--font-newsreader,Georgia,serif); }
+
+.bostonCalculatorLink{display:inline-flex;align-items:center;gap:16px;margin-top:24px;padding:13px 18px;border:1px solid var(--teal-700);border-radius:10px;background:var(--paper);color:var(--teal-700);font-weight:800;text-decoration:none}.bostonCalculatorLink svg{width:22px;height:22px}.bostonCalculatorLink:focus-visible{outline:3px solid var(--accent);outline-offset:4px}

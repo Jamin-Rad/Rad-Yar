@@ -145,3 +145,5 @@
 @media print { .panel,.wmRows { break-inside: avoid; } }
 
 .embedded { margin: 0; padding-top: 20px; }
+
+.wmBody{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:center}@media(max-width:1000px){.wmBody{grid-template-columns:1fr;gap:18px}}

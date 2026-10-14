@@ -341,16 +341,18 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
         <article className={styles.content} style={{ '--ref-color': color }}>
           <h1 className={styles.heading}>{tx(item.name, lang)}</h1>
 
+          {item.sectionTitles && item.kompakt && <p className={styles.referenceIntro}>{tx(item.kompakt, lang)}</p>}
+
           {!isAnatomie && (item.kompakt || item.erklaerung || item.radiologie) && (
             <section id="erklaerung" className={styles.infoPanel}>
-              <span className={styles.infoPanelLabel}>{infoLabel}</span>
-              {item.kompakt && <InfoText text={tx(item.kompakt, lang)} />}
+              {item.sectionTitles ? <h2 className={styles.namedSectionTitle}>{tx(item.sectionTitles.prerequisites, lang)}</h2> : <span className={styles.infoPanelLabel}>{infoLabel}</span>}
+              {item.kompakt && !item.sectionTitles && <InfoText text={tx(item.kompakt, lang)} />}
               {item.erklaerung && <InfoText text={tx(item.erklaerung, lang)} />}
               {item.radiologie && <DetailList detail={item.radiologie} lang={lang} color={color} />}
             </section>
           )}
 
-          {item.links && <nav className={styles.relatedLinks} aria-label={lang === 'de' ? 'Weiterführende Inhalte' : lang === 'fa' ? 'مطالب مرتبط' : 'Related content'}>{item.links.map(link => <Link key={link.href} href={referenceHref(link.href, lang)}>{tx(link.label, lang)} <span aria-hidden="true">→</span></Link>)}</nav>}
+          {item.links && item.linkPosition !== 'afterDetails' && <nav className={styles.relatedLinks} aria-label={lang === 'de' ? 'Weiterführende Inhalte' : lang === 'fa' ? 'مطالب مرتبط' : 'Related content'}>{item.links.map(link => <Link key={link.href} href={referenceHref(link.href, lang)}>{tx(link.label, lang)} <span aria-hidden="true">→</span></Link>)}</nav>}
 
           {imageBeforeTables && images.length > 0 && (
             <ImageStack images={images} copy={copy} setZoomSrc={setZoomSrc} />
@@ -360,7 +362,7 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
             {/* Tabellen-Sektion */}
             <div>
               {item.detail && item.detailPosition === 'beforeTables' && (
-                <CollapseSection title={copy.ausfuehrlich} color={color} defaultOpen={true}>
+                <CollapseSection title={item.sectionTitles ? tx(item.sectionTitles.detail, lang) : copy.ausfuehrlich} color={color} defaultOpen={true}>
                   <DetailList detail={item.detail} lang={lang} color={color} />
                 </CollapseSection>
               )}
@@ -381,7 +383,7 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
                 </div>
               ) : (
                 <div id="vollstaendig">
-                  <CollapseSection title={isAnatomie ? copy.voll : copy.vollstaendig} color={color} defaultOpen={!item.einfach || Boolean(item.groupedRows)}>
+                  <CollapseSection title={item.sectionTitles ? tx(item.sectionTitles.classification, lang) : isAnatomie ? copy.voll : copy.vollstaendig} color={color} defaultOpen={!item.einfach || Boolean(item.groupedRows)}>
                     {item.groupedRows ? (
                       <GroupedClassStack groups={item.groupedRows} lang={lang} />
                     ) : (
@@ -397,7 +399,7 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
                 </div>
               )}
               {item.detail && item.detailPosition !== 'beforeTables' && (
-                <CollapseSection title={copy.ausfuehrlich} color={color} defaultOpen={false}>
+                <CollapseSection title={item.sectionTitles ? tx(item.sectionTitles.detail, lang) : copy.ausfuehrlich} color={color} defaultOpen={false}>
                   <DetailList detail={item.detail} lang={lang} color={color} />
                 </CollapseSection>
               )}
@@ -433,6 +435,8 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
               </div>
             )}
           </div>
+
+          {item.links && item.linkPosition === 'afterDetails' && <nav className={styles.relatedLinks} aria-label={lang === 'de' ? 'Weiterführende Inhalte' : lang === 'fa' ? 'مطالب مرتبط' : 'Related content'}>{item.links.map(link => <Link key={link.href} href={referenceHref(link.href, lang)}>{tx(link.label, lang)} <span aria-hidden="true">→</span></Link>)}</nav>}
 
           {/* Quelle */}
           {sourceLinks && (
