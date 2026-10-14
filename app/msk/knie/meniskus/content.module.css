@@ -1,4 +1,4 @@
-.heroVisual::before { background-image: url('/msk/knie/meniskus/meniskus-hero-v2.png'); background-size: auto 115%; }
+.heroVisual.heroVisual::before { background: url('/msk/knie/meniskus/meniskus-hero-v2.png') right center / auto 115% no-repeat; }
 .heroVisual { opacity: .64; filter: saturate(.85) contrast(1.04) brightness(.95); }
 .heroVisual { -webkit-mask-image: linear-gradient(90deg,transparent,#000 35%),linear-gradient(180deg,transparent,#000 18%,#000 65%,transparent); mask-image: linear-gradient(90deg,transparent,#000 35%),linear-gradient(180deg,transparent,#000 18%,#000 65%,transparent); -webkit-mask-composite: source-in; mask-composite: intersect; }
 :global([dir='rtl']) .heroVisual { -webkit-mask-image: linear-gradient(270deg,transparent,#000 35%),linear-gradient(180deg,transparent,#000 18%,#000 65%,transparent); mask-image: linear-gradient(270deg,transparent,#000 35%),linear-gradient(180deg,transparent,#000 18%,#000 65%,transparent); }
