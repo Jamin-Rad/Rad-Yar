@@ -68,7 +68,12 @@ export const CAA_COPY = {
   mriTitle: L('MRT-Befunde', 'MRI findings', 'یافته‌های MRI'),
   markerIntro: [
     L('Typisch für CAA sind Blutungen in den Hirnlappen und an der Hirnoberfläche. Entscheidend ist die Verteilung: lobär beziehungsweise kortikal statt in den tiefen Hirnstrukturen.', 'CAA typically causes haemorrhagic lesions in the cerebral lobes and at the brain surface. Distribution is key: lobar or cortical rather than in deep brain structures.', 'الگوی شاخص CAA، ضایعات خونریزی در لوب‌ها و سطح مغز است. نکته اصلی، توزیع لوبار یا قشری به‌جای ساختارهای عمقی مغز است.'),
-    L('SWI oder T2*-GRE zeigt Mikroblutungen und Hämosiderinablagerungen. FLAIR ergänzt die Suche nach akutem sulkalem Blut und Marklagerveränderungen; T2 dient auch zur Beurteilung perivaskulärer Räume.', 'SWI or T2*-GRE shows microbleeds and haemosiderin deposits. FLAIR complements assessment of acute sulcal blood and white matter changes; T2 also assesses perivascular spaces.', 'SWI یا T2*-GRE میکروخونریزی‌ها و رسوب هموسیدرین را نشان می‌دهد. FLAIR برای بررسی خون حاد در شیارها و تغییرات ماده سفید کمک‌کننده است؛ T2 برای ارزیابی فضاهای اطراف عروقی نیز استفاده می‌شود.'),
+  ],
+  sequencesTitle: L('Benötigte Sequenzen', 'Required sequences', 'سکانس‌های مورد نیاز'),
+  sequences: [
+    { title: L('SWI oder T2*-GRE', 'SWI or T2*-GRE', 'SWI یا T2*-GRE'), paragraphs: [L('Nachweis von Mikroblutungen und Hämosiderinablagerungen.', 'Detection of microbleeds and haemosiderin deposits.', 'شناسایی میکروخونریزی‌ها و رسوب هموسیدرین.')] },
+    { title: 'FLAIR', paragraphs: [L('Beurteilung von akutem Blut in den Sulci und Veränderungen des Marklagers.', 'Assessment of acute blood in the sulci and white matter changes.', 'بررسی خون حاد در شیارها و تغییرات ماده سفید.')] },
+    { title: 'T2', paragraphs: [L('Beurteilung perivaskulärer Räume, insbesondere im Centrum semiovale.', 'Assessment of perivascular spaces, particularly in the centrum semiovale.', 'ارزیابی فضاهای اطراف عروقی، به‌ویژه در centrum semiovale.')] },
   ],
   caseExamples: L('Radiopaedia-Bildbeispiele', 'Radiopaedia imaging examples', 'نمونه‌های تصویری Radiopaedia'),
   bostonTitle: L('Boston-Kriterien v2.0', 'Boston criteria v2.0', 'معیارهای Boston v2.0'),

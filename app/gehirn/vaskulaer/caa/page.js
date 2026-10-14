@@ -94,6 +94,10 @@ function ChapterContent({ id, lang }) {
     <TeachingGroup id="caa-mri-findings" title={c(COPY.mriTitle)}>
       <div className={styles.diagnosticBody}>
         <Paragraphs values={COPY.markerIntro} lang={lang} />
+        <section className={styles.sequenceOverview} aria-labelledby="caa-sequences-heading">
+          <h4 id="caa-sequences-heading">{c(COPY.sequencesTitle)}</h4>
+          <TeachingList items={COPY.sequences} lang={lang} />
+        </section>
         <MarkerAtlas copy={COPY} lang={lang} headingLevel="h4"><Table headers={COPY.markerHeaders} rows={COPY.markerRows} lang={lang} /></MarkerAtlas>
         <h4 className={styles.subheading}>{c(COPY.wmTitle)}</h4>
         <WhiteMatterMarkers items={COPY.wm} lang={lang} />
