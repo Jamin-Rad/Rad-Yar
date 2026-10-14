@@ -117,18 +117,35 @@ function WhiteMatterFigure({ type, lang }) {
   return <svg className={styles.wmFigure} viewBox="0 0 180 160" role="img" aria-label={pick(pvs ? COPY.pvs : COPY.wmh, lang)} data-no-zoom>
     <path d="M84 15C55 1 20 28 16 72C7 115 35 151 74 147L84 140ZM96 15C125 1 160 28 164 72C173 115 145 151 106 147L96 140Z" fill="var(--caa-brain)" stroke="var(--caa-outline)" strokeWidth="3" />
     <path d="M72 33C45 22 30 49 32 82C23 110 44 130 73 130M108 33C135 22 150 49 148 82C157 110 136 130 107 130" fill="none" stroke="var(--caa-outline)" strokeWidth="2" opacity=".55" />
-    {pvs ? [0, 1].flatMap(side => Array.from({ length: 24 }, (_, index) => <path key={side + '-' + index}
-      d={'M' + (43 + side * 66 + (index % 3) * 9) + ' ' + (47 + Math.floor(index / 3) * 9) + 'l2 3'}
-      stroke="var(--caa-pvs)" strokeWidth="2.5" strokeLinecap="round" />)) :
+    {pvs ? <g data-pvs-hemisphere="one">
+      <path d="M84 15C55 1 20 28 16 72C7 115 35 151 74 147L84 140Z" fill="none" stroke="var(--caa-pvs)" strokeWidth="3" />
+      {Array.from({ length: 24 }, (_, index) => <path key={index}
+        d={'M' + (43 + (index % 3) * 9) + ' ' + (47 + Math.floor(index / 3) * 9) + 'l2 3'}
+        stroke="var(--caa-pvs)" strokeWidth="2.5" strokeLinecap="round" />)}
+    </g> :
       [[43, 50], [66, 48], [35, 70], [59, 75], [39, 101], [61, 110], [70, 126], [137, 50], [114, 48], [145, 70], [121, 75], [141, 101], [119, 110], [110, 126]].map(([cx, cy], index) => <circle key={index} cx={cx} cy={cy} r="4" fill="var(--caa-pvs)" />)}
   </svg>
 }
 
-export function WhiteMatterMarkers({ items, lang }) {
-  return <dl className={styles.wmRows}>{items.map((item, index) => <div key={index}>
-    <figure><WhiteMatterFigure type={index === 0 ? 'pvs' : 'wmh'} lang={lang} /><figcaption><bdi dir="ltr">{index === 0 ? '>20' : '>10'}</bdi></figcaption></figure>
-    <div><dt>{pick(item.title, lang)}</dt><dd>{pick(item.text, lang)}</dd></div>
-  </div>)}</dl>
+export function WhiteMatterMarkers({ items, lang, title }) {
+  const [selected, setSelected] = useState(0)
+  const id = 'caa-wm-' + useId().replaceAll(':', '')
+  const item = items[selected]
+  return <div className={styles.wmRows} data-learning-tool="wm">
+    <Tabs items={items.map(item => item.tab)} value={selected} onChange={setSelected} id={id} label={title} lang={lang} />
+    <div className={styles.wmBody} id={id + '-panel'} role="tabpanel" aria-labelledby={id + '-tab-' + selected}>
+      <figure className={styles.wmIllustration}>
+        <WhiteMatterFigure type={selected === 0 ? 'pvs' : 'wmh'} lang={lang} />
+        <figcaption><strong><bdi dir="ltr">{item.count}</bdi></strong><span>{pick(item.caption, lang)}</span></figcaption>
+      </figure>
+      <div className={styles.wmCopy}>
+        <h5>{pick(item.title, lang)}</h5>
+        {item.paragraphs.map((text, index) => <p key={index}>{pick(text, lang)}</p>)}
+        <dl className={styles.wmFacts}>{item.facts.map((fact, index) => <div key={index}><dt>{pick(fact.label, lang)}</dt><dd><bdi>{pick(fact.text, lang)}</bdi></dd></div>)}</dl>
+        <p className={styles.wmNote}>{pick(item.note, lang)}</p>
+      </div>
+    </div>
+  </div>
 }
 
 export function TFNETimeline({ lang, embedded = false }) {

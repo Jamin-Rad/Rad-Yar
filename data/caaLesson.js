@@ -119,8 +119,38 @@ export const CAA_COPY = {
   ],
   wmTitle: L('spezifischer WM-Marker', 'Specific WM marker', 'نشانگر اختصاصی ماده سفید'),
   wm: [
-    { title: L('Schwere CSO-PVS', 'Severe CSO-PVS', 'CSO-PVS شدید'), text: L('Mehr als 20 sichtbare perivaskuläre Räume im Centrum semiovale einer Hemisphäre auf einer axialen T2-Schicht. Basalganglien-PVS ersetzen diesen Marker nicht.', 'More than 20 visible perivascular spaces in the centrum semiovale of one hemisphere on one axial T2 slice. Basal ganglia PVS do not substitute for this marker.', 'بیش از ۲۰ فضای اطراف عروقی در centrum semiovale یک نیمکره، در یک برش آگزیال T2. PVS عقده‌های قاعده‌ای جایگزین این نشانگر نیست.') },
-    { title: L('WMH-Multispot-Muster', 'WMH multispot pattern', 'الگوی چندنقطه‌ای WMH'), text: L('Mehr als 10 kleine rundliche oder ovale T2/FLAIR-Hyperintensitäten im subkortikalen Mark beider Hemisphären. Unspezifische konfluierende WMH allein genügen nicht.', 'More than 10 small round or oval T2/FLAIR hyperintensities in the subcortical white matter of both hemispheres. Nonspecific confluent WMH alone is insufficient.', 'بیش از ۱۰ کانون کوچک گرد یا بیضی با سیگنال بالای T2/FLAIR در ماده سفید زیرقشری دو نیمکره. WMH به‌هم‌پیوسته و غیراختصاصی به‌تنهایی کافی نیست.') },
+    {
+      tab: L('Perivaskuläre Räume', 'Perivascular spaces', 'فضاهای اطراف عروقی'),
+      title: L('Viele perivaskuläre Räume', 'Numerous perivascular spaces', 'فضاهای متعدد اطراف عروقی'),
+      paragraphs: [
+        L('Perivaskuläre Räume sind mit Liquor gefüllte Räume um kleine Hirngefäße.', 'Perivascular spaces are fluid-filled spaces around small brain vessels.', 'فضاهای اطراف عروقی، فضاهای پر از مایع مغزی–نخاعی در اطراف عروق کوچک مغز هستند.'),
+        L('CSO-PVS bezeichnet diese Räume im Centrum semiovale, dem oberen Marklager.', 'CSO-PVS refers to these spaces in the centrum semiovale, the upper cerebral white matter.', 'CSO-PVS به این فضاها در centrum semiovale، یعنی ماده سفید بالایی مغز، گفته می‌شود.'),
+      ],
+      count: '>20',
+      caption: L('Eine Hemisphäre · eine T2-Schicht', 'One hemisphere · one T2 slice', 'یک نیمکره · یک برش T2'),
+      facts: [
+        { label: L('Lokalisation', 'Location', 'محل'), text: L('Centrum semiovale einer Hemisphäre.', 'Centrum semiovale of one hemisphere.', 'Centrum semiovale یک نیمکره.') },
+        { label: L('Sequenz', 'Sequence', 'سکانس'), text: L('Axiale T2-Sequenz.', 'Axial T2-weighted imaging.', 'سکانس T2 آگزیال.') },
+        { label: L('Zählregel', 'Counting rule', 'قاعده شمارش'), text: L('Mehr als 20 sichtbare Räume auf einer Schicht.', 'More than 20 visible spaces on one slice.', 'بیش از ۲۰ فضای قابل مشاهده در یک برش.') },
+      ],
+      note: L('PVS in den Basalganglien zählen für diesen Boston-Marker nicht.', 'Basal ganglia PVS do not count towards this Boston marker.', 'فضاهای اطراف عروقی در عقده‌های قاعده‌ای برای این نشانگر Boston حساب نمی‌شوند.'),
+    },
+    {
+      tab: L('Multispot-Muster', 'Multispot pattern', 'الگوی چندنقطه‌ای'),
+      title: L('Punktförmige Marklagerveränderungen', 'Small focal white matter changes', 'تغییرات نقطه‌ای ماده سفید'),
+      paragraphs: [
+        L('WMH steht für „white matter hyperintensities“: helle Signalveränderungen der weißen Substanz in T2/FLAIR.', 'WMH means white matter hyperintensities: bright white matter signal changes on T2/FLAIR.', 'WMH مخفف white matter hyperintensities است؛ تغییرات با سیگنال روشن در ماده سفید در T2/FLAIR.'),
+        L('„Multispot“ bedeutet viele einzelne kleine Flecken.', 'Multispot means many separate small spots.', '«چندنقطه‌ای» یعنی تعداد زیادی کانون کوچک و جدا از هم.'),
+      ],
+      count: '>10',
+      caption: L('Herde in beiden Hemisphären', 'Foci in both hemispheres', 'کانون‌ها در هر دو نیمکره'),
+      facts: [
+        { label: L('Lokalisation', 'Location', 'محل'), text: L('Subkortikale weiße Substanz beider Hemisphären.', 'Subcortical white matter of both hemispheres.', 'ماده سفید زیرقشری هر دو نیمکره.') },
+        { label: L('Sequenz', 'Sequence', 'سکانس'), text: 'T2 / FLAIR' },
+        { label: L('Zählregel', 'Counting rule', 'قاعده شمارش'), text: L('Mehr als 10 kleine, runde oder ovale helle Herde.', 'More than 10 small, round or oval bright foci.', 'بیش از ۱۰ کانون روشن کوچک، گرد یا بیضی.') },
+      ],
+      note: L('Große zusammenfließende Marklagerveränderungen allein erfüllen dieses Kriterium nicht.', 'Large confluent white matter changes alone do not meet this criterion.', 'تغییرات بزرگ و به‌هم‌پیوسته ماده سفید به‌تنهایی این معیار را برآورده نمی‌کنند.'),
+    },
   ],
   bostonIntro: [L('Die Boston-Kriterien verknüpfen die MRT-Befunde mit Alter und klinischer Präsentation. Sie ermöglichen die Einstufung als probable oder possible CAA ohne Gewebeprobe.', 'The Boston criteria combine MRI findings with age and clinical presentation. They allow classification as probable or possible CAA without tissue sampling.', 'معیارهای Boston یافته‌های MRI را در کنار سن و تظاهرات بالینی قرار می‌دهند و امکان طبقه‌بندی CAA محتمل یا ممکن را بدون نمونه‌برداری بافت فراهم می‌کنند.')],
   eligibilityTitle: L('Voraussetzungen', 'Prerequisites', 'پیش‌شرط‌ها'),

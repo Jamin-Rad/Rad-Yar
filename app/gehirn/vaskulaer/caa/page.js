@@ -94,7 +94,7 @@ function ChapterContent({ id, lang }) {
         <MarkerAtlas copy={COPY} lang={lang} headingLevel="h4" headingClassName={styles.diagnosticHeading} />
         <section className={styles.sequenceOverview} aria-labelledby="caa-wm-heading">
           <h4 id="caa-wm-heading" className={styles.diagnosticHeading}>{c(COPY.wmTitle)}</h4>
-          <WhiteMatterMarkers items={COPY.wm} lang={lang} />
+          <WhiteMatterMarkers items={COPY.wm} lang={lang} title={COPY.wmTitle} />
         </section>
       </div>
     </TeachingGroup>
