@@ -2347,6 +2347,7 @@
 
 .dayBody { padding: 24px; overflow-y: auto; min-height: 0; }
 .dayMarkers { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.dayMarkers .monthSchoolHoliday { background: #16513c; border: 1px solid #398466; color: #bff4d5; }
 .dayList { display: grid; gap: 12px; }
 .dayEvent { display: flex; align-items: center; gap: 16px; padding: 18px; border: 1px solid #94a3b82e; border-radius: 16px; background: #94a3b80b; }
 .dayEventDetails { flex: 1; min-width: 0; display: grid; gap: 8px; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; padding: 0; overflow-wrap: anywhere; }
