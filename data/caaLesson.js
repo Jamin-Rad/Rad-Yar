@@ -127,7 +127,7 @@ export const CAA_COPY = {
         L('CSO-PVS bezeichnet diese Räume im Centrum semiovale, dem oberen Marklager.', 'CSO-PVS refers to these spaces in the centrum semiovale, the upper cerebral white matter.', 'CSO-PVS به این فضاها در centrum semiovale، یعنی ماده سفید بالایی مغز، گفته می‌شود.'),
       ],
       count: '>20',
-      caption: L('Eine Hemisphäre · eine T2-Schicht', 'One hemisphere · one T2 slice', 'یک نیمکره · یک برش T2'),
+      caption: L('Eine Hemisphäre\nEine T2-Schicht', 'One hemisphere\nOne T2 slice', 'یک نیمکره\nیک برش T2'),
       facts: [
         { label: L('Lokalisation', 'Location', 'محل'), text: L('Centrum semiovale einer Hemisphäre.', 'Centrum semiovale of one hemisphere.', 'Centrum semiovale یک نیمکره.') },
         { label: L('Sequenz', 'Sequence', 'سکانس'), text: L('Axiale T2-Sequenz.', 'Axial T2-weighted imaging.', 'سکانس T2 آگزیال.') },
