@@ -12,12 +12,13 @@
 .contributors span { padding: 16px 12px; border: 1px solid var(--line); border-radius: 8px; color: var(--body); font-size: 14px; line-height: 1.8; }
 .cognitionTarget { padding: 14px; border-inline-start: 4px solid var(--teal-700); background: var(--canvas); color: var(--ink); }
 .clinicalVisual[hidden] { display: none; }
-.comparisonChoices [role='tablist'] { grid-auto-flow: row; grid-template-columns: repeat(4,minmax(0,1fr)); }
+.comparisonChoices [role='tablist'] { grid-auto-flow: row; grid-template-columns: repeat(3,minmax(0,1fr)); }
 .keyDifference { margin: 20px 0; padding-inline-start: 12px; border-inline-start: 3px solid var(--teal-700); color: var(--ink); font-size: 16px; font-weight: 800; line-height: 1.8; }
 .comparisonGrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
 .diagnosisPane { min-width: 0; padding: 20px; border: 1px solid var(--line); border-radius: 9px; }
 .diagnosisPane h4 { min-height: 70px; margin: 0 0 12px; color: var(--ink); font: 800 23px/1.5 var(--font-newsreader,Georgia,serif); }
 .diagnosisPane figure { max-width: 185px; margin: 0 auto 22px; }
+.pairedFigures { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start; }
 .diagnosisPane dl { margin: 0; }
 .referencePane { border-color: color-mix(in srgb,var(--teal-700) 50%,var(--line)); }
 .comparisonChoices button:focus-visible { outline: 3px solid var(--teal-500); outline-offset: 3px; }

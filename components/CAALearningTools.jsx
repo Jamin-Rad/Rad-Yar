@@ -58,6 +58,19 @@ export function BrainFigure({ pattern, caption, lang, lesionCount }) {
       {pattern === 'tumour' && <g>
         {[[91,143,20],[290,287,14]].map(([cx,cy,r],i)=><g key={i}><circle cx={cx} cy={cy} r={r+19} fill="#8fb7d5" opacity=".55"/><circle cx={cx} cy={cy} r={r} fill="#ac456c" stroke="#efafba" strokeWidth="4"/><circle cx={cx-3} cy={cy+2} r={r/2} fill="#622550"/></g>)}
       </g>}
+      {pattern === 'rcvs' && <g data-lesion="vasoconstriction" fill="none" stroke="#087e88" strokeLinecap="round">
+        <path d="M117 226l14-25m8-15 14-25m8-15 13-25M131 201l-22-17m-13-10-22-17" strokeWidth="9"/>
+        <path d="m131 201 8-15m14-25 8-15m-52 38-13-10" strokeWidth="3"/>
+      </g>}
+      {pattern === 'contusion' && <g data-lesion="contusion" fill="#d94856" stroke="#8f2547" strokeWidth="2">
+        <path d="M130 47q-22-2-27 19l14 13 19-9Z"/><path d="M271 49q23-2 27 19l-14 13-18-10Z"/>
+        <path d="M56 190q-14 8-8 27l23 8 8-16Z"/>
+      </g>}
+      {pattern === 'haemorrhagic-infarct' && <g data-lesion="haemorrhagic-infarct">
+        <path d="M73 241q-3 63 67 99l29-117Z" fill="#e9bc67" fillOpacity=".65" stroke="#b8862a" strokeWidth="2"/>
+        {[[104,272],[122,289],[139,255],[134,315]].map(([cx,cy],index)=><circle key={index} cx={cx} cy={cy} r="7" fill="#c33e53"/>)}
+      </g>}
+      {pattern === 'rcvs' && <path d={sulci[2]} fill="none" stroke="#df4557" strokeWidth="7" strokeLinecap="round"/>}
       {['csah', 'css'].includes(pattern) && sulci.map((d, index) => <path key={index} d={d} fill="none" stroke={pattern === 'csah' ? '#df4557' : '#512454'} strokeWidth={pattern === 'csah' ? 7 : 4} strokeLinecap="round" />)}
     </svg>
     <figcaption>{pick(caption || COPY.schematic, lang)}</figcaption>

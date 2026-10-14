@@ -102,7 +102,8 @@ export function ClinicalExplorer({ title, items, kind, lang, showTitle = true })
 
 function DiagnosisPane({ row, pattern, lang, caption, reference, id }) {
   return <section className={styles.diagnosisPane + (reference?' '+styles.referencePane:'')} aria-labelledby={id}>
-    <h4 id={id}>{pick(row[0],lang)}</h4><BrainFigure pattern={pattern} caption={caption} lang={lang}/>
+    <h4 id={id}>{pick(row[0],lang)}</h4>
+    {Array.isArray(pattern) ? <div className={styles.pairedFigures}>{pattern.map((item,index)=><BrainFigure key={item} pattern={item} caption={caption[index]} lang={lang}/>)}</div> : <BrainFigure pattern={pattern} caption={caption} lang={lang}/>}
     <dl className={shared.facts}>
       <div><dt>{pick(COPY.distribution,lang)}</dt><dd><Paragraphs values={Array.isArray(row[1]) ? row[1] : [row[1]]} lang={lang}/></dd></div>
       <div><dt>{pick(COPY.distinction,lang)}</dt><dd><Paragraphs values={Array.isArray(row[2]) ? row[2] : [row[2]]} lang={lang}/></dd></div>
@@ -121,7 +122,7 @@ export function DifferentialComparison({ rows, lang }) {
       <p className={styles.keyDifference}>{pick(COPY.ddCues[diagnosis],lang)}</p>
       <div className={styles.comparisonGrid} data-comparison={diagnosis+1}>
         <DiagnosisPane row={rows[0]} pattern="lobar" caption={COPY.ddCaptions[0]} lang={lang} reference id={id+'-reference'}/>
-        <DiagnosisPane row={rows[diagnosis+1]} pattern={['deep','avm','cavernoma','tumour'][diagnosis]} caption={COPY.ddCaptions[diagnosis+1]} lang={lang} id={id+'-selected'}/>
+        <DiagnosisPane row={rows[diagnosis+1]} pattern={['deep','avm','cavernoma','tumour','rcvs',['contusion','haemorrhagic-infarct']][diagnosis]} caption={COPY.ddCaptions[diagnosis+1]} lang={lang} id={id+'-selected'}/>
       </div>
     </div>
   </div>
