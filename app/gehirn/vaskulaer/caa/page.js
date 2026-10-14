@@ -88,12 +88,12 @@ function ChapterContent({ id, lang }) {
       <div className={styles.diagnosticBody}>
         <Paragraphs values={COPY.markerIntro} lang={lang} />
         <section className={styles.sequenceOverview} aria-labelledby="caa-sequences-heading">
-          <h4 id="caa-sequences-heading">{c(COPY.sequencesTitle)}</h4>
+          <h4 id="caa-sequences-heading" className={styles.diagnosticHeading}>{c(COPY.sequencesTitle)}</h4>
           <TeachingList items={COPY.sequences} lang={lang} />
         </section>
-        <MarkerAtlas copy={COPY} lang={lang} headingLevel="h4" />
+        <MarkerAtlas copy={COPY} lang={lang} headingLevel="h4" headingClassName={styles.diagnosticHeading} />
         <section className={styles.sequenceOverview} aria-labelledby="caa-wm-heading">
-          <h4 id="caa-wm-heading">{c(COPY.wmTitle)}</h4>
+          <h4 id="caa-wm-heading" className={styles.diagnosticHeading}>{c(COPY.wmTitle)}</h4>
           <WhiteMatterMarkers items={COPY.wm} lang={lang} />
         </section>
       </div>

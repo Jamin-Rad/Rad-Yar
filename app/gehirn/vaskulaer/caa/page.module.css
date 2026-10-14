@@ -96,3 +96,16 @@
 .sequenceOverview .teachingList > div { display: grid; grid-template-columns: 180px minmax(0,1fr); gap: 20px; }
 .sequenceOverview .teachingList dt { margin-bottom: 0; }
 @media(max-width:760px) { .sequenceOverview { padding: 16px; }.sequenceOverview .teachingList > div { grid-template-columns: 1fr; gap: 6px; } }
+
+/* Three diagnostic card titles use a warmer, handwritten accent. */
+.page .diagnosticHeading {
+  color: #a94609;
+  font-family: 'Segoe Print', 'Comic Sans MS', 'RadYar Handwritten', cursive;
+  font-size: clamp(25px,2.4vw,32px);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+:global(html[data-theme='dark']) .page .diagnosticHeading { color: #ffb56d; }
+.page[dir='rtl'] .diagnosticHeading { --font-persian: 'RadYar Calligraphic', 'Vazirmatn', serif; font-family: var(--font-persian); font-weight: 600; line-height: 1.7; }

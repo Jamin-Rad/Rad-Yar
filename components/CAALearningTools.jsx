@@ -10,8 +10,8 @@ const corticalDots = [[141, 59], [263, 65], [84, 109], [313, 118], [61, 172], [3
 const deepDots = [[151, 178], [249, 178], [173, 214], [227, 214]]
 const sulci = ['M111 77Q86 88 101 107Q118 125 94 136', 'M70 174Q91 181 82 201Q77 214 103 220', 'M288 89Q314 100 297 119Q282 129 305 147']
 
-export function ToolHeader({ title, hint, lang, as: Heading = 'h3' }) {
-  return <header className={styles.toolHeader}><Heading>{pick(title, lang)}</Heading>{hint && <p>{pick(hint, lang)}</p>}</header>
+export function ToolHeader({ title, hint, lang, as: Heading = 'h3', headingClassName }) {
+  return <header className={styles.toolHeader}><Heading className={headingClassName}>{pick(title, lang)}</Heading>{hint && <p>{pick(hint, lang)}</p>}</header>
 }
 
 export function Tabs({ items, value, onChange, id, label, lang }) {
@@ -94,12 +94,12 @@ export function VesselExplorer({ lang, headingLevel = 'h3', description }) {
   </div>
 }
 
-export function MarkerAtlas({ copy, lang, headingLevel = 'h3' }) {
+export function MarkerAtlas({ copy, lang, headingLevel = 'h3', headingClassName }) {
   const [marker, setMarker] = useState(0)
   const id = 'caa-marker-' + useId().replaceAll(':', '')
   const row = copy.markerRows[marker]
   return <div className={styles.panel} data-learning-tool="atlas">
-    <ToolHeader title={COPY.atlasTitle} lang={lang} as={headingLevel} />
+    <ToolHeader title={COPY.atlasTitle} lang={lang} as={headingLevel} headingClassName={headingClassName} />
     <Tabs items={COPY.markerTabs} value={marker} onChange={setMarker} id={id} label={COPY.atlasTitle} lang={lang} />
     <div id={id + '-panel'} role="tabpanel" aria-labelledby={id + '-tab-' + marker} className={styles.explorerBody}>
       <BrainFigure pattern={['ich', 'cmb', 'csah', 'css'][marker]} lang={lang} />
