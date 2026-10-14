@@ -7,7 +7,7 @@ export const CAA_FOCUSED_COPY = {
   women: L('Frauen', 'Women', 'زنان'),
   appMutation: L('z. B. APP-Mutation', 'e.g. APP mutation', 'مثلاً جهش APP'),
   backgroundTabs: [L('Häufigkeit', 'Frequency', 'شیوع'), L('Alter', 'Age', 'سن'), L('Alzheimer', 'Alzheimer', 'آلزهایمر'), L('Down-Syndrom', 'Down syndrome', 'سندرم داون')],
-  acuteTabs: [L('Lobäre ICH', 'Lobar ICH', 'ICH لوبار'), 'TFNE'],
+  acuteTabs: [L('Akute Ausfälle', 'Acute deficits', 'نقص عصبی حاد'), 'TFNE'],
   otherTabs: [L('Kognition', 'Cognition', 'شناخت'), L('Anfälle', 'Seizures', 'تشنج'), L('Kopfschmerzen', 'Headache', 'سردرد')],
   ageCaption: L('Alter einordnen, keinen festen Beginn ableiten', 'Interpret age without assuming a fixed onset', 'سن را تفسیر کنید؛ شروع ثابتی فرض نکنید'),
   sporadic: L('Sporadisch', 'Sporadic', 'اسپورادیک'),
