@@ -1,0 +1,11 @@
+const path = require('node:path')
+const sharp = require('sharp')
+
+const directory = path.resolve(__dirname, '../public/fatima/todo')
+Promise.all([180, 192, 512].map(size => sharp(path.join(directory, 'icon.svg'))
+  .resize(size, size)
+  .flatten({ background: '#ffece8' })
+  .png({ compressionLevel: 9 })
+  .toFile(path.join(directory, `icon-${size}.png`))))
+  .then(() => console.log('Generated Fatemeh ToDo icons (180, 192, 512 px).'))
+  .catch(error => { console.error(error); process.exitCode = 1 })

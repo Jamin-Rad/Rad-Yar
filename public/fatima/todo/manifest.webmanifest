@@ -1,0 +1,17 @@
+{
+  "id": "/fatima/todo",
+  "name": "Fatemeh ToDo",
+  "short_name": "Fatemeh ToDo",
+  "description": "Aufgaben und Termine",
+  "lang": "de",
+  "dir": "ltr",
+  "start_url": "/fatima/todo",
+  "scope": "/fatima/todo",
+  "display": "standalone",
+  "background_color": "#fffaf7",
+  "theme_color": "#78405b",
+  "icons": [
+    { "src": "/fatima/todo/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/fatima/todo/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
