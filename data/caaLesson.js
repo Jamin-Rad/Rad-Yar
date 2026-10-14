@@ -107,7 +107,8 @@ export const CAA_COPY = {
       L('Die Anfälle können während einer akuten Blutung oder erst später auftreten.', 'Seizures may occur during an acute bleed or later on.', 'تشنج ممکن است هنگام خونریزی حاد یا مدتی بعد رخ دهد.'),
     ] },
     { title: L('Kopfschmerzen', 'Headache', 'سردرد'), paragraphs: [
-      L('Möglich, aber unspezifisch und auch bei akuter Blutung. Neue starke Kopfschmerzen verlangen die Suche nach Blutung und anderen Ursachen; sie beweisen weder CAA noch rezidivierende Mikroblutungen.', 'Possible but nonspecific, and may accompany acute bleeding. New severe headache requires assessment for bleeding and other causes; it proves neither CAA nor recurrent microbleeds.', 'ممکن است رخ دهد، اما غیراختصاصی است و در خونریزی حاد هم دیده می‌شود. سردرد شدید جدید نیازمند بررسی خونریزی و علل دیگر است؛ به‌تنهایی CAA یا میکروخونریزی مکرر را ثابت نمی‌کند.'),
+      L('Kopfschmerzen können bei CAA auftreten, zum Beispiel im Zusammenhang mit einer akuten Blutung.', 'Headache may occur in CAA, for example in association with an acute bleed.', 'سردرد ممکن است در CAA رخ دهد، برای مثال همراه با خونریزی حاد.'),
+      L('Neu auftretende, starke Kopfschmerzen müssen abgeklärt werden. Dabei sollte nach einer akuten Hirnblutung und anderen möglichen Ursachen gesucht werden.', 'New severe headache requires assessment for an acute brain bleed and other possible causes.', 'سردرد شدیدِ تازه‌شروع‌شده نیاز به بررسی دارد. در این بررسی باید خونریزی حاد مغزی و سایر علل احتمالی در نظر گرفته شوند.'),
     ] },
   ],
   wmTitle: L('Nur diese zwei White-Matter-Marker zählen', 'Only these two white matter markers count', 'فقط این دو نشانگر ماده سفید در معیارها حساب می‌شوند'),
