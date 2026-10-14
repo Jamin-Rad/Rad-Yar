@@ -92,9 +92,10 @@ function ChapterContent({ id, lang }) {
           <TeachingList items={COPY.sequences} lang={lang} />
         </section>
         <MarkerAtlas copy={COPY} lang={lang} headingLevel="h4" />
-        <h4 className={styles.subheading}>{c(COPY.wmTitle)}</h4>
-        <WhiteMatterMarkers items={COPY.wm} lang={lang} />
-        <details className={styles.ruleOverview}><summary>{c(COPY.caseExamples)}</summary><CAACaseGallery lang={lang} headingLevel="h4" /></details>
+        <section className={styles.sequenceOverview} aria-labelledby="caa-wm-heading">
+          <h4 id="caa-wm-heading">{c(COPY.wmTitle)}</h4>
+          <WhiteMatterMarkers items={COPY.wm} lang={lang} />
+        </section>
       </div>
     </TeachingGroup>
     <TeachingGroup id="caa-boston" title={c(COPY.bostonTitle)} tone="secondary">
@@ -110,6 +111,9 @@ function ChapterContent({ id, lang }) {
         <details className={styles.ruleOverview}><summary>{c(COPY.bostonExercise)}</summary><BostonExplorer lang={lang} headingLevel="h4" /></details>
         <details className={styles.ruleOverview}><summary>{c(COPY.pathologyDetails)}</summary><p className={styles.context}>{c(COPY.pathology)}</p></details>
       </div>
+    </TeachingGroup>
+    <TeachingGroup id="caa-case-examples" title={c(COPY.caseExamples)}>
+      <div className={styles.diagnosticBody}><CAACaseGallery lang={lang} headingLevel="h4" showTitle={false} /></div>
     </TeachingGroup>
   </TeachingGroups>;
   if (id === 'klinik') return <>

@@ -79,7 +79,7 @@ export const CAA_COPY = {
     ] },
     { title: 'T2', paragraphs: [L('Zählung perivaskulärer Räume im Centrum semiovale für den PVS-Marker der Boston-Kriterien v2.0.', 'Counting perivascular spaces in the centrum semiovale for the PVS marker in Boston criteria v2.0.', 'شمارش فضاهای اطراف عروقی در centrum semiovale برای نشانگر PVS در معیارهای Boston v2.0.')] },
   ],
-  caseExamples: L('Radiopaedia-Bildbeispiele', 'Radiopaedia imaging examples', 'نمونه‌های تصویری Radiopaedia'),
+  caseExamples: L('Fallbeispiele', 'Case examples', 'نمونه‌های موردی'),
   bostonTitle: L('Boston-Kriterien v2.0', 'Boston criteria v2.0', 'معیارهای Boston v2.0'),
   bostonExercise: L('Kriterien interaktiv anwenden', 'Apply the criteria interactively', 'کاربرد تعاملی معیارها'),
   pathologyDetails: L('Klinisch-radiologische Diagnose und Gewebeuntersuchung', 'Clinical–radiological diagnosis and tissue examination', 'تشخیص بالینی–رادیولوژیک و بررسی بافت'),
@@ -117,7 +117,7 @@ export const CAA_COPY = {
       L('Neu auftretende, starke Kopfschmerzen müssen abgeklärt werden. Dabei sollte nach einer akuten Hirnblutung und anderen möglichen Ursachen gesucht werden.', 'New severe headache requires assessment for an acute brain bleed and other possible causes.', 'سردرد شدیدِ تازه‌شروع‌شده نیاز به بررسی دارد. در این بررسی باید خونریزی حاد مغزی و سایر علل احتمالی در نظر گرفته شوند.'),
     ] },
   ],
-  wmTitle: L('Marklager-Marker für Boston v2.0', 'White matter markers for Boston v2.0', 'نشانگرهای ماده سفید در Boston v2.0'),
+  wmTitle: L('spezifischer WM-Marker', 'Specific WM marker', 'نشانگر اختصاصی ماده سفید'),
   wm: [
     { title: L('Schwere CSO-PVS', 'Severe CSO-PVS', 'CSO-PVS شدید'), text: L('Mehr als 20 sichtbare perivaskuläre Räume im Centrum semiovale einer Hemisphäre auf einer axialen T2-Schicht. Basalganglien-PVS ersetzen diesen Marker nicht.', 'More than 20 visible perivascular spaces in the centrum semiovale of one hemisphere on one axial T2 slice. Basal ganglia PVS do not substitute for this marker.', 'بیش از ۲۰ فضای اطراف عروقی در centrum semiovale یک نیمکره، در یک برش آگزیال T2. PVS عقده‌های قاعده‌ای جایگزین این نشانگر نیست.') },
     { title: L('WMH-Multispot-Muster', 'WMH multispot pattern', 'الگوی چندنقطه‌ای WMH'), text: L('Mehr als 10 kleine rundliche oder ovale T2/FLAIR-Hyperintensitäten im subkortikalen Mark beider Hemisphären. Unspezifische konfluierende WMH allein genügen nicht.', 'More than 10 small round or oval T2/FLAIR hyperintensities in the subcortical white matter of both hemispheres. Nonspecific confluent WMH alone is insufficient.', 'بیش از ۱۰ کانون کوچک گرد یا بیضی با سیگنال بالای T2/FLAIR در ماده سفید زیرقشری دو نیمکره. WMH به‌هم‌پیوسته و غیراختصاصی به‌تنهایی کافی نیست.') },
