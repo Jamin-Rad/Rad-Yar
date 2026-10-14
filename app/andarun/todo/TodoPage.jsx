@@ -1,10 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { getBadenWuerttembergCalendarEntriesInRange } from '@/utils/germanPublicHolidays'
 import { parseIcsEvents } from '@/utils/icsImport'
 import CalendarReminders from './CalendarReminders'
+import CalendarDay from './CalendarDay'
 import styles from './page.module.css'
 
 const STORAGE_KEY = 'andarun_todos_fallback_v1'
@@ -287,6 +288,8 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   const [detailId, setDetailId] = useState(null)
   const [detailForm, setDetailForm] = useState(() => emptyForm())
   const [newEventOpen, setNewEventOpen] = useState(false)
+  const [selectedDay, setSelectedDay] = useState(null)
+  const closeDay = useCallback(() => setSelectedDay(null), [])
   const [newEventForm, setNewEventForm] = useState(() => eventFormForDate())
   const [draggingId, setDraggingId] = useState(null)
   const [dropLaneId, setDropLaneId] = useState(null)
@@ -974,15 +977,15 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
               <div
                 className={`${styles.monthCell} ${!day ? styles.monthCellEmpty : ''} ${isToday ? styles.monthCellToday : ''} ${restDay ? styles.monthCellRest : ''}`}
                 key={day || `empty-${index}`}
-                onClick={() => openNewEvent(day)}
+                onClick={() => day && setSelectedDay(day)}
                 onKeyDown={event => {
                   if (!day || (event.key !== 'Enter' && event.key !== ' ')) return
                   event.preventDefault()
-                  openNewEvent(day)
+                  setSelectedDay(day)
                 }}
                 role={day ? 'button' : undefined}
                 tabIndex={day ? 0 : undefined}
-                aria-label={day ? `Termin am ${formatDeadline(day)} hinzufügen` : undefined}
+                aria-label={day ? `Tagesansicht für ${formatDeadline(day)} öffnen` : undefined}
                 aria-current={isToday ? 'date' : undefined}
               >
                 {day && <span className={styles.monthDay}>{Number(day.slice(-2))}</span>}
@@ -1029,6 +1032,18 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
         </div>
         </div>
       </section>}
+
+      {selectedDay && !newEventOpen && !detailId && <CalendarDay
+        day={selectedDay}
+        events={eventsByDate.get(selectedDay) || []}
+        markers={calendarMarkersByDate.get(selectedDay) || []}
+        duty={workByDate.get(selectedDay) ? workDutyLabel(workByDate.get(selectedDay)) : ''}
+        formatEventMeta={formatEventMeta}
+        onClose={closeDay}
+        onAdd={openNewEvent}
+        onEdit={openDetail}
+        onToggle={event => patchTodo(event.id, { done: !event.done })}
+      />}
 
       {completedOpen && (
         <div className={styles.modalBackdrop} role="presentation" onMouseDown={() => setCompletedOpen(false)}>

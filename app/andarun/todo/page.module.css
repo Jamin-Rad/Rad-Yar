@@ -2336,3 +2336,34 @@
 .reminderModal .modalHeader { background: #101d30; }
 .reminderModal .modalHeader h2 { font-family: var(--font-manrope, sans-serif); font-size: 28px; font-style: normal; color: #edf4ff; }
 .reminderActions .addBtn { background: #4cdbbc; color: #06352e; border: 1px solid #4cdbbc; font-weight: 750; }
+.dayModal,
+.eventsPage .dayModal {
+  width: min(760px, calc(100vw - 32px));
+  max-height: calc(100dvh - 40px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dayBody { padding: 24px; overflow-y: auto; min-height: 0; }
+.dayMarkers { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.dayList { display: grid; gap: 12px; }
+.dayEvent { display: flex; align-items: center; gap: 16px; padding: 18px; border: 1px solid #94a3b82e; border-radius: 16px; background: #94a3b80b; }
+.dayEventDetails { flex: 1; min-width: 0; display: grid; gap: 8px; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; padding: 0; overflow-wrap: anywhere; }
+.dayEventDetails strong { font-size: 19px; line-height: 1.4; }
+.dayTime { font-size: 14px; color: #4ddbb3; font-weight: 700; }
+.dayNote { white-space: pre-wrap; font-size: 14px; line-height: 1.6; opacity: .7; }
+.dayCancelled .dayEventDetails strong { text-decoration: line-through; opacity: .5; }
+.dayEmpty { padding: 32px 12px; text-align: center; opacity: .65; }
+.dayFooter { flex-shrink: 0; padding: 16px 24px; border-top: 1px solid #94a3b82e; }
+.dayAdd { width: 100%; min-height: 48px; border: 0; border-radius: 12px; background: #5ee6c0; color: #082b25; font-weight: 750; font-size: 16px; cursor: pointer; }
+.dayEvent .eventCheck { flex-shrink: 0; width: 40px; height: 40px; }
+.dayEventDetails:focus-visible, .dayAdd:focus-visible { outline: 2px solid #5ee6c0; outline-offset: 4px; }
+.lightPage .dayTime { color: #087457; }
+@media (max-width: 600px) {
+  .dayBody { padding: 16px; }
+  .dayEvent { padding: 14px; gap: 10px; }
+  .dayEventDetails strong { font-size: 17px; }
+  .dayFooter { padding: 14px 16px; }
+}
+
