@@ -101,13 +101,19 @@ function ChapterContent({ id, lang }) {
     <TeachingGroup id="caa-boston" title={c(COPY.bostonTitle)} tone="secondary">
       <div className={styles.diagnosticBody}>
         <Paragraphs values={COPY.bostonIntro} lang={lang} />
-        <h4 className={styles.subheading}>{c(COPY.eligibilityTitle)}</h4>
-        <TeachingList items={COPY.eligibility} lang={lang} />
-        <div className={styles.diagnosticRules}>
-          <div className={styles.criteria}><h4>{c(COPY.probable)}</h4><div className={styles.rule}><b><bdi>≥2</bdi></b><span>{c(COPY.hemorrhages)}</span></div><small>{c(COPY.or)}</small><div className={styles.rule}><b><bdi>1 + 1</bdi></b><span>{c(COPY.combination)}</span></div></div>
-          <div className={`${styles.criteria} ${styles.possible}`}><h4>{c(COPY.possible)}</h4><p>{c(COPY.possibleRule)}</p></div>
+        <section aria-labelledby="caa-boston-prerequisites-heading">
+          <h4 id="caa-boston-prerequisites-heading" className={`${styles.subheading} ${styles.diagnosticHeading}`}>{c(COPY.eligibilityTitle)}</h4>
+          <TeachingList items={COPY.eligibility} lang={lang} />
+          <Note warning lang={lang}><Paragraphs values={[COPY.deepWarning]} lang={lang} /></Note>
+        </section>
+        <section aria-labelledby="caa-boston-categories-heading">
+          <h4 id="caa-boston-categories-heading" className={`${styles.subheading} ${styles.diagnosticHeading}`}>{c(COPY.categoryTitle)}</h4>
+          <div className={styles.diagnosticRules}>
+            <div className={styles.criteria}><h4>{c(COPY.probable)}</h4><div className={styles.rule}><b><bdi>≥2</bdi></b><span>{c(COPY.hemorrhages)}</span></div><small>{c(COPY.or)}</small><div className={styles.rule}><b><bdi>1 + 1</bdi></b><span>{c(COPY.combination)}</span></div></div>
+            <div className={`${styles.criteria} ${styles.possible}`}><h4>{c(COPY.possible)}</h4><p>{c(COPY.possibleRule)}</p></div>
         </div>
-        <Note lang={lang}><Paragraphs values={COPY.counting} lang={lang} /></Note>
+          <Note lang={lang}><Paragraphs values={COPY.counting} lang={lang} /></Note>
+        </section>
         <details className={styles.ruleOverview}><summary>{c(COPY.bostonExercise)}</summary><BostonExplorer lang={lang} headingLevel="h4" /></details>
         <details className={styles.ruleOverview}><summary>{c(COPY.pathologyDetails)}</summary><p className={styles.context}>{c(COPY.pathology)}</p></details>
       </div>
