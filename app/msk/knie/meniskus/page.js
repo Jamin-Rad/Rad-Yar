@@ -7,7 +7,7 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
 import { TEAR_CASE_FRAMES } from './tearCaseFrames'
-import LessonCaseFile from '@/components/LessonCaseFile'
+import LessonCaseGallery from '@/components/LessonCaseGallery'
 import MeniscusTextLesson from '@/app/andarun/test/MeniscusTextLesson'
 import TearTypeExplorer from './TearTypeExplorer'
 import LotyschClassification from './LotyschClassification'
@@ -1170,17 +1170,14 @@ export default function MeniskusPage() {
 
             <div className={`${styles.subSectionBlock} ${contentStyles.gradingCases}`}>
               <h3 className={styles.subSectionTitle}>{copy.cases.title}</h3>
-              <div className={styles.caseGrid}>
-                {copy.cases.items.map(item => (
-                  <LessonCaseFile key={item.caseId} lang={lang} caseData={{
-                    heading: `Grad ${item.caseId === 'case-75168' ? '2c' : '2b'}`,
-                    variant: 'compact', aspectRatio: item.caseId === 'case-75168' ? '460 / 436' : '3 / 4',
-                    title: item.title, alt: item.title, initialFrame: item.initialFrame,
-                    frames: Array.from({ length: item.frameCount }, (_, index) => `/meniskus/cases/${item.caseId}/frame-${String(index + 1).padStart(2, '0')}.${item.frameExt}`),
-                    url: item.url, credit: item.credit,
-                  }} />
-                ))}
-              </div>
+              <LessonCaseGallery lang={lang} label={copy.cases.title} idPrefix="meniscus-grading" items={copy.cases.items.map(item => ({
+                id:item.caseId,label:item.label,caseData:{
+                  heading:item.label,variant:'compact',aspectRatio:item.caseId === 'case-75168' ? '460 / 436' : '3 / 4',
+                  title:item.title,alt:item.title,initialFrame:item.initialFrame,
+                  frames:Array.from({length:item.frameCount},(_,index)=>`/meniskus/cases/${item.caseId}/frame-${String(index+1).padStart(2,'0')}.${item.frameExt}`),
+                  url:item.url,credit:item.credit,
+                }
+              }))} />
             </div>
           </Section>
 
@@ -1189,18 +1186,14 @@ export default function MeniskusPage() {
             <TearTypeExplorer lang={lang} />
             <div className={`${styles.subSectionBlock} ${contentStyles.gradingCases}`}>
             <h3 className={styles.subSectionTitle}>{copy.cases.title}</h3>
-            <div className={styles.tearCaseGrid}>
-              {TEAR_CASES.map(item => {
-                const caseCopy = copy.tearTypes.caseItems[item.id]
-                return (
-                  <LessonCaseFile key={item.id} lang={lang} caseData={{
-                    heading: caseCopy.title, variant: 'compact', autoAspectRatio: true,
-                    title: caseCopy.sign, alt: caseCopy.title, initialFrame: item.initialFrame, frames: item.frames,
-                    url: item.study, credit: `Case courtesy of ${item.contributor}, Radiopaedia.org · rID ${item.caseId}`,
-                  }} />
-                )
-              })}
-            </div>
+            <LessonCaseGallery lang={lang} label={copy.cases.title} idPrefix="meniscus-tears" items={TEAR_CASES.map(item => {
+              const caseCopy=copy.tearTypes.caseItems[item.id]
+              return {id:item.id,label:caseCopy.title,caseData:{
+                heading:caseCopy.title,variant:'compact',autoAspectRatio:true,
+                title:caseCopy.sign,alt:caseCopy.title,initialFrame:item.initialFrame,frames:item.frames,
+                url:item.study,credit:`Case courtesy of ${item.contributor}, Radiopaedia.org · rID ${item.caseId}`,
+              }}
+            })} />
             </div>
             <Callout type="cave" label={copy.tearTypes.caveTitle}>{copy.tearTypes.caveText}</Callout>
           </Section>

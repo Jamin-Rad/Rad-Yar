@@ -452,3 +452,5 @@
 @media print {
   .page[data-lesson-section-divider='true'] .sectionOpen > .sectionBody::before { display: none; }
 }
+
+.compactCase .caseDescription{margin:0;color:var(--body);font-size:15px;line-height:1.75}

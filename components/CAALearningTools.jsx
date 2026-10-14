@@ -128,11 +128,23 @@ export function WhiteMatterMarkers({ items, lang, title }) {
   </div>
 }
 
+function EmphasizedFact({fact,lang}) {
+  let rest=pick(fact.text,lang)
+  const terms=fact.emphasis ? fact.emphasis[lang] || fact.emphasis.de : []
+  const parts=[]
+  while(rest){
+    const match=terms.map(term=>({term,index:rest.indexOf(term)})).filter(item=>item.index>=0).sort((a,b)=>a.index-b.index)[0]
+    if(!match){parts.push(rest);break}
+    parts.push(rest.slice(0,match.index));parts.push(<strong className={styles.wmEmphasis} key={parts.length}>{match.term}</strong>);rest=rest.slice(match.index+match.term.length)
+  }
+  return <>{parts}</>
+}
+
 function WhiteMatterRules({ items, lang, attention }) {
   return <div className={styles.wmRules} data-learning-tool="wm-rules">{items.map((item, index) =>
     <section key={index} className={styles.wmRule} aria-labelledby={`caa-wm-rule-${index}`}>
       <h5 id={`caa-wm-rule-${index}`}>{pick(item.title, lang)}</h5>
-      <dl className={styles.wmFacts}>{item.facts.map((fact, i) => <div key={i}><dt>{pick(fact.label, lang)}</dt><dd><bdi>{pick(fact.text, lang)}</bdi></dd></div>)}</dl>
+      <dl className={styles.wmFacts}>{item.facts.map((fact, i) => <div key={i}><dt>{pick(fact.label, lang)}</dt><dd><bdi><EmphasizedFact fact={fact} lang={lang} /></bdi></dd></div>)}</dl>
       <p className={styles.wmNote}><strong>{pick(attention, lang)}:</strong> {pick(item.note, lang)}</p>
     </section>
   )}</div>
@@ -144,7 +156,7 @@ export function BostonCountingGuide({ copy, lang }) {
   return <div className={styles.countingGuide} data-learning-tool="counting">
     <Tabs items={copy.countingTabs} value={selected} onChange={setSelected} id={id} label={copy.countingGuideTitle} lang={lang} />
     <div className={styles.countingPanel} id={id + '-panel'} role="tabpanel" aria-labelledby={id + '-tab-' + selected} data-counting-kind={selected === 0 ? 'bleeding' : 'wm'}>
-      {selected === 0 ? copy.counting.map((text, index) => <p key={index}>{pick(text, lang)}</p>) : <WhiteMatterRules items={copy.wm} lang={lang} attention={copy.attention} />}
+      {selected === 0 ? <><p>{pick(copy.countingIntro,lang)}</p><ul className={styles.countingLesions}>{copy.countingLesions.map((text,index)=><li key={index}>{pick(text,lang)}</li>)}</ul><ul className={styles.countingRules}>{copy.counting.slice(1).map((text,index)=><li key={index}>{pick(text,lang)}</li>)}</ul></> : <WhiteMatterRules items={copy.wm} lang={lang} attention={copy.attention} />}
     </div>
   </div>
 }
@@ -153,7 +165,7 @@ export function BostonCategories({ copy, lang }) {
   const [category, setCategory] = useState(0)
   const id = 'caa-categories-' + useId().replaceAll(':', '')
   const routes = category === 0
-    ? [{ value: '≥2', label: copy.hemorrhages }, { value: '1 + 1', label: copy.combination }]
+    ? [{ value: '≥2', label: copy.hemorrhages }, { value: '1 + 1', label: copy.combination, parts:copy.combinationParts }]
     : [{ value: '1', label: copy.hemorrhageSingle }, { value: '1', label: copy.wmTitle }]
   return <div className={styles.categories} data-learning-tool="categories">
     <div className={styles.categoryTabs}><Tabs items={[copy.probable, copy.possible]} value={category} onChange={setCategory} id={id} label={copy.categoryTitle} lang={lang} /></div>
@@ -161,7 +173,7 @@ export function BostonCategories({ copy, lang }) {
       <p className={styles.categoryLead}>{pick(copy.categoryLeads[category], lang)}</p>
       <div className={styles.categoryRoutes}>{routes.map((route, index) => <Fragment key={route.value + index}>
         {index > 0 && <span className={styles.categoryOr}>{pick(copy.or, lang)}</span>}
-        <div className={styles.categoryRoute}><strong><bdi dir="ltr">{route.value}</bdi></strong><p>{pick(route.label, lang)}</p></div>
+        <div className={styles.categoryRoute}><strong><bdi dir="ltr">{route.value}</bdi></strong><p className={route.parts ? styles.combinationParts : undefined}>{route.parts ? <><span>{pick(route.parts[0],lang)}</span><span className={styles.combinationPlus}>+</span><span>{pick(route.parts[1],lang)}</span></> : pick(route.label,lang)}</p></div>
       </Fragment>)}</div>
     </div>
   </div>

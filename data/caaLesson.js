@@ -125,9 +125,9 @@ export const CAA_COPY = {
         L('CSO-PVS bezeichnet erweiterte PVS im Centrum semiovale, dem oberen Marklager.', 'CSO-PVS refers to enlarged PVS in the centrum semiovale, the upper cerebral white matter.', 'CSO-PVS به PVS گشادشده در centrum semiovale، یعنی ماده سفید بالایی مغز، گفته می‌شود.'),
       ],
       facts: [
-        { label: L('Lokalisation', 'Location', 'محل'), text: L('Centrum semiovale einer Hemisphäre.', 'Centrum semiovale of one hemisphere.', 'Centrum semiovale یک نیمکره.') },
+        { label: L('Lokalisation', 'Location', 'محل'), text: L('Centrum semiovale einer Hemisphäre.', 'Centrum semiovale of one hemisphere.', 'Centrum semiovale یک نیمکره.'), emphasis: {de:['einer Hemisphäre'],en:['one hemisphere'],fa:['یک نیمکره']} },
         { label: L('Sequenz', 'Sequence', 'سکانس'), text: L('Axiale T2-Sequenz.', 'Axial T2-weighted imaging.', 'سکانس T2 آگزیال.') },
-        { label: L('Zählregel', 'Counting rule', 'قاعده شمارش'), text: L('Mehr als 20 sichtbare Räume auf einer Schicht.', 'More than 20 visible spaces on one slice.', 'بیش از ۲۰ فضای قابل مشاهده در یک برش.') },
+        { label: L('Zählregel', 'Counting rule', 'قاعده شمارش'), text: L('Mehr als 20 sichtbare Räume auf einer Schicht.', 'More than 20 visible spaces on one slice.', 'بیش از ۲۰ فضای قابل مشاهده در یک برش.'), emphasis:{de:['20','auf einer Schicht.'],en:['20','on one slice.'],fa:['۲۰','در یک برش.']} },
       ],
       note: L('PVS in den Basalganglien zählen für diesen Boston-Marker nicht.', 'Basal ganglia PVS do not count towards this Boston marker.', 'فضاهای اطراف عروقی در عقده‌های قاعده‌ای برای این نشانگر Boston حساب نمی‌شوند.'),
     },
@@ -141,7 +141,7 @@ export const CAA_COPY = {
       facts: [
         { label: L('Lokalisation', 'Location', 'محل'), text: L('Subkortikale weiße Substanz beider Hemisphären.', 'Subcortical white matter of both hemispheres.', 'ماده سفید زیرقشری هر دو نیمکره.') },
         { label: L('Sequenz', 'Sequence', 'سکانس'), text: 'T2 / FLAIR' },
-        { label: L('Zählregel', 'Counting rule', 'قاعده شمارش'), text: L('Mehr als 10 kleine, runde oder ovale helle Herde in beiden Hemisphären.', 'More than 10 small, round or oval bright foci in both hemispheres.', 'بیش از ۱۰ کانون روشن کوچک، گرد یا بیضی در هر دو نیمکره.') },
+        { label: L('Zählregel', 'Counting rule', 'قاعده شمارش'), text: L('Mehr als 10 kleine, runde oder ovale helle Herde in beiden Hemisphären.', 'More than 10 small, round or oval bright foci in both hemispheres.', 'بیش از ۱۰ کانون روشن کوچک، گرد یا بیضی در هر دو نیمکره.'), emphasis:{de:['10','in beiden Hemisphären.'],en:['10','in both hemispheres.'],fa:['۱۰','در هر دو نیمکره.']} },
       ],
       note: L('Große zusammenfließende Marklagerveränderungen allein erfüllen dieses Kriterium nicht.', 'Large confluent white matter changes alone do not meet this criterion.', 'تغییرات بزرگ و به‌هم‌پیوسته ماده سفید به‌تنهایی این معیار را برآورده نمی‌کنند.'),
     },
@@ -166,9 +166,12 @@ export const CAA_COPY = {
   probable: L('Probable CAA', 'Probable CAA', 'CAA محتمل · Probable'),
   possible: L('Possible CAA', 'Possible CAA', 'CAA ممکن · Possible'),
   hemorrhages: L('strikt lobäre Blutungsläsionen', 'strictly lobar haemorrhagic lesions', 'ضایعات خونریزی‌دهنده صرفاً لوبار'),
+  combinationParts: [L('Eine strikt lobäre Blutungsläsion', 'One strictly lobar haemorrhagic lesion', 'یک ضایعه خونریزی صرفاً لوبار'), L('ein spezifischer WM-Marker', 'one specific WM marker', 'یک نشانگر اختصاصی ماده سفید')],
   combination: L('Eine strikt lobäre Blutungsläsion + ein spezifischer WM-Marker', 'One strictly lobar haemorrhagic lesion + one specific WM marker', 'یک ضایعه خونریزی صرفاً لوبار + یک نشانگر اختصاصی ماده سفید'),
   possibleRule: L('Eine strikt lobäre Blutungsläsion ODER ein spezifischer WM-Marker, ohne die probable-Kriterien zu erfüllen.', 'One strictly lobar haemorrhagic lesion OR one specific WM marker, without meeting probable criteria.', 'یک ضایعه خونریزی صرفاً لوبار یا یک نشانگر اختصاصی ماده سفید، بدون احراز معیارهای CAA محتمل.'),
   or: L('ODER', 'OR', 'یا'),
+  countingIntro: L('Als Blutungsläsionen zählen:', 'Qualifying haemorrhagic lesions:', 'ضایعات خونریزی قابل شمارش:'),
+  countingLesions: [L('Lobäre intrazerebrale Blutungen', 'Lobar intracerebral haemorrhages', 'خونریزی‌های داخل مغزی لوبار'), L('Mikroblutungen', 'Microbleeds', 'میکروخونریزی‌ها'), L('cSS- oder cSAH-Herde', 'cSS or cSAH foci', 'کانون‌های cSS یا cSAH')],
   countingTabs: [L('Blutungsläsionen', 'Haemorrhagic lesions', 'ضایعات خونریزی'), L('WM-Marker', 'WM markers', 'نشانگرهای WM')],
   counting: [
     L('Als Blutungsläsionen zählen: lobäre intrazerebrale Blutungen, Mikroblutungen sowie cSS- oder cSAH-Herde.', 'Haemorrhagic lesions include lobar intracerebral haemorrhages, microbleeds and cSS or cSAH foci.', 'ضایعات خونریزی شامل خونریزی‌های داخل مغزی لوبار، میکروخونریزی‌ها و کانون‌های cSS یا cSAH هستند.'),
