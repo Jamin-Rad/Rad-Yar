@@ -18,7 +18,7 @@ export default function LessonCaseGallery({items,lang,label,idPrefix='lesson-cas
     event.preventDefault();setSelected(next);event.currentTarget.parentElement.children[next].focus()
   }
   return <div className={styles.gallery} data-case-gallery={idPrefix} dir={lang==='fa'?'rtl':'ltr'}>
-    <div className={styles.tabs} role="tablist" aria-label={pick(label,lang)} style={{'--case-count':items.length}}>{items.map((entry,index)=><button type="button" key={entry.id} role="tab" id={id+'-tab-'+index} aria-selected={index===selected} aria-controls={id+'-panel'} tabIndex={index===selected?0:-1} onClick={()=>setSelected(index)} onKeyDown={event=>selectByKey(event,index)}>{pick(entry.label,lang)}</button>)}</div>
+    <div className={styles.tabs} role="tablist" aria-label={pick(label,lang)} style={{'--case-count':items.length,gridTemplateColumns:items.length===1?'minmax(0,1fr)':undefined}}>{items.map((entry,index)=><button type="button" key={entry.id} role="tab" id={id+'-tab-'+index} aria-selected={index===selected} aria-controls={id+'-panel'} tabIndex={index===selected?0:-1} onClick={()=>setSelected(index)} onKeyDown={event=>selectByKey(event,index)}>{pick(entry.label,lang)}</button>)}</div>
     <div id={id+'-panel'} role="tabpanel" aria-labelledby={id+'-tab-'+selected} data-case-id={item.id}>
       <LessonCaseFile key={item.id} lang={lang} caseData={{...item.caseData,heading:item.caseData.heading ? pick(item.caseData.heading,lang) : undefined}} />
     </div>

@@ -9,7 +9,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
 import MeniscusTextLesson, { MENISCUS_TITLE } from './MeniscusTextLesson'
-import RadiopaediaFile from '@/components/LessonCaseFile'
+import LessonCaseGallery from '@/components/LessonCaseGallery'
+import { TeachingGroup, TeachingGroups } from '@/components/lesson-template/InteractiveTeachingGroups'
 import styles from '@/components/LessonTemplate.module.css'
 
 const L = (de, en, fa) => ({ de, en, fa })
@@ -157,6 +158,22 @@ const RADIOPAEDIA_CASE = {
   credit: 'Case courtesy of Ian Bickle, Radiopaedia.org · CC BY-NC-SA 3.0',
 }
 
+// Use the same selectable compact case layout as the CAA lesson.
+const CASE_EXAMPLES = [{
+  id: 28441,
+  label: L('ACI-Dissektion · T1-Fat-Sat', 'ICA dissection · T1 fat-sat', 'دیسکسیون ICA · T1 با اشباع چربی'),
+  caseData: {
+    ...RADIOPAEDIA_CASE,
+    variant: 'compact',
+    heading: RADIOPAEDIA_CASE.title,
+    title: RADIOPAEDIA_CASE.findings[0],
+    description: [...RADIOPAEDIA_CASE.findings.slice(1), RADIOPAEDIA_CASE.interpretation],
+    findings: undefined,
+    interpretation: undefined,
+    credit: <>Case courtesy of Ian Bickle, <a href="https://radiopaedia.org/" target="_blank" rel="noopener noreferrer">Radiopaedia.org</a> · <a href="https://radiopaedia.org/cases/28441" target="_blank" rel="noopener noreferrer">rID 28441</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 3.0</a></>,
+  },
+}]
+
 function Icon({ name, className = '' }) {
   const paths = {
     brain: <><path d="M12 5.3a3.4 3.4 0 0 0-6.1 2.1A3.5 3.5 0 0 0 4 13.8a3.8 3.8 0 0 0 4 4.9c1.1 0 2.1-.5 2.7-1.2V6.8A2.9 2.9 0 0 0 8.2 4c-1 0-1.8.5-2.3 1.3"/><path d="M12 5.3a3.4 3.4 0 0 1 6.1 2.1 3.5 3.5 0 0 1 1.9 6.4 3.8 3.8 0 0 1-4 4.9c-1.1 0-2.1-.5-2.7-1.2V6.8A2.9 2.9 0 0 1 15.8 4c1 0 1.8.5 2.3 1.3"/><path d="M7.2 9.2c1 .1 1.8.8 1.9 1.8M16.8 9.2c-1 .1-1.8.8-1.9 1.8M7.5 15.2c.8-.7 1.6-.9 2.4-.7M16.5 15.2c-.8-.7-1.6-.9-2.4-.7"/></>,
@@ -199,7 +216,11 @@ function StartSection({ lang }) {
       {COPY.workflow.map(([title, text, icon], index) => <li key={pick(title, lang)}><span className={styles.stepIcon}><Icon name={icon} /></span><span className={styles.stepNumber}>{index + 1}</span><strong>{pick(title, lang)}</strong><p>{pick(text, lang)}</p></li>)}
     </ol>
     <aside className={styles.warning}><span className={styles.calloutLabel}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3L2 21h20z M12 9v5 M12 17v1" /></svg>{pick(L('Cave', 'Caution', 'احتیاط'), lang)}</span><div className={styles.calloutBody}><strong>{pick(COPY.warningTitle, lang)}</strong><p>{pick(COPY.warningText, lang)}</p></div></aside>
-    <RadiopaediaFile lang={lang} caseData={RADIOPAEDIA_CASE} />
+    <TeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'}>
+      <TeachingGroup id="test-case-examples" title={pick(L('Fallbeispiele', 'Case examples', 'نمونه کیس‌ها'), lang)}>
+        <LessonCaseGallery items={CASE_EXAMPLES} lang={lang} label={L('Fallbeispiel auswählen', 'Select a case example', 'انتخاب نمونه کیس')} idPrefix="test-cases" />
+      </TeachingGroup>
+    </TeachingGroups>
   </>
 }
 
