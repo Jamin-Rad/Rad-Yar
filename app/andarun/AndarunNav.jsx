@@ -18,17 +18,15 @@ export default function AndarunNav() {
   const section = SECTIONS.find(([prefix]) => pathname === prefix || pathname.startsWith(`${prefix}/`))?.[1]
   return (
     <div className={styles.navSlot}>
-      <header className={styles.navShell}>
+      <header className={styles.navShell} dir="ltr">
         <nav className={styles.nav} aria-label="Jaminova">
-          <div className={styles.identity}>
-            <Link className={styles.brand} href="/andarun" aria-label="Jaminova Startseite">
-              <span className={styles.brandMark} aria-hidden="true">J</span>
-              <span className={styles.brandName}>Jaminova<span className={styles.brandDot} aria-hidden="true" /></span>
-            </Link>
-            {section ? <span className={styles.context} aria-label={`Aktueller Bereich: ${section}`}>{section}</span> : null}
-          </div>
+          <Link className={styles.brand} href="/andarun" aria-label="Jaminova Startseite">
+            <span className={styles.brandName}>Jaminova</span>
+            <svg className={styles.sparkle} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1.3 9 3 10.7 12 12-9 1.3-10.7 3-12 12C10.7 15 9 13.3 0 12c9-1.3 10.7-3 12-12Z" /></svg>
+          </Link>
+          {section ? <span className={styles.context} aria-label={`Aktueller Bereich: ${section}`}>{section}</span> : null}
           <Link className={styles.homeLink} href="/andarun" aria-label="Jaminova Übersicht" aria-current={pathname === '/andarun' ? 'page' : undefined}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="3" y="15" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10h14v11h-5v-7h-4v7H5Z" fill="#e8cc8f"/><path d="m12 2 11 10h-4l-7-6-7 6H1Z" fill="#f4dca4"/></svg>
             <span>Übersicht</span>
           </Link>
         </nav>
