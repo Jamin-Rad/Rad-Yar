@@ -567,6 +567,11 @@ function AnatomieModal({ copy, lang, onClose }) {
                 <span>
                   <strong>{tx(item.clinicalTitle, lang)}</strong>
                   <small>{tx(item.clinicalNote, lang)}</small>
+                  {item.source && (
+                    <small>
+                      <a href={item.source.url} target="_blank" rel="noopener noreferrer">{item.source.label}</a>
+                    </small>
+                  )}
                 </span>
               </aside>
               {topic.source && (

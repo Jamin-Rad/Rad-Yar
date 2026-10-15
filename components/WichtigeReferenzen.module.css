@@ -1685,6 +1685,10 @@
 }
 :global(html[data-theme='dark']) .anatomyIntro p { color: #cbd5e1; }
 :global(html[data-theme='dark']) .anatomySidebar { background: #100f1c; }
+:global(html[data-theme='dark']) .anatomySidebar .navActivePurple {
+  background: color-mix(in srgb, var(--ref-color) 22%, #100f1c);
+  color: #f5f3ff;
+}
 :global(html[data-theme='dark']) .anatomySubnav {
   border-inline-start-color: color-mix(in srgb, var(--ref-color) 30%, #30364a);
 }
