@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import styles from '../admin.module.css'
+import MonthlyFinanceHeader from './MonthlyFinanceHeader'
 
 const STORAGE_KEY    = 'radyar_private_budget_v1'
 const RECURRING_KEY  = 'radyar_recurring_v1'
@@ -318,15 +319,12 @@ async function reconcileBudgetState(localState, baseState) {
 }
 
 function FinanceSyncStatus({ status }) {
+  if (status !== 'offline' && status !== 'conflict') return null
   const config = {
-    loading: { label: 'Verbindung wird hergestellt', detail: 'Finanzdaten werden geladen.' },
-    saving: { label: 'Wird gespeichert', detail: 'Deine Änderungen werden online gesichert.' },
-    merging: { label: 'Änderungen werden zusammengeführt', detail: 'Lokale und aktuelle Online-Daten werden sicher abgeglichen.' },
-    synced: { label: 'Online gespeichert', detail: 'Alle Änderungen sind synchronisiert.' },
     offline: { label: 'Nur lokal gespeichert', detail: 'Online-Speichern ist pausiert. Deine Änderungen bleiben auf diesem Gerät erhalten.' },
     conflict: { label: 'Abgleich pausiert', detail: 'Deine Eingaben bleiben auf diesem Gerät und werden beim nächsten Öffnen automatisch zusammengeführt.' },
   }
-  const current = config[status] || config.loading
+  const current = config[status]
 
   return (
     <div className={`${styles.financeSyncStatus} ${styles[`financeSyncStatus_${status}`] || ''}`} role="status" aria-live="polite" title={current.detail}>
@@ -582,21 +580,6 @@ function sparquote(income, expenses) {
   return ((income - expenses) / income * 100).toFixed(1)
 }
 
-function IconCalendar() {
-  return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-}
-function IconChart() {
-  return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-}
-function IconSettings() {
-  return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-}
-function IconTrend() {
-  return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-}
-function IconPlane() {
-  return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 2 9 15"/><path d="m22 2-7 20-4-9-9-4Z"/></svg>
-}
 function IranCategoryIcon({ type }) {
   const paths = {
     transport: <><path d="M3 11h18"/><path d="M5 11l2-6h10l2 6v7H5z"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></>,
@@ -887,8 +870,6 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
   const [chartCats, setChartCats] = useState(new Set())
   const [chartFrom, setChartFrom] = useState('2026-01')
   const [chartTo, setChartTo]     = useState(() => getMonthKey())
-  const [showMonthPicker, setShowMonthPicker] = useState(false)
-  const monthPickerRef = useRef(null)
 
   // Sonderurlaub Iran
   const [iranExpenseForm, setIranExpenseForm] = useState(() => ({
@@ -1096,18 +1077,6 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
       window.clearTimeout(timer)
     }
   }, [store, recurring, catBudgets, categories, loaded])
-
-  // Close month picker on outside click
-  useEffect(() => {
-    if (!showMonthPicker) return
-    const handler = e => {
-      if (monthPickerRef.current && !monthPickerRef.current.contains(e.target)) {
-        setShowMonthPicker(false)
-      }
-    }
-    document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
-  }, [showMonthPicker])
 
   useEffect(() => {
     if (!iranOpenCategory) return
@@ -1614,8 +1583,7 @@ ${manualEntries.length ? `
   }, [catDetailEntries])
 
   // ── Actions ────────────────────────────────────────────────────────────────
-  function prevMonth() { const [y, m] = month.split('-').map(Number); setMonth(getMonthKey(new Date(y, m - 2, 1))) }
-  function nextMonth() { const [y, m] = month.split('-').map(Number); setMonth(getMonthKey(new Date(y, m, 1))) }
+  function selectFinanceMonth(key) { setMonth(key); setYear(Number(key.slice(0, 4))) }
   function updateMonth(updater) { setStore(prev => { const cur = prev[month] || emptyMonth(); return { ...prev, [month]: updater(cur) } }) }
 
   function allEntries() {
@@ -1855,7 +1823,6 @@ ${manualEntries.length ? `
   }
 
   function goToMonth(key) { setMonth(key); setView('monat') }
-  function navEinstellung(sub) { setView('einstellung'); setSubView(sub) }
 
   function seedMai2026() {
     if (!window.confirm('Mai 2026 Ausgaben eintragen? Bereits vorhandene Einträge bleiben erhalten.')) return
@@ -2017,21 +1984,11 @@ ${manualEntries.length ? `
     setEditingEntry(null)
   }
 
-  function SidebarItem({ icon, label, active, onClick, badge }) {
-    return (
-      <button className={active ? styles.sidebarItemActive : styles.sidebarItem} onClick={onClick} aria-current={active ? 'page' : undefined}>
-        <span className={styles.sidebarIcon}>{icon}</span>
-        <span className={styles.sidebarLabel}>{label}</span>
-        {badge && <span className={styles.sidebarBadge}>{badge}</span>}
-      </button>
-    )
-  }
-
   const isIncome = entryType === 'income'
   const popupAccent = isIncome ? '#16a34a' : '#f97316'
 
   return (
-    <div className={styles.page}>
+    <div className={`${styles.page} ${!iranOnly ? styles.monthlyFinancePage : ''}`}>
       <main className={styles.content}>
 
         {/* ── HEADER ── */}
@@ -2040,112 +1997,21 @@ ${manualEntries.length ? `
             ← {homeLabel || 'Zurück'}
           </Link>
         )}
-        {!iranOnly && <div className={styles.financeHeader}>
-          <div className={styles.financeHeroCopy}>
-            <span className={styles.financeEyebrow}>Jaminova / Finanzen</span>
-            <h1 className={styles.title}>Finanzen</h1>
-            <p className={styles.financeHeroText}>Dein Geld. Klar geordnet.</p>
-            <FinanceSyncStatus status={syncStatus} />
-          </div>
-          <div className={styles.monthNav} ref={monthPickerRef}>
-            <button className={styles.monthNavBtn} onClick={prevMonth} aria-label="Vorheriger Monat">‹</button>
-            <button
-              className={styles.monthDisplay}
-              onClick={() => setShowMonthPicker(p => !p)}
-              aria-label="Monat auswählen"
-            >
-              <span className={styles.monthDisplayLabel}>{MONTH_SHORT[Number(month.split('-')[1]) - 1]}</span>
-              <span className={styles.monthDisplayYear}>{month.split('-')[0]}</span>
-            </button>
-            <button className={styles.monthNavBtn} onClick={nextMonth} aria-label="Nächster Monat">›</button>
-
-            {showMonthPicker && (() => {
-              const [pickerYear, setPickerYear] = [
-                Number(month.split('-')[0]),
-                y => {
-                  const m = month.split('-')[1]
-                  setMonth(`${y}-${m}`)
-                }
-              ]
-              const todayKey = getMonthKey()
-              return (
-                <div className={styles.monthPickerDropdown}>
-                  <div className={styles.monthPickerYearRow}>
-                    <button className={styles.monthPickerYearBtn} onClick={() => setPickerYear(pickerYear - 1)}>‹</button>
-                    <span className={styles.monthPickerYearLabel}>{pickerYear}</span>
-                    <button className={styles.monthPickerYearBtn} onClick={() => setPickerYear(pickerYear + 1)}>›</button>
-                  </div>
-                  <div className={styles.monthPickerGrid}>
-                    {MONTH_SHORT.map((label, i) => {
-                      const key = `${pickerYear}-${String(i + 1).padStart(2, '0')}`
-                      const isSelected = key === month
-                      const isToday = key === todayKey
-                      return (
-                        <button
-                          key={key}
-                          className={`${styles.monthPickerCell} ${isSelected ? styles.monthPickerCellSelected : ''} ${isToday && !isSelected ? styles.monthPickerCellToday : ''}`}
-                          onClick={() => { setMonth(key); setShowMonthPicker(false) }}
-                        >
-                          {label}
-                        </button>
-                      )
-                    })}
-                  </div>
-                </div>
-              )
-            })()}
-          </div>
-        </div>}
-
-        {/* ── METRIKEN ── */}
-        {!iranOnly && <section className={styles.financeMetrics} aria-label="Monatsbilanz">
-          <div className={styles.financeBalanceCard}>
-            <span className={styles.financeBalanceLabel}>Monatsbilanz · {formatMonthLabel(month)}</span>
-            <strong className={summary.balance >= 0 ? styles.financeBalancePositive : styles.financeBalanceNegative}>{formatMoney(summary.balance)}</strong>
-            <div className={styles.financeBalanceSplit}>
-              <span><small>Eingegangen</small><b>+ {formatMoney(summary.income)}</b></span>
-              <span><small>Ausgegeben</small><b>− {formatMoney(summary.expenses)}</b></span>
-            </div>
-          </div>
-          <div className={styles.financeMetric}>
-            <div className={styles.financeMetricTop}>
-              <span>Einkommen</span>
-              <button type="button" className={`${styles.financeMetricAdd} ${styles.financeMetricAddIncome}`} onClick={() => openPopup('income')} aria-label="Neues Einkommen hinzufügen" title="Neues Einkommen hinzufügen"><IconPlus /></button>
-            </div>
-            <strong className={styles.moneyPositive}>{formatMoney(summary.income)}</strong>
-            <small>{incomeTotals.length} {incomeTotals.length === 1 ? 'Quelle' : 'Quellen'}</small>
-          </div>
-          <div className={styles.financeMetric}>
-            <div className={styles.financeMetricTop}>
-              <span>Ausgaben</span>
-              <button type="button" className={styles.financeMetricAdd} onClick={() => openPopup('expense')} aria-label="Neue Ausgabe hinzufügen" title="Neue Ausgabe hinzufügen"><IconPlus /></button>
-            </div>
-            <strong className={styles.moneyNegative}>{formatMoney(summary.expenses)}</strong>
-            <small>{categoryTotals.length} Kategorien</small>
-          </div>
-          <div className={styles.financeMetric}>
-            <span>Sparquote</span>
-            <strong>{summary.income ? `${sparquote(summary.income, summary.expenses)} %` : '—'}</strong>
-            <small>{summary.balance >= 0 ? 'im positiven Bereich' : 'Ausgaben über Einkommen'}</small>
-          </div>
-        </section>}
+        {!iranOnly && <MonthlyFinanceHeader
+          month={month}
+          onMonthChange={selectFinanceMonth}
+          entries={monthData.entries}
+          loaded={loaded}
+          onAdd={openPopup}
+          view={view}
+          onNavigate={setView}
+          showVacation={!excludeVacation}
+        >
+          <FinanceSyncStatus status={syncStatus} />
+        </MonthlyFinanceHeader>}
 
         {/* ── LAYOUT ── */}
         <div className={iranOnly ? styles.iranAppLayout : styles.financeLayout}>
-          {!iranOnly && <aside className={styles.financeSidebar}>
-            <nav className={styles.sidebarNav}>
-              <SidebarItem icon={<IconCalendar />} label="Monatsübersicht" active={view === 'monat'} onClick={() => setView('monat')} />
-              <SidebarItem icon={<IconChart />} label="Jahresübersicht" active={view === 'jahr'} onClick={() => setView('jahr')} />
-              <SidebarItem icon={<IconTrend />} label="Verlauf" active={view === 'verlauf'} onClick={() => setView('verlauf')} />
-              {!excludeVacation ? <Link className={styles.sidebarItem} href="/andarun/urlaub">
-                <span className={styles.sidebarIcon}><IconPlane /></span>
-                <span className={styles.sidebarLabel}>Urlaub</span>
-              </Link> : null}
-              <div className={styles.sidebarDivider} />
-              <SidebarItem icon={<IconSettings />} label="Einstellung" active={view === 'einstellung'} onClick={() => navEinstellung(subView)} />
-            </nav>
-          </aside>}
-
           <div className={styles.financeMain}>
 
             {view === 'einstellung' ? (

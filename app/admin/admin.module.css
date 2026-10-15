@@ -6441,6 +6441,15 @@
 }
 
 /* ── Finance settings: clear sections + versioned fixed costs ── */
+.monthlyFinancePage {
+  background: #f5f7fa;
+  font-family: var(--font-manrope), system-ui, -apple-system, sans-serif;
+}
+
+.monthlyFinancePage .financeSyncStatus { margin: 0 0 18px; }
+
+:global(html[data-theme='dark']) .monthlyFinancePage { background: #101722; }
+
 .settingsSectionNav {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

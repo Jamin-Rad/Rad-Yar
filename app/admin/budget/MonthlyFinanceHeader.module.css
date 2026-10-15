@@ -1,0 +1,147 @@
+.root {
+  --ink: #152035;
+  --muted: #66768f;
+  --line: #e5eaf2;
+  --surface: #fff;
+  --soft: #f8faff;
+  --fixed: #5268e8;
+  --current: #68bfc9;
+  --track: #e9edf4;
+  color: var(--ink);
+  font-family: var(--font-manrope), system-ui, -apple-system, sans-serif;
+  margin-bottom: 24px;
+}
+.root button, .root a { font: inherit; -webkit-tap-highlight-color: transparent; }
+.root button { cursor: pointer; }
+.root button:focus-visible, .root a:focus-visible { outline: 3px solid #5268e8; outline-offset: 4px; }
+.root svg { width: 22px; height: 22px; flex-shrink: 0; }
+.titleRow { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+.titleRow h1 { margin: 0; font-size: clamp(26px, 3.2vw, 40px); font-weight: 800; line-height: 1.2; letter-spacing: -.045em; }
+.actions { display: flex; gap: 12px; flex-shrink: 0; }
+.actions button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 10px 18px; border: 1px solid #d3dcff; border-radius: 11px; background: var(--surface); color: #3e56d7; font-size: 14px; font-weight: 750; box-shadow: 0 2px 3px #15203505; }
+.actions button:hover { background: var(--soft); }
+.actions .primaryAction { background: #5268e8; border-color: #5268e8; color: #fff; }
+.actions .primaryAction:hover { background: #4157d5; }
+.summary { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 40px; padding: 32px 36px; border: 1px solid var(--line); border-radius: 24px; background: var(--surface); box-shadow: 0 5px 24px #15203504; }
+.summaryData { min-width: 0; }
+.monthPicker { position: relative; z-index: 2; padding-bottom: 23px; border-bottom: 1px solid var(--line); }
+.monthControls { display: flex; align-items: center; gap: 26px; }
+.monthTitle { display: inline-flex; align-items: center; gap: 16px; min-width: 0; padding: 0; border: 0; text-align: left; color: var(--ink); background: transparent; }
+.calendarIcon { display: grid; place-items: center; width: 56px; height: 64px; border: 1px solid var(--line); border-radius: 14px; background: var(--soft); }
+.calendarIcon svg { width: 28px; height: 28px; color: var(--muted); }
+.monthTitle > span:last-child { display: grid; gap: 2px; }
+.monthTitle strong { font-size: clamp(24px, 2.7vw, 34px); font-weight: 800; letter-spacing: -.04em; line-height: 1.2; }
+.monthTitle small { color: var(--muted); font-size: 16px; font-weight: 550; }
+.monthSteps { display: flex; gap: 8px; }
+.monthSteps button, .pickerYear button { display: grid; place-items: center; min-height: 44px; width: 44px; padding: 0; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); background: var(--soft); }
+.monthSteps button:hover, .pickerYear button:hover { border-color: #b8c4ed; background: #eef2ff; }
+.pickerPanel { position: absolute; top: calc(100% - 8px); left: 0; z-index: 10; width: 308px; max-width: 100%; padding: 14px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); box-shadow: 0 16px 45px #15203522; }
+.pickerYear { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.pickerYear strong { font-size: 17px; }
+.monthGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+.monthGrid button { min-height: 44px; border: 0; border-radius: 9px; background: transparent; color: var(--ink); font-size: 13px; font-weight: 650; }
+.monthGrid button:hover { background: var(--soft); }
+.monthGrid button[aria-pressed='true'] { color: #fff; background: #5268e8; }
+.balance { display: grid; gap: 6px; margin: 24px 0 29px; }
+.balance > span { font-size: 18px; font-weight: 650; color: #3c4c65; }
+.balance > strong { font-size: clamp(36px, 4.5vw, 60px); line-height: 1.15; font-weight: 800; letter-spacing: -.05em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.balance small { color: var(--muted); font-size: 13px; }
+.metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 0; }
+.metrics > div { min-width: 0; }
+.metrics > div:nth-child(3) { border-left: 1px solid var(--line); padding-left: 20px; }
+.metrics dt { color: var(--muted); font-size: 12px; line-height: 1.4; margin-bottom: 9px; white-space: nowrap; }
+.metrics dd { margin: 0; color: var(--ink); font-size: clamp(16px, 1.55vw, 22px); font-weight: 800; letter-spacing: -.035em; line-height: 1.4; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.metrics .fixedAmount { color: var(--fixed); }
+.metrics .currentAmount { color: #378795; }
+.root .negative { color: #c24055; }
+.chart { align-self: center; display: grid; justify-items: center; gap: 18px; margin: 0; }
+.ring { position: relative; width: 258px; max-width: 100%; aspect-ratio: 1; }
+.ring > svg { display: block; width: 100%; height: 100%; }
+.ringTrack { stroke: var(--track); }
+.fixedArc { stroke: var(--fixed); }
+.currentArc { stroke: var(--current); }
+.ringCenter { position: absolute; inset: 24%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; }
+.ringCenter strong { font-size: 35px; line-height: 1.1; font-weight: 800; letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+.ringCenter span { max-width: 130px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.legend { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px 14px; }
+.legend > span { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 11px; white-space: nowrap; }
+.legend i { height: 9px; width: 9px; border-radius: 50%; }
+.fixedDot { background: var(--fixed); }
+.currentDot { background: var(--current); }
+.remainingDot { background: var(--track); border: 1px solid #cad3e1; }
+.navigation { display: flex; align-items: stretch; gap: 8px; margin-top: 20px; border-bottom: 1px solid var(--line); }
+.navigation button, .navigation a { display: inline-flex; flex: 1 0 auto; justify-content: center; align-items: center; gap: 12px; min-height: 56px; border: 0; border-bottom: 3px solid transparent; padding: 10px 12px; border-radius: 0; background: transparent; color: #56667f; font-size: 13px; font-weight: 700; text-decoration: none; }
+.navigation button:hover, .navigation a:hover { color: var(--ink); background: #e9edf455; }
+.navigation button[aria-current='page'] { color: var(--ink); border-bottom-color: #152035; }
+@media (max-width: 1100px) {
+  .summary { grid-template-columns: minmax(0, 1fr) 230px; gap: 28px; padding: 28px; }
+  .ring { width: 224px; }
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .metrics > div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .metrics dd { font-size: 21px; }
+  .monthControls { gap: 16px; justify-content: space-between; }
+}
+@media (max-width: 700px) {
+  .titleRow { align-items: flex-start; flex-direction: column; gap: 16px; margin-bottom: 20px; }
+  .titleRow h1 { font-size: 30px; max-width: 100%; }
+  .actions { width: 100%; gap: 10px; }
+  .actions button { flex: 1; padding-inline: 12px; font-size: 13px; }
+  .summary { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 22px; border-radius: 20px; }
+  .monthControls { gap: 10px; }
+  .monthTitle { gap: 10px; }
+  .monthTitle strong { font-size: 27px; }
+  .monthTitle small { font-size: 14px; }
+  .calendarIcon { display: none; }
+  .monthSteps { gap: 5px; }
+  .monthSteps button { width: 40px; min-height: 44px; }
+  .balance { margin: 24px 0; }
+  .balance > span { font-size: 16px; }
+  .balance > strong { font-size: clamp(31px, 9.3vw, 44px); }
+  .balance small { font-size: 12px; }
+  .metrics { gap: 20px 14px; }
+  .metrics > div:nth-child(even) { padding-left: 16px; border-left: 1px solid var(--line); }
+  .metrics dd { font-size: clamp(16px, 5vw, 21px); }
+  .metrics dt { font-size: 11px; margin-bottom: 5px; }
+  .chart { gap: 12px; }
+  .ring { width: 180px; }
+  .ringCenter { gap: 4px; }
+  .ringCenter strong { font-size: 28px; }
+  .ringCenter span { font-size: 10px; }
+  .legend { gap: 8px 11px; }
+  .legend > span { font-size: 10px; }
+  .navigation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 8px; margin-top: 14px; }
+  .navigation button { justify-content: flex-start; min-width: 0; gap: 9px; min-height: 48px; padding-inline: 8px; font-size: 12px; }
+  .navigation svg { width: 18px; height: 18px; }
+}
+@media (max-width: 350px) {
+  .summary { padding: 18px 16px; }
+  .monthTitle strong { font-size: 24px; }
+  .monthSteps { gap: 3px; }
+  .monthSteps button { width: 35px; }
+  .metrics > div:nth-child(even) { padding-left: 12px; }
+  .metrics dt { font-size: 10px; }
+  .legend { column-gap: 8px; }
+}
+:global(html[data-theme='dark']) .root {
+  --ink: #eef2fc;
+  --muted: #a3b0c5;
+  --line: #303d53;
+  --surface: #192336;
+  --soft: #202e44;
+  --fixed: #8295ff;
+  --current: #79cbd3;
+  --track: #303d53;
+}
+:global(html[data-theme='dark']) .balance > span { color: #c4d0e4; }
+:global(html[data-theme='dark']) .metrics .currentAmount { color: #79cbd3; }
+:global(html[data-theme='dark']) .actions button { color: #afbdff; border-color: #465784; }
+:global(html[data-theme='dark']) .actions .primaryAction { color: #fff; background: #4e63d7; }
+:global(html[data-theme='dark']) .navigation button, :global(html[data-theme='dark']) .navigation a { color: #a3b0c5; }
+:global(html[data-theme='dark']) .navigation button[aria-current='page'] { color: #eef2fc; border-color: #8295ff; }
+:global(html[data-theme='dark']) .root .negative { color: #ff9aaa; }
+:global(html[data-theme='dark']) .monthSteps button:hover, :global(html[data-theme='dark']) .pickerYear button:hover { background: #293a56; }
+@media print {
+  .root { --ink: #152035; --muted: #66768f; --line: #e5eaf2; --surface: #fff; --track: #e9edf4; }
+  .actions, .navigation, .monthSteps { display: none; }
+  .summary { break-inside: avoid; box-shadow: none; }
+}

@@ -4,7 +4,7 @@ import AndarunNav from '../AndarunNav'
 import BudgetPage from '@/app/admin/budget/BudgetPage'
 
 export const metadata = {
-  title: 'Jaminova Finanzen',
+  title: 'Monatliche Ausgaben | Jaminova Finanzen',
   description: 'Private Finanzen',
   robots: {
     index: false,
