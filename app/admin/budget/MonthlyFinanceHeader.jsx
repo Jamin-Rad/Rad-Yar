@@ -104,10 +104,11 @@ function SpendingChart({ totals, loaded }) {
     <div className={styles.ring}>
       <svg viewBox="0 0 240 240" aria-hidden="true">
         <defs>
-          <linearGradient id={`${gradientId}-gold`} x1="0" y1="0" x2="1" y2="1"><stop stopColor="#ffe6a0"/><stop offset=".48" stopColor="#e9c76d"/><stop offset="1" stopColor="#b99142"/></linearGradient>
-          <linearGradient id={`${gradientId}-purple`} x1="0" y1="0" x2="1" y2="1"><stop stopColor="#ead3ff"/><stop offset=".4" stopColor="#c291e8"/><stop offset="1" stopColor="#9551cd"/></linearGradient>
+          <linearGradient id={`${gradientId}-gold`} x1="0" y1="0" x2="1" y2="1"><stop stopColor="#fff0a8"/><stop offset=".48" stopColor="#ffd348"/><stop offset="1" stopColor="#e7b227"/></linearGradient>
+          <linearGradient id={`${gradientId}-purple`} x1="0" y1="0" x2="1" y2="1"><stop stopColor="#edd9ff"/><stop offset=".4" stopColor="#b77bfb"/><stop offset="1" stopColor="#934be2"/></linearGradient>
+          <linearGradient id={`${gradientId}-jade`} x1="0" y1="0" x2="1" y2="1"><stop stopColor="#48c5a8"/><stop offset=".48" stopColor="#159e7f"/><stop offset="1" stopColor="#00715a"/></linearGradient>
         </defs>
-        <circle className={styles.ringTrack} cx="120" cy="120" r="100" fill="none" strokeWidth="30" />
+        <circle className={styles.ringTrack} style={{ stroke: `url(#${gradientId}-jade)` }} cx="120" cy="120" r="100" fill="none" strokeWidth="30" />
         {loaded ? segments.map(segment => {
           const start = offset
           const share = Math.min(1, Math.max(0, segment.share))

@@ -6442,10 +6442,10 @@
 
 /* ── Finance settings: clear sections + versioned fixed costs ── */
 .monthlyFinancePage {
-  --ledger-ink: #123f34;
-  --ledger-muted: #65796f;
-  --ledger-line: #dce6df;
-  background: #f6f8f5;
+  --ledger-ink: #073f32;
+  --ledger-muted: #587368;
+  --ledger-line: #dce8e2;
+  background: #f6f8f7;
   font-family: var(--font-manrope), system-ui, -apple-system, sans-serif;
 }
 
@@ -6459,12 +6459,13 @@
   background: #0b1913;
 }
 
-.monthlyFinancePage .incomeBarFill { background: linear-gradient(90deg, #12604a, #218969); }
-.monthlyFinancePage .categoryBarFill { background: linear-gradient(90deg, #d8b25b, #a965d4); }
+.monthlyFinancePage .incomeBarFill { background: linear-gradient(90deg, #006b4e, #1caf83); }
+.monthlyFinancePage .categoryBarFill { background: linear-gradient(90deg, #f3c54f, #ae65eb); }
 .monthlyFinancePage .sectionAddBtn,
-.monthlyFinancePage .primaryBudgetBtn { background: linear-gradient(180deg, #b77fe4, #8d4bc4 48%, #7933b5) !important; border-color: #a569cc; color: #fff; box-shadow: inset 0 1px 0 #ffffff44; }
+.monthlyFinancePage .primaryBudgetBtn { background: linear-gradient(180deg, #b985f2, #9651dc 48%, #7d36c7) !important; border-color: #aa6ce0; color: #fff; box-shadow: inset 0 1px 0 #ffffff44; }
 .monthlyFinancePage .sectionCardHead:has(.moneyPositive) .sectionAddBtn { background: linear-gradient(180deg, #218969, #12604a) !important; }
 .monthlyFinancePage .settingsSectionTabActive { background: #104c3d; border-color: #b89a54; }
+.monthlyFinancePage .sectionCard { box-shadow: 0 5px 20px #073f3205; }
 .monthlyFinancePage .reportTabActive { color: #fff; background: #8446bd; border-color: #8446bd; }
 .monthlyFinancePage .entrySelectionSummary { background: #f6f0fb; border-color: #dbc5ec; }
 .monthlyFinancePage .entrySelectionTitle { color: #7933a7; }
