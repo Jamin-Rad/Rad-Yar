@@ -70,6 +70,8 @@
 .layout { display: grid; grid-template-columns: 250px minmax(0,1fr); gap: 18px; align-items: start; margin-top: 18px; }
 .sidebar { position: sticky; top: 90px; padding: 20px 14px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.88); box-shadow: 0 12px 30px rgba(35,18,39,.04); backdrop-filter: blur(14px); }
 .sidebar h2 { margin: 0 8px 14px; font-family: var(--font-newsreader,Georgia,serif); font-size: 20px; }
+.learningPathHeading { padding-block-end: 12px; border-block-end: 1px solid #bd964b; }
+.readTick { margin-inline-start: 5px; color: var(--teal-700); }
 .sidebar nav { display: grid; gap: 4px; }
 .sidebar button { width: 100%; min-height: 42px; display: grid; grid-template-columns: 34px 1fr; align-items: center; gap: 8px; padding: 5px 8px; border: 0; border-radius: 7px; background: transparent; color: var(--body); font-family: inherit; text-align: start; cursor: pointer; }
 .sidebar button:hover { background: var(--plum-100); color: var(--plum-900); }
@@ -360,6 +362,7 @@
   .mobilePathPanel { position: fixed; left: 10px; bottom: calc(max(10px,env(safe-area-inset-bottom)) + 64px); width: calc(100vw - 20px); max-height: min(540px,calc(100svh - 100px)); overflow: hidden; display: grid; grid-template-rows: auto minmax(0,1fr); border: 1px solid color-mix(in srgb,var(--line) 90%,transparent); border-radius: 20px; color: var(--body); background: color-mix(in srgb,var(--paper) 97%,transparent); box-shadow: 0 24px 70px rgba(2,6,23,.26); backdrop-filter: blur(22px) saturate(1.2); animation: mobilePathIn .2s ease-out both; }
   [dir='rtl'] .mobilePathPanel { right: 10px; left: auto; }
   .mobilePathPanel header { min-height: 64px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+  .mobilePathPanel header.learningPathHeading { border-bottom-color: #bd964b; }
   .mobilePathPanel header div { display: grid; gap: 3px; }
   .mobilePathPanel header small { color: var(--muted); font-size: 10px; font-weight: 800; }
   .mobilePathPanel header strong { color: var(--ink); font-size: 15px; }
