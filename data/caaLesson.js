@@ -150,7 +150,7 @@ export const CAA_COPY = {
   eligibilityTitle: L('Voraussetzungen', 'Prerequisites', 'پیش‌شرط‌ها'),
   categoryTitle: L('Diagnostische Kategorien', 'Diagnostic categories', 'طبقه‌بندی تشخیصی'),
   categoryLeads: [
-    L('Bei erfüllten Voraussetzungen gibt es zwei mögliche MRT-Konstellationen:', 'When all prerequisites are met, either of these MRI patterns qualifies as probable CAA:', 'اگر همهٔ پیش‌شرط‌ها برقرار باشند، یکی از این دو الگوی MRI برای طبقه‌بندی CAA محتمل کافی است:'),
+    L('Bei erfüllten Voraussetzungen gibt es zwei mögliche MRT-Konstellationen:', 'When all prerequisites are met, either of these MRI patterns qualifies as probable CAA:', 'اگر همهٔ پیش‌شرط‌ها برقرار باشند، یکی از این دو الگوی MRI برای طبقه‌بندی Probable CAA کافی است:'),
     L('Die Voraussetzungen sind erfüllt, die probable-Kriterien aber nicht. Es liegt eines dieser MRT-Muster vor:', 'All prerequisites are met, but the criteria for probable CAA are not. One of these MRI patterns is present:', 'همهٔ پیش‌شرط‌ها برقرارند، اما معیارهای Probable CAA برآورده نشده‌اند. یکی از این الگوهای MRI وجود دارد:'),
   ],
   hemorrhageSingle: L('strikt lobäre Blutungsläsion', 'strictly lobar haemorrhagic lesion', 'ضایعهٔ ناشی از خونریزی صرفاً لوبار'),
