@@ -24,7 +24,7 @@ export const CAA_LESSON = {
     {
       value: L('Boston v2.0', 'Boston v2.0', 'Boston v2.0'),
       label: L('MRT-Diagnosekriterien', 'MRI diagnostic criteria', 'معیارهای تشخیصی MRI'),
-      text: L('Probable + Possible CAA', 'Probable + Possible CAA', 'CAA محتمل + ممکن'),
+      text: L('Probable + Possible CAA', 'Probable + Possible CAA', 'Probable CAA + Possible CAA'),
     },
     {
       value: L('85 %', '85 %', '۸۵٪'),
@@ -177,10 +177,10 @@ export const CAA_LESSON = {
       L('MRT-Bedingung', 'MRI condition', 'شرط MRI'),
     ],
     criteriaRows: [
-      [L('Probable CAA – Option A', 'Probable CAA – Option A', 'CAA محتمل – گزینه A'), L('≥ 2 lobäre hämorrhagische Läsionen (beliebige Kombination)', '≥ 2 lobar haemorrhagic lesions (any combination)', '≥ ۲ ضایعه هموراژیک لوبار (هر ترکیبی)')],
-      [L('Probable CAA – Option B', 'Probable CAA – Option B', 'CAA محتمل – گزینه B'), L('1 lobäre hämorrhagische Läsion + 1 White-Matter-Marker', '1 lobar haemorrhagic lesion + 1 White Matter marker', '۱ ضایعه هموراژیک لوبار + ۱ نشانگر ماده سفید')],
-      [L('Possible CAA – Option A', 'Possible CAA – Option A', 'CAA ممکن – گزینه A'), L('1 einzige lobäre hämorrhagische Läsion (ohne WM-Marker)', '1 single lobar haemorrhagic lesion (without WM marker)', '۱ ضایعه هموراژیک لوبار منفرد (بدون نشانگر ماده سفید)')],
-      [L('Possible CAA – Option B', 'Possible CAA – Option B', 'CAA ممکن – گزینه B'), L('1 White-Matter-Marker (ohne lobäre hämorrhagische Läsion)', '1 White Matter marker (without lobar haemorrhagic lesion)', '۱ نشانگر ماده سفید (بدون ضایعه هموراژیک لوبار)')],
+      [L('Probable CAA – Option A', 'Probable CAA – Option A', 'Probable CAA – گزینه A'), L('≥ 2 lobäre hämorrhagische Läsionen (beliebige Kombination)', '≥ 2 lobar haemorrhagic lesions (any combination)', '≥ ۲ ضایعه هموراژیک لوبار (هر ترکیبی)')],
+      [L('Probable CAA – Option B', 'Probable CAA – Option B', 'Probable CAA – گزینه B'), L('1 lobäre hämorrhagische Läsion + 1 White-Matter-Marker', '1 lobar haemorrhagic lesion + 1 White Matter marker', '۱ ضایعه هموراژیک لوبار + ۱ نشانگر ماده سفید')],
+      [L('Possible CAA – Option A', 'Possible CAA – Option A', 'Possible CAA – گزینه A'), L('1 einzige lobäre hämorrhagische Läsion (ohne WM-Marker)', '1 single lobar haemorrhagic lesion (without WM marker)', '۱ ضایعه هموراژیک لوبار منفرد (بدون نشانگر ماده سفید)')],
+      [L('Possible CAA – Option B', 'Possible CAA – Option B', 'Possible CAA – گزینه B'), L('1 White-Matter-Marker (ohne lobäre hämorrhagische Läsion)', '1 White Matter marker (without lobar haemorrhagic lesion)', '۱ نشانگر ماده سفید (بدون ضایعه هموراژیک لوبار)')],
     ],
     voraussTitle: L('Voraussetzungen (alle müssen erfüllt sein)', 'Prerequisites (all must be met)', 'پیش‌نیازها (همه باید برآورده شوند)'),
     voraussItems: [
@@ -208,7 +208,7 @@ export const CAA_LESSON = {
     key: L(
       'Probable CAA = ≥2 lobäre Hämorrhagien ODER 1 lobäre Hämorrhagie + 1 WM-Marker. Kleinhirnläsionen sind diagnostisch neutral.',
       'Probable CAA = ≥2 lobar haemorrhages OR 1 lobar haemorrhage + 1 WM marker. Cerebellar lesions are diagnostically neutral.',
-      'CAA محتمل = ≥۲ خونریزی لوبار یا ۱ خونریزی لوبار + ۱ نشانگر ماده سفید. ضایعات مخچه‌ای از نظر تشخیصی خنثی هستند.'
+      'Probable CAA = ≥۲ خونریزی لوبار یا ۱ خونریزی لوبار + ۱ نشانگر ماده سفید. ضایعات مخچه‌ای از نظر تشخیصی خنثی هستند.'
     ),
   },
 
@@ -293,8 +293,8 @@ export const CAA_LESSON = {
         text: L('Lobäre ICH + lobäre CMBs + cSS (Hämosiderin entlang Sulci) + cSAH (Konvexitäts-SAB). Kein tiefer Befund = typisch für CAA. cSAH → TFNE (wandernde Päresthesien).', 'Lobar ICH + lobar CMBs + cSS (haemosiderin along sulci) + cSAH (convexity SAH). No deep finding = typical for CAA. cSAH → TFNE (spreading paraesthesias).', 'ICH لوبار + CMBs لوبار + cSS (هموسیدرین در امتداد شیارها) + cSAH (SAB کانوکسیتی). بدون یافته عمقی = تیپیک CAA. cSAH → TFNE (پارستزی‌های گسترش‌یابنده).'),
       },
       {
-        title: L('Boston v2.0: Probable vs. Possible', 'Boston v2.0: Probable vs. Possible', 'Boston v2.0: محتمل در مقابل ممکن'),
-        text: L('Probable: ≥2 lobäre Hämorrhagien ODER 1 lobäre + 1 WM-Marker. Possible: 1 lobäre ODER 1 WM-Marker allein. Voraussetzung: ≥50 J., keine Tiefbefunde, keine Alternative.', 'Probable: ≥2 lobar haemorrhages OR 1 lobar + 1 WM marker. Possible: 1 lobar OR 1 WM marker alone. Requirement: ≥50 yr, no deep findings, no alternative.', 'محتمل: ≥۲ خونریزی لوبار یا ۱ لوبار + ۱ نشانگر WM. ممکن: ۱ لوبار یا ۱ نشانگر WM به تنهایی. شرط: ≥۵۰ سال، بدون یافته‌های عمقی، بدون جایگزین.'),
+        title: L('Boston v2.0: Probable vs. Possible', 'Boston v2.0: Probable vs. Possible', 'Boston v2.0: Probable CAA در مقابل Possible CAA'),
+        text: L('Probable: ≥2 lobäre Hämorrhagien ODER 1 lobäre + 1 WM-Marker. Possible: 1 lobäre ODER 1 WM-Marker allein. Voraussetzung: ≥50 J., keine Tiefbefunde, keine Alternative.', 'Probable: ≥2 lobar haemorrhages OR 1 lobar + 1 WM marker. Possible: 1 lobar OR 1 WM marker alone. Requirement: ≥50 yr, no deep findings, no alternative.', 'Probable CAA: ≥۲ خونریزی لوبار یا ۱ لوبار + ۱ نشانگر WM. Possible CAA: ۱ لوبار یا ۱ نشانگر WM به تنهایی. شرط: ≥۵۰ سال، بدون یافته‌های عمقی، بدون جایگزین.'),
       },
       {
         title: L('WM-Marker: CSO-PVS + Multispot', 'WM markers: CSO-PVS + multispot', 'نشانگرهای WM: CSO-PVS + چندنقطه‌ای'),

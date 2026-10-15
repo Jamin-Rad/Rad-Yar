@@ -648,7 +648,6 @@ function QuizContent() {
                       disabled={checked}
                       onClick={() => setSelected(opt.id)}
                     >
-                      <span className={styles.radioMark} aria-hidden="true"><i /></span>
                       <span className={styles.optLetter}>{opt.id}</span>
                       <span className={styles.optText}>{opt.text}</span>
                       {checked && opt.id === q.correct && <span className={`${styles.optMark} ${styles.markOk}`}><StatusIcon correct /></span>}
