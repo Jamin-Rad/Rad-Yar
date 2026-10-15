@@ -313,8 +313,8 @@ function ExamTeachingPreview({ detail, onBack }) {
           <span>{Number(currentQuestion.points || 1).toLocaleString('fa-IR')} امتیاز</span>
           <b>{responseStats.participantCount.toLocaleString('fa-IR')} شرکت‌کننده</b>
         </div>
-        <h3>{currentQuestion.prompt}</h3>
-        {mediaPreview ? <Image className={styles.previewMedia} src={mediaPreview} alt="تصویر سؤال" width={960} height={640} /> : null}
+        <h3 data-lehr-anchor>{currentQuestion.prompt}</h3>
+        {mediaPreview ? <Image className={styles.previewMedia} src={mediaPreview} alt="تصویر سؤال" width={960} height={640} data-lehr-anchor /> : null}
 
         <div className={styles.previewOptions}>
           {(currentQuestion.options || []).map((option, optionIndex) => {
@@ -336,38 +336,37 @@ function ExamTeachingPreview({ detail, onBack }) {
                 onClick={() => selectOption(optionIndex)}
                 aria-disabled={revealed}
                 aria-pressed={isSelected}
+                data-lehr-anchor
                 key={optionIndex}
               >
                 <span className={styles.previewOptionRow}>
                   <b className={styles.previewLetter}>{String.fromCharCode(65 + optionIndex)}</b>
                   <span className={styles.previewOptionText}>{option}</span>
-                  {revealed && isCorrect ? <strong className={styles.previewResultTag}>پاسخ درست ✓</strong> : null}
-                  {revealed && isSelected && !isCorrect ? <strong className={styles.previewWrongTag}>انتخاب شما</strong> : null}
-                </span>
-                {revealed ? (
-                  <span className={styles.previewStat}>
-                    <span className={styles.previewStatHeader}>
-                      <small>{stat.count.toLocaleString('fa-IR')} نفر این گزینه را انتخاب کرده‌اند</small>
-                      <strong>{stat.percentage.toLocaleString('fa-IR')}٪</strong>
-                    </span>
-                    <span className={styles.previewMeter} aria-hidden="true"><span style={{ width: `${stat.percentage}%` }} /></span>
+                  <span className={styles.previewResultSlot} aria-hidden={!revealed}>
+                    {revealed && isCorrect ? <strong className={styles.previewResultTag}>پاسخ درست ✓</strong> : null}
+                    {revealed && isSelected && !isCorrect ? <strong className={styles.previewWrongTag}>انتخاب شما</strong> : null}
                   </span>
-                ) : null}
+                </span>
+                <span className={`${styles.previewStat} ${revealed ? '' : styles.previewStatReserved}`} aria-hidden={!revealed}>
+                  <span className={styles.previewStatHeader}>
+                    <small>{stat.count.toLocaleString('fa-IR')} نفر این گزینه را انتخاب کرده‌اند</small>
+                    <strong>{stat.percentage.toLocaleString('fa-IR')}٪</strong>
+                  </span>
+                  <span className={styles.previewMeter} aria-hidden="true"><span style={{ width: `${stat.percentage}%` }} /></span>
+                </span>
               </button>
             )
           })}
         </div>
 
-        {revealed ? (
-          <div className={styles.previewReveal} aria-live="polite">
+        <div className={`${styles.previewReveal} ${revealed ? '' : styles.previewRevealReserved}`} aria-live="polite" aria-hidden={!revealed} data-lehr-anchor>
             <div className={styles.previewRevealSummary}>
               <span><strong>{correctPercentage.toLocaleString('fa-IR')}٪</strong> پاسخ صحیح</span>
               <small>درصدها از کل {responseStats.participantCount.toLocaleString('fa-IR')} شرکت‌کننده محاسبه شده‌اند{responseStats.unansweredCount ? `؛ ${responseStats.unansweredCount.toLocaleString('fa-IR')} نفر به این سؤال پاسخ نداده‌اند` : ''}.</small>
             </div>
             {currentQuestion.explanation ? <div className={styles.previewExplanation}><strong>توضیح پاسخ</strong><p>{currentQuestion.explanation}</p></div> : null}
             {!responseStats.participantCount ? <div className={styles.previewNoStats}>هنوز پاسخی برای این آزمون ثبت نشده است؛ درصدها پس از شرکت کاربران نمایش واقعی خواهند داشت.</div> : null}
-          </div>
-        ) : null}
+        </div>
       </article>
 
       <div className={styles.previewFooter}>

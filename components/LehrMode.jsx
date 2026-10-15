@@ -62,11 +62,33 @@ function ToolbarButton({ name, active, color, onClick }) {
   )
 }
 
-function strokeTouchesPoint(stroke, point, radius) {
+function ColorPalettes({ toolColors, onSelect }) {
+  return (
+    <div className={styles.colorPalettes} aria-label="Stift- und Textmarkerfarben">
+      {Object.entries(COLOR_PALETTES).map(([toolName, colors]) => (
+        <div className={styles.colorRow} role="group" aria-label={`${TOOLS[toolName].label}-Farben`} key={toolName}>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><ToolIcon name={toolName} /></svg>
+          {colors.map(color => <button
+            type="button"
+            key={color.value}
+            className={toolColors[toolName] === color.value ? styles.colorSelected : ''}
+            style={{ '--palette-color': color.value }}
+            onClick={() => onSelect(toolName, color.value)}
+            aria-label={`${TOOLS[toolName].label}: ${color.label}`}
+            aria-pressed={toolColors[toolName] === color.value}
+            title={`${TOOLS[toolName].label}: ${color.label}`}
+          />)}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function strokeTouchesPoint(stroke, point, radius, offset = { x: 0, y: 0 }) {
   const limit = radius * radius
   return stroke.points.some(candidate => {
-    const dx = candidate.x - point.x
-    const dy = candidate.y - point.y
+    const dx = candidate.x + offset.x - point.x
+    const dy = candidate.y + offset.y - point.y
     return (dx * dx) + (dy * dy) <= limit
   })
 }
@@ -92,6 +114,26 @@ function setViewportScrollTop(root, value) {
   else window.scrollTo({ top: value, behavior: 'auto' })
 }
 
+function strokeAnchor(target) {
+  if (!(target instanceof Element)) return null
+  return target.closest('[data-lehr-anchor], button, img, p, li, h1, h2, h3, h4, h5, h6')
+}
+
+function anchorOrigin(anchor, viewport) {
+  if (!(anchor instanceof Element)) return null
+  const rect = anchor.getBoundingClientRect()
+  return {
+    x: rect.left - viewport.left + viewport.scrollLeft,
+    y: rect.top - viewport.top + viewport.scrollTop,
+  }
+}
+
+function strokeAnchorOffset(stroke, viewport) {
+  if (!(stroke.anchor instanceof Element) || !stroke.anchor.isConnected || !stroke.anchorOrigin) return { x: 0, y: 0 }
+  const current = anchorOrigin(stroke.anchor, viewport)
+  return { x: current.x - stroke.anchorOrigin.x, y: current.y - stroke.anchorOrigin.y }
+}
+
 export default function LehrMode() {
   const pathname = usePathname()
   const { isLoaded, user } = useUser()
@@ -100,7 +142,6 @@ export default function LehrMode() {
   const [active, setActive] = useState(false)
   const [tool, setTool] = useState('pen')
   const [toolColors, setToolColors] = useState(INITIAL_TOOL_COLORS)
-  const [colorMenuOpen, setColorMenuOpen] = useState(false)
   const [canUndo, setCanUndo] = useState(false)
   const canvasRef = useRef(null)
   const arrowRef = useRef(null)
@@ -119,6 +160,11 @@ export default function LehrMode() {
     toolColorsRef.current = { ...toolColorsRef.current, [toolName]: color }
     setToolColors(toolColorsRef.current)
   }, [])
+
+  const selectToolAndColor = useCallback((toolName, color) => {
+    setTool(toolName)
+    selectToolColor(toolName, color)
+  }, [selectToolColor])
 
   const renderCanvas = useCallback(() => {
     frameRef.current = null
@@ -147,13 +193,14 @@ export default function LehrMode() {
     for (const stroke of strokesRef.current) {
       const points = stroke.points
       if (!points.length) continue
+      const offset = strokeAnchorOffset(stroke, viewport)
       context.save()
       context.strokeStyle = stroke.color
       context.globalAlpha = stroke.alpha
       context.lineWidth = stroke.width
       context.beginPath()
-      const startX = points[0].x - viewport.scrollLeft + viewport.left
-      const startY = points[0].y - viewport.scrollTop + viewport.top
+      const startX = points[0].x + offset.x - viewport.scrollLeft + viewport.left
+      const startY = points[0].y + offset.y - viewport.scrollTop + viewport.top
       context.moveTo(startX, startY)
       if (points.length === 1) {
         context.lineTo(startX + 0.01, startY + 0.01)
@@ -162,14 +209,14 @@ export default function LehrMode() {
           const point = points[index]
           const next = points[index + 1]
           context.quadraticCurveTo(
-            point.x - viewport.scrollLeft + viewport.left,
-            point.y - viewport.scrollTop + viewport.top,
-            ((point.x + next.x) / 2) - viewport.scrollLeft + viewport.left,
-            ((point.y + next.y) / 2) - viewport.scrollTop + viewport.top,
+            point.x + offset.x - viewport.scrollLeft + viewport.left,
+            point.y + offset.y - viewport.scrollTop + viewport.top,
+            ((point.x + next.x) / 2) + offset.x - viewport.scrollLeft + viewport.left,
+            ((point.y + next.y) / 2) + offset.y - viewport.scrollTop + viewport.top,
           )
         }
         const last = points[points.length - 1]
-        context.lineTo(last.x - viewport.scrollLeft + viewport.left, last.y - viewport.scrollTop + viewport.top)
+        context.lineTo(last.x + offset.x - viewport.scrollLeft + viewport.left, last.y + offset.y - viewport.scrollTop + viewport.top)
       }
       context.stroke()
       context.restore()
@@ -325,12 +372,16 @@ export default function LehrMode() {
       }
 
       const selected = TOOLS[toolRef.current]
+      const viewport = annotationViewport(event.target)
+      const anchor = strokeAnchor(event.target)
       historyRef.current.push(strokesRef.current.slice())
       strokesRef.current = [...strokesRef.current, {
         tool: toolRef.current,
         color: toolColorsRef.current[toolRef.current] || selected.color,
         width: selected.width,
         alpha: selected.alpha,
+        anchor,
+        anchorOrigin: anchorOrigin(anchor, viewport),
         points: [point],
       }]
       setCanUndo(true)
@@ -368,7 +419,8 @@ export default function LehrMode() {
         const session = eraseSessionRef.current
         for (const moveEvent of events) {
           const point = pointFromEvent(moveEvent)
-          const remaining = strokesRef.current.filter(stroke => !strokeTouchesPoint(stroke, point, TOOLS.eraser.width / 2))
+          const viewport = annotationViewport(moveEvent.target)
+          const remaining = strokesRef.current.filter(stroke => !strokeTouchesPoint(stroke, point, TOOLS.eraser.width / 2, strokeAnchorOffset(stroke, viewport)))
           if (remaining.length !== strokesRef.current.length) {
             if (!session.changed) {
               historyRef.current.push(session.snapshot)
@@ -451,6 +503,8 @@ export default function LehrMode() {
     window.addEventListener('keydown', onKeyDown, { capture: true })
     window.addEventListener('resize', scheduleRender)
     document.addEventListener('scroll', scheduleRender, { capture: true, passive: true })
+    const resizeObserver = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(scheduleRender)
+    document.querySelectorAll('[data-lehr-surface], [data-lehr-scroll-root]').forEach(surface => resizeObserver?.observe(surface))
 
     return () => {
       document.removeEventListener('pointerdown', onPointerDown, { capture: true })
@@ -464,6 +518,7 @@ export default function LehrMode() {
       window.removeEventListener('keydown', onKeyDown, { capture: true })
       window.removeEventListener('resize', scheduleRender)
       document.removeEventListener('scroll', scheduleRender, { capture: true })
+      resizeObserver?.disconnect()
       if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current)
       if (clickResetTimer !== null) window.clearTimeout(clickResetTimer)
       frameRef.current = null
@@ -493,40 +548,11 @@ export default function LehrMode() {
               name={name}
               active={tool === name}
               color={toolColors[name]}
-              onClick={() => {
-                setTool(name)
-                if (name === 'eraser') setColorMenuOpen(false)
-              }}
+              onClick={() => setTool(name)}
             />
           ))}
         </div>
-        {COLOR_PALETTES[tool] ? <div className={styles.colorControl}>
-          <button
-            type="button"
-            className={`${styles.colorTrigger} ${colorMenuOpen ? styles.colorTriggerOpen : ''}`}
-            onClick={() => setColorMenuOpen(value => !value)}
-            aria-label={`${TOOLS[tool].label}-Farbe wählen`}
-            aria-expanded={colorMenuOpen}
-            title="Farbe wählen"
-          >
-            <span style={{ '--tool-color': toolColors[tool] }} />
-          </button>
-          {colorMenuOpen ? <div className={styles.colorPalette} role="group" aria-label={`${TOOLS[tool].label}-Farben`}>
-            {COLOR_PALETTES[tool].map(color => <button
-              type="button"
-              key={color.value}
-              className={toolColors[tool] === color.value ? styles.colorSelected : ''}
-              style={{ '--palette-color': color.value }}
-              onClick={() => {
-                selectToolColor(tool, color.value)
-                setColorMenuOpen(false)
-              }}
-              aria-label={color.label}
-              aria-pressed={toolColors[tool] === color.value}
-              title={color.label}
-            />)}
-          </div> : null}
-        </div> : null}
+        <ColorPalettes toolColors={toolColors} onSelect={selectToolAndColor} />
         <button type="button" className={styles.actionButton} onClick={undo} disabled={!canUndo} aria-label="Rückgängig" title="Rückgängig (⌘/Ctrl+Z)">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7l-5 5 5 5" /><path d="M5 12h8a6 6 0 0 1 6 6" /></svg>
         </button>

@@ -55,3 +55,13 @@ test('camera is preview-only, scoped to admin Lehr-Mode and cleaned up on exit',
   assert.match(lehr, /LehrRecordingTools key=\{pathname\} ensureFullscreen=\{ensureFullscreen\}/)
   assert.match(lehr, /delete document.documentElement.dataset.lehrRecordingReady/)
 })
+
+test('teaching preview reserves answer details so revealing results does not move annotations', () => {
+  const preview = readFileSync(new URL('../app/admin/exams/ExamAdminClient.jsx', import.meta.url), 'utf8')
+  const styles = readFileSync(new URL('../app/admin/exams/page.module.css', import.meta.url), 'utf8')
+  assert.match(preview, /data-lehr-anchor/)
+  assert.match(preview, /previewStatReserved/)
+  assert.match(preview, /previewRevealReserved/)
+  assert.match(preview, /previewResultSlot/)
+  assert.match(styles, /\.previewStatReserved, \.previewRevealReserved \{ visibility: hidden/)
+})

@@ -313,9 +313,11 @@
 .previewOptionCorrect .previewLetter { background: #baf2dd; color: #08765c; }
 .previewOptionWrong .previewLetter { background: #fecdd3; color: #be123c; }
 .previewOptionText { min-width: 0; flex: 1; white-space: pre-line; }
+.previewResultSlot { display: flex; width: 88px; flex: 0 0 88px; justify-content: flex-end; }
 .previewResultTag, .previewWrongTag { flex: 0 0 auto; padding: 4px 8px; border-radius: 999px; background: #c7f4e3; color: #067158; font-size: 9px; white-space: nowrap; }
 .previewWrongTag { background: #ffe1e5; color: #be123c; }
 .previewStat { display: grid; gap: 7px; }
+.previewStatReserved, .previewRevealReserved { visibility: hidden; pointer-events: none; }
 .previewStatHeader { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .previewStatHeader small { color: currentColor; font-size: 9px; opacity: .78; }
 .previewStatHeader strong { font-size: 13px; }
