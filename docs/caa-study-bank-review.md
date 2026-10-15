@@ -23,6 +23,14 @@ Reviewed and rewrote all eight existing questions; added exactly ten (`caa-09`�
 
 All diagnostic category vignettes state the relevant clinical prerequisites and exclusions or deliberately test a missing one. Questions 09–15 and 18 were independently checked against the original Boston v2.0 table. No case implies that MRI proves definite CAA.
 
+## Clinical question revision — 2026-10-15
+
+Revised seeds 02, 03, 07, 08, 11–15 in German, English and Persian. PVS and multispot distractors now test location, distribution and counting method rather than an exact-threshold trap. The PVS example uses 30 rather than 21; the multispot distractor combines confluent WMH with only five separate small foci. Formal Boston thresholds remain in the explanations.
+
+The additional-finding question no longer contradicts its own exclusion statement; its explanation makes the remaining prerequisites explicit. cSS options describe MRI appearances, without inferring acute blood from FLAIR alone. Clinical vignettes now describe stroke deficits, spreading paraesthesias, sulcal blood/siderosis at the same site, cerebellar microbleeds and nonspecific white matter findings. The age options are 40/60/50/70, with C as the updated correct key. Correct answers are now distributed A–D as 5/4/6/3. Corrected two Persian WMH labels that had acquired a stray translated prefix.
+
+The user's displayed questions 13 and 16 require identification because the quiz shuffles question order. No question has been deleted solely by its displayed number. The 18 stable question IDs and all 32 flashcards are retained pending that clarification.
+
 ## Flashcards
 
 All 15 existing cards were revised, and 17 missing focused cards were added (32 total). The first 15 IDs and order are preserved for stored learning progress. Front, answer and explanation remain available in all three languages.
