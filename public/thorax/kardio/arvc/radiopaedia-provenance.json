@@ -1,0 +1,113 @@
+{
+  "retrievedAt": "2026-10-15",
+  "source": "Radiopaedia.org original public case viewers",
+  "license": "CC BY-NC-SA 3.0; original contributor attribution retained.",
+  "changes": "Original stills and cine copied without diagnostic alteration. Stills are labelled as stills, not complete cine series.",
+  "assets": [
+    {
+      "file": "57972-4ch.jpg",
+      "source": "https://prod-images-static.radiopaedia.org/images/35464828/1a826c4baaf032eaa025c52d45f737.jpg",
+      "caseId": 57972,
+      "creator": "Azza Elgendy",
+      "bytes": 13386,
+      "sha256": "845302fbe8baa51c60a2a69fd98fca30396035a082583f3996b82b0b08c4128d"
+    },
+    {
+      "file": "57972-rvot.jpg",
+      "source": "https://prod-images-static.radiopaedia.org/images/35465026/4b13ad1e6e3e60aa47556f06944258.jpg",
+      "caseId": 57972,
+      "creator": "Azza Elgendy",
+      "bytes": 14997,
+      "sha256": "6587228508486dc2a12824b87f6310f9004fef9b200719dcdabd89681d8f8e8b"
+    },
+    {
+      "file": "57972-cine-r2.jpg",
+      "source": "https://prod-images-static.radiopaedia.org/images/35465271/31a17c929de80d8bb22e0b9ef12714.jpg",
+      "caseId": 57972,
+      "creator": "Azza Elgendy",
+      "bytes": 19591,
+      "sha256": "d78c9015b21e0e4fcb547a2638ec86a9bf912bfc4a5ac79c8df1c5255a82b77a"
+    },
+    {
+      "file": "57972-lge-sax.jpg",
+      "source": "https://prod-images-static.radiopaedia.org/images/35465387/d52f5b46c46391fdace0bf5686ea09.jpg",
+      "caseId": 57972,
+      "creator": "Azza Elgendy",
+      "bytes": 23098,
+      "sha256": "7e9fb0128cd4935f4b25f58b66f5b03e09f5d36c0bb501ee1c976749ca050b7c"
+    },
+    {
+      "file": "194915-t1-sax.jpg",
+      "source": "https://prod-images-static.radiopaedia.org/images/67214753/624573b2d6435e59dce21abf5582feb112a8a4a165901d7e8f87bd2d90ff3283_big_gallery.jpeg",
+      "caseId": 194915,
+      "creator": "Abhishek Bhargava",
+      "bytes": 93689,
+      "sha256": "2e59cc51e71a8becb307efc3b078b0fa384197adb524d4e9c9c6c2984b9c4b0c"
+    },
+    {
+      "file": "194915-lge-4ch.jpg",
+      "source": "https://prod-images-static.radiopaedia.org/images/67291431/d03495ea85f40642169c2bf4eaa691482540f01d48344bf15229370f7468f6c3.jpg",
+      "caseId": 194915,
+      "creator": "Abhishek Bhargava",
+      "bytes": 48459,
+      "sha256": "d03495ea85f40642169c2bf4eaa691482540f01d48344bf15229370f7468f6c3"
+    },
+    {
+      "file": "194915-lge-sax.jpg",
+      "source": "https://prod-images-static.radiopaedia.org/images/67290679/e7f17bc501c42a3da4a8c1800c184a5f9efd722364c49857aabe8944124a2de7.jpg",
+      "caseId": 194915,
+      "creator": "Abhishek Bhargava",
+      "bytes": 35484,
+      "selection": "Original source LV-enhancement annotation 27804; overlay not copied.",
+      "sha256": "e7f17bc501c42a3da4a8c1800c184a5f9efd722364c49857aabe8944124a2de7"
+    },
+    {
+      "file": "39806-cine-4ch.mp4",
+      "source": "https://prod-images-static.radiopaedia.org/images/16211520/cd2f848191b2ab6459ea4558e10792.mp4",
+      "caseId": 39806,
+      "creator": "Tim Luijkx",
+      "bytes": 13238964,
+      "sha256": "d034817ebe78b04481242eb83338a56bdc713e04194783f8fabe0683dac02cc3"
+    },
+    {
+      "file": "87505-cine-lv.jpg",
+      "source": "https://radiopaedia.org/cases/87505",
+      "caseId": 87505,
+      "creator": "Igor Yarmola",
+      "bytes": 117623,
+      "sha256": "dba280cddd91c71837a188f8ca3fa191bad73965c334611ce08ae1caa1d2808c"
+    },
+    {
+      "file": "95633-ct.jpg",
+      "source": "https://radiopaedia.org/cases/95633",
+      "caseId": 95633,
+      "creator": "Tom Foster",
+      "bytes": 56645,
+      "sha256": "69cb44c41d3ba1e2393af62f7bdb65867101cd83e13e4831d9a72367bf46abbd"
+    },
+    {
+      "file": "87505-cine-4ch.jpg",
+      "source": "https://prod-images-static.radiopaedia.org/images/54554936/100061_big_gallery.jpeg",
+      "caseId": 87505,
+      "creator": "Igor Yarmola",
+      "sequence": "4ch Cine SSFP; unaltered still",
+      "bytes": 84491,
+      "sha256": "07df0bd16c42fd7dc2555b80495214b7ff948b9d2540d38155a8fed83378dc77"
+    },
+    {
+      "file": "87505-lge-4ch.jpg",
+      "source": "https://prod-images-static.radiopaedia.org/images/54555485/100002_big_gallery.jpeg",
+      "caseId": 87505,
+      "creator": "Igor Yarmola",
+      "sequence": "4ch IRGRE; unaltered still",
+      "bytes": 113222,
+      "sha256": "99fada2b10ed3263716f95f1a9039a1aa7a97e0fe43d461a8fc5b32b539b3813"
+    }
+  ],
+  "illustration": {
+    "file": "acm-heart.png",
+    "kind": "Generated illustrative heart cutaway; not a diagnostic image",
+    "method": "Built-in image generation; transparent background",
+    "prompt": "Anatomically careful frontal four-chamber heart cutaway, thin RV free wall at viewer left, thick LV wall at viewer right, no labels or diagnostic scans."
+  }
+}

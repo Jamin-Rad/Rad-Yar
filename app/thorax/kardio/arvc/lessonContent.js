@@ -1,13 +1,13 @@
 export const SECTIONS = [
-  { id: 'definition', short: 'ACM verstehen', title: 'Was ist eine ACM?' },
-  { id: 'mrt', short: 'MRT systematisch', title: 'Welche Sequenz beantwortet welche Frage?' },
-  { id: 'bilder', short: 'Echte MRT-Fälle', title: 'Am echten MRT lernen' },
-  { id: 'tfc', short: 'TFC 2010', title: 'TFC 2010: Wie wird die klassische ARVC erfasst?' },
-  { id: 'padua', short: 'Padua 2020', title: 'Padua 2020: Was kommt für das ganze Herz hinzu?' },
-  { id: 'merksaetze', short: 'Merksätze & Quellen', title: 'Was du mitnehmen solltest' },
+  { id: 'definition', short: 'ACM verstehen', title: 'ACM verstehen: mehr als der rechte Ventrikel', icon: 'heart' },
+  { id: 'mrt', short: 'MRT-Workflow', title: 'MRT-Workflow: Bewegung, Messwerte, Gewebe', icon: 'layers' },
+  { id: 'muster', short: 'Bewegung & LGE', title: 'Bewegung & LGE: Muster sichtbar machen', icon: 'activity' },
+  { id: 'bilder', short: 'Radiopaedia-Fälle', title: 'Radiopaedia-Fälle: vom Bild zur Einordnung', icon: 'case' },
+  { id: 'tfc', short: 'TFC 2010', title: 'TFC 2010: erst die Logik, dann die Grenzwerte', icon: 'table' },
+  { id: 'padua', short: 'Padua 2020', title: 'Padua 2020: beide Kammern und die Narbe', icon: 'branch' },
+  { id: 'differenzialdiagnosen', short: 'Differenzialdiagnosen', title: 'Fallstricke: was eine ACM imitieren kann', icon: 'scan' },
 ]
 export const SECTION_IDS = SECTIONS.map(section => section.id)
-
 export const SOURCES = [
   { label: 'Marcus et al. · 2010', title: 'Originalarbeit: revidierte Task-Force-Kriterien', url: 'https://doi.org/10.1161/CIRCULATIONAHA.108.840827' },
   { label: 'Corrado et al. · 2020', title: 'Originalkonsens: Die Padua-Kriterien', url: 'https://doi.org/10.1016/j.ijcard.2020.06.005' },
@@ -19,42 +19,53 @@ export const SOURCES = [
   { label: 'European Task Force · 2024', title: 'Weiterentwicklung der Kriterien nach Padua', url: 'https://doi.org/10.1016/j.ijcard.2023.131447' },
 ]
 
-// Originals are kept intact. No generated or diagnostically altered MR images.
+
+export const PHENOTYPES = [
+  { id: 'rv', label: 'RV-dominant', title: 'Die rechte Kammer steht im Vordergrund', name: 'Klassische ARVC', text: 'Die Erkrankung wurde zuerst an der rechten Herzkammer beschrieben. Regionale Bewegungsstörungen, RV-Vergrößerung und reduzierte Pumpfunktion sind typische Bausteine. Trotzdem immer auch die linke Kammer prüfen.', focus: 'Cine in RV-Ebenen + RVEDVi + RVEF; LGE beider Kammern.', trap: 'Ein großer RV allein genügt nicht. Sport und Volumenbelastung können ihn ebenfalls vergrößern.' },
+  { id: 'both', label: 'Biventrikulär', title: 'Rechte und linke Kammer sind beteiligt', name: 'Biventrikuläre ACM', text: 'Neben Veränderungen des RV finden sich auch Zeichen einer LV-Beteiligung, zum Beispiel nichtischämische Narben. Diese Information verändert die diagnostische Einordnung und kann für den weiteren Verlauf wichtig sein.', focus: 'Bewegung, Volumen, Funktion und Narbenmuster beider Kammern zusammenführen.', trap: 'Die LV-Beteiligung nicht erst bei stark reduzierter LVEF suchen: LGE kann früher auffallen.' },
+  { id: 'lv', label: 'LV-dominant', title: 'Die linke Kammer kann im Vordergrund stehen', name: 'Linksdominante ACM / ALVC', text: 'Einige Formen betreffen überwiegend die linke Herzkammer. Der RV kann dabei unauffällig sein. Häufig steht die Gewebeveränderung mit subepikardialem oder intramuralem LGE im Mittelpunkt.', focus: 'LV-LGE in zwei Ebenen bestätigen; Genetik, Rhythmusdiagnostik und Differenzialdiagnosen ergänzen.', trap: 'Nach Padua reicht isoliertes LV-LGE nicht für ALVC. Eine passende pathogene / wahrscheinlich pathogene ACM-Genvariante ist erforderlich.' },
+]
+
+export const PROTOCOL = [
+  { id: 'cine', label: 'Cine', question: 'Bewegt sich jeder Wandabschnitt richtig?', sequence: 'EKG-getriggerte bSSFP-Cines', planes: '4-Kammer, kurze Achsen, RV-Längsachse / RVOT', look: 'Akinesie, Dyskinesie, dyssynchrone Kontraktion; über den ganzen Herzzyklus und in zweiter Ebene prüfen.', pitfall: 'Ein Standbild zeigt keine Wandbewegung. Arrhythmie und Bewegung aus der Ebene können eine Störung vortäuschen.' },
+  { id: 'measure', label: 'Volumen & EF', question: 'Wie groß sind die Kammern, wie gut pumpen sie?', sequence: 'Vollständiger Cine-Stapel von Basis bis Apex', planes: 'Reproduzierbare enddiastolische und endsystolische Konturen', look: 'RVEDVi und LVEDVi in ml/m²; RVEF und LVEF in %. EDVi = enddiastolisches Volumen / Körperoberfläche.', pitfall: 'Basale Schichten, Trikuspidalklappenebene und Trabekel konsistent behandeln. Pädiatrie und Sport benötigen passende Referenzen.' },
+  { id: 'lge', label: 'LGE', question: 'Wo ist das Myokard vernarbt?', sequence: 'Nach Gadolinium: Inversion Recovery / PSIR', planes: 'Kurze und lange Achsen; verdächtige Areale in zwei orthogonalen Ebenen', look: 'LV: subepikardiale / intramurale Streifen. RV: sichere transmurale Streifen. Verteilung und Ausdehnung beschreiben.', pitfall: 'Dünne RV-Wand und Partialvolumen erschweren LGE. Insertionspunkt-LGE allein zählt nicht als LV-LGE-Kriterium.' },
+  { id: 'mapping', label: 'Mapping', question: 'Gibt es zusätzliche Hinweise auf eine aktive Schädigung?', sequence: 'T1-/T2-Mapping, gegebenenfalls ECV und Fettsequenzen', planes: 'Standardisierte, zur Fragestellung passende Ebenen', look: 'T2 kann bei einer entzündlichen „Hot Phase“ erhöht sein. T1 / ECV ergänzen die Gewebecharakterisierung.', pitfall: 'Mapping oder Fett allein sind keine eigenständigen TFC-2010- oder Padua-2020-Kriterien.' },
+]
+
+const path = '/thorax/kardio/arvc/'
 export const CASES = [
-  {
-    id: 'rv-adult', label: '01 · RV-Vergrößerung', title: 'Die rechte Kammer fällt auf',
-    image: '/thorax/kardio/arvc/radiopaedia-57972.jpg', width: 747, height: 627,
-    alt: 'Publiziertes Herz-MRT im Vierkammerblick mit vergrößertem rechten Ventrikel bei einem 35-jährigen Mann mit ARVC.',
-    sequence: 'Vierkammerblick · MRT-Standbild',
-    text: '35-jähriger Mann mit ARVC. Orientiere dich am Septum: Der RV liegt im Bild links oben, der dickwandigere LV rechts unten. Die auffällig große rechte Kammer ist der zentrale morphologische Hinweis.',
-    look: 'Vergleiche die Kammergrößen und die Kontur der freien RV-Wand. Die Vergrößerung ist ein Anlass zur Messung, noch kein vollständiges Diagnosekriterium.',
-    limit: 'Aus einem Standbild lassen sich Dyskinesie und Ejektionsfraktion nicht bestimmen. Die genaue Pulssequenz ist in der zugänglichen Abbildungslegende nicht genannt.',
-    credit: 'Dr. Azza Elgendy · Radiopaedia.org · rID 57972. Unveränderte Wiedergabe aus Cainap et al., Diagnostics 2021, Abb. 3.',
-    url: 'https://radiopaedia.org/cases/arrhythmogenic-right-ventricular-cardiomyopathy-4',
-    publication: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8392323/#diagnostics-11-01388-f003',
-  },
-  {
-    id: 'rv-child', label: '02 · RV-Kontur', title: 'Auch die Kontur gehört zur Beurteilung',
-    image: '/thorax/kardio/arvc/radiopaedia-69431.jpg', width: 683, height: 687,
-    alt: 'Publiziertes MRT eines zehnjährigen Jungen mit ARVC, vergrößertem rechten Ventrikel und auffälliger freier RV-Wand.',
-    sequence: 'Vierkammerblick · MRT-Standbild',
-    text: '10-jähriger Junge mit MRT-bestätigter ARVC. Die Publikation beschreibt einen vergrößerten RV mit dünner Wand und Aneurysmabildung.',
-    look: 'Verfolge die freie RV-Wand von der Trikuspidalklappe bis zum Apex. Prüfe eine auffällige Kontur im vollständigen Cine und in einer zweiten Ebene.',
-    limit: 'Pädiatrischer Lehrfall: Die festen Erwachsenengrenzen der TFC-Tabelle dürfen nicht ungeprüft auf Kinder übertragen werden. Die genaue Pulssequenz ist in der Abbildungslegende nicht genannt.',
-    credit: 'Dr. Vlad Barskiy · Radiopaedia.org · rID 69431. Unveränderte Wiedergabe aus Cainap et al., Diagnostics 2021, Abb. 9.',
-    url: 'https://radiopaedia.org/cases/arrhythmogenic-right-ventricular-cardiomyopathy-3',
-    publication: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8392323/#diagnostics-11-01388-f009',
-  },
-  {
-    id: 'lv-lge', label: '03 · LV-Beteiligung / LGE', title: 'Die linke Kammer bewusst mitbeurteilen',
-    image: '/thorax/kardio/arvc/lv-lge-shen-2019.jpg', width: 767, height: 246,
-    alt: 'Drei publizierte Late-Gadolinium-Enhancement-MRT-Aufnahmen in kurzer Achse und Vierkammerblick mit septalem Enhancement bei ARVC und LV-Beteiligung.',
-    sequence: 'Late Gadolinium Enhancement · kurze Achse & Vierkammerblick',
-    text: 'Das publizierte LGE-Beispiel zeigt eine linksventrikuläre Beteiligung mit septalem Enhancement. Genau diese Gewebeinformation fehlt, wenn nur die RV-Größe betrachtet wird.',
-    look: 'Suche helle Areale innerhalb der LV-Wand und ordne ihre Lage ein: subepikardial, intramural oder subendokardial. Vergleiche kurze und lange Achse.',
-    limit: 'Dieses Beispiel stammt aus einer Originalstudie, nicht von Radiopaedia. Septales LGE allein ist nicht spezifisch für ACM; Myokarditis und andere Kardiomyopathien bleiben mögliche Ursachen.',
-    credit: 'Shen et al., Scientific Reports 2019 · CC BY 4.0. Unveränderte Wiedergabe über Cainap et al., Abb. 7.',
-    url: 'https://doi.org/10.1038/s41598-019-50535-z',
-    publication: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8392323/#diagnostics-11-01388-f007',
-  },
+  { id: '57972', label: 'RV-Dilatation', title: 'Großer RV, auffällige Bewegung, kein LGE', age: '35 Jahre · Mann', creator: 'Azza Elgendy', certainty: 'Diagnose im Originalfall: sicher', url: 'https://radiopaedia.org/cases/57972', study: 'https://radiopaedia.org/cases/57972/studies/64966', clinical: 'Länger bestehende Dyspnoe und eingeschränkte Belastbarkeit; im EKG ein Schenkelblock.', values: [['RVEDVi', '116 ml/m²'], ['RVEF', '< 40 %']], views: [
+    { label: '4-Kammer-Cine', file: '57972-4ch.jpg', sequence: 'Axial Cine · segmented 4 CH · Standbild', alt: 'Vierkammer-Cine-Standbild bei ausgeprägter RV-Vergrößerung, Radiopaedia 57972.' },
+    { label: 'RVOT-Cine', file: '57972-rvot.jpg', sequence: 'Cine RVOT · SSFP · Standbild', alt: 'RVOT-Cine-Standbild aus Radiopaedia-Fall 57972.' },
+    { label: 'Weitere Cine-Ebene', file: '57972-cine-r2.jpg', sequence: 'CINE R2 · SSFP · Standbild', alt: 'Zusätzliche SSFP-Cine-Ebene aus Radiopaedia-Fall 57972.' },
+    { label: 'LGE / PSIR', file: '57972-lge-sax.jpg', sequence: 'SAX · Phase sensitive IR · Standbild', alt: 'PSIR-Standbild der kurzen Achse aus Radiopaedia-Fall 57972.' },
+  ], look: 'Zuerst Kammergrößen vergleichen, dann die freie RV-Wand im vollständigen Cine verfolgen. Der Originalfall beschreibt Dyskinesien / paradoxe Bewegung am Übergang RVOT–Apex und kein auffälliges LGE.', lesson: 'Regionale Bewegungsstörung plus erhöhte RVEDVi / reduzierte RVEF ergibt einen bildgebenden TFC-Baustein. Volumen und EF zählen hier zusammen als ein Kriterium, nicht als zwei Major-Kriterien.', limit: 'Die vier lokalen Aufnahmen sind Standbilder. Die regionale Bewegung ist im Original-Cine zu prüfen; die 4-Kammer-Serie ist laut Quelle durch Arrhythmie beeinträchtigt.' },
+  { id: '194915', label: 'RV + LV / LGE', title: 'Der LV gehört zur Diagnose dazu', age: '30 Jahre · Mann', creator: 'Abhishek Bhargava', certainty: 'Diagnose im Originalfall: sehr wahrscheinlich', url: 'https://radiopaedia.org/cases/194915', study: 'https://radiopaedia.org/cases/194915/studies/154035', clinical: 'Palpitationen, eine Synkope und auffälliges EKG.', values: [['RVEDVi', '≈ 135 ml/m²'], ['RVEF', '≈ 35 %'], ['LVEF', '≈ 51 %']], views: [
+    { label: 'LGE · 4-Kammer', file: '194915-lge-4ch.jpg', sequence: '4CH · PSIR · Standbild', alt: 'PSIR im Vierkammerblick bei biventrikulärer Beteiligung, Radiopaedia 194915.' },
+    { label: 'LGE · kurze Achse', file: '194915-lge-sax.jpg', sequence: 'Short axis · PSIR · Standbild', alt: 'PSIR in kurzer Achse bei biventrikulärer Beteiligung, Radiopaedia 194915.' },
+    { label: 'T1-Black-Blood', file: '194915-t1-sax.jpg', sequence: 'Short axis · T1 blackblood · Standbild', alt: 'T1-Black-Blood-Aufnahme in kurzer Achse bei ACM, Radiopaedia 194915.' },
+  ], look: 'Der Originalfall beschreibt einen dilatierten RV mit dünner, welliger Wand, regionaler Ausbuchtung und LGE. Zusätzlich bestehen Gewebeveränderungen und LGE in anterolateralen / inferolateralen LV-Segmenten.', lesson: 'Eine relativ erhaltene LVEF schließt LV-Beteiligung nicht aus. Cine und PSIR liefern unterschiedliche, sich ergänzende Informationen.', limit: 'Das nichtischämische LGE-Muster unterstützt die Einordnung; die vollständigen Serien und die übrigen Diagnosebereiche bleiben erforderlich.' },
+  { id: '39806', label: 'Cine in Bewegung', title: 'Dyskinesie im echten Cine verfolgen', age: '50 Jahre · Mann', creator: 'Tim Luijkx', certainty: 'Diagnose im Originalfall: sicher', url: 'https://radiopaedia.org/cases/39806', study: 'https://radiopaedia.org/cases/39806/studies/42237', clinical: 'Bekannte ARVC nach VT-Ablation am RVOT. Untersuchung von Bewegung und Pumpfunktion.', values: [['RVEDVi', '115 ml/m²'], ['RVEF', '41 %'], ['LVEF', '59 %']], views: [
+    { label: '4-Kammer-Cine · Video', file: '39806-cine-4ch.mp4', type: 'video', sequence: '4 chamber · cine video · Originalschleife', alt: 'Echtes Vierkammer-Cine mit rechtsventrikulären Wandbewegungsstörungen.' },
+  ], look: 'Video starten und die freie RV-Wand sowie den Apex über Systole und Diastole verfolgen. Der Originalfall beschreibt ausgeprägte dyskinetische, aneurysmatische Ausbuchtungen bei normaler LV-Wandbewegung.', lesson: 'Die Bewegungsinformation entsteht erst über den Herzzyklus. Die reduzierte RVEF und das vergrößerte indexierte RV-Volumen werden damit gemeinsam eingeordnet.', limit: 'Wichtig beim LGE der vollständigen Untersuchung: Eine frühere Ablation kann selbst Narben erzeugen. Nicht jedes Enhancement ist allein der ACM zuzuschreiben.' },
+  { id: '87505', label: 'Schwere RV-Dysfunktion', title: 'Morphologie, Funktion und Vorgeschichte verbinden', age: '14 Jahre · Mädchen', creator: 'Igor Yarmola', certainty: 'Diagnose im Originalfall: sehr wahrscheinlich', url: 'https://radiopaedia.org/cases/87505', study: 'https://radiopaedia.org/cases/87505/studies/103850', clinical: 'Arrhythmien, Dyspnoe und Belastungsintoleranz; plötzlicher Herztod in der Familie. Trikuspidalklappenrekonstruktion im Säuglingsalter.', values: [['RVEDVi', '189 ml/m²'], ['RVEF', '13,9 %']], views: [
+    { label: 'Cine · 4-Kammer', file: '87505-cine-4ch.jpg', sequence: '4ch Cine · SSFP · Standbild', alt: 'Vierkammer-Cine-Standbild mit ausgeprägter RV-Dilatation im Fall 87505.' },
+    { label: 'LGE · 4-Kammer', file: '87505-lge-4ch.jpg', sequence: '4ch · IRGRE · Standbild', alt: 'IRGRE-LGE im Vierkammerblick des pädiatrischen ARVC-Falls 87505.' },
+    { label: 'Cine · LV-Längsachse', file: '87505-cine-lv.jpg', sequence: '2ch (LV) · Cine SSFP · Standbild', alt: 'Cine-SSFP-Standbild aus dem pädiatrischen ARVC-Fall 87505.' },
+  ], look: 'Die Originaluntersuchung zeigt eine schwere RV-Dilatation, regionale A-/Dyskinesien und RV-LGE. Zuerst im Vierkammerblick die vergrößerte rechte Kammer verfolgen, dann Cine und LGE vergleichen. Die LV-Längsachse ist eine ergänzende Ebene.', lesson: 'Starke Funktionsstörung, regionale Veränderungen und Familienanamnese zusammen betrachten. Die Voroperation hilft, lokale Artefakte zu erklären.', limit: 'Pädiatrischer Fall: feste TFC-Grenzen für Erwachsene nicht ungeprüft anwenden. Der Originalfall beschreibt zusätzlich ein Suszeptibilitätsartefakt an der rekonstruierten Trikuspidalklappe.' },
+  { id: '69431', label: 'RV-Kontur im Kindesalter', title: 'Die freie RV-Wand systematisch verfolgen', age: '10 Jahre · Junge', creator: 'Vlad Barskiy', certainty: 'Publizierter ARVC-Lehrfall', url: 'https://radiopaedia.org/cases/69431', study: 'https://radiopaedia.org/cases/69431', clinical: 'Pädiatrisches MRT-Beispiel aus der publizierten Übersicht von Cainap et al.', values: [], views: [
+    { label: '4-Kammer-MRT', file: 'radiopaedia-69431.jpg', sequence: 'Vierkammerblick · publiziertes MRT-Standbild', alt: 'Vierkammer-MRT eines zehnjährigen Jungen mit RV-Vergrößerung und auffälliger RV-Kontur.' },
+  ], look: 'Vom Trikuspidalring über die freie RV-Wand bis zum Apex gehen. Die Veröffentlichung beschreibt RV-Vergrößerung, eine dünne Wand und Aneurysmabildung.', lesson: 'Eine auffällige Kontur ist ein Ausgangspunkt für die gezielte Cine-Prüfung in zwei Ebenen.', limit: 'Die genaue Pulssequenz ist in der zugänglichen veröffentlichten Bildlegende nicht genannt. Keine EF oder Dyskinesie allein aus diesem Standbild ableiten. Abbildung aus Cainap et al., 2021, Abb. 9.' },
+  { id: '95633', label: 'CT als Ergänzung', title: 'Auch im Trauma-CT kann die ARVC auffallen', age: '45 Jahre · Mann', creator: 'Tom Foster', certainty: 'Diagnose im Originalfall: sehr wahrscheinlich', url: 'https://radiopaedia.org/cases/95633', study: 'https://radiopaedia.org/cases/95633/studies/114991', clinical: 'Trauma-CT bei bekannter ARVC; ein Zweikammer-ICD liegt bereits.', values: [], views: [
+    { label: 'CT · axial', file: '95633-ct.jpg', sequence: 'Axial C+ · split bolus · CT-Standbild', alt: 'Kontrastmittel-CT bei bekannter ARVC mit dilatiertem RV und ICD.' },
+  ], look: 'Der Originalfall zeigt einen deutlich dilatierten RV mit verdünnter, fetthaltiger Wand. Den ICD als Hinweis auf die bekannte Rhythmuserkrankung einordnen.', lesson: 'CT kann die Morphologie illustrieren. Die MRT-spezifischen Funktions- und Gewebekriterien lassen sich daraus nicht ersetzen.', limit: 'Bewusst ein CT-Vergleichsfall, kein MRT. Fett allein beweist keine ACM und ist kein eigenständiges TFC- / Padua-Kriterium.' },
+].map(item => ({ ...item, views: item.views.map(view => ({ ...view, src: path + view.file })) }))
+
+export const TAKE_HOME = [
+  { title: 'ACM betrifft das ganze Herz.', detail: 'ARVC ist die klassische rechtsbetonte Form. Die linke Kammer kann mitbetroffen sein oder im Vordergrund stehen. Das ist für Diagnose und Prognose relevant.' },
+  { title: 'Cine, Messwerte und LGE beantworten drei verschiedene Fragen.', detail: 'Cine zeigt regionale Bewegung, der vollständige Cine-Stapel liefert Volumen und EF, LGE zeigt das Narbenmuster. Keine dieser Informationen ersetzt die anderen.' },
+  { title: 'TFC 2010: regional UND global.', detail: 'Eine sichere regionale RV-Bewegungsstörung muss mit dem passenden RVEDVi- oder RVEF-Grenzwert zusammenkommen. Volumen und EF ergeben innerhalb dieser Kategorie keine zwei Major-Kriterien.' },
+  { title: 'Padua 2020 ergänzt LV und LGE.', detail: 'Mindestens ein morphofunktionelles oder strukturelles Kriterium muss vorliegen. Bei rein linksdominantem Phänotyp ist die passende Genetik entscheidend; LGE allein genügt nicht.' },
+  { title: 'Das MRT ist Teil einer gemeinsamen Diagnose.', detail: 'EKG, Rhythmusdiagnostik, Familienanamnese, Genetik und mögliche Imitatoren gehören dazu. Die Systeme von 2010 und 2020 nicht zu einer eigenen Punkteliste vermischen.' },
 ]

@@ -2,174 +2,122 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
+import LessonHero from '@/components/LessonHero'
+import LessonTakeHome from '@/components/LessonTakeHome'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
-import { CASES, SECTIONS, SECTION_IDS, SOURCES } from './lessonContent'
+import { useLessonSectionScroll } from '@/hooks/useLessonSectionScroll'
+import { useLehrModeActive } from '@/hooks/useLehrModeActive'
+import CaseAtlas from './CaseAtlas'
+import { PaduaLesson, TfcLesson } from './CriteriaLab'
+import { Icon, Note, PatternExplorer, PhenotypeExplorer, ProtocolExplorer, TeachingTable } from './LessonVisuals'
+import { CASES, SECTIONS, SECTION_IDS, SOURCES, TAKE_HOME } from './lessonContent'
+import template from '@/components/LessonTemplate.module.css'
 import styles from './page.module.css'
 
-function Note({ title, children, copper = false }) {
-  return <aside className={`${styles.note} ${copper ? styles.copper : ''}`}><strong>{title}</strong><div>{children}</div></aside>
-}
-
-function Source({ indices }) {
-  return <p className={styles.sourceLine}>Nach {indices.map((index, i) => <span key={index}>{i ? ' · ' : ''}<a href={SOURCES[index].url} target="_blank" rel="noreferrer">{SOURCES[index].label} ↗</a></span>)}</p>
-}
-
-function Chambers({ variant }) {
-  return <svg className={styles.chambers} viewBox="0 0 112 124" role="img" aria-label={`Schematische Kammerdarstellung: ${variant === 'rv' ? 'rechte' : variant === 'lv' ? 'linke' : 'beide'} Kammer${variant === 'both' ? 'n' : ''} betont`}>
-    <path d="M50 23 49 10q-9-6-12 3l-3 14C8 37 8 68 24 93c9 15 20 22 34 23 19 1 33-15 36-34 4-25-9-43-25-49V18q-4-8-11-2l-1 12" fill="none" stroke="currentColor" strokeWidth="1.5"/>
-    <path d="M43 37C19 40 17 59 24 78c6 16 16 25 28 29L49 61Z" fill={variant === 'rv' || variant === 'both' ? '#89b3b0' : '#f4f7f6'} stroke="currentColor"/>
-    <path d="M59 43c24 9 32 27 25 44-5 13-15 21-25 21L55 65Z" fill={variant === 'lv' || variant === 'both' ? '#89b3b0' : '#f4f7f6'} stroke="currentColor"/>
-    <text x="29" y="69" fontSize="10" fill="#173e43">RV</text><text x="63" y="80" fontSize="10" fill="#173e43">LV</text>
-  </svg>
+function Sources({ indices }) {
+  return <p className={styles.sourceLine}>Vertiefen: {indices.map((index, i) => <span key={index}>{i ? ' · ' : ''}<a href={SOURCES[index].url} target="_blank" rel="noreferrer">{SOURCES[index].label}</a></span>)}</p>
 }
 
 function Definition() {
   return <>
-    <p className={styles.lead}>Bei der <strong>arrhythmogenen Kardiomyopathie (ACM)</strong> geht Herzmuskelgewebe verloren und wird durch Narbengewebe, teilweise auch durch Fett, ersetzt. Diese Veränderungen können die elektrische Erregung stören: Es entstehen gefährliche Rhythmusstörungen aus den Herzkammern.</p>
-    <p>Die Erkrankung ist häufig erblich. Eine ausgeprägte Pumpschwäche muss noch nicht vorliegen, damit Rhythmusstörungen auftreten können.</p>
-    <div className={styles.definitionBand}><span>Früher: vor allem die rechte Kammer</span><b aria-hidden="true">→</b><span>Heute: das gesamte Herz betrachten</span></div>
-    <p>Die Erkrankung wurde zunächst als <strong>arrhythmogene rechtsventrikuläre Kardiomyopathie (ARVC)</strong> beschrieben. Heute wissen wir: Auch der linke Ventrikel kann beteiligt sein – bei manchen Formen sogar überwiegend. Diese LV-Beteiligung ist für die Diagnose und die Einschätzung des weiteren Verlaufs wichtig.</p>
-    <div className={styles.phenotypes}>
-      {[
-        ['rv', 'Rechtsbetont', 'Klassische ARVC', 'Die rechte Kammer steht im Vordergrund. Größe, Pumpfunktion und regionale Bewegung des RV beurteilen.'],
-        ['both', 'Beide Kammern', 'Biventrikuläre ACM', 'RV und LV sind beteiligt. Die Gewebeveränderungen beider Kammern gehören zur Einordnung.'],
-        ['lv', 'Linksbetont', 'Linksdominante ACM / ALVC', 'Die linke Kammer steht im Vordergrund. Ein unauffälliger RV schließt diese Form nicht aus.'],
-      ].map(([variant, title, subtitle, text]) => <div className={styles.phenotype} key={variant}><Chambers variant={variant}/><div><h3>{title}</h3><small>{subtitle}</small><p>{text}</p></div></div>)}
-    </div>
-    <p className={styles.caption}>Schematische Darstellung der Verteilung, keine diagnostischen MRT-Bilder. RV = rechte, LV = linke Herzkammer.</p>
-    <Note title="Ein Begriff, den du dir merken solltest">ACM ist der Oberbegriff. ARVC bezeichnet die rechtsbetonte Form. Im MRT deshalb immer <strong>beide Kammern und das Myokardgewebe</strong> beurteilen.</Note>
-    <Source indices={[4, 2, 6]}/>
+    <p className={styles.lead}>Bei der <strong>arrhythmogenen Kardiomyopathie (ACM)</strong> geht Herzmuskelgewebe verloren. An seine Stelle tritt Narbengewebe, teilweise auch Fett. Das kann die elektrische Erregung stören und gefährliche Rhythmusstörungen aus den Herzkammern auslösen – auch bevor die Pumpfunktion deutlich abnimmt.</p>
+    <PhenotypeExplorer/>
+    <div className={styles.definitionBridge}><span>Früher als ARVC beschrieben:<br/><strong>vor allem der rechte Ventrikel</strong></span><Icon name="arrow"/><span>Heute als ACM-Spektrum verstanden:<br/><strong>RV, LV oder beide Kammern</strong></span></div>
+    <p className={styles.bodyText}>Die Erkrankung ist häufig erblich. Zunächst stand die rechte Kammer im Mittelpunkt. Heute ist klar: <strong>Auch die linke Kammer kann betroffen sein, bei manchen Formen sogar überwiegend.</strong> Ihre Beteiligung ist für Diagnose und Prognose relevant. Deshalb im MRT immer beide Kammern und das Gewebe beurteilen.</p>
+    <Note title="Ein Satz zum Mitnehmen">ACM ist der Oberbegriff. ARVC bezeichnet die klassische rechtsbetonte Form. Ein unauffälliger RV schließt eine linksdominante ACM nicht aus.</Note>
+    <Sources indices={[4, 2, 6]}/>
   </>
 }
 
 function Mrt() {
-  return <>
-    <p className={styles.lead}>Drei Fragen führen durch die Untersuchung: <strong>Wie bewegt sich die Wand? Wie groß und leistungsfähig sind die Kammern? Wo liegt eine Narbe?</strong></p>
-    <div className={styles.steps}>
-      <article><span>01</span><div><h3>Cine: Bewegung sehen</h3><p>EKG-getriggerte bSSFP-Cines in kurzen Achsen, im Vierkammerblick und in RV-spezifischen Ebenen einschließlich RV-Ausflusstrakt aufnehmen. Einen verdächtigen Wandabschnitt über den gesamten Herzzyklus und in einer zweiten Ebene verfolgen.</p><dl><dt>Akinesie</dt><dd>Ein Abschnitt bewegt sich während der Kontraktion nicht.</dd><dt>Dyskinesie</dt><dd>Ein Abschnitt bewegt sich während der Kontraktion nach außen.</dd><dt>Hypokinesie</dt><dd>Ein Abschnitt bewegt sich weniger. Das allein erfüllt das regionale RV-Kriterium der TFC nicht.</dd></dl></div></article>
-      <article><span>02</span><div><h3>Cine-Stapel: Volumen und Funktion messen</h3><p>RV und LV vollständig von der Basis bis zum Apex erfassen. Enddiastolisches Volumen auf die Körperoberfläche beziehen (EDVi, ml/m²) und Ejektionsfraktion (EF, %) bestimmen. Ein großer RV im Einzelbild ersetzt diese Messung nicht.</p></div></article>
-      <article><span>03</span><div><h3>LGE: Narbenmuster erkennen</h3><p>Nach Kontrastmittelgabe mit T1-gewichteten Inversion-Recovery- oder PSIR-Sequenzen untersuchen. LGE bedeutet „späte Gadoliniumanreicherung“ und macht veränderten Extrazellulärraum, hier insbesondere Fibrose, sichtbar. Beim LV auf subepikardiale oder intramurale Streifen achten. Ein ringförmiges Muster kann hinweisend sein, beweist die Ursache aber nicht.</p></div></article>
-      <article><span>04</span><div><h3>T1-/T2-Mapping: ergänzend einordnen</h3><p>T2 kann bei einer entzündlichen „Hot Phase“ erhöht sein. T1/ECV können Gewebeveränderungen unterstützen. Mapping-Werte sind keine eigenständigen TFC-2010- oder Padua-2020-Kriterien. Fettsequenzen können ergänzen; Fett allein beweist keine ACM.</p></div></article>
-    </div>
-    <Note copper title="Hier passieren leicht Fehler">Die dünne RV-Wand, Partialvolumen und Bewegung aus der Bildebene erschweren die Beurteilung. Eine scheinbare Ausbuchtung oder unsicheres RV-LGE immer in einer zweiten Ebene prüfen. Sportherz, Shunt, pulmonale Hypertonie, Myokarditis und Sarkoidose können Teilbefunde imitieren.</Note>
-    <Source indices={[3, 4, 2]}/>
-  </>
+  return <><p className={styles.lead}>Vier Bausteine, vier konkrete Fragen. Zuerst Qualität und Bewegung prüfen, dann Volumen und Funktion messen, anschließend die Gewebeveränderungen einordnen.</p><ProtocolExplorer/><Note caution title="Die zweite Ebene ist entscheidend">Der RV ist dünnwandig und geometrisch komplex. Partialvolumen, Trabekel und Bewegung aus der Schicht können eine Ausbuchtung oder ein scheinbares LGE erzeugen. Auffälligkeiten gezielt in einer weiteren Ebene überprüfen.</Note><Sources indices={[3, 4]}/></>
 }
 
-function ImageCases() {
+function Patterns() {
+  return <><p className={styles.lead}>Die beiden Diagramme trennen <strong>Bewegung</strong> und <strong>Gewebe</strong>. Die Schemata erklären das Prinzip; die echten Bilder folgen im Radiopaedia-Atlas.</p><PatternExplorer/><figure className={styles.publishedFigure}><Image unoptimized src="/thorax/kardio/arvc/lv-lge-shen-2019.jpg" width={767} height={246} alt="Publizierte LGE-Aufnahmen bei ARVC mit septaler linksventrikulärer Beteiligung."/><figcaption><strong>Echtes LGE-Beispiel zur LV-Beteiligung.</strong> Shen et al., Scientific Reports 2019 · CC BY 4.0; unveränderte Wiedergabe über Cainap et al., Abb. 7. Septales LGE allein ist nicht spezifisch für ACM. <a href={SOURCES[6].url} target="_blank" rel="noreferrer">Originalstudie</a></figcaption></figure><Sources indices={[1, 4, 6]}/></>
+}
+
+const DIFFERENTIALS = [
+  ['Sportherz', 'RV-Vergrößerung durch Training', 'Proportionale Anpassung, Funktion, fehlende typische regionale Störung / Narbe und sportbezogene Referenzwerte prüfen.'],
+  ['Myokarditis / „Hot Phase“', 'Subepikardiales LGE, gegebenenfalls Ödem', 'Akute Klinik, Troponin, T2, Verlauf und Genetik einbeziehen. Eine ACM kann selbst myocarditisähnliche Episoden verursachen.'],
+  ['Kardiale Sarkoidose', 'Fleckige nichtischämische Narben, teils biventrikulär', 'Leitungsstörungen, extrakardiale Zeichen und gegebenenfalls PET / Histologie im klinischen Kontext ergänzen.'],
+  ['Shunt / pulmonale Hypertonie', 'Vergrößerter RV, veränderte Funktion', 'Druck- oder Volumenbelastung, Septumform, Gefäße und mögliche Shuntursache untersuchen.'],
+  ['Ischämische Narbe', 'Subendokardiales bis transmurales LGE', 'Koronarterritorium und koronare Ursache prüfen; nicht mit nichtischämischen LV-Streifen gleichsetzen.'],
+  ['Artefakt / frühere Ablation', 'Scheinbare Ausbuchtung oder lokales Enhancement', 'Zweite Ebene, vollständiger Herzzyklus, Bildqualität und Vorgeschichte; Ablationsnarben berücksichtigen.'],
+]
+function Differentials() {
   const [selected, setSelected] = useState(0)
-  const dialog = useRef(null)
-  const current = CASES[selected]
-  return <>
-    <p className={styles.lead}>Zwei originale Radiopaedia-Fälle und ein publiziertes LGE-Beispiel zeigen die unterschiedlichen Fragen an das MRT. Betrachte zuerst das Bild, dann die Erklärung.</p>
-    <div className={styles.caseTabs} role="tablist" aria-label="MRT-Beispiele">{CASES.map((item, index) => <button type="button" role="tab" id={`tab-${item.id}`} aria-selected={selected === index} aria-controls={`case-${item.id}`} tabIndex={selected === index ? 0 : -1} key={item.id} onClick={() => setSelected(index)} onKeyDown={event => {
-      const next = event.key === 'ArrowRight' ? (index + 1) % CASES.length : event.key === 'ArrowLeft' ? (index + CASES.length - 1) % CASES.length : event.key === 'Home' ? 0 : event.key === 'End' ? CASES.length - 1 : null
-      if (next !== null) { event.preventDefault(); setSelected(next); document.getElementById(`tab-${CASES[next].id}`)?.focus() }
-    }}>{item.label}</button>)}</div>
-    <div id={`case-${current.id}`} role="tabpanel" aria-labelledby={`tab-${current.id}`} className={styles.casePanel}>
-      <div className={styles.imageFrame}><button type="button" className={styles.imageButton} onClick={() => dialog.current?.showModal()} aria-label="MRT-Bild vergrößern"><Image unoptimized loading="eager" src={current.image} alt={current.alt} width={current.width} height={current.height} sizes="(max-width: 760px) 90vw, 740px"/><span>Bild vergrößern ↗</span></button><p>{current.sequence}</p></div>
-      <div className={styles.caseExplanation}><h3>{current.title}</h3><p>{current.text}</p><h4>Darauf achten</h4><p>{current.look}</p><Note copper title="Was dieses Bild nicht beantworten kann">{current.limit}</Note></div>
-      <p className={styles.imageCredit}>{current.credit}<br/><a href={current.url} target="_blank" rel="noreferrer">{current.id === 'lv-lge' ? 'Originalstudie' : 'Radiopaedia-Fall'} ↗</a><span> · </span><a href={current.publication} target="_blank" rel="noreferrer">Veröffentlichte Abbildung ↗</a></p>
-    </div>
-    <dialog ref={dialog} aria-label={current.title} className={styles.imageDialog} onClick={event => { if (event.target === dialog.current) dialog.current.close() }}><button type="button" autoFocus className={styles.closeDialog} onClick={() => dialog.current?.close()}>Schließen ×</button><Image unoptimized loading="eager" src={current.image} alt={current.alt} width={current.width} height={current.height} sizes="95vw"/><p>{current.sequence}</p></dialog>
-    <Source indices={[5, 6]}/>
-  </>
+  const examples = [
+    { label: 'Großer RV beim Sportler', text: 'Nicht am Volumen stehen bleiben. Zuerst nach einer sicheren regionalen Störung suchen, RV und LV vergleichen und geeignete Referenzen verwenden. Ein einzelner erhöhter RVEDVi beweist keine ARVC.', index: 0 },
+    { label: 'LV-LGE nach Thoraxschmerz', text: 'Myokarditis ist eine wichtige Möglichkeit. Bei rezidivierenden Episoden, Arrhythmien oder Familienanamnese auch an eine ACM denken. LGE-Verteilung, Ödem, Verlauf und Genetik zusammenführen.', index: 1 },
+    { label: 'LGE nach VT-Ablation', text: 'Die Lokalisation mit der Ablationsstelle abgleichen. Eine iatrogene Narbe kann die LGE-Bewertung beeinflussen – wie im Radiopaedia-Fall 39806. Das ursprüngliche Erkrankungsmuster separat einordnen.', index: 5 },
+  ]
+  return <><p className={styles.lead}>Ein großer RV, Fett oder ein helles LGE-Areal ist jeweils nur ein Teil der Geschichte. Die entscheidende Frage lautet: <strong>Passt das gesamte Muster besser zu ACM oder zu einer anderen Ursache?</strong></p><div className={styles.scenarioRow}>{examples.map((item, index) => <button type="button" key={item.label} aria-pressed={selected === index} onClick={() => setSelected(index)}><Icon name="scan"/>{item.label}</button>)}</div><div className={styles.scenarioExplanation} aria-live="polite"><h3>{examples[selected].label}</h3><p>{examples[selected].text}</p></div><TeachingTable caption="Wichtige Imitatoren und der nächste Denk-Schritt" headers={['Möglichkeit', 'Überschneidung', 'Gezielt unterscheiden']} rows={DIFFERENTIALS}/><Note caution title="Einzelzeichen nicht zur Diagnose machen">Fett allein zählt nicht. Eine scheinbare regionale RV-Störung in nur einer Ebene ist unsicher. LV-LGE allein beweist keine linksdominante ACM.</Note><Sources indices={[4, 2, 7]}/></>
 }
 
-function CriteriaIntro() {
-  return <div className={styles.criteriaIntro}><h3>Warum gibt es überhaupt Kriterien?</h3><p>Ein einzelner auffälliger MRT-Aspekt ist nicht zuverlässig genug. Die Diagnose setzt Hinweise aus <strong>sechs Bereichen</strong> zusammen. „Major“ bezeichnet einen stärker, „Minor“ einen schwächer gewichteten Hinweis.</p><ol className={styles.domains}><li>Form & Funktion</li><li>Gewebeveränderungen</li><li>Repolarisation im EKG</li><li>Depolarisation im EKG</li><li>Ventrikuläre Arrhythmien</li><li>Familie & Genetik</li></ol></div>
+const CONTENT = { definition: Definition, mrt: Mrt, muster: Patterns, bilder: CaseAtlas, tfc: TfcLesson, padua: PaduaLesson, differenzialdiagnosen: Differentials }
+
+function Chapter({ section, open, read, onSelect, onRead, children }) {
+  return <section id={section.id} className={`${template.section} ${styles.chapter} ${open ? template.sectionOpen : ''}`}><button type="button" className={template.sectionHeader} onClick={() => onSelect(section.id)} aria-expanded={open} aria-controls={`${section.id}-panel`} data-lehr-section-managed="true"><span className={template.sectionIcon}><Icon name={section.icon}/></span><span><strong>{section.title}</strong></span><span className={template.toggle} aria-hidden="true">{open ? '−' : '+'}</span></button><div id={`${section.id}-panel`} hidden={!open} className={`${template.sectionBody} ${styles.chapterBody}`}>{children}<button type="button" className={`${template.readButton} ${read ? template.readButtonDone : ''}`} aria-pressed={read} onClick={() => onRead(section.id)}><Icon name="check"/>{read ? 'Als gelesen markiert' : 'Abschnitt als gelesen markieren'}</button></div></section>
 }
 
-function Tfc() {
-  return <>
-    <p className={styles.lead}><strong>TFC</strong> steht für „Task Force Criteria“. Die revidierten Kriterien von <strong>2010</strong> wurden für die klassische, rechtsbetonte ARVC entwickelt. Sie verbinden Bildgebung mit EKG, Rhythmusdiagnostik, Gewebe und Familienanamnese.</p>
-    <CriteriaIntro/>
-    <h3 className={styles.subheading}>Der MRT-Baustein hat zwei Teile</h3>
-    <div className={styles.formula}><div><b>A</b><strong>Regionale RV-Wandbewegungsstörung</strong><p>Akinesie, Dyskinesie oder dyssynchrone Kontraktion</p></div><span>UND</span><div><b>B</b><strong>RV-Vergrößerung oder reduzierte RV-EF</strong><p>Mindestens einer der folgenden Grenzwerte</p></div></div>
-    <div className={styles.tableScroll} tabIndex="0" role="region" aria-label="MRT-Grenzwerte der TFC 2010"><table className={styles.table}><caption>TFC 2010 · MRT-Kriterien bei Erwachsenen; jeweils nur zusammen mit Teil A</caption><thead><tr><th scope="col">Messgröße</th><th scope="col">Major</th><th scope="col">Minor</th></tr></thead><tbody><tr><th scope="row">RVEDVi · Männer</th><td>≥ 110 ml/m²</td><td>≥ 100 bis &lt; 110 ml/m²</td></tr><tr><th scope="row">RVEDVi · Frauen</th><td>≥ 100 ml/m²</td><td>≥ 90 bis &lt; 100 ml/m²</td></tr><tr><th scope="row">RVEF · beide</th><td>≤ 40 %</td><td>&gt; 40 bis ≤ 45 %</td></tr></tbody></table></div>
-    <p className={styles.caption}>RVEDVi = rechtsventrikuläres enddiastolisches Volumen / Körperoberfläche. RVEF = rechtsventrikuläre Ejektionsfraktion.</p>
-    <Note title="So wendest du das an">Beispiel: Ein Mann hat eine sichere regionale RV-Dyskinesie und einen RVEDVi von 115 ml/m². Das erfüllt <strong>ein Major-Kriterium aus der Bildgebung</strong>. Ohne regionale Störung genügt derselbe Volumenwert nicht. Erhöhtes Volumen und reduzierte EF werden innerhalb dieser Kategorie nicht doppelt gezählt.</Note>
-    <h3 className={styles.subheading}>Ein MRT-Kriterium ist noch keine gesicherte ARVC</h3>
-    <p>Für eine gesicherte Diagnose nach TFC 2010 braucht es <strong>2 Major</strong> oder <strong>1 Major + 2 Minor</strong> oder <strong>4 Minor</strong> aus unterschiedlichen Kategorien. „Borderline“: 1 Major + 1 Minor oder 3 Minor. „Möglich“: 1 Major oder 2 Minor. Innerhalb einer Kategorie wird nicht mehrfach gezählt.</p>
-    <Note copper title="Die Grenze der TFC 2010">LGE und spezifische LV-Kriterien sind darin nicht enthalten. Die TFC können deshalb linksbetonte Formen übersehen. Fett im MRT ist ebenfalls kein eigenständiges TFC-Kriterium.</Note>
-    <Source indices={[0, 2]}/>
-  </>
+function MobilePath({ openId, readSections, onSelect }) {
+  const [expanded, setExpanded] = useState(false)
+  const current = SECTIONS.find(s => s.id === openId) || SECTIONS[0]
+  return <div className={template.mobileLearningPath}>{expanded ? <section className={template.mobilePathPanel} id="acm-mobile-path" aria-label="Lernpfad"><header><div><small>Lernpfad</small><strong>{readSections.size} / {SECTIONS.length} gelesen</strong></div><button type="button" onClick={() => setExpanded(false)} aria-label="Lernpfad schließen">×</button></header><nav>{SECTIONS.map(section => <button type="button" key={section.id} className={openId === section.id ? template.mobilePathCurrent : ''} onClick={() => { onSelect(section.id); setExpanded(false) }} aria-current={openId === section.id ? 'location' : undefined}><span className={template.mobilePathItemIcon}><Icon name={section.icon}/></span><span><strong>{section.short}</strong><small>{section.title}</small></span><i aria-label={readSections.has(section.id) ? 'gelesen' : undefined}>{readSections.has(section.id) ? '✓' : ''}</i></button>)}</nav></section> : null}<button type="button" className={template.mobilePathButton} aria-expanded={expanded} aria-controls="acm-mobile-path" onClick={() => setExpanded(value => !value)}><span className={template.mobileProgressRing} style={{'--mobile-progress':`${readSections.size / SECTIONS.length * 360}deg`}}><b>{readSections.size}</b><small>/{SECTIONS.length}</small></span><span className={template.mobileCurrentIcon}><Icon name={current.icon}/></span><span className={template.mobilePathLabel}><strong>Lernpfad</strong><small>{current.short}</small></span></button></div>
 }
-
-function Padua() {
-  return <>
-    <p className={styles.lead}>Die <strong>Padua-Kriterien von 2020</strong> erweitern die Beurteilung auf die rechte und linke Kammer. Die zentrale Neuerung ist die Einbeziehung der <strong>Narbenbildgebung mit LGE</strong>.</p>
-    <div className={styles.tableScroll} tabIndex="0" role="region" aria-label="TFC und Padua im Vergleich"><table className={styles.table}><caption>Die Idee hinter dem Wechsel</caption><thead><tr><th scope="col">Frage</th><th scope="col">TFC 2010</th><th scope="col">Padua 2020</th></tr></thead><tbody><tr><th scope="row">Welche Kammer?</th><td>Fokus auf den RV</td><td>RV, LV oder beide</td></tr><tr><th scope="row">Welche MRT-Information?</th><td>Regionale Bewegung + globale Größe / Funktion</td><td>Zusätzlich Gewebeschäden durch LGE</td></tr><tr><th scope="row">Welche Referenzwerte?</th><td>Feste RV-Grenzwerte</td><td>Nomogramme für Alter, Geschlecht und Körpergröße</td></tr><tr><th scope="row">Grundvoraussetzung?</th><td>Kombination mehrerer Diagnosebereiche</td><td>Mindestens ein morphofunktionelles oder strukturelles Kriterium erforderlich</td></tr></tbody></table></div>
-    <h3 className={styles.subheading}>Die MRT-Neuerungen, Schritt für Schritt</h3>
-    <div className={styles.steps}>
-      <article><span>01</span><div><h3>Rechts: Bewegung und globale Funktion trennen</h3><p>Regionale Akinesie, Dyskinesie oder systolische Ausbuchtung zusammen mit globaler RV-Dilatation oder globaler systolischer Dysfunktion: <strong>Major</strong>. Eine isolierte regionale RV-Akinesie, -Dyskinesie oder ein Aneurysma der freien RV-Wand: <strong>Minor</strong>. Die globalen Werte werden gegen geeignete Referenzkurven geprüft.</p></div></article>
-      <article><span>02</span><div><h3>Rechts: LGE kommt hinzu</h3><p>Transmurales, streifenförmiges RV-LGE in mindestens einer Region (Einflussbahn, Ausflussbahn oder Apex), in zwei orthogonalen Ebenen bestätigt: <strong>strukturelles Major-Kriterium</strong>. Die dünne Wand macht die sichere Abgrenzung schwierig.</p></div></article>
-      <article><span>03</span><div><h3>Links: Die Narbe kann vor der Pumpschwäche auffallen</h3><p>Streifenförmiges subepikardiales oder intramurales LV-LGE in mindestens einem Segment, in zwei orthogonalen Ebenen bestätigt: <strong>strukturelles Major-Kriterium</strong>. Isoliertes LGE an den septalen RV-Insertionspunkten zählt nicht. Globale LV-Dysfunktion mit oder ohne Dilatation sowie regionale LV-Hypo-/Akinesie sind morphofunktionelle Minor-Kriterien.</p></div></article>
-      <article><span>04</span><div><h3>Linksdominant: Genetik und Differenzialdiagnosen sind entscheidend</h3><p>Ohne RV-Beteiligung reicht ein LV-LGE-Muster allein nicht zur Diagnose einer ALVC. Nach Padua ist dafür der Nachweis einer krankheitsverursachenden oder wahrscheinlich krankheitsverursachenden ACM-Genvariante erforderlich. Myokarditis, Sarkoidose und andere Narbenursachen aktiv abgrenzen.</p></div></article>
-    </div>
-    <Note copper title="Kriterien immer als vollständiges System anwenden">Padua behält sechs Kategorien und die Major-/Minor-Logik bei. Zahlen aus den TFC 2010 dürfen nicht in Padua übertragen und Kriterien beider Systeme nicht zu einer eigenen Punkteliste vermischt werden. EKG, Arrhythmien und Familie gehören weiterhin dazu.</Note>
-    <p className={styles.caption}>Historische Einordnung: 2010 und 2020 sind zwei definierte Kriterienwerke. Die European Task Force hat danach weitere Kriterien vorgeschlagen (publiziert 2024). Padua 2020 ist deshalb hier bewusst mit Jahreszahl benannt.</p>
-    <Source indices={[1, 2, 7]}/>
-  </>
-}
-
-function TakeHome() {
-  return <>
-    <ol className={styles.takeHome}>
-      <li><span>01</span><p><strong>ACM betrifft mehr als den RV.</strong> ARVC ist die rechtsbetonte Form; biventrikuläre und linksdominante Formen gehören zum Spektrum.</p></li>
-      <li><span>02</span><p><strong>Cine + Messwerte + LGE zusammen lesen.</strong> Bewegung, Funktion und Gewebe beantworten unterschiedliche Fragen.</p></li>
-      <li><span>03</span><p><strong>TFC 2010 verlangt regional UND global.</strong> Eine große rechte Kammer allein erfüllt das MRT-Kriterium nicht.</p></li>
-      <li><span>04</span><p><strong>Padua 2020 ergänzt LV und LGE.</strong> Narbenmuster und Genetik helfen bei der Einordnung linksdominanter Formen.</p></li>
-      <li><span>05</span><p><strong>Kein Einzelzeichen beweist die Diagnose.</strong> Klinik, EKG, Rhythmus, Familie, Genetik und Differenzialdiagnosen mitdenken.</p></li>
-    </ol>
-    <h3 className={styles.subheading}>Quellen zum Nachlesen</h3>
-    <ul className={styles.sourceList}>{SOURCES.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer"><span>{source.label}</span><strong>{source.title}</strong><b aria-hidden="true">↗</b></a></li>)}</ul>
-    <p className={styles.caption}>Deutschsprachige Fassung · inhaltlich neu aufgebaut am 15. Oktober 2026. Die MRT-Bilder sind echte publizierte Aufnahmen; Details zu Herkunft und Aussagegrenzen stehen direkt am jeweiligen Bild.</p>
-  </>
-}
-
-const CONTENT = { definition: Definition, mrt: Mrt, bilder: ImageCases, tfc: Tfc, padua: Padua, merksaetze: TakeHome }
 
 export default function ArvcLesson() {
   const [openId, setOpenId] = useState('definition')
+  const [summaryOpen, setSummaryOpen] = useState(false)
+  const [sourcesOpen, setSourcesOpen] = useState(false)
   const { isRead, toggleRead, authError } = useLessonReadStatus('arvc')
-  const [readSections, setReadSections] = usePersistedSectionProgress('arvc-de-v2', SECTION_IDS, isRead)
-  const activeIndex = SECTIONS.findIndex(section => section.id === openId)
+  const [readSections, setReadSections] = usePersistedSectionProgress('arvc-de-v3', SECTION_IDS, isRead)
+  const scrollToSection = useLessonSectionScroll()
+  const lehrMode = useLehrModeActive()
+  const activeIndex = Math.max(0, SECTIONS.findIndex(s => s.id === openId))
+  const allRead = readSections.size === SECTION_IDS.length
 
   useEffect(() => {
-    const update = () => { const id = window.location.hash.slice(1); if (SECTION_IDS.includes(id)) setOpenId(id) }
-    update(); window.addEventListener('hashchange', update)
-    return () => window.removeEventListener('hashchange', update)
-  }, [])
+    const restoreHash = () => {
+      const id = window.location.hash.slice(1)
+      if (id === 'take-home' || id === 'merksaetze') { setSummaryOpen(true); scrollToSection('take-home') }
+      else if (SECTION_IDS.includes(id)) { setOpenId(id); scrollToSection(id) }
+    }
+    restoreHash(); window.addEventListener('hashchange', restoreHash)
+    return () => window.removeEventListener('hashchange', restoreHash)
+  }, [scrollToSection])
 
-  const select = (id, collapse = false) => {
-    const next = collapse && openId === id ? null : id
-    setOpenId(next)
-    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}${next ? `#${next}` : ''}`)
-    if (next) requestAnimationFrame(() => document.getElementById(next)?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+  const select = id => {
+    if (!SECTION_IDS.includes(id)) return
+    setOpenId(id)
+    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${id}`)
+    scrollToSection(id)
   }
+  const openSummary = () => { setSummaryOpen(true); window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#take-home`); scrollToSection('take-home') }
   const toggleSection = id => {
     if (isRead && !toggleRead()) return
-    setReadSections(previous => { const next = new Set(previous); if (next.has(id)) next.delete(id); else next.add(id); return next })
+    setReadSections(previous => { const next = new Set(previous); next.has(id) ? next.delete(id) : next.add(id); return next })
   }
-  const toggleLesson = () => { if (toggleRead() && isRead) setReadSections(new Set()) }
-
-  return <main className={styles.page} data-lesson-progress-managed="true" data-disable-lesson-explorer="true" lang="de" dir="ltr">
-    <header className={styles.header}>
-      <div className={styles.topline}><nav aria-label="Brotkrumennavigation" className={styles.breadcrumb}><Link href="/lernen">Lernen</Link><span>/</span><Link href="/lernen/thorax">Thorax</Link><span>/</span><span>Kardio-MRT</span></nav><span className={styles.author}>von RadYar</span></div>
-      <div className={styles.hero}><div><h1>Arrhythmogene<br/>Kardiomyopathie</h1><p>Das ganze Herz im Blick: ARVC, biventrikuläre und linksdominante ACM.</p></div><div className={styles.facts}><div><strong>RV + LV</strong><span>Beide Kammern<br/>prüfen</span></div><div><strong>Cine</strong><span>Bewegung<br/>verstehen</span></div><div><strong>LGE</strong><span>Narben<br/>erkennen</span></div></div></div>
-      <div className={styles.progressRow}><div className={styles.progress} role="progressbar" aria-label="Gelesene Abschnitte" aria-valuemin={0} aria-valuemax={6} aria-valuenow={readSections.size}><span style={{ width: `${readSections.size / 6 * 100}%` }}/></div><span aria-live="polite">{readSections.size} von 6 gelesen</span><button type="button" aria-pressed={isRead} onClick={toggleLesson}>{isRead ? '✓ Lektion gelesen' : 'Lektion als gelesen markieren'}</button></div>
-      {authError ? <p className={styles.authMessage} role="status">Zum Speichern der gesamten Lektion bitte anmelden. Die einzelnen Abschnitte werden auf diesem Gerät gespeichert.</p> : null}
+  const toggleAll = () => {
+    setReadSections(allRead ? new Set() : new Set(SECTION_IDS))
+    if (isRead !== !allRead) toggleRead()
+  }
+  return <main className={`${template.page} ${styles.page}`} data-lesson-section-divider="true" data-lesson-progress-managed="true" data-disable-lesson-explorer="true" lang="de" dir="ltr">
+    <header className={template.header}>
+      <div className={template.topline}><nav className={template.breadcrumb} aria-label="Brotkrumennavigation"><Link href="/lernen">RadYar</Link><span>/</span><Link href="/lernen/thorax">Thorax</Link><span>/</span><strong>ACM / ARVC</strong></nav><span className={template.author}>RadYar</span></div>
+      <LessonHero title="Arrhythmogene Kardiomyopathie" imageSrc="/thorax/kardio/arvc/acm-heart.png" imageAlt="Illustrativer Herzanschnitt mit rechter und linker Kammer; kein diagnostisches Bild."/>
+      <div className={`${template.actions} ${styles.actions}`}><button type="button" className={`${template.takeHomeJump} ${styles.takeHomeJump}`} onClick={openSummary}><Icon name="spark"/>Take Home Message<span aria-hidden="true">↓</span></button><Link className={template.primaryAction} href="/ueben/quiz?fach=thorax&n=10&themen=arvc&from=%2Fthorax%2Fkardio%2Farvc"><Icon name="case"/>MCQ starten<Icon name="arrow"/></Link><Link className={template.secondaryAction} href="/flashcards/arvc"><Icon name="layers"/>Flashcards</Link></div>
+      <div className={`${template.progressBar} ${styles.progressBox}`}><div className={template.progressTrack} role="progressbar" aria-label="Gelesene Kapitel" aria-valuemin={0} aria-valuemax={SECTION_IDS.length} aria-valuenow={readSections.size}><i style={{width:`${readSections.size / SECTION_IDS.length * 100}%`}}/></div><span aria-live="polite">{readSections.size} / {SECTION_IDS.length} gelesen</span><div className={template.progressActions}><button type="button" className={template.continueButton} disabled={activeIndex === SECTIONS.length - 1} onClick={() => select(SECTIONS[activeIndex + 1].id)} aria-label="Lektion fortsetzen"><span className={styles.continueDesktop}>Lektion fortsetzen</span><span className={styles.continueMobile}>Weiter</span><Icon name="arrow"/></button><button type="button" className={`${template.lessonCompleteButton} ${allRead ? template.lessonCompleteButtonDone : ''}`} aria-pressed={allRead} onClick={toggleAll}><Icon name="check"/>{allRead ? 'Alles gelesen' : 'Alles als gelesen'}</button></div></div>
+      {authError ? <p className={styles.authMessage} role="status">Auf diesem Gerät gespeichert. Zum Synchronisieren des Lesefortschritts bitte anmelden.</p> : null}
     </header>
-    <div className={styles.layout}>
-      <aside className={styles.sidebar}><h2>Lernpfad</h2><nav aria-label="Lernpfad">{SECTIONS.map((section, index) => <button type="button" key={section.id} onClick={() => select(section.id)} aria-current={openId === section.id ? 'location' : undefined}><span>{String(index + 1).padStart(2, '0')}</span><strong>{section.short}</strong><i aria-label={readSections.has(section.id) ? 'gelesen' : undefined}>{readSections.has(section.id) ? '✓' : ''}</i></button>)}</nav></aside>
-      <article className={styles.lesson}>{SECTIONS.map((section, index) => {
-        const Content = CONTENT[section.id]
-        return <section id={section.id} key={section.id} className={`${styles.section} ${openId === section.id ? styles.open : ''}`}><h2><button type="button" onClick={() => select(section.id, true)} aria-expanded={openId === section.id} aria-controls={`panel-${section.id}`}><span className={styles.sectionNumber}>{String(index + 1).padStart(2, '0')}</span><span>{section.title}</span><span className={styles.chevron} aria-hidden="true">{openId === section.id ? '−' : '+'}</span></button></h2><div id={`panel-${section.id}`} hidden={openId !== section.id} className={styles.sectionBody}><Content/><div className={styles.sectionActions}><button type="button" className={readSections.has(section.id) ? styles.readDone : ''} aria-pressed={readSections.has(section.id)} onClick={() => toggleSection(section.id)}>{readSections.has(section.id) ? '✓ Als gelesen markiert' : 'Abschnitt als gelesen markieren'}</button>{index < SECTIONS.length - 1 ? <button type="button" onClick={() => select(SECTIONS[index + 1].id)}>Weiter <span aria-hidden="true">→</span></button> : null}</div></div></section>
-      })}</article>
-    </div>
-    <div className={styles.mobilePath}><label htmlFor="arvc-learning-path">Lernpfad</label><select id="arvc-learning-path" value={openId || ''} onChange={event => select(event.target.value)}><option value="" disabled>Abschnitt wählen</option>{SECTIONS.map((section, index) => <option key={section.id} value={section.id}>{String(index + 1).padStart(2, '0')} · {section.short}{readSections.has(section.id) ? ' ✓' : ''}</option>)}</select><span>{Math.max(0, activeIndex + 1)} / 6</span></div>
+    <div className={template.layout}><aside className={`${template.sidebar} ${styles.sidebar}`}><h2 className={template.learningPathHeading}>Lernpfad</h2><nav aria-label="Lernpfad">{SECTIONS.map(section => <button type="button" key={section.id} className={openId === section.id ? template.activeSideItem : ''} aria-current={openId === section.id ? 'location' : undefined} aria-label={`Abschnitt öffnen: ${section.short}`} onClick={() => select(section.id)}><span className={template.sideIcon}><Icon name={section.icon}/></span><strong>{section.short}{readSections.has(section.id) ? <span className={template.readTick} aria-label="gelesen"> ✓</span> : null}</strong></button>)}</nav></aside>
+      <article className={template.lesson}>{SECTIONS.map(section => { const Content = CONTENT[section.id]; return <Chapter key={section.id} section={section} open={lehrMode || openId === section.id} read={readSections.has(section.id)} onSelect={select} onRead={toggleSection}><Content/>{section.id === 'tfc' ? <Sources indices={[0, 2]}/> : section.id === 'padua' ? <Sources indices={[1, 2, 7]}/> : null}</Chapter> })}
+        <section id="take-home" className={`${template.section} ${template.takeHomeSection} ${styles.takeHome} ${summaryOpen || lehrMode ? template.sectionOpen : ''}`}><button type="button" className={template.sectionHeader} aria-expanded={summaryOpen || lehrMode} aria-controls="take-home-panel" data-lehr-section-managed="true" onClick={() => setSummaryOpen(value => !value)}><span className={template.sectionIcon}><Icon name="spark"/></span><span><strong>Take Home Message</strong></span><span className={template.toggle} aria-hidden="true">{summaryOpen || lehrMode ? '−' : '+'}</span></button><div id="take-home-panel" className={template.sectionBody} hidden={!summaryOpen && !lehrMode}><LessonTakeHome points={TAKE_HOME} lang="de" idPrefix="acm-takehome"/></div></section>
+        <section id="quellen" className={styles.sources}><button type="button" aria-expanded={sourcesOpen || lehrMode} aria-controls="acm-sources" onClick={() => setSourcesOpen(v => !v)}><strong>Quellen & Bildnachweise</strong><span aria-hidden="true">{sourcesOpen || lehrMode ? '−' : '+'}</span></button><div id="acm-sources" hidden={!sourcesOpen && !lehrMode}><p>Deutsche Fassung · neu aufgebaut am 15. Oktober 2026.</p><ul>{SOURCES.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer"><strong>{source.label}</strong><span>{source.title}</span><Icon name="external"/></a></li>)}</ul><h3>Radiopaedia-Originalfälle</h3><ul>{CASES.map(item => <li key={item.id}><a href={item.url} target="_blank" rel="noreferrer"><strong>rID {item.id} · {item.creator}</strong><span>{item.title}</span><Icon name="external"/></a></li>)}</ul><p>Die klinischen Bilder und das Cine sind Originalaufnahmen. Das Herz im Kopfbereich ist eine generierte Illustration; die interaktiven Diagramme sind vereinfachte Schemata. Beides ist klar von den diagnostischen Aufnahmen getrennt.</p></div></section>
+      </article>
+    </div><MobilePath openId={openId} readSections={readSections} onSelect={select}/>
   </main>
 }
