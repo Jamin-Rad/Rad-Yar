@@ -1518,6 +1518,10 @@
 }
 :global(html[data-theme='dark']) .dot { opacity: .85; }
 :global(html[data-theme='dark']) .anatomySidebar { background: #100f1c; }
+:global(html[data-theme='dark']) .anatomySidebar .navActivePurple {
+  background: color-mix(in srgb, var(--ref-color) 22%, #100f1c);
+  color: #f5f3ff;
+}
 :global(html[data-theme='dark']) .anatomyTopicHead { border-bottom-color: rgba(167,139,250,.18); }
 :global(html[data-theme='dark']) .anatomyTopicHead h2,
 :global(html[data-theme='dark']) .anatomyPoint strong { color: #f5f3ff; }

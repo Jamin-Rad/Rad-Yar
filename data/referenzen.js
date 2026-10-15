@@ -207,6 +207,90 @@ export const ANATOMIE = [
       },
     ],
   },
+  {
+    id: 'neuro',
+    color: '#7c3aed',
+    icon: '/fach/gehirn.png',
+    name: { de: 'Neuro', en: 'Neuro', fa: 'نورو' },
+    items: [
+      {
+        id: 'corpus-callosum',
+        title: {
+          de: 'Corpus callosum – 3D-Anatomie',
+          en: 'Corpus callosum – 3D anatomy',
+          fa: 'Corpus callosum – آناتومی سه‌بعدی',
+        },
+        lead: {
+          de: 'Mediansagittale Ansicht mit lateinisch-deutschen und englischen Fachbezeichnungen der Balkenabschnitte.',
+          en: 'Midsagittal view with Latin/German and English terminology for the callosal segments.',
+          fa: 'نمای میدساژیتال با اصطلاحات لاتین/آلمانی و انگلیسی بخش‌های جسم پینه‌ای.',
+        },
+        image: '/referenzen/anatomie/corpus-callosum-3d.png',
+        imageAlt: {
+          de: '3D-Illustration des Corpus callosum im Mediansagittalschnitt mit Rostrum, Genu, Truncus (Body), Isthmus und Splenium; anterior links, posterior rechts',
+          en: '3D illustration of the corpus callosum in a midsagittal view, labelled rostrum, genu, body (truncus), isthmus and splenium; anterior left, posterior right',
+          fa: 'تصویر سه‌بعدی جسم پینه‌ای در نمای میدساژیتال با Rostrum، Genu، Truncus، Isthmus و Splenium؛ قدام در چپ و خلف در راست',
+        },
+        points: [
+          {
+            number: '1',
+            title: { de: 'Rostrum corporis callosi', en: 'Rostrum of the corpus callosum', fa: 'Rostrum corporis callosi' },
+            text: {
+              de: 'Dünner, nach posterior gerichteter Abschnitt unterhalb des Genu. EN: Rostrum.',
+              en: 'Thin segment extending posteriorly beneath the genu. DE/Latin: Rostrum corporis callosi.',
+              fa: 'بخش نازکی که زیر Genu به‌سمت خلف امتداد می‌یابد. EN: Rostrum.',
+            },
+          },
+          {
+            number: '2',
+            title: { de: 'Genu corporis callosi', en: 'Genu of the corpus callosum', fa: 'Genu corporis callosi' },
+            text: {
+              de: 'Anteriore Krümmung des Corpus callosum; geht inferior in das Rostrum über. EN: Genu.',
+              en: 'Anterior bend of the corpus callosum, continuing inferiorly into the rostrum. DE/Latin: Genu corporis callosi.',
+              fa: 'خم قدامی جسم پینه‌ای که در پایین به Rostrum ادامه می‌یابد. EN: Genu.',
+            },
+          },
+          {
+            number: '3',
+            title: { de: 'Truncus corporis callosi', en: 'Body of the corpus callosum', fa: 'Truncus corporis callosi / Body' },
+            text: {
+              de: 'Langer zentraler Balkenabschnitt zwischen Genu und Isthmus. EN: Body (auch Trunk).',
+              en: 'Long central segment between the genu and isthmus. DE/Latin: Truncus corporis callosi.',
+              fa: 'بخش مرکزی و بلند بین Genu و Isthmus. EN: Body / Trunk.',
+            },
+          },
+          {
+            number: '4',
+            title: { de: 'Isthmus corporis callosi', en: 'Isthmus of the corpus callosum', fa: 'Isthmus corporis callosi' },
+            text: {
+              de: 'Verschmälerter Übergang vom posterioren Truncus zum Splenium. EN: Isthmus.',
+              en: 'Narrow transition from the posterior body to the splenium. DE/Latin: Isthmus corporis callosi.',
+              fa: 'ناحیهٔ باریک گذار از بخش خلفی Truncus به Splenium. EN: Isthmus.',
+            },
+          },
+          {
+            number: '5',
+            title: { de: 'Splenium corporis callosi', en: 'Splenium of the corpus callosum', fa: 'Splenium corporis callosi' },
+            text: {
+              de: 'Verdicktes, abgerundetes posteriores Ende des Corpus callosum. EN: Splenium.',
+              en: 'Thick, rounded posterior end of the corpus callosum. DE/Latin: Splenium corporis callosi.',
+              fa: 'انتهای خلفی ضخیم و گرد جسم پینه‌ای. EN: Splenium.',
+            },
+          },
+        ],
+        clinicalTitle: { de: 'Orientierung im MRT', en: 'MRI orientation', fa: 'جهت‌یابی در MRI' },
+        clinicalNote: {
+          de: 'Die mediane Sagittalebene zeigt das Profil der Balkenabschnitte. Der Isthmus bezeichnet den schmalen Übergang vor dem Splenium; die klassische Haupteinteilung umfasst Rostrum, Genu, Truncus und Splenium.',
+          en: 'The midsagittal plane shows the profile of the callosal segments. The isthmus is the narrow transition before the splenium; the classical main divisions are the rostrum, genu, body and splenium.',
+          fa: 'نمای میدساژیتال پروفیل بخش‌های جسم پینه‌ای را نشان می‌دهد. Isthmus گذار باریک پیش از Splenium است؛ تقسیم‌بندی اصلی کلاسیک شامل Rostrum، Genu، Truncus و Splenium است.',
+        },
+        source: {
+          label: 'Neuroanatomy, Corpus Callosum · NCBI Bookshelf',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK448209/',
+        },
+      },
+    ],
+  },
 ]
 // ── Messwerte ────────────────────────────────────────────────
 // Struktur: region → groups[] → entries[]
