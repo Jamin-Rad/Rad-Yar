@@ -13,6 +13,7 @@ import { SDH_QUESTIONS } from './sdh'
 import { MOYAMOYA_QUESTIONS } from './moyamoya'
 import { HMA_QUESTIONS } from './hypertensive-mikroangiopathie'
 import { CAA_QUESTIONS } from './caa'
+import { MIGRAINE_QUESTIONS } from './migraine'
 import { CADASIL_QUESTIONS } from './cadasil'
 import { DVA_QUESTIONS } from './dva'
 import { KAVERNOM_QUESTIONS } from './kavernom'
@@ -572,6 +573,7 @@ export const QUESTION_BANK = {
     ...MOYAMOYA_QUESTIONS.de,
     ...HMA_QUESTIONS.de,
     ...CAA_QUESTIONS.de,
+    ...MIGRAINE_QUESTIONS.de,
     ...CADASIL_QUESTIONS.de,
     ...DVA_QUESTIONS.de,
     ...KAVERNOM_QUESTIONS.de,
@@ -1776,6 +1778,7 @@ export const QUESTION_BANK = {
     ...MOYAMOYA_QUESTIONS.en,
     ...HMA_QUESTIONS.en,
     ...CAA_QUESTIONS.en,
+    ...MIGRAINE_QUESTIONS.en,
     ...CADASIL_QUESTIONS.en,
     ...DVA_QUESTIONS.en,
     ...KAVERNOM_QUESTIONS.en,
@@ -2970,6 +2973,7 @@ export const QUESTION_BANK = {
     ...MOYAMOYA_QUESTIONS.fa,
     ...HMA_QUESTIONS.fa,
     ...CAA_QUESTIONS.fa,
+    ...MIGRAINE_QUESTIONS.fa,
     ...CADASIL_QUESTIONS.fa,
     ...DVA_QUESTIONS.fa,
     ...KAVERNOM_QUESTIONS.fa,
@@ -4142,6 +4146,11 @@ export const QUESTION_BANK = {
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  {
+    fachId: 'gehirn', kapitelId: 'kopf-kopfschmerz',
+    title: { de: '9. Kopfschmerz & Migräne', en: '9. Headache & Migraine', fa: '۹. سردرد و میگرن' },
+    topics: [{ id: 'migraene', title: { de: 'Migräne', en: 'Migraine', fa: 'میگرن' } }],
+  },
   { fachId: 'thorax', kapitelId: 'thorax-tumoren', title: { de: 'Lungentumoren', en: 'Lung tumours', fa: 'تومورهای ریه' }, topics: [{ id: 'fleischner-kriterien', title: { de: 'Fleischner-Kriterien', en: 'Fleischner criteria', fa: 'معیارهای Fleischner' } }] },
   {
     fachId: 'thorax',

@@ -220,6 +220,16 @@ export const CURRICULUM = [
           { id: 'chronische-traumafolgen', title: { de: 'Chronische Traumafolgen', en: 'Chronic Sequelae of Trauma', fa: 'عوارض مزمن تروما' }, group: ['Sekundäre Traumafolgen und Spätfolgen'], tags: ['MRT'], diff: 2 },
         ],
       },
+      {
+        id: 'kopf-kopfschmerz',
+        title: { de: '9. Kopfschmerz & Migräne', en: '9. Headache & Migraine', fa: '۹. سردرد و میگرن' },
+        icon: '🧠',
+        themen: [
+          { id: 'migraene', title: { de: 'Migräne', en: 'Migraine', fa: 'میگرن' }, tags: ['MRT', 'CT'], diff: 2,
+            link: '/gehirn/kopfschmerz/migraene', mcqLink: '/ueben/quiz?fach=gehirn&n=8&themen=migraene',
+            flashcardLink: '/flashcards/migraene', ready: true, updatedAt: '2026-10-15' },
+        ],
+      },
     ],
   },
   {
