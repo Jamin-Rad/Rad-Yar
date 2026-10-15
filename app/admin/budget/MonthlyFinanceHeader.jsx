@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { monthlyFinanceSummary } from '@/utils/monthlyFinanceSummary'
 import styles from './MonthlyFinanceHeader.module.css'
 
@@ -91,6 +91,7 @@ function MonthPicker({ month, onChange }) {
 }
 
 function SpendingChart({ totals, loaded }) {
+  const gradientId = useId().replaceAll(':', '')
   const used = totals.usedPercent
   const label = !loaded ? '—' : used === null ? '—' : `${percent.format(used)} %`
   const description = used === null ? 'Noch kein Einkommen' : 'des Einkommens verbraucht'
@@ -102,12 +103,16 @@ function SpendingChart({ totals, loaded }) {
   return <figure className={styles.chart} aria-label={loaded ? `Ausgabenverteilung: Fixkosten ${money.format(totals.fixed)}, laufende Kosten ${money.format(totals.current)}. ${used === null ? 'Noch kein Einkommen erfasst.' : `${percent.format(used)} Prozent des Einkommens verbraucht.`}` : 'Monatsbilanz wird geladen'}>
     <div className={styles.ring}>
       <svg viewBox="0 0 240 240" aria-hidden="true">
+        <defs>
+          <linearGradient id={`${gradientId}-gold`} x1="0" y1="0" x2="1" y2="1"><stop stopColor="#ffe6a0"/><stop offset=".48" stopColor="#e9c76d"/><stop offset="1" stopColor="#b99142"/></linearGradient>
+          <linearGradient id={`${gradientId}-purple`} x1="0" y1="0" x2="1" y2="1"><stop stopColor="#ead3ff"/><stop offset=".4" stopColor="#c291e8"/><stop offset="1" stopColor="#9551cd"/></linearGradient>
+        </defs>
         <circle className={styles.ringTrack} cx="120" cy="120" r="100" fill="none" strokeWidth="30" />
         {loaded ? segments.map(segment => {
           const start = offset
           const share = Math.min(1, Math.max(0, segment.share))
           offset += share
-          return share > 0 ? <circle key={segment.name} className={segment.className} cx="120" cy="120" r="100" fill="none" strokeWidth="30" pathLength="100" strokeDasharray={`${share * 100} ${100 - share * 100}`} strokeDashoffset={-start * 100} transform="rotate(-90 120 120)" /> : null
+          return share > 0 ? <circle key={segment.name} className={segment.className} style={{ stroke: `url(#${gradientId}-${segment.name === 'Fixkosten' ? 'gold' : 'purple'})` }} cx="120" cy="120" r="100" fill="none" strokeWidth="30" pathLength="100" strokeDasharray={`${share * 100} ${100 - share * 100}`} strokeDashoffset={-start * 100} transform="rotate(-90 120 120)" /> : null
         }) : null}
       </svg>
       <div className={styles.ringCenter}><strong className={used > 100 ? styles.negative : undefined}>{label}</strong><span>{loaded ? description : 'Wird geladen'}</span></div>

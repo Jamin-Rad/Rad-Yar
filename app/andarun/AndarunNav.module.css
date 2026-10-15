@@ -33,6 +33,9 @@
   color: #bae6fd;
 }
 
+.financeNavShell { background: rgba(9, 76, 60, .96); border-bottom-color: rgba(224, 190, 112, .28); }
+.financeNavShell .brand:hover { color: #f0d491; }
+
 @media (max-width: 560px) {
   .nav {
     min-height: 50px;

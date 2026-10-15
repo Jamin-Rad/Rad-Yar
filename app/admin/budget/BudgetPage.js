@@ -1985,7 +1985,7 @@ ${manualEntries.length ? `
   }
 
   const isIncome = entryType === 'income'
-  const popupAccent = isIncome ? '#16a34a' : '#f97316'
+  const popupAccent = isIncome ? '#13705a' : '#8446bd'
 
   return (
     <div className={`${styles.page} ${!iranOnly ? styles.monthlyFinancePage : ''}`}>
