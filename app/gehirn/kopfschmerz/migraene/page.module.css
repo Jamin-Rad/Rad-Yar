@@ -115,3 +115,49 @@
   .sourceList a { color: #0d7580; }
   .caseResult[hidden] { display: block; }
 }
+
+/* Small, lesson-local teaching tools inherit the shared CAA palette and type. */
+.practicalPearl { margin-top: 26px; padding: 16px 18px; border: 1px solid var(--line); border-inline-start: 3px solid var(--teal-700); border-radius: 8px; background: var(--teal-100); }
+.practicalPearl strong { color: var(--teal-700); font-size: 12px; }
+.practicalPearl p { margin: 5px 0 0; color: var(--ink); font-size: 15px; line-height: 1.85; }
+.interactiveTool { margin-block: 28px; padding: 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.segmented { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 18px; }
+.segmented button { padding: 10px 14px; min-height: 44px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--body); font: inherit; font-size: 13px; line-height: 1.7; cursor: pointer; }
+.segmented button[aria-pressed='true'] { border-color: var(--teal-700); background: var(--teal-100); color: var(--ink); font-weight: 800; }
+.imageToolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 14px; }
+.imageToolbar .checkButton { margin: 0; }
+.imageToolbar a { color: var(--teal-700); font-size: 13px; line-height: 1.8; }
+.imageViewport { overflow-x: auto; width: 100%; border: 1px solid var(--line); border-radius: 10px; background: #000; overscroll-behavior-inline: contain; }
+.hotspotCanvas { position: relative; min-width: 700px; }
+.hotspotCanvas img { display: block; width: 100%; height: auto; }
+.hotspot { position: absolute; transform: translate(-50%,-50%); display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.hotspot span { display: grid; place-items: center; width: 24px; height: 24px; border: 2px solid #fff; border-radius: 50%; color: #fff; background: #482350; box-shadow: 0 0 0 3px rgba(0,0,0,.5); font-size: 12px; font-weight: 800; }
+.hotspotActive span { background: #08686c; outline: 3px solid #77e4da; outline-offset: 2px; }
+.imageHint { color: var(--muted); font-size: 12px; line-height: 1.8; margin-bottom: 0; }
+.interactiveDetail { padding: 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--teal-100); color: var(--ink); }
+.interactiveDetail p { margin: 8px 0 0; color: var(--body); font-size: 14px; line-height: 1.85; }
+.comparisonGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 22px; }
+.comparisonGrid > div { padding: 18px; border: 1px solid var(--line); border-top: 3px solid var(--teal-700); border-radius: 8px; background: var(--teal-100); }
+.comparisonGrid > div:last-child { border-top-color: var(--coral-600); background: var(--coral-100); }
+.comparisonGrid span { color: var(--ink); font-size: 12px; font-weight: 800; line-height: 1.8; }
+.comparisonGrid h4 { margin: 12px 0 8px; color: var(--ink); font-size: 16px; }
+.comparisonGrid p { margin: 0; color: var(--body); font-size: 15px; line-height: 1.85; }
+.quickDecision { padding: 0; margin: 0; min-width: 0; border: 0; }
+.quickDecision legend { color: var(--ink); font-size: 15px; font-weight: 800; line-height: 1.85; }
+.stepCounter { color: var(--teal-700); font-size: 12px; font-weight: 800; margin: 0 0 12px; }
+.stepActions { display: flex; flex-wrap: wrap; gap: 12px; }
+.page :is(.hotspot,.segmented button):focus-visible,.imageViewport:focus-visible { outline: 3px solid var(--teal-500); outline-offset: 3px; }
+@media (max-width: 760px) {
+  .interactiveTool { padding: 16px; }
+  .comparisonGrid { grid-template-columns: 1fr; }
+  .compactPath [class*='mobilePathButton'] { min-height: 48px; max-width: 112px; grid-template-columns: 34px 28px; gap: 6px; padding: 5px 10px; }
+  .compactPath [class*='mobileProgressRing'] { width: 34px; height: 34px; }
+  .compactPath [class*='mobilePathLabel'] { display: none; }
+  .compactPath [class*='mobilePathPanel'] { bottom: calc(max(10px,env(safe-area-inset-bottom)) + 58px); }
+}
+@media print {
+  .hotspot,.imageToolbar,.imageHint,.segmented,.stepActions { display: none; }
+  .imageViewport { overflow: visible; }
+  .hotspotCanvas { min-width: 0; }
+}
+:global(html[data-theme='dark']) .stepCounter,:global(html[data-theme='dark']) .practicalPearl strong,:global(html[data-theme='dark']) .imageToolbar a { color: #94d9d9; }

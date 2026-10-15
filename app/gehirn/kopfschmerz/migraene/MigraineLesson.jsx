@@ -12,8 +12,9 @@ import { TeachingGroup, TeachingGroups } from '@/components/lesson-template/Inte
 import { MIGRAINE_CHAPTERS, MIGRAINE_TRACKED_IDS, MIGRAINE_PROGRESS_VERSION, MIGRAINE_TAKE_HOME, resolveMigraineChapter } from '@/data/migraineLayout'
 import { migrateMigraineProgress } from '@/lib/migraineProgress.mjs'
 import reference from '@/components/LessonTemplate.module.css'
-import { MIGRAINE_TITLE, MIGRAINE_PATH, MIGRAINE_SECTIONS, MIGRAINE_SOURCES, MIGRAINE_CASES, MIGRAINE_QUIZ, MIGRAINE_IMAGE } from '@/data/migraine'
+import { MIGRAINE_TITLE, MIGRAINE_PATH, MIGRAINE_SECTIONS, MIGRAINE_SOURCES, MIGRAINE_CASES, MIGRAINE_QUIZ } from '@/data/migraine'
 import styles from './page.module.css'
+import { MriHotspots, AuraComparison, ProtocolTrainer, PracticalPearl } from './MigraineInteractive'
 
 const L = (de, en, fa) => ({ de, en, fa })
 const pick = (value, lang) => typeof value === 'string' ? value : value[lang] || value.de
@@ -121,17 +122,16 @@ function LessonContent({ section, lang, withLang }) {
     {section.lead ? <p className={styles.paragraph}>{c(section.lead)}</p> : null}
     {section.id === 'grundlagen' ? <div className={styles.goals}><h4>{c(COPY.goalsTitle)}</h4><ul>{COPY.goals.map((g, i) => <li key={i}>{c(g)}</li>)}</ul></div> : null}
     {section.cards ? <dl className={styles.teachingList}>{section.cards.map((card, i) => <div key={i}><dt>{c(card.title)}</dt><dd>{c(card.text)}</dd></div>)}</dl> : null}
-    {section.id === 'bildmuster' ? <figure className={styles.imagingFigure}>
-      <h4>{c(MIGRAINE_IMAGE.title)}</h4>
-      <a href={MIGRAINE_IMAGE.src} target="_blank" rel="noopener noreferrer" aria-label={c(L('MRT-Abbildung in voller Größe öffnen (neuer Tab)', 'Open full-size MRI figure (new tab)', 'باز کردن تصویر MRI در اندازه کامل (زبانه جدید)'))}><img src={MIGRAINE_IMAGE.src} width={MIGRAINE_IMAGE.width} height={MIGRAINE_IMAGE.height} alt={c(MIGRAINE_IMAGE.alt)} loading="lazy" decoding="async" /><span>{c(L('In voller Größe ansehen', 'View full size', 'مشاهده در اندازه کامل'))}<Arrow /></span></a>
-      <figcaption><p>{c(MIGRAINE_IMAGE.caption)}</p><a href={MIGRAINE_IMAGE.source} target="_blank" rel="noopener noreferrer" lang="en" dir="ltr">{MIGRAINE_IMAGE.credit}</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></figcaption>
-    </figure> : null}
-    {section.rows ? <div className={styles.tableWrap} role="region" aria-label={c(section.short)} tabIndex={0}><table><caption className={styles.srOnly}>{c(section.title)}</caption><thead><tr>{section.headers.map((h, i) => <th key={i} scope="col">{c(h)}</th>)}</tr></thead><tbody>{section.rows.map((row, r) => <tr key={r}>{row.map((cell, col) => col === 0 ? <th key={col} scope="row">{c(cell)}</th> : <td key={col}>{c(cell)}</td>)}</tr>)}</tbody></table></div> : null}
-    {section.headers?.length > 2 ? <p className={styles.tableHint}>{c(L('Tabelle seitlich bewegen, um alle Spalten zu sehen.', 'Scroll the table sideways to see all columns.', 'برای دیدن همه ستون‌ها، جدول را افقی حرکت دهید.'))}</p> : null}
+    {section.id === 'bildmuster' ? <MriHotspots lang={lang} /> : null}
+    {section.id === 'protokoll' ? <ProtocolTrainer lang={lang} /> : null}
+    {section.id === 'stroke-mimic' ? <AuraComparison lang={lang} /> : null}
+    {section.rows && section.id !== 'stroke-mimic' ? <div className={styles.tableWrap} role="region" aria-label={c(section.short)} tabIndex={0}><table><caption className={styles.srOnly}>{c(section.title)}</caption><thead><tr>{section.headers.map((h, i) => <th key={i} scope="col">{c(h)}</th>)}</tr></thead><tbody>{section.rows.map((row, r) => <tr key={r}>{row.map((cell, col) => col === 0 ? <th key={col} scope="row">{c(cell)}</th> : <td key={col}>{c(cell)}</td>)}</tr>)}</tbody></table></div> : null}
+    {section.headers?.length > 2 && section.id !== 'stroke-mimic' ? <p className={styles.tableHint}>{c(L('Tabelle seitlich bewegen, um alle Spalten zu sehen.', 'Scroll the table sideways to see all columns.', 'برای دیدن همه ستون‌ها، جدول را افقی حرکت دهید.'))}</p> : null}
     {section.reports ? section.reports.map((report, i) => <div className={styles.report} key={i}><h4>{c(report.title)}</h4><blockquote>{c(report.text)}</blockquote></div>) : null}
     {section.warning ? <Callout warning lang={lang}>{c(section.warning)}</Callout> : null}
     {section.note ? <Callout lang={lang}>{c(section.note)}</Callout> : null}
     {section.related ? <nav className={styles.related} aria-label={c(COPY.related)}><span>{c(COPY.related)}</span>{section.related.map(link => <Link key={link.path} href={withLang(link.path)}>{c(link.label)}<Arrow /></Link>)}</nav> : null}
+    <PracticalPearl id={section.id} lang={lang} />
     {section.sources ? <SourceLinks ids={section.sources} lang={lang} /> : null}
   </>
 }
@@ -140,8 +140,8 @@ function ChapterContent({ chapter, lang, withLang }) {
   const c = value => pick(value, lang)
   if (chapter.emphasis) return <LessonTakeHome points={MIGRAINE_TAKE_HOME} lang={lang} idPrefix="migraine-take-home" />
   if (chapter.id === 'training') return <TeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'}>
-    <TeachingGroup id="migraine-case-training" title={c(L('Falltraining', 'Case practice', 'تمرین کیس'))}><div className={styles.groupBody}><CasePractice lang={lang} /></div></TeachingGroup>
-    <TeachingGroup id="migraine-mini-check" title={c(L('Mini-Check', 'Mini-check', 'آزمون کوتاه'))} tone="secondary"><div className={styles.groupBody}><MiniQuiz lang={lang} /></div></TeachingGroup>
+    <TeachingGroup id="migraine-case-training" title={c(L('Falltraining', 'Case practice', 'تمرین کیس'))}><div className={styles.groupBody}><CasePractice lang={lang} /><PracticalPearl id="training" lang={lang} /></div></TeachingGroup>
+    <TeachingGroup id="migraine-mini-check" title={c(L('Mini-Check', 'Mini-check', 'آزمون کوتاه'))} tone="secondary"><div className={styles.groupBody}><MiniQuiz lang={lang} /><PracticalPearl id="quiz" lang={lang} /></div></TeachingGroup>
   </TeachingGroups>
   return <TeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'}>{chapter.topics.map((id, index) => {
     const section = topic(id)
@@ -159,12 +159,12 @@ function MobileLearningPath({ lang, openId, readSections, onSelect }) {
     window.addEventListener('keydown', close)
     return () => window.removeEventListener('keydown', close)
   }, [panelOpen])
-  return <div className={reference.mobileLearningPath}>
+  return <div className={`${reference.mobileLearningPath} ${styles.compactPath}`}>
     {panelOpen ? <section id="migraine-mobile-learning-path" className={reference.mobilePathPanel} role="dialog" aria-label={c(COPY.path)}>
       <header className={reference.learningPathHeading}><div><small>{c(COPY.path)}</small><strong><bdi dir="ltr">{readSections.size} / {MIGRAINE_TRACKED_IDS.length}</bdi></strong></div><button type="button" onClick={() => setPanelOpen(false)} aria-label={c(L('Schließen', 'Close', 'بستن'))}>×</button></header>
       <nav>{MIGRAINE_CHAPTERS.map(chapter => <button type="button" key={chapter.id} className={openId === chapter.id ? reference.mobilePathCurrent : ''} onClick={() => { onSelect(chapter.id); setPanelOpen(false) }} aria-current={openId === chapter.id ? 'location' : undefined}><span className={reference.mobilePathItemIcon}><Icon name={chapter.icon} /></span><span><strong>{c(chapter.title)}</strong></span><i aria-hidden="true">{readSections.has(chapter.id) ? '✓' : ''}</i></button>)}</nav>
     </section> : null}
-    <button type="button" className={reference.mobilePathButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="migraine-mobile-learning-path"><span className={reference.mobileProgressRing} style={{ '--mobile-progress': `${readSections.size / MIGRAINE_TRACKED_IDS.length * 360}deg` }}><b>{readSections.size}</b><small>/{MIGRAINE_TRACKED_IDS.length}</small></span><span className={reference.mobileCurrentIcon}><Icon name={active.icon} /></span><span className={reference.mobilePathLabel}><strong>{c(COPY.path)}</strong><small>{c(active.title)}</small></span></button>
+    <button type="button" className={reference.mobilePathButton} aria-label={`${c(COPY.path)} · ${c(active.title)} · ${readSections.size} / ${MIGRAINE_TRACKED_IDS.length}`} title={c(active.title)} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="migraine-mobile-learning-path"><span className={reference.mobileProgressRing} style={{ '--mobile-progress': `${readSections.size / MIGRAINE_TRACKED_IDS.length * 360}deg` }}><b>{readSections.size}</b><small>/{MIGRAINE_TRACKED_IDS.length}</small></span><span className={reference.mobileCurrentIcon}><Icon name={active.icon} /></span><span className={reference.mobilePathLabel}><strong>{c(COPY.path)}</strong><small>{c(active.title)}</small></span></button>
   </div>
 }
 
