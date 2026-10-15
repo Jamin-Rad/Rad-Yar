@@ -3,7 +3,7 @@ import styles from './CAAWhiteMatterMRI.module.css'
 const L=(de,en,fa)=>({de,en,fa})
 const examples={
   pvs:{src:'/educational/caa-wm/pvs-t2.jpg',width:764,height:690,figure:6,
-    alt:L('Axiale T2-MRT mit erweiterten perivaskulären Räumen im Centrum semiovale und vergrößertem Ausschnitt rechts', 'Axial T2 MRI showing enlarged centrum semiovale perivascular spaces with a magnified inset on the right', 'MRI محوری T2 با فضاهای گشادشده اطراف عروقی در سنتروم سمی‌اووال و نمای بزرگ‌شده در سمت راست'),
+    alt:L('Axiale T2-MRT mit erweiterten perivaskulären Räumen im Centrum semiovale und vergrößertem Ausschnitt rechts', 'Axial T2 MRI showing enlarged centrum semiovale perivascular spaces with a magnified inset on the right', 'MRI محوری T2 با فضاهای گشادشده اطراف عروقی در Centrum semiovale و نمای بزرگ‌شده در سمت راست'),
     caption:L('Weiße Pfeilspitzen: rundliche PVS. Schwarze Pfeilspitzen: längliche PVS.', 'White arrowheads: round PVS. Black arrowheads: elongated PVS.', 'سرپیکان‌های سفید: PVS گرد. سرپیکان‌های سیاه: PVS کشیده.')},
   wmh:{src:'/educational/caa-wm/wmh-multispot-t2.jpg',width:727,height:919,figure:7,
     alt:L('Axiale T2-MRT mit mehreren kleinen subkortikalen WMH im Multispot-Muster, durch weiße Pfeile markiert', 'Axial T2 MRI showing small subcortical WMH in a multispot pattern, indicated by white arrows', 'MRI محوری T2 با کانون‌های کوچک WMH زیرقشری در الگوی چندنقطه‌ای، مشخص‌شده با پیکان‌های سفید'),

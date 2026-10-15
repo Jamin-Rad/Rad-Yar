@@ -59,13 +59,13 @@ export const CAA_RADIOPAEDIA_CASES = [
     frames: ['/educational/caa-cases/34462/ct.png'], initialFrame: 0, autoAspectRatio: true,
     frameLabels: [L('CT · axial, nativ', 'CT · axial, non-contrast', 'CT · محوری، بدون کنتراست')],
     url: 'https://radiopaedia.org/cases/34462/studies/35802',
-    title: L('Konvexitäts-SAH im CT erkennen', 'Recognise convexity SAH on CT', 'شناسایی SAH تحدب در CT'),
+    title: L('Konvexitäts-SAH im CT erkennen', 'Recognise convexity SAH on CT', 'شناسایی SAH سطح محدب مغز در CT'),
     findings: [
       L('Im linken präzentralen Sulcus liegt eine kleine hyperdense Blutauflagerung.', 'A small hyperdense focus of blood lies in the left precentral sulcus.', 'مقدار کمی خون پرچگال در شیار پیش‌مرکزی چپ دیده می‌شود.'),
-      L('Die Blutung folgt einem oberflächlichen Sulcus an der Konvexität.', 'The blood follows a superficial sulcus over the convexity.', 'خونریزی در امتداد یک شیار سطحی در تحدب مغز قرار دارد.'),
+      L('Die Blutung folgt einem oberflächlichen Sulcus an der Konvexität.', 'The blood follows a superficial sulcus over the convexity.', 'خونریزی در امتداد یک شیار سطحی در سطح محدب مغز قرار دارد.'),
       L('Dieser Fall ist mit RCVS verbunden. Das Bild zeigt eine cSAH, keinen Nachweis einer CAA.', 'In this case, cSAH is associated with RCVS; the image does not establish a diagnosis of CAA.', 'این کیس با RCVS همراه است. تصویر، cSAH را نشان می‌دهد و اثبات‌کننده CAA نیست.'),
     ],
-    alt: L('Native axiale CT mit kleiner Konvexitäts-SAH im linken präzentralen Sulcus, Radiopaedia rID 34462', 'Axial non-contrast CT with small convexity SAH in the left precentral sulcus, Radiopaedia rID 34462', 'CT محوری بدون کنتراست با SAH کوچک تحدب در شیار پیش‌مرکزی چپ، Radiopaedia rID 34462'),
+    alt: L('Native axiale CT mit kleiner Konvexitäts-SAH im linken präzentralen Sulcus, Radiopaedia rID 34462', 'Axial non-contrast CT with small convexity SAH in the left precentral sulcus, Radiopaedia rID 34462', 'CT محوری بدون کنتراست با SAH کوچک سطح محدب مغز در شیار پیش‌مرکزی چپ، Radiopaedia rID 34462'),
     credit: 'Case courtesy of Peter Mitchell, Radiopaedia.org · rID 34462 · CC BY-NC-SA 3.0',
   },
 ]

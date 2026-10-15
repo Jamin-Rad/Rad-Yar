@@ -48,6 +48,6 @@ export const CAA_FOCUSED_COPY = {
     L('Eine Raumforderung mit Ödem und Kontrastmittelaufnahme lässt an einen blutenden Tumor denken.', 'A mass with oedema and contrast enhancement raises suspicion of a haemorrhagic tumour.', 'توده همراه ادم و جذب کنتراست، شک به تومور خونریزی‌دهنده را مطرح می‌کند.'),
     L('Wiederholte Donnerschlagkopfschmerzen und segmentale Gefäßverengungen sprechen für RCVS.', 'Recurrent thunderclap headaches and segmental vessel narrowing suggest RCVS.', 'سردردهای رعدآسای تکرارشونده و تنگی قطعه‌ای عروق به نفع RCVS هستند.'),
     L("Trauma und hämorrhagischer Infarkt sind mögliche Ursachen einer lobären Blutung.", "Trauma and haemorrhagic infarction are possible causes of lobar haemorrhage.", "تروما و انفارکت هموراژیک از علل ممکن خونریزی لوبار هستند."),
-    L("Bei Konvexitäts-SAH auch die kortikalen Venen und venösen Sinus prüfen.", "In convexity SAH, also assess the cortical veins and dural venous sinuses.", "در SAH تحدب، وریدهای قشری و سینوس‌های وریدی را هم بررسی کنید."),
+    L("Bei Konvexitäts-SAH auch die kortikalen Venen und venösen Sinus prüfen.", "In convexity SAH, also assess the cortical veins and dural venous sinuses.", "در SAH سطح محدب مغز، وریدهای قشری و سینوس‌های وریدی را هم بررسی کنید."),
   ],
 }
