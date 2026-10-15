@@ -56,13 +56,14 @@ const UI = {
 }
 
 const COUNT_OPTIONS = [1, 2, 3, 5, 10]
-const regionIcon = id => `/fach/${id}.png`
+const regionIcon = id => `/fach/${id === 'interventionelle-radiologie' ? 'gefaesse-ir' : id}.png`
 
 function CasesSetupPageContent() {
   const { lang } = useLanguage()
   const router = useRouter()
   const ui = UI[lang] || UI.de
   const display = FACH_DISPLAY[lang] || FACH_DISPLAY.de
+  const regionName = region => display[region.id] || region.title?.[lang] || region.title?.de || region.id
   const availableTopicIds = useMemo(() => getAvailableCaseTopicIds(), [])
   const [selectedRegions, setSelectedRegions] = useState(new Set())
   const [selectedTopics, setSelectedTopics] = useState(new Set())
@@ -220,8 +221,8 @@ function CasesSetupPageContent() {
                     className={`${styles.fachCard} ${active ? styles.fachCardActive : ''} ${!enabled ? caseStyles.unavailable : ''}`}
                     style={active ? { borderColor: region.color, background: region.color + '12' } : {}}
                     onClick={() => toggleRegion(region)}>
-                    <span className={styles.fachIcon}><Image src={regionIcon(region.id)} alt={display[region.id]} width={54} height={54} /></span>
-                    <span className={styles.fachName} style={active ? { color: region.color } : {}}>{display[region.id]}</span>
+                    <span className={styles.fachIcon}><Image src={regionIcon(region.id)} alt={regionName(region)} width={54} height={54} /></span>
+                    <span className={styles.fachName} style={active ? { color: region.color } : {}}>{regionName(region)}</span>
                     {!enabled && <small className={caseStyles.planned}>{ui.planned}</small>}
                     {active && <span className={styles.fachCheck} style={{ background: region.color }}>✓</span>}
                   </button>
@@ -251,7 +252,7 @@ function CasesSetupPageContent() {
                     <div key={key} className={`${styles.kapitelBlock} ${open ? styles.kapitelBlockOpen : ''}`}>
                       <button className={styles.kapitelHeaderBtn} onClick={() => toggleGroup(key)}>
                         <span className={styles.kapitelIconWrap}><Image src={regionIcon(region.id)} alt="" width={26} height={26} /></span>
-                        <span className={styles.kapitelTitle}>{display[region.id]} · {getKapitelTitle(chapter, lang)}</span>
+                        <span className={styles.kapitelTitle}>{regionName(region)} · {getKapitelTitle(chapter, lang)}</span>
                         <span className={styles.kapitelMeta} style={{ color: region.color, background: region.color + '12' }}>{selectedCount}/{topics.length}</span>
                         <span className={styles.kapitelChevron} style={{ color: open ? region.color : undefined }}>{open ? '−' : '+'}</span>
                       </button>
@@ -336,7 +337,7 @@ function CasesSetupPageContent() {
                 {[...selectedRegions].map(id => {
                   const region = CURRICULUM.find(item => item.id === id)
                   return <div key={id} className={styles.summaryFachTag} style={{ borderColor: region?.color + '44', color: region?.color }}>
-                    <Image src={regionIcon(id)} alt="" width={18} height={18} /> {display[id]}
+                    <Image src={regionIcon(id)} alt="" width={18} height={18} /> {regionName(region)}
                   </div>
                 })}
               </div>

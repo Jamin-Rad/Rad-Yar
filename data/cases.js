@@ -1,4 +1,5 @@
 import { ICB_PRUEFUNG_CASES } from './icb'
+import { CAA_PRUEFUNG_CASES } from './caaCases'
 
 const HAEMANGIOMA_SERIES_LABELS = {
   de: ['T2 · axial', 'Kontrastmittel · venös · axial'],
@@ -47,6 +48,16 @@ function locCase(item, lang) {
     series: item.series?.map(series => ({ ...series, label: t(series.label), plane: t(series.plane) })),
     options: item.options.map(opt => ({ ...opt, text: t(opt.text) })),
     explanation: t(item.explanation),
+    scenarioNote: t(item.scenarioNote),
+    sourceLabel: t(item.sourceLabel),
+    stages: item.stages?.map(stage => ({
+      ...stage,
+      title: t(stage.title), narrative: t(stage.narrative), task: t(stage.task),
+      imageAlt: t(stage.imageAlt), imageCaption: t(stage.imageCaption),
+    })),
+    examinerDiscussion: item.examinerDiscussion?.map(entry => ({
+      question: t(entry.question), answer: t(entry.answer),
+    })),
     wrongExplanations: item.wrongExplanations && Object.fromEntries(
       Object.entries(item.wrongExplanations).map(([key, value]) => [key, t(value)])
     ),
@@ -562,6 +573,7 @@ export const CASE_BANK = {
     },
     ...TROPONIN_PRUEFUNG_CASES.map(item => locCase(item, 'de')),
     ...ICB_PRUEFUNG_CASES.map(item => locCase(item, 'de')),
+    ...CAA_PRUEFUNG_CASES.map(item => locCase(item, 'de')),
   ],
   en: [
     {
@@ -778,6 +790,7 @@ export const CASE_BANK = {
     },
     ...TROPONIN_PRUEFUNG_CASES.map(item => locCase(item, 'en')),
     ...ICB_PRUEFUNG_CASES.map(item => locCase(item, 'en')),
+    ...CAA_PRUEFUNG_CASES.map(item => locCase(item, 'en')),
   ],
   fa: [
     {
@@ -982,6 +995,7 @@ export const CASE_BANK = {
     },
     ...TROPONIN_PRUEFUNG_CASES.map(item => locCase(item, 'fa')),
     ...ICB_PRUEFUNG_CASES.map(item => locCase(item, 'fa')),
+    ...CAA_PRUEFUNG_CASES.map(item => locCase(item, 'fa')),
   ],
 }
 

@@ -4,7 +4,7 @@ import { Suspense, useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useUser } from '@clerk/nextjs'
-import { getCases } from '@/data/cases'
+import { CASE_BANK, getCases } from '@/data/cases'
 import { CURRICULUM, getThemaTitle } from '@/data/curriculum'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { getWrongAnswerExplanation } from '@/utils/answerFeedback'
@@ -12,14 +12,15 @@ import { caseToExamMedia } from '@/utils/examMedia'
 import MedicalSequenceViewer from '@/components/MedicalSequenceViewer'
 import quizStyles from '@/app/ueben/quiz/page.module.css'
 import styles from './page.module.css'
+import { ProgressiveCase, ExaminerDiscussion } from './ProgressiveCase'
 
 const ADMIN_EMAIL = 'dr.benjaminzia@gmail.com'
 const SECONDS_PER_TIMED_CASE = 150
 
 const REGION_NAMES = {
-  de: { msk: 'Muskuloskelettales', thorax: 'Thorax', abdomen: 'Abdomen' },
-  en: { msk: 'Musculoskeletal', thorax: 'Thorax', abdomen: 'Abdomen' },
-  fa: { msk: 'اسکلتی-عضلانی', thorax: 'توراکس', abdomen: 'شکم' },
+  de: { gehirn: 'Kopf', msk: 'Muskuloskelettales', thorax: 'Thorax', abdomen: 'Abdomen' },
+  en: { gehirn: 'Head', msk: 'Musculoskeletal', thorax: 'Thorax', abdomen: 'Abdomen' },
+  fa: { gehirn: 'سر', msk: 'اسکلتی-عضلانی', thorax: 'توراکس', abdomen: 'شکم' },
 }
 
 const UI = {
@@ -164,14 +165,19 @@ function CaseExamContent() {
   const requestedCount = Math.max(1, Number.parseInt(searchParams.get('n') || '1', 10) || 1)
   const isTimed = searchParams.get('modus') === 'timed'
   const isAdmin = user?.primaryEmailAddress?.emailAddress?.toLowerCase() === ADMIN_EMAIL
-  const cases = useMemo(
-    () => isUserLoaded ? getCases(topicIds, modalities, lang, requestedCount, { shuffle: !isAdmin }) : [],
-    [topicParam, modalityParam, lang, requestedCount, isAdmin, isUserLoaded]
+  const caseIds = useMemo(
+    () => isUserLoaded ? getCases(topicIds, modalities, 'de', requestedCount, { shuffle: !isAdmin }).map(item => item.id) : [],
+    [topicParam, modalityParam, requestedCount, isAdmin, isUserLoaded]
   )
+  const cases = useMemo(() => {
+    const byId = new Map((CASE_BANK[lang] || CASE_BANK.de).map(item => [item.id, item]))
+    return caseIds.map(id => byId.get(id)).filter(Boolean)
+  }, [caseIds, lang])
 
   const [current, setCurrent] = useState(0)
   const [selected, setSelected] = useState(null)
   const [checked, setChecked] = useState(false)
+  const [revealedStages, setRevealedStages] = useState(1)
   const [answers, setAnswers] = useState([])
   const [phase, setPhase] = useState('exam')
   const [timeLeft, setTimeLeft] = useState(SECONDS_PER_TIMED_CASE)
@@ -179,6 +185,9 @@ function CaseExamContent() {
 
   const total = cases.length
   const item = cases[current]
+  const isStaged = Boolean(item?.stages?.length)
+  const readyToAnswer = !isStaged || revealedStages >= item.stages.length
+  const QuestionHeading = isStaged ? 'h2' : 'h1'
   const itemMedia = useMemo(() => caseToExamMedia(item), [item])
   const isLast = current === total - 1
   const score = answers.filter(answer => answer.correct).length
@@ -213,10 +222,11 @@ function CaseExamContent() {
     setCurrent(previous => previous + 1)
     setSelected(null)
     setChecked(false)
+    setRevealedStages(1)
   }
 
   const checkAnswer = () => {
-    if (!selected || !item) return
+    if (!selected || !item || !readyToAnswer || checked) return
     saveAnswer(selected)
     if (isTimed) {
       advance()
@@ -243,6 +253,7 @@ function CaseExamContent() {
     setCurrent(0)
     setSelected(null)
     setChecked(false)
+    setRevealedStages(1)
     setAnswers([])
     setPhase('exam')
     setTimeLeft(total * SECONDS_PER_TIMED_CASE)
@@ -326,11 +337,11 @@ function CaseExamContent() {
               })}
             </div>
             <article className={styles.reviewCase}>
-              <section className={styles.caseIntro} aria-label={ui.anamnesis}>
+              {reviewCase.stages?.length ? <ProgressiveCase key={reviewCase.id} item={reviewCase} revealedCount={reviewCase.stages.length} lang={lang} review/> : <section className={styles.caseIntro} aria-label={ui.anamnesis}>
                 <div className={styles.caseIntroMeta}><strong>{ui.anamnesis}</strong><span>{reviewCase.modality} · {regionLabel}</span></div>
                 <p>{reviewCase.vignette}</p>
-              </section>
-              <div className={styles.examLayout}>
+              </section>}
+              <div className={`${styles.examLayout} ${reviewCase.stages?.length ? styles.progressiveLayout : ''}`}>
                 <section className={styles.questionPanel} aria-labelledby={`${reviewCase.id}-review-question`}>
                   <h2 id={`${reviewCase.id}-review-question`} className={styles.question}>{reviewCase.question}</h2>
                   <div className={styles.options}>
@@ -343,9 +354,9 @@ function CaseExamContent() {
                     })}
                   </div>
                 </section>
-                <section className={styles.viewerColumn} aria-label={`${reviewCase.modality} · ${regionLabel}`}>
+                {!reviewCase.stages?.length && <section className={styles.viewerColumn} aria-label={`${reviewCase.modality} · ${regionLabel}`}>
                   <MedicalSequenceViewer key={`review-${reviewCase.id}`} media={reviewMedia} language={lang} priority expandable />
-                </section>
+                </section>}
               </div>
               <section className={`${styles.feedback} ${styles.reviewFeedback} ${reviewCorrect ? styles.feedbackCorrect : styles.feedbackWrong}`}>
                 <header className={styles.feedbackHeader}><span className={styles.feedbackIcon} aria-hidden="true">{reviewCorrect ? '✓' : '×'}</span><strong>{reviewCorrect ? ui.correct : ui.incorrect}</strong></header>
@@ -356,6 +367,7 @@ function CaseExamContent() {
                 {!reviewCorrect && reviewWrongExplanation ? <div className={styles.feedbackSection}><h2>{ui.whyWrong}</h2><p>{reviewWrongExplanation}</p></div> : null}
                 <div className={styles.feedbackSection}><h2>{ui.imageFindings}</h2><p>{reviewCase.imageFindings || reviewCase.vignette}</p></div>
                 <div className={styles.feedbackSection}><h2>{ui.explanation}</h2><p>{reviewCase.explanation}</p></div>
+                {reviewCase.examinerDiscussion?.length ? <><div className={styles.stageSources}><span>{reviewCase.credit}</span><a href={reviewCase.source} target="_blank" rel="noreferrer">{reviewCase.sourceLabel || ui.source} ↗</a></div><ExaminerDiscussion entries={reviewCase.examinerDiscussion} references={reviewCase.references} lang={lang}/></> : null}
               </section>
             </article>
           </> : null}
@@ -397,18 +409,18 @@ function CaseExamContent() {
         )}
       </div>
 
-      <div className={styles.examShell}>
-        <section className={styles.caseIntro} dir={lang === 'fa' ? 'rtl' : 'ltr'} aria-labelledby={`${item.id}-anamnesis`}>
+      <div className={`${styles.examShell} ${isStaged ? styles.progressiveShell : ''}`}>
+        {isStaged ? <article className={styles.questionPanel}><ProgressiveCase key={item.id} item={item} revealedCount={revealedStages} onReveal={() => setRevealedStages(value => Math.min(value + 1, item.stages.length))} lang={lang}/></article> : <section className={styles.caseIntro} dir={lang === 'fa' ? 'rtl' : 'ltr'} aria-labelledby={`${item.id}-anamnesis`}>
           <div className={styles.caseIntroMeta}>
             <strong id={`${item.id}-anamnesis`}>{ui.anamnesis}</strong>
             <span>{item.modality} · {regionLabel}</span>
           </div>
           <p>{item.vignette}</p>
-        </section>
+        </section>}
 
-        <div className={styles.examLayout}>
-          <article className={styles.questionPanel} dir={lang === 'fa' ? 'rtl' : 'ltr'} aria-labelledby={`${item.id}-question`}>
-            <h1 id={`${item.id}-question`} className={styles.question}>{item.question}</h1>
+        <div className={`${styles.examLayout} ${isStaged ? styles.progressiveLayout : ''}`}>
+          {readyToAnswer && <article className={styles.questionPanel} dir={lang === 'fa' ? 'rtl' : 'ltr'} aria-labelledby={`${item.id}-question`}>
+            <QuestionHeading id={`${item.id}-question`} className={styles.question}>{item.question}</QuestionHeading>
             <div className={styles.options}>
               {item.options.map(option => {
                 let className = styles.option
@@ -474,14 +486,15 @@ function CaseExamContent() {
                   <h2>{ui.explanation}</h2>
                   <p>{item.explanation}</p>
                 </div>
+                {isStaged ? <><div className={styles.stageSources}><span>{item.credit}</span><a href={item.source} target="_blank" rel="noreferrer">{item.sourceLabel || ui.source} ↗</a></div><ExaminerDiscussion entries={item.examinerDiscussion} references={item.references} lang={lang}/></> : null}
               </section>
             )}
 
-          </article>
+          </article>}
 
-          <section className={styles.viewerColumn} dir={lang === 'fa' ? 'rtl' : 'ltr'} aria-label={`${item.modality} · ${regionLabel}`}>
+          {!isStaged && <section className={styles.viewerColumn} dir={lang === 'fa' ? 'rtl' : 'ltr'} aria-label={`${item.modality} · ${regionLabel}`}>
             <MedicalSequenceViewer key={item.id} media={itemMedia} language={lang} priority expandable showSource={!isTimed} />
-          </section>
+          </section>}
         </div>
       </div>
     </main>
