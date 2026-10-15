@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import styles from '../admin.module.css'
 import MonthlyFinanceHeader from './MonthlyFinanceHeader'
+import detailStyles from './CategoryDetail.module.css'
 
 const STORAGE_KEY    = 'radyar_private_budget_v1'
 const RECURRING_KEY  = 'radyar_recurring_v1'
@@ -1661,23 +1662,6 @@ ${manualEntries.length ? `
       ? getDateKey()
       : `${month}-01`)
     setShowPopup(true)
-  }
-
-  function openPopupFromDetail() {
-    if (!catDetail) return
-    const detail = catDetail
-    const category = categories.find(cat => (
-      cat.type === detail.type && (cat.name === detail.key || cat.subs.some(sub => sub.name === detail.key))
-    ))
-    openPopup(detail.type)
-    if (category) {
-      const sub = category.subs.find(item => item.name === detail.key)
-      setEntryScope({ catId: category.id, catName: category.name, subId: sub?.id || null, subName: sub?.name || null })
-      setSelectedItems([{ catId: category.id, catName: category.name, subId: sub?.id || null, subName: sub?.name || null }])
-    } else if (detail.type === 'income') {
-      setIncomeSourceMode('other')
-      setOtherIncomeName(detail.key)
-    }
   }
 
   function openPopupForSub(subName) {
@@ -3800,81 +3784,87 @@ ${manualEntries.length ? `
 
         {/* ── KATEGORIE-DETAIL POPUP ── */}
         {catDetail && (
-          <div className={styles.popupOverlay} onClick={closeCatDetail} role="dialog" aria-modal="true" aria-label={catDetail.label}>
-            <div className={styles.popupPanel} style={{ maxWidth: 480 }} onClick={e => e.stopPropagation()}>
+          <div className={detailStyles.overlay} onClick={closeCatDetail} role="dialog" aria-modal="true" aria-labelledby="category-detail-title">
+            <div className={detailStyles.panel} onClick={e => e.stopPropagation()}>
               {/* Header */}
-              <div className={styles.popupHeader} style={{ borderBottom: `2px solid ${catDetail.type === 'income' ? '#16a34a' : '#f97316'}` }}>
-                <div>
-                  <p className={styles.popupMonthLabel}>
+              <div className={detailStyles.header}>
+                <div className={detailStyles.heading}>
+                  <p className={detailStyles.month}>
                     {formatMonthLabel(month)}
                   </p>
-                  <h3 className={styles.popupTitle} style={{ color: catDetail.type === 'income' ? '#16a34a' : '#f97316' }}>
+                  <h3 id="category-detail-title" className={detailStyles.title}>
                     {catDetail.label}
                   </h3>
-                  <p style={{ margin: '4px 0 0', fontSize: 18, fontWeight: 900, color: '#0d1b2a' }}>
+                  <p className={detailStyles.total}>
                     {formatMoney(catDetailEntries.reduce((s, e) => s + Number(e.amount), 0))}
                   </p>
                 </div>
-                <div className={styles.catDetailHeaderActions}>
-                  {catDetail.type === 'expense' && (
-                    <button type="button" className={styles.catDetailAddBtn} onClick={openPopupFromDetail}>
-                      <IconPlus />
-                      <span>Neue Ausgabe</span>
-                    </button>
-                  )}
-                  <button className={styles.popupClose} onClick={closeCatDetail} aria-label="Schließen">×</button>
-                </div>
+                <button type="button" className={detailStyles.close} onClick={closeCatDetail} aria-label="Schließen">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6" /></svg>
+                </button>
               </div>
 
               {/* Body */}
-              <div className={styles.popupBody} style={{ paddingBottom: 16 }}>
+              <div className={detailStyles.body}>
                 {catDetailGrouped.length === 0 ? (
-                  <p style={{ color: '#94a3b8', textAlign: 'center', padding: '24px 0' }}>Keine Einträge.</p>
+                  <p className={detailStyles.empty}>Keine Einträge.</p>
                 ) : catDetailGrouped.map(([subtitle, entries]) => {
                   const groupTotal = entries.reduce((s, e) => s + Number(e.amount), 0)
                   const autoExpand = catDetailGrouped.length === 1
                   const isExpanded = autoExpand || expandedSubtitles.has(subtitle)
                   return (
-                    <div key={subtitle} className={styles.catDetailGroup}>
-                      <div className={styles.catDetailGroupHeaderWrap}>
-                        <button type="button" className={styles.catDetailGroupHead} onClick={() => toggleCatSubtitle(subtitle)}>
-                          <span>{subtitle}</span>
-                          <span className={styles.catDetailGroupMeta}>
+                    <div key={subtitle} className={detailStyles.group}>
+                      <div className={detailStyles.groupHeader}>
+                        <button type="button" className={detailStyles.groupToggle} onClick={() => toggleCatSubtitle(subtitle)} aria-expanded={isExpanded}>
+                          <span className={detailStyles.groupLabel}>
+                            <strong>{subtitle}</strong>
+                            <small>{entries.length} {entries.length === 1 ? 'Eintrag' : 'Einträge'}</small>
+                          </span>
+                          <span className={detailStyles.groupMeta}>
                             <strong>{formatMoney(groupTotal)}</strong>
-                            <small>{entries.length} Eintr.</small>
-                            <span className={isExpanded ? styles.catDetailChevronOpen : styles.catDetailChevron}><ChevronDown /></span>
+                            <span className={detailStyles.chevron}><ChevronDown /></span>
                           </span>
                         </button>
                         {catDetail.type === 'expense' && (
-                          <button type="button" className={styles.catDetailSubAddBtn} onClick={() => openPopupForSub(subtitle)} aria-label={`${subtitle} hinzufügen`} title={`${subtitle} hinzufügen`}>
+                          <button type="button" className={detailStyles.add} onClick={() => openPopupForSub(subtitle)} aria-label={`${subtitle} hinzufügen`} title={`${subtitle} hinzufügen`}>
                             <IconPlus />
                           </button>
                         )}
                       </div>
                       {isExpanded && (
-                        <div className={styles.catDetailEntries}>
+                        <div className={detailStyles.entries}>
                           {entries.slice().sort((a, b) => (b.date || '').localeCompare(a.date || '')).map(entry => (
-                            <div key={entry.id} className={styles.catDetailEntry}>
-                              <span className={styles.catDetailDate}>{new Date(entry.date).toLocaleDateString('de-DE')}</span>
-                              {entry.description && <span className={styles.entryDescription}>{entry.description}</span>}
-                              {entry.generatedRecurring && <span className={styles.catDetailFixBadge}>Fixkosten</span>}
+                            <div key={entry.id} className={detailStyles.entry}>
+                              <div className={detailStyles.entryInfo}>
+                                <span className={detailStyles.date}>{new Date(entry.date).toLocaleDateString('de-DE')}</span>
+                                {entry.description && <span className={detailStyles.description} dir="auto">{entry.description}</span>}
+                                {entry.generatedRecurring && <span className={detailStyles.fixedBadge}>Fixkosten</span>}
+                              </div>
                               {editingEntry?.id === entry.id ? (
-                                <div className={styles.catDetailEditRow}>
-                                  <input type="number" step="0.01" value={editingEntry.amount} onChange={e => setEditingEntry(p => ({ ...p, amount: e.target.value }))} className={styles.catDetailInput} autoFocus />
-                                  <button type="button" className={styles.catDetailSaveBtn} onClick={() => saveEntryEdit(entry.id, editingEntry.amount)}>✓</button>
-                                  <button type="button" className={styles.catDetailCancelBtn} onClick={() => setEditingEntry(null)}>✗</button>
+                                <div className={detailStyles.editRow}>
+                                  <input type="number" step="0.01" value={editingEntry.amount} onChange={e => setEditingEntry(p => ({ ...p, amount: e.target.value }))} className={detailStyles.input} aria-label="Betrag bearbeiten" autoFocus />
+                                  <button type="button" className={detailStyles.save} onClick={() => saveEntryEdit(entry.id, editingEntry.amount)} aria-label="Betrag speichern">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6" /></svg>
+                                  </button>
+                                  <button type="button" className={detailStyles.cancel} onClick={() => setEditingEntry(null)} aria-label="Bearbeiten abbrechen">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6" /></svg>
+                                  </button>
                                 </div>
                               ) : (
-                                <strong
-                                  className={`${styles.catDetailAmount} ${catDetail.type === 'income' ? styles.moneyPositive : ''}`}
+                                <button
+                                  type="button"
+                                  className={detailStyles.amount}
+                                  disabled={entry.generatedRecurring}
                                   onClick={() => !entry.generatedRecurring && setEditingEntry({ id: entry.id, amount: String(entry.amount) })}
                                   title={entry.generatedRecurring ? undefined : 'Klicken zum Bearbeiten'}
-                                  style={{ cursor: entry.generatedRecurring ? 'default' : 'pointer' }}
+                                  aria-label={`${formatMoney(entry.amount)}${entry.generatedRecurring ? ', Fixkosten' : ' bearbeiten'}`}
                                 >
                                   {formatMoney(entry.amount)}
-                                </strong>
+                                </button>
                               )}
-                              <button type="button" className={styles.actionBtn} onClick={() => deleteEntry(entry.id)}>×</button>
+                              <button type="button" className={detailStyles.remove} onClick={() => deleteEntry(entry.id)} aria-label={`Eintrag vom ${new Date(entry.date).toLocaleDateString('de-DE')} löschen`}>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 10v7M14 10v7" /></svg>
+                              </button>
                             </div>
                           ))}
                         </div>
