@@ -724,7 +724,16 @@
   grid-template-columns: minmax(300px, .95fr) minmax(300px, 1.05fr);
   gap: 28px;
   align-items: center;
-}
+}.anatomyDetailGrid.anatomyDetailGridWide { grid-template-columns: minmax(0, 1fr); }
+.anatomyFigure { margin: 0; min-width: 0; }
+.anatomyFigureCaption { margin-top: 12px; color: var(--gray); font-size: 12px; line-height: 1.6; }
+.anatomyFigureCaption p { margin: 0 0 6px; }
+.anatomyFigureCaption a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.anatomyPointSwatch { width: 26px; height: 26px; margin-inline: auto; border: 1px solid #64748b; border-radius: 50%; }
+.anatomyDetailGridWide .anatomyZoomIcon { position: static; width: 26px; height: 26px; margin: 6px 8px 6px auto; font-size: 18px; }
+.anatomyReferenceZoom { max-width: 96vw; max-height: 90vh; overflow: auto; overscroll-behavior: contain; background: #fff; }
+.anatomyReferenceZoom .anatomyZoomImage { display: block; width: max(1200px, 90vw); height: auto; max-width: none; max-height: none; }
+
 .anatomyFigureButton {
   position: relative;
   display: block;

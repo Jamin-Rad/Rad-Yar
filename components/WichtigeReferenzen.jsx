@@ -531,30 +531,49 @@ function AnatomieModal({ copy, lang, onClose }) {
             </div>
           </div>
 
-          <div className={styles.anatomyDetailGrid}>
-            <button
-              type="button"
-              className={styles.anatomyFigureButton}
-              onClick={() => setZoomImage(item)}
-              aria-label={`${copy.zoomImage}: ${tx(item.imageAlt, lang)}`}
-            >
-              <Image
-                src={item.image}
-                alt={tx(item.imageAlt, lang)}
-                width={1122}
-                height={1402}
-                className={styles.anatomyFigureImage}
-                sizes="(max-width: 640px) 100vw, 430px"
-                priority
-              />
-              <span className={styles.anatomyZoomIcon} aria-hidden="true">⌕</span>
-            </button>
+          <div className={`${styles.anatomyDetailGrid} ${item.imageLayout === 'wide' ? styles.anatomyDetailGridWide : ''}`}>
+            <figure className={styles.anatomyFigure}>
+              <button
+                type="button"
+                className={styles.anatomyFigureButton}
+                onClick={() => setZoomImage(item)}
+                aria-label={`${copy.zoomImage}: ${tx(item.imageAlt, lang)}`}
+              >
+                <Image
+                  src={item.image}
+                  alt={tx(item.imageAlt, lang)}
+                  width={item.imageWidth || 1122}
+                  height={item.imageHeight || 1402}
+                  className={styles.anatomyFigureImage}
+                  style={item.imageWidth ? { aspectRatio: `${item.imageWidth} / ${item.imageHeight}` } : undefined}
+                  sizes={item.imageLayout === 'wide' ? '(max-width: 640px) 100vw, 850px' : '(max-width: 640px) 100vw, 430px'}
+                  priority
+                />
+                <span className={styles.anatomyZoomIcon} aria-hidden="true">⌕</span>
+              </button>
+
+              {(item.imageCaption || item.imageCredit) && (
+                <figcaption className={styles.anatomyFigureCaption}>
+                  {item.imageCaption && <p>{tx(item.imageCaption, lang)}</p>}
+                  {item.imageCredit && (
+                    <p>
+                      {item.imageCredit.authors} · <a href={item.imageCredit.sourceUrl} target="_blank" rel="noopener noreferrer">{tx(item.imageCredit.label, lang)}</a>
+                      {' · '}<a href={item.imageCredit.licenseUrl} target="_blank" rel="noopener noreferrer">{item.imageCredit.licenseLabel}</a>
+                    </p>
+                  )}
+                </figcaption>
+              )}
+            </figure>
 
             <div className={styles.anatomyNotes}>
               <ol className={styles.anatomyPointList}>
                 {item.points.map(point => (
                   <li key={point.number} className={styles.anatomyPoint}>
-                    <span className={styles.anatomyPointNumber}>{point.number}</span>
+                    {point.color ? (
+                      <span className={styles.anatomyPointSwatch} style={{ backgroundColor: point.color }} aria-hidden="true" />
+                    ) : (
+                      <span className={styles.anatomyPointNumber}>{point.number}</span>
+                    )}
                     <span>
                       <strong>{tx(point.title, lang)}</strong>
                       <small>{tx(point.text, lang)}</small>
@@ -587,14 +606,22 @@ function AnatomieModal({ copy, lang, onClose }) {
       {zoomImage && (
         <div className={styles.measurementZoomBackdrop} role="presentation" onClick={() => setZoomImage(null)}>
           <button type="button" className={styles.measurementZoomClose} onClick={() => setZoomImage(null)} aria-label={copy.close}>×</button>
-          <Image
-            src={zoomImage.image}
-            alt={tx(zoomImage.imageAlt, lang)}
-            width={1122}
-            height={1402}
-            className={`${styles.measurementZoomImage} ${styles.anatomyZoomImage}`}
-            sizes="96vw"
-          />
+          <div
+            className={zoomImage.imageLayout === 'wide' ? styles.anatomyReferenceZoom : undefined}
+            onClick={event => event.stopPropagation()}
+            tabIndex={zoomImage.imageLayout === 'wide' ? 0 : undefined}
+            role={zoomImage.imageLayout === 'wide' ? 'region' : undefined}
+            aria-label={zoomImage.imageLayout === 'wide' ? tx(zoomImage.imageAlt, lang) : undefined}
+          >
+            <Image
+              src={zoomImage.image}
+              alt={tx(zoomImage.imageAlt, lang)}
+              width={zoomImage.imageWidth || 1122}
+              height={zoomImage.imageHeight || 1402}
+              className={`${styles.measurementZoomImage} ${styles.anatomyZoomImage}`}
+              sizes="96vw"
+            />
+          </div>
         </div>
       )}
     </Modal>

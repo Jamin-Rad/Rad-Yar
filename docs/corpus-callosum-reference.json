@@ -1,0 +1,26 @@
+{
+  "asset": "public/referenzen/anatomie/corpus-callosum-reference-figure4.png",
+  "sha256": "8e125d0586b6a4d7da52ab256c6dba9ea2e9ba03f2c07eda3489533d1c09811e",
+  "source": "https://mdpi-res.com/d_attachment/jcm/jcm-14-01961/article_deploy/html/images/jcm-14-01961-g004.png",
+  "doi": "10.3390/jcm14061961",
+  "authors": "Hasan Hüsnü Yüksek, Seda Türkili, Ayten Yüksek, Barış Ten, Şadiye Visal Buturak",
+  "figure": "4 (both original panels, unmodified)",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "referenceChecks": [
+    "Colour mapping matches the original Figure 4 caption: red rostrum, dark blue genu, yellow body, grey isthmus, light blue splenium.",
+    "The published T1-weighted MRI is reproduced without retouching, cropping, recolouring or generative edits.",
+    "Anterior is on the left and posterior is on the right in both panels.",
+    "The study does not identify this illustrative MRI as a healthy control; the page makes no claim that it is a normal subject.",
+    "Measurement landmarks are described as such, not as additional anatomical structures or normal cut-off values.",
+    "Four major segments and the posterior body/isthmus transition are distinguished in the explanatory text."
+  ],
+  "replacedAsset": {
+    "path": "public/referenzen/anatomie/corpus-callosum-3d.png",
+    "reason": "Generated geometry, particularly the inferior rostral contour and adjacent structures, could not be independently verified as an anatomical teaching reference."
+  },
+  "anatomyReferences": [
+    "https://www.ncbi.nlm.nih.gov/books/NBK448209/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC7186255/"
+  ]
+}
