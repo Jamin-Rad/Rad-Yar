@@ -5,10 +5,18 @@ import { createPortal } from 'react-dom'
 import { cameraErrorMessage, clampCameraPosition, stopCameraStream } from '../utils/lehrCamera'
 import styles from './LehrRecordingTools.module.css'
 
+const DEFAULT_CAMERA_ZOOM = 1.4
+const MIN_CAMERA_ZOOM = 1
+const MAX_CAMERA_ZOOM = 2.4
+
 function Icon({ name }) {
-  return <svg viewBox="0 0 24 24" aria-hidden="true">{name === 'camera'
-    ? <><rect x="3" y="6" width="13" height="12" rx="3" /><path d="m16 10 5-3v10l-5-3" /></>
-    : <path d="M6 6l12 12M18 6 6 18" />}</svg>
+  let shape = <path d="M6 6l12 12M18 6 6 18" />
+  if (name === 'camera') shape = <><rect x="3" y="6" width="13" height="12" rx="3" /><path d="m16 10 5-3v10l-5-3" /></>
+  if (name === 'expand') shape = <><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5" /><path d="m3 8 6-6M21 8l-6-6M3 16l6 6M21 16l-6 6" /></>
+  if (name === 'collapse') shape = <><path d="M9 3v6H3M15 3v6h6M9 21v-6H3M15 21v-6h6" /><path d="m3 9 6-6M21 9l-6-6M3 15l6 6M21 15l-6 6" /></>
+  if (name === 'zoomOut') shape = <><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.5 15.5 5 5M7.5 10.5h6" /></>
+  if (name === 'zoomIn') shape = <><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.5 15.5 5 5M7.5 10.5h6M10.5 7.5v6" /></>
+  return <svg viewBox="0 0 24 24" aria-hidden="true">{shape}</svg>
 }
 
 function visibleViewport() {
@@ -22,6 +30,7 @@ export default function LehrRecordingTools({ ensureFullscreen }) {
   const [error, setError] = useState('')
   const [paused, setPaused] = useState(false)
   const [large, setLarge] = useState(false)
+  const [zoom, setZoom] = useState(DEFAULT_CAMERA_ZOOM)
   const streamRef = useRef(null)
   const requestRef = useRef(0)
   const mountedRef = useRef(false)
@@ -182,12 +191,29 @@ export default function LehrRecordingTools({ ensureFullscreen }) {
       {cameraOn && <section ref={panelRef} className={`${styles.camera} ${large ? styles.large : ''}`} aria-label="Frontkamera-Vorschau">
         <header>
           <button type="button" className={styles.grip} aria-label="Kamerafenster verschieben" title="Ziehen oder mit Pfeiltasten verschieben" onPointerDown={beginDrag} onPointerMove={drag} onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={() => { dragRef.current = null }} onKeyDown={moveWithKeyboard}>⠿ <span>Kamera</span></button>
-          <button type="button" onClick={() => setLarge(value => !value)} aria-label={large ? 'Kamerafenster verkleinern' : 'Kamerafenster vergrößern'} title={large ? 'Verkleinern' : 'Vergrößern'}>{large ? '↙' : '↗'}</button>
-          <button type="button" onClick={() => stopCamera()} aria-label="Frontkamera ausschalten">×</button>
+          <button type="button" className={styles.iconButton} onClick={() => setLarge(value => !value)} aria-label={large ? 'Kamerafenster verkleinern' : 'Kamerafenster vergrößern'} title={large ? 'Verkleinern' : 'Vergrößern'}><Icon name={large ? 'collapse' : 'expand'} /></button>
+          <button type="button" className={`${styles.iconButton} ${styles.closeButton}`} onClick={() => stopCamera()} aria-label="Frontkamera ausschalten" title="Kamera schließen"><Icon name="close" /></button>
         </header>
         <div className={styles.videoFrame}>
-          <video ref={attachVideo} autoPlay muted playsInline aria-label="Livebild der Frontkamera" onPlaying={() => setPaused(false)} onPause={() => { if (streamRef.current) setPaused(true) }} />
+          <video ref={attachVideo} style={{ '--camera-zoom': zoom }} autoPlay muted playsInline aria-label="Livebild der Frontkamera" onPlaying={() => setPaused(false)} onPause={() => { if (streamRef.current) setPaused(true) }} />
           {paused && <button type="button" className={styles.resume} onClick={playVideo}>Kamerabild fortsetzen</button>}
+        </div>
+        <div className={styles.zoomControl} aria-label="Kamera-Zoom">
+          <Icon name="zoomOut" />
+          <input
+            type="range"
+            min={MIN_CAMERA_ZOOM}
+            max={MAX_CAMERA_ZOOM}
+            step="0.05"
+            value={zoom}
+            onChange={event => setZoom(Number(event.target.value))}
+            aria-label="Kamera-Zoom einstellen"
+            aria-valuetext={`${Math.round(zoom * 100)} Prozent`}
+          />
+          <Icon name="zoomIn" />
+          <button type="button" className={styles.zoomValue} onClick={() => setZoom(DEFAULT_CAMERA_ZOOM)} title="Zoom zurücksetzen" aria-label={`Zoom ${Math.round(zoom * 100)} Prozent; auf Standard zurücksetzen`}>
+            {Math.round(zoom * 100)}%
+          </button>
         </div>
       </section>}
     </div>, document.body)}

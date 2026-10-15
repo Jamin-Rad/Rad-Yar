@@ -4,19 +4,30 @@
 .control:disabled { opacity: .6; cursor: wait; }
 .control:focus-visible, .overlays button:focus-visible { outline: 2px solid #7dd3fc; outline-offset: 3px; }
 .overlays { position: relative; z-index: 2147482100; font-family: var(--font-manrope), sans-serif; color: #f8fafc; }
-.camera { position: fixed; top: 150px; left: 12px; width: min(190px, calc(100vw - 24px)); overflow: hidden; border: 1px solid #64748b; border-radius: 18px; background: #0b1423; box-shadow: 0 12px 38px #0007; }
+.camera { position: fixed; top: 150px; left: 12px; width: min(204px, calc(100vw - 24px)); overflow: hidden; border: 1px solid rgba(148,163,184,.46); border-radius: 20px; background: linear-gradient(160deg, #142236 0%, #09111e 100%); box-shadow: 0 18px 48px #0009, inset 0 1px rgba(255,255,255,.08); }
 .large { width: min(390px, calc(100vw - 24px)); }
-.camera header { display: flex; height: 36px; gap: 2px; padding: 2px 4px; }
-.camera button { min-width: 30px; border: 0; border-radius: 6px; background: transparent; color: #e2e8f0; font: inherit; cursor: pointer; }
+.camera header { display: flex; align-items: center; min-height: 40px; gap: 4px; padding: 4px 6px; border-bottom: 1px solid rgba(148,163,184,.14); }
+.camera button { min-width: 32px; border: 0; border-radius: 9px; background: transparent; color: #e2e8f0; font: inherit; cursor: pointer; }
 .camera .grip { flex: 1; display: flex; align-items: center; gap: 6px; text-align: left; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; }
 .grip span { font-size: 11px; }
 .grip:active { cursor: grabbing; }
+.camera .iconButton { display: grid; place-items: center; width: 32px; height: 32px; transition: color .16s ease, background-color .16s ease, transform .16s ease; }
+.camera .iconButton:hover { color: #fff; background: rgba(125,211,252,.14); }
+.camera .iconButton:active { transform: scale(.94); }
+.camera .iconButton svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.camera .closeButton:hover { color: #fecaca; background: rgba(239,68,68,.16); }
 .videoFrame { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #000; }
-.camera video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; transform: scaleX(-1) scale(1.18); background: #000; }
+.camera video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; transform: scaleX(-1) scale(var(--camera-zoom, 1.4)); transition: transform .18s ease-out; background: #000; }
 .camera .resume { position: absolute; bottom: 12px; left: 8px; right: 8px; padding: 8px; background: #0b1423e8; font-size: 11px; }
+.zoomControl { display: grid; grid-template-columns: 17px minmax(64px, 1fr) 17px auto; align-items: center; gap: 7px; min-height: 45px; padding: 7px 9px; border-top: 1px solid rgba(148,163,184,.14); color: #94a3b8; }
+.zoomControl > svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.zoomControl input { width: 100%; height: 24px; margin: 0; accent-color: #38bdf8; cursor: pointer; touch-action: none; }
+.camera .zoomValue { min-width: 46px; height: 29px; padding: 0 7px; border: 1px solid rgba(125,211,252,.2); border-radius: 8px; background: rgba(14,165,233,.1); color: #bae6fd; font-size: 10px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.camera .zoomValue:hover { color: #fff; background: rgba(14,165,233,.2); }
 .notice { position: fixed; top: max(130px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); width: min(420px, calc(100vw - 32px)); padding: 16px; border: 1px solid #475569; border-radius: 14px; background: #0b1423f5; box-shadow: 0 12px 38px #0007; font-size: 13px; line-height: 1.6; }
 .notice { z-index: 2; display: flex; gap: 12px; border-color: #fbbf24; }
 .notice p { flex: 1; margin: 0; }
 .notice button { align-self: flex-start; border: 0; background: transparent; color: #fff; font-size: 22px; cursor: pointer; }
 :global(html[data-lehr-recording-ready]) .control span { display: none; }
-@media (max-width: 820px) { .control { padding: 0; width: 40px; } .control span { display: none; } .camera { width: min(168px, calc(100vw - 24px)); } .camera.large { width: min(340px, calc(100vw - 24px)); } }
+@media (max-width: 820px) { .control { padding: 0; width: 40px; } .control span { display: none; } .camera { width: min(190px, calc(100vw - 24px)); } .camera.large { width: min(360px, calc(100vw - 24px)); } }
+@media (prefers-reduced-motion: reduce) { .camera video, .camera .iconButton { transition: none; } }

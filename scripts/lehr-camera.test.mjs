@@ -33,11 +33,18 @@ test('stopping the preview stops every track, including late-resolving streams',
 
 test('camera is preview-only, scoped to admin Lehr-Mode and cleaned up on exit', () => {
   const recording = readFileSync(new URL('../components/LehrRecordingTools.jsx', import.meta.url), 'utf8')
+  const styles = readFileSync(new URL('../components/LehrRecordingTools.module.css', import.meta.url), 'utf8')
   const lehr = readFileSync(new URL('../components/LehrMode.jsx', import.meta.url), 'utf8')
   assert.match(recording, /audio: false/)
   assert.match(recording, /facingMode: \{ ideal: 'user' \}/)
   assert.match(recording, /autoPlay muted playsInline/)
   assert.match(recording, /request !== requestRef.current/)
+  assert.match(recording, /const DEFAULT_CAMERA_ZOOM = 1\.4/)
+  assert.match(recording, /max=\{MAX_CAMERA_ZOOM\}/)
+  assert.match(recording, /aria-label="Kamera-Zoom einstellen"/)
+  assert.match(recording, /style=\{\{ '--camera-zoom': zoom \}\}/)
+  assert.match(recording, /Icon name=\{large \? 'collapse' : 'expand'\}/)
+  assert.match(styles, /scaleX\(-1\) scale\(var\(--camera-zoom, 1\.4\)\)/)
   assert.match(recording, /export default function LehrRecordingTools\(\{ ensureFullscreen \}\)/)
   assert.match(recording, /onPointerDown=\{\(\) => ensureFullscreen\?\.\(\)\}/)
   assert.ok((recording.match(/ensureFullscreen\?\.\(\)/g) || []).length >= 3)
