@@ -2040,34 +2040,6 @@ ${manualEntries.length ? `
             {/* ── MONATSÜBERSICHT ── */}
             {view === 'monat' && (
               <div className={styles.financeMonthGrid}>
-                {/* EINKOMMEN */}
-                <div className={styles.sectionCard} style={{ borderColor: 'rgba(22,163,74,.2)' }}>
-                  <div className={styles.sectionCardHead} style={{ background: 'rgba(22,163,74,.07)', borderBottom: '1px solid rgba(22,163,74,.15)' }}>
-                    <span className={styles.sectionCardLabel} style={{ color: '#15803d' }}>Einkommen</span>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                      <strong className={styles.moneyPositive} style={{ fontSize: 18 }}>{formatMoney(summary.income)}</strong>
-                      <button className={styles.sectionAddBtn} style={{ background: '#16a34a' }} onClick={() => openPopup('income')} aria-label="Einkommen hinzufügen"><IconPlus /></button>
-                    </div>
-                  </div>
-                  <div className={styles.sectionCardBody}>
-                    {incomeTotals.length ? incomeTotals.map(([cat, total]) => {
-                      const pct = summary.income > 0 ? (total / summary.income) * 100 : 0
-                      return (
-                        <div className={`${styles.incomeRow} ${styles.clickableRow}`} key={cat} onClick={() => openCatDetail('income', cat, cat)} role="button" tabIndex={0} onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && openCatDetail('income', cat, cat)}>
-                          <span className={styles.incomeRowName}>{cat}</span>
-                          <div className={styles.incomeBarTrack}><div className={styles.incomeBarFill} style={{ width: `${Math.max(pct, 3)}%` }} /></div>
-                          <span className={styles.financeRowAmount}><strong className={styles.moneyPositive}>{formatMoney(total)}</strong><small>{pct.toFixed(0)} %</small></span>
-                        </div>
-                      )
-                    }) : (
-                      <div className={styles.sectionEmptyRow}>
-                        <p>Kein Einkommen eingetragen.</p>
-                        <button className={styles.sectionEmptyBtn} type="button" onClick={() => openPopup('income')}>+ Einkommen eintragen</button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
                 {/* AUSGABEN */}
                 <div className={styles.sectionCard} style={{ borderColor: 'rgba(249,115,22,.2)' }}>
                   <div className={styles.sectionCardHead} style={{ background: 'rgba(249,115,22,.07)', borderBottom: '1px solid rgba(249,115,22,.15)' }}>
