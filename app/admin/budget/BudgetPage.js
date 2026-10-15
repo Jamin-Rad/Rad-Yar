@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import styles from '../admin.module.css'
+import MonthlyExpenses from '@/app/andarun/finanz/MonthlyExpenses'
+import { parseAmount, putMonthlyEntry, removeMonthlyEntry, todayBerlin, validDate } from '@/utils/monthlyExpenseModel'
 
 const STORAGE_KEY    = 'radyar_private_budget_v1'
 const RECURRING_KEY  = 'radyar_recurring_v1'
@@ -862,10 +864,10 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
   )
 }
 
-export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = false, initialView = 'monat', excludeVacation = false }) {
+export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = false, initialView = 'monat', excludeVacation = false, monthlyDesign = false }) {
   const [view, setView]       = useState(() => iranOnly ? 'iranurlaub' : initialView)
   const [subView, setSubView] = useState('kategorien')
-  const [month, setMonth]     = useState(getMonthKey())
+  const [month, setMonth]     = useState(() => monthlyDesign ? todayBerlin().slice(0, 7) : getMonthKey())
   const [year, setYear]       = useState(new Date().getFullYear())
   const [store, setStore]     = useState({})
   const [catBudgets, setCatBudgets] = useState({})
@@ -2068,6 +2070,83 @@ ${manualEntries.length ? `
       </button>
     )
   }
+
+  // The new monthly interface shares the existing persistence and conflict merge.
+  // The travel ledger and legacy interface keep their own rendering and actions.
+  function saveMonthlyEntry(values, original) {
+    const amount = parseAmount(values.amount)
+    if (amount === null || !validDate(values.date) || !values.title?.trim()) throw new Error('Bitte Betrag, Datum und Kategorie prüfen.')
+    if (!['expense', 'income'].includes(values.type) || original?.generatedRecurring) throw new Error('Diese Buchung bitte in Planung bearbeiten.')
+    const category = visibleCategories.find(category => category.name === values.category && category.type === values.type)
+    if (!category && !(values.type === 'income' && values.category === 'Andere')) throw new Error('Bitte eine vorhandene Kategorie auswählen.')
+    const id = original?.id || makeId()
+    const sourceKey = original ? Object.keys(store).find(key => /^\d{4}-\d{2}$/.test(key) && store[key]?.entries?.some(entry => entry.id === id)) : null
+    const previous = sourceKey ? store[sourceKey].entries.find(entry => entry.id === id) : null
+    const legacyTags = (original?.tags || []).filter(tag => !categories.some(category => category.name === tag) && tag !== original.category)
+    const entry = { ...(previous || {}), ...values, id, amount, title: values.title.trim(), tags: [...new Set([...values.tags, ...legacyTags])] }
+    setStore(current => putMonthlyEntry(current, entry))
+    return { id, sourceKey, previous }
+  }
+  function undoMonthlyEntry(change) {
+    setStore(current => {
+      const next = removeMonthlyEntry(current, change.id)
+      if (!change.previous || !change.sourceKey) return next
+      const source = next[change.sourceKey] || emptyMonth()
+      return { ...next, [change.sourceKey]: { ...source, entries: [change.previous, ...source.entries] } }
+    })
+  }
+  function deleteMonthlyEntry(entry) {
+    if (entry.generatedRecurring) throw new Error('Fixkosten bitte in Planung beenden.')
+    const sourceKey = Object.keys(store).find(key => /^\d{4}-\d{2}$/.test(key) && store[key]?.entries?.some(item => item.id === entry.id))
+    const previous = sourceKey ? store[sourceKey].entries.find(item => item.id === entry.id) : null
+    setStore(current => removeMonthlyEntry(current, entry.id))
+    return { id: entry.id, sourceKey, previous }
+  }
+  function saveMonthlyBudget(key, value) {
+    const base = key.split(' / ')[0]
+    if (!visibleCategories.some(category => category.name === base && category.type === 'expense')) throw new Error('Bitte eine Ausgaben-Kategorie wählen.')
+    const amount = value === 0 ? 0 : parseAmount(value)
+    if (amount === null) throw new Error('Bitte einen gültigen Betrag eingeben.')
+    setCatBudgets(current => {
+      const next = { ...current }
+      if (amount === 0) delete next[key]
+      else next[key] = amount
+      if (key === base && amount > 0) delete next[`${base} / Gesamt`]
+      return next
+    })
+  }
+  function saveMonthlyRecurring(values) {
+    const amount = parseAmount(values.amount)
+    if (amount === null || !validDate(`${values.startMonth}-01`)) throw new Error('Bitte Betrag und Startmonat prüfen.')
+    if (!visibleCategories.some(category => category.name === values.category && category.type === values.type)) throw new Error('Bitte eine vorhandene Kategorie auswählen.')
+    if (values.id) setRecurring(current => current.map(item => item.id === values.id ? withRecurringAmountChange(item, amount, values.startMonth) : item))
+    else setRecurring(current => [...current, { ...values, id: makeId(), amount, dayOfMonth: '1' }])
+  }
+  function endMonthlyRecurring(id, endMonth) {
+    if (!validDate(`${endMonth}-01`)) return
+    setRecurring(current => current.flatMap(item => item.id !== id ? [item] : item.startMonth && item.startMonth > endMonth ? [] : [{ ...item, endMonth }]))
+  }
+  function createMonthlyCategory(name, type) {
+    const label = name.trim()
+    if (!label || !['income', 'expense'].includes(type)) throw new Error('Bitte einen Namen und eine Art angeben.')
+    if (categories.some(category => category.name.toLocaleLowerCase('de') === label.toLocaleLowerCase('de'))) throw new Error('Diese Kategorie gibt es bereits.')
+    setCategories(current => [...current, buildCat(label, [], type)])
+    setCatError('')
+  }
+  function createMonthlySubcategory(id, name) {
+    const label = name.trim(), category = categories.find(category => category.id === id)
+    if (!label || !category) throw new Error('Bitte einen Namen angeben.')
+    if (category.subs.some(sub => sub.name.toLocaleLowerCase('de') === label.toLocaleLowerCase('de'))) throw new Error('Diese Unterkategorie gibt es bereits.')
+    setCategories(current => current.map(category => category.id === id ? { ...category, subs: [...category.subs, { id: makeId(), name: label }] } : category))
+    setCatError('')
+  }
+  function deleteMonthlyCategory(id) {
+    const category = categories.find(category => category.id === id)
+    if (category && Object.keys(catBudgets).some(key => key.split(' / ')[0] === category.name && Number(catBudgets[key]) > 0)) { setCatError('Bitte zuerst die Budgets dieser Kategorie entfernen.'); return }
+    removeCategory(id)
+  }
+
+  if (monthlyDesign && !iranOnly) return <MonthlyExpenses store={store} recurring={visibleRecurring} budgets={visibleCatBudgets} categories={visibleCategories} month={month} onMonth={setMonth} loaded={loaded} syncStatus={syncStatus} categoryError={catError} onSaveEntry={saveMonthlyEntry} onUndoEntry={undoMonthlyEntry} onDeleteEntry={deleteMonthlyEntry} onBudget={saveMonthlyBudget} onRecurring={saveMonthlyRecurring} onEndRecurring={endMonthlyRecurring} onCategory={createMonthlyCategory} onSubcategory={createMonthlySubcategory} onDeleteCategory={deleteMonthlyCategory} onDeleteSubcategory={removeSubCategory} />
 
   const isIncome = entryType === 'income'
   const popupAccent = isIncome ? '#16a34a' : '#f97316'
