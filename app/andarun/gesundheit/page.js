@@ -1,7 +1,6 @@
 import { redirect } from 'next/navigation'
 import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
 import HealthPage from '@/app/admin/health/HealthPage'
-import AndarunNav from '../AndarunNav'
 
 export const metadata = {
   title: 'Jaminova Gesundheit',
@@ -19,7 +18,6 @@ export default async function AndarunHealthPage() {
 
   return (
     <>
-      <AndarunNav />
       <HealthPage apiBase="/api/andarun/health" homeLabel="Jaminova" />
     </>
   )

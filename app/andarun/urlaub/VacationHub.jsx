@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useMemo, useState } from 'react'
-import AndarunNav from '../AndarunNav'
 import styles from './vacation.module.css'
 import {
   VACATION_CATEGORIES, VACATION_STORE_KEY, formatVacationEuro, formatVacationRange,
@@ -84,7 +83,6 @@ export default function VacationHub() {
   }
 
   return <main className={styles.page}>
-    <AndarunNav />
     <div className={styles.shell}>
       <header className={styles.hero}>
         <div><Link href="/andarun" className={styles.back}>← Zurück zu Jaminova</Link><h1>Urlaubsarchiv</h1><p>Alle Reisen und ihre Kosten an einem Ort.</p></div>

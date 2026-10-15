@@ -1,6 +1,6 @@
 /* ── DARK NAVBAR ──────────────────────────────── */
 .nav {
-  position: fixed; top:0; left:0; right:0; z-index:100;
+  position: fixed; top:var(--jaminova-header-height, 0px); left:0; right:0; z-index:100;
   display:flex; align-items:center; justify-content:space-between;
   padding:0 5vw; height:64px;
   background: rgba(8,14,28,0.94);

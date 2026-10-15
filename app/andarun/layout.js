@@ -1,4 +1,5 @@
 import { getAndarunPwaMetadata, getAndarunViewport } from '@/lib/andarunWebApps'
+import AndarunNav from './AndarunNav'
 
 export const metadata = {
   ...getAndarunPwaMetadata('andarun'),
@@ -8,5 +9,5 @@ export const metadata = {
 export const viewport = getAndarunViewport('andarun')
 
 export default function AndarunLayout({ children }) {
-  return children
+  return <><AndarunNav />{children}</>
 }

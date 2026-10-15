@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation'
 import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
-import AndarunNav from '../AndarunNav'
 import RoutinePage from './RoutinePage'
 
 export const metadata = {
@@ -19,7 +18,6 @@ export default async function AndarunRoutinePage() {
 
   return (
     <>
-      <AndarunNav />
       <RoutinePage showHomeLink={false} />
     </>
   )

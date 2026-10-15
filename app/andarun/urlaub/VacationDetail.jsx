@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
-import AndarunNav from '../AndarunNav'
 import styles from './vacation.module.css'
 import {
   VACATION_CATEGORIES, VACATION_STORE_KEY, formatVacationDate, formatVacationEuro,
@@ -59,12 +58,11 @@ export default function VacationDetail({ tripId }) {
     await save({ ...budget, store: { ...budget.store, [VACATION_STORE_KEY]: { trips } } })
   }
 
-  if (!loaded) return <main className={styles.page}><AndarunNav/><div className={styles.loading}>Urlaub wird geladen …</div></main>
-  if (!trip) return <main className={styles.page}><AndarunNav/><div className={styles.notFound}><h1>Urlaub nicht gefunden</h1><Link href="/andarun/urlaub">← Alle Urlaube</Link></div></main>
+  if (!loaded) return <main className={styles.page}><div className={styles.loading}>Urlaub wird geladen …</div></main>
+  if (!trip) return <main className={styles.page}><div className={styles.notFound}><h1>Urlaub nicht gefunden</h1><Link href="/andarun/urlaub">← Alle Urlaube</Link></div></main>
 
   const savedExpenseIds = new Set((savedTrip?.expenses || []).map(expense => expense.id))
   return <main className={styles.page}>
-    <AndarunNav />
     <div className={styles.shell}>
       <header className={styles.detailHero}>
         <div><Link href="/andarun/urlaub" className={styles.back}>← Alle Urlaube</Link><h1>{trip.title}</h1><p>{trip.destination || 'Urlaub'} · {formatVacationRange(trip.startDate, trip.endDate)} · {vacationDuration(trip.startDate, trip.endDate)} Tage</p></div>

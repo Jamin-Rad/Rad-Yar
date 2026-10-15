@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation'
 import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
-import AndarunNav from '../../AndarunNav'
 import DeutschPage from '../DeutschPage'
 
 export const metadata = {
@@ -20,7 +19,6 @@ export default async function AndarunDeutschLessonPage({ params }) {
 
   return (
     <>
-      <AndarunNav />
       <DeutschPage initialLessonId={resolvedParams.lessonId} lessonMode homeHref="/andarun" homeLabel="" courseHref="/andarun/deutsch" lessonBase="/andarun/deutsch" />
     </>
   )

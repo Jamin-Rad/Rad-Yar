@@ -18,7 +18,7 @@
 
 .topbar {
   position: sticky;
-  top: 0;
+  top: var(--jaminova-header-height, 0px);
   z-index: 40;
   height: 70px;
   display: flex;

@@ -26,7 +26,6 @@ export default function AndarunLanding({ initialNow }) {
   return <main className={styles.page} lang="de" dir="ltr" data-andarun-home>
     <div className={styles.galaxyArtwork} aria-hidden="true"><Image src="/andarun-galaxy-dashboard.png" alt="" fill sizes="100vw" priority /></div>
     <div className={styles.shell}>
-      <header className={styles.homeHeader}><Link href="/andarun" aria-label="Jaminova Startseite">JAMINOVA</Link></header>
       <section className={styles.welcome} aria-labelledby="andarun-title">
         <h1 id="andarun-title">Dein <em>persönlicher</em> Raum.</h1>
       </section>

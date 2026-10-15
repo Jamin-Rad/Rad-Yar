@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation'
 import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
-import AndarunNav from '../../AndarunNav'
 import FriendsFinancePage from './FriendsFinancePage'
 
 export const metadata = {
@@ -16,7 +15,6 @@ export default async function FriendsFinanceRoute() {
 
   return (
     <>
-      <AndarunNav />
       <FriendsFinancePage />
     </>
   )

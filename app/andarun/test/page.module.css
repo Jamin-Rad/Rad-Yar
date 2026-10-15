@@ -68,7 +68,7 @@
 .progressBar button:disabled { opacity: .35; cursor: default; }
 
 .layout { display: grid; grid-template-columns: 250px minmax(0,1fr); gap: 18px; align-items: start; margin-top: 18px; }
-.sidebar { position: sticky; top: 90px; padding: 20px 14px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.88); box-shadow: 0 12px 30px rgba(35,18,39,.04); backdrop-filter: blur(14px); }
+.sidebar { position: sticky; top: calc(90px + var(--jaminova-header-height, 0px)); padding: 20px 14px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.88); box-shadow: 0 12px 30px rgba(35,18,39,.04); backdrop-filter: blur(14px); }
 .sidebar h2 { margin: 0 8px 14px; font-family: var(--font-newsreader,Georgia,serif); font-size: 20px; }
 .sidebar nav { display: grid; gap: 4px; }
 .sidebar button { width: 100%; min-height: 42px; display: grid; grid-template-columns: 34px 1fr; align-items: center; gap: 8px; padding: 5px 8px; border: 0; border-radius: 7px; background: transparent; color: var(--body); font-family: inherit; text-align: start; cursor: pointer; }

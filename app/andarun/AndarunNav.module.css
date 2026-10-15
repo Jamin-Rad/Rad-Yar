@@ -24,7 +24,7 @@
 .homeLink:hover { border-color: #e6bb4b; background: #edc6530d; }
 .brand:hover { color: #ffdf81; }
 .brand:focus-visible, .homeLink:focus-visible { outline: 3px solid #f3ca57; outline-offset: 4px; }
-:global(html):has(.navSlot) { scroll-padding-top: calc(88px + env(safe-area-inset-top, 0px)); }
+:global(html):has(.navSlot) { --jaminova-header-height: calc(72px + env(safe-area-inset-top, 0px)); scroll-padding-top: calc(88px + env(safe-area-inset-top, 0px)); }
 @media (max-width: 640px) {
   .navSlot { height: calc(64px + env(safe-area-inset-top, 0px)); }
   .nav { min-height: 64px; gap: 12px; padding-inline: max(14px, env(safe-area-inset-left, 0px)) max(14px, env(safe-area-inset-right, 0px)); }
@@ -34,7 +34,7 @@
   .brandName { font-size: 22px; }
   .context { display: none; }
   .homeLink { min-height: 44px; padding-inline: 12px; font-size: 12px; gap: 8px; }
-  :global(html):has(.navSlot) { scroll-padding-top: calc(80px + env(safe-area-inset-top, 0px)); }
+  :global(html):has(.navSlot) { --jaminova-header-height: calc(64px + env(safe-area-inset-top, 0px)); scroll-padding-top: calc(80px + env(safe-area-inset-top, 0px)); }
 }
 @media (max-width: 380px) { .homeLink { width: 44px; padding: 0; } .homeLink span { display: none; } }
 @media (prefers-reduced-motion: reduce) { .homeLink { transition: none; } }

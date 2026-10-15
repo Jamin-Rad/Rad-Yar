@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation'
 import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
-import AndarunNav from '../AndarunNav'
 import TodoPage from './TodoPage'
 
 export const metadata = {
@@ -19,7 +18,6 @@ export default async function AndarunTodoPage() {
 
   return (
     <>
-      <AndarunNav />
       <TodoPage showHomeLink={false} view="todos" />
     </>
   )

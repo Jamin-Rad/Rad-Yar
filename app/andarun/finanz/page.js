@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation'
 import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
-import AndarunNav from '../AndarunNav'
 import BudgetPage from '@/app/admin/budget/BudgetPage'
 
 export const metadata = {
@@ -21,7 +20,6 @@ export default async function AndarunFinanzPage({ searchParams }) {
 
   return (
     <>
-      <AndarunNav />
       <BudgetPage initialView="monat" excludeVacation />
     </>
   )
