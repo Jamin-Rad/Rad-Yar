@@ -1,13 +1,11 @@
 export const SECTIONS = [
-  { id: 'definition', short: 'ACM verstehen', title: 'ACM verstehen: mehr als der rechte Ventrikel', icon: 'heart' },
-  { id: 'mrt', short: 'MRT-Workflow', title: 'MRT-Workflow: Bewegung, Messwerte, Gewebe', icon: 'layers' },
-  { id: 'muster', short: 'Bewegung & LGE', title: 'Bewegung & LGE: Muster sichtbar machen', icon: 'activity' },
-  { id: 'bilder', short: 'Radiopaedia-Fälle', title: 'Radiopaedia-Fälle: vom Bild zur Einordnung', icon: 'case' },
-  { id: 'tfc', short: 'TFC 2010', title: 'TFC 2010: erst die Logik, dann die Grenzwerte', icon: 'table' },
-  { id: 'padua', short: 'Padua 2020', title: 'Padua 2020: beide Kammern und die Narbe', icon: 'branch' },
-  { id: 'differenzialdiagnosen', short: 'Differenzialdiagnosen', title: 'Fallstricke: was eine ACM imitieren kann', icon: 'scan' },
+  { id: 'definition', short: 'ACM kurz erklärt', title: 'Was ist ACM?', icon: 'heart' },
+  { id: 'muster', short: 'Im MRT erkennen', title: 'Worauf achten wir im MRT?', icon: 'scan' },
+  { id: 'kriterien', short: 'TFC & Padua', title: 'TFC und Padua: die Grundidee', icon: 'table' },
+  { id: 'bilder', short: 'Weitere MRTs · optional', title: 'Weitere MRT-Beispiele · optional', icon: 'case', optional: true },
 ]
 export const SECTION_IDS = SECTIONS.map(section => section.id)
+export const CORE_SECTION_IDS = SECTIONS.filter(section => !section.optional).map(section => section.id)
 export const SOURCES = [
   { label: 'Marcus et al. · 2010', title: 'Originalarbeit: revidierte Task-Force-Kriterien', url: 'https://doi.org/10.1161/CIRCULATIONAHA.108.840827' },
   { label: 'Corrado et al. · 2020', title: 'Originalkonsens: Die Padua-Kriterien', url: 'https://doi.org/10.1016/j.ijcard.2020.06.005' },
@@ -19,19 +17,6 @@ export const SOURCES = [
   { label: 'European Task Force · 2024', title: 'Weiterentwicklung der Kriterien nach Padua', url: 'https://doi.org/10.1016/j.ijcard.2023.131447' },
 ]
 
-
-export const PHENOTYPES = [
-  { id: 'rv', label: 'RV-dominant', title: 'Die rechte Kammer steht im Vordergrund', name: 'Klassische ARVC', text: 'Die Erkrankung wurde zuerst an der rechten Herzkammer beschrieben. Regionale Bewegungsstörungen, RV-Vergrößerung und reduzierte Pumpfunktion sind typische Bausteine. Trotzdem immer auch die linke Kammer prüfen.', focus: 'Cine in RV-Ebenen + RVEDVi + RVEF; LGE beider Kammern.', trap: 'Ein großer RV allein genügt nicht. Sport und Volumenbelastung können ihn ebenfalls vergrößern.' },
-  { id: 'both', label: 'Biventrikulär', title: 'Rechte und linke Kammer sind beteiligt', name: 'Biventrikuläre ACM', text: 'Neben Veränderungen des RV finden sich auch Zeichen einer LV-Beteiligung, zum Beispiel nichtischämische Narben. Diese Information verändert die diagnostische Einordnung und kann für den weiteren Verlauf wichtig sein.', focus: 'Bewegung, Volumen, Funktion und Narbenmuster beider Kammern zusammenführen.', trap: 'Die LV-Beteiligung nicht erst bei stark reduzierter LVEF suchen: LGE kann früher auffallen.' },
-  { id: 'lv', label: 'LV-dominant', title: 'Die linke Kammer kann im Vordergrund stehen', name: 'Linksdominante ACM / ALVC', text: 'Einige Formen betreffen überwiegend die linke Herzkammer. Der RV kann dabei unauffällig sein. Häufig steht die Gewebeveränderung mit subepikardialem oder intramuralem LGE im Mittelpunkt.', focus: 'LV-LGE in zwei Ebenen bestätigen; Genetik, Rhythmusdiagnostik und Differenzialdiagnosen ergänzen.', trap: 'Nach Padua reicht isoliertes LV-LGE nicht für ALVC. Eine passende pathogene / wahrscheinlich pathogene ACM-Genvariante ist erforderlich.' },
-]
-
-export const PROTOCOL = [
-  { id: 'cine', label: 'Cine', question: 'Bewegt sich jeder Wandabschnitt richtig?', sequence: 'EKG-getriggerte bSSFP-Cines', planes: '4-Kammer, kurze Achsen, RV-Längsachse / RVOT', look: 'Akinesie, Dyskinesie, dyssynchrone Kontraktion; über den ganzen Herzzyklus und in zweiter Ebene prüfen.', pitfall: 'Ein Standbild zeigt keine Wandbewegung. Arrhythmie und Bewegung aus der Ebene können eine Störung vortäuschen.' },
-  { id: 'measure', label: 'Volumen & EF', question: 'Wie groß sind die Kammern, wie gut pumpen sie?', sequence: 'Vollständiger Cine-Stapel von Basis bis Apex', planes: 'Reproduzierbare enddiastolische und endsystolische Konturen', look: 'RVEDVi und LVEDVi in ml/m²; RVEF und LVEF in %. EDVi = enddiastolisches Volumen / Körperoberfläche.', pitfall: 'Basale Schichten, Trikuspidalklappenebene und Trabekel konsistent behandeln. Pädiatrie und Sport benötigen passende Referenzen.' },
-  { id: 'lge', label: 'LGE', question: 'Wo ist das Myokard vernarbt?', sequence: 'Nach Gadolinium: Inversion Recovery / PSIR', planes: 'Kurze und lange Achsen; verdächtige Areale in zwei orthogonalen Ebenen', look: 'LV: subepikardiale / intramurale Streifen. RV: sichere transmurale Streifen. Verteilung und Ausdehnung beschreiben.', pitfall: 'Dünne RV-Wand und Partialvolumen erschweren LGE. Insertionspunkt-LGE allein zählt nicht als LV-LGE-Kriterium.' },
-  { id: 'mapping', label: 'Mapping', question: 'Gibt es zusätzliche Hinweise auf eine aktive Schädigung?', sequence: 'T1-/T2-Mapping, gegebenenfalls ECV und Fettsequenzen', planes: 'Standardisierte, zur Fragestellung passende Ebenen', look: 'T2 kann bei einer entzündlichen „Hot Phase“ erhöht sein. T1 / ECV ergänzen die Gewebecharakterisierung.', pitfall: 'Mapping oder Fett allein sind keine eigenständigen TFC-2010- oder Padua-2020-Kriterien.' },
-]
 
 const path = '/thorax/kardio/arvc/'
 export const CASES = [
@@ -63,9 +48,8 @@ export const CASES = [
 ].map(item => ({ ...item, views: item.views.map(view => ({ ...view, src: path + view.file })) }))
 
 export const TAKE_HOME = [
-  { title: 'ACM betrifft das ganze Herz.', detail: 'ARVC ist die klassische rechtsbetonte Form. Die linke Kammer kann mitbetroffen sein oder im Vordergrund stehen. Das ist für Diagnose und Prognose relevant.' },
-  { title: 'Cine, Messwerte und LGE beantworten drei verschiedene Fragen.', detail: 'Cine zeigt regionale Bewegung, der vollständige Cine-Stapel liefert Volumen und EF, LGE zeigt das Narbenmuster. Keine dieser Informationen ersetzt die anderen.' },
-  { title: 'TFC 2010: regional UND global.', detail: 'Eine sichere regionale RV-Bewegungsstörung muss mit dem passenden RVEDVi- oder RVEF-Grenzwert zusammenkommen. Volumen und EF ergeben innerhalb dieser Kategorie keine zwei Major-Kriterien.' },
-  { title: 'Padua 2020 ergänzt LV und LGE.', detail: 'Mindestens ein morphofunktionelles oder strukturelles Kriterium muss vorliegen. Bei rein linksdominantem Phänotyp ist die passende Genetik entscheidend; LGE allein genügt nicht.' },
-  { title: 'Das MRT ist Teil einer gemeinsamen Diagnose.', detail: 'EKG, Rhythmusdiagnostik, Familienanamnese, Genetik und mögliche Imitatoren gehören dazu. Die Systeme von 2010 und 2020 nicht zu einer eigenen Punkteliste vermischen.' },
+  { title: 'ACM kann RV, LV oder beide betreffen.', detail: 'ARVC bezeichnet die klassische rechtsbetonte Form. Deshalb immer beide Herzkammern beurteilen.' },
+  { title: 'Im MRT: Größe, Bewegung und Narben prüfen.', detail: 'Cine zeigt die Bewegung und liefert Volumen sowie Pumpfunktion. LGE hilft, Narben zu erkennen.' },
+  { title: 'TFC schaut vor allem auf den RV; Padua ergänzt LV und LGE.', detail: 'Die Kriterien verbinden MRT, EKG, Rhythmusdiagnostik und Familien- beziehungsweise genetische Informationen.' },
+  { title: 'Ein einzelnes Zeichen stellt keine Diagnose.', detail: 'Ein großer RV oder LGE kann andere Ursachen haben. Fehlendes LGE schließt eine ARVC nicht aus.' },
 ]

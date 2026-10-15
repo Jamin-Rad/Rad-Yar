@@ -10,8 +10,6 @@
 .page svg { width:21px; height:21px; flex-shrink:0; }
 .page header nav a,.page header nav strong { color:#d7eaf5; }
 .page header > div:first-child > span { color:#e2caa3; }
-.page [data-lesson-hero] h1 { max-width:780px; }
-.page [data-lesson-hero] img { transform:translateY(88px) scale(1.9); }
 .page [data-lehr-section-managed] > span:first-child { background:#d6eaf3; color:#16607c; }
 .page nav[aria-label='Lernpfad'] button[aria-current] { background:linear-gradient(100deg,#d6eaf3,#edf5f8); color:#12445f; }
 .page nav[aria-label='Lernpfad'] button[aria-current] > span:first-child { background:#16607c; color:#fff; border-color:#16607c; }
@@ -193,13 +191,10 @@
 :global(html[data-theme='dark']) .chambers text { fill:#243f51; }
 @media (max-width:1100px) {
   .phenotypePanel { grid-template-columns:210px 1fr; gap:18px; padding:20px; }
-  .page [data-lesson-hero] h1 { font-size:clamp(40px,4.5vw,58px); }
   .caseList { grid-template-columns:repeat(2,minmax(0,1fr)); }
 }
 @media (max-width:760px) {
   .page.page { padding-inline:12px; }
-  .page [data-lesson-hero] h1 { font-size:clamp(26px,6vw,38px); overflow-wrap:normal; hyphens:auto; }
-  .page [data-lesson-hero] img { transform:translateY(15px) scale(1.2); }
   .chapterBody { padding-inline:16px; }
   .lead { font-size:16px; }
   .definitionBridge { grid-template-columns:1fr; gap:10px; padding:15px; }
@@ -269,10 +264,6 @@
 @media(max-width:760px) {
  .continueDesktop { display:none; }
  .continueMobile { display:inline; }
- .page [data-lesson-hero] { grid-template-columns:minmax(0,1fr) 95px; gap:8px; }
- .page [data-lesson-hero] h1 { font-size:clamp(21px,6.3vw,32px); hyphens:none; }
- .page [data-lesson-hero] > div { height:125px; }
- .page [data-lesson-hero] img { transform:translateY(10px) scale(1.2); }
 }
 
 /* The shared template also contains fixed plum values in dark mode. Scope the
@@ -347,4 +338,21 @@
   .mriTools button { font-size:11px; }
   .patternModule > .tableScroll,.patternModule > .note { margin:16px; }
   .mriAttribution { padding:12px 14px; }
+}
+
+.compactHero { margin:36px 0 28px; }
+.compactHero h1 { max-width:1000px; margin:0; color:#edf6fb; font:800 clamp(36px,5vw,64px)/1.08 var(--font-newsreader,Georgia,serif); letter-spacing:-.025em; overflow-wrap:normal; }
+.compactHero p { margin:16px 0 0; color:#bed5e3; font-size:16px; line-height:1.7; }
+.essentialList { margin:18px 0 0; padding-left:22px; }
+.essentialList li { margin-bottom:14px; padding-left:5px; font-size:15px; line-height:1.8; }
+.essentialList strong { color:var(--ink); }
+.explorer .mriTeaching { border:0; border-radius:0; margin:0; }
+.page .table { min-width:0; }
+.page .table tbody th { width:27%; }
+@media(max-width:760px) {
+  .compactHero { margin:28px 0 22px; }
+  .compactHero h1 { font-size:clamp(30px,8.5vw,46px); }
+  .compactHero p { font-size:14px; }
+  .page .table :is(th,td) { padding:11px; overflow-wrap:anywhere; }
+  .page .table tbody th { width:30%; }
 }

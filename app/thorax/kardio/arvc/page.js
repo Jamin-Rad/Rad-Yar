@@ -2,7 +2,7 @@ import ArvcLesson from './ArvcLesson'
 
 export const metadata = {
   title: 'ACM & ARVC verstehen · Kardio-MRT | RadYar',
-  description: 'Deutschsprachige Lektion zur arrhythmogenen Kardiomyopathie: RV und LV, echte MRT-Bilder, Task-Force-Kriterien 2010 und Padua-Kriterien 2020 verständlich erklärt.',
+  description: 'Kompakter Überblick zur arrhythmogenen Kardiomyopathie: einfache Definition, echte MRT-Bilder und die Grundidee von TFC und Padua.',
 }
 
 export default function ArvcPage() {
