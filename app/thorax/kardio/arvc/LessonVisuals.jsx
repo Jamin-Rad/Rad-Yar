@@ -41,6 +41,22 @@ export function Tabs({ label, items, selected, onChange, idPrefix }) {
   return <div className={styles.tabs} role="tablist" aria-label={label}>{items.map((item, index) => <button type="button" role="tab" key={item.id || item.label} id={`${prefix}-tab-${index}`} aria-controls={`${prefix}-panel`} aria-selected={selected === index} tabIndex={selected === index ? 0 : -1} onClick={() => onChange(index)} onKeyDown={event => keyDown(event, index)}>{item.label}</button>)}</div>
 }
 
+const PROTOCOL_STEPS = [
+  { id: 'cine', label: 'Cine', question: 'Wie bewegt sich die Wand?', sequence: 'Bewegte bSSFP-Aufnahmen im Vierkammerblick, in kurzen Achsen und in passenden RV-Ebenen.', look: 'Freie RV-Wand und Herzspitze über den ganzen Herzzyklus verfolgen. Bewegt sich ein Abschnitt nicht oder paradox nach außen?', trap: 'Ein Standbild zeigt keine Bewegung. Arrhythmie und Bewegung aus der Ebene können eine Störung vortäuschen.' },
+  { id: 'function', label: 'Volumen & EF', question: 'Wie groß, wie kräftig?', sequence: 'Vollständiger Cine-Stapel von der Herzbasis bis zur Spitze, mit enddiastolischen und endsystolischen Konturen.', look: 'RV und LV messen und vergleichen. EDVi bedeutet enddiastolisches Volumen bezogen auf die Körperoberfläche; EF ist der ausgeworfene Volumenanteil.', trap: 'Die RV-Größe allein reicht nicht. Messung und Referenzwerte müssen zur Person passen; Kinder und Sportler gesondert einordnen.' },
+  { id: 'lge', label: 'LGE', question: 'Wo liegt eine Narbe?', sequence: 'Aufnahmen nach Kontrastmittel, zum Beispiel mit Inversion Recovery oder PSIR, in kurzen und langen Achsen.', look: 'Anreicherung in der RV- und LV-Wand suchen. Beim LV sind subepikardiale oder intramurale Muster relevant; Ort und Verteilung beschreiben.', trap: 'Die dünne RV-Wand ist schwierig zu beurteilen. Auffälligkeiten in einer zweiten Ebene bestätigen; nicht jede helle Stelle ist eine Narbe.' },
+]
+
+export function ProtocolOverview() {
+  const [selected, setSelected] = useState(0)
+  const step = PROTOCOL_STEPS[selected]
+  return <>
+    <ol className={styles.workflow}>{PROTOCOL_STEPS.map((item, index) => <li key={item.id}><button type="button" aria-pressed={selected === index} aria-controls="protocol-reading" onClick={() => setSelected(index)}><span>{index + 1}</span><strong>{item.label}</strong><small>{item.question}</small></button></li>)}</ol>
+    <div className={styles.protocolDetail} id="protocol-reading" aria-live="polite"><Icon name="layers"/><div><h3>{step.question}</h3><dl className={styles.details}><div><dt>Welche Aufnahmen?</dt><dd>{step.sequence}</dd></div><div><dt>Worauf achten?</dt><dd>{step.look}</dd></div><div><dt>Häufiger Fehler</dt><dd>{step.trap}</dd></div></dl></div></div>
+    <p className={styles.caption}>T1-/T2-Mapping kann bei einer zusätzlichen Gewebefrage ergänzen. Für den ersten Überblick bleiben Cine, Kammerfunktion und LGE die drei Grundbausteine.</p>
+  </>
+}
+
 const MRI_VIEWS = [
   { id: 'cine', label: 'Bewegung · Cine', scene: 'cine' },
   { id: 'lge', label: 'Narben · LGE', scene: 'lge4ch' },
@@ -50,15 +66,23 @@ const MRI_VIEWS = [
 export function MrtOverview() {
   const [selected, setSelected] = useState(0)
   return <>
-    <TeachingTable caption="Drei Fragen für den ersten Überblick" headers={['Frage', 'Worauf achten?']} rows={[
-      ['Größe & Pumpfunktion', 'Vergrößerung und verminderte Pumpfunktion; immer RV und LV vergleichen.'],
-      ['Wandbewegung im Cine', 'Abschnitte, die sich nicht oder in der Systole nach außen bewegen.'],
-      ['Narben im LGE', 'Auffällige Anreicherung in der Herzwand; auch die linke Kammer gezielt prüfen.'],
-    ]}/>
     <div className={styles.explorer}>
       <Tabs label="MRT-Beispiele auswählen" items={MRI_VIEWS} selected={selected} onChange={setSelected} idPrefix="mri-overview"/>
       <div id="mri-overview-panel" role="tabpanel" aria-labelledby={`mri-overview-tab-${selected}`}><MriTeaching key={MRI_VIEWS[selected].id} scene={MRI_VIEWS[selected].scene}/></div>
     </div>
-    <p className={styles.caption}>Cine = bewegte MRT-Aufnahme. LGE = Late Gadolinium Enhancement, eine Aufnahme nach Kontrastmittel zur Beurteilung von Narben. Auffälligkeiten in einer zweiten Ebene bestätigen.</p>
+    <h3 className={styles.subheading}>Wandbewegung: die Begriffe auseinanderhalten</h3>
+    <TeachingTable caption="Was bedeutet die Bewegung im Cine?" headers={['Begriff', 'Einfach erklärt']} rows={[
+      ['Hypokinesie', 'Ein Wandabschnitt zieht sich schwächer zusammen. Allein reicht das nicht als regionale RV-Störung für den MRT-Baustein der TFC 2010.'],
+      ['Akinesie', 'Ein Wandabschnitt kontrahiert nicht. Im vollständigen Cine und in einer weiteren Ebene überprüfen.'],
+      ['Dyskinesie', 'Ein Wandabschnitt wölbt sich in der Systole nach außen, während sich die übrige Kammer zusammenzieht.'],
+    ]}/>
+    <h3 className={styles.subheading}>LGE: die Lage in der Wand ist wichtig</h3>
+    <p className={styles.bodyText}><strong>LGE</strong> bedeutet Late Gadolinium Enhancement: eine Aufnahme nach Kontrastmittel, die bei der Beurteilung von Narben hilft. Im LV können bei ACM streifenförmige Veränderungen außen in der Wand (subepikardial) oder in der Wandmitte (intramural) auftreten. Eine relativ erhaltene LVEF schließt diese Beteiligung nicht aus.</p>
+    <TeachingTable caption="Das Narbenmuster einordnen" headers={['Muster', 'Was bedeutet das?']} rows={[
+      ['Subepikardial / intramural', 'Nichtischämisches Muster. Kann zu ACM passen, kommt aber auch bei anderen Erkrankungen wie Myokarditis vor.'],
+      ['Subendokardial bis transmural', 'Bei passender Verteilung in einem Koronarterritorium eine ischämische Ursache prüfen.'],
+      ['Nur an septalen RV-Insertionspunkten', 'Dieses isolierte Muster zählt nach Padua nicht als LV-LGE-Kriterium.'],
+    ]}/>
+    <Note title="Was die Originalbilder zeigen">Die beiden PSIR-Ansichten gehören zum selben Patienten. Die Orientierungspunkte zeigen die Kammerhöhlen, nicht die Ausdehnung einer Narbe. Das vollständige Muster in den Originalserien beurteilen.</Note>
   </>
 }

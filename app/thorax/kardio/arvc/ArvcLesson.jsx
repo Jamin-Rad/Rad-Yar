@@ -9,28 +9,57 @@ import { useLessonSectionScroll } from '@/hooks/useLessonSectionScroll'
 import { useLehrModeActive } from '@/hooks/useLehrModeActive'
 import CaseAtlas from './CaseAtlas'
 import CriteriaOverview from './CriteriaLab'
-import { Icon, Note, MrtOverview } from './LessonVisuals'
+import { Icon, Note, MrtOverview, ProtocolOverview, TeachingTable } from './LessonVisuals'
 import { CASES, CORE_SECTION_IDS, SECTIONS, SECTION_IDS, SOURCES, TAKE_HOME } from './lessonContent'
 import template from '@/components/LessonTemplate.module.css'
 import styles from './page.module.css'
 
 function Definition() {
   return <>
-    <p className={styles.lead}>Bei der <strong>arrhythmogenen Kardiomyopathie (ACM)</strong> wird Herzmuskel durch Narbengewebe ersetzt, teilweise auch durch Fett. Das kann gefährliche Herzrhythmusstörungen auslösen – auch wenn die Pumpfunktion noch relativ gut ist.</p>
+    <p className={styles.lead}>Bei der <strong>arrhythmogenen Kardiomyopathie (ACM)</strong> wird Herzmuskel durch Narbengewebe ersetzt, teilweise auch durch Fett. Das kann gefährliche Rhythmusstörungen aus den Herzkammern auslösen – auch wenn die Pumpfunktion noch relativ gut ist.</p>
     <p className={styles.bodyText}>Früher wurde vor allem die rechte Herzkammer beschrieben: daher der Name <strong>ARVC</strong>. Heute weiß man, dass auch die linke Kammer betroffen sein kann, manchmal sogar überwiegend. <strong>ACM ist deshalb der umfassendere Begriff.</strong> Die Erkrankung ist häufig erblich; eine LV-Beteiligung ist auch für die Prognose wichtig.</p>
+    <h3 className={styles.subheading}>Drei mögliche Verteilungen</h3>
+    <TeachingTable caption="Welche Kammer steht im Vordergrund?" headers={['Form', 'Was bedeutet das im MRT?']} rows={[
+      ['RV-dominant · klassische ARVC', 'Rechte Kammer besonders auffällig: regionale Bewegungsstörungen, Vergrößerung und reduzierte Pumpfunktion. Den LV trotzdem mitbeurteilen.'],
+      ['Biventrikulär', 'Rechte und linke Kammer sind beteiligt. Neben der RV-Veränderung können nichtischämische Narben im LV auffallen.'],
+      ['LV-dominant', 'Die linke Kammer steht im Vordergrund; der RV kann unauffällig sein. Das Narbenmuster, die Genetik und andere mögliche Ursachen werden wichtig.'],
+    ]}/>
+    <p className={styles.bodyText}>Ein Anlass zur Abklärung können Palpitationen, eine Synkope, ventrikuläre Rhythmusstörungen oder eine belastete Familiengeschichte sein. Das MRT hilft, die Veränderungen am Herzmuskel einzuordnen; EKG, Rhythmusdiagnostik und Familienanamnese gehören dazu.</p>
     <Note title="Für das MRT merken">Immer beide Herzkammern ansehen: Größe, Bewegung, Pumpfunktion und Narben.</Note>
   </>
 }
 
 function Mrt() {
   return <>
-    <p className={styles.lead}>Im MRT stehen drei Fragen im Vordergrund: <strong>Ist eine Kammer vergrößert? Bewegt sich die Wand richtig? Gibt es Narben?</strong></p>
+    <p className={styles.lead}>Bei Verdacht auf ACM beantworten wir drei Fragen: <strong>Wie bewegt sich die Wand? Wie groß sind die Kammern und wie gut pumpen sie? Wo liegt eine Narbe?</strong></p>
+    <ProtocolOverview/>
+    <Note caution title="Nicht an einem einzelnen Schnitt entscheiden">Der RV ist dünnwandig und geometrisch komplex. Auffällige Bewegung oder eine scheinbar helle Wandstelle über die Serie und in einer zweiten Ebene überprüfen.</Note>
+  </>
+}
+
+function Patterns() {
+  return <>
+    <p className={styles.lead}>Zuerst die Bewegung im Cine ansehen, dann die Gewebeveränderungen im LGE. Die folgenden Aufnahmen stammen aus echten Radiopaedia-Untersuchungen.</p>
     <MrtOverview/>
   </>
 }
 
-const CONTENT = { definition: Definition, muster: Mrt, kriterien: CriteriaOverview, bilder: CaseAtlas }
-const LEGACY_SECTIONS = { mrt: 'muster', tfc: 'kriterien', padua: 'kriterien', differenzialdiagnosen: 'kriterien' }
+function Differentials() {
+  return <>
+    <p className={styles.lead}>Ein großer RV oder eine Narbe kann verschiedene Ursachen haben. Entscheidend ist, ob <strong>Bewegung, Kammerfunktion, Narbenmuster und klinische Angaben zusammenpassen.</strong></p>
+    <TeachingTable caption="Die wichtigsten Überschneidungen" headers={['Möglichkeit', 'Was hilft bei der Einordnung?']} rows={[
+      ['Sportherz', 'RV-Vergrößerung kann eine Trainingsanpassung sein. Beide Kammern vergleichen und nach sicheren regionalen Störungen oder Narben suchen.'],
+      ['Myokarditis', 'Nichtischämisches LV-LGE kann ähnlich aussehen. Akute Beschwerden, Troponin, Ödem und Verlauf berücksichtigen. Auch eine ACM kann entzündungsähnliche Episoden zeigen.'],
+      ['Kardiale Sarkoidose', 'Kann nichtischämische Narben und Rhythmusstörungen verursachen. Verteilung, Leitungsstörungen und Hinweise außerhalb des Herzens helfen weiter.'],
+      ['Druck- oder Volumenbelastung des RV', 'Zum Beispiel pulmonale Hypertonie oder Shunt: nach einer Ursache für die RV-Vergrößerung suchen.'],
+      ['Artefakte oder frühere Ablation', 'Bewegung aus der Schicht, Arrhythmie und Partialvolumen können täuschen. Eine frühere Ablation kann selbst eine Narbe hinterlassen.'],
+    ]}/>
+    <Note title="Drei Dinge nicht gleichsetzen">Großer RV ist nicht automatisch ARVC. LGE ist nicht automatisch ACM. Und fehlendes LGE schließt eine ARVC nicht aus.</Note>
+  </>
+}
+
+const CONTENT = { definition: Definition, mrt: Mrt, muster: Patterns, kriterien: CriteriaOverview, differenzialdiagnosen: Differentials, bilder: CaseAtlas }
+const LEGACY_SECTIONS = { tfc: 'kriterien', padua: 'kriterien' }
 
 function Chapter({ section, open, read, onSelect, onRead, children }) {
   return <section id={section.id} className={`${template.section} ${styles.chapter} ${open ? template.sectionOpen : ''}`}><button type="button" className={template.sectionHeader} onClick={() => onSelect(section.id)} aria-expanded={open} aria-controls={`${section.id}-panel`} data-lehr-section-managed="true"><span className={template.sectionIcon}><Icon name={section.icon}/></span><span><strong>{section.title}</strong></span><span className={template.toggle} aria-hidden="true">{open ? '−' : '+'}</span></button><div id={`${section.id}-panel`} hidden={!open} className={`${template.sectionBody} ${styles.chapterBody}`}>{children}{!section.optional ? <button type="button" className={`${template.readButton} ${read ? template.readButtonDone : ''}`} aria-pressed={read} onClick={() => onRead(section.id)}><Icon name="check"/>{read ? 'Als gelesen markiert' : 'Abschnitt als gelesen markieren'}</button> : null}</div></section>
@@ -82,7 +111,7 @@ export default function ArvcLesson() {
   return <main className={`${template.page} ${styles.page}`} data-lesson-section-divider="true" data-lesson-progress-managed="true" data-disable-lesson-explorer="true" lang="de" dir="ltr">
     <header className={template.header}>
       <div className={template.topline}><nav className={template.breadcrumb} aria-label="Brotkrumennavigation"><Link href="/lernen">RadYar</Link><span>/</span><Link href="/lernen/thorax">Thorax</Link><span>/</span><strong>ACM / ARVC</strong></nav><span className={template.author}>RadYar</span></div>
-      <div className={styles.compactHero}><h1>Arrhythmogene Kardiomyopathie</h1><p>Ein kompakter Überblick mit echten MRT-Aufnahmen.</p></div>
+      <div className={styles.compactHero}><h1>Arrhythmogene Kardiomyopathie</h1><p>ACM verstehen und im MRT einordnen – mit echten Bildbeispielen.</p></div>
       <div className={`${template.actions} ${styles.actions}`}><button type="button" className={`${template.takeHomeJump} ${styles.takeHomeJump}`} onClick={openSummary}><Icon name="spark"/>Take Home Message<span aria-hidden="true">↓</span></button><Link className={template.primaryAction} href="/ueben/quiz?fach=thorax&n=10&themen=arvc&from=%2Fthorax%2Fkardio%2Farvc"><Icon name="case"/>MCQ starten<Icon name="arrow"/></Link><Link className={template.secondaryAction} href="/flashcards/arvc"><Icon name="layers"/>Flashcards</Link></div>
       <div className={`${template.progressBar} ${styles.progressBox}`}><div className={template.progressTrack} role="progressbar" aria-label="Gelesene Kapitel" aria-valuemin={0} aria-valuemax={CORE_SECTION_IDS.length} aria-valuenow={readSections.size}><i style={{width:`${readSections.size / CORE_SECTION_IDS.length * 100}%`}}/></div><span aria-live="polite">{readSections.size} / {CORE_SECTION_IDS.length} gelesen</span><div className={template.progressActions}><button type="button" className={template.continueButton} disabled={activeIndex === SECTIONS.length - 1} onClick={() => select(SECTIONS[activeIndex + 1].id)} aria-label="Lektion fortsetzen"><span className={styles.continueDesktop}>Lektion fortsetzen</span><span className={styles.continueMobile}>Weiter</span><Icon name="arrow"/></button><button type="button" className={`${template.lessonCompleteButton} ${allRead ? template.lessonCompleteButtonDone : ''}`} aria-pressed={allRead} onClick={toggleAll}><Icon name="check"/>{allRead ? 'Alles gelesen' : 'Alles als gelesen'}</button></div></div>
       {authError ? <p className={styles.authMessage} role="status">Auf diesem Gerät gespeichert. Zum Synchronisieren des Lesefortschritts bitte anmelden.</p> : null}
@@ -90,7 +119,7 @@ export default function ArvcLesson() {
     <div className={template.layout}><aside className={`${template.sidebar} ${styles.sidebar}`}><h2 className={template.learningPathHeading}>Lernpfad</h2><nav aria-label="Lernpfad">{SECTIONS.map(section => <button type="button" key={section.id} className={openId === section.id ? template.activeSideItem : ''} aria-current={openId === section.id ? 'location' : undefined} aria-label={`Abschnitt öffnen: ${section.short}`} onClick={() => select(section.id)}><span className={template.sideIcon}><Icon name={section.icon}/></span><strong>{section.short}{readSections.has(section.id) ? <span className={template.readTick} aria-label="gelesen"> ✓</span> : null}</strong></button>)}</nav></aside>
       <article className={template.lesson}>{SECTIONS.map(section => { const Content = CONTENT[section.id]; return <Chapter key={section.id} section={section} open={lehrMode || openId === section.id} read={readSections.has(section.id)} onSelect={select} onRead={toggleSection}><Content/></Chapter> })}
         <section id="take-home" className={`${template.section} ${template.takeHomeSection} ${styles.takeHome} ${summaryOpen || lehrMode ? template.sectionOpen : ''}`}><button type="button" className={template.sectionHeader} aria-expanded={summaryOpen || lehrMode} aria-controls="take-home-panel" data-lehr-section-managed="true" onClick={() => setSummaryOpen(value => !value)}><span className={template.sectionIcon}><Icon name="spark"/></span><span><strong>Take Home Message</strong></span><span className={template.toggle} aria-hidden="true">{summaryOpen || lehrMode ? '−' : '+'}</span></button><div id="take-home-panel" className={template.sectionBody} hidden={!summaryOpen && !lehrMode}><LessonTakeHome points={TAKE_HOME} lang="de" idPrefix="acm-takehome"/></div></section>
-        <section id="quellen" className={styles.sources}><button type="button" aria-expanded={sourcesOpen || lehrMode} aria-controls="acm-sources" onClick={() => setSourcesOpen(v => !v)}><strong>Quellen & Bildnachweise</strong><span aria-hidden="true">{sourcesOpen || lehrMode ? '−' : '+'}</span></button><div id="acm-sources" hidden={!sourcesOpen && !lehrMode}><p>Deutsche Fassung · kompakter Überblick.</p><ul>{SOURCES.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer"><strong>{source.label}</strong><span>{source.title}</span><Icon name="external"/></a></li>)}</ul><h3>Radiopaedia-Originalfälle</h3><ul>{CASES.filter(item => item.id !== '95633').map(item => <li key={item.id}><a href={item.url} target="_blank" rel="noreferrer"><strong>rID {item.id} · {item.creator}</strong><span>{item.title}</span><Icon name="external"/></a></li>)}</ul><p>Die MRT-Bilder und das Cine sind Originalaufnahmen. Einblendbare Orientierungspunkte von RadYar liegen separat über den unveränderten Bildern.</p></div></section>
+        <section id="quellen" className={styles.sources}><button type="button" aria-expanded={sourcesOpen || lehrMode} aria-controls="acm-sources" onClick={() => setSourcesOpen(v => !v)}><strong>Quellen & Bildnachweise</strong><span aria-hidden="true">{sourcesOpen || lehrMode ? '−' : '+'}</span></button><div id="acm-sources" hidden={!sourcesOpen && !lehrMode}><p>Deutsche Fassung · MRT-orientierter Überblick.</p><ul>{SOURCES.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer"><strong>{source.label}</strong><span>{source.title}</span><Icon name="external"/></a></li>)}</ul><h3>Radiopaedia-Originalfälle</h3><ul>{CASES.filter(item => item.id !== '95633').map(item => <li key={item.id}><a href={item.url} target="_blank" rel="noreferrer"><strong>rID {item.id} · {item.creator}</strong><span>{item.title}</span><Icon name="external"/></a></li>)}</ul><p>Die MRT-Bilder und das Cine sind Originalaufnahmen. Einblendbare Orientierungspunkte von RadYar liegen separat über den unveränderten Bildern.</p></div></section>
       </article>
     </div><MobilePath openId={openId} readSections={readSections} onSelect={select}/>
   </main>

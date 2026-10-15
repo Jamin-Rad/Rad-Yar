@@ -1,7 +1,9 @@
 export const SECTIONS = [
-  { id: 'definition', short: 'ACM kurz erklärt', title: 'Was ist ACM?', icon: 'heart' },
-  { id: 'muster', short: 'Im MRT erkennen', title: 'Worauf achten wir im MRT?', icon: 'scan' },
-  { id: 'kriterien', short: 'TFC & Padua', title: 'TFC und Padua: die Grundidee', icon: 'table' },
+  { id: 'definition', short: 'ACM verstehen', title: 'ACM verstehen: RV, LV oder beide?', icon: 'heart' },
+  { id: 'mrt', short: 'MRT systematisch lesen', title: 'MRT: Bewegung, Funktion und Gewebe', icon: 'layers' },
+  { id: 'muster', short: 'Typische MRT-Befunde', title: 'Typische Befunde an echten MRTs', icon: 'scan' },
+  { id: 'kriterien', short: 'TFC & Padua', title: 'TFC und Padua verständlich anwenden', icon: 'table' },
+  { id: 'differenzialdiagnosen', short: 'Wichtige Fallstricke', title: 'Was eine ACM imitieren kann', icon: 'activity' },
   { id: 'bilder', short: 'Weitere MRTs · optional', title: 'Weitere MRT-Beispiele · optional', icon: 'case', optional: true },
 ]
 export const SECTION_IDS = SECTIONS.map(section => section.id)
@@ -48,8 +50,9 @@ export const CASES = [
 ].map(item => ({ ...item, views: item.views.map(view => ({ ...view, src: path + view.file })) }))
 
 export const TAKE_HOME = [
-  { title: 'ACM kann RV, LV oder beide betreffen.', detail: 'ARVC bezeichnet die klassische rechtsbetonte Form. Deshalb immer beide Herzkammern beurteilen.' },
-  { title: 'Im MRT: Größe, Bewegung und Narben prüfen.', detail: 'Cine zeigt die Bewegung und liefert Volumen sowie Pumpfunktion. LGE hilft, Narben zu erkennen.' },
-  { title: 'TFC schaut vor allem auf den RV; Padua ergänzt LV und LGE.', detail: 'Die Kriterien verbinden MRT, EKG, Rhythmusdiagnostik und Familien- beziehungsweise genetische Informationen.' },
-  { title: 'Ein einzelnes Zeichen stellt keine Diagnose.', detail: 'Ein großer RV oder LGE kann andere Ursachen haben. Fehlendes LGE schließt eine ARVC nicht aus.' },
+  { title: 'ACM ist mehr als eine Erkrankung des RV.', detail: 'ARVC bezeichnet die klassische rechtsbetonte Form. Auch der LV kann mitbetroffen sein oder im Vordergrund stehen; das ist für Diagnose und Prognose relevant.' },
+  { title: 'Bewegung, Funktion und Gewebe getrennt beurteilen.', detail: 'Cine zeigt regionale Bewegung, der vollständige Cine-Stapel liefert Volumen und EF, LGE zeigt das Narbenmuster. Immer beide Kammern prüfen.' },
+  { title: 'TFC 2010: regional UND global.', detail: 'Die geforderte regionale RV-Bewegungsstörung muss zusammen mit dem passenden RVEDVi- oder RVEF-Grenzwert vorliegen. Volumen und EF zählen in dieser Kategorie nicht doppelt.' },
+  { title: 'Padua 2020 ergänzt LV und LGE.', detail: 'Die Kriterien erfassen auch biventrikuläre und linksdominante Formen. Bei rein linksdominantem Muster ist die passende Genetik ein wesentlicher Teil der Einordnung.' },
+  { title: 'Ein Einzelzeichen stellt keine Diagnose.', detail: 'Sportherz, Belastung des RV, Myokarditis und Artefakte können überlappen. Fehlendes LGE schließt ARVC nicht aus; Fett oder LGE allein beweisen keine ACM.' },
 ]
