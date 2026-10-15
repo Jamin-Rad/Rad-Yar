@@ -137,6 +137,9 @@ export default function CAAPage() {
               <Link className={styles.actionBtn} href={withLang(`/flashcards/caa?from=${encodeURIComponent(withLang(path))}`)}>
                 🧠 {c({ de: 'Flashcards', en: 'Flashcards', fa: 'فلش‌کارت' })}
               </Link>
+              <Link className={styles.actionBtn} href={withLang('/faelle/pruefung?fach=gehirn&themen=caa&n=2')}>
+                {c({ de: '2 Fallprüfungen', en: '2 case exams', fa: '۲ آزمون کیس' })}
+              </Link>
             </div>
           </div>
           <div className={styles.heroStats}>

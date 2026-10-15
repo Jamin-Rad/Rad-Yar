@@ -1,24 +1,26 @@
 'use client'
 
-import { Suspense, useMemo, useState } from 'react'
+import { Suspense, useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import { getCases } from '@/data/cases'
+import { CASE_BANK, getCases } from '@/data/cases'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { getWrongAnswerExplanation } from '@/utils/answerFeedback'
 import quizStyles from '@/app/ueben/quiz/page.module.css'
 import styles from './page.module.css'
+import { ProgressiveCase, ExaminerDiscussion } from './ProgressiveCase'
 
 const REGION_NAMES = {
-  de: { msk: 'Muskuloskelettales', abdomen: 'Abdomen' },
-  en: { msk: 'Musculoskeletal', abdomen: 'Abdomen' },
-  fa: { msk: 'اسکلتی-عضلانی', abdomen: 'شکم' },
+  de: { gehirn: 'Kopf', msk: 'Muskuloskelettales', abdomen: 'Abdomen' },
+  en: { gehirn: 'Head', msk: 'Musculoskeletal', abdomen: 'Abdomen' },
+  fa: { gehirn: 'سر', msk: 'اسکلتی-عضلانی', abdomen: 'شکم' },
 }
 
 const UI = {
   de: {
     back: '← Zur Fallauswahl',
+    loading: 'Fälle werden geladen…',
     empty: 'Für diese Auswahl sind keine Fälle verfügbar.',
     emptySub: 'Bitte wähle mindestens ein Thema mit verfügbaren Fällen.',
     caseOf: (current, total) => `Fall ${current} von ${total}`,
@@ -42,6 +44,7 @@ const UI = {
   },
   en: {
     back: '← Back to case selection',
+    loading: 'Loading cases…',
     empty: 'No cases are available for this selection.',
     emptySub: 'Please choose at least one topic with available cases.',
     caseOf: (current, total) => `Case ${current} of ${total}`,
@@ -65,6 +68,7 @@ const UI = {
   },
   fa: {
     back: 'بازگشت به انتخاب کیس ←',
+    loading: 'در حال بارگذاری کیس‌ها…',
     empty: 'برای این انتخاب کیسی موجود نیست.',
     emptySub: 'حداقل یک موضوع دارای کیس را انتخاب کن.',
     caseOf: (current, total) => `کیس ${current} از ${total}`,
@@ -141,19 +145,28 @@ function CaseExamContent() {
   const topicIds = topicParam.split(',').filter(Boolean)
   const modalities = modalityParam.split(',').filter(Boolean)
   const requestedCount = Math.max(1, Number.parseInt(searchParams.get('n') || '1', 10) || 1)
-  const cases = useMemo(
-    () => getCases(topicIds, modalities, lang, requestedCount),
-    [topicParam, modalityParam, lang, requestedCount]
+  // Shuffle once after hydration, then retain the selected IDs when the language changes.
+  const [clientReady, setClientReady] = useState(false)
+  useEffect(() => setClientReady(true), [])
+  const caseIds = useMemo(
+    () => clientReady ? getCases(topicIds, modalities, 'de', requestedCount).map(item => item.id) : [],
+    [clientReady, topicParam, modalityParam, requestedCount]
   )
+  const cases = useMemo(() => {
+    const byId = new Map((CASE_BANK[lang] || CASE_BANK.de).map(item => [item.id, item]))
+    return caseIds.map(id => byId.get(id)).filter(Boolean)
+  }, [caseIds, lang])
 
   const [current, setCurrent] = useState(0)
   const [selected, setSelected] = useState(null)
   const [checked, setChecked] = useState(false)
+  const [revealedStages, setRevealedStages] = useState(1)
   const [answers, setAnswers] = useState([])
   const [phase, setPhase] = useState('exam')
 
   const total = cases.length
   const item = cases[current]
+  const readyToAnswer = !item?.stages?.length || revealedStages >= item.stages.length
   const isLast = current === total - 1
   const score = answers.filter(answer => answer.correct).length
   const progress = total ? ((current + (checked ? 1 : 0)) / total) * 100 : 0
@@ -162,7 +175,7 @@ function CaseExamContent() {
     .join(', ')
 
   const checkAnswer = () => {
-    if (!selected || !item) return
+    if (!selected || !item || !readyToAnswer || checked) return
     setChecked(true)
     setAnswers(previous => [
       ...previous.filter(answer => answer.caseId !== item.id),
@@ -178,15 +191,21 @@ function CaseExamContent() {
     setCurrent(previous => previous + 1)
     setSelected(null)
     setChecked(false)
+    setRevealedStages(1)
+    if (item.stages?.length) requestAnimationFrame(() => document.getElementById('exam-case-title')?.scrollIntoView({ block: 'start' }))
   }
 
   const restart = () => {
     setCurrent(0)
     setSelected(null)
     setChecked(false)
+    setRevealedStages(1)
     setAnswers([])
     setPhase('exam')
+    requestAnimationFrame(() => document.getElementById('exam-case-title')?.scrollIntoView({ block: 'start' }))
   }
+
+  if (!clientReady) return <div className={styles.loading} role="status">{ui.loading}</div>
 
   if (!total) {
     return (
@@ -273,7 +292,7 @@ function CaseExamContent() {
       <div className={`${quizStyles.quizLayout} ${styles.examLayout}`}>
         <article className={`${quizStyles.quizCard} ${styles.caseCard}`}>
           <div className={quizStyles.qNum}>{ui.caseOf(current + 1, total)}</div>
-          <div className={styles.caseGrid}>
+          {item.stages?.length ? <ProgressiveCase key={item.id} item={item} revealedCount={revealedStages} onReveal={() => setRevealedStages(value => Math.min(value + 1, item.stages.length))} lang={lang}/> : <div className={styles.caseGrid}>
             <div className={`${styles.imagePanel} ${item.images?.length ? styles.imagePanelSeries : ''}`}>
               {item.sequence?.frames?.length ? (
                 <ExamSequenceViewer key={item.id} sequence={item.sequence} plane={item.plane} />
@@ -294,10 +313,10 @@ function CaseExamContent() {
             <div className={styles.caseIntro}>
               <p>{item.prompt || item.vignette}</p>
             </div>
-          </div>
+          </div>}
 
-          {!item.prompt && <h2 className={`${quizStyles.qText} ${styles.question}`}>{item.question}</h2>}
-          <div className={quizStyles.options}>
+          {readyToAnswer && !item.prompt && <h2 className={`${quizStyles.qText} ${styles.question}`}>{item.question}</h2>}
+          {readyToAnswer && <div className={quizStyles.options}>
             {item.options.map(option => {
               let className = quizStyles.option
               if (selected === option.id && !checked) className = `${quizStyles.option} ${quizStyles.optSel}`
@@ -312,7 +331,7 @@ function CaseExamContent() {
                 </button>
               )
             })}
-          </div>
+          </div>}
 
           {checked && (
             <div className={`${quizStyles.feedback} ${isCorrect ? quizStyles.fbOk : quizStyles.fbErr}`}>
@@ -335,12 +354,13 @@ function CaseExamContent() {
               )}
               <div className={styles.sourceRow}>
                 <span>{item.credit}</span>
-                <a href={item.source} target="_blank" rel="noopener noreferrer">{ui.source} ↗</a>
+                <a href={item.source} target="_blank" rel="noopener noreferrer">{item.sourceLabel || ui.source} ↗</a>
               </div>
+              {item.examinerDiscussion?.length ? <ExaminerDiscussion entries={item.examinerDiscussion} references={item.references} lang={lang}/> : null}
             </div>
           )}
 
-          <div className={quizStyles.actionRow}>
+          {readyToAnswer && <div className={quizStyles.actionRow}>
             {!checked ? (
               <button
                 className={`${quizStyles.checkBtn} ${!selected ? quizStyles.checkDisabled : ''}`}
@@ -354,7 +374,7 @@ function CaseExamContent() {
                 {isLast ? ui.resultButton : ui.next} →
               </button>
             )}
-          </div>
+          </div>}
         </article>
 
         <aside className={quizStyles.tracker}>

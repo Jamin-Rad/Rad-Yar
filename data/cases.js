@@ -1,4 +1,5 @@
 import { ICB_PRUEFUNG_CASES } from './icb'
+import { CAA_PRUEFUNG_CASES } from './caaCases'
 
 function locCase(item, lang) {
   function t(val) { return (val && typeof val === 'object' && !Array.isArray(val)) ? (val[lang] || val.de) : val }
@@ -9,6 +10,19 @@ function locCase(item, lang) {
     question: t(item.question),
     options: item.options.map(opt => ({ ...opt, text: t(opt.text) })),
     explanation: t(item.explanation),
+    scenarioNote: t(item.scenarioNote),
+    sourceLabel: t(item.sourceLabel),
+    wrongExplanations: item.wrongExplanations
+      ? Object.fromEntries(Object.entries(item.wrongExplanations).map(([id, text]) => [id, t(text)]))
+      : undefined,
+    stages: item.stages?.map(stage => ({
+      ...stage,
+      title: t(stage.title), narrative: t(stage.narrative), task: t(stage.task),
+      imageAlt: t(stage.imageAlt), imageCaption: t(stage.imageCaption),
+    })),
+    examinerDiscussion: item.examinerDiscussion?.map(entry => ({
+      question: t(entry.question), answer: t(entry.answer),
+    })),
   }
 }
 
@@ -274,6 +288,7 @@ export const CASE_BANK = {
       credit: 'Bild: Case courtesy of Craig Hacking, Radiopaedia.org, rID-178676, CC BY-NC-SA 3.0',
     },
     ...ICB_PRUEFUNG_CASES.map(item => locCase(item, 'de')),
+    ...CAA_PRUEFUNG_CASES.map(item => locCase(item, 'de')),
   ],
   en: [
     {
@@ -492,6 +507,7 @@ export const CASE_BANK = {
       credit: 'Image: Case courtesy of Craig Hacking, Radiopaedia.org, rID-178676, CC BY-NC-SA 3.0',
     },
     ...ICB_PRUEFUNG_CASES.map(item => locCase(item, 'en')),
+    ...CAA_PRUEFUNG_CASES.map(item => locCase(item, 'en')),
   ],
   fa: [
     {
@@ -698,6 +714,7 @@ export const CASE_BANK = {
       credit: 'تصویر: Case courtesy of Craig Hacking, Radiopaedia.org, rID-178676, CC BY-NC-SA 3.0',
     },
     ...ICB_PRUEFUNG_CASES.map(item => locCase(item, 'fa')),
+    ...CAA_PRUEFUNG_CASES.map(item => locCase(item, 'fa')),
   ],
 }
 
