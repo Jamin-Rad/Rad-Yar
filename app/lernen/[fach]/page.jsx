@@ -13,9 +13,9 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
 const T = {
-  de: { back:'← Körperregionen', search:'Thema suchen…', readNow:'Artikel öffnen', noResult:'Kein Treffer für', themen:'Themen', available:'Verfügbar', complete:'Fertig', inProgress:'Frühzugriff', unread:'Noch nicht gelernt', read:'Gelernt', all:'Alle', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'Geplant', emptyAvailable:'In diesem Fachgebiet ist noch kein Thema freigeschaltet.', emptyUnread:'Alle verfügbaren Lektionen in diesem Fachgebiet sind bereits gelernt.', emptyRead:'Du hast in diesem Fachgebiet noch nichts als gelesen markiert.', emptyAllFach:'Dieses Fachgebiet ist noch im Aufbau – schau bald wieder vorbei.', showAll:'Alle Themen anzeigen', lessonsTitle:'Hauptthemen', lessonsLead:'Thema wählen und Lektionen öffnen', close:'Schließen', backToModalities:'Zurück zu den Verfahren', chooseModality:'Verfahren auswählen', subtopics:'Unterthemen' },
-  en: { back:'← Body regions', search:'Search topic…', readNow:'Open article', noResult:'No results for', themen:'Topics', available:'Available', complete:'Complete', inProgress:'Early access', unread:'Not learned yet', read:'Learned', all:'All', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'Planned', emptyAvailable:'No topics are unlocked in this specialty yet.', emptyUnread:'All available lessons in this specialty have already been learned.', emptyRead:"You haven't marked anything as read in this specialty yet.", emptyAllFach:'This specialty is still being built – check back soon.', showAll:'Show all topics', lessonsTitle:'Main topics', lessonsLead:'Choose a topic and open its lessons', close:'Close', backToModalities:'Back to modalities', chooseModality:'Choose a modality', subtopics:'Subtopics' },
-  fa: { back:'ناحیه‌های بدن →', search:'جستجوی موضوع…', readNow:'مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', available:'موجود', complete:'کامل', inProgress:'دسترسی زودهنگام', unread:'هنوز یاد نگرفته‌ام', read:'یاد گرفته‌ام', all:'همه', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'برنامه‌ریزی‌شده', emptyAvailable:'هنوز موضوعی در این تخصص فعال نشده.', emptyUnread:'همه درس‌های موجود در این تخصص مطالعه شده‌اند.', emptyRead:'هنوز چیزی را در این تخصص خوانده‌شده علامت نزده‌ای.', emptyAllFach:'این تخصص هنوز در حال آماده‌سازی است – بزودی برمی‌گردیم.', showAll:'نمایش همه موضوعات', lessonsTitle:'موضوعات اصلی', lessonsLead:'موضوع را انتخاب کنید و درس‌ها را ببینید', close:'بستن', backToModalities:'بازگشت به روش‌ها', chooseModality:'انتخاب روش تصویربرداری', subtopics:'زیرعنوان' },
+  de: { back:'← Körperregionen', search:'Thema suchen…', readNow:'Artikel öffnen', noResult:'Kein Treffer für', themen:'Themen', available:'Verfügbar', complete:'Fertig', inProgress:'Frühzugriff', unread:'Noch nicht gelernt', read:'Gelernt', all:'Alle', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'Geplant', emptyAvailable:'Für dieses Fachgebiet sind noch keine Lektionen verfügbar.', emptyUnread:'Alle verfügbaren Lektionen in diesem Fachgebiet sind bereits gelernt.', emptyRead:'Du hast in diesem Fachgebiet noch nichts als gelesen markiert.', emptyAllFach:'Dieses Fachgebiet ist noch im Aufbau – schau bald wieder vorbei.', showAll:'Alle Themen anzeigen', lessonsTitle:'Hauptthemen', lessonsLead:'Thema wählen und Lektionen öffnen', close:'Schließen', backToModalities:'Zurück zu den Verfahren', chooseModality:'Verfahren auswählen', subtopics:'Unterthemen' },
+  en: { back:'← Body regions', search:'Search topic…', readNow:'Open article', noResult:'No results for', themen:'Topics', available:'Available', complete:'Complete', inProgress:'Early access', unread:'Not learned yet', read:'Learned', all:'All', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'Planned', emptyAvailable:'No lessons are available in this specialty yet.', emptyUnread:'All available lessons in this specialty have already been learned.', emptyRead:"You haven't marked anything as read in this specialty yet.", emptyAllFach:'This specialty is still being built – check back soon.', showAll:'Show all topics', lessonsTitle:'Main topics', lessonsLead:'Choose a topic and open its lessons', close:'Close', backToModalities:'Back to modalities', chooseModality:'Choose a modality', subtopics:'Subtopics' },
+  fa: { back:'ناحیه‌های بدن →', search:'جستجوی موضوع…', readNow:'مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', available:'موجود', complete:'کامل', inProgress:'دسترسی زودهنگام', unread:'هنوز یاد نگرفته‌ام', read:'یاد گرفته‌ام', all:'همه', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'برنامه‌ریزی‌شده', emptyAvailable:'هنوز هیچ درسی از این سرفصل در دسترس نیست.', emptyUnread:'همه درس‌های موجود در این تخصص مطالعه شده‌اند.', emptyRead:'هنوز چیزی را در این تخصص خوانده‌شده علامت نزده‌ای.', emptyAllFach:'این تخصص هنوز در حال آماده‌سازی است – بزودی برمی‌گردیم.', showAll:'نمایش همه موضوعات', lessonsTitle:'موضوعات اصلی', lessonsLead:'موضوع را انتخاب کنید و درس‌ها را ببینید', close:'بستن', backToModalities:'بازگشت به روش‌ها', chooseModality:'انتخاب روش تصویربرداری', subtopics:'زیرعنوان' },
 }
 
 // Gruppiert Themen anhand thema.group (Reihenfolge wie in den Daten):
@@ -196,8 +196,7 @@ export default function LernenFachPage() {
     if (fach) {
       setSelectedKapitel(null)
       setSelectedThema(null)
-      const hasAvailableTopics = fach.kapitel.some(kapitel => getKapitelThemen(kapitel).some(isAvailable))
-      setFilter(hasAvailableTopics ? 'available' : 'all')
+      setFilter('available')
     }
     try {
       setReadArticles(JSON.parse(localStorage.getItem('radyar_read_articles') || '{}'))
@@ -272,18 +271,17 @@ export default function LernenFachPage() {
             </div>
           </div>
         </div>
-        {fach.kapitel.length > 0 && (
-          <div className={styles.filterBar}>
-            {['all', 'available', 'read', 'unread'].map(f => (
-              <button key={f}
-                className={`${styles.filterBtn} ${filter === f ? styles.filterBtnActive : ''}`}
-                style={filter === f ? { color: fach.color, borderColor: fach.color, background: fach.color + '12' } : {}}
-                onClick={() => setFilter(f)}>
-                {f === 'available' ? t.available : f === 'unread' ? t.unread : f === 'read' ? t.read : t.all}
-              </button>
-            ))}
-          </div>
-        )}
+        <div className={styles.filterBar}>
+          {['all', 'available', 'read', 'unread'].map(f => (
+            <button key={f}
+              className={`${styles.filterBtn} ${filter === f ? styles.filterBtnActive : ''}`}
+              style={filter === f ? { color: fach.color, borderColor: fach.color, background: fach.color + '12' } : {}}
+              onClick={() => setFilter(f)}
+              aria-pressed={filter === f}>
+              {f === 'available' ? t.available : f === 'unread' ? t.unread : f === 'read' ? t.read : t.all}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* ── CONTENT ── */}
@@ -294,11 +292,11 @@ export default function LernenFachPage() {
         {visibleKapitel.length === 0 ? (
           <div className={styles.emptyState}>
             <p>
-              {fach.kapitel.length === 0
-                ? t.emptyAllFach
-                : filter === 'read' ? t.emptyRead : filter === 'unread' ? t.emptyUnread : t.emptyAvailable}
+              {filter === 'available' ? t.emptyAvailable
+                : filter === 'read' ? t.emptyRead
+                : filter === 'unread' ? t.emptyUnread : t.emptyAllFach}
             </p>
-            {fach.kapitel.length > 0 && filter !== 'all' && (
+            {fach.kapitel.length > 0 && ['read', 'unread'].includes(filter) && (
               <button className={styles.emptyStateBtn} onClick={() => setFilter('all')}>{t.showAll}</button>
             )}
           </div>
