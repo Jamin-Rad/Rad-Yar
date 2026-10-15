@@ -13,6 +13,7 @@ import { TeachingGroup, TeachingGroups } from '@/components/lesson-template/Inte
 import { useLanguage } from '@/providers/LanguageProvider';
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus';
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress';
+import { useLehrModeActive } from '@/hooks/useLehrModeActive';
 import { migrateCAAProgress } from '@/lib/caaProgress.mjs';
 import { CAA_CHAPTERS, CAA_TRACKED_IDS, CAA_COPY as COPY, CAA_SOURCES } from '@/data/caaLesson';
 import reference from '@/components/LessonTemplate.module.css';
@@ -156,9 +157,10 @@ export default function CAAPage() {
   const [readSections, setReadSections] = usePersistedSectionProgress('caa', CAA_TRACKED_IDS, isRead, migrateCAAProgress);
   const [openId, setOpenId] = useState('grundlagen');
   const [summaryOpen, setSummaryOpen] = useState(false);
+  const lehrMode = useLehrModeActive();
   const scrollToSection = useLessonSectionScroll();
   const summary = CAA_CHAPTERS.find(section => section.emphasis);
-  const isSectionOpen = section => section.emphasis ? summaryOpen : openId === section.id;
+  const isSectionOpen = section => lehrMode || (section.emphasis ? summaryOpen : openId === section.id);
   const [mobileOpen, setMobileOpen] = useState(false);
   const withLang = href => lang === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${lang}`;
   const replaceHash = id => {
@@ -212,7 +214,7 @@ export default function CAAPage() {
   };
   const activeIndex = Math.max(0, CAA_TRACKED_IDS.indexOf(openId));
   const navItems = () => <>{CAA_CHAPTERS.filter(s => !s.emphasis).map(section => <button type="button" key={section.id} className={openId === section.id ? reference.activeSideItem : ''} aria-current={openId === section.id ? 'location' : undefined} onClick={() => selectSection(section.id)}><span className={reference.sideIcon}><Icon name={section.icon} /></span><strong>{c(section.title)}{readSections.has(section.id) ? <span className={styles.readTick} aria-label={c(COPY.marked)}> ✓</span> : null}</strong></button>)}<Link className={styles.pathCalculatorLink} href={bostonHref(lang)}><span className={reference.sideIcon}><Icon name="chart" /></span><strong>{c(L('Boston-Rechner', 'Boston calculator', 'محاسبه‌گر Boston'))}</strong></Link></>;
-  return <main className={`${reference.page} ${styles.page}`} data-lesson-section-divider="true" data-lesson-progress-managed="true" data-disable-lesson-explorer="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
+  return <main className={`${reference.page} ${styles.page}`} data-lesson-section-divider="true" data-lesson-progress-managed="true" data-disable-lesson-explorer="true" data-lehr-sections-managed="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <header className={reference.header}><div className={reference.topline}><nav className={reference.breadcrumb} aria-label={c(L('Seitennavigation', 'Breadcrumb', 'مسیر صفحه'))}><Link href={withLang('/')}>RadYar</Link><span>/</span><Link href={withLang('/lernen/gehirn')}>{c(L('Kopf', 'Head', 'سر'))}</Link><span>/</span><strong>CAA</strong></nav><span className={reference.author}>Dr. Zia</span></div>
       <LessonHero title={c(COPY.title)} imageSrc="/educational/caa-hero-schematic.webp" imageAlt={c(L('Schema der CAA: oberflächliche Gefäße, lobäre Mikroblutungen und Amyloid in der Gefäßwand', 'CAA schematic: superficial vessels, lobar microbleeds and amyloid in the vessel wall', 'شماتیک CAA: عروق سطحی، میکروخونریزی‌های لوبار و رسوب آمیلوئید در دیواره رگ'))} lang={lang} />
     <div className={reference.actions}><button type="button" className={reference.takeHomeJump} onClick={() => selectSection('takehome')}><Icon name="spark" />{c(summary.title)}<span aria-hidden="true">↓</span></button><Link className={reference.primaryAction} href={withLang(`/ueben/quiz?fach=gehirn&n=18&themen=caa&from=${encodeURIComponent(withLang(PATH))}`)}><Icon name="quiz" />{c(COPY.mcq)}<span aria-hidden="true">→</span></Link><Link className={reference.secondaryAction} href={withLang(`/flashcards/caa?mode=practice&from=${encodeURIComponent(withLang(PATH))}`)}><Icon name="flashcards" />{c(COPY.flashcards)}</Link></div>

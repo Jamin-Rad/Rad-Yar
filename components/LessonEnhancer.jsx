@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { usePathname } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { useLehrModeActive } from '@/hooks/useLehrModeActive'
 import styles from './LessonEnhancer.module.css'
 
 const LESSON_PREFIXES = [
@@ -153,6 +154,7 @@ export default function LessonEnhancer() {
   const { lang } = useLanguage()
   const copy = COPY[lang] || COPY.de
   const enabled = isLessonPath(pathname)
+  const lehrMode = useLehrModeActive()
   const storageKey = `radyar-lesson-sections:${pathname}`
   const [sections, setSections] = useState([])
   const [activeId, setActiveId] = useState('')
@@ -163,6 +165,57 @@ export default function LessonEnhancer() {
   const [sidebarTarget, setSidebarTarget] = useState(null)
   const [navbarTarget, setNavbarTarget] = useState(null)
   const [explorer, setExplorer] = useState(null)
+
+  useEffect(() => {
+    if (!enabled || !lehrMode) return undefined
+
+    const openedToggles = new Set()
+    const openedDetails = new Set()
+    let expansionFrame = null
+    const sectionToggleSelector = [
+      'main:not([data-lesson-progress-managed]) section[id] > button[aria-expanded="false"]:not([data-lehr-section-managed])',
+      'main:not([data-lesson-progress-managed]) section[id] > h2 > button[aria-expanded="false"]:not([data-lehr-section-managed])',
+    ].join(',')
+
+    const expandAll = () => {
+      expansionFrame = null
+      document.querySelectorAll(sectionToggleSelector).forEach(toggle => {
+        openedToggles.add(toggle)
+        toggle.click()
+      })
+      document.querySelectorAll('main details:not([open])').forEach(details => {
+        openedDetails.add(details)
+        details.open = true
+      })
+    }
+    const scheduleExpansion = () => {
+      if (expansionFrame === null) expansionFrame = window.requestAnimationFrame(expandAll)
+    }
+    const keepSectionsOpen = event => {
+      const toggle = event.target.closest?.('main section[id] > button[aria-expanded], main section[id] > h2 > button[aria-expanded]')
+      if (!toggle) return
+      const managed = Boolean(toggle.closest('main[data-lesson-progress-managed]') || toggle.hasAttribute('data-lehr-section-managed'))
+      if (!managed && toggle.getAttribute('aria-expanded') !== 'true') return
+      event.preventDefault()
+      event.stopPropagation()
+    }
+
+    expandAll()
+    const observer = new MutationObserver(scheduleExpansion)
+    const main = document.querySelector('main')
+    if (main) observer.observe(main, { childList: true, subtree: true })
+    document.addEventListener('click', keepSectionsOpen, true)
+
+    return () => {
+      observer.disconnect()
+      document.removeEventListener('click', keepSectionsOpen, true)
+      if (expansionFrame !== null) window.cancelAnimationFrame(expansionFrame)
+      openedToggles.forEach(toggle => {
+        if (toggle.isConnected && toggle.getAttribute('aria-expanded') === 'true') toggle.click()
+      })
+      openedDetails.forEach(details => { if (details.isConnected) details.open = false })
+    }
+  }, [enabled, lehrMode, pathname])
 
   useEffect(() => {
     const query = window.matchMedia('(max-width: 760px)')

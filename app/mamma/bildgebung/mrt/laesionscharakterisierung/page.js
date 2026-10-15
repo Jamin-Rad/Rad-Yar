@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
+import { useLehrModeActive } from '@/hooks/useLehrModeActive'
 import base from '@/app/abdomen/gi/divertikulitis/page.module.css'
 import basics from '../basics/page.module.css'
 import styles from './page.module.css'
@@ -22,7 +23,9 @@ function ReadButton({ isRead, onClick, authError, lang }) {
 }
 
 function Section({ id, icon, title, open, onToggle, children }) {
-  return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}><button className={`${base.sectionHeader} ${basics.sectionHeader}`} type="button" onClick={() => onToggle(id)} aria-expanded={open}><span className={basics.sectionHeading}><span className={`${basics.sectionIcon} ${styles.sectionIcon}`}><SectionIcon name={icon} /></span><h2>{title}</h2></span><span className={basics.sectionToggle}>{open ? '−' : '+'}</span></button>{open && <div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
+  const lehrMode = useLehrModeActive()
+  const expanded = lehrMode || open
+  return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}><button className={`${base.sectionHeader} ${basics.sectionHeader}`} type="button" onClick={() => { if (!lehrMode) onToggle(id) }} aria-expanded={expanded} data-lehr-section-managed><span className={basics.sectionHeading}><span className={`${basics.sectionIcon} ${styles.sectionIcon}`}><SectionIcon name={icon} /></span><h2>{title}</h2></span><span className={basics.sectionToggle}>{expanded ? '−' : '+'}</span></button>{expanded && <div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
 }
 
 const SECTION_ICON_PATHS = {

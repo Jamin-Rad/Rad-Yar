@@ -6,6 +6,7 @@ import LessonKeyPoints from '@/components/LessonKeyPoints'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
+import { useLehrModeActive } from '@/hooks/useLehrModeActive'
 import { CARDIAC_MRI_BASICS_MD } from '@/data/cardiacMriBasicsContent'
 import base from '@/app/abdomen/gi/divertikulitis/page.module.css'
 import styles from './page.module.css'
@@ -145,6 +146,7 @@ function ReadButton({ lang, isRead, toggleRead, authError }) {
 }
 
 export default function CardiacMriBasicsPage() {
+  const lehrMode = useLehrModeActive()
   const { lang } = useLanguage()
   const ui = COPY[lang] || COPY.de
   const grouped = useMemo(() => groupContent(CARDIAC_MRI_BASICS_MD), [])
@@ -190,9 +192,9 @@ export default function CardiacMriBasicsPage() {
           <article className={styles.pillarPanel} role="tabpanel"><span>{pillar.short}</span><div><small>{pillar.question}</small><h3>{pillar.title}</h3><p>{pillar.detail}</p></div><strong>{pillar.memory}</strong></article>
         </section>
         {SECTION_IDS.map(id => {
-          const open = openId === id
+          const open = lehrMode || openId === id
           return <section id={id} className={`${base.section} ${styles.section}`} key={id}>
-            <button type="button" className={`${base.sectionHeader} ${styles.sectionHeader}`} aria-expanded={open} onClick={() => setOpenId(open ? null : id)}><span className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2>{SECTION_LABELS[id][lang] || SECTION_LABELS[id].de}</h2></span><span className={styles.sectionToggle}>{open ? '−' : '+'}</span></button>
+            <button type="button" className={`${base.sectionHeader} ${styles.sectionHeader}`} aria-expanded={open} onClick={() => { if (!lehrMode) setOpenId(open ? null : id) }} data-lehr-section-managed><span className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2>{SECTION_LABELS[id][lang] || SECTION_LABELS[id].de}</h2></span><span className={styles.sectionToggle}>{open ? '−' : '+'}</span></button>
             {open && <div className={`${base.sectionBody} ${styles.sectionBody}`}><MarkdownBlock markdown={grouped[id].join('\n')} /></div>}
           </section>
         })}

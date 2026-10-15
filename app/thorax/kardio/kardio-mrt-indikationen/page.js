@@ -6,6 +6,7 @@ import LessonKeyPoints from '@/components/LessonKeyPoints'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
+import { useLehrModeActive } from '@/hooks/useLehrModeActive'
 import base from '@/app/abdomen/gi/divertikulitis/page.module.css'
 import styles from './page.module.css'
 
@@ -161,14 +162,15 @@ function scrollIntoViewAfterLayout(element) {
 }
 
 function Section({ id, title, openId, setOpenId, children }) {
-  const open = openId === id
+  const lehrMode = useLehrModeActive()
+  const open = lehrMode || openId === id
   const toggleSection = () => {
     const nextId = open ? null : id
     setOpenId(nextId)
     if (nextId) scrollIntoViewAfterLayout(document.getElementById(id))
   }
   return <section id={id} className={`${base.section} ${styles.section} ${open ? styles.sectionOpen : ''}`}>
-    <button type="button" className={`${base.sectionHeader} ${styles.sectionHeader}`} aria-expanded={open} aria-controls={`${id}-panel`} onClick={toggleSection}><span className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2 id={`${id}-heading`}>{title}</h2></span><span className={styles.sectionToggle}>{open ? '−' : '+'}</span></button>
+    <button type="button" className={`${base.sectionHeader} ${styles.sectionHeader}`} aria-expanded={open} aria-controls={`${id}-panel`} onClick={() => { if (!lehrMode) toggleSection() }} data-lehr-section-managed><span className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2 id={`${id}-heading`}>{title}</h2></span><span className={styles.sectionToggle}>{open ? '−' : '+'}</span></button>
     {open ? <div id={`${id}-panel`} role="region" aria-labelledby={`${id}-heading`} className={`${base.sectionBody} ${styles.sectionBody}`}>{children}</div> : null}
   </section>
 }

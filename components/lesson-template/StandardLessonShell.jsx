@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
+import { useLehrModeActive } from '@/hooks/useLehrModeActive'
 import styles from './StandardLessonShell.module.css'
 
 const LessonShellContext = createContext(null)
@@ -76,14 +77,14 @@ export function LessonSection({ id, title, icon, children, bodyClassName = '' })
   const context = useContext(LessonShellContext)
   if (!context) throw new Error('LessonSection must be rendered inside StandardLessonShell')
 
-  const { labels, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, renderIcon } = context
+  const { labels, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, renderIcon, lehrMode } = context
   const section = sections.find(item => item.id === id)
   const emphasis = Boolean(section?.emphasis)
-  const open = emphasis ? summaryOpen : openId === id
+  const open = lehrMode || (emphasis ? summaryOpen : openId === id)
   const isRead = readSections.has(id)
 
   return <section id={id} className={`${styles.section} ${open ? styles.sectionOpen : ''} ${emphasis ? styles.takeHomeSection : ''}`}>
-    <button type="button" className={styles.sectionHeader} onClick={() => emphasis ? toggleSummary() : openSection(id)} aria-expanded={open} aria-controls={`${id}-panel`}>
+    <button type="button" className={styles.sectionHeader} onClick={() => { if (!lehrMode) (emphasis ? toggleSummary() : openSection(id)) }} aria-expanded={open} aria-controls={`${id}-panel`} data-lehr-section-managed>
       <span className={styles.sectionIcon}>{renderIcon(icon || section?.icon || id)}</span>
       <span><strong>{title || section?.label}</strong></span>
       <span className={`${styles.toggle} ${open ? styles.toggleOpen : ''}`} aria-hidden="true"><Icon name="chevron" /></span>
@@ -96,6 +97,7 @@ export function LessonSection({ id, title, icon, children, bodyClassName = '' })
 }
 
 export function TakeHomeList({ items }) {
+  const lehrMode = useLehrModeActive()
   const [openItems, setOpenItems] = useState(() => new Set())
   const toggle = index => setOpenItems(previous => {
     const next = new Set(previous)
@@ -105,9 +107,9 @@ export function TakeHomeList({ items }) {
   })
 
   return <ol className={styles.takeHomeList}>{items.map((item, index) => {
-    const open = openItems.has(index)
+    const open = lehrMode || openItems.has(index)
     return <li key={`${index}-${item.title}`} className={open ? styles.takeHomeItemOpen : ''}>
-      <button type="button" onClick={() => toggle(index)} aria-expanded={open} aria-controls={`take-home-detail-${index}`}>
+      <button type="button" onClick={() => { if (!lehrMode) toggle(index) }} aria-expanded={open} aria-controls={`take-home-detail-${index}`} data-lehr-section-managed>
         <span className={styles.takeHomeNumber}>{String(index + 1).padStart(2, '0')}</span>
         <strong>{item.title}</strong>
         <span className={`${styles.takeHomeChevron} ${open ? styles.takeHomeChevronOpen : ''}`}><Icon name="chevron" /></span>
@@ -118,10 +120,12 @@ export function TakeHomeList({ items }) {
 }
 
 export function LessonSources({ title, items, note }) {
+  const lehrMode = useLehrModeActive()
   const [open, setOpen] = useState(false)
+  const expanded = lehrMode || open
   return <aside className={styles.sources}>
-    <button type="button" className={styles.sourcesToggle} onClick={() => setOpen(value => !value)} aria-expanded={open} aria-controls="lesson-sources-panel"><span>{title}</span><span className={open ? styles.sourcesChevronOpen : ''}><Icon name="chevron" /></span></button>
-    <div id="lesson-sources-panel" className={styles.sourcesPanel} hidden={!open}>
+    <button type="button" className={styles.sourcesToggle} onClick={() => { if (!lehrMode) setOpen(value => !value) }} aria-expanded={expanded} aria-controls="lesson-sources-panel" data-lehr-section-managed><span>{title}</span><span className={expanded ? styles.sourcesChevronOpen : ''}><Icon name="chevron" /></span></button>
+    <div id="lesson-sources-panel" className={styles.sourcesPanel} hidden={!expanded}>
       <ol>{items.map((item, index) => <li key={item.href}>
         <span className={styles.sourceNumber}>{String(index + 1).padStart(2, '0')}</span>
         <div><small>{item.tag}</small><a href={item.href} target="_blank" rel="noreferrer"><strong>{item.title}</strong><Icon name="external" /></a><p>{item.citation}</p>{item.scope ? <em>{item.scope}</em> : null}</div>
@@ -147,6 +151,7 @@ export default function StandardLessonShell({
   sources,
 }) {
   const trackedSections = useMemo(() => sections.filter(section => !section.emphasis), [sections])
+  const lehrMode = useLehrModeActive()
   const trackedIds = useMemo(() => trackedSections.map(section => section.id), [trackedSections])
   const [openId, setOpenId] = useState(trackedSections[0]?.id || sections[0]?.id || null)
   const [summaryOpen, setSummaryOpen] = useState(false)
@@ -199,7 +204,7 @@ export default function StandardLessonShell({
   const lessonComplete = trackedIds.length > 0 && readSections.size === trackedIds.length
   const toggleLessonComplete = () => setReadSections(lessonComplete ? new Set() : new Set(trackedIds))
   const progress = trackedIds.length ? (readSections.size / trackedIds.length) * 100 : 0
-  const context = { labels, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, trackedSections, renderIcon }
+  const context = { labels, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, trackedSections, renderIcon, lehrMode }
   const shellStyle = {
     '--lesson-background-image': `url("${theme.backgroundImage}")`,
     '--lesson-hero-image': theme.heroImage ? `url("${theme.heroImage}")` : 'none',
@@ -215,7 +220,7 @@ export default function StandardLessonShell({
   const summaryAction = summarySection ? { label: labels.takeHome, onClick: openSummary, trailingIcon: 'down' } : null
   const isAtLastTrackedSection = activeIndex === trackedSections.length - 1
 
-  return <main className={`${styles.page} ${className}`} style={shellStyle} data-lesson-progress-managed="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
+  return <main className={`${styles.page} ${className}`} style={shellStyle} data-lesson-progress-managed="true" data-lehr-sections-managed="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <header className={styles.header}>
       <div className={styles.topline}>
         <nav className={styles.breadcrumb} aria-label={labels.contents}>{breadcrumbs.map((item, index) => <span key={`${item.label}-${index}`}>{index ? <i aria-hidden="true">/</i> : null}{item.href ? <Link href={item.href}>{item.label}</Link> : <strong>{item.label}</strong>}</span>)}</nav>

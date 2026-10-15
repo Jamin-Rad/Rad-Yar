@@ -88,6 +88,11 @@ html.lehr-mode-active body * { touch-action: none !important; }
 html.lehr-mode-active [data-lehr-ui],
 html.lehr-mode-active [data-lehr-ui] * { touch-action: manipulation !important; }
 
+/* Managed lesson accordions stay visually expanded throughout Lehr-Mode. */
+html.lehr-mode-active main[data-lesson-progress-managed] section[id] > [hidden] {
+  display: block !important;
+}
+
 /* Presentation only: privacy dialogs and teaching controls remain accessible. */
 html[data-lehr-recording-ready] [data-radyar-navbar],
 html[data-lehr-recording-ready] [data-radyar-footer],

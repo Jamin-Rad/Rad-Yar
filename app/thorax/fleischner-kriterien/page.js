@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { LessonIcon, MeasurementIllustration } from './Illustrations'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
+import { useLehrModeActive } from '@/hooks/useLehrModeActive'
 import { copy, sections, cases, takehome } from './content'
 import styles from './page.module.css'
 
@@ -36,9 +37,10 @@ function DensityDiagram({ type }) {
 }
 
 function LessonSection({ id, title, active, onSelect, children }) {
-  const open = active === id
+  const lehrMode = useLehrModeActive()
+  const open = lehrMode || active === id
   return <section id={id} className={styles.section} data-open={open} aria-labelledby={id + '-title'}>
-    <h2 id={id + '-title'}><button type="button" className={styles.sectionToggle} aria-expanded={open} aria-controls={id + '-body'} onClick={() => onSelect(open ? null : id)}><span className={styles.sectionSymbol}><LessonIcon id={id}/></span><span>{title}</span><span className={styles.chevron} aria-hidden="true">{open ? '−' : '+'}</span></button></h2>
+    <h2 id={id + '-title'}><button type="button" className={styles.sectionToggle} aria-expanded={open} aria-controls={id + '-body'} onClick={() => { if (!lehrMode) onSelect(open ? null : id) }} data-lehr-section-managed><span className={styles.sectionSymbol}><LessonIcon id={id}/></span><span>{title}</span><span className={styles.chevron} aria-hidden="true">{open ? '−' : '+'}</span></button></h2>
     <div id={id + '-body'} hidden={!open} className={styles.sectionBody}>{children}</div>
   </section>
 }
