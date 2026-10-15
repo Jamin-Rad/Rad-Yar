@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import { classifyTfcCmr } from './criteriaLogic.mjs'
-import { ChamberDiagram, Icon, Note, TeachingTable } from './LessonVisuals'
+import { Icon, Note, TeachingTable } from './LessonVisuals'
+import MriTeaching from './MriTeaching'
 import styles from './page.module.css'
 
 const DOMAINS = [
@@ -23,6 +24,7 @@ export function TfcLesson() {
     <p className={styles.lead}><strong>TFC</strong> bedeutet „Task Force Criteria“. Die Revision von <strong>2010</strong> soll Hinweise aus verschiedenen Untersuchungen zu einer verlässlichen Diagnose der klassischen ARVC zusammenführen. „Major“ ist stärker, „Minor“ schwächer gewichtet.</p>
     <h3 className={styles.subheading}>Der MRT-Baustein besteht aus zwei Teilen</h3>
     <div className={styles.formula}><div><span>A</span><strong>Regionale RV-Bewegungsstörung</strong><p>Akinesie, Dyskinesie oder dyssynchrone Kontraktion</p></div><b>UND</b><div><span>B</span><strong>Globale RV-Veränderung</strong><p>RVEDVi erhöht ODER RVEF reduziert</p></div></div>
+    <MriTeaching scene="cine" heading="Teil A im Original-Cine: die regionale Bewegung"/>
     <TeachingTable caption="TFC 2010 · MRT-Grenzwerte bei Erwachsenen · nur zusammen mit A" headers={['Messgröße', 'Major', 'Minor']} rows={[
       ['RVEDVi · Männer', '≥ 110 ml/m²', '≥ 100 bis < 110 ml/m²'],
       ['RVEDVi · Frauen', '≥ 100 ml/m²', '≥ 90 bis < 100 ml/m²'],
@@ -52,7 +54,6 @@ export function PaduaLesson() {
   const [rv, setRv] = useState(true)
   const [lv, setLv] = useState(true)
   const [gene, setGene] = useState(false)
-  const phenotype = rv && lv ? 'both' : lv ? 'lv' : 'rv'
   return <>
     <p className={styles.lead}>Die <strong>Padua-Kriterien von 2020</strong> erweitern die Frage: nicht nur „Wie sieht der RV aus?“, sondern <strong>„Welche Kammer ist betroffen und wo liegt die Narbe?“</strong> Dafür ergänzen sie LV-Kriterien und LGE. Die sechs Diagnosebereiche bleiben erhalten.</p>
     <div className={styles.paduaFlow}><div><span>01</span><strong>Strukturelle Grundlage?</strong><p>Mindestens ein morphofunktionelles oder strukturelles Kriterium erforderlich.</p></div><Icon name="arrow"/><div><span>02</span><strong>Welche Kammer?</strong><p>RV und LV getrennt beurteilen; Funktion und Gewebe zusammenführen.</p></div><Icon name="arrow"/><div><span>03</span><strong>Gesamtsystem anwenden</strong><p>EKG, Arrhythmien, Familie / Genetik ergänzen und Imitatoren abklären.</p></div></div>
@@ -62,12 +63,13 @@ export function PaduaLesson() {
       ['LGE · Major', 'Transmurales Streifen-LGE in ≥ 1 Region (Einflussbahn, RVOT, Apex), in 2 orthogonalen Ebenen', 'Subepikardiales / intramurales Streifen-LGE in ≥ 1 Segment der freien Wand / des Septums, in 2 orthogonalen Ebenen'],
       ['Referenzen / Ausschluss', 'Passende Normwerte für Alter, Geschlecht und Körpergröße; dünne RV-Wand beachten', 'Isoliertes septales Insertionspunkt-LGE zählt nicht; andere Narbenursachen abklären'],
     ]}/>
+    <MriTeaching scene="lge4ch" heading="Warum Padua den LV und LGE ergänzt"/>
     <div className={styles.lab}><header><span>Den Phänotyp nachvollziehen</span><h3>RV, LV oder beide?</h3><p>Vereinfachtes Denkschema nach bereits fachgerecht geprüften Kammerkriterien. Die Schalter stellen keine Diagnose.</p></header><div className={styles.paduaExplorer}><div className={styles.controls}>
       <label className={styles.checkLabel}><input type="checkbox" checked={rv} onChange={e => setRv(e.target.checked)}/><span>RV-Beteiligung nach Kriterien belegt</span></label>
       <label className={styles.checkLabel}><input type="checkbox" checked={lv} onChange={e => setLv(e.target.checked)}/><span>LV-Beteiligung mit passendem LGE belegt</span></label>
       <label className={styles.checkLabel}><input type="checkbox" checked={gene} onChange={e => setGene(e.target.checked)}/><span>Passende pathogene / wahrscheinlich pathogene ACM-Genvariante</span></label>
       <div className={styles.flowResult} aria-live="polite"><h4>{rv && lv ? 'Biventrikuläres Muster' : rv ? 'Rechtsbetontes Muster' : lv && gene ? 'Linksdominantes Muster mit passender Genetik' : lv ? 'LV-Narbe: Ursache weiter klären' : 'Keine Kammerbeteiligung belegt'}</h4><p>{rv && lv ? 'Beide Kammern zeigen relevante Zeichen. EKG, Rhythmus, Familie und Genetik vervollständigen die diagnostische Einordnung.' : rv ? 'Der RV steht im Vordergrund. Die vollständige Major-/Minor-Kombination und Differenzialdiagnosen bestimmen die Diagnose.' : lv && gene ? 'Die für eine rein linksdominante ALVC wichtige genetische Voraussetzung ist vorhanden. Das Gesamtbild einschließlich Differenzialdiagnosen bleibt entscheidend.' : lv ? 'Ohne RV-Beteiligung verlangt Padua für ALVC zusätzlich eine passende krankheitsverursachende Genvariante. LV-LGE allein reicht nicht.' : 'Nach Padua fehlt damit die notwendige morphofunktionelle / strukturelle Grundlage. Ein unauffälliges MRT schließt eine genetische Trägerschaft nicht aus.'}</p></div>
-    </div>{rv || lv ? <ChamberDiagram phenotype={phenotype}/> : <div className={styles.emptyDiagram}><Icon name="scan"/><span>Belegte Kammerkriterien auswählen</span></div>}</div></div>
+    </div></div></div>
     <TeachingTable caption="TFC 2010 und Padua 2020 nicht vermischen" headers={['Frage', 'TFC 2010', 'Padua 2020']} rows={[
       ['Fokus', 'Klassische ARVC / RV', 'RV, LV und biventrikuläre Formen'],
       ['CMR-Gewebeinformation', 'Kein LGE-Kriterium', 'LGE als strukturelles Kriterium'],

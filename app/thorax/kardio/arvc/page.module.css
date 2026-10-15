@@ -57,8 +57,6 @@
 .note > strong { display:block; margin-bottom:5px; color:var(--plum-800); font-size:14px; }
 .note.caution { border-color:#dec495; border-left-color:#c88a36; background:#fcf6e9; color:#654f30; }
 .note.caution > strong { color:#835b22; }
-.sourceLine { margin-top:20px !important; color:var(--muted); font-size:12px; line-height:1.7; }
-.sourceLine a { color:var(--plum-700); text-decoration:underline; text-underline-offset:3px; }
 .workflow { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); list-style:none; margin:24px 0; padding:0; gap:22px; }
 .workflow li { min-width:0; position:relative; }
 .workflow li > svg { position:absolute; right:-22px; top:32px; width:20px; color:var(--muted); }
@@ -75,16 +73,6 @@
 .patternModule header > span,.lab header > span { color:var(--plum-700); font-size:12px; font-weight:850; }
 .patternModule h3,.lab h3 { margin:6px 0 8px; color:var(--ink); font:800 27px/1.2 var(--font-newsreader,Georgia,serif); }
 .patternModule header p,.lab header p { font-size:14px; line-height:1.7; }
-.patternPanel { display:grid; grid-template-columns:minmax(230px,.85fr) minmax(0,1fr); align-items:stretch; }
-.patternPanel > :first-child { padding:20px; background:#102938; margin:0; }
-.patternPanel > :last-child { padding:25px; align-self:center; }
-.patternPanel svg { width:100%; height:auto; display:block; }
-.patternPanel h4 { margin:0 0 12px; font-size:21px; line-height:1.35; }
-.patternPanel p { font-size:15px; line-height:1.8; }
-.patternPanel .note { font-size:13px; margin-top:20px; }
-.patternPanel .diagramCaption { color:#c0d4de; font-size:11px; line-height:1.6; margin-top:9px; }
-.rangeLabel { display:flex; justify-content:space-between; color:#d5e5ed; font-size:12px; }
-.patternPanel input[type='range'] { width:100%; height:32px; accent-color:#e5ac55; cursor:ew-resize; }
 .publishedFigure { margin:24px 0 0; padding:18px; border:1px solid var(--line); border-radius:9px; background:var(--paper); }
 .publishedFigure img { display:block; width:100%; height:auto; }
 .publishedFigure figcaption { margin-top:13px; color:var(--muted); font-size:12px; line-height:1.75; }
@@ -165,14 +153,12 @@
 .paduaFlow strong { color:var(--ink); font-size:14px; line-height:1.5; }
 .paduaFlow p { margin-top:9px; font-size:12px; line-height:1.7; }
 .paduaFlow svg { color:var(--muted); width:20px; }
-.paduaExplorer { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(200px,.75fr); gap:24px; align-items:center; padding:24px; }
+.paduaExplorer { display:grid; grid-template-columns:minmax(0,1fr); gap:24px; align-items:center; padding:24px; }
 .paduaExplorer .controls { display:block; }
 .paduaExplorer .checkLabel { border-bottom:1px solid var(--line); }
 .flowResult { margin-top:18px; padding:18px; background:var(--plum-100); border-left:3px solid var(--plum-700); }
 .flowResult h4 { margin:0 0 9px; font-size:18px; line-height:1.4; }
 .flowResult p { font-size:14px; line-height:1.8; }
-.emptyDiagram { display:grid; place-content:center; justify-items:center; gap:15px; color:var(--muted); text-align:center; font-size:13px; }
-.emptyDiagram svg { width:60px; height:60px; }
 .scenarioRow { display:flex; flex-wrap:wrap; gap:8px; margin:24px 0 0; }
 .scenarioRow button { display:flex; flex:1; align-items:center; gap:8px; padding:12px; border:1px solid var(--line); border-radius:7px; color:var(--body); background:var(--canvas); font-size:13px; font-weight:750; line-height:1.5; text-align:left; }
 .scenarioRow button[aria-pressed='true'] { color:#fff; background:var(--plum-900); border-color:var(--plum-900); }
@@ -229,10 +215,6 @@
   .workflow li > svg { display:none; }
   .protocolDetail { grid-template-columns:1fr; padding:18px; gap:12px; }
   .protocolDetail h3 { font-size:24px; }
-  .patternPanel { grid-template-columns:1fr; }
-  .patternPanel > :first-child { padding:14px; }
-  .patternPanel > :last-child { padding:20px; }
-  .patternPanel svg { max-width:360px; margin:auto; }
   .patternModule > header,.lab > header { padding:20px 18px; }
   .patternModule h3,.lab h3 { font-size:24px; }
   .selectedCase { padding:16px; }
@@ -258,7 +240,6 @@
   .diagnosisLevels div:not(:last-child) { border-right:0; border-bottom:1px solid var(--line); }
   .paduaFlow { grid-template-columns:1fr; gap:9px; }
   .paduaFlow > svg { transform:rotate(90deg); justify-self:center; }
-  .paduaExplorer > svg { max-width:300px; margin:auto; }
   .scenarioRow { flex-direction:column; }
   .scenarioExplanation { padding:18px; }
   .sources li a { grid-template-columns:1fr 20px; gap:4px; }
@@ -314,3 +295,56 @@
 :global(html[data-theme='dark']) .page.page .table caption { color:#d0eaf6; }
 :global(html[data-theme='dark']) .page.page .workflow button > span,
 :global(html[data-theme='dark']) .page.page .formula span { color:#10384c; background:#a1d8e8; }
+
+/* Authentic MRI teaching panels: annotations are separate from original pixels. */
+.mriTeaching { margin:24px 0; overflow:hidden; border:1px solid var(--line); border-radius:9px; background:var(--paper); }
+.mriTeaching > header { padding:17px 20px; border-bottom:1px solid var(--line); background:var(--canvas); }
+.mriTeaching > header > span { color:var(--plum-800); font-size:11px; font-weight:800; }
+.mriTeaching > header h4 { margin:6px 0 0; color:var(--ink); font:800 23px/1.3 var(--font-newsreader,Georgia,serif); }
+.mriTeachingGrid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:start; }
+.mriMedia { min-width:0; background:#050c11; color:#d2e4ed; }
+.mriFrame { position:relative; width:100%; margin:auto; background:#050c11; }
+.mriFrame img { display:block; width:100%; height:auto; max-height:none; }
+.page .mriOverlay { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+.mriOverlay circle { fill:#143b4ce8; stroke:#f5ca7c; stroke-width:.5; }
+.mriOverlay text { fill:#fff3d5; font:800 3px var(--font-inter,system-ui,sans-serif); }
+.mriTools { display:flex; flex-wrap:wrap; gap:8px; justify-content:space-between; align-items:center; padding:12px; border-top:1px solid #304651; background:#102938; }
+.mriTools button { flex:1; min-height:40px; padding:8px 10px; border:1px solid #6d93a6; border-radius:5px; color:#e8f4fa; background:#173d50; font-size:12px; font-weight:750; line-height:1.4; }
+.mriTools button[aria-pressed='true'] { color:#ffdf9e; border-color:#e5ac55; background:#4b3c25; }
+.mriTools label { display:flex; align-items:center; gap:7px; font-size:12px; }
+.mriTools select { min-height:40px; padding:5px; border:1px solid #6d93a6; border-radius:5px; color:#e8f4fa; background:#173d50; font-size:13px; }
+.mriMedia video { display:block; width:100%; aspect-ratio:1; object-fit:contain; background:#050c11; }
+.mriLegend { display:flex; flex-wrap:wrap; gap:8px 16px; padding:12px 14px 0; color:#f3d397; font-size:12px; }
+.mriLegend span { display:flex; align-items:center; gap:6px; }
+.mriLegend b { display:grid; place-items:center; width:20px; height:20px; border:1px solid #d8ad69; border-radius:50%; font-size:11px; }
+.mriSequence { padding:12px 14px; color:#c7dce7; font-size:11px; line-height:1.6; }
+.mriReading { min-width:0; padding:20px; }
+.mriReading p,.mriReading li { font-size:14px; line-height:1.8; }
+.mriReading ol { margin:18px 0; padding-left:23px; }
+.mriReading li { padding-left:4px; margin-bottom:10px; }
+.mriReading li::marker { color:var(--plum-800); font-weight:850; }
+.mriReading .mriLimit { padding-top:14px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; }
+.mriAttribution { padding:12px 18px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; line-height:1.75; }
+.mriAttribution a { color:var(--plum-800); }
+.mriFallback { display:block; padding:12px; color:#f3d397; font-size:12px; }
+.mriZoom .mriFrame { width:min(75svh,80vw); }
+.patternModule > .mriTeaching,.patternModule > div[role='tabpanel'] > .mriTeaching { border-inline:0; border-radius:0; margin:0; }
+.patternModule > .tableScroll { margin:20px; }
+.patternModule > .note { margin:20px; }
+@media (max-width:1100px) {
+  .mriTeachingGrid { grid-template-columns:minmax(0,.9fr) minmax(0,1fr); }
+  .mriReading { padding:16px; }
+}
+@media (max-width:760px) {
+  .mriTeachingGrid { grid-template-columns:minmax(0,1fr); }
+  .mriTeaching > header { padding:16px; }
+  .mriTeaching > header h4 { font-size:22px; }
+  .mriMedia { width:100%; }
+  .mriFrame { max-width:480px; }
+  .mriMedia video { max-height:90vw; }
+  .mriReading { padding:18px 16px; }
+  .mriReading p,.mriReading li { font-size:14px; }
+  .mriTools button { font-size:11px; }
+  .patternModule > .tableScroll,.patternModule > .note { margin:16px; }
+  .mriAttribution { padding:12px 14px; }
+}

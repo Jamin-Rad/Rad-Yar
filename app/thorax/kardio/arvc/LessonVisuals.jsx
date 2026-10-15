@@ -2,6 +2,7 @@
 
 import { useId, useState } from 'react'
 import { PHENOTYPES, PROTOCOL } from './lessonContent'
+import MriTeaching from './MriTeaching'
 import styles from './page.module.css'
 
 export function Icon({ name, className }) {
@@ -80,45 +81,40 @@ export function ProtocolExplorer() {
   return <>
     <ol className={styles.workflow}>{PROTOCOL.map((step, index) => <li key={step.id}><button type="button" aria-pressed={selected === index} onClick={() => setSelected(index)}><span>{String(index + 1).padStart(2, '0')}</span><strong>{step.label}</strong><small>{step.question}</small></button>{index < 3 ? <Icon name="arrow"/> : null}</li>)}</ol>
     <div className={styles.protocolDetail} aria-live="polite"><Icon name="layers"/><div><h3>{current.question}</h3><dl className={styles.details}><div><dt>Sequenz & Ebenen</dt><dd>{current.sequence}. {current.planes}.</dd></div><div><dt>Darauf achten</dt><dd>{current.look}</dd></div><div><dt>Fallstrick</dt><dd>{current.pitfall}</dd></div></dl></div></div>
+    <div className={styles.protocolImage}>{selected < 3 ? <MriTeaching key={current.id} scene={['morphology', 'measure', 'lge4ch'][selected]}/> : <Note title="Mapping ergänzt die Gewebebeurteilung">T1 und T2 quantitativ auswerten und mit sequenz- sowie gerätespezifischen Referenzwerten vergleichen. Ein LGE-Bild ist keine T1- oder T2-Map.</Note>}</div>
     <TeachingTable caption="MRT-Protokoll auf einen Blick" headers={['Baustein', 'Was liefert er?', 'Was liefert er allein nicht?']} rows={PROTOCOL.map(step => [step.label, step.look, step.pitfall])}/>
   </>
 }
 
-const MOTION = [
-  { id: 'normal', label: 'Normal', title: 'Die Wand bewegt sich nach innen', text: 'In der Systole wird die Kammer kleiner. Der markierte Wandabschnitt folgt der übrigen Kontraktion.', delta: -32 },
-  { id: 'hypo', label: 'Hypokinesie', title: 'Die Einwärtsbewegung ist vermindert', text: 'Ein Abschnitt kontrahiert schwächer. Isolierte Hypokinesie genügt nicht für das regionale RV-MRT-Kriterium der TFC 2010.', delta: -12 },
-  { id: 'akinetic', label: 'Akinesie', title: 'Der Abschnitt bewegt sich nicht', text: 'Der markierte Abschnitt bleibt in der Systole stehen. Mit globaler RV-Vergrößerung oder Dysfunktion kann dies den TFC-MRT-Baustein erfüllen.', delta: 0 },
-  { id: 'dyskinetic', label: 'Dyskinesie', title: 'Die Wand bewegt sich nach außen', text: 'Während die übrige Kammer kontrahiert, wölbt sich der markierte Abschnitt nach außen. Im echten Cine und in einer zweiten Ebene bestätigen.', delta: 36 },
-]
-const LGE = [
-  { id: 'epi', label: 'Subepikardial', title: 'Außen in der LV-Wand', text: 'Ein streifenförmiges subepikardiales Muster kann zu ACM passen, kommt aber auch bei Myokarditis vor. Klinik, Genetik und Verteilung ergänzen.' },
-  { id: 'mid', label: 'Intramural', title: 'In der Mitte der LV-Wand', text: 'Auch intramurales, nichtischämisches LGE kann relevant sein. Nach Padua in mindestens einem Segment und zwei orthogonalen Ebenen bestätigen.' },
-  { id: 'ischemic', label: 'Subendokardial', title: 'Von der Innenseite ausgehend', text: 'Ein subendokardiales bis transmurales Muster in einem Koronarterritorium lenkt den Blick auf eine ischämische Schädigung.' },
-  { id: 'insertion', label: 'Insertionspunkte', title: 'Nicht mit LV-Streifen-LGE verwechseln', text: 'Isoliertes LGE an den septalen RV-Insertionspunkten ist nach Padua vom LV-LGE-Kriterium ausgenommen.' },
+const LGE_VIEWS = [
+  { id: '4ch', label: 'LGE · 4-Kammer', scene: 'lge4ch' },
+  { id: 'sax', label: 'Derselbe Fall · kurze Achse', scene: 'lgesax' },
+  { id: 'negative', label: 'Anderer Fall · ohne LGE', scene: 'negative' },
 ]
 
 export function PatternExplorer() {
-  const [motion, setMotion] = useState(0)
-  const [phase, setPhase] = useState(100)
   const [lge, setLge] = useState(0)
-  const current = MOTION[motion]
-  const p = phase / 100, controlX = 90 - current.delta * p
   return <>
     <div className={styles.patternModule}>
-      <header><span>01 · Cine verstehen</span><h3>Was macht die Wand in der Systole?</h3><p>Muster wählen und den Herzzyklus mit dem Regler vergleichen.</p></header>
-      <Tabs label="Wandbewegung auswählen" items={MOTION} selected={motion} onChange={setMotion} idPrefix="motion"/>
-      <div className={styles.patternPanel} id="motion-panel" role="tabpanel" aria-labelledby={`motion-tab-${motion}`}>
-        <div><svg viewBox="0 0 360 260" role="img" aria-label={`Schema der ${current.label} bei ${phase} Prozent des schematischen Herzzyklus`}><path d="M170 45C75 45 65 190 170 225c98-31 103-167 0-180Z" fill="none" stroke="#b9cbd5" strokeWidth="3" strokeDasharray="5 5"/><path d={`M170 45Q${200 + (1-p)*60} 130 170 225Q${60 + p*32} 187 83 150`} fill="none" stroke="#7f9dad" strokeWidth="9"/><path d={`M110 66Q${controlX} 96 ${80 + (current.delta * -p)} 145`} fill="none" stroke="#e5ac55" strokeWidth="12" strokeLinecap="round"/><text x="168" y="137" textAnchor="middle" fill="#dcebf2" fontSize="18">RV</text><path d="M250 75h55m-7-6 7 6-7 6" fill="none" stroke="#e5ac55" strokeWidth="2"/><text x="247" y="106" fill="#b8cedb" fontSize="11">markierter Abschnitt</text></svg><label className={styles.rangeLabel} htmlFor="cardiac-phase"><span>Diastole</span><span>Systole</span></label><input id="cardiac-phase" type="range" min="0" max="100" value={phase} onChange={e => setPhase(Number(e.target.value))} aria-label="Herzphase: Diastole bis Systole"/><p className={styles.diagramCaption}>Vereinfachtes Bewegungsschema, keine gemessene Cine-Kurve.</p></div>
-        <div><h4>{current.title}</h4><p>{current.text}</p><Note title="Im echten Cine">Nicht nur einen Frame vergleichen. Auf Schnittführung, Arrhythmieartefakte und Bewegung aus der Ebene achten.</Note></div>
-      </div>
+      <header><span>01 · Bewegung im echten MRT</span><h3>Was macht die Wand in der Systole?</h3><p>Original-Cine starten und den RV über den gesamten Herzzyklus verfolgen.</p></header>
+      <MriTeaching scene="cine"/>
+      <TeachingTable caption="Bewegungsbegriffe direkt zum Cine" headers={['Begriff', 'Was bedeutet er?', 'Für die TFC 2010']} rows={[
+        ['Hypokinesie', 'Die Einwärtsbewegung ist vermindert.', 'Allein keine ausreichende regionale RV-Störung.'],
+        ['Akinesie', 'Ein Wandabschnitt kontrahiert nicht.', 'Zusammen mit globaler RV-Veränderung ein möglicher MRT-Baustein.'],
+        ['Dyskinesie', 'Paradoxe Auswärtsbewegung während der Systole.', 'Im Cine und in einer weiteren Ebene bestätigen; dann mit Volumen / EF verbinden.'],
+      ]}/>
     </div>
     <div className={styles.patternModule}>
-      <header><span>02 · Gewebe verstehen</span><h3>Wo liegt das LGE in der Wand?</h3><p>Ein helles Areal ist erst mit seiner Lage und Verteilung interpretierbar.</p></header>
-      <Tabs label="LGE-Muster auswählen" items={LGE} selected={lge} onChange={setLge} idPrefix="lge"/>
-      <div className={styles.patternPanel} id="lge-panel" role="tabpanel" aria-labelledby={`lge-tab-${lge}`}>
-        <figure><svg viewBox="0 0 360 270" role="img" aria-label={`Schematischer LV-Querschnitt mit ${LGE[lge].label}-LGE`}><circle cx="172" cy="130" r="77" fill="none" stroke="#668493" strokeWidth="36"/><circle cx="172" cy="130" r="55" fill="#152b38" stroke="#bdced7" strokeWidth="1"/>{lge === 3 ? <><circle cx="120" cy="78" r="8" fill="#f6d28b"/><circle cx="120" cy="182" r="8" fill="#f6d28b"/></> : <circle cx="172" cy="130" r={lge === 0 ? '93' : lge === 1 ? '77' : '60'} fill="none" stroke="#f6d28b" strokeWidth={lge === 2 ? '12' : '7'} strokeDasharray="120 650" transform="rotate(-40 172 130)"/>}<text x="172" y="137" textAnchor="middle" fill="#dcebf2" fontSize="19">LV</text><text x="172" y="251" textAnchor="middle" fill="#b8cedb" fontSize="12">Gelb = schematisches LGE</text></svg><figcaption className={styles.diagramCaption}>Kurze Achse, stark vereinfacht. Kein diagnostisches MRT.</figcaption></figure>
-        <div><h4>{LGE[lge].title}</h4><p>{LGE[lge].text}</p><Note title="Wichtig">Das Muster allein beweist keine ACM. Nichtischämische Narben haben mehrere mögliche Ursachen.</Note></div>
-      </div>
+      <header><span>02 · Gewebe im echten MRT</span><h3>Die Narbe suchen – nicht nur eine helle Stelle</h3><p>Zwei Ebenen desselben LGE-Falls vergleichen. Das dritte Bild stammt aus einer anderen Untersuchung ohne auffälliges LGE.</p></header>
+      <Tabs label="Echte LGE-Aufnahmen vergleichen" items={LGE_VIEWS} selected={lge} onChange={setLge} idPrefix="lge"/>
+      <div id="lge-panel" role="tabpanel" aria-labelledby={`lge-tab-${lge}`}><MriTeaching key={LGE_VIEWS[lge].id} scene={LGE_VIEWS[lge].scene}/></div>
+      <TeachingTable caption="LGE-Muster einordnen" headers={['Lage', 'Was heißt das?', 'Woran denken?']} rows={[
+        ['Subepikardial', 'Außen in der LV-Wand', 'Kann zu ACM passen, auch bei Myokarditis.'],
+        ['Intramural', 'In der Mitte der LV-Wand', 'Nichtischämisches Muster; andere Narbenursachen abklären.'],
+        ['Subendokardial / transmural', 'Von der Innenseite ausgehend', 'Bei Verteilung in einem Koronarterritorium eine ischämische Ursache prüfen.'],
+        ['Septale RV-Insertionspunkte', 'An den RV-Ansatzstellen', 'Isoliert vom LV-LGE-Kriterium nach Padua ausgenommen.'],
+      ]}/>
+      <Note title="Bild und Begriff zusammenbringen">Die Tabelle erklärt verschiedene Muster. Die gezeigten Radiopaedia-Aufnahmen sind Beispiele für die beschriebenen Fälle, keine Bildsammlung sämtlicher LGE-Muster.</Note>
     </div>
   </>
 }
