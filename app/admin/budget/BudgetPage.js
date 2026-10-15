@@ -15,7 +15,7 @@ const IRAN_ACCOUNT_OPENING_BALANCE_RIAL = '2798510103'
 
 const SETTINGS_SECTIONS = [
   { id: 'kategorien', number: '01', title: 'Kategorien', description: 'Struktur und Unterkategorien' },
-  { id: 'budget', number: '02', title: 'Budget & Fixkosten', description: 'Limits und laufende Kosten' },
+  { id: 'fixkosten', number: '02', title: 'Fixkosten', description: 'Laufende Kosten verwalten' },
   { id: 'bericht', number: '03', title: 'Bericht', description: 'Monat und Jahr auswerten' },
 ]
 
@@ -124,7 +124,7 @@ async function budgetApi(method = 'GET', body) {
   if (!res.ok) {
     const fallbackMessage = method === 'GET'
       ? 'Finanzdaten konnten nicht geladen werden.'
-      : 'Budget konnte nicht gespeichert werden.'
+      : 'Finanzen konnten nicht gespeichert werden.'
     const error = new Error(data.error || fallbackMessage)
     error.status = res.status
     throw error
@@ -582,25 +582,6 @@ function sparquote(income, expenses) {
   return ((income - expenses) / income * 100).toFixed(1)
 }
 
-function trafficColor(spent, budget) {
-  if (!budget) return null
-  const p = spent / budget
-  if (p >= 1) return '#dc2626'
-  if (p >= 0.75) return '#d97706'
-  return '#16a34a'
-}
-
-function categoryBudgetValue(catBudgets, categoryName, categories = []) {
-  const directBudget = Number(catBudgets[categoryName] || catBudgets[`${categoryName} / Gesamt`] || 0)
-  if (directBudget > 0) return directBudget
-
-  const category = categories.find(item => item.name === categoryName)
-  return (category?.subs || []).reduce(
-    (sum, sub) => sum + Number(catBudgets[`${categoryName} / ${sub.name}`] || 0),
-    0,
-  )
-}
-
 function IconCalendar() {
   return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
 }
@@ -868,6 +849,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
   const [month, setMonth]     = useState(getMonthKey())
   const [year, setYear]       = useState(new Date().getFullYear())
   const [store, setStore]     = useState({})
+  // Keep legacy limits in sync payloads so existing records survive expense edits.
   const [catBudgets, setCatBudgets] = useState({})
   const [recurring, setRecurring]   = useState([])
   const [categories, setCategories] = useState([])
@@ -1172,10 +1154,6 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
     () => excludeVacation ? categories.filter(category => category.name !== 'Ausflug') : categories,
     [categories, excludeVacation]
   )
-  const visibleCatBudgets = useMemo(
-    () => Object.fromEntries(Object.entries(catBudgets).filter(([name]) => !excludeVacation || name.split(' / ')[0] !== 'Ausflug')),
-    [catBudgets, excludeVacation]
-  )
   const visibleRecurring = useMemo(
     () => excludeVacation ? recurring.filter(entry => !isVacationEntry(entry)) : recurring,
     [recurring, excludeVacation]
@@ -1434,12 +1412,6 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
     return Object.entries(t).sort((a, b) => b[1] - a[1])
   }, [monthData.entries])
 
-  const totalCatBudget = useMemo(() => {
-    return visibleCategories
-      .filter(category => category.type === 'expense')
-      .reduce((sum, category) => sum + categoryBudgetValue(visibleCatBudgets, category.name, visibleCategories), 0)
-  }, [visibleCatBudgets, visibleCategories])
-
   function printBericht() {
     const fixEntries    = monthData.entries.filter(e => e.generatedRecurring)
     const manualEntries = [...monthData.entries.filter(e => !e.generatedRecurring)].sort((a, b) => (b.date || '').localeCompare(a.date || ''))
@@ -1452,10 +1424,8 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
     }).join('')
 
     const expenseRows = categoryTotals.map(([cat, total]) => {
-      const budget = categoryBudgetValue(catBudgets, cat, categories)
-      const pct    = budget > 0 ? ((total / budget) * 100).toFixed(1) : '—'
-      const status = !budget ? '' : total >= budget ? '⚠ Überzogen' : total / budget >= 0.75 ? '~ Achtung' : '✓ OK'
-      return `<tr><td>${cat}</td><td class="amt red">${formatMoney(total)}</td><td class="amt">${budget ? formatMoney(budget) : '—'}</td><td class="pct">${pct !== '—' ? pct + ' %' : '—'}</td><td>${status}</td></tr>`
+      const pct = summary.expenses > 0 ? ((total / summary.expenses) * 100).toFixed(1) : '0'
+      return `<tr><td>${cat}</td><td class="amt red">${formatMoney(total)}</td><td class="pct">${pct} %</td></tr>`
     }).join('')
 
     const fixRows = fixEntries.map(e =>
@@ -1518,9 +1488,9 @@ ${incomeTotals.length ? `
 
 ${categoryTotals.length ? `
 <h2>Ausgaben nach Kategorie</h2>
-<table><thead><tr><th>Kategorie</th><th style="text-align:right">Ausgegeben</th><th style="text-align:right">Budget</th><th style="text-align:right">% Budget</th><th>Status</th></tr></thead>
+<table><thead><tr><th>Kategorie</th><th style="text-align:right">Ausgegeben</th><th style="text-align:right">Anteil der Ausgaben</th></tr></thead>
 <tbody>${expenseRows}</tbody>
-<tfoot><tr class="total-row"><td>Gesamt</td><td class="amt red">${formatMoney(summary.expenses)}</td><td></td><td></td><td></td></tr></tfoot>
+<tfoot><tr class="total-row"><td>Gesamt</td><td class="amt red">${formatMoney(summary.expenses)}</td><td></td></tr></tfoot>
 </table>` : ''}
 
 ${fixEntries.length ? `
@@ -1546,10 +1516,6 @@ ${manualEntries.length ? `
     win.focus()
     setTimeout(() => win.print(), 400)
   }
-
-  const budgetRemaining = totalCatBudget - summary.expenses
-  const budgetOver      = totalCatBudget > 0 && budgetRemaining < 0
-  const budgetPct       = totalCatBudget > 0 ? Math.min((summary.expenses / totalCatBudget) * 100, 100) : 0
 
   const entryTitle = useMemo(() => {
     if (entryType === 'income' && incomeSourceMode === 'other') return otherIncomeName.trim()
@@ -1578,7 +1544,7 @@ ${manualEntries.length ? `
 
   const planCatNames = useMemo(() => [...new Set(planSelectedItems.map(i => i.catName))], [planSelectedItems])
 
-  const planBudgetKey = useMemo(() => {
+  const planCategoryKey = useMemo(() => {
     const selected = planSelectedItems[0]
     if (!selected) return ''
     return selected.subName ? `${selected.catName} / ${selected.subName}` : `${selected.catName} / Gesamt`
@@ -1651,7 +1617,6 @@ ${manualEntries.length ? `
   function prevMonth() { const [y, m] = month.split('-').map(Number); setMonth(getMonthKey(new Date(y, m - 2, 1))) }
   function nextMonth() { const [y, m] = month.split('-').map(Number); setMonth(getMonthKey(new Date(y, m, 1))) }
   function updateMonth(updater) { setStore(prev => { const cur = prev[month] || emptyMonth(); return { ...prev, [month]: updater(cur) } }) }
-  function saveCatBudget(cat, value) { setCatBudgets(prev => ({ ...prev, [cat]: Number(value) || 0 })) }
 
   function allEntries() {
     return Object.values(store).flatMap(m => m.entries || [])
@@ -1845,13 +1810,6 @@ ${manualEntries.length ? `
     updateMonth(c => ({ ...c, entries: c.entries.filter(i => i.id !== id) }))
   }
 
-  function savePlanBudget() {
-    const amount = Number(planAmount)
-    if (!amount || !planBudgetKey) return
-    setCatBudgets(prev => ({ ...prev, [planBudgetKey]: amount }))
-    setPlanAmount('')
-  }
-
   function addFixeintrag() {
     const amount = Number(planAmount)
     if (!amount || !planTitle || !planStartMonth) return
@@ -1861,7 +1819,7 @@ ${manualEntries.length ? `
       title: planTitle,
       amount,
       category: planCatNames[0] || '',
-      budgetKey: planBudgetKey,
+      budgetKey: planCategoryKey,
       startMonth: planStartMonth,
       dayOfMonth: '1',
     }])
@@ -2193,9 +2151,7 @@ ${manualEntries.length ? `
             {view === 'einstellung' ? (
               <nav className={styles.settingsSectionNav} aria-label="Einstellungsbereiche">
                 {SETTINGS_SECTIONS.map(section => {
-                  const active = section.id === 'budget'
-                    ? subView === 'budget' || subView === 'fixkosten'
-                    : subView === section.id
+                  const active = subView === section.id
                   return (
                     <button
                       key={section.id}
@@ -2255,22 +2211,14 @@ ${manualEntries.length ? `
                       <button className={styles.sectionAddBtn} style={{ background: '#f97316' }} onClick={() => openPopup('expense')} aria-label="Ausgabe hinzufügen"><IconPlus /></button>
                     </div>
                   </div>
-                  {totalCatBudget > 0 && (
-                    <div className={styles.budgetBar} style={{ margin: 0, borderRadius: 0, height: 3 }}>
-                      <div className={budgetOver ? styles.budgetBarOver : styles.budgetBarGood} style={{ width: `${budgetPct}%` }} />
-                    </div>
-                  )}
                   <div className={styles.sectionCardBody}>
                     {categoryTotals.length ? categoryTotals.map(([cat, total]) => {
-                      const budget = categoryBudgetValue(catBudgets, cat, categories)
-                      const color = trafficColor(total, budget)
-                      const pct = budget > 0 ? Math.min((total / budget) * 100, 100) : 0
+                      const pct = summary.expenses > 0 ? (total / summary.expenses) * 100 : 0
                       return (
                         <div className={`${styles.expenseRow} ${styles.clickableRow}`} key={cat} onClick={() => openCatDetail('expense', cat, cat)} role="button" tabIndex={0} onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && openCatDetail('expense', cat, cat)}>
                           <span className={styles.categoryName}>{cat}</span>
-                          <div className={styles.categoryBarTrack}><div className={styles.categoryBarFill} style={{ width: `${budget > 0 ? Math.max(pct, 2) : 0}%`, background: color || undefined }} /></div>
-                          <span className={styles.financeRowAmount}><strong>{formatMoney(total)}</strong><small>{budget ? `${pct.toFixed(0)} %` : 'kein Budget'}</small></span>
-                          <span className={styles.trafficDot} style={{ background: color || 'transparent', border: color ? 'none' : '1px dashed #cbd5e1' }} title={budget ? `Budget: ${formatMoney(budget)}` : 'Kein Budget'} />
+                          <div className={styles.categoryBarTrack}><div className={styles.categoryBarFill} style={{ width: `${Math.min(pct, 100)}%` }} /></div>
+                          <span className={styles.financeRowAmount}><strong>{formatMoney(total)}</strong><small title="Anteil der Ausgaben">{pct.toFixed(0)} %</small></span>
                         </div>
                       )
                     }) : (
@@ -3511,20 +3459,16 @@ ${manualEntries.length ? `
               </div>
             )}
 
-            {/* ── BUDGET & FIXKOSTEN ── */}
-            {view === 'einstellung' && (subView === 'budget' || subView === 'fixkosten') && (
-              <div className={styles.settingsBudgetStack}>
+            {/* ── FIXKOSTEN ── */}
+            {view === 'einstellung' && subView === 'fixkosten' && (
+              <div className={styles.settingsFixedCostsStack}>
                 <div className={`${styles.budgetPanel} ${styles.planComposerPanel}`}>
                   <div className={styles.fixedCostsHeader}>
                     <div>
-                      <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Budget &amp; Fixkosten</h2>
-                      <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>Kategorie wählen, Betrag eintragen, dann als Budget oder Fixkosten speichern.</p>
+                      <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Fixkosten</h2>
+                      <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>Kategorie wählen, monatlichen Betrag und Startmonat eintragen.</p>
                     </div>
                     <div className={styles.planTotalsRow}>
-                      <div className={styles.fixedTotalPill}>
-                        <span>Budget gesamt</span>
-                        <strong>{totalCatBudget > 0 ? formatMoney(totalCatBudget) : '—'}</strong>
-                      </div>
                       <div className={styles.fixedTotalPill}>
                         <span>Fixkosten</span>
                         <strong>{totalFixkosten > 0 ? formatMoney(totalFixkosten) : '—'}</strong>
@@ -3547,7 +3491,7 @@ ${manualEntries.length ? `
                   {planSelectedItems.length > 0 && (
                     <div className={styles.entrySelectionSummary}>
                       <div>
-                        <span className={styles.entrySelectionTitle}>{planBudgetKey}</span>
+                        <span className={styles.entrySelectionTitle}>{planCategoryKey}</span>
                         {planCatNames.length > 0 && <span className={styles.entrySelectionCats}>{planCatNames.join(' · ')}</span>}
                       </div>
                     </div>
@@ -3564,28 +3508,9 @@ ${manualEntries.length ? `
                     <label className={styles.planStartMonthField}>
                       <span>Fixkosten gültig ab</span>
                       <input type="month" value={planStartMonth} onChange={event => setPlanStartMonth(event.target.value)} />
-                      <small>Gilt nur beim Speichern als Fixkosten</small>
+                      <small>Wird ab diesem Monat berücksichtigt</small>
                     </label>
-                    <button className={styles.primaryBudgetBtn} type="button" disabled={!planTitle || !planAmount} onClick={savePlanBudget}>Budget speichern</button>
                     <button className={styles.primaryBudgetBtn} type="button" disabled={!planTitle || !planAmount || !planStartMonth} onClick={addFixeintrag}>Fixkosten speichern</button>
-                  </div>
-                </div>
-
-                <div className={styles.budgetPanel}>
-                  <h2 className={styles.sectionTitle} style={{ margin: '0 0 16px' }}>Gespeicherte Budgets</h2>
-                  <div className={styles.savedBudgetGrid}>
-                    {Object.entries(visibleCatBudgets).filter(([, amount]) => Number(amount || 0) > 0).map(([name, amount]) => {
-                      const baseName = name.split(' / ')[0]
-                      const color = getCatColor(baseName)
-                      return (
-                        <div key={name} className={styles.savedBudgetBox} style={{ '--cat-border': color.border, '--cat-bg': color.bg, '--cat-text': color.text }}>
-                          <span>{name}</span>
-                          <strong>{formatMoney(amount)}</strong>
-                          <button className={styles.actionBtn} type="button" onClick={() => saveCatBudget(name, 0)}>×</button>
-                        </div>
-                      )
-                    })}
-                    {!Object.values(visibleCatBudgets).some(amount => Number(amount || 0) > 0) && <p className={styles.emptyAnalytics}>Noch kein Budget gespeichert.</p>}
                   </div>
                 </div>
 
@@ -3658,19 +3583,6 @@ ${manualEntries.length ? `
                 .sort((a, b) => b.amount - a.amount)
                 .slice(0, 8)
               const topCats = [...categoryTotals].slice(0, 6)
-              const budgetCats = categoryTotals.map(([cat, actual]) => {
-                const budget = categoryBudgetValue(catBudgets, cat, categories)
-                const pct = budget > 0 ? Math.min((actual / budget) * 100, 100) : null
-                const status = !budget ? 'none' : actual >= budget ? 'over' : actual / budget >= 0.75 ? 'warn' : 'ok'
-                return { cat, actual, budget, pct, status }
-              })
-              const budgetedCats   = budgetCats.filter(c => c.budget > 0)
-              const unbudgetedCats = budgetCats.filter(c => c.budget === 0)
-              const overBudgetCats = budgetedCats.filter(c => c.status === 'over')
-              const totalBudget    = budgetedCats.reduce((s, c) => s + c.budget, 0)
-              const totalActual    = budgetedCats.reduce((s, c) => s + c.actual, 0)
-              const totalBudgetPct = totalBudget > 0 ? Math.min((totalActual / totalBudget) * 100, 100) : 0
-
               // last 6 months data for trend
               const last6 = Array.from({ length: 6 }, (_, i) => {
                 const d = new Date()
@@ -3682,9 +3594,6 @@ ${manualEntries.length ? `
                 return { key, label: MONTH_SHORT[d.getMonth()], inc, exp, bal: inc - exp }
               })
               const max6 = Math.max(1, ...last6.map(m => Math.max(m.inc, m.exp)))
-
-              const statusColor = { over: '#dc2626', warn: '#d97706', ok: '#16a34a', none: '#cbd5e1' }
-              const statusLabel = { over: 'Überzogen', warn: 'Achtung', ok: 'OK', none: '—' }
 
               return (
                 <div>
@@ -3701,7 +3610,7 @@ ${manualEntries.length ? `
 
                   {/* ── Report Tabs ── */}
                   <div className={styles.reportTabBar}>
-                    {[['monat','📅 Monat'],['jahr','📊 Jahr'],['top','🏆 Top-Ausgaben'],['budget','🎯 Budget']].map(([id, label]) => (
+                    {[['monat','📅 Monat'],['jahr','📊 Jahr'],['top','🏆 Top-Ausgaben']].map(([id, label]) => (
                       <button key={id} type="button"
                         className={reportTab === id ? styles.reportTabActive : styles.reportTabBtn}
                         onClick={() => setReportTab(id)}>
@@ -3752,20 +3661,17 @@ ${manualEntries.length ? `
                         <div className={styles.reportSection}>
                           <p className={styles.reportSectionTitle}>Ausgaben nach Kategorie</p>
                           {categoryTotals.map(([cat, total]) => {
-                            const budget = categoryBudgetValue(catBudgets, cat, categories)
-                            const pct = budget > 0 ? Math.min((total / budget) * 100, 100) : 0
-                            const col = trafficColor(total, budget)
+                            const pct = summary.expenses > 0 ? (total / summary.expenses) * 100 : 0
                             return (
                               <div key={cat} className={styles.berichtRow}>
                                 <span className={styles.berichtRowLabel}>{cat}</span>
                                 <div className={styles.berichtBarTrack}>
-                                  <div className={styles.berichtBarExpense} style={{ width: `${budget > 0 ? Math.max(pct,2) : 0}%`, background: col || '#f97316' }} />
+                                  <div className={styles.berichtBarExpense} style={{ width: `${Math.min(pct, 100)}%` }} />
                                 </div>
                                 <span className={styles.berichtRowAmt}>
                                   <strong>{formatMoney(total)}</strong>
-                                  <small>{budget ? `${pct.toFixed(0)} %` : '—'}</small>
+                                  <small title="Anteil der Ausgaben">{pct.toFixed(0)} %</small>
                                 </span>
-                                <span style={{ width: 8, height: 8, borderRadius: '50%', background: col || '#e2e8f0', flexShrink: 0 }} />
                               </div>
                             )
                           })}
@@ -3984,73 +3890,6 @@ ${manualEntries.length ? `
                     </div>
                   )}
 
-                  {/* ══ TAB: BUDGET ══ */}
-                  {reportTab === 'budget' && (
-                    <div>
-                      {/* Gesamtübersicht */}
-                      {totalBudget > 0 && (
-                        <div className={styles.reportSection}>
-                          <p className={styles.reportSectionTitle}>Budget-Gesamtstatus</p>
-                          <div className={styles.berichtBudgetOverview}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-                              <span style={{ fontSize: 13, fontWeight: 700 }}>Gesamtbudget</span>
-                              <span style={{ fontSize: 13 }}><strong style={{ color: totalActual > totalBudget ? '#dc2626' : '#0d1b2a' }}>{formatMoney(totalActual)}</strong> / {formatMoney(totalBudget)}</span>
-                            </div>
-                            <div className={styles.budgetBar} style={{ height: 10, borderRadius: 6 }}>
-                              <div className={totalActual >= totalBudget ? styles.budgetBarOver : styles.budgetBarGood} style={{ width: `${totalBudgetPct}%`, borderRadius: 6 }} />
-                            </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6 }}>
-                              <span style={{ fontSize: 11, color: '#94a3b8' }}>{totalBudgetPct.toFixed(0)} % verbraucht</span>
-                              <span style={{ fontSize: 11, color: totalActual > totalBudget ? '#dc2626' : '#16a34a' }}>
-                                {totalActual > totalBudget ? `${formatMoney(totalActual - totalBudget)} überzogen` : `${formatMoney(totalBudget - totalActual)} übrig`}
-                              </span>
-                            </div>
-                          </div>
-                          {overBudgetCats.length > 0 && (
-                            <div className={styles.catErrorBanner} style={{ marginTop: 10 }}>
-                              <span>⚠ {overBudgetCats.length} Kategorie{overBudgetCats.length > 1 ? 'n' : ''} überzogen: {overBudgetCats.map(c => c.cat).join(', ')}</span>
-                            </div>
-                          )}
-                        </div>
-                      )}
-
-                      {/* Per-Kategorie */}
-                      <div className={styles.reportSection}>
-                        <p className={styles.reportSectionTitle}>Kategorien mit Budget ({budgetedCats.length})</p>
-                        {budgetedCats.length > 0 ? budgetedCats.sort((a,b) => (b.pct||0) - (a.pct||0)).map(({ cat, actual, budget, pct, status }) => (
-                          <div key={cat} className={styles.berichtBudgetRow}>
-                            <span className={styles.berichtRowLabel}>{cat}</span>
-                            <div style={{ flex: 1, minWidth: 0 }}>
-                              <div className={styles.berichtBarTrack} style={{ marginBottom: 2 }}>
-                                <div style={{ height: '100%', width: `${pct||0}%`, background: statusColor[status], borderRadius: 4, transition: 'width .4s' }} />
-                              </div>
-                              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <small style={{ color: '#94a3b8', fontSize: 11 }}>{formatMoney(actual)} / {formatMoney(budget)}</small>
-                                <small style={{ color: '#94a3b8', fontSize: 11 }}>{pct?.toFixed(0)} %</small>
-                              </div>
-                            </div>
-                            <span className={styles.berichtStatusBadge} style={{ background: `${statusColor[status]}18`, color: statusColor[status] }}>{statusLabel[status]}</span>
-                          </div>
-                        )) : <p className={styles.emptyAnalytics}>Noch kein Budget gespeichert.</p>}
-                      </div>
-
-                      {unbudgetedCats.length > 0 && (
-                        <div className={styles.reportSection}>
-                          <p className={styles.reportSectionTitle}>Ohne Budget ({unbudgetedCats.length})</p>
-                          <div className={styles.reportGrid}>
-                            {unbudgetedCats.map(({ cat, actual }) => (
-                              <div key={cat} className={styles.reportCard}>
-                                <span>{cat}</span>
-                                <strong>{formatMoney(actual)}</strong>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {categoryTotals.length === 0 && <p className={styles.emptyAnalytics}>Keine Ausgaben für {formatMonthLabel(month)}.</p>}
-                    </div>
-                  )}
 
                 </div>
               )

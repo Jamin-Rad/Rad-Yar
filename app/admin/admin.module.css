@@ -1286,7 +1286,7 @@
 
 .expenseRow {
   display: grid;
-  grid-template-columns: 130px 1fr 90px 14px;
+  grid-template-columns: minmax(0, 1.3fr) 1fr 95px;
   align-items: center;
   gap: 10px;
   padding: 9px 0;
@@ -1294,127 +1294,6 @@
 }
 
 .expenseRow:last-child { border-bottom: none; }
-
-/* ── GLOBAL BUDGET CARD ──────────────────────── */
-.budgetGlobalCard {
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 18px 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.06);
-  margin-bottom: 28px;
-}
-
-.budgetGlobalTop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.budgetGlobalLabel {
-  font-size: 14px;
-  font-weight: 800;
-  color: #0d1b2a;
-  margin: 0 0 4px;
-}
-
-.budgetGlobalSub {
-  font-size: 12px;
-  color: #64748b;
-  margin: 0;
-}
-
-.budgetGlobalForm {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-}
-
-.budgetGlobalInput {
-  width: 120px;
-  padding: 8px 12px;
-  border: 1px solid #e2e8f0;
-  border-radius: 9px;
-  background: #f8fafc;
-  color: #0d1b2a;
-  font: inherit;
-  font-size: 14px;
-  font-weight: 700;
-  text-align: right;
-  outline: none;
-  transition: border-color .15s;
-}
-
-.budgetGlobalInput:focus { border-color: #f97316; background: #fff; }
-
-.budgetGlobalUnit {
-  font-size: 14px;
-  font-weight: 700;
-  color: #64748b;
-}
-
-.budgetBar {
-  height: 8px;
-  background: #f1f5f9;
-  border-radius: 999px;
-  overflow: hidden;
-  margin-top: 14px;
-}
-
-.budgetBarGood {
-  height: 100%;
-  border-radius: 999px;
-  background: #f97316;
-  transition: width .4s ease;
-}
-
-.budgetBarOver {
-  height: 100%;
-  border-radius: 999px;
-  background: #dc2626;
-  transition: width .4s ease;
-}
-
-/* ── TILE BUDGET INPUT ───────────────────────── */
-.tileBudgetRow {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 0 8px;
-  border-bottom: 1px solid rgba(0,0,0,.08);
-  margin-bottom: 8px;
-}
-
-.tileBudgetLabel {
-  font-size: 11px;
-  font-weight: 700;
-  opacity: .65;
-  flex-shrink: 0;
-}
-
-.tileBudgetInput {
-  flex: 1;
-  max-width: 80px;
-  padding: 3px 7px;
-  border: 1px solid;
-  border-radius: 6px;
-  background: rgba(255,255,255,.55);
-  font: inherit;
-  font-size: 12px;
-  font-weight: 700;
-  text-align: right;
-  outline: none;
-}
-
-.tileBudgetUnit {
-  font-size: 11px;
-  font-weight: 600;
-  opacity: .65;
-  flex-shrink: 0;
-}
 
 .financeTabs {
   display: flex;
@@ -1456,63 +1335,6 @@
   font-size: 11px;
   color: #94a3b8;
   margin-left: 3px;
-}
-
-/* Budget setting row */
-.budgetSettingRow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
-  background: #f8fafc;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.budgetSettingRow label {
-  font-size: 12px;
-  font-weight: 700;
-  color: #64748b;
-  white-space: nowrap;
-}
-
-.budgetSettingRow input {
-  flex: 1;
-  min-width: 120px;
-  max-width: 180px;
-  padding: 7px 11px;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  background: #fff;
-  color: #0d1b2a;
-  font: inherit;
-  font-size: 13px;
-  outline: none;
-  transition: border-color .15s;
-}
-
-.budgetSettingRow input:focus {
-  border-color: #f97316;
-}
-
-.budgetSettingRow button {
-  padding: 7px 14px;
-  border-radius: 8px;
-  border: 1px solid rgba(249,115,22,.45);
-  background: rgba(249,115,22,.08);
-  color: #c2410c;
-  font: inherit;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all .15s;
-  white-space: nowrap;
-}
-
-.budgetSettingRow button:hover {
-  background: rgba(249,115,22,.16);
 }
 
 /* Category bars */
@@ -1895,9 +1717,9 @@
     display: none;
   }
 
-  /* Expense row: drop bar, 3-col layout (name | amount | dot) */
+  /* Expense row: name and amount on mobile */
   .expenseRow {
-    grid-template-columns: minmax(0, 1fr) 78px 12px;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 8px;
   }
   .expenseRow .categoryBarTrack {
@@ -2649,102 +2471,6 @@
 }
 
 /* ── BUDGET CATEGORY LIST ────────────────────── */
-.budgetCatList {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.budgetCatRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,.74);
-  border-left-width: 3px;
-  background: rgba(255,255,255,.58);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.68), 0 6px 16px rgba(15,23,42,.04);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.savedBudgetGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 10px;
-}
-
-.savedBudgetBox {
-  position: relative;
-  display: grid;
-  gap: 6px;
-  min-height: 88px;
-  padding: 13px 38px 13px 13px;
-  border: 1px solid color-mix(in srgb, var(--cat-border, #e2e8f0) 24%, #e2e8f0);
-  border-radius: 14px;
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--cat-bg, #f8fafc) 66%, #fff), rgba(255,255,255,.78)),
-    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--cat-border, #f97316) 16%, transparent), transparent 44%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 8px 20px rgba(15,23,42,.06);
-  backdrop-filter: blur(12px) saturate(1.12);
-  -webkit-backdrop-filter: blur(12px) saturate(1.12);
-}
-
-.savedBudgetBox span {
-  color: var(--cat-text, #475569);
-  font-size: 12px;
-  font-weight: 850;
-  line-height: 1.25;
-}
-
-.savedBudgetBox strong {
-  color: #0d1b2a;
-  font-size: 15px;
-  font-weight: 850;
-  font-variant-numeric: tabular-nums;
-}
-
-.savedBudgetBox .actionBtn {
-  position: absolute;
-  top: 9px;
-  right: 9px;
-  width: 24px;
-  height: 24px;
-  padding: 0;
-  border-radius: 999px;
-}
-
-.budgetCatName {
-  font-size: 13px;
-  font-weight: 700;
-  color: #0d1b2a;
-}
-
-.budgetCatInput {
-  width: 90px;
-  padding: 6px 10px;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  background: #fff;
-  color: #0d1b2a;
-  font: inherit;
-  font-size: 13px;
-  font-weight: 700;
-  text-align: right;
-  outline: none;
-  transition: border-color .15s;
-}
-
-.budgetCatInput:focus { border-color: #f97316; }
-
-.budgetCatUnit {
-  font-size: 13px;
-  font-weight: 600;
-  color: #64748b;
-  flex-shrink: 0;
-}
 
 /* ── CATEGORY ACCORDION (entry form) ────────── */
 .financeEntryForm {
@@ -3052,12 +2778,12 @@
   flex-shrink: 0;
 }
 
-.settingsBudgetStack {
+.settingsFixedCostsStack {
   display: grid;
   gap: 22px;
 }
 
-.settingsBudgetStack > .budgetPanel {
+.settingsFixedCostsStack > .budgetPanel {
   background: rgba(255,255,255,.78);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.74), 0 12px 32px rgba(15,23,42,.08);
   backdrop-filter: blur(14px) saturate(1.12);
@@ -3403,32 +3129,6 @@
 
 .berichtStatCard span { font-size: 11px; color: #94a3b8; font-weight: 700; }
 .berichtStatCard strong { font-size: 16px; font-weight: 900; color: #0d1b2a; }
-
-.berichtBudgetOverview {
-  padding: 14px 16px;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  background: #f8fafc;
-}
-
-.berichtBudgetRow {
-  display: grid;
-  grid-template-columns: 130px 1fr auto;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid #f8fafc;
-}
-
-.berichtBudgetRow:last-child { border-bottom: none; }
-
-.berichtStatusBadge {
-  font-size: 11px;
-  font-weight: 800;
-  padding: 3px 8px;
-  border-radius: 999px;
-  white-space: nowrap;
-}
 
 /* ── CATEGORY ERROR BANNER ───────────────────── */
 .catErrorBanner {
@@ -4069,41 +3769,6 @@
   color: #64748b !important;
   font-size: 12px;
   border-top: none;
-}
-
-/* ── CATEGORY BUDGET ROW ─────────────────────── */
-.catBudgetRow {
-  display: grid;
-  grid-template-columns: 130px 1fr 90px 14px 100px;
-  align-items: center;
-  gap: 10px;
-  padding: 4px 0;
-}
-
-.catBudgetInput {
-  width: 100%;
-  padding: 5px 8px;
-  border: 1px solid #e2e8f0;
-  border-radius: 7px;
-  background: #fff;
-  color: #0d1b2a;
-  font: inherit;
-  font-size: 12px;
-  text-align: right;
-  outline: none;
-  transition: border-color .15s;
-}
-
-.catBudgetInput:focus { border-color: #f97316; }
-
-.catBudgetInput::placeholder { color: #cbd5e1; }
-
-.trafficDot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  transition: background .2s;
 }
 
 /* ── FIXKOSTEN ───────────────────────────────── */
@@ -4795,21 +4460,6 @@
   color: var(--text-strong);
 }
 
-:global(html[data-theme='dark']) .budgetSettingRow {
-  background: var(--bg-soft);
-  border-color: var(--border);
-}
-
-:global(html[data-theme='dark']) .budgetSettingRow label {
-  color: var(--text-muted);
-}
-
-:global(html[data-theme='dark']) .budgetSettingRow input {
-  background: var(--bg-card);
-  border-color: var(--border);
-  color: var(--text-strong);
-}
-
 :global(html[data-theme='dark']) .categoryName {
   color: var(--text-strong);
 }
@@ -4822,20 +4472,12 @@
   color: var(--text-strong);
 }
 
-:global(html[data-theme='dark']) .financeRowAmount strong,
-:global(html[data-theme='dark']) .savedBudgetBox strong {
+:global(html[data-theme='dark']) .financeRowAmount strong {
   color: var(--text-strong);
 }
 
 :global(html[data-theme='dark']) .financeRowAmount small {
   color: var(--text-muted);
-}
-
-:global(html[data-theme='dark']) .savedBudgetBox {
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--cat-bg, var(--bg-card)) 16%, var(--bg-card)), color-mix(in srgb, var(--bg-card) 88%, transparent)),
-    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--cat-border, #f97316) 18%, transparent), transparent 44%);
-  border-color: var(--border);
 }
 
 :global(html[data-theme='dark']) .reportCard {
@@ -5173,8 +4815,7 @@
 }
 
 :global(html[data-theme='dark']) .entryAmountPanel,
-:global(html[data-theme='dark']) .entrySubmitBar,
-:global(html[data-theme='dark']) .budgetCatRow {
+:global(html[data-theme='dark']) .entrySubmitBar {
   background: rgba(15,23,42,.50);
   border-color: rgba(148,163,184,.16);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 8px 22px rgba(0,0,0,.14);
@@ -5191,33 +4832,6 @@
 
 :global(html[data-theme='dark']) .expenseRow {
   border-bottom-color: var(--border-soft);
-}
-
-:global(html[data-theme='dark']) .budgetGlobalCard {
-  background: var(--bg-card);
-  border-color: var(--border);
-}
-
-:global(html[data-theme='dark']) .budgetGlobalLabel {
-  color: var(--text-strong);
-}
-
-:global(html[data-theme='dark']) .budgetGlobalSub {
-  color: var(--text-muted);
-}
-
-:global(html[data-theme='dark']) .budgetGlobalInput {
-  background: var(--bg-soft);
-  border-color: var(--border);
-  color: var(--text-strong);
-}
-
-:global(html[data-theme='dark']) .budgetGlobalUnit {
-  color: var(--text-muted);
-}
-
-:global(html[data-theme='dark']) .budgetBar {
-  background: var(--bg-soft);
 }
 
 /* New features dark mode */
@@ -5252,17 +4866,11 @@
   background: rgba(249,115,22,.1);
 }
 
-:global(html[data-theme='dark']) .catBudgetInput {
-  background: var(--bg-soft);
-  border-color: var(--border);
-  color: var(--text-strong);
-}
-
 :global(html[data-theme='dark']) .fixedCostsHeader,
 :global(html[data-theme='dark']) .fixedCard,
 :global(html[data-theme='dark']) .fixedFormPanel,
 :global(html[data-theme='dark']) .planActionBar,
-:global(html[data-theme='dark']) .settingsBudgetStack > .budgetPanel {
+:global(html[data-theme='dark']) .settingsFixedCostsStack > .budgetPanel {
   background: color-mix(in srgb, var(--bg-card) 86%, transparent);
   border-color: var(--border);
 }
@@ -5859,16 +5467,6 @@
 }
 
 :global(html[data-theme='dark']) .berichtStatCard strong {
-  color: var(--text-strong);
-}
-
-:global(html[data-theme='dark']) .berichtBudgetOverview {
-  border-color: var(--border);
-  background: var(--bg-soft);
-}
-
-:global(html[data-theme='dark']) .berichtBudgetRow {
-  border-bottom-color: var(--border-soft);
   color: var(--text-strong);
 }
 
@@ -6649,7 +6247,7 @@
   .financeBalanceSplit { gap: 18px; }
   .financeMetrics { grid-template-columns: 1fr; }
   .financeMetric, .financeMetric:last-child { grid-column: auto; min-height: 112px; }
-  .expenseRow { grid-template-columns: minmax(0,1fr) 78px 12px; }
+  .expenseRow { grid-template-columns: minmax(0, 1fr) auto; }
   .expenseRow .categoryBarTrack { display: none; }
   .scopedCategoryLocked { display: inline-flex; }
 }
@@ -6922,7 +6520,7 @@
 .settingsSectionTabActive .settingsSectionCopy small { color: #cfd4dc; }
 
 .planActionBar {
-  grid-template-columns: minmax(160px, 1fr) minmax(190px, .8fr) auto auto;
+  grid-template-columns: minmax(160px, 1fr) minmax(190px, .8fr) auto;
 }
 
 .planStartMonthField {
