@@ -438,6 +438,12 @@ function getAnatomyTopicItems(topic) {
   return topic.items || []
 }
 
+function centerAnatomyZoom(node) {
+  if (!node) return
+  node.scrollLeft = Math.max(0, (node.scrollWidth - node.clientWidth) / 2)
+  node.scrollTop = Math.max(0, (node.scrollHeight - node.clientHeight) / 2)
+}
+
 function AnatomieModal({ copy, lang, onClose }) {
   const topics = REF_DATA.anatomie
   const [topicId, setTopicId] = useState(topics[0].id)
@@ -608,6 +614,7 @@ function AnatomieModal({ copy, lang, onClose }) {
           <button type="button" className={styles.measurementZoomClose} onClick={() => setZoomImage(null)} aria-label={copy.close}>×</button>
           <div
             className={zoomImage.imageLayout === 'wide' ? styles.anatomyReferenceZoom : undefined}
+            ref={zoomImage.imageLayout === 'wide' ? centerAnatomyZoom : undefined}
             onClick={event => event.stopPropagation()}
             tabIndex={zoomImage.imageLayout === 'wide' ? 0 : undefined}
             role={zoomImage.imageLayout === 'wide' ? 'region' : undefined}
