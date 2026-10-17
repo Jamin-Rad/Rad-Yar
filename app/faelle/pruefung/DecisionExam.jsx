@@ -69,6 +69,8 @@ export default function DecisionExam({ cases, lang, timed = false, onFinish, onP
   const record=currentRecords[question.id] || {}
   const evidence=scene(item,question,lang)
   const stageSeries=item.stages[question.stage].series || []
+  const hasEvidenceColumn=stageSeries.length>0
+  const caseHistory=round>0 ? <details className={styles.caseFile}><summary>{ui.history}</summary>{[...new Set(item.decisionExam.slice(0,round).map(q=>scene(item,q,lang).narrative))].map((text,index)=><p key={index}>{text}</p>)}</details> : null
   const parentTimed=timed && Number.isFinite(timeRemaining)
   const remaining=parentTimed ? timeRemaining : seconds
   const expired=timed && remaining===0
@@ -117,17 +119,18 @@ export default function DecisionExam({ cases, lang, timed = false, onFinish, onP
     </section> : <>
       <div className={styles.heading}><div><p className={styles.eyebrow}>{ui.case} <bdi>{String(caseIndex+1).padStart(2,'0')}</bdi></p><h1>{pick(item.title,lang)}</h1></div><p className={styles.round}>{ui.round} <bdi>{round+1} / {item.decisionExam.length}</bdi></p></div>
       <ol className={styles.progress} aria-label={ui.completed}>{item.decisionExam.map((q,index)=><li key={q.id} data-state={index<round?'done':index===round?'current':'waiting'} aria-current={index===round?'step':undefined}><span>{index+1}</span><strong>{index>round ? (UPCOMING[lang] || UPCOMING.de) : pick(item.stages[q.stage].shortTitle,lang)}</strong></li>)}</ol>
-      <div className={styles.layout}>
-        <aside className={styles.evidence} aria-label={ui.images}>
-          {stageSeries.length>0 ? <CaseStackViewer key={`${item.id}:${question.stage}`} series={stageSeries} lang={lang} credit={item.credit}/> : <div className={styles.clinical}><span className={styles.eyebrow}>{ui.clinical}</span><p>{pick(item.vignette,lang)}</p></div>}
-          <details className={styles.caseFile}><summary>{ui.history}</summary>{[...new Set(item.decisionExam.slice(0,round).map(q=>scene(item,q,lang).narrative))].map((text,index)=><p key={index}>{text}</p>)}{round===0 && <p>{ui.noNotes}</p>}<p className={styles.muted}>{pick(item.scenarioNote,lang)}</p></details>
-        </aside>
+      <div className={[styles.layout,!hasEvidenceColumn && styles.textOnlyLayout].filter(Boolean).join(' ')}>
+        {hasEvidenceColumn && <aside className={styles.evidence} aria-label={ui.images}>
+          <CaseStackViewer key={`${item.id}:${question.stage}`} series={stageSeries} lang={lang} credit={item.credit}/>
+          {caseHistory}
+        </aside>}
         <section className={styles.questionPanel} aria-label={ui.examiner}>
           <section className={styles.newInformation}><h2>{pick(item.stages[question.stage].title,lang)}</h2><p>{evidence.narrative}</p></section>
           {followUp && <p className={styles.previousChoice}>{ui.recorded} „{pick(question.options.find(option=>option.id===record.answer)?.text,lang)}“</p>}
           <h2 ref={heading} tabIndex={-1} className={styles.question}>{pick(currentQuestion.prompt,lang)}</h2>
           <div className={styles.options} role="group" aria-label={pick(currentQuestion.prompt,lang)}>{currentQuestion.options.map(option=><button key={option.id} type="button" className={styles.option} aria-pressed={choice===option.id} disabled={locked} onClick={()=>setChoice(option.id)}><span className={styles.optionLetter}>{option.id}</span><span>{pick(option.text,lang)}</span></button>)}</div>
           <div className={styles.actions}>{!locked ? <button type="button" className={styles.primary} onClick={confirm} disabled={!choice}>{ui.confirm}<Arrow/></button> : <><p role="status" className={styles.saved}>{ui.saved}</p>{!timed && <section className={styles.feedback} aria-label={ui.solution} data-correct={choice===currentQuestion.correct}><h3>{choice===currentQuestion.correct ? (lang==='fa'?'پاسخ درست است':lang==='en'?'Correct':'Richtig') : (lang==='fa'?'پاسخ درست':lang==='en'?'Correct answer':'Richtige Antwort')}{choice!==currentQuestion.correct && <>: {currentQuestion.correct}</>}</h3>{choice!==currentQuestion.correct && <p><strong>{pick(currentQuestion.options.find(option=>option.id===currentQuestion.correct).text,lang)}</strong></p>}<p>{pick(currentQuestion.explanation,lang)}</p></section>}<button type="button" className={styles.primary} onClick={next}>{round+1===item.decisionExam.length?ui.summary:ui.continue}<Arrow/></button></>}</div>
+          {!hasEvidenceColumn && caseHistory}
         </section>
       </div>
     </>}

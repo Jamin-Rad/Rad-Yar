@@ -22,6 +22,8 @@ Both stories were reviewed from beginning to end in German, English and Persian.
 
 The numbered timeline labels only the current and completed decisions. Future steps display a neutral “Später / Later / بعداً” label, including for assistive technology, so an upcoming CT/MRI label cannot answer the current investigation-choice question. No future sequence name is put in a tooltip or accessible label.
 
+Clinical history appears once in the current stage, including the patient's age and essential background. Stages without imaging use a centred single column instead of repeating the vignette in an image-column placeholder. The past-information disclosure starts only after the first decision; source/adaptation commentary remains in final review rather than cluttering the active case.
+
 | Story / decision | Available evidence | Decision being assessed | Information withheld until later |
 | --- | --- | --- | --- |
 | Haemorrhage 1 | Presenting headache and remote temporal bleed; no images | Initial investigation | CT location, ventricular compression and hydrocephalus |
