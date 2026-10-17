@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+import CaseStackViewer from './CaseStackViewer'
 import { decisionOutcome } from '@/data/caaStoryCases.mjs'
 import styles from './DecisionExam.module.css'
 
@@ -16,26 +16,9 @@ const DOMAINS = ['observation','investigation','interpretation','diagnosis']
 
 function Arrow() { return <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg> }
 
-function CaseImage({ media, lang, ui, reveal = false }) {
-  const dialog = useRef(null)
-  if (!media) return null
-  return <figure className={styles.figure} data-no-zoom>
-    <button type="button" className={styles.imageButton} onClick={() => dialog.current?.showModal()} aria-label={ui.enlarge}>
-      <Image src={media.image} unoptimized alt={ui.images} width={media.width} height={media.height} sizes="(max-width: 800px) 95vw, 55vw" priority />
-      <span>{ui.enlarge} <Arrow/></span>
-    </button>
-    <figcaption>{pick(media.imageCaption,lang)}<small>{media.imageCredit}</small></figcaption>
-    <dialog ref={dialog} className={styles.dialog} onClick={event => { if(event.target === dialog.current) dialog.current.close() }} aria-label={ui.images}>
-      <button type="button" onClick={() => dialog.current?.close()} autoFocus>{ui.close}</button>
-      <Image src={media.image} unoptimized alt={ui.images} width={media.width} height={media.height} sizes="95vw"/>
-    </dialog>
-  </figure>
-}
-
 function scene(item, question, lang) {
   const stage=item.stages[question.stage]
-  const media=stage?.image ? stage : null
-  return { narrative:pick(stage?.narrative || item.vignette,lang),media }
+  return { narrative:pick(stage?.narrative || item.vignette,lang) }
 }
 
 export function DecisionReview({ item, records = {}, lang }) {
@@ -75,7 +58,6 @@ export default function DecisionExam({ cases, lang, timed = false, onFinish, onP
   const [records,setRecords]=useState({})
   const [review,setReview]=useState(false)
   const [complete,setComplete]=useState(false)
-  const [selectedMedia,setSelectedMedia]=useState(null)
   const [seconds,setSeconds]=useState(cases.length*480)
   const heading=useRef(null)
   const item=cases[caseIndex]
@@ -84,9 +66,7 @@ export default function DecisionExam({ cases, lang, timed = false, onFinish, onP
   const currentRecords=records[item.id] || {}
   const record=currentRecords[question.id] || {}
   const evidence=scene(item,question,lang)
-  // Keep the first image after it is unlocked; do not reveal later images early.
-  const unlockedMedia=item.stages.slice(0,question.stage+1).flatMap(stage=>[...(stage.image?[stage]:[]),...(stage.additionalImages || [])])
-  const media=unlockedMedia.find(image=>image.image===selectedMedia) || evidence.media || unlockedMedia.at(-1)
+  const stageSeries=item.stages[question.stage].series || []
   const parentTimed=timed && Number.isFinite(timeRemaining)
   const remaining=parentTimed ? timeRemaining : seconds
   const expired=timed && remaining===0
@@ -114,16 +94,15 @@ export default function DecisionExam({ cases, lang, timed = false, onFinish, onP
     else if(round+1<item.decisionExam.length){setRound(value=>value+1);setFollowUp(false)}
     else {setReview(true)}
     setChoice(null);setLocked(false)
-    setSelectedMedia(null)
     window.scrollTo({top:0,behavior:'instant'})
   }
   const advance=()=>{
-    if(caseIndex+1<cases.length){setCaseIndex(value=>value+1);setRound(0);setFollowUp(false);setReview(false);setChoice(null);setLocked(false);setSelectedMedia(null)}
+    if(caseIndex+1<cases.length){setCaseIndex(value=>value+1);setRound(0);setFollowUp(false);setReview(false);setChoice(null);setLocked(false)}
     else if(onFinish){onFinish(records)}
     else {setComplete(true)}
     window.scrollTo({top:0,behavior:'instant'})
   }
-  const retry=()=>{setCaseIndex(0);setRound(0);setChoice(null);setLocked(false);setFollowUp(false);setRecords({});setReview(false);setComplete(false);setSelectedMedia(null);setSeconds(cases.length*480)}
+  const retry=()=>{setCaseIndex(0);setRound(0);setChoice(null);setLocked(false);setFollowUp(false);setRecords({});setReview(false);setComplete(false);setSeconds(cases.length*480)}
   const backHref=lang==='de'?'/faelle':`/faelle?lang=${lang}`
   return <main className={styles.page} dir={lang==='fa'?'rtl':'ltr'} lang={lang}>
     <header className={styles.topbar}><Link href={backHref}>{ui.back}</Link><span>{ui.title} <bdi>{String(caseIndex+1).padStart(2,'0')} / {String(cases.length).padStart(2,'0')}</bdi></span><span className={styles.mode}>{timed ? <>{ui.time} <bdi>{Math.floor(remaining/60)}:{String(remaining%60).padStart(2,'0')}</bdi></> : ui.learning}</span></header>
@@ -138,7 +117,7 @@ export default function DecisionExam({ cases, lang, timed = false, onFinish, onP
       <ol className={styles.progress} aria-label={ui.completed}>{item.decisionExam.map((q,index)=><li key={q.id} data-state={index<round?'done':index===round?'current':'waiting'} aria-current={index===round?'step':undefined}><span>{index+1}</span><strong>{pick(item.stages[q.stage].shortTitle,lang)}</strong></li>)}</ol>
       <div className={styles.layout}>
         <aside className={styles.evidence} aria-label={ui.images}>
-          {media ? <><CaseImage key={media.image} media={media} lang={lang} ui={ui}/>{unlockedMedia.length>1 && <div className={styles.mediaTabs} role="group" aria-label={ui.images}>{unlockedMedia.map(image=><button key={image.image} type="button" aria-pressed={media.image===image.image} onClick={()=>setSelectedMedia(image.image)}>{pick(image.imageCaption,lang)}</button>)}</div>}</> : <div className={styles.clinical}><span className={styles.eyebrow}>{ui.clinical}</span><p>{pick(item.vignette,lang)}</p></div>}
+          {stageSeries.length>0 ? <CaseStackViewer key={`${item.id}:${question.stage}`} series={stageSeries} lang={lang} credit={item.credit}/> : <div className={styles.clinical}><span className={styles.eyebrow}>{ui.clinical}</span><p>{pick(item.vignette,lang)}</p></div>}
           <details className={styles.caseFile}><summary>{ui.history}</summary>{[...new Set(item.decisionExam.slice(0,round).map(q=>scene(item,q,lang).narrative))].map((text,index)=><p key={index}>{text}</p>)}{round===0 && <p>{ui.noNotes}</p>}<p className={styles.muted}>{pick(item.scenarioNote,lang)}</p></details>
         </aside>
         <section className={styles.questionPanel} aria-label={ui.examiner}>

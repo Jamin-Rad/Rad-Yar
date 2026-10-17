@@ -1,3 +1,4 @@
+import { getCaseStageSeries } from './caaExamSeries.mjs'
 const L = (de,en,fa) => ({de,en,fa})
 const Q = (id,domain,stage,prompt,options,correct,explanation) => ({id,domain,stage,prompt,options:options.map((text,i)=>({id:'ABCD'[i],text})),correct,explanation})
 const S = (id,title,narrative,image=null,imageCaption=null,width=512,height=512) => ({id,title,shortTitle:title,narrative,...(image?{image:'/caa/exams/radiopaedia/'+image,imageCaption,imageAlt:imageCaption,width,height}:{})})
@@ -69,7 +70,7 @@ export const CAA_PRUEFUNG_CASES = cases.map(item => {
     sourceLabel:L('Radiopaedia · Originalfall','Radiopaedia · source case','Radiopaedia · کیس منبع'),
     scenarioNote:L('Der Verlauf folgt dem verlinkten Originalfall; Reihenfolge und Fragen sind didaktisch aufbereitet. Ausgewählte Originalbilder und zusätzliche Angaben aus dem vollständigen Bericht werden getrennt kenntlich gemacht.','The narrative follows the linked source case; the sequence and questions are adapted for teaching. Selected source images are distinguished from additional findings in the full report.','روایت بر اساس کیس منبع است و ترتیب و پرسش‌ها آموزشی تنظیم شده‌اند. تصاویر منتخب اصلی از یافته‌های تکمیلی گزارش کامل تفکیک می‌شوند.'),
     references:[{label:'Boston v2.0 · Charidimou et al., 2022',url:'https://pmc.ncbi.nlm.nih.gov/articles/PMC9389452/'},{label:'CAA-ri · Auriel et al., 2016',url:'https://pubmed.ncbi.nlm.nih.gov/26720093/'}],
-    stages:item.stages.map(stage=>({...stage,...(stage.image?{imageCredit:item.credit}:{}),additionalImages:stage.additionalImages?.map(image=>({...image,imageCredit:item.credit}))})),
+    stages:item.stages.map((stage,index)=>({...stage,series:getCaseStageSeries(item.id,index),...(stage.image?{imageCredit:item.credit}:{}),additionalImages:stage.additionalImages?.map(image=>({...image,imageCredit:item.credit}))})),
   }
 })
 
