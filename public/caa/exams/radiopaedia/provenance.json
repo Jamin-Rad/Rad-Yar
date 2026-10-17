@@ -1,0 +1,31 @@
+{
+  "reviewed": "2026-10-17",
+  "license": "CC BY-NC-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+  "adaptation": "Clinical course translated and reorganised as educational multiple-choice decisions. Image pixels unchanged. Image-based observations are distinguished from findings reported for the complete study. No synthetic diagnostic images or invented follow-up scans.",
+  "cases": [
+    {
+      "rid": 40475,
+      "author": "RMH Neuropathology",
+      "source": "https://radiopaedia.org/cases/cerebral-amyloid-angiopathy-multiple-intracranial-haemorrhages",
+      "assets": [
+        {"file":"40475-ct-cerebellum.png","sequence":"Axial non-contrast CT","study":43044,"url":"https://prod-images-static.radiopaedia.org/images/16757262/a2b9a6d68c6c96acc921f2306edc51.png"},
+        {"file":"40475-gre.png","sequence":"Axial gradient echo","study":43048,"url":"https://prod-images-static.radiopaedia.org/images/16758669/b8f1cf624dd2463069dab40f054315.png"},
+        {"file":"40475-ct-deterioration.png","sequence":"Axial CT arterial phase","study":43052,"url":"https://prod-images-static.radiopaedia.org/images/16762308/52eb0be1486a62927458e858ef684a.png"}
+      ]
+    },
+    {
+      "rid":147140,
+      "author":"Yves Leonard Voss",
+      "source":"https://radiopaedia.org/cases/cerebral-amyloid-angiopathy-related-inflammation-caa-ri-1",
+      "study":122561,
+      "assets":[
+        {"file":"147140-flair.jpg","sequence":"Axial T2 FLAIR","url":"https://prod-images-static.radiopaedia.org/images/58827167/10..jpg"},
+        {"file":"147140-swi.jpg","sequence":"Axial SWI","url":"https://prod-images-static.radiopaedia.org/images/58826926/44..jpg"},
+        {"file":"147140-swi-minip.jpg","sequence":"Axial SWI minIP","url":"https://prod-images-static.radiopaedia.org/images/59584243/d732bfe9ec1e384e92fa236d9737e643dcf90ddce38b599fe583312bda6063c6_big_gallery.jpeg"},
+        {"file":"147140-dwi.jpg","sequence":"Axial DWI b1000","url":"https://prod-images-static.radiopaedia.org/images/58826777/9..jpg"},
+        {"file":"147140-adc.jpg","sequence":"Axial ADC","url":"https://prod-images-static.radiopaedia.org/images/58826800/10..jpg"}
+      ]
+    }
+  ]
+}

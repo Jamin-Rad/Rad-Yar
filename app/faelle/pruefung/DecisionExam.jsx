@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { decisionOutcome } from '@/data/caaDecisionExam.mjs'
+import { decisionOutcome } from '@/data/caaStoryCases.mjs'
 import styles from './DecisionExam.module.css'
 
 const pick = (value, lang) => typeof value === 'string' ? value : value?.[lang] || value?.de || ''
@@ -19,12 +19,12 @@ function Arrow() { return <svg width="18" height="18" viewBox="0 0 24 24" fill="
 function CaseImage({ media, lang, ui, reveal = false }) {
   const dialog = useRef(null)
   if (!media) return null
-  return <figure className={styles.figure}>
+  return <figure className={styles.figure} data-no-zoom>
     <button type="button" className={styles.imageButton} onClick={() => dialog.current?.showModal()} aria-label={ui.enlarge}>
       <Image src={media.image} unoptimized alt={ui.images} width={media.width} height={media.height} sizes="(max-width: 800px) 95vw, 55vw" priority />
       <span>{ui.enlarge} <Arrow/></span>
     </button>
-    <figcaption>{reveal ? pick(media.imageCaption,lang) : ui.compare}<small>{media.imageCredit}</small></figcaption>
+    <figcaption>{pick(media.imageCaption,lang)}<small>{media.imageCredit}</small></figcaption>
     <dialog ref={dialog} className={styles.dialog} onClick={event => { if(event.target === dialog.current) dialog.current.close() }} aria-label={ui.images}>
       <button type="button" onClick={() => dialog.current?.close()} autoFocus>{ui.close}</button>
       <Image src={media.image} unoptimized alt={ui.images} width={media.width} height={media.height} sizes="95vw"/>
@@ -33,11 +33,8 @@ function CaseImage({ media, lang, ui, reveal = false }) {
 }
 
 function scene(item, question, lang) {
-  if (question.stage === 'ct-image') return { narrative:pick(item.stages[1].narrative,lang), media:item.stages.find(stage => stage.image) }
-  if (question.stage === 'surface-image') return { narrative:pick(question.evidence,lang), media:item.stages.at(-1) }
   const stage=item.stages[question.stage]
-  // Clinical findings arrive progressively; previously unlocked images remain available.
-  const media=Number(question.stage)>=2 ? item.stages.slice(0,Number(question.stage)+1).find(stage => stage.image) : null
+  const media=stage?.image ? stage : null
   return { narrative:pick(stage?.narrative || item.vignette,lang),media }
 }
 
@@ -50,7 +47,6 @@ export function DecisionReview({ item, records = {}, lang }) {
       const correct=questions.filter(q=>decisionOutcome(q,records[q.id]?.answer)==='independent').length
       return <div key={domain}><span>{ui[domain]}</span><strong><bdi>{correct} / {questions.length}</bdi></strong></div>
     })}</div>
-    <p className={styles.muted}>{ui.supportedNote}</p>
     {item.decisionExam.map((question,index)=>{
       const record=records[question.id] || {}
       const outcome=decisionOutcome(question,record.answer,record.followUpAnswer)
@@ -79,6 +75,7 @@ export default function DecisionExam({ cases, lang, timed = false, onFinish, onP
   const [records,setRecords]=useState({})
   const [review,setReview]=useState(false)
   const [complete,setComplete]=useState(false)
+  const [selectedMedia,setSelectedMedia]=useState(null)
   const [seconds,setSeconds]=useState(cases.length*480)
   const heading=useRef(null)
   const item=cases[caseIndex]
@@ -88,8 +85,8 @@ export default function DecisionExam({ cases, lang, timed = false, onFinish, onP
   const record=currentRecords[question.id] || {}
   const evidence=scene(item,question,lang)
   // Keep the first image after it is unlocked; do not reveal later images early.
-  const unlockedMedia=item.decisionExam.slice(0,round+1).map(q=>scene(item,q,lang).media).filter(Boolean)
-  const media=evidence.media || unlockedMedia.at(-1)
+  const unlockedMedia=item.stages.slice(0,question.stage+1).flatMap(stage=>[...(stage.image?[stage]:[]),...(stage.additionalImages || [])])
+  const media=unlockedMedia.find(image=>image.image===selectedMedia) || evidence.media || unlockedMedia.at(-1)
   const parentTimed=timed && Number.isFinite(timeRemaining)
   const remaining=parentTimed ? timeRemaining : seconds
   const expired=timed && remaining===0
@@ -117,14 +114,16 @@ export default function DecisionExam({ cases, lang, timed = false, onFinish, onP
     else if(round+1<item.decisionExam.length){setRound(value=>value+1);setFollowUp(false)}
     else {setReview(true)}
     setChoice(null);setLocked(false)
+    setSelectedMedia(null)
+    window.scrollTo({top:0,behavior:'instant'})
   }
   const advance=()=>{
-    if(caseIndex+1<cases.length){setCaseIndex(value=>value+1);setRound(0);setFollowUp(false);setReview(false);setChoice(null);setLocked(false)}
+    if(caseIndex+1<cases.length){setCaseIndex(value=>value+1);setRound(0);setFollowUp(false);setReview(false);setChoice(null);setLocked(false);setSelectedMedia(null)}
     else if(onFinish){onFinish(records)}
     else {setComplete(true)}
     window.scrollTo({top:0,behavior:'instant'})
   }
-  const retry=()=>{setCaseIndex(0);setRound(0);setChoice(null);setLocked(false);setFollowUp(false);setRecords({});setReview(false);setComplete(false);setSeconds(cases.length*480)}
+  const retry=()=>{setCaseIndex(0);setRound(0);setChoice(null);setLocked(false);setFollowUp(false);setRecords({});setReview(false);setComplete(false);setSelectedMedia(null);setSeconds(cases.length*480)}
   const backHref=lang==='de'?'/faelle':`/faelle?lang=${lang}`
   return <main className={styles.page} dir={lang==='fa'?'rtl':'ltr'} lang={lang}>
     <header className={styles.topbar}><Link href={backHref}>{ui.back}</Link><span>{ui.title} <bdi>{String(caseIndex+1).padStart(2,'0')} / {String(cases.length).padStart(2,'0')}</bdi></span><span className={styles.mode}>{timed ? <>{ui.time} <bdi>{Math.floor(remaining/60)}:{String(remaining%60).padStart(2,'0')}</bdi></> : ui.learning}</span></header>
@@ -136,19 +135,18 @@ export default function DecisionExam({ cases, lang, timed = false, onFinish, onP
       <div className={styles.resultActions}>{!complete && <button type="button" className={styles.primary} onClick={advance}>{caseIndex+1<cases.length?ui.nextCase:ui.finish}<Arrow/></button>}{complete && onFinish && <button type="button" className={styles.primary} onClick={()=>onFinish(records)}>{ui.finish}<Arrow/></button>}{complete && <button type="button" className={styles.primary} onClick={retry}>{ui.retry}</button>}<Link href={backHref}>{ui.back}</Link></div>
     </section> : <>
       <div className={styles.heading}><div><p className={styles.eyebrow}>{ui.case} <bdi>{String(caseIndex+1).padStart(2,'0')}</bdi></p><h1>{pick(item.title,lang)}</h1></div><p className={styles.round}>{ui.round} <bdi>{round+1} / {item.decisionExam.length}</bdi></p></div>
-      <div className={styles.progress} aria-label={ui.completed}>{item.decisionExam.map((q,index)=><span key={q.id} data-state={index<round?'done':index===round?'current':'waiting'}/>)}</div>
+      <ol className={styles.progress} aria-label={ui.completed}>{item.decisionExam.map((q,index)=><li key={q.id} data-state={index<round?'done':index===round?'current':'waiting'} aria-current={index===round?'step':undefined}><span>{index+1}</span><strong>{pick(item.stages[q.stage].shortTitle,lang)}</strong></li>)}</ol>
       <div className={styles.layout}>
         <aside className={styles.evidence} aria-label={ui.images}>
-          {media ? <CaseImage key={media.image} media={media} lang={lang} ui={ui}/> : <div className={styles.clinical}><span className={styles.eyebrow}>{ui.clinical}</span><p>{pick(item.vignette,lang)}</p></div>}
-          <section className={styles.newInformation}><h2>{ui.newInfo}</h2><p>{evidence.narrative}</p></section>
+          {media ? <><CaseImage key={media.image} media={media} lang={lang} ui={ui}/>{unlockedMedia.length>1 && <div className={styles.mediaTabs} role="group" aria-label={ui.images}>{unlockedMedia.map(image=><button key={image.image} type="button" aria-pressed={media.image===image.image} onClick={()=>setSelectedMedia(image.image)}>{pick(image.imageCaption,lang)}</button>)}</div>}</> : <div className={styles.clinical}><span className={styles.eyebrow}>{ui.clinical}</span><p>{pick(item.vignette,lang)}</p></div>}
           <details className={styles.caseFile}><summary>{ui.history}</summary>{[...new Set(item.decisionExam.slice(0,round).map(q=>scene(item,q,lang).narrative))].map((text,index)=><p key={index}>{text}</p>)}{round===0 && <p>{ui.noNotes}</p>}<p className={styles.muted}>{pick(item.scenarioNote,lang)}</p></details>
         </aside>
         <section className={styles.questionPanel} aria-label={ui.examiner}>
-          <p className={styles.examiner}>{followUp?ui.followUp:ui.examiner}<span>{ui[question.domain]}</span></p>
+          <section className={styles.newInformation}><h2>{pick(item.stages[question.stage].title,lang)}</h2><p>{evidence.narrative}</p></section>
           {followUp && <p className={styles.previousChoice}>{ui.recorded} „{pick(question.options.find(option=>option.id===record.answer)?.text,lang)}“</p>}
           <h2 ref={heading} tabIndex={-1} className={styles.question}>{pick(currentQuestion.prompt,lang)}</h2>
-          <div className={styles.options} role="group" aria-label={pick(currentQuestion.prompt,lang)}>{currentQuestion.options.map(option=><button key={option.id} type="button" className={styles.option} aria-pressed={choice===option.id} disabled={locked} onClick={()=>setChoice(option.id)}><span className={styles.optionLetter}>{option.id}</span><span>{pick(option.text,lang)}</span><span className={styles.selection} aria-hidden="true">{choice===option.id?'✓':''}</span></button>)}</div>
-          <div className={styles.actions}>{!locked ? <><p className={styles.muted}>{ui.choose}</p><button type="button" className={styles.primary} onClick={confirm} disabled={!choice}>{ui.confirm}<Arrow/></button></> : <><p role="status" className={styles.saved}>{ui.saved}</p><button type="button" className={styles.primary} onClick={next}>{!followUp && record.answer!==question.correct?ui.follow:ui.continue}<Arrow/></button></>}</div>
+          <div className={styles.options} role="group" aria-label={pick(currentQuestion.prompt,lang)}>{currentQuestion.options.map(option=><button key={option.id} type="button" className={styles.option} aria-pressed={choice===option.id} disabled={locked} onClick={()=>setChoice(option.id)}><span className={styles.optionLetter}>{option.id}</span><span>{pick(option.text,lang)}</span></button>)}</div>
+          <div className={styles.actions}>{!locked ? <button type="button" className={styles.primary} onClick={confirm} disabled={!choice}>{ui.confirm}<Arrow/></button> : <><p role="status" className={styles.saved}>{ui.saved}</p>{!timed && <section className={styles.feedback} aria-label={ui.solution} data-correct={choice===currentQuestion.correct}><h3>{choice===currentQuestion.correct ? (lang==='fa'?'پاسخ درست است':lang==='en'?'Correct':'Richtig') : (lang==='fa'?'پاسخ درست':lang==='en'?'Correct answer':'Richtige Antwort')}{choice!==currentQuestion.correct && <>: {currentQuestion.correct}</>}</h3>{choice!==currentQuestion.correct && <p><strong>{pick(currentQuestion.options.find(option=>option.id===currentQuestion.correct).text,lang)}</strong></p>}<p>{pick(currentQuestion.explanation,lang)}</p></section>}<button type="button" className={styles.primary} onClick={next}>{round+1===item.decisionExam.length?ui.summary:ui.continue}<Arrow/></button></>}</div>
         </section>
       </div>
     </>}

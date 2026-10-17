@@ -1,5 +1,5 @@
 import { ICB_PRUEFUNG_CASES } from './icb'
-import { CAA_PRUEFUNG_CASES } from './caaCases'
+import { CAA_PRUEFUNG_CASES } from './caaStoryCases.mjs'
 
 const HAEMANGIOMA_SERIES_LABELS = {
   de: ['T2 · axial', 'Kontrastmittel · venös · axial'],
