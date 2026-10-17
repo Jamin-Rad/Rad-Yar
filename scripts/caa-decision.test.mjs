@@ -49,3 +49,19 @@ test('Only the two requested source cases are active and media belong to their p
     }
   }
 })
+
+// Guard the specific cross-step spoilers found during the editorial walkthrough.
+// Answer options may introduce a differential at its own decision step.
+test('Future complications and diagnoses are not disclosed by earlier teaching text',()=>{
+  const [bleeding,inflammation]=CAA_PRUEFUNG_CASES
+  for(const lang of ['de','en','fa']) {
+    assert.doesNotMatch(bleeding.decisionExam[0].explanation[lang],/hydro[cz]|هیدروسفالی|ventri[kc]|بطن/iu,'Initial test-choice feedback must not reveal the next CT answer')
+    const beforeMRI=[bleeding.title[lang],...bleeding.stages.slice(0,3).map(s=>s.narrative[lang]),...bleeding.decisionExam.slice(0,3).map(q=>q.explanation[lang])].join(' ')
+    assert.doesNotMatch(beforeMRI,/CAA|amyloid|آمیلوئید|sideros|hemosider|hämosider|هموسیدر/iu,'The haemorrhagic pattern is interpreted only after MRI is available')
+    for(const stage of bleeding.stages.slice(0,5)) assert.doesNotMatch(stage.narrative[lang],/β|CD3|CD20|Gewebeprobe|tissue sample|نمونهٔ بافت/iu,'Tissue findings belong to the final stage')
+    const beforeIntegration=[...inflammation.stages.slice(0,3).map(s=>s.narrative[lang]),...inflammation.decisionExam.slice(0,3).map(q=>q.explanation[lang])].join(' ')
+    assert.doesNotMatch(beforeIntegration,/CAA[- ]ri|amyloid|آمیلوئید|ödematös.entzünd|oedematous.inflamm|ادماتو.التهابی|enhancement|leptomeninge|لپتومننژیال|کورتیکواستروئید|corticosteroid|Kortikosteroid/iu,'Observation feedback must not reveal diagnostic integration, contrast or treatment')
+    const beforeResponse=[...inflammation.stages.slice(0,5).map(s=>s.narrative[lang]),...inflammation.decisionExam.slice(0,5).map(q=>q.explanation[lang])].join(' ')
+    assert.doesNotMatch(beforeResponse,/nahezu vollständig|close to normal|تقریباً طبیعی|bildeten sich zurück|FLAIR changes resolved/iu,'The actual treatment response is disclosed only at follow-up')
+  }
+})

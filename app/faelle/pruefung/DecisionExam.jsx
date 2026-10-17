@@ -16,6 +16,8 @@ const DOMAINS = ['observation','investigation','interpretation','diagnosis']
 
 function Arrow() { return <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg> }
 
+const UPCOMING = { de:'Später', en:'Later', fa:'بعداً' }
+
 function scene(item, question, lang) {
   const stage=item.stages[question.stage]
   return { narrative:pick(stage?.narrative || item.vignette,lang) }
@@ -114,7 +116,7 @@ export default function DecisionExam({ cases, lang, timed = false, onFinish, onP
       <div className={styles.resultActions}>{!complete && <button type="button" className={styles.primary} onClick={advance}>{caseIndex+1<cases.length?ui.nextCase:ui.finish}<Arrow/></button>}{complete && onFinish && <button type="button" className={styles.primary} onClick={()=>onFinish(records)}>{ui.finish}<Arrow/></button>}{complete && <button type="button" className={styles.primary} onClick={retry}>{ui.retry}</button>}<Link href={backHref}>{ui.back}</Link></div>
     </section> : <>
       <div className={styles.heading}><div><p className={styles.eyebrow}>{ui.case} <bdi>{String(caseIndex+1).padStart(2,'0')}</bdi></p><h1>{pick(item.title,lang)}</h1></div><p className={styles.round}>{ui.round} <bdi>{round+1} / {item.decisionExam.length}</bdi></p></div>
-      <ol className={styles.progress} aria-label={ui.completed}>{item.decisionExam.map((q,index)=><li key={q.id} data-state={index<round?'done':index===round?'current':'waiting'} aria-current={index===round?'step':undefined}><span>{index+1}</span><strong>{pick(item.stages[q.stage].shortTitle,lang)}</strong></li>)}</ol>
+      <ol className={styles.progress} aria-label={ui.completed}>{item.decisionExam.map((q,index)=><li key={q.id} data-state={index<round?'done':index===round?'current':'waiting'} aria-current={index===round?'step':undefined}><span>{index+1}</span><strong>{index>round ? (UPCOMING[lang] || UPCOMING.de) : pick(item.stages[q.stage].shortTitle,lang)}</strong></li>)}</ol>
       <div className={styles.layout}>
         <aside className={styles.evidence} aria-label={ui.images}>
           {stageSeries.length>0 ? <CaseStackViewer key={`${item.id}:${question.stage}`} series={stageSeries} lang={lang} credit={item.credit}/> : <div className={styles.clinical}><span className={styles.eyebrow}>{ui.clinical}</span><p>{pick(item.vignette,lang)}</p></div>}

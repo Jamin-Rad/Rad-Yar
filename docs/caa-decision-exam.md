@@ -15,3 +15,28 @@ Validation: `scripts/caa-decision.test.mjs` checks all 12 questions in three lan
 Scrollable-stack validation adds `scripts/caa-stack.test.mjs`: every one of the 442 files is compared to the source-order manifest and its SHA-256 hash; stage whitelists and the absence of fabricated follow-up MRI are checked. Actual browser verification covers 36 stages and 54 sequence selections in German/English/Persian, wheel navigation without page scrolling, arrow keys, Home/End bounds, range input, previous/next buttons, enlarged-view synchronisation, successful image loading and stage-only network requests. Desktop (1488/1440 px) and Persian mobile (390 px) show no horizontal overflow or relevant runtime/passive-event errors.
 
 Visual comparison with the generated UI reference checks the white/purple/orange palette, numbered timeline, image/question split, letter-only choices, feedback hierarchy, gold dividers and handwriting-style title. Clinical source images/copy intentionally replace the illustrative mockup content; dark and RTL variants retain the same hierarchy. Design references and screenshots remain outside committed source.
+
+## Editorial walkthrough: evidence before answers
+
+Both stories were reviewed from beginning to end in German, English and Persian. The haemorrhage story now has a neutral presenting-symptom title. Before an imaging-observation question, the narrative gives clinical context and the available sequence rather than supplying the finding to select. Detailed report findings and competing explanations are discussed after commitment. This preserves the distinction between recognising a finding and interpreting it in the following decision: prior images remain legitimate clinical evidence, while the teaching text does not announce the later diagnosis.
+
+The numbered timeline labels only the current and completed decisions. Future steps display a neutral “Später / Later / بعداً” label, including for assistive technology, so an upcoming CT/MRI label cannot answer the current investigation-choice question. No future sequence name is put in a tooltip or accessible label.
+
+| Story / decision | Available evidence | Decision being assessed | Information withheld until later |
+| --- | --- | --- | --- |
+| Haemorrhage 1 | Presenting headache and remote temporal bleed; no images | Initial investigation | CT location, ventricular compression and hydrocephalus |
+| Haemorrhage 2 | Initial non-contrast CT stack | Recognise the urgent complication | GRE findings, recurrent frontoparietal bleed, pathology |
+| Haemorrhage 3 | Same initial CT and hypertension history | Cerebellar counting rule in Boston v2.0 | MRI distribution and underlying diagnosis |
+| Haemorrhage 4 | GRE and intervening surgical context | Integrate the haemorrhagic distribution | Subsequent deterioration and tissue results |
+| Haemorrhage 5 | New deterioration and follow-up CT/CTA | Recognise a new emergency | Tissue confirmation |
+| Haemorrhage 6 | Limited tissue findings | Scope and limits of pathological confirmation | No unsupported formal definite-CAA claim |
+| CAA-ri 1 | Subacute clinical history; no images | Interpret the tempo and choose timely assessment | All MRI findings |
+| CAA-ri 2 | FLAIR alone | Describe location and distribution | Blood-sensitive, diffusion and contrast findings |
+| CAA-ri 3 | SWI/minIP, DWI/ADC and prior FLAIR | Recognise the additional observed findings | Inflammatory interpretation, enhancement and treatment |
+| CAA-ri 4 | Prior sequences plus post-contrast T1 and the reported subtle enhancement | Form a working diagnosis | Actual treatment and response |
+| CAA-ri 5 | Relevant baseline FLAIR/SWI | Choose the next clinical action | Whether corticosteroids were given and whether they worked |
+| CAA-ri 6 | Documented clinical/radiological response; no invented follow-up stack | Interpret response without claiming histological proof | No claim of resolved microbleeds or cure |
+
+The SWI/DWI question now uses four alternative imaging descriptions rather than mixing observed findings with implausible investigation rules. Its feedback explains susceptibility foci and diffusion without calling the pattern inflammatory before diagnostic integration. The initial CT-choice feedback no longer names the complication tested next. MRI differential exclusions, measured haematoma sizes and follow-up mass effect are retained in the appropriate post-answer explanations.
+
+Regression coverage includes the specific cross-step spoilers above in all three languages. Browser walkthroughs additionally check that future narratives/questions/explanations are absent, case history contains only prior stages, feedback appears after commitment in learning mode and is withheld in timed mode, and the correct stage whitelist is used for image requests. The editorial review checks meaning; these automated guards protect the identified failure modes rather than claiming general semantic spoiler detection.
