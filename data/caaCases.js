@@ -1,3 +1,4 @@
+import { CAA_DECISION_EXAMS } from './caaDecisionExam.mjs'
 const L = (de, en, fa) => ({ de, en, fa })
 
 export const CAA_PRUEFUNG_CASES = [
@@ -139,4 +140,4 @@ export const CAA_PRUEFUNG_CASES = [
       { label: 'CAA-ri · Auriel et al., JAMA Neurology 2016', url: 'https://pubmed.ncbi.nlm.nih.gov/26720093/' },
     ],
   },
-].map(item => ({ ...item, imageFindings: item.stages[item.stages.length - 1].narrative }))
+].map(item => ({ ...item, decisionExam: CAA_DECISION_EXAMS[item.id], imageFindings: item.stages[item.stages.length - 1].narrative }))

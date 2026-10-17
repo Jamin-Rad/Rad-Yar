@@ -13,6 +13,7 @@ import MedicalSequenceViewer from '@/components/MedicalSequenceViewer'
 import quizStyles from '@/app/ueben/quiz/page.module.css'
 import styles from './page.module.css'
 import { ProgressiveCase, ExaminerDiscussion } from './ProgressiveCase'
+import DecisionExam, { DecisionReview } from './DecisionExam'
 
 const ADMIN_EMAIL = 'dr.benjaminzia@gmail.com'
 const SECONDS_PER_TIMED_CASE = 150
@@ -184,7 +185,9 @@ function CaseExamContent() {
   const [reviewIndex, setReviewIndex] = useState(0)
 
   const total = cases.length
+  const sessionSeconds = cases.reduce((sum, entry) => sum + (entry.decisionExam ? 480 : SECONDS_PER_TIMED_CASE), 0)
   const item = cases[current]
+  const isDecisionSession = cases.length > 0 && cases.every(entry => entry.decisionExam?.length)
   const isStaged = Boolean(item?.stages?.length)
   const readyToAnswer = !isStaged || revealedStages >= item.stages.length
   const QuestionHeading = isStaged ? 'h2' : 'h1'
@@ -198,19 +201,19 @@ function CaseExamContent() {
     .join(', ')
 
   useEffect(() => {
-    if (!isTimed || phase !== 'exam' || !total) return undefined
-    setTimeLeft(total * SECONDS_PER_TIMED_CASE)
+    if (!isTimed || isDecisionSession || phase !== 'exam' || !total) return undefined
+    setTimeLeft(sessionSeconds)
     const timer = window.setInterval(() => {
       setTimeLeft(previous => Math.max(0, previous - 1))
     }, 1000)
     return () => window.clearInterval(timer)
-  }, [isTimed, phase, total])
+  }, [isTimed, phase, total, isDecisionSession, sessionSeconds])
 
   const saveAnswer = answerId => {
     if (!item) return
     setAnswers(previous => [
       ...previous.filter(answer => answer.caseId !== item.id),
-      { caseId: item.id, selected: answerId, correct: answerId === item.correct },
+      { ...previous.find(answer => answer.caseId === item.id), caseId: item.id, selected: answerId, correct: answerId === item.correct },
     ])
   }
 
@@ -236,7 +239,7 @@ function CaseExamContent() {
   }
 
   useEffect(() => {
-    if (isTimed && phase === 'exam' && item && timeLeft === 0) {
+    if (isTimed && !isDecisionSession && phase === 'exam' && item && timeLeft === 0) {
       saveAnswer(null)
       setPhase('result')
     }
@@ -256,7 +259,7 @@ function CaseExamContent() {
     setRevealedStages(1)
     setAnswers([])
     setPhase('exam')
-    setTimeLeft(total * SECONDS_PER_TIMED_CASE)
+    setTimeLeft(sessionSeconds)
     setReviewIndex(0)
   }
 
@@ -275,6 +278,8 @@ function CaseExamContent() {
       </main>
     )
   }
+
+  if (isDecisionSession) return <DecisionExam key={caseIds.join(',')} cases={cases} lang={lang} timed={isTimed} />
 
   if (phase === 'result') {
     const color = resultColor(score, total)
@@ -337,6 +342,7 @@ function CaseExamContent() {
               })}
             </div>
             <article className={styles.reviewCase}>
+              {reviewCase.decisionExam ? <DecisionReview item={reviewCase} records={reviewAnswer?.decisions} lang={lang}/> : <>
               {reviewCase.stages?.length ? <ProgressiveCase key={reviewCase.id} item={reviewCase} revealedCount={reviewCase.stages.length} lang={lang} review/> : <section className={styles.caseIntro} aria-label={ui.anamnesis}>
                 <div className={styles.caseIntroMeta}><strong>{ui.anamnesis}</strong><span>{reviewCase.modality} · {regionLabel}</span></div>
                 <p>{reviewCase.vignette}</p>
@@ -369,6 +375,7 @@ function CaseExamContent() {
                 <div className={styles.feedbackSection}><h2>{ui.explanation}</h2><p>{reviewCase.explanation}</p></div>
                 {reviewCase.examinerDiscussion?.length ? <><div className={styles.stageSources}><span>{reviewCase.credit}</span><a href={reviewCase.source} target="_blank" rel="noreferrer">{reviewCase.sourceLabel || ui.source} ↗</a></div><ExaminerDiscussion entries={reviewCase.examinerDiscussion} references={reviewCase.references} lang={lang}/></> : null}
               </section>
+              </>}
             </article>
           </> : null}
           <div className={quizStyles.resultActions}>
@@ -379,6 +386,17 @@ function CaseExamContent() {
       </main>
     )
   }
+
+  const saveDecisions = records => {
+    const decisions = records[item.id] || {}
+    const diagnosis = item.decisionExam.find(question => question.id === 'diagnose')
+    const correct = decisions[diagnosis.id]?.answer === diagnosis.correct
+    setAnswers(previous => [...previous.filter(answer => answer.caseId !== item.id), { caseId: item.id, correct, selected: correct ? item.correct : null, decisions }])
+  }
+  if (item?.decisionExam) return <DecisionExam key={item.id} cases={[item]} lang={lang} timed={isTimed} timeRemaining={isTimed ? timeLeft : null} onProgress={saveDecisions} onFinish={records => {
+    saveDecisions(records)
+    advance()
+  }} />
 
   const isCorrect = checked && selected === item.correct
   const selectedOption = item.options.find(option => option.id === selected)

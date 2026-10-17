@@ -1,0 +1,11 @@
+# CAA staged multiple-choice examination
+
+Updated 2026-10-17. The two CAA cases now use six mandatory decisions per case. Each committed incorrect primary answer leads to a related multiple-choice follow-up; correct primary answers continue directly. No voice, free-text response or AI scoring is involved. Primary answers remain immutable. Follow-up recovery is reported separately and never increases the independent score.
+
+The image-focused layout keeps the current question beside the available comparison image, with earlier clinical information in a disclosure. Captions do not disclose the finding before the observation question. Existing licensed images remain unchanged; source information and the constructed-scenario note remain available. The exam does not imply a complete original patient dataset.
+
+The four review domains are observation, investigation, interpretation and diagnosis. Outcomes distinguish independent, supported, missed and unanswered decisions. Timed sessions allow eight minutes per CAA case, use a wall-clock deadline, retain committed answers on expiration, and report remaining questions as unanswered. Ordinary case selection, account access and non-CAA cases keep their existing flow. Mixed sessions use the new runner for each CAA case and return its decision record to the existing review.
+
+Medical content follows the original CAA teaching cases and their references: [Boston v2.0](https://pmc.ncbi.nlm.nih.gov/articles/PMC9389452/) and [CAA-related TFNE](https://pubmed.ncbi.nlm.nih.gov/34016709/). The MRI category is probable, not histologically definite. Deep haemorrhagic lesions prevent MRI-based probable/possible Boston categories but do not rule out coexisting CAA. Antithrombotic decisions remain individual, without reflexive escalation for presumed TIA or a blanket prohibition.
+
+Validation: dataset/translation and scoring tests in scripts/caa-decision.test.mjs; existing Boston and progress tests; actual Next.js rendering of production components in an isolated local QA shell, including correct/wrong paths, recovery, both cases, final review, image dialog, Persian mobile layout and timed mode. Production Clerk authentication is not bypassed or modified.
