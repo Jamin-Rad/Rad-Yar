@@ -1,5 +1,6 @@
 import { MENISCUS_QUESTIONS } from './meniscusLearning'
 import { FLEISCHNER_QUESTIONS } from './fleischnerLearning'
+import { HEMANGIOMA_QUESTIONS } from './haemangiomaTraining'
 // ── RADYAR QUESTION BANK ────────────────────────────────────────────────────
 
 import { CONTRAST_QUESTIONS, CONTRAST_TOPICS } from './contrastMedia'
@@ -557,7 +558,7 @@ const MIDLINE_CAVA_QUESTIONS = Object.fromEntries(
   ])
 )
 
-export const QUESTION_BANK = {
+const LEGACY_QUESTION_BANK = {
   "de": [
     ...CONTRAST_QUESTIONS.de,
     ...DIVERTICULITIS_QUESTIONS.de,
@@ -4144,6 +4145,13 @@ export const QUESTION_BANK = {
     }
   ]
 }
+
+export const QUESTION_BANK = Object.fromEntries(
+  Object.entries(LEGACY_QUESTION_BANK).map(([lang, questions]) => [
+    lang,
+    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || [])],
+  ])
+)
 
 export const MCQ_TOPIC_GROUPS = [
   {
