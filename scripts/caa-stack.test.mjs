@@ -33,13 +33,13 @@ test('CT, MRI and follow-up stacks are isolated to the relevant bleeding-case st
   assert.deepEqual(ids(5),[])
 })
 
-test('CAA-ri starts with FLAIR, then adds blood/diffusion, and reveals contrast only at diagnosis',()=>{
+test('CAA-ri follows FLAIR, diffusion, SWI and final integration without future sequence requests',()=>{
   const ids=stage=>getCaseStageSeries('caa-radiopaedia-147140',stage).map(series=>series.id)
-  assert.deepEqual(ids(0),[])
-  assert.deepEqual(ids(1),['147140-flair'])
-  assert.deepEqual(new Set(ids(2)),new Set(['147140-swi-minip','147140-swi','147140-flair','147140-dwi','147140-adc']))
-  assert(ids(3).includes('147140-t1c'))
-  assert.deepEqual(ids(4),['147140-flair','147140-swi-minip'])
+  assert.deepEqual(ids(0),['147140-flair'])
+  assert.deepEqual(ids(1),['147140-dwi','147140-adc','147140-flair'])
+  assert.deepEqual(ids(2),['147140-swi-minip','147140-swi','147140-flair'])
+  assert.deepEqual(ids(3),['147140-flair','147140-swi-minip','147140-swi','147140-dwi','147140-adc','147140-t1c'])
+  assert.deepEqual(ids(4),[])
   assert.deepEqual(ids(5),[],'No baseline stack may masquerade as a follow-up MRI')
   assert.deepEqual(getCaseStageSeries('unknown',0),[])
 })
