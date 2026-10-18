@@ -8,15 +8,30 @@ import styles from './DecisionExam.module.css'
 
 const pick = (value, lang) => typeof value === 'string' ? value : value?.[lang] || value?.de || ''
 const COPY = {
-  de: { back:'Fallauswahl', title:'Fallprüfung', case:'Fall', round:'Entscheidung', examiner:'Der Prüfer fragt', followUp:'Der Prüfer hakt nach', confirm:'Antwort festlegen', continue:'Weiter im Fall', follow:'Rückfrage beantworten', selected:'Ihre Antwort', saved:'Antwort gespeichert.', choose:'Wählen Sie eine Antwort, bevor Sie fortfahren.', clinical:'Klinische Ausgangslage', images:'Bildmaterial', compare:'Publizierte Vergleichsabbildung · kein vollständiger Datensatz', enlarge:'Bild vergrößern', close:'Schließen', summary:'Ihre Entscheidungen im Überblick', independent:'Selbstständig richtig', supported:'Mit Rückfrage geklärt', missed:'Noch offen', unanswered:'Nicht beantwortet', solution:'Begründung', answer:'Richtige Antwort', nextCase:'Nächster Fall', finish:'Gesamtergebnis', retry:'Erneut prüfen', result:'Prüfung abgeschlossen', timed:'Zeitprüfung', learning:'Falltraining', time:'Restzeit', expired:'Die Prüfungszeit ist abgelaufen.', observation:'Befund erkennen', investigation:'Untersuchung wählen', interpretation:'Befunde einordnen', diagnosis:'Diagnose begründen', intro:'Eine Entscheidung nach der anderen. Der Prüfer greift Ihre Auswahl auf.', original:'Bildquelle', followAnswer:'Antwort auf die Rückfrage', recorded:'Sie haben gewählt:', noImage:'Welche Untersuchung hilft jetzt weiter?', noImageText:'Das Bildmaterial erscheint, sobald es im Fall vorliegt.', supportedNote:'Rückfragen ändern die erste Wertung nicht.', completed:'Abgeschlossene Entscheidungen', newInfo:'Neue Fallinformation', noNotes:'Noch keine weiteren Befunde.' },
-  en: { back:'Case selection',title:'Case examination',case:'Case',round:'Decision',examiner:'The examiner asks',followUp:'The examiner follows up',confirm:'Commit to answer',continue:'Continue case',follow:'Answer follow-up',selected:'Your answer',saved:'Answer recorded.',choose:'Choose an answer before continuing.',clinical:'Clinical presentation',images:'Imaging',compare:'Published comparison figure · not a complete examination',enlarge:'Enlarge image',close:'Close',summary:'Your decisions at a glance',independent:'Correct independently',supported:'Resolved with follow-up',missed:'Needs review',unanswered:'Unanswered',solution:'Reasoning',answer:'Correct answer',nextCase:'Next case',finish:'Overall result',retry:'Try again',result:'Examination complete',timed:'Timed exam',learning:'Case training',time:'Time left',expired:'Examination time has elapsed.',observation:'Recognise findings',investigation:'Choose investigation',interpretation:'Interpret findings',diagnosis:'Justify diagnosis',intro:'One decision at a time. The examiner follows up on your choice.',original:'Image source',followAnswer:'Follow-up answer',recorded:'You selected:',noImage:'Which investigation helps next?',noImageText:'Imaging appears when it becomes available in the case.',supportedNote:'Follow-ups do not change the initial score.',completed:'Completed decisions',newInfo:'New case information',noNotes:'No further findings yet.' },
-  fa: { back:'انتخاب کیس',title:'آزمون کیس',case:'کیس',round:'تصمیم',examiner:'پرسش ممتحن',followUp:'پرسش پیگیری ممتحن',confirm:'ثبت پاسخ',continue:'ادامهٔ کیس',follow:'پاسخ به پرسش پیگیری',selected:'پاسخ شما',saved:'پاسخ ثبت شد.',choose:'برای ادامه یک پاسخ انتخاب کنید.',clinical:'شرح‌حال اولیه',images:'تصاویر',compare:'تصویر مقایسه‌ای منتشرشده؛ جایگزین کل بررسی نیست',enlarge:'بزرگ‌نمایی تصویر',close:'بستن',summary:'مرور تصمیم‌های شما',independent:'درست و مستقل',supported:'با پرسش پیگیری حل شد',missed:'نیازمند مرور',unanswered:'بدون پاسخ',solution:'استدلال',answer:'پاسخ درست',nextCase:'کیس بعدی',finish:'نتیجهٔ کلی',retry:'تلاش دوباره',result:'آزمون تمام شد',timed:'آزمون زمان‌دار',learning:'تمرین کیس',time:'زمان باقی‌مانده',expired:'زمان آزمون تمام شد.',observation:'تشخیص یافته',investigation:'انتخاب بررسی',interpretation:'تفسیر یافته‌ها',diagnosis:'استدلال تشخیص',intro:'هر بار یک تصمیم؛ ممتحن انتخاب شما را پیگیری می‌کند.',original:'منبع تصویر',followAnswer:'پاسخ پرسش پیگیری',recorded:'انتخاب شما:',noImage:'اکنون کدام بررسی کمک می‌کند؟',noImageText:'تصاویر هنگامی که در مسیر کیس در دسترس باشند نمایش داده می‌شوند.',supportedNote:'پرسش پیگیری، امتیاز پاسخ اول را تغییر نمی‌دهد.',completed:'تصمیم‌های ثبت‌شده',newInfo:'اطلاعات جدید کیس',noNotes:'هنوز یافتهٔ دیگری ارائه نشده است.' },
+  de: { back:'Fallauswahl', title:'Fallprüfung', case:'Fall', round:'Entscheidung', examiner:'Der Prüfer fragt', followUp:'Der Prüfer hakt nach', confirm:'Antwort festlegen', continue:'Weiter im Fall', follow:'Rückfrage beantworten', selected:'Ihre Antwort', saved:'Antwort gespeichert.', choose:'Wählen Sie eine Antwort, bevor Sie fortfahren.', clinical:'Klinische Ausgangslage', images:'Bildmaterial', compare:'Publizierte Vergleichsabbildung · kein vollständiger Datensatz', enlarge:'Bild vergrößern', close:'Schließen', summary:'Ihre Entscheidungen im Überblick', independent:'Selbstständig richtig', supported:'Mit Rückfrage geklärt', missed:'Noch offen', unanswered:'Nicht beantwortet', solution:'Begründung', answer:'Richtige Antwort', nextCase:'Nächster Fall', finish:'Gesamtergebnis', retry:'Erneut prüfen', result:'Prüfung abgeschlossen', timed:'Zeitprüfung', learning:'Falltraining', time:'Restzeit', expired:'Die Prüfungszeit ist abgelaufen.', observation:'Befund erkennen', investigation:'Untersuchung wählen', interpretation:'Befunde einordnen', diagnosis:'Diagnose begründen', intro:'Eine Entscheidung nach der anderen. Der Prüfer greift Ihre Auswahl auf.', original:'Bildquelle', followAnswer:'Antwort auf die Rückfrage', recorded:'Sie haben gewählt:', noImage:'Welche Untersuchung hilft jetzt weiter?', noImageText:'Das Bildmaterial erscheint, sobald es im Fall vorliegt.', supportedNote:'Rückfragen ändern die erste Wertung nicht.', completed:'Abgeschlossene Entscheidungen', newInfo:'Neue Fallinformation', noNotes:'Noch keine weiteren Befunde.', questionList:'Fragen in diesem Fall', questionSaved:'Beantwortet · gespeichert', questionOpen:'Noch offen' },
+  en: { back:'Case selection',title:'Case examination',case:'Case',round:'Decision',examiner:'The examiner asks',followUp:'The examiner follows up',confirm:'Commit to answer',continue:'Continue case',follow:'Answer follow-up',selected:'Your answer',saved:'Answer recorded.',choose:'Choose an answer before continuing.',clinical:'Clinical presentation',images:'Imaging',compare:'Published comparison figure · not a complete examination',enlarge:'Enlarge image',close:'Close',summary:'Your decisions at a glance',independent:'Correct independently',supported:'Resolved with follow-up',missed:'Needs review',unanswered:'Unanswered',solution:'Reasoning',answer:'Correct answer',nextCase:'Next case',finish:'Overall result',retry:'Try again',result:'Examination complete',timed:'Timed exam',learning:'Case training',time:'Time left',expired:'Examination time has elapsed.',observation:'Recognise findings',investigation:'Choose investigation',interpretation:'Interpret findings',diagnosis:'Justify diagnosis',intro:'One decision at a time. The examiner follows up on your choice.',original:'Image source',followAnswer:'Follow-up answer',recorded:'You selected:',noImage:'Which investigation helps next?',noImageText:'Imaging appears when it becomes available in the case.',supportedNote:'Follow-ups do not change the initial score.',completed:'Completed decisions',newInfo:'New case information',noNotes:'No further findings yet.',questionList:'Questions in this case',questionSaved:'Answered · saved',questionOpen:'Not answered' },
+  fa: { back:'انتخاب کیس',title:'آزمون کیس',case:'کیس',round:'تصمیم',examiner:'پرسش ممتحن',followUp:'پرسش پیگیری ممتحن',confirm:'ثبت پاسخ',continue:'ادامهٔ کیس',follow:'پاسخ به پرسش پیگیری',selected:'پاسخ شما',saved:'پاسخ ثبت شد.',choose:'برای ادامه یک پاسخ انتخاب کنید.',clinical:'شرح‌حال اولیه',images:'تصاویر',compare:'تصویر مقایسه‌ای منتشرشده؛ جایگزین کل بررسی نیست',enlarge:'بزرگ‌نمایی تصویر',close:'بستن',summary:'مرور تصمیم‌های شما',independent:'درست و مستقل',supported:'با پرسش پیگیری حل شد',missed:'نیازمند مرور',unanswered:'بدون پاسخ',solution:'استدلال',answer:'پاسخ درست',nextCase:'کیس بعدی',finish:'نتیجهٔ کلی',retry:'تلاش دوباره',result:'آزمون تمام شد',timed:'آزمون زمان‌دار',learning:'تمرین کیس',time:'زمان باقی‌مانده',expired:'زمان آزمون تمام شد.',observation:'تشخیص یافته',investigation:'انتخاب بررسی',interpretation:'تفسیر یافته‌ها',diagnosis:'استدلال تشخیص',intro:'هر بار یک تصمیم؛ ممتحن انتخاب شما را پیگیری می‌کند.',original:'منبع تصویر',followAnswer:'پاسخ پرسش پیگیری',recorded:'انتخاب شما:',noImage:'اکنون کدام بررسی کمک می‌کند؟',noImageText:'تصاویر هنگامی که در مسیر کیس در دسترس باشند نمایش داده می‌شوند.',supportedNote:'پرسش پیگیری، امتیاز پاسخ اول را تغییر نمی‌دهد.',completed:'تصمیم‌های ثبت‌شده',newInfo:'اطلاعات جدید کیس',noNotes:'هنوز یافتهٔ دیگری ارائه نشده است.',questionList:'سؤال‌های این کیس',questionSaved:'پاسخ داده شده · ذخیره شده',questionOpen:'بدون پاسخ' },
 }
 const DOMAINS = ['observation','investigation','interpretation','diagnosis']
+const STORAGE_VERSION = 'v1'
+
+function validRecords(saved, cases) {
+  if (!saved || typeof saved !== 'object' || Array.isArray(saved)) return {}
+  return Object.fromEntries(cases.flatMap(item => {
+    const caseRecord=saved[item.id]
+    if (!caseRecord || typeof caseRecord !== 'object') return []
+    const questions=Object.fromEntries(item.decisionExam.flatMap(question => {
+      const record=caseRecord[question.id]
+      if (!record || typeof record !== 'object') return []
+      const answer=question.options.some(option=>option.id===record.answer) ? record.answer : undefined
+      const followUpAnswer=question.followUp?.options.some(option=>option.id===record.followUpAnswer) ? record.followUpAnswer : undefined
+      return answer || followUpAnswer ? [[question.id,{...(answer?{answer}:{}),...(followUpAnswer?{followUpAnswer}:{})}]] : []
+    }))
+    return Object.keys(questions).length ? [[item.id,questions]] : []
+  }))
+}
 
 function Arrow() { return <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg> }
-
-const UPCOMING = { de:'Später', en:'Later', fa:'بعداً' }
 
 function scene(item, question, lang) {
   const stage=item.stages[question.stage]
@@ -62,7 +77,10 @@ export default function DecisionExam({ cases, lang, timed = false, onFinish, onP
   const [review,setReview]=useState(false)
   const [complete,setComplete]=useState(false)
   const [seconds,setSeconds]=useState(cases.length*480)
+  const [drafts,setDrafts]=useState({})
+  const [restored,setRestored]=useState(false)
   const heading=useRef(null)
+  const storageKey=`radyar:caa-decision-exam:${STORAGE_VERSION}:${timed?'timed':'learning'}:${cases.map(entry=>entry.id).sort().join(',')}`
   const item=cases[caseIndex]
   const question=item.decisionExam[round]
   const currentQuestion=followUp ? question.followUp : question
@@ -74,6 +92,36 @@ export default function DecisionExam({ cases, lang, timed = false, onFinish, onP
   const parentTimed=timed && Number.isFinite(timeRemaining)
   const remaining=parentTimed ? timeRemaining : seconds
   const expired=timed && remaining===0
+  useEffect(()=>{
+    try {
+      const saved=JSON.parse(window.localStorage.getItem(storageKey) || 'null')
+      if(saved?.version===1) {
+        const restoredRecords=validRecords(saved.records,cases)
+        setRecords(restoredRecords)
+        const restoredCase=cases.findIndex(entry=>entry.id===saved.caseId)
+        const nextCaseIndex=restoredCase>=0?restoredCase:0
+        const targetCase=cases[nextCaseIndex]
+        const restoredRound=targetCase.decisionExam.findIndex(entry=>entry.id===saved.questionId)
+        const nextRound=restoredRound>=0?restoredRound:0
+        const targetQuestion=targetCase.decisionExam[nextRound]
+        const targetRecord=restoredRecords[targetCase.id]?.[targetQuestion.id]
+        const restoreFollowUp=Boolean(saved.followUp && targetQuestion.followUp && targetRecord?.answer && targetRecord.answer!==targetQuestion.correct)
+        setCaseIndex(nextCaseIndex)
+        setRound(nextRound)
+        setFollowUp(restoreFollowUp)
+        const restoredChoice=restoreFollowUp ? targetRecord?.followUpAnswer : targetRecord?.answer
+        setChoice(restoredChoice || null)
+        setLocked(Boolean(restoredChoice))
+      }
+    } catch {}
+    setRestored(true)
+  },[storageKey,cases])
+  useEffect(()=>{
+    if(!restored) return
+    try {
+      window.localStorage.setItem(storageKey,JSON.stringify({version:1,records,caseId:item.id,questionId:question.id,followUp}))
+    } catch {}
+  },[storageKey,records,caseIndex,round,followUp,restored,item.id,question.id])
   useEffect(()=>{
     if(!timed || parentTimed || complete) return
     const deadline=Date.now()+seconds*1000
@@ -89,24 +137,44 @@ export default function DecisionExam({ cases, lang, timed = false, onFinish, onP
     if(!choice || locked || expired) return
     const nextRecords={...records,[item.id]:{...records[item.id],[question.id]:{...records[item.id]?.[question.id],[followUp?'followUpAnswer':'answer']:choice}}}
     setRecords(nextRecords)
+    setDrafts(previous=>({...previous,[item.id]:{...previous[item.id],[question.id]:{...previous[item.id]?.[question.id],[followUp?'followUpAnswer':'answer']:undefined}}}))
     onProgress?.(nextRecords)
     setLocked(true)
   }
+  const goToQuestion=(index)=>{
+    if(index<0||index>=item.decisionExam.length) return
+    if(!locked && choice) setDrafts(previous=>({...previous,[item.id]:{...previous[item.id],[question.id]:{...previous[item.id]?.[question.id],[followUp?'followUpAnswer':'answer']:choice}}}))
+    const target=item.decisionExam[index]
+    const savedRecord=currentRecords[target.id]
+    const draft=drafts[item.id]?.[target.id]
+    const savedAnswer=savedRecord?.answer
+    setRound(index);setFollowUp(false);setChoice(savedAnswer || draft?.answer || null);setLocked(Boolean(savedAnswer))
+    setReview(false);setComplete(false)
+    window.scrollTo({top:0,behavior:'instant'})
+  }
   const next=()=>{
     if(!locked || expired) return
-    if(!followUp && record.answer!==question.correct && question.followUp){setFollowUp(true)}
-    else if(round+1<item.decisionExam.length){setRound(value=>value+1);setFollowUp(false)}
+    if(!followUp && record.answer!==question.correct && question.followUp){
+      if(record.followUpAnswer){setFollowUp(true);setChoice(record.followUpAnswer);setLocked(true)}
+      else {setFollowUp(true);setChoice(null);setLocked(false)}
+    }
+    else if(round+1<item.decisionExam.length){goToQuestion(round+1)}
     else {setReview(true)}
-    setChoice(null);setLocked(false)
     window.scrollTo({top:0,behavior:'instant'})
   }
   const advance=()=>{
-    if(caseIndex+1<cases.length){setCaseIndex(value=>value+1);setRound(0);setFollowUp(false);setReview(false);setChoice(null);setLocked(false)}
+    if(caseIndex+1<cases.length){
+      const nextCaseIndex=caseIndex+1
+      const nextItem=cases[nextCaseIndex]
+      const nextQuestion=nextItem.decisionExam[0]
+      const savedAnswer=records[nextItem.id]?.[nextQuestion.id]?.answer
+      setCaseIndex(nextCaseIndex);setRound(0);setFollowUp(false);setReview(false);setChoice(savedAnswer || null);setLocked(Boolean(savedAnswer))
+    }
     else if(onFinish){onFinish(records)}
     else {setComplete(true)}
     window.scrollTo({top:0,behavior:'instant'})
   }
-  const retry=()=>{setCaseIndex(0);setRound(0);setChoice(null);setLocked(false);setFollowUp(false);setRecords({});setReview(false);setComplete(false);setSeconds(cases.length*480)}
+  const retry=()=>{setCaseIndex(0);setRound(0);setChoice(null);setLocked(false);setFollowUp(false);setRecords({});setDrafts({});setReview(false);setComplete(false);setSeconds(cases.length*480)}
   const backHref=lang==='de'?'/faelle':`/faelle?lang=${lang}`
   return <main className={styles.page} dir={lang==='fa'?'rtl':'ltr'} lang={lang}>
     <header className={styles.topbar}><Link href={backHref}>{ui.back}</Link><span>{ui.title} <bdi>{String(caseIndex+1).padStart(2,'0')} / {String(cases.length).padStart(2,'0')}</bdi></span><span className={styles.mode}>{timed ? <>{ui.time} <bdi>{Math.floor(remaining/60)}:{String(remaining%60).padStart(2,'0')}</bdi></> : ui.learning}</span></header>
@@ -118,7 +186,14 @@ export default function DecisionExam({ cases, lang, timed = false, onFinish, onP
       <div className={styles.resultActions}>{!complete && <button type="button" className={styles.primary} onClick={advance}>{caseIndex+1<cases.length?ui.nextCase:ui.finish}<Arrow/></button>}{complete && onFinish && <button type="button" className={styles.primary} onClick={()=>onFinish(records)}>{ui.finish}<Arrow/></button>}{complete && <button type="button" className={styles.primary} onClick={retry}>{ui.retry}</button>}<Link href={backHref}>{ui.back}</Link></div>
     </section> : <>
       <div className={styles.heading}><div><p className={styles.eyebrow}>{ui.case} <bdi>{String(caseIndex+1).padStart(2,'0')}</bdi></p><h1>{pick(item.title,lang)}</h1></div><p className={styles.round}>{ui.round} <bdi>{round+1} / {item.decisionExam.length}</bdi></p></div>
-      <ol className={styles.progress} style={{'--step-count':item.decisionExam.length}} aria-label={ui.completed}>{item.decisionExam.map((q,index)=><li key={q.id} data-state={index<round?'done':index===round?'current':'waiting'} aria-current={index===round?'step':undefined}><span>{index+1}</span><strong>{index>round ? (UPCOMING[lang] || UPCOMING.de) : pick(item.stages[q.stage].shortTitle,lang)}</strong></li>)}</ol>
+      <nav className={styles.questionIndex} aria-label={ui.questionList} style={{'--step-count':item.decisionExam.length}}>{item.decisionExam.map((q,index)=>{
+        const saved=Boolean(currentRecords[q.id]?.answer)
+        const active=index===round
+        return <button type="button" key={q.id} className={styles.questionIndexItem} data-active={active} data-saved={saved} aria-current={active?'step':undefined} aria-label={`${index+1}. ${pick(item.stages[q.stage].shortTitle,lang)}. ${saved?ui.questionSaved:ui.questionOpen}`} onClick={()=>goToQuestion(index)}>
+          <span className={styles.questionIndexNumber}>{String(index+1).padStart(2,'0')}</span>
+          <span className={styles.questionIndexText}><strong>{pick(item.stages[q.stage].shortTitle,lang)}</strong><small>{saved?<>✓ {ui.questionSaved}</>:ui.questionOpen}</small></span>
+        </button>
+      })}</nav>
       <div className={[styles.layout,!hasEvidenceColumn && styles.textOnlyLayout].filter(Boolean).join(' ')}>
         {hasEvidenceColumn && <aside className={styles.evidence} aria-label={ui.images}>
           <CaseStackViewer key={`${item.id}:${question.stage}`} series={stageSeries} lang={lang} credit={item.credit}/>
