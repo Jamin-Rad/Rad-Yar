@@ -5,9 +5,10 @@ import { existsSync } from 'node:fs'
 
 for (const [id, questions] of Object.entries(CAA_DECISION_EXAMS)) {
   test(`${id}: four-choice decisions are complete in all three languages`, () => {
-    assert.equal(questions.length, id==='caa-radiopaedia-147140'?4:6)
+    assert.equal(questions.length, {'caa-radiopaedia-40475':6,'caa-radiopaedia-147140':4,'caa-radiopaedia-58758':3}[id])
     assert.equal(new Set(questions.map(q => q.id)).size, questions.length)
-    assert.deepEqual(new Set(questions.map(q => q.domain)), new Set(id==='caa-radiopaedia-147140'?['observation','interpretation','diagnosis']:['observation','investigation','interpretation','diagnosis']))
+    const expectedDomains={'caa-radiopaedia-40475':['observation','investigation','interpretation','diagnosis'],'caa-radiopaedia-147140':['observation','interpretation','diagnosis'],'caa-radiopaedia-58758':['observation','diagnosis']}
+    assert.deepEqual(new Set(questions.map(q => q.domain)), new Set(expectedDomains[id]))
     for (const question of questions) {
       for (const entry of [question]) {
         assert(entry)
@@ -35,8 +36,8 @@ for (const [id, questions] of Object.entries(CAA_DECISION_EXAMS)) {
   })
 }
 
-test('Only the two requested source cases are active and media belong to their patient', () => {
-  assert.deepEqual(CAA_PRUEFUNG_CASES.map(item=>item.id),['caa-radiopaedia-40475','caa-radiopaedia-147140'])
+test('The requested source cases are active and media belong to their patient', () => {
+  assert.deepEqual(CAA_PRUEFUNG_CASES.map(item=>item.id),['caa-radiopaedia-40475','caa-radiopaedia-147140','caa-radiopaedia-58758'])
   for(const item of CAA_PRUEFUNG_CASES) {
     const rid=item.id.split('-').at(-1)
     assert(item.source.startsWith('https://radiopaedia.org/cases/'))
@@ -47,6 +48,17 @@ test('Only the two requested source cases are active and media belong to their p
       assert(existsSync(new URL('../public'+image.image,import.meta.url)))
       for(const lang of ['de','en','fa']) assert(image.imageCaption[lang])
     }
+  }
+})
+
+test('Lobar CT case withholds cause and tissue confirmation until the final answer',()=>{
+  const item=CAA_PRUEFUNG_CASES.find(c=>c.id==='caa-radiopaedia-58758')
+  assert.equal(item.modality,'CT')
+  assert.deepEqual(item.decisionExam.map(q=>q.id),['lobar-location','lobar-shape','diagnose'])
+  for(const lang of ['de','en','fa']){
+    const beforeDiagnosis=[item.title[lang],...item.stages.map(s=>s.narrative[lang]),...item.decisionExam.slice(0,2).map(q=>q.explanation[lang])].join(' ')
+    assert.doesNotMatch(beforeDiagnosis,/CAA|amyloid|آمیلوئید|autopsy|Autopsie|اتوپسی|patholog|histolog|بافت‌شناسی/iu)
+    assert.doesNotMatch(item.decisionExam[0].explanation[lang],/finger|انگشت|subarachnoid|زیرعنکبوتیه/iu,'Location feedback must not disclose the morphology answer')
   }
 })
 

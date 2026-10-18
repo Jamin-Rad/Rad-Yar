@@ -3,10 +3,11 @@ import assert from 'node:assert/strict'
 import {readFileSync} from 'node:fs'
 import {createHash} from 'node:crypto'
 import {CAA_EXAM_SERIES,getCaseStageSeries} from '../data/caaExamSeries.mjs'
+import {CAA_PRUEFUNG_CASES} from '../data/caaStoryCases.mjs'
 
 const manifest=JSON.parse(readFileSync(new URL('../public/caa/exams/radiopaedia/stacks/provenance.json',import.meta.url),'utf8'))
 
-test('All 442 original slices exist in source order and match their recorded hashes',()=>{
+test('All 556 unchanged source slices exist in viewer order and match their recorded hashes',()=>{
   let total=0
   for(const [id,series] of Object.entries(CAA_EXAM_SERIES)){
     const source=manifest.series[id]
@@ -20,7 +21,18 @@ test('All 442 original slices exist in source order and match their recorded has
       total++
     })
   }
-  assert.equal(total,442)
+  assert.equal(total,556)
+})
+
+test('All stage stacks belong to their patient and the new CT planes open progressively',()=>{
+  for(const item of CAA_PRUEFUNG_CASES)for(const stage of item.stages)for(const series of stage.series){
+    assert.equal(manifest.series[series.id].caseId,Number(item.id.split('-').at(-1)))
+  }
+  const ids=stage=>getCaseStageSeries('caa-radiopaedia-58758',stage).map(s=>s.id)
+  assert.deepEqual(ids(0),['58758-ct-axial'])
+  assert.deepEqual(ids(1),['58758-ct-coronal','58758-ct-axial'])
+  assert.deepEqual(ids(2),['58758-ct-axial','58758-ct-coronal'])
+  assert.deepEqual(ids(3),[])
 })
 
 test('CT, MRI and follow-up stacks are isolated to the relevant bleeding-case stages',()=>{

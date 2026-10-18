@@ -1,10 +1,10 @@
 # CAA story examinations
 
-Updated 2026-10-18. The maintained case data are in `data/caaStoryCases.mjs`, using the requested Radiopaedia cases: RMH Neuropathology, rID 40475 (recurrent intracranial haemorrhage), and Yves Leonard Voss, rID 147140 (CAA-related inflammation). Source images are unchanged and credited under CC BY-NC-SA 3.0. Image URLs, study/sequence identities, source order and SHA-256 hashes are recorded in `public/caa/exams/radiopaedia/stacks/provenance.json`.
+Updated 2026-10-18. The maintained case data are in `data/caaStoryCases.mjs`: RMH Neuropathology, rID 40475 (recurrent intracranial haemorrhage); Yves Leonard Voss, rID 147140 (CAA-related inflammation); and Mark Rodrigues, rID 58758 (CAA-associated lobar intracerebral haemorrhage). Source images are unchanged and credited under CC BY-NC-SA 3.0. Image URLs, study/sequence identities, source order and SHA-256 hashes are recorded in `public/caa/exams/radiopaedia/stacks/provenance.json`.
 
 ## Case structure
 
-The first story retains its six questions, stages, choices and explanations. The second story has been rebuilt as four radiology decisions, each starting with actual scrollable source images. There is no separate history-only question, management question or treatment-response question in the second story.
+The first story retains its six questions, stages, choices and explanations. The second story has been rebuilt as four radiology decisions, each starting with actual scrollable source images. There is no separate history-only question, management question or treatment-response question in the second story. The third story uses three CT-based decisions: localize the acute lobar bleed, describe its margins and associated haemorrhage, then integrate the pattern with age to assess the likelihood of CAA. Axial images appear first; coronal reconstructions are added for morphology and final integration. The diagnosis remains an imaging-supported inference until the source case’s autopsy confirmation is disclosed after the final answer.
 
 | CAA-ri step | Available sequences, in initial display order | Task |
 | --- | --- | --- |
@@ -12,6 +12,12 @@ The first story retains its six questions, stages, choices and explanations. The
 | 2 · DWI / ADC | DWI, ADC, FLAIR | Interpret diffusion at the FLAIR abnormality against competing imaging patterns |
 | 3 · SWI | SWI minIP, SWI, FLAIR | Distinguish rounded lobar microbleeds from sulcal siderosis, continuous veins and deep microbleeds |
 | 4 · Combined findings | FLAIR, SWI minIP, SWI, DWI, ADC, T1 C+ | Choose the best radiological working diagnosis against PCA infarction, PRES and glioma |
+
+| Lobar CT step | Available images, in initial display order | Task |
+| --- | --- | --- |
+| 1 · Axial CT | Axial non-contrast CT | Localize the centre of the acute haemorrhage |
+| 2 · CT morphology | Coronal reconstructions, axial CT | Assess the lobulated margin, finger-like projections and blood in superficial sulci |
+| 3 · Integration | Axial CT, coronal reconstructions | Weigh age and CT pattern for CAA; distinguish a suggestive pattern from proof |
 
 Clinical context appears once at the opening, with a short relevant reminder at diagnostic integration. The “case information so far” disclosure has been removed from the active examination. Stages without imaging use a centred single column. Source/adaptation commentary remains in final review.
 
@@ -27,7 +33,7 @@ Medical checking follows the [original CAA-ri case](https://radiopaedia.org/case
 
 ## Source stacks and interaction
 
-The two cases retain all 442 original slices in nine stacks: initial CT (35), GRE (22), follow-up CT/CTA (36), FLAIR (22), SWI minIP (80), SWI (80), DWI (22), ADC (23) and post-contrast T1 (122). The CAA-ri case uses six stacks with 349 slices. `data/caaExamSeries.mjs` explicitly whitelists sequences per question rather than accumulating everything previously unlocked. Contrast T1 is available only at final integration. No later source study is requested early.
+The three cases retain all 556 original slices in eleven stacks: initial CT (35), GRE (22), follow-up CT/CTA (36), FLAIR (22), SWI minIP (80), SWI (80), DWI (22), ADC (23), post-contrast T1 (122), and the new lobar haemorrhage case’s axial (51) and coronal (63) CT series. The CAA-ri case uses six stacks with 349 slices. `data/caaExamSeries.mjs` explicitly whitelists sequences per question rather than accumulating everything previously unlocked. Contrast T1 is available only at final integration. No later source study is requested early.
 
 Wheel, arrow keys, Home/End, touch swipes, a range slider and previous/next buttons move through slices with bounded indices and visible counts. Only adjacent slices of the active sequence are prefetched. The enlarged dialog shares the current slice with the inline viewer. Changing question resets to that question's initial sequence and representative slice. Source pixels and attribution remain unchanged.
 
