@@ -1,4 +1,5 @@
 import { FLEISCHNER_FLASHCARDS, FLEISCHNER_FLASHCARD_TOPIC } from './fleischnerLearning'
+import { HEMANGIOMA_FLASHCARDS } from './haemangiomaTraining'
 // Auto-generated RadYar flashcard data.
 
 import { CONTRAST_FLASHCARDS, CONTRAST_FLASHCARD_TOPICS } from './contrastMedia'
@@ -696,7 +697,7 @@ const CSF_SYSTEM_FLASHCARDS = [
   },
 ]
 
-export const FLASHCARDS = [
+const LEGACY_FLASHCARDS = [
   ...FLEISCHNER_FLASHCARDS,
   ...MAMMA_MRT_FLASHCARDS,
   ...MAMMA_MRT_LESION_FLASHCARDS,
@@ -3401,6 +3402,11 @@ export const FLASHCARDS = [
       "fa": "Goutallier ۰ (بدون چربی) → ... → ۴ (چربی > عضله)\nدرجه ≥۳ → ترمیم غیرممکن\n+ آکرومیون Bigliani / آرتروز ACG / دیسلوکیشن LHB = یافته‌های همراه"
     }
   }
+]
+
+export const FLASHCARDS = [
+  ...LEGACY_FLASHCARDS.filter(card => card.topicId !== 'haemangiom'),
+  ...HEMANGIOMA_FLASHCARDS,
 ]
 
 export function getFlashcardTopic(topicId) {
