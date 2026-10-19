@@ -1,0 +1,30 @@
+{
+  "lesson": "Epidermoid vs arachnoid cyst",
+  "assets": [
+    {
+      "path": "/educational/epidermoid-arachnoid/hero.svg",
+      "type": "code-native concept schematic",
+      "purpose": "Compare the overlapping conventional T1/T2 pattern with the differentiating FLAIR and DWI/ADC pattern.",
+      "not_a_patient_scan": true,
+      "review_status": "author-created; independent review pending"
+    },
+    {
+      "paths": [
+        "/educational/epidermoid-arachnoid/case-t1.png",
+        "/educational/epidermoid-arachnoid/case-t2.png",
+        "/educational/epidermoid-arachnoid/case-flair.png",
+        "/educational/epidermoid-arachnoid/case-t1c.png",
+        "/educational/epidermoid-arachnoid/case-dwi.png"
+      ],
+      "type": "cropped clinical MRI case frames",
+      "source_file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf",
+      "source_page": "PDF p.52 (printed p.51)",
+      "source_case": "Radiopaedia rID 9772; DOI 10.53347/rID-9772; contributed by Frank Gaillard",
+      "crop_source_render": "PDF rendered at 140 dpi to 1158 x 1638 pixels; source boxes (x1,y1,x2,y2): T1 175,49,443,367; T2 443,49,712,367; FLAIR 713,49,982,367; T1 post-contrast 154,383,414,716; DWI 414,383,702,716.",
+      "permission": "User authorized use of images in the supplied PDFs; project standard records broad authorization for Radiopaedia cases.",
+      "not_a_patient_scan": false,
+      "limitations": "The displayed source selection has no ADC map. Do not infer ADC values from these frames.",
+      "review_status": "author inspected source page and crop; independent review pending"
+    }
+  ]
+}
