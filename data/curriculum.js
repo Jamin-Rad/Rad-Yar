@@ -875,6 +875,7 @@ export const CURRICULUM = [
           { id: 'angiomyolipom', title: { de: 'Angiomyolipom', en: 'Angiomyolipoma', fa: 'آنژیومیولیپوم' }, group: ['Benigne Nierentumoren'], tags: ['CT','MRT'], diff: 2, link: '/abdomen/niere/raumforderungen' },
           { id: 'onkozytom-niere', title: { de: 'Onkozytom', en: 'Oncocytoma', fa: 'انکوسیتوم' }, group: ['Benigne Nierentumoren'], tags: ['CT','MRT'], diff: 2, link: '/abdomen/niere/raumforderungen' },
           { id: 'nierenzellkarzinom', title: { de: 'Nierenzellkarzinom', en: 'Renal Cell Carcinoma', fa: 'کارسینوم سلول کلیوی' }, tags: ['CT','MRT'], diff: 3, link: '/abdomen/niere/raumforderungen' },
+          { id: 'nephroblastom-wilms', title: { de: 'Nephroblastom (Wilms-Tumor)', en: 'Nephroblastoma (Wilms tumour)', fa: 'نفروبلاستوما (تومور ویلمز)' }, tags: ['Sono','CT','MRT'], diff: 2, link: '/abdomen/niere/wilms-tumour', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'urothelkarzinom', title: { de: 'Urothelkarzinom', en: 'Urothelial Carcinoma', fa: 'کارسینوم اوروتلیال' }, tags: ['CT'], diff: 3 },
           { id: 'nephrolithiasis', title: { de: 'Nephrolithiasis', en: 'Nephrolithiasis', fa: 'نفرولیتیازیس' }, tags: ['CT','Rö'], diff: 1 },
           { id: 'hydronephrose', title: { de: 'Hydronephrose', en: 'Hydronephrosis', fa: 'هیدرونفروز' }, tags: ['Sono','CT'], diff: 1 },
@@ -1551,7 +1552,7 @@ export const CURRICULUM = [
           { id: 'renale-osteodystrophie-ws', title: { de: 'Renale Osteodystrophie', en: 'Renal Osteodystrophy', fa: 'استئودیستروفی کلیوی' }, tags: ['Rö','CT'], diff: 2 },
           { id: 'morbus-paget-ws', title: { de: 'Morbus Paget', en: 'Paget Disease', fa: 'بیماری پاژه' }, tags: ['Rö','CT','MRT'], diff: 2 },
           { id: 'epidurale-lipomatose', title: { de: 'Epidurale Lipomatose', en: 'Epidural Lipomatosis', fa: 'لیپوماتوز اپیدورال' }, tags: ['MRT'], diff: 2 },
-          { id: 'funikulaere-myelose', title: { de: 'Funikuläre Myelose', en: 'Subacute Combined Degeneration', fa: 'دژنراسیون ترکیبی تحت‌حاد نخاع' }, tags: ['MRT'], diff: 3 },
+          { id: 'funikulaere-myelose', title: { de: 'Funikuläre Myelose', en: 'Subacute Combined Degeneration', fa: 'دژنراسیون ترکیبی تحت‌حاد نخاع' }, tags: ['MRT'], diff: 3, link: '/wirbelsaeule/metabolisch/funikulaere-myelose' },
         ],
       },
       {

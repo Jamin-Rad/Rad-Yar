@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 430" role="img" aria-labelledby="t d">
+  <title id="t">Schematic of symmetric posterior-column signal</title>
+  <desc id="d">A non-diagnostic axial spinal cord schematic with the paired posterior columns highlighted.</desc>
+  <rect x="12" y="12" width="536" height="406" rx="34" fill="#102b37"/>
+  <ellipse cx="280" cy="218" rx="170" ry="132" fill="#e9d7c1" stroke="#fff5e9" stroke-width="9"/>
+  <ellipse cx="280" cy="224" rx="110" ry="88" fill="#627d88" stroke="#b5cad0" stroke-width="6"/>
+  <path d="M226 265 Q244 285 280 286 Q316 285 334 265 L310 247 Q280 262 250 247 Z" fill="#f2bd68" stroke="#fff1d3" stroke-width="5"/>
+  <path d="M280 253v31" stroke="#fff1d3" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+  <path d="M280 203c-20 0-31 15-31 32 0 18 14 31 31 42 17-11 31-24 31-42 0-17-11-32-31-32Z" fill="#36545e" opacity=".82"/>
+  <circle cx="280" cy="240" r="17" fill="#203d47"/>
+  <path d="M222 320h116" stroke="#f2bd68" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="222" cy="320" r="5" fill="#f2bd68"/><circle cx="338" cy="320" r="5" fill="#f2bd68"/>
+</svg>
