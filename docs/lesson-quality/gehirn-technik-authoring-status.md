@@ -4,7 +4,7 @@ Stand: 19.10.2026. This is a work-in-progress ledger for the current batch, not 
 
 ## Zusatz-Teilbatch B-1: Sonographie-Physik
 
-Eine fokussierte dreisprachige Einheit ist unter `/technik/sonographie/grundlagen` verfügbar. Sie behandelt Technik.pdf PDF-S. 132 und den Doppler-/Duplexanteil von S. 133. CEUS auf PDF-S. 133–134 ist nun als eigene dreisprachige Lektion unter `/technik/kontrastmittel/ultraschall` ergänzt und mit Curriculum, MCQ und Flashcards verbunden. Der Inhalt stellt technische Kernaussagen des PDFs den aktuellen EU-Produktinformationen für SonoVue gegenüber und kennzeichnet mögliche Off-label-Anwendungen. Unabhängiger Review, Browsernachweis und integrierter Build stehen für diesen CEUS-Batch noch aus. Es gibt keine wissenschaftliche Endfreigabe.
+Eine fokussierte dreisprachige Einheit ist unter `/technik/sonographie/grundlagen` verfügbar. Sie behandelt Technik.pdf PDF-S. 132 und den Doppler-/Duplexanteil von S. 133. CEUS auf PDF-S. 133–134 ist nun als eigene dreisprachige Lektion unter `/technik/kontrastmittel/ultraschall` ergänzt und mit Curriculum, Quiz und Flashcards verbunden. Der unabhängige Inhaltsreview einschließlich Retest der Korrekturen ist abgeschlossen; Browsernachweis und integrierter Build bleiben BLOCKED. Es gibt keine wissenschaftliche Endfreigabe.
 
 ## Technik.pdf
 

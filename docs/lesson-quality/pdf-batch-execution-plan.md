@@ -17,7 +17,7 @@
 |---|---|---|---|---|---|
 | پایلوت | Abdomen، صص. ۸–۱۰؛ همانژیوم | انجام شد | درس، تمرین‌ها و ترجمه‌ها اصلاح شد | دو دور مستقل؛ یافته‌های واژگانی و شمار آزمون بسته شدند | مرور مرورگر، حق استفادهٔ کیس Radiopaedia و تأیید علمی نهایی باز است |
 | A | Abdomen + Thorax | [ماتریس](pdf-map-abdomen-thorax.md) | در حال ساخت؛ ۱۱ مسیر frozen با shell/assessment draft اصلاح، و routeهای تازهٔ کیست کبد، appendicitis، خونریزی تحتانی GI و CRC اضافه شده‌اند | دور اول ۱۱ مسیر: REVISE؛ بازبینی مستقل retest در جریان | منبع/معنای ترجمه/اتصال registry/مرورگر همچنان باز؛ AVM حل‌نشده؛ coverage کامل نیست |
-| B | Gehirn + Technik | [ماتریس](gehirn-technik-curriculum-matrix.md) | سونوگرافی پایه و CEUS از Technik ص. ۱۳۲–۱۳۴ جداگانه ساخته و به Curriculum وصل شدند؛ درس کلی Technik، سایر صفحه‌ها و بیشتر موضوع‌های Gehirn همچنان در جریان‌اند | پایهٔ سونوگرافی مستقل بررسی/اصلاح شد؛ CEUS منتظر دور اول review مستقل است | سایر محتواها، CEUS runtime/browser، build، سایر تشخیص‌تصویر/مجوزها و تأیید علمی باز هستند |
+| B | Gehirn + Technik | [ماتریس](gehirn-technik-curriculum-matrix.md) | سونوگرافی پایه و CEUS از Technik ص. ۱۳۲–۱۳۴ جداگانه ساخته و به Curriculum وصل شدند؛ درس کلی Technik، سایر صفحه‌ها و بیشتر موضوع‌های Gehirn همچنان در جریان‌اند | پایهٔ سونوگرافی مستقل بررسی/اصلاح شد؛ CEUS: دور مستقل review و retest موارد ایمنی/assessment بسته شد | CEUS browser/RTL، build، سایر محتواها و تشخیص‌تصویر/مجوزها و تأیید علمی باز هستند |
 | C | MSK + Wirbelsäule | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | چهار route پیش‌نویس؛ WS pp11–13 تازه؛ و اصلاح محدود محتوای موجود AK-Luxation و شکستگی کودکان | شرط CT و رفع حکم قطعی Salter–Harris retest محدود شده؛ route تازه و AK delta منتظر بازبینی‌اند | VIS بدون تصویر تشخیصی با مجوز؛ ثبت route/assessment، مرور زبان/UX باز؛ پوشش وسیع PDF ناقص |
 
 ## معیار اتمام batch
@@ -26,4 +26,4 @@
 
 ## Teilbatch B-1: سونوگرافی پایه
 
-مسیر `/technik/sonographie/grundlagen` و ledger مستقل [QA و پوشش منبع](technik-sonographie-review.md) اصول صوت/آرتیفکت و Doppler/Duplex را پوشش می‌دهند. مسیر `/technik/kontrastmittel/ultraschall` اکنون CEUS صفحات ۱۳۳–۱۳۴ را در درس مستقل با ترجمه، MCQ و فلش‌کارت ثبت می‌کند؛ بازبینی مستقل و runtime/browser این مسیر هنوز باز هستند. ادامهٔ Technik.pdf و همهٔ batchهای دیگر همگی کامل نشده‌اند.
+مسیر `/technik/sonographie/grundlagen` و ledger مستقل [QA و پوشش منبع](technik-sonographie-review.md) اصول صوت/آرتیفکت و Doppler/Duplex را پوشش می‌دهند. مسیر `/technik/kontrastmittel/ultraschall` اکنون CEUS صفحات ۱۳۳–۱۳۴ را با ترجمه، MCQ و فلش‌کارت پوشش می‌دهد؛ review مستقل محتوا و retest اصلاحات بسته شد، اما runtime/browser و build BLOCKED هستند. ادامهٔ Technik.pdf و همهٔ batchهای دیگر کامل نشده‌اند.
