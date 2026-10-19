@@ -117,7 +117,7 @@
 | سارکوئیدوز، stages و الگوی HRCT | 40–43 | `sarkoidose` | `/lunge/sarkoidose` — `app/lunge/sarkoidose/page.js` | route دارد؛ coverage PDF نامشخص | C/V/T؛ CT perilymphatic و lymph node map؛ صفحات 41–43 stage table و افتراق |
 | cystic fibrosis | 44 | شناسهٔ دقیق در curriculum پیدا نشد | — | نامشخص؛ فقط heading دیده می‌شود | ?؛ متن/تصویر صفحه استخراج نشده |
 | lung cysts differential | 45 | `hrct-dichteminderung` (الگوی مرتبط؛ شناسهٔ اختصاصی cyst diff پیدا نشد) | `/thorax/hrct/dichteminderung` | route الگوی کاهش دانسیته هست؛ درس اختصاصی نامشخص | ?/T؛ صفحه فقط heading و glyph دارد |
-| pulmonary hypertension: تعریف/WHO/imaging signs | 46–47 | `pulmonale-hypertonie` | — | curriculum-only | T/C/V؛ سایز عروق، RV/LV و septal bowing |
+| pulmonary hypertension: تعریف/گروه‌بندی/نشانه‌های CXR و CT | 46–47 | `pulmonale-hypertonie` | `/thorax/pulmonale-hypertonie` | درس سه‌زبانهٔ محدود؛ PDF pp.46–47 دیداری بررسی شد و آستانه‌های تعریف/نشانه‌ها با ESC/ERS تطبیق داده شدند؛ بررسی مستقل محتوای منبع/ترجمه و retest تصویری PASS محدود | شماتیک آموزشی غیرتشخیصی؛ نمونهٔ بالینی، مرورگر/RTL و تأیید علمی نهایی باز |
 | pulmonary edema/congestion, cardiogenic vs non-cardiogenic, ARDS | 48–49 | `lungenoedem`, `kardiale-dekompensation`, `ards` | — | curriculum-only؛ درس مستقل در routeهای بررسی‌شده پیدا نشد | T/C/V؛ جدول افتراق PDF49 رندر و دیده شد؛ تصاویر CT/X-ray لازم |
 | Mamma (عنوان فصل) | 50 | شناسه‌های Mamma متعدد (مانند `mamma`, `mamma-anatomie`) | مسیرهای مرتبط در `app/mamma` بررسی نشده در این زیرکار | نامشخص؛ فقط عنوان Mamma دیده شد | ?؛ خارج از دامنهٔ Thorax درس‌های ریوی، باید در نقشهٔ Mamma جدا بررسی شود |
 

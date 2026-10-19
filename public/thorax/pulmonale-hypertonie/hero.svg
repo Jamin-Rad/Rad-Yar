@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Pulmonary artery and right heart teaching schematic</title>
+  <desc id="desc">A simplified non-diagnostic diagram of the pulmonary trunk, lungs, and right ventricle.</desc>
+  <defs><linearGradient id="lung" x1="0" x2="1"><stop stop-color="#67d2d0" stop-opacity=".25"/><stop offset="1" stop-color="#6ea6ff" stop-opacity=".2"/></linearGradient><linearGradient id="artery" x1="0" x2="1"><stop stop-color="#60e0cf"/><stop offset="1" stop-color="#55a9ff"/></linearGradient></defs>
+  <path d="M287 93c-72-45-141-17-176 47-26 47-35 123-6 171 21 35 58 43 92 13 30-27 52-82 90-113V93Zm66 0c72-45 141-17 176 47 26 47 35 123 6 171-21 35-58 43-92 13-30-27-52-82-90-113V93Z" fill="url(#lung)" stroke="#7ddbd8" stroke-width="3"/>
+  <path d="M318 318V174c0-40 12-68 2-92-8-20-26-28-47-22-28 8-40 39-25 63 10 16 28 23 47 18m27 33c0-39 29-61 59-49 26 10 32 38 19 58-12 18-32 24-49 15" fill="none" stroke="url(#artery)" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M318 318c-2-43-44-62-65-35-22 29 3 81 65 102 62-21 87-73 65-102-21-27-63-8-65 35Z" fill="#ef7297" fill-opacity=".72" stroke="#ffc1d1" stroke-width="3"/>
+  <path d="M196 188c35 0 59 11 78 28m170-28c-35 0-59 11-78 28" fill="none" stroke="#b6eff0" stroke-width="3" stroke-dasharray="7 9"/>
+  <circle cx="318" cy="82" r="12" fill="#fff" stroke="#55cfc4" stroke-width="5"/>
+  <text x="320" y="395" text-anchor="middle" fill="#d9e8ff" font-family="Arial,sans-serif" font-size="17">Pulmonary artery · RV load · imaging clues</text>
+</svg>
