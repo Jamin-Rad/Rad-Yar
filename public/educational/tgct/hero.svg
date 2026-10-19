@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Tenosynovial giant cell tumour educational schematic</title>
+  <desc id="desc">Illustrative joint with synovial lining and localized nodular proliferation; not diagnostic imaging.</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#18342e"/><stop offset="1" stop-color="#10252d"/></linearGradient></defs>
+  <rect width="640" height="480" rx="40" fill="url(#bg)"/>
+  <path d="M114 213c0-72 55-124 133-124h146c78 0 133 52 133 124v66c0 73-55 125-133 125H247c-78 0-133-52-133-125z" fill="#edf4ef" stroke="#65c2bf" stroke-width="12"/>
+  <path d="M158 210c44-37 98-37 144 0 42 35 94 35 140 0M158 282c44 37 98 37 144 0 42-35 94-35 140 0" fill="none" stroke="#8ab9a7" stroke-width="22" stroke-linecap="round"/>
+  <ellipse cx="303" cy="246" rx="46" ry="39" fill="#bb6844" stroke="#f2ca74" stroke-width="9"/>
+  <circle cx="303" cy="246" r="13" fill="#f7e9c9"/>
+</svg>

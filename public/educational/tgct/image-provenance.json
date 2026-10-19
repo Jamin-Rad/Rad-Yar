@@ -1,0 +1,34 @@
+{
+  "lesson": "tgct",
+  "sourcePdf": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+  "authorization": "User authorized use of all images in the supplied PDFs.",
+  "assets": [
+    {
+      "file": "hero.svg",
+      "type": "code-native topic illustration",
+      "patientImage": false,
+      "description": "Joint concept schematic with localized synovial nodule; not diagnostic imaging."
+    },
+    {
+      "file": "rid-28877-localized-finger.jpg",
+      "type": "source-PDF page crop",
+      "patientImage": true,
+      "sourcePage": "MSK.pdf PDF page 95 (printed page 94)",
+      "renderScale": "PDF raster rendered to 1400 px high; source crop x=145 y=500 width=700 height=485 pixels, then image-only crop x=0 y=0 width=414 height=485 pixels (final source-render coordinates x=145–559, y=500–985)",
+      "radiopaediaId": "rID 28877",
+      "panels": [
+        "MRI views of a lobulated lesion along the ring-finger flexor tendon sheath, as described in the PDF caption.",
+        "The source text says the lesion is low signal on all sequences; the separate panels are not individually sequence-labelled."
+      ],
+      "selection": "A well-circumscribed localized tendon-sheath lesion gives a clear first example of L-/N-TGCT and is visibly paired with the source's case description.",
+      "sourceFigureAuthorOrContributor": "Not identified on the supplied source page.",
+      "licenseClaim": "No external contributor or Radiopaedia licence verification is claimed; use is based on the user's authorization for images in the supplied PDF."
+    },
+    {
+      "file": "Inline diagram in app/msk/tumoren/tgct/page.jsx",
+      "type": "code-native educational schematic",
+      "patientImage": false,
+      "description": "Comparison of a localized synovial nodule and diffuse synovial proliferation; conceptual, not diagnostic."
+    }
+  ]
+}

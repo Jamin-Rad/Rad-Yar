@@ -1200,7 +1200,7 @@ export const CURRICULUM = [
         themen: [
           { id: 'lipom-msk', title: { de: 'Lipom', en: 'Lipoma', fa: 'لیپوم' }, group: ['Benigne Weichteiltumoren'], tags: ['MRT'], diff: 1 },
           { id: 'haemangiom-msk', title: { de: 'Hämangiom / vaskuläre Malformation', en: 'Haemangioma / Vascular Malformation', fa: 'همانژیوم / مالفورماسیون عروقی' }, group: ['Benigne Weichteiltumoren'], tags: ['MRT'], diff: 2 },
-          { id: 'tgct', title: { de: 'Tenosynovialer Riesenzelltumor (TGCT)', en: 'Tenosynovial Giant Cell Tumour (TGCT)', fa: 'تومور تنوسینوویال سلول ژانت (TGCT)' }, group: ['Benigne Weichteiltumoren'], tags: ['MRT'], diff: 2 },
+          { id: 'tgct', title: { de: 'Tenosynovialer Riesenzelltumor (TGCT)', en: 'Tenosynovial Giant Cell Tumour (TGCT)', fa: 'تومور تنوسینوویال سلول ژانت (TGCT)' }, group: ['Benigne Weichteiltumoren'], tags: ['MRT'], diff: 2, link: '/msk/tumoren/tgct', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'liposarkom', title: { de: 'Liposarkom', en: 'Liposarcoma', fa: 'لیپوسارکوما' }, group: ['Maligne Weichteiltumoren'], tags: ['MRT'], diff: 3 },
           { id: 'synovialsarkom', title: { de: 'Synovialsarkom', en: 'Synovial Sarcoma', fa: 'سینوویال سارکوما' }, group: ['Maligne Weichteiltumoren'], tags: ['MRT'], diff: 3 },
         ],

@@ -50,7 +50,7 @@ Die PDF-Textlayer-Titel und Abschnittswechsel wurden seitenweise geprüft; Bildi
 | 87–89 | Enchondrom — bounded DE/EN/FA route `/msk/tumoren/enchondrom`; PDF pp.87–89 (print 86–88); source ledger `enchondrom-msk-p87-p89.md`; Radiopaedia crops from p.88 (rID 91156/41467/33147), MRI sequence/contributor details not inferred; independent review/delta and SSR pass; browser lesson content is sign-in gated; clinician review pending |
 | 90–91 | Chondrosarkom — bounded DE/EN/FA route `/msk/tumoren/chondrosarkom`; source ledger `chondrosarkom-msk-p90-p91.md`; independent review/delta and SSR pass; browser lesson content is sign-in gated; clinician review pending |
 | 92–93 | Ewing-Sarkom — bounded DE/EN/FA route `/msk/tumoren/ewing-sarkom`; PDF pp.92–93 (printed 91–92); rID 27379 case crop with provenance and sequence-label caveat; independent review/delta and SSR pass; browser lesson content is sign-in gated; clinician review pending |
-| 94–96 | Tenosynovialer Riesenzelltumor |
+| 94–96 | Tenosynovialer Riesenzelltumor — bounded DE/EN/FA route `/msk/tumoren/tgct`; PDF pp.94–96 (printed 93–95); rID 28877 localized finger MRI crop with caption/watermark removed and sequence caveat; independent source/content/visual/language review and DOI/crop delta PASS; SSR PASS; browser/clinical review open |
 | 97–99 | Multiples Myelom / Plasmozytom |
 | 100–101 | Primäres Knochenlymphom |
 | 102–103 | Knochenmetastasen |
