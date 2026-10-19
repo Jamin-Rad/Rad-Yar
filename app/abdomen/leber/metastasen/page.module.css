@@ -1,0 +1,19 @@
+.content { max-width: 980px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; color: var(--text); }
+.lead { font-size: 1.08rem; line-height: 1.7; max-width: 78ch; }
+.visualBlock, .patterns section, .reporting { border: 1px solid var(--border); border-radius: 16px; background: var(--bg-card); padding: 1.1rem 1.25rem; margin: 1.25rem 0; }
+.visualBlock h2, .patterns h2, .reporting h2 { margin: 0 0 .65rem; font-size: 1.15rem; }
+.diagram { display: block; width: 100%; height: auto; }
+.axis { fill: var(--text); font-size: 16px; font-family: inherit; }
+.label { fill: var(--text-strong); font-size: 14px; font-family: inherit; font-weight: 700; }
+.axisLine { stroke: var(--border); stroke-width: 2; }
+.liverRef { stroke: #7d8790; stroke-width: 2; stroke-dasharray: 6 5; }
+.hypo, .hyper { fill: none; stroke-width: 5; stroke-linecap: round; }
+.hypo { stroke: #39749b; }
+.hyper { stroke: #b54755; }
+.caption, .source { color: var(--text-muted); font-size: .88rem; line-height: 1.55; }
+.patterns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.patterns p, .reporting p, .cave p { line-height: 1.65; margin-bottom: 0; }
+.cave { border-inline-start: 4px solid #d48b34; background: color-mix(in srgb, #d48b34 10%, var(--bg-card)); padding: 1rem 1.2rem; border-radius: 8px; margin: 1.25rem 0; }
+.cave strong { color: #9c6117; }
+.source { display: block; margin-top: 1.5rem; }
+@media (max-width: 680px) { .patterns { grid-template-columns: 1fr; } .content { padding-inline: .8rem; } }

@@ -783,7 +783,7 @@ export const CURRICULUM = [
             ready: true, updatedAt: '2026-06-13',
           },
           { id: 'cholangiokarzinom-icca', title: { de: 'Cholangiokarzinom (iCCA)', en: 'Cholangiocarcinoma (iCCA)', fa: 'کلانژیوکارسینوم داخل کبدی (iCCA)' }, group: ['Maligne Leberläsionen'], tags: ['CT','MRT'], diff: 3 },
-          { id: 'lebermetastasen', title: { de: 'Lebermetastasen', en: 'Liver Metastases', fa: 'متاستازهای کبدی' }, group: ['Maligne Leberläsionen'], tags: ['CT','MRT'], diff: 2, link: '/abdomen/leber/fokale-laesionen' },
+          { id: 'lebermetastasen', title: { de: 'Lebermetastasen', en: 'Liver Metastases', fa: 'متاستازهای کبدی' }, group: ['Maligne Leberläsionen'], tags: ['CT','MRT'], diff: 2, link: '/abdomen/leber/metastasen' },
           { id: 'li-rads', title: { de: 'LI-RADS', en: 'LI-RADS', fa: 'سیستم LI-RADS' }, tags: ['CT','MRT'], diff: 2 },
           { id: 'budd-chiari-syndrom', title: { de: 'Budd-Chiari-Syndrom', en: 'Budd-Chiari Syndrome', fa: 'سندرم باد-کیاری' }, group: ['Vaskuläre Lebererkrankungen'], tags: ['Sono','CT','MRT'], diff: 3 },
           { id: 'pfortaderthrombose', title: { de: 'Pfortaderthrombose', en: 'Portal Vein Thrombosis', fa: 'ترومبوز ورید پورت' }, group: ['Vaskuläre Lebererkrankungen'], tags: ['Sono','CT'], diff: 2 },
