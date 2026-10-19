@@ -20,6 +20,25 @@ function Section({id,title,lead,children}){useMobileLearningLayout();const[open,
 function Table({headers,rows}){return <div className={styles.tableWrap}><table className={styles.table}><thead><tr>{headers.map((h,i)=><th key={i}>{h}</th>)}</tr></thead><tbody>{rows.map((r,i)=><tr key={i}>{r.map((c,j)=><td key={j}>{c}</td>)}</tr>)}</tbody></table></div>}
 function Cards({items,lang}){return <div className={styles.cardsGrid}>{items.map(item=><div className={styles.infoCard} key={L(item.title,lang)}><span className={styles.cardIcon}>{item.icon}</span><h3>{L(item.title,lang)}</h3><p>{L(item.text,lang)}</p></div>)}</div>}
 function Callout({label,cave=false,children}){return <div className={`${styles.callout} ${cave?styles.cave:''}`}><strong>{cave?'⚠️':'💡'} {label}</strong><p>{children}</p></div>}
+function MorphologyLegend({lang}) {
+ const t=value=>L(value,lang)
+ return <div dir={lang==='fa'?'rtl':'ltr'}>
+  <ul style={{display:'flex',flexWrap:'wrap',gap:'1rem',listStyle:'none',padding:0}}>{FRAKTUR_LESSON.morphologie.imagePanels.map((panel,index)=><li key={index}><bdi>{t(panel)}</bdi></li>)}</ul>
+  <small>{t(FRAKTUR_LESSON.morphologie.imageCredit)}</small>
+ </div>
+}
+function MorphologyCheck({lang}) {
+ const [selected,setSelected]=useState(null)
+ const check=FRAKTUR_LESSON.sourceCheck
+ const t=value=>L(value,lang)
+ return <div className={styles.infoCard}>
+  <h3>{t(check.title)}</h3><p>{t(check.question)}</p>
+  <div role="group" aria-label={t(check.title)} style={{display:'grid',gap:'.6rem',marginBlock:'1rem'}}>
+   {check.options.map((option,index)=><button key={index} type="button" className={styles.actionBtn} aria-pressed={selected===index} onClick={()=>setSelected(index)} style={{textAlign:'start',whiteSpace:'normal',borderWidth:selected===index?'3px':'1px',borderStyle:'solid',borderColor:selected===index?'#f97316':undefined}}>{String.fromCharCode(65+index)} · {t(option)}</button>)}
+  </div>
+  <div aria-live="polite">{selected!==null&&<p>{t(check.feedback[selected])}</p>}</div>
+ </div>
+}
 function ReadButton({isRead,toggleRead,authError,copy}){return <div className={styles.readControl}><button type="button" className={`${styles.readButton} ${isRead?styles.readButtonActive:''}`} onClick={toggleRead}><span className={styles.readCheck}>{isRead?'✓':''}</span><span>{isRead?copy.read:copy.mark}</span></button>{authError&&<div className={styles.readError}><span>{copy.auth}</span><Link href="/sign-in">{copy.signIn}</Link></div>}</div>}
 
 export default function FrakturbeschreibungPage(){
@@ -33,7 +52,7 @@ export default function FrakturbeschreibungPage(){
   <div className={styles.main}>
    <Section id="systematik" title={c(FRAKTUR_LESSON.systematik.title)} lead={c(FRAKTUR_LESSON.systematik.lead)}><Cards items={FRAKTUR_LESSON.systematik.items} lang={lang}/><Callout label={c(FRAKTUR_LESSON.keyLabel)}>{c(FRAKTUR_LESSON.systematik.key)}</Callout></Section>
    <Section id="entstehung" title={c(FRAKTUR_LESSON.entstehung.title)} lead={c(FRAKTUR_LESSON.entstehung.lead)}><Table headers={FRAKTUR_LESSON.entstehung.headers.map(c)} rows={rows(FRAKTUR_LESSON.entstehung.rows)}/></Section>
-   <Section id="morphologie" title={c(FRAKTUR_LESSON.morphologie.title)} lead={c(FRAKTUR_LESSON.morphologie.lead)}><Table headers={FRAKTUR_LESSON.morphologie.headers.map(c)} rows={rows(FRAKTUR_LESSON.morphologie.rows)}/><button type="button" className={styles.fractureMorphologyImage} onClick={()=>setZoomed(true)} aria-label={`${copy.zoom}: ${c(FRAKTUR_LESSON.morphologie.imageAlt)}`}><Image src={FRAKTUR_LESSON.morphologie.image} alt={c(FRAKTUR_LESSON.morphologie.imageAlt)} width={1158} height={1230}/></button></Section>
+   <Section id="morphologie" title={c(FRAKTUR_LESSON.morphologie.title)} lead={c(FRAKTUR_LESSON.morphologie.lead)}><Table headers={FRAKTUR_LESSON.morphologie.headers.map(c)} rows={rows(FRAKTUR_LESSON.morphologie.rows)}/><button type="button" className={styles.fractureMorphologyImage} onClick={()=>setZoomed(true)} aria-label={`${copy.zoom}: ${c(FRAKTUR_LESSON.morphologie.imageAlt)}`}><Image src={FRAKTUR_LESSON.morphologie.image} alt={c(FRAKTUR_LESSON.morphologie.imageAlt)} width={960} height={420}/></button><MorphologyLegend lang={lang}/><p>{c(FRAKTUR_LESSON.morphologie.imageTask)}</p><Callout label={c({de:'Ansatzfragmente',en:'Attachment fragments',fa:'قطعات محل اتصال'})}>{c(FRAKTUR_LESSON.morphologie.avulsionExamples)}</Callout><MorphologyCheck lang={lang}/></Section>
    <Section id="dislokation" title={c(FRAKTUR_LESSON.dislokation.title)} lead={c(FRAKTUR_LESSON.dislokation.lead)}><Table headers={FRAKTUR_LESSON.dislokation.headers.map(c)} rows={rows(FRAKTUR_LESSON.dislokation.rows)}/><Callout label={c(FRAKTUR_LESSON.caveLabel)} cave>{c(FRAKTUR_LESSON.dislokation.cave)}</Callout></Section>
    <Section id="gelenk" title={c(FRAKTUR_LESSON.gelenk.title)} lead={c(FRAKTUR_LESSON.gelenk.lead)}><Cards items={FRAKTUR_LESSON.gelenk.items} lang={lang}/><Callout label={c(FRAKTUR_LESSON.keyLabel)}>{c(FRAKTUR_LESSON.gelenk.key)}</Callout></Section>
    <Section id="bildgebung" title={c(FRAKTUR_LESSON.bildgebung.title)}><Table headers={FRAKTUR_LESSON.bildgebung.headers.map(c)} rows={rows(FRAKTUR_LESSON.bildgebung.rows)}/><Callout label={c(FRAKTUR_LESSON.caveLabel)} cave>{c(FRAKTUR_LESSON.bildgebung.cave)}</Callout></Section>
@@ -42,6 +61,6 @@ export default function FrakturbeschreibungPage(){
    <Section id="takehome" title={c(FRAKTUR_LESSON.takehome.title)} lead={c(FRAKTUR_LESSON.takehome.lead)}><div className={styles.takeHomeGrid}>{FRAKTUR_LESSON.takehome.items.map((item,i)=><div className={styles.takeHomeItem} key={c(item.title)}><span>{String(i+1).padStart(2,'0')}</span><div><h3>{c(item.title)}</h3><p>{c(item.text)}</p></div></div>)}</div></Section>
    <div className={styles.readBarBottom}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}/></div>
   </div></div>
-  {zoomed&&<div className={styles.strokeImageModal} role="dialog" aria-modal="true" aria-label={c(FRAKTUR_LESSON.morphologie.imageAlt)} onClick={()=>setZoomed(false)}><div className={styles.strokeImageModalContent} onClick={e=>e.stopPropagation()}><button type="button" className={styles.strokeImageModalClose} onClick={()=>setZoomed(false)} aria-label={copy.close}>×</button><img src={FRAKTUR_LESSON.morphologie.image} alt={c(FRAKTUR_LESSON.morphologie.imageAlt)}/></div></div>}
+  {zoomed&&<div className={styles.strokeImageModal} role="dialog" aria-modal="true" aria-label={c(FRAKTUR_LESSON.morphologie.imageAlt)} onClick={()=>setZoomed(false)}><div className={styles.strokeImageModalContent} onClick={e=>e.stopPropagation()}><button type="button" className={styles.strokeImageModalClose} onClick={()=>setZoomed(false)} aria-label={copy.close}>×</button><img src={FRAKTUR_LESSON.morphologie.image} alt={c(FRAKTUR_LESSON.morphologie.imageAlt)}/><MorphologyLegend lang={lang}/></div></div>}
  </main>
 }

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">A–D</title>
+  <desc id="desc">A transverse; B oblique; C segmental; D avulsion. Explanatory schematic, not a patient image.</desc>
+  <defs>
+    <path id="bone" d="M-34 56 Q-64 24 -42 12 Q-18 0 0 22 Q18 0 42 12 Q64 24 34 56 L29 272 Q64 302 42 318 Q20 334 0 308 Q-20 334 -42 318 Q-64 302 -29 272 Z"/>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#b45309"/></marker>
+  </defs>
+  <rect width="960" height="420" rx="24" fill="#f8fafc"/>
+  <g fill="#fff7ed" stroke="#334155" stroke-width="5" stroke-linejoin="round">
+    <use href="#bone" transform="translate(120 65)"/>
+    <use href="#bone" transform="translate(360 65)"/>
+    <use href="#bone" transform="translate(600 65)"/>
+    <use href="#bone" transform="translate(840 65)"/>
+  </g>
+  <g fill="#0f172a" font-family="Arial,sans-serif" font-size="32" font-weight="700" text-anchor="middle"><text x="120" y="42">A</text><text x="360" y="42">B</text><text x="600" y="42">C</text><text x="840" y="42">D</text></g>
+  <g fill="none" stroke="#c2410c" stroke-width="8" stroke-linecap="round">
+    <path d="M89 220 H151"/>
+    <path d="M330 192 390 248"/>
+    <path d="M569 180 H631 M569 265 H631"/>
+  </g>
+  <path d="M816 98 809 82 791 100 801 119 Z" fill="#fff7ed" stroke="#c2410c" stroke-width="5"/>
+  <path d="M806 97 770 66" fill="none" stroke="#b45309" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M814 111 823 103" stroke="#c2410c" stroke-width="6"/>
+  <g stroke="#cbd5e1" stroke-width="2"><path d="M240 65 V390"/><path d="M480 65 V390"/><path d="M720 65 V390"/></g>
+</svg>

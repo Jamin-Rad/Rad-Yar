@@ -1,0 +1,17 @@
+{
+  "asset": "/educational/fracture-morphology-comparison.svg",
+  "type": "original-code-native-teaching-schematic",
+  "created": "2026-10-19",
+  "authoring": "Codex lesson author for RadYar; original SVG geometry written for this lesson",
+  "contentSource": {
+    "author": "Dr. Zia",
+    "file": "MSK.pdf",
+    "pdfPages": [3],
+    "printedPages": [2],
+    "concepts": ["transverse fracture", "oblique fracture", "segmental fracture", "avulsion under traction"]
+  },
+  "externalAssetReuse": false,
+  "rightsNote": "No third-party raster, patient image or copied source illustration is embedded. This is an original explanatory schematic; it does not assert licensing for the legacy raster or other PDF images.",
+  "localization": "Visible asset text is limited to panel identifiers A–D. Localized panel names, explanatory text, alt and attribution are rendered from data/frakturbeschreibung.js in DE/EN/FA, in both the lesson and enlarged view.",
+  "limitations": "Simplified geometry, not a diagnostic image, not drawn to anatomical scale. Clinical approval and final browser verification remain separate gates."
+}
