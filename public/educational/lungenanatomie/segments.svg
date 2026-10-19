@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" role="img" aria-labelledby="title desc">
+  <title id="title">Hierarchical lung segment map</title>
+  <desc id="desc">Abstract grouping of segment codes under right and left lobes; not a spatial or CT-boundary map.</desc>
+  <rect width="900" height="430" rx="22" fill="#f3f8fc"/>
+  <g font-family="Arial,sans-serif" text-anchor="middle" fill="#17324b" font-weight="700">
+    <text x="240" y="48" font-size="22">R</text><text x="660" y="48" font-size="22">L</text>
+  </g>
+  <g stroke="#fff" stroke-width="4">
+    <rect x="52" y="76" width="375" height="82" rx="16" fill="#9fc6e8"/>
+    <rect x="52" y="169" width="375" height="74" rx="16" fill="#a8d2af"/>
+    <rect x="52" y="254" width="375" height="112" rx="16" fill="#e3b6b7"/>
+    <rect x="473" y="76" width="375" height="159" rx="16" fill="#9fc6e8"/>
+    <rect x="473" y="246" width="375" height="120" rx="16" fill="#e3b6b7"/>
+  </g>
+  <g font-family="Arial,sans-serif" text-anchor="middle" fill="#102b43" font-size="22" font-weight="700">
+    <text x="240" y="126">S1 · S2 · S3</text>
+    <text x="240" y="216">S4 · S5</text>
+    <text x="240" y="319">S6 · S7 · S8 · S9 · S10</text>
+    <text x="660" y="126">S1+2 · S3</text>
+    <text x="660" y="184" font-size="18">S4 · S5</text>
+    <text x="660" y="316">S6 · S7+8 · S9 · S10</text>
+  </g>
+  <g font-family="Arial,sans-serif" text-anchor="middle" fill="#526d80" font-size="13">
+  </g>
+</svg>

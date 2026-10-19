@@ -391,7 +391,7 @@ export const CURRICULUM = [
         title: { de: '1. Anatomie', en: '1. Anatomy', fa: '۱. آناتومی' },
         icon: '🗺️',
         themen: [
-          { id: 'lungenanatomie', title: { de: 'Lungenanatomie & Lungenlappen', en: 'Lung Anatomy & Lobes', fa: 'آناتومی ریه و لوب‌ها' }, tags: ['CT','MRT'], diff: 1, link: '/thorax/anatomie/lungenanatomie', inProgress: true, updatedAt: '2026-10-19' },
+          { id: 'lungenanatomie', title: { de: 'Lungenanatomie & Lungenlappen', en: 'Lung Anatomy & Lobes', fa: 'آناتومی ریه و لوب‌ها' }, tags: ['CT','MRT'], diff: 1, link: '/thorax/anatomie/lungenanatomie', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'bronchialsystem', title: { de: 'Bronchialsystem', en: 'Bronchial System', fa: 'سیستم برونشیال' }, tags: ['CT'], diff: 1 },
           { id: 'mediastinum-anatomie', title: { de: 'Mediastinale Anatomie & Kompartimente', en: 'Mediastinal Anatomy & Compartments', fa: 'آناتومی مدیاستن و کمپارتمان‌ها' }, tags: ['CT','MRT'], diff: 1 },
           { id: 'pleura-anatomie', title: { de: 'Pleura & Pleurahöhle', en: 'Pleura & Pleural Cavity', fa: 'پلور و حفره پلور' }, tags: ['CT'], diff: 1 },

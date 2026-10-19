@@ -7,6 +7,14 @@
 .figure figcaption { padding:.8rem 1rem; color:var(--body); font-size:.9rem; line-height:1.6; }
 .diagram { background:#14283c; }
 .diagram img { max-height:480px; object-fit:contain; }
+.segmentDiagram { background:#f3f8fc; }
+.segmentDiagram img { max-height:340px; object-fit:contain; }
+.segmentTableWrap { max-width:100%; overflow-x:auto; border:1px solid var(--line); border-radius:12px; }
+.segmentTable { width:100%; min-width:560px; border-collapse:collapse; color:var(--body); text-align:start; }
+.segmentTable th,.segmentTable td { padding:.8rem 1rem; border-bottom:1px solid var(--line); line-height:1.65; vertical-align:top; }
+.segmentTable thead th { background:var(--lesson-accent-soft); color:var(--lesson-accent-strong); font-weight:800; }
+.segmentTable tbody th { width:34%; font-weight:700; }
+.segmentTable tbody tr:last-child th,.segmentTable tbody tr:last-child td { border-bottom:0; }
 .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.9rem; }
 .grid article { padding:1rem; border:1px solid color-mix(in srgb,var(--lesson-accent) 35%,var(--line)); border-radius:14px; background:var(--paper); }
 .grid h3 { margin:0 0 .5rem; color:var(--lesson-accent-strong); font-size:1rem; }

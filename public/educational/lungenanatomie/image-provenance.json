@@ -10,6 +10,13 @@
       "description": "Original schematic of a secondary pulmonary lobule. Internal labels are rendered in translated HTML instead of embedded in the image."
     },
     {
+      "file": "segments.svg",
+      "type": "code-native educational schematic",
+      "patientImage": false,
+      "sourcePage": "Thorax.pdf PDF page 7 (printed page 6), used for segment naming only",
+      "description": "Original abstract grouping of segment codes under right and left lobes. The figure is not to spatial scale and does not depict CT-visible segment boundaries; translated HTML table provides lobe and segment names."
+    },
+    {
       "file": "accessory-fissures.png",
       "type": "source-PDF page crop",
       "pdfPage": 8,
