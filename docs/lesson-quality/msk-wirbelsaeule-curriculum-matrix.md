@@ -61,7 +61,7 @@ Die PDF-Textlayer-Titel und Abschnittswechsel wurden seitenweise geprüft; Bildi
 | 112–113 | Aneurysmatische Knochenzyste — bounded DE/EN/FA route `/msk/tumoren/aneurysmal-bone-cyst`, exact curriculum ID linked; primary-ABC USP6 framing and telangiectatic osteosarcoma mimic updated from cited evidence; independent content/image/language review and delta PASS; SSR/preflight PASS; browser/clinical review pending |
 | 114–116 | Fibröse Dysplasie — bounded DE/EN/FA route `/msk/tumoren/fibroese-dysplasie`; independent source/content/image/language review and delta PASS; SSR/render PASS; browser/clinical review pending |
 | 117–118 | Intraossäres Lipom — bounded DE/EN/FA route `/msk/tumoren/intraossaeres-lipom`; independent source/content/image/language and visual-cue delta review PASS; SSR/render PASS; browser/clinical review pending |
-| 119 | Intraossäres Ganglion beginnt; Folgeseiten liegen außerhalb dieses geprüften Seitenblocks |
+| 119 | Intraossäres Ganglion — bounded DE/EN/FA route `/msk/tumoren/intraossaeres-ganglion`; page-bounded descriptive lesson with original location and MRI-signal schematics, explicitly no patient-image recognition; independent source/content/language and visual-scope delta PASS; SSR PASS; browser/clinical review pending |
 
 - Die vorhandenen MSK-Seiten wurden per Route-Dateien und den in `data/curriculum.js` explizit gesetzten `link`-Feldern abgeglichen. Curriculum-IDs ohne `link` sind keine vorhandenen Lektionen.
 - Die routenbasierte Prüfung weist nur Existenz und curriculumseitige Verknüpfung nach; die tatsächlichen Kapitel, Abbildungen, Übersetzungen und Prüfungsfragen der Lektionen wurden hier nicht gegen PDFs auditiert.

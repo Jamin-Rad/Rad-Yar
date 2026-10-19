@@ -1,0 +1,9 @@
+{
+  "asset": "mri-signal-schematic.svg",
+  "type": "original educational vector schematic",
+  "source": "Created for RadYar from the signal description on the user-provided MSK.pdf, PDF p. 119 (printed p. 118).",
+  "diagnosticImage": false,
+  "patientImage": false,
+  "purpose": "Explain relative low T1 signal, high T2/STIR signal and marginal-only enhancement without representing synthetic pixels as a real MRI.",
+  "limitations": "Not a case image; does not establish diagnosis or depict anatomy, sequence acquisition or pathology. The PDF page contains no patient image."
+}

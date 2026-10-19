@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" role="img" aria-labelledby="title desc">
+  <title id="title">Non-diagnostic MRI signal schematic</title>
+  <desc id="desc">Three simplified panels compare a dark fluid lesion on T1, a bright fluid lesion on T2 or STIR, and thin peripheral enhancement without central enhancement after contrast. These are explanatory shapes, not patient images.</desc>
+  <rect width="900" height="280" rx="20" fill="#f5f8f8"/>
+  <g stroke="#c5d5d8" stroke-width="2">
+    <rect x="18" y="18" width="276" height="244" rx="16" fill="#fff"/>
+    <rect x="312" y="18" width="276" height="244" rx="16" fill="#fff"/>
+    <rect x="606" y="18" width="276" height="244" rx="16" fill="#fff"/>
+  </g>
+  <g fill="#9ba9ae">
+    <ellipse cx="156" cy="140" rx="96" ry="78"/>
+    <ellipse cx="450" cy="140" rx="96" ry="78"/>
+    <ellipse cx="744" cy="140" rx="96" ry="78"/>
+  </g>
+  <g fill="#66777e" opacity=".75">
+    <path d="M93 104c20-23 49-34 76-28 28 6 49 27 54 51 7 31-13 62-43 75-29 13-68 6-88-19-19-24-19-58 1-79Z"/>
+    <path d="M387 104c20-23 49-34 76-28 28 6 49 27 54 51 7 31-13 62-43 75-29 13-68 6-88-19-19-24-19-58 1-79Z" fill="#eaf6f7" stroke="#fff" stroke-width="2"/>
+    <path d="M681 104c20-23 49-34 76-28 28 6 49 27 54 51 7 31-13 62-43 75-29 13-68 6-88-19-19-24-19-58 1-79Z" fill="#56676d"/>
+  </g>
+  <path d="M681 104c20-23 49-34 76-28 28 6 49 27 54 51 7 31-13 62-43 75-29 13-68 6-88-19-19-24-19-58 1-79Z" fill="none" stroke="#52c2cf" stroke-width="8"/>
+  <g fill="none" stroke="#fff" stroke-width="3" opacity=".5">
+    <path d="M82 73c41-23 92-19 126 10"/>
+    <path d="M376 73c41-23 92-19 126 10"/>
+    <path d="M670 73c41-23 92-19 126 10"/>
+  </g>
+</svg>

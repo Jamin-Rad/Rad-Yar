@@ -55,6 +55,7 @@
 | AH (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.109–111: SBC، ID `knochenzyste-simple`, Route `/msk/tumoren/einfache-knochenzyste` | بازبینی مستقل محتوا و delta سؤال PASS؛ واژگان و رابطهٔ active/latent به PDF محدود؛ SSR سه‌زبانه PASS | مرورگر و تأیید بالینی باز |
 | AI (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.117–118: intraossäres Lipom، ID `intraossaeres-lipom`, Route `/msk/tumoren/intraossaeres-lipom` | بازبینی مستقل و delta cue تصویر PASS؛ نشانهٔ Cockade قطعی ادعا نشده؛ SSR سه‌زبانه PASS | مرورگر و تأیید بالینی باز |
 | AJ (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.114–116: Fibröse Dysplasie، ID `fibroese-dysplasie`, Route `/msk/tumoren/fibroese-dysplasie` | بازبینی مستقل source/content/image/language و delta PASS؛ caveat ریسک نادر به منبع وصل شد؛ SSR سه‌زبانه PASS | مرورگر و تأیید بالینی باز |
+| AK (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf p.119: intraossäres Ganglion، ID `intraossaeres-ganglion`, Route `/msk/tumoren/intraossaeres-ganglion` | بازبینی مستقل و delta دیداری PASS برای هدف توصیفی؛ واژگان MRI فارسی اصلاح و شماتیک آموزشی سیگنال افزوده شد؛ آزمون SSR و route assertion PASS | صفحهٔ منبع تصویر کیس ندارد و تصویرخوانی واقعی آموزش داده نمی‌شود؛ مرورگر و تأیید بالینی باز |
 
 ## معیار اتمام batch
 
