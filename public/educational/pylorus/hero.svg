@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" role="img" aria-labelledby="title desc">
+<title id="title">Pyloric ultrasound measurement schematic</title><desc id="desc">A simplified longitudinal pyloric canal with the muscle layer and two measurement axes.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#eaf6f5"/><stop offset="1" stop-color="#d6ebee"/></linearGradient></defs><rect width="900" height="440" rx="32" fill="url(#bg)"/>
+<path d="M80 155 C180 145 255 172 325 195 L650 195 Q720 195 720 220 Q720 245 650 245 L325 245 C255 268 180 295 80 285Z" fill="#f3c3a7" stroke="#b8735a" stroke-width="8"/>
+<path d="M80 185 C190 178 250 195 325 207 L645 207 Q675 207 675 220 Q675 233 645 233 L325 233 C250 245 190 262 80 255Z" fill="#fff9ec" stroke="#df9d78" stroke-width="5"/>
+<path d="M325 195 L650 195 Q720 195 720 220 Q720 245 650 245 L325 245Z" fill="none" stroke="#805050" stroke-width="19"/>
+<path d="M390 184V203" stroke="#245f70" stroke-width="4"/><path d="M390 184l-8 10h16Z M390 203l-8-10h16Z" fill="#245f70"/>
+<path d="M325 250V315 M650 250V315" stroke="#b56d36" stroke-width="3" stroke-dasharray="5 5"/>
+<path d="M325 315H650" stroke="#b56d36" stroke-width="5"/><path d="M325 315l18-11v22Z M650 315l-18-11v22Z" fill="#b56d36"/>
+<circle cx="760" cy="220" r="19" fill="#60a9ad"/><path d="M746 220h28" stroke="white" stroke-width="5" stroke-linecap="round"/>
+</svg>

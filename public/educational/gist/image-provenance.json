@@ -1,0 +1,20 @@
+{
+  "lesson": "/abdomen/gi/gist",
+  "assets": [
+    {
+      "path": "/educational/gist/hero.svg",
+      "type": "code-native explanatory schematic",
+      "purpose": "Show a mesenchymal mass arising from the GI wall and growing exophytically; central low-attenuation area is illustrative, not a diagnostic scan.",
+      "source": "Created for RadYar; no external image used."
+    },
+    {
+      "path": "/educational/gist/source-case-p68.png",
+      "type": "cropped CT case plate",
+      "source": "User-provided Abdomen.pdf, physical PDF page 68 (printed page 67), three panels retained from original source slide.",
+      "source_identifier_embedded": "The PDF text layer contains rID:73152 in very small embedded text; it is not a clearly visible footer at normal viewing size. The source website, case author/contributor, study accession and frame/phase labels are not identified by the supplied PDF.",
+      "selection_rationale": "Directly shows the source-described lobulated gastric-origin mass with low-attenuation areas in axial and coronal views.",
+      "reuse": "User authorized supplied PDF images for this project. Independent rights/licence verification has not been performed.",
+      "limitations": "Individual CT phases are not assigned because the slide does not label them. No added arrows or diagnostic overlays."
+    }
+  ]
+}

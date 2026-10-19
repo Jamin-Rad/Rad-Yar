@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">Exophytic gastric wall mass schematic</title>
+  <desc id="desc">A cutaway stomach wall with a rounded mass growing outward from the muscular layer.</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#eaf6f5"/><stop offset="1" stop-color="#c8e6e6"/></linearGradient><linearGradient id="tumor" x2=".8" y2="1"><stop stop-color="#e3a361"/><stop offset="1" stop-color="#a65445"/></linearGradient></defs>
+  <rect width="800" height="500" rx="34" fill="url(#bg)"/>
+  <path d="M75 170 Q200 115 363 160 L363 330 Q210 375 75 320Z" fill="#f6d7c3" stroke="#bc785c" stroke-width="12"/>
+  <path d="M75 198 Q205 151 363 185 M75 290 Q210 335 363 302" fill="none" stroke="#dc9f7d" stroke-width="10"/>
+  <path d="M75 235 Q205 196 363 225 M75 260 Q205 300 363 270" fill="none" stroke="#8c4d47" stroke-width="17"/>
+  <path d="M332 222 C400 176 435 119 520 118 C603 117 658 172 657 241 C656 305 612 360 528 366 C447 372 398 323 333 280Z" fill="url(#tumor)" stroke="#763e3d" stroke-width="9"/>
+  <path d="M466 208 C493 182 529 185 544 210 C558 234 547 262 523 273 C498 284 470 269 460 246Z" fill="#626b74" opacity=".82"/>
+  <path d="M143 395 H343" stroke="#315b69" stroke-width="5"/><path d="M343 395l-19-12v24Z" fill="#315b69"/>
+</svg>

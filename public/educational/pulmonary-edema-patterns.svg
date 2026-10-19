@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" role="img" aria-labelledby="title desc">
+  <title id="title">Schematic pulmonary oedema patterns</title>
+  <desc id="desc">Three abstract panels show vascular redistribution, interstitial septal lines, and perihilar alveolar opacity. These are diagrams, not radiographs.</desc>
+  <rect width="960" height="330" rx="24" fill="#f3fafb"/>
+  <g fill="#fff" stroke="#c8e2e6" stroke-width="2">
+    <rect x="18" y="18" width="296" height="294" rx="18"/><rect x="332" y="18" width="296" height="294" rx="18"/><rect x="646" y="18" width="296" height="294" rx="18"/>
+  </g>
+  <g fill="#216a78" font-family="Arial,sans-serif" font-size="16" font-weight="700" text-anchor="middle">
+    <text x="166" y="50">1</text><text x="480" y="50">2</text><text x="794" y="50">3</text>
+  </g>
+  <g fill="none" stroke="#5d8991" stroke-width="5" stroke-linecap="round">
+    <path d="M166 83v99m0-70-48-23m48 23 48-23m-48 23-54 31m54-31 54 31m-54 0-43 30m43-30 43 30"/>
+    <path d="M480 83v99m0-70-48-23m48 23 48-23m-48 23-54 31m54-31 54 31m-54 0-43 30m43-30 43 30"/>
+    <path d="M794 83v99m0-70-48-23m48 23 48-23m-48 23-54 31m54-31 54 31m-54 0-43 30m43-30 43 30"/>
+  </g>
+  <g fill="none" stroke="#54aabd" stroke-width="5" stroke-linecap="round">
+    <path d="M118 90q20 7 34 15m28-1q20-8 34-15M426 90q20 7 34 15m28-1q20-8 34-15M740 90q20 7 34 15m28-1q20-8 34-15"/>
+    <path d="M426 137l-15 11m15-11 15 11m-15 10-15 11m15-11 15 11m39-21-15 11m15-11 15 11m-15 10-15 11m15-11 15 11"/>
+  </g>
+  <g fill="#d7edf0" stroke="#70bdc8" stroke-width="2">
+    <circle cx="166" cy="189" r="17"/><circle cx="480" cy="189" r="17"/><circle cx="794" cy="189" r="17"/>
+  </g>
+  <g fill="#9574c0" opacity=".82">
+    <circle cx="451" cy="131" r="5"/><circle cx="509" cy="131" r="5"/><circle cx="451" cy="153" r="5"/><circle cx="509" cy="153" r="5"/><circle cx="794" cy="138" r="10"/><circle cx="775" cy="157" r="9"/><circle cx="813" cy="157" r="9"/><circle cx="794" cy="176" r="9"/>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+{
+  "lesson": "/abdomen/gi/pylorusstenose",
+  "source_coverage": "Abdomen.pdf physical page 66 (printed page 65) contains only the heading ‘Hypertrophe Pylorusstenose’; no diagnostic content, ultrasound criteria, or patient image is present.",
+  "assets": [{
+    "path": "/educational/pylorus/hero.svg",
+    "type": "code-native explanatory schematic",
+    "purpose": "Illustrate pyloric muscle and canal axes; not to scale and not a patient ultrasound.",
+    "source": "Created for RadYar; no external image used."
+  }],
+  "supplemental_teaching_sources": [
+    "ACR Appropriateness Criteria: Vomiting in Infants (revised 2020), Variant 7; accessed 19 October 2026",
+    "van den Bunder AIM et al., British Journal of Radiology 2022;95:20211251, DOI 10.1259/bjr.20211251",
+    "Forster et al., Australas Radiol 2007;51:560–563",
+    "Cohen et al., Journal of Ultrasound in Medicine 1998;17:705–711"
+  ]
+}

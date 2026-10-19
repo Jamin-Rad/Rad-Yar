@@ -59,8 +59,8 @@
 | Pheochromocytoma | 63 | `phaeochromozytom` | همان route توده‌های آدرنال | authored؛ cluster، بررسی ادعاهای مدیریت مستقل لازم | C/V؛ مورفولوژی/vascular enhancement |
 | Neuroblastoma آدرنال | 64 | `neuroblastom-nebenniere` | همان route توده‌های آدرنال | authored؛ cluster، تفکیک از منبع/route تخصصی کودکان لازم | C/V؛ تودهٔ کودک و کلسیفیکاسیون |
 | مری؛ عنوان/افتراق نامشخص | 65 | `oesophaguskarzinom`, `oesophagitis-gerd`, `achalasie` فقط candidate curriculum | — | نامشخص؛ متن استخراج‌شده «Df» است | ?؛ بازبینی صفحه ضروری |
-| تنگی هیپرتروفیک پیلور | 66 | `pylorusstenose` | — | curriculum-only | A/V؛ اندازه‌گیری US اگر در منبع آمده باشد |
-| GIST و CT | 67–68 | `gist` | — | curriculum-only | C/V؛ enhancement شریانی، نکروز و متاستاز |
+| تنگی هیپرتروفیک پیلور | 66 | `pylorusstenose` | `/abdomen/gi/pylorusstenose` | authored; supplementary lesson because PDF p. 66 is heading-only; exact curriculum ID inProgress | A/V; diagnostic teaching attributed to ACR and primary sources, not the PDF |
+| GIST و CT | 67–68 | `gist` | `/abdomen/gi/gist` | authored; source-derived focused imaging lesson; exact curriculum ID inProgress | C/V; gastric-origin mass and low-attenuation areas shown; individual phases not labelled |
 | Ileus و انسداد مکانیکی | 69, 71–72 | `ileus-duenndarm` | `/abdomen/gi/ileus-volvulus` — `app/abdomen/gi/ileus-volvulus/page.js` | authored؛ PDF pages 69–78 in scope; clinical claims cited in repair note | T/C/V؛ نقطهٔ گذار و closed loop؛ PDF72 کیس توضیح‌دار |
 | Intussusception | 70 | `ileus-duenndarm` (زیرموضوع) | `/abdomen/gi/ileus-volvulus` | authored؛ وضعیت پوشش این زیربخش باید از route source cross-check شود | C/V؛ target sign در US/CT |
 | ایسکمی مزانتریک/CTA و انسداد عروقی | 73–75 | `mesenteriale-ischaemie` | `/abdomen/gi/mesenteriale-ischaemie` | authored؛ صفحات 73–75 بررسی دیداری؛ تصویربرداری با CTA و الگوهای عروقی محدود؛ ESVS 2025 تطبیق شد؛ تأیید علمی و review مستقل باز است | T/C/V؛ CTA دو فازی، تفکیک شریانی/وریدی و دیواره روده؛ دو شکل PDF با منشأ/صفحه ثبت شد |
@@ -118,7 +118,7 @@
 | cystic fibrosis | 44 | شناسهٔ دقیق در curriculum پیدا نشد | — | نامشخص؛ فقط heading دیده می‌شود | ?؛ متن/تصویر صفحه استخراج نشده |
 | lung cysts differential | 45 | `hrct-dichteminderung` (الگوی مرتبط؛ شناسهٔ اختصاصی cyst diff پیدا نشد) | `/thorax/hrct/dichteminderung` | route الگوی کاهش دانسیته هست؛ درس اختصاصی نامشخص | ?/T؛ صفحه فقط heading و glyph دارد |
 | pulmonary hypertension: تعریف/گروه‌بندی/نشانه‌های CXR و CT | 46–47 | `pulmonale-hypertonie` | `/thorax/pulmonale-hypertonie` | درس سه‌زبانهٔ محدود؛ PDF pp.46–47 دیداری بررسی شد و آستانه‌های تعریف/نشانه‌ها با ESC/ERS تطبیق داده شدند؛ بررسی مستقل محتوای منبع/ترجمه و retest تصویری PASS محدود | شماتیک آموزشی غیرتشخیصی؛ نمونهٔ بالینی، مرورگر/RTL و تأیید علمی نهایی باز |
-| pulmonary edema/congestion, cardiogenic vs non-cardiogenic, ARDS | 48–49 | `lungenoedem`, `kardiale-dekompensation`, `ards` | — | curriculum-only؛ درس مستقل در routeهای بررسی‌شده پیدا نشد | T/C/V؛ جدول افتراق PDF49 رندر و دیده شد؛ تصاویر CT/X-ray لازم |
+| pulmonary edema/congestion, cardiogenic vs non-cardiogenic, ARDS | 48–49 | `lungenoedem`, `ards` | `/thorax/lungenoedem` — `app/thorax/lungenoedem/page.js` | درس مستقل در حال تکمیل؛ DE/EN/FA، curriculum-linked، الگوها و محدودیت‌های منبع مشخص؛ `inProgress` | C/V؛ صفحه‌های PDF48–49 دیداری بررسی شدند؛ متن ARDS صفحه49/چاپی48 فقط تیتر و glyph خراب دارد؛ شماتیک آموزشی موجود، اما کیس تشخیصی و مرورگر هنوز باز |
 | Mamma (عنوان فصل) | 50 | شناسه‌های Mamma متعدد (مانند `mamma`, `mamma-anatomie`) | مسیرهای مرتبط در `app/mamma` بررسی نشده در این زیرکار | نامشخص؛ فقط عنوان Mamma دیده شد | ?؛ خارج از دامنهٔ Thorax درس‌های ریوی، باید در نقشهٔ Mamma جدا بررسی شود |
 
 ## شواهد فایل‌ها و محدودیت

@@ -1,0 +1,13 @@
+{
+  "asset": "/educational/pulmonary-edema-patterns.svg",
+  "assetType": "code-native educational schematic",
+  "diagnosticImage": false,
+  "purpose": "Three panels correspond to vascular redistribution, interstitial septal/peribronchial signs, and perihilar alveolar opacity; a localized legend is rendered in the lesson.",
+  "sourcePages": [
+    { "file": "Thorax.pdf", "pdfPage": 48, "printedPage": 47 },
+    { "file": "Thorax.pdf", "pdfPage": 49, "printedPage": 48 }
+  ],
+  "matchingDiagnosticCaseInSource": false,
+  "attribution": "Created in-repository; no patient image used.",
+  "reviewNote": "Diagram is conceptual and must not be interpreted as a radiograph or a specific patient's findings."
+}
