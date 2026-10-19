@@ -144,7 +144,7 @@ export const CURRICULUM = [
           { id: 'arachnoidalzysten-fehlbildung', title: { de: 'Arachnoidalzysten', en: 'Arachnoid Cysts', fa: 'کیست‌های آراکنوئید' }, tags: ['MRT','CT'], diff: 1 },
           { id: 'balkenfehlbildung', title: { de: 'Balkenfehlbildung', en: 'Corpus Callosum Malformations', fa: 'ناهنجاری‌های جسم پینه‌ای' }, tags: ['MRT'], diff: 2 },
           { id: 'holoprosenzephalie', title: { de: 'Holoprosenzephalie', en: 'Holoprosencephaly', fa: 'هولوپروزانسفالی' }, tags: ['MRT'], diff: 3 },
-          { id: 'chiari-malformation', title: { de: 'Chiari-Malformation', en: 'Chiari Malformation', fa: 'مالفورماسیون کیاری' }, tags: ['MRT'], diff: 2 },
+          { id: 'chiari-malformation', title: { de: 'Chiari-Malformation', en: 'Chiari Malformation', fa: 'مالفورماسیون کیاری' }, tags: ['MRT'], diff: 2, link: '/gehirn/anatomie/chiari', mcqLink: '/ueben/quiz?fach=gehirn&n=10&themen=chiari-malformation' },
           { id: 'dandy-walker-spektrum', title: { de: 'Dandy-Walker-Spektrum', en: 'Dandy-Walker Spectrum', fa: 'طیف دندی-واکر' }, tags: ['MRT'], diff: 2 },
           { id: 'lissenzephalie-pachygyrie', title: { de: 'Lissenzephalie / Pachygyrie', en: 'Lissencephaly / Pachygyria', fa: 'لیسنسفالی / پاکی‌ژیری' }, group: ['Kortikale Entwicklungsstörungen'], tags: ['MRT'], diff: 3 },
           { id: 'polymikrogyrie', title: { de: 'Polymikrogyrie', en: 'Polymicrogyria', fa: 'پلی‌میکروژیری' }, group: ['Kortikale Entwicklungsstörungen'], tags: ['MRT'], diff: 3 },

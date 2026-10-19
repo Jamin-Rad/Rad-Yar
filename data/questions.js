@@ -1,6 +1,7 @@
 import { MENISCUS_QUESTIONS } from './meniscusLearning'
 import { FLEISCHNER_QUESTIONS } from './fleischnerLearning'
 import { HEMANGIOMA_QUESTIONS } from './haemangiomaTraining'
+import { GEHIRN_CHIARI_QUESTIONS } from './gehirnChiariLesson'
 // ── RADYAR QUESTION BANK ────────────────────────────────────────────────────
 
 import { CONTRAST_QUESTIONS, CONTRAST_TOPICS } from './contrastMedia'
@@ -560,6 +561,7 @@ const MIDLINE_CAVA_QUESTIONS = Object.fromEntries(
 
 const LEGACY_QUESTION_BANK = {
   "de": [
+    ...GEHIRN_CHIARI_QUESTIONS.de,
     ...CONTRAST_QUESTIONS.de,
     ...DIVERTICULITIS_QUESTIONS.de,
     ...PANCREATITIS_QUESTIONS.de,
@@ -1755,6 +1757,7 @@ const LEGACY_QUESTION_BANK = {
     }
   ],
   "en": [
+    ...GEHIRN_CHIARI_QUESTIONS.en,
     ...MAMMA_MRT_QUESTIONS.en,
     ...MAMMA_MRT_LESION_QUESTIONS.en,
     ...MAMMA_KAISER_QUESTIONS.en,
@@ -2950,6 +2953,7 @@ const LEGACY_QUESTION_BANK = {
     }
   ],
   "fa": [
+    ...GEHIRN_CHIARI_QUESTIONS.fa,
     ...MAMMA_MRT_QUESTIONS.fa,
     ...MAMMA_MRT_LESION_QUESTIONS.fa,
     ...MAMMA_KAISER_QUESTIONS.fa,
