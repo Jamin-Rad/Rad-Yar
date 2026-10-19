@@ -51,12 +51,12 @@ Die PDF-Textlayer-Titel und Abschnittswechsel wurden seitenweise geprüft; Bildi
 | 90–91 | Chondrosarkom — bounded DE/EN/FA route `/msk/tumoren/chondrosarkom`; source ledger `chondrosarkom-msk-p90-p91.md`; independent review/delta and SSR pass; browser lesson content is sign-in gated; clinician review pending |
 | 92–93 | Ewing-Sarkom — bounded DE/EN/FA route `/msk/tumoren/ewing-sarkom`; PDF pp.92–93 (printed 91–92); rID 27379 case crop with provenance and sequence-label caveat; independent review/delta and SSR pass; browser lesson content is sign-in gated; clinician review pending |
 | 94–96 | Tenosynovialer Riesenzelltumor — bounded DE/EN/FA route `/msk/tumoren/tgct`; PDF pp.94–96 (printed 93–95); rID 28877 localized finger MRI crop with caption/watermark removed and sequence caveat; independent source/content/visual/language review and DOI/crop delta PASS; SSR PASS; browser/clinical review open |
-| 97–99 | Multiples Myelom / Plasmozytom |
-| 100–101 | Primäres Knochenlymphom |
-| 102–103 | Knochenmetastasen |
+| 97–99 | Plasmozytom / Multiples Myelom — bounded DE/EN/FA route `/msk/tumoren/plasmozytom-myelom`; source-led imaging lesson plus focused suspected solitary plasmacytoma pathway from IMWG 2026; source crops/provenance documented; independent review and delta PASS; SSR PASS; browser/clinical review open |
+| 100–101 | Primäres Knochenlymphom — bounded DE/EN/FA route `/msk/tumoren/knochenlymphom`, exact curriculum ID linked (`ready`, `inProgress`, updated 2026-10-20); PDF pp.100–101; p.100 radiograph rID 222250; p.101 MRI panels show T1/T2/PD-FS labels with fixed LTR panel alignment and RTL Persian text; disputed nonessential age range omitted; independent corrective delta PASS; author SSR route/assets PASS, independent HTTP SSR probe blocked by local environment; browser/clinical review pending |
+| 102–103 | Knochenmetastasen — bounded DE/EN/FA route `/msk/tumoren/knochenmetastasen`; PDF pp.102–103; independent modality-to-question SVG replaces low-resolution rID 21937 crop; independent review/delta PASS; SSR PASS; browser/clinical review open |
 | 104 | Enostose (Kompaktinsel); gedruckte S. 103, inkl. kleiner AP-Beckenaufnahme mit rID 6108 |
-| 105–106 | Osteom |
-| 107–108 | Nicht-ossifizierendes Fibrom / fibröser Kortikalisdefekt |
+| 105–106 | Osteom — bounded DE/EN/FA route `/msk/tumoren/osteom`; PDF pp.105–106; APC/FAP wording independently checked against ACG/GeneReviews and “precancer” claim removed; independent review and self-check delta PASS; SSR PASS; browser/clinical review open |
+| 107–108 | Nicht-ossifizierendes Fibrom / fibröser Kortikalisdefekt — bounded DE/EN/FA route `/msk/tumoren/nicht-ossifizierendes-fibrom`; source crop and >50% warning-context recorded; independent source/content/visual/language review and delta PASS; SSR PASS; browser/clinical review pending |
 | 109–111 | Einfache Knochenzyste |
 | 112–113 | Aneurysmatische Knochenzyste |
 | 114–116 | Fibröse Dysplasie |

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Non-diagnostic NOF teaching schematic</title>
+  <desc id="desc">Schematic long bone showing an eccentric metaphyseal lucency with a sclerotic rim and intact cortex.</desc>
+  <rect width="640" height="420" rx="34" fill="#f7f4ee"/>
+  <path d="M205 50c-16 16-23 39-18 64l12 65c3 15 3 48 0 63l-12 65c-5 25 2 48 18 64 16 15 37 22 59 18 25-5 42-26 46-51l10-58h82l10 58c4 25 21 46 46 51 22 4 43-3 59-18 16-16 23-39 18-64l-12-65c-3-15-3-48 0-63l12-65c5-25-2-48-18-64-16-15-37-22-59-18-25 5-42 26-46 51l-10 58h-82l-10-58c-4-25-21-46-46-51-22-4-43 3-59 18z" fill="#dcebe5" stroke="#286451" stroke-width="8"/>
+  <path d="M246 122c32-20 76-13 96 17 11 17 10 39 7 62l-7 54c-2 17-15 29-32 30l-58 3c-17 1-32-11-35-28l-7-49c-4-28 9-72 36-89z" fill="#f4d9ae" stroke="#79502d" stroke-width="7"/>
+  <path d="M258 139c23-13 53-8 67 13 8 12 7 31 5 48l-6 43c-1 9-8 15-18 16l-53 2c-9 1-17-6-19-15l-6-40c-3-23 8-55 30-67z" fill="#fbf7ef" stroke="#d49a61" stroke-width="6"/>
+  <path d="M352 151h110" stroke="#286451" stroke-width="4" stroke-linecap="round"/><circle cx="352" cy="151" r="6" fill="#286451"/>
+  <text x="470" y="145" font-family="Arial,sans-serif" font-size="20" fill="#18342e">eccentric metaphysis</text>
+  <path d="M346 268h118" stroke="#79502d" stroke-width="4" stroke-linecap="round"/><circle cx="346" cy="268" r="6" fill="#79502d"/>
+  <text x="470" y="275" font-family="Arial,sans-serif" font-size="20" fill="#18342e">lucency + sclerotic rim</text>
+  <text x="320" y="385" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#52645f">Educational schematic · not a diagnostic radiograph</text>
+</svg>

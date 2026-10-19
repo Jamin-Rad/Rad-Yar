@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 430" role="img" aria-labelledby="title desc">
+  <title id="title">Osteoma schematic</title>
+  <desc id="desc">A dense, smooth bony projection arising from the margin of a paranasal sinus.</desc>
+  <defs>
+    <linearGradient id="bone" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff5df"/><stop offset="1" stop-color="#d9b98d"/></linearGradient>
+    <linearGradient id="sinus" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#16313a"/><stop offset="1" stop-color="#244956"/></linearGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.4"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#09212a" flood-opacity=".35"/></filter>
+  </defs>
+  <rect x="12" y="12" width="536" height="406" rx="32" fill="#1b3d47"/>
+  <path d="M85 74h390v260H85z" fill="url(#bone)" stroke="#fff5df" stroke-width="10"/>
+  <path d="M140 116h274v181H140z" fill="url(#sinus)" stroke="#b99a70" stroke-width="10"/>
+  <path d="M236 297c4-27 2-45 15-58 9-10 20-11 31-4 18 12 18 34 19 62z" fill="url(#bone)" stroke="#fff5df" stroke-width="7" filter="url(#shadow)"/>
+  <path d="M292 241 392 179" fill="none" stroke="#7cb9c7" stroke-width="4"/>
+  <circle cx="292" cy="241" r="7" fill="#315f70" stroke="#e6f0f2" stroke-width="3"/>
+  <rect x="342" y="143" width="126" height="54" rx="14" fill="#e6f0f2"/>
+  <path d="M367 164h76" stroke="#315f70" stroke-width="7" stroke-linecap="round"/>
+  <path d="M367 179h48" stroke="#83adba" stroke-width="6" stroke-linecap="round"/>
+  <path d="M84 352h392" stroke="#83adba" stroke-width="3" opacity=".65"/>
+  <circle cx="117" cy="352" r="7" fill="#e1b879"/><circle cx="443" cy="352" r="7" fill="#e1b879"/>
+</svg>

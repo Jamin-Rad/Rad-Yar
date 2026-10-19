@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 460" role="img" aria-labelledby="title desc">
+  <title id="title">Bone marrow lesion with disproportionate soft-tissue extension</title>
+  <desc id="desc">Educational schematic only: a long bone with abnormal marrow signal and a soft-tissue component, while most of the cortical outline remains visible.</desc>
+  <defs>
+    <linearGradient id="bone" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f6f1e5"/><stop offset="1" stop-color="#d8e1e6"/></linearGradient>
+    <linearGradient id="lesion" x1="0" x2="1"><stop stop-color="#8a5ed0"/><stop offset="1" stop-color="#3b8fbf"/></linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="12"/></filter>
+  </defs>
+  <rect x="14" y="14" width="692" height="432" rx="34" fill="#f4f8fb" stroke="#a8dce9" stroke-width="5"/>
+  <ellipse cx="404" cy="231" rx="205" ry="131" fill="#48b9da" opacity=".16" filter="url(#glow)"/>
+  <path d="M296 83c-44 0-72 27-72 64 0 24 10 42 25 55l-7 79c-4 47 17 85 49 92l15 3 23-15h78l23 15 15-3c32-7 53-45 49-92l-7-79c15-13 25-31 25-55 0-37-28-64-72-64-22 0-39 8-55 21h-34c-16-13-33-21-55-21z" fill="url(#bone)" stroke="#67849a" stroke-width="13"/>
+  <path d="M286 146c32-24 87-25 126-11 39 15 67 38 62 72-5 31-30 47-48 71-17 23-9 59-48 75-35 15-79 6-100-15-19-18-15-48-5-71 12-28 2-53-6-77-5-15 1-32 19-44z" fill="url(#lesion)" opacity=".86"/>
+  <path d="M262 201c-40-5-87 10-112 41-22 26-19 65 8 82 24 16 51 7 77 2m222-122c46-8 103 2 127 31 23 27 18 66-9 83-23 14-51 8-77 3" fill="none" stroke="#ed9a70" stroke-width="26" stroke-linecap="round" opacity=".78"/>
+  <path d="M270 193c-18 6-28 22-31 45m220-43c18 6 28 22 31 45" fill="none" stroke="#466b83" stroke-width="9" stroke-linecap="round"/>
+  <path d="M534 110h92" stroke="#247a9d" stroke-width="5"/><circle cx="534" cy="110" r="8" fill="#247a9d"/>
+  <path d="M250 349h-99" stroke="#247a9d" stroke-width="5"/><circle cx="250" cy="349" r="8" fill="#247a9d"/>
+  <path d="M489 287h111" stroke="#247a9d" stroke-width="5"/><circle cx="489" cy="287" r="8" fill="#247a9d"/>
+</svg>

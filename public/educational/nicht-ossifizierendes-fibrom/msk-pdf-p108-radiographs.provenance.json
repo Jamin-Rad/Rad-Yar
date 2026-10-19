@@ -1,0 +1,12 @@
+{
+  "asset": "msk-pdf-p108-radiographs.jpg",
+  "source": "User-provided MSK.pdf",
+  "source_page": 108,
+  "printed_page": 107,
+  "source_visual": "Two plain radiographic projections of a distal tibial metaphyseal lesion shown on the source page",
+  "crop": "Raster crop from rendered PDF page 108; page rendered at 130 dpi, crop bounds x=235..815, y=110..455 px",
+  "reuse_authorization": "User explicitly authorized use of images contained in the supplied PDFs for lesson creation on 2026-10-19.",
+  "contributor": "Not legible or named on the source page; no attribution inferred.",
+  "selection_rationale": "Shows the eccentric elongated metaphyseal lucency, sclerotic margin and intact though thinned cortex discussed in the lesson.",
+  "limitations": "The source page does not label the radiographic projections, and the crop is not a complete diagnostic study."
+}
