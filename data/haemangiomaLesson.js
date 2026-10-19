@@ -60,7 +60,7 @@ export const HEMANGIOMA_CHAPTERS = [
   },
   {
     id: 'anwenden', icon: 'case',
-    title: L('Befund und Selbsttest', 'Report and self-check', 'گزارش و خودآزمایی'),
+    title: L('Befundmuster sicher anwenden', 'Apply the imaging pattern', 'به‌کارگیری الگوی تصویربرداری'),
     lead: L('Benennen Sie das beobachtete Muster, bevor Sie die Diagnose formulieren.', 'Describe the observed pattern before giving the diagnosis.', 'پیش از بیان تشخیص، الگوی مشاهده‌شده را توصیف کنید.'),
     blocks: [
       { type: 'report', title: L('Beispiel bei klassischer MRT-Konstellation', 'Example with a classic MRI constellation', 'نمونه گزارش برای مجموعه یافته‌های تیپیک MRI'), text: L('Scharf begrenzte Läsion in Segment VII, T1-hypointens und deutlich T2-hyperintens. Diskontinuierliche periphere noduläre Kontrastmittelanreicherung mit progressiver zentripetaler Auffüllung und persistierendem blutpoolähnlichem Signal. Kein korrespondierend erniedrigter ADC. Bildmorphologisch typisches Leberhämangiom.', 'Well-defined segment VII lesion, T1 hypointense and markedly T2 hyperintense. Discontinuous peripheral nodular enhancement with progressive centripetal fill-in and persistent blood-pool-like signal. No corresponding low ADC. Imaging appearance typical of hepatic haemangioma.', 'ضایعه با حدود مشخص در سگمنت VII، با سیگنال پایین T1 و بسیار بالای T2. جذب ندولار محیطی ناپیوسته همراه با پرشدن تدریجی به‌سمت مرکز و ماندگاری سیگنال مشابه مخزن خون. کاهش متناظر ADC دیده نمی‌شود. نمای تصویربرداری تیپیک همانژیوم کبدی است.') },
@@ -69,7 +69,7 @@ export const HEMANGIOMA_CHAPTERS = [
   },
   {
     id: 'takehome', icon: 'spark', emphasis: true,
-    title: L('Fünf Regeln mitnehmen', 'Five rules to remember', 'پنج قاعده به خاطر بسپارید'),
+    title: L('Fünf Kernpunkte', 'Five key points', 'پنج نکتهٔ اصلی'),
     lead: L('Das Gesamtmuster zählt mehr als ein einzelnes helles Signal.', 'The overall pattern matters more than one bright signal.', 'مجموعه یافته‌ها از یک سیگنال روشن ارزشمندتر است.'),
     blocks: [{ type: 'summary', items: [
       L('Periphere diskontinuierliche Knoten mit zentripetaler Auffüllung erkennen.', 'Recognise discontinuous peripheral nodules with centripetal fill-in.', 'ندول‌های محیطی ناپیوسته با پرشدن به‌سمت مرکز را بشناسید.'),
