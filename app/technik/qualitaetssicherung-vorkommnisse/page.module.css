@@ -1,0 +1,39 @@
+.page { --lesson-accent:#48b5c8; --lesson-accent-strong:#155d70; --lesson-accent-soft:#e0f4f6; --lesson-secondary:#e0a74b; --lesson-secondary-strong:#714c12; --lesson-hero-base:#102535; }
+.sectionBody { display:grid; gap:1rem; }
+.sectionBody p { max-width:78ch; line-height:1.72; }
+.lead { margin:0; font-size:1.08rem; }
+.cards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.8rem; }
+.cards article { padding:1rem 1.1rem; border:1px solid color-mix(in srgb,var(--lesson-accent) 35%,var(--line)); border-radius:14px; background:color-mix(in srgb,var(--paper) 94%,var(--lesson-accent-soft)); }
+.cards h3 { margin:0 0 .45rem; color:var(--lesson-accent-strong); font-size:1rem; }
+.cards p { margin:0; }
+.cave { margin:0; padding:.9rem 1rem; border-inline-start:4px solid #d99a28; border-radius:8px; background:color-mix(in srgb,#f7e8be 35%,var(--paper)); line-height:1.7; }
+.cave p { margin:.35rem 0 0; }
+.tableWrap { max-width:100%; overflow-x:auto; border:1px solid var(--line); border-radius:12px; }
+.tableWrap table { width:100%; border-collapse:collapse; min-width:610px; }
+.tableWrap th,.tableWrap td { padding:.75rem .85rem; text-align:start; vertical-align:top; border-bottom:1px solid var(--line); line-height:1.6; }
+.tableWrap thead { background:var(--lesson-accent-soft); color:var(--lesson-accent-strong); }
+.tableWrap tbody th { min-width:155px; font-weight:750; }
+.pathFigure { margin:0; padding:1rem; border:1px solid var(--line); border-radius:16px; background:var(--surface-soft); }
+.pathFigure ol { margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.7rem; }
+.pathFigure li { min-height:110px; display:flex; flex-direction:column; gap:.55rem; align-items:flex-start; justify-content:center; padding:.9rem; border:1px solid color-mix(in srgb,var(--lesson-accent) 35%,var(--line)); border-radius:13px; background:var(--bg-card); }
+.pathFigure li span { width:1.7rem; height:1.7rem; border-radius:50%; display:grid; place-items:center; color:#fff; background:var(--lesson-accent-strong); font-weight:800; }
+.pathFigure li strong { font-size:.9rem; line-height:1.5; }
+.parallel { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.7rem; margin-top:.7rem; }
+.parallelStep,.followUp { min-height:110px; display:flex; flex-direction:column; gap:.55rem; align-items:flex-start; justify-content:center; padding:.9rem; border:1px solid color-mix(in srgb,var(--lesson-secondary) 55%,var(--line)); border-radius:13px; background:var(--bg-card); }
+.parallelStep > span,.followUp > span { min-width:1.9rem; height:1.7rem; display:grid; place-items:center; padding:0 .3rem; border-radius:999px; color:#fff; background:var(--lesson-secondary-strong); font-weight:800; }
+.parallelStep strong,.followUp strong { font-size:.9rem; line-height:1.5; }
+.followUp { min-height:0; flex-direction:row; align-items:center; justify-content:flex-start; margin-top:.7rem; border-color:color-mix(in srgb,var(--lesson-accent) 35%,var(--line)); }
+.followUp > span { background:var(--lesson-accent-strong); flex:none; }
+.pathFigure figcaption { margin-top:.7rem; color:var(--text-muted); font-size:.9rem; line-height:1.6; }
+.quiz { display:grid; gap:.7rem; padding:1.1rem; border:1px solid color-mix(in srgb,var(--lesson-accent) 40%,var(--line)); border-radius:16px; background:color-mix(in srgb,var(--lesson-accent-soft) 45%,var(--paper)); }
+.quiz small { color:var(--lesson-accent-strong); font-weight:800; }
+.quiz h3 { margin:0; font-size:1.05rem; line-height:1.55; }
+.quiz > div { display:grid; gap:.55rem; }
+.quiz button { padding:.8rem .95rem; border:1px solid var(--line); border-radius:10px; background:var(--paper); color:var(--ink); text-align:start; font:inherit; line-height:1.55; cursor:pointer; }
+.quiz button:hover,.quiz button:focus-visible { outline:2px solid var(--lesson-accent-strong); outline-offset:2px; }
+.quiz .selected { border-color:var(--lesson-accent-strong); background:color-mix(in srgb,var(--lesson-accent-soft) 65%,var(--paper)); }
+.correct,.feedback { margin:.25rem 0 0; padding:.8rem; border-radius:9px; line-height:1.65; }
+.correct { color:#155d32; background:#e2f4e8; }
+.feedback { color:#713f00; background:#fff1d8; }
+@media (max-width:760px) { .cards { grid-template-columns:1fr; } }
+@media (max-width:520px) { .pathFigure { padding:.65rem; } .pathFigure ol,.parallel { grid-template-columns:1fr; } .pathFigure li,.parallelStep { min-height:0; flex-direction:row; align-items:center; } .followUp { align-items:flex-start; } .tableWrap table { min-width:570px; } }

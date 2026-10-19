@@ -74,7 +74,7 @@
 | لگن زن و مرد؛ محتوای اختصاصی نامشخص | 90–91 | والدهای `becken-f`, `becken-m`; زیرموضوع قابل اثبات نیست | — | نامشخص | ?؛ متن تقریباً خالی، مشاهدهٔ کامل صفحات لازم |
 | FMD عروق شکمی | 92 | `fibromuskulaere-dysplasie` | `/abdomen/gefaesse/fmd` — `app/abdomen/gefaesse/fmd/page.js` | route authored بر مبنای p92 دیداری؛ p55 از evidence خارج است؛ claim CTA/MRA/DSA با اجماع بین‌المللی ۲۰۱۹ تطبیق داده شد؛ review انسانی هنوز لازم | C/V؛ lesson از SVG شماتیک اختصاصی استفاده می‌کند؛ CTA بیمار PDF کپی نشده |
 | فتق؛ نوع دقیق نیازمند دید صفحه | 93–94 | `inguinalhernie`, `femoralhernie`, `umbilikalhernie`, `innere-hernien` (candidateها) | — | curriculum-only؛ نوع دقیق PDF از متن موجود قطعی نیست | C/V؛ محل گردن، انسداد/strangulation |
-| Morbus Ormond/retroperitoneal fibrosis | 95–96 | `morbus-ormond` | — | curriculum-only | C/V؛ encasement عروق و حالب‌ها در CT |
+| Morbus Ormond/retroperitoneal fibrosis | 95–96 | `morbus-ormond` | `/abdomen/retroperitoneum/morbus-ormond` — `app/abdomen/retroperitoneum/morbus-ormond/page.jsx` | DE/EN/FA درس و MCQ دقیق؛ independent source/education/assessment review پاس؛ بازبینی مستقل تصویری پس از افزودن لینک به rID186508 پاس؛ `inProgress`، browser و تأیید علمی باز | C/T/V؛ مونتاژ CT از PDF96 با کپشن لینک‌شده و منشأ ثبت‌شده؛ نام contributor و metadata موردی هنوز از صفحهٔ Radiopaedia قابل تأیید نبود؛ حقوق مستقل ادعا نشده |
 | Appendicitis epiploica | 97 | `appendicitis-epiploica` | — | curriculum-only | C/V؛ ضایعهٔ چربی پری‌کولونیک/central dot |
 | Mesenteric panniculitis | 98 | `mesenteriale-panniculitis` | — | curriculum-only | C/V؛ fat-ring و pseudocapsule |
 | Peritonealkarzinose/omental cake | 99 | `peritonealkarzinose` | — | curriculum-only | C/V؛ ایمپلنت‌ها، امنتوم و آسیت |

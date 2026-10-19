@@ -902,7 +902,7 @@ export const CURRICULUM = [
         themen: [
           { id: 'retroperitoneale-lymphadenopathie', title: { de: 'Retroperitoneale Lymphadenopathie', en: 'Retroperitoneal Lymphadenopathy', fa: 'لنفادنوپاتی رتروپریتوئن' }, tags: ['CT'], diff: 2 },
           { id: 'retroperitoneale-sarkome', title: { de: 'Retroperitoneale Sarkome', en: 'Retroperitoneal Sarcomas', fa: 'سارکوم‌های رتروپریتوئن' }, tags: ['CT','MRT'], diff: 3 },
-          { id: 'morbus-ormond', title: { de: 'Morbus Ormond (Retroperitoneale Fibrose)', en: "Ormond's Disease (Retroperitoneal Fibrosis)", fa: 'بیماری اورموند (فیبروز رتروپریتوئن)' }, tags: ['CT','MRT'], diff: 3 },
+          { id: 'morbus-ormond', title: { de: 'Morbus Ormond (Retroperitoneale Fibrose)', en: "Ormond's Disease (Retroperitoneal Fibrosis)", fa: 'بیماری اورموند (فیبروز رتروپریتوئن)' }, tags: ['CT','MRT'], diff: 3, link: '/abdomen/retroperitoneum/morbus-ormond', mcqLink: '/ueben/quiz?fach=abdomen&n=1&themen=morbus-ormond', inProgress: true, updatedAt: '2026-10-19' },
         ],
       },
       {
@@ -1693,7 +1693,7 @@ export const CURRICULUM = [
           { id: 'interventioneller-strahlenschutz', title: { de: 'Interventioneller Strahlenschutz', en: 'Radiation Protection in Interventions', fa: 'حفاظت پرتویی در مداخلات' }, tags: ['DSA'], diff: 2 },
           { id: 'fachkunde-strahlenschutz', title: { de: 'Fachkunde & Kenntnisse im Strahlenschutz', en: 'Radiation Protection Qualification & Knowledge', fa: 'صلاحیت و دانش حفاظت پرتویی' }, tags: ['Rö','CT'], diff: 2 },
           { id: 'teleradiologie', title: { de: 'Teleradiologie', en: 'Teleradiology', fa: 'تلرادیولوژی' }, tags: ['Rö','CT'], diff: 2 },
-          { id: 'qualitaetssicherung-vorkommnisse', title: { de: 'Qualitätssicherung & Vorkommnisse', en: 'Quality Assurance & Incidents', fa: 'تضمین کیفیت و رویدادها' }, tags: ['Rö','CT'], diff: 2 },
+          { id: 'qualitaetssicherung-vorkommnisse', title: { de: 'Qualitätssicherung & Vorkommnisse', en: 'Quality Assurance & Incidents', fa: 'تضمین کیفیت و رویدادها' }, tags: ['Rö','CT'], diff: 2, link: '/technik/qualitaetssicherung-vorkommnisse', inProgress: true },
         ],
       },
       {
@@ -1797,6 +1797,12 @@ export const CURRICULUM = [
           link: `/technik/kontrastmittel/${group.id}`,
           updatedAt: '2026-09-01',
         })),
+      },
+      {
+        id: 'technik-onkologie',
+        title: { de: '10. Onkologische Verlaufsmessung', en: '10. Oncological response measurement', fa: '۱۰. اندازه‌گیری پاسخ انکولوژیک' },
+        icon: '⌗',
+        themen: [{ id: 'recist-1-1', title: { de: 'RECIST 1.1', en: 'RECIST 1.1', fa: 'RECIST 1.1' }, tags: ['CT', 'MRT'], diff: 2, link: '/technik/onkologie/recist-1-1', mcqLink: '/ueben/quiz?fach=technik&n=3&themen=recist-1-1', flashcardLink: '/flashcards/recist-1-1', inProgress: true, updatedAt: '2026-10-19' }],
       },
     ],
   },

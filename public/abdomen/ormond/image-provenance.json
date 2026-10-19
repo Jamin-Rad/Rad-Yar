@@ -1,0 +1,32 @@
+{
+  "asset": "ct-montage.png",
+  "source": "User-supplied Abdomen.pdf",
+  "pdfPage": 96,
+  "printedPage": 95,
+  "sourceCaseId": "rID186508",
+  "caseUrl": "https://radiopaedia.org/cases/186508",
+  "contributor": null,
+  "contributorStatus": "Contributor not identified in supplied PDF; original case page returned 402/inaccessible; user-authorized project use but contributor-level metadata unverified. No contributor name invented.",
+  "originalCaseAccess": {
+    "url": "https://radiopaedia.org/cases/186508",
+    "httpStatus": 402,
+    "status": "Inaccessible during source verification; page-level contributor attribution and reuse metadata could not be inspected."
+  },
+  "views": "Two axial views, one coronal and one sagittal; full CT series and acquisition phases not supplied.",
+  "extraction": "200 dpi rendered page, crop x130 y15 width1420 height1010; original source caption including case ID preserved.",
+  "sourceCrop": {
+    "sourceFile": "Abdomen.pdf",
+    "pdfPage": 96,
+    "printedPage": 95,
+    "renderDpi": 200,
+    "coordinateOrigin": "Top-left of rendered PDF page; all crop coordinates and dimensions in pixels.",
+    "left": 130,
+    "top": 15,
+    "width": 1420,
+    "height": 1010,
+    "retainedContent": "Two axial, one coronal and one sagittal CT views plus the complete supplied German caption and rID186508."
+  },
+  "selection": "Source shows periaortic mantle and bilateral upper urinary tract dilatation; not selected to demonstrate DWI, activity, or histologic etiology.",
+  "authorization": "Project-level user authorization for provided PDFs and Radiopaedia material is recorded in docs/lesson-quality/standard.md. Underlying case-specific rights and contributor identity could not be independently verified; no legal-clearance claim is made.",
+  "inspection": "Author inspected full page at 120 and 200 dpi and opened final extracted asset; independent review pending."
+}
