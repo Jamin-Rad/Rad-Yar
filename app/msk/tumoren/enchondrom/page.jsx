@@ -1,0 +1,40 @@
+'use client'
+
+import { useState } from 'react'
+import { useLanguage } from '@/providers/LanguageProvider'
+import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
+import { MSK_ENCHONDROM_LESSON as lesson } from '@/data/mskEnchondromLesson'
+import styles from './page.module.css'
+
+const L = (de, en, fa) => ({ de, en, fa })
+const pick = (value, lang) => typeof value === 'string' ? value : value?.[lang] ?? value?.de ?? ''
+const labels = {
+  path: L('Lernweg', 'Learning path', 'مسیر یادگیری'), progress: L('gelesen', 'read', 'خوانده‌شده'), continue: L('Weiterlernen', 'Continue learning', 'ادامه یادگیری'),
+  completeLesson: L('Ganze Lektion als gelesen markieren', 'Mark full lesson as read', 'علامت‌گذاری کل درس به‌عنوان خوانده‌شده'), lessonCompleted: L('Ganze Lektion gelesen', 'Full lesson marked as read', 'کل درس خوانده شد'),
+  complete: L('Abschnitt als gelesen markieren', 'Mark section as read', 'این بخش را خواندم'), completed: L('Als gelesen markiert', 'Marked as read', 'خوانده‌شده'), open: L('Abschnitt öffnen', 'Open section', 'بازکردن بخش'), close: L('Schließen', 'Close', 'بستن'),
+  takeHome: L('Drei Regeln mitnehmen', 'Three rules to remember', 'سه نکته برای یادآوری'), sources: L('Quellen und Umfang', 'Sources and scope', 'منابع و دامنه'),
+}
+const icons = { clinical: 'M12 3v18M5 8h14M7 16h10', imaging: 'M4 5h16v14H4zM7 15l3-4 2 2 3-5 3 7', differential: 'M12 3v5m0 4v9M5 8h14M5 16h14', check: 'M4 4h16v16H4zM8 9h8m-8 4h5', summary: 'M5 5h14M5 12h14M5 19h14' }
+function Icon({ id }) { return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={icons[id] || icons.imaging} /></svg> }
+function Matrix({ rows, lang }) { return <div className={styles.tableWrap}><table><caption>{pick(L('Befund und diagnostische Einordnung','Finding and diagnostic interpretation','یافته و تفسیر تشخیصی'),lang)}</caption><thead><tr><th scope="col">{pick(L('Merkmal','Feature','ویژگی'),lang)}</th><th scope="col">{pick(L('Einordnung','Interpretation','تفسیر'),lang)}</th></tr></thead><tbody>{rows.map(([a,b],i)=><tr key={i}><th scope="row">{pick(a,lang)}</th><td>{pick(b,lang)}</td></tr>)}</tbody></table></div> }
+function SelfCheck({ lang }) {
+  const [answer, setAnswer] = useState(null); const c = lesson.check
+  return <div className={styles.decision}><h3>{pick(c.title,lang)}</h3><p>{pick(c.prompt,lang)}</p><fieldset><legend>{pick(L('Eine Antwort auswählen','Choose one answer','یک پاسخ را انتخاب کنید'),lang)}</legend>{c.options.map((o,i)=><label key={i}><input type="radio" name="enchondrom-retrieval" checked={answer===i} onChange={()=>setAnswer(i)}/><span>{pick(o,lang)}</span></label>)}</fieldset>{answer!==null?<p className={styles.feedback} role="status"><strong>{pick(answer===c.answer?L('Richtig. ','Correct. ','درست است. '):L('Noch einmal prüfen. ','Review this once more. ','دوباره بررسی کنید. '),lang)}</strong>{pick(answer===c.answer?c.explanation:c.retry,lang)}</p>:null}</div>
+}
+export default function EnchondromPage() {
+  const { lang } = useLanguage(); const t = v => pick(v,lang); const translated = Object.fromEntries(Object.entries(labels).map(([k,v])=>[k,t(v)])); const langPath = p => lang==='de'?p:`${p}?lang=${lang}`
+  const sections = [...lesson.sections.map(s=>({id:s.id,label:t(s.title),icon:s.icon})),{id:'check',label:t(lesson.check.title),icon:'check'},{id:'take-home',label:translated.takeHome,icon:'summary',emphasis:true}]
+  const refs = lesson.references.map(r=>({tag:r.tag,title:t(r.title),href:r.href,citation:typeof r.citation==='string'?r.citation:t(r.citation)}))
+  return <StandardLessonShell lessonId={lesson.id} lang={lang} title={t(lesson.title)} author="RadYar" heroImageAlt={t(L('Nichtdiagnostisches Schema einer medullären knorpeligen Läsion mit punktförmiger Matrixmineralisation.','Non-diagnostic schematic of a medullary cartilaginous lesion with punctate matrix mineralisation.','شماتیک غیرتشخیصی از ضایعهٔ غضروفی مدولاری با کلسیفیکاسیون نقطه‌ای ماتریکس.'))} syncHashNavigation
+    breadcrumbs={[{label:'RadYar',href:langPath('/')},{label:'MSK',href:langPath('/lernen/msk')},{label:t(lesson.title)}]} sections={sections} labels={translated} actions={{}} renderIcon={id=><Icon id={id}/>}
+    theme={{backgroundImage:'/andarun-galaxy-v3.png',heroImage:lesson.hero,heroImageOpacity:.92,accent:'#d49a61',accentStrong:'#79502d',accentSoft:'#f2e9de',secondary:'#8ab9a7',secondaryStrong:'#286451',heroBase:'#18342e'}} className={styles.page} sources={<LessonSources title={translated.sources} items={refs} note={t(lesson.sourceNote)}/>}
+  >
+    {lesson.sections.map(s=><LessonSection key={s.id} id={s.id} icon={s.icon} title={t(s.title)} bodyClassName={styles.body}><p>{t(s.lead)}</p>{s.rows?<Matrix rows={s.rows} lang={lang}/>:null}
+      {s.id==='pattern'?<figure className={styles.caseImage}><img src="/educational/enchondrom/rid-91156-hand-radiographs.jpg" alt={t(s.imageAlt)} loading="lazy"/><figcaption>{t(s.imageCaption)}</figcaption></figure>:null}
+      {s.id==='imaging'?<><div className={styles.imagePair}><figure className={styles.caseImage}><img src="/educational/enchondrom/rid-41467-tibia-ct.jpg" alt={t(s.imageAlt)} loading="lazy"/><figcaption>{t(s.imageCaption)}</figcaption></figure><figure className={styles.caseImage}><img src="/educational/enchondrom/rid-33147-ankle-mri.jpg" alt={t(s.secondaryAlt)} loading="lazy"/><figcaption>{t(s.secondaryCaption)}</figcaption></figure></div></>:null}
+      {s.note?<aside className={styles.note}>{t(s.note)}</aside>:null}
+    </LessonSection>)}
+    <LessonSection id="check" icon="check" title={t(lesson.check.title)} bodyClassName={styles.body}><SelfCheck lang={lang}/></LessonSection>
+    <LessonSection id="take-home" icon="summary" title={translated.takeHome} bodyClassName={styles.body}><ol className={styles.summary}>{lesson.summary.map((v,i)=><li key={i}>{t(v)}</li>)}</ol></LessonSection>
+  </StandardLessonShell>
+}

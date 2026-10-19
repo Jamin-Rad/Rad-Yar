@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual enchondroma</title>
+  <desc id="desc">A non-diagnostic cutaway of a long bone with a central lobulated medullary cartilage lesion and small calcified matrix dots.</desc>
+  <defs><linearGradient id="bone" x2="0" y2="1"><stop stop-color="#f7e7d1"/><stop offset="1" stop-color="#d6b58f"/></linearGradient><linearGradient id="cartilage" x2="1" y2="1"><stop stop-color="#87cdbb"/><stop offset="1" stop-color="#4f928f"/></linearGradient></defs>
+  <path d="M120 82c-27 0-48 22-48 49v218c0 27 21 49 48 49s48-22 48-49V131c0-27-21-49-48-49Zm400 0c-27 0-48 22-48 49v218c0 27 21 49 48 49s48-22 48-49V131c0-27-21-49-48-49Z" fill="url(#bone)" stroke="#956e4c" stroke-width="8"/>
+  <path d="M120 105h400v270H120z" fill="#f7f1e8" stroke="#b68d67" stroke-width="4"/>
+  <path d="M235 146c20-25 47-25 68-6 21-21 50-19 65 4 29-9 54 12 53 38 24 19 17 47-1 62 16 25 2 53-21 61-7 29-34 39-56 23-19 20-49 18-63-5-28 12-57-3-60-30-26-13-31-44-10-64-15-26-5-57 25-66Z" fill="url(#cartilage)" stroke="#286e70" stroke-width="6"/>
+  <g fill="#e9d28c" stroke="#856d39" stroke-width="3"><circle cx="281" cy="197" r="9"/><circle cx="350" cy="215" r="8"/><circle cx="315" cy="260" r="10"/><circle cx="376" cy="286" r="7"/><circle cx="260" cy="294" r="7"/></g>
+  <path d="M198 123h244M198 357h244" stroke="#b68d67" stroke-width="3" stroke-dasharray="8 9" opacity=".7"/>
+</svg>
