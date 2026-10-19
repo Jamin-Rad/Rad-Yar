@@ -53,6 +53,7 @@ import { ABDOMEN_THORAX_REGISTERED_QUESTIONS, ABDOMEN_THORAX_REGISTERED_TOPIC_GR
 import { ORMOND_QUESTIONS } from './ormondLesson'
 import { EPIPLOICA_QUESTIONS } from './epiploicaLesson'
 import { PANNICULITIS_QUESTIONS } from './panniculitisLesson'
+import { PERITONEAL_QUESTIONS } from './peritonealCarcinomatosisLesson'
 import { MSK_SPINE_REGISTERED_QUESTIONS } from './mskSpineRegisteredQuestions'
 
 
@@ -4168,12 +4169,12 @@ const LEGACY_QUESTION_BANK = {
 export const QUESTION_BANK = Object.fromEntries(
   Object.entries(LEGACY_QUESTION_BANK).map(([lang, questions]) => [
     lang,
-    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang]), ...BONE_INFARCT_QUESTIONS[lang], ...FACET_QUESTIONS[lang], ...PCNSL_QUESTIONS[lang], ...MEDULLO_QUESTIONS[lang], ...MENING_QUESTIONS[lang], ...RECIST_QUESTIONS[lang], ...ORMOND_QUESTIONS[lang], ...EPIPLOICA_QUESTIONS[lang], ...PANNICULITIS_QUESTIONS[lang]],
+    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang]), ...BONE_INFARCT_QUESTIONS[lang], ...FACET_QUESTIONS[lang], ...PCNSL_QUESTIONS[lang], ...MEDULLO_QUESTIONS[lang], ...MENING_QUESTIONS[lang], ...RECIST_QUESTIONS[lang], ...ORMOND_QUESTIONS[lang], ...EPIPLOICA_QUESTIONS[lang], ...PANNICULITIS_QUESTIONS[lang], ...PERITONEAL_QUESTIONS[lang]],
   ])
 )
 
 export const MCQ_TOPIC_GROUPS = [
-  { fachId: 'abdomen', kapitelId: 'abdomen-peritoneum', title: { de: 'Peritoneum & Mesenterium', en: 'Peritoneum & mesentery', fa: 'پریتوئن و مزانتر' }, topics: [{ id: 'appendicitis-epiploica', title: { de: 'Epiploische Appendagitis', en: 'Epiploic appendagitis', fa: 'التهاب زائدهٔ چربی کولون' } }, { id: 'mesenteriale-panniculitis', title: { de: 'Mesenteriale Panniculitis', en: 'Mesenteric panniculitis', fa: 'پانیکولیت مزانتریک' } }] },
+  { fachId: 'abdomen', kapitelId: 'abdomen-peritoneum', title: { de: 'Peritoneum & Mesenterium', en: 'Peritoneum & mesentery', fa: 'پریتوئن و مزانتر' }, topics: [{ id: 'appendicitis-epiploica', title: { de: 'Epiploische Appendagitis', en: 'Epiploic appendagitis', fa: 'التهاب زائدهٔ چربی کولون' } }, { id: 'mesenteriale-panniculitis', title: { de: 'Mesenteriale Panniculitis', en: 'Mesenteric panniculitis', fa: 'پانیکولیت مزانتریک' } }, { id: 'peritonealkarzinose', title: { de: 'Peritonealkarzinose', en: 'Peritoneal carcinomatosis', fa: 'کارسینوماتوز پریتوئن' } }] },
   { fachId: 'technik', kapitelId: 'technik-onkologie', title: { de: 'Onkologische Verlaufsmessung', en: 'Oncological response measurement', fa: 'اندازه‌گیری پاسخ انکولوژیک' }, topics: [{ id: 'recist-1-1', title: { de: 'RECIST 1.1', en: 'RECIST 1.1', fa: 'RECIST 1.1' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-retroperitoneum', title: { de: 'Retroperitoneum', en: 'Retroperitoneum', fa: 'رتروپریتوئن' }, topics: [{ id: 'morbus-ormond', title: { de: 'Morbus Ormond', en: 'Ormond disease', fa: 'بیماری اورموند' } }] },
   { fachId: 'gehirn', kapitelId: 'kopf-tumoren', title: { de: 'Hirntumoren', en: 'Brain tumours', fa: 'تومورهای مغزی' }, topics: [{ id: 'meningeom', title: { de: 'Meningeom', en: 'Meningioma', fa: 'مننژیوم' } }, { id: 'medulloblastom', title: { de: 'Medulloblastom', en: 'Medulloblastoma', fa: 'مدولوبلاستوم' } }, { id: 'lymphom-zns', title: { de: 'Primäres ZNS-Lymphom', en: 'Primary CNS lymphoma', fa: 'لنفوم اولیه سیستم عصبی مرکزی' } }] },

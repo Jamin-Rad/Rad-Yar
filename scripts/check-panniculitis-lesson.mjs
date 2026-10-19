@@ -56,6 +56,7 @@ function inspectInterface(node) {
 inspectInterface(ast)
 assert.ok(route.includes('StandardLessonShell') && route.includes('<Decision lang={lang}/>'))
 assert.ok(route.includes('themen=mesenteriale-panniculitis') && route.includes('href={figure.sourceUrl}'))
+assert.ok(route.includes("encodeURIComponent(langHref('/abdomen/peritoneum/mesenteriale-panniculitis'))"), 'Encoded language-specific quiz return target')
 assert.ok(route.includes('href={figure.src}') && route.includes('aria-label='))
 assert.ok(route.includes('<SourceFigure figure={lesson.figures.pattern} lang={lang}/>'))
 assert.ok(route.includes('<SourceFigure figure={lesson.figures.lymphoma} lang={lang} compact/>'))

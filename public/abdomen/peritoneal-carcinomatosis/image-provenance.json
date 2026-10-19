@@ -1,0 +1,26 @@
+{
+  "asset": "omental-cake.png",
+  "source": "User-supplied Abdomen.pdf",
+  "pdfPage": 99,
+  "printedPage": 98,
+  "sourceCaseId": "rID162382",
+  "caseUrl": "https://radiopaedia.org/cases/162382",
+  "contributor": null,
+  "contributorStatus": "Contributor not identified in supplied PDF. Original case page returned unavailable/internal error; no indexed case-level metadata found. Contributor-level metadata, full original study and case-specific reuse terms remain unverified. No contributor invented.",
+  "sourceCrop": {
+    "renderCommand": "pdftoppm -f 99 -l 99 -scale-to 2400 -png -singlefile Abdomen.pdf author-peritoneal-source-99",
+    "renderWidth": 1698,
+    "renderHeight": 2400,
+    "coordinateOrigin": "Top-left of the rendered source PDF page, in pixels",
+    "left": 538,
+    "top": 1170,
+    "width": 620,
+    "height": 510,
+    "retainedContent": "Complete source axial CT panel, original orange arrow and English Omental thickening label; tiny original rID162382 footer retained. No diagnostic features or annotations generated."
+  },
+  "views": "One source-selected axial abdominal CT still. Exact original frame and acquisition phase not supplied or independently verified. Full series not shown.",
+  "selection": "Clear anterior omental thickening with fluid. Used for this visible morphology only; not used to prove primary site, histology, all four lesson signs or complete disease extent.",
+  "authorization": "User-authorised project use of supplied PDFs and Radiopaedia material is recorded in docs/lesson-quality/standard.md. No independent contributor-level rights or legal-clearance claim.",
+  "inspection": "Author inspected the full source page and final 620x510 crop. Original case footer separately rendered at 800 dpi and directly read as rID162382. Additional subtle diaphragmatic or stellate-pattern recognition examples are not available in this bounded source.",
+  "hero": { "asset": "hero.svg", "source": "Original code-native schematic created for this lesson", "meaning": "Peritoneal nodules, anterior omental sheet, fluid and mesenteric/bowel relationships; illustrative combination, not a diagnostic CT or mandatory coexistence of all signs" }
+}

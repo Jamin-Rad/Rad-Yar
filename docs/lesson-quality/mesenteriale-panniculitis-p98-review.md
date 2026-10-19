@@ -114,3 +114,15 @@ Actual source identifiers independently enlarged and read from PDF: **rID10092**
 - `git diff --check`: PASS; unrelated concurrent CRLF warnings only.
 
 No demonstrated SRC/EDU/VIS/LNG/ASM defect or exact repair request found in this bounded review. Overall acceptance **BLOCKED by required real-browser evidence**. Scientific_review pending Dr.Zia; publication not_requested; inProgress retained. No commit/push.
+
+## Backlink correction — author, 2026-10-19
+
+Independent follow-up during the p99 review found that this route's quiz href also omitted `from`. The quiz consumer at `app/ueben/quiz/page.jsx` uses `fromParam || '/ueben'`, so Back previously led to generic quiz setup rather than this lesson. **The earlier ASM PASS is superseded: ASM/affected UX REVISE pending independent delta retest.** Other bounded review results and browser blocker remain unchanged.
+
+Repair: route practice href now encodes the language-specific `/abdomen/peritoneum/mesenteriale-panniculitis` return URL as `from`. Actual-route SSR extracts the emitted anchor, parses its query and decoded return target, checks topic/fach/count/quiz language and destination pathname/language in DE/EN/FA, and verifies the unchanged quiz consumer's Back-href contract. Focused checker asserts encoded localized return construction. No shared registry, bank, clinical text, image or shell changes in this repair.
+
+Author rerun: focused checker39/28, actual-route SSR3languages and scoped parse/whitespace PASS. This verifies semantic URL mapping; real clicks/history/navigation in the browser remain BLOCKED. Independent delta requested from workflow_trial; no commit/push.
+
+### Independent delta result — workflow_trial, 2026-10-19
+
+Reviewer independently reinspected both routes and actual quiz `from`/Back consumer, then reran both focused checkers, both actual-route SSR tests and scoped diff check. Actual emitted anchors in DE/EN/FA preserve fach/topic/count, quiz language, decoded return pathname and destination language. P98 equivalent of PER-ASM-01 **CLOSED**; bounded **ASM PASS restored**. The demonstrated backlink defect in UX is closed; required real-browser evidence remains **BLOCKED**. Other earlier bounded source/education/visual/language findings unchanged. No reviewer code edits or browser/scientific/release approval.
