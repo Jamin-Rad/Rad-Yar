@@ -753,7 +753,7 @@ export const CURRICULUM = [
         title: { de: '3. Leber', en: '3. Liver', fa: '۳. کبد' },
         icon: '🟤',
         themen: [
-          { id: 'hepatische-steatose', title: { de: 'Hepatische Steatose', en: 'Hepatic Steatosis', fa: 'استئاتوز کبدی' }, group: ['Diffuse Lebererkrankungen'], tags: ['Sono','CT','MRT'], diff: 1 },
+          { id: 'hepatische-steatose', title: { de: 'Hepatische Steatose', en: 'Hepatic Steatosis', fa: 'استئاتوز کبدی' }, group: ['Diffuse Lebererkrankungen'], tags: ['Sono','CT','MRT'], diff: 1, link: '/abdomen/leber/steatose' },
           { id: 'leberzirrhose', title: { de: 'Leberzirrhose', en: 'Liver Cirrhosis', fa: 'سیروز کبدی' }, group: ['Diffuse Lebererkrankungen'], tags: ['Sono','CT','MRT'], diff: 2 },
           { id: 'hepatitis-leber', title: { de: 'Hepatitis', en: 'Hepatitis', fa: 'هپاتیت' }, group: ['Diffuse Lebererkrankungen'], tags: ['Sono','CT','MRT'], diff: 1 },
           { id: 'leberzyste', title: { de: 'Leberzyste', en: 'Hepatic Cyst', fa: 'کیست کبدی' }, group: ['Benigne Leberläsionen'], tags: ['Sono','CT','MRT'], diff: 1, link: '/abdomen/leber/zystische-laesionen' },

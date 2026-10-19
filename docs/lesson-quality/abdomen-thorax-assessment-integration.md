@@ -32,8 +32,9 @@ The following 13 lesson drafts are represented in `QUESTION_BANK` in DE, EN and 
 
 ## Verification and remaining limits
 
-- `npm run audit:mcq` passed immediately after this batch registration (611 questions and 18 cases per language). On the latest rerun, it fails on three unrelated NF1 questions (`neurofibromatose-typ1-{de,en,fa}-{fasi,pathway,systemic}`), each having three options; no Abdomen/Thorax question is reported. Those concurrent NF1 entries are outside this integration scope.
+- `npm run audit:mcq` passed after all concurrent NF1 and MSK registrations were repaired: 619 questions and 18 cases per language. An earlier transient three-option NF1 failure was fixed before this recorded run; it is not a current blocker.
 - `npx tsx scripts/audit-abdomen-thorax-assessment-retrieval.mjs` passed: 13 registered questions, 20 exact curriculum tags, and DE/EN/FA topic retrieval. The script also verifies that every tag exists as a curriculum ID.
 - Registered topic groups use existing curriculum chapter IDs; the retrieval audit asserts that each `fachId`/`kapitelId` pair exists in `data/curriculum.js`.
 - `data/abdomenThoraxAssessmentDrafts.js` continues to drive the lesson-shell self-checks; the registry adapter adds a fourth distractor for global quiz compatibility.
 - This is a structural and retrieval check. It does not verify semantic translation parity, independently validate clinical claims against the cited sources, complete browser/runtime testing, establish Dr. Zia's scientific approval, or establish full Abdomen/Thorax PDF coverage. Those remain open in the batch ledger.
+- Independent reviewer retest confirmed the real curriculum chapter IDs and 13-question/20-tag retrieval; scientific/source validation and semantic translation equivalence remain open.

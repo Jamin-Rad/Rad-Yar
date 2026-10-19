@@ -44,6 +44,7 @@ import { CARDIOMYOPATHY_QUESTIONS } from './cardiomyopathy'
 import { ARVC_QUESTIONS } from './arvcTraining'
 import { MYOCARDIAL_INJURY_QUESTIONS } from './myocardialInjury'
 import { ABDOMEN_THORAX_REGISTERED_QUESTIONS, ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS } from './abdomenThoraxRegisteredQuestions'
+import { MSK_SPINE_REGISTERED_QUESTIONS } from './mskSpineRegisteredQuestions'
 
 
 
@@ -4158,12 +4159,22 @@ const LEGACY_QUESTION_BANK = {
 export const QUESTION_BANK = Object.fromEntries(
   Object.entries(LEGACY_QUESTION_BANK).map(([lang, questions]) => [
     lang,
-    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang])],
+    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang])],
   ])
 )
 
 export const MCQ_TOPIC_GROUPS = [
   ...ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS,
+  { fachId: 'wirbelsaeule', kapitelId: 'ws-degenerativ', title: { de: 'Degenerative Erkrankungen', en: 'Degenerative diseases', fa: 'بیماری‌های دژنراتیو' }, topics: [{ id: 'spinalkanalstenose', title: { de: 'Spinalkanalstenose', en: 'Spinal canal stenosis', fa: 'تنگی کانال نخاعی' } }] },
+  { fachId: 'wirbelsaeule', kapitelId: 'ws-entzuendlich', title: { de: 'Entzündliche Erkrankungen', en: 'Inflammatory diseases', fa: 'بیماری‌های التهابی' }, topics: [
+    { id: 'spondylodiszitis', title: { de: 'Spondylodiszitis', en: 'Spondylodiscitis', fa: 'اسپوندیلودی‌سکیت' } },
+    { id: 'morbus-bechterew-ws', title: { de: 'Morbus Bechterew', en: 'Ankylosing spondylitis', fa: 'اسپوندیلیت آنکیلوزان' } },
+  ] },
+  {
+    fachId: 'msk', kapitelId: 'msk-knochentumoren',
+    title: { de: 'Knochentumoren', en: 'Bone tumours', fa: 'تومورهای استخوان' },
+    topics: [{ id: 'knochentumor-grundlagen', title: { de: 'Grundlagen & Klassifikation', en: 'Fundamentals & classification', fa: 'مبانی و طبقه‌بندی' } }],
+  },
   {
     fachId: 'gehirn', kapitelId: 'kopf-kopfschmerz',
     title: { de: '9. Kopfschmerz & Migräne', en: '9. Headache & Migraine', fa: '۹. سردرد و میگرن' },

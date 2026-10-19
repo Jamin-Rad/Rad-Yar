@@ -75,7 +75,13 @@ Die drei unten angelegten Routen wurden nach konkreten Review-Befunden aktualisi
 
 `/msk/tumoren/knochenzeichen` deckt die allgemeinen Aggressivitätsmuster aus `MSK.pdf`, PDF S. 73–76 ab: Periostreaktionen, Matrixmuster sowie Lodwick I–III. Das Lesson-Intro grenzt radiologische Heuristiken ausdrücklich von Histologie/Diagnose ab. Codman-/Sunburst-/Lamellenzeichen werden nicht als tumorspezifisch vermittelt. Quellenlinks führen zur ursprünglichen Lodwick-Arbeit, einer aktuellen Rekonstruktion des Entscheidungsbaums und der Periostreaktionsstudie. Ein eigenes SVG zeigt schematisch Reaktionstypen, keine Fallbilder.
 
-Die Extraktion auf Seiten 9–10 ist unvollständig; `Spondylolisthesis` und `Ossifikation spinaler Ligamente` fehlen daher im Entwurf. Der Routenname und die Curriculum-Verknüpfung sind noch in die globale Navigation/Curriculum zu integrieren; globale Dateien wurden bewusst nicht editiert.
+Die Extraktion auf Seiten 9–10 ist unvollständig; `Spondylolisthesis` und `Ossifikation spinaler Ligamente` fehlen daher im Entwurf. Die drei neuen Routen sind inzwischen über ihre jeweiligen exakten Curriculum-IDs verknüpft.
+
+### Assessment-Integration (19.10.2026)
+
+Fünf MCQs und fünf Lernkarten aus dem lokalen Entwurf sind jetzt in die globale DE/EN/FA-Bank integriert: zwei Items zur spinalen Stenose über `spinalkanalstenose` → `/wirbelsaeule/degenerative`, TB-Muster über `spondylodiszitis` → `/wirbelsaeule/infektion`, Lodwick über `knochentumor-grundlagen` → `/msk/tumoren/knochenzeichen`, sowie axSpA-MRT über `morbus-bechterew-ws` → `/wirbelsaeule/entzuendlich`. Jede globale MCQ hat vier Antwortoptionen und wird in jeder Sprache über genau den genannten Curriculum-Tag abgerufen. Lernkarten verwenden dieselben exakten IDs und ihre Themen sind global registriert.
+
+Das Scheuermann-MCQ und die Scheuermann-Karte bleiben im lokalen Entwurfsmodul, weil `morbus-scheuermann` derzeit keine verknüpfte Lesson-Route hat. Ebenso werden nicht verlinkte IDs wie `myelopathie-degenerativ` und `wirbelsaeulentuberkulose` nicht als Ersatz-Tags verwendet. Die strukturelle Prüfung `node scripts/audit-msk-spine-assessment-retrieval.mjs` prüft Curriculum-ID/Route, vier Optionen, eindeutige IDs, Übersetzungsfelder und tatsächliches Topic-Retrieval. Diese Integration ist keine unabhängige Inhalts- oder klinische Freigabe.
 
 ## Nicht abgedeckte PDF-Themen und Grenzen
 
@@ -95,8 +101,7 @@ Die Extraktion auf Seiten 9–10 ist unvollständig; `Spondylolisthesis` und `Os
 
 ## Nächste Integrations- und QA-Schritte
 
-1. Globale Curriculum-IDs/Links für die neuen Lektionen `degenerative-wirbelsaeule`, `spondylodiszitis` (Route `/wirbelsaeule/infektion`) und `knochentumor-grundlagen` (Route `/msk/tumoren/knochenzeichen`) ergänzen; dies war in der Autoraufgabe ausdrücklich aus dem lokalen Scope ausgenommen.
-2. Für vorhandene MSK-Routen Inhalte, Diagramme, DE/EN/FA-Parität, Fragen und Lernkarten wirklich gegen die oben genannten Seiten prüfen und notwendige Änderungen dokumentieren.
-3. Seitenbilder der offenen/illustrationsreichen Strecken einzeln zuordnen, insbesondere MSK 11–43 und 73–138 sowie WS 11–29.
-4. Eine unabhängige Review-Agent-Runde für den neuen Entwurf und danach die geänderten vorhandenen Routen ausführen.
-5. Browser-/Build-Prüfung koordiniert auf Repository-Ebene durchführen; keine Freigabe aus dieser Autorarbeit ableiten.
+1. Für vorhandene MSK-Routen Inhalte, Diagramme, DE/EN/FA-Parität, Fragen und Lernkarten gegen die genannten PDF-Seiten prüfen und notwendige Änderungen dokumentieren.
+2. Seitenbilder der offenen/illustrationsreichen Strecken einzeln zuordnen, insbesondere MSK 11–43 und 73–138 sowie WS 11–29.
+3. Die unabhängige Review-Runde für neu integrierte Fragen/Karten und alle Autoränderungen abschließen.
+4. Browser-/Build-Prüfung koordiniert auf Repository-Ebene durchführen; keine Freigabe aus dieser Autorarbeit ableiten.
