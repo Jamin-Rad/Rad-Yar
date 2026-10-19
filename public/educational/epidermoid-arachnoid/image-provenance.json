@@ -6,7 +6,7 @@
       "type": "code-native concept schematic",
       "purpose": "Compare the overlapping conventional T1/T2 pattern with the differentiating FLAIR and DWI/ADC pattern.",
       "not_a_patient_scan": true,
-      "review_status": "author-created; independent review pending"
+      "review_status": "author-created; independent static artifact review passed; live browser/mobile review and specialist signoff pending"
     },
     {
       "paths": [
@@ -24,7 +24,7 @@
       "permission": "User authorized use of images in the supplied PDFs; project standard records broad authorization for Radiopaedia cases.",
       "not_a_patient_scan": false,
       "limitations": "The displayed source selection has no ADC map. Do not infer ADC values from these frames.",
-      "review_status": "author inspected source page and crop; independent review pending"
+      "review_status": "author inspected source page and crop; independent static image/source review passed; live browser/mobile review and specialist signoff pending"
     }
   ]
 }
