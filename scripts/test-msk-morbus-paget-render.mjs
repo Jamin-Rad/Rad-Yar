@@ -53,8 +53,11 @@ for (const locale of ['de', 'en', 'fa']) {
   assert.ok(html.includes('/educational/morbus-paget/hero.svg'), `${locale} topic schematic`)
   assert.ok(html.includes(lesson.check.question[locale]) && html.includes(lesson.check.options[0][locale]), `${locale} check`)
   assert.ok(html.includes(lesson.notice[locale]), `${locale} source scope`)
+  assert.ok(html.includes(locale === 'de' ? 'Klinische Leitlinie · 2019' : locale === 'en' ? 'Clinical guideline · 2019' : 'راهنمای بالینی · ۲۰۱۹'), `${locale} localized guideline tag`)
+  assert.ok(html.includes(locale === 'de' ? 'Sklerotischer Umbau' : locale === 'en' ? 'Sclerotic remodelling' : 'بازسازی اسکلروتیک'), `${locale} concise phase caption`)
+  assert.ok(html.includes(locale === 'de' ? 'keine eigenständige Erkrankung' : locale === 'en' ? 'not a separate disease' : 'بیماری مستقل'), `${locale} ivory vertebra sign clarification`)
   for (const id of ['pattern', 'imaging', 'context', 'check', 'take-home']) assert.ok(html.includes(`id="${id}"`), `${locale} section ${id}`)
 }
 assert.ok(fs.existsSync('public/educational/morbus-paget/hero.svg'), 'hero asset exists')
 assert.ok(fs.readFileSync('public/educational/morbus-paget/hero.svg', 'utf8').includes('<svg'), 'hero is an SVG')
-console.log('MSK Morbus Paget bounded route SSR PASS: DE/EN/FA, RTL, shell, source boundary, schematic and retrieval item verified. Browser, clinical and independent review remain open.')
+console.log('MSK Morbus Paget bounded route SSR PASS: DE/EN/FA, RTL, shared shell, source boundary, localized guideline tag, concise phase caption, ivory vertebra sign explanation, schematic and retrieval item verified. Browser and clinical review remain open.')

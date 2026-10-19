@@ -19,7 +19,7 @@
 | MP-131-D | p. 131 / printed 130 | Osteolytic, mixed and osteosclerotic phases; mosaic structure/mechanical instability | Essential | `pattern`, phase diagram, check | Diagram explicitly conceptual, not patient imaging or inevitable individual progression |
 | MP-131-E | p. 131 / printed 130 | Coarsened trabeculae; increased bone volume and bowing of long bones | Essential | `imaging` | Source wording retained, translated |
 | MP-131-F | p. 131 / printed 130 | Skull: early circumscribed lucencies; late cotton-wool sclerosis | Essential | `imaging`, retrieval check | Timing attributed to PDF; no actual skull image on page |
-| MP-132-A | p. 132 / printed p. 131 | Frame vertebra from marginal sclerosis; ivory vertebra differential | Essential | `imaging` | Source-described differential only; no diagnostic comparison image |
+| MP-132-A | p. 132 / printed p. 131 | Frame vertebra from marginal sclerosis; PDF also mentions ivory vertebra | Essential | `imaging` | Clarified as a descriptive imaging sign, not a separate disease; it can occur in Paget. Supplemental PMC review linked; no diagnostic comparison image |
 | MP-132-B | p. 132 / printed 131 | Isolated ALP increase with normal Ca/P; scintigraphic uptake and extent | Supporting | `context` | ALP claim contextualised against 2019 guideline; no claim of a universal lab profile. Comparative sensitivity language omitted |
 | MP-132-C | p. 132 / printed 131 | Pain/secondary osteoarthritis; hearing loss; high-output failure | Supporting | `context` | Presented as source-listed associated/complication categories, not prevalence or prediction |
 | MP-132-D | p. 132 / printed 131 | Rare Paget sarcoma (<1% in PDF); new osteolysis with soft-tissue component as warning | Essential warning | `context`, summary | Numeric percentage omitted pending specialist verification; warning retained with specialist-assessment boundary |
@@ -34,6 +34,8 @@ Terminology table (abbreviated): `Morbus Paget des Knochens / Paget's disease of
 
 Ralston et al., *Diagnosis and Management of Paget's Disease of Bone in Adults: A Clinical Guideline*, J Bone Miner Res. 2019;34:579–604, DOI 10.1002/jbmr.3657, was consulted for context. It supports assessing total ALP together with liver function tests and notes that ALP can be normal in limited disease. This is why the PDF's concise lab line is framed as a source statement rather than a standalone rule. The external guideline does not constitute specialist approval of this lesson.
 
+Alves et al., *Ivory vertebra: imaging findings in different diagnoses*, Radiol Bras. 2016;49:117–121, PMID 27141135, supports describing ivory vertebra as an imaging sign that occurs in multiple diseases, including Paget. The lesson retains the PDF’s mention but avoids framing the sign as a separate diagnosis.
+
 ## Review record
 
-Independent bounded review: PASS for PDF scope, source claims, DE/EN/FA language, phase visual, retrieval check, and code-level curriculum integration after the ledger was corrected to show the gated link. No browser render, responsive/keyboard test or Dr. Zia clinical sign-off is claimed.
+Independent review found and required correction of the third-panel SVG caption overflow, an English-only guideline tag and ambiguous wording around ivory vertebra. The caption and tag are now localized/shortened; the spine finding explains that ivory vertebra is a descriptive imaging sign, not a separate disease, and links a supporting review. Delta retest PASS: the reviewer rerendered all three locales and confirmed the captions fit and the labels/source scope match. Browser/responsive/keyboard testing and Dr. Zia clinical sign-off are not claimed.
