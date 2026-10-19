@@ -1,0 +1,23 @@
+{
+  "asset": "ct-montage.png",
+  "source": "User-supplied Abdomen.pdf",
+  "pdfPage": 97,
+  "printedPage": 96,
+  "sourceCaseId": "rID85024",
+  "caseUrl": "https://radiopaedia.org/cases/85024",
+  "contributor": null,
+  "contributorStatus": "Contributor not identified in supplied PDF. Original case page was inaccessible (web tool internal/unavailable result); contributor-level metadata and case-specific reuse terms remain unverified. No contributor invented.",
+  "sourceCrop": {
+    "renderDpi": 200,
+    "coordinateOrigin": "Top-left of the rendered PDF page; pixel coordinates and dimensions.",
+    "left": 210,
+    "top": 1080,
+    "width": 1370,
+    "height": 875,
+    "retainedContent": "Four original axial CT panels plus the complete supplied German source caption and rID85024. No annotations or diagnostic features generated."
+  },
+  "views": "Four axial pelvic CT images selected by the source author. Full series, frame identifiers and acquisition phase not supplied.",
+  "selection": "Typical pericolonic fat-centred lesion beside the sigmoid with a thin hyperattenuating rim and no substantial adjacent bowel-wall thickening. Not used to assert a definite central dot in every frame.",
+  "authorization": "User-authorised project use of supplied PDFs and Radiopaedia material is recorded in docs/lesson-quality/standard.md. No independent contributor-level rights or legal-clearance claim.",
+  "inspection": "Author inspected the actual PDF page at 120 and 200 dpi and opened the final 1370x875 PNG crop. All four panels, complete original paragraph and rID85024 are retained and readable at full size. Independent review pending."
+}

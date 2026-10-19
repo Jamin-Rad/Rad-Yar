@@ -1,3 +1,4 @@
+import { MEDULLO_QUESTIONS } from './medulloblastomLesson'
 import { RECIST_QUESTIONS } from './recist11Lesson'
 import { MENISCUS_QUESTIONS } from './meniscusLearning'
 import { BONE_INFARCT_QUESTIONS } from './knocheninfarktLesson'
@@ -49,6 +50,7 @@ import { ARVC_QUESTIONS } from './arvcTraining'
 import { MYOCARDIAL_INJURY_QUESTIONS } from './myocardialInjury'
 import { ABDOMEN_THORAX_REGISTERED_QUESTIONS, ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS } from './abdomenThoraxRegisteredQuestions'
 import { ORMOND_QUESTIONS } from './ormondLesson'
+import { EPIPLOICA_QUESTIONS } from './epiploicaLesson'
 import { MSK_SPINE_REGISTERED_QUESTIONS } from './mskSpineRegisteredQuestions'
 
 
@@ -4164,14 +4166,15 @@ const LEGACY_QUESTION_BANK = {
 export const QUESTION_BANK = Object.fromEntries(
   Object.entries(LEGACY_QUESTION_BANK).map(([lang, questions]) => [
     lang,
-    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang]), ...BONE_INFARCT_QUESTIONS[lang], ...FACET_QUESTIONS[lang], ...PCNSL_QUESTIONS[lang], ...RECIST_QUESTIONS[lang], ...ORMOND_QUESTIONS[lang]],
+    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang]), ...BONE_INFARCT_QUESTIONS[lang], ...FACET_QUESTIONS[lang], ...PCNSL_QUESTIONS[lang], ...MEDULLO_QUESTIONS[lang], ...RECIST_QUESTIONS[lang], ...ORMOND_QUESTIONS[lang], ...EPIPLOICA_QUESTIONS[lang]],
   ])
 )
 
 export const MCQ_TOPIC_GROUPS = [
+  { fachId: 'abdomen', kapitelId: 'abdomen-peritoneum', title: { de: 'Peritoneum & Mesenterium', en: 'Peritoneum & mesentery', fa: 'پریتوئن و مزانتر' }, topics: [{ id: 'appendicitis-epiploica', title: { de: 'Epiploische Appendagitis', en: 'Epiploic appendagitis', fa: 'التهاب زائدهٔ چربی کولون' } }] },
   { fachId: 'technik', kapitelId: 'technik-onkologie', title: { de: 'Onkologische Verlaufsmessung', en: 'Oncological response measurement', fa: 'اندازه‌گیری پاسخ انکولوژیک' }, topics: [{ id: 'recist-1-1', title: { de: 'RECIST 1.1', en: 'RECIST 1.1', fa: 'RECIST 1.1' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-retroperitoneum', title: { de: 'Retroperitoneum', en: 'Retroperitoneum', fa: 'رتروپریتوئن' }, topics: [{ id: 'morbus-ormond', title: { de: 'Morbus Ormond', en: 'Ormond disease', fa: 'بیماری اورموند' } }] },
-  { fachId: 'gehirn', kapitelId: 'kopf-tumoren', title: { de: 'Hirntumoren', en: 'Brain tumours', fa: 'تومورهای مغزی' }, topics: [{ id: 'lymphom-zns', title: { de: 'Primäres ZNS-Lymphom', en: 'Primary CNS lymphoma', fa: 'لنفوم اولیه سیستم عصبی مرکزی' } }] },
+  { fachId: 'gehirn', kapitelId: 'kopf-tumoren', title: { de: 'Hirntumoren', en: 'Brain tumours', fa: 'تومورهای مغزی' }, topics: [{ id: 'medulloblastom', title: { de: 'Medulloblastom', en: 'Medulloblastoma', fa: 'مدولوبلاستوم' } }, { id: 'lymphom-zns', title: { de: 'Primäres ZNS-Lymphom', en: 'Primary CNS lymphoma', fa: 'لنفوم اولیه سیستم عصبی مرکزی' } }] },
   { fachId: 'msk', kapitelId: 'msk-knochennekrosen', title: { de: 'Knochennekrosen', en: 'Bone necrosis', fa: 'نکروزهای استخوانی' }, topics: [{ id: 'knocheninfarkt', title: { de: 'Knocheninfarkt', en: 'Bone infarct', fa: 'انفارکت استخوان' } }] },
   ...ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS,
   { fachId: 'wirbelsaeule', kapitelId: 'ws-degenerativ', title: { de: 'Degenerative Erkrankungen', en: 'Degenerative diseases', fa: 'بیماری‌های دژنراتیو' }, topics: [{ id: 'spinalkanalstenose', title: { de: 'Spinalkanalstenose', en: 'Spinal canal stenosis', fa: 'تنگی کانال نخاعی' } }, { id: 'spondylarthrose', title: { de: 'Spondylarthrose', en: 'Facet arthropathy', fa: 'آرتروز فاست' } }] },

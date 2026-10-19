@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
 import { useLehrModeActive } from '@/hooks/useLehrModeActive'
+import LessonHero from '@/components/LessonHero'
+import { observeLessonHash } from '@/lib/lessonHashNavigation'
 import styles from './StandardLessonShell.module.css'
 
 const LessonShellContext = createContext(null)
@@ -149,6 +151,8 @@ export default function StandardLessonShell({
   className = '',
   children,
   sources,
+  heroImageAlt,
+  syncHashNavigation = false,
 }) {
   const trackedSections = useMemo(() => sections.filter(section => !section.emphasis), [sections])
   const lehrMode = useLehrModeActive()
@@ -160,10 +164,21 @@ export default function StandardLessonShell({
   const summarySection = sections.find(section => section.emphasis)
 
   useEffect(() => {
+    if (syncHashNavigation) {
+      return observeLessonHash({
+        target: window,
+        trackedIds,
+        summaryId: summarySection?.id,
+        onChange: ({ openId: nextOpenId, summaryOpen: nextSummaryOpen }) => {
+          if (nextOpenId) setOpenId(nextOpenId)
+          setSummaryOpen(nextSummaryOpen)
+        },
+      })
+    }
     const hash = window.location.hash.slice(1)
     if (hash === summarySection?.id) setSummaryOpen(true)
     else if (trackedSections.some(section => section.id === hash)) setOpenId(hash)
-  }, [summarySection?.id, trackedSections])
+  }, [summarySection?.id, trackedSections, trackedIds, syncHashNavigation])
 
   const openSection = id => {
     if (!trackedIds.includes(id)) return
@@ -226,10 +241,10 @@ export default function StandardLessonShell({
         <nav className={styles.breadcrumb} aria-label={labels.contents}>{breadcrumbs.map((item, index) => <span key={`${item.label}-${index}`}>{index ? <i aria-hidden="true">/</i> : null}{item.href ? <Link href={item.href}>{item.label}</Link> : <strong>{item.label}</strong>}</span>)}</nav>
         <span className={styles.author}>{author}</span>
       </div>
-      <div className={styles.hero}>
+      {heroImageAlt ? <div className={styles.semanticHero}><LessonHero title={title} imageSrc={theme.heroImage} imageAlt={heroImageAlt} lang={lang} /></div> : <div className={styles.hero}>
         <div className={styles.heroCopy}><h1>{title}</h1></div>
         <div className={styles.heroVisual} aria-hidden="true" />
-      </div>
+      </div>}
       <div className={styles.actions}>
         <Action action={summaryAction} className={styles.takeHomeJump} icon="summary" />
         <Action action={actions.mcq} className={styles.primaryAction} icon="quiz" />

@@ -1,6 +1,6 @@
 # Qualitätssicherung & Vorkommnisse — source and QA ledger
 
-Status: bounded author draft; independent clinical/legal, translation and browser review pending. No publication approval implied.
+Status: historical p.21–22 scope ledger; the route was later extended to Technik.pdf p.23. See [the p.23 equipment QA ledger](technik-inbetriebnahme-konstanzpruefung-p23.md) for current route coverage, including SSB appointment/qualification and MPE participation. This historical coverage map does not revise the validated p.21–22 science. Independent review remains pending; no publication approval implied.
 
 ## Topic and scope
 
@@ -8,7 +8,7 @@ Status: bounded author draft; independent clinical/legal, translation and browse
 - Authored route: `/technik/qualitaetssicherung-vorkommnisse`.
 - Source: user-provided `Technik.pdf`; PDF pages 21–22 (printed pages 20–21), inspected as text and rendered images.
 - Scope selected from those pages: diagnostic reference levels (DRW), selected significant-event criteria for CT, non-interventional fluoroscopy, and diagnostic/therapeutic interventions, and the response/documentation pathway.
-- PDF pages 23–24 were also inspected. Device commissioning/acceptance/constancy tests and unrecognised pregnancy exposure are excluded from this bounded lesson; their detailed claims need separate current-source review.
+- PDF pages 23–24 were also inspected. At the time this p.21–22 scope was authored, device commissioning/acceptance/constancy tests and unrecognised pregnancy exposure were excluded. The shared route now additionally teaches selected p.23 equipment quality assurance; its current coverage is documented in the linked p.23 ledger. Page 24 pregnancy exposure remains excluded pending a separate current clinical review.
 
 ## Source coverage
 
@@ -16,14 +16,14 @@ Status: bounded author draft; independent clinical/legal, translation and browse
 | --- | --- | --- |
 | Technik.pdf p.21 / printed p.20 | DRW as the 75th percentile for standard examinations; use for QA/optimisation; not patient dose limits | The route teaches that BfS DRW for X-ray examinations use the 75th percentile of nationally collected dose-relevant values and are not individual dose limits. It retains justification and optimisation as separate duties. Verified against BfS methodology reporting and current statutory definitions. |
 | Technik.pdf p.21 / printed p.20 | DFP for projection radiography/fluoroscopy; CTDIvol and DLP for CT | DFP/CTDIvol appear only where needed for selected legal criteria. DLP is not taught in this route; detailed modality dose quantities are deferred to the separate dose-quantities lesson. No numerical DRW table is reproduced. |
-| Technik.pdf p.21 / printed p.20 | Medizinphysik-Expert*innen (MPE): qualification, responsibilities and physical presence | Not taught in this bounded incident-reporting lesson. The PDF distinguishes required employment from continuous physical presence; MPE qualification/assignment requirements belong in a separate current-source lesson and must not be inferred from this route. |
+| Technik.pdf p.21 / printed p.20 | Medizinphysik-Expert*innen (MPE): qualification, responsibilities and physical presence | Not taught within the historical p.21–22 incident-reporting scope. The route was later extended with selected p.23 MPE participation requirements; see the linked p.23 ledger. The PDF distinguishes required employment from continuous physical presence; no universal physical-presence claim is made. |
 | Technik.pdf p.22 / printed p.21 | Incident and significant-incident definitions | Taught as distinct: event/unintended-exposure concept vs legally significant criteria. |
 | Technik.pdf p.22 / printed p.21 | Group approach: individual DRW exceedance and mean of last 20 examinations | Corrected to current Annex 14 I wording and scope: applies to examinations without intervention, excluding conventional projection radiography and dental CBCT. The 20-exam mean must exceed the DRW by more than 100%; this applies once a single examination has exceeded the DRW by 200%. The law's wording is retained without translating it into a derived multiplier. |
 | Technik.pdf p.22 / printed p.21 | Individual CT and non-interventional fluoroscopy values | CT brain CTDIvol >120 mGy; other body CT >80 mGy; non-interventional fluoroscopy total DAP >20,000 cGy·cm², checked against current Annex 14 I.2.a. |
 | Technik.pdf p.22 / printed p.21 | A justified high-dose CT, including a planned protocol above a numerical threshold, is not automatically an incident | Restored narrowly and checked against the Ärztliche Stelle der Bayerischen Landesärztekammer (BLÄK), 04/2025, p.2, and BfS/Winter et al. (2025): under §1(22), an incident requires unintended exposure. Annex 14 thresholds assess significance; they do not by themselves turn a planned, justified exposure performed as specified into an incident. Such protocol and justification should be documented, and the patient informed if deterministic harm is possible. This does not exempt an unintended protocol/setup deviation that crosses a criterion; assess/report as applicable. |
 | Technik.pdf p.22 / printed p.21 | Diagnostic and therapeutic intervention criteria | Diagnostic intervention DAP >20,000 cGy·cm² is presented separately under Annex 14 II.2.a. Therapeutic intervention retains the separate criterion: DAP >50,000 cGy·cm² plus acute or within-21-day grade ≥2 deterministic skin injury under II.3.a. |
 | Technik.pdf p.22 / printed p.21 | Internal recording, reportable and non-reportable categories | Recast to avoid implying events below report thresholds can be ignored. Current §109 requires systematic investigation, recording and 30-year retention. Conventional projection radiography is only described as excluded from the cited Annex 14 I category; no blanket “not reportable” claim is made. |
-| Technik.pdf p.23 / printed p.22 | Device commissioning, acceptance and constancy testing | Inspected and excluded from this lesson. |
+| Technik.pdf p.23 / printed p.22 | Device commissioning, acceptance and constancy testing | This row records the historical p.21–22 scope only. The shared route now contains a bounded p.23 section; see the linked p.23 ledger for current teaching and legal mapping. |
 | Technik.pdf p.24 / printed p.23 | Unrecognised pregnancy and fetal dose counselling | Inspected and excluded; no dose-risk thresholds or counselling guidance were copied. |
 
 ## Current legal verification

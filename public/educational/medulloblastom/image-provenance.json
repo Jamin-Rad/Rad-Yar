@@ -1,0 +1,18 @@
+{
+ "lessonId":"medulloblastom",
+ "asset":"source-mri.png",
+ "sourceFile":"Gehirn.pdf",
+ "pdfPage":44,
+ "printedPage":43,
+ "caseId":"rID10997",
+ "caseUrl":"https://radiopaedia.org/cases/10997",
+ "contributor":null,
+ "contributorStatus":"Not identified in supplied PDF. Original case access attempted via web tool returned internal error; contributor and case-specific rights metadata not inspected. No contributor name inferred.",
+ "authorization":"Project-level user authorization for images from all six supplied PDFs is recorded in docs/lesson-quality/standard.md. This is project authorization, not independent case-specific legal clearance.",
+ "sourceCrop":{"renderDpi":200,"coordinateOrigin":"top-left pixels","left":160,"top":15,"width":1340,"height":550},
+ "panels":{"left":"sagittal T1","middle":"axial FLAIR","right":"axial T1 C+"},
+ "panelOrderEvidence":"Visible red sequence labels on actual PDF44, not extraction order.",
+ "selection":"Location and heterogeneous enhancement. All three original panels, red labels and rID retained. No acquired DWI,ADC,CT or spine images; no inference of observed restriction,hydrocephalus,spinal dissemination,patient age or molecular group.",
+ "inspection":"Author viewed full source page and final crop. Independent image review pending.",
+ "hero":{"asset":"hero.svg","type":"original code-native conceptual schematic","meaning":"1=cerebellar posterior-fossa region with highlighted possible mass;2=fourth-ventricular region anterior to cerebellum,posterior to brainstem","limits":"Not a patient image,not scale anatomy,not proof of origin or obstruction."}
+}

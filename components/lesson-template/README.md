@@ -4,6 +4,8 @@
 
 - `Newsreader` is used for editorial headings; `Inter` is used for UI and body copy.
 - Every lesson supplies its own ambient `backgroundImage`, compact subject-specific `heroImage`, optional `heroImageOpacity`, and palette through the `theme` prop. The ambient image covers the lesson; the subject image is rendered inside and clipped to the title area.
+- Supply translated `heroImageAlt` to render the maintained accessible `LessonHero` with the topic image, title and language. Without this opt-in, existing consumers retain their current decorative CSS hero. No subtitle is introduced.
+- `syncHashNavigation` opts a lesson into location synchronization: a direct/changed hash or history navigation opens the matching chapter, or the independently disclosed summary. Returning to an empty hash selects the first teaching chapter. Unknown/malformed hashes leave the current chapter alone. Event listeners are cleaned up when the section set changes or the shell unmounts; language changes retain the current hash target. Existing consumers without this flag retain their previous behavior.
 - Hero artwork is displayed at 1.5× scale without being clipped by the title row; it may continue behind the action and progress area, whose controls always stay above it. In Persian/RTL it moves to the left, mirrors, and reverses its fade mask so the artwork remains visible while the title keeps clear reading space.
 - The hero action order is Take Home Message, MCQ, then Flashcards. Real lessons provide lesson-specific links; the test page may keep actions inert.
 - Only teaching sections count toward progress. The emphasized Take Home Message is a summary and is excluded from read tracking and the learning-path sidebar.

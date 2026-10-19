@@ -14,6 +14,12 @@
 .tableWrap thead { background:var(--lesson-accent-soft); color:var(--lesson-accent-strong); }
 .tableWrap tbody th { min-width:155px; font-weight:750; }
 .pathFigure { margin:0; padding:1rem; border:1px solid var(--line); border-radius:16px; background:var(--surface-soft); }
+.qaFigure { margin:0; padding:1rem; border:1px solid var(--line); border-radius:16px; background:var(--surface-soft); }
+.qaFigure ol { margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.65rem; }
+.qaFigure li { min-height:155px; display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; gap:.65rem; padding:.9rem; border:1px solid color-mix(in srgb,var(--lesson-accent) 40%,var(--line)); border-radius:13px; background:var(--bg-card); }
+.qaFigure li span { width:1.8rem; height:1.8rem; display:grid; place-items:center; flex:none; border-radius:50%; color:#fff; background:var(--lesson-accent-strong); font-weight:800; }
+.qaFigure li strong { font-size:.88rem; line-height:1.5; }
+.qaFigure figcaption { margin-top:.7rem; color:var(--text-muted); font-size:.9rem; line-height:1.6; }
 .pathFigure ol { margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.7rem; }
 .pathFigure li { min-height:110px; display:flex; flex-direction:column; gap:.55rem; align-items:flex-start; justify-content:center; padding:.9rem; border:1px solid color-mix(in srgb,var(--lesson-accent) 35%,var(--line)); border-radius:13px; background:var(--bg-card); }
 .pathFigure li span { width:1.7rem; height:1.7rem; border-radius:50%; display:grid; place-items:center; color:#fff; background:var(--lesson-accent-strong); font-weight:800; }
@@ -37,3 +43,5 @@
 .feedback { color:#713f00; background:#fff1d8; }
 @media (max-width:760px) { .cards { grid-template-columns:1fr; } }
 @media (max-width:520px) { .pathFigure { padding:.65rem; } .pathFigure ol,.parallel { grid-template-columns:1fr; } .pathFigure li,.parallelStep { min-height:0; flex-direction:row; align-items:center; } .followUp { align-items:flex-start; } .tableWrap table { min-width:570px; } }
+@media (max-width:760px) { .qaFigure ol { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:520px) { .qaFigure { padding:.65rem; } .qaFigure ol { grid-template-columns:1fr; } .qaFigure li { min-height:0; flex-direction:row; align-items:center; } }
