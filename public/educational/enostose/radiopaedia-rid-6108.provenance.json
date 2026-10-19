@@ -1,0 +1,15 @@
+{
+  "asset": "radiopaedia-rid-6108.jpg",
+  "kind": "radiograph from a case embedded in the user-supplied PDF",
+  "sourcePdf": "MSK.pdf",
+  "pdfPage": 104,
+  "printedPage": 103,
+  "case": "Bone island (small - sacral ala - xray)",
+  "caseId": "rID-6108",
+  "contributor": "Frank Gaillard",
+  "sourceUrl": "https://radiopaedia.org/cases/6108",
+  "license": "CC BY-NC-SA 3.0; Radiopaedia licensing page requires attribution, share-alike, and non-commercial use; online reuse must link to Radiopaedia.org and the rID",
+  "selectionRationale": "The supplied page presents this AP pelvic image as the radiographic example for a bone island; at the embedded resolution it supports coarse localization only, not morphology assessment.",
+  "inspection": "Visually inspected the original PDF page and extracted image. The embedded image is small; do not infer details that are not visible at this resolution.",
+  "userAuthorization": "The user explicitly authorized use of supplied PDF images and approved the Radiopaedia image approach for lesson work. This records the user's authorization, not a broader commercial license; the Radiopaedia CC BY-NC-SA conditions still apply."
+}

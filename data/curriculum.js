@@ -1184,7 +1184,7 @@ export const CURRICULUM = [
           { id: 'knochenzyste-aneurysmatisch', title: { de: 'Aneurysmatische Knochenzyste (AKZ)', en: 'Aneurysmal Bone Cyst (ABC)', fa: 'کیست آنوریسمال استخوان (ABC)' }, group: ['Tumorähnliche Läsionen'], tags: ['Rö','MRT'], diff: 2 },
           { id: 'kortikalisdefekt-nof', title: { de: 'Fibröser Kortikalisdefekt / NOF', en: 'Fibrous Cortical Defect / NOF', fa: 'نقص کورتیکال فیبروزی / NOF' }, group: ['Tumorähnliche Läsionen'], tags: ['Rö'], diff: 1 },
           { id: 'fibroese-dysplasie', title: { de: 'Fibröse Dysplasie', en: 'Fibrous Dysplasia', fa: 'دیسپلازی فیبروزی' }, group: ['Tumorähnliche Läsionen'], tags: ['Rö','MRT'], diff: 2 },
-          { id: 'enostose', title: { de: 'Enostose', en: 'Enostosis (Bone Island)', fa: 'انوستوز' }, group: ['Tumorähnliche Läsionen'], tags: ['Rö'], diff: 1 },
+          { id: 'enostose', title: { de: 'Enostose', en: 'Enostosis (Bone Island)', fa: 'انوستوز' }, group: ['Tumorähnliche Läsionen'], tags: ['Rö'], diff: 1, link: '/msk/tumoren/enostose', ready: true, inProgress: true, updatedAt: '2026-10-19' },
           { id: 'intraossaeres-lipom', title: { de: 'Intraossäres Lipom', en: 'Intraosseous Lipoma', fa: 'لیپوم داخل‌استخوانی' }, group: ['Tumorähnliche Läsionen'], tags: ['MRT'], diff: 2 },
           { id: 'intraossaeres-ganglion', title: { de: 'Intraossäres Ganglion', en: 'Intraosseous Ganglion', fa: 'گانگلیون داخل‌استخوانی' }, group: ['Tumorähnliche Läsionen'], tags: ['MRT'], diff: 2 },
           { id: 'eosinophiles-granulom', title: { de: 'Eosinophiles Granulom (LCH)', en: 'Eosinophilic Granuloma (LCH)', fa: 'گرانولوم ائوزینوفیلیک (LCH)' }, group: ['Tumorähnliche Läsionen'], tags: ['Rö','MRT'], diff: 2 },
