@@ -1,0 +1,15 @@
+{
+  "source": "User-provided MSK.pdf",
+  "pdfPage": 110,
+  "printedPage": 109,
+  "imageIds": ["rID 17146", "rID 10361"],
+  "contributors": [
+    { "imageId": "rID 10361", "name": "A.Prof Frank Gaillard", "status": "credited by an external case index; direct source case not independently verified" },
+    { "imageId": "rID 17146", "name": null, "status": "not identified from the supplied PDF or verified source" }
+  ],
+  "embeddedObjects": ["Image1109", "Image1110"],
+  "extraction": "Original embedded JPEG image streams extracted without resampling or annotation. The images are displayed separately and identified by the PDF's IDs.",
+  "context": "The PDF labels the examples in the simple bone cyst section. No independent case record, projection details, age, or clinical history is supplied; the lesson does not claim those facts.",
+  "reuse": "User states the PDF images are authorized for this project. Preserve this provenance if the assets are moved or reused.",
+  "limitations": ["No independent clinical validation of the example images", "Images alone do not establish diagnosis, activity, or treatment choice"]
+}

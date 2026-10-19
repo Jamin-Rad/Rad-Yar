@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title desc">
+  <title id="title">Schematic simple bone cyst</title>
+  <desc id="desc">Non-diagnostic illustration of a fluid-filled metaphyseal cavity in a long bone, near but separate from the growth plate.</desc>
+  <defs>
+    <linearGradient id="bone" x1="0" x2="1"><stop stop-color="#fff1d4"/><stop offset=".48" stop-color="#d7bd91"/><stop offset="1" stop-color="#fff0cf"/></linearGradient>
+    <linearGradient id="fluid" x1="0" x2="1"><stop stop-color="#8be0d0"/><stop offset="1" stop-color="#3ba8a9"/></linearGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.4"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#071a24" flood-opacity=".28"/></filter>
+  </defs>
+  <rect x="18" y="18" width="684" height="484" rx="38" fill="#142f39"/>
+  <circle cx="568" cy="100" r="94" fill="#214a52" opacity=".65"/>
+  <circle cx="130" cy="418" r="80" fill="#23515a" opacity=".52"/>
+  <g filter="url(#shadow)">
+    <path d="M282 62c-28 0-52 18-62 44l-18 48c-10 28-10 58 0 86l18 43c11 27 11 57 0 84l-18 48c-10 26 9 55 37 55h142c28 0 47-29 37-55l-18-48c-11-27-11-57 0-84l18-43c10-28 10-58 0-86l-18-48c-10-26-34-44-62-44z" fill="url(#bone)" stroke="#fff1d4" stroke-width="8"/>
+    <path d="M288 77c-20 0-38 13-45 32l-16 45c-9 25-9 51 0 76l15 39c13 33 13 69 0 102l-15 41c-7 18 6 38 26 38h114c20 0 33-20 26-38l-15-41c-13-33-13-69 0-102l15-39c9-25 9-51 0-76l-16-45c-7-19-25-32-45-32z" fill="#f9f1df" stroke="#bba681" stroke-width="5"/>
+    <path d="M273 186c20-16 63-22 90-8 14 7 21 25 20 44l-3 81c-1 25-13 44-34 50-25 8-55 4-73-7-11-7-17-22-16-39l2-83c1-17 5-30 14-38z" fill="url(#fluid)" stroke="#267879" stroke-width="6"/>
+    <path d="M275 196c19-12 57-16 84-5" fill="none" stroke="#d6fff2" stroke-width="7" stroke-linecap="round" opacity=".78"/>
+    <path d="M253 139h142" stroke="#d8975d" stroke-width="9" stroke-dasharray="8 9"/>
+    <path d="M250 141h-46m191 0h46" stroke="#efbf83" stroke-width="3"/>
+    <path d="M405 250h112" stroke="#72d2c0" stroke-width="3"/>
+  </g>
+</svg>

@@ -1,0 +1,71 @@
+{
+  "reuse_basis": "User explicitly authorized use of figures contained in the supplied PDFs. Original contributor/licence metadata is not available in the source PDF.",
+  "assets": [
+    {
+      "path": "/educational/intraosseous-lipoma/pdf-p117-rID20493.jpg",
+      "source": "user-provided MSK.pdf",
+      "pdf_page": 117,
+      "printed_page": 116,
+      "source_record_id": "20493",
+      "sha256": "1ff4129f8ba8946b14259ec496ea82d4e43fdc120a96d95d35fe96122ebd4405",
+      "bytes": 33674,
+      "extraction": "original embedded JPEG extracted from PDF; bytes retained without re-encoding",
+      "note": "calcaneal radiograph; no feature labels added"
+    },
+    {
+      "path": "/educational/intraosseous-lipoma/pdf-p118-rID210151-mri-1.jpg",
+      "source": "user-provided MSK.pdf",
+      "pdf_page": 118,
+      "printed_page": 117,
+      "source_record_id": "210151",
+      "sha256": "6309d9b238d58c005275f4d525c2b3079dd1399e90213f5d9582eaeaa915012d",
+      "bytes": 34612,
+      "extraction": "original embedded JPEG extracted from PDF; bytes retained without re-encoding",
+      "note": "source annotation: fatty component"
+    },
+    {
+      "path": "/educational/intraosseous-lipoma/pdf-p118-rID210151-mri-2.jpg",
+      "source": "user-provided MSK.pdf",
+      "pdf_page": 118,
+      "printed_page": 117,
+      "source_record_id": "210151",
+      "sha256": "6d9d7e563d4f37f4f2dd224da0c5e680ec048071eea0b3d799bf3b15f89e4d54",
+      "bytes": 35670,
+      "extraction": "original embedded JPEG extracted from PDF; bytes retained without re-encoding",
+      "note": "source annotation: well defined lesion"
+    },
+    {
+      "path": "/educational/intraosseous-lipoma/pdf-p118-rID210151-mri-3.jpg",
+      "source": "user-provided MSK.pdf",
+      "pdf_page": 118,
+      "printed_page": 117,
+      "source_record_id": "210151",
+      "sha256": "5cae2c99267a16a84380cc41e1626b325ea3b033715161c15fa496787761ddbd",
+      "bytes": 36468,
+      "extraction": "original embedded JPEG extracted from PDF; bytes retained without re-encoding",
+      "note": "source annotation: fibrofatty peripheral rim"
+    },
+    {
+      "path": "/educational/intraosseous-lipoma/pdf-p118-rID210151-mri-4.jpg",
+      "source": "user-provided MSK.pdf",
+      "pdf_page": 118,
+      "printed_page": 117,
+      "source_record_id": "210151",
+      "sha256": "6a51b004bc0c3ea9be1884af70fb5c7c422d42161c6a45bc622f421235e25e8a",
+      "bytes": 25990,
+      "extraction": "original embedded JPEG extracted from PDF; bytes retained without re-encoding",
+      "note": "source annotation: signal suppression"
+    },
+    {
+      "path": "/educational/intraosseous-lipoma/pdf-p118-rID210151-mri-5.jpg",
+      "source": "user-provided MSK.pdf",
+      "pdf_page": 118,
+      "printed_page": 117,
+      "source_record_id": "210151",
+      "sha256": "01e76d7f3ab16dc6d037420b7b6e7bcaf99d7cec3dc777d567ab6053b02618b2",
+      "bytes": 27952,
+      "extraction": "original embedded JPEG extracted from PDF; bytes retained without re-encoding",
+      "note": "source annotation: central fluid filled cavity"
+    }
+  ]
+}

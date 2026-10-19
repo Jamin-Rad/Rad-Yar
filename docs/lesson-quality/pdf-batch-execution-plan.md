@@ -52,6 +52,8 @@
 | AE (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.100–101: Primäres Knochenlymphom، ID `knochenlymphom`, Route `/msk/tumoren/knochenlymphom` | بازبینی مستقل و corrective delta PASS؛ ترتیب برچسب MRI و ترجمهٔ فارسی اصلاح شد؛ آزمون author-side route/assets PASS | مرورگر واقعی و تأیید بالینی باز؛ بازبین مستقل در محیط خود نتوانست HTTP SSR را تأیید کند |
 | AF (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.107–108: NOF/FCD، ID `kortikalisdefekt-nof`, Route `/msk/tumoren/nicht-ossifizierendes-fibrom` | بازبینی مستقل و delta PASS؛ قیود اندازه و خطر شکستگی با احتیاط بیان شد؛ SSR سه‌زبانه PASS | مرورگر و تأیید بالینی باز |
 | AG (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.112–113: ABC/AKZ، ID `knochenzyste-aneurysmatisch`, Route `/msk/tumoren/aneurysmal-bone-cyst` | بازبینی مستقل و delta PASS؛ USP6 و افتراق استئوسارکوم تلانژکتاتیک با منابع primär/Review اصلاح شد؛ DE/EN/FA و آزمون route/RTL/assets پاس | مرورگر و تأیید بالینی باز |
+| AH (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.109–111: SBC، ID `knochenzyste-simple`, Route `/msk/tumoren/einfache-knochenzyste` | بازبینی مستقل محتوا و delta سؤال PASS؛ واژگان و رابطهٔ active/latent به PDF محدود؛ SSR سه‌زبانه PASS | مرورگر و تأیید بالینی باز |
+| AI (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.117–118: intraossäres Lipom، ID `intraossaeres-lipom`, Route `/msk/tumoren/intraossaeres-lipom` | بازبینی مستقل و delta cue تصویر PASS؛ نشانهٔ Cockade قطعی ادعا نشده؛ SSR سه‌زبانه PASS | مرورگر و تأیید بالینی باز |
 
 ## معیار اتمام batch
 
