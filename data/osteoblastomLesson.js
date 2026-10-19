@@ -1,0 +1,72 @@
+const L = (de, en, fa) => ({ de, en, fa })
+
+export const OSTEOBLASTOM_LESSON = {
+  id: 'osteoblastom',
+  title: L('Osteoblastom', 'Osteoblastoma', 'استئوبلاستوما'),
+  hero: '/educational/osteoblastom/hero.svg',
+  sourceNote: L(
+    'Begrenzter Lehrentwurf nach MSK.pdf, PDF S. 80 (Druckseite 79). Das abgebildete CT-Paar wird als Ausschnitt aus dem bereitgestellten PDF wiedergegeben (rID 85114 steht auf der Seite; Beiträger und externe Nutzungsbedingungen sind nicht ausgewiesen). Das ergänzende Schema ist nichtdiagnostisch. Die >2-cm-Angabe wird als Vereinfachung der Quelle erläutert, nicht als alleiniger Beweis oder starre biologische Grenze.',
+    'Bounded teaching draft based on MSK.pdf, PDF p. 80 (printed p. 79). The CT pair is reproduced as a crop from the supplied PDF (rID 85114 appears on the page; contributor and external reuse terms are not stated). The accompanying schematic is non-diagnostic. The >2 cm statement is presented as the source’s simplifying distinction, not as stand-alone proof or an absolute biological boundary.',
+    'پیش‌نویس آموزشی محدود بر اساس MSK.pdf، صفحهٔ PDF ۸۰ (صفحهٔ چاپی ۷۹). زوج تصویر CT به‌صورت برش از PDF ارائه‌شده بازنشر شده است (rID 85114 روی صفحه آمده، اما نام مشارکت‌کننده و شرایط بازنشر بیرونی مشخص نیست). شماتیک همراه غیرتشخیصی است. عدد بیش از ۲ سانتی‌متر به‌عنوان تمایز ساده‌شدهٔ منبع ارائه می‌شود، نه اثبات مستقل یا مرز زیستی مطلق.'
+  ),
+  sections: [
+    {
+      id: 'profile', icon: 'clinical',
+      title: L('Was ist das typische Profil?', 'What is the typical profile?', 'الگوی تیپیک چیست؟'),
+      lead: L('Das Osteoblastom wächst gutartig, kann den Knochen vor Ort aber aggressiv ausdehnen. Die PDF stellt es dem kleineren Osteoidosteom gegenüber.', 'Osteoblastoma is benign but can expand aggressively at the local site. The PDF contrasts it with the smaller osteoid osteoma.', 'استئوبلاستوما خوش‌خیم است، اما می‌تواند در محل به‌صورت تهاجمی گسترش یابد. PDF آن را با استئوئید استئومای کوچک‌تر مقایسه می‌کند.'),
+      rows: [
+        [L('Größe und Abgrenzung', 'Size and distinction', 'اندازه و افتراق'), L('Die Quelle nennt >2 cm als definierendes Unterscheidungsmerkmal zum Osteoidosteom. Die Größe ist ein Hinweis im Gesamtmuster, kein alleiniger histologischer Nachweis.', 'The source gives >2 cm as the defining distinction from osteoid osteoma. Size is one clue in the overall pattern, not histological proof by itself.', 'منبع اندازهٔ بیش از ۲ سانتی‌متر را ویژگی افتراقی تعریف‌کننده از استئوئید استئوما می‌داند. اندازه سرنخی در الگوی کلی است، نه اثبات بافت‌شناختی به‌تنهایی.')],
+        [L('Alter und Geschlecht', 'Age and sex', 'سن و جنس'), L('Typischerweise 10–30 Jahre; Männer häufiger als Frauen.', 'Typically age 10–30 years; more common in males than females.', 'معمولاً در ۱۰ تا ۳۰ سالگی؛ در مردان شایع‌تر از زنان.')],
+        [L('Lokalisation', 'Location', 'محل'), L('Laut PDF etwa 40 % an der Wirbelsäule, besonders an den Hinterelementen; sonst auch in langen Röhrenknochen.', 'The PDF reports about 40% in the spine, especially the posterior elements; long bones are another site.', 'طبق PDF حدود ۴۰٪ در ستون مهره‌ها، به‌ویژه عناصر خلفی، و بقیه نیز در استخوان‌های بلند دیده می‌شود.')],
+        [L('Schmerz', 'Pain', 'درد'), L('Meist chronisch, dumpf und lokalisiert. Anders als beim typischen Osteoidosteom meist kein Nachtschmerz und keine klassische Besserung durch Salicylate; „meist“ lässt Ausnahmen offen.', 'Usually chronic, dull and localized. Unlike typical osteoid osteoma, there is usually no night pain or classic relief with salicylates; “usually” allows exceptions.', 'درد معمولاً مزمن، مبهم و موضعی است. برخلاف الگوی تیپیک استئوئید استئوما، اغلب درد شبانه یا تسکین کلاسیک با سالیسیلات وجود ندارد؛ «اغلب» استثنا را منتفی نمی‌کند.')],
+      ],
+      note: L('Das Größenkriterium hilft beim Vergleich mit Osteoidosteom; weder Größe noch Schmerzverhalten bestätigen die Diagnose allein.', 'Size helps distinguish it from osteoid osteoma; neither size nor pain behaviour confirms the diagnosis on its own.', 'اندازه در افتراق از استئوئید استئوما کمک می‌کند؛ اندازه یا الگوی درد به‌تنهایی تشخیص را قطعی نمی‌کند.'),
+    },
+    {
+      id: 'imaging', icon: 'imaging',
+      title: L('Welche Bildzeichen zusammenpassen?', 'Which imaging findings fit together?', 'کدام یافته‌های تصویربرداری با هم سازگارند؟'),
+      lead: L('Röntgen und CT beschreiben die Läsion selbst; das MRT zeigt zusätzlich die oft ausgedehnte Reaktion im Umfeld.', 'Radiographs and CT characterize the lesion itself; MRI also shows the often extensive surrounding reaction.', 'رادیوگرافی و CT خود ضایعه را نشان می‌دهند؛ MRI واکنش اغلب گستردهٔ اطراف را نیز آشکار می‌کند.'),
+      rows: [
+        [L('Röntgen / CT', 'Radiograph / CT', 'رادیوگرافی / CT'), L('Gut umschriebene osteolytische Läsion, Matrixverkalkung variabel, oft dünner reaktiver Knochenrand. Expansion ist möglich; eine echte Periostreaktion ist laut PDF selten, außer bei Fraktur.', 'Well-circumscribed osteolytic lesion, variable matrix mineralization, often a thin reactive bony rim. Expansion may occur; a true periosteal reaction is uncommon in the PDF description except with fracture.', 'ضایعهٔ استئولیتیک با حدود مشخص، کلسیفیکاسیون ماتریکس متغیر و اغلب حاشیهٔ نازک استخوان واکنشی. اتساع ممکن است؛ واکنش واقعی پریوست طبق PDF نادر است، مگر در شکستگی.')],
+        [L('MRT: Läsion', 'MRI: lesion', 'MRI: خود ضایعه'), L('T1 hypointens; T2 hyperintens, mit variablem Signal je nach Verkalkungsgrad.', 'T1 hypointense; T2 hyperintense, with signal varying by mineralization.', 'در T1 هیپوسیگنال و در T2 هایپرسیگنال؛ سیگنال با میزان کلسیفیکاسیون تغییر می‌کند.')],
+        [L('MRT: Umfeld', 'MRI: surroundings', 'MRI: بافت اطراف'), L('Begleitendes Knochenmark- und Weichteilödem kann ausgeprägt sein („Flare-Phänomen“) und den Tumor aggressiver erscheinen lassen, als er ist.', 'Associated marrow and soft-tissue oedema may be extensive (“flare phenomenon”) and make the lesion appear more aggressive than it is.', 'ادم همراه مغز استخوان و بافت نرم ممکن است گسترده باشد («پدیدهٔ flare») و ضایعه را تهاجمی‌تر از واقع نشان دهد.')],
+      ],
+      image: '/educational/osteoblastom/pdf-case-p80.jpg',
+      imageAlt: L('Zwei CT-Schnitte der Wirbelsäule aus der Nutzer-PDF, auf der Seite als Osteoblastom bezeichnet; der Ausschnitt allein ist keine unabhängige Bestätigung.', 'Two spinal CT views from the supplied PDF, labelled osteoblastoma on the page; the crop alone is not independent confirmation.', 'دو برش CT از ستون مهره‌ها در PDF کاربر که در صفحه به‌عنوان استئوبلاستوما نام‌گذاری شده‌اند؛ این تصویر به‌تنهایی تأیید مستقل نیست.'),
+      imageCaption: L('MSK.pdf, S. 80, rID 85114. Die beiden gezeigten Ebenen illustrieren die Wirbelsäulenlokalisation; Sequenz- oder Fallangaben über den Seitentext hinaus werden nicht ergänzt.', 'MSK.pdf, p. 80, rID 85114. The two displayed planes illustrate the spinal location; no sequence or case details beyond the page text are inferred.', 'MSK.pdf، صفحهٔ ۸۰، rID 85114. دو برش، محل ضایعه در ستون مهره‌ها را نشان می‌دهند؛ اطلاعات توالی یا مورد فراتر از متن صفحه استنباط نشده است.'),
+      note: L('Ein ausgeprägtes MRT-Ödem ist eine Umfeldreaktion und darf nicht mit einem eigenständigen Beweis für Malignität gleichgesetzt werden.', 'Marked MRI oedema is a surrounding reaction and must not be treated as independent proof of malignancy.', 'ادم شدید MRI واکنش بافت اطراف است و نباید به‌عنوان اثبات مستقل بدخیمی تلقی شود.'),
+    },
+    {
+      id: 'compare', icon: 'differential',
+      title: L('Wie grenzt die PDF zum Osteoidosteom ab?', 'How does the PDF distinguish it from osteoid osteoma?', 'PDF چگونه آن را از استئوئید استئوما جدا می‌کند؟'),
+      lead: L('Die Quelle verwendet ein Merkmalsbündel. Einzelne Merkmale überlappen und sollen nicht als starre Ausschlussregeln gelesen werden.', 'The source uses a cluster of features. Individual findings can overlap and should not be read as rigid exclusion rules.', 'منبع از مجموعه‌ای از ویژگی‌ها استفاده می‌کند. هر ویژگی می‌تواند همپوشانی داشته باشد و نباید به‌صورت قاعدهٔ قطعی رد تشخیص خوانده شود.'),
+      rows: [
+        [L('Osteoblastom laut S. 80', 'Osteoblastoma per p. 80', 'استئوبلاستوما طبق صفحهٔ ۸۰'), L('Typisch >2 cm, expansiv möglich, dumpfer chronischer Schmerz ohne klassisches Salicylat-Ansprechen; MRT-Ödem kann ausgeprägt sein.', 'Typically >2 cm, may expand, dull chronic pain without classic salicylate response; MRI oedema may be extensive.', 'معمولاً بیش از ۲ سانتی‌متر، احتمال اتساع، درد مبهم مزمن بدون پاسخ کلاسیک به سالیسیلات؛ ادم MRI ممکن است شدید باشد.')],
+        [L('Osteoidosteom: PDF S. 79', 'Osteoid osteoma: PDF p. 79', 'استئوئید استئوما: صفحهٔ ۷۹ PDF'), L('Kleiner Nidus und im typischen Muster nächtlicher Schmerz mit promptem Salicylat-Ansprechen; Details siehe eigene Lektion.', 'Small nidus and, in the typical pattern, night pain with prompt salicylate relief; see the separate lesson for details.', 'نیدوس کوچک و در الگوی تیپیک درد شبانه با تسکین سریع توسط سالیسیلات؛ جزئیات در درس جداگانه آمده است.')],
+      ],
+      note: L('Die >2-cm-Schwelle stammt aus der Nutzer-PDF. Fachliteratur nutzt Größe ebenfalls als Differenzialhinweis, nennt aber teils abweichende Schwellen; deshalb keine harte biologische Trennlinie.', 'The >2 cm threshold comes from the supplied PDF. Literature also uses size as a differential clue but reports differing cut-offs, so this is not a hard biological boundary.', 'آستانهٔ بیش از ۲ سانتی‌متر از PDF کاربر آمده است. منابع علمی نیز اندازه را سرنخ افتراقی می‌دانند، اما گاهی آستانه‌های متفاوتی دارند؛ پس این مرز زیستی قطعی نیست.'),
+    },
+  ],
+  check: {
+    title: L('Die MRT-Reaktion richtig einordnen', 'Interpret the MRI reaction', 'واکنش MRI را درست تفسیر کن'),
+    prompt: L('Bei einer begrenzten, expansiven osteolytischen Läsion zeigt das MRT ausgeprägtes Knochenmark- und Weichteilödem. Welche Schlussfolgerung entspricht der PDF am besten?', 'MRI shows marked marrow and soft-tissue oedema around a well-circumscribed expansile osteolytic lesion. Which conclusion best matches the PDF?', 'MRI پیرامون ضایعهٔ استئولیتیک با حدود مشخص و گسترش‌پذیر، ادم شدید مغز استخوان و بافت نرم نشان می‌دهد. کدام نتیجه با PDF سازگارتر است؟'),
+    options: [
+      L('Das Flare-Phänomen kann die Läsion aggressiver erscheinen lassen; die Reaktion allein beweist keine Malignität.', 'The flare phenomenon can make the lesion appear more aggressive; the reaction alone does not prove malignancy.', 'پدیدهٔ flare می‌تواند ضایعه را تهاجمی‌تر نشان دهد؛ واکنش به‌تنهایی بدخیمی را ثابت نمی‌کند.'),
+      L('Das ausgeprägte Ödem ist als extraossäre Tumorausdehnung zu werten und spricht deshalb für eine hochgradige Malignität.', 'The marked oedema should be interpreted as extraosseous tumour extension and therefore suggests high-grade malignancy.', 'ادم شدید را باید گسترش تومور به خارج استخوان دانست؛ بنابراین به نفع بدخیمی درجه‌بالاست.'),
+      L('Das ausgeprägte Ödem macht ein Osteoidosteom wahrscheinlicher; deshalb sollte die expansive Läsion nicht als Osteoblastom eingeordnet werden.', 'The marked oedema makes osteoid osteoma more likely; therefore, the expansile lesion should not be classified as osteoblastoma.', 'ادم شدید احتمال استئوئید استئوما را بیشتر می‌کند؛ بنابراین ضایعهٔ گسترش‌پذیر را نباید استئوبلاستوما دانست.'),
+    ],
+    answer: 0,
+    explanation: L('Richtig: Die PDF beschreibt das ausgeprägte Knochenmark- und Weichteilödem als mögliches Flare-Phänomen, das die Läsion aggressiver wirken lässt. Die Bildreaktion muss zusammen mit dem klar begrenzten expansiven Knochenherd betrachtet werden.', 'Correct: the PDF describes marked marrow and soft-tissue oedema as a possible flare phenomenon that makes the lesion look more aggressive. Interpret the reaction together with the circumscribed expansile bone lesion.', 'درست است: PDF ادم شدید مغز استخوان و بافت نرم را پدیدهٔ احتمالی flare می‌داند که ضایعه را تهاجمی‌تر نشان می‌دهد. واکنش را باید همراه با ضایعهٔ استخوانی دارای حدود مشخص و اتساع‌پذیر ارزیابی کرد.'),
+    retry: L('Trenne die Läsion selbst von der Reaktion im umgebenden Knochenmark und Weichteil.', 'Separate the lesion itself from the reaction in surrounding marrow and soft tissue.', 'خود ضایعه را از واکنش مغز استخوان و بافت نرم اطراف جدا کن.'),
+  },
+  summary: [
+    L('Osteoblastom: lokal aggressiv, meist 10–30 Jahre, häufig an den spinalen Hinterelementen.', 'Osteoblastoma: locally aggressive, usually age 10–30, often in spinal posterior elements.', 'استئوبلاستوما: تهاجمی موضعی، معمولاً ۱۰ تا ۳۰ سال، اغلب در عناصر خلفی مهره‌ها.'),
+    L('Größe >2 cm ist die PDF-Abgrenzung zum Osteoidosteom, kein alleiniger Diagnosebeweis.', '>2 cm is the PDF distinction from osteoid osteoma, not diagnostic proof by itself.', 'اندازهٔ بیش از ۲ سانتی‌متر افتراق PDF از استئوئید استئوماست، نه اثبات تشخیص.'),
+    L('MRT-Ödem kann durch das Flare-Phänomen alarmierend wirken; Läsion und Umfeld getrennt beschreiben.', 'MRI oedema may look alarming due to the flare phenomenon; describe lesion and surroundings separately.', 'ادم MRI در پدیدهٔ flare ممکن است نگران‌کننده به‌نظر برسد؛ ضایعه و بافت اطراف را جداگانه توصیف کن.'),
+  ],
+  references: [
+    { tag: 'MSK.pdf · p. 80', title: L('Nutzerquelle: Osteoblastom', 'User source: osteoblastoma', 'منبع کاربر: استئوبلاستوما'), citation: L('PDF S. 80; Druck S. 79; rID 85114. Bildmaterial gemäß ausdrücklicher Nutzerfreigabe für PDF-Abbildungen.', 'PDF p. 80; printed p. 79; rID 85114. Figure used under the user’s explicit permission for PDF images.', 'صفحهٔ PDF ۸۰؛ صفحهٔ چاپی ۷۹؛ rID 85114. تصویر طبق اجازهٔ صریح کاربر برای استفاده از تصاویر PDF.') },
+    { tag: 'Radiology · 1994', title: L('Unterscheidung benigner knochenbildender Läsionen', 'Differentiating benign bone-forming lesions', 'افتراق ضایعات خوش‌خیم استخوان‌ساز'), href: 'https://pubmed.ncbi.nlm.nih.gov/8272884/', citation: 'Radiology. 1994;190(1):227–235. DOI: 10.1148/radiology.190.1.8272884.' },
+    { tag: 'Skeletal Radiology · 2020', title: L('WHO-Klassifikation knochenbildender Tumoren', 'WHO classification of bone-forming tumours', 'طبقه‌بندی WHO تومورهای استخوان‌ساز'), href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7509892/', citation: L('Tumour classification review; locally aggressive osteoblastoma is distinguished from benign osteoid osteoma and malignant osteosarcoma.', 'Tumour classification review; locally aggressive osteoblastoma is distinguished from benign osteoid osteoma and malignant osteosarcoma.', 'مرور طبقه‌بندی تومورها؛ استئوبلاستومای تهاجمی موضعی از استئوئید استئومای خوش‌خیم و استئوسارکوم بدخیم جدا شده است.') },
+  ],
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Osteoblastoma concept schematic</title>
+  <desc id="desc">Non-diagnostic drawing of an expansile, circumscribed bone lesion with a thin reactive rim and surrounding oedema.</desc>
+  <rect width="640" height="420" rx="28" fill="#17332f"/>
+  <path d="M112 82c68-36 150-36 218 0v256c-68 36-150 36-218 0z" fill="#e9d7b6" stroke="#fff1d5" stroke-width="8"/>
+  <path d="M145 106c52-24 108-24 160 0v208c-52 24-108 24-160 0z" fill="#f7f2e8" stroke="#a18d6d" stroke-width="5"/>
+  <ellipse cx="228" cy="210" rx="62" ry="84" fill="#cf7954" stroke="#794331" stroke-width="6"/>
+  <path d="M178 159c24-23 76-30 103-6M177 261c28 26 78 29 105 3" fill="none" stroke="#e8be74" stroke-width="8" opacity=".9"/>
+  <ellipse cx="228" cy="210" rx="99" ry="124" fill="none" stroke="#67c3b3" stroke-width="3" stroke-dasharray="8 8" opacity=".75"/>
+  <path d="M292 152 416 104" stroke="#f1ca78" stroke-width="3"/><circle cx="292" cy="152" r="5" fill="#f1ca78"/>
+  <path d="M313 236 426 282" stroke="#67c3b3" stroke-width="3"/><circle cx="313" cy="236" r="5" fill="#67c3b3"/>
+  <rect x="407" y="72" width="196" height="64" rx="13" fill="#fff2dc"/><path d="M427 96h18m-9-9v18" stroke="#794331" stroke-width="3"/><path d="M463 96h119" stroke="#794331" stroke-width="3"/>
+  <rect x="416" y="256" width="196" height="64" rx="13" fill="#e4f3ed"/><circle cx="445" cy="288" r="10" fill="none" stroke="#286451" stroke-width="3"/><path d="M445 278v20m-10-10h20" stroke="#286451" stroke-width="2"/><path d="M465 288h120" stroke="#286451" stroke-width="3"/>
+</svg>

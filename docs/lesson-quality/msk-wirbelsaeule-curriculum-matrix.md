@@ -44,7 +44,7 @@ Die PDF-Textlayer-Titel und Abschnittswechsel wurden seitenweise geprüft; Bildi
 |---|---|
 | 73–76 | Radiologische Aggressivitätszeichen, Periostreaktionen, osteoide/chondroide Matrix und Lodwick-Destruktionsmuster |
 | 77–79 | Osteoidosteom — bounded DE/EN/FA lesson route `/msk/tumoren/osteoid-osteom`; source figure used with ambiguous middle-panel modality left unlabeled; independent bounded review and language-delta retest PASS; browser/clinical approval open |
-| 80 | Osteoblastom beginnt |
+| 80 | Osteoblastom — bounded DE/EN/FA route `/msk/tumoren/osteoblastom`; exact curriculum ID connected; source CT pair rID 85114; independent source/content/image/language review and quiz delta PASS; SSR PASS; browser/clinical review pending |
 | 81–83 | Osteosarkom — bounded DE/EN/FA route `/msk/tumoren/osteosarkom`; rID 231551 radiograph + CT crop from PDF p.81 with source-only attribution; independent source/content and image delta review PASS; browser/clinical review open |
 | 84–86 | Osteochondrom — bounded DE/EN/FA route `/msk/tumoren/osteochondrom`; pp. 84–86 (print 83–85) source coverage logged in `osteochondrom-msk-p84-p86.md`; independent review/delta PASS; browser/clinical review open |
 | 87–89 | Enchondrom — bounded DE/EN/FA route `/msk/tumoren/enchondrom`; PDF pp.87–89 (print 86–88); source ledger `enchondrom-msk-p87-p89.md`; Radiopaedia crops from p.88 (rID 91156/41467/33147), MRI sequence/contributor details not inferred; independent review/delta and SSR pass; browser lesson content is sign-in gated; clinician review pending |

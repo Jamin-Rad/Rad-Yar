@@ -1,0 +1,11 @@
+{
+  "asset": "pdf-case-p80.jpg",
+  "sourceFile": "MSK.pdf",
+  "sourcePdfPage": 80,
+  "printedPage": 79,
+  "sourcePageIdentifier": "rID 85114",
+  "sourceContributor": "Not identified on the supplied page",
+  "reuseBasis": "User explicitly authorized use of figures contained in the supplied PDFs.",
+  "transformation": "Crop of the paired spinal CT panels from the lower portion of PDF page 80; no diagnostic overlays added.",
+  "limitations": "No claim of independently verified Radiopaedia contributor identity or external licence terms. The page-level rID is retained as source attribution only."
+}
