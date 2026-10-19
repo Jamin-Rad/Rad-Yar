@@ -1,0 +1,21 @@
+.page { --lesson-accent: #48b5c8; --lesson-accent-strong: #155d70; }
+.page :global(.lessonColumn) { min-width: 0; }
+.page p { line-height: 1.85; }
+.lead { font-size: 1.1rem; font-weight: 600; }
+.diagram { margin: 26px 0; padding: clamp(14px, 3vw, 26px); border: 1px solid var(--line, #d9e3e7); border-radius: 16px; background: var(--paper, #fff); }
+.diagram > figcaption:first-child { margin-bottom: 14px; font-size: 1.02rem; font-weight: 700; }
+.diagram svg { display: block; width: 100%; height: auto; max-height: 340px; }
+.svgLabel { fill: var(--ink, #193842); font-size: 15px; font-family: inherit; }
+.svgSub { fill: #526b73; font-size: 13px; font-family: inherit; }
+.caption { color: var(--body, #49636a); font-size: .92rem; line-height: 1.75; }
+.warning { margin-block: 24px; padding: 18px 20px; border-inline-start: 4px solid #bd7755; background: #fbf3ed; border-radius: 8px; }
+.warning strong { color: #713f2c; }
+.warning p { margin-bottom: 0; }
+.check { margin-block: 20px; padding: clamp(18px, 3vw, 26px); border-radius: 12px; border: 1px solid #39849a; background: #edf7f8; }
+.options { display: grid; gap: 10px; }
+.options button { min-height: 48px; padding: 13px 16px; border: 1px solid var(--line, #d9e3e7); border-radius: 8px; background: var(--paper, #fff); color: var(--ink, #193842); text-align: start; font: inherit; line-height: 1.65; cursor: pointer; }
+.options button[aria-pressed='true'] { border-color: #176b7d; box-shadow: inset 0 0 0 1px #176b7d; }
+.options button:focus-visible { outline: 3px solid #1788a0; outline-offset: 3px; }
+.feedback { padding-top: 12px; font-weight: 600; }
+.page[dir='rtl'] .svgLabel,.page[dir='rtl'] .svgSub { direction: rtl; unicode-bidi: plaintext; }
+@media (max-width: 620px) { .svgLabel { font-size: 13px; } .diagram svg { max-height: 280px; } }
