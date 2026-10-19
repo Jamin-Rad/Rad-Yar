@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title desc">
+  <title id="title">Schematic spine and marrow lesions</title>
+  <desc id="desc">Conceptual illustration of vertebral marrow and several focal bone lesions, not a diagnostic scan.</desc>
+  <defs>
+    <linearGradient id="bone" x1="0" x2="1"><stop stop-color="#f1dfc2"/><stop offset="1" stop-color="#cfb597"/></linearGradient>
+    <radialGradient id="marrow"><stop stop-color="#e59b85"/><stop offset="1" stop-color="#a95155"/></radialGradient>
+  </defs>
+  <rect width="720" height="520" rx="38" fill="#12282c"/>
+  <g opacity=".3" stroke="#70b7b1" fill="none"><path d="M90 72h540M90 448h540M115 90v356M605 90v356" stroke-width="2"/><circle cx="360" cy="260" r="210" stroke-dasharray="5 10"/></g>
+  <g transform="translate(281 40)">
+    <path d="M45 12c-26 0-37 15-34 36l13 16-11 18 10 22-11 22 11 23-10 23 10 22-11 23 10 22-11 22 10 22-10 23 11 22-10 24 12 24 28 14h56l28-14 12-24-10-24 11-22-10-22 10-23-11-22 10-22-11-23 10-22-10-23 11-22-11-22 10-22-11-22 10-22-11-22 11-22-10-22 12-22-14-23c-3-21-17-34-42-34z" fill="url(#bone)" stroke="#fff0d8" stroke-width="8"/>
+    <path d="M48 29c-17 0-21 10-20 22l11 17-10 19 10 23-10 22 10 23-10 22 10 23-10 22 10 22-10 22 10 22-10 22 10 22-10 23 10 22-8 20 9 14h86l10-14-8-20 10-22-10-23 10-22-10-22 10-22-10-22 10-22-10-22 10-23-10-22 10-23-10-22 10-23-10-22 10-23-10-22 10-20-11-16c-1-12-8-20-23-20z" fill="#e5d1b3" stroke="#907f6c" stroke-width="4"/>
+    <g fill="url(#marrow)" stroke="#7d3945" stroke-width="4"><circle cx="77" cy="102" r="13"/><circle cx="124" cy="150" r="10"/><circle cx="82" cy="205" r="16"/><circle cx="126" cy="266" r="12"/><circle cx="76" cy="330" r="10"/><circle cx="124" cy="385" r="15"/></g>
+  </g>
+  <g fill="none" stroke="#f3bd83" stroke-width="3"><path d="M300 150 166 113M425 247l120-37M302 362l-134 45"/><circle cx="300" cy="150" r="22"/><circle cx="425" cy="247" r="24"/><circle cx="302" cy="362" r="19"/></g>
+  <g fill="#9ed5ce"><circle cx="150" cy="107" r="5"/><circle cx="558" cy="208" r="5"/><circle cx="154" cy="411" r="5"/></g>
+</svg>

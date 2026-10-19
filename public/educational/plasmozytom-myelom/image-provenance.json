@@ -1,0 +1,11 @@
+{
+  "lessonId": "plasmozytom-myelom",
+  "source": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+  "authorization": "The user explicitly authorized reuse of images in their supplied PDFs.",
+  "assets": [
+    { "file": "hero.svg", "kind": "original code-native conceptual schematic", "sourcePages": [], "diagnosticImage": false, "attribution": "RadYar original schematic; no patient or third-party image is used." },
+    { "file": "mri-spine-rid-208317.jpg", "kind": "crop from supplied PDF", "pdfPage": 98, "printedPage": 97, "radiopaediaId": "rID 208317", "sequenceLabelsVisible": false, "contributorOrLicense": "Not supplied on the cited PDF page; no additional contributor or external license claim is made." },
+    { "file": "skull-rid-14104.jpg", "kind": "crop from supplied PDF", "pdfPage": 98, "printedPage": 97, "radiopaediaId": "rID 14104", "modalitiesVisuallyIdentified": ["lateral skull radiograph", "axial CT"], "contributorOrLicense": "Not supplied on the cited PDF page; no additional contributor or external license claim is made." },
+    { "file": "extremities-rid-12559-9962.jpg", "kind": "crop from supplied PDF", "pdfPage": 99, "printedPage": 98, "radiopaediaIds": ["rID 12559", "rID 9962"], "contributorOrLicense": "Not supplied on the cited PDF page; no additional contributor or external license claim is made." }
+  ]
+}
