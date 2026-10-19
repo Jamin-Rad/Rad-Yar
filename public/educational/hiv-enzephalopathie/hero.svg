@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 520" role="img" aria-labelledby="title desc">
+  <title id="title">HIV-associated encephalopathy MRI pattern concept</title>
+  <desc id="desc">Concept sketch of bilateral periventricular and deep white matter signal changes with diffuse volume loss; not a diagnostic scan.</desc>
+  <rect width="840" height="520" rx="28" fill="#eef6f6"/>
+  <path d="M420 78c-105-66-266 9-269 169-2 106 67 180 158 181 36 0 69-13 111-35 42 22 75 35 111 35 91-1 160-75 158-181C686 87 525 12 420 78Z" fill="#fff" stroke="#487b83" stroke-width="8"/>
+  <path d="M420 91v289M405 116c-82-33-184 24-184 125 0 73 40 115 96 119M435 116c82-33 184 24 184 125 0 73-40 115-96 119" fill="none" stroke="#9ab6bb" stroke-width="7"/>
+  <path d="M291 197c35-30 71-28 102-10M549 197c-35-30-71-28-102-10M282 235c39-21 72-18 104-4M558 235c-39-21-72-18-104-4M292 274c34-15 63-12 88-2M548 274c-34-15-63-12-88-2" fill="none" stroke="#27aeba" stroke-width="14" stroke-linecap="round" opacity=".78"/>
+  <path d="M338 350c24 13 51 18 82 18s58-5 82-18" fill="none" stroke="#df9b61" stroke-width="7" stroke-dasharray="11 12"/>
+  <text x="420" y="468" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" fill="#31545b">Concept pattern · not diagnostic imaging</text>
+</svg>

@@ -123,7 +123,7 @@ export const CURRICULUM = [
           { id: 'zerebritis-hirnabszess', title: { de: 'Zerebritis und Hirnabszess', en: 'Cerebritis and Brain Abscess', fa: 'سربریت و آبسه مغزی' }, tags: ['MRT','CT'], diff: 2 },
           { id: 'empyem-zns', title: { de: 'Empyem', en: 'Empyema', fa: 'آمپیم' }, tags: ['MRT','CT'], diff: 2 },
           { id: 'ventrikulitis', title: { de: 'Ventrikulitis', en: 'Ventriculitis', fa: 'ونتریکولیت' }, tags: ['MRT'], diff: 2 },
-          { id: 'hiv-enzephalopathie', title: { de: 'HIV-Enzephalopathie', en: 'HIV Encephalopathy', fa: 'آنسفالوپاتی HIV' }, tags: ['MRT'], diff: 3 },
+          { id: 'hiv-enzephalopathie', title: { de: 'HIV-Enzephalopathie', en: 'HIV Encephalopathy', fa: 'آنسفالوپاتی HIV' }, tags: ['MRT'], diff: 3, link: '/gehirn/infektionen/hiv-enzephalopathie', inProgress: true, updatedAt: '2026-10-19' },
           { id: 'herpes-enzephalitis', title: { de: 'Herpes-Enzephalitis', en: 'Herpes Encephalitis', fa: 'آنسفالیت هرپسی' }, tags: ['MRT'], diff: 2 },
           { id: 'neurosarkoidose', title: { de: 'Neurosarkoidose', en: 'Neurosarcoidosis', fa: 'نوروسارکوئیدوز' }, group: ['Granulomatöse Erkrankungen'], tags: ['MRT'], diff: 3 },
           { id: 'tuberkulose-tuberkulom', title: { de: 'Tuberkulose / Tuberkulom', en: 'Tuberculosis / Tuberculoma', fa: 'سل / توبرکولوم' }, group: ['Granulomatöse Erkrankungen'], tags: ['MRT','CT'], diff: 2 },

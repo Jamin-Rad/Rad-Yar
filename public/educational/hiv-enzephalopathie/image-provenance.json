@@ -1,0 +1,24 @@
+{
+  "lesson": "HIV-associated encephalopathy MRI pattern",
+  "assets": [
+    {
+      "path": "/educational/hiv-enzephalopathie/hero.svg",
+      "type": "code-native concept schematic",
+      "purpose": "Explain a possible bilateral periventricular/deep white-matter distribution and volume loss without presenting it as diagnostic evidence.",
+      "review_status": "author-created; scientific and visual review pending"
+    },
+    {
+      "path": "/educational/hiv-enzephalopathie/pdf-case.png",
+      "type": "crop from user-provided teaching PDF",
+      "source": "Gehirn.pdf, PDF page 64; image caption attributes the case to Radiopaedia rID 22069",
+      "original_case_url": "https://doi.org/10.53347/rID-22069",
+      "original_page_access": "The direct case page was not accessible through the current web retrieval environment. Original contributor, study/frame identifier, and current reuse terms are unknown; no claim about those metadata is made.",
+      "reuse_basis": "User authorized reuse of images in the supplied six teaching PDFs and reported prior discussion with Radiopaedia on 2026-10-19. This project authorization is distinct from independent verification of the original case's current terms.",
+      "source_render": { "tool": "Poppler pdftoppm", "dpi": 110, "page": 64, "dimensions_px": [910, 1287] },
+      "crop_box_render_pixels": { "left": 150, "top": 100, "width": 590, "height": 620 },
+      "crop_output_dimensions_px": [590, 620],
+      "crop": "Only the four labeled FLAIR, T1 post-contrast, DWI and ADC panels; surrounding MRS text and page caption are excluded from the crop. Lesson caption preserves PDF page and case attribution. The selected panels do not show the brainstem extent described in the full-page caption.",
+      "review_status": "independent bounded visual review passed; original contributor/study/terms and clinical approval remain unverified"
+    }
+  ]
+}
