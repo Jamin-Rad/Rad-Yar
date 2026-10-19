@@ -6,6 +6,8 @@ const L = (de, en, fa) => ({ de, en, fa })
 // ── LESSON ────────────────────────────────────────────────────────────────────
 
 export const SAB_LESSON = {
+  pdfSourcePages: [15,17], // user PDF page range; coverage still requires content comparison
+
   toc: L('Inhaltsverzeichnis', 'Contents', 'فهرست مطالب'),
   breadcrumbArea: L('Kopf', 'Head', 'سر'),
   breadcrumbCurrent: L(

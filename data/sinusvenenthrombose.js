@@ -3,6 +3,8 @@ const Q = (id, question, options, correct, explanation) => ({ id, question, opti
 const F = (id, category, front, answer, explanation) => ({ id, category, front, answer, explanation })
 
 export const SVT_LESSON = {
+  pdfSourcePages: [39,40], // user PDF page range; coverage still requires content comparison
+
   breadcrumb: L('Sinus- und Hirnvenenthrombose', 'Cerebral venous thrombosis', 'ترومبوز سینوس و وریدهای مغزی'),
   title: L('Sinus- und Hirnvenenthrombose', 'Cerebral Venous Thrombosis', 'ترومبوز سینوس و وریدهای مغزی'),
   definition: L('Venöser Gefäßverschluss mit Kopfschmerz, erhöhtem Hirndruck und nichtterritorialen Infarkten.', 'Venous occlusion causing headache, intracranial hypertension and non-arterial-territory infarction.', 'انسداد وریدی با سردرد، افزایش فشار داخل جمجمه و انفارکت‌های غیرشریانی.'),

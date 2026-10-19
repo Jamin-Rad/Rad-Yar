@@ -1,0 +1,7 @@
+const L = (de, en, fa) => ({ de, en, fa })
+
+export const SOURCE_LESSON_UI = {
+  de: { toc: 'Lernweg', mark: 'Abschnitt als gelesen markieren', read: 'Als gelesen markiert', auth: 'Zum Speichern des Lernfortschritts bitte anmelden.', signIn: 'Anmelden', source: 'Quelle und Umfang', chapterSource: 'Quelle:', breadcrumb: 'Brotkrumennavigation', takeHome: 'Das Wichtigste', overview: 'Übersicht', progress: 'gelesen', continue: 'Weiterlernen', completeLesson: 'Alles als gelesen', lessonCompleted: 'Alles gelesen', open: 'Abschnitt öffnen', close: 'Abschnitt schließen', case: 'Selbstprüfung', sources: 'Quellen' },
+  en: { toc: 'Learning path', mark: 'Mark section as read', read: 'Marked as read', auth: 'Sign in to save learning progress.', signIn: 'Sign in', source: 'Source and scope', chapterSource: 'Source:', breadcrumb: 'Breadcrumb', takeHome: 'Take-home points', overview: 'Overview', progress: 'read', continue: 'Continue', completeLesson: 'Mark all read', lessonCompleted: 'All read', open: 'Open section', close: 'Close section', case: 'Self-check', sources: 'Sources' },
+  fa: { toc: 'مسیر یادگیری', mark: 'علامت‌گذاری بخش به‌عنوان خوانده‌شده', read: 'خوانده‌شده', auth: 'برای ذخیره پیشرفت وارد شوید.', signIn: 'ورود', source: 'منبع و دامنه', chapterSource: 'منبع:', breadcrumb: 'مسیر راهنما', takeHome: 'نکات کلیدی', overview: 'مرور', progress: 'خوانده‌شده', continue: 'ادامه درس', completeLesson: 'علامت‌گذاری همه بخش‌ها', lessonCompleted: 'همه خوانده شد', open: 'باز کردن بخش', close: 'بستن بخش', case: 'خودآزمایی', sources: 'منابع' },
+}

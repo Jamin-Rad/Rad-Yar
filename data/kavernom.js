@@ -3,6 +3,8 @@ const Q = (id, question, options, correct, explanation) => ({ id, question, opti
 const F = (id, category, front, answer, explanation) => ({ id, category, front, answer, explanation })
 
 export const KAVERNOM_LESSON = {
+  pdfSourcePages: [31,32], // user PDF page range; coverage still requires content comparison
+
   breadcrumb: L('Kavernom', 'Cavernoma', 'کاورنوم'),
   title: L('Kavernom', 'Cavernoma', 'کاورنوم'),
   definition: L('Langsam durchströmte Gefäßläsion mit wiederholten Mikroblutungen und typischem Hämosiderinsaum.', 'A slow-flow vascular lesion with recurrent microhaemorrhage and a characteristic haemosiderin rim.', 'ضایعه عروقی کم‌جریان با میکروخونریزی‌های مکرر و حاشیه مشخص هموسیدرین.'),

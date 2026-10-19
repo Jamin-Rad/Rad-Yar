@@ -1,0 +1,131 @@
+# نقشهٔ موضوعی PDFهای Abdomen و Thorax
+
+تاریخ بررسی: ۱۹ اکتبر ۲۰۲۶. این نقشه فقط منبع و ساختار موجود در مخزن را تطبیق می‌دهد؛ تأیید علمی، تکمیل درس یا تأیید انتشار نیست.
+
+## روش و معنی وضعیت‌ها
+
+- بازه‌ها شمارهٔ صفحهٔ خود PDF هستند. شمارهٔ چاپی در اغلب صفحات یک واحد کمتر است.
+- `route دارد` یعنی فایل route درس در مخزن پیدا شده است؛ به معنی پوشش کامل PDF نیست. تا تطبیق جزءبه‌جزء متن درس، وضعیت پوشش `نامشخص` می‌ماند.
+- `curriculum-only` یعنی شناسه در `data/curriculum.js` هست ولی route درس پیدا نشده است.
+- `بدون curriculum` یعنی شناسهٔ دقیق و مرتبط پیدا نشده است. شناسهٔ موضوع مشابه (مثلاً AML کلیه در برابر AML کبد) جایگزین دقیق محسوب نمی‌شود.
+- `نامشخص` یعنی متن/عنوان PDF برای تعیین موضوع یا دامنه کافی نیست.
+- نیاز دیداری: `A` آناتومی/شماتیک، `V` نشان تصویربرداری یا نمودار توضیحی، `C` کیس واقعی، `T` جدول یا الگوریتم، `?` نیازمند مشاهدهٔ کامل صفحه. این‌ها نیاز آموزشی احتمالی‌اند؛ تصویر PDF فقط در صفحاتی که صریحاً در یادداشت آمده‌اند به‌صورت نمونه رندر و بررسی شده است.
+
+## Abdomen.pdf
+
+۹۹ صفحه، A4، زبان آلمانی. متن قابل استخراج است، با تبدیل نمادهای فهرست به glyphهای خصوصی. PDF چند بخش مستقل دارد و نباید به‌عنوان یک درس واحد پردازش شود.
+
+| موضوع در PDF | صفحات PDF | curriculum id دقیق | route و فایل درس موجود | وضعیت در مخزن | نیاز دیداری / یادداشت |
+|---|---:|---|---|---|---|
+| آناتومی کبد و عروق پورت/وریدی | 2–4 | `abdomen-anatomie`, `leber-anatomie`, `gefaesse-anatomie-abdomen` | — | curriculum-only؛ جزئیات متن صفحات 2–3 نامشخص | A؛ صفحات 2–3 کم‌متن/احتمالاً شکل‌محور، مشاهدهٔ کامل لازم |
+| کیست سادهٔ کبد | 5 | `leberzyste` | `/abdomen/leber/zystische-laesionen` — `app/abdomen/leber/zystische-laesionen/page.js` | authored؛ پوشش منبعی 5–7؛ بدون رجیستری curriculum | V؛ US/CT/MRI، بدون استفاده از تصاویر کیس |
+| کیست هیداتید/اکینوکوک | 6–7 | شناسهٔ دقیق ندارد؛ نزدیک‌ترین شناسه `leberzyste` است | همان route بالا | authored؛ منبع تصویری 6–7 دیداری بررسی شد؛ طبقه‌بندی درمانی کامل نیست | C/V؛ دخترکیست، غشای جداشده و عوارض؛ از تصویر به‌تنهایی تشخیص قطعی نمی‌شود |
+| همانژیوم تیپیک کبد | 8–9 | `haemangiom` | `/abdomen/leber/haemangiom` — `app/abdomen/leber/haemangiom/page.js`, `LessonContent.jsx` | route دارد؛ پوشش PDF نامشخص | C/V؛ صفحهٔ 8 CT چندفازی با مثال و شماتیک iris-blende؛ تصویر دیده شد |
+| همانژیوم آتیپیک و مقایسه با تیپیک | 10 | `haemangiom` | همان route بالا | route دارد؛ پوشش صفحهٔ 10 نامشخص | T/V؛ جدول تیپیک/آتیپیک رندر و دیده شد |
+| AVM کبد | 11 | `avm` | `/abdomen/leber/avm` — `app/abdomen/leber/avm/page.js` | route دارد؛ پوشش PDF نامشخص | V؛ شانت/flow و الگوی دینامیک، در صورت وجود تصاویر منبع |
+| AML کبد | 12–13 | شناسهٔ دقیق کبدی ندارد؛ `angiomyolipom` فقط AML کلیه است | `/abdomen/leber/angiomyolipom` — `app/abdomen/leber/angiomyolipom/page.js` | authored؛ route مستقل کبدی، بدون curriculum دقیق؛ PDF p12–13 و تعارض washout در ledger | C/V؛ ترکیب چربی/عروق/بافت نرم و افتراق HCC؛ قواعد washout متعارض حل‌نشده |
+| FNH و اسکار مرکزی/الگوهای آتیپیک | 14–15 | `fnh` | `/abdomen/leber/fnh` — `app/abdomen/leber/fnh/page.js` | route دارد؛ پوشش PDF نامشخص | C/V؛ T2 scar، hepatobiliary phase و افتراق‌ها |
+| آدنوم هپاتوسلولار و افتراق FNH | 16–18 | `leberadenom`, `fnh` | `/abdomen/leber/fokale-laesionen` — `app/abdomen/leber/fokale-laesionen/page.js`; FNH نیز `/abdomen/leber/fnh` | route focal-lesion موجود و شامل افتراق آدنوم؛ تطبیق جزءبه‌جزء PDF نیازمند audit مستقل | T/V؛ سکانس‌های out-of-phase و hepatobiliary، جدول افتراق |
+| HCC و الگوی تصویربرداری | 19–20 | `hcc` | `/abdomen/leber/hcc` — `app/abdomen/leber/hcc/page.js` | route دارد؛ پوشش PDF نامشخص | C/V؛ wash-in/wash-out و فازها |
+| LI-RADS v2018، دسته‌ها و مدیریت | 20–23 | `li-rads`, `hcc` | route اختصاصی LI-RADS پیدا نشد؛ HCC route بالا موجود است | HCC route دارد؛ LI-RADS curriculum-only | T؛ PDF21 نمودار طبقه‌بندی/الگوریتم رندر و دیده شد؛ صفحات 22–23 مدیریت و درمان؛ نسخه/معیارها نیازمند منبع اولیه |
+| متاستازهای کبدی، هیپو- و هایپروَسکولار | 24–25 | `lebermetastasen` | — | curriculum-only | T/V؛ مقایسهٔ فازهای CT/MR و الگوی enhancement |
+| استئاتوز منتشر و کانونی | 26–27 | `hepatische-steatose` | — | curriculum-only | A/V؛ توزیع، focal sparing و افتراق توده |
+| PSC و MRCP/perlschnur | 28–29 | `psc-pbc` | `/abdomen/leber/psc-mrcp` — `app/abdomen/leber/psc-mrcp/page.js` | authored؛ source-matched در سطح موضوع/صفحات، بدون رجیستری curriculum | C/V؛ MRCP با تنگی/اتساع چندکانونی |
+| تومورهای صفراوی، از جمله gallbladder و Klatskin | 30 | `gallenblasenkarzinom`, `klatskin-tumor`; برای iCCA شناسهٔ `cholangiokarzinom-icca` در بخش کبد | — | curriculum-only؛ محتوای واقعی صفحهٔ 30 نامشخص | ?؛ استخراج صفحه فقط عنوان و متن کوتاه نشان می‌دهد |
+| پانکراتیت حاد، علت‌ها و CT | 31–32 | `akute-pankreatitis` | `/abdomen/pankreas/pankreatitis` — `app/abdomen/pankreas/pankreatitis/page.js` | route دارد؛ پوشش PDF نامشخص | C/V؛ morphology و زمان‌بندی CT |
+| کلکشن‌های اطراف پانکراس برحسب نوع/زمان | 32 | `akute-pankreatitis` | همان route پانکراتیت | route دارد؛ پوشش نامشخص | T؛ جدول تطبیق نوع پانکراتیت، زمان و کلکشن |
+| عوارض عروقی پانکراتیت: pseudoaneurysm و thrombosis | 33 | `akute-pankreatitis` | همان route پانکراتیت | route دارد؛ پوشش نامشخص | C/V؛ CT arterial/venous phase و عوارض |
+| پانکراتیت مزمن، کلسیفیکاسیون و افتراق کارسینوم | 34 | `chronische-pankreatitis` | همان route پانکراتیت | route دارد؛ پوشش نامشخص | T/V؛ CT/MRCP duct signs و افتراق |
+| آدنوکارسینوم مجرایی پانکراس و مرحله‌بندی | 35–37 | `pdac` | `/abdomen/pankreas/pankreaskarzinom` — `app/abdomen/pankreas/pankreaskarzinom/page.js` | authored؛ route و محتوای منبعی در این batch، بدون رجیستری curriculum | C/V؛ CT/MRCP، double-duct، عروق و گزارش |
+| تومور نورواندوکرین پانکراس و افتراق splenule | 38–39 | `pnet` | `/abdomen/pankreas/neuroendokrine-tumoren` — `app/abdomen/pankreas/neuroendokrine-tumoren/page.js` | authored؛ source-matched با caveat ادعای insulinoma PDF، بدون curriculum integration | C/V؛ arterial hyperenhancement و مقایسهٔ طحال نابجا |
+| پسودوسیست و ضایعات کیستیک پانکراس | 40 | `ipmn`, `mcn-pankreas`, `seroeses-zystadenom`; شناسهٔ جدا برای pseudozyste پیدا نشد | `/abdomen/pankreas/zystische-tumoren` — `app/abdomen/pankreas/zystische-tumoren/page.js` | authored؛ p40–42، بدون رجیستری curriculum | T/V؛ کیست واقعی در برابر پسودوسیست |
+| IPMN، خطر بالا و پیگیری | 41–42 | `ipmn` | همان route ضایعات کیستیک پانکراس | authored؛ p40–42، توصیه‌های نسخه‌حساس نیازمند نگهداری منبع | T/V؛ main/branch duct و ویژگی‌های ریسک؛ صفحهٔ 42 رندر و دیده شد |
+| مبحث طحال | 43 | شناسه‌های کلی `milz-anatomie`, `abdomen-milz`; زیرموضوع‌های candidate: `splenomegalie`, `milzinfarkt`, `benigne-milzlaesionen`, `maligne-milzlaesionen` | — | نامشخص؛ استخراج «Milz / Kö…» ناقص است و موضوع را تثبیت نمی‌کند | ?؛ بازبینی کامل صفحه/تصویر لازم |
+| آناتومی کلیه و perirenal stranding | 44 | `niere-anatomie` | `/abdomen/niere/anatomie` — `app/abdomen/niere/anatomie/page.js` | authored؛ ساختار route موجود، بررسی جزءبه‌جزء PDF هنوز لازم | A/V؛ آناتومی و نمونهٔ CT |
+| حالب و تنگی‌های فیزیولوژیک | 45 | `niere-anatomie` | همان route آناتومی کلیه | authored؛ ساختار route موجود، بررسی جزءبه‌جزء PDF هنوز لازم | A؛ شماتیک مسیر حالب |
+| کیست‌های کلیوی و Bosniak | 46 | `nierenzysten` | — | curriculum-only | T/C؛ نمونهٔ CT/MRI برای دسته‌های Bosniak |
+| بیماری کلیهٔ پلی‌کیستیک | 47 | شناسهٔ دقیق در curriculum استخراج‌شده پیدا نشد | — | بدون curriculum دقیق؛ محتوای صفحه نیز ناقص است | ?؛ PDF فقط «polyzystische…» و glyphهای ناقص دارد |
+| RCC | 48 | `nierenzellkarzinom` | `/abdomen/niere/raumforderungen` — `app/abdomen/niere/raumforderungen/page.js` | authored؛ lesion cluster، ادغام curriculum هنوز انجام نشده | C/V؛ enhancement، necrosis و calcification |
+| Onkozytom و افتراق RCC | 49 | `onkozytom-niere` | همان route توده‌های کلیه | authored؛ lesion cluster، عدم قطعیت افتراقی باید حفظ شود | C/V؛ central scar با caveat عدم قطعیت |
+| AML کلیه، شامل fat-poor/chemical shift | 50–51 | `angiomyolipom` | همان route توده‌های کلیه | authored؛ route cluster، PDF page-level matching در ledger | T/V؛ macroscopic fat، opposed-phase و افتراق RCC |
+| Wilms/nephroblastoma | 52 | شناسهٔ دقیق پیدا نشد | — | بدون curriculum/route دقیق | C/V؛ تودهٔ کلیوی کودکان و staging |
+| پیلونفریت و نوع emphysematous | 53–54 | `pyelonephritis` | `/abdomen/niere/pyelonephritis` — `app/abdomen/niere/pyelonephritis/page.js` | authored؛ EAU 2026 cited، بدون رجیستری curriculum | C/V؛ گاز در پارانشیم/اطراف و گسترش Gerota |
+| FMD کلیوی | 55 | `fibromuskulaere-dysplasie` (شناسهٔ عمومی) | `/abdomen/gefaesse/fmd` — `app/abdomen/gefaesse/fmd/page.js` | route دارد، اما p55 فقط عنوان «Fibromuskuläre Dysplasie» و placeholder کوتاه دارد و به‌عنوان شاهد محتوا شمرده نشده؛ درس بر p92 تکیه دارد | p55 به‌تنهایی آموزنده نیست؛ برای شماتیک به ردیف p92 مراجعه شود |
+| آسیب کلیه و fornix rupture/urinoma | 56–57 | `nierentrauma` | `/abdomen/niere/fornixruptur` — `app/abdomen/niere/fornixruptur/page.js` | authored؛ فقط fornix/urinoma در این route پوشش داده شده، تروما کامل نیست | C/V؛ فاز دفعی CT و نشت ادرار |
+| آدرنال incidentaloma | 58 | `nebennieren-inzidentalom` | `/abdomen/nebenniere/raumforderungen` — `app/abdomen/nebenniere/raumforderungen/page.js` | authored؛ route مجموعهٔ توده‌ها، completeness مدیریت نیازمند بازبینی | T؛ الگوریتم characterization/management |
+| آدنوم آدرنال و chemical shift/washout | 59–60 | `nebennierenadenom` | همان route توده‌های آدرنال | authored؛ route شامل الگوی تصویری، ادعاهای cut-off را باید نسخه‌دار خواند | T/V؛ CT washout و MR chemical shift |
+| Myelolipoma آدرنال | 61–62 | `myelolipom` | همان route توده‌های آدرنال | authored؛ cluster، بدون رجیستری curriculum | V؛ چربی ماکروسکوپیک در CT/MR |
+| Pheochromocytoma | 63 | `phaeochromozytom` | همان route توده‌های آدرنال | authored؛ cluster، بررسی ادعاهای مدیریت مستقل لازم | C/V؛ مورفولوژی/vascular enhancement |
+| Neuroblastoma آدرنال | 64 | `neuroblastom-nebenniere` | همان route توده‌های آدرنال | authored؛ cluster، تفکیک از منبع/route تخصصی کودکان لازم | C/V؛ تودهٔ کودک و کلسیفیکاسیون |
+| مری؛ عنوان/افتراق نامشخص | 65 | `oesophaguskarzinom`, `oesophagitis-gerd`, `achalasie` فقط candidate curriculum | — | نامشخص؛ متن استخراج‌شده «Df» است | ?؛ بازبینی صفحه ضروری |
+| تنگی هیپرتروفیک پیلور | 66 | `pylorusstenose` | — | curriculum-only | A/V؛ اندازه‌گیری US اگر در منبع آمده باشد |
+| GIST و CT | 67–68 | `gist` | — | curriculum-only | C/V؛ enhancement شریانی، نکروز و متاستاز |
+| Ileus و انسداد مکانیکی | 69, 71–72 | `ileus-duenndarm` | `/abdomen/gi/ileus-volvulus` — `app/abdomen/gi/ileus-volvulus/page.js` | authored؛ PDF pages 69–78 in scope; clinical claims cited in repair note | T/C/V؛ نقطهٔ گذار و closed loop؛ PDF72 کیس توضیح‌دار |
+| Intussusception | 70 | `ileus-duenndarm` (زیرموضوع) | `/abdomen/gi/ileus-volvulus` | authored؛ وضعیت پوشش این زیربخش باید از route source cross-check شود | C/V؛ target sign در US/CT |
+| ایسکمی مزانتریک/CTA و انسداد عروقی | 73–75 | `mesenteriale-ischaemie` | — | curriculum-only | T/C/V؛ CTA phases و عروق؛ صفحهٔ 75 کیس عروقی نیازمند دیدن برش‌ها |
+| Volvulus سکوم و سیگموئید | 76–78 | `volvulus` | `/abdomen/gi/ileus-volvulus` | authored؛ cluster route، claims pending/limited to source-supported wording | C/V؛ whirl/coffee-bean، محل سکوم و عوارض |
+| Appendicitis و appendicolith | 79–80 | `appendizitis` | `/abdomen/gi/appendizitis` — `app/abdomen/gi/appendizitis/page.js` | authored؛ صفحات 79–80 دیداری بررسی شد؛ رجیستری‌ها به‌روز نشده‌اند | V/T؛ US و CT، عدم رؤیت آپاندیس را منفی تلقی نکنید |
+| Pseudomembranous colitis | 81 | `pmc-kolitis` | — | curriculum-only | C/V؛ الگوی دیواره/accordion در CT در صورت حضور |
+| Colitis ulcerosa | 82 | `colitis-ulcerosa` | — | curriculum-only | V؛ الگوی توزیع و عوارض |
+| Divertikulose/divertikulitis و درجه‌بندی | 83–85 | `divertikulitis` | `/abdomen/gi/divertikulitis` — `app/abdomen/gi/divertikulitis/page.js` | route دارد؛ پوشش PDF نامشخص | T/C/V؛ CT staging و عوارض |
+| خونریزی تحتانی GI و CTA/DSA | 86–87 | `untere-gi-blutung` | `/abdomen/gi/untere-gi-blutung` — `app/abdomen/gi/untere-gi-blutung/page.js` | authored؛ صفحات 86–87 بررسی شدند؛ مسیر تصمیم‌گیری درمانی کامل نیست | T/V؛ extravasation فازی، منفی‌بودن CTA خون‌ریزی متناوب را رد نمی‌کند |
+| CRC و MRI staging رکتوم | 88–89 | `kolorektales-karzinom` | `/abdomen/gi/kolorektales-karzinom` — `app/abdomen/gi/kolorektales-karzinom/page.js` | authored؛ صفحات 88–89 دیداری بررسی شد؛ آستانه‌های TNM قدیمی PDF کپی نشده‌اند | T/V؛ CT برای distant disease و MRI برای local rectal staging، با معیارهای نسخه‌دار |
+| لگن زن و مرد؛ محتوای اختصاصی نامشخص | 90–91 | والدهای `becken-f`, `becken-m`; زیرموضوع قابل اثبات نیست | — | نامشخص | ?؛ متن تقریباً خالی، مشاهدهٔ کامل صفحات لازم |
+| FMD عروق شکمی | 92 | `fibromuskulaere-dysplasie` | `/abdomen/gefaesse/fmd` — `app/abdomen/gefaesse/fmd/page.js` | route authored بر مبنای p92 دیداری؛ p55 از evidence خارج است؛ claim CTA/MRA/DSA با اجماع بین‌المللی ۲۰۱۹ تطبیق داده شد؛ review انسانی هنوز لازم | C/V؛ lesson از SVG شماتیک اختصاصی استفاده می‌کند؛ CTA بیمار PDF کپی نشده |
+| فتق؛ نوع دقیق نیازمند دید صفحه | 93–94 | `inguinalhernie`, `femoralhernie`, `umbilikalhernie`, `innere-hernien` (candidateها) | — | curriculum-only؛ نوع دقیق PDF از متن موجود قطعی نیست | C/V؛ محل گردن، انسداد/strangulation |
+| Morbus Ormond/retroperitoneal fibrosis | 95–96 | `morbus-ormond` | — | curriculum-only | C/V؛ encasement عروق و حالب‌ها در CT |
+| Appendicitis epiploica | 97 | `appendicitis-epiploica` | — | curriculum-only | C/V؛ ضایعهٔ چربی پری‌کولونیک/central dot |
+| Mesenteric panniculitis | 98 | `mesenteriale-panniculitis` | — | curriculum-only | C/V؛ fat-ring و pseudocapsule |
+| Peritonealkarzinose/omental cake | 99 | `peritonealkarzinose` | — | curriculum-only | C/V؛ ایمپلنت‌ها، امنتوم و آسیت |
+
+## Thorax.pdf
+
+۵۰ صفحه، A4، زبان آلمانی. متن قابل استخراج است، ولی برخی اسلایدهای عنوانی/محتواهای نموداری متن ناچیز دارند. این PDF نیز چندین درس مستقل را پوشش می‌دهد.
+
+| موضوع در PDF | صفحات PDF | curriculum id دقیق | route و فایل درس موجود | وضعیت در مخزن | نیاز دیداری / یادداشت |
+|---|---:|---|---|---|---|
+| مدیاستن و کمپارتمان‌ها | 2 | `mediastinum-anatomie` | — | curriculum-only؛ محتوای PDF عملاً نامشخص | ?؛ صفحه فقط «Topic» و نماد دارد |
+| قلب/پریکارد، عنوان صفحه | 3 | `herzanatomie`, `perikarderguss`, `konstriktive-perikarditis` (candidateها) | route آموزشی اختصاصی برای همین موضوعات پیدا نشد؛ routeهای کاردیو موجود جدا هستند | نامشخص؛ متن «Sdfs» است | ?؛ صفحهٔ کامل/منبع لازم |
+| عروق بزرگ | 4 | `gefaesse-anatomie-thorax`, `thorax-aorta` | مسیر مرتبط `app/thorax/anatomie/aortenbogen/page.js` برای `aortenbogen`؛ route موضوع کلی PDF پیدا نشد | route جزئی موجود؛ محتوای صفحهٔ PDF نامشخص | ?/A؛ متن استخراج «fghrf» است |
+| لوبول ثانویه/آسینوس/اینترستیتیوم | 5–7 | `lungenanatomie` | — | curriculum-only؛ page 7 متن بسیار کم دارد | A؛ شماتیک lobule/acinus و جایگاه septa |
+| واریانت‌ها: accessory lobes/fissures | 8 | `lungenanatomie` | — | curriculum-only | A/V؛ CT با fissure مشخص |
+| azygos lobe | 9 | `lungenanatomie` | — | curriculum-only | C/V؛ نشانهٔ azygos fissure/vein |
+| pseudoarticulation دندهٔ اول | 10 | `rippenpathologien` | — | curriculum-only | C/V؛ X-ray pitfall با ندول ریه |
+| آتلکتازی/کاهش حجم و علائم ثانویه | 11 | `hrct-dichteanhebung`, `atelektase` | `/thorax/hrct/dichteanhebung` — `app/thorax/hrct/dichteanhebung/page.js` | route HRCT دارد، آتلکتازی curriculum-only بدون route مستقل؛ coverage نامشخص | C/V؛ volume-loss signs |
+| infarct ریه و Hampton hump | 12 | `akute-le` (محتوای همپوشان)، احتمالاً `hrct-dichteanhebung` برای pattern | — | curriculum-only در سطح بیماری؛ mapping دقیق الگوی infarct نامطمئن | C/V؛ wedge opacity و artery CTA |
+| consolidation و افتراق GGO | 13 | `hrct-dichteanhebung` | `/thorax/hrct/dichteanhebung` — `app/thorax/hrct/dichteanhebung/page.js` | route دارد؛ پوشش این PDF نامشخص | C/V؛ air bronchogram و حفظ/محو عروق |
+| تعریف/اندازه ندول و solid/subsolid | 14–15 | `fleischner-kriterien`, `lung-rads` | `/thorax/fleischner-kriterien` — `app/thorax/fleischner-kriterien/page.js` | Fleischner route دارد؛ Lung-RADS curriculum-only | T؛ اندازه‌گیری و جدول توصیه‌ها؛ PDF14 رندر و دیده شد |
+| الگوی reticular/reticulonodular و septa | 16 | `hrct-retikulaer-nodulaer` | `/thorax/hrct/retikulaer-nodulaer` — `app/thorax/hrct/retikulaer-nodulaer/page.js` | route دارد؛ coverage PDF نامشخص | C/V؛ smooth vs irregular septal thickening |
+| ادم ریوی کاردیوژنیک و GGO | 17 | `hrct-dichteanhebung`, `lungenoedem`, `kardiale-dekompensation` | route HRCT افزایش دانسیته موجود؛ بیماری‌ها routeی در این فهرست ندارند | مسیر جزئی موجود؛ پوشش نامشخص | C/V؛ distribution و septa |
+| الگوهای توزیع ندول‌ها: perilymphatic/centrilobular/random | 18–21 | `hrct-retikulaer-nodulaer`, `sarkoidose`, `lch-lunge`, `bronchiolitis`, `tuberkulose` (differentials) | HRCT retikulär/nodulär موجود؛ سارکوئیدوز `/lunge/sarkoidose` — `app/lunge/sarkoidose/page.js` | مسیرهای جزئی موجود؛ بقیه curriculum-only؛ پوشش PDF نامشخص | T/C/V؛ الگوریتم توزیع و CT؛ PDF18 درخت تصمیم و CT case رندر و دیده شد |
+| Tree-in-bud/bronchiolitis/mukoid impaction | 20 | `hrct-retikulaer-nodulaer`, `bronchiolitis` | HRCT retikulär/nodulär موجود | bronchiolitis curriculum-only؛ coverage نامشخص | C/V؛ tree-in-bud واقعی |
+| LCH nodular-to-cystic pattern | 21 | `lch-lunge` | `/thorax/lch-lunge` — `app/thorax/lch-lunge/page.js` | authored؛ یک route موضوعی، منبع p21 | C/V؛ evolution ندول به cyst و توزیع |
+| Honeycombing و mosaic attenuation | 22 | `hrct-architekturmuster` | `/thorax/hrct/architekturmuster` — `app/thorax/hrct/architekturmuster/page.js` | route دارد؛ coverage نامشخص | C/V؛ subpleural honeycomb و mosaic |
+| Crazy paving و alveolar proteinosis | 23 | `hrct-architekturmuster` | همان route معماری HRCT | route دارد؛ coverage نامشخص | C/V؛ ground glass + septal lines |
+| bullae/cysts و emphysema | 24 | `hrct-dichteminderung`, `emphysem-zentrilobulaer`, `emphysem-panlobulaer`, `emphysem-paraseptal`, `emphysem-bulloes` | `/thorax/hrct/dichteminderung` — `app/thorax/hrct/dichteminderung/page.js` | route الگوی کاهش دانسیته دارد؛ دسته‌های بیماری curriculum-only | T/C/V؛ ضخامت دیواره و توزیع cyst/bulla |
+| cavity/cavern و افتراق cyst | 25 | `hrct-dichteminderung`, `lungenabszess`, `tuberkulose`, `aspergillus-lunge` | HRCT کاهش دانسیته route موجود | route جزئی؛ بیماری‌ها curriculum-only؛ coverage نامشخص | T/C/V؛ PDF25 جدول افتراق و CT cavitation رندر و دیده شد |
+| abscess, TB cavity, aspergilloma | 26 | `lungenabszess`, `tuberkulose`, `aspergillus-lunge` | — | curriculum-only | C/V؛ air-fluid level, air-crescent, mobility |
+| عوامل overlay، تصویر ایمپلنت پستان | 27 | `roentgen-thorax-systematik`; برای ایمپلنت `mamma-implantate` در curriculum Mamma | `/thorax/roentgen-thorax-systematik` — `app/thorax/roentgen-thorax-systematik/page.js` | authored؛ مسیر systematik موجود، ایمپلنت فقط در صورت پوشش آموزشی route | C/V؛ فقط در صورت ارتباط واقعی با هدف X-ray |
+| تکنیک و کیفیت X-ray قفسه سینه، PA/AP و بزرگ‌نمایی قلب | 27–28 | `roentgen-thorax-systematik`, `herzgroesse-roentgen` | همان route systematik قفسه سینه | authored؛ route ایجاد شده برای خوشهٔ PDF؛ registry integration جداگانه | A/V؛ مقایسهٔ projection و خطای بزرگ‌نمایی |
+| bronchiectasis, bronchiolitis, COPD (صفحهٔ عنوان/اسلاید) | 29 | `bronchiektasen`, `bronchiolitis`, `copd` | — | curriculum-only؛ متن صفحه کم و نامشخص | ?؛ عنوان‌ها هست، جزئیات متنی استخراج نشده |
+| foreign-body aspiration کودکان و غیرمستقیم signs | 30–31 | `fremdkoerper-atemwege` | `/thorax/fremdkoerperaspiration` — `app/thorax/fremdkoerperaspiration/page.js` | authored؛ source-matched topic; ACR evidence in repair note limits guidance to children | C/V/T؛ inspiration-expiration و decubitus، side-down signs |
+| پنومونی و انواع الگوی تصویری | 32–35 | `bakterielle-pneumonie`, `virale-pneumonie-covid`, `atypische-pneumonie`, `aspergillus-lunge`, `pcp`, `lungenabszess` | `/thorax/pneumonie-muster` — `app/thorax/pneumonie-muster/page.js` | authored؛ pattern overview، pathogen identification not inferred from image alone | C/V/T؛ air bronchogram، tree-in-bud، necrotizing/fungal signs |
+| سل: primary/Ranke، postprimary و miliary | 36–37 | `tuberkulose` | `/thorax/tuberkulose-muster` — `app/thorax/tuberkulose-muster/page.js` | authored؛ source-matched topic; activity/diagnosis caveat in repair note | C/V؛ distribution، calcified complex، miliary nodules |
+| lung nodule/bronchial carcinoma headings | 38 | `fleischner-kriterien`, `lung-rads`, `nsclc`, `sclc` | Fleischner route موجود | curriculum-only به‌جز Fleischner؛ متن صفحه عمدتاً heading/placeholder | ?؛ پوشش واقعی عنوان‌های دیگر از صفحه قابل تعیین نیست |
+| ILD heading | 39 | `uip-ipf`, `nsip`, `cop`, `hypersensitivitaetspneumonitis`, `sarkoidose`, `lam`, `lch-lunge` | `/lunge/sarkoidose/page.js` فقط برای سارکوئیدوز | سارکوئیدوز route دارد؛ بقیه curriculum-only؛ صفحهٔ PDF فقط heading است | ?؛ منبع صفحه 39 برای نگاشت بیشتر کافی نیست |
+| سارکوئیدوز، stages و الگوی HRCT | 40–43 | `sarkoidose` | `/lunge/sarkoidose` — `app/lunge/sarkoidose/page.js` | route دارد؛ coverage PDF نامشخص | C/V/T؛ CT perilymphatic و lymph node map؛ صفحات 41–43 stage table و افتراق |
+| cystic fibrosis | 44 | شناسهٔ دقیق در curriculum پیدا نشد | — | نامشخص؛ فقط heading دیده می‌شود | ?؛ متن/تصویر صفحه استخراج نشده |
+| lung cysts differential | 45 | `hrct-dichteminderung` (الگوی مرتبط؛ شناسهٔ اختصاصی cyst diff پیدا نشد) | `/thorax/hrct/dichteminderung` | route الگوی کاهش دانسیته هست؛ درس اختصاصی نامشخص | ?/T؛ صفحه فقط heading و glyph دارد |
+| pulmonary hypertension: تعریف/WHO/imaging signs | 46–47 | `pulmonale-hypertonie` | — | curriculum-only | T/C/V؛ سایز عروق، RV/LV و septal bowing |
+| pulmonary edema/congestion, cardiogenic vs non-cardiogenic, ARDS | 48–49 | `lungenoedem`, `kardiale-dekompensation`, `ards` | — | curriculum-only؛ درس مستقل در routeهای بررسی‌شده پیدا نشد | T/C/V؛ جدول افتراق PDF49 رندر و دیده شد؛ تصاویر CT/X-ray لازم |
+| Mamma (عنوان فصل) | 50 | شناسه‌های Mamma متعدد (مانند `mamma`, `mamma-anatomie`) | مسیرهای مرتبط در `app/mamma` بررسی نشده در این زیرکار | نامشخص؛ فقط عنوان Mamma دیده شد | ?؛ خارج از دامنهٔ Thorax درس‌های ریوی، باید در نقشهٔ Mamma جدا بررسی شود |
+
+## شواهد فایل‌ها و محدودیت
+
+فهرست curriculum از `data/curriculum.js` خوانده شد؛ فایل‌های route از `app/abdomen`, `app/thorax` و برای سارکوئیدوز از `app/lunge` بررسی شدند. routeها و پوشش محتوایی در این مرحله به‌صورت مستقل سطر‌به‌سطر با کل lesson sourceها سنجیده نشده‌اند، بنابراین «route دارد» را PASS پوشش تلقی نکنید. برای نام‌گذاری بعضی جدول‌ها و معیارها، PDF مرجع پوشش آموزشی است؛ صحت بالینی به‌ویژه آستانه‌ها، معیارهای مدیریت، نسخهٔ راهنما و ادعاهای درمانی باید با منابع اولیه بررسی شود.
+
+صفحه‌های رندر و دیده‌شده در این دور: Abdomen 5–7, 8, 10–11, 21, 42, 79–80, 86–89؛ Thorax 14, 18, 25, 49. رندر و مشاهدهٔ صفحه، صحت علمی همهٔ ادعاها یا تطبیق کامل lesson را تأیید نمی‌کند. صفحه‌های کم‌متن/مشکوک که خواندن کامل تصویری می‌خواهند: Abdomen 2–3, 30, 43, 47, 90–91؛ Thorax 2–4, 7, 29, 37–39, 44–45, 50. متن استخراجی آلمانی به‌علت فونت نمادین بعضی bulletها را به glyph خصوصی تبدیل می‌کند؛ این مشکل به‌تنهایی به معنی خرابی محتوای اصلی نیست.
+
+## دامنهٔ checker و وضعیت audit
+
+`scripts/check-abdomen-thorax-review.cjs` و `scripts/audit-abdomen-thorax-copy-parity.cjs` فقط ۱۵ route مشخص‌شده در `docs/lesson-quality/abdomen-thorax-review-repair.md` را بررسی می‌کنند (۱۱ frozen route و ۴ route جدید: کیست‌های کبدی، آپاندیسیت، خونریزی تحتانی GI، CRC). آن‌ها سایر routeهای موجود یا تمام جدول این نقشه را پوشش نمی‌دهند و semantic translation، بالینی‌بودن claim، تکمیل PDF، rendering یا UX را تأیید نمی‌کنند. ردیف‌های دیگر این نقشه، از جمله routeهای authored پیشین، باید جداگانه با فایل lesson و صفحه‌های منبع audit شوند؛ وضعیت «authored» مساوی PASS نیست.

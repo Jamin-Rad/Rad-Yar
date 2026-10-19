@@ -10,6 +10,7 @@ export const HRCT_LESSONS = {
   'hrct-dichteanhebung': {
     id: 'hrct-dichteanhebung',
     slug: 'dichteanhebung',
+    sourceReferences: [{ source: 'Thorax.pdf', pages: [11, 12, 13, 17] }],
     title: L('HRCT: Dichteanhebung', 'HRCT: Increased Density', 'HRCT: افزایش دانسیته'),
     definition: L('Systematische Einordnung von Milchglas, Konsolidierung, Atelektase und pulmonalen Rundherden.', 'Systematic classification of ground-glass opacity, consolidation, atelectasis and pulmonary nodules.', 'طبقه‌بندی سیستماتیک کدورت شیشه‌مات، کنسولیدیشن، آتلکتازی و ندول‌های ریوی.'),
     heroCards: [
@@ -46,6 +47,15 @@ export const HRCT_LESSONS = {
         cave: L('„Infiltrat“ ist unspezifisch. Beschreibe zuerst Milchglas, Konsolidierung, Verteilung und Begleitzeichen.', '“Infiltrate” is nonspecific. First describe GGO, consolidation, distribution and associated signs.', '«اینفیلتراسیون» غیراختصاصی است؛ ابتدا شیشه‌مات، کنسولیدیشن، توزیع و علائم همراه را توصیف کنید.'),
       },
       {
+        id: 'oedem', icon: '💧', title: L('Hydrostatisches Ödem als Verteilungsmuster', 'Hydrostatic oedema as a distribution pattern', 'ادم هیدروستاتیک به‌عنوان الگوی توزیع'),
+        lead: L('Die Kombination aus glatter Septenverdickung und Milchglas mit abhängiger perihilärer/basaler Betonung unterstützt ein hydrostatisches Ödem.', 'Smooth septal thickening with GGO and dependent perihilar/basal predominance supports hydrostatic oedema.', 'ترکیب ضخیم‌شدگی صاف سپتا و شیشه‌مات با غلبه وابسته به جاذبه در اطراف ناف ریه و قاعده، به نفع ادم هیدروستاتیک است.'),
+        cards: [
+          { title: L('Begleitzeichen', 'Associated signs', 'یافته‌های همراه'), text: L('Peribronchovaskuläres Cuffing, Flüssigkeit in Fissuren, Kardiomegalie und Pleuraergüsse können hinzukommen.', 'Peribronchovascular cuffing, fissural fluid, cardiomegaly and pleural effusions may accompany the pattern.', 'کافینگ اطراف برونش‌ـ‌عروق، مایع در فیشورها، کاردیومگالی و افیوژن پلور ممکن است همراه باشند.') },
+          { title: L('Nicht-kardiogen abgrenzen', 'Distinguish non-cardiogenic oedema', 'افتراق از ادم غیرکاردیوژنیک'), text: L('Die PDF-Gegenüberstellung nennt beim nicht-kardiogenen Ödem eher periphere/fleckige Verteilung, meist normale Herzgröße und seltenere Pleuraergüsse. Das Muster bleibt kontextabhängig.', 'The PDF comparison describes non-cardiogenic oedema as more peripheral/patchy, with usually normal heart size and less frequent pleural effusions. The pattern remains context-dependent.', 'مقایسه PDF در ادم غیرکاردیوژنیک توزیع محیطی‌تر و لکه‌ای‌تر، اندازه معمولاً طبیعی قلب و افیوژن پلور کمتر را ذکر می‌کند. تفسیر الگو همچنان وابسته به زمینه است.') },
+        ],
+        cave: L('Die Bildmorphologie allein beweist weder eine kardiale Ursache noch den Volumenstatus. Mit Klinik und Voraufnahmen abgleichen.', 'Imaging morphology alone proves neither a cardiac cause nor volume status. Correlate with clinical context and prior studies.', 'مورفولوژی تصویر به‌تنهایی علت قلبی یا وضعیت حجم را ثابت نمی‌کند؛ با زمینه بالینی و تصاویر قبلی تطبیق دهید.'),
+      },
+      {
         id: 'noduli', icon: '🎯', title: L('Pulmonale Noduli & Raumforderungen', 'Pulmonary Nodules & Masses', 'ندول‌ها و توده‌های ریوی'),
         lead: L('Größe, Dichte, Morphologie und Wachstum bestimmen die Risikoeinschätzung.', 'Size, attenuation, morphology and growth determine risk assessment.', 'اندازه، دانسیته، مورفولوژی و رشد، ارزیابی خطر را تعیین می‌کنند.'),
         cards: [
@@ -68,6 +78,7 @@ export const HRCT_LESSONS = {
   },
   'hrct-retikulaer-nodulaer': {
     id: 'hrct-retikulaer-nodulaer', slug: 'retikulaer-nodulaer',
+    sourceReferences: [{ source: 'Thorax.pdf', pages: [16, 18, 19, 20, 21] }],
     title: L('HRCT: Retikulär & Nodulär', 'HRCT: Reticular & Nodular', 'HRCT: الگوهای رتیکولار و ندولار'),
     definition: L('Verteilung schlägt Diagnose: Septen, Fissuren, Lobuluszentrum und hämatogene Streuung systematisch unterscheiden.', 'Distribution drives diagnosis: distinguish septa, fissures, lobular centres and haematogenous spread.', 'توزیع مسیر تشخیص را تعیین می‌کند: سپتا، فیشورها، مرکز لوبول و انتشار هماتوژن را تفکیک کنید.'),
     heroCards: [
@@ -131,6 +142,7 @@ export const HRCT_LESSONS = {
   },
   'hrct-architekturmuster': {
     id: 'hrct-architekturmuster', slug: 'architekturmuster',
+    sourceReferences: [{ source: 'Thorax.pdf', pages: [22, 23] }],
     title: L('HRCT: Architekturmuster', 'HRCT: Architectural Patterns', 'HRCT: الگوهای معماری'),
     definition: L('Honeycombing, Mosaikmuster und Crazy Paving anhand ihrer Bausteine und Verteilung sicher unterscheiden.', 'Distinguish honeycombing, mosaic attenuation and crazy paving by their components and distribution.', 'هانی‌کومبینگ، موزائیک و کریزی‌پیونگ را بر اساس اجزا و توزیع تفکیک کنید.'),
     heroCards: [

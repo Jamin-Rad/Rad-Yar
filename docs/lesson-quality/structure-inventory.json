@@ -1,0 +1,742 @@
+{
+  "scope": "Curriculum-linked route entry files only; includes tools and aliases, excludes unlinked routes. Signals are not quality verdicts. Imported content, routing redirects and browser behavior require follow-up.",
+  "subjects": 12,
+  "topicCount": 809,
+  "unlinkedTopicCount": 745,
+  "uniqueLinkedRoutes": 61,
+  "routesWithDirectEntry": 61,
+  "routes": [
+    {
+      "route": "/abdomen/gi/divertikulitis",
+      "curriculumOccurrences": 1,
+      "entry": "app/abdomen/gi/divertikulitis/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/abdomen/leber/avm",
+      "curriculumOccurrences": 1,
+      "entry": "app/abdomen/leber/avm/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/abdomen/leber/fnh",
+      "curriculumOccurrences": 1,
+      "entry": "app/abdomen/leber/fnh/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/abdomen/leber/haemangiom",
+      "curriculumOccurrences": 1,
+      "entry": "app/abdomen/leber/haemangiom/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/abdomen/leber/hcc",
+      "curriculumOccurrences": 1,
+      "entry": "app/abdomen/leber/hcc/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/abdomen/pankreas/pankreatitis",
+      "curriculumOccurrences": 2,
+      "entry": "app/abdomen/pankreas/pankreatitis/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/anatomie/liquorraeume-ventrikelsystem",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/anatomie/liquorraeume-ventrikelsystem/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/anatomie/normaldruckhydrozephalus",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/anatomie/normaldruckhydrozephalus/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/trauma/epidurale-blutung",
+      "curriculumOccurrences": 2,
+      "entry": "app/gehirn/trauma/epidurale-blutung/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/avm-zns",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/vaskulaer/avm-zns/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/caa",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/vaskulaer/caa/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": true,
+        "languageHookMention": true,
+        "sectionProgressMention": true,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/cadasil",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/vaskulaer/cadasil/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/davf",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/vaskulaer/davf/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/dva",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/vaskulaer/dva/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/gefaessdissektion",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/vaskulaer/gefaessdissektion/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/hypertensive-mikroangiopathie",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/vaskulaer/hypertensive-mikroangiopathie/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/hypoxisch-ischaemische-hirnschaedigung",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/vaskulaer/hypoxisch-ischaemische-hirnschaedigung/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/intrazerebrale-blutung",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/vaskulaer/intrazerebrale-blutung/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/isch-aemischer-schlaganfall",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/vaskulaer/isch-aemischer-schlaganfall/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/kapillaere-teleangiektasie",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/vaskulaer/kapillaere-teleangiektasie/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/kavernom",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/vaskulaer/kavernom/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/moya-moya",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/vaskulaer/moya-moya/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/sinusvenenthrombose",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/vaskulaer/sinusvenenthrombose/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/subarachnoidalblutung",
+      "curriculumOccurrences": 1,
+      "entry": "app/gehirn/vaskulaer/subarachnoidalblutung/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/subduralhaematom",
+      "curriculumOccurrences": 2,
+      "entry": "app/gehirn/vaskulaer/subduralhaematom/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/lunge/sarkoidose",
+      "curriculumOccurrences": 1,
+      "entry": "app/lunge/sarkoidose/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/mamma/bildgebung/mammographie/grundlagen",
+      "curriculumOccurrences": 1,
+      "entry": "app/mamma/bildgebung/mammographie/grundlagen/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/mamma/bildgebung/mammographie/verkalkungen",
+      "curriculumOccurrences": 1,
+      "entry": "app/mamma/bildgebung/mammographie/verkalkungen/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": true,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/basics",
+      "curriculumOccurrences": 1,
+      "entry": "app/mamma/bildgebung/mrt/basics/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/besondere-mammakarzinome",
+      "curriculumOccurrences": 1,
+      "entry": "app/mamma/bildgebung/mrt/besondere-mammakarzinome/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/kaiser-score",
+      "curriculumOccurrences": 1,
+      "entry": "app/mamma/bildgebung/mrt/kaiser-score/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": true,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/laesionscharakterisierung",
+      "curriculumOccurrences": 1,
+      "entry": "app/mamma/bildgebung/mrt/laesionscharakterisierung/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/msk/knie/kreuzbaender",
+      "curriculumOccurrences": 1,
+      "entry": "app/msk/knie/kreuzbaender/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/msk/knie/meniskus",
+      "curriculumOccurrences": 1,
+      "entry": "app/msk/knie/meniskus/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": true,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/msk/schulter/rotatorenmanschette",
+      "curriculumOccurrences": 1,
+      "entry": "app/msk/schulter/rotatorenmanschette/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/msk/trauma/ak-luxation",
+      "curriculumOccurrences": 1,
+      "entry": "app/msk/trauma/ak-luxation/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/msk/trauma/distale-radiusfraktur",
+      "curriculumOccurrences": 1,
+      "entry": "app/msk/trauma/distale-radiusfraktur/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/msk/trauma/frakturbeschreibung",
+      "curriculumOccurrences": 1,
+      "entry": "app/msk/trauma/frakturbeschreibung/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/msk/trauma/frakturen-kindesalter",
+      "curriculumOccurrences": 1,
+      "entry": "app/msk/trauma/frakturen-kindesalter/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/msk/trauma/radiuskoepfchenfraktur",
+      "curriculumOccurrences": 1,
+      "entry": "app/msk/trauma/radiuskoepfchenfraktur/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/msk/trauma/sprunggelenk",
+      "curriculumOccurrences": 1,
+      "entry": "app/msk/trauma/sprunggelenk/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/msk/trauma/unterarmschaftfrakturen",
+      "curriculumOccurrences": 1,
+      "entry": "app/msk/trauma/unterarmschaftfrakturen/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/technik/kontrastmittel/mrt",
+      "curriculumOccurrences": 1,
+      "entry": "app/technik/kontrastmittel/mrt/page.jsx",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": false,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/technik/kontrastmittel/nierenfunktion",
+      "curriculumOccurrences": 1,
+      "entry": "app/technik/kontrastmittel/nierenfunktion/page.jsx",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": false,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/technik/kontrastmittel/roentgen",
+      "curriculumOccurrences": 1,
+      "entry": "app/technik/kontrastmittel/roentgen/page.jsx",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": false,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/technik/kontrastmittel/schwangerschaft",
+      "curriculumOccurrences": 1,
+      "entry": "app/technik/kontrastmittel/schwangerschaft/page.jsx",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": false,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/thorax/anatomie/aortenbogen",
+      "curriculumOccurrences": 1,
+      "entry": "app/thorax/anatomie/aortenbogen/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/thorax/fleischner-kriterien",
+      "curriculumOccurrences": 1,
+      "entry": "app/thorax/fleischner-kriterien/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/thorax/hrct/architekturmuster",
+      "curriculumOccurrences": 1,
+      "entry": "app/thorax/hrct/architekturmuster/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": false,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/thorax/hrct/dichteanhebung",
+      "curriculumOccurrences": 1,
+      "entry": "app/thorax/hrct/dichteanhebung/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": false,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/thorax/hrct/dichteminderung",
+      "curriculumOccurrences": 1,
+      "entry": "app/thorax/hrct/dichteminderung/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": false,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/thorax/hrct/retikulaer-nodulaer",
+      "curriculumOccurrences": 1,
+      "entry": "app/thorax/hrct/retikulaer-nodulaer/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": false,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/thorax/kardio/arvc",
+      "curriculumOccurrences": 1,
+      "entry": "app/thorax/kardio/arvc/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": true,
+        "languageHookMention": true,
+        "sectionProgressMention": true,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/thorax/kardio/kardio-mrt-basics",
+      "curriculumOccurrences": 1,
+      "entry": "app/thorax/kardio/kardio-mrt-basics/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/thorax/kardio/kardio-mrt-indikationen",
+      "curriculumOccurrences": 1,
+      "entry": "app/thorax/kardio/kardio-mrt-indikationen/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/thorax/kardio/kardiomyopathien",
+      "curriculumOccurrences": 1,
+      "entry": "app/thorax/kardio/kardiomyopathien/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/thorax/kardio/myokardinfarkt-differentialdiagnosen",
+      "curriculumOccurrences": 1,
+      "entry": "app/thorax/kardio/myokardinfarkt-differentialdiagnosen/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": true,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/thorax/kardio/myokardinfarkt-mrt",
+      "curriculumOccurrences": 1,
+      "entry": "app/thorax/kardio/myokardinfarkt-mrt/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": true,
+        "sectionProgressMention": false,
+        "externalUrlMention": true,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/wirbelsaeule/trauma/bws-lws-frakturen",
+      "curriculumOccurrences": 1,
+      "entry": "app/wirbelsaeule/trauma/bws-lws-frakturen/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": false,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/wirbelsaeule/trauma/hws-verletzungen",
+      "curriculumOccurrences": 1,
+      "entry": "app/wirbelsaeule/trauma/hws-verletzungen/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": false,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    },
+    {
+      "route": "/wirbelsaeule/trauma/kraniozervikaler-uebergang",
+      "curriculumOccurrences": 1,
+      "entry": "app/wirbelsaeule/trauma/kraniozervikaler-uebergang/page.js",
+      "entryFileSignals": {
+        "sharedHeroMention": false,
+        "languageHookMention": false,
+        "sectionProgressMention": false,
+        "externalUrlMention": false,
+        "delegatesOrImports": true
+      }
+    }
+  ]
+}

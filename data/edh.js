@@ -1,6 +1,8 @@
 const L = (de, en, fa) => ({ de, en, fa })
 
 export const EDH_LESSON = {
+  pdfSourcePages: [12,13], // user PDF page range; coverage still requires content comparison
+
   toc: L('Inhaltsverzeichnis', 'Contents', 'فهرست مطالب'),
   breadcrumbArea: L('Kopf', 'Head', 'سر'),
   breadcrumbCurrent: L('Schädel-Hirn-Trauma · Epiduralhämatom', 'Head trauma · Epidural haematoma', 'ترومای سر · هماتوم اپیدورال'),

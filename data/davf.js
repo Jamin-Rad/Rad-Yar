@@ -3,6 +3,8 @@ const Q = (id, question, options, correct, explanation) => ({ id, question, opti
 const F = (id, category, front, answer, explanation) => ({ id, category, front, answer, explanation })
 
 export const DAVF_LESSON = {
+  pdfSourcePages: [35,36], // user PDF page range; coverage still requires content comparison
+
   breadcrumb: L('Durale AV-Fistel (dAVF)', 'Dural Arteriovenous Fistula (dAVF)', 'فیستول شریانی-وریدی دورال (dAVF)'),
   title: L('Durale AV-Fistel (dAVF)', 'Dural Arteriovenous Fistula (dAVF)', 'فیستول شریانی-وریدی دورال (dAVF)'),
   definition: L(

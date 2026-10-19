@@ -1,0 +1,17 @@
+.page { max-width: 1080px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; color: #24304a; }
+.lead { font-size: 1.12rem; line-height: 1.75; max-width: 76ch; }
+.section { margin: 2rem 0; }
+.section h2 { color: #31536b; margin-bottom: 1rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 1rem; }
+.card { border: 1px solid #d8e4e8; border-radius: 14px; padding: 1rem 1.15rem; background: #fff; box-shadow: 0 4px 16px rgb(31 58 78 / 6%); }
+.card h3 { margin: 0 0 .5rem; color: #176e76; font-size: 1.05rem; }
+.card p, .section p { line-height: 1.75; }
+.figure { margin: 1.25rem 0; padding: 1rem; border: 1px solid #d8e4e8; border-radius: 16px; background: linear-gradient(180deg,#f7fbfc,#fff); }
+.svg { display: block; width: 100%; height: auto; }
+.label { font-size: 20px; font-weight: 700; fill: #24304a; }
+.caption { font-size: 15px; fill: #46576b; }
+.figure figcaption { color: #526274; font-size: .9rem; line-height: 1.6; margin-top: .5rem; }
+.caution { border-inline-start: 4px solid #d97706; background: #fff8ed; padding: .85rem 1rem; margin: 1.25rem 0; border-radius: 8px; }
+.caution p { margin-bottom: 0; line-height: 1.7; }
+.source { color: #556579; font-size: .9rem; }
+@media (max-width: 640px) { .page { padding-inline: .8rem; } .svg { min-height: 130px; } }

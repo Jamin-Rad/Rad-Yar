@@ -1,6 +1,8 @@
 const L = (de, en, fa) => ({ de, en, fa })
 
 export const DISSECTION_LESSON = {
+  pdfSourcePages: [22,23], // user PDF page range; coverage still requires content comparison
+
   title: L('Gefäßdissektion Kopf', 'Cervicocephalic Arterial Dissection', 'دیسکسیون عروق سرویکوسفالیک'),
   subtitle: L('Karotis- und Vertebralisdissektion: Wandhämatom, Lumensignaturen, Ischämie und Pseudoaneurysma', 'Carotid and vertebral artery dissection: mural haematoma, luminal signs, ischaemia and pseudoaneurysm', 'دیسکسیون کاروتید و ورتبرال: هماتوم دیواره‌ای، علائم لومن، ایسکمی و شبه‌آنوریسم'),
   breadcrumb: L('Vaskuläre Erkrankungen · Gefäßdissektion', 'Vascular diseases · Arterial dissection', 'بیماری‌های عروقی · دیسکسیون شریانی'),

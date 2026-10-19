@@ -3,6 +3,8 @@ const Q = (id, question, options, correct, explanation) => ({ id, question, opti
 const F = (id, category, front, answer, explanation) => ({ id, category, front, answer, explanation })
 
 export const TELEANGIEKTASIE_LESSON = {
+  pdfSourcePages: [33,34], // user PDF page range; coverage still requires content comparison
+
   breadcrumb: L('Kapilläre Teleangiektasie', 'Capillary telangiectasia', 'تلانژکتازی مویرگی'),
   title: L('Kapilläre Teleangiektasie', 'Capillary Telangiectasia', 'تلانژکتازی مویرگی'),
   definition: L('Benigne Low-flow-Gefäßmalformation mit zartem Enhancement und fehlendem Masseneffekt.', 'A benign low-flow vascular malformation with faint enhancement and no mass effect.', 'مالفورماسیون عروقی خوش‌خیم کم‌جریان با افزایش ظریف و بدون اثر فشاری.'),

@@ -1,5 +1,11 @@
 # RadYar educational page principles
 
+For lesson production and independent review, use
+[`lesson-quality/standard.md`](lesson-quality/standard.md). CAA is the user's
+preferred teaching reference; this document remains the shared layout and
+interaction reference. The complementary standard adds source coverage, visual
+case selection, translation parity, assessment consistency and evidence gates.
+
 These principles are distilled from the strongest existing lessons, especially Mamma MRI lesion characterisation, Meniscus, and Fleischner criteria. They define a reusable learning experience, not a fixed colour palette.
 
 The maintained reference implementation lives at **Andarun → Test** (`/andarun/test`). New educational pages should start from this reference and keep the standard RadYar navbar and footer.
@@ -8,7 +14,7 @@ The maintained reference implementation lives at **Andarun → Test** (`/andarun
 
 The title identifies the topic or diagnostic task. Every lesson header must include a generated schematic image specific to that topic. Do not reuse an unrelated topic's image. The schematic remains visible on desktop and mobile and must not overlap the title or controls.
 
-Use the shared `components/LessonHero.jsx` for the header, with a required topic image and translated alt text. It deliberately accepts no subtitle or explanatory text. **Do not add a description beneath the title.** Definitions, clinical promises and introductory explanations belong at the beginning of the first chapter. Keep the author/breadcrumb row close to the hero (8px gap), and avoid vertically centering the desktop title in a tall image container; the shared hero positions it 32px below its top edge.
+Use the shared `components/LessonHero.jsx` for the header, with a required topic image and translated alt text. It deliberately accepts no subtitle or explanatory text. **Do not add a description beneath the title.** Definitions, clinical promises and introductory explanations belong at the beginning of the first chapter.
 
 ## 2. Orientation before detail
 
@@ -44,8 +50,6 @@ Colour is allowed to change between lessons, but the role and visual weight of e
 
 Images, diagrams, curves, and tables must answer a learning question. Every visual receives a short interpretation or task. Decorative media never competes with the content.
 
-Pair the teaching content with meaningful anatomical schematics or decision diagrams. When the learner selects a finding or phase, update the graphic and its explanation together. Keep controls keyboard-operable and provide explicit selected states. Use an illustrative image base for anatomy and code-native overlays for changing findings; preserve the distinction between a schematic and a patient image. Decision simulations must show their qualifying criteria, exclusion paths and explanation, with medical rules covered by focused tests.
-
 ## 7. Make the learner act
 
 Each lesson includes at least one embedded decision, reveal, comparison, or mini-case. The answer produces immediate, explanatory feedback rather than only correct/incorrect status.
@@ -63,10 +67,3 @@ Use a restrained handwritten or calligraphic accent for short teaching-note labe
 ## 10. Definition of done
 
 A lesson is ready only when it works in German, English, and Persian; respects RTL; supports keyboard focus; remains readable on mobile; has no horizontal overflow; and its primary interaction has been tested in the browser.
-
-
-## Shared navigation and Take Home implementation
-
-Use `useLessonSectionScroll` for chapter selections and summary jumps. Request the scroll with the state change; the hook aligns the chapter header below the fixed navbar after React commits the new layout. Repeated selections must realign the header, rapid selections must cancel older requests, and selecting a chapter never marks it read.
-
-Take Home uses `LessonTakeHome` and the shared `LessonTemplate.module.css`: numbered takeaway rows with concise titles and individually expandable explanations. Its outer panel opens independently of the active chapter, does not belong to the tracked learning path, and does not advance lesson progress.

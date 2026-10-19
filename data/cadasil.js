@@ -3,6 +3,8 @@ const Q = (id, question, options, correct, explanation) => ({ id, question, opti
 const F = (id, category, front, answer, explanation) => ({ id, category, front, answer, explanation })
 
 export const CADASIL_LESSON = {
+  pdfSourcePages: [29,29], // user PDF page range; coverage still requires content comparison
+
   breadcrumb: L('CADASIL', 'CADASIL', 'CADASIL'),
   title: L('CADASIL', 'CADASIL', 'CADASIL'),
   definition: L(

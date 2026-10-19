@@ -1,0 +1,158 @@
+const PALETTE = { ink: '#24304a', muted: '#64748b', blue: '#38aeb1', blueLight: '#d9f2f1', plum: '#713574', plumLight: '#f0e5f1', coral: '#d84b42', paper: '#ffffff', line: '#d8dee8', amber: '#d97706' }
+
+function Lungs({ variant, lang }) {
+  const labels = {
+    de: { tb: 'disseminierte Noduli', pneumonia: 'alveoläre Verschattung', hrct: 'interstitielles Muster' },
+    en: { tb: 'diffuse nodules', pneumonia: 'air-space opacity', hrct: 'interstitial pattern' },
+    fa: { tb: 'ندول‌های منتشر', pneumonia: 'کدورت فضای هوایی', hrct: 'الگوی بینابینی' },
+  }[lang] || { tb: 'diffuse nodules', pneumonia: 'air-space opacity', hrct: 'interstitial pattern' }
+  const marks = variant === 'tuberculosis'
+    ? <g fill={PALETTE.coral}><circle cx="130" cy="76" r="6"/><circle cx="148" cy="87" r="4"/><circle cx="169" cy="74" r="5"/><circle cx="255" cy="80" r="5"/><circle cx="276" cy="90" r="4"/><circle cx="294" cy="75" r="5"/><circle cx="142" cy="112" r="3"/><circle cx="270" cy="119" r="3"/></g>
+    : variant === 'pneumonia'
+      ? <g fill={PALETTE.blue} opacity=".82"><path d="M110 92q25-26 55-7v70q-23 24-52 4z"/><path d="M260 100q27-25 50-10v67q-25 24-50 3z"/></g>
+      : <g fill="none" stroke={PALETTE.plum} strokeWidth="7"><path d="M114 83q20-18 42-7m-41 25q18-15 40-4m-38 23q15-12 35-3"/><path d="M265 91q19-18 42-6m-40 27q18-14 39-2"/></g>
+  return <g>
+    <path d="M198 37v56m0-34-22 21m22-21 22 21" fill="none" stroke={PALETTE.ink} strokeWidth="6" strokeLinecap="round"/>
+    <path d="M177 58c-29 1-57 18-65 45-8 28 3 65 20 77 17 12 47 4 59-16 7-12 10-38 10-58V68c-6-6-14-10-24-10Zm44 0c29 1 57 18 65 45 8 28-3 65-20 77-17 12-47 4-59-16-7-12-10-38-10-58V68c6-6 14-10 24-10Z" fill={PALETTE.blueLight} stroke={PALETTE.ink} strokeWidth="3"/>
+    {marks}
+    <text x="200" y="202" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{variant === 'tuberculosis' ? labels.tb : variant === 'pneumonia' ? labels.pneumonia : labels.hrct}</text>
+  </g>
+}
+
+function Pancreas({ variant, lang }) {
+  const labels = {
+    de: { cyst: 'Zyste und Gangverbindung', tumour: 'Tumorkontakt zu Gefäßen' },
+    en: { cyst: 'cyst and duct relation', tumour: 'tumour–vessel contact' },
+    fa: { cyst: 'کیست و ارتباط با مجرا', tumour: 'تماس تومور با عروق' },
+  }[lang] || { cyst: 'cyst and duct relation', tumour: 'tumour–vessel contact' }
+  return <g>
+    <path d="M82 112c30-34 63-40 92-26 21 10 40 10 59 0 37-19 69-7 82 18-17 26-45 37-76 30-24-5-45-1-69 7-41 13-72 4-88-29Z" fill={PALETTE.amber} opacity=".72" stroke={PALETTE.ink} strokeWidth="3"/>
+    <path d="M104 111c47-11 95 6 175-5" fill="none" stroke={PALETTE.ink} strokeWidth="3"/>
+    {variant === 'cystic-pancreas' ? <g><ellipse cx="170" cy="99" rx="17" ry="11" fill={PALETTE.paper} stroke={PALETTE.blue} strokeWidth="4"/><ellipse cx="231" cy="110" rx="13" ry="8" fill={PALETTE.paper} stroke={PALETTE.blue} strokeWidth="4"/><path d="M170 110v18m61-10v15" stroke={PALETTE.blue} strokeWidth="2" strokeDasharray="4 4"/><text x="200" y="173" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{labels.cyst}</text></g>
+      : <g><circle cx="180" cy="107" r="12" fill={PALETTE.coral}/><path d="M190 88l23-25m-1 35 34-4m-60 26-14 28" stroke={PALETTE.coral} strokeWidth="4"/><text x="201" y="173" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{labels.tumour}</text></g>}
+  </g>
+}
+
+function Kidney({ variant, lang }) {
+  return <g>
+    <path d="M154 47c-43-11-76 27-66 73 10 47 50 69 83 40 22-20 16-43 8-62-8-19 4-42-25-51Z" fill="#e9b6a6" stroke={PALETTE.ink} strokeWidth="3"/>
+    <path d="M157 67c-25-4-43 20-37 48 5 25 23 38 39 21 10-11 8-25 4-37-4-13 9-29-6-32Z" fill="#f7d7ce"/>
+    {variant === 'renal-mass' ? <circle cx="149" cy="112" r="18" fill={PALETTE.blueLight} stroke={PALETTE.blue} strokeWidth="5"/> : <path d="M270 57v101m0-101 33 40-33 61-33-61z" fill="none" stroke={PALETTE.plum} strokeWidth="5" strokeLinejoin="round"/>}
+    <text x="226" y="191" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{variant === 'renal-mass' ? (lang==='fa'?'توده: کیستیک یا جامد':lang==='de'?'Raumforderung: zystisch oder solide':'mass: cystic or solid') : (lang==='fa'?'مسیر حالب و تنگی‌ها':lang==='de'?'Ureterverlauf und Engstellen':'ureter and narrowings')}</text>
+  </g>
+}
+
+function Airway({ variant, lang }) {
+  const labels = {
+    de: { foreignBody: 'Obstruktion und Air trapping', xray: 'Projektion und Bildqualität' },
+    en: { foreignBody: 'obstruction and air trapping', xray: 'projection and image quality' },
+    fa: { foreignBody: 'انسداد و حبس هوا', xray: 'پروجکشن و کیفیت تصویر' },
+  }[lang] || { foreignBody: 'obstruction and air trapping', xray: 'projection and image quality' }
+  return <g>
+    <path d="M200 39v65m0-8-44 43m44-43 44 43" fill="none" stroke={PALETTE.ink} strokeWidth="10" strokeLinecap="round"/>
+    <path d="M156 139c-23-3-53 11-57 37-4 18 12 24 32 20 21-4 31-18 37-38Zm88 0c23-3 53 11 57 37 4 18-12 24-32 20-21-4-31-18-37-38Z" fill={PALETTE.blueLight} stroke={PALETTE.ink} strokeWidth="3"/>
+    {variant === 'foreign-body' ? <g><circle cx="165" cy="116" r="10" fill={PALETTE.coral}/><path d="M168 111l14 9" stroke={PALETTE.coral} strokeWidth="4"/><path d="M252 150q19-20 41-9v40q-25 8-40-4z" fill={PALETTE.amber} opacity=".65"/><text x="200" y="220" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{labels.foreignBody}</text></g>
+      : <g><path d="M113 156q23-17 49-1m88 5q20-16 43-2" stroke={PALETTE.plum} strokeWidth="6" fill="none"/><text x="200" y="220" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{labels.xray}</text></g>}
+  </g>
+}
+
+function Bowel({ lang }) {
+  const label = { de: 'Übergangspunkt / geschlossene Schlinge', en: 'transition / closed loop', fa: 'نقطه گذار / لوپ بسته' }[lang] || 'transition / closed loop'
+  return <g><path d="M105 62h190q20 0 20 18v18q0 18-20 18H132q-18 0-18 18v20q0 18 18 18h145" fill="none" stroke={PALETTE.blue} strokeWidth="22" strokeLinecap="round"/><path d="M114 62h180M132 174h160" fill="none" stroke={PALETTE.ink} strokeWidth="2" strokeDasharray="5 7"/><path d="M203 114v28m-9-10 9 10 9-10" fill="none" stroke={PALETTE.coral} strokeWidth="4"/><text x="203" y="217" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{label}</text></g>
+}
+
+function Appendix({ lang }) {
+  const label = lang === 'fa' ? 'آپاندیس و چربی اطراف' : lang === 'de' ? 'Appendix und periappendikuläres Fett' : 'appendix and surrounding fat'
+  return <g>
+    <path d="M80 83h125q30 0 30 28v75q0 19-20 19h-38" fill="none" stroke={PALETTE.blue} strokeWidth="25" strokeLinecap="round"/>
+    <path d="M211 175q8 1 15 1" stroke={PALETTE.ink} strokeWidth="2"/>
+    <path d="M224 176q29 4 53 18" fill="none" stroke={PALETTE.coral} strokeWidth="11" strokeLinecap="round"/>
+    <ellipse cx="248" cy="175" rx="52" ry="38" fill={PALETTE.amber} opacity=".13" stroke={PALETTE.amber} strokeWidth="3" strokeDasharray="5 5"/>
+    <circle cx="224" cy="176" r="7" fill={PALETTE.coral}/>
+    <text x="200" y="226" textAnchor="middle" fill={PALETTE.muted} fontSize="12">{label}</text>
+  </g>
+}
+
+function GIbleed({ lang }) {
+  const label = lang === 'fa' ? 'ماده حاجب داخل لومن' : lang === 'de' ? 'Kontrastmittel im Darmlumen' : 'contrast entering bowel lumen'
+  return <g>
+    <path d="M82 72h210q18 0 18 18v30q0 18-18 18H115q-18 0-18 18v28q0 18 18 18h190" fill="none" stroke={PALETTE.blue} strokeWidth="22" strokeLinecap="round"/>
+    <path d="M222 74v25m-8-8 8 8 8-8" fill="none" stroke={PALETTE.coral} strokeWidth="4"/>
+    <circle cx="222" cy="111" r="8" fill={PALETTE.coral}/><circle cx="234" cy="122" r="6" fill={PALETTE.coral} opacity=".7"/>
+    <text x="200" y="224" textAnchor="middle" fill={PALETTE.muted} fontSize="12">{label}</text>
+  </g>
+}
+
+function RectalMRI({ lang }) {
+  const label = lang === 'fa' ? 'تومور، مزورکتوم و فاسیای مزورکتال' : lang === 'de' ? 'Tumor, Mesorektum und Mesorektalfaszie' : 'tumour, mesorectum and mesorectal fascia'
+  return <g>
+    <ellipse cx="200" cy="123" rx="100" ry="72" fill={PALETTE.blueLight} stroke={PALETTE.blue} strokeWidth="4"/>
+    <ellipse cx="200" cy="123" rx="54" ry="43" fill={PALETTE.paper} stroke={PALETTE.ink} strokeWidth="5"/>
+    <path d="M197 85q34-6 43 17-3 20-23 22-19-2-20-19Z" fill={PALETTE.coral}/>
+    <path d="M200 123 253 92" stroke={PALETTE.amber} strokeWidth="4" strokeDasharray="5 4"/>
+    <circle cx="253" cy="92" r="5" fill={PALETTE.amber}/>
+    <text x="200" y="222" textAnchor="middle" fill={PALETTE.muted} fontSize="12">{label}</text>
+  </g>
+}
+
+function Liver({ lang }) {
+  return <g>
+    <path d="M69 103c34-47 98-51 152-35 33 10 61 2 93 6 10 27-3 67-33 83-28 15-69 8-95 9-36 2-84 21-113-1-18-14-20-39-4-62Z" fill="#b85c53" opacity=".8" stroke={PALETTE.ink} strokeWidth="3"/>
+    <circle cx="182" cy="116" r="18" fill={PALETTE.paper} stroke={PALETTE.amber} strokeWidth="5"/>
+    <path d="M173 108a14 14 0 1 1 0 17" fill="none" stroke={PALETTE.coral} strokeWidth="5"/>
+    <text x="201" y="193" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{lang==='fa'?'ضایعه در فازهای تزریق':lang==='de'?'Läsion in Kontrastmittelphasen':'lesion across phases'}</text>
+  </g>
+}
+
+function Hepatobiliary({ variant, lang }) {
+  const label = lang === 'fa' ? (variant === 'psc' ? 'تنگی‌های چندکانونی مجاری' : 'چربی ماکروسکوپی داخل توده')
+    : lang === 'de' ? (variant === 'psc' ? 'Multifokale Gangstenosen' : 'Makroskopisches Fett im Herd')
+      : (variant === 'psc' ? 'multifocal duct strictures' : 'macroscopic fat within lesion')
+  return <g>
+    <path d="M80 68c42 4 58 19 79 36 17 14 30 20 50 21m-50-21 8-29m-8 29-21 22m71-1c25-13 37-27 48-48m-48 48 19 25m29-73c28-4 49 1 65 13" fill="none" stroke="#b85c53" strokeWidth="13" strokeLinecap="round"/>
+    {variant === 'psc'
+      ? <g fill="none" stroke={PALETTE.paper} strokeWidth="5"><path d="m131 88 13 8m36-42-4 15m-69 45 12 10m116-12-4 13m47-57 4 12"/></g>
+      : <g><ellipse cx="186" cy="106" rx="30" ry="24" fill={PALETTE.amber} opacity=".8"/><circle cx="186" cy="106" r="9" fill={PALETTE.paper}/></g>}
+    <text x="200" y="202" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{label}</text>
+  </g>
+}
+
+function Adrenal({ lang }) {
+  const label = lang === 'fa' ? 'اندازه، چربی، چگالی و شست‌وشو' : lang === 'de' ? 'Größe, Fett, Dichte, Wash-out' : 'size, fat, density, washout'
+  return <g>
+    <path d="M88 152c18-51 50-79 99-69 31 7 52 31 63 68-35-17-59-12-83 8-27 22-53 21-79-7Z" fill="#e9b6a6" stroke={PALETTE.ink} strokeWidth="3"/>
+    <path d="M285 81c-22 7-31 19-36 35 20-6 32 0 41 12 12-20 10-35-5-47Z" fill={PALETTE.plumLight} stroke={PALETTE.plum} strokeWidth="4"/>
+    <path d="M271 119h41m-20-19v39" stroke={PALETTE.coral} strokeWidth="3"/>
+    <text x="200" y="207" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{label}</text>
+  </g>
+}
+
+function LiverCyst({ variant, lang }) {
+  const label = lang === 'fa' ? (variant === 'hydatid' ? 'غشای جداشده / کیست‌های دختر' : 'بدون تقویت و با تقویت خلفی')
+    : lang === 'de' ? (variant === 'hydatid' ? 'Abgelöste Membran / Tochterzysten' : 'kein Enhancement, dorsale Schallverstärkung')
+      : (variant === 'hydatid' ? 'detached membrane / daughter cysts' : 'no enhancement, posterior acoustic enhancement')
+  return <g>
+    <path d="M75 116c21-45 65-65 124-58 57 7 105 31 128 66-22 36-72 60-128 65-61 6-104-14-124-73Z" fill="#b85c53" opacity=".7" stroke={PALETTE.ink} strokeWidth="3"/>
+    <ellipse cx="202" cy="119" rx="54" ry="43" fill="#f8fdff" stroke={PALETTE.blue} strokeWidth="5"/>
+    {variant === 'hydatid' ? <g><path d="M174 103q27-25 53 0t0 35q-26 26-53 0" fill="none" stroke={PALETTE.plum} strokeWidth="4"/><circle cx="188" cy="109" r="8" fill={PALETTE.blueLight} stroke={PALETTE.blue} strokeWidth="2"/><circle cx="216" cy="130" r="8" fill={PALETTE.blueLight} stroke={PALETTE.blue} strokeWidth="2"/></g>
+      : <path d="M151 171h102" stroke={PALETTE.blue} strokeWidth="7" opacity=".6"/>}
+    <text x="200" y="218" textAnchor="middle" fill={PALETTE.muted} fontSize="12">{label}</text>
+  </g>
+}
+
+export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de', title }) {
+  return <svg viewBox="0 0 400 250" role="img" aria-label={title} xmlns="http://www.w3.org/2000/svg">
+    <rect x="5" y="5" width="390" height="240" rx="22" fill="#fff" stroke={PALETTE.line} strokeWidth="2"/>
+    {variant === 'pneumonia' || variant === 'tuberculosis' || variant === 'hrct' ? <Lungs variant={variant} lang={lang}/> :
+      variant === 'cystic-pancreas' || variant === 'pdac' || variant === 'pnet' ? <Pancreas variant={variant} lang={lang}/> :
+      variant === 'renal-mass' || variant === 'renal-anatomy' ? <Kidney variant={variant} lang={lang}/> :
+      variant === 'foreign-body' || variant === 'chest-xray' ? <Airway variant={variant} lang={lang}/> :
+      variant === 'bowel' ? <Bowel lang={lang}/> :
+      variant === 'appendix' ? <Appendix lang={lang}/> :
+      variant === 'gi-bleed' ? <GIbleed lang={lang}/> :
+      variant === 'rectal-mri' ? <RectalMRI lang={lang}/> :
+      variant === 'adrenal' ? <Adrenal lang={lang}/> :
+      variant === 'liver-cyst' || variant === 'hydatid' ? <LiverCyst variant={variant} lang={lang}/> :
+      variant === 'psc' || variant === 'hepatic-aml' ? <Hepatobiliary variant={variant} lang={lang}/> : <Liver lang={lang}/>}
+  </svg>
+}

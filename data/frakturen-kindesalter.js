@@ -127,7 +127,7 @@ export const FRAKTUR_KINDER_LESSON = {
         L('III', 'III', 'III'),
         L('L – Lower (Epiphyse)', 'L – Lower (Epiphysis)', 'L – پایین (اپی‌فیز)'),
         L('Linie durch Physis + Epiphyse, intraartikulär', 'Line through physis + epiphysis, intra-articular', 'خط از طریق فیزیس + اپی‌فیز، داخل مفصل'),
-        L('Mäßig; OP-pflichtig wenn disloziert (< 10 %)', 'Moderate; surgery if displaced (< 10 %)', 'متوسط؛ نیاز به جراحی در صورت جابجایی (< ۱۰ %)'),
+        L('Risiko für Arthrose/Wachstumsstörung; Gelenkstufe und Reposition beurteilen, je nach Ort/Dislokation ggf. operativ (PDF S. 5).', 'Risk of arthritis/growth disturbance; assess articular step and reduction, with surgery depending on site/displacement (PDF p. 5).', 'خطر آرتروز/اختلال رشد؛ پله مفصلی و جااندازی را ارزیابی کنید و بسته به محل/جابجایی ممکن است جراحی لازم باشد (PDF صفحه ۵).'),
       ],
       [
         L('IV', 'IV', 'IV'),
@@ -312,9 +312,9 @@ export const FRAKTUR_KINDER_LESSON = {
     triplane: {
       title: L('Triplane-Fraktur', 'Triplane Fracture', 'شکستگی سه‌صفحه‌ای'),
       text: L(
-        'Komplexe Fraktur in 3 Ebenen: sagittale Ebene (Epiphyse), axiale Ebene (Physis), koronare Ebene (Metaphyse). Klassisch 2- oder 3-Fragment-Typen. CT ist für die genaue Fragmentdarstellung und OP-Planung essenziell.',
-        'Complex fracture in 3 planes: sagittal plane (epiphysis), axial plane (physis), coronal plane (metaphysis). Classically 2- or 3-fragment types. CT is essential for precise fragment delineation and surgical planning.',
-        'شکستگی پیچیده در ۳ صفحه: صفحه ساژیتال (اپی‌فیز)، صفحه محوری (فیزیس)، صفحه کرونال (متافیز). به‌طور کلاسیک ۲ یا ۳ قطعه. CT برای تصویربرداری دقیق قطعات و برنامه‌ریزی جراحی ضروری است.'
+        'Komplexe Fraktur in 3 Ebenen: sagittale Ebene (Epiphyse), axiale Ebene (Physis), koronare Ebene (Metaphyse). Klassisch 2- oder 3-Fragment-Typen. CT kann ergänzt werden, wenn Röntgen Fragmentkonfiguration oder intraartikuläre Dislokation nicht ausreichend zeigt; die Entscheidung hängt vom Einzelfall und der Behandlungsplanung ab.',
+        'Complex fracture in 3 planes: sagittal plane (epiphysis), axial plane (physis), coronal plane (metaphysis). Classically 2- or 3-fragment types. CT can be added when radiographs do not adequately show fragment configuration or intra-articular displacement; the decision depends on the case and treatment planning.',
+        'شکستگی پیچیده در ۳ صفحه: صفحه ساژیتال (اپی‌فیز)، صفحه محوری (فیزیس)، صفحه کرونال (متافیز). به‌طور کلاسیک ۲ یا ۳ قطعه. اگر رادیوگرافی آرایش قطعات یا جابجایی داخل‌مفصلی را به‌اندازه کافی نشان ندهد، CT می‌تواند افزوده شود؛ تصمیم به شرایط مورد و برنامه‌ریزی درمان بستگی دارد.'
       ),
       age: L('13–15 Jahre', '13–15 years', '۱۳–۱۵ سال'),
       schema: {
@@ -343,9 +343,9 @@ export const FRAKTUR_KINDER_LESSON = {
       ],
     },
     cave: L(
-      'Übergangsfrakturen sehen im Röntgen komplex aus – immer CT anfordern, da der Dislokationsgrad die Therapieentscheidung (konservativ vs. OP) bestimmt (Grenze: 2 mm Gelenkstufenbildung).',
-      'Transitional fractures look complex on X-ray – always request CT, as the degree of displacement determines treatment (conservative vs. surgery; threshold: 2 mm articular step).',
-      'شکستگی‌های گذار روی رادیوگرافی پیچیده به نظر می‌رسند – همیشه CT بخواهید، زیرا میزان جابجایی تصمیم درمان را تعیین می‌کند (مرز: ۲ میلی‌متر پله مفصلی).'
+      'Bei Tillaux-/Triplane-Frakturen wird CT häufig zur Darstellung der Fragmente und Gelenkstufe ergänzt, besonders wenn das Röntgen die intraartikuläre Ausdehnung oder Dislokation nicht sicher zeigt. Die PDF nennt < 2 mm als konservativ und ≥ 2 mm als Schraubenbehandlung; das ist ein quellengebundener Lernwert, keine alleinige Operationsregel: Reduktionsergebnis, Messmethode und klinischer Kontext zählen.',
+      'CT is often added for Tillaux/triplane fractures to define fragments and articular step, especially when radiographs do not show intra-articular extent or displacement clearly. The PDF lists <2 mm for conservative care and ≥2 mm for screw fixation; this is a source-specific learning value, not a stand-alone operative rule: reduction, measurement method, and clinical context matter.',
+      'در شکستگی‌های تیلو/سه‌صفحه‌ای، CT اغلب برای تعیین قطعات و پله مفصلی افزوده می‌شود، به‌ویژه وقتی رادیوگرافی گسترش داخل‌مفصلی یا جابجایی را روشن نکند. PDF درمان محافظه‌کارانه را برای <۲ میلی‌متر و پیچ‌گذاری را برای ≥۲ میلی‌متر ذکر می‌کند؛ این مقدارِ منبع‌محور قانون مستقل جراحی نیست و نتیجه جااندازی، روش اندازه‌گیری و شرایط بالینی مهم‌اند.'
     ),
   },
 
@@ -359,7 +359,7 @@ export const FRAKTUR_KINDER_LESSON = {
       },
       {
         title: L('SALTR-Regel für Prognose', 'SALTR rule for prognosis', 'قانون SALTR برای پیش‌آگهی'),
-        text: L('Typ I/II: gute Prognose. Typ III/IV: intraartikulär, OP-pflichtig bei Dislokation. Typ V: schlechteste Prognose (Kompressionsverletzung).', 'Type I/II: good prognosis. Type III/IV: intra-articular, surgery if displaced. Type V: worst prognosis (compression injury).', 'نوع I/II: پیش‌آگهی خوب. نوع III/IV: داخل مفصل، جراحی در صورت جابجایی. نوع V: بدترین پیش‌آگهی (آسیب فشاری).'),
+        text: L('Typ I/II: meist gute Prognose. Typ III/IV: intraartikulär und mit Risiko für Wachstumsstörung; Gelenkkongruenz und Reposition beurteilen. Die PDF nennt bei Typ III eine exakte anatomische Rekonstruktion, oft operativ; Therapie richtet sich nach Ort und Dislokation. Typ V: hohes Risiko für Wachstumsstillstand.', 'Types I/II: generally good prognosis. Types III/IV: intra-articular and at risk of growth disturbance; assess joint congruity and reduction. The PDF calls for exact anatomic reconstruction for type III, often operative; treatment depends on site and displacement. Type V: high risk of growth arrest.', 'نوع I/II: معمولاً پیش‌آگهی خوب. نوع III/IV: داخل‌مفصلی و همراه خطر اختلال رشد؛ تطابق مفصل و جااندازی را ارزیابی کنید. PDF برای نوع III بازسازی آناتومیک دقیق را لازم می‌داند که اغلب جراحی است؛ درمان به محل و جابجایی بستگی دارد. نوع V: خطر بالای توقف رشد.'),
       },
       {
         title: L('Toddler-Fraktur = klinische Diagnose', 'Toddler fracture = clinical diagnosis', 'شکستگی توددلر = تشخیص بالینی'),
@@ -367,7 +367,7 @@ export const FRAKTUR_KINDER_LESSON = {
       },
       {
         title: L('Übergangsfrakturen → CT', 'Transitional fractures → CT', 'شکستگی‌های گذار → CT'),
-        text: L('Tillaux und Triplane immer mit CT vervollständigen. Gelenkstufenbildung > 2 mm ist Operationsindikation.', 'Always complete Tillaux and Triplane assessment with CT. Articular step > 2 mm is an indication for surgery.', 'تیلو و سه‌صفحه‌ای را همیشه با CT کامل کنید. پله مفصلی > ۲ میلی‌متر نشانه عمل است.'),
+        text: L('CT häufig zur Beurteilung von Fragmenten und Gelenkstufe ergänzen, wenn Röntgen die intraartikuläre Dislokation nicht ausreichend zeigt. Die PDF nennt ≥ 2 mm als Schwelle zur Schraubenbehandlung; die Schwelle ist keine alleinige Operationsregel.', 'Often add CT to assess fragments and articular step when radiographs do not show intra-articular displacement adequately. The PDF lists ≥2 mm as the threshold for screw fixation; this threshold is not a stand-alone operative rule.', 'اگر رادیوگرافی جابجایی داخل‌مفصلی را کافی نشان ندهد، CT را برای ارزیابی قطعات و پله مفصلی اضافه کنید. PDF آستانه ≥۲ میلی‌متر را برای پیچ‌گذاری ذکر می‌کند؛ این آستانه به‌تنهایی قانون جراحی نیست.'),
       },
       {
         title: L('Remodellierung', 'Remodelling', 'بازسازی استخوان'),
@@ -428,7 +428,7 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
       L('Typ V', 'Type V', 'نوع V')[lang],
     ],
     1,
-    L('Typ III durchläuft Physis + Epiphyse → intraartikulär. Therapie: OP bei Dislokation > 2 mm (anatomische Reposition des Gelenks erforderlich).', 'Type III runs through physis + epiphysis → intra-articular. Treatment: surgery if displacement > 2 mm (anatomic reduction of the joint required).', 'نوع III از فیزیس + اپی‌فیز عبور می‌کند → داخل مفصل. درمان: جراحی در صورت جابجایی > ۲ میلی‌متر (نیاز به ریداکسیون آناتومیک مفصل).')[lang]
+    L('Typ III durchläuft Physis + Epiphyse → intraartikulär. Die Gelenkstufe und Reposition müssen beurteilt werden; ein Einzelwert von 2 mm ist keine alleinige Operationsregel. Die häufig verwendete Schwelle ist nur begrenzt belegt (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170).', 'Type III crosses the physis and epiphysis into the joint. Assess the articular step and reduction; a single 2 mm value is not a stand-alone operative rule. The commonly used threshold has limited evidence (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170).', 'نوع III از فیزیس و اپی‌فیز عبور می‌کند و وارد مفصل می‌شود. پله مفصلی و جااندازی را ارزیابی کنید؛ عدد ۲ میلی‌متر به‌تنهایی قانون جراحی نیست. شواهد آستانه رایج محدود است (Lurie و همکاران، ۲۰۲۰، doi:10.2106/JBJS.19.01170).')[lang]
   ),
 
   Q(`fk-sh-4-${lang}`,
@@ -516,17 +516,17 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
   ),
 
   Q(`fk-triplane-1-${lang}`,
-    L('Welche Bildgebung ist bei einer Triplane-Fraktur essenziell und warum?',
-      'Which imaging is essential in a Triplane fracture and why?',
-      'کدام تصویربرداری در شکستگی سه‌صفحه‌ای ضروری است و چرا؟')[lang],
+    L('Wann kann CT bei einer Triplane-Fraktur hilfreich sein?',
+      'When can CT be helpful in a Triplane fracture?',
+      'CT چه زمانی در شکستگی سه‌صفحه‌ای می‌تواند کمک‌کننده باشد؟')[lang],
     [
       L('MRT – wegen Weichteilbeteiligung', 'MRI – due to soft tissue involvement', 'MRI – به دلیل درگیری بافت نرم')[lang],
-      L('CT – genaue Fragmentdarstellung und Beurteilung der Gelenkstufenbildung (OP-Indikation > 2 mm)', 'CT – precise fragment delineation and assessment of articular step (surgery if > 2 mm)', 'CT – تصویربرداری دقیق قطعات و ارزیابی پله مفصلی (جراحی اگر > ۲ میلی‌متر)')[lang],
+      L('CT ergänzen, wenn Röntgen Fragmentkonfiguration oder Gelenkstufe nicht ausreichend zeigt oder die Behandlungsplanung zusätzliche räumliche Information benötigt.', 'Add CT when radiographs do not adequately show fragment configuration or articular step, or when treatment planning needs additional spatial detail.', 'اگر رادیوگرافی آرایش قطعات یا پله مفصلی را به‌اندازه کافی نشان ندهد، یا برنامه‌ریزی درمان به جزئیات فضایی بیشتری نیاز داشته باشد، CT را اضافه کنید.')[lang],
       L('Szintigraphie – zum Frakturnachweis', 'Scintigraphy – for fracture detection', 'اسکن استخوان – برای تشخیص شکستگی')[lang],
       L('Konventionelles Röntgen reicht aus', 'Conventional X-ray is sufficient', 'رادیوگرافی معمولی کافی است')[lang],
     ],
     1,
-    L('Triplane-Fraktur = 3 Ebenen (sagittal, axial, koronal). CT ist unerlässlich, um Anzahl und Position der Fragmente und v.a. den Dislokationsgrad im Gelenk zu beurteilen. Grenze zur OP: Gelenkstufenbildung > 2 mm.', 'Triplane fracture = 3 planes (sagittal, axial, coronal). CT is essential to assess number and position of fragments and especially the degree of intra-articular displacement. Surgical threshold: articular step > 2 mm.', 'شکستگی سه‌صفحه‌ای = ۳ صفحه (ساژیتال، محوری، کرونال). CT برای ارزیابی تعداد و موقعیت قطعات و به‌ویژه میزان جابجایی داخل مفصل ضروری است. آستانه جراحی: پله مفصلی > ۲ میلی‌متر.')[lang]
+    L('Triplane-Fraktur = 3 Ebenen (sagittal, axial, koronal). CT kann Fragmentzahl, Position und intraartikuläre Stufe für die Behandlungsplanung genauer zeigen. Die oft genannte 2-mm-Schwelle ist keine alleinige OP-Regel; Lurie et al. fanden begrenzte Evidenz für die übliche Schwelle (JBJS 2020, doi:10.2106/JBJS.19.01170).', 'Triplane fracture = 3 planes (sagittal, axial, coronal). CT can better define fragment number, position, and articular step for planning. The commonly cited 2 mm threshold is not a stand-alone surgical rule; Lurie et al. found limited evidence for the customary threshold (JBJS 2020, doi:10.2106/JBJS.19.01170).', 'شکستگی سه‌صفحه‌ای = ۳ صفحه (ساژیتال، محوری، کرونال). CT می‌تواند تعداد و موقعیت قطعات و پله داخل‌مفصلی را برای برنامه‌ریزی دقیق‌تر نشان دهد. آستانه رایج ۲ میلی‌متر قانون مستقل جراحی نیست؛ لوری و همکاران شواهد محدودی برای آستانه معمول یافتند (۲۰۲۰، doi:10.2106/JBJS.19.01170).')[lang]
   ),
 
   Q(`fk-remodel-1-${lang}`,
@@ -575,7 +575,7 @@ export const FRAKTUR_KINDER_FLASHCARDS = [
 
   F('fk-fc-sh3', L('Salter-Harris', 'Salter-Harris', 'سالتر-هریس'),
     L('Salter-Harris Typ III vs. IV: Was ist der Hauptunterschied?', 'Salter-Harris Type III vs. IV: What is the key difference?', 'سالتر-هریس نوع III در مقابل IV: تفاوت اصلی چیست؟'),
-    L('Typ III: Physis + Epiphyse (intraartikulär). Typ IV: Physis + Epiphyse + Metaphyse (T-förmig). Beide erfordern OP wenn > 2 mm disloziert. Typ IV hat höheres Risiko für physeal bar.', 'Type III: physis + epiphysis (intra-articular). Type IV: physis + epiphysis + metaphysis (T-shaped). Both require surgery if > 2 mm displaced. Type IV has higher risk of physeal bar.', 'نوع III: فیزیس + اپی‌فیز (داخل مفصل). نوع IV: فیزیس + اپی‌فیز + متافیز (T شکل). هر دو در صورت > ۲ میلی‌متر جابجایی نیاز به جراحی دارند. نوع IV خطر بالاتری برای فیزیال بار دارد.'),
+    L('Typ III: Physis + Epiphyse (intraartikulär). Typ IV: Physis + Epiphyse + Metaphyse (T-förmig). Gelenkbeteiligung und Reposition sorgfältig beurteilen; die häufig zitierte 2-mm-Schwelle ist keine alleinige OP-Regel (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170). Typ IV hat höheres Risiko für physeal bar.', 'Type III: physis + epiphysis (intra-articular). Type IV: physis + epiphysis + metaphysis (T-shaped). Assess joint involvement and reduction carefully; the commonly cited 2 mm threshold is not a stand-alone surgical rule (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170). Type IV carries higher risk of a physeal bar.', 'نوع III: فیزیس + اپی‌فیز (داخل مفصل). نوع IV: فیزیس + اپی‌فیز + متافیز (T شکل). درگیری مفصل و جااندازی را با دقت ارزیابی کنید؛ آستانه رایج ۲ میلی‌متر به‌تنهایی قانون جراحی نیست (لوری و همکاران، ۲۰۲۰، doi:10.2106/JBJS.19.01170). نوع IV خطر بالاتری برای فیزیال بار دارد.'),
     L('III = Lower (Epiphyse), IV = Through all three layers.', 'III = Lower (epiphysis), IV = Through all three layers.', 'III = پایین (اپی‌فیز)، IV = از طریق هر سه لایه.')
   ),
 
@@ -610,8 +610,8 @@ export const FRAKTUR_KINDER_FLASHCARDS = [
   ),
 
   F('fk-fc-triplane', L('Übergangsfrakturen', 'Transitional Fractures', 'شکستگی‌های گذار'),
-    L('Triplane-Fraktur: Welche 3 Ebenen sind betroffen? Warum CT?', 'Triplane fracture: Which 3 planes are involved? Why CT?', 'شکستگی سه‌صفحه‌ای: کدام ۳ صفحه درگیر هستند؟ چرا CT؟'),
-    L('Sagittal (Epiphyse), axial (Physis), koronal (Metaphyse). Alter: 13–15 J. CT ist essenziell für: Fragmentanzahl, Gelenkstufenbildung > 2 mm (OP-Indikation) und OP-Planung.', 'Sagittal (epiphysis), axial (physis), coronal (metaphysis). Age: 13–15 yr. CT is essential for: fragment count, articular step > 2 mm (surgical indication) and surgical planning.', 'ساژیتال (اپی‌فیز)، محوری (فیزیس)، کرونال (متافیز). سن: ۱۳–۱۵ سال. CT برای: تعداد قطعات، پله مفصلی > ۲ میلی‌متر (نشانه جراحی) و برنامه‌ریزی جراحی ضروری است.'),
+    L('Triplane-Fraktur: Welche 3 Ebenen sind betroffen? Wann kann CT zusätzliche Information liefern?', 'Triplane fracture: Which 3 planes are involved? When can CT add useful information?', 'شکستگی سه‌صفحه‌ای: کدام ۳ صفحه درگیر هستند؟ CT چه زمانی اطلاعات مفیدی اضافه می‌کند؟'),
+    L('Sagittal (Epiphyse), axial (Physis), koronal (Metaphyse). Alter: 13–15 J. CT kann ergänzen, wenn Röntgen Fragmentkonfiguration oder Gelenkstufe nicht ausreichend zeigt oder die Behandlungsplanung zusätzliche räumliche Information benötigt. Ein 2-mm-Wert allein legt keine OP fest; die häufig zitierte Schwelle ist nur begrenzt belegt (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170).', 'Sagittal (epiphysis), axial (physis), coronal (metaphysis). Age: 13–15 yr. CT can add information when radiographs do not adequately show fragment configuration or articular step, or when treatment planning needs additional spatial detail. A 2 mm value alone does not determine surgery; the commonly cited threshold has limited evidence (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170).', 'ساژیتال (اپی‌فیز)، محوری (فیزیس)، کرونال (متافیز). سن: ۱۳–۱۵ سال. اگر رادیوگرافی آرایش قطعات یا پله مفصلی را به‌اندازه کافی نشان ندهد، یا برنامه‌ریزی درمان به اطلاعات فضایی بیشتری نیاز داشته باشد، CT می‌تواند اطلاعات تکمیلی بدهد. عدد ۲ میلی‌متر به‌تنهایی جراحی را تعیین نمی‌کند؛ شواهد آستانه رایج محدود است (لوری و همکاران، ۲۰۲۰، doi:10.2106/JBJS.19.01170).'),
     L('3 Ebenen: SAK – Sagittal-Axial-Koronal.', '3 planes: SAC – Sagittal-Axial-Coronal.', '۳ صفحه: ساژیتال-محوری-کرونال.')
   ),
 
@@ -641,8 +641,8 @@ export const FRAKTUR_KINDER_FLASHCARDS = [
 
   F('fk-fc-uebergang-ct', L('Übergangsfrakturen', 'Transitional Fractures', 'شکستگی‌های گذار'),
     L('Wann ist CT bei Kinderfrakturen indiziert?', 'When is CT indicated in paediatric fractures?', 'CT در کودکان چه زمانی در شکستگی‌ها اندیکاسیون دارد؟'),
-    L('1) Übergangsfrakturen (Tillaux/Triplane): immer CT zum Ausschluss > 2 mm Gelenkstufenbildung. 2) Komplexe Gelenkfrakturen. 3) Operative Planung. 4) Verdacht auf Kindesmisshandlung (Ganzkörper-Skelettszintigraphie oder Low-dose CT).', '1) Transitional fractures (Tillaux/Triplane): always CT to exclude > 2 mm articular step. 2) Complex articular fractures. 3) Surgical planning. 4) Suspected NAI (whole-body bone scan or low-dose CT).', '۱) شکستگی‌های گذار (تیلو/سه‌صفحه‌ای): همیشه CT برای رد > ۲ میلی‌متر پله مفصلی. ۲) شکستگی‌های پیچیده مفصلی. ۳) برنامه‌ریزی جراحی. ۴) ظن به NAI (اسکن استخوان کل بدن یا CT کم‌دوز).'),
-    L('Tillaux + Triplane → immer CT. Schwellenwert: 2 mm Gelenkstufe.', 'Tillaux + Triplane → always CT. Threshold: 2 mm articular step.', 'تیلو + سه‌صفحه‌ای → همیشه CT. آستانه: ۲ میلی‌متر پله مفصلی.')
+    L('1) Bei Tillaux-/Triplane-Frakturen CT häufig ergänzend erwägen, wenn Röntgen Frakturausdehnung oder Gelenkdislokation nicht sicher zeigt. 2) Komplexe Gelenkfrakturen. 3) Operative Planung. 4) Bei Verdacht auf Kindesmisshandlung geeignete Bildgebung nach lokalem Protokoll.', '1) Often consider adding CT for Tillaux/triplane fractures when radiographs do not clearly show fracture extent or articular displacement. 2) Complex articular fractures. 3) Surgical planning. 4) For suspected non-accidental injury, use imaging appropriate to local protocol.', '۱) در شکستگی تیلو/سه‌صفحه‌ای اگر رادیوگرافی گستره شکستگی یا جابجایی مفصلی را روشن نکند، افزودن CT را در نظر بگیرید. ۲) شکستگی‌های پیچیده مفصلی. ۳) برنامه‌ریزی جراحی. ۴) در ظن به کودک‌آزاری، تصویربرداری مطابق پروتکل محلی.'),
+    L('Tillaux/Triplane: CT kann die Fragment- und Gelenkbeurteilung ergänzen; eine häufig zitierte 2-mm-Schwelle ist keine alleinige OP-Regel (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170).', 'Tillaux/triplane: CT can supplement fragment and joint assessment; a commonly cited 2 mm threshold is not a stand-alone surgical rule (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170).', 'تیلو/سه‌صفحه‌ای: CT می‌تواند ارزیابی قطعات و مفصل را تکمیل کند؛ آستانه رایج ۲ میلی‌متر به‌تنهایی قانون جراحی نیست (لوری و همکاران، ۲۰۲۰، doi:10.2106/JBJS.19.01170).')
   ),
 
 ].map(fc => ({

@@ -1,6 +1,8 @@
 const L = (de, en, fa) => ({ de, en, fa })
 
 export const HIE_LESSON = {
+  pdfSourcePages: [10,11], // user PDF page range; coverage still requires content comparison
+
   toc: L('Inhaltsverzeichnis', 'Contents', 'فهرست مطالب'),
   breadcrumbArea: L('Kopf', 'Head', 'سر'),
   breadcrumbCurrent: L(

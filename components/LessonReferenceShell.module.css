@@ -1,0 +1,32 @@
+.page { --ink:#171426;--body:#4f5169;--muted:#7a7d91;--line:#dddde5;--paper:#fff;--plum:#57245a;--teal:#0d7580; width:min(1380px,100%);margin-inline:auto;padding:76px 24px 48px;color:var(--ink);font-family:var(--font-manrope,system-ui,sans-serif); }
+.header,.layout { position:relative;z-index:1;width:100%;margin-inline:auto; }
+.breadcrumb { display:flex;flex-wrap:wrap;align-items:center;gap:9px;color:#c8c2cf;font-size:13px;margin:0; }
+.breadcrumb a { color:#ecd6ee;font-weight:800;text-decoration:none; }
+.breadcrumb strong { color:#fff;font-weight:700; }
+.intro { max-width:1020px;margin:4px 0 16px;padding:12px 16px;border:1px solid rgba(56,174,177,.35);border-radius:9px;background:rgba(255,255,255,.93);color:var(--body); }
+.intro strong { color:var(--plum);font-family:var(--font-newsreader,Georgia,serif);font-size:18px; }
+.intro ul { display:flex;flex-wrap:wrap;gap:6px 25px;margin:8px 0 0;padding-inline-start:20px;line-height:1.55; }
+.actions { display:flex;flex-wrap:wrap;gap:10px;margin:12px 0; }
+.actions :is(a,button) { min-height:40px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:9px 15px;border:1px solid var(--line);border-radius:7px;background:rgba(255,255,255,.94);color:var(--plum);font:800 13px/1.2 inherit;text-decoration:none;cursor:pointer; }
+.actions :is(a,button):first-child { border-color:rgba(165,58,98,.4);background:linear-gradient(120deg,#fff9fb,#f7e6ef);color:#6d1d3b; }
+.progress { min-height:48px;display:grid;grid-template-columns:minmax(100px,290px) auto minmax(0,1fr) auto;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.96); }
+.progress > span { color:var(--muted);font-size:13px;white-space:nowrap; }
+.track { height:9px;overflow:hidden;border-radius:999px;background:#e9e7ec; }.track span { display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#57245a,#38aeb1);transition:width .25s; }
+.progress button,.panel > button { min-height:34px;padding:7px 11px;border:1px solid #c8c4d0;border-radius:7px;background:#fff;color:var(--plum);font:750 12px/1.3 inherit;cursor:pointer; }.progress button:disabled { opacity:.4;cursor:default; }
+.layout { display:grid;grid-template-columns:240px minmax(0,1fr);gap:18px;align-items:start;margin-top:18px; }
+.sidebar { position:sticky;top:calc(90px + var(--jaminova-header-height,0px));padding:17px 12px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.94);box-shadow:0 12px 30px rgba(35,18,39,.04); }
+.sidebar h2 { margin:0 8px 12px;font-family:var(--font-newsreader,Georgia,serif);font-size:20px; }.sidebar nav { display:grid;gap:4px; }
+.sidebar button { width:100%;min-height:40px;display:grid;grid-template-columns:28px 1fr;align-items:center;gap:7px;padding:5px 8px;border:0;border-radius:7px;background:transparent;color:var(--body);font:700 13px/1.35 inherit;text-align:start;cursor:pointer; }
+.sidebar button:hover,.sidebar .active { background:linear-gradient(90deg,rgba(87,36,90,.12),rgba(56,174,177,.08));color:var(--plum); }.dot { width:24px;height:24px;display:grid;place-items:center;border:1px solid #d3d2db;border-radius:50%;color:var(--teal); }
+.chapters { min-width:0;display:grid;gap:10px; }.chapter { scroll-margin-top:90px;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.95);box-shadow:0 12px 30px rgba(35,18,39,.035); }
+.chapter h2 { margin:0; }.chapter h2 button { width:100%;min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:13px 19px;border:0;background:transparent;color:var(--ink);font:850 clamp(20px,2.2vw,28px)/1.2 var(--font-newsreader,Georgia,serif);text-align:start;cursor:pointer; }.chapter h2 button:hover { background:rgba(240,229,241,.35); }.chapter h2 span { color:var(--plum);font:400 23px/1 system-ui; }
+.panel { padding:18px 20px 22px;border-top:1px solid var(--line);line-height:1.65; }.panel[hidden] { display:none; }.panel > button { margin-top:16px; }
+.diagram { max-width:540px;margin:0 auto 14px;text-align:center; }.diagram svg { display:block;width:100%;height:auto; }.diagram figcaption { margin:6px 0 0;color:var(--muted);font-size:13px; }
+.panel fieldset { display:grid;gap:8px;margin:14px 0;padding:14px;border:1px solid var(--line);border-radius:9px; }.panel legend { padding-inline:6px;color:var(--plum);font-weight:800; }.panel label { display:flex;align-items:flex-start;gap:9px;padding:9px 10px;border:1px solid var(--line);border-radius:7px;cursor:pointer; }.panel label.selected { border-color:var(--plum);background:#f7f1f8; }.panel input { margin-top:4px;accent-color:var(--plum); }
+.feedback { margin:12px 0;padding:12px 14px;border-radius:8px;background:#f2f4f8;color:var(--body); }.feedback strong { margin-inline-end:5px; }.correct { background:#e8f7f2;color:#145b49; }.incorrect { background:#fff3e5;color:#81500b; }
+.takeHome { border-color:rgba(165,58,98,.42);background:linear-gradient(145deg,#fff9fb,#f7edf2); }.takeHome h2 button { color:#6b1d3b; }.takeHome ol { display:grid;gap:9px;margin:0;padding-inline-start:23px; }.takeHome li { padding-inline-start:4px; }
+.page :global(main[data-lesson-legacy]) { min-height:0!important;padding:0!important;background:transparent!important;color:inherit!important; }
+.page :global(main[data-lesson-legacy] > header) { display:none!important; }
+.page :global(main[data-lesson-legacy] .sidebar), .page :global(main[data-lesson-legacy] .toc), .page :global(main[data-lesson-legacy] .tableOfContents) { display:none!important; }
+@media(max-width:900px) { .layout { grid-template-columns:200px minmax(0,1fr); }.progress { grid-template-columns:minmax(90px,1fr) auto auto; }.track { grid-column:1 / -1;grid-row:2; }.progress > span { grid-column:1;grid-row:1; } }
+@media(max-width:760px) { .page { padding:70px 12px 32px; }.layout { grid-template-columns:1fr; }.sidebar { position:relative;top:auto; }.sidebar nav { grid-template-columns:repeat(2,minmax(0,1fr)); }.progress { grid-template-columns:minmax(70px,1fr) auto; }.progress > span { grid-column:2; }.progress button { grid-row:2; }.track { grid-column:1 / -1;grid-row:1; }.intro ul { display:grid; }.panel { padding:15px 13px 18px; }.chapter h2 button { min-height:62px;padding:11px 14px; }.breadcrumb { font-size:12px; } }

@@ -3,6 +3,8 @@ const Q = (id, question, options, correct, explanation) => ({ id, question, opti
 const F = (id, category, front, answer, explanation) => ({ id, category, front, answer, explanation })
 
 export const AVM_LESSON = {
+  pdfSourcePages: [37,38], // user PDF page range; coverage still requires content comparison
+
   breadcrumb: L('Arteriovenöse Malformation (AVM)', 'Arteriovenous Malformation (AVM)', 'مالفورماسیون شریانی-وریدی (AVM)'),
   title: L('Arteriovenöse Malformation (AVM)', 'Arteriovenous Malformation (AVM)', 'مالفورماسیون شریانی-وریدی (AVM)'),
   definition: L(

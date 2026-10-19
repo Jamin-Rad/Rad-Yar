@@ -150,17 +150,17 @@ export const AK_LUXATION_LESSON = {
         L('Posteriore Dislokation (Typ IV)', 'Posterior dislocation (Type IV)', 'جابجایی خلفی (نوع IV)'),
       ],
       [
-        L('Panorama-Aufnahme (Belastungsaufnahme)', 'Panoramic stress view', 'نمای پانورامیک استرس'),
-        L('Beide Schultern unter 10–15 kg Gewicht pro Seite', 'Both shoulders under 10–15 kg weight per side', 'هر دو شانه با وزن ۱۰–۱۵ کیلوگرم در هر طرف'),
-        L('Dynamische Instabilität nachweisen; CCD-Seitenvergleich; Typ III ↔ V Differenzierung', 'Demonstrate dynamic instability; CCD side comparison; differentiate Type III from V', 'نشان دادن ناپایداری دینامیک؛ مقایسه CCD دو طرف؛ افتراق نوع III از V'),
+        L('Panorama-/Belastungsaufnahme (selektiv)', 'Panoramic/weighted view (selective)', 'نمای پانورامیک/استرس (انتخابی)'),
+        L('PDF beschreibt beidseitig 10–15 kg pro Seite; Zusatzbelastung nur nach klinischer Fragestellung/lokalem Protokoll erwägen.', 'The PDF describes 10–15 kg per side bilaterally; consider added load only for a specific clinical question/local protocol.', 'PDF بار دوطرفه ۱۰–۱۵ کیلوگرم در هر طرف را توصیف می‌کند؛ بارگذاری افزوده را فقط بر اساس پرسش بالینی مشخص/پروتکل محلی در نظر بگیرید.'),
+        L('CCD-Seitenvergleich; Evidenz zum Zusatznutzen gewichteter Aufnahmen ist widersprüchlich, daher keine Routineaufnahme.', 'Compare CCD side to side; evidence for added value of weighted views conflicts, so they are not routine.', 'CCD را در دو طرف مقایسه کنید؛ شواهد ارزش افزوده نماهای وزنه‌دار متناقض است، بنابراین نمای روتین نیست.'),
       ],
     ],
     ccdNote: {
       title: L('CCD-Messung', 'CCD Measurement', 'اندازه‌گیری CCD'),
       text: L(
-        'Normwert CCD: 11–13 mm. Messung von der Unterkante der Klavikula bis zur Oberkante des Processus coracoideus. Seitenvergleich ist obligat – individuelle Varianz berücksichtigen.',
-        'Normal CCD: 11–13 mm. Measured from the inferior surface of the clavicle to the superior surface of the coracoid process. Contralateral comparison is mandatory – consider individual variation.',
-        'مقدار طبیعی CCD: ۱۱–۱۳ میلی‌متر. اندازه‌گیری از سطح تحتانی کلاویکول تا سطح فوقانی پروسه کوراکوئید. مقایسه با طرف مقابل اجباری است – تنوع فردی را در نظر بگیرید.'
+        'Die PDF nennt 11–13 mm als Orientierungsbereich; ein passender unabhängiger Normwertbeleg ist noch ausstehend. Technik und individuelle Varianz beachten und möglichst mit der Gegenseite vergleichen. Zur Zusatzklassifikation durch Belastungsaufnahmen ist die Evidenz widersprüchlich: Nordin et al. (online 2020, Ausgabe 2021; doi:10.1177/0284185120939270) fanden keinen signifikanten Klassifikationsgewinn; Ibrahim et al. (2015; doi:10.1016/j.injury.2015.06.028) berichteten einen Nutzen bilateraler gewichteter Aufnahmen.',
+        'The PDF gives 11–13 mm as an orienting range; an appropriate independent normative reference is still pending. Account for technique and individual variation, and compare with the other side when possible. Evidence on added classification from weighted views conflicts: Nordin et al. (online 2020, issue 2021; doi:10.1177/0284185120939270) found no significant classification gain, while Ibrahim et al. (2015; doi:10.1016/j.injury.2015.06.028) reported value from bilateral weighted views.',
+        'PDF محدوده ۱۱ تا ۱۳ میلی‌متر را به‌عنوان راهنما ذکر می‌کند؛ منبع مستقل و مناسب برای مقدار هنجار هنوز در انتظار بررسی است. تفاوت تکنیک و فردی را لحاظ کنید و در صورت امکان طرف مقابل را مقایسه کنید. شواهد ارزش افزوده نماهای وزنه‌دار برای طبقه‌بندی متناقض است: نوردین و همکاران (انتشار آنلاین ۲۰۲۰، شماره ۲۰۲۱؛ doi:10.1177/0284185120939270) بهبود معناداری در طبقه‌بندی نیافتند، اما ابراهیم و همکاران (۲۰۱۵؛ doi:10.1016/j.injury.2015.06.028) برای نماهای وزنه‌دار دوطرفه ارزش گزارش کردند.'
       ),
     },
     caseTitle: L('Fallbeispiel Normal / Typ I – AP-Aufnahme (rID:48600)', 'Case: Normal / Type I – AP view (rID:48600)', 'مورد: طبیعی / نوع I – نمای AP (rID:48600)'),
@@ -185,9 +185,9 @@ export const AK_LUXATION_LESSON = {
   rockwood: {
     title: L('Rockwood-Klassifikation', 'Rockwood Classification', 'طبقه‌بندی راک‌وود'),
     lead: L(
-      'Die Rockwood-Klassifikation (1998) ist der internationale Goldstandard und unterscheidet sechs Verletzungstypen nach Pathologie und radiologischem Befund. Die ältere Tossy-Klassifikation (I–III) gilt als veraltet.',
-      'The Rockwood classification (1998) is the international gold standard, distinguishing six injury types by pathology and radiological findings. The older Tossy classification (I–III) is considered outdated.',
-      'طبقه‌بندی راک‌وود (۱۹۹۸) استاندارد طلایی بین‌المللی است و شش نوع آسیب را بر اساس پاتولوژی و یافته‌های رادیولوژیک متمایز می‌کند. طبقه‌بندی قدیمی‌تر توسی (I–III) منسوخ شده است.'
+      'Die weit verbreitete Rockwood-Klassifikation unterscheidet sechs Verletzungstypen anhand der Bandverletzung und der Richtung/des Ausmaßes der Dislokation. Die PDF beschreibt die ältere Tossy-Klassifikation (I–III) als veraltet.',
+      'The widely used Rockwood classification distinguishes six injury types by ligament injury and direction/degree of displacement. The PDF describes the older Tossy classification (I–III) as outdated.',
+      'طبقه‌بندی رایج راک‌وود شش نوع آسیب را بر اساس آسیب رباط‌ها و جهت/میزان جابجایی متمایز می‌کند. PDF طبقه‌بندی قدیمی‌تر توسی (I–III) را منسوخ می‌داند.'
     ),
     illustrationSrc: '/ak-luxation/rockwood-klassifikation.png',
     illustrationAlt: L(
@@ -297,7 +297,7 @@ export const AK_LUXATION_LESSON = {
       },
       {
         title: L('CCD im Seitenvergleich messen', 'Measure CCD on both sides', 'CCD را در مقایسه دو طرف اندازه‌گیری کنید'),
-        text: L('Absoluter CCD-Wert allein unzureichend – stets mit Gegenseite vergleichen. Norm: 11–13 mm. Belastungsaufnahme bei Verdacht auf Typ III vs. V.', 'Absolute CCD value alone is insufficient – always compare with contralateral side. Normal: 11–13 mm. Stress view for suspected Type III vs. V.', 'مقدار مطلق CCD به تنهایی کافی نیست – همیشه با طرف مقابل مقایسه کنید. طبیعی: ۱۱–۱۳ میلی‌متر. نمای استرس در موارد مشکوک به نوع III در مقابل V.'),
+        text: L('Absoluten CCD-Wert im Kontext beurteilen; Seitenvergleich hilft, individuelle Varianz zu berücksichtigen. 11–13 mm ist die PDF-Angabe, deren unabhängige Normwertquelle noch aussteht. Die Evidenz zur Zusatzklassifikation durch Belastungsaufnahmen ist widersprüchlich: Nordin et al. (online 2020/Ausgabe 2021, doi:10.1177/0284185120939270) fanden keinen signifikanten Gewinn; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) berichteten einen Nutzen bilateraler Gewichtung.', 'Interpret the absolute CCD in context; side-to-side comparison helps account for individual variation. The 11–13 mm value is quoted from the PDF and its independent normative source is pending. Evidence on classification benefit from weighted views conflicts: Nordin et al. (online 2020/issue 2021, doi:10.1177/0284185120939270) found no significant gain; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) reported value from bilateral weighting.', 'مقدار مطلق CCD را در زمینه بالینی تفسیر کنید؛ مقایسه دو طرف به تفاوت فردی کمک می‌کند. مقدار ۱۱ تا ۱۳ میلی‌متر از PDF نقل شده و منبع هنجاری مستقل آن در انتظار بررسی است. شواهد ارزش طبقه‌بندی نماهای وزنه‌دار متناقض است: نوردین و همکاران (آنلاین ۲۰۲۰/شماره ۲۰۲۱، doi:10.1177/0284185120939270) بهبود معناداری نیافتند؛ ابراهیم و همکاران (۲۰۱۵، doi:10.1016/j.injury.2015.06.028) ارزش وزن‌دهی دوطرفه را گزارش کردند.'),
       },
       {
         title: L('Typ IV – Axiale Aufnahme obligat', 'Type IV – Axial view is mandatory', 'نوع IV – نمای محوری اجباری است'),
@@ -398,17 +398,17 @@ export const AK_LUXATION_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(l
   ),
 
   Q(`ak-lux-ccd-1-${lang}`,
-    L('Was ist der Normwert der korakoklavikulären Distanz (CCD)?',
-      'What is the normal value of the coracoclavicular distance (CCD)?',
-      'مقدار طبیعی فاصله کوراکوکلاویکولار (CCD) چیست؟')[lang],
+    L('Wie ist die CCD-Angabe 11–13 mm aus der PDF einzuordnen?',
+      'How should the PDF value of 11–13 mm for CCD be interpreted?',
+      'مقدار ۱۱ تا ۱۳ میلی‌متر CCD در PDF را چگونه باید تفسیر کرد؟')[lang],
     [
       L('1–5 mm', '1–5 mm', '۱–۵ میلی‌متر')[lang],
-      L('11–13 mm', '11–13 mm', '۱۱–۱۳ میلی‌متر')[lang],
+      L('Als PDF-Orientierungswert, nicht als unabhängig bestätigte starre Norm; Seitenvergleich und Technik berücksichtigen.', 'As a PDF orienting value, not an independently verified rigid norm; consider side-to-side comparison and technique.', 'به‌عنوان مقدار راهنمای PDF، نه هنجار قطعیِ مستقلاً تأییدشده؛ مقایسه دو طرف و تکنیک را در نظر بگیرید.')[lang],
       L('20–25 mm', '20–25 mm', '۲۰–۲۵ میلی‌متر')[lang],
       L('30–35 mm', '30–35 mm', '۳۰–۳۵ میلی‌متر')[lang],
     ],
     1,
-    L('Normaler CCD: 11–13 mm (gemessen von der Unterkante der Klavikula bis zur Oberkante des Processus coracoideus). Bei Typ V ist CCD > 25 mm. Seitenvergleich ist obligat – individuelle Variationen berücksichtigen.', 'Normal CCD: 11–13 mm (measured from inferior clavicle to superior coracoid process). In Type V, CCD > 25 mm. Contralateral comparison is mandatory – consider individual variation.', 'CCD طبیعی: ۱۱–۱۳ میلی‌متر (اندازه‌گیری از سطح تحتانی کلاویکول تا سطح فوقانی پروسه کوراکوئید). در نوع V، CCD > ۲۵ میلی‌متر. مقایسه با طرف مقابل اجباری است.')[lang]
+    L('Die PDF nennt 11–13 mm als Orientierungswert; ein unabhängiger Normwertbeleg ist noch ausstehend. Technik und individuelle Varianz beachten. Beim Rockwood-Typ V kann die CCD deutlich erhöht sein (PDF-Grenze >25 mm); wenn möglich mit der Gegenseite vergleichen.', 'The PDF gives 11–13 mm as an orienting value; an independent normative reference is still pending. Account for technique and individual variation. Rockwood Type V may show marked CCD widening (PDF threshold >25 mm); compare with the other side when possible.', 'PDF مقدار ۱۱ تا ۱۳ میلی‌متر را به‌عنوان راهنما ذکر می‌کند؛ منبع مستقل برای مقدار هنجار هنوز در انتظار بررسی است. تکنیک و تفاوت فردی را لحاظ کنید. در راک‌وود نوع V ممکن است CCD به‌طور واضح افزایش یابد (آستانه PDF بیش از ۲۵ میلی‌متر)؛ در صورت امکان با طرف مقابل مقایسه کنید.')[lang]
   ),
 
   Q(`ak-lux-therapie-1-${lang}`,
@@ -440,17 +440,17 @@ export const AK_LUXATION_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(l
   ),
 
   Q(`ak-lux-belastung-1-${lang}`,
-    L('Wofür wird die Panorama-Belastungsaufnahme beider Schultern eingesetzt?',
-      'What is the purpose of the panoramic stress view of both shoulders?',
-      'هدف از نمای پانورامیک استرس هر دو شانه چیست؟')[lang],
+    L('Wann kann eine Panorama-Belastungsaufnahme ergänzend erwogen werden?',
+      'When may a panoramic stress view be considered as an adjunct?',
+      'نمای پانورامیک استرس را چه زمانی می‌توان به‌صورت تکمیلی در نظر گرفت؟')[lang],
     [
       L('Zum Nachweis von Rotatorenmanschettenrissen', 'To detect rotator cuff tears', 'برای تشخیص پارگی روتاتور کاف')[lang],
-      L('Zur Differenzierung Rockwood III vs. V und Nachweis dynamischer Instabilität', 'To differentiate Rockwood III from V and demonstrate dynamic instability', 'برای افتراق راک‌وود III از V و نشان دادن ناپایداری دینامیک')[lang],
+      L('Bei konkreter Zusatzfrage zur CCD-Seitendifferenz; der Klassifikationsnutzen ist begrenzt/uneinheitlich, keine Routineaufnahme.', 'For a specific unresolved question about side-to-side CCD difference; classification benefit is limited/inconsistent, not a routine view.', 'برای پرسش مشخص و حل‌نشده درباره اختلاف CCD دو طرف؛ ارزش آن برای طبقه‌بندی محدود/متناقض است و نمای روتین نیست.')[lang],
       L('Zur Erkennung einer Clavicula-Fraktur', 'To detect clavicle fracture', 'برای تشخیص شکستگی کلاویکول')[lang],
       L('Als Ersatz für die axiale Aufnahme', 'As a substitute for the axial view', 'به عنوان جایگزین نمای محوری')[lang],
     ],
     1,
-    L('Die Panorama-Belastungsaufnahme (10–15 kg/Seite) ermöglicht den CCD-Seitenvergleich unter Last → dynamische Instabilität sichtbar. Wichtig zur Differenzierung Typ III vs. V. Ersetzt nicht die axiale Aufnahme.', 'The panoramic stress view (10–15 kg/side) enables CCD side comparison under load → dynamic instability visible. Important for differentiating Type III from V. Does not replace the axial view.', 'نمای پانورامیک استرس (۱۰–۱۵ کیلوگرم/طرف) مقایسه CCD دو طرف را زیر بار فعال می‌کند → ناپایداری دینامیک قابل مشاهده. مهم برای افتراق نوع III از V. جایگزین نمای محوری نمی‌شود.')[lang]
+    L('Die Evidenz ist widersprüchlich: Nordin et al. (online 2020/Ausgabe 2021, doi:10.1177/0284185120939270) fanden keinen signifikanten Klassifikationsgewinn; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) berichteten einen Nutzen bilateraler Belastungsaufnahmen. Daher nur bei konkreter Fragestellung/lokalem Protokoll erwägen, nicht routinemäßig; geeignete Standard-/Axialaufnahmen bleiben erforderlich.', 'Evidence conflicts: Nordin et al. (online 2020/issue 2021, doi:10.1177/0284185120939270) found no significant classification gain; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) reported value from bilateral weighted views. Consider them only for a specific question/local protocol, not routinely; appropriate standard/axial views remain necessary.', 'شواهد متناقض‌اند: نوردین و همکاران (آنلاین ۲۰۲۰/شماره ۲۰۲۱، doi:10.1177/0284185120939270) بهبود معناداری در طبقه‌بندی نیافتند؛ ابراهیم و همکاران (۲۰۱۵، doi:10.1016/j.injury.2015.06.028) برای نماهای وزنه‌دار دوطرفه ارزش گزارش کردند. بنابراین فقط برای پرسش مشخص/پروتکل محلی و نه به‌صورت روتین در نظر بگیرید؛ نماهای استاندارد/محوری مناسب همچنان لازم‌اند.')[lang]
   ),
 
   Q(`ak-lux-rock-vi-1-${lang}`,
@@ -506,9 +506,9 @@ export const AK_LUXATION_FLASHCARDS = [
   ),
 
   F('ak-lux-fc-2', L('Bildgebung', 'Imaging', 'تصویربرداری'),
-    L('Was wird bei der Panorama-Belastungsaufnahme gemessen und warum?', 'What is measured in the panoramic stress view and why?', 'در نمای پانورامیک استرس چه چیزی اندازه‌گیری می‌شود و چرا؟'),
-    L('Korakoklavikuläre Distanz (CCD) beider Seiten unter 10–15 kg Last. Normwert: 11–13 mm. Belastung deckt dynamische Instabilität auf → Differenzierung Typ III vs. V.', 'Coracoclavicular distance (CCD) on both sides under 10–15 kg load. Normal: 11–13 mm. Load reveals dynamic instability → differentiates Type III from V.', 'فاصله کوراکوکلاویکولار (CCD) هر دو طرف زیر بار ۱۰–۱۵ کیلوگرم. طبیعی: ۱۱–۱۳ میلی‌متر. بار ناپایداری دینامیک را آشکار می‌کند → افتراق نوع III از V.'),
-    L('Panorama = Seitenvergleich unter Last. CCD Normal 11–13 mm.', 'Panoramic = side comparison under load. CCD normal 11–13 mm.', 'پانورامیک = مقایسه دو طرف زیر بار. CCD طبیعی ۱۱–۱۳ میلی‌متر.')
+    L('Wie hilft der CCD-Seitenvergleich; wann kann Zusatzbelastung erwogen werden?', 'How does side-to-side CCD comparison help, and when might added load be considered?', 'مقایسه CCD دو طرف چه کمکی می‌کند و چه زمانی می‌توان بارگذاری افزوده را در نظر گرفت؟'),
+    L('CCD beidseits vergleichen; 11–13 mm ist nur der PDF-Orientierungswert, ein unabhängiger Normwertbeleg steht aus. Die Evidenz zur Zusatzbelastung ist widersprüchlich: Nordin et al. (online 2020/Ausgabe 2021, doi:10.1177/0284185120939270) fanden keinen signifikanten Gewinn; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) berichteten Nutzen. Nur konkrete Fragestellung/lokales Protokoll, keine Routine.', 'Compare CCD on both sides; 11–13 mm is only the PDF orienting value and an independent normative reference is pending. Evidence on added load conflicts: Nordin et al. (online 2020/issue 2021, doi:10.1177/0284185120939270) found no significant gain; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) reported value. Use only for a specific question/local protocol, not routinely.', 'CCD را در دو طرف مقایسه کنید؛ ۱۱ تا ۱۳ میلی‌متر فقط مقدار راهنمای PDF است و منبع هنجاری مستقل آن در انتظار بررسی است. شواهد بارگذاری افزوده متناقض است: نوردین و همکاران (آنلاین ۲۰۲۰/شماره ۲۰۲۱، doi:10.1177/0284185120939270) بهبود معناداری نیافتند؛ ابراهیم و همکاران (۲۰۱۵، doi:10.1016/j.injury.2015.06.028) ارزش آن را گزارش کردند. فقط برای پرسش مشخص/پروتکل محلی، نه به‌صورت روتین.'),
+    L('Seitenvergleich, keine starre Einzelgrenze; gewichtete Aufnahme nur gezielt.', 'Compare sides, avoid rigid single cutoff; use weighted view selectively.', 'مقایسه دو طرف، نه مرز مطلق؛ نمای وزنه‌دار فقط به‌صورت انتخابی.')
   ),
 
   F('ak-lux-fc-3', L('Rockwood', 'Rockwood', 'راک‌وود'),

@@ -1,7 +1,9 @@
 .hero { position: relative; z-index: 0; display: grid; grid-template-columns: minmax(0,1fr) minmax(260px,420px); align-items: center; gap: 32px; min-height: 220px; padding-block: 0 20px; }
 .hero h1 { margin: 0; color: #faf5fb; font-family: var(--font-newsreader,var(--font-fraunces,Georgia,serif)); font-size: clamp(36px,4.5vw,62px); font-weight: 900; line-height: 1.08; letter-spacing: -.035em; text-wrap: balance; }
-.visual { position: relative; min-width: 0; height: 200px; pointer-events: none; }
+.visual { position: relative; min-width: 0; height: 200px; margin: 0; pointer-events: none; }
 .visual img { display: block; width: 100%; height: 100%; object-fit: contain; transform: translateY(100px) scale(1.5); transform-origin: center bottom; }
+.visual svg { display: block; width: 100%; height: 100%; overflow: visible; transform: translateY(10px); }
+.visualCaption { position: absolute; inset-inline: 0; bottom: -10px; z-index: 1; margin: 0; color: #eee8f0; font-size: 11px; line-height: 1.35; text-align: center; }
 /* Foreground controls cover the lower part of the enlarged schematic. */
 .hero ~ div { position: relative; z-index: 1; }
 .hero[lang='fa'] h1 { font-family: 'Vazirmatn',sans-serif; font-size: clamp(32px,4vw,52px); line-height: 1.5; letter-spacing: 0; }
@@ -12,6 +14,7 @@
   .hero h1 { font-size: clamp(27px,6.5vw,38px); line-height: 1.15; letter-spacing: -.025em; }
   .visual { height: 130px; }
   .visual img { transform: translateY(12px) scale(1.1); }
+  .visual svg { transform: none; }
   .hero[lang='fa'] h1 { font-size: clamp(25px,6.5vw,34px); line-height: 1.55; }
 }
 @media print { .hero { min-height: 0; grid-template-columns: 1fr 140px; padding: 0; }.visual { height: 110px; }.visual img { transform: none; }.hero h1 { margin-block-start: 0; color: #171426; } }

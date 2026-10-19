@@ -3,6 +3,8 @@ const Q = (id, question, options, correct, explanation) => ({ id, question, opti
 const F = (id, category, front, answer, explanation) => ({ id, category, front, answer, explanation })
 
 export const NPH_LESSON = {
+  pdfSourcePages: [69,71], // user PDF page range; coverage still requires content comparison
+
   breadcrumb: L('Normaldruckhydrozephalus', 'Normal pressure hydrocephalus', 'هیدروسفالی فشار طبیعی'),
   title: L('Normaldruckhydrozephalus', 'Normal Pressure Hydrocephalus', 'هیدروسفالی فشار طبیعی'),
   definition: L(

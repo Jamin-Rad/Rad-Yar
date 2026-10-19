@@ -5,6 +5,8 @@ const F = (id, category, front, answer, explanation, diagram = null) => ({ id, c
 // ─── Lesson ──────────────────────────────────────────────────────────────────
 
 export const HMA_LESSON = {
+  pdfSourcePages: [25,26], // user PDF page range; coverage still requires content comparison
+
   breadcrumb: L('Hypertensive Mikroangiopathie', 'Hypertensive Microangiopathy', 'میکروآنژیوپاتی فشار خون بالا'),
   title: L('Hypertensive Mikroangiopathie', 'Hypertensive Microangiopathy', 'میکروآنژیوپاتی فشار خون بالا'),
   definition: L(

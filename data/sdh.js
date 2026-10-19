@@ -1,6 +1,8 @@
 const L = (de, en, fa) => ({ de, en, fa })
 
 export const SDH_LESSON = {
+  pdfSourcePages: [14,14], // user PDF page range; coverage still requires content comparison
+
   toc: L('Inhaltsverzeichnis', 'Contents', 'فهرست مطالب'),
   title: L('Subduralhämatom', 'Subdural Haematoma', 'هماتوم ساب‌دورال'),
   subtitle: L(

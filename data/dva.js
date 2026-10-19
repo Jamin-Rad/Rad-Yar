@@ -3,6 +3,8 @@ const Q = (id, question, options, correct, explanation) => ({ id, question, opti
 const F = (id, category, front, answer, explanation) => ({ id, category, front, answer, explanation })
 
 export const DVA_LESSON = {
+  pdfSourcePages: [30,30], // user PDF page range; coverage still requires content comparison
+
   breadcrumb: L('Developmental Venous Anomaly', 'Developmental Venous Anomaly', 'آنومالی وریدی تکاملی'),
   title: L('DVA', 'DVA', 'DVA'),
   definition: L(

@@ -1,0 +1,46 @@
+const L = (de, en, fa) => ({ de, en, fa })
+
+// PDF-led teaching draft from Gehirn.pdf pp.85–86; only pattern claims are taught.
+export const GEHIRN_BALKENAGENESIE_LESSON = {
+  id: 'balkenagenesie-mrt-muster',
+  title: L('Balkenagenesie: die Mittellinie in drei Ebenen prüfen', 'Callosal agenesis: inspect the midline in three planes', 'آژنزی جسم پینه‌ای: خط میانی را در سه صفحه بررسی کنید'),
+  sourcePages: [85, 86],
+  objective: L('Sie prüfen den Corpus callosum direkt in der sagittalen Mittellinie und suchen in koronarer und axialer Ebene nach unterstützenden Konfigurationszeichen.', 'You will inspect the corpus callosum directly in the mid-sagittal plane and look for supporting configuration signs in the coronal and axial planes.', 'جسم پینه‌ای را مستقیماً در صفحهٔ ساژیتال میانی می‌سنجید و در صفحات کرونال و اکسیال به‌دنبال نشانه‌های پشتیبانِ آرایش بطن‌ها می‌گردید.'),
+  chapters: [
+    {
+      id: 'sagittal', pages: '85',
+      title: L('Sagittal: das Corpus callosum direkt beurteilen', 'Sagittal: assess the corpus callosum directly', 'ساژیتال: جسم پینه‌ای را مستقیماً ارزیابی کنید'),
+      text: L('Beginnen Sie mit einer echten Mittellinienaufnahme. Bei der im PDF gezeigten Agenesie fehlt das Corpus callosum; die mediale Oberfläche zeigt eine radiäre Anordnung der Gyri zum dritten Ventrikel. Der Gyrus cinguli kann fehlen oder fehlgebildet sein.\n\nEine partielle Fehlanlage kann subtiler sein. Verfolgen Sie den Balken abschnittsweise und beschreiben Sie, welche Anteile sichtbar sind. Sekundäre Ventrikelzeichen ersetzen die direkte Beurteilung nicht.', 'Start with a true mid-sagittal image. In the agenesis pattern shown in the PDF, the corpus callosum is absent and the medial gyri radiate toward the third ventricle. The cingulate gyrus may be absent or malformed.\n\nA partial malformation can be subtler. Trace the callosum by segment and describe which parts are visible. Secondary ventricular signs do not replace direct assessment.', 'با تصویر واقعیِ خط میانی شروع کنید. در الگوی آژنزیِ نشان‌داده‌شده در PDF، جسم پینه‌ای وجود ندارد و شکنج‌های میانی به‌سمت بطن سوم آرایش شعاعی دارند. شکنج سینگولیت ممکن است غایب یا بدشکل باشد.\n\nناهنجاری ناقص ممکن است ظریف‌تر باشد. جسم پینه‌ای را بخش‌به‌بخش دنبال کنید و قسمت‌های قابل مشاهده را توصیف کنید. نشانه‌های ثانویهٔ بطنی جای ارزیابی مستقیم را نمی‌گیرند.'),
+    },
+    {
+      id: 'coronal-axial', pages: '85–86',
+      title: L('Koronal und axial: unterstützende Ventrikelkonfiguration', 'Coronal and axial: supporting ventricular configuration', 'کرونال و اکسیال: آرایش پشتیبان بطن‌ها'),
+      text: L('Koronal können die Seitenventrikel weit auseinanderstehen; longitudinale Probst-Bündel können ihre mediale Wand konfigurieren. Ein hochstehender dritter Ventrikel ist ein weiteres unterstützendes Zeichen.\n\nAxial können die Seitenventrikel parallel statt normal konvergent verlaufen. Eine betonte Erweiterung der Hinterhörner heißt Kolpozephalie. Diese Konfigurationen lenken den Blick zurück zur Mittellinie, beweisen den Befund aber nicht für sich allein.', 'On coronal images, the lateral ventricles may be widely separated; longitudinal Probst bundles may shape their medial walls. A high-riding third ventricle is another supporting sign.\n\nAxially, the lateral ventricles may run parallel rather than converge normally. Disproportionate enlargement of the occipital horns is termed colpocephaly. These configurations should redirect attention to the midline, but they do not prove the finding by themselves.', 'در تصویر کرونال، بطن‌های جانبی ممکن است از هم فاصله داشته باشند؛ دسته‌های طولی پروبست می‌توانند دیوارهٔ داخلی آن‌ها را شکل دهند. بالا قرار گرفتن بطن سوم نیز نشانه‌ای پشتیبان است.\n\nدر صفحهٔ اکسیال، بطن‌های جانبی ممکن است به‌جای همگرایی طبیعی، موازی باشند. بزرگ‌شدن نامتناسب شاخ‌های پس‌سری «کولپوسفالیا» نام دارد. این آرایش‌ها توجه را به خط میانی برمی‌گردانند، اما به‌تنهایی تشخیص را ثابت نمی‌کنند.'),
+    },
+    {
+      id: 'scope', pages: '85–86',
+      title: L('Den Befund beschreiben, Assoziationen nicht hineinlesen', 'Describe the finding; do not infer associations', 'یافته را توصیف کنید؛ ارتباط‌ها را از پیش فرض نکنید'),
+      text: L('Benennen Sie das Ausmaß als vollständig oder partiell nur, wenn die dargestellten Abschnitte dies sicher erlauben. Suchen Sie systematisch nach weiteren Entwicklungsauffälligkeiten und dokumentieren Sie diese separat. Eine isolierte Balkenfehlanlage und eine syndromale Konstellation sind keine austauschbaren Aussagen.\n\nDas PDF listet mehrere mögliche Assoziationen, liefert hier aber weder eine vollständige Abklärung noch eine belastbare Häufigkeitsgrundlage. Deshalb übernimmt diese Lektion keine Prozentwerte oder Syndromzuordnung aus der Liste.', 'Call the anomaly complete or partial only when the displayed segments support that distinction. Systematically look for other developmental findings and document them separately. An isolated callosal anomaly and a syndromic presentation are not interchangeable statements.\n\nThe PDF lists possible associations but does not provide a complete work-up or a reliable prevalence basis here. This lesson therefore does not repeat percentages or assign a syndrome from that list.', 'ناهنجاری را کامل یا ناقص بنامید، فقط وقتی بخش‌های نمایش‌داده‌شده این تمایز را به‌طور مطمئن پشتیبانی می‌کنند. سایر ناهنجاری‌های تکاملی را جداگانه و نظام‌مند بررسی و ثبت کنید. ناهنجاری منفرد جسم پینه‌ای با وضعیت سندرمی یکسان نیست.\n\nPDF چند ارتباط احتمالی را فهرست می‌کند، اما در اینجا ارزیابی کامل یا مبنای قابل اتکایی برای شیوع ارائه نمی‌دهد. بنابراین این درس درصدها را تکرار نمی‌کند و از روی آن فهرست سندرمی را نسبت نمی‌دهد.'),
+    },
+  ],
+  assessment: {
+    id: 'gehirn-acc-plane-check', sourcePages: [85, 86],
+    question: L('Axial zeigt sich eine Kolpozephalie und die Seitenventrikel verlaufen parallel. Was ist der nächste gezielte Prüfschritt?', 'Axial imaging shows colpocephaly and parallel lateral ventricles. What is the next targeted check?', 'در تصویر اکسیال کولپوسفالیا و بطن‌های جانبی موازی دیده می‌شوند. گام هدفمند بعدی چیست؟'),
+    options: [
+      L('Corpus callosum direkt in einer sagittalen Mittellinienaufnahme nachverfolgen', 'Trace the corpus callosum directly on a mid-sagittal image', 'جسم پینه‌ای را مستقیماً در تصویر ساژیتالِ خط میانی دنبال کنید'),
+      L('Allein aus der Kolpozephalie ein Syndrom ableiten', 'Infer a syndrome from colpocephaly alone', 'فقط از روی کولپوسفالیا یک سندرم نتیجه بگیرید'),
+      L('Nur den dritten Ventrikel messen', 'Measure only the third ventricle', 'فقط بطن سوم را اندازه‌گیری کنید'),
+    ],
+    correctIndex: 0,
+    feedback: L('Richtig. Ventrikelkonfigurationen sind Hinweise; die Mittellinienaufnahme prüft die Balkenstruktur direkt. Beschreiben Sie sichtbare Segmente und bewerten Sie weitere Auffälligkeiten separat.', 'Correct. Ventricular configurations are clues; the mid-sagittal image directly assesses the callosal structure. Describe visible segments and assess other findings separately.', 'درست است. آرایش بطن‌ها سرنخ است؛ تصویر خط میانی ساختار جسم پینه‌ای را مستقیماً می‌سنجد. بخش‌های قابل مشاهده را توصیف کنید و سایر یافته‌ها را جداگانه ارزیابی کنید.'),
+    retry: L('Die indirekten Zeichen lenken zur Mittellinie. Prüfen Sie dort den Balken direkt.', 'Indirect signs point you back to the midline. Assess the callosum directly there.', 'نشانه‌های غیرمستقیم شما را به خط میانی هدایت می‌کنند؛ جسم پینه‌ای را مستقیماً در همان‌جا بررسی کنید.'),
+  },
+  references: [
+    { label: 'Gehirn.pdf, PDF pp. 85–86 (printed pp. 84–85)', href: null },
+    { label: 'Kuzniecky RI. Agenesis of the corpus callosum. In: Congenital Malformations of the Brain. 2010.', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2964797/' },
+    { label: 'Sadeghian H, et al. MRI evaluation of pathologies affecting the corpus callosum: a pictorial essay. 2014.', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3932574/' },
+  ],
+  media: L('Code-native Ebenen-Schema, keine diagnostische Aufnahme. Die Abbildungen in Gehirn.pdf pp.85–86 wurden wegen nicht geklärter Rechte nicht übernommen.', 'Code-native plane schematic, not a diagnostic image. Figures in Gehirn.pdf pp.85–86 were not reused because their rights are not established.', 'شماتیک صفحات با کد ساخته شده و تصویر تشخیصی نیست. تصاویر Gehirn.pdf در صفحات ۸۵–۸۶ به‌دلیل نامشخص‌بودن حقوق استفاده نشده‌اند.'),
+  reviewStatus: L('Entwurf: unabhängige fachliche und sprachliche Prüfung, Rechteklärung der Originalfiguren und Browserprüfung stehen aus.', 'Draft: independent clinical and language review, rights clearance for the original figures, and browser review remain pending.', 'پیش‌نویس: بازبینی مستقل علمی و زبانی، تعیین تکلیف حقوق تصاویر اصلی و بررسی مرورگر باقی مانده است.'),
+  sourceConflict: L('Nicht übernommen: PDF p.85 nennt eine partielle Entwicklungsreihenfolge, nach der Splenium und Rostrum zuerst fehlen. Diese Aussage ist widersprüchlich formuliert und benötigt eine gezielte entwicklungsbiologische Quellenprüfung.', 'Not adopted: PDF p.85 gives a partial development sequence in which the splenium and rostrum are the first parts absent. This statement is internally unclear and needs targeted developmental-source verification.', 'وارد درس نشده: صفحهٔ ۸۵ PDF توالی تکاملی ناقصی را ذکر می‌کند که طبق آن اسپلنیوم و روستروم ابتدا غایب می‌شوند. این عبارت روشن نیست و به بررسی هدفمند منبع تکاملی نیاز دارد.'),
+}
