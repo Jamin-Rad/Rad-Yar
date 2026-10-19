@@ -1,0 +1,32 @@
+{
+  "lesson": "/gehirn/neurodegeneration/cjd",
+  "source": "User-provided Gehirn.pdf",
+  "authorization": "User authorized use of all supplied lesson PDFs; project lesson standard records authorization for the PDFs and Radiopaedia cases (2026-10-19).",
+  "assets": [
+    {
+      "file": "cjd-cortex-rid54199.png",
+      "pdfPage": 75,
+      "printedPage": 74,
+      "caseId": "rID-54199",
+      "caseUrl": "https://radiopaedia.org/cases/54199?lang=us",
+      "contributor": "Mathieu Deltomme",
+      "credit": "Case courtesy of Mathieu Deltomme, Radiopaedia.org · rID-54199",
+      "frame": "Axial FLAIR and DWI pair at high convexity; the PDF frame does not include ADC.",
+      "crop": "Extracted from the supplied PDF render; crop retained both sequence labels. The case ID and contributor are repeated in the adjacent figure caption.",
+      "teachingPurpose": "Compare cortical ribbon conspicuity on DWI versus FLAIR without claiming ADC confirmation."
+    },
+    {
+      "file": "cjd-thalamus-rid43970.png",
+      "pdfPage": 76,
+      "printedPage": 75,
+      "caseId": "rID-43970",
+      "caseUrl": "https://radiopaedia.org/cases/43970?lang=us",
+      "contributor": "Brad Hayhow",
+      "credit": "Case courtesy of Brad Hayhow, Radiopaedia.org · rID-43970",
+      "frame": "Single axial DWI image showing bilateral thalamic hyperintensity; no ADC map.",
+      "crop": "Extracted from the supplied PDF render; image-only crop. The case ID and contributor are repeated in the adjacent figure caption; the source page labels the distribution as hockey-stick-like.",
+      "teachingPurpose": "Locate the thalamic signal pattern; distinguish this image label from the classic variant-CJD pulvinar sign.",
+      "licenseReview": "Radiopaedia-derived figure use is user-authorized per project standard; independent reviewer should verify credit and any displayed license metadata before release."
+    }
+  ]
+}

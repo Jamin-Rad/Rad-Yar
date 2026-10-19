@@ -49,8 +49,15 @@ const nf1AssetPaths = [
 ]
 for (const asset of nf1AssetPaths) if (!fs.existsSync(asset)) errors.push(`NF1 image asset missing: ${asset}`)
 if (!fs.existsSync('public/educational/nf1/image-provenance.json')) errors.push('NF1 image provenance record missing')
+for (const figure of GEHIRN_CJD_MUSTER_LESSON.figures || []) {
+  const assetPath = `public${figure.src}`
+  if (!fs.existsSync(assetPath)) errors.push(`CJD image asset missing: ${assetPath}`)
+  if (!figure.credit || !figure.pages) errors.push(`CJD image attribution/page missing: ${figure.src}`)
+}
+if (GEHIRN_CJD_MUSTER_LESSON.assessment.options.length !== 4) errors.push('CJD embedded assessment must have four options')
 const curriculumText = fs.readFileSync('data/curriculum.js', 'utf8')
 if (!/id: 'neurofibromatose-typ1'[^\n]*link: '\/gehirn\/neurofibromatose\/nf1'[^\n]*mcqLink: '[^']*neurofibromatose-typ1/u.test(curriculumText)) errors.push('NF1 curriculum route/MCQ registration missing')
+if (!/id: 'creutzfeldt-jakob'[^\n]*link: '\/gehirn\/neurodegeneration\/cjd'/u.test(curriculumText)) errors.push('CJD curriculum route registration missing')
 
 for (const file of ['app/gehirn/encephalopathie/pres/page.jsx', 'app/gehirn/anatomie/balkenagenesie/page.jsx', 'app/gehirn/anatomie/pvl/page.jsx', 'app/gehirn/neurodegeneration/cjd/page.jsx', 'app/gehirn/neurodegeneration/demenzmuster/page.jsx', 'app/gehirn/neurodegeneration/parkinson/page.jsx', 'app/gehirn/anatomie/chiari/page.jsx', 'app/gehirn/neurofibromatose/nf1/page.jsx']) {
   try { parse(fs.readFileSync(file, 'utf8'), { sourceType: 'module', plugins: ['jsx'] }) }

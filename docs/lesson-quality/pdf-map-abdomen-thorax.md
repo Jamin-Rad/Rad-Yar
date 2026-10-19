@@ -63,7 +63,7 @@
 | GIST و CT | 67–68 | `gist` | — | curriculum-only | C/V؛ enhancement شریانی، نکروز و متاستاز |
 | Ileus و انسداد مکانیکی | 69, 71–72 | `ileus-duenndarm` | `/abdomen/gi/ileus-volvulus` — `app/abdomen/gi/ileus-volvulus/page.js` | authored؛ PDF pages 69–78 in scope; clinical claims cited in repair note | T/C/V؛ نقطهٔ گذار و closed loop؛ PDF72 کیس توضیح‌دار |
 | Intussusception | 70 | `ileus-duenndarm` (زیرموضوع) | `/abdomen/gi/ileus-volvulus` | authored؛ وضعیت پوشش این زیربخش باید از route source cross-check شود | C/V؛ target sign در US/CT |
-| ایسکمی مزانتریک/CTA و انسداد عروقی | 73–75 | `mesenteriale-ischaemie` | — | curriculum-only | T/C/V؛ CTA phases و عروق؛ صفحهٔ 75 کیس عروقی نیازمند دیدن برش‌ها |
+| ایسکمی مزانتریک/CTA و انسداد عروقی | 73–75 | `mesenteriale-ischaemie` | `/abdomen/gi/mesenteriale-ischaemie` | authored؛ صفحات 73–75 بررسی دیداری؛ تصویربرداری با CTA و الگوهای عروقی محدود؛ ESVS 2025 تطبیق شد؛ تأیید علمی و review مستقل باز است | T/C/V؛ CTA دو فازی، تفکیک شریانی/وریدی و دیواره روده؛ دو شکل PDF با منشأ/صفحه ثبت شد |
 | Volvulus سکوم و سیگموئید | 76–78 | `volvulus` | `/abdomen/gi/ileus-volvulus` | authored؛ cluster route، claims pending/limited to source-supported wording | C/V؛ whirl/coffee-bean، محل سکوم و عوارض |
 | Appendicitis و appendicolith | 79–80 | `appendizitis` | `/abdomen/gi/appendizitis` — `app/abdomen/gi/appendizitis/page.js` | authored؛ صفحات 79–80 دیداری بررسی شد؛ رجیستری‌ها به‌روز نشده‌اند | V/T؛ US و CT، عدم رؤیت آپاندیس را منفی تلقی نکنید |
 | Pseudomembranous colitis | 81 | `pmc-kolitis` | — | curriculum-only | C/V؛ الگوی دیواره/accordion در CT در صورت حضور |
