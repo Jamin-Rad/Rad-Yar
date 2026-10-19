@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 430" role="img">
+  <rect x="1" y="1" width="838" height="428" rx="24" fill="#f7fbfc" stroke="#c9dce1" stroke-width="2"/>
+  <text x="420" y="48" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#244e5a">Kompartimente · Schema</text>
+  <g transform="translate(0 55)"><path d="M144 228c-44-23-51-89-18-123 14-51 85-72 123-43 33-54 111-49 137-1 59-18 106 30 91 81 39 46 10 105-40 112-20 34-71 41-104 18-35 29-88 16-105-17-32 8-65-2-84-27z" fill="#d9eaf0" stroke="#387f91" stroke-width="4"/>
+  <path d="M156 112c-45 46-42 115 5 147m221-153c30 43 25 103-8 140" fill="none" stroke="#df805e" stroke-width="10" stroke-linecap="round" opacity=".85"/>
+  <path d="M240 182c-4-28 18-48 44-45 20 3 33 23 26 44-6 20-29 32-51 25-11-4-17-12-19-24z" fill="#86618a" opacity=".9"/>
+  <line x1="165" y1="100" x2="95" y2="78" stroke="#ba6248" stroke-width="2"/><text x="76" y="68" font-family="Arial,sans-serif" font-size="16" fill="#653d32">Meningenraum</text>
+  <line x1="287" y1="190" x2="373" y2="178" stroke="#725078" stroke-width="2"/><text x="383" y="184" font-family="Arial,sans-serif" font-size="16" fill="#49344e">Parenchym</text>
+  <text x="241" y="333" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="#45616a">Kein Patientenscan · kein krankheitsspezifisches Muster</text>
+  </g><g transform="translate(510 102)">
+    <rect x="0" y="0" width="248" height="230" rx="18" fill="#fff" stroke="#c9dce1" stroke-width="2"/>
+    <text x="124" y="37" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#244e5a">Kompartiment beschreiben</text>
+
+    <circle cx="62" cy="82" r="9" fill="#df805e"/><text x="82" y="88" font-family="Arial,sans-serif" font-size="15" fill="#45616a">Sulci / Zisternen</text>
+    <circle cx="62" cy="114" r="9" fill="#86618a"/><text x="82" y="120" font-family="Arial,sans-serif" font-size="15" fill="#45616a">T2 / FLAIR / DWI</text>
+    <circle cx="62" cy="146" r="9" fill="#387f91"/><text x="82" y="152" font-family="Arial,sans-serif" font-size="15" fill="#45616a">Ursache bleibt offen</text>
+    <text x="124" y="198" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#45616a">Nur anatomische Orientierung</text>
+  </g>
+</svg>

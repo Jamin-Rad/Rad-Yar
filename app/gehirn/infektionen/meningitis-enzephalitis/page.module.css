@@ -1,0 +1,20 @@
+.page { --lesson-accent:#58b5c2; --lesson-accent-strong:#185d69; --lesson-accent-soft:#e2f3f4; }
+.page :global(.lessonColumn) { min-width:0; }
+.page p { line-height:1.8; }
+.lead { font-size:1.1rem; font-weight:650; }
+.diagram { margin:22px 0; padding:clamp(14px,3vw,24px); border:1px solid var(--line,#d9e3e7); border-radius:14px; background:var(--paper,#fff); }
+.diagram figcaption { margin:0 0 12px; color:var(--body,#49636a); font-weight:700; }
+.diagram img { display:block; width:min(100%,840px); height:auto; margin-inline:auto; }
+.legend { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr)); gap:8px 18px; margin:16px 0 0; padding-inline-start:1.3em; line-height:1.65; }
+.concepts { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-block:22px; }
+.concepts article { min-width:0; padding:16px; border:1px solid var(--line,#d9e3e7); border-radius:12px; background:var(--paper,#fff); }
+.concepts h3 { margin-top:0; color:var(--lesson-accent-strong); }
+.check { margin-block:20px; padding:clamp(18px,3vw,26px); border:1px solid var(--lesson-accent-strong); border-radius:12px; background:var(--lesson-accent-soft); }
+.options { display:grid; gap:10px; }
+.options button { min-height:48px; padding:13px 16px; border:1px solid var(--line,#d9e3e7); border-radius:8px; background:var(--paper,#fff); color:var(--ink,#193842); text-align:start; font:inherit; line-height:1.65; cursor:pointer; }
+.options button[aria-pressed='true'] { border-color:var(--lesson-accent-strong); box-shadow:inset 0 0 0 1px var(--lesson-accent-strong); }
+.options button:focus-visible { outline:3px solid #1788a0; outline-offset:3px; }
+.feedback { margin-block:14px 0; padding:12px 14px; border-radius:8px; background:var(--paper,#fff); font-weight:600; }
+.limit { padding:14px 16px; border-inline-start:4px solid #c47a55; border-radius:8px; background:var(--lesson-accent-soft); }
+.page[dir='rtl'] { font-family:'Vazirmatn',sans-serif; letter-spacing:0; }
+@media(max-width:760px) { .concepts { grid-template-columns:1fr; } }

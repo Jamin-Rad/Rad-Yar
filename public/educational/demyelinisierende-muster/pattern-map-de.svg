@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" role="img" aria-labelledby="title desc">
+  <title id="title">Anatomische Orientierung für die Beschreibung demyelinisierender Muster</title>
+  <desc id="desc">Drei neutrale Strichzeichnungen: Gehirn, Sehnerven und Chiasma, Rückenmark; keine Läsionen oder Patientenbilder</desc>
+  <rect width="960" height="480" rx="24" fill="#f4fafb"/>
+  <g fill="#fff" stroke="#a8c4ca" stroke-width="2"><rect x="32" y="34" width="286" height="408" rx="22"/><rect x="337" y="34" width="286" height="408" rx="22"/><rect x="642" y="34" width="286" height="408" rx="22"/></g>
+  <g fill="none" stroke="#47717c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path transform="translate(17 0) scale(.88 1)" d="M174 113c-18-25-57-20-66 11-29-9-53 13-47 40-26 12-24 47-2 60-6 27 13 47 36 45 13 26 45 27 62 7 18 11 40 4 48-13V118c-9-12-21-16-31-5Zm20 0c18-25 57-20 66 11 29-9 53 13 47 40 26 12 24 47 2 60 6 27-13 47-36 45-13 26-45 27-62 7-18 11-40 4-48-13V118c9-12 21-16 31-5Z"/>
+    <path d="M405 186h38l34 24 34-24h38M443 186l34 24-34 31m68-55-34 24 34 31"/>
+    <ellipse cx="397" cy="186" rx="15" ry="23"/><ellipse cx="557" cy="186" rx="15" ry="23"/>
+    <path d="M777 115v119m0 0c0 18-13 27-13 43m26-43c0 18 13 27 13 43"/>
+  </g>
+  <g fill="#38535b" font-family="Arial,sans-serif" font-size="21" font-weight="700" text-anchor="middle">
+    <text x="175" y="350">GEHIRN</text><text x="480" y="350">SEHBAHNEN</text><text x="785" y="350">RÜCKENMARK</text>
+  </g>
+  <g fill="#526e75" font-family="Arial,sans-serif" font-size="15" text-anchor="middle">
+    <text x="175" y="378">anatomische Orientierung</text><text x="480" y="378">Sehnerven · Chiasma</text><text x="785" y="378">Rückenmark · Conus</text>
+  </g>
+  <rect x="80" y="410" width="800" height="32" rx="10" fill="#e2f0f2" stroke="#bfd5d9"/>
+  <text x="480" y="431" text-anchor="middle" fill="#38535b" font-family="Arial,sans-serif" font-size="14">NUR ANATOMISCHE ORIENTIERUNG · KEINE LÄSIONEN · KEIN PATIENTENBILD</text>
+</svg>

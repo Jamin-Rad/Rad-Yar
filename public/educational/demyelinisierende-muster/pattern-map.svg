@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" role="img" aria-labelledby="title desc">
+  <title id="title">Concept map of inflammatory demyelinating MRI patterns</title>
+  <desc id="desc">Abstract brain, optic nerves and spinal cord with non-diagnostic markers for distribution patterns</desc>
+  <rect width="960" height="480" rx="24" fill="#f4fafb"/>
+  <g fill="none" stroke="#47717c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M465 93c-23-31-73-25-85 13-38-12-70 17-62 52-34 16-32 61-3 78-8 35 17 61 47 59 17 34 59 36 81 9 24 14 52 5 62-17V99c-12-16-27-21-40-6Z" fill="#e2f0f2"/>
+    <path d="M505 93c23-31 73-25 85 13 38-12 70 17 62 52 34 16 32 61 3 78 8 35-17 61-47 59-17 34-59 36-81 9-24 14-52 5-62-17V99c12-16 27-21 40-6Z" fill="#e2f0f2"/>
+    <path d="M480 77v219m0 4v75m0 0c0 18-10 31-22 43m22-43c0 18 10 31 22 43"/>
+    <path d="M480 260c-42 9-67 28-88 49m88-49c42 9 67 28 88 49" stroke-width="5"/>
+    <path d="M480 378c-18 0-28 9-28 21s10 21 28 21 28-9 28-21-10-21-28-21Z" fill="#fff" stroke-width="5"/>
+  </g>
+  <g fill="#8256ba" stroke="#fff" stroke-width="3">
+    <ellipse cx="398" cy="129" rx="12" ry="8" transform="rotate(-25 398 129)"/><ellipse cx="552" cy="157" rx="12" ry="8" transform="rotate(25 552 157)"/>
+    <ellipse cx="421" cy="202" rx="12" ry="8" transform="rotate(-25 421 202)"/><ellipse cx="540" cy="236" rx="12" ry="8" transform="rotate(25 540 236)"/>
+  </g>
+  <g fill="#d36a4f" stroke="#fff" stroke-width="3">
+    <path d="M465 103c-45 2-66 24-68 60-1 20 9 31 20 38 13-14 27-17 48-17Z"/>
+    <path d="M495 103c45 2 66 24 68 60 1 20-9 31-20 38-13-14-27-17-48-17Z"/>
+    <rect x="469" y="305" width="22" height="55" rx="11"/>
+  </g>
+  <g fill="#e5aa49" stroke="#fff" stroke-width="3">
+    <path d="M455 170c-25 3-40 21-38 43 2 20 17 35 38 35Z"/><path d="M505 170c25 3 40 21 38 43-2 20-17 35-38 35Z"/>
+    <ellipse cx="480" cy="410" rx="18" ry="8"/>
+  </g>
+  <g fill="#3b9a92" stroke="#fff" stroke-width="3">
+    <circle cx="413" cy="187" r="9"/><circle cx="547" cy="187" r="9"/><path d="M474 327c-17 2-25 11-25 22s8 18 25 18Z"/><path d="M486 327c17 2 25 11 25 22s-8 18-25 18Z"/>
+  </g>
+  <g fill="#38535b" font-family="Arial,sans-serif" font-size="19" font-weight="700">
+    <text x="55" y="95">BRAIN</text><text x="55" y="122" font-size="15" font-weight="400">abstract locations only</text>
+    <text x="700" y="165">OPTIC NERVES</text><text x="700" y="193" font-size="15" font-weight="400">length and chiasm</text>
+    <text x="700" y="332">SPINAL CORD</text><text x="700" y="360" font-size="15" font-weight="400">length and cross-section</text>
+  </g>
+  <path d="M652 177h34M517 343h169" stroke="#78949a" stroke-width="2" stroke-dasharray="5 6"/>
+  <rect x="55" y="411" width="850" height="38" rx="10" fill="#fff" stroke="#bfd5d9"/>
+  <text x="480" y="436" text-anchor="middle" fill="#75524a" font-family="Arial,sans-serif" font-size="15">CONCEPT DIAGRAM · NOT PATIENT DATA · NOT A DIAGNOSTIC MRI</text>
+</svg>

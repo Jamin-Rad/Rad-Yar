@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-label="Radiology foundations">
+  <defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#153a52"/><stop offset="1" stop-color="#397d89"/></linearGradient></defs>
+  <rect width="900" height="420" rx="34" fill="url(#g)"/>
+  <circle cx="450" cy="210" r="142" fill="none" stroke="#b9e8e6" stroke-width="3" opacity=".55"/>
+  <circle cx="450" cy="210" r="92" fill="none" stroke="#f4d493" stroke-width="3" opacity=".8"/>
+  <path d="M120 210h170l44-88 70 176 54-112 40 24h282" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="450" cy="210" r="12" fill="#f4d493"/>
+</svg>

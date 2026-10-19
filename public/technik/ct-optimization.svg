@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 360" role="img" aria-labelledby="title desc">
+  <title id="title">CT geometry diagram</title>
+  <desc id="desc">Three numbered schematic panels; see the localized legend in the lesson.</desc>
+  <rect width="1080" height="360" rx="20" fill="#f5f9fc"/>
+  <g fill="#17324d" font-family="Arial, sans-serif" font-size="19" font-weight="700">
+    <text x="178" y="38" text-anchor="middle">1</text>
+    <text x="540" y="38" text-anchor="middle">2</text>
+    <text x="900" y="38" text-anchor="middle">3</text>
+  </g>
+  <g transform="translate(28 58)">
+    <circle cx="150" cy="20" r="11" fill="#f2a900"/>
+    <path d="M150 34 55 178h190z" fill="#bbd9f1" stroke="#286c9b" stroke-width="3"/>
+    <path d="M55 178 76 146h-21zM224 146l21 32h-21z" fill="#e86666"/>
+    <rect x="77" y="181" width="146" height="28" rx="5" fill="#2f7fba"/>
+    <g fill="#dff1ff" stroke="#fff" stroke-width="2">
+      <rect x="84" y="185" width="25" height="20"/><rect x="112" y="185" width="25" height="20"/><rect x="140" y="185" width="25" height="20"/><rect x="168" y="185" width="25" height="20"/><rect x="196" y="185" width="20" height="20"/>
+    </g>
+    <path d="M78 222v10m145-10v10M78 228h145" stroke="#17324d" stroke-width="2"/>
+    <text x="150" y="251" text-anchor="middle" fill="#17324d" font-family="Arial, sans-serif" font-size="16">nT</text>
+    <path d="M55 163v-9m190 9v-9M55 158h190" stroke="#bc4545" stroke-width="2"/>
+    <text x="150" y="151" text-anchor="middle" fill="#bc4545" font-family="Arial, sans-serif" font-size="16">a</text>
+  </g>
+  <g transform="translate(392 70)">
+    <circle cx="150" cy="76" r="66" fill="none" stroke="#a8bdcf" stroke-width="3" stroke-dasharray="8 8"/>
+    <circle cx="150" cy="76" r="10" fill="#f2a900"/>
+    <path d="M72 76h156" stroke="#286c9b" stroke-width="8" stroke-linecap="round"/>
+    <path d="M88 139h124" stroke="#17324d" stroke-width="3"/>
+    <path d="M88 131v16m124-16v16" stroke="#17324d" stroke-width="3"/>
+    <path d="M101 189h98" stroke="#286c9b" stroke-width="6" stroke-linecap="round"/>
+    <path d="M101 181v16m98-16v16" stroke="#17324d" stroke-width="2"/>
+    <text x="150" y="225" text-anchor="middle" fill="#17324d" font-family="Arial, sans-serif" font-size="17" font-weight="700">p = Δz / nT</text>
+  </g>
+  <g transform="translate(750 74)">
+    <rect x="45" y="25" width="210" height="54" rx="8" fill="#c6e7d7" stroke="#18845e" stroke-width="3"/>
+    <rect x="15" y="25" width="30" height="54" fill="#f1b1a9" stroke="#bd554a" stroke-width="2"/>
+    <rect x="255" y="25" width="30" height="54" fill="#f1b1a9" stroke="#bd554a" stroke-width="2"/>
+    <path d="M45 101v16m210-16v16M45 109h210" stroke="#18845e" stroke-width="3"/>
+    <path d="M15 179h270" stroke="#8798a8" stroke-width="2" stroke-dasharray="6 6"/>
+  </g>
+</svg>
