@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 430" role="img" aria-labelledby="title desc">
+  <title id="title">Brain abscess concept schematic</title>
+  <desc id="desc">A simplified axial brain outline with one focal ring lesion. Adjacent panels show the lesion centre, capsule and surrounding oedema as separate conceptual zones.</desc>
+  <defs>
+    <linearGradient id="brain" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#d8e9ec"/><stop offset="1" stop-color="#a9cbd1"/></linearGradient>
+    <radialGradient id="lesion"><stop stop-color="#182d3b"/><stop offset=".52" stop-color="#30495a"/><stop offset=".55" stop-color="#efc481"/><stop offset=".70" stop-color="#f5e5c7"/><stop offset=".74" stop-color="#c97663"/><stop offset=".82" stop-color="#f6d9c5"/><stop offset="1" stop-color="#c7e5e6" stop-opacity=".2"/></radialGradient>
+  </defs>
+  <rect width="840" height="430" rx="22" fill="#102734"/>
+  <g font-family="Arial,sans-serif" fill="#f6fbfc">
+    <path d="M196 99c-67-25-133 9-145 73-14 72 31 126 97 144 54 15 132 3 174-35 41-38 48-105 20-148-27-42-91-56-146-34z" fill="url(#brain)" stroke="#91bbc2" stroke-width="4"/>
+    <path d="M112 142c21 19 26 48 17 77m49-102c20 30 21 61 5 90m57-86c-9 24-6 51 8 77m-153 8c38-15 72-9 101 14m-56 35c33-15 73-13 107 5" fill="none" stroke="#8db4bc" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+    <circle cx="209" cy="207" r="83" fill="url(#lesion)" stroke="#f1d2a2" stroke-width="2"/>
+    <path d="M293 193h42m-11-11 11 11-11 11" fill="none" stroke="#fff" stroke-width="3"/>
+    <g transform="translate(365 95)">
+      <circle cx="88" cy="104" r="66" fill="#263c4b" stroke="#d17e65" stroke-width="7"/>
+      <circle cx="88" cy="104" r="45" fill="#142734" stroke="#f0d7ac" stroke-width="8"/>
+      <circle cx="88" cy="104" r="28" fill="#091720" stroke="#b5dadd" stroke-width="2"/>
+    </g>
+    <g transform="translate(585 92)">
+      <rect width="214" height="255" rx="18" fill="#1a3442" stroke="#426573"/>
+      <circle cx="35" cy="79" r="8" fill="#b5dadd"/>
+      <circle cx="35" cy="125" r="8" fill="#f0d7ac"/>
+      <circle cx="35" cy="171" r="8" fill="#d17e65"/>
+      <path d="M28 207h158" stroke="#426573"/>
+    </g>
+  </g>
+</svg>

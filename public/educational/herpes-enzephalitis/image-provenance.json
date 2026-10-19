@@ -1,0 +1,20 @@
+{
+  "asset": "pdf-case.png",
+  "source_file": "Gehirn.pdf",
+  "source_pdf_page": 66,
+  "printed_page": 65,
+  "pdf_page_render": {
+    "tool": "Poppler pdftoppm",
+    "rendered_page_pixels": "1768x2500",
+    "scale": "scale-to 2500",
+    "crop_pixels_from_top_left": {"left": 502, "top": 492, "width": 710, "height": 407}
+  },
+  "source_case_identifier_visible_in_pdf": "Radiopaedia rID 18927",
+  "source_case_url": "https://radiopaedia.org/cases/18927",
+  "contributor": "not identified from supplied PDF crop; source page not accessible during authoring",
+  "sequence_identifiable_from_pdf": "axial FLAIR, as labeled by adjacent source text",
+  "study_and_frame_identifiers": "not independently verified from original case page",
+  "selection_rationale": "The supplied page places two axial FLAIR views beside the insular-margin/basal-ganglia-sparing teaching note; suitable to inspect distribution, not to prove etiology or represent the complete MRI protocol.",
+  "reuse_basis": "The user explicitly authorized use of images included in the supplied PDFs and Radiopaedia examples for this project on 2026-10-19. This records project authorization, not independent verification of contributor-level license or legal clearance.",
+  "verification_limitations": ["Radiopaedia case page could not be accessed during authoring", "contributor, study/frame IDs and current reuse terms not independently checked", "clinical diagnosis is based on the supplied document's teaching attribution and has not received specialist confirmation"]
+}

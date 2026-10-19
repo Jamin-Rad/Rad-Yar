@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 520" role="img" aria-labelledby="title desc">
+  <title id="title">HSV encephalitis distribution schematic</title>
+  <desc id="desc">A brain outline highlights mesial temporal, insular and inferofrontal regions.</desc>
+  <rect width="840" height="520" rx="36" fill="#f4f8fb"/>
+  <path d="M421 100c-41-58-122-45-140 13-64-12-111 43-91 97-54 35-43 107 11 128-10 58 48 94 99 69 32 43 93 37 121 1 28 36 89 42 121-1 51 25 109-11 99-69 54-21 65-93 11-128 20-54-27-109-91-97-18-58-99-71-140-13Z" fill="#e1edf3" stroke="#427e91" stroke-width="8"/>
+  <path d="M392 149c-39 18-55 64-39 101 11 26 10 54-5 80m100-181c39 18 55 64 39 101-11 26-10 54 5 80M294 236c28-20 57-19 82 2m170-2c28-20 57-19 82 2" fill="none" stroke="#c0d1da" stroke-width="7" stroke-linecap="round"/>
+  <path d="M310 194c-20 11-34 29-39 53-5 25 7 47 29 57 21 10 42-2 56-20 14-18 23-37 20-57-4-27-37-46-66-33Zm168-11c-17 20-21 47-10 69 11 22 32 38 57 38 28 0 47-23 47-49 0-36-28-67-61-70-13-1-25 3-33 12Zm-95 102c-27 13-46 35-48 61-2 25 18 42 43 42 22 0 41-14 51-34 10-19 10-43-5-59-11-12-26-16-41-10Z" fill="#e98a75" opacity=".92"/>
+  <path d="M325 194c-10 14-14 29-11 43m166-45c-10 15-13 32-8 48m-94 112c-7 10-12 20-13 31" fill="none" stroke="#b65c62" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="424" cy="246" r="22" fill="#fff" stroke="#397888" stroke-width="7"/>
+</svg>
