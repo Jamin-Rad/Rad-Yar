@@ -1,0 +1,18 @@
+{
+  "lessonId": "knocheninfarkt",
+  "sourceFile": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+  "pdfPage": 123,
+  "printedPage": 122,
+  "accessedAt": "2026-10-19",
+  "permission": "Parent coordinator confirmed the user's authorization for reuse of all images in the six supplied PDFs applies to this batch.",
+  "images": [
+    {"file":"pdf-p123-Image1261.jpg","pdfImageObject":"Image1261.jpg","width":270,"height":497,"observed":"Frontal knee radiograph; extensive winding medullary sclerotic borders in distal femur and proximal tibia.","transform":"Original embedded image bytes extracted with pypdf; no pixel modification."},
+    {"file":"pdf-p123-Image1262.jpg","pdfImageObject":"Image1262.jpg","width":371,"height":475,"observed":"Lateral knee radiograph; extensive winding medullary sclerotic borders.","transform":"Original embedded image bytes extracted with pypdf; no pixel modification. Displayed with CSS horizontal reflection to preserve the source PDF placement matrix [-133.15,0,0,170.64,412.07,645.16]."}
+  ],
+  "sourcePageIdentifier": "rID 99068 is printed on source PDF page 123",
+  "originalContributor": "Not available in the supplied page; not invented.",
+  "externalCaseMatch": "Not independently verified; PDF identifier is not asserted as independently authenticated case identity.",
+  "mri": "Source-page MRI panels are not extracted or labeled; sequences not independently established.",
+  "limitations": "Extensive example, limited embedded resolution. Teaches radiographic distribution; actual MRI signal-recognition case remains outstanding.",
+  "schematic": {"file":"../knocheninfarkt-schematic.svg","creator":"Original code-native lesson schematic","sourceConcepts":"MSK.pdf pages 122–123","type":"Conceptual long-bone medullary border and centre; not a scan, not to scale, not histological proof."}
+}

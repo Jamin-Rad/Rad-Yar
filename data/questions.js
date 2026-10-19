@@ -1,4 +1,5 @@
 import { MENISCUS_QUESTIONS } from './meniscusLearning'
+import { BONE_INFARCT_QUESTIONS } from './knocheninfarktLesson'
 import { FLEISCHNER_QUESTIONS } from './fleischnerLearning'
 import { HEMANGIOMA_QUESTIONS } from './haemangiomaTraining'
 import { GEHIRN_CHIARI_QUESTIONS } from './gehirnChiariLesson'
@@ -4159,11 +4160,12 @@ const LEGACY_QUESTION_BANK = {
 export const QUESTION_BANK = Object.fromEntries(
   Object.entries(LEGACY_QUESTION_BANK).map(([lang, questions]) => [
     lang,
-    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang])],
+    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang]), ...BONE_INFARCT_QUESTIONS[lang]],
   ])
 )
 
 export const MCQ_TOPIC_GROUPS = [
+  { fachId: 'msk', kapitelId: 'msk-knochennekrosen', title: { de: 'Knochennekrosen', en: 'Bone necrosis', fa: 'نکروزهای استخوانی' }, topics: [{ id: 'knocheninfarkt', title: { de: 'Knocheninfarkt', en: 'Bone infarct', fa: 'انفارکت استخوان' } }] },
   ...ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS,
   { fachId: 'wirbelsaeule', kapitelId: 'ws-degenerativ', title: { de: 'Degenerative Erkrankungen', en: 'Degenerative diseases', fa: 'بیماری‌های دژنراتیو' }, topics: [{ id: 'spinalkanalstenose', title: { de: 'Spinalkanalstenose', en: 'Spinal canal stenosis', fa: 'تنگی کانال نخاعی' } }] },
   { fachId: 'wirbelsaeule', kapitelId: 'ws-entzuendlich', title: { de: 'Entzündliche Erkrankungen', en: 'Inflammatory diseases', fa: 'بیماری‌های التهابی' }, topics: [

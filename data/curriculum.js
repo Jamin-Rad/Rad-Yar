@@ -525,7 +525,7 @@ export const CURRICULUM = [
         themen: [
           { id: 'akute-le', title: { de: 'Akute LE', en: 'Acute Pulmonary Embolism', fa: 'آمبولی حاد ریه' }, group: ['Lungenembolie (LE)'], tags: ['CT'], diff: 2 },
           { id: 'cteph', title: { de: 'CTEPH', en: 'CTEPH', fa: 'CTEPH (هایپرتانسیون ریوی ترومبوآمبولیک مزمن)' }, group: ['Lungenembolie (LE)'], tags: ['CT'], diff: 3 },
-          { id: 'pulmonale-hypertonie', title: { de: 'Pulmonale Hypertonie', en: 'Pulmonary Hypertension', fa: 'هایپرتانسیون ریوی' }, tags: ['CT','MRT'], diff: 2 },
+          { id: 'pulmonale-hypertonie', title: { de: 'Pulmonale Hypertonie', en: 'Pulmonary Hypertension', fa: 'هایپرتانسیون ریوی' }, group: ['Pulmonale Hypertonie'], tags: ['CT','MRT','Rö'], diff: 2, link: '/thorax/pulmonale-hypertonie' },
           { id: 'pulmonale-avm', title: { de: 'Pulmonale AV-Malformation', en: 'Pulmonary Arteriovenous Malformation', fa: 'مالفورماسیون شریانی-وریدی ریوی' }, tags: ['CT'], diff: 3 },
         ],
       },
@@ -1240,7 +1240,7 @@ export const CURRICULUM = [
         icon: '💀',
         themen: [
           { id: 'avn-huefte', title: { de: 'Avaskuläre Nekrose (AVN) & Hüftkopfnekrose', en: 'Avascular Necrosis (AVN) & Femoral Head Necrosis', fa: 'نکروز آواسکولار (AVN) و نکروز سر فمور' }, tags: ['MRT'], diff: 2 },
-          { id: 'knocheninfarkt', title: { de: 'Knocheninfarkt', en: 'Bone Infarct', fa: 'انفارکت استخوان' }, tags: ['MRT'], diff: 2 },
+          { id: 'knocheninfarkt', title: { de: 'Knocheninfarkt', en: 'Bone Infarct', fa: 'انفارکت استخوان' }, tags: ['MRT'], diff: 2, link: '/msk/knochennekrosen/knocheninfarkt', mcqLink: '/ueben/quiz?fach=msk&n=3&themen=knocheninfarkt', flashcardLink: '/flashcards/knocheninfarkt', inProgress: true, updatedAt: '2026-10-19' },
         ],
       },
       {
