@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const require = createRequire(import.meta.url)
+const fs = require('node:fs')
 const Module = require('node:module')
 const React = require('react')
 const { renderToStaticMarkup } = require('react-dom/server')
@@ -41,9 +42,9 @@ Module._load = function (request, parent, isMain) {
 
 const { default: Route } = require(path.join(root, 'app/msk/tumoren/knochenzeichen/page.js'))
 const expected = {
-  de: ['Aggressivität fokaler Knochenläsionen', 'Das Muster ist nicht exklusiv.', 'Endosteales Scalloping'],
-  en: ['Aggressiveness of focal bone lesions', 'The pattern is not exclusive.', 'Endosteal scalloping'],
-  fa: ['ارزیابی تهاجمی‌بودن ضایعات کانونی استخوان', 'اختصاصی آن‌ها نیست', 'فرسایش اندوستئال'],
+  de: ['Aggressivität fokaler Knochenläsionen', 'Das Muster ist nicht exklusiv.', 'Endosteales Scalloping', 'Geographisch · I', 'Mottenfraß · II', 'Konzeptzeichnung nach MSK.pdf'],
+  en: ['Aggressiveness of focal bone lesions', 'The pattern is not exclusive.', 'Endosteal scalloping', 'Geographic · I', 'Moth-eaten · II', 'Conceptual drawing based on MSK.pdf'],
+  fa: ['ارزیابی تهاجمی‌بودن ضایعات کانونی استخوان', 'اختصاصی آن‌ها نیست', 'فرسایش اندوستئال', 'جغرافیایی · I', 'بیدخورده · II', 'طرح مفهومی بر پایهٔ MSK.pdf'],
 }
 
 for (const locale of Object.keys(expected)) {
@@ -54,6 +55,14 @@ for (const locale of Object.keys(expected)) {
   for (const phrase of expected[locale]) assert.ok(html.includes(phrase), `${locale} SSR includes ${phrase}`)
   assert.ok(html.includes('aria-expanded="true"'), `${locale} SSR includes an initially open chapter`)
   assert.ok(html.includes('msk-bone-aggressiveness.svg'), `${locale} SSR includes the topic schematic`)
+  assert.match(html, /role="region"[^>]*tabindex="0"[^>]*aria-label=/, `${locale} Lodwick figure has a labelled keyboard-scroll region`)
 }
+
+const responsiveCss = fs.readFileSync(path.join(root, 'app/msk/tumoren/knochenzeichen/page.module.css'), 'utf8')
+assert.match(responsiveCss, /\.body\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)/s, 'lesson grid track can shrink below its content min-size')
+assert.match(responsiveCss, /\.lodwickFigure\s*\{[^}]*min-width:\s*0[^}]*width:\s*100%/s, 'figure grid item is constrained to its parent width')
+assert.match(responsiveCss, /\.lodwickScroll\s*\{[^}]*min-width:\s*0[^}]*width:\s*100%[^}]*max-width:\s*100%/s, 'scroll viewport is constrained to its parent width')
+assert.match(responsiveCss, /\.lodwickScroll\s*\{[^}]*max-width:\s*100%[^}]*overflow-x:\s*auto/s, 'the figure scrolls inside its own bounded viewport')
+assert.match(responsiveCss, /\.lodwickFigure svg\s*\{[^}]*min-width:\s*780px/s, 'SVG labels retain a readable minimum layout width on mobile')
 
 console.log('MSK bone aggressiveness route SSR passed for DE/EN/FA. Browser UX, diagnostic-case image review and clinical approval remain separate.')

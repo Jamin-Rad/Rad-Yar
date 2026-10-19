@@ -1,5 +1,5 @@
 .page { --lesson-accent: #8ab9a7; --lesson-accent-strong: #286451; --lesson-accent-soft: #e8f2ed; }
-.body { display: grid; gap: 1rem; }
+.body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
 .body > p { margin: 0; max-width: 80ch; line-height: 1.75; }
 .body h3 { margin: .25rem 0 0; }
 .tableWrap { max-width: 100%; overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
@@ -8,6 +8,12 @@
 .tableWrap th, .tableWrap td { padding: .8rem 1rem; border-top: 1px solid var(--line); text-align: start; vertical-align: top; }
 .tableWrap thead th { color: var(--lesson-accent-strong); background: color-mix(in srgb, var(--paper) 84%, var(--lesson-accent-soft)); }
 .tableWrap tbody th { min-width: 105px; width: 25%; }
+.lodwickFigure { min-width: 0; width: 100%; box-sizing: border-box; margin: 0; padding: .75rem; border: 1px solid var(--line); border-radius: 14px; background: color-mix(in srgb, var(--paper) 92%, var(--lesson-accent-soft)); }
+.lodwickScroll { min-width: 0; width: 100%; max-width: 100%; box-sizing: border-box; overflow-x: auto; overscroll-behavior-inline: contain; }
+.lodwickScroll:focus-visible { outline: 2px solid var(--lesson-accent-strong); outline-offset: 3px; }
+.lodwickFigure svg { display: block; width: 100%; min-width: 780px; height: auto; }
+.lodwickLabel { fill: var(--ink); font: 700 18px system-ui, sans-serif; }
+.lodwickFigure figcaption { margin: .35rem .4rem .2rem; color: var(--muted); font-size: .9rem; line-height: 1.6; }
 .note { margin: 0; padding: .9rem 1rem; border-inline-start: 4px solid var(--lesson-accent); border-radius: 8px; background: color-mix(in srgb, var(--paper) 84%, var(--lesson-accent-soft)); line-height: 1.7; }
 .decision { display: grid; gap: .8rem; padding: 1.1rem; border: 1px solid var(--line); border-radius: 14px; background: color-mix(in srgb, var(--paper) 85%, var(--lesson-accent-soft)); }
 .decision h3, .decision p { margin: 0; line-height: 1.7; }

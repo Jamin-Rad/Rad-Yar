@@ -27,6 +27,30 @@ function PatternTable({ rows, lang, title }) {
   return <div className={styles.tableWrap}><table><caption>{pick(title || L('Muster und diagnostische Grenze', 'Pattern and diagnostic limitation', 'الگو و محدودیت تشخیصی'), lang)}</caption><thead><tr><th scope="col">{pick(L('Zeichen', 'Feature', 'یافته'), lang)}</th><th scope="col">{pick(L('Einordnung', 'Interpretation', 'تفسیر'), lang)}</th></tr></thead><tbody>{rows.map(([term, detail], index) => <tr key={index}><th scope="row">{pick(term, lang)}</th><td>{pick(detail, lang)}</td></tr>)}</tbody></table></div>
 }
 
+function LodwickSchematic({ lang }) {
+  const labelsByLang = {
+    de: { title: 'Schematische Muster der Osteolyse', geographic: 'Geographisch · I', moth: 'Mottenfraß · II', permeative: 'Permeativ · III', caption: 'Konzeptzeichnung nach MSK.pdf, S. 76; keine Röntgenaufnahme und keine eigenständige Diagnose.' },
+    en: { title: 'Schematic osteolysis patterns', geographic: 'Geographic · I', moth: 'Moth-eaten · II', permeative: 'Permeative · III', caption: 'Conceptual drawing based on MSK.pdf, p. 76; not a radiograph or a diagnosis.' },
+    fa: { title: 'الگوهای شماتیک استئولیز', geographic: 'جغرافیایی · I', moth: 'بیدخورده · II', permeative: 'نفوذی · III', caption: 'طرح مفهومی بر پایهٔ MSK.pdf، صفحهٔ ۷۶؛ رادیوگرافی یا تشخیص نیست.' },
+  }
+  const t = labelsByLang[lang] || labelsByLang.de
+  return <figure className={styles.lodwickFigure}>
+    <div className={styles.lodwickScroll} role="region" tabIndex="0" aria-label={t.title}>
+    <svg viewBox="0 0 900 230" role="img" aria-labelledby="lodwick-title lodwick-desc">
+      <title id="lodwick-title">{t.title}</title><desc id="lodwick-desc">{t.caption}</desc>
+      {[90, 390, 690].map((x, i) => <g key={x}>
+        <rect x={x} y="24" width="180" height="140" rx="20" fill="#edf4f1" stroke="#58756a" strokeWidth="5" />
+        {i === 0 && <><ellipse cx={x + 90} cy="94" rx="38" ry="27" fill="#f0a26a" stroke="#a9512b" strokeWidth="3"/><ellipse cx={x + 90} cy="94" rx="48" ry="37" fill="none" stroke="#718c7d" strokeWidth="4"/></>}
+        {i === 1 && <><circle cx={x + 57} cy="72" r="13" fill="#f0a26a"/><circle cx={x + 114} cy="63" r="10" fill="#f0a26a"/><circle cx={x + 91} cy="105" r="15" fill="#f0a26a"/><circle cx={x + 137} cy="113" r="11" fill="#f0a26a"/><circle cx={x + 50} cy="124" r="8" fill="#f0a26a"/></>}
+        {i === 2 && <><path d={`M${x+42} 48l18 14-13 12 19 11-16 15 18 10-12 19`} fill="none" stroke="#b84d32" strokeWidth="8" strokeLinecap="round"/><path d={`M${x+105} 43l-12 18 14 12-17 16 13 13-16 15 11 17`} fill="none" stroke="#b84d32" strokeWidth="7" strokeLinecap="round"/><path d={`M${x+65} 94h13m25-30v16m21 40h12`} stroke="#b84d32" strokeWidth="6" strokeLinecap="round"/></>}
+        <text x={x + 90} y="202" textAnchor="middle" direction={lang === 'fa' ? 'rtl' : 'ltr'} unicodeBidi="plaintext" className={styles.lodwickLabel}>{[t.geographic, t.moth, t.permeative][i]}</text>
+      </g>)}
+    </svg>
+    </div>
+    <figcaption>{t.caption}</figcaption>
+  </figure>
+}
+
 function SelfCheck({ lang }) {
   const [answer, setAnswer] = useState(null)
   const question = lesson.case
@@ -51,6 +75,7 @@ export default function BoneAggressivenessPage() {
   >
     {lesson.chapters.map(chapter => <LessonSection key={chapter.id} id={chapter.id} icon={chapter.id} title={pick(chapter.title, lang)} bodyClassName={styles.body}>
       <p>{pick(chapter.lead, lang)}</p><PatternTable rows={chapter.rows} lang={lang}/>
+      {chapter.id === 'lodwick' && <LodwickSchematic lang={lang}/>}
       {chapter.extraRows && <><h3>{pick(chapter.subheading, lang)}</h3><PatternTable rows={chapter.extraRows} lang={lang} title={L('Zusätzliche Merkmale', 'Additional features', 'یافته‌های تکمیلی')}/></>}
       <p className={styles.note}>{pick(chapter.note, lang)}</p>
     </LessonSection>)}
