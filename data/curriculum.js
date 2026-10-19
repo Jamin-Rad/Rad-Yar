@@ -1169,7 +1169,7 @@ export const CURRICULUM = [
         themen: [
           { id: 'knochentumor-grundlagen', title: { de: 'Grundlagen & Klassifikation', en: 'Fundamentals & Classification', fa: 'مبانی و طبقه‌بندی' }, tags: ['Rö','MRT'], diff: 2, link: '/msk/tumoren/knochenzeichen', ready: true, inProgress: true, updatedAt: '2026-10-19' },
           { id: 'osteom', title: { de: 'Osteom', en: 'Osteoma', fa: 'استئوم' }, group: ['Knochenbildende Tumoren'], tags: ['Rö'], diff: 1 },
-          { id: 'osteoid-osteom', title: { de: 'Osteoid-Osteom', en: 'Osteoid Osteoma', fa: 'استئوئید استئوما' }, group: ['Knochenbildende Tumoren'], tags: ['Rö','CT'], diff: 2 },
+          { id: 'osteoid-osteom', title: { de: 'Osteoid-Osteom', en: 'Osteoid Osteoma', fa: 'استئوئید استئوما' }, group: ['Knochenbildende Tumoren'], tags: ['Rö','CT'], diff: 2, link: '/msk/tumoren/osteoid-osteom', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'osteoblastom', title: { de: 'Osteoblastom', en: 'Osteoblastoma', fa: 'استئوبلاستوما' }, group: ['Knochenbildende Tumoren'], tags: ['Rö','CT'], diff: 2 },
           { id: 'osteosarkom', title: { de: 'Osteosarkom', en: 'Osteosarcoma', fa: 'استئوسارکوما' }, group: ['Knochenbildende Tumoren'], tags: ['Rö','MRT'], diff: 3 },
           { id: 'osteochondrom', title: { de: 'Osteochondrom', en: 'Osteochondroma', fa: 'استئوکندروم' }, group: ['Knorpelbildende Tumoren'], tags: ['Rö'], diff: 1 },
