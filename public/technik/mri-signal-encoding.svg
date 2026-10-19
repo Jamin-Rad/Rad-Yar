@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">T1 · T2 · z · y · x · k</title>
+  <desc id="desc">T1 und T2-Verläufe; nummerierte Richtungen z, y, x; k-Raum; 2D FT.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4 0 8z" fill="#376b78"/></marker>
+  </defs>
+  <rect width="960" height="420" rx="22" fill="#f4fafb"/>
+  <g font-family="Arial, sans-serif" fill="#183b45">
+    <path d="M55 190V75M55 190H430" fill="none" stroke="#718b91" stroke-width="2"/>
+    <text x="60" y="70" font-size="14">M / M₀</text><text x="400" y="215" font-size="14">t</text>
+    <path d="M65 180 C105 132 135 100 180 91 C255 75 340 75 415 75" fill="none" stroke="#c58b25" stroke-width="5"/>
+    <path d="M65 82 C105 128 132 153 180 169 C253 190 337 190 415 190" fill="none" stroke="#23839a" stroke-width="5"/>
+    <text x="350" y="65" font-size="17" font-weight="700" fill="#9b6a10">T1</text>
+    <text x="350" y="183" font-size="17" font-weight="700" fill="#176c7d">T2</text>
+    <g transform="translate(34 278)">
+      <rect width="126" height="92" rx="12" fill="#fff" stroke="#a8cbd1"/><text x="52" y="27" font-size="18" font-weight="700">1 · z</text><path d="M34 48H90M62 38V72" stroke="#d49832" stroke-width="4"/><rect x="49" y="55" width="26" height="8" fill="#2b91a1"/>
+      <path d="M132 46H151" stroke="#376b78" stroke-width="2" marker-end="url(#arrow)"/>
+      <rect x="158" width="126" height="92" rx="12" fill="#fff" stroke="#a8cbd1"/><text x="210" y="27" font-size="18" font-weight="700">2 · y</text><path d="M178 57H264M220 40V75" stroke="#2b91a1" stroke-width="3"/><path d="M188 68L204 51M216 68L232 51M244 68L260 51" stroke="#d49832" stroke-width="2"/>
+      <path d="M290 46H309" stroke="#376b78" stroke-width="2" marker-end="url(#arrow)"/>
+      <rect x="316" width="126" height="92" rx="12" fill="#fff" stroke="#a8cbd1"/><text x="368" y="27" font-size="18" font-weight="700">3 · x</text><path d="M336 58H420M378 40V75" stroke="#2b91a1" stroke-width="3"/><path d="M340 68L354 62L368 56L382 50L396 44L410 38" fill="none" stroke="#d49832" stroke-width="2"/>
+      <path d="M448 46H467" stroke="#376b78" stroke-width="2" marker-end="url(#arrow)"/>
+      <rect x="474" width="126" height="92" rx="12" fill="#fff" stroke="#a8cbd1"/><text x="509" y="27" font-size="17" font-weight="700">k-space</text><path d="M500 47H574M537 37V75M506 55H568M506 63H568M520 42V70M552 42V70" stroke="#70aab4" stroke-width="1.5"/>
+      <path d="M606 46H625" stroke="#376b78" stroke-width="2" marker-end="url(#arrow)"/>
+      <rect x="632" width="126" height="92" rx="12" fill="#fff" stroke="#a8cbd1"/><text x="660" y="27" font-size="17" font-weight="700">2D FT</text><path d="M663 52H726M694 41V77" stroke="#718b91" stroke-width="1.5"/><ellipse cx="694" cy="59" rx="21" ry="13" fill="#c8e4e8"/><ellipse cx="694" cy="59" rx="10" ry="7" fill="#34899a"/>
+    </g>
+  </g>
+</svg>

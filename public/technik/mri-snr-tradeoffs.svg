@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 300" role="img" aria-labelledby="title desc">
+  <title id="title">SNR · 1 · 2 · 3</title>
+  <desc id="desc">Qualitative Pfeile: SNR steigt bei 1 und 2, sinkt bei 3.</desc>
+  <rect width="840" height="300" rx="22" fill="#f4fafb"/>
+  <g font-family="Arial, sans-serif" fill="#183b45">
+    <text x="28" y="38" font-size="21" font-weight="700">SNR ↑</text>
+    <g stroke="#b3cdd1" stroke-width="1"><path d="M155 67V245M155 245H812"/><path d="M155 187H812M155 129H812" stroke-dasharray="4 6"/></g>
+    <text x="30" y="76" font-size="17">↑</text><text x="30" y="245" font-size="17">↓</text>
+    <g font-size="20" font-weight="700" text-anchor="middle"><text x="242" y="104">1</text><text x="440" y="104">2</text><text x="638" y="104">3</text></g>
+    <g fill="none" stroke-width="8" stroke-linecap="round"><path d="M242 204V137" stroke="#3c9a80"/><path d="M440 204V137" stroke="#3c9a80"/><path d="M638 137V204" stroke="#b77934"/></g>
+    <g fill="#3c9a80"><path d="M232 144L242 124 252 144z"/><path d="M430 144L440 124 450 144z"/></g><path d="M628 197L638 217 648 197z" fill="#b77934"/>
+  </g>
+</svg>

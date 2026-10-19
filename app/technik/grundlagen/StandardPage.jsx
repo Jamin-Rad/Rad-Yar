@@ -36,6 +36,11 @@ const checks = {
     en: { title: 'Self-check: roles in teleradiology', question: 'Which arrangement matches the current German framework?', options: ['A qualified remote radiologist is available; a physician with required knowledge is on site; the operator also meets the applicable requirements.', 'An on-site physician is enough; no remote responsible physician is required.', 'Only MTRs may perform the technical examination.'], answer: 0, correct: 'Correct. StrlSchG § 14(2) and StrlSchV § 145 distinguish these roles.', retry: 'Consider remote responsibility, physician presence on site, and authorized technical performance.' },
     fa: { title: 'خودآزمایی: نقش‌ها در تلرادیولوژی', question: 'کدام چیدمان با چارچوب فعلی آلمان سازگار است؟', options: ['پزشک تلرادیولوژیستِ دارای صلاحیت در دسترس است؛ پزشک دارای دانش لازم در محل حضور دارد؛ فرد مجری نیز الزامات را دارد.', 'حضور پزشک محل کافی است و پزشک مسئول از راه دور لازم نیست.', 'فقط MTR مجاز به اجرای فنی است.'], answer: 0, correct: 'درست است. مادهٔ ۱۴ بند ۲ StrlSchG و مادهٔ ۱۴۵ StrlSchV این نقش‌ها را جدا می‌کنند.', retry: 'سه نقش را جدا کنید: مسئولیت از راه دور، حضور پزشک در محل و اجرای فنیِ مجاز.' },
   },
+  mriBasics: {
+    de: { title: 'Selbstcheck: Ortskodierung und SNR', question: 'Sie erhöhen die Matrix bei gleichem FOV und gleicher Abdeckung. Welche Aussage passt am besten?', options: ['Die Pixel werden größer und das SNR steigt ohne Zielkonflikt.', 'Die Pixel werden kleiner: räumliche Details nehmen zu, typischerweise sinkt das SNR.', 'Jeder k-Raum-Punkt wird direkt zu einem Bildpixel; die Matrix ändert daran nichts.'], answer: 1, correct: 'Richtig. Kleinere Voxel/Pixel erhöhen typischerweise die Detailauflösung, sammeln aber weniger Signal pro Voxel. Mehr Mittelungen können das SNR verbessern, kosten jedoch Messzeit.', retry: 'Verknüpfen Sie Matrix und Voxelgröße mit Signal pro Voxel. Eine SNR-Verbesserung über Mittelungen verlängert die Messzeit.' },
+    en: { title: 'Self-check: spatial encoding and SNR', question: 'You increase the matrix while keeping FOV and coverage fixed. Which statement best fits?', options: ['Pixels become larger and SNR rises without a trade-off.', 'Pixels become smaller: spatial detail increases and SNR typically falls.', 'Each k-space point maps directly to one image pixel; matrix size does not matter.'], answer: 1, correct: 'Correct. Smaller voxels/pixels typically improve detail resolution but collect less signal per voxel. More averages can improve SNR, at the cost of scan time.', retry: 'Connect matrix size and voxel size to signal per voxel. Improving SNR with more averages costs scan time.' },
+    fa: { title: 'خودآزمایی: کدگذاری مکانی و SNR', question: 'ماتریس را با FOV و پوشش ثابت افزایش می‌دهید. کدام عبارت درست‌تر است؟', options: ['پیکسل‌ها بزرگ‌تر می‌شوند و SNR بدون بده‌بستان افزایش می‌یابد.', 'پیکسل‌ها کوچک‌تر می‌شوند: جزئیات مکانی بیشتر و SNR معمولاً کمتر می‌شود.', 'هر نقطهٔ k-space مستقیماً یک پیکسل تصویر است؛ اندازهٔ ماتریس اهمیتی ندارد.'], answer: 1, correct: 'درست است. وکسل/پیکسل کوچک‌تر معمولاً وضوح جزئیات را بالا می‌برد، اما سیگنال هر وکسل کمتر می‌شود. میانگین‌گیری بیشتر می‌تواند SNR را بهتر کند ولی زمان اسکن را افزایش می‌دهد.', retry: 'اندازهٔ ماتریس و وکسل را به سیگنال هر وکسل ربط دهید. بهبود SNR با میانگین‌گیری بیشتر زمان تصویربرداری را زیاد می‌کند.' },
+  },
 }
 
 function RetrievalCheck({ kind, lang }) {
@@ -43,6 +48,16 @@ function RetrievalCheck({ kind, lang }) {
   const copy = checks[kind][lang] || checks[kind].de
   return <div aria-labelledby={`technik-check-${kind}`} style={{ marginTop: 18, padding: 16, border: '1px solid var(--border)', borderRadius: 14, background: 'var(--bg-card)' }}>
     <h3 id={`technik-check-${kind}`} style={{ marginTop: 0 }}>{copy.title}</h3><p>{copy.question}</p>
+    <div style={{ display: 'grid', gap: 8 }}>{copy.options.map((option, index) => <button key={index} type="button" aria-pressed={answer === index} onClick={() => setAnswer(index)} style={{ padding: 12, border: '1px solid var(--border)', borderRadius: 10, background: 'var(--surface-soft)', color: 'var(--text)', textAlign: 'start', cursor: 'pointer' }}>{option}</button>)}</div>
+    {answer !== null && <p role="status" style={{ marginBottom: 0 }}>{answer === copy.answer ? copy.correct : copy.retry}</p>}
+  </div>
+}
+
+function MRIKnowledgeCheck({ lang }) {
+  const [answer, setAnswer] = useState(null)
+  const copy = checks.mriBasics[lang] || checks.mriBasics.de
+  return <div aria-labelledby="technik-mri-check-title" style={{ marginTop: 22, padding: 16, border: '1px solid var(--border)', borderRadius: 14, background: 'var(--bg-card)' }}>
+    <h3 id="technik-mri-check-title" style={{ marginTop: 0 }}>{copy.title}</h3><p>{copy.question}</p>
     <div style={{ display: 'grid', gap: 8 }}>{copy.options.map((option, index) => <button key={index} type="button" aria-pressed={answer === index} onClick={() => setAnswer(index)} style={{ padding: 12, border: '1px solid var(--border)', borderRadius: 10, background: 'var(--surface-soft)', color: 'var(--text)', textAlign: 'start', cursor: 'pointer' }}>{option}</button>)}</div>
     {answer !== null && <p role="status" style={{ marginBottom: 0 }}>{answer === copy.answer ? copy.correct : copy.retry}</p>}
   </div>
@@ -69,10 +84,10 @@ export default function TechnikGrundlagenStandardPage() {
   const t = value => pick(value, lang)
   const labels = Object.fromEntries(Object.entries(labelSet).map(([k,v]) => [k,t(v)]))
   const sections = [...lesson.sections.map(s => ({ id:s.id, label:t(s.title), icon:'map' })), { id:'take-home', label:labels.takeHome, icon:'summary', emphasis:true }]
-  const references = [...new Map(lesson.sections.flatMap(s => (s.references || []).map(r => {
+  const references = [...new Map(lesson.sections.flatMap(s => [...(s.references || []), ...(s.teachingBlocks || []).flatMap(block => block.references || [])].map(r => {
     const officialLaw = /gesetze-im-internet\.de|recht\.bund\.de|bundesgesetzblatt/i.test(r.href)
     const tag = officialLaw ? L('Amtlicher Gesetzestext', 'Official legal text', 'متن رسمی قانون') : L('Fachquelle', 'Technical source', 'منبع تخصصی')
-    return [r.href, { tag: t(tag), title:t(r.label), href:r.href, citation:t(s.title), scope:t(s.lead) }]
+    return [r.href, { tag: t(tag), title:t(r.label), href:r.href, citation:t(r.citation || s.title), scope:t(r.scope || s.lead) }]
   })).filter(([href]) => href)).values()]
   const loc = path => lang === 'de' ? path : `${path}?lang=${lang}`
   return <>
@@ -89,6 +104,13 @@ export default function TechnikGrundlagenStandardPage() {
         <p>{lang==='fa'?`صفحهٔ PDF: ${section.pages}`:lang==='en'?`PDF page: ${section.pages}`:`PDF-Seite: ${section.pages}`}</p>
         <div className={styles.tableWrap}><table className={styles.table}><thead><tr><th>{t(L('Begriff','Concept','مفهوم'))}</th><th>{t(L('Lernpunkt','Learning point','نکتهٔ آموزشی'))}</th></tr></thead><tbody>{section.rows.map((row,i)=><tr key={i}>{row.map((cell,j)=><td key={j}>{t(cell)}</td>)}</tr>)}</tbody></table></div>
         {section.visuals?.map((v,i)=><figure key={v.src} style={{margin:'22px 0',padding:14,border:'1px solid var(--border)',borderRadius:16,background:'var(--surface-soft)'}}><img src={v.src} alt={t(v.alt)} loading="lazy" style={{display:'block',width:'100%',height:'auto',borderRadius:10}}/><figcaption style={{marginTop:10}}>{t(v.caption)}</figcaption></figure>)}
+        {section.teachingBlocks?.map(block=><section key={block.id} aria-labelledby={`${block.id}-title`} style={{marginTop:30}}>
+          <h3 id={`${block.id}-title`}>{t(block.title)}</h3><p>{t(block.lead)}</p>
+          <div className={styles.tableWrap}><table className={styles.table}><thead><tr><th>{t(L('Schritt / Begriff','Step / concept','گام / مفهوم'))}</th><th>{t(L('Was geschieht?','What happens?','چه رخ می‌دهد؟'))}</th></tr></thead><tbody>{block.rows.map((row,i)=><tr key={i}>{row.map((cell,j)=><td key={j}>{t(cell)}</td>)}</tr>)}</tbody></table></div>
+          {block.visual?<figure style={{margin:'22px 0',padding:14,border:'1px solid var(--border)',borderRadius:16,background:'var(--surface-soft)'}}><img src={block.visual.src} alt={t(block.visual.alt)} loading="lazy" style={{display:'block',width:'100%',height:'auto',borderRadius:10}}/><figcaption style={{marginTop:10}}>{t(block.visual.caption)}</figcaption>{block.visual.legend?<ul>{block.visual.legend.map((item,index)=><li key={index}>{t(item)}</li>)}</ul>:null}</figure>:null}
+          {block.supplement?<aside className={styles.callout}><strong>{t(L('Zusatzbeziehung (nicht aus der PDF)','Supplemental relationship (not stated in the PDF)','رابطهٔ تکمیلی (در PDF نیامده است)'))}</strong><p>{t(block.supplement)}</p></aside>:null}
+        </section>)}
+        {section.id === 'mrt' ? <MRIKnowledgeCheck lang={lang}/> : null}
         {section.note?<aside className={styles.callout}><strong>{t(L('Quellenhinweis','Source limitation','محدودیت منبع'))}</strong><p>{t(section.note)}</p></aside>:null}
         {section.id === 'wirkung' ? <RetrievalCheck kind="effects" lang={lang}/> : null}
         {section.id === 'dosis' ? <RetrievalCheck kind="dose" lang={lang}/> : null}
