@@ -75,6 +75,15 @@
 .callout.cave { border-color:#fecdd3; background:linear-gradient(135deg,#fff1f2,var(--bg-card)); color:#9f1239; }
 .callout strong { display:block; margin-bottom:8px; font-size:12px; font-weight:950; letter-spacing:.08em; text-transform:uppercase; }
 .callout p { margin:0; line-height:1.75; font-weight:750; }
+.landmarkCheck { margin:20px 0; padding:20px; border:1px solid rgba(14,165,233,.34); border-radius:20px; background:linear-gradient(135deg,rgba(240,249,255,.84),var(--bg-card)); }
+.landmarkCheck h3 { margin:0 0 8px; color:var(--text-strong); font-size:18px; }
+.landmarkCheck > p { margin:0 0 14px; color:var(--text-soft); line-height:1.7; }
+.landmarkOptions { display:grid; gap:8px; }
+.landmarkOption { width:100%; padding:12px 14px; border:1px solid var(--border); border-radius:12px; background:var(--bg-card); color:var(--text); cursor:pointer; font:inherit; line-height:1.55; text-align:start; }
+.landmarkOption:hover { border-color:#38bdf8; background:rgba(14,165,233,.08); }
+.landmarkOption:focus-visible { outline:3px solid #0ea5e9; outline-offset:2px; }
+.landmarkOptionSelected { border-color:#0284c7; box-shadow:0 0 0 2px rgba(14,165,233,.16); }
+.landmarkFeedback { margin:14px 0 0!important; padding:12px 14px; border-radius:12px; background:rgba(14,165,233,.10); color:var(--text-strong)!important; }
 .splitCallouts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
 .splitCallouts .callout { height:100%; }
 

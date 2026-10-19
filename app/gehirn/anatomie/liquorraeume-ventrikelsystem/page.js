@@ -68,6 +68,19 @@ const CONTENT = {
       figureText: 'Sagittal entscheidet vor allem die Lage vor oder hinter der Monro-Ebene; axial ist das CVI typischerweise dreieckig.',
       figureAlt: 'Schematischer Vergleich von CSP, Cavum vergae und Cavum veli interpositi',
       key: 'Prüfungsregel: CSP vor Monro, Cavum vergae hinter Monro, CVI unter dem Fornix.',
+      check: {
+        title: 'Landmarken-Check',
+        prompt: 'Ein mittiger liquorähnlicher Raum liegt zwischen den Vorderhörnern und setzt sich hinter der Monro-Ebene unter dem Corpus callosum fort. Welche Zuordnung passt?',
+        options: [
+          'Isoliertes Cavum veli interpositi',
+          'Cavum septi pellucidi mit posteriorer Fortsetzung als Cavum vergae',
+          'Erweiterter dritter Ventrikel',
+          'Pinealiszyste',
+        ],
+        answer: 1,
+        correct: 'Richtig: CSP liegt vor der Monro-Ebene; die posteriore Fortsetzung heißt Cavum vergae.',
+        incorrect: 'Noch nicht: Prüfen Sie Vorderhörner und Monro-Ebene. Ein CVI liegt tiefer, unter dem Fornix und über dem dritten Ventrikel.',
+      },
     },
     csp: {
       title: 'Cavum septi pellucidi (CSP)',
@@ -75,9 +88,9 @@ const CONTENT = {
       headers: ['Merkmal', 'Typischer Befund', 'Bedeutung'],
       rows: [
         ['Lage', 'Zwischen den Vorderhörnern, unter dem Corpus callosum, oberhalb des Fornix', 'septale Mittellinienstruktur'],
-        ['Signal/Dichte', 'Liquoräquivalent in CT und allen MRT-Sequenzen', 'kein solider Anteil, kein Enhancement'],
+        ['Signal/Dichte', 'Liquorähnliche Dichte bzw. Signalcharakteristik in der Routinebildgebung', 'kein solider Anteil oder relevantes Enhancement im typischen Cavum'],
         ['Konfiguration', 'schmaler, glattrandiger Spalt', 'meist Normvariante'],
-        ['Klinik', 'gewöhnlich asymptomatischer Zufallsbefund', 'keine Verlaufskontrolle bei typischem Befund'],
+        ['Klinik', 'gewöhnlich asymptomatischer Zufallsbefund', 'Größe, Masseneffekt und Liquorwege im Kontext beurteilen'],
       ],
       cave: 'Eine deutliche Auftreibung mit nach lateral gebogenen Septumblättern, Foramen-Monroi-Kompression oder Hydrozephalus spricht nicht mehr für eine belanglose schmale Normvariante.',
     },
@@ -86,10 +99,10 @@ const CONTENT = {
       lead: 'Das Cavum vergae ist die posteriore Fortsetzung des CSP hinter die Ebene des Foramen Monroi, unter dem Corpus callosum und oberhalb der Fornices.',
       cards: [
         { title: 'Kontinuität', text: 'Es setzt das CSP nach dorsal fort; die Trennung erfolgt topografisch an der Monro-Ebene.' },
-        { title: 'Fast nie isoliert', text: 'Ein Cavum vergae tritt typischerweise gemeinsam mit einem CSP als Cavum septi pellucidi et vergae auf.' },
+        { title: 'Kontinuität beachten', text: 'Das Cavum vergae ist häufig die posteriore Fortsetzung eines CSP; die Benennung folgt der Lage zur Monro-Ebene.' },
         { title: 'Befundformulierung', text: 'Bei typischer Konfiguration genügt: „Persistierendes Cavum septi pellucidi et vergae als Normvariante.“' },
       ],
-      key: 'Ein isoliertes Cavum vergae ist ungewöhnlich. Fehlt das anteriore CSP scheinbar, Ebenenführung und Differenzialdiagnosen kritisch prüfen.',
+      key: 'Wenn kein anteriores CSP sichtbar ist, Ebenenführung und Differenzialdiagnosen kritisch prüfen; ein Cavum vergae liegt posterior der Monro-Ebene.',
     },
     cvi: {
       title: 'Cavum veli interpositi (CVI)',
@@ -188,6 +201,19 @@ const CONTENT = {
       figureText: 'Sagittal imaging establishes the position relative to Monro; axially, the CVI is typically triangular.',
       figureAlt: 'Diagram comparing CSP, cavum vergae and cavum veli interpositi',
       key: 'Exam rule: CSP anterior to Monro, cavum vergae posterior to Monro, CVI below the fornix.',
+      check: {
+        title: 'Landmark check',
+        prompt: 'A midline CSF-like space lies between the frontal horns and continues posterior to the Monro plane below the corpus callosum. Which interpretation fits?',
+        options: [
+          'Isolated cavum veli interpositi',
+          'Cavum septi pellucidi with posterior continuation as cavum vergae',
+          'Enlarged third ventricle',
+          'Pineal cyst',
+        ],
+        answer: 1,
+        correct: 'Correct: the CSP lies anterior to the Monro plane; its posterior continuation is the cavum vergae.',
+        incorrect: 'Not yet: use the frontal horns and Monro plane. The CVI lies deeper, below the fornix and above the third ventricle.',
+      },
     },
     csp: {
       title: 'Cavum septi pellucidi (CSP)',
@@ -195,9 +221,9 @@ const CONTENT = {
       headers: ['Feature', 'Typical finding', 'Meaning'],
       rows: [
         ['Location', 'Between frontal horns, below corpus callosum and above fornix', 'septal midline space'],
-        ['Signal/attenuation', 'Matches CSF on CT and all MRI sequences', 'no solid tissue or enhancement'],
+        ['Signal/attenuation', 'CSF-like attenuation or signal on routine imaging', 'no solid component or relevant enhancement in a typical cavum'],
         ['Shape', 'thin, smooth cleft', 'usually a normal variant'],
-        ['Clinical relevance', 'usually an incidental finding', 'no follow-up when typical'],
+        ['Clinical relevance', 'usually an incidental finding', 'assess size, mass effect and CSF pathways in context'],
       ],
       cave: 'Marked expansion with bowed septal leaflets, compression of the foramina of Monro or hydrocephalus is no longer a trivial narrow variant.',
     },
@@ -206,10 +232,10 @@ const CONTENT = {
       lead: 'The cavum vergae is the posterior continuation of the CSP beyond the plane of the foramina of Monro, below the corpus callosum and above the fornices.',
       cards: [
         { title: 'Continuity', text: 'It continues the CSP posteriorly; the Monro plane provides the topographic distinction.' },
-        { title: 'Rarely isolated', text: 'It usually occurs with a CSP as a cavum septi pellucidi et vergae.' },
+        { title: 'Check continuity', text: 'The cavum vergae is often the posterior continuation of a CSP; name it by its position relative to the Monro plane.' },
         { title: 'Reporting', text: 'For a typical appearance: “Persistent cavum septi pellucidi et vergae, a normal variant.”' },
       ],
-      key: 'An isolated cavum vergae is unusual. If no anterior CSP is visible, review the planes and differentials carefully.',
+      key: 'If no anterior CSP is visible, review the imaging planes and differentials carefully; the cavum vergae lies posterior to the Monro plane.',
     },
     cvi: {
       title: 'Cavum veli interpositi (CVI)',
@@ -311,6 +337,19 @@ CONTENT.fa = {
     figureText: 'در نمای ساژیتال، محل نسبت به سوراخ مونرو مهم است؛ در نمای اکسیال، CVI معمولاً شکل مثلثی دارد.',
     figureAlt: 'طرح مقایسه‌ای CSP، کاووم ورگه و کاووم ولی اینترپوزیتی',
     key: 'قاعده امتحانی: CSP جلوی مونرو، کاووم ورگه پشت مونرو و CVI زیر فورنیکس است.',
+    check: {
+      title: 'بررسی لندمارک‌ها',
+      prompt: 'فضایی خط وسط با سیگنال مشابه CSF بین شاخ‌های فرونتال قرار دارد و پشت سطح مونرو، زیر جسم پینه‌ای ادامه می‌یابد. کدام تفسیر مناسب‌تر است؟',
+      options: [
+        'کاووم ولی اینترپوزیتی منفرد',
+        'CSP با ادامهٔ خلفی به‌صورت کاووم ورگه',
+        'اتساع بطن سوم',
+        'کیست پینه‌آل',
+      ],
+      answer: 1,
+      correct: 'درست است: CSP جلوی سطح مونرو قرار دارد و ادامهٔ خلفی آن کاووم ورگه نامیده می‌شود.',
+      incorrect: 'هنوز نه: شاخ‌های فرونتال و سطح مونرو را دنبال کنید. CVI در عمق‌تر، زیر فورنیکس و بالای بطن سوم قرار می‌گیرد.',
+    },
   },
   csp: {
     title: 'کاووم سپتی پلوسیدی (CSP)',
@@ -318,9 +357,9 @@ CONTENT.fa = {
     headers: ['ویژگی', 'یافته تیپیک', 'اهمیت'],
     rows: [
       ['محل', 'بین شاخ‌های فرونتال، زیر جسم پینه‌ای و بالای فورنیکس', 'فضای سپتال خط وسط'],
-      ['سیگنال/دانسیته', 'در CT و تمام سکانس‌های MRI مشابه CSF', 'بدون جزء جامد یا تقویت پس از تزریق'],
+      ['سیگنال/دانسیته', 'دانسیته یا سیگنال مشابه CSF در تصویربرداری معمول', 'در کاووم تیپیک جزء جامد یا تقویت قابل‌توجه دیده نمی‌شود'],
       ['شکل', 'شکاف باریک با حاشیه صاف', 'معمولاً واریانت طبیعی'],
-      ['اهمیت بالینی', 'اغلب یافته اتفاقی و بدون علامت', 'در ظاهر تیپیک نیاز به پیگیری ندارد'],
+      ['اهمیت بالینی', 'اغلب یافته اتفاقی و بدون علامت', 'اندازه، اثر فشاری و مسیرهای CSF را در زمینهٔ بالینی ارزیابی کنید'],
     ],
     cave: 'اتساع واضح همراه با قوس‌دار شدن لایه‌های سپتوم، فشار بر سوراخ مونرو یا هیدروسفالی دیگر یک واریانت باریک و بی‌اهمیت محسوب نمی‌شود.',
   },
@@ -329,10 +368,10 @@ CONTENT.fa = {
     lead: 'کاووم ورگه ادامه خلفی CSP در پشت سطح سوراخ مونرو است و زیر جسم پینه‌ای و بالای فورنیکس‌ها قرار می‌گیرد.',
     cards: [
       { title: 'پیوستگی', text: 'این فضا ادامه خلفی CSP است و سطح سوراخ مونرو مرز توپوگرافیک آن‌ها محسوب می‌شود.' },
-      { title: 'به‌ندرت منفرد', text: 'معمولاً همراه CSP دیده می‌شود و به آن کاووم سپتی پلوسیدی ات ورگه گفته می‌شود.' },
+      { title: 'تداوم را بررسی کنید', text: 'کاووم ورگه اغلب ادامهٔ خلفی CSP است؛ نام‌گذاری را بر اساس محل نسبت به سطح مونرو انجام دهید.' },
       { title: 'گزارش', text: 'در ظاهر تیپیک می‌توان نوشت: «Cavum septi pellucidi et vergae پایدار، به‌عنوان واریانت طبیعی.»' },
     ],
-    key: 'کاووم ورگه منفرد غیرمعمول است. اگر CSP قدامی دیده نمی‌شود، تصاویر چندصفحه‌ای و تشخیص‌های افتراقی را دوباره بررسی کنید.',
+    key: 'اگر CSP قدامی دیده نمی‌شود، تصاویر چندصفحه‌ای و تشخیص‌های افتراقی را دوباره بررسی کنید؛ کاووم ورگه پشت سطح مونرو قرار دارد.',
   },
   cvi: {
     title: 'کاووم ولی اینترپوزیتی (CVI)',
@@ -830,6 +869,33 @@ function Callout({ type, label, children }) {
   return <div className={`${styles.callout} ${type === 'cave' ? styles.cave : ''}`}><strong>{label}</strong><p>{children}</p></div>
 }
 
+function LandmarkCheck({ content }) {
+  const [choice, setChoice] = useState(null)
+  const correct = choice === content.answer
+  return (
+    <section className={styles.landmarkCheck} aria-labelledby="cavum-landmark-check-title">
+      <h3 id="cavum-landmark-check-title">{content.title}</h3>
+      <p>{content.prompt}</p>
+      <div className={styles.landmarkOptions} role="group" aria-label={content.title}>
+        {content.options.map((option, index) => (
+          <button
+            key={option}
+            type="button"
+            className={`${styles.landmarkOption} ${choice === index ? styles.landmarkOptionSelected : ''}`}
+            aria-pressed={choice === index}
+            onClick={() => setChoice(index)}
+          >
+            {option}
+          </button>
+        ))}
+      </div>
+      {choice !== null && <p className={styles.landmarkFeedback} role="status" aria-live="polite">
+        {correct ? content.correct : content.incorrect}
+      </p>}
+    </section>
+  )
+}
+
 function ClickableImage({ src, alt, label, onOpen, className = '' }) {
   return (
     <button type="button" className={`${styles.imageButton} ${className}`} onClick={() => onOpen({ src, alt })} aria-label={label}>
@@ -985,6 +1051,7 @@ export default function CsfSpacesPage() {
               <Callout label={copy.keyLabel}>{copy.cvi.key}</Callout>
               <Callout type="cave" label={copy.caveLabel}>{copy.cvi.cave}</Callout>
             </div>
+            <LandmarkCheck content={copy.orientation.check} />
             <div className={styles.subsection}>
               <h3>{copy.differential.title}</h3>
               <p>{copy.differential.lead}</p>

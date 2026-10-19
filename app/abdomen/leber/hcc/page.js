@@ -89,9 +89,15 @@ const CONTENT = {
       key: 'Das infiltrative HCC ist aggressiv und wird häufig über die Kombination aus permeativem Wachstum, Satellitenherden und Gefäßinvasion erkannt.',
     },
     cases: {
-      title: 'Verifizierte Radiopaedia-Fälle',
-      lead: 'Zwei komplementäre Fälle: klassisches Mehrphasen-HCC und infiltratives Wachstum. Die Originalbilder bleiben bei Radiopaedia.',
+      title: 'Bildgebungsfälle im Vergleich',
+      lead: 'Zwei Radiopaedia-Fälle zeigen typische und infiltrative Muster. Das PDF-Beispiel darunter zeigt eine Läsion, deren Bildgebung allein nicht eindeutig war.',
       open: 'Originalfall öffnen',
+      pdfExample: {
+        title: 'PDF-Beispiel: Malignitätsverdacht ohne eindeutiges HCC-Muster',
+        text: 'Abdomen.pdf, Seite 19, beschreibt im Mehrphasen-CT einen malignitätsverdächtigen Herd mit Differenzialdiagnosen HCC, Metastase und CCC. Die charakteristische HCC-Kontrastmitteldynamik war laut Quelle nicht eindeutig; die im PDF berichtete Biopsie bestätigte HCC. Der Fall zeigt: Ein später bestätigter HCC-Befund macht das vorherige Bildmuster nicht rückwirkend spezifisch.',
+        alt: 'Vier CT-Aufnahmen derselben Leberläsion in arterieller, portalvenöser und zwei Spätphasen; eine Spätphase markiert den Herd.',
+        credit: 'Quelle: Abdomen.pdf, PDF-Seite 19 (Druckseite 18); Bildausschnitt aus dem vom Nutzer bereitgestellten PDF.',
+      },
       items: [
         {
           title: 'HCC in der Mehrphasen-CT',
@@ -186,8 +192,14 @@ const CONTENT = {
       key: 'Permeative growth, satellite nodules and vascular invasion are key clues to aggressive infiltrative HCC.',
     },
     cases: {
-      title: 'Verified Radiopaedia cases', lead: 'Two complementary cases: classic multiphasic HCC and infiltrative growth. Original images remain on Radiopaedia.',
+      title: 'Imaging cases in comparison', lead: 'Two Radiopaedia cases show classic and infiltrative patterns. The PDF example below shows a lesion that was not definite on imaging alone.',
       open: 'Open original case',
+      pdfExample: {
+        title: 'PDF example: suspected malignancy without a definitive HCC pattern',
+        text: 'Abdomen.pdf page 19 describes a suspicious lesion on multiphasic CT, with HCC, metastasis and cholangiocarcinoma in the differential. The source says the characteristic HCC enhancement pattern was not definitive; the biopsy reported in the PDF confirmed HCC. A later confirmed diagnosis does not make the preceding imaging pattern specific in retrospect.',
+        alt: 'Four CT images of the same liver lesion in arterial, portal venous and two delayed phases; the lesion is outlined on one delayed image.',
+        credit: 'Source: Abdomen.pdf, PDF page 19 (printed page 18); crop from the user-supplied PDF.',
+      },
       items: [
         { title: 'HCC on multiphasic CT', tags: ['CT', 'APHE', 'wash-out', 'capsule'], text: '60-year-old man with cirrhosis and a segment 5 HCC showing avid arterial enhancement, portal venous wash-out and capsule appearance.', credit: 'Michael P. Hartung · Radiopaedia rID-197181', url: 'https://radiopaedia.org/cases/hepatocellular-carcinoma-multiphase-exam' },
         { title: 'Infiltrative HCC with satellite lesions', tags: ['CT', 'infiltrative', 'satellites'], text: '80-year-old man with alcohol history: large permeative tumour conglomerates, multiple arterial lesions and heterogeneous wash-out.', credit: 'Michael P. Hartung · Radiopaedia rID-61803', url: 'https://radiopaedia.org/cases/infiltrative-hepatocellular-carcinoma-hcc' },
@@ -269,8 +281,14 @@ const CONTENT = {
       key: "رشد نفوذی، ندول‌های ماهواره‌ای و تهاجم عروقی سرنخ‌های اصلی HCC انفیلتراتیو تهاجمی هستند.",
     },
     cases: {
-      title: 'کیس‌های تأییدشده Radiopaedia', lead: 'دو کیس مکمل: HCC کلاسیک در CT چندفازی و رشد انفیلتراتیو. تصاویر اصلی در Radiopaedia باقی می‌مانند.',
+      title: 'مقایسهٔ کیس‌های تصویربرداری', lead: 'دو کیس Radiopaedia الگوهای کلاسیک و انفیلتراتیو را نشان می‌دهند. نمونه PDF زیر ضایعه‌ای را نشان می‌دهد که فقط با تصویربرداری قطعی نبود.',
       open: 'باز کردن کیس اصلی',
+      pdfExample: {
+        title: 'نمونه PDF: شک به بدخیمی بدون الگوی قطعی HCC',
+        text: 'صفحه ۱۹ Abdomen.pdf در CT چندفازی ضایعه‌ای مشکوک به بدخیمی را توصیف می‌کند و HCC، متاستاز و کلانژیوکارسینوم را در افتراق می‌گذارد. طبق منبع، الگوی تیپیک جذب HCC قطعی نبود؛ بیوپسی گزارش‌شده در PDF، HCC را تأیید کرد. تشخیص نهایی، الگوی تصویری پیشین را به‌طور پس‌نگر اختصاصی نمی‌کند.',
+        alt: 'چهار تصویر CT از یک ضایعه کبدی در فاز شریانی، پورتال و دو فاز تأخیری؛ ضایعه در یکی از تصاویر تأخیری مشخص شده است.',
+        credit: 'منبع: Abdomen.pdf، صفحه PDF ۱۹ (صفحه چاپی ۱۸)؛ برش از PDF ارائه‌شده توسط کاربر.',
+      },
       items: [
         { title: 'HCC در CT چندفازی', tags: ['CT', 'APHE', 'wash-out', 'کپسول'], text: 'مرد ۶۰ ساله با سیروز و HCC سگمان ۵: تقویت شریانی قوی، واش‌اوت پورتال و نمای کپسول.', credit: 'Michael P. Hartung · Radiopaedia rID-197181', url: 'https://radiopaedia.org/cases/hepatocellular-carcinoma-multiphase-exam' },
         { title: 'HCC انفیلتراتیو با ضایعات ماهواره‌ای', tags: ['CT', 'انفیلتراتیو', 'ماهواره‌ای'], text: "مرد ۸۰ ساله با سابقه الکل: کنگلومرای نفوذی بزرگ، ضایعات شریانی متعدد و واش‌اوت هتروژن.", credit: 'Michael P. Hartung · Radiopaedia rID-61803', url: 'https://radiopaedia.org/cases/infiltrative-hepatocellular-carcinoma-hcc' },
@@ -404,6 +422,10 @@ export default function HccPage() {
             <Callout label={copy.keyLabel}>{copy.infiltrative.key}</Callout>
           </Section>
           <Section id="fallbeispiele" title={copy.cases.title} lead={copy.cases.lead}>
+            <figure className={styles.pdfCase}>
+              <img src="/abdomen/hcc/abdomen-pdf-p19-multiphase.png" alt={copy.cases.pdfExample.alt} />
+              <figcaption><strong>{copy.cases.pdfExample.title}</strong><p>{copy.cases.pdfExample.text}</p><small>{copy.cases.pdfExample.credit}</small></figcaption>
+            </figure>
             <div className={styles.caseGrid}>{copy.cases.items.map(item => <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}><div className={styles.caseImage} aria-hidden="true">CT</div><div className={styles.caseBody}><div className={styles.caseLabelRow}>{item.tags.map(tag => <span key={tag} className={styles.caseLabel}>{tag}</span>)}</div><h3>{item.title}</h3><p>{item.text}</p><small>{item.credit}</small><strong>{copy.cases.open}</strong></div></a>)}</div>
           </Section>
           <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>

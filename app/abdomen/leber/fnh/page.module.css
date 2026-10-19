@@ -507,6 +507,22 @@
   margin: 18px 0;
 }
 
+.pdfCase {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.8fr);
+  gap: 16px;
+  align-items: center;
+  margin: 18px 0 24px;
+  padding: 14px;
+  border: 1px solid rgba(208, 216, 230, 0.9);
+  border-radius: 18px;
+  background: #fff;
+}
+.pdfCase img { display: block; width: 100%; height: auto; border-radius: 10px; }
+.pdfCase figcaption strong { display: block; margin-bottom: 8px; color: #0d1b2a; line-height: 1.4; }
+.pdfCase figcaption p { margin: 0 0 8px; color: #536174; line-height: 1.6; }
+.pdfCase figcaption small { color: #738196; font-size: 11px; line-height: 1.45; }
+
 .caseCardLink {
   display: block;
   overflow: hidden;
@@ -569,6 +585,7 @@
   .caseGrid { grid-template-columns: 1fr; gap: 12px; }
   .caseCardLink { border-radius: 18px; }
   .caseImage { height: 180px; font-size: 52px; }
+  .pdfCase { grid-template-columns: 1fr; gap: 12px; padding: 12px; }
   .caseBody { padding: 16px; }
   .caseBody h3 { font-size: 17px; }
   .caseBody p { font-size: 16px; line-height: 1.72; }
@@ -584,3 +601,7 @@
 :global(html[data-theme='dark']) .caseBody p,
 :global(html[data-theme='dark']) .caseBody small { color: #b8c4d8; }
 :global(html[data-theme='dark']) .caseLabel { background: rgba(249,115,22,0.16); }
+:global(html[data-theme='dark']) .pdfCase { background: #162033; border-color: #344159; }
+:global(html[data-theme='dark']) .pdfCase figcaption strong { color: #f8fafc; }
+:global(html[data-theme='dark']) .pdfCase figcaption p,
+:global(html[data-theme='dark']) .pdfCase figcaption small { color: #b8c4d8; }
