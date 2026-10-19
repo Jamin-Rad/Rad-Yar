@@ -1,0 +1,13 @@
+{
+  "lesson": "knochenmetastasen",
+  "assets": [
+    {
+      "file": "hero.svg",
+      "kind": "original conceptual schematic",
+      "creator": "RadYar lesson authoring",
+      "source": null,
+      "diagnostic_image": false,
+      "rationale": "Introduces lytic and sclerotic bone response without imitating a diagnostic radiograph."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img" aria-labelledby="title desc">
+  <title id="title">Bone metastasis pattern schematic</title>
+  <desc id="desc">Non-diagnostic comparison of an osteolytic lesion and a sclerotic lesion in bone.</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#173640"/><stop offset="1" stop-color="#285359"/></linearGradient><linearGradient id="bone" x2="1"><stop stop-color="#f5dfb7"/><stop offset=".5" stop-color="#fff1d6"/><stop offset="1" stop-color="#d7bd91"/></linearGradient></defs>
+  <rect width="720" height="440" rx="34" fill="url(#bg)"/>
+  <g transform="translate(86 45)"><path d="M105 16c-39 0-70 29-70 65 0 22 10 39 27 51v174c-17 12-27 29-27 51 0 36 31 65 70 65 28 0 51-15 62-37h184c11 22 34 37 62 37 39 0 70-29 70-65 0-22-10-39-27-51V132c17-12 27-29 27-51 0-36-31-65-70-65-28 0-51 15-62 37H167c-11-22-34-37-62-37Z" fill="url(#bone)" stroke="#fff4dd" stroke-width="7"/>
+    <path d="M82 172c21-23 47-24 70 0v69c-23 23-49 22-70 0z" fill="#bc684c" stroke="#8c4035" stroke-width="6"/><path d="M340 167c27-17 54-16 82 2v76c-27 17-55 17-82 0z" fill="#9bb6a1" stroke="#577d72" stroke-width="6"/><path d="M347 179c20-8 43-7 65 2M347 195c20-8 43-7 65 2M347 211c20-8 43-7 65 2M347 227c20-8 43-7 65 2" fill="none" stroke="#44675f" stroke-width="5" opacity=".85"/>
+    <path d="M151 206h145m44 0h-15" stroke="#648c83" stroke-width="4" stroke-dasharray="8 10" opacity=".85"/><circle cx="281" cy="206" r="7" fill="#f7d995"/>
+  </g>
+</svg>
