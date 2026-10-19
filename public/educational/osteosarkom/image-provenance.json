@@ -1,0 +1,35 @@
+{
+  "lesson": "osteosarkom",
+  "sourcePdf": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+  "authorization": "User authorized use of all images in the supplied PDFs.",
+  "assets": [
+    {
+      "file": "hero.svg",
+      "type": "code-native topic illustration",
+      "patientImage": false,
+      "description": "Topic-specific bone/tumour illustration; not diagnostic imaging."
+    },
+    {
+      "file": "rid-231551-knee-xray-ct.png",
+      "type": "source-PDF page crop",
+      "patientImage": true,
+      "sourcePage": "MSK.pdf PDF page 81 (printed page 80)",
+      "renderDpi": 220,
+      "cropPixels": { "x": 515, "y": 1960, "width": 820, "height": 380 },
+      "radiopaediaId": "rID 231551",
+      "panels": [
+        "Pair depicts a conventional radiograph and CT.",
+        "Left = radiograph and right = CT assignment is based on displayed image appearance; the PDF page does not caption each panel separately."
+      ],
+      "selection": "Paired source panels used to compare matrix mineralisation and cortical/extraosseous extent; localized caption and alt text are provided in the lesson.",
+      "sourceFigureAuthorOrContributor": "Not identified on the supplied source page.",
+      "licenseClaim": "No external contributor or Radiopaedia licence verification is claimed; use is based on the user's authorization for images in the supplied PDF."
+    },
+    {
+      "file": "Inline diagram in app/msk/tumoren/osteosarkom/page.jsx",
+      "type": "code-native educational schematic",
+      "patientImage": false,
+      "description": "Localized concept diagram of metaphysis, marrow lesion and periosteal geometry; explicitly not diagnostic imaging."
+    }
+  ]
+}
