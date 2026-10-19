@@ -1,0 +1,39 @@
+'use client'
+
+import { useState } from 'react'
+import { useLanguage } from '@/providers/LanguageProvider'
+import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
+import { TECHNIK_STRAHLUNGSARTEN_LESSON as lesson } from '@/data/technikStrahlungsartenLesson'
+import styles from './page.module.css'
+
+const L = (de, en, fa) => ({ de, en, fa })
+const pick = (value, lang) => value?.[lang] || value?.de || ''
+const labels = {
+  path: L('Lernpfad','Learning path','مسیر یادگیری'), progress: L('gelesen','read','خوانده‌شده'),
+  continue: L('Lektion fortsetzen','Continue lesson','ادامهٔ درس'),
+  completeLesson: L('Ganze Lektion als gelesen markieren','Mark full lesson as read','علامت‌گذاری کل درس به‌عنوان خوانده‌شده'),
+  lessonCompleted: L('Ganze Lektion gelesen','Full lesson marked as read','کل درس خوانده شد'),
+  complete: L('Abschnitt als gelesen markieren','Mark section as read','این بخش را خواندم'),
+  completed: L('Als gelesen markiert','Marked as read','خوانده‌شده'), open: L('Abschnitt öffnen','Open section','بازکردن بخش'),
+  close: L('Schließen','Close','بستن'), takeHome: L('Drei Regeln mitnehmen','Three rules to remember','سه قاعده برای یادآوری'),
+}
+const sources = [
+  { tag:'PDF', title:'Technik.pdf · PDF p. 28–29 / printed pp. 27–28', citation:'User-provided summary; text extracted and both pages visually inspected.', scope:L('Ausgangsbasis für Teilchenarten, medizinische Beispiele und Photoneneigenschaften. Ältere Halbwertszeiten und klinische Einzelheiten wurden nicht als aktuelle Anleitung übernommen.','Source for particle types, medical examples and photon properties. Older half-lives and clinical details are not adopted as current guidance.','مبنای انواع ذره، نمونه‌های پزشکی و ویژگی‌های فوتون؛ نیمه‌عمرهای قدیمی و جزئیات بالینی به‌عنوان راهنمای جاری وارد نشدند.') },
+  { tag:'IAEA', title:'Radiation: What is it? (TCS-40)', href:'https://www-pub.iaea.org/MTCD/Publications/PDF/TCS-40_web.pdf', citation:'IAEA training material; accessed 20 October 2026.', scope:L('Einordnung ionisierender Strahlung und qualitative Unterschiede der Durchdringung.','Ionizing radiation overview and qualitative penetration differences.','مرور تابش یون‌ساز و تفاوت کیفی نفوذپذیری.') },
+  { tag:'IAEA', title:'Nuclear Security Series No. 6: Combating Illicit Trafficking in Nuclear and Other Radioactive Material', href:'https://www-pub.iaea.org/MTCD/publications/PDF/pub1309_web.pdf', citation:'IAEA primary technical publication; accessed 20 October 2026.', scope:L('Röntgen- und Gammastrahlung sind beide Photonen; die Benennung folgt hauptsächlich dem Entstehungsprozess, nicht einer starren Energiegrenze.','X-rays and gamma rays are both photons; naming mainly follows production origin, not a rigid energy boundary.','پرتو ایکس و گاما هر دو فوتون‌اند؛ نام‌گذاری عمدتاً بر خاستگاه تولید تکیه دارد، نه مرز ثابت انرژی.') },
+  { tag:'NRC', title:'Radiation Basics', href:'https://www.nrc.gov/facilities-safety/radiation-protection/radiation-and-its-health-effects/radiation-basics', citation:'U.S. Nuclear Regulatory Commission educational resource; accessed 20 October 2026.', scope:L('Ergänzende qualitative Einordnung von Teilchen-, Alpha-, Beta- und Photonenstrahlung.','Supplementary qualitative overview of particle, alpha, beta and photon radiation.','مرور کیفی تکمیلی تابش ذره‌ای، آلفا، بتا و فوتونی.') },
+]
+function Icon({id}) { const d={types:'M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z',energy:'M13 2 4 14h6l-1 8 11-13h-7z',clinical:'M12 3v18M3 12h18'}; return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d[id]||d.types}/></svg> }
+function RadiationMap({lang}) {
+ const copy={de:{particles:'Teilchen',photons:'Photonen',alpha:'Alpha · Heliumkern',beta:'Beta · Elektron / Positron',gamma:'Gamma · Kernübergang',xray:'Röntgen · außerhalb des Kerns',caption:'Die Namensgrenze zwischen Röntgen und Gamma beschreibt vor allem die Entstehung.'},en:{particles:'Particles',photons:'Photons',alpha:'Alpha · helium nucleus',beta:'Beta · electron / positron',gamma:'Gamma · nuclear transition',xray:'X-ray · outside the nucleus',caption:'The X-ray/gamma naming distinction mainly describes origin.'},fa:{particles:'ذره‌ها',photons:'فوتون‌ها',alpha:'آلفا · هستهٔ هلیوم',beta:'بتا · الکترون / پوزیترون',gamma:'گاما · گذار هسته‌ای',xray:'پرتو ایکس · بیرون هسته',caption:'تمایز نام پرتو ایکس و گاما عمدتاً خاستگاه را بیان می‌کند.'}}[lang]||{}
+ return <figure className={styles.map} dir={lang==='fa'?'rtl':'ltr'}><div className={styles.branch}><strong>{copy.particles}</strong><span>{copy.alpha}</span><span>{copy.beta}</span></div><div className={styles.branch}><strong>{copy.photons}</strong><span>{copy.gamma}</span><span>{copy.xray}</span></div><figcaption>{copy.caption}</figcaption></figure>
+}
+function Check({lang}) { const [answer,setAnswer]=useState(null); const value=x=>pick(x,lang); const text={de:['Selbstcheck','Antwort auswählen'],en:['Quick check','Choose an answer'],fa:['خودآزمایی','یک پاسخ انتخاب کنید']}[lang]||[]; return <div className={styles.check}><h3>{text[0]}</h3><p>{value(lesson.question.prompt)}</p><fieldset><legend>{text[1]}</legend>{lesson.question.options.map((o,i)=><label key={i}><input type="radio" name="radiation-type-check" checked={answer===i} onChange={()=>setAnswer(i)}/><span>{value(o)}</span></label>)}</fieldset>{answer!==null&&<p role="status" className={styles.feedback}>{value(lesson.question.feedbackByOption[answer])}</p>}</div> }
+export default function RadiationTypesPage(){
+ const {lang}=useLanguage(); const value=x=>pick(x,lang); const labelsForLang=Object.fromEntries(Object.entries(labels).map(([k,v])=>[k,value(v)])); const langHref=p=>lang==='de'?p:`${p}${p.includes('?')?'&':'?'}lang=${lang}`
+ const sections=[...lesson.chapters.map(c=>({id:c.id,label:value(c.title),icon:c.icon})),{id:'take-home',label:labelsForLang.takeHome,icon:'summary',emphasis:true}]
+ return <StandardLessonShell lessonId={lesson.id} lang={lang} title={value(lesson.title)} author="Dr. Zia" sections={sections} labels={labelsForLang} renderIcon={id=><Icon id={id}/>} actions={{}} breadcrumbs={[{label:'RadYar',href:langHref('/')},{label:value(L('Technik & Physik','Technique & Physics','تکنیک و فیزیک')),href:langHref('/lernen/technik')},{label:value(lesson.title)}]} heroImageAlt={value(lesson.heroAlt)} syncHashNavigation className={styles.page} theme={{backgroundImage:'/andarun-galaxy-v3.png',heroImage:'/technik/strahlungsarten/hero.svg',heroImageOpacity:.94,accent:'#60b6c5',accentStrong:'#245d68',accentSoft:'#e8f5f7',secondary:'#c69a54',secondaryStrong:'#75531f',heroBase:'#132b35'}} sources={<LessonSources title={value(L('Quellen und Aussagebereich','Sources and scope','منابع و محدودهٔ گزاره‌ها'))} items={sources} note={value(L('Die medizinischen Beispiele dienen nur zur Unterscheidung der Strahlungsarten. Sie ersetzen keine aktuelle klinische, nuklearmedizinische oder betriebliche Strahlenschutzanweisung.','Medical examples only illustrate radiation types; they do not replace current clinical, nuclear-medicine or workplace radiation-safety guidance.','نمونه‌های پزشکی فقط برای تمایز انواع تابش‌اند و جایگزین راهنمای بالینی، پزشکی هسته‌ای یا ایمنی پرتویی محل کار نیستند.'))}/> }>
+ {lesson.chapters.map(c=><LessonSection key={c.id} id={c.id} icon={c.icon} title={value(c.title)} bodyClassName={styles.body}>{c.paragraphs.map((p,i)=><p key={i}>{value(p)}</p>)}{c.id==='particle-or-photon'&&<RadiationMap lang={lang}/ >}{c.id==='medical-examples'&&<Check lang={lang}/>}</LessonSection>)}
+ <LessonSection id="take-home" icon="summary" title={labelsForLang.takeHome}><ol className={styles.rules}>{lesson.summary.map(x=><li key={x.de}>{value(x)}</li>)}</ol></LessonSection>
+ </StandardLessonShell>
+}

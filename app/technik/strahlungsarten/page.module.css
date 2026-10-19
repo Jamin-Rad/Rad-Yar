@@ -1,0 +1,15 @@
+.page { --lesson-accent: #60b6c5; }
+.body p { max-width: 78ch; }
+.map { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:1.4rem 0; }
+.branch { display:flex; flex-direction:column; gap:.6rem; padding:1rem; border:1px solid #87c9d4; border-radius:14px; background:rgba(232,245,247,.72); }
+.branch strong { color:#245d68; font-size:1.05rem; }
+.branch span { padding:.65rem .75rem; border-radius:9px; background:rgba(255,255,255,.8); }
+.map figcaption { grid-column:1/-1; color:#45565b; font-size:.92rem; }
+.check { margin-top:1.5rem; padding:1rem; border-inline-start:4px solid #c69a54; border-radius:10px; background:rgba(248,244,235,.8); }
+.check h3 { margin-top:0; }
+.check fieldset { display:grid; gap:.6rem; border:0; padding:0; }
+.check label { display:flex; align-items:flex-start; gap:.65rem; padding:.65rem; border:1px solid rgba(36,93,104,.22); border-radius:9px; cursor:pointer; }
+.check input { margin-top:.25rem; accent-color:#245d68; }
+.feedback { padding:.7rem; border-radius:8px; background:#e8f5f7; }
+.rules { display:grid; gap:.75rem; padding-inline-start:1.5rem; }
+@media(max-width:640px){.map{grid-template-columns:1fr}.map figcaption{grid-column:auto}}
