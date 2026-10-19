@@ -41,6 +41,11 @@ const checks = {
     en: { title: 'Self-check: spatial encoding and SNR', question: 'You increase the matrix while keeping FOV and coverage fixed. Which statement best fits?', options: ['Pixels become larger and SNR rises without a trade-off.', 'Pixels become smaller: spatial detail increases and SNR typically falls.', 'Each k-space point maps directly to one image pixel; matrix size does not matter.'], answer: 1, correct: 'Correct. Smaller voxels/pixels typically improve detail resolution but collect less signal per voxel. More averages can improve SNR, at the cost of scan time.', retry: 'Connect matrix size and voxel size to signal per voxel. Improving SNR with more averages costs scan time.' },
     fa: { title: 'خودآزمایی: کدگذاری مکانی و SNR', question: 'ماتریس را با FOV و پوشش ثابت افزایش می‌دهید. کدام عبارت درست‌تر است؟', options: ['پیکسل‌ها بزرگ‌تر می‌شوند و SNR بدون بده‌بستان افزایش می‌یابد.', 'پیکسل‌ها کوچک‌تر می‌شوند: جزئیات مکانی بیشتر و SNR معمولاً کمتر می‌شود.', 'هر نقطهٔ k-space مستقیماً یک پیکسل تصویر است؛ اندازهٔ ماتریس اهمیتی ندارد.'], answer: 1, correct: 'درست است. وکسل/پیکسل کوچک‌تر معمولاً وضوح جزئیات را بالا می‌برد، اما سیگنال هر وکسل کمتر می‌شود. میانگین‌گیری بیشتر می‌تواند SNR را بهتر کند ولی زمان اسکن را افزایش می‌دهد.', retry: 'اندازهٔ ماتریس و وکسل را به سیگنال هر وکسل ربط دهید. بهبود SNR با میانگین‌گیری بیشتر زمان تصویربرداری را زیاد می‌کند.' },
   },
+  mriArtifacts: {
+    de: { title: 'Selbstcheck: Aliasing oder RF-Störung?', question: 'Die Nasenspitze erscheint zusätzlich am Hinterkopf, entlang der Phasenkodierrichtung. Welche Erklärung und Maßnahme passen?', options: ['Zipper durch RF-Leckage; die Empfangsbandbreite erhöhen.', 'Aliasing: Anatomie außerhalb des FOV wurde in die Gegenseite gefaltet; Phasen-FOV erweitern oder Phase-oversampling einsetzen.', 'Gibbs-Ringing; die Phasenkodierrichtung ändern.'], answer: 1, correct: 'Richtig. Das Muster passt zu Faltung von Anatomie außerhalb des FOV entlang der Phasenkodierung. Phase-oversampling kann die Messzeit verlängern.', retry: 'Eine schmale feste Linie spricht eher für RF-Störung; eine auf der Gegenseite auftauchende Anatomie für Faltung außerhalb des FOV.' },
+    en: { title: 'Self-check: aliasing or RF interference?', question: 'The nose appears again at the back of the head, along the phase-encoding direction. Which explanation and response fit?', options: ['Zipper from RF leakage; increase receiver bandwidth.', 'Aliasing: anatomy outside the FOV folded to the opposite side; enlarge phase FOV or use phase oversampling.', 'Gibbs ringing; change phase-encoding direction.'], answer: 1, correct: 'Correct. This fits anatomy outside the FOV folding along phase encoding. Phase oversampling can increase scan time.', retry: 'A narrow fixed line suggests RF interference; anatomy reappearing on the opposite side suggests wrap-around from outside the FOV.' },
+    fa: { title: 'خودآزمایی: aliasing یا تداخل RF؟', question: 'نوک بینی در امتداد کدگذاری فاز، دوباره در پشت سر دیده می‌شود. کدام توضیح و اقدام مناسب است؟', options: ['zipper ناشی از نشت RF؛ پهنای باند گیرنده را افزایش دهید.', 'aliasing: آناتومی خارج FOV به سمت مقابل تاخورده است؛ FOV فاز را افزایش دهید یا phase oversampling به‌کار ببرید.', 'ringing گیبس؛ جهت کدگذاری فاز را عوض کنید.'], answer: 1, correct: 'درست است. این الگو با تاخوردگی آناتومی خارج از FOV در راستای کدگذاری فاز سازگار است. phase oversampling ممکن است زمان تصویربرداری را افزایش دهد.', retry: 'خط باریک و ثابت بیشتر به تداخل RF می‌خورد؛ ظاهرشدن آناتومی در سمت مقابل به تاخوردگی خارج FOV اشاره دارد.' },
+  },
 }
 
 function RetrievalCheck({ kind, lang }) {
@@ -60,6 +65,16 @@ function MRIKnowledgeCheck({ lang }) {
     <h3 id="technik-mri-check-title" style={{ marginTop: 0 }}>{copy.title}</h3><p>{copy.question}</p>
     <div style={{ display: 'grid', gap: 8 }}>{copy.options.map((option, index) => <button key={index} type="button" aria-pressed={answer === index} onClick={() => setAnswer(index)} style={{ padding: 12, border: '1px solid var(--border)', borderRadius: 10, background: 'var(--surface-soft)', color: 'var(--text)', textAlign: 'start', cursor: 'pointer' }}>{option}</button>)}</div>
     {answer !== null && <p role="status" style={{ marginBottom: 0 }}>{answer === copy.answer ? copy.correct : copy.retry}</p>}
+  </div>
+}
+
+function MRIArtifactKnowledgeCheck({ lang }) {
+  const [answer, setAnswer] = useState(null)
+  const copy = checks.mriArtifacts[lang] || checks.mriArtifacts.de
+  return <div aria-labelledby="technik-mri-artifact-check-title" style={{ marginTop: 22, padding: 16, border: '1px solid var(--border)', borderRadius: 14, background: 'var(--bg-card)' }}>
+    <h3 id="technik-mri-artifact-check-title" style={{ marginTop: 0 }}>{copy.title}</h3><p>{copy.question}</p>
+    <div style={{ display: 'grid', gap: 8 }}>{copy.options.map((option, index) => <button key={index} type="button" aria-pressed={answer === index} onClick={() => setAnswer(index)} style={{ padding: 12, border: '1px solid var(--border)', borderRadius: 10, background: 'var(--surface-soft)', color: 'var(--text)', textAlign: 'start', cursor: 'pointer' }}>{option}</button>)}</div>
+    {answer !== null && <p role="status">{answer === copy.answer ? copy.correct : copy.retry}</p>}
   </div>
 }
 
@@ -107,10 +122,11 @@ export default function TechnikGrundlagenStandardPage() {
         {section.teachingBlocks?.map(block=><section key={block.id} aria-labelledby={`${block.id}-title`} style={{marginTop:30}}>
           <h3 id={`${block.id}-title`}>{t(block.title)}</h3><p>{t(block.lead)}</p>
           <div className={styles.tableWrap}><table className={styles.table}><thead><tr><th>{t(L('Schritt / Begriff','Step / concept','گام / مفهوم'))}</th><th>{t(L('Was geschieht?','What happens?','چه رخ می‌دهد؟'))}</th></tr></thead><tbody>{block.rows.map((row,i)=><tr key={i}>{row.map((cell,j)=><td key={j}>{t(cell)}</td>)}</tr>)}</tbody></table></div>
-          {block.visual?<figure style={{margin:'22px 0',padding:14,border:'1px solid var(--border)',borderRadius:16,background:'var(--surface-soft)'}}><img src={block.visual.src} alt={t(block.visual.alt)} loading="lazy" style={{display:'block',width:'100%',height:'auto',borderRadius:10}}/><figcaption style={{marginTop:10}}>{t(block.visual.caption)}</figcaption>{block.visual.legend?<ul>{block.visual.legend.map((item,index)=><li key={index}>{t(item)}</li>)}</ul>:null}</figure>:null}
+          {block.visual?<div role="group" aria-label={t(block.visual.caption)} style={{margin:'22px 0',padding:14,border:'1px solid var(--border)',borderRadius:16,background:'var(--surface-soft)'}}>{block.visual.src?<img src={block.visual.src} alt={t(block.visual.alt)} loading="lazy" style={{display:'block',width:'100%',height:'auto',borderRadius:10}}/>:null}<p style={{marginTop:10}}>{t(block.visual.caption)}</p>{block.visual.images?<div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(min(100%,220px),1fr))',gap:14,marginTop:14}}>{block.visual.images.map((item,index)=><figure key={index} style={{margin:0,minWidth:0}}><img src={item.src} alt={t(item.alt)} loading="lazy" style={{display:'block',width:'100%',height:'auto',borderRadius:10}}/><figcaption style={{marginTop:6}}>{t(item.caption)}</figcaption></figure>)}</div>:null}{block.visual.legend?<ul>{block.visual.legend.map((item,index)=><li key={index}>{t(item)}</li>)}</ul>:null}</div>:null}
           {block.supplement?<aside className={styles.callout}><strong>{t(L('Zusatzbeziehung (nicht aus der PDF)','Supplemental relationship (not stated in the PDF)','رابطهٔ تکمیلی (در PDF نیامده است)'))}</strong><p>{t(block.supplement)}</p></aside>:null}
         </section>)}
         {section.id === 'mrt' ? <MRIKnowledgeCheck lang={lang}/> : null}
+        {section.id === 'mrt-sicherheit' ? <MRIArtifactKnowledgeCheck lang={lang}/> : null}
         {section.note?<aside className={styles.callout}><strong>{t(L('Quellenhinweis','Source limitation','محدودیت منبع'))}</strong><p>{t(section.note)}</p></aside>:null}
         {section.id === 'wirkung' ? <RetrievalCheck kind="effects" lang={lang}/> : null}
         {section.id === 'dosis' ? <RetrievalCheck kind="dose" lang={lang}/> : null}
