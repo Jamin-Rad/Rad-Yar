@@ -44,6 +44,8 @@
 
 | X (پوش‌شده) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.87–89: Enchondrom، ID `enchondrom`, Route `/msk/tumoren/enchondrom` | پوشش منبع، الگوی MRI، ترجمهٔ Ollier و رسانه پس از بازبینی مستقل/دلتا PASS؛ SSR سه‌زبانه/RTL پاس؛ commit `378cd400` روی `main` | صفحه در مرورگر پشت گیت ورود اعضاست؛ دسترسی محتوای درس و تأیید بالینی متخصص بازند؛ برش دست یک اثر کوچک از لبهٔ برچسب دارد |
 | Y (پوش‌شده) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.90–91: Chondrosarkom، ID `chondrosarkom`, Route `/msk/tumoren/chondrosarkom` | threshold بیش از ۲/۳ ضخامت کورتکس پس از تأیید مستقل با Murphey et al. 1998 و caveat «تنها تشخیصی نیست» وارد شد؛ بازبینی مستقل/دلتا و SSR سه‌زبانه پاس؛ commit `ac2e424e` روی `main` | صفحه در مرورگر پشت گیت ورود اعضاست؛ دسترسی محتوای درس و تأیید بالینی متخصص بازند؛ مجوز بیرونی Radiopaedia به‌طور مستقل تأیید نشده و استفاده طبق مجوز تصاویر PDF کاربر ثبت شده |
+| Z (پوش‌شده) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.92–93: Ewing-Sarkom، ID `ewing-sarkom`, Route `/msk/tumoren/ewing-sarkom` | بازبینی مستقل منبع/تصویر/ترجمه PASS؛ ایراد جزئی گزینه‌های سؤال رفع و delta PASS؛ SSR سه‌زبانه پاس؛ commit `6a097641` روی `main` | در مرورگر، مسیر درست بارگذاری می‌شود اما درس پشت گیت ورود اعضاست؛ تأیید بالینی باز؛ تعریف قدیمی PDF با طبقه‌بندی فعلی مقایسه و caveat شده است |
+
 ## معیار اتمام batch
 
 هر batch فقط وقتی «آمادهٔ تحویل» است که تغییرهای route و دادهٔ درس، منبع و صفحه، ترجمه، ارزیابی‌های متصل، نیازهای ادغام، نتایج تست فنی و موانع باقی‌مانده ثبت شده باشند. نتیجهٔ بازبین مستقل در جدول بالا افزوده می‌شود. «آمادهٔ تحویل» جایگزین تأیید علمی، تأیید حقوق تصویر یا انتشار نیست.
