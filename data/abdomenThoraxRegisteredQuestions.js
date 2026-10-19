@@ -1,0 +1,75 @@
+import { abdomenThoraxAssessmentDrafts as drafts } from './abdomenThoraxAssessmentDrafts'
+
+const languages = ['de', 'en', 'fa']
+const option = (id, text) => ({ id, text })
+
+// Only drafts whose lesson scope has an exact curriculum topic ID are registered.
+// The hepatic AML and PSC/PBC drafts remain scoped to their lessons because the
+// available curriculum IDs would otherwise mislabel their questions.
+const registrations = [
+  { key: 'abdomen-ileus-volvulus', fach: 'abdomen', tags: ['ileus-duenndarm', 'volvulus'], extra: { de: 'Eine einzelne dilatierte Dünndarmschlinge ohne weitere Zeichen', en: 'A single dilated small-bowel loop without additional findings', fa: 'یک لوپ منفرد روده باریکِ متسع بدون یافته‌های دیگر' } },
+  { key: 'abdomen-pancreatic-cysts', fach: 'abdomen', tags: ['ipmn'], extra: { de: 'Eine solide Raumforderung ohne Gangkommunikation', en: 'A solid mass without duct communication', fa: 'تودهٔ جامد بدون ارتباط با مجرا' } },
+  { key: 'abdomen-focal-liver', fach: 'abdomen', tags: ['leberadenom', 'lebermetastasen'], extra: { de: 'Die Läsion nur anhand des nativen CT beurteilen', en: 'Assess the lesion from unenhanced CT alone', fa: 'ارزیابی ضایعه فقط بر اساس CT بدون تزریق' } },
+  { key: 'abdomen-renal-masses', fach: 'abdomen', tags: ['nierenzysten'], extra: { de: 'Das Alter der betroffenen Person allein', en: 'The patient’s age alone', fa: 'فقط سن بیمار' } },
+  { key: 'abdomen-adrenal-masses', fach: 'abdomen', tags: ['nebennieren-inzidentalom', 'nebennierenadenom'], extra: { de: 'Voraufnahmen bei der Beurteilung ignorieren', en: 'Ignore prior examinations during assessment', fa: 'نادیده‌گرفتن تصاویر قبلی در ارزیابی' } },
+  { key: 'thorax-foreign-body', fach: 'thorax', tags: ['fremdkoerper-atemwege'], extra: { de: 'Ein unauffälliges Röntgenbild schließt die Aspiration sicher aus', en: 'A normal radiograph definitively excludes aspiration', fa: 'رادیوگرافی طبیعی آسپیراسیون را به‌طور قطعی رد می‌کند' } },
+  { key: 'thorax-pneumonia', fach: 'thorax', tags: ['bakterielle-pneumonie', 'virale-pneumonie-covid', 'atypische-pneumonie', 'pcp', 'aspergillus-lunge'], extra: { de: 'Ein bestimmtes Verteilungsmuster beweist den Erreger', en: 'A particular distribution pattern proves the organism', fa: 'یک الگوی توزیع مشخص، عامل بیماری‌زا را ثابت می‌کند' } },
+  { key: 'thorax-tuberculosis', fach: 'thorax', tags: ['tuberkulose'], extra: { de: 'Ein unauffälliges Thoraxbild schließt aktive TB sicher aus', en: 'A normal chest image definitively excludes active TB', fa: 'تصویر طبیعی قفسهٔ سینه سل فعال را قطعاً رد می‌کند' } },
+  { key: 'thorax-chest-xray', fach: 'thorax', tags: ['roentgen-thorax-systematik'], extra: { de: 'Die Kontrastmittelphase', en: 'The contrast phase', fa: 'فاز مادهٔ حاجب' } },
+  { key: 'abdomen-cystic-liver-lesions', fach: 'abdomen', tags: ['leberzyste'], extra: { de: 'Die Punktion allein anhand des Durchmessers planen', en: 'Plan puncture from diameter alone', fa: 'برنامه‌ریزی برای نمونه‌گیری فقط بر اساس قطر' } },
+  { key: 'abdomen-appendizitis', fach: 'abdomen', tags: ['appendizitis'], extra: { de: 'Eine nicht dargestellte Appendix als sicheren Ausschluss werten', en: 'Treat a non-visualised appendix as a definite exclusion', fa: 'دیده‌نشدن آپاندیس را رد قطعی بیماری بدانید' } },
+  { key: 'abdomen-lower-gi-bleeding', fach: 'abdomen', tags: ['untere-gi-blutung'], extra: { de: 'Eine negative CTA schließt jede intermittierende Blutung aus', en: 'A negative CTA excludes every intermittent bleed', fa: 'CTA منفی هر خون‌ریزی متناوبی را رد می‌کند' } },
+  { key: 'abdomen-kolorektales-karzinom', fach: 'abdomen', tags: ['kolorektales-karzinom'], extra: { de: 'Eine Abdomen-CT allein für das lokoregionäre Rektumstaging', en: 'Abdominal CT alone for locoregional rectal staging', fa: 'فقط CT شکم برای مرحله‌بندی موضعی رکتوم' } },
+]
+
+const makeQuestion = ({ key, fach, tags, extra }) => {
+  const draft = drafts[key]
+  if (!draft) throw new Error(`Missing lesson assessment draft: ${key}`)
+  return Object.fromEntries(languages.map(lang => {
+    const options = draft.options.map((text, index) => option(String.fromCharCode(65 + index), text[lang]))
+    options.push(option('D', extra[lang]))
+    return [lang, {
+      id: `${key}-${lang}-01`,
+      tags,
+      fach,
+      question: draft.question[lang],
+      options,
+      correct: 'A',
+      explanation: draft.rationale[lang],
+    }]
+  }))
+}
+
+export const ABDOMEN_THORAX_REGISTERED_QUESTIONS = Object.fromEntries(
+  registrations.map(registration => [registration.key, makeQuestion(registration)])
+)
+
+export const ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS = [
+  { fachId: 'abdomen', kapitelId: 'abdomen-gi-trakt', title: { de: 'Ileus & Volvulus', en: 'Ileus & Volvulus', fa: 'ایلئوس و ولوولوس' }, topics: [
+    { id: 'ileus-duenndarm', title: { de: 'Dünndarmileus', en: 'Small-bowel obstruction', fa: 'انسداد رودهٔ باریک' } }, { id: 'volvulus', title: { de: 'Volvulus', en: 'Volvulus', fa: 'ولوولوس' } },
+  ] },
+  { fachId: 'abdomen', kapitelId: 'abdomen-leber', title: { de: 'Leberläsionen', en: 'Liver lesions', fa: 'ضایعات کبدی' }, topics: [
+    { id: 'leberadenom', title: { de: 'Leberadenom', en: 'Hepatic adenoma', fa: 'آدنوم کبدی' } }, { id: 'lebermetastasen', title: { de: 'Lebermetastasen', en: 'Liver metastases', fa: 'متاستازهای کبدی' } }, { id: 'leberzyste', title: { de: 'Leberzyste', en: 'Hepatic cyst', fa: 'کیست کبدی' } },
+  ] },
+  { fachId: 'abdomen', kapitelId: 'abdomen-pankreas', title: { de: 'Zystische Pankreasläsionen', en: 'Cystic pancreatic lesions', fa: 'ضایعات کیستیک پانکراس' }, topics: [
+    { id: 'ipmn', title: { de: 'IPMN', en: 'IPMN', fa: 'IPMN' } },
+  ] },
+  { fachId: 'abdomen', kapitelId: 'abdomen-niere', title: { de: 'Nierenläsionen', en: 'Renal lesions', fa: 'ضایعات کلیه' }, topics: [
+    { id: 'nierenzysten', title: { de: 'Nierenzysten', en: 'Renal cysts', fa: 'کیست‌های کلیوی' } },
+  ] },
+  { fachId: 'abdomen', kapitelId: 'abdomen-nebenniere', title: { de: 'Nebennierenläsionen', en: 'Adrenal lesions', fa: 'ضایعات آدرنال' }, topics: [
+    { id: 'nebennieren-inzidentalom', title: { de: 'Nebenniereninzidentalom', en: 'Adrenal incidentaloma', fa: 'اینسیدنتالوم آدرنال' } }, { id: 'nebennierenadenom', title: { de: 'Nebennierenadenom', en: 'Adrenal adenoma', fa: 'آدنوم آدرنال' } },
+  ] },
+  { fachId: 'abdomen', kapitelId: 'abdomen-gi-trakt', title: { de: 'Gastrointestinaltrakt', en: 'Gastrointestinal tract', fa: 'دستگاه گوارش' }, topics: [
+    { id: 'appendizitis', title: { de: 'Appendizitis', en: 'Appendicitis', fa: 'آپاندیسیت' } }, { id: 'untere-gi-blutung', title: { de: 'Untere GI-Blutung', en: 'Lower GI bleeding', fa: 'خون‌ریزی گوارشی تحتانی' } }, { id: 'kolorektales-karzinom', title: { de: 'Kolorektales Karzinom', en: 'Colorectal carcinoma', fa: 'کارسینوم کولورکتال' } },
+  ] },
+  { fachId: 'thorax', kapitelId: 'thorax-grundlagen', title: { de: 'Thoraxgrundlagen', en: 'Thoracic imaging fundamentals', fa: 'مبانی تصویربرداری قفسهٔ سینه' }, topics: [
+    { id: 'roentgen-thorax-systematik', title: { de: 'Systematische Röntgenanalyse', en: 'Systematic chest radiograph review', fa: 'مرور نظام‌مند رادیوگرافی قفسهٔ سینه' } },
+  ] },
+  { fachId: 'thorax', kapitelId: 'thorax-atemwege', title: { de: 'Atemwege', en: 'Airways', fa: 'راه‌های هوایی' }, topics: [
+    { id: 'fremdkoerper-atemwege', title: { de: 'Fremdkörperaspiration', en: 'Airway foreign body aspiration', fa: 'آسپیراسیون جسم خارجی' } },
+  ] },
+  { fachId: 'thorax', kapitelId: 'thorax-infektionen', title: { de: 'Pulmonale Infektionen', en: 'Pulmonary infections', fa: 'عفونت‌های ریوی' }, topics: [
+    { id: 'bakterielle-pneumonie', title: { de: 'Bakterielle Pneumonie', en: 'Bacterial pneumonia', fa: 'پنومونی باکتریایی' } }, { id: 'virale-pneumonie-covid', title: { de: 'Virale Pneumonie / COVID-19', en: 'Viral pneumonia / COVID-19', fa: 'پنومونی ویروسی / کووید-۱۹' } }, { id: 'atypische-pneumonie', title: { de: 'Atypische Pneumonie', en: 'Atypical pneumonia', fa: 'پنومونی آتیپیک' } }, { id: 'pcp', title: { de: 'Pneumocystis-Pneumonie', en: 'Pneumocystis pneumonia', fa: 'پنومونی پنوموسیستیس' } }, { id: 'aspergillus-lunge', title: { de: 'Aspergillose der Lunge', en: 'Pulmonary aspergillosis', fa: 'آسپرژیلوز ریوی' } }, { id: 'tuberkulose', title: { de: 'Tuberkulose', en: 'Tuberculosis', fa: 'سل' } },
+  ] },
+]

@@ -4,7 +4,7 @@ Stand: 2026-10-19. These are draft artifacts only. This record is neither clinic
 
 ## Pages inspected
 
-Rendered Gehirn.pdf PDF pages 72–89 with Poppler at 900 px and visually inspected every page image. Printed page numbers in the source are one lower than PDF page numbers for these pages. The PDF's original diagnostic images and borrowed illustrations were not copied; their case identifiers, source provenance, and reuse terms are not sufficiently established here.
+Rendered Gehirn.pdf PDF pages 72–89 with Poppler at 900 px and visually inspected every page image. Printed page numbers in the source are one lower than PDF page numbers for these pages. Some user-authorized PDF images are reused in explicitly credited drafts; other diagnostic images remain unused where identity, provenance, or reuse terms are unresolved.
 
 ## Authored draft coverage
 
@@ -20,7 +20,7 @@ Rendered Gehirn.pdf PDF pages 72–89 with Poppler at 900 px and visually inspec
 | PDF pp.72–74, medial temporal, relative hippocampal-preservation and frontotemporal patterns | `/gehirn/neurodegeneration/demenzmuster`, `data/gehirnDemenzMusterLesson.js`, comparison chapters plus self-check | Qualitative atrophy distribution taught; age cut-offs and syndrome diagnosis from imaging alone are withheld | PDF images visually inspected. Scheltens et al. (1992), McKeith et al. (2017), and Rascovsky et al. (2011) linked. Original comparisons not reused. Neurology and language review pending. |
 | PDF pp.77–78, nigrosome-1 SWI and DaTSCAN | `/gehirn/neurodegeneration/parkinson`, `data/gehirnParkinsonLesson.js`, modality-comparison chapters plus self-check | Taught as adjunctive structural versus functional markers; sign variability and diagnostic limits stated | PDF images visually inspected. Reiter et al. (2016), Mahlknecht et al. (2021), MDS PD criteria (2015), and DLB consensus (2017) linked. Nuclear medicine and movement-disorder review pending. |
 | PDF pp.87–88 (printed pp.86–87), tonsillar position, morphology and acquired mimics | `/gehirn/anatomie/chiari`, `data/gehirnChiariLesson.js`, measurement/context chapters plus self-check | Draft teaches McRae-line measurement as one element, morphology/syrinx/crowding, and acquired causes; does not make a single millimeter threshold diagnostic | PDF pages visually inspected. Adult/pediatric consensus and 2023 CNS imaging guideline linked. Specialist and browser review pending. |
-| PDF pp.82–83 (printed pp.81–82), NF1-related FASI and optic pathway glioma | `/gehirn/neurofibromatose/nf1`, `data/gehirnNf1CnsLesson.js`, FASI/OPG/reporting chapters plus self-check | Draft limited to central nervous system imaging; describes FASI cautiously and optic pathway MRI, excluding systemic diagnostic criteria, whole-body findings, and management | PDF pages visually inspected. ERN GENTURIS guideline and neuroradiology/OPG reviews linked. Page 84 is excluded because it is multisystem and beyond this scoped lesson. Specialist review pending. |
+| PDF pp.82–84 (printed pp.81–83), NF1 FASI, optic pathway glioma, plexiform neurofibroma and multisystem overview | `/gehirn/neurofibromatose/nf1`, `data/gehirnNf1CnsLesson.js`, three source figures, in-page FASI self-check, 3-question topic bank | Draft covers image-pattern tasks and explicitly limits p.84 to cross-specialty recognition/hand-off; 2021 diagnostic criteria supersede the older PDF summary. Vascular/abdomen are not full lessons. | PDF pages visually inspected at 300 dpi. Cropped user-authorized figures: p.82 rID-44916 (Amr Farouk); p.83 rID-7683 (Frank Gaillard) and rID-19700 (Dr Vinay Shah). The p.84 rID-10282 crop is excluded pending source-frame/anatomy confirmation after independent QA found a visible lower-leg/ankle image mislabeled as ulna. Attribution/provenance for the three included figures is in `public/educational/nf1/image-provenance.json`. Curriculum and MCQ registration added. p.83 cutaneous/subcutaneous neurofibromas and broader low-grade-glioma summary are intentionally deferred from this concise route. Independent clinical/browser/RTL and release-rights checks pending. |
 
 ## Unauthored items in this page range
 
@@ -34,15 +34,14 @@ All were visually inspected, but are not represented as covered by the new route
 | 75–76 | Creutzfeldt–Jakob disease | Draft route exists as listed above; prion-specific clinical review remains pending. |
 | 77–78 | Parkinson disease / parkinsonism | Draft route exists as listed above; diagnostic performance and nuclear-medicine wording require specialist review. |
 | 80–81 | Periventricular leukomalacia | Draft route exists as listed above; clinical and modality-specific review remains pending. |
-| 82–83 | Neurofibromatosis type 1, CNS imaging only | Draft at `/gehirn/neurofibromatose/nf1`; p.84 systemic manifestations are excluded; independent specialist and browser review pending. |
-| 84 | Neurofibromatosis type 1, systemic/skeletal/vascular manifestations | Deferred: multisystem scope spans several specialties; no lesson made from this page in this CNS-focused batch. Needs explicit ownership and separate source audit. |
+| 82–84 | Neurofibromatosis type 1: CNS and peripheral nerve patterns plus bounded cross-specialty overview | Draft at `/gehirn/neurofibromatose/nf1`, curriculum ID `neurofibromatose-typ1`, three filtered MCQs. Page 84 includes long-bone/vertebral, vascular, and abdominal findings as referral cues only; detailed systemic assessment is deferred. The rID-10282 crop is excluded pending anatomy/case verification after independent QA. Browser/RTL and release-rights checks pending. |
 | 87–88 | Chiari malformations | Draft at `/gehirn/anatomie/chiari`; a single threshold is not treated as a diagnosis. Adult/pediatric consensus reconciled, specialist review pending. |
 | 89 | Unilateral paranasal sinus opacification | Not authored. It spans sinonasal tumour, dental/infectious disease, and mucocele; page's dose comparison and percentages are withheld, and ownership may belong outside the brain curriculum. |
 
 ## Validation state
 
-- A scoped checker validates DE/EN/FA fields, script contamination, source-page metadata, assessment schema, and parses all eight late-page JSX routes/data modules listed above.
-- No route has been inserted into shared curriculum, MCQ, or flashcard registries. Coordinator integration is pending.
-- No real diagnostic case has been reused. Rights clearance is unresolved; the concept schematics cannot substitute for case images needed to teach recognition.
-- Browser rendering, responsive/RTL inspection, integrated build, independent reviewer findings, and clinical approval are pending.
+- A scoped checker validates DE/EN/FA fields, script contamination, source-page metadata, 4-option assessment schema, the three included NF1 image assets/provenance, NF1 curriculum registration, and parses all eight late-page JSX routes/data modules listed above. `npm run audit:mcq` separately checks the shared bank.
+- Curriculum and MCQ integration for the authored late-page routes is present; NF1 remains `inProgress` and is not represented as ready. No shared flashcard additions were made in this NF1 task.
+- Three user-authorized Radiopaedia-derived case figures are reused in the NF1 route. Release rights/attribution still require verification. The ambiguous p.84 rID-10282 crop was removed after independent QA identified a lower-leg/ankle image contradicting its ulna label.
+- Independent review is complete and recommends REVISE. Browser rendering, responsive/RTL inspection, integrated build, and clinical approval remain pending.
 - The lesson content is intentionally conservative and does not validate all statements in the source PDF.

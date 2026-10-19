@@ -2,6 +2,7 @@ import { MENISCUS_QUESTIONS } from './meniscusLearning'
 import { FLEISCHNER_QUESTIONS } from './fleischnerLearning'
 import { HEMANGIOMA_QUESTIONS } from './haemangiomaTraining'
 import { GEHIRN_CHIARI_QUESTIONS } from './gehirnChiariLesson'
+import { GEHIRN_NF1_QUESTIONS } from './gehirnNf1CnsLesson'
 // ── RADYAR QUESTION BANK ────────────────────────────────────────────────────
 
 import { CONTRAST_QUESTIONS, CONTRAST_TOPICS } from './contrastMedia'
@@ -42,6 +43,7 @@ import { MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS } from './mammaMammographyCalcific
 import { CARDIOMYOPATHY_QUESTIONS } from './cardiomyopathy'
 import { ARVC_QUESTIONS } from './arvcTraining'
 import { MYOCARDIAL_INJURY_QUESTIONS } from './myocardialInjury'
+import { ABDOMEN_THORAX_REGISTERED_QUESTIONS, ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS } from './abdomenThoraxRegisteredQuestions'
 
 
 
@@ -562,6 +564,7 @@ const MIDLINE_CAVA_QUESTIONS = Object.fromEntries(
 const LEGACY_QUESTION_BANK = {
   "de": [
     ...GEHIRN_CHIARI_QUESTIONS.de,
+    ...GEHIRN_NF1_QUESTIONS.de,
     ...CONTRAST_QUESTIONS.de,
     ...DIVERTICULITIS_QUESTIONS.de,
     ...PANCREATITIS_QUESTIONS.de,
@@ -1758,6 +1761,7 @@ const LEGACY_QUESTION_BANK = {
   ],
   "en": [
     ...GEHIRN_CHIARI_QUESTIONS.en,
+    ...GEHIRN_NF1_QUESTIONS.en,
     ...MAMMA_MRT_QUESTIONS.en,
     ...MAMMA_MRT_LESION_QUESTIONS.en,
     ...MAMMA_KAISER_QUESTIONS.en,
@@ -2954,6 +2958,7 @@ const LEGACY_QUESTION_BANK = {
   ],
   "fa": [
     ...GEHIRN_CHIARI_QUESTIONS.fa,
+    ...GEHIRN_NF1_QUESTIONS.fa,
     ...MAMMA_MRT_QUESTIONS.fa,
     ...MAMMA_MRT_LESION_QUESTIONS.fa,
     ...MAMMA_KAISER_QUESTIONS.fa,
@@ -4153,11 +4158,12 @@ const LEGACY_QUESTION_BANK = {
 export const QUESTION_BANK = Object.fromEntries(
   Object.entries(LEGACY_QUESTION_BANK).map(([lang, questions]) => [
     lang,
-    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || [])],
+    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang])],
   ])
 )
 
 export const MCQ_TOPIC_GROUPS = [
+  ...ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS,
   {
     fachId: 'gehirn', kapitelId: 'kopf-kopfschmerz',
     title: { de: '9. Kopfschmerz & Migräne', en: '9. Headache & Migraine', fa: '۹. سردرد و میگرن' },

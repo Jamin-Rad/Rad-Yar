@@ -1,0 +1,34 @@
+{
+  "source": "User-provided Gehirn.pdf; the user explicitly authorized use of the source images for the lesson.",
+  "derivatives": [
+    {
+      "file": "fasi-case-44916.png",
+      "pdfPage": 82,
+      "printedPage": 81,
+      "case": "Radiopaedia case rID-44916, Neurofibromatosis type 1 - FASI and bilateral optic nerve gliomas",
+      "contributor": "Amr Farouk",
+      "sourceUrl": "https://radiopaedia.org/cases/44916",
+      "license": "Radiopaedia case page reports CC BY-NC-SA 3.0; cropped from user-authorized PDF."
+    },
+    {
+      "file": "optic-pathway-glioma-case-7683.png",
+      "pdfPage": 83,
+      "printedPage": 82,
+      "case": "Radiopaedia case rID-7683, Optic pathway glioma - NF1",
+      "contributor": "Frank Gaillard",
+      "sourceUrl": "https://doi.org/10.53347/rID-7683",
+      "license": "Attributed to Radiopaedia case; reuse authorized by user for this lesson."
+    },
+    {
+      "file": "plexiform-neurofibroma-example.png",
+      "pdfPage": 83,
+      "printedPage": 82,
+      "case": "Radiopaedia image rID-19700, credited on supplied PDF",
+      "contributor": "Dr Vinay Shah",
+      "sourceUrl": "https://doi.org/10.53347/rID-19700",
+      "license": "Attributed to Radiopaedia image; reuse authorized by user for this lesson."
+    }
+  ],
+  "processing": "Crops generated from visually inspected 300-dpi renders with scripts/crop_nf1_source_examples.py. No diagnostic structures were generated or altered; crops are bounded to the source images and include no newly drawn finding markers.",
+  "releaseNote": "Before public release, verify applicable attribution/derivative terms against each of the three included Radiopaedia cases and preserve original contributor credits. PDF p.84 image ID 10282 is excluded from the lesson pending confirmation of its anatomy and source-frame identity."
+}

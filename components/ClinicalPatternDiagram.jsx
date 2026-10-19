@@ -56,6 +56,29 @@ function Airway({ variant, lang }) {
   </g>
 }
 
+function NF1({ lang }) {
+  const labels = {
+    de: ['ZNS: FASI / Sehbahn', 'Nerven: plexiform', 'Knochen · Gefäße · Abdomen'],
+    en: ['CNS: FASI / visual pathway', 'Nerves: plexiform', 'Bone · vessels · abdomen'],
+    fa: ['CNS: FASI / مسیر بینایی', 'اعصاب: پلکس‌فرم', 'استخوان · عروق · شکم'],
+  }[lang] || ['CNS: FASI / visual pathway', 'Nerves: plexiform', 'Bone · vessels · abdomen']
+  return <g>
+    <rect x="23" y="28" width="105" height="148" rx="14" fill={PALETTE.blueLight} stroke={PALETTE.blue} strokeWidth="3"/>
+    <path d="M75 51c-19-16-38 7-30 31 6 16 14 21 30 29 16-8 24-13 30-29 8-24-11-47-30-31Z" fill="#fff" stroke={PALETTE.ink} strokeWidth="2"/>
+    <circle cx="64" cy="72" r="5" fill={PALETTE.plum}/><circle cx="85" cy="81" r="5" fill={PALETTE.plum}/><circle cx="74" cy="94" r="5" fill={PALETTE.plum}/>
+    <path d="M72 115q-7 21-6 33m10-33q7 21 6 33" fill="none" stroke={PALETTE.coral} strokeWidth="3"/>
+    <rect x="147" y="28" width="105" height="148" rx="14" fill={PALETTE.plumLight} stroke={PALETTE.plum} strokeWidth="3"/>
+    <path d="M167 76q27-31 66 0-30 29-66 0Zm0 0q25 31 66 0" fill="none" stroke={PALETTE.plum} strokeWidth="5"/>
+    <circle cx="199" cy="76" r="8" fill={PALETTE.amber}/>
+    <rect x="271" y="28" width="105" height="148" rx="14" fill="#fff4dd" stroke={PALETTE.amber} strokeWidth="3"/>
+    <path d="M325 52v31m0-16-19 19m19-19 19 19" fill="none" stroke={PALETTE.ink} strokeWidth="4" strokeLinecap="round"/>
+    <path d="M305 96h40m-40 12h40m-40 12h40" stroke={PALETTE.coral} strokeWidth="3"/>
+    <text x="75" y="160" textAnchor="middle" fill={PALETTE.ink} fontSize="10">{labels[0]}</text>
+    <text x="199" y="160" textAnchor="middle" fill={PALETTE.ink} fontSize="10">{labels[1]}</text>
+    <text x="323" y="160" textAnchor="middle" fill={PALETTE.ink} fontSize="10">{labels[2]}</text>
+  </g>
+}
+
 function Bowel({ lang }) {
   const label = { de: 'Übergangspunkt / geschlossene Schlinge', en: 'transition / closed loop', fa: 'نقطه گذار / لوپ بسته' }[lang] || 'transition / closed loop'
   return <g><path d="M105 62h190q20 0 20 18v18q0 18-20 18H132q-18 0-18 18v20q0 18 18 18h145" fill="none" stroke={PALETTE.blue} strokeWidth="22" strokeLinecap="round"/><path d="M114 62h180M132 174h160" fill="none" stroke={PALETTE.ink} strokeWidth="2" strokeDasharray="5 7"/><path d="M203 114v28m-9-10 9 10 9-10" fill="none" stroke={PALETTE.coral} strokeWidth="4"/><text x="203" y="217" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{label}</text></g>
@@ -155,7 +178,8 @@ function Ultrasound({ lang }) {
 export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de', title }) {
   return <svg viewBox="0 0 400 250" role="img" aria-label={title} xmlns="http://www.w3.org/2000/svg">
     <rect x="5" y="5" width="390" height="240" rx="22" fill="#fff" stroke={PALETTE.line} strokeWidth="2"/>
-    {variant === 'pneumonia' || variant === 'tuberculosis' || variant === 'hrct' ? <Lungs variant={variant} lang={lang}/> :
+    {variant === 'nf1' ? <NF1 lang={lang}/> :
+      variant === 'pneumonia' || variant === 'tuberculosis' || variant === 'hrct' ? <Lungs variant={variant} lang={lang}/> :
       variant === 'cystic-pancreas' || variant === 'pdac' || variant === 'pnet' ? <Pancreas variant={variant} lang={lang}/> :
       variant === 'renal-mass' || variant === 'renal-anatomy' ? <Kidney variant={variant} lang={lang}/> :
       variant === 'foreign-body' || variant === 'chest-xray' ? <Airway variant={variant} lang={lang}/> :
