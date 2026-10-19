@@ -1,0 +1,23 @@
+.page { width: 100%; }
+.body { display: grid; gap: 1.2rem; }
+.lead { max-width: 75ch; font-size: 1.1rem; line-height: 1.75; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1rem; }
+.cards article { padding: 1rem 1.15rem; border: 1px solid color-mix(in srgb, currentColor 16%, transparent); border-radius: 1rem; background: color-mix(in srgb, var(--lesson-accent-soft, #dff3f2) 36%, transparent); }
+.cards h3 { margin: 0 0 .45rem; }
+.cards p, .cave p { margin: 0; line-height: 1.7; }
+.tableWrap { width: 100%; overflow-x: auto; border-radius: .8rem; }
+.tableWrap table { width: 100%; min-width: 42rem; border-collapse: collapse; text-align: start; }
+.tableWrap th, .tableWrap td { padding: .8rem; vertical-align: top; border: 1px solid color-mix(in srgb, currentColor 18%, transparent); line-height: 1.6; }
+.tableWrap thead { background: color-mix(in srgb, #4caeb9 18%, transparent); }
+.tableWrap tbody tr:nth-child(even) { background: color-mix(in srgb, currentColor 4%, transparent); }
+.tableWrap tbody th { white-space: nowrap; }
+.cave { display: flex; gap: .8rem; padding: 1rem; border-inline-start: 4px solid #b9782f; background: color-mix(in srgb, #d89c53 12%, transparent); border-radius: .7rem; line-height: 1.7; }
+.quiz { display: grid; gap: .65rem; }
+.quiz h3 { margin: 0 0 .4rem; }
+.quiz button { padding: .8rem 1rem; border: 1px solid color-mix(in srgb, currentColor 22%, transparent); border-radius: .7rem; background: transparent; color: inherit; text-align: start; cursor: pointer; }
+.quiz button:focus-visible { outline: 3px solid #3b9daf; outline-offset: 2px; }
+.quiz .selected { border-color: #27899a; background: color-mix(in srgb, #4caeb9 18%, transparent); }
+.quiz .correct, .quiz .feedback { margin: .25rem 0 0; padding: .9rem 1rem; border-radius: .7rem; line-height: 1.65; }
+.quiz .correct { background: color-mix(in srgb, #28905b 15%, transparent); }
+.quiz .feedback { background: color-mix(in srgb, #b9782f 15%, transparent); }
+@media (max-width: 600px) { .tableWrap table { min-width: 38rem; } .lead { font-size: 1rem; } }

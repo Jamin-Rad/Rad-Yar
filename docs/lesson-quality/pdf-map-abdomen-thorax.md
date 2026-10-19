@@ -44,7 +44,7 @@
 | مبحث طحال | 43 | شناسه‌های کلی `milz-anatomie`, `abdomen-milz`; زیرموضوع‌های candidate: `splenomegalie`, `milzinfarkt`, `benigne-milzlaesionen`, `maligne-milzlaesionen` | — | نامشخص؛ استخراج «Milz / Kö…» ناقص است و موضوع را تثبیت نمی‌کند | ?؛ بازبینی کامل صفحه/تصویر لازم |
 | آناتومی کلیه و perirenal stranding | 44 | `niere-anatomie` | `/abdomen/niere/anatomie` — `app/abdomen/niere/anatomie/page.js` | authored؛ ساختار route موجود، بررسی جزءبه‌جزء PDF هنوز لازم | A/V؛ آناتومی و نمونهٔ CT |
 | حالب و تنگی‌های فیزیولوژیک | 45 | `niere-anatomie` | همان route آناتومی کلیه | authored؛ ساختار route موجود، بررسی جزءبه‌جزء PDF هنوز لازم | A؛ شماتیک مسیر حالب |
-| کیست‌های کلیوی و Bosniak | 46 | `nierenzysten` | — | curriculum-only | T/C؛ نمونهٔ CT/MRI برای دسته‌های Bosniak |
+| کیست‌های کلیوی و Bosniak | 46 | `nierenzysten` | `/abdomen/niere/nierenzysten` | درس محدود بر پایه p46 ساخته و مستقل از نظر متن/ساختار/ترجمه/سؤال بازبینی شد؛ SSR سه زبان و وضعیت inProgress تأیید شد؛ بازبینی UX مرورگر و تأیید علمی جداگانه باز است | شماتیک مفهومی اختصاصی؛ تصویر تشخیصی واقعی در p46 وجود ندارد؛ ریسک‌درصدها و اقدام‌های جدول بی‌نسخه وارد درس نشدند |
 | بیماری کلیهٔ پلی‌کیستیک | 47 | شناسهٔ دقیق در curriculum استخراج‌شده پیدا نشد | — | بدون curriculum دقیق؛ محتوای صفحه نیز ناقص است | ?؛ PDF فقط «polyzystische…» و glyphهای ناقص دارد |
 | RCC | 48 | `nierenzellkarzinom` | `/abdomen/niere/raumforderungen` — `app/abdomen/niere/raumforderungen/page.js` | authored؛ lesion cluster، ادغام curriculum هنوز انجام نشده | C/V؛ enhancement، necrosis و calcification |
 | Onkozytom و افتراق RCC | 49 | `onkozytom-niere` | همان route توده‌های کلیه | authored؛ lesion cluster، عدم قطعیت افتراقی باید حفظ شود | C/V؛ central scar با caveat عدم قطعیت |

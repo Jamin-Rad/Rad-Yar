@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises'
 import { DOMParser } from '@xmldom/xmldom'
 import { SPINE_DEGENERATIVE_LESSON } from '../data/spineDegenerative.js'
 import { SPINE_INFECTION_LESSON } from '../data/spineInfection.js'
+import { CURRICULUM } from '../data/curriculum.js'
 import { SPINE_INFLAMMATORY_STRUCTURAL_LESSON } from '../data/spineInflammatoryStructural.js'
 import { MSK_BONE_AGGRESSIVENESS_LESSON } from '../data/mskBoneAggressiveness.js'
 import { SOURCE_LESSON_UI } from '../data/sourceLessonUi.js'
@@ -24,6 +25,7 @@ const walk = (value, path, lessonId) => {
 for (const lesson of lessons) {
   walk(lesson.title, 'title', lesson.id)
   walk(lesson.alt, 'alt', lesson.id)
+  if (lesson.media) walk(lesson.media, 'media', lesson.id)
   walk(lesson.intro, 'intro', lesson.id)
   walk(lesson.chapters, 'chapters', lesson.id)
   walk(lesson.takeHome, 'takeHome', lesson.id)
@@ -59,6 +61,23 @@ assert.match(stenosis.signalRows[1][1].en, /fair for T1 hypointensity \(κ=.31\)
 assert.match(stenosis.signalRows[1][1].fa, /T1.*متوسط.*κ=.31.*T2.*قابل‌توجه.*κ=.60/)
 assert.match(stenosis.signalRows[2][1].fa, /برتری کلی DWI/)
 const infectionText = JSON.stringify(SPINE_INFECTION_LESSON)
+assert.ok(SPINE_INFECTION_LESSON.source.includes('PDF S. 14–15'))
+assert.ok(SPINE_INFECTION_LESSON.chapters[0].rows.some(([, text]) => text.de.includes('kleinen Kindern') && text.en.includes('young children') && text.fa.includes('کودکان خردسال')), 'infection lesson must distinguish adult and young-child distribution in all languages')
+assert.ok(SPINE_INFECTION_LESSON.notice.de.includes('gilt für Erwachsene') && SPINE_INFECTION_LESSON.notice.fa.includes('برای بزرگسالان است'), 'adult IDSA scope must be explicit')
+assert.ok(SPINE_INFECTION_LESSON.chapters[1].note.de.includes('Quellenkonflikt') && SPINE_INFECTION_LESSON.chapters[1].note.fa.includes('تعارض منبع'), 'source conflict on early TB/no destruction must be dispositioned in all languages')
+const topics = []
+const findTopics = value => {
+  if (Array.isArray(value)) return value.forEach(findTopics)
+  if (!value || typeof value !== 'object') return
+  if (value.id && ['spondylodiszitis', 'wirbelsaeulentuberkulose', 'paravertebraler-abszess', 'epiduraler-abszess'].includes(value.id)) topics.push(value)
+  Object.values(value).forEach(findTopics)
+}
+findTopics(CURRICULUM)
+for (const id of ['spondylodiszitis', 'wirbelsaeulentuberkulose', 'paravertebraler-abszess', 'epiduraler-abszess']) {
+  const topic = topics.find(item => item.id === id)
+  assert.ok(topic?.link?.startsWith('/wirbelsaeule/infektion'), `${id} must link to the infection lesson`)
+  assert.equal(topic.inProgress, true, `${id} must remain in progress`)
+}
 for (const term of ['Tuberkulose', 'Neoplasie', 'Erosive Osteochondrose', 'Ankylosierende Spondylitis', 'Andersson']) assert.ok(infectionText.includes(term), `infection lesson missing ${term}`)
 for (const lesson of lessons) assert.ok(lesson.heroImage || lesson.id === 'degenerative-wirbelsaeule', `${lesson.id} missing explanatory visual`)
 
@@ -127,6 +146,9 @@ for (const file of ['public/educational/spine-degenerative-schematic.svg', 'publ
   assert.equal(document.documentElement?.nodeName, 'svg', `${file} did not parse as SVG XML`)
   assert.deepEqual(errors, [], `${file} XML parse errors: ${errors.join('; ')}`)
 }
+const infectionProvenance = JSON.parse(await readFile('public/educational/spine-infection-schematic.provenance.json', 'utf8'))
+assert.equal(infectionProvenance.diagnosticUse, false)
+assert.ok(infectionProvenance.diagnosticCaseStatus.includes('unresolved'))
 const ledger = await readFile('docs/lesson-quality/msk-wirbelsaeule-lesson-progress.md', 'utf8')
 assert.match(ledger, /VIS, offen für alle drei Lektionen/)
 assert.match(ledger, /frame-verifizierte diagnostische Fallserie/)

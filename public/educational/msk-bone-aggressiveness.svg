@@ -1,6 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 430" ><rect width="840" height="430" rx="30" fill="#101a2b"/>
-<g fill="#dbe5ee" stroke="#93aabd" stroke-width="4"><rect x="73" y="95" width="115" height="240" rx="45"/><rect x="270" y="95" width="115" height="240" rx="45"/><rect x="467" y="95" width="115" height="240" rx="45"/><rect x="664" y="95" width="115" height="240" rx="45"/></g>
-<g fill="none" stroke="#fbbf24" stroke-width="8"><path d="M60 90v248m-9 0h140"/><path d="M255 83c-14 38-14 200 0 258m18-260c-13 38-13 220 0 260m18-260c-13 38-13 220 0 260"/><path d="M454 83l-30 39m57-39-45 68m72-68-59 99m86-99-72 131m99-131-86 163m113-163-99 195"/><path d="M642 88l-26 52m138-52 28 52"/></g>
-<path d="M642 140h112l-54 54z" fill="#fb923c" stroke="#fed7aa" stroke-width="4"/>
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 430" role="img" aria-labelledby="title desc">
+  <title id="title">Focal bone lesion assessment schematic</title>
+  <desc id="desc">A neutral long-bone schematic showing a focal lesion, its margin, cortex and surrounding soft tissues as separate features to assess together.</desc>
+  <rect width="840" height="430" rx="30" fill="#101a2b"/>
+  <path d="M104 188c28-43 72-59 119-43l64 20h265l64-20c47-16 91 0 119 43v54c-28 43-72 59-119 43l-64-20H287l-64 20c-47 16-91 0-119-43z" fill="#dbe5ee" stroke="#93aabd" stroke-width="5"/>
+  <path d="M129 197c21-25 54-35 88-24l60 18h286l60-18c34-11 67-1 88 24v36c-21 25-54 35-88 24l-60-18H277l-60 18c-34 11-67 1-88-24z" fill="#24364a" stroke="#fbbf24" stroke-width="5"/>
+  <ellipse cx="424" cy="215" rx="77" ry="48" fill="#fb923c" stroke="#fed7aa" stroke-width="5"/>
+  <ellipse cx="424" cy="215" rx="59" ry="32" fill="#f9c58f" opacity=".88"/>
+  <path d="M424 267v54m-8-10 8 10 8-10M255 147l-37-42m37 42 38-42M505 149l38-42m-38 42-37-42" fill="none" stroke="#77d0df" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="424" cy="215" r="5" fill="#101a2b"/>
 </svg>

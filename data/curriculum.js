@@ -871,7 +871,7 @@ export const CURRICULUM = [
         title: { de: '8. Niere & obere Harnwege', en: '8. Kidney & Upper Urinary Tract', fa: '۸. کلیه و مجاری ادراری فوقانی' },
         icon: '🫘',
         themen: [
-          { id: 'nierenzysten', title: { de: 'Nierenzysten', en: 'Renal Cysts', fa: 'کیست‌های کلیوی' }, tags: ['Sono','CT'], diff: 1, link: '/abdomen/niere/raumforderungen' },
+          { id: 'nierenzysten', title: { de: 'Nierenzysten', en: 'Renal Cysts', fa: 'کیست‌های کلیوی' }, tags: ['Sono','CT'], diff: 1, link: '/abdomen/niere/nierenzysten', inProgress: true },
           { id: 'angiomyolipom', title: { de: 'Angiomyolipom', en: 'Angiomyolipoma', fa: 'آنژیومیولیپوم' }, group: ['Benigne Nierentumoren'], tags: ['CT','MRT'], diff: 2, link: '/abdomen/niere/raumforderungen' },
           { id: 'onkozytom-niere', title: { de: 'Onkozytom', en: 'Oncocytoma', fa: 'انکوسیتوم' }, group: ['Benigne Nierentumoren'], tags: ['CT','MRT'], diff: 2, link: '/abdomen/niere/raumforderungen' },
           { id: 'nierenzellkarzinom', title: { de: 'Nierenzellkarzinom', en: 'Renal Cell Carcinoma', fa: 'کارسینوم سلول کلیوی' }, tags: ['CT','MRT'], diff: 3, link: '/abdomen/niere/raumforderungen' },
@@ -1167,7 +1167,7 @@ export const CURRICULUM = [
         title: { de: '3. Knochentumoren & tumorähnliche Läsionen', en: '3. Bone Tumours & Tumour-like Lesions', fa: '۳. تومورهای استخوانی و ضایعات شبه‌توموری' },
         icon: '🔬',
         themen: [
-          { id: 'knochentumor-grundlagen', title: { de: 'Grundlagen & Klassifikation', en: 'Fundamentals & Classification', fa: 'مبانی و طبقه‌بندی' }, tags: ['Rö','MRT'], diff: 2, link: '/msk/tumoren/knochenzeichen' },
+          { id: 'knochentumor-grundlagen', title: { de: 'Grundlagen & Klassifikation', en: 'Fundamentals & Classification', fa: 'مبانی و طبقه‌بندی' }, tags: ['Rö','MRT'], diff: 2, link: '/msk/tumoren/knochenzeichen', ready: true, inProgress: true, updatedAt: '2026-10-19' },
           { id: 'osteom', title: { de: 'Osteom', en: 'Osteoma', fa: 'استئوم' }, group: ['Knochenbildende Tumoren'], tags: ['Rö'], diff: 1 },
           { id: 'osteoid-osteom', title: { de: 'Osteoid-Osteom', en: 'Osteoid Osteoma', fa: 'استئوئید استئوما' }, group: ['Knochenbildende Tumoren'], tags: ['Rö','CT'], diff: 2 },
           { id: 'osteoblastom', title: { de: 'Osteoblastom', en: 'Osteoblastoma', fa: 'استئوبلاستوما' }, group: ['Knochenbildende Tumoren'], tags: ['Rö','CT'], diff: 2 },
@@ -1461,10 +1461,10 @@ export const CURRICULUM = [
         title: { de: '4. Entzündliche Erkrankungen', en: '4. Inflammatory Diseases', fa: '۴. بیماری‌های التهابی' },
         icon: '✚',
         themen: [
-          { id: 'spondylodiszitis', title: { de: 'Spondylodiszitis', en: 'Spondylodiscitis', fa: 'اسپوندیلودی‌سکیت' }, tags: ['MRT','CT'], diff: 2, link: '/wirbelsaeule/infektion' },
-          { id: 'wirbelsaeulentuberkulose', title: { de: 'Wirbelsäulentuberkulose / Morbus Pott', en: 'Spinal Tuberculosis / Pott Disease', fa: 'سل ستون فقرات / بیماری پات' }, tags: ['MRT','CT'], diff: 3 },
-          { id: 'paravertebraler-abszess', title: { de: 'Paravertebraler Abszess', en: 'Paravertebral Abscess', fa: 'آبسه پاراورتبرال' }, tags: ['MRT','CT'], diff: 2 },
-          { id: 'epiduraler-abszess', title: { de: 'Epiduraler Abszess', en: 'Epidural Abscess', fa: 'آبسه اپیدورال' }, tags: ['MRT'], diff: 3 },
+          { id: 'spondylodiszitis', title: { de: 'Spondylodiszitis', en: 'Spondylodiscitis', fa: 'اسپوندیلودی‌سکیت' }, tags: ['MRT','CT'], diff: 2, link: '/wirbelsaeule/infektion', ready: true, inProgress: true, updatedAt: '2026-10-19' },
+          { id: 'wirbelsaeulentuberkulose', title: { de: 'Wirbelsäulentuberkulose / Morbus Pott', en: 'Spinal Tuberculosis / Pott Disease', fa: 'سل ستون فقرات / بیماری پات' }, tags: ['MRT','CT'], diff: 3, link: '/wirbelsaeule/infektion#tuberculosis', ready: true, inProgress: true, updatedAt: '2026-10-19' },
+          { id: 'paravertebraler-abszess', title: { de: 'Paravertebraler Abszess', en: 'Paravertebral Abscess', fa: 'آبسه پاراورتبرال' }, tags: ['MRT','CT'], diff: 2, link: '/wirbelsaeule/infektion#pattern', ready: true, inProgress: true, updatedAt: '2026-10-19' },
+          { id: 'epiduraler-abszess', title: { de: 'Epiduraler Abszess', en: 'Epidural Abscess', fa: 'آبسه اپیدورال' }, tags: ['MRT'], diff: 3, link: '/wirbelsaeule/infektion#pattern', ready: true, inProgress: true, updatedAt: '2026-10-19' },
           { id: 'rheumatoide-arthritis-ws', title: { de: 'Rheumatoide Arthritis der WS', en: 'Rheumatoid Arthritis of the Spine', fa: 'آرتریت روماتوئید ستون فقرات' }, tags: ['Rö','CT','MRT'], diff: 3 },
           { id: 'morbus-bechterew-ws', title: { de: 'Morbus Bechterew (Spondylitis ankylosans)', en: 'Ankylosing Spondylitis', fa: 'اسپوندیلیت آنکیلوزان' }, group: ['Spondyloarthropathien'], tags: ['Rö','CT','MRT'], diff: 2, link: '/wirbelsaeule/entzuendlich' },
           { id: 'psoriasisarthritis-ws', title: { de: 'Psoriasisarthritis', en: 'Psoriatic Arthritis', fa: 'آرتریت پسوریاتیک' }, group: ['Spondyloarthropathien'], tags: ['Rö','MRT'], diff: 2 },

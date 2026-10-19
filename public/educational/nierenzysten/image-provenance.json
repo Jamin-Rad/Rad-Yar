@@ -1,0 +1,14 @@
+{
+  "lesson": "Renal cystic masses",
+  "assets": [
+    {
+      "file": "hero.svg",
+      "type": "original code-native educational schematic",
+      "source": "Created for RadYar; not a diagnostic image and contains no patient data",
+      "creator": "RadYar lesson authoring workflow",
+      "reuseTerms": "Project-created vector asset",
+      "purpose": "Show kidney orientation and the reportable elements wall, septa, nodule, and enhancement",
+      "reviewStatus": "Editorial review pending"
+    }
+  ]
+}
