@@ -1,0 +1,18 @@
+.page { --lesson-accent: #7b5cab; }
+.body p { max-width: 78ch; }
+.map { margin: 1.5rem 0 0; }
+.map img { display: block; width: min(100%, 760px); height: auto; border-radius: 1rem; }
+.map figcaption { max-width: 82ch; margin: .8rem 0 1.2rem; color: var(--text-muted, #687785); line-height: 1.65; }
+.legend { max-width: 760px; padding: 1rem 1.2rem; border: 1px solid rgba(110, 130, 145, .25); border-radius: 1rem; background: rgba(127, 150, 165, .08); }
+.legend h3, .check h3 { margin: 0 0 .75rem; font-size: 1.05rem; }
+.legend ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem 1rem; padding: 0; margin: 0; list-style: none; }
+.legend li { display: flex; align-items: center; gap: .65rem; line-height: 1.5; }
+.legend li span { flex: 0 0 1rem; width: 1rem; height: 1rem; border-radius: 50%; background: var(--swatch); box-shadow: 0 0 0 2px rgba(255,255,255,.85); }
+.check { margin-top: 1.5rem; padding: 1.15rem; border: 1px solid rgba(123, 92, 171, .3); border-radius: 1rem; background: rgba(123, 92, 171, .07); }
+.check fieldset { display: grid; gap: .6rem; padding: 0; margin: .8rem 0; border: 0; }
+.check legend { margin-bottom: .5rem; font-weight: 650; }
+.check label { display: flex; align-items: flex-start; gap: .65rem; padding: .65rem .75rem; border-radius: .65rem; cursor: pointer; background: rgba(255,255,255,.55); }
+.check input { margin-top: .25rem; accent-color: #7b5cab; }
+.feedback { margin: .85rem 0 0; padding: .8rem; border-inline-start: 3px solid #7b5cab; background: rgba(255,255,255,.55); line-height: 1.65; }
+.rules { display: grid; gap: .75rem; padding-inline-start: 1.4rem; line-height: 1.65; }
+@media (max-width: 600px) { .legend ul { grid-template-columns: 1fr; } .check { padding: .9rem; } }
