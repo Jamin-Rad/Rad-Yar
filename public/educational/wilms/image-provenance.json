@@ -1,0 +1,14 @@
+{
+  "hero.svg": {
+    "type": "original code-native educational schematic",
+    "author": "RadYar lesson authoring workflow",
+    "depicts": "simplified kidney, parenchymal claw around a mass, and adjacent adrenal gland",
+    "diagnosticImage": false,
+    "sourcePatientImage": false,
+    "reuseTerms": "Project-created vector asset; no external patient image incorporated"
+  },
+  "Abdomen.pdf page 52 CT figure": {
+    "status": "not reused",
+    "reason": "Visible page does not provide sufficiently legible contributor, source-case, or reuse attribution"
+  }
+}
