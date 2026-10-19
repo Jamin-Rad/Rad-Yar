@@ -1177,7 +1177,7 @@ export const CURRICULUM = [
           { id: 'enchondrom', title: { de: 'Enchondrom', en: 'Enchondroma', fa: 'انکندروم' }, group: ['Knorpelbildende Tumoren'], tags: ['Rö','MRT'], diff: 2, link: '/msk/tumoren/enchondrom', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'chondrosarkom', title: { de: 'Chondrosarkom', en: 'Chondrosarcoma', fa: 'کندروسارکوما' }, group: ['Knorpelbildende Tumoren'], tags: ['Rö','MRT'], diff: 3, link: '/msk/tumoren/chondrosarkom', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'fibrosarkom-knochen', title: { de: 'Fibrosarkom', en: 'Fibrosarcoma', fa: 'فیبروسارکوما' }, group: ['Fibröse Tumoren'], tags: ['MRT'], diff: 3 },
-          { id: 'ewing-sarkom', title: { de: 'Ewing-Sarkom', en: 'Ewing Sarcoma', fa: 'سارکوم یووینگ' }, group: ['Hämatopoetische & Rundzelltumoren'], tags: ['MRT','Rö'], diff: 3 },
+          { id: 'ewing-sarkom', title: { de: 'Ewing-Sarkom', en: 'Ewing Sarcoma', fa: 'سارکوم یووینگ' }, group: ['Hämatopoetische & Rundzelltumoren'], tags: ['MRT','Rö'], diff: 3, link: '/msk/tumoren/ewing-sarkom', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'plasmozytom-myelom', title: { de: 'Plasmozytom / Multiples Myelom', en: 'Plasmacytoma / Multiple Myeloma', fa: 'پلاسموسیتوم / مولتیپل میلوما' }, group: ['Hämatopoetische & Rundzelltumoren'], tags: ['MRT','CT'], diff: 3 },
           { id: 'knochenlymphom', title: { de: 'Knochenlymphom', en: 'Bone Lymphoma', fa: 'لنفوم استخوان' }, group: ['Hämatopoetische & Rundzelltumoren'], tags: ['MRT'], diff: 3 },
           { id: 'riesenzelltumor', title: { de: 'Riesenzelltumor (GCT)', en: 'Giant Cell Tumour (GCT)', fa: 'تومور سلول ژانت (GCT)' }, tags: ['Rö','MRT'], diff: 2 },

@@ -1,0 +1,34 @@
+{
+  "lesson": "ewing-sarkom",
+  "sourcePdf": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+  "authorization": "User authorized use of all images in the supplied PDFs.",
+  "assets": [
+    {
+      "file": "hero.svg",
+      "type": "code-native topic illustration",
+      "patientImage": false,
+      "description": "Long-bone concept illustration with mid-diaphyseal lesion and layered periosteal response; not diagnostic imaging."
+    },
+    {
+      "file": "rid-27379-source-case.jpg",
+      "type": "source-PDF page crop",
+      "patientImage": true,
+      "sourcePage": "MSK.pdf PDF page 93 (printed page 92)",
+      "renderScale": "PDF raster rendered to 1400 px high; crop x=145 y=42 width=700 height=660 pixels",
+      "radiopaediaId": "rID 27379",
+      "panels": [
+        "The source page displays a conventional radiograph and CT above three MRI views.",
+        "The accompanying PDF text describes a mid-diaphyseal lesion, marrow replacement, bone marrow oedema and periosteal response; individual MRI sequences are not labelled."
+      ],
+      "selection": "Single source case lets learners compare radiograph/CT with the MRI depiction of lesion extent; localized caption avoids sequence assumptions.",
+      "sourceFigureAuthorOrContributor": "Not identified on the supplied source page.",
+      "licenseClaim": "No external contributor or Radiopaedia licence verification is claimed; use is based on the user's authorization for images in the supplied PDF."
+    },
+    {
+      "file": "Inline diagram in app/msk/tumoren/ewing-sarkom/page.jsx",
+      "type": "code-native educational schematic",
+      "patientImage": false,
+      "description": "Non-diagnostic long-bone diagram indicating mid-diaphyseal lesion and lamellated periosteal response."
+    }
+  ]
+}
