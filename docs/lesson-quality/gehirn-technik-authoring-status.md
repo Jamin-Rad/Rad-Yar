@@ -2,6 +2,10 @@
 
 Stand: 19.10.2026. This is a work-in-progress ledger for the current batch, not a clinical or publication approval.
 
+## Zusatz-Teilbatch B-1: Sonographie-Physik
+
+Eine fokussierte dreisprachige Einheit ist neu unter `/technik/sonographie/grundlagen` verfügbar. Sie bearbeitet Technik.pdf PDF-S. 132 und den Doppler-/Duplexanteil von S. 133 anhand des Lernpfads Echo → Artefakt → Doppler, zweier code-native Schemata und eines erklärenden Selbstchecks. Sie ist mit `sonographie-physikalische-grundlagen` in `data/curriculum.js` verknüpft. Ultraschallkontrastmittel auf S. 133–134 sind explizit ausgespart und bleiben ein separater, noch nicht gebauter/abgeglichener Teilbatch. Der Bericht `docs/lesson-quality/technik-sonographie-review.md` enthält Quellenabdeckung und unabhängige Gates: SRC/EDU/LNG/ASM/REV bestanden im erklärten Umfang; VIS/UX wegen fehlendem Browsernachweis BLOCKED. Der Produktionsbuild schlug wegen Netzwerkausfall zu Google Fonts und `.next`-EPERM fehl. Keine wissenschaftliche Endfreigabe.
+
 ## Technik.pdf
 
 An additive draft route is in `app/technik/grundlagen/page.jsx` with source-backed fundamentals in `data/technikGrundlagenLesson.js`. It currently covers: radiation effects and dose quantities (PDF pp. 2–15); atom, ionization and radiation types (25–27); tube physics, interactions and detector chain (30–43); CT acquisition, reconstruction, dual energy and perfusion (44–58); fluoroscopy/DSA concepts (59–68); protocol choice and an explicitly un-taught RECIST mention (69–75); MRI signal, sequences, artifacts and safety (76–108); flow/diffusion/perfusion/CINE/BOLD (110–119); and ultrasound/Doppler (132–134).

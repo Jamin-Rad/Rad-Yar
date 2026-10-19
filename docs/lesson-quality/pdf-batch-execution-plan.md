@@ -9,7 +9,7 @@
 - CAA مرجع کیفیت آموزش است، نه الگوی عنوان فصل. `/andarun/test` فقط مرجع shell و تعامل است.
 - هر batch باید دفتر پوششِ صفحه‌به‌صفحه، عنوان/هدف فصل‌ها، برنامهٔ رسانه، ترجمهٔ DE/EN/FA و نیاز ادغام در فهرست‌ها را تحویل دهد.
 - بازبین مستقل پس از authoring و پس از اصلاح، فقط‌خواندنی بررسی می‌کند. تأیید علمی Dr. Zia و مجوز رسانه جداگانه‌اند.
-- تغییرهای اجرایی در شاخهٔ کاری انجام می‌شوند؛ هیچ push، merge یا انتشار ضمنی نیست.
+- تغییرهای اجرایی در شاخهٔ کاری انجام می‌شوند. کاربر صریحاً pushهای مرحله‌ای به `main` را برای این کار خواسته است؛ هر push فقط batch مستندشدهٔ خودش را شامل می‌شود. این مجوز، انتشار بیرونی یا تأیید علمی نهایی نیست.
 
 ## وضعیت
 
@@ -17,9 +17,13 @@
 |---|---|---|---|---|---|
 | پایلوت | Abdomen، صص. ۸–۱۰؛ همانژیوم | انجام شد | درس، تمرین‌ها و ترجمه‌ها اصلاح شد | دو دور مستقل؛ یافته‌های واژگانی و شمار آزمون بسته شدند | مرور مرورگر، حق استفادهٔ کیس Radiopaedia و تأیید علمی نهایی باز است |
 | A | Abdomen + Thorax | [ماتریس](pdf-map-abdomen-thorax.md) | در حال ساخت؛ ۱۱ مسیر frozen با shell/assessment draft اصلاح، و routeهای تازهٔ کیست کبد، appendicitis، خونریزی تحتانی GI و CRC اضافه شده‌اند | دور اول ۱۱ مسیر: REVISE؛ بازبینی مستقل retest در جریان | منبع/معنای ترجمه/اتصال registry/مرورگر همچنان باز؛ AVM حل‌نشده؛ coverage کامل نیست |
-| B | Gehirn + Technik | [ماتریس](gehirn-technik-curriculum-matrix.md) | پوشش کیفی Technik p.4/15، تعاملی‌سازی infection، reconciliation مغز p.69–89 و پیش‌نویس PRES از p.79 در جریان است | retest مستقل محدود: p.4/15 و اصلاح LNG-02/UX-03 تأیید؛ overall همچنان REVISE | scientific/claim review، diagnostic image rights، accordion/progress، registry integration، full PDF coverage و browser/build باز هستند |
+| B | Gehirn + Technik | [ماتریس](gehirn-technik-curriculum-matrix.md) | درس جداگانهٔ فیزیک سونوگرافی از Technik ص. ۱۳۲ و بخش Doppler ص. ۱۳۳ ساخته و به Curriculum وصل شد؛ درس کلی Technik، سایر صفحه‌ها و باقی موضوع‌های Gehirn همچنان در جریان‌اند | بررسی و retest مستقل برای سونوگرافی انجام شد؛ درس کلی Batch B همچنان REVISE | CEUS ص. ۱۳۳–۱۳۴ و سایر محتواها، مرورگر و build، تشخیص‌تصویر/مجوزها، ادغام assessment و تأیید علمی باز هستند |
 | C | MSK + Wirbelsäule | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | چهار route پیش‌نویس؛ WS pp11–13 تازه؛ و اصلاح محدود محتوای موجود AK-Luxation و شکستگی کودکان | شرط CT و رفع حکم قطعی Salter–Harris retest محدود شده؛ route تازه و AK delta منتظر بازبینی‌اند | VIS بدون تصویر تشخیصی با مجوز؛ ثبت route/assessment، مرور زبان/UX باز؛ پوشش وسیع PDF ناقص |
 
 ## معیار اتمام batch
 
 هر batch فقط وقتی «آمادهٔ تحویل» است که تغییرهای route و دادهٔ درس، منبع و صفحه، ترجمه، ارزیابی‌های متصل، نیازهای ادغام، نتایج تست فنی و موانع باقی‌مانده ثبت شده باشند. نتیجهٔ بازبین مستقل در جدول بالا افزوده می‌شود. «آمادهٔ تحویل» جایگزین تأیید علمی، تأیید حقوق تصویر یا انتشار نیست.
+
+## Teilbatch B-1: سونوگرافی پایه
+
+مسیر `/technik/sonographie/grundlagen` و ledger مستقل [QA و پوشش منبع](technik-sonographie-review.md) فقط اصول صوت/آرتیفکت و Doppler/Duplex را پوشش می‌دهند. Ultraschallkontrastmittel، ادامهٔ Technik.pdf و تمام batchهای دیگر هنوز ساخته/بازبینی نشده‌اند. بازبین مستقل این دامنه را retest کرده؛ UX مرورگر و build به علت محدودیت محیط BLOCKED مانده‌اند و PASS ثبت نمی‌شوند.

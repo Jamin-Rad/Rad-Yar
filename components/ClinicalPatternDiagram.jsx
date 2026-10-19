@@ -140,6 +140,18 @@ function LiverCyst({ variant, lang }) {
   </g>
 }
 
+function Ultrasound({ lang }) {
+  const labels = { de: ['Echo', 'Schallkopf', 'Grenzfläche'], en: ['echo', 'transducer', 'boundary'], fa: ['پژواک', 'پروب', 'مرز بافتی'] }[lang] || ['echo', 'transducer', 'boundary']
+  return <g>
+    <rect x="159" y="34" width="82" height="25" rx="8" fill={PALETTE.blueLight} stroke={PALETTE.blue} strokeWidth="3" />
+    <path d="M179 59 139 155m41-96-10 105m30-105v108m0-108 10 105m0-105 40 96" stroke={PALETTE.blue} strokeWidth="3" opacity=".55" />
+    <path d="M93 165h214" stroke={PALETTE.ink} strokeWidth="5" />
+    <path d="M133 150 171 63m39 0v90m39-90 38 87" stroke={PALETTE.amber} strokeWidth="3" strokeDasharray="7 6" />
+    <path d="M167 145 203 67 239 145" fill="none" stroke={PALETTE.plum} strokeWidth="3" strokeDasharray="5 5" />
+    <text x="200" y="202" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{labels[1]} → {labels[2]} → {labels[0]}</text>
+  </g>
+}
+
 export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de', title }) {
   return <svg viewBox="0 0 400 250" role="img" aria-label={title} xmlns="http://www.w3.org/2000/svg">
     <rect x="5" y="5" width="390" height="240" rx="22" fill="#fff" stroke={PALETTE.line} strokeWidth="2"/>
@@ -153,6 +165,7 @@ export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de',
       variant === 'rectal-mri' ? <RectalMRI lang={lang}/> :
       variant === 'adrenal' ? <Adrenal lang={lang}/> :
       variant === 'liver-cyst' || variant === 'hydatid' ? <LiverCyst variant={variant} lang={lang}/> :
-      variant === 'psc' || variant === 'hepatic-aml' ? <Hepatobiliary variant={variant} lang={lang}/> : <Liver lang={lang}/>}
+      variant === 'psc' || variant === 'hepatic-aml' ? <Hepatobiliary variant={variant} lang={lang}/> :
+      variant === 'ultrasound' ? <Ultrasound lang={lang}/> : <Liver lang={lang}/>}
   </svg>
 }

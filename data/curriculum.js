@@ -1757,7 +1757,7 @@ export const CURRICULUM = [
         title: { de: '6. Sonographie', en: '6. Ultrasound', fa: '۶. سونوگرافی' },
         icon: '〰',
         themen: [
-          { id: 'sonographie-physikalische-grundlagen', title: { de: 'Physikalische Grundlagen', en: 'Physical Principles', fa: 'مبانی فیزیکی' }, tags: ['Sono'], diff: 1 },
+          { id: 'sonographie-physikalische-grundlagen', title: { de: 'Physikalische Grundlagen', en: 'Physical Principles', fa: 'مبانی فیزیکی' }, tags: ['Sono'], diff: 1, link: '/technik/sonographie/grundlagen' },
           { id: 'doppler-duplex-sonographie', title: { de: 'Doppler & Duplex-Sonographie', en: 'Doppler & Duplex Ultrasound', fa: 'سونوگرافی داپلر و داپلکس' }, tags: ['Sono'], diff: 2 },
           { id: 'elastographie', title: { de: 'Elastographie', en: 'Elastography', fa: 'الاستوگرافی' }, tags: ['Sono'], diff: 2 },
         ],
