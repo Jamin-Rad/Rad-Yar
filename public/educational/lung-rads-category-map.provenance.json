@@ -1,0 +1,14 @@
+{
+  "asset": "/educational/lung-rads-category-map.svg",
+  "assetType": "code-native educational schematic",
+  "diagnosticImage": false,
+  "purpose": "Show major Lung-RADS categories, the distinct 4X category, and S as a modifier; the adjacent localized legend supplies the interpretation.",
+  "contentSource": "ACR Lung-RADS v2022, released November 2022. The source PDF pages 14–15 were inspected only to establish that they teach Fleischner incidental-nodule material rather than Lung-RADS.",
+  "sourcePagesReviewed": [
+    { "file": "Thorax.pdf", "pdfPage": 14, "printedPage": 13 },
+    { "file": "Thorax.pdf", "pdfPage": 15, "printedPage": 14 }
+  ],
+  "matchingDiagnosticCaseInSource": false,
+  "attribution": "Created in-repository; no patient image used.",
+  "reviewNote": "Not a CT image, malignancy-risk scale, or substitute for the complete ACR assessment table. Category 0 is a separate incomplete-workup state, not a progression step. 4X is a distinct category, not a modifier; S is a modifier."
+}

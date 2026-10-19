@@ -1,0 +1,38 @@
+{
+  "assetSet": "abdomen-pdf-colitis-p81-p82",
+  "authorization": "User authorized use of images contained in the six supplied PDFs for this project. This authorization is recorded here; independent rights clearance has not been performed.",
+  "assets": [
+    {
+      "path": "/educational/colitis/pmc-accordion-source.png",
+      "sourceFile": "Abdomen.pdf",
+      "pdfPage": 81,
+      "printedPage": 80,
+      "sourcePanel": "Axial CT panel beneath the slide's Accordion sign heading; cropped from full slide after visual inspection.",
+      "sourceCaption": "Pseudomembranous colitis / Accordion sign; slide notes CT after contrast. Individual phase is not specified.",
+      "visibleIdentifiers": "Embedded PDF text contains rID 22935 at font size about 2 pt. Recorded as embedded metadata only, not as a verified case, website, or contributor attribution.",
+      "originalContributor": "Not identified in supplied PDF.",
+      "reuseTerms": "Not identified in supplied PDF; relies on explicit user authorization for this project.",
+      "selectionRationale": "Shows conspicuously thickened/folded colonic walls corresponding to the source slide's named pattern; caption avoids claiming specificity.",
+      "crop": "Only the source CT image panel; adjacent accordion illustration, title and explanatory prose excluded."
+    },
+    {
+      "path": "/educational/colitis/uc-coronal-source.png",
+      "sourceFile": "Abdomen.pdf",
+      "pdfPage": 82,
+      "printedPage": 81,
+      "sourcePanel": "Coronal CT panel shown on the Colitis ulcerosa slide, cropped from full slide after visual inspection.",
+      "sourceCaption": "Colitis ulcerosa; no individual acquisition phase is specified.",
+      "visibleIdentifiers": "Embedded PDF text contains rID 16054 at font size about 2 pt. Recorded as embedded metadata only, not as a verified case, website, or contributor attribution.",
+      "originalContributor": "Not identified in supplied PDF.",
+      "reuseTerms": "Not identified in supplied PDF; relies on explicit user authorization for this project.",
+      "selectionRationale": "Retains a source-labelled CT example but explicitly does not use this single coronal view as proof of continuous rectum-first disease extent.",
+      "crop": "CT panel only, with minimal source overlay retained; no diagnostic arrows or phase labels added."
+    },
+    {
+      "path": "/educational/colitis/hero.svg",
+      "kind": "Code-native conceptual schematic",
+      "source": "Created for this lesson; no patient data or external medical image.",
+      "selectionRationale": "Two matching abstract colon silhouettes illustrate discontinuous segments versus continuous extent. The colors are keyed in localized lesson text; this is not a diagnostic sign or a patient image."
+    }
+  ]
+}

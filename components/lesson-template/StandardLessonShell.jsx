@@ -128,9 +128,9 @@ export function LessonSources({ title, items, note }) {
   return <aside className={styles.sources}>
     <button type="button" className={styles.sourcesToggle} onClick={() => { if (!lehrMode) setOpen(value => !value) }} aria-expanded={expanded} aria-controls="lesson-sources-panel" data-lehr-section-managed><span>{title}</span><span className={expanded ? styles.sourcesChevronOpen : ''}><Icon name="chevron" /></span></button>
     <div id="lesson-sources-panel" className={styles.sourcesPanel} hidden={!expanded}>
-      <ol>{items.map((item, index) => <li key={item.href}>
+      <ol>{items.map((item, index) => <li key={item.href || item.id || index}>
         <span className={styles.sourceNumber}>{String(index + 1).padStart(2, '0')}</span>
-        <div><small>{item.tag}</small><a href={item.href} target="_blank" rel="noreferrer"><strong>{item.title}</strong><Icon name="external" /></a><p>{item.citation}</p>{item.scope ? <em>{item.scope}</em> : null}</div>
+        <div><small>{item.tag}</small>{item.href ? <a href={item.href} target="_blank" rel="noreferrer"><strong>{item.title}</strong><Icon name="external" /></a> : <strong>{item.title}</strong>}<p>{item.citation}</p>{item.scope ? <em>{item.scope}</em> : null}</div>
       </li>)}</ol>
       {note ? <p className={styles.sourcesNote}>{note}</p> : null}
     </div>
