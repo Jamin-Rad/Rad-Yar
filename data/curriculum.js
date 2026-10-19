@@ -101,7 +101,7 @@ export const CURRICULUM = [
           { id: 'pinealis-parenchymtumoren', title: { de: 'Pinealis-Parenchymtumoren', en: 'Pineal Parenchymal Tumours', fa: 'تومورهای پارانشیمی غده پینه‌آل' }, group: ['Pinealisregion'], tags: ['MRT'], diff: 3 },
           { id: 'keimzelltumoren-pinealis', title: { de: 'Keimzelltumoren der Pinealisregion', en: 'Germ Cell Tumours of the Pineal Region', fa: 'تومورهای سلول زایا ناحیه پینه‌آل' }, group: ['Pinealisregion'], tags: ['MRT'], diff: 3 },
           { id: 'pinealzyste', title: { de: 'Pinealzyste', en: 'Pineal Cyst', fa: 'کیست پینه‌آل' }, group: ['Pinealisregion'], tags: ['MRT'], diff: 1 },
-          { id: 'meningeom', title: { de: 'Meningeom', en: 'Meningioma', fa: 'مننژیوم' }, group: ['Tumoren der Meningen'], tags: ['CT','MRT'], diff: 2 },
+          { id: 'meningeom', title: { de: 'Meningeom', en: 'Meningioma', fa: 'مننژیوم' }, group: ['Tumoren der Meningen'], tags: ['CT','MRT'], diff: 2, link: '/gehirn/tumoren/meningeom', inProgress: true, updatedAt: '2026-10-19' },
           { id: 'schwannome', title: { de: 'Schwannome', en: 'Schwannomas', fa: 'شوانوم' }, group: ['Tumoren der Hirnnerven'], tags: ['MRT'], diff: 2 },
           { id: 'neurofibrome', title: { de: 'Neurofibrome', en: 'Neurofibromas', fa: 'نوروفیبروم' }, group: ['Tumoren der Hirnnerven'], tags: ['MRT'], diff: 2 },
           { id: 'metastasen-meningeosis', title: { de: 'Metastasen / Meningeosis', en: 'Metastases / Leptomeningeal Carcinomatosis', fa: 'متاستازها / کارسینوماتوز لپتومننژیال' }, tags: ['MRT','CT'], diff: 2 },
@@ -784,7 +784,7 @@ export const CURRICULUM = [
           },
           { id: 'cholangiokarzinom-icca', title: { de: 'Cholangiokarzinom (iCCA)', en: 'Cholangiocarcinoma (iCCA)', fa: 'کلانژیوکارسینوم داخل کبدی (iCCA)' }, group: ['Maligne Leberläsionen'], tags: ['CT','MRT'], diff: 3 },
           { id: 'lebermetastasen', title: { de: 'Lebermetastasen', en: 'Liver Metastases', fa: 'متاستازهای کبدی' }, group: ['Maligne Leberläsionen'], tags: ['CT','MRT'], diff: 2, link: '/abdomen/leber/metastasen' },
-          { id: 'li-rads', title: { de: 'LI-RADS', en: 'LI-RADS', fa: 'سیستم LI-RADS' }, tags: ['CT','MRT'], diff: 2 },
+          { id: 'li-rads', title: { de: 'LI-RADS', en: 'LI-RADS', fa: 'سیستم LI-RADS' }, tags: ['CT','MRT'], diff: 2, link: '/abdomen/leber/li-rads' },
           { id: 'budd-chiari-syndrom', title: { de: 'Budd-Chiari-Syndrom', en: 'Budd-Chiari Syndrome', fa: 'سندرم باد-کیاری' }, group: ['Vaskuläre Lebererkrankungen'], tags: ['Sono','CT','MRT'], diff: 3 },
           { id: 'pfortaderthrombose', title: { de: 'Pfortaderthrombose', en: 'Portal Vein Thrombosis', fa: 'ترومبوز ورید پورت' }, group: ['Vaskuläre Lebererkrankungen'], tags: ['Sono','CT'], diff: 2 },
           {

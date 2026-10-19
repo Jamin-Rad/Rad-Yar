@@ -1,0 +1,20 @@
+.content { max-width: 1000px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; color: var(--text); }
+.lead { max-width: 82ch; font-size: 1.08rem; line-height: 1.7; }
+.panel, .decision, .cave { border: 1px solid var(--border); border-radius: 16px; background: var(--bg-card); padding: 1.1rem 1.25rem; margin: 1.15rem 0; }
+.panel h2, .decision h2, .cave h2 { margin: 0 0 .7rem; font-size: 1.15rem; }
+.panel p, .decision li, .cave p { line-height: 1.65; }
+.flow { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.4rem; padding: .5rem 0; margin: 0; }
+.flow li { position: relative; min-height: 96px; border: 1px solid #78a9bf; border-radius: 14px; background: var(--bg-card); display: flex; align-items: center; gap: .65rem; padding: .8rem; font-weight: 750; line-height: 1.35; }
+.flow li:not(:last-child)::after { content: '→'; position: absolute; inset-inline-end: -1.18rem; color: #527b96; font-size: 1.2rem; font-weight: 900; }
+.flow li span { flex: 0 0 1.8rem; height: 1.8rem; border-radius: 50%; background: #287a9f; color: #fff; display: grid; place-items: center; }
+.caption, .source { display: block; color: var(--text-muted); font-size: .88rem; line-height: 1.55; }
+.categories, .features { margin: 0; }
+.categories > div, .features > div { display: grid; grid-template-columns: minmax(125px, .35fr) 1fr; gap: .65rem; padding: .65rem 0; border-top: 1px solid var(--border); }
+.categories dt, .features dt { font-weight: 800; color: var(--text-strong); }
+.categories dd, .features dd { margin: 0; line-height: 1.55; }
+.decision { background: color-mix(in srgb, #287a9f 7%, var(--bg-card)); }
+.decision ol { margin-bottom: 0; padding-inline-start: 1.4rem; }
+.decision li + li { margin-top: .65rem; }
+.cave { border-inline-start: 4px solid #d48b34; }
+.source { margin-top: 1.5rem; }
+@media (max-width: 680px) { .content { padding-inline: .8rem; } .categories > div, .features > div { grid-template-columns: 1fr; gap: .2rem; } .flow { grid-template-columns: 1fr; gap: .8rem; } .flow li { min-height: unset; } .flow li:not(:last-child)::after { content: '↓'; inset-inline-end: auto; inset-block-end: -.85rem; inset-inline-start: 50%; z-index: 1; } }
