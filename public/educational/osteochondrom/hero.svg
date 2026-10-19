@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 360" role="img" aria-labelledby="title desc">
+  <title id="title">Osteochondroma schematic</title>
+  <desc id="desc">Non-diagnostic conceptual drawing of an exophytic bone projection with a cartilage cap.</desc>
+  <rect width="520" height="360" rx="28" fill="#edf3f0"/>
+  <path d="M216 326V54c0-21 17-38 38-38s38 17 38 38v272" fill="#f4d6a8" stroke="#85694c" stroke-width="5"/>
+  <path d="M242 326V54c0-7 5-12 12-12s12 5 12 12v272" fill="#fff7e9" stroke="#a58f75" stroke-width="3"/>
+  <path d="M216 170h-54c-21 0-34 18-47 36l-48 7c-12 2-18 15-11 25 5 8 14 12 25 11l74-8c29-3 45-18 61-39" fill="#f4d6a8" stroke="#85694c" stroke-width="5"/>
+  <path d="M242 170h-69c-13 0-23 9-34 23l-45 7" fill="none" stroke="#a58f75" stroke-width="3"/>
+  <path d="M94 207c10-1 21-2 32-4" fill="none" stroke="#d37f5d" stroke-width="10" stroke-linecap="round"/>
+  <path d="M95 207 54 152M210 230 330 256M252 289 349 322" stroke="#315e58" stroke-width="3"/>
+</svg>

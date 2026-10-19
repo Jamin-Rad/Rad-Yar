@@ -1173,7 +1173,7 @@ export const CURRICULUM = [
           { id: 'osteoid-osteom', title: { de: 'Osteoid-Osteom', en: 'Osteoid Osteoma', fa: 'استئوئید استئوما' }, group: ['Knochenbildende Tumoren'], tags: ['Rö','CT'], diff: 2, link: '/msk/tumoren/osteoid-osteom', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'osteoblastom', title: { de: 'Osteoblastom', en: 'Osteoblastoma', fa: 'استئوبلاستوما' }, group: ['Knochenbildende Tumoren'], tags: ['Rö','CT'], diff: 2 },
           { id: 'osteosarkom', title: { de: 'Osteosarkom', en: 'Osteosarcoma', fa: 'استئوسارکوما' }, group: ['Knochenbildende Tumoren'], tags: ['Rö','MRT'], diff: 3 },
-          { id: 'osteochondrom', title: { de: 'Osteochondrom', en: 'Osteochondroma', fa: 'استئوکندروم' }, group: ['Knorpelbildende Tumoren'], tags: ['Rö'], diff: 1 },
+          { id: 'osteochondrom', title: { de: 'Osteochondrom', en: 'Osteochondroma', fa: 'استئوکندروم' }, group: ['Knorpelbildende Tumoren'], tags: ['Rö','MRT'], diff: 2, link: '/msk/tumoren/osteochondrom', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'enchondrom', title: { de: 'Enchondrom', en: 'Enchondroma', fa: 'انکندروم' }, group: ['Knorpelbildende Tumoren'], tags: ['Rö','MRT'], diff: 2 },
           { id: 'chondrosarkom', title: { de: 'Chondrosarkom', en: 'Chondrosarcoma', fa: 'کندروسارکوما' }, group: ['Knorpelbildende Tumoren'], tags: ['Rö','MRT'], diff: 3 },
           { id: 'fibrosarkom-knochen', title: { de: 'Fibrosarkom', en: 'Fibrosarcoma', fa: 'فیبروسارکوما' }, group: ['Fibröse Tumoren'], tags: ['MRT'], diff: 3 },
