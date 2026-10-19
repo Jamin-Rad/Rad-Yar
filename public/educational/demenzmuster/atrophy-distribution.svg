@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-label="Conceptual map of medial temporal, relatively preserved hippocampal, and frontotemporal regions">
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#173844"/><stop offset="1" stop-color="#0b202b"/></linearGradient></defs>
+  <rect width="900" height="520" rx="34" fill="url(#bg)"/>
+  <g fill="#e8f3f4" fill-opacity=".94" stroke="#7dc5cf" stroke-width="7">
+    <path d="M120 249c-21-67 21-128 75-124 31-52 103-40 116 8 54 4 69 67 33 99 7 53-47 82-87 53-39 32-99 18-106-22-24 5-40 0-45-14z"/>
+    <path d="M392 249c-21-67 21-128 75-124 31-52 103-40 116 8 54 4 69 67 33 99 7 53-47 82-87 53-39 32-99 18-106-22-24 5-40 0-45-14z"/>
+    <path d="M664 249c-21-67 21-128 75-124 31-52 103-40 116 8 54 4 69 67 33 99 7 53-47 82-87 53-39 32-99 18-106-22-24 5-40 0-45-14z"/>
+  </g>
+  <g fill="none" stroke="#e77e86" stroke-width="16" stroke-linecap="round">
+    <path d="M218 239c14-15 40-17 55-3 15 13 15 31 0 43-15 13-41 12-55-3"/>
+  </g>
+  <g fill="none" stroke="#36a879" stroke-width="13" stroke-linecap="round">
+    <path d="M493 237c18-15 41-10 47 7 4 11-2 22-14 26"/>
+  </g>
+  <g fill="none" stroke="#e77e86" stroke-width="14" stroke-linecap="round">
+    <path d="M708 169c25-23 48-22 61-9M787 169c22-21 44-16 52-1M699 278c18 16 36 19 52 8"/>
+  </g>
+  <g fill="#8ebcc4" opacity=".85"><circle cx="239" cy="202" r="5"/><circle cx="511" cy="205" r="5"/><circle cx="783" cy="203" r="5"/></g>
+</svg>

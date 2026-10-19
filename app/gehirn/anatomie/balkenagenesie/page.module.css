@@ -1,0 +1,21 @@
+.page { padding-top: 98px; }
+.page p { line-height: 1.8; }
+.lead { color: var(--ink,#193842); font-size: 1.08rem; font-weight: 650; }
+.note { margin-block: 20px; padding: 16px 18px; border-inline-start: 4px solid #19778a; border-radius: 8px; background: #e5f4f6; color: var(--body,#43545a); }
+.note p { margin-bottom: .6rem; }
+.note p:last-child { margin-bottom: 0; }
+.caseGallery { margin: 24px 0 12px; }
+.galleryIntro { max-width: 84ch; margin: 0 auto 14px; padding: 14px 16px; border-inline-start: 4px solid #19778a; border-radius: 8px; background: #e5f4f6; line-height: 1.7; }
+.frameGrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.frameGrid > figure { min-width: 0; margin: 0; padding: 10px; border: 1px solid var(--line,#cbdde2); border-radius: 10px; background: #101820; }
+.frameGrid img { display: block; width: 100%; height: clamp(220px,32vw,360px); object-fit: contain; background: #050708; }
+.frameGrid figcaption { display: grid; gap: 5px; padding: 9px 5px 3px; color: #fff; line-height: 1.6; }
+.gallerySource { margin: 12px 0; color: var(--body,#43545a); font-size: .9rem; }
+.selfCheck { display: grid; gap: 12px; margin-top: 20px; padding: 20px; border: 1px solid #19778a; border-radius: 10px; background: #e5f4f6; }
+.options { display: grid; gap: 10px; }
+.options button { padding: 12px 14px; border: 1px solid var(--line,#cbdde2); border-radius: 8px; background: #fff; color: var(--ink,#193842); cursor: pointer; text-align: start; font: inherit; }
+.options button[aria-pressed='true'] { border-color: #155d70; box-shadow: 0 0 0 2px #155d7038; }
+.feedback { padding: 12px 14px; border-radius: 8px; background: #fff; }
+.page :is(button,a):focus-visible { outline: 3px solid #39aabd; outline-offset: 4px; }
+.page[dir='rtl'],.page[dir='rtl'] :is(h1,h2,h3,strong,button,a,li) { font-family: 'Vazirmatn',sans-serif; letter-spacing: 0; }
+@media(max-width:700px) { .page { padding: 86px 12px 104px; } .selfCheck { padding: 14px; } .frameGrid { grid-template-columns: 1fr; gap: 10px; } .frameGrid img { height: 68vw; max-height: 380px; } }

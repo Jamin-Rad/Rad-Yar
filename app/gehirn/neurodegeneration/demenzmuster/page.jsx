@@ -1,25 +1,47 @@
 'use client'
 
-import Link from 'next/link'
 import { useState } from 'react'
-import LessonHero from '@/components/LessonHero'
+import StandardLessonShell, { LessonSection, LessonSources, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { GEHIRN_DEMENZMUSTER_LESSON as lesson } from '@/data/gehirnDemenzMusterLesson'
-import styles from '@/app/technik/kontrastmittel/page.module.css'
+import { GEHIRN_DEMENZMUSTER_LESSON as C } from '@/data/gehirnDemenzMusterLesson'
+import styles from './page.module.css'
 
-const pick=(x,lang)=>x?.[lang]||x?.de||''
-function AtrophyMap({lang}){
- const labels=lang==='fa'?['تمپورال میانی','حفظ نسبی','فرونتوتمپورال']:lang==='en'?['Medial temporal','Relative preservation','Frontotemporal']:['Mesiotemporal','Relativ erhalten','Frontotemporal']
- return <figure style={{margin:0,padding:14,border:'1px solid var(--border)',borderRadius:18,background:'var(--bg-card)'}}><svg viewBox="0 0 570 170" role="img" aria-label={labels.join(' → ')} style={{display:'block',width:'100%',height:'auto'}}>{labels.map((label,i)=>{const x=18+i*182;return <g key={label}><rect x={x} y="18" width="160" height="116" rx="18" fill="var(--surface-soft)" stroke="var(--border)" strokeWidth="2"/><path d={`M${x+42} 81c-14-30 8-48 29-39 16-20 46-7 41 16 18 18 2 42-19 35-17 14-39 10-51-12z`} fill="#c7e0e7" stroke="#4189a7" strokeWidth="3"/>{i===0?<ellipse cx={x+91} cy="76" rx="12" ry="22" fill="none" stroke="#d66f79" strokeWidth="5"/>:i===1?<path d={`M${x+70} 67q20 12 40 0`} fill="none" stroke="#2f9f75" strokeWidth="6" strokeLinecap="round"/>:<path d={`M${x+52} 48q10-13 23-7m20-2q22-8 30 8`} fill="none" stroke="#d66f79" strokeWidth="5" strokeLinecap="round"/>}<foreignObject x={x+5} y="137" width="150" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style={{display:'grid',height:'100%',placeItems:'center',color:'var(--text-strong)',fontSize:12,fontWeight:800,textAlign:'center'}}>{label}</div></foreignObject></g>})}</svg><figcaption style={{color:'var(--text-muted)',fontSize:12,textAlign:'center'}}>{lang==='fa'?'نقشهٔ مفهومی است؛ الگوها تشخیص مستقل نیستند.':lang==='en'?'Conceptual map; patterns are not stand-alone diagnoses.':'Konzeptkarte; Muster sind keine eigenständigen Diagnosen.'}</figcaption></figure>
+const value = (item, lang) => item?.[lang] || item?.de || ''
+const labels = {
+  path: { de: 'Lernpfad', en: 'Learning path', fa: 'مسیر یادگیری' }, progress: { de: 'gelesen', en: 'read', fa: 'خوانده‌شده' },
+  continue: { de: 'Lektion fortsetzen', en: 'Continue lesson', fa: 'ادامهٔ درس' }, completeLesson: { de: 'Ganze Lektion als gelesen markieren', en: 'Mark the whole lesson as read', fa: 'علامت‌گذاری کل درس به‌عنوان خوانده‌شده' },
+  lessonCompleted: { de: 'Ganze Lektion gelesen', en: 'Full lesson marked as read', fa: 'کل درس خوانده شد' }, complete: { de: 'Abschnitt als gelesen markieren', en: 'Mark section as read', fa: 'علامت‌گذاری بخش به‌عنوان خوانده‌شده' },
+  completed: { de: 'Gelesen', en: 'Read', fa: 'خوانده شد' }, open: { de: 'Abschnitt öffnen', en: 'Open section', fa: 'بازکردن بخش' }, close: { de: 'Schließen', en: 'Close', fa: 'بستن' },
+  takeHome: { de: 'Drei Regeln mitnehmen', en: 'Three takeaways', fa: 'سه نکتهٔ کلیدی' }, sources: { de: 'Quellen und Grenzen', en: 'Sources and scope', fa: 'منابع و محدوده' },
 }
-export default function DementiaPatternsPage(){
- const {lang}=useLanguage();const rtl=lang==='fa';const [open,setOpen]=useState(0),[read,setRead]=useState([]),[answer,setAnswer]=useState(null)
- const t=lang==='fa'?{badge:'مغز · پیش‌نویس آموزشی PDF',crumb:'مغز',contents:'مسیر یادگیری',progress:'پیشرفت با علامت‌گذاری بخش ثبت می‌شود.',read:'این بخش را خواندم',self:'خودآزمایی: الگوی آتروفی',refs:'منبع و محدودیت‌ها',home:'درس‌های مغز',status:'پیش‌نویس آموزشی؛ برای تصمیم بالینی استفاده نشود.'}:lang==='en'?{badge:'Brain · PDF teaching draft',crumb:'Brain',contents:'Learning path',progress:'Progress is recorded when a section is marked as read.',read:'Mark section as read',self:'Self-check: atrophy pattern',refs:'Source and limits',home:'Brain lessons',status:'Teaching draft; not for clinical decision-making.'}:{badge:'Gehirn · PDF-Lernentwurf',crumb:'Gehirn',contents:'Lernpfad',progress:'Fortschritt wird nach Markieren eines Kapitels erfasst.',read:'Kapitel als gelesen markieren',self:'Selbstcheck: Atrophiemuster',refs:'Quelle und Grenzen',home:'Gehirn-Lektionen',status:'Lernentwurf; nicht für klinische Entscheidungen.'}
- const url=p=>lang==='de'?p:`${p}?lang=${lang}`,chapter=lesson.chapters[open],pct=Math.round(read.length/lesson.chapters.length*100),markRead=()=>setRead(prev=>prev.includes(open)?prev.filter(x=>x!==open):[...prev,open])
- return <main className={styles.page} dir={rtl?'rtl':'ltr'} lang={lang}><header className={styles.header}><nav className={styles.breadcrumb} aria-label={rtl?'مسیر صفحه':lang==='en'?'Breadcrumb':'Seitennavigation'}><Link href={url('/')}>RadYar</Link><span>›</span><Link href={url('/lernen/gehirn')}>{t.crumb}</Link><span>›</span><span>{pick(lesson.title,lang)}</span></nav><div className={styles.hero}><div className={styles.heroText}><span className={styles.sourceBadge}>{t.badge}</span><LessonHero title={pick(lesson.title,lang)} lang={lang} visual={<AtrophyMap lang={lang}/>} /></div><aside className={styles.heroStats}><div className={styles.heroStat}><strong>72–74</strong><span>{lang==='fa'?'صفحه‌های PDF':lang==='en'?'PDF pages':'PDF-Seiten'}</span><small>{lang==='fa'?'آلزایمر، لویی، FTD':'Alzheimer, Lewy body, FTD'}</small></div><p role="status" style={{padding:14}}>{t.status}</p></aside></div></header>
- <div className={styles.layout}><aside className={styles.sidebar}><div className={styles.sideTitle}>{t.contents}</div><div><div style={{height:8,margin:'8px 0',borderRadius:9,background:'var(--border)'}}><div style={{width:`${pct}%`,height:'100%',borderRadius:9,background:'#0f9f6e'}}/></div><small>{pct}% · {t.progress}</small></div>{lesson.chapters.map((c,i)=><button key={c.id} type="button" className={styles.sideItem} aria-current={open===i?'step':undefined} onClick={()=>setOpen(i)}><span aria-hidden="true">{read.includes(i)?'✓':'◈'}</span><strong>{pick(c.title,lang)}</strong></button>)}</aside>
- <div className={styles.main}><section className={styles.section} id={chapter.id}><div className={styles.sectionHeader}><span className={styles.sectionHeading}><span className={styles.sectionIcon} aria-hidden="true">◈</span><h2>{pick(chapter.title,lang)}</h2></span><span className={styles.sectionToggle} style={{width:'auto',paddingInline:12}}>{lang==='fa'?`PDF ${chapter.pages}`:lang==='en'?`PDF p. ${chapter.pages}`:`PDF S. ${chapter.pages}`}</span></div><div className={styles.sectionBody}>{open===0&&<p className={styles.lead}>{pick(lesson.objective,lang)}</p>}{pick(chapter.text,lang).split('\n\n').map((p,i)=><p key={i} className={i===0?styles.lead:undefined} style={{lineHeight:1.75}}>{p}</p>)}<button type="button" onClick={markRead} aria-pressed={read.includes(open)} className={styles.sectionToggle} style={{width:'auto',padding:'8px 14px',marginTop:14}}>{read.includes(open)?`✓ ${t.read}`:t.read}</button></div></section>
- <div style={{display:'flex',justifyContent:'space-between',gap:12}}><button type="button" className={styles.lessonLink} disabled={open===0} onClick={()=>setOpen(Math.max(0,open-1))}>{lang==='fa'?'فصل پیشین':lang==='en'?'Previous chapter':'Vorheriges Kapitel'}</button><button type="button" className={styles.lessonLink} disabled={open===lesson.chapters.length-1} onClick={()=>setOpen(Math.min(lesson.chapters.length-1,open+1))}>{lang==='fa'?'فصل بعدی':lang==='en'?'Next chapter':'Nächstes Kapitel'}</button></div>
- {open===lesson.chapters.length-1&&<><section className={styles.section}><div className={styles.sectionBody}><h2>{t.self}</h2><p className={styles.lead}>{pick(lesson.assessment.question,lang)}</p><div style={{display:'grid',gap:9}}>{lesson.assessment.options.map((o,i)=><button key={i} type="button" aria-pressed={answer===i} onClick={()=>setAnswer(i)} style={{padding:14,border:'1px solid var(--border)',borderRadius:12,color:'var(--text)',background:'var(--bg-card)',cursor:'pointer',textAlign:'start'}}>{pick(o,lang)}</button>)}</div>{answer!==null&&<p role="status" style={{marginTop:12}}>{answer===lesson.assessment.correctIndex?pick(lesson.assessment.feedback,lang):pick(lesson.assessment.retry,lang)}</p>}</div></section><aside className={`${styles.callout} ${styles.calloutCave}`}><strong>{t.refs}</strong><p>{pick(lesson.media,lang)}</p><p style={{marginTop:10}}>{pick(lesson.reviewStatus,lang)}</p><ul>{lesson.references.map(ref=><li key={ref.label}>{ref.href?<a href={ref.href} target="_blank" rel="noreferrer">{ref.label}</a>:ref.label}</li>)}</ul></aside></>}
- <Link className={styles.lessonLink} href={url('/lernen/gehirn')}>{t.home}<span aria-hidden="true">←</span></Link></div></div></main>
+const icons = { hippocampus: 'M3 12c2-7 6-8 9-4 4-3 8 0 9 4-2 7-6 8-9 4-4 3-8 0-9-4zm5-2c2 1 2 3 0 4m8-4c-2 1-2 3 0 4', compare: 'M3 7h18m-4-4 4 4-4 4M21 17H3m4-4-4 4 4 4', brain: 'M12 4a4 4 0 0 0-7 3 4 4 0 0 0-1 7 4 4 0 0 0 7 4V4m2 0a4 4 0 0 1 7 3 4 4 0 0 1 1 7 4 4 0 0 1-7 4V4', check: 'm4 12 5 5L20 6', summary: 'm12 2 1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6L12 2Z' }
+function Icon({ name }) { return <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d={icons[name] || icons.brain} /></svg> }
+function Paragraphs({ text }) { return text.split(/\n\s*\n/).filter(Boolean).map((p, i) => <p key={i}>{p}</p>) }
+function Check({ lang }) {
+  const [answer, setAnswer] = useState(null)
+  const t = lang === 'fa' ? 'خودآزمایی: الگوی غالب' : lang === 'en' ? 'Self-check: dominant pattern' : 'Selbstcheck: Verteilungsmuster'
+  return <section className={styles.quiz} aria-labelledby="dementia-self-check"><h3 id="dementia-self-check">{t}</h3><p>{value(C.assessment.question, lang)}</p><div className={styles.options}>{C.assessment.options.map((o, i) => <button key={i} type="button" aria-pressed={answer === i} onClick={() => setAnswer(i)}>{value(o, lang)}</button>)}</div>{answer !== null && <p role="status" className={styles.feedback}>{value(answer === C.assessment.correctIndex ? C.assessment.feedback : C.assessment.retry, lang)}</p>}</section>
+}
+function EvidenceFigure({ figure, lang }) { return <figure id={figure.id} className={styles.caseFigure}><img src={figure.src} alt={value(figure.alt, lang)} width={figure.width} height={figure.height}/><figcaption>{value(figure.caption, lang)}</figcaption></figure> }
+
+export default function DementiaPatternsPage() {
+  const { lang } = useLanguage()
+  const brain = value({ de: 'Gehirn', en: 'Brain', fa: 'مغز' }, lang)
+  const sections = [...C.chapters.map(ch => ({ id: ch.id, label: value(ch.title, lang), icon: ch.icon })),
+    { id: 'self-check', label: value(C.ui.selfCheck, lang), icon: 'check' }, { id: 'take-home', label: value(C.ui.takeHome, lang), icon: 'summary', emphasis: true }]
+  const refs = C.references.map((ref, i) => ({ tag: i === 0 ? 'PDF · pp.72–74' : 'REFERENCE', title: ref.label, href: ref.href, citation: ref.citation, scope: ref.scope || '' }))
+  return <StandardLessonShell lessonId={C.id} lang={lang} title={value(C.title, lang)} author="Dr. Zia"
+    breadcrumbs={[{ label: 'RadYar', href: lang === 'de' ? '/' : `/?lang=${lang}` }, { label: brain, href: lang === 'de' ? '/lernen/gehirn' : `/lernen/gehirn?lang=${lang}` }, { label: value(C.title, lang) }]}
+    sections={sections} labels={Object.fromEntries(Object.entries(labels).map(([k, v]) => [k, value(v, lang)]))} actions={{}}
+    renderIcon={name => <Icon name={name}/>} theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/educational/demenzmuster/atrophy-distribution.svg', heroImageOpacity: .68, accent: '#58b5c2', accentStrong: '#185d69', accentSoft: '#e2f3f4', secondary: '#d18469', secondaryStrong: '#784632', heroBase: '#102734' }}
+    className={styles.page} heroImageAlt={value(C.heroAlt, lang)} syncHashNavigation
+    sources={<LessonSources title={value(C.ui.sources, lang)} items={refs} note={value(C.mediaNote, lang)}/> }>
+    {C.chapters.map((chapter, index) => <LessonSection key={chapter.id} id={chapter.id} title={value(chapter.title, lang)} icon={chapter.icon}>
+      {index === 0 && <p className={styles.lead}>{value(C.objective, lang)}</p>}
+      <Paragraphs text={value(chapter.text, lang)}/>
+      {chapter.figure && <EvidenceFigure figure={chapter.figure} lang={lang}/>}
+    </LessonSection>)}
+    <LessonSection id="self-check" title={value(C.ui.selfCheck, lang)} icon="check"><Check lang={lang}/></LessonSection>
+    <LessonSection id="take-home" title={value(C.ui.takeHome, lang)} icon="summary"><TakeHomeList items={C.takeaways.map(item => ({ title: value(item.title, lang), detail: value(item.detail, lang) }))}/></LessonSection>
+  </StandardLessonShell>
 }

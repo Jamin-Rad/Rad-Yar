@@ -1,0 +1,14 @@
+{
+  "source": "User-supplied Gehirn.pdf, PDF page 86 (printed page 85)",
+  "sourceIdentification": "A label rID 10662 appears adjacent to the four-MRI montage in the supplied PDF. A secondary PACS.DE case listing identifies this as Frank Gaillard, 'Callosal dysgenesis', Radiopaedia DOI 10.53347/rID-10662. The primary Radiopaedia case page returned HTTP 402 during this review; exact case metadata and license terms have not been independently confirmed on the primary page.",
+  "projectAuthorization": "The user authorized use of images in the supplied PDFs for this RadYar project. This project authorization is recorded separately from verification of the source case's identity and license terms.",
+  "licenseStatus": "PACS.DE mirrors a CC BY-NC-SA 3.0 label for the Radiopaedia case. Primary-source terms remain unverified. The lesson is an educational project draft; obtain independent confirmation of case-level attribution and terms before treating that as a release clearance.",
+  "cropMethod": "Direct crop from the supplied PDF rasterized at 220 dpi; no generative changes, annotations, or diagnostic enhancement. Crop coordinates are in the 1820 x 2573 px rendered page.",
+  "frames": [
+    { "file": "coronal.png", "plane": "coronal (visually identified; source does not label sequence)", "crop": { "left": 174, "top": 1478, "width": 349, "height": 363 }, "teachingTask": "Inspect frontal-horn configuration; do not infer sequence from this crop." },
+    { "file": "sagittal-a.png", "plane": "sagittal (source does not state exact midline position or sequence)", "crop": { "left": 529, "top": 1478, "width": 350, "height": 363 }, "teachingTask": "Search the midline region for the callosum; exact midsagittal status is unspecified." },
+    { "file": "sagittal-b.png", "plane": "sagittal (source does not state exact midline position or sequence)", "crop": { "left": 881, "top": 1478, "width": 348, "height": 363 }, "teachingTask": "Compare plane and orientation with crop A; do not assume the source specifies sequence or exact position." },
+    { "file": "axial.png", "plane": "axial (visually identified; source does not label sequence)", "crop": { "left": 1232, "top": 1472, "width": 356, "height": 363 }, "teachingTask": "Describe ventricular orientation and posterior-horn size; crop alone does not establish cause." }
+  ],
+  "qualityLimit": "The supplied PDF montage is low-resolution. These crops support plane recognition and guided pattern discussion, not fine-detail diagnosis or sequence interpretation."
+}

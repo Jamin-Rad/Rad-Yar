@@ -1,0 +1,49 @@
+{
+  "lesson": "lungenanatomie",
+  "sourcePdf": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Thorax.pdf",
+  "authorization": "User stated on 2026-10-19 that all images in the supplied PDFs are authorized for use.",
+  "assets": [
+    {
+      "file": "hero.svg",
+      "type": "code-native educational schematic",
+      "patientImage": false,
+      "description": "Original schematic of a secondary pulmonary lobule. Internal labels are rendered in translated HTML instead of embedded in the image."
+    },
+    {
+      "file": "accessory-fissures.png",
+      "type": "source-PDF page crop",
+      "pdfPage": 8,
+      "printedPage": 7,
+      "renderDpi": 110,
+      "cropPixels": { "x": 165, "y": 350, "width": 555, "height": 255 },
+      "radiopaediaId": "rID 23182",
+      "selection": "Thorax.pdf page 8, infracardiac-lobe radiograph/CT example.",
+      "sourceFigureAuthorOrContributor": "Not identifiable from cropped source slide.",
+      "licenseClaim": "No independent licensing or third-party contributor claim; user authorized use of their supplied PDF figures."
+    },
+    {
+      "file": "superior-fissure.png",
+      "type": "source-PDF page crop",
+      "pdfPage": 8,
+      "printedPage": 7,
+      "radiopaediaId": "rID 34669",
+      "renderDpi": 110,
+      "cropPixels": { "x": 350, "y": 690, "width": 180, "height": 205 },
+      "selection": "Thorax.pdf page 8, sagittal CT of the superior accessory fissure between segment 6 and basal segments.",
+      "sourceFigureAuthorOrContributor": "Not independently verified from source slide.",
+      "licenseClaim": "No independent licensing or third-party contributor claim; user authorized use of their supplied PDF figures."
+    },
+    {
+      "file": "azygos-variant.png",
+      "type": "source-PDF page crop",
+      "pdfPage": 9,
+      "printedPage": 8,
+      "renderDpi": 110,
+      "cropPixels": { "x": 105, "y": 400, "width": 685, "height": 210 },
+      "radiopaediaId": "rID 13544",
+      "selection": "Thorax.pdf page 9, azygos fissure/vein examples in chest radiograph and CT.",
+      "sourceFigureAuthorOrContributor": "Not identifiable from cropped source slide.",
+      "licenseClaim": "No independent licensing or third-party contributor claim; user authorized use of their supplied PDF figures."
+    }
+  ]
+}

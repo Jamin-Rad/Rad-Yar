@@ -44,6 +44,20 @@ function RetrievalCheck({ lang }) {
   return <section className={styles.section} aria-labelledby="tech-check"><div className={styles.sectionBody}><h2 id="tech-check">{copy.title}</h2><p className={styles.lead}>{copy.q}</p><div style={{display:'grid',gap:8}}>{copy.opts.map((option,index)=><button type="button" key={index} aria-pressed={answer===index} onClick={()=>setAnswer(index)} style={{padding:12,border:'1px solid var(--border)',borderRadius:12,background:'var(--bg-card)',color:'var(--text)',textAlign:'start',cursor:'pointer'}}>{option}</button>)}</div>{answer!==null&&<p role="status" style={{marginTop:12}}>{answer===1?copy.ok:copy.retry}</p>}</div></section>
 }
 
+function RadiationEffectsCheck({ lang }) {
+  const [answer, setAnswer] = useState(null)
+  const copy = lang === 'fa'
+    ? { title: 'خودآزمایی: احتمال یا شدت؟', question: 'کدام مقایسه با مدل‌های حفاظت پرتویی سازگار است؟', options: ['با افزایش دوز، شدت هر مورد سرطان بیشتر می‌شود.', 'احتمال اثر تصادفی با دوز افزایش می‌یابد؛ اما شدت بیماری یک فرد را پیش‌بینی نمی‌کند. شدت واکنش بافتی معمولاً پس از ناحیهٔ آستانه‌ای وابسته به بافت افزایش می‌یابد.', 'هر دو نوع اثر آستانهٔ یکسان و ثابتی دارند.'], correct: 'درست است. احتمال وقوع را از شدت یک مورد جدا کنید؛ آستانهٔ واکنش بافتی هم همگانی نیست.', retry: 'به دو پرسش جدا پاسخ دهید: دوز بر احتمال وقوع اثر تصادفی چه می‌کند، و بر شدت واکنش بافتی پس از آستانه چه اثری دارد؟' }
+    : lang === 'en'
+      ? { title: 'Self-check: probability or severity?', question: 'Which comparison matches radiation-protection models?', options: ['As dose increases, every individual cancer becomes more severe.', 'The probability of a stochastic effect increases with dose, but this does not predict severity in an individual case. Tissue-reaction severity generally rises above a tissue-dependent threshold region.', 'Both effect types have the same fixed threshold.'], correct: 'Correct. Separate occurrence probability from the severity of one case; tissue-reaction thresholds are not universal.', retry: 'Answer two separate questions: how does dose affect stochastic occurrence probability, and what happens to tissue-reaction severity above its threshold region?' }
+      : { title: 'Selbstcheck: Wahrscheinlichkeit oder Schwere?', question: 'Welche Gegenüberstellung entspricht den Strahlenschutzmodellen?', options: ['Mit höherer Dosis wird jeder einzelne Krebsfall schwerer.', 'Die Wahrscheinlichkeit eines stochastischen Effekts steigt mit der Dosis, sagt aber nichts über die Schwere eines Einzelfalls voraus. Die Schwere einer Gewebereaktion nimmt meist oberhalb eines gewebespezifischen Schwellenbereichs zu.', 'Beide Effektarten haben dieselbe feste Schwelle.'], correct: 'Richtig. Auftretenswahrscheinlichkeit und Schwere eines Einzelfalls sind zu trennen; Schwellen für Gewebereaktionen sind nicht universell.', retry: 'Beantworten Sie zwei Fragen getrennt: Wie beeinflusst die Dosis die Auftretenswahrscheinlichkeit stochastischer Effekte, und was geschieht mit der Schwere einer Gewebereaktion oberhalb ihres Schwellenbereichs?' }
+  return <section aria-labelledby="radiation-effects-check" style={{ marginTop: 18, padding: 16, border: '1px solid var(--border)', borderRadius: 14, background: 'var(--bg-card)' }}>
+    <h3 id="radiation-effects-check" style={{ marginTop: 0 }}>{copy.title}</h3><p>{copy.question}</p>
+    <div style={{ display: 'grid', gap: 8 }}>{copy.options.map((option, index) => <button key={index} type="button" aria-pressed={answer === index} onClick={() => setAnswer(index)} style={{ padding: 12, border: '1px solid var(--border)', borderRadius: 10, background: 'var(--surface-soft)', color: 'var(--text)', textAlign: 'start', cursor: 'pointer' }}>{option}</button>)}</div>
+    {answer !== null && <p role="status" style={{ marginBottom: 0 }}>{answer === 1 ? copy.correct : copy.retry}</p>}
+  </section>
+}
+
 export default function TechnikGrundlagenPage() {
   const { lang } = useLanguage()
   const [active, setActive] = useState(TECHNIK_GRUNDLAGEN.sections[0].id)
@@ -94,7 +108,8 @@ export default function TechnikGrundlagenPage() {
               </div> : null}
             </figure>)}
             {section.note ? <aside className={styles.callout}><strong>{lang === 'fa' ? 'محدودیت منبع' : lang === 'en' ? 'Source limitation' : 'Quellenhinweis'}</strong><p>{pick(section.note, lang)}</p></aside> : null}
-            {section.references?.length ? <nav aria-label={lang === 'fa' ? 'منابع قانونی رسمی' : lang === 'en' ? 'Official legal sources' : 'Amtliche Rechtsquellen'} style={{ marginTop: 12 }}><strong>{lang === 'fa' ? 'متن قانون:' : lang === 'en' ? 'Official law text:' : 'Amtlicher Gesetzestext:'}</strong><ul style={{ margin: '6px 0', paddingInlineStart: 20 }}>{section.references.map(reference => <li key={reference.href}><a href={reference.href} target="_blank" rel="noreferrer">{pick(reference.label, lang)}</a></li>)}</ul></nav> : null}
+            {section.references?.length ? <nav aria-label={section.id === 'wirkung' ? (lang === 'fa' ? 'منابع علمی' : lang === 'en' ? 'Scientific sources' : 'Fachquellen') : (lang === 'fa' ? 'منابع قانونی رسمی' : lang === 'en' ? 'Official legal sources' : 'Amtliche Rechtsquellen')} style={{ marginTop: 12 }}><strong>{section.id === 'wirkung' ? (lang === 'fa' ? 'منابع:' : lang === 'en' ? 'Sources:' : 'Quellen:') : (lang === 'fa' ? 'متن قانون:' : lang === 'en' ? 'Official law text:' : 'Amtlicher Gesetzestext:')}</strong><ul style={{ margin: '6px 0', paddingInlineStart: 20 }}>{section.references.map(reference => <li key={reference.href}><a href={reference.href} target="_blank" rel="noreferrer">{pick(reference.label, lang)}</a></li>)}</ul></nav> : null}
+            {section.id === 'wirkung' ? <RadiationEffectsCheck lang={lang} /> : null}
           </div>
         </section>)}
         <RadiationProtectionCheck lang={lang} />

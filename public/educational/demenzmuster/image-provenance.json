@@ -1,0 +1,39 @@
+{
+  "sourceFile": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf (user-provided; use authorized by the user)",
+  "generatedAt": "2026-10-19",
+  "assets": [
+    {
+      "file": "alzheimer-mta-p72.png",
+      "sourcePage": "PDF p.72, printed p.71",
+      "crop": "Rendered source page cropped to the five-panel MTA 0–4 comparison; no pixels were annotated or retouched.",
+      "modality": "Coronal T1-weighted MRI examples, as presented and labelled in source PDF",
+      "caseId": null,
+      "contributor": "Not identified on source page",
+      "reuseBasis": "User explicitly authorized use of supplied PDF images for lesson work.",
+      "teachingPurpose": "Compare progressive medial temporal atrophy morphology and score-series appearance.",
+      "limits": "Case details, acquisition parameters, and independent image provenance are not provided in PDF. Do not treat image as an individual diagnostic reference standard."
+    },
+    {
+      "file": "ftd-p74.png",
+      "sourcePage": "PDF p.74, printed p.73",
+      "crop": "Rendered source page cropped to the two labelled MRI panels; no pixels were annotated or retouched.",
+      "modality": "Coronal T1 and axial MRI examples, as presented in source PDF",
+      "caseId": null,
+      "contributor": "Not identified on source page",
+      "reuseBasis": "User explicitly authorized use of supplied PDF images for lesson work.",
+      "teachingPurpose": "Locate the frontal/anterior temporal distribution described in the source.",
+      "limits": "The source page does not identify the cases, contributors, acquisition details, or original image URL. Interpret as PDF teaching examples, not validated independent cases."
+    },
+    {
+      "file": "atrophy-distribution.svg",
+      "sourcePage": null,
+      "crop": null,
+      "modality": "Code-native explanatory schematic; not patient imaging",
+      "caseId": null,
+      "contributor": "RadYar code-native SVG",
+      "reuseBasis": "Original code-native teaching graphic",
+      "teachingPurpose": "Provide topic-specific hero orientation for medial temporal, relative-preservation, and frontotemporal regions.",
+      "limits": "Conceptual, not anatomically detailed and not a diagnostic pattern; localized HTML alt describes this limit."
+    }
+  ]
+}

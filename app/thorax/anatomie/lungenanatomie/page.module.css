@@ -1,0 +1,24 @@
+.page { --lesson-accent:#54c5c2; --lesson-accent-strong:#155d70; --lesson-accent-soft:#d9f4f0; --lesson-secondary:#e89abb; --lesson-secondary-strong:#8b3458; --lesson-hero-base:#101b2d; }
+.body { display:grid; gap:1.2rem; }
+.body p, .body li { max-width:78ch; line-height:1.72; }
+.lead { font-size:1.08rem; margin:0; }
+.figure { margin:0; border:1px solid var(--line); border-radius:15px; overflow:hidden; background:var(--paper); }
+.figure img { display:block; max-width:100%; width:100%; height:auto; }
+.figure figcaption { padding:.8rem 1rem; color:var(--body); font-size:.9rem; line-height:1.6; }
+.diagram { background:#14283c; }
+.diagram img { max-height:480px; object-fit:contain; }
+.grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.9rem; }
+.grid article { padding:1rem; border:1px solid color-mix(in srgb,var(--lesson-accent) 35%,var(--line)); border-radius:14px; background:var(--paper); }
+.grid h3 { margin:0 0 .5rem; color:var(--lesson-accent-strong); font-size:1rem; }
+.grid p { margin:0; }
+.cave { padding:1rem 1.15rem; border-inline-start:4px solid #d99a28; border-radius:8px; background:color-mix(in srgb,#f7e8be 35%,var(--paper)); line-height:1.7; }
+.cave p { margin:.4rem 0 0; }
+.quiz { display:grid; gap:.7rem; padding:1.2rem; border:1px solid color-mix(in srgb,var(--lesson-accent) 40%,var(--line)); border-radius:15px; background:color-mix(in srgb,var(--lesson-accent-soft) 40%,var(--paper)); }
+.quiz small { color:var(--lesson-accent-strong); font-weight:800; }
+.quiz h3 { margin:0; line-height:1.55; font-size:1.08rem; }
+.quiz button { padding:.8rem 1rem; border:1px solid var(--line); border-radius:10px; background:var(--paper); color:var(--ink); text-align:start; font:inherit; cursor:pointer; }
+.quiz button:focus-visible { outline:2px solid var(--lesson-accent-strong); outline-offset:2px; }
+.quiz button.selected { border-color:var(--lesson-accent-strong); background:color-mix(in srgb,var(--lesson-accent-soft) 65%,var(--paper)); }
+.correct,.feedback { margin:.2rem 0 0; padding:.8rem; border-radius:9px; line-height:1.6; }
+.correct { background:#e2f4e8; color:#155d32; } .feedback { background:#fff1d8; color:#713f00; }
+@media(max-width:760px) { .grid { grid-template-columns:1fr; } .figure figcaption { padding:.7rem; } }

@@ -88,9 +88,9 @@
 | مدیاستن و کمپارتمان‌ها | 2 | `mediastinum-anatomie` | — | curriculum-only؛ محتوای PDF عملاً نامشخص | ?؛ صفحه فقط «Topic» و نماد دارد |
 | قلب/پریکارد، عنوان صفحه | 3 | `herzanatomie`, `perikarderguss`, `konstriktive-perikarditis` (candidateها) | route آموزشی اختصاصی برای همین موضوعات پیدا نشد؛ routeهای کاردیو موجود جدا هستند | نامشخص؛ متن «Sdfs» است | ?؛ صفحهٔ کامل/منبع لازم |
 | عروق بزرگ | 4 | `gefaesse-anatomie-thorax`, `thorax-aorta` | مسیر مرتبط `app/thorax/anatomie/aortenbogen/page.js` برای `aortenbogen`؛ route موضوع کلی PDF پیدا نشد | route جزئی موجود؛ محتوای صفحهٔ PDF نامشخص | ?/A؛ متن استخراج «fghrf» است |
-| لوبول ثانویه/آسینوس/اینترستیتیوم | 5–7 | `lungenanatomie` | — | curriculum-only؛ page 7 متن بسیار کم دارد | A؛ شماتیک lobule/acinus و جایگاه septa |
-| واریانت‌ها: accessory lobes/fissures | 8 | `lungenanatomie` | — | curriculum-only | A/V؛ CT با fissure مشخص |
-| azygos lobe | 9 | `lungenanatomie` | — | curriculum-only | C/V؛ نشانهٔ azygos fissure/vein |
+| لوبول ثانویه/آسینوس/اینترستیتیوم | 5–7 | `lungenanatomie` | `/thorax/anatomie/lungenanatomie` — `app/thorax/anatomie/lungenanatomie/page.jsx` | route ساخته شد؛ PDF صفحات 5–9 دیداری بررسی و نکته‌به‌نکته map شد؛ DE/EN/FA؛ مستقل در دامنه PASS؛ `inProgress`، browser/clinical review pending | A؛ شماتیک code-native برای لوبول، crops منبع برای accessory fissure و azygos variant؛ جزئیات لوبار/سگمنتالِ PDF p7 (چاپی p6) عمداً بیرون دامنهٔ این درس است |
+| واریانت‌ها: accessory lobes/fissures | 8 | `lungenanatomie` | همان route | در همان درس bounded ادغام شد؛ independent review pending | A/V؛ برش‌های PDF p8 با منشأ و حدود مشخص |
+| azygos lobe | 9 | `lungenanatomie` | همان route | در همان درس bounded ادغام شد؛ independent review pending | C/V؛ PDF p9، نشانهٔ azygos fissure/vein؛ واریانت با بیماری اشتباه نشده |
 | pseudoarticulation دندهٔ اول | 10 | `rippenpathologien` | — | curriculum-only | C/V؛ X-ray pitfall با ندول ریه |
 | آتلکتازی/کاهش حجم و علائم ثانویه | 11 | `hrct-dichteanhebung`, `atelektase` | `/thorax/hrct/dichteanhebung` — `app/thorax/hrct/dichteanhebung/page.js` | route HRCT دارد، آتلکتازی curriculum-only بدون route مستقل؛ coverage نامشخص | C/V؛ volume-loss signs |
 | infarct ریه و Hampton hump | 12 | `akute-le` (محتوای همپوشان)، احتمالاً `hrct-dichteanhebung` برای pattern | — | curriculum-only در سطح بیماری؛ mapping دقیق الگوی infarct نامطمئن | C/V؛ wedge opacity و artery CTA |

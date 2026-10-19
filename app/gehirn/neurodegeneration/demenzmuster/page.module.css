@@ -1,0 +1,15 @@
+.page { padding-top: 98px; }
+.page p { line-height: 1.82; }
+.lead { max-width: 78ch; margin: 0 0 16px; font-size: 1.06rem; font-weight: 650; }
+.caseFigure { width: min(100%, 840px); margin: 22px auto; padding: 10px; border: 1px solid var(--line,#cbdde2); border-radius: 12px; background: #111820; box-sizing: border-box; }
+.caseFigure img { display: block; width: 100%; max-width: 100%; height: auto; max-height: 560px; object-fit: contain; }
+.caseFigure figcaption { max-width: 78ch; margin: 10px auto 0; color: #f4f7f8; font-size: 13px; line-height: 1.75; text-align: center; }
+.quiz { display: grid; gap: 12px; padding: 20px; border: 1px solid #19778a; border-radius: 10px; background: #e5f4f6; }
+.quiz h3 { margin: 0; }
+.options { display: grid; gap: 10px; }
+.options button { min-height: 48px; padding: 13px 16px; border: 1px solid var(--line,#cbdde2); border-radius: 9px; background: var(--paper,#fff); color: var(--ink,#193842); cursor: pointer; text-align: start; line-height: 1.7; }
+.options button[aria-pressed='true'] { border-color: #155d70; box-shadow: inset 0 0 0 1px #155d70; }
+.feedback { margin: 0; padding: 12px 14px; border-radius: 8px; background: var(--paper,#fff); }
+.page :is(button,a):focus-visible { outline: 3px solid #39aabd; outline-offset: 4px; }
+.page[dir='rtl'],.page[dir='rtl'] :is(h1,h2,h3,strong,button,a,li,figcaption) { font-family: 'Vazirmatn',sans-serif; letter-spacing: 0; }
+@media (max-width: 700px) { .page { padding: 86px 12px 104px; } .caseFigure { padding: 6px; } }
