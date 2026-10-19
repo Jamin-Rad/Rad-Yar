@@ -42,6 +42,23 @@ function Kidney({ variant, lang }) {
   </g>
 }
 
+function Wilms({ lang }) {
+  const labels = {
+    de: { kidney: 'Nierenparenchym', mass: 'solide Raumforderung', origin: 'Nierenursprung: Parenchym umfasst den Tumor' },
+    en: { kidney: 'renal parenchyma', mass: 'solid mass', origin: 'renal origin: parenchyma wraps around the mass' },
+    fa: { kidney: 'پارانشیم کلیه', mass: 'توده جامد', origin: 'منشأ کلیوی: پارانشیم بخشی از توده را در بر می‌گیرد' },
+  }[lang] || { kidney: 'renal parenchyma', mass: 'solid mass', origin: 'renal origin: parenchyma wraps around the mass' }
+  return <g>
+    <path d="M138 52c-41-14-76 18-76 62 0 48 38 76 76 55 18-10 26-26 23-45-3-21 3-57-23-72Z" fill="#e9b6a6" stroke={PALETTE.ink} strokeWidth="3"/>
+    <path d="M146 71c-27-10-48 12-48 42 0 33 24 51 48 36 13-8 17-18 15-32-2-15 4-37-15-46Z" fill="none" stroke={PALETTE.blue} strokeWidth="7" strokeLinecap="round"/>
+    <path d="M155 82c28-13 62-2 69 27 9 35-7 71-39 75-24 3-40-17-37-40 3-21-12-50 7-62Z" fill="#d97706" opacity=".78" stroke={PALETTE.ink} strokeWidth="3"/>
+    <path d="M239 78c15-12 34-9 43 4-17 7-26 20-28 37-15-7-21-23-15-41Z" fill={PALETTE.plumLight} stroke={PALETTE.plum} strokeWidth="3"/>
+    <text x="110" y="205" textAnchor="middle" fill={PALETTE.muted} fontSize="12">{labels.kidney}</text>
+    <text x="199" y="209" textAnchor="middle" fill={PALETTE.ink} fontSize="12">{labels.mass}</text>
+    <text x="200" y="232" textAnchor="middle" fill={PALETTE.muted} fontSize="11">{labels.origin}</text>
+  </g>
+}
+
 function Airway({ variant, lang }) {
   const labels = {
     de: { foreignBody: 'Obstruktion und Air trapping', xray: 'Projektion und Bildqualität' },
@@ -181,6 +198,7 @@ export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de',
     {variant === 'nf1' ? <NF1 lang={lang}/> :
       variant === 'pneumonia' || variant === 'tuberculosis' || variant === 'hrct' ? <Lungs variant={variant} lang={lang}/> :
       variant === 'cystic-pancreas' || variant === 'pdac' || variant === 'pnet' ? <Pancreas variant={variant} lang={lang}/> :
+      variant === 'wilms-tumour' ? <Wilms lang={lang}/> :
       variant === 'renal-mass' || variant === 'renal-anatomy' ? <Kidney variant={variant} lang={lang}/> :
       variant === 'foreign-body' || variant === 'chest-xray' ? <Airway variant={variant} lang={lang}/> :
       variant === 'bowel' ? <Bowel lang={lang}/> :
