@@ -1,0 +1,12 @@
+{
+  "lesson": "Sellar lesions: location before pattern",
+  "assets": [
+    {
+      "path": "/educational/sella-parasella/hero.svg",
+      "type": "code-native anatomy concept schematic",
+      "purpose": "Orient the learner to pituitary, stalk, optic chiasm and paired cavernous sinuses using numbered callouts with a localized legend before discussing lesion patterns.",
+      "not_a_patient_scan": true,
+      "review_status": "author-created; independent visual and scientific review pending"
+    }
+  ]
+}
