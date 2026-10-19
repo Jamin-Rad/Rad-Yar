@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" role="img" aria-labelledby="t d">
+  <title id="t">Schematic cartilage lesion</title>
+  <desc id="d">Abstract bone cross-section with lobulated cartilage lesion and ring-like mineralisation.</desc>
+  <defs><linearGradient id="bone" x2="0" y2="1"><stop stop-color="#f3e7d2"/><stop offset="1" stop-color="#d7b987"/></linearGradient></defs>
+  <path d="M196 34c-48 28-56 68-46 104 6 23 8 38 5 63-4 28 12 51 39 65h132c27-14 43-37 39-65-3-25-1-40 5-63 10-36 2-76-46-104z" fill="url(#bone)" stroke="#6d8390" stroke-width="5"/>
+  <path d="M211 89c18-17 32-13 46-3 14-13 33-11 43 3 23-5 39 10 36 29 17 17 11 36-7 45 4 19-10 33-29 30-13 17-31 16-43 2-17 12-35 7-41-9-20 1-30-15-22-32-13-16-8-36 9-43-5-9-2-17 8-22z" fill="#6faeb0" stroke="#315f70" stroke-width="4"/>
+  <path d="M231 106c-10 12-6 24 7 27 12 4 18-5 17-15-1-11-16-18-24-12zm50-2c-10 11-6 23 7 27 12 4 18-5 17-15-1-11-16-18-24-12zm-22 42c-10 11-6 23 7 27 12 4 18-5 17-15-1-11-16-18-24-12z" fill="none" stroke="#d6a15d" stroke-width="7" stroke-linecap="round"/>
+</svg>
