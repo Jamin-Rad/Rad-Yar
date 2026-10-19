@@ -1,0 +1,17 @@
+{
+  "hero.svg": {
+    "type": "code-native educational schematic",
+    "source": "RadYar project, created for this lesson",
+    "scope": "Shows only the two inflows and hepatic venous outflow-to-IVC relationship described on Abdomen.pdf p.4; not anatomy for diagnosis or segmental mapping."
+  },
+  "source-p2-arterial-overview.png": {
+    "type": "rendered source page",
+    "source": "Abdomen.pdf, PDF p.2, supplied by the user",
+    "scope": "Whole-page reproduction at 110 dpi; used as a reference plate for the abdominal arterial main axis."
+  },
+  "source-p3-portal-confluence.png": {
+    "type": "rendered source page",
+    "source": "Abdomen.pdf, PDF p.3, supplied by the user",
+    "scope": "Crop from the upper diagram of the 110 dpi whole-page render of Abdomen.pdf p.3. Pixel crop in the 910x1287 render: left=55, top=35, width=800, height=565. Includes the complete portal confluence/IVC diagram and its labels; excludes the unrelated lower arterial branch diagram."
+  }
+}

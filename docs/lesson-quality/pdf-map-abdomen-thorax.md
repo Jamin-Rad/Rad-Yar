@@ -17,7 +17,7 @@
 
 | موضوع در PDF | صفحات PDF | curriculum id دقیق | route و فایل درس موجود | وضعیت در مخزن | نیاز دیداری / یادداشت |
 |---|---:|---|---|---|---|
-| آناتومی کبد و عروق پورت/وریدی | 2–4 | `abdomen-anatomie`, `leber-anatomie`, `gefaesse-anatomie-abdomen` | — | curriculum-only؛ جزئیات متن صفحات 2–3 نامشخص | A؛ صفحات 2–3 کم‌متن/احتمالاً شکل‌محور، مشاهدهٔ کامل لازم |
+| آناتومی عروق کبد: ورودی پورتال/شریانی و خروجی وریدی | 2–4 | `leber-anatomie`, `gefaesse-anatomie-abdomen` | `/abdomen/leber/gefaesse` — `app/abdomen/leber/gefaesse/page.jsx` | bounded DE/EN/FA orientation lesson from pp.2–4; exact IDs linked as partial (`inProgress`); independent source/content/language/image review and crop delta PASS; SSR PASS. General liver/abdominal vascular anatomy remains open. | Source figures p.2 and upper p.3 diagram; code-native directional schematic from p.4; no segmental map or case imaging |
 | کیست سادهٔ کبد | 5 | `leberzyste` | `/abdomen/leber/zystische-laesionen` — `app/abdomen/leber/zystische-laesionen/page.js` | authored؛ پوشش منبعی 5–7؛ بدون رجیستری curriculum | V؛ US/CT/MRI، بدون استفاده از تصاویر کیس |
 | کیست هیداتید/اکینوکوک | 6–7 | شناسهٔ دقیق ندارد؛ نزدیک‌ترین شناسه `leberzyste` است | همان route بالا | authored؛ منبع تصویری 6–7 دیداری بررسی شد؛ طبقه‌بندی درمانی کامل نیست | C/V؛ دخترکیست، غشای جداشده و عوارض؛ از تصویر به‌تنهایی تشخیص قطعی نمی‌شود |
 | همانژیوم تیپیک کبد | 8–9 | `haemangiom` | `/abdomen/leber/haemangiom` — `app/abdomen/leber/haemangiom/page.js`, `LessonContent.jsx` | route دارد؛ پوشش PDF نامشخص | C/V؛ صفحهٔ 8 CT چندفازی با مثال و شماتیک iris-blende؛ تصویر دیده شد |

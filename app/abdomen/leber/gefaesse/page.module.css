@@ -1,0 +1,21 @@
+.body { padding: clamp(1rem, 3vw, 1.5rem); }
+.body > p { max-width: 78ch; line-height: 1.7; margin: .35rem 0 .9rem; }
+.tableWrap { overflow-x: auto; margin: .8rem 0 1rem; }
+.tableWrap table { width: 100%; border-collapse: collapse; line-height: 1.55; }
+.tableWrap th,.tableWrap td { padding: .75rem .85rem; border: 1px solid #cde1e5; text-align: start; vertical-align: top; }
+.tableWrap thead th { background: #e8f5f4; color: #185967; }
+.tableWrap tbody th { width: 30%; background: #f5f9fa; }
+.figure { max-width: 880px; margin: 1rem auto .2rem; }
+.figure img { display: block; width: 100%; height: auto; border-radius: .8rem; }
+.figure figcaption { color: #536977; font-size: .92rem; line-height: 1.6; margin-top: .55rem; }
+.quiz { display: grid; gap: .7rem; }
+.quiz h3 { margin: 0; line-height: 1.5; }
+.quiz p { line-height: 1.6; }
+.quiz button { text-align: start; font: inherit; line-height: 1.55; padding: .85rem 1rem; border: 1px solid #c4dadd; border-radius: .8rem; background: white; color: inherit; cursor: pointer; }
+.quiz button:hover,.quiz button:focus-visible { border-color: #288695; outline: 2px solid #28869555; }
+.quiz button.selected { background: #e8f5f4; border-color: #26808d; }
+.correct,.feedback { padding: .85rem 1rem; border-radius: .8rem; line-height: 1.6; margin: 0; }
+.correct { background: #e7f7ec; color: #205b36; }
+.feedback { background: #fff4e6; color: #70420f; }
+.summary { display: grid; gap: .65rem; padding-inline-start: 1.4rem; line-height: 1.65; }
+@media(max-width:600px) { .tableWrap tbody th { width: auto; } .body { padding: .85rem; } }

@@ -57,6 +57,7 @@
 | AJ (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.114–116: Fibröse Dysplasie، ID `fibroese-dysplasie`, Route `/msk/tumoren/fibroese-dysplasie` | بازبینی مستقل source/content/image/language و delta PASS؛ caveat ریسک نادر به منبع وصل شد؛ SSR سه‌زبانه PASS | مرورگر و تأیید بالینی باز |
 | AK (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf p.119: intraossäres Ganglion، ID `intraossaeres-ganglion`, Route `/msk/tumoren/intraossaeres-ganglion` | بازبینی مستقل و delta دیداری PASS برای هدف توصیفی؛ واژگان MRI فارسی اصلاح و شماتیک آموزشی سیگنال افزوده شد؛ آزمون SSR و route assertion PASS | صفحهٔ منبع تصویر کیس ندارد و تصویرخوانی واقعی آموزش داده نمی‌شود؛ مرورگر و تأیید بالینی باز |
 | AL (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf p.80: Osteoblastom، ID `osteoblastom`, Route `/msk/tumoren/osteoblastom` | بازبینی مستقل منبع/محتوا/تصویر/زبان و delta سؤال PASS؛ گزینه‌های خودآزمایی باورپذیرتر شدند؛ route و SSR سه‌زبانه پاس | مرورگر و تأیید بالینی باز |
+| AM (آمادهٔ پوش) | Abdomen | [نقشه](pdf-map-abdomen-thorax.md) | Abdomen.pdf pp.2–4: عروق کبد، IDs `leber-anatomie` و `gefaesse-anatomie-abdomen`, Route `/abdomen/leber/gefaesse` | درس محدودِ ورودی پورتال/شریانی و خروج وریدی؛ بازبینی مستقل و crop delta PASS؛ provenance و SSR سه‌زبانه پاس | آناتومی کامل کبد/عروق، مرورگر و تأیید علمی باز |
 
 ## معیار اتمام batch
 
