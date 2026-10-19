@@ -1240,7 +1240,7 @@ export const CURRICULUM = [
         title: { de: '8. Knochennekrosen', en: '8. Bone Necrosis', fa: '۸. نکروزهای استخوانی' },
         icon: '💀',
         themen: [
-          { id: 'avn-huefte', title: { de: 'Avaskuläre Nekrose (AVN) & Hüftkopfnekrose', en: 'Avascular Necrosis (AVN) & Femoral Head Necrosis', fa: 'نکروز آواسکولار (AVN) و نکروز سر فمور' }, tags: ['MRT'], diff: 2 },
+          { id: 'avn-huefte', title: { de: 'Avaskuläre Nekrose (AVN) & Hüftkopfnekrose', en: 'Avascular Necrosis (AVN) & Femoral Head Necrosis', fa: 'نکروز آواسکولار (AVN) و نکروز سر فمور' }, tags: ['MRT'], diff: 2, link: '/msk/knochennekrosen/avn-huefte', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'knocheninfarkt', title: { de: 'Knocheninfarkt', en: 'Bone Infarct', fa: 'انفارکت استخوان' }, tags: ['MRT'], diff: 2, link: '/msk/knochennekrosen/knocheninfarkt', mcqLink: '/ueben/quiz?fach=msk&n=3&themen=knocheninfarkt', flashcardLink: '/flashcards/knocheninfarkt', inProgress: true, updatedAt: '2026-10-19' },
         ],
       },
@@ -1481,7 +1481,7 @@ export const CURRICULUM = [
         title: { de: '5. Tumoren der Wirbelsäule & des Spinalkanals', en: '5. Tumours of the Spine & Spinal Canal', fa: '۵. تومورهای ستون فقرات و کانال نخاعی' },
         icon: '🎗️',
         themen: [
-          { id: 'spinale-tumoren-grundlagen', title: { de: 'Grundlagen & anatomische Einteilung', en: 'Fundamentals & Anatomical Classification', fa: 'مبانی و طبقه‌بندی آناتومیک' }, tags: ['CT','MRT'], diff: 2 },
+          { id: 'spinale-tumoren-grundlagen', title: { de: 'Grundlagen & anatomische Einteilung', en: 'Fundamentals & Anatomical Classification', fa: 'مبانی و طبقه‌بندی آناتومیک' }, tags: ['CT','MRT'], diff: 2, link: '/wirbelsaeule/tumoren/grundlagen', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'wirbelhaemangiom', title: { de: 'Wirbelhämangiom', en: 'Vertebral Haemangioma', fa: 'همانژیوم مهره‌ای' }, group: ['Extradurale Tumoren'], tags: ['CT','MRT'], diff: 2 },
           { id: 'osteoidosteom-osteoblastom-ws', title: { de: 'Osteoidosteom / Osteoblastom', en: 'Osteoid Osteoma / Osteoblastoma', fa: 'استئوئید استئوما / استئوبلاستوما' }, group: ['Extradurale Tumoren'], tags: ['CT','MRT'], diff: 2 },
           { id: 'osteochondrom-ws', title: { de: 'Osteochondrom', en: 'Osteochondroma', fa: 'استئوکندروما' }, group: ['Extradurale Tumoren'], tags: ['CT','MRT'], diff: 2 },
@@ -1736,7 +1736,7 @@ export const CURRICULUM = [
           { id: 'mrt-gradient-echo', title: { de: 'Gradient-Echo (GRE)', en: 'Gradient Echo (GRE)', fa: 'گرادیان اکو (GRE)' }, group: ['MRT-Sequenzen'], tags: ['MRT'], diff: 2 },
           { id: 'mrt-inversion-recovery', title: { de: 'Inversion-Recovery (IR)', en: 'Inversion Recovery (IR)', fa: 'اینورژن ریکاوری (IR)' }, group: ['MRT-Sequenzen'], tags: ['MRT'], diff: 2 },
           { id: 'mrt-fettsuppression', title: { de: 'Fettsuppression', en: 'Fat Suppression', fa: 'سرکوب چربی' }, group: ['MRT-Sequenzen'], tags: ['MRT'], diff: 2 },
-          { id: 'mrt-bildqualitaet-artefakte-snr', title: { de: 'Bildqualität, Artefakte & SNR', en: 'Image Quality, Artefacts & SNR', fa: 'کیفیت تصویر، آرتیفکت‌ها و SNR' }, tags: ['MRT'], diff: 2, link: '/technik/grundlagen#mrt', inProgress: true },
+          { id: 'mrt-bildqualitaet-artefakte-snr', title: { de: 'Bildqualität, Artefakte & SNR', en: 'Image Quality, Artefacts & SNR', fa: 'کیفیت تصویر، آرتیفکت‌ها و SNR' }, tags: ['MRT'], diff: 2, link: '/technik/grundlagen#mrt-sicherheit', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'mrt-dwi-adc', title: { de: 'DWI / ADC', en: 'DWI / ADC', fa: 'DWI / ADC' }, group: ['Spezialtechniken'], tags: ['MRT'], diff: 2 },
           { id: 'mrt-gefaessdarstellung', title: { de: 'Gefäßdarstellung', en: 'MR Angiography', fa: 'تصویربرداری عروقی' }, group: ['Spezialtechniken'], tags: ['MRT'], diff: 2 },
           { id: 'mrt-perfusion', title: { de: 'Perfusionsbildgebung', en: 'Perfusion Imaging', fa: 'تصویربرداری پرفیوژن' }, group: ['Spezialtechniken'], tags: ['MRT'], diff: 3 },

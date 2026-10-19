@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" role="img" aria-labelledby="title desc">
+  <title id="title">Axial spinal canal compartment schematic</title>
+  <desc id="desc">Non-diagnostic axial concept diagram. The thick gray contour marks the bony canal, the blue contour marks the dural sac, and the purple oval marks the cord. Colored dots show intramedullary, intradural-extramedullary, and extradural locations.</desc>
+  <rect width="720" height="480" rx="28" fill="#f5fbfc"/>
+  <path d="M250 55h220a20 20 0 0 1 20 20v36a20 20 0 0 1-20 20H250a20 20 0 0 1-20-20V75a20 20 0 0 1 20-20z" fill="#d8e5ec" stroke="#557184" stroke-width="8"/>
+  <path d="M130 220c12-57 116-91 230-91s218 34 230 91l-8 125c-44 50-140 72-222 72s-178-22-222-72z" fill="#e4e9ec" stroke="#557184" stroke-width="12"/>
+  <ellipse cx="360" cy="280" rx="150" ry="119" fill="#e8f7fa" stroke="#2586a0" stroke-width="8"/>
+  <ellipse cx="360" cy="280" rx="67" ry="57" fill="#f4e7ff" stroke="#8755ae" stroke-width="8"/>
+  <circle cx="360" cy="280" r="20" fill="#b43d67" stroke="#fff" stroke-width="4"/>
+  <circle cx="270" cy="280" r="18" fill="#e58b28" stroke="#fff" stroke-width="4"/>
+  <circle cx="545" cy="315" r="16" fill="#3978b6" stroke="#fff" stroke-width="4"/>
+</svg>

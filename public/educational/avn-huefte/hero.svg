@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+  <defs>
+    <linearGradient id="bone" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f8ead6"/><stop offset="1" stop-color="#d8b995"/></linearGradient>
+    <linearGradient id="focus" x1="0" x2="1"><stop stop-color="#d18b69"/><stop offset="1" stop-color="#a95045"/></linearGradient>
+  </defs>
+  <rect width="720" height="360" rx="28" fill="#eef4f5"/>
+  <circle cx="220" cy="128" r="75" fill="url(#bone)" stroke="#9c7c5e" stroke-width="5"/>
+  <path d="M270 166c18 7 34 19 49 38l42 48-44 43-68-69" fill="url(#bone)" stroke="#9c7c5e" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M163 178c20 21 48 32 78 29 26-3 44-18 58-40-15-36-42-62-79-64-34-2-58 22-57 75Z" fill="url(#focus)" fill-opacity=".78" stroke="#93483f" stroke-width="4"/>
+  <path d="M150 81c24-24 53-37 87-38" fill="none" stroke="#587d91" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="234" cy="43" r="8" fill="#587d91"/>
+  <text x="425" y="105" fill="#274454" font-family="sans-serif" font-size="22" font-weight="700">AVN</text>
+  <path d="M390 112H300" fill="none" stroke="#587d91" stroke-width="3" stroke-dasharray="6 7"/>
+  <rect x="425" y="178" width="214" height="112" rx="16" fill="#fff" stroke="#cedde2" stroke-width="3"/>
+  <circle cx="463" cy="218" r="15" fill="#d18b69"/><circle cx="520" cy="218" r="15" fill="#c58a63"/><circle cx="577" cy="218" r="15" fill="#a95045"/>
+  <path d="M478 218h27m30 0h27" stroke="#587d91" stroke-width="3"/>
+</svg>
