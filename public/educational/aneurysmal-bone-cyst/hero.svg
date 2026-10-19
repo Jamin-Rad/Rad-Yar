@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Aneurysmal bone cyst schematic</title>
+  <desc id="desc">Non-diagnostic schematic of an expansile bone lesion with thin cortex, fibrous septa and layered fluid chambers.</desc>
+  <defs>
+    <linearGradient id="bone" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f3d9b5"/><stop offset="1" stop-color="#d1a878"/></linearGradient>
+    <linearGradient id="fluid" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#b5d8df"/><stop offset=".49" stop-color="#b5d8df"/><stop offset=".5" stop-color="#d88b70"/><stop offset="1" stop-color="#d88b70"/></linearGradient>
+    <clipPath id="cavity"><path d="M184 89C235 48 414 55 457 111c37 48 44 201-11 239-53 37-221 29-266-18-43-45-43-196 4-243Z"/></clipPath>
+  </defs>
+  <ellipse cx="321" cy="367" rx="208" ry="20" fill="#182e39" opacity=".12"/>
+  <path d="M132 100c-48 50-44 211 5 260 48 48 275 53 324 0 48-52 52-211 4-260C417 52 179 51 132 100Z" fill="url(#bone)" stroke="#8b6949" stroke-width="7"/>
+  <path d="M184 89C235 48 414 55 457 111c37 48 44 201-11 239-53 37-221 29-266-18-43-45-43-196 4-243Z" fill="#f7eee1" stroke="#f8f2e8" stroke-width="11"/>
+  <g clip-path="url(#cavity)">
+    <path d="M148 84h348v190c-62 15-120-9-177 4-59 14-115-10-171 3Z" fill="url(#fluid)"/>
+    <path d="M159 288c48-16 92 7 141-5 56-14 116 13 197-4v93H159Z" fill="#c4e2e5"/>
+    <path d="M271 65c-15 72 4 117-7 169-6 27-10 73-2 124M358 63c12 52-13 89 3 143 13 45 4 100-4 151" fill="none" stroke="#fffaf4" stroke-width="8" opacity=".94"/>
+    <path d="M146 279c53-14 109 9 164-4 61-14 123 12 199-6" fill="none" stroke="#fffaf4" stroke-width="7"/>
+  </g>
+  <path d="M184 89C235 48 414 55 457 111c37 48 44 201-11 239-53 37-221 29-266-18-43-45-43-196 4-243Z" fill="none" stroke="#966f4a" stroke-width="3" opacity=".55"/>
+  <path d="M474 151h82m-28-28 28 28-28 28" fill="none" stroke="#426e7b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="320" y="407" text-anchor="middle" fill="#496b74" font-family="Arial,sans-serif" font-size="15" font-weight="700">SCHEMATIC · NOT A DIAGNOSTIC IMAGE</text>
+</svg>

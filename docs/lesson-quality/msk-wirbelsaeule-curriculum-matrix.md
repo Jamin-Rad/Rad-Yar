@@ -58,7 +58,7 @@ Die PDF-Textlayer-Titel und Abschnittswechsel wurden seitenweise geprüft; Bildi
 | 105–106 | Osteom — bounded DE/EN/FA route `/msk/tumoren/osteom`; PDF pp.105–106; APC/FAP wording independently checked against ACG/GeneReviews and “precancer” claim removed; independent review and self-check delta PASS; SSR PASS; browser/clinical review open |
 | 107–108 | Nicht-ossifizierendes Fibrom / fibröser Kortikalisdefekt — bounded DE/EN/FA route `/msk/tumoren/nicht-ossifizierendes-fibrom`; source crop and >50% warning-context recorded; independent source/content/visual/language review and delta PASS; SSR PASS; browser/clinical review pending |
 | 109–111 | Einfache Knochenzyste |
-| 112–113 | Aneurysmatische Knochenzyste |
+| 112–113 | Aneurysmatische Knochenzyste — bounded DE/EN/FA route `/msk/tumoren/aneurysmal-bone-cyst`, exact curriculum ID linked; primary-ABC USP6 framing and telangiectatic osteosarcoma mimic updated from cited evidence; independent content/image/language review and delta PASS; SSR/preflight PASS; browser/clinical review pending |
 | 114–116 | Fibröse Dysplasie |
 | 117–118 | Intraossäres Lipom |
 | 119 | Intraossäres Ganglion beginnt; Folgeseiten liegen außerhalb dieses geprüften Seitenblocks |
