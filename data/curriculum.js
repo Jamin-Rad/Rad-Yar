@@ -1680,7 +1680,7 @@ export const CURRICULUM = [
           { id: 'biologische-strahlenwirkung', title: { de: 'Biologische Strahlenwirkung', en: 'Biological Effects of Radiation', fa: 'اثرات زیستی پرتو' }, tags: ['Rö','CT'], diff: 2, link: '/technik/grundlagen#wirkung', inProgress: true },
           { id: 'dosisgroessen-dosimetrie', title: { de: 'Dosisgrößen & Dosimetrie', en: 'Dose Quantities & Dosimetry', fa: 'کمیت‌های دوز و دوزیمتری' }, tags: ['Rö','CT'], diff: 2, link: '/technik/dosimetrie', inProgress: true },
           { id: 'stochastische-deterministische-schaeden', title: { de: 'Stochastische & deterministische Schäden', en: 'Stochastic & Deterministic Effects', fa: 'آسیب‌های تصادفی و قطعی' }, tags: ['Rö','CT'], diff: 2, link: '/technik/grundlagen#wirkung', inProgress: true },
-          { id: 'strahlenbelastung-medizin', title: { de: 'Strahlenbelastung in der Medizin', en: 'Medical Radiation Exposure', fa: 'پرتوگیری در پزشکی' }, tags: ['Rö','CT'], diff: 1 },
+          { id: 'strahlenbelastung-medizin', title: { de: 'Strahlenbelastung in der Medizin', en: 'Medical Radiation Exposure', fa: 'پرتوگیری در پزشکی' }, tags: ['Rö','CT'], diff: 1, link: '/technik/strahlenbelastung', ready: true, inProgress: true, updatedAt: '2026-10-20' },
         ],
       },
       {

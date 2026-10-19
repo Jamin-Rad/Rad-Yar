@@ -1,0 +1,18 @@
+.page { --lesson-accent: #60b6c5; }
+.body { line-height: 1.75; }
+.body p { max-width: 78ch; }
+.map { display: grid; gap: .8rem; margin: 1.5rem 0; padding: 1.1rem; border: 1px solid var(--lesson-accent); border-radius: 1rem; background: color-mix(in srgb, var(--lesson-accent) 8%, var(--bg-card)); }
+.source { display: flex; align-items: flex-start; gap: .8rem; max-width: 42rem; width: 100%; margin-inline: auto; padding: .8rem; border: 1px solid var(--border); border-radius: .8rem; background: var(--bg-card); }
+.marker { display: grid; flex: 0 0 1.8rem; place-items: center; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--lesson-accent-strong); color: white; font-weight: 700; }
+.source strong { display: block; }
+.source p { margin: .2rem 0 0; color: var(--text-muted); }
+.map figcaption { margin-top: .3rem; color: var(--text-muted); text-align: center; }
+.check { margin-top: 1.5rem; padding: 1.2rem; border: 1px solid var(--border); border-radius: 1rem; background: var(--surface-soft); }
+.check h3 { margin-top: 0; }
+.check fieldset { display: grid; gap: .65rem; border: 0; padding: 0; }
+.check legend { margin-bottom: .5rem; font-weight: 700; }
+.check label { display: flex; align-items: flex-start; gap: .7rem; padding: .8rem; border: 1px solid var(--border); border-radius: .7rem; background: var(--bg-card); cursor: pointer; }
+.check input { flex: 0 0 auto; margin-top: .4rem; accent-color: var(--lesson-accent-strong); }
+.feedback { padding: .8rem; border-inline-start: 3px solid var(--lesson-accent); background: var(--bg-card); }
+.rules { display: grid; gap: .8rem; padding-inline-start: 1.4rem; }
+@media (max-width: 560px) { .map { padding: .8rem; } }
