@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" width="1400" height="700">
+  <defs>
+    <radialGradient id="bg"><stop stop-color="#31565b"/><stop offset="1" stop-color="#142a33"/></radialGradient>
+    <radialGradient id="fat"><stop stop-color="#c6ae6e" stop-opacity=".72"/><stop offset="1" stop-color="#b49b65" stop-opacity=".2"/></radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+    <path id="vessels" d="M693 145C686 248 676 351 700 534M690 240C633 302 591 352 530 422M686 302C759 318 816 360 886 424M690 365C629 413 598 465 577 507M694 427C752 446 780 476 815 526"/>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h1400v700H0z"/>
+  <g fill="none" stroke="#6b9090" stroke-width="30" opacity=".13">
+    <path d="M250 210c-130 10-115 140 0 145s98 130-3 143M1118 201c132 0 110 140 0 144s-98 123 0 133"/>
+  </g>
+  <path d="M693 150C567 190 456 290 409 425s84 152 291 155 329-19 300-134S858 218 693 150Z" fill="url(#fat)"/>
+  <path d="M693 150C567 190 456 290 409 425s84 152 291 155 329-19 300-134S858 218 693 150Z" fill="none" stroke="#e0ce98" stroke-width="3" opacity=".65"/>
+  <ellipse cx="704" cy="379" rx="190" ry="117" fill="#e0c77b" opacity=".13" filter="url(#soft)"/>
+  <use href="#vessels" fill="none" stroke="#233d43" stroke-width="41" stroke-linecap="round" stroke-linejoin="round"/>
+  <use href="#vessels" fill="none" stroke="#90bdc3" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M709 151c-5 125-10 240 10 376" fill="none" stroke="#cb8e81" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#d2bf8a" opacity=".4"><circle cx="594" cy="276" r="9"/><circle cx="784" cy="285" r="8"/><circle cx="477" cy="444" r="8"/><circle cx="923" cy="470" r="10"/><circle cx="666" cy="502" r="7"/></g>
+</svg>

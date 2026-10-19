@@ -43,7 +43,7 @@ for (const [pattern, label] of [
   else assert.match(page, pattern, label)
 }
 
-assert.match(ledger, /PDF page 24 pregnancy exposure.*Excluded from this bounded lesson/s)
+assert.match(ledger, /PDF page 24 pregnancy exposure.*Excluded from this bounded p\.23 lesson; addressed in `\/technik\/strahlenschutz\/praenatale-exposition`/s)
 assert.match(ledger, /Two-year retention.*Corrected to §117/s)
 assert.match(ledger, /No universal physical presence is implied/s)
 assert.match(ledger, /required number of SSBs are appointed and have required expertise under StrlSchG §19\(3\) nos\. 3–4/s)

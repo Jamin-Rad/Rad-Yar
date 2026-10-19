@@ -1,51 +1,72 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { useState } from 'react'
 import LessonHero from '@/components/LessonHero'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { GEHIRN_MENINGEOM_LESSON as lesson } from '@/data/gehirnMeningeomLesson'
-import styles from '@/app/technik/kontrastmittel/page.module.css'
+import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
+import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
+import { MENING_CHAPTERS as CHAPTERS, MENING_COPY as COPY, MENING_CHECK as CHECK, MENING_PATH as PATH } from '@/data/gehirnMeningeomLesson'
+import reference from '@/app/andarun/test/page.module.css'
+import styles from './page.module.css'
 
-const pick = (x, lang) => x?.[lang] || x?.de || ''
-
-function ExtraaxialDiagram({ lang }) {
-  const labels = lang === 'fa'
-    ? { dura:'دورا', mass:'توده با پایهٔ پهن', brain:'قشر و مادهٔ سفید', cleft:'CSF cleft', tail:'دم دورال' }
-    : lang === 'en'
-      ? { dura:'Dura', mass:'Broad-based mass', brain:'Cortex and white matter', cleft:'CSF cleft', tail:'Dural tail' }
-      : { dura:'Dura', mass:'Raumforderung mit breiter Basis', brain:'Kortex und weiße Substanz', cleft:'CSF-Cleft', tail:'Dural Tail' }
-  return <figure role="img" aria-label={Object.values(labels).join(', ')} style={{margin:0,padding:16,border:'1px solid var(--border)',borderRadius:18,background:'var(--bg-card)',display:'grid',gap:10}}>
-    <div style={{position:'relative',height:160,marginTop:8}}>
-      <div style={{position:'absolute',left:0,right:0,top:60,height:8,background:'#427f90',borderRadius:8}} title={labels.dura}/>
-      <div style={{position:'absolute',left:'40%',top:8,width:'24%',height:58,borderRadius:'45% 45% 12% 12%',background:'#b8a4c8',border:'2px solid #755d88',textAlign:'center',paddingTop:14,fontSize:12,fontWeight:700,color:'#382b42'}}>{labels.mass}</div>
-      <div style={{position:'absolute',left:'39%',top:57,width:'26%',height:9,borderTop:'2px dashed #d28a45',borderRadius:'50%'}} title={labels.cleft}/>
-      <div style={{position:'absolute',left:0,right:0,top:69,height:82,borderRadius:'42% 42% 10px 10px',background:'#dcebef',border:'2px solid #8bb5c0',textAlign:'center',paddingTop:42,fontSize:12,fontWeight:700,color:'#315b66'}}>{labels.brain}</div>
-      <div style={{position:'absolute',left:'39%',top:47,width:'26%',height:16,borderTop:'4px solid #8b679d',borderRadius:'50%'}} title={labels.tail}/>
-    </div>
-    <figcaption style={{display:'flex',justifyContent:'center',flexWrap:'wrap',gap:12,fontSize:12,color:'var(--text-muted)'}}><span>━━ {labels.dura}</span><span>┄┄ {labels.cleft}</span><span>━ {labels.tail}</span><span>{lang==='fa'?'شماتیک است، نه تصویر تشخیصی.':lang==='en'?'Schematic, not a diagnostic image.':'Schemazeichnung, kein diagnostisches Bild.'}</span></figcaption>
-  </figure>
+const IDS = CHAPTERS.map(chapter => chapter.id)
+const pick = (value, lang) => typeof value === 'string' ? value : value[lang]
+function Icon({ name }) {
+  const paths = { brain: 'M12 5a4 4 0 0 0-7 3 4 4 0 0 0-1 7 4 4 0 0 0 7 4V5m2 0a4 4 0 0 1 7 3 4 4 0 0 1 1 7 4 4 0 0 1-7 4V5', bone: 'M7 5a3 3 0 1 0-4 4l10 10a3 3 0 1 0 4-4L7 5Z', scan: 'M3 8V3h5M16 3h5v5M21 16v5h-5M8 21H3v-5M7 12h10M12 7v10', compare: 'M3 7h18m-4-4 4 4-4 4M21 17H3m4-4-4 4 4 4', check: 'm4 12 5 5L20 6', arrow: 'M4 12h16m-6-6 6 6-6 6' }
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[name] || paths.bone} /></svg>
 }
-
-export default function MeningeomaLessonPage() {
+function Table({ headers, rows, lang }) {
+  return <div className={styles.tableScroll} role="region" tabIndex={0} aria-label={pick(headers[1], lang)}><table><thead><tr>{headers.map((header, i) => <th scope="col" key={i}>{pick(header, lang)}</th>)}</tr></thead><tbody>{rows.map((row, i) => <tr key={i}>{row.map((cell, j) => j === 0 ? <th scope="row" key={j}>{pick(cell, lang)}</th> : <td key={j}>{pick(cell, lang)}</td>)}</tr>)}</tbody></table></div>
+}
+function SelfCheck({ lang }) {
+  const [answer, setAnswer] = useState(null)
+  return <section className={styles.quiz} aria-labelledby="meningeom-check"><h3 id="meningeom-check">{pick(CHAPTERS[2].title, lang)}</h3><p>{pick(CHECK.question, lang)}</p><div className={styles.answers}>{CHECK.options.map((option, index) => <button type="button" key={index} aria-pressed={answer === index} onClick={() => setAnswer(index)}>{pick(option, lang)}</button>)}</div><div aria-live="polite" aria-atomic="true">{answer !== null && <p className={styles.feedback}>{pick(CHECK.feedback[answer], lang)}</p>}</div></section>
+}
+function Chapter({ id, lang }) {
+  const c = value => pick(value, lang)
+  if (id === 'location') return <><p className={reference.lead}>{c(COPY.basics)}</p><p>{c(COPY.scope)}</p><p>{c(COPY.location)}</p><Table headers={COPY.headers} rows={COPY.locationRows} lang={lang} /><figure className={styles.diagram}><img src="/educational/meningeom/hero.svg" alt={c(COPY.heroAlt)} width="840" height="520" /><figcaption>{c(COPY.diagramCaption)}</figcaption></figure><details className={styles.sources}><summary>{c(COPY.extraTitle)}</summary><p>{c(COPY.extra)}</p></details></>
+  if (id === 'pattern') return <><p className={reference.lead}>{c(COPY.patternIntro)}</p><Table headers={COPY.headers} rows={COPY.patternRows} lang={lang} /><details className={styles.sources}><summary>{c(COPY.advancedTitle)}</summary><Table headers={COPY.headers} rows={COPY.advancedRows} lang={lang} /></details></>
+  if (id === 'limits') return <><p className={reference.lead}>{c(COPY.limitsIntro)}</p><p>{c(COPY.diffusion)}</p><p>{c(COPY.mediaLimit)}</p><SelfCheck lang={lang} /></>
+  return <ul className={styles.summary}>{COPY.summary.map((rule, i) => <li key={i}><Icon name="check" /><span>{c(rule)}</span></li>)}</ul>
+}
+export default function MeningiomaPage() {
   const { lang } = useLanguage()
-  const rtl = lang === 'fa'
-  const [open,setOpen]=useState(0), [read,setRead]=useState([]), [answer,setAnswer]=useState(null)
-  const t=lang==='fa'?{badge:'مغز · پیش‌نویس آموزشی PDF',crumb:'مغز',contents:'مسیر یادگیری',progress:'پیشرفت با علامت‌گذاری بخش خوانده‌شده ثبت می‌شود.',read:'این بخش را خواندم',self:'خودآزمایی: دم دورال',refs:'منبع و محدودیت‌ها',home:'درس‌های مغز',status:'پیش‌نویس آموزشی؛ برای تصمیم بالینی استفاده نشود.'}:lang==='en'?{badge:'Brain · PDF teaching draft',crumb:'Brain',contents:'Learning path',progress:'Progress is recorded when a section is marked as read.',read:'Mark section as read',self:'Self-check: dural tail',refs:'Sources and limits',home:'Brain lessons',status:'Teaching draft; not for clinical decisions.'}:{badge:'Gehirn · PDF-Lernentwurf',crumb:'Gehirn',contents:'Lernpfad',progress:'Fortschritt wird erst nach Markieren des Kapitels erfasst.',read:'Kapitel als gelesen markieren',self:'Selbstcheck: Dural Tail',refs:'Quellen und Grenzen',home:'Gehirn-Lektionen',status:'Lernentwurf; nicht für klinische Entscheidungen.'}
-  const url=path=>lang==='de'?path:`${path}?lang=${lang}`
-  const chapter=lesson.chapters[open], pct=Math.round(read.length/lesson.chapters.length*100)
-  const markRead=()=>setRead(prev=>prev.includes(open)?prev.filter(x=>x!==open):[...prev,open])
-  return <main className={styles.page} dir={rtl?'rtl':'ltr'} lang={lang}>
-    <header className={styles.header}><nav className={styles.breadcrumb} aria-label={rtl?'مسیر صفحه':lang==='en'?'Breadcrumb':'Seitennavigation'}><Link href={url('/')}>RadYar</Link><span>›</span><Link href={url('/lernen/gehirn')}>{t.crumb}</Link><span>›</span><span>{pick(lesson.title,lang)}</span></nav>
-      <div className={styles.hero}><div className={styles.heroText}><span className={styles.sourceBadge}>{t.badge}</span><LessonHero title={pick(lesson.title,lang)} lang={lang} visual={<ExtraaxialDiagram lang={lang}/>} /></div><aside className={styles.heroStats}><div className={styles.heroStat}><strong>45–46</strong><span>{lang==='fa'?'صفحه‌های PDF':lang==='en'?'PDF pages':'PDF-Seiten'}</span><small>{lang==='fa'?'CT، MRI و نشانه‌های محل':'CT, MRI and location signs'}</small></div><p role="status" style={{padding:14}}>{t.status}</p></aside></div>
+  const c = value => pick(value, lang)
+  const status = useLessonReadStatus('meningeom')
+  const [read, setRead] = usePersistedSectionProgress('meningeom', IDS, status.isRead)
+  const [open, setOpen] = useState(IDS[0])
+  const [mobile, setMobile] = useState(false)
+  const withLang = href => lang === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${lang}`
+  useEffect(() => {
+    const sync = () => setOpen(IDS.includes(location.hash.slice(1)) ? location.hash.slice(1) : IDS[0])
+    sync()
+    window.addEventListener('hashchange', sync)
+    window.addEventListener('popstate', sync)
+    return () => { window.removeEventListener('hashchange', sync); window.removeEventListener('popstate', sync) }
+  }, [])
+  const select = (id, collapse = false) => {
+    const next = collapse && open === id ? null : id
+    setOpen(next); setMobile(false)
+    const url = new URL(location.href); url.hash = next || ''; history.replaceState(null, '', url)
+    if (next) requestAnimationFrame(() => document.getElementById(next)?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' }))
+  }
+  const mark = id => {
+    if (status.isRead) status.toggleRead()
+    setRead(previous => { const next = new Set(previous); if (next.has(id)) next.delete(id); else next.add(id); return next })
+  }
+  const markAll = () => { if (status.toggleRead()) setRead(status.isRead ? new Set() : new Set(IDS)) }
+  const active = IDS.indexOf(open)
+  const nav = () => CHAPTERS.map(chapter => <button key={chapter.id} type="button" aria-current={open === chapter.id ? 'location' : undefined} className={open === chapter.id ? reference.activeSideItem : ''} onClick={() => select(chapter.id)}><span className={reference.sideIcon}><Icon name={chapter.icon} /></span><strong>{c(chapter.title)}{read.has(chapter.id) ? <span aria-label={c(COPY.marked)}> ✓</span> : null}</strong></button>)
+  return <main className={`${reference.page} ${styles.page}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang} data-lesson-progress-managed="true" data-disable-lesson-explorer="true">
+    <header className={reference.header}>
+      <nav className={reference.breadcrumb} aria-label={c({ de: 'Seitennavigation', en: 'Breadcrumb', fa: 'مسیر صفحه' })}><Link href={withLang('/')}>RadYar</Link><span>/</span><Link href={withLang('/lernen/gehirn')}>{c({ de: 'Gehirn', en: 'Brain', fa: 'مغز' })}</Link><span>/</span><strong>{c(COPY.title)}</strong></nav>
+      <LessonHero title={c(COPY.title)} imageSrc="/educational/meningeom/hero.svg" imageAlt={c(COPY.heroAlt)} lang={lang} />
+      <div className={reference.actions}><button type="button" className={reference.takeHomeJump} onClick={() => select('takehome')}><Icon name="check" />{c(CHAPTERS[3].title)}</button><Link className={reference.primaryAction} href={withLang(`/ueben/quiz?fach=gehirn&n=2&themen=meningeom&from=${encodeURIComponent(withLang(PATH))}`)}>{c(COPY.quiz)}<Icon name="arrow" /></Link><Link className={reference.secondaryAction} href={withLang(`/flashcards/meningeom?from=${encodeURIComponent(withLang(PATH))}`)}>{c(COPY.cards)}</Link></div>
+      <div className={reference.progressBar}><div className={reference.progressTrack} role="progressbar" aria-label={c(COPY.path)} aria-valuemin={0} aria-valuemax={IDS.length} aria-valuenow={read.size}><i style={{ width: `${100 * read.size / IDS.length}%` }} /></div><span>{read.size}/{IDS.length} {c(COPY.read)}</span><div className={reference.progressActions}><button type="button" className={reference.lessonCompleteButton} aria-pressed={status.isRead} onClick={markAll}><Icon name="check" />{c(status.isRead ? COPY.allRead : COPY.all)}</button><button type="button" className={reference.continueButton} disabled={active === IDS.length - 1} onClick={() => select(IDS[active + 1])}>{c(COPY.next)}<Icon name="arrow" /></button></div></div>
+      {status.authError && <p role="status">{c(COPY.auth)} <Link href={withLang('/sign-in')}>{c(COPY.login)}</Link></p>}
     </header>
-    <div className={styles.layout}><aside className={styles.sidebar}><div className={styles.sideTitle}>{t.contents}</div><div><div style={{height:8,margin:'8px 0',borderRadius:9,background:'var(--border)'}}><div style={{width:`${pct}%`,height:'100%',borderRadius:9,background:'#0f9f6e'}}/></div><small>{pct}% · {t.progress}</small></div>{lesson.chapters.map((c,i)=><button key={c.id} type="button" className={styles.sideItem} aria-current={open===i?'step':undefined} onClick={()=>setOpen(i)}><span aria-hidden="true">{read.includes(i)?'✓':'◈'}</span><strong>{pick(c.title,lang)}</strong></button>)}</aside>
-      <div className={styles.main}><section className={styles.section}><div className={styles.sectionHeader}><span className={styles.sectionHeading}><span className={styles.sectionIcon} aria-hidden="true">◈</span><h2>{pick(chapter.title,lang)}</h2></span><span className={styles.sectionToggle} style={{width:'auto',paddingInline:12}}>{lang==='fa'?`PDF ${chapter.pages}`:lang==='en'?`PDF p. ${chapter.pages}`:`PDF S. ${chapter.pages}`}</span></div><div className={styles.sectionBody}>{open===0&&<p className={styles.lead}>{pick(lesson.objective,lang)}</p>}{pick(chapter.text,lang).split('\n\n').map((p,i)=><p key={i} className={i===0?styles.lead:undefined} style={{lineHeight:1.75}}>{p}</p>)}<button type="button" onClick={markRead} aria-pressed={read.includes(open)} className={styles.sectionToggle} style={{width:'auto',padding:'8px 14px',marginTop:14}}>{read.includes(open)?`✓ ${t.read}`:t.read}</button></div></section>
-        <div style={{display:'flex',justifyContent:'space-between',gap:12}}><button type="button" className={styles.lessonLink} disabled={open===0} onClick={()=>setOpen(Math.max(0,open-1))}>{lang==='fa'?'فصل پیشین':lang==='en'?'Previous chapter':'Vorheriges Kapitel'}</button><button type="button" className={styles.lessonLink} disabled={open===lesson.chapters.length-1} onClick={()=>setOpen(Math.min(lesson.chapters.length-1,open+1))}>{lang==='fa'?'فصل بعدی':lang==='en'?'Next chapter':'Nächstes Kapitel'}</button></div>
-        {open===lesson.chapters.length-1&&<><section className={styles.section}><div className={styles.sectionBody}><h2>{t.self}</h2><p className={styles.lead}>{pick(lesson.assessment.question,lang)}</p><div style={{display:'grid',gap:9}}>{lesson.assessment.options.map((o,i)=><button key={i} type="button" aria-pressed={answer===i} onClick={()=>setAnswer(i)} style={{padding:14,border:'1px solid var(--border)',borderRadius:12,color:'var(--text)',background:'var(--bg-card)',cursor:'pointer',textAlign:'start'}}>{pick(o,lang)}</button>)}</div>{answer!==null&&<p role="status" style={{marginTop:12}}>{answer===lesson.assessment.correctIndex?pick(lesson.assessment.feedback,lang):pick(lesson.assessment.options[lesson.assessment.correctIndex],lang)}</p>}</div></section><aside className={`${styles.callout} ${styles.calloutCave}`}><strong>{t.refs}</strong><p>{pick(lesson.media,lang)}</p><p style={{marginTop:10}}>{pick(lesson.sourceConflict,lang)}</p><p style={{marginTop:10}}>{pick(lesson.reviewStatus,lang)}</p><ul>{lesson.references.map(ref=><li key={ref.label}>{ref.href?<a href={ref.href} target="_blank" rel="noreferrer">{ref.label}</a>:ref.label}</li>)}</ul></aside></>}
-        <Link className={styles.lessonLink} href={url('/lernen/gehirn')}>{t.home}<span aria-hidden="true">←</span></Link>
-      </div>
-    </div>
+    <div className={reference.layout}><aside className={reference.sidebar}><h2>{c(COPY.path)}</h2><nav aria-label={c(COPY.path)}>{nav()}</nav></aside><article className={reference.lesson}>{CHAPTERS.map(chapter => <section id={chapter.id} key={chapter.id} className={`${reference.section} ${open === chapter.id ? reference.sectionOpen : ''}`}><h2 className={styles.heading}><button type="button" className={reference.sectionHeader} aria-expanded={open === chapter.id} aria-controls={`${chapter.id}-panel`} onClick={() => select(chapter.id, true)}><span className={reference.sectionIcon}><Icon name={chapter.icon} /></span><strong>{c(chapter.title)}</strong><span className={reference.toggle} aria-hidden="true">{open === chapter.id ? '−' : '+'}</span></button></h2><div id={`${chapter.id}-panel`} className={reference.sectionBody} hidden={open !== chapter.id}><Chapter id={chapter.id} lang={lang} /><button type="button" className={`${reference.readButton} ${read.has(chapter.id) ? reference.readButtonDone : ''}`} aria-pressed={read.has(chapter.id)} onClick={() => mark(chapter.id)}><Icon name="check" />{c(read.has(chapter.id) ? COPY.marked : COPY.mark)}</button></div></section>)}<details className={styles.sources}><summary>{c(COPY.sources)}</summary><p>Gehirn.pdf · PDF 45–46 / {c({ de: 'gedruckte Seiten 44–45', en: 'printed pages 44–45', fa: 'صفحات چاپی ۴۴–۴۵' })}</p><ul>{[['https://pubmed.ncbi.nlm.nih.gov/25238986/', 'Wen et al. · 2014 · Dural tail pathology'], ['https://pubmed.ncbi.nlm.nih.gov/7800128/', '1994 · Enhanced dura and pathology'], ['https://pubmed.ncbi.nlm.nih.gov/26410100/', 'Schwyzer et al. · 2015 · ADC overlap'], ['https://pubmed.ncbi.nlm.nih.gov/22406780/', 'Goyal et al. · 2012 · Bone invasion'], ['https://pubmed.ncbi.nlm.nih.gov/12684713/', 'Majós et al. · 2003 · MRS'], ['https://pubmed.ncbi.nlm.nih.gov/18641997/', '2008 · MRS interpretation'], ['https://pubmed.ncbi.nlm.nih.gov/27208870/', '2016 · Diffusion/perfusion study'], ['https://pubmed.ncbi.nlm.nih.gov/34185076/', 'Louis et al. · 2021 · WHO CNS5']].map(([url,label]) => <li key={url}><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>)}</ul></details></article></div>
+    <div className={styles.mobile}><button type="button" aria-expanded={mobile} aria-controls="meningeom-mobile-path" onClick={() => setMobile(value => !value)}>{c(COPY.path)} · {read.size}/{IDS.length}</button><nav id="meningeom-mobile-path" className={reference.sidebar} aria-label={c(COPY.path)} hidden={!mobile}>{nav()}</nav></div>
   </main>
 }
-

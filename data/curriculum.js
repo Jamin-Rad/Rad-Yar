@@ -101,7 +101,7 @@ export const CURRICULUM = [
           { id: 'pinealis-parenchymtumoren', title: { de: 'Pinealis-Parenchymtumoren', en: 'Pineal Parenchymal Tumours', fa: 'تومورهای پارانشیمی غده پینه‌آل' }, group: ['Pinealisregion'], tags: ['MRT'], diff: 3 },
           { id: 'keimzelltumoren-pinealis', title: { de: 'Keimzelltumoren der Pinealisregion', en: 'Germ Cell Tumours of the Pineal Region', fa: 'تومورهای سلول زایا ناحیه پینه‌آل' }, group: ['Pinealisregion'], tags: ['MRT'], diff: 3 },
           { id: 'pinealzyste', title: { de: 'Pinealzyste', en: 'Pineal Cyst', fa: 'کیست پینه‌آل' }, group: ['Pinealisregion'], tags: ['MRT'], diff: 1 },
-          { id: 'meningeom', title: { de: 'Meningeom', en: 'Meningioma', fa: 'مننژیوم' }, group: ['Tumoren der Meningen'], tags: ['CT','MRT'], diff: 2, link: '/gehirn/tumoren/meningeom', inProgress: true, updatedAt: '2026-10-19' },
+          { id: 'meningeom', title: { de: 'Meningeom', en: 'Meningioma', fa: 'مننژیوم' }, group: ['Tumoren der Meningen'], tags: ['CT','MRT'], diff: 2, link: '/gehirn/tumoren/meningeom', inProgress: true, updatedAt: '2026-10-19', mcqLink: '/ueben/quiz?fach=gehirn&n=2&themen=meningeom', flashcardLink: '/flashcards/meningeom' },
           { id: 'schwannome', title: { de: 'Schwannome', en: 'Schwannomas', fa: 'شوانوم' }, group: ['Tumoren der Hirnnerven'], tags: ['MRT'], diff: 2 },
           { id: 'neurofibrome', title: { de: 'Neurofibrome', en: 'Neurofibromas', fa: 'نوروفیبروم' }, group: ['Tumoren der Hirnnerven'], tags: ['MRT'], diff: 2 },
           { id: 'metastasen-meningeosis', title: { de: 'Metastasen / Meningeosis', en: 'Metastases / Leptomeningeal Carcinomatosis', fa: 'متاستازها / کارسینوماتوز لپتومننژیال' }, tags: ['MRT','CT'], diff: 2 },
@@ -923,7 +923,7 @@ export const CURRICULUM = [
           { id: 'pneumoperitoneum', title: { de: 'Pneumoperitoneum', en: 'Pneumoperitoneum', fa: 'پنوموپریتوئن' }, tags: ['Rö','CT'], diff: 1 },
           { id: 'peritonealkarzinose', title: { de: 'Peritonealkarzinose', en: 'Peritoneal Carcinomatosis', fa: 'کارسینوماتوز پریتوئن' }, tags: ['CT'], diff: 3 },
           { id: 'appendicitis-epiploica', title: { de: 'Appendicitis epiploica', en: 'Epiploic Appendagitis', fa: 'آپاندیسیت اپیپلوئیک' }, tags: ['CT'], diff: 2, link: '/abdomen/peritoneum/appendicitis-epiploica', mcqLink: '/ueben/quiz?fach=abdomen&n=1&themen=appendicitis-epiploica', inProgress: true, updatedAt: '2026-10-19' },
-          { id: 'mesenteriale-panniculitis', title: { de: 'Mesenteriale Panniculitis', en: 'Mesenteric Panniculitis', fa: 'پانیکولیت مزانتریک' }, tags: ['CT'], diff: 2 },
+          { id: 'mesenteriale-panniculitis', title: { de: 'Mesenteriale Panniculitis', en: 'Mesenteric Panniculitis', fa: 'پانیکولیت مزانتریک' }, tags: ['CT'], diff: 2, link: '/abdomen/peritoneum/mesenteriale-panniculitis', mcqLink: '/ueben/quiz?fach=abdomen&n=1&themen=mesenteriale-panniculitis', inProgress: true, updatedAt: '2026-10-19' },
         ],
       },
       {
@@ -1694,6 +1694,7 @@ export const CURRICULUM = [
           { id: 'fachkunde-strahlenschutz', title: { de: 'Fachkunde & Kenntnisse im Strahlenschutz', en: 'Radiation Protection Qualification & Knowledge', fa: 'صلاحیت و دانش حفاظت پرتویی' }, tags: ['Rö','CT'], diff: 2 },
           { id: 'teleradiologie', title: { de: 'Teleradiologie', en: 'Teleradiology', fa: 'تلرادیولوژی' }, tags: ['Rö','CT'], diff: 2 },
           { id: 'qualitaetssicherung-vorkommnisse', title: { de: 'Qualitätssicherung & Vorkommnisse', en: 'Quality Assurance & Incidents', fa: 'تضمین کیفیت و رویدادها' }, tags: ['Rö','CT'], diff: 2, link: '/technik/qualitaetssicherung-vorkommnisse', inProgress: true },
+          { id: 'praenatale-strahlenexposition', title: { de: 'Unbeabsichtigte pränatale Strahlenexposition', en: 'Unintended prenatal radiation exposure', fa: 'مواجههٔ ناخواستهٔ پیش از تولد با پرتو' }, tags: ['Rö','CT'], diff: 2, link: '/technik/strahlenschutz/praenatale-exposition', inProgress: true },
         ],
       },
       {

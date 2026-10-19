@@ -1,0 +1,34 @@
+{
+  "lessonId": "meningeom",
+  "asset": "hero.svg",
+  "type": "original code-native conceptual compartment diagram",
+  "patientImage": false,
+  "source": "Gehirn.pdf PDF45–46/printed44–45; source contains no diagnostic case images",
+  "relationships": {
+    "1": "Broad mass base beneath dura on the brain side",
+    "2": "Blue CSF cleft at mass–brain interface, not mass–dura interface",
+    "3": "Conceptual dural extension, not histologic invasion evidence",
+    "4": "Displaced/indented brain tissue boundary"
+  },
+  "revision": "Replaces prior draft diagram with incorrect mass/cleft interface positioning. No synthetic diagnostic pixels or copied patient media.",
+  "limits": "Not scale anatomy, CT, MRI, observed patient evidence, or proof of tissue invasion/grade. Current bounded goal is interpretation of supplied report descriptors, not independent image recognition. Real postcontrast MRI/interface and CT bone-window cases remain unresolved for future image-recognition coverage.",
+  "createdAt": "2026-10-19",
+  "inspection": "Author rasterized original SVG with Sharp and opened actual PNG: mass beneath dura, blue cleft at mass–brain interface, displaced brain boundary and dural extension labels1–4 visible. Independent review pending; browser rendering not verified.",
+  "caseAccessAttempts": [
+    {
+      "caseId": "rID7679",
+      "source": "https://radiopaedia.org/cases/meningioma",
+      "contributor": "Hani M. Al Salam",
+      "metadataEvidence": "Indexed original case text; published18Nov2009; DOI10.53347/rID-7679; T1/T2/FLAIR and postcontrast sequences listed. No actual pixels inspected.",
+      "access": "Direct source fetch402; NCCommons study8496 cache miss; local network DNS11001. Not used as media."
+    },
+    {
+      "caseId": "rID8574",
+      "source": "https://radiopaedia.org/cases/meningioma-lesser-wing-sphenoid",
+      "contributor": "Hani M. Al Salam",
+      "metadataEvidence": "Indexed original case text; published13Feb2010; DOI10.53347/rID-8574; CT/MRI listed. No actual pixels inspected.",
+      "access": "Indexed metadata only; not used as media."
+    }
+  ],
+  "projectAuthorization": "User project-level authorization for six PDFs and Radiopaedia use is recorded in docs/lesson-quality/standard.md. No case pixels reused here and no independent rights-clearance determination made."
+}

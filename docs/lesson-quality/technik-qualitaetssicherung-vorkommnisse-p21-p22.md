@@ -8,7 +8,7 @@ Status: historical p.21–22 scope ledger; the route was later extended to Techn
 - Authored route: `/technik/qualitaetssicherung-vorkommnisse`.
 - Source: user-provided `Technik.pdf`; PDF pages 21–22 (printed pages 20–21), inspected as text and rendered images.
 - Scope selected from those pages: diagnostic reference levels (DRW), selected significant-event criteria for CT, non-interventional fluoroscopy, and diagnostic/therapeutic interventions, and the response/documentation pathway.
-- PDF pages 23–24 were also inspected. At the time this p.21–22 scope was authored, device commissioning/acceptance/constancy tests and unrecognised pregnancy exposure were excluded. The shared route now additionally teaches selected p.23 equipment quality assurance; its current coverage is documented in the linked p.23 ledger. Page 24 pregnancy exposure remains excluded pending a separate current clinical review.
+- PDF pages 23–24 were also inspected. At the time this p.21–22 scope was authored, device commissioning/acceptance/constancy tests and unrecognised pregnancy exposure were excluded. The shared route now additionally teaches selected p.23 equipment quality assurance; its current coverage is documented in the linked p.23 ledger. PDF p.24 now has a separate bounded workflow lesson at `/technik/strahlenschutz/praenatale-exposition`; the p.21–22 lesson still excludes dose-risk bands and individual pregnancy counselling.
 
 ## Source coverage
 
@@ -24,7 +24,7 @@ Status: historical p.21–22 scope ledger; the route was later extended to Techn
 | Technik.pdf p.22 / printed p.21 | Diagnostic and therapeutic intervention criteria | Diagnostic intervention DAP >20,000 cGy·cm² is presented separately under Annex 14 II.2.a. Therapeutic intervention retains the separate criterion: DAP >50,000 cGy·cm² plus acute or within-21-day grade ≥2 deterministic skin injury under II.3.a. |
 | Technik.pdf p.22 / printed p.21 | Internal recording, reportable and non-reportable categories | Recast to avoid implying events below report thresholds can be ignored. Current §109 requires systematic investigation, recording and 30-year retention. Conventional projection radiography is only described as excluded from the cited Annex 14 I category; no blanket “not reportable” claim is made. |
 | Technik.pdf p.23 / printed p.22 | Device commissioning, acceptance and constancy testing | This row records the historical p.21–22 scope only. The shared route now contains a bounded p.23 section; see the linked p.23 ledger for current teaching and legal mapping. |
-| Technik.pdf p.24 / printed p.23 | Unrecognised pregnancy and fetal dose counselling | Inspected and excluded; no dose-risk thresholds or counselling guidance were copied. |
+| Technik.pdf p.24 / printed p.23 | Unrecognised pregnancy and fetal dose counselling | Excluded from this historical p.21–22 lesson. A separate p.24 workflow lesson now addresses exposure reconstruction and referral, while still excluding dose-risk bands and case-specific counselling. See `technik-p24-pranatale-exposition.md`. |
 
 ## Current legal verification
 

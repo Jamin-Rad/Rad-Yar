@@ -1,0 +1,32 @@
+{
+  "source": "User-supplied Abdomen.pdf",
+  "pdfPage": 98,
+  "printedPage": 97,
+  "authorization": "User-authorised project use of supplied PDFs and Radiopaedia material is recorded in docs/lesson-quality/standard.md. Contributor metadata and case-specific reuse terms are separate; no independent legal-clearance claim.",
+  "assets": [
+    {
+      "asset": "ct-pattern.png",
+      "sourceCaseId": "rID10092",
+      "caseUrl": "https://radiopaedia.org/cases/10092",
+      "contributor": null,
+      "contributorStatus": "Contributor not identified in supplied PDF. Original case page returned unavailable/cache-miss; contributor-level metadata and case-specific reuse terms unverified. No contributor invented.",
+      "sourceCrop": { "renderDpi": 200, "coordinateOrigin": "Top-left of rendered PDF page, in pixels", "left": 460, "top": 985, "width": 730, "height": 355 },
+      "views": "Axial and coronal source CT pair. Exact frame IDs, acquisition phase and complete series not supplied or independently verified.",
+      "selection": "Denser mesenteric fat around vessels with relatively spared perivascular fat. No claim that a pseudocapsule is unequivocal on every selected view. No histology or malignancy exclusion inferred.",
+      "inspection": "Actual page and both final panels opened; footer rID10092 verified with higher-resolution rendering. No diagnostic pixels or arrows generated."
+    },
+    {
+      "asset": "ct-lymphoma.png",
+      "sourceCaseId": "rID11906",
+      "caseUrl": "https://radiopaedia.org/cases/11906",
+      "namedCaseUrl": "https://radiopaedia.org/cases/lymphoma-sandwich-sign-2?lang=us",
+      "contributor": "The Radswiki",
+      "contributorStatus": "Indexed original Radiopaedia case metadata identifies The Radswiki, Lymphoma - sandwich sign, DOI 10.53347/rID-11906, published 20 October 2010. Direct named case page returned 402/inaccessible. Case is tagged legacy. Full stack, exact matching frame and contributor-level reuse terms remain unverified.",
+      "sourceCrop": { "renderDpi": 200, "coordinateOrigin": "Top-left of rendered PDF page, in pixels", "left": 610, "top": 1870, "width": 440, "height": 335 },
+      "views": "Single axial CT source comparator with bulky confluent nodal tissue on both sides of mesenteric vessels. Not a subsequent stage of the upper panniculitis case. Phase and complete series not verified from the crop.",
+      "selection": "Shows the supplied lymphoma-labelled soft-tissue/node dominant sandwich configuration. Diagnosis retained from source case, not established by this crop alone.",
+      "inspection": "Actual page and final PNG opened; original footer identifier retained. No diagnostic pixels or arrows generated."
+    }
+  ],
+  "hero": { "asset": "hero.svg", "source": "Original code-native schematic made for this lesson", "meaning": "Hazier mesenteric fat, vessels, relatively spared perivascular fat and a thin boundary; illustrative combination, not obligatory criteria, stages or diagnostic CT evidence", "inspection": "Author render inspection and independent visual review tracked in lesson ledger" }
+}
