@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" role="img" aria-label="Conceptual diagram of the internal auditory canal and cerebellopontine angle">
+  <rect width="760" height="420" rx="28" fill="#102735"/>
+  <path d="M92 72c-34 56-42 190 4 260 32 49 98 57 188 52l146-9c53-3 80-35 82-89 2-58-27-90-75-98l-62-10c-26-4-41-18-45-41l-14-77c-10-55-42-78-99-78H92Z" fill="#d4e9e9" stroke="#8acbd2" stroke-width="7"/>
+  <path d="M382 143h112l35 32h-125z" fill="#f7fbfb" stroke="#46bad0" stroke-width="8"/>
+  <path d="M518 151c45-4 78 18 84 52 7 40-17 67-56 70l-62 3c-28 2-45-17-43-41 1-22 15-35 38-37l37-3z" fill="#f2a960" stroke="#f8d4ad" stroke-width="6"/>
+  <path d="M501 163c15 0 32 2 45 8M492 195c-1 17 5 31 15 43" fill="none" stroke="#a6512c" stroke-width="4" stroke-dasharray="7 7"/>
+  <path d="M516 162c36-10 58 0 68 20" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width="5"/>
+</svg>

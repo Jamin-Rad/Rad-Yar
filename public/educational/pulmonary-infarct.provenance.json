@@ -1,0 +1,18 @@
+{
+  "hero": {
+    "path": "/educational/pulmonary-infarct.svg",
+    "type": "code-native explanatory schematic",
+    "createdFor": "RadYar focused acute pulmonary embolism lesson",
+    "claims": "Shows a pulmonary arterial branch occlusion and a peripheral pleural-based wedge pattern; it is explicitly not diagnostic imaging."
+  },
+  "caseImage": {
+    "path": "/educational/pulmonary-infarct-pdf-case.png",
+    "source": "User-provided Thorax.pdf, physical PDF page 12 (printed page 11)",
+    "reuseAuthorization": "User explicitly authorized use of images in all supplied PDFs on 2026-10-19.",
+    "visibleAnnotations": "The source slide labels an axial CT finding with PE and INFARCT arrows/triangle.",
+    "visibleIdentifier": "rID:27283 on Thorax.pdf physical page 12 (printed page 11).",
+    "externalSiteContributorAndFurtherCaseMetadata": "Not independently verified; not inferred.",
+    "selectionRationale": "Directly demonstrates the CT correlation between a marked embolus and peripheral opacity, while the lesson states it is not a radiographic Hampton hump.",
+    "limitations": "Single axial CT screenshot with low source resolution and drawn labels; not suitable to establish full morphology or sensitivity."
+  }
+}

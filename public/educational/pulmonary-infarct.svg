@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
+  <title id="title">Pulmonary artery occlusion and peripheral infarct pattern</title>
+  <desc id="desc">A schematic pulmonary artery branches toward the lung periphery. A clot blocks one branch, with a wedge-shaped peripheral opacity whose base touches the pleura.</desc>
+  <defs>
+    <linearGradient id="lung" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#e8f3f5"/><stop offset="1" stop-color="#bcd9e0"/></linearGradient>
+    <linearGradient id="infarct" x1="0" x2="1"><stop stop-color="#e9a66c"/><stop offset="1" stop-color="#d06c62"/></linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#346d83"/></marker>
+  </defs>
+  <rect width="920" height="520" rx="28" fill="#f8fbfc"/>
+  <path d="M460 64v89M460 153c-12 40-74 62-130 87-55 25-78 61-98 122M460 153c16 37 79 52 139 84 63 34 95 69 113 126M330 240l-88-18m25 140-73 15M599 237l92-20m21 146 73 16" fill="none" stroke="#497f9a" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M460 64v89M460 153c-12 40-74 62-130 87-55 25-78 61-98 122M460 153c16 37 79 52 139 84 63 34 95 69 113 126M330 240l-88-18m25 140-73 15M599 237l92-20m21 146 73 16" fill="none" stroke="#9dc6d2" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M210 93c-94 23-143 99-151 192-8 91 18 167 63 187 38 18 88-9 126-50l37-42 15-70c-27-23-42-58-31-94 14-46 55-76 88-98-40-26-89-38-147-25Zm500 0c94 23 143 99 151 192 8 91-18 167-63 187-38 18-88-9-126-50l-37-42-15-70c27-23 42-58 31-94-14-46-55-76-88-98 40-26 89-38 147-25Z" fill="url(#lung)" stroke="#8dbbc8" stroke-width="5"/>
+  <path d="m632 311 83 115 77 9-28-138c-34 5-83 9-132 14Z" fill="url(#infarct)" stroke="#a94f53" stroke-width="4"/>
+  <path d="M617 282h50" stroke="#a94f53" stroke-width="23" stroke-linecap="round"/>
+  <path d="M798 442 747 423" stroke="#346d83" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M608 252 643 280" stroke="#346d83" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M465 171c-4 24-10 48-26 70m-84 30c-31 19-55 49-67 81" fill="none" stroke="#7e6db0" stroke-width="8" stroke-dasharray="3 18" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,23 @@
+.page { padding-top: 98px; }
+.page p { line-height: 1.82; }
+.caseFigure { margin: 24px auto; max-width: 1000px; }
+.caseFigure img { display: block; width: 100%; height: auto; background: #070b0e; border: 1px solid #31515b; border-radius: 12px; }
+.caseFigure figcaption { margin: 12px auto; max-width: 82ch; line-height: 1.75; color: var(--body,#43545a); }
+.frameLabels { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; padding: 0; list-style: none; }
+.frameLabels li { padding: 5px 10px; border: 1px solid var(--line,#cbdde2); border-radius: 999px; background: var(--paper,#fff); font-size: .92rem; }
+.scanTask { margin: 0 auto 14px; padding: 14px 16px; border-inline-start: 4px solid #19778a; border-radius: 8px; background: #e5f4f6; line-height: 1.75; }
+.note { margin-block: 18px; padding: 14px 16px; border-inline-start: 4px solid #19778a; border-radius: 8px; background: #e5f4f6; }
+.note p { margin: 8px 0 0; }
+.tableWrap { width: 100%; overflow-x: auto; margin-block: 18px; border: 1px solid var(--line,#cbdde2); border-radius: 10px; }
+.tableWrap table { width: 100%; min-width: 760px; border-collapse: collapse; line-height: 1.7; background: var(--paper,#fff); }
+.tableWrap th,.tableWrap td { padding: 12px 14px; border: 1px solid var(--line,#cbdde2); text-align: start; vertical-align: top; }
+.tableWrap thead th { background: #e5f4f6; color: #155d70; }
+.tableWrap tbody th { width: 15%; background: #f3f8f9; }
+.check { display: grid; gap: 12px; padding: 20px; border: 1px solid #19778a; border-radius: 10px; background: #e5f4f6; }
+.options { display: grid; gap: 10px; }
+.options button { padding: 12px 14px; border: 1px solid var(--line,#cbdde2); border-radius: 8px; background: #fff; color: var(--ink,#193842); cursor: pointer; text-align: start; line-height: 1.65; }
+.options button[aria-pressed='true'] { border-color: #155d70; box-shadow: 0 0 0 2px #155d7038; }
+.feedback { padding: 12px 14px; border-radius: 8px; background: #fff; }
+.page :is(button,a):focus-visible { outline: 3px solid #39aabd; outline-offset: 4px; }
+.page[dir='rtl'],.page[dir='rtl'] :is(h1,h2,h3,strong,button,a,li,td,th) { font-family: 'Vazirmatn',sans-serif; letter-spacing: 0; }
+@media(max-width:700px) { .page { padding: 86px 12px 104px; } .tableWrap table { min-width: 700px; } .check { padding: 14px; } }

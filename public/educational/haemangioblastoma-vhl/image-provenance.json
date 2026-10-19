@@ -1,0 +1,48 @@
+{
+  "asset": "cerebellar-haemangioblastoma-mri.png",
+  "purpose": "MRI montage for a bounded visual task: identify a cystic component, enhancing mural nodule, and flow voids as labelled/described in the source.",
+  "source": "User-provided Gehirn.pdf, PDF p.59 (printed p.58), montage labelled A1, A1 C+, FLAIR, DWI and ADC; caption gives Radiopaedia case rID 77012. Individual panel crops were reassembled in original order.",
+  "contributor": "Not recorded on supplied PDF page; not independently verified.",
+  "reuse": "User explicitly authorized reuse of images in supplied PDFs and Radiopaedia cases for this project on 2026-10-19.",
+  "limitations": "Full study stack, patient metadata, original case contributor and independent diagnostic confirmation not reviewed. The figure does not demonstrate VHL status.",
+  "case_id_source": "Radiopaedia rID is transcribed from the caption in the user-provided PDF; the live case page and contributor are not independently verified.",
+  "crop_boxes_pixels_xyxy": [
+    [
+      69,
+      365,
+      299,
+      650
+    ],
+    [
+      301,
+      365,
+      530,
+      650
+    ],
+    [
+      532,
+      365,
+      784,
+      650
+    ],
+    [
+      170,
+      653,
+      414,
+      935
+    ],
+    [
+      414,
+      653,
+      661,
+      935
+    ]
+  ],
+  "panel_order": [
+    "A1",
+    "A1 C+",
+    "FLAIR",
+    "DWI",
+    "ADC"
+  ]
+}

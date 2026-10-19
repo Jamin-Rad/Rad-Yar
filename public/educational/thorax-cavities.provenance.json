@@ -1,0 +1,12 @@
+{
+  "asset": "/educational/thorax-cavities/cavitary-lesion-p25.png",
+  "source_file": "Thorax.pdf",
+  "source_page": 25,
+  "source_view": "axial CT lung-window panel; inspected crop visibly contains rID 16033 only",
+  "source_case_credit": "Visible identifier: rID 16033; site and contributor not independently verified",
+  "source_case_url": "https://radiopaedia.org/cases/16033",
+  "transformation": "High-resolution page render and crop to isolate the axial CT panel and retain the visible rID identifier; no image synthesis or clinical annotations added.",
+  "selection_rationale": "Shows the cavity morphology and adjacent nodular lung pattern used in the source comparison. It is a single case image and is not used to establish the cause of the cavity.",
+  "reuse_basis": "User confirmed permission for use of images included in the provided lesson PDFs and Radiopaedia examples for the RadYar project.",
+  "verification": "Crop was inspected at full resolution; only rID 16033 is visibly legible in the crop. External site and contributor attribution, original patient-series metadata, and further license terms were not independently verified in this author task."
+}

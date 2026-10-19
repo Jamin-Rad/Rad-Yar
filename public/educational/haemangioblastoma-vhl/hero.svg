@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" role="img" aria-label="Conceptual diagram of a cyst with an enhancing mural nodule and vascular flow voids">
+  <rect width="760" height="420" rx="28" fill="#102735"/>
+  <path d="M112 84c43-34 135-36 181-5 38 26 42 81 73 104 38 28 110 5 164 35 58 32 72 111 27 153-39 36-104 24-158 26-76 3-155 33-224-4-63-34-91-113-84-194 3-48-9-88 21-115Z" fill="#d9eef2" stroke="#8acbd2" stroke-width="7"/>
+  <ellipse cx="379" cy="220" rx="169" ry="106" fill="#185269" stroke="#58bdd0" stroke-width="7"/>
+  <path d="M211 204c-25-45-22-80 5-116m327 0c24 35 32 77 14 110m-316 98c-22 36-16 65 11 86m310-89c26 36 20 65-7 88" fill="none" stroke="#345665" stroke-width="12" stroke-linecap="round"/>
+  <path d="M412 123c50 2 75 31 70 71-4 34-30 59-73 59-40 0-63-23-61-55 1-39 23-74 64-75Z" fill="#f2a960" stroke="#ffdc9e" stroke-width="8"/>
+  <path d="M405 54c-16 31-7 49 3 67m92-56c-18 29-24 48-19 68m-132 112c-18 20-25 41-19 64m189-66c20 17 27 39 19 65" fill="none" stroke="#ff876c" stroke-width="8" stroke-linecap="round"/>
+</svg>

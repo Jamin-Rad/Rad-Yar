@@ -1,0 +1,15 @@
+{
+  "asset": "vestibular-schwannoma-mri.png",
+  "purpose": "MRI case used to identify an intracanalicular mass, small cystic component, and mild internal auditory canal widening.",
+  "source": "User-provided Gehirn.pdf, PDF p.57 (printed p.56), montage labelled T1 native, T2 fat-suppressed, T1 post-contrast; caption gives Radiopaedia case rID 48853. Crop only; image observations are limited to visible crop and PDF caption.",
+  "contributor": "Not recorded on supplied PDF page; not independently verified.",
+  "reuse": "User explicitly authorized reuse of images in supplied PDFs and Radiopaedia cases for this project on 2026-10-19.",
+  "limitations": "Full study stack, patient metadata, original case contributor and independent diagnostic confirmation not reviewed.",
+  "case_id_source": "Radiopaedia rID is transcribed from the caption in the user-provided PDF; the live case page and contributor are not independently verified.",
+  "crop_box_pixels_xyxy": [
+    66,
+    30,
+    770,
+    270
+  ]
+}

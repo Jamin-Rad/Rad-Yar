@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+  <title id="title">Cavity and cyst morphology schematic</title>
+  <desc id="desc">A cavity lies within an irregular tissue lesion; a pulmonary cyst is shown as a smooth, thin-walled airspace. This is a teaching diagram, not a CT image.</desc>
+  <rect width="960" height="360" rx="24" fill="#f4f8fa"/>
+  <g transform="translate(48 48)">
+    <rect width="408" height="264" rx="20" fill="#fff" stroke="#9ccbd4" stroke-width="3"/>
+    <path d="M64 88c22-31 69-35 93-14 31-29 89-12 92 24 43-2 67 43 41 72 18 31-7 67-45 66-18 34-67 42-91 15-30 23-75 9-82-22-39-2-55-46-28-69-21-22-11-59 20-72z" fill="#f0b09a" stroke="#a95745" stroke-width="5"/>
+    <path d="M150 121c12-14 38-15 51-4 17-11 40 1 41 20 15 8 13 32-5 39-5 17-29 23-43 13-17 9-38-3-38-22-16-11-18-34-6-46z" fill="#243c4a" stroke="#fff" stroke-width="7"/>
+    <path d="M267 74v29m0 0-10-10m10 10 10-10" fill="none" stroke="#236a78" stroke-width="4" stroke-linecap="round"/>
+    <path d="M125 228c14-23 41-31 66-22" fill="none" stroke="#236a78" stroke-width="4" stroke-dasharray="7 7"/>
+    <circle cx="186" cy="136" r="5" fill="#d8896d"/>
+    <circle cx="208" cy="180" r="4" fill="#d8896d"/>
+  </g>
+  <g transform="translate(504 48)">
+    <rect width="408" height="264" rx="20" fill="#fff" stroke="#b8abd1" stroke-width="3"/>
+    <path d="M106 120c0-33 30-59 67-59h67c38 0 66 26 66 59v45c0 35-28 60-66 60h-67c-37 0-67-25-67-60z" fill="#eaf2f6" stroke="#668e9f" stroke-width="8"/>
+    <path d="M131 132c0-23 20-42 45-42h61c26 0 44 19 44 42v21c0 24-18 41-44 41h-61c-25 0-45-17-45-41z" fill="#243c4a"/>
+    <path d="M85 86h30m-30 0 10-10m-10 10 10 10" fill="none" stroke="#63428e" stroke-width="4" stroke-linecap="round"/>
+    <path d="M323 211h-34m34 0-10-10m10 10-10 10" fill="none" stroke="#63428e" stroke-width="4" stroke-linecap="round"/>
+    <path d="M153 80c12-8 28-12 44-12" fill="none" stroke="#668e9f" stroke-width="3" stroke-dasharray="6 7"/>
+  </g>
+</svg>

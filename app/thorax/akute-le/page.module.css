@@ -1,0 +1,18 @@
+.page { --lesson-accent: #70bdc8; --lesson-accent-strong: #216a78; --lesson-accent-soft: #e1f3f5; }
+.body { display: grid; gap: 1rem; }
+.body > p { margin: 0; max-width: 84ch; line-height: 1.75; }
+.diagram { display: block; width: min(100%, 820px); height: auto; margin: 1rem auto; border-radius: 14px; }
+.caseFigure { display: grid; gap: .65rem; width: min(100%, 600px); margin: .5rem auto; }
+.caseFigure img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.caseFigure figcaption { color: var(--muted, #586773); font-size: .92rem; line-height: 1.6; }
+.scope { padding: .9rem 1rem; border-inline-start: 3px solid var(--lesson-accent); border-radius: 8px; background: color-mix(in srgb, var(--paper, white) 84%, var(--lesson-accent-soft)); line-height: 1.65; }
+.check { display: grid; gap: .8rem; padding: 1rem; border: 1px solid var(--line, #d6dfe5); border-radius: 14px; background: color-mix(in srgb, var(--paper, white) 87%, var(--lesson-accent-soft)); }
+.check h3, .check p { margin: 0; line-height: 1.7; }
+.check fieldset { display: grid; gap: .65rem; border: 0; margin: 0; padding: 0; }
+.check legend { margin-bottom: .25rem; font-weight: 700; }
+.check label { display: flex; align-items: flex-start; gap: .65rem; padding: .8rem; border: 1px solid var(--line, #d6dfe5); border-radius: 9px; background: var(--paper, white); cursor: pointer; line-height: 1.6; }
+.check input { margin-top: .3rem; accent-color: var(--lesson-accent-strong); }
+.feedback { display: grid; gap: .5rem; padding: .8rem; border-inline-start: 3px solid var(--lesson-accent); background: var(--paper, white); line-height: 1.65; }
+.feedback button { justify-self: start; border: 1px solid var(--lesson-accent-strong); border-radius: 7px; padding: .4rem .75rem; color: var(--lesson-accent-strong); background: transparent; cursor: pointer; }
+.rules { display: grid; gap: .8rem; padding-inline-start: 1.5rem; line-height: 1.75; }
+.page :is(button, input):focus-visible { outline: 2px solid var(--lesson-accent-strong); outline-offset: 3px; }

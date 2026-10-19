@@ -1,0 +1,4 @@
+.caseFigure { display: grid; justify-items: center; gap: .55rem; margin: 0 auto; max-width: 820px; }
+.caseImage { display: block; width: min(100%, 770px); height: auto; border: 1px solid var(--line, #d6dfe5); border-radius: 10px; background: #111; }
+.caseFigure figcaption { max-width: 84ch; color: var(--muted, #586773); font-size: .92rem; line-height: 1.65; text-align: start; }
+.caseFigure a { color: var(--lesson-accent-strong, #216a78); }
