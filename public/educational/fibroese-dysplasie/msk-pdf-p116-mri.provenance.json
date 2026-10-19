@@ -1,0 +1,11 @@
+{
+  "asset": "msk-pdf-p116-mri.jpg",
+  "source": "User-provided MSK.pdf",
+  "pdfPage": 116,
+  "printedPage": 115,
+  "figureId": "rID 14236",
+  "derivation": "Crop of the three sequence panels labeled T1, T2 and T1 C+ on the source page; excludes the adjacent radiograph and explanatory prose.",
+  "selectionRationale": "Supports the lesson point that MRI sequences can look concerning and require correlation with the characteristic radiographic/CT matrix.",
+  "rights": "User states PDF images are authorized for use in RadYar.",
+  "captionLimit": "Sequence identity follows the source labels; lesion signal intensity was not independently inferred from this crop."
+}

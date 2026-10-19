@@ -54,6 +54,7 @@
 | AG (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.112–113: ABC/AKZ، ID `knochenzyste-aneurysmatisch`, Route `/msk/tumoren/aneurysmal-bone-cyst` | بازبینی مستقل و delta PASS؛ USP6 و افتراق استئوسارکوم تلانژکتاتیک با منابع primär/Review اصلاح شد؛ DE/EN/FA و آزمون route/RTL/assets پاس | مرورگر و تأیید بالینی باز |
 | AH (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.109–111: SBC، ID `knochenzyste-simple`, Route `/msk/tumoren/einfache-knochenzyste` | بازبینی مستقل محتوا و delta سؤال PASS؛ واژگان و رابطهٔ active/latent به PDF محدود؛ SSR سه‌زبانه PASS | مرورگر و تأیید بالینی باز |
 | AI (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.117–118: intraossäres Lipom، ID `intraossaeres-lipom`, Route `/msk/tumoren/intraossaeres-lipom` | بازبینی مستقل و delta cue تصویر PASS؛ نشانهٔ Cockade قطعی ادعا نشده؛ SSR سه‌زبانه PASS | مرورگر و تأیید بالینی باز |
+| AJ (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf pp.114–116: Fibröse Dysplasie، ID `fibroese-dysplasie`, Route `/msk/tumoren/fibroese-dysplasie` | بازبینی مستقل source/content/image/language و delta PASS؛ caveat ریسک نادر به منبع وصل شد؛ SSR سه‌زبانه PASS | مرورگر و تأیید بالینی باز |
 
 ## معیار اتمام batch
 

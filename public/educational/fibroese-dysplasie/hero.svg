@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
+  <defs>
+    <linearGradient id="bone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff7e5"/><stop offset="1" stop-color="#ddb98a"/></linearGradient>
+    <pattern id="ground" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="#87aaa1"/><circle cx="3" cy="4" r="1.5" fill="#e5d9b1"/><circle cx="12" cy="10" r="2" fill="#d2c69e"/><path d="M5 13l3-2" stroke="#4e7770" stroke-width="1.3"/></pattern>
+  </defs>
+  <rect width="640" height="480" rx="36" fill="#18342e"/>
+  <circle cx="500" cy="104" r="58" fill="#28574c" opacity=".7"/><circle cx="118" cy="380" r="82" fill="#28574c" opacity=".5"/>
+  <path d="M286 50c-27 22-34 46-32 74l12 48-15 122c-3 26-17 50-15 82 1 34 19 57 47 60 31 3 53-18 55-49 2-27-10-51-9-77l8-122 30-47c16-26 17-54-2-82-18-26-52-31-79-9Z" fill="url(#bone)" stroke="#f9e5c0" stroke-width="6"/>
+  <path d="M278 183c-13 21-17 50-19 83l-8 70c-2 21 12 39 34 41 22 2 39-12 42-33l7-67c3-34 7-61-2-83-12-27-40-34-54-11Z" fill="url(#ground)" stroke="#4c756d" stroke-width="4"/>
+  <path d="M343 209h105M260 305H161" stroke="#f0d7a7" stroke-width="3"/><circle cx="343" cy="209" r="6" fill="#e8bc77"/><circle cx="260" cy="305" r="6" fill="#e8bc77"/>
+</svg>

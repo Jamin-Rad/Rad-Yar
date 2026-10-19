@@ -1,0 +1,11 @@
+{
+  "asset": "msk-pdf-p115-femur.jpg",
+  "source": "User-provided MSK.pdf",
+  "pdfPage": 115,
+  "printedPage": 114,
+  "figureId": "rID 17974",
+  "derivation": "Crop of the proximal femur radiograph from the source page; no diagnostic pixels were generated or altered.",
+  "selectionRationale": "Shows the femoral mixed lytic-sclerotic lesion, focal ground-glass appearance and mild bowing described in the adjacent source caption.",
+  "rights": "User states PDF images are authorized for use in RadYar.",
+  "captionLimit": "The image illustrates a pattern and does not independently establish diagnosis."
+}

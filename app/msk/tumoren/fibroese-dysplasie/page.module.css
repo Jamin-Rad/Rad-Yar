@@ -1,0 +1,23 @@
+.page { --lesson-accent:#d49a61; --lesson-accent-strong:#79502d; --lesson-accent-soft:#f2e9de; --lesson-secondary:#8ab9a7; }
+.body { display:grid; gap:1rem; }
+.body > p { margin:0; max-width:82ch; line-height:1.75; }
+.tableWrap { max-width:100%; overflow-x:auto; border:1px solid var(--line); border-radius:12px; }
+.tableWrap table { width:100%; border-collapse:collapse; line-height:1.65; }
+.tableWrap caption { padding:.9rem 1rem; text-align:start; font-weight:800; color:var(--ink); }
+.tableWrap th,.tableWrap td { padding:.8rem 1rem; border-top:1px solid var(--line); text-align:start; vertical-align:top; }
+.tableWrap thead th { color:var(--lesson-accent-strong); background:color-mix(in srgb,var(--paper) 84%,var(--lesson-accent-soft)); }
+.tableWrap tbody th { min-width:125px; width:22%; }
+.caseImage { max-width:680px; width:100%; margin:0 auto; padding:12px; border:1px solid var(--line); border-radius:14px; background:var(--paper); }
+.caseImage img { display:block; width:100%; height:auto; border-radius:8px; }
+.caseImage figcaption { margin-top:10px; color:var(--muted); font-size:.9rem; line-height:1.65; }
+.note { margin:0; padding:.95rem 1rem; border-inline-start:4px solid var(--lesson-accent); border-radius:8px; background:color-mix(in srgb,var(--paper) 84%,var(--lesson-accent-soft)); line-height:1.7; }
+.warning { margin:0; padding:.95rem 1rem; border-inline-start:4px solid #a84442; border-radius:8px; background:color-mix(in srgb,var(--paper) 88%,#f4d9d4); line-height:1.7; }
+.decision { display:grid; gap:.8rem; padding:1.1rem; border:1px solid var(--line); border-radius:14px; background:color-mix(in srgb,var(--paper) 85%,var(--lesson-accent-soft)); }
+.decision h3,.decision p { margin:0; line-height:1.7; }
+.decision fieldset { display:grid; gap:.7rem; border:0; margin:0; padding:0; }
+.decision legend { margin-bottom:.65rem; font-weight:700; }
+.decision label { display:flex; align-items:flex-start; gap:.7rem; border:1px solid var(--line); border-radius:10px; padding:.8rem; background:var(--paper); cursor:pointer; line-height:1.65; }
+.decision input { margin-top:.35rem; accent-color:var(--lesson-accent-strong); }
+.feedback { padding:.85rem; border-inline-start:3px solid var(--lesson-accent); background:var(--paper); border-radius:8px; }
+.summary { display:grid; gap:.8rem; margin:0; padding-inline-start:1.5rem; line-height:1.7; }
+.body :is(button,input):focus-visible { outline:2px solid var(--lesson-accent-strong); outline-offset:3px; }
