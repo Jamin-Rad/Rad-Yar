@@ -1,0 +1,26 @@
+.page { --glioma-ink: #163746; }
+.page p { max-width: 78ch; line-height: 1.72; }
+.page .lead { font-size: 1.08rem; font-weight: 650; }
+.groupMap { display: grid; gap: 12px; margin: 22px 0; }
+.diffuse, .circumscribed { padding: 16px; border: 1px solid var(--border); border-radius: 14px; }
+.diffuse { background: color-mix(in srgb, #48b5c8 12%, var(--bg-card)); }
+.circumscribed { background: color-mix(in srgb, #d18b53 12%, var(--bg-card)); }
+.diffuse > strong, .circumscribed > strong { display: block; margin-bottom: 10px; text-align: center; }
+.diffuse ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; list-style-position: inside; }
+.diffuse li { padding: 11px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); text-align: center; }
+.circumscribed span { display: block; text-align: center; }
+.groupMap figcaption, .casePanel figcaption { margin-top: 9px; color: var(--text-muted); font-size: .85rem; }
+.casePanel { margin: 22px 0; }
+.casePanel img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.imageTask, .scopeNote, .sourceConflict { padding: 14px; border-inline-start: 3px solid #48b5c8; background: color-mix(in srgb, #48b5c8 8%, var(--bg-card)); border-radius: 8px; }
+.scopeNote { margin: 18px 0; border-inline-start-color: #d18b53; background: color-mix(in srgb, #d18b53 9%, var(--bg-card)); }
+.scopeNote p, .sourceConflict { margin-bottom: 0; }
+.quiz { display: grid; gap: 12px; }
+.options { display: grid; gap: 9px; }
+.options button { padding: 13px 15px; border: 1px solid var(--border); border-radius: 10px; color: var(--text); background: var(--bg-card); text-align: start; cursor: pointer; }
+.options button[aria-pressed="true"] { border-color: #328c9a; box-shadow: 0 0 0 2px color-mix(in srgb, #328c9a 20%, transparent); }
+.feedback { padding: 12px; border-radius: 9px; background: color-mix(in srgb, #48b5c8 12%, var(--bg-card)); }
+@media (max-width: 700px) {
+  .diffuse ol { grid-template-columns: 1fr; }
+  .page p { max-width: none; }
+}

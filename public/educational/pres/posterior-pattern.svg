@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" role="img" aria-labelledby="title desc">
+  <title id="title">PRES distribution schematic</title>
+  <desc id="desc">Symmetric posterior-predominant cerebral edema distribution, shown schematically rather than as a diagnostic scan.</desc>
+  <defs>
+    <linearGradient id="brain" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#f5f7fc"/><stop offset="1" stop-color="#dfe6f2"/></linearGradient>
+    <pattern id="edema" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><rect width="10" height="10" fill="#b8c8f2"/><path d="M0 0v10" stroke="#708ac9" stroke-width="3" opacity=".55"/></pattern>
+  </defs>
+  <g fill="url(#brain)" stroke="#586782" stroke-width="5" stroke-linejoin="round">
+    <path d="M385 80c-29-40-91-49-133-20-23 16-34 42-31 69-30 14-44 44-35 76-24 22-24 60 0 82 6 27 31 46 60 44 17 22 48 28 73 14 20 19 46 16 66-3V80Z"/>
+    <path d="M415 80c29-40 91-49 133-20 23 16 34 42 31 69 30 14 44 44 35 76 24 22 24 60 0 82-6 27-31 46-60 44-17 22-48 28-73 14-20 19-46 16-66-3V80Z"/>
+  </g>
+  <path d="M385 80c-29-40-91-49-133-20-23 16-34 42-31 69 24-9 55-5 76 12 22 18 37 40 67 42 8-25 12-62 21-103Z" fill="url(#edema)" stroke="#708ac9" stroke-width="2"/>
+  <path d="M415 80c29-40 91-49 133-20 23 16 34 42 31 69-24-9-55-5-76 12-22 18-37 40-67 42-8-25-12-62-21-103Z" fill="url(#edema)" stroke="#708ac9" stroke-width="2"/>
+  <path d="M400 55v250" stroke="#8e9ab0" stroke-width="2" stroke-dasharray="7 8"/>
+</svg>

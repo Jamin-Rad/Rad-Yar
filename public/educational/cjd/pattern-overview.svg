@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 520" role="img">
+  <rect width="840" height="520" rx="36" fill="#f4f8fb"/>
+  <path d="M420 97c-43-58-118-43-139 14-62-14-110 39-91 94-55 35-44 106 10 128-9 56 47 92 98 69 31 42 93 37 122 1 29 36 91 41 122-1 51 23 107-13 98-69 54-22 65-93 10-128 19-55-29-108-91-94-21-57-96-72-139-14Z" fill="#e2edf3" stroke="#427e91" stroke-width="9"/>
+  <path d="M420 98c-43-58-118-43-139 14-62-14-110 39-91 94-55 35-44 106 10 128-9 56 47 92 98 69 31 42 93 37 122 1" fill="none" stroke="#e98a75" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M420 98c43-58 118-43 139 14 62-14 110 39 91 94 55 35 44 106-10 128 9 56-47 92-98 69-31 42-93 37-122 1" fill="none" stroke="#e98a75" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M367 238c12-18 34-20 47-5 11 14 9 38-4 50-12 11-31 7-42-7-9-12-9-27-1-38Zm106 0c-12-18-34-20-47-5-11 14-9 38 4 50 12 11 31 7 42-7 9-12 9-27 1-38Z" fill="#947daa" stroke="#675985" stroke-width="5"/>
+  <path d="M259 420h322" stroke="#9bb9c4" stroke-width="3" stroke-dasharray="7 10"/>
+  <circle cx="308" cy="420" r="10" fill="#e98a75"/>
+  <circle cx="532" cy="420" r="10" fill="#947daa"/>
+</svg>

@@ -1,71 +1,100 @@
 'use client'
 
-import Link from 'next/link'
 import { useState } from 'react'
-import LessonHero from '@/components/LessonHero'
+import StandardLessonShell, { LessonSection, LessonSources, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { GEHIRN_PRES_LESSON as lesson } from '@/data/gehirnPresLesson'
-import styles from '@/app/technik/kontrastmittel/page.module.css'
+import styles from './page.module.css'
 
-const pick = (x, lang) => x?.[lang] || x?.de || ''
+const L = (de, en, fa) => ({ de, en, fa })
+const pick = (value, lang) => value?.[lang] || value?.de || ''
+const labels = {
+  contents: L('Lektionsinhalt', 'Lesson contents', 'محتوای درس'),
+  path: L('Lernpfad', 'Learning path', 'مسیر یادگیری'),
+  progress: L('gelesen', 'read', 'خوانده‌شده'),
+  continue: L('Lektion fortsetzen', 'Continue lesson', 'ادامهٔ درس'),
+  completeLesson: L('Ganze Lektion als gelesen markieren', 'Mark the whole lesson as read', 'علامت‌گذاری کل درس به‌عنوان خوانده‌شده'),
+  lessonCompleted: L('Ganze Lektion gelesen', 'Full lesson marked as read', 'کل درس خوانده شد'),
+  complete: L('Abschnitt als gelesen markieren', 'Mark section as read', 'علامت‌گذاری بخش به‌عنوان خوانده‌شده'),
+  completed: L('Als gelesen markiert', 'Marked as read', 'خوانده‌شده'),
+  open: L('Abschnitt öffnen', 'Open section', 'بازکردن بخش'),
+  close: L('Schließen', 'Close', 'بستن'),
+  takeHome: L('Kernaussagen', 'Key points', 'نکات کلیدی'),
+  sources: L('Quellen und Umfang', 'Sources and scope', 'منابع و دامنه'),
+  practice: L('Selbstcheck', 'Self-check', 'خودآزمایی'),
+  cards: L('Karteikarten', 'Flashcards', 'فلش‌کارت‌ها'),
+}
+const icons = {
+  pattern: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8c0-3 2-5 5-5 1 0 2 .5 2 2 0-1.5 1-2 2-2 3 0 5 2 5 5 2 2 2 5 0 7 0 3-2 5-5 5-1 0-2-.5-2-2 0 1.5-1 2-2 2-3 0-5-2-5-5-2-2-2-5 0-7Z"/><path d="M12 5v14"/></svg>,
+  diffusion: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M7 8l-4 4 4 4m10-8 4 4-4 4"/><circle cx="12" cy="12" r="3"/></svg>,
+  distribution: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M12 5v5m0 0-6 6m6-6 6 6M6 16v4m12-4v4"/></svg>,
+  practice: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg>,
+  summary: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6L12 2Z"/></svg>,
+}
 
-function PresSchematic({ lang }) {
-  const labels = lang === 'fa'
-    ? ['T2/FLAIR','توزیع','DWI + ADC','زمینه']
-    : lang === 'en'
-      ? ['T2/FLAIR','Distribution','DWI + ADC','Context']
-      : ['T2/FLAIR','Verteilung','DWI + ADC','Kontext']
-  return <figure style={{ margin: 0, padding: 14, border: '1px solid var(--border)', borderRadius: 18, background: 'var(--bg-card)' }}>
-    <svg viewBox="0 0 640 190" role="img" aria-label={labels.join(' → ')} style={{ display: 'block', width: '100%', height: 'auto' }}>
-      <defs><marker id="pres-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="var(--text-muted)" /></marker></defs>
-      <path d="M30 94h568" stroke="var(--text-muted)" strokeWidth="2" markerEnd="url(#pres-arrow)" />
-      {labels.map((label, i) => { const x = 18 + i * 154; return <g key={label}>
-        <rect x={x} y="52" width="128" height="82" rx="16" fill="var(--surface-soft)" stroke={i === 2 ? '#0f9f6e' : 'var(--border)'} strokeWidth="2" />
-        <circle cx={x + 20} cy="72" r="11" fill={i === 2 ? '#0f9f6e' : '#4189a7'} />
-        <text x={x + 20} y="76" textAnchor="middle" fill="white" fontSize="10" fontWeight="700">{i + 1}</text>
-        <foreignObject x={x + 7} y="89" width="114" height="38"><div xmlns="http://www.w3.org/1999/xhtml" style={{ display:'grid', height:'100%', placeItems:'center', color:'var(--text-strong)', fontSize:13, fontWeight:800, textAlign:'center' }}>{label}</div></foreignObject>
-      </g> })}
-      <text x="320" y="169" textAnchor="middle" fill="var(--text-muted)" fontSize="12">{lang === 'fa' ? 'الگوی تصویری + زمینه؛ بدون نشانهٔ قطعی منفرد' : lang === 'en' ? 'Imaging pattern + context; no single decisive sign' : 'Bildmuster + Kontext; kein einzelnes beweisendes Zeichen'}</text>
-    </svg>
-    <figcaption style={{ color:'var(--text-muted)', fontSize:12, textAlign:'center' }}>{lang === 'fa' ? 'شماتیک آموزشی است و تصویر MRI واقعی نیست.' : lang === 'en' ? 'Educational schematic; not an MRI.' : 'Konzeptgrafik, keine MRT-Aufnahme.'}</figcaption>
+function PatternFigure({ lang }) {
+  const orientation = lang === 'fa' ? { posterior: 'خلفی', anterior: 'قدامی' } : lang === 'en' ? { posterior: 'Posterior', anterior: 'Anterior' } : { posterior: 'Posterior', anterior: 'Anterior' }
+  const caption = pick(L(
+    'Schema: symmetrische parieto-okzipitale Betonung. Es zeigt eine Verteilung, keine MRT-Aufnahme.',
+    'Schematic: symmetric parieto-occipital predominance. It shows a distribution, not an MRI.',
+    'شماتیک: غلبهٔ متقارن آهیانه‌ای ـ پس‌سری. این تصویر فقط توزیع را نشان می‌دهد و MRI نیست.'
+  ), lang)
+  return <figure className={styles.figure}>
+    <div className={styles.mapWrap}>
+      <span className={styles.posterior}>{orientation.posterior}</span>
+      <img src="/educational/pres/posterior-pattern.svg" width="800" height="360" alt={pick(lesson.diagramAlt, lang)} />
+      <span className={styles.anterior}>{orientation.anterior}</span>
+    </div>
+    <figcaption>{caption}</figcaption>
+    <ul className={styles.legend}>
+      {lesson.diagramLegend.map((item, index) => <li key={index}><strong>{pick(item.title, lang)}</strong><span>{pick(item.text, lang)}</span></li>)}
+    </ul>
   </figure>
+}
+
+function SelfCheck({ lang }) {
+  const [answer, setAnswer] = useState(null)
+  const t = lang === 'fa'
+    ? { result: 'بازخورد' }
+    : lang === 'en'
+      ? { result: 'Feedback' }
+      : { result: 'Rückmeldung' }
+  return <div className={styles.check}>
+    <p className={styles.lead}>{pick(lesson.assessment.question, lang)}</p>
+    <div className={styles.options}>{lesson.assessment.options.map((option, index) => <button key={index} type="button" aria-pressed={answer === index} onClick={() => setAnswer(index)}>{pick(option, lang)}</button>)}</div>
+    {answer !== null ? <p role="status" className={styles.feedback}><strong>{t.result}:</strong> {answer === lesson.assessment.correctIndex ? pick(lesson.assessment.feedback, lang) : pick(lesson.assessment.retry, lang)}</p> : null}
+  </div>
 }
 
 export default function PresLessonPage() {
   const { lang } = useLanguage()
-  const rtl = lang === 'fa'
-  const [open, setOpen] = useState(0)
-  const [read, setRead] = useState([])
-  const [answer, setAnswer] = useState(null)
-  const t = lang === 'fa'
-    ? { badge:'Gehirn · PDF-Lernentwurf', breadcrumb:'مغز', contents:'مسیر یادگیری', progress:'پیشرفت فقط با علامت‌گذاری بخش خوانده‌شده تغییر می‌کند.', read:'این بخش را خواندم', source:'منبع و محدودیت‌ها', media:'رسانه', review:'وضعیت بررسی', self:'خودآزمایی: تفسیر DWI', result:'بازخورد', home:'آموزش مغز', status:'پیش‌نویس آموزشی؛ برای تصمیم بالینی استفاده نشود.' }
-    : lang === 'en'
-      ? { badge:'Brain · PDF teaching draft', breadcrumb:'Brain', contents:'Learning path', progress:'Progress changes only when you mark a section as read.', read:'Mark section as read', source:'Source and limits', media:'Media', review:'Review status', self:'Self-check: interpreting DWI', result:'Feedback', home:'Brain lessons', status:'Teaching draft; not for clinical decision-making.' }
-      : { badge:'Gehirn · PDF-Lernentwurf', breadcrumb:'Gehirn', contents:'Lernpfad', progress:'Der Fortschritt ändert sich erst, wenn Sie ein Kapitel als gelesen markieren.', read:'Kapitel als gelesen markieren', source:'Quelle und Grenzen', media:'Medien', review:'Prüfstatus', self:'Selbstcheck: DWI einordnen', result:'Rückmeldung', home:'Gehirn-Lektionen', status:'Lernentwurf; nicht für klinische Entscheidungen.' }
-  const url = path => lang === 'de' ? path : `${path}?lang=${lang}`
-  const chapter = lesson.chapters[open]
-  const toggleRead = i => setRead(prev => prev.includes(i) ? prev.filter(x => x !== i) : [...prev, i])
-  const pct = Math.round((read.length / lesson.chapters.length) * 100)
-
-  return <main className={styles.page} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
-    <header className={styles.header}>
-      <nav className={styles.breadcrumb} aria-label={rtl ? 'مسیر صفحه' : lang === 'en' ? 'Breadcrumb' : 'Seitennavigation'}><Link href={url('/')}>RadYar</Link><span>›</span><Link href={url('/lernen/gehirn')}>{t.breadcrumb}</Link><span>›</span><span>{pick(lesson.title, lang)}</span></nav>
-      <div className={styles.hero}><div className={styles.heroText}><span className={styles.sourceBadge}>{t.badge}</span><LessonHero title={pick(lesson.title, lang)} lang={lang} visual={<PresSchematic lang={lang} />} /></div><aside className={styles.heroStats}><div className={styles.heroStat}><strong>79</strong><span>{lang === 'fa' ? 'صفحه PDF' : lang === 'en' ? 'PDF page' : 'PDF-Seite'}</span><small>{lang === 'fa' ? 'PRES و افتراق انفارکت' : lang === 'en' ? 'PRES and infarct differential' : 'PRES und Infarktdifferenzial'}</small></div><p role="status" style={{ padding: 14 }}>{t.status}</p></aside></div>
-    </header>
-    <div className={styles.layout}>
-      <aside className={styles.sidebar}><div className={styles.sideTitle}>{t.contents}</div><div aria-label={t.progress}><div style={{ height: 8, margin: '8px 0', borderRadius: 9, background: 'var(--border)' }}><div style={{ width: `${pct}%`, height: '100%', borderRadius: 9, background: '#0f9f6e', transition: 'width .2s' }} /></div><small>{pct}% · {t.progress}</small></div>{lesson.chapters.map((c, i) => <button key={c.id} type="button" className={styles.sideItem} aria-current={open === i ? 'step' : undefined} onClick={() => setOpen(i)}><span aria-hidden="true">{read.includes(i) ? '✓' : '◈'}</span><strong>{pick(c.title, lang)}</strong></button>)}</aside>
-      <div className={styles.main}>
-        <section className={styles.section} id={chapter.id}>
-          <button className={styles.sectionHeader} type="button" aria-expanded="true"><span className={styles.sectionHeading}><span className={styles.sectionIcon} aria-hidden="true">◈</span><h2>{pick(chapter.title, lang)}</h2></span><span className={styles.sectionToggle}>{chapter.pages}</span></button>
-          <div className={styles.sectionBody}>{open === 0 && <p className={styles.lead}>{pick(lesson.objective, lang)}</p>}<p className={styles.lead}>{pick(chapter.text, lang).split('\n\n')[0]}</p>{pick(chapter.text, lang).split('\n\n').slice(1).map((p, i) => <p key={i} style={{ lineHeight: 1.75 }}>{p}</p>)}<button type="button" onClick={() => toggleRead(open)} aria-pressed={read.includes(open)} className={styles.sectionToggle} style={{ width: 'auto', padding: '8px 14px', marginTop: 14 }}>{read.includes(open) ? `✓ ${t.read}` : t.read}</button></div>
-        </section>
-        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12 }}><button type="button" className={styles.lessonLink} disabled={open === 0} onClick={() => setOpen(Math.max(0, open - 1))}>{lang === 'fa' ? 'فصل پیشین' : lang === 'en' ? 'Previous chapter' : 'Vorheriges Kapitel'}</button><button type="button" className={styles.lessonLink} disabled={open === lesson.chapters.length - 1} onClick={() => setOpen(Math.min(lesson.chapters.length - 1, open + 1))}>{lang === 'fa' ? 'فصل بعدی' : lang === 'en' ? 'Next chapter' : 'Nächstes Kapitel'}</button></div>
-        {open === lesson.chapters.length - 1 && <>
-          <section className={styles.section} aria-labelledby="pres-check"><div className={styles.sectionBody}><h2 id="pres-check">{t.self}</h2><p className={styles.lead}>{pick(lesson.assessment.question, lang)}</p><div style={{ display: 'grid', gap: 9 }}>{lesson.assessment.options.map((o, i) => <button key={i} type="button" aria-pressed={answer === i} onClick={() => setAnswer(i)} style={{ padding: 14, border: '1px solid var(--border)', borderRadius: 12, color: 'var(--text)', background: 'var(--bg-card)', cursor: 'pointer', textAlign: 'start' }}>{pick(o, lang)}</button>)}</div>{answer !== null && <p role="status" style={{ marginTop: 12 }}>{answer === lesson.assessment.correctIndex ? pick(lesson.assessment.feedback, lang) : pick(lesson.assessment.retry, lang)}</p>}</div></section>
-          <aside className={`${styles.callout} ${styles.calloutCave}`}><strong>{t.source}</strong><p>{pick(lesson.media, lang)}</p><p style={{ marginTop: 10 }}>{pick(lesson.reviewStatus, lang)}</p><ul>{lesson.references.map(ref => <li key={ref.label}>{ref.href ? <a href={ref.href} target="_blank" rel="noreferrer">{ref.label}</a> : ref.label}</li>)}</ul></aside>
-        </>}
-        <Link className={styles.lessonLink} href={url('/lernen/gehirn')}>{t.home}<span aria-hidden="true">←</span></Link>
-      </div>
+  const t = key => pick(labels[key], lang)
+  const path = route => lang === 'de' ? route : `${route}?lang=${lang}`
+  const sections = [
+    ...lesson.chapters.map((chapter, index) => ({ id: chapter.id, label: pick(chapter.title, lang), icon: ['pattern', 'diffusion', 'distribution', 'practice'][index] })),
+    { id: 'take-home', label: t('takeHome'), icon: 'summary', emphasis: true },
+  ]
+  const sources = lesson.references.filter(item => item.href).map((item, index) => ({
+    href: item.href,
+    title: item.label,
+    tag: 'Primary study',
+    citation: pick(item.scope, lang),
+    scope: '',
+  }))
+  const takeaways = lesson.takeaways.map(item => ({ title: pick(item.title, lang), detail: pick(item.detail, lang) }))
+  const rubric = Object.fromEntries(Object.entries(labels).map(([key, value]) => [key, pick(value, lang)]))
+  return <StandardLessonShell lessonId="pres-muster" lang={lang} title={pick(lesson.title, lang)} author="Dr. Zia"
+    breadcrumbs={[{ label: 'RadYar', href: path('/') }, { label: pick(L('Gehirn', 'Brain', 'مغز'), lang), href: path('/lernen/gehirn') }, { label: pick(lesson.title, lang) }]}
+    sections={sections} labels={rubric} actions={{}} renderIcon={id => icons[id] || icons.pattern}
+    theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/educational/pres/posterior-pattern.svg', heroImageOpacity: .92, accent: '#607fbb', accentStrong: '#304d83', accentSoft: '#e9effb', secondary: '#9b71bd', secondaryStrong: '#61427d', heroBase: '#152239' }}
+    className={styles.page} heroImageAlt={pick(lesson.diagramAlt, lang)} syncHashNavigation
+    sources={<LessonSources title={t('sources')} items={sources} note={pick(lesson.scopeNote, lang)} />}>
+    <div lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+      <LessonSection id="pattern" title={pick(lesson.chapters[0].title, lang)} icon="pattern"><p className={styles.lead}>{pick(lesson.objective, lang)}</p>{pick(lesson.chapters[0].text, lang).split('\n\n').map((paragraph, index) => <p key={index}>{paragraph}</p>)}<PatternFigure lang={lang} /></LessonSection>
+      <LessonSection id="diffusion" title={pick(lesson.chapters[1].title, lang)} icon="diffusion">{pick(lesson.chapters[1].text, lang).split('\n\n').map((paragraph, index) => <p key={index} className={index > 0 ? styles.cave : undefined}>{paragraph}</p>)}</LessonSection>
+      <LessonSection id="distribution" title={pick(lesson.chapters[2].title, lang)} icon="distribution">{pick(lesson.chapters[2].text, lang).split('\n\n').map((paragraph, index) => <p key={index}>{paragraph}</p>)}</LessonSection>
+      <LessonSection id="carry-away" title={pick(lesson.chapters[3].title, lang)} icon="practice">{pick(lesson.chapters[3].text, lang).split('\n\n').map((paragraph, index) => <p key={index}>{paragraph}</p>)}<SelfCheck lang={lang} /></LessonSection>
+      <LessonSection id="take-home" title={t('takeHome')} icon="summary" emphasis><TakeHomeList items={takeaways} /></LessonSection>
     </div>
-  </main>
+  </StandardLessonShell>
 }

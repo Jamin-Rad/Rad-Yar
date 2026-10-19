@@ -45,7 +45,11 @@ Use is covered by the user's project-level authorization for supplied PDFs and R
 
 ## Validation and open gates
 
-- Source pages visually inspected; cropped assets opened and checked after cropping.
+- Re-rendered and visually inspected user-provided PDF pp.75–76 for this update; the p.75 FLAIR/DWI pair and p.76 single axial DWI frame match the described crops. Neither page shows an ADC map.
+- Cropped assets opened and checked after cropping; provenance records the PDF page, printed page, Radiopaedia case ID, contributor, and teaching purpose.
+- Route uses the maintained `StandardLessonShell` with section progress, hash navigation, source panel, and shared accordion behavior. The localized hero schematic describes peripheral cortex and paired deep-grey nuclei; the p.75 cortical image and p.76 thalamic image are placed beside their respective explanations. Independent reviewer retested these changes and passed the bounded source, education, visual, language, and assessment scope.
+- `node scripts/test-cjd-render.mjs` passed actual-route semantic SSR for DE/EN/FA, including Persian RTL direction, localized text and alt text, source credits, and embedded check options.
+- `git diff --check` passed for the route changes.
 - Curriculum entry links exact ID to the existing route and remains `inProgress`.
 - Lesson has DE/EN/FA fields and a four-choice local self-check.
 - Independent read-only source/content/translation review and retest passed; the reported ADC, MRI-criterion, media-copy, and German-label findings were closed.

@@ -1,51 +1,131 @@
 'use client'
 
-import Link from 'next/link'
 import { useState } from 'react'
-import LessonHero from '@/components/LessonHero'
+import StandardLessonShell, { LessonSection, LessonSources, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { GEHIRN_GLIOME_LESSON as lesson } from '@/data/gehirnGliomeLesson'
-import styles from '@/app/technik/kontrastmittel/page.module.css'
+import { GEHIRN_GLIOME_LESSON as C } from '@/data/gehirnGliomeLesson'
+import styles from './page.module.css'
 
-const pick = (x, lang) => x?.[lang] || x?.de || ''
+const L = (de, en, fa) => ({ de, en, fa })
+const value = (item, lang) => item?.[lang] || item?.de || ''
 
-function GroupMap({ lang }) {
-  const labels = lang === 'fa'
-    ? ['گلیوم منتشر بزرگسالان','IDH-mutant astrocytoma','IDH-mutant + 1p/19q','IDH-wildtype']
+const sections = [
+  { id: 'classification', icon: 'compare', label: L('Welche Gliom-Gruppe ist gemeint?', 'Which glioma family is meant?', 'منظور کدام گروه گلیوم است؟') },
+  { id: 'pilocytic', icon: 'scan', label: L('Wie sieht das pilozytische Muster aus?', 'What is the pilocytic pattern?', 'الگوی پیلوسیتیک چگونه است؟') },
+  { id: 'differential', icon: 'brain', label: L('Was bleibt in der Differenzialdiagnose offen?', 'What remains open in the differential?', 'چه چیزی در تشخیص افتراقی باز می‌ماند؟') },
+  { id: 'self-check', icon: 'check', label: L('Selbstcheck', 'Self-check', 'خودآزمایی') },
+  { id: 'take-home', icon: 'summary', label: L('Drei Regeln für die Befundung', 'Three reporting rules', 'سه قاعده برای ارزیابی تصویر'), emphasis: true },
+]
+
+const labels = {
+  path: L('Lernpfad', 'Learning path', 'مسیر یادگیری'),
+  progress: L('Fortschritt', 'Progress', 'پیشرفت'),
+  continue: L('Lektion fortsetzen', 'Continue lesson', 'ادامه درس'),
+  completeLesson: L('Ganze Lektion als gelesen markieren', 'Mark the whole lesson as read', 'علامت‌گذاری کل درس به‌عنوان خوانده‌شده'),
+  lessonCompleted: L('Ganze Lektion gelesen', 'Full lesson marked as read', 'کل درس خوانده شد'),
+  complete: L('Abschnitt als gelesen markieren', 'Mark section as read', 'علامت‌گذاری بخش به‌عنوان خوانده‌شده'),
+  completed: L('Als gelesen markiert', 'Marked as read', 'خوانده‌شده'),
+  open: L('Abschnitt öffnen', 'Open section', 'بازکردن بخش'),
+  close: L('Schließen', 'Close', 'بستن'),
+  takeHome: L('Kernaussagen', 'Key points', 'نکات کلیدی'),
+  sources: L('Quellen und Umfang', 'Sources and scope', 'منابع و دامنه'),
+}
+
+const icons = {
+  compare: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18m-4-4 4 4-4 4M21 17H3m4-4-4 4 4 4" /></svg>,
+  scan: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V4h4m8 0h4v4M20 16v4h-4M8 20H4v-4M7 12h10M12 7v10" /></svg>,
+  brain: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5a4 4 0 0 0-7 3 4 4 0 0 0-1 7 4 4 0 0 0 7 4V5m2 0a4 4 0 0 1 7 3 4 4 0 0 1 1 7 4 4 0 0 1-7 4V5" /></svg>,
+  check: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5 5L20 6" /></svg>,
+  summary: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6L12 2Z" /></svg>,
+}
+
+function ClassificationMap({ lang }) {
+  const groups = lang === 'fa'
+    ? ['گلیوم‌های منتشر بزرگسالان', 'آستروسیتوم IDH-mutant', 'الیگودندروگلیوم IDH-mutant با حذف همزمان 1p/19q', 'گلیوبلاستوم IDH-wildtype', 'گروه آستروسیتی محدودشده', 'آستروسیتوم پیلوسیتیک · SEGA · PXA']
     : lang === 'en'
-      ? ['Adult-type diffuse glioma','Astrocytoma, IDH-mutant','Oligodendroglioma, IDH-mutant + 1p/19q','Glioblastoma, IDH-wildtype']
-      : ['Adulte diffuse Gliome','Astrozytom, IDH-mutiert','Oligodendrogliom, IDH-mutiert + 1p/19q','Glioblastom, IDH-Wildtyp']
-  const circ = lang === 'fa' ? 'گروه جداگانه: گلیوم آستروسیتی محدودشده' : lang === 'en' ? 'Separate family: circumscribed astrocytic glioma' : 'Separate Gruppe: zirkumskriptes astrozytäres Gliom'
-  const pa = lang === 'fa' ? 'آستروسیتوم پیلوسیتیک · SEGA · PXA*' : lang === 'en' ? 'Pilocytic astrocytoma · SEGA · PXA*' : 'Pilozytisches Astrozytom · SEGA · PXA*'
-  return <figure role="img" aria-label={labels.join('; ')} style={{margin:0,padding:14,border:'1px solid var(--border)',borderRadius:18,background:'var(--bg-card)',display:'grid',gap:10}}>
-    <div style={{padding:12,border:'2px solid #3e8da0',borderRadius:14,background:'#eaf4f5'}}>
-      <strong style={{display:'block',textAlign:'center',marginBottom:9,color:'#245c69'}}>{labels[0]}</strong>
-      <div style={{display:'grid',gridTemplateColumns:'repeat(3,minmax(0,1fr))',gap:8}}>{labels.slice(1).map(label=><div key={label} style={{display:'grid',placeItems:'center',textAlign:'center',minHeight:54,padding:7,border:'1px solid #82b5bd',borderRadius:10,background:'white',fontSize:12,fontWeight:700}}>{label}</div>)}</div>
-    </div>
-    <div style={{padding:12,border:'2px solid #9774a4',borderRadius:14,background:'#f4eef8',textAlign:'center'}}><strong style={{display:'block',color:'#60486a'}}>{circ}</strong><span style={{display:'block',marginTop:6,fontSize:12,color:'#60486a'}}>{pa}</span></div>
-    <figcaption style={{textAlign:'center',fontSize:12,color:'var(--text-muted)'}}>{lang==='fa'?'* فقط نام‌ها؛ بدون آموزش تصویربرداری.':'* Names only; imaging not covered.'}</figcaption>
+      ? ['Adult-type diffuse gliomas', 'Astrocytoma, IDH-mutant', 'Oligodendroglioma, IDH-mutant and 1p/19q-codeleted', 'Glioblastoma, IDH-wildtype', 'Circumscribed astrocytic gliomas', 'Pilocytic astrocytoma · SEGA · PXA']
+      : ['Adulte diffuse Gliome', 'Astrozytom, IDH-mutiert', 'Oligodendrogliom, IDH-mutiert und 1p/19q-kodeletiert', 'Glioblastom, IDH-Wildtyp', 'Zirkumskripte astrozytäre Gliome', 'Pilozytisches Astrozytom · SEGA · PXA']
+  return <figure className={styles.groupMap} aria-label={groups.join('; ')}>
+    <div className={styles.diffuse}><strong>{groups[0]}</strong><ol>{groups.slice(1, 4).map(item => <li key={item}>{item}</li>)}</ol></div>
+    <div className={styles.circumscribed}><strong>{groups[4]}</strong><span>{groups[5]}</span></div>
+    <figcaption>{lang === 'fa' ? 'نقشهٔ گروه‌بندی؛ SEGA و PXA فقط نام برده شده‌اند.' : lang === 'en' ? 'Classification map; SEGA and PXA are named only.' : 'Gruppierung; SEGA und PXA werden hier nur genannt.'}</figcaption>
   </figure>
+}
+
+function CasePanel({ lang }) {
+  const alt = lang === 'fa'
+    ? 'پنل MRI از PDF کاربر: برش‌های آکسیال T1، T1 پس از تزریق و FLAIR از کیست مخچه با ندول دیواره‌ای.'
+    : lang === 'en'
+      ? 'User-PDF MRI panel: axial T1, post-contrast T1 and FLAIR frames of a cerebellar cyst with a mural nodule.'
+      : 'MRT-Tafel aus dem Nutzer-PDF: axiale T1-, T1-nach-Kontrastmittel- und FLAIR-Aufnahmen einer Kleinhirnzyste mit Wandknoten.'
+  const caption = lang === 'fa'
+    ? 'Gehirn.pdf، صفحهٔ PDF ۴۲ (صفحهٔ چاپی ۴۱)، با برچسب Radiopaedia rID 36807. پنل بدون تغییر محتوایی برش خورده؛ تطبیق شناسه و شرایط استفاده هنوز مستقل بررسی نشده است.'
+    : lang === 'en'
+      ? 'Gehirn.pdf, PDF p. 42 (printed p. 41), labelled Radiopaedia rID 36807. Cropped without changing image content; case identity and reuse terms still need independent verification.'
+      : 'Gehirn.pdf, PDF-S. 42 (Druck-S. 41), dort mit Radiopaedia rID 36807 bezeichnet. Ohne inhaltliche Bildänderung beschnitten; Fallidentität und Wiederverwendungsbedingungen sind noch unabhängig zu prüfen.'
+  return <figure className={styles.casePanel}>
+    <img src="/gehirn/gliome/pilocytic-case-pdf-p42.jpg" alt={alt} width="1600" height="590" />
+    <figcaption>{caption}</figcaption>
+  </figure>
+}
+
+function SelfCheck({ lang }) {
+  const [answer, setAnswer] = useState(null)
+  const correct = C.assessment.correctIndex
+  const prompt = value(C.assessment.question, lang)
+  return <div className={styles.quiz}>
+    <p>{prompt}</p>
+    <div className={styles.options}>{C.assessment.options.map((option, index) => <button key={index} type="button" aria-pressed={answer === index} onClick={() => setAnswer(index)}>{value(option, lang)}</button>)}</div>
+    {answer !== null ? <p className={styles.feedback} role="status">{value(answer === correct ? C.assessment.feedback : C.assessment.options[correct], lang)}</p> : null}
+  </div>
 }
 
 export default function BrainGliomaLessonPage() {
   const { lang } = useLanguage()
   const rtl = lang === 'fa'
-  const [open,setOpen]=useState(0), [read,setRead]=useState([]), [answer,setAnswer]=useState(null)
-  const t=lang==='fa'?{badge:'مغز · پیش‌نویس آموزشی PDF',crumb:'مغز',contents:'مسیر یادگیری',progress:'پیشرفت با علامت‌گذاری بخش خوانده‌شده ثبت می‌شود.',read:'این بخش را خواندم',self:'خودآزمایی: الگوی کیست و ندول',refs:'منبع و محدودیت‌ها',home:'درس‌های مغز',status:'پیش‌نویس آموزشی؛ برای تصمیم بالینی استفاده نشود.'}:lang==='en'?{badge:'Brain · PDF teaching draft',crumb:'Brain',contents:'Learning path',progress:'Progress is recorded when a section is marked as read.',read:'Mark section as read',self:'Self-check: cyst and nodule pattern',refs:'Sources and limits',home:'Brain lessons',status:'Teaching draft; not for clinical decisions.'}:{badge:'Gehirn · PDF-Lernentwurf',crumb:'Gehirn',contents:'Lernpfad',progress:'Fortschritt wird erst nach Markieren des Kapitels erfasst.',read:'Kapitel als gelesen markieren',self:'Selbstcheck: Zyste und Knoten',refs:'Quellen und Grenzen',home:'Gehirn-Lektionen',status:'Lernentwurf; nicht für klinische Entscheidungen.'}
-  const url=path=>lang==='de'?path:`${path}?lang=${lang}`
-  const chapter=lesson.chapters[open], pct=Math.round(read.length/lesson.chapters.length*100)
-  const markRead=()=>setRead(prev=>prev.includes(open)?prev.filter(x=>x!==open):[...prev,open])
-  return <main className={styles.page} dir={rtl?'rtl':'ltr'} lang={lang}>
-    <header className={styles.header}><nav className={styles.breadcrumb} aria-label={rtl?'مسیر صفحه':lang==='en'?'Breadcrumb':'Seitennavigation'}><Link href={url('/')}>RadYar</Link><span>›</span><Link href={url('/lernen/gehirn')}>{t.crumb}</Link><span>›</span><span>{pick(lesson.title,lang)}</span></nav>
-      <div className={styles.hero}><div className={styles.heroText}><span className={styles.sourceBadge}>{t.badge}</span><LessonHero title={pick(lesson.title,lang)} lang={lang} visual={<GroupMap lang={lang}/>} /></div><aside className={styles.heroStats}><div className={styles.heroStat}><strong>41–42</strong><span>{lang==='fa'?'صفحه‌های PDF':lang==='en'?'PDF pages':'PDF-Seiten'}</span><small>{lang==='fa'?'طبقه‌بندی و الگوی پيلوستیک':'Classification and pilocytic pattern'}</small></div><p role="status" style={{padding:14}}>{t.status}</p></aside></div>
-    </header>
-    <div className={styles.layout}><aside className={styles.sidebar}><div className={styles.sideTitle}>{t.contents}</div><div><div style={{height:8,margin:'8px 0',borderRadius:9,background:'var(--border)'}}><div style={{width:`${pct}%`,height:'100%',borderRadius:9,background:'#0f9f6e'}}/></div><small>{pct}% · {t.progress}</small></div>{lesson.chapters.map((c,i)=><button key={c.id} type="button" className={styles.sideItem} aria-current={open===i?'step':undefined} onClick={()=>setOpen(i)}><span aria-hidden="true">{read.includes(i)?'✓':'◈'}</span><strong>{pick(c.title,lang)}</strong></button>)}</aside>
-      <div className={styles.main}><section className={styles.section}><div className={styles.sectionHeader}><span className={styles.sectionHeading}><span className={styles.sectionIcon} aria-hidden="true">◈</span><h2>{pick(chapter.title,lang)}</h2></span><span className={styles.sectionToggle} style={{width:'auto',paddingInline:12}}>{lang==='fa'? `PDF ${chapter.pages}`:lang==='en'?`PDF p. ${chapter.pages}`:`PDF S. ${chapter.pages}`}</span></div><div className={styles.sectionBody}>{open===0&&<p className={styles.lead}>{pick(lesson.objective,lang)}</p>}{open===1&&<figure style={{margin:'10px 0 20px'}}><img src="/gehirn/gliome/pilocytic-case-pdf-p42.jpg" alt={lang==='fa'?'MRI آکسیال در سه توالی T1، T1 پس از تزریق و FLAIR؛ کیست مخچه‌ای با ندول کنتراست‌گیر':'Axial MRI in T1, post-contrast T1, and FLAIR; cerebellar cyst with an enhancing mural nodule'} style={{display:'block',width:'100%',height:'auto',borderRadius:12}}/><figcaption style={{fontSize:12,color:'var(--text-muted)',marginTop:8}}>{lang==='fa'?'Gehirn.pdf، ص. ۴۲؛ Radiopaedia rID 36807. پنل منبع بدون تغییر محتوایی برش خورده است.':'Gehirn.pdf, p. 42; Radiopaedia rID 36807. Source panel cropped without changing its content.'}</figcaption></figure>}{pick(chapter.text,lang).split('\n\n').map((p,i)=><p key={i} className={i===0?styles.lead:undefined} style={{lineHeight:1.75}}>{p}</p>)}<button type="button" onClick={markRead} aria-pressed={read.includes(open)} className={styles.sectionToggle} style={{width:'auto',padding:'8px 14px',marginTop:14}}>{read.includes(open)?`✓ ${t.read}`:t.read}</button></div></section>
-        <div style={{display:'flex',justifyContent:'space-between',gap:12}}><button type="button" className={styles.lessonLink} disabled={open===0} onClick={()=>setOpen(Math.max(0,open-1))}>{lang==='fa'?'فصل پیشین':lang==='en'?'Previous chapter':'Vorheriges Kapitel'}</button><button type="button" className={styles.lessonLink} disabled={open===lesson.chapters.length-1} onClick={()=>setOpen(Math.min(lesson.chapters.length-1,open+1))}>{lang==='fa'?'فصل بعدی':lang==='en'?'Next chapter':'Nächstes Kapitel'}</button></div>
-        {open===lesson.chapters.length-1&&<><section className={styles.section}><div className={styles.sectionBody}><h2>{t.self}</h2><p className={styles.lead}>{pick(lesson.assessment.question,lang)}</p><div style={{display:'grid',gap:9}}>{lesson.assessment.options.map((o,i)=><button key={i} type="button" aria-pressed={answer===i} onClick={()=>setAnswer(i)} style={{padding:14,border:'1px solid var(--border)',borderRadius:12,color:'var(--text)',background:'var(--bg-card)',cursor:'pointer',textAlign:'start'}}>{pick(o,lang)}</button>)}</div>{answer!==null&&<p role="status" style={{marginTop:12}}>{answer===lesson.assessment.correctIndex?pick(lesson.assessment.feedback,lang):pick(lesson.assessment.options[lesson.assessment.correctIndex],lang)}</p>}</div></section><aside className={`${styles.callout} ${styles.calloutCave}`}><strong>{t.refs}</strong><p>{pick(lesson.media,lang)}</p><p style={{marginTop:10}}>{pick(lesson.sourceConflict,lang)}</p><p style={{marginTop:10}}>{pick(lesson.reviewStatus,lang)}</p><ul>{lesson.references.map(ref=><li key={ref.label}>{ref.href?<a href={ref.href} target="_blank" rel="noreferrer">{ref.label}</a>:ref.label}</li>)}</ul></aside></>}
-        <Link className={styles.lessonLink} href={url('/lernen/gehirn')}>{t.home}<span aria-hidden="true">←</span></Link>
-      </div>
+  const t = key => value(labels[key], lang)
+  const langPath = path => lang === 'de' ? path : `${path}?lang=${lang}`
+  const translatedSections = sections.map(section => ({ ...section, label: value(section.label, lang) }))
+  const sources = C.references.filter(source => source.href).map(source => ({
+    ...source,
+    tag: lang === 'fa' ? 'مرجع تکمیلی' : lang === 'en' ? 'Context source' : 'Kontextquelle',
+    title: source.label,
+    citation: lang === 'fa' ? 'برای زمینهٔ طبقه‌بندی یا الگوی تصویربرداری؛ جایگزین بررسی PDF نیست.' : lang === 'en' ? 'For classification or imaging context; does not replace the PDF review.' : 'Für Klassifikations- oder Bildgebungskontext; ersetzt nicht die PDF-Prüfung.',
+    scope: '',
+  }))
+  return <StandardLessonShell lessonId={C.id} lang={lang} title={value(C.title, lang)} author="Dr. Zia"
+    breadcrumbs={[{ label: 'RadYar', href: langPath('/') }, { label: lang === 'fa' ? 'مغز' : lang === 'en' ? 'Brain' : 'Gehirn', href: langPath('/lernen/gehirn') }, { label: value(C.title, lang) }]}
+    sections={translatedSections} labels={Object.fromEntries(Object.entries(labels).map(([key, item]) => [key, value(item, lang)]))} actions={{}}
+    renderIcon={id => icons[id] || icons.scan}
+    theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/educational/gliome/pilocytic-hero.svg', heroImageOpacity: .9, accent: '#46afbf', accentStrong: '#1e5965', accentSoft: '#e3f5f6', secondary: '#a979bd', secondaryStrong: '#69477b', heroBase: '#102631' }}
+    className={styles.page} heroImageAlt={value(C.heroAlt, lang)} syncHashNavigation
+    sources={<LessonSources title={t('sources')} items={sources} note={value(C.sourcesNote, lang)} />}>
+    <div lang={lang} dir={rtl ? 'rtl' : 'ltr'}>
+      <LessonSection id="classification" title={value(sections[0].label, lang)} icon="compare">
+        <p className={styles.lead}>{value(C.objective, lang)}</p>
+        <p>{value(C.chapters[0].text, lang).split('\n\n')[0]}</p>
+        <ClassificationMap lang={lang} />
+        <p>{value(C.chapters[0].text, lang).split('\n\n')[1]}</p>
+      </LessonSection>
+      <LessonSection id="pilocytic" title={value(sections[1].label, lang)} icon="scan">
+        {value(C.chapters[1].text, lang).split('\n\n').map((paragraph, index) => <p key={index} className={index === 0 ? styles.lead : undefined}>{paragraph}</p>)}
+        <CasePanel lang={lang} />
+        <p className={styles.imageTask}>{value(C.cystWallNote, lang)}</p>
+        <p className={styles.imageTask}>{lang === 'fa' ? 'کار با تصویر: ابتدا مایع کیست را در T1 بررسی کنید، سپس ندول دیواره‌ای و جذب آن در T1 پس از تزریق را دنبال کنید؛ FLAIR پنل سوم است.' : lang === 'en' ? 'Image task: identify the cyst fluid on T1, then trace the mural nodule and its enhancement on post-contrast T1; FLAIR is the third panel.' : 'Bildaufgabe: Beurteilen Sie zuerst die Zystenflüssigkeit in T1, dann den Wandknoten und seine Aufnahme in T1 nach Kontrastmittel; FLAIR ist das dritte Panel.'}</p>
+      </LessonSection>
+      <LessonSection id="differential" title={value(sections[2].label, lang)} icon="brain">
+        <p>{value(C.chapters[2].text, lang).split('\n\n')[0]}</p>
+        <div className={styles.scopeNote}><strong>{lang === 'fa' ? 'دامنهٔ منبع' : lang === 'en' ? 'Source scope' : 'Quellenumfang'}</strong><p>{value(C.chapters[2].text, lang).split('\n\n')[1]}</p></div>
+        <p className={styles.sourceConflict}>{value(C.sourceConflict, lang)}</p>
+      </LessonSection>
+      <LessonSection id="self-check" title={value(sections[3].label, lang)} icon="check"><SelfCheck lang={lang} /></LessonSection>
+      <LessonSection id="take-home" title={value(sections[4].label, lang)} icon="summary" emphasis>
+        <TakeHomeList items={[
+          { title: lang === 'fa' ? 'گروه را از ابتدا جدا کنید' : lang === 'en' ? 'Separate the families first' : 'Gruppen zuerst trennen', detail: lang === 'fa' ? 'آستروسیتوم پیلوسیتیک در گروه آستروسیتی محدودشده است، نه در گروه آستروسیتوم منتشر IDH-mutant بزرگسالان.' : lang === 'en' ? 'Pilocytic astrocytoma belongs to the circumscribed astrocytic group, separate from adult-type diffuse astrocytoma, IDH-mutant.' : 'Das pilozytische Astrozytom gehört zur Gruppe der zirkumskripten astrozytären Gliome, getrennt vom adulten diffusen Astrozytom, IDH-mutiert.' },
+          { title: lang === 'fa' ? 'الگوی کلاسیک را جست‌وجو کنید' : lang === 'en' ? 'Look for the classic pattern' : 'Klassisches Muster suchen', detail: lang === 'fa' ? 'کیست بزرگ همراه ندول دیواره‌ایِ کنتراست‌گیر با آستروسیتوم پیلوسیتیک سازگار است؛ ندول دیواره‌ای به‌تنهایی اختصاصی نیست.' : lang === 'en' ? 'A large cyst with an enhancing mural nodule is compatible with pilocytic astrocytoma; a mural nodule alone is not specific.' : 'Eine große Zyste mit kontrastmittelaufnehmendem Wandknoten passt zu einem pilozytischen Astrozytom; der Wandknoten allein ist nicht spezifisch.' },
+          { title: lang === 'fa' ? 'افتراق را باز نگه دارید' : lang === 'en' ? 'Keep the differential open' : 'Differenzialdiagnose offenhalten', detail: lang === 'fa' ? 'محل، سن، توالی‌ها و زمینهٔ بالینی را یکجا ارزیابی کنید؛ تصویر به‌تنهایی نوع مولکولی یا تشخیص نهایی را تعیین نمی‌کند.' : lang === 'en' ? 'Assess location, age, sequences and clinical context together; imaging alone does not establish molecular type or a final diagnosis.' : 'Lokalisation, Alter, Sequenzen und klinischen Kontext gemeinsam bewerten; die Bildgebung allein bestimmt weder den molekularen Typ noch die endgültige Diagnose.' },
+        ]} />
+      </LessonSection>
     </div>
-  </main>
+  </StandardLessonShell>
 }
-
