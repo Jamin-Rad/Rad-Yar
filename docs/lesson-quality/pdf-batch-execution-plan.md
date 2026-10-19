@@ -59,6 +59,7 @@
 | AL (آمادهٔ پوش) | MSK | [ماتریس](msk-wirbelsaeule-curriculum-matrix.md) | MSK.pdf p.80: Osteoblastom، ID `osteoblastom`, Route `/msk/tumoren/osteoblastom` | بازبینی مستقل منبع/محتوا/تصویر/زبان و delta سؤال PASS؛ گزینه‌های خودآزمایی باورپذیرتر شدند؛ route و SSR سه‌زبانه پاس | مرورگر و تأیید بالینی باز |
 | AM (آمادهٔ پوش) | Abdomen | [نقشه](pdf-map-abdomen-thorax.md) | Abdomen.pdf pp.2–4: عروق کبد، IDs `leber-anatomie` و `gefaesse-anatomie-abdomen`, Route `/abdomen/leber/gefaesse` | درس محدودِ ورودی پورتال/شریانی و خروج وریدی؛ بازبینی مستقل و crop delta PASS؛ provenance و SSR سه‌زبانه پاس | آناتومی کامل کبد/عروق، مرورگر و تأیید علمی باز |
 | AN (آمادهٔ پوش) | Technik | [ماتریس](gehirn-technik-curriculum-matrix.md) | Technik.pdf p.4: Strahlenbelastung, ID `strahlenbelastung-medizin`, Route `/technik/strahlenbelastung` | بازبینی مستقل و delta PASS؛ ارقام و قیاس‌های بی‌تاریخ حذف، ارجاع دقیق دادهٔ تاریخی BfS افزوده؛ مسیر و SSR سه‌زبانه PASS | مرورگر و تأیید علمی باز |
+| AO (آمادهٔ پوش) | Technik | [ماتریس](gehirn-technik-curriculum-matrix.md) | Technik.pdf p.9: Berufliche Personendosimetrie, ID `berufsdosimetrie`, Route `/technik/berufsdosimetrie` | بازبینی مستقل و corrective delta PASS؛ تفاوت مسیر تحویل دوزیمتر/ارسال داده، §66(5)، گزینهٔ آزمون، ترجمه و SSR اصلاح/بازآزمایی شدند | مرورگر و تأیید علمی باز؛ ارقام/مشخصات مدل‌محور PDF حذف شدند |
 
 ## معیار اتمام batch
 

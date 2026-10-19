@@ -1690,6 +1690,7 @@ export const CURRICULUM = [
         themen: [
           { id: 'strahlenschutz-gesetzliche-grundlagen', title: { de: 'Gesetzliche Grundlagen (StrlSchG, StrlSchV)', en: 'Legal Framework (StrlSchG, StrlSchV)', fa: 'چارچوب قانونی (StrlSchG، StrlSchV)' }, tags: ['Rö','CT'], diff: 2 },
           { id: 'strahlenschutzbereiche-verantwortliche', title: { de: 'Strahlenschutzbereiche & Verantwortliche', en: 'Radiation Protection Areas & Responsibilities', fa: 'مناطق حفاظت پرتویی و مسئولیت‌ها' }, tags: ['Rö','CT'], diff: 2 },
+          { id: 'berufsdosimetrie', title: { de: 'Berufliche Personendosimetrie', en: 'Occupational Personal Dosimetry', fa: 'دوزیمتری فردی شغلی' }, tags: ['Rö','CT'], diff: 2, link: '/technik/berufsdosimetrie', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'alara', title: { de: 'Dosisreduktionsprinzipien (ALARA)', en: 'Dose Reduction Principles (ALARA)', fa: 'اصول کاهش دوز (ALARA)' }, tags: ['Rö','CT'], diff: 1, link: '/technik/grundlagen#optimierung', inProgress: true },
           { id: 'ct-dosisreduktion', title: { de: 'CT-Dosisreduktion', en: 'CT Dose Reduction', fa: 'کاهش دوز CT' }, tags: ['CT'], diff: 2, link: '/technik/grundlagen#ct-dose-geometry', inProgress: true },
           { id: 'interventioneller-strahlenschutz', title: { de: 'Interventioneller Strahlenschutz', en: 'Radiation Protection in Interventions', fa: 'حفاظت پرتویی در مداخلات' }, tags: ['DSA'], diff: 2, link: '/technik/grundlagen#intervention-3a', inProgress: true },
