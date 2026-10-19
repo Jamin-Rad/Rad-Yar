@@ -1,0 +1,46 @@
+.page { padding-top: 100px; }
+.page p { line-height: 1.85; }
+.body { max-width: 100%; }
+.lead { font-size: 1.08rem; font-weight: 600; }
+.list { padding-inline-start: 1.4rem; }
+.list li { margin-block: .65rem; line-height: 1.8; }
+.timeline { margin: 26px 0; padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); }
+.timeline svg { display: block; width: 100%; height: auto; max-height: 270px; }
+.timeline figcaption { margin-top: 12px; color: var(--body); font-size: .9rem; line-height: 1.7; }
+.caseSeries { margin-block: 24px; }
+.caseGallery { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; max-width: 100%; }
+.caseCard { min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
+.caseCard img { display: block; width: 100%; height: auto; aspect-ratio: 2.94 / 1; object-fit: contain; background: #101820; }
+.caseCard figcaption { display: grid; gap: 4px; padding: 12px; line-height: 1.65; }
+.caseCard figcaption strong { color: var(--ink); }
+.caseCard figcaption span { color: var(--body); font-size: .82rem; }
+.seriesNote { margin-top: 12px; color: var(--body); font-size: .9rem; }
+.tableWrap { max-width: 100%; overflow-x: auto; margin-block: 20px; border: 1px solid var(--line); border-radius: 10px; }
+.tableWrap table { width: 100%; border-collapse: collapse; text-align: start; font-size: 15px; line-height: 1.75; }
+.tableWrap caption { padding: 12px 16px; color: var(--ink); font-weight: 700; text-align: start; }
+.tableWrap th,.tableWrap td { padding: 14px 16px; border-top: 1px solid var(--line); vertical-align: top; }
+.tableWrap thead { background: var(--lesson-accent-soft); }
+.tableWrap tbody th { min-width: 150px; text-align: start; }
+.note { padding: 15px 18px; border-inline-start: 4px solid var(--lesson-secondary-strong); background: var(--lesson-accent-soft); border-radius: 8px; }
+.check { margin-block: 25px; padding: 20px; border: 1px solid var(--lesson-accent-strong); border-radius: 12px; background: var(--lesson-accent-soft); }
+.check h3 { margin-top: 0; }
+.check fieldset { display: grid; gap: 10px; padding: 0; border: 0; }
+.check legend { margin-bottom: 8px; font-weight: 700; }
+.check label { display: flex; align-items: flex-start; gap: 10px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); cursor: pointer; line-height: 1.7; }
+.check input { flex: 0 0 auto; margin-top: 5px; accent-color: var(--lesson-accent-strong); }
+.correct,.feedback { padding: 12px; border-radius: 8px; background: var(--paper); line-height: 1.8; }
+.correct { border-inline-start: 4px solid #3c896d; }
+.feedback { border-inline-start: 4px solid #c48a4e; }
+.takeHome { padding-inline-start: 1.5rem; }
+.takeHome li { margin-block: 12px; padding-inline-start: 6px; line-height: 1.8; }
+.page :is(button,a,input,summary):focus-visible,.tableWrap:focus-visible { outline: 3px solid var(--lesson-secondary-strong); outline-offset: 3px; }
+.page[dir='rtl'] :is(h1,h2,h3,th,td,button,label) { font-family: 'Vazirmatn',sans-serif; letter-spacing: 0; }
+@media (max-width: 760px) {
+  .page { padding: 90px 12px 110px; }
+  .timeline { padding: 8px; overflow-x: auto; }
+  .timeline svg { width: 850px; max-width: none; }
+  .caseGallery { grid-template-columns: repeat(3,minmax(270px,1fr)); overflow-x: auto; padding-bottom: 8px; }
+  .tableWrap table { min-width: 560px; font-size: 14px; }
+  .tableWrap th,.tableWrap td { padding: 11px; }
+  .check { padding: 15px; }
+}

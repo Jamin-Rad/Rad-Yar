@@ -1249,7 +1249,7 @@ export const CURRICULUM = [
         title: { de: '9. Osteochondrosen', en: '9. Osteochondroses', fa: '۹. استئوکندروزها' },
         icon: '🧒',
         themen: [
-          { id: 'morbus-perthes', title: { de: 'Morbus Perthes', en: 'Perthes Disease', fa: 'بیماری پرتس (Morbus Perthes)' }, tags: ['Rö','MRT'], diff: 2 },
+          { id: 'morbus-perthes', title: { de: 'Morbus Perthes', en: 'Perthes Disease', fa: 'بیماری پرتس (Morbus Perthes)' }, tags: ['Rö','MRT'], diff: 2, link: '/msk/osteochondrosen/morbus-perthes', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'osgood-schlatter', title: { de: 'Morbus Osgood-Schlatter', en: 'Osgood-Schlatter Disease', fa: 'بیماری آزگود-اشلاتر' }, tags: ['Rö'], diff: 1 },
           { id: 'morbus-scheuermann', title: { de: 'Morbus Scheuermann', en: "Scheuermann's Disease", fa: 'بیماری شویرمان' }, tags: ['Rö'], diff: 2 },
           { id: 'osteochondrosis-dissecans', title: { de: 'Osteochondrosis dissecans', en: 'Osteochondritis Dissecans (OCD)', fa: 'استئوکندریت دیسکانس (OCD)' }, tags: ['MRT'], diff: 2 },
