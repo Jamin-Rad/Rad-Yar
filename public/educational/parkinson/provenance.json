@@ -1,0 +1,27 @@
+{
+  "lesson": "/gehirn/neurodegeneration/parkinson",
+  "source": "Gehirn.pdf",
+  "pdfPage": 77,
+  "printedPage": 76,
+  "assets": [
+    {
+      "file": "nigrosome-normal.png",
+      "description": "Axial susceptibility-weighted MRI source example, normal example with magnified inset and arrows",
+      "frame": "upper right patient-image panel on PDF page 77",
+      "transformation": "cropped from rendered PDF page; image pixels otherwise unaltered"
+    },
+    {
+      "file": "nigrosome-parkinson.png",
+      "description": "Axial susceptibility-weighted MRI source example labelled PD, with arrow",
+      "frame": "lower right patient-image panel on PDF page 77",
+      "transformation": "cropped from rendered PDF page; image pixels otherwise unaltered"
+    }
+  ],
+  "authorization": "User authorized educational use of images contained in supplied PDFs.",
+  "unknown": [
+    "Original study/case identifiers",
+    "Institution and contributor attribution",
+    "Original source image reuse terms"
+  ],
+  "limitations": "The source PDF labels the lower example PD, but its case diagnosis has not been independently verified. These figures support visual orientation only and do not establish clinical or diagnostic performance."
+}

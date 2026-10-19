@@ -1,25 +1,70 @@
 'use client'
 
-import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
-import LessonHero from '@/components/LessonHero'
 import { useLanguage } from '@/providers/LanguageProvider'
+import StandardLessonShell, { LessonSection, LessonSources, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { GEHIRN_PARKINSON_LESSON as lesson } from '@/data/gehirnParkinsonLesson'
-import styles from '@/app/technik/kontrastmittel/page.module.css'
+import styles from './page.module.css'
 
-const pick=(x,lang)=>x?.[lang]||x?.de||''
-function ParkinsonDiagram({lang}){
- const labels=lang==='fa'?['سابستانشیا نیگرا','نیگروزوم ۱','MRT + DAT-SPECT']:lang==='en'?['Substantia nigra','Nigrosome 1','MRI + DAT-SPECT']:['Substantia nigra','Nigrosom 1','MRT + DAT-SPECT']
- return <figure style={{margin:0,padding:14,border:'1px solid var(--border)',borderRadius:18,background:'var(--bg-card)'}}><svg viewBox="0 0 570 165" role="img" aria-label={labels.join(' → ')} style={{display:'block',width:'100%',height:'auto'}}>{labels.map((label,i)=>{const x=18+i*182;return <g key={label}><rect x={x} y="18" width="160" height="112" rx="18" fill="var(--surface-soft)" stroke="var(--border)" strokeWidth="2"/>{i<2?<g><path d={`M${x+45} 91q20-54 67-40 17 5 17 23 0 29-29 33-34 8-55-16z`} fill="#9c9fa4" stroke="#5b6470" strokeWidth="3"/><path d={`M${x+76} 68q11-10 22 0`} fill="none" stroke={i===1?'#64c59b':'#e5c56a'} strokeWidth="7" strokeLinecap="round"/></g>:<g><rect x={x+33} y="48" width="41" height="44" rx="8" fill="#cfe6ed" stroke="#4189a7"/><rect x={x+84} y="48" width="41" height="44" rx="8" fill="#e5d6e9" stroke="#875b91"/><text x={x+53} y="108" textAnchor="middle" fontSize="10" fill="var(--text-strong)">MRI</text><text x={x+105} y="108" textAnchor="middle" fontSize="10" fill="var(--text-strong)">SPECT</text></g>}<foreignObject x={x+5} y="135" width="150" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style={{display:'grid',height:'100%',placeItems:'center',color:'var(--text-strong)',fontSize:12,fontWeight:800,textAlign:'center'}}>{label}</div></foreignObject></g>})}</svg><figcaption style={{color:'var(--text-muted)',fontSize:12,textAlign:'center'}}>{lang==='fa'?'شماتیک مفهوم روش‌ها را جدا می‌کند؛ تصاویر تشخیصی واقعی نیستند.':lang==='en'?'Schematic separating modalities; not diagnostic images.':'Schema zur Trennung der Modalitäten; keine Diagnostikbilder.'}</figcaption></figure>
+const L = (de, en, fa) => ({ de, en, fa })
+const pick = (value, lang) => value?.[lang] || value?.de || ''
+const LABELS = {
+  contents: L('Lektionsinhalt', 'Lesson content', 'محتوای درس'), path: L('Lernpfad', 'Learning path', 'مسیر یادگیری'),
+  progress: L('gelesen', 'read', 'خوانده‌شده'), continue: L('Lektion fortsetzen', 'Continue lesson', 'ادامهٔ درس'),
+  completeLesson: L('Ganze Lektion als gelesen markieren', 'Mark full lesson as read', 'علامت‌گذاری کل درس به‌عنوان خوانده‌شده'),
+  lessonCompleted: L('Ganze Lektion gelesen', 'Full lesson marked as read', 'کل درس خوانده شد'),
+  complete: L('Abschnitt als gelesen markieren', 'Mark section as read', 'این بخش را خواندم'), completed: L('Als gelesen markiert', 'Marked as read', 'خوانده‌شده'),
+  open: L('Abschnitt öffnen', 'Open section', 'بازکردن بخش'), close: L('Schließen', 'Close', 'بستن'),
+  takeHome: L('Drei Regeln mitnehmen', 'Three rules to remember', 'سه نکته برای یادآوری'),
 }
-export default function ParkinsonImagingPage(){
- const {lang}=useLanguage();const rtl=lang==='fa';const [open,setOpen]=useState(0),[read,setRead]=useState([]),[answer,setAnswer]=useState(null)
- const t=lang==='fa'?{badge:'مغز · پیش‌نویس آموزشی PDF',crumb:'مغز',contents:'مسیر یادگیری',progress:'پیشرفت با علامت‌گذاری بخش ثبت می‌شود.',read:'این بخش را خواندم',self:'خودآزمایی: محدودیت نشانه',refs:'منبع و محدودیت‌ها',home:'درس‌های مغز',status:'پیش‌نویس آموزشی؛ برای تصمیم بالینی استفاده نشود.'}:lang==='en'?{badge:'Brain · PDF teaching draft',crumb:'Brain',contents:'Learning path',progress:'Progress is recorded when a section is marked as read.',read:'Mark section as read',self:'Self-check: limits of the sign',refs:'Source and limits',home:'Brain lessons',status:'Teaching draft; not for clinical decision-making.'}:{badge:'Gehirn · PDF-Lernentwurf',crumb:'Gehirn',contents:'Lernpfad',progress:'Fortschritt wird nach Markieren eines Kapitels erfasst.',read:'Kapitel als gelesen markieren',self:'Selbstcheck: Aussagegrenze',refs:'Quelle und Grenzen',home:'Gehirn-Lektionen',status:'Lernentwurf; nicht für klinische Entscheidungen.'}
- const url=p=>lang==='de'?p:`${p}?lang=${lang}`,chapter=lesson.chapters[open],pct=Math.round(read.length/lesson.chapters.length*100),markRead=()=>setRead(prev=>prev.includes(open)?prev.filter(x=>x!==open):[...prev,open])
- return <main className={styles.page} dir={rtl?'rtl':'ltr'} lang={lang}><header className={styles.header}><nav className={styles.breadcrumb} aria-label={rtl?'مسیر صفحه':lang==='en'?'Breadcrumb':'Seitennavigation'}><Link href={url('/')}>RadYar</Link><span>›</span><Link href={url('/lernen/gehirn')}>{t.crumb}</Link><span>›</span><span>{pick(lesson.title,lang)}</span></nav><div className={styles.hero}><div className={styles.heroText}><span className={styles.sourceBadge}>{t.badge}</span><LessonHero title={pick(lesson.title,lang)} lang={lang} visual={<ParkinsonDiagram lang={lang}/>} /></div><aside className={styles.heroStats}><div className={styles.heroStat}><strong>77–78</strong><span>{lang==='fa'?'صفحه‌های PDF':lang==='en'?'PDF pages':'PDF-Seiten'}</span><small>{lang==='fa'?'MRI ساختاری و SPECT عملکردی':'Structural MRI and functional SPECT'}</small></div><p role="status" style={{padding:14}}>{t.status}</p></aside></div></header>
- <div className={styles.layout}><aside className={styles.sidebar}><div className={styles.sideTitle}>{t.contents}</div><div><div style={{height:8,margin:'8px 0',borderRadius:9,background:'var(--border)'}}><div style={{width:`${pct}%`,height:'100%',borderRadius:9,background:'#0f9f6e'}}/></div><small>{pct}% · {t.progress}</small></div>{lesson.chapters.map((c,i)=><button key={c.id} type="button" className={styles.sideItem} aria-current={open===i?'step':undefined} onClick={()=>setOpen(i)}><span aria-hidden="true">{read.includes(i)?'✓':'◈'}</span><strong>{pick(c.title,lang)}</strong></button>)}</aside>
- <div className={styles.main}><section className={styles.section} id={chapter.id}><div className={styles.sectionHeader}><span className={styles.sectionHeading}><span className={styles.sectionIcon} aria-hidden="true">◈</span><h2>{pick(chapter.title,lang)}</h2></span><span className={styles.sectionToggle} style={{width:'auto',paddingInline:12}}>{lang==='fa'?`PDF ${chapter.pages}`:lang==='en'?`PDF p. ${chapter.pages}`:`PDF S. ${chapter.pages}`}</span></div><div className={styles.sectionBody}>{open===0&&<p className={styles.lead}>{pick(lesson.objective,lang)}</p>}{pick(chapter.text,lang).split('\n\n').map((p,i)=><p key={i} className={i===0?styles.lead:undefined} style={{lineHeight:1.75}}>{p}</p>)}<button type="button" onClick={markRead} aria-pressed={read.includes(open)} className={styles.sectionToggle} style={{width:'auto',padding:'8px 14px',marginTop:14}}>{read.includes(open)?`✓ ${t.read}`:t.read}</button></div></section>
- <div style={{display:'flex',justifyContent:'space-between',gap:12}}><button type="button" className={styles.lessonLink} disabled={open===0} onClick={()=>setOpen(Math.max(0,open-1))}>{lang==='fa'?'فصل پیشین':lang==='en'?'Previous chapter':'Vorheriges Kapitel'}</button><button type="button" className={styles.lessonLink} disabled={open===lesson.chapters.length-1} onClick={()=>setOpen(Math.min(lesson.chapters.length-1,open+1))}>{lang==='fa'?'فصل بعدی':lang==='en'?'Next chapter':'Nächstes Kapitel'}</button></div>
- {open===lesson.chapters.length-1&&<><section className={styles.section}><div className={styles.sectionBody}><h2>{t.self}</h2><p className={styles.lead}>{pick(lesson.assessment.question,lang)}</p><div style={{display:'grid',gap:9}}>{lesson.assessment.options.map((o,i)=><button key={i} type="button" aria-pressed={answer===i} onClick={()=>setAnswer(i)} style={{padding:14,border:'1px solid var(--border)',borderRadius:12,color:'var(--text)',background:'var(--bg-card)',cursor:'pointer',textAlign:'start'}}>{pick(o,lang)}</button>)}</div>{answer!==null&&<p role="status" style={{marginTop:12}}>{answer===lesson.assessment.correctIndex?pick(lesson.assessment.feedback,lang):pick(lesson.assessment.retry,lang)}</p>}</div></section><aside className={`${styles.callout} ${styles.calloutCave}`}><strong>{t.refs}</strong><p>{pick(lesson.media,lang)}</p><p style={{marginTop:10}}>{pick(lesson.reviewStatus,lang)}</p><ul>{lesson.references.map(ref=><li key={ref.label}>{ref.href?<a href={ref.href} target="_blank" rel="noreferrer">{ref.label}</a>:ref.label}</li>)}</ul></aside></>}
- <Link className={styles.lessonLink} href={url('/lernen/gehirn')}>{t.home}<span aria-hidden="true">←</span></Link></div></div></main>
+
+function Icon({ id }) {
+  const paths = { mri: 'M4 7h16v10H4zM7 10h4m2 4h4', nuclear: 'M12 2v5m0 10v5M2 12h5m10 0h5M5 5l3.5 3.5m7 7L19 19m0-14-3.5 3.5m-7 7L5 19', report: 'M5 3h14v18H5zM8 8h8m-8 4h8m-8 4h5', summary: 'M5 5h14M5 12h14M5 19h14' }
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[id] || paths.report}/></svg>
+}
+
+function Decision({ lang }) {
+  const [answer, setAnswer] = useState(null)
+  const question = lesson.assessment
+  return <div className={styles.decision}>
+    <h3>{pick(L('Selbstcheck: technische Sicherheit', 'Self-check: technical confidence', 'خودآزمایی: اطمینان فنی'), lang)}</h3>
+    <p>{pick(question.question, lang)}</p>
+    <fieldset><legend>{pick(L('Eine Antwort auswählen', 'Choose one answer', 'یک پاسخ را انتخاب کنید'), lang)}</legend>
+      {question.options.map((option, index) => <label key={index}><input type="radio" name={question.id} checked={answer === index} onChange={() => setAnswer(index)}/><span>{pick(option, lang)}</span></label>)}
+    </fieldset>
+    {answer !== null ? <p className={styles.feedback} role="status"><strong>{pick(answer === question.correctIndex ? L('Richtig. ', 'Correct. ', 'درست است. ') : L('Noch einmal prüfen. ', 'Review this once more. ', 'دوباره بررسی کنید. '), lang)}</strong>{pick(question.optionFeedback[answer], lang)}</p> : <p className={styles.retry}>{pick(question.retry, lang)}</p>}
+  </div>
+}
+
+export default function ParkinsonPage() {
+  const { lang } = useLanguage()
+  const labels = Object.fromEntries(Object.entries(LABELS).map(([key, value]) => [key, pick(value, lang)]))
+  const sections = [...lesson.chapters.map(chapter => ({ id: chapter.id, label: pick(chapter.title, lang), icon: chapter.id })), { id: 'take-home', label: labels.takeHome, icon: 'summary', emphasis: true }]
+  const langHref = path => lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
+  const sources = lesson.references.filter(reference => reference.href).map(reference => ({ tag: reference.href.includes('8323030') || reference.href.includes('4975367') ? 'MRT / SWI' : reference.href.includes('7300075') ? 'DAT-SPECT' : 'Klinik', title: reference.label, href: reference.href, citation: reference.href.includes('8323030') ? 'Brain Behav. 2021;11:e02202. doi:10.1002/brb3.2202.' : reference.href.includes('4975367') ? 'Pol J Radiol. 2016;81:363–369. doi:10.12659/PJR.897090.' : reference.href.includes('7300075') ? 'Eur J Nucl Med Mol Imaging. 2020;47:1885–1912. doi:10.1007/s00259-020-04817-8.' : 'Mov Disord. 2015;30:1591–1601. doi:10.1002/mds.26424.' }))
+  const takeHome = [
+    { title: pick(L('Technik zuerst prüfen', 'Check technique first', 'ابتدا کیفیت فنی را بررسی کنید'), lang), detail: pick(L('Sequenz, Ebene und Bildqualität bestimmen, ob Nigrosom 1 sicher beurteilbar ist.', 'Sequence, plane, and image quality determine whether nigrosome 1 can be assessed confidently.', 'توالی، صفحه و کیفیت تصویر تعیین می‌کنند که ارزیابی نیگروزوم ۱ قابل‌اعتماد است یا نه.'), lang) },
+    { title: pick(L('MRT und DAT-SPECT getrennt einordnen', 'Interpret MRI and DAT-SPECT separately', 'MRI و DAT-SPECT را جداگانه تفسیر کنید'), lang), detail: pick(L('Die MRT zeigt Struktur; DAT-SPECT erfasst funktionell die präsynaptische DAT-Bindung.', 'MRI depicts structure; DAT-SPECT functionally assesses presynaptic DAT binding.', 'MRI ساختار را نشان می‌دهد؛ DAT-SPECT اتصال پیش‌سیناپسی DAT را به‌صورت عملکردی می‌سنجد.'), lang) },
+    { title: pick(L('Bildgebung bleibt ergänzend', 'Imaging remains adjunctive', 'تصویربرداری نقش تکمیلی دارد'), lang), detail: pick(L('Konventionelle MRT ist bei idiopathischem Parkinson oft unauffällig und sucht vor allem strukturelle Alternativen.', 'Conventional MRI is often normal in idiopathic Parkinson disease and mainly looks for structural alternatives.', 'MRI معمول در پارکینسون ایدیوپاتیک اغلب طبیعی است و بیشتر برای یافتن علل ساختاری جایگزین به‌کار می‌رود.'), lang) },
+  ]
+  return <StandardLessonShell lessonId={lesson.id} lang={lang} title={pick(lesson.title, lang)} author="Dr. Zia"
+    breadcrumbs={[{ label: 'RadYar', href: langHref('/') }, { label: pick(L('Gehirn', 'Brain', 'مغز'), lang), href: langHref('/lernen/gehirn') }, { label: pick(L('Neurodegeneration', 'Neurodegeneration', 'تخریب عصبی'), lang) }]}
+    sections={sections} labels={labels} renderIcon={id => <Icon id={id}/>} syncHashNavigation
+    actions={{}}
+    theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/educational/parkinson/hero.svg', heroImageOpacity: .8, accent: '#79d5e5', accentStrong: '#13677b', accentSoft: '#dff4f7', secondary: '#a99be8', secondaryStrong: '#57448f', heroBase: '#122a3a' }}
+    heroImageAlt={pick(L('Abstraktes Schema zu MRT und funktioneller Bildgebung, keine diagnostische Aufnahme', 'Abstract MRI and functional imaging concept, not a diagnostic scan', 'نمای مفهومی انتزاعی از MRI و تصویربرداری عملکردی، نه تصویر تشخیصی'), lang)}
+    className={styles.page}
+    sources={<LessonSources title={pick(L('Quellen', 'Sources', 'منابع'), lang)} items={sources} note={pick(lesson.media, lang)}/>}
+  >
+    {lesson.chapters.map(chapter => <LessonSection key={chapter.id} id={chapter.id} icon={chapter.id} title={pick(chapter.title, lang)} bodyClassName={styles.body}>
+      {pick(chapter.text, lang).split(/\n\s*\n/).map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+      {chapter.id === 'mri' ? <figure className={styles.figure}><div className={styles.images}>
+        <Image src="/educational/parkinson/nigrosome-normal.png" width={700} height={470} alt={pick(L('PDF-Beispiel: normales Nigrosom-1-Zeichen', 'PDF example: normal nigrosome-1 sign', 'نمونهٔ PDF: نشانهٔ طبیعی نیگروزوم ۱'), lang)} sizes="(max-width: 760px) 100vw, 680px"/>
+        <Image src="/educational/parkinson/nigrosome-parkinson.png" width={700} height={470} alt={pick(L('PDF-Beispiel, als Parkinson beschriftet: Nigrosom-Zeichen nicht sichtbar', 'PDF example labelled Parkinson disease: nigrosome sign not visible', 'نمونهٔ PDF با برچسب پارکینسون: نشانهٔ نیگروزوم دیده نمی‌شود'), lang)} sizes="(max-width: 760px) 100vw, 680px"/>
+      </div><figcaption>{pick(lesson.imageCaption, lang)}</figcaption></figure> : null}
+      {chapter.id === 'report' ? <Decision lang={lang}/> : null}
+    </LessonSection>)}
+    <LessonSection id="take-home" icon="summary" title={labels.takeHome}><TakeHomeList items={takeHome}/></LessonSection>
+  </StandardLessonShell>
 }

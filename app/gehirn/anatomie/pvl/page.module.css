@@ -1,0 +1,22 @@
+.page { --pvl-ink: #263b4a; }
+.lead { font-size: 1.06rem; line-height: 1.75; }
+.timeline { margin: 1.3rem 0 .3rem; padding: 1rem; border: 1px solid var(--border); border-radius: 1rem; background: var(--bg-card); }
+.timeline svg { display: block; width: 100%; height: auto; }
+.track { stroke: var(--border-strong, #9eabb4); stroke-width: 3; }
+.node { fill: #377f91; }
+.middleNode { fill: #c28b55; }
+.number { fill: white; font-size: 14px; font-weight: 800; }
+.stepLabel { display: grid; height: 100%; place-items: center; color: var(--text-strong); font-size: 13px; font-weight: 750; line-height: 1.35; text-align: center; }
+.timeline figcaption { margin-top: .5rem; color: var(--text-muted); font-size: .85rem; line-height: 1.5; text-align: center; }
+.caseFigure { margin: 1.4rem 0 .3rem; padding: 1rem; border: 1px solid var(--border); border-radius: 1rem; background: var(--bg-card); }
+.frames { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+.frame { min-width: 0; display: grid; align-content: start; gap: .45rem; }
+.frame img { display: block; width: 100%; height: auto; border-radius: .25rem; background: #101010; }
+.frame strong { color: var(--text-strong); font-size: .88rem; text-align: center; }
+.caseFigure figcaption { margin-top: .8rem; color: var(--text-muted); font-size: .88rem; line-height: 1.6; }
+.cave, .feedback { margin-block: 1rem; padding: 1rem; border-inline-start: 4px solid #b8783f; border-radius: .5rem; background: color-mix(in srgb, #b8783f 10%, var(--bg-card)); line-height: 1.75; }
+.check { margin-top: 1.3rem; }
+.options { display: grid; gap: .7rem; }
+.options button { width: 100%; padding: .9rem 1rem; border: 1px solid var(--border); border-radius: .75rem; background: var(--bg-card); color: var(--text); cursor: pointer; font: inherit; text-align: start; }
+.options button:hover, .options button:focus-visible { border-color: #5ca7b7; outline: 2px solid color-mix(in srgb, #5ca7b7 45%, transparent); outline-offset: 2px; }
+@media (max-width: 600px) { .timeline { padding: .55rem; } .stepLabel { font-size: 10px; } .caseFigure { padding: .55rem; } .frames { grid-template-columns: 1fr; } }

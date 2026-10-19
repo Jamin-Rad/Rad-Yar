@@ -58,8 +58,13 @@ if (GEHIRN_CJD_MUSTER_LESSON.assessment.options.length !== 4) errors.push('CJD e
 const curriculumText = fs.readFileSync('data/curriculum.js', 'utf8')
 if (!/id: 'neurofibromatose-typ1'[^\n]*link: '\/gehirn\/neurofibromatose\/nf1'[^\n]*mcqLink: '[^']*neurofibromatose-typ1/u.test(curriculumText)) errors.push('NF1 curriculum route/MCQ registration missing')
 if (!/id: 'creutzfeldt-jakob'[^\n]*link: '\/gehirn\/neurodegeneration\/cjd'/u.test(curriculumText)) errors.push('CJD curriculum route registration missing')
+if (!/id: 'morbus-parkinson'[^\n]*link: '\/gehirn\/neurodegeneration\/parkinson'[^\n]*inProgress: true/u.test(curriculumText)) errors.push('Parkinson exact curriculum route/inProgress registration missing')
+const parkinsonRoute = fs.readFileSync('app/gehirn/neurodegeneration/parkinson/page.jsx', 'utf8')
+if (!parkinsonRoute.includes("import StandardLessonShell, { LessonSection, LessonSources, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'") || !parkinsonRoute.includes('syncHashNavigation')) errors.push('Parkinson route: maintained StandardLessonShell navigation missing')
+if (!parkinsonRoute.includes('question.optionFeedback[answer]')) errors.push('Parkinson route: answer-specific retry feedback missing')
+for (const file of ['public/educational/parkinson/nigrosome-normal.png', 'public/educational/parkinson/nigrosome-parkinson.png', 'public/educational/parkinson/provenance.json']) if (!fs.existsSync(file)) errors.push(`Parkinson source image/provenance missing: ${file}`)
 
-for (const file of ['app/gehirn/encephalopathie/pres/page.jsx', 'app/gehirn/anatomie/balkenagenesie/page.jsx', 'app/gehirn/anatomie/pvl/page.jsx', 'app/gehirn/neurodegeneration/cjd/page.jsx', 'app/gehirn/neurodegeneration/demenzmuster/page.jsx', 'app/gehirn/neurodegeneration/parkinson/page.jsx', 'app/gehirn/anatomie/chiari/page.jsx', 'app/gehirn/neurofibromatose/nf1/page.jsx']) {
+for (const file of ['components/ClinicalPatternDiagram.jsx', 'app/gehirn/encephalopathie/pres/page.jsx', 'app/gehirn/anatomie/balkenagenesie/page.jsx', 'app/gehirn/anatomie/pvl/page.jsx', 'app/gehirn/neurodegeneration/cjd/page.jsx', 'app/gehirn/neurodegeneration/demenzmuster/page.jsx', 'app/gehirn/neurodegeneration/parkinson/page.jsx', 'app/gehirn/anatomie/chiari/page.jsx', 'app/gehirn/neurofibromatose/nf1/page.jsx']) {
   try { parse(fs.readFileSync(file, 'utf8'), { sourceType: 'module', plugins: ['jsx'] }) }
   catch (error) { errors.push(`${file}: JSX parse error: ${error.message}`) }
 }

@@ -1,0 +1,13 @@
+{
+  "projectAuthorization": "User authorized use of the supplied six PDFs and their figures in this project on 2026-10-19; this is project authorization, not independent verification of third-party terms.",
+  "source": "Gehirn.pdf, PDF page 81 (printed page 80), montage captioned 'Ventrikulomegalie mit irregulären Konturen der Seitenventrikelkörper und Trigona. Periventrikulärer Marklagerverlust mit Signalsteigerung in den FLAIR-Sequenzen. Ausdünnung des Corpus callosum. rID: 89973'.",
+  "caseAttribution": "Secondary listing identifies Radiopaedia case rID 89973 as Haouimi A., Periventricular leukomalacia - end stage, DOI 10.53347/rID-89973. The primary case page and contributor details were not independently inspected.",
+  "licenseStatus": "Secondary listing reports CC BY-NC-SA 3.0 (modified). Primary terms and required attribution notice have not been verified on Radiopaedia. Do not treat this metadata as a rights clearance.",
+  "frames": [
+    { "file": "axial-flair-a.jpg", "pdfPage": 81, "printedPage": 80, "view": "Axial FLAIR, first panel of the labelled three-panel montage", "crop": "High-resolution render, panel crop; original label retained." },
+    { "file": "axial-flair-b.jpg", "pdfPage": 81, "printedPage": 80, "view": "Axial FLAIR, second panel of the labelled three-panel montage", "crop": "High-resolution render, panel crop; original label retained." },
+    { "file": "sagittal-t1.jpg", "pdfPage": 81, "printedPage": 80, "view": "Sagittal T1, third panel of the labelled three-panel montage", "crop": "High-resolution render, panel crop; original label retained." }
+  ],
+  "selectionRationale": "The image montage is explicitly described on the PDF page as end-stage periventricular white-matter loss with ventricular contour/size changes. It demonstrates chronic structural findings and is not presented as acute neonatal imaging or as a diagnostic criterion.",
+  "openChecks": ["Primary case page and contributor attribution", "Case-specific licence conditions and notice", "Independent neonatal neuroradiology image review"]
+}

@@ -1,0 +1,21 @@
+.page { --lesson-accent: #60b6c5; }
+.body { line-height: 1.75; }
+.body p { max-width: 78ch; }
+.map { margin: 1.5rem 0; padding: 1.2rem; border: 1px solid var(--lesson-accent); border-radius: 1rem; background: color-mix(in srgb, var(--lesson-accent) 8%, var(--bg-card)); }
+.mapItem { display: grid; grid-template-columns: 2rem 1fr; align-items: center; gap: .6rem; max-width: 38rem; margin: auto; }
+.mapItem span { display: grid; place-items: center; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--lesson-accent); color: white; font-weight: 700; }
+.mapItem strong { padding: .7rem .9rem; border: 1px solid var(--border); border-radius: .75rem; background: var(--bg-card); }
+.mapItem i { grid-column: 2; justify-self: center; color: var(--lesson-accent-strong); font-style: normal; font-size: 1.25rem; }
+.map figcaption { margin-top: 1rem; color: var(--text-muted); text-align: center; }
+.formula { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; margin: 1.5rem auto; padding: 1.2rem; border-radius: 1rem; background: var(--surface-soft); font-size: clamp(1.1rem, 4vw, 1.65rem); font-weight: 750; }
+.formula span { padding: .5rem .8rem; border: 1px solid var(--border); border-radius: .65rem; background: var(--bg-card); }
+.formula small { flex-basis: 100%; color: var(--text-muted); text-align: center; font-size: .8rem; font-weight: 500; }
+.check { margin-top: 1.5rem; padding: 1.2rem; border: 1px solid var(--border); border-radius: 1rem; background: var(--surface-soft); }
+.check h3 { margin-top: 0; }
+.check fieldset { display: grid; gap: .65rem; border: 0; padding: 0; }
+.check legend { margin-bottom: .5rem; font-weight: 700; }
+.check label { display: flex; align-items: flex-start; gap: .7rem; padding: .8rem; border: 1px solid var(--border); border-radius: .7rem; background: var(--bg-card); cursor: pointer; }
+.check input { flex: 0 0 auto; margin-top: .4rem; accent-color: var(--lesson-accent-strong); }
+.feedback { padding: .8rem; border-inline-start: 3px solid var(--lesson-accent); background: var(--bg-card); }
+.rules { display: grid; gap: .8rem; padding-inline-start: 1.4rem; }
+@media (max-width: 560px) { .map { padding: .8rem; } .formula { gap: .5rem; } }
