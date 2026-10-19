@@ -1,6 +1,6 @@
 # Gehirn.pdf pp. 41–42: Glioma / astrocytoma draft
 
-Status: draft for independent review; no clinical approval. PDF pages 41–42 were text-extracted and visually inspected at 300 dpi. Printed page numbers are 40–41.
+Status: bounded independent source/content review passed; specialized clinical and browser approval remain open. PDF pages 41–42 were text-extracted and visually inspected at 300 dpi. Printed page numbers are 40–41.
 
 ## Source coverage ledger
 
@@ -31,5 +31,6 @@ who-klassifikation-hirntumoren, pilozytisches-astrozytom, astrozytom-idh-mutiert
 - DE/EN/FA semantic units are authored in shared data; independent language review pending.
 - Embedded assessment has four parallel options per language and a single correct answer; not added to shared question/flashcard banks.
 - Checks run: `git diff --check`; `npm run audit:mcq` (pass: 619 questions / 18 cases per language); imported lesson data and verified all DE/EN/FA content plus four-option answer structure; parsed page JSX with the bundled Next Babel parser; `npm run audit:fa` reports no parse error or German residue for these files. Full visual browser check unavailable in this worktree session (no browser surfaced).
-- Independent neuroradiology/neuropathology review, browser/layout checks, and approval of image attribution/reuse remain pending.
+- Independent scoped reviewer verified source-page alignment, the PDF heading conflict, the p42 MRI crop against its three labeled sequences, and the linked WHO/guideline claims; no demonstrated content mismatch was found. The same reviewer separately retested the later pilo MRI refinement (T1 CSF-like cyst, T1-isointense mural nodule, usually T2-hyperintense; CNS WHO grade 1) and confirmed PDF attribution and DE/EN/FA parity.
+- Neuroradiology/neuropathology signoff, browser/layout/RTL checks, and final image attribution/reuse confirmation remain pending. The reviewer did not certify the legacy route shell or unseen tumor topics.
 
