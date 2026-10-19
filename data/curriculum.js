@@ -1446,7 +1446,7 @@ export const CURRICULUM = [
         themen: [
           { id: 'bandscheibenpathologien', title: { de: 'Bandscheibenpathologien', en: 'Intervertebral Disc Pathologies', fa: 'بیماری‌های دیسک بین مهره‌ای' }, tags: ['MRT','CT'], diff: 2 },
           { id: 'osteochondrosis-intervertebralis', title: { de: 'Osteochondrosis intervertebralis', en: 'Intervertebral Osteochondrosis', fa: 'استئوکندروز بین مهره‌ای' }, tags: ['Rö','CT','MRT'], diff: 2 },
-          { id: 'spondylarthrose', title: { de: 'Spondylarthrose', en: 'Facet Arthropathy', fa: 'اسپوندیل‌آرتروز' }, tags: ['CT','MRT'], diff: 2 },
+          { id: 'spondylarthrose', title: { de: 'Spondylarthrose', en: 'Facet Arthropathy', fa: 'اسپوندیل‌آرتروز' }, tags: ['CT','MRT'], diff: 2, link: '/wirbelsaeule/degenerative/spondylarthrose', mcqLink: '/ueben/quiz?fach=wirbelsaeule&n=2&themen=spondylarthrose', flashcardLink: '/flashcards/spondylarthrose', inProgress: true, updatedAt: '2026-10-19' },
           { id: 'synovialzyste-facettengelenke', title: { de: 'Synovialzyste der Facettengelenke', en: 'Facet Joint Synovial Cyst', fa: 'کیست سینوویال مفاصل فاست' }, tags: ['MRT'], diff: 2 },
           { id: 'spinalkanalstenose', title: { de: 'Spinalkanalstenose', en: 'Spinal Canal Stenosis', fa: 'تنگی کانال نخاعی' }, tags: ['MRT','CT'], diff: 2, link: '/wirbelsaeule/degenerative' },
           { id: 'neuroforamenstenose', title: { de: 'Neuroforamenstenose', en: 'Neural Foraminal Stenosis', fa: 'تنگی نوروفورامن' }, tags: ['MRT','CT'], diff: 2 },

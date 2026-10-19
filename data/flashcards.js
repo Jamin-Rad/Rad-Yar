@@ -1,5 +1,6 @@
 import { FLEISCHNER_FLASHCARDS, FLEISCHNER_FLASHCARD_TOPIC } from './fleischnerLearning'
 import { BONE_INFARCT_FLASHCARDS, BONE_INFARCT_FLASHCARD_TOPIC } from './knocheninfarktLesson'
+import { FACET_FLASHCARDS, FACET_FLASHCARD_TOPIC } from './spondylarthroseLesson'
 import { HEMANGIOMA_FLASHCARDS } from './haemangiomaTraining'
 // Auto-generated RadYar flashcard data.
 
@@ -44,6 +45,7 @@ import { MYOCARDIAL_INJURY_FLASHCARDS, MYOCARDIAL_INJURY_FLASHCARD_TOPIC } from 
 import { MSK_SPINE_REGISTERED_FLASHCARDS, MSK_SPINE_REGISTERED_FLASHCARD_TOPICS } from './mskSpineRegisteredFlashcards'
 
 export const FLASHCARD_TOPICS = [
+  FACET_FLASHCARD_TOPIC,
   BONE_INFARCT_FLASHCARD_TOPIC,
   FLEISCHNER_FLASHCARD_TOPIC,
   MAMMA_MRT_FLASHCARD_TOPIC,
@@ -3409,6 +3411,7 @@ const LEGACY_FLASHCARDS = [
 ]
 
 export const FLASHCARDS = [
+  ...FACET_FLASHCARDS,
   ...BONE_INFARCT_FLASHCARDS,
   ...LEGACY_FLASHCARDS.filter(card => card.topicId !== 'haemangiom'),
   ...HEMANGIOMA_FLASHCARDS,

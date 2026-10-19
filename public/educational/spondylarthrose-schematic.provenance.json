@@ -1,0 +1,12 @@
+{
+  "lessonId": "spondylarthrose",
+  "file": "spondylarthrose-schematic.svg",
+  "createdAt": "2026-10-19",
+  "type": "Original code-native conceptual axial graphic, not a diagnostic scan or to scale",
+  "sourceConcepts": "User-supplied Wirbelsäule.pdf PDF7/printed6: facet hypertrophy, juxtafacet cyst, and possible canal/recess narrowing",
+  "content": "Anterior vertebral body, posterior canal/thecal compartment, bilateral posterolateral facet regions, one adjacent protrusion towards canal",
+  "labels": {"1":"Facet regions", "2":"Thecal/canal compartment", "3":"Juxtafacet protrusion"},
+  "translation": "Numbered relationships explained in DE/EN/FA caption and alt in data/spondylarthroseLesson.js",
+  "reuse": "No external pixels, patient images, case IDs or contributor identities copied",
+  "limitations": "Does not demonstrate MRI signal, inflammatory activity, histology or a particular patient's stenosis. Source PDF7 contains no diagnostic image. Clinical image-recognition teaching remains unverified."
+}
