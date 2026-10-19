@@ -268,11 +268,11 @@ export const CURRICULUM = [
         title: { de: '3. Nasennebenhöhlen & Gesichtsschädel', en: '3. Paranasal Sinuses & Facial Skeleton', fa: '۳. سینوس‌ها و اسکلت صورت' },
         icon: '◫',
         themen: [
-          { id: 'sinusitis', title: { de: 'Sinusitis', en: 'Sinusitis', fa: 'سینوزیت' }, tags: ['CT','MRT'], diff: 1 },
-          { id: 'mukozelen', title: { de: 'Mukozelen', en: 'Mucoceles', fa: 'موکوسل' }, tags: ['CT','MRT'], diff: 2 },
-          { id: 'sinonasal-tumoren', title: { de: 'Sinonasal-Tumoren', en: 'Sinonasal Tumours', fa: 'تومورهای سینونازال' }, tags: ['CT','MRT'], diff: 3 },
+          { id: 'sinusitis', title: { de: 'Sinusitis', en: 'Sinusitis', fa: 'سینوزیت' }, tags: ['CT','MRT'], diff: 1, link: '/gehirn/hals-nnh/einseitige-verschattung', inProgress: true, updatedAt: '2026-10-20' },
+          { id: 'mukozelen', title: { de: 'Mukozelen', en: 'Mucoceles', fa: 'موکوسل' }, tags: ['CT','MRT'], diff: 2, link: '/gehirn/hals-nnh/einseitige-verschattung', inProgress: true, updatedAt: '2026-10-20' },
+          { id: 'sinonasal-tumoren', title: { de: 'Sinonasal-Tumoren', en: 'Sinonasal Tumours', fa: 'تومورهای سینونازال' }, tags: ['CT','MRT'], diff: 3, link: '/gehirn/hals-nnh/einseitige-verschattung', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'gesichtsschaedelfrakturen', title: { de: 'Gesichtsschädelfrakturen', en: 'Facial Fractures', fa: 'شکستگی‌های صورت' }, tags: ['CT'], diff: 2 },
-          { id: 'odontogene-pathologien', title: { de: 'Odontogene Pathologien', en: 'Odontogenic Pathologies', fa: 'بیماری‌های ادنتوژنیک' }, tags: ['CT'], diff: 2 },
+          { id: 'odontogene-pathologien', title: { de: 'Odontogene Pathologien', en: 'Odontogenic Pathologies', fa: 'بیماری‌های ادنتوژنیک' }, tags: ['CT'], diff: 2, link: '/gehirn/hals-nnh/einseitige-verschattung', inProgress: true, updatedAt: '2026-10-20' },
         ],
       },
       {

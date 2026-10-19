@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Paranasal sinus concept schematic</title>
+  <desc id="desc">Non-diagnostic front-facing head outline with one maxillary sinus shaded differently to represent a unilateral finding.</desc>
+  <rect width="640" height="420" rx="28" fill="#172f35"/>
+  <path d="M320 43c-112 0-178 71-178 172 0 64 26 111 71 140 28 18 64 24 107 24s79-6 107-24c45-29 71-76 71-140 0-101-66-172-178-172z" fill="#e8d7bd" stroke="#f7efdf" stroke-width="8"/>
+  <path d="M256 150c-17-14-40-12-51 4-11 16-8 38 7 51 15 12 34 11 48-2 10-10 11-39-4-53z" fill="#a9cfc5" stroke="#39665e" stroke-width="5"/>
+  <path d="M384 150c17-14 40-12 51 4 11 16 8 38-7 51-15 12-34 11-48-2-10-10-11-39 4-53z" fill="#a9cfc5" stroke="#39665e" stroke-width="5"/>
+  <path d="M254 229c-28-11-58 3-65 30-7 27 12 50 42 51 24 1 47-12 54-34 6-19-8-39-31-47z" fill="#d98655" stroke="#793f35" stroke-width="6"/>
+  <path d="M386 229c28-11 58 3 65 30 7 27-12 50-42 51-24 1-47-12-54-34-6-19 8-39 31-47z" fill="#f5eee2" stroke="#8e806d" stroke-width="5" stroke-dasharray="9 7"/>
+  <path d="M284 245c10 8 18 12 36 12s26-4 36-12" fill="none" stroke="#8e806d" stroke-width="5"/>
+  <path d="M238 315c28 21 54 30 82 30s54-9 82-30" fill="none" stroke="#8e806d" stroke-width="5" stroke-linecap="round"/>
+  <path d="M211 289 118 333" stroke="#e8bd72" stroke-width="3"/><circle cx="211" cy="289" r="6" fill="#e8bd72"/>
+  <rect x="38" y="324" width="124" height="44" rx="12" fill="#fff1d8"/>
+  <path d="M62 346h77" stroke="#793f35" stroke-width="4" stroke-linecap="round"/>
+  <path d="M457 289 529 329" stroke="#8ab9a7" stroke-width="3"/><circle cx="457" cy="289" r="6" fill="#8ab9a7"/>
+  <rect x="480" y="325" width="122" height="44" rx="12" fill="#e4f3ed"/>
+  <path d="M503 347h76" stroke="#286451" stroke-width="4" stroke-dasharray="7 6" stroke-linecap="round"/>
+</svg>
