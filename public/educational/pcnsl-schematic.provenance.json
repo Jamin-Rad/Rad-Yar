@@ -1,0 +1,12 @@
+{
+  "lessonId": "lymphom-zns",
+  "file": "pcnsl-schematic.svg",
+  "createdAt": "2026-10-19",
+  "type": "Original code-native conceptual diagram, not MRI or patient case",
+  "sourceConcepts": "Gehirn.pdf PDF48/printed47; location and paired DWI/ADC interpretation checked against Mansour2014 full publisher text",
+  "content": "Conceptual axial hemispheric outline, ventricular spaces, periventricular/callosal-adjacent highlighted region; separate abstract paired DWI-bright/ADC-low fields",
+  "diagnosticRepresentation": "No diagnostic scan, histology, quantitative signal scale, case/rID, patient or exact anatomic contour asserted",
+  "translations": "DE/EN/FA alt and explanatory caption in data/pcnslLesson.js",
+  "reuse": "No copied external pixels; source PDF48 contains no diagnostic images to crop",
+  "limitations": "Actual MRI case recognition, matching sequence/frame and immune-status counterexample remain unverified; the graphic cannot substitute for such clinical evidence."
+}

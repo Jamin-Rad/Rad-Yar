@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="600" viewBox="0 0 840 600">
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#e8e5ed"/><stop offset="1" stop-color="#d9e4e8"/></linearGradient></defs>
+<rect width="840" height="600" rx="34" fill="url(#bg)"/>
+<circle cx="690" cy="115" r="160" fill="#f7f4ef" opacity=".65"/>
+<g transform="translate(10 40)">
+<path d="M247 51c-72-42-150 4-160 71-68 25-75 98-41 144-38 63-7 133 44 151 4 69 90 104 157 69Z" fill="#f4eff0" stroke="#9292a2" stroke-width="6"/>
+<path d="M263 51c72-42 150 4 160 71 68 25 75 98 41 144 38 63 7 133-44 151-4 69-90 104-157 69Z" fill="#f4eff0" stroke="#9292a2" stroke-width="6"/>
+<g fill="none" stroke="#c7c0ce" stroke-width="5" stroke-linecap="round"><path d="M122 136q49-42 87-19M87 203q38-32 79-9M83 279q30-30 73-3M111 356q46-26 84 7M143 423q36-18 62-3M388 136q-49-42-87-19M423 203q-38-32-79-9M427 279q-30-30-73-3M399 356q-46-26-84 7M367 423q-36-18-62-3"/></g>
+<path d="M219 175c-36 11-32 41-13 57l-13 61 28 51 14-83-3-51Zm72 0c36 11 32 41 13 57l13 61-28 51-14-83 3-51Z" fill="#c5e1e8" stroke="#769caf" stroke-width="4"/>
+<path d="M198 192c-29 16-26 47-16 64l-13 44 16 34 15-51 8-43 14-21c15-8 51-8 66 0l9 10 14-25c-10-24-32-35-64-34-20 0-34 9-49 22Z" fill="#a690b5" opacity=".8" stroke="#77638e" stroke-width="4"/>
+<circle cx="133" cy="171" r="23" fill="#fff" stroke="#77638e" stroke-width="3"/><text x="133" y="179" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" fill="#5c4b70" font-weight="bold">1</text><path d="m153 181 35 23" stroke="#77638e" stroke-width="3"/>
+</g>
+<g transform="translate(568 190)">
+<rect width="204" height="134" rx="18" fill="#5c6675"/>
+<ellipse cx="104" cy="68" rx="37" ry="43" fill="#e4dbea"/>
+<text x="102" y="-17" text-anchor="middle" font-size="24" fill="#4e5d6e" font-family="Arial,sans-serif">DWI</text>
+<rect y="193" width="204" height="134" rx="18" fill="#c8d0d6"/>
+<ellipse cx="104" cy="260" rx="37" ry="43" fill="#626e7e"/>
+<text x="102" y="177" text-anchor="middle" font-size="24" fill="#4e5d6e" font-family="Arial,sans-serif">ADC</text>
+<path d="M104 143v9m0 188v9" stroke="#748293" stroke-width="3" stroke-linecap="round"/>
+</g>
+</svg>

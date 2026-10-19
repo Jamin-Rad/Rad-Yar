@@ -105,7 +105,7 @@ export const CURRICULUM = [
           { id: 'schwannome', title: { de: 'Schwannome', en: 'Schwannomas', fa: 'شوانوم' }, group: ['Tumoren der Hirnnerven'], tags: ['MRT'], diff: 2 },
           { id: 'neurofibrome', title: { de: 'Neurofibrome', en: 'Neurofibromas', fa: 'نوروفیبروم' }, group: ['Tumoren der Hirnnerven'], tags: ['MRT'], diff: 2 },
           { id: 'metastasen-meningeosis', title: { de: 'Metastasen / Meningeosis', en: 'Metastases / Leptomeningeal Carcinomatosis', fa: 'متاستازها / کارسینوماتوز لپتومننژیال' }, tags: ['MRT','CT'], diff: 2 },
-          { id: 'lymphom-zns', title: { de: 'Lymphom', en: 'CNS Lymphoma', fa: 'لنفوم سیستم عصبی مرکزی' }, tags: ['MRT'], diff: 3 },
+          { id: 'lymphom-zns', title: { de: 'Lymphom', en: 'CNS Lymphoma', fa: 'لنفوم سیستم عصبی مرکزی' }, tags: ['MRT'], diff: 3, link: '/gehirn/tumoren/zns-lymphom', mcqLink: '/ueben/quiz?fach=gehirn&n=2&themen=lymphom-zns', flashcardLink: '/flashcards/lymphom-zns', inProgress: true, updatedAt: '2026-10-19' },
           { id: 'hypophysenadenom', title: { de: 'Hypophysenadenom', en: 'Pituitary Adenoma', fa: 'آدنوم هیپوفیز' }, group: ['Sella & parasellläre Region'], tags: ['MRT'], diff: 2 },
           { id: 'rathke-tasche-zyste', title: { de: 'Rathke-Tasche-Zyste', en: "Rathke's Cleft Cyst", fa: 'کیست شکاف راتکه' }, group: ['Sella & parasellläre Region'], tags: ['MRT'], diff: 2 },
           { id: 'kraniopharyngeom', title: { de: 'Kraniopharyngeom', en: 'Craniopharyngioma', fa: 'کرانیوفارنژیوم' }, group: ['Sella & parasellläre Region'], tags: ['MRT','CT'], diff: 3 },
