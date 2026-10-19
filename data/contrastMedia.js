@@ -1,5 +1,11 @@
 export const CONTRAST_TOPICS = [
   {
+    id: 'km-ultraschall',
+    group: { de: 'Ultraschall-Kontrastmittel', en: 'Ultrasound contrast media', fa: 'مواد حاجب سونوگرافی' },
+    title: { de: 'Mikrobläschen & CEUS', en: 'Microbubbles & CEUS', fa: 'میکروحباب‌ها و CEUS' },
+    icon: '🫧',
+  },
+  {
     id: 'km-jod-typen',
     group: { de: 'Röntgen-Kontrastmittel', en: 'X-ray contrast media', fa: 'مواد حاجب اشعهٔ ایکس' },
     title: { de: 'Typen & Eigenschaften', en: 'Types & properties', fa: 'انواع و ویژگی‌ها' },
@@ -50,6 +56,16 @@ export const CONTRAST_TOPICS = [
 ]
 
 export const CONTRAST_GROUPS = [
+  {
+    id: 'ultraschall',
+    readId: 'kontrastmittel-ultraschall',
+    flashcardId: 'kontrastmittel-ultraschall',
+    icon: '🫧',
+    tags: ['Sono'],
+    title: { de: 'Ultraschall-Kontrastmittel', en: 'Ultrasound contrast media', fa: 'مواد حاجب سونوگرافی' },
+    subtitle: { de: 'Mikrobläschen, CEUS-Mechanismus, Indikationen und Sicherheit', en: 'Microbubbles, CEUS mechanism, indications and safety', fa: 'میکروحباب‌ها، سازوکار CEUS، اندیکاسیون‌ها و ایمنی' },
+    topicIds: ['km-ultraschall'],
+  },
   {
     id: 'roentgen',
     readId: 'kontrastmittel-roentgen',
@@ -114,6 +130,11 @@ export const CONTRAST_LESSON = {
     intro: 'Kontrastmittel verbessern die diagnostische Aussagekraft, benötigen aber eine klare Indikation, passende Patientenselektion und ein vorbereitetes Reaktionsmanagement.',
     key: 'Immer zuerst fragen: Verändert die Kontrastmittelgabe die Diagnose oder das Management? Danach Wirkstoffklasse, Risikoprofil und niedrigste diagnostisch ausreichende Dosis wählen.',
     sections: {
+      'km-ultraschall': {
+        lead: 'Ultraschall-Kontrastmittel sind gasgefüllte Mikrobläschen. Sie verbessern das Echo aus dem Blutpool und werden überwiegend über die Lunge eliminiert.',
+        points: [['Mechanismus', 'Mikrobläschen reflektieren Ultraschall stark; bei niedrigem mechanischem Index entstehen nichtlineare und harmonische Signale.'], ['Verteilung', 'Intravenös verabreichte Mikrobläschen bleiben intravasal; sie sind keine jod- oder gadoliniumhaltigen extrazellulären Kontrastmittel.'], ['Sicherheit', 'Zulassung, Kontraindikationen und Anwendung hängen vom Präparat und Applikationsweg ab. Die aktuelle Fachinformation ist maßgeblich.']],
+        takeHome: 'CEUS ist eine eigene Kontrastmittelklasse: Indikation, Zulassung und Sicherheitsregeln präparat- und routenspezifisch prüfen.',
+      },
       'km-jod-typen': {
         lead: 'Moderne intravaskuläre Röntgenkontrastmittel sind überwiegend nicht-ionisch und niedrig- oder isoosmolar.',
         points: [
@@ -194,6 +215,11 @@ export const CONTRAST_LESSON = {
     intro: 'Contrast agents improve diagnostic information but require a clear indication, appropriate patient selection and prepared reaction management.',
     key: 'First ask whether contrast will change diagnosis or management. Then select the agent class, assess risk and use the lowest diagnostically adequate dose.',
     sections: {
+      'km-ultraschall': {
+        lead: 'Ultrasound contrast agents are gas-filled microbubbles. They enhance echoes from the blood pool and are mainly eliminated through the lungs.',
+        points: [['Mechanism', 'Microbubbles strongly reflect ultrasound; at a low mechanical index they produce nonlinear and harmonic signals.'], ['Distribution', 'Intravenous microbubbles remain intravascular; they are not iodine- or gadolinium-based extracellular agents.'], ['Safety', 'Authorisation, contraindications and use depend on the product and route. The current product information is decisive.']],
+        takeHome: 'CEUS is a distinct contrast-agent class: check the indication, authorisation and safety rules for the specific product and route.',
+      },
       'km-jod-typen': { lead: 'Modern intravascular X-ray contrast agents are predominantly non-ionic and low- or iso-osmolar.', points: [['Principle', 'Iodine attenuates X-rays and increases density on CT, angiography and fluoroscopy.'], ['Properties', 'Osmolality, viscosity, iodine concentration and injection rate affect tolerability and enhancement.'], ['Practice', 'Agent, dose, flow rate, access and phase must match the clinical objective.']], takeHome: 'Non-ionic low-osmolar agents are the intravascular standard; warming can reduce high viscosity.' },
       'km-jod-reaktionen': { lead: 'Acute reactions are classified as allergic-like or physiologic and by severity.', points: [['Mild', 'Limited urticaria, itching, nausea or warmth: observe and treat symptoms.'], ['Moderate', 'Diffuse urticaria, bronchospasm or facial oedema require rapid clinical assessment and monitoring.'], ['Severe', 'For anaphylaxis: stop contrast, call for help, support airway/breathing/circulation and give intramuscular epinephrine according to the local emergency protocol.']], takeHome: 'A previous severe reaction is the strongest risk factor. Emergency equipment and trained staff must be available.' },
       'km-gastrointestinal': { lead: 'Enteric agents mark or distend the gastrointestinal tract.', points: [['Barium sulphate', 'Excellent mucosal coating; problematic with suspected perforation or significant aspiration risk.'], ['Water-soluble iodine', 'Often preferred if perforation is possible; hyperosmolar agents can cause severe pulmonary oedema if aspirated.'], ['Neutral/negative', 'Water or dedicated solutions are used for CT or MR enterography.']], takeHome: 'Choice depends mainly on the question, suspected perforation and aspiration risk.' },
@@ -210,6 +236,11 @@ export const CONTRAST_LESSON = {
     intro: 'مواد حاجب ارزش تشخیصی را افزایش می‌دهند، اما به اندیکاسیون روشن، انتخاب درست بیمار و آمادگی برای واکنش‌های حاد نیاز دارند.',
     key: 'ابتدا بپرسید آیا تزریق ماده حاجب تشخیص یا درمان را تغییر می‌دهد؛ سپس نوع ماده، خطر بیمار و کمترین دوز تشخیصی کافی را انتخاب کنید.',
     sections: {
+      'km-ultraschall': {
+        lead: 'مواد حاجب سونوگرافی میکروحباب‌های پر از گاز هستند. آن‌ها پژواک خون را تقویت می‌کنند و عمدتاً از راه ریه دفع می‌شوند.',
+        points: [['سازوکار', 'میکروحباب‌ها صوت را به‌خوبی بازتاب می‌دهند؛ در شاخص مکانیکی پایین، سیگنال‌های غیرخطی و هارمونیک ایجاد می‌کنند.'], ['توزیع', 'میکروحباب‌های تزریق‌شده به‌صورت وریدی داخل عروق می‌مانند؛ مادهٔ حاجب خارج‌سلولیِ یددار یا گادولینیومی نیستند.'], ['ایمنی', 'مجوز، منع مصرف و روش استفاده به فرآورده و مسیر تجویز وابسته است. اطلاعات رسمی و به‌روز همان فرآورده ملاک است.']],
+        takeHome: 'CEUS دسته‌ای جداگانه از مواد حاجب است: اندیکاسیون، مجوز و نکات ایمنی را برای فرآورده و مسیر مشخص بررسی کنید.',
+      },
       'km-jod-typen': { lead: 'مواد حاجب عروقی مدرن عمدتاً غیر یونی و کم‌اسمولار یا ایزواسمولار هستند.', points: [['اصل', 'ید اشعه ایکس را جذب می‌کند و دانسیته را در CT، آنژیوگرافی و فلوروسکوپی افزایش می‌دهد.'], ['ویژگی‌ها', 'اسمولالیته، ویسکوزیته، غلظت ید و سرعت تزریق بر تحمل و تقویت پس از تزریق اثر دارند.'], ['کاربرد', 'نوع ماده، دوز، سرعت تزریق، مسیر و فاز باید با هدف بالینی هماهنگ باشد.']], takeHome: 'مواد غیر یونی کم‌اسمولار استاندارد عروقی هستند؛ گرم‌کردن می‌تواند ویسکوزیته را کاهش دهد.' },
       'km-jod-reaktionen': { lead: 'واکنش‌های حاد به نوع آلرژی‌مانند یا فیزیولوژیک و بر اساس شدت تقسیم می‌شوند.', points: [['خفیف', 'کهیر محدود، خارش، تهوع یا احساس گرما: مشاهده و درمان علامتی.'], ['متوسط', 'کهیر منتشر، برونکواسپاسم یا ادم صورت نیازمند ارزیابی سریع و مانیتورینگ است.'], ['شدید', 'در آنافیلاکسی تزریق را قطع کنید، کمک بخواهید، راه هوایی/تنفس/گردش را حمایت و آدرنالین عضلانی را طبق پروتکل محلی بدهید.']], takeHome: 'واکنش شدید قبلی مهم‌ترین عامل خطر است؛ تجهیزات اورژانس و پرسنل آموزش‌دیده باید آماده باشند.' },
       'km-gastrointestinal': { lead: 'مواد خوراکی یا رکتال لومن دستگاه گوارش را مشخص یا متسع می‌کنند.', points: [['باریم', 'پوشش مخاطی عالی؛ در شک به پرفوراسیون یا خطر مهم آسپیراسیون مشکل‌ساز است.'], ['ید محلول در آب', 'در احتمال پرفوراسیون اغلب ترجیح داده می‌شود؛ آسپیراسیون مواد هایپراسمولار خطر ادم ریه دارد.'], ['خنثی/منفی', 'آب یا محلول‌های ویژه در CT یا MR انتروگرافی استفاده می‌شوند.']], takeHome: 'انتخاب بر اساس سؤال بالینی، احتمال پرفوراسیون و خطر آسپیراسیون است.' },
@@ -223,6 +254,10 @@ export const CONTRAST_LESSON = {
 }
 
 const QUESTION_SEEDS = {
+  'km-ultraschall': [
+    ['Wo verbleiben intravenös verabreichte Ultraschall-Mikrobläschen?', 'Im Gefäßraum', ['Im Interstitium', 'Im Gefäßraum', 'Im Gallengang', 'Im Knochenmark'], 'B'],
+    ['Welche Aussage zur Zulassung von SonoVue in der EU trifft zu?', 'CEUS-Anwendungen außerhalb der Fachinformation können off-label sein', ['Alle CEUS-Anwendungen sind zugelassen', 'Nierenzysten sind immer zugelassen', 'CEUS-Anwendungen außerhalb der Fachinformation können off-label sein', 'Eine Kontrastmittelgabe ist auch bei eindeutiger nativer Untersuchung erforderlich'], 'C'],
+  ],
   'km-jod-typen': [
     ['Welche Eigenschaft entspricht modernen intravaskulären CT-Kontrastmitteln?', 'Nicht-ionisch und niedrig- oder isoosmolar', ['Nur ionisch und hochosmolar', 'Nicht-ionisch und niedrig- oder isoosmolar', 'Immer oral verabreicht', 'Ohne Jod'], 'B'],
     ['Welche Maßnahme kann die Viskosität jodhaltiger KM reduzieren?', 'Erwärmen auf Körpertemperatur', ['Abkühlen', 'Erwärmen auf Körpertemperatur', 'Verdünnen mit Luft', 'Einfrieren'], 'B'],
@@ -261,6 +296,8 @@ const translateQuestion = (seed, lang) => {
   if (lang === 'de') return seed
   const translations = {
     en: {
+      'Wo verbleiben intravenös verabreichte Ultraschall-Mikrobläschen?': ['Where do intravenously administered ultrasound microbubbles remain?', 'In the vascular space', ['In the interstitium', 'In the vascular space', 'In the bile duct', 'In bone marrow']],
+      'Welche Aussage zur Zulassung von SonoVue in der EU trifft zu?': ['Which statement about SonoVue authorisation in the EU is correct?', 'CEUS uses outside the product information may be off-label', ['All CEUS uses are authorised', 'Renal cyst assessment is always authorised', 'CEUS uses outside the product information may be off-label', 'Contrast is required even when unenhanced imaging is conclusive']],
       'Welche Eigenschaft entspricht modernen intravaskulären CT-Kontrastmitteln?': ['Which property describes modern intravascular CT contrast agents?', 'Non-ionic and low- or iso-osmolar', ['Ionic and high-osmolar only', 'Non-ionic and low- or iso-osmolar', 'Always administered orally', 'Iodine-free']],
       'Welche Maßnahme kann die Viskosität jodhaltiger KM reduzieren?': ['Which measure can reduce iodinated contrast viscosity?', 'Warming to body temperature', ['Cooling', 'Warming to body temperature', 'Diluting with air', 'Freezing']],
       'Was ist bei schwerer anaphylaktischer KM-Reaktion das wichtigste Medikament?': ['What is the key medication in a severe anaphylactic contrast reaction?', 'Intramuscular epinephrine', ['Oral antihistamine', 'Intramuscular epinephrine', 'Metformin', 'Barium sulphate']],
@@ -281,6 +318,8 @@ const translateQuestion = (seed, lang) => {
       'Wann sollte Gadolinium in der Schwangerschaft eingesetzt werden?': ['When should gadolinium be used in pregnancy?', 'Only for a critical indication with meaningful added value', ['For every MRI', 'Only for a critical indication with meaningful added value', 'For routine screening', 'Never, even in an emergency']],
     },
     fa: {
+      'Wo verbleiben intravenös verabreichte Ultraschall-Mikrobläschen?': ['میکروحباب‌های وریدی سونوگرافی کجا می‌مانند؟', 'در فضای عروقی', ['در فضای بینابینی', 'در فضای عروقی', 'در مجرای صفراوی', 'در مغز استخوان']],
+      'Welche Aussage zur Zulassung von SonoVue in der EU trifft zu?': ['کدام عبارت درباره مجوز SonoVue در اتحادیه اروپا درست است؟', 'کاربرد CEUS خارج از اطلاعات رسمی فرآورده ممکن است off-label باشد', ['همه کاربردهای CEUS مجازند', 'بررسی کیست کلیه همیشه مجاز است', 'کاربرد CEUS خارج از اطلاعات رسمی فرآورده ممکن است off-label باشد', 'حتی با تشخیص قطعی در سونوگرافی بدون کنتراست هم باید ماده حاجب داد']],
       'Welche Eigenschaft entspricht modernen intravaskulären CT-Kontrastmitteln?': ['کدام ویژگی مربوط به مواد حاجب عروقی مدرن CT است؟', 'غیر یونی و کم‌اسمولار یا ایزواسمولار', ['فقط یونی و پُراسمولار', 'غیر یونی و کم‌اسمولار یا ایزواسمولار', 'همیشه خوراکی', 'بدون ید']],
       'Welche Maßnahme kann die Viskosität jodhaltiger KM reduzieren?': ['کدام اقدام ویسکوزیته ماده حاجب یددار را کاهش می‌دهد؟', 'گرم‌کردن تا دمای بدن', ['سردکردن', 'گرم‌کردن تا دمای بدن', 'رقیق‌کردن با هوا', 'منجمدکردن']],
       'Was ist bei schwerer anaphylaktischer KM-Reaktion das wichtigste Medikament?': ['مهم‌ترین دارو در واکنش آنافیلاکسی شدید چیست؟', 'آدرنالین عضلانی', ['آنتی‌هیستامین خوراکی', 'آدرنالین عضلانی', 'متفورمین', 'باریم']],
@@ -342,7 +381,7 @@ export const CONTRAST_FLASHCARDS = CONTRAST_TOPICS.flatMap(topic => {
       content[lang] = {
         front: translated[0],
         answer: translated[1],
-        explanation: CONTRAST_LESSON[lang].sections[topic.id].takeHome,
+        explanation: topic.id === 'km-ultraschall' ? translated[1] : CONTRAST_LESSON[lang].sections[topic.id].takeHome,
       }
     }
     return {

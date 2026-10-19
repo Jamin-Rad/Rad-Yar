@@ -1788,11 +1788,11 @@ export const CURRICULUM = [
         themen: CONTRAST_GROUPS.map(group => ({
           id: group.readId,
           title: group.title,
-          tags: group.id === 'roentgen'
+          tags: group.tags || (group.id === 'roentgen'
             ? ['Röntgen', 'CT']
             : group.id === 'mrt'
               ? ['MRT']
-              : ['CT', 'MRT'],
+              : ['CT', 'MRT']),
           diff: 2,
           link: `/technik/kontrastmittel/${group.id}`,
           updatedAt: '2026-09-01',

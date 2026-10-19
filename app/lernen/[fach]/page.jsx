@@ -60,7 +60,7 @@ function getKapitelThemen(kapitel) {
   return CONTRAST_GROUPS.map(group => ({
     id: group.readId,
     title: group.title,
-    tags: group.id === 'roentgen' ? ['Röntgen', 'CT'] : group.id === 'mrt' ? ['MRT'] : ['CT', 'MRT'],
+    tags: group.tags || (group.id === 'roentgen' ? ['Röntgen', 'CT'] : group.id === 'mrt' ? ['MRT'] : ['CT', 'MRT']),
     diff: 2,
     link: `/technik/kontrastmittel/${group.id}`,
     updatedAt: '2026-09-01',
