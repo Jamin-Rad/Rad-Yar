@@ -65,7 +65,7 @@ export const ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS = [
     { id: 'nebennieren-inzidentalom', title: { de: 'Nebenniereninzidentalom', en: 'Adrenal incidentaloma', fa: 'اینسیدنتالوم آدرنال' } }, { id: 'nebennierenadenom', title: { de: 'Nebennierenadenom', en: 'Adrenal adenoma', fa: 'آدنوم آدرنال' } },
   ] },
   { fachId: 'abdomen', kapitelId: 'abdomen-gi-trakt', title: { de: 'Gastrointestinaltrakt', en: 'Gastrointestinal tract', fa: 'دستگاه گوارش' }, topics: [
-    { id: 'appendizitis', title: { de: 'Appendizitis', en: 'Appendicitis', fa: 'آپاندیسیت' } }, { id: 'untere-gi-blutung', title: { de: 'Untere GI-Blutung', en: 'Lower GI bleeding', fa: 'خون‌ریزی گوارشی تحتانی' } }, { id: 'kolorektales-karzinom', title: { de: 'Kolorektales Karzinom', en: 'Colorectal carcinoma', fa: 'کارسینوم کولورکتال' } },
+    { id: 'appendizitis', title: { de: 'Appendizitis', en: 'Appendicitis', fa: 'آپاندیسیت' } }, { id: 'untere-gi-blutung', title: { de: 'Untere GI-Blutung', en: 'Lower GI bleeding', fa: 'خون‌ریزی گوارشی تحتانی' } }, { id: 'kolorektales-karzinom', title: { de: 'Kolorektales Karzinom', en: 'Colorectal carcinoma', fa: 'کارسینوم کولورکتال' } }, { id: 'gist', title: { de: 'GIST', en: 'GIST', fa: 'GIST' } },
   ] },
   { fachId: 'thorax', kapitelId: 'thorax-grundlagen', title: { de: 'Thoraxgrundlagen', en: 'Thoracic imaging fundamentals', fa: 'مبانی تصویربرداری قفسهٔ سینه' }, topics: [
     { id: 'roentgen-thorax-systematik', title: { de: 'Systematische Röntgenanalyse', en: 'Systematic chest radiograph review', fa: 'مرور نظام‌مند رادیوگرافی قفسهٔ سینه' } },

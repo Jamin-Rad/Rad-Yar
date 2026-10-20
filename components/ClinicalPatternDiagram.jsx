@@ -198,6 +198,17 @@ function LiverCyst({ variant, lang }) {
   </g>
 }
 
+function Gist({ lang }) {
+  const label = { de: 'Magen → exophytische Masse', en: 'stomach → exophytic mass', fa: 'معده ← توده برون‌گرا' }[lang] || 'stomach → exophytic mass'
+  return <g>
+    <path d="M119 55c-6 28 8 43 27 49 17 5 23 17 18 33-6 19 3 42 26 48 27 7 48-10 52-34 3-18 14-26 31-21 22 7 38-7 38-26 0-20-15-33-38-30-15 2-25-5-25-20 0-15-11-25-28-25-16 0-25 10-25 23 0 10-7 14-18 9-18-9-45-19-58-6Z" fill="#f1c27a" stroke={PALETTE.ink} strokeWidth="4"/>
+    <path d="M163 114c-4 13 4 22 16 24 13 3 18 12 14 24-3 11 4 21 17 23 15 2 26-8 28-22 2-11 10-16 21-13 15 4 24-5 24-17 0-13-10-21-24-19-11 1-17-4-18-14" fill="#d84b42" fillOpacity=".68" stroke={PALETTE.coral} strokeWidth="3"/>
+    <path d="M157 132 98 176" stroke={PALETTE.blue} strokeWidth="2.5"/><circle cx="157" cy="132" r="4" fill={PALETTE.blue}/>
+    <rect x="40" y="171" width="104" height="26" rx="7" fill="#fff" stroke={PALETTE.blue} strokeWidth="2"/><text x="92" y="188" textAnchor="middle" fill={PALETTE.ink} fontSize="11">{label}</text>
+    <text x="215" y="220" textAnchor="middle" fill={PALETTE.muted} fontSize="12">{lang === 'fa' ? 'شماتیک آموزشی، نه تصویر بیمار' : lang === 'de' ? 'Lernschema, kein Patientenbild' : 'teaching schematic, not patient imaging'}</text>
+  </g>
+}
+
 function Ultrasound({ lang }) {
   const labels = { de: ['Echo', 'Schallkopf', 'Grenzfläche'], en: ['echo', 'transducer', 'boundary'], fa: ['پژواک', 'پروب', 'مرز بافتی'] }[lang] || ['echo', 'transducer', 'boundary']
   return <g>
@@ -211,7 +222,11 @@ function Ultrasound({ lang }) {
 }
 
 export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de', title }) {
-  return <svg viewBox="0 0 400 250" role="img" aria-label={title} xmlns="http://www.w3.org/2000/svg">
+  const accessibleDescription = variant === 'gist'
+    ? ({ de: 'Lernschema: Der Magen ist dargestellt; eine Raumforderung wächst nach außen aus der Magenwand. Kein Patientenbild.', en: 'Teaching schematic: the stomach is shown with a mass growing outward from its wall. Not patient imaging.', fa: 'نمای شماتیک آموزشی: معده و توده‌ای که به بیرون از دیواره معده رشد می‌کند نشان داده شده‌اند؛ تصویر بیمار نیست.' }[lang] || 'Teaching schematic of a stomach with an exophytic mass; not patient imaging.')
+    : title
+  return <svg viewBox="0 0 400 250" role="img" aria-label={accessibleDescription} xmlns="http://www.w3.org/2000/svg">
+    <title>{accessibleDescription}</title>
     <rect x="5" y="5" width="390" height="240" rx="22" fill="#fff" stroke={PALETTE.line} strokeWidth="2"/>
     {variant === 'nf1' ? <NF1 lang={lang}/> :
       variant === 'pneumonia' || variant === 'tuberculosis' || variant === 'hrct' ? <Lungs variant={variant} lang={lang}/> :
@@ -226,6 +241,7 @@ export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de',
       variant === 'rectal-mri' ? <RectalMRI lang={lang}/> :
       variant === 'adrenal' ? <Adrenal lang={lang}/> :
       variant === 'liver-cyst' || variant === 'hydatid' ? <LiverCyst variant={variant} lang={lang}/> :
+      variant === 'gist' ? <Gist lang={lang}/> :
       variant === 'psc' || variant === 'hepatic-aml' ? <Hepatobiliary variant={variant} lang={lang}/> :
       variant === 'ultrasound' ? <Ultrasound lang={lang}/> : <Liver lang={lang}/>}
   </svg>

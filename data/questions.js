@@ -7,6 +7,7 @@ import { FACET_QUESTIONS } from './spondylarthroseLesson'
 import { PCNSL_QUESTIONS } from './pcnslLesson'
 import { FLEISCHNER_QUESTIONS } from './fleischnerLearning'
 import { HEMANGIOMA_QUESTIONS } from './haemangiomaTraining'
+import { GIST_QUESTIONS } from './gistLearning'
 import { GEHIRN_CHIARI_QUESTIONS } from './gehirnChiariLesson'
 import { GEHIRN_NF1_QUESTIONS } from './gehirnNf1CnsLesson'
 import { BRAIN_METASTASES_QUESTIONS } from './gehirnHirnmetastasenLesson'
@@ -4210,6 +4211,10 @@ export const QUESTION_BANK = Object.fromEntries(
     [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...KOLLOID_QUESTIONS.filter(question => question.id.startsWith(`kolloidzyste-${lang}-`)), ...UIP_IPF_QUESTIONS.filter(question => question.id.startsWith(`uip-ipf-${lang}-`)), ...PULMONARY_EDEMA_QUESTIONS.filter(question => question.id.startsWith(`lungenoedem-${lang}-`)), ...DUAL_ENERGY_CT_QUESTIONS.filter(question => question.id.startsWith(`dual-energy-ct-${lang}-`)), ...MR_PERFUSION_QUESTIONS.filter(question => question.id.startsWith(`mrt-perfusion-${lang}-`)), ...MRI_ARTIFACT_QUESTIONS.filter(question => question.id.startsWith(`mri-artifacts-${lang}-`)), ...MRI_SAFETY_QUESTIONS.filter(question => question.id === `mri-safety-${lang}-hotspot`), ...MRI_SPIN_ECHO_QUESTIONS.filter(question => question.id === `mrt-spin-echo-${lang}-pd`), ...MRI_FUNDAMENTALS_QUESTIONS.filter(question => question.id.endsWith(`-${lang}-resonance`)), ...MRI_QUALITY_QUESTIONS.filter(question => question.id.endsWith(`-${lang}-shimming-coil`)), ...MR_ANGIOGRAPHY_QUESTIONS.filter(question => question.id.endsWith(`-${lang}-venc`)), ...CT_QUALITY_QUESTIONS.filter(question => question.id.startsWith(`ct-quality-${lang}-`)), ...CT_PERFUSION_QUESTIONS.filter(question => question.id.startsWith(`ct-perfusion-${lang}-`)), ...CT_RECONSTRUCTION_QUESTIONS.filter(question => question.id.endsWith(`-${lang}-window-kernel`)), ...HRCT_TECHNIK_QUESTIONS.filter(question => question.id.endsWith(`-${lang}-expiratory`)), ...CT_PROTOCOL_QUESTIONS.filter(question => question.id.endsWith(`-${lang}-pancreas-phase`)), ...CT_BASICS_QUESTIONS.filter(question => question.id.endsWith(`-${lang}-01`)), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang]), ...METACARPAL_BASE_QUESTIONS[lang], ...BONE_INFARCT_QUESTIONS[lang], ...FACET_QUESTIONS[lang], ...PCNSL_QUESTIONS[lang], ...MEDULLO_QUESTIONS[lang], ...MENING_QUESTIONS[lang], ...RECIST_QUESTIONS[lang], ...ORMOND_QUESTIONS[lang], ...EPIPLOICA_QUESTIONS[lang], ...PANNICULITIS_QUESTIONS[lang], ...PERITONEAL_QUESTIONS[lang], ...BRAIN_METASTASES_QUESTIONS[lang]],
   ])
 )
+
+for (const lang of Object.keys(QUESTION_BANK)) {
+  QUESTION_BANK[lang].push(...(GIST_QUESTIONS[lang] || []))
+}
 
 export const MCQ_TOPIC_GROUPS = [
   CT_BASICS_TOPIC_GROUP,
