@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 280" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual BOLD response</title>
+  <desc id="desc">A task-related neural response is followed by a vascular response, a relative decrease in deoxygenated haemoglobin and a typical rise in T2-star MRI signal. Conceptual schematic only.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#52677a"/></marker>
+    <linearGradient id="vessel" x1="0" x2="1"><stop stop-color="#8bcbd1"/><stop offset="1" stop-color="#60aeb8"/></linearGradient>
+  </defs>
+  <rect width="1000" height="280" rx="24" fill="#f5fafb"/>
+  <g stroke="#b7dce0" stroke-width="2" fill="#fff">
+    <rect x="25" y="46" width="205" height="188" rx="18"/>
+    <rect x="275" y="46" width="205" height="188" rx="18"/>
+    <rect x="525" y="46" width="205" height="188" rx="18"/>
+    <rect x="775" y="46" width="200" height="188" rx="18"/>
+  </g>
+  <g stroke="#52677a" stroke-width="4" marker-end="url(#arrow)"><path d="M237 140h27"/><path d="M487 140h27"/><path d="M737 140h27"/></g>
+  <!-- neural activity -->
+  <g fill="none" stroke="#6e66b3" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M128 106c-23 0-35 14-35 34 0 22 14 34 35 34s35-12 35-34c0-20-12-34-35-34Z"/>
+    <path d="M128 106V78M97 119l-20-17M93 143H65M101 164l-18 20M128 174v28M159 119l20-17M163 143h28M155 164l18 20"/>
+    <path d="M72 92l-13-9M185 92l13-9M60 143H49M196 143h12"/>
+  </g>
+  <g fill="#6e66b3"><circle cx="116" cy="135" r="4"/><circle cx="139" cy="127" r="4"/><circle cx="137" cy="151" r="4"/></g>
+  <!-- increased flow -->
+  <path d="M309 118c28-22 49-22 77 0s49 22 77 0M309 164c28-22 49-22 77 0s49 22 77 0" fill="none" stroke="url(#vessel)" stroke-width="16" stroke-linecap="round"/>
+  <g fill="#fff"><path d="M343 139h33" stroke="#fff" stroke-width="5" marker-end="url(#arrow)"/><path d="M408 139h33" stroke="#fff" stroke-width="5" marker-end="url(#arrow)"/></g>
+  <!-- relative deoxy-Hb decrease: fewer dark discs in venous blood -->
+  <path d="M556 118c26-22 51-22 78 0s51 22 78 0M556 164c26-22 51-22 78 0s51 22 78 0" fill="none" stroke="#a6c8cc" stroke-width="13" stroke-linecap="round"/>
+  <g fill="#6c3941"><circle cx="581" cy="119" r="9"/><circle cx="620" cy="165" r="9"/><circle cx="680" cy="120" r="9"/></g>
+  <g fill="#ecb46b"><circle cx="605" cy="121" r="7"/><circle cx="654" cy="164" r="7"/></g>
+  <!-- typical positive T2* signal response -->
+  <path d="M800 184h150M806 184c24 0 22-5 33-10s11-12 23-15 17-27 32-33 28-29 45-31" fill="none" stroke="#29999c" stroke-width="7" stroke-linecap="round"/>
+  <path d="M806 202V78M806 202h144" fill="none" stroke="#52677a" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M806 184c24 0 22-5 33-10s11-12 23-15 17-27 32-33 28-29 45-31" fill="none" stroke="#fff" stroke-width="1" opacity=".45"/>
+  <circle cx="939" cy="95" r="6" fill="#29999c"/>
+</svg>

@@ -1,5 +1,14 @@
 # Local media provenance
 
+## Functional MRI / BOLD lesson
+
+- Local asset: `public/technik/grundlagen/bold-mechanism.svg`
+- Origin: code-native SVG schematic authored for RadYar by the lesson authoring agent; no external figure was reused.
+- Figure type: conceptual task → vascular response → relative deoxyhaemoglobin → T2* signal pathway; no patient data and no diagnostic brain image.
+- Scientific basis: source coverage from user-supplied `Technik.pdf`, physical page 118 (printed p.117); interpretation qualified against Ogawa et al. 1990 and Logothetis et al. 2001. Labels, axes and legend are rendered in localized lesson UI.
+- Reuse basis: original project code; not copied from an external figure.
+- External provenance or license: not applicable.
+
 ## Pelvic ring lesson
 
 - Local asset: `public/msk/pelvic-ring/source-pdf-page-26.jpg`

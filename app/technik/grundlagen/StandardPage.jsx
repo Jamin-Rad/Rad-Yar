@@ -101,6 +101,11 @@ const checks = {
     en: { title: 'Self-check: aliasing or RF interference?', question: 'The nose appears again at the back of the head, along the phase-encoding direction. Which explanation and response fit?', options: ['Zipper from RF leakage; increase receiver bandwidth.', 'Aliasing: anatomy outside the FOV folded to the opposite side; enlarge phase FOV or use phase oversampling.', 'Gibbs ringing; change phase-encoding direction.'], answer: 1, correct: 'Correct. This fits anatomy outside the FOV folding along phase encoding. Phase oversampling can increase scan time.', retry: 'A narrow fixed line suggests RF interference; anatomy reappearing on the opposite side suggests wrap-around from outside the FOV.' },
     fa: { title: 'خودآزمایی: aliasing یا تداخل RF؟', question: 'نوک بینی در امتداد کدگذاری فاز، دوباره در پشت سر دیده می‌شود. کدام توضیح و اقدام مناسب است؟', options: ['zipper ناشی از نشت RF؛ پهنای باند گیرنده را افزایش دهید.', 'aliasing: آناتومی خارج FOV به سمت مقابل تاخورده است؛ FOV فاز را افزایش دهید یا phase oversampling به‌کار ببرید.', 'ringing گیبس؛ جهت کدگذاری فاز را عوض کنید.'], answer: 1, correct: 'درست است. این الگو با تاخوردگی آناتومی خارج از FOV در راستای کدگذاری فاز سازگار است. phase oversampling ممکن است زمان تصویربرداری را افزایش دهد.', retry: 'خط باریک و ثابت بیشتر به تداخل RF می‌خورد؛ ظاهرشدن آناتومی در سمت مقابل به تاخوردگی خارج FOV اشاره دارد.' },
   },
+  bold: {
+    de: { title: 'Selbstcheck: Was misst BOLD?', question: 'Welche Aussage trifft auf eine typische positive BOLD-Antwort während einer Aufgabe zu?', options: ['Eine T2*-Signaländerung, die indirekt über Blutfluss und Deoxy-Hb mit neuronaler Aktivität zusammenhängt.', 'Eine direkte Zählung neuronaler Aktionspotenziale.', 'Ein anatomischer Beweis, dass die Region ausschließlich diese Aufgabe ausführt.'], answer: 0, feedback: ['Richtig. BOLD ist ein indirekter, hämodynamischer MR-Kontrast.', 'BOLD zeichnet keine einzelnen Aktionspotenziale auf.', 'Eine Aktivierungskarte belegt keine exklusive Funktion einer Region.'] },
+    en: { title: 'Self-check: what does BOLD measure?', question: 'Which statement fits a typical positive BOLD response during a task?', options: ['A T2* signal change indirectly related to neural activity through blood flow and deoxy-Hb.', 'A direct count of neuronal action potentials.', 'An anatomical proof that the region performs this task exclusively.'], answer: 0, feedback: ['Correct. BOLD is an indirect haemodynamic MR contrast.', 'BOLD does not record individual action potentials.', 'An activation map does not establish exclusive function.'] },
+    fa: { title: 'خودآزمایی: BOLD چه چیزی را می‌سنجد؟', question: 'کدام عبارت با پاسخ مثبت معمول BOLD هنگام انجام یک تکلیف سازگار است؟', options: ['تغییر سیگنال T2* که از راه جریان خون و هموگلوبین بدون اکسیژن به‌طور غیرمستقیم با فعالیت عصبی مرتبط است.', 'شمارش مستقیم پتانسیل‌های عمل نورون‌ها.', 'اثبات آناتومیک اینکه این ناحیه فقط همان تکلیف را انجام می‌دهد.'], answer: 0, feedback: ['درست است. BOLD کنتراست MR همودینامیک و غیرمستقیم است.', 'BOLD پتانسیل‌های عمل منفرد را ثبت نمی‌کند.', 'نقشهٔ فعال‌سازی کارکرد انحصاری یک ناحیه را ثابت نمی‌کند.'] },
+  },
 }
 
 function RetrievalCheck({ kind, lang }) {
@@ -215,7 +220,7 @@ export default function TechnikGrundlagenStandardPage() {
         <p className={styles.lead}>{t(section.lead)}</p>
         <p>{lang==='fa'?`صفحهٔ PDF: ${section.pages}`:lang==='en'?`PDF page: ${section.pages}`:`PDF-Seite: ${section.pages}`}</p>
         <div className={styles.tableWrap}><table className={styles.table}><thead><tr><th>{t(L('Begriff','Concept','مفهوم'))}</th><th>{t(L('Lernpunkt','Learning point','نکتهٔ آموزشی'))}</th></tr></thead><tbody>{section.rows.map((row,i)=><tr key={i}>{row.map((cell,j)=><td key={j}>{t(cell)}</td>)}</tr>)}</tbody></table></div>
-        {section.visuals?.map((v,i)=><figure key={v.src} style={{margin:'22px 0',padding:14,border:'1px solid var(--border)',borderRadius:16,background:'var(--surface-soft)'}}><img src={v.src} alt={t(v.alt)} loading="lazy" style={{display:'block',width:'100%',height:'auto',borderRadius:10}}/><figcaption style={{marginTop:10}}>{t(v.caption)}</figcaption></figure>)}
+        {section.id === 'fmri-bold' ? <BoldFigure lang={lang} visual={section.visual} /> : section.visuals?.map((v,i)=><figure key={v.src} style={{margin:'22px 0',padding:14,border:'1px solid var(--border)',borderRadius:16,background:'var(--surface-soft)'}}><img src={v.src} alt={t(v.alt)} loading="lazy" style={{display:'block',width:'100%',height:'auto',borderRadius:10}}/><figcaption style={{marginTop:10}}>{t(v.caption)}</figcaption></figure>)}
         {section.teachingBlocks?.map(block=><section key={block.id} aria-labelledby={`${block.id}-title`} style={{marginTop:30}}>
           <h3 id={`${block.id}-title`}>{t(block.title)}</h3><p>{t(block.lead)}</p>
           <div className={styles.tableWrap}><table className={styles.table}><thead><tr><th>{t(L('Schritt / Begriff','Step / concept','گام / مفهوم'))}</th><th>{t(L('Was geschieht?','What happens?','چه رخ می‌دهد؟'))}</th></tr></thead><tbody>{block.rows.map((row,i)=><tr key={i}>{row.map((cell,j)=><td key={j}>{t(cell)}</td>)}</tr>)}</tbody></table></div>
@@ -238,6 +243,7 @@ export default function TechnikGrundlagenStandardPage() {
         </section>)}
         {section.id === 'mrt' ? <><MRIKnowledgeCheck lang={lang}/><RetrievalCheck kind="dixon" lang={lang}/><MriFundamentalsActions lang={lang}/></> : null}
         {section.id === 'mrt-spezial' ? <><RetrievalCheck kind="perfusion" lang={lang}/><RetrievalCheck kind="ciss" lang={lang}/><MraActions lang={lang}/></> : null}
+        {section.id === 'fmri-bold' ? <><RetrievalCheck kind="bold" lang={lang}/><BoldActions lang={lang}/></> : null}
         {section.id === 'leber-mrt-protokoll' ? <><LiverProtocolFigure lang={lang}/><RetrievalCheck kind="liverProtocol" lang={lang}/></> : null}
         {section.id === 'mrcp-protokoll' ? <RetrievalCheck kind="mrcp" lang={lang}/> : null}
         {section.id === 'mrt-sicherheit' ? <><MRIArtifactKnowledgeCheck lang={lang}/><MriSafetyActions lang={lang}/></> : null}
@@ -317,6 +323,34 @@ function MraActions({ lang }) {
     <a href={`/ueben/quiz?fach=technik&n=1&themen=mrt-gefaessdarstellung&from=${from}`}>{labels.quiz}</a>
     <a href={`/flashcards/mrt-gefaessdarstellung?from=${from}`}>{labels.cards}</a>
   </nav>
+}
+
+function BoldActions({ lang }) {
+  const from = encodeURIComponent(lang === 'de' ? '/technik/grundlagen#fmri-bold' : `/technik/grundlagen?lang=${lang}#fmri-bold`)
+  const labels = { de: { title: 'fMRT/BOLD üben', quiz: 'MC-Frage', cards: 'Drei Lernkarten' }, en: { title: 'Practise fMRI/BOLD', quiz: 'MCQ', cards: 'Three flashcards' }, fa: { title: 'تمرین fMRI/BOLD', quiz: 'سؤال چندگزینه‌ای', cards: 'سه فلش‌کارت' } }[lang]
+  return <nav aria-label={labels.title} style={{ display:'flex', flexWrap:'wrap', gap:12, margin:'18px 0', padding:14, border:'1px solid var(--border)', borderRadius:14, background:'var(--surface-soft)' }}>
+    <strong style={{ alignSelf:'center' }}>{labels.title}</strong>
+    <a href={`/ueben/quiz?fach=technik&n=1&themen=fmri-bold&from=${from}`}>{labels.quiz}</a>
+    <a href={`/flashcards/fmri-bold?from=${from}`}>{labels.cards}</a>
+  </nav>
+}
+
+function BoldFigure({ lang, visual }) {
+  const copy = {
+    de: { axis: 'Relative T2*-Signalintensität', x: 'Ausgangswert → Aufgabenantwort', labels: ['Aufgabenbezogene Aktivität', 'Lokaler Blutfluss steigt häufig', 'Relativer venöser Deoxy-Hb-Anteil sinkt häufig', 'T2*-Signal kann bei positiver BOLD-Antwort steigen'], legend: 'Schematische Kodierung: dunkle Punkte = Deoxy-Hb, helle Punkte = Oxy-Hb. Die Kurve zeigt eine relative Signaländerung, keine Messwerte.' },
+    en: { axis: 'Relative T2* signal intensity', x: 'Baseline → task response', labels: ['Task-related activity', 'Local blood flow often rises', 'Relative venous deoxy-Hb often falls', 'T2* signal may rise in a positive BOLD response'], legend: 'Schematic encoding: dark dots = deoxy-Hb; light dots = oxy-Hb. The curve shows relative signal change, not measured values.' },
+    fa: { axis: 'شدت نسبی سیگنال T2*', x: 'خط پایه ← پاسخ به تکلیف', labels: ['فعالیت مرتبط با تکلیف', 'جریان خون موضعی اغلب افزایش می‌یابد', 'سهم نسبی دئوکسی‌هموگلوبین وریدی اغلب کاهش می‌یابد', 'در پاسخ مثبت BOLD، سیگنال T2* ممکن است افزایش یابد'], legend: 'راهنمای شماتیک: نقطه‌های تیره = دئوکسی‌هموگلوبین؛ نقطه‌های روشن = اکسی‌هموگلوبین. منحنی تغییر نسبی سیگنال را نشان می‌دهد، نه دادهٔ اندازه‌گیری‌شده.' },
+  }[lang] || null
+  const t = value => pick(value, lang)
+  return <figure aria-label={t(visual.title || L('BOLD-Signalweg','BOLD signal pathway','مسیر سیگنال BOLD'))} style={{ margin:'22px 0', padding:14, border:'1px solid var(--border)', borderRadius:16, background:'var(--surface-soft)' }}>
+    <p style={{ margin:'0 0 8px', textAlign:'center', fontWeight:600 }}>{copy.axis}</p>
+    <img src={visual.src} alt={t(visual.alt)} loading="lazy" style={{ display:'block', width:'100%', height:'auto', borderRadius:10 }} />
+    <p style={{ margin:'4px 0 12px', textAlign:'center', fontWeight:600 }}>{copy.x}</p>
+    <ol dir={lang === 'fa' ? 'rtl' : 'ltr'} style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(min(100%,210px),1fr))', gap:8, paddingInlineStart:lang === 'fa' ? 0 : 24, paddingInlineEnd:lang === 'fa' ? 24 : 0 }}>
+      {copy.labels.map(label => <li key={label}>{label}</li>)}
+    </ol>
+    <figcaption style={{ marginTop:8 }}>{copy.legend} {t(visual.caption)}</figcaption>
+  </figure>
 }
 
 function MriFundamentalsActions({ lang }) {
