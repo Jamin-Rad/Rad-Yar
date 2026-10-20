@@ -111,7 +111,7 @@ export const CURRICULUM = [
           { id: 'kraniopharyngeom', title: { de: 'Kraniopharyngeom', en: 'Craniopharyngioma', fa: 'کرانیوفارنژیوم' }, group: ['Sella & parasellläre Region'], tags: ['MRT','CT'], diff: 3, link: '/gehirn/tumoren/sella-parasella', inProgress: true, updatedAt: '2026-10-19' },
           { id: 'epidermoidzyste', title: { de: 'Epidermoidzyste', en: 'Epidermoid Cyst', fa: 'کیست اپیدرموئید' }, group: ['Zystische Raumforderungen'], tags: ['MRT'], diff: 2, link: '/gehirn/tumoren/epidermoid-arachnoid', inProgress: true, updatedAt: '2026-10-19' },
           { id: 'arachnoidalzyste-tumor', title: { de: 'Arachnoidalzyste', en: 'Arachnoid Cyst', fa: 'کیست آراکنوئید' }, group: ['Zystische Raumforderungen'], tags: ['MRT','CT'], diff: 1, link: '/gehirn/tumoren/epidermoid-arachnoid', inProgress: true, updatedAt: '2026-10-19' },
-          { id: 'kolloidzyste', title: { de: 'Kolloidzyste', en: 'Colloid Cyst', fa: 'کیست کلوئید' }, group: ['Zystische Raumforderungen'], tags: ['MRT','CT'], diff: 2 },
+          { id: 'kolloidzyste', title: { de: 'Kolloidzyste', en: 'Colloid Cyst', fa: 'کیست کلوئید' }, group: ['Zystische Raumforderungen'], tags: ['MRT','CT'], diff: 2, link: '/gehirn/tumoren/kolloidzyste', mcqLink: '/ueben/quiz?fach=gehirn&n=1&themen=kolloidzyste', flashcardLink: '/flashcards/kolloidzyste', inProgress: true, updatedAt: '2026-10-20' },
         ],
       },
       {

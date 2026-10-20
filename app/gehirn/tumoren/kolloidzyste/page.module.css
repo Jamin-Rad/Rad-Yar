@@ -1,0 +1,26 @@
+.page { --lesson-accent: #6d8fb0; }
+.page :global(p) { line-height: 1.8; }
+.lead { font-size: 1.08rem; font-weight: 600; }
+.sourceNote { padding: 14px 16px; border-inline-start: 4px solid var(--lesson-accent); background: var(--surface-soft); border-radius: 10px; }
+.figure { margin: 22px 0; padding: 14px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface-soft); }
+.figure img { display: block; width: 100%; max-height: 360px; object-fit: contain; }
+.diagram { display: block; width: 100%; max-height: 360px; }
+.figure figcaption { margin-top: 10px; color: var(--text-muted); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-block: 18px; }
+.actions a { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 16px; border: 1px solid var(--lesson-accent); border-radius: 10px; color: var(--text); text-decoration: none; font-weight: 650; }
+.tableScroll { max-width: 100%; overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; }
+.tableScroll table { width: 100%; min-width: 510px; border-collapse: collapse; text-align: start; line-height: 1.75; }
+.tableScroll th, .tableScroll td { padding: 14px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.tableScroll thead { background: var(--surface-soft); }
+.tableScroll tr:last-child > * { border-bottom: 0; }
+.cave { margin-block: 18px; padding: 16px 18px; border: 1px solid #c99546; border-radius: 12px; background: color-mix(in srgb, #e7b65f 10%, var(--surface)); }
+.cave p { margin-bottom: 0; }
+.check { padding: 20px; border: 1px solid var(--lesson-accent); border-radius: 14px; background: var(--surface-soft); }
+.options { display: grid; gap: 10px; }
+.options button { min-height: 48px; padding: 12px 14px; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 10px; text-align: start; line-height: 1.65; cursor: pointer; }
+.options button[aria-pressed='true'] { border-color: var(--lesson-accent); box-shadow: inset 0 0 0 1px var(--lesson-accent); }
+.feedback { margin-bottom: 0; font-weight: 600; }
+.takeaways { padding-inline-start: 1.5rem; }
+.takeaways li { margin-block: 12px; line-height: 1.75; }
+.page :global(a:focus-visible), .page :global(button:focus-visible), .tableScroll:focus-visible { outline: 3px solid var(--lesson-accent); outline-offset: 3px; }
+@media(max-width:700px) { .figure { padding: 10px; } .check { padding: 15px; } .tableScroll table { min-width: 460px; } }

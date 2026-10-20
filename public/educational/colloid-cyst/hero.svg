@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 420" role="img" aria-labelledby="title desc">
+  <title id="title">Concept schematic: lateral ventricles, foramina of Monro, third ventricle</title>
+  <desc id="desc">Non-diagnostic coronal schematic. Blue shapes show CSF spaces; a single amber marker indicates the approximate foramen-of-Monro region.</desc>
+  <rect width="840" height="420" rx="28" fill="#f5f8fb"/>
+  <path d="M95 114c36-64 148-78 211-24 32 28 36 73 13 113-16 28-47 46-68 75-14 19-21 42-22 66H154c5-42-7-66-35-100-28-35-42-87-24-130Z" fill="#d5e8f3" stroke="#5a829f" stroke-width="6"/>
+  <path d="M745 114c-36-64-148-78-211-24-32 28-36 73-13 113 16 28 47 46 68 75 14 19 21 42 22 66h75c-5-42 7-66 35-100 28-35 42-87 24-130Z" fill="#d5e8f3" stroke="#5a829f" stroke-width="6"/>
+  <path d="M365 151c17-25 35-34 55-34s38 9 55 34l-11 34c-10 13-18 28-20 48h-48c-2-20-10-35-20-48l-11-34Z" fill="#c6ddeb" stroke="#5a829f" stroke-width="6"/>
+  <path d="M306 244c31-20 66-30 104-31m20 0c38 1 73 11 104 31" fill="none" stroke="#4f86a8" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="410" cy="216" r="13" fill="#d89b52" stroke="#7e542b" stroke-width="5"/>
+  <path d="M300 283H540" stroke="#a8bbc9" stroke-width="2" stroke-dasharray="8 9"/>
+</svg>
