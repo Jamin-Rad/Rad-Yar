@@ -275,6 +275,12 @@ const CONTENT = {
           "keine/gering",
           "Eggshell-Verkalkungen möglich",
           "bihiläre Lymphadenopathie"
+        ],
+        [
+          "Fibrose-Typ",
+          "UIP-ähnliches Muster möglich",
+          "Konglomerate / progressive massive Fibrose (PMF)",
+          "Granulomatöse peribronchovaskuläre Fibrose möglich"
         ]
       ],
       "key": "Eggshell-Verkalkungen sind kein Alleinstellungsmerkmal der Sarkoidose; die Anamnese und das gesamte Verteilungsmuster sind entscheidend."
@@ -602,6 +608,12 @@ const CONTENT = {
           "none/mild",
           "eggshell calcifications possible",
           "bilateral hilar lymphadenopathy"
+        ],
+        [
+          "Fibrosis pattern",
+          "a UIP-like pattern may occur",
+          "conglomerate masses / progressive massive fibrosis (PMF)",
+          "granulomatous peribronchovascular fibrosis may occur"
         ]
       ],
       "key": "Eggshell calcification is not unique to sarcoidosis; exposure history and the full distribution pattern are decisive."
@@ -929,6 +941,12 @@ const CONTENT = {
           "کم یا ندارد",
           "Eggshell ممکن است",
           "لنفادنوپاتی بی‌هیلار"
+        ],
+        [
+          "الگوی فیبروز",
+          "ممکن است الگوی شبیه UIP دیده شود",
+          "توده‌های به‌هم‌پیوسته / فیبروز پیشروندهٔ وسیع (PMF)",
+          "ممکن است فیبروز گرانولوماتوز پری‌برونکوواسکولار دیده شود"
         ]
       ],
       "key": "کلسیفیکاسیون Eggshell مخصوص سارکوئیدوز نیست؛ شرح‌حال تماس و الگوی کامل توزیع تعیین‌کننده است."
