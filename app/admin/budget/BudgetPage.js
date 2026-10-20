@@ -12,6 +12,9 @@ import detailStyles from './CategoryDetail.module.css'
 import EntryCategoryPicker from './EntryCategoryPicker'
 import FinanceIcon from './FinanceIcon'
 import entryUi from './FinanceEntry.module.css'
+import FixedCostCategoryPicker from './FixedCostCategoryPicker'
+import FatimaExpensesDialog from './FatimaExpensesDialog'
+import FatimaPaidBadge from './FatimaPaidBadge'
 
 const STORAGE_KEY    = 'radyar_private_budget_v1'
 const RECURRING_KEY  = 'radyar_recurring_v1'
@@ -856,6 +859,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
   const [selectedItems, setSelectedItems] = useState([])
   const [expandedCats, setExpandedCats]   = useState(new Set())
   const [paidByFatima, setPaidByFatima]   = useState(false)
+  const [showFatimaDetails, setShowFatimaDetails] = useState(false)
   const [entryScope, setEntryScope]       = useState(null)
   const [incomeSourceMode, setIncomeSourceMode] = useState('standard')
   const [otherIncomeName, setOtherIncomeName] = useState('')
@@ -891,7 +895,6 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
   const [planAmount, setPlanAmount] = useState('')
   const [planStartMonth, setPlanStartMonth] = useState(() => getMonthKey())
   const [planSelectedItems, setPlanSelectedItems] = useState([])
-  const [planExpandedCats, setPlanExpandedCats] = useState(new Set())
   const [editingRecurringId, setEditingRecurringId] = useState(null)
   const [recurringEditAmount, setRecurringEditAmount] = useState('')
   const [recurringEditStartMonth, setRecurringEditStartMonth] = useState(() => getMonthKey())
@@ -1694,16 +1697,16 @@ ${manualEntries.length ? `
     })
   }
 
-  function togglePlanExpand(catId) {
-    setPlanExpandedCats(prev => { const n = new Set(prev); if (n.has(catId)) n.delete(catId); else n.add(catId); return n })
-  }
-
-  function togglePlanItem(catId, catName, subId, subName) {
-    const item = { catId, catName, subId: subId || null, subName: subName || null }
-    setPlanSelectedItems(prev => {
-      const exists = prev.find(i => subId ? i.catId === catId && i.subId === subId : i.catId === catId && !i.subId)
-      return exists ? [] : [item]
-    })
+  function createPlanSubcategory(catId, name) {
+    const category = categories.find(item => item.id === catId && item.type === 'expense')
+    const trimmed = name.trim()
+    if (!category || !trimmed) return
+    const existing = category.subs.find(sub => sub.name.toLocaleLowerCase('de-DE') === trimmed.toLocaleLowerCase('de-DE'))
+    const sub = existing || { id: makeId(), name: trimmed }
+    if (!existing) {
+      setCategories(prev => prev.map(item => item.id === catId ? { ...item, subs: [...item.subs, sub] } : item))
+    }
+    setPlanSelectedItems([{ catId, catName: category.name, subId: sub.id, subName: sub.name }])
   }
 
   function handleTypeChange(newType) {
@@ -2019,11 +2022,13 @@ ${manualEntries.length ? `
             {/* ── MONATSÜBERSICHT ── */}
             {view === 'monat' && (
               <FinanceOverview
+                key={month}
                 entries={monthData.entries}
                 incomeTotals={incomeTotals}
                 formatMoney={formatMoney}
                 loaded={loaded}
                 fatimaPaid={fatimaPaid}
+                onOpenFatima={() => setShowFatimaDetails(true)}
                 onOpenCategory={name => openCatDetail('expense', name, name, true)}
                 onOpenIncome={name => openCatDetail('income', name, name)}
                 onOpenEntry={entry => { setShowPopup(false); setCatDetail({ type: entry.type, key: entry.type === 'income' ? entry.title : expenseCategory(entry), label: entry.title || 'Eintrag', entryId: entry.id }); setExpandedSubtitles(new Set()); setEditingEntry(null) }}
@@ -3257,7 +3262,7 @@ ${manualEntries.length ? `
                   <div className={styles.fixedCostsHeader}>
                     <div>
                       <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Fixkosten</h2>
-                      <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>Kategorie wählen, monatlichen Betrag und Startmonat eintragen.</p>
+                      <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>Kategorie und optional eine Unterkategorie wählen oder neu anlegen, dann Betrag und Startmonat eintragen.</p>
                     </div>
                     <div className={styles.planTotalsRow}>
                       <div className={styles.fixedTotalPill}>
@@ -3267,16 +3272,11 @@ ${manualEntries.length ? `
                     </div>
                   </div>
 
-                  <CategoryPicker
+                  <FixedCostCategoryPicker
                     categories={visibleCategories}
-                    type="expense"
-                    selectedItems={planSelectedItems}
-                    onToggleItem={togglePlanItem}
-                    expandedCats={planExpandedCats}
-                    onToggleExpand={togglePlanExpand}
-                    label="Kategorie oder Unterkategorie wählen"
-                    selectionHint="Eine Kategorie auswählen"
-                    showParentOption
+                    selected={planSelectedItems[0]}
+                    onSelect={item => setPlanSelectedItems(item ? [item] : [])}
+                    onCreateSubcategory={createPlanSubcategory}
                   />
 
                   {planSelectedItems.length > 0 && (
@@ -3689,6 +3689,8 @@ ${manualEntries.length ? `
           </div>
         </div>
 
+        {showFatimaDetails ? <FatimaExpensesDialog month={month} entries={monthData.entries} onClose={() => setShowFatimaDetails(false)} /> : null}
+
         {/* ── POPUP MODAL ── */}
         {showPopup && (
           // Keep the backdrop static: native date pickers can report their selection as a backdrop click on mobile.
@@ -3811,6 +3813,7 @@ ${manualEntries.length ? `
                                 <span className={detailStyles.date}>{new Date(entry.date).toLocaleDateString('de-DE')}</span>
                                 {entry.description && <span className={detailStyles.description} dir="auto">{entry.description}</span>}
                                 {entry.generatedRecurring && <span className={detailStyles.fixedBadge}>Fixkosten</span>}
+                                {entry.type === 'expense' && entry.paidByFatima && <FatimaPaidBadge />}
                               </div>
                               {editingEntry?.id === entry.id ? (
                                 <div className={detailStyles.editRow}>

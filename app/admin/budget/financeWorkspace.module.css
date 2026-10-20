@@ -72,6 +72,9 @@
 .categoryIcon, .sourceIcon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 13px; background: #f0eafa; color: #7653b6; }
 .categoryName { overflow-wrap: anywhere; }
 .recent { margin-top: 26px; }
+.monthEntriesToggle { min-height: 44px; margin-top: 16px; padding: 10px 14px; border: 1px solid #d9c9ee; border-radius: 10px; background: #f3eafb; color: #7933a7; font: inherit; font-size: 13px; font-weight: 650; cursor: pointer; }
+.monthEntriesToggle:hover { background: #ead9f8; }
+.monthEntriesToggle:focus-visible { outline: 3px solid #8446bd; outline-offset: 3px; }
 .transactions { width: 100%; border-collapse: separate; border-spacing: 0; text-align: left; font-size: 13px; }
 .transactions th { padding: 12px 10px; background: #f0ecfb; color: #737a96; font-size: 11px; font-weight: 500; }
 .transactions th:first-child { border-radius: 8px 0 0 8px; }

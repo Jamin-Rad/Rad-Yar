@@ -1,0 +1,14 @@
+.trigger { min-height: 44px; padding: 8px 12px; border: 1px solid #ddc9ef; border-radius: 10px; background: #f3eafb; color: #7933a7; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
+.trigger:hover { background: #ead9f8; }
+.trigger:focus-visible { outline: 3px solid #8446bd; outline-offset: 3px; }
+.badge { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: #f3eafb; color: #7933a7; font-size: 12px; font-weight: 800; font-style: normal; vertical-align: middle; }
+.amount { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.dialog { width: calc(100% - 32px); max-width: 600px; max-height: 88dvh; padding: 0; border: 1px solid #c1d7cc; border-radius: 24px; background: #fff; color: #073f32; font-family: var(--font-manrope), system-ui, sans-serif; box-shadow: 0 28px 90px #001c1c45; }
+.dialog::backdrop { background: #051e18a8; backdrop-filter: blur(8px); }
+.layout { display: flex; flex-direction: column; max-height: calc(88dvh - 2px); }
+.list { list-style: none; margin: 0; padding: 0; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; }
+.row + .row { border-top: 1px solid #dce8e2; }
+.info { display: grid; gap: 6px; min-width: 0; overflow-wrap: anywhere; font-size: 14px; }
+.info span { color: #587368; font-size: 12px; line-height: 1.6; }
+.money { flex-shrink: 0; font-variant-numeric: tabular-nums; font-size: 14px; }

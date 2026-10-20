@@ -1,0 +1,12 @@
+.picker { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-block: 20px; }
+.field { display: grid; min-width: 0; gap: 8px; color: #073f32; font-size: 13px; font-weight: 650; }
+.field input, .field select { width: 100%; min-width: 0; box-sizing: border-box; min-height: 44px; padding: 11px 12px; border: 1px solid #c1d7cc; border-radius: 10px; background: #fff; color: #073f32; font: inherit; font-weight: 450; }
+.field select:disabled { opacity: .55; }
+.create { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: end; gap: 10px; padding: 16px; border: 1px solid #dce8e2; border-radius: 12px; background: #f4f8f6; }
+.create .field { flex: 1 1 220px; }
+.create button { min-height: 44px; padding: 11px 14px; border: 1px solid #c1d7cc; border-radius: 10px; background: #073f32; color: #fff; font: inherit; font-size: 13px; cursor: pointer; }
+.create button:disabled { opacity: .5; cursor: default; }
+.create small { flex-basis: 100%; color: #587368; font-size: 12px; }
+.picker > p { grid-column: 1 / -1; color: #587368; font-size: 13px; }
+.picker :is(input, select, button):focus-visible { outline: 3px solid #8446bd; outline-offset: 3px; }
+@media (max-width: 560px) { .picker { grid-template-columns: 1fr; } .create button { width: 100%; } }

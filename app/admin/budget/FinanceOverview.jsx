@@ -1,4 +1,6 @@
-import { useId, useMemo } from 'react'
+import { useId, useMemo, useState } from 'react'
+import FatimaPaidBadge from './FatimaPaidBadge'
+import fatimaStyles from './FatimaExpenseDetails.module.css'
 import FinanceIcon, { categoryIcon } from './FinanceIcon'
 import { buildExpenseBreakdown, expenseCategory } from './financeOverviewData.mjs'
 import { buildExpenseDonut, formatExpenseShare } from './financeDonutGeometry.mjs'
@@ -65,9 +67,12 @@ function ExpenseDonut({ breakdown, onOpenCategory, loaded }) {
   </>
 }
 
-export default function FinanceOverview({ entries, incomeTotals, formatMoney, onOpenCategory, onOpenIncome, onOpenEntry, onAddExpense, onAddIncome, fatimaPaid, loaded }) {
+export default function FinanceOverview({ entries, incomeTotals, formatMoney, onOpenCategory, onOpenIncome, onOpenEntry, onAddExpense, onAddIncome, fatimaPaid, onOpenFatima, loaded }) {
+  const [showAllEntries, setShowAllEntries] = useState(false)
+  const entriesId = useId()
   const breakdown = useMemo(() => buildExpenseBreakdown(entries), [entries])
-  const recentEntries = useMemo(() => [...entries].sort((a, b) => (b.date || '').localeCompare(a.date || '')).slice(0, 3), [entries])
+  const sortedEntries = useMemo(() => [...entries].sort((a, b) => (b.date || '').localeCompare(a.date || '')), [entries])
+  const recentEntries = showAllEntries ? sortedEntries : sortedEntries.slice(0, 3)
   return <div className={styles.overview} aria-busy={!loaded}>
     <div className={styles.ledger}>
       <section className={styles.expenseCard} aria-labelledby="finance-expenses-title">
@@ -76,17 +81,18 @@ export default function FinanceOverview({ entries, incomeTotals, formatMoney, on
         {breakdown.length ? breakdown.map(([name, amount]) => <button key={name} type="button" className={styles.expenseRow} onClick={() => onOpenCategory(name)}>
           <span className={styles.categoryIcon}><FinanceIcon name={categoryIcon(name)} /></span><span className={styles.categoryName}>{name}</span><strong>{formatMoney(amount)}</strong><FinanceIcon name="arrow" width="16" height="16" />
         </button>) : <div className={styles.empty}><p>{loaded ? 'Noch keine Ausgaben in diesem Monat.' : 'Einträge werden geladen …'}</p>{loaded && <button type="button" className={styles.textButton} onClick={onAddExpense}>+ Ausgabe eintragen</button>}</div>}
-        {fatimaPaid !== 0 && <p className={styles.note}>Von Fatima bezahlt: {formatMoney(fatimaPaid)}</p>}
+        {loaded && <p className={styles.note}><button type="button" className={fatimaStyles.trigger} aria-haspopup="dialog" onClick={onOpenFatima}>Von Fatima bezahlt: {formatMoney(fatimaPaid)}</button></p>}
       </section>
       <section className={styles.recent} aria-labelledby="finance-recent-title">
-        <h2 id="finance-recent-title">Letzte Einträge</h2>
-        {recentEntries.length ? <table className={styles.transactions}>
+        <h2 id="finance-recent-title">{showAllEntries ? 'Alle Einträge des Monats' : 'Letzte Einträge'}</h2>
+        {recentEntries.length ? <table id={entriesId} className={styles.transactions}>
           <thead><tr><th>Datum</th><th>Beschreibung</th><th>Kategorie</th><th>Betrag</th></tr></thead>
           <tbody>{recentEntries.map(entry => {
             const signedAmount = Number(entry.amount) * (entry.type === 'income' ? 1 : -1)
-            return <tr key={entry.id}><td>{formatDate(entry.date)}</td><td><button type="button" onClick={() => onOpenEntry(entry)}>{entry.title || 'Eintrag'}</button></td><td>{entry.type === 'income' ? 'Einkommen' : expenseCategory(entry)}</td><td className={signedAmount >= 0 ? styles.positive : styles.negative}>{signedAmount >= 0 ? '+' : '−'}{formatMoney(Math.abs(signedAmount))}</td></tr>
+            return <tr key={entry.id}><td>{formatDate(entry.date)}</td><td><button type="button" onClick={() => onOpenEntry(entry)}>{entry.title || 'Eintrag'}</button>{entry.type === 'expense' && entry.paidByFatima ? <> <FatimaPaidBadge /></> : null}</td><td>{entry.type === 'income' ? 'Einkommen' : expenseCategory(entry)}</td><td className={signedAmount >= 0 ? styles.positive : styles.negative}>{signedAmount >= 0 ? '+' : '−'}{formatMoney(Math.abs(signedAmount))}</td></tr>
           })}</tbody>
         </table> : <p className={styles.empty}>Noch keine Einträge.</p>}
+        {sortedEntries.length > 3 ? <button type="button" className={styles.monthEntriesToggle} aria-expanded={showAllEntries} aria-controls={entriesId} onClick={() => setShowAllEntries(value => !value)}>{showAllEntries ? 'Weniger anzeigen' : `Ganzen Monat anzeigen (${sortedEntries.length} Einträge)`}</button> : null}
       </section>
     </div>
     <aside className={styles.analysis} aria-label="Ausgabenverteilung und Einnahmequellen">
