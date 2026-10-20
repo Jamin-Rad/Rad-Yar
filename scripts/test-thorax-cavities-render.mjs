@@ -44,6 +44,11 @@ for (const lang of ['de', 'en', 'fa']) {
     assert.ok(html.includes(esc(chapter.lead[lang])) && html.includes(esc(chapter.note[lang])), `${lang}: chapter prose and note`)
     for (const row of chapter.rows) for (const cell of row) assert.ok(html.includes(esc(cell[lang])), `${lang}: table cell`)
   }
+  const carcinoma = data.chapters.flatMap(chapter => chapter.rows).find(([label]) => label[lang] === (lang === 'de' ? 'Kavitierendes Karzinom' : lang === 'en' ? 'Cavitating carcinoma' : 'کارسینوم کاویتاری'))
+  assert.ok(carcinoma, `${lang}: cavitating carcinoma comparison row`)
+  const eccentricCue = lang === 'de' ? 'exzentrisch' : lang === 'en' ? 'eccentric' : 'خارج‌مرکزی'
+  assert.ok(carcinoma[1][lang].includes(eccentricCue), `${lang}: PDF p.26 eccentric cavity cue`)
+  assert.ok(!/häufigstes|most frequent|شایع‌ترین/i.test(carcinoma[1][lang]), `${lang}: defer PDF prevalence claim`)
   assert.ok(html.includes('id="check"') && html.includes(esc(data.check.prompt[lang])), `${lang}: self-check`)
   for (const source of data.references) assert.ok(html.includes(esc(source.label[lang])), `${lang}: source ${source.id}`)
   assert.ok(html.includes('rID 97293') && html.includes('rID 30280'), `${lang}: attributed Radiopaedia cases`)
