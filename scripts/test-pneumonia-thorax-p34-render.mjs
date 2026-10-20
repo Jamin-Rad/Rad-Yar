@@ -27,6 +27,7 @@ for (const lang of ['de', 'en', 'fa']) {
   activeLanguage = lang
   const html = renderToStaticMarkup(React.createElement(Page))
   assert.ok(html.includes(`lang="${lang}"`) && html.includes(`dir="${lang === 'fa' ? 'rtl' : 'ltr'}"`), `${lang}: language/direction`)
+  for (const label of (lang === 'de' ? ['Muster', 'Bildgebender Befund', 'Quelle', 'Vorgehensweise'] : lang === 'en' ? ['Pattern', 'Imaging finding', 'Source', 'Practical sequence'] : ['الگو', 'یافته تصویری', 'منبع', 'توالی کاربردی'])) assert.ok(html.includes(label), `${lang}: localized UI label ${label}`)
   assert.ok(html.includes(escape(lang === 'de' ? 'Pleuraempyem / Split-Pleura-Zeichen' : lang === 'en' ? 'Empyema / split pleura sign' : 'آمپیما / علامت split pleura')), `${lang}: empyema row`)
   assert.ok(html.includes(escape(lang === 'de' ? 'Postinfektiöse Pneumatozele' : lang === 'en' ? 'Postinfectious pneumatocele' : 'پنوماتوسل پس از عفونت')), `${lang}: pneumatocele row`)
   assert.ok(html.includes(escape(lang === 'de' ? 'Thorax 34 (PDF p.35)' : lang === 'en' ? 'Thorax 34 (PDF p.35)' : 'Thorax صفحه ۳۴ (صفحه PDF ۳۵)')), `${lang}: exact source page`)

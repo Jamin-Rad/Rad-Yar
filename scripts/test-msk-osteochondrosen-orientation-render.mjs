@@ -39,7 +39,8 @@ const expected = {
   en: ['lang="en"', 'dir="ltr"', 'Osteochondrosis: meaning and terminology', 'endochondral ossification', 'acute growth-cartilage injuries', 'Osteochondrosis intervertebralis', 'Perthes disease', 'Osgood–Schlatter', 'Scheuermann'],
   fa: ['lang="fa"', 'dir="rtl"', 'استئوکندروز: مفهوم و تمایز اصطلاحی', 'استخوان‌سازی درون‌غضروفی', 'آسیب حاد غضروف رشد', 'Osteochondrosis intervertebralis', 'بیماری پرتس', 'آزگود–اشلاتر', 'شویرمان'],
 }
-const hero = fs.readFileSync(path.join(root, 'public/educational/osteochondrosen-orientation.svg'), 'utf8')
+const hero = path.join(root, 'public/educational/osteochondrosen-orientation-v2.webp')
+assert.ok(fs.statSync(hero).size > 100_000, 'polished generated hero asset exists')
 const curriculum = fs.readFileSync(path.join(root, 'data/curriculum.js'), 'utf8')
 assert.doesNotMatch(hero, /<text\b/, 'hero has no fixed-language visible labels')
 assert.match(curriculum, /id: 'weitere-osteochondrosen'[^\n]*link: '\/msk\/osteochondrosen\/weitere-osteochondrosen'[^\n]*inProgress: true/)
@@ -48,7 +49,7 @@ for (const [locale, phrases] of Object.entries(expected)) {
   const html = renderToStaticMarkup(React.createElement(Route))
   for (const phrase of phrases) assert.ok(html.includes(phrase), `${locale} SSR includes ${phrase}`)
   assert.ok(html.includes('data-lesson-progress-managed="true"'))
-  assert.ok(html.includes('/educational/osteochondrosen-orientation.svg'))
+  assert.ok(html.includes('/educational/osteochondrosen-orientation-v2.webp'))
   assert.equal((html.match(/type="radio"/g) || []).length, 3)
   assert.ok(!html.includes('checked=""'))
 }

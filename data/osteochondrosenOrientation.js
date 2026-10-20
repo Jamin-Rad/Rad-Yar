@@ -3,7 +3,7 @@ const L = (de, en, fa) => ({ de, en, fa })
 export const OSTEOCHONDROSEN_ORIENTATION = {
   id: 'weitere-osteochondrosen',
   title: L('Osteochondrose: Begriff und Abgrenzung', 'Osteochondrosis: meaning and terminology', 'استئوکندروز: مفهوم و تمایز اصطلاحی'),
-  hero: '/educational/osteochondrosen-orientation.svg',
+  hero: '/educational/osteochondrosen-orientation-v2.webp',
   sourceNote: L(
     'Orientierungsseite ausschließlich nach MSK.pdf, PDF S. 124 (Druckseite 123). Die Quelle definiert den Begriff als Gruppe mit gestörter enchondraler Ossifikation, grenzt akute Verletzungen des Wachstumsknorpels ab und markiert Morbus Scheuermann als Wirbelsäulen-Sonderfall. Sie erwähnt außerdem den deutschsprachigen Gebrauch von „Osteochondrosis intervertebralis“ für degenerative Bandscheibenveränderungen bei Erwachsenen. Dies ist keine vollständige Krankheitsübersicht.',
     'Orientation page based only on MSK.pdf, PDF p. 124 (printed p. 123). The source defines the term as a group with impaired endochondral ossification, distinguishes acute growth-cartilage injuries, and names Scheuermann disease as a spinal special case. It also notes German-language use of “Osteochondrosis intervertebralis” for degenerative disc changes in adults. This is not a comprehensive disease review.',

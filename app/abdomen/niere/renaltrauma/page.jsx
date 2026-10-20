@@ -96,7 +96,7 @@ export default function RenalTraumaPage() {
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={pick(lesson.title,lang)} author="Dr. Zia"
     breadcrumbs={[{label:'RadYar',href:langHref('/')},{label:pick(L('Abdomen','Abdomen','شکم'),lang),href:langHref('/lernen/abdomen')},{label:pick(L('Niere','Kidney','کلیه'),lang),href:langHref('/lernen/abdomen')}]}
     sections={sections} labels={localizedLabels} renderIcon={id=><Icon id={id}/>} syncHashNavigation actions={{}}
-    theme={{backgroundImage:'/andarun-galaxy-v3.png',heroImage:'/educational/nierentrauma/hero.svg',heroImageOpacity:.92,accent:'#78d0d7',accentStrong:'#166c78',accentSoft:'#e1f3f4',secondary:'#b8a0cf',secondaryStrong:'#674c81',heroBase:'#173341'}}
+    theme={{backgroundImage:'/andarun-galaxy-v3.png',heroImage:'/educational/nierentrauma/hero-v2.webp',heroImageOpacity:.92,accent:'#78d0d7',accentStrong:'#166c78',accentSoft:'#e1f3f4',secondary:'#b8a0cf',secondaryStrong:'#674c81',heroBase:'#173341'}}
     heroImageAlt={pick(L('Schematische Niere mit einer kortikalen Verletzung und kleinem Hämatom; keine diagnostische Aufnahme','Schematic kidney with a cortical injury and a small haematoma; not a diagnostic image','شماتیک کلیه با آسیب قشری و هماتوم کوچک؛ تصویر تشخیصی نیست'),lang)}
     className={styles.page} sources={<LessonSources title={localizedLabels.sources} items={sources} note={pick(lesson.sourceReview,lang)}/> }>
     <LessonSection id="phases" icon="phases" title={pick(lesson.sections[0].title,lang)}>

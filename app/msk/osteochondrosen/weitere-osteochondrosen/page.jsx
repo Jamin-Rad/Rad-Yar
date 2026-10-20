@@ -44,7 +44,7 @@ export default function WeitereOsteochondrosenPage() {
   const route = path => lang === 'de' ? path : `${path}?lang=${lang}`
   const sections = [...lesson.sections.map(section => ({ id: section.id, label: t(section.title), icon: section.icon })), { id: 'check', label: t(lesson.check.title), icon: 'check' }, { id: 'take-home', label: translatedLabels.takeHome, icon: 'summary', emphasis: true }]
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={t(lesson.title)} author="RadYar" syncHashNavigation
-    heroImageAlt={t(L('Nichtdiagnostisches Schema: Knorpel, Wachstumsfuge und Knochen mit angedeutetem Übergang.', 'Non-diagnostic schematic of cartilage, physis and bone with an indicated transition.', 'شماتیک غیرتشخیصی غضروف، صفحهٔ رشد و استخوان با نمایش گذار میان آن‌ها'))}
+    heroImageAlt={t(L('Konzeptioneller anatomischer Querschnitt eines wachsenden Knochenendes mit Wachstumsfuge und Ossifikationszentrum; keine diagnostische Aufnahme.', 'Conceptual anatomical cross-section of a growing bone end showing the physis and ossification centre; not a diagnostic image.', 'برش مفهومی از انتهای استخوان در حال رشد، با صفحهٔ رشد و مرکز استخوان‌سازی؛ تصویر تشخیصی نیست.'))}
     breadcrumbs={[{ label: 'RadYar', href: route('/') }, { label: 'MSK', href: route('/lernen/msk') }, { label: t(lesson.title) }]}
     sections={sections} labels={translatedLabels} actions={{}} renderIcon={id => <Icon id={id} />}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.hero, heroImageOpacity: .94, accent: '#67bdb1', accentStrong: '#245e58', accentSoft: '#e5f2ee', secondary: '#d49a61', secondaryStrong: '#79502d', heroBase: '#18322f' }}

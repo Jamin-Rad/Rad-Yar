@@ -68,7 +68,7 @@ export default function CarotidBodyParagangliomaPage() {
   const languagePath = path => lang === 'de' ? path : `${path}?lang=${lang}`
 
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={t(lesson.title)} author="RadYar" syncHashNavigation
-    heroImageAlt={t(L('Nichtdiagnostisches Schema der Karotisbifurkation mit einer Raumforderung zwischen den Gefäßästen.', 'Non-diagnostic schematic of the carotid bifurcation with a mass between its branches.', 'شماتیک غیرتشخیصی دوشاخهٔ کاروتید با توده‌ای بین شاخه‌های عروقی'))}
+    heroImageAlt={t(L('Konzeptionelle anatomische Illustration der Karotisbifurkation mit einer Raumforderung zwischen den Gefäßästen; keine diagnostische Aufnahme.', 'Conceptual anatomical illustration of the carotid bifurcation with a mass between its branches; not a diagnostic image.', 'تصویرسازی مفهومی آناتومی دوشاخهٔ کاروتید با توده‌ای میان شاخه‌های عروقی؛ تصویر تشخیصی نیست.'))}
     breadcrumbs={[{ label: 'RadYar', href: languagePath('/') }, { label: t(L('Gehirn & Kopf-Hals', 'Brain & Head and Neck', 'مغز و سر و گردن')), href: languagePath('/lernen/gehirn') }, { label: t(lesson.title) }]}
     sections={sections} labels={translatedLabels} actions={{}} renderIcon={id => <Icon id={id}/>}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.hero, heroImageOpacity: .94, accent: '#54bfc0', accentStrong: '#1c6566', accentSoft: '#e2f4f1', secondary: '#9b78aa', secondaryStrong: '#604071', heroBase: '#173238' }}

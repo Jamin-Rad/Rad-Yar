@@ -3,7 +3,7 @@ const L = (de, en, fa) => ({ de, en, fa })
 export const CAROTID_BODY_PARAGANGLIOMA_LESSON = {
   id: 'paragangliome-glomustumoren',
   title: L('Glomus caroticum: Paragangliom der Karotisbifurkation', 'Carotid body paraganglioma', 'پاراگانگلیوم جسم کاروتید'),
-  hero: '/educational/carotid-body-paraganglioma/hero.svg',
+  hero: '/educational/carotid-body-paraganglioma/hero-v2.webp',
   sourceNote: L(
     'Begrenzter Entwurf nach Wirbelsäule.pdf, PDF-Seiten 23–24 (Druckseiten 22–23). Diese Seiten behandeln ausdrücklich das Glomus caroticum an der Karotisbifurkation. Sie belegen keine spinalen Paragangliome; die Curriculum-ID paragangliom-spinal bleibt separat und wird hier nicht bearbeitet.',
     'Bounded draft based on Wirbelsäule.pdf, PDF pp. 23–24 (printed pp. 22–23). These pages explicitly cover the carotid body at the carotid bifurcation. They do not support spinal paraganglioma content; curriculum ID paragangliom-spinal remains separate and is not covered here.',

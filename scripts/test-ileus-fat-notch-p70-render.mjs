@@ -47,6 +47,11 @@ const expected = {
   en: ['Adhesive obstruction on CT', 'without a visible mass', 'Fat notch sign', 'fat-density indentation', 'not proof of the cause', 'physical p.70 (printed p.69)', 'Gallstone ileus and Rigler triad'],
   fa: ['انسداد چسبندگی در CT', 'بدون تودهٔ قابل مشاهده', 'علامت Fat Notch', 'فرورفتگی کوچکی با دانسیتهٔ چربی', 'به‌تنهایی علت یا شدت انسداد را اثبات نمی‌کند', 'صفحهٔ فیزیکی ۷۰ (صفحهٔ چاپی ۶۹)', 'ایلئوس سنگ صفراوی و تریاد ریگلر'],
 }
+const uiLabels = {
+  de: ['Zökumvolvulus', 'Sigmavolvulus', 'Strukturierter Befund'],
+  en: ['Caecal volvulus', 'Sigmoid volvulus', 'Structured report'],
+  fa: ['ولولوس سکوم', 'ولولوس سیگموئید', 'گزارش ساختاریافته'],
+}
 
 for (const locale of ['de', 'en', 'fa']) {
   lang = locale
@@ -54,6 +59,7 @@ for (const locale of ['de', 'en', 'fa']) {
   assert.equal(renderedLessonId, 'abdomen-ileus-volvulus')
   assert.ok(html.includes(`lang="${locale}"`) && html.includes(`dir="${locale === 'fa' ? 'rtl' : 'ltr'}"`), `${locale} route direction`)
   for (const phrase of expected[locale]) assert.ok(html.includes(phrase), `${locale} render includes ${phrase}`)
+  for (const label of uiLabels[locale]) assert.ok(html.includes(label), `${locale} localized UI label ${label}`)
   assert.ok(html.includes('/educational/abdomen-ileus/fat-notch-p70.png'), `${locale} source CT crop renders`)
   assert.ok(html.includes('19234265') || html.includes('10.2214/AJR.08.1550'), `${locale} includes the supplementary study citation`)
   assert.ok(fs.readFileSync('data/curriculum.js', 'utf8').includes("{ id: 'ileus-duenndarm', title: { de: 'Ileus', en: 'Ileus', fa: 'ایلئوس' }, group: ['Jejunum & Ileum'], tags: ['Rö','CT'], diff: 2, link: '/abdomen/gi/ileus-volvulus' }"), 'existing exact curriculum ID still links to the route')

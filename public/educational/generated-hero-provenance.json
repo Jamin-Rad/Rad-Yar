@@ -1,0 +1,36 @@
+{
+  "assets": [
+    {
+      "file": "carotid-body-paraganglioma/hero-v2.webp",
+      "lesson": "/gehirn/hals-nnh/paragangliome",
+      "kind": "AI-generated conceptual anatomical illustration",
+      "subject": "Carotid bifurcation with a carotid body mass between the vessel branches",
+      "clinicalUse": "Decorative educational header only; not a patient image and not for diagnosis",
+      "created": "2026-10-20"
+    },
+    {
+      "file": "osteosynthese-postop/hero-v2.webp",
+      "lesson": "/msk/postop/osteosynthese",
+      "kind": "AI-generated conceptual anatomical illustration",
+      "subject": "Proximal femoral fracture fixation with a cephalomedullary nail",
+      "clinicalUse": "Decorative educational header only; not a patient image and not for diagnosis",
+      "created": "2026-10-20"
+    },
+    {
+      "file": "osteochondrosen-orientation-v2.webp",
+      "lesson": "/msk/osteochondrosen/weitere-osteochondrosen",
+      "kind": "AI-generated conceptual anatomical illustration",
+      "subject": "Developing bone end with cartilage, physis, ossification centre and trabecular bone",
+      "clinicalUse": "Conceptual teaching illustration only; not a patient image and not for diagnosis",
+      "created": "2026-10-20"
+    },
+    {
+      "file": "nierentrauma/hero-v2.webp",
+      "lesson": "/abdomen/niere/renaltrauma",
+      "kind": "AI-generated conceptual anatomical illustration",
+      "subject": "Kidney cutaway with a cortical laceration and small perirenal hematoma",
+      "clinicalUse": "Decorative educational header only; not a patient image and not for diagnosis",
+      "created": "2026-10-20"
+    }
+  ]
+}
