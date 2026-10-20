@@ -31,7 +31,6 @@ const COPY = {
       ['medial', 'Medial / MCL'],
       ['acl', 'VKB'],
       ['pcl', 'HKB'],
-      ['cases', 'Fallbeispiele'],
       ['takehome', 'Take-home'],
     ],
     sections: {
@@ -72,6 +71,7 @@ const COPY = {
         cards: [
           ['Normale Bündelung', ['AM- und PL-Bündel verlaufen in Extension weitgehend parallel.', 'Feine streifige Signalanhebungen zwischen den Bündeln können physiologisch sein.']],
           ['VKB-Ruptur', ['Direkte Zeichen: Faserdiskontinuität, T2/PD-Signalsteigerung, flacher oder welliger Verlauf.', 'Indirekte Zeichen: Kissing contusions, anteriore Tibiasubluxation über 7 mm, gebogenes HKB.']],
+          ['Mechanismus und Begleitzeichen', ['Häufig ist ein indirekter, nicht-kontaktbedingter Dreh-/Valgusmechanismus, etwa beim Sport.', 'Kissing contusions betreffen typischerweise den lateralen Femurkondylus und das posterolaterale Tibiaplateau.']],
           ['Mukoide Degeneration', ['Chronische Einlagerung von Glykosaminoglykanen zwischen die Fasern.', 'Sellerie-Zeichen: intakte dunkle Fasern in hellem T2-hyperintensem Schleimgewebe.']],
         ],
         note: 'Unhappy Triad: VKB-Ruptur, MCL-Ruptur und Innenmeniskusläsion nach Valgustrauma mit Außenrotation bei fixiertem Unterschenkel.',
@@ -83,15 +83,6 @@ const COPY = {
           ['Epidemiologie', ['Isolierte HKB-Verletzungen sind selten.', 'Die HKB-Ruptur ist deutlich seltener als die VKB-Ruptur.']],
           ['Mechanismus', ['Typisch ist ein direkter anteriorer Anprall auf die Tibia bei gebeugtem Knie.', 'Klassisches Beispiel: Dashboard Injury; alternativ extreme Hyperflexion.']],
           ['MRT', ['Rupturiertes HKB erscheint oft verdickt, signalverändert oder diskontinuierlich.', 'Operative Rekonstruktion meist nur bei ausgeprägter Instabilität oder kombinierten Verletzungen.']],
-        ],
-      },
-      cases: {
-        title: 'Fallbeispiele',
-        lead: 'Freier Platz für deine späteren Fallbeispiele und Hinweise, worauf man beim Befunden achten soll.',
-        placeholders: [
-          ['Fall 1', 'Hier kann später ein typischer VKB-Fall mit indirekten Zeichen, Knochenmarködem und Meniskuscheck ergänzt werden.'],
-          ['Fall 2', 'Platz für MCL/POL oder PLC: Mechanismus, Schlüsselbild, Befundformulierung und Pitfall.'],
-          ['Fall 3', 'Platz für HKB oder mukoide VKB-Degeneration mit Differenzialdiagnose zur Ruptur.'],
         ],
       },
       takehome: {
@@ -117,12 +108,14 @@ const COPY = {
         ['/knieligamente/medial-complex-anatomy.png', 'Medialer Komplex mit MCL, POL und Semimembranosus-Anteilen.'],
         ['/knieligamente/mcl-layered-anatomy.png', 'Oberflächliches und tiefes MCL mit Nähe zum Innenmeniskus.'],
         ['/knieligamente/mcl-partial-followup.png', 'MCL-Partialruptur im Verlauf: Trauma, nach 6 Wochen und nach 12 Wochen. Das periligamentäre Ödem nimmt ab; eine narbige Verdickung bzw. intraligamentäre Signalhebung kann als Heilungszeichen verbleiben.'],
-        ['/knieligamente/mcl-pol-rupture.png', 'MCL-Ruptur mit Beteiligung des POL in koronarer und axialer Darstellung.'],
+        ['/knieligamente/mcl-sprain-followup.png', 'Beispiel einer Grad-I-MCL-Zerrung: im Ausgangsbild periligamentäres Ödem bei erhaltener Bandkontur und ohne intraligamentäre Signalsteigerung; nach 2 Wochen deutlich rückläufig. Quelle: MSK.pdf, PDF-S. 61 (Druck-S. 60).'],
+        ['/knieligamente/mcl-pol-rupture.png', 'MCL-Ruptur mit Beteiligung des POL in koronarer und axialer Darstellung. Quelle: MSK.pdf, PDF-S. 62 (Druck-S. 61).'],
       ],
       acl: [
         ['/knieligamente/acl-sagittal-anatomy.jpeg', 'VKB-Anatomie in sagittaler Orientierung.'],
         ['/knieligamente/acl-normal-signal.png', 'Normale Signalsteigerung zwischen AM- und PL-Bündel nicht als Teilruptur überwerten.'],
         ['/knieligamente/acl-kissing-contusions.png', 'Kissing contusions als indirektes Zeichen einer VKB-Ruptur.'],
+        ['/knieligamente/acl-avulsion-xray.jpeg', 'AP-Röntgenaufnahme eines knöchernen VKB-Ausrisses an der Eminentia intercondylaris. Quelle: MSK.pdf, PDF-S. 64 (Druck-S. 63), rID 90186.'],
         ['/knieligamente/acl-mucoid-degeneration.png', 'Mukoide VKB-Degeneration mit Sellerie-Zeichen.'],
       ],
       pcl: [
@@ -147,7 +140,7 @@ const COPY = {
     markedRead: 'Read',
     stats: [['I-III', 'MRI grading from sprain to complete tear'], ['ACL', 'most common knee ligament injury'], ['PLC', 'arcuate sign as red flag']],
     toc: 'Contents',
-    nav: [['grading', 'MRI grading'], ['lateral', 'Lateral / PLC'], ['medial', 'Medial / MCL'], ['acl', 'ACL'], ['pcl', 'PCL'], ['cases', 'Cases'], ['takehome', 'Take-home']],
+    nav: [['grading', 'MRI grading'], ['lateral', 'Lateral / PLC'], ['medial', 'Medial / MCL'], ['acl', 'ACL'], ['pcl', 'PCL'], ['takehome', 'Take-home']],
     sections: {},
     figures: {},
   },
@@ -165,7 +158,7 @@ const COPY = {
     markedRead: 'خوانده شد',
     stats: [['I-III', 'درجه‌بندی MRI از کشیدگی تا پارگی کامل'], ['ACL', 'شایع‌ترین آسیب رباطی زانو'], ['PLC', "علامت آرکوات (Arcuate sign) به عنوان هشدار مهم"]],
     toc: 'محتوا',
-    nav: [['grading', 'درجه‌بندی MRI'], ['lateral', 'لترال / PLC'], ['medial', 'مدیال / MCL'], ['acl', 'ACL'], ['pcl', 'PCL'], ['cases', 'کیس‌ها'], ['takehome', 'نکات کلیدی']],
+    nav: [['grading', 'درجه‌بندی MRI'], ['lateral', 'لترال / PLC'], ['medial', 'مدیال / MCL'], ['acl', 'ACL'], ['pcl', 'PCL'], ['takehome', 'نکات کلیدی']],
     sections: {},
     figures: {},
   },
@@ -209,6 +202,7 @@ COPY.en.sections = {
     cards: [
       ['Normal bundles', ['The AM and PL bundles run largely parallel in extension.', 'Fine streaky signal between the bundles may be physiologic.']],
       ['ACL tear', ['Direct signs: fibre discontinuity, T2/PD signal increase, flattened or wavy course.', 'Indirect signs: kissing contusions, anterior tibial subluxation over 7 mm, buckled PCL.']],
+      ['Mechanism and associated signs', ['An indirect, non-contact pivot/valgus mechanism during sport is common.', 'Kissing contusions typically involve the lateral femoral condyle and posterolateral tibial plateau.']],
       ['Mucoid degeneration', ['Chronic glycosaminoglycan deposition between ACL fibres.', 'Celery-stalk sign: intact dark fibres within bright T2-hyperintense mucoid tissue.']],
     ],
     note: 'Unhappy triad: ACL tear, MCL tear and medial meniscus lesion after valgus trauma with external rotation and a fixed lower leg.',
@@ -220,15 +214,6 @@ COPY.en.sections = {
       ['Epidemiology', ['Isolated PCL injuries are rare.', 'PCL tears are much less common than ACL tears.']],
       ['Mechanism', ['A direct anterior blow to the tibia with the knee flexed is typical.', 'Classic example: dashboard injury; another mechanism is extreme hyperflexion.']],
       ['MRI', ['A torn PCL often appears thickened, signal-altered or discontinuous.', 'Reconstruction is usually reserved for marked instability or combined injuries.']],
-    ],
-  },
-  cases: {
-    title: 'Cases',
-    lead: 'Open space for your later cases and notes on what to look for during reporting.',
-    placeholders: [
-      ['Case 1', 'A typical ACL case can later be added here with indirect signs, marrow oedema and meniscus checklist.'],
-      ['Case 2', 'Space for MCL/POL or PLC: mechanism, key image, report phrasing and pitfall.'],
-      ['Case 3', 'Space for PCL injury or mucoid ACL degeneration with differential diagnosis against rupture.'],
     ],
   },
   takehome: {
@@ -254,12 +239,14 @@ COPY.en.figures = {
     ['/knieligamente/medial-complex-anatomy.png', 'Medial complex with MCL, POL and semimembranosus components.'],
     ['/knieligamente/mcl-layered-anatomy.png', 'Superficial and deep MCL with close relationship to the medial meniscus.'],
     ['/knieligamente/mcl-partial-followup.png', 'Partial MCL tear over time: trauma, after 6 weeks and after 12 weeks. Periligamentous oedema decreases; scar-like thickening or intraligamentous signal may remain as a healing finding.'],
-    ['/knieligamente/mcl-pol-rupture.png', 'MCL tear with POL involvement on coronal and axial images.'],
+    ['/knieligamente/mcl-sprain-followup.png', 'Example of a grade I MCL sprain: initial periligamentous oedema with preserved ligament contour and no intraligamentous signal increase; markedly reduced after 2 weeks. Source: MSK.pdf, PDF p. 61 (printed p. 60).'],
+    ['/knieligamente/mcl-pol-rupture.png', 'MCL tear with POL involvement on coronal and axial images. Source: MSK.pdf, PDF p. 62 (printed p. 61).'],
   ],
   acl: [
     ['/knieligamente/acl-sagittal-anatomy.jpeg', 'ACL anatomy in sagittal orientation.'],
     ['/knieligamente/acl-normal-signal.png', 'Normal signal between AM and PL bundles should not be overcalled as partial tear.'],
     ['/knieligamente/acl-kissing-contusions.png', 'Kissing contusions as an indirect sign of ACL tear.'],
+    ['/knieligamente/acl-avulsion-xray.jpeg', 'AP radiograph of a bony ACL avulsion at the intercondylar eminence. Source: MSK.pdf, PDF p. 64 (printed p. 63), rID 90186.'],
     ['/knieligamente/acl-mucoid-degeneration.png', 'Mucoid ACL degeneration with celery-stalk sign.'],
   ],
   pcl: [
@@ -307,6 +294,7 @@ COPY.fa.sections = {
     cards: [
       ['باندل‌های طبیعی', ['باندل‌های AM و PL در اکستانسیون عمدتاً موازی‌اند.', 'سیگنال‌های خطی ظریف بین باندل‌ها می‌تواند فیزیولوژیک باشد.']],
       ['پارگی ACL', ['علائم مستقیم: قطع فیبرها، افزایش سیگنال T2/PD، مسیر صاف یا موج‌دار.', 'علائم غیرمستقیم: kissing contusions، سابلوکساسیون قدامی تیبیا بیش از ۷ میلی‌متر، PCL خمیده.']],
+      ['مکانیسم و علائم همراه', ['مکانیسم چرخشی/والگوس غیرتماسی، برای نمونه هنگام ورزش، شایع است.', 'Kissing contusions معمولاً کندیل لترال فمور و بخش خلفی-لترال پلاتوی تیبیا را درگیر می‌کنند.']],
       ['دژنراسیون موکوئید', ['رسوب مزمن گلیکوزآمینوگلیکان‌ها بین فیبرهای ACL.', 'علامت celery-stalk: فیبرهای تیره سالم در میان بافت موکوئید روشن در T2.']],
     ],
     note: 'Unhappy triad: پارگی ACL، پارگی MCL و ضایعه منیسک داخلی پس از ترومای والگوس با چرخش خارجی و ساق ثابت.',
@@ -318,15 +306,6 @@ COPY.fa.sections = {
       ['اپیدمیولوژی', ['آسیب منفرد PCL نادر است.', 'پارگی PCL بسیار کمتر از پارگی ACL دیده می‌شود.']],
       ['مکانیسم', ['ضربه مستقیم از جلو به تیبیا در زانوی خم‌شده تیپیک است.', 'مثال کلاسیک: dashboard injury؛ مکانیسم دیگر هایپرفلکشن شدید است.']],
       ['MRI', ['PCL پاره اغلب ضخیم، پرسیگنال یا ناپیوسته دیده می‌شود.', 'بازسازی معمولاً برای ناپایداری شدید یا آسیب‌های ترکیبی نگه داشته می‌شود.']],
-    ],
-  },
-  cases: {
-    title: 'کیس‌ها',
-    lead: 'فضای آزاد برای کیس‌های بعدی و نکاتی که هنگام گزارش باید به آن‌ها نگاه کنی.',
-    placeholders: [
-      ['کیس ۱', 'بعداً می‌توان یک کیس تیپیک ACL با علائم غیرمستقیم، ادم مغز استخوان و چک منیسک اضافه کرد.'],
-      ['کیس ۲', 'فضا برای MCL/POL یا PLC: مکانیسم، تصویر کلیدی، جمله گزارش و pitfall.'],
-      ['کیس ۳', 'فضا برای آسیب PCL یا دژنراسیون موکوئید ACL با افتراق از پارگی.'],
     ],
   },
   takehome: {
@@ -352,12 +331,14 @@ COPY.fa.figures = {
     ['/knieligamente/medial-complex-anatomy.png', 'کمپلکس مدیال شامل MCL، POL و اجزای سمی‌ممبرانوسوس.'],
     ['/knieligamente/mcl-layered-anatomy.png', 'MCL سطحی و عمقی با ارتباط نزدیک به منیسک داخلی.'],
     ['/knieligamente/mcl-partial-followup.png', 'سیر پارگی نسبی MCL: زمان تروما، پس از ۶ هفته و پس از ۱۲ هفته. ادم اطراف رباط کم می‌شود؛ ضخیم‌شدن اسکاری یا سیگنال داخل رباط می‌تواند به عنوان نشانه ترمیم باقی بماند.'],
-    ['/knieligamente/mcl-pol-rupture.png', 'پارگی MCL با درگیری POL در تصاویر کرونال و اکسیال.'],
+    ['/knieligamente/mcl-sprain-followup.png', 'نمونهٔ کشیدگی درجهٔ I در MCL: در تصویر اولیه ادم اطراف رباط با کانتور حفظ‌شده و بدون افزایش سیگنال داخل رباط؛ پس از دو هفته به‌وضوح کمتر شده است. منبع: MSK.pdf، صفحهٔ PDF ۶۱ (صفحهٔ چاپی ۶۰).'],
+    ['/knieligamente/mcl-pol-rupture.png', 'پارگی MCL با درگیری POL در تصاویر کرونال و اکسیال. منبع: MSK.pdf، صفحهٔ PDF ۶۲ (صفحهٔ چاپی ۶۱).'],
   ],
   acl: [
     ['/knieligamente/acl-sagittal-anatomy.jpeg', 'آناتومی ACL در نمای ساژیتال.'],
     ['/knieligamente/acl-normal-signal.png', 'سیگنال طبیعی بین باندل‌های AM و PL را نباید پارگی نسبی تلقی کرد.'],
     ['/knieligamente/acl-kissing-contusions.png', 'Kissing contusions به عنوان علامت غیرمستقیم پارگی ACL.'],
+    ['/knieligamente/acl-avulsion-xray.jpeg', 'رادیوگرافی AP از آولسیون استخوانی ACL در امیننس بین‌کندیلی. منبع: MSK.pdf، صفحهٔ PDF ۶۴ (صفحهٔ چاپی ۶۳)، rID 90186.'],
     ['/knieligamente/acl-mucoid-degeneration.png', 'دژنراسیون موکوئید ACL با علامت celery-stalk.'],
   ],
   pcl: [
@@ -380,7 +361,6 @@ const SECTION_META = {
   medial: { icon: '↖' },
   acl: { icon: '✕' },
   pcl: { icon: '↕' },
-  cases: { icon: '🧪' },
   takehome: { icon: '💡' },
 }
 
@@ -631,17 +611,6 @@ export default function KneeLigamentsPage() {
             <Section id="medial" data={copy.sections.medial} figures={copy.figures.medial} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />
             <Section id="acl" data={copy.sections.acl} figures={copy.figures.acl} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />
             <Section id="pcl" data={copy.sections.pcl} figures={copy.figures.pcl} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />
-
-            <Section id="cases" data={copy.sections.cases} defaultOpen={sectionDefaultOpen}>
-              <div className={styles.caseGrid}>
-                {copy.sections.cases.placeholders.map(([title, text]) => (
-                  <article className={styles.placeholder} key={title}>
-                    <h3>{title}</h3>
-                    <p>{text}</p>
-                  </article>
-                ))}
-              </div>
-            </Section>
 
             <Section id="takehome" data={copy.sections.takehome} defaultOpen={!isMobile} className={styles.takeHomeSection} showLead={false}>
               <div className={styles.takeHomeBox}>
