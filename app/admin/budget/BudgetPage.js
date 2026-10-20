@@ -3,6 +3,11 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import styles from '../admin.module.css'
+import FinanceOverview, { FinanceSummary } from './FinanceOverview'
+import FinanceSidebar from './FinanceSidebar'
+import FinanceIcon from './FinanceIcon'
+import { expenseCategory } from './financeOverviewData.mjs'
+import workspace from './financeWorkspace.module.css'
 
 const STORAGE_KEY    = 'radyar_private_budget_v1'
 const RECURRING_KEY  = 'radyar_recurring_v1'
@@ -113,7 +118,7 @@ async function budgetApi(method = 'GET', body) {
     body: body ? JSON.stringify(body) : undefined,
   })
   const data = await res.json().catch(() => ({}))
-  if (!res.ok) throw new Error(data.error || 'Budget konnte nicht gespeichert werden.')
+  if (!res.ok) throw new Error(data.error || 'Finanzdaten konnten nicht gespeichert werden.')
   return data
 }
 
@@ -243,7 +248,7 @@ function formatMonthLabel(key) {
   return new Date(y, m - 1, 1).toLocaleDateString('de-DE', { month: 'long', year: 'numeric' })
 }
 
-function emptyMonth() { return { budget: '', entries: [] } }
+function emptyMonth() { return { entries: [] } }
 
 function monthIsOnOrAfter(monthKey, startMonth) {
   return !startMonth || monthKey >= startMonth
@@ -298,32 +303,11 @@ function sparquote(income, expenses) {
   return ((income - expenses) / income * 100).toFixed(1)
 }
 
-function trafficColor(spent, budget) {
-  if (!budget) return null
-  const p = spent / budget
-  if (p >= 1) return '#dc2626'
-  if (p >= 0.75) return '#d97706'
-  return '#16a34a'
-}
-
-function categoryBudgetValue(catBudgets, categoryName) {
-  return catBudgets[categoryName] || catBudgets[`${categoryName} / Gesamt`] || 0
-}
-
-function IconCalendar() {
-  return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-}
 function IconChart() {
   return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
 }
-function IconSettings() {
-  return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-}
 function IconTrend() {
   return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-}
-function IconPlane() {
-  return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 2 9 15"/><path d="m22 2-7 20-4-9-9-4Z"/></svg>
 }
 function IranCategoryIcon({ type }) {
   const paths = {
@@ -436,13 +420,13 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
       {/* Type */}
       {!entryScope && (
         <div className={`${styles.segmentedControl} ${styles.entryTypeSwitch}`}>
-          <button type="button" className={type === 'income' ? styles.segmentActive : ''} onClick={() => onTypeChange('income')}>Einkommen</button>
-          <button type="button" className={type === 'expense' ? styles.segmentActive : ''} onClick={() => onTypeChange('expense')}>Ausgabe</button>
+          <button type="button" aria-pressed={type === 'income'} className={type === 'income' ? `${styles.segmentActive} ${workspace.typeActive}` : ''} onClick={() => onTypeChange('income')}>Einkommen</button>
+          <button type="button" aria-pressed={type === 'expense'} className={type === 'expense' ? `${styles.segmentActive} ${workspace.typeActive}` : ''} onClick={() => onTypeChange('expense')}>Ausgabe</button>
         </div>
       )}
 
       {/* Amount + Date */}
-      <div className={styles.entryAmountPanel}>
+      <div className={`${styles.entryAmountPanel} ${workspace.amountPanel}`}>
         <label className={styles.entryAmountField}>
           <span>Betrag</span>
           <div className={styles.entryAmountInputWrap}>
@@ -525,6 +509,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
   const [month, setMonth]     = useState(getMonthKey())
   const [year, setYear]       = useState(new Date().getFullYear())
   const [store, setStore]     = useState({})
+  // Preserve legacy budget data during sync; finance no longer displays or edits it.
   const [catBudgets, setCatBudgets] = useState({})
   const [recurring, setRecurring]   = useState([])
   const [categories, setCategories] = useState([])
@@ -723,10 +708,6 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
   const visibleCategories = useMemo(
     () => excludeVacation ? categories.filter(category => category.name !== 'Ausflug') : categories,
     [categories, excludeVacation]
-  )
-  const visibleCatBudgets = useMemo(
-    () => Object.fromEntries(Object.entries(catBudgets).filter(([name]) => !excludeVacation || name.split(' / ')[0] !== 'Ausflug')),
-    [catBudgets, excludeVacation]
   )
   const visibleRecurring = useMemo(
     () => excludeVacation ? recurring.filter(entry => !isVacationEntry(entry)) : recurring,
@@ -986,10 +967,6 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
     return Object.entries(t).sort((a, b) => b[1] - a[1])
   }, [monthData.entries])
 
-  const totalCatBudget = useMemo(() => {
-    return Object.values(visibleCatBudgets).reduce((s, value) => s + Number(value || 0), 0)
-  }, [visibleCatBudgets])
-
   function printBericht() {
     const fixEntries    = monthData.entries.filter(e => e.generatedRecurring)
     const manualEntries = [...monthData.entries.filter(e => !e.generatedRecurring)].sort((a, b) => (b.date || '').localeCompare(a.date || ''))
@@ -1001,12 +978,9 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
       return `<tr><td>${cat}</td><td class="amt green">${formatMoney(total)}</td><td class="pct">${pct} %</td></tr>`
     }).join('')
 
-    const expenseRows = categoryTotals.map(([cat, total]) => {
-      const budget = categoryBudgetValue(catBudgets, cat)
-      const pct    = budget > 0 ? ((total / budget) * 100).toFixed(1) : '—'
-      const status = !budget ? '' : total >= budget ? '⚠ Überzogen' : total / budget >= 0.75 ? '~ Achtung' : '✓ OK'
-      return `<tr><td>${cat}</td><td class="amt red">${formatMoney(total)}</td><td class="amt">${budget ? formatMoney(budget) : '—'}</td><td class="pct">${pct !== '—' ? pct + ' %' : '—'}</td><td>${status}</td></tr>`
-    }).join('')
+    const expenseRows = categoryTotals.map(([cat, total]) =>
+      `<tr><td>${cat}</td><td class="amt red">${formatMoney(total)}</td></tr>`
+    ).join('')
 
     const fixRows = fixEntries.map(e =>
       `<tr><td>${e.title}</td><td>${e.category || '—'}</td><td class="amt red">${formatMoney(e.amount)}</td></tr>`
@@ -1068,9 +1042,9 @@ ${incomeTotals.length ? `
 
 ${categoryTotals.length ? `
 <h2>Ausgaben nach Kategorie</h2>
-<table><thead><tr><th>Kategorie</th><th style="text-align:right">Ausgegeben</th><th style="text-align:right">Budget</th><th style="text-align:right">% Budget</th><th>Status</th></tr></thead>
+<table><thead><tr><th>Kategorie</th><th style="text-align:right">Ausgegeben</th></tr></thead>
 <tbody>${expenseRows}</tbody>
-<tfoot><tr class="total-row"><td>Gesamt</td><td class="amt red">${formatMoney(summary.expenses)}</td><td></td><td></td><td></td></tr></tfoot>
+<tfoot><tr class="total-row"><td>Gesamt</td><td class="amt red">${formatMoney(summary.expenses)}</td></tr></tfoot>
 </table>` : ''}
 
 ${fixEntries.length ? `
@@ -1097,10 +1071,6 @@ ${manualEntries.length ? `
     setTimeout(() => win.print(), 400)
   }
 
-  const budgetRemaining = totalCatBudget - summary.expenses
-  const budgetOver      = totalCatBudget > 0 && budgetRemaining < 0
-  const budgetPct       = totalCatBudget > 0 ? Math.min((summary.expenses / totalCatBudget) * 100, 100) : 0
-
   const entryTitle = useMemo(() => {
     const firstSub = selectedItems.find(i => i.subName)
     if (firstSub) {
@@ -1123,7 +1093,7 @@ ${manualEntries.length ? `
 
   const planCatNames = useMemo(() => [...new Set(planSelectedItems.map(i => i.catName))], [planSelectedItems])
 
-  const planBudgetKey = useMemo(() => {
+  const planCategoryKey = useMemo(() => {
     const selected = planSelectedItems[0]
     if (!selected) return ''
     return selected.subName ? `${selected.catName} / ${selected.subName}` : `${selected.catName} / Gesamt`
@@ -1157,7 +1127,9 @@ ${manualEntries.length ? `
 
   const catDetailEntries = useMemo(() => {
     if (!catDetail) return []
-    const { type, key } = catDetail
+    const { type, key, entryId, primaryOnly } = catDetail
+    if (entryId) return monthData.entries.filter(entry => entry.id === entryId)
+    if (primaryOnly) return monthData.entries.filter(entry => entry.type === 'expense' && expenseCategory(entry) === key)
     if (type === 'income') {
       return monthData.entries.filter(e =>
         e.type === 'income' &&
@@ -1193,7 +1165,6 @@ ${manualEntries.length ? `
   function prevMonth() { const [y, m] = month.split('-').map(Number); setMonth(getMonthKey(new Date(y, m - 2, 1))) }
   function nextMonth() { const [y, m] = month.split('-').map(Number); setMonth(getMonthKey(new Date(y, m, 1))) }
   function updateMonth(updater) { setStore(prev => { const cur = prev[month] || emptyMonth(); return { ...prev, [month]: updater(cur) } }) }
-  function saveCatBudget(cat, value) { setCatBudgets(prev => ({ ...prev, [cat]: Number(value) || 0 })) }
 
   function allEntries() {
     return Object.values(store).flatMap(m => m.entries || [])
@@ -1370,13 +1341,6 @@ ${manualEntries.length ? `
     updateMonth(c => ({ ...c, entries: c.entries.filter(i => i.id !== id) }))
   }
 
-  function savePlanBudget() {
-    const amount = Number(planAmount)
-    if (!amount || !planBudgetKey) return
-    setCatBudgets(prev => ({ ...prev, [planBudgetKey]: amount }))
-    setPlanAmount('')
-  }
-
   function addFixeintrag() {
     const amount = Number(planAmount)
     if (!amount || !planTitle) return
@@ -1386,7 +1350,7 @@ ${manualEntries.length ? `
       title: planTitle,
       amount,
       category: planCatNames[0] || '',
-      budgetKey: planBudgetKey,
+      budgetKey: planCategoryKey,
       startMonth: getMonthKey(), // immer ab aktuellem Monat, egal welcher Monat angezeigt wird
       dayOfMonth: '1',
     }])
@@ -1395,7 +1359,6 @@ ${manualEntries.length ? `
   function removeFixeintrag(id) { setRecurring(prev => prev.filter(r => r.id !== id)) }
 
   function goToMonth(key) { setMonth(key); setView('monat') }
-  function navEinstellung(sub) { setView('einstellung'); setSubView(sub) }
 
   function seedMai2026() {
     if (!window.confirm('Mai 2026 Ausgaben eintragen? Bereits vorhandene Einträge bleiben erhalten.')) return
@@ -1536,9 +1499,9 @@ ${manualEntries.length ? `
     setView('monat')
   }
 
-  function openCatDetail(type, key, label) {
+  function openCatDetail(type, key, label, primaryOnly = false) {
     setShowPopup(false)  // close entry popup if open
-    setCatDetail({ type, key, label })
+    setCatDetail({ type, key, label, primaryOnly })
     setExpandedSubtitles(new Set())
     setEditingEntry(null)
   }
@@ -1557,22 +1520,13 @@ ${manualEntries.length ? `
     setEditingEntry(null)
   }
 
-  function SidebarItem({ icon, label, active, onClick, badge }) {
-    return (
-      <button className={active ? styles.sidebarItemActive : styles.sidebarItem} onClick={onClick} aria-current={active ? 'page' : undefined}>
-        <span className={styles.sidebarIcon}>{icon}</span>
-        <span className={styles.sidebarLabel}>{label}</span>
-        {badge && <span className={styles.sidebarBadge}>{badge}</span>}
-      </button>
-    )
-  }
-
   const isIncome = entryType === 'income'
-  const popupAccent = isIncome ? '#16a34a' : '#f97316'
+  const popupAccent = !iranOnly ? '#15563a' : isIncome ? '#16a34a' : '#f97316'
 
   return (
-    <div className={styles.page}>
-      <main className={styles.content}>
+    <div className={iranOnly ? styles.page : workspace.page}>
+      {!iranOnly && <FinanceSidebar view={view} subView={subView} onNavigate={(nextView, sub) => { setView(nextView); if (sub) setSubView(sub) }} />}
+      <main className={iranOnly ? styles.content : workspace.content}>
 
         {/* ── HEADER ── */}
         {homeHref && (
@@ -1580,24 +1534,21 @@ ${manualEntries.length ? `
             ← {homeLabel || 'Zurück'}
           </Link>
         )}
-        {!iranOnly && <div className={styles.financeHeader}>
-          <div className={styles.financeHeroCopy}>
-            <span className={styles.financeEyebrow}>Andarun / Finanzen</span>
-            <h1 className={styles.title}>Finanzen</h1>
-            <p className={styles.financeHeroText}>Dein Geld. Klar geordnet.</p>
-            {syncError && <p className={styles.sub} style={{ margin: '4px 0 0', color: '#dc2626' }}>Online-Speichern fehlgeschlagen: {syncError}</p>}
-          </div>
-          <div className={styles.monthNav} ref={monthPickerRef}>
-            <button className={styles.monthNavBtn} onClick={prevMonth} aria-label="Vorheriger Monat">‹</button>
+        {!iranOnly && <div className={workspace.header}>
+          <h1 className={workspace.heading}>Finanzen</h1>
+          <div className={workspace.monthPicker} ref={monthPickerRef}>
+            <button className={workspace.monthArrow} onClick={prevMonth} aria-label="Vorheriger Monat">‹</button>
             <button
-              className={styles.monthDisplay}
+              className={workspace.monthDisplay}
+              type="button"
+              aria-expanded={showMonthPicker}
               onClick={() => setShowMonthPicker(p => !p)}
               aria-label="Monat auswählen"
             >
-              <span className={styles.monthDisplayLabel}>{MONTH_SHORT[Number(month.split('-')[1]) - 1]}</span>
-              <span className={styles.monthDisplayYear}>{month.split('-')[0]}</span>
+              <span>{formatMonthLabel(month)}</span>
+              <span className={workspace.monthChevron} aria-hidden="true">⌄</span>
             </button>
-            <button className={styles.monthNavBtn} onClick={nextMonth} aria-label="Nächster Monat">›</button>
+            <button className={workspace.monthArrow} onClick={nextMonth} aria-label="Nächster Monat">›</button>
 
             {showMonthPicker && (() => {
               const [pickerYear, setPickerYear] = [
@@ -1609,13 +1560,13 @@ ${manualEntries.length ? `
               ]
               const todayKey = getMonthKey()
               return (
-                <div className={styles.monthPickerDropdown}>
-                  <div className={styles.monthPickerYearRow}>
-                    <button className={styles.monthPickerYearBtn} onClick={() => setPickerYear(pickerYear - 1)}>‹</button>
-                    <span className={styles.monthPickerYearLabel}>{pickerYear}</span>
-                    <button className={styles.monthPickerYearBtn} onClick={() => setPickerYear(pickerYear + 1)}>›</button>
+                <div className={workspace.monthDropdown}>
+                  <div className={workspace.monthYearRow}>
+                    <button className={workspace.monthYearButton} onClick={() => setPickerYear(pickerYear - 1)}>‹</button>
+                    <span className={workspace.monthYearLabel}>{pickerYear}</span>
+                    <button className={workspace.monthYearButton} onClick={() => setPickerYear(pickerYear + 1)}>›</button>
                   </div>
-                  <div className={styles.monthPickerGrid}>
+                  <div className={workspace.monthGrid}>
                     {MONTH_SHORT.map((label, i) => {
                       const key = `${pickerYear}-${String(i + 1).padStart(2, '0')}`
                       const isSelected = key === month
@@ -1623,7 +1574,7 @@ ${manualEntries.length ? `
                       return (
                         <button
                           key={key}
-                          className={`${styles.monthPickerCell} ${isSelected ? styles.monthPickerCellSelected : ''} ${isToday && !isSelected ? styles.monthPickerCellToday : ''}`}
+                          className={`${workspace.monthCell} ${isSelected ? workspace.monthSelected : ''} ${isToday && !isSelected ? workspace.monthToday : ''}`}
                           onClick={() => { setMonth(key); setShowMonthPicker(false) }}
                         >
                           {label}
@@ -1635,139 +1586,32 @@ ${manualEntries.length ? `
               )
             })()}
           </div>
+          <div className={workspace.headerActions}>
+            <button type="button" className={workspace.action} onClick={() => openPopup('expense')} disabled={!loaded}><FinanceIcon name="plus" width="18" height="18" />Ausgabe</button>
+            <button type="button" className={workspace.secondaryAction} onClick={() => openPopup('income')} disabled={!loaded}><FinanceIcon name="plus" width="18" height="18" />Einkommen</button>
+          </div>
+          {syncError && <p role="alert" className={workspace.syncError}>Online-Speichern fehlgeschlagen: {syncError}</p>}
         </div>}
 
-        {/* ── METRIKEN ── */}
-        {!iranOnly && <section className={styles.financeMetrics} aria-label="Monatsbilanz">
-          <div className={styles.financeBalanceCard}>
-            <span className={styles.financeBalanceLabel}>Monatsbilanz · {formatMonthLabel(month)}</span>
-            <strong className={summary.balance >= 0 ? styles.financeBalancePositive : styles.financeBalanceNegative}>{formatMoney(summary.balance)}</strong>
-            <div className={styles.financeBalanceSplit}>
-              <span><small>Eingegangen</small><b>+ {formatMoney(summary.income)}</b></span>
-              <span><small>Ausgegeben</small><b>− {formatMoney(summary.expenses)}</b></span>
-            </div>
-          </div>
-          <div className={styles.financeMetric}>
-            <span>Einkommen</span>
-            <strong className={styles.moneyPositive}>{formatMoney(summary.income)}</strong>
-            <small>{incomeTotals.length} {incomeTotals.length === 1 ? 'Quelle' : 'Quellen'}</small>
-          </div>
-          <div className={styles.financeMetric}>
-            <div className={styles.financeMetricTop}>
-              <span>Ausgaben</span>
-              <button type="button" className={styles.financeMetricAdd} onClick={() => openPopup('expense')} aria-label="Neue Ausgabe hinzufügen" title="Neue Ausgabe hinzufügen"><IconPlus /></button>
-            </div>
-            <strong className={styles.moneyNegative}>{formatMoney(summary.expenses)}</strong>
-            <small>{categoryTotals.length} Kategorien</small>
-          </div>
-          <div className={styles.financeMetric}>
-            <span>Sparquote</span>
-            <strong>{summary.income ? `${sparquote(summary.income, summary.expenses)} %` : '—'}</strong>
-            <small>{summary.balance >= 0 ? 'im positiven Bereich' : 'Ausgaben über Einkommen'}</small>
-          </div>
-        </section>}
+        {!iranOnly && <FinanceSummary summary={summary} formatMoney={formatMoney} loaded={loaded} />}
 
-        {/* ── LAYOUT ── */}
-        <div className={iranOnly ? styles.iranAppLayout : styles.financeLayout}>
-          {!iranOnly && <aside className={styles.financeSidebar}>
-            <nav className={styles.sidebarNav}>
-              <SidebarItem icon={<IconCalendar />} label="Monatsübersicht" active={view === 'monat'} onClick={() => setView('monat')} />
-              <SidebarItem icon={<IconChart />} label="Jahresübersicht" active={view === 'jahr'} onClick={() => setView('jahr')} />
-              <SidebarItem icon={<IconTrend />} label="Verlauf" active={view === 'verlauf'} onClick={() => setView('verlauf')} />
-              {!excludeVacation ? <Link className={styles.sidebarItem} href="/andarun/urlaub">
-                <span className={styles.sidebarIcon}><IconPlane /></span>
-                <span className={styles.sidebarLabel}>Urlaub</span>
-              </Link> : null}
-              <div className={styles.sidebarDivider} />
-              <SidebarItem icon={<IconSettings />} label="Einstellung" active={view === 'einstellung'} onClick={() => navEinstellung(subView)} />
-              {view === 'einstellung' && (
-                <div className={styles.sidebarSubGroup}>
-                  <button className={subView === 'kategorien' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('kategorien')}>Kategorien</button>
-                  <button className={subView === 'budget' || subView === 'fixkosten' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('budget')}>Budget &amp; Fixkosten</button>
-                  <button className={subView === 'bericht' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('bericht')}>Bericht</button>
-                </div>
-              )}
-            </nav>
-          </aside>}
-
+        <div className={iranOnly ? styles.iranAppLayout : workspace.main}>
           <div className={styles.financeMain}>
 
             {/* ── MONATSÜBERSICHT ── */}
             {view === 'monat' && (
-              <div className={styles.financeMonthGrid}>
-                {/* EINKOMMEN */}
-                <div className={styles.sectionCard} style={{ borderColor: 'rgba(22,163,74,.2)' }}>
-                  <div className={styles.sectionCardHead} style={{ background: 'rgba(22,163,74,.07)', borderBottom: '1px solid rgba(22,163,74,.15)' }}>
-                    <span className={styles.sectionCardLabel} style={{ color: '#15803d' }}>Einkommen</span>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                      <strong className={styles.moneyPositive} style={{ fontSize: 18 }}>{formatMoney(summary.income)}</strong>
-                      <button className={styles.sectionAddBtn} style={{ background: '#16a34a' }} onClick={() => openPopup('income')} aria-label="Einkommen hinzufügen"><IconPlus /></button>
-                    </div>
-                  </div>
-                  <div className={styles.sectionCardBody}>
-                    {incomeTotals.length ? incomeTotals.map(([cat, total]) => {
-                      const pct = summary.income > 0 ? (total / summary.income) * 100 : 0
-                      return (
-                        <div className={`${styles.incomeRow} ${styles.clickableRow}`} key={cat} onClick={() => openCatDetail('income', cat, cat)} role="button" tabIndex={0} onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && openCatDetail('income', cat, cat)}>
-                          <span className={styles.incomeRowName}>{cat}</span>
-                          <div className={styles.incomeBarTrack}><div className={styles.incomeBarFill} style={{ width: `${Math.max(pct, 3)}%` }} /></div>
-                          <span className={styles.financeRowAmount}><strong className={styles.moneyPositive}>{formatMoney(total)}</strong><small>{pct.toFixed(0)} %</small></span>
-                        </div>
-                      )
-                    }) : (
-                      <div className={styles.sectionEmptyRow}>
-                        <p>Kein Einkommen eingetragen.</p>
-                        <button className={styles.sectionEmptyBtn} type="button" onClick={() => openPopup('income')}>+ Einkommen eintragen</button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* AUSGABEN */}
-                <div className={styles.sectionCard} style={{ borderColor: 'rgba(249,115,22,.2)' }}>
-                  <div className={styles.sectionCardHead} style={{ background: 'rgba(249,115,22,.07)', borderBottom: '1px solid rgba(249,115,22,.15)' }}>
-                    <span className={styles.sectionCardLabel} style={{ color: '#c2410c' }}>Ausgaben</span>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                      <strong className={styles.moneyNegative} style={{ fontSize: 18 }}>{formatMoney(summary.expenses)}</strong>
-                      <button className={styles.sectionAddBtn} style={{ background: '#f97316' }} onClick={() => openPopup('expense')} aria-label="Ausgabe hinzufügen"><IconPlus /></button>
-                    </div>
-                  </div>
-                  {totalCatBudget > 0 && (
-                    <div className={styles.budgetBar} style={{ margin: 0, borderRadius: 0, height: 3 }}>
-                      <div className={budgetOver ? styles.budgetBarOver : styles.budgetBarGood} style={{ width: `${budgetPct}%` }} />
-                    </div>
-                  )}
-                  <div className={styles.sectionCardBody}>
-                    {categoryTotals.length ? categoryTotals.map(([cat, total]) => {
-                      const budget = categoryBudgetValue(catBudgets, cat)
-                      const color = trafficColor(total, budget)
-                      const pct = budget > 0 ? Math.min((total / budget) * 100, 100) : 0
-                      return (
-                        <div className={`${styles.expenseRow} ${styles.clickableRow}`} key={cat} onClick={() => openCatDetail('expense', cat, cat)} role="button" tabIndex={0} onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && openCatDetail('expense', cat, cat)}>
-                          <span className={styles.categoryName}>{cat}</span>
-                          <div className={styles.categoryBarTrack}><div className={styles.categoryBarFill} style={{ width: `${budget > 0 ? Math.max(pct, 2) : 0}%`, background: color || undefined }} /></div>
-                          <span className={styles.financeRowAmount}><strong>{formatMoney(total)}</strong><small>{budget ? `${pct.toFixed(0)} %` : 'kein Budget'}</small></span>
-                          <span className={styles.trafficDot} style={{ background: color || 'transparent', border: color ? 'none' : '1px dashed #cbd5e1' }} title={budget ? `Budget: ${formatMoney(budget)}` : 'Kein Budget'} />
-                        </div>
-                      )
-                    }) : (
-                      <div className={styles.sectionEmptyRow}>
-                        <p>Keine Ausgaben eingetragen.</p>
-                        <button className={styles.sectionEmptyBtn} type="button" onClick={() => openPopup('expense')}>+ Ausgabe eintragen</button>
-                      </div>
-                    )}
-                  </div>
-                  {(incomeTotals.length > 0 || categoryTotals.length > 0) && (
-                    <div className={styles.sectionCardFoot}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: 13, fontWeight: 700, color: '#475569' }}>Saldo</span>
-                        <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative} style={{ fontSize: 16 }}>{formatMoney(summary.balance)}</strong>
-                        <span style={{ fontSize: 12, fontWeight: 700, color: '#7c3aed' }}>(Fatima bezahlt: {formatMoney(fatimaPaid)})</span>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
+              <FinanceOverview
+                entries={monthData.entries}
+                incomeTotals={incomeTotals}
+                formatMoney={formatMoney}
+                loaded={loaded}
+                fatimaPaid={fatimaPaid}
+                onOpenCategory={name => openCatDetail('expense', name, name, true)}
+                onOpenIncome={name => openCatDetail('income', name, name)}
+                onOpenEntry={entry => { setShowPopup(false); setCatDetail({ type: entry.type, key: entry.type === 'income' ? entry.title : expenseCategory(entry), label: entry.title || 'Eintrag', entryId: entry.id }); setExpandedSubtitles(new Set()); setEditingEntry(null) }}
+                onAddExpense={() => openPopup('expense')}
+                onAddIncome={() => openPopup('income')}
+              />
             )}
 
             {/* ── SONDERURLAUB IRAN ── */}
@@ -2980,27 +2824,23 @@ ${manualEntries.length ? `
                     <p style={{ margin: 0, fontWeight: 800, fontSize: 13, color: 'var(--text-strong,#0d1b2a)' }}>Ausgaben Mai 2026 importieren</p>
                     <p style={{ margin: '2px 0 0', fontSize: 12, color: 'var(--text-muted,#94a3b8)' }}>Variable Einträge – ohne Fixkosten</p>
                   </div>
-                  <button type="button" className={styles.primaryBudgetBtn} style={{ whiteSpace: 'nowrap', flexShrink: 0 }} onClick={seedMai2026}>
+                  <button type="button" className={`${styles.primaryBudgetBtn} ${workspace.primaryButton}`} style={{ whiteSpace: 'nowrap', flexShrink: 0 }} onClick={seedMai2026}>
                     Jetzt importieren
                   </button>
                 </div>
               </div>
             )}
 
-            {/* ── BUDGET & FIXKOSTEN ── */}
-            {view === 'einstellung' && (subView === 'budget' || subView === 'fixkosten') && (
+            {/* ── FIXKOSTEN ── */}
+            {view === 'einstellung' && subView === 'fixkosten' && (
               <div className={styles.settingsBudgetStack}>
                 <div className={`${styles.budgetPanel} ${styles.planComposerPanel}`}>
                   <div className={styles.fixedCostsHeader}>
                     <div>
-                      <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Budget &amp; Fixkosten</h2>
-                      <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>Kategorie wählen, Betrag eintragen, dann als Budget oder Fixkosten speichern.</p>
+                      <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Fixkosten</h2>
+                      <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>Kategorie wählen und wiederkehrende Ausgaben eintragen.</p>
                     </div>
                     <div className={styles.planTotalsRow}>
-                      <div className={styles.fixedTotalPill}>
-                        <span>Budget gesamt</span>
-                        <strong>{totalCatBudget > 0 ? formatMoney(totalCatBudget) : '—'}</strong>
-                      </div>
                       <div className={styles.fixedTotalPill}>
                         <span>Fixkosten</span>
                         <strong>{totalFixkosten > 0 ? formatMoney(totalFixkosten) : '—'}</strong>
@@ -3023,7 +2863,7 @@ ${manualEntries.length ? `
                   {planSelectedItems.length > 0 && (
                     <div className={styles.entrySelectionSummary}>
                       <div>
-                        <span className={styles.entrySelectionTitle}>{planBudgetKey}</span>
+                        <span className={styles.entrySelectionTitle}>{planCategoryKey}</span>
                         {planCatNames.length > 0 && <span className={styles.entrySelectionCats}>{planCatNames.join(' · ')}</span>}
                       </div>
                     </div>
@@ -3037,26 +2877,7 @@ ${manualEntries.length ? `
                         <em>€</em>
                       </div>
                     </label>
-                    <button className={styles.primaryBudgetBtn} type="button" disabled={!planTitle || !planAmount} onClick={savePlanBudget}>Budget speichern</button>
-                    <button className={styles.primaryBudgetBtn} type="button" disabled={!planTitle || !planAmount} onClick={addFixeintrag}>Fixkosten speichern</button>
-                  </div>
-                </div>
-
-                <div className={styles.budgetPanel}>
-                  <h2 className={styles.sectionTitle} style={{ margin: '0 0 16px' }}>Gespeicherte Budgets</h2>
-                  <div className={styles.savedBudgetGrid}>
-                    {Object.entries(visibleCatBudgets).filter(([, amount]) => Number(amount || 0) > 0).map(([name, amount]) => {
-                      const baseName = name.split(' / ')[0]
-                      const color = getCatColor(baseName)
-                      return (
-                        <div key={name} className={styles.savedBudgetBox} style={{ '--cat-border': color.border, '--cat-bg': color.bg, '--cat-text': color.text }}>
-                          <span>{name}</span>
-                          <strong>{formatMoney(amount)}</strong>
-                          <button className={styles.actionBtn} type="button" onClick={() => saveCatBudget(name, 0)}>×</button>
-                        </div>
-                      )
-                    })}
-                    {!Object.values(visibleCatBudgets).some(amount => Number(amount || 0) > 0) && <p className={styles.emptyAnalytics}>Noch kein Budget gespeichert.</p>}
+                    <button className={`${styles.primaryBudgetBtn} ${workspace.primaryButton}`} type="button" disabled={!planTitle || !planAmount} onClick={addFixeintrag}>Fixkosten speichern</button>
                   </div>
                 </div>
 
@@ -3094,19 +2915,6 @@ ${manualEntries.length ? `
                 .sort((a, b) => b.amount - a.amount)
                 .slice(0, 8)
               const topCats = [...categoryTotals].slice(0, 6)
-              const budgetCats = categoryTotals.map(([cat, actual]) => {
-                const budget = categoryBudgetValue(catBudgets, cat)
-                const pct = budget > 0 ? Math.min((actual / budget) * 100, 100) : null
-                const status = !budget ? 'none' : actual >= budget ? 'over' : actual / budget >= 0.75 ? 'warn' : 'ok'
-                return { cat, actual, budget, pct, status }
-              })
-              const budgetedCats   = budgetCats.filter(c => c.budget > 0)
-              const unbudgetedCats = budgetCats.filter(c => c.budget === 0)
-              const overBudgetCats = budgetedCats.filter(c => c.status === 'over')
-              const totalBudget    = budgetedCats.reduce((s, c) => s + c.budget, 0)
-              const totalActual    = budgetedCats.reduce((s, c) => s + c.actual, 0)
-              const totalBudgetPct = totalBudget > 0 ? Math.min((totalActual / totalBudget) * 100, 100) : 0
-
               // last 6 months data for trend
               const last6 = Array.from({ length: 6 }, (_, i) => {
                 const d = new Date()
@@ -3118,9 +2926,6 @@ ${manualEntries.length ? `
                 return { key, label: MONTH_SHORT[d.getMonth()], inc, exp, bal: inc - exp }
               })
               const max6 = Math.max(1, ...last6.map(m => Math.max(m.inc, m.exp)))
-
-              const statusColor = { over: '#dc2626', warn: '#d97706', ok: '#16a34a', none: '#cbd5e1' }
-              const statusLabel = { over: 'Überzogen', warn: 'Achtung', ok: 'OK', none: '—' }
 
               return (
                 <div>
@@ -3137,7 +2942,7 @@ ${manualEntries.length ? `
 
                   {/* ── Report Tabs ── */}
                   <div className={styles.reportTabBar}>
-                    {[['monat','📅 Monat'],['jahr','📊 Jahr'],['top','🏆 Top-Ausgaben'],['budget','🎯 Budget']].map(([id, label]) => (
+                    {[['monat','📅 Monat'],['jahr','📊 Jahr'],['top','🏆 Top-Ausgaben']].map(([id, label]) => (
                       <button key={id} type="button"
                         className={reportTab === id ? styles.reportTabActive : styles.reportTabBtn}
                         onClick={() => setReportTab(id)}>
@@ -3188,20 +2993,17 @@ ${manualEntries.length ? `
                         <div className={styles.reportSection}>
                           <p className={styles.reportSectionTitle}>Ausgaben nach Kategorie</p>
                           {categoryTotals.map(([cat, total]) => {
-                            const budget = categoryBudgetValue(catBudgets, cat)
-                            const pct = budget > 0 ? Math.min((total / budget) * 100, 100) : 0
-                            const col = trafficColor(total, budget)
+                            const pct = summary.expenses > 0 ? (total / summary.expenses) * 100 : 0
                             return (
                               <div key={cat} className={styles.berichtRow}>
                                 <span className={styles.berichtRowLabel}>{cat}</span>
                                 <div className={styles.berichtBarTrack}>
-                                  <div className={styles.berichtBarExpense} style={{ width: `${budget > 0 ? Math.max(pct,2) : 0}%`, background: col || '#f97316' }} />
+                                  <div className={styles.berichtBarExpense} style={{ width: `${Math.max(pct,2)}%` }} />
                                 </div>
                                 <span className={styles.berichtRowAmt}>
                                   <strong>{formatMoney(total)}</strong>
-                                  <small>{budget ? `${pct.toFixed(0)} %` : '—'}</small>
+                                  <small>{pct.toFixed(0)} % der Ausgaben</small>
                                 </span>
-                                <span style={{ width: 8, height: 8, borderRadius: '50%', background: col || '#e2e8f0', flexShrink: 0 }} />
                               </div>
                             )
                           })}
@@ -3419,75 +3221,6 @@ ${manualEntries.length ? `
                       )}
                     </div>
                   )}
-
-                  {/* ══ TAB: BUDGET ══ */}
-                  {reportTab === 'budget' && (
-                    <div>
-                      {/* Gesamtübersicht */}
-                      {totalBudget > 0 && (
-                        <div className={styles.reportSection}>
-                          <p className={styles.reportSectionTitle}>Budget-Gesamtstatus</p>
-                          <div className={styles.berichtBudgetOverview}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-                              <span style={{ fontSize: 13, fontWeight: 700 }}>Gesamtbudget</span>
-                              <span style={{ fontSize: 13 }}><strong style={{ color: totalActual > totalBudget ? '#dc2626' : '#0d1b2a' }}>{formatMoney(totalActual)}</strong> / {formatMoney(totalBudget)}</span>
-                            </div>
-                            <div className={styles.budgetBar} style={{ height: 10, borderRadius: 6 }}>
-                              <div className={totalActual >= totalBudget ? styles.budgetBarOver : styles.budgetBarGood} style={{ width: `${totalBudgetPct}%`, borderRadius: 6 }} />
-                            </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6 }}>
-                              <span style={{ fontSize: 11, color: '#94a3b8' }}>{totalBudgetPct.toFixed(0)} % verbraucht</span>
-                              <span style={{ fontSize: 11, color: totalActual > totalBudget ? '#dc2626' : '#16a34a' }}>
-                                {totalActual > totalBudget ? `${formatMoney(totalActual - totalBudget)} überzogen` : `${formatMoney(totalBudget - totalActual)} übrig`}
-                              </span>
-                            </div>
-                          </div>
-                          {overBudgetCats.length > 0 && (
-                            <div className={styles.catErrorBanner} style={{ marginTop: 10 }}>
-                              <span>⚠ {overBudgetCats.length} Kategorie{overBudgetCats.length > 1 ? 'n' : ''} überzogen: {overBudgetCats.map(c => c.cat).join(', ')}</span>
-                            </div>
-                          )}
-                        </div>
-                      )}
-
-                      {/* Per-Kategorie */}
-                      <div className={styles.reportSection}>
-                        <p className={styles.reportSectionTitle}>Kategorien mit Budget ({budgetedCats.length})</p>
-                        {budgetedCats.length > 0 ? budgetedCats.sort((a,b) => (b.pct||0) - (a.pct||0)).map(({ cat, actual, budget, pct, status }) => (
-                          <div key={cat} className={styles.berichtBudgetRow}>
-                            <span className={styles.berichtRowLabel}>{cat}</span>
-                            <div style={{ flex: 1, minWidth: 0 }}>
-                              <div className={styles.berichtBarTrack} style={{ marginBottom: 2 }}>
-                                <div style={{ height: '100%', width: `${pct||0}%`, background: statusColor[status], borderRadius: 4, transition: 'width .4s' }} />
-                              </div>
-                              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <small style={{ color: '#94a3b8', fontSize: 11 }}>{formatMoney(actual)} / {formatMoney(budget)}</small>
-                                <small style={{ color: '#94a3b8', fontSize: 11 }}>{pct?.toFixed(0)} %</small>
-                              </div>
-                            </div>
-                            <span className={styles.berichtStatusBadge} style={{ background: `${statusColor[status]}18`, color: statusColor[status] }}>{statusLabel[status]}</span>
-                          </div>
-                        )) : <p className={styles.emptyAnalytics}>Noch kein Budget gespeichert.</p>}
-                      </div>
-
-                      {unbudgetedCats.length > 0 && (
-                        <div className={styles.reportSection}>
-                          <p className={styles.reportSectionTitle}>Ohne Budget ({unbudgetedCats.length})</p>
-                          <div className={styles.reportGrid}>
-                            {unbudgetedCats.map(({ cat, actual }) => (
-                              <div key={cat} className={styles.reportCard}>
-                                <span>{cat}</span>
-                                <strong>{formatMoney(actual)}</strong>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {categoryTotals.length === 0 && <p className={styles.emptyAnalytics}>Keine Ausgaben für {formatMonthLabel(month)}.</p>}
-                    </div>
-                  )}
-
                 </div>
               )
             })()}
@@ -3498,7 +3231,7 @@ ${manualEntries.length ? `
         {/* ── POPUP MODAL ── */}
         {showPopup && (
           <div className={styles.popupOverlay} onClick={closePopup} role="dialog" aria-modal="true" aria-label="Neuer Eintrag">
-            <div className={`${styles.popupPanel} ${entryScope ? styles.scopedPopupPanel : ''}`} onClick={e => e.stopPropagation()}>
+            <div className={`${styles.popupPanel} ${entryScope ? styles.scopedPopupPanel : ''} ${!iranOnly ? workspace.dialog : ''}`} onClick={e => e.stopPropagation()}>
               {/* Header */}
               <div className={styles.popupHeader} style={{ borderBottom: `2px solid ${popupAccent}` }}>
                 <div>
@@ -3544,7 +3277,7 @@ ${manualEntries.length ? `
                   <span>{entryTitle || 'Noch keine Kategorie'}</span>
                   <strong>{entryAmount ? `${entryAmount.replace('.', ',')} €` : '0,00 €'}</strong>
                 </div>
-                <button form="budget-entry-form" className={styles.primaryBudgetBtn} type="submit" disabled={!entryTitle || !entryAmount}>
+                <button form="budget-entry-form" className={`${styles.primaryBudgetBtn} ${workspace.primaryButton}`} type="submit" disabled={!entryTitle || !entryAmount}>
                   Speichern
                 </button>
               </div>
@@ -3555,7 +3288,7 @@ ${manualEntries.length ? `
         {/* ── KATEGORIE-DETAIL POPUP ── */}
         {catDetail && (
           <div className={styles.popupOverlay} onClick={closeCatDetail} role="dialog" aria-modal="true" aria-label={catDetail.label}>
-            <div className={styles.popupPanel} style={{ maxWidth: 480 }} onClick={e => e.stopPropagation()}>
+            <div className={`${styles.popupPanel} ${!iranOnly ? workspace.dialog : ''}`} style={{ maxWidth: 480 }} onClick={e => e.stopPropagation()}>
               {/* Header */}
               <div className={styles.popupHeader} style={{ borderBottom: `2px solid ${catDetail.type === 'income' ? '#16a34a' : '#f97316'}` }}>
                 <div>

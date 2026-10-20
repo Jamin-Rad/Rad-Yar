@@ -18,7 +18,7 @@ const spaces = [
 ]
 
 const financeSpaces = [
-  { title: 'Monatliche Ausgaben', description: 'Einnahmen, Fixkosten und Budgets im Blick.', href: '/andarun/finanz', icon: 'monthly' },
+  { title: 'Monatliche Ausgaben', description: 'Einnahmen, Ausgaben und Fixkosten im Blick.', href: '/andarun/finanz', icon: 'monthly' },
   { title: 'کمک به زندانیان', description: 'نیازها، کمک‌های ثبت‌شده و تأیید واریز.', href: '/andarun/finanz/gefangene', icon: 'help' },
   { title: 'Urlaub', description: 'Reisen, Kosten und Erinnerungen verwalten.', href: '/andarun/urlaub', icon: 'holiday' },
   { title: 'Familie Zia', description: 'Gemeinsam planen und den Überblick behalten.', href: '/andarun/finanz?bereich=familie', icon: 'family' },
