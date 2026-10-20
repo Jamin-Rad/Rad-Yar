@@ -16,6 +16,7 @@ import { PULMONARY_EDEMA_QUESTIONS } from './pulmonaryEdema'
 import { DUAL_ENERGY_CT_QUESTIONS, DUAL_ENERGY_CT_TOPIC_GROUP } from './technikDualEnergyLesson'
 import { MR_PERFUSION_QUESTIONS, MR_PERFUSION_TOPIC_GROUP } from './technikMrtPerfusionLesson'
 import { MRI_ARTIFACT_QUESTIONS, MRI_ARTIFACT_TOPIC_GROUP } from './technikMriArtifacts'
+import { MR_ANGIOGRAPHY_QUESTIONS, MR_ANGIOGRAPHY_TOPIC_GROUP } from './technikMraLesson'
 import { CT_QUALITY_QUESTIONS, CT_QUALITY_TOPIC_GROUP } from './technikCTQuality'
 import { CT_PERFUSION_QUESTIONS, CT_PERFUSION_TOPIC_GROUP } from './technikCTPerfusionLesson'
 import { CT_BASICS_QUESTIONS, CT_BASICS_TOPIC_GROUP } from './technikCTBasicsLesson'
@@ -1150,15 +1151,15 @@ const LEGACY_QUESTION_BANK = {
       "id": "avm-de-05",
       "tags": ["avm", "leber", "abdomen"],
       "fach": "abdomen",
-      "question": "Welches Dopplermuster spricht für einen AV-Shunt in einer Lebervene oder einem Pfortaderast?",
+      "question": "Welche Spektraldoppler-Wellenform ist in einer normalen Lebervene zu erwarten?",
       "options": [
-        { "id": "A", "text": "Monophasisches, kontinuierliches Flusssignal mit sehr niedriger Geschwindigkeit" },
-        { "id": "B", "text": "Pulsatiler, arterialisierter Fluss mit hoher Geschwindigkeit" },
-        { "id": "C", "text": "Komplette Flussumkehr ohne Pulsatilität" },
-        { "id": "D", "text": "Fehlendes Dopplersignal (\"stille Vene\")" }
+        { "id": "A", "text": "Relativ kontinuierlicher, hepatopetaler Fluss wie in der Pfortader" },
+        { "id": "B", "text": "Kardial phasischer, normalerweise triphasischer Fluss" },
+        { "id": "C", "text": "Kontinuierlicher arterieller Hochgeschwindigkeitsfluss" },
+        { "id": "D", "text": "Physiologisch kein messbarer Fluss" }
       ],
       "correct": "B",
-      "explanation": "Ein pulsatiles, arterialisiertes Flussmuster mit hoher Geschwindigkeit in einer Vene weist auf eine direkte AV-Shuntverbindung hin."
+      "explanation": "Die normale Lebervene zeigt einen kardial phasischen, meist triphasischen Fluss. Die Pfortader hat dagegen normalerweise einen hepatopetalen und relativ kontinuierlichen Fluss. Eine arterialisierte Wellenform kann je nach betroffenem Gefäß auf einen Shunt hinweisen, ist aber im Kontext zu beurteilen."
     },
     {
       "id": "avm-de-06",
@@ -2347,15 +2348,15 @@ const LEGACY_QUESTION_BANK = {
       "id": "avm-en-05",
       "tags": ["avm", "leber", "abdomen"],
       "fach": "abdomen",
-      "question": "Which Doppler pattern suggests an AV shunt within a hepatic vein or portal vein branch?",
+      "question": "Which spectral Doppler waveform is expected in a normal hepatic vein?",
       "options": [
-        { "id": "A", "text": "Monophasic, continuous flow signal with very low velocity" },
-        { "id": "B", "text": "Pulsatile, arterialised flow with high velocity" },
-        { "id": "C", "text": "Complete flow reversal without pulsatility" },
-        { "id": "D", "text": "Absent Doppler signal (\"silent vein\")" }
+        { "id": "A", "text": "Relatively continuous, hepatopetal flow as in the portal vein" },
+        { "id": "B", "text": "Cardiac-phasic, normally triphasic flow" },
+        { "id": "C", "text": "Continuous high-velocity arterial flow" },
+        { "id": "D", "text": "Physiologically no detectable flow" }
       ],
       "correct": "B",
-      "explanation": "A pulsatile, arterialised high-velocity flow pattern in a vein indicates a direct AV shunt connection."
+      "explanation": "Normal hepatic venous flow is cardiac-phasic and usually triphasic. Portal venous flow is usually hepatopetal and relatively continuous. An arterialised waveform may suggest a shunt depending on the vessel involved, but must be interpreted in context."
     },
     {
       "id": "avm-en-06",
@@ -3544,15 +3545,15 @@ const LEGACY_QUESTION_BANK = {
       "id": "avm-fa-05",
       "tags": ["avm", "leber", "abdomen"],
       "fach": "abdomen",
-      "question": "کدام الگوی داپلر نشان‌دهنده شانت شریانی-وریدی در یک ورید کبدی یا شاخه ورید پورت است؟",
+      "question": "کدام شکل موج داپلر اسپکترال در ورید کبدی طبیعی انتظار می‌رود؟",
       "options": [
-        { "id": "A", "text": "سیگنال جریان مونوفازیک و پیوسته با سرعت بسیار پایین" },
-        { "id": "B", "text": "جریان پولساتیل و آرتریالیزه با سرعت بالا" },
-        { "id": "C", "text": "معکوس‌شدن کامل جریان بدون پولساتیلیتی" },
-        { "id": "D", "text": "عدم وجود سیگنال داپلر (\"ورید ساکت\")" }
+        { "id": "A", "text": "جریان نسبتاً پیوسته و به‌سوی کبد، مانند ورید پورت" },
+        { "id": "B", "text": "جریان وابسته به چرخهٔ قلب و معمولاً سه‌فازی" },
+        { "id": "C", "text": "جریان شریانی پیوسته با سرعت بالا" },
+        { "id": "D", "text": "نبود فیزیولوژیک جریان قابل‌اندازه‌گیری" }
       ],
       "correct": "B",
-      "explanation": "الگوی جریان پولساتیل و آرتریالیزه با سرعت بالا در یک ورید نشان‌دهنده ارتباط مستقیم شانت شریانی-وریدی است."
+      "explanation": "جریان طبیعی ورید کبدی وابسته به چرخهٔ قلب و معمولاً سه‌فازی است؛ جریان ورید پورت معمولاً به‌سوی کبد و نسبتاً پیوسته است. شکل موج آرتریالیزه بسته به رگ درگیر می‌تواند مطرح‌کنندهٔ شانت باشد، اما باید در زمینهٔ بالینی تفسیر شود."
     },
     {
       "id": "avm-fa-06",
@@ -4200,7 +4201,7 @@ const LEGACY_QUESTION_BANK = {
 export const QUESTION_BANK = Object.fromEntries(
   Object.entries(LEGACY_QUESTION_BANK).map(([lang, questions]) => [
     lang,
-    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...KOLLOID_QUESTIONS.filter(question => question.id.startsWith(`kolloidzyste-${lang}-`)), ...UIP_IPF_QUESTIONS.filter(question => question.id.startsWith(`uip-ipf-${lang}-`)), ...PULMONARY_EDEMA_QUESTIONS.filter(question => question.id.startsWith(`lungenoedem-${lang}-`)), ...DUAL_ENERGY_CT_QUESTIONS.filter(question => question.id.startsWith(`dual-energy-ct-${lang}-`)), ...MR_PERFUSION_QUESTIONS.filter(question => question.id.startsWith(`mrt-perfusion-${lang}-`)), ...MRI_ARTIFACT_QUESTIONS.filter(question => question.id.startsWith(`mri-artifacts-${lang}-`)), ...CT_QUALITY_QUESTIONS.filter(question => question.id.startsWith(`ct-quality-${lang}-`)), ...CT_PERFUSION_QUESTIONS.filter(question => question.id.startsWith(`ct-perfusion-${lang}-`)), ...CT_BASICS_QUESTIONS.filter(question => question.id.endsWith(`-${lang}-01`)), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang]), ...METACARPAL_BASE_QUESTIONS[lang], ...BONE_INFARCT_QUESTIONS[lang], ...FACET_QUESTIONS[lang], ...PCNSL_QUESTIONS[lang], ...MEDULLO_QUESTIONS[lang], ...MENING_QUESTIONS[lang], ...RECIST_QUESTIONS[lang], ...ORMOND_QUESTIONS[lang], ...EPIPLOICA_QUESTIONS[lang], ...PANNICULITIS_QUESTIONS[lang], ...PERITONEAL_QUESTIONS[lang], ...BRAIN_METASTASES_QUESTIONS[lang]],
+    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...KOLLOID_QUESTIONS.filter(question => question.id.startsWith(`kolloidzyste-${lang}-`)), ...UIP_IPF_QUESTIONS.filter(question => question.id.startsWith(`uip-ipf-${lang}-`)), ...PULMONARY_EDEMA_QUESTIONS.filter(question => question.id.startsWith(`lungenoedem-${lang}-`)), ...DUAL_ENERGY_CT_QUESTIONS.filter(question => question.id.startsWith(`dual-energy-ct-${lang}-`)), ...MR_PERFUSION_QUESTIONS.filter(question => question.id.startsWith(`mrt-perfusion-${lang}-`)), ...MRI_ARTIFACT_QUESTIONS.filter(question => question.id.startsWith(`mri-artifacts-${lang}-`)), ...MR_ANGIOGRAPHY_QUESTIONS.filter(question => question.id.endsWith(`-${lang}-venc`)), ...CT_QUALITY_QUESTIONS.filter(question => question.id.startsWith(`ct-quality-${lang}-`)), ...CT_PERFUSION_QUESTIONS.filter(question => question.id.startsWith(`ct-perfusion-${lang}-`)), ...CT_BASICS_QUESTIONS.filter(question => question.id.endsWith(`-${lang}-01`)), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang]), ...METACARPAL_BASE_QUESTIONS[lang], ...BONE_INFARCT_QUESTIONS[lang], ...FACET_QUESTIONS[lang], ...PCNSL_QUESTIONS[lang], ...MEDULLO_QUESTIONS[lang], ...MENING_QUESTIONS[lang], ...RECIST_QUESTIONS[lang], ...ORMOND_QUESTIONS[lang], ...EPIPLOICA_QUESTIONS[lang], ...PANNICULITIS_QUESTIONS[lang], ...PERITONEAL_QUESTIONS[lang], ...BRAIN_METASTASES_QUESTIONS[lang]],
   ])
 )
 
@@ -4210,6 +4211,7 @@ export const MCQ_TOPIC_GROUPS = [
   DUAL_ENERGY_CT_TOPIC_GROUP,
   MR_PERFUSION_TOPIC_GROUP,
   MRI_ARTIFACT_TOPIC_GROUP,
+  MR_ANGIOGRAPHY_TOPIC_GROUP,
   CT_QUALITY_TOPIC_GROUP,
   { fachId: 'msk', kapitelId: 'msk-hand', title: { de: 'Hand & Mittelhand', en: 'Hand & metacarpals', fa: 'دست و متاکارپ' }, topics: [{ id: 'metakarpale-frakturen', title: { de: 'Metakarpalbasisfrakturen', en: 'Metacarpal base fractures', fa: 'شکستگی‌های قاعدهٔ متاکارپ' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-peritoneum', title: { de: 'Peritoneum & Mesenterium', en: 'Peritoneum & mesentery', fa: 'پریتوئن و مزانتر' }, topics: [{ id: 'appendicitis-epiploica', title: { de: 'Epiploische Appendagitis', en: 'Epiploic appendagitis', fa: 'التهاب زائدهٔ چربی کولون' } }, { id: 'mesenteriale-panniculitis', title: { de: 'Mesenteriale Panniculitis', en: 'Mesenteric panniculitis', fa: 'پانیکولیت مزانتریک' } }, { id: 'peritonealkarzinose', title: { de: 'Peritonealkarzinose', en: 'Peritoneal carcinomatosis', fa: 'کارسینوماتوز پریتوئن' } }] },

@@ -34,7 +34,8 @@ const CONTENT = {
       "lead": "Eine arteriovenöse Malformation (AVM) der Leber ist eine abnorme direkte Verbindung zwischen einer Arterie und einem venösen Gefäß ohne zwischengeschaltetes Kapillarbett. Dadurch entsteht ein Hochfluss-Shunt mit niedrigem Widerstand.",
       "items": [
         { "title": "Definition", "text": "Direkte AV-Verbindung ohne Kapillarbett mit Hochfluss-Niedrigwiderstand-Charakteristik." },
-        { "title": "Einteilung", "text": "Arterioportal (A. hepatica–Pfortaderast), arteriovenös (A. hepatica–Lebervene) und portosystemisch (Pfortader–Lebervene)." },
+        { "title": "Intrahepatische Shunts", "text": "Arterioportal (A. hepatica → Pfortaderast), hepato-arteriovenöse Fistel (A. hepatica → Lebervene) und portosystemisch (Pfortader → Lebervene). Der portosystemische Shunt ist keine arteriovenöse Fistel." },
+        { "title": "Begriffe", "text": "AVM wird in der Kursquelle als Sammelbegriff verwendet. Eine direkte Verbindung von A. hepatica und Lebervene heißt präziser hepatische arteriovenöse Fistel (HAVF); die genaue Gefäßverbindung muss bildgebend belegt werden." },
         { "title": "Ätiologie", "text": "Kongenital (v. a. HHT/Morbus Osler-Weber-Rendu) oder erworben (iatrogen nach Biopsie/TIPS, traumatisch, tumor- oder zirrhoseassoziiert)." }
       ],
       "key": "Eine AVM ist eine direkte AV-Kurzschlussverbindung ohne Kapillarbett. HHT kann multiple hepatische Shunts verursachen."
@@ -42,14 +43,15 @@ const CONTENT = {
     "sono": {
       "title": "Sonographie & Doppler",
       "lead": "Im B-Bild ist eine hepatische AVM oft unauffällig oder nur durch eine dezente Architekturstörung erkennbar. Der entscheidende Hinweis kommt aus dem Doppler.",
-      "tableHeaders": ["Merkmal", "Typischer Befund"],
+      "tableHeaders": ["Modalität / Gefäß", "Erwarteter Normalbefund", "Hinweis auf Shunt"],
       "tableRows": [
-        ["B-Bild", "häufig unauffällig, ggf. dezente, unscharfe Architekturstörung"],
-        ["Farbduplex", "auffällig buntes, turbulentes Flusssignal im betroffenen Areal"],
-        ["Spektraldoppler (Arterie)", "deutlich erniedrigter Widerstandsindex (RI), hohe diastolische Flussgeschwindigkeit"],
-        ["Spektraldoppler (Vene/Pfortader)", "pulsatiler, arterialisierter Fluss statt normaler kontinuierlicher Fluss"]
+        ["B-Bild", "keine spezifische Parenchymveränderung", "häufig unauffällig, ggf. dezente, unscharfe Architekturstörung"],
+        ["Farbduplex", "gerichteter Fluss in Portal- und Lebervenen", "auffällig turbulentes oder aliasing Flusssignal im betroffenen Areal"],
+        ["Spektraldoppler · Pfortader", "hepatopetal und relativ kontinuierlich, mit geringer kardialer/respiratorischer Modulation", "pulsatiler, arterialisierter oder umgekehrter Fluss kann bei einem arterioportalen Shunt auftreten"],
+        ["Spektraldoppler · Lebervene", "kardial phasisch, normalerweise triphasisch", "arterialisierter Fluss kann zu einer hepato-arteriovenösen Fistel passen"],
+        ["Spektraldoppler · zuführende Arterie", "Niedrigwiderstandsmuster mit kontinuierlichem diastolischem Vorwärtsfluss", "deutlich erniedrigter RI und erhöhter diastolischer Fluss unterstützen den Shuntverdacht"]
       ],
-      "key": "Ein pulsatiles, arterialisiertes Flusssignal in einer Lebervene oder einem Pfortaderast bei gleichzeitig erniedrigtem RI der zuführenden Arterie ist hochverdächtig auf einen AV-Shunt."
+      "key": "Pfortader- und Lebervenen haben unterschiedliche Normalwellenformen. Ein neu arterialisiertes Muster ist verdächtig, aber nicht allein beweisend; Gefäßtyp, Flussrichtung, klinischen Kontext und weitere Bildgebung gemeinsam bewerten."
     },
     "ct": {
       "title": "CT-Diagnostik",
@@ -129,7 +131,8 @@ const CONTENT = {
       "lead": "A hepatic arteriovenous malformation (AVM) is an abnormal direct connection between an artery and a venous vessel without an intervening capillary bed, creating a high-flow, low-resistance shunt.",
       "items": [
         { "title": "Definition", "text": "Direct AV connection without a capillary bed, with high-flow, low-resistance characteristics." },
-        { "title": "Classification", "text": "Arterioportal (hepatic artery to portal vein branch), arteriovenous (hepatic artery to hepatic vein) and portosystemic (portal vein to hepatic vein)." },
+        { "title": "Intrahepatic shunts", "text": "Arterioportal (hepatic artery → portal vein branch), hepato-arteriovenous fistula (hepatic artery → hepatic vein), and portosystemic (portal vein → hepatic vein). A portosystemic shunt is not an arteriovenous fistula." },
+        { "title": "Terminology", "text": "The course source uses AVM as an umbrella term. A direct hepatic artery-to-hepatic vein connection is more precisely a hepatic arteriovenous fistula (HAVF); the specific connection must be demonstrated on imaging." },
         { "title": "Aetiology", "text": "Congenital (especially HHT/Osler-Weber-Rendu disease) or acquired (iatrogenic after biopsy/TIPS, traumatic, or tumour- or cirrhosis-associated)." }
       ],
       "key": "An AVM is a direct AV connection without an intervening capillary bed. HHT can cause multiple hepatic shunts."
@@ -137,14 +140,15 @@ const CONTENT = {
     "sono": {
       "title": "Ultrasound & Doppler",
       "lead": "On grey-scale ultrasound, a hepatic AVM is often inconspicuous or shows only subtle architectural distortion. The key clue comes from Doppler.",
-      "tableHeaders": ["Feature", "Typical finding"],
+      "tableHeaders": ["Modality / vessel", "Expected normal appearance or flow", "Shunt clue"],
       "tableRows": [
-        ["Grey-scale", "often unremarkable, possibly subtle, ill-defined architectural distortion"],
-        ["Colour Doppler", "conspicuous, colourful, turbulent flow signal in the affected area"],
-        ["Spectral Doppler (artery)", "markedly decreased resistive index (RI), high diastolic flow velocity"],
-        ["Spectral Doppler (vein/portal vein)", "pulsatile, arterialised flow instead of normal continuous flow"]
+        ["Grey-scale", "no specific parenchymal abnormality", "often unremarkable; sometimes subtle, ill-defined architectural distortion"],
+        ["Colour Doppler", "Directional flow in portal and hepatic veins", "conspicuously turbulent or aliased flow in the affected area"],
+        ["Spectral Doppler · portal vein", "hepatopetal and relatively continuous, with mild cardiac/respiratory modulation", "pulsatile, arterialised or reversed flow may occur with an arterioportal shunt"],
+        ["Spectral Doppler · hepatic vein", "cardiac-phasic, normally triphasic", "arterialised flow may fit a hepato-arteriovenous fistula"],
+        ["Spectral Doppler · feeding artery", "low-resistance pattern with continuous forward diastolic flow", "markedly decreased RI and increased diastolic flow support suspicion of a shunt"]
       ],
-      "key": "A pulsatile, arterialised flow signal in a hepatic vein or portal vein branch together with a decreased RI of the feeding artery is highly suspicious for an AV shunt."
+      "key": "Portal and hepatic veins have different normal waveforms. A newly arterialised pattern is suspicious but not diagnostic by itself; assess vessel type, flow direction, clinical context and complementary imaging together."
     },
     "ct": {
       "title": "CT diagnosis",
@@ -224,7 +228,8 @@ const CONTENT = {
       "lead": "مالفورماسیون شریانی-وریدی (AVM) کبد یک ارتباط مستقیم و غیرطبیعی بین یک شریان و یک عروق وریدی بدون بستر مویرگی واسط است که یک شانت با جریان بالا و مقاومت پایین ایجاد می‌کند.",
       "items": [
         { "title": "تعریف", "text": "ارتباط مستقیم شریانی-وریدی بدون بستر مویرگی با ویژگی جریان بالا و مقاومت پایین." },
-        { "title": "طبقه‌بندی", "text": "آرتریوپورتال (شریان کبدی به شاخه ورید پورت)، آرتریوونوس (شریان کبدی به ورید کبدی) و پورتوسیستمیک (ورید پورت به ورید کبدی)." },
+        { "title": "شانت‌های داخل‌کبدی", "text": "آرتریوپورتال (شریان کبدی → شاخهٔ ورید پورت)، فیستول شریانی‌وریدی کبدی (HAVF؛ شریان کبدی → ورید کبدی) و پورتوسیستمیک (ورید پورت → ورید کبدی). شانت پورتوسیستمیک، فیستول شریانی‌وریدی نیست." },
+        { "title": "اصطلاح‌شناسی", "text": "منبع آموزشی از AVM به‌عنوان اصطلاحی کلی استفاده می‌کند. اتصال مستقیم شریان کبدی به ورید کبدی دقیق‌تر «فیستول شریانی‌وریدی کبدی» (HAVF) نامیده می‌شود؛ اتصال مشخص باید در تصویربرداری اثبات شود." },
         { "title": "اتیولوژی", "text": "کنژنیتال (به‌ویژه HHT/بیماری Osler-Weber-Rendu) یا اکتسابی (ایاتروژنیک پس از بیوپسی/TIPS، تروماتیک یا مرتبط با تومور/سیروز)." }
       ],
       "key": "AVM یک ارتباط مستقیم شریانی-وریدی بدون بستر مویرگی است. HHT می‌تواند باعث شانت‌های متعدد کبدی شود."
@@ -232,14 +237,15 @@ const CONTENT = {
     "sono": {
       "title": "سونوگرافی و داپلر",
       "lead": "در تصویر B-mode، AVM کبدی اغلب بدون یافته خاص است یا فقط با تغییر خفیف معماری بافت همراه است. نکته کلیدی از داپلر به‌دست می‌آید.",
-      "tableHeaders": ["ویژگی", "یافته تیپیک"],
+      "tableHeaders": ["روش / رگ", "نمای یا جریان طبیعی مورد انتظار", "سرنخ شانت"],
       "tableRows": [
-        ["B-mode", "اغلب بدون یافته خاص، احتمالاً تغییر معماری خفیف و نامشخص"],
-        ["داپلر رنگی", "سیگنال جریان رنگی و توربولانس قابل توجه در ناحیه درگیر"],
-        ["داپلر اسپکترال (شریان)", "کاهش قابل توجه اندکس مقاومتی (RI) و سرعت دیاستولیک بالا"],
-        ["داپلر اسپکترال (ورید/ورید پورت)", "جریان پولساتیل و آرتریالیزه به‌جای جریان پیوسته طبیعی"]
+        ["B-mode", "بدون ناهنجاری اختصاصی در پارانشیم کبد", "اغلب بدون یافتهٔ خاص؛ گاهی تغییر معماری خفیف و نامشخص"],
+        ["داپلر رنگی", "جریان جهت‌دار در ورید پورت و وریدهای کبدی", "سیگنال جریان آشوبناک یا aliasing در ناحیه درگیر"],
+        ["داپلر اسپکترال · ورید پورت", "جریان به‌سوی کبد و نسبتاً پیوسته، با تغییرات خفیف قلبی/تنفسی", "جریان پولساتیل، آرتریالیزه یا معکوس ممکن است در شانت آرتریوپورتال دیده شود"],
+        ["داپلر اسپکترال · ورید کبدی", "وابسته به چرخهٔ قلب و معمولاً سه‌فازی", "جریان آرتریالیزه ممکن است با فیستول شریانی‌وریدی کبدی (HAVF) سازگار باشد"],
+        ["داپلر اسپکترال · شریان تغذیه‌کننده", "الگوی کم‌مقاومت با جریان رو به جلو در دیاستول", "کاهش واضح RI و افزایش جریان دیاستولیک از شک به شانت حمایت می‌کند"]
       ],
-      "key": "سیگنال جریان پولساتیل و آرتریالیزه در یک ورید کبدی یا شاخه ورید پورت همراه با کاهش RI شریان تغذیه‌کننده، به‌شدت به نفع شانت شریانی-وریدی است."
+      "key": "ورید پورت و وریدهای کبدی شکل موج طبیعی متفاوتی دارند. الگوی آرتریالیزهٔ جدید مشکوک است اما به‌تنهایی تشخیصی نیست؛ نوع رگ، جهت جریان، زمینهٔ بالینی و تصویربرداری تکمیلی را با هم ارزیابی کنید."
     },
     "ct": {
       "title": "تشخیص در CT",
@@ -303,25 +309,19 @@ const CASE_COPY = {
   de: {
     label: 'Fallbeispiele',
     title: 'Fallbeispiele',
-    lead: 'Echte Fälle von Radiopaedia.org zur hepatischen AVM und zur HHT-Leberbeteiligung.',
-    openCase: 'Fall in Radiopaedia öffnen',
+    lead: 'Externe Textverweise auf Radiopaedia.org; hier werden keine Radiopaedia-Bilder eingebettet. Fallangaben bitte auf der Originalseite prüfen.',
+    openCase: 'Radiopaedia-Seite öffnen',
     cases: [
       {
-        title: 'Hepatische AVM bei 85-jähriger Patientin',
+        title: 'Radiopaedia-Fall: Hepatische AVM',
         label: 'AVM',
-        tags: ['CT', 'Early venous filling'],
-        icon: '🩸',
-        meta: 'Zuvor als Hämangiom fehlgedeutete Läsion mit nodulärer peripherer Anreicherung in der portalvenösen Phase.',
-        credit: 'Quelle: Radiopaedia.org',
+        meta: 'Externer Fallverweis. Bilder und Fallbeschreibung sind auf der Originalseite zu prüfen.',
         url: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
       },
       {
-        title: 'Hereditäre hämorrhagische Teleangiektasie (HHT) der Leber',
+        title: 'Radiopaedia-Fall: HHT mit Leberbeteiligung',
         label: 'HHT',
-        tags: ['CT', 'Diffuse Teleangiektasien'],
-        icon: '🧬',
-        meta: 'Diffuses arterielles Hyperenhancement mit unzähligen Teleangiektasien und massiv dilatierter, geschlängelter A. hepatica.',
-        credit: 'Quelle: Radiopaedia.org',
+        meta: 'Externer Fallverweis. Bilder und Fallbeschreibung sind auf der Originalseite zu prüfen.',
         url: 'https://radiopaedia.org/cases/hereditary-haemorrhagic-telangiectasia-liver-1',
       },
     ],
@@ -329,25 +329,19 @@ const CASE_COPY = {
   en: {
     label: 'Cases',
     title: 'Cases',
-    lead: 'Real cases from Radiopaedia.org on hepatic AVM and HHT liver involvement.',
-    openCase: 'Open case in Radiopaedia',
+    lead: 'External text links to Radiopaedia.org; no Radiopaedia images are embedded here. Check case details on the original pages.',
+    openCase: 'Open Radiopaedia page',
     cases: [
       {
-        title: 'Hepatic AVM in an 85-year-old patient',
+        title: 'Radiopaedia case: Hepatic AVM',
         label: 'AVM',
-        tags: ['CT', 'Early venous filling'],
-        icon: '🩸',
-        meta: 'A lesion previously misdiagnosed as a haemangioma, with nodular peripheral enhancement in the portal venous phase.',
-        credit: 'Source: Radiopaedia.org',
+        meta: 'External case link. Check images and case description on the original page.',
         url: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
       },
       {
-        title: 'Hereditary haemorrhagic telangiectasia (HHT) of the liver',
+        title: 'Radiopaedia case: HHT with liver involvement',
         label: 'HHT',
-        tags: ['CT', 'Diffuse telangiectasias'],
-        icon: '🧬',
-        meta: 'Diffuse arterial hyperenhancement with innumerable telangiectasias and a markedly dilated, tortuous hepatic artery.',
-        credit: 'Source: Radiopaedia.org',
+        meta: 'External case link. Check images and case description on the original page.',
         url: 'https://radiopaedia.org/cases/hereditary-haemorrhagic-telangiectasia-liver-1',
       },
     ],
@@ -355,25 +349,19 @@ const CASE_COPY = {
   fa: {
     label: 'نمونه کیس‌ها',
     title: 'نمونه کیس‌ها',
-    lead: 'کیس‌های واقعی از Radiopaedia.org درباره AVM کبدی و درگیری کبدی HHT.',
-    openCase: 'باز کردن کیس در Radiopaedia',
+    lead: 'پیوند متنی به صفحات خارجی Radiopaedia.org؛ تصویری از این سایت در اینجا درج نشده است. جزئیات کیس را در صفحهٔ اصلی بررسی کنید.',
+    openCase: 'باز کردن صفحهٔ Radiopaedia',
     cases: [
       {
-        title: 'AVM کبدی در بیمار خانم ۸۵ ساله',
+        title: 'کیس Radiopaedia: AVM کبدی',
         label: 'AVM',
-        tags: ['CT', 'پرشدگی زودرس وریدی'],
-        icon: '🩸',
-        meta: 'ضایعه‌ای که قبلاً به‌اشتباه همانژیوم تشخیص داده شده بود، با تقویت پس از تزریق ندولار محیطی در فاز پورتال.',
-        credit: 'منبع: Radiopaedia.org',
+        meta: 'پیوند به کیس خارجی؛ تصاویر و شرح کیس را در صفحهٔ اصلی بررسی کنید.',
         url: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
       },
       {
-        title: 'تلانژکتازی هموراژیک ارثی (HHT) کبد',
+        title: 'کیس Radiopaedia: HHT با درگیری کبد',
         label: 'HHT',
-        tags: ['CT', 'تلانژکتازی منتشر'],
-        icon: '🧬',
-        meta: 'تقویت شریانی منتشر با تلانژکتازی‌های بی‌شمار و شریان کبدی به‌شدت متسع و پیچ‌خورده.',
-        credit: 'منبع: Radiopaedia.org',
+        meta: 'پیوند به کیس خارجی؛ تصاویر و شرح کیس را در صفحهٔ اصلی بررسی کنید.',
         url: 'https://radiopaedia.org/cases/hereditary-haemorrhagic-telangiectasia-liver-1',
       },
     ],
@@ -381,9 +369,9 @@ const CASE_COPY = {
 }
 
 const AVM_PDF_CASE = {
-  de: { title: 'Abdomen.pdf p. 11: Aussage und Grenze', text: 'Die PDF berichtet normales DWI und frühe arterielle Kontrastmittelaufnahme mit anschließendem Wash-out; HCC wird als wichtige Differentialdiagnose genannt. Die acht CT-/MRT-Bilder sind nicht nach Phase oder Zielstruktur beschriftet. Daher lässt sich nicht sicher sagen, ob das Wash-out den Shunt oder eine separate Läsion betrifft. Diese Einzelbeobachtung ist keine allgemeine AVM-Regel.', alt: 'Unbeschriftete CT- und MRT-Montage aus Abdomen.pdf, physische Seite 11 (gedruckte Seite 10).', question: 'Was lässt sich sicher aus der PDF ableiten?', options: ['Jede hepatische AVM zeigt Wash-out.', 'Die PDF beschreibt normales DWI und frühe arterielle Anreicherung mit anschließendem Wash-out, aber die Zielstruktur bleibt offen.'], answer: 'Richtig: Die Aussage steht im Text, aber die Abbildung identifiziert ihre Zielstruktur nicht.' },
-  en: { title: 'Abdomen.pdf p. 11: report and limitation', text: 'The PDF reports normal DWI and early arterial enhancement followed by wash-out, and names HCC as an important differential. The eight CT/MRI frames are not labelled by phase or target structure. It is therefore unclear whether wash-out refers to the shunt or a separate lesion. This single observation is not a general AVM rule.', alt: 'Unlabelled CT and MRI montage from Abdomen.pdf, physical page 11 (printed page 10).', question: 'What can safely be concluded from the PDF?', options: ['Every hepatic AVM shows wash-out.', 'The PDF reports normal DWI and early arterial enhancement followed by wash-out, but leaves the target structure uncertain.'], answer: 'Correct: the text reports this finding, but the figure does not identify its target structure.' },
-  fa: { title: 'Abdomen.pdf صفحهٔ ۱۱: گفته و محدودیت', text: 'PDF، DWI طبیعی و جذب زودرس شریانی مادهٔ حاجب همراه با wash-out بعدی را گزارش می‌کند و HCC را تشخیص افتراقی مهمی می‌داند. هشت تصویر CT/MRI بر اساس فاز یا ساختار هدف برچسب نخورده‌اند. بنابراین مشخص نیست wash-out به شانت مربوط است یا به ضایعه‌ای جداگانه. این مشاهدهٔ منفرد قاعده‌ای عمومی برای AVM نیست.', alt: 'مونتاژ بدون برچسب CT و MRI از صفحهٔ فیزیکی ۱۱ (صفحهٔ چاپی ۱۰) Abdomen.pdf.', question: 'از PDF چه نتیجه‌ای را می‌توان با اطمینان گرفت؟', options: ['همهٔ AVMهای کبدی wash-out نشان می‌دهند.', 'PDF، DWI طبیعی و جذب زودرس شریانی و سپس wash-out را گزارش می‌کند، اما ساختار هدف نامشخص است.'], answer: 'درست است: متن این یافته را گزارش می‌کند، اما تصویر ساختار هدف را مشخص نمی‌کند.' },
+  de: { title: 'Abdomen.pdf p. 11: nichtdiagnostische Quellenabbildung', text: 'Die PDF berichtet normales DWI und frühe arterielle Kontrastmittelaufnahme mit anschließendem Wash-out. HCC wird als wichtige Differentialdiagnose genannt; zusätzlich soll man auf Leberzirrhose und die DWI-Sequenz achten. Das ist die Empfehlung der Kursfolie, keine unabhängig validierte Entscheidungsregel. Die acht CT-/MRT-Bilder werden hier nur als nichtdiagnostische Quellenabbildung gezeigt; sie sind nicht nach Phase oder Zielstruktur beschriftet. Daher bleibt offen, ob das Wash-out den Shunt oder eine separate Läsion betrifft; die Einzelbeobachtung ist keine allgemeine AVM-Regel.', alt: 'Nichtdiagnostische, unbeschriftete CT- und MRT-Montage aus Abdomen.pdf, physische Seite 11 (gedruckte Seite 10); keine Phasen- oder Zielstrukturzuordnung.', question: 'Was lässt sich aus Text und Abbildung sicher ableiten?', options: ['Wash-out beweist HCC und macht den Zirrhosekontext überflüssig.', 'Die PDF berichtet normales DWI und frühe arterielle Anreicherung mit Wash-out; sie empfiehlt, Zirrhosekontext und DWI zu beachten, aber die Bildserie identifiziert die Zielstruktur nicht.', 'Jede hepatische AVM zeigt Wash-out.'], answer: 'Richtig: Die Quelle nennt diese Befunde und den Zirrhose-/DWI-Kontext, aber die Abbildung ordnet das Wash-out keiner Zielstruktur zu.' },
+  en: { title: 'Abdomen.pdf p. 11: non-diagnostic source figure', text: 'The PDF reports normal DWI and early arterial enhancement followed by wash-out. It names HCC as an important differential and additionally advises considering cirrhosis and the DWI sequence. This is the slide’s advice, not an independently validated decision rule. The eight CT/MRI frames are shown only as a non-diagnostic source figure; they are not labelled by phase or target structure, so it remains unclear whether wash-out refers to the shunt or a separate lesion. This single observation is not a general AVM rule.', alt: 'Non-diagnostic, unlabelled CT and MRI montage from Abdomen.pdf, physical page 11 (printed page 10); no phase or target structure is assigned.', question: 'What can safely be concluded from text and figure?', options: ['Wash-out proves HCC and makes cirrhosis context irrelevant.', 'The PDF reports normal DWI and early arterial enhancement followed by wash-out; it advises considering cirrhosis and DWI, but the montage does not identify the target structure.', 'Every hepatic AVM shows wash-out.'], answer: 'Correct: the source reports those findings and the cirrhosis/DWI context, but the image does not assign wash-out to a specific target.' },
+  fa: { title: 'Abdomen.pdf صفحهٔ ۱۱: تصویر منبعِ غیرتشخیصی', text: 'PDF، DWI طبیعی و جذب زودرس شریانی مادهٔ حاجب و سپس wash-out را گزارش می‌کند. HCC را تشخیص افتراقی مهم می‌داند و توجه به سیروز کبدی و سکانس DWI را نیز توصیه می‌کند. این توصیهٔ اسلاید است، نه قاعدهٔ تصمیم‌گیری که مستقلاً اعتبارسنجی شده باشد. هشت تصویر CT/MRI فقط به‌عنوان تصویر منبعِ غیرتشخیصی نمایش داده می‌شوند و بر اساس فاز یا ساختار هدف برچسب ندارند؛ بنابراین مشخص نیست wash-out به شانت مربوط است یا ضایعه‌ای جداگانه، و این مشاهدهٔ منفرد را نمی‌توان به همهٔ AVMها تعمیم داد.', alt: 'مونتاژ غیرتشخیصی و بدون برچسب CT/MRI از صفحهٔ فیزیکی ۱۱ (صفحهٔ چاپی ۱۰) Abdomen.pdf؛ فاز یا ساختار هدفی تعیین نشده است.', question: 'از متن و تصویر چه نتیجه‌ای را می‌توان با اطمینان گرفت؟', options: ['Wash-out، HCC را ثابت می‌کند و زمینهٔ سیروز اهمیتی ندارد.', 'PDF، DWI طبیعی و جذب زودرس شریانی و سپس wash-out را گزارش می‌کند؛ توجه به زمینهٔ سیروز و DWI را توصیه می‌کند، اما مونتاژ ساختار هدف را مشخص نمی‌کند.', 'همهٔ AVMهای کبدی wash-out نشان می‌دهند.'], answer: 'درست است: منبع این یافته‌ها و توجه به زمینهٔ سیروز/DWI را ذکر می‌کند، اما تصویر wash-out را به ساختار مشخصی نسبت نمی‌دهد.' },
 }
 
 const READ_COPY = {
@@ -569,6 +557,10 @@ export default function LeberAvmPage() {
 
           <Section id="sono" title={copy.sono.title} lead={copy.sono.lead}>
             <Table headers={copy.sono.tableHeaders} rows={copy.sono.tableRows} />
+            <p className={styles.sourceLinks}>
+              {lang === 'fa' ? 'مرجع الگوهای داپلر: ' : lang === 'en' ? 'Doppler waveform reference: ' : 'Referenz für Doppler-Wellenformen: '}
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4579749/" target="_blank" rel="noopener noreferrer">Standards of the Polish Ultrasound Society: portal system and hepatic vessels</a>
+            </p>
             <Callout label={copy.keyLabel}>{copy.sono.key}</Callout>
           </Section>
 
@@ -624,15 +616,12 @@ export default function LeberAvmPage() {
             <div className={styles.caseGrid}>
               {caseCopy.cases.map(item => (
                 <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
-                  <div className={styles.caseImage} aria-hidden="true">{item.icon}</div>
                   <div className={styles.caseBody}>
                     <div className={styles.caseLabelRow}>
                       <span className={styles.caseLabel}>{item.label}</span>
-                      {item.tags?.map(tag => <span key={tag} className={styles.caseLabel}>{tag}</span>)}
                     </div>
                     <h3>{item.title}</h3>
                     <p>{item.meta}</p>
-                    <small>{item.credit}</small>
                     <strong>{caseCopy.openCase}</strong>
                   </div>
                 </a>

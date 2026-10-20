@@ -209,7 +209,7 @@ export default function TechnikGrundlagenStandardPage() {
           {block.note?<aside className={styles.callout}><strong>{t(L('Einordnung und Grenzen','Interpretation and limitations','تفسیر و محدودیت‌ها'))}</strong><p>{t(block.note)}</p></aside>:null}
         </section>)}
         {section.id === 'mrt' ? <><MRIKnowledgeCheck lang={lang}/><RetrievalCheck kind="dixon" lang={lang}/></> : null}
-        {section.id === 'mrt-spezial' ? <><RetrievalCheck kind="perfusion" lang={lang}/><RetrievalCheck kind="ciss" lang={lang}/></> : null}
+        {section.id === 'mrt-spezial' ? <><RetrievalCheck kind="perfusion" lang={lang}/><RetrievalCheck kind="ciss" lang={lang}/><MraActions lang={lang}/></> : null}
         {section.id === 'leber-mrt-protokoll' ? <><LiverProtocolFigure lang={lang}/><RetrievalCheck kind="liverProtocol" lang={lang}/></> : null}
         {section.id === 'mrcp-protokoll' ? <RetrievalCheck kind="mrcp" lang={lang}/> : null}
         {section.id === 'mrt-sicherheit' ? <MRIArtifactKnowledgeCheck lang={lang}/> : null}
@@ -225,4 +225,19 @@ export default function TechnikGrundlagenStandardPage() {
     </StandardLessonShell>
     <Footer/>
   </>
+}
+
+function MraActions({ lang }) {
+  const returnTo = lang === 'de' ? '/technik/grundlagen#mrt-spezial' : `/technik/grundlagen?lang=${lang}#mrt-spezial`
+  const from = encodeURIComponent(returnTo)
+  const labels = {
+    de: { title: 'MR-Angiographie üben', quiz: 'MC-Frage zu VENC', cards: 'Vier Lernkarten' },
+    en: { title: 'Practise MR angiography', quiz: 'VENC MCQ', cards: 'Four flashcards' },
+    fa: { title: 'تمرین آنژیوگرافی MR', quiz: 'سؤال چندگزینه‌ای VENC', cards: 'چهار فلش‌کارت' },
+  }[lang] || { title: 'MR-Angiographie üben', quiz: 'MC-Frage zu VENC', cards: 'Vier Lernkarten' }
+  return <nav aria-label={labels.title} style={{ display: 'flex', flexWrap: 'wrap', gap: 12, margin: '18px 0', padding: 14, border: '1px solid var(--border)', borderRadius: 14, background: 'var(--surface-soft)' }}>
+    <strong style={{ alignSelf: 'center' }}>{labels.title}</strong>
+    <a href={`/ueben/quiz?fach=technik&n=1&themen=mrt-gefaessdarstellung&from=${from}`}>{labels.quiz}</a>
+    <a href={`/flashcards/mrt-gefaessdarstellung?from=${from}`}>{labels.cards}</a>
+  </nav>
 }

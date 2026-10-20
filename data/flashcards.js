@@ -61,6 +61,7 @@ import { CT_QUALITY_FLASHCARDS, CT_QUALITY_FLASHCARD_TOPIC } from './technikCTQu
 import { CT_PERFUSION_FLASHCARDS, CT_PERFUSION_FLASHCARD_TOPIC } from './technikCTPerfusionLesson'
 import { CT_BASICS_FLASHCARDS, CT_BASICS_FLASHCARD_TOPICS } from './technikCTBasicsLesson'
 import { STEATOSIS_FLASHCARDS, STEATOSIS_FLASHCARD_TOPIC } from './steatosisLearning'
+import { MR_ANGIOGRAPHY_FLASHCARDS, MR_ANGIOGRAPHY_FLASHCARD_TOPIC } from './technikMraLesson'
 
 export const FLASHCARD_TOPICS = [
   STEATOSIS_FLASHCARD_TOPIC,
@@ -68,6 +69,7 @@ export const FLASHCARD_TOPICS = [
   CT_PERFUSION_FLASHCARD_TOPIC,
   CT_QUALITY_FLASHCARD_TOPIC,
   MRI_ARTIFACT_FLASHCARD_TOPIC,
+  MR_ANGIOGRAPHY_FLASHCARD_TOPIC,
   MR_PERFUSION_FLASHCARD_TOPIC,
   DUAL_ENERGY_CT_FLASHCARD_TOPIC,
   BRAIN_METASTASES_FLASHCARD_TOPIC,
@@ -2393,25 +2395,26 @@ const LEGACY_FLASHCARDS = [
       "fa": "سونوگرافی"
     },
     "front": {
-      "de": "Welches Flussmuster zeigt eine Lebervene oder ein Pfortaderast bei einem AV-Shunt im Doppler?",
-      "en": "What flow pattern does a hepatic vein or portal vein branch show on Doppler in an AV shunt?",
-      "fa": "در داپلر، یک ورید کبدی یا شاخه ورید پورت در شانت شریانی-وریدی چه الگوی جریانی نشان می‌دهد؟"
+      "de": "Wie unterscheiden sich die normalen Doppler-Wellenformen von Pfortader und Lebervene?",
+      "en": "How do normal Doppler waveforms differ between the portal and hepatic veins?",
+      "fa": "شکل موج طبیعی داپلر در ورید پورت و ورید کبدی چه تفاوتی دارد؟"
     },
     "answer": {
-      "de": "Pulsatiler, arterialisierter Fluss statt normaler kontinuierlicher Fluss.",
-      "en": "Pulsatile, arterialised flow instead of normal continuous flow.",
-      "fa": "جریان پولساتیل و آرتریالیزه به‌جای جریان پیوسته طبیعی."
+      "de": "Pfortader: hepatopetal und relativ kontinuierlich. Lebervene: kardial phasisch, normalerweise triphasisch.",
+      "en": "Portal vein: hepatopetal and relatively continuous. Hepatic vein: cardiac-phasic, normally triphasic.",
+      "fa": "ورید پورت: جریان به‌سوی کبد و نسبتاً پیوسته. ورید کبدی: وابسته به چرخهٔ قلب و معمولاً سه‌فازی."
     },
     "explanation": {
-      "de": "Der direkte arterielle Zustrom übertragt die arterielle Pulsatilität auf das venöse Gefäß – ein wichtiger Hinweis auf einen Shunt.",
-      "en": "The direct arterial inflow transmits arterial pulsatility to the venous vessel – an important clue to a shunt.",
-      "fa": "ورود مستقیم خون شریانی، پولساتیلیتی شریانی را به عروق وریدی منتقل می‌کند - نشانه مهمی برای شانت."
+      "de": "Die Wellenformen nicht gleichsetzen: Portalvenenfluss ist meist hepatopetal und relativ kontinuierlich; Lebervenenfluss bildet den Herzzyklus ab. Arterialisierung kann je nach Gefäß auf einen bestimmten Shunttyp hinweisen, ist aber im Kontext zu beurteilen.",
+      "en": "Do not treat the waveforms as interchangeable: portal flow is usually hepatopetal and relatively continuous, whereas hepatic venous flow reflects the cardiac cycle. Arterialisation may point to a particular shunt type depending on the vessel, but must be interpreted in context.",
+      "fa": "این شکل‌موج‌ها را یکسان ندانید: جریان ورید پورت معمولاً به‌سوی کبد و نسبتاً پیوسته است، درحالی‌که جریان ورید کبدی چرخهٔ قلب را بازتاب می‌دهد. آرتریالیزه‌شدن، بسته به نوع رگ، می‌تواند به یک نوع شانت اشاره کند اما باید در زمینهٔ بالینی تفسیر شود."
     },
     "diagram": {
-      "de": "normal: kontinuierlich | bei Shunt: pulsatil-arterialisiert",
-      "en": "normal: continuous | with shunt: pulsatile-arterialised",
-      "fa": "طبیعی: پیوسته | با شانت: پولساتیل-آرتریالیزه"
-    }
+      "de": "Pfortader: relativ kontinuierlich | Lebervene: kardial phasisch / triphasisch",
+      "en": "Portal vein: relatively continuous | hepatic vein: cardiac-phasic / triphasic",
+      "fa": "ورید پورت: نسبتاً پیوسته | ورید کبدی: وابسته به قلب / سه‌فازی"
+    },
+    "source": "Polish Ultrasound Society Standards: portal system and hepatic vessels (2015), https://pmc.ncbi.nlm.nih.gov/articles/PMC4579749/; EASL Clinical Practice Guidelines: Vascular diseases of the liver (2025), doi:10.1016/j.jhep.2025.08.001."
   },
   {
     "id": "avm-06-early-venous-filling",
@@ -3483,6 +3486,7 @@ export const FLASHCARDS = [
   ...DUAL_ENERGY_CT_FLASHCARDS,
   ...MR_PERFUSION_FLASHCARDS,
   ...MRI_ARTIFACT_FLASHCARDS,
+  ...MR_ANGIOGRAPHY_FLASHCARDS,
   ...CT_QUALITY_FLASHCARDS,
   ...CT_PERFUSION_FLASHCARDS,
   ...CT_BASICS_FLASHCARDS,
