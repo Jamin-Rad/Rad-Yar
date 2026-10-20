@@ -124,7 +124,7 @@ export default function FmdPage() {
   const check = { question: { de: C.de.checkQ, en: C.en.checkQ, fa: C.fa.checkQ }, options: C.de.options.map((_, i) => ({ de: C.de.options[i], en: C.en.options[i], fa: C.fa.options[i] })), answer: 0, explanation: { de: C.de.explanation, en: C.en.explanation, fa: C.fa.explanation }, diagramCaption: { de: C.de.diagramCaption, en: C.en.diagramCaption, fa: C.fa.diagramCaption } }
   const goals = C.de.goals.map((_, i) => ({ de: C.de.goals[i], en: C.en.goals[i], fa: C.fa.goals[i] }))
   const summary = C.de.summary.map((_, i) => ({ de: C.de.summary[i], en: C.en.summary[i], fa: C.fa.summary[i] }))
-  return <LessonReferenceShell lessonId="abdomen-fmd" lang={lang} title={{ de: C.de.title, en: C.en.title, fa: C.fa.title }} diagram="renal-anatomy" goals={goals} check={check} summary={summary}>
+  return <LessonReferenceShell lessonId="abdomen-fmd" lang={lang} title={{ de: C.de.title, en: C.en.title, fa: C.fa.title }} diagram="fmd" goals={goals} check={check} summary={summary}>
     <main className={styles.page} lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
       <p className={styles.lead}>{c.intro}</p>
       <section className={styles.section}><h2>{lang === 'fa' ? 'تعریف' : lang === 'de' ? 'Definition' : 'Definition'}</h2><p>{c.definition}</p></section>

@@ -1,0 +1,24 @@
+{
+  "source": "Thorax.pdf supplied by the user",
+  "reuseAuthorization": "The user explicitly authorized reuse of figures contained in the supplied PDFs.",
+  "figures": [
+    {
+      "file": "lobar-cxr.jpg",
+      "pdfPage": 32,
+      "printedPage": 31,
+      "crop": "Two-view right upper-lobe pneumonia radiographs and original caption; surrounding page layout removed."
+    },
+    {
+      "file": "bronchopneumonia.jpg",
+      "pdfPage": 33,
+      "printedPage": 32,
+      "crop": "Radiograph and CT examples of confluent, patchy peribronchial opacities; surrounding explanatory text removed."
+    },
+    {
+      "file": "interstitial-ct.jpg",
+      "pdfPage": 33,
+      "printedPage": 32,
+      "crop": "Two axial CT examples shown with the interstitial pneumonia section."
+    }
+  ]
+}

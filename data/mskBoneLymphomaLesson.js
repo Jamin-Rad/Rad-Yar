@@ -19,7 +19,7 @@ export const MSK_BONE_LYMPHOMA_LESSON = {
       figure: {
         src: '/educational/knochenlymphom/radiograph-source.png',
         width: 410, height: 380,
-        alt: L('دو نمای رادیوگرافی از ضایعه‌ای مختلط لیتیک و اسکلروتیک در تیبیا؛ فلش‌ها به نواحی تغییر استخوان اشاره می‌کنند.', 'Two radiographic views of a mixed lytic-sclerotic tibial lesion; arrows point to areas of bone change.', 'دو نمای رادیوگرافی از ضایعهٔ مختلط لیتیک و اسکلروتیک تیبیا؛ فلش‌ها به نواحی تغییر استخوان اشاره دارند.'),
+        alt: L('Zwei Röntgenaufnahmen einer gemischt lytisch-sklerotischen Läsion der Tibia; Pfeile markieren die Knochenveränderungen.', 'Two radiographic views of a mixed lytic-sclerotic tibial lesion; arrows point to areas of bone change.', 'دو نمای رادیوگرافی از ضایعهٔ مختلط لیتیک و اسکلروتیک تیبیا؛ فلش‌ها به نواحی تغییر استخوان اشاره دارند.'),
         caption: L('Quellbeispiel aus MSK.pdf, S. 100; Radiopaedia-Fall rID 222250 (PDF-Abbildung, vom Nutzer zur Wiederverwendung freigegeben). Das Muster allein sichert die Diagnose nicht.', 'Source example from MSK.pdf, p. 100; Radiopaedia case rID 222250 (PDF figure, reuse authorized by the user). The pattern alone does not establish the diagnosis.', 'نمونهٔ منبع از MSK.pdf، صفحهٔ ۱۰۰؛ کیس Radiopaedia با شناسهٔ rID 222250 (تصویر داخل PDF، استفاده با مجوز کاربر). این الگو به‌تنهایی تشخیص را قطعی نمی‌کند.'),
       },
       rows: [

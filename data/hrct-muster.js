@@ -193,7 +193,7 @@ export const HRCT_LESSONS = {
   },
   'hrct-dichteminderung': {
     id: 'hrct-dichteminderung', slug: 'dichteminderung',
-    sourceReferences: [{ source: 'Thorax.pdf', pages: [24], printedPages: [23] }],
+    sourceReferences: [{ source: 'Thorax.pdf', pages: [24, 25, 26], printedPages: [23, 24, 25] }],
     title: L('HRCT: Dichteminderung', 'HRCT: Decreased Density', 'HRCT: کاهش دانسیته'),
     definition: L('Bulla, Zyste und Kaverne anhand von Wand, Umgebung und Entstehungsmechanismus unterscheiden.', 'Distinguish bulla, cyst and cavity by wall, surrounding lung and mechanism.', 'بولا، کیست و کاویتی را بر اساس دیواره، ریه اطراف و مکانیسم تفکیک کنید.'),
     heroCards: [
@@ -223,7 +223,7 @@ export const HRCT_LESSONS = {
           { title: L('< 4 mm', '<4 mm', '<۴ میلی‌متر'), text: L('Eher benigne, aber kein sicherer Ausschluss einer malignen oder infektiösen Ursache.', 'More often benign, but does not safely exclude malignancy or infection.', 'بیشتر خوش‌خیم، اما بدخیمی یا عفونت را با قطعیت رد نمی‌کند.') },
           { title: L('4–15 mm', '4–15 mm', '۴–۱۵ میلی‌متر'), text: L('Indeterminierter Bereich; unregelmäßige Innenkontur und noduläre Wandanteile erhöhen den Verdacht.', 'Indeterminate range; an irregular inner contour and nodular wall components increase suspicion.', 'محدوده نامعین؛ کانتور داخلی نامنظم و اجزای ندولار دیواره شک را افزایش می‌دهند.') },
           { title: L('> 15 mm', '>15 mm', '>۱۵ میلی‌متر'), text: L('Häufiger maligne, insbesondere bei solitärer dickwandiger irregulärer Kaverne.', 'More often malignant, especially in a solitary thick-walled irregular cavity.', 'اغلب بدخیم‌تر، به‌ویژه کاویتی منفرد با دیواره ضخیم و نامنظم.') },
-          { title: L('Luft-Flüssigkeitsspiegel', 'Air-fluid level', 'سطح هوا-مایع'), text: L('Spricht für flüssigen Inhalt, z. B. Abszess oder superinfizierte Zyste; ist nicht allein diagnosespezifisch.', 'Indicates liquid content, e.g. abscess or infected cyst; not diagnostic by itself.', 'نشان‌دهنده محتوای مایع مانند آبسه یا کیست عفونی است، اما به‌تنهایی اختصاصی نیست.') },
+          { title: L('Luft-Flüssigkeitsspiegel', 'Air-fluid level', 'سطح هوا-مایع'), text: L('Eine dickwandige Kaverne mit Luft-Flüssigkeitsspiegel kann zusammen mit Fieber und Leukozytose an einen Lungenabszess denken lassen; das Muster ist nicht diagnosespezifisch.', 'Fever and leukocytosis together with an air-fluid level in a thick-walled cavity may suggest a lung abscess; the pattern is not diagnostic.', 'سطح هوا-مایع در کاویتی دیواره‌ضخیم، همراه تب و لکوسیتوز، می‌تواند آبسهٔ ریه را مطرح کند؛ این الگو تشخیص‌گذار نیست.') },
         ],
         images: [img('/hrct/dichteminderung/image31.jpeg', 'Irreguläre dickwandige Kaverne', 'Irregular thick-walled cavity', 'کاویتی با دیواره ضخیم و نامنظم')],
       },

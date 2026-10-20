@@ -15,7 +15,7 @@ const routes = [
   ['app/abdomen/gi/untere-gi-blutung/page.js', 'abdomen-lower-gi-bleeding'],
   ['app/abdomen/gi/kolorektales-karzinom/page.js', 'abdomen-kolorektales-karzinom'],
   ['app/thorax/fremdkoerperaspiration/page.js', 'thorax-foreign-body'],
-  ['app/thorax/pneumonie-muster/page.js', 'thorax-pneumonia'],
+  ['app/thorax/pneumonie-muster/page.js', 'pneumonie-muster'],
   ['app/thorax/roentgen-thorax-systematik/page.js', 'thorax-chest-xray'],
   ['app/thorax/tuberkulose-muster/page.js', 'thorax-tuberculosis'],
 ]
@@ -40,9 +40,20 @@ for (const [, id] of routes) if (!ids.includes(id)) {
   failed = true
   console.error(`assessment draft missing for ${id}`)
 }
-if (ids.length !== routes.length) {
+const fmdRoute = fs.readFileSync(path.join(root, 'app/abdomen/gefaesse/fmd/page.js'), 'utf8')
+const sharedDiagram = fs.readFileSync(path.join(root, 'components/ClinicalPatternDiagram.jsx'), 'utf8')
+if (!fmdRoute.includes('diagram="fmd"') || !sharedDiagram.includes("variant === 'fmd'") || !sharedDiagram.includes('multifocal FMD')) {
   failed = true
-  console.error(`assessment draft count ${ids.length}; expected ${routes.length}`)
+  console.error('FMD route header must use the dedicated renal-artery pattern diagram')
+}
+
+const shell = fs.readFileSync(path.join(root, 'components/LessonReferenceShell.jsx'), 'utf8')
+if (!shell.includes("const SECTION_IDS = ['content', 'self-check', 'take-home']")
+  || !shell.includes("const CHAPTERS = ['content', 'self-check', 'take-home']")
+  || !shell.includes("useState('content')")
+  || shell.includes('id="lesson-start"')) {
+  failed = true
+  console.error('Shared lesson shell must start at its first real chapter and track only rendered chapters')
 }
 
 if (failed) process.exit(1)

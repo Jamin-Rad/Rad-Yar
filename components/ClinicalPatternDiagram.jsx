@@ -59,6 +59,24 @@ function Wilms({ lang }) {
   </g>
 }
 
+function FibromuscularDysplasia({ lang }) {
+  const labels = {
+    de: { artery: 'Nierenarterie', pattern: 'multifokale FMD · „Perlschnur“' },
+    en: { artery: 'renal artery', pattern: 'multifocal FMD · “string of beads”' },
+    fa: { artery: 'شریان کلیوی', pattern: 'FMD چندکانونی · نمای «رشته مروارید»' },
+  }[lang] || { artery: 'renal artery', pattern: 'multifocal FMD · “string of beads”' }
+  return <g>
+    <path d="M86 61v116" fill="none" stroke={PALETTE.ink} strokeWidth="24" strokeLinecap="round" />
+    <path d="M86 115h51" fill="none" stroke={PALETTE.ink} strokeWidth="16" strokeLinecap="round" />
+    <path d="M137 115c20 0 16-22 34-22s15 44 34 44 16-44 35-44 15 44 34 44 15-22 34-22" fill="none" stroke={PALETTE.blue} strokeWidth="13" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M308 115h25" fill="none" stroke={PALETTE.blue} strokeWidth="13" strokeLinecap="round" />
+    <path d="M342 81c-23-9-43 12-39 37 4 25 24 43 43 29 13-10 11-25 7-37-4-12 5-24-11-29Z" fill="#e9b6a6" stroke={PALETTE.ink} strokeWidth="3" />
+    <path d="M339 95c-12-3-21 10-18 23 3 12 12 18 20 10 5-5 4-12 2-18-2-7 4-14-4-15Z" fill="#f7d7ce" />
+    <text x="202" y="184" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{labels.artery}</text>
+    <text x="202" y="210" textAnchor="middle" fill={PALETTE.plum} fontSize="12" fontWeight="700">{labels.pattern}</text>
+  </g>
+}
+
 function Airway({ variant, lang }) {
   const labels = {
     de: { foreignBody: 'Obstruktion und Air trapping', xray: 'Projektion und Bildqualität' },
@@ -199,6 +217,7 @@ export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de',
       variant === 'pneumonia' || variant === 'tuberculosis' || variant === 'hrct' ? <Lungs variant={variant} lang={lang}/> :
       variant === 'cystic-pancreas' || variant === 'pdac' || variant === 'pnet' ? <Pancreas variant={variant} lang={lang}/> :
       variant === 'wilms-tumour' ? <Wilms lang={lang}/> :
+      variant === 'fmd' ? <FibromuscularDysplasia lang={lang}/> :
       variant === 'renal-mass' || variant === 'renal-anatomy' ? <Kidney variant={variant} lang={lang}/> :
       variant === 'foreign-body' || variant === 'chest-xray' ? <Airway variant={variant} lang={lang}/> :
       variant === 'bowel' ? <Bowel lang={lang}/> :

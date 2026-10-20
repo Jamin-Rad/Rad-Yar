@@ -469,6 +469,7 @@ export const CURRICULUM = [
         title: { de: '5. Infektionen der Lunge', en: '5. Pulmonary Infections', fa: '۵. عفونت‌های ریه' },
         icon: '🦠',
         themen: [
+          { id: 'pneumonie-muster', title: { de: 'Pneumoniemuster', en: 'Pneumonia Patterns', fa: 'الگوهای پنومونی' }, tags: ['Rö','CT'], diff: 2, link: '/thorax/pneumonie-muster' },
           { id: 'bakterielle-pneumonie', title: { de: 'Bakterielle Pneumonie', en: 'Bacterial Pneumonia', fa: 'پنومونی باکتریال' }, tags: ['Rö','CT'], diff: 1, link: '/thorax/pneumonie-muster' },
           { id: 'virale-pneumonie-covid', title: { de: 'Virale Pneumonie / COVID-19', en: 'Viral Pneumonia / COVID-19', fa: 'پنومونی ویروسی / کووید-۱۹' }, tags: ['CT'], diff: 2, link: '/thorax/pneumonie-muster' },
           { id: 'atypische-pneumonie', title: { de: 'Atypische Pneumonie', en: 'Atypical Pneumonia', fa: 'پنومونی آتیپیک' }, tags: ['CT'], diff: 2, link: '/thorax/pneumonie-muster' },

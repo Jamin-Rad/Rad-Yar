@@ -9,14 +9,14 @@ import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress
 import { abdomenThoraxAssessmentDrafts } from '@/data/abdomenThoraxAssessmentDrafts'
 import styles from './LessonReferenceShell.module.css'
 
-const SECTION_IDS = ['start', 'content', 'self-check', 'take-home']
+const SECTION_IDS = ['content', 'self-check', 'take-home']
 const copy = {
   de: { home:'RadYar', subject:'Lernbereich', learningPath:'Lernpfad', goals:'Lernziele', content:'Kerninhalt', selfCheck:'Selbstprüfung', summary:'Take-home-Regeln', read:'gelesen', mark:'Alle Kapitel als gelesen markieren', marked:'Als gelesen markiert', next:'Weiterlernen', allRead:'Alle Kapitel gelesen', startQuiz:'Quiz öffnen', flashcards:'Flashcards', choose:'Wähle die beste Antwort.', correct:'Richtig. ', incorrect:'Noch einmal prüfen. ', reveal:'Antwort auswählen, um die Begründung zu sehen.' },
   en: { home:'RadYar', subject:'Learning area', learningPath:'Learning path', goals:'Learning goals', content:'Lesson content', selfCheck:'Self-check', summary:'Take-home rules', read:'read', mark:'Mark all chapters as read', marked:'Marked as read', next:'Continue', allRead:'All chapters read', startQuiz:'Open quiz', flashcards:'Flashcards', choose:'Choose the best answer.', correct:'Correct. ', incorrect:'Review this once more. ', reveal:'Select an answer to see the explanation.' },
   fa: { home:'رادیار', subject:'بخش یادگیری', learningPath:'مسیر یادگیری', goals:'هدف‌های یادگیری', content:'محتوای درس', selfCheck:'خودآزمایی', summary:'نکته‌های پایانی', read:'خوانده‌شده', mark:'علامت‌گذاری همه فصل‌ها به‌عنوان خوانده‌شده', marked:'علامت‌گذاری شد', next:'ادامه', allRead:'همه فصل‌ها خوانده شده‌اند', startQuiz:'بازکردن آزمون', flashcards:'فلش‌کارت‌ها', choose:'بهترین پاسخ را انتخاب کنید.', correct:'درست است. ', incorrect:'یک‌بار دیگر بررسی کنید. ', reveal:'برای دیدن توضیح، یک پاسخ را انتخاب کنید.' },
 }
 const pick = (value, lang) => typeof value === 'string' ? value : value?.[lang] ?? value?.de ?? ''
-const CHAPTERS = ['start', 'content', 'self-check', 'take-home']
+const CHAPTERS = ['content', 'self-check', 'take-home']
 
 export default function LessonReferenceShell({ lang = 'de', lessonId, title, diagram, heroVisual, goals, check, summary, copy: lessonCopy, quizHref, flashcardsHref, children }) {
   const t = copy[lang] || copy.de
@@ -41,7 +41,7 @@ export default function LessonReferenceShell({ lang = 'de', lessonId, title, dia
     explanation: { de: 'Die Diagnose entsteht aus dem Gesamtmuster, der Untersuchungsqualität und dem klinischen Kontext.', en: 'Interpretation combines the overall pattern, examination quality and clinical context.', fa: 'تفسیر از ترکیب الگوی کلی، کیفیت بررسی و زمینه بالینی به‌دست می‌آید.' },
     diagramCaption: { de: 'Schematische Lernhilfe; keine Patientendarstellung.', en: 'Teaching schematic; not a patient image.', fa: 'نمای شماتیک آموزشی؛ تصویر بیمار نیست.' },
   })
-  const [openId, setOpenId] = useState('start')
+  const [openId, setOpenId] = useState('content')
   const [picked, setPicked] = useState(null)
   const [readSections, setReadSections] = usePersistedSectionProgress(`ref-${lessonId}`, SECTION_IDS)
   const activeIndex = useMemo(() => Math.max(0, CHAPTERS.indexOf(openId)), [openId])
@@ -84,9 +84,8 @@ export default function LessonReferenceShell({ lang = 'de', lessonId, title, dia
       </div>
     </header>
     <div className={styles.layout}>
-      <aside className={styles.sidebar}><h2>{t.learningPath}</h2><nav aria-label={t.learningPath}>{CHAPTERS.map(id => <button type="button" key={id} className={openId === id ? styles.active : ''} aria-current={openId === id ? 'location' : undefined} onClick={() => select(id)}><span className={styles.dot} aria-hidden="true">{readSections.has(id) ? '✓' : '•'}</span>{id === 'content' ? pick(lessonContentTitle, lang) : t[id === 'start' ? 'goals' : id === 'self-check' ? 'selfCheck' : 'summary']}</button>)}</nav></aside>
+      <aside className={styles.sidebar}><h2>{t.learningPath}</h2><nav aria-label={t.learningPath}>{CHAPTERS.map(id => <button type="button" key={id} className={openId === id ? styles.active : ''} aria-current={openId === id ? 'location' : undefined} onClick={() => select(id)}><span className={styles.dot} aria-hidden="true">{readSections.has(id) ? '✓' : '•'}</span>{id === 'content' ? pick(lessonContentTitle, lang) : t[id === 'self-check' ? 'selfCheck' : 'summary']}</button>)}</nav></aside>
       <article className={styles.chapters}>
-        <section id="lesson-start" className={styles.chapter}><h2><button type="button" aria-expanded={openId === 'start'} aria-controls="lesson-start-panel" onClick={() => select('start')}>{t.goals}<span>{openId === 'start' ? '−' : '+'}</span></button></h2><div id="lesson-start-panel" hidden={openId !== 'start'} className={styles.panel}><button type="button" aria-pressed={readSections.has('start')} onClick={() => markRead('start')}>{readSections.has('start') ? t.marked : t.mark}</button></div></section>
         <section id="lesson-content" className={styles.chapter}><h2>{pick(lessonContentTitle, lang)}</h2><div id="lesson-content-panel" className={styles.panel}>{legacyChildren}<button type="button" aria-pressed={readSections.has('content')} onClick={() => markRead('content')}>{readSections.has('content') ? t.marked : t.mark}</button></div></section>
         <section id="lesson-self-check" className={styles.chapter}><h2><button type="button" aria-expanded={openId === 'self-check'} aria-controls="lesson-self-check-panel" onClick={() => select('self-check')}>{t.selfCheck}<span>{openId === 'self-check' ? '−' : '+'}</span></button></h2><div id="lesson-self-check-panel" hidden={openId !== 'self-check'} className={styles.panel}><p>{pick(lessonCheck.question, lang)}</p><fieldset><legend>{t.choose}</legend>{lessonCheck.options.map((option, index) => <label key={index} className={picked === index ? styles.selected : ''}><input type="radio" name={`self-check-${lessonId}`} checked={picked === index} onChange={() => setPicked(index)} />{pick(option, lang)}</label>)}</fieldset>{picked === null ? <p className={styles.feedback}>{t.reveal}</p> : <div className={`${styles.feedback} ${picked === lessonCheck.answer ? styles.correct : styles.incorrect}`} role="status"><strong>{picked === lessonCheck.answer ? t.correct : t.incorrect}</strong>{pick(lessonCheck.explanation, lang)}</div>}<button type="button" aria-pressed={readSections.has('self-check')} onClick={() => markRead('self-check')}>{readSections.has('self-check') ? t.marked : t.mark}</button></div></section>
         <section id="lesson-take-home" className={`${styles.chapter} ${styles.takeHome}`}><h2><button type="button" aria-expanded={openId === 'take-home'} aria-controls="lesson-take-home-panel" onClick={() => select('take-home')}>{t.summary}<span>{openId === 'take-home' ? '−' : '+'}</span></button></h2><div id="lesson-take-home-panel" hidden={openId !== 'take-home'} className={styles.panel}><ol>{lessonSummary.map((rule, index) => <li key={index}>{pick(rule, lang)}</li>)}</ol><button type="button" aria-pressed={readSections.has('take-home')} onClick={() => markRead('take-home')}>{readSections.has('take-home') ? t.marked : t.mark}</button></div></section>
