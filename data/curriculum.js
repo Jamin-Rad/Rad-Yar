@@ -427,7 +427,7 @@ export const CURRICULUM = [
         title: { de: '3. Lungenparenchymerkrankungen', en: '3. Pulmonary Parenchymal Diseases', fa: '۳. بیماری‌های پارانشیم ریه' },
         icon: '🫁',
         themen: [
-          { id: 'uip-ipf', title: { de: 'UIP / Idiopathische Lungenfibrose (IPF)', en: 'UIP / Idiopathic Pulmonary Fibrosis (IPF)', fa: 'UIP / فیبروز ریوی ایدیوپاتیک (IPF)' }, group: ['Interstitielle Lungenerkrankungen (ILD)'], tags: ['CT'], diff: 3 },
+          { id: 'uip-ipf', title: { de: 'UIP / Idiopathische Lungenfibrose (IPF)', en: 'UIP / Idiopathic Pulmonary Fibrosis (IPF)', fa: 'UIP / فیبروز ریوی ایدیوپاتیک (IPF)' }, group: ['Interstitielle Lungenerkrankungen (ILD)'], tags: ['CT'], diff: 3, link: '/thorax/uip-ipf', mcqLink: '/ueben/quiz?fach=thorax&n=1&themen=uip-ipf', flashcardLink: '/flashcards/uip-ipf', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'nsip', title: { de: 'NSIP', en: 'NSIP', fa: 'NSIP' }, group: ['Interstitielle Lungenerkrankungen (ILD)'], tags: ['CT'], diff: 3 },
           { id: 'cop', title: { de: 'Kryptogen organisierende Pneumonie (COP)', en: 'Cryptogenic Organizing Pneumonia (COP)', fa: 'پنومونی سازمان‌یابنده کریپتوژنیک (COP)' }, group: ['Interstitielle Lungenerkrankungen (ILD)'], tags: ['CT'], diff: 3 },
           { id: 'hypersensitivitaetspneumonitis', title: { de: 'Hypersensitivitätspneumonitis', en: 'Hypersensitivity Pneumonitis', fa: 'پنومونیت ازدیاد حساسیت' }, group: ['Interstitielle Lungenerkrankungen (ILD)'], tags: ['CT'], diff: 3 },
