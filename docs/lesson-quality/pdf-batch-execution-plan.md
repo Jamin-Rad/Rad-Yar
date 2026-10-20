@@ -102,3 +102,7 @@
 ## Teilbatch B-1: سونوگرافی پایه
 
 مسیر `/technik/sonographie/grundlagen` و ledger مستقل [QA و پوشش منبع](technik-sonographie-review.md) اصول صوت/آرتیفکت و Doppler/Duplex را پوشش می‌دهند. مسیر `/technik/kontrastmittel/ultraschall` اکنون CEUS صفحات ۱۳۳–۱۳۴ را با ترجمه، MCQ و فلش‌کارت پوشش می‌دهد؛ review مستقل محتوا و retest اصلاحات بسته شد، اما runtime/browser و build BLOCKED هستند. ادامهٔ Technik.pdf و همهٔ batchهای دیگر کامل نشده‌اند.
+
+## Teilbatch CT-Qualität: Technik.pdf pp.54–55
+
+`/technik/grundlagen#ct`, Curriculum-ID `ct-bildqualitaet-artefakte`: zwei quellengestützte Lernblöcke in DE/EN/FA, konzeptionelle Partialvolumen-Skizze, zentrales MCQ und zwei Flashcards. Der vereinfachte CT-vs-Projektionspixelvergleich sowie unqualifizierte kV-/Pitch-/Dosisregeln sind ausgelassen; keine universellen Protokollwerte. Focused SSR/Registry-Test, MCQ-Audit, esbuild und diff-check sind PASS. Independent review SRC/EDU/VIS/LNG/ASM/REV PASS nach Ledger-Fix; Browser-UX ist mangels realem Browsernachweis BLOCKED. Coverage und Quellen: [Ledger](technik-ct-image-quality-p54-p55.md). Fachärztliche Freigabe und Veröffentlichung bleiben offen.

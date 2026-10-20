@@ -16,6 +16,11 @@ const labelSet = {
 }
 
 const checks = {
+  ctQuality: {
+    de: { title: 'Selbstcheck: Stufenartefakt oder Strahlaufhärtung?', question: 'In einer koronaren MPR wirken glatte Knochenränder treppenförmig. Welche Ursache passt am besten?', options: ['Grobe z-Abtastung der Quelldaten.', 'Strahlaufhärtung zwischen dichten Strukturen.', 'Ein Ring durch fehlerhafte Detektorkalibrierung.'], answer: 0, feedback: ['Richtig. Eine grobe z-Abtastung kann in multiplanaren Reformationen stufige Kanten erzeugen.', 'Strahlaufhärtung zeigt typischerweise dunkle Bänder oder Streifen an dichten Materialien.', 'Ein Kalibrierungs-/Detektorring erscheint konzentrisch, nicht als stufiger Rand in einer MPR.'] },
+    en: { title: 'Self-check: stair-step or beam hardening?', question: 'Smooth bone edges look stepped on a coronal MPR. Which cause best fits?', options: ['Coarse z-sampling in the source data.', 'Beam hardening between dense structures.', 'A ring from faulty detector calibration.'], answer: 0, feedback: ['Correct. Coarse z-sampling can create stepped edges on multiplanar reformats.', 'Beam hardening typically appears as dark bands or streaks around dense materials.', 'A detector/calibration ring is concentric, not a stepped edge on an MPR.'] },
+    fa: { title: 'خودآزمایی: آرتیفکت پله‌ای یا سخت‌شدن پرتو؟', question: 'لبه‌های صاف استخوان در MPR کرونال پله‌پله دیده می‌شوند. کدام علت مناسب‌تر است؟', options: ['نمونه‌برداری درشت محور z در دادهٔ منبع.', 'سخت‌شدن پرتو بین ساختارهای متراکم.', 'حلقهٔ ناشی از کالیبراسیون نادرست آشکارساز.'], answer: 0, feedback: ['درست است. نمونه‌برداری درشت محور z می‌تواند در بازسازی چندصفحه‌ای لبه‌های پله‌ای بسازد.', 'سخت‌شدن پرتو معمولاً به‌صورت نوار یا رگهٔ تیره کنار مواد متراکم دیده می‌شود.', 'حلقهٔ آشکارساز/کالیبراسیون هم‌مرکز است، نه لبهٔ پله‌ای در MPR.'] },
+  },
   perfusion: {
     de: { title: 'Selbstcheck: T1- oder T2*-Antwort?', question: 'Während eines Gadolinium-Bolus wird die Perfusion dynamisch aufgenommen. Welche Signalantwort passt typischerweise?', options: ['T1-Signal steigt; T2*-Signal fällt vorübergehend.', 'T1- und T2*-Signal steigen immer gemeinsam.', 'Nur CBV wird gemessen; eine Signaländerung ist nicht erforderlich.'], answer: 0, feedback: ['Richtig. T1-Verkürzung kann das Signal steigern; die Suszeptibilitätswirkung bei T2* senkt es während der Boluspassage typischerweise.', 'Die typische Richtung ist unterschiedlich: T1-Signalanstieg gegenüber vorübergehendem T2*-Signalabfall.', 'Dynamische Signaländerungen sind die Grundlage; daraus werden je nach Methode verschiedene Parameter abgeleitet.'] },
     en: { title: 'Self-check: T1 or T2* response?', question: 'Perfusion is sampled dynamically during a gadolinium bolus. Which signal response is typical?', options: ['T1 signal rises; T2* signal transiently falls.', 'T1 and T2* signals always rise together.', 'Only CBV is measured; signal change is unnecessary.'], answer: 0, feedback: ['Correct. T1 shortening can raise signal; susceptibility in T2* typically lowers it during bolus passage.', 'The typical directions differ: T1 signal rises while T2* signal transiently falls.', 'Dynamic signal change is the basis; different metrics are derived depending on the method.'] },
@@ -181,6 +186,7 @@ export default function TechnikGrundlagenStandardPage() {
         {section.teachingBlocks?.map(block=><section key={block.id} aria-labelledby={`${block.id}-title`} style={{marginTop:30}}>
           <h3 id={`${block.id}-title`}>{t(block.title)}</h3><p>{t(block.lead)}</p>
           <div className={styles.tableWrap}><table className={styles.table}><thead><tr><th>{t(L('Schritt / Begriff','Step / concept','گام / مفهوم'))}</th><th>{t(L('Was geschieht?','What happens?','چه رخ می‌دهد؟'))}</th></tr></thead><tbody>{block.rows.map((row,i)=><tr key={i}>{row.map((cell,j)=><td key={j}>{t(cell)}</td>)}</tr>)}</tbody></table></div>
+          {block.crossReference?<p><a href={block.crossReference.href}>{t(block.crossReference.label)}</a></p>:null}
           {block.visual?<div role="group" aria-label={t(block.visual.caption)} style={{margin:'22px 0',padding:14,border:'1px solid var(--border)',borderRadius:16,background:'var(--surface-soft)'}}>
             {block.visual.src?<>
               {block.visual.yAxis||block.visual.xAxis?<div style={{direction:'ltr',display:'grid',gridTemplateColumns:'minmax(54px,auto) minmax(0,1fr)',alignItems:'center',gap:8}}>
@@ -201,6 +207,7 @@ export default function TechnikGrundlagenStandardPage() {
         {section.id === 'leber-mrt-protokoll' ? <><LiverProtocolFigure lang={lang}/><RetrievalCheck kind="liverProtocol" lang={lang}/></> : null}
         {section.id === 'mrcp-protokoll' ? <RetrievalCheck kind="mrcp" lang={lang}/> : null}
         {section.id === 'mrt-sicherheit' ? <MRIArtifactKnowledgeCheck lang={lang}/> : null}
+        {section.id === 'ct' ? <RetrievalCheck kind="ctQuality" lang={lang}/> : null}
         {section.id === 'atom' ? <AtomKnowledgeCheck lang={lang}/> : null}
         {section.note?<aside className={styles.callout}><strong>{t(L('Quellenhinweis','Source limitation','محدودیت منبع'))}</strong><p>{t(section.note)}</p></aside>:null}
         {section.id === 'wirkung' ? <RetrievalCheck kind="effects" lang={lang}/> : null}

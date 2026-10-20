@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" role="img" aria-labelledby="title desc">
+  <title id="title">Partial-volume concept</title>
+  <desc id="desc">A voxel crossing a boundary averages two material values; a smaller voxel contains less of the mixed boundary.</desc>
+  <rect width="900" height="330" rx="24" fill="#f5f8fa"/>
+  <rect x="45" y="70" width="360" height="185" rx="10" fill="#dceefa"/>
+  <rect x="225" y="70" width="180" height="185" rx="0" fill="#e9dfcf"/>
+  <path d="M225 70v185" stroke="#344b5e" stroke-width="3" stroke-dasharray="8 7"/>
+  <rect x="168" y="122" width="114" height="82" fill="#ffffff" fill-opacity=".35" stroke="#9b4a72" stroke-width="5"/>
+  <rect x="495" y="70" width="360" height="185" rx="10" fill="#dceefa"/>
+  <rect x="675" y="70" width="180" height="185" fill="#e9dfcf"/>
+  <path d="M675 70v185" stroke="#344b5e" stroke-width="3" stroke-dasharray="8 7"/>
+  <rect x="657" y="132" width="36" height="62" fill="#ffffff" fill-opacity=".45" stroke="#9b4a72" stroke-width="5"/>
+  <path d="M432 162h35m-12-12 12 12-12 12" fill="none" stroke="#55748a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
