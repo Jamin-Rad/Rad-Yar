@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
+  <title id="title">Vancouver classification regions</title>
+  <desc id="desc">Schematic femur with hip prosthesis. AG marks the greater trochanter on the lateral proximal projection; AL marks the lesser trochanter at the medial neck-shaft junction. B is around the stem and C is below its tip.</desc>
+  <defs>
+    <linearGradient id="bone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4dfb8"/><stop offset="1" stop-color="#d2a96c"/></linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5fbfc"/><stop offset=".5" stop-color="#91a8b2"/><stop offset="1" stop-color="#d9e6e8"/></linearGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.4"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#12252d" flood-opacity=".16"/></filter>
+  </defs>
+  <rect width="720" height="360" rx="28" fill="#f3f7f5"/>
+  <g filter="url(#shadow)">
+    <path d="M232 76c-22-8-43 8-44 29-1 16 9 27 24 33l33 20 42 22 38 122c6 18 26 27 43 20 16-7 23-23 18-40l-41-133 28-67c8-19-3-41-22-47-18-6-36 4-43 22l-15 38-28-18-30-12c5-16 1-34-13-43z" fill="url(#bone)" stroke="#b88e59" stroke-width="3"/>
+    <path d="M206 103c-5-12 3-25 16-27 11-2 23 7 23 18 0 10-8 17-18 20-9 3-17-1-21-11z" fill="url(#metal)" stroke="#607983" stroke-width="3"/>
+    <path d="M232 121 298 154 334 245" fill="none" stroke="url(#metal)" stroke-width="18" stroke-linecap="round"/>
+    <path d="M224 117 296 151 333 245" fill="none" stroke="#718a93" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g font-family="Arial,sans-serif" font-weight="700" font-size="21" text-anchor="middle">
+    <path d="M337 101 449 82" stroke="#16857b" stroke-width="3"/><circle cx="337" cy="101" r="6" fill="#16857b"/><rect x="448" y="59" width="80" height="42" rx="20" fill="#d6f0e9"/><text x="488" y="87" fill="#176c68">AG</text>
+    <path d="M280 172h-100" stroke="#16857b" stroke-width="3"/><circle cx="280" cy="172" r="6" fill="#16857b"/><rect x="96" y="151" width="82" height="42" rx="20" fill="#d6f0e9"/><text x="137" y="179" fill="#176c68">AL</text>
+    <path d="M346 208h117" stroke="#b34f62" stroke-width="3"/><circle cx="346" cy="208" r="6" fill="#b34f62"/><rect x="462" y="187" width="80" height="42" rx="20" fill="#f8dfe2"/><text x="502" y="215" fill="#8f3348">B</text>
+    <path d="M371 289h114" stroke="#637e89" stroke-width="3"/><circle cx="371" cy="289" r="6" fill="#637e89"/><rect x="482" y="268" width="80" height="42" rx="20" fill="#e1e9eb"/><text x="522" y="296" fill="#435c66">C</text>
+  </g>
+</svg>
