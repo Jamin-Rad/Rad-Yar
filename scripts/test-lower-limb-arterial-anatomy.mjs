@@ -45,7 +45,12 @@ assert.match(data.chapters[2].rows[1][1].en, /plantar arch/)
 const svg = fs.readFileSync('public/educational/lower-limb-arterial-pathway.svg', 'utf8')
 assert.equal(new DOMParser().parseFromString(svg, 'image/svg+xml').getElementsByTagName('parsererror').length, 0)
 assert.match(svg, /non-diagnostic/i)
-assert.equal((svg.match(/<circle /g) || []).length, 11)
+assert.equal((svg.match(/<circle /g) || []).length, 12)
+for (const id of ['posterior-to-medial-plantar', 'posterior-to-lateral-plantar', 'lateral-plantar-to-arch', 'dorsalis-pedis-deep-plantar-connection']) {
+  assert.ok(svg.includes(`id="${id}"`), `diagram explicitly shows ${id}`)
+}
+assert.match(svg, /id="dorsalis-pedis-deep-plantar-connection"[^>]*stroke-dasharray=/, 'dorsalis pedis deep plantar connection is dashed')
+assert.ok(!svg.includes('medial and lateral plantar arteries</text>'), 'the two plantar arteries are not collapsed into a shared arch node')
 const heroSvg = fs.readFileSync('public/educational/lower-limb-arterial-hero.svg', 'utf8')
 assert.equal(new DOMParser().parseFromString(heroSvg, 'image/svg+xml').getElementsByTagName('parsererror').length, 0)
 for (const locale of ['de', 'en', 'fa']) {
@@ -55,6 +60,7 @@ for (const locale of ['de', 'en', 'fa']) {
   assert.ok(html.includes(escape(data.title[locale])), `${locale}: lesson title`)
   assert.ok(html.includes(escape(data.alt[locale])) && html.includes('/educational/lower-limb-arterial-hero.svg'), `${locale}: hero and translated alt`)
   assert.ok(html.includes(escape(data.diagramAlt[locale])) && html.includes('/educational/lower-limb-arterial-pathway.svg'), `${locale}: map and translated alt`)
+  assert.ok(html.includes(escape(locale === 'de' ? 'nur die laterale bildet den Hauptanteil des Plantarbogens' : locale === 'en' ? 'only the lateral branch forms most of the plantar arch' : 'فقط شاخهٔ خارجی بخش عمدهٔ قوس پلانتار را می‌سازد')), `${locale}: lateral branch and arch relation are explained`)
   assert.ok(html.includes(escape(data.intro.text[locale])), `${locale}: opening text`)
   for (const chapter of data.chapters) {
     assert.ok(html.includes(`id="${chapter.id}"`) && html.includes(escape(chapter.title[locale])), `${locale}: chapter ${chapter.id}`)

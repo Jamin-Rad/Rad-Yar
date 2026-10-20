@@ -33,14 +33,15 @@ function ArterialMap({ lang }) {
     L('A. poplitea', 'Popliteal artery', 'شریان پوپلیته‌آل'),
     L('Truncus tibiofibularis', 'Tibioperoneal trunk', 'تنهٔ تیبیوپروونئال'),
     L('A. tibialis posterior', 'Posterior tibial artery', 'شریان تیبیال خلفی'),
-    L('Aa. plantares medialis und lateralis', 'Medial and lateral plantar arteries', 'شریان‌های پلانتار داخلی و خارجی'),
+    L('A. plantaris medialis', 'Medial plantar artery', 'شریان پلانتار داخلی'),
     L('A. fibularis (peronea)', 'Fibular (peroneal) artery', 'شریان فیبولار (پروونئال)'),
     L('A. tibialis anterior → A. dorsalis pedis', 'Anterior tibial → dorsalis pedis artery', 'تیبیال قدامی ← دورسالیس پدیس'),
+    L('A. plantaris lateralis', 'Lateral plantar artery', 'شریان پلانتار خارجی'),
     L('Arcus plantaris', 'Plantar arch', 'قوس پلانتار'),
   ]
   return <figure className={styles.diagram}>
     <img src={lesson.diagram} alt={pick(lesson.diagramAlt, lang)} />
-    <figcaption>{pick(L('Vereinfachter Verlauf mit hervorgehobener Aufzweigung unterhalb des Knies und getrennten dorsalen / plantaren Wegen. Nicht maßstabsgetreu und keine Patientenangiographie.', 'Simplified pathway highlighting the below-knee branching pattern and separate dorsal and plantar routes. Not to scale and not a patient angiogram.', 'مسیر ساده‌شده با تأکید بر انشعاب زیر زانو و مسیرهای جداگانهٔ پشتی و کف‌پایی. بدون مقیاس واقعی و فاقد آنژیوگرافی بیمار.'), lang)}</figcaption>
+    <figcaption>{pick(L('Vereinfachter Verlauf: Die A. tibialis posterior teilt sich in mediale und laterale Plantararterie; nur die laterale bildet den Hauptanteil des Plantarbogens. Die gestrichelte tiefe Verbindung kommt von der A. dorsalis pedis. Nicht maßstabsgetreu und keine Patientenangiographie.', 'Simplified pathway: the posterior tibial artery divides into medial and lateral plantar arteries; only the lateral branch forms most of the plantar arch. The dashed deep connection comes from dorsalis pedis. Not to scale and not a patient angiogram.', 'مسیر ساده‌شده: شریان تیبیال خلفی به شریان‌های پلانتار داخلی و خارجی تقسیم می‌شود؛ فقط شاخهٔ خارجی بخش عمدهٔ قوس پلانتار را می‌سازد. اتصال عمقی خط‌چین از دورسالیس پدیس می‌آید. بدون مقیاس واقعی و فاقد آنژیوگرافی بیمار.'), lang)}</figcaption>
     <ol className={styles.mapKey}>{numbered.map((v, i) => <li key={i}><span aria-hidden="true">{i + 1}</span>{pick(v, lang)}</li>)}</ol>
   </figure>
 }

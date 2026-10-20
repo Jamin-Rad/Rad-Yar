@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 680" role="img" aria-labelledby="title desc">
   <title id="title">Lower-limb arterial pathway schematic</title>
-  <desc id="desc">Non-diagnostic branching map from the external iliac and femoral arteries through the popliteal artery to anterior, posterior and fibular branches and the dorsal and plantar foot pathways.</desc>
+  <desc id="desc">Non-diagnostic branching map from the external iliac and femoral arteries through the popliteal artery to anterior, posterior and fibular branches. The posterior tibial artery divides into separate medial and lateral plantar arteries; the lateral plantar artery forms most of the plantar arch, which also receives the deep plantar connection from dorsalis pedis.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f9fb"/><stop offset="1" stop-color="#e7f1f5"/></linearGradient>
     <marker id="arrow-main" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#a34d7b"/></marker>
@@ -15,17 +15,19 @@
     <path d="M462 352 630 398v54" stroke="#2784a5" marker-end="url(#arrow-dorsal)"/>
     <path d="M450 370v48" stroke="#a34d7b" marker-end="url(#arrow-main)"/>
     <path d="M438 435 292 485" stroke="#39846a" marker-end="url(#arrow-fibular)"/>
-    <path d="M462 438v52m0 25v28m0 25v37" stroke="#7557aa" marker-end="url(#arrow-plantar)"/>
-    <path d="M630 488v112q0 18-18 18H480" stroke="#2784a5" stroke-dasharray="10 12" stroke-width="7" marker-end="url(#arrow-dorsal)"/>
+    <path id="posterior-to-medial-plantar" d="M450 538 370 572" stroke="#7557aa" marker-end="url(#arrow-plantar)"/>
+    <path id="posterior-to-lateral-plantar" d="M450 538 510 572v48q0 12-12 12h-20" stroke="#7557aa" marker-end="url(#arrow-plantar)"/>
+    <path id="lateral-plantar-to-arch" d="M488 632H480" stroke="#7557aa" marker-end="url(#arrow-plantar)"/>
+    <path id="dorsalis-pedis-deep-plantar-connection" d="M630 488v132q0 24-24 24H480" stroke="#2784a5" stroke-dasharray="10 12" stroke-width="7" marker-end="url(#arrow-dorsal)"/>
   </g>
   <g font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="middle" dominant-baseline="central">
     <g fill="#fff" stroke="#a34d7b" stroke-width="4"><circle cx="450" cy="60" r="23"/><circle cx="450" cy="145" r="23"/><circle cx="270" cy="260" r="23"/><circle cx="450" cy="215" r="23"/><circle cx="450" cy="340" r="23"/><circle cx="450" cy="420" r="23"/></g>
     <g fill="#fff" stroke="#2784a5" stroke-width="4"><circle cx="630" cy="465" r="23"/></g>
-    <g fill="#fff" stroke="#7557aa" stroke-width="4"><circle cx="450" cy="515" r="23"/><circle cx="450" cy="570" r="23"/><circle cx="450" cy="625" r="23"/></g>
+    <g fill="#fff" stroke="#7557aa" stroke-width="4"><circle cx="450" cy="515" r="23"/><circle cx="370" cy="580" r="23"/><circle cx="510" cy="580" r="23"/><circle cx="450" cy="645" r="23"/></g>
     <g fill="#fff" stroke="#39846a" stroke-width="4"><circle cx="270" cy="492" r="23"/></g>
     <g fill="#315d73">
       <text x="450" y="60">1</text><text x="450" y="145">2</text><text x="270" y="260">3</text><text x="450" y="215">4</text>
-      <text x="450" y="340">5</text><text x="450" y="420">6</text><text x="630" y="465">10</text><text x="450" y="510">7</text><text x="270" y="492">9</text><text x="450" y="570">8</text><text x="450" y="625">11</text>
+      <text x="450" y="340">5</text><text x="450" y="420">6</text><text x="630" y="465">10</text><text x="450" y="510">7</text><text x="270" y="492">9</text><text x="370" y="580">8</text><text x="510" y="580">11</text><text x="450" y="645">12</text>
     </g>
   </g>
 </svg>
