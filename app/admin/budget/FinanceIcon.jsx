@@ -13,6 +13,7 @@ export default function FinanceIcon({ name, ...props }) {
     heart: <><path d="M20.5 4.5a5 5 0 0 0-7 0L12 6l-1.5-1.5a5 5 0 0 0-7 7L12 20l8.5-8.5a5 5 0 0 0 0-7Z" /></>,
     company: <><rect x="3" y="7" width="18" height="14" rx="2" /><path d="M8 7V3h8v4M3 12h18m-12 0v3h6v-3" /></>,
     cart: <><path d="M2 3h3l3 13h11l3-10H6" /><circle cx="9" cy="21" r="1" /><circle cx="19" cy="21" r="1" /></>,
+    clothing: <path d="m8 3-6 4 3 5 3-2v11h8V10l3 2 3-5-6-4a4 4 0 0 1-8 0Z" />,
     car: <><path d="m4 9 2-6h12l2 6m-17 0h18v9H3Zm2 9v3m14-3v3M6 13h2m8 0h2" /></>,
     food: <><path d="M4 3v5a3 3 0 0 0 6 0V3M7 3v18m11 0V3c-4 1-4 9 0 9" /></>,
     more: <><circle cx="4" cy="12" r="1" /><circle cx="12" cy="12" r="1" /><circle cx="20" cy="12" r="1" /></>,
@@ -23,11 +24,13 @@ export default function FinanceIcon({ name, ...props }) {
 }
 
 export function categoryIcon(name) {
+  if (/kleidung/i.test(name)) return 'clothing'
   if (/wohnen|hause|miete/i.test(name)) return 'home'
   if (/lebensmittel|einkauf/i.test(name)) return 'cart'
   if (/mobil|auto|transport/i.test(name)) return 'car'
   if (/restaurant|freizeit|essen/i.test(name)) return 'food'
   if (/gehalt|arbeit|einkommen|verdienst/i.test(name)) return 'company'
-  if (/jamin|fatima|mobin|familie/i.test(name)) return 'family'
+  if (/jamin|fatima|mobin|familie|eltern|hossein|mohsen/i.test(name)) return 'family'
+  if (/nazri|hilfe/i.test(name)) return 'heart'
   return 'more'
 }

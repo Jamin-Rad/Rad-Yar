@@ -9,6 +9,9 @@ import FinanceSidebar from './FinanceSidebar'
 import { expenseCategory } from './financeOverviewData.mjs'
 import workspace from './financeWorkspace.module.css'
 import detailStyles from './CategoryDetail.module.css'
+import EntryCategoryPicker from './EntryCategoryPicker'
+import FinanceIcon from './FinanceIcon'
+import entryUi from './FinanceEntry.module.css'
 
 const STORAGE_KEY    = 'radyar_private_budget_v1'
 const RECURRING_KEY  = 'radyar_recurring_v1'
@@ -692,20 +695,20 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
   const scopedSelection = selectedItems[0]
 
   return (
-    <form id={formId} className={`${styles.budgetForm} ${styles.financeEntryForm} ${entryScope ? styles.scopedEntryForm : ''}`} onSubmit={onSubmit}>
+    <form id={formId} className={`${styles.budgetForm} ${styles.financeEntryForm} ${entryUi.form} ${entryScope ? styles.scopedEntryForm : ''}`} onSubmit={onSubmit}>
       {/* Type */}
       {!entryScope && (
-        <div className={`${styles.segmentedControl} ${styles.entryTypeSwitch}`}>
-          <button type="button" className={type === 'income' ? styles.segmentActive : ''} onClick={() => onTypeChange('income')}>Einkommen</button>
-          <button type="button" className={type === 'expense' ? styles.segmentActive : ''} onClick={() => onTypeChange('expense')}>Ausgabe</button>
+        <div className={`${styles.segmentedControl} ${styles.entryTypeSwitch} ${entryUi.typeSwitch}`}>
+          <button type="button" className={type === 'income' ? styles.segmentActive : ''} aria-pressed={type === 'income'} onClick={() => onTypeChange('income')}>Einkommen</button>
+          <button type="button" className={type === 'expense' ? styles.segmentActive : ''} aria-pressed={type === 'expense'} onClick={() => onTypeChange('expense')}>Ausgabe</button>
         </div>
       )}
 
       {/* Amount + Date */}
-      <div className={`${styles.entryAmountPanel} ${workspace.amountPanel}`}>
+      <div className={`${styles.entryAmountPanel} ${workspace.amountPanel} ${entryUi.amount}`}>
         <label className={styles.entryAmountField}>
           <span>Betrag</span>
-          <div className={styles.entryAmountInputWrap}>
+          <div className={`${styles.entryAmountInputWrap} ${entryUi.amountInput}`}>
             <input type="number" step="0.01" inputMode="decimal" value={entryAmount} onChange={e => onAmountChange(e.target.value)} placeholder="0,00" required autoFocus />
             <em>€</em>
           </div>
@@ -717,7 +720,7 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
       </div>
 
       {/* Description + Fatima toggle */}
-      <div className={styles.entryDescriptionRow}>
+      <div className={`${styles.entryDescriptionRow} ${entryUi.description}`}>
         <label className={styles.entryDescriptionField}>
           <span>Beschreibung (optional)</span>
           <input type="text" value={entryDescription} onChange={e => onDescriptionChange(e.target.value)} placeholder="Notiz zu diesem Eintrag" />
@@ -727,18 +730,11 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
           <button
             type="button"
             onClick={onToggleFatima}
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: 6,
-              padding: '5px 12px', borderRadius: 20, fontSize: 13, fontWeight: 700,
-              border: `1.5px solid ${paidByFatima ? '#8b5cf6' : 'rgba(148,163,184,0.4)'}`,
-              background: paidByFatima ? 'rgba(139,92,246,0.12)' : 'rgba(248,250,252,0.8)',
-              color: paidByFatima ? '#7c3aed' : '#94a3b8',
-              cursor: 'pointer', transition: 'all .15s',
-              flexShrink: 0,
-            }}
+            className={entryUi.payer}
+            aria-pressed={paidByFatima}
           >
-            👩 Fatima
-            {paidByFatima && <span style={{ fontSize: 11 }}>✓ hat bezahlt</span>}
+            <FinanceIcon name="family" width="16" height="16" />
+            {paidByFatima ? 'Fatima hat bezahlt ✓' : 'Von Fatima bezahlt'}
           </button>
         )}
       </div>
@@ -808,9 +804,8 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
           )}
         </div>
       ) : (
-        <CategoryPicker
+        <EntryCategoryPicker
           categories={categories}
-          type={type}
           selectedItems={selectedItems}
           onToggleItem={onToggleItem}
           expandedCats={expandedCats}
@@ -819,7 +814,7 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
       )}
 
       {/* Selection summary */}
-      {selectedItems.length > 0 && !entryScope && (
+      {type === 'income' && selectedItems.length > 0 && !entryScope && (
         <div className={styles.entrySelectionSummary}>
           <div>
             <span className={styles.entrySelectionTitle}>{entryTitle}</span>
@@ -1975,7 +1970,6 @@ ${manualEntries.length ? `
   }
 
   const isIncome = entryType === 'income'
-  const popupAccent = isIncome ? '#13705a' : '#8446bd'
 
   return (
     <div className={iranOnly ? styles.page : workspace.page}>
@@ -3699,22 +3693,25 @@ ${manualEntries.length ? `
         {showPopup && (
           // Keep the backdrop static: native date pickers can report their selection as a backdrop click on mobile.
           <div className={styles.popupOverlay} role="dialog" aria-modal="true" aria-label="Neuer Eintrag">
-            <div className={`${styles.popupPanel} ${entryScope ? styles.scopedPopupPanel : ''} ${!iranOnly ? workspace.dialog : ''}`}>
+            <div className={`${styles.popupPanel} ${entryScope ? styles.scopedPopupPanel : ''} ${!iranOnly ? workspace.dialog : ''} ${entryUi.panel}`}>
               {/* Header */}
-              <div className={styles.popupHeader} style={{ borderBottom: `2px solid ${popupAccent}` }}>
-                <div>
-                  <p className={styles.popupMonthLabel}>
-                    {formatMonthLabel(month)}
-                  </p>
-                  <h3 className={styles.popupTitle} style={{ color: popupAccent }}>
-                    {entryScope ? `Neue Ausgabe · ${entryScope.subName || entryScope.catName}` : `${isIncome ? 'Einkommen' : 'Ausgabe'} eintragen`}
-                  </h3>
+              <div className={`${styles.popupHeader} ${entryUi.header}`}>
+                <div className={entryUi.heading}>
+                  <span className={entryUi.headingIcon}><FinanceIcon name={isIncome ? 'trend' : 'cart'} /></span>
+                  <div>
+                    <p className={styles.popupMonthLabel}>
+                      {formatMonthLabel(month)}
+                    </p>
+                    <h3 className={styles.popupTitle}>
+                      {entryScope ? `Neue Ausgabe · ${entryScope.subName || entryScope.catName}` : `${isIncome ? 'Einkommen' : 'Ausgabe'} eintragen`}
+                    </h3>
+                  </div>
                 </div>
                 <button className={styles.popupClose} onClick={closePopup} aria-label="Schließen">×</button>
               </div>
 
               {/* Body */}
-              <div className={styles.popupBody}>
+              <div className={`${styles.popupBody} ${entryUi.body}`}>
                 <EntryForm
                   formId="budget-entry-form"
                   categories={visibleCategories}
@@ -3744,7 +3741,7 @@ ${manualEntries.length ? `
               </div>
 
               {/* Submit bar – outside popupBody so it never covers scrollable content */}
-              <div className={styles.entrySubmitBar}>
+              <div className={`${styles.entrySubmitBar} ${entryUi.footer}`}>
                 <div>
                   <span>{entryTitle || 'Noch keine Kategorie'}</span>
                   <strong>{entryAmount ? `${entryAmount.replace('.', ',')} €` : '0,00 €'}</strong>
