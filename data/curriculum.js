@@ -1753,7 +1753,7 @@ export const CURRICULUM = [
           { id: 'wirbelsaeulen-mrt-protokoll', title: { de: 'Wirbelsäulen-MRT', en: 'Spine MRI', fa: 'MRI ستون فقرات' }, group: ['MRT-Protokolle'], tags: ['MRT'], diff: 2 },
           { id: 'kardio-mrt-protokoll', title: { de: 'Kardio-MRT', en: 'Cardiac MRI', fa: 'MRI قلب' }, group: ['MRT-Protokolle'], tags: ['MRT'], diff: 3 },
           { id: 'leber-mrt-protokoll', title: { de: 'Leber-MRT', en: 'Liver MRI', fa: 'MRI کبد' }, group: ['MRT-Protokolle'], tags: ['MRT'], diff: 2 },
-          { id: 'mrcp-protokoll', title: { de: 'MRCP', en: 'MRCP', fa: 'MRCP' }, group: ['MRT-Protokolle'], tags: ['MRT'], diff: 2 },
+          { id: 'mrcp-protokoll', title: { de: 'MRCP', en: 'MRCP', fa: 'MRCP' }, group: ['MRT-Protokolle'], tags: ['MRT'], diff: 2, link: '/technik/grundlagen#mrcp-protokoll', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'mamma-mrt-protokoll', title: { de: 'Mamma-MRT', en: 'Breast MRI', fa: 'MRI پستان' }, group: ['MRT-Protokolle'], tags: ['MRT'], diff: 2 },
           { id: 'becken-mrt-protokoll', title: { de: 'Becken-MRT (Prostata / Uterus)', en: 'Pelvic MRI (Prostate / Uterus)', fa: 'MRI لگن (پروستات / رحم)' }, group: ['MRT-Protokolle'], tags: ['MRT'], diff: 2 },
           { id: 'msk-mrt-protokoll', title: { de: 'MSK-MRT', en: 'MSK MRI', fa: 'MRI اسکلتی‌عضلانی' }, group: ['MRT-Protokolle'], tags: ['MRT'], diff: 2 },
