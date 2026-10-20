@@ -21,7 +21,7 @@ const spaces = [
 export default function FinanceSidebar({ view, subView, onNavigate }) {
   return (
     <aside className={styles.sidebar}>
-      <Link href="/andarun" className={styles.brand} aria-label="Yaminova Startseite">Yaminova</Link>
+      <Link href="/andarun" className={styles.brand} aria-label="Jaminova Startseite">Jaminova</Link>
       <nav aria-label="Finanznavigation" className={styles.navigation}>
         <p className={styles.navLabel}>Finanzen</p>
         {views.map(([target, sub, label, icon]) => {

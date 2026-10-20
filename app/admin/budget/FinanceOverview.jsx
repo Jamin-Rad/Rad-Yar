@@ -1,10 +1,11 @@
-import { useMemo } from 'react'
+import { useId, useMemo } from 'react'
 import FinanceIcon, { categoryIcon } from './FinanceIcon'
 import { buildExpenseBreakdown, expenseCategory } from './financeOverviewData.mjs'
+import { buildExpenseDonut, formatExpenseShare } from './financeDonutGeometry.mjs'
 import styles from './financeWorkspace.module.css'
 
-const palette = ['#71c8a1', '#39947a', '#26766e', '#b2ded0', '#899995', '#5bafac', '#a6c9a0', '#507e6b']
-const knownColors = { Wohnen: 0, 'Zu Hause': 0, Lebensmittel: 1, Mobilität: 2, Auto: 2, Freizeit: 3, Restaurant: 3, Sonstiges: 4 }
+const palette = ['#c8b4f2', '#9670d2', '#b7a0e5', '#a8d6c7', '#7254a4', '#8fa9d6', '#d6b0d9', '#a9b4df']
+const knownColors = { Wohnen: 0, 'Zu Hause': 0, Lebensmittel: 2, Mobilität: 4, Auto: 4, Freizeit: 3, Restaurant: 3, Sonstiges: 1 }
 function categoryColor(name) {
   if (Object.hasOwn(knownColors, name)) return palette[knownColors[name]]
   let hash = 0
@@ -20,37 +21,47 @@ function formatDate(value) {
 export function FinanceSummary({ summary, formatMoney, loaded }) {
   const rate = summary.income ? ((summary.balance / summary.income) * 100).toLocaleString('de-DE', { maximumFractionDigits: 1 }) + ' %' : '—'
   return <section className={styles.summary} aria-label="Monatsbilanz" aria-busy={!loaded}>
-    <div className={styles.balance}><span>Monatsbilanz</span><strong className={summary.balance < 0 ? styles.negative : ''}>{loaded ? formatMoney(summary.balance) : '—'}</strong></div>
-    <div><span>Einkommen</span><strong>{loaded ? formatMoney(summary.income) : '—'}</strong></div>
-    <div><span>Ausgaben</span><strong>{loaded ? formatMoney(summary.expenses) : '—'}</strong></div>
-    <div><span>Sparquote</span><strong>{loaded ? rate : '—'}</strong></div>
+    <div className={styles.balance}><span className={styles.metricLabel}>Monatsbilanz</span><strong className={summary.balance < 0 ? styles.negative : ''}>{loaded ? formatMoney(summary.balance) : '—'}</strong></div>
+    <div><span className={styles.metricLabel}>Einkommen</span><div className={styles.metricValue}><strong>{loaded ? formatMoney(summary.income) : '—'}</strong><span className={`${styles.metricIcon} ${styles.incomeIcon}`}><FinanceIcon name="trend" /></span></div></div>
+    <div><span className={styles.metricLabel}>Ausgaben</span><div className={styles.metricValue}><strong>{loaded ? formatMoney(summary.expenses) : '—'}</strong><span className={`${styles.metricIcon} ${styles.expenseIcon}`}><FinanceIcon name="arrow" /></span></div></div>
+    <div><span className={styles.metricLabel}>Sparquote</span><div className={styles.metricValue}><strong>{loaded ? rate : '—'}</strong><span className={styles.metricIcon}><FinanceIcon name="category" /></span></div></div>
   </section>
 }
 
-function ExpenseDonut({ breakdown, formatMoney, onOpenCategory }) {
-  const positiveTotal = breakdown.reduce((sum, [, value]) => sum + Math.max(0, value), 0)
-  const refunds = breakdown.reduce((sum, [, value]) => sum + Math.min(0, value), 0)
-  let offset = 0
+function shade(color, amount) {
+  return `#${[1, 3, 5].map(index => Math.round(parseInt(color.slice(index, index + 2), 16) * amount).toString(16).padStart(2, '0')).join('')}`
+}
+
+function ExpenseDonut({ breakdown, onOpenCategory, loaded }) {
+  const chartId = useId().replace(/:/g, '')
+  const segments = useMemo(() => buildExpenseDonut(breakdown), [breakdown])
+  const hasRefunds = breakdown.some(([, value]) => value < 0)
   return <>
     <div className={styles.chartLayout}>
       <div className={styles.donut}>
-        <svg viewBox="0 0 200 200" role="img" aria-label={`Ausgaben nach Hauptkategorie: ${breakdown.map(([name, amount]) => `${name} ${formatMoney(amount)}`).join(', ') || 'Keine Ausgaben'}`}>
-          <circle cx="100" cy="100" r="78" fill="none" stroke="#e8efec" strokeWidth="28" />
-          {breakdown.filter(([, amount]) => amount > 0).map(([name, amount]) => {
-            const share = amount / positiveTotal * 100
-            const paintedShare = share - Math.min(.35, share * .1)
-            const start = offset
-            offset += share
-            return <circle key={name} data-expense-segment={name} cx="100" cy="100" r="78" fill="none" stroke={categoryColor(name)} strokeWidth="28" pathLength="100" data-share={share} strokeDasharray={`${paintedShare} ${100 - paintedShare}`} strokeDashoffset={-start} transform="rotate(-90 100 100)" />
-          })}
+        <svg viewBox="0 0 320 260" role="img" aria-label={`Anteile der ${hasRefunds ? 'positiven ' : ''}Ausgaben: ${segments.map(({ name, share }) => `${name} ${formatExpenseShare(share)}`).join(', ') || 'Keine Ausgaben'}`}>
+          <defs>
+            <radialGradient id={`${chartId}-shadow`}><stop offset="0" stopColor="#080d1d" stopOpacity=".8" /><stop offset="1" stopColor="#080d1d" stopOpacity="0" /></radialGradient>
+            {segments.map(({ name }, index) => <g key={name}>
+              <linearGradient id={`${chartId}-top-${index}`} x1="0" y1="0" x2=".75" y2="1" gradientUnits="objectBoundingBox"><stop offset="0" stopColor={categoryColor(name)} /><stop offset="1" stopColor={shade(categoryColor(name), .86)} /></linearGradient>
+              <linearGradient id={`${chartId}-side-${index}`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={shade(categoryColor(name), .7)} /><stop offset="1" stopColor={shade(categoryColor(name), .42)} /></linearGradient>
+            </g>)}
+          </defs>
+          <ellipse cx="160" cy="233" rx="143" ry="22" fill={`url(#${chartId}-shadow)`} />
+          {segments.length ? <>
+            {segments.map((segment, index) => <g key={segment.name} fill={`url(#${chartId}-side-${index})`}>
+              {[...segment.inner, ...segment.outer, ...segment.edges].map((path, wall) => <path key={wall} d={path} />)}
+            </g>)}
+            {segments.map(({ name, share, top }, index) => <path key={name} d={top} fill={`url(#${chartId}-top-${index})`} stroke={categoryColor(name)} strokeWidth=".6" data-expense-segment={name} data-share={share}><title>{name}: {formatExpenseShare(share)}</title></path>)}
+          </> : <ellipse cx="160" cy="124" rx="108" ry="78" fill="none" stroke="#39415b" strokeWidth="32" />}
         </svg>
-        <div className={styles.donutValue}><span>{refunds < 0 ? 'Positive Ausgaben' : 'Ausgaben'}</span><strong>{formatMoney(positiveTotal)}</strong></div>
+        <div className={styles.donutValue}><span>{loaded ? hasRefunds ? 'Positive Ausgaben' : 'Ausgaben' : 'Lädt …'}</span><strong>{segments.length ? '100 %' : '—'}</strong></div>
       </div>
       <div className={styles.legend}>
-        {breakdown.map(([name, amount]) => <button key={name} type="button" className={styles.legendRow} onClick={() => onOpenCategory(name)}><span className={styles.swatch} style={{ background: categoryColor(name) }} /><span>{name}</span><strong>{formatMoney(amount)}</strong></button>)}
+        {segments.map(({ name, share }) => <button key={name} type="button" className={styles.legendRow} onClick={() => onOpenCategory(name)}><span className={styles.swatch} style={{ background: categoryColor(name) }} /><span>{name}</span><strong>{formatExpenseShare(share)}</strong></button>)}
       </div>
     </div>
-    {refunds < 0 && <p className={styles.note}>Erstattungen: {formatMoney(-refunds)} · im Monatssaldo berücksichtigt.</p>}
+    {hasRefunds && <p className={styles.note}>Erstattungen sind im Monatssaldo berücksichtigt und nicht als Ausgabenanteil dargestellt.</p>}
   </>
 }
 
@@ -59,7 +70,7 @@ export default function FinanceOverview({ entries, incomeTotals, formatMoney, on
   const recentEntries = useMemo(() => [...entries].sort((a, b) => (b.date || '').localeCompare(a.date || '')).slice(0, 3), [entries])
   return <div className={styles.overview} aria-busy={!loaded}>
     <div className={styles.ledger}>
-      <section aria-labelledby="finance-expenses-title">
+      <section className={styles.expenseCard} aria-labelledby="finance-expenses-title">
         <h2 id="finance-expenses-title">Ausgaben nach Kategorien</h2>
         <div className={styles.listHeader}><span>Kategorie</span><span>Betrag</span></div>
         {breakdown.length ? breakdown.map(([name, amount]) => <button key={name} type="button" className={styles.expenseRow} onClick={() => onOpenCategory(name)}>
@@ -79,15 +90,14 @@ export default function FinanceOverview({ entries, incomeTotals, formatMoney, on
       </section>
     </div>
     <aside className={styles.analysis} aria-label="Ausgabenverteilung und Einnahmequellen">
-      <section aria-labelledby="finance-chart-title">
-        <h2 id="finance-chart-title">Ausgaben nach Kategorien</h2>
-        <ExpenseDonut breakdown={breakdown} formatMoney={formatMoney} onOpenCategory={onOpenCategory} />
-        {!breakdown.length && <p className={styles.note}>Deine Ausgaben erscheinen hier nach dem ersten Eintrag.</p>}
+      <section className={styles.chartCard} aria-labelledby="finance-chart-title">
+        <h2 id="finance-chart-title">Ausgabenverteilung</h2>
+        <ExpenseDonut breakdown={breakdown} onOpenCategory={onOpenCategory} loaded={loaded} />
+        {!breakdown.some(([, amount]) => amount > 0) && <p className={styles.note}>{loaded ? 'Noch keine positiven Ausgaben in diesem Monat.' : 'Einträge werden geladen …'}</p>}
       </section>
       <section className={styles.income} aria-labelledby="finance-income-title">
-        <h2 id="finance-income-title">Einnahmen nach Quellen</h2>
-        <div className={styles.listHeader}><span>Quelle</span><span>Betrag</span></div>
-        {incomeTotals.length ? incomeTotals.map(([name, amount]) => <button type="button" key={name} className={styles.incomeRow} onClick={() => onOpenIncome(name)}><FinanceIcon name="company" /><span>{name}</span><strong>{formatMoney(amount)}</strong></button>) : <div className={styles.empty}><p>Noch kein Einkommen eingetragen.</p><button type="button" className={styles.textButton} onClick={onAddIncome}>+ Einkommen eintragen</button></div>}
+        <h2 id="finance-income-title">Einkommen nach Quellen</h2>
+        {incomeTotals.length ? incomeTotals.map(([name, amount]) => <button type="button" key={name} className={styles.incomeRow} onClick={() => onOpenIncome(name)}><span className={styles.sourceIcon}><FinanceIcon name="company" /></span><span>{name}</span><strong>{formatMoney(amount)}</strong></button>) : <div className={styles.empty}><p>Noch kein Einkommen eingetragen.</p><button type="button" className={styles.textButton} onClick={onAddIncome}>+ Einkommen eintragen</button></div>}
       </section>
     </aside>
   </div>

@@ -33,7 +33,7 @@ export default function FinanceWorkspaceHeader({ month, onMonthChange, onAdd, lo
     <h1 className={styles.heading}>Finanzen</h1>
     <div className={styles.monthPicker} ref={root}>
       <button type="button" className={styles.monthArrow} aria-label="Vorheriger Monat" onClick={() => { onMonthChange(moveMonth(month, -1)); setOpen(false) }}>‹</button>
-      <button type="button" ref={trigger} className={styles.monthDisplay} aria-label="Monat auswählen" aria-expanded={open} aria-haspopup="dialog" onClick={() => { setPickerYear(year); setOpen(value => !value) }}><span>{monthNames[number - 1]} {year}</span><span className={styles.monthChevron} aria-hidden="true">⌄</span></button>
+      <button type="button" ref={trigger} className={styles.monthDisplay} aria-label="Monat auswählen" aria-expanded={open} aria-haspopup="dialog" onClick={() => { setPickerYear(year); setOpen(value => !value) }}><FinanceIcon name="calendar" width="20" height="20" /><span>{monthNames[number - 1]} {year}</span><span className={styles.monthChevron} aria-hidden="true">⌄</span></button>
       <button type="button" className={styles.monthArrow} aria-label="Nächster Monat" onClick={() => { onMonthChange(moveMonth(month, 1)); setOpen(false) }}>›</button>
       {open && <div className={styles.monthDropdown} ref={panel} role="dialog" aria-label="Monat und Jahr auswählen">
         <div className={styles.monthYearRow}>
