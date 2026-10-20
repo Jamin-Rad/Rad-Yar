@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Dual-energy CT concept</title>
+  <desc id="desc">Two distinct X-ray spectra pass through a material and contribute to a model-based reconstruction.</desc>
+  <defs>
+    <linearGradient id="bg" x1="100" y1="20" x2="860" y2="500" gradientUnits="userSpaceOnUse"><stop stop-color="#18343E"/><stop offset="1" stop-color="#274F59"/></linearGradient>
+    <linearGradient id="beamA" x1="188" y1="192" x2="650" y2="220" gradientUnits="userSpaceOnUse"><stop stop-color="#70D3D5" stop-opacity=".82"/><stop offset="1" stop-color="#70D3D5" stop-opacity=".08"/></linearGradient>
+    <linearGradient id="beamB" x1="188" y1="326" x2="650" y2="296" gradientUnits="userSpaceOnUse"><stop stop-color="#F0C46B" stop-opacity=".8"/><stop offset="1" stop-color="#F0C46B" stop-opacity=".08"/></linearGradient>
+    <filter id="shadow" x="300" y="91" width="328" height="340" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#08191D" flood-opacity=".28"/></filter>
+  </defs>
+  <rect width="960" height="520" rx="30" fill="url(#bg)"/>
+  <circle cx="824" cy="92" r="176" fill="#5B929A" fill-opacity=".11"/>
+  <circle cx="95" cy="468" r="202" fill="#67AFB4" fill-opacity=".08"/>
+  <path d="M178 190 760 260 178 227V190Z" fill="url(#beamA)"/>
+  <path d="M178 326 760 260 178 293V326Z" fill="url(#beamB)"/>
+  <g stroke="#A8DDE0" stroke-opacity=".44" stroke-width="2"><path d="m193 176 32-29M193 190h41M193 204l32 29"/><path d="m193 312 32-29M193 326h41M193 340l32 29"/></g>
+  <g filter="url(#shadow)">
+    <path d="M470 145c61 0 111 50 111 111v8c0 61-50 111-111 111h-16c-61 0-111-50-111-111v-8c0-61 50-111 111-111h16Z" fill="#E9F2EF" fill-opacity=".96"/>
+    <path d="M455 184c40-21 84 2 92 39 6 29-17 42-16 72 1 26-18 50-47 50-23 0-39-20-38-43 1-22 19-34 13-57-5-21-24-45-4-61Z" fill="#B8D4C7"/>
+    <path d="M450 229c15-18 38-23 55-12 17 10 21 32 8 46-12 14-37 13-49 30-8 11-8 29-23 34-17 5-33-9-34-28-2-28 23-49 43-70Z" fill="#70B6B5"/>
+    <path d="M491 271c13-8 29-2 32 12 3 13-8 23-21 23-13 1-23-11-19-22 1-6 4-10 8-13Z" fill="#E8B85F"/>
+  </g>
+  <g transform="translate(698 174)">
+    <rect width="128" height="172" rx="18" fill="#102A31" fill-opacity=".78" stroke="#8FC4C7" stroke-opacity=".5"/>
+    <path d="M28 119h72M28 96h72M28 73h72M28 50h72" stroke="#40656B" stroke-width="2"/>
+    <path d="M34 114c14-2 15-54 30-54 15 0 13 54 29 54" stroke="#71D2D2" stroke-width="5" stroke-linecap="round"/>
+    <path d="M34 137c16-4 23-27 37-28 14-1 16 24 22 28" stroke="#E8B85F" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="63" cy="60" r="4" fill="#71D2D2"/><circle cx="71" cy="109" r="4" fill="#E8B85F"/>
+  </g>
+  <path d="M638 260h43" stroke="#DDEBE6" stroke-width="2" stroke-dasharray="5 7"/>
+  <path d="m673 252 9 8-9 8" stroke="#DDEBE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#E7F1ED" fill-opacity=".76"><circle cx="654" cy="94" r="3"/><circle cx="738" cy="428" r="4"/><circle cx="301" cy="399" r="3"/><circle cx="850" cy="383" r="2"/></g>
+</svg>
