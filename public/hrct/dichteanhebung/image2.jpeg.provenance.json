@@ -1,0 +1,14 @@
+{
+  "asset": "/hrct/dichteanhebung/image2.jpeg",
+  "topic": "rounded atelectasis",
+  "source_document": "Thorax.pdf",
+  "pdf_page": 11,
+  "printed_page": 10,
+  "source_identifier_visible_in_pdf": "Radiopaedia rID 8563",
+  "source_case_url": "https://radiopaedia.org/cases/8563",
+  "contributor": "Not visible on the supplied PDF page; not independently verified",
+  "external_license": "Not established from the supplied PDF page",
+  "project_reuse_basis": "User explicitly authorized reuse of images contained in the supplied PDFs and Radiopaedia examples for RadYar lesson work.",
+  "selection_rationale": "The existing axial CT example matches the source page's rounded atelectasis case and shows a pleural-based opacity with converging bronchovascular structures. It is retained as a single diagnostic image; the decorative comet mnemonic and unrelated pulmonary infarct image were removed from this section.",
+  "review_limit": "Single axial teaching example; contributor and external license remain unverified."
+}
