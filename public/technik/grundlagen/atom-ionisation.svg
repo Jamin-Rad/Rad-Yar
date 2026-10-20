@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" aria-hidden="true" focusable="false">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#087e8b"/></marker>
+    <marker id="out" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#c2415d"/></marker>
+  </defs>
+  <rect width="960" height="300" rx="22" fill="#f8fbfc"/>
+  <g fill="none" stroke="#9bb2bd" stroke-width="4" stroke-linecap="round">
+    <path d="M100 240h280M100 180h280M100 120h280"/>
+    <path d="M580 240h280M580 180h280M580 120h280"/>
+  </g>
+  <g fill="#087e8b"><circle cx="150" cy="240" r="11"/><circle cx="630" cy="240" r="11"/></g>
+  <path d="M190 230C210 200 245 155 280 130" fill="none" stroke="#087e8b" stroke-width="6" marker-end="url(#arrow)"/>
+  <path d="M315 130C350 160 355 205 330 230" fill="none" stroke="#687b86" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M675 230C720 190 745 145 770 95" fill="none" stroke="#c2415d" stroke-width="6" marker-end="url(#out)"/>
+  <circle cx="790" cy="75" r="10" fill="#c2415d"/>
+</svg>

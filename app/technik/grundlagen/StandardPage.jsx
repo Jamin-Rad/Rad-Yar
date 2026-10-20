@@ -16,6 +16,11 @@ const labelSet = {
 }
 
 const checks = {
+  atom: {
+    de: { title: 'Selbstcheck: Anregung oder Ionisation?', question: 'Ein Elektron nimmt Energie auf und wechselt auf ein höheres Energieniveau, bleibt aber im Atom gebunden. Was ist geschehen?', options: ['Ionisation: Das Atom hat ein Elektron verloren.', 'Anregung: Das Elektron bleibt gebunden und besetzt vorübergehend ein höheres Niveau.', 'Indirekte Ionisation durch ein neutrales Photon.'], answer: 1, feedback: ['Ionisation bedeutet, dass ein Elektron das Atom verlässt; hier bleibt es gebunden.', 'Richtig. Bei der Anregung bleibt das Elektron im Atom und wechselt auf ein höheres Niveau.', 'Indirekte Ionisation beschreibt die Energieübertragung von Photonen auf geladene Sekundärteilchen; das ist hier nicht beschrieben.'] },
+    en: { title: 'Self-check: excitation or ionization?', question: 'An electron absorbs energy and moves to a higher energy level but remains bound to the atom. What happened?', options: ['Ionization: the atom lost an electron.', 'Excitation: the electron remains bound and temporarily occupies a higher level.', 'Indirect ionization by a neutral photon.'], answer: 1, feedback: ['Ionization means an electron leaves the atom; here it remains bound.', 'Correct. In excitation, the electron stays in the atom and moves to a higher level.', 'Indirect ionization describes photons transferring energy to charged secondary particles; that is not what is described here.'] },
+    fa: { title: 'خودآزمایی: برانگیختگی یا یونش؟', question: 'الکترونی انرژی می‌گیرد و به تراز بالاتری می‌رود، اما همچنان به اتم مقید می‌ماند. چه رخ داده است؟', options: ['یونش: اتم یک الکترون از دست داده است.', 'برانگیختگی: الکترون مقید می‌ماند و موقتاً تراز بالاتری را اشغال می‌کند.', 'یونش غیرمستقیم بر اثر فوتون خنثی.'], answer: 1, feedback: ['یونش یعنی الکترون از اتم خارج شود؛ در اینجا الکترون مقید مانده است.', 'درست است. در برانگیختگی، الکترون در اتم می‌ماند و به تراز بالاتر می‌رود.', 'یونش غیرمستقیم یعنی فوتون انرژی را به ذرهٔ باردار ثانویه منتقل کند؛ این توصیف با آن سازگار نیست.'] },
+  },
   effects: {
     de: { title: 'Selbstcheck: Wahrscheinlichkeit und Schwere', question: 'Welche Aussage passt zu den Strahlenschutzmodellen?', options: ['Eine höhere Dosis macht jeden einzelnen Krebsfall schwerer.', 'Die Wahrscheinlichkeit stochastischer Effekte steigt mit der Dosis; sie sagt nicht die Schwere eines Einzelfalls voraus. Gewebereaktionen haben einen gewebespezifischen Schwellenbereich.', 'Stochastische Effekte und Gewebereaktionen haben dieselbe feste Schwelle.'], answer: 1, correct: 'Richtig. Auftretenswahrscheinlichkeit und Schwere sind getrennt zu betrachten; Schwellen für Gewebereaktionen sind nicht universell.', retry: 'Trennen Sie die Wahrscheinlichkeit eines Effekts von der Schwere eines einzelnen Falls.' },
     en: { title: 'Self-check: probability and severity', question: 'Which statement fits radiation-protection models?', options: ['A higher dose makes every individual cancer case more severe.', 'The probability of stochastic effects rises with dose; it does not predict severity in an individual case. Tissue reactions have a tissue-dependent threshold region.', 'Stochastic effects and tissue reactions share the same fixed threshold.'], answer: 1, correct: 'Correct. Occurrence probability and severity are distinct; tissue-reaction thresholds are not universal.', retry: 'Separate the probability that an effect occurs from the severity of one individual case.' },
@@ -60,6 +65,16 @@ function RetrievalCheck({ kind, lang }) {
     <h3 id={`technik-check-${kind}`} style={{ marginTop: 0 }}>{copy.title}</h3><p>{copy.question}</p>
     <div style={{ display: 'grid', gap: 8 }}>{copy.options.map((option, index) => <button key={index} type="button" aria-pressed={answer === index} onClick={() => setAnswer(index)} style={{ padding: 12, border: '1px solid var(--border)', borderRadius: 10, background: 'var(--surface-soft)', color: 'var(--text)', textAlign: 'start', cursor: 'pointer' }}>{option}</button>)}</div>
     {answer !== null && <p role="status" style={{ marginBottom: 0 }}>{answer === copy.answer ? copy.correct : copy.retry}</p>}
+  </div>
+}
+
+function AtomKnowledgeCheck({ lang }) {
+  const [answer, setAnswer] = useState(null)
+  const copy = checks.atom[lang] || checks.atom.de
+  return <div aria-labelledby="technik-atom-check-title" style={{ marginTop: 18, padding: 16, border: '1px solid var(--border)', borderRadius: 14, background: 'var(--bg-card)' }}>
+    <h3 id="technik-atom-check-title" style={{ marginTop: 0 }}>{copy.title}</h3><p>{copy.question}</p>
+    <div style={{ display: 'grid', gap: 8 }}>{copy.options.map((option, index) => <button key={index} type="button" aria-pressed={answer === index} onClick={() => setAnswer(index)} style={{ padding: 12, border: '1px solid var(--border)', borderRadius: 10, background: 'var(--surface-soft)', color: 'var(--text)', textAlign: 'start', cursor: 'pointer' }}>{option}</button>)}</div>
+    {answer !== null && <p role="status" style={{ marginBottom: 0 }}>{copy.feedback[answer]}</p>}
   </div>
 }
 
@@ -133,6 +148,7 @@ export default function TechnikGrundlagenStandardPage() {
         {section.id === 'mrt' ? <MRIKnowledgeCheck lang={lang}/> : null}
         {section.id === 'mrcp-protokoll' ? <RetrievalCheck kind="mrcp" lang={lang}/> : null}
         {section.id === 'mrt-sicherheit' ? <MRIArtifactKnowledgeCheck lang={lang}/> : null}
+        {section.id === 'atom' ? <AtomKnowledgeCheck lang={lang}/> : null}
         {section.note?<aside className={styles.callout}><strong>{t(L('Quellenhinweis','Source limitation','محدودیت منبع'))}</strong><p>{t(section.note)}</p></aside>:null}
         {section.id === 'wirkung' ? <RetrievalCheck kind="effects" lang={lang}/> : null}
         {section.id === 'dosis' ? <RetrievalCheck kind="dose" lang={lang}/> : null}

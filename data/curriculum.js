@@ -1708,7 +1708,7 @@ export const CURRICULUM = [
         title: { de: '3. Röntgen', en: '3. Radiography', fa: '۳. رادیوگرافی' },
         icon: '🩻',
         themen: [
-          { id: 'roentgen-physikalische-grundlagen', title: { de: 'Physikalische Grundlagen', en: 'Physical Principles', fa: 'مبانی فیزیکی' }, tags: ['Rö'], diff: 1 },
+          { id: 'roentgen-physikalische-grundlagen', title: { de: 'Physikalische Grundlagen', en: 'Physical Principles', fa: 'مبانی فیزیکی' }, tags: ['Rö'], diff: 1, link: '/technik/grundlagen#atom', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'strahlungsarten', title: { de: 'Strahlungsarten und Photonen', en: 'Radiation Types and Photons', fa: 'انواع تابش و فوتون‌ها' }, tags: ['Rö','CT'], diff: 1, link: '/technik/strahlungsarten', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'roentgenanlage-roehre', title: { de: 'Röntgenanlage & Röntgenröhre', en: 'X-Ray System & X-Ray Tube', fa: 'دستگاه و تیوب اشعه ایکس' }, tags: ['Rö'], diff: 2 },
           { id: 'roentgenstrahlung-spektrum', title: { de: 'Strahlungserzeugung & Röntgenspektrum', en: 'X-Ray Production & Spectrum', fa: 'تولید پرتو و طیف اشعه ایکس' }, tags: ['Rö'], diff: 2 },
