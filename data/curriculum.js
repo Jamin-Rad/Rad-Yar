@@ -1251,7 +1251,7 @@ export const CURRICULUM = [
         icon: '🧒',
         themen: [
           { id: 'morbus-perthes', title: { de: 'Morbus Perthes', en: 'Perthes Disease', fa: 'بیماری پرتس (Morbus Perthes)' }, tags: ['Rö','MRT'], diff: 2, link: '/msk/osteochondrosen/morbus-perthes', ready: true, inProgress: true, updatedAt: '2026-10-20' },
-          { id: 'osgood-schlatter', title: { de: 'Morbus Osgood-Schlatter', en: 'Osgood-Schlatter Disease', fa: 'بیماری آزگود-اشلاتر' }, tags: ['Rö'], diff: 1 },
+          { id: 'osgood-schlatter', title: { de: 'Morbus Osgood-Schlatter', en: 'Osgood-Schlatter Disease', fa: 'بیماری آزگود-اشلاتر' }, tags: ['Rö','MRT'], diff: 1, link: '/msk/osteochondrosen/osgood-schlatter', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'morbus-scheuermann', title: { de: 'Morbus Scheuermann', en: "Scheuermann's Disease", fa: 'بیماری شویرمان' }, tags: ['Rö'], diff: 2 },
           { id: 'osteochondrosis-dissecans', title: { de: 'Osteochondrosis dissecans', en: 'Osteochondritis Dissecans (OCD)', fa: 'استئوکندریت دیسکانس (OCD)' }, tags: ['MRT'], diff: 2, link: '/msk/osteochondrosen/osteochondrosis-dissecans', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'weitere-osteochondrosen', title: { de: 'Weitere Osteochondrosen', en: 'Other Osteochondroses', fa: 'سایر استئوکندروزها' }, tags: ['Rö'], diff: 1 },

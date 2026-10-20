@@ -1,0 +1,11 @@
+{
+  "asset": "pdf-case-p71.jpg",
+  "sourceFile": "MSK.pdf",
+  "sourcePdfPage": 71,
+  "printedPage": 70,
+  "sourcePageIdentifier": "Radiopaedia rID 61412",
+  "sourceContributor": "Not identified on the supplied page",
+  "reuseBasis": "User explicitly authorized use of figures contained in the supplied PDFs.",
+  "transformation": "Crop of the lateral radiograph and sagittal MRI panels from PDF p.71; no diagnostic overlays or sequence labels added.",
+  "limitations": "The MRI sequence is not identified on the supplied page. The case image is one example and does not establish that every listed feature is present. No external contributor identity or licence terms are claimed as independently verified."
+}

@@ -1,0 +1,19 @@
+.page { --lesson-accent:#6aabc1; --lesson-accent-strong:#27576b; --lesson-accent-soft:#e7f1f4; }
+.body { display:grid; gap:1rem; }
+.body > p { margin:0; max-width:82ch; line-height:1.75; }
+.lead { font-size:1.06rem; }
+.list,.summary { display:grid; gap:.75rem; margin:0; padding-inline-start:1.35rem; line-height:1.75; }
+.note { padding:.95rem 1rem; border-inline-start:4px solid var(--lesson-accent); border-radius:8px; background:color-mix(in srgb,var(--paper) 84%,var(--lesson-accent-soft)); }
+.caseImage { max-width:900px; margin:0 auto; padding:12px; border:1px solid var(--line); border-radius:14px; background:var(--paper); }
+.caseImage img { display:block; width:100%; height:auto; border-radius:8px; }
+.caseImage figcaption { margin-top:10px; color:var(--muted); font-size:.9rem; line-height:1.65; }
+.check { display:grid; gap:.8rem; padding:1.1rem; border:1px solid var(--line); border-radius:14px; background:color-mix(in srgb,var(--paper) 85%,var(--lesson-accent-soft)); }
+.check h3,.check p { margin:0; line-height:1.7; }
+.check fieldset { display:grid; gap:.7rem; border:0; margin:0; padding:0; }
+.check legend { margin-bottom:.65rem; font-weight:700; }
+.check label { display:flex; align-items:flex-start; gap:.7rem; border:1px solid var(--line); border-radius:10px; padding:.8rem; background:var(--paper); cursor:pointer; line-height:1.65; }
+.check input { margin-top:.35rem; accent-color:var(--lesson-accent-strong); }
+.feedback,.correct { padding:.85rem; border-inline-start:3px solid var(--lesson-accent); background:var(--paper); border-radius:8px; }
+.correct { border-inline-start-color:#32815a; }
+.body :is(button,input):focus-visible { outline:2px solid var(--lesson-accent-strong); outline-offset:3px; }
+@media(max-width:520px) { .caseImage { padding:8px; } }
