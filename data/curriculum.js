@@ -864,7 +864,7 @@ export const CURRICULUM = [
           { id: 'pmc-kolitis', title: { de: 'Pseudomembranöse Kolitis (PMC)', en: 'Pseudomembranous Colitis (PMC)', fa: 'کولیت سودوممبران (PMC)' }, group: ['Kolon & Rektum'], tags: ['CT'], diff: 2, link: '/abdomen/gi/kolitis-patterns', inProgress: true, updatedAt: '2026-10-19' },
           { id: 'ischaemische-kolitis', title: { de: 'Ischämische Kolitis', en: 'Ischaemic Colitis', fa: 'کولیت ایسکمیک' }, group: ['Kolon & Rektum'], tags: ['CT'], diff: 3 },
           { id: 'volvulus', title: { de: 'Volvulus', en: 'Volvulus', fa: 'ولوولوس' }, group: ['Kolon & Rektum'], tags: ['Rö','CT'], diff: 2, link: '/abdomen/gi/ileus-volvulus' },
-          { id: 'untere-gi-blutung', title: { de: 'Untere GI-Blutung', en: 'Lower GI Bleeding', fa: 'خونریزی گوارشی تحتانی' }, group: ['Kolon & Rektum'], tags: ['CT'], diff: 2, link: '/abdomen/gi/untere-gi-blutung' },
+          { id: 'untere-gi-blutung', title: { de: 'Untere GI-Blutung', en: 'Lower GI Bleeding', fa: 'خونریزی گوارشی تحتانی' }, group: ['Kolon & Rektum'], tags: ['CT','DSA'], diff: 2, link: '/abdomen/gi/untere-gi-blutung', mcqLink: '/ueben/quiz?fach=abdomen&n=10&themen=untere-gi-blutung', flashcardLink: '/flashcards/untere-gi-blutung', inProgress: true, updatedAt: '2026-10-21' },
           { id: 'kolorektales-karzinom', title: { de: 'Kolorektales Karzinom', en: 'Colorectal Carcinoma', fa: 'کارسینوم کولورکتال' }, group: ['Kolon & Rektum'], tags: ['CT'], diff: 3, link: '/abdomen/gi/kolorektales-karzinom' },
         ],
       },

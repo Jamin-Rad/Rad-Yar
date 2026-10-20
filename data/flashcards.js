@@ -71,9 +71,11 @@ import { MR_ANGIOGRAPHY_FLASHCARDS, MR_ANGIOGRAPHY_FLASHCARD_TOPIC } from './tec
 import { MRI_FUNDAMENTALS_FLASHCARDS, MRI_FUNDAMENTALS_FLASHCARD_TOPIC, MRI_QUALITY_FLASHCARDS } from './technikMRIFundamentalsLesson'
 import { TECHNIK_ROENTGEN_FLASHCARDS, TECHNIK_ROENTGEN_FLASHCARD_TOPIC } from './technikRoentgenFlashcards'
 import { RENAL_ANATOMY_FLASHCARDS, RENAL_ANATOMY_FLASHCARD_TOPIC } from './renalAnatomyFlashcards'
+import { LOWER_GI_BLEEDING_FLASHCARDS, LOWER_GI_BLEEDING_FLASHCARD_TOPIC } from './lowerGIBleedingFlashcards'
 
 export const FLASHCARD_TOPICS = [
   RENAL_ANATOMY_FLASHCARD_TOPIC,
+  LOWER_GI_BLEEDING_FLASHCARD_TOPIC,
   TECHNIK_ROENTGEN_FLASHCARD_TOPIC,
   { id: 'lebermetastasen', area: 'Abdomen', chapter: 'Leberläsionen', icon: 'CT', iconImage: '/fach/abdomen.png', color: '#10b981', href: '/flashcards/lebermetastasen', title: { de: 'Lebermetastasen', en: 'Liver metastases', fa: 'متاستازهای کبدی' }, subtitle: { de: 'Phasenmuster · Vaskularität · Befundung', en: 'Phase pattern · vascularity · reporting', fa: 'الگوی فازی · عروق‌رسانی · گزارش' } },
   STEATOSIS_FLASHCARD_TOPIC,
@@ -3486,6 +3488,7 @@ const LEGACY_FLASHCARDS = [
 
 export const FLASHCARDS = [
   ...RENAL_ANATOMY_FLASHCARDS,
+  ...LOWER_GI_BLEEDING_FLASHCARDS,
   ...TECHNIK_ROENTGEN_FLASHCARDS,
   { id: 'lebermetastasen-01-phasenvergleich', topicId: 'lebermetastasen', category: 'Abdomen', front: { de: 'Welche Phasen helfen, die Vaskularität einer Leberläsion einzuordnen?', en: 'Which phases help classify the vascularity of a liver lesion?', fa: 'کدام فازها برای طبقه‌بندی عروق‌رسانی ضایعهٔ کبدی کمک می‌کنند؟' }, answer: { de: 'Vor allem die arterielle und portalvenöse Phase vergleichen; eine Spätphase nur berücksichtigen, wenn sie akquiriert wurde.', en: 'Compare the arterial and portal venous phases; consider a delayed phase only when it was acquired.', fa: 'فاز شریانی و پورت را مقایسه کنید؛ فاز تأخیری را فقط در صورت انجام‌شدن بررسی کنید.' }, explanation: { de: 'Das PDF zeigt unterschiedliche hypo- und hypervaskuläre Muster über mehrere Kontrastphasen. Einzelbilder reichen nicht für die Einordnung.', en: 'The PDF shows different hypo- and hypervascular patterns across contrast phases. A single image is insufficient for classification.', fa: 'PDF الگوهای کم‌عروق و پرعروق را در چند فاز تزریق نشان می‌دهد. یک تصویر منفرد برای طبقه‌بندی کافی نیست.' }, diagram: { de: 'arteriell → portalvenös → ggf. spät', en: 'arterial → portal venous → delayed if acquired', fa: 'شریانی ← پورت ← در صورت انجام، تأخیری' } },
   ...STEATOSIS_FLASHCARDS,

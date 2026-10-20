@@ -19,9 +19,22 @@ const C = {
       'Blutungszeichen in arterieller und portalvenöser Phase vergleichen; Untersuchungszeitpunkt und Bewegungsartefakte berücksichtigen.',
       'Bei positivem CTA-Befund die Lokalisation zeitnah an das behandelnde Team kommunizieren.',
     ],
-    contextTitle: 'Modalität an Blutungsaktivität anpassen', context: 'Bei aktiver unterer GI-Blutung ist CTA eine etablierte Lokalisationsmethode. Die ACR-Angemessenheitskriterien bewerten CTA bei aktiver Blutung als üblicherweise angemessen; bei hämodynamischer Instabilität nennt die ESGE CTA vor endoskopischer oder radiologischer Behandlung zur Lokalisation. Die konkrete Sequenz richtet sich nach Stabilität, Blutungsaktivität und lokalem Pfad.',
+    contextTitle: 'Modalität an Blutungsaktivität anpassen', context: 'CTA ist eine Lokalisationsoption, aber kein starres Schema für alle. ESGE empfiehlt CTA bei Instabilität und vermuteter fortgesetzter Blutung vor einer Therapie; ASGE 2026 akzeptiert Koloskopie oder CT ± Angiographie als Erstuntersuchung, mit Koloskopie nach Stabilisierung und CT ± Angiographie bei anhaltender Instabilität. Nach positiver CT kann im passenden klinischen Kontext eine radiologische Intervention folgen.',
     cave: 'CTA ist zeitabhängig: Wenn die Blutung pausiert oder intermittiert, kann die Untersuchung negativ bleiben. Ein negativer Befund ist deshalb kein allgemeiner Ausschluss und ersetzt keine klinische Risikoeinschätzung.',
-    source: 'Quellabdeckung: Abdomen.pdf, S. 86–87 (S. 86 visuell geprüft; S. 87 als Ablaufseite ausgewertet). Primärquellen: ACR Appropriateness Criteria: Radiologic Management of Lower GI Bleeding; ESGE Guideline 2021, DOI 10.1055/a-1496-8969; ACG Guideline 2023, PMID 36735555.',
+    angioTitle: 'Was folgt bei lokalisierter aktiver Blutung?',
+    angioIntro: 'Zeigt die CTA eine Extravasation, kann bei anhaltender Blutung und passendem klinischem Kontext eine Katheterangiographie mit möglicher selektiver Embolisation folgen. Der PDF-Ausdruck „Goldstandard“ ist keine pauschale Handlungsregel: Stabilität, Blutungsaktivität und der lokale interdisziplinäre Pfad bestimmen das Vorgehen.',
+    angioSteps: [
+      ['1 · Gefäßterritorium wählen', 'Transfemoraler Zugang; die selektive Darstellung richtet sich nach der vermuteten Region: A. mesenterica superior für Dünndarm/rechtes Kolon, A. mesenterica inferior für linkes Kolon. Die obere Rektumversorgung läuft über die A. rectalis superior aus der IMA; weitere Rektumäste können aus dem Stromgebiet der A. iliaca interna kommen.'],
+      ['2 · Blutungsast lokalisieren', 'Die Angiographie kann die CTA-Lokalisation bestätigen. Ist die Blutung inzwischen pausiert oder intermittierend, kann auch die Katheterangiographie ohne sichtbare Extravasation bleiben.'],
+      ['3 · Selektiv embolisieren', 'Bei passender angiographischer Lokalisation kann der blutende Ast superselektiv mit Mikrokatheter erreicht und verschlossen werden; das PDF nennt meist Coils oder Partikel.'],
+      ['4 · Kontrollangiographie', 'Abschließend wird geprüft und dokumentiert, ob noch Extravasation sichtbar ist. Der gewünschte Blutstillungseffekt muss gegen das Risiko einer Darmischämie abgewogen werden.'],
+    ],
+    surgery: 'Eine Operation bleibt laut PDF seltenen, nicht kontrollierbaren Blutungen vorbehalten; die aktuelle Entscheidung gehört in den interdisziplinären Behandlungspfad.',
+    source: 'Quellabdeckung: Abdomen.pdf, physische S. 86–87 (gedruckt S. 85–86); p. 86 Bildfolge geprüft, p. 87 Ablaufseite geprüft. Primärleitlinien: ESGE 2021, DOI 10.1055/a-1496-8969; ACR 2021, DOI 10.1016/j.jacr.2021.02.018; ACG 2023, PMID 36735555; ASGE 2026, DOI 10.1016/j.gie.2026.06.046. Die rektale Gefäßvariante wird begrenzt erläutert; Park et al., JVIR 2020, PMID 31530489, ist eine kleine retrospektive RAE-Kohorte, keine allgemeine Handlungsregel.',
+    checkQuestion: 'CTA zeigt aktive Extravasation im rechten Kolon; die Blutung hält an. Welche Aussage zur nächsten radiologischen Stufe ist am besten?',
+    checkOptions: ['Katheterangiographie mit selektiver Darstellung des passenden Gefäßterritoriums kann im klinischen Pfad folgen; eine Embolisation setzt eine geeignete Lokalisation voraus.', 'Jeder positive CTA-Befund muss unabhängig von Klinik und Blutungsaktivität sofort embolisiert werden.', 'Eine negative Katheterangiographie beweist rückwirkend, dass die CTA-Extravasation kein echtes Blutungszeichen war.', 'Bei rechtem Kolon wird regelhaft zuerst die A. mesenterica inferior sondiert.'],
+    checkExplanation: 'CTA lokalisiert die aktive Blutung; bei passender Situation kann die Katheterangiographie diagnostisch und therapeutisch anschließen. Blutung kann intermittieren, und die Gefäßwahl richtet sich nach dem betroffenen Territorium. Embolisation ist nicht automatisch bei jedem positiven CTA-Befund angezeigt.',
+    finalSummary: ['CTA: neue Extravasation in den Phasen vergleichen und exakt lokalisieren.', 'Ein negativer CTA- oder Angiographiebefund schließt eine intermittierende Blutung nicht sicher aus.', 'Bei positiver CTA kann je nach anhaltender Blutung und klinischem Kontext eine selektive Katheterangiographie mit möglicher Embolisation folgen.', 'Kontrollangiographie und Darmperfusion gemeinsam im Blick behalten.'],
   },
   en: {
     title: 'Lower GI bleeding: CTA patterns', subtitle: 'Recognise active extravasation across phases and communicate its location precisely.',
@@ -37,9 +50,22 @@ const C = {
       'Compare arterial and portal venous phases; account for timing and motion artefact.',
       'Communicate a positive CTA localisation promptly to the treating team.',
     ],
-    contextTitle: 'Choose modality for bleeding activity', context: 'CTA is an established localisation method in active lower GI bleeding. ACR appropriateness criteria rate CTA as usually appropriate for active bleeding; ESGE recommends CTA before endoscopic or radiologic treatment to localise suspected ongoing bleeding in haemodynamically unstable patients. The sequence depends on stability, bleeding activity and the local pathway.',
+    contextTitle: 'Match modality to bleeding activity', context: 'CTA is a localisation option, not a fixed pathway for everyone. ESGE recommends CTA before treatment when bleeding is ongoing and the patient is unstable; ASGE 2026 accepts colonoscopy or CT ± angiography initially, with colonoscopy after stabilisation and CT ± angiography for ongoing instability. After positive CT, radiologic intervention may follow in the appropriate clinical context.',
     cave: 'CTA is time-dependent: if bleeding has stopped or is intermittent, the examination may be negative. A negative result is therefore not a general rule-out and does not replace clinical risk assessment.',
-    source: 'Coverage: Abdomen.pdf, pp. 86–87 (p. 86 visually checked; p. 87 reviewed as the continuation). Primary sources: ACR Appropriateness Criteria: Radiologic Management of Lower GI Bleeding; ESGE Guideline 2021, DOI 10.1055/a-1496-8969; ACG Guideline 2023, PMID 36735555.',
+    angioTitle: 'What follows when active bleeding is localised?',
+    angioIntro: 'If CTA shows extravasation, catheter angiography with possible selective embolisation may follow when bleeding continues and the clinical context supports it. The PDF’s phrase “gold standard” is not a universal action rule: stability, bleeding activity and the local multidisciplinary pathway guide the next step.',
+    angioSteps: [
+      ['1 · Select the vascular territory', 'Transfemoral access; selective angiography is guided by the suspected region: the superior mesenteric artery for small bowel/right colon and the inferior mesenteric artery for left colon. The superior rectal artery arises from the IMA; additional rectal branches may come from the internal iliac territory.'],
+      ['2 · Localise the bleeding branch', 'Angiography may confirm the CTA location. If bleeding has paused or is intermittent, catheter angiography may also show no active extravasation.'],
+      ['3 · Embolise selectively', 'When angiographic localisation is suitable, the bleeding branch may be reached superselectively with a microcatheter and occluded; the PDF lists coils or particles as common materials.'],
+      ['4 · Completion angiography', 'Check and document whether extravasation remains visible. The intended haemostatic effect must be balanced against the risk of bowel ischaemia.'],
+    ],
+    surgery: 'The PDF reserves surgery for rare, uncontrollable bleeding; the current decision belongs to the multidisciplinary care pathway.',
+    source: 'Coverage: Abdomen.pdf, physical pp. 86–87 (printed pp. 85–86); p. 86 image sequence and p. 87 pathway visually reviewed. Primary guidelines: ESGE 2021, DOI 10.1055/a-1496-8969; ACR 2021, DOI 10.1016/j.jacr.2021.02.018; ACG 2023, PMID 36735555; ASGE 2026, DOI 10.1016/j.gie.2026.06.046. Rectal artery variation is qualified; Park et al., JVIR 2020, PMID 31530489, is a small retrospective RAE cohort, not a universal action rule.',
+    checkQuestion: 'CTA shows active extravasation in the right colon and bleeding continues. Which statement about the next radiological step is best?',
+    checkOptions: ['Catheter angiography with selective imaging of the matching vascular territory may follow in the clinical pathway; embolisation requires suitable localisation.', 'Every positive CTA must be followed by immediate embolisation, regardless of the clinical context or ongoing bleeding.', 'A negative catheter angiogram proves retrospectively that the CTA extravasation was not real bleeding.', 'For the right colon, the inferior mesenteric artery is routinely selected first.'],
+    checkExplanation: 'CTA localises active bleeding; catheter angiography may follow as a diagnostic and therapeutic step when appropriate. Bleeding can be intermittent, and vessel selection follows the affected territory. Embolisation is not automatic after every positive CTA.',
+    finalSummary: ['CTA: compare phases for new extravasation and report its location precisely.', 'A negative CTA or angiogram does not reliably exclude intermittent bleeding.', 'After positive CTA, selective catheter angiography with possible embolisation may follow, depending on ongoing bleeding and clinical context.', 'Assess completion angiography and bowel perfusion together.'],
   },
   fa: {
     title: 'خون‌ریزی تحتانی گوارش: الگوهای CTA', subtitle: 'نشت فعال ماده حاجب را در فازها تشخیص دهید و محل را دقیق گزارش کنید.',
@@ -55,21 +81,36 @@ const C = {
       'فازهای شریانی و پورتوونوس را مقایسه کنید و زمان تصویربرداری و آرتیفکت حرکتی را در نظر بگیرید.',
       'یافته مثبت CTA را سریع به تیم درمان اطلاع دهید.',
     ],
-    contextTitle: 'روش را با فعالیت خون‌ریزی تطبیق دهید', context: 'CTA روش جاافتاده‌ای برای مکان‌یابی خون‌ریزی فعال تحتانی گوارش است. معیارهای تناسب ACR، CTA را برای خون‌ریزی فعال معمولاً مناسب می‌دانند؛ ESGE در بیمار ناپایدار با شک به خون‌ریزی ادامه‌دار، CTA را پیش از درمان اندوسکوپیک یا رادیولوژیک برای مکان‌یابی توصیه می‌کند. توالی بررسی به پایداری بیمار، فعالیت خون‌ریزی و مسیر محلی وابسته است.',
+    contextTitle: 'روش را با فعالیت خون‌ریزی تطبیق دهید', context: 'CTA یکی از روش‌های مکان‌یابی است و مسیر ثابتی برای همه نیست. ESGE در بیمار ناپایدار با شک به خون‌ریزی ادامه‌دار، CTA را پیش از درمان توصیه می‌کند؛ ASGE در ۲۰۲۶ کولونوسکوپی یا CT ± آنژیوگرافی را برای بررسی نخست می‌پذیرد، با کولونوسکوپی پس از پایدارشدن و CT ± آنژیوگرافی در ناپایداری پایدار. پس از CT مثبت، در زمینهٔ بالینی مناسب ممکن است مداخلهٔ رادیولوژیک انجام شود.',
     cave: 'CTA به زمان وابسته است: اگر خون‌ریزی متوقف یا متناوب باشد، بررسی ممکن است منفی شود. بنابراین نتیجه منفی قاعده‌ای برای رد کلی نیست و جایگزین ارزیابی خطر بالینی نمی‌شود.',
-    source: 'پوشش منبع: Abdomen.pdf صفحات ۸۶ تا ۸۷ (صفحه ۸۶ دیداری بررسی شد؛ صفحه ۸۷ به‌عنوان ادامه ارزیابی شد). منابع اولیه: معیارهای تناسب ACR برای خون‌ریزی تحتانی گوارش؛ راهنمای ESGE سال ۲۰۲۱، DOI 10.1055/a-1496-8969؛ راهنمای ACG سال ۲۰۲۳، PMID 36735555.',
+    angioTitle: 'پس از مکان‌یابی خون‌ریزی فعال چه می‌شود؟',
+    angioIntro: 'اگر CTA نشت مادهٔ حاجب را نشان دهد، در صورت تداوم خون‌ریزی و تناسب شرایط بالینی ممکن است آنژیوگرافی کاتتری و سپس آمبولیزاسیون انتخابی انجام شود. عبارت «استاندارد طلایی» در PDF قاعده‌ای همگانی برای اقدام نیست؛ پایداری بیمار، فعالیت خون‌ریزی و مسیر تصمیم‌گیری تیمی تعیین‌کننده‌اند.',
+    angioSteps: [
+      ['۱ · قلمرو عروقی را انتخاب کنید', 'دسترسی ترانس‌فمورال؛ انتخاب عروق برای تصویربرداری انتخابی بر اساس ناحیهٔ مشکوک است: شریان مزانتریک فوقانی برای رودهٔ باریک/کولون راست و شریان مزانتریک تحتانی برای کولون چپ. شریان رکتال فوقانی از IMA می‌آید؛ شاخه‌های دیگر رکتوم ممکن است از قلمرو ایلیاک داخلی باشند.'],
+      ['۲ · شاخهٔ خون‌ریز را مکان‌یابی کنید', 'آنژیوگرافی ممکن است محل دیده‌شده در CTA را تأیید کند. اگر خون‌ریزی متوقف یا متناوب شده باشد، ممکن است در آنژیوگرافی کاتتری نیز نشت فعالی دیده نشود.'],
+      ['۳ · آمبولیزاسیون انتخابی', 'اگر محل خون‌ریزی برای مداخله مناسب باشد، شاخهٔ مربوط ممکن است به‌صورت سوپرسلکتیو با میکروکاتتر انتخاب و مسدود شود؛ PDF معمولاً کویل یا ذرات را نام می‌برد.'],
+      ['۴ · آنژیوگرافی پایانی', 'بررسی و ثبت کنید که آیا هنوز نشت مادهٔ حاجب دیده می‌شود یا نه. اثر هموستاز باید در کنار خطر ایسکمی روده سنجیده شود.'],
+    ],
+    surgery: 'PDF جراحی را به خون‌ریزی‌های نادر و مهارنشدنی محدود می‌کند؛ تصمیم فعلی باید در مسیر درمان تیمی گرفته شود.',
+    source: 'پوشش منبع: Abdomen.pdf، صفحات فیزیکی ۸۶–۸۷ (شمارهٔ چاپی ۸۵–۸۶)؛ توالی تصویر p.86 و مسیر p.87 دیداری بررسی شدند. راهنماهای اولیه: ESGE 2021، DOI 10.1055/a-1496-8969؛ ACR 2021، DOI 10.1016/j.jacr.2021.02.018؛ ACG 2023، PMID 36735555؛ ASGE 2026، DOI 10.1016/j.gie.2026.06.046. تنوع عروق رکتوم توضیح داده شده؛ مقالهٔ Park و همکاران در JVIR 2020، PMID 31530489، کوهورت کوچک گذشته‌نگر RAE است، نه قاعدهٔ اقدام همگانی.',
+    checkQuestion: 'CTA نشت فعال در کولون راست را نشان می‌دهد و خون‌ریزی ادامه دارد. کدام عبارت دربارهٔ مرحلهٔ رادیولوژیک بعدی مناسب‌تر است؟',
+    checkOptions: ['در مسیر بالینی ممکن است آنژیوگرافی کاتتری با تصویربرداری انتخابی قلمرو عروقی مرتبط انجام شود؛ آمبولیزاسیون به مکان‌یابی مناسب نیاز دارد.', 'هر CTA مثبت باید، مستقل از وضعیت بالینی یا ادامهٔ خون‌ریزی، فوراً به آمبولیزاسیون منجر شود.', 'آنژیوگرافی کاتتری منفی ثابت می‌کند که نشت CTA از ابتدا واقعی نبوده است.', 'برای کولون راست به‌طور معمول ابتدا شریان مزانتریک تحتانی انتخاب می‌شود.'],
+    checkExplanation: 'CTA خون‌ریزی فعال را مکان‌یابی می‌کند؛ در شرایط مناسب، آنژیوگرافی کاتتری می‌تواند مرحلهٔ تشخیصی و درمانی بعدی باشد. خون‌ریزی ممکن است متناوب باشد و انتخاب عروق به قلمرو درگیر وابسته است. پس از هر CTA مثبت، آمبولیزاسیون خودکار نیست.',
+    finalSummary: ['در CTA فازها را برای نشت تازه مقایسه و محل را دقیق گزارش کنید.', 'CTA یا آنژیوگرافی منفی، خون‌ریزی متناوب را با اطمینان رد نمی‌کند.', 'پس از CTA مثبت، با توجه به تداوم خون‌ریزی و زمینهٔ بالینی ممکن است آنژیوگرافی انتخابی با امکان آمبولیزاسیون انجام شود.', 'آنژیوگرافی پایانی و خون‌رسانی روده را با هم در نظر بگیرید.'],
   },
 }
 
 export default function LowerGIBleedingPage() {
   const { lang } = useLanguage()
   const c = C[lang] || C.de
-  return <LessonReferenceShell lessonId="abdomen-lower-gi-bleeding" lang={lang} title={c.title} diagram="gi-bleed" copy={c}>
+  const check = { question: c.checkQuestion, options: c.checkOptions, answer: 0, explanation: c.checkExplanation }
+  return <LessonReferenceShell lessonId="abdomen-lower-gi-bleeding" lang={lang} title={c.title} diagram="gi-bleed" copy={c} check={check} summary={c.finalSummary} quizHref="/ueben/quiz?fach=abdomen&n=10&themen=untere-gi-blutung" flashcardsHref="/flashcards/untere-gi-blutung">
     <main className={styles.page} lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
       <header className={styles.header}><div className={styles.hero}><div className={styles.heroText}><h1>{c.title}</h1><p>{c.subtitle}</p></div></div></header>
       <div className={styles.main} style={{ maxWidth: 1080, margin: '2rem auto', padding: '0 1rem' }}>
         <section className={styles.section}><p className={styles.lead}>{c.intro}</p><h2>{c.phasesTitle}</h2><div className={styles.cardsGrid}>{c.phases.map(([title, text]) => <article className={styles.infoCard} key={title}><h3>{title}</h3><p>{text}</p></article>)}</div></section>
-        <section className={styles.section}><h2>{c.reportTitle}</h2><ol>{c.report.map(item => <li key={item}>{item}</li>)}</ol><h2>{c.contextTitle}</h2><p>{c.context}</p><div className={styles.callout}><strong>⚠</strong><p>{c.cave}</p></div><small>{c.source}</small><p><a href="https://acsearch.acr.org/docs/69457/Narrative/" target="_blank" rel="noreferrer">ACR Appropriateness Criteria: Lower GI Bleeding ↗</a></p><p><a href="https://www.esge.com/diagnosis-and-management-of-acute-lower-gastrointestinal-bleeding-esge-guideline" target="_blank" rel="noreferrer">ESGE Guideline 2021 ↗</a></p><p><a href="https://pubmed.ncbi.nlm.nih.gov/36735555/" target="_blank" rel="noreferrer">ACG Guideline 2023 ↗</a></p></section>
+        <section className={styles.section}><h2>{c.reportTitle}</h2><ol>{c.report.map(item => <li key={item}>{item}</li>)}</ol><h2>{c.contextTitle}</h2><p>{c.context}</p><div className={styles.callout}><strong>⚠</strong><p>{c.cave}</p></div><small>{c.source}</small><p><a href="https://acsearch.acr.org/docs/69457/Narrative/" target="_blank" rel="noreferrer">ACR Appropriateness Criteria: Lower GI Bleeding ↗</a></p><p><a href="https://www.esge.com/diagnosis-and-management-of-acute-lower-gastrointestinal-bleeding-esge-guideline" target="_blank" rel="noreferrer">ESGE Guideline 2021 ↗</a></p><p><a href="https://pubmed.ncbi.nlm.nih.gov/36735555/" target="_blank" rel="noreferrer">ACG Guideline 2023 ↗</a></p><p><a href="https://www.giejournal.org/article/S0016-5107%2826%2906857-4/fulltext" target="_blank" rel="noreferrer">ASGE Guideline 2026 ↗</a></p></section>
+        <section className={styles.section}><h2>{c.angioTitle}</h2><p>{c.angioIntro}</p><div className={styles.cardsGrid}>{c.angioSteps.map(([title, text]) => <article className={styles.infoCard} key={title}><h3>{title}</h3><p>{text}</p></article>)}</div><div className={styles.callout}><strong>⚠</strong><p>{c.surgery}</p></div></section>
       </div>
     </main>
   </LessonReferenceShell>
