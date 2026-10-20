@@ -1407,7 +1407,7 @@ export const CURRICULUM = [
         title: { de: '17. Postoperative & postinterventionelle Bildgebung', en: '17. Postoperative & Post-interventional Imaging', fa: '۱۷. تصویربرداری بعد از عمل و مداخله' },
         icon: '🔧',
         themen: [
-          { id: 'osteosynthese', title: { de: 'Osteosynthese & Frakturversorgung', en: 'Osteosynthesis & Fracture Fixation', fa: 'استئوسنتز و فیکساسیون شکستگی' }, tags: ['Rö','CT'], diff: 2 },
+          { id: 'osteosynthese', title: { de: 'Osteosynthese & Frakturversorgung', en: 'Osteosynthesis & Fracture Fixation', fa: 'استئوسنتز و فیکساسیون شکستگی' }, tags: ['Rö','CT'], diff: 2, link: '/msk/postop/osteosynthese', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'postop-komplikationen', title: { de: 'Komplikationen (Pseudarthrose, Infektion, Implantatversagen)', en: 'Complications (Nonunion, Infection, Implant Failure)', fa: 'عوارض (سودارتروز، عفونت، شکست ایمپلنت)' }, tags: ['Rö','CT','MRT'], diff: 3 },
           { id: 'endoprothetik', title: { de: 'Endoprothetik (Hüfte, Knie, Schulter)', en: 'Joint Arthroplasty (Hip, Knee, Shoulder)', fa: 'آرتروپلاستی مفصل (هیپ، زانو، شانه)' }, tags: ['Rö','CT'], diff: 2 },
         ],

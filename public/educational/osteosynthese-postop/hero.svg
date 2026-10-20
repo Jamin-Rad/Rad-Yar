@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">Illustrative postoperative radiograph checklist</title>
+  <desc id="desc">A non-diagnostic schematic of a fracture line and fixation plate beside four checklist markers.</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#183548"/><stop offset="1" stop-color="#27576a"/></linearGradient></defs>
+  <rect width="900" height="520" rx="36" fill="url(#bg)"/>
+  <g fill="none" stroke="#d5e8e9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M226 66c-30 35-41 83-35 142l17 87-17 96c-8 39 8 73 39 87 29 13 62-2 71-34l21-84-20-113 20-108c8-41-8-76-40-88-23-9-44-3-56 15Z" stroke-width="21" opacity=".76"/>
+    <path d="m202 280 91 38" stroke="#f0ab68" stroke-width="13"/>
+    <path d="M142 104v295" stroke="#70d4dc" stroke-width="16"/>
+    <path d="M127 145h44m-44 62h44m-44 62h44m-44 62h44" stroke="#70d4dc" stroke-width="12"/>
+    <circle cx="137" cy="104" r="13" fill="#70d4dc" stroke="none"/><circle cx="137" cy="399" r="13" fill="#70d4dc" stroke="none"/>
+    <path d="M455 139h315M455 246h315M455 353h315" stroke="#ffffff" stroke-width="8" opacity=".2"/>
+    <circle cx="485" cy="139" r="23" stroke="#70d4dc" stroke-width="8"/><path d="m473 139 9 10 18-22" stroke="#70d4dc" stroke-width="7"/>
+    <circle cx="485" cy="246" r="23" stroke="#70d4dc" stroke-width="8"/><path d="m473 246 9 10 18-22" stroke="#70d4dc" stroke-width="7"/>
+    <circle cx="485" cy="353" r="23" stroke="#f0ab68" stroke-width="8"/><path d="M473 353h24" stroke="#f0ab68" stroke-width="7"/>
+  </g>
+</svg>
