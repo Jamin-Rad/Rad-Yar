@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">AO 33 distal femur morphology schematic</title>
+  <desc id="desc">Three simplified distal femur diagrams show extra-articular, partial-articular and complete-articular fracture patterns.</desc>
+  <rect width="900" height="520" rx="24" fill="#f4f8f8"/>
+  <g font-family="Arial,sans-serif" text-anchor="middle" fill="#173846">
+    <g transform="translate(155 25)"><text y="28" font-size="24" font-weight="700">33-A</text>
+      <path d="M-30 84h60l-5 178c-2 44 53 63 43 116-7 37-35 39-57 14-12 17-40 23-59 4-22-22-3-64 17-82 16-14 23-33 21-52z" fill="#d7e5e7" stroke="#456b78" stroke-width="5"/>
+      <path d="M-44 292h88" stroke="#d17a36" stroke-width="10" stroke-linecap="round"/>
+      </g>
+    <g transform="translate(450 25)"><text y="28" font-size="24" font-weight="700">33-B</text>
+      <path d="M-30 84h60l-5 178c-2 44 53 63 43 116-7 37-35 39-57 14-12 17-40 23-59 4-22-22-3-64 17-82 16-14 23-33 21-52z" fill="#d7e5e7" stroke="#456b78" stroke-width="5"/>
+      <path d="M7 296 47 365" stroke="#c5544d" stroke-width="9" stroke-linecap="round"/>
+      <path d="M-44 292h53" stroke="#d17a36" stroke-width="10" stroke-linecap="round"/>
+      </g>
+    <g transform="translate(745 25)"><text y="28" font-size="24" font-weight="700">33-C</text>
+      <path d="M-30 84h60l-5 178c-2 44 53 63 43 116-7 37-35 39-57 14-12 17-40 23-59 4-22-22-3-64 17-82 16-14 23-33 21-52z" fill="#d7e5e7" stroke="#456b78" stroke-width="5"/>
+      <path d="M-47 297h94M-4 297v-35" stroke="#c5544d" stroke-width="9" stroke-linecap="round"/>
+      </g>
+  </g>
+</svg>
