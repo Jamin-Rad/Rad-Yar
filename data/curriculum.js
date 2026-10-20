@@ -851,7 +851,7 @@ export const CURRICULUM = [
           { id: 'gist', title: { de: 'Gastrointestinale Stromatumoren (GIST)', en: 'Gastrointestinal Stromal Tumours (GIST)', fa: 'تومورهای استرومایی گوارشی (GIST)' }, group: ['Gastroduodenum'], tags: ['CT','MRT'], diff: 3, link: '/abdomen/gi/gist', inProgress: true, updatedAt: '2026-10-19' },
           { id: 'obere-gi-blutung', title: { de: 'Obere GI-Blutung', en: 'Upper GI Bleeding', fa: 'خونریزی گوارشی فوقانی' }, group: ['Gastroduodenum'], tags: ['CT'], diff: 2 },
           { id: 'morbus-crohn', title: { de: 'Morbus Crohn', en: "Crohn's Disease", fa: 'بیماری کرون' }, group: ['Jejunum & Ileum'], tags: ['MRT','CT'], diff: 2 },
-          { id: 'ileus-duenndarm', title: { de: 'Ileus', en: 'Ileus', fa: 'ایلئوس' }, group: ['Jejunum & Ileum'], tags: ['Rö','CT'], diff: 2, link: '/abdomen/gi/ileus-volvulus' },
+          { id: 'ileus-duenndarm', title: { de: 'Ileus', en: 'Ileus', fa: 'ایلئوس' }, group: ['Jejunum & Ileum'], tags: ['Rö','CT'], diff: 2, link: '/abdomen/gi/ileus-volvulus', flashcardLink: '/flashcards/ileus-duenndarm' },
           { id: 'mesenteriale-ischaemie', title: { de: 'Mesenteriale Ischämie', en: 'Mesenteric Ischaemia', fa: 'ایسکمی مزانتریک' }, group: ['Jejunum & Ileum'], tags: ['CT'], diff: 3, link: '/abdomen/gi/mesenteriale-ischaemie', inProgress: true, updatedAt: '2026-10-19' },
           { id: 'zoeliakie', title: { de: 'Zöliakie', en: 'Coeliac Disease', fa: 'بیماری سلیاک' }, group: ['Jejunum & Ileum'], tags: ['MRT'], diff: 2 },
           { id: 'meckel-divertikel', title: { de: 'Meckel-Divertikel', en: "Meckel's Diverticulum", fa: 'دیورتیکول مکل' }, group: ['Jejunum & Ileum'], tags: ['CT','NUK'], diff: 2 },
