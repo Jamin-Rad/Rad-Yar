@@ -1,7 +1,7 @@
 const L = (de, en, fa) => ({ de, en, fa })
 
 export const HIE_LESSON = {
-  pdfSourcePages: [10,11], // user PDF page range; coverage still requires content comparison
+  pdfSourcePages: [10,11], // bounded comparison recorded in docs/lesson-quality/gehirn-hie-enhancement-duration-p11.md; not a full clinical audit
 
   toc: L('Inhaltsverzeichnis', 'Contents', 'فهرست مطالب'),
   breadcrumbArea: L('Kopf', 'Head', 'سر'),
@@ -153,7 +153,7 @@ export const HIE_LESSON = {
       ['T2/FLAIR', L('anfangs diskret, später kortikale und tiefe graue Hyperintensität mit Schwellung', 'subtle initially, later cortical/deep-grey hyperintensity and swelling', 'ابتدا خفیف، سپس افزایش سیگنال کورتکس و هسته‌های عمقی همراه تورم'), L('Ausdehnung, Ödem und Marklagerbeteiligung', 'extent, oedema and white-matter involvement', 'وسعت آسیب، ادم و درگیری ماده سفید')],
       ['T1', L('subakut gyriforme kortikale Hyperintensität bei laminärer Nekrose', 'subacute gyriform cortical hyperintensity in laminar necrosis', 'هایپراینتنسیتی ژیری‌فرم کورتکس در نکروز لامینار زیرحاد'), L('zeitliche Einordnung; nicht automatisch Blut', 'temporal staging; not automatically haemorrhage', 'کمک به تعیین مرحله؛ الزاماً خونریزی نیست')],
       ['SWI/T2*', L('Mikroblutungen oder hämorrhagische Begleitkomponente', 'microhaemorrhage or haemorrhagic component', 'میکروخونریزی یا جزء هموراژیک'), L('Blut von nicht hämorrhagischer T1-Hyperintensität abgrenzen', 'distinguish blood from non-haemorrhagic T1 hyperintensity', 'افتراق خون از T1 هایپراینتنس غیرهموراژیک')],
-      ['T1 C+', L('subakut mögliches gyriformes kortikales Enhancement', 'possible subacute gyriform cortical enhancement', 'احتمال تقویت پس از تزریق ژیری‌فرم کورتکس در فاز زیرحاد'), L('Blut-Hirn-Schrankenstörung; kann Wochen persistieren', 'blood-brain barrier disruption; may persist for weeks', 'اختلال سد خونی-مغزی؛ ممکن است چند هفته باقی بماند')],
+      ['T1 C+', L('subakut mögliches gyriformes kortikales Enhancement', 'possible subacute gyriform cortical enhancement', 'احتمال تقویت پس از تزریق ژیری‌فرم کورتکس در فاز زیرحاد'), L('Blut-Hirn-Schrankenstörung; kann Wochen bis Monate anhalten, die Dauer variiert', 'blood-brain barrier disruption; enhancement may persist for weeks to months, with variable duration', 'اختلال سد خونی-مغزی؛ تقویت ممکن است هفته‌ها تا ماه‌ها باقی بماند و مدت آن متغیر است')],
     ],
     key: L(
       'DWI hell ohne ADC-Abfall ist keine sichere Restriktion. T2-shine-through und Artefakte müssen ausgeschlossen werden.',
