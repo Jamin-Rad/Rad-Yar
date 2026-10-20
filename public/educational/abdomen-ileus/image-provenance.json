@@ -1,0 +1,19 @@
+{
+  "assetSet": "adhesive-ileus-abdomen-p70",
+  "authorization": "User authorized use of images contained in the six supplied PDFs for this project. This authorization is recorded here; independent rights clearance has not been performed.",
+  "assets": [
+    {
+      "path": "/educational/abdomen-ileus/fat-notch-p70.png",
+      "sourceFile": "Abdomen.pdf",
+      "pdfPage": 70,
+      "printedPage": 69,
+      "sourcePanel": "Coronal CT panel with red arrow, cropped from the visually inspected page image.",
+      "sourceCaption": "Fat Notch Sign in the adhesive ileus section; the PDF describes mesenteric-fat indentation at the obstruction point due to a tethering band.",
+      "visibleIdentifiers": "No contributor or case ID verified from the rendered crop.",
+      "originalContributor": "Not identified in the supplied PDF page crop.",
+      "reuseTerms": "Not identified in the supplied PDF; relies on explicit user authorization for this project.",
+      "selectionRationale": "The source arrow points to the sign being taught; the caption identifies it as a source-labelled example and avoids claiming the sign alone proves cause or severity.",
+      "crop": "CT panel only; red arrow retained; surrounding PDF text, page frame and watermark excluded."
+    }
+  ]
+}
