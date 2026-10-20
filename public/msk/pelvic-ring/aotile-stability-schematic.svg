@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-label="Non-diagnostic teaching schematic of stable, rotationally unstable and vertically unstable pelvic ring patterns">
+  <rect width="760" height="300" rx="26" fill="#182d3a"/>
+  <g fill="#e5f2f1" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle"><text x="130" y="48">A</text><text x="380" y="48">B</text><text x="630" y="48">C</text></g>
+  <g fill="none" stroke="#d9e8e8" stroke-width="17" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M55 145 C70 78 185 78 205 145 M205 145 C190 215 70 215 55 145"/>
+    <path d="M305 145 C320 78 435 78 455 145 M455 145 C440 215 320 215 305 145"/>
+    <path d="M555 145 C570 78 685 78 705 145 M705 145 C690 215 570 215 555 145"/>
+  </g>
+  <g fill="none" stroke="#53d2c1" stroke-width="17" stroke-linecap="round">
+    <path d="M55 145 C70 78 185 78 205 145 M205 145 C190 215 70 215 55 145"/>
+    <path d="M305 145 C320 78 435 78 455 145 M455 145 C440 215 320 215 305 145"/>
+    <path d="M555 145 C580 83 612 78 625 80 M655 80 C678 84 697 111 705 145 M705 145 C690 215 570 215 555 145"/>
+  </g>
+  <g fill="none" stroke="#ff8a7b" stroke-width="19" stroke-linecap="round">
+    <path d="M356 82 367 80 M393 80 404 82 M370 205 381 207 M390 207 401 205"/>
+    <path d="M610 80 620 79 M660 81 670 83 M620 205 630 207 M650 207 660 205"/>
+  </g>
+  <path d="M375 60v34" stroke="#ffc46b" stroke-width="9" stroke-linecap="round"/>
+  <path d="M630 58v42" stroke="#ff8a7b" stroke-width="9" stroke-linecap="round"/>
+</svg>

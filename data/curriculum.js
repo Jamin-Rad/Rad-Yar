@@ -1285,7 +1285,7 @@ export const CURRICULUM = [
           { id: 'metakarpale-frakturen', title: { de: 'Metakarpale Frakturen', en: 'Metacarpal Fractures', fa: 'شکستگی‌های متاکارپ' }, group: ['Handgelenk & Hand'], tags: ['Rö'], diff: 1, link: '/msk/trauma/metakarpale-frakturen', mcqLink: '/ueben/quiz?fach=msk&n=1&themen=metakarpale-frakturen', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'fingerfrakturen', title: { de: 'Fingerfrakturen', en: 'Finger Fractures', fa: 'شکستگی‌های انگشت' }, group: ['Handgelenk & Hand'], tags: ['Rö'], diff: 1 },
           { id: 'proximale-femurfraktur', title: { de: 'Proximale Femurfraktur', en: 'Proximal Femur Fracture', fa: 'شکستگی پروگزیمال فمور' }, group: ['Hüfte & Becken'], tags: ['Rö','CT'], diff: 2 },
-          { id: 'beckenringfraktur', title: { de: 'Beckenringfraktur', en: 'Pelvic Ring Fracture', fa: 'شکستگی حلقه لگن' }, group: ['Hüfte & Becken'], tags: ['CT'], diff: 3 },
+          { id: 'beckenringfraktur', title: { de: 'Beckenringfraktur', en: 'Pelvic Ring Fracture', fa: 'شکستگی حلقه لگن' }, group: ['Hüfte & Becken'], tags: ['CT'], diff: 3, link: '/msk/trauma/beckenringfraktur', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'distale-femurfraktur', title: { de: 'Distale Femurfraktur', en: 'Distal Femur Fracture', fa: 'شکستگی دیستال فمور' }, group: ['Knie & Unterschenkel'], tags: ['Rö'], diff: 2 },
           { id: 'tibiakopffraktur', title: { de: 'Tibiakopffraktur', en: 'Tibial Plateau Fracture', fa: 'شکستگی پلاتوی تیبیا' }, group: ['Knie & Unterschenkel'], tags: ['Rö','CT'], diff: 2 },
           { id: 'patellafraktur-trauma', title: { de: 'Patellafraktur', en: 'Patella Fracture', fa: 'شکستگی کشکک (پاتلا)' }, group: ['Knie & Unterschenkel'], tags: ['Rö'], diff: 1 },
