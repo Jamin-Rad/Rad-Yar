@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" role="presentation" aria-hidden="true">
+  <defs>
+    <linearGradient id="bone" x2="0" y2="1"><stop stop-color="#f2d8b9"/><stop offset="1" stop-color="#d3aa83"/></linearGradient>
+    <linearGradient id="sheath" x2="0" y2="1"><stop stop-color="#d8f5f4"/><stop offset="1" stop-color="#79d6d0"/></linearGradient>
+  </defs>
+  <rect width="760" height="440" rx="28" fill="#f7fbfc"/>
+  <!-- Distal radius and its radial styloid -->
+  <path d="M300 105 Q365 85 430 106 L447 205 Q456 235 472 253 L443 315 Q380 337 315 315 L291 250 Q308 225 305 196 Z" fill="url(#bone)" stroke="#a87954" stroke-width="4"/>
+  <path d="M430 168 Q477 181 492 222 L473 257 Q451 243 441 211Z" fill="#c99b73" stroke="#a87954" stroke-width="3"/>
+  <line x1="492" y1="236" x2="605" y2="236" stroke="#566a78" stroke-width="2"/>
+  <!-- First extensor compartment and its two tendons -->
+  <path d="M191 92 Q222 76 249 94 L330 244 Q337 261 321 273 Q301 284 288 264 L184 115 Q176 103 191 92Z" fill="url(#sheath)" stroke="#168f99" stroke-width="4"/>
+  <path d="M201 102 L305 257" fill="none" stroke="#137bb5" stroke-width="13" stroke-linecap="round"/>
+  <path d="M218 96 L322 249" fill="none" stroke="#d06ab2" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="214" cy="109" r="5" fill="#fff"/><circle cx="311" cy="252" r="5" fill="#fff"/>
+  <line x1="301" y1="236" x2="115" y2="334" stroke="#137bb5" stroke-width="2"/>
+  <text x="38" y="350" fill="#137bb5" font-family="Arial,sans-serif" font-size="15" font-weight="700">APL</text>
+  <line x1="322" y1="247" x2="539" y2="340" stroke="#d06ab2" stroke-width="2"/>
+  <text x="551" y="351" fill="#a24288" font-family="Arial,sans-serif" font-size="15" font-weight="700">EPB</text>
+</svg>
