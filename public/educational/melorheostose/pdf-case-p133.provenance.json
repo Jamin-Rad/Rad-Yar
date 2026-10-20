@@ -1,0 +1,11 @@
+{
+  "asset": "pdf-case-p133.jpg",
+  "sourceFile": "MSK.pdf",
+  "sourcePdfPage": 133,
+  "printedPage": 132,
+  "sourcePageIdentifier": "Radiopaedia rID 199384",
+  "sourceContributor": "Not identified on the supplied page",
+  "reuseBasis": "User explicitly authorized use of figures contained in the supplied PDFs.",
+  "transformation": "Crop of the left-hand radiograph shown on PDF p.133; no diagnostic overlays or labels added.",
+  "limitations": "The supplied page names rID 199384 but gives no contributor name or external licence statement. No contributor or licence is inferred. The image is a single hand radiograph and does not independently establish the full distribution or all text-described features."
+}

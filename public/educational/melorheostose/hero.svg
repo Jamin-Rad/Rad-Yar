@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-labelledby="title desc">
+  <title id="title">Schematic flowing cortical hyperostosis</title>
+  <desc id="desc">A non-diagnostic schematic long bone with irregular flowing cortical thickening along one side.</desc>
+  <defs><linearGradient id="bone" x2="0" y2="1"><stop stop-color="#f8f2e7"/><stop offset="1" stop-color="#d8c7ab"/></linearGradient><filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.4"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#0b1720" flood-opacity=".22"/></filter></defs>
+  <g filter="url(#shadow)" stroke="#37576a" stroke-width="7" stroke-linejoin="round">
+    <path d="M260 42c-38 0-62 18-62 49 0 27 19 43 20 67l-2 105c-1 23-18 37-18 61 0 35 27 53 62 53s62-18 62-53c0-24-17-38-18-61l-2-105c1-24 20-40 20-67 0-31-24-49-62-49z" fill="url(#bone)"/>
+    <path d="M222 142c-21 10-34 23-31 40 3 15 16 22 10 39-8 19-27 23-21 43 5 17 24 18 22 37-3 17-17 27-8 42 9 15 28 12 40-1 11-12 9-29 4-44-6-17 9-25 11-42 2-20-13-30-11-47l5-39z" fill="#a9c5d1" stroke="#527486"/>
+    <path d="M247 152c-4 12 4 24-1 37-5 15-13 26-9 39 4 12 13 17 10 30-3 14-9 23-4 35" fill="none" stroke="#7396a7" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <path d="M250 338c-1 13 4 23 13 31" fill="none" stroke="#50d3c1" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="263" cy="369" r="8" fill="#50d3c1"/>
+</svg>

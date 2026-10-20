@@ -1221,6 +1221,7 @@ export const CURRICULUM = [
         themen: [
           { id: 'osteoporose', title: { de: 'Osteoporose', en: 'Osteoporosis', fa: 'استئوپروز' }, tags: ['Rö'], diff: 1 },
           { id: 'morbus-paget', title: { de: 'Morbus Paget', en: "Paget's Disease", fa: 'بیماری پاژه (Morbus Paget)' }, tags: ['Rö','CT'], diff: 2, link: '/msk/knochenstoffwechsel/morbus-paget', inProgress: true, updatedAt: '2026-10-19' },
+          { id: 'melorheostose', title: { de: 'Melorheostose', en: 'Melorheostosis', fa: 'ملوره‌اوستوز' }, tags: ['Rö','CT','MRT'], diff: 2, link: '/msk/knochenstoffwechsel/melorheostose', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'renale-osteodystrophie', title: { de: 'Renale Osteodystrophie', en: 'Renal Osteodystrophy', fa: 'استئودیستروفی کلیوی' }, tags: ['Rö'], diff: 2 },
           { id: 'rachitis', title: { de: 'Rachitis', en: 'Rickets', fa: 'راشیتیسم' }, tags: ['Rö'], diff: 2 },
         ],
