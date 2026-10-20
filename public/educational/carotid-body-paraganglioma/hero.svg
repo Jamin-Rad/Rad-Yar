@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" role="img" aria-label="Schematic carotid bifurcation with a mass between the branches">
+  <rect x="5" y="5" width="390" height="240" rx="22" fill="#fff" stroke="#d8dee8" stroke-width="2"/>
+  <path d="M199 215 C199 170 198 137 199 111 C199 91 181 70 154 39" fill="none" stroke="#24304a" stroke-width="22" stroke-linecap="round"/>
+  <path d="M201 111 C204 87 229 65 255 39" fill="none" stroke="#24304a" stroke-width="22" stroke-linecap="round"/>
+  <path d="M200 130 C174 127 155 108 151 83 C166 61 188 54 201 70 C215 55 240 61 251 84 C247 109 226 127 200 130Z" fill="#f0e5f1" stroke="#713574" stroke-width="4"/>
+  <path d="M184 138 155 169m61-31 29 31" stroke="#38aeb1" stroke-width="3" stroke-dasharray="6 6"/>
+  <circle cx="200" cy="117" r="6" fill="#d84b42"/>
+</svg>
