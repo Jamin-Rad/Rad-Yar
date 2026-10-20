@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" role="img" aria-label="">
+  <rect width="900" height="480" rx="28" fill="#12262d"/>
+  <path d="M350 48c-50-13-94 17-101 58-8 41 18 74 56 87l38 12-38 66-43 91c-12 25 0 58 27 73 29 16 62 4 77-27l49-99 47-83 58-10c43-8 66-49 51-88-15-39-57-54-95-37l-56 25-46-15c-9-3-17-10-24-17Z" fill="#dbc19f" stroke="#f3e5d4" stroke-width="6" stroke-linejoin="round"/>
+  <!-- Numbered markers show anatomical regions only; they do not depict fracture-line orientation. -->
+  <g font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#12262d">
+    <g><circle cx="337" cy="178" r="20" fill="#5bd0d8"/><text x="337" y="186">1</text></g>
+    <g><circle cx="390" cy="225" r="20" fill="#86c68a"/><text x="390" y="233">2</text></g>
+    <g><circle cx="435" cy="267" r="20" fill="#f0c36b"/><text x="435" y="275">3</text></g>
+    <g><circle cx="510" cy="187" r="20" fill="#e57b59"/><text x="510" y="195">4</text></g>
+    <g><circle cx="485" cy="235" r="20" fill="#c879c7"/><text x="485" y="243">5</text></g>
+    <g><circle cx="446" cy="329" r="20" fill="#bb92e5"/><text x="446" y="337">6</text></g>
+  </g>
+</svg>

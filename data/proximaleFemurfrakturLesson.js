@@ -1,0 +1,100 @@
+const L = (de, en, fa) => ({ de, en, fa })
+
+export const PROXIMALE_FEMURFRAKTUR_LESSON = {
+  id: 'proximale-femurfraktur',
+  title: L('Proximale Femurfraktur', 'Proximal femoral fractures', 'شکستگی‌های پروگزیمال فمور'),
+  hero: '/educational/proximale-femurfraktur/hero.svg',
+  sourceNote: L(
+    'Begrenzter Lehrumfang nach MSK.pdf, PDF S. 29–30 (Druck S. 28–29). Die Pauwels-Grenze 30°/70° in der PDF weicht von der AO-Einteilung 30°/50° ab; hier wird die AO-Einteilung verwendet. Die perfusionsbezogenen Garden-Aussagen werden nicht als Messung oder sichere individuelle Prognose übernommen.',
+    'Bounded teaching scope based on MSK.pdf, PDF pp. 29–30 (printed pp. 28–29). The PDF Pauwels boundary of 30°/70° differs from the AO 30°/50° convention; this lesson uses the AO convention. The PDF’s Garden/perfusion statements are not presented as a perfusion measurement or certain individual prognosis.',
+    'دامنهٔ آموزشی محدود بر پایهٔ MSK.pdf، صفحات PDF ۲۹ تا ۳۰ (صفحات چاپی ۲۸ تا ۲۹). مرز Pauwels در PDF یعنی ۳۰/۷۰ درجه با قرارداد AO یعنی ۳۰/۵۰ درجه تفاوت دارد؛ این درس قرارداد AO را به‌کار می‌برد. گزاره‌های PDF دربارهٔ Garden و پرفیوژن به‌عنوان اندازه‌گیری پرفیوژن یا پیش‌آگهی قطعی فردی ارائه نمی‌شوند.'
+  ),
+  sections: [
+    {
+      id: 'regions', icon: 'clinical',
+      title: L('Wo verläuft die Frakturlinie?', 'Where does the fracture line run?', 'خط شکستگی در کدام ناحیه است؟'),
+      lead: L(
+        'Beginnen Sie mit der Lage zur Trochanterregion und zum Schenkelhals. Die Richtung der Linie hilft, das Muster zu benennen; sie ist für sich allein keine vollständige Stabilitäts- oder Therapieentscheidung.',
+        'Start with the relationship to the trochanters and femoral neck. The line direction helps name the pattern; by itself it does not provide a complete stability or treatment decision.',
+        'ابتدا محل را نسبت به تروکانترها و گردن فمور مشخص کنید. جهت خط به نام‌گذاری الگو کمک می‌کند، اما به‌تنهایی برای تعیین کامل پایداری یا درمان کافی نیست.'
+      ),
+      rows: [
+        [L('31A · Pertrochantär', '31A · Pertrochanteric', '31A · پِرتروکانتریک'), L('Die Frakturlinie zieht im PDF von lateral-kranial am Trochanter major nach medial-kaudal zum Trochanter minor. Beurteilen Sie zusätzlich Fragmente und laterale Wand; eine einfache Regel zur Stabilität ersetzt keine Gesamtbeurteilung.', 'The PDF describes a line from superolateral at the greater trochanter toward inferomedial at the lesser trochanter. Also assess fragments and the lateral wall; a simple stability rule does not replace full assessment.', 'PDF خط را از بخش فوقانی‌ـ‌خارجی کنار تروکانتر بزرگ به سمت تحتانی‌ـ‌داخلی و تروکانتر کوچک توصیف می‌کند. قطعات و دیوارهٔ خارجی را هم بررسی کنید؛ یک قاعدهٔ سادهٔ پایداری جای ارزیابی کامل را نمی‌گیرد.')],
+        [L('31A · Intertrochantär', '31A · Intertrochanteric', '31A · اینترتروکانتریک'), L('Die Linie liegt zwischen Trochanter major und minor. Die genaue AO-Untergruppe richtet sich auch nach Fragmentierung und lateraler Wand.', 'The line lies between the greater and lesser trochanters. The exact AO subgroup also depends on fragmentation and the lateral wall.', 'خط بین تروکانتر بزرگ و کوچک قرار دارد. زیرگروه دقیق AO به قطعه‌قطعه‌شدن و وضعیت دیوارهٔ خارجی نیز وابسته است.')],
+        [L('31A · Reverse obliquity', '31A · Reverse obliquity', '31A · مورب معکوس'), L('Im PDF verläuft die Linie von medial-kranial nach lateral-kaudal. Benennen Sie diese Richtung ausdrücklich; die Abbildung allein legt keine individuelle Stabilitäts- oder Implantatentscheidung fest.', 'The PDF shows a line running from superomedial to inferolateral. Name this direction explicitly; the diagram alone does not determine individual stability or implant choice.', 'در PDF خط از فوقانی‌ـ‌داخلی به تحتانی‌ـ‌خارجی می‌رود. این جهت را صریح نام ببرید؛ شکل به‌تنهایی پایداری فرد یا نوع وسیلهٔ درمان را تعیین نمی‌کند.')],
+        [L('31A · Subtrochantär', '31A · Subtrochanteric', '31A · ساب‌تروکانتریک'), L('Unterhalb des Trochanter minor; die PDF nennt als Näherung bis etwa 5 cm distal. Grenzdefinitionen können variieren.', 'Below the lesser trochanter; the PDF gives approximately up to 5 cm distal as a guide. Boundary definitions can vary.', 'پایین‌تر از تروکانتر کوچک؛ PDF به‌طور تقریبی تا حدود ۵ سانتی‌متر پایین‌تر را ذکر می‌کند. تعریف مرز ممکن است متفاوت باشد.')],
+        [L('31B · Medialer Schenkelhals', '31B · Medial femoral neck', '31B · گردن داخلی فمور'), L('Intrakapsulär; subkapital oder transzervikal. Hier beschreiben Garden und Pauwels unterschiedliche Merkmale derselben Frakturfamilie.', 'Intracapsular; subcapital or transcervical. Garden and Pauwels describe different features within this fracture family.', 'داخل‌کپسولی؛ ساب‌کاپیتال یا ترانس‌سرویکال. Garden و Pauwels جنبه‌های متفاوتی از این خانوادهٔ شکستگی را توصیف می‌کنند.')],
+        [L('31B · Lateraler / basozervikaler Hals', '31B · Lateral / basicervical neck', '31B · گردن خارجی / قاعده‌ای'), L('Am Übergang von Schenkelhals und Trochanterregion. Die PDF ordnet es extrakapsulär ein; an der Kapselansatzgrenze kann die genaue Beziehung variieren.', 'At the junction of the femoral neck and trochanteric region. The PDF labels it extracapsular; at the capsular attachment, the exact relationship can vary.', 'در محل اتصال گردن فمور به ناحیهٔ تروکانتر. PDF آن را خارج‌کپسولی طبقه‌بندی می‌کند؛ در مرز اتصال کپسول، رابطهٔ دقیق ممکن است متفاوت باشد.')],
+      ],
+      image: '/educational/proximale-femurfraktur/fracture-zones.svg',
+      imageAlt: L('Code-Schema des proximalen Femurs mit sechs farbigen Markierungen anatomischer Regionen; keine Patientenaufnahme.', 'Code-native schematic of the proximal femur with six colored anatomical-region markers; not a patient image.', 'شماتیک کدنویسی‌شده از فمور پروگزیمال با شش نشانگر رنگی نواحی آناتومیک؛ تصویر بیمار نیست.'),
+      imageCaption: L('Regionsschema nach der Übersicht in MSK.pdf, S. 29. Es markiert nur die anatomische Lage; Frakturlinien und ihre entgegengesetzten Richtungen werden im Text beschrieben. Keine Röntgen- oder CT-Aufnahme.', 'Region schematic adapted from the overview in MSK.pdf, p. 29. It marks anatomical location only; fracture lines and their opposite directions are described in the text. Not a radiograph or CT image.', 'طرح نواحی بر پایهٔ نمای کلی MSK.pdf، صفحهٔ ۲۹. فقط محل آناتومیک را نشان می‌دهد؛ خطوط شکستگی و جهت‌های مخالف آن‌ها در متن شرح داده شده‌اند. تصویر رادیوگرافی یا CT نیست.'),
+      imageLegend: [
+        L('1 · medialer Schenkelhals', '1 · medial femoral neck', '۱ · گردن داخلی فمور'),
+        L('2 · lateraler / basozervikaler Hals', '2 · lateral / basicervical neck', '۲ · گردن خارجی / قاعده‌ای'),
+        L('3 · intertrochantär', '3 · intertrochanteric', '۳ · اینترتروکانتریک'),
+        L('4 · pertrochantäre Region', '4 · pertrochanteric region', '۴ · ناحیهٔ پِرتروکانتریک'),
+        L('5 · reverse obliquity · Trochanterregion', '5 · reverse obliquity · trochanteric region', '۵ · مورب معکوس · ناحیهٔ تروکانتر'),
+        L('6 · subtrochantär', '6 · subtrochanteric', '۶ · ساب‌تروکانتریک'),
+      ],
+    },
+    {
+      id: 'classifications', icon: 'imaging',
+      title: L('Was beschreiben Pauwels und Garden?', 'What do Pauwels and Garden describe?', 'Pauwels و Garden چه چیزی را توصیف می‌کنند؟'),
+      lead: L(
+        'Pauwels ordnet die Neigung der Frakturlinie ein; Garden beschreibt Vollständigkeit und Dislokation am Schenkelhals. Die Systeme beantworten verschiedene Fragen und sind keine direkte Messung der Durchblutung.',
+        'Pauwels classifies fracture-line inclination; Garden describes completeness and displacement of femoral-neck fractures. The systems answer different questions and do not directly measure perfusion.',
+        'Pauwels شیب خط شکستگی را طبقه‌بندی می‌کند؛ Garden کامل‌بودن و جابه‌جایی شکستگی گردن فمور را توصیف می‌کند. این دو به پرسش‌های متفاوت پاسخ می‌دهند و پرفیوژن را مستقیماً اندازه نمی‌گیرند.'
+      ),
+      subTables: [
+        {
+          title: L('Pauwels · Winkel zur Horizontalen', 'Pauwels · angle to the horizontal', 'Pauwels · زاویه نسبت به افق'),
+          rows: [
+            [L('Typ I', 'Type I', 'نوع I'), L('< 30°', '< 30°', 'کمتر از ۳۰°'), L('Flachere Frakturlinie', 'More horizontal fracture line', 'خط شکستگی کم‌شیب‌تر')],
+            [L('Typ II', 'Type II', 'نوع II'), L('30°–50°', '30°–50°', '۳۰ تا ۵۰°'), L('Mittlere Neigung', 'Intermediate inclination', 'شیب میانی')],
+            [L('Typ III', 'Type III', 'نوع III'), L('> 50°', '> 50°', 'بیشتر از ۵۰°'), L('Steilere Frakturlinie', 'Steeper fracture line', 'خط شکستگی پرشیب‌تر')],
+          ],
+        },
+        {
+          title: L('Garden · Vollständigkeit und Dislokation', 'Garden · completeness and displacement', 'Garden · کامل‌بودن و جابه‌جایی'),
+          rows: [
+            [L('I', 'I', 'I'), L('Inkomplett; nicht disloziert, oft valgisch impaktiert.', 'Incomplete; undisplaced, often valgus-impacted.', 'ناقص؛ بدون جابه‌جایی و اغلب با ایمپکشن والگوس.')],
+            [L('II', 'II', 'II'), L('Komplett, aber nicht disloziert.', 'Complete but undisplaced.', 'کامل، اما بدون جابه‌جایی.')],
+            [L('III', 'III', 'III'), L('Komplett und teilweise disloziert; ein Teil der Kontaktfläche bleibt erhalten.', 'Complete and partially displaced; some contact remains.', 'کامل و تا حدی جابه‌جا؛ بخشی از سطح تماس باقی می‌ماند.')],
+            [L('IV', 'IV', 'IV'), L('Komplett und vollständig disloziert.', 'Complete and fully displaced.', 'کامل و با جابه‌جایی کامل.')],
+          ],
+        },
+      ],
+      visuals: [
+        { src: '/educational/proximale-femurfraktur/pauwels-angles.svg', alt: L('Vereinfachte Winkelskizze: Frakturlinien mit zunehmender Neigung zur Horizontalen.', 'Simplified angle schematic: fracture lines with increasing inclination to the horizontal.', 'شماتیک سادهٔ زاویه: خطوط شکستگی با شیب افزاینده نسبت به افق.'), caption: L('Pauwels ordnet die Linienneigung ein. Die Winkelgrenzen in dieser Lektion folgen AO (30°/50°); MSK.pdf druckt abweichend 30°/70°.', 'Pauwels classifies line inclination. This lesson uses AO thresholds (30°/50°); MSK.pdf prints different cutoffs of 30°/70°.', 'Pauwels شیب خط را طبقه‌بندی می‌کند. این درس از مرزهای AO یعنی ۳۰/۵۰ درجه استفاده می‌کند؛ MSK.pdf به‌اشتباه ۳۰/۷۰ درجه را چاپ کرده است.') },
+        { src: '/educational/proximale-femurfraktur/garden-stages.svg', alt: L('Vereinfachte schematische Darstellung der vier Garden-Stufen nach Vollständigkeit und Dislokation.', 'Simplified schematic of the four Garden stages by completeness and displacement.', 'نمای شماتیک سادهٔ چهار مرحلهٔ Garden بر اساس کامل‌بودن و جابه‌جایی.'), caption: L('Garden beschreibt das radiographische Dislokationsmuster. Es misst die Femurkopfperfusion nicht direkt und liefert keine sichere individuelle Nekroseprognose.', 'Garden describes the radiographic displacement pattern. It does not directly measure femoral-head perfusion or provide a certain individual necrosis prognosis.', 'Garden الگوی جابه‌جایی رادیوگرافیک را توصیف می‌کند. پرفیوژن سر فمور را مستقیماً نمی‌سنجد و پیش‌بینی قطعی نکروز برای فرد نمی‌دهد.') },
+      ],
+      note: L('Quellenkorrektur: MSK.pdf nennt für Pauwels II 30–70° und III >70°. AO Surgery Reference und die überprüfte Klassifikationsliteratur verwenden 30–50° und >50°. Die Einteilung bleibt beobachterabhängig. Garden III/IV können mit einem höheren Risiko für Komplikationen verbunden sein, sind aber keine Perfusionsmessung; die Literatur zeigt Unsicherheit bei Vergleichen der einzelnen Garden-Stufen.', 'Source correction: MSK.pdf gives 30–70° for Pauwels II and >70° for III. AO Surgery Reference and reviewed classification literature use 30–50° and >50°. Classification remains observer-dependent. Garden III/IV may be associated with increased complication risk, but are not perfusion measurements; literature is uncertain when comparing individual Garden stages.', 'اصلاح منبع: MSK.pdf برای Pauwels II زاویهٔ ۳۰ تا ۷۰ و برای III بیش از ۷۰ درجه آورده است. AO Surgery Reference و منابع بررسی‌شده از ۳۰ تا ۵۰ و بیش از ۵۰ درجه استفاده می‌کنند. این طبقه‌بندی به مشاهده‌گر وابسته است. Garden III/IV ممکن است با خطر بالاتر عوارض همراه باشند، اما اندازه‌گیری پرفیوژن نیستند؛ شواهد دربارهٔ مقایسهٔ تک‌تک مراحل Garden عدم قطعیت دارد.'),
+    },
+  ],
+  check: {
+    title: L('Selbstcheck im Klassifikationsabschnitt', 'Check your interpretation', 'خودآزمایی در بخش طبقه‌بندی'),
+    prompt: L('Ein intrakapsulärer Schenkelhalsbruch ist auf dem Röntgenbild vollständig und deutlich disloziert. Was beschreibt Garden hier am direktesten?', 'A femoral-neck fracture is complete and clearly displaced on radiographs. What does Garden describe most directly?', 'شکستگی داخل‌کپسولی گردن فمور در رادیوگرافی کامل و آشکارا جابه‌جا شده است. Garden مستقیماً چه چیزی را توصیف می‌کند؟'),
+    options: [
+      L('Vollständigkeit und Dislokationsgrad; die Perfusion wird damit nicht direkt gemessen.', 'Completeness and degree of displacement; perfusion is not directly measured.', 'کامل‌بودن و میزان جابه‌جایی؛ پرفیوژن مستقیماً اندازه‌گیری نمی‌شود.'),
+      L('Den exakten Blutfluss im medialen Femurkopfgefäß.', 'The exact blood flow in the medial femoral-head vessels.', 'جریان دقیق خون در عروق داخلی سر فمور.'),
+      L('Den Winkel der Frakturlinie zur Horizontalen.', 'The angle of the fracture line to the horizontal.', 'زاویهٔ خط شکستگی نسبت به افق.'),
+    ],
+    answer: 0,
+    explanation: L('Richtig. Garden beschreibt Vollständigkeit und Dislokation. Eine mögliche Gefährdung der Blutversorgung ist eine klinische Folgefrage, aber Garden misst den Blutfluss nicht direkt.', 'Correct. Garden describes completeness and displacement. Possible vascular compromise is a related clinical concern, but Garden does not directly measure blood flow.', 'درست است. Garden کامل‌بودن و جابه‌جایی را توصیف می‌کند. احتمال آسیب خون‌رسانی پرسشی بالینیِ مرتبط است، اما Garden جریان خون را مستقیماً اندازه نمی‌گیرد.'),
+    retry: L('Trennen Sie die radiographische Beschreibung der Fraktur von einer direkten Gefäß- oder Perfusionsmessung.', 'Separate the radiographic fracture description from a direct vascular or perfusion measurement.', 'توصیف رادیوگرافیک شکستگی را از اندازه‌گیری مستقیم عروق یا پرفیوژن جدا کنید.'),
+  },
+  summary: [
+    L('Zuerst Lage und Verlauf der Frakturlinie beschreiben: Trochanterregion oder Schenkelhals.', 'First describe location and line direction: trochanteric region or femoral neck.', 'ابتدا محل و مسیر خط شکستگی را توصیف کنید: ناحیهٔ تروکانتر یا گردن فمور.'),
+    L('Pauwels ordnet die Neigung ein; die hier verwendeten AO-Grenzen sind 30° und 50°.', 'Pauwels classifies inclination; the AO cutoffs used here are 30° and 50°.', 'Pauwels شیب را طبقه‌بندی می‌کند؛ مرزهای AO در این درس ۳۰ و ۵۰ درجه‌اند.'),
+    L('Garden ordnet Vollständigkeit und Dislokation ein, nicht die gemessene Perfusion.', 'Garden classifies completeness and displacement, not measured perfusion.', 'Garden کامل‌بودن و جابه‌جایی را طبقه‌بندی می‌کند، نه پرفیوژن اندازه‌گیری‌شده را.'),
+  ],
+  references: [
+    { tag: 'MSK.pdf · pp. 29–30', title: L('Nutzerquelle: proximale Femurfraktur, Frakturmuster und Klassifikationen', 'User source: proximal femoral fractures, patterns and classifications', 'منبع کاربر: شکستگی پروگزیمال فمور، الگوها و طبقه‌بندی‌ها'), citation: L('PDF S. 29–30; Druck S. 28–29. Die zwei Abbildungen sind als lokalisierte Konzeptdiagramme neu gezeichnet; keine Patientenaufnahme.', 'PDF pp. 29–30; printed pp. 28–29. Both figures were redrawn as localized concept diagrams; no patient image.', 'صفحات PDF ۲۹ تا ۳۰؛ صفحات چاپی ۲۸ تا ۲۹. دو شکل به صورت طرح‌واره‌های مفهومی بومی‌سازی‌شده بازترسیم شدند؛ تصویر بیمار نیستند.') },
+    { tag: 'AO Surgery Reference', title: L('AO Foundation: Pauwels-Winkel und Schenkelhalsfrakturen', 'AO Foundation: Pauwels angle and femoral-neck fractures', 'بنیاد AO: زاویهٔ Pauwels و شکستگی‌های گردن فمور'), href: 'https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/proximal-femur/femoral-neck-fracture-subcapital-impacted-or-nondisplaced/definition', citation: L('AO Surgery Reference: Typ I <30°, Typ II 30–50°, Typ III >50°.', 'AO Surgery Reference: type I <30°, type II 30–50°, type III >50°.', 'AO Surgery Reference: نوع I کمتر از ۳۰، نوع II از ۳۰ تا ۵۰، نوع III بیش از ۵۰ درجه.') },
+    { tag: 'AO Surgery Reference', title: L('AO Foundation: Basicervikale Schenkelhalsfrakturen', 'AO Foundation: basicervical femoral-neck fractures', 'بنیاد AO: شکستگی‌های قاعده‌ای گردن فمور'), href: 'https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/proximal-femur/femoral-neck-fracture-basicervical/definition', citation: L('AO beschreibt basicervikale Frakturen als extraartikulär, aber möglicherweise intrakapsulär.', 'AO describes basicervical fractures as extra-articular but potentially intracapsular.', 'AO شکستگی‌های قاعده‌ای گردن را خارج‌مفصلی اما گاهی داخل‌کپسولی توصیف می‌کند.') },
+    { tag: 'J Orthop Surg Res · 2016', title: L('Wang et al.: Pauwels-Klassifikation und häufige Fehlinterpretation der Winkelgrenzen', 'Wang et al.: Pauwels classification and common misinterpretation of angle cutoffs', 'Wang و همکاران: طبقه‌بندی Pauwels و بدفهمی رایج مرزهای زاویه'), href: 'https://doi.org/10.1186/s13018-016-0498-3', citation: 'J Orthop Surg Res. 2016;11:161. doi:10.1186/s13018-016-0498-3.' },
+    { tag: 'Int J Environ Res Public Health · 2022', title: L('Slobogean et al.: AVN-Risiko nach Schenkelhalsfraktur', 'Slobogean et al.: AVN risk after femoral-neck fracture', 'Slobogean و همکاران: خطر AVN پس از شکستگی گردن فمور'), href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9408780/', citation: 'Int J Environ Res Public Health. 2022;19(16):10050. doi:10.3390/ijerph191610050.' },
+    { tag: 'Eur J Orthop Surg Traumatol · 2022', title: L('van Embden et al.: Zuverlässigkeit radiologischer Klassifikationen', 'van Embden et al.: reliability of radiographic classifications', 'van Embden و همکاران: پایایی طبقه‌بندی‌های رادیوگرافیک'), href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8787877/', citation: 'Eur J Orthop Surg Traumatol. 2022;32:425–431. doi:10.1007/s00590-021-03135-5.' },
+  ],
+}

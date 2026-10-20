@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" role="img" aria-label="">
+  <rect width="900" height="300" rx="24" fill="#142c34"/>
+  <g font-family="Arial,sans-serif" text-anchor="middle" stroke-linecap="round">
+    <g transform="translate(35 30)"><rect width="250" height="240" rx="18" fill="#1e424c" stroke="#5ab9c2" stroke-width="3"/><text x="125" y="44" fill="#f2f6f5" font-size="23" font-weight="700">I · &lt;30°</text><path d="M45 190h160" stroke="#a7c8ca" stroke-width="3" stroke-dasharray="8 8"/><path d="M70 190l130-47" stroke="#f1e2cf" stroke-width="9"/><path d="M130 190a60 60 0 0 0 57-20" fill="none" stroke="#e9bc64" stroke-width="4"/></g>
+    <g transform="translate(325 30)"><rect width="250" height="240" rx="18" fill="#1e424c" stroke="#5ab9c2" stroke-width="3"/><text x="125" y="44" fill="#f2f6f5" font-size="23" font-weight="700">II · 30–50°</text><path d="M45 190h160" stroke="#a7c8ca" stroke-width="3" stroke-dasharray="8 8"/><path d="M70 190l107-107" stroke="#f1e2cf" stroke-width="9"/><path d="M130 190a60 60 0 0 0 42-18" fill="none" stroke="#e9bc64" stroke-width="4"/></g>
+    <g transform="translate(615 30)"><rect width="250" height="240" rx="18" fill="#1e424c" stroke="#5ab9c2" stroke-width="3"/><text x="125" y="44" fill="#f2f6f5" font-size="23" font-weight="700">III · &gt;50°</text><path d="M45 190h160" stroke="#a7c8ca" stroke-width="3" stroke-dasharray="8 8"/><path d="M70 190l62-110" stroke="#f1e2cf" stroke-width="9"/><path d="M130 190a60 60 0 0 0 31-51" fill="none" stroke="#e9bc64" stroke-width="4"/></g>
+  </g>
+</svg>
