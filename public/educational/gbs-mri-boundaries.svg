@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 390" role="img" aria-labelledby="title desc">
+  <title id="title">Guillain–Barré MRI: interpretive boundaries</title>
+  <desc id="desc">Non-diagnostic conceptual diagram. MRI is selected for atypical or uncertain presentations to assess nerve roots and look for mimics. Root enhancement is supportive but nonspecific; a normal study does not exclude Guillain–Barré syndrome.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#142f3b"/><stop offset="1" stop-color="#244d5a"/></linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#d7b16e"/></marker>
+  </defs>
+  <rect x="8" y="8" width="1164" height="374" rx="30" fill="url(#bg)" stroke="#426b78" stroke-width="3"/>
+  <g font-family="Arial, sans-serif" fill="#f4f7f7" text-anchor="middle">
+    <g transform="translate(38 52)">
+      <rect width="294" height="286" rx="22" fill="#183b48" stroke="#73c4cc" stroke-width="3"/>
+      <circle cx="40" cy="42" r="25" fill="#73c4cc"/><text x="40" y="50" font-size="22" font-weight="700" fill="#15333c">1</text>
+      <path d="M147 92v52m0-28-48 36m48-36 48 36m-48-8v48m0-27-36 38m36-38 37 38" fill="none" stroke="#a3dce0" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M147 185v40m0-23-30 26m30-26 31 26" fill="none" stroke="#e4bb72" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="147" cy="80" r="11" fill="#e4bb72"/>
+    </g>
+    <path d="M350 195h68" fill="none" stroke="#d7b16e" stroke-width="6" marker-end="url(#arrow)"/>
+    <g transform="translate(444 52)">
+      <rect width="294" height="286" rx="22" fill="#183b48" stroke="#73c4cc" stroke-width="3"/>
+      <circle cx="40" cy="42" r="25" fill="#73c4cc"/><text x="40" y="50" font-size="22" font-weight="700" fill="#15333c">2</text>
+      <rect x="82" y="92" width="130" height="130" rx="18" fill="#102831" stroke="#77bac5" stroke-width="4"/>
+      <path d="M147 108v90m0-62-37 28m37-28 37 28m-37 2v44" fill="none" stroke="#8ad1d4" stroke-width="10" stroke-linecap="round"/>
+      <path d="M100 166q47-40 94 0" fill="none" stroke="#e4bb72" stroke-width="7" stroke-dasharray="8 9" stroke-linecap="round"/>
+      <circle cx="147" cy="80" r="11" fill="#e4bb72"/>
+    </g>
+    <path d="M756 195h68" fill="none" stroke="#d7b16e" stroke-width="6" marker-end="url(#arrow)"/>
+    <g transform="translate(850 52)">
+      <rect width="294" height="286" rx="22" fill="#183b48" stroke="#d7b16e" stroke-width="3"/>
+      <circle cx="40" cy="42" r="25" fill="#d7b16e"/><text x="40" y="50" font-size="22" font-weight="700" fill="#15333c">3</text>
+      <path d="M83 123h128" stroke="#8bd0d3" stroke-width="12" stroke-linecap="round"/>
+      <circle cx="105" cy="123" r="14" fill="#e4bb72"/><circle cx="147" cy="123" r="14" fill="#e4bb72"/><circle cx="189" cy="123" r="14" fill="#e4bb72"/>
+      <path d="M83 190h128" stroke="#7896a0" stroke-width="9" stroke-linecap="round" stroke-dasharray="8 13"/>
+      <path d="m100 230 25 24 49-54" fill="none" stroke="#8bd0d3" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+</svg>
