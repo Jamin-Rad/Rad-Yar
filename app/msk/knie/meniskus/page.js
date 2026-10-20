@@ -14,6 +14,7 @@ import LotyschClassification from './LotyschClassification'
 import { DiscoidComparison, DiscoidMriSchematics } from './DiscoidSchematics'
 import template from '@/components/LessonTemplate.module.css'
 import contentStyles from './content.module.css'
+import { MENISCUS_PDF_P53_P56 } from '@/data/meniscusPdfAddendum'
 
 const TEMPLATE_CLASS_MAP = {
   page: 'page', header: 'header', topline: 'topline', breadcrumb: 'breadcrumb',
@@ -969,6 +970,7 @@ function ImageFigure({ src, alt, caption, aiNotice, zoomable = false, zoomLabel 
 }
 
 const SOURCES = [
+  { label: 'Yu et al. · Meniscal flounce MR imaging (Radiology, 1997)', href: 'https://pubs.rsna.org/doi/10.1148/radiology.203.2.9114114' },
   { label: 'MRI study of medial meniscus degeneration · Jerosch grades 0–4 (2022)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9054988/' },
   { label: 'Dillon et al. · Clinical significance of stage 2 meniscal abnormalities (1990)', href: 'https://pubmed.ncbi.nlm.nih.gov/2392029/' },
   { label: 'Simonetta et al. · Meniscus tears treatment: patterns and practical guide (2023)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10122773/' },
@@ -1162,6 +1164,18 @@ export default function MeniskusPage() {
 
           <Section id="mrt" eyebrow="02" title={copy.mri.title} lead="" {...sectionProps('mrt')}>
             <MeniscusTextLesson lang={lang} />
+            <div className={contentStyles.subSectionBlock} data-pdf-source-addendum="msk-53-56">
+              <h3 className={styles.subSectionTitle}>{MENISCUS_PDF_P53_P56.heading[lang] || MENISCUS_PDF_P53_P56.heading.de}</h3>
+              <div className={`${styles.splitGrid} ${contentStyles.rootsGrid}`}>
+                {MENISCUS_PDF_P53_P56.items.map(item => (
+                  <article className={contentStyles.normalCard} key={item.id}>
+                    <h3>{item.title[lang] || item.title.de}</h3>
+                    <p>{item.text[lang] || item.text.de}</p>
+                    {item.id === 'flounce' && <ImageFigure src="/msk/knie/meniskus/flounce-pdf-p53-rid39464.jpg" alt={{ de: 'Sagittales MRT des Innenmeniskus mit Pfeil auf die wellenförmige Innenkontur im Beispiel auf PDF-Seite 53.', en: 'Sagittal MRI of the medial meniscus with an arrow pointing to the wavy inner contour in the PDF p.53 example.', fa: 'MRI ساژیتال منیسک داخلی؛ پیکان به کانتور موج‌دار داخلی در نمونهٔ صفحهٔ ۵۳ PDF اشاره می‌کند.' }[lang] || 'Meniscal flounce example'} caption={{ de: 'Beispiel, keine allgemeingültige Regel: MSK.pdf, PDF-S. 53 (Druck-S. 52), sagittales MRT, rID 39464. Immer in Nachbarschichten und zusammen mit weiteren Risszeichen beurteilen.', en: 'Illustrative example, not a universal rule: MSK.pdf, PDF p.53 (printed p.52), sagittal MRI, rID 39464. Correlate with adjacent slices and other tear signs.', fa: 'فقط یک نمونه، نه قاعده‌ای همگانی: MSK.pdf، صفحهٔ PDF ۵۳ (چاپی ۵۲)، MRI ساژیتال، rID 39464. آن را با برش‌های مجاور و سایر نشانه‌های پارگی تطبیق دهید.' }[lang] || 'Illustrative source example; correlate with adjacent slices and other tear signs.'} />}
+                  </article>
+                ))}
+              </div>
+            </div>
           </Section>
 
           <Section id="grading" eyebrow="03" title={copy.grading.extendedTitle} lead="" {...sectionProps('grading')}>
