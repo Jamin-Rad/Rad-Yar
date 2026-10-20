@@ -1,0 +1,15 @@
+{
+  "source": "Abdomen.pdf supplied by the user",
+  "pdfPage": 14,
+  "printedPage": 13,
+  "visibleCaseIdentifier": "rID:206026",
+  "image": "source-mri-p14.jpg",
+  "panels": [
+    "Coronal T2",
+    "Axial T2w with source circle and arrow",
+    "Axial post-contrast T1; exact phase not labelled in the source",
+    "Axial post-contrast T1 after 10 minutes"
+  ],
+  "crop": "Four-panel MRI figure crop; source sequence labels and visible case identifier retained.",
+  "reuseAuthorization": "The user explicitly authorized reuse of figures contained in the supplied PDFs."
+}

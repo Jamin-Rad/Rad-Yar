@@ -2062,14 +2062,14 @@ const LEGACY_FLASHCARDS = [
       "fa": "با پارانشیم کبد تطابق می‌یابد، بدون واش‌اوت."
     },
     "explanation": {
-      "de": "Fehlendes Wash-out trotz starker arterieller Anreicherung ist ein wichtiges Argument gegen eine maligne Läsion wie das HCC.",
-      "en": "Absence of wash-out despite strong arterial enhancement is an important argument against a malignant lesion such as HCC.",
-      "fa": "نبود واش‌اوت به‌رغم تقویت شریانی قوی، استدلال مهمی علیه ضایعه بدخیم مانند HCC است."
+      "de": "Das Muster passt zur typischen FNH, schließt ein HCC aber nicht allein aus. Risikokontext und vollständige Phasenbeurteilung bleiben wichtig.",
+      "en": "The pattern fits typical FNH but does not alone exclude HCC. Risk context and full-phase assessment remain important.",
+      "fa": "این الگو با FNH تیپیک سازگار است، اما به‌تنهایی HCC را رد نمی‌کند. زمینهٔ خطر و ارزیابی کامل فازها همچنان مهم‌اند."
     },
     "diagram": {
-      "de": "Arteriell hell → portal/spät isodens → kein Wash-out",
-      "en": "Bright arterial → isodense portal/delayed → no wash-out",
-      "fa": "روشن شریانی → ایزودنس پورتال/تأخیری → بدون واش‌اوت"
+      "de": "Homogen arteriell → Angleichung ohne typisches Wash-out → passt im Kontext zur FNH; kein HCC-Ausschluss",
+      "en": "Homogeneous arterial → equalisation without typical wash-out → supports FNH in context; does not exclude HCC",
+      "fa": "تقویت شریانی هموژن → تطابق بدون واش‌اوت تیپیک → در زمینهٔ مناسب به نفع FNH است؛ HCC را رد نمی‌کند"
     }
   },
   {
@@ -2197,24 +2197,24 @@ const LEGACY_FLASHCARDS = [
       "fa": "تشخیص افتراقی"
     },
     "front": {
-      "de": "Welches Merkmal spricht gegen ein HCC und für eine FNH?",
-      "en": "Which feature argues against HCC and for FNH?",
-      "fa": "کدام ویژگی علیه HCC و به نفع FNH است؟"
+      "de": "Welches Muster passt eher zu typischer FNH, schließt HCC aber nicht allein aus?",
+      "en": "Which pattern favours typical FNH but does not alone exclude HCC?",
+      "fa": "کدام الگو بیشتر به نفع FNH تیپیک است، اما به‌تنهایی HCC را رد نمی‌کند؟"
     },
     "answer": {
-      "de": "Fehlendes Wash-out trotz kräftiger arterieller Anreicherung.",
-      "en": "Absence of wash-out despite strong arterial enhancement.",
-      "fa": "نبود واش‌اوت به‌رغم تقویت شریانی قوی."
+      "de": "Homogene arterielle Anreicherung ohne typisches Wash-out kann im passenden Gesamtkontext für FNH sprechen.",
+      "en": "Homogeneous arterial enhancement without typical wash-out can support FNH in the appropriate overall context.",
+      "fa": "تقویت شریانی هموژن بدون واش‌اوت تیپیک، در زمینهٔ کلیِ سازگار می‌تواند به نفع FNH باشد."
     },
     "explanation": {
-      "de": "Das HCC zeigt typischerweise ein Wash-out in der portalvenösen/Spätphase – die FNH nicht. Dieses Verhalten ist ein zentrales Unterscheidungsmerkmal.",
-      "en": "HCC typically shows wash-out in the portal venous/delayed phase – FNH does not. This behaviour is a key distinguishing feature.",
-      "fa": "HCC معمولاً در فاز پورتال/تأخیری واش‌اوت دارد - FNH ندارد. این رفتار یک ویژگی افتراقی کلیدی است."
+      "de": "Das Muster allein schließt ein HCC nicht aus. Risikokontext, vollständige Phasenbeurteilung und weitere Merkmale müssen mitbewertet werden.",
+      "en": "The pattern alone does not exclude HCC. Risk context, full-phase assessment and other features must also be considered.",
+      "fa": "این الگو به‌تنهایی HCC را رد نمی‌کند؛ زمینهٔ خطر، ارزیابی کامل فازها و سایر ویژگی‌ها نیز باید در نظر گرفته شوند."
     },
     "diagram": {
-      "de": "Hell arteriell + kein Wash-out → FNH statt HCC",
-      "en": "Bright arterial + no wash-out → FNH rather than HCC",
-      "fa": "روشن شریانی + بدون واش‌اوت → FNH نه HCC"
+      "de": "Homogen arteriell + kein typisches Wash-out → spricht im Kontext für FNH, kein HCC-Ausschluss",
+      "en": "Homogeneous arterial + no typical wash-out → supports FNH in context; does not exclude HCC",
+      "fa": "تقویت شریانی هموژن + بدون واش‌اوت تیپیک → در زمینهٔ مناسب به نفع FNH است؛ HCC را رد نمی‌کند"
     }
   },
   {

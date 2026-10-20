@@ -11,6 +11,7 @@ const routes = [
   'app/abdomen/leber/angiomyolipom/page.js',
   'app/abdomen/leber/psc-mrcp/page.js',
   'app/abdomen/leber/zystische-laesionen/page.js',
+  'app/abdomen/leber/fnh/page.js',
   'app/abdomen/gi/appendizitis/page.js',
   'app/abdomen/gi/untere-gi-blutung/page.js',
   'app/abdomen/gi/kolorektales-karzinom/page.js',
@@ -64,14 +65,14 @@ function topLevelKeys(body) {
 let errors = 0
 for (const relative of routes) {
   const source = fs.readFileSync(path.join(root, relative), 'utf8')
-  const anchor = source.search(/const\s+(?:C|COPY)\s*=\s*\{/)
+  const anchor = source.search(/const\s+(?:C|COPY|CONTENT)\s*=\s*\{/)
   if (anchor < 0) { console.error(`${relative}: no C/COPY locale object`); errors++; continue }
   const objectOpen = source.indexOf('{', anchor)
   const objectBody = balancedBlock(source, objectOpen)
   const blocks = {}
   let cursor = 0
   for (const lang of ['de', 'en', 'fa']) {
-    const match = new RegExp(`(?:^|,)\\s*${lang}\\s*:\\s*\\{`, 'm').exec(objectBody.slice(cursor))
+    const match = new RegExp(`(?:^|,)\\s*["']?${lang}["']?\\s*:\\s*\\{`, 'm').exec(objectBody.slice(cursor))
     if (!match) { console.error(`${relative}: missing ${lang} locale`); errors++; continue }
     const open = cursor + match.index + match[0].lastIndexOf('{')
     const body = balancedBlock(objectBody, open)

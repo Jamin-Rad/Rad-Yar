@@ -167,6 +167,31 @@
   gap: 12px;
 }
 
+.heroSourceFigure {
+  align-self: stretch;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: #10151c;
+}
+
+.heroSourceFigure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  object-fit: contain;
+}
+
+.heroSourceFigure figcaption {
+  padding: 10px 12px;
+  color: #e6edf3;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
 .heroStat {
   border-radius: 24px;
   padding: 20px;
@@ -290,8 +315,9 @@
   font-family: inherit;
 }
 
-.sectionHeader h2 {
+.sectionTitle {
   margin: 0;
+  display: block;
   color: var(--text-strong);
   font-family: var(--font-display);
   font-style: italic;
@@ -402,6 +428,26 @@
 }
 
 .table tr:last-child td { border-bottom: 0; }
+
+.inlineCheck {
+  margin: 18px 0;
+  padding: 18px;
+  border: 1px solid rgba(16, 185, 129, .3);
+  border-radius: 20px;
+  background: var(--surface-soft);
+}
+
+.inlineCheck h3 { margin: 0 0 12px; color: var(--text-strong); font-size: 18px; }
+.inlineCheck fieldset { display: grid; gap: 8px; margin: 0; padding: 0; border: 0; }
+.inlineCheck legend { margin-bottom: 8px; color: var(--text-soft); font-weight: 700; }
+.inlineCheck label { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); cursor: pointer; line-height: 1.55; }
+.inlineCheck input { margin-top: 5px; accent-color: #047857; }
+.checkSelected { border-color: #10b981 !important; }
+.checkFeedback { margin: 12px 0 0; padding: 12px 14px; border-radius: 12px; line-height: 1.6; }
+.checkCorrect { color: #145b49; background: #e8f7f2; }
+.checkIncorrect { color: #81500b; background: #fff3e5; }
+.sourceNote { margin: 12px 0; color: var(--text-muted); font-size: 13px; line-height: 1.55; }
+.sourceNote a { color: #10b981; text-underline-offset: 3px; }
 
 .callout {
   margin-top: 18px;

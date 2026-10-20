@@ -1009,7 +1009,7 @@ const LEGACY_QUESTION_BANK = {
         { "id": "D", "text": "Auftreten neuer peripherer Knoten" }
       ],
       "correct": "B",
-      "explanation": "Die FNH zeigt kein Wash-out und gleicht sich in der portalvenösen und Spätphase rasch dem Leberparenchym an – ein wichtiges Unterscheidungsmerkmal zu malignen Läsionen."
+      "explanation": "Das fehlende Wash-out mit rascher Angleichung passt zum typischen FNH-Muster, schließt ein HCC aber nicht allein aus. Risikokontext und vollständige Phasenbeurteilung bleiben wichtig."
     },
     {
       "id": "fnh-de-06",
@@ -1043,15 +1043,15 @@ const LEGACY_QUESTION_BANK = {
       "id": "fnh-de-08",
       "tags": ["fnh", "leber", "abdomen"],
       "fach": "abdomen",
-      "question": "Welches Merkmal hilft am meisten, eine FNH von einem HCC zu unterscheiden?",
+      "question": "Welches Muster spricht eher für eine typische FNH, schließt ein HCC für sich allein aber nicht aus?",
       "options": [
-        { "id": "A", "text": "Fehlendes Wash-out bei kräftiger arterieller Kontrastmittelaufnahme" },
-        { "id": "B", "text": "Vorhandensein einer echten Tumorkapsel" },
-        { "id": "C", "text": "Erhöhtes Alpha-Fetoprotein" },
-        { "id": "D", "text": "Multifokales Auftreten" }
+        { "id": "A", "text": "Homogene arterielle Kontrastmittelaufnahme ohne Wash-out im passenden Gesamtkontext" },
+        { "id": "B", "text": "Arterielle Kontrastmittelaufnahme mit Wash-out und Kapselzeichen bei Risikoleber" },
+        { "id": "C", "text": "Diskontinuierliche periphere Kontrastknoten mit zentripetaler Auffüllung" },
+        { "id": "D", "text": "Ringförmige arterielle Aufnahme mit verzögertem zentralem Wash-out" }
       ],
       "correct": "A",
-      "explanation": "Ein HCC zeigt typischerweise ein Wash-out in der portalvenösen/Spätphase, während die FNH trotz kräftiger arterieller Anreicherung kein Wash-out aufweist."
+      "explanation": "Homogene arterielle Kontrastmittelaufnahme ohne Wash-out passt eher zur FNH, ist aber kein alleiniger Ausschluss eines HCC. Risikokontext, vollständige Phasenbeurteilung und weitere Merkmale bleiben entscheidend."
     },
     {
       "id": "fnh-de-09",
@@ -2206,7 +2206,7 @@ const LEGACY_QUESTION_BANK = {
         { "id": "D", "text": "Appearance of new peripheral nodules" }
       ],
       "correct": "B",
-      "explanation": "FNH shows no wash-out and rapidly equalises with the liver parenchyma in the portal venous and delayed phases – an important distinguishing feature from malignant lesions."
+      "explanation": "No wash-out with rapid equalisation fits the typical FNH pattern but does not alone exclude HCC. Risk context and full-phase assessment remain important."
     },
     {
       "id": "fnh-en-06",
@@ -2240,15 +2240,15 @@ const LEGACY_QUESTION_BANK = {
       "id": "fnh-en-08",
       "tags": ["fnh", "leber", "abdomen"],
       "fach": "abdomen",
-      "question": "Which feature is most helpful to distinguish FNH from HCC?",
+      "question": "Which pattern favours typical FNH but does not by itself exclude HCC?",
       "options": [
-        { "id": "A", "text": "Absence of wash-out despite strong arterial enhancement" },
-        { "id": "B", "text": "Presence of a true tumour capsule" },
-        { "id": "C", "text": "Elevated alpha-fetoprotein" },
-        { "id": "D", "text": "Multifocal occurrence" }
+        { "id": "A", "text": "Homogeneous arterial hyperenhancement without wash-out in the appropriate overall context" },
+        { "id": "B", "text": "Arterial hyperenhancement with wash-out and capsule appearance in an at-risk liver" },
+        { "id": "C", "text": "Discontinuous peripheral enhancing nodules with centripetal fill-in" },
+        { "id": "D", "text": "Rim arterial enhancement with delayed central wash-out" }
       ],
       "correct": "A",
-      "explanation": "HCC typically shows wash-out in the portal venous/delayed phase, whereas FNH shows no wash-out despite strong arterial enhancement."
+      "explanation": "Homogeneous arterial hyperenhancement without wash-out favours FNH, but does not alone exclude HCC. Risk context, full-phase assessment and other features remain important."
     },
     {
       "id": "fnh-en-09",
@@ -3403,7 +3403,7 @@ const LEGACY_QUESTION_BANK = {
         { "id": "D", "text": "ظهور ندول‌های محیطی جدید" }
       ],
       "correct": "B",
-      "explanation": "FNH هیچ واش‌اوت نشان نمی‌دهد و در فاز پورتال و تأخیری به‌سرعت با پارانشیم کبد تطابق می‌یابد - یک ویژگی افتراقی مهم از ضایعات بدخیم."
+      "explanation": "نبود واش‌اوت همراه با تطابق سریع با الگوی تیپیک FNH سازگار است، اما به‌تنهایی HCC را رد نمی‌کند. زمینهٔ خطر و ارزیابی کامل فازها همچنان مهم‌اند."
     },
     {
       "id": "fnh-fa-06",
@@ -3437,15 +3437,15 @@ const LEGACY_QUESTION_BANK = {
       "id": "fnh-fa-08",
       "tags": ["fnh", "leber", "abdomen"],
       "fach": "abdomen",
-      "question": "کدام ویژگی بیشترین کمک به افتراق FNH از HCC می‌کند؟",
+      "question": "کدام الگو بیشتر به نفع FNH تیپیک است، اما به‌تنهایی HCC را رد نمی‌کند؟",
       "options": [
-        { "id": "A", "text": "نبود واش‌اوت به‌رغم تقویت شریانی قوی" },
-        { "id": "B", "text": "وجود کپسول واقعی تومور" },
-        { "id": "C", "text": "افزایش آلفافتوپروتئین" },
-        { "id": "D", "text": "وقوع چندکانونی" }
+        { "id": "A", "text": "تقویت شریانی هموژن بدون واش‌اوت، در زمینهٔ کلی سازگار" },
+        { "id": "B", "text": "تقویت شریانی همراه واش‌اوت و نمای کپسول در کبد پرخطر" },
+        { "id": "C", "text": "ندول‌های محیطی ناپیوسته با پرشدگی مرکزگرا" },
+        { "id": "D", "text": "تقویت حلقوی محیطی با واش‌اوت مرکزی تأخیری" }
       ],
       "correct": "A",
-      "explanation": "HCC معمولاً در فاز پورتال/تأخیری واش‌اوت دارد، در حالی که FNH به‌رغم تقویت شریانی قوی، واش‌اوت ندارد."
+      "explanation": "تقویت شریانی هموژن بدون واش‌اوت بیشتر به نفع FNH است، اما به‌تنهایی HCC را رد نمی‌کند. زمینهٔ خطر، ارزیابی همهٔ فازها و سایر ویژگی‌ها همچنان مهم‌اند."
     },
     {
       "id": "fnh-fa-09",
