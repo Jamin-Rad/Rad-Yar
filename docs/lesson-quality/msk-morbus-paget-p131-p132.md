@@ -15,7 +15,7 @@
 |---|---|---|---|---|---|
 | MP-131-A | MSK.pdf, PDF p. 131 / printed p. 130 | Definition: chronic, excessive and disorganised remodelling; increased osteoclast activity followed by inferior new bone | Essential | `pattern` | Condensed, attributed to PDF |
 | MP-131-B | p. 131 / printed 130 | Older-adult frequency claim; “second most common after osteoporosis” | Optional pending verification | `notice` | Omitted; not taught as an epidemiology fact |
-| MP-131-C | p. 131 / printed 130 | Mono-/polyostotic distribution; pelvis, spine, femur, skull | Supporting | Not expanded | Not required for this imaging lesson; hold for future scope |
+| MP-131-C | p. 131 / printed 130 | Often mono- or polyostotic; pelvis, spine, femur and skull named as common sites | Supporting | `context` distribution row | Added as a concise source-attributed orientation statement; site list is explicitly not ranked or a diagnostic rule |
 | MP-131-D | p. 131 / printed 130 | Osteolytic, mixed and osteosclerotic phases; mosaic structure/mechanical instability | Essential | `pattern`, phase diagram, check | Diagram explicitly conceptual, not patient imaging or inevitable individual progression |
 | MP-131-E | p. 131 / printed 130 | Coarsened trabeculae; increased bone volume and bowing of long bones | Essential | `imaging` | Source wording retained, translated |
 | MP-131-F | p. 131 / printed 130 | Skull: early circumscribed lucencies; late cotton-wool sclerosis | Essential | `imaging`, retrieval check | Timing attributed to PDF; no actual skull image on page |

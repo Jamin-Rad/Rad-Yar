@@ -56,6 +56,9 @@ for (const locale of ['de', 'en', 'fa']) {
   assert.ok(html.includes(locale === 'de' ? 'Klinische Leitlinie · 2019' : locale === 'en' ? 'Clinical guideline · 2019' : 'راهنمای بالینی · ۲۰۱۹'), `${locale} localized guideline tag`)
   assert.ok(html.includes(locale === 'de' ? 'Sklerotischer Umbau' : locale === 'en' ? 'Sclerotic remodelling' : 'بازسازی اسکلروتیک'), `${locale} concise phase caption`)
   assert.ok(html.includes(locale === 'de' ? 'keine eigenständige Erkrankung' : locale === 'en' ? 'not a separate disease' : 'بیماری مستقل'), `${locale} ivory vertebra sign clarification`)
+  assert.ok(html.includes(locale === 'de' ? 'häufig mono- oder polyostotisch' : locale === 'en' ? 'often monostotic or polyostotic' : 'اغلب تک‌استخوانی یا چنداستخوانی'), `${locale} source-described focality distribution`)
+  assert.ok(html.includes(locale === 'de' ? 'Becken, Wirbelsäule, Femur und Schädel' : locale === 'en' ? 'pelvis, spine, femur and skull' : 'لگن، ستون فقرات، فمور و جمجمه'), `${locale} common sites listed in the PDF`)
+  assert.ok(html.includes(locale === 'de' ? 'keine Rangfolge' : locale === 'en' ? 'not a ranked list' : 'رتبه‌بندی نیست'), `${locale} avoids overstating the source site list`)
   for (const id of ['pattern', 'imaging', 'context', 'check', 'take-home']) assert.ok(html.includes(`id="${id}"`), `${locale} section ${id}`)
 }
 assert.ok(fs.existsSync('public/educational/morbus-paget/hero.svg'), 'hero asset exists')
