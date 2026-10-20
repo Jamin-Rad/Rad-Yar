@@ -1597,7 +1597,7 @@ export const CURRICULUM = [
         icon: '🩻',
         themen: [
           { id: 'gefaesse-cta-mra-duplex', title: { de: 'CTA / MRA / Duplex', en: 'CTA / MRA / Duplex', fa: 'CTA / MRA / داپلکس' }, tags: ['CT','MRT','Sono'], diff: 1 },
-          { id: 'gefaesse-dsa', title: { de: 'DSA', en: 'DSA', fa: 'DSA' }, tags: ['DSA'], diff: 1 },
+          { id: 'gefaesse-dsa', title: { de: 'DSA', en: 'DSA', fa: 'DSA' }, tags: ['DSA'], diff: 1, link: '/technik/grundlagen#fluoro', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'gefaessanatomie-kollateralen', title: { de: 'Gefäßanatomie & Kollateralen', en: 'Vascular Anatomy & Collaterals', fa: 'آناتومی عروقی و عروق جانبی' }, tags: ['CT','MRT','DSA'], diff: 2, link: '/gefaesse/anatomie-untere-extremitaet', inProgress: true, updatedAt: '2026-10-20' },
         ],
       },
@@ -1639,8 +1639,8 @@ export const CURRICULUM = [
         title: { de: '1. Interventionelle Grundlagen', en: '1. Fundamentals of Intervention', fa: '۱. مبانی رادیولوژی مداخله‌ای' },
         icon: '🧭',
         themen: [
-          { id: 'ir-seldinger-technik', title: { de: 'Seldinger-Technik', en: 'Seldinger Technique', fa: 'تکنیک سلدینگر' }, tags: ['DSA'], diff: 1 },
-          { id: 'ir-materialien', title: { de: 'Materialien: Katheter, Drähte, Schleusen', en: 'Equipment: Catheters, Wires, Sheaths', fa: 'تجهیزات: کاتترها، وایرها و شیت‌ها' }, tags: ['DSA'], diff: 1 },
+          { id: 'ir-seldinger-technik', title: { de: 'Seldinger-Technik', en: 'Seldinger Technique', fa: 'تکنیک سلدینگر' }, tags: ['DSA'], diff: 1, inProgress: true, updatedAt: '2026-10-20' },
+          { id: 'ir-materialien', title: { de: 'Materialien: Katheter, Drähte, Schleusen', en: 'Equipment: Catheters, Wires, Sheaths', fa: 'تجهیزات: کاتترها، وایرها و شیت‌ها' }, tags: ['DSA'], diff: 1, link: '/technik/interventionelle-radiologie#ir-materialien', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'ir-komplikationen', title: { de: 'Komplikationen', en: 'Complications', fa: 'عوارض' }, tags: ['DSA'], diff: 2 },
           { id: 'ir-periprozedurales-management', title: { de: 'Periprozedurales Management', en: 'Periprocedural Management', fa: 'مدیریت پیرامون پروسیجر' }, tags: ['DSA'], diff: 2 },
         ],
@@ -1650,8 +1650,8 @@ export const CURRICULUM = [
         title: { de: '2. Vaskuläre Interventionen', en: '2. Vascular Interventions', fa: '۲. مداخلات عروقی' },
         icon: '🩸',
         themen: [
-          { id: 'ir-pta-stent', title: { de: 'PTA / Stent', en: 'PTA / Stent', fa: 'PTA / استنت' }, tags: ['DSA'], diff: 2 },
-          { id: 'ir-embolisation', title: { de: 'Embolisation', en: 'Embolization', fa: 'آمبولیزاسیون' }, tags: ['DSA'], diff: 2 },
+          { id: 'ir-pta-stent', title: { de: 'PTA / Stent', en: 'PTA / Stent', fa: 'PTA / استنت' }, tags: ['DSA'], diff: 2, link: '/technik/interventionelle-radiologie#ir-pta-stent', inProgress: true, updatedAt: '2026-10-20' },
+          { id: 'ir-embolisation', title: { de: 'Embolisation', en: 'Embolization', fa: 'آمبولیزاسیون' }, tags: ['DSA'], diff: 2, link: '/technik/interventionelle-radiologie#ir-embolisation', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'ir-thrombektomie-lyse', title: { de: 'Thrombektomie / Lyse', en: 'Thrombectomy / Thrombolysis', fa: 'ترومبکتومی / ترومبولیز' }, tags: ['DSA'], diff: 3 },
           { id: 'ir-evar-tevar', title: { de: 'EVAR / TEVAR', en: 'EVAR / TEVAR', fa: 'EVAR / TEVAR' }, tags: ['CT','DSA'], diff: 3 },
           { id: 'ir-tips', title: { de: 'TIPS', en: 'TIPS', fa: 'TIPS' }, tags: ['Sono','DSA'], diff: 3 },
@@ -1777,8 +1777,8 @@ export const CURRICULUM = [
         title: { de: '7. Fluoroskopie & Angiographie', en: '7. Fluoroscopy & Angiography', fa: '۷. فلوروسکوپی و آنژیوگرافی' },
         icon: '⌁',
         themen: [
-          { id: 'fluoroskopie-durchleuchtung', title: { de: 'Fluoroskopie / Durchleuchtung', en: 'Fluoroscopy', fa: 'فلوروسکوپی' }, tags: ['Rö'], diff: 2 },
-          { id: 'dsa-grundlagen', title: { de: 'Digitale Subtraktionsangiographie (DSA)', en: 'Digital Subtraction Angiography (DSA)', fa: 'آنژیوگرافی تفریقی دیجیتال (DSA)' }, tags: ['DSA'], diff: 2 },
+          { id: 'fluoroskopie-durchleuchtung', title: { de: 'Fluoroskopie / Durchleuchtung', en: 'Fluoroscopy', fa: 'فلوروسکوپی' }, tags: ['Rö'], diff: 2, link: '/technik/grundlagen#fluoro', inProgress: true, updatedAt: '2026-10-20' },
+          { id: 'dsa-grundlagen', title: { de: 'Digitale Subtraktionsangiographie (DSA)', en: 'Digital Subtraction Angiography (DSA)', fa: 'آنژیوگرافی تفریقی دیجیتال (DSA)' }, tags: ['DSA'], diff: 2, link: '/technik/interventionelle-radiologie#dsa-grundlagen', inProgress: true, updatedAt: '2026-10-20' },
         ],
       },
       {
