@@ -1,9 +1,10 @@
 const L = (de, en, fa) => ({ de, en, fa })
 
-const img = (src, de, en, fa, rid) => ({
+const img = (src, de, en, fa, rid, pdfSource) => ({
   src,
   caption: L(de, en, fa),
   ...(rid ? { radiopaediaUrl: `https://radiopaedia.org/cases/${rid}` } : {}),
+  ...(pdfSource ? { pdfSource } : {}),
 })
 
 export const HRCT_LESSONS = {
@@ -191,6 +192,7 @@ export const HRCT_LESSONS = {
   },
   'hrct-dichteminderung': {
     id: 'hrct-dichteminderung', slug: 'dichteminderung',
+    sourceReferences: [{ source: 'Thorax.pdf', pages: [24], printedPages: [23] }],
     title: L('HRCT: Dichteminderung', 'HRCT: Decreased Density', 'HRCT: کاهش دانسیته'),
     definition: L('Bulla, Zyste und Kaverne anhand von Wand, Umgebung und Entstehungsmechanismus unterscheiden.', 'Distinguish bulla, cyst and cavity by wall, surrounding lung and mechanism.', 'بولا، کیست و کاویتی را بر اساس دیواره، ریه اطراف و مکانیسم تفکیک کنید.'),
     heroCards: [
@@ -208,8 +210,8 @@ export const HRCT_LESSONS = {
           { title: L('Kaverne', 'Cavity', 'کاویتی'), text: L('Gasraum innerhalb einer Konsolidierung, eines Nodulus oder einer Raumforderung infolge Nekrose und Drainage.', 'Gas-filled space within consolidation, a nodule or a mass due to necrosis and drainage.', 'فضای گازی داخل کنسولیدیشن، ندول یا توده بر اثر نکروز و درناژ.') },
         ],
         images: [
-          img('/hrct/dichteminderung/image28.jpeg', 'Bulla · rID 7959', 'Bulla · rID 7959', 'بولا · rID 7959', 7959),
-          img('/hrct/dichteminderung/image29.jpeg', 'Pulmonale Zyste · rID 10493', 'Pulmonary cyst · rID 10493', 'کیست ریوی · rID 10493', 10493),
+          img('/hrct/dichteminderung/image28.jpeg', 'Bulla · rID 7959', 'Bulla · rID 7959', 'بولا · rID 7959', 7959, { source: 'Thorax.pdf', page: 24, printedPage: 23, radiopaediaId: 7959, match: 'Visually matched to the source-page axial CT panel; local asset derivation is not recorded.' }),
+          img('/hrct/dichteminderung/image29.jpeg', 'Pulmonale Zyste · rID 10493', 'Pulmonary cyst · rID 10493', 'کیست ریوی · rID 10493', 10493, { source: 'Thorax.pdf', page: 24, printedPage: 23, radiopaediaId: 10493, match: 'Visually matched to the source-page axial CT panel; local asset derivation is not recorded.' }),
           img('/hrct/dichteminderung/image30.jpeg', 'Kaverne · rID 16033', 'Cavity · rID 16033', 'کاویتی · rID 16033', 16033),
         ],
       },
