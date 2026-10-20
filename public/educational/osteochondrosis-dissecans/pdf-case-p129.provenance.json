@@ -1,0 +1,11 @@
+{
+  "asset": "pdf-case-p129.jpg",
+  "sourceFile": "MSK.pdf",
+  "sourcePdfPage": 129,
+  "printedPage": 128,
+  "sourcePageIdentifier": "rID 8298",
+  "sourceContributor": "Not identified on the supplied page",
+  "reuseBasis": "User explicitly authorized use of figures contained in the supplied PDFs.",
+  "transformation": "Crop of the radiograph and labelled T1/STIR MRI panels and page caption from PDF p.129; no diagnostic overlays added.",
+  "limitations": "The crop preserves source caption and modality labels. No external contributor identity or licence terms are claimed as independently verified."
+}
