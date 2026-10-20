@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" role="img" aria-label="HRCT acquisition concepts">
+<rect width="1000" height="520" rx="24" fill="#f5f9fb"/>
+<g fill="#fff" stroke="#b8d2d9" stroke-width="2">
+ <rect x="22" y="22" width="466" height="476" rx="18"/><rect x="512" y="22" width="466" height="476" rx="18"/>
+ <rect x="42" y="42" width="208" height="208" rx="14"/><rect x="260" y="42" width="208" height="208" rx="14"/>
+ <rect x="42" y="268" width="208" height="208" rx="14"/><rect x="260" y="268" width="208" height="208" rx="14"/>
+ <rect x="532" y="42" width="426" height="208" rx="14"/><rect x="532" y="268" width="426" height="208" rx="14"/>
+</g>
+<!-- Thin and thick sections: axial source planes with a thin versus thick z slab. -->
+<g stroke="#287f91" stroke-width="3" fill="none">
+ <path d="M78 98h132M78 108h132M78 118h132M78 128h132M78 138h132M78 148h132"/>
+ <path d="M286 91h156M286 119h156M286 147h156M286 175h156"/>
+</g>
+<rect x="120" y="93" width="48" height="60" fill="#48a6b1" opacity=".18" stroke="#168093" stroke-width="3"/>
+<rect x="338" y="86" width="50" height="96" fill="#a26d9b" opacity=".18" stroke="#a26d9b" stroke-width="3"/>
+<!-- Equal matrix sampling, smaller FOV gives smaller pixels. -->
+<g fill="#edf4f6" stroke="#718b92" stroke-width="1.5">
+ <rect x="70" y="294" width="150" height="150"/><rect x="70" y="294" width="150" height="150" fill="url(#grid)"/>
+ <rect x="294" y="294" width="150" height="150"/><rect x="322" y="322" width="94" height="94" fill="#e5f1f3" stroke="#168093" stroke-width="3"/>
+</g>
+<defs><pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0V25" fill="none" stroke="#8aa5ac" stroke-width="1"/></pattern><pattern id="gridSmall" width="15" height="15" patternUnits="userSpaceOnUse"><path d="M15 0H0V15" fill="none" stroke="#8aa5ac" stroke-width="1"/></pattern></defs>
+<rect x="322" y="322" width="94" height="94" fill="url(#gridSmall)" stroke="#168093" stroke-width="3"/>
+<!-- Expiration: the same low-attenuation region remains visible as the lung volume contracts. -->
+<g fill="#f4f7f8" stroke="#758e95" stroke-width="3">
+ <path d="M600 94q48-46 92 2v118q-46 38-92-2zM740 96q45-48 91-2v116q-45 40-91 2z"/>
+ <path d="M620 314q39-37 73 2v92q-37 30-73-2zM739 316q37-39 74-2v90q-37 32-74-2z"/>
+</g>
+<g fill="#52774b"><ellipse cx="657" cy="158" rx="18" ry="28"/><ellipse cx="675" cy="356" rx="14" ry="21"/></g>
+<path d="M704 157h30M704 355h30" stroke="#d47739" stroke-width="5"/><path d="m728 149 12 8-12 8M728 347l12 8-12 8" fill="#d47739"/>
+<!-- Prone comparison: posterior dependent opacity diminishes after repositioning. -->
+<g fill="#f4f7f8" stroke="#758e95" stroke-width="3">
+ <path d="M790 92q48-45 96 0v110q-48 40-96 0zM848 304q48-45 96 0v110q-48 40-96 0z"/>
+</g>
+<path d="M790 189q48 18 96 0v15q-48 38-96 0z" fill="#d97761" opacity=".82"/>
+<path d="M848 402q48 18 96 0v8q-48 35-96 0z" fill="#d97761" opacity=".18"/>
+<path d="M824 215v69" stroke="#a26d9b" stroke-width="4" stroke-dasharray="7 6"/><path d="m814 273 10 14 10-14" fill="#a26d9b"/>
+</svg>

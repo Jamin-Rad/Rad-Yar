@@ -213,7 +213,7 @@ export default function TechnikGrundlagenStandardPage() {
         {section.id === 'leber-mrt-protokoll' ? <><LiverProtocolFigure lang={lang}/><RetrievalCheck kind="liverProtocol" lang={lang}/></> : null}
         {section.id === 'mrcp-protokoll' ? <RetrievalCheck kind="mrcp" lang={lang}/> : null}
         {section.id === 'mrt-sicherheit' ? <MRIArtifactKnowledgeCheck lang={lang}/> : null}
-        {section.id === 'ct' ? <><CtReconstructionActions lang={lang}/><RetrievalCheck kind="ctPerfusion" lang={lang}/><RetrievalCheck kind="ctQuality" lang={lang}/></> : null}
+        {section.id === 'ct' ? <><CtReconstructionActions lang={lang}/><HrctActions lang={lang}/><RetrievalCheck kind="ctPerfusion" lang={lang}/><RetrievalCheck kind="ctQuality" lang={lang}/></> : null}
         {section.id === 'atom' ? <AtomKnowledgeCheck lang={lang}/> : null}
         {section.note?<aside className={styles.callout}><strong>{t(L('Quellenhinweis','Source limitation','محدودیت منبع'))}</strong><p>{t(section.note)}</p></aside>:null}
         {section.id === 'wirkung' ? <RetrievalCheck kind="effects" lang={lang}/> : null}
@@ -239,6 +239,21 @@ function CtReconstructionActions({ lang }) {
     <strong style={{ alignSelf: 'center' }}>{labels.title}</strong>
     <a href={`/ueben/quiz?fach=technik&n=1&themen=ct-rekonstruktion-nachverarbeitung&from=${from}`}>{labels.quiz}</a>
     <a href={`/flashcards/ct-rekonstruktion-nachverarbeitung?from=${from}`}>{labels.cards}</a>
+  </nav>
+}
+
+function HrctActions({ lang }) {
+  const returnTo = lang === 'de' ? '/technik/grundlagen#ct' : `/technik/grundlagen?lang=${lang}#ct`
+  const from = encodeURIComponent(returnTo)
+  const labels = {
+    de: { title: 'HRCT-Technik üben', quiz: 'MC-Frage zu Exspiration', cards: 'Fünf Lernkarten' },
+    en: { title: 'Practise HRCT technique', quiz: 'Expiratory CT MCQ', cards: 'Five flashcards' },
+    fa: { title: 'تمرین تکنیک HRCT', quiz: 'سؤال CT بازدمی', cards: 'پنج فلش‌کارت' },
+  }[lang]
+  return <nav aria-label={labels.title} style={{ display: 'flex', flexWrap: 'wrap', gap: 12, margin: '18px 0', padding: 14, border: '1px solid var(--border)', borderRadius: 14, background: 'var(--surface-soft)' }}>
+    <strong style={{ alignSelf: 'center' }}>{labels.title}</strong>
+    <a href={`/ueben/quiz?fach=technik&n=1&themen=hrct-technik&from=${from}`}>{labels.quiz}</a>
+    <a href={`/flashcards/hrct-technik?from=${from}`}>{labels.cards}</a>
   </nav>
 }
 

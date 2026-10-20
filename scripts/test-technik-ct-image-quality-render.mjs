@@ -9,17 +9,25 @@ import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
 import { FLASHCARD_TOPICS, getCardsByTopic } from '../data/flashcards.js'
 import { CT_ARTIFACTS_BLOCK, CT_QUALITY_BLOCK, CT_QUALITY_QUESTIONS, CT_QUALITY_TOPIC } from '../data/technikCTQuality.js'
 import { CT_RECONSTRUCTION_BLOCK, CT_RECONSTRUCTION_TOPIC } from '../data/technikCTReconstructionLesson.js'
+import { HRCT_TECHNIK_BLOCK, HRCT_TECHNIK_TOPIC } from '../data/technikHRCTLesson.js'
 
 const langs = ['de', 'en', 'fa']
 const section = TECHNIK_GRUNDLAGEN.sections.find(item => item.id === 'ct')
 assert.ok(section, 'existing CT section exists')
-assert.deepEqual(section.teachingBlocks, [CT_QUALITY_BLOCK, CT_ARTIFACTS_BLOCK, CT_RECONSTRUCTION_BLOCK, (await import('../data/technikCTPerfusionLesson.js')).CT_PERFUSION_BLOCK])
+assert.deepEqual(section.teachingBlocks, [CT_QUALITY_BLOCK, CT_ARTIFACTS_BLOCK, CT_RECONSTRUCTION_BLOCK, HRCT_TECHNIK_BLOCK, (await import('../data/technikCTPerfusionLesson.js')).CT_PERFUSION_BLOCK])
 assert.equal(section.teachingBlocks[0].rows.length, 5)
 assert.equal(CT_QUALITY_BLOCK.crossReference.href, '#ct-dose-geometry')
 assert.equal(section.teachingBlocks[1].rows.length, 6)
 assert.equal(CT_RECONSTRUCTION_BLOCK.rows.length, 4)
 assert.ok(fs.existsSync(`public${CT_RECONSTRUCTION_BLOCK.visual.src}`))
 assert.doesNotMatch(fs.readFileSync(`public${CT_RECONSTRUCTION_BLOCK.visual.src}`, 'utf8'), /<text\b/i, 'reconstruction SVG is language-neutral')
+assert.ok(fs.existsSync(`public${HRCT_TECHNIK_BLOCK.visual.src}`))
+assert.doesNotMatch(fs.readFileSync(`public${HRCT_TECHNIK_BLOCK.visual.src}`, 'utf8'), /<text\b/i, 'HRCT concept SVG is language-neutral')
+assert.equal(HRCT_TECHNIK_BLOCK.visual.legend.length, 4, 'each of four visual panels has a key')
+assert.match(fs.readFileSync(`public${HRCT_TECHNIK_BLOCK.visual.src}`, 'utf8'), /gridSmall|M 120 93|M 790 189/, 'HRCT diagram contains distinct sampling and maneuver visual primitives')
+assert.ok(MCQ_TOPIC_GROUPS.flatMap(group => group.topics).some(topic => topic.id === HRCT_TECHNIK_TOPIC.id), 'HRCT technique MCQ topic is discoverable')
+assert.ok(FLASHCARD_TOPICS.some(topic => topic.id === HRCT_TECHNIK_TOPIC.id), 'HRCT technique flashcard topic is registered')
+assert.equal(getCardsByTopic(HRCT_TECHNIK_TOPIC.id).length, 5)
 assert.ok(section.teachingBlocks[1].rows.some(row => /Partialvolumen|Partial volume|حجم جزئی/.test(row[0].de + row[0].en + row[0].fa)))
 assert.ok(section.teachingBlocks[1].visual.alt.fa && section.teachingBlocks[1].visual.caption.fa)
 assert.match(section.teachingBlocks[1].visual.caption.de, /größeres Voxel.*kleineres Voxel.*magenta Umrandung/i)
@@ -52,6 +60,24 @@ for (const lang of langs) {
   assert.match(mipCard.answer[lang], darkStructureText, `${lang}: MIP dark-structure limitation in flashcard`)
   const reconstructionCard = getCardsByTopic(CT_RECONSTRUCTION_TOPIC.id)[0]
   assert.ok(reconstructionCard.front[lang] && reconstructionCard.answer[lang], `${lang}: reconstruction flashcards localized`)
+  const hrctQuestion = QUESTION_BANK[lang].find(item => item.id === `hrct-technik-${lang}-expiratory`)
+  assert.ok(hrctQuestion, `${lang}: HRCT MCQ registered`)
+  assert.deepEqual(Object.keys(hrctQuestion.wrongExplanations).sort(), ['B','C','D'])
+  assert.equal(hrctQuestion.correct, 'A')
+  assert.equal(hrctQuestion.options.length, 4)
+  const wrongOptions = Object.fromEntries(hrctQuestion.options.filter(option => option.id !== 'A').map(option => [option.id, option.text]))
+  const distractorPatterns = {
+    de: { B:/Inspirationsserie.*Hypodensität/, C:/Bauchlage-Serie.*Air trapping.*abhängige Verdichtung/, D:/Exspirationsserie.*Fibrose/ },
+    en: { B:/Inspiratory series.*hypoattenuation/, C:/Prone series.*air trapping.*dependent posterior opacity/, D:/Expiratory series.*fibrosis/ },
+    fa: { B:/سری دمی.*کم‌دانسیته/, C:/سری دمر.*حبس هوا.*کدورت خلفی/, D:/سری بازدمی.*فیبروز/ },
+  }[lang]
+  for (const id of ['B','C','D']) {
+    assert.match(wrongOptions[id], distractorPatterns[id], `${lang}: distractor ${id} is a plausible maneuver/interpretation confusion`)
+    assert.ok(hrctQuestion.wrongExplanations[id].length > 35, `${lang}: distractor ${id} has specific feedback`)
+  }
+  for (const row of HRCT_TECHNIK_BLOCK.rows) assert.ok(row[0][lang] && row[1][lang], `${lang}: HRCT source point localized`)
+  for (const key of HRCT_TECHNIK_BLOCK.visual.legend) assert.ok(key[lang], `${lang}: HRCT visual key localized`)
+  assert.ok(HRCT_TECHNIK_BLOCK.note[lang] && getCardsByTopic(HRCT_TECHNIK_TOPIC.id)[0].answer[lang], `${lang}: HRCT scope note and flashcards localized`)
 }
 
 const require = createRequire(import.meta.url)
@@ -87,6 +113,12 @@ for (const lang of langs) {
   assert.ok(html.includes(CT_RECONSTRUCTION_BLOCK.note[lang]), `${lang}: exact localized source limitation renders`)
   for (const key of CT_RECONSTRUCTION_BLOCK.visual.legend) assert.ok(html.includes(key[lang]), `${lang}: visible left/centre/right panel key`)
   assert.ok(html.includes(CT_RECONSTRUCTION_TOPIC.id) && html.includes(lang === 'fa' ? 'تمرین بازسازی CT' : lang === 'en' ? 'Practise CT reconstruction' : 'CT-Rekonstruktion üben'), `${lang}: localized exercise actions render`)
+  assert.ok(html.includes(HRCT_TECHNIK_BLOCK.title[lang]) && html.includes(HRCT_TECHNIK_BLOCK.visual.src) && html.includes(HRCT_TECHNIK_BLOCK.visual.alt[lang]), `${lang}: HRCT block and diagram render`)
+  assert.ok(html.includes(HRCT_TECHNIK_BLOCK.note[lang]) && html.includes(HRCT_TECHNIK_BLOCK.rows[2][1][lang]), `${lang}: HRCT limitation and expiratory teaching render`)
+  for (const key of HRCT_TECHNIK_BLOCK.visual.legend) assert.ok(html.includes(key[lang]), `${lang}: localized visual key labels thin/thick, FOV, expiratory and prone panels`)
+  assert.ok(html.includes(HRCT_TECHNIK_TOPIC.id) && html.includes(lang === 'fa' ? 'تمرین تکنیک HRCT' : lang === 'en' ? 'Practise HRCT technique' : 'HRCT-Technik üben'), `${lang}: HRCT action links render`)
+  assert.ok(html.includes(`/ueben/quiz?fach=technik&amp;n=1&amp;themen=hrct-technik&amp;from=%2Ftechnik%2Fgrundlagen${lang === 'de' ? '' : `%3Flang%3D${lang}`}%23ct`), `${lang}: HRCT MCQ link returns to localized CT section`)
+  assert.ok(html.includes(`/flashcards/hrct-technik?from=%2Ftechnik%2Fgrundlagen${lang === 'de' ? '' : `%3Flang%3D${lang}`}%23ct`), `${lang}: HRCT flashcard link returns to localized CT section`)
 }
 
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
@@ -101,4 +133,9 @@ assert.ok(reconstructionEntry)
 assert.match(reconstructionEntry, /link: '\/technik\/grundlagen#ct'/)
 assert.match(reconstructionEntry, /mcqLink: '\/ueben\/quiz\?fach=technik&n=1&themen=ct-rekonstruktion-nachverarbeitung'/)
 assert.match(reconstructionEntry, /flashcardLink: '\/flashcards\/ct-rekonstruktion-nachverarbeitung'/)
+const hrctEntry = curriculum.split('\n').find(line => line.includes("id: 'hrct-technik'"))
+assert.ok(hrctEntry)
+assert.match(hrctEntry, /link: '\/technik\/grundlagen#ct'/)
+assert.match(hrctEntry, /mcqLink: '\/ueben\/quiz\?fach=technik&n=1&themen=hrct-technik'/)
+assert.match(hrctEntry, /flashcardLink: '\/flashcards\/hrct-technik'/)
 console.log('CT image-quality focused SSR/registry assertions PASS: source blocks, conceptual diagram, DE/EN/FA, RTL, inline check, central MCQ/flashcards and curriculum links.')
