@@ -3,7 +3,11 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import styles from '../admin.module.css'
-import MonthlyFinanceHeader from './MonthlyFinanceHeader'
+import FinanceWorkspaceHeader from './FinanceWorkspaceHeader'
+import FinanceOverview, { FinanceSummary } from './FinanceOverview'
+import FinanceSidebar from './FinanceSidebar'
+import { expenseCategory } from './financeOverviewData.mjs'
+import workspace from './financeWorkspace.module.css'
 import detailStyles from './CategoryDetail.module.css'
 
 const STORAGE_KEY    = 'radyar_private_budget_v1'
@@ -698,7 +702,7 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
       )}
 
       {/* Amount + Date */}
-      <div className={styles.entryAmountPanel}>
+      <div className={`${styles.entryAmountPanel} ${workspace.amountPanel}`}>
         <label className={styles.entryAmountField}>
           <span>Betrag</span>
           <div className={styles.entryAmountInputWrap}>
@@ -1551,7 +1555,9 @@ ${manualEntries.length ? `
 
   const catDetailEntries = useMemo(() => {
     if (!catDetail) return []
-    const { type, key } = catDetail
+    const { type, key, entryId, primaryOnly } = catDetail
+    if (entryId) return monthData.entries.filter(entry => entry.id === entryId)
+    if (primaryOnly) return monthData.entries.filter(entry => entry.type === 'expense' && expenseCategory(entry) === key)
     if (type === 'income') {
       return monthData.entries.filter(e =>
         e.type === 'income' &&
@@ -1947,9 +1953,9 @@ ${manualEntries.length ? `
     setView('monat')
   }
 
-  function openCatDetail(type, key, label) {
+  function openCatDetail(type, key, label, primaryOnly = false) {
     setShowPopup(false)  // close entry popup if open
-    setCatDetail({ type, key, label })
+    setCatDetail({ type, key, label, primaryOnly })
     setExpandedSubtitles(new Set())
     setEditingEntry(null)
   }
@@ -1972,8 +1978,9 @@ ${manualEntries.length ? `
   const popupAccent = isIncome ? '#13705a' : '#8446bd'
 
   return (
-    <div className={`${styles.page} ${!iranOnly ? styles.monthlyFinancePage : ''}`}>
-      <main className={styles.content}>
+    <div className={iranOnly ? styles.page : workspace.page}>
+      {!iranOnly && <FinanceSidebar view={view} subView={subView} onNavigate={(nextView, sub) => { setView(nextView); if (sub) setSubView(sub) }} />}
+      <main className={iranOnly ? styles.content : workspace.content}>
 
         {/* ── HEADER ── */}
         {homeHref && (
@@ -1981,21 +1988,15 @@ ${manualEntries.length ? `
             ← {homeLabel || 'Zurück'}
           </Link>
         )}
-        {!iranOnly && <MonthlyFinanceHeader
-          month={month}
-          onMonthChange={selectFinanceMonth}
-          entries={monthData.entries}
-          loaded={loaded}
-          onAdd={openPopup}
-          view={view}
-          onNavigate={setView}
-          showVacation={!excludeVacation}
-        >
-          <FinanceSyncStatus status={syncStatus} />
-        </MonthlyFinanceHeader>}
+        {!iranOnly && <>
+          <FinanceWorkspaceHeader month={month} onMonthChange={selectFinanceMonth} loaded={loaded} onAdd={openPopup}>
+            <FinanceSyncStatus status={syncStatus} />
+          </FinanceWorkspaceHeader>
+          <FinanceSummary summary={summary} formatMoney={formatMoney} loaded={loaded} />
+        </>}
 
         {/* ── LAYOUT ── */}
-        <div className={iranOnly ? styles.iranAppLayout : styles.financeLayout}>
+        <div className={iranOnly ? styles.iranAppLayout : workspace.main}>
           <div className={styles.financeMain}>
 
             {view === 'einstellung' ? (
@@ -2023,44 +2024,18 @@ ${manualEntries.length ? `
 
             {/* ── MONATSÜBERSICHT ── */}
             {view === 'monat' && (
-              <div className={styles.financeMonthGrid}>
-                {/* AUSGABEN */}
-                <div className={styles.sectionCard} style={{ borderColor: 'rgba(249,115,22,.2)' }}>
-                  <div className={styles.sectionCardHead} style={{ background: 'rgba(249,115,22,.07)', borderBottom: '1px solid rgba(249,115,22,.15)' }}>
-                    <span className={styles.sectionCardLabel} style={{ color: '#c2410c' }}>Ausgaben</span>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                      <strong className={styles.moneyNegative} style={{ fontSize: 18 }}>{formatMoney(summary.expenses)}</strong>
-                      <button className={styles.sectionAddBtn} style={{ background: '#f97316' }} onClick={() => openPopup('expense')} aria-label="Ausgabe hinzufügen"><IconPlus /></button>
-                    </div>
-                  </div>
-                  <div className={styles.sectionCardBody}>
-                    {categoryTotals.length ? categoryTotals.map(([cat, total]) => {
-                      const pct = summary.expenses > 0 ? (total / summary.expenses) * 100 : 0
-                      return (
-                        <div className={`${styles.expenseRow} ${styles.clickableRow}`} key={cat} onClick={() => openCatDetail('expense', cat, cat)} role="button" tabIndex={0} onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && openCatDetail('expense', cat, cat)}>
-                          <span className={styles.categoryName}>{cat}</span>
-                          <div className={styles.categoryBarTrack}><div className={styles.categoryBarFill} style={{ width: `${Math.min(pct, 100)}%` }} /></div>
-                          <span className={styles.financeRowAmount}><strong>{formatMoney(total)}</strong><small title="Anteil der Ausgaben">{pct.toFixed(0)} %</small></span>
-                        </div>
-                      )
-                    }) : (
-                      <div className={styles.sectionEmptyRow}>
-                        <p>Keine Ausgaben eingetragen.</p>
-                        <button className={styles.sectionEmptyBtn} type="button" onClick={() => openPopup('expense')}>+ Ausgabe eintragen</button>
-                      </div>
-                    )}
-                  </div>
-                  {(incomeTotals.length > 0 || categoryTotals.length > 0) && (
-                    <div className={styles.sectionCardFoot}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: 13, fontWeight: 700, color: '#475569' }}>Saldo</span>
-                        <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative} style={{ fontSize: 16 }}>{formatMoney(summary.balance)}</strong>
-                        <span style={{ fontSize: 12, fontWeight: 700, color: '#7c3aed' }}>(Fatima bezahlt: {formatMoney(fatimaPaid)})</span>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
+              <FinanceOverview
+                entries={monthData.entries}
+                incomeTotals={incomeTotals}
+                formatMoney={formatMoney}
+                loaded={loaded}
+                fatimaPaid={fatimaPaid}
+                onOpenCategory={name => openCatDetail('expense', name, name, true)}
+                onOpenIncome={name => openCatDetail('income', name, name)}
+                onOpenEntry={entry => { setShowPopup(false); setCatDetail({ type: entry.type, key: entry.type === 'income' ? entry.title : expenseCategory(entry), label: entry.title || 'Eintrag', entryId: entry.id }); setExpandedSubtitles(new Set()); setEditingEntry(null) }}
+                onAddExpense={() => openPopup('expense')}
+                onAddIncome={() => openPopup('income')}
+              />
             )}
 
             {/* ── SONDERURLAUB IRAN ── */}
@@ -3274,7 +3249,7 @@ ${manualEntries.length ? `
                     <p style={{ margin: 0, fontWeight: 800, fontSize: 13, color: 'var(--text-strong,#0d1b2a)' }}>Ausgaben Mai 2026 importieren</p>
                     <p style={{ margin: '2px 0 0', fontSize: 12, color: 'var(--text-muted,#94a3b8)' }}>Variable Einträge – ohne Fixkosten</p>
                   </div>
-                  <button type="button" className={styles.primaryBudgetBtn} style={{ whiteSpace: 'nowrap', flexShrink: 0 }} onClick={seedMai2026}>
+                  <button type="button" className={`${styles.primaryBudgetBtn} ${workspace.primaryButton}`} style={{ whiteSpace: 'nowrap', flexShrink: 0 }} onClick={seedMai2026}>
                     Jetzt importieren
                   </button>
                 </div>
@@ -3332,7 +3307,7 @@ ${manualEntries.length ? `
                       <input type="month" value={planStartMonth} onChange={event => setPlanStartMonth(event.target.value)} />
                       <small>Wird ab diesem Monat berücksichtigt</small>
                     </label>
-                    <button className={styles.primaryBudgetBtn} type="button" disabled={!planTitle || !planAmount || !planStartMonth} onClick={addFixeintrag}>Fixkosten speichern</button>
+                    <button className={`${styles.primaryBudgetBtn} ${workspace.primaryButton}`} type="button" disabled={!planTitle || !planAmount || !planStartMonth} onClick={addFixeintrag}>Fixkosten speichern</button>
                   </div>
                 </div>
 
@@ -3724,7 +3699,7 @@ ${manualEntries.length ? `
         {showPopup && (
           // Keep the backdrop static: native date pickers can report their selection as a backdrop click on mobile.
           <div className={styles.popupOverlay} role="dialog" aria-modal="true" aria-label="Neuer Eintrag">
-            <div className={`${styles.popupPanel} ${entryScope ? styles.scopedPopupPanel : ''}`}>
+            <div className={`${styles.popupPanel} ${entryScope ? styles.scopedPopupPanel : ''} ${!iranOnly ? workspace.dialog : ''}`}>
               {/* Header */}
               <div className={styles.popupHeader} style={{ borderBottom: `2px solid ${popupAccent}` }}>
                 <div>
@@ -3774,7 +3749,7 @@ ${manualEntries.length ? `
                   <span>{entryTitle || 'Noch keine Kategorie'}</span>
                   <strong>{entryAmount ? `${entryAmount.replace('.', ',')} €` : '0,00 €'}</strong>
                 </div>
-                <button form="budget-entry-form" className={styles.primaryBudgetBtn} type="submit" disabled={!entryTitle || !entryAmount}>
+                <button form="budget-entry-form" className={`${styles.primaryBudgetBtn} ${workspace.primaryButton}`} type="submit" disabled={!entryTitle || !entryAmount}>
                   Speichern
                 </button>
               </div>

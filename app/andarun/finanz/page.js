@@ -3,7 +3,7 @@ import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
 import BudgetPage from '@/app/admin/budget/BudgetPage'
 
 export const metadata = {
-  title: 'Monatliche Ausgaben | Jaminova Finanzen',
+  title: 'Yaminova Finanzen',
   description: 'Private Finanzen',
   robots: {
     index: false,

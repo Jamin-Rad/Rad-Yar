@@ -15,6 +15,8 @@ const SECTIONS = [
 
 export default function AndarunNav() {
   const pathname = usePathname() || ''
+  // The finance workspace has its own navigation and home link.
+  if (pathname === '/andarun/finanz') return null
   const section = SECTIONS.find(([prefix]) => pathname === prefix || pathname.startsWith(`${prefix}/`))?.[1]
   return (
     <div className={styles.navSlot}>
