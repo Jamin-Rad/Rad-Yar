@@ -1714,10 +1714,10 @@ export const CURRICULUM = [
         themen: [
           { id: 'roentgen-physikalische-grundlagen', title: { de: 'Physikalische Grundlagen', en: 'Physical Principles', fa: 'مبانی فیزیکی' }, tags: ['Rö'], diff: 1, link: '/technik/grundlagen#atom', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'strahlungsarten', title: { de: 'Strahlungsarten und Photonen', en: 'Radiation Types and Photons', fa: 'انواع تابش و فوتون‌ها' }, tags: ['Rö','CT'], diff: 1, link: '/technik/strahlungsarten', inProgress: true, updatedAt: '2026-10-20' },
-          { id: 'roentgenanlage-roehre', title: { de: 'Röntgenanlage & Röntgenröhre', en: 'X-Ray System & X-Ray Tube', fa: 'دستگاه و تیوب اشعه ایکس' }, tags: ['Rö'], diff: 2 },
-          { id: 'roentgenstrahlung-spektrum', title: { de: 'Strahlungserzeugung & Röntgenspektrum', en: 'X-Ray Production & Spectrum', fa: 'تولید پرتو و طیف اشعه ایکس' }, tags: ['Rö'], diff: 2 },
-          { id: 'roentgen-wechselwirkung-materie', title: { de: 'Wechselwirkung mit Materie', en: 'Interaction with Matter', fa: 'برهم‌کنش با ماده' }, tags: ['Rö','CT'], diff: 2 },
-          { id: 'roentgen-bildentstehung-detektor', title: { de: 'Bildentstehung & Detektortechnik', en: 'Image Formation & Detector Technology', fa: 'تشکیل تصویر و فناوری آشکارساز' }, tags: ['Rö'], diff: 2 },
+          { id: 'roentgenanlage-roehre', title: { de: 'Röntgenanlage & Röntgenröhre', en: 'X-Ray System & X-Ray Tube', fa: 'دستگاه و تیوب اشعه ایکس' }, tags: ['Rö'], diff: 2, link: '/technik/grundlagen#roehre', mcqLink: '/ueben/quiz?fach=technik&n=1&themen=roentgenanlage-roehre', flashcardLink: '/flashcards/roentgenanlage-roehre', inProgress: true, updatedAt: '2026-10-21' },
+          { id: 'roentgenstrahlung-spektrum', title: { de: 'Strahlungserzeugung & Röntgenspektrum', en: 'X-Ray Production & Spectrum', fa: 'تولید پرتو و طیف اشعه ایکس' }, tags: ['Rö'], diff: 2, link: '/technik/grundlagen#roehre', mcqLink: '/ueben/quiz?fach=technik&n=1&themen=roentgenstrahlung-spektrum', flashcardLink: '/flashcards/roentgenanlage-roehre', inProgress: true, updatedAt: '2026-10-21' },
+          { id: 'roentgen-wechselwirkung-materie', title: { de: 'Wechselwirkung mit Materie', en: 'Interaction with Matter', fa: 'برهم‌کنش با ماده' }, tags: ['Rö','CT'], diff: 2, link: '/technik/grundlagen#wechselwirkung', mcqLink: '/ueben/quiz?fach=technik&n=1&themen=roentgen-wechselwirkung-materie', flashcardLink: '/flashcards/roentgenanlage-roehre', inProgress: true, updatedAt: '2026-10-21' },
+          { id: 'roentgen-bildentstehung-detektor', title: { de: 'Bildentstehung & Detektortechnik', en: 'Image Formation & Detector Technology', fa: 'تشکیل تصویر و فناوری آشکارساز' }, tags: ['Rö'], diff: 2, link: '/technik/grundlagen#detektor', mcqLink: '/ueben/quiz?fach=technik&n=1&themen=roentgen-bildentstehung-detektor', flashcardLink: '/flashcards/roentgenanlage-roehre', inProgress: true, updatedAt: '2026-10-21' },
         ],
       },
       {

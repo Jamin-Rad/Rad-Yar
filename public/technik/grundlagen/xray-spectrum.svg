@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" role="img" aria-labelledby="title desc">
+  <title id="title">Qualitative X-ray spectra</title>
+  <desc id="desc">Schematic bremsstrahlung spectra with different endpoint energies and added filtration</desc>
+  <rect width="760" height="420" rx="20" fill="#f8fafc"/>
+  <text x="40" y="45" fill="#172554" font-family="Arial,sans-serif" font-size="22" font-weight="700">Qualitative spectrum (not measured data)</text>
+  <path d="M88 330H690M88 330V82" fill="none" stroke="#334155" stroke-width="3"/>
+  <text x="336" y="386" fill="#334155" font-family="Arial,sans-serif" font-size="18">Photon energy</text>
+  <text x="25" y="220" fill="#334155" font-family="Arial,sans-serif" font-size="17" transform="rotate(-90 25 220)">Relative fluence</text>
+  <path d="M90 326 C142 302 183 231 250 199 C320 166 394 173 464 231 C502 262 523 300 542 326" fill="none" stroke="#0f766e" stroke-width="5"/>
+  <path d="M90 326 C140 300 184 200 255 160 C335 115 420 120 520 194 C575 235 618 286 654 326" fill="none" stroke="#2563eb" stroke-width="5"/>
+  <path d="M128 326 C175 302 215 221 279 185 C352 146 426 151 510 212 C568 255 611 297 640 326" fill="none" stroke="#d97706" stroke-width="5" stroke-dasharray="10 7"/>
+  <path d="M542 220V330M654 120V330" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 6"/>
+  <text x="403" y="105" fill="#1d4ed8" font-family="Arial,sans-serif" font-size="16">Higher kV: higher endpoint</text>
+  <text x="302" y="284" fill="#b45309" font-family="Arial,sans-serif" font-size="15">Filtration removes low-energy photons</text>
+  <line x1="455" y1="65" x2="495" y2="65" stroke="#0f766e" stroke-width="5"/><text x="505" y="71" fill="#334155" font-family="Arial,sans-serif" font-size="15">lower kV</text>
+  <line x1="455" y1="91" x2="495" y2="91" stroke="#2563eb" stroke-width="5"/><text x="505" y="97" fill="#334155" font-family="Arial,sans-serif" font-size="15">higher kV</text>
+  <line x1="455" y1="117" x2="495" y2="117" stroke="#d97706" stroke-width="5" stroke-dasharray="10 7"/><text x="505" y="123" fill="#334155" font-family="Arial,sans-serif" font-size="15">filtered spectrum</text>
+  <text x="90" y="355" fill="#64748b" font-family="Arial,sans-serif" font-size="14">Low</text><text x="665" y="355" fill="#64748b" font-family="Arial,sans-serif" font-size="14">High</text>
+</svg>

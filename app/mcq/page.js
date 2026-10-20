@@ -38,6 +38,14 @@ const TOPICS = [
     desc: { de: 'Phasenvergleich · Vaskularität · solitärer Herd', en: 'Phase comparison · vascularity · solitary lesion', fa: 'مقایسهٔ فازها · عروق‌رسانی · ضایعهٔ منفرد' },
   },
   {
+    key: 'roentgen-grundlagen',
+    href: '/ueben/quiz?fach=technik&n=3&themen=roentgenanlage-roehre,roentgen-wechselwirkung-materie,roentgen-bildentstehung-detektor',
+    icon: 'Rö', iconImage: '/fach/technik.png', color: '#0e7490', available: true,
+    count: { de: '3 Fragen', en: '3 Questions', fa: '۳ سؤال' },
+    name: { de: 'Technik · Röntgengrundlagen', en: 'Physics · X-ray fundamentals', fa: 'فیزیک · مبانی پرتو ایکس' },
+    desc: { de: 'Röhre · Streuung · Detektoren', en: 'Tube · scatter · detectors', fa: 'تیوب · پراکندگی · آشکارسازها' },
+  },
+  {
     key: 'divertikulitis',
     href: '/ueben/quiz?fach=abdomen&n=10&themen=divertikulitis',
     icon: 'CT', iconImage: '/fach/abdomen.png', color: '#f97316', available: true,
