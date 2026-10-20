@@ -13,8 +13,7 @@
 .page button:disabled { cursor: default; opacity: .55; }
 .page :focus-visible { outline: 2px solid #9977d8; outline-offset: 4px; }
 .sidebar { position: sticky; top: 0; align-self: start; min-height: 100svh; padding: 22px 18px 30px; background: #182238; color: #f5f3ff; }
-.brand { display: block; padding: 0 6px; color: #f5f3ff; text-decoration: none; font-size: 32px; line-height: 1.4; font-weight: 800; letter-spacing: -.055em; }
-.navigation { margin-top: 28px; }
+.navigation { margin-top: 0; }
 .navLabel { margin: 0 6px 10px; color: #b7bed6; font-size: 10px; font-weight: 700; letter-spacing: .065em; text-transform: uppercase; }
 .navItem, .navActive { display: flex; width: 100%; align-items: center; gap: 14px; min-height: 48px; margin-bottom: 3px; padding: 11px 12px; border: 0; border-radius: 10px; background: transparent; color: #f5f3ff; font-size: 13px; font-weight: 500; text-align: left; text-decoration: none; transition: background .15s ease; }
 .navItem:hover { background: #252f48; }
@@ -126,7 +125,7 @@
   .expenseRow { font-size: 14px; gap: 11px; } .transactions th:nth-child(3), .transactions td:nth-child(3) { display: none; }
 }
 @media (max-width: 1120px) {
-  .page { grid-template-columns: 200px minmax(0, 1fr); } .brand { font-size: 28px; } .metricIcon { display: none; }
+  .page { grid-template-columns: 200px minmax(0, 1fr); } .metricIcon { display: none; }
   .summary { grid-template-columns: 1.25fr 1fr 1fr .8fr; } .summary > div { padding-inline: 14px; } .summary strong { font-size: 21px; } .summary .balance strong { font-size: 29px; }
   .overview { grid-template-columns: minmax(0, 1fr); gap: 24px; } .analysis { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: start; gap: 20px; } .income { margin-top: 0; }
   .transactions th:nth-child(3), .transactions td:nth-child(3) { display: table-cell; }
@@ -139,8 +138,8 @@
   .monthPicker { min-height: 48px; padding-left: 10px; } .monthDisplay { min-height: 46px; gap: 8px; font-size: 13px; } .monthArrow { width: 25px; } .monthChevron { display: none; }
 }
 @media (max-width: 700px) {
-  .page { display: block; } .sidebar { position: static; min-height: 0; padding: max(12px, env(safe-area-inset-top)) 14px 0; } .brand { font-size: 26px; padding: 0; }
-  .navigation, .spaces { display: flex; gap: 4px; margin-top: 10px; overflow-x: auto; padding: 0 0 8px; border: 0; scrollbar-width: thin; scrollbar-color: #666384 transparent; } .spaces { margin-top: 0; padding-bottom: 10px; } .navLabel { display: none; }
+  .page { display: block; } .sidebar { position: static; min-height: 0; padding: max(12px, env(safe-area-inset-top)) 14px 0; }
+  .navigation, .spaces { display: flex; gap: 4px; margin-top: 0; overflow-x: auto; padding: 0 0 8px; border: 0; scrollbar-width: thin; scrollbar-color: #666384 transparent; } .spaces { margin-top: 0; padding-bottom: 10px; } .navLabel { display: none; }
   .navItem, .navActive { width: auto; min-height: 40px; flex: 0 0 auto; gap: 7px; margin: 0; padding: 8px 11px; font-size: 12px; white-space: nowrap; } .navItem svg, .navActive svg { width: 18px; height: 18px; flex-basis: 18px; }
   .content { padding: 24px max(18px, env(safe-area-inset-right)) max(40px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left)); }
   .header { grid-template-columns: 1fr; gap: 14px; margin-bottom: 18px; } .heading { font-size: 32px; } .monthPicker { min-height: 48px; } .monthDisplay { min-height: 46px; font-size: 14px; } .monthChevron { display: block; }

@@ -44,6 +44,9 @@
 .navShell[data-surface='medication'] {
   --header-bg: #fff; --header-ink: #102b4e; --header-muted: #4d6276; --header-line: #e9eeec; --header-accent: #27624f; --header-width: 1120px; --header-gutter: 52px;
 }
+.navShell[data-surface='finance'] {
+  --header-bg: #fafaff; --header-ink: #182238; --header-muted: #737a96; --header-line: #e8e6f2; --header-accent: #7953b9; --header-width: 1600px; --header-gutter: 68px;
+}
 .navShell[data-surface='friends'] {
   --header-bg: #f7f9fc; --header-ink: #101d38; --header-muted: #718096; --header-line: #dde4ec; --header-accent: #087454; --header-width: 1480px;
 }
@@ -60,9 +63,11 @@
 .navShell[data-surface='work'] { --header-bg: #07111f; --header-line: #24354b; --header-accent: #8ce8fa; }
 .navShell[data-surface='learning'] { --header-bg: #171320; --header-line: #362c40; }
 @media (max-width: 1350px) { .navShell { --header-gutter: 64px; } }
+@media (max-width: 1320px) { .navShell[data-surface='finance'] { --header-gutter: 52px; } }
 @media (max-width: 760px) {
   .navShell { --header-gutter: 32px; }
   .navShell[data-surface='vacation'], .navShell[data-surface='aid'] { --header-gutter: 24px; }
+  .navShell[data-surface='finance'] { --header-gutter: 36px; }
   .nav { min-height: 64px; gap: 12px; padding-block: 8px; }
   .brandGroup { gap: 12px; }
   .brandName { font-size: 22px; }

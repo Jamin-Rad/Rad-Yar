@@ -3,10 +3,9 @@ import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import TestLearningPage from './TestLearningPage'
-import styles from './page.module.css'
 
 export const metadata = {
-  title: 'Test · Lernseiten | Jaminova',
+  title: 'Test · Lernseiten | RadYar',
   description: 'Dauerhafte Testseite für die Gestaltung zukünftiger RadYar-Lernseiten.',
   robots: { index: false, follow: false },
 }
@@ -18,7 +17,7 @@ export default async function AndarunTestPage() {
 
   return (
     <>
-      <div className={styles.siteNavigation}><Navbar /></div>
+      <Navbar />
       <TestLearningPage />
       <Footer />
     </>
