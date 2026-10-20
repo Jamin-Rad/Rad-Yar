@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual MR perfusion signal-time curves</title>
+  <desc id="desc">T1-based signal rises during a gadolinium bolus; T2-star-based signal transiently falls.</desc>
+  <rect width="720" height="320" rx="24" fill="#f4f8fa"/>
+  <path d="M88 42v210h570" fill="none" stroke="#526879" stroke-width="3" stroke-linecap="round"/>
+  <path d="M88 196H658M88 140H658M88 84H658" fill="none" stroke="#d5e0e5" stroke-width="2" stroke-dasharray="7 8"/>
+  <path d="M95 185 C170 183 200 176 235 146 C275 112 299 85 340 83 C403 81 433 128 470 159 C516 198 572 190 650 188" fill="none" stroke="#138c87" stroke-width="8" stroke-linecap="round"/>
+  <path d="M95 191 C171 190 204 188 238 193 C270 199 293 228 326 237 C373 250 413 222 446 198 C484 172 527 181 570 188 C602 192 627 192 650 191" fill="none" stroke="#bd7137" stroke-width="8" stroke-linecap="round"/>
+  <path d="M330 50v190" fill="none" stroke="#536d7b" stroke-width="2" stroke-dasharray="5 7"/>
+  <circle cx="340" cy="83" r="7" fill="#138c87"/>
+  <circle cx="326" cy="237" r="7" fill="#bd7137"/>
+  <path d="M264 52h132" fill="none" stroke="#536d7b" stroke-width="2" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 6 3 0 6" fill="none" stroke="#536d7b" stroke-width="1.5"/></marker>
+  </defs>
+</svg>

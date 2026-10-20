@@ -1748,7 +1748,7 @@ export const CURRICULUM = [
           { id: 'mrt-bildqualitaet-artefakte-snr', title: { de: 'Bildqualität, Artefakte & SNR', en: 'Image Quality, Artefacts & SNR', fa: 'کیفیت تصویر، آرتیفکت‌ها و SNR' }, tags: ['MRT'], diff: 2, link: '/technik/grundlagen#mrt-sicherheit', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'mrt-dwi-adc', title: { de: 'DWI / ADC', en: 'DWI / ADC', fa: 'DWI / ADC' }, group: ['Spezialtechniken'], tags: ['MRT'], diff: 2 },
           { id: 'mrt-gefaessdarstellung', title: { de: 'Gefäßdarstellung', en: 'MR Angiography', fa: 'تصویربرداری عروقی' }, group: ['Spezialtechniken'], tags: ['MRT'], diff: 2 },
-          { id: 'mrt-perfusion', title: { de: 'Perfusionsbildgebung', en: 'Perfusion Imaging', fa: 'تصویربرداری پرفیوژن' }, group: ['Spezialtechniken'], tags: ['MRT'], diff: 3 },
+          { id: 'mrt-perfusion', title: { de: 'Perfusionsbildgebung', en: 'Perfusion Imaging', fa: 'تصویربرداری پرفیوژن' }, group: ['Spezialtechniken'], tags: ['MRT'], diff: 3, link: '/technik/grundlagen#mrt-spezial', mcqLink: '/ueben/quiz?fach=technik&n=1&themen=mrt-perfusion', flashcardLink: '/flashcards/mrt-perfusion', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'mr-spektroskopie', title: { de: 'MR-Spektroskopie', en: 'MR Spectroscopy', fa: 'طیف‌سنجی MR' }, group: ['Spezialtechniken'], tags: ['MRT'], diff: 3 },
           { id: 'fmri-dti', title: { de: 'fMRI & DTI', en: 'fMRI & DTI', fa: 'fMRI و DTI' }, group: ['Spezialtechniken'], tags: ['MRT'], diff: 3 },
           { id: 'mrt-sicherheit-risiken', title: { de: 'MRT-Sicherheit & Risiken', en: 'MRI Safety & Risks', fa: 'ایمنی و خطرات MRI' }, tags: ['MRT'], diff: 2 },
