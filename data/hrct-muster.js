@@ -79,7 +79,7 @@ export const HRCT_LESSONS = {
   },
   'hrct-retikulaer-nodulaer': {
     id: 'hrct-retikulaer-nodulaer', slug: 'retikulaer-nodulaer',
-    sourceReferences: [{ source: 'Thorax.pdf', pages: [16, 18, 19, 20, 21] }],
+    sourceReferences: [{ source: 'Thorax.pdf', pages: [16, 18, 19, 20, 21], printedPages: [15, 17, 18, 19, 20] }],
     title: L('HRCT: Retikulär & Nodulär', 'HRCT: Reticular & Nodular', 'HRCT: الگوهای رتیکولار و ندولار'),
     definition: L('Verteilung schlägt Diagnose: Septen, Fissuren, Lobuluszentrum und hämatogene Streuung systematisch unterscheiden.', 'Distribution drives diagnosis: distinguish septa, fissures, lobular centres and haematogenous spread.', 'توزیع مسیر تشخیص را تعیین می‌کند: سپتا، فیشورها، مرکز لوبول و انتشار هماتوژن را تفکیک کنید.'),
     heroCards: [
@@ -124,12 +124,12 @@ export const HRCT_LESSONS = {
         id: 'treeinbud', icon: '🌿', title: L('Tree-in-bud & zystische Evolution', 'Tree-in-bud & Cystic Evolution', 'Tree-in-bud و تحول کیستیک'),
         lead: L('Tree-in-bud bildet gefüllte und erweiterte zentrilobuläre Bronchiolen ab; Verteilung und Klinik grenzen die Ursache ein.', 'Tree-in-bud represents impacted and dilated centrilobular bronchioles; distribution and clinical context narrow the cause.', 'Tree-in-bud بیانگر برونشیول‌های سنترلوبولار پر و گشاد است؛ توزیع و زمینه بالینی تشخیص افتراقی را محدود می‌کند.'),
         cards: [
-          { title: L('Tree-in-bud', 'Tree-in-bud', 'Tree-in-bud'), text: L('Verzweigte zentrilobuläre Verdichtungen, häufig infektiös oder durch Aspiration; keine perilymphatische Verteilung.', 'Branching centrilobular opacities, often infectious or aspiration-related; not a perilymphatic pattern.', 'کدورت‌های شاخه‌دار سنترلوبولار، اغلب عفونی یا ناشی از آسپیراسیون؛ نه توزیع پری‌لنفاتیک.') },
+          { title: L('Tree-in-bud / mukoid impaktion', 'Tree-in-bud / mucus impaction', 'Tree-in-bud / انسداد مخاطی'), text: L('Verzweigte, zentrilobuläre Verdichtungen mit knospenartig erweiterten Enden entsprechen gefüllten und erweiterten Bronchiolen. Die PDF nennt Schleim oder Eiter als möglichen Inhalt und endo-/peribronchiale Entzündungen als typischen Kontext. Das Muster ist bronchiolär, keine perilymphatische Verteilung; Ursache nur mit Klinik und Verteilung einordnen.', 'Branching centrilobular opacities with bud-like dilated tips correspond to filled and dilated bronchioles. The PDF names mucus or pus as possible contents and endobronchial/peribronchial inflammation as a typical context. This is a bronchiolar, not perilymphatic pattern; interpret the cause with clinical context and distribution.', 'کدورت‌های شاخه‌دار سنترلوبولار با انتهای گشاد و جوانه‌مانند با برونشیول‌های پر و گشاد مطابقت دارند. PDF مخاط یا چرک را از محتویات احتمالی و التهاب اندوبرونشیال/پری‌برونشیال را زمینهٔ تیپیک ذکر می‌کند. این الگویی برونشیولار است، نه پری‌لنفاتیک؛ علت را با زمینهٔ بالینی و توزیع تفسیر کنید.') },
           { title: L('Langerhans-Zell-Histiozytose', 'Langerhans cell histiocytosis', 'هیستیوسیتوز سلول لانگرهانس'), text: L('Bei Rauchern entwickeln sich oberlappenbetonte Noduli zu bizarren Zysten; kostophrenische Winkel bleiben relativ ausgespart.', 'In smokers, upper-lobe nodules evolve into bizarre cysts with relative sparing of the costophrenic angles.', 'در سیگاری‌ها ندول‌های غالب لوب فوقانی به کیست‌های عجیب تبدیل می‌شوند و زوایای کوستوفرنیک نسبتاً محفوظ می‌مانند.') },
         ],
         images: [
           img('/hrct/retikulaer-nodulaer/image19.png', 'Blütenzweig als Tree-in-bud-Merkhilfe', 'Blossoming branch as a tree-in-bud mnemonic', 'شاخه شکوفه‌دار به‌عنوان یادآور Tree-in-bud'),
-          img('/hrct/retikulaer-nodulaer/image20.jpeg', 'Tree-in-bud · rID 12039', 'Tree-in-bud · rID 12039', 'Tree-in-bud · rID 12039', 12039),
+          img('/hrct/retikulaer-nodulaer/image20.jpeg', 'Tree-in-bud bei Bronchiolitis · Thorax.pdf, PDF-S. 20 (Druck-S. 19) · rID 12039', 'Tree-in-bud in bronchiolitis · Thorax.pdf, PDF p. 20 (printed p. 19) · rID 12039', 'الگوی Tree-in-bud در برونشیولیت · Thorax.pdf، صفحهٔ PDF ۲۰ (صفحهٔ چاپی ۱۹) · rID 12039', 12039, { source: 'Thorax.pdf', page: 20, printedPage: 19, radiopaediaId: 12039, match: 'Visually matched to the PDF p.20 axial CT panel; local asset derivation is not recorded.' }),
           img('/hrct/retikulaer-nodulaer/image22.jpeg', 'Frühe LCH mit Noduli · rID 161054', 'Early LCH with nodules · rID 161054', 'LCH اولیه با ندول · rID 161054', 161054),
           img('/hrct/retikulaer-nodulaer/image23.jpeg', 'Späte LCH mit irregulären Zysten · rID 161054', 'Late LCH with irregular cysts · rID 161054', 'LCH دیررس با کیست‌های نامنظم · rID 161054', 161054),
         ],
@@ -143,7 +143,7 @@ export const HRCT_LESSONS = {
   },
   'hrct-architekturmuster': {
     id: 'hrct-architekturmuster', slug: 'architekturmuster',
-    sourceReferences: [{ source: 'Thorax.pdf', pages: [22, 23] }],
+    sourceReferences: [{ source: 'Thorax.pdf', pages: [22, 23], printedPages: [21, 22] }],
     title: L('HRCT: Architekturmuster', 'HRCT: Architectural Patterns', 'HRCT: الگوهای معماری'),
     definition: L('Honeycombing, Mosaikmuster und Crazy Paving anhand ihrer Bausteine und Verteilung sicher unterscheiden.', 'Distinguish honeycombing, mosaic attenuation and crazy paving by their components and distribution.', 'هانی‌کومبینگ، موزائیک و کریزی‌پیونگ را بر اساس اجزا و توزیع تفکیک کنید.'),
     heroCards: [
@@ -211,8 +211,8 @@ export const HRCT_LESSONS = {
           { title: L('Kaverne', 'Cavity', 'کاویتی'), text: L('Gasraum innerhalb einer Konsolidierung, eines Nodulus oder einer Raumforderung infolge Nekrose und Drainage.', 'Gas-filled space within consolidation, a nodule or a mass due to necrosis and drainage.', 'فضای گازی داخل کنسولیدیشن، ندول یا توده بر اثر نکروز و درناژ.') },
         ],
         images: [
-          img('/hrct/dichteminderung/image28.jpeg', 'Bulla · rID 7959', 'Bulla · rID 7959', 'بولا · rID 7959', 7959, { source: 'Thorax.pdf', page: 24, printedPage: 23, radiopaediaId: 7959, match: 'Visually matched to the source-page axial CT panel; local asset derivation is not recorded.' }),
-          img('/hrct/dichteminderung/image29.jpeg', 'Pulmonale Zyste · rID 10493', 'Pulmonary cyst · rID 10493', 'کیست ریوی · rID 10493', 10493, { source: 'Thorax.pdf', page: 24, printedPage: 23, radiopaediaId: 10493, match: 'Visually matched to the source-page axial CT panel; local asset derivation is not recorded.' }),
+          img('/hrct/dichteminderung/image28.jpeg', 'Bulla im emphysematösen Parenchym · Thorax.pdf, PDF-S. 24 (Druck-S. 23) · rID 7959', 'Bulla in emphysematous lung · Thorax.pdf, PDF p. 24 (printed p. 23) · rID 7959', 'بولا در پارانشیم آمفیزماتوز · Thorax.pdf، صفحهٔ PDF ۲۴ (صفحهٔ چاپی ۲۳) · rID 7959', 7959, { source: 'Thorax.pdf', page: 24, printedPage: 23, radiopaediaId: 7959, match: 'Visually matched to the source-page axial CT panel; local asset derivation is not recorded.' }),
+          img('/hrct/dichteminderung/image29.jpeg', 'Pulmonale Zyste · Thorax.pdf, PDF-S. 24 (Druck-S. 23) · rID 10493', 'Pulmonary cyst · Thorax.pdf, PDF p. 24 (printed p. 23) · rID 10493', 'کیست ریوی · Thorax.pdf، صفحهٔ PDF ۲۴ (صفحهٔ چاپی ۲۳) · rID 10493', 10493, { source: 'Thorax.pdf', page: 24, printedPage: 23, radiopaediaId: 10493, match: 'Visually matched to the source-page axial CT panel; local asset derivation is not recorded.' }),
           img('/hrct/dichteminderung/image30.jpeg', 'Kaverne · rID 16033', 'Cavity · rID 16033', 'کاویتی · rID 16033', 16033),
         ],
       },
