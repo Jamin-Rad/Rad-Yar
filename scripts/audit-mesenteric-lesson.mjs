@@ -20,6 +20,7 @@ for (const key of ['protocolTitle', 'flow', 'arterialText', 'venousText', 'stran
   required.push([`DE/EN/FA semantic unit exists for ${key}`, occurrences >= 3])
 }
 required.push(['target sign and three-layer wall covered in all languages', ['Target-Zeichen', 'target sign', 'علامت هدف'].every(term => route.includes(term))])
+required.push(['ESVS Recommendation 33 renal-function qualifier included in all languages', ['unabhängig von der Nierenfunktion', 'regardless of renal function', 'مستقل از عملکرد کلیه'].every(term => route.includes(term))])
 required.push(['closed-loop/strangulation included without copied frequency', /Closed loop und Strangulation/.test(route) && !/> 75 % der Fälle/.test(route) && /not carried forward as a current figure/.test(route) && /به‌عنوان عدد معتبر امروزی بازگو نمی‌شود/.test(route)])
 
 for (const asset of ['public/abdomen/mesenteric/arterial-occlusion-cta.png', 'public/abdomen/mesenteric/venous-thrombosis-ct.png']) {
