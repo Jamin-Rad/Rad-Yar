@@ -3,6 +3,7 @@ import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import TestLearningPage from './TestLearningPage'
+import styles from './page.module.css'
 
 export const metadata = {
   title: 'Test · Lernseiten | Jaminova',
@@ -17,7 +18,7 @@ export default async function AndarunTestPage() {
 
   return (
     <>
-      <Navbar />
+      <div className={styles.siteNavigation}><Navbar /></div>
       <TestLearningPage />
       <Footer />
     </>

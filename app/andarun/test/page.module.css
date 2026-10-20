@@ -1,3 +1,6 @@
+.siteNavigation { position: relative; z-index: 1; }
+.siteNavigation :global([data-radyar-navbar]) { position: static; }
+
 .page {
   --plum-950: #241126;
   --plum-900: #3b163d;
@@ -16,7 +19,7 @@
   --paper: #fff;
   --canvas: #f6f5f7;
   min-height: 100vh;
-  padding: 64px 24px 48px;
+  padding: 24px 24px 48px;
   position: relative;
   isolation: isolate;
   overflow-x: clip;
@@ -68,7 +71,7 @@
 .progressBar button:disabled { opacity: .35; cursor: default; }
 
 .layout { display: grid; grid-template-columns: 250px minmax(0,1fr); gap: 18px; align-items: start; margin-top: 18px; }
-.sidebar { position: sticky; top: calc(90px + var(--jaminova-header-height, 0px)); padding: 20px 14px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.88); box-shadow: 0 12px 30px rgba(35,18,39,.04); backdrop-filter: blur(14px); }
+.sidebar { position: sticky; top: 24px; padding: 20px 14px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.88); box-shadow: 0 12px 30px rgba(35,18,39,.04); backdrop-filter: blur(14px); }
 .sidebar h2 { margin: 0 8px 14px; font-family: var(--font-newsreader,Georgia,serif); font-size: 20px; }
 .sidebar nav { display: grid; gap: 4px; }
 .sidebar button { width: 100%; min-height: 42px; display: grid; grid-template-columns: 34px 1fr; align-items: center; gap: 8px; padding: 5px 8px; border: 0; border-radius: 7px; background: transparent; color: var(--body); font-family: inherit; text-align: start; cursor: pointer; }
@@ -81,7 +84,7 @@
 .sidebar .activeSideItem .sideIcon { border-color: var(--plum-800); background: var(--plum-800); color: #fff; }
 
 .lesson { min-width: 0; display: grid; gap: 10px; }
-.section { scroll-margin-top: 90px; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.9); box-shadow: 0 12px 30px rgba(35,18,39,.035); content-visibility: auto; contain-intrinsic-size: 74px 520px; }
+.section { scroll-margin-top: 24px; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.9); box-shadow: 0 12px 30px rgba(35,18,39,.035); content-visibility: auto; contain-intrinsic-size: 74px 520px; }
 .sectionOpen { box-shadow: 0 18px 42px rgba(35,18,39,.06); content-visibility: visible; }
 .sectionHeader { width: 100%; min-height: 74px; display: grid; grid-template-columns: 46px minmax(0,1fr) 36px; align-items: center; gap: 14px; padding: 13px 22px; border: 0; background: transparent; color: var(--ink); font-family: inherit; text-align: start; cursor: pointer; }
 .sectionHeader:hover { background: rgba(240,229,241,.32); }
@@ -316,7 +319,7 @@
 }
 
 @media (max-width:760px) {
-  .page { padding: 76px 12px 108px; }
+  .page { padding: 24px 12px 108px; }
   .page::before { background-position: 68% center; background-size: cover; }
   .heroVisual { inset-inline-end: -44px; width: min(62%,420px); opacity: .34; }
   .page > .header,.page > .layout { position: relative; z-index: 1; }
