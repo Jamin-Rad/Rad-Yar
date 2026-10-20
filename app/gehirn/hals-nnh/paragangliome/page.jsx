@@ -44,13 +44,12 @@ function Matrix({ rows, lang }) {
   </table></div>
 }
 
-function SelfCheck({ lang }) {
+function SelfCheck({ lang, check, name }) {
   const [answer, setAnswer] = useState(null)
-  const check = lesson.check
   return <div className={styles.decision}>
     <h3>{pick(check.title, lang)}</h3><p>{pick(check.prompt, lang)}</p>
     <fieldset><legend>{pick(labels.choose, lang)}</legend>
-      {check.options.map((option, index) => <label key={index}><input type="radio" name="carotid-body-paraganglioma-selfcheck" checked={answer === index} onChange={() => setAnswer(index)}/><span>{pick(option, lang)}</span></label>)}
+      {check.options.map((option, index) => <label key={index}><input type="radio" name={name} checked={answer === index} onChange={() => setAnswer(index)}/><span>{pick(option, lang)}</span></label>)}
     </fieldset>
     {answer !== null ? <p className={styles.feedback} role="status"><strong>{pick(answer === check.answer ? labels.correct : labels.retry, lang)}</strong>{pick(answer === check.answer ? check.explanation : check.retry, lang)}</p> : null}
   </div>
@@ -62,7 +61,7 @@ export default function CarotidBodyParagangliomaPage() {
   const translatedLabels = Object.fromEntries(Object.entries(labels).map(([key, value]) => [key, t(value)]))
   const sections = [
     ...lesson.sections.map(section => ({ id: section.id, label: t(section.title), icon: section.icon })),
-    { id: 'check', label: t(lesson.check.title), icon: 'check' },
+    ...[lesson.check, lesson.additionalCheck].filter(Boolean).map((check, index) => ({ id: index === 0 ? 'check' : `check-${index + 1}`, label: t(check.title), icon: 'check' })),
     { id: 'take-home', label: translatedLabels.takeHome, icon: 'summary', emphasis: true },
   ]
   const references = lesson.references.map(reference => ({ ...reference, title: t(reference.title), citation: t(reference.citation), scope: t(reference.scope) }))
@@ -81,7 +80,10 @@ export default function CarotidBodyParagangliomaPage() {
       {section.note ? <aside className={styles.note}>{t(section.note)}</aside> : null}
       {section.note2 ? <aside className={styles.note}>{t(section.note2)}</aside> : null}
     </LessonSection>)}
-    <LessonSection id="check" icon="check" title={t(lesson.check.title)} bodyClassName={styles.body}><SelfCheck lang={lang}/></LessonSection>
+    {[lesson.check, lesson.additionalCheck].filter(Boolean).map((check, index) => {
+      const id = index === 0 ? 'check' : `check-${index + 1}`
+      return <LessonSection key={id} id={id} icon="check" title={t(check.title)} bodyClassName={styles.body}><SelfCheck lang={lang} check={check} name={`carotid-body-paraganglioma-selfcheck-${index + 1}`}/></LessonSection>
+    })}
     <LessonSection id="take-home" icon="summary" title={translatedLabels.takeHome} bodyClassName={styles.body}><ol className={styles.summary}>{lesson.summary.map((item, index) => <li key={index}>{t(item)}</li>)}</ol></LessonSection>
   </StandardLessonShell>
 }
