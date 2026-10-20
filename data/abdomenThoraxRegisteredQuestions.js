@@ -7,7 +7,7 @@ const option = (id, text) => ({ id, text })
 // The hepatic AML and PSC/PBC drafts remain scoped to their lessons because the
 // available curriculum IDs would otherwise mislabel their questions.
 const registrations = [
-  { key: 'abdomen-ileus-volvulus', fach: 'abdomen', tags: ['ileus-duenndarm', 'volvulus'], extra: { de: 'Eine einzelne dilatierte Dünndarmschlinge ohne weitere Zeichen', en: 'A single dilated small-bowel loop without additional findings', fa: 'یک لوپ منفرد روده باریکِ متسع بدون یافته‌های دیگر' } },
+  { key: 'abdomen-ileus-volvulus', fach: 'abdomen', tags: ['ileus-duenndarm', 'volvulus'], extra: { de: 'Dünndarmobstruktion, Pneumobilie und ein Stein noch in der Gallenblase', en: 'Small-bowel obstruction, pneumobilia and a stone still within the gallbladder', fa: 'انسداد روده باریک، پنوموبیلی و سنگی که هنوز داخل کیسه صفراست' } },
   { key: 'abdomen-pancreatic-cysts', fach: 'abdomen', tags: ['ipmn'], extra: { de: 'Eine solide Raumforderung ohne Gangkommunikation', en: 'A solid mass without duct communication', fa: 'تودهٔ جامد بدون ارتباط با مجرا' } },
   { key: 'abdomen-focal-liver', fach: 'abdomen', tags: ['leberadenom', 'lebermetastasen'], extra: { de: 'Die Läsion nur anhand des nativen CT beurteilen', en: 'Assess the lesion from unenhanced CT alone', fa: 'ارزیابی ضایعه فقط بر اساس CT بدون تزریق' } },
   { key: 'abdomen-renal-masses', fach: 'abdomen', tags: ['nierenzysten'], extra: { de: 'Das Alter der betroffenen Person allein', en: 'The patient’s age alone', fa: 'فقط سن بیمار' } },
