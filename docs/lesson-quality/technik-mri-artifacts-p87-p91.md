@@ -34,9 +34,18 @@ echten Quellenbeispielen für Bewegung/Pulsation, Faltung und Chemical Shift.
 Eine Abruffrage trennt Aliasing von RF-Zipper und prüft den passenden Trade-off.
 Es wird kein künstliches diagnostisches MRI und kein Patientencase erfunden.
 
+## Assessment integration
+
+Der vorhandene Inline-Check bleibt bestehen. Ergänzt wurden eine zentrale
+DE/EN/FA-MCQ zur Faltung in Phasenkodierrichtung im Vergleich zu anderen Artefakten
+und zwei Karten zu Aliasing-Korrektur und Zipper-Orientierung. Quiz- und
+Kartenlinks verwenden die bestehende ID `mrt-bildqualitaet-artefakte-snr`.
+
 ## Validierung
 
 - Technik.pdf PDF-S. 87–91 wurden als Seitenbilder visuell geprüft; die gedruckten Seitenzahlen liegen jeweils um eins zurück.
 - Fokussierter SSR-/Sprach-/Curriculum-Test rendert die tatsächliche gemeinsame `StandardLessonShell`, `LessonSection` und `LessonSources`.
-- Browser-/RTL-/Responsive-Prüfung: offen.
-- Unabhängige fachliche Prüfung: offen; keine wissenschaftliche oder klinische Freigabe abgeleitet.
+- Die frühere begrenzte statische Prüfung ist in Batch M2 von `pdf-batch-execution-plan.md` vermerkt; sie ersetzt keine klinische Fachfreigabe.
+- Dieses Delta ergänzt zentrale Prüfungs-/Kartenregistrierung und aktualisiert den veralteten Matrixeintrag. Browser-/RTL-/Responsive-Prüfung bleibt offen.
+- Die Quellenaussage, ein echter Befund müsse in mindestens zwei Gewichtungen sichtbar sein, bleibt bis zur Prüfung des genauen PDF-Kontexts und der unabhängigen klinischen Gültigkeit zurückgestellt.
+- Eine wissenschaftliche oder Publikationsfreigabe wird nicht abgeleitet.

@@ -33,3 +33,73 @@ export const MRI_ARTIFACT_BLOCKS = [
     },
   },
 ]
+
+export const MRI_ARTIFACT_QUESTIONS = ['de', 'en', 'fa'].map(lang => {
+  const content = {
+    de: {
+      question: 'Welche Erklärung passt zu Anatomie, die entlang der Phasenkodierrichtung auf der gegenüberliegenden Bildseite erscheint?',
+      options: ['Aliasing durch Anatomie außerhalb des gewählten Phasen-FOV.', 'Zipper durch RF-Störung außerhalb der Faraday-Kabine.', 'Chemical Shift durch Frequenzunterschied von Wasser und Fett.', 'Suszeptibilität mit Signalauslöschung an einer Grenzfläche.'],
+      explanation: 'Außerhalb des FOV liegende Anatomie kann entlang der Phasenkodierung auf die Gegenseite gefaltet werden. Ein größeres Phasen-FOV oder Phase-oversampling kann helfen; Oversampling kann die Messzeit verlängern.',
+      wrong: {
+        B: 'Zipper zeigt sich als schmale RF-Störlinie, nicht als auf die Gegenseite gefaltete Anatomie.',
+        C: 'Chemical Shift verschiebt Wasser- und Fettkanten vor allem entlang der Frequenzkodierung.',
+        D: 'Suszeptibilität verursacht Signalauslöschung und geometrische Verzerrung nahe einer Feldgrenze.',
+      },
+    },
+    en: {
+      question: 'Which explanation fits anatomy appearing on the opposite side of the image along the phase-encoding direction?',
+      options: ['Aliasing from anatomy outside the selected phase FOV.', 'Zipper from RF interference outside the Faraday cage.', 'Chemical shift from the frequency difference between water and fat.', 'Susceptibility with signal loss at an interface.'],
+      explanation: 'Anatomy outside the FOV can wrap to the opposite side along phase encoding. A larger phase FOV or phase oversampling may help; oversampling can increase scan time.',
+      wrong: {
+        B: 'Zipper appears as a narrow RF-interference line, not anatomy wrapped to the opposite side.',
+        C: 'Chemical shift displaces water and fat edges mainly along frequency encoding.',
+        D: 'Susceptibility causes signal loss and geometric distortion near a field interface.',
+      },
+    },
+    fa: {
+      question: 'کدام توضیح با ظاهرشدن آناتومی در سمت مقابل تصویر، در راستای کدگذاری فاز، سازگار است؟',
+      options: ['aliasing ناشی از قرارگرفتن آناتومی خارج از FOV فاز انتخاب‌شده.', 'zipper ناشی از تداخل RF در بیرون قفس فارادی.', 'chemical shift ناشی از تفاوت فرکانس آب و چربی.', 'susceptibility همراه با افت سیگنال در یک مرز.'],
+      explanation: 'آناتومی خارج از FOV ممکن است در راستای کدگذاری فاز به سمت مقابل تصویر تا بخورد. افزایش FOV فاز یا phase oversampling می‌تواند کمک کند؛ oversampling ممکن است زمان تصویربرداری را افزایش دهد.',
+      wrong: {
+        B: 'الگوی zipper به‌صورت خط باریک ناشی از تداخل RF دیده می‌شود، نه آناتومی تاخورده در سمت مقابل.',
+        C: 'chemical shift لبه‌های آب و چربی را عمدتاً در راستای کدگذاری فرکانس جابه‌جا می‌کند.',
+        D: 'susceptibility نزدیک مرز میدان باعث افت سیگنال و اعوجاج هندسی می‌شود.',
+      },
+    },
+  }[lang]
+  return {
+    id: `mri-artifacts-${lang}-aliasing`, fach: 'technik', tags: ['mrt-bildqualitaet-artefakte-snr'],
+    question: content.question,
+    options: content.options.map((text, index) => ({ id: String.fromCharCode(65 + index), text })),
+    correct: 'A', explanation: content.explanation, wrongExplanations: content.wrong,
+    source: 'Technik.pdf p. 89 (printed p. 88); artifact teaching block sourced from pp. 87–91',
+  }
+})
+
+export const MRI_ARTIFACT_TOPIC_GROUP = {
+  fachId: 'technik', kapitelId: 'technik-mrt-sicherheit',
+  title: L('MRT-Sicherheit und Bildqualität', 'MRI safety and image quality', 'ایمنی و کیفیت تصویر MRI'),
+  topics: [{ id: 'mrt-bildqualitaet-artefakte-snr', title: L('MRT-Artefakte', 'MRI artefacts', 'آرتیفکت‌های MRI') }],
+}
+
+export const MRI_ARTIFACT_FLASHCARD_TOPIC = {
+  id: 'mrt-bildqualitaet-artefakte-snr', area: 'Technik', chapter: 'MRT', icon: 'MR', color: '#3d8894',
+  href: '/flashcards/mrt-bildqualitaet-artefakte-snr',
+  title: L('MRT-Artefakte', 'MRI artefacts', 'آرتیفکت‌های MRI'),
+  subtitle: L('Muster · Kodierachse · Ursache · Korrektur', 'Pattern · encoding axis · cause · response', 'الگو · محور کدگذاری · علت · اقدام'),
+}
+
+export const MRI_ARTIFACT_FLASHCARDS = [
+  {
+    id: 'mri-artifact-aliasing', topicId: 'mrt-bildqualitaet-artefakte-snr', category: L('Faltung / Aliasing', 'Wrap-around / aliasing', 'تاخوردگی / aliasing'),
+    front: L('Warum erscheint Anatomie beim Aliasing auf der gegenüberliegenden Bildseite?', 'Why can anatomy appear on the opposite side of the image in aliasing?', 'چرا در aliasing آناتومی در سمت مقابل تصویر ظاهر می‌شود؟'),
+    answer: L('Anatomie außerhalb des Phasen-FOV wird entlang der Phasenkodierung fehlzugeordnet. Ein größeres Phasen-FOV oder Oversampling kann helfen; Oversampling kann die Messzeit verlängern.', 'Anatomy outside the phase FOV is mislocated along phase encoding. A larger phase FOV or oversampling may help; oversampling can increase scan time.', 'آناتومی خارج از FOV فاز در راستای کدگذاری فاز به‌اشتباه مکان‌یابی می‌شود. افزایش FOV فاز یا oversampling می‌تواند کمک کند؛ oversampling ممکن است زمان تصویربرداری را افزایش دهد.'),
+    source: 'Technik.pdf p. 89 (printed p. 88)',
+  },
+  {
+    id: 'mri-artifact-zipper', topicId: 'mrt-bildqualitaet-artefakte-snr', category: L('Zipper / RF-Störung', 'Zipper / RF interference', 'zipper / تداخل RF'),
+    front: L('Wie verläuft eine typische Zipper-Linie relativ zu den Kodierachsen?', 'How does a typical zipper line run relative to the encoding axes?', 'خط zipper معمولاً نسبت به محورهای کدگذاری چه جهتی دارد؟'),
+    answer: L('Sie verläuft senkrecht zur Frequenzkodierung und parallel zur Phasenkodierung; mögliche RF-Quellen sollten nach lokalem Ablauf technisch geprüft werden.', 'It is perpendicular to frequency encoding and parallel to phase encoding; possible RF sources should be checked by the technical team through the local process.', 'خط عمود بر کدگذاری فرکانس و موازی با کدگذاری فاز است؛ منبع احتمالی RF باید طبق فرایند محلی به‌صورت فنی بررسی شود.'),
+    source: 'Technik.pdf pp. 89–90 (printed pp. 88–89)',
+  },
+]

@@ -5,7 +5,9 @@ import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import { TECHNIK_GRUNDLAGEN } from '../data/technikGrundlagenLesson.js'
-import { MRI_ARTIFACT_BLOCKS } from '../data/technikMriArtifacts.js'
+import { MRI_ARTIFACT_BLOCKS, MRI_ARTIFACT_QUESTIONS, MRI_ARTIFACT_TOPIC_GROUP, MRI_ARTIFACT_FLASHCARD_TOPIC, MRI_ARTIFACT_FLASHCARDS } from '../data/technikMriArtifacts.js'
+import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
+import { FLASHCARD_TOPICS, FLASHCARDS, getCardsByTopic } from '../data/flashcards.js'
 
 const langs = ['de', 'en', 'fa']
 const safety = TECHNIK_GRUNDLAGEN.sections.find(section => section.id === 'mrt-sicherheit')
@@ -107,9 +109,28 @@ const routeSource = fs.readFileSync('app/technik/grundlagen/StandardPage.jsx', '
 assert.match(routeSource, /function MRIArtifactKnowledgeCheck/)
 assert.match(routeSource, /answer === copy\.answer \? copy\.correct : copy\.retry/)
 
+for (const lang of langs) {
+  const question = MRI_ARTIFACT_QUESTIONS.find(item => item.id === `mri-artifacts-${lang}-aliasing`)
+  assert.ok(question)
+  assert.ok(QUESTION_BANK[lang].some(item => item.id === question.id), `${lang}: central MCQ registration`)
+  assert.equal(question.options.find(option => option.id === question.correct)?.text, question.options[0].text)
+  assert.equal(Object.keys(question.wrongExplanations).sort().join(','), 'B,C,D')
+}
+assert.ok(MCQ_TOPIC_GROUPS.some(group => group.topics.some(topic => topic.id === 'mrt-bildqualitaet-artefakte-snr')))
+assert.ok(MCQ_TOPIC_GROUPS.includes(MRI_ARTIFACT_TOPIC_GROUP))
+assert.ok(FLASHCARD_TOPICS.some(topic => topic.id === MRI_ARTIFACT_FLASHCARD_TOPIC.id))
+assert.equal(MRI_ARTIFACT_FLASHCARDS.length, 2)
+assert.equal(getCardsByTopic(MRI_ARTIFACT_FLASHCARD_TOPIC.id).length, 2)
+for (const card of getCardsByTopic(MRI_ARTIFACT_FLASHCARD_TOPIC.id)) {
+  assert.ok(langs.every(lang => card.front[lang]?.trim() && card.answer[lang]?.trim()), `${card.id}: translated front/answer`)
+}
+assert.ok(FLASHCARDS.every(card => card.topicId !== MRI_ARTIFACT_FLASHCARD_TOPIC.id || MRI_ARTIFACT_FLASHCARDS.some(registered => registered.id === card.id)))
+
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
 const entry = curriculum.match(/\{\s*id: 'mrt-bildqualitaet-artefakte-snr',[\s\S]*?\n\s*\}/)?.[0]
 assert.ok(entry)
-assert.match(entry, /link: '\/technik\/grundlagen#mrt'/)
+assert.match(entry, /link: '\/technik\/grundlagen#mrt-sicherheit'/)
+assert.match(entry, /mcqLink: '\/ueben\/quiz\?fach=technik&n=1&themen=mrt-bildqualitaet-artefakte-snr'/)
+assert.match(entry, /flashcardLink: '\/flashcards\/mrt-bildqualitaet-artefakte-snr'/)
 assert.match(entry, /inProgress: true/)
 console.log('MRI artefact pattern, localized encoding axes, source MRI examples, actual shared-shell/source SSR, and curriculum link pass in DE/EN/FA.')
