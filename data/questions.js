@@ -12,6 +12,7 @@ import { GEHIRN_NF1_QUESTIONS } from './gehirnNf1CnsLesson'
 import { BRAIN_METASTASES_QUESTIONS } from './gehirnHirnmetastasenLesson'
 import { KOLLOID_QUESTIONS } from './gehirnKolloidzysteLesson'
 import { UIP_IPF_QUESTIONS } from './thoraxUipIpfLesson'
+import { PULMONARY_EDEMA_QUESTIONS } from './pulmonaryEdema'
 // ── RADYAR QUESTION BANK ────────────────────────────────────────────────────
 
 import { CONTRAST_QUESTIONS, CONTRAST_TOPICS } from './contrastMedia'
@@ -4193,7 +4194,7 @@ const LEGACY_QUESTION_BANK = {
 export const QUESTION_BANK = Object.fromEntries(
   Object.entries(LEGACY_QUESTION_BANK).map(([lang, questions]) => [
     lang,
-    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...KOLLOID_QUESTIONS.filter(question => question.id.startsWith(`kolloidzyste-${lang}-`)), ...UIP_IPF_QUESTIONS.filter(question => question.id.startsWith(`uip-ipf-${lang}-`)), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang]), ...METACARPAL_BASE_QUESTIONS[lang], ...BONE_INFARCT_QUESTIONS[lang], ...FACET_QUESTIONS[lang], ...PCNSL_QUESTIONS[lang], ...MEDULLO_QUESTIONS[lang], ...MENING_QUESTIONS[lang], ...RECIST_QUESTIONS[lang], ...ORMOND_QUESTIONS[lang], ...EPIPLOICA_QUESTIONS[lang], ...PANNICULITIS_QUESTIONS[lang], ...PERITONEAL_QUESTIONS[lang], ...BRAIN_METASTASES_QUESTIONS[lang]],
+    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...KOLLOID_QUESTIONS.filter(question => question.id.startsWith(`kolloidzyste-${lang}-`)), ...UIP_IPF_QUESTIONS.filter(question => question.id.startsWith(`uip-ipf-${lang}-`)), ...PULMONARY_EDEMA_QUESTIONS.filter(question => question.id.startsWith(`lungenoedem-${lang}-`)), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang]), ...METACARPAL_BASE_QUESTIONS[lang], ...BONE_INFARCT_QUESTIONS[lang], ...FACET_QUESTIONS[lang], ...PCNSL_QUESTIONS[lang], ...MEDULLO_QUESTIONS[lang], ...MENING_QUESTIONS[lang], ...RECIST_QUESTIONS[lang], ...ORMOND_QUESTIONS[lang], ...EPIPLOICA_QUESTIONS[lang], ...PANNICULITIS_QUESTIONS[lang], ...PERITONEAL_QUESTIONS[lang], ...BRAIN_METASTASES_QUESTIONS[lang]],
   ])
 )
 
@@ -4203,7 +4204,7 @@ export const MCQ_TOPIC_GROUPS = [
   { fachId: 'technik', kapitelId: 'technik-onkologie', title: { de: 'Onkologische Verlaufsmessung', en: 'Oncological response measurement', fa: 'اندازه‌گیری پاسخ انکولوژیک' }, topics: [{ id: 'recist-1-1', title: { de: 'RECIST 1.1', en: 'RECIST 1.1', fa: 'RECIST 1.1' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-retroperitoneum', title: { de: 'Retroperitoneum', en: 'Retroperitoneum', fa: 'رتروپریتوئن' }, topics: [{ id: 'morbus-ormond', title: { de: 'Morbus Ormond', en: 'Ormond disease', fa: 'بیماری اورموند' } }] },
   { fachId: 'gehirn', kapitelId: 'kopf-tumoren', title: { de: 'Hirntumoren', en: 'Brain tumours', fa: 'تومورهای مغزی' }, topics: [{ id: 'meningeom', title: { de: 'Meningeom', en: 'Meningioma', fa: 'مننژیوم' } }, { id: 'medulloblastom', title: { de: 'Medulloblastom', en: 'Medulloblastoma', fa: 'مدولوبلاستوم' } }, { id: 'lymphom-zns', title: { de: 'Primäres ZNS-Lymphom', en: 'Primary CNS lymphoma', fa: 'لنفوم اولیه سیستم عصبی مرکزی' } }, { id: 'metastasen-meningeosis', title: { de: 'Hirnmetastasen · parenchymal', en: 'Brain metastases · parenchymal', fa: 'متاستاز مغزی پارانشیمی' } }, { id: 'kolloidzyste', title: { de: 'Kolloidzyste', en: 'Colloid cyst', fa: 'کیست کلوئید' } }] },
-  { fachId: 'thorax', kapitelId: 'thorax-lunge', title: { de: 'Lungenparenchymerkrankungen', en: 'Pulmonary parenchymal diseases', fa: 'بیماری‌های پارانشیم ریه' }, topics: [{ id: 'uip-ipf', title: { de: 'UIP / IPF', en: 'UIP / IPF', fa: 'UIP / IPF' } }] },
+  { fachId: 'thorax', kapitelId: 'thorax-lunge', title: { de: 'Lungenparenchymerkrankungen', en: 'Pulmonary parenchymal diseases', fa: 'بیماری‌های پارانشیم ریه' }, topics: [{ id: 'uip-ipf', title: { de: 'UIP / IPF', en: 'UIP / IPF', fa: 'UIP / IPF' } }, { id: 'lungenoedem', title: { de: 'Lungenödem · HRCT', en: 'Pulmonary oedema · HRCT', fa: 'ادم ریه · HRCT' } }] },
   { fachId: 'msk', kapitelId: 'msk-knochennekrosen', title: { de: 'Knochennekrosen', en: 'Bone necrosis', fa: 'نکروزهای استخوانی' }, topics: [{ id: 'knocheninfarkt', title: { de: 'Knocheninfarkt', en: 'Bone infarct', fa: 'انفارکت استخوان' } }] },
   ...ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS,
   { fachId: 'wirbelsaeule', kapitelId: 'ws-degenerativ', title: { de: 'Degenerative Erkrankungen', en: 'Degenerative diseases', fa: 'بیماری‌های دژنراتیو' }, topics: [{ id: 'spinalkanalstenose', title: { de: 'Spinalkanalstenose', en: 'Spinal canal stenosis', fa: 'تنگی کانال نخاعی' } }, { id: 'spondylarthrose', title: { de: 'Spondylarthrose', en: 'Facet arthropathy', fa: 'آرتروز فاست' } }] },

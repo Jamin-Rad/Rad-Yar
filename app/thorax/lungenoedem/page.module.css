@@ -3,6 +3,10 @@
 .body > p { margin: 0; max-width: 84ch; line-height: 1.75; }
 .body small { color: var(--muted, #586773); line-height: 1.6; }
 .diagram { display: block; width: min(100%, 850px); height: auto; margin-inline: auto; border-radius: 14px; }
+.sourceFigure { margin: .5rem 0; padding: .75rem; border: 1px solid var(--line, #d6dfe5); border-radius: 12px; background: var(--paper, white); }
+.sourceFigure img { display: block; width: min(100%, 850px); height: auto; margin-inline: auto; border-radius: 8px; }
+.sourceImageLabels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; margin-top: .55rem; text-align: center; color: var(--lesson-accent-strong); font-size: .92rem; }
+.sourceFigure figcaption { margin-top: .6rem; color: var(--muted, #586773); line-height: 1.65; }
 .visualLegend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; margin: 0; padding: 0; list-style: none; }
 .visualLegend li { display: flex; align-items: flex-start; gap: .55rem; line-height: 1.55; }
 .visualLegend li span { display: grid; flex: 0 0 1.6rem; width: 1.6rem; height: 1.6rem; place-items: center; border-radius: 50%; color: white; background: var(--lesson-accent-strong); font-weight: 700; }
@@ -23,4 +27,5 @@
 .rules { display: grid; gap: .8rem; padding-inline-start: 1.5rem; line-height: 1.75; }
 .page :is(button, input):focus-visible { outline: 2px solid var(--lesson-accent-strong); outline-offset: 3px; }
 @media(max-width: 680px) { .visualLegend { grid-template-columns: 1fr; } }
+@media(max-width: 540px) { .sourceImageLabels { font-size: .78rem; } }
 @media(max-width: 540px) { .tableWrap th, .tableWrap td { padding: .65rem; } .tableWrap tbody th { min-width: 8rem; } }

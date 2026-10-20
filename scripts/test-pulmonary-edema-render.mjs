@@ -6,6 +6,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import { DOMParser } from '@xmldom/xmldom'
 import { PULMONARY_EDEMA_LESSON as data } from '../data/pulmonaryEdema.js'
+import { PULMONARY_EDEMA_QUESTIONS } from '../data/pulmonaryEdema.js'
 import { CURRICULUM } from '../data/curriculum.js'
 
 const require = createRequire(import.meta.url)
@@ -50,12 +51,24 @@ for (const lang of ['de', 'en', 'fa']) {
   for (const source of data.references.filter(item => item.url)) assert.ok(html.includes(esc(source.label[lang])), `${lang}: localized source label`)
   assert.ok(data.check.correct[lang] && data.check.retry[lang], `${lang}: localized correct/retry feedback is present in lesson data`)
 }
-assert.ok(data.source.includes('PDF S. 48–49'))
+assert.match(data.source, /PDF S\. 17 and 48–49/)
 assert.equal(data.chapters[0].rows[0][0].de, '1 · Venöse Stauung', 'German label is not Persian')
-assert.match(data.chapters[2].rows[0][1].de, /nur die Überschrift/)
-assert.match(data.chapters[2].rows[0][1].en, /only the heading/)
+const ardsChapter = data.chapters.find(chapter => chapter.id === 'ards')
+assert.ok(ardsChapter, 'ARDS chapter remains present')
+assert.match(ardsChapter.rows[0][1].de, /nur die Überschrift/)
+assert.match(ardsChapter.rows[0][1].en, /only the heading/)
 assert.ok(!data.chapters[0].rows.flat().some(cell => /PCWP (13|18|25)/.test(cell.de || '')), 'avoid teaching PCWP bands as measurable radiographic criteria')
 assert.equal(data.check.answerIndex, 1)
+assert.match(data.chapters.find(chapter => chapter.id === 'hrct').note.de, /kein signifikanter Unterschied/)
+assert.match(data.chapters.find(chapter => chapter.id === 'hrct').note.en, /no significant difference/)
+assert.match(data.chapters.find(chapter => chapter.id === 'hrct').note.fa, /تفاوت معناداری دیده نشد/)
+assert.ok(!JSON.stringify(data).includes('سپتا‌ی'), 'Persian septa spelling is corrected')
+for (const question of PULMONARY_EDEMA_QUESTIONS) {
+  const answer = question.options.find(option => option.id === question.correct)
+  assert.match(answer.text, /septal thickening|Septenverdickung|سپتاهای بین‌لوبولی/i, `${question.id}: correct option answers the stem`)
+  assert.equal(Object.keys(question.wrongExplanations).sort().join(','), 'B,C,D', `${question.id}: all distractors have explanations`)
+  assert.match(question.explanation, /no significant difference|did not differ significantly|kein signifikanter Unterschied|تفاوت معناداری/, `${question.id}: study limitation is stated`)
+}
 assert.match(fs.readFileSync('app/thorax/lungenoedem/page.js', 'utf8'), /setAnswer\(null\)/, 'wrong answer offers retry')
 const svg = fs.readFileSync('public/educational/pulmonary-edema-patterns.svg', 'utf8')
 assert.doesNotMatch(svg, /VASCULAR REDISTRIBUTION|INTERSTITIAL SIGNS|ALVEOLAR OPACITIES|Redistribution|Septal \/ peribronchial|Perihilar confluent/, 'language-neutral numbered figure; localized legend is adjacent')

@@ -3,19 +3,21 @@ const L = (de, en, fa) => ({ de, en, fa })
 export const PULMONARY_EDEMA_LESSON = {
   id: 'lungenoedem',
   title: L('Lungenödem im Thoraxbild', 'Pulmonary oedema on chest imaging', 'ادم ریوی در تصویربرداری قفسه سینه'),
-  source: 'Thorax.pdf, PDF S. 48–49 (printed pp. 47–48); Global Definition of ARDS (2024).',
+  source: 'Thorax.pdf, PDF S. 17 and 48–49 (printed pp. 16 and 47–48); additional HRCT studies.',
   heroImage: '/educational/pulmonary-edema-patterns.svg',
   alt: L('Dreiteiliges Schema: Gefäßumverteilung, interstitielle Septalzeichen und perihiläre alveoläre Verschattung; keine Röntgenaufnahme', 'Three-part schematic: vascular redistribution, interstitial septal signs and perihilar alveolar opacity; not a radiograph', 'شماتیک سه‌بخشی: بازتوزیع عروق، نشانه‌های بینابینی سپتال و کدورت آلوئولی اطراف ناف ریه؛ تصویر رادیوگرافی نیست'),
-  visualNote: L('Didaktisches Schema der Verteilung, kein diagnostisches Röntgenbild. Die PDF-Seiten enthalten kein passendes Fallbild.', 'Teaching schematic of distribution, not a diagnostic radiograph. The PDF pages contain no matching case image.', 'شماتیک آموزشیِ توزیع کدورت‌هاست، نه رادیوگرافی تشخیصی. صفحات PDF تصویر موردی مناسب ندارند.'),
+  visualNote: L('Das Schema zeigt die Stufenfolge, kein diagnostisches Röntgenbild. Die Quellseiten 48–49 enthalten kein passendes Fallbild; drei Originalbeispiele von PDF S. 17 sind im HRCT-Abschnitt getrennt ausgewiesen.', 'The schematic shows a staged pattern, not a diagnostic radiograph. Source pp. 48–49 contain no matching case image; three original examples from PDF p. 17 are shown separately in the HRCT section.', 'این شماتیک توالی الگو را نشان می‌دهد، نه رادیوگرافی تشخیصی. صفحات منبع ۴۸–۴۹ تصویر موردی مناسبی ندارند؛ سه نمونهٔ اصلی از صفحهٔ ۱۷ PDF جداگانه در بخش HRCT آمده‌اند.'),
   visualLegend: [
     L('Gefäßumverteilung', 'Vascular redistribution', 'بازتوزیع عروق'),
     L('Interstitielle Septal- und peribronchiale Zeichen', 'Interstitial septal and peribronchial signs', 'نشانه‌های بینابینی سپتال و اطراف برونش'),
     L('Perihiläre alveoläre Verschattung', 'Perihilar alveolar opacity', 'کدورت آلوئولی اطراف ناف ریه'),
   ],
   references: [
-    { label: L('Neue globale ARDS-Definition (2024), Konsensusbericht', 'A New Global Definition of ARDS (2024), consensus report', 'تعریف جهانی جدید ARDS (۲۰۲۴)، گزارش اجماعی'), url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10870872/' },
-    { label: L('Berlin-Definition des ARDS (2012), Primärpublikation', 'Berlin Definition of ARDS (2012), primary publication', 'تعریف برلین ARDS (۲۰۱۲)، مقالهٔ اصلی'), url: 'https://pubmed.ncbi.nlm.nih.gov/22797452/' },
-    { label: L('Smith et al.: radiografische Differenzierung verschiedener Lungenödem-Ursachen (1987)', 'Smith et al.: radiographic differentiation of pulmonary oedema aetiologies (1987)', 'Smith و همکاران: افتراق رادیوگرافیک علت‌های مختلف ادم ریه (۱۹۸۷)'), url: 'https://doi.org/10.1097/00004424-198711000-00003' },
+    { tag: L('Globaler Konsens · Definition', 'Global consensus · definition', 'تعریف اجماعی جهانی'), label: L('Neue globale ARDS-Definition (2024), Konsensusbericht', 'A New Global Definition of ARDS (2024), consensus report', 'تعریف جهانی جدید ARDS (۲۰۲۴)، گزارش اجماعی'), url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10870872/' },
+    { tag: L('ARDS · Berlin-Definition', 'ARDS · Berlin definition', 'ARDS · تعریف برلین'), label: L('Berlin-Definition des ARDS (2012), Primärpublikation', 'Berlin Definition of ARDS (2012), primary publication', 'تعریف برلین ARDS (۲۰۱۲)، مقالهٔ اصلی'), url: 'https://pubmed.ncbi.nlm.nih.gov/22797452/' },
+    { tag: L('Röntgen · Vergleichskohorte', 'Radiography · comparative cohort', 'رادیوگرافی · مطالعهٔ مقایسه‌ای'), label: L('Smith et al.: radiografische Differenzierung verschiedener Lungenödem-Ursachen (1987)', 'Smith et al.: radiographic differentiation of pulmonary oedema aetiologies (1987)', 'Smith و همکاران: افتراق رادیوگرافیک علت‌های مختلف ادم ریه (۱۹۸۷)'), url: 'https://doi.org/10.1097/00004424-198711000-00003' },
+    { tag: L('HRCT · retrospektive Kohorte', 'HRCT · retrospective cohort', 'HRCT · مطالعهٔ هم‌گروهی گذشته‌نگر'), label: L('Ribeiro et al.: Hydrostatic pulmonary edema on HRCT (2006)', 'Ribeiro et al.: Hydrostatic pulmonary oedema on HRCT (2006)', 'Ribeiro و همکاران: ادم هیدروستاتیک در HRCT (۲۰۰۶)'), url: 'https://pubmed.ncbi.nlm.nih.gov/17440672/' },
+    { tag: L('HRCT · Positionsstudie', 'HRCT · positional study', 'HRCT · مطالعهٔ تغییر وضعیت'), label: L('Kim et al.: Positional shifting of HRCT findings in pulmonary edema (2001)', 'Kim et al.: Positional shifting of HRCT findings in pulmonary oedema (2001)', 'Kim و همکاران: جابه‌جایی یافته‌های HRCT در ادم ریوی با تغییر وضعیت (۲۰۰۱)'), url: 'https://doi.org/10.3348/jkrs.2001.44.3.333' },
     { label: L('Thorax.pdf, PDF S. 48–49 (Druckseiten 47–48)', 'Thorax.pdf, PDF pp. 48–49 (printed pp. 47–48)', 'Thorax.pdf، صفحات PDF ۴۸–۴۹ (صفحات چاپی ۴۷–۴۸)'), url: null },
   ],
   chapters: [
@@ -29,6 +31,24 @@ export const PULMONARY_EDEMA_LESSON = {
         [L('۳ · Alveoläres Ödem', '3 · Alveolar oedema', '۳ · ادم آلوئولی'), L('Beidseitige perihiläre, konfluierende Verschattungen („Bat-wing“); Pleuraergüsse sind häufig und können rechts betont sein.', 'Bilateral perihilar confluent opacities (“bat-wing”); pleural effusions are common and may be right-predominant.', 'کدورت‌های همگرا و دوطرفهٔ اطراف ناف ریه («بال خفاشی»)؛ افیوژن پلور شایع است و ممکن است در راست بیشتر باشد.')],
       ],
       note: L('Stufen sind ein Modell, keine obligatorische lineare Abfolge. Voraufnahme, Projektion, Lagerung und klinischer Verlauf beeinflussen die Zeichen.', 'Stages are a model, not an obligatory linear sequence. Prior imaging, projection, positioning and clinical course affect the signs.', 'مراحل یک مدل آموزشی‌اند، نه توالی خطیِ الزامی. تصاویر قبلی، پروجکشن، وضعیت بیمار و سیر بالینی بر نشانه‌ها اثر می‌گذارند.'),
+    },
+    {
+      id: 'hrct', icon: 'hrct',
+      title: L('Welche Zeichen passen im HRCT zu hydrostatischem Ödem?', 'Which HRCT signs fit hydrostatic oedema?', 'کدام نشانه‌های HRCT با ادم هیدروستاتیک سازگارند؟'),
+      lead: L('Wenn ein CT vorliegt, lies die Kombination aus Interstitium, Dichte und Verteilung. Kein Einzelzeichen beweist eine kardiale Ursache.', 'When CT is available, read the combination of interstitium, opacity and distribution. No single sign proves a cardiac cause.', 'اگر CT در دسترس است، ترکیب فضای بینابینی، دانسیته و توزیع را بخوانید. هیچ نشانهٔ منفردی علت قلبی را ثابت نمی‌کند.'),
+      rows: [
+        [L('Dominante Kombination', 'Dominant combination', 'ترکیب غالب'), L('Glatte interlobuläre Septenverdickung zusammen mit Milchglastrübung (GGO).', 'Smooth interlobular septal thickening together with ground-glass opacity (GGO).', 'ضخیم‌شدن صاف سپتاهای بین‌لوبولی همراه با کدورت شیشه‌مات (GGO).')],
+        [L('Verteilung', 'Distribution', 'توزیع'), L('Häufig perihilär und lage-/schwerkraftabhängig, oft dorsal und basal betont; die Ausprägung verändert sich mit Lagerung und Volumenstatus.', 'Often perihilar and position/gravity dependent, frequently more conspicuous posteriorly and basally; appearance varies with positioning and volume status.', 'اغلب اطراف ناف ریه و وابسته به وضعیت/جاذبه است و ممکن است در بخش‌های خلفی و قاعده‌ای برجسته‌تر باشد؛ ظاهر با وضعیت بدن و حجم مایع تغییر می‌کند.')],
+        [L('Begleitzeichen', 'Accompanying signs', 'نشانه‌های همراه'), L('Peribronchovaskuläre Interstitialverdickung, Fissurenverdickung, Kardiomegalie und Pleuraergüsse können hinzukommen.', 'Peribronchovascular interstitial thickening, fissural thickening, cardiomegaly and pleural effusions may accompany the pattern.', 'ضخیم‌شدن بینابینی اطراف برونکوواسکولار، ضخیم‌شدن فیسورها، کاردیومگالی و افیوژن پلور ممکن است همراه باشند.')],
+        [L('Grenze der Aussage', 'Interpretive limit', 'محدودهٔ تفسیر'), L('Das Muster stützt ein hydrostatisches Ödem im passenden Kontext, ist aber kein alleiniger Beweis der Ursache; atypische und gemischte Muster kommen vor.', 'In the right context, the pattern supports hydrostatic oedema but does not prove the cause by itself; atypical and mixed patterns occur.', 'در زمینهٔ مناسب، الگو از ادم هیدروستاتیک حمایت می‌کند، اما به‌تنهایی علت را اثبات نمی‌کند؛ الگوهای آتیپیک و مختلط هم رخ می‌دهند.')],
+      ],
+      figure: {
+        src: '/educational/pulmonary-edema/pdf-p17-examples.png',
+        alt: L('Drei Originalbeispiele aus dem Abschnitt „Kardiogenes Lungenödem“ in Thorax.pdf Seite 17: axiale CT, koronare CT und Thoraxaufnahme.', 'Three original examples from the “Cardiogenic pulmonary oedema” section of Thorax.pdf p. 17: axial CT, coronal CT and chest radiograph.', 'سه نمونهٔ اصلی از بخش «ادم ریوی کاردیوژنیک» در صفحهٔ ۱۷ Thorax.pdf: CT محوری، CT کرونال و رادیوگرافی قفسه سینه.'),
+        caption: L('Thorax.pdf, PDF S. 17 (Druck-S. 16). Die drei Abbildungen stehen unter dem kardiogenen Ödem-Abschnitt. Sie illustrieren die Quelle, sind aber keine isolierten Diagnosekriterien; mit dem Gesamtmuster und klinischem Kontext korrelieren.', 'Thorax.pdf, PDF p. 17 (printed p. 16). The three panels appear under the cardiogenic oedema section. They illustrate the source material but are not standalone diagnostic criteria; correlate with the overall pattern and clinical context.', 'Thorax.pdf، صفحهٔ ۱۷ (شمارهٔ چاپی ۱۶). این سه تصویر زیر بخش ادم کاردیوژنیک قرار دارند. آن‌ها محتوای منبع را نشان می‌دهند، اما معیار تشخیصی مستقل نیستند؛ با الگوی کلی و زمینهٔ بالینی تطبیق دهید.'),
+        labels: [L('Axiale CT', 'Axial CT', 'CT محوری'), L('Koronare CT', 'Coronal CT', 'CT کرونال'), L('Thoraxaufnahme', 'Chest radiograph', 'رادیوگرافی قفسه سینه')],
+      },
+      note: L('Die HRCT-Zeichen überlappen mit anderen Ursachen diffuser Lungentrübung. In einer kleinen Positionsstudie war die Lageverschiebung glatter Septenverdickungen bei Ödem ausgeprägter; für eine entsprechende Verschiebung der GGO zeigte sich kein signifikanter Unterschied. Das ersetzt die klinische Einordnung nicht.', 'HRCT signs overlap with other causes of diffuse lung opacity. In a small positional study, shifting of smooth septal thickening was more pronounced in oedema; no significant difference was found for shifting of GGO. This does not replace clinical interpretation.', 'نشانه‌های HRCT با علت‌های دیگر کدورت منتشر ریه هم‌پوشانی دارند. در یک مطالعهٔ کوچکِ تغییر وضعیت، جابه‌جایی ضخیم‌شدن صاف سپتا در ادم بارزتر بود؛ برای جابه‌جایی GGO تفاوت معناداری دیده نشد. این یافته جایگزین تفسیر بالینی نیست.'),
     },
     {
       id: 'differentiate', icon: 'differentiate',
@@ -66,5 +86,37 @@ export const PULMONARY_EDEMA_LESSON = {
     L('Die Morphologie verschiebt Wahrscheinlichkeiten; sie beweist weder Ursache noch PCWP.', 'Morphology shifts likelihood; it proves neither cause nor PCWP.', 'مورفولوژی احتمال‌ها را تغییر می‌دهد؛ نه علت را ثابت می‌کند و نه PCWP را.'),
     L('ARDS ist eine klinische Diagnose mit Bildkriterium, kein Synonym für jedes bilaterale Ödem.', 'ARDS is a clinical diagnosis with an imaging criterion, not a synonym for every bilateral oedema.', 'ARDS تشخیصی بالینی با معیار تصویری است و مترادف هر ادم دوطرفه نیست.'),
   ],
-  notice: L('Entwurf aus Thorax.pdf, PDF S. 48–49 (Druckseiten 47–48). PCWP-Stufen sind nicht als Messwerte aus dem Bild zu lesen. Die Seiten liefern keine diagnostischen Fallbilder; das gezeigte Diagramm ist ein Schema. Die ARDS-Passage auf Druckseite 48 ist unvollständig und wurde nicht rekonstruiert.', 'Draft based on Thorax.pdf, PDF pp. 48–49 (printed pp. 47–48). PCWP stages should not be read as values measurable from imaging. The pages provide no diagnostic case images; the displayed diagram is schematic. The ARDS passage on printed p. 48 is incomplete and has not been reconstructed.', 'پیش‌نویس بر اساس صفحات PDF ۴۸–۴۹ (صفحات چاپی ۴۷–۴۸) Thorax.pdf است. مراحل PCWP نباید به‌عنوان مقادیر قابل اندازه‌گیری از تصویر تلقی شوند. این صفحات تصویر تشخیصی موردی ندارند و نمودار صرفاً شماتیک است. بخش ARDS در صفحهٔ چاپی ۴۸ ناقص است و بازسازی نشده است.'),
+  notice: L('Entwurf aus Thorax.pdf, PDF S. 17 und 48–49 (Druckseiten 16 und 47–48). Die HRCT-Zeichen beruhen auf der Morphologie und beweisen allein keine kardiale Ursache. PCWP-Stufen sind nicht als Messwerte aus dem Bild zu lesen. Die ARDS-Passage auf Druckseite 48 ist unvollständig und wurde nicht rekonstruiert.', 'Draft based on Thorax.pdf, PDF p. 17 and pp. 48–49 (printed pp. 16 and 47–48). HRCT signs describe morphology and do not alone prove a cardiac cause. PCWP stages should not be read as values measurable from imaging. The ARDS passage on printed p. 48 is incomplete and has not been reconstructed.', 'پیش‌نویس بر اساس صفحهٔ PDF ۱۷ و صفحات ۴۸–۴۹ (چاپی ۱۶ و ۴۷–۴۸) است. نشانه‌های HRCT مورفولوژی را توصیف می‌کنند و به‌تنهایی علت قلبی را ثابت نمی‌کنند. مراحل PCWP را نمی‌توان از تصویر اندازه گرفت. بخش ARDS در صفحهٔ چاپی ۴۸ ناقص است و بازسازی نشده است.'),
 }
+
+const pulmonaryEdemaQuestionOptions = lang => {
+  const texts = lang === 'de' ? ['Glatte interlobuläre Septenverdickung.', 'Milchglastrübung (GGO).', 'Gefäßumverteilung.', 'Pleuraerguss.'] : lang === 'en' ? ['Smooth interlobular septal thickening.', 'Ground-glass opacity (GGO).', 'Vascular redistribution.', 'Pleural effusion.'] : ['ضخیم‌شدن صاف سپتاهای بین‌لوبولی.', 'کدورت شیشه‌مات (GGO).', 'بازتوزیع عروق.', 'افیوژن پلور.']
+  return texts.map((text, index) => ({ id: String.fromCharCode(65 + index), text }))
+}
+
+export const PULMONARY_EDEMA_QUESTIONS = ['de', 'en', 'fa'].map(lang => ({
+  id: `lungenoedem-${lang}-hrct-pattern`, fach: 'thorax', tags: ['lungenoedem'],
+  question: lang === 'de' ? 'Welcher HRCT-Befund zeigte in einer kleinen Positionsstudie bei Lungenödem ein ausgeprägteres lageabhängiges Verschieben?' : lang === 'en' ? 'Which HRCT finding showed more pronounced positional shifting in a small study of pulmonary oedema?' : 'در یک مطالعهٔ کوچک ادم ریوی، جابه‌جایی وابسته به وضعیت کدام یافتهٔ HRCT بارزتر بود؟',
+  options: pulmonaryEdemaQuestionOptions(lang),
+  correct: 'A',
+  explanation: lang === 'de' ? 'Kim et al. untersuchten nur 16 Patienten: Das lageabhängige Verschieben glatter Septenverdickungen war bei Ödem ausgeprägter; für GGO zeigte sich kein signifikanter Unterschied. Der Befund ist unterstützend, nicht beweisend.' : lang === 'en' ? 'Kim et al. studied only 16 patients: positional shifting of smooth septal thickening was more pronounced in oedema; GGO shifting did not differ significantly. This is supportive, not diagnostic proof.' : 'Kim و همکاران فقط ۱۶ بیمار را بررسی کردند: جابه‌جایی وابسته به وضعیتِ ضخیم‌شدن صاف سپتا در ادم بارزتر بود؛ جابه‌جایی GGO تفاوت معناداری نداشت. این یافته حمایتی است، نه اثبات‌کننده.',
+  wrongExplanations: {
+    B: lang === 'de' ? 'Kim et al. fanden für das lageabhängige Verschieben der GGO keinen signifikanten Unterschied; das Ergebnis betrifft die Septenverdickung.' : lang === 'en' ? 'Kim et al. found no significant difference in positional shifting of GGO; the result concerns septal thickening.' : 'Kim و همکاران برای جابه‌جایی وابسته به وضعیت GGO تفاوت معناداری نیافتند؛ یافته درباره ضخیم‌شدن سپتاست.',
+    C: lang === 'de' ? 'Die Positionsstudie berichtete den deutlicheren Shift für glatte Septenverdickungen, nicht für die Gefäßumverteilung.' : lang === 'en' ? 'The positional study reported the more pronounced shift for smooth septal thickening, not vascular redistribution.' : 'مطالعه جابه‌جایی بارزتر را برای ضخیم‌شدن صاف سپتا گزارش کرد، نه بازتوزیع عروق.',
+    D: lang === 'de' ? 'Pleuraergüsse sind mögliche Begleitzeichen, waren aber nicht der untersuchte lageabhängige HRCT-Befund.' : lang === 'en' ? 'Pleural effusions are possible accompanying signs, but were not the positional HRCT finding studied.' : 'افیوژن پلور می‌تواند یافته همراه باشد، اما یافته HRCT وابسته به وضعیت در آن مطالعه نبود.',
+  },
+  source: 'Thorax.pdf p. 17 (printed p. 16); Ribeiro et al. 2006; Kim et al. 2001',
+}))
+
+export const PULMONARY_EDEMA_FLASHCARD_TOPIC = {
+  id: 'lungenoedem', area: 'Thorax', chapter: 'Lungenparenchymerkrankungen', icon: 'CT', color: '#4b8994',
+  href: '/flashcards/lungenoedem', title: L('Lungenödem', 'Pulmonary oedema', 'ادم ریوی'),
+  subtitle: L('HRCT · Septen · Verteilung · Kontext', 'HRCT · septa · distribution · context', 'HRCT · سپتا · توزیع · زمینه'),
+}
+
+export const PULMONARY_EDEMA_FLASHCARDS = [{
+  id: 'lungenoedem-hrct-pattern', topicId: 'lungenoedem', category: L('HRCT-Muster', 'HRCT pattern', 'الگوی HRCT'),
+  front: L('Welche HRCT-Kombination stützt ein hydrostatisches Ödem?', 'Which HRCT combination supports hydrostatic oedema?', 'کدام ترکیب HRCT از ادم هیدروستاتیک حمایت می‌کند؟'),
+  answer: L('Glatte interlobuläre Septenverdickung plus GGO, oft mit perihilärer/schwerkraftabhängiger Verteilung und möglichen Begleitzeichen; kein Einzelzeichen beweist die kardiale Ursache.', 'Smooth interlobular septal thickening plus GGO, often with perihilar/gravity-dependent distribution and possible accompanying signs; no single sign proves a cardiac cause.', 'ضخیم‌شدن صاف سپتاهای بین‌لوبولی همراه GGO، اغلب با توزیع اطراف ناف ریه/وابسته به جاذبه و نشانه‌های همراه احتمالی؛ هیچ نشانهٔ منفردی علت قلبی را ثابت نمی‌کند.'),
+  source: 'Thorax.pdf p. 17 (printed p. 16); Ribeiro et al. 2006; Kim et al. 2001',
+}]

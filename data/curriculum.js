@@ -446,7 +446,7 @@ export const CURRICULUM = [
           { id: 'emphysem-paraseptal', title: { de: 'Paraseptales Emphysem', en: 'Paraseptal Emphysema', fa: 'آمفیزم پاراسپتال' }, group: ['Emphysem'], tags: ['CT'], diff: 2 },
           { id: 'emphysem-bulloes', title: { de: 'Bullöses Emphysem', en: 'Bullous Emphysema', fa: 'آمفیزم بولوز' }, group: ['Emphysem'], tags: ['CT'], diff: 2 },
           { id: 'atelektase', title: { de: 'Atelektase', en: 'Atelectasis', fa: 'آتلکتازی' }, tags: ['Rö','CT'], diff: 1 },
-          { id: 'lungenoedem', title: { de: 'Lungenödem', en: 'Pulmonary Oedema', fa: 'ادم ریوی' }, tags: ['Rö','CT'], diff: 1, link: '/thorax/lungenoedem', ready: true, inProgress: true, updatedAt: '2026-10-19' },
+          { id: 'lungenoedem', title: { de: 'Lungenödem', en: 'Pulmonary Oedema', fa: 'ادم ریوی' }, tags: ['Rö','CT'], diff: 1, link: '/thorax/lungenoedem', mcqLink: '/ueben/quiz?fach=thorax&n=1&themen=lungenoedem', flashcardLink: '/flashcards/lungenoedem', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'ards', title: { de: 'ARDS', en: 'ARDS', fa: 'ARDS' }, tags: ['CT'], diff: 2, link: '/thorax/lungenoedem#ards', ready: true, inProgress: true, updatedAt: '2026-10-19' },
         ],
       },
