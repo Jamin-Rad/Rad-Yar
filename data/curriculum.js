@@ -879,7 +879,7 @@ export const CURRICULUM = [
           { id: 'urothelkarzinom', title: { de: 'Urothelkarzinom', en: 'Urothelial Carcinoma', fa: 'کارسینوم اوروتلیال' }, tags: ['CT'], diff: 3 },
           { id: 'nephrolithiasis', title: { de: 'Nephrolithiasis', en: 'Nephrolithiasis', fa: 'نفرولیتیازیس' }, tags: ['CT','Rö'], diff: 1 },
           { id: 'hydronephrose', title: { de: 'Hydronephrose', en: 'Hydronephrosis', fa: 'هیدرونفروز' }, tags: ['Sono','CT'], diff: 1 },
-          { id: 'pyelonephritis', title: { de: 'Pyelonephritis', en: 'Pyelonephritis', fa: 'پیلونفریت' }, group: ['Entzündliche Nierenerkrankungen'], tags: ['CT','Sono'], diff: 2 },
+          { id: 'pyelonephritis', title: { de: 'Pyelonephritis', en: 'Pyelonephritis', fa: 'پیلونفریت' }, group: ['Entzündliche Nierenerkrankungen'], tags: ['CT','Sono'], diff: 2, link: '/abdomen/niere/pyelonephritis', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'nierenabszess', title: { de: 'Nierenabszess', en: 'Renal Abscess', fa: 'آبسه کلیوی' }, group: ['Entzündliche Nierenerkrankungen'], tags: ['CT'], diff: 2 },
         ],
       },
