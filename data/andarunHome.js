@@ -11,6 +11,7 @@ export const ANDARUN_HOME_GROUPS = [
   ] },
   { id: 'lernen', title: 'Lernen', tone: 'blue', items: [
     { title: 'Deutsch', href: '/andarun/deutsch', icon: 'book' },
+    { title: 'English', href: '/andarun/english', icon: 'book' },
     { title: 'Befunde', href: '/andarun/befunde', icon: 'file' },
     { title: 'Test', href: '/andarun/test', icon: 'test' },
   ] },

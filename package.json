@@ -8,6 +8,7 @@
     "audit:fa": "node scripts/audit-fa-translations.mjs",
     "audit:mcq": "tsx scripts/audit-mcq-bank.mjs",
     "start": "next start",
+    "test:english": "node --import tsx --test app/andarun/english/courseEngine.test.mjs",
     "android:sync": "cap sync android",
     "android:apk": "cd android && ./gradlew assembleDebug"
   },

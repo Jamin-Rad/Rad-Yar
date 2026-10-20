@@ -34,6 +34,8 @@ export default function AndarunNav() {
   const pathname = usePathname() || ''
   // The learning preview belongs to RadYar and uses its original site navbar.
   if (matchesPath(pathname, '/andarun/test')) return null
+  // The English app provides its own navigation and return link.
+  if (matchesPath(pathname, '/andarun/english')) return null
   const isHome = pathname === '/andarun'
   const section = SECTIONS.find(([prefix]) => matchesPath(pathname, prefix))?.[1]
   const surface = SURFACES.find(([prefix]) => matchesPath(pathname, prefix))?.[1] || 'home'

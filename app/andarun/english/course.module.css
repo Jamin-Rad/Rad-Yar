@@ -1,0 +1,105 @@
+.course { padding-bottom: 8px; }
+.courseOverview { padding: 23px 28px; }
+.courseOverview > div { display: flex; align-items: baseline; gap: 18px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.courseOverview > div > strong { font-size: 27px; min-width: 58px; }
+.courseOverview > div > span { color: var(--muted); font-size: 14px; }
+.courseOverview > p { color: var(--muted); font-size: 12px; margin-top: 15px; }
+.diagnosticNote { font-size: 14px; padding: 18px 0; color: var(--muted); max-width: 1000px; }
+.methodStrip { display: flex; flex-wrap: wrap; gap: 10px 30px; border-block: 1px solid var(--line); padding: 17px 0; margin: 20px 0 40px; font-size: 14px; }
+.unit { margin-bottom: 38px; }
+.unitHeading { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.unitHeading > span { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--soft); font-size: 23px; }
+.unitHeading h2 { font-size: 24px; }
+.unitHeading p { font-size: 13px; color: var(--muted); }
+.lessonList { border-top: 1px solid var(--line); }
+.lessonRow { display: flex; align-items: center; gap: 18px; width: 100%; padding: 20px 8px; background: none; border: 0; border-bottom: 1px solid var(--line); text-align: right; }
+.lessonRow:hover { background: #eef1e9; }
+.lessonNumber { color: var(--muted); font-size: 19px; min-width: 32px; }
+.lessonCopy { display: flex; flex-direction: column; gap: 4px; }
+.lessonCopy > strong { font-size: 17px; }
+.lessonCopy > span { color: var(--muted); font-size: 13px; }
+.lessonCopy > small { color: #966043; font-size: 12px; }
+.lessonStatus { margin-right: auto; white-space: nowrap; font-size: 13px; display: flex; flex-direction: column; gap: 4px; text-align: left; }
+.lessonStatus > small { color: var(--muted); font-size: 11px; }
+.lockedLesson .lessonNumber, .lockedLesson .lessonStatus { color: var(--muted); }
+.checkpoint { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 22px; background: #edefe6; border-radius: 0 0 8px 8px; }
+.checkpoint strong { font-size: 14px; }
+.checkpoint p { font-size: 12px; color: var(--muted); }
+.checkpoint button { flex-shrink: 0; }
+.resume { padding: 20px 24px; border: 1px solid #c7ac80; background: #faf3e5; border-radius: 8px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+.resume p { font-size: 13px; color: #70604a; }
+.resume > div:last-child { margin-top: 0; }
+.rule { font-size: 17px; line-height: 2.1 !important; max-width: 1000px; }
+.pattern { border-left: 3px solid #97ad91; background: #f3f5ee; padding: 16px 20px; }
+.examples { margin-top: 24px; }
+.examples > div { padding: 16px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 5px 18px; }
+.examples p { grid-column: 1 / -1; font-size: 21px; }
+.examples span { color: var(--muted); font-size: 14px; }
+.wordList { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 32px; }
+.wordList > div { padding: 17px 0; border-top: 1px solid var(--line); min-width: 0; }
+.wordList strong { font-size: 19px; }
+.wordList p { margin-top: 12px; font-size: 17px; }
+.lessonStart > button { margin-top: 20px; }
+.exercise { max-width: 900px; margin-inline: auto; }
+.exerciseMeta { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; margin-top: 20px; font-size: 12px; color: var(--muted); }
+.skillLine { display: flex; gap: 14px; font-size: 12px; color: var(--muted); }
+.skillLine > span:first-child { color: var(--forest); font-weight: 700; }
+.exercise .exerciseTitle { font-size: 25px; margin-top: 16px; }
+.persianPrompt { font-size: 18px; margin: 22px 0; }
+.context { margin-bottom: 22px; border-left: 3px solid var(--line); padding: 8px 16px; }
+.context strong, .context p { display: block; text-align: left; font-size: 19px; }
+.context p { font-size: 17px; margin-top: 6px; }
+.fourOptions { border: 0; display: grid; gap: 12px; margin-top: 24px; }
+.option { display: flex; align-items: center; gap: 13px; padding: 14px 18px; border: 1px solid #cdd5ca; background: white; border-radius: 8px; width: 100%; text-align: start; }
+.option:hover:not(:disabled) { background: #f0f3ec; border-color: var(--forest); }
+.option > span:nth-child(2) { flex: 1; min-width: 0; overflow-wrap: anywhere; font-size: 18px; }
+.option > small { font-size: 11px; }
+.option .optionNumber { width: 28px; height: 28px; border-radius: 50%; background: var(--paper); display: grid; place-items: center; flex-shrink: 0; color: var(--muted); font-size: 13px; }
+.course .option:disabled { opacity: 1; }
+.option.correctOption { background: #e8f2e6; border-color: #5d8060; }
+.option.wrongOption { background: #fcece5; border-color: #bc785d; }
+.mistakeFeedback { background: #fbf0e5; }
+.retryNote { font-size: 13px; color: #76563d; }
+.exercise [role='status'] > button { margin-top: 18px; }
+.summaryScore { display: flex; flex-direction: column; gap: 8px; }
+.summaryScore strong { font-size: 48px; line-height: 1.4 !important; }
+.summaryScore span { color: var(--muted); font-size: 15px; }
+.skillScores { display: flex; flex-wrap: wrap; gap: 20px; margin: 24px 0; }
+.skillScores > div { flex: 1; min-width: 100px; border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; display: flex; justify-content: space-between; gap: 10px; font-size: 14px; }
+.correctAnswer { background: #eef3e9; padding: 14px; margin: 14px 0; border-radius: 6px; }
+.reviewGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.reviewGrid > section { margin-top: 0; }
+.reviewGrid p { font-size: 14px; margin-bottom: 18px; }
+.reviewGrid .bigCount { display: block; font-size: 43px; }
+.method { padding-right: 23px; }
+.method li { padding: 8px 0; }
+@media (max-width: 800px) { .resume { align-items: flex-start; flex-direction: column; gap: 10px; } .reviewGrid { grid-template-columns: 1fr; gap: 0; } }
+@media (max-width: 600px) {
+  .courseOverview { padding: 18px 22px; }
+  .courseOverview > div { padding: 4px 0; }
+  .courseOverview > div > strong { font-size: 23px; }
+  .methodStrip { gap: 10px 20px; font-size: 12px; margin-bottom: 28px; }
+  .unitHeading h2 { font-size: 22px; }
+  .unitHeading { gap: 12px; }
+  .lessonRow { gap: 10px; flex-wrap: wrap; align-items: flex-start; padding: 18px 3px; }
+  .lessonNumber { min-width: 20px; font-size: 16px; }
+  .lessonCopy { flex: 1; }
+  .lessonCopy > strong { font-size: 15px; }
+  .lessonCopy > span { font-size: 12px; }
+  .lessonStatus { flex-basis: 100%; padding-right: 30px; text-align: right; font-size: 11px; }
+  .checkpoint { align-items: flex-start; flex-direction: column; padding: 18px; }
+  .checkpoint button { font-size: 12px; }
+  .wordList { grid-template-columns: 1fr; gap: 0; }
+  .rule { font-size: 15px; }
+  .pattern { font-size: 17px; }
+  .examples p { font-size: 18px; }
+  .examples > div { grid-template-columns: 1fr; }
+  .examples span { font-size: 13px; }
+  .exercise .exerciseTitle { font-size: 22px; }
+  .option { padding: 13px 12px; gap: 9px; flex-wrap: wrap; }
+  .option > span:nth-child(2) { font-size: 16px; }
+  .option > small { flex-basis: 100%; padding-right: 37px; }
+  .skillScores { gap: 10px; }
+  .skillScores > div { padding: 12px; min-width: 80px; flex-direction: column; gap: 4px; }
+  .resume { padding: 18px; }
+}
