@@ -1595,7 +1595,7 @@ export const CURRICULUM = [
         themen: [
           { id: 'gefaesse-cta-mra-duplex', title: { de: 'CTA / MRA / Duplex', en: 'CTA / MRA / Duplex', fa: 'CTA / MRA / داپلکس' }, tags: ['CT','MRT','Sono'], diff: 1 },
           { id: 'gefaesse-dsa', title: { de: 'DSA', en: 'DSA', fa: 'DSA' }, tags: ['DSA'], diff: 1 },
-          { id: 'gefaessanatomie-kollateralen', title: { de: 'Gefäßanatomie & Kollateralen', en: 'Vascular Anatomy & Collaterals', fa: 'آناتومی عروقی و عروق جانبی' }, tags: ['CT','MRT','DSA'], diff: 2 },
+          { id: 'gefaessanatomie-kollateralen', title: { de: 'Gefäßanatomie & Kollateralen', en: 'Vascular Anatomy & Collaterals', fa: 'آناتومی عروقی و عروق جانبی' }, tags: ['CT','MRT','DSA'], diff: 2, link: '/gefaesse/anatomie-untere-extremitaet', inProgress: true, updatedAt: '2026-10-20' },
         ],
       },
       {
