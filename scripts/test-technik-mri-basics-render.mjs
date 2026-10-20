@@ -8,13 +8,52 @@ import { TECHNIK_GRUNDLAGEN } from '../data/technikGrundlagenLesson.js'
 import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
 import { FLASHCARD_TOPICS, getCardsByTopic } from '../data/flashcards.js'
 import { MRI_SIGNAL_TOPIC, MRI_QUALITY_TOPIC, MRI_SIGNAL_BLOCK, MRI_QUALITY_BLOCK } from '../data/technikMRIFundamentalsLesson.js'
+import { MRI_SPIN_ECHO_BLOCK, MRI_SPIN_ECHO_QUESTIONS, MRI_SPIN_ECHO_FLASHCARDS } from '../data/technikMriSpinEchoLesson.js'
 
 const langs = ['de', 'en', 'fa']
 const mri = TECHNIK_GRUNDLAGEN.sections.find(section => section.id === 'mrt')
 assert.ok(mri)
-assert.equal(mri.teachingBlocks.length, 5)
-assert.deepEqual(mri.teachingBlocks.map(block => block.id), ['mri-resonance-signal', 'mri-field-coil-shimming', 'signal-formation', 'spatial-encoding', 'snr-tradeoffs'])
-assert.ok(mri.curriculumId.includes(MRI_SIGNAL_TOPIC.id) && mri.curriculumId.includes(MRI_QUALITY_TOPIC.id))
+assert.equal(mri.teachingBlocks.length, 6)
+assert.deepEqual(mri.teachingBlocks.map(block => block.id), ['mri-resonance-signal', 'mri-field-coil-shimming', 'signal-formation', 'spatial-encoding', 'snr-tradeoffs', 'mri-spin-echo-tr-te'])
+assert.ok(mri.curriculumId.includes(MRI_SIGNAL_TOPIC.id) && mri.curriculumId.includes(MRI_QUALITY_TOPIC.id) && mri.curriculumId.includes('mrt-spin-echo'))
+assert.ok(mri.teachingBlocks.includes(MRI_SPIN_ECHO_BLOCK))
+assert.match(MRI_SPIN_ECHO_BLOCK.rows[0][1].en, /180° pulse reverses their relative phase/)
+assert.match(MRI_SPIN_ECHO_BLOCK.rows[0][1].en, /one echo per TR makes conventional SE longer/)
+assert.match(MRI_SPIN_ECHO_BLOCK.rows[1][1].en, /long TR and short TE/)
+assert.match(MRI_SPIN_ECHO_BLOCK.rows[5][1].en, /Rotating k-space strips repeatedly sample the center/)
+assert.match(MRI_SPIN_ECHO_BLOCK.rows[5][1].en, /repeatedly sample the center, supporting retrospective motion correction/)
+assert.equal(MRI_SPIN_ECHO_QUESTIONS.length, 3)
+assert.equal(MRI_SPIN_ECHO_FLASHCARDS.length, 4)
+assert.ok(MRI_SPIN_ECHO_FLASHCARDS.some(card => card.id === 'mrt-spin-echo-haste'))
+assert.match(MRI_SPIN_ECHO_BLOCK.rows[4][1].en, /HASTE is a single-shot TSE variant/)
+assert.match(MRI_SPIN_ECHO_BLOCK.rows[5][1].en, /Rotating k-space strips repeatedly sample the center/)
+assert.match(MRI_SPIN_ECHO_BLOCK.rows[6][1].en, /PD uses long TR and short TE/)
+for (const lang of langs) {
+  const svgPath = `public${MRI_SPIN_ECHO_BLOCK.visual.srcLocalized[lang]}`
+  assert.ok(fs.existsSync(svgPath), `${lang}: localized spin-echo diagram exists`)
+  const svg = fs.readFileSync(svgPath, 'utf8')
+  assert.match(svg, new RegExp(lang === 'de' ? 'Refokussierung' : lang === 'en' ? 'refocus' : 'بازفازدهی'))
+  assert.match(svg, new RegExp(lang === 'de' ? 'Gewichtung' : lang === 'en' ? 'Weighting' : 'وزن‌دهی'))
+  const title = svg.match(/<title[^>]*>(.*?)<\/title>/s)?.[1] ?? ''
+  const desc = svg.match(/<desc[^>]*>(.*?)<\/desc>/s)?.[1] ?? ''
+  assert.ok(title && desc, `${lang}: SVG title and description are present`)
+  const allSvgText = `${title} ${desc} ${[...svg.matchAll(/<text[^>]*>(.*?)<\/text>/gs)].map(match => match[1]).join(' ')}`
+  if (lang === 'de') {
+    assert.match(title, /Spin-Echo/)
+    assert.match(desc, /Anregung.*Refokussierung/)
+    assert.match(allSvgText, /TR \(von 90° bis zur nächsten 90°-Anregung\)/)
+    assert.doesNotMatch(allSvgText, /from 90°|next excitation|qualitative weighting/i)
+  } else if (lang === 'en') {
+    assert.match(title, /Spin echo/)
+    assert.match(desc, /excitation.*refocusing/)
+    assert.match(allSvgText, /TR \(from 90° to next 90°\)/)
+  } else {
+    assert.match(title, /اسپین‌اکو/)
+    assert.match(desc, /تحریک.*بازفازدهی/)
+    assert.match(allSvgText, /TR \(از تحریک ۹۰° تا تحریک بعدی\)/)
+    assert.doesNotMatch(allSvgText, /from 90°|next excitation|qualitative weighting/i)
+  }
+}
 for (const [topicId, block] of [[MRI_SIGNAL_TOPIC.id, MRI_SIGNAL_BLOCK], [MRI_QUALITY_TOPIC.id, MRI_QUALITY_BLOCK]]) {
   assert.ok(mri.teachingBlocks.includes(block))
   assert.ok(MCQ_TOPIC_GROUPS.flatMap(group => group.topics).some(topic => topic.id === topicId), `${topicId}: MCQ topic registered`)
@@ -117,9 +156,12 @@ for (const lang of langs) {
   assert.ok(html.includes(lang === 'fa' ? '۳: پیکسل/وکسل کوچک‌تر' : lang === 'en' ? '3: Smaller pixels/voxels' : '3: Kleinere Pixel/Voxel'))
   assert.ok(html.includes(lang === 'fa' ? 'تمرین مبانی MRI' : lang === 'en' ? 'Practise MRI fundamentals' : 'MRT-Grundlagen üben'))
   const from = lang === 'de' ? '%2Ftechnik%2Fgrundlagen%23mrt' : `%2Ftechnik%2Fgrundlagen%3Flang%3D${lang}%23mrt`
-  assert.ok(html.includes(`themen=mrt-grundprinzip-signalbildung,mrt-bildqualitaet-artefakte-snr&amp;from=${from}`), `${lang}: linked dual-topic quiz returns to MRI section`)
+  assert.ok(html.includes(`themen=mrt-grundprinzip-signalbildung,mrt-spin-echo,mrt-bildqualitaet-artefakte-snr&amp;from=${from}`), `${lang}: linked dual-topic quiz returns to MRI section`)
   assert.ok(html.includes(`/flashcards/mrt-grundprinzip-signalbildung?from=${from}`), `${lang}: signal cards return to MRI section`)
   assert.ok(html.includes(`/flashcards/mrt-bildqualitaet-artefakte-snr?from=${from}`), `${lang}: quality cards return to MRI section`)
+  assert.ok(html.includes(`/flashcards/mrt-spin-echo?from=${from}`), `${lang}: spin-echo cards return to MRI section`)
+  assert.ok(html.includes(MRI_SPIN_ECHO_BLOCK.visual.srcLocalized[lang]), `${lang}: localized spin-echo SVG is rendered`)
+  assert.ok(html.includes(MRI_SPIN_ECHO_BLOCK.visual.alt[lang]))
   assert.ok(html.includes('https://doi.org/10.1002/mrm.1910360327'))
   assert.ok(html.includes(lang === 'fa' ? 'رابطهٔ تکمیلی (در PDF نیامده است)' : lang === 'en' ? 'Supplemental relationship (not stated in the PDF)' : 'Zusatzbeziehung (nicht aus der PDF)'))
   assert.ok(html.includes(lang === 'fa' ? 'منبع تکمیلی:' : lang === 'en' ? 'Supplemental source:' : 'Ergänzende Quelle:'))

@@ -7,6 +7,8 @@ import { transformSync } from 'esbuild'
 import { TECHNIK_GRUNDLAGEN } from '../data/technikGrundlagenLesson.js'
 import { MRI_ARTIFACT_BLOCKS, MRI_ARTIFACT_QUESTIONS, MRI_ARTIFACT_TOPIC_GROUP, MRI_ARTIFACT_FLASHCARD_TOPIC, MRI_ARTIFACT_FLASHCARDS } from '../data/technikMriArtifacts.js'
 import { MRI_QUALITY_FLASHCARDS } from '../data/technikMRIFundamentalsLesson.js'
+import { MRI_SAFETY_BLOCK, MRI_SAFETY_QUESTIONS, MRI_SAFETY_TOPIC_GROUP, MRI_SAFETY_FLASHCARD_TOPIC, MRI_SAFETY_FLASHCARDS } from '../data/technikMriSafetyLesson.js'
+import { MRI_SPIN_ECHO_BLOCK, MRI_SPIN_ECHO_QUESTIONS, MRI_SPIN_ECHO_TOPIC_GROUP, MRI_SPIN_ECHO_FLASHCARD_TOPIC, MRI_SPIN_ECHO_FLASHCARDS } from '../data/technikMriSpinEchoLesson.js'
 import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
 import { FLASHCARD_TOPICS, FLASHCARDS, getCardsByTopic } from '../data/flashcards.js'
 
@@ -14,7 +16,8 @@ const langs = ['de', 'en', 'fa']
 const safety = TECHNIK_GRUNDLAGEN.sections.find(section => section.id === 'mrt-sicherheit')
 assert.ok(safety)
 assert.equal(safety.pages, '87–94')
-assert.equal(safety.teachingBlocks, MRI_ARTIFACT_BLOCKS)
+assert.equal(safety.teachingBlocks[0], MRI_ARTIFACT_BLOCKS[0])
+assert.equal(safety.teachingBlocks[1], MRI_SAFETY_BLOCK)
 assert.equal(MRI_ARTIFACT_BLOCKS.length, 1)
 const block = MRI_ARTIFACT_BLOCKS[0]
 assert.equal(block.id, 'artifact-pattern-cause-correction')
@@ -89,6 +92,10 @@ for (const lang of langs) {
   assert.ok(html.includes('data-lesson-progress-managed="true"'))
   assert.ok(html.includes('id="mrt-sicherheit"'))
   assert.ok(html.includes(block.title[lang]))
+  assert.ok(html.includes(MRI_SPIN_ECHO_BLOCK.title[lang]))
+  assert.ok(html.includes(MRI_SPIN_ECHO_BLOCK.visual.srcLocalized[lang]))
+  assert.ok(html.includes(MRI_SPIN_ECHO_BLOCK.visual.alt[lang]))
+  assert.ok(html.includes(`/flashcards/mrt-spin-echo?from=`))
   assert.ok(html.includes(block.visual.src))
   assert.ok(html.includes(block.visual.alt[lang]))
   assert.ok(html.includes(block.visual.legend[5][lang]))
@@ -134,4 +141,71 @@ assert.match(entry, /link: '\/technik\/grundlagen#mrt'/)
 assert.match(entry, /mcqLink: '\/ueben\/quiz\?fach=technik&n=1&themen=mrt-bildqualitaet-artefakte-snr'/)
 assert.match(entry, /flashcardLink: '\/flashcards\/mrt-bildqualitaet-artefakte-snr'/)
 assert.match(entry, /inProgress: true/)
-console.log('MRI artefact pattern, localized encoding axes, source MRI examples, actual shared-shell/source SSR, and curriculum link pass in DE/EN/FA.')
+
+assert.equal(MRI_SAFETY_BLOCK.rows.length, 3)
+assert.match(MRI_SAFETY_BLOCK.rows[1][1].en, /local hot spots are not equivalent/)
+assert.match(MRI_SAFETY_BLOCK.rows[1][1].en, /GRE lower than SE, with TSE highest/)
+assert.match(MRI_SAFETY_BLOCK.note.en, /PDF pp\. 92–94/)
+assert.match(MRI_SAFETY_BLOCK.note.en, /not adopted as current rules/)
+assert.ok(fs.existsSync(`public${MRI_SAFETY_BLOCK.visual.src}`))
+for (const lang of langs) {
+  assert.ok(fs.existsSync(`public${MRI_SAFETY_BLOCK.visual.srcLocalized[lang]}`))
+  const localizedSvg = fs.readFileSync(`public${MRI_SAFETY_BLOCK.visual.srcLocalized[lang]}`, 'utf8')
+  assert.match(localizedSvg, new RegExp(lang === 'de' ? 'STATISCHES FELD' : lang === 'en' ? 'STATIC FIELD' : 'میدان ثابت', 'i'))
+  assert.match(localizedSvg, new RegExp(lang === 'de' ? 'Gewebeerwärmung' : lang === 'en' ? 'Tissue heating' : 'گرم‌شدن بافت', 'i'))
+}
+assert.ok(MRI_SAFETY_FLASHCARDS.some(card => card.id === 'mri-safety-static-field'))
+const safetySvg = fs.readFileSync(`public${MRI_SAFETY_BLOCK.visual.src}`, 'utf8')
+assert.match(safetySvg, /B₀ · STATIC FIELD/)
+assert.match(safetySvg, /RF · ABSORPTION/)
+assert.match(safetySvg, /GRADIENTS/)
+for (const lang of langs) {
+  activeLang = lang
+  assert.ok(MRI_SAFETY_QUESTIONS.some(q => q.id === `mri-safety-${lang}-hotspot`))
+  const q = MRI_SAFETY_QUESTIONS.find(q => q.id === `mri-safety-${lang}-hotspot`)
+  assert.ok(QUESTION_BANK[lang].some(item => item.id === q.id))
+  assert.deepEqual(Object.keys(q.wrongExplanations).sort(), ['B', 'C', 'D'])
+  assert.ok(MRI_SAFETY_FLASHCARDS.every(card => card.front[lang] && card.answer[lang]))
+  const html = renderToStaticMarkup(React.createElement(Page))
+  assert.ok(html.includes(MRI_SAFETY_BLOCK.title[lang]))
+  assert.ok(html.includes(MRI_SAFETY_BLOCK.visual.srcLocalized[lang]))
+  assert.ok(html.includes(MRI_SAFETY_BLOCK.visual.alt[lang]))
+  assert.ok(html.includes(`/flashcards/mrt-sicherheit-risiken?from=`))
+}
+assert.ok(MCQ_TOPIC_GROUPS.includes(MRI_SAFETY_TOPIC_GROUP))
+assert.ok(FLASHCARD_TOPICS.some(topic => topic.id === MRI_SAFETY_FLASHCARD_TOPIC.id))
+assert.equal(MRI_SAFETY_FLASHCARDS.length, 3)
+assert.ok(MRI_SAFETY_FLASHCARDS.some(card => card.id === 'mri-safety-gradient-noise'))
+const gradientCard = MRI_SAFETY_FLASHCARDS.find(card => card.id === 'mri-safety-gradient-noise')
+for (const [lang, terms] of Object.entries({ de: [/Nerven/, /Geräusch/], en: [/nerve/, /noise/], fa: [/عصب/, /صدا/] })) {
+  assert.ok(terms.every(term => term.test(`${gradientCard.front[lang]} ${gradientCard.answer[lang]}`)), `${lang}: gradient stimulation and acoustic noise are actively retrievable`)
+}
+assert.equal(getCardsByTopic(MRI_SAFETY_FLASHCARD_TOPIC.id).length, MRI_SAFETY_FLASHCARDS.length)
+inspect(MRI_SAFETY_BLOCK)
+inspect(MRI_SPIN_ECHO_BLOCK)
+assert.equal(MRI_SPIN_ECHO_BLOCK.rows.length, 7)
+assert.match(MRI_SPIN_ECHO_BLOCK.rows[1][1].en, /T1w uses short TR and short TE; T2w uses long TR and long TE;.*PD.*long TR and short TE/)
+assert.ok(fs.existsSync(`public${MRI_SPIN_ECHO_BLOCK.visual.src}`))
+const spinSvg = fs.readFileSync(`public${MRI_SPIN_ECHO_BLOCK.visual.src}`, 'utf8')
+assert.match(spinSvg, /90° excitation/)
+assert.match(spinSvg, /180° refocus/)
+assert.match(spinSvg, /echo at TE/)
+assert.match(spinSvg, /T1w/)
+assert.match(spinSvg, /T2w/)
+for (const lang of langs) {
+  const q = MRI_SPIN_ECHO_QUESTIONS.find(item => item.id === `mrt-spin-echo-${lang}-pd`)
+  assert.ok(q && QUESTION_BANK[lang].some(item => item.id === q.id), `${lang}: spin echo MCQ registered`)
+  assert.deepEqual(Object.keys(q.wrongExplanations).sort(), ['B', 'C', 'D'])
+  assert.ok(MRI_SPIN_ECHO_FLASHCARDS.every(card => card.front[lang] && card.answer[lang]), `${lang}: localized cards`)
+}
+assert.ok(MCQ_TOPIC_GROUPS.includes(MRI_SPIN_ECHO_TOPIC_GROUP))
+assert.ok(FLASHCARD_TOPICS.some(topic => topic.id === MRI_SPIN_ECHO_FLASHCARD_TOPIC.id))
+assert.equal(getCardsByTopic(MRI_SPIN_ECHO_FLASHCARD_TOPIC.id).length, MRI_SPIN_ECHO_FLASHCARDS.length)
+assert.match(fs.readFileSync('docs/lesson-quality/technik-mri-spin-echo-p95-p99.md', 'utf8'), /Pages 95–99 were text-extracted and visually inspected/)
+const spinCurriculum = fs.readFileSync('data/curriculum.js', 'utf8').match(/\{\s*id: 'mrt-spin-echo',[\s\S]*?\n\s*\}/)?.[0]
+assert.ok(spinCurriculum)
+assert.match(spinCurriculum, /link: '\/technik\/grundlagen#mrt'/)
+assert.match(spinCurriculum, /flashcardLink: '\/flashcards\/mrt-spin-echo'/)
+assert.match(fs.readFileSync('docs/lesson-quality/technik-mri-safety-p92-p94.md', 'utf8'), /OneDrive.*12,126,005/)
+
+console.log('MRI artefacts and source-bounded safety mechanisms, localized assessment/cards, shared-shell SSR and curriculum links pass in DE/EN/FA.')

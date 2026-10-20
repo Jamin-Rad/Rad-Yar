@@ -1742,7 +1742,7 @@ export const CURRICULUM = [
         icon: '🧲',
         themen: [
           { id: 'mrt-grundprinzip-signalbildung', title: { de: 'Grundprinzip & Signalbildung', en: 'Basic Principle & Signal Formation', fa: 'اصل پایه و تشکیل سیگنال' }, tags: ['MRT'], diff: 2, link: '/technik/grundlagen#mrt', mcqLink: '/ueben/quiz?fach=technik&n=1&themen=mrt-grundprinzip-signalbildung', flashcardLink: '/flashcards/mrt-grundprinzip-signalbildung', inProgress: true, updatedAt: '2026-10-20' },
-          { id: 'mrt-spin-echo', title: { de: 'Spin-Echo (SE)', en: 'Spin Echo (SE)', fa: 'اسپین اکو (SE)' }, group: ['MRT-Sequenzen'], tags: ['MRT'], diff: 2 },
+          { id: 'mrt-spin-echo', title: { de: 'Spin-Echo (SE)', en: 'Spin Echo (SE)', fa: 'اسپین اکو (SE)' }, group: ['MRT-Sequenzen'], tags: ['MRT'], diff: 2, link: '/technik/grundlagen#mrt', mcqLink: '/ueben/quiz?fach=technik&n=1&themen=mrt-spin-echo', flashcardLink: '/flashcards/mrt-spin-echo', inProgress: true, updatedAt: '2026-10-21' },
           { id: 'mrt-gradient-echo', title: { de: 'Gradient-Echo (GRE)', en: 'Gradient Echo (GRE)', fa: 'گرادیان اکو (GRE)' }, group: ['MRT-Sequenzen'], tags: ['MRT'], diff: 2 },
           { id: 'mrt-inversion-recovery', title: { de: 'Inversion-Recovery (IR)', en: 'Inversion Recovery (IR)', fa: 'اینورژن ریکاوری (IR)' }, group: ['MRT-Sequenzen'], tags: ['MRT'], diff: 2 },
           { id: 'mrt-fettsuppression', title: { de: 'Fettsuppression', en: 'Fat Suppression', fa: 'سرکوب چربی' }, group: ['MRT-Sequenzen'], tags: ['MRT'], diff: 2, link: '/technik/grundlagen#mrt', inProgress: true, updatedAt: '2026-10-20' },
@@ -1752,7 +1752,7 @@ export const CURRICULUM = [
           { id: 'mrt-perfusion', title: { de: 'Perfusionsbildgebung', en: 'Perfusion Imaging', fa: 'تصویربرداری پرفیوژن' }, group: ['Spezialtechniken'], tags: ['MRT'], diff: 3, link: '/technik/grundlagen#mrt-spezial', mcqLink: '/ueben/quiz?fach=technik&n=1&themen=mrt-perfusion', flashcardLink: '/flashcards/mrt-perfusion', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'mr-spektroskopie', title: { de: 'MR-Spektroskopie', en: 'MR Spectroscopy', fa: 'طیف‌سنجی MR' }, group: ['Spezialtechniken'], tags: ['MRT'], diff: 3 },
           { id: 'fmri-dti', title: { de: 'fMRI & DTI', en: 'fMRI & DTI', fa: 'fMRI و DTI' }, group: ['Spezialtechniken'], tags: ['MRT'], diff: 3 },
-          { id: 'mrt-sicherheit-risiken', title: { de: 'MRT-Sicherheit & Risiken', en: 'MRI Safety & Risks', fa: 'ایمنی و خطرات MRI' }, tags: ['MRT'], diff: 2 },
+          { id: 'mrt-sicherheit-risiken', title: { de: 'MRT-Sicherheit & Risiken', en: 'MRI Safety & Risks', fa: 'ایمنی و خطرات MRI' }, tags: ['MRT'], diff: 2, link: '/technik/grundlagen#mrt-sicherheit', mcqLink: '/ueben/quiz?fach=technik&n=1&themen=mrt-sicherheit-risiken', flashcardLink: '/flashcards/mrt-sicherheit-risiken', inProgress: true, updatedAt: '2026-10-21' },
           { id: 'mrt-protokolle-allgemein', title: { de: 'Allgemeine Prinzipien', en: 'General Principles', fa: 'اصول عمومی' }, group: ['MRT-Protokolle'], tags: ['MRT'], diff: 2 },
           { id: 'neuro-mrt-protokoll', title: { de: 'Neuro-MRT', en: 'Neuro MRI', fa: 'MRI نورولوژی' }, group: ['MRT-Protokolle'], tags: ['MRT'], diff: 2 },
           { id: 'wirbelsaeulen-mrt-protokoll', title: { de: 'Wirbelsäulen-MRT', en: 'Spine MRI', fa: 'MRI ستون فقرات' }, group: ['MRT-Protokolle'], tags: ['MRT'], diff: 2 },

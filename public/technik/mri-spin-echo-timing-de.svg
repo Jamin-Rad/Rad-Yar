@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" role="img" aria-labelledby="title desc">
+  <title id="title">Spin-Echo: Zeitablauf und qualitative Gewichtung</title>
+  <desc id="desc">90°-Anregung, 180°-Refokussierung bei TE/2, Echo bei TE, nächste Anregung bei TR und qualitative TR-/TE-Wahl für T1, T2 und Protonendichte.</desc>
+  <rect width="1000" height="450" rx="24" fill="#f5f9fb"/>
+  <text x="48" y="44" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#17627c">SPIN-ECHO · Zeitablauf</text>
+  <line x1="110" y1="118" x2="890" y2="118" stroke="#526575" stroke-width="3"/>
+  <line x1="130" y1="94" x2="130" y2="142" stroke="#1484a0" stroke-width="10"/>
+  <line x1="360" y1="84" x2="360" y2="152" stroke="#8060b2" stroke-width="10"/>
+  <path d="M520 118c18 0 18-34 36-34s18 68 36 68 18-34 36-34" fill="none" stroke="#d18b25" stroke-width="5"/>
+  <line x1="628" y1="76" x2="628" y2="160" stroke="#d18b25" stroke-dasharray="6 6" stroke-width="2"/>
+  <line x1="870" y1="94" x2="870" y2="142" stroke="#1484a0" stroke-width="10"/>
+  <g font-family="Arial,sans-serif" font-size="17" fill="#253746" text-anchor="middle">
+    <text x="130" y="76">90° Anregung</text><text x="360" y="64">180° Refokussierung</text>
+    <text x="628" y="186">Echo bei TE</text><text x="870" y="76">nächste 90°</text>
+    <text x="245" y="160">TE / 2</text><text x="500" y="214">TE</text><text x="500" y="248">TR (von 90° bis zur nächsten 90°-Anregung)</text>
+  </g>
+  <line x1="130" y1="170" x2="355" y2="170" stroke="#8060b2" stroke-width="2" marker-start="url(#tick)" marker-end="url(#arrow)"/>
+  <line x1="130" y1="220" x2="623" y2="220" stroke="#d18b25" stroke-width="2" marker-start="url(#tick)" marker-end="url(#arrow)"/>
+  <line x1="130" y1="257" x2="863" y2="257" stroke="#1484a0" stroke-width="2" marker-start="url(#tick)" marker-end="url(#arrow)"/>
+  <rect x="48" y="282" width="904" height="143" rx="15" fill="#fff" stroke="#b6c8d2" stroke-width="2"/>
+  <g font-family="Arial,sans-serif" font-size="18" fill="#253746">
+    <text x="120" y="316" font-weight="700">Gewichtung</text><text x="480" y="316" font-weight="700">TR</text><text x="740" y="316" font-weight="700">TE</text>
+    <line x1="76" y1="328" x2="920" y2="328" stroke="#d9e4e9"/>
+    <text x="120" y="357">T1w</text><text x="480" y="357">kurz</text><text x="740" y="357">kurz</text>
+    <text x="120" y="384">T2w</text><text x="480" y="384">lang</text><text x="740" y="384">lang</text>
+    <text x="120" y="411">PD</text><text x="480" y="411">lang</text><text x="740" y="411">kurz</text>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#526575"/></marker>
+    <marker id="tick" markerWidth="2" markerHeight="10" refX="1" refY="5" orient="auto"><path d="M1,0 L1,10" stroke="#526575" stroke-width="2"/></marker>
+  </defs>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+  <title id="title">MRI hazard domains</title>
+  <desc id="desc">Three separate conceptual sources: static magnetic field, radiofrequency energy, and switched gradients with sound.</desc>
+  <rect width="960" height="300" rx="24" fill="#f5f9fb"/>
+  <g font-family="Tahoma, Arial, sans-serif" text-anchor="middle">
+    <g transform="translate(24 25)">
+      <rect width="286" height="250" rx="18" fill="#fff" stroke="#58a9c3" stroke-width="3"/>
+      <text x="143" y="42" font-size="24" font-weight="700" fill="#17627c">B₀ · میدان ثابت</text>
+      <circle cx="143" cy="113" r="38" fill="#e8f4f8" stroke="#58a9c3" stroke-width="3"/>
+      <path d="M105 113h76m-12-12 12 12-12 12" fill="none" stroke="#17627c" stroke-width="5"/>
+      <text x="143" y="185" font-size="20" fill="#253746">جذب</text>
+      <text x="143" y="215" font-size="16" fill="#536675">و برهم‌کنش</text>
+    </g>
+    <g transform="translate(337 25)">
+      <rect width="286" height="250" rx="18" fill="#fff" stroke="#8e79bf" stroke-width="3"/>
+      <text x="143" y="42" font-size="24" font-weight="700" fill="#654d99">RF · جذب انرژی</text>
+      <path d="M67 114c14-35 28 35 42 0s28 35 42 0 28 35 42 0 28 35 42 0" fill="none" stroke="#8e79bf" stroke-width="5"/>
+      <path d="M93 146h100" stroke="#df9a43" stroke-width="4"/>
+      <text x="143" y="185" font-size="20" fill="#253746">گرم‌شدن بافت</text>
+      <text x="143" y="215" font-size="16" fill="#536675">احتمال نقاط داغ موضعی</text>
+    </g>
+    <g transform="translate(650 25)">
+      <rect width="286" height="250" rx="18" fill="#fff" stroke="#dfa64d" stroke-width="3"/>
+      <text x="143" y="42" font-size="24" font-weight="700" fill="#94600c">گرادیان‌ها</text>
+      <path d="M75 129h34V91h34v76h34v-50h34v50h24" fill="none" stroke="#c78522" stroke-width="5"/>
+      <text x="143" y="202" font-size="20" fill="#253746">تحریک · صدا</text>
+      <text x="143" y="230" font-size="16" fill="#536675">اثر میدان‌های متغیر</text>
+    </g>
+  </g>
+</svg>

@@ -196,10 +196,10 @@ export default function TechnikGrundlagenStandardPage() {
             {block.visual.src?<>
               {block.visual.yAxis||block.visual.xAxis?<div style={{direction:'ltr',display:'grid',gridTemplateColumns:'minmax(54px,auto) minmax(0,1fr)',alignItems:'center',gap:8}}>
                 <span dir={lang==='fa'?'rtl':'ltr'} style={{textAlign:'center',fontWeight:600}}>{t(block.visual.yAxis)}</span>
-                <img src={block.visual.src} alt={t(block.visual.alt)} loading="lazy" style={{display:'block',width:'100%',height:'auto',borderRadius:10}}/>
+                <img src={block.visual.srcLocalized ? t(block.visual.srcLocalized) : block.visual.src} alt={t(block.visual.alt)} loading="lazy" style={{display:'block',width:'100%',height:'auto',borderRadius:10}}/>
                 <span aria-hidden="true"/>
                 <span dir={lang==='fa'?'rtl':'ltr'} style={{textAlign:'center',fontWeight:600}}>{t(block.visual.xAxis)}</span>
-              </div>:<img src={block.visual.src} alt={t(block.visual.alt)} loading="lazy" style={{display:'block',width:'100%',height:'auto',borderRadius:10}}/>}
+              </div>:<img src={block.visual.srcLocalized ? t(block.visual.srcLocalized) : block.visual.src} alt={t(block.visual.alt)} loading="lazy" style={{display:'block',width:'100%',height:'auto',borderRadius:10}}/>}
             </>:null}
             {block.visual.legend?(Array.isArray(block.visual.legend)?<ul>{block.visual.legend.map((item,index)=><li key={index}>{t(item)}</li>)}</ul>:<p style={{marginTop:10,fontWeight:600}}>{t(block.visual.legend)}</p>):null}
             <p style={{marginTop:10}}>{t(block.visual.caption)}</p>
@@ -212,7 +212,7 @@ export default function TechnikGrundlagenStandardPage() {
         {section.id === 'mrt-spezial' ? <><RetrievalCheck kind="perfusion" lang={lang}/><RetrievalCheck kind="ciss" lang={lang}/><MraActions lang={lang}/></> : null}
         {section.id === 'leber-mrt-protokoll' ? <><LiverProtocolFigure lang={lang}/><RetrievalCheck kind="liverProtocol" lang={lang}/></> : null}
         {section.id === 'mrcp-protokoll' ? <RetrievalCheck kind="mrcp" lang={lang}/> : null}
-        {section.id === 'mrt-sicherheit' ? <MRIArtifactKnowledgeCheck lang={lang}/> : null}
+        {section.id === 'mrt-sicherheit' ? <><MRIArtifactKnowledgeCheck lang={lang}/><MriSafetyActions lang={lang}/></> : null}
         {section.id === 'ct' ? <><CtReconstructionActions lang={lang}/><HrctActions lang={lang}/><RetrievalCheck kind="ctPerfusion" lang={lang}/><RetrievalCheck kind="ctQuality" lang={lang}/></> : null}
         {section.id === 'protokoll' ? <CtProtocolActions lang={lang}/> : null}
         {section.id === 'atom' ? <AtomKnowledgeCheck lang={lang}/> : null}
@@ -292,14 +292,24 @@ function MriFundamentalsActions({ lang }) {
   const returnTo = lang === 'de' ? '/technik/grundlagen#mrt' : `/technik/grundlagen?lang=${lang}#mrt`
   const from = encodeURIComponent(returnTo)
   const labels = {
-    de: { title:'MRT-Grundlagen üben', quiz:'Zwei MC-Fragen', signal:'Signalbildung-Karten', quality:'Bildqualität-Karten' },
-    en: { title:'Practise MRI fundamentals', quiz:'Two MCQs', signal:'Signal-formation cards', quality:'Image-quality cards' },
-    fa: { title:'تمرین مبانی MRI', quiz:'دو سؤال چندگزینه‌ای', signal:'فلش‌کارت‌های تشکیل سیگنال', quality:'فلش‌کارت‌های کیفیت تصویر' },
-  }[lang] || { title:'MRT-Grundlagen üben', quiz:'Zwei MC-Fragen', signal:'Signalbildung-Karten', quality:'Bildqualität-Karten' }
+    de: { title:'MRT-Grundlagen üben', quiz:'Drei MC-Fragen', signal:'Signalbildung-Karten', spin:'Spin-Echo-Karten', quality:'Bildqualität-Karten' },
+    en: { title:'Practise MRI fundamentals', quiz:'Three MCQs', signal:'Signal-formation cards', spin:'Spin-echo cards', quality:'Image-quality cards' },
+    fa: { title:'تمرین مبانی MRI', quiz:'سه سؤال چندگزینه‌ای', signal:'فلش‌کارت‌های تشکیل سیگنال', spin:'فلش‌کارت‌های اسپین‌اکو', quality:'فلش‌کارت‌های کیفیت تصویر' },
+  }[lang] || { title:'MRT-Grundlagen üben', quiz:'Drei MC-Fragen', signal:'Signalbildung-Karten', spin:'Spin-Echo-Karten', quality:'Bildqualität-Karten' }
   return <nav aria-label={labels.title} style={{ display:'flex', flexWrap:'wrap', gap:12, margin:'18px 0', padding:14, border:'1px solid var(--border)', borderRadius:14, background:'var(--surface-soft)' }}>
     <strong style={{ alignSelf:'center' }}>{labels.title}</strong>
-    <a href={`/ueben/quiz?fach=technik&n=2&themen=mrt-grundprinzip-signalbildung,mrt-bildqualitaet-artefakte-snr&from=${from}`}>{labels.quiz}</a>
+    <a href={`/ueben/quiz?fach=technik&n=3&themen=mrt-grundprinzip-signalbildung,mrt-spin-echo,mrt-bildqualitaet-artefakte-snr&from=${from}`}>{labels.quiz}</a>
     <a href={`/flashcards/mrt-grundprinzip-signalbildung?from=${from}`}>{labels.signal}</a>
+    <a href={`/flashcards/mrt-spin-echo?from=${from}`}>{labels.spin}</a>
     <a href={`/flashcards/mrt-bildqualitaet-artefakte-snr?from=${from}`}>{labels.quality}</a>
+  </nav>
+}
+function MriSafetyActions({ lang }) {
+  const returnTo = lang === 'de' ? '/technik/grundlagen#mrt-sicherheit' : `/technik/grundlagen?lang=${lang}#mrt-sicherheit`
+  const from = encodeURIComponent(returnTo)
+  const labels = { de: { title: 'MRT-Sicherheit üben', quiz: 'SAR und Hotspots prüfen', cards: 'Lernkarten zu SAR und Gradienten' }, en: { title: 'Practise MRI safety', quiz: 'Check SAR and hot spots', cards: 'SAR and gradient flashcards' }, fa: { title: 'تمرین ایمنی MRI', quiz: 'سنجش SAR و نقاط داغ', cards: 'فلش‌کارت‌های SAR و گرادیان' } }[lang] || { title: 'MRT-Sicherheit üben', quiz: 'SAR und Hotspots prüfen', cards: 'Lernkarten zu SAR und Gradienten' }
+  return <nav aria-label={labels.title} style={{ display: 'flex', flexWrap: 'wrap', gap: 12, margin: '18px 0', padding: 14, border: '1px solid var(--border)', borderRadius: 14, background: 'var(--surface-soft)' }}>
+    <a href={`/ueben/quiz?fach=technik&n=1&themen=mrt-sicherheit-risiken&from=${from}`}>{labels.quiz}</a>
+    <a href={`/flashcards/mrt-sicherheit-risiken?from=${from}`}>{labels.cards}</a>
   </nav>
 }
