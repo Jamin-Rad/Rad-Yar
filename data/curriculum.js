@@ -1743,7 +1743,7 @@ export const CURRICULUM = [
           { id: 'mrt-spin-echo', title: { de: 'Spin-Echo (SE)', en: 'Spin Echo (SE)', fa: 'اسپین اکو (SE)' }, group: ['MRT-Sequenzen'], tags: ['MRT'], diff: 2 },
           { id: 'mrt-gradient-echo', title: { de: 'Gradient-Echo (GRE)', en: 'Gradient Echo (GRE)', fa: 'گرادیان اکو (GRE)' }, group: ['MRT-Sequenzen'], tags: ['MRT'], diff: 2 },
           { id: 'mrt-inversion-recovery', title: { de: 'Inversion-Recovery (IR)', en: 'Inversion Recovery (IR)', fa: 'اینورژن ریکاوری (IR)' }, group: ['MRT-Sequenzen'], tags: ['MRT'], diff: 2 },
-          { id: 'mrt-fettsuppression', title: { de: 'Fettsuppression', en: 'Fat Suppression', fa: 'سرکوب چربی' }, group: ['MRT-Sequenzen'], tags: ['MRT'], diff: 2 },
+          { id: 'mrt-fettsuppression', title: { de: 'Fettsuppression', en: 'Fat Suppression', fa: 'سرکوب چربی' }, group: ['MRT-Sequenzen'], tags: ['MRT'], diff: 2, link: '/technik/grundlagen#mrt', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'mrt-bildqualitaet-artefakte-snr', title: { de: 'Bildqualität, Artefakte & SNR', en: 'Image Quality, Artefacts & SNR', fa: 'کیفیت تصویر، آرتیفکت‌ها و SNR' }, tags: ['MRT'], diff: 2, link: '/technik/grundlagen#mrt-sicherheit', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'mrt-dwi-adc', title: { de: 'DWI / ADC', en: 'DWI / ADC', fa: 'DWI / ADC' }, group: ['Spezialtechniken'], tags: ['MRT'], diff: 2 },
           { id: 'mrt-gefaessdarstellung', title: { de: 'Gefäßdarstellung', en: 'MR Angiography', fa: 'تصویربرداری عروقی' }, group: ['Spezialtechniken'], tags: ['MRT'], diff: 2 },
