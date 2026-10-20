@@ -8,14 +8,18 @@ import { TECHNIK_GRUNDLAGEN } from '../data/technikGrundlagenLesson.js'
 import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
 import { FLASHCARD_TOPICS, getCardsByTopic } from '../data/flashcards.js'
 import { CT_ARTIFACTS_BLOCK, CT_QUALITY_BLOCK, CT_QUALITY_QUESTIONS, CT_QUALITY_TOPIC } from '../data/technikCTQuality.js'
+import { CT_RECONSTRUCTION_BLOCK, CT_RECONSTRUCTION_TOPIC } from '../data/technikCTReconstructionLesson.js'
 
 const langs = ['de', 'en', 'fa']
 const section = TECHNIK_GRUNDLAGEN.sections.find(item => item.id === 'ct')
 assert.ok(section, 'existing CT section exists')
-assert.deepEqual(section.teachingBlocks, [CT_QUALITY_BLOCK, CT_ARTIFACTS_BLOCK])
+assert.deepEqual(section.teachingBlocks, [CT_QUALITY_BLOCK, CT_ARTIFACTS_BLOCK, CT_RECONSTRUCTION_BLOCK, (await import('../data/technikCTPerfusionLesson.js')).CT_PERFUSION_BLOCK])
 assert.equal(section.teachingBlocks[0].rows.length, 5)
 assert.equal(CT_QUALITY_BLOCK.crossReference.href, '#ct-dose-geometry')
 assert.equal(section.teachingBlocks[1].rows.length, 6)
+assert.equal(CT_RECONSTRUCTION_BLOCK.rows.length, 4)
+assert.ok(fs.existsSync(`public${CT_RECONSTRUCTION_BLOCK.visual.src}`))
+assert.doesNotMatch(fs.readFileSync(`public${CT_RECONSTRUCTION_BLOCK.visual.src}`, 'utf8'), /<text\b/i, 'reconstruction SVG is language-neutral')
 assert.ok(section.teachingBlocks[1].rows.some(row => /Partialvolumen|Partial volume|حجم جزئی/.test(row[0].de + row[0].en + row[0].fa)))
 assert.ok(section.teachingBlocks[1].visual.alt.fa && section.teachingBlocks[1].visual.caption.fa)
 assert.match(section.teachingBlocks[1].visual.caption.de, /größeres Voxel.*kleineres Voxel.*magenta Umrandung/i)
@@ -37,6 +41,17 @@ for (const lang of langs) {
   assert.deepEqual(Object.keys(question.wrongExplanations).sort(), ['B', 'C', 'D'])
   const card = getCardsByTopic(CT_QUALITY_TOPIC.id)[0]
   assert.ok(card.front[lang] && card.answer[lang], `${lang}: flashcard translated`)
+  const reconstructionQuestion = QUESTION_BANK[lang].find(item => item.id === `ct-reconstruction-${lang}-window-kernel`)
+  assert.ok(reconstructionQuestion, `${lang}: reconstruction MCQ registered`)
+  assert.deepEqual(Object.keys(reconstructionQuestion.wrongExplanations).sort(), ['B', 'C', 'D'])
+  for (const row of CT_RECONSTRUCTION_BLOCK.rows) assert.ok(row[0][lang] && row[1][lang], `${lang}: reconstruction row localized`)
+  assert.ok(CT_RECONSTRUCTION_BLOCK.visual.alt[lang] && CT_RECONSTRUCTION_BLOCK.note[lang])
+  const mipCard = getCardsByTopic(CT_RECONSTRUCTION_TOPIC.id).find(item => item.id === 'ct-reconstruction-mip')
+  const darkStructureText = { de: /(unterdrückt dunkle Strukturen vollständig|dunkle Strukturen werden vollständig unterdrückt)/, en: /(completely suppresses dark structures|dark structures are completely suppressed)/, fa: /ساختارهای تیره.*کاملاً حذف می/ }[lang]
+  assert.match(CT_RECONSTRUCTION_BLOCK.note[lang], darkStructureText, `${lang}: MIP dark-structure limitation in note`)
+  assert.match(mipCard.answer[lang], darkStructureText, `${lang}: MIP dark-structure limitation in flashcard`)
+  const reconstructionCard = getCardsByTopic(CT_RECONSTRUCTION_TOPIC.id)[0]
+  assert.ok(reconstructionCard.front[lang] && reconstructionCard.answer[lang], `${lang}: reconstruction flashcards localized`)
 }
 
 const require = createRequire(import.meta.url)
@@ -68,6 +83,10 @@ for (const lang of langs) {
   assert.ok(html.includes(CT_ARTIFACTS_BLOCK.visual.src) && html.includes(CT_ARTIFACTS_BLOCK.visual.alt[lang]) && html.includes(CT_ARTIFACTS_BLOCK.visual.caption[lang]), `${lang}: diagram and translated accessible text`)
   for (const block of [CT_QUALITY_BLOCK, CT_ARTIFACTS_BLOCK]) for (const row of block.rows) assert.ok(html.includes(row[0][lang]) && html.includes(row[1][lang]), `${lang}: ${row[0][lang]} row renders`)
   assert.ok(html.includes(lang === 'fa' ? 'خودآزمایی: آرتیفکت پله‌ای یا سخت‌شدن پرتو؟' : lang === 'en' ? 'Self-check: stair-step or beam hardening?' : 'Selbstcheck: Stufenartefakt oder Strahlaufhärtung?'), `${lang}: distinct inline retrieval check`)
+  assert.ok(html.includes(CT_RECONSTRUCTION_BLOCK.title[lang]) && html.includes(CT_RECONSTRUCTION_BLOCK.visual.src) && html.includes(CT_RECONSTRUCTION_BLOCK.visual.alt[lang]), `${lang}: reconstruction block and diagram render`)
+  assert.ok(html.includes(CT_RECONSTRUCTION_BLOCK.note[lang]), `${lang}: exact localized source limitation renders`)
+  for (const key of CT_RECONSTRUCTION_BLOCK.visual.legend) assert.ok(html.includes(key[lang]), `${lang}: visible left/centre/right panel key`)
+  assert.ok(html.includes(CT_RECONSTRUCTION_TOPIC.id) && html.includes(lang === 'fa' ? 'تمرین بازسازی CT' : lang === 'en' ? 'Practise CT reconstruction' : 'CT-Rekonstruktion üben'), `${lang}: localized exercise actions render`)
 }
 
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
@@ -77,4 +96,9 @@ assert.match(entry, /link: '\/technik\/grundlagen#ct'/)
 assert.match(entry, /mcqLink: '\/ueben\/quiz\?fach=technik&n=1&themen=ct-bildqualitaet-artefakte'/)
 assert.match(entry, /flashcardLink: '\/flashcards\/ct-bildqualitaet-artefakte'/)
 assert.match(entry, /inProgress: true/)
+const reconstructionEntry = curriculum.split('\n').find(line => line.includes("id: 'ct-rekonstruktion-nachverarbeitung'"))
+assert.ok(reconstructionEntry)
+assert.match(reconstructionEntry, /link: '\/technik\/grundlagen#ct'/)
+assert.match(reconstructionEntry, /mcqLink: '\/ueben\/quiz\?fach=technik&n=1&themen=ct-rekonstruktion-nachverarbeitung'/)
+assert.match(reconstructionEntry, /flashcardLink: '\/flashcards\/ct-rekonstruktion-nachverarbeitung'/)
 console.log('CT image-quality focused SSR/registry assertions PASS: source blocks, conceptual diagram, DE/EN/FA, RTL, inline check, central MCQ/flashcards and curriculum links.')
