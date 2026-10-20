@@ -508,6 +508,14 @@ const PANCREATITIS_FLASHCARD_CONTENT = [
     diagram: { de: 'Nekrose + Gas → infiziert', en: 'necrosis + gas → infected', fa: 'نکروز + گاز → عفونی' },
   },
   {
+    id: 'duct-disruption',
+    category: { de: 'Komplikationen', en: 'Complications', fa: 'عوارض' },
+    front: { de: 'Welcher MRCP-Befund spricht für eine Pankreasgangruptur mit möglichem Disconnected-Duct-Syndrom?', en: 'Which MRCP finding suggests pancreatic duct disruption with possible disconnected duct syndrome?', fa: 'کدام یافته در MRCP به نفع پارگی مجرای پانکراس با احتمال سندرم مجرای جداشده است؟' },
+    answer: { de: 'Kontrastmittelaustritt aus dem Pankreasgang; bei Disconnection ist das distale Gangsegment vom Hauptgang getrennt.', en: 'Contrast extravasation from the pancreatic duct; with disconnection, the distal duct segment is separated from the main duct.', fa: 'نشت ماده حاجب از مجرای پانکراس؛ در قطع ارتباط، بخش دیستال مجرا از مجرای اصلی جدا شده است.' },
+    explanation: { de: 'Die Quelle zeigt den Kontrastmittelaustritt im MRCP als Hinweis auf Gangruptur. Die genaue Beurteilung eines disconnected duct erfordert die Darstellung der Gangkontinuität.', en: 'The source shows contrast extravasation on MRCP as a sign of duct disruption. Assessing a disconnected duct requires evaluating duct continuity.', fa: 'منبع، خروج ماده حاجب در MRCP را نشانه پارگی مجرا می‌داند. ارزیابی مجرای جداشده نیازمند بررسی پیوستگی مجراست.' },
+    diagram: { de: 'MRCP: Kontrastmittelaustritt → Gangruptur\nfehlende Kontinuität → disconnected duct erwägen', en: 'MRCP: contrast leak → duct disruption\nloss of continuity → consider disconnected duct', fa: 'MRCP: نشت ماده حاجب ← پارگی مجرا\nقطع پیوستگی ← احتمال مجرای جداشده' },
+  },
+  {
     id: 'chronic-triad',
     category: { de: 'Chronisch', en: 'Chronic', fa: 'مزمن' },
     front: { de: 'Wie lautet die klassische Trias der chronischen Pankreatitis?', en: 'What is the classic triad of chronic pancreatitis?', fa: 'تریاد کلاسیک پانکراتیت مزمن چیست؟' },
