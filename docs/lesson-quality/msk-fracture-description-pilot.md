@@ -105,3 +105,23 @@ Both inline and enlarged views now render `MorphologyLegend`: four panel names, 
 Target checks after repair: Next Babel parser accepted data and JSX; 242 localised string units structurally complete; 12 MCQ IDs per language and 15 flashcard IDs exactly match target HEAD; provenance JSON parsed; `git diff --check` passed. The standalone SVG had previously been rasterised and visually inspected; no geometry changed during the target port. No browser pass, build pass or final scientific approval is asserted by this repair.
 
 `editorial_qa`: author changes checked; independent pending. `scientific_review`: pending Dr. Zia. `browser_qa`: pending. `publication`: not requested/performed. No `complete` status changed.
+
+## MSK.pdf p.4 (printed p.3): source figure morphology addendum
+
+The complete page image was rendered from `C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf`, PDF page 4, at 160 dpi and visually inspected. The page contains one labelled figure and no accompanying prose definition. Its twelve visible labels are: Fissur, Querfraktur, Schrägfraktur, Schrägfraktur mit Biegungskeil, Spiralfraktur, Stauchungsfraktur, Stückfraktur (Zweietagenfraktur), Trümmerfraktur, Impressionsfraktur, Meißelfraktur, Abrissfraktur (Avulsionsfraktur), Kompressionsfraktur.
+
+Coverage reconciliation: the existing lesson table already covers nine source labels (fissure, transverse, oblique, spiral, segmental/two-level, comminuted, impression, compression and avulsion). Its separate Biegungskeil row explains a component of the source's combined fourth label, but does not itself count as another label. The figure adds three labels not previously explicit in the lesson: Stauchungsfraktur, Meißelfraktur, and the combined pattern Schrägfraktur mit Biegungskeil. The first is kept distinct from the existing Impaktion row: the image depicts a locally crushed multifragmentary shaft zone, while the lesson reserves impaction for fracture ends driven/interlocked together. The source figure alone does not define Stauchung as impaction. Meißelfraktur is preserved as the PDF's term; because the page supplies no text definition, the lesson limits the explanation to the visible periarticular knee-fragment pattern and tells learners to report exact location and fragment relation rather than infer an unprovided classification. The combined oblique-plus-wedge row explicitly names both features.
+
+The localized DE/EN/FA lesson displays a crop of the actual source figure, a translated description and a concise three-row table. The crop is `public/educational/msk-fracture-morphologies-p4.png`, extracted from the PDF page image and retaining the source's German labels; on-page alt text and attribution identify the source, PDF page 4 / printed page 3, and the crop. No patient image is present on this page.
+
+| ID | Source point | Treatment |
+| --- | --- | --- |
+| FD-P4-01 | PDF p.4 / printed p.3 labels Fissur, Querfraktur, Schrägfraktur, Spiralfraktur | Already covered by rows 1–4 of the existing morphology table. |
+| FD-P4-02 | Schrägfraktur mit Biegungskeil | Added as a distinct combined pattern: oblique line plus additional bending wedge; links to already-covered line and wedge terms. |
+| FD-P4-03 | Stauchungsfraktur | Added from the visible crushed/multifragmentary shaft depiction; explicitly not treated as synonymous with Impaktion. The PDF page offers no text definition. |
+| FD-P4-04 | Stückfraktur (Zweietagenfraktur), Trümmerfraktur | Already covered by segmental and comminuted rows. Source's exact numeric fragment-count rule remains unresolved per FD-09 and is not introduced. |
+| FD-P4-05 | Impressionsfraktur, Kompressionsfraktur | Already covered as separate existing rows. |
+| FD-P4-06 | Meißelfraktur | Added with the source term and only the visible periarticular knee-fragment description; no unsupported classification definition inferred. |
+| FD-P4-07 | Abrissfraktur (Avulsionsfraktur) | Already covered in the avulsion row and source attachment examples. |
+
+The cropped figure is a source excerpt, not a new diagnostic case and not an independently generated diagram. Technical review, exact route SSR, independent image review and browser rendering are tracked separately; no clinical approval or publication status is inferred.

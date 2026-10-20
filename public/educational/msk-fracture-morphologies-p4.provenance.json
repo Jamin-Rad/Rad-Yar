@@ -1,0 +1,21 @@
+{
+  "asset": "/educational/msk-fracture-morphologies-p4.png",
+  "kind": "cropped source-figure excerpt",
+  "source": "Dr. Zia, MSK.pdf, PDF page 4 (printed page 3)",
+  "sourcePageRenderedAtDpi": 160,
+  "cropPixels": {
+    "left": 230,
+    "top": 55,
+    "width": 830,
+    "height": 895
+  },
+  "purpose": "Teach the source's twelve labeled fracture morphology patterns and support localized explanation of three labels missing from the existing lesson.",
+  "imageStatus": "Educational bone illustrations from the user-provided PDF; not patient imaging.",
+  "reuse": "Use authorized by the user for this RadYar lesson project.",
+  "visibleSourceLabels": "German labels retained from the source; translated alt text, caption, and comparison table accompany the image.",
+  "limitations": [
+    "PDF page 4 supplies figure labels without prose definitions for Stauchungsfraktur or Meißelfraktur.",
+    "The image alone does not support treating Stauchungsfraktur as synonymous with impaction.",
+    "The crop retains a small amount of the source watermark at its right and lower edges."
+  ]
+}
