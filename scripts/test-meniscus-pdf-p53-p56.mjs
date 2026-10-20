@@ -32,7 +32,7 @@ assert.match(route, /https:\/\/pmc\.ncbi\.nlm\.nih\.gov\/articles\/PMC13424353\/
 
 const ledger = fs.readFileSync('docs/lesson-quality/meniskus-msk-p53-p56-addendum.md', 'utf8')
 assert.ok(fs.statSync('public/msk/knie/meniskus/flounce-pdf-p53-rid39464.jpg').size > 1000)
-for (const phrase of ['physical p.53 / printed p.52', 'physical p.56 / printed p.55', 'MEN-53-01', 'MEN-56-01', '2.5–4 mm', 'rID 39464', 'no corresponding authored route']) {
+for (const phrase of ['physical p.53 / printed p.52', 'physical p.56 / printed p.55', 'MEN-53-01', 'MEN-56-01', '2.5–4 mm', 'rID 39464', '/msk/knie/chondrokalzinose']) {
   assert.ok(ledger.toLowerCase().includes(phrase.toLowerCase()), `ledger: ${phrase}`)
 }
 console.log('Meniscus MSK.pdf p.53/p.56 addendum: source-image crop, localized flounce/extrusion claims, 2.5–4 mm threshold range, measurement level, references and separate CPPD scope PASS.')

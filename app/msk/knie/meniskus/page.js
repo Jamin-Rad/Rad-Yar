@@ -15,6 +15,7 @@ import { DiscoidComparison, DiscoidMriSchematics } from './DiscoidSchematics'
 import template from '@/components/LessonTemplate.module.css'
 import contentStyles from './content.module.css'
 import { MENISCUS_PDF_P53_P56 } from '@/data/meniscusPdfAddendum'
+import { MENISCUS_PDF_GAP_ADDENDUM } from '@/data/meniscusPdfGapAddendum'
 
 const TEMPLATE_CLASS_MAP = {
   page: 'page', header: 'header', topline: 'topline', breadcrumb: 'breadcrumb',
@@ -980,6 +981,7 @@ const SOURCES = [
   { label: 'Nguyen et al. · MR Imaging–based Diagnosis and Classification of Meniscal Tears (RadioGraphics, 2014)', href: 'https://pubs.rsna.org/doi/10.1148/rg.344125202' },
   { label: 'Samato et al. · MRI criteria for discoid lateral meniscus', href: 'https://pubmed.ncbi.nlm.nih.gov/11973030/' },
   { label: 'SSR consensus · Standardized MRI nomenclature for knee meniscal lesions (2026)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/' },
+  { label: 'Allaire et al. · Biomechanical consequences of a medial posterior root tear (2008)', href: MENISCUS_PDF_GAP_ADDENDUM.rootTear.evidence },
   { label: 'Kim et al. · Discoid lateral meniscus: diagnosis and treatment (review)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7550551/' },
   { label: 'Radiopaedia case rID 75168 · Discoid lateral meniscus', href: 'https://radiopaedia.org/cases/75168' },
   { label: 'Radiopaedia case rID 14060 · Lateral discoid meniscus', href: 'https://radiopaedia.org/cases/14060' },
@@ -1176,6 +1178,23 @@ export default function MeniskusPage() {
                 ))}
               </div>
             </div>
+            <div className={contentStyles.subSectionBlock} data-pdf-source-addendum="msk-52-54-55">
+              <h3 className={styles.subSectionTitle}>{lang === 'fa' ? 'دام‌های آناتومیک، پارگی ریشه و جداشدگی منیسک از کپسول' : lang === 'en' ? 'Anatomical pseudotears, root tears, and meniscocapsular separation' : 'Anatomische Pseudorisse, Wurzelrisse und meniskokapsuläre Separation'}</h3>
+              <div className={`${styles.splitGrid} ${contentStyles.rootsGrid}`}>
+                {MENISCUS_PDF_GAP_ADDENDUM.imagingPitfalls.map(item => (
+                  <article className={contentStyles.normalCard} key={item.id} data-source-page={item.sourcePage}>
+                    <h3>{item.title[lang] || item.title.de}</h3>
+                    <p>{item.text[lang] || item.text.de}</p>
+                    <ImageFigure src={item.image} alt={item.imageAlt[lang] || item.imageAlt.de} caption={lang === 'fa' ? `برگرفته از MSK.pdf، صفحهٔ PDF ${item.sourcePage} (صفحهٔ چاپی ${item.printedPage}).` : lang === 'en' ? `Source excerpt: MSK.pdf, physical PDF p.${item.sourcePage} (printed p.${item.printedPage}).` : `Quellenausschnitt: MSK.pdf, PDF-S. ${item.sourcePage} (Druck-S. ${item.printedPage}).`} />
+                  </article>
+                ))}
+                <article className={contentStyles.normalCard} data-source-page={MENISCUS_PDF_GAP_ADDENDUM.rootTear.sourcePage}>
+                  <h3>{MENISCUS_PDF_GAP_ADDENDUM.rootTear.title[lang] || MENISCUS_PDF_GAP_ADDENDUM.rootTear.title.de}</h3>
+                  <p>{MENISCUS_PDF_GAP_ADDENDUM.rootTear.text[lang] || MENISCUS_PDF_GAP_ADDENDUM.rootTear.text.de}</p>
+                  <ImageFigure src={MENISCUS_PDF_GAP_ADDENDUM.rootTear.image} alt={MENISCUS_PDF_GAP_ADDENDUM.rootTear.imageAlt[lang] || MENISCUS_PDF_GAP_ADDENDUM.rootTear.imageAlt.de} caption={lang === 'fa' ? 'برگرفته از MSK.pdf، صفحهٔ PDF ۵۴ (صفحهٔ چاپی ۵۳).' : lang === 'en' ? 'Source excerpt: MSK.pdf, physical PDF p.54 (printed p.53).' : 'Quellenausschnitt: MSK.pdf, PDF-S. 54 (Druck-S. 53).'} />
+                </article>
+              </div>
+            </div>
           </Section>
 
           <Section id="grading" eyebrow="03" title={copy.grading.extendedTitle} lead="" {...sectionProps('grading')}>
@@ -1198,6 +1217,15 @@ export default function MeniskusPage() {
 
           <Section id="risstypen" eyebrow="04" title={copy.tearTypes.title} lead={copy.tearTypes.lead} {...sectionProps('risstypen')}>
             <TearTypeExplorer lang={lang} />
+            <div className={`${styles.subSectionBlock} ${contentStyles.rootsGrid}`} data-pdf-source-addendum="msk-49">
+              {MENISCUS_PDF_GAP_ADDENDUM.tearTypes.map(item => (
+                <article className={contentStyles.normalCard} key={item.id} data-source-page={item.sourcePage}>
+                  <h3>{item.title[lang] || item.title.de}</h3>
+                  <p>{item.text[lang] || item.text.de}</p>
+                  <ImageFigure src={item.image} alt={item.imageAlt[lang] || item.imageAlt.de} caption={lang === 'fa' ? `برگرفته از MSK.pdf، صفحهٔ PDF ${item.sourcePage} (صفحهٔ چاپی ${item.printedPage}).` : lang === 'en' ? `Source excerpt: MSK.pdf, physical PDF p.${item.sourcePage} (printed p.${item.printedPage}).` : `Quellenausschnitt: MSK.pdf, PDF-S. ${item.sourcePage} (Druck-S. ${item.printedPage}).`} />
+                </article>
+              ))}
+            </div>
             <div className={`${styles.subSectionBlock} ${contentStyles.gradingCases}`}>
             <h3 className={styles.subSectionTitle}>{copy.cases.title}</h3>
             <LessonCaseGallery lang={lang} label={copy.cases.title} idPrefix="meniscus-tears" items={TEAR_CASES.map(item => {
