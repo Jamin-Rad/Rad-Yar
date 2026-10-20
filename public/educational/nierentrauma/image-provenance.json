@@ -1,0 +1,13 @@
+{
+  "asset": "fornix-rupture-pdf-p57.png",
+  "kind": "source-image-crop",
+  "source": "User-supplied Abdomen.pdf, physical PDF page 57, printed page 56",
+  "sourceClaim": "The slide caption describes contrast passing from the renal pelvis into the retroperitoneum, typical of a fornix rupture.",
+  "clinicalScope": "Demonstrates urinary contrast extravasation only. The slide does not establish that this specific case was traumatic.",
+  "caseId": null,
+  "sequenceMetadata": null,
+  "contributorCreditVisibleInSource": false,
+  "reuseAuthorization": "User authorized use of images from the six lecture PDFs on 2026-10-19.",
+  "crop": "CT image only; page frame and surrounding slide text removed; original arrows and circle retained.",
+  "created": "2026-10-20"
+}
