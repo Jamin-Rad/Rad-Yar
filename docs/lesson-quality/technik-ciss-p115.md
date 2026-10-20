@@ -28,4 +28,4 @@ One row inside the existing specialty-sequence comparison table. A compact conce
 
 ## Verification limits
 
-Focused localization/route rendering checks cover DE/EN/FA and RTL output. Browser visual review and specialist protocol review remain pending; editorial review does not establish scientific sign-off.
+Focused shared-shell rendering checks cover DE/EN/FA and RTL output. Independent source/content/language/assessment review and corrective delta PASS. Browser visual review and specialist protocol review remain pending; editorial review does not establish scientific sign-off.

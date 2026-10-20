@@ -38,6 +38,7 @@ import { AK_LUXATION_QUESTIONS } from './ak-luxation'
 import { RADIUSKOPF_QUESTIONS } from './radiuskopf'
 import { UNTERARM_QUESTIONS } from './unterarmschaftfrakturen'
 import { DISTALE_RADIUS_QUESTIONS } from './distale-radiusfraktur'
+import { METACARPAL_BASE_QUESTIONS } from './metacarpalBaseQuestions'
 import { HRCT_QUESTIONS } from './hrct-muster'
 import { SPINE_TRAUMA_QUESTIONS } from './spineTrauma'
 import { KNIE_LIGAMENTE_QUESTIONS } from './knieligamente'
@@ -4170,11 +4171,12 @@ const LEGACY_QUESTION_BANK = {
 export const QUESTION_BANK = Object.fromEntries(
   Object.entries(LEGACY_QUESTION_BANK).map(([lang, questions]) => [
     lang,
-    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang]), ...BONE_INFARCT_QUESTIONS[lang], ...FACET_QUESTIONS[lang], ...PCNSL_QUESTIONS[lang], ...MEDULLO_QUESTIONS[lang], ...MENING_QUESTIONS[lang], ...RECIST_QUESTIONS[lang], ...ORMOND_QUESTIONS[lang], ...EPIPLOICA_QUESTIONS[lang], ...PANNICULITIS_QUESTIONS[lang], ...PERITONEAL_QUESTIONS[lang], ...BRAIN_METASTASES_QUESTIONS[lang]],
+    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang]), ...METACARPAL_BASE_QUESTIONS[lang], ...BONE_INFARCT_QUESTIONS[lang], ...FACET_QUESTIONS[lang], ...PCNSL_QUESTIONS[lang], ...MEDULLO_QUESTIONS[lang], ...MENING_QUESTIONS[lang], ...RECIST_QUESTIONS[lang], ...ORMOND_QUESTIONS[lang], ...EPIPLOICA_QUESTIONS[lang], ...PANNICULITIS_QUESTIONS[lang], ...PERITONEAL_QUESTIONS[lang], ...BRAIN_METASTASES_QUESTIONS[lang]],
   ])
 )
 
 export const MCQ_TOPIC_GROUPS = [
+  { fachId: 'msk', kapitelId: 'msk-hand', title: { de: 'Hand & Mittelhand', en: 'Hand & metacarpals', fa: 'دست و متاکارپ' }, topics: [{ id: 'metakarpale-frakturen', title: { de: 'Metakarpalbasisfrakturen', en: 'Metacarpal base fractures', fa: 'شکستگی‌های قاعدهٔ متاکارپ' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-peritoneum', title: { de: 'Peritoneum & Mesenterium', en: 'Peritoneum & mesentery', fa: 'پریتوئن و مزانتر' }, topics: [{ id: 'appendicitis-epiploica', title: { de: 'Epiploische Appendagitis', en: 'Epiploic appendagitis', fa: 'التهاب زائدهٔ چربی کولون' } }, { id: 'mesenteriale-panniculitis', title: { de: 'Mesenteriale Panniculitis', en: 'Mesenteric panniculitis', fa: 'پانیکولیت مزانتریک' } }, { id: 'peritonealkarzinose', title: { de: 'Peritonealkarzinose', en: 'Peritoneal carcinomatosis', fa: 'کارسینوماتوز پریتوئن' } }] },
   { fachId: 'technik', kapitelId: 'technik-onkologie', title: { de: 'Onkologische Verlaufsmessung', en: 'Oncological response measurement', fa: 'اندازه‌گیری پاسخ انکولوژیک' }, topics: [{ id: 'recist-1-1', title: { de: 'RECIST 1.1', en: 'RECIST 1.1', fa: 'RECIST 1.1' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-retroperitoneum', title: { de: 'Retroperitoneum', en: 'Retroperitoneum', fa: 'رتروپریتوئن' }, topics: [{ id: 'morbus-ormond', title: { de: 'Morbus Ormond', en: 'Ormond disease', fa: 'بیماری اورموند' } }] },

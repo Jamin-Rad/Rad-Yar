@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img" aria-label="Non-diagnostic teaching schematic of three first metacarpal base fracture patterns">
+  <defs><linearGradient id="bone" x2="0" y2="1"><stop stop-color="#f4ddbd"/><stop offset="1" stop-color="#c48e61"/></linearGradient></defs>
+  <rect width="720" height="330" rx="28" fill="#172d3a"/>
+  <g fill="none" stroke="#d7e6e8" stroke-width="3" opacity=".8"><path d="M77 42h566M77 286h566"/></g>
+  <g transform="translate(82 42)">
+    <path d="M45 183 170 65q15-14 29 2l23 25q11 13-1 27L105 229q-16 14-31-2l-27-26q-8-9-2-18Z" fill="url(#bone)" stroke="#fff0db" stroke-width="4"/>
+    <path d="m58 185 25 24" stroke="#38d6c8" stroke-width="8" stroke-linecap="round"/>
+    <path d="M238 97q25-30 48-4l22 26q15 18-4 35l-25 21q-16 14-32-3l-20-22" fill="#274c5e" stroke="#d7e6e8" stroke-width="4"/>
+    <text x="155" y="270" fill="#d8efed" font-family="Arial,sans-serif" font-size="20" text-anchor="middle">A</text>
+  </g>
+  <g transform="translate(318 42)">
+    <path d="M45 183 170 65q15-14 29 2l23 25q11 13-1 27L105 229q-16 14-31-2l-27-26q-8-9-2-18Z" fill="url(#bone)" stroke="#fff0db" stroke-width="4"/>
+    <path d="m67 184 29 3-5 29m5-29 26-23" fill="none" stroke="#38d6c8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M238 97q25-30 48-4l22 26q15 18-4 35l-25 21q-16 14-32-3l-20-22" fill="#274c5e" stroke="#d7e6e8" stroke-width="4"/>
+    <text x="155" y="270" fill="#d8efed" font-family="Arial,sans-serif" font-size="20" text-anchor="middle">B</text>
+  </g>
+  <g transform="translate(554 42)">
+    <path d="M45 183 170 65q15-14 29 2l23 25q11 13-1 27L105 229q-16 14-31-2l-27-26q-8-9-2-18Z" fill="url(#bone)" stroke="#fff0db" stroke-width="4"/>
+    <path d="m78 174 25 24" stroke="#38d6c8" stroke-width="8" stroke-linecap="round"/>
+    <path d="M238 97q25-30 48-4l22 26q15 18-4 35l-25 21q-16 14-32-3l-20-22" fill="#274c5e" stroke="#d7e6e8" stroke-width="4"/>
+    <text x="155" y="270" fill="#d8efed" font-family="Arial,sans-serif" font-size="20" text-anchor="middle">C</text>
+  </g>
+</svg>
