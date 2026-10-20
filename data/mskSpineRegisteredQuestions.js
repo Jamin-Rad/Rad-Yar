@@ -27,6 +27,10 @@ const registrations = [
     key: 'ws-entzuendlich-asas-mri-01', topicId: 'morbus-bechterew-ws',
     fourth: L('Es beweist eine axSpA, wenn es auf mindestens einer Schicht sichtbar ist.', 'It proves axSpA when visible on at least one slice.', 'اگر در دست‌کم یک برش دیده شود، axSpA را ثابت می‌کند.'),
   },
+  {
+    key: 'ws-scheuermann-sorensen-01', topicId: 'morbus-scheuermann',
+    fourth: L('Eine Keilung von ≥5° an nur einem Wirbel.', '≥5° wedging in only one vertebra.', 'گوه‌ای‌شدن ≥۵° فقط در یک مهره.'),
+  },
 ]
 
 const byKey = Object.fromEntries(MSK_SPINE_LESSON_QUESTION_DRAFTS.map(question => [question.id, question]))

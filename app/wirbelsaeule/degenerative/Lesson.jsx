@@ -60,6 +60,7 @@ export default function SpineSourceLesson({ lessonData = lesson, sectionName = n
     {chapter.signalTitle && <h3>{c(chapter.signalTitle)}</h3>}
     {chapter.signalRows && <div className={styles.tableWrap}><table><tbody>{chapter.signalRows.map((row, i) => <tr key={`signal-${i}`}>{row.map((cell, j) => <td key={j}>{c(cell)}</td>)}</tr>)}</tbody></table></div>}
     {chapter.signalEvidence && <small>{c(chapter.signalEvidence)}</small>}
+    {chapter.visual && <figure className={styles.sourceFigure}><img src={chapter.visual.src} alt={c(chapter.visual.alt)} loading="lazy"/><figcaption>{c(chapter.visual.caption)}</figcaption></figure>}
     <p className={styles.note}>{c(chapter.note)}</p>
     <small>{copy.chapterSource} {c(chapter.source)}</small>
   </>

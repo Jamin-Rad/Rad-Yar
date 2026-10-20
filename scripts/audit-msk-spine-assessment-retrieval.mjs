@@ -11,7 +11,7 @@ for (const subject of CURRICULUM) for (const chapter of subject.kapitel || []) {
   for (const topic of chapter.themen || []) curriculumTopics.set(topic.id, { subjectId: subject.id, chapterId: chapter.id, ...topic })
 }
 
-const integratedTopicIds = new Set(['spinalkanalstenose', 'spondylodiszitis', 'morbus-bechterew-ws', 'knochentumor-grundlagen'])
+const integratedTopicIds = new Set(['spinalkanalstenose', 'spondylodiszitis', 'morbus-bechterew-ws', 'morbus-scheuermann', 'knochentumor-grundlagen'])
 for (const group of MCQ_TOPIC_GROUPS.filter(item => item.topics.some(topic => integratedTopicIds.has(topic.id)))) {
   assert.ok(CURRICULUM.find(subject => subject.id === group.fachId)?.kapitel.some(chapter => chapter.id === group.kapitelId), `${group.fachId}/${group.kapitelId}: missing curriculum chapter`)
   for (const topic of group.topics) assert.ok(curriculumTopics.has(topic.id), `${topic.id}: missing exact curriculum ID`)
@@ -53,6 +53,6 @@ for (const topic of MSK_SPINE_REGISTERED_FLASHCARD_TOPICS) {
   }
 }
 
-assert.ok(!MSK_SPINE_REGISTERED_QUESTIONS.some(question => question.de.tags.includes('morbus-scheuermann')), 'unlinked Scheuermann ID must stay unregistered')
-assert.ok(!MSK_SPINE_REGISTERED_FLASHCARDS.some(card => card.id === 'ws-scheuermann-sorensen'), 'unlinked Scheuermann card must stay unregistered')
+assert.ok(MSK_SPINE_REGISTERED_QUESTIONS.some(question => question.de.tags.includes('morbus-scheuermann')), 'Scheuermann MCQ should retrieve through its exact linked topic')
+assert.ok(MSK_SPINE_REGISTERED_FLASHCARDS.some(card => card.id === 'ws-scheuermann-sorensen' && card.topicId === 'morbus-scheuermann'), 'Scheuermann card should retrieve through its exact linked topic')
 console.log(`MSK/spine assessment retrieval passed: ${MSK_SPINE_REGISTERED_QUESTIONS.length} four-option MCQs and ${MSK_SPINE_REGISTERED_FLASHCARDS.length} cards across ${MSK_SPINE_REGISTERED_FLASHCARD_TOPICS.length} exact linked curriculum IDs; DE/EN/FA.`)
