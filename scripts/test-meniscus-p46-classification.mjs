@@ -1,0 +1,27 @@
+import assert from 'node:assert/strict'
+import fs from 'node:fs'
+
+const route = fs.readFileSync('app/msk/knie/meniskus/page.js', 'utf8')
+const component = fs.readFileSync('app/msk/knie/meniskus/LotyschClassification.jsx', 'utf8')
+const ledger = fs.readFileSync('docs/lesson-quality/source-ledgers/meniscus-stoller-lotysch-p46.md', 'utf8')
+
+assert.equal((route.match(/sourceCrossReference:/g) || []).length, 3, 'one source note per locale')
+assert.match(route, /MSK\.pdf, PDF-S\. 46 \(Druck-S\. 45\)/)
+assert.match(route, /MSK\.pdf, physical p\.46 \(printed p\.45\)/)
+assert.match(route, /صفحهٔ PDF ۴۶ \(صفحهٔ چاپی ۴۵\)/)
+assert.match(route, /data-pdf-source-note="msk-p46-stoller-lotysch"/)
+assert.match(route, /not an extension of the Lotysch signal grading shown here \(grades 0–III\)/)
+assert.match(route, /keine Erweiterung des hier gezeigten Lotysch-Signalgradings 0–III/)
+assert.match(route, /نه ادامهٔ درجه‌بندی سیگنال Lotysch در این درس/)
+assert.match(route, /No one-to-one mapping to the separately shown Jerosch extension grade IV is claimed/)
+assert.match(route, /Eine 1:1-Zuordnung zum separat gezeigten Jerosch-Erweiterungsgrad IV wird nicht behauptet/)
+assert.match(route, /هیچ تطبیق یک‌به‌یکی با درجهٔ IV توسعه‌یافتهٔ Jerosch که جداگانه نمایش داده شده ادعا نمی‌شود/)
+assert.match(component, /data-grade-definition="IV"/)
+assert.match(component, /Jerosch extension/)
+assert.match(ledger, /physical PDF p\.46 \/ printed p\.45/)
+assert.match(ledger, /separate morphology label/i)
+assert.match(ledger, /does not establish the PDF’s grade-IV morphology wording as a continuation/i)
+assert.match(ledger, /10\.1148\/radiology\.164\.2\.3602385/)
+const matrix = fs.readFileSync('docs/lesson-quality/msk-wirbelsaeule-curriculum-matrix.md', 'utf8')
+assert.match(matrix, /\[p\.46 ledger\]\(source-ledgers\/meniscus-stoller-lotysch-p46\.md\)/)
+console.log('Meniscus MSK.pdf p.46 classification cross-reference: DE/EN/FA, exact source page, distinct grading systems, and primary-source scope PASS.')

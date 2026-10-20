@@ -155,6 +155,7 @@ const CONTENT = {
     grading: {
       title: 'Lotysch-Klassifikation',
       lead: 'Die Klassifikation nach Lotysch hilft, degenerative intrameniskale Signalveränderungen von einem echten Meniskusriss zu unterscheiden.',
+      sourceCrossReference: 'MSK.pdf, PDF-S. 46 (Druck-S. 45), bezeichnet komplexe, mehrdimensionale, mazerierte oder dislozierte Morphologie als „Stoller Grad IV“. Das ist eine separate, quellenspezifische Morphologiebezeichnung und keine Erweiterung des hier gezeigten Lotysch-Signalgradings 0–III; dort beschreibt Grad III den Kontakt des Signals zur Gelenkoberfläche. Eine 1:1-Zuordnung zum separat gezeigten Jerosch-Erweiterungsgrad IV wird nicht behauptet.',
       lotyschTitle: 'Einfaches Modell: Grad 0 bis III',
       simpleHeaders: ['Grad', 'MRT-Signal', 'Histologie', 'Klinisch'],
       simpleRows: [
@@ -389,6 +390,7 @@ const CONTENT = {
     grading: {
       title: 'Lotysch classification',
       lead: 'The Lotysch classification helps distinguish degenerative intrameniscal signal changes from a true meniscal tear.',
+      sourceCrossReference: 'MSK.pdf, physical p.46 (printed p.45), labels complex, multi-plane, macerated or displaced morphology “Stoller grade IV”. This is a separate, source-specific morphology label, not an extension of the Lotysch signal grading shown here (grades 0–III); grade III in that system describes signal reaching an articular surface. No one-to-one mapping to the separately shown Jerosch extension grade IV is claimed.',
       lotyschTitle: 'Simple model: grades 0 to III',
       simpleHeaders: ['Grade', 'MRI signal', 'Histology', 'Clinical meaning'],
       simpleRows: [
@@ -623,6 +625,7 @@ const CONTENT = {
     grading: {
       title: 'طبقه‌بندی Lotysch',
       lead: 'طبقه‌بندی Lotysch کمک می‌کند تغییرات سیگنال دژنراتیو داخل منیسک از پارگی واقعی منیسک جدا شود.',
+      sourceCrossReference: 'در MSK.pdf، صفحهٔ PDF ۴۶ (صفحهٔ چاپی ۴۵)، مورفولوژی پیچیده، چندصفحه‌ای، ماکره یا جابه‌جا‌شده «Stoller Grade IV» نامیده شده است. این یک برچسب مورفولوژیک جداگانه و مختص این منبع است، نه ادامهٔ درجه‌بندی سیگنال Lotysch در این درس (درجات ۰ تا III)؛ در آن، درجهٔ III یعنی سیگنال به سطح مفصلی می‌رسد. هیچ تطبیق یک‌به‌یکی با درجهٔ IV توسعه‌یافتهٔ Jerosch که جداگانه نمایش داده شده ادعا نمی‌شود.',
       lotyschTitle: 'مدل ساده: درجه ۰ تا III',
       simpleHeaders: ['درجه', 'سیگنال MRI', 'هیستولوژی', 'معنای بالینی'],
       simpleRows: [
@@ -1200,6 +1203,7 @@ export default function MeniskusPage() {
           <Section id="grading" eyebrow="03" title={copy.grading.extendedTitle} lead="" {...sectionProps('grading')}>
             <p className={styles.subSectionLead}>{copy.grading.lead}</p>
             <LotyschClassification copy={copy.grading} lang={lang} />
+            <p className={contentStyles.classificationSourceNote} data-pdf-source-note="msk-p46-stoller-lotysch">{copy.grading.sourceCrossReference}</p>
 
             <div className={`${styles.subSectionBlock} ${contentStyles.gradingCases}`}>
               <h3 className={styles.subSectionTitle}>{copy.cases.title}</h3>
