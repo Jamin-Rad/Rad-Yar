@@ -59,15 +59,18 @@ function CardBlock({ block, lang }) {
 
 function ImageGallery({ block, lang, ui, onOpen }) {
   return (
-    <div className={styles.imageGallery}>
+    <div className={`${styles.imageGallery} ${block.images.length === 1 ? styles.imageGallerySingle : ''}`}>
       {block.images.map(item => {
         const alt = localizeContrast(item.alt, lang)
         return (
           <figure className={styles.imageCard} key={item.src}>
             <button type="button" onClick={() => onOpen({ src: item.src, alt })} aria-label={`${ui.openImage}: ${alt}`}>
-              <Image src={item.src} alt={alt} width={520} height={520} sizes="(max-width: 760px) 100vw, 33vw" />
+              <Image src={item.src} alt={alt} width={520} height={520} sizes={block.images.length === 1 ? '(max-width: 760px) 100vw, 860px' : '(max-width: 760px) 100vw, 33vw'} />
             </button>
-            <figcaption>{alt}</figcaption>
+            <figcaption>
+              <span>{alt}</span>
+              {item.caption ? <small>{localizeContrast(item.caption, lang)}</small> : null}
+            </figcaption>
           </figure>
         )
       })}

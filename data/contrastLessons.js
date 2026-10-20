@@ -248,9 +248,15 @@ export const CONTRAST_LESSONS = {
             { title: t('Globus pallidus', 'Globus pallidus', 'گلوبوس پالیدوس'), text: t('Medialer Anteil des Linsenkerns, lateral der Capsula interna und medial des Putamens.', 'The medial part of the lentiform nucleus, lateral to the internal capsule and medial to the putamen.', 'بخش مدیال هستهٔ عدسی، لترال کپسول داخلی و مدیال پوتامن است.') },
           ]},
           { type: 'imageGallery', images: [
-            { src: '/kontrastmittel/gadolinium-retention-axial-1.jpg', alt: t('Axiale native T1-MRT auf Höhe der Kleinhirnkerne', 'Axial native T1 MRI at the level of the deep cerebellar nuclei', 'MRI محوری T1 نیتیو در سطح هسته‌های مخچه') },
-            { src: '/kontrastmittel/gadolinium-retention-sagittal.jpg', alt: t('Sagittale native T1-MRT des Gehirns', 'Sagittal native T1 MRI of the brain', 'MRI ساژیتال T1 نیتیو مغز') },
-            { src: '/kontrastmittel/gadolinium-retention-axial-2.jpg', alt: t('Axiale native T1-MRT der hinteren Schädelgrube', 'Axial native T1 MRI of the posterior fossa', 'MRI محوری T1 نیتیو حفرهٔ خلفی') },
+            {
+              src: '/kontrastmittel/technik-p128-gadolinium-retention.png',
+              alt: t('Drei Quellbilder: axiale native T1-Aufnahme mit Pfeilen an cerebellären Signalsteigerungen, sagittale native T1-Aufnahme und FLAIR-Vergleich', 'Three source panels: axial native T1 with arrows at cerebellar signal elevation, sagittal native T1, and a FLAIR comparison', 'سه تصویر منبع: T1 نیتیو محوری با فلش روی افزایش سیگنال مخچه، T1 نیتیو ساژیتال و مقایسهٔ FLAIR'),
+              caption: t(
+                'Im axialen nativen T1 zeigen die Pfeile das im PDF beschriebene Signal im Bereich des Nucleus dentatus. Das ist ein Bildbeispiel zur beschriebenen Beobachtung, kein Nachweis einer klinischen Erkrankung. Quelle: Technik.pdf, PDF-S. 128 (Druck-S. 127), rID 40640.',
+                'On axial native T1, the arrows indicate signal in the dentate-nucleus region described in the PDF. This illustrates the reported imaging observation; it does not establish clinical disease. Source: Technik.pdf, PDF p. 128 (printed p. 127), rID 40640.',
+                'در T1 نیتیو محوری، فلش‌ها سیگنال ناحیهٔ هستهٔ دندانه‌ای را که در PDF توصیف شده نشان می‌دهند. این فقط نمونهٔ تصویریِ مشاهدهٔ گزارش‌شده است و بیماری بالینی را ثابت نمی‌کند. منبع: Technik.pdf، صفحهٔ PDF ۱۲۸ (شمارهٔ چاپی ۱۲۷)، شناسهٔ rID 40640.'
+              ),
+            },
           ]},
           { type: 'callout', variant: 'key', text: t('Retention ist nachweisbar, bedeutet aber nicht automatisch eine klinische Erkrankung und ist nicht mit NSF gleichzusetzen.', 'Retention is detectable but does not automatically indicate clinical disease and is not the same as NSF.', 'احتباس قابل مشاهده است، اما الزاماً به‌معنای بیماری بالینی نیست و با NSF یکسان نیست.') },
         ],
