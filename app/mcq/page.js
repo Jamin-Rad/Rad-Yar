@@ -30,6 +30,14 @@ const TOPICS = [
     desc: { de: 'Sono · CT · MRT · DWI · atypische Formen', en: 'Ultrasound · CT · MRI · DWI · atypical forms', fa: 'سونوگرافی · CT · MRI · DWI · فرم آتیپیک' },
   },
   {
+    key: 'lebermetastasen',
+    href: '/ueben/quiz?fach=abdomen&n=2&themen=lebermetastasen',
+    icon: 'CT', iconImage: '/fach/abdomen.png', color: '#0f766e', available: true,
+    count: { de: '2 Fragen', en: '2 Questions', fa: '۲ سؤال' },
+    name: { de: 'Leber · Metastasen', en: 'Liver · Metastases', fa: 'کبد · متاستازها' },
+    desc: { de: 'Phasenvergleich · Vaskularität · solitärer Herd', en: 'Phase comparison · vascularity · solitary lesion', fa: 'مقایسهٔ فازها · عروق‌رسانی · ضایعهٔ منفرد' },
+  },
+  {
     key: 'divertikulitis',
     href: '/ueben/quiz?fach=abdomen&n=10&themen=divertikulitis',
     icon: 'CT', iconImage: '/fach/abdomen.png', color: '#f97316', available: true,

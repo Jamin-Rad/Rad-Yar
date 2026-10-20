@@ -7,6 +7,7 @@ const option = (id, text) => ({ id, text })
 // The hepatic AML and PSC/PBC drafts remain scoped to their lessons because the
 // available curriculum IDs would otherwise mislabel their questions.
 const registrations = [
+  { key: 'abdomen-liver-metastases', fach: 'abdomen', tags: ['lebermetastasen'], extra: { de: 'Ohne Leberzirrhose sind Lebermetastasen ausgeschlossen', en: 'Liver metastases are excluded without cirrhosis', fa: 'بدون سیروز کبدی، متاستاز کبدی رد می‌شود' } },
   { key: 'abdomen-small-bowel-feces', fach: 'abdomen', tags: ['ileus-duenndarm'], extra: { de: 'Dünndarmobstruktion, Pneumobilie und ektoper Gallenstein (Rigler-Trias)', en: 'Small-bowel obstruction, pneumobilia and an ectopic gallstone (Rigler triad)', fa: 'انسداد رودهٔ باریک، پنوموبیلی و سنگ نابجا در روده (تریاد ریگلر)' } },
   { key: 'abdomen-ileus-volvulus', fach: 'abdomen', tags: ['ileus-duenndarm', 'volvulus'], extra: { de: 'Dünndarmobstruktion, Pneumobilie und ein Stein noch in der Gallenblase', en: 'Small-bowel obstruction, pneumobilia and a stone still within the gallbladder', fa: 'انسداد روده باریک، پنوموبیلی و سنگی که هنوز داخل کیسه صفراست' } },
   { key: 'abdomen-pancreatic-cysts', fach: 'abdomen', tags: ['ipmn'], extra: { de: 'Eine solide Raumforderung ohne Gangkommunikation', en: 'A solid mass without duct communication', fa: 'تودهٔ جامد بدون ارتباط با مجرا' } },

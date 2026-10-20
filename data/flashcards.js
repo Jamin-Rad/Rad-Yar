@@ -71,6 +71,7 @@ import { MR_ANGIOGRAPHY_FLASHCARDS, MR_ANGIOGRAPHY_FLASHCARD_TOPIC } from './tec
 import { MRI_FUNDAMENTALS_FLASHCARDS, MRI_FUNDAMENTALS_FLASHCARD_TOPIC, MRI_QUALITY_FLASHCARDS } from './technikMRIFundamentalsLesson'
 
 export const FLASHCARD_TOPICS = [
+  { id: 'lebermetastasen', area: 'Abdomen', chapter: 'Leberläsionen', icon: 'CT', iconImage: '/fach/abdomen.png', color: '#10b981', href: '/flashcards/lebermetastasen', title: { de: 'Lebermetastasen', en: 'Liver metastases', fa: 'متاستازهای کبدی' }, subtitle: { de: 'Phasenmuster · Vaskularität · Befundung', en: 'Phase pattern · vascularity · reporting', fa: 'الگوی فازی · عروق‌رسانی · گزارش' } },
   STEATOSIS_FLASHCARD_TOPIC,
   ...CT_BASICS_FLASHCARD_TOPICS,
   CT_PERFUSION_FLASHCARD_TOPIC,
@@ -2264,24 +2265,24 @@ const LEGACY_FLASHCARDS = [
       "fa": "گزارش‌نویسی"
     },
     "front": {
-      "de": "Was ist der wichtigste Befundungssatz bei typischer FNH?",
-      "en": "What is the most important reporting sentence for typical FNH?",
-      "fa": "مهم‌ترین جمله گزارش برای FNH تیپیک چیست؟"
+      "de": "Welche Versorgung braucht eine typische, sicher diagnostizierte FNH?",
+      "en": "What follow-up does typical, confidently diagnosed FNH need?",
+      "fa": "FNH تیپیک با تشخیص مطمئن به چه پیگیری‌ای نیاز دارد؟"
     },
     "answer": {
-      "de": "Typische FNH, benigner Befund, keine weitere Diagnostik nötig.",
-      "en": "Typical FNH, benign finding, no further work-up needed.",
-      "fa": "FNH تیپیک، یافته خوش‌خیم، بدون نیاز به بررسی بیشتر."
+      "de": "Bei typischer, sicher diagnostizierter FNH sind Behandlung und routinemäßige Verlaufskontrolle nicht erforderlich; bei vaskulärer Lebererkrankung gelten Ausnahmen.",
+      "en": "Typical, confidently diagnosed FNH needs no treatment or routine follow-up; underlying vascular liver disease is an exception.",
+      "fa": "در FNH تیپیک با تشخیص مطمئن، درمان و پیگیری روتین لازم نیست؛ بیماری زمینه‌ای عروقی کبد استثناست."
     },
     "explanation": {
-      "de": "Bei klassischem Muster (homogene arterielle Anreicherung, kein Wash-out, ggf. zentrale Narbe) kann die Diagnose sicher gestellt werden. Bei atypischen Zeichen sollte verglichen und ggf. eine Verlaufskontrolle empfohlen werden.",
-      "en": "With a classic pattern (homogeneous arterial enhancement, no wash-out, possible central scar), the diagnosis can be made confidently. With atypical features, compare with priors and consider follow-up.",
-      "fa": "با الگوی کلاسیک (تقویت شریانی هموژن، بدون واش‌اوت، احتمال اسکار مرکزی)، تشخیص با اطمینان قابل ارائه است. در ویژگی‌های آتیپیک، مقایسه با قبل و پیگیری توصیه می‌شود."
+      "de": "Die EASL-Leitlinie empfiehlt bei typischer FNH keine Therapie und keine routinemäßige Verlaufskontrolle, außer bei zugrunde liegender vaskulärer Lebererkrankung. Bei atypischer Bildgebung oder Symptomen soll ein benign-liver-tumour-MDT die Befunde einordnen; ein pauschales Kontrollintervall lässt sich daraus nicht ableiten.",
+      "en": "EASL recommends no treatment or routine follow-up for typical FNH, except with underlying vascular liver disease. Atypical imaging or symptoms should be reviewed by a benign liver tumour MDT; this does not establish a blanket follow-up interval.",
+      "fa": "راهنمای EASL برای FNH تیپیک، درمان یا پیگیری روتین را توصیه نمی‌کند، مگر در بیماری زمینه‌ای عروقی کبد. در تصویربرداری آتیپیک یا وجود علائم، ارزیابی در تیم تخصصی تومورهای خوش‌خیم کبد مطرح است؛ این توصیه یک فاصلهٔ پیگیری همگانی تعیین نمی‌کند."
     },
     "diagram": {
-      "de": "klassisches Muster → benigne, keine weitere Diagnostik\natypisch → Vergleich + Verlauf",
-      "en": "classic pattern → benign, no further work-up\natypical → compare + follow-up",
-      "fa": "الگوی کلاسیک → خوش‌خیم، بدون بررسی بیشتر\nآتیپیک → مقایسه + پیگیری"
+      "de": "typisch + sicher diagnostiziert → keine Therapie/Regelkontrolle\natypisch oder symptomatisch → spezialisierte Einordnung",
+      "en": "typical + confidently diagnosed → no treatment/routine follow-up\natypical or symptomatic → specialist review",
+      "fa": "تیپیک با تشخیص مطمئن → بدون درمان/پیگیری روتین\nآتیپیک یا علامت‌دار → ارزیابی تخصصی"
     }
   },
   {
@@ -3480,6 +3481,7 @@ const LEGACY_FLASHCARDS = [
 ]
 
 export const FLASHCARDS = [
+  { id: 'lebermetastasen-01-phasenvergleich', topicId: 'lebermetastasen', category: 'Abdomen', front: { de: 'Welche Phasen helfen, die Vaskularität einer Leberläsion einzuordnen?', en: 'Which phases help classify the vascularity of a liver lesion?', fa: 'کدام فازها برای طبقه‌بندی عروق‌رسانی ضایعهٔ کبدی کمک می‌کنند؟' }, answer: { de: 'Vor allem die arterielle und portalvenöse Phase vergleichen; eine Spätphase nur berücksichtigen, wenn sie akquiriert wurde.', en: 'Compare the arterial and portal venous phases; consider a delayed phase only when it was acquired.', fa: 'فاز شریانی و پورت را مقایسه کنید؛ فاز تأخیری را فقط در صورت انجام‌شدن بررسی کنید.' }, explanation: { de: 'Das PDF zeigt unterschiedliche hypo- und hypervaskuläre Muster über mehrere Kontrastphasen. Einzelbilder reichen nicht für die Einordnung.', en: 'The PDF shows different hypo- and hypervascular patterns across contrast phases. A single image is insufficient for classification.', fa: 'PDF الگوهای کم‌عروق و پرعروق را در چند فاز تزریق نشان می‌دهد. یک تصویر منفرد برای طبقه‌بندی کافی نیست.' }, diagram: { de: 'arteriell → portalvenös → ggf. spät', en: 'arterial → portal venous → delayed if acquired', fa: 'شریانی ← پورت ← در صورت انجام، تأخیری' } },
   ...STEATOSIS_FLASHCARDS,
   ...BRAIN_METASTASES_FLASHCARDS,
   ...PCNSL_FLASHCARDS,

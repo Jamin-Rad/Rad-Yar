@@ -1,12 +1,13 @@
 'use client'
 
 import Image from 'next/image'
+import LessonHero from '@/components/LessonHero'
+import reference from '@/app/andarun/test/page.module.css'
 
 import { useMemo, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
-import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import styles from './page.module.css'
 import InProgressBanner from '@/components/InProgressBanner'
 
@@ -73,8 +74,8 @@ const CONTENT = {
     },
     "mri": {
       "title": "MRT-Diagnostik",
-      "lead": "Die MRT zeigt das native Signal und das dynamische Kontrastmittelverhalten. Eine hepatobiliäre Kontrastmittelphase kann die Abgrenzung zur hepatozellulären Adenomatose unterstützen.",
-      "sourceNote": "Ergänzende Leitlinie: ACG Clinical Guideline on focal liver lesions (2024).",
+      "lead": "Die MRT zeigt das native Signal und das dynamische Kontrastmittelverhalten. Eine hepatobiliäre Kontrastmittelphase kann die Abgrenzung zum hepatozellulären Adenom unterstützen.",
+      "sourceNote": "Ergänzende Leitlinien: ACG 2024 zur Bildgebung und EASL 2016 zur Einordnung typischer/atypischer FNH.",
       "figureCaption": "Abdomen.pdf, PDF-S. 14 (Druckseite 13), sichtbare Kennung rID:206026. Zeilenweise von links oben: T2 koronar, T2w axial (Kreis/Pfeil wie im PDF), T1 C+ und T1 C+ nach 10 Minuten. Die genaue dynamische Kontrastmittelphase der T1-C+-Aufnahme ohne Zeitangabe ist nicht bezeichnet.",
       "figureAlt": "Vier Leber-MRT-Bilder aus Abdomen.pdf: T2 koronar, T2 axial mit rotem Kreis und Pfeil an der Läsion, T1 nach Kontrastmittel und T1 nach 10 Minuten.",
       "check": {
@@ -189,7 +190,7 @@ const CONTENT = {
       "title": "MRI diagnosis",
       "lead": "MRI shows native signal and dynamic enhancement. A hepatobiliary contrast phase can help distinguish FNH from hepatocellular adenoma.",
       "figureCaption": "Abdomen.pdf, PDF p. 14 (printed p. 13), visible identifier rID:206026. In reading order: coronal T2, axial T2w (circle/arrow as marked in the PDF), post-contrast T1 and post-contrast T1 after 10 minutes. The exact dynamic phase of the untimed T1 C+ image is not labelled.",
-      "sourceNote": "Supplemental guidance: ACG Clinical Guideline on focal liver lesions (2024).",
+      "sourceNote": "Supplemental guidance: ACG 2024 on imaging and EASL 2016 on typical and atypical FNH management.",
       "figureAlt": "Four liver MRI images from Abdomen.pdf: coronal T2, axial T2 with a red circle and arrow at the lesion, post-contrast T1, and T1 after 10 minutes.",
       "check": {
         "question": "Which combination best fits typical FNH?",
@@ -295,7 +296,7 @@ const CONTENT = {
         ["پورتال/تأخیری", "تطابق سریع با پارانشیم کبد، بدون واش‌اوت"],
         ["اسکار مرکزی", "هیپودنس در فاز بدون کنتراست، تقویت تأخیری"]
       ],
-      "irisTitle": "تقویت همگن به‌جای پدیده دیافراگم عنبیه",
+      "irisTitle": "تقویت همگن در برابر ندول‌های محیطی همانژیوم",
       "irisText": "برخلاف همانژیوم، FNH در فاز شریانی زودرس به‌سرعت و به‌صورت هموژن تقویت پس از تزریق می‌یابد – بدون تقویت پس از تزریق ندولار محیطی یا پرشدگی مرکزگرا.",
       "key": "ضایعه‌ای که در فاز شریانی زودرس تقویت پس از تزریق قوی و هموژن دارد و سپس با پارانشیم کبد تطابق می‌یابد، به نفع FNH است."
     },
@@ -303,7 +304,7 @@ const CONTENT = {
       "title": "تشخیص در MRI",
       "lead": "MRI سیگنال پایه و رفتار تقویت پویای مادهٔ حاجب را نشان می‌دهد. فاز هپاتوبیلیاری می‌تواند به افتراق FNH از آدنوم هپاتوسلولار کمک کند.",
       "figureCaption": "Abdomen.pdf، صفحهٔ PDF شمارهٔ ۱۴ (صفحهٔ چاپی ۱۳)، شناسهٔ قابل‌مشاهده rID:206026. به‌ترتیب ردیفی: T2 کرونال، T2 محوری (دایره/پیکان مطابق PDF)، T1 پس از تزریق و T1 پس از تزریق در تأخیر ۱۰ دقیقه‌ای. فاز پویای دقیقِ تصویر T1 C+ که زمان ندارد، مشخص نشده است.",
-      "sourceNote": "راهنمای تکمیلی: راهنمای ACG دربارهٔ ضایعات کانونی کبد (۲۰۲۴).",
+      "sourceNote": "راهنمای تکمیلی: ACG 2024 برای تصویربرداری و EASL 2016 برای ارزیابی FNH تیپیک و آتیپیک.",
       "figureAlt": "چهار تصویر MRI کبد از Abdomen.pdf: T2 کرونال، T2 محوری با دایره و پیکان قرمز روی ضایعه، T1 پس از تزریق و T1 پس از ۱۰ دقیقه.",
       "check": {
         "question": "کدام ترکیب بیش از همه با FNH تیپیک سازگار است؟",
@@ -416,7 +417,7 @@ const CASE_COPY = {
     openCase: 'باز کردن مقاله',
     cases: [
       {
-        title: 'Focal nodular hyperplasia',
+        title: 'هیپرپلازی ندولار فوکال (FNH)',
         label: 'Radiopaedia · مرور',
         tags: ['FNH'],
         icon: '⭐',
@@ -425,7 +426,7 @@ const CASE_COPY = {
         url: 'https://radiopaedia.org/articles/focal-nodular-hyperplasia',
       },
       {
-        title: 'Hepatocellular adenoma',
+        title: 'آدنوم هپاتوسلولار',
         label: 'Radiopaedia · مرور',
         tags: ['تشخیص افتراقی'],
         icon: '🔬',
@@ -457,6 +458,22 @@ function ReadButton({ isRead, onClick, authError }) {
   )
 }
 
+function FnhHeroDiagram({ lang }) {
+  const copy = {
+    de: { alt: 'Lehrschema einer FNH: zentrales Gefäß mit radiär ausstrahlenden Ästen', caption: 'Lehrschema, keine Patientenaufnahme. Das Spoke-wheel-Muster ist ein Hinweis, kein alleiniger Beweis.' },
+    en: { alt: 'FNH teaching schematic: a central vessel with radiating branches', caption: 'Teaching schematic, not a patient image. The spoke-wheel pattern is a clue, not proof on its own.' },
+    fa: { alt: 'شماتیک آموزشی FNH: رگ مرکزی با شاخه‌های شعاعی', caption: 'شماتیک آموزشی است، نه تصویر بیمار. الگوی spoke-wheel سرنخ است و به‌تنهایی اثبات‌کننده نیست.' },
+  }[lang] || { alt: 'FNH teaching schematic: a central vessel with radiating branches', caption: 'Teaching schematic, not a patient image. The spoke-wheel pattern is a clue, not proof on its own.' }
+  return <svg viewBox="0 0 420 250" role="img" aria-label={copy.alt} className={styles.fnhHeroDiagram}>
+    <rect x="12" y="12" width="396" height="226" rx="22" fill="var(--canvas)" />
+    <path d="M64 106c20-49 91-70 157-51 34 10 74-2 119 19 27 12 38 35 31 65-8 38-43 62-94 68-61 7-114-5-164 8-38 10-72-4-78-34-4-24 7-54 29-75Z" fill="var(--fnh-liver)" stroke="var(--teal-700)" strokeWidth="3" />
+    <circle cx="218" cy="124" r="55" fill="var(--fnh-lesion)" stroke="var(--plum-700)" strokeWidth="2.5" />
+    <path d="M218 122V79M218 122l-35-31M218 122l38-29M218 122l-43 5M218 122l40 9M218 122l-27 38M218 122l26 39" fill="none" stroke="var(--teal-700)" strokeWidth="4" strokeLinecap="round" />
+    <circle cx="218" cy="122" r="7" fill="var(--plum-800)" />
+    <text x="218" y="218" textAnchor="middle" fill="var(--body)" fontSize="14">{lang === 'fa' ? 'رگ مرکزی ← شاخه‌های شعاعی' : lang === 'de' ? 'zentrales Gefäß → radiäre Äste' : 'central vessel → radiating branches'}</text>
+  </svg>
+}
+
 function Table({ headers, rows }) {
   return (
     <div className={styles.tableWrap}>
@@ -485,20 +502,19 @@ function Callout({ type = 'note', label, children }) {
   )
 }
 
-function Section({ id, title, lead, children }) {
-  const [open, setOpen] = useState(id === 'grundlagen')
+function Section({ id, title, lead, children, open, onToggle }) {
   return (
     <section id={id} className={styles.section}>
-      <button className={styles.sectionHeader} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}>
-        <span className={styles.sectionTitle} role="heading" aria-level={2}>{title}</span>
+      <h2 className={styles.sectionHeading}>
+      <button className={styles.sectionHeader} type="button" onClick={() => onToggle(id)} aria-expanded={open} aria-controls={`${id}-panel`}>
+        <span className={styles.sectionTitle}>{title}</span>
         <span>{open ? '−' : '+'}</span>
       </button>
-      {open && (
-        <div className={styles.sectionBody}>
+      </h2>
+      <div id={`${id}-panel`} className={styles.sectionBody} hidden={!open}>
           {lead && <p className={styles.lead}>{lead}</p>}
           {children}
-        </div>
-      )}
+      </div>
     </section>
   )
 }
@@ -517,25 +533,47 @@ export default function LeberFnhPage() {
   }, [copy.sections, caseCopy.label])
   const isRTL = lang === 'fa'
   const [activeId, setActiveId] = useState(pageSections[0].id)
+  const [openSectionId, setOpenSectionId] = useState(pageSections[0].id)
+  const [mobilePathOpen, setMobilePathOpen] = useState(false)
   const [selectedFnhAnswer, setSelectedFnhAnswer] = useState(null)
   const { isRead, toggleRead, authError } = useLessonReadStatus('fnh')
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
   const sectionIds = useMemo(() => pageSections.map(section => section.id), [pageSections])
+  const toggleSection = (id) => setOpenSectionId(current => current === id ? null : id)
 
   const scrollTo = (id) => {
     const section = document.getElementById(id)
-    const collapsedButton = section?.querySelector('button[aria-expanded="false"]')
-    collapsedButton?.click()
+    setActiveId(id)
+    setOpenSectionId(id)
+    setMobilePathOpen(false)
+    if (typeof window !== 'undefined') window.history.replaceState(null, '', `#${id}`)
     requestAnimationFrame(() => section?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
   }
+
+  useEffect(() => {
+    const syncHash = () => {
+      const id = decodeURIComponent(window.location.hash.slice(1))
+      if (!sectionIds.includes(id)) return
+      setActiveId(id)
+      setOpenSectionId(id)
+      requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ block: 'start' }))
+    }
+    syncHash()
+    window.addEventListener('hashchange', syncHash)
+    return () => window.removeEventListener('hashchange', syncHash)
+  }, [sectionIds])
 
   useEffect(() => {
     const observers = sectionIds.map(id => {
       const el = document.getElementById(id)
       if (!el) return null
       const observer = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveId(id) },
+        ([entry]) => {
+          if (!entry.isIntersecting) return
+          setActiveId(id)
+          if (window.location.hash !== `#${id}`) window.history.replaceState(null, '', `#${id}`)
+        },
         { rootMargin: '-18% 0px -72% 0px', threshold: 0.01 }
       )
       observer.observe(el)
@@ -547,7 +585,7 @@ export default function LeberFnhPage() {
   return (
     <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
       <InProgressBanner lang={lang} />
-      <header className={styles.header}>
+      <header className={`${styles.header} ${reference.header}`}>
         <div className={styles.breadcrumb}>
           <Link href={withLang('/')}>RadYar</Link>
           <span>›</span>
@@ -555,25 +593,23 @@ export default function LeberFnhPage() {
           <span>›</span>
           <span>{copy.breadcrumbCurrent}</span>
         </div>
-        <div className={styles.hero}>
-          <div className={styles.heroText}>
-            <span className={styles.sourceBadge}>{copy.sourceLabel}</span>
-            <h1>{copy.title}</h1>
-            <p>{copy.subtitle}</p>
-            <div className={styles.actions}>
-              <Link href={withLang(`/ueben/quiz?fach=abdomen&n=10&themen=fnh&from=${encodeURIComponent(withLang('/abdomen/leber/fnh'))}`)} className={styles.actionBtn}>🎯 {copy.actionMcq}</Link>
-              <Link href={withLang(`/flashcards/fnh?from=${encodeURIComponent(withLang('/abdomen/leber/fnh'))}`)} className={styles.actionBtn}>🧠 {copy.actionFlash}</Link>
-            </div>
+        <div className={styles.sharedHeroFrame}>
+          <span className={reference.author}>{copy.sourceLabel}</span>
+          <LessonHero title={copy.title} lang={lang} visual={<FnhHeroDiagram lang={lang} />} visualCaption={({ de: 'Lehrschema, kein Patientenbild; das Spoke-wheel-Muster ist ein Hinweis, kein Beweis.', en: 'Teaching schematic, not a patient image; the spoke-wheel pattern is a clue, not proof.', fa: 'شماتیک آموزشی، نه تصویر بیمار؛ الگوی spoke-wheel سرنخ است و اثبات‌کننده نیست.' })[lang]} />
+          <div className={styles.sharedHeroActions}>
+            <Link href={withLang(`/ueben/quiz?fach=abdomen&n=10&themen=fnh&from=${encodeURIComponent(withLang('/abdomen/leber/fnh'))}`)} className={styles.actionBtn}>🎯 {copy.actionMcq}</Link>
+            <Link href={withLang(`/flashcards/fnh?from=${encodeURIComponent(withLang('/abdomen/leber/fnh'))}`)} className={styles.actionBtn}>🧠 {copy.actionFlash}</Link>
           </div>
-          <figure className={styles.heroSourceFigure}>
-            <Image src="/educational/fnh/source-mri-p14.jpg" alt={copy.mri.figureAlt} width={565} height={488} sizes="(max-width: 760px) 100vw, 300px" />
-            <figcaption>{copy.mri.figureCaption}</figcaption>
-          </figure>
         </div>
       </header>
 
       <div className={styles.readBar}>
         <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
+      </div>
+
+      <div className={styles.mobilePath}>
+        <button type="button" aria-expanded={mobilePathOpen} aria-controls="fnh-mobile-path" onClick={() => setMobilePathOpen(value => !value)}>{copy.toc}: {pageSections.find(section => section.id === activeId)?.label || copy.sections[0].label}</button>
+        {mobilePathOpen ? <nav id="fnh-mobile-path" aria-label={copy.toc}>{pageSections.map(section => <button type="button" key={section.id} aria-current={activeId === section.id ? 'location' : undefined} onClick={() => scrollTo(section.id)}>{section.icon} {section.label}</button>)}</nav> : null}
       </div>
 
       <div className={styles.layout}>
@@ -585,6 +621,7 @@ export default function LeberFnhPage() {
               key={section.id}
               data-section-id={section.id}
               className={`${styles.sideItem} ${activeId === section.id ? styles.sideItemActive : ''}`}
+              aria-current={activeId === section.id ? 'location' : undefined}
               onClick={() => scrollTo(section.id)}
             >
               <span>{section.icon}</span>
@@ -594,7 +631,7 @@ export default function LeberFnhPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="grundlagen" title={copy.basics.title} lead={copy.basics.lead}>
+          <Section id="grundlagen" title={copy.basics.title} lead={copy.basics.lead} open={openSectionId === 'grundlagen'} onToggle={toggleSection}>
             <div className={styles.cardsGrid}>
               {copy.basics.items.map(item => (
                 <div className={styles.infoCard} key={item.title}>
@@ -606,12 +643,12 @@ export default function LeberFnhPage() {
             <Callout label={copy.keyLabel}>{copy.basics.key}</Callout>
           </Section>
 
-          <Section id="sono" title={copy.sono.title} lead={copy.sono.lead}>
+          <Section id="sono" title={copy.sono.title} lead={copy.sono.lead} open={openSectionId === 'sono'} onToggle={toggleSection}>
             <Table headers={copy.sono.tableHeaders} rows={copy.sono.tableRows} />
             <Callout label={copy.keyLabel}>{copy.sono.key}</Callout>
           </Section>
 
-          <Section id="ct" title={copy.ct.title} lead={copy.ct.lead}>
+          <Section id="ct" title={copy.ct.title} lead={copy.ct.lead} open={openSectionId === 'ct'} onToggle={toggleSection}>
             <Table headers={copy.ct.tableHeaders} rows={copy.ct.tableRows} />
             <div className={styles.highlightBox}>
               <h3>{copy.ct.irisTitle}</h3>
@@ -620,9 +657,16 @@ export default function LeberFnhPage() {
             <Callout label={copy.keyLabel}>{copy.ct.key}</Callout>
           </Section>
 
-          <Section id="mrt" title={copy.mri.title} lead={copy.mri.lead}>
+          <Section id="mrt" title={copy.mri.title} lead={copy.mri.lead} open={openSectionId === 'mrt'} onToggle={toggleSection}>
             <Table headers={copy.mri.tableHeaders} rows={copy.mri.tableRows} />
-            <p className={styles.sourceNote}>{copy.mri.sourceNote} <a href="https://doi.org/10.14309/ajg.0000000000002857" target="_blank" rel="noopener noreferrer">ACG Guideline (DOI 10.14309/ajg.0000000000002857)</a></p>
+            <figure className={styles.pdfCase}>
+              <Image src="/educational/fnh/source-mri-p14.jpg" alt={copy.mri.figureAlt} width={565} height={488} sizes="(max-width: 760px) calc(100vw - 64px), 60vw" />
+              <figcaption>
+                <strong>{({ de: 'MRT-Beispiel aus der Zusammenfassung', en: 'MRI example from the supplied summary', fa: 'نمونه MRI از خلاصهٔ آموزشی' })[lang]}</strong>
+                <p>{copy.mri.figureCaption}</p>
+              </figcaption>
+            </figure>
+            <p className={styles.sourceNote}>{copy.mri.sourceNote} <a href="https://doi.org/10.14309/ajg.0000000000002857" target="_blank" rel="noopener noreferrer">ACG Guideline 2024</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7206317/" target="_blank" rel="noopener noreferrer">EASL Guideline 2016</a></p>
             <div className={styles.inlineCheck}>
               <h3>{copy.mri.check.question}</h3>
               <fieldset>
@@ -649,14 +693,14 @@ export default function LeberFnhPage() {
             <Callout label={copy.keyLabel}>{copy.mri.key}</Callout>
           </Section>
 
-          <Section id="atypisch" title={copy.atypical.title} lead={copy.atypical.lead}>
+          <Section id="atypisch" title={copy.atypical.title} lead={copy.atypical.lead} open={openSectionId === 'atypisch'} onToggle={toggleSection}>
             <Table headers={copy.atypical.tableHeaders} rows={copy.atypical.tableRows} />
             <Callout type="cave" label={copy.caveLabel}>{copy.atypical.cave}</Callout>
             <Callout label={copy.keyLabel}>{copy.atypical.key}</Callout>
           </Section>
 
 
-          <Section id="fallbeispiele" title={caseCopy.title} lead={caseCopy.lead}>
+          <Section id="fallbeispiele" title={caseCopy.title} lead={caseCopy.lead} open={openSectionId === 'fallbeispiele'} onToggle={toggleSection}>
             <div className={styles.caseGrid}>
               {caseCopy.cases.map(item => (
                 <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
@@ -675,7 +719,7 @@ export default function LeberFnhPage() {
             </div>
           </Section>
 
-          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>
+          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead} open={openSectionId === 'takehome'} onToggle={toggleSection}>
             <div className={styles.takeHomeGrid}>
               {copy.takehome.items.map((item, index) => (
                 <div className={styles.takeHomeItem} key={item.title}>

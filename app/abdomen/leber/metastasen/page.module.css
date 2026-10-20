@@ -3,6 +3,9 @@
 .visualBlock, .patterns section, .reporting { border: 1px solid var(--border); border-radius: 16px; background: var(--bg-card); padding: 1.1rem 1.25rem; margin: 1.25rem 0; }
 .visualBlock h2, .patterns h2, .reporting h2 { margin: 0 0 .65rem; font-size: 1.15rem; }
 .diagram { display: block; width: 100%; height: auto; }
+.caseFigure { margin: 1.25rem 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--bg-card); }
+.caseFigure img { display: block; width: 100%; height: auto; }
+.caseFigure figcaption { padding: .75rem 1rem; color: var(--text-muted); font-size: .9rem; line-height: 1.55; }
 .axis { fill: var(--text); font-size: 16px; font-family: inherit; }
 .label { fill: var(--text-strong); font-size: 14px; font-family: inherit; font-weight: 700; }
 .axisLine { stroke: var(--border); stroke-width: 2; }

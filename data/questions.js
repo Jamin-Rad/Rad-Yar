@@ -1088,15 +1088,15 @@ const LEGACY_QUESTION_BANK = {
       "id": "fnh-de-10",
       "tags": ["fnh", "leber", "abdomen"],
       "fach": "abdomen",
-      "question": "Welches Vorgehen ist bei einer typischen, asymptomatischen FNH angezeigt?",
+      "question": "Welche Aussage passt zur typischen, sicher diagnostizierten FNH ohne Symptome?",
       "options": [
-        { "id": "A", "text": "In der Regel keine Therapie, da benigne und meist asymptomatisch" },
-        { "id": "B", "text": "Sofortige chirurgische Resektion" },
-        { "id": "C", "text": "Systemische Chemotherapie" },
-        { "id": "D", "text": "Transarterielle Chemoembolisation" }
+        { "id": "A", "text": "Keine Behandlung und üblicherweise keine Verlaufskontrolle; bei vaskulärer Lebererkrankung gelten Ausnahmen" },
+        { "id": "B", "text": "Jährliche MRT-Kontrolle ist bei jeder typischen FNH erforderlich" },
+        { "id": "C", "text": "Eine Biopsie ist auch bei kombiniert typischen Bildmerkmalen routinemäßig nötig" },
+        { "id": "D", "text": "Ein einzelnes atypisches Merkmal erfordert unmittelbar eine Resektion" }
       ],
       "correct": "A",
-      "explanation": "Die FNH ist benigne, meist asymptomatisch und erfordert in der Regel keine Therapie."
+      "explanation": "EASL empfiehlt bei typischer FNH weder Behandlung noch routinemäßige Verlaufskontrolle; eine zugrunde liegende vaskuläre Lebererkrankung ist eine Ausnahme. Atypische Bildgebung soll fachärztlich weiter eingeordnet werden, nicht automatisch zur Resektion führen."
     },
     {
       "id": "avm-de-01",
@@ -2285,15 +2285,15 @@ const LEGACY_QUESTION_BANK = {
       "id": "fnh-en-10",
       "tags": ["fnh", "leber", "abdomen"],
       "fach": "abdomen",
-      "question": "What is the appropriate management of a typical, asymptomatic FNH?",
+      "question": "Which statement applies to typical, confidently diagnosed FNH without symptoms?",
       "options": [
-        { "id": "A", "text": "Generally no treatment, as it is benign and usually asymptomatic" },
-        { "id": "B", "text": "Immediate surgical resection" },
-        { "id": "C", "text": "Systemic chemotherapy" },
-        { "id": "D", "text": "Transarterial chemoembolisation" }
+        { "id": "A", "text": "No treatment and usually no follow-up; underlying vascular liver disease is an exception" },
+        { "id": "B", "text": "Annual MRI follow-up is required for every typical FNH" },
+        { "id": "C", "text": "Biopsy is routinely required even when combined imaging features are typical" },
+        { "id": "D", "text": "A single atypical feature requires immediate resection" }
       ],
       "correct": "A",
-      "explanation": "FNH is benign, usually asymptomatic, and generally does not require treatment."
+      "explanation": "EASL recommends neither treatment nor routine follow-up for typical FNH; underlying vascular liver disease is an exception. Atypical imaging should be assessed by an appropriate specialist team, not treated as an automatic indication for resection."
     },
     {
       "id": "avm-en-01",
@@ -3482,15 +3482,15 @@ const LEGACY_QUESTION_BANK = {
       "id": "fnh-fa-10",
       "tags": ["fnh", "leber", "abdomen"],
       "fach": "abdomen",
-      "question": "رویکرد مناسب برای FNH تیپیک و بدون علامت چیست؟",
+      "question": "کدام عبارت دربارهٔ FNH تیپیک با تشخیص تصویری مطمئن و بدون علامت درست است؟",
       "options": [
-        { "id": "A", "text": "معمولاً بدون درمان، چون خوش‌خیم و معمولاً بدون علامت است" },
-        { "id": "B", "text": "رزکسیون جراحی فوری" },
-        { "id": "C", "text": "شیمی‌درمانی سیستمیک" },
-        { "id": "D", "text": "آمبولیزاسیون شیمیایی ترانس‌آرتریال" }
+        { "id": "A", "text": "درمان و معمولاً پیگیری لازم نیست؛ بیماری زمینه‌ای عروقی کبد استثناست" },
+        { "id": "B", "text": "برای همهٔ FNHهای تیپیک، MRI سالانه لازم است" },
+        { "id": "C", "text": "حتی با مجموعهٔ یافته‌های تصویری تیپیک، بیوپسی به‌طور روتین لازم است" },
+        { "id": "D", "text": "وجود یک ویژگی آتیپیک به‌تنهایی نیازمند رزکسیون فوری است" }
       ],
       "correct": "A",
-      "explanation": "FNH خوش‌خیم است، معمولاً بدون علامت است و معمولاً نیاز به درمان ندارد."
+      "explanation": "طبق راهنمای EASL، در FNH تیپیک درمان و پیگیری روتین لازم نیست؛ بیماری زمینه‌ای عروقی کبد استثناست. تصویربرداری آتیپیک باید در تیم تخصصی ارزیابی شود و به‌تنهایی به معنی نیاز به رزکسیون نیست."
     },
     {
       "id": "avm-fa-01",

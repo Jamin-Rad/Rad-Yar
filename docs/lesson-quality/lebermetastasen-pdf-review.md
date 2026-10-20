@@ -5,7 +5,7 @@
 - PDF: `Abdomen.pdf`, PDF pp. 24–25 (printed pp. 23–24); exact curriculum ID `lebermetastasen`; route `/abdomen/leber/metastasen`.
 - Audience/outcome: radiology learners should distinguish the source's broad hypo-/hypervascular phase patterns and produce a concise, phase-aware lesion description without assigning a primary tumour from enhancement alone.
 - Chapters: (1) compare relative conspicuity across early arterial, portal venous and delayed phases; (2) compare hypo- and hypervascular patterns; (3) describe number, distribution, morphology and necrosis; self-check and take-home are embedded in `LessonReferenceShell`.
-- Visual plan: a code-native schematic compares the two qualitative time courses. It is explanatory, not a diagnostic image. Source CT case on PDF p.24 was visually inspected but not copied into this draft.
+- Visuals: a code-native schematic compares the two qualitative time courses and is explicitly labelled as teaching art. The two-panel CT case from PDF p.24 is included in the lesson with source-caption phase labels and a localized caption; see `public/educational/liver-metastases/image-provenance.json`.
 - Language baseline: German; English and Persian versions were drafted and aligned by semantic units (phase order, solitary-lesion caveat, pattern-not-primary principle, and caveat on diffusion restriction).
 
 ## Source coverage ledger
@@ -30,13 +30,13 @@
 
 - SRC: REVISE — pp.24–25 visually inspected and all lesson-relevant points above are dispositioned; exact clinical claims await independent scientific review.
 - EDU: self-review only — concise sequence, one central phase-comparison schematic, and a decision self-check are present; independent teaching review pending.
-- VIS: self-review only — schematic is original code-native art; actual source CT case inspected but not used; responsive/rendered inspection pending.
+- VIS: source CT case added, cropped free of the legacy caption strip, and labeled with source-supported phases; image aspect ratio and provenance are synchronized. Rendered inspection remains pending.
 - LNG: self-review only — DE/EN/FA semantic units aligned in source, but language-by-language rendered and RTL checks pending.
-- ASM: local self-check included; no global question or flashcard registry entry was added in this scoped task.
+- ASM: two exact-topic questions (one phase-pattern item and one broader focal-liver reasoning item) are available per language, with one phase-comparison flashcard and direct lesson links; larger assessment expansion remains open.
 - UX: BLOCKED — browser evidence was not captured.
-- REV: pending independent reviewer.
+- REV: first independent review requested a topic-specific visual, source CT case, and linked study practice. Delta reviews confirmed quiz registration/count, localized case labels, provenance, diagram description and direct flashcard link. The final image-dimension adjustment was statically tested; clinical review and browser evidence remain open.
 - Build: not run because the shared worktree may have concurrent `.next` activity; static checks only.
 
 ## Attribution / rights
 
-The source page images were inspected from the user-provided `Abdomen.pdf`. No diagnostic image was copied. The schematic was authored in the route code and is labelled as non-patient teaching art.
+The source page image was extracted from the user-provided `Abdomen.pdf`, PDF p.24 (printed p.23). The embedded legacy caption strip is cropped; the original two-panel case and caption identify arterial and portal-venous phases and an adenocarcinoma. Contributor/case ID was not legible in the provided PDF. The case is retained with a localized explanatory caption; no external ownership or license claim is made. The schematic was authored in route code and is labelled as non-patient teaching art.

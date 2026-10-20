@@ -1,0 +1,12 @@
+{
+  "asset": "/educational/liver-metastases/ct-case-p24.jpg",
+  "source": "User-provided Abdomen.pdf",
+  "pdfPage": 24,
+  "printedPage": 23,
+  "dimensions": "704x279",
+  "sourceCaptionSummary": "Liver metastases from an adenocarcinoma; arterial and portal-venous phases.",
+  "sourceCaptionPhases": ["arterial", "portal venous"],
+  "credit": "Extracted from the user-provided teaching PDF. Contributor or case identifier was not legible in the source copy.",
+  "rights": "User stated that figures in the supplied PDFs are authorized for reuse.",
+  "limitations": "The embedded legacy caption strip was cropped from the asset; its clinically relevant phase and case attribution is preserved in this record and the localized lesson caption. No external case identifier or license has been independently verified."
+}
