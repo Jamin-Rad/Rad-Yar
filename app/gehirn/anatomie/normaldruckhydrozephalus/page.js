@@ -219,6 +219,7 @@ export default function NormaldruckhydrozephalusPage() {
           </Section>
           <Section id="morphologie" title={c(NPH_LESSON.morphologie.title)} lead={c(NPH_LESSON.morphologie.lead)}>
             <Cards items={NPH_LESSON.morphologie.items} lang={lang} /><Callout label={c(NPH_LESSON.keyLabel)}>{c(NPH_LESSON.morphologie.key)}</Callout>
+            <p><small><a href={NPH_LESSON.morphologie.reference.url} target="_blank" rel="noopener noreferrer">{c(NPH_LESSON.morphologie.reference.label)}</a></small></p>
           </Section>
           <Section id="messungen" title={c(NPH_LESSON.messungen.title)} lead={c(NPH_LESSON.messungen.lead)}>
             <Table headers={NPH_LESSON.messungen.headers.map(c)} rows={rows(NPH_LESSON.messungen.rows)} /><Callout label={c(NPH_LESSON.caveLabel)} cave>{c(NPH_LESSON.messungen.cave)}</Callout>

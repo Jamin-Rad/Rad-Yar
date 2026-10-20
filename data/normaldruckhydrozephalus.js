@@ -3,7 +3,7 @@ const Q = (id, question, options, correct, explanation) => ({ id, question, opti
 const F = (id, category, front, answer, explanation) => ({ id, category, front, answer, explanation })
 
 export const NPH_LESSON = {
-  pdfSourcePages: [69,71], // user PDF page range; coverage still requires content comparison
+  pdfSourcePages: [69,71], // user PDF page range; see the source coverage ledger
 
   breadcrumb: L('Normaldruckhydrozephalus', 'Normal pressure hydrocephalus', 'هیدروسفالی فشار طبیعی'),
   title: L('Normaldruckhydrozephalus', 'Normal Pressure Hydrocephalus', 'هیدروسفالی فشار طبیعی'),
@@ -63,11 +63,13 @@ export const NPH_LESSON = {
     lead: L('Entscheidend ist die Disproportion zwischen erweiterten inneren und charakteristisch verteilten äußeren Liquorräumen.', 'The key is disproportion between enlarged ventricles and the characteristic distribution of external CSF spaces.', 'نکته کلیدی عدم تناسب بین بطن‌های گشاد و توزیع مشخص فضاهای خارجی CSF است.'),
     items: [
       { icon: '↔️', title: L('Ventrikulomegalie', 'Ventriculomegaly', 'بزرگی بطن‌ها'), text: L('Symmetrische Erweiterung der Seitenventrikel und des III. Ventrikels, häufig mit abgerundeten Frontalhörnern.', 'Symmetric enlargement of the lateral and third ventricles, often with rounded frontal horns.', 'اتساع متقارن بطن‌های جانبی و سوم، اغلب با شاخ‌های فرونتال گرد.') },
+      { icon: '↕️', title: L('Konfiguration des IV. Ventrikels', 'Fourth-ventricle configuration', 'پیکربندی بطن چهارم'), text: L('Der IV. Ventrikel kann normal weit bleiben, während Seitenventrikel und III. Ventrikel erweitert sind. Aquädukt und mögliche Abflussbehinderung im Gesamtbild prüfen; dieses Muster allein beweist kein NPH und schließt eine Obstruktion nicht aus.', 'The fourth ventricle may remain normal in size while the lateral and third ventricles are enlarged. Assess the aqueduct and possible outflow obstruction in context; this pattern alone does not establish NPH or exclude obstruction.', 'ممکن است بطن چهارم طبیعی بماند، در حالی که بطن‌های جانبی و سوم گشاد شده‌اند. آکوئداکت و احتمال انسداد مسیر خروج را در کل الگو ارزیابی کنید؛ این الگو به‌تنهایی NPH را ثابت نمی‌کند و انسداد را رد نمی‌کند.') },
       { icon: '🔒', title: L('Enge Hochkonvexität', 'Tight high convexity', 'تنگی تحدب فوقانی'), text: L('Enge hochparietale und parafalcine Sulci trotz Ventrikulomegalie.', 'Tight high-parietal and parafalcine sulci despite ventriculomegaly.', 'شیارهای پاریتال فوقانی و پارافالکس تنگ با وجود بزرگی بطن‌ها.') },
       { icon: '🌊', title: L('Weite Sylvische Fissuren', 'Enlarged Sylvian fissures', 'فیشورهای سیلوین گشاد'), text: L('Basale und Sylvische Liquorräume können prominent wirken; zusammen mit enger Konvexität ergibt sich DESH.', 'Basal and Sylvian CSF spaces may be prominent; with tight convexity this forms DESH.', 'فضاهای بازال و سیلوین ممکن است برجسته باشند؛ همراه با تحدب تنگ الگوی DESH می‌سازند.') },
       { icon: '⚪', title: L('Periventrikuläres Signal', 'Periventricular signal', 'سیگنال پیرابطنی'), text: L('„Polkappen“ können transependymalen Liquorfluss oder chronische Mikroangiopathie widerspiegeln.', 'Periventricular caps may reflect transependymal CSF flow or chronic small-vessel disease.', 'کلاهک‌های پیرابطنی می‌توانند ناشی از عبور ترانس‌اپاندیمال CSF یا میکروآنژیوپاتی باشند.') },
     ],
     key: L('DESH = Disproportionately Enlarged Subarachnoid-space Hydrocephalus: weite Sylvische Fissuren plus enge Hochkonvexität.', 'DESH combines enlarged Sylvian fissures with tight high-convexity sulci.', 'DESH ترکیب فیشورهای سیلوین گشاد و شیارهای تنگ تحدب فوقانی است.'),
+    reference: { label: L('Einordnung der Ventrikelkonfiguration: Kiefer & Unterberg, Dtsch Arztebl Int 2012.', 'Context for ventricular configuration: Kiefer & Unterberg, Dtsch Arztebl Int 2012.', 'برای تفسیر پیکربندی بطن‌ها: Kiefer و Unterberg، مجله Dtsch Arztebl Int در سال ۲۰۱۲.'), url: 'https://doi.org/10.3238/arztebl.2012.0015' },
   },
   messungen: {
     title: L('Messungen richtig anwenden', 'Using measurements correctly', 'کاربرد صحیح اندازه‌گیری‌ها'),
