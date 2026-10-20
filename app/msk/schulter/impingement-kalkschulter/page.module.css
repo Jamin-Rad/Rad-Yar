@@ -1,0 +1,12 @@
+.content { max-width: 960px; margin-inline: auto; color: #333447; line-height: 1.7; }
+.content section { margin: 1.6rem 0; }
+.content h2 { margin: 0 0 .55rem; color: #57245a; font: 800 clamp(1.2rem,2vw,1.6rem)/1.25 var(--font-newsreader,Georgia,serif); }
+.content h3 { margin: 1.1rem 0 .4rem; color: #0d7580; font-size: 1.12rem; }
+.content p { margin: .45rem 0 .8rem; }
+.lead { padding: 1rem 1.1rem; border-inline-start: 4px solid #38aeb1; background: #f3f9f9; border-radius: 8px; }
+.content figure { margin: 1rem auto; max-width: 670px; }
+.content figure img { display:block; width:100%; height:auto; border:1px solid #dddde5; border-radius:8px; }
+.content figcaption { margin-top:.45rem; color:#65687b; font-size:.88rem; }
+.content aside { margin: 1rem 0; padding: .8rem 1rem; border-inline-start: 4px solid #d97706; background:#fff6e9; border-radius:7px; }
+.content aside p { margin:.2rem 0 0; }
+.sources { border-top:1px solid #dddde5; padding-top:1rem; color:#65687b; font-size:.9rem; }

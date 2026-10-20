@@ -18,7 +18,7 @@ const copy = {
 const pick = (value, lang) => typeof value === 'string' ? value : value?.[lang] ?? value?.de ?? ''
 const CHAPTERS = ['start', 'content', 'self-check', 'take-home']
 
-export default function LessonReferenceShell({ lang = 'de', lessonId, title, diagram, goals, check, summary, copy: lessonCopy, quizHref, flashcardsHref, children }) {
+export default function LessonReferenceShell({ lang = 'de', lessonId, title, diagram, heroVisual, goals, check, summary, copy: lessonCopy, quizHref, flashcardsHref, children }) {
   const t = copy[lang] || copy.de
   const lessonGoals = goals || (lessonCopy?.subtitle || lessonCopy?.sub ? [lessonCopy.subtitle || lessonCopy.sub] : [])
   const lessonContentTitle = lessonCopy?.contentTitle || lessonCopy?.sections?.[0]?.[1] || lessonCopy?.toc || t.content
@@ -69,7 +69,7 @@ export default function LessonReferenceShell({ lang = 'de', lessonId, title, dia
     <InProgressBanner lang={lang} />
     <header className={styles.header}>
       <nav className={styles.breadcrumb} aria-label={lang === 'fa' ? 'مسیر صفحه' : 'Breadcrumb'}><Link href="/">{t.home}</Link><span aria-hidden="true">›</span><span>{t.subject}</span><span aria-hidden="true">›</span><strong>{pick(title, lang)}</strong></nav>
-      <LessonHero title={pick(title, lang)} lang={lang} visual={<ClinicalPatternDiagram variant={diagram} lang={lang} title={pick(title, lang)} />} visualCaption={pick(lessonCheck.diagramCaption, lang)} />
+      <LessonHero title={pick(title, lang)} lang={lang} visual={heroVisual || <ClinicalPatternDiagram variant={diagram} lang={lang} title={pick(title, lang)} />} visualCaption={pick(lessonCheck.diagramCaption, lang)} />
       <div className={styles.intro}><strong>{t.goals}</strong><ul>{lessonGoals.map((goal, index) => <li key={index}>{pick(goal, lang)}</li>)}</ul></div>
       <div className={styles.actions}>
         <button type="button" onClick={() => select('take-home')}>{t.summary} ↓</button>

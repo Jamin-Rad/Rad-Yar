@@ -1304,7 +1304,7 @@ export const CURRICULUM = [
         themen: [
           { id: 'rotatorenmanschette', title: { de: 'Rotatorenmanschette', en: 'Rotator Cuff', fa: 'روتاتور کاف' }, tags: ['MRT'], diff: 2, link: '/msk/schulter/rotatorenmanschette', flashcardLink: '/flashcards/rotatorenmanschette', ready: true, updatedAt: '2026-06-15' },
           { id: 'schulterinstabilitaet', title: { de: 'Schulterinstabilität / Labrumläsionen', en: 'Shoulder Instability / Labral Tears', fa: 'ناپایداری شانه / ضایعات لابروم' }, tags: ['MRT'], diff: 3 },
-          { id: 'impingement-kalkschulter', title: { de: 'Impingement-Syndrom & Kalkschulter', en: 'Impingement Syndrome & Calcific Tendinitis', fa: 'سندرم ایمپینجمنت و شانه کلسیفیه' }, tags: ['MRT','Rö'], diff: 2 },
+          { id: 'impingement-kalkschulter', title: { de: 'Impingement-Syndrom & Kalkschulter', en: 'Impingement Syndrome & Calcific Tendinitis', fa: 'سندرم ایمپینجمنت و شانه کلسیفیه' }, tags: ['MRT','Rö'], diff: 2, link: '/msk/schulter/impingement-kalkschulter', ready: true, inProgress: true },
           { id: 'bizepssehne-schulter', title: { de: 'Bizepssehne', en: 'Biceps Tendon', fa: 'تاندون بایسپس' }, tags: ['MRT'], diff: 2 },
           { id: 'bursitis-subacromial', title: { de: 'Bursitis subacromialis / subdeltoidea', en: 'Subacromial / Subdeltoid Bursitis', fa: 'بورسیت ساب‌آکرومیال / ساب‌دلتوئید' }, tags: ['MRT'], diff: 1 },
           { id: 'frozen-shoulder', title: { de: 'Adhäsive Kapsulitis (Frozen Shoulder)', en: 'Adhesive Capsulitis (Frozen Shoulder)', fa: 'کپسولیت چسبنده (شانه یخ‌زده)' }, tags: ['MRT'], diff: 2 },
