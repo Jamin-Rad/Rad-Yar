@@ -1,0 +1,18 @@
+.page{--lesson-accent:#67cbd8;--lesson-accent-strong:#245b69;--lesson-accent-soft:#e2f5f7;--lesson-secondary:#e4ba70;--lesson-secondary-strong:#72521d}
+.body{display:grid;gap:1rem}
+.body>p{margin:0;max-width:84ch;line-height:1.8}
+.body h3{margin:.7rem 0 0;line-height:1.5}
+.body ul,.summary{display:grid;gap:.55rem;line-height:1.75}
+.figure,.detailFigure{width:min(100%,480px);margin:.6rem auto 1rem;padding:10px;border:1px solid var(--line);border-radius:13px;background:var(--paper)}
+.figure img,.detailFigure img{display:block;width:100%;height:auto;max-height:590px;object-fit:contain;border-radius:8px}
+.detailFigure{width:min(100%,760px)}
+.detailFigure img{max-height:none}
+.figure figcaption,.detailFigure figcaption{margin-top:9px;color:var(--muted);font-size:.88rem;line-height:1.65}
+.note{margin:0;padding:1rem;border-inline-start:4px solid var(--lesson-secondary);border-radius:9px;background:color-mix(in srgb,var(--paper) 82%,var(--lesson-secondary));line-height:1.75}
+.note p{margin:.45rem 0 0}
+.decision{display:grid;gap:.8rem;padding:1rem;border:1px solid var(--line);border-radius:13px;background:color-mix(in srgb,var(--paper) 88%,var(--lesson-accent-soft))}
+.decision>p{margin:0;line-height:1.75}
+.decision fieldset{display:grid;gap:.65rem;margin:0;padding:1rem;border:1px solid var(--line);border-radius:10px}
+.decision label{display:flex;gap:.65rem;align-items:flex-start;padding:.7rem;border:1px solid var(--line);border-radius:8px;cursor:pointer;line-height:1.65}
+.decision input{margin-top:.45rem}
+.feedback{padding:.8rem;border-inline-start:4px solid var(--lesson-accent);background:var(--paper)}

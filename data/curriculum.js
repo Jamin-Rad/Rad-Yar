@@ -1234,7 +1234,7 @@ export const CURRICULUM = [
           { id: 'arthrose', title: { de: 'Arthrose (OA)', en: 'Osteoarthritis (OA)', fa: 'آرتروز (OA)' }, tags: ['Rö','MRT'], diff: 1 },
           { id: 'rheumatoide-arthritis', title: { de: 'Rheumatoide Arthritis (RA)', en: 'Rheumatoid Arthritis (RA)', fa: 'آرتریت روماتوئید (RA)' }, tags: ['Rö','MRT'], diff: 2 },
           { id: 'gicht', title: { de: 'Gicht', en: 'Gout', fa: 'نقرس' }, group: ['Kristallarthropathien'], tags: ['Rö','CT'], diff: 2 },
-          { id: 'chondrokalzinose', title: { de: 'Chondrokalzinose (CPPD)', en: 'Chondrocalcinosis (CPPD)', fa: 'کندروکلسینوز (CPPD)' }, group: ['Kristallarthropathien'], tags: ['Rö'], diff: 2 },
+          { id: 'chondrokalzinose', title: { de: 'Chondrokalzinose (CPPD)', en: 'Chondrocalcinosis (CPPD)', fa: 'کندروکلسینوز (CPPD)' }, group: ['Kristallarthropathien'], tags: ['Rö','MRT'], diff: 2, link: '/msk/knie/chondrokalzinose', inProgress: true, updatedAt: '2026-10-20' },
         ],
       },
       {

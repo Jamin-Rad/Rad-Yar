@@ -11,11 +11,10 @@ visually inspected. One crop from the page 53 flounce example is included with s
 
 The same PDF page also introduces meniscal calcification/chondrocalcinosis and
 notes that calcification can paradoxically increase PD signal and mimic a tear.
-That CPPD-specific finding is not added here: the curriculum has a separate
-`chondrokalzinose` topic but no corresponding authored route, and no route-level
-cross-reference is currently available. Keep it for that bounded CPPD lesson or
-a separately reviewed meniscal pitfall update; do not infer a tear from PD signal
-alone.
+This finding now has its own bounded DE/EN/FA lesson at
+`/msk/knie/chondrokalzinose`; see the [p.56 coverage ledger](chondrokalzinose-msk-p56.md).
+The separate curriculum topic links to that route. The meniscus addendum itself
+remains focused on flounce and extrusion, avoiding duplicated CPPD teaching.
 
 ## Evidence
 

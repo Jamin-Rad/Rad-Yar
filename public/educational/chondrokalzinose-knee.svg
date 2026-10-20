@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420">
+  <defs><linearGradient id="bone"><stop stop-color="#e7e9f0"/><stop offset="1" stop-color="#bac6d7"/></linearGradient><linearGradient id="meniscus" x2="0" y2="1"><stop stop-color="#6a7185"/><stop offset="1" stop-color="#34394b"/></linearGradient></defs>
+  <rect width="760" height="420" rx="32" fill="#111827"/>
+  <path d="M205 44c10 75 27 117 64 148 25 21 67 24 111 24 44 0 86-3 111-24 37-31 54-73 64-148-53 34-109 47-175 47S258 78 205 44Z" fill="url(#bone)"/>
+  <path d="M218 365c13-68 35-105 71-124 22-11 51-13 91-13s69 2 91 13c36 19 58 56 71 124-55-27-107-37-162-37s-107 10-162 37Z" fill="url(#bone)"/>
+  <path d="M198 251q82-52 182-18-19 35-82 42-57 3-100-24Z" fill="url(#meniscus)" stroke="#8e9bb2" stroke-width="5"/><path d="M380 233q100-34 182 18-43 27-100 24-63-7-82-42Z" fill="url(#meniscus)" stroke="#8e9bb2" stroke-width="5"/>
+  <path d="M235 261q50 19 111 9m72-9q50 19 111 9" fill="none" stroke="#67e8f9" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 13"/>
+</svg>
