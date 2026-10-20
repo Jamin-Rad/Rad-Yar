@@ -214,6 +214,7 @@ export default function TechnikGrundlagenStandardPage() {
         {section.id === 'mrcp-protokoll' ? <RetrievalCheck kind="mrcp" lang={lang}/> : null}
         {section.id === 'mrt-sicherheit' ? <MRIArtifactKnowledgeCheck lang={lang}/> : null}
         {section.id === 'ct' ? <><CtReconstructionActions lang={lang}/><HrctActions lang={lang}/><RetrievalCheck kind="ctPerfusion" lang={lang}/><RetrievalCheck kind="ctQuality" lang={lang}/></> : null}
+        {section.id === 'protokoll' ? <CtProtocolActions lang={lang}/> : null}
         {section.id === 'atom' ? <AtomKnowledgeCheck lang={lang}/> : null}
         {section.note?<aside className={styles.callout}><strong>{t(L('Quellenhinweis','Source limitation','محدودیت منبع'))}</strong><p>{t(section.note)}</p></aside>:null}
         {section.id === 'wirkung' ? <RetrievalCheck kind="effects" lang={lang}/> : null}
@@ -254,6 +255,21 @@ function HrctActions({ lang }) {
     <strong style={{ alignSelf: 'center' }}>{labels.title}</strong>
     <a href={`/ueben/quiz?fach=technik&n=1&themen=hrct-technik&from=${from}`}>{labels.quiz}</a>
     <a href={`/flashcards/hrct-technik?from=${from}`}>{labels.cards}</a>
+  </nav>
+}
+
+function CtProtocolActions({ lang }) {
+  const returnTo = lang === 'de' ? '/technik/grundlagen#protokoll' : `/technik/grundlagen?lang=${lang}#protokoll`
+  const from = encodeURIComponent(returnTo)
+  const labels = {
+    de: { title: 'CT-Phasen üben', quiz: 'MC-Frage zur Pankreasphase', cards: 'Fünf Lernkarten' },
+    en: { title: 'Practise CT phases', quiz: 'Pancreatic-phase MCQ', cards: 'Five flashcards' },
+    fa: { title: 'تمرین فازهای CT', quiz: 'سؤال فاز پانکراس', cards: 'پنج فلش‌کارت' },
+  }[lang]
+  return <nav aria-label={labels.title} style={{ display: 'flex', flexWrap: 'wrap', gap: 12, margin: '18px 0', padding: 14, border: '1px solid var(--border)', borderRadius: 14, background: 'var(--surface-soft)' }}>
+    <strong style={{ alignSelf: 'center' }}>{labels.title}</strong>
+    <a href={`/ueben/quiz?fach=technik&n=1&themen=ct-methodik-km-phasen&from=${from}`}>{labels.quiz}</a>
+    <a href={`/flashcards/ct-methodik-km-phasen?from=${from}`}>{labels.cards}</a>
   </nav>
 }
 
