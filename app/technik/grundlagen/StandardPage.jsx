@@ -16,6 +16,11 @@ const labelSet = {
 }
 
 const checks = {
+  liverProtocol: {
+    de: { title: 'Selbstcheck: Welche Phase beantwortet welche Frage?', question: 'Bei einer Leber-MRT zur Charakterisierung einer fokalen Läsion: Welche Zuordnung ist am besten?', options: ['DWI-Helligkeit allein beweist Restriktion; die hepatobiliäre Phase ist bei jedem Kontrastmittel nach 20 Minuten verfügbar.', 'T2, T1 In-/Opposed-Phase und DWI/ADC ergänzen die Gewebecharakterisierung; dynamische Phasen zeigen das Enhancement, und eine hepatobiliäre Phase setzt ein entsprechendes Kontrastmittel voraus.', 'MRCP und die dynamische arterielle Phase sind austauschbar.'], answer: 1, feedback: ['DWI immer mit ADC korrelieren; HBP hängt von einem hepatobiliären Mittel ab und hat keine universelle fixe Zeit.', 'Richtig. Jede Sequenzfamilie beantwortet eine andere Frage; genaue Auswahl und Zeitplanung bleiben indikations- und protokollabhängig.', 'MRCP stellt vor allem flüssigkeitsgefüllte Gallenwege dar und ersetzt keine dynamische Läsionscharakterisierung.'] },
+    en: { title: 'Self-check: which phase answers which question?', question: 'For liver MRI to characterise a focal lesion, which mapping is best?', options: ['DWI brightness alone proves restriction; every contrast agent provides a hepatobiliary phase at 20 minutes.', 'T2, T1 in-/opposed-phase and DWI/ADC complement tissue characterisation; dynamic phases show enhancement, and a hepatobiliary phase requires a suitable agent.', 'MRCP and the dynamic arterial phase are interchangeable.'], answer: 1, feedback: ['Always correlate DWI with ADC; HBP depends on a hepatobiliary agent and has no universal fixed timing.', 'Correct. Each sequence family answers a different question; exact selection and timing remain indication- and protocol-dependent.', 'MRCP mainly depicts fluid-containing bile ducts and does not replace dynamic lesion characterisation.'] },
+    fa: { title: 'خودآزمایی: هر فاز به کدام پرسش پاسخ می‌دهد؟', question: 'برای مشخصه‌یابی یک ضایعهٔ کانونی در MRI کبد، کدام تطبیق درست‌تر است؟', options: ['روشنایی DWI به‌تنهایی محدودیت انتشار را ثابت می‌کند؛ هر مادهٔ حاجب در ۲۰ دقیقه فاز کبدی‌صفراوی می‌دهد.', 'T2، T1 هم‌فاز/ناهم‌فاز و DWI/ADC در مشخصه‌یابی بافت مکمل‌اند؛ فازهای پویا enhancement را نشان می‌دهند و فاز کبدی‌صفراوی به مادهٔ مناسب نیاز دارد.', 'MRCP و فاز شریانی پویا قابل‌جایگزینی‌اند.'], answer: 1, feedback: ['DWI را همیشه با ADC تطبیق دهید؛ HBP به مادهٔ حاجب کبدی‌صفراوی وابسته است و زمان ثابت همگانی ندارد.', 'درست است. هر گروه توالی به پرسش متفاوتی پاسخ می‌دهد؛ انتخاب و زمان‌بندی دقیق به اندیکاسیون و پروتکل وابسته است.', 'MRCP عمدتاً مجاری صفراویِ پُر از مایع را نشان می‌دهد و جایگزین مشخصه‌یابی پویای ضایعه نیست.'] },
+  },
   ciss: {
     de: { title: 'Selbstcheck: Was zeigt das CISS-Kontrastmuster?', question: 'Eine dünnschichtige 3D-Steady-State-Sequenz zeigt hellen Liquor und darin dunklere Hirnnerven. Welche Aussage passt?', options: ['Das Muster unterstützt die anatomische Darstellung von Nerven im Liquorraum; es beweist allein keinen Tumor.', 'Die zwei phasenverschobenen Akquisitionen beseitigen Banding sicher und verhindern Bewegungsfehler.', 'CISS, DRIVE, bFFE und FIESTA sind identische Sequenzimplementierungen.'], answer: 0, feedback: ['Richtig. Das Kontrastmuster hilft, kleine Nerven am hellen Liquor abzugrenzen; eine Läsion wird damit nicht allein diagnostiziert.', 'Phasenzyklierung kann Banding reduzieren, garantiert aber keine Artefaktfreiheit; Bewegung zwischen Akquisitionen bleibt relevant.', 'Die Namen bezeichnen verwandte Anwendungen, aber keine nachweislich identischen Implementierungen.'] },
     en: { title: 'Self-check: what does the CISS contrast pattern show?', question: 'A thin-section 3D steady-state sequence shows bright CSF and darker cranial nerves within it. Which statement fits?', options: ['The pattern supports anatomical depiction of nerves in CSF; it does not prove a tumour by itself.', 'The two phase-shifted acquisitions reliably eliminate banding and prevent motion errors.', 'CISS, DRIVE, bFFE and FIESTA are identical sequence implementations.'], answer: 0, feedback: ['Correct. The contrast pattern helps separate small nerves from bright CSF; it does not diagnose a lesion by itself.', 'Phase cycling can reduce banding but does not guarantee artefact-free images; motion between acquisitions still matters.', 'These names refer to related applications, not demonstrably identical implementations.'] },
@@ -76,6 +81,25 @@ function RetrievalCheck({ kind, lang }) {
     <div style={{ display: 'grid', gap: 8 }}>{copy.options.map((option, index) => <button key={index} type="button" aria-pressed={answer === index} onClick={() => setAnswer(index)} style={{ padding: 12, border: '1px solid var(--border)', borderRadius: 10, background: 'var(--surface-soft)', color: 'var(--text)', textAlign: 'start', cursor: 'pointer' }}>{option}</button>)}</div>
     {answer !== null && <p role="status" style={{ marginBottom: 0 }}>{copy.feedback?.[answer] || (answer === copy.answer ? copy.correct : copy.retry)}</p>}
   </div>
+}
+
+function LiverProtocolFigure({ lang }) {
+  const copy = {
+    de: { title: 'Von der Frage zur Sequenzgruppe', steps: [['Native Bilder', 'Signal, Fett und Gewebe'], ['Dynamische T1-Phasen', 'Enhancement im Zeitverlauf'], ['Hepatobiliäre Phase', 'Nur mit passendem Kontrastmittel'], ['MRCP', 'Zusatzfrage: Gallenwege']], note: 'Konzeptübersicht, kein starres Scannerprotokoll.' },
+    en: { title: 'From clinical question to sequence group', steps: [['Baseline images', 'Signal, fat and tissue'], ['Dynamic T1 phases', 'Enhancement over time'], ['Hepatobiliary phase', 'Requires a suitable agent'], ['MRCP', 'Additional question: bile ducts']], note: 'Conceptual overview, not a fixed scanner protocol.' },
+    fa: { title: 'از پرسش بالینی تا گروه توالی', steps: [['تصاویر پایه', 'سیگنال، چربی و بافت'], ['فازهای پویای T1', 'تغییر enhancement در زمان'], ['فاز کبدی‌صفراوی', 'نیازمند مادهٔ حاجب مناسب'], ['MRCP', 'پرسش تکمیلی: مجاری صفراوی']], note: 'نمای مفهومی است، نه پروتکل ثابت دستگاه.' },
+  }[lang] || null
+  const t = copy || { title: 'Von der Frage zur Sequenzgruppe', steps: [['Native Bilder', 'Signal, Fett und Gewebe'], ['Dynamische T1-Phasen', 'Enhancement im Zeitverlauf'], ['Hepatobiliäre Phase', 'Nur mit passendem Kontrastmittel'], ['MRCP', 'Zusatzfrage: Gallenwege']], note: 'Konzeptübersicht, kein starres Scannerprotokoll.' }
+  return <figure aria-label={t.title} style={{ margin: '20px 0', padding: 16, border: '1px solid var(--border)', borderRadius: 16, background: 'var(--surface-soft)' }}>
+    <h3 style={{ marginTop: 0 }}>{t.title}</h3>
+    <div dir={lang === 'fa' ? 'rtl' : 'ltr'} style={{ display: 'flex', alignItems: 'stretch', justifyContent: 'center', flexWrap: 'wrap', gap: 10 }}>
+      {t.steps.map(([title, detail], index) => <div key={title} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div style={{ width: 190, minHeight: 86, padding: 12, border: '1px solid var(--border)', borderRadius: 12, background: 'var(--bg-card)' }}><strong>{title}</strong><div style={{ marginTop: 6, fontSize: '.92em' }}>{detail}</div></div>
+        {index < t.steps.length - 1 ? <span aria-hidden="true" style={{ color: 'var(--accent-strong)', fontSize: 22 }}>{lang === 'fa' ? '←' : '→'}</span> : null}
+      </div>)}
+    </div>
+    <figcaption style={{ marginTop: 10 }}>{t.note}</figcaption>
+  </figure>
 }
 
 function AtomKnowledgeCheck({ lang }) {
@@ -157,6 +181,7 @@ export default function TechnikGrundlagenStandardPage() {
         </section>)}
         {section.id === 'mrt' ? <><MRIKnowledgeCheck lang={lang}/><RetrievalCheck kind="dixon" lang={lang}/></> : null}
         {section.id === 'mrt-spezial' ? <RetrievalCheck kind="ciss" lang={lang}/> : null}
+        {section.id === 'leber-mrt-protokoll' ? <><LiverProtocolFigure lang={lang}/><RetrievalCheck kind="liverProtocol" lang={lang}/></> : null}
         {section.id === 'mrcp-protokoll' ? <RetrievalCheck kind="mrcp" lang={lang}/> : null}
         {section.id === 'mrt-sicherheit' ? <MRIArtifactKnowledgeCheck lang={lang}/> : null}
         {section.id === 'atom' ? <AtomKnowledgeCheck lang={lang}/> : null}
