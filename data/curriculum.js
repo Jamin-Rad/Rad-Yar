@@ -1381,7 +1381,7 @@ export const CURRICULUM = [
           },
           { id: 'seitenbaender-knie', title: { de: 'Seitenbänder', en: 'Collateral Ligaments', fa: 'رباط‌های جانبی زانو' }, tags: ['MRT'], diff: 2 },
           { id: 'knorpelschaeden-knie', title: { de: 'Knorpelschäden', en: 'Cartilage Lesions', fa: 'آسیب‌های غضروفی زانو' }, tags: ['MRT'], diff: 2 },
-          { id: 'patella-streckapparat', title: { de: 'Patella & Streckapparat', en: 'Patella & Extensor Mechanism', fa: 'پاتلا و مکانیسم اکستانسور' }, tags: ['MRT'], diff: 2 },
+          { id: 'patella-streckapparat', title: { de: 'Patella & Streckapparat', en: 'Patella & Extensor Mechanism', fa: 'پاتلا و مکانیسم اکستانسور' }, tags: ['MRT'], diff: 2, link: '/msk/knie/patella-streckapparat', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'hoffa-impingement', title: { de: 'Hoffa-Fettkörper-Impingement', en: "Hoffa's Fat Pad Impingement", fa: 'ایمپینجمنت بالشتک چربی هوفا' }, tags: ['MRT'], diff: 2 },
           { id: 'itb-syndrom', title: { de: 'Iliotibial-Band-Syndrom', en: 'Iliotibial Band Syndrome', fa: 'سندرم باند ایلیوتیبیال' }, tags: ['MRT'], diff: 1 },
           { id: 'bursitis-baker-zyste', title: { de: 'Bursitiden & Baker-Zyste', en: "Bursitis & Baker's Cyst", fa: 'بورسیت‌ها و کیست بیکر' }, tags: ['MRT','Sono'], diff: 1 },
