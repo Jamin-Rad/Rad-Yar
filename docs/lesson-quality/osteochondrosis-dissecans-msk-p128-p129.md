@@ -46,7 +46,7 @@
 ## Existing route and assessment audit
 
 - `data/curriculum.js` contains the exact topic ID `osteochondrosis-dissecans`, now linked to `/msk/osteochondrosen/osteochondrosis-dissecans` and kept `inProgress`.
-- Related sibling route exists for Morbus Perthes at `/msk/osteochondrosen/morbus-perthes`; no OCD route was found.
+- The OCD route is `/msk/osteochondrosen/osteochondrosis-dissecans`; its sibling Morbus Perthes route is `/msk/osteochondrosen/morbus-perthes`.
 - No OCD-specific MCQ or flashcard registration was found. The AVN lesson briefly lists OCD as a differential, but does not assess OCD staging or instability. This lesson adds one embedded three-option check; shared assessment banks were not changed.
 
 ## External verification and limits
