@@ -1,0 +1,122 @@
+.page {
+  color: var(--text, #172b3a);
+}
+
+.main {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 1080px;
+  margin: 2rem auto;
+  padding: 0 1rem 2rem;
+}
+
+.section {
+  min-width: 0;
+  padding: clamp(1rem, 2.4vw, 1.6rem);
+  border: 1px solid var(--border, #d7e1e8);
+  border-radius: 22px;
+  background: var(--bg-card, #fff);
+  box-shadow: 0 12px 32px var(--shadow-soft, rgb(20 45 65 / 8%));
+}
+
+.section > h2 {
+  margin: 0 0 1rem;
+  color: var(--text-strong, #17324a);
+  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  line-height: 1.25;
+}
+
+.lead {
+  margin: 0 0 1.1rem;
+  color: var(--text-soft, #526779);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 0.85rem;
+}
+
+.infoCard {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--border, #d7e1e8);
+  border-radius: 16px;
+  background: var(--surface-soft, #f4f8fa);
+}
+
+.infoCard h2,
+.infoCard h3 {
+  margin: 0 0 0.55rem;
+  color: var(--text-strong, #17324a);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.infoCard p {
+  margin: 0;
+  color: var(--text, #263d50);
+  line-height: 1.7;
+}
+
+.weberFigure {
+  margin: 0 0 1.1rem;
+  overflow: hidden;
+  border: 1px solid var(--border, #d7e1e8);
+  border-radius: 16px;
+  background: #080d12;
+}
+
+.weberFigure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.weberFigure figcaption {
+  padding: 0.75rem 0.9rem;
+  background: var(--surface-soft, #f4f8fa);
+  color: var(--text-soft, #526779);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.section ol {
+  display: grid;
+  gap: 0.55rem;
+  padding-inline-start: 1.5rem;
+  line-height: 1.7;
+}
+
+.callout {
+  margin: 1rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid #e8b65e;
+  border-radius: 16px;
+  background: color-mix(in srgb, #f2b84b 12%, var(--bg-card, #fff));
+  color: var(--text-strong, #493714);
+  line-height: 1.7;
+}
+
+.callout p { margin: 0; }
+
+.section small {
+  display: block;
+  color: var(--text-soft, #526779);
+  line-height: 1.6;
+}
+
+.section > p:has(a) { margin: 0.5rem 0 0; }
+
+.section a {
+  color: var(--link, #126c8e);
+  font-weight: 650;
+  text-underline-offset: 0.15em;
+}
+
+@media (max-width: 640px) {
+  .main { margin-block: 1rem; padding-inline: 0.75rem; }
+  .section { border-radius: 16px; }
+}

@@ -1,0 +1,20 @@
+{
+  "source": "Abdomen.pdf supplied by the user",
+  "pdfPage": 7,
+  "printedPage": 6,
+  "image": "source-mri-p7.jpg",
+  "figurePanels": [
+    {
+      "side": "left",
+      "sequence": "axial T2-weighted fat-suppressed",
+      "teachingPoint": "Bright daughter cysts and internal septa in a multilocular hepatic cyst"
+    },
+    {
+      "side": "right",
+      "sequence": "axial T1-weighted fat-suppressed post-contrast",
+      "teachingPoint": "Enhancement of wall/septa with non-enhancing cyst contents"
+    }
+  ],
+  "crop": "Figure pair cropped from the p.7 source slide; surrounding text and page watermark removed. Original image content retained.",
+  "reuseAuthorization": "The user explicitly authorized reuse of figures contained in the supplied PDFs."
+}
