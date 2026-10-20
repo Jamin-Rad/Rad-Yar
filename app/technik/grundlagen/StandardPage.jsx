@@ -208,7 +208,7 @@ export default function TechnikGrundlagenStandardPage() {
           {block.supplement?<aside className={styles.callout}><strong>{t(L('Zusatzbeziehung (nicht aus der PDF)','Supplemental relationship (not stated in the PDF)','رابطهٔ تکمیلی (در PDF نیامده است)'))}</strong><p>{t(block.supplement)}</p></aside>:null}
           {block.note?<aside className={styles.callout}><strong>{t(L('Einordnung und Grenzen','Interpretation and limitations','تفسیر و محدودیت‌ها'))}</strong><p>{t(block.note)}</p></aside>:null}
         </section>)}
-        {section.id === 'mrt' ? <><MRIKnowledgeCheck lang={lang}/><RetrievalCheck kind="dixon" lang={lang}/></> : null}
+        {section.id === 'mrt' ? <><MRIKnowledgeCheck lang={lang}/><RetrievalCheck kind="dixon" lang={lang}/><MriFundamentalsActions lang={lang}/></> : null}
         {section.id === 'mrt-spezial' ? <><RetrievalCheck kind="perfusion" lang={lang}/><RetrievalCheck kind="ciss" lang={lang}/><MraActions lang={lang}/></> : null}
         {section.id === 'leber-mrt-protokoll' ? <><LiverProtocolFigure lang={lang}/><RetrievalCheck kind="liverProtocol" lang={lang}/></> : null}
         {section.id === 'mrcp-protokoll' ? <RetrievalCheck kind="mrcp" lang={lang}/> : null}
@@ -285,5 +285,21 @@ function MraActions({ lang }) {
     <strong style={{ alignSelf: 'center' }}>{labels.title}</strong>
     <a href={`/ueben/quiz?fach=technik&n=1&themen=mrt-gefaessdarstellung&from=${from}`}>{labels.quiz}</a>
     <a href={`/flashcards/mrt-gefaessdarstellung?from=${from}`}>{labels.cards}</a>
+  </nav>
+}
+
+function MriFundamentalsActions({ lang }) {
+  const returnTo = lang === 'de' ? '/technik/grundlagen#mrt' : `/technik/grundlagen?lang=${lang}#mrt`
+  const from = encodeURIComponent(returnTo)
+  const labels = {
+    de: { title:'MRT-Grundlagen üben', quiz:'Zwei MC-Fragen', signal:'Signalbildung-Karten', quality:'Bildqualität-Karten' },
+    en: { title:'Practise MRI fundamentals', quiz:'Two MCQs', signal:'Signal-formation cards', quality:'Image-quality cards' },
+    fa: { title:'تمرین مبانی MRI', quiz:'دو سؤال چندگزینه‌ای', signal:'فلش‌کارت‌های تشکیل سیگنال', quality:'فلش‌کارت‌های کیفیت تصویر' },
+  }[lang] || { title:'MRT-Grundlagen üben', quiz:'Zwei MC-Fragen', signal:'Signalbildung-Karten', quality:'Bildqualität-Karten' }
+  return <nav aria-label={labels.title} style={{ display:'flex', flexWrap:'wrap', gap:12, margin:'18px 0', padding:14, border:'1px solid var(--border)', borderRadius:14, background:'var(--surface-soft)' }}>
+    <strong style={{ alignSelf:'center' }}>{labels.title}</strong>
+    <a href={`/ueben/quiz?fach=technik&n=2&themen=mrt-grundprinzip-signalbildung,mrt-bildqualitaet-artefakte-snr&from=${from}`}>{labels.quiz}</a>
+    <a href={`/flashcards/mrt-grundprinzip-signalbildung?from=${from}`}>{labels.signal}</a>
+    <a href={`/flashcards/mrt-bildqualitaet-artefakte-snr?from=${from}`}>{labels.quality}</a>
   </nav>
 }

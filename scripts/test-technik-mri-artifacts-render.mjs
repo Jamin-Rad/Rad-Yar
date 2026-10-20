@@ -6,6 +6,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import { TECHNIK_GRUNDLAGEN } from '../data/technikGrundlagenLesson.js'
 import { MRI_ARTIFACT_BLOCKS, MRI_ARTIFACT_QUESTIONS, MRI_ARTIFACT_TOPIC_GROUP, MRI_ARTIFACT_FLASHCARD_TOPIC, MRI_ARTIFACT_FLASHCARDS } from '../data/technikMriArtifacts.js'
+import { MRI_QUALITY_FLASHCARDS } from '../data/technikMRIFundamentalsLesson.js'
 import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
 import { FLASHCARD_TOPICS, FLASHCARDS, getCardsByTopic } from '../data/flashcards.js'
 
@@ -120,16 +121,16 @@ assert.ok(MCQ_TOPIC_GROUPS.some(group => group.topics.some(topic => topic.id ===
 assert.ok(MCQ_TOPIC_GROUPS.includes(MRI_ARTIFACT_TOPIC_GROUP))
 assert.ok(FLASHCARD_TOPICS.some(topic => topic.id === MRI_ARTIFACT_FLASHCARD_TOPIC.id))
 assert.equal(MRI_ARTIFACT_FLASHCARDS.length, 2)
-assert.equal(getCardsByTopic(MRI_ARTIFACT_FLASHCARD_TOPIC.id).length, 2)
+assert.equal(getCardsByTopic(MRI_ARTIFACT_FLASHCARD_TOPIC.id).length, MRI_ARTIFACT_FLASHCARDS.length + MRI_QUALITY_FLASHCARDS.length)
 for (const card of getCardsByTopic(MRI_ARTIFACT_FLASHCARD_TOPIC.id)) {
   assert.ok(langs.every(lang => card.front[lang]?.trim() && card.answer[lang]?.trim()), `${card.id}: translated front/answer`)
 }
-assert.ok(FLASHCARDS.every(card => card.topicId !== MRI_ARTIFACT_FLASHCARD_TOPIC.id || MRI_ARTIFACT_FLASHCARDS.some(registered => registered.id === card.id)))
+assert.ok(FLASHCARDS.every(card => card.topicId !== MRI_ARTIFACT_FLASHCARD_TOPIC.id || [...MRI_ARTIFACT_FLASHCARDS, ...MRI_QUALITY_FLASHCARDS].some(registered => registered.id === card.id)))
 
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
 const entry = curriculum.match(/\{\s*id: 'mrt-bildqualitaet-artefakte-snr',[\s\S]*?\n\s*\}/)?.[0]
 assert.ok(entry)
-assert.match(entry, /link: '\/technik\/grundlagen#mrt-sicherheit'/)
+assert.match(entry, /link: '\/technik\/grundlagen#mrt'/)
 assert.match(entry, /mcqLink: '\/ueben\/quiz\?fach=technik&n=1&themen=mrt-bildqualitaet-artefakte-snr'/)
 assert.match(entry, /flashcardLink: '\/flashcards\/mrt-bildqualitaet-artefakte-snr'/)
 assert.match(entry, /inProgress: true/)

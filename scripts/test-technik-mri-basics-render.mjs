@@ -5,13 +5,24 @@ import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import { TECHNIK_GRUNDLAGEN } from '../data/technikGrundlagenLesson.js'
+import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
+import { FLASHCARD_TOPICS, getCardsByTopic } from '../data/flashcards.js'
+import { MRI_SIGNAL_TOPIC, MRI_QUALITY_TOPIC, MRI_SIGNAL_BLOCK, MRI_QUALITY_BLOCK } from '../data/technikMRIFundamentalsLesson.js'
 
 const langs = ['de', 'en', 'fa']
 const mri = TECHNIK_GRUNDLAGEN.sections.find(section => section.id === 'mrt')
 assert.ok(mri)
-assert.deepEqual(mri.curriculumId, ['mrt-grundprinzip-signalbildung', 'mrt-bildqualitaet-artefakte-snr'])
-assert.equal(mri.teachingBlocks.length, 3)
-assert.deepEqual(mri.teachingBlocks.map(block => block.id), ['signal-formation', 'spatial-encoding', 'snr-tradeoffs'])
+assert.equal(mri.teachingBlocks.length, 5)
+assert.deepEqual(mri.teachingBlocks.map(block => block.id), ['mri-resonance-signal', 'mri-field-coil-shimming', 'signal-formation', 'spatial-encoding', 'snr-tradeoffs'])
+assert.ok(mri.curriculumId.includes(MRI_SIGNAL_TOPIC.id) && mri.curriculumId.includes(MRI_QUALITY_TOPIC.id))
+for (const [topicId, block] of [[MRI_SIGNAL_TOPIC.id, MRI_SIGNAL_BLOCK], [MRI_QUALITY_TOPIC.id, MRI_QUALITY_BLOCK]]) {
+  assert.ok(mri.teachingBlocks.includes(block))
+  assert.ok(MCQ_TOPIC_GROUPS.flatMap(group => group.topics).some(topic => topic.id === topicId), `${topicId}: MCQ topic registered`)
+  assert.ok(FLASHCARD_TOPICS.some(topic => topic.id === topicId), `${topicId}: card topic registered`)
+  assert.ok(getCardsByTopic(topicId).length > 0, `${topicId}: cards available`)
+  assert.ok(fs.existsSync(`public${block.visual.src}`), `${block.visual.src} exists`)
+  assert.equal(block.visual.legend.length, topicId === MRI_SIGNAL_TOPIC.id ? 4 : 3, `${topicId}: localized numbered legend`)
+}
 
 function inspect(value, path = 'mri') {
   if (!value || typeof value !== 'object') return
@@ -26,14 +37,37 @@ function inspect(value, path = 'mri') {
   for (const [key, child] of Object.entries(value)) inspect(child, `${path}.${key}`)
 }
 inspect(mri)
-assert.match(mri.teachingBlocks[0].rows[0][1].en, /63%/)
-assert.match(mri.teachingBlocks[0].rows[1][1].en, /37%/)
-assert.match(mri.teachingBlocks[1].rows[2][1].en, /k-space/)
-assert.match(mri.teachingBlocks[2].rows[1][1].en, /square root/)
-assert.match(mri.teachingBlocks[2].supplement.en, /Supplement to the PDF/)
-assert.match(mri.teachingBlocks[2].supplement.en, /more averages increase SNR and scan time/)
-assert.equal(mri.teachingBlocks[2].references[0].href, 'https://doi.org/10.1002/mrm.1910360327')
+assert.match(mri.teachingBlocks[2].rows[0][1].en, /63%/)
+assert.match(mri.teachingBlocks[2].rows[1][1].en, /37%/)
+assert.match(mri.teachingBlocks[3].rows[2][1].en, /k-space/)
+assert.match(mri.teachingBlocks[4].rows[1][1].en, /square root/)
+assert.match(mri.teachingBlocks[4].supplement.en, /Supplement to the PDF/)
+assert.match(mri.teachingBlocks[4].supplement.en, /more averages increase SNR and scan time/)
+assert.equal(mri.teachingBlocks[4].references[0].href, 'https://doi.org/10.1002/mrm.1910360327')
 for (const block of mri.teachingBlocks) assert.ok(fs.existsSync(`public${block.visual.src}`), `${block.visual.src} must exist`)
+assert.match(MRI_SIGNAL_BLOCK.rows[0][1].en, /Larmor frequency/)
+assert.match(MRI_SIGNAL_BLOCK.rows[1][1].en, /brings spins into phase/)
+for (const lang of langs) {
+  const afterRf = MRI_SIGNAL_BLOCK.rows[2][1][lang]
+  assert.match(afterRf, lang === 'de' ? /Zeitverläufe unterscheiden sich/ : lang === 'en' ? /time courses differ/ : /روند زمانی آن‌ها با نوع بافت تفاوت دارد/)
+  assert.doesNotMatch(afterRf, /already shown|already explained|bereits erklärt|پیش‌تر آمده/)
+}
+assert.match(MRI_QUALITY_BLOCK.rows[2][1].en, /sensitivity region/)
+assert.match(MRI_QUALITY_BLOCK.rows[3][1].en, /compensates for B₀ deviations/)
+for (const lang of langs) {
+  for (const [topicId, stem] of [[MRI_SIGNAL_TOPIC.id, 'mrt-signal'], [MRI_QUALITY_TOPIC.id, 'mrt-quality']]) {
+    const question = QUESTION_BANK[lang].find(item => item.id.startsWith(`${stem}-${lang}-`))
+    assert.ok(question, `${lang}: ${topicId} MCQ registered`)
+    assert.equal(question.correct, 'A')
+    assert.equal(question.options.length, 4)
+    assert.deepEqual(Object.keys(question.wrongExplanations).sort(), ['B','C','D'])
+    for (const explanation of Object.values(question.wrongExplanations)) assert.ok(explanation.length > 45)
+  }
+  for (const topicId of [MRI_SIGNAL_TOPIC.id, MRI_QUALITY_TOPIC.id]) {
+    const cards = getCardsByTopic(topicId)
+    assert.ok(cards.every(card => card.front[lang] && card.answer[lang]), `${lang}: ${topicId} cards localized`)
+  }
+}
 
 const require = createRequire(import.meta.url)
 let activeLang = 'de'
@@ -66,9 +100,14 @@ for (const lang of langs) {
   activeLang = lang
   const html = renderToStaticMarkup(React.createElement(Page))
   assert.ok(html.includes(`lang="${lang}"`))
-  assert.ok(html.includes(mri.teachingBlocks[0].title[lang]))
-  assert.ok(html.includes(mri.teachingBlocks[1].title[lang]))
-  assert.ok(html.includes(mri.teachingBlocks[2].title[lang]))
+  for (const block of mri.teachingBlocks) assert.ok(html.includes(block.title[lang]), `${lang}: rendered ${block.id}`)
+  const signalBlockAt = html.indexOf(MRI_SIGNAL_BLOCK.title[lang])
+  const qualityBlockAt = html.indexOf(MRI_QUALITY_BLOCK.title[lang])
+  const relaxationBlockAt = html.indexOf(mri.teachingBlocks[2].title[lang])
+  assert.ok(signalBlockAt >= 0 && qualityBlockAt > signalBlockAt && relaxationBlockAt > qualityBlockAt, `${lang}: rendered order matches the ledger`)
+  assert.ok(html.includes(MRI_SIGNAL_BLOCK.visual.src) && html.includes(MRI_SIGNAL_BLOCK.visual.alt[lang]))
+  assert.ok(html.includes(MRI_QUALITY_BLOCK.visual.src) && html.includes(MRI_QUALITY_BLOCK.visual.alt[lang]))
+  for (const key of [...MRI_SIGNAL_BLOCK.visual.legend, ...MRI_QUALITY_BLOCK.visual.legend]) assert.ok(html.includes(key[lang]), `${lang}: localized visual key`)
   assert.ok(html.includes('/technik/mri-signal-encoding.svg'))
   assert.ok(html.includes('/technik/mri-snr-tradeoffs.svg'))
   assert.ok(html.includes(lang === 'fa' ? 'خودآزمایی: کدگذاری مکانی و SNR' : lang === 'en' ? 'Self-check: spatial encoding and SNR' : 'Selbstcheck: Ortskodierung und SNR'))
@@ -76,6 +115,11 @@ for (const lang of langs) {
   assert.ok(html.includes(lang === 'fa' ? 'منبع:' : lang === 'en' ? 'Source:' : 'Quelle:'))
   assert.ok(html.includes('role="status"') === false, 'feedback is hidden until a learner selects an answer')
   assert.ok(html.includes(lang === 'fa' ? '۳: پیکسل/وکسل کوچک‌تر' : lang === 'en' ? '3: Smaller pixels/voxels' : '3: Kleinere Pixel/Voxel'))
+  assert.ok(html.includes(lang === 'fa' ? 'تمرین مبانی MRI' : lang === 'en' ? 'Practise MRI fundamentals' : 'MRT-Grundlagen üben'))
+  const from = lang === 'de' ? '%2Ftechnik%2Fgrundlagen%23mrt' : `%2Ftechnik%2Fgrundlagen%3Flang%3D${lang}%23mrt`
+  assert.ok(html.includes(`themen=mrt-grundprinzip-signalbildung,mrt-bildqualitaet-artefakte-snr&amp;from=${from}`), `${lang}: linked dual-topic quiz returns to MRI section`)
+  assert.ok(html.includes(`/flashcards/mrt-grundprinzip-signalbildung?from=${from}`), `${lang}: signal cards return to MRI section`)
+  assert.ok(html.includes(`/flashcards/mrt-bildqualitaet-artefakte-snr?from=${from}`), `${lang}: quality cards return to MRI section`)
   assert.ok(html.includes('https://doi.org/10.1002/mrm.1910360327'))
   assert.ok(html.includes(lang === 'fa' ? 'رابطهٔ تکمیلی (در PDF نیامده است)' : lang === 'en' ? 'Supplemental relationship (not stated in the PDF)' : 'Zusatzbeziehung (nicht aus der PDF)'))
   assert.ok(html.includes(lang === 'fa' ? 'منبع تکمیلی:' : lang === 'en' ? 'Supplemental source:' : 'Ergänzende Quelle:'))
@@ -83,15 +127,23 @@ for (const lang of langs) {
 }
 
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
-for (const id of mri.curriculumId) {
+for (const id of [MRI_SIGNAL_TOPIC.id, MRI_QUALITY_TOPIC.id]) {
   const entry = curriculum.match(new RegExp(`\\{\\s*id: '${id}',[\\s\\S]*?\\n\\s*\\}`))?.[0]
   assert.ok(entry, `curriculum entry ${id} must exist`)
   assert.match(entry, /link: '\/technik\/grundlagen#mrt'/, `${id} must link to the MRI section`)
   assert.match(entry, /inProgress: true/, `${id} must remain in progress`)
+  assert.match(entry, new RegExp(`mcqLink: '\\/ueben\\/quiz\\?fach=technik&n=1&themen=${id}'`), `${id} must link its MCQ`)
+  assert.match(entry, new RegExp(`flashcardLink: '\\/flashcards\\/${id}'`), `${id} must link its cards`)
 }
-for (const asset of ['public/technik/mri-signal-encoding.svg', 'public/technik/mri-snr-tradeoffs.svg']) {
+for (const asset of ['public/technik/mri-signal-encoding.svg', 'public/technik/mri-snr-tradeoffs.svg', 'public/technik/mri-resonance-signal.svg', 'public/technik/mri-field-shimming.svg']) {
   assert.match(fs.readFileSync(asset, 'utf8'), /<svg/)
 }
+const resonanceSvg = fs.readFileSync('public/technik/mri-resonance-signal.svg', 'utf8')
+assert.match(resonanceSvg, /id="coherent-vectors" aria-label="Phase-coherent transverse vectors aligned in one direction"/)
+const vectorLines = [...resonanceSvg.matchAll(/<line class="coherent-vector" x1="([\d.]+)" y1="([\d.]+)" x2="([\d.]+)" y2="([\d.]+)"\/>/g)]
+assert.ok(vectorLines.length >= 4, 'coherence panel has multiple vectors')
+const vectorDeltas = vectorLines.map(([, x1, y1, x2, y2]) => [Number(x2) - Number(x1), Number(y2) - Number(y1)])
+assert.ok(vectorDeltas.every(([dx, dy]) => dx === 0 && dy === vectorDeltas[0][1] && dy < 0), 'coherent vectors point in the same direction')
 const routeSource = fs.readFileSync('app/technik/grundlagen/StandardPage.jsx', 'utf8')
 assert.match(routeSource, /function MRIKnowledgeCheck/)
 assert.match(routeSource, /answer === copy\.answer \? copy\.correct : copy\.retry/)
