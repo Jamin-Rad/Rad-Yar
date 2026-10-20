@@ -35,7 +35,7 @@ const ITEMS = [
       L('Bewegung des Herdes zwischen zwei Schichten', 'Movement of the lesion between two slices', 'حرکت ضایعه بین دو برش'),
       L('Immer vollständige Füllung in der arteriellen Phase', 'Always complete filling in the arterial phase', 'همیشه پرشدن کامل در فاز شریانی'),
       L('Zunehmende Kontrastfüllung vom Rand zur Mitte', 'Progressive contrast filling from the edge to the centre', 'پرشدن تدریجی با کنتراست از محیط به مرکز'),
-    ], correct: 'D', explanation: L('Zentripetal bedeutet von außen nach innen. Die Geschwindigkeit variiert; besonders große Hämangiome können auch spät unvollständig gefüllt bleiben.', 'Centripetal means from the outside inward. Filling speed varies; large haemangiomas in particular may remain incompletely filled even on delayed images.', 'زنتریپتال یعنی از خارج به داخل. سرعت پرشدن متغیر است؛ به‌ویژه همانژیوم‌های بزرگ ممکن است حتی در فاز تأخیری کامل پُر نشوند.'),
+    ], correct: 'D', explanation: L('Zentripetal bedeutet von außen nach innen. Die Geschwindigkeit variiert; besonders große Hämangiome können auch spät unvollständig gefüllt bleiben.', 'Centripetal means from the outside inward. Filling speed varies; large haemangiomas in particular may remain incompletely filled even on delayed images.', 'مرکزگرا، یعنی پرشدن از محیط به‌سمت مرکز. سرعت پرشدن متغیر است؛ به‌ویژه همانژیوم‌های بزرگ ممکن است حتی در تصاویر تأخیری هم کامل پُر نشوند.'),
   },
   {
     question: L('Welche MRT-Konstellation unterstützt ein klassisches Hämangiom am stärksten?', 'Which MRI constellation most strongly supports a classic haemangioma?', 'کدام مجموعه یافته MRI بیشترین حمایت را از همانژیوم تیپیک می‌کند؟'),

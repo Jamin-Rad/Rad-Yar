@@ -1,5 +1,5 @@
-// Pilot source: user-supplied Word screenshot and extracted text, not a PDF file.
-// Source reconciliation and independent verification are recorded in docs/lesson-quality.
+// Primary coverage source: user-supplied Abdomen.pdf, physical pp. 8–10.
+// The first draft used the earlier Word screenshot; the current source mapping and review evidence are in docs/lesson-quality/hemangioma-pilot.md.
 const L = (de, en, fa) => ({ de, en, fa })
 
 export const HEMANGIOMA_CHAPTERS = [
@@ -37,7 +37,7 @@ export const HEMANGIOMA_CHAPTERS = [
     blocks: [
       { type: 'table', headers: [L('Sequenz', 'Sequence', 'سکانس'), L('Worauf achten?', 'What to look for', 'به چه چیزی توجه کنید؟')], rows: [
         [L('T1 nativ', 'Unenhanced T1', 'T1 بدون کنتراست'), L('Meist hypo- bis isointens; allein wenig spezifisch.', 'Usually hypo- to isointense; nonspecific on its own.', 'معمولاً کم‌سیگنال تا هم‌سیگنال؛ به‌تنهایی غیراختصاصی است.')],
-        [L('T2', 'T2', 'T2'), L('Typisch sehr signalreich: Light-Bulb-Zeichen. Kleine Läsionen oft homogen, große durch Thromben oder Fibrose heterogen.', 'Typically markedly bright: the light-bulb sign. Small lesions are often homogeneous; thrombus or fibrosis may make larger lesions heterogeneous.', 'به‌طور تیپیک بسیار پُرسیگنال: علامت لامپ روشن. ضایعات کوچک اغلب همگن‌اند؛ ترومبوز یا فیبروز می‌تواند ضایعات بزرگ‌تر را ناهمگن کند.')],
+        [L('T2', 'T2', 'T2'), L('Typisch sehr signalreich, oft sogar heller als die Galle: Light-Bulb-Zeichen. Kleine Läsionen oft homogen, große durch Thromben oder Fibrose heterogen.', 'Typically markedly bright, often even brighter than bile: the light-bulb sign. Small lesions are often homogeneous; thrombus or fibrosis may make larger lesions heterogeneous.', 'به‌طور تیپیک بسیار پُرسیگنال و گاهی حتی روشن‌تر از صفرا: علامت لامپ روشن. ضایعات کوچک اغلب همگن‌اند؛ ترومبوز یا فیبروز می‌تواند ضایعات بزرگ‌تر را ناهمگن کند.')],
         [L('DWI + ADC', 'DWI + ADC', 'DWI + ADC'), L('DWI kann hell sein; ohne korrespondierend niedrigen ADC spricht das für T2-shine-through.', 'DWI may be bright; without a corresponding low ADC, this supports T2 shine-through.', 'DWI می‌تواند روشن باشد؛ بدون کاهش متناظر ADC، این الگو به نفع T2 shine-through است.')],
         [L('T1 dynamisch', 'Dynamic T1', 'T1 دینامیک'), L('Wie im CT: periphere Knoten, zentripetale Auffüllung und persistierende blutpoolähnliche Anreicherung.', 'As on CT: peripheral nodules, centripetal fill-in and persistent blood-pool-like enhancement.', 'مانند CT: ندول‌های محیطی، پرشدن به‌سمت مرکز و ماندگاری جذب شبیه مخزن خون.')],
       ] },

@@ -23,9 +23,9 @@ const TOPICS = [
   },
   {
     key: 'haemangiom',
-    href: '/ueben/quiz?fach=abdomen&n=10&themen=haemangiom',
+    href: '/ueben/quiz?fach=abdomen&n=8&themen=haemangiom',
     icon: '🟢', iconImage: '/fach/abdomen.png', color: '#10b981', available: true,
-    count: { de: '10 Fragen', en: '10 Questions', fa: '۱۰ سوال' },
+    count: { de: '8 Fragen', en: '8 Questions', fa: '۸ سؤال' },
     name: { de: 'Leber · Hämangiome', en: 'Liver · Haemangiomas', fa: 'کبد · همانژیوم' },
     desc: { de: 'Sono · CT · MRT · DWI · atypische Formen', en: 'Ultrasound · CT · MRI · DWI · atypical forms', fa: 'سونوگرافی · CT · MRI · DWI · فرم آتیپیک' },
   },
