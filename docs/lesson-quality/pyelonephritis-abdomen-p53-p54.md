@@ -35,6 +35,7 @@ Learners should be able to describe focal renal parenchymal hypoenhancement, map
 ## Unresolved / verification limits
 
 - The PDF contains no rID, contributor, or explicit sequence metadata for either image; none is asserted.
+- Curriculum ID `nierenabszess` links to `/abdomen/niere/pyelonephritis#complications` with `inProgress: true`. The source supports only the bounded complication mention on physical p.53 / printed p.52; this does not claim that the PDF provides a standalone renal abscess lesson.
 - PDF image examples support pattern teaching only and cannot establish clinical infection alone.
 - Automated SSR/source/localization checks do not establish clinical correctness, browser behavior, or Dr. Zia's scientific approval.
 - EAU imaging statements were checked against the official 2026 guideline. Treatment and antimicrobial recommendations are deliberately omitted.

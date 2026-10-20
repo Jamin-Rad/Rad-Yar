@@ -47,6 +47,7 @@ const Page = require(bundle).default
 const { PYELONEPHRITIS_LESSON: lesson } = require(path.join(root, 'data/pyelonephritisLesson.js'))
 const curriculum = fs.readFileSync(path.join(root, 'data/curriculum.js'), 'utf8')
 assert.match(curriculum, /id: 'pyelonephritis'[^\n]*link: '\/abdomen\/niere\/pyelonephritis'[^\n]*inProgress: true/, 'exact curriculum id links to route with inProgress status')
+assert.match(curriculum, /id: 'nierenabszess'[^\n]*link: '\/abdomen\/niere\/pyelonephritis#complications'[^\n]*inProgress: true/, 'exact renal abscess curriculum id links to the existing complications section with inProgress status')
 
 for (const lang of ['de', 'en', 'fa']) {
   globalThis.__testLang = lang
@@ -88,6 +89,7 @@ assert.match(route, /<ParenchymaSchematic lang=\{lang\}\/>/, 'pattern schematic 
 assert.doesNotMatch(route, /Befund\s*&\s*Selbsttest/, 'no unrelated chapter title')
 const ledger = fs.readFileSync(path.join(root, 'docs/lesson-quality/pyelonephritis-abdomen-p53-p54.md'), 'utf8')
 for (const mapping of ['physical p.53 / printed p.52', 'physical p.54 / printed p.53', 'Gerota fascia', 'No rID, contributor or sequence metadata']) assert.ok(ledger.includes(mapping), `ledger includes ${mapping}`)
+assert.match(ledger, /Renal\/perirenal abscess[^\n]*Abdomen\.pdf, physical p\.53 \/ printed p\.52[^\n]*Section 3/, 'renal abscess is bounded to the source-supported complication coverage on p.53')
 assert.match(lesson.sections[2].implication.en, /48–72 hours/)
 for (const asset of ['public/niere/pyelonephritis-ct-pdf-p53.png', 'public/niere/pyelonephritis-emphysematous-ct-pdf-p54.png', 'public/educational/pyelonephritis/hero.svg']) assert.ok(fs.existsSync(path.join(root, asset)), `asset exists: ${asset}`)
 console.log('Pyelonephritis p53–54 SSR/source/localization checks PASS for DE/EN/FA and RTL. Browser and clinical approval remain pending.')
