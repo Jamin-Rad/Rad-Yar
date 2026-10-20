@@ -1330,6 +1330,7 @@ export const CURRICULUM = [
         themen: [
           { id: 'tfcc-laesionen', title: { de: 'TFCC-Läsionen', en: 'TFCC Lesions', fa: 'ضایعات TFCC' }, tags: ['MRT'], diff: 3 },
           { id: 'bandverletzungen-handgelenk', title: { de: 'Bandverletzungen', en: 'Ligament Injuries', fa: 'آسیب‌های رباطی مچ دست' }, tags: ['MRT'], diff: 2 },
+          { id: 'bandverletzungen-daumen', title: { de: 'Bandverletzungen am Daumen', en: 'Thumb Ligament Injuries', fa: 'آسیب‌های رباطی شست' }, tags: ['Rö','MRT'], diff: 2, link: '/msk/trauma/ulnares-kollateralband-daumen', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'morbus-kienboeck', title: { de: 'Morbus Kienböck (AVN des Lunatums)', en: "Kienböck's Disease (AVN of the Lunate)", fa: 'بیماری کینبک (AVN لونیت)' }, tags: ['Rö','MRT'], diff: 2 },
           { id: 'sehnenpathologien-hand', title: { de: 'Sehnenpathologien', en: 'Tendon Pathologies', fa: 'پاتولوژی‌های تاندونی دست' }, tags: ['MRT','Sono'], diff: 2 },
           { id: 'karpaltunnelsyndrom', title: { de: 'Karpaltunnelsyndrom', en: 'Carpal Tunnel Syndrome', fa: 'سندرم تونل کارپال' }, tags: ['MRT','Sono'], diff: 1 },
