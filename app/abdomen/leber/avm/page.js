@@ -2,6 +2,8 @@
 
 import { useMemo, useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import LessonHero from '@/components/LessonHero'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
@@ -14,8 +16,7 @@ const CONTENT = {
     "breadcrumbAbdomen": "Abdomen",
     "breadcrumbCurrent": "Leber · AVM",
     "title": "Arteriovenöse Malformation (AVM) der Leber",
-    "subtitle": "Shunt-Typen, Early-venous-filling-Zeichen und HHT-assoziierte Lebermanifestation in Doppler, CT und MRT",
-    "sourceLabel": "Dr. Zia",
+    "subtitle": "",
     "actionMcq": "MCQ",
     "actionFlash": "Flashcards",
     "keyLabel": "Merke",
@@ -28,20 +29,15 @@ const CONTENT = {
       { "id": "hht", "label": "HHT & Leber", "icon": "🩸" },
       { "id": "takehome", "label": "Take home message", "icon": "💡" }
     ],
-    "heroCards": [
-      { "value": "Arterioportal", "label": "häufigster Shunt-Typ", "text": "A. hepatica → Pfortaderast" },
-      { "value": "Early venous filling", "label": "Schlüsselzeichen", "text": "vorzeitige Venenopazifikation arteriell" },
-      { "value": "HHT", "label": "wichtigste kongenitale Ursache", "text": "Morbus Osler-Weber-Rendu" }
-    ],
     "basics": {
       "title": "Klinische Grundlagen",
       "lead": "Eine arteriovenöse Malformation (AVM) der Leber ist eine abnorme direkte Verbindung zwischen einer Arterie und einem venösen Gefäß ohne zwischengeschaltetes Kapillarbett. Dadurch entsteht ein Hochfluss-Shunt mit niedrigem Widerstand.",
       "items": [
         { "title": "Definition", "text": "Direkte AV-Verbindung ohne Kapillarbett mit Hochfluss-Niedrigwiderstand-Charakteristik." },
-        { "title": "Einteilung", "text": "Arterioportal (häufigster Typ, A. hepatica–Pfortaderast), arteriovenös (A. hepatica–Lebervene) und portosystemisch (Pfortader–Lebervene)." },
+        { "title": "Einteilung", "text": "Arterioportal (A. hepatica–Pfortaderast), arteriovenös (A. hepatica–Lebervene) und portosystemisch (Pfortader–Lebervene)." },
         { "title": "Ätiologie", "text": "Kongenital (v. a. HHT/Morbus Osler-Weber-Rendu) oder erworben (iatrogen nach Biopsie/TIPS, traumatisch, tumor- oder zirrhoseassoziiert)." }
       ],
-      "key": "Eine AVM ist eine direkte AV-Kurzschlussverbindung ohne Kapillarbett. Arterioportale Shunts sind am häufigsten, HHT ist die wichtigste kongenitale Ursache multipler Shunts."
+      "key": "Eine AVM ist eine direkte AV-Kurzschlussverbindung ohne Kapillarbett. HHT kann multiple hepatische Shunts verursachen."
     },
     "sono": {
       "title": "Sonographie & Doppler",
@@ -63,7 +59,7 @@ const CONTENT = {
         ["Nativ", "meist unauffällig, Läsion selbst oft nicht abgrenzbar"],
         ["Früharteriell", "Early venous filling sign: vorzeitige Kontrastierung der drainierenden Lebervene oder Pfortader"],
         ["Periläsional arteriell", "keilförmige transiente Hyperperfusion (THAD/THID)"],
-        ["Portalvenös/spät", "rasche Angleichung, kein persistierendes Wash-out wie bei hypervaskulären Tumoren"]
+        ["Portalvenös/spät", "Phasenverlauf fallbezogen beurteilen; die PDF-Montage erlaubt keine sichere Zuordnung."]
       ],
       "irisTitle": "Early venous filling statt Läsionsfüllung",
       "irisText": "Im Gegensatz zu hypervaskulären Tumoren wie FNH oder HCC steht bei der AVM nicht die Anreicherung einer Raumforderung im Vordergrund, sondern die vorzeitige arterielle Opazifikation des venösen Abflussgefäßes – das Early venous filling sign.",
@@ -75,9 +71,10 @@ const CONTENT = {
       "tableHeaders": ["Sequenz", "Typischer Befund", "Praktische Bedeutung"],
       "tableRows": [
         ["T1/T2", "serpiginöse, signalfreie Strukturen (Flow voids)", "Hinweis auf dilatierte, schnell durchflossene Gefäße"],
+        ["DWI (PDF-Fall)", "als normal beschrieben", "Einzelfallangabe; nicht als Ausschlussregel verallgemeinern"],
         ["T1 C+ arteriell", "Early venous filling sign der drainierenden Vene", "Schlüsselbefund, analog zur CT"],
         ["Periläsional arteriell", "THAD/THID – transiente Hyperintensität", "kann hypervaskuläre Läsion imitieren"],
-        ["Portalvenös/spät", "rasche Angleichung an das Leberparenchym", "kein relevantes Wash-out"]
+        ["Portalvenös/spät (PDF-Fall)", "früharterielle Anreicherung, danach Wash-out laut PDF", "Zielstruktur und Phasenzuordnung in der Abbildung unklar"]
       ],
       "lightBulbTitle": "Flow voids als Leitbefund",
       "lightBulbText": "Schnell fließendes Blut erzeugt in T1- und T2-gewichteten Sequenzen signalfreie, serpiginöse Strukturen (Flow voids) – ein direkter Hinweis auf dilatierte, hochflussige Gefäße im Bereich der AVM.",
@@ -103,7 +100,7 @@ const CONTENT = {
       "lead": "Die wichtigsten Punkte für die Befundung.",
       "items": [
         { "title": "Definition", "text": "Abnorme direkte AV-Verbindung ohne Kapillarbett mit Hochfluss-Niedrigwiderstand-Charakteristik." },
-        { "title": "Häufigster Typ", "text": "Arterioportale Shunts (A. hepatica–Pfortaderast) sind am häufigsten." },
+        { "title": "Shunt-Verbindungen", "text": "Arterioportal, arteriovenös oder portosystemisch; den Typ anhand der früh kontrastierten Gefäße zuordnen." },
         { "title": "Leitzeichen", "text": "Early venous filling sign (vorzeitige arterielle Venenopazifikation) und THAD/THID sind die wichtigsten CT-/MRT-Hinweise." },
         { "title": "HHT", "text": "Wichtigste kongenitale Ursache multipler Shunts; kann High-Output-Herzinsuffizienz und portale Hypertension verursachen." }
       ]
@@ -114,8 +111,7 @@ const CONTENT = {
     "breadcrumbAbdomen": "Abdomen",
     "breadcrumbCurrent": "Liver · AVM",
     "title": "Hepatic Arteriovenous Malformation (AVM)",
-    "subtitle": "Shunt types, the early venous filling sign and HHT-related liver involvement on Doppler, CT and MRI",
-    "sourceLabel": "Dr. Zia",
+    "subtitle": "",
     "actionMcq": "MCQ",
     "actionFlash": "Flashcards",
     "keyLabel": "Key point",
@@ -128,20 +124,15 @@ const CONTENT = {
       { "id": "hht", "label": "HHT & Liver", "icon": "🩸" },
       { "id": "takehome", "label": "Take home message", "icon": "💡" }
     ],
-    "heroCards": [
-      { "value": "Arterioportal", "label": "most common shunt type", "text": "hepatic artery → portal vein branch" },
-      { "value": "Early venous filling", "label": "key sign", "text": "premature arterial venous opacification" },
-      { "value": "HHT", "label": "most important congenital cause", "text": "Osler-Weber-Rendu disease" }
-    ],
     "basics": {
       "title": "Clinical basics",
       "lead": "A hepatic arteriovenous malformation (AVM) is an abnormal direct connection between an artery and a venous vessel without an intervening capillary bed, creating a high-flow, low-resistance shunt.",
       "items": [
         { "title": "Definition", "text": "Direct AV connection without a capillary bed, with high-flow, low-resistance characteristics." },
-        { "title": "Classification", "text": "Arterioportal (most common, hepatic artery to portal vein branch), arteriovenous (hepatic artery to hepatic vein) and portosystemic (portal vein to hepatic vein)." },
+        { "title": "Classification", "text": "Arterioportal (hepatic artery to portal vein branch), arteriovenous (hepatic artery to hepatic vein) and portosystemic (portal vein to hepatic vein)." },
         { "title": "Aetiology", "text": "Congenital (especially HHT/Osler-Weber-Rendu disease) or acquired (iatrogenic after biopsy/TIPS, traumatic, or tumour- or cirrhosis-associated)." }
       ],
-      "key": "An AVM is a direct AV short-circuit without a capillary bed. Arterioportal shunts are the most common, and HHT is the most important congenital cause of multiple shunts."
+      "key": "An AVM is a direct AV connection without an intervening capillary bed. HHT can cause multiple hepatic shunts."
     },
     "sono": {
       "title": "Ultrasound & Doppler",
@@ -163,7 +154,7 @@ const CONTENT = {
         ["Non-contrast", "usually unremarkable, the lesion itself often not delineable"],
         ["Early arterial", "early venous filling sign: premature opacification of the draining hepatic vein or portal vein"],
         ["Perilesional arterial", "wedge-shaped transient hyperperfusion (THAD/THID)"],
-        ["Portal venous/delayed", "rapid equalisation, no persistent wash-out as seen with hypervascular tumours"]
+        ["Portal venous/delayed", "Assess the phase pattern in context; the PDF montage does not permit confident assignment."]
       ],
       "irisTitle": "Early venous filling instead of lesion fill-in",
       "irisText": "Unlike hypervascular tumours such as FNH or HCC, the hallmark of an AVM is not enhancement of a mass but the premature arterial opacification of the draining venous vessel – the early venous filling sign.",
@@ -175,9 +166,10 @@ const CONTENT = {
       "tableHeaders": ["Sequence", "Typical finding", "Practical meaning"],
       "tableRows": [
         ["T1/T2", "serpiginous signal-void structures (flow voids)", "indicates dilated, high-flow vessels"],
+        ["DWI (PDF case)", "reported as normal", "single-case statement; do not generalise as an exclusion rule"],
         ["T1 C+ arterial", "early venous filling sign of the draining vein", "key finding, analogous to CT"],
         ["Perilesional arterial", "THAD/THID – transient hyperintensity", "can mimic a hypervascular lesion"],
-        ["Portal venous/delayed", "rapid equalisation with liver parenchyma", "no relevant wash-out"]
+        ["Portal venous/delayed (PDF case)", "early arterial enhancement followed by wash-out, as reported in the PDF", "target structure and phase mapping are unclear in the figure"]
       ],
       "lightBulbTitle": "Flow voids as the key finding",
       "lightBulbText": "Rapidly flowing blood produces signal-void, serpiginous structures (flow voids) on T1- and T2-weighted sequences – a direct sign of dilated, high-flow vessels at the site of an AVM.",
@@ -203,7 +195,7 @@ const CONTENT = {
       "lead": "The most important points for reporting.",
       "items": [
         { "title": "Definition", "text": "Abnormal direct AV connection without a capillary bed, with high-flow, low-resistance characteristics." },
-        { "title": "Most common type", "text": "Arterioportal shunts (hepatic artery to portal vein branch) are the most common." },
+        { "title": "Shunt connections", "text": "Arterioportal, arteriovenous or portosystemic; identify the type from the vessels that opacify early." },
         { "title": "Key signs", "text": "The early venous filling sign (premature arterial venous opacification) and THAD/THID are the most important CT/MRI clues." },
         { "title": "HHT", "text": "Most important congenital cause of multiple shunts; can cause high-output heart failure and portal hypertension." }
       ]
@@ -214,8 +206,7 @@ const CONTENT = {
     "breadcrumbAbdomen": "شکم",
     "breadcrumbCurrent": "کبد · AVM",
     "title": "مالفورماسیون شریانی-وریدی (AVM) کبد",
-    "subtitle": "انواع شانت، علامت پرشدگی زودرس وریدی و درگیری کبدی HHT در داپلر، CT و MRI",
-    "sourceLabel": "Dr. Zia",
+    "subtitle": "",
     "actionMcq": "MCQ",
     "actionFlash": "فلش‌کارت",
     "keyLabel": "نکته مهم",
@@ -228,20 +219,15 @@ const CONTENT = {
       { "id": "hht", "label": "HHT و کبد", "icon": "🩸" },
       { "id": "takehome", "label": "Take home message", "icon": "💡" }
     ],
-    "heroCards": [
-      { "value": "آرتریوپورتال", "label": "شایع‌ترین نوع شانت", "text": "شریان کبدی ← شاخه ورید پورت" },
-      { "value": "پرشدگی زودرس وریدی", "label": "علامت کلیدی", "text": "اپاسیفیکاسیون زودرس وریدی در فاز شریانی" },
-      { "value": "HHT", "label": "مهم‌ترین علت کنژنیتال", "text": "بیماری Osler-Weber-Rendu" }
-    ],
     "basics": {
       "title": "مبانی بالینی",
-      "lead": "مالفورماسیون شریانی-وریدی (AVM) کبد یک ارتباط مستقیم و غیرطبیعی بین یک شریان و یک عروق وریدی بدون بستر مویرگی واسط است که یک شانت پرفشار با مقاومت پایین ایجاد می‌کند.",
+      "lead": "مالفورماسیون شریانی-وریدی (AVM) کبد یک ارتباط مستقیم و غیرطبیعی بین یک شریان و یک عروق وریدی بدون بستر مویرگی واسط است که یک شانت با جریان بالا و مقاومت پایین ایجاد می‌کند.",
       "items": [
         { "title": "تعریف", "text": "ارتباط مستقیم شریانی-وریدی بدون بستر مویرگی با ویژگی جریان بالا و مقاومت پایین." },
-        { "title": "طبقه‌بندی", "text": "آرتریوپورتال (شایع‌ترین نوع، شریان کبدی به شاخه ورید پورت)، آرتریوونوس (شریان کبدی به ورید کبدی) و پورتوسیستمیک (ورید پورت به ورید کبدی)." },
+        { "title": "طبقه‌بندی", "text": "آرتریوپورتال (شریان کبدی به شاخه ورید پورت)، آرتریوونوس (شریان کبدی به ورید کبدی) و پورتوسیستمیک (ورید پورت به ورید کبدی)." },
         { "title": "اتیولوژی", "text": "کنژنیتال (به‌ویژه HHT/بیماری Osler-Weber-Rendu) یا اکتسابی (ایاتروژنیک پس از بیوپسی/TIPS، تروماتیک یا مرتبط با تومور/سیروز)." }
       ],
-      "key": "AVM یک ارتباط مستقیم شریانی-وریدی بدون بستر مویرگی است. شانت‌های آرتریوپورتال شایع‌ترین هستند و HHT مهم‌ترین علت کنژنیتال شانت‌های متعدد است."
+      "key": "AVM یک ارتباط مستقیم شریانی-وریدی بدون بستر مویرگی است. HHT می‌تواند باعث شانت‌های متعدد کبدی شود."
     },
     "sono": {
       "title": "سونوگرافی و داپلر",
@@ -263,7 +249,7 @@ const CONTENT = {
         ["بدون کنتراست", "معمولاً بدون یافته خاص، خود ضایعه اغلب قابل تشخیص نیست"],
         ["شریانی زودرس", "علامت پرشدگی زودرس وریدی: اپاسیفیکاسیون زودرس ورید کبدی یا ورید پورت تخلیه‌کننده"],
         ["اطراف ضایعه در فاز شریانی", "هیپرپرفیوژن گذرای گوه‌ای‌شکل (THAD/THID)"],
-        ["پورتال/تأخیری", "تطابق سریع، بدون واش‌اوت پایدار مانند تومورهای هیپرواسکولار"]
+        ["پورتال/تأخیری", "الگوی فاز را در زمینهٔ کیس ارزیابی کنید؛ مونتاژ PDF انتساب مطمئن را ممکن نمی‌کند."]
       ],
       "irisTitle": "پرشدگی زودرس وریدی به‌جای پرشدگی ضایعه",
       "irisText": "برخلاف تومورهای هیپرواسکولار مانند FNH یا HCC، در AVM نکته اصلی تقویت پس از تزریق یک توده نیست بلکه اپاسیفیکاسیون زودرس عروق وریدی تخلیه‌کننده در فاز شریانی است - یعنی علامت پرشدگی زودرس وریدی.",
@@ -275,9 +261,10 @@ const CONTENT = {
       "tableHeaders": ["سکانس", "یافته تیپیک", "معنای عملی"],
       "tableRows": [
         ["T1/T2", "ساختارهای سرپیژینوس بدون سیگنال (فقدان سیگنال جریان (flow void))", "نشانه عروق متسع با جریان بالا"],
+        ["DWI (کیس PDF)", "طبیعی گزارش شده است", "گزارش یک کیس؛ آن را به‌صورت معیار رد تعمیم ندهید"],
         ["T1 C+ شریانی", "علامت پرشدگی زودرس وریدی ورید تخلیه‌کننده", "یافته کلیدی، مشابه CT"],
         ["اطراف ضایعه در فاز شریانی", "THAD/THID - هایپراینتنسیتی گذرا", "می‌تواند یک ضایعه هیپرواسکولار را تقلید کند"],
-        ["پورتال/تأخیری", "تطابق سریع با پارانشیم کبد", "بدون واش‌اوت قابل توجه"]
+        ["پورتال/تأخیری (کیس PDF)", "طبق PDF جذب زودرس شریانی و سپس wash-out", "ساختار هدف و تطبیق فازها در تصویر نامشخص است"]
       ],
       "lightBulbTitle": "فقدان سیگنال جریان (flow void) به‌عنوان یافته کلیدی",
       "lightBulbText": "جریان سریع خون باعث ایجاد ساختارهای سرپیژینوس بدون سیگنال (فقدان سیگنال جریان (flow void)) در سکانس‌های T1 و T2 می‌شود - نشانه مستقیم عروق متسع با جریان بالا در محل AVM.",
@@ -303,7 +290,7 @@ const CONTENT = {
       "lead": "مهم‌ترین نکات برای گزارش‌نویسی.",
       "items": [
         { "title": "تعریف", "text": "ارتباط مستقیم شریانی-وریدی غیرطبیعی بدون بستر مویرگی، با ویژگی جریان بالا و مقاومت پایین." },
-        { "title": "شایع‌ترین نوع", "text": "شانت‌های آرتریوپورتال (شریان کبدی به شاخه ورید پورت) شایع‌ترین نوع هستند." },
+        { "title": "ارتباط‌های شانت", "text": "آرتریوپورتال، آرتریوونوس یا پورتوسیستمیک؛ نوع را از روی عروقی که زودتر اپاسیفه می‌شوند تعیین کنید." },
         { "title": "علائم کلیدی", "text": "علامت پرشدگی زودرس وریدی (اپاسیفیکاسیون زودرس وریدی) و THAD/THID مهم‌ترین نشانه‌های CT/MRI هستند." },
         { "title": "HHT", "text": "مهم‌ترین علت کنژنیتال شانت‌های متعدد؛ می‌تواند نارسایی قلبی با برون‌ده بالا و هیپرتانسیون پورت ایجاد کند." }
       ]
@@ -393,6 +380,12 @@ const CASE_COPY = {
   },
 }
 
+const AVM_PDF_CASE = {
+  de: { title: 'Abdomen.pdf p. 11: Aussage und Grenze', text: 'Die PDF berichtet normales DWI und frühe arterielle Kontrastmittelaufnahme mit anschließendem Wash-out; HCC wird als wichtige Differentialdiagnose genannt. Die acht CT-/MRT-Bilder sind nicht nach Phase oder Zielstruktur beschriftet. Daher lässt sich nicht sicher sagen, ob das Wash-out den Shunt oder eine separate Läsion betrifft. Diese Einzelbeobachtung ist keine allgemeine AVM-Regel.', alt: 'Unbeschriftete CT- und MRT-Montage aus Abdomen.pdf, physische Seite 11 (gedruckte Seite 10).', question: 'Was lässt sich sicher aus der PDF ableiten?', options: ['Jede hepatische AVM zeigt Wash-out.', 'Die PDF beschreibt normales DWI und frühe arterielle Anreicherung mit anschließendem Wash-out, aber die Zielstruktur bleibt offen.'], answer: 'Richtig: Die Aussage steht im Text, aber die Abbildung identifiziert ihre Zielstruktur nicht.' },
+  en: { title: 'Abdomen.pdf p. 11: report and limitation', text: 'The PDF reports normal DWI and early arterial enhancement followed by wash-out, and names HCC as an important differential. The eight CT/MRI frames are not labelled by phase or target structure. It is therefore unclear whether wash-out refers to the shunt or a separate lesion. This single observation is not a general AVM rule.', alt: 'Unlabelled CT and MRI montage from Abdomen.pdf, physical page 11 (printed page 10).', question: 'What can safely be concluded from the PDF?', options: ['Every hepatic AVM shows wash-out.', 'The PDF reports normal DWI and early arterial enhancement followed by wash-out, but leaves the target structure uncertain.'], answer: 'Correct: the text reports this finding, but the figure does not identify its target structure.' },
+  fa: { title: 'Abdomen.pdf صفحهٔ ۱۱: گفته و محدودیت', text: 'PDF، DWI طبیعی و جذب زودرس شریانی مادهٔ حاجب همراه با wash-out بعدی را گزارش می‌کند و HCC را تشخیص افتراقی مهمی می‌داند. هشت تصویر CT/MRI بر اساس فاز یا ساختار هدف برچسب نخورده‌اند. بنابراین مشخص نیست wash-out به شانت مربوط است یا به ضایعه‌ای جداگانه. این مشاهدهٔ منفرد قاعده‌ای عمومی برای AVM نیست.', alt: 'مونتاژ بدون برچسب CT و MRI از صفحهٔ فیزیکی ۱۱ (صفحهٔ چاپی ۱۰) Abdomen.pdf.', question: 'از PDF چه نتیجه‌ای را می‌توان با اطمینان گرفت؟', options: ['همهٔ AVMهای کبدی wash-out نشان می‌دهند.', 'PDF، DWI طبیعی و جذب زودرس شریانی و سپس wash-out را گزارش می‌کند، اما ساختار هدف نامشخص است.'], answer: 'درست است: متن این یافته را گزارش می‌کند، اما تصویر ساختار هدف را مشخص نمی‌کند.' },
+}
+
 const READ_COPY = {
   de: { mark: 'Als gelesen markieren', read: 'Als gelesen markiert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
   en: { mark: 'Mark as read', read: 'Marked as read', error: 'Please sign in to save your learning progress.', signIn: 'Sign in' },
@@ -461,6 +454,28 @@ function Section({ id, title, lead, children }) {
   )
 }
 
+function ShuntDiagram({ lang }) {
+  const labels = {
+    de: { artery: 'Arterie', shunt: 'Direkter Shunt', capillary: 'Kein Kapillarbett', vein: 'Vene' },
+    en: { artery: 'Artery', shunt: 'Direct shunt', capillary: 'No capillary bed', vein: 'Vein' },
+    fa: { artery: 'شریان', shunt: 'شانت مستقیم', capillary: 'بدون بستر مویرگی', vein: 'ورید' },
+  }[lang] || { artery: 'Artery', shunt: 'Direct shunt', capillary: 'No capillary bed', vein: 'Vein' }
+  return (
+    <div className={styles.shuntDiagram} role="img" aria-label={`${labels.artery} → ${labels.shunt} → ${labels.vein}; ${labels.capillary}`}>
+      <svg viewBox="0 0 320 230" aria-hidden="true">
+        <defs><marker id="avm-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="currentColor" /></marker></defs>
+        <path d="M75 75 C125 75 125 75 165 75 S205 75 245 75" fill="none" stroke="currentColor" strokeWidth="12" strokeLinecap="round" markerEnd="url(#avm-arrow)" />
+        <circle cx="60" cy="75" r="27" fill="currentColor" opacity=".18" stroke="currentColor" strokeWidth="3" />
+        <circle cx="250" cy="75" r="27" fill="currentColor" opacity=".18" stroke="currentColor" strokeWidth="3" />
+        <path d="M105 150 H215" stroke="#d97706" strokeWidth="3" strokeDasharray="7 7" />
+        <path d="M150 137 L170 163 M170 137 L150 163" stroke="#d97706" strokeWidth="4" strokeLinecap="round" />
+      </svg>
+      <div className={styles.shuntLabels}><strong>{labels.artery}</strong><strong>{labels.shunt}</strong><strong>{labels.vein}</strong></div>
+      <span>{labels.capillary}</span>
+    </div>
+  )
+}
+
 export default function LeberAvmPage() {
   const { lang } = useLanguage()
   const copy = CONTENT[lang] || CONTENT.de
@@ -475,6 +490,8 @@ export default function LeberAvmPage() {
   }, [copy.sections, caseCopy.label])
   const isRTL = lang === 'fa'
   const [activeId, setActiveId] = useState(pageSections[0].id)
+  const [pdfAnswer, setPdfAnswer] = useState(null)
+  const pdfCase = AVM_PDF_CASE[lang] || AVM_PDF_CASE.de
   const { isRead, toggleRead, authError } = useLessonReadStatus('avm')
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
@@ -509,25 +526,10 @@ export default function LeberAvmPage() {
           <span>›</span>
           <span>{copy.breadcrumbCurrent}</span>
         </div>
-        <div className={styles.hero}>
-          <div className={styles.heroText}>
-            <span className={styles.sourceBadge}>{copy.sourceLabel}</span>
-            <h1>{copy.title}</h1>
-            <p>{copy.subtitle}</p>
-            <div className={styles.actions}>
-              <Link href={withLang(`/ueben/quiz?fach=abdomen&n=10&themen=avm&from=${encodeURIComponent(withLang('/abdomen/leber/avm'))}`)} className={styles.actionBtn}>🎯 {copy.actionMcq}</Link>
-              <Link href={withLang(`/flashcards/avm?from=${encodeURIComponent(withLang('/abdomen/leber/avm'))}`)} className={styles.actionBtn}>🧠 {copy.actionFlash}</Link>
-            </div>
-          </div>
-          <div className={styles.heroStats}>
-            {copy.heroCards.map(card => (
-              <div className={styles.heroStat} key={card.label}>
-                <strong>{card.value}</strong>
-                <span>{card.label}</span>
-                <small>{card.text}</small>
-              </div>
-            ))}
-          </div>
+        <LessonHero title={copy.title} lang={lang} visual={<ShuntDiagram lang={lang} />} />
+        <div className={styles.actions}>
+          <Link href={withLang(`/ueben/quiz?fach=abdomen&n=10&themen=avm&from=${encodeURIComponent(withLang('/abdomen/leber/avm'))}`)} className={styles.actionBtn}>🎯 {copy.actionMcq}</Link>
+          <Link href={withLang(`/flashcards/avm?from=${encodeURIComponent(withLang('/abdomen/leber/avm'))}`)} className={styles.actionBtn}>🧠 {copy.actionFlash}</Link>
         </div>
       </header>
 
@@ -572,6 +574,15 @@ export default function LeberAvmPage() {
 
           <Section id="ct" title={copy.ct.title} lead={copy.ct.lead}>
             <Table headers={copy.ct.tableHeaders} rows={copy.ct.tableRows} />
+            <figure className={styles.sourceFigure}>
+              <div className={styles.sourceFigureImage}><Image src="/educational/avm-liver/abdomen-p11-montage.svg" alt={pdfCase.alt} width={1191} height={985} sizes="(max-width: 760px) 100vw, 900px" unoptimized /></div>
+              <figcaption><strong>{pdfCase.title}</strong><br />{pdfCase.text}<br /><a href="/educational/avm-liver/abdomen-p11.png" target="_blank" rel="noopener noreferrer">{lang === 'fa' ? 'باز کردن صفحهٔ کامل PDF' : lang === 'en' ? 'Open the full PDF slide' : 'Ganze PDF-Folie öffnen'}</a></figcaption>
+            </figure>
+            <div className={styles.sourceCheck}>
+              <strong>{pdfCase.question}</strong>
+              {pdfCase.options.map((option, index) => <button type="button" key={option} onClick={() => setPdfAnswer(index)} aria-pressed={pdfAnswer === index}>{option}</button>)}
+              {pdfAnswer !== null && <p role="status">{pdfAnswer === 1 ? pdfCase.answer : (lang === 'fa' ? 'پاسخ درست گزینهٔ دوم است؛ تعمیم ندهید.' : lang === 'en' ? 'The second option is correct; do not generalise.' : 'Die zweite Aussage ist richtig; nicht verallgemeinern.')}</p>}
+            </div>
             <div className={styles.highlightBox}>
               <h3>{copy.ct.irisTitle}</h3>
               <p>{copy.ct.irisText}</p>
@@ -598,6 +609,14 @@ export default function LeberAvmPage() {
             <Table headers={copy.hht.tableHeaders} rows={copy.hht.tableRows} />
             <Callout type="cave" label={copy.caveLabel}>{copy.hht.cave}</Callout>
             <Callout label={copy.keyLabel}>{copy.hht.key}</Callout>
+            <p className={styles.sourceLinks}>
+              {lang === 'fa' ? 'منابع تکمیلی: ' : lang === 'en' ? 'Supplementary sources: ' : 'Ergänzende Quellen: '}
+              <a href="https://hhtguidelines.org/liver/" target="_blank" rel="noopener noreferrer">International HHT Guidelines — liver VMs</a>
+              {' · '}
+              <a href="https://doi.org/10.14309/ajg.0000000000000486" target="_blank" rel="noopener noreferrer">ACG Clinical Guideline: Disorders of the Hepatic and Mesenteric Circulation</a>
+              {' · '}
+              <a href="https://doi.org/10.1016/j.jhep.2025.08.001" target="_blank" rel="noopener noreferrer">EASL Clinical Practice Guidelines: Vascular diseases of the liver</a>
+            </p>
           </Section>
 
 

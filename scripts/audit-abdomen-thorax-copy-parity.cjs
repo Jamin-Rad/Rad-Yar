@@ -12,6 +12,7 @@ const routes = [
   'app/abdomen/leber/psc-mrcp/page.js',
   'app/abdomen/leber/zystische-laesionen/page.js',
   'app/abdomen/leber/fnh/page.js',
+  'app/abdomen/leber/avm/page.js',
   'app/abdomen/gi/appendizitis/page.js',
   'app/abdomen/gi/untere-gi-blutung/page.js',
   'app/abdomen/gi/kolorektales-karzinom/page.js',

@@ -1,0 +1,11 @@
+{
+  "asset": "/educational/avm-liver/abdomen-p11-montage.svg",
+  "fullSourcePage": "/educational/avm-liver/abdomen-p11.png",
+  "source": "User-provided Abdomen.pdf",
+  "pdfPage": 11,
+  "printedPage": 10,
+  "reuseAuthorization": "User explicitly authorized use of images from the six supplied PDFs in this project.",
+  "content": "The SVG is a viewBox crop showing all eight CT and MRI axial frames without cropping any frame. The full source slide is also linked for context.",
+  "visibleMetadata": "No readable phase labels, sequence labels, arrows, case caption, rID, contributor or citation identify the frames.",
+  "interpretationLimit": "Do not assign wash-out to a specific shunt or lesion, infer phases, or treat the PDF statement as a universal hepatic AVM feature."
+}

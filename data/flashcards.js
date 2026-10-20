@@ -2267,12 +2267,12 @@ const LEGACY_FLASHCARDS = [
     "explanation": {
       "de": "Dadurch entsteht ein Hochfluss-Shunt mit niedrigem Widerstand, der direkt arterielles Blut in das venöse System ableitet.",
       "en": "This creates a high-flow, low-resistance shunt that diverts arterial blood directly into the venous system.",
-      "fa": "این امر یک شانت پرفشار با مقاومت پایین ایجاد می‌کند که خون شریانی را مستقیماً به سیستم وریدی منتقل می‌کند."
+      "fa": "این ارتباط یک شانت با جریان بالا و مقاومت پایین ایجاد می‌کند که خون را مستقیماً از شریان به سیستم وریدی می‌رساند."
     },
     "diagram": {
       "de": "Arterie → (kein Kapillarbett) → Vene = AVM",
       "en": "Artery → (no capillary bed) → Vein = AVM",
-      "fa": "شریان ← (بدون بستر مویرگی) ← ورید = AVM"
+      "fa": "جریان مستقیم از شریان به ورید، بدون بستر مویرگی = AVM"
     }
   },
   {
@@ -2289,19 +2289,19 @@ const LEGACY_FLASHCARDS = [
       "fa": "سه نوع شانت در AVM‌های کبدی کدامند؟"
     },
     "answer": {
-      "de": "Arterioportal (häufigster Typ), arteriovenös und portosystemisch.",
-      "en": "Arterioportal (most common), arteriovenous and portosystemic.",
-      "fa": "آرتریوپورتال (شایع‌ترین)، آرتریوونوس و پورتوسیستمیک."
+      "de": "Arterioportal, arteriovenös und portosystemisch.",
+      "en": "Arterioportal, arteriovenous and portosystemic.",
+      "fa": "آرتریوپورتال، آرتریوونوس و پورتوسیستمیک."
     },
     "explanation": {
-      "de": "Arterioportale Shunts verbinden die A. hepatica mit einem Pfortaderast, arteriovenöse Shunts die A. hepatica mit einer Lebervene, portosystemische Shunts die Pfortader mit einer Lebervene.",
-      "en": "Arterioportal shunts connect the hepatic artery to a portal vein branch, arteriovenous shunts connect the hepatic artery to a hepatic vein, and portosystemic shunts connect the portal vein to a hepatic vein.",
-      "fa": "شانت‌های آرتریوپورتال شریان کبدی را به شاخه ورید پورت، شانت‌های آرتریوونوس شریان کبدی را به ورید کبدی و شانت‌های پورتوسیستمیک ورید پورت را به ورید کبدی متصل می‌کنند."
+      "de": "Arterioportale Shunts verbinden die A. hepatica mit einem Pfortaderast, arteriovenöse Shunts die A. hepatica mit einer Lebervene und portosystemische Shunts die Pfortader mit einer Lebervene. Die konkrete Verbindung ist anhand der Gefäßdarstellung zu bestimmen.",
+      "en": "Arterioportal shunts connect the hepatic artery to a portal vein branch, arteriovenous shunts connect the hepatic artery to a hepatic vein, and portosystemic shunts connect the portal vein to a hepatic vein. Identify the specific connection from the depicted vessels.",
+      "fa": "شانت‌های آرتریوپورتال شریان کبدی را به شاخه ورید پورت، شانت‌های آرتریوونوس شریان کبدی را به ورید کبدی و شانت‌های پورتوسیستمیک ورید پورت را به ورید کبدی متصل می‌کنند. ارتباط مشخص باید از روی عروق نشان‌داده‌شده تعیین شود."
     },
     "diagram": {
-      "de": "Arterioportal > Arteriovenös > Portosystemisch (Häufigkeit)",
-      "en": "Arterioportal > Arteriovenous > Portosystemic (frequency)",
-      "fa": "آرتریوپورتال > آرتریوونوس > پورتوسیستمیک (شیوع)"
+      "de": "Arterioportal | arteriovenös | portosystemisch",
+      "en": "Arterioportal | arteriovenous | portosystemic",
+      "fa": "آرتریوپورتال | آرتریوونوس | پورتوسیستمیک"
     }
   },
   {

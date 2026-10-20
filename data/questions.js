@@ -1099,15 +1099,15 @@ const LEGACY_QUESTION_BANK = {
       "id": "avm-de-02",
       "tags": ["avm", "leber", "abdomen"],
       "fach": "abdomen",
-      "question": "Welcher Shunt-Typ ist bei hepatischen AVMs am häufigsten?",
+      "question": "Welche Gefäßverbindung spricht für einen arterioportalen Shunt?",
       "options": [
-        { "id": "A", "text": "Arterioportal (A. hepatica – Pfortaderast)" },
-        { "id": "B", "text": "Portosystemisch (Pfortader – Lebervene)" },
-        { "id": "C", "text": "Arteriovenös (A. hepatica – Lebervene)" },
-        { "id": "D", "text": "Venovenös zwischen zwei Lebervenen" }
+        { "id": "A", "text": "Frühe Kontrastierung einer Lebervene durch die A. hepatica" },
+        { "id": "B", "text": "Frühe Kontrastierung eines Pfortaderasts durch die A. hepatica" },
+        { "id": "C", "text": "Verbindung zwischen Pfortaderast und Lebervene" },
+        { "id": "D", "text": "Späte Kontrastierung der Pfortader nach normaler Leberpassage" }
       ],
-      "correct": "C",
-      "explanation": "Bei hepatischer Gefäßbeteiligung der HHT sind arteriovenöse Shunts von der A. hepatica zu Lebervenen der häufigste Typ; arterioportale und portovenöse Shunts kommen ebenfalls vor."
+      "correct": "B",
+      "explanation": "Eine arterioportale Verbindung führt zur vorzeitigen Kontrastierung eines Pfortaderasts in der arteriellen Phase. Eine früh kontrastierte Lebervene spricht für einen arteriovenösen Shunt."
     },
     {
       "id": "avm-de-03",
@@ -2296,15 +2296,15 @@ const LEGACY_QUESTION_BANK = {
       "id": "avm-en-02",
       "tags": ["avm", "leber", "abdomen"],
       "fach": "abdomen",
-      "question": "Which shunt type is most common in hepatic AVMs?",
+      "question": "Which vessel finding indicates an arterioportal shunt?",
       "options": [
-        { "id": "A", "text": "Arterioportal (hepatic artery to portal vein branch)" },
-        { "id": "B", "text": "Portosystemic (portal vein to hepatic vein)" },
-        { "id": "C", "text": "Arteriovenous (hepatic artery to hepatic vein)" },
-        { "id": "D", "text": "Venovenous between two hepatic veins" }
+        { "id": "A", "text": "Early opacification of a hepatic vein from the hepatic artery" },
+        { "id": "B", "text": "Early opacification of a portal vein branch from the hepatic artery" },
+        { "id": "C", "text": "A connection between a portal vein branch and hepatic vein" },
+        { "id": "D", "text": "Late portal vein opacification after normal hepatic transit" }
       ],
-      "correct": "C",
-      "explanation": "In hepatic vascular involvement from HHT, arteriovenous shunts from the hepatic artery to hepatic veins are the most common type; arterioportal and portovenous shunts also occur."
+      "correct": "B",
+      "explanation": "An arterioportal connection causes premature opacification of a portal vein branch during the arterial phase. Early hepatic-vein opacification indicates an arteriovenous shunt."
     },
     {
       "id": "avm-en-03",
@@ -3493,15 +3493,15 @@ const LEGACY_QUESTION_BANK = {
       "id": "avm-fa-02",
       "tags": ["avm", "leber", "abdomen"],
       "fach": "abdomen",
-      "question": "شایع‌ترین نوع شانت در AVM‌های کبدی کدام است؟",
+      "question": "کدام یافتهٔ عروقی به نفع شانت آرتریوپورتال است؟",
       "options": [
-        { "id": "A", "text": "آرتریوپورتال (شریان کبدی به شاخه ورید پورت)" },
-        { "id": "B", "text": "پورتوسیستمیک (ورید پورت به ورید کبدی)" },
-        { "id": "C", "text": "آرتریوونوس (شریان کبدی به ورید کبدی)" },
-        { "id": "D", "text": "ونو-ونوس بین دو ورید کبدی" }
+        { "id": "A", "text": "اپاسیفیکاسیون زودرس یک ورید کبدی از طریق شریان کبدی" },
+        { "id": "B", "text": "اپاسیفیکاسیون زودرس یک شاخهٔ ورید پورت از طریق شریان کبدی" },
+        { "id": "C", "text": "ارتباط بین شاخهٔ ورید پورت و ورید کبدی" },
+        { "id": "D", "text": "اپاسیفیکاسیون دیررس ورید پورت پس از عبور طبیعی از کبد" }
       ],
-      "correct": "C",
-      "explanation": "در درگیری عروقی کبد در HHT، شانت آرتریوونوس از شریان کبدی به وریدهای کبدی شایع‌ترین نوع است؛ شانت‌های آرتریوپورتال و پورتوونوس نیز دیده می‌شوند."
+      "correct": "B",
+      "explanation": "ارتباط آرتریوپورتال باعث اپاسیفیکاسیون زودرس یک شاخهٔ ورید پورت در فاز شریانی می‌شود. اپاسیفیکاسیون زودرس ورید کبدی به نفع شانت آرتریوونوس است."
     },
     {
       "id": "avm-fa-03",
