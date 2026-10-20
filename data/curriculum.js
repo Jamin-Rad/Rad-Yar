@@ -1790,7 +1790,7 @@ export const CURRICULUM = [
         id: 'technik-kontrastmittel',
         title: { de: '9. Kontrastmittel', en: '9. Contrast Media', fa: '۹. مواد حاجب' },
         icon: '💉',
-        themen: CONTRAST_GROUPS.map(group => ({
+        themen: [...CONTRAST_GROUPS.map(group => ({
           id: group.readId,
           title: group.title,
           tags: group.tags || (group.id === 'roentgen'
@@ -1801,7 +1801,10 @@ export const CURRICULUM = [
           diff: 2,
           link: `/technik/kontrastmittel/${group.id}`,
           updatedAt: '2026-09-01',
-        })),
+        })), {
+          id: 'km-buscopan', title: { de: 'Buscopan® · MRT-Begleitmedikation', en: 'Buscopan® · MRI adjunct medication', fa: 'Buscopan® · داروی همراه MRI' }, tags: ['MRT'], diff: 2,
+          link: '/technik/kontrastmittel/mrt#buscopan', mcqLink: '/ueben/quiz?fach=technik&n=2&themen=km-buscopan', flashcardLink: '/flashcards/km-buscopan', inProgress: true, updatedAt: '2026-10-20',
+        }],
       },
       {
         id: 'technik-onkologie',

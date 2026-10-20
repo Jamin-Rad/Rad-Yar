@@ -108,6 +108,7 @@ function ContentBlock({ block, lang, ui, withLang, onOpen }) {
     </div>
   )
   if (block.type === 'lessonLink') return <Link className={styles.lessonLink} href={withLang(`/technik/kontrastmittel/${block.target}`)}>{localizeContrast(block.label, lang)} <span aria-hidden="true">→</span></Link>
+  if (block.type === 'sourceLink') return <p className={styles.sourceLink}><a href={block.href} target="_blank" rel="noreferrer">{localizeContrast(block.label, lang)} ↗</a></p>
   return null
 }
 

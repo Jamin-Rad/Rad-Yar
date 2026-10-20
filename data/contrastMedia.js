@@ -36,6 +36,12 @@ export const CONTRAST_TOPICS = [
     icon: '🛡️',
   },
   {
+    id: 'km-buscopan',
+    group: { de: 'MRT-Begleitmedikation', en: 'MRI adjunct medication', fa: 'داروی همراه MRI' },
+    title: { de: 'Buscopan®', en: 'Buscopan®', fa: 'Buscopan®' },
+    icon: '💊',
+  },
+  {
     id: 'km-niereninsuffizienz',
     group: { de: 'Nierenfunktion und KM', en: 'Renal function and contrast media', fa: 'عملکرد کلیه و مواد حاجب' },
     title: { de: 'Nierenfunktion und KM', en: 'Renal function and contrast media', fa: 'عملکرد کلیه و مواد حاجب' },
@@ -90,7 +96,7 @@ export const CONTRAST_GROUPS = [
       en: 'Gadolinium fundamentals, retention and nephrogenic systemic fibrosis',
       fa: 'مبانی گادولینیوم، احتباس و فیبروز سیستمیک نفروژنیک',
     },
-    topicIds: ['km-gadolinium', 'km-gadolinium-retention-nsf'],
+    topicIds: ['km-gadolinium', 'km-gadolinium-retention-nsf', 'km-buscopan'],
   },
   {
     id: 'schwangerschaft',
@@ -278,6 +284,10 @@ const QUESTION_SEEDS = {
     ['Welche Konstellation ist klassisch mit NSF verbunden?', 'Schwere Niereninsuffizienz plus weniger stabiles GBCA', ['Normale Nierenfunktion plus USKM', 'Schwere Niereninsuffizienz plus weniger stabiles GBCA', 'Hyperthyreose plus Jod-KM', 'Stillzeit plus CT'], 'B'],
     ['Welche Aussage zur Gadolinium-Retention ist korrekt?', 'Retention ist nachweisbar, ein klinischer Hirnschaden aber nicht belegt', ['Sie tritt nur bei Niereninsuffizienz auf', 'Retention ist nachweisbar, ein klinischer Hirnschaden aber nicht belegt', 'Makrozyklische Präparate retinieren immer mehr', 'Sie ist identisch mit NSF'], 'B'],
   ],
+  'km-buscopan': [
+    ['Welche Buscopan-Kontraindikation ist in der Fachinformation ausdrücklich genannt?', 'Engwinkelglaukom', ['Offenwinkelglaukom ohne weitere Befunde', 'Engwinkelglaukom', 'Kurzsichtigkeit', 'Trockene Augen'], 'B'],
+    ['Welche Aussage zur Prostatahyperplasie unter Buscopan trifft laut Fachinformation zu?', 'Kontraindiziert bei Harnverhaltung durch subvesikale Obstruktion, zum Beispiel Prostataadenom', ['Jede Prostatahyperplasie ist ausnahmslos kontraindiziert', 'Nur bei gleichzeitiger Kurzsichtigkeit kontraindiziert', 'Kontraindiziert bei Harnverhaltung durch subvesikale Obstruktion, zum Beispiel Prostataadenom', 'Sie ist kein relevanter Sicherheitsaspekt'], 'C'],
+  ],
   'km-niereninsuffizienz': [
     ['Ab welcher eGFR ist eine besonders sorgfältige Nutzen-Risiko-Abwägung üblich?', 'Unter 30 ml/min/1,73 m²', ['Unter 120', 'Unter 90', 'Unter 60 bei jedem Patienten', 'Unter 30 ml/min/1,73 m²'], 'D'],
     ['Soll wegen einer einmaligen KM-Gabe routinemäßig neu mit Dialyse begonnen werden?', 'Nein', ['Ja, immer', 'Nur nach USKM', 'Nein', 'Nur nach oralem Barium'], 'C'],
@@ -308,6 +318,8 @@ const translateQuestion = (seed, lang) => {
       'Welches MRT-KM besitzt hepatobiliäre Aufnahme?': ['Which MRI agent has hepatobiliary uptake?', 'Gadoxetate', ['Gadodiamide', 'Gadoxetate', 'Barium sulphate', 'Sulphur hexafluoride']],
       'Welche Konstellation ist klassisch mit NSF verbunden?': ['Which setting is classically associated with NSF?', 'Severe renal impairment plus a less stable GBCA', ['Normal kidneys plus UCA', 'Severe renal impairment plus a less stable GBCA', 'Hyperthyroidism plus iodine', 'Breastfeeding plus CT']],
       'Welche Aussage zur Gadolinium-Retention ist korrekt?': ['Which statement about gadolinium retention is correct?', 'Retention is detectable, but clinical brain harm has not been established', ['It occurs only in renal impairment', 'Retention is detectable, but clinical brain harm has not been established', 'Macrocyclic agents always retain more', 'It is identical to NSF']],
+      'Welche Buscopan-Kontraindikation ist in der Fachinformation ausdrücklich genannt?': ['Which Buscopan contraindication is explicitly listed in the product information?', 'Narrow-angle glaucoma', ['Open-angle glaucoma without other findings', 'Narrow-angle glaucoma', 'Short-sightedness', 'Dry eyes']],
+      'Welche Aussage zur Prostatahyperplasie unter Buscopan trifft laut Fachinformation zu?': ['According to the product information, which statement about prostatic hyperplasia with Buscopan is correct?', 'Contraindicated with urinary retention due to subvesical obstruction, for example prostatic adenoma', ['Every case of prostatic hyperplasia is unconditionally contraindicated', 'Only contraindicated with concurrent short-sightedness', 'Contraindicated with urinary retention due to subvesical obstruction, for example prostatic adenoma', 'It is not a relevant safety consideration']],
       'Wo verbleiben diagnostische Ultraschall-Mikrobläschen?': ['Where do diagnostic ultrasound microbubbles remain?', 'Intravascularly', ['Intracellularly', 'Intravascularly', 'Only in bile ducts', 'In bone marrow']],
       'Wie wird der Gasanteil von USKM überwiegend eliminiert?': ['How is the gas component of UCA mainly eliminated?', 'Through the lungs', ['Through the kidneys', 'Through the lungs', 'Through the thyroid', 'Through the skin']],
       'Ab welcher eGFR ist eine besonders sorgfältige Nutzen-Risiko-Abwägung üblich?': ['At which eGFR is especially careful benefit-risk assessment customary?', 'Below 30 ml/min/1.73 m²', ['Below 120', 'Below 90', 'Below 60 in every patient', 'Below 30 ml/min/1.73 m²']],
@@ -330,6 +342,8 @@ const translateQuestion = (seed, lang) => {
       'Welches MRT-KM besitzt hepatobiliäre Aufnahme?': ['کدام ماده MRI جذب کبدی-صفراوی دارد؟', 'گادوکسیتات', ['گادودیامید', 'گادوکسیتات', 'باریم سولفات', 'هگزافلوراید گوگرد']],
       'Welche Konstellation ist klassisch mit NSF verbunden?': ['کدام وضعیت به طور کلاسیک با NSF مرتبط است؟', 'نارسایی شدید کلیه همراه ماده گادولینیوم کم‌ثبات', ['کلیه طبیعی همراه USKM', 'نارسایی شدید کلیه همراه ماده گادولینیوم کم‌ثبات', 'پرکاری تیروئید همراه ید', 'شیردهی همراه CT']],
       'Welche Aussage zur Gadolinium-Retention ist korrekt?': ['کدام عبارت درباره احتباس گادولینیوم درست است؟', 'احتباس قابل اندازه‌گیری است، اما آسیب بالینی مغزی ثابت نشده', ['فقط در نارسایی کلیه رخ می‌دهد', 'احتباس قابل اندازه‌گیری است، اما آسیب بالینی مغزی ثابت نشده', 'مواد ماکروسیکلیک همیشه بیشتر باقی می‌مانند', 'با NSF یکسان است']],
+      'Welche Buscopan-Kontraindikation ist in der Fachinformation ausdrücklich genannt?': ['کدام مورد منع Buscopan به‌صراحت در اطلاعات دارو آمده است؟', 'گلوکوم زاویه‌بسته', ['گلوکوم زاویه‌باز بدون یافتهٔ دیگر', 'گلوکوم زاویه‌بسته', 'نزدیک‌بینی', 'خشکی چشم']],
+      'Welche Aussage zur Prostatahyperplasie unter Buscopan trifft laut Fachinformation zu?': ['طبق اطلاعات دارو، کدام عبارت دربارهٔ هیپرپلازی پروستات و Buscopan درست است؟', 'در احتباس ادرار ناشی از انسداد زیر مثانه، مانند آدنوم پروستات، منع مصرف دارد', ['هر نوع هیپرپلازی پروستات بدون استثنا منع مصرف است', 'فقط همراه نزدیک‌بینی منع مصرف دارد', 'در احتباس ادرار ناشی از انسداد زیر مثانه، مانند آدنوم پروستات، منع مصرف دارد', 'نکتهٔ ایمنی مهمی نیست']],
       'Wo verbleiben diagnostische Ultraschall-Mikrobläschen?': ['میکروبابل‌های تشخیصی سونوگرافی کجا باقی می‌مانند؟', 'داخل عروق', ['داخل سلول', 'داخل عروق', 'فقط مجاری صفراوی', 'مغز استخوان']],
       'Wie wird der Gasanteil von USKM überwiegend eliminiert?': ['گاز USKM عمدتاً چگونه دفع می‌شود؟', 'از راه ریه', ['از راه کلیه', 'از راه ریه', 'از راه تیروئید', 'از راه پوست']],
       'Ab welcher eGFR ist eine besonders sorgfältige Nutzen-Risiko-Abwägung üblich?': ['در چه eGFR ارزیابی دقیق سود و خطر مهم است؟', 'کمتر از ۳۰ ml/min/1.73 m²', ['کمتر از ۱۲۰', 'کمتر از ۹۰', 'کمتر از ۶۰ در همه بیماران', 'کمتر از ۳۰ ml/min/1.73 m²']],
@@ -381,7 +395,7 @@ export const CONTRAST_FLASHCARDS = CONTRAST_TOPICS.flatMap(topic => {
       content[lang] = {
         front: translated[0],
         answer: translated[1],
-        explanation: topic.id === 'km-ultraschall' ? translated[1] : CONTRAST_LESSON[lang].sections[topic.id].takeHome,
+        explanation: topic.id === 'km-ultraschall' ? translated[1] : (CONTRAST_LESSON[lang].sections[topic.id]?.takeHome || translated[1]),
       }
     }
     return {
