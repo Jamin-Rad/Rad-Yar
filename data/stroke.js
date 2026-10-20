@@ -50,7 +50,7 @@ export const STROKE_LESSON = {
     {
       value: '4,5 h',
       label: L('IV-Lyse', 'IV thrombolysis', 'ترومبولیز وریدی'),
-      text: L('Standardzeitfenster mit Alteplase', 'Standard window with alteplase', 'پنجره استاندارد با آلتپلاز'),
+      text: L('Standardzeitfenster mit Alteplase oder Tenecteplase', 'Standard window with alteplase or tenecteplase', 'پنجره استاندارد با آلتپلاز یا تنکتپلاز'),
     },
   ],
   basics: {
@@ -231,7 +231,7 @@ export const STROKE_LESSON = {
       ['PWI', L('Optionale Perfusions-MRT', 'Optional perfusion MRI', 'MRI پرفیوژن اختیاری'), L('Ergänzende Perfusionsbeurteilung', 'Additional perfusion assessment', 'ارزیابی تکمیلی پرفیوژن')],
     ],
     mismatchTitle: L('DWI-FLAIR-Mismatch', 'DWI-FLAIR mismatch', 'عدم تطابق DWI-FLAIR'),
-    mismatchText: L('Die Ischämie ist in der DWI sichtbar, aber in der FLAIR noch nicht. Der Schlaganfall ist wahrscheinlich jünger als 4,5 Stunden.', 'The ischaemia is visible on DWI but not yet on FLAIR. The stroke is probably less than 4.5 hours old.', 'ایسکمی در DWI دیده می‌شود اما هنوز در FLAIR دیده نمی‌شود؛ سکته احتمالاً کمتر از ۴٫۵ ساعت قدمت دارد.'),
+    mismatchText: L('Eine DWI-Läsion ohne deutliche entsprechende FLAIR-Hyperintensität kann bei ausgewählten Patienten mit unbekanntem Symptombeginn als Bildgebungskriterium für eine erweiterte Therapiewahl dienen. Sie bestimmt das Läsionsalter nicht exakt und begründet allein keine Therapie.', 'A DWI lesion without marked corresponding FLAIR hyperintensity can support imaging-based treatment selection in selected patients with unknown symptom onset. It does not establish the exact lesion age or determine treatment eligibility by itself.', 'ضایعه در DWI بدون هایپراینتنس واضح متناظر در FLAIR می‌تواند در بیماران منتخب با زمان شروع نامشخص علائم، به‌عنوان معیار تصویربرداری برای انتخاب درمان در پنجره گسترده‌تر به‌کار رود. این الگو سن ضایعه را دقیق تعیین نمی‌کند و به‌تنهایی واجد شرایط بودن برای درمان را ثابت نمی‌کند.'),
     cave: L('DWI-Hyperintensität allein beweist keine fortbestehende Restriktion: ADC prüfen, da ab etwa Tag 10 T2-shine-through auftreten kann.', 'DWI hyperintensity alone does not prove ongoing restriction: check ADC because T2 shine-through may occur from about day 10.', "هایپراینتنس DWI به‌تنهایی محدودیت فعال را ثابت نمی‌کند؛ ADC بررسی شود زیرا از حدود روز ۱۰ اثر عبور سیگنال T2 (shine-through) ممکن است رخ دهد."),
   },
   mriTimeline: {
@@ -254,7 +254,7 @@ export const STROKE_LESSON = {
     lead: L('Intravenöse Thrombolyse und mechanische Thrombektomie.', 'Intravenous thrombolysis and mechanical thrombectomy.', 'ترومبولیز وریدی و ترومبکتومی مکانیکی.')
     ,
     items: [
-      { title: L('IV-Thrombolyse', 'IV thrombolysis', 'ترومبولیز وریدی'), text: L('Mit Alteplase innerhalb von 4,5 Stunden; erweitert bis 9 Stunden bei positivem CTP-Befund.', 'With alteplase within 4.5 hours; extended to 9 hours with a positive CTP finding.', 'با آلتپلاز در ۴٫۵ ساعت؛ با یافته مثبت CTP تا ۹ ساعت گسترش می‌یابد.') },
+      { title: L('IV-Thrombolyse', 'IV thrombolysis', 'ترومبولیز وریدی'), text: L('Alteplase oder Tenecteplase bei geeigneten Patienten innerhalb von 4,5 Stunden. Bei unbekanntem Symptombeginn kann ein DWI-FLAIR-Mismatch die Auswahl unterstützen. Zwischen 4,5 und 9 Stunden werden geeignete Patienten anhand definierter automatisierter Perfusions-Mismatch-Kriterien ausgewählt; ein beliebiger positiver CTP-Befund genügt nicht.', 'Alteplase or tenecteplase may be used in eligible patients within 4.5 hours. For unknown onset, a DWI-FLAIR mismatch can support selection. Between 4.5 and 9 hours, eligible patients are selected using defined automated perfusion-mismatch criteria; any positive CTP finding is not sufficient.', 'آلتپلاز یا تنکتپلاز برای بیماران واجد شرایط تا ۴٫۵ ساعت قابل استفاده است. در زمان شروع نامشخص علائم، عدم تطابق DWI-FLAIR می‌تواند به انتخاب بیمار کمک کند. در بازه ۴٫۵ تا ۹ ساعت، بیماران واجد شرایط بر اساس معیارهای تعریف‌شده و خودکارِ عدم تطابق پرفیوژن انتخاب می‌شوند؛ هر یافته مثبت CTP کافی نیست.') },
       { title: L('Mechanische Thrombektomie', 'Mechanical thrombectomy', 'ترومبکتومی مکانیکی'), text: L('Goldstandard bei Großgefäßverschlüssen; Zeitfenster bis 24 Stunden bei entsprechendem Mismatch und vorhandener Penumbra.', 'Gold standard for large-vessel occlusion; window up to 24 hours with an appropriate mismatch and preserved penumbra.', 'استاندارد طلایی در انسداد عروق بزرگ؛ پنجره تا ۲۴ ساعت در صورت mismatch مناسب و وجود پنومبرا.') },
       { title: L('Techniken', 'Techniques', 'تکنیک‌ها'), text: L('Aspiration, Stent-Retriever oder kombiniert.', 'Aspiration, stent retriever or a combined technique.', 'آسپیراسیون، استنت رتریور یا روش ترکیبی.') },
     ],
