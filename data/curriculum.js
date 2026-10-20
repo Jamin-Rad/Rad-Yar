@@ -1603,7 +1603,7 @@ export const CURRICULUM = [
         title: { de: '2. Arterielle Erkrankungen', en: '2. Arterial Diseases', fa: '۲. بیماری‌های شریانی' },
         icon: '🔴',
         themen: [
-          { id: 'gefaesse-pavk-stenosen', title: { de: 'Atherosklerose / Stenosen (pAVK)', en: 'Atherosclerosis / Stenoses (PAD)', fa: 'آترواسکلروز / تنگی‌ها (PAD)' }, tags: ['CT','MRT','Sono','DSA'], diff: 2 },
+          { id: 'gefaesse-pavk-stenosen', title: { de: 'Atherosklerose / Stenosen (pAVK)', en: 'Atherosclerosis / Stenoses (PAD)', fa: 'آترواسکلروز / تنگی‌ها (PAD)' }, tags: ['CT','MRT','Sono','DSA'], diff: 2, link: '/msk/gefaesse/pavk-stenosen', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'gefaesse-aneurysmen', title: { de: 'Aneurysmen', en: 'Aneurysms', fa: 'آنوریسم‌ها' }, tags: ['CT','MRT','Sono'], diff: 2 },
           { id: 'gefaesse-dissektion', title: { de: 'Dissektion', en: 'Dissection', fa: 'دیسکشن' }, tags: ['CT','MRT','Sono'], diff: 2 },
           { id: 'gefaesse-akuter-verschluss', title: { de: 'Akuter Gefäßverschluss', en: 'Acute Vascular Occlusion', fa: 'انسداد حاد عروقی' }, tags: ['CT','MRT','Sono','DSA'], diff: 3 },

@@ -1,0 +1,19 @@
+.page { --lesson-accent: #bf6b52; --lesson-accent-strong: #843d34; --lesson-accent-soft: #f7e9e3; }
+.body { display: grid; gap: 1rem; }
+.body > p { margin: 0; max-width: 82ch; line-height: 1.75; }
+.tableWrap { max-width: 100%; overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+.tableWrap table { width: 100%; border-collapse: collapse; line-height: 1.65; }
+.tableWrap th, .tableWrap td { padding: .8rem 1rem; border-top: 1px solid var(--line); text-align: start; vertical-align: top; }
+.tableWrap tr:first-child th, .tableWrap tr:first-child td { border-top: 0; }
+.tableWrap th { min-width: 130px; width: 25%; color: var(--lesson-accent-strong); background: color-mix(in srgb, var(--paper) 84%, var(--lesson-accent-soft)); }
+.note { margin: 0; padding: .9rem 1rem; border-inline-start: 4px solid var(--lesson-accent); border-radius: 8px; background: color-mix(in srgb, var(--paper) 84%, var(--lesson-accent-soft)); line-height: 1.7; }
+.check { display: grid; gap: .85rem; max-width: 82ch; line-height: 1.7; }
+.check p { margin: 0; }
+.check fieldset { display: grid; gap: .7rem; border: 0; margin: 0; padding: 0; }
+.check legend { margin-bottom: .65rem; font-weight: 700; }
+.check label { display: flex; align-items: flex-start; gap: .7rem; border: 1px solid var(--line); border-radius: 10px; padding: .8rem; background: var(--paper); cursor: pointer; }
+.check input { margin-top: .35rem; accent-color: var(--lesson-accent-strong); }
+.check [role='status'] { padding: .85rem; border-inline-start: 3px solid var(--lesson-accent); background: var(--paper); border-radius: 8px; }
+.rules { display:grid; gap:.8rem; margin:0; padding-inline-start:1.5rem; line-height:1.7; }
+.body :is(button, input):focus-visible { outline: 2px solid var(--lesson-accent-strong); outline-offset: 3px; }
+@media(max-width: 520px) { .tableWrap th, .tableWrap td { padding: .65rem; } .tableWrap th { min-width: 105px; } }
