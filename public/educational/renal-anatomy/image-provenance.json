@@ -1,0 +1,11 @@
+{
+  "assetSet": "renal-anatomy-abdomen-p44-p45",
+  "source": "User-supplied Abdomen.pdf",
+  "reusePermission": "The user explicitly confirmed that figures in the supplied PDFs are cleared for reuse.",
+  "assets": [
+    { "file": "kidney-cross-section-p44.jpg", "pdfPhysicalPage": 44, "printedPage": 43, "content": "Labelled kidney cross-section: poles, cortex, medullary rays, columns, calyx, pyramid, capsule, vessels, pelvis and ureter.", "contributorOrLicenseVisible": false },
+    { "file": "collecting-system-variants-p44.jpg", "pdfPhysicalPage": 44, "printedPage": 43, "content": "Dendritic and ampullary collecting-system configurations.", "contributorOrLicenseVisible": false },
+    { "file": "ureter-narrowings-p45.jpg", "pdfPhysicalPage": 45, "printedPage": 44, "content": "Ureteric course and classically described narrowings at the ureteropelvic junction, iliac-vessel crossing and bladder entry.", "contributorOrLicenseVisible": false }
+  ],
+  "notes": "These are educational source diagrams, not diagnostic patient cases. Cropped for legibility; source labels remain German/Latin and are explained in localized captions. Contributor and image-level license details were not visible in the supplied pages."
+}

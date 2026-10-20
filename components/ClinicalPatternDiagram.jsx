@@ -34,6 +34,29 @@ function Pancreas({ variant, lang }) {
 }
 
 function Kidney({ variant, lang }) {
+  if (variant === 'renal-anatomy') {
+    const labels = {
+      de: { cortex: 'Rinde', medulla: 'Mark / Pyramiden', pelvis: 'Kelche → Becken', ureter: 'Ureter' },
+      en: { cortex: 'cortex', medulla: 'medulla / pyramids', pelvis: 'calyces → pelvis', ureter: 'ureter' },
+      fa: { cortex: 'قشر', medulla: 'مدولا / هرم‌ها', pelvis: 'کالیس‌ها / لگنچه', ureter: 'حالب' },
+    }[lang] || { cortex: 'cortex', medulla: 'medulla / pyramids', pelvis: 'calyces → pelvis', ureter: 'ureter' }
+    return <g>
+      <path d="M168 38c-43-10-74 25-68 72 5 43 42 72 77 53 19-11 22-29 14-49-7-17 7-36 2-54-3-12-12-19-25-22Z" fill="#e9b6a6" stroke={PALETTE.ink} strokeWidth="3"/>
+      <path d="M161 55c-29-6-49 20-45 48 4 29 22 48 40 38 13-8 8-22 5-34-3-13 8-34 0-45Z" fill="#f7d7ce"/>
+      <g fill="#e8b75c" stroke="#c8902f" strokeWidth="1.5">
+        <path d="m143 61 23 38-25-8Z"/><path d="m121 87 40 19-30 7Z"/><path d="m124 120 38-7-24 25Z"/><path d="m147 143 19-31-2 39Z"/>
+      </g>
+      <path d="M163 97c14 0 10-12 22-12m-22 22c13 0 11 10 22 10m-22 2c13 0 10 18 22 18m0-52v75m0-75 12-10m-12 33 13 8m-13 9 12 12" fill="none" stroke={PALETTE.blue} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M183 109h37" stroke="#c94b4b" strokeWidth="6" strokeLinecap="round"/><path d="M183 118h37" stroke="#537ca5" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M183 160v28" stroke={PALETTE.blue} strokeWidth="5" strokeLinecap="round"/>
+      <path d="M112 56h-27m20 0 7 0M117 70H89m-3 0 9-6m-9 6 9 6" stroke={PALETTE.muted} strokeWidth="1.5"/>
+      <text x="62" y="53" textAnchor="end" fill={PALETTE.ink} fontSize="11">{labels.cortex}</text>
+      <text x="62" y="76" textAnchor="end" fill={PALETTE.ink} fontSize="11">{labels.medulla}</text>
+      <text x="235" y="92" fill={PALETTE.ink} fontSize="11">{labels.pelvis}</text>
+      <path d="M217 96h13" stroke={PALETTE.muted} strokeWidth="1.5"/>
+      <text x="194" y="207" fill={PALETTE.ink} fontSize="11">{labels.ureter}</text>
+    </g>
+  }
   return <g>
     <path d="M154 47c-43-11-76 27-66 73 10 47 50 69 83 40 22-20 16-43 8-62-8-19 4-42-25-51Z" fill="#e9b6a6" stroke={PALETTE.ink} strokeWidth="3"/>
     <path d="M157 67c-25-4-43 20-37 48 5 25 23 38 39 21 10-11 8-25 4-37-4-13 9-29-6-32Z" fill="#f7d7ce"/>
@@ -222,7 +245,9 @@ function Ultrasound({ lang }) {
 }
 
 export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de', title }) {
-  const accessibleDescription = variant === 'gist'
+  const accessibleDescription = variant === 'renal-anatomy'
+    ? ({ de: 'Lernschema eines Nierenquerschnitts mit Rinde, Markpyramiden, Kelchen, Nierenbecken und Ureter.', en: 'Teaching schematic of a kidney cross-section with cortex, medullary pyramids, calyces, renal pelvis and ureter.', fa: 'شماتیک آموزشی برش کلیه با قشر، هرم‌های مدولاری، کالیس‌ها، لگنچه و حالب.' }[lang] || 'Teaching schematic of kidney anatomy.')
+    : variant === 'gist'
     ? ({ de: 'Lernschema: Der Magen ist dargestellt; eine Raumforderung wächst nach außen aus der Magenwand. Kein Patientenbild.', en: 'Teaching schematic: the stomach is shown with a mass growing outward from its wall. Not patient imaging.', fa: 'نمای شماتیک آموزشی: معده و توده‌ای که به بیرون از دیواره معده رشد می‌کند نشان داده شده‌اند؛ تصویر بیمار نیست.' }[lang] || 'Teaching schematic of a stomach with an exophytic mass; not patient imaging.')
     : title
   return <svg viewBox="0 0 400 250" role="img" aria-label={accessibleDescription} xmlns="http://www.w3.org/2000/svg">

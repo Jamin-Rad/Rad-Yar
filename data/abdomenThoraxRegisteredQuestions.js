@@ -7,6 +7,7 @@ const option = (id, text) => ({ id, text })
 // The hepatic AML and PSC/PBC drafts remain scoped to their lessons because the
 // available curriculum IDs would otherwise mislabel their questions.
 const registrations = [
+  { key: 'abdomen-renal-anatomy', fach: 'abdomen', tags: ['niere-anatomie'], extra: { de: 'Die anatomische Engstelle verursacht auch ohne Konkrement stets einen Harnstau', en: 'The anatomical narrowing always causes urinary stasis, even without a calculus', fa: 'این تنگی آناتومیک حتی بدون سنگ همیشه باعث احتباس ادرار می‌شود' } },
   { key: 'abdomen-liver-metastases', fach: 'abdomen', tags: ['lebermetastasen'], extra: { de: 'Ohne Leberzirrhose sind Lebermetastasen ausgeschlossen', en: 'Liver metastases are excluded without cirrhosis', fa: 'بدون سیروز کبدی، متاستاز کبدی رد می‌شود' } },
   { key: 'abdomen-small-bowel-feces', fach: 'abdomen', tags: ['ileus-duenndarm'], extra: { de: 'Dünndarmobstruktion, Pneumobilie und ektoper Gallenstein (Rigler-Trias)', en: 'Small-bowel obstruction, pneumobilia and an ectopic gallstone (Rigler triad)', fa: 'انسداد رودهٔ باریک، پنوموبیلی و سنگ نابجا در روده (تریاد ریگلر)' } },
   { key: 'abdomen-ileus-volvulus', fach: 'abdomen', tags: ['ileus-duenndarm', 'volvulus'], extra: { de: 'Dünndarmobstruktion, Pneumobilie und ein Stein noch in der Gallenblase', en: 'Small-bowel obstruction, pneumobilia and a stone still within the gallbladder', fa: 'انسداد روده باریک، پنوموبیلی و سنگی که هنوز داخل کیسه صفراست' } },
@@ -60,7 +61,7 @@ export const ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS = [
     { id: 'ipmn', title: { de: 'IPMN', en: 'IPMN', fa: 'IPMN' } },
   ] },
   { fachId: 'abdomen', kapitelId: 'abdomen-niere', title: { de: 'Nierenläsionen', en: 'Renal lesions', fa: 'ضایعات کلیه' }, topics: [
-    { id: 'nierenzysten', title: { de: 'Nierenzysten', en: 'Renal cysts', fa: 'کیست‌های کلیوی' } },
+    { id: 'niere-anatomie', title: { de: 'Nieren & Harnwege', en: 'Kidneys & urinary tract', fa: 'کلیه‌ها و مجاری ادراری' } }, { id: 'nierenzysten', title: { de: 'Nierenzysten', en: 'Renal cysts', fa: 'کیست‌های کلیوی' } },
   ] },
   { fachId: 'abdomen', kapitelId: 'abdomen-nebenniere', title: { de: 'Nebennierenläsionen', en: 'Adrenal lesions', fa: 'ضایعات آدرنال' }, topics: [
     { id: 'nebennieren-inzidentalom', title: { de: 'Nebenniereninzidentalom', en: 'Adrenal incidentaloma', fa: 'اینسیدنتالوم آدرنال' } }, { id: 'nebennierenadenom', title: { de: 'Nebennierenadenom', en: 'Adrenal adenoma', fa: 'آدنوم آدرنال' } },

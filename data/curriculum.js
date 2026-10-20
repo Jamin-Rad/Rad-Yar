@@ -732,7 +732,7 @@ export const CURRICULUM = [
           { id: 'pankreas-anatomie', title: { de: 'Pankreas', en: 'Pancreas', fa: 'پانکراس' }, tags: ['CT','MRT'], diff: 1 },
           { id: 'milz-anatomie', title: { de: 'Milz', en: 'Spleen', fa: 'طحال' }, tags: ['CT','MRT'], diff: 1 },
           { id: 'gi-anatomie', title: { de: 'Gastrointestinaltrakt', en: 'Gastrointestinal Tract', fa: 'دستگاه گوارش' }, tags: ['CT','MRT'], diff: 1 },
-          { id: 'niere-anatomie', title: { de: 'Nieren & Harnwege', en: 'Kidneys & Urinary Tract', fa: 'کلیه‌ها و مجاری ادراری' }, tags: ['CT','MRT'], diff: 1 },
+          { id: 'niere-anatomie', title: { de: 'Nieren & Harnwege', en: 'Kidneys & Urinary Tract', fa: 'کلیه‌ها و مجاری ادراری' }, tags: ['CT','MRT'], diff: 1, link: '/abdomen/niere/anatomie', mcqLink: '/ueben/quiz?fach=abdomen&n=1&themen=niere-anatomie', flashcardLink: '/flashcards/niere-anatomie', inProgress: true, updatedAt: '2026-10-21' },
           { id: 'nebenniere-anatomie', title: { de: 'Nebennieren', en: 'Adrenal Glands', fa: 'غدد فوق کلیوی' }, tags: ['CT','MRT'], diff: 1 },
           { id: 'retroperitoneum-anatomie', title: { de: 'Retroperitoneum', en: 'Retroperitoneum', fa: 'رتروپریتوئن' }, tags: ['CT','MRT'], diff: 1 },
           { id: 'peritoneum-anatomie', title: { de: 'Peritoneum & Kompartimente', en: 'Peritoneum & Compartments', fa: 'پریتوئن و کمپارتمان‌ها' }, tags: ['CT','MRT'], diff: 1 },
