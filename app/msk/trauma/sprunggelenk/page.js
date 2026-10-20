@@ -26,6 +26,7 @@ const CONTENT = {
       { id: 'analyse', label: 'Systematische Analyse', icon: '🔍' },
       { id: 'weber', label: 'Weber-Klassifikation', icon: '🦴' },
       { id: 'stabilitaet', label: 'Stabilität', icon: '⚠️' },
+      { id: 'sonderformen', label: 'Spezielle Frakturmuster', icon: '🧩' },
       { id: 'ct', label: 'CT-Indikationen', icon: '◫' },
       { id: 'fall', label: 'Fallbeispiel', icon: '🧪' },
       { id: 'takehome', label: 'Take home message', icon: '💡' },
@@ -82,6 +83,33 @@ const CONTENT = {
       cave: 'Weber B kann stabil oder instabil sein. Eine mediale Aufweitung oder Talusfehlstellung macht die Verletzung behandlungsrelevant instabil.',
       key: 'Nicht nur die Fraktur beschreiben: Gelenkgabel kongruent? Syndesmose weit? Mediale Verletzung? Hinterkante beteiligt?',
     },
+    specialForms: {
+      title: 'Spezielle Frakturmuster erkennen',
+      lead: 'Die Morphologie verbindet betroffene Malleolen, Syndesmosenansätze und Verletzungsmechanismus.',
+      sourceLabel: 'Quelle',
+      headers: ['Muster', 'Komponenten / Morphologie', 'Worauf achten?'],
+      rows: [
+        ['Bimalleoläre Fraktur', 'Gleichzeitige Fraktur von Außen- und Innenknöchel.', 'Beide Malleolen in der Gelenkgabel verfolgen.'],
+        ['Trimalleoläre Fraktur', 'Außenknöchel, Innenknöchel und hintere Tibiakante (posteriorer Malleolus / Volkmann-Fragment).', 'Die hintere Gelenkflächenkomponente gehört zum Muster.'],
+        ['Maisonneuve-Verletzung', 'Syndesmosenruptur → kraniale Ruptur der Membrana interossea → hohe proximale Fibulafraktur; zusätzlich Innenknöchelfraktur oder Deltoidbandriss.', 'Die Verletzungskette reicht über das Sprunggelenk hinaus bis zur proximalen Fibula.'],
+        ['Pilon-/Plafond-Fraktur', 'Trümmerfraktur der distalen tibialen Gelenkfläche durch axiale Stauchung, wenn der Talus in den tibialen Plafond einschlägt.', 'Axiale Impaktion von Rotationsverletzung unterscheiden.'],
+        ['Chaput vs. Volkmann', 'Chaput: Ausriss am anterioren Tuberculum der distalen Tibia am Ansatz des vorderen Syndesmosenbands. Volkmann: Ausriss am posterioren Tuberculum am Ansatz des hinteren Syndesmosenbands.', 'Die Zuordnung folgt dem vorderen versus hinteren Syndesmosenansatz.'],
+      ],
+      source: 'Quelle: MSK.pdf, PDF-S. 35 (gedruckte S. 34), „Spezielle Frakturformen“. Die Radiographien der Quell-Montage sind hier nicht eingebettet.',
+      diagramTitle: 'Schematische Frakturmuster am Sprunggelenk',
+      diagramDescription: 'Drei nichtdiagnostische Schemata: vordere und hintere Syndesmosenansätze, axiale Impaktion des Talus gegen den Plafond sowie ein Rotationsmechanismus.',
+      diagramNote: 'Konzeptuelle Skizze, keine Röntgenaufnahme.',
+      diagrams: [
+        'Schematische Ansicht der vorderen und hinteren Syndesmosenansätze am distalen Unterschenkel.',
+        'Schematische axiale Impaktion des Talus gegen den tibialen Plafond.',
+        'Rotationsmechanismus als Gegenüberstellung zur axialen Impaktion.',
+      ],
+      checkTitle: 'Muster erkennen',
+      checkQuestion: 'Trümmerfraktur des tibialen Plafonds nach axialer Impaktion des Talus: Welches Muster passt?',
+      checkOptions: [['pilon', 'Pilon-/Plafond-Fraktur'], ['mais', 'Maisonneuve-Verletzung'], ['bi', 'Bimalleoläre Fraktur']],
+      checkCorrect: 'Richtig: Die axiale Impaktion des Talus gegen den Plafond passt zum Pilon-Muster.',
+      checkIncorrect: 'Noch nicht: Die beschriebene axiale Impaktion mit Beteiligung des tibialen Plafonds kennzeichnet das Pilon-Muster.',
+    },
     ct: {
       title: 'Wann ist eine CT sinnvoll?',
       lead: 'Die CT ergänzt das Röntgen, wenn die knöcherne Verletzung komplex ist oder die operative Planung eine genaue Darstellung der Gelenkfläche erfordert.',
@@ -128,6 +156,7 @@ const CONTENT = {
       { id: 'analyse', label: 'Systematic review', icon: '🔍' },
       { id: 'weber', label: 'Weber classification', icon: '🦴' },
       { id: 'stabilitaet', label: 'Stability', icon: '⚠️' },
+      { id: 'sonderformen', label: 'Specific fracture patterns', icon: '🧩' },
       { id: 'ct', label: 'CT indications', icon: '◫' },
       { id: 'fall', label: 'Case', icon: '🧪' },
       { id: 'takehome', label: 'Take home message', icon: '💡' },
@@ -184,6 +213,33 @@ const CONTENT = {
       cave: 'A Weber B fracture can be stable or unstable. Medial widening or talar malalignment indicates clinically important instability.',
       key: 'Do not only describe the fracture: is the mortise congruent, the syndesmosis widened, the medial side injured, or the posterior malleolus involved?',
     },
+    specialForms: {
+      title: 'Recognise specific fracture patterns',
+      lead: 'Morphology links the involved malleoli, syndesmotic attachments and injury mechanism.',
+      sourceLabel: 'Source',
+      headers: ['Pattern', 'Components / morphology', 'What to look for'],
+      rows: [
+        ['Bimalleolar fracture', 'Concurrent fractures of the lateral and medial malleoli.', 'Trace both malleoli around the ankle mortise.'],
+        ['Trimalleolar fracture', 'Lateral malleolus, medial malleolus and posterior tibial margin (posterior malleolus / Volkmann fragment).', 'Include the posterior articular component in the pattern.'],
+        ['Maisonneuve injury', 'Syndesmotic rupture → proximal tear of the interosseous membrane → high proximal fibular fracture; with an additional medial malleolar fracture or deltoid ligament tear.', 'The injury chain extends beyond the ankle to the proximal fibula.'],
+        ['Pilon / plafond fracture', 'Comminuted distal tibial articular-surface fracture from axial impaction as the talus strikes the tibial plafond.', 'Distinguish axial impaction from a rotational injury.'],
+        ['Chaput vs Volkmann', 'Chaput: avulsion of the anterior distal tibial tubercle at the anterior syndesmotic ligament attachment. Volkmann: avulsion of the posterior tubercle at the posterior syndesmotic ligament attachment.', 'The distinction follows the anterior versus posterior syndesmotic attachment.'],
+      ],
+      source: 'Source: MSK.pdf, PDF p. 35 (printed p. 34), “Spezielle Frakturformen”. The radiographs in the source montage are not embedded here.',
+      diagramTitle: 'Schematic ankle fracture patterns',
+      diagramDescription: 'Three non-diagnostic schematics: anterior and posterior syndesmotic attachments, axial talar impaction against the plafond, and a rotational mechanism.',
+      diagramNote: 'Conceptual schematic, not a radiograph.',
+      diagrams: [
+        'Schematic view of anterior and posterior syndesmotic attachments at the distal leg.',
+        'Schematic axial impaction of the talus against the tibial plafond.',
+        'Rotational mechanism shown in contrast to axial impaction.',
+      ],
+      checkTitle: 'Identify the pattern',
+      checkQuestion: 'Comminuted tibial plafond fracture after axial talar impaction: which pattern fits?',
+      checkOptions: [['pilon', 'Pilon / plafond fracture'], ['mais', 'Maisonneuve injury'], ['bi', 'Bimalleolar fracture']],
+      checkCorrect: 'Correct: axial impaction of the talus against the plafond fits the pilon pattern.',
+      checkIncorrect: 'Not quite: axial impaction with tibial plafond involvement describes the pilon pattern.',
+    },
     ct: {
       title: 'When is CT useful?',
       lead: 'CT complements radiography when the fracture is complex or accurate articular mapping is needed for surgical planning.',
@@ -227,12 +283,45 @@ CONTENT.fa = {
   subtitle: 'تصویربرداری سیستماتیک، طبقه‌بندی Weber و ارزیابی پایداری شکستگی‌های مچ پا',
   keyLabel: 'نکته مهم',
   caveLabel: 'احتیاط',
+  sections: CONTENT.en.sections.map(section => section.id === 'sonderformen' ? { ...section, label: 'الگوهای ویژه شکستگی' } : section),
+  specialForms: {
+    title: 'الگوهای ویژه شکستگی را بشناسید',
+    lead: 'مورفولوژی، قوزک‌های درگیر، محل اتصال سندسموز و مکانیسم آسیب را به هم پیوند می‌دهد.',
+    sourceLabel: 'منبع',
+    headers: ['الگو', 'اجزا / مورفولوژی', 'نکته‌ای که باید دید'],
+    rows: [
+      ['شکستگی دو قوزکی', 'شکستگی هم‌زمان قوزک خارجی و داخلی.', 'هر دو قوزک را در امتداد مفصل مچ دنبال کنید.'],
+      ['شکستگی سه‌قوزکی', 'قوزک خارجی، قوزک داخلی و لبه خلفی تیبیا (قوزک خلفی / قطعه Volkmann).', 'جزء خلفی سطح مفصلی را در الگو بگنجانید.'],
+      ['آسیب Maisonneuve', 'پارگی سندسموز → پارگی کرانیال غشای بین‌استخوانی → شکستگی بالای بخش پروگزیمال فیبولا؛ همراه با شکستگی قوزک داخلی یا پارگی لیگامان دلتوئید.', 'زنجیره آسیب از مچ عبور می‌کند و تا فیبولای پروگزیمال ادامه می‌یابد.'],
+      ['شکستگی Pilon / plafond', 'شکستگی خردشده سطح مفصلی انتهای دیستال تیبیا بر اثر فشار محوری، هنگامی که تالوس به سقف تیبیا ضربه می‌زند.', 'فشار محوری را از آسیب چرخشی تفکیک کنید.'],
+      ['Chaput در برابر Volkmann', 'Chaput: کندگی تکمه قدامی انتهای دیستال تیبیا در محل اتصال لیگامان قدامی سندسموز. Volkmann: کندگی تکمه خلفی در محل اتصال لیگامان خلفی سندسموز.', 'تفاوت بر اساس محل اتصال قدامی در برابر خلفی سندسموز است.'],
+    ],
+    source: 'منبع: MSK.pdf، صفحه PDF شماره ۳۵ (صفحه چاپی ۳۴)، «Spezielle Frakturformen». رادیوگرافی‌های مونتاژ منبع در اینجا درج نشده‌اند.',
+    diagramTitle: 'الگوهای شماتیک شکستگی مچ پا',
+    diagramDescription: 'سه شماتیک غیرتشخیصی: اتصال‌های قدامی و خلفی سندسموز، فشار محوری تالوس بر plafond و مکانیسم چرخشی.',
+    diagramNote: 'شماتیک مفهومی است و رادیوگرافی نیست.',
+    diagrams: [
+      'نمای شماتیک اتصال‌های قدامی و خلفی سندسموز در بخش دیستال ساق.',
+      'شماتیک فشار محوری تالوس بر سطح مفصلی انتهای دیستال تیبیا.',
+      'مکانیسم چرخشی در مقایسه با فشار محوری.',
+    ],
+    checkTitle: 'الگو را تشخیص دهید',
+    checkQuestion: 'شکستگی خردشده سطح مفصلی تیبیا پس از برخورد محوری تالوس: کدام الگو مناسب است؟',
+    checkOptions: [['pilon', 'شکستگی Pilon / plafond'], ['mais', 'آسیب Maisonneuve'], ['bi', 'شکستگی دو قوزکی']],
+    checkCorrect: 'درست است: فشار محوری تالوس به plafond با الگوی Pilon سازگار است.',
+    checkIncorrect: 'هنوز نه: فشار محوری همراه درگیری سطح مفصلی انتهای دیستال تیبیا، الگوی Pilon را توصیف می‌کند.',
+  },
 }
 
 const READ_COPY = {
   de: { mark: 'Als gelesen markieren', read: 'Als gelesen markiert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
   en: { mark: 'Mark as read', read: 'Marked as read', error: 'Please sign in to save your learning progress.', signIn: 'Sign in' },
   fa: { mark: 'علامت‌گذاری به‌عنوان خوانده‌شده', read: 'به‌عنوان خوانده‌شده علامت‌گذاری شد', error: 'برای ذخیره پیشرفت یادگیری لطفاً وارد شوید.', signIn: 'ورود' },
+}
+
+export function getPatternCheckFeedback(answer, copy) {
+  if (!answer) return null
+  return answer === 'pilon' ? copy.specialForms.checkCorrect : copy.specialForms.checkIncorrect
 }
 
 function ReadButton({ isRead, onClick, authError }) {
@@ -291,6 +380,31 @@ function CaseImages({ copy }) {
   )
 }
 
+function PatternDiagram({ copy }) {
+  return (
+    <figure className={styles.patternDiagram}>
+      <svg viewBox="0 0 720 190" role="img" aria-labelledby="ankle-pattern-diagram-title ankle-pattern-diagram-desc">
+        <title id="ankle-pattern-diagram-title">{copy.specialForms.diagramTitle}</title>
+        <desc id="ankle-pattern-diagram-desc">{copy.specialForms.diagramDescription}</desc>
+        <g fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M85 22v72l-22 18m22-18 22 18M175 22v72l-22 18m22-18 22 18" />
+          <path d="M310 24h64v66l-12 14h-40l-12-14zM315 116q27-28 54 0l-7 30h-40z" />
+          <path d="M520 24h62v69l-10 14h-42l-10-14zM525 116q27-28 54 0l-7 30h-40z" />
+        </g>
+        <g fill="none" stroke="#f97316" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M63 109L85 94l22 15M153 109l22-15 22 15" />
+          <path d="M343 148v-28m-10 12 10-12 10 12" />
+          <path d="M495 73a47 47 0 0 1 68-42m-12-6 13 5-4 14" />
+        </g>
+      </svg>
+      <figcaption className={styles.patternDiagramCaptions}>
+        {copy.specialForms.diagrams.map((caption, index) => <span key={index}>{caption}</span>)}
+      </figcaption>
+      <small>{copy.specialForms.diagramNote}</small>
+    </figure>
+  )
+}
+
 function Section({ id, title, lead, children }) {
   const isMobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
@@ -325,6 +439,7 @@ export default function SprunggelenkTraumaPage() {
   const isRTL = lang === 'fa'
   const [activeId, setActiveId] = useState(copy.sections[0].id)
   const { isRead, toggleRead, authError } = useLessonReadStatus('osg-fraktur')
+  const [patternAnswer, setPatternAnswer] = useState(null)
   const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
   const sectionIds = useMemo(() => copy.sections.map(section => section.id), [copy.sections])
 
@@ -414,6 +529,24 @@ export default function SprunggelenkTraumaPage() {
             <Table headers={copy.stability.headers} rows={copy.stability.rows} />
             <Callout type="cave" label={copy.caveLabel}>{copy.stability.cave}</Callout>
             <Callout label={copy.keyLabel}>{copy.stability.key}</Callout>
+          </Section>
+
+          <Section id="sonderformen" title={copy.specialForms.title} lead={copy.specialForms.lead}>
+            <PatternDiagram copy={copy} />
+            <Table headers={copy.specialForms.headers} rows={copy.specialForms.rows} />
+            <Callout label={copy.specialForms.sourceLabel}>{copy.specialForms.source}</Callout>
+            <section className={styles.patternCheck} aria-labelledby="ankle-pattern-check-title">
+              <h3 id="ankle-pattern-check-title">{copy.specialForms.checkTitle}</h3>
+              <p>{copy.specialForms.checkQuestion}</p>
+              <div className={styles.patternOptions}>
+                {copy.specialForms.checkOptions.map(([id, label]) => (
+                  <button key={id} type="button" aria-pressed={patternAnswer === id} onClick={() => setPatternAnswer(id)}>{label}</button>
+                ))}
+              </div>
+              <div role="status" aria-live="polite" aria-atomic="true">
+                {getPatternCheckFeedback(patternAnswer, copy) && <p className={styles.patternFeedback}>{getPatternCheckFeedback(patternAnswer, copy)}</p>}
+              </div>
+            </section>
           </Section>
 
           <Section id="ct" title={copy.ct.title} lead={copy.ct.lead}>

@@ -417,6 +417,31 @@
 
 .table tr:last-child td { border-bottom: 0; }
 
+.patternDiagram {
+  margin: 20px 0;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg-card);
+  color: var(--text-strong);
+}
+.patternDiagram svg { display: block; width: 100%; max-height: 190px; color: #64748b; }
+.patternDiagramCaptions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 10px; }
+.patternDiagramCaptions span { color: var(--text-soft); font-size: 13px; line-height: 1.55; }
+.patternDiagram small { display: block; margin-top: 10px; color: var(--text-muted); }
+.patternCheck { margin-top: 20px; padding: 20px; border: 1px solid var(--border); border-radius: 20px; background: var(--surface-soft); }
+.patternCheck h3 { margin: 0 0 8px; color: var(--text-strong); }
+.patternCheck > p { margin: 0 0 14px; color: var(--text-soft); line-height: 1.65; }
+.patternOptions { display: flex; flex-wrap: wrap; gap: 10px; }
+.patternOptions button { min-height: 44px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); color: var(--text); font: inherit; font-weight: 800; cursor: pointer; }
+.patternOptions button[aria-pressed='true'] { border-color: #f97316; box-shadow: 0 0 0 2px rgba(249,115,22,.15); }
+.patternFeedback { margin: 14px 0 0; color: var(--text-strong); line-height: 1.65; }
+@media (max-width: 760px) {
+  .patternDiagramCaptions { grid-template-columns: 1fr; gap: 6px; }
+  .patternDiagram { padding: 14px; }
+  .patternCheck { padding: 16px; }
+}
+
 .callout {
   margin-top: 18px;
   border-radius: 22px;
