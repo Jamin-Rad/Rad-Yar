@@ -162,6 +162,26 @@ const DIVERTICULITIS_QUESTION_CONTENT = [
     },
   },
   {
+    id: 'cdd-3c',
+    question: {
+      de: 'Bei rezidivierender Divertikulitis zeigt die CT eine entzündliche Stenose. Welcher CDD-Typ passt am besten?',
+      en: 'In recurrent diverticulitis, CT shows an inflammatory stenosis. Which CDD type best fits?',
+      fa: 'در دیورتیکولیت عودکننده، CT یک تنگی التهابی نشان می‌دهد. کدام نوع CDD مناسب‌تر است؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'CDD 3a – symptomatische unkomplizierte Divertikelkrankheit', en: 'CDD 3a – symptomatic uncomplicated diverticular disease', fa: 'CDD 3a – بیماری دیورتیکولی علامت‌دار بدون عارضه' } },
+      { id: 'B', text: { de: 'CDD 3b – rezidivierende Divertikulitis ohne Komplikationen', en: 'CDD 3b – recurrent diverticulitis without complications', fa: 'CDD 3b – دیورتیکولیت عودکننده بدون عارضه' } },
+      { id: 'C', text: { de: 'CDD 3c – rezidivierende Divertikulitis mit Komplikationen', en: 'CDD 3c – recurrent diverticulitis with complications', fa: 'CDD 3c – دیورتیکولیت عودکننده همراه عارضه' } },
+      { id: 'D', text: { de: 'CDD 2a – akute komplizierte Divertikulitis mit Mikroabszess', en: 'CDD 2a – acute complicated diverticulitis with microabscess', fa: 'CDD 2a – دیورتیکولیت حاد پیچیده همراه میکروآبسه' } },
+    ],
+    correct: 'C',
+    explanation: {
+      de: 'Die PDF nennt Stenose, Fistel und entzündliches Konglomerat als Komplikationen der rezidivierenden Divertikulitis Typ 3c. Typ 2a bezeichnet dagegen eine akute komplizierte Episode mit Mikroabszess beziehungsweise gedeckter Perforation.',
+      en: 'The PDF lists stenosis, fistula and inflammatory conglomerate as complications of recurrent type 3c disease. Type 2a instead denotes an acute complicated episode with microabscess or contained perforation.',
+      fa: 'PDF تنگی، فیستول و توده التهابی را از عوارض نوع 3c عودکننده می‌داند. نوع 2a در مقابل به دوره حاد پیچیده همراه میکروآبسه یا پرفوراسیون مهارشده اشاره دارد.',
+    },
+  },
+  {
     id: 'macroabscess',
     question: {
       de: 'Ab welcher Abszessgröße wird in der CDD-Klassifikation von einem Makroabszess gesprochen?',

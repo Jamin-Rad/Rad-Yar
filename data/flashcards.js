@@ -367,6 +367,14 @@ const DIVERTICULITIS_FLASHCARD_CONTENT = [
     diagram: { de: '≤3 cm → 2a\n>3 cm → 2b\nfreie Perforation → 2c', en: '≤3 cm → 2a\n>3 cm → 2b\nfree perforation → 2c', fa: '≤۳ سانتی‌متر → 2a\n>۳ سانتی‌متر → 2b\nپرفوراسیون آزاد → 2c' },
   },
   {
+    id: 'cdd-3',
+    category: { de: 'CDD', en: 'CDD', fa: 'CDD' },
+    front: { de: 'Wie unterscheiden sich CDD 3a, 3b und 3c?', en: 'How do CDD types 3a, 3b and 3c differ?', fa: 'تفاوت CDD نوع 3a، 3b و 3c چیست؟' },
+    answer: { de: '3a: symptomatische unkomplizierte Divertikelkrankheit (SUDD). 3b: rezidivierende Divertikulitis ohne Komplikation. 3c: rezidivierende Divertikulitis mit Komplikation.', en: '3a: symptomatic uncomplicated diverticular disease (SUDD). 3b: recurrent diverticulitis without complications. 3c: recurrent diverticulitis with complications.', fa: '3a: بیماری دیورتیکولی علامت‌دار بدون عارضه (SUDD). 3b: دیورتیکولیت عودکننده بدون عارضه. 3c: دیورتیکولیت عودکننده همراه عارضه.' },
+    explanation: { de: 'Die PDF-Übersicht nennt Stenose, Fistel oder entzündliches Konglomerat als Komplikationen von Typ 3c. Abszess oder freie Perforation sind dagegen akute Komplikationen und gehören zu Typ 2.', en: 'The PDF overview lists stenosis, fistula or an inflammatory conglomerate as complications of type 3c. An abscess or free perforation is an acute complication classified under type 2.', fa: 'در نمای کلی PDF، تنگی، فیستول یا توده التهابی از عوارض نوع 3c هستند. آبسه یا پرفوراسیون آزاد عارضه حاد است و در نوع ۲ طبقه‌بندی می‌شود.' },
+    diagram: { de: '3a → SUDD\n3b → Rezidive ohne Komplikation\n3c → Rezidive mit Komplikation', en: '3a → SUDD\n3b → recurrence without complications\n3c → recurrence with complications', fa: '3a → SUDD\n3b → عود بدون عارضه\n3c → عود همراه عارضه' },
+  },
+  {
     id: 'abscess',
     category: { de: 'Komplikationen', en: 'Complications', fa: 'عوارض' },
     front: { de: 'Wie sieht ein divertikulitischer Abszess in der CT aus?', en: 'How does a diverticular abscess appear on CT?', fa: 'آبسه ناشی از دیورتیکولیت در CT چگونه دیده می‌شود؟' },
