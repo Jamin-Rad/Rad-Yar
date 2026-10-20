@@ -1,0 +1,16 @@
+{
+  "asset": "/educational/arachnoiditis-pdf-case-p17.png",
+  "source_document": "Wirbelsäule.pdf",
+  "physical_pdf_page": 17,
+  "printed_page": 16,
+  "source_identifier_visible_on_page": "rID:14055",
+  "source_case_url": "https://radiopaedia.org/cases/14055",
+  "source_caption": "The PDF labels the axial MRI as showing arachnoiditis with an empty-theca sign.",
+  "sequence": "Not specified on the PDF page; no sequence is assigned in the lesson.",
+  "contributor": "Not visible on the supplied PDF page; not independently verified.",
+  "external_license": "Not established from the supplied PDF page; not independently verified.",
+  "project_reuse_basis": "User explicitly authorized reuse of images contained in the supplied PDFs for RadYar lessons.",
+  "crop": "The axial MRI image area on physical p.17 was cropped from a 240-dpi page rendering. The crop excludes surrounding PDF text, watermark, and the embedded black scanner/viewer footer with page overlay; no diagnostic pixels were edited.",
+  "selection_rationale": "The source page explicitly captions this single axial MRI as an arachnoiditis/empty-theca example. It is used only to orient the learner to that source-described pattern; it does not establish extent, cause, or clinical severity.",
+  "review_limit": "Single source image; the contributor and external license remain unverified."
+}

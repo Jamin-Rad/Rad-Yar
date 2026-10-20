@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 390" role="img" aria-labelledby="title desc">
+  <title id="title">Axial nerve-root pattern schematic</title>
+  <desc id="desc">Three non-diagnostic diagrams of nerve-root distribution inside the thecal sac.</desc>
+  <defs>
+    <linearGradient id="wash" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5f9fb"/><stop offset="1" stop-color="#e7f1f5"/></linearGradient>
+  </defs>
+  <rect x="8" y="8" width="944" height="374" rx="28" fill="url(#wash)" stroke="#cbd9e2" stroke-width="3"/>
+  <g fill="#315d73" font-family="Arial, sans-serif" font-size="26" font-weight="700" text-anchor="middle">
+    <text x="190" y="58">I</text><text x="480" y="58">II</text><text x="770" y="58">III</text>
+  </g>
+  <g fill="#fff" stroke="#7f9dae" stroke-width="10">
+    <circle cx="190" cy="220" r="105"/><circle cx="480" cy="220" r="105"/><circle cx="770" cy="220" r="105"/>
+  </g>
+  <g fill="#a34d7b" stroke="#fff" stroke-width="4">
+    <circle cx="164" cy="207" r="15"/><circle cx="190" cy="195" r="15"/><circle cx="216" cy="207" r="15"/><circle cx="175" cy="234" r="15"/><circle cx="205" cy="234" r="15"/>
+    <circle cx="480" cy="126" r="13"/><circle cx="542" cy="148" r="13"/><circle cx="572" cy="205" r="13"/><circle cx="545" cy="270" r="13"/><circle cx="480" cy="310" r="13"/><circle cx="418" cy="270" r="13"/><circle cx="388" cy="205" r="13"/><circle cx="418" cy="148" r="13"/>
+  </g>
+  <path d="M706 220c20-31 37-46 64-46 24 0 42 16 62 46-20 30-38 46-62 46-27 0-44-15-64-46Z" fill="#a34d7b" stroke="#fff" stroke-width="5"/>
+  <g fill="#5d7788" font-family="Arial, sans-serif" font-size="17" text-anchor="middle">
+
+  </g>
+</svg>
