@@ -254,6 +254,7 @@ export default function FrakturenKindesalterPage() {
           {/* SALTER-HARRIS */}
           <Section id="salter-harris" title={c(D.salterHarris.title)} lead={c(D.salterHarris.lead)}>
             <SchemaImage src={D.salterHarris.schema.src} alt={c(D.salterHarris.schema.alt)} copy={copy} />
+            <p style={{ margin: '0.25rem 0 1rem', fontSize: '0.9rem', opacity: 0.78 }}>{c(D.salterHarris.schema.note)}</p>
             <Table headers={D.salterHarris.headers.map(c)} rows={rows(D.salterHarris.rows)} />
             <Callout label={c(D.keyLabel)}>{c(D.salterHarris.key)}</Callout>
             <Callout label={c(D.caveLabel)} cave>{c(D.salterHarris.cave)}</Callout>
@@ -262,6 +263,7 @@ export default function FrakturenKindesalterPage() {
           {/* SCHAFTSFRAKTUREN */}
           <Section id="schaft" title={c(D.schaft.title)} lead={c(D.schaft.lead)}>
             <SchemaImage src={D.schaft.schema.src} alt={c(D.schaft.schema.alt)} copy={copy} />
+            <p style={{ margin: '0.25rem 0 1rem', fontSize: '0.9rem', opacity: 0.78 }}>{c(D.schaft.schema.note)}</p>
             <Table headers={D.schaft.headers.map(c)} rows={rows(D.schaft.rows)} />
             <CaseGallery
               title={c(D.schaft.wulstCase.title)}
@@ -319,6 +321,7 @@ export default function FrakturenKindesalterPage() {
                 <strong>{c({ de: 'Alter:', en: 'Age:', fa: 'سن:' })}</strong> {c(D.uebergang.triplane.age)}
               </p>
               <SchemaImage src={D.uebergang.triplane.schema.src} alt={c(D.uebergang.triplane.schema.alt)} copy={copy} />
+              <p style={{ margin: '0.25rem 0 1rem', fontSize: '0.9rem', opacity: 0.78 }}>{c(D.uebergang.triplane.schema.note)}</p>
               <CaseGallery
                 title={c(D.uebergang.triplane.caseTitle)}
                 images={D.uebergang.triplane.images.map(img => ({ ...img, caption: c(img.caption) }))}
@@ -326,6 +329,11 @@ export default function FrakturenKindesalterPage() {
                 copy={copy}
                 lang={lang}
               />
+            </div>
+
+            <div style={{ marginTop: '1.5rem', padding: '1rem', border: '1px solid rgba(255,255,255,0.14)', borderRadius: '10px' }}>
+              <h3 style={{ fontSize: '1rem', marginTop: 0, marginBottom: '0.5rem', color: '#d97706' }}>{c(D.uebergang.twoPlane.title)}</h3>
+              <p style={{ margin: 0 }}>{c(D.uebergang.twoPlane.text)}</p>
             </div>
 
             <Callout label={c(D.caveLabel)} cave>{c(D.uebergang.cave)}</Callout>
@@ -345,6 +353,15 @@ export default function FrakturenKindesalterPage() {
               ))}
             </div>
           </Section>
+
+          <section aria-labelledby="further-reading" style={{ marginTop: '2rem', padding: '1rem', border: '1px solid rgba(255,255,255,0.14)', borderRadius: '10px' }}>
+            <h2 id="further-reading">{c(D.sources.title)}</h2>
+            <ul style={{ display: 'grid', gap: '0.5rem', paddingInlineStart: '1.25rem' }}>
+              {D.sources.items.map((source) => (
+                <li key={source.href}><a href={source.href} target="_blank" rel="noreferrer">{c(source.label)}</a></li>
+              ))}
+            </ul>
+          </section>
 
           <div className={styles.readBarBottom}>
             <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} />

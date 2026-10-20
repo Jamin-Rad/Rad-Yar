@@ -16,14 +16,14 @@ export const FRAKTUR_KINDER_LESSON = {
 
   heroCards: [
     {
-      value: L('15–25 %', '15–25 %', '۱۵–۲۵ %'),
-      label: L('Physenbeteiligung', 'Physeal involvement', 'درگیری صفحه رشد'),
-      text: L('aller Kinderfrakturen', 'of all paediatric fractures', 'از تمام شکستگی‌های کودکان'),
+      value: L('Physis', 'Physis', 'فیزیس'),
+      label: L('Wachstumsfuge', 'growth plate', 'صفحهٔ رشد'),
+      text: L('eigene Frakturmuster', 'distinct injury patterns', 'الگوهای آسیب ویژه'),
     },
     {
       value: L('Typ II', 'Type II', 'نوع II'),
       label: L('Salter-Harris', 'Salter-Harris', 'سالتر-هریس'),
-      text: L('häufigster Typ (≈ 75 %)', 'most common type (≈ 75 %)', 'شایع‌ترین نوع (≈ ۷۵ %)'),
+      text: L('häufigster Typ', 'most common type', 'شایع‌ترین نوع'),
     },
     {
       value: L('Toddler', 'Toddler', 'توددلر'),
@@ -96,50 +96,51 @@ export const FRAKTUR_KINDER_LESSON = {
   salterHarris: {
     title: L('Salter-Harris-Klassifikation', 'Salter-Harris Classification', 'طبقه‌بندی سالتر-هریس'),
     lead: L(
-      'Die Salter-Harris-Klassifikation beschreibt Physenverletzungen bei Kindern in 5 Typen. Je höher der Typ, desto höher das Risiko einer Wachstumsstörung.',
-      'The Salter-Harris classification describes physeal injuries in children in 5 types. The higher the type, the higher the risk of growth disturbance.',
-      'طبقه‌بندی سالتر-هریس آسیب‌های فیزیس کودکان را در ۵ نوع توصیف می‌کند. هر چه نوع بالاتر، خطر اختلال رشد بیشتر.'
+      'Die Klassifikation beschreibt fünf Frakturverläufe durch die Physis. Das Risiko einer Wachstumsstörung hängt vom Typ und der konkreten Verletzung ab; Typ III/IV reichen in die Gelenkfläche, Typ V kann initial subtil sein.',
+      'The classification describes five fracture paths involving the physis. Growth-disturbance risk depends on type and the specific injury; types III/IV reach the joint surface, while type V may be subtle initially.',
+      'این طبقه‌بندی پنج مسیر شکستگی درگیرکنندهٔ فیزیس را توصیف می‌کند. خطر اختلال رشد به نوع و آسیب مشخص بستگی دارد؛ انواع III/IV به سطح مفصلی می‌رسند و نوع V ممکن است در ابتدا ظریف باشد.'
     ),
     schema: {
       src: '/frakturen-kindesalter/salter-harris-schema.png',
       alt: L('Salter-Harris Klassifikation Schema (Typ I–V)', 'Salter-Harris Classification Diagram (Type I–V)', 'شمای طبقه‌بندی سالتر-هریس (نوع I–V)'),
+      note: L('I: Physis · II: Physis + Metaphyse · III: Physis + Epiphyse · IV: Metaphyse + Physis + Epiphyse · V: Kompression der Physis', 'I: physis · II: physis + metaphysis · III: physis + epiphysis · IV: metaphysis + physis + epiphysis · V: physeal compression', 'I: فیزیس · II: فیزیس + متافیز · III: فیزیس + اپی‌فیز · IV: متافیز + فیزیس + اپی‌فیز · V: فشار فیزیس'),
     },
     headers: [
       L('Typ', 'Type', 'نوع'),
       L('Mnemonic', 'Mnemonic', 'یادآوری'),
       L('Frakturlinie', 'Fracture line', 'خط شکستگی'),
-      L('Prognose / Häufigkeit', 'Prognosis / Frequency', 'پیش‌آگهی / فراوانی'),
+      L('Bildgebung / Risiko', 'Imaging / risk', 'تصویربرداری / خطر'),
     ],
     rows: [
       [
         L('I', 'I', 'I'),
         L('S – Straight (Slip)', 'S – Straight (Slip)', 'S – مستقیم (لغزش)'),
         L('Rein physäre Fraktur, Metaphyse/Epiphyse intakt', 'Pure physeal fracture, metaphysis/epiphysis intact', 'شکستگی خالص فیزیال، متافیز/اپی‌فیز سالم'),
-        L('Gut; Röntgen oft negativ (5 %)', 'Good; X-ray often negative (5 %)', 'خوب؛ رادیوگرافی اغلب منفی (۵ %)'),
+        L('Röntgen kann unauffällig sein; ggf. indirekte Physenverbreiterung im Seitenvergleich', 'X-ray may be normal; indirect physeal widening may be seen relative to the other side', 'رادیوگرافی ممکن است طبیعی باشد؛ گاهی پهن‌شدن غیرمستقیم فیزیس در مقایسه با سمت مقابل دیده می‌شود'),
       ],
       [
         L('II', 'II', 'II'),
         L('A – Above (Metaphyse)', 'A – Above (Metaphysis)', 'A – بالا (متافیز)'),
         L('Linie durch Physis + Metaphysenfragment (Thurston-Holland-Zeichen)', 'Line through physis + metaphyseal fragment (Thurston-Holland sign)', 'خط از طریق فیزیس + قطعه متافیز (نشانه تورستون-هولاند)'),
-        L('Sehr gut; häufigster Typ (≈ 75 %)', 'Excellent; most common type (≈ 75 %)', 'بسیار خوب؛ شایع‌ترین نوع (≈ ۷۵ %)'),
+        L('Häufigster Typ; meist günstiger Verlauf', 'Most common type; usually favourable course', 'شایع‌ترین نوع؛ معمولاً سیر مطلوب'),
       ],
       [
         L('III', 'III', 'III'),
         L('L – Lower (Epiphyse)', 'L – Lower (Epiphysis)', 'L – پایین (اپی‌فیز)'),
         L('Linie durch Physis + Epiphyse, intraartikulär', 'Line through physis + epiphysis, intra-articular', 'خط از طریق فیزیس + اپی‌فیز، داخل مفصل'),
-        L('Risiko für Arthrose/Wachstumsstörung; Gelenkstufe und Reposition beurteilen, je nach Ort/Dislokation ggf. operativ (PDF S. 5).', 'Risk of arthritis/growth disturbance; assess articular step and reduction, with surgery depending on site/displacement (PDF p. 5).', 'خطر آرتروز/اختلال رشد؛ پله مفصلی و جااندازی را ارزیابی کنید و بسته به محل/جابجایی ممکن است جراحی لازم باشد (PDF صفحه ۵).'),
+        L('Intraartikulär: Gelenkfläche und mögliches Risiko für Wachstumsstörung beachten.', 'Intra-articular: note the joint surface and possible risk of growth disturbance.', 'داخل‌مفصلی: سطح مفصل و احتمال خطر اختلال رشد را در نظر بگیرید.'),
       ],
       [
         L('IV', 'IV', 'IV'),
         L('T – Through (Komplett)', 'T – Through (Complete)', 'T – از طریق (کامل)'),
         L('Durchläuft Metaphyse, Physis und Epiphyse (T-förmig)', 'Runs through metaphysis, physis, and epiphysis (T-shaped)', 'از متافیز، فیزیس و اپی‌فیز عبور می‌کند (T شکل)'),
-        L('Schlecht; hohe Gefahr der Wachstumsfugenverschluss (10 %)', 'Poor; high risk of physeal bar formation (10 %)', 'ضعیف؛ خطر بالای تشکیل بار فیزیال (۱۰ %)'),
+        L('Gelenkbeteiligung; Risiko einer Wachstumsstörung', 'Joint involvement; risk of growth disturbance', 'درگیری مفصل؛ خطر اختلال رشد'),
       ],
       [
         L('V', 'V', 'V'),
         L('R – Rammed (Kompression)', 'R – Rammed (Compression)', 'R – کوبیده شده (فشاری)'),
         L('Kompressionsverletzung der Physis, Röntgen oft unauffällig', 'Compression injury of the physis, X-ray often unremarkable', 'آسیب فشاری به فیزیس، رادیوگرافی اغلب طبیعی'),
-        L('Sehr schlecht; häufig Wachstumsstörung (< 1 %)', 'Very poor; growth disturbance common (< 1 %)', 'بسیار ضعیف؛ اختلال رشد شایع (< ۱ %)'),
+        L('Kompression oft initial subtil; Physenverschmälerung kann später auffallen, Wachstumsstörung möglich', 'Compression can be subtle initially; physeal narrowing may become apparent later, and growth disturbance can occur', 'فشار ممکن است در ابتدا ظریف باشد؛ باریک‌شدن فیزیس می‌تواند بعداً آشکار شود و اختلال رشد ممکن است رخ دهد'),
       ],
     ],
     key: L(
@@ -148,22 +149,23 @@ export const FRAKTUR_KINDER_LESSON = {
       'یادآوری SALTR: S = مستقیم (I)، A = بالای متافیز (II)، L = پایین اپی‌فیز (III)، T = از طریق همه (IV)، R = کوبیده/فشاری (V).'
     ),
     cave: L(
-      'Typ V ist retrospektiv – auf Röntgen oft nicht erkennbar. Diagnose erst bei Wachstumsstörung im Verlauf.',
-      'Type V is retrospective – often not visible on X-ray. Diagnosis only confirmed when growth disturbance appears at follow-up.',
-      'نوع V گذشته‌نگر است – اغلب روی رادیوگرافی قابل تشخیص نیست. تشخیص تنها هنگام بروز اختلال رشد در پیگیری تأیید می‌شود.'
+      'Typ V kann initial radiologisch subtil sein; eine Physenverschmälerung oder Wachstumsstörung kann sich erst im Verlauf zeigen. Ein unauffälliges Erstbild schließt die Verletzung nicht sicher aus.',
+      'Type V can be radiologically subtle at first; physeal narrowing or growth disturbance may only become visible over time. A normal initial image does not reliably exclude the injury.',
+      'نوع V ممکن است در ابتدا در رادیوگرافی ظریف باشد؛ باریک‌شدن فیزیس یا اختلال رشد می‌تواند در پیگیری آشکار شود. تصویر اولیهٔ طبیعی آسیب را با اطمینان رد نمی‌کند.'
     ),
   },
 
   schaft: {
     title: L('Schaftsfrakturen: Wulst- und Grünholzfraktur', 'Shaft Fractures: Torus and Greenstick', 'شکستگی دیافیز: توروس و گرین‌استیک'),
     lead: L(
-      'Die erhöhte Knochenelastizität bei Kindern führt zu zwei charakteristischen, bei Erwachsenen nicht vorkommenden Frakturmustern.',
-      'The increased bone elasticity in children leads to two characteristic fracture patterns that do not occur in adults.',
-      'الاستیسیته افزایش‌یافته استخوان در کودکان منجر به دو الگوی شکستگی مشخص می‌شود که در بزرگسالان دیده نمی‌شوند.'
+      'Die erhöhte Knochenelastizität führt bei Kindern zu charakteristischen Mustern wie Wulst- und Grünholzfrakturen; diese sind bei Kindern deutlich häufiger als bei Erwachsenen.',
+      'Increased bone elasticity produces characteristic patterns such as Torus and Greenstick fractures in children; these are far more common in children than in adults.',
+      'الاستیسیتهٔ بیشتر استخوان در کودکان الگوهای شاخصی مانند توروس و گرین‌استیک ایجاد می‌کند؛ این الگوها در کودکان بسیار شایع‌تر از بزرگسالان هستند.'
     ),
     schema: {
       src: '/frakturen-kindesalter/wulst-vs-gruenholz-schema.png',
       alt: L('Wulstfraktur vs. Grünholzfraktur – schematischer Vergleich', 'Torus vs. Greenstick Fracture – schematic comparison', 'شکستگی توروس در مقابل گرین‌استیک – مقایسه شماتیک'),
+      note: L('Torus: kortikale Aufwerfung ohne vollständige Unterbrechung. Grünholz: eine Kortikalis unterbrochen, die Gegenseite gebogen.', 'Torus: cortical buckling without complete disruption. Greenstick: one cortex disrupted, opposite side bent.', 'توروس: برجستگی کورتکس بدون قطع کامل. گرین‌استیک: یک کورتکس قطع و سمت مقابل خمیده است.'),
     },
     headers: [
       L('Merkmal', 'Feature', 'ویژگی'),
@@ -172,29 +174,19 @@ export const FRAKTUR_KINDER_LESSON = {
     ],
     rows: [
       [
-        L('Mechanismus', 'Mechanism', 'مکانیسم'),
-        L('Axiale Stauchung', 'Axial compression', 'فشار محوری'),
-        L('Biegebelastung (Dreipunkt)', 'Bending force (three-point)', 'نیروی خمشی (سه‌نقطه)'),
+        L('Morphologie', 'Morphology', 'ریخت‌شناسی'),
+        L('Kortikale Aufwerfung/Bulge ohne vollständige Kortikalisunterbrechung; oft am Übergang Metaphyse–Diaphyse', 'Cortical bulge/buckling without complete cortical disruption; often at the metaphysis–diaphysis junction', 'برجستگی/تاخوردگی کورتکس بدون قطع کامل؛ اغلب در محل اتصال متافیز و دیافیز'),
+        L('Biegefraktur: eine Kortikalis bricht, die Gegenseite bleibt gebogen', 'Bending fracture: one cortex breaks while the opposite side remains bent', 'شکستگی خمشی: یک کورتکس می‌شکند و سمت مقابل خمیده می‌ماند'),
       ],
       [
-        L('Kortexbeteiligung', 'Cortex involvement', 'درگیری کورتکس'),
-        L('Beide Kortizes aufgeworfen (Knick), kein Bruch', 'Both cortices buckled, no break', 'هر دو کورتکس فرورفته، بدون شکستگی'),
-        L('Eine Kortex gebrochen, andere intakt', 'One cortex broken, other intact', 'یک کورتکس شکسته، دیگری سالم'),
+        L('Periost / Stabilität', 'Periosteum / stability', 'پریوست / پایداری'),
+        L('Periost intakt; typischerweise stabil', 'Periosteum intact; typically stable', 'پریوست سالم؛ معمولاً پایدار'),
+        L('Periost auf der gebogenen Gegenseite meist intakt; weniger stabil als Torus', 'Periosteum on the bent opposite side usually remains intact; less stable than torus', 'پریوست در سمت مقابلِ خم‌شده معمولاً سالم می‌ماند؛ از توروس ناپایدارتر است'),
       ],
       [
-        L('Stabilität', 'Stability', 'پایداری'),
-        L('Stabil', 'Stable', 'پایدار'),
-        L('Instabil (Tendenz zur Progression)', 'Unstable (tendency to progress)', 'ناپایدار (تمایل به پیشرفت)'),
-      ],
-      [
-        L('Therapie', 'Treatment', 'درمان'),
-        L('Funktionell oder weiche Schiene 3–4 Wo.', 'Functional or soft splint 3–4 weeks', 'عملکردی یا آتل نرم ۳–۴ هفته'),
-        L('Reduktion + Gips 4–6 Wochen', 'Reduction + cast 4–6 weeks', 'کاهش + گچ ۴–۶ هفته'),
-      ],
-      [
-        L('Röntgen', 'X-ray', 'رادیوگرافی'),
-        L('Aufwerfung der Kortex – metaphysär', 'Cortical buckling – metaphyseal', 'فرورفتگی کورتکس – متافیزی'),
-        L('Einseitige Kortexunterbrechung + Biegung', 'Unilateral cortex disruption + bowing', 'قطع یک‌طرفه کورتکس + خم شدن'),
+        L('Typische Projektion', 'Typical projection', 'نمای معمول'),
+        L('Die Aufwerfung ist in der seitlichen Aufnahme oft deutlicher', 'The buckle is often clearer on the lateral view', 'برجستگی در نمای لترال اغلب واضح‌تر است'),
+        L('Meist diaphysär; Frakturlinie/Biegung oft in beiden Ebenen erkennbar', 'Usually diaphyseal; fracture line/bowing often visible in both views', 'معمولاً دیافیزی؛ خط شکستگی/خمیدگی اغلب در هر دو نما دیده می‌شود'),
       ],
     ],
     wulstCase: {
@@ -203,11 +195,7 @@ export const FRAKTUR_KINDER_LESSON = {
       images: [
         {
           src: '/frakturen-kindesalter/wulst-hand.jpeg',
-          caption: L('Handgelenk AP – metaphysäre Aufwerfung (Wulstfraktur)', 'Wrist AP – metaphyseal buckle (Torus fracture)', 'مچ دست AP – فرورفتگی متافیزی (شکستگی توروس)'),
-        },
-        {
-          src: '/frakturen-kindesalter/wulst-lateral.jpeg',
-          caption: L('Seitliche Aufnahme – Kortexunterbrechung distal', 'Lateral view – distal cortex disruption', 'نمای جانبی – قطع کورتکس دیستال'),
+          caption: L('Handgelenk AP – metaphysäre kortikale Aufwerfung', 'Wrist AP – metaphyseal cortical buckling', 'مچ دست AP – برجستگی کورتیکال متافیزی'),
         },
       ],
     },
@@ -226,39 +214,34 @@ export const FRAKTUR_KINDER_LESSON = {
       ],
     },
     key: L(
-      'Wulstfraktur = stabiler Beulenbruch, oft nur weiche Schiene nötig. Grünholzfraktur = instabiler Biegebruch, Reposition meist erforderlich.',
-      'Torus = stable buckle fracture, often only a soft splint needed. Greenstick = unstable bending fracture, reduction usually required.',
-      'توروس = شکستگی باکل پایدار، اغلب فقط به آتل نرم نیاز است. گرین‌استیک = شکستگی خمشی ناپایدار، معمولاً نیاز به کاهش.'
+      'Torus zeigt eine kortikale Aufwerfung ohne vollständige Unterbrechung; bei der Grünholzfraktur ist eine Kortikalis gebrochen und die Gegenseite gebogen. Achte auf die Ebene, in der die Veränderung am besten sichtbar ist.',
+      'Torus shows cortical buckling without complete disruption; in a greenstick fracture one cortex is broken and the opposite side is bent. Check which view best shows the abnormality.',
+      'در توروس کورتکس برجسته/تاخورده است اما کاملاً قطع نشده؛ در گرین‌استیک یک کورتکس شکسته و سمت مقابل خمیده است. به نمایی توجه کنید که تغییر در آن واضح‌تر دیده می‌شود.'
     ),
   },
 
   toddler: {
     title: L('Toddler-Fraktur', 'Toddler Fracture', 'شکستگی توددلر'),
     lead: L(
-      'Okkulte Schaftsfraktur der Tibia bei Kindern im Laufalter (9 Monate – 3 Jahre) nach Bagatelltrauma. Häufig Röntgen-negativ bei Erstvorstellung.',
-      'Occult tibial shaft fracture in toddlers (9 months – 3 years) after minor trauma. Often X-ray negative at first presentation.',
-      'شکستگی پنهان دیافیز تیبیا در کودکان در سن راه رفتن (۹ ماه تا ۳ سال) بعد از ضربه جزئی. اغلب رادیوگرافی در ابتدا منفی است.'
+      'Typische, meist nicht dislozierte oblique/spirale distale Tibiaschaftfraktur im Laufalter (etwa 9 Monate–3 Jahre) nach geringem Torsionstrauma. Die Erstaufnahme kann unauffällig sein.',
+      'A typical, usually undisplaced oblique/spiral distal tibial shaft fracture in a walking toddler (about 9 months–3 years) after minor twisting trauma. Initial radiographs may be normal.',
+      'شکستگی مایل/مارپیچی معمولاً بدون جابجایی در بخش دیستال دیافیز تیبیا در کودک نوپا و راه‌رونده (حدود ۹ ماه تا ۳ سال) پس از پیچش خفیف. رادیوگرافی اولیه ممکن است طبیعی باشد.'
     ),
     items: [
       {
         icon: '👶',
         title: L('Altersgruppe', 'Age group', 'گروه سنی'),
-        text: L('9 Monate – 3 Jahre; häufigste Ursache für einseitiges Hinken ohne Trauma in dieser Altersgruppe.', '9 months – 3 years; most common cause of unilateral limp without clear trauma in this age group.', '۹ ماه تا ۳ سال؛ شایع‌ترین علت لنگیدن یک‌طرفه بدون ضربه مشخص در این گروه سنی.'),
+        text: L('Etwa 9 Monate – 3 Jahre; das Kind kann plötzlich hinken oder das Belasten verweigern. Befund und Mechanismus im Kontext beurteilen.', 'About 9 months – 3 years; the child may suddenly limp or refuse to bear weight. Interpret the presentation and mechanism in context.', 'حدود ۹ ماه تا ۳ سال؛ کودک ممکن است ناگهان بلنگد یا از تحمل وزن خودداری کند. تظاهر و مکانیسم را در زمینهٔ بالینی تفسیر کنید.'),
       },
       {
         icon: '📍',
         title: L('Lokalisation', 'Location', 'محل'),
-        text: L('Tibia (distal 1/3); spiralförmige, nicht dislozierte Frakturlinie – im konventionellen Röntgen oft unsichtbar.', 'Tibia (distal 1/3); spiral, non-displaced fracture line – often invisible on conventional X-ray.', 'تیبیا (۱/۳ دیستال)؛ خط شکستگی مارپیچ و بدون جابجایی – اغلب روی رادیوگرافی معمولی نامرئی است.'),
+        text: L('Distales Tibiaschaftdrittel; meist nicht dislozierte oblique/spirale Linie. Die Fibula ist häufig intakt.', 'Distal third of the tibial shaft; usually an undisplaced oblique/spiral line. The fibula is often intact.', 'یک‌سوم دیستال دیافیز تیبیا؛ معمولاً خط مایل/مارپیچی بدون جابجایی. فیبولا اغلب سالم است.'),
       },
       {
         icon: '🔍',
-        title: L('Diagnostik', 'Diagnostics', 'تشخیص'),
-        text: L('Erströntgen negativ → Klinische Diagnose! Bei Zweifeln: MRT (sensitivste Methode) oder Knochenszintigraphie nach 72 h.', 'Initial X-ray negative → clinical diagnosis! If uncertain: MRI (most sensitive) or bone scan after 72 h.', 'رادیوگرافی اولیه منفی → تشخیص بالینی! در صورت تردید: MRI (حساس‌ترین روش) یا اسکن استخوان بعد از ۷۲ ساعت.'),
-      },
-      {
-        icon: '💊',
-        title: L('Therapie', 'Treatment', 'درمان'),
-        text: L('Gespaltener Unterschenkelgips oder Oberschenkelgips für 3–4 Wochen. Prognose exzellent.', 'Split below-knee or above-knee cast for 3–4 weeks. Prognosis excellent.', 'گچ شکافته ساق پا یا ران به مدت ۳–۴ هفته. پیش‌آگهی عالی.'),
+        title: L('Röntgen und Verlauf', 'Radiographs and follow-up', 'رادیوگرافی و پیگیری'),
+        text: L('AP und seitliche Aufnahmen von Tibia/Fibula (mit Knie und Sprunggelenk) prüfen. Ist die Erstaufnahme negativ, schließt das die Fraktur nicht aus: Bei anhaltendem Verdacht kann eine Schrägaufnahme helfen; eine Verlaufskontrolle nach etwa 1–2 Wochen kann periostale Reaktion zeigen.', 'Review AP and lateral tibia/fibula views (including knee and ankle). A negative initial study does not exclude fracture: an oblique view may help when suspicion persists, and repeat radiographs at about 1–2 weeks may show periosteal reaction.', 'نماهای AP و لترال تیبیا/فیبولا (با پوشش زانو و مچ پا) بررسی شوند. رادیوگرافی اولیهٔ منفی شکستگی را رد نمی‌کند: در صورت تداوم ظن، نمای مایل می‌تواند کمک کند و رادیوگرافی مجدد حدود ۱ تا ۲ هفته بعد ممکن است واکنش پریوستی را نشان دهد.'),
       },
     ],
     caseTitle: L('Fallbeispiel Toddler-Fraktur (rID:12023)', 'Case: Toddler Fracture (rID:12023)', 'مورد: شکستگی توددلر (rID:12023)'),
@@ -266,13 +249,13 @@ export const FRAKTUR_KINDER_LESSON = {
     images: [
       {
         src: '/frakturen-kindesalter/toddler-tibia.jpeg',
-        caption: L('Tibia AP – okkulte Spiralfraktur (Pfeil), Röntgen oft unauffällig', 'Tibia AP – occult spiral fracture (arrow), X-ray often unremarkable', 'تیبیا AP – شکستگی مارپیچ پنهان (فلش)، رادیوگرافی اغلب طبیعی'),
+        caption: L('Tibia AP – Erstaufnahme; Toddler-Frakturen können anfangs radiologisch subtil oder okkult sein', 'Tibia AP – initial view; toddler fractures may be subtle or occult initially', 'تیبیا AP – نمای اولیه؛ شکستگی توددلر ممکن است در ابتدا در رادیوگرافی ظریف یا پنهان باشد'),
       },
     ],
     cave: L(
-      'Toddler-Fraktur kann mit Kindesmisshandlung verwechselt werden. Bei atypischem Befund, multiplen Läsionen oder fehlendem Trauma-Mechanismus → Kinderschutzprotokoll einleiten.',
-      'Toddler fracture can be confused with non-accidental injury. With atypical findings, multiple lesions, or no trauma mechanism → activate child protection protocol.',
-      'شکستگی توددلر می‌تواند با کودک‌آزاری اشتباه گرفته شود. در یافته‌های غیرمعمول، ضایعات متعدد، یا بدون مکانیسم ضربه → پروتکل حمایت از کودک را فعال کنید.'
+      'Eine einfache Toddler-Fraktur allein beweist keine Misshandlung. Entwicklungsstand, Anamnese und Befund müssen zusammenpassen; bei atypischen oder widersprüchlichen Hinweisen ist eine kinderschutzmedizinische Einschätzung nach lokalem Vorgehen erforderlich.',
+      'A toddler fracture alone does not establish abuse. Developmental stage, history, and findings should be concordant; atypical or conflicting features warrant safeguarding assessment under local pathways.',
+      'شکستگی توددلر به‌تنهایی اثبات‌کنندهٔ کودک‌آزاری نیست. سطح رشد، شرح حال و یافته‌ها باید با هم سازگار باشند؛ نشانه‌های غیرمعمول یا متناقض نیازمند ارزیابی حفاظتی طبق مسیر محلی هستند.'
     ),
   },
 
@@ -312,14 +295,15 @@ export const FRAKTUR_KINDER_LESSON = {
     triplane: {
       title: L('Triplane-Fraktur', 'Triplane Fracture', 'شکستگی سه‌صفحه‌ای'),
       text: L(
-        'Komplexe Fraktur in 3 Ebenen: sagittale Ebene (Epiphyse), axiale Ebene (Physis), koronare Ebene (Metaphyse). Klassisch 2- oder 3-Fragment-Typen. CT kann ergänzt werden, wenn Röntgen Fragmentkonfiguration oder intraartikuläre Dislokation nicht ausreichend zeigt; die Entscheidung hängt vom Einzelfall und der Behandlungsplanung ab.',
-        'Complex fracture in 3 planes: sagittal plane (epiphysis), axial plane (physis), coronal plane (metaphysis). Classically 2- or 3-fragment types. CT can be added when radiographs do not adequately show fragment configuration or intra-articular displacement; the decision depends on the case and treatment planning.',
-        'شکستگی پیچیده در ۳ صفحه: صفحه ساژیتال (اپی‌فیز)، صفحه محوری (فیزیس)، صفحه کرونال (متافیز). به‌طور کلاسیک ۲ یا ۳ قطعه. اگر رادیوگرافی آرایش قطعات یا جابجایی داخل‌مفصلی را به‌اندازه کافی نشان ندهد، CT می‌تواند افزوده شود؛ تصمیم به شرایط مورد و برنامه‌ریزی درمان بستگی دارد.'
+        'Frakturlinien verlaufen in drei Ebenen: sagittal durch die Epiphyse, transversal durch die Physis und koronal durch die posteriore Metaphyse. In der AP-Projektion kann das Muster wie Typ III/Tillaux, lateral wie Typ IV (teils auch Typ II) erscheinen. CT kann die räumliche Fragmentkonfiguration ergänzen, wenn die Röntgenbilder dafür nicht ausreichen.',
+        'Fracture lines run in three planes: sagittally through the epiphysis, transversely through the physis, and coronally through the posterior metaphysis. On AP projection the pattern may resemble type III/Tillaux, while laterally it may resemble type IV (sometimes type II). CT can add spatial detail when radiographs are insufficient.',
+        'خطوط شکستگی در سه صفحه قرار دارند: ساژیتال از اپی‌فیز، عرضی از فیزیس و کرونال از متافیز خلفی می‌گذرند. در نمای AP الگو ممکن است شبیه نوع III/تیلو و در نمای لترال شبیه نوع IV (گاهی نوع II) باشد. اگر رادیوگرافی کافی نباشد، CT می‌تواند جزئیات فضایی قطعات را تکمیل کند.'
       ),
       age: L('13–15 Jahre', '13–15 years', '۱۳–۱۵ سال'),
       schema: {
         src: '/frakturen-kindesalter/triplane-schema.png',
         alt: L('Triplane-Fraktur – Ebenen-Schema (sagittal, axial, koronal)', 'Triplane Fracture – planes diagram (sagittal, axial, coronal)', 'شکستگی سه‌صفحه‌ای – شمای صفحات (ساژیتال، محوری، کرونال)'),
+        note: L('Sagittal: Epiphyse · transversal: Physis · koronal: posteriore Metaphyse', 'Sagittal: epiphysis · transverse: physis · coronal: posterior metaphysis', 'ساژیتال: اپی‌فیز · عرضی: فیزیس · کرونال: متافیز خلفی'),
       },
       caseTitle: L('Fallbeispiel Triplane-Fraktur (rID:33599)', 'Case: Triplane Fracture (rID:33599)', 'مورد: شکستگی سه‌صفحه‌ای (rID:33599)'),
       radiopaediaUrl: 'https://radiopaedia.org/cases/33599/play',
@@ -342,10 +326,18 @@ export const FRAKTUR_KINDER_LESSON = {
         },
       ],
     },
+    twoPlane: {
+      title: L('Zwei-Ebenen-Muster (PDF-Bezeichnung)', 'Two-plane pattern (PDF wording)', 'الگوی دوصفحه‌ای (اصطلاح PDF)'),
+      text: L(
+        'Die PDF beschreibt eine sagittale Frakturlinie durch die Epiphyse und eine transversale Linie durch die Physis, ohne das für das klassische Triplane-Muster charakteristische posteriore metaphysäre Fragment. Beschreibe die tatsächlich betroffenen Ebenen; die Bezeichnung allein ersetzt keine Morphologie.',
+        'The PDF describes a sagittal fracture line through the epiphysis and a transverse line through the physis, without the posterior metaphyseal fragment characteristic of the classic triplane pattern. Describe the actual planes involved; the label alone does not replace morphology.',
+        'PDF خط شکستگی ساژیتال از اپی‌فیز و خط عرضی از فیزیس را توصیف می‌کند، بدون قطعهٔ متافیزی خلفی که مشخصهٔ الگوی کلاسیک سه‌صفحه‌ای است. صفحات درگیر را بر اساس مورفولوژی واقعی توصیف کنید؛ نام به‌تنهایی جایگزین مورفولوژی نیست.'
+      ),
+    },
     cave: L(
-      'Bei Tillaux-/Triplane-Frakturen wird CT häufig zur Darstellung der Fragmente und Gelenkstufe ergänzt, besonders wenn das Röntgen die intraartikuläre Ausdehnung oder Dislokation nicht sicher zeigt. Die PDF nennt < 2 mm als konservativ und ≥ 2 mm als Schraubenbehandlung; das ist ein quellengebundener Lernwert, keine alleinige Operationsregel: Reduktionsergebnis, Messmethode und klinischer Kontext zählen.',
-      'CT is often added for Tillaux/triplane fractures to define fragments and articular step, especially when radiographs do not show intra-articular extent or displacement clearly. The PDF lists <2 mm for conservative care and ≥2 mm for screw fixation; this is a source-specific learning value, not a stand-alone operative rule: reduction, measurement method, and clinical context matter.',
-      'در شکستگی‌های تیلو/سه‌صفحه‌ای، CT اغلب برای تعیین قطعات و پله مفصلی افزوده می‌شود، به‌ویژه وقتی رادیوگرافی گسترش داخل‌مفصلی یا جابجایی را روشن نکند. PDF درمان محافظه‌کارانه را برای <۲ میلی‌متر و پیچ‌گذاری را برای ≥۲ میلی‌متر ذکر می‌کند؛ این مقدارِ منبع‌محور قانون مستقل جراحی نیست و نتیجه جااندازی، روش اندازه‌گیری و شرایط بالینی مهم‌اند.'
+      'Bei Verdacht auf Tillaux-/Triplane-Fraktur kann CT zusätzliche räumliche Information zur Fragmentkonfiguration und Gelenkbeteiligung liefern, wenn die Röntgenaufnahmen dafür nicht ausreichen. Die PDF enthält außerdem Behandlungsempfehlungen; konkrete Therapieentscheidungen sind nicht Teil dieses bildgebungsorientierten Abschnitts.',
+      'When Tillaux/triplane fracture is suspected, CT can add spatial information about fragment configuration and joint involvement if radiographs are insufficient. The PDF also contains treatment recommendations; specific treatment decisions are outside this imaging-focused section.',
+      'در ظن به شکستگی تیلو/سه‌صفحه‌ای، اگر رادیوگرافی کافی نباشد، CT می‌تواند اطلاعات فضایی بیشتری دربارهٔ آرایش قطعات و درگیری مفصل بدهد. PDF توصیه‌های درمانی نیز دارد؛ تصمیم‌های درمانی مشخص خارج از دامنهٔ این بخش تصویربرداری‌محور هستند.'
     ),
   },
 
@@ -358,21 +350,30 @@ export const FRAKTUR_KINDER_LESSON = {
         text: L('Bei Kindern bricht die Physis vor Bändern und Kapseln. Bei klinischem Verdacht und negativem Röntgen an Salter-Harris I oder V denken.', 'In children, the physis fails before ligaments and capsules. With clinical suspicion and negative X-ray, consider Salter-Harris I or V.', 'در کودکان، فیزیس قبل از رباط‌ها و کپسول‌ها آسیب می‌بیند. در صورت ظن بالینی و رادیوگرافی منفی، به سالتر-هریس I یا V فکر کنید.'),
       },
       {
-        title: L('SALTR-Regel für Prognose', 'SALTR rule for prognosis', 'قانون SALTR برای پیش‌آگهی'),
-        text: L('Typ I/II: meist gute Prognose. Typ III/IV: intraartikulär und mit Risiko für Wachstumsstörung; Gelenkkongruenz und Reposition beurteilen. Die PDF nennt bei Typ III eine exakte anatomische Rekonstruktion, oft operativ; Therapie richtet sich nach Ort und Dislokation. Typ V: hohes Risiko für Wachstumsstillstand.', 'Types I/II: generally good prognosis. Types III/IV: intra-articular and at risk of growth disturbance; assess joint congruity and reduction. The PDF calls for exact anatomic reconstruction for type III, often operative; treatment depends on site and displacement. Type V: high risk of growth arrest.', 'نوع I/II: معمولاً پیش‌آگهی خوب. نوع III/IV: داخل‌مفصلی و همراه خطر اختلال رشد؛ تطابق مفصل و جااندازی را ارزیابی کنید. PDF برای نوع III بازسازی آناتومیک دقیق را لازم می‌داند که اغلب جراحی است؛ درمان به محل و جابجایی بستگی دارد. نوع V: خطر بالای توقف رشد.'),
+        title: L('Salter-Harris: Verlauf der Frakturlinie', 'Salter-Harris: fracture-line path', 'سالتر-هریس: مسیر خط شکستگی'),
+        text: L('Typ III/IV reichen in die Gelenkfläche und können Wachstumsstörungen verursachen; Typ V ist eine Kompressionsverletzung und kann anfangs radiologisch subtil sein. Bildmorphologie und Verlauf getrennt beurteilen.', 'Types III/IV reach the joint surface and may cause growth disturbance; type V is a compression injury and can be radiologically subtle initially. Assess morphology and follow-up separately.', 'انواع III/IV به سطح مفصل می‌رسند و ممکن است اختلال رشد ایجاد کنند؛ نوع V آسیب فشاری است و در ابتدا ممکن است در رادیوگرافی ظریف باشد. مورفولوژی و پیگیری را جداگانه ارزیابی کنید.'),
       },
       {
-        title: L('Toddler-Fraktur = klinische Diagnose', 'Toddler fracture = clinical diagnosis', 'شکستگی توددلر = تشخیص بالینی'),
-        text: L('Röntgen oft negativ. Kind mit Hinken ohne klares Trauma → Toddler-Fraktur ausschließen. MRT/Szintigraphie wenn klinisch hochverdächtig.', 'X-ray often negative. Child with limp and no clear trauma → exclude Toddler fracture. MRI/scintigraphy if clinically highly suspicious.', 'رادیوگرافی اغلب منفی. کودک با لنگ و بدون ضربه مشخص → شکستگی توددلر را رد کنید. MRI/اسکن اگر بالینی بسیار مشکوک است.'),
+        title: L('Toddler-Fraktur: Erstbild kann negativ sein', 'Toddler fracture: initial films may be negative', 'شکستگی توددلر: تصویر اولیه ممکن است منفی باشد'),
+        text: L('AP- und Seitenaufnahmen prüfen; bei anhaltendem Verdacht kann eine Schrägaufnahme oder Verlaufskontrolle nach etwa 1–2 Wochen die Frakturlinie bzw. periostale Reaktion zeigen.', 'Review AP and lateral views; with persistent suspicion, an oblique view or repeat imaging at about 1–2 weeks may show the fracture line or periosteal reaction.', 'نماهای AP و لترال را بررسی کنید؛ در صورت تداوم ظن، نمای مایل یا تصویربرداری مجدد حدود ۱ تا ۲ هفته بعد ممکن است خط شکستگی یا واکنش پریوستی را نشان دهد.'),
       },
       {
         title: L('Übergangsfrakturen → CT', 'Transitional fractures → CT', 'شکستگی‌های گذار → CT'),
-        text: L('CT häufig zur Beurteilung von Fragmenten und Gelenkstufe ergänzen, wenn Röntgen die intraartikuläre Dislokation nicht ausreichend zeigt. Die PDF nennt ≥ 2 mm als Schwelle zur Schraubenbehandlung; die Schwelle ist keine alleinige Operationsregel.', 'Often add CT to assess fragments and articular step when radiographs do not show intra-articular displacement adequately. The PDF lists ≥2 mm as the threshold for screw fixation; this threshold is not a stand-alone operative rule.', 'اگر رادیوگرافی جابجایی داخل‌مفصلی را کافی نشان ندهد، CT را برای ارزیابی قطعات و پله مفصلی اضافه کنید. PDF آستانه ≥۲ میلی‌متر را برای پیچ‌گذاری ذکر می‌کند؛ این آستانه به‌تنهایی قانون جراحی نیست.'),
+        text: L('CT kann bei unklarer Fragmentkonfiguration oder Gelenkbeteiligung ergänzende räumliche Information liefern. Ob CT erforderlich ist, hängt von Bildgebung und klinischer Planung ab.', 'CT can add spatial information when fragment configuration or joint involvement is unclear. Whether CT is needed depends on the imaging findings and clinical planning.', 'اگر آرایش قطعات یا درگیری مفصل روشن نباشد، CT می‌تواند اطلاعات فضایی تکمیلی بدهد. نیاز به CT به یافته‌های تصویربرداری و برنامه‌ریزی بالینی بستگی دارد.'),
       },
       {
         title: L('Remodellierung', 'Remodelling', 'بازسازی استخوان'),
         text: L('Achsfehlstellungen < 20–25° in der Wachstumsachse korrigieren sich oft. Rotationsfehlstellungen und Verkürzungen korrigieren sich NICHT.', 'Angular deformities < 20–25° in the growth axis often self-correct. Rotational malalignment and shortening do NOT correct.', 'ناهنجاری‌های محوری < ۲۰–۲۵ درجه در محور رشد اغلب خودبخود اصلاح می‌شوند. ناهنجاری‌های چرخشی و کوتاه شدن اصلاح نمی‌شوند.'),
       },
+    ],
+  },
+
+  sources: {
+    title: L('Weiterführende Quellen', 'Further reading', 'منابع تکمیلی'),
+    items: [
+      { label: L('Royal Children’s Hospital Melbourne: Tibial shaft fractures (ED guideline)', 'Royal Children’s Hospital Melbourne: Tibial shaft fractures (ED guideline)', 'بیمارستان سلطنتی کودکان ملبورن: شکستگی‌های تنهٔ تیبیا (راهنمای اورژانس)'), href: 'https://www.rch.org.au/clinicalguide/guideline_index/fractures/tibial_shaft_emergency/' },
+      { label: L('Royal Children’s Hospital Melbourne: Distal tibia/fibula physeal fractures (ED guideline)', 'Royal Children’s Hospital Melbourne: Distal tibia/fibula physeal fractures (ED guideline)', 'بیمارستان سلطنتی کودکان ملبورن: شکستگی‌های فیزیال دیستال تیبیا/فیبولا (راهنمای اورژانس)'), href: 'https://www.rch.org.au/clinicalguide/guideline_index/fractures/ankle_emergency/' },
+      { label: L('BSCOS: Paediatric fracture templates', 'BSCOS: Paediatric fracture templates', 'انجمن ارتوپدی کودکان بریتانیا: الگوهای شکستگی کودکان'), href: 'https://www.bscos.org.uk/Portals/0/downloads/resources/BSCOS%20modifiable%20fracture%20templates.pdf' },
     ],
   },
 }
@@ -404,9 +405,9 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
   ),
 
   Q(`fk-sh-2-${lang}`,
-    L('Welcher Salter-Harris-Typ ist am häufigsten (≈ 75 %)?',
-      'Which Salter-Harris type is most common (≈ 75 %)?',
-      'کدام نوع سالتر-هریس شایع‌ترین است (≈ ۷۵ %)?')[lang],
+    L('Welcher Salter-Harris-Typ ist am häufigsten?',
+      'Which Salter-Harris type is most common?',
+      'کدام نوع سالتر-هریس شایع‌ترین است؟')[lang],
     [
       L('Typ I', 'Type I', 'نوع I')[lang],
       L('Typ II (mit Metaphysenfragment)', 'Type II (with metaphyseal fragment)', 'نوع II (با قطعه متافیزی)')[lang],
@@ -414,7 +415,7 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
       L('Typ V', 'Type V', 'نوع V')[lang],
     ],
     1,
-    L('Salter-Harris II zeigt neben der physären Fraktur ein charakteristisches Metaphysenfragment (Thurston-Holland-Zeichen). Häufigster Typ mit sehr guter Prognose.', 'Salter-Harris II shows a characteristic metaphyseal fragment (Thurston-Holland sign) alongside the physeal fracture. Most common type with excellent prognosis.', 'سالتر-هریس II در کنار شکستگی فیزیال، قطعه متافیزی مشخصی نشان می‌دهد (نشانه تورستون-هولاند). شایع‌ترین نوع با پیش‌آگهی عالی.')[lang]
+    L('Salter-Harris II zeigt neben der physären Fraktur ein charakteristisches Metaphysenfragment (Thurston-Holland-Zeichen). Es ist der häufigste Typ; der Verlauf ist meist günstig.', 'Salter-Harris II shows a characteristic metaphyseal fragment (Thurston-Holland sign) alongside the physeal fracture. It is the most common type and the course is generally favourable.', 'سالتر-هریس II در کنار شکستگی فیزیال، قطعهٔ متافیزی مشخصی نشان می‌دهد (نشانهٔ تورستون-هولاند). این نوع شایع‌ترین است و سیر آن معمولاً مطلوب است.')[lang]
   ),
 
   Q(`fk-sh-3-${lang}`,
@@ -428,7 +429,7 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
       L('Typ V', 'Type V', 'نوع V')[lang],
     ],
     1,
-    L('Typ III durchläuft Physis + Epiphyse → intraartikulär. Die Gelenkstufe und Reposition müssen beurteilt werden; ein Einzelwert von 2 mm ist keine alleinige Operationsregel. Die häufig verwendete Schwelle ist nur begrenzt belegt (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170).', 'Type III crosses the physis and epiphysis into the joint. Assess the articular step and reduction; a single 2 mm value is not a stand-alone operative rule. The commonly used threshold has limited evidence (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170).', 'نوع III از فیزیس و اپی‌فیز عبور می‌کند و وارد مفصل می‌شود. پله مفصلی و جااندازی را ارزیابی کنید؛ عدد ۲ میلی‌متر به‌تنهایی قانون جراحی نیست. شواهد آستانه رایج محدود است (Lurie و همکاران، ۲۰۲۰، doi:10.2106/JBJS.19.01170).')[lang]
+    L('Typ III verläuft durch Physis und Epiphyse bis zur Gelenkfläche. Die intraartikuläre Morphologie und mögliche Wachstumsfolgen sind relevant; konkrete Therapie richtet sich nach dem individuellen Befund.', 'Type III crosses the physis and epiphysis to the joint surface. Intra-articular morphology and possible growth consequences matter; specific treatment depends on the individual findings.', 'نوع III از فیزیس و اپی‌فیز تا سطح مفصل امتداد می‌یابد. مورفولوژی داخل‌مفصلی و پیامدهای احتمالی رشد مهم‌اند؛ درمان مشخص به یافته‌های هر بیمار بستگی دارد.')[lang]
   ),
 
   Q(`fk-sh-4-${lang}`,
@@ -442,7 +443,7 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
       L('Typ III', 'Type III', 'نوع III')[lang],
     ],
     2,
-    L('Typ IV durchläuft Metaphyse, Physis und Epiphyse. Ohne anatomische Reposition bilden sich Knochenbrücken (physeal bars) → vorzeitiger Fugenschluss → Wachstumsstörung/Achsdeformität.', 'Type IV runs through metaphysis, physis, and epiphysis. Without anatomic reduction, bony bridges (physeal bars) form → premature physeal closure → growth disturbance/angular deformity.', 'نوع IV از متافیز، فیزیس و اپی‌فیز عبور می‌کند. بدون ریداکسیون آناتومیک، پل‌های استخوانی (فیزیال بار) تشکیل می‌شوند → بسته شدن زودهنگام فیزیس → اختلال رشد/ناهنجاری محوری.')[lang]
+    L('Typ IV verläuft durch Metaphyse, Physis und Epiphyse und hat ein Risiko für Wachstumsstörung; Risiko und Ausmaß hängen von der konkreten Verletzung ab.', 'Type IV crosses the metaphysis, physis, and epiphysis and carries a risk of growth disturbance; risk and extent depend on the specific injury.', 'نوع IV از متافیز، فیزیس و اپی‌فیز می‌گذرد و خطر اختلال رشد دارد؛ خطر و میزان آن به آسیب مشخص بستگی دارد.')[lang]
   ),
 
   Q(`fk-sh-5-${lang}`,
@@ -456,7 +457,7 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
       L('Transphysäre Fraktur mit Metaphysenfragment', 'Transphyseal fracture with metaphyseal fragment', 'شکستگی ترانس‌فیزیال با قطعه متافیزی')[lang],
     ],
     1,
-    L('Typ V ist eine axiale Kompressionsverletzung der Wachstumsfuge ohne sichtbare Frakturlinie. Diagnose oft erst retrospektiv bei Wachstumsstörung. Schlechteste Prognose aller Typen.', 'Type V is an axial compression injury of the growth plate without a visible fracture line. Diagnosis often only retrospective when growth disturbance appears. Worst prognosis of all types.', 'نوع V آسیب فشاری محوری به صفحه رشد بدون خط شکستگی قابل مشاهده است. تشخیص اغلب گذشته‌نگر هنگام بروز اختلال رشد. بدترین پیش‌آگهی از همه انواع.')[lang]
+    L('Typ V ist eine axiale Kompressionsverletzung der Wachstumsfuge ohne sichere sichtbare Frakturlinie. Sie kann erst im Verlauf durch Physenverschmälerung oder Wachstumsstörung erkennbar werden.', 'Type V is an axial compression injury of the growth plate without a reliably visible fracture line. It may only become apparent over time through physeal narrowing or growth disturbance.', 'نوع V آسیب فشاری محوری صفحهٔ رشد است و ممکن است خط شکستگی قابل مشاهدهٔ مطمئنی نداشته باشد. گاهی فقط در پیگیری با باریک‌شدن فیزیس یا اختلال رشد آشکار می‌شود.')[lang]
   ),
 
   Q(`fk-wulst-1-${lang}`,
@@ -470,35 +471,35 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
       L('Spiralförmige Fraktur durch axialen Stress', 'Spiral fracture from axial stress', 'شکستگی مارپیچ از استرس محوری')[lang],
     ],
     1,
-    L('Wulstfraktur = stabile Kompressionsdeformität durch axiale Stauchung. Beide Kortizes sind „aufgeworfen" (geknäuelt), aber nicht vollständig unterbrochen. Therapie: weiche Schiene oder kurzfristiger Gips.', 'Torus fracture = stable compression deformity from axial load. Both cortices are "buckled" but not completely disrupted. Treatment: soft splint or short-term cast.', 'شکستگی توروس = تغییر شکل فشاری پایدار از بار محوری. هر دو کورتکس «فرورفته» هستند اما کاملاً قطع نشده‌اند. درمان: آتل نرم یا گچ کوتاه‌مدت.')[lang]
+    L('Kortikale Aufwerfung/Bulge ohne vollständige Kortikalisunterbrechung; meist stabil. Im Röntgen kann die Aufwerfung in der seitlichen Projektion deutlicher sein.', 'Cortical buckling/bulge without complete cortical disruption; usually stable. On radiographs the buckle may be clearer on the lateral view.', 'برجستگی/تاخوردگی کورتکس بدون قطع کامل؛ معمولاً پایدار. در رادیوگرافی ممکن است برجستگی در نمای لترال واضح‌تر باشد.')[lang]
   ),
 
   Q(`fk-gruenholz-1-${lang}`,
-    L('Warum ist die Grünholzfraktur instabiler als die Wulstfraktur?',
-      'Why is a Greenstick fracture more unstable than a Torus fracture?',
-      'چرا شکستگی گرین‌استیک ناپایدارتر از شکستگی توروس است؟')[lang],
+    L('Was unterscheidet eine Grünholz- von einer Wulstfraktur?',
+      'How does a Greenstick fracture differ from a Torus fracture?',
+      'شکستگی گرین‌استیک چه تفاوتی با توروس دارد؟')[lang],
     [
       L('Weil sie die Physis betrifft', 'Because it involves the physis', 'چون فیزیس را درگیر می‌کند')[lang],
-      L('Weil eine Kortex vollständig gebrochen ist, während die andere intakt bleibt – Tendenz zur Progression', 'Because one cortex is completely broken while the other remains intact – tendency to progress', 'چون یک کورتکس کاملاً شکسته در حالی که دیگری سالم می‌ماند – تمایل به پیشرفت')[lang],
+      L('Weil eine Kortikalis unterbrochen ist und die Gegenseite gebogen bleibt', 'Because one cortex is disrupted and the opposite side remains bent', 'چون یک کورتکس قطع شده و سمت مقابل خمیده باقی می‌ماند')[lang],
       L('Weil beide Kortizes unterbrochen sind', 'Because both cortices are disrupted', 'چون هر دو کورتکس قطع شده‌اند')[lang],
       L('Weil Grünholzfrakturen immer disloziert sind', 'Because Greenstick fractures are always displaced', 'چون شکستگی‌های گرین‌استیک همیشه جابجا هستند')[lang],
     ],
     1,
-    L('Grünholzfraktur = Biegebruch: eine Kortex bricht (Zugseite), die andere biegt sich nur (Druckseite). Der Periostmantel bleibt auf der gebogenen Seite intakt. Tendenz zur Verschlechterung → Reposition erforderlich.', 'Greenstick fracture = bending fracture: one cortex breaks (tension side), the other only bends (compression side). Periosteal sleeve remains intact on the bent side. Tendency to worsen → reduction required.', 'شکستگی گرین‌استیک = شکستگی خمشی: یک کورتکس می‌شکند (طرف کشش)، دیگری فقط خم می‌شود (طرف فشار). پوشش پریوست در طرف خمیده سالم می‌ماند. تمایل به بدتر شدن → نیاز به کاهش.')[lang]
+    L('Eine Kortikalis ist unterbrochen, die Gegenseite gebogen; das Periost bleibt dort meist intakt. Stabilität und Behandlung lassen sich nicht allein aus dem Musternamen festlegen.', 'One cortex is disrupted and the opposite side is bent; the periosteum usually remains intact there. Stability and treatment cannot be determined from the pattern name alone.', 'یک کورتکس قطع و سمت مقابل خمیده است؛ پریوست در آن سمت معمولاً سالم می‌ماند. پایداری و درمان را نمی‌توان تنها بر اساس نام الگو تعیین کرد.')[lang]
   ),
 
   Q(`fk-toddler-1-${lang}`,
-    L('Ein 18 Monate altes Kind kommt mit plötzlichem Hinken ohne klares Trauma. Das Röntgen ist unauffällig. Was ist die wahrscheinlichste Diagnose?',
-      'An 18-month-old child presents with sudden limping and no clear trauma. X-ray is unremarkable. What is the most likely diagnosis?',
-      'کودکی ۱۸ ماهه با لنگ ناگهانی و بدون ضربه مشخص مراجعه می‌کند. رادیوگرافی طبیعی است. محتمل‌ترین تشخیص چیست؟')[lang],
+    L('Bei einem Laufkind mit möglicher Toddler-Fraktur ist das Erst-Röntgen unauffällig. Was folgt daraus?',
+      'A walking toddler with possible toddler fracture has an unremarkable initial X-ray. What follows?',
+      'در کودک نوپای راه‌رونده با احتمال شکستگی توددلر، رادیوگرافی اولیه طبیعی است. نتیجه چیست؟')[lang],
     [
-      L('Septische Arthritis', 'Septic arthritis', 'آرتریت سپتیک')[lang],
-      L('Toddler-Fraktur (okkulte Tibiafraktur)', 'Toddler fracture (occult tibial fracture)', 'شکستگی توددلر (شکستگی پنهان تیبیا)')[lang],
-      L('Morbus Perthes', 'Legg-Calvé-Perthes disease', 'بیماری پرتس')[lang],
-      L('Salter-Harris Typ IV', 'Salter-Harris Type IV', 'سالتر-هریس نوع IV')[lang],
+      L('Die Fraktur ist damit ausgeschlossen.', 'This excludes fracture.', 'این مورد شکستگی را رد می‌کند.')[lang],
+      L('Sie ist nicht ausgeschlossen; Schräg- oder Verlaufskontrolle kann helfen.', 'It is not excluded; an oblique or follow-up view may help.', 'شکستگی رد نشده است؛ نمای مایل یا پیگیری رادیوگرافیک می‌تواند کمک کند.')[lang],
+      L('Eine MRT ist immer der nächste Schritt.', 'MRI is always the next step.', 'MRI همیشه اقدام بعدی است.')[lang],
+      L('Eine Knochenszintigraphie nach 72 Stunden ist zwingend.', 'A bone scan at 72 hours is mandatory.', 'اسکن استخوان در ۷۲ ساعت اجباری است.')[lang],
     ],
     1,
-    L('Toddler-Fraktur = okkulte Spiralfraktur der distalen Tibia bei Kleinkindern (9 Mon.–3 J.). Initialröntgen oft negativ. Bei klinischem Verdacht: Gipsbehandlung, MRT oder Knochenszintigraphie nach 72 h.', 'Toddler fracture = occult spiral fracture of the distal tibia in toddlers (9 mo – 3 yr). Initial X-ray often negative. With clinical suspicion: cast, MRI or bone scan after 72 h.', 'شکستگی توددلر = شکستگی مارپیچ پنهان تیبیای دیستال در کودکان نوپا (۹ ماه – ۳ سال). رادیوگرافی اولیه اغلب منفی. در صورت ظن بالینی: گچ، MRI یا اسکن استخوان بعد از ۷۲ ساعت.')[lang]
+    L('Eine Toddler-Fraktur ist typischerweise eine nicht dislozierte schräge/spiralige Fraktur des distalen Tibiaschafts. Ein frühes negatives Röntgenbild schließt sie nicht aus; Schrägaufnahme oder Verlaufskontrolle kann die Frakturlinie bzw. periostale Reaktion zeigen.', 'A toddler fracture is typically a nondisplaced oblique/spiral fracture of the distal tibial shaft. An initially negative radiograph does not exclude it; an oblique view or follow-up may show the fracture line or periosteal reaction.', 'شکستگی توددلر معمولاً شکستگی مایل/مارپیچی بدون جابه‌جایی در بخش دیستال تنهٔ تیبیاست. رادیوگرافی اولیهٔ منفی آن را رد نمی‌کند؛ نمای مایل یا تصویربرداری پیگیری ممکن است خط شکستگی یا واکنش پریوست را نشان دهد.')[lang]
   ),
 
   Q(`fk-tillaux-1-${lang}`,
@@ -526,7 +527,19 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
       L('Konventionelles Röntgen reicht aus', 'Conventional X-ray is sufficient', 'رادیوگرافی معمولی کافی است')[lang],
     ],
     1,
-    L('Triplane-Fraktur = 3 Ebenen (sagittal, axial, koronal). CT kann Fragmentzahl, Position und intraartikuläre Stufe für die Behandlungsplanung genauer zeigen. Die oft genannte 2-mm-Schwelle ist keine alleinige OP-Regel; Lurie et al. fanden begrenzte Evidenz für die übliche Schwelle (JBJS 2020, doi:10.2106/JBJS.19.01170).', 'Triplane fracture = 3 planes (sagittal, axial, coronal). CT can better define fragment number, position, and articular step for planning. The commonly cited 2 mm threshold is not a stand-alone surgical rule; Lurie et al. found limited evidence for the customary threshold (JBJS 2020, doi:10.2106/JBJS.19.01170).', 'شکستگی سه‌صفحه‌ای = ۳ صفحه (ساژیتال، محوری، کرونال). CT می‌تواند تعداد و موقعیت قطعات و پله داخل‌مفصلی را برای برنامه‌ریزی دقیق‌تر نشان دهد. آستانه رایج ۲ میلی‌متر قانون مستقل جراحی نیست؛ لوری و همکاران شواهد محدودی برای آستانه معمول یافتند (۲۰۲۰، doi:10.2106/JBJS.19.01170).')[lang]
+    L('Triplane-Fraktur: sagittale Linie durch die Epiphyse, transversale durch die Physis, koronare durch die posteriore Metaphyse. CT kann ergänzen, wenn Röntgen die räumliche Fragmentkonfiguration oder Gelenkbeteiligung nicht ausreichend zeigt.', 'Triplane fracture: sagittal line through the epiphysis, transverse through the physis, and coronal through the posterior metaphysis. CT can add information when radiographs do not adequately show spatial fragment configuration or joint involvement.', 'شکستگی سه‌صفحه‌ای: خط ساژیتال از اپی‌فیز، خط عرضی از فیزیس و خط کرونال از متافیز خلفی می‌گذرد. اگر رادیوگرافی آرایش فضایی قطعات یا درگیری مفصل را کافی نشان ندهد، CT می‌تواند اطلاعات تکمیلی بدهد.')[lang]
+  ),
+
+  Q(`fk-two-plane-1-${lang}`,
+    L('Laut PDF: Welche Frakturlinien kennzeichnen das Zwei-Ebenen-Muster im Unterschied zum klassischen Triplane-Muster?', 'In the PDF, which fracture lines define the two-plane pattern compared with the classic triplane pattern?', 'طبق PDF، کدام خطوط شکستگی الگوی دوصفحه‌ای را از الگوی کلاسیک سه‌صفحه‌ای متمایز می‌کنند؟')[lang],
+    [
+      L('Sagittal durch die Epiphyse und transversal durch die Physis; kein posteriores metaphysäres Fragment', 'Sagittal through the epiphysis and transverse through the physis; no posterior metaphyseal fragment', 'ساژیتال از اپی‌فیز و عرضی از فیزیس؛ بدون قطعهٔ متافیزی خلفی')[lang],
+      L('Drei Ebenen: Epiphyse, Physis und posteriore Metaphyse', 'Three planes: epiphysis, physis, and posterior metaphysis', 'سه صفحه: اپی‌فیز، فیزیس و متافیز خلفی')[lang],
+      L('Nur eine epiphysäre Frakturlinie ohne Physenbeteiligung', 'Only an epiphyseal fracture line without physeal involvement', 'فقط خط شکستگی اپی‌فیزی بدون درگیری فیزیس')[lang],
+      L('Nur eine metaphysäre Frakturlinie ohne Gelenkbeteiligung', 'Only a metaphyseal fracture line without joint involvement', 'فقط خط شکستگی متافیزی بدون درگیری مفصل')[lang],
+    ],
+    0,
+    L('Die PDF verwendet „Zwei-Ebenen-Muster“ für die sagittale epiphysäre und transversale physäre Linie. Das klassische Triplane-Muster umfasst zusätzlich die koronare posteriore Metaphyse; beschreibe die sichtbare Morphologie.', 'The PDF uses “two-plane pattern” for the sagittal epiphyseal and transverse physeal lines. The classic triplane pattern also includes the coronal posterior metaphysis; describe the visible morphology.', 'PDF اصطلاح «الگوی دوصفحه‌ای» را برای خط ساژیتال اپی‌فیزی و خط عرضی فیزیال به‌کار می‌برد. الگوی کلاسیک سه‌صفحه‌ای متافیز خلفی کرونال را نیز دربر می‌گیرد؛ مورفولوژی دیده‌شده را توصیف کنید.')[lang]
   ),
 
   Q(`fk-remodel-1-${lang}`,
@@ -569,37 +582,37 @@ export const FRAKTUR_KINDER_FLASHCARDS = [
 
   F('fk-fc-sh2', L('Salter-Harris', 'Salter-Harris', 'سالتر-هریس'),
     L('Salter-Harris Typ II: Beschreibe die Frakturlinie und das Röntgenzeichen.', 'Salter-Harris Type II: Describe the fracture line and the X-ray sign.', 'سالتر-هریس نوع II: خط شکستگی و نشانه رادیوگرافی را توصیف کنید.'),
-    L('Frakturlinie durch Physis + Metaphysenfragment. Thurston-Holland-Zeichen = dreieckiges Metaphysenfragment. Häufigster Typ (75 %). Prognose: sehr gut.', 'Fracture line through physis + metaphyseal fragment. Thurston-Holland sign = triangular metaphyseal fragment. Most common type (75 %). Prognosis: excellent.', 'خط شکستگی از طریق فیزیس + قطعه متافیزی. نشانه تورستون-هولاند = قطعه متافیزی مثلثی. شایع‌ترین نوع (۷۵ %). پیش‌آگهی: بسیار خوب.'),
+    L('Frakturlinie durch Physis + metaphysäres Fragment. Das Thurston-Holland-Zeichen ist ein dreieckiges metaphysäres Fragment; Typ II ist der häufigste Typ und der Verlauf meist günstig.', 'Fracture line through physis + metaphyseal fragment. The Thurston-Holland sign is a triangular metaphyseal fragment; type II is the most common type and the course is generally favourable.', 'خط شکستگی از فیزیس و قطعهٔ متافیزی می‌گذرد. نشانهٔ تورستون-هولاند قطعهٔ متافیزی مثلثی است؛ نوع II شایع‌ترین نوع است و سیر آن معمولاً مطلوب است.'),
     L('Thurston-Holland-Zeichen = Dreieck-Metaphysenfragment.', 'Thurston-Holland sign = triangular metaphyseal fragment.', 'نشانه تورستون-هولاند = قطعه متافیزی مثلثی.')
   ),
 
   F('fk-fc-sh3', L('Salter-Harris', 'Salter-Harris', 'سالتر-هریس'),
     L('Salter-Harris Typ III vs. IV: Was ist der Hauptunterschied?', 'Salter-Harris Type III vs. IV: What is the key difference?', 'سالتر-هریس نوع III در مقابل IV: تفاوت اصلی چیست؟'),
-    L('Typ III: Physis + Epiphyse (intraartikulär). Typ IV: Physis + Epiphyse + Metaphyse (T-förmig). Gelenkbeteiligung und Reposition sorgfältig beurteilen; die häufig zitierte 2-mm-Schwelle ist keine alleinige OP-Regel (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170). Typ IV hat höheres Risiko für physeal bar.', 'Type III: physis + epiphysis (intra-articular). Type IV: physis + epiphysis + metaphysis (T-shaped). Assess joint involvement and reduction carefully; the commonly cited 2 mm threshold is not a stand-alone surgical rule (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170). Type IV carries higher risk of a physeal bar.', 'نوع III: فیزیس + اپی‌فیز (داخل مفصل). نوع IV: فیزیس + اپی‌فیز + متافیز (T شکل). درگیری مفصل و جااندازی را با دقت ارزیابی کنید؛ آستانه رایج ۲ میلی‌متر به‌تنهایی قانون جراحی نیست (لوری و همکاران، ۲۰۲۰، doi:10.2106/JBJS.19.01170). نوع IV خطر بالاتری برای فیزیال بار دارد.'),
+    L('Typ III: Physis + Epiphyse (intraartikulär). Typ IV: Physis + Epiphyse + Metaphyse. Beide reichen zur Gelenkfläche; Typ IV durchquert zusätzlich die Metaphyse.', 'Type III: physis + epiphysis (intra-articular). Type IV: physis + epiphysis + metaphysis. Both reach the joint surface; type IV also crosses the metaphysis.', 'نوع III: فیزیس + اپی‌فیز (داخل مفصل). نوع IV: فیزیس + اپی‌فیز + متافیز. هر دو به سطح مفصل می‌رسند؛ نوع IV علاوه بر آن از متافیز نیز عبور می‌کند.'),
     L('III = Lower (Epiphyse), IV = Through all three layers.', 'III = Lower (epiphysis), IV = Through all three layers.', 'III = پایین (اپی‌فیز)، IV = از طریق هر سه لایه.')
   ),
 
   F('fk-fc-sh5', L('Salter-Harris', 'Salter-Harris', 'سالتر-هریس'),
-    L('Salter-Harris Typ V: Warum wird er meist retrospektiv diagnostiziert?', 'Salter-Harris Type V: Why is it usually diagnosed retrospectively?', 'سالتر-هریس نوع V: چرا معمولاً به‌صورت گذشته‌نگر تشخیص داده می‌شود؟'),
-    L('Typ V = axiale Kompressionsverletzung der Physis ohne sichtbare Frakturlinie. Erst wenn im Verlauf eine Wachstumsstörung/vorzeitiger Fugenschluss auftritt, wird die Diagnose gestellt. Seltenster Typ, schlechteste Prognose.', 'Type V = axial compression injury of the physis without a visible fracture line. Diagnosis is only made when growth disturbance/premature physeal closure appears at follow-up. Rarest type, worst prognosis.', 'نوع V = آسیب فشاری محوری به فیزیس بدون خط شکستگی قابل مشاهده. تشخیص تنها هنگام بروز اختلال رشد/بسته شدن زودهنگام فیزیس در پیگیری داده می‌شود. نادرترین نوع، بدترین پیش‌آگهی.'),
+    L('Salter-Harris Typ V: Warum wird er oft erst im Verlauf erkannt?', 'Salter-Harris Type V: Why may it only be recognized on follow-up?', 'سالتر-هریس نوع V: چرا ممکن است در پیگیری تشخیص داده شود؟'),
+    L('Typ V ist eine Kompressionsverletzung der Physis und kann initial subtil sein. Sie kann sich im Verlauf zeigen; eine spätere Physenverschmälerung oder Wachstumsstörung kann den Verdacht unterstützen, ist aber nicht Voraussetzung dafür, dass die Verletzung zunächst vermutet wird.', 'Type V is a compression injury of the physis and may be subtle initially. It may become apparent on follow-up; later physeal narrowing or growth disturbance can support suspicion, but is not required before the injury can first be suspected.', 'نوع V آسیب فشاری فیزیس است و ممکن است در ابتدا ظریف باشد. ممکن است در پیگیری آشکار شود؛ باریک‌شدن بعدی فیزیس یا اختلال رشد می‌تواند ظن را تقویت کند، اما برای مطرح‌شدن اولیهٔ آسیب الزامی نیست.'),
     L('SALTR-Eselsbrücke: R = Rammed (Kompressionsverletzung).', 'SALTR mnemonic: R = Rammed (compression injury).', 'یادآوری SALTR: R = کوبیده شده (آسیب فشاری).')
   ),
 
   F('fk-fc-wulst', L('Schaftsfrakturen', 'Shaft Fractures', 'شکستگی دیافیز'),
-    L('Was ist eine Wulstfraktur (Torus) und wie wird sie behandelt?', 'What is a Torus (buckle) fracture and how is it treated?', 'شکستگی توروس (باکل) چیست و چگونه درمان می‌شود؟'),
-    L('Metaphysäre Kortexaufwerfung durch axiale Stauchung – beide Kortizes aufgeworfen, nicht vollständig unterbrochen. Stabile Verletzung. Therapie: weiche Schiene oder kurzfristiger Gips 3–4 Wo.', 'Metaphyseal cortical buckling from axial compression – both cortices buckled, not fully disrupted. Stable injury. Treatment: soft splint or short cast 3–4 weeks.', 'فرورفتگی کورتکس متافیزی از فشار محوری – هر دو کورتکس فرورفته، کاملاً قطع نشده. آسیب پایدار. درمان: آتل نرم یا گچ کوتاه ۳–۴ هفته.'),
-    L('Stabil → nur weiche Schiene nötig. Im Gegensatz zur Grünholzfraktur!', 'Stable → only soft splint needed. Unlike Greenstick!', 'پایدار → فقط آتل نرم لازم. برخلاف گرین‌استیک!')
+    L('Wie erkennst du eine Wulstfraktur (Torus) im Röntgen?', 'How do you recognize a Torus (buckle) fracture on radiographs?', 'شکستگی توروس در رادیوگرافی چگونه تشخیص داده می‌شود؟'),
+    L('Kortikale Aufwerfung/Bulge ohne vollständige Kortikalisunterbrechung, häufig am metaphysär-diaphysären Übergang; in der seitlichen Projektion oft deutlicher. Der Mustername allein legt keine Behandlung fest.', 'Cortical buckling/bulge without complete cortical disruption, often at the metaphyseal–diaphyseal junction; often clearer on the lateral view. The pattern name alone does not determine treatment.', 'برجستگی/تاخوردگی کورتکس بدون قطع کامل، اغلب در محل اتصال متافیز و دیافیز؛ معمولاً در نمای لترال واضح‌تر است. نام الگو به‌تنهایی درمان را تعیین نمی‌کند.'),
+    L('Torus = kortikale Aufwerfung ohne vollständigen Durchbruch.', 'Torus = cortical buckling without complete disruption.', 'توروس = برجستگی کورتکس بدون قطع کامل.')
   ),
 
   F('fk-fc-gruenholz', L('Schaftsfrakturen', 'Shaft Fractures', 'شکستگی دیافیز'),
-    L('Was ist eine Grünholzfraktur und warum muss sie repositioniert werden?', 'What is a Greenstick fracture and why must it be reduced?', 'شکستگی گرین‌استیک چیست و چرا باید کاهش یابد؟'),
-    L('Biegebruch: eine Kortex vollständig unterbrochen (Zugseite), andere nur gebogen (Druckseite). Instabil → Tendenz zur Progression. Reposition + Gips 4–6 Wo. Periost auf der Druckseite intakt.', 'Bending fracture: one cortex fully disrupted (tension side), other only bent (compression side). Unstable → tendency to progress. Reduction + cast 4–6 weeks. Periosteum intact on compression side.', 'شکستگی خمشی: یک کورتکس کاملاً قطع (طرف کشش)، دیگری فقط خم (طرف فشار). ناپایدار → تمایل به پیشرفت. کاهش + گچ ۴–۶ هفته. پریوست در طرف فشار سالم.'),
+    L('Was kennzeichnet die Grünholzfraktur?', 'What characterizes a Greenstick fracture?', 'ویژگی شکستگی گرین‌استیک چیست؟'),
+    L('Biegefraktur: Eine Kortikalis ist unterbrochen, die Gegenseite bleibt gebogen; das Periost dort meist intakt. Stabilität hängt vom Einzelfall ab.', 'Bending fracture: one cortex is disrupted and the opposite side remains bent; the periosteum there is usually intact. Stability depends on the individual injury.', 'شکستگی خمشی: یک کورتکس قطع شده و سمت مقابل خمیده می‌ماند؛ پریوست آن سمت معمولاً سالم است. پایداری به خود آسیب بستگی دارد.'),
     L('Grünholz = wie grünes Holz: außen intakt, innen gebrochen.', 'Greenstick = like a green stick: outside intact, inside broken.', 'گرین‌استیک = مثل چوب سبز: بیرون سالم، داخل شکسته.')
   ),
 
   F('fk-fc-toddler', L('Toddler-Fraktur', 'Toddler Fracture', 'شکستگی توددلر'),
     L('Toddler-Fraktur: typisches Alter, Klinik, Diagnostik?', 'Toddler fracture: typical age, presentation, diagnosis?', 'شکستگی توددلر: سن معمول، تظاهرات بالینی، تشخیص؟'),
-    L('9 Monate – 3 Jahre. Okkulte Spiralfraktur distale Tibia nach Bagatelltrauma. Klinik: plötzliches Hinken, Druckschmerz. Röntgen oft negativ. MRT oder Szintigraphie nach 72 h bei Zweifel.', '9 months – 3 years. Occult spiral fracture of the distal tibia after minor trauma. Presentation: sudden limp, point tenderness. X-ray often negative. MRI or bone scan after 72 h if uncertain.', '۹ ماه تا ۳ سال. شکستگی مارپیچ پنهان تیبیای دیستال بعد از ضربه جزئی. تظاهرات: لنگ ناگهانی، حساسیت نقطه‌ای. رادیوگرافی اغلب منفی. MRI یا اسکن استخوان بعد از ۷۲ ساعت در صورت تردید.'),
+    L('Typischerweise schräge/spiralige, nicht dislozierte Fraktur des distalen Tibiaschafts bei einem Laufkind; Röntgen kann anfangs unauffällig sein. Schrägaufnahme oder Verlaufskontrolle nach etwa 1–2 Wochen kann periostale Reaktion sichtbar machen.', 'Typically a nondisplaced oblique/spiral distal tibial shaft fracture in a walking toddler; initial radiographs may be unremarkable. An oblique view or follow-up at about 1–2 weeks may show periosteal reaction.', 'معمولاً شکستگی مایل/مارپیچی بدون جابه‌جایی در تنهٔ دیستال تیبیا در کودک نوپای راه‌رونده است؛ رادیوگرافی اولیه ممکن است طبیعی باشد. نمای مایل یا پیگیری حدود ۱ تا ۲ هفته بعد ممکن است واکنش پریوست را نشان دهد.'),
     L('Immer an Toddler-Fraktur denken bei Kleinkind mit Hinken ohne klares Trauma!', 'Always think of Toddler fracture in a toddler with limp and no clear trauma!', 'همیشه به شکستگی توددلر فکر کنید در کودک نوپا با لنگ و بدون ضربه مشخص!')
   ),
 
@@ -611,8 +624,14 @@ export const FRAKTUR_KINDER_FLASHCARDS = [
 
   F('fk-fc-triplane', L('Übergangsfrakturen', 'Transitional Fractures', 'شکستگی‌های گذار'),
     L('Triplane-Fraktur: Welche 3 Ebenen sind betroffen? Wann kann CT zusätzliche Information liefern?', 'Triplane fracture: Which 3 planes are involved? When can CT add useful information?', 'شکستگی سه‌صفحه‌ای: کدام ۳ صفحه درگیر هستند؟ CT چه زمانی اطلاعات مفیدی اضافه می‌کند؟'),
-    L('Sagittal (Epiphyse), axial (Physis), koronal (Metaphyse). Alter: 13–15 J. CT kann ergänzen, wenn Röntgen Fragmentkonfiguration oder Gelenkstufe nicht ausreichend zeigt oder die Behandlungsplanung zusätzliche räumliche Information benötigt. Ein 2-mm-Wert allein legt keine OP fest; die häufig zitierte Schwelle ist nur begrenzt belegt (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170).', 'Sagittal (epiphysis), axial (physis), coronal (metaphysis). Age: 13–15 yr. CT can add information when radiographs do not adequately show fragment configuration or articular step, or when treatment planning needs additional spatial detail. A 2 mm value alone does not determine surgery; the commonly cited threshold has limited evidence (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170).', 'ساژیتال (اپی‌فیز)، محوری (فیزیس)، کرونال (متافیز). سن: ۱۳–۱۵ سال. اگر رادیوگرافی آرایش قطعات یا پله مفصلی را به‌اندازه کافی نشان ندهد، یا برنامه‌ریزی درمان به اطلاعات فضایی بیشتری نیاز داشته باشد، CT می‌تواند اطلاعات تکمیلی بدهد. عدد ۲ میلی‌متر به‌تنهایی جراحی را تعیین نمی‌کند؛ شواهد آستانه رایج محدود است (لوری و همکاران، ۲۰۲۰، doi:10.2106/JBJS.19.01170).'),
+    L('Sagittal durch die Epiphyse, transversal durch die Physis, koronal durch die posteriore Metaphyse. CT kann ergänzen, wenn die Röntgenbilder die räumliche Konfiguration nicht ausreichend darstellen.', 'Sagittal through the epiphysis, transverse through the physis, and coronal through the posterior metaphysis. CT can add information when radiographs do not adequately show the spatial configuration.', 'ساژیتال از اپی‌فیز، عرضی از فیزیس و کرونال از متافیز خلفی می‌گذرد. اگر رادیوگرافی آرایش فضایی را کافی نشان ندهد، CT می‌تواند اطلاعات تکمیلی بدهد.'),
     L('3 Ebenen: SAK – Sagittal-Axial-Koronal.', '3 planes: SAC – Sagittal-Axial-Coronal.', '۳ صفحه: ساژیتال-محوری-کرونال.')
+  ),
+
+  F('fk-fc-two-plane', L('Übergangsfrakturen', 'Transitional Fractures', 'شکستگی‌های گذار'),
+    L('Wie unterscheidet das PDF das Zwei-Ebenen-Muster vom klassischen Triplane-Muster?', 'How does the PDF distinguish the two-plane pattern from the classic triplane pattern?', 'PDF الگوی دوصفحه‌ای را چگونه از الگوی کلاسیک سه‌صفحه‌ای متمایز می‌کند؟'),
+    L('Sagittale Frakturlinie durch die Epiphyse und transversale Linie durch die Physis; kein posteriores metaphysäres Fragment. Die sichtbare Morphologie beschreiben.', 'A sagittal fracture line through the epiphysis and a transverse line through the physis; no posterior metaphyseal fragment. Describe the visible morphology.', 'خط شکستگی ساژیتال از اپی‌فیز و خط عرضی از فیزیس می‌گذرد؛ قطعهٔ متافیزی خلفی وجود ندارد. مورفولوژی قابل مشاهده را توصیف کنید.'),
+    L('Zwei Ebenen: Epiphyse + Physis; das klassische Triplane schließt zusätzlich die posteriore Metaphyse ein.', 'Two planes: epiphysis + physis; classic triplane also includes the posterior metaphysis.', 'دو صفحه: اپی‌فیز + فیزیس؛ سه‌صفحه‌ای کلاسیک متافیز خلفی را نیز دربر می‌گیرد.')
   ),
 
   F('fk-fc-periost', L('Grundlagen', 'Basics', 'مبانی'),
@@ -642,7 +661,7 @@ export const FRAKTUR_KINDER_FLASHCARDS = [
   F('fk-fc-uebergang-ct', L('Übergangsfrakturen', 'Transitional Fractures', 'شکستگی‌های گذار'),
     L('Wann ist CT bei Kinderfrakturen indiziert?', 'When is CT indicated in paediatric fractures?', 'CT در کودکان چه زمانی در شکستگی‌ها اندیکاسیون دارد؟'),
     L('1) Bei Tillaux-/Triplane-Frakturen CT häufig ergänzend erwägen, wenn Röntgen Frakturausdehnung oder Gelenkdislokation nicht sicher zeigt. 2) Komplexe Gelenkfrakturen. 3) Operative Planung. 4) Bei Verdacht auf Kindesmisshandlung geeignete Bildgebung nach lokalem Protokoll.', '1) Often consider adding CT for Tillaux/triplane fractures when radiographs do not clearly show fracture extent or articular displacement. 2) Complex articular fractures. 3) Surgical planning. 4) For suspected non-accidental injury, use imaging appropriate to local protocol.', '۱) در شکستگی تیلو/سه‌صفحه‌ای اگر رادیوگرافی گستره شکستگی یا جابجایی مفصلی را روشن نکند، افزودن CT را در نظر بگیرید. ۲) شکستگی‌های پیچیده مفصلی. ۳) برنامه‌ریزی جراحی. ۴) در ظن به کودک‌آزاری، تصویربرداری مطابق پروتکل محلی.'),
-    L('Tillaux/Triplane: CT kann die Fragment- und Gelenkbeurteilung ergänzen; eine häufig zitierte 2-mm-Schwelle ist keine alleinige OP-Regel (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170).', 'Tillaux/triplane: CT can supplement fragment and joint assessment; a commonly cited 2 mm threshold is not a stand-alone surgical rule (Lurie et al., JBJS 2020, doi:10.2106/JBJS.19.01170).', 'تیلو/سه‌صفحه‌ای: CT می‌تواند ارزیابی قطعات و مفصل را تکمیل کند؛ آستانه رایج ۲ میلی‌متر به‌تنهایی قانون جراحی نیست (لوری و همکاران، ۲۰۲۰، doi:10.2106/JBJS.19.01170).')
+    L('Tillaux/Triplane: CT kann die räumliche Fragment- und Gelenkbeurteilung ergänzen, wenn die Röntgenbilder dafür nicht ausreichen.', 'Tillaux/triplane: CT can supplement spatial assessment of fragments and the joint when radiographs are insufficient.', 'در تیلو/سه‌صفحه‌ای، اگر رادیوگرافی کافی نباشد CT می‌تواند ارزیابی فضایی قطعات و مفصل را تکمیل کند.')
   ),
 
 ].map(fc => ({
