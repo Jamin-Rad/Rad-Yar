@@ -1531,8 +1531,9 @@ ${manualEntries.length ? `
         ? monthWithRecurring(key, store, recurring, excludeVacation)
         : withoutVacationEntries(store[key] || emptyMonth(), excludeVacation)
       const income   = data.entries.filter(e => e.type === 'income').reduce((s, e)  => s + Number(e.amount || 0), 0)
+      const salary = data.entries.filter(e => e.type === 'income' && (e.title || '').trim().toLocaleLowerCase('de-DE') === 'gehalt').reduce((s, e) => s + Number(e.amount || 0), 0)
       const expenses = data.entries.filter(e => e.type === 'expense').reduce((s, e) => s + Number(e.amount || 0), 0)
-      return { key, i, income, expenses, balance: income - expenses, hasData: data.entries.length > 0 }
+      return { key, i, income, salary, expenses, balance: income - expenses, hasData: data.entries.length > 0 }
     })
   }, [store, recurring, year, excludeVacation])
 
@@ -1542,8 +1543,9 @@ ${manualEntries.length ? `
     const months = annualData.filter(m => m.hasData)
     if (!months.length) return null
     const ti = months.reduce((s, m) => s + m.income, 0)
+    const ts = months.reduce((s, m) => s + m.salary, 0)
     const te = months.reduce((s, m) => s + m.expenses, 0)
-    return { ti, te, balance: ti - te, avgI: ti / months.length, avgE: te / months.length, count: months.length }
+    return { ti, ts, te, balance: ti - te, avgI: ti / months.length, avgS: ts / months.length, avgE: te / months.length, count: months.length }
   }, [annualData])
 
   const currentMonthKey = getMonthKey()
@@ -2435,6 +2437,7 @@ ${manualEntries.length ? `
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: 10, marginBottom: 16 }}>
                       {[
                         { icon: '💰', label: 'Einkommen', value: formatMoney(annualSummary.ti), sub: `Ø ${formatMoney(annualSummary.avgI)}`, color: '#16a34a', bg: '#f0fdf4', border: '#bbf7d0' },
+                        { icon: '💼', label: 'Gehalt', value: formatMoney(annualSummary.ts), sub: `Ø ${formatMoney(annualSummary.avgS)} · im Einkommen enthalten`, color: '#0f766e', bg: '#f0fdfa', border: '#99f6e4' },
                         { icon: '💸', label: 'Ausgaben', value: formatMoney(annualSummary.te), sub: `Ø ${formatMoney(annualSummary.avgE)}`, color: '#f97316', bg: '#fff7ed', border: '#fed7aa' },
                         { icon: annualSummary.balance >= 0 ? '📈' : '📉', label: 'Saldo', value: formatMoney(annualSummary.balance), sub: `${annualSummary.count} Monate`, color: annualSummary.balance >= 0 ? '#16a34a' : '#dc2626', bg: annualSummary.balance >= 0 ? '#f0fdf4' : '#fef2f2', border: annualSummary.balance >= 0 ? '#bbf7d0' : '#fecaca' },
                         { icon: '🐖', label: 'Sparquote', value: sq ? `${sq} %` : '—', sub: 'Jahresschnitt', color: '#0ea5e9', bg: '#f0f9ff', border: '#bae6fd' },
@@ -2558,13 +2561,14 @@ ${manualEntries.length ? `
                   </div>
 
                   {/* ── Table ── */}
-                  <div className={styles.annualSurface} style={{ overflow: 'hidden' }}>
+                  <div className={styles.annualSurface} style={{ overflowX: 'auto' }}>
                     {annualSummary ? (
                       <table className={styles.annualTable}>
                         <thead>
                           <tr>
                             <th>Monat</th>
                             <th style={{ color: '#16a34a' }}>Einkommen</th>
+                            <th style={{ color: '#0f766e' }}>Gehalt</th>
                             <th style={{ color: '#f97316' }}>Ausgaben</th>
                             <th>Saldo</th>
                             <th>Sparquote</th>
@@ -2579,6 +2583,7 @@ ${manualEntries.length ? `
                                 {MONTH_LONG[m.i]}
                               </td>
                               <td className={styles.moneyPositive}>{m.hasData ? formatMoney(m.income) : '—'}</td>
+                              <td className={styles.moneyPositive}>{m.hasData ? formatMoney(m.salary) : '—'}</td>
                               <td>{m.hasData ? formatMoney(m.expenses) : '—'}</td>
                               <td className={m.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{m.hasData ? formatMoney(m.balance) : '—'}</td>
                               <td className={m.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{m.hasData && m.income ? `${sparquote(m.income, m.expenses)} %` : '—'}</td>
@@ -2589,6 +2594,7 @@ ${manualEntries.length ? `
                           <tr>
                             <td>Gesamt {year} ({annualSummary.count} Mon.)</td>
                             <td className={styles.moneyPositive}>{formatMoney(annualSummary.ti)}</td>
+                            <td className={styles.moneyPositive}>{formatMoney(annualSummary.ts)}</td>
                             <td>{formatMoney(annualSummary.te)}</td>
                             <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(annualSummary.balance)}</td>
                             <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{sparquote(annualSummary.ti, annualSummary.te)} %</td>
@@ -2596,6 +2602,7 @@ ${manualEntries.length ? `
                           <tr className={styles.annualRowAvg}>
                             <td>Ø pro Monat</td>
                             <td className={styles.moneyPositive}>{formatMoney(annualSummary.avgI)}</td>
+                            <td className={styles.moneyPositive}>{formatMoney(annualSummary.avgS)}</td>
                             <td>{formatMoney(annualSummary.avgE)}</td>
                             <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(annualSummary.balance / annualSummary.count)}</td>
                             <td>—</td>
@@ -3553,12 +3560,13 @@ ${manualEntries.length ? `
                         </div>
                         <div className={styles.budgetPanel} style={{ padding: 0, overflowX: 'auto' }}>
                           <table className={styles.annualTable}>
-                            <thead><tr><th>Monat</th><th>Einkommen</th><th>Ausgaben</th><th>Saldo</th><th>Sparquote</th></tr></thead>
+                            <thead><tr><th>Monat</th><th>Einkommen</th><th>Gehalt</th><th>Ausgaben</th><th>Saldo</th><th>Sparquote</th></tr></thead>
                             <tbody>
                               {annualData.map(m => (
                                 <tr key={m.key} onClick={() => goToMonth(m.key)} style={{ cursor: 'pointer' }} className={m.key === month ? styles.annualRowActive : !m.hasData ? styles.annualRowEmpty : ''}>
                                   <td>{MONTH_LONG[m.i]}</td>
                                   <td className={styles.moneyPositive}>{m.hasData ? formatMoney(m.income) : '—'}</td>
+                                  <td className={styles.moneyPositive}>{m.hasData ? formatMoney(m.salary) : '—'}</td>
                                   <td>{m.hasData ? formatMoney(m.expenses) : '—'}</td>
                                   <td className={m.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{m.hasData ? formatMoney(m.balance) : '—'}</td>
                                   <td>{m.hasData && m.income ? `${sparquote(m.income, m.expenses)} %` : '—'}</td>
@@ -3570,6 +3578,7 @@ ${manualEntries.length ? `
                                 <tr>
                                   <td>Jahresgesamt</td>
                                   <td className={styles.moneyPositive}>{formatMoney(annualSummary.ti)}</td>
+                                  <td className={styles.moneyPositive}>{formatMoney(annualSummary.ts)}</td>
                                   <td>{formatMoney(annualSummary.te)}</td>
                                   <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(annualSummary.balance)}</td>
                                   <td>{sparquote(annualSummary.ti, annualSummary.te)} %</td>
@@ -3577,6 +3586,7 @@ ${manualEntries.length ? `
                                 <tr className={styles.annualRowAvg}>
                                   <td>Ø pro Monat</td>
                                   <td className={styles.moneyPositive}>{formatMoney(annualSummary.avgI)}</td>
+                                  <td className={styles.moneyPositive}>{formatMoney(annualSummary.avgS)}</td>
                                   <td>{formatMoney(annualSummary.avgE)}</td>
                                   <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(annualSummary.balance / annualSummary.count)}</td>
                                   <td>—</td>
