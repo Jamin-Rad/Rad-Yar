@@ -5,6 +5,8 @@ import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import { STEATOSIS_CHAPTERS, STEATOSIS_COPY } from '../data/steatosisLesson.js'
+import { STEATOSIS_FLASHCARDS, STEATOSIS_FLASHCARD_TOPIC } from '../data/steatosisLearning.js'
+import { ABDOMEN_THORAX_REGISTERED_QUESTIONS } from '../data/abdomenThoraxRegisteredQuestions.js'
 
 const require = createRequire(import.meta.url)
 const styles = { default: new Proxy({}, { get: (_, key) => String(key) }) }
@@ -49,6 +51,9 @@ for (const locale of ['de', 'en', 'fa']) {
   assert.ok(html.includes(STEATOSIS_COPY.title[locale]), `${locale}: title`)
   for (const chapter of STEATOSIS_CHAPTERS) assert.ok(html.includes(chapter.title[locale]) && html.includes(`id="${chapter.id}"`), `${locale}: chapter ${chapter.id}`)
   assert.ok(html.includes(STEATOSIS_COPY.quiz.title[locale]) && html.includes(STEATOSIS_COPY.quiz.stem[locale]), `${locale}: self-check`)
+  assert.ok(html.includes('hepatische-steatose') && html.includes('/flashcards/hepatische-steatose'), `${locale}: linked flashcard route`)
+  const localizedReturn = locale === 'de' ? '%2Fabdomen%2Fleber%2Fsteatose' : `%2Fabdomen%2Fleber%2Fsteatose%3Flang%3D${locale}`
+  assert.ok(html.includes(`from=${localizedReturn}`), `${locale}: assessment and flashcard actions return to the localized lesson`)
   assert.ok(html.includes('id="lesson-sources-panel"'), `${locale}: source panel`)
   assert.ok(html.includes('href="https://doi.org/10.1016/j.jhep.2024.04.031"'), `${locale}: current MASLD guideline`)
   assert.ok(html.includes('href="https://doi.org/10.1016/j.jhep.2021.05.025"'), `${locale}: imaging guideline`)
@@ -59,5 +64,12 @@ const topic = fs.readFileSync('data/curriculum.js', 'utf8').match(/\{ id: 'hepat
 assert.ok(topic, 'exact curriculum topic exists')
 assert.match(topic[0], /link: '\/abdomen\/leber\/steatose'/)
 assert.match(topic[0], /inProgress: true/)
+assert.match(topic[0], /mcqLink: '\/ueben\/quiz\?fach=abdomen&n=1&themen=hepatische-steatose'/)
+assert.match(topic[0], /flashcardLink: '\/flashcards\/hepatische-steatose'/)
+assert.equal(ABDOMEN_THORAX_REGISTERED_QUESTIONS['abdomen-hepatic-steatosis'].de.tags[0], 'hepatische-steatose')
+assert.match(ABDOMEN_THORAX_REGISTERED_QUESTIONS['abdomen-hepatic-steatosis'].de.source, /Abdomen\.pdf pp\. 26–27/)
+assert.match(ABDOMEN_THORAX_REGISTERED_QUESTIONS['abdomen-hepatic-steatosis'].en.source, /EASL–EASD–EASO MASLD guideline 2024/)
+assert.equal(STEATOSIS_FLASHCARD_TOPIC.href, '/flashcards/hepatische-steatose')
+assert.equal(STEATOSIS_FLASHCARDS.length, 4)
 assert.doesNotMatch(fs.readFileSync('data/steatosisLesson.js', 'utf8'), /Goldstandard|gold standard|استاندارد طلایی/, 'outdated blanket MRI gold-standard wording removed')
 console.log('Hepatic steatosis actual-route SSR PASS: DE/EN/FA, RTL, source citations, PDF scope, schematic disclosure, embedded check, exact in-progress curriculum link.')

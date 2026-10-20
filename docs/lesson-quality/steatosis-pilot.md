@@ -1,6 +1,6 @@
 # Hepatic steatosis · page-level production ledger
 
-Status: existing lesson refined against Abdomen.pdf pp.26–27 and current EASL guidance; fresh independent review found a material PDF anatomy conflict, now repaired and awaiting delta retest; browser QA pending.
+Status: existing lesson refined against Abdomen.pdf pp.26–27 and current EASL guidance; anatomy, fibrosis wording and schematic-alt findings repaired and independently retested; exact-topic MCQ and four flashcards globally registered with localized return links and source provenance. Focused SSR and MCQ audit pass; browser QA and specialist approval remain pending.
 Route: `/abdomen/leber/steatose` · exact curriculum topic: `hepatische-steatose`.
 
 ## Source coverage
@@ -43,10 +43,10 @@ The PDF pages contain text, not diagnostic patient images. The page therefore us
 ## Evidence and open gates
 
 - Source pages visually inspected; OCR/text extraction utility was unavailable in the bundled Poppler directory, so source coverage above is based on rendered pages.
-- Author structural checks passed (ESBuild transform, locale structure, MCQ audit and diff check). Full Next build was attempted but could not complete because Google Fonts DNS access failed and `.next` creation then hit EPERM; no browser render was obtained.
+- Author structural checks passed (ESBuild transform, DE/EN/FA locale structure, focused actual-route SSR, exact-topic MCQ/card registry, MCQ audit and diff check). Full Next build was attempted but could not complete because Google Fonts DNS access failed and `.next` creation then hit EPERM; no browser render was obtained.
 - Current modality framing was checked against the EASL–EASD–EASO 2024 MASLD guideline and EASL 2021 non-invasive imaging guideline (see visible lesson references). The PDF's generic “MRI gold standard” label is not carried over as a first-line recommendation. Prevalence is deferred; source-reported HU examples are intentionally not taught as validated thresholds. The cause/progression list remains a source-attributed summary, not a complete classification or a patient-level prognosis.
 - VIS reviewer should inspect the schematic and ensure it does not imply that typical location or vessel passage alone excludes a mass. The schematic does not depict anatomic segment landmarks; its alt text now describes only diffuse steatosis and focal sparing.
 - LNG source-level comparison remains pending, despite DE/EN/FA copy being present.
-- ASM has an embedded three-option self-check; global bank linkage and assessment audit are not claimed.
+- ASM has an embedded three-option self-check and a globally registered, exact-topic MCQ (`abdomen-hepatic-steatosis`) with the source string retained in runtime question metadata. The exact curriculum topic links to the quiz and `/flashcards/hepatische-steatose`; the deck contains four DE/EN/FA cards. Focused tests assert source retention, exact topic IDs, card count, and localized `from=` return links.
 - UX desktop/mobile, theme, RTL and interaction browser checks are pending.
-- The fresh independent review found STE-SRC01 (PDF segment/gallbladder mismatch), STE-SRC02 (fibrosis assessment wording), and STE-VIS01 (alt text promised landmarks absent from the schematic). All three corrections were independently retested and closed; actual-route SSR and scoped diff checks pass. Browser UX, diagnostic-image recognition and Dr. Zia's clinical approval remain open. No global MCQ/flashcard registration is claimed.
+- Independent review found STE-SRC01 (PDF segment/gallbladder mismatch), STE-SRC02 (fibrosis assessment wording), and STE-VIS01 (alt text promised landmarks absent from the schematic). Those corrections were independently retested and closed. A later assessment delta review verified localized return links, exact-topic registration, four cards, and runtime source provenance; SRC/EDU/VIS/LNG/ASM/REV pass for the bounded lesson, while live browser UX and Dr. Zia's clinical approval remain open.

@@ -755,7 +755,7 @@ export const CURRICULUM = [
         title: { de: '3. Leber', en: '3. Liver', fa: '۳. کبد' },
         icon: '🟤',
         themen: [
-          { id: 'hepatische-steatose', title: { de: 'Hepatische Steatose', en: 'Hepatic Steatosis', fa: 'استئاتوز کبدی' }, group: ['Diffuse Lebererkrankungen'], tags: ['Sono','CT','MRT'], diff: 1, link: '/abdomen/leber/steatose', inProgress: true },
+          { id: 'hepatische-steatose', title: { de: 'Hepatische Steatose', en: 'Hepatic Steatosis', fa: 'استئاتوز کبدی' }, group: ['Diffuse Lebererkrankungen'], tags: ['Sono','CT','MRT'], diff: 1, link: '/abdomen/leber/steatose', mcqLink: '/ueben/quiz?fach=abdomen&n=1&themen=hepatische-steatose', flashcardLink: '/flashcards/hepatische-steatose', inProgress: true },
           { id: 'leberzirrhose', title: { de: 'Leberzirrhose', en: 'Liver Cirrhosis', fa: 'سیروز کبدی' }, group: ['Diffuse Lebererkrankungen'], tags: ['Sono','CT','MRT'], diff: 2 },
           { id: 'hepatitis-leber', title: { de: 'Hepatitis', en: 'Hepatitis', fa: 'هپاتیت' }, group: ['Diffuse Lebererkrankungen'], tags: ['Sono','CT','MRT'], diff: 1 },
           { id: 'leberzyste', title: { de: 'Leberzyste', en: 'Hepatic Cyst', fa: 'کیست کبدی' }, group: ['Benigne Leberläsionen'], tags: ['Sono','CT','MRT'], diff: 1, link: '/abdomen/leber/zystische-laesionen', flashcardLink: '/flashcards/leberzyste', inProgress: true, updatedAt: '2026-10-20' },
@@ -1724,8 +1724,8 @@ export const CURRICULUM = [
         title: { de: '4. CT', en: '4. CT', fa: '۴. CT' },
         icon: '◉',
         themen: [
-          { id: 'ct-grundprinzip-aufbau', title: { de: 'Grundprinzip & Aufbau', en: 'Basic Principle & System Design', fa: 'اصل پایه و ساختار دستگاه' }, tags: ['CT'], diff: 1 },
-          { id: 'ct-aufnahmetechniken', title: { de: 'Aufnahmetechniken', en: 'Acquisition Techniques', fa: 'تکنیک‌های تصویربرداری' }, tags: ['CT'], diff: 2 },
+          { id: 'ct-grundprinzip-aufbau', title: { de: 'Grundprinzip & Aufbau', en: 'Basic Principle & System Design', fa: 'اصل پایه و ساختار دستگاه' }, tags: ['CT'], diff: 1, link: '/technik/ct-grundlagen#ct-grundprinzip-aufbau', mcqLink: '/ueben/quiz?fach=technik&n=1&themen=ct-grundprinzip-aufbau', flashcardLink: '/flashcards/ct-grundprinzip-aufbau', inProgress: true, updatedAt: '2026-10-20' },
+          { id: 'ct-aufnahmetechniken', title: { de: 'Aufnahmetechniken', en: 'Acquisition Techniques', fa: 'تکنیک‌های تصویربرداری' }, tags: ['CT'], diff: 2, link: '/technik/ct-grundlagen#ct-aufnahmetechniken', mcqLink: '/ueben/quiz?fach=technik&n=1&themen=ct-aufnahmetechniken', flashcardLink: '/flashcards/ct-aufnahmetechniken', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'ct-rekonstruktion-nachverarbeitung', title: { de: 'Bildrekonstruktion & Nachverarbeitung', en: 'Image Reconstruction & Post-Processing', fa: 'بازسازی و پس‌پردازش تصویر' }, tags: ['CT'], diff: 2 },
           { id: 'ct-bildqualitaet-artefakte', title: { de: 'Bildqualität & Artefakte', en: 'Image Quality & Artefacts', fa: 'کیفیت تصویر و آرتیفکت‌ها' }, tags: ['CT'], diff: 2, link: '/technik/grundlagen#ct', mcqLink: '/ueben/quiz?fach=technik&n=1&themen=ct-bildqualitaet-artefakte', flashcardLink: '/flashcards/ct-bildqualitaet-artefakte', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'ct-methodik-km-phasen', title: { de: 'Klinische CT-Methodik & KM-Phasen', en: 'Clinical CT Technique & Contrast Phases', fa: 'تکنیک بالینی CT و فازهای کنتراست' }, tags: ['CT'], diff: 2 },

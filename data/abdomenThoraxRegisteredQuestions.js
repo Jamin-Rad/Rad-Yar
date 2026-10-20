@@ -11,6 +11,7 @@ const registrations = [
   { key: 'abdomen-ileus-volvulus', fach: 'abdomen', tags: ['ileus-duenndarm', 'volvulus'], extra: { de: 'Dünndarmobstruktion, Pneumobilie und ein Stein noch in der Gallenblase', en: 'Small-bowel obstruction, pneumobilia and a stone still within the gallbladder', fa: 'انسداد روده باریک، پنوموبیلی و سنگی که هنوز داخل کیسه صفراست' } },
   { key: 'abdomen-pancreatic-cysts', fach: 'abdomen', tags: ['ipmn'], extra: { de: 'Eine solide Raumforderung ohne Gangkommunikation', en: 'A solid mass without duct communication', fa: 'تودهٔ جامد بدون ارتباط با مجرا' } },
   { key: 'abdomen-focal-liver', fach: 'abdomen', tags: ['leberadenom', 'lebermetastasen'], extra: { de: 'Die Läsion nur anhand des nativen CT beurteilen', en: 'Assess the lesion from unenhanced CT alone', fa: 'ارزیابی ضایعه فقط بر اساس CT بدون تزریق' } },
+  { key: 'abdomen-hepatic-steatosis', fach: 'abdomen', tags: ['hepatische-steatose'], extra: { de: 'Die typische Lage allein beweist die Diagnose und macht weitere Charakterisierung unnötig', en: 'Typical location alone proves the diagnosis and makes further characterisation unnecessary', fa: 'محل تیپیک به‌تنهایی تشخیص را ثابت می‌کند و بررسی تکمیلی را غیرضروری می‌سازد' } },
   { key: 'abdomen-renal-masses', fach: 'abdomen', tags: ['nierenzysten'], extra: { de: 'Das Alter der betroffenen Person allein', en: 'The patient’s age alone', fa: 'فقط سن بیمار' } },
   { key: 'abdomen-adrenal-masses', fach: 'abdomen', tags: ['nebennieren-inzidentalom', 'nebennierenadenom'], extra: { de: 'Voraufnahmen bei der Beurteilung ignorieren', en: 'Ignore prior examinations during assessment', fa: 'نادیده‌گرفتن تصاویر قبلی در ارزیابی' } },
   { key: 'thorax-foreign-body', fach: 'thorax', tags: ['fremdkoerper-atemwege'], extra: { de: 'Ein unauffälliges Röntgenbild schließt die Aspiration sicher aus', en: 'A normal radiograph definitively excludes aspiration', fa: 'رادیوگرافی طبیعی آسپیراسیون را به‌طور قطعی رد می‌کند' } },
@@ -38,6 +39,7 @@ const makeQuestion = ({ key, fach, tags, extra }) => {
       options,
       correct: 'A',
       explanation: draft.rationale[lang],
+      source: draft.source,
     }]
   }))
 }
@@ -51,7 +53,7 @@ export const ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS = [
     { id: 'ileus-duenndarm', title: { de: 'Dünndarmileus', en: 'Small-bowel obstruction', fa: 'انسداد رودهٔ باریک' } }, { id: 'volvulus', title: { de: 'Volvulus', en: 'Volvulus', fa: 'ولوولوس' } },
   ] },
   { fachId: 'abdomen', kapitelId: 'abdomen-leber', title: { de: 'Leberläsionen', en: 'Liver lesions', fa: 'ضایعات کبدی' }, topics: [
-    { id: 'leberadenom', title: { de: 'Leberadenom', en: 'Hepatic adenoma', fa: 'آدنوم کبدی' } }, { id: 'lebermetastasen', title: { de: 'Lebermetastasen', en: 'Liver metastases', fa: 'متاستازهای کبدی' } }, { id: 'leberzyste', title: { de: 'Leberzyste', en: 'Hepatic cyst', fa: 'کیست کبدی' } },
+    { id: 'leberadenom', title: { de: 'Leberadenom', en: 'Hepatic adenoma', fa: 'آدنوم کبدی' } }, { id: 'lebermetastasen', title: { de: 'Lebermetastasen', en: 'Liver metastases', fa: 'متاستازهای کبدی' } }, { id: 'leberzyste', title: { de: 'Leberzyste', en: 'Hepatic cyst', fa: 'کیست کبدی' } }, { id: 'hepatische-steatose', title: { de: 'Hepatische Steatose', en: 'Hepatic steatosis', fa: 'استئاتوز کبدی' } },
   ] },
   { fachId: 'abdomen', kapitelId: 'abdomen-pankreas', title: { de: 'Zystische Pankreasläsionen', en: 'Cystic pancreatic lesions', fa: 'ضایعات کیستیک پانکراس' }, topics: [
     { id: 'ipmn', title: { de: 'IPMN', en: 'IPMN', fa: 'IPMN' } },

@@ -1,0 +1,29 @@
+.page { --lesson-max-width: 1120px; }
+.body { max-width: 940px; margin-inline: auto; }
+.lead { font-size: 1.08rem; line-height: 1.75; color: #233d46; }
+.pageRef { color: #667c83; font-size: .88rem; margin-block: .75rem 1rem; }
+.tableWrap { overflow-x: auto; border: 1px solid #cfe0e3; border-radius: 14px; background: #fff; }
+.table { width: 100%; border-collapse: collapse; min-width: 680px; }
+.table th, .table td { padding: .85rem 1rem; border-bottom: 1px solid #e4edef; text-align: start; vertical-align: top; line-height: 1.65; }
+.table thead th { background: #eaf5f6; color: #245d68; font-weight: 700; }
+.table tbody th { width: 26%; color: #245d68; background: #f7fbfb; font-weight: 650; }
+.table tr:last-child th, .table tr:last-child td { border-bottom: 0; }
+.figure { margin: 1.5rem auto; max-width: 920px; }
+.figure img { display: block; width: 100%; height: auto; border: 1px solid #d9e4e6; border-radius: 12px; background: white; }
+.figure figcaption, .figure p { margin-top: .55rem; color: #506970; font-size: .92rem; line-height: 1.6; }
+.figure p { font-weight: 600; }
+.note, .check { margin-block: 1.4rem; padding: 1rem 1.2rem; border: 1px solid #cfe0e3; border-radius: 14px; background: #f7fbfb; }
+.note { border-color: #e4d7b8; background: #fffaf0; }
+.note strong { color: #75531f; }
+.note p { margin-bottom: 0; line-height: 1.65; }
+.check h3 { margin: 0 0 .65rem; color: #245d68; }
+.check fieldset { border: 0; padding: 0; margin: .75rem 0; }
+.check legend { margin-bottom: .45rem; font-weight: 650; }
+.option { display: flex; align-items: flex-start; gap: .65rem; padding: .5rem .25rem; line-height: 1.55; cursor: pointer; }
+.option input { margin-top: .35rem; accent-color: #287b89; flex: 0 0 auto; }
+.feedback { padding: .75rem; border-inline-start: 3px solid #287b89; background: #eaf5f6; border-radius: 6px; line-height: 1.6; }
+.topicLinks { display: flex; flex-wrap: wrap; gap: .65rem; margin-block: 1rem; }
+.topicLinks a { display: inline-flex; padding: .55rem .85rem; border: 1px solid #b8d4d8; border-radius: 9px; color: #245d68; text-decoration: none; font-weight: 650; }
+.topicLinks a:hover { background: #e8f5f7; }
+.rules { display: grid; gap: .8rem; padding-inline-start: 1.5rem; line-height: 1.7; }
+@media (max-width: 640px) { .lead { font-size: 1rem; } .table th, .table td { padding: .7rem; } .note, .check { padding: .9rem; } }
