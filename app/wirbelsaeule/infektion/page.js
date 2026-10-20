@@ -19,7 +19,7 @@ const LABELS = {
   completed: L('Gelesen', 'Read', 'خوانده‌شده'),
   open: L('Abschnitt öffnen', 'Open section', 'بازکردن بخش'),
   close: L('Abschnitt schließen', 'Close section', 'بستن بخش'),
-  takeHome: L('Drei Regeln merken', 'Three rules to remember', 'سه نکته برای یادآوری'),
+  takeHome: L('Vier Regeln merken', 'Four rules to remember', 'چهار نکته برای یادآوری'),
 }
 const TITLE = L('Wirbelsäule', 'Spine', 'ستون فقرات')
 
@@ -61,9 +61,17 @@ export default function SpineInfectionPage() {
     { id: 'case', label: pick(lesson.case.title, lang), icon: 'case' },
     { id: 'take-home', label: t('takeHome'), icon: 'summary', emphasis: true },
   ]
-  const sourceTags = ['ACR · Adults', 'ACR · Paediatrics', 'IDSA · Adults', 'MRI · Review', 'AJNR · Primary study', 'MRI · Meta-analysis', 'TB · Imaging review']
+  const sourceTags = [
+    L('ACR · Erwachsene', 'ACR · Adults', 'ACR · بزرگسالان'),
+    L('ACR · Pädiatrie', 'ACR · Paediatrics', 'ACR · کودکان'),
+    L('IDSA · Erwachsene', 'IDSA · Adults', 'IDSA · بزرگسالان'),
+    L('MRT · Übersichtsarbeit', 'MRI · Review', 'MRI · مقاله مروری'),
+    L('AJNR · Originalstudie', 'AJNR · Primary study', 'AJNR · مطالعه اولیه'),
+    L('MRT · Metaanalyse', 'MRI · Meta-analysis', 'MRI · فراتحلیل'),
+    L('TB · Bildgebungsübersicht', 'TB · Imaging review', 'سل · مرور تصویربرداری'),
+  ]
   const sources = lesson.references.map((item, index) => ({
-    tag: sourceTags[index] || 'MRI',
+    tag: pick(sourceTags[index], lang) || 'MRI',
     title: pick(item.label, lang), href: item.url,
     citation: pick(L('Ergänzende Quelle; Geltungsbereich im Titel beachten.', 'Supplementary source; note the population in its title.', 'منبع تکمیلی؛ جمعیت مورد مطالعه را در عنوان منبع ببینید.'), lang),
   }))
