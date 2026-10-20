@@ -21,6 +21,7 @@ const registrations = [
   { key: 'abdomen-appendizitis', fach: 'abdomen', tags: ['appendizitis'], extra: { de: 'Eine nicht dargestellte Appendix als sicheren Ausschluss werten', en: 'Treat a non-visualised appendix as a definite exclusion', fa: 'دیده‌نشدن آپاندیس را رد قطعی بیماری بدانید' } },
   { key: 'abdomen-lower-gi-bleeding', fach: 'abdomen', tags: ['untere-gi-blutung'], extra: { de: 'Eine negative CTA schließt jede intermittierende Blutung aus', en: 'A negative CTA excludes every intermittent bleed', fa: 'CTA منفی هر خون‌ریزی متناوبی را رد می‌کند' } },
   { key: 'abdomen-kolorektales-karzinom', fach: 'abdomen', tags: ['kolorektales-karzinom'], extra: { de: 'Eine Abdomen-CT allein für das lokoregionäre Rektumstaging', en: 'Abdominal CT alone for locoregional rectal staging', fa: 'فقط CT شکم برای مرحله‌بندی موضعی رکتوم' } },
+  { key: 'abdomen-ileus-ischaemia', fach: 'abdomen', tags: ['ileus-duenndarm'], extra: { de: 'Wandverdickung allein beweist eine transmurale Nekrose', en: 'Wall thickening alone proves transmural necrosis', fa: 'ضخیم‌شدن دیواره به‌تنهایی نکروز تمام‌ضخامت را ثابت می‌کند' } },
 ]
 
 const makeQuestion = ({ key, fach, tags, extra }) => {

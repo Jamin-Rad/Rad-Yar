@@ -14,6 +14,19 @@
       "reuseTerms": "Not identified in the supplied PDF; relies on explicit user authorization for this project.",
       "selectionRationale": "The source arrow points to the sign being taught; the caption identifies it as a source-labelled example and avoids claiming the sign alone proves cause or severity.",
       "crop": "CT panel only; red arrow retained; surrounding PDF text, page frame and watermark excluded."
+    },
+    {
+      "path": "/educational/abdomen-ileus/pneumatosis-p72.png",
+      "sourceFile": "Abdomen.pdf",
+      "pdfPage": 72,
+      "printedPage": 71,
+      "sourcePanel": "Coronal CT panel with three pink arrows, cropped from the visually inspected page image.",
+      "sourceCaption": "The PDF identifies the arrowed finding as pneumatosis intestinalis in the bowel wall.",
+      "visibleIdentifiers": "No contributor or case ID verified from the rendered crop.",
+      "originalContributor": "Not identified in the supplied PDF page crop.",
+      "reuseTerms": "Not identified in the supplied PDF; relies on explicit user authorization for this project.",
+      "selectionRationale": "The source arrows point to the pneumatosis finding being discussed; the localized caption attributes the label to the PDF and does not treat it as standalone proof of transmural necrosis.",
+      "crop": "Central coronal CT field cropped to 292x320 px; all three source arrows retained. The tighter crop removes faint watermark fragments and orientation markers at the outer edges, along with surrounding page text."
     }
   ]
 }

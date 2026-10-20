@@ -9,7 +9,7 @@ export const ILEUS_FLASHCARD_TOPIC = {
   color: '#0e7490',
   href: '/flashcards/ileus-duenndarm',
   title: L('Dünndarmileus', 'Small-bowel obstruction', 'انسداد رودهٔ باریک'),
-  subtitle: L('CT-Muster · Übergang · Dünndarm-Fäzeszeichen', 'CT patterns · transition zone · small-bowel feces sign', 'الگوهای CT · نقطهٔ گذار · علامت مدفوع رودهٔ باریک'),
+  subtitle: L('CT-Muster · Übergang · Ischämiezeichen', 'CT patterns · transition zone · ischaemia signs', 'الگوهای CT · نقطهٔ گذار · نشانه‌های ایسکمی'),
 }
 
 const cards = [
@@ -28,6 +28,14 @@ const cards = [
     answer: L('Dass eine Ischämie sicher vorliegt oder ausgeschlossen ist, oder dass allein dadurch ein bestimmtes Management feststeht.', 'That ischaemia is definitely present or excluded, or that the sign alone determines management.', 'اینکه ایسکمی قطعاً وجود دارد یا رد شده، یا اینکه این علامت به‌تنهایی مدیریت مشخصی را تعیین می‌کند.'),
     explanation: L('Die Studie zu adhäsionsbedingtem Dünndarmileus fand keinen unabhängigen Vorhersagewert für Ischämie oder erfolgreiche nichtoperative Behandlung. Die Lage des Zeichens kann dennoch beim Finden der Übergangszone helfen.', 'In an adhesive small-bowel obstruction cohort, the sign had no independent predictive value for ischaemia or successful non-operative treatment. Its location may still help identify the transition zone.', 'در یک مطالعه روی انسداد چسبندگی رودهٔ باریک، علامت ارزش پیش‌بینی مستقل برای ایسکمی یا موفقیت درمان غیرجراحی نداشت؛ با این حال، محل آن می‌تواند به یافتن نقطهٔ گذار کمک کند.'),
     diagram: L('Lokalisation: hilfreich · Schweregrad allein: nein', 'Localisation: helpful · severity alone: no', 'مکان‌یابی: مفید · تعیین شدت به‌تنهایی: خیر'),
+  },
+  {
+    id: 'closed-loop-ischaemia-signs',
+    category: L('Komplikationszeichen', 'Complication signs', 'نشانه‌های عارضه'),
+    front: L('Welche CT-Zeichen bei einer geschlossenen Schlinge machen die Beurteilung auf Ischämie besonders wichtig?', 'Which CT findings with a closed loop make assessment for ischaemia especially important?', 'همراه لوپ بسته، کدام یافته‌های CT ارزیابی ایسکمی را مهم‌تر می‌کنند؟'),
+    answer: L('Verminderte Wandkontrastierung, Wandverdickung, Pneumatosis intestinalis und portalvenöses Gas.', 'Reduced bowel-wall enhancement, wall thickening, pneumatosis intestinalis and portal venous gas.', 'کاهش جذب مادهٔ حاجب در دیواره، ضخیم‌شدن دیواره، پنوماتوز اینتستینال و گاز ورید پورت.'),
+    explanation: L('Das sind Warnzeichen, keine Einzelbeweise. Wandverdickung ist unspezifisch; kein einzelnes CT-Zeichen schließt eine Ischämie zuverlässig aus. Befunde im Gesamtmuster beurteilen.', 'These are warning signs, not standalone proof. Wall thickening is nonspecific; no single CT sign reliably excludes ischaemia. Interpret findings as a whole pattern.', 'این‌ها نشانه‌های هشدارند، نه اثبات منفرد. ضخیم‌شدن دیواره غیراختصاصی است؛ هیچ نشانهٔ منفرد CT ایسکمی را با اطمینان رد نمی‌کند. یافته‌ها را در الگوی کلی تفسیر کنید.'),
+    diagram: L('Wand · Kontrastierung · Mesenterium · Schlingenkonfiguration gemeinsam beurteilen', 'Assess wall · enhancement · mesentery · loop configuration together', 'دیواره · جذب مادهٔ حاجب · مزانتر · شکل لوپ را با هم ارزیابی کنید'),
   },
 ]
 
