@@ -33,7 +33,7 @@ function localizedItems(items, lang) {
   return items.map(item => ({
     ...item,
     title: localize(item.title, lang),
-    text: localize(item.text, lang),
+    text: Array.isArray(item.text) ? item.text.map(point => localize(point, lang)) : localize(item.text, lang),
   }))
 }
 
@@ -107,7 +107,7 @@ function StrokeClassification({ lesson, lang, localizeValue }) {
           </div>
         </section>
       ))}
-      <Callout type="cave" label={localizeValue('Wichtige Abgrenzung')}>{localizeValue(lesson.classificationCave)}</Callout>
+      <Callout type="cave" label={localizeValue(lesson.classificationCaveLabel)}>{localizeValue(lesson.classificationCave)}</Callout>
     </div>
   )
 }
@@ -205,7 +205,7 @@ export default function IschaemischerSchlaganfallPage() {
             </div>
           </div>
           <div className={styles.heroStats}>
-            {STROKE_LESSON.heroCards.map(card => <div className={styles.heroStat} key={c(card.label)}><strong>{card.value}</strong><span>{c(card.label)}</span><small>{c(card.text)}</small></div>)}
+            {STROKE_LESSON.heroCards.map(card => <div className={styles.heroStat} key={c(card.label)}><strong>{c(card.value)}</strong><span>{c(card.label)}</span><small>{c(card.text)}</small></div>)}
           </div>
         </div>
       </header>

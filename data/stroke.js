@@ -1,7 +1,7 @@
 const L = (de, en, fa) => ({ de, en, fa })
 
 export const STROKE_LESSON = {
-  pdfSourcePages: [3,9], // user PDF page range; coverage still requires content comparison
+  pdfSourcePages: [3,9], // PDF p.3 classification audited; p.4–9 comparison remains open
 
   toc: L('Inhaltsverzeichnis', 'Contents', 'فهرست مطالب'),
   breadcrumbArea: L('Kopf', 'Head', 'سر'),
@@ -38,9 +38,9 @@ export const STROKE_LESSON = {
   ],
   heroCards: [
     {
-      value: '80–85%',
-      label: L('Ischämisch', 'ischaemic', 'ایسکمیک'),
-      text: L('Akute arterielle Durchblutungsstörung', 'Acute arterial perfusion disturbance', 'اختلال حاد خون‌رسانی شریانی'),
+      value: L('2 Formen', '2 forms', '۲ شکل'),
+      label: L('Grundmuster', 'Core patterns', 'الگوهای اصلی'),
+      text: L('Ischämischer Infarkt oder primäre Blutung', 'Ischaemic infarction or primary haemorrhage', 'انفارکت ایسکمیک یا خونریزی اولیه'),
     },
     {
       value: '0–42',
@@ -56,89 +56,59 @@ export const STROKE_LESSON = {
   basics: {
     title: L('Klinische Grundlagen', 'Clinical basics', 'مبانی بالینی'),
     introTitle: L('Einleitung und Klassifikation', 'Introduction and classification', 'مقدمه و طبقه‌بندی'),
-    introGroups: [
-      {
-        title: L('Der Schlaganfall ist ein klinisches Syndrom, das radiologisch in zwei Hauptformen unterteilt wird:', 'Stroke is a clinical syndrome that is radiologically divided into two main forms:', 'سکته مغزی یک سندرم بالینی است که از نظر تصویربرداری به دو شکل اصلی تقسیم می‌شود:'),
-        items: [
-          {
-            text: L('Ischämischer Schlaganfall (~80-85%):', 'Ischaemic stroke (~80-85%):', 'سکته ایسکمیک (~۸۰-۸۵٪):'),
-            detail: L('Akute arterielle Durchblutungsstörung.', 'Acute arterial perfusion disturbance.', 'اختلال حاد خون‌رسانی شریانی.'),
-          },
-          {
-            text: L('Hämorrhagischer Schlaganfall (~15-20%):', 'Haemorrhagic stroke (~15-20%):', 'سکته هموراژیک (~۱۵-۲۰٪):'),
-            detail: L('Intrazerebrale Blutung (10-15%) oder Subarachnoidalblutung (~5%).', 'Intracerebral haemorrhage (10-15%) or subarachnoid haemorrhage (~5%).', 'خونریزی داخل مغزی (۱۰-۱۵٪) یا خونریزی ساب‌آراکنوئید (~۵٪).'),
-          },
-        ],
-      },
-      {
-        title: L('Klinische Beurteilung:', 'Clinical assessment:', 'ارزیابی بالینی:'),
-        items: [
-          {
-            text: L('erfolgt primär über den NIHSS (0-42 Punkte).', 'is primarily performed with the NIHSS (0-42 points).', 'عمدتاً با NIHSS (۰-۴۲ امتیاز) انجام می‌شود.'),
-            detail: L('Ein Wert > 6 deutet auf eine deutliche funktionelle Beeinträchtigung hin.', 'A score > 6 suggests relevant functional impairment.', 'نمره بیش از ۶ به ناتوانی عملکردی قابل توجه اشاره دارد.'),
-          },
-        ],
-      },
-    ],
-    classificationTitle: 'Klassifikation & Begriffe',
+    classificationTitle: L('Klassifikation & Begriffe', 'Classification & terms', 'طبقه‌بندی و اصطلاحات'),
+    classificationCaveLabel: L('Wichtige Abgrenzung', 'Important distinction', 'تمایز مهم'),
     classificationGroups: [
       {
-        title: 'Grundformen',
+        title: L('Grundformen', 'Core forms', 'شکل‌های اصلی'),
         items: [
           {
-            title: 'Ischämischer Schlaganfall',
+            title: L('Ischämischer Schlaganfall', 'Ischaemic stroke', 'سکته ایسکمیک'),
             text: [
-              'Akut einsetzende, umschriebene Mangeldurchblutung des Gehirns mit fokal-neurologischem Defizit.',
-              'Anteil: etwa 80–85 % aller Schlaganfälle.',
+              L('Ein ischämischer Schlaganfall beruht auf einem Infarkt von Gewebe des Zentralnervensystems infolge einer Ischämie.', 'An ischaemic stroke is an infarction of central nervous system tissue caused by ischaemia.', 'سکته ایسکمیک بر اثر انفارکت بافت دستگاه عصبی مرکزی در پی ایسکمی رخ می‌دهد.'),
             ],
           },
           {
-            title: 'Hämorrhagischer Schlaganfall',
+            title: L('Hämorrhagischer Schlaganfall', 'Haemorrhagic stroke', 'سکته هموراژیک'),
             text: [
-              'Akutes neurologisches Defizit durch eine intrakranielle Blutung.',
-              'Anteil: etwa 15–20 % aller Schlaganfälle.',
-              'Davon ICB (Blutung ins Hirnparenchym): etwa 10–15 %.',
-              'Davon SAB (Blutung in den Subarachnoidalraum): etwa 5 %.',
+              L('Primäre intrakranielle Blutungen umfassen die intrazerebrale und die Subarachnoidalblutung.', 'Primary intracranial haemorrhages include intracerebral and subarachnoid haemorrhage.', 'خونریزی‌های اولیه داخل جمجمه شامل خونریزی داخل پارانشیم مغز و خونریزی زیرعنکبوتیه هستند.'),
+              L('Eine sekundäre hämorrhagische Transformation eines Infarkts ist davon zu unterscheiden.', 'Secondary haemorrhagic transformation of an infarct is a separate process.', 'تبدیل هموراژیک ثانویهٔ انفارکت باید از این موارد تفکیک شود.'),
             ],
           },
         ],
       },
       {
-        title: 'Infarktmuster',
+        title: L('Infarktmuster', 'Infarct patterns', 'الگوهای انفارکت'),
         items: [
-          { title: 'Territorialinfarkt', text: ['Infarkt im Gebiet einer großen pialen Arterie.'] },
-          { title: 'Lakunärer Infarkt', text: ['Kleiner Infarkt (≤ 1,5 cm) durch Verschluss eines Perforators.'] },
-          { title: 'Endstrominfarkt', text: ['Distaler Infarkt im Gebiet einer nicht kollateralisierten Endarterie.'] },
-          { title: 'Grenzzoneninfarkt', text: ['Infarkt zwischen benachbarten arteriellen Versorgungsgebieten.'] },
+          { title: L('Territorialinfarkt', 'Territorial infarct', 'انفارکت قلمرویی'), text: [L('Infarkt im Versorgungsgebiet einer größeren hirnversorgenden Arterie.', 'Infarction in the territory supplied by a larger cerebral artery.', 'انفارکت در قلمرو خون‌رسانی یک شریان بزرگ‌تر مغزی.') ] },
+          { title: L('Kleiner subkortikaler (lakunärer) Infarkt', 'Small subcortical (lacunar) infarct', 'انفارکت کوچک زیرقشری (لاکونار)'), text: [L('Kleiner tiefer Infarkt in einem Perforatorgebiet; die Größenabgrenzung hängt von der verwendeten Definition ab.', 'A small deep infarct in a perforator territory; size cut-offs depend on the definition used.', 'انفارکت کوچک عمقی در قلمرو یک شریان پرفوراتور؛ حد اندازه به تعریف مورد استفاده بستگی دارد.') ] },
+          { title: L('Endstrominfarkt', 'Distal end-artery infarct', 'انفارکت شریان انتهایی'), text: [L('Distaler Infarkt in einem Gebiet mit begrenzter Kollateralversorgung.', 'A distal infarct in a territory with limited collateral supply.', 'انفارکت دیستال در قلمرویی با خون‌رسانی جانبی محدود.') ] },
+          { title: L('Grenzzoneninfarkt', 'Watershed infarct', 'انفارکت مرزی'), text: [L('Infarkt an der Grenze benachbarter arterieller Versorgungsgebiete.', 'Infarction at the border between adjacent arterial territories.', 'انفارکت در مرز قلمروهای شریانی مجاور.') ] },
         ],
       },
       {
-        title: 'Entstehungsmechanismus',
+        title: L('Entstehungsmechanismus', 'Mechanism', 'مکانیسم'),
         items: [
           {
-            title: 'Embolisch',
+            title: L('Embolisch', 'Embolic', 'آمبولیک'),
             text: [
-              'Arterieller Verschluss durch eingeschwemmtes Material.',
-              'Kardioembolisch: Embolusquelle im Herzen.',
-              'Arterio-arteriell: Embolusquelle in einer proximalen hirnversorgenden Arterie.',
+              L('Ein Embolus verschließt ein Gefäß.', 'An embolus occludes a vessel.', 'آمبولی یک رگ را مسدود می‌کند.'),
+              L('Mögliche Quellen sind das Herz oder eine proximale Arterie.', 'Possible sources include the heart or a proximal artery.', 'منشأهای احتمالی شامل قلب یا یک شریان پروگزیمال هستند.'),
             ],
           },
-          { title: 'Thrombotisch', text: ['Lokal entstandener Gefäßthrombus.'] },
-          { title: 'Venöser Infarkt', text: ['Venöse Abflussstörung durch Venen- oder Sinusthrombose.', 'Häufig hämorrhagisch.'] },
+          { title: L('Thrombotisch', 'Thrombotic', 'ترومبوتیک'), text: [L('Ein Thrombus entsteht lokal im Gefäß.', 'A thrombus forms locally within a vessel.', 'ترومبوس به‌صورت موضعی درون رگ شکل می‌گیرد.') ] },
+          { title: L('Venöser Infarkt', 'Venous infarction', 'انفارکت وریدی'), text: [L('Venöse Abflussstörung durch eine Venen- oder Sinusthrombose; das Infarktareal ist häufig hämorrhagisch.', 'Impaired venous drainage due to venous or sinus thrombosis; the infarct is often haemorrhagic.', 'اختلال تخلیه وریدی ناشی از ترومبوز ورید یا سینوس؛ ناحیه انفارکت اغلب مؤلفه هموراژیک دارد.') ] },
         ],
       },
       {
-        title: 'Klinischer Verlauf',
+        title: L('TIA und Schlaganfall', 'TIA and stroke', 'TIA و سکته مغزی'),
         items: [
-          { title: 'TIA', text: ['Vollständig rückläufiges fokales Defizit.', 'Dauer: meist < 1 h, klassisch < 24 h.'] },
-          { title: 'RIND', text: ['Vollständige Rückbildung nach mehr als 24 Stunden.'] },
-          { title: 'PRIND', text: ['Weitgehende Rückbildung mit minimalem Restdefizit.'] },
-          { title: 'Progredienter Schlaganfall', text: ['Zunehmende Symptomatik in der Akutphase.'] },
-          { title: 'Completed Stroke', text: ['Bleibendes neurologisches Defizit.'] },
+          { title: L('Transitorische ischämische Attacke (TIA)', 'Transient ischaemic attack (TIA)', 'حمله ایسکمیک گذرا (TIA)'), text: [L('Vorübergehende fokale neurologische Funktionsstörung durch Ischämie ohne Infarkt.', 'Transient focal neurological dysfunction caused by ischaemia without infarction.', 'اختلال گذرای عملکرد عصبی فوکال ناشی از ایسکمی، بدون انفارکت.'), L('Die Dauer der Symptome allein trennt TIA und Infarkt nicht.', 'Symptom duration alone does not distinguish TIA from infarction.', 'مدت علائم به‌تنهایی TIA را از انفارکت جدا نمی‌کند.') ] },
+          { title: L('NIHSS', 'NIHSS', 'NIHSS'), text: [L('Standardisierte Skala zur Quantifizierung neurologischer Ausfälle (0–42 Punkte).', 'A standardised scale for quantifying neurological deficits (0–42 points).', 'مقیاسی استاندارد برای کمی‌سازی نقص عصبی (۰ تا ۴۲ امتیاز).'), L('Der Score allein legt nicht fest, ob ein Defizit für die einzelne Person behindernd ist; auch ein niedriger Wert kann mit einem behindernden Defizit einhergehen.', 'The score alone does not determine whether a deficit is disabling for an individual; a low score can still accompany a disabling deficit.', 'نمره به‌تنهایی تعیین نمی‌کند که نقص برای فرد ناتوان‌کننده است؛ حتی نمره پایین نیز می‌تواند با نقص ناتوان‌کننده همراه باشد.') ] },
         ],
       },
     ],
-    classificationCave: 'Ein hämorrhagischer Hirninfarkt ist eine sekundäre Einblutung in ein primär ischämisches Areal und nicht mit einem primär hämorrhagischen Schlaganfall gleichzusetzen.',
+    classificationCave: L('Eine hämorrhagische Transformation ist eine sekundäre Einblutung in ein ischämisches Infarktareal. Sie ist von einer primären intrakraniellen Blutung zu unterscheiden.', 'Haemorrhagic transformation is secondary bleeding into an ischaemic infarct. It is distinct from primary intracranial haemorrhage.', 'تبدیل هموراژیک، خونریزی ثانویه در ناحیه انفارکت ایسکمیک است و باید از خونریزی اولیه داخل جمجمه تفکیک شود.'),
     territoriesTitle: L('Gefäßterritorien und klinische Syndrome', 'Vascular territories and clinical syndromes', 'قلمروهای عروقی و سندرم‌های بالینی'),
     headers: [
       L('Gefäß', 'Vessel', 'رگ'),
@@ -179,8 +149,8 @@ export const STROKE_LESSON = {
         text: L('Bei etwa 95% der Rechtshänder liegt das Sprachzentrum links. Auch bei den meisten Linkshändern ist die linke Hemisphäre sprachdominant; häufiger als bei Rechtshändern kann Sprache aber rechts oder beidseitig organisiert sein.', 'In about 95% of right-handed people, language is left-dominant. Most left-handed people are also left-dominant, although right-sided or bilateral language organisation is more common than in right-handed people.', 'در حدود ۹۵٪ راست‌دست‌ها مرکز زبان در نیمکره چپ است. در بیشتر چپ‌دست‌ها نیز نیمکره چپ غالب زبانی است، اما سازمان‌دهی راست‌طرفه یا دوطرفه زبان نسبت به راست‌دست‌ها شایع‌تر است.'),
       },
       {
-        title: 'NIHSS',
-        text: L('Standardisierte Schweregradeinschätzung von 0 bis 42. Ein Wert > 6 deutet auf eine deutliche funktionelle Beeinträchtigung hin; ein niedriger Wert schließt ein behinderndes Defizit nicht aus.', 'Standardised severity score from 0 to 42. A score > 6 suggests relevant functional impairment; a low score does not exclude a disabling deficit.', 'مقیاس استاندارد شدت از ۰ تا ۴۲. نمره بیش از ۶ به ناتوانی عملکردی قابل توجه اشاره دارد؛ نمره پایین نقص ناتوان‌کننده را رد نمی‌کند.'),
+        title: L('NIHSS', 'NIHSS', 'NIHSS'),
+        text: L('Skala von 0 bis 42; zur individuellen Bewertung der Behinderung siehe „TIA und Schlaganfall“.', 'A 0–42 scale; see “TIA and stroke” for individual assessment of disability.', 'مقیاس ۰ تا ۴۲؛ برای ارزیابی فردی ناتوان‌کننده‌بودن نقص، بخش «TIA و سکته مغزی» را ببینید.'),
       },
       {
         title: L('Mimics bedenken', 'Consider mimics', 'در نظر گرفتن تقلیدکننده‌ها'),
