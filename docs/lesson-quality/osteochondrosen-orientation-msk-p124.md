@@ -1,8 +1,8 @@
 # Osteochondrose terminology orientation · MSK.pdf p.124
 
-**Route:** `/msk/osteochondrosen/weitere-osteochondrosen`  
-**Curriculum ID:** `weitere-osteochondrosen` (existing; now linked and in progress)  
-**Source:** `C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf`, PDF p.124 / printed p.123; source page image `tmp/perthes/page-124.png` inspected.  
+**Route:** `/msk/osteochondrosen/weitere-osteochondrosen`
+**Curriculum ID:** `weitere-osteochondrosen` (existing; now linked and in progress)
+**Source:** `C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf`, PDF p.124 / printed p.123; source page image `tmp/perthes/page-124.png` inspected.
 **Scope:** A short terminology/orientation page only. It does not claim to cover a disease or provide shared imaging criteria, staging, management, or a comprehensive taxonomy.
 
 ## Learning aim and structure
