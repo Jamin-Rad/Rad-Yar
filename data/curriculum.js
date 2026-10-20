@@ -1731,7 +1731,7 @@ export const CURRICULUM = [
           { id: 'ct-methodik-km-phasen', title: { de: 'Klinische CT-Methodik & KM-Phasen', en: 'Clinical CT Technique & Contrast Phases', fa: 'تکنیک بالینی CT و فازهای کنتراست' }, tags: ['CT'], diff: 2 },
           { id: 'dual-energy-ct', title: { de: 'Dual-Energy-CT (DECT)', en: 'Dual-Energy CT (DECT)', fa: 'CT دو انرژی (DECT)' }, group: ['Besondere CT-Techniken'], tags: ['CT'], diff: 3, link: '/technik/dual-energy-ct', mcqLink: '/ueben/quiz?fach=technik&n=1&themen=dual-energy-ct', flashcardLink: '/flashcards/dual-energy-ct', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'hrct-technik', title: { de: 'High-Resolution CT (HRCT)', en: 'High-Resolution CT (HRCT)', fa: 'CT با وضوح بالا (HRCT)' }, group: ['Besondere CT-Techniken'], tags: ['CT'], diff: 2 },
-          { id: 'ct-perfusion-technik', title: { de: 'CT-Perfusion', en: 'CT Perfusion', fa: 'پرفیوژن CT' }, group: ['Besondere CT-Techniken'], tags: ['CT'], diff: 3 },
+          { id: 'ct-perfusion-technik', title: { de: 'CT-Perfusion', en: 'CT Perfusion', fa: 'پرفیوژن CT' }, group: ['Besondere CT-Techniken'], tags: ['CT'], diff: 3, link: '/technik/ct-perfusion', mcqLink: '/ueben/quiz?fach=technik&n=1&themen=ct-perfusion-technik', flashcardLink: '/flashcards/ct-perfusion-technik', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'photon-counting-ct', title: { de: 'Photon-Counting-CT', en: 'Photon-Counting CT', fa: 'CT شمارش فوتون' }, group: ['Besondere CT-Techniken'], tags: ['CT'], diff: 3 },
         ],
       },

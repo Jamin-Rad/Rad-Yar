@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" role="img" aria-labelledby="title desc">
+  <title id="title">CT perfusion schematic</title>
+  <desc id="desc">A contrast bolus passes through a CT gantry and is sampled repeatedly, producing arterial and tissue time-density curves.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173340"/><stop offset="1" stop-color="#285a62"/></linearGradient>
+    <linearGradient id="ring" x1="0" x2="1"><stop stop-color="#bcebf0"/><stop offset="1" stop-color="#65bdc8"/></linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0 0v6l8-3z" fill="#bcebf0"/></marker>
+  </defs>
+  <rect width="960" height="620" rx="36" fill="url(#bg)"/>
+  <g opacity=".13" stroke="#d8f7f8"><path d="M60 120H900M60 200H900M60 280H900M60 360H900M60 440H900M60 520H900"/><path d="M140 60V560M260 60V560M380 60V560M500 60V560M620 60V560M740 60V560M860 60V560"/></g>
+  <g transform="translate(85 120)">
+    <circle cx="190" cy="190" r="142" fill="#102630" stroke="url(#ring)" stroke-width="22"/>
+    <circle cx="190" cy="190" r="91" fill="#d8edf0" opacity=".92"/>
+    <ellipse cx="190" cy="190" rx="55" ry="74" fill="#bad6dc"/>
+    <path d="M203 143c-25 14-34 31-29 51 3 13 15 19 13 33-2 9-10 17-12 26" fill="none" stroke="#b84246" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="201" cy="143" r="10" fill="#ed806a"/><circle cx="187" cy="230" r="10" fill="#59bfc0"/>
+    <path d="M0 353H380" stroke="#bcebf0" stroke-width="8" stroke-linecap="round"/>
+    <rect x="40" y="330" width="130" height="46" rx="20" fill="#4b7f88"/>
+    <path d="M32 390h310" stroke="#80aeb5" stroke-width="4" stroke-dasharray="8 9"/>
+  </g>
+  <g transform="translate(535 118)">
+    <rect width="340" height="340" rx="22" fill="#f6fbfc"/>
+    <path d="M52 48v238h244" fill="none" stroke="#61777e" stroke-width="4"/>
+    <g stroke="#dce7e9" stroke-width="2"><path d="M52 108h244M52 168h244M52 228h244"/><path d="M112 48v238M172 48v238M232 48v238" stroke-dasharray="4 7"/></g>
+    <path d="M60 275c33 0 50-5 69-37 16-26 20-99 42-143 12-24 23-26 34-2 18 39 14 119 42 153 14 17 27 24 51 27" fill="none" stroke="#2864a7" stroke-width="8" stroke-linecap="round"/>
+    <path d="M60 275c43 0 68-4 94-20 29-18 37-50 60-86 19-30 37-48 56-44 23 5 26 40 41 72 12 26 22 56 43 67" fill="none" stroke="#198b83" stroke-width="8" stroke-linecap="round"/>
+    <path d="M36 306h268" stroke="#9ab9be" stroke-width="2" stroke-dasharray="6 7"/>
+  </g>
+  <path d="M460 300h48" stroke="#bcebf0" stroke-width="5" marker-end="url(#arrow)"/>
+  <g transform="translate(548 500)"><rect width="130" height="60" rx="12" fill="#2864a7"/><rect x="145" width="130" height="60" rx="12" fill="#198b83"/><text x="65" y="38" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="white">CBF / CBV</text><text x="210" y="38" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="white">MTT / TTP</text></g>
+</svg>
+

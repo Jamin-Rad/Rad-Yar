@@ -17,6 +17,7 @@ import { DUAL_ENERGY_CT_QUESTIONS, DUAL_ENERGY_CT_TOPIC_GROUP } from './technikD
 import { MR_PERFUSION_QUESTIONS, MR_PERFUSION_TOPIC_GROUP } from './technikMrtPerfusionLesson'
 import { MRI_ARTIFACT_QUESTIONS, MRI_ARTIFACT_TOPIC_GROUP } from './technikMriArtifacts'
 import { CT_QUALITY_QUESTIONS, CT_QUALITY_TOPIC_GROUP } from './technikCTQuality'
+import { CT_PERFUSION_QUESTIONS, CT_PERFUSION_TOPIC_GROUP } from './technikCTPerfusionLesson'
 // ── RADYAR QUESTION BANK ────────────────────────────────────────────────────
 
 import { CONTRAST_QUESTIONS, CONTRAST_TOPICS } from './contrastMedia'
@@ -4198,11 +4199,12 @@ const LEGACY_QUESTION_BANK = {
 export const QUESTION_BANK = Object.fromEntries(
   Object.entries(LEGACY_QUESTION_BANK).map(([lang, questions]) => [
     lang,
-    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...KOLLOID_QUESTIONS.filter(question => question.id.startsWith(`kolloidzyste-${lang}-`)), ...UIP_IPF_QUESTIONS.filter(question => question.id.startsWith(`uip-ipf-${lang}-`)), ...PULMONARY_EDEMA_QUESTIONS.filter(question => question.id.startsWith(`lungenoedem-${lang}-`)), ...DUAL_ENERGY_CT_QUESTIONS.filter(question => question.id.startsWith(`dual-energy-ct-${lang}-`)), ...MR_PERFUSION_QUESTIONS.filter(question => question.id.startsWith(`mrt-perfusion-${lang}-`)), ...MRI_ARTIFACT_QUESTIONS.filter(question => question.id.startsWith(`mri-artifacts-${lang}-`)), ...CT_QUALITY_QUESTIONS.filter(question => question.id.startsWith(`ct-quality-${lang}-`)), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang]), ...METACARPAL_BASE_QUESTIONS[lang], ...BONE_INFARCT_QUESTIONS[lang], ...FACET_QUESTIONS[lang], ...PCNSL_QUESTIONS[lang], ...MEDULLO_QUESTIONS[lang], ...MENING_QUESTIONS[lang], ...RECIST_QUESTIONS[lang], ...ORMOND_QUESTIONS[lang], ...EPIPLOICA_QUESTIONS[lang], ...PANNICULITIS_QUESTIONS[lang], ...PERITONEAL_QUESTIONS[lang], ...BRAIN_METASTASES_QUESTIONS[lang]],
+    [...questions.filter(question => !question.id.startsWith('haemangiom-')), ...(HEMANGIOMA_QUESTIONS[lang] || []), ...KOLLOID_QUESTIONS.filter(question => question.id.startsWith(`kolloidzyste-${lang}-`)), ...UIP_IPF_QUESTIONS.filter(question => question.id.startsWith(`uip-ipf-${lang}-`)), ...PULMONARY_EDEMA_QUESTIONS.filter(question => question.id.startsWith(`lungenoedem-${lang}-`)), ...DUAL_ENERGY_CT_QUESTIONS.filter(question => question.id.startsWith(`dual-energy-ct-${lang}-`)), ...MR_PERFUSION_QUESTIONS.filter(question => question.id.startsWith(`mrt-perfusion-${lang}-`)), ...MRI_ARTIFACT_QUESTIONS.filter(question => question.id.startsWith(`mri-artifacts-${lang}-`)), ...CT_QUALITY_QUESTIONS.filter(question => question.id.startsWith(`ct-quality-${lang}-`)), ...CT_PERFUSION_QUESTIONS.filter(question => question.id.startsWith(`ct-perfusion-${lang}-`)), ...Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).map(question => question[lang]), ...MSK_SPINE_REGISTERED_QUESTIONS.map(question => question[lang]), ...METACARPAL_BASE_QUESTIONS[lang], ...BONE_INFARCT_QUESTIONS[lang], ...FACET_QUESTIONS[lang], ...PCNSL_QUESTIONS[lang], ...MEDULLO_QUESTIONS[lang], ...MENING_QUESTIONS[lang], ...RECIST_QUESTIONS[lang], ...ORMOND_QUESTIONS[lang], ...EPIPLOICA_QUESTIONS[lang], ...PANNICULITIS_QUESTIONS[lang], ...PERITONEAL_QUESTIONS[lang], ...BRAIN_METASTASES_QUESTIONS[lang]],
   ])
 )
 
 export const MCQ_TOPIC_GROUPS = [
+  CT_PERFUSION_TOPIC_GROUP,
   DUAL_ENERGY_CT_TOPIC_GROUP,
   MR_PERFUSION_TOPIC_GROUP,
   MRI_ARTIFACT_TOPIC_GROUP,

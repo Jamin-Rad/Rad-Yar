@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual CT perfusion time-density curves</title>
+  <desc id="desc">A narrow arterial enhancement curve peaks before a broader tissue enhancement curve. No patient data or quantitative scale is shown.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L8,3 z" fill="#64748b"/></marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="500" rx="26" fill="#f8fbfc"/>
+  <g stroke="#dbe5e8" stroke-width="2">
+    <path d="M140 100H880M140 175H880M140 250H880M140 325H880M140 400H880"/>
+    <path d="M260 75V420M380 75V420M500 75V420M620 75V420M740 75V420M860 75V420" stroke-dasharray="5 9"/>
+  </g>
+  <path d="M140 75V420H880" fill="none" stroke="#64748b" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M175 400 C245 398 275 385 306 340 C327 309 337 209 356 128 C367 82 382 77 394 143 C410 226 421 335 455 378 C475 394 510 399 565 400" fill="none" stroke="#2864a7" stroke-width="8" stroke-linecap="round"/>
+  <path d="M175 400 C255 398 305 390 351 370 C400 348 427 300 458 244 C488 188 511 155 539 154 C569 155 590 199 614 253 C638 309 670 356 713 379 C751 396 805 400 860 400" fill="none" stroke="#198b83" stroke-width="8" stroke-linecap="round"/>
+  <path d="M392 86V405" stroke="#2864a7" stroke-width="3" stroke-dasharray="8 9" opacity=".42"/>
+  <path d="M540 144V405" stroke="#198b83" stroke-width="3" stroke-dasharray="8 9" opacity=".42"/>
+  <circle cx="394" cy="112" r="9" fill="#2864a7"/>
+  <circle cx="539" cy="154" r="9" fill="#198b83"/>
+</svg>
