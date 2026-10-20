@@ -1,0 +1,24 @@
+.strokeAspectsMap {
+  margin: 20px 0;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--bg-card);
+}
+.strokePage :global([data-lesson-hero] img).strokeHeroImage { transform: none; }
+.strokeAspectsLevels { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.strokeAspectsLevel { min-width: 0; padding: 16px; border: 1px solid var(--border); border-radius: 14px; }
+.strokeAspectsLevel h3 { margin: 0 0 12px; color: var(--text); font-size: 16px; }
+.strokeAspectsLevel ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+.strokeAspectsLevel li { display: flex; align-items: flex-start; gap: 9px; min-width: 0; color: var(--text-soft); line-height: 1.5; }
+.strokeAspectsLevel li strong { flex: 0 0 34px; color: #075985; }
+.strokeAspectsMap figcaption { margin-top: 9px; color: var(--text-soft); line-height: 1.65; }
+.strokeAspectsScoring { margin-top: 14px; color: var(--text-soft); line-height: 1.65; }
+.strokeAspectsNote { margin: 7px 0 0; color: var(--text-soft); font-size: 13px; }
+:global(html[data-theme='dark']) .strokeAspectsLevel li strong { color: #7dd3fc; }
+@media (max-width: 760px) {
+  .strokeAspectsMap { padding: 12px; }
+  .strokeAspectsLevels { grid-template-columns: 1fr; }
+  .strokeAspectsLevel { padding: 12px; }
+  .strokeAspectsLevel ul { grid-template-columns: 1fr; }
+}

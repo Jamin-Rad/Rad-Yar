@@ -7,8 +7,10 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import { STROKE_LEARNING_CASES, STROKE_LESSON } from '@/data/stroke'
+import LessonHero from '@/components/LessonHero'
 import InProgressBanner from '@/components/InProgressBanner'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
+import strokeStyles from './page.module.css'
 
 const IMAGE_UI = {
   de: { zoom: 'Bild vergrößern', close: 'Bildansicht schließen' },
@@ -71,6 +73,27 @@ function Callout({ type = 'note', label, children }) {
 
 function Cards({ items }) {
   return <div className={styles.cardsGrid}>{items.map(item => <div className={styles.infoCard} key={item.title}><h3>{item.title}</h3><p>{item.text}</p></div>)}</div>
+}
+
+function AspectsMap({ lesson, localizeValue }) {
+  return (
+    <figure className={strokeStyles.strokeAspectsMap} aria-label={localizeValue(lesson.imageAlt)}>
+      <div className={strokeStyles.strokeAspectsLevels}>
+        {lesson.regions.map(level => (
+          <section key={localizeValue(level.level)} className={strokeStyles.strokeAspectsLevel}>
+            <h3>{localizeValue(level.level)}</h3>
+            <ul>
+              {level.items.map(region => (
+                <li key={region}><strong>{region}</strong><span>{localizeValue(lesson.regionNames[region])}</span></li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+      <p className={strokeStyles.strokeAspectsScoring}>{localizeValue(lesson.scoring)}</p>
+      <p className={strokeStyles.strokeAspectsNote}>{localizeValue(lesson.diagramNote)}</p>
+    </figure>
+  )
 }
 
 function ClinicalBasics({ lesson, lang, localizeValue }) {
@@ -194,19 +217,10 @@ export default function IschaemischerSchlaganfallPage() {
           <Link href={withLang('/lernen/gehirn')}>{c(STROKE_LESSON.breadcrumbArea)}</Link><span>›</span>
           <span>{c(STROKE_LESSON.breadcrumbCurrent)}</span>
         </div>
-        <div className={styles.hero}>
-          <div className={styles.heroText}>
-            <span className={styles.sourceBadge}>{STROKE_LESSON.sourceLabel}</span>
-            <h1>{c(STROKE_LESSON.title)}</h1>
-            <p>{c(STROKE_LESSON.subtitle)}</p>
-            <div className={styles.actions}>
-              <Link href={withLang(`/ueben/quiz?fach=gehirn&n=15&themen=ischaemischer-schlaganfall&from=${encodeURIComponent(withLang(lessonPath))}`)} className={styles.actionBtn}>🎯 {STROKE_LESSON.actionMcq}</Link>
-              <Link href={withLang(`/flashcards/ischaemischer-schlaganfall?from=${encodeURIComponent(withLang(lessonPath))}`)} className={styles.actionBtn}>🧠 {c(STROKE_LESSON.actionFlash)}</Link>
-            </div>
-          </div>
-          <div className={styles.heroStats}>
-            {STROKE_LESSON.heroCards.map(card => <div className={styles.heroStat} key={c(card.label)}><strong>{c(card.value)}</strong><span>{c(card.label)}</span><small>{c(card.text)}</small></div>)}
-          </div>
+        <LessonHero title={c(STROKE_LESSON.title)} imageSrc="/stroke/aspects-regions-p4.png" imageAlt={c(STROKE_LESSON.aspects.imageAlt)} imageClassName={strokeStyles.strokeHeroImage} visualCaption={c(STROKE_LESSON.aspects.sourceCaption)} lang={lang} />
+        <div className={styles.actions}>
+          <Link href={withLang(`/ueben/quiz?fach=gehirn&n=15&themen=ischaemischer-schlaganfall&from=${encodeURIComponent(withLang(lessonPath))}`)} className={styles.actionBtn}>🎯 {STROKE_LESSON.actionMcq}</Link>
+          <Link href={withLang(`/flashcards/ischaemischer-schlaganfall?from=${encodeURIComponent(withLang(lessonPath))}`)} className={styles.actionBtn}>🧠 {c(STROKE_LESSON.actionFlash)}</Link>
         </div>
       </header>
 
@@ -245,12 +259,11 @@ export default function IschaemischerSchlaganfallPage() {
           </Section>
 
           <Section id="aspects" title={c(STROKE_LESSON.aspects.title)} lead={c(STROKE_LESSON.aspects.lead)}>
-            <Cards items={localizedItems(STROKE_LESSON.aspects.items, lang)} />
+            <AspectsMap lesson={STROKE_LESSON.aspects} localizeValue={c} />
           </Section>
 
           <Section id="ct-verlauf" title={c(STROKE_LESSON.ctTimeline.title)} lead={c(STROKE_LESSON.ctTimeline.lead)}>
-            <Cards items={localizedItems(STROKE_LESSON.ctTimeline.items, lang)} />
-            <LearningFigure src="/stroke/ct-timeline.png" alt={c(STROKE_LESSON.ctTimeline.imageAlt)} onZoom={setPreviewImage} zoomLabel={imageUi.zoom} />
+            <Table headers={STROKE_LESSON.ctTimeline.headers.map(c)} rows={localizedRows(STROKE_LESSON.ctTimeline.rows, lang)} />
           </Section>
 
           <Section id="mrt" title={c(STROKE_LESSON.mri.title)} lead={c(STROKE_LESSON.mri.lead)}>
@@ -260,7 +273,8 @@ export default function IschaemischerSchlaganfallPage() {
           </Section>
 
           <Section id="mrt-verlauf" title={c(STROKE_LESSON.mriTimeline.title)} lead={c(STROKE_LESSON.mriTimeline.lead)}>
-            <LearningFigure src="/stroke/mri-timeline.png" alt={c(STROKE_LESSON.mriTimeline.imageAlt)} onZoom={setPreviewImage} zoomLabel={imageUi.zoom} />
+            <Table headers={STROKE_LESSON.mriTimeline.headers.map(c)} rows={localizedRows(STROKE_LESSON.mriTimeline.rows, lang)} />
+            <Callout type="cave" label={c(STROKE_LESSON.mriTimeline.enhancementTitle)}>{c(STROKE_LESSON.mriTimeline.enhancementText)}</Callout>
           </Section>
 
           <Section id="verlauf" title={c(STROKE_LESSON.pitfalls.title)} lead={c(STROKE_LESSON.pitfalls.lead)}>

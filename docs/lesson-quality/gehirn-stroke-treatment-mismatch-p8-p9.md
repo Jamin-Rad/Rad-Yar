@@ -22,5 +22,5 @@
 ## Validation and limits
 
 - Added focused assertions for all DE/EN/FA variants, the eligible-agent statement, criteria-based extended window, rejection of a generic positive-CTP rule, and mismatch-as-selection wording.
-- The source images were visually checked. No changes were made to MCQs or flashcards in this delta: the thrombolysis question already distinguishes alteplase/tenecteplase, and the treatment card already describes extended selection by a defined mismatch.
+- The source images were visually checked. The thrombolysis question/card already distinguish eligible agents and imaging-based selection. A later p.4–9 assessment audit corrected one DWI-FLAIR MCQ and one retrieval card that still described mismatch as “likely early”; see [the p.4–9 audit](gehirn-stroke-p4-p9-audit.md).
 - Independent review of this delta, browser/RTL review, full lesson evidence gates and Dr. Zia's scientific approval remain pending. Passing focused tests does not imply release approval.

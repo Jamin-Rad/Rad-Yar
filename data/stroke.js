@@ -204,7 +204,26 @@ export const STROKE_LESSON = {
       { title: 'ASPECTS 10', text: L('Unauffälliger Befund.', 'Normal examination.', 'یافته طبیعی.') },
       { title: 'ASPECTS 0', text: L('Kompletter Mediainfarkt.', 'Complete MCA infarction.', 'انفارکت کامل MCA.') },
     ],
-    imageAlt: L('ASPECTS-Schema mit den zehn MCA-Regionen', 'ASPECTS diagram showing the ten MCA regions', 'نمودار ASPECTS با ده ناحیه MCA'),
+    regions: [
+      { level: L('Basalganglien-Ebene', 'Basal ganglia level', 'سطح گانگلیون‌های قاعده‌ای'), items: ['C', 'IC', 'L', 'I', 'M1', 'M2', 'M3'] },
+      { level: L('Supraganglionäre Ebene', 'Supraganglionic level', 'سطح فوق‌گانگلیونی'), items: ['M4', 'M5', 'M6'] },
+    ],
+    regionNames: {
+      C: L('Nucleus caudatus', 'Caudate nucleus', 'هسته دُم‌دار'),
+      IC: L('Capsula interna', 'Internal capsule', 'کپسول داخلی'),
+      L: L('Nucleus lentiformis', 'Lentiform nucleus', 'هسته عدسی'),
+      I: L('Insula', 'Insula', 'اینسولا'),
+      M1: L('Vorderes Mediastromgebiet (fronto-operculär)', 'Anterior MCA territory (fronto-opercular)', 'قلمرو قدامی MCA (فرونتو-اوپرکولار)'),
+      M2: L('Laterales Mediastromgebiet / anteriorer Temporallappen', 'Lateral MCA territory / anterior temporal lobe', 'قلمرو خارجی MCA / لوب تمپورال قدامی'),
+      M3: L('Hinteres Mediastromgebiet / posteriorer Temporallappen', 'Posterior MCA territory / posterior temporal lobe', 'قلمرو خلفی MCA / لوب تمپورال خلفی'),
+      M4: L('Vorderes Mediastromgebiet oberhalb M1', 'Anterior MCA territory above M1', 'قلمرو قدامی MCA در بالای M1'),
+      M5: L('Laterales Mediastromgebiet oberhalb M2', 'Lateral MCA territory above M2', 'قلمرو خارجی MCA در بالای M2'),
+      M6: L('Hinteres Mediastromgebiet oberhalb M3', 'Posterior MCA territory above M3', 'قلمرو خلفی MCA در بالای M3'),
+    },
+    scoring: L('Ausgangspunkt 10 Punkte; pro betroffener Region einen Punkt abziehen. Die Punkte beschreiben frühe Parenchymveränderungen und sind keine eigenständige Therapieentscheidung.', 'Start at 10 points and subtract one for each affected region. The score describes early parenchymal change and is not a treatment decision by itself.', 'امتیاز از ۱۰ شروع می‌شود و برای هر ناحیه درگیر یک امتیاز کم می‌شود. این امتیاز تغییرات زودرس پارانشیم را توصیف می‌کند و به‌تنهایی تصمیم درمانی نیست.'),
+    diagramNote: L('Schematische Lageübersicht; keine exakten anatomischen Grenzen und nicht zur diagnostischen Anwendung.', 'Schematic location map; it does not show exact anatomical boundaries and is not for diagnostic use.', 'نمای شماتیک از موقعیت نواحی؛ مرزهای دقیق آناتومیک را نشان نمی‌دهد و برای تشخیص کاربرد ندارد.'),
+    imageAlt: L('Zwei axiale ASPECTS-Schemata mit farbig markierten MCA-Regionen auf Basalganglien- und supraganglionärer Ebene.', 'Two axial ASPECTS diagrams with colour-coded MCA regions at basal ganglia and supraganglionic levels.', 'دو نمای محوری ASPECTS با نواحی رنگی MCA در سطح گانگلیون‌های قاعده‌ای و فوق‌گانگلیونی.'),
+    sourceCaption: L('Bildbeschnitt aus Gehirn.pdf, S. 4: nur die beiden axialen Regionenkarten. Die Abbildungsbeschriftungen sind im deutschen Original; die Regionslegende folgt unten in der gewählten Sprache.', 'Crop from Gehirn.pdf p.4 showing only the two axial region maps. Figure labels remain in the German source; the regional key below follows the selected language.', 'برش از صفحهٔ ۴ Gehirn.pdf شامل دو نقشهٔ محوری نواحی است. برچسب‌های داخل تصویر به زبان اصلی آلمانی‌اند؛ راهنمای نواحی در ادامه به زبان انتخاب‌شده آمده است.'),
     key: L('ASPECTS bewertet Parenchymveränderungen, nicht den Gefäßverschluss selbst.', 'ASPECTS scores parenchymal change, not the vessel occlusion itself.', 'ASPECTS تغییرات پارانشیم را امتیازدهی می‌کند، نه خود انسداد عروقی را.'),
   },
   ctTimeline: {
@@ -218,6 +237,17 @@ export const STROKE_LESSON = {
       { title: 'Woche 2–3', text: L('Fogging-Effekt kann den Infarkt vorübergehend isodens erscheinen lassen.', 'Fogging may make the infarct temporarily isodense.', "اثر پدیده محوشدگی (Fogging) ممکن است انفارکت را موقتاً ایزودنس نشان دهد.") },
       { title: 'Ab Woche 6', text: L('Enzephalomalazie mit liquordichtem Defekt und Ex-vacuo-Erweiterung.', 'Encephalomalacia with CSF-density tissue loss and ex-vacuo dilatation.', 'انسفالومالاسی با نقص هم‌دانسیته CSF و اتساع ex-vacuo.') },
     ],
+    headers: [L('Zeit nach Symptombeginn', 'Time from symptom onset', 'زمان پس از شروع علائم'), L('Typische CT-Entwicklung', 'Typical CT evolution', 'سیر معمول CT')],
+    rows: [
+      [L('< 1 h', '< 1 h', 'کمتر از ۱ ساعت'), L('CT kann noch unauffällig sein.', 'CT may still be normal.', 'CT ممکن است هنوز طبیعی باشد.')],
+      ['2–6 h', L('Frühzeichen können auftreten: hyperdenses Gefäß, verstrichene Sulci und Verlust der Mark-Rinden-Grenze.', 'Early signs may appear: hyperdense vessel, sulcal effacement and loss of grey–white differentiation.', 'ممکن است علائم زودرس مانند عروق هایپردنس، محوشدن سولکوس‌ها و کاهش تمایز ماده خاکستری و سفید دیده شوند.')],
+      ['12–24 h', L('Territoriale Hypodensität und Schwellung werden deutlicher.', 'Territorial hypoattenuation and swelling become more conspicuous.', 'هیپودنسیتی قلمرویی و تورم واضح‌تر می‌شوند.')],
+      [L('1–3 Tage', '1–3 days', '۱ تا ۳ روز'), L('Hypodensität und Ödem nehmen zu; raumfordernde Wirkung und hämorrhagische Transformation sind möglich.', 'Hypoattenuation and oedema increase; mass effect and haemorrhagic transformation may occur.', 'هیپودنسیتی و ادم افزایش می‌یابند؛ اثر فضاگیر و تبدیل هموراژیک ممکن است رخ دهد.')],
+      [L('4–7 Tage', '4–7 days', '۴ تا ۷ روز'), L('Ödem kann maximal sein; gyriforme Kontrastmittelaufnahme kann auftreten.', 'Oedema may peak; gyriform enhancement may occur.', 'ادم ممکن است به اوج برسد؛ تقویت قشری/ژیریفورم ممکن است دیده شود.')],
+      ['2–3 Wochen', L('Fogging kann die Infarkthypodensität vorübergehend abschwächen.', 'Fogging may temporarily reduce infarct hypoattenuation.', 'پدیده Fogging ممکن است هیپودنسیتی انفارکت را موقتاً کاهش دهد.')],
+      [L('4–6 Wochen', '4–6 weeks', '۴ تا ۶ هفته'), L('Zunehmender Gewebeverlust und beginnende Kolliquation.', 'Increasing tissue loss and developing liquefaction.', 'از دست‌رفتن بافت افزایش می‌یابد و نکروز مایع‌شونده آغاز می‌شود.')],
+      [L('Ab 6 Wochen bis Monate/Jahre', 'From 6 weeks to months/years', 'از ۶ هفته تا ماه‌ها/سال‌ها'), L('Enzephalomalazie, Gliose und Ex-vacuo-Erweiterung können zurückbleiben.', 'Encephalomalacia, gliosis and ex-vacuo dilatation may remain.', 'انسفالومالاسی، گلیوز و اتساع ex-vacuo ممکن است باقی بمانند.')],
+    ],
   },
   mri: {
     title: L('MRT-Schlaganfallprotokoll', 'MRI stroke protocol', 'پروتکل MRI سکته'),
@@ -226,7 +256,7 @@ export const STROKE_LESSON = {
     rows: [
       ['DWI + ADC', L('DWI hyperintens, ADC vermindert', 'DWI high, ADC low', 'DWI بالا و ADC پایین'), L('Frühester Nachweis des zytotoxischen Ödems; echte Restriktion bestätigen', 'Earliest detection of cytotoxic oedema; confirms true restriction', 'زودترین تشخیص ادم سیتوتوکسیک و تأیید محدودیت واقعی')],
       ['FLAIR/T2', L('Früh oft unauffällig, später hyperintens und geschwollen', 'Often normal early, then high signal and swelling', 'ابتدا اغلب طبیعی و سپس هایپراینتنس و متورم'), L('Infarktalter, Ödem und DWI-FLAIR-Mismatch', 'Infarct age, oedema and DWI-FLAIR mismatch', 'سن انفارکت، ادم و عدم تطابق DWI-FLAIR')],
-      ['T2*/SWI', L('Signalabsenkungen bei Blutungen oder Eisenablagerungen', 'Low signal from haemorrhage or iron deposits', 'کاهش سیگنال در خونریزی یا رسوب آهن'), L('Blutungsausschluss als Ersatz für die native CT', 'Exclusion of haemorrhage as a substitute for non-contrast CT', 'رد خونریزی به‌عنوان جایگزین CT بدون کنتراست')],
+      ['T2*/SWI', L('Signalabsenkungen bei Blutprodukten oder Eisenablagerungen', 'Signal loss from blood products or iron deposition', 'افت سیگنال ناشی از محصولات خون یا رسوب آهن'), L('Nachweis von Blutprodukten und Suszeptibilitätszeichen; Rolle im Akutprotokoll abhängig von Klinik und lokalem Vorgehen', 'Detects blood products and susceptibility signs; its role in acute imaging depends on the clinical setting and local protocol', 'تشخیص محصولات خون و علائم حساسیت مغناطیسی؛ نقش آن در پروتکل حاد به شرایط بالینی و روش مرکز بستگی دارد')],
       ['MRA', L('Fehlender Flow im verschlossenen Gefäß', 'Absent flow in the occluded vessel', 'عدم جریان در رگ مسدود'), L('Nicht-invasive Gefäßdarstellung, häufig TOF', 'Non-invasive vascular imaging, often TOF', 'تصویربرداری غیرتهاجمی عروق، اغلب TOF')],
       ['PWI', L('Optionale Perfusions-MRT', 'Optional perfusion MRI', 'MRI پرفیوژن اختیاری'), L('Ergänzende Perfusionsbeurteilung', 'Additional perfusion assessment', 'ارزیابی تکمیلی پرفیوژن')],
     ],
@@ -238,6 +268,20 @@ export const STROKE_LESSON = {
     title: L('MRT-Signalverlauf', 'MRI signal evolution', 'سیر سیگنال MRI'),
     lead: L('DWI reagiert zuerst; ADC pseudonormalisiert später, während T2/FLAIR und Enhancement länger persistieren.', 'DWI changes first; ADC later pseudonormalises while T2/FLAIR abnormality and enhancement persist longer.', 'DWI زودتر تغییر می‌کند؛ ADC بعداً شبه‌طبیعی می‌شود و تغییرات T2/FLAIR و تقویت پس از تزریق طولانی‌تر باقی می‌مانند.'),
     imageAlt: L('MRT-Signalveränderungen beim ischämischen Schlaganfall im Zeitverlauf', 'Temporal MRI signal changes in ischaemic stroke', 'تغییرات زمانی سیگنال MRI در سکته ایسکمیک'),
+    headers: [L('Zeit nach Symptombeginn', 'Time from symptom onset', 'زمان پس از شروع علائم'), L('Typische MRT-Entwicklung', 'Typical MRI evolution', 'سیر معمول MRI')],
+    rows: [
+      [L('< 1 h', '< 1 h', 'کمتر از ۱ ساعت'), L('DWI kann früh hyperintens sein, ADC ist vermindert; T2/FLAIR kann noch unauffällig sein.', 'DWI may become hyperintense early with reduced ADC; T2/FLAIR may still be normal.', 'DWI ممکن است زودرس هایپراینتنس و ADC کاهش‌یافته باشد؛ T2/FLAIR ممکن است هنوز طبیعی باشد.')],
+      [L('Bis 12 h', 'Up to 12 h', 'تا ۱۲ ساعت'), L('FLAIR wird vor T2 hyperintens; Gyri schwellen an. Eine meningeale Kontrastmittelaufnahme kann den Infarkt umgeben.', 'FLAIR becomes hyperintense before T2; gyri swell. Meningeal enhancement may surround the infarct.', 'FLAIR زودتر از T2 هایپراینتنس می‌شود و ژیروس‌ها متورم می‌شوند. ممکن است تقویت مننژیال اطراف انفارکت دیده شود.')],
+      ['12–24 h', L('FLAIR-Hyperintensität und raumfordernde Wirkung nehmen zu; ADC bleibt niedrig.', 'FLAIR hyperintensity and mass effect increase; ADC remains low.', 'هایپراینتنسیتی FLAIR و اثر فضاگیر افزایش می‌یابند؛ ADC پایین می‌ماند.')],
+      [L('1–3 Tage', '1–3 days', '۱ تا ۳ روز'), L('Ödem und Raumforderung erreichen oft ihr Maximum; ADC ist stark vermindert. Meningeale Aufnahme kann in parenchymale übergehen.', 'Oedema and mass effect often peak; ADC is markedly reduced. Meningeal enhancement may transition to parenchymal enhancement.', 'ادم و اثر فضاگیر اغلب به اوج می‌رسند و ADC به‌شدت کاهش می‌یابد. تقویت مننژیال ممکن است به تقویت پارانشیمی تبدیل شود.')],
+      [L('4–7 Tage', '4–7 days', '۴ تا ۷ روز'), L('Das Ödem beginnt zu regredieren; kräftige gyriforme parenchymale Aufnahme und hämorrhagische Transformation können auftreten.', 'Oedema begins to regress; strong gyriform parenchymal enhancement and haemorrhagic transformation may occur.', 'ادم شروع به پسرفت می‌کند؛ تقویت پارانشیمی ژیریفورم قوی و تبدیل هموراژیک ممکن است دیده شوند.')],
+      [L('2. Woche', 'Week 2', 'هفته دوم'), L('Fogging kann T2-Veränderungen abschwächen. Kontrastmittelaufnahme kann durch Luxusperfusion vorübergehend ausgeprägt sein.', 'Fogging may reduce T2 conspicuity. Enhancement may be temporarily prominent with luxury perfusion.', 'پدیده Fogging ممکن است تغییرات T2 را کم‌وضوح کند. تقویت ناشی از پرفیوژن لوکس ممکن است موقتاً برجسته باشد.')],
+      [L('Ab Tag 10', 'From day 10', 'از روز ۱۰'), L('DWI kann durch T2-shine-through hell bleiben, obwohl ADC ansteigt und keine echte Restriktion mehr besteht.', 'DWI may remain bright from T2 shine-through as ADC rises and true restriction resolves.', 'DWI ممکن است به‌علت اثر عبور سیگنال T2 روشن بماند، در حالی که ADC افزایش یافته و محدودیت واقعی برطرف شده است.')],
+      [L('Bis 8–10 Wochen', 'Up to 8–10 weeks', 'تا ۸ تا ۱۰ هفته'), L('Die Kontrastmittelaufnahme klingt allmählich ab.', 'Enhancement gradually fades.', 'تقویت پس از تزریق به‌تدریج کاهش می‌یابد.')],
+      [L('Monate bis Jahre', 'Months to years', 'ماه‌ها تا سال‌ها'), L('Enzephalomalazie und Gliose; keine echte Diffusionsrestriktion mehr.', 'Encephalomalacia and gliosis; no true diffusion restriction.', 'انسفالومالاسی و گلیوز؛ دیگر محدودیت واقعی انتشار وجود ندارد.')],
+    ],
+    enhancementTitle: L('Blut-Hirn-Schranke und Kontrastmittel', 'Blood–brain barrier and enhancement', 'سد خونی‌مغزی و تقویت پس از تزریق'),
+    enhancementText: L('Eine Schrankenstörung und Kontrastmittelaufnahme treten typischerweise erst nach einigen Tagen auf, erreichen nach etwa 3–4 Wochen ihr Maximum und bilden sich anschließend zurück. Eine Aufnahme kann bis 8–10 Wochen persistieren. Vorübergehende Hyperperfusion/Luxusperfusion kann in der subakuten Phase starkes Enhancement verursachen und einen Tumor imitieren.', 'Blood–brain barrier disruption and enhancement typically appear after several days, peak at about 3–4 weeks and then regress. Enhancement may persist for 8–10 weeks. Transient hyperperfusion/luxury perfusion in the subacute phase can cause marked enhancement and mimic tumour.', 'اختلال سد خونی‌مغزی و تقویت معمولاً پس از چند روز ظاهر می‌شوند، حدود ۳ تا ۴ هفته به اوج می‌رسند و سپس پسرفت می‌کنند. تقویت ممکن است تا ۸ تا ۱۰ هفته باقی بماند. هایپرپرفیوژن گذرا/پرفیوژن لوکس در فاز تحت‌حاد می‌تواند تقویت واضح ایجاد کند و تومور را تقلید کند.'),
   },
   pitfalls: {
     title: L('Fallstricke und Verlaufskomplikationen', 'Pitfalls and complications', 'دام‌ها و عوارض سیر بیماری'),
@@ -255,7 +299,7 @@ export const STROKE_LESSON = {
     ,
     items: [
       { title: L('IV-Thrombolyse', 'IV thrombolysis', 'ترومبولیز وریدی'), text: L('Alteplase oder Tenecteplase bei geeigneten Patienten innerhalb von 4,5 Stunden. Bei unbekanntem Symptombeginn kann ein DWI-FLAIR-Mismatch die Auswahl unterstützen. Zwischen 4,5 und 9 Stunden werden geeignete Patienten anhand definierter automatisierter Perfusions-Mismatch-Kriterien ausgewählt; ein beliebiger positiver CTP-Befund genügt nicht.', 'Alteplase or tenecteplase may be used in eligible patients within 4.5 hours. For unknown onset, a DWI-FLAIR mismatch can support selection. Between 4.5 and 9 hours, eligible patients are selected using defined automated perfusion-mismatch criteria; any positive CTP finding is not sufficient.', 'آلتپلاز یا تنکتپلاز برای بیماران واجد شرایط تا ۴٫۵ ساعت قابل استفاده است. در زمان شروع نامشخص علائم، عدم تطابق DWI-FLAIR می‌تواند به انتخاب بیمار کمک کند. در بازه ۴٫۵ تا ۹ ساعت، بیماران واجد شرایط بر اساس معیارهای تعریف‌شده و خودکارِ عدم تطابق پرفیوژن انتخاب می‌شوند؛ هر یافته مثبت CTP کافی نیست.') },
-      { title: L('Mechanische Thrombektomie', 'Mechanical thrombectomy', 'ترومبکتومی مکانیکی'), text: L('Goldstandard bei Großgefäßverschlüssen; Zeitfenster bis 24 Stunden bei entsprechendem Mismatch und vorhandener Penumbra.', 'Gold standard for large-vessel occlusion; window up to 24 hours with an appropriate mismatch and preserved penumbra.', 'استاندارد طلایی در انسداد عروق بزرگ؛ پنجره تا ۲۴ ساعت در صورت mismatch مناسب و وجود پنومبرا.') },
+      { title: L('Mechanische Thrombektomie', 'Mechanical thrombectomy', 'ترومبکتومی مکانیکی'), text: L('Bei ausgewählten geeigneten Patienten mit Großgefäßverschluss, die die geltenden klinischen und bildgebenden Auswahlkriterien erfüllen, kann eine Thrombektomie bis 24 Stunden nach last known well erwogen werden. Das Zeitfenster gilt nicht automatisch für jeden Großgefäßverschluss.', 'For selected eligible patients with large-vessel occlusion who meet applicable clinical and imaging selection criteria, thrombectomy may be considered up to 24 hours from last known well. This window does not apply automatically to every large-vessel occlusion.', 'برای بیماران منتخب و واجد شرایط مبتلا به انسداد عروق بزرگ که معیارهای بالینی و تصویربرداری مربوط را دارند، می‌توان ترومبکتومی را تا ۲۴ ساعت پس از آخرین زمان سالم در نظر گرفت. این پنجره به‌طور خودکار برای همه انسدادهای عروق بزرگ صدق نمی‌کند.') },
       { title: L('Techniken', 'Techniques', 'تکنیک‌ها'), text: L('Aspiration, Stent-Retriever oder kombiniert.', 'Aspiration, stent retriever or a combined technique.', 'آسپیراسیون، استنت رتریور یا روش ترکیبی.') },
     ],
     reportItems: [
@@ -402,15 +446,15 @@ const QUESTION_SEEDS = [
   },
   {
     id: 'dwi-flair',
-    question: L('Was spricht ein DWI-FLAIR-Mismatch typischerweise an?', 'What does a DWI-FLAIR mismatch typically suggest?', 'عدم تطابق DWI-FLAIR معمولاً به نفع چیست؟'),
+    question: L('Was kann ein DWI-FLAIR-Mismatch bei ausgewählten Patienten mit unbekanntem Symptombeginn unterstützen?', 'What can a DWI-FLAIR mismatch support in selected patients with unknown symptom onset?', 'عدم تطابق DWI-FLAIR در بیماران منتخب با زمان شروع نامشخص علائم چه کمکی می‌تواند بکند؟'),
     options: [
-      L('Wahrscheinlich früher Infarkt bei unklarem Beginn', 'Likely early infarct when onset is unknown', 'احتمال انفارکت زودرس با زمان شروع نامشخص'),
+      L('Bildgebungsbasierte Therapieauswahl; keine genaue Läsionsuhr', 'Imaging-based treatment selection; not an exact lesion clock', 'انتخاب درمان بر پایه تصویربرداری؛ نه تعیین دقیق زمان ضایعه'),
       L('Chronische Enzephalomalazie', 'Chronic encephalomalacia', 'انسفالومالاسی مزمن'),
       L('Sichere intrazerebrale Blutung', 'Definite intracerebral haemorrhage', 'خونریزی قطعی داخل مغزی'),
       L('Normalbefund', 'Normal examination', 'یافته طبیعی'),
     ],
     correct: 'A',
-    explanation: L('DWI-positive und noch nicht deutlich FLAIR-positive Läsionen sind häufig relativ frisch und können bei Wake-up-Stroke relevant sein.', 'A DWI-positive lesion without marked FLAIR change is often relatively recent and may be relevant in wake-up stroke.', 'ضایعه DWI مثبت بدون تغییر واضح FLAIR اغلب تازه است و در Wake-up stroke اهمیت دارد.'),
+    explanation: L('Das Muster kann bei ausgewählten Patienten mit unbekanntem Symptombeginn eine Bildgebungsauswahl unterstützen. Es datiert den Infarkt nicht exakt und begründet allein keine Therapie.', 'In selected patients with unknown symptom onset, the pattern may support imaging-based selection. It does not precisely date the infarct or establish treatment eligibility by itself.', 'این الگو در بیماران منتخب با زمان شروع نامشخص می‌تواند به انتخاب بر پایه تصویربرداری کمک کند؛ اما سن انفارکت را دقیق تعیین نمی‌کند و به‌تنهایی واجد شرایط بودن برای درمان را ثابت نمی‌کند.'),
   },
   {
     id: 'swi',
@@ -471,8 +515,8 @@ const QUESTION_SEEDS = [
   },
   {
     id: 'thrombectomy',
-    question: L('Bis zu welchem Zeitpunkt kann eine mechanische Thrombektomie bei ausgewählten Patienten mit geeigneter Bildgebung sinnvoll sein?', 'Up to what time may mechanical thrombectomy benefit selected patients with appropriate imaging?', 'ترومبکتومی مکانیکی در بیماران منتخب با تصویربرداری مناسب تا چه زمانی ممکن است مفید باشد؟'),
-    options: [L('30 Minuten', '30 minutes', '۳۰ دقیقه'), L('4,5 Stunden absolut', 'An absolute 4.5 hours', 'فقط ۴٫۵ ساعت'), L('Bis 24 Stunden', 'Up to 24 hours', 'تا ۲۴ ساعت'), L('Erst nach 72 Stunden', 'Only after 72 hours', 'فقط پس از ۷۲ ساعت')],
+    question: L('Bis wann kann eine Thrombektomie bei ausgewählten geeigneten Patienten erwogen werden, die die klinischen und bildgebenden Auswahlkriterien erfüllen?', 'How late may thrombectomy be considered for selected eligible patients who meet clinical and imaging selection criteria?', 'ترومبکتومی را برای بیماران منتخب و واجد شرایط که معیارهای بالینی و تصویربرداری را دارند تا چه زمانی می‌توان در نظر گرفت؟'),
+    options: [L('30 Minuten', '30 minutes', '۳۰ دقیقه'), L('4,5 Stunden absolut', 'An absolute 4.5 hours', 'فقط ۴٫۵ ساعت'), L('Bis 24 Stunden nach last known well', 'Up to 24 hours from last known well', 'تا ۲۴ ساعت پس از آخرین زمان سالم'), L('Erst nach 72 Stunden', 'Only after 72 hours', 'فقط پس از ۷۲ ساعت')],
     correct: 'C',
     explanation: L('Bei ausgewählten Großgefäßverschlüssen kann die Thrombektomie anhand klinischer und bildgebender Kriterien bis 24 Stunden nach last known well erfolgen.', 'Selected patients with large-vessel occlusion may undergo thrombectomy up to 24 hours from last known well based on clinical and imaging criteria.', 'در انسداد عروق بزرگ منتخب، بر اساس معیارهای بالینی و تصویربرداری ترومبکتومی تا ۲۴ ساعت پس از آخرین زمان سالم ممکن است انجام شود.'),
   },
@@ -558,9 +602,9 @@ const FLASHCARD_SEEDS = [
   {
     category: L('MRT', 'MRI', 'MRI'),
     front: L('Was bedeutet ein DWI-FLAIR-Mismatch?', 'What does a DWI-FLAIR mismatch suggest?', 'عدم تطابق DWI-FLAIR به چه معناست؟'),
-    answer: L('DWI positiv, FLAIR noch ohne deutliche Läsion: wahrscheinlich früher Infarkt.', 'DWI positive with no marked FLAIR lesion: likely early infarct.', 'DWI مثبت و FLAIR هنوز بدون ضایعه واضح: احتمال انفارکت زودرس.'),
-    explanation: L('DWI reagiert innerhalb von Minuten, während die FLAIR-Veränderung später sichtbar wird. Bei unbekanntem Symptombeginn kann dieses Muster die Auswahl für eine Reperfusion unterstützen.', 'DWI changes within minutes, whereas FLAIR abnormality appears later. When onset is unknown, this pattern may support selection for reperfusion treatment.', 'DWI طی چند دقیقه تغییر می‌کند، اما تغییر FLAIR دیرتر ظاهر می‌شود. در شروع نامشخص، این الگو می‌تواند به انتخاب بیمار برای بازپرفیوژن کمک کند.'),
-    diagram: L('DWI + / FLAIR − → eher früh\nDWI + / FLAIR + → eher später', 'DWI + / FLAIR − → likely early\nDWI + / FLAIR + → likely later', 'DWI + / FLAIR − → احتمالاً زودرس\nDWI + / FLAIR + → احتمالاً دیرتر'),
+    answer: L('Kann bei ausgewählten Patienten mit unbekanntem Symptombeginn die bildgebungsbasierte Auswahl unterstützen; datiert den Infarkt nicht exakt.', 'May support imaging-based selection in selected patients with unknown symptom onset; it does not precisely date the infarct.', 'می‌تواند در بیماران منتخب با زمان شروع نامشخص به انتخاب درمان بر پایه تصویربرداری کمک کند؛ اما سن انفارکت را دقیق تعیین نمی‌کند.'),
+    explanation: L('DWI-FLAIR-Mismatch ist ein Auswahlmuster, keine genaue Läsionsuhr. Es begründet allein keine Therapie; Klinik, weitere Bildgebung und die geltenden Kriterien müssen mitbewertet werden.', 'DWI-FLAIR mismatch is a selection pattern, not an exact lesion clock. It does not establish treatment eligibility by itself; clinical findings, other imaging and applicable criteria must also be assessed.', 'عدم تطابق DWI-FLAIR الگویی برای انتخاب است، نه ساعت دقیق ضایعه. این یافته به‌تنهایی واجد شرایط بودن برای درمان را ثابت نمی‌کند؛ شرایط بالینی، تصویربرداری دیگر و معیارهای مربوط نیز باید ارزیابی شوند.'),
+    diagram: L('DWI-Läsion + keine deutliche FLAIR-Hyperintensität\n→ kann Auswahl bei unbekanntem Symptombeginn unterstützen\n→ kein exakter Zeitstempel, keine alleinige Therapieentscheidung', 'DWI lesion + no marked FLAIR hyperintensity\n→ may support selection when onset is unknown\n→ not an exact timestamp or a treatment decision by itself', 'ضایعه DWI + نبود هایپراینتنسیتی واضح FLAIR\n← می‌تواند در شروع نامشخص به انتخاب کمک کند\n← زمان دقیق را نشان نمی‌دهد و به‌تنهایی مبنای درمان نیست'),
   },
   {
     category: L('MRT', 'MRI', 'MRI'),
@@ -603,9 +647,9 @@ const FLASHCARD_SEEDS = [
   {
     category: L('Therapie', 'Treatment', 'درمان'),
     front: L('Bis wann kann eine Thrombektomie bei ausgewählten LVO-Patienten erfolgen?', 'How late may thrombectomy be performed in selected LVO patients?', 'ترومبکتومی در بیماران منتخب LVO تا چه زمانی ممکن است؟'),
-    answer: L('Bis 24 Stunden nach „last known well“.', 'Up to 24 hours from last known well.', 'تا ۲۴ ساعت پس از آخرین زمان سالم.'),
-    explanation: L('Das erweiterte Zeitfenster gilt nicht automatisch für jede LVO. Klinische Schwere, Verschlusshöhe, Infarktkern und potenziell rettbares Gewebe bestimmen die Auswahl; im frühen Fenster darf Zusatzbildgebung die Therapie nicht unnötig verzögern.', 'The extended window does not automatically apply to every LVO. Clinical severity, occlusion site, infarct core and salvageable tissue guide selection; in the early window, additional imaging must not unnecessarily delay treatment.', 'پنجره گسترده برای هر LVO به‌طور خودکار صدق نمی‌کند. شدت بالینی، محل انسداد، هسته انفارکت و بافت قابل نجات انتخاب را تعیین می‌کنند؛ در پنجره زودرس تصویربرداری اضافی نباید درمان را بی‌دلیل به تأخیر اندازد.'),
-    diagram: L('LVO + kleiner/geeigneter Kern + rettbares Gewebe → Thrombektomie erwägen', 'LVO + suitable core + salvageable tissue → consider thrombectomy', 'LVO + هسته مناسب + بافت قابل نجات → بررسی ترومبکتومی'),
+    answer: L('Bis 24 Stunden nach last known well – nur bei ausgewählten geeigneten Patienten nach klinischen und bildgebenden Kriterien.', 'Up to 24 hours from last known well, only for selected eligible patients meeting clinical and imaging criteria.', 'تا ۲۴ ساعت پس از آخرین زمان سالم؛ فقط برای بیماران منتخب و واجد شرایط بر اساس معیارهای بالینی و تصویربرداری.'),
+    explanation: L('Das erweiterte Zeitfenster gilt nicht automatisch für jede LVO. Klinischer Zustand, Verschlusshöhe und Infarktkern sowie geeignete bildgebende Auswahlkriterien müssen gemeinsam beurteilt werden; im frühen Fenster darf Zusatzbildgebung die Therapie nicht unnötig verzögern.', 'The extended window does not automatically apply to every LVO. Clinical status, occlusion site and infarct core, together with applicable imaging selection criteria, must be assessed; in the early window, additional imaging must not unnecessarily delay treatment.', 'پنجره گسترده برای هر LVO به‌طور خودکار صدق نمی‌کند. وضعیت بالینی، محل انسداد و هسته انفارکت همراه با معیارهای تصویربرداری مربوط باید ارزیابی شوند؛ در پنجره زودرس تصویربرداری اضافی نباید درمان را بی‌دلیل به تأخیر اندازد.'),
+    diagram: L('Ausgewählte geeignete Patienten: LVO + passende klinische und bildgebende Kriterien (u. a. Kern/Mismatch) → Thrombektomie bis 24 h erwägen', 'Selected eligible patients: LVO + applicable clinical and imaging criteria (including core/mismatch) → consider thrombectomy up to 24 h', 'بیماران منتخب و واجد شرایط: LVO + معیارهای بالینی و تصویربرداری مربوط (از جمله هسته/عدم تطابق) ← بررسی ترومبکتومی تا ۲۴ ساعت'),
   },
 ]
 

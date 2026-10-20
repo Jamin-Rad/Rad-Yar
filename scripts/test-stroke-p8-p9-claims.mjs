@@ -44,4 +44,16 @@ const assessmentTexts = JSON.stringify({
 })
 assert.doesNotMatch(assessmentTexts, /positive CTP.*(?:automatically|alone|sufficient)/i)
 
+const mismatchCard = STROKE_FLASHCARDS.find(item => item.front?.en?.includes('DWI-FLAIR mismatch'))
+assert.ok(mismatchCard, 'DWI-FLAIR retrieval card must remain linked')
+for (const locale of locales) {
+  const mismatchQuestion = STROKE_QUESTIONS[locale].find(item => item.question.includes('DWI-FLAIR'))
+  assert.ok(mismatchQuestion, `DWI-FLAIR question must remain linked for ${locale}`)
+  assert.match(mismatchQuestion.options[mismatchQuestion.correct.charCodeAt(0) - 65].text, /selection|Auswahl|انتخاب/i)
+  assert.match(mismatchQuestion.explanation, /unknown symptom onset|unbekanntem Symptombeginn|زمان شروع نامشخص/i)
+  assert.doesNotMatch(mismatchCard.answer[locale], /likely early infarct|wahrscheinlich früher Infarkt|احتمال انفارکت زودرس/i)
+  assert.match(mismatchCard.answer[locale], /selected patients|ausgewählten Patienten|بیماران منتخب/i)
+  assert.match(mismatchCard.diagram[locale], /timestamp|Zeitstempel|زمان دقیق/i)
+}
+
 console.log('Stroke p.8–9 mismatch and thrombolysis claim checks passed.')
