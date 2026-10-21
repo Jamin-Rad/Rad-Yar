@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="Conceptual axial brain schematic with an intraparenchymal haemorrhage">
+  <defs>
+    <linearGradient id="brain" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7f4ff"/><stop offset="1" stop-color="#c9d2f4"/></linearGradient>
+    <radialGradient id="bleed"><stop stop-color="#fb7185"/><stop offset=".72" stop-color="#be123c"/><stop offset="1" stop-color="#881337"/></radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#312e81" flood-opacity=".2"/></filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <path d="M320 48c-30-24-67-23-90-4-38-9-76 14-86 48-37 15-53 52-43 88-24 29-20 69 5 91-8 38 19 71 54 78 15 31 51 46 83 32 26 22 59 19 77 2 18 17 51 20 77-2 32 14 68-1 83-32 35-7 62-40 54-78 25-22 29-62 5-91 10-36-6-73-43-88-10-34-48-57-86-48-23-19-60-20-90 4Z" fill="url(#brain)" stroke="#7c82b6" stroke-width="5"/>
+    <path d="M320 52v326M281 135c16 13 22 29 15 43-7 15-20 22-37 22m61-65c-16 13-22 29-15 43 7 15 20 22 37 22M279 247c17-13 31-14 42-3m40 3c-17-13-31-14-42-3" fill="none" stroke="#9098c7" stroke-width="7" stroke-linecap="round"/>
+    <path d="M247 181c-21 1-38 19-40 42-3 24 12 44 34 47 24 3 45-13 47-38 2-24-15-49-41-51Z" fill="url(#bleed)" stroke="#881337" stroke-width="5"/>
+    <path d="M252 168c-18-8-41 0-54 17m99 73c-9 19-29 31-51 29" fill="none" stroke="#fb7185" stroke-width="4" stroke-linecap="round" stroke-dasharray="5 9" opacity=".9"/>
+    <path d="M410 118c22-15 49-14 68 2m-78 29c17-9 37-8 51 3m-200 153c-19 15-44 17-63 6m270-6c19 15 44 17 63 6" fill="none" stroke="#a5add3" stroke-width="6" stroke-linecap="round" opacity=".75"/>
+  </g>
+  <g fill="#fff" opacity=".86"><circle cx="245" cy="207" r="5"/><circle cx="265" cy="226" r="4"/><circle cx="231" cy="242" r="3"/></g>
+</svg>

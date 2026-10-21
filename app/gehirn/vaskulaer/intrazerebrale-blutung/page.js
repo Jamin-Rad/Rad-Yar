@@ -8,7 +8,9 @@ import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import { ICB_LEARNING_CASES, ICB_LESSON } from '@/data/icb'
 import InProgressBanner from '@/components/InProgressBanner'
+import LessonHero from '@/components/LessonHero'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
+import icbStyles from './page.module.css'
 
 const IMAGE_UI = {
   de: { zoom: 'Bild vergrößern', close: 'Bildansicht schließen' },
@@ -87,12 +89,13 @@ function Section({ id, title, lead, children }) {
   )
 }
 
-function LearningFigure({ src, alt, onZoom, zoomLabel }) {
+function LearningFigure({ src, alt, caption, onZoom, zoomLabel }) {
   return (
     <figure style={{ margin: '22px 0 0', border: '1px solid var(--border)', borderRadius: 22, overflow: 'hidden', background: 'var(--bg-card)' }}>
       <button type="button" className={styles.strokeZoomButton} onClick={() => onZoom({ src, alt })} aria-label={zoomLabel}>
         <Image src={src} alt={alt} width={900} height={520} style={{ display: 'block', width: '100%', height: 'auto' }} />
       </button>
+      {caption && <figcaption style={{ padding: '12px 16px', color: 'var(--text-muted)', fontSize: 13, lineHeight: 1.6 }}>{caption}</figcaption>}
     </figure>
   )
 }
@@ -161,8 +164,13 @@ export default function IntrazerebraleBluturngPage() {
           <div className={styles.hero}>
             <div className={styles.heroText}>
               <span className={styles.sourceBadge}>{ICB_LESSON.sourceLabel}</span>
-              <h1>{c(ICB_LESSON.title)}</h1>
-              <p>{c(ICB_LESSON.subtitle)}</p>
+              <LessonHero
+                title={c(ICB_LESSON.title)}
+                titleClassName={icbStyles.heroTitle}
+                imageSrc="/educational/icb-hero.svg"
+                imageAlt={c({ de: 'Lehrschema eines axialen Gehirns mit intraparenchymaler Blutung; keine Patientenaufnahme', en: 'Teaching schematic of an axial brain with intraparenchymal haemorrhage; not a patient scan', fa: 'شماتیک آموزشی مغز در برش اکسیال با خونریزی داخل پارانشیمی؛ نه تصویر بیمار' })}
+                lang={lang}
+              />
               <div className={styles.actions}>
                 <Link href={withLang(`/ueben/quiz?fach=gehirn&n=15&themen=intrazerebrale-blutung&from=${encodeURIComponent(withLang(lessonPath))}`)} className={styles.actionBtn}>🎯 {ICB_LESSON.actionMcq}</Link>
                 <Link href={withLang(`/flashcards/intrazerebrale-blutung?from=${encodeURIComponent(withLang(lessonPath))}`)} className={styles.actionBtn}>🧠 {c(ICB_LESSON.actionFlash)}</Link>
@@ -241,13 +249,8 @@ export default function IntrazerebraleBluturngPage() {
               <Cards items={localizedItems(ICB_LESSON.mrt.pathophysItems, lang)} />
               <LearningFigure
                 src="/icb/mrt-flowchart.png"
-                alt={c(ICB_LESSON.mrt.imageAlt)}
-                onZoom={setPreviewImage}
-                zoomLabel={imageUi.zoom}
-              />
-              <LearningFigure
-                src="/icb/mrt-signal.svg"
-                alt={c(ICB_LESSON.mrt.imageAlt)}
+                alt={c(ICB_LESSON.mrt.sourceFlowchartAlt)}
+                caption={c(ICB_LESSON.mrt.sourceFlowchartCaption)}
                 onZoom={setPreviewImage}
                 zoomLabel={imageUi.zoom}
               />
