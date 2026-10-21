@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-labelledby="title desc">
+  <title id="title">Four-segment orientation schematic</title>
+  <desc id="desc">Non-diagnostic orientation schematic. Letters A to D map to the translated segment key on the lesson page.</desc>
+  <rect width="900" height="560" rx="28" fill="#f6f8fb"/>
+  <path d="M404 95c-72-49-167-16-189 60-14 49 6 95 38 121l34 28-10 171c-2 32 18 54 48 54h68c30 0 50-22 48-54l-10-171 34-28c32-26 52-72 38-121-22-76-117-109-189-60Z" fill="#e3ebf3" stroke="#3d5368" stroke-width="8"/>
+  <path d="M404 95c-72-49-167-16-189 60-14 49 6 95 38 121l34 28 44-24 19-50 19 50 44 24 34-28c32-26 52-72 38-121-22-76-117-109-189-60Z" fill="#b8d9d7" stroke="#3d5368" stroke-width="6"/>
+  <path d="M302 275c-28-4-50-2-72 1m174 4c25-7 47-6 74-4" fill="none" stroke="#3d5368" stroke-width="7" stroke-dasharray="10 10"/>
+  <path d="M401 130 290 74H118" fill="none" stroke="#245c78" stroke-width="4"/>
+  <path d="m286 275-105 52H66" fill="none" stroke="#247a73" stroke-width="4"/>
+  <path d="m446 264 110-45h256" fill="none" stroke="#92662a" stroke-width="4"/>
+  <path d="M402 362v129h205" fill="none" stroke="#72519a" stroke-width="4"/>
+  <g font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#172535">
+    <circle cx="94" cy="64" r="23" fill="#fff" stroke="#245c78" stroke-width="3"/><text x="94" y="73">A</text>
+    <circle cx="42" cy="362" r="23" fill="#fff" stroke="#247a73" stroke-width="3"/><text x="42" y="371">B</text>
+    <circle cx="858" cy="214" r="23" fill="#fff" stroke="#92662a" stroke-width="3"/><text x="858" y="223">C</text>
+    <circle cx="858" cy="520" r="23" fill="#fff" stroke="#72519a" stroke-width="3"/><text x="858" y="529">D</text>
+  </g>
+</svg>
