@@ -768,6 +768,15 @@ export const CURRICULUM = [
             ready: true, updatedAt: '2026-06-11',
           },
           {
+            id: 'hepatisches-angiomyolipom',
+            title: { de: 'Hepatisches Angiomyolipom', en: 'Hepatic Angiomyolipoma', fa: 'آنژیومیولیپوم کبدی' },
+            group: ['Benigne Leberläsionen'], tags: ['CT','MRT'], diff: 3,
+            link: '/abdomen/leber/angiomyolipom',
+            mcqLink: '/ueben/quiz?fach=abdomen&n=10&themen=hepatisches-angiomyolipom',
+            flashcardLink: '/flashcards/hepatisches-angiomyolipom',
+            inProgress: true, updatedAt: '2026-10-21',
+          },
+          {
             id: 'fnh',
             title: { de: 'FNH', en: 'Focal Nodular Hyperplasia (FNH)', fa: 'هیپرپلازی ندولار فوکال (FNH)' },
             group: ['Benigne Leberläsionen'], tags: ['CT','MRT'], diff: 2,

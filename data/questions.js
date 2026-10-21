@@ -7,6 +7,7 @@ import { FACET_QUESTIONS } from './spondylarthroseLesson'
 import { PCNSL_QUESTIONS } from './pcnslLesson'
 import { FLEISCHNER_QUESTIONS } from './fleischnerLearning'
 import { HEMANGIOMA_QUESTIONS } from './haemangiomaTraining'
+import { HEPATIC_ANGIOMYOLIPOMA_QUESTIONS } from './hepaticAngiomyolipomaLearning'
 import { GIST_QUESTIONS } from './gistLearning'
 import { VOLVULUS_QUESTIONS } from './volvulusLearning'
 import { PNET_QUESTIONS } from './pnetLearning'
@@ -4289,9 +4290,11 @@ for (const lang of Object.keys(QUESTION_BANK)) {
   QUESTION_BANK[lang].push(...(GIST_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(VOLVULUS_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(PNET_QUESTIONS[lang] || []))
+  QUESTION_BANK[lang].push(...(HEPATIC_ANGIOMYOLIPOMA_QUESTIONS[lang] || []))
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  { fachId: 'abdomen', kapitelId: 'abdomen-leber', title: { de: 'Leber', en: 'Liver', fa: 'کبد' }, topics: [{ id: 'hepatisches-angiomyolipom', title: { de: 'Hepatisches Angiomyolipom', en: 'Hepatic angiomyolipoma', fa: 'آنژیومیولیپوم کبدی' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-pankreas', title: { de: 'Pankreas', en: 'Pancreas', fa: 'پانکراس' }, topics: [{ id: 'pnet', title: { de: 'Neuroendokrine Tumoren (pNET)', en: 'Neuroendocrine tumours (pNET)', fa: 'تومورهای نورواندوکرین پانکراس (pNET)' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-gi-trakt', title: { de: 'Gastrointestinaltrakt', en: 'Gastrointestinal tract', fa: 'دستگاه گوارش' }, topics: [{ id: 'volvulus', title: { de: 'Sigmoid- und Zökumvolvulus', en: 'Sigmoid and caecal volvulus', fa: 'ولولوس سیگموئید و سکوم' } }] },
   TECHNIK_ROENTGEN_TOPIC_GROUP,
