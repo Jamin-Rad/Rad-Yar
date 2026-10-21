@@ -12,28 +12,10 @@ export const AVM_LESSON = {
     'Congenital vascular malformation with a direct arteriovenous shunt via a nidus of dysplastic vessels — without an intervening capillary bed.',
     'مالفورماسیون عروقی مادرزادی با شانت مستقیم شریانی-وریدی از طریق نیدوس عروق دیسپلاستیک — بدون بستر مویرگی واسط.'
   ),
-  sourceLabel: 'Dr. Zia',
   keyLabel: L('Merke', 'Key point', 'نکته کلیدی'),
   caveLabel: L('Cave', 'Warning', 'هشدار'),
   toc: L('Inhalte', 'Contents', 'فهرست'),
 
-  heroCards: [
-    {
-      value: L('~2–4 %/Jahr', '~2–4 %/year', '~۲–۴٪/سال'),
-      label: L('Blutungsrisiko', 'Haemorrhage risk', 'خطر خونریزی'),
-      text: L('Häufigste Erstmanifestation (~50 %)', 'Most common first presentation (~50%)', 'شایع‌ترین تظاهر اولیه (~۵۰٪)'),
-    },
-    {
-      value: L('Nidus', 'Nidus', 'نیدوس'),
-      label: L('Kernstruktur der AVM', 'Core structure of AVM', 'ساختار مرکزی AVM'),
-      text: L('Fehlt bei dAVF und Hämangiom', 'Absent in dAVF and haemangioma', 'در dAVF و همانژیوم وجود ندارد'),
-    },
-    {
-      value: L('SM I–II', 'SM I–II', 'SM I–II'),
-      label: L('Optimale OP-Kandidaten', 'Optimal surgical candidates', 'کاندیدای بهتر برای عمل'),
-      text: L('Spetzler-Martin I–II', 'Spetzler-Martin I–II', 'Spetzler-Martin I–II'),
-    },
-  ],
 
   sections: [
     { id: 'grundlagen',   icon: '📌', label: L('Grundlagen',             'Basics',                'مبانی') },
@@ -43,16 +25,18 @@ export const AVM_LESSON = {
     { id: 'fall',         icon: '🖼️', label: L('Fallbeispiel rID 74111', 'Case rID 74111',        'کیس rID 74111') },
     { id: 'differenzial', icon: '⚖️', label: L('Differenzialdiagnose',   'Differential',          'افتراقی') },
     { id: 'management',   icon: '🔧', label: L('Management',             'Management',            'مدیریت') },
-    { id: 'takehome',     icon: '🏁', label: L('TAKE HOME MESSAGE',      'TAKE HOME MESSAGE',     'TAKE HOME MESSAGE'), emphasis: true },
+    { id: 'takehome',     icon: '🏁', label: L('Merke', 'Take-home message', 'نکات کلیدی'), emphasis: true },
   ],
 
   grundlagen: {
     title: L('Grundlagen & Pathophysiologie', 'Basics & Pathophysiology', 'مبانی و پاتوفیزیولوژی'),
+    heroAlt: L('Medizinische Illustration einer zerebralen AVM mit zuführender Arterie, Nidus und drainierender Vene', 'Medical illustration of a cerebral AVM with feeding artery, nidus and draining vein', 'تصویر آموزشی AVM مغزی با شریان تغذیه‌کننده، نیدوس و ورید تخلیه‌کننده'),
     lead: L(
       'Die AVM besteht aus drei Komponenten: zuführende Arterien (Feeder), dem Nidus aus dysplastischen Gefäßen und drainierenden Venen. Kein Kapillarbett = Hochdruckshunt = Blutungsrisiko.',
       'The AVM has three components: feeding arteries, the nidus of dysplastic vessels and draining veins. No capillary bed = high-pressure shunt = haemorrhage risk.',
       'AVM از سه بخش تشکیل می‌شود: شریان‌های تغذیه‌کننده، نیدوس از عروق دیسپلاستیک و وریدهای تخلیه‌کننده. بدون بستر مویرگی = شانت پرفشار = خطر خونریزی.'
     ),
+    visualAlt: L('Schema: zuführende Arterie, Nidus und drainierende Vene', 'Diagram: feeding artery, nidus and draining vein', 'شماتیک: شریان تغذیه‌کننده، نیدوس و ورید تخلیه‌کننده'),
     items: [
       {
         icon: '🔴',
@@ -85,25 +69,25 @@ export const AVM_LESSON = {
         icon: '🧬',
         title: L('Epidemiologie', 'Epidemiology', 'اپیدمیولوژی'),
         text: L(
-          'Prävalenz ~0,1 %. Häufig junge Erwachsene (20.–40. LJ). Meist supratentoriell (~85 %) in den Hemisphären. Kein Geschlechtsunterschied. Meist sporadisch, selten hereditär (z. B. HHT).',
-          'Prevalence ~0.1%. Typically young adults (2nd–4th decade). Mostly supratentorial (~85%) in the hemispheres. No sex predilection. Mostly sporadic, rarely hereditary (e.g. HHT).',
-          'شیوع ~۰.۱٪. اغلب بزرگسالان جوان (دهه ۲–۴ زندگی). عمدتاً سوپراتنتوریال (~۸۵٪) در نیم‌کره‌ها. بدون تفاوت جنسی. اغلب اسپورادیک، به‌ندرت ارثی (مثلاً HHT).'
+          'Häufig im jungen Erwachsenenalter (20.–40. Lebensjahr); meist supratentoriell in den Hemisphären.',
+          'Often presents in young adulthood (2nd–4th decade); mostly supratentorial in the cerebral hemispheres.',
+          'اغلب در بزرگسالی جوان (دهه دوم تا چهارم) دیده می‌شود؛ عمدتاً سوپراتنتوریال و در نیم‌کره‌های مغز است.'
         ),
       },
     ],
     key: L(
-      'AVM = Nidus (kongenital, kein Kapillarbett) + Hochdruckshunt + Blutungsrisiko ~2–4 %/Jahr. Hauptunterschied zur dAVF: Nidus vorhanden, erworben vs. kongenital.',
-      'AVM = nidus (congenital, no capillary bed) + high-pressure shunt + ~2–4%/year haemorrhage risk. Key difference from dAVF: nidus present, congenital vs. acquired.',
-      'AVM = نیدوس (مادرزادی، بدون بستر مویرگی) + شانت پرفشار + خطر خونریزی ~۲–۴٪/سال. تفاوت کلیدی با dAVF: نیدوس وجود دارد، مادرزادی در مقابل اکتسابی.'
+      'AVM = Nidus + direkter Shunt ohne Kapillarbett. Der Nidus unterscheidet sie von einer dAVF; die AVM liegt im Parenchym, die dAVF in der Dura.',
+      'AVM = nidus + direct shunt without a capillary bed. The nidus distinguishes it from a dAVF; an AVM is parenchymal, a dAVF dural.',
+      'AVM = نیدوس + شانت مستقیم بدون بستر مویرگی. نیدوس آن را از dAVF متمایز می‌کند؛ AVM پارانشیمی و dAVF دورال است.'
     ),
   },
 
   klinik: {
     title: L('Klinik', 'Clinical Presentation', 'تظاهر بالینی'),
     lead: L(
-      'Blutung ist mit ~50 % die häufigste Erstmanifestation. Das Blutungsrisiko beträgt ~2–4 % pro Jahr — aber nach erster Blutung steigt es deutlich an.',
-      'Haemorrhage is the most common first presentation (~50%). Haemorrhage risk is ~2–4% per year — but rises significantly after a first bleed.',
-      'خونریزی با ~۵۰٪ شایع‌ترین تظاهر اولیه است. خطر خونریزی ~۲–۴٪ در سال — اما بعد از اولین خونریزی به‌طور قابل‌توجهی افزایش می‌یابد.'
+      'Blutung ist eine häufige Erstmanifestation; weitere mögliche Vorstellungen sind Krampfanfälle, Kopfschmerzen oder fokale Defizite.',
+      'Haemorrhage is a common initial presentation; other possible presentations include seizures, headache or focal deficits.',
+      'خونریزی یکی از تظاهرات اولیه شایع است؛ تظاهرات دیگر می‌توانند تشنج، سردرد یا نقص عصبی کانونی باشند.'
     ),
     headers: [
       L('Manifestation', 'Presentation', 'تظاهر'),
@@ -113,38 +97,38 @@ export const AVM_LESSON = {
     rows: [
       [
         L('Intrazerebrale Blutung', 'Intracerebral haemorrhage', 'خونریزی داخل مغزی'),
-        L('~50 % (häufigste!)', '~50% (most common!)', '~۵۰٪ (شایع‌ترین!)'),
+        L('Häufigste Erstmanifestation laut Quelle', 'Most common initial presentation in source', 'شایع‌ترین تظاهر اولیه طبق منبع'),
         L('Oft lobär; bei tiefer Drainage auch IVB möglich; SAB bei oberflächlicher Lage', 'Often lobar; IVH possible with deep drainage; SAH with superficial location', 'اغلب لوبار؛ IVH با درناژ عمقی ممکن؛ SAH در محل سطحی'),
       ],
       [
         L('Krampfanfälle', 'Seizures', 'تشنج'),
-        L('~30 %', '~30%', '~۳۰٪'),
+        L('Häufige Vorstellung', 'Common presentation', 'تظاهر شایع'),
         L('Häufig bei kortikaler Lage; fokal oder generalisiert', 'Common with cortical location; focal or generalised', 'شایع در محل کورتیکال؛ موضعی یا عمومی'),
       ],
       [
         L('Kopfschmerzen', 'Headache', 'سردرد'),
-        L('~15 %', '~15%', '~۱۵٪'),
+        L('Möglich', 'Possible', 'ممکن'),
         L('Unspezifisch; Zufallsbefund bei Bildgebung möglich', 'Non-specific; incidental finding on imaging possible', 'غیراختصاصی؛ یافته اتفاقی در تصویربرداری ممکن'),
       ],
       [
         L('Fokale neurologische Defizite', 'Focal neurological deficits', 'کسری‌های عصبی موضعی'),
-        L('~5 %', '~5%', '~۵٪'),
+        L('Möglich', 'Possible', 'ممکن'),
         L('Steal-Phänomen oder venöse Stauung möglich', 'Steal phenomenon or venous congestion possible', 'پدیده سرقت یا احتقان وریدی ممکن'),
       ],
     ],
     cave: L(
-      'Nach erster AVM-Blutung steigt das Wiederholungsrisiko auf ~6–18 %/Jahr im ersten Jahr. AVMs in eloquenten Arealen oder mit tiefer Drainage bluten häufiger.',
-      'After a first AVM bleed, re-bleeding risk rises to ~6–18%/year in the first year. AVMs in eloquent areas or with deep drainage bleed more often.',
-      'بعد از اولین خونریزی AVM، خطر تکرار در سال اول به ~۶–۱۸٪/سال افزایش می‌یابد. AVM‌های در نواحی گویا یا با درناژ عمقی بیشتر خونریزی می‌کنند.'
+      'Klinische Präsentation und Blutungsrisiko variieren. Zahlen hängen von Population, Rupturstatus und Nachbeobachtung ab; keine Einzelzahl beschreibt alle AVMs.',
+      'Presentation and haemorrhage risk vary. Estimates depend on population, rupture status and follow-up; no single figure describes all AVMs.',
+      'تظاهر بالینی و خطر خونریزی متغیرند. برآوردها به جمعیت، وضعیت پارگی و مدت پیگیری بستگی دارند؛ یک عدد واحد همه AVMها را توصیف نمی‌کند.'
     ),
   },
 
   spetzler: {
     title: L('Spetzler-Martin-Klassifikation', 'Spetzler-Martin Classification', 'طبقه‌بندی Spetzler-Martin'),
     lead: L(
-      'Prüfungsrelevant! Bewertet das OP-Risiko anhand von 3 Kriterien. Je höher der Score, desto höher das chirurgische Risiko.',
-      'Highly examinable! Assesses surgical risk based on 3 criteria. The higher the score, the higher the surgical risk.',
-      'بسیار مهم! خطر جراحی را بر اساس ۳ معیار ارزیابی می‌کند. هر چه امتیاز بالاتر، خطر جراحی بیشتر.'
+      'Der Score schätzt das Risiko einer mikrochirurgischen Resektion anhand von drei Kriterien ein.',
+      'The score estimates the risk of microsurgical resection using three criteria.',
+      'این امتیاز خطر رزکسیون میکروجراحی را بر اساس سه معیار برآورد می‌کند.'
     ),
     headers: [
       L('Kriterium', 'Criterion', 'معیار'),
@@ -189,28 +173,28 @@ export const AVM_LESSON = {
       ],
     ],
     summary: {
-      headers: [L('Grad', 'Grade', 'درجه'), L('Gesamtpunkte', 'Total points', 'امتیاز کل'), L('OP-Empfehlung', 'Surgical recommendation', 'توصیه جراحی')],
+      headers: [L('Grad', 'Grade', 'درجه'), L('Gesamtpunkte', 'Total points', 'امتیاز کل'), L('Risikogruppe (keine Therapieanweisung)', 'Risk group (not a treatment directive)', 'گروه خطر (نه دستور درمان)')],
       rows: [
-        [L('I', 'I', 'I'), '1', L('Resektion empfohlen — geringstes Risiko', 'Resection recommended — lowest risk', 'رزکسیون توصیه می‌شود — کمترین خطر')],
-        [L('II', 'II', 'II'), '2', L('Resektion empfohlen', 'Resection recommended', 'رزکسیون توصیه می‌شود')],
-        [L('III', 'III', 'III'), '3', L('Individuell — Embolisation + OP oder Radiochirurgie', 'Individual — embolisation + surgery or radiosurgery', 'فردی — آمبولیزاسیون + جراحی یا رادیوجراحی')],
-        [L('IV', 'IV', 'IV'), '4', L('Konservativ oder Radiochirurgie bevorzugt', 'Conservative or radiosurgery preferred', 'محافظه‌کارانه یا رادیوجراحی ترجیح داده می‌شود')],
-        [L('V', 'V', 'V'), '5', L('Meist konservativ — OP-Risiko zu hoch', 'Usually conservative — surgical risk too high', 'اغلب محافظه‌کارانه — خطر جراحی بیش از حد')],
+        [L('I', 'I', 'I'), '1', L('Niedrigere operative Risikoklasse', 'Lower operative risk class', 'رده خطر جراحی پایین‌تر')],
+        [L('II', 'II', 'II'), '2', L('Niedrigere operative Risikoklasse', 'Lower operative risk class', 'رده خطر جراحی پایین‌تر')],
+        [L('III', 'III', 'III'), '3', L('Mittlere Risikoklasse', 'Intermediate risk class', 'رده خطر میانی')],
+        [L('IV', 'IV', 'IV'), '4', L('Höhere operative Risikoklasse', 'Higher operative risk class', 'رده خطر جراحی بالاتر')],
+        [L('V', 'V', 'V'), '5', L('Höhere operative Risikoklasse', 'Higher operative risk class', 'رده خطر جراحی بالاتر')],
       ],
     },
     key: L(
-      'SM I + II → OP. SM IV + V → meist konservativ/Radiochirurgie. Eloquenz = Sensomotorik, Sprache, Sehen, Thalamus, Hirnstamm!',
-      'SM I + II → surgery. SM IV + V → usually conservative/radiosurgery. Eloquent = sensorimotor, language, vision, thalamus, brainstem!',
-      'SM I + II → جراحی. SM IV + V → اغلب محافظه‌کارانه/رادیوجراحی. گویا = حسی-حرکتی، زبان، بینایی، تالاموس، ساقه مغز!'
+      'Der Score schätzt das Risiko einer mikrochirurgischen Resektion ein. Er ist keine eigenständige Therapieempfehlung; Entscheidung individuell und multidisziplinär.',
+      'The score estimates the risk of microsurgical resection. It is not a stand-alone treatment recommendation; decisions are individual and multidisciplinary.',
+      'این امتیاز خطر رزکسیون میکروجراحی را برآورد می‌کند. به‌تنهایی توصیه درمانی نیست؛ تصمیم‌گیری باید فردی و چندتخصصی باشد.'
     ),
   },
 
   bildgebung: {
     title: L('Bildgebung: Sequenz für Sequenz', 'Imaging: Sequence by Sequence', 'تصویربرداری: سکانس به سکانس'),
     lead: L(
-      'MRT zeigt Flow voids und Hämosiderin, MRA stellt die Gefäßarchitektur dar — aber nur die DSA ist der Goldstandard.',
-      'MRI shows flow voids and haemosiderin, MRA depicts the vascular architecture — but only DSA is the gold standard.',
-      'MRI فقدان سیگنال جریان (flow void) و هموسیدرین را نشان می‌دهد، MRA معماری عروقی را نمایش می‌دهد — اما فقط DSA استاندارد طلایی است.'
+      'MRT kann Flow voids und Blutungsresiduen zeigen; DSA ermöglicht die detaillierte dynamische Darstellung der Gefäßarchitektur.',
+      'MRI can show flow voids and haemorrhagic residues; DSA provides detailed dynamic assessment of the vascular architecture.',
+      'MRI می‌تواند فقدان سیگنال جریان و بقایای خونریزی را نشان دهد؛ DSA معماری عروقی را با جزئیات و به‌صورت دینامیک نمایش می‌دهد.'
     ),
     headers: [
       L('Sequenz', 'Sequence', 'سکانس'),
@@ -231,39 +215,39 @@ export const AVM_LESSON = {
       [
         'SWI / T2*',
         L('Hämosiderin­saum bei stattgehabter Blutung; Blooming-Artefakt', 'Haemosiderin rim after prior bleed; blooming artefact', "حاشیه هموسیدرین بعد از خونریزی قبلی؛ آرتفکت آرتیفکت شکوفه‌ای (blooming)"),
-        L('Zeigt vergangene Mikroblutungen; schließt Kavernom-Hybride aus', 'Shows prior microbleeds; helps exclude cavernoma hybrids', 'میکروخونریزی‌های قبلی را نشان می‌دهد؛ هیبریدهای کاورنوم را رد می‌کند'),
+        L('Kann Blutungsresiduen darstellen; kein sicherer Ausschluss einer Begleitläsion', 'Can depict haemorrhagic residues; does not reliably exclude a coexisting lesion', 'می‌تواند بقایای خونریزی را نشان دهد؛ وجود ضایعه همراه را با قطعیت رد نمی‌کند'),
       ],
       [
         'TOF-MRA',
-        L('Nidus, Feeder und drainierende Venen darstellbar; frühe Venenfüllung in arterieller Phase', 'Nidus, feeders and draining veins visible; early venous filling in arterial phase', 'نیدوس، تغذیه‌کنندگان و وریدهای تخلیه‌کننده قابل مشاهده؛ پُرشدگی زودرس وریدی در فاز شریانی'),
-        L('Nicht-invasives Screening; schlechter als DSA bei kleinen AVMs', 'Non-invasive screening; inferior to DSA for small AVMs', 'غربالگری غیرتهاجمی؛ در AVM‌های کوچک نسبت به DSA ضعیف‌تر'),
+        L('Kann Nidus und Gefäßverlauf darstellen; zeitliche Auflösung abhängig von Technik', 'Can depict the nidus and vascular course; temporal resolution depends on technique', 'می‌تواند نیدوس و مسیر عروق را نشان دهد؛ تفکیک زمانی به تکنیک وابسته است'),
+        L('Nicht-invasive Gefäßdarstellung; ersetzt nicht in jedem Fall die DSA', 'Non-invasive vascular imaging; does not replace DSA in every case', 'تصویربرداری غیرتهاجمی عروق؛ در همه موارد جایگزین DSA نیست'),
       ],
       [
         L('DSA (Goldstandard!)', 'DSA (Gold standard!)', 'DSA (استاندارد طلایی!)'),
-        L('Nidus + frühe venöse Füllung in arterieller Phase = pathognomonisch. Exakte Feeder-Darstellung und Flusskinetik', 'Nidus + early venous filling in arterial phase = pathognomonic. Exact feeder anatomy and flow kinetics', 'نیدوس + پُرشدگی زودرس وریدی در فاز شریانی = پاتوگنومونیک. تصویرسازی دقیق تغذیه‌کنندگان و سینتیک جریان'),
-        L('Obligat vor jeder Therapie', 'Mandatory before any treatment', 'قبل از هر درمانی اجباری'),
+        L('Nidus und frühe venöse Drainage in der arteriellen Phase stützen den Nachweis eines arteriovenösen Shunts; DSA zeigt Feeder und Drainage dynamisch', 'A nidus and early venous drainage during the arterial phase support an arteriovenous shunt; DSA depicts feeders and drainage dynamically', 'نیدوس و درناژ زودرس وریدی در فاز شریانی از وجود شانت شریانی‌وریدی حمایت می‌کنند؛ DSA تغذیه‌کنندگان و درناژ را دینامیک نشان می‌دهد'),
+        L('Referenzverfahren zur detaillierten Gefäß- und Therapieplanung', 'Reference method for detailed vascular and treatment planning', 'روش مرجع برای ارزیابی دقیق عروق و برنامه‌ریزی درمان'),
       ],
     ],
     key: L(
-      'Flow voids in T1/T2 = AVM-Verdacht. DSA obligat für Therapieplanung. Frühe Venenfüllung in arterieller Phase = AVM-Beweis.',
-      'Flow voids on T1/T2 = suspect AVM. DSA mandatory for treatment planning. Early venous filling in arterial phase = AVM proof.',
-      'فقدان سیگنال جریان (flow void) در T1/T2 = شک به AVM. DSA برای برنامه‌ریزی درمان اجباری. پُرشدگی زودرس وریدی در فاز شریانی = اثبات AVM.'
+      'Flow voids in T1/T2 können den Verdacht wecken. DSA zeigt den Shunt mit hoher zeitlicher und räumlicher Auflösung.',
+      'Flow voids on T1/T2 can raise suspicion. DSA depicts the shunt with high temporal and spatial resolution.',
+      'فقدان سیگنال جریان در T1/T2 می‌تواند شک ایجاد کند. DSA شانت را با تفکیک زمانی و مکانی بالا نشان می‌دهد.'
     ),
   },
 
   fall: {
     title: L('Fallbeispiel – Radiopaedia rID 74111', 'Case example – Radiopaedia rID 74111', 'نمونه کیس – Radiopaedia rID 74111'),
     lead: L(
-      'Junger Patient mit erstmaliger Krampfanfall. MRT zeigt typische Flow voids mit starker Kontrastanreicherung.',
-      'Young patient presenting with a first seizure. MRI shows typical flow voids with marked contrast enhancement.',
-      'بیمار جوان با اولین تشنج. MRI فقدان سیگنال جریان (flow void) تیپیک با افزایش کنتراست قوی نشان می‌دهد.'
+      'Die MRT-Bilder zeigen serpiginöse Gefäßstrukturen; die dargestellte MRA-Projektion erlaubt hier keine sichere Beurteilung des Nidus.',
+      'The MRI images show serpiginous vascular structures; this MRA projection does not allow confident assessment of the nidus.',
+      'تصاویر MRI ساختارهای عروقی مارپیچ را نشان می‌دهند؛ در این تصویر MRA ارزیابی مطمئن نیدوس ممکن نیست.'
     ),
     caseLabel: L('AVM – Gehirn', 'AVM – Brain', 'AVM – مغز'),
     caseTitle: L('Arteriovenöse Malformation', 'Arteriovenous Malformation', 'مالفورماسیون شریانی-وریدی'),
     caseMeta: L(
-      'Junger Erwachsener. Supratentorielle AVM mit typischen Flow voids und deutlichem Nidus in der MRA.',
-      'Young adult. Supratentorial AVM with typical flow voids and clear nidus on MRA.',
-      'بزرگسال جوان. AVM سوپراتنتوریال با فقدان سیگنال جریان (flow void) تیپیک و نیدوس واضح در MRA.'
+      'In den gezeigten MRT-Aufnahmen sind serpiginöse Gefäßstrukturen erkennbar. Die MRA-Projektion zeigt vorwiegend die basalen Hirnarterien; Nidus und Drainage sind in diesem Einzelbild nicht zuverlässig abgrenzbar.',
+      'The displayed MRI images show serpiginous vascular structures. The MRA projection mainly shows the basal cerebral arteries; the nidus and drainage cannot be reliably delineated in this frame.',
+      'در MRI ساختارهای عروقی مارپیچ دیده می‌شوند. تصویر MRA عمدتاً شریان‌های قاعده مغز را نشان می‌دهد؛ نیدوس و درناژ در این تک‌تصویر به‌طور قابل‌اعتماد مشخص نیستند.'
     ),
     images: [
       {
@@ -281,21 +265,20 @@ export const AVM_LESSON = {
       {
         src: '/avm/case-74111/mra.jpeg',
         label: 'MRA C+',
-        alt: L('MRA C+: Nidus und drainierende Venen der AVM', 'MRA C+: Nidus and draining veins of AVM', 'MRA C+: نیدوس و وریدهای تخلیه‌کننده AVM'),
-        caption: L('Kontrastmittel-MRA koronal: Nidus mit zuführenden Arterien und erweiterten drainierenden Venen deutlich darstellbar', 'Contrast-enhanced MRA coronal: nidus with feeding arteries and dilated draining veins clearly depicted', 'MRA کنتراستی کورونال: نیدوس با شریان‌های تغذیه‌کننده و وریدهای تخلیه‌کننده گشاد به‌وضوح نمایش داده می‌شود'),
+        alt: L('MRA-Projektion mit Darstellung der basalen Hirnarterien', 'MRA projection showing the basal cerebral arteries', 'تصویر MRA با نمایش شریان‌های قاعده مغز'),
+        caption: L('Diese Projektion zeigt vorwiegend die basalen Hirnarterien; ein Nidus oder frühe venöse Drainage lässt sich hier nicht sicher erkennen.', 'This projection mainly shows the basal cerebral arteries; a nidus or early venous drainage cannot be confidently identified here.', 'این تصویر عمدتاً شریان‌های قاعده مغز را نشان می‌دهد؛ نیدوس یا درناژ زودرس وریدی در آن با اطمینان قابل تشخیص نیست.'),
       },
     ],
     findingsTitle: L('Radiologische Befunde', 'Radiological findings', 'یافته‌های رادیولوژیک'),
     findings: [
       L('T1 nativ: zentrale hypointense Flow voids im Bereich des Nidus (Signalauslöschung durch Hochfluss)', 'T1 native: central hypointense flow voids in the nidus region (signal loss due to high flow)', 'T1 نیتیو: فقدان سیگنال جریان (flow void) هیپواینتنس مرکزی در ناحیه نیدوس (از بین رفتن سیگنال به دلیل جریان بالا)'),
-      L('T2: serpentine Hypointensitäten (Flow voids) ohne umgebende Gliose — reines Hochflussmuster', 'T2: serpentine hypointensities (flow voids) without surrounding gliosis — pure high-flow pattern', 'T2: هیپواینتنسیتی‌های مارپیچ (فقدان سیگنال جریان (flow void)) بدون گلیوز اطراف — الگوی خالص جریان بالا'),
-      L('MRA C+: gut abgrenzbarer Nidus mit früher arterieller Kontrastierung; erweiterte drainierte Venen erkennbar', 'MRA C+: well-defined nidus with early arterial enhancement; dilated draining veins visible', 'MRA C+: نیدوس با حدود مشخص با افزایش زودرس شریانی؛ وریدهای تخلیه‌کننده گشاد قابل تشخیص'),
-      L('Spetzler-Martin Einschätzung: kleiner Nidus (<3 cm, 1 Punkt), nicht-eloquente Lokalisation (0 Punkte), oberflächliche Drainage (0 Punkte) → Grad I', 'Spetzler-Martin assessment: small nidus (<3 cm, 1 point), non-eloquent location (0 points), superficial drainage (0 points) → Grade I', 'ارزیابی Spetzler-Martin: نیدوس کوچک (<۳ سانتی‌متر، ۱ امتیاز)، محل غیرگویا (۰ امتیاز)، درناژ سطحی (۰ امتیاز) → درجه I'),
+      L('T2: serpiginöse Hypointensitäten (Flow voids); das Vorliegen einer umgebenden Gliose lässt sich aus diesem Einzelbild nicht sicher beurteilen.', 'T2: serpiginous hypointensities (flow voids); surrounding gliosis cannot be reliably assessed from this single frame.', 'T2: نواحی هیپواینتنس مارپیچ (flow void)؛ از این تک‌تصویر نمی‌توان وجود گلیوز اطراف را با اطمینان ارزیابی کرد.'),
+      L('Die MRA-Projektion erlaubt in diesem Bild keine sichere Abgrenzung von Nidus, Feeder oder venöser Drainage; für die Fallbewertung sind vollständige Sequenzen erforderlich.', 'This MRA frame does not confidently delineate the nidus, feeders or venous drainage; full sequences are needed to assess the case.', 'در این تک‌تصویر MRA نیدوس، تغذیه‌کنندگان یا درناژ وریدی با اطمینان مشخص نیستند؛ ارزیابی کیس به سکانس‌های کامل نیاز دارد.'),
     ],
     diagnosis: L(
-      'Spetzler-Martin Grad I AVM — idealer OP-Kandidat. Empfehlung: mikrochirurgische Resektion nach DSA-Bestätigung.',
-      'Spetzler-Martin Grade I AVM — ideal surgical candidate. Recommendation: microsurgical resection after DSA confirmation.',
-      'AVM درجه I Spetzler-Martin — کاندیدای ایده‌آل جراحی. توصیه: رزکسیون میکروجراحی بعد از تأیید DSA.'
+      'Eine AVM ist mit den gezeigten Einzelbildern vereinbar. Ein Spetzler-Martin-Grad und eine Therapieempfehlung sind ohne vollständige Angaben zu Größe, Eloquenz und venöser Drainage nicht ableitbar.',
+      'The displayed images are compatible with an AVM. A Spetzler–Martin grade and treatment recommendation cannot be derived without complete information on size, eloquence and venous drainage.',
+      'تصاویر نشان‌داده‌شده با AVM سازگارند. بدون اطلاعات کامل اندازه، ناحیه گویا و درناژ وریدی نمی‌توان درجه Spetzler–Martin یا توصیه درمانی تعیین کرد.'
     ),
     attribution: {
       caseUrl: 'https://radiopaedia.org/cases/74111/play',
@@ -322,11 +305,11 @@ export const AVM_LESSON = {
       ],
       [
         L('Proliferative Angiopathie', 'Proliferative angiopathy', 'آنژیوپاتی پرولیفراتیو'),
-        L('Diffuse, schlecht begrenzte AVM-Variante; kein klarer Nidus; diffuses Enhancement; meist kein Blutungsrisiko', 'Diffuse, poorly defined AVM variant; no clear nidus; diffuse enhancement; usually no haemorrhage risk', 'نوع AVM منتشر با حدود نامشخص؛ بدون نیدوس واضح؛ افزایش منتشر؛ معمولاً بدون خطر خونریزی'),
+        L('Diffuse, schlecht begrenzte Gefäßveränderung ohne typischen Nidus; Abgrenzung kann schwierig sein', 'Diffuse, poorly defined vascular abnormality without a typical nidus; distinction may be difficult', 'ناهنجاری عروقی منتشر با حدود نامشخص و بدون نیدوس تیپیک؛ افتراق ممکن است دشوار باشد'),
       ],
       [
         'Moyamoya',
-        L('Viele kollaterale Gefäße (Puff-of-smoke in DSA/MRA); kein Nidus; Stenosen der ICA; junges Alter oder Asiaten', 'Multiple collateral vessels (puff of smoke on DSA/MRA); no nidus; ICA stenoses; young or Asian patients', 'عروق کولاترال فراوان (دود در DSA/MRA)؛ بدون نیدوس؛ تنگی ICA؛ سنین جوان یا بیماران آسیایی'),
+        L('Stenosen der terminalen ICA mit charakteristischem Kollateralnetz („Puff of smoke“); kein AVM-Nidus', 'Terminal ICA stenosis with a characteristic collateral network (“puff of smoke”); no AVM nidus', 'تنگی انتهایی ICA با شبکه کولترال مشخص («پف دود»)؛ بدون نیدوس AVM'),
       ],
     ],
   },
@@ -334,43 +317,43 @@ export const AVM_LESSON = {
   management: {
     title: L('Management & Therapie', 'Management & Treatment', 'مدیریت و درمان'),
     lead: L(
-      'Die Therapiestrategie basiert auf dem Spetzler-Martin-Score und dem individuellen Patientenrisiko. DSA ist immer vor Therapie obligat.',
-      'Treatment strategy is based on the Spetzler-Martin score and individual patient risk. DSA is always mandatory before treatment.',
-      'استراتژی درمان بر اساس امتیاز Spetzler-Martin و خطر فردی بیمار است. DSA همیشه قبل از درمان اجباری است.'
+      'Der Spetzler-Martin-Score ist ein Baustein der Behandlungsplanung, aber keine alleinige Therapieanweisung. Optionen werden im Einzelfall und im spezialisierten Team abgewogen.',
+      'The Spetzler–Martin score is one part of treatment planning, not a stand-alone treatment directive. Options are weighed for each case by a specialist team.',
+      'امتیاز Spetzler–Martin بخشی از برنامه‌ریزی درمان است، نه دستور مستقل درمان. گزینه‌ها برای هر بیمار در تیم تخصصی سنجیده می‌شوند.'
     ),
     items: [
       {
         icon: '🔪',
         title: L('Mikrochirurgische Resektion', 'Microsurgical resection', 'رزکسیون میکروجراحی'),
         text: L(
-          'Therapie der Wahl bei Spetzler-Martin I–II. Ziel: vollständige Resektion des Nidus. Kurativ bei vollständiger Entfernung. Oft vorab Embolisation.',
-          'Treatment of choice for Spetzler-Martin I–II. Goal: complete nidus resection. Curative with complete removal. Often preceded by embolisation.',
-          'درمان انتخابی برای Spetzler-Martin I–II. هدف: رزکسیون کامل نیدوس. در صورت برداشت کامل، درمان‌کننده. اغلب قبل از آن آمبولیزاسیون.'
+          'Eine mögliche Option; Nutzen und Risiko hängen unter anderem von Größe, Lage, Drainage und Patientenkontext ab. Die Auswahl erfolgt interdisziplinär.',
+          'One possible option; benefit and risk depend on size, location, drainage and patient context. Selection is multidisciplinary.',
+          'یکی از گزینه‌های ممکن است؛ فایده و خطر به اندازه، محل، درناژ و شرایط بیمار بستگی دارند. انتخاب چندتخصصی انجام می‌شود.'
         ),
       },
       {
         icon: '🎯',
         title: L('Endovaskuläre Embolisation', 'Endovascular embolisation', 'آمبولیزاسیون اندوواسکولار'),
         text: L(
-          'Meist präoperativ zur Flussreduktion. Alleine selten kurativ. Kathetembolisation der Feeder mit Flüssigkleber (Onyx) oder Partikeln.',
-          'Mostly pre-operative to reduce flow. Rarely curative alone. Catheter embolisation of feeders with liquid embolic (Onyx) or particles.',
-          'اغلب قبل از عمل برای کاهش جریان. به‌تنهایی به‌ندرت درمان‌کننده. آمبولیزاسیون کاتتری تغذیه‌کنندگان با آمبولیک مایع (Onyx) یا ذرات.'
+          'Eine mögliche Behandlungsmodalität; ihre Rolle und Kombination mit anderen Verfahren werden anhand von Gefäßanatomie und Behandlungsziel individuell festgelegt.',
+          'One possible treatment modality; its role and combination with other approaches are determined individually from vascular anatomy and treatment goals.',
+          'یکی از روش‌های درمانی ممکن است؛ نقش آن و ترکیب با روش‌های دیگر بر اساس آناتومی عروقی و هدف درمان به‌صورت فردی تعیین می‌شود.'
         ),
       },
       {
         icon: '☢️',
         title: L('Stereotaktische Radiochirurgie (Gamma Knife)', 'Stereotactic radiosurgery (Gamma Knife)', "رادیوجراحی استریوتاکتیک (گامانایف (Gamma Knife))"),
         text: L(
-          'Für kleine (<3 cm), tief gelegene AVMs (SM III–IV). Wirkung über 2–3 Jahre. 80 % Obliterationsrate bei kleinen AVMs. In der Zwischenzeit bleibt Blutungsrisiko bestehen!',
-          'For small (<3 cm), deep AVMs (SM III–IV). Effect over 2–3 years. 80% obliteration rate for small AVMs. Haemorrhage risk persists during this period!',
-          'برای AVM‌های کوچک (<۳ سانتی‌متر) عمقی (SM III–IV). اثر طی ۲–۳ سال. نرخ ۸۰٪ انسداد برای AVM‌های کوچک. خطر خونریزی در این مدت همچنان وجود دارد!'
+          'Die Eignung hängt unter anderem von Größe, Lage und individuellen Faktoren ab. Eine Obliteration kann verzögert eintreten; die Entscheidung erfolgt interdisziplinär.',
+          'Suitability depends on size, location and individual factors. Obliteration may be delayed; decisions are made by a multidisciplinary team.',
+          'مناسب‌بودن به اندازه، محل و عوامل فردی بستگی دارد. انسداد ممکن است با تأخیر رخ دهد؛ تصمیم‌گیری چندتخصصی است.'
         ),
       },
     ],
     cave: L(
-      'Spetzler-Martin IV–V: OP-Risiko überwiegt oft den Nutzen → meist konservatives Vorgehen oder Gamma Knife. Bei akuter Blutung: zunächst Hämatom-Evakuation, AVM-Therapie elektiv.',
-      'Spetzler-Martin IV–V: surgical risk often outweighs benefit → usually conservative or Gamma Knife. With acute haemorrhage: first evacuate haematoma, then elective AVM treatment.',
-      "Spetzler-Martin IV–V: خطر جراحی اغلب از مزیت پیشی می‌گیرد → معمولاً محافظه‌کارانه یا گامانایف (Gamma Knife). در خونریزی حاد: ابتدا تخلیه هماتوم، سپس درمان AVM به‌صورت انتخابی."
+      'Der Spetzler-Martin-Score ist ein Baustein der Behandlungsplanung und legt die Therapie nicht allein fest. Mikrochirurgie, Embolisation und Radiochirurgie werden anhand des Einzelfalls und im spezialisierten Team abgewogen.',
+      'The Spetzler–Martin score is one part of treatment planning and does not determine therapy by itself. Microsurgery, embolisation and radiosurgery are considered for each case by a specialist team.',
+      'امتیاز Spetzler–Martin یکی از اجزای برنامه‌ریزی درمان است و به‌تنهایی درمان را تعیین نمی‌کند. میکروجراحی، آمبولیزاسیون و رادیوجراحی بر اساس شرایط هر بیمار و در تیم تخصصی بررسی می‌شوند.'
     ),
   },
 
@@ -387,19 +370,19 @@ export const AVM_LESSON = {
         ),
       },
       {
-        title: L('Spetzler-Martin entscheidet', 'Spetzler-Martin decides', 'Spetzler-Martin تصمیم می‌گیرد'),
+        title: L('Spetzler-Martin schätzt OP-Risiko', 'Spetzler-Martin estimates operative risk', 'Spetzler-Martin خطر جراحی را برآورد می‌کند'),
         text: L(
-          'Score 1–5: Größe + Lokalisation (eloquent?) + Drainage (tief?). SM I–II → OP. SM IV–V → konservativ/Radiochirurgie. SM III → individuell.',
-          'Score 1–5: size + location (eloquent?) + drainage (deep?). SM I–II → surgery. SM IV–V → conservative/radiosurgery. SM III → individual.',
-          'امتیاز ۱–۵: اندازه + محل (گویا؟) + درناژ (عمقی؟). SM I–II → جراحی. SM IV–V → محافظه‌کارانه/رادیوجراحی. SM III → فردی.'
+          'Der Score ordnet das Risiko einer Resektion anhand von Nidusgröße, eloquenter Lage und venöser Drainage ein; er ist keine Therapieanweisung.',
+          'The score estimates resection risk from nidus size, eloquent location and venous drainage; it is not a treatment directive.',
+          'این امتیاز خطر رزکسیون را بر اساس اندازه نیدوس، محل گویا و درناژ وریدی برآورد می‌کند؛ دستور درمان نیست.'
         ),
       },
       {
-        title: L('Blutungsrisiko ~2–4 %/Jahr', 'Haemorrhage risk ~2–4%/year', 'خطر خونریزی ~۲–۴٪/سال'),
+        title: L('Klinische Präsentation', 'Clinical presentation', 'تظاهرات بالینی'),
         text: L(
-          'Nach erster Blutung steigt das Risiko auf ~6–18 %/Jahr. Blutung (~50 %) ist häufigste Erstmanifestation. Krampfanfälle (~30 %) sind zweithäufigst.',
-          'After a first bleed, risk rises to ~6–18%/year. Haemorrhage (~50%) is the most common first presentation. Seizures (~30%) are second most common.',
-          'بعد از اولین خونریزی، خطر به ~۶–۱۸٪/سال افزایش می‌یابد. خونریزی (~۵۰٪) شایع‌ترین تظاهر اولیه است. تشنج (~۳۰٪) دومین است.'
+          'Mögliche Erstmanifestationen sind Blutung, Krampfanfall, Kopfschmerz oder fokales Defizit. Die Häufigkeit variiert zwischen Studien und Populationen.',
+          'Possible initial presentations include haemorrhage, seizure, headache or focal deficit. Frequencies vary across studies and populations.',
+          'تظاهرات اولیه ممکن شامل خونریزی، تشنج، سردرد یا نقص کانونی است. فراوانی در مطالعات و جمعیت‌های مختلف تفاوت دارد.'
         ),
       },
     ],
@@ -424,32 +407,28 @@ const TQ = [
       'AVM از شریان‌های تغذیه‌کننده، نیدوس عروق دیسپلاستیک و وریدهای تخلیه‌کننده تشکیل می‌شود — بدون بستر مویرگی.')),
 
   Q('02',
-    L('Wie hoch ist das jährliche Blutungsrisiko einer unbehandelten AVM?',
-      'What is the annual haemorrhage risk of an untreated AVM?',
-      'خطر سالانه خونریزی یک AVM درمان‌نشده چقدر است؟'),
+    L('Mit welchen Beschwerden kann sich eine AVM erstmals zeigen?', 'Which symptoms may be an initial presentation of an AVM?', 'AVM ممکن است ابتدا با چه علائمی تظاهر کند؟'),
     [
-      L('~2–4 %', '~2–4%', '~۲–۴٪'),
-      L('~0,5–1 %', '~0.5–1%', '~۰.۵–۱٪'),
-      L('~10–15 %', '~10–15%', '~۱۰–۱۵٪'),
-      L('~20–25 %', '~20–25%', '~۲۰–۲۵٪'),
+      L('Blutung, Krampfanfall, Kopfschmerz oder fokales Defizit', 'Haemorrhage, seizure, headache or focal deficit', 'خونریزی، تشنج، سردرد یا نقص کانونی'),
+      L('Nur Fieber und Nackensteifigkeit', 'Fever and neck stiffness only', 'فقط تب و سفتی گردن'),
+      L('Ausschließlich Visusverlust', 'Visual loss exclusively', 'فقط از دست رفتن بینایی'),
+      L('Nur asymptomatischer Zufallsbefund', 'Only an asymptomatic incidental finding', 'فقط یافته اتفاقی بدون علامت'),
     ], 0,
-    L('Das AVM-Blutungsrisiko beträgt ~2–4 % pro Jahr. Nach einer ersten Blutung steigt es auf ~6–18 %/Jahr im ersten Jahr.',
-      'AVM haemorrhage risk is ~2–4% per year. After a first bleed it rises to ~6–18%/year in the first year.',
-      'خطر خونریزی AVM ~۲–۴٪ در سال است. بعد از اولین خونریزی در سال اول به ~۶–۱۸٪/سال افزایش می‌یابد.')),
+    L('Die PDF nennt Blutung als häufigste Erstmanifestation; Krampfanfall, Kopfschmerz und fokales Defizit sind weitere mögliche Vorstellungen.', 'The PDF identifies haemorrhage as the most common initial presentation; seizure, headache and focal deficit are other possible presentations.', 'PDF خونریزی را شایع‌ترین تظاهر اولیه می‌داند؛ تشنج، سردرد و نقص کانونی نیز از تظاهرات ممکن‌اند.')),
 
   Q('03',
-    L('Was ist die häufigste klinische Erstmanifestation einer AVM?',
-      'What is the most common first clinical presentation of an AVM?',
-      'شایع‌ترین تظاهر بالینی اولیه AVM چیست؟'),
+    L('Welche Komplikation tritt bei einer AVM häufig auf?',
+      'Which complication commonly occurs with an AVM?',
+      'کدام عارضه در AVM شایع است؟'),
     [
-      L('Intrazerebrale Blutung (~50 %)', 'Intracerebral haemorrhage (~50%)', 'خونریزی داخل مغزی (~۵۰٪)'),
-      L('Krampfanfall (~50 %)', 'Seizure (~50%)', 'تشنج (~۵۰٪)'),
-      L('Kopfschmerzen (~50 %)', 'Headache (~50%)', 'سردرد (~۵۰٪)'),
-      L('Zufallsbefund (~50 %)', 'Incidental finding (~50%)', 'یافته اتفاقی (~۵۰٪)'),
+      L('Intrazerebrale Blutung', 'Intracerebral haemorrhage', 'خونریزی داخل مغزی'),
+      L('Sinusvenenthrombose', 'Cerebral venous sinus thrombosis', 'ترومبوز سینوس وریدی مغز'),
+      L('Meningitis', 'Meningitis', 'مننژیت'),
+      L('Hydrozephalus als typische Erstkomplikation', 'Hydrocephalus as the typical first complication', 'هیدروسفالی به‌عنوان عارضهٔ اولیهٔ تیپیک'),
     ], 0,
-    L('Blutung ist mit ~50 % die häufigste Erstmanifestation der AVM. Krampfanfälle (~30 %) sind die zweithäufigste.',
-      'Haemorrhage at ~50% is the most common first presentation of AVM. Seizures (~30%) are second most common.',
-      'خونریزی با ~۵۰٪ شایع‌ترین تظاهر اولیه AVM است. تشنج (~۳۰٪) دومین است.')),
+    L('Die PDF nennt intrazerebrale Blutungen als häufige Komplikation; die Erstmanifestationen werden separat behandelt.',
+      'The PDF identifies intracerebral haemorrhage as a common complication; initial presentations are covered separately.',
+      'PDF خونریزی داخل مغزی را عارضه‌ای شایع می‌داند؛ تظاهرات اولیه جداگانه بررسی شده‌اند.')),
 
   Q('04',
     L('Eine AVM hat einen Nidus von 4 cm, liegt im Thalamus, mit tiefer Drainage. Welcher Spetzler-Martin-Grad liegt vor?',
@@ -494,60 +473,52 @@ const TQ = [
       'فقدان سیگنال جریان (flow void) از از بین رفتن سیگنال با خون با جریان سریع ایجاد می‌شوند. آن‌ها علامت تیپیک T1/T2 AVM هستند.')),
 
   Q('07',
-    L('Was ist der Goldstandard zur Diagnostik und Therapieplanung einer AVM?',
-      'What is the gold standard for AVM diagnosis and treatment planning?',
-      'استاندارد طلایی برای تشخیص و برنامه‌ریزی درمان AVM چیست؟'),
+    L('Welche Sequenz kann Blutabbauprodukte einer früheren Blutung als Suszeptibilität zeigen?',
+      'Which sequence can show susceptibility from blood products of a prior haemorrhage?',
+      'کدام سکانس می‌تواند سوسپتیبیلیتی ناشی از فرآورده‌های خونیِ خونریزی قبلی را نشان دهد؟'),
     [
-      L('Digitale Subtraktionsangiographie (DSA)', 'Digital subtraction angiography (DSA)', 'آنژیوگرافی تفریق دیجیتال (DSA)'),
-      L('TOF-MRA', 'TOF-MRA', 'TOF-MRA'),
-      L('CT-Angiographie', 'CT angiography', 'آنژیوگرافی CT'),
-      L('3T-MRT mit SWI', '3T MRI with SWI', 'MRI 3T با SWI'),
+      L('SWI bzw. T2*-gewichtete Sequenz', 'SWI or a T2*-weighted sequence', 'SWI یا سکانس T2*'),
+      L('T1 nativ allein', 'Unenhanced T1 alone', 'فقط T1 بدون کنتراست'),
+      L('TOF-MRA allein', 'TOF-MRA alone', 'فقط TOF-MRA'),
+      L('DWI allein', 'DWI alone', 'فقط DWI'),
     ], 0,
-    L('Nur die DSA zeigt Nidus, alle Feeder, Flusskinetik und die genaue Drainageanatomie. Die frühe Venenfüllung in arterieller Phase ist pathognomonisch.',
-      'Only DSA shows the nidus, all feeders, flow kinetics and exact drainage anatomy. Early venous filling in the arterial phase is pathognomonic.',
-      'فقط DSA نیدوس، همه تغذیه‌کنندگان، سینتیک جریان و آناتومی دقیق درناژ را نشان می‌دهد. پُرشدگی زودرس وریدی در فاز شریانی پاتوگنومونیک است.')),
+    L('SWI und T2* sind empfindlich für Suszeptibilität durch Blutabbauprodukte; sie ersetzen die Gefäßdarstellung nicht.',
+      'SWI and T2* are sensitive to susceptibility from blood products; they do not replace vascular imaging.',
+      'SWI و T2* به سوسپتیبیلیتی ناشی از فرآورده‌های خونی حساس‌اند؛ جایگزین تصویربرداری عروقی نیستند.')),
 
   Q('08',
-    L('Welches bildgebende Muster in der DSA ist pathognomonisch für eine AVM?',
-      'Which DSA finding is pathognomonic for an AVM?',
-      'کدام الگوی تصویربرداری در DSA برای AVM پاتوگنومونیک است؟'),
+    L('Welcher DSA-Befund spricht für einen arteriovenösen Shunt?',
+      'Which DSA finding supports an arteriovenous shunt?',
+      'کدام یافته DSA به نفع شانت شریانی‌وریدی است؟'),
     [
       L('Nidus + frühe Venenfüllung in der arteriellen Phase', 'Nidus + early venous filling in the arterial phase', 'نیدوس + پُرشدگی زودرس وریدی در فاز شریانی'),
       L('Aneurysma an der Bifurkation der A. cerebri media', 'Aneurysm at the MCA bifurcation', 'آنوریسم در انشعاب شریان مغزی میانی'),
       L('Retrograde Sinusfüllung ohne Nidus', 'Retrograde sinus filling without nidus', 'پُرشدگی رتروگراد سینوس بدون نیدوس'),
       L('Diffuses Hypervaskularisierungsmuster ohne Nidus', 'Diffuse hypervascularisation without nidus', 'الگوی هایپرواسکولاریزاسیون منتشر بدون نیدوس'),
     ], 0,
-    L('Nidus + frühe venöse Füllung in arterieller Phase = klassisches DSA-Zeichen der AVM (Kurzschlussphänomen ohne Kapillarbett).',
-      'Nidus + early venous filling in the arterial phase = classic DSA sign of AVM (shunting without capillary bed).',
-      'نیدوس + پُرشدگی زودرس وریدی در فاز شریانی = علامت کلاسیک DSA AVM (پدیده اتصال کوتاه بدون بستر مویرگی).')),
+    L('Nidus und frühe venöse Drainage während der arteriellen Phase sprechen für einen arteriovenösen Shunt.',
+      'A nidus and early venous drainage during the arterial phase support an arteriovenous shunt.',
+      'نیدوس و درناژ زودرس وریدی در فاز شریانی به نفع شانت شریانی‌وریدی است.')),
 
   Q('09',
-    L('Für welche AVM ist mikrochirurgische Resektion die bevorzugte Therapie?',
-      'For which AVM is microsurgical resection the preferred treatment?',
-      'برای کدام AVM رزکسیون میکروجراحی درمان ترجیحی است؟'),
+    L('Welche drei Kriterien bilden den Spetzler-Martin-Score?', 'Which three criteria make up the Spetzler–Martin score?', 'سه معیار امتیاز Spetzler–Martin کدام‌اند؟'),
     [
-      L('Spetzler-Martin I und II', 'Spetzler-Martin I and II', 'Spetzler-Martin I و II'),
-      L('Spetzler-Martin IV und V', 'Spetzler-Martin IV and V', 'Spetzler-Martin IV و V'),
-      L('Alle AVMs unabhängig vom Score', 'All AVMs regardless of score', 'تمام AVM‌ها صرف‌نظر از امتیاز'),
-      L('Nur bei akuter Blutung', 'Only with acute haemorrhage', 'فقط در خونریزی حاد'),
+      L('Nidusgröße, eloquente Lage, venöse Drainage', 'Nidus size, eloquent location, venous drainage', 'اندازه نیدوس، محل گویا، درناژ وریدی'),
+      L('Alter, Blutungsstatus, Zahl der Feeder', 'Age, rupture status, number of feeders', 'سن، وضعیت پارگی، تعداد شریان‌های تغذیه‌کننده'),
+      L('Nidusvolumen, Ödem, Aneurysmen', 'Nidus volume, oedema, aneurysms', 'حجم نیدوس، ادم، آنوریسم‌ها'),
+      L('Lokalisation, Drainage, Zahl der Blutungen', 'Location, drainage, number of haemorrhages', 'محل، درناژ، تعداد خونریزی‌ها'),
     ], 0,
-    L('SM I–II haben kleines Nidusvolumen und/oder nicht-eloquente Lage → geringes OP-Risiko → Resektion empfohlen. SM IV–V: meist konservativ oder Radiochirurgie.',
-      'SM I–II have small nidus volume and/or non-eloquent location → low surgical risk → resection recommended. SM IV–V: usually conservative or radiosurgery.',
-      'SM I–II حجم نیدوس کوچک و/یا محل غیرگویا دارند → خطر پایین جراحی → رزکسیون توصیه می‌شود. SM IV–V: اغلب محافظه‌کارانه یا رادیوجراحی.')),
+    L('Der Score kombiniert Nidusgröße, Eloquenz der Lage und venöse Drainage zur Einschätzung des operativen Risikos.', 'The score combines nidus size, eloquence of location and venous drainage to estimate operative risk.', 'این امتیاز اندازه نیدوس، گویا بودن محل و درناژ وریدی را برای برآورد خطر جراحی ترکیب می‌کند.')),
 
   Q('10',
-    L('Welche Therapie ist für kleine, tief gelegene AVMs (SM III–IV) bei jungen Patienten geeignet?',
-      'Which treatment is suitable for small, deep AVMs (SM III–IV) in young patients?',
-      'کدام درمان برای AVM‌های کوچک عمقی (SM III–IV) در بیماران جوان مناسب است؟'),
+    L('Welche Behandlungsverfahren werden in der Übersicht genannt?', 'Which treatment modalities are listed in the overview?', 'کدام روش‌های درمانی در مرور کلی ذکر شده‌اند؟'),
     [
-      L('Stereotaktische Radiochirurgie (Gamma Knife)', 'Stereotactic radiosurgery (Gamma Knife)', "رادیوجراحی استریوتاکتیک (گامانایف (Gamma Knife))"),
-      L('Notfallmäßige Kraniotomie', 'Emergency craniotomy', 'کرانیوتومی اورژانسی'),
-      L('Alleinige Embolisation', 'Embolisation alone', 'آمبولیزاسیون به‌تنهایی'),
-      L('Kortikosteroide', 'Corticosteroids', 'کورتیکواستروئیدها'),
+      L('Mikrochirurgie, Embolisation und Radiochirurgie', 'Microsurgery, embolisation and radiosurgery', 'میکروجراحی، آمبولیزاسیون و رادیوجراحی'),
+      L('Nur Antibiotika', 'Antibiotics only', 'فقط آنتی‌بیوتیک'),
+      L('Nur Kortikosteroide', 'Corticosteroids only', 'فقط کورتیکواستروئید'),
+      L('Ausschließlich Beobachtung', 'Observation only', 'فقط پیگیری'),
     ], 0,
-    L('Gamma Knife erreicht bei kleinen AVMs (<3 cm) eine Obliterationsrate von ~80 % über 2–3 Jahre. In der Zwischenzeit besteht weiterhin Blutungsrisiko.',
-      'Gamma Knife achieves ~80% obliteration of small AVMs (<3 cm) over 2–3 years. Haemorrhage risk persists during this interval.',
-      "گامانایف (Gamma Knife) برای AVM‌های کوچک (<۳ سانتی‌متر) نرخ انسداد ~۸۰٪ طی ۲–۳ سال دارد. خطر خونریزی در این فاصله همچنان وجود دارد.")),
+    L('Die genannten Verfahren sind mögliche Optionen; die Liste allein bestimmt keine Empfehlung für den Einzelfall.', 'These modalities are possible options; the list alone does not determine a recommendation for an individual case.', 'این روش‌ها گزینه‌های ممکن‌اند؛ فهرست به‌تنهایی توصیه‌ای برای بیمار مشخص تعیین نمی‌کند.')),
 
   Q('11',
     L('Wie unterscheidet sich die AVM bildgebend von der dAVF?',
@@ -564,19 +535,24 @@ const TQ = [
       'AVM نیدوس پارانشیمی دارد و مادرزادی است. dAVF دورال است، بدون نیدوس و اغلب اکتسابی.')),
 
   Q('12',
-    L('Eine unbehandelte AVM blutet erstmalig. Wie verändert sich das jährliche Blutungsrisiko danach?',
-      'An untreated AVM has its first bleed. How does the annual haemorrhage risk change afterwards?',
-      'یک AVM درمان‌نشده اولین خونریزی را دارد. خطر سالانه خونریزی بعد از آن چگونه تغییر می‌کند؟'),
+    L('Welche Faktoren beeinflussen das Blutungsrisiko einer AVM?', 'Which factors influence haemorrhage risk in an AVM?', 'چه عواملی بر خطر خونریزی AVM اثر می‌گذارند؟'),
     [
-      L('Steigt auf ~6–18 % im ersten Jahr', 'Rises to ~6–18% in the first year', 'به ~۶–۱۸٪ در سال اول افزایش می‌یابد'),
-      L('Sinkt auf <1 % durch Fibrosierung', 'Falls to <1% due to fibrosis', 'به دلیل فیبروز به <۱٪ کاهش می‌یابد'),
-      L('Bleibt unverändert bei 2–4 %', 'Remains unchanged at 2–4%', 'بدون تغییر در ۲–۴٪ می‌ماند'),
-      L('Steigt auf >50 % im ersten Jahr', 'Rises to >50% in the first year', 'به >۵۰٪ در سال اول افزایش می‌یابد'),
+      L('Unter anderem Rupturstatus und Population', 'Among other factors, rupture status and population', 'از جمله وضعیت پارگی و جمعیت مورد مطالعه'),
+      L('Nur das Alter', 'Age only', 'فقط سن'),
+      L('Nur die Nidusgröße', 'Nidus size only', 'فقط اندازه نیدوس'),
+      L('Es ist für alle AVMs gleich', 'It is the same for all AVMs', 'برای همه AVMها یکسان است'),
     ], 0,
-    L('Nach erster AVM-Blutung steigt das Wiederholungsrisiko auf ~6–18 %/Jahr im ersten Jahr — deutlich höher als das Basisrisiko von 2–4 %.',
-      'After a first AVM bleed, re-bleeding risk rises to ~6–18%/year in the first year — significantly higher than the baseline 2–4%.',
-      'بعد از اولین خونریزی AVM، خطر تکرار در سال اول به ~۶–۱۸٪/سال افزایش می‌یابد — به‌طور قابل‌توجهی بیشتر از خطر پایه ۲–۴٪.')),
+    L('Risikoangaben hängen vom Rupturstatus und der untersuchten Population ab; Einzelwerte sind nicht pauschal auf jeden Fall übertragbar.', 'Risk estimates depend on rupture status and the studied population; single values cannot be applied universally.', 'برآورد خطر به وضعیت پارگی و جمعیت مورد مطالعه بستگی دارد؛ نمی‌توان یک عدد را به همه موارد تعمیم داد.')),
+
 ]
+
+// Distribute correct-option positions so learners cannot infer the answer pattern.
+const answerPositions = [2, 1, 3, 0, 2, 1, 3, 0, 1, 2, 0, 3]
+TQ.forEach((seed, index) => {
+  const answer = seed.options.splice(seed.correct, 1)[0]
+  seed.correct = answerPositions[index]
+  seed.options.splice(seed.correct, 0, answer)
+})
 
 export const AVM_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [lang, TQ.map(seed => ({
   id: `avm-zns-${lang}-${seed.id}`,
@@ -604,12 +580,12 @@ const TF = [
   F('epidemio', L('Grundlagen', 'Basics', 'مبانی'),
     L('Typisches Alter und Lokalisation der AVM?', 'Typical age and location of AVM?', 'سن و محل تیپیک AVM؟'),
     L('Junge Erwachsene (20–40 J), meist supratentoriell.', 'Young adults (20–40 years), mostly supratentorial.', 'بزرگسالان جوان (۲۰–۴۰ سال)، اغلب سوپراتنتوریال.'),
-    L('~85 % supratentoriell in den Hemisphären. Prävalenz ~0,1 %. Meist sporadisch; selten HHT (hereditäre hämorrhagische Teleangiektasie) mit multiplen AVMs.', '~85% supratentorial in the hemispheres. Prevalence ~0.1%. Usually sporadic; rarely HHT with multiple AVMs.', '~۸۵٪ سوپراتنتوریال در نیم‌کره‌ها. شیوع ~۰.۱٪. اغلب اسپورادیک؛ به‌ندرت HHT با AVM‌های متعدد.')),
+    L('Junges Erwachsenenalter und supratentorielle Lage sind typische Angaben der Quelle.', 'Young adulthood and supratentorial location are typical points in the source.', 'بزرگسالی جوان و محل سوپراتنتوریال نکات تیپیک این منبع‌اند.')),
 
   F('blutungsrisiko', L('Klinik', 'Clinical', 'بالینی'),
-    L('Jährliches Blutungsrisiko einer AVM?', 'Annual haemorrhage risk of an AVM?', 'خطر سالانه خونریزی AVM؟'),
-    L('~2–4 % / Jahr (nach erster Blutung ~6–18 %).', '~2–4%/year (after first bleed ~6–18%).', '~۲–۴٪/سال (بعد از اولین خونریزی ~۶–۱۸٪).'),
-    L('Blutung (~50 %) ist häufigste Erstmanifestation. Krampfanfälle (~30 %) zweit. Das Risiko verdrei- bis verneunfacht sich nach erster Blutung im ersten Jahr.', 'Haemorrhage (~50%) is the most common first presentation. Seizures (~30%) are second. Risk triples to ninefold after a first bleed in year one.', 'خونریزی (~۵۰٪) شایع‌ترین تظاهر اولیه است. تشنج (~۳۰٪) دوم است. خطر بعد از اولین خونریزی در سال اول سه تا نه برابر می‌شود.')),
+    L('Wovon hängen Blutungsrisiko-Schätzungen ab?', 'What do haemorrhage risk estimates depend on?', 'برآورد خطر خونریزی به چه عواملی بستگی دارد؟'),
+    L('Variiert je nach Rupturstatus und untersuchter Population.', 'Varies by rupture status and studied population.', 'با وضعیت پارگی و جمعیت مورد مطالعه تفاوت دارد.'),
+    L('Blutung ist eine häufige Erstmanifestation; auch Anfälle, Kopfschmerz oder fokale Defizite kommen vor.', 'Haemorrhage is a common initial presentation; seizures, headache or focal deficits may also occur.', 'خونریزی تظاهر اولیه شایعی است؛ تشنج، سردرد یا نقص کانونی نیز ممکن است رخ دهد.')),
 
   F('spetzler-kriterien', L('Klassifikation', 'Classification', 'طبقه‌بندی'),
     L('Welche 3 Kriterien bewertet der Spetzler-Martin-Score?', 'Which 3 criteria does the Spetzler-Martin score assess?', 'کدام ۳ معیار را امتیاز Spetzler-Martin ارزیابی می‌کند؟'),
@@ -617,9 +593,9 @@ const TF = [
     L('Größe: <3 cm=1P, 3–6 cm=2P, >6 cm=3P. Eloquenz: nicht-eloquent=0P, eloquent=1P. Drainage: oberflächlich=0P, tief=1P. Gesamt 1–5 Punkte.', 'Size: <3 cm=1pt, 3–6 cm=2pt, >6 cm=3pt. Eloquence: non-eloquent=0pt, eloquent=1pt. Drainage: superficial=0pt, deep=1pt. Total 1–5 points.', 'اندازه: <۳ سانتی‌متر=۱ امتیاز، ۳–۶ سانتی‌متر=۲ امتیاز، >۶ سانتی‌متر=۳ امتیاز. گویا: غیرگویا=۰ امتیاز، گویا=۱ امتیاز. درناژ: سطحی=۰ امتیاز، عمقی=۱ امتیاز. جمع ۱–۵ امتیاز.')),
 
   F('spetzler-therapie', L('Klassifikation', 'Classification', 'طبقه‌بندی'),
-    L('Spetzler-Martin I–II vs. IV–V: Therapiestrategie?', 'Spetzler-Martin I–II vs. IV–V: treatment strategy?', 'Spetzler-Martin I–II در مقابل IV–V: استراتژی درمان؟'),
-    L('I–II: OP. IV–V: konservativ/Radiochirurgie.', 'I–II: surgery. IV–V: conservative/radiosurgery.', 'I–II: جراحی. IV–V: محافظه‌کارانه/رادیوجراحی.'),
-    L('SM I–II: kleines/nicht-eloquentes Nidus, geringe Drainagetiefe → günstiges OP-Risiko. SM IV–V: OP-Risiko zu hoch → Gamma Knife oder beobachten. SM III: individuell abwägen.', 'SM I–II: small/non-eloquent nidus, superficial drainage → favourable surgical risk. SM IV–V: surgical risk too high → Gamma Knife or observe. SM III: individual assessment.', "SM I–II: نیدوس کوچک/غیرگویا، درناژ سطحی → خطر جراحی مطلوب. SM IV–V: خطر جراحی بیش از حد → گامانایف (Gamma Knife) یا مشاهده. SM III: ارزیابی فردی.")),
+    L('Was sagt der Spetzler-Martin-Score aus?', 'What does the Spetzler-Martin score estimate?', 'امتیاز Spetzler-Martin چه چیزی را برآورد می‌کند؟'),
+    L('Risiko einer mikrochirurgischen Resektion anhand von Größe, Eloquenz und Drainage.', 'Risk of microsurgical resection based on size, eloquence and drainage.', 'خطر رزکسیون میکروجراحی بر اساس اندازه، ناحیه گویا و درناژ.'),
+    L('Der Score schätzt das operative Risiko ein; die Behandlung wird individuell und multidisziplinär festgelegt.', 'The score estimates operative risk; treatment is decided individually by a multidisciplinary team.', "این امتیاز خطر جراحی را برآورد می‌کند؛ درمان باید فردی و چندتخصصی تعیین شود.")),
 
   F('eloquenz', L('Klassifikation', 'Classification', 'طبقه‌بندی'),
     L('Welche Areale gelten als eloquent?', 'Which areas are considered eloquent?', 'کدام نواحی گویا محسوب می‌شوند؟'),
@@ -632,19 +608,19 @@ const TF = [
     L('Flow voids entstehen, wenn schnell fließendes Blut zwischen Akquisitionspulsen das Messvolumen verlässt → kein Signal. In T2 als schlängelnde hypointense Strukturen sichtbar.', 'Flow voids arise when fast-flowing blood leaves the acquisition volume between pulses → no signal. Visible on T2 as serpentine hypointense structures.', 'فقدان سیگنال جریان (flow void) ایجاد می‌شوند وقتی خون با جریان سریع بین پالس‌های اکتساب حجم اندازه‌گیری را ترک می‌کند → بدون سیگنال. در T2 به‌صورت ساختارهای هیپواینتنس مارپیچ دیده می‌شوند.')),
 
   F('dsa', L('Bildgebung', 'Imaging', 'تصویربرداری'),
-    L('Welcher DSA-Befund ist pathognomonisch für eine AVM?', 'Which DSA finding is pathognomonic for AVM?', 'کدام یافته DSA برای AVM پاتوگنومونیک است؟'),
+    L('Welcher DSA-Befund spricht für einen arteriovenösen Shunt?', 'Which DSA finding supports an arteriovenous shunt?', 'کدام یافته DSA به نفع شانت شریانی‌وریدی است؟'),
     L('Nidus + frühe Venenfüllung in arterieller Phase.', 'Nidus + early venous filling in the arterial phase.', 'نیدوس + پُرشدگی زودرس وریدی در فاز شریانی.'),
-    L('In arterieller Phase erscheinen Feeder und Nidus. Wenn bereits in dieser Phase Venen gefüllt sind (frühe venöse Füllung), ist der AV-Shunt ohne Kapillarbett nachgewiesen — pathognomonisch.', 'In the arterial phase, feeders and nidus opacify. If veins are already filling in this phase (early venous filling), the capillary-free AV shunt is proven — pathognomonic.', 'در فاز شریانی، تغذیه‌کنندگان و نیدوس پُر می‌شوند. اگر وریدها در این فاز قبلاً پُر شوند (پُرشدگی زودرس وریدی)، شانت AV بدون مویرگ اثبات می‌شود — پاتوگنومونیک.')),
+    L('Frühe venöse Drainage während der arteriellen Phase ist ein charakteristischer Hinweis auf einen arteriovenösen Shunt.', 'Early venous drainage during the arterial phase is a characteristic sign of an arteriovenous shunt.', 'درناژ زودرس وریدی در فاز شریانی یافته‌ای شاخص به نفع شانت شریانی‌وریدی است.')),
 
   F('therapie-wahl', L('Management', 'Management', 'مدیریت'),
-    L('Erste Wahl bei Spetzler-Martin I–II?', 'First choice for Spetzler-Martin I–II?', 'انتخاب اول برای Spetzler-Martin I–II؟'),
-    L('Mikrochirurgische Resektion.', 'Microsurgical resection.', 'رزکسیون میکروجراحی.'),
-    L('SM I–II: geringes OP-Risiko → kurative Resektion. Oft präoperative Embolisation der Feeder zur Flussreduktion. SM IV–V: Gamma Knife oder konservativ.', 'SM I–II: low surgical risk → curative resection. Often pre-operative feeder embolisation for flow reduction. SM IV–V: Gamma Knife or conservative.', "SM I–II: خطر پایین جراحی → رزکسیون درمان‌کننده. اغلب آمبولیزاسیون قبل از عمل تغذیه‌کنندگان برای کاهش جریان. SM IV–V: گامانایف (Gamma Knife) یا محافظه‌کارانه.")),
+    L('Welche Faktoren fließen in die Therapieentscheidung ein?', 'Which factors inform treatment decisions?', 'چه عواملی در تصمیم درمان نقش دارند؟'),
+    L('Mehrere Optionen; individuelle interdisziplinäre Abwägung.', 'Several options; individual multidisciplinary assessment.', 'چند گزینه؛ ارزیابی فردی و چندتخصصی.'),
+    L('Der Score schätzt das operative Risiko; die Therapie wird individuell und multidisziplinär festgelegt.', 'The score estimates operative risk; treatment is decided individually by a multidisciplinary team.', 'امتیاز، خطر جراحی را برآورد می‌کند؛ درمان فردی و چندتخصصی تعیین می‌شود.')),
 
   F('gamma-knife', L('Management', 'Management', 'مدیریت'),
     L('Für welche AVM ist Gamma Knife geeignet?', 'For which AVM is Gamma Knife suitable?', "گامانایف (Gamma Knife) برای کدام AVM مناسب است؟"),
-    L('Kleine (<3 cm), tief gelegene AVMs (SM III–IV).', 'Small (<3 cm), deep AVMs (SM III–IV).', 'AVM‌های کوچک (<۳ سانتی‌متر) عمقی (SM III–IV).'),
-    L('Obliterationsrate ~80 % bei kleinen AVMs nach 2–3 Jahren. In dieser Zeit besteht weiterhin Blutungsrisiko. Nicht geeignet für große AVMs >3 cm.', 'Obliteration rate ~80% for small AVMs after 2–3 years. Haemorrhage risk persists during this period. Not suitable for large AVMs >3 cm.', 'نرخ انسداد ~۸۰٪ برای AVM‌های کوچک بعد از ۲–۳ سال. خطر خونریزی در این مدت همچنان وجود دارد. برای AVM‌های بزرگ >۳ سانتی‌متر مناسب نیست.')),
+    L('Indikation abhängig von Größe, Lage, Fallmerkmalen und Behandlungsziel.', 'Indication depends on size, location, case features and treatment goals.', 'اندیکاسیون به اندازه، محل، ویژگی‌های مورد و هدف درمان وابسته است.'),
+    L('Die Wirkung ist verzögert; Nutzen und Risiken müssen im Einzelfall abgewogen werden.', 'The effect is delayed; benefits and risks must be weighed individually.', 'اثر درمان با تأخیر ظاهر می‌شود؛ فایده و خطر باید برای هر بیمار جداگانه سنجیده شود.')),
 
   F('davf-unterschied', L('Differenzial', 'Differential', 'افتراقی'),
     L('Wie unterscheidet sich AVM von dAVF?', 'How does AVM differ from dAVF?', 'AVM چگونه از dAVF متمایز می‌شود؟'),
@@ -658,13 +634,13 @@ const TF = [
 
   F('embolisation', L('Management', 'Management', 'مدیریت'),
     L('Welche Rolle spielt die Embolisation bei AVM?', 'What role does embolisation play in AVM?', 'آمبولیزاسیون چه نقشی در AVM دارد؟'),
-    L('Meist präoperativ zur Flussreduktion — selten allein kurativ.', 'Mostly pre-operative for flow reduction — rarely curative alone.', 'اغلب قبل از عمل برای کاهش جریان — به‌ندرت به‌تنهایی درمان‌کننده.'),
-    L('Durch Katheterembolisation der Feeder (Onyx, Partikel) wird der Blutfluss zum Nidus reduziert → einfachere Resektion. Alleinige Embolisation erreicht selten vollständige Okklusion.', 'Catheter embolisation of feeders (Onyx, particles) reduces blood flow to the nidus → easier resection. Embolisation alone rarely achieves complete occlusion.', 'آمبولیزاسیون کاتتری تغذیه‌کنندگان (Onyx، ذرات) جریان خون به نیدوس را کاهش می‌دهد → رزکسیون آسان‌تر. آمبولیزاسیون به‌تنهایی به‌ندرت انسداد کامل دارد.')),
+    L('Präoperativ oder als Teilbehandlung; die Rolle hängt vom individuellen Behandlungsplan ab.', 'Pre-operative or as part of treatment; its role depends on the individual treatment plan.', 'پیش از جراحی یا به‌عنوان بخشی از درمان؛ نقش آن به برنامهٔ درمانی هر بیمار بستگی دارد.'),
+    L('Die Rolle der Embolisation hängt von Gefäßanatomie und geplantem Behandlungsweg ab; sie kann im Einzelfall mit anderen Verfahren kombiniert werden.', 'The role of embolisation depends on vascular anatomy and the planned treatment pathway; it may be combined with other modalities in an individual case.', 'نقش آمبولیزاسیون به آناتومی عروقی و مسیر درمانی برنامه‌ریزی‌شده بستگی دارد؛ در هر مورد ممکن است با روش‌های دیگر ترکیب شود.')),
 
   F('swi', L('Bildgebung', 'Imaging', 'تصویربرداری'),
     L('Was zeigt SWI/T2* bei AVM?', 'What does SWI/T2* show in AVM?', 'SWI/T2* در AVM چه نشان می‌دهد؟'),
     L('Hämosiderin nach stattgehabter Blutung (Blooming).', 'Haemosiderin after prior haemorrhage (blooming).', "هموسیدرین بعد از خونریزی قبلی (آرتیفکت شکوفه‌ای (blooming))."),
-    L('SWI ist sensitiv für alte Blutungsresiduen → Hämosiderin als Blooming-Artefakt. Zeigt stattgehabte Mikroblutungen an. Hilft auch bei Frage nach Hybridläsionen (AVM + Kavernom).', 'SWI is sensitive to old haemorrhage residua → haemosiderin as a blooming artefact. Reveals prior microbleeds. Also helpful when hybrid lesions (AVM + cavernoma) are suspected.', "SWI برای بقایای خونریزی قدیمی حساس است → هموسیدرین به‌عنوان آرتفکت آرتیفکت شکوفه‌ای (blooming). میکروخونریزی‌های قبلی را نشان می‌دهد. همچنین در مورد ضایعات هیبریدی (AVM + کاورنوم) کمک می‌کند.")),
+    L('SWI/T2* kann Suszeptibilität durch Blutabbauprodukte zeigen; ein negativer Befund schließt eine Begleitläsion nicht sicher aus.', 'SWI/T2* can show susceptibility from blood products; a negative finding does not reliably exclude a coexisting lesion.', "SWI/T2* می‌تواند سوسپتیبیلیتی ناشی از فرآورده‌های خونی را نشان دهد؛ یافته منفی ضایعه همراه را با اطمینان رد نمی‌کند.")),
 ]
 
 export const AVM_FLASHCARDS = TF.map((item, index) => ({

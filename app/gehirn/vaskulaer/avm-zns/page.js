@@ -3,9 +3,9 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import InProgressBanner from '@/components/InProgressBanner'
+import LessonHero from '@/components/LessonHero'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
-import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import { AVM_LESSON } from '@/data/avm'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
 
@@ -21,7 +21,7 @@ const UI = {
     auth: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.',
     actionMcq: 'MCQ',
     actionFlash: 'Flashcards',
-    caseSource: 'Case courtesy of Radiopaedia.org',
+    caseSource: 'Fall mit freundlicher Genehmigung von Radiopaedia.org',
   },
   en: {
     zoom: 'Enlarge image',
@@ -43,18 +43,15 @@ const UI = {
     auth: 'برای ذخیره پیشرفت لطفاً وارد شوید.',
     actionMcq: 'MCQ',
     actionFlash: 'فلش‌کارت',
-    caseSource: 'Case courtesy of Radiopaedia.org',
+    caseSource: 'کیس با اجازه از Radiopaedia.org',
   },
 }
 
-function Section({ id, title, lead, children }) {
-  const mobile = useMobileLearningLayout()
-  const [open, setOpen] = useState(true)
-  useEffect(() => setOpen(false), [id])
+function Section({ id, icon, title, lead, children, open, onToggle }) {
   return (
     <section id={id} className={styles.section}>
-      <button type="button" className={styles.sectionHeader} onClick={() => setOpen(v => !v)} aria-expanded={open}>
-        <h2>{title}</h2>
+      <button type="button" className={styles.sectionHeader} onClick={onToggle} aria-expanded={open}>
+        <h2><span aria-hidden="true">{icon}</span> {title}</h2>
         <span>{open ? '−' : '+'}</span>
       </button>
       {open && (
@@ -130,23 +127,59 @@ export default function AvmPage() {
   const sections = AVM_LESSON.sections
   const { isRead, toggleRead, authError } = useLessonReadStatus('avm-zns')
   const [active, setActive] = useState('')
+  const [openSection, setOpenSection] = useState('grundlagen')
   const [zoomed, setZoomed] = useState(null)
   const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
   const fall = AVM_LESSON.fall
 
   useEffect(() => {
+    const syncFromHash = () => {
+      const id = window.location.hash.slice(1)
+      if (sections.some(section => section.id === id)) {
+        setActive(id)
+        setOpenSection(id)
+      }
+    }
+    syncFromHash()
+    window.addEventListener('hashchange', syncFromHash)
+    window.addEventListener('popstate', syncFromHash)
     const observers = sections.map(section => {
       const el = document.getElementById(section.id)
       if (!el) return null
       const obs = new IntersectionObserver(
-        entries => { if (entries[0].isIntersecting) setActive(section.id) },
+        entries => {
+          if (entries[0].isIntersecting) {
+            setActive(section.id)
+            setOpenSection(section.id)
+            window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${section.id}`)
+          }
+        },
         { rootMargin: '-30% 0px -60% 0px' }
       )
       obs.observe(el)
       return obs
     })
-    return () => observers.forEach(o => o?.disconnect())
+    return () => {
+      observers.forEach(o => o?.disconnect())
+      window.removeEventListener('hashchange', syncFromHash)
+      window.removeEventListener('popstate', syncFromHash)
+    }
   }, [sections])
+
+  const toggleSection = id => {
+    const next = openSection === id ? '' : id
+    setOpenSection(next)
+    setActive(next)
+    const path = `${window.location.pathname}${window.location.search}${next ? `#${next}` : ''}`
+    window.history.pushState(null, '', path)
+  }
+
+  const navigateSection = id => {
+    setOpenSection(id)
+    setActive(id)
+    window.history.pushState(null, '', `${window.location.pathname}${window.location.search}#${id}`)
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   useEffect(() => {
     if (zoomed === null) return undefined
@@ -182,9 +215,7 @@ export default function AvmPage() {
 
         <div className={styles.hero}>
           <div className={styles.heroText}>
-            <span className={styles.sourceBadge}>{AVM_LESSON.sourceLabel}</span>
-            <h1>{c(AVM_LESSON.title)}</h1>
-            <p>{c(AVM_LESSON.definition)}</p>
+            <LessonHero title={c(AVM_LESSON.title)} lang={lang} imageSrc="/avm/hero-generated.webp" imageAlt={c(AVM_LESSON.grundlagen.heroAlt)} />
             <div className={styles.actions}>
               <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=gehirn&n=12&themen=avm-zns&from=${encodeURIComponent(withLang('/gehirn/vaskulaer/avm-zns'))}`)}>
                 🎯 {copy.actionMcq}
@@ -193,15 +224,6 @@ export default function AvmPage() {
                 🧠 {copy.actionFlash}
               </Link>
             </div>
-          </div>
-          <div className={styles.heroStats}>
-            {AVM_LESSON.heroCards.map(card => (
-              <div className={styles.heroStat} key={c(card.value)}>
-                <strong>{c(card.value)}</strong>
-                <span>{c(card.label)}</span>
-                <small>{c(card.text)}</small>
-              </div>
-            ))}
           </div>
         </div>
       </header>
@@ -218,7 +240,7 @@ export default function AvmPage() {
               type="button"
               key={section.id}
               className={`${styles.sideItem} ${active === section.id ? styles.sideItemActive : ''}`}
-              onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => navigateSection(section.id)}
               style={section.emphasis ? {
                 color: '#7c3aed',
                 border: '1px solid rgba(124, 58, 237, .48)',
@@ -235,38 +257,52 @@ export default function AvmPage() {
 
         <div className={styles.main}>
           {/* Grundlagen */}
-          <Section id="grundlagen" title={c(AVM_LESSON.grundlagen.title)} lead={c(AVM_LESSON.grundlagen.lead)}>
+          <Section id="grundlagen" icon={sections[0].icon} title={c(AVM_LESSON.grundlagen.title)} lead={c(AVM_LESSON.grundlagen.lead)} open={openSection === 'grundlagen'} onToggle={() => toggleSection('grundlagen')}>
+            <figure style={{ margin: '0 0 20px', padding: 16, borderRadius: 14, background: 'rgba(124,58,237,.06)' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/avm/flow-path.svg" alt={c(AVM_LESSON.grundlagen.visualAlt)} style={{ display: 'block', width: '100%', maxWidth: 720, margin: '0 auto' }} />
+              <div dir="ltr" aria-label={c({ de: 'Blutfluss durch die AVM', en: 'Blood flow through the AVM', fa: 'جریان خون در AVM' })} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: 9, marginTop: 10 }}>
+                <strong>{c({ de: 'Feeder-Arterie', en: 'Feeding artery', fa: 'شریان تغذیه‌کننده' })}</strong><span aria-hidden="true">→</span>
+                <strong>{c({ de: 'Nidus', en: 'Nidus', fa: 'نیدوس' })}</strong><span aria-hidden="true">→</span>
+                <strong>{c({ de: 'drainierende Vene', en: 'draining vein', fa: 'ورید تخلیه‌کننده' })}</strong>
+              </div>
+              <figcaption dir={rtl ? 'rtl' : 'ltr'} style={{ textAlign: 'center', marginTop: 8, opacity: .8 }}>{c({ de: 'Das Schema erklärt die Komponenten und ersetzt keine Angiographie.', en: 'This diagram explains the components; it does not replace angiography.', fa: 'این شماتیک اجزا را توضیح می‌دهد و جایگزین آنژیوگرافی نیست.' })}</figcaption>
+            </figure>
             <Cards items={AVM_LESSON.grundlagen.items} lang={lang} />
             <Callout label={c(AVM_LESSON.keyLabel)}>{c(AVM_LESSON.grundlagen.key)}</Callout>
           </Section>
 
           {/* Klinik */}
-          <Section id="klinik" title={c(AVM_LESSON.klinik.title)} lead={c(AVM_LESSON.klinik.lead)}>
+          <Section id="klinik" icon={sections[1].icon} title={c(AVM_LESSON.klinik.title)} lead={c(AVM_LESSON.klinik.lead)} open={openSection === 'klinik'} onToggle={() => toggleSection('klinik')}>
             <Table headers={AVM_LESSON.klinik.headers.map(c)} rows={rows(AVM_LESSON.klinik.rows)} />
             <Callout label={c(AVM_LESSON.caveLabel)} cave>{c(AVM_LESSON.klinik.cave)}</Callout>
           </Section>
 
           {/* Spetzler-Martin */}
-          <Section id="spetzler" title={c(AVM_LESSON.spetzler.title)} lead={c(AVM_LESSON.spetzler.lead)}>
+          <Section id="spetzler" icon={sections[2].icon} title={c(AVM_LESSON.spetzler.title)} lead={c(AVM_LESSON.spetzler.lead)} open={openSection === 'spetzler'} onToggle={() => toggleSection('spetzler')}>
             <h3 style={{ margin: '0 0 10px', fontSize: 14, fontWeight: 700, opacity: 0.7, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
               {c({ de: 'Kriterienpunkte', en: 'Scoring criteria', fa: 'معیارهای امتیازدهی' })}
             </h3>
             <Table headers={AVM_LESSON.spetzler.headers.map(c)} rows={rows(AVM_LESSON.spetzler.rows)} />
             <h3 style={{ margin: '20px 0 10px', fontSize: 14, fontWeight: 700, opacity: 0.7, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-              {c({ de: 'Graduierung & Therapieempfehlung', en: 'Grading & treatment recommendation', fa: 'درجه‌بندی و توصیه درمانی' })}
+              {c({ de: 'Graduierung & operative Risikoklasse', en: 'Grade & operative risk class', fa: 'درجه و رده خطر جراحی' })}
             </h3>
             <Table headers={AVM_LESSON.spetzler.summary.headers.map(c)} rows={rows(AVM_LESSON.spetzler.summary.rows)} />
             <Callout label={c(AVM_LESSON.keyLabel)}>{c(AVM_LESSON.spetzler.key)}</Callout>
+            <details style={{ marginTop: 18, padding: 16, border: '1px solid rgba(124,58,237,.25)', borderRadius: 12 }}>
+              <summary style={{ cursor: 'pointer', fontWeight: 700 }}>{c({ de: 'Selbstcheck: Welche Angaben brauchst du für die Einstufung?', en: 'Self-check: What information is needed to assign a grade?', fa: 'خودآزمایی: برای تعیین درجه به چه اطلاعاتی نیاز دارید؟' })}</summary>
+              <p style={{ marginTop: 12 }}>{c({ de: 'Nidusgröße, eloquente oder nicht-eloquente Lage und oberflächliche oder tiefe venöse Drainage. Ohne alle drei Angaben ist keine belastbare Einstufung möglich.', en: 'Nidus size, eloquent versus non-eloquent location, and superficial versus deep venous drainage. Without all three, a reliable grade cannot be assigned.', fa: 'اندازه نیدوس، گویا یا غیرگویا بودن محل، و درناژ وریدی سطحی یا عمقی. بدون هر سه داده نمی‌توان درجه قابل اتکایی تعیین کرد.' })}</p>
+            </details>
           </Section>
 
           {/* Bildgebung */}
-          <Section id="bildgebung" title={c(AVM_LESSON.bildgebung.title)} lead={c(AVM_LESSON.bildgebung.lead)}>
+          <Section id="bildgebung" icon={sections[3].icon} title={c(AVM_LESSON.bildgebung.title)} lead={c(AVM_LESSON.bildgebung.lead)} open={openSection === 'bildgebung'} onToggle={() => toggleSection('bildgebung')}>
             <Table headers={AVM_LESSON.bildgebung.headers.map(c)} rows={rows(AVM_LESSON.bildgebung.rows)} />
             <Callout label={c(AVM_LESSON.keyLabel)}>{c(AVM_LESSON.bildgebung.key)}</Callout>
           </Section>
 
           {/* Fallbeispiel */}
-          <Section id="fall" title={c(fall.title)} lead={c(fall.lead)}>
+          <Section id="fall" icon={sections[4].icon} title={c(fall.title)} lead={c(fall.lead)} open={openSection === 'fall'} onToggle={() => toggleSection('fall')}>
             <div className={styles.caseGrid}>
               <article className={`${styles.caseCardLink} ${styles.cadasilCaseCard}`}>
                 <div className={`${styles.caseImages} ${styles.cadasilCaseImages}`}>
@@ -321,18 +357,18 @@ export default function AvmPage() {
           </Section>
 
           {/* Differenzialdiagnose */}
-          <Section id="differenzial" title={c(AVM_LESSON.differenzial.title)} lead={c(AVM_LESSON.differenzial.lead)}>
+          <Section id="differenzial" icon={sections[5].icon} title={c(AVM_LESSON.differenzial.title)} lead={c(AVM_LESSON.differenzial.lead)} open={openSection === 'differenzial'} onToggle={() => toggleSection('differenzial')}>
             <Table headers={AVM_LESSON.differenzial.headers.map(c)} rows={rows(AVM_LESSON.differenzial.rows)} />
           </Section>
 
           {/* Management */}
-          <Section id="management" title={c(AVM_LESSON.management.title)} lead={c(AVM_LESSON.management.lead)}>
+          <Section id="management" icon={sections[6].icon} title={c(AVM_LESSON.management.title)} lead={c(AVM_LESSON.management.lead)} open={openSection === 'management'} onToggle={() => toggleSection('management')}>
             <Cards items={AVM_LESSON.management.items} lang={lang} />
             <Callout label={c(AVM_LESSON.caveLabel)} cave>{c(AVM_LESSON.management.cave)}</Callout>
           </Section>
 
           {/* Take-Home */}
-          <Section id="takehome" title={c(AVM_LESSON.takehome.title)} lead={c(AVM_LESSON.takehome.lead)}>
+          <Section id="takehome" icon={sections[7].icon} title={c(AVM_LESSON.takehome.title)} lead={c(AVM_LESSON.takehome.lead)} open={openSection === 'takehome'} onToggle={() => toggleSection('takehome')}>
             <div className={styles.takeHomeGrid}>
               {AVM_LESSON.takehome.items.map((item, index) => (
                 <div className={styles.takeHomeItem} key={c(item.title)}>
@@ -363,7 +399,7 @@ export default function AvmPage() {
               <strong>{zoomedImage.label}</strong> — {c(zoomedImage.caption)}
             </p>
             <p style={{ textAlign: 'center', marginTop: 4, opacity: 0.5, fontSize: 11 }}>
-              Case courtesy of Radiopaedia.org ·{' '}
+              {copy.caseSource} ·{' '}
               <a href={fall.attribution.caseUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
                 rID: {fall.attribution.caseId}
               </a>
