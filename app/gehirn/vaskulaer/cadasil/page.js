@@ -6,6 +6,7 @@ import InProgressBanner from '@/components/InProgressBanner'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
+import LessonHero from '@/components/LessonHero'
 import { CADASIL_LESSON } from '@/data/cadasil'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
 
@@ -46,9 +47,7 @@ const UI = {
 
 function Section({ id, title, lead, children }) {
   const mobile = useMobileLearningLayout()
-  const [open, setOpen] = useState(true)
-
-  useEffect(() => setOpen(false), [id])
+  const [open, setOpen] = useState(id === 'grundlagen')
 
   return (
     <section id={id} className={styles.section}>
@@ -214,29 +213,15 @@ export default function CadasilPage() {
           <span>{c(CADASIL_LESSON.breadcrumb)}</span>
         </div>
 
-        <div className={styles.hero}>
-          <div className={styles.heroText}>
-            <span className={styles.sourceBadge}>{CADASIL_LESSON.sourceLabel}</span>
-            <h1>{c(CADASIL_LESSON.title)}</h1>
-            <p>{c(CADASIL_LESSON.definition)}</p>
-            <div className={styles.actions}>
-              <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=gehirn&n=12&themen=cadasil&from=${encodeURIComponent(withLang('/gehirn/vaskulaer/cadasil'))}`)}>
-                🎯 {copy.actionMcq}
-              </Link>
-              <Link className={styles.actionBtn} href={withLang(`/flashcards/cadasil?from=${encodeURIComponent(withLang('/gehirn/vaskulaer/cadasil'))}`)}>
-                🧠 {copy.actionFlash}
-              </Link>
-            </div>
-          </div>
-          <div className={styles.heroStats}>
-            {CADASIL_LESSON.heroCards.map(card => (
-              <div className={styles.heroStat} key={c(card.value)}>
-                <strong>{c(card.value)}</strong>
-                <span>{c(card.label)}</span>
-                <small>{c(card.text)}</small>
-              </div>
-            ))}
-          </div>
+        <LessonHero
+          title={c(CADASIL_LESSON.title)}
+          imageSrc="/cadasil/hero.svg"
+          imageAlt={c({ de: 'Schematische Verteilung der CADASIL-Läsionen in Marklager, Temporalpol, Capsula externa und Corpus callosum.', en: 'Schematic distribution of CADASIL lesions in white matter, temporal poles, external capsules and corpus callosum.', fa: 'نمای شماتیک توزیع ضایعات CADASIL در ماده سفید، قطب تمپورال، کپسول خارجی و جسم پینه‌ای.' })}
+          lang={lang}
+        />
+        <div className={styles.actions}>
+          <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=gehirn&n=13&themen=cadasil&from=${encodeURIComponent(withLang('/gehirn/vaskulaer/cadasil'))}`)}>🎯 {copy.actionMcq}</Link>
+          <Link className={styles.actionBtn} href={withLang(`/flashcards/cadasil?from=${encodeURIComponent(withLang('/gehirn/vaskulaer/cadasil'))}`)}>🧠 {copy.actionFlash}</Link>
         </div>
       </header>
 
@@ -280,6 +265,16 @@ export default function CadasilPage() {
 
           <Section id="mrt" title={c(CADASIL_LESSON.mrt.title)} lead={c(CADASIL_LESSON.mrt.lead)}>
             <Table headers={CADASIL_LESSON.mrt.headers.map(c)} rows={rows(CADASIL_LESSON.mrt.rows)} />
+            <p className={styles.lead}>{c({ de: 'Schematische Übersicht der beteiligten Marklagerregionen; sie ersetzt nicht die Beurteilung der individuellen MRT-Verteilung.', en: 'Schematic overview of involved white-matter regions; it does not replace assessment of the individual MRI distribution.', fa: 'نمای شماتیک نواحی درگیر ماده سفید؛ جایگزین ارزیابی توزیع MRI در هر بیمار نیست.' })}</p>
+            <img src="/cadasil/distribution.svg" alt={c({ de: 'Schematischer axialer Überblick mit relativer kortikaler Aussparung und beispielhaften Läsionen im Marklager, frontoparietalen Marklager, Corpus callosum und an den anterioren Temporalpolen.', en: 'Schematic axial overview with relative cortical sparing and example lesions in white matter, frontal-parietal white matter, corpus callosum and anterior temporal poles.', fa: 'نمای محوری شماتیک با حفظ نسبی قشر و نمونه ضایعات در ماده سفید، ماده سفید فرونتوپاریتال، جسم پینه‌ای و قطب‌های قدامی تمپورال.' })} style={{ display: 'block', width: 'min(100%, 620px)', height: 'auto', margin: '20px auto' }} />
+            <ul style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 18px', justifyContent: 'center', listStyle: 'none', padding: 0, margin: '-10px auto 20px', fontSize: '0.9rem' }}>
+              {[
+                { color: '#1687ae', text: c({ de: 'Beispielhafte Marklagerherde', en: 'Example white-matter lesions', fa: 'نمونه ضایعات ماده سفید' }) },
+                { color: '#42a9c6', text: c({ de: 'Frontoparietales Marklager', en: 'Frontal-parietal white matter', fa: 'ماده سفید فرونتوپاریتال' }) },
+                { color: '#e2b555', text: c({ de: 'Corpus callosum', en: 'Corpus callosum', fa: 'جسم پینه‌ای' }) },
+                { color: '#d27a68', text: c({ de: 'Anteriore Temporalpole', en: 'Anterior temporal poles', fa: 'قطب‌های قدامی تمپورال' }) },
+              ].map(item => <li key={item.text} style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}><span aria-hidden="true" style={{ width: 11, height: 11, borderRadius: '50%', background: item.color, display: 'inline-block' }} />{item.text}</li>)}
+            </ul>
             <Callout label={c(CADASIL_LESSON.keyLabel)}>{c(CADASIL_LESSON.mrt.key)}</Callout>
           </Section>
 
