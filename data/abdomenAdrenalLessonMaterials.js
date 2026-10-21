@@ -1,7 +1,7 @@
 const L = (de, en, fa) => ({ de, en, fa })
 
-// Lesson-local teaching material prepared for coordinator review.
-// This module is intentionally not registered in shared quiz or flashcard banks.
+// Lesson-local teaching material registered through abdomenThoraxRegisteredQuestions.js
+// and the shared question/flashcard banks.
 export const ADRENAL_LESSON_CHECK = {
   question: L(
     'Eine Nebennierenraumforderung zeigt einen Washout wie ein Adenom. Was lässt sich daraus schließen?',
