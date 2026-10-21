@@ -2,9 +2,18 @@ const L = (de, en, fa) => ({ de, en, fa })
 const option = (id, text) => ({ id, text })
 
 export const WRIST_EXTENSOR_QUESTIONS = {
-  de: [{ id: 'sehnenpathologien-hand-de-01', fach: 'msk', tags: ['sehnenpathologien-hand'], question: 'Welche Sehne verläuft im sechsten Strecksehnenfach am Ulnastyloid?', options: [option('A', 'ECU · M. extensor carpi ulnaris'), option('B', 'EPL · M. extensor pollicis longus'), option('C', 'ECRL und ECRB'), option('D', 'EDC und EIP')], correct: 'A', explanation: 'Fach VI enthält die ECU-Sehne in einer eigenen Rinne am Ulnastyloid; das entspricht der Zuordnung in MSK.pdf p.41.' }],
-  en: [{ id: 'sehnenpathologien-hand-en-01', fach: 'msk', tags: ['sehnenpathologien-hand'], question: 'Which tendon runs in the sixth extensor compartment at the ulnar styloid?', options: [option('A', 'ECU · extensor carpi ulnaris'), option('B', 'EPL · extensor pollicis longus'), option('C', 'ECRL and ECRB'), option('D', 'EDC and EIP')], correct: 'A', explanation: 'Compartment VI contains the ECU tendon in its own groove at the ulnar styloid, matching MSK.pdf p.41.' }],
-  fa: [{ id: 'sehnenpathologien-hand-fa-01', fach: 'msk', tags: ['sehnenpathologien-hand'], question: 'کدام تاندون در کمپارتمان ششم اکستانسور در سطح استایلوئید اولنا قرار دارد؟', options: [option('A', 'ECU · extensor carpi ulnaris'), option('B', 'EPL · extensor pollicis longus'), option('C', 'ECRL و ECRB'), option('D', 'EDC و EIP')], correct: 'A', explanation: 'کمپارتمان VI تاندون ECU را در شیار اختصاصی روی استایلوئید اولنا دربر می‌گیرد؛ مطابق صفحهٔ ۴۱ MSK.pdf.' }],
+  de: [
+    { id: 'sehnenpathologien-hand-de-01', fach: 'msk', tags: ['sehnenpathologien-hand'], question: 'Welche Sehne verläuft im sechsten Strecksehnenfach am Ulnastyloid?', options: [option('A', 'ECU · M. extensor carpi ulnaris'), option('B', 'EPL · M. extensor pollicis longus'), option('C', 'ECRL und ECRB'), option('D', 'EDC und EIP')], correct: 'A', explanation: 'Fach VI enthält die ECU-Sehne in einer eigenen Rinne am Ulnastyloid; das entspricht der Zuordnung in MSK.pdf p.41.' },
+    { id: 'sehnenpathologien-hand-de-02', fach: 'msk', tags: ['sehnenpathologien-hand'], question: 'Welche Gelenkverbindung ist in der Abbildung als „distales Handgelenk (Art. mediocarpalis)“ bezeichnet?', options: [option('A', 'Mediokarpalgelenk zwischen den beiden Handwurzelreihen'), option('B', 'Radiokarpalgelenk zwischen Radius und proximaler Handwurzelreihe'), option('C', 'Daumensattelgelenk'), option('D', 'Intermetakarpalgelenke')], correct: 'A', explanation: 'Die Quelle bezeichnet die Verbindung zwischen proximaler und distaler Handwurzelreihe als distales Handgelenk bzw. Art. mediocarpalis (MSK.pdf, S.40).'},
+  ],
+  en: [
+    { id: 'sehnenpathologien-hand-en-01', fach: 'msk', tags: ['sehnenpathologien-hand'], question: 'Which tendon runs in the sixth extensor compartment at the ulnar styloid?', options: [option('A', 'ECU · extensor carpi ulnaris'), option('B', 'EPL · extensor pollicis longus'), option('C', 'ECRL and ECRB'), option('D', 'EDC and EIP')], correct: 'A', explanation: 'Compartment VI contains the ECU tendon in its own groove at the ulnar styloid, matching MSK.pdf p.41.' },
+    { id: 'sehnenpathologien-hand-en-02', fach: 'msk', tags: ['sehnenpathologien-hand'], question: 'Which joint is labelled “distal wrist (Art. mediocarpalis)” in the figure?', options: [option('A', 'The midcarpal joint between the two carpal rows'), option('B', 'The radiocarpal joint between radius and proximal carpal row'), option('C', 'The thumb carpometacarpal joint'), option('D', 'The intermetacarpal joints')], correct: 'A', explanation: 'The source labels the articulation between the proximal and distal carpal rows as the distal wrist or Art. mediocarpalis (MSK.pdf, p.40).'},
+  ],
+  fa: [
+    { id: 'sehnenpathologien-hand-fa-01', fach: 'msk', tags: ['sehnenpathologien-hand'], question: 'کدام تاندون در کمپارتمان ششم اکستانسور در سطح استایلوئید اولنا قرار دارد؟', options: [option('A', 'ECU · extensor carpi ulnaris'), option('B', 'EPL · extensor pollicis longus'), option('C', 'ECRL و ECRB'), option('D', 'EDC و EIP')], correct: 'A', explanation: 'کمپارتمان VI تاندون ECU را در شیار اختصاصی روی استایلوئید اولنا دربر می‌گیرد؛ مطابق صفحهٔ ۴۱ MSK.pdf.' },
+    { id: 'sehnenpathologien-hand-fa-02', fach: 'msk', tags: ['sehnenpathologien-hand'], question: 'در شکل، کدام مفصل با عنوان «مفصل دیستال مچ دست (Art. mediocarpalis)» مشخص شده است؟', options: [option('A', 'مفصل میدکارپی بین دو ردیف استخوان‌های کارپ'), option('B', 'مفصل رادیوکارپی بین رادیوس و ردیف پروگزیمال کارپ'), option('C', 'مفصل کارپومتاکارپی شست'), option('D', 'مفاصل بین‌متاکارپی')], correct: 'A', explanation: 'منبع، مفصل بین ردیف پروگزیمال و دیستال کارپ را «مچ دیستال» یا Art. mediocarpalis نامیده است (MSK.pdf، صفحهٔ ۴۰).'},
+  ],
 }
 
 export const DE_QUERVAIN_QUESTIONS = {
@@ -15,8 +24,8 @@ export const DE_QUERVAIN_QUESTIONS = {
 
 export const WRIST_EXTENSOR_FLASHCARD_TOPIC = {
   id: 'sehnenpathologien-hand', area: 'MSK', chapter: 'Handgelenk', icon: 'MR', iconImage: '/fach/msk.png', color: '#0e7490', href: '/flashcards/sehnenpathologien-hand',
-  title: L('Strecksehnenfächer am Handgelenk', 'Wrist extensor compartments', 'کمپارتمان‌های اکستانسور مچ دست'),
-  subtitle: L('Fächer I–VI · Sehnenzuordnung', 'Compartments I–VI · tendon mapping', 'کمپارتمان‌های I تا VI · تطبیق تاندون'),
+  title: L('Handgelenk: Knochen und Strecksehnenfächer', 'Wrist: carpal bones and extensor compartments', 'مچ دست: استخوان‌های کارپ و کمپارتمان‌های اکستانسور'),
+  subtitle: L('Karpale Gelenklinien · Fächer I–VI', 'Carpal joint lines · compartments I–VI', 'خطوط مفصلی کارپ · کمپارتمان‌های I تا VI'),
 }
 
 export const DE_QUERVAIN_FLASHCARD_TOPIC = {
@@ -26,6 +35,7 @@ export const DE_QUERVAIN_FLASHCARD_TOPIC = {
 }
 
 export const WRIST_EXTENSOR_FLASHCARDS = [
+  { id: 'wrist-carpal-midcarpal', topicId: 'sehnenpathologien-hand', category: L('Handwurzelanatomie', 'Carpal anatomy', 'آناتومی کارپ'), front: L('Was bezeichnet die Beschriftung „distales Handgelenk (Art. mediocarpalis)“?', 'What does the label “distal wrist (Art. mediocarpalis)” identify?', 'برچسب «مچ دیستال (Art. mediocarpalis)» به کدام مفصل اشاره می‌کند؟'), answer: L('Das Mediokarpalgelenk zwischen proximaler und distaler Handwurzelreihe.', 'The midcarpal joint between the proximal and distal carpal rows.', 'مفصل میدکارپی بین ردیف پروگزیمال و دیستال استخوان‌های کارپ.'), explanation: L('So bezeichnet es die beschriftete dorsale Übersicht in MSK.pdf, S.40.', 'That is how the labelled dorsal overview in MSK.pdf, p.40 identifies it.', 'نمای پشتی برچسب‌گذاری‌شده در MSK.pdf، صفحهٔ ۴۰ این مفصل را چنین مشخص می‌کند.') },
   { id: 'wrist-extensor-compartment-1', topicId: 'sehnenpathologien-hand', category: L('Anatomie', 'Anatomy', 'آناتومی'), front: L('Welche Sehnen liegen im ersten Strecksehnenfach?', 'Which tendons lie in the first extensor compartment?', 'کدام تاندون‌ها در کمپارتمان اول اکستانسور قرار دارند؟'), answer: L('APL und EPB.', 'APL and EPB.', 'APL و EPB.'), explanation: L('Das erste Fach liegt am radialen Processus styloideus.', 'The first compartment lies at the radial styloid.', 'کمپارتمان اول در سطح استایلوئید رادیوس قرار دارد.') },
   { id: 'wrist-extensor-compartment-6', topicId: 'sehnenpathologien-hand', category: L('Anatomie', 'Anatomy', 'آناتومی'), front: L('Welche Sehne verläuft im sechsten Strecksehnenfach?', 'Which tendon runs in the sixth extensor compartment?', 'کدام تاندون در کمپارتمان ششم اکستانسور قرار دارد؟'), answer: L('ECU in einer eigenen Rinne am Ulnastyloid.', 'ECU in a separate groove at the ulnar styloid.', 'ECU در شیار اختصاصی روی استایلوئید اولنا.'), explanation: L('Die sechs Kompartimente werden von radial nach ulnar zugeordnet.', 'The six compartments are mapped from radial to ulnar.', 'شش کمپارتمان از سمت رادیال به اولنار شماره‌گذاری می‌شوند.') },
 ]

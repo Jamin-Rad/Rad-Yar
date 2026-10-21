@@ -4,6 +4,11 @@
 .figure { max-width: 840px; margin: 1.25rem auto 1.5rem; padding: 10px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-card); }
 .figure img { display: block; width: 100%; height: auto; border-radius: 8px; }
 .figure figcaption { padding: 10px 5px 2px; color: var(--text-muted); font-size: .92rem; line-height: 1.65; }
+.figureKey { max-width: 840px; margin: -0.35rem auto 1.25rem; padding: 14px 16px; border-inline-start: 3px solid var(--accent); background: color-mix(in srgb, #65c9be 7%, var(--bg-card)); }
+.figureKey h3 { margin: 0 0 .6rem; font-size: 1rem; }
+.figureKey dl { display: grid; grid-template-columns: minmax(190px, 1fr) 1.2fr; gap: 6px 14px; margin: 0; line-height: 1.6; }
+.figureKey dt { font-weight: 700; }
+.figureKey dd { margin: 0; color: var(--text-muted); }
 .tableWrap { max-width: 100%; overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; }
 .tableWrap table { width: 100%; min-width: 680px; border-collapse: collapse; }
 .tableWrap caption { padding: 12px; color: var(--text-muted); text-align: start; }
@@ -26,6 +31,8 @@
 .summary { padding-inline-start: 1.3rem; line-height: 1.75; }
 @media (max-width: 760px) {
   .figure { margin-inline: 0; padding: 6px; }
+  .figureKey dl { grid-template-columns: 1fr; gap: 2px; }
+  .figureKey dd { margin-bottom: 6px; }
   .tableWrap th, .tableWrap td { padding: 10px; }
   .decision { padding: 13px; }
 }

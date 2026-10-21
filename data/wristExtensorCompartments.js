@@ -2,7 +2,7 @@ const L = (de, en, fa) => ({ de, en, fa })
 
 export const WRIST_EXTENSOR_COMPARTMENTS_LESSON = {
   id: 'sehnenpathologien-hand',
-  title: L('Strecksehnenfächer am Handgelenk', 'Wrist extensor compartments', 'کمپارتمان‌های اکستانسور مچ دست'),
+  title: L('Handgelenk: Knochen und Strecksehnenfächer', 'Wrist: carpal bones and extensor compartments', 'مچ دست: استخوان‌های کارپ و کمپارتمان‌های اکستانسور'),
   hero: '/educational/wrist-extensor-compartments/hero.svg',
   heroAlt: L(
     'Nichtdiagnostisches Orientierungsschema der sechs dorsalen Strecksehnenfächer am Handgelenk mit Radius, Ulna und Sehnengruppen.',
@@ -10,11 +10,53 @@ export const WRIST_EXTENSOR_COMPARTMENTS_LESSON = {
     'شماتیک جهت‌یابی غیرتشخیصی از شش کمپارتمان اکستانسور پشتی مچ دست، همراه با رادیوس، اولنا و گروه‌های تاندونی.'
   ),
   scope: L(
-    'Diese kurze Orientierungseinheit deckt MSK.pdf, PDF-Seite 41 (Druckseite 40) ab. Das gezeigte MRT stammt aus der bereitgestellten PDF und dient nur zur räumlichen Orientierung; Sequenzparameter werden nicht angegeben.',
-    'This brief orientation lesson covers MSK.pdf, PDF page 41 (printed page 40). The displayed MRI comes from the supplied PDF and is used only for spatial orientation; sequence parameters are not provided.',
-    'این درس کوتاه جهت‌یابی، صفحهٔ ۴۱ PDF (صفحهٔ چاپی ۴۰) از MSK.pdf را پوشش می‌دهد. MRI نمایش‌داده‌شده از PDF ارائه‌شده است و فقط برای جهت‌یابی فضایی به‌کار می‌رود؛ پارامترهای سکانس ذکر نشده‌اند.'
+    'Diese Orientierungseinheit deckt die dorsale Handwurzelanatomie auf MSK.pdf, PDF-S. 40 (Druck-S. 39), und die Strecksehnenfächer auf PDF-S. 41 (Druck-S. 40) ab. Die Originalabbildungen dienen der anatomischen Orientierung, nicht der Pathologiediagnostik.',
+    'This orientation lesson covers dorsal carpal anatomy from MSK.pdf, PDF p. 40 (printed p. 39), and the extensor compartments from PDF p. 41 (printed p. 40). The original figures support anatomic orientation, not pathology diagnosis.',
+    'این درس جهت‌یابی، آناتومی پشتی کارپ را از صفحهٔ ۴۰ PDF (چاپی ۳۹) و کمپارتمان‌های اکستانسور را از صفحهٔ ۴۱ PDF (چاپی ۴۰) در MSK.pdf پوشش می‌دهد. شکل‌های اصلی برای جهت‌یابی آناتومیک‌اند، نه تشخیص پاتولوژی.'
   ),
   sections: [
+    {
+      id: 'carpal-orientation', icon: 'axial-orientation',
+      title: L('Welche Knochen und Gelenklinien sehe ich dorsal?', 'Which bones and joint lines do I see dorsally?', 'در نمای پشتی چه استخوان‌ها و خطوط مفصلی می‌بینم؟'),
+      lead: L(
+        'Orientieren Sie die Handwurzel von distal nach proximal: Metakarpalia, distale Handwurzelreihe, proximale Handwurzelreihe und schließlich Radius und Ulna. Folgen Sie anschließend den farbigen Gelenklinien in der Abbildung.',
+        'Orient the carpus from distal to proximal: metacarpals, distal carpal row, proximal carpal row, then radius and ulna. Next, trace the coloured joint lines in the figure.',
+        'کارپ را از دیستال به پروگزیمال جهت‌یابی کنید: متاکارپ‌ها، ردیف دیستال استخوان‌های کارپ، ردیف پروگزیمال و سپس رادیوس و اولنا. بعد خطوط مفصلی رنگی شکل را دنبال کنید.'
+      ),
+      image: '/msk/hand/carpal-joint-lines-pdf-p40.png',
+      imageAlt: L(
+        'Schematische dorsale Ansicht der Handwurzel aus MSK.pdf: beschriftete Handwurzelknochen und farbige Linien für Intermetakarpal-, Karpometakarpal-, Interkarpal-, Mediokarpal- und Radiokarpalgelenke sowie das Daumensattelgelenk.',
+        'Schematic dorsal view of the carpus from MSK.pdf: labelled carpal bones and coloured lines for intermetacarpal, carpometacarpal, intercarpal, midcarpal and radiocarpal joints, plus the thumb carpometacarpal joint.',
+        'نمای شماتیک پشتی کارپ از MSK.pdf: استخوان‌های کارپ برچسب‌گذاری شده‌اند و خطوط رنگی مفاصل بین‌متاکارپی، کارپومتاکارپی، بین‌کارپی، میدکارپی و رادیوکارپی و نیز مفصل کارپومتاکارپی شست را نشان می‌دهند.'
+      ),
+      imageCaption: L(
+        'MSK.pdf، PDF-S. 40 (Druck-S. 39)، dorsale Ansicht. Die farbigen Linien markieren Gelenkspalten; sie sind keine MRT-Ebenen.',
+        'MSK.pdf, PDF p. 40 (printed p. 39), dorsal view. Coloured lines mark joint spaces; they are not MRI planes.',
+        'MSK.pdf، صفحهٔ ۴۰ PDF (چاپی ۳۹)، نمای پشتی. خطوط رنگی فواصل مفصلی را مشخص می‌کنند و صفحه‌های MRI نیستند.'
+      ),
+      imageKeyTitle: L('Begriffe aus der Abbildung', 'Labels in the source figure', 'برچسب‌های شکل منبع'),
+      imageKey: [
+        { source: 'Intermetakarpalgelenke', label: L('Intermetakarpalgelenke', 'Intermetacarpal joints', 'مفاصل بین‌متاکارپی') },
+        { source: 'Karpometakarpalgelenke II–V', label: L('Karpometakarpalgelenke II–V', 'Carpometacarpal joints II–V', 'مفاصل کارپومتاکارپی II تا V') },
+        { source: 'Daumensattelgelenk', label: L('Daumensattelgelenk', 'Thumb carpometacarpal joint', 'مفصل کارپومتاکارپی شست') },
+        { source: 'Interkarpalgelenke', label: L('Interkarpalgelenke', 'Intercarpal joints', 'مفاصل بین‌کارپی') },
+        { source: 'distales Handgelenk · Art. mediocarpalis', label: L('distales Handgelenk · Art. mediocarpalis', 'Midcarpal joint', 'مفصل میدکارپی') },
+        { source: 'proximales Handgelenk · Art. radiocarpalis', label: L('proximales Handgelenk · Art. radiocarpalis', 'Radiocarpal joint', 'مفصل رادیوکارپی') },
+      ],
+      task: L('Welche Knochenreihe liegt unmittelbar proximal der Metakarpalia?', 'Which carpal row lies immediately proximal to the metacarpals?', 'کدام ردیف استخوان‌های کارپ بلافاصله در سمت پروگزیمال متاکارپ‌ها قرار دارد؟'),
+      options: [
+        L('Die distale Handwurzelreihe', 'The distal carpal row', 'ردیف دیستال استخوان‌های کارپ'),
+        L('Die proximale Handwurzelreihe', 'The proximal carpal row', 'ردیف پروگزیمال استخوان‌های کارپ'),
+        L('Radius und Ulna', 'The radius and ulna', 'رادیوس و اولنا'),
+      ],
+      answer: 0,
+      feedback: [
+        L('Richtig. Trapezium, Trapezoideum, Capitatum und Hamatum bilden die distale Handwurzelreihe.', 'Correct. Trapezium, trapezoid, capitate and hamate form the distal carpal row.', 'درست است. تراپزیوم، تراپزوئید، کاپیتیت و هامیت ردیف دیستال کارپ را تشکیل می‌دهند.'),
+        L('Die proximale Reihe liegt weiter proximal; in der dargestellten dorsalen Ansicht sind Scaphoideum, Lunatum und Triquetrum beschriftet.', 'The proximal row lies farther proximally; scaphoid, lunate and triquetrum are labelled in this dorsal view.', 'ردیف پروگزیمال در بالاتر قرار دارد؛ در نمای پشتی تصویر، اسکافوئید، لونیت و تری‌کوئتروم برچسب‌گذاری شده‌اند.'),
+        L('Radius und Ulna liegen proximal des Radiokarpalgelenks, nicht direkt neben den Metakarpalia.', 'The radius and ulna lie proximal to the radiocarpal joint, not directly next to the metacarpals.', 'رادیوس و اولنا در سمت پروگزیمال مفصل رادیوکارپی قرار دارند و مستقیماً کنار متاکارپ‌ها نیستند.'),
+      ],
+      source: L('MSK.pdf, PDF-S. 40 / Druck-S. 39.', 'MSK.pdf, PDF p. 40 / printed p. 39.', 'MSK.pdf، صفحهٔ PDF ۴۰ / چاپی ۳۹.'),
+    },
     {
       id: 'axial-orientation', icon: 'orientation',
       title: L('Wo liegen die Fächer im axialen Bild?', 'Where are the compartments on an axial image?', 'کمپارتمان‌ها در تصویر محوری کجا قرار دارند؟'),
@@ -74,12 +116,13 @@ export const WRIST_EXTENSOR_COMPARTMENTS_LESSON = {
     },
   ],
   summary: [
+    L('Von distal nach proximal: Metakarpalia, distale Handwurzelreihe, proximale Handwurzelreihe, Radius und Ulna; anschließend die Gelenklinien verfolgen.', 'From distal to proximal: metacarpals, distal carpal row, proximal carpal row, radius and ulna; then trace the joint lines.', 'از دیستال به پروگزیمال: متاکارپ‌ها، ردیف دیستال کارپ، ردیف پروگزیمال کارپ، رادیوس و اولنا؛ سپس خطوط مفصلی را دنبال کنید.'),
     L('Fach I liegt radial am Processus styloideus radii und enthält APL und EPB.', 'Compartment I lies radially at the radial styloid and contains APL and EPB.', 'کمپارتمان I در سمت رادیال، کنار استایلوئید رادیوس قرار دارد و APL و EPB را دربر می‌گیرد.'),
     L('Lister-Tuberkulum trennt Fach II und III; EPL schwenkt dort um den Radius.', 'Lister tubercle separates compartments II and III; EPL turns around the radius there.', 'تکمهٔ لیستر کمپارتمان‌های II و III را جدا می‌کند؛ EPL در همان‌جا به دور رادیوس می‌چرخد.'),
     L('Fach IV enthält EDC/EIP; Fach V enthält EDM; Fach VI enthält ECU.', 'Compartment IV contains EDC/EIP; V contains EDM; VI contains ECU.', 'کمپارتمان IV شامل EDC/EIP، کمپارتمان V شامل EDM و کمپارتمان VI شامل ECU است.'),
     L('Im axialen Bild zuerst Radius, Ulna und römische Kompartmentnummern orientieren.', 'On axial imaging, orient the radius, ulna and Roman compartment numbers first.', 'در تصویر محوری ابتدا رادیوس، اولنا و شماره‌های رومی کمپارتمان‌ها را پیدا کنید.'),
   ],
   references: [
-    { url: null, label: L('MSK.pdf, PDF-S. 41 (Druck-S. 40); Text, Tabelle und MRT-Abbildung visuell geprüft.', 'MSK.pdf, PDF p. 41 (printed p. 40); text, table and MRI figure visually inspected.', 'MSK.pdf، صفحهٔ PDF ۴۱ (چاپی ۴۰)؛ متن، جدول و شکل MRI به‌صورت دیداری بررسی شدند.') },
+    { url: null, label: L('MSK.pdf, PDF-S. 40–41 (Druck-S. 39–40); Text, Labels und Abbildungen visuell geprüft.', 'MSK.pdf, PDF pp. 40–41 (printed pp. 39–40); text, labels and figures visually inspected.', 'MSK.pdf، صفحات ۴۰ تا ۴۱ (چاپی ۳۹ تا ۴۰)؛ متن، برچسب‌ها و شکل‌ها به‌صورت دیداری بررسی شدند.') },
   ],
 }

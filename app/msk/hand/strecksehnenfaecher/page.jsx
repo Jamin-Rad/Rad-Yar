@@ -32,6 +32,7 @@ const LABELS = {
 
 function Icon({ id }) {
   const paths = {
+    'carpal-orientation': 'M4 7h16M6 12h12M8 17h8M5 5l-1 2 1 2m14-2 1 2-1 2',
     'axial-orientation': 'M4 12h16M12 4v16M7 7l10 10M17 7 7 17',
     'tendon-map': 'M5 5h14M5 10h14M5 15h14M5 20h14',
     summary: 'm5 12 4 4L19 6',
@@ -46,7 +47,7 @@ function Decision({ lang, section }) {
     <h3>{pick(L('Selbstcheck am Bild', 'Image-based self-check', 'خودآزمایی بر پایهٔ تصویر'), lang)}</h3>
     <p>{pick(section.task, lang)}</p>
     <fieldset><legend>{t('choose')}</legend>
-      {section.options.map((option, index) => <label key={index}><input type="radio" name="wrist-extensor-compartment" checked={answer === index} onChange={() => setAnswer(index)} /><span>{pick(option, lang)}</span></label>)}
+      {section.options.map((option, index) => <label key={index}><input type="radio" name={`wrist-self-check-${section.id}`} checked={answer === index} onChange={() => setAnswer(index)} /><span>{pick(option, lang)}</span></label>)}
     </fieldset>
     {answer !== null ? <p className={`${styles.feedback} ${answer === section.answer ? styles.correct : ''}`} role="status"><strong>{answer === section.answer ? t('correct') : t('revisit')}</strong>{pick(section.feedback[answer], lang)}</p> : null}
   </div>
@@ -78,6 +79,7 @@ export default function WristExtensorCompartmentsPage() {
     {lesson.sections.map(section => <LessonSection key={section.id} id={section.id} icon={section.id} title={pick(section.title, lang)} bodyClassName={styles.body}>
       <p className={styles.lead}>{pick(section.lead, lang)}</p>
       {section.image ? <figure className={styles.figure}><Image src={section.image} width={840} height={620} alt={pick(section.imageAlt, lang)} sizes="(max-width: 760px) 100vw, 850px" /><figcaption>{pick(section.imageCaption, lang)}</figcaption></figure> : null}
+      {section.imageKey ? <div className={styles.figureKey}><h3>{pick(section.imageKeyTitle, lang)}</h3><dl>{section.imageKey.map((item, index) => <div key={index}><dt>{item.source}</dt><dd>{pick(item.label, lang)}</dd></div>)}</dl></div> : null}
       {section.rows ? <div className={styles.tableWrap}><table><caption>{pick(L('Sehnen und Landmarken der Strecksehnenfächer (nach MSK.pdf, S. 41)', 'Tendons and landmarks of the extensor compartments (from MSK.pdf, p. 41)', 'تاندون‌ها و نشانه‌های کمپارتمان‌های اکستانسور (بر اساس MSK.pdf، صفحهٔ ۴۱)'), lang)}</caption><thead><tr>{section.rows[0].map((cell, index) => <th scope="col" key={index}>{pick(cell, lang)}</th>)}</tr></thead><tbody>{section.rows.slice(1).map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, cellIndex) => <td key={cellIndex}>{pick(cell, lang)}</td>)}</tr>)}</tbody></table></div> : null}
       {section.note ? <p className={styles.note}>{pick(section.note, lang)}</p> : null}
       {section.task ? <Decision lang={lang} section={section} /> : null}
