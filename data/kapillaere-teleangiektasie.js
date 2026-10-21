@@ -7,25 +7,16 @@ export const TELEANGIEKTASIE_LESSON = {
 
   breadcrumb: L('Kapilläre Teleangiektasie', 'Capillary telangiectasia', 'تلانژکتازی مویرگی'),
   title: L('Kapilläre Teleangiektasie', 'Capillary Telangiectasia', 'تلانژکتازی مویرگی'),
-  definition: L('Benigne Low-flow-Gefäßmalformation mit zartem Enhancement und fehlendem Masseneffekt.', 'A benign low-flow vascular malformation with faint enhancement and no mass effect.', 'مالفورماسیون عروقی خوش‌خیم کم‌جریان با افزایش ظریف و بدون اثر فشاری.'),
-  sourceLabel: 'Dr. Zia',
   keyLabel: L('Merke', 'Key point', 'نکته کلیدی'),
   caveLabel: L('Cave', 'Warning', 'هشدار'),
   toc: L('Inhalte', 'Contents', 'فهرست'),
-  heroCards: [
-    { value: L('~⅔', '~⅔', 'حدود ⅔'), label: L('im Pons', 'in the pons', 'در پونز'), text: L('klassische Prädilektionsstelle', 'classic predilection site', 'محل تیپیک') },
-    { value: L('Brush-like', 'Brush-like', 'برس‌مانند'), label: L('T1 C+ Enhancement', 'post-contrast T1 enhancement', 'افزایش T1 پس از کنتراست'), text: L('zart und unscharf begrenzt', 'faint and ill-defined', 'ظریف و با حدود نامشخص') },
-    { value: 'SWI/T2*', label: L('Signalabfall', 'signal loss', 'افت سیگنال'), text: L('langsamer Fluss mit Deoxy-Hb', 'slow flow with deoxyhaemoglobin', 'جریان آهسته با دئوکسی‌هموگلوبین') },
-  ],
   sections: [
     { id: 'grundlagen', icon: '🩸', label: L('Grundlagen', 'Basics', 'مبانی') },
     { id: 'klinik', icon: '🙂', label: L('Klinik & Lokalisation', 'Clinical & location', 'بالین و محل') },
     { id: 'bildgebung', icon: '🧲', label: L('MRT-Muster', 'MRI pattern', 'الگوی MRI') },
-    { id: 'trias', icon: '🔺', label: L('Diagnostische Trias', 'Diagnostic triad', 'تریاد تشخیصی') },
     { id: 'differenzial', icon: '⚖️', label: L('Differenzialdiagnose', 'Differential diagnosis', 'تشخیص افتراقی') },
     { id: 'fall', icon: '🖼️', label: L('Fallbeispiele', 'Cases', 'نمونه کیس‌ها') },
     { id: 'management', icon: '🛡️', label: L('Management', 'Management', 'مدیریت') },
-    { id: 'befundung', icon: '📝', label: L('Befundung', 'Reporting', 'گزارش') },
     { id: 'takehome', icon: '🏁', label: L('TAKE HOME MESSAGE', 'TAKE HOME MESSAGE', 'TAKE HOME MESSAGE'), emphasis: true },
   ],
   grundlagen: {
@@ -65,16 +56,6 @@ export const TELEANGIEKTASIE_LESSON = {
     ],
     key: L('SWI-Signalabfall + zartes T1-C+-Enhancement ohne Masseneffekt ist die entscheidende Kombination.', 'SWI signal loss plus faint post-contrast enhancement without mass effect is the decisive combination.', 'افت سیگنال SWI همراه افزایش ظریف پس از کنتراست و بدون اثر فشاری، ترکیب کلیدی است.'),
   },
-  trias: {
-    title: L('Diagnostische Trias', 'Diagnostic triad', 'تریاد تشخیصی'),
-    lead: L('Drei zusammengehörige Merkmale verhindern unnötige Biopsie oder Verlaufskontrollen.', 'Three linked features help avoid unnecessary biopsy or follow-up.', 'سه ویژگی مرتبط از بیوپسی یا پیگیری غیرضروری جلوگیری می‌کنند.'),
-    items: [
-      { icon: '🖌️', title: L('Brush-like Enhancement', 'Brush-like enhancement', 'افزایش برس‌مانند'), text: L('Zart, fleckig und unscharf auf kontrastverstärktem T1.', 'Faint, patchy and ill-defined on post-contrast T1.', 'ظریف، لکه‌ای و با حدود نامشخص در T1 پس از کنتراست.') },
-      { icon: '⚫', title: L('SWI-Hypointensität', 'SWI hypointensity', 'هیپواینتنس SWI'), text: L('Signalabfall am exakt korrespondierenden Ort.', 'Signal loss at the exact corresponding location.', 'افت سیگنال دقیقاً در محل متناظر.') },
-      { icon: '🫥', title: L('Keine Raumforderung', 'No mass effect', 'بدون اثر فشاری'), text: L('T1/T2 weitgehend unauffällig, kein Ödem und keine Verdrängung.', 'T1/T2 largely unremarkable, without oedema or displacement.', 'T1/T2 عمدتاً طبیعی، بدون ادم یا جابه‌جایی.') },
-    ],
-    key: L('Fehlt ein Teil der Trias, muss die Differenzialdiagnose breiter bleiben.', 'If one element of the triad is missing, keep the differential diagnosis broader.', 'اگر بخشی از تریاد وجود ندارد، تشخیص افتراقی باید گسترده‌تر بماند.'),
-  },
   differenzial: {
     title: L('Differenzialdiagnose', 'Differential diagnosis', 'تشخیص افتراقی'),
     lead: L('Die häufigste Gefahr ist die Fehlinterpretation als kleiner Tumor oder entzündliche Läsion.', 'The main pitfall is mistaking it for a small tumour or inflammatory lesion.', 'مهم‌ترین دام، اشتباه با تومور کوچک یا ضایعه التهابی است.'),
@@ -89,7 +70,7 @@ export const TELEANGIEKTASIE_LESSON = {
   },
   fall: {
     title: L('Fallbeispiele', 'Cases', 'نمونه کیس‌ها'),
-    lead: L('Je ein Einzelbild der Radiopaedia-Fälle rID 58408 und rID 9732.', 'One representative image from each Radiopaedia case, rID 58408 and rID 9732.', 'یک تصویر نماینده از هر کیس Radiopaedia با rID 58408 و rID 9732.'),
+    lead: L('Die drei Sequenzen von rID 58408 und vier Sequenzen des im PDF gezeigten rID 9732 im Vergleich.', 'Compare the three sequences from rID 58408 with the four sequences from rID 9732 shown in the PDF.', 'مقایسه سه سکانس rID 58408 با چهار سکانس rID 9732 که در PDF آمده است.'),
     cases: [
       {
         title: L('Kleine pontine kapilläre Teleangiektasie', 'Small pontine capillary telangiectasia', 'تلانژکتازی مویرگی کوچک پونز'),
@@ -97,6 +78,11 @@ export const TELEANGIEKTASIE_LESSON = {
         image: '/kapillaere-teleangiektasie/case-58408/t1-postcontrast.jpeg',
         alt: L('Kontrastverstärkte T1-MRT einer kleinen pontinen kapillären Teleangiektasie', 'Post-contrast T1 MRI of a small pontine capillary telangiectasia', 'MRI T1 پس از کنتراست تلانژکتازی مویرگی کوچک پونز'),
         meta: L('Punktförmige Anreicherung in der posterioren paramedianen rechten Hemipons ohne Masseneffekt.', 'Punctate enhancement in the posterior paramedian right hemipons without mass effect.', 'افزایش نقطه‌ای در نیمه راست خلفی پارامدیان پونز بدون اثر فشاری.'),
+        sequenceImages: [
+          { image: '/kapillaere-teleangiektasie/case-58408/t1-postcontrast.jpeg', label: L('T1 C+', 'Post-contrast T1', 'T1 پس از کنتراست'), alt: L('Axiale T1-MRT nach Kontrastmittelgabe im Fall rID 58408', 'Axial post-contrast T1 MRI in case rID 58408', 'MRI محوری T1 پس از کنتراست در کیس rID 58408') },
+          { image: '/kapillaere-teleangiektasie/case-58408/flair.jpeg', label: 'FLAIR', alt: L('Axiale FLAIR-MRT im Fall rID 58408', 'Axial FLAIR MRI in case rID 58408', 'MRI محوری FLAIR در کیس rID 58408') },
+          { image: '/kapillaere-teleangiektasie/case-58408/swi.jpeg', label: 'SWI', alt: L('Axiale SWI im Fall rID 58408 mit pontinem Suszeptibilitätsfokus', 'Axial SWI in case rID 58408 with a pontine susceptibility focus', 'SWI محوری در کیس rID 58408 با کانون حساسیت پونتین') },
+        ],
         credit: 'Radiopaedia.org · rID 58408',
         url: 'https://radiopaedia.org/cases/58408/play',
       },
@@ -106,6 +92,12 @@ export const TELEANGIEKTASIE_LESSON = {
         image: '/kapillaere-teleangiektasie/case-9732/t1-postcontrast.jpeg',
         alt: L('Kontrastverstärkte T1-MRT einer kapillären Teleangiektasie des ventralen Pons', 'Post-contrast T1 MRI of a ventral pontine capillary telangiectasia', 'MRI T1 پس از کنتراست تلانژکتازی مویرگی پونز ونترال'),
         meta: L('Unscharf fleckige, die Mittellinie überschreitende Anreicherung ohne raumfordernden Effekt.', 'Ill-defined patchy enhancement crossing the midline without mass effect.', 'افزایش لکه‌ای با حدود نامشخص و عبور از خط میانی بدون اثر فشاری.'),
+        sequenceImages: [
+          { image: '/kapillaere-teleangiektasie/case-9732/t1-postcontrast.jpeg', label: L('T1 C+', 'Post-contrast T1', 'T1 پس از کنتراست'), alt: L('Axiale T1-MRT nach Kontrastmittelgabe im Fall rID 9732', 'Axial post-contrast T1 MRI in case rID 9732', 'MRI محوری T1 پس از کنتراست در کیس rID 9732') },
+          { image: '/kapillaere-teleangiektasie/case-9732/swi.jpeg', label: 'SWI', alt: L('Axiale SWI im Fall rID 9732 mit korrespondierendem pontinem Suszeptibilitätsfokus', 'Axial SWI in case rID 9732 with a corresponding pontine susceptibility focus', 'SWI محوری در کیس rID 9732 با کانون حساسیت پونتین متناظر') },
+          { image: '/kapillaere-teleangiektasie/case-9732/dwi.jpeg', label: 'DWI', alt: L('Axiale DWI im Fall rID 9732 ohne fokale Diffusionsrestriktion im Pons', 'Axial DWI in case rID 9732 without focal pontine diffusion restriction', 'DWI محوری در کیس rID 9732 بدون محدودیت انتشار کانونی در پونز') },
+          { image: '/kapillaere-teleangiektasie/case-9732/t2.jpeg', label: 'T2', alt: L('Axiale T2-MRT im Fall rID 9732 ohne raumfordernden Effekt', 'Axial T2 MRI in case rID 9732 without mass effect', 'MRI محوری T2 در کیس rID 9732 بدون اثر فشاری') },
+        ],
         credit: 'Radiopaedia.org · rID 9732',
         url: 'https://radiopaedia.org/cases/9732/play',
       },
@@ -129,16 +121,6 @@ export const TELEANGIEKTASIE_LESSON = {
       { icon: '✋', title: L('Keine Biopsie', 'Avoid biopsy', 'بیوپسی نکنید'), text: L('Eine Biopsie ist bei typischer Bildgebung unnötig und birgt Blutungsrisiko.', 'Biopsy is unnecessary with typical imaging and carries bleeding risk.', 'با تصویر تیپیک بیوپسی غیرضروری و همراه خطر خونریزی است.') },
     ],
     cave: L('„Benigne und nicht blutungsfreudig“ bedeutet nicht, dass eine Biopsie gefahrlos wäre.', '“Benign and not prone to spontaneous bleeding” does not mean biopsy is safe.', 'خوش‌خیم و کم‌خطر از نظر خونریزی خودبه‌خودی بودن به معنی ایمن بودن بیوپسی نیست.'),
-  },
-  befundung: {
-    title: L('Befundung', 'Reporting', 'گزارش'),
-    lead: L('Eine klare Formulierung verhindert unnötige onkologische Abklärung.', 'Clear wording prevents unnecessary oncological work-up.', 'عبارت روشن از بررسی انکولوژیک غیرضروری جلوگیری می‌کند.'),
-    items: [
-      { icon: '1️⃣', title: L('Ort & Größe', 'Location & size', 'محل و اندازه'), text: L('Pontin, para-/median, supratentoriell oder zerebellär; maximale Ausdehnung.', 'Pontine, para-/midline, supratentorial or cerebellar; maximum dimensions.', 'پونز، پارامدیان/میانی، سوپراتنتوریال یا مخچه؛ حداکثر ابعاد.') },
-      { icon: '2️⃣', title: L('Muster', 'Pattern', 'الگو'), text: L('Zarte fleckige/pinselartige Anreicherung mit korrespondierender Suszeptibilität.', 'Faint patchy/brush-like enhancement with corresponding susceptibility.', 'افزایش ظریف لکه‌ای/برس‌مانند با حساسیت متناظر.') },
-      { icon: '3️⃣', title: L('Negative Zeichen', 'Negative signs', 'علائم منفی'), text: L('Kein Masseneffekt, kein Ödem, keine Restriktion und keine relevante T2-Läsion.', 'No mass effect, oedema, restriction or substantial T2 lesion.', 'بدون اثر فشاری، ادم، محدودیت یا ضایعه قابل‌توجه T2.') },
-      { icon: '4️⃣', title: L('Schlussfolgerung', 'Conclusion', 'نتیجه'), text: L('MRT-typische kapilläre Teleangiektasie; bei klassischer Konstellation keine Kontrolle erforderlich.', 'MRI-typical capillary telangiectasia; no follow-up required when classic.', 'تلانژکتازی مویرگی تیپیک MRI؛ در حالت کلاسیک بدون نیاز به پیگیری.') },
-    ],
   },
   takehome: {
     title: L('TAKE HOME MESSAGE', 'TAKE HOME MESSAGE', 'TAKE HOME MESSAGE'),

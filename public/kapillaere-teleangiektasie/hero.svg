@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <defs>
+    <linearGradient id="brain" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#243951"/><stop offset="1" stop-color="#0d1c2e"/></linearGradient>
+    <radialGradient id="pons"><stop stop-color="#76e0ed" stop-opacity=".95"/><stop offset="1" stop-color="#48b5d1" stop-opacity=".2"/></radialGradient>
+  </defs>
+  <path d="M320 54c-78-32-175-4-213 71-38 74-15 166 54 209 43 27 101 32 151 9 6-48 6-97 8-145 2 48 2 97 8 145 50 23 108 18 151-9 69-43 92-135 54-209-38-75-135-103-213-71Z" fill="url(#brain)" stroke="#82cfe0" stroke-width="5"/>
+  <path d="M320 89v115m-100-77c27-18 62-18 90-2m110 2c-27-18-62-18-90-2" fill="none" stroke="#7590a7" stroke-width="4" stroke-linecap="round"/>
+  <path d="M274 227c12-23 31-35 46-35s34 12 46 35c9 17 8 41-2 55-10 14-24 19-44 19s-34-5-44-19c-10-14-11-38-2-55Z" fill="url(#pons)" stroke="#92e7ee" stroke-width="4"/>
+  <circle cx="320" cy="243" r="8" fill="#fff1bf"/>
+  <path d="M283 302c10 13 22 20 37 20s27-7 37-20" fill="none" stroke="#7190a7" stroke-width="4" stroke-linecap="round"/>
+</svg>
