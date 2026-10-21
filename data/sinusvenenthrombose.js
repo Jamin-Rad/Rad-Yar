@@ -7,16 +7,10 @@ export const SVT_LESSON = {
 
   breadcrumb: L('Sinus- und Hirnvenenthrombose', 'Cerebral venous thrombosis', 'ترومبوز سینوس و وریدهای مغزی'),
   title: L('Sinus- und Hirnvenenthrombose', 'Cerebral Venous Thrombosis', 'ترومبوز سینوس و وریدهای مغزی'),
-  definition: L('Venöser Gefäßverschluss mit Kopfschmerz, erhöhtem Hirndruck und nichtterritorialen Infarkten.', 'Venous occlusion causing headache, intracranial hypertension and non-arterial-territory infarction.', 'انسداد وریدی با سردرد، افزایش فشار داخل جمجمه و انفارکت‌های غیرشریانی.'),
-  sourceLabel: 'Dr. Zia',
+  definition: L('Die zerebrale Venenthrombose betrifft durale Sinus und/oder kortikale beziehungsweise tiefe Hirnvenen. Ein Abflussstau kann nichtterritoriale Läsionen und erhöhten Hirndruck verursachen.', 'Cerebral venous thrombosis affects dural sinuses and/or cortical or deep cerebral veins. Outflow obstruction can cause non-territorial lesions and raised intracranial pressure.', 'ترومبوز وریدی مغز سینوس‌های دورال و/یا وریدهای کورتیکال یا عمقی را درگیر می‌کند. اختلال خروج وریدی می‌تواند ضایعات غیرقلمروی و افزایش فشار داخل جمجمه ایجاد کند.'),
   keyLabel: L('Merke', 'Key point', 'نکته کلیدی'),
   caveLabel: L('Cave', 'Warning', 'هشدار'),
   toc: L('Inhalte', 'Contents', 'فهرست'),
-  heroCards: [
-    { value: L('~90 %', '~90%', 'حدود ۹۰٪'), label: L('Kopfschmerz', 'headache', 'سردرد'), text: L('häufigstes Leitsymptom', 'most common presenting symptom', 'شایع‌ترین علامت') },
-    { value: L('Nichtterritorial', 'Non-territorial', 'غیرقلمروی'), label: L('venöser Infarkt', 'venous infarction', 'انفارکت وریدی'), text: L('oft hämorrhagisch und bilateral', 'often haemorrhagic and bilateral', 'اغلب هموراژیک و دوطرفه') },
-    { value: L('Antikoagulation', 'Anticoagulation', 'ضدانعقاد'), label: L('Akuttherapie', 'acute treatment', 'درمان حاد'), text: L('auch bei hämorrhagischem Infarkt', 'even with haemorrhagic infarction', 'حتی در انفارکت هموراژیک') },
-  ],
   sections: [
     { id: 'grundlagen', icon: '🩸', label: L('Grundlagen', 'Basics', 'مبانی') },
     { id: 'risiko', icon: '⚠️', label: L('Risikofaktoren', 'Risk factors', 'عوامل خطر') },
@@ -26,11 +20,11 @@ export const SVT_LESSON = {
     { id: 'mrt', icon: '🧲', label: L('MRT & MRV', 'MRI & MRV', 'MRI و MRV') },
     { id: 'fallstricke', icon: '🧩', label: L('Fallstricke', 'Pitfalls', 'دام‌ها') },
     { id: 'therapie', icon: '💉', label: L('Therapie', 'Treatment', 'درمان') },
-    { id: 'takehome', icon: '🏁', label: L('TAKE HOME MESSAGE', 'TAKE HOME MESSAGE', 'TAKE HOME MESSAGE'), emphasis: true },
+    { id: 'takehome', icon: '🏁', label: L('Merke', 'Take-home points', 'نکات کلیدی'), emphasis: true },
   ],
   grundlagen: {
     title: L('Definition & häufige Lokalisationen', 'Definition & common locations', 'تعریف و محل‌های شایع'),
-    lead: L('Die zerebrale Venenthrombose umfasst Thrombosen der duralen Sinus, kortikalen Venen und tiefen Hirnvenen.', 'Cerebral venous thrombosis includes thrombosis of dural sinuses, cortical veins and deep cerebral veins.', 'ترومبوز وریدی مغز شامل ترومبوز سینوس‌های دورال، وریدهای کورتیکال و وریدهای عمقی است.'),
+    lead: L('Die zerebrale Venenthrombose betrifft durale Sinus sowie kortikale oder tiefe Hirnvenen. Ein Abflussstau kann nichtterritoriale Läsionen und erhöhten Hirndruck verursachen.', 'Cerebral venous thrombosis affects dural sinuses as well as cortical or deep cerebral veins. Outflow obstruction can cause non-territorial lesions and raised intracranial pressure.', 'ترومبوز وریدی مغز سینوس‌های دورال و نیز وریدهای کورتیکال یا عمقی را درگیر می‌کند. اختلال خروج وریدی می‌تواند ضایعات غیرقلمروی و افزایش فشار داخل جمجمه ایجاد کند.'),
     headers: [L('Gefäßabschnitt', 'Venous segment', 'بخش وریدی'), L('Häufigkeit/Muster', 'Frequency/pattern', 'فراوانی/الگو'), L('Typische Folge', 'Typical consequence', 'پیامد تیپیک')],
     rows: [
       [L('Sinus transversus/sigmoideus', 'Transverse/sigmoid sinus', 'سینوس عرضی/سیگموئید'), L('Am häufigsten, oft kombiniert', 'Most common, often combined', 'شایع‌ترین، اغلب ترکیبی'), L('Temporale oder zerebelläre Stauungsveränderung', 'Temporal or cerebellar venous congestion', 'تغییرات احتقانی تمپورال یا مخچه')],
@@ -87,15 +81,20 @@ export const SVT_LESSON = {
   mrt: {
     title: L('MRT und MR-Venografie', 'MRI and MR venography', 'MRI و ونوگرافی MR'),
     lead: L('Das Thrombussignal verändert sich mit dem Alter; die Diagnose darf daher nie auf einer einzelnen Sequenz beruhen.', 'Thrombus signal changes with age, so diagnosis must never rely on a single sequence.', 'سیگنال ترومبوس با زمان تغییر می‌کند؛ تشخیص نباید بر یک سکانس تکیه کند.'),
-    headers: [L('Stadium/Sequenz', 'Stage/sequence', 'مرحله/سکانس'), 'T1', 'T2/FLAIR', L('Hinweis', 'Clue', 'نکته')],
+    stageTitle: L('Stadienabhängiges MRT-Signal', 'Stage-dependent MRI signal', 'سیگنال MRI وابسته به مرحله'),
+    headers: [L('Stadium', 'Stage', 'مرحله'), 'T1', 'T2', 'FLAIR'],
     rows: [
-      [L('Fließendes Blut', 'Flowing blood', 'خون جاری'), L('Flow-void', 'Flow void', 'فقدان سیگنال جریان'), L('Flow-void', 'Flow void', 'فقدان سیگنال جریان'), L('Schwarzes Lumen ist normal, aber flussabhängig', 'Dark lumen is normal but flow-dependent', 'لومن سیاه طبیعی اما وابسته به جریان است')],
-      [L('Akut, etwa 0–5 Tage', 'Acute, about 0–5 days', 'حاد، حدود ۰–۵ روز'), L('Iso-/hypointens', 'Iso-/hypointense', 'ایزو/هیپواینتنس'), L('Hypointens bis variabel', 'Hypointense to variable', 'هیپواینتنس تا متغیر'), L('Kann weiterhin wie Flow-void wirken', 'May still mimic a flow void', 'ممکن است شبیه Flow void باشد')],
-      [L('Subakut, ab etwa Tag 5', 'Subacute, from about day 5', 'تحت‌حاد، از حدود روز ۵'), L('Hyperintens', 'Hyperintense', 'هایپراینتنس'), L('Meist hyperintens', 'Usually hyperintense', 'اغلب هایپراینتنس'), L('Methämoglobin macht den Thrombus auffälliger', 'Methaemoglobin makes thrombus conspicuous', 'مت‌هموگلوبین ترومبوس را واضح می‌کند')],
-      ['SWI/T2*', L('Suszeptibilität thrombosierter Venen, besonders früh', 'Susceptibility in thrombosed veins, especially early', 'حساسیت در ورید ترومبوزه، به‌ویژه زودرس'), L('Parenchymblutung mitbeurteilen', 'Also assess parenchymal haemorrhage', 'خونریزی پارانشیم نیز بررسی شود'), L('Hilfreich bei kortikaler Venenthrombose', 'Helpful in cortical vein thrombosis', 'در ترومبوز ورید کورتیکال مفید')],
-      ['MRV', L('Fehlender Fluss beziehungsweise Füllungsdefekt', 'Absent flow or filling defect', 'فقدان جریان یا نقص پرشدگی'), L('Kontrast-MRV weniger flussartefaktanfällig', 'Contrast MRV is less flow-artifact prone', 'MRV کنتراست‌دار کمتر مستعد آرتیفکت جریان است'), L('Immer Quellbilder und Normvarianten prüfen', 'Always inspect source images and variants', 'همیشه تصاویر منبع و واریانت‌ها بررسی شوند')],
+      [L('Fließendes Blut', 'Flowing blood', 'خون در حال جریان'), L('Flow-void', 'Flow void', 'فقدان سیگنال جریان'), L('Flow-void', 'Flow void', 'فقدان سیگنال جریان'), L('Flow-void', 'Flow void', 'فقدان سیگنال جریان')],
+      [L('Akut, 0–5 Tage', 'Acute, 0–5 days', 'حاد، ۰ تا ۵ روز'), L('Grau bis isointens', 'Grey to isointense', 'خاکستری تا ایزوی سیگنال'), L('Dunkel', 'Dark', 'تیره'), L('Hell', 'Bright', 'روشن')],
+      [L('Subakut, >5 Tage', 'Subacute, >5 days', 'تحت‌حاد، بیش از ۵ روز'), L('Hell', 'Bright', 'روشن'), L('Hell', 'Bright', 'روشن'), L('Hell', 'Bright', 'روشن')],
     ],
-    image: '/sinusvenenthrombose/signalverhalten.png',
+    sequenceTitle: L('Weitere Sequenzen und venöse Flussdarstellung', 'Additional sequences and venous flow imaging', 'سکانس‌های تکمیلی و تصویربرداری جریان وریدی'),
+    sequenceHeaders: [L('Methode', 'Method', 'روش'), L('Typischer Befund', 'Typical finding', 'یافته تیپیک'), L('Einordnung', 'Interpretation', 'تفسیر')],
+    sequenceRows: [
+      ['SWI/T2*', L('Suszeptibilität thrombosierter Venen; zugleich Parenchymblutung beurteilen.', 'Susceptibility in thrombosed veins; also assess for parenchymal haemorrhage.', 'سوسپتیبیلیتی در وریدهای ترومبوزه؛ خونریزی پارانشیم نیز بررسی شود.'), L('Bei kortikaler Venenthrombose hilfreich; zusammen mit den übrigen Sequenzen interpretieren.', 'Helpful for cortical vein thrombosis; interpret with the other sequences.', 'در ترومبوز ورید کورتیکال کمک‌کننده است؛ همراه سکانس‌های دیگر تفسیر شود.')],
+      ['MRV / PC-MRA', L('Fehlender Fluss oder Füllungsdefekt; PC-MRA zeigt fehlenden Fluss unabhängig vom Thrombussignal.', 'Absent flow or filling defect; PC-MRA depicts absent flow independently of thrombus signal.', 'فقدان جریان یا نقص پرشدگی؛ PC-MRA فقدان جریان را مستقل از سیگنال ترومبوس نشان می‌دهد.'), L('Kontrast-MRV ist weniger flussartefaktanfällig; Quellbilder und Normvarianten mitprüfen.', 'Contrast MRV is less prone to flow artefacts; review source images and normal variants.', 'MRV کنتراست‌دار کمتر مستعد آرتیفکت جریان است؛ تصاویر منبع و واریانت‌ها هم بررسی شوند.')],
+    ],
+    signalCave: L('Das PDF zeigt typische Stadienmuster. Signal allein datiert den Thrombus nicht sicher; fließendes Blut kann ebenfalls signalarm erscheinen.', 'The PDF shows typical stage patterns. Signal alone does not reliably date thrombus; flowing blood may also appear dark.', 'PDF الگوهای تیپیک مراحل را نشان می‌دهد. سیگنال به‌تنهایی سن ترومبوس را با اطمینان تعیین نمی‌کند؛ خون در حال جریان نیز ممکن است کم‌سیگنال باشد.'),
     imageAlt: L('Schema zum stadienabhängigen MRT-Signal eines Sinusthrombus', 'Diagram of stage-dependent MRI signal in sinus thrombosis', 'نمودار سیگنال MRI وابسته به مرحله ترومبوز سینوس'),
     key: L('Fehlender Flow-void ist verdächtig, aber langsamer Fluss kann denselben Eindruck erzeugen: mit CTV/MRV bestätigen.', 'Loss of flow void is suspicious, but slow flow can mimic it: confirm with CTV/MRV.', 'فقدان Flow void مشکوک است، اما جریان آهسته می‌تواند تقلید کند؛ با CTV/MRV تأیید شود.'),
   },
@@ -123,7 +122,7 @@ export const SVT_LESSON = {
     cave: L('Das Vorliegen einer intrazerebralen Blutung durch venösen Infarkt schließt die therapeutische Antikoagulation nicht grundsätzlich aus.', 'Intracerebral haemorrhage from venous infarction does not generally preclude therapeutic anticoagulation.', 'خونریزی داخل مغزی ناشی از انفارکت وریدی به‌طور کلی ضدانعقاد درمانی را منع نمی‌کند.'),
   },
   takehome: {
-    title: L('TAKE HOME MESSAGE', 'TAKE HOME MESSAGE', 'TAKE HOME MESSAGE'),
+    title: L('Merke', 'Take-home points', 'نکات کلیدی'),
     lead: L('Die wichtigsten Punkte für Prüfung und Befundung.', 'The key points for exams and reporting.', 'نکات اصلی برای آزمون و گزارش.'),
     items: [
       { title: L('Klinik', 'Clinical clue', 'نکته بالینی'), text: L('Neuer progredienter Kopfschmerz, besonders mit Anfall oder prothrombotischem Risiko, verlangt venöse Bildgebung.', 'New progressive headache, especially with seizure or prothrombotic risk, warrants venous imaging.', 'سردرد جدید پیشرونده، به‌ویژه با تشنج یا خطر ترومبوز، نیازمند تصویربرداری وریدی است.') },
@@ -148,7 +147,15 @@ const SQ = [
   Q('11', L('Wann kommt eine endovaskuläre Therapie der SVT in Betracht?', 'When may endovascular treatment for CVT be considered?', 'چه زمانی درمان اندوواسکولار SVT مطرح است؟'), [L('Bei klinischer Verschlechterung trotz adäquater Antikoagulation', 'Clinical deterioration despite adequate anticoagulation', 'بدترشدن بالینی علی‌رغم ضدانعقاد مناسب'), L('Bei jeder asymptomatischen Thrombose', 'Every asymptomatic thrombosis', 'هر ترومبوز بدون علامت'), L('Nur bei normalem Parenchym', 'Only with normal parenchyma', 'فقط در پارانشیم طبیعی'), L('Als Ersatz für venöse Bildgebung', 'As a substitute for venous imaging', 'به‌جای تصویربرداری وریدی')], 0, L('Thrombektomie oder lokale Lyse sind Eskalationsverfahren für ausgewählte schwere Verläufe.', 'Thrombectomy or local thrombolysis are escalation options for selected severe cases.', 'ترومبکتومی یا ترومبولیز موضعی روش تشدید درمان در موارد شدید منتخب است.')),
   Q('12', L('Welche Befundformulierung ist bei bilateralen Thalamusläsionen und fehlendem Fluss im Sinus rectus am besten?', 'Which conclusion is best for bilateral thalamic lesions with absent flow in the straight sinus?', 'بهترین جمع‌بندی برای ضایعات دوطرفه تالاموس و فقدان جریان در سینوس رکتوس چیست؟'), [L('Tiefe Hirnvenenthrombose mit venöser Stauung', 'Deep cerebral venous thrombosis with venous congestion', 'ترومبوز وریدهای عمقی مغز با احتقان وریدی'), L('Beidseitiger PCA-Infarkt sicher', 'Definite bilateral PCA infarction', 'انفارکت قطعی دوطرفه PCA'), L('Metabolische Enzephalopathie ohne Gefäßbezug', 'Metabolic encephalopathy without vascular cause', 'انسفالوپاتی متابولیک بدون ارتباط عروقی'), L('Normalvariante', 'Normal variant', 'واریانت طبیعی')], 0, L('Die tiefe venöse Drainage der Thalami erfolgt über innere Hirnvenen und Sinus rectus.', 'The thalami drain through the internal cerebral veins and straight sinus.', 'تخلیه وریدی تالاموس‌ها از وریدهای داخلی مغز و سینوس رکتوس است.')),
 ]
-export const SVT_QUESTIONS = Object.fromEntries(['de','en','fa'].map(lang => [lang, SQ.map(seed => ({ id:`sinusvenenthrombose-${lang}-${seed.id}`, tags:['svt','sinusvenenthrombose','venoes','gehirn'], fach:'gehirn', question:seed.question[lang], options:seed.options.map((text,index)=>({id:String.fromCharCode(65+index),text:typeof text==='string'?text:text[lang]})), correct:String.fromCharCode(65+seed.correct), explanation:seed.explanation[lang] }))]))
+const SVT_ANSWER_POSITIONS = [2,1,3,0,2,3,1,0,3,1,2,0]
+export const SVT_QUESTIONS = Object.fromEntries(['de','en','fa'].map(lang => [lang, SQ.map((seed, index) => {
+  const localized = seed.options.map((text, optionIndex) => ({ id: String.fromCharCode(65 + optionIndex), text: typeof text === 'string' ? text : text[lang] }))
+  const answer = localized[seed.correct]
+  const options = localized.filter((_, optionIndex) => optionIndex !== seed.correct)
+  options.splice(SVT_ANSWER_POSITIONS[index], 0, answer)
+  const reordered = options.map((option, optionIndex) => ({ ...option, id: String.fromCharCode(65 + optionIndex) }))
+  return { id: `sinusvenenthrombose-${lang}-${seed.id}`, tags: ['svt','sinusvenenthrombose','venoes','gehirn'], fach: 'gehirn', question: seed.question[lang], options: reordered, correct: String.fromCharCode(65 + SVT_ANSWER_POSITIONS[index]), explanation: seed.explanation[lang] }
+})]))
 
 const SF = [
   F('definition', L('Grundlagen','Basics','مبانی'), L('Welche Gefäße können bei einer zerebralen Sinus- und Venenthrombose betroffen sein?','Which vessels may be affected in cerebral venous thrombosis?','در ترومبوز وریدی مغز کدام عروق می‌توانند درگیر شوند؟'), L('Durale Sinus, kortikale und tiefe Hirnvenen.','Dural sinuses, cortical veins and deep cerebral veins.','سینوس‌های دورال، وریدهای کورتیکال و عمقی.'), L('Der Begriff umfasst das gesamte intrakranielle venöse Abflusssystem. Mehrfachbefall ist häufig, weshalb die Untersuchung nicht nach dem ersten gefundenen Thrombus beendet werden darf.','The term covers the entire intracranial venous drainage system. Multiple segments are often involved, so assessment should not stop after finding one thrombus.','این اصطلاح کل سیستم تخلیه وریدی داخل جمجمه را شامل می‌شود. درگیری چندگانه شایع است و بررسی نباید با یافتن اولین ترومبوس متوقف شود.')),
@@ -169,3 +176,16 @@ const SF = [
 ]
 export const SVT_FLASHCARDS = SF.map((item,index)=>({id:`sinusvenenthrombose-${String(index+1).padStart(2,'0')}-${item.id}`,topicId:'sinusvenenthrombose',category:item.category,front:item.front,answer:item.answer,explanation:item.explanation}))
 export const SVT_FLASHCARD_TOPIC = {id:'sinusvenenthrombose',area:'Kopf',chapter:'Vaskuläre Erkrankungen',icon:'🩸',iconImage:'/fach/gehirn.png',color:'#7c3aed',href:'/flashcards/sinusvenenthrombose',title:L('Sinus- und Hirnvenenthrombose','Cerebral venous thrombosis','ترومبوز سینوس و وریدهای مغزی'),subtitle:L('Klinik · venöser Infarkt · CTV/MRV · Fallstricke · Antikoagulation','Clinical · venous infarct · CTV/MRV · pitfalls · anticoagulation','بالین · انفارکت وریدی · CTV/MRV · دام‌ها · ضدانعقاد')}
+
+export const SVT_SOURCES = [
+  {
+    href: 'https://professional.heart.org/en/guidelines-statements/diagnosis-and-management-of-cerebral-venous-thrombosis-a-scientific-statementstr0000000000000456',
+    label: L('AHA/ASA: Diagnosis and Management of Cerebral Venous Thrombosis (2024)', 'AHA/ASA: Diagnosis and Management of Cerebral Venous Thrombosis (2024)', 'AHA/ASA: تشخیص و مدیریت ترومبوز وریدی مغز (۲۰۲۴)'),
+    note: L('Ergänzender Kontext zu Diagnose und Management; Inhalte über PDF S. 39–40 hinaus werden diesen Seiten nicht zugeschrieben.', 'Supplemental context for diagnosis and management; material beyond PDF pp.39–40 is not attributed to those pages.', 'منبع تکمیلی برای تشخیص و مدیریت؛ مطالب فراتر از صفحات ۳۹–۴۰ PDF به آن صفحات نسبت داده نمی‌شوند.'),
+  },
+  {
+    href: 'https://academic.oup.com/esj/article/2/3/195/8275513',
+    label: L('European Stroke Organization: Guideline for cerebral venous thrombosis', 'European Stroke Organization: Guideline for cerebral venous thrombosis', 'راهنمای سازمان سکته اروپا درباره ترومبوز وریدی مغز'),
+    note: L('راهنمای تکمیلی درباره درمان ضدانعقادی و درمان اندوواسکولار انتخابی.', 'Supplemental guideline context for anticoagulation and selected endovascular treatment.', 'راهنمای تکمیلی درباره ضدانعقاد و درمان اندوواسکولار انتخابی.'),
+  },
+]
