@@ -142,6 +142,24 @@ function Bowel({ lang }) {
   return <g><path d="M105 62h190q20 0 20 18v18q0 18-20 18H132q-18 0-18 18v20q0 18 18 18h145" fill="none" stroke={PALETTE.blue} strokeWidth="22" strokeLinecap="round"/><path d="M114 62h180M132 174h160" fill="none" stroke={PALETTE.ink} strokeWidth="2" strokeDasharray="5 7"/><path d="M203 114v28m-9-10 9 10 9-10" fill="none" stroke={PALETTE.coral} strokeWidth="4"/><text x="203" y="217" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{label}</text></g>
 }
 
+function Volvulus({ lang }) {
+  const labels = {
+    de: ['Sigmoid: kaffeebohnenförmige Dilatation', 'Zökum: kann verlagert sein'],
+    en: ['Sigmoid: coffee-bean dilatation', 'Caecum: may be displaced'],
+    fa: ['سیگموئید: اتساع دانه‌قهوه‌ای', 'سکوم: ممکن است جابه‌جا شود'],
+  }[lang] || ['Sigmoid: coffee-bean dilatation', 'Caecum: may be displaced']
+  return <g>
+    <path d="M112 59v45q0 18 18 18h142q18 0 18 18v47" fill="none" stroke={PALETTE.blue} strokeWidth="17" strokeLinecap="round"/>
+    <path d="M112 59h180" fill="none" stroke={PALETTE.blue} strokeWidth="17" strokeLinecap="round"/>
+    <path d="M112 168v-27q0-19 19-19h23" fill="none" stroke={PALETTE.blue} strokeWidth="17" strokeLinecap="round"/>
+    <path d="M165 121c-28 2-35 22-23 34 15 15 44 6 40-11-2-10-17-14-24-5" fill="none" stroke={PALETTE.coral} strokeWidth="8" strokeLinecap="round"/>
+    <path d="M275 170c13-13 35-11 43 2 7 12-2 26-18 27-17 1-29-11-25-24" fill="none" stroke={PALETTE.plum} strokeWidth="8" strokeLinecap="round"/>
+    <circle cx="290" cy="187" r="4" fill={PALETTE.plum}/>
+    <text x="192" y="216" textAnchor="middle" fill={PALETTE.muted} fontSize="11">{labels[0]}</text>
+    <text x="192" y="234" textAnchor="middle" fill={PALETTE.muted} fontSize="11">{labels[1]}</text>
+  </g>
+}
+
 function Appendix({ lang }) {
   const label = lang === 'fa' ? 'آپاندیس و چربی اطراف' : lang === 'de' ? 'Appendix und periappendikuläres Fett' : 'appendix and surrounding fat'
   return <g>
@@ -249,6 +267,8 @@ export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de',
     ? ({ de: 'Lernschema eines Nierenquerschnitts mit Rinde, Markpyramiden, Kelchen, Nierenbecken und Ureter.', en: 'Teaching schematic of a kidney cross-section with cortex, medullary pyramids, calyces, renal pelvis and ureter.', fa: 'شماتیک آموزشی برش کلیه با قشر، هرم‌های مدولاری، کالیس‌ها، لگنچه و حالب.' }[lang] || 'Teaching schematic of kidney anatomy.')
     : variant === 'gist'
     ? ({ de: 'Lernschema: Der Magen ist dargestellt; eine Raumforderung wächst nach außen aus der Magenwand. Kein Patientenbild.', en: 'Teaching schematic: the stomach is shown with a mass growing outward from its wall. Not patient imaging.', fa: 'نمای شماتیک آموزشی: معده و توده‌ای که به بیرون از دیواره معده رشد می‌کند نشان داده شده‌اند؛ تصویر بیمار نیست.' }[lang] || 'Teaching schematic of a stomach with an exophytic mass; not patient imaging.')
+    : variant === 'volvulus'
+    ? ({ de: 'Lehrschema mit Kolonverlauf und zwei vereinfachten Volvulus-Konfigurationen; keine diagnostische Aufnahme.', en: 'Teaching schematic of the colon and two simplified volvulus configurations; not a diagnostic image.', fa: 'شماتیک آموزشی مسیر کولون و دو نمای ساده‌شده از ولولوس؛ تصویر تشخیصی نیست.' }[lang] || 'Teaching schematic; not diagnostic imaging.')
     : title
   return <svg viewBox="0 0 400 250" role="img" aria-label={accessibleDescription} xmlns="http://www.w3.org/2000/svg">
     <title>{accessibleDescription}</title>
@@ -261,6 +281,7 @@ export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de',
       variant === 'renal-mass' || variant === 'renal-anatomy' ? <Kidney variant={variant} lang={lang}/> :
       variant === 'foreign-body' || variant === 'chest-xray' ? <Airway variant={variant} lang={lang}/> :
       variant === 'bowel' ? <Bowel lang={lang}/> :
+      variant === 'volvulus' ? <Volvulus lang={lang}/> :
       variant === 'appendix' ? <Appendix lang={lang}/> :
       variant === 'gi-bleed' ? <GIbleed lang={lang}/> :
       variant === 'rectal-mri' ? <RectalMRI lang={lang}/> :
