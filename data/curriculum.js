@@ -784,7 +784,7 @@ export const CURRICULUM = [
             flashcardLink: '/flashcards/fnh',
             inProgress: true, updatedAt: '2026-10-21',
           },
-          { id: 'leberadenom', title: { de: 'Leberadenom', en: 'Hepatic Adenoma', fa: 'آدنوم کبدی' }, group: ['Benigne Leberläsionen'], tags: ['CT','MRT'], diff: 2, link: '/abdomen/leber/fokale-laesionen' },
+          { id: 'leberadenom', title: { de: 'Leberadenom', en: 'Hepatic Adenoma', fa: 'آدنوم کبدی' }, group: ['Benigne Leberläsionen'], tags: ['CT','MRT'], diff: 2, link: '/abdomen/leber/adenom', mcqLink: '/ueben/quiz?fach=abdomen&n=4&themen=leberadenom', flashcardLink: '/flashcards/leberadenom', inProgress: true, updatedAt: '2026-10-21' },
           {
             id: 'hcc',
             title: { de: 'HCC', en: 'Hepatocellular Carcinoma (HCC)', fa: 'کارسینوم هپاتوسلولار (HCC)' },

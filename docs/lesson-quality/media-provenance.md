@@ -21,6 +21,16 @@ mapping are recorded here:
 
 No external Radiopaedia asset is used in this adrenal delta.
 
+## Hepatocellular adenoma lesson
+
+- Local asset: `public/educational/hepatic-adenoma/source-mri-p17.jpg`
+- Origin: crop from the user's supplied `Abdomen.pdf`, physical page 17 (printed page 16), retaining the six labelled MRI panels in source order.
+- Crop method: render physical page 17 at 200 dpi; crop rendered pixels x=225, y=936, width=1200, height=585. The crop contains T2, T1 IP, T1 OOP, arterial, portal venous and delayed panels; it does not show a hepatobiliary phase.
+- Figure type: MRI case plate embedded in the supplied teaching PDF; lesson caption describes the labels and explicitly says HBP is absent from the plate.
+- Contributor/author: not identified in the inspected source file.
+- Reuse basis: the user explicitly authorized reuse of figures in the supplied PDFs for RadYar lessons on 2026-10-19.
+- External provenance or separate license: not asserted; no external Radiopaedia asset is used in this lesson.
+
 ## Functional MRI / BOLD lesson
 
 - Local asset: `public/technik/grundlagen/bold-mechanism.svg`

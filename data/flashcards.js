@@ -317,6 +317,17 @@ export const FLASHCARD_TOPICS = [
     }
   },
   {
+    "id": "leberadenom",
+    "area": "Abdomen",
+    "chapter": "Leber",
+    "icon": "🟡",
+    "iconImage": "/fach/abdomen.png",
+    "color": "#10b981",
+    "href": "/flashcards/leberadenom",
+    "title": { "de": "Leberadenom", "en": "Hepatocellular adenoma", "fa": "آدنوم هپاتوسلولار" },
+    "subtitle": { "de": "CT · MRT · HBP · Differenzialdiagnose FNH", "en": "CT · MRI · HBP · FNH differential", "fa": "CT · MRI · HBP · افتراق از FNH" }
+  },
+  {
     "id": "avm",
     "area": "Abdomen",
     "chapter": "Leber",
@@ -2315,6 +2326,41 @@ const LEGACY_FLASHCARDS = [
       "en": "typical + confidently diagnosed → no treatment/routine follow-up\natypical or symptomatic → specialist review",
       "fa": "تیپیک با تشخیص مطمئن → بدون درمان/پیگیری روتین\nآتیپیک یا علامت‌دار → ارزیابی تخصصی"
     }
+  },
+  {
+    "id": "leberadenom-01-definition", "topicId": "leberadenom",
+    "category": { "de": "Grundlagen", "en": "Basics", "fa": "مبانی" },
+    "front": { "de": "Was ist ein hepatozelluläres Adenom?", "en": "What is a hepatocellular adenoma?", "fa": "آدنوم هپاتوسلولار چیست؟" },
+    "answer": { "de": "Ein seltener gutartiger epithelialer Lebertumor.", "en": "An uncommon benign epithelial liver tumour.", "fa": "تومور اپی‌تلیالی خوش‌خیم و نادر کبد." },
+    "explanation": { "de": "Trotz benignen Grundcharakters sind Blutung und bei bestimmten Subtypen maligne Transformation relevante Komplikationen.", "en": "Despite its benign baseline classification, haemorrhage and malignant transformation in some subtypes are relevant complications.", "fa": "با وجود ماهیت پایه خوش‌خیم، خون‌ریزی و در برخی زیرگروه‌ها تبدیل بدخیم از عوارض مهم‌اند." }
+  },
+  {
+    "id": "leberadenom-02-risk", "topicId": "leberadenom",
+    "category": { "de": "Klinischer Kontext", "en": "Clinical context", "fa": "زمینه بالینی" },
+    "front": { "de": "Welche Risikofaktoren sollten bei HCA aktiv erfragt werden?", "en": "Which risk factors should be actively elicited in HCA?", "fa": "در HCA درباره کدام عوامل خطر باید فعالانه پرس‌وجو کرد؟" },
+    "answer": { "de": "Exogene Hormone und anabole Steroide sowie metabolische Faktoren und Glykogenspeicherkrankheiten.", "en": "Exogenous hormones and anabolic steroids, as well as metabolic factors and glycogen-storage disease.", "fa": "هورمون‌های خارجی و استروئیدهای آنابولیک، و نیز عوامل متابولیک و بیماری ذخیره گلیکوژن." },
+    "explanation": { "de": "Die Anamnese unterstützt die klinische Einordnung, ersetzt aber keine Bildmusteranalyse.", "en": "History supports clinical assessment but does not replace imaging-pattern analysis.", "fa": "شرح حال به ارزیابی بالینی کمک می‌کند، اما جای تحلیل الگوی تصویربرداری را نمی‌گیرد." }
+  },
+  {
+    "id": "leberadenom-03-mri-fat", "topicId": "leberadenom",
+    "category": { "de": "MRT", "en": "MRI", "fa": "MRI" },
+    "front": { "de": "Wofür spricht ein Signalabfall in T1 Out-of-phase?", "en": "What does signal loss on T1 out-of-phase support?", "fa": "افت سیگنال در T1 out-of-phase از چه چیزی حمایت می‌کند؟" },
+    "answer": { "de": "Für einen möglichen intrazellulären Fettanteil.", "en": "A possible intracellular fat component.", "fa": "احتمال وجود جزء چربی داخل‌سلولی." },
+    "explanation": { "de": "Das Merkmal allein beweist weder ein HCA noch einen bestimmten Subtyp.", "en": "This feature alone proves neither HCA nor a specific subtype.", "fa": "این یافته به‌تنهایی نه HCA و نه زیرگروه مشخصی را ثابت می‌کند." }
+  },
+  {
+    "id": "leberadenom-04-hepatobiliary", "topicId": "leberadenom",
+    "category": { "de": "Differenzialdiagnose", "en": "Differential diagnosis", "fa": "تشخیص افتراقی" },
+    "front": { "de": "Wie verhalten sich HCA und FNH meist in der hepatobiliären Phase?", "en": "How do HCA and FNH usually behave on the hepatobiliary phase?", "fa": "HCA و FNH معمولاً در فاز هپاتوبیلیاری چه رفتاری دارند؟" },
+    "answer": { "de": "HCA meist hypointens, FNH meist iso- bis hyperintens.", "en": "HCA is usually hypointense; FNH is usually iso- to hyperintense.", "fa": "HCA معمولاً کم‌سیگنال و FNH معمولاً ایزو تا پرسیگنال است." },
+    "explanation": { "de": "Subtyp-Ausnahmen und atypische Muster sind möglich; das Gesamtbild bleibt entscheidend.", "en": "Subtype exceptions and atypical patterns occur; the overall pattern remains essential.", "fa": "استثناهای زیرگروهی و الگوهای آتیپیک ممکن‌اند؛ الگوی کلی همچنان تعیین‌کننده است." }
+  },
+  {
+    "id": "leberadenom-05-dynamic", "topicId": "leberadenom",
+    "category": { "de": "CT und dynamische MRT", "en": "CT and dynamic MRI", "fa": "CT و MRI دینامیک" },
+    "front": { "de": "Welches dynamische Kontrastmuster ist bei HCA häufig?", "en": "Which dynamic enhancement pattern is common in HCA?", "fa": "کدام الگوی تقویت دینامیک در HCA شایع است؟" },
+    "answer": { "de": "Arterielle Hyperanreicherung mit späterer Angleichung an das Leberparenchym.", "en": "Arterial hyperenhancement with later equalisation to the liver parenchyma.", "fa": "تقویت شریانی واضح با هم‌سطح‌شدن بعدی با پارانشیم کبد." },
+    "explanation": { "de": "Das Muster ist nicht spezifisch und darf nicht als Einzelbeweis verwendet werden.", "en": "The pattern is not specific and should not be used as stand-alone proof.", "fa": "این الگو اختصاصی نیست و نباید به‌تنهایی مبنای اثبات قرار گیرد." }
   },
   {
     "id": "avm-01-definition",
