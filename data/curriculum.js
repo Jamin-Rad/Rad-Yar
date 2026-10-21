@@ -944,8 +944,8 @@ export const CURRICULUM = [
         title: { de: '13. Hernien', en: '13. Hernias', fa: '۱۳. فتق‌ها' },
         icon: '🕳️',
         themen: [
-          { id: 'inguinalhernie', title: { de: 'Inguinalhernie', en: 'Inguinal Hernia', fa: 'فتق اینگوینال' }, tags: ['CT','Sono'], diff: 1, link: '/abdomen/hernien/inguinal-femoral' },
-          { id: 'femoralhernie', title: { de: 'Femoralhernie', en: 'Femoral Hernia', fa: 'فتق فمورال' }, tags: ['CT'], diff: 2, link: '/abdomen/hernien/inguinal-femoral' },
+          { id: 'inguinalhernie', title: { de: 'Inguinalhernie', en: 'Inguinal Hernia', fa: 'فتق اینگوینال' }, tags: ['CT','Sono'], diff: 1, link: '/abdomen/hernien/inguinal-femoral', mcqLink: '/ueben/quiz?fach=abdomen&n=1&themen=inguinalhernie', flashcardLink: '/flashcards/inguinal-femoral-hernia', inProgress: true, updatedAt: '2026-10-21' },
+          { id: 'femoralhernie', title: { de: 'Femoralhernie', en: 'Femoral Hernia', fa: 'فتق فمورال' }, tags: ['CT'], diff: 2, link: '/abdomen/hernien/inguinal-femoral', mcqLink: '/ueben/quiz?fach=abdomen&n=1&themen=femoralhernie', flashcardLink: '/flashcards/inguinal-femoral-hernia', inProgress: true, updatedAt: '2026-10-21' },
           { id: 'umbilikalhernie', title: { de: 'Umbilikalhernie', en: 'Umbilical Hernia', fa: 'فتق نافی' }, tags: ['Sono','CT'], diff: 1 },
           { id: 'innere-hernien', title: { de: 'Innere Hernien', en: 'Internal Hernias', fa: 'فتق‌های داخلی' }, tags: ['CT'], diff: 3 },
         ],

@@ -48,6 +48,6 @@ The code-native SVG is a non-diagnostic orientation map, not a patient image or 
 - Independent-review delta: PASS. SVG states its lateral/medial orientation in all languages and the color legend ties each path to the epigastric vessels; its femoral path is medial to the femoral vein. The source's first-line ultrasound statement is included in the lesson and summary.
 - Translation parity: implemented in DE/EN/FA; automated presence checks included.
 - Source/image provenance: source PDF and page range recorded; diagram is original code-native anatomy art.
-- Linked quiz/flashcard audit: no matching topic-specific MCQ or flashcard IDs found in the repository search.
+- Retrieval integration delta: added one four-option MCQ for each exact curriculum topic (`inguinalhernie`, `femoralhernie`), both with DE/EN/FA stems, options, and explanations. Added a shared four-card topic for the combined lesson and linked both curriculum entries and the shell actions to it. Focused integration test checks exact routes, option counts, localization, and card registration.
 - Browser desktop/mobile, RTL, themes, and keyboard interaction: not yet verified in a real browser.
-- Independent editorial review: PASS within the bounded source/education/visual/text checks. Scientific review and real-browser testing: pending. Curriculum presence or passing local checks does not imply clinical approval or publication readiness.
+- Independent editorial and retrieval-integration delta review: PASS within the bounded source/education/visual/text/assessment checks. Scientific review and real-browser testing: pending. Curriculum presence or passing local checks does not imply clinical approval or publication readiness.

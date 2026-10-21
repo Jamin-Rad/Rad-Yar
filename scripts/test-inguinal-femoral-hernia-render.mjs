@@ -5,6 +5,9 @@ import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import { INGUINAL_FEMORAL_HERNIA_LESSON as lesson } from '../data/inguinalFemoralHerniaLesson.js'
+import { QUESTION_BANK } from '../data/questions.js'
+import { CURRICULUM, getLessonLinkForFlashcard } from '../data/curriculum.js'
+import { FLASHCARD_TOPICS, getCardsByTopic } from '../data/flashcards.js'
 
 const require = createRequire(import.meta.url)
 let activeLanguage = 'de'
@@ -56,11 +59,29 @@ const femoralPath = diagram.match(/<path d="M(\d+) 236C[^"]+"[^>]*stroke="#e2a44
 assert.ok(femoralPath, 'femoral path exists in the source SVG')
 assert.ok(Number(femoralPath[1]) > 514, 'with left=lateral/right=medial, femoral path is medial to the femoral vein at x514')
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
-assert.match(curriculum, /id: 'inguinalhernie'[^\n]*link: '\/abdomen\/hernien\/inguinal-femoral'/)
-assert.match(curriculum, /id: 'femoralhernie'[^\n]*link: '\/abdomen\/hernien\/inguinal-femoral'/)
+assert.match(curriculum, /id: 'inguinalhernie'[^\n]*link: '\/abdomen\/hernien\/inguinal-femoral'[^\n]*mcqLink: '\/ueben\/quiz\?fach=abdomen&n=1&themen=inguinalhernie'[^\n]*flashcardLink: '\/flashcards\/inguinal-femoral-hernia'/)
+assert.match(curriculum, /id: 'femoralhernie'[^\n]*link: '\/abdomen\/hernien\/inguinal-femoral'[^\n]*mcqLink: '\/ueben\/quiz\?fach=abdomen&n=1&themen=femoralhernie'[^\n]*flashcardLink: '\/flashcards\/inguinal-femoral-hernia'/)
 assert.match(curriculum, /id: 'umbilikalhernie'[^\n]*tags: \['Sono','CT'\], diff: 1 \}/, 'umbilical hernia stays unlinked')
 assert.match(curriculum, /id: 'innere-hernien'[^\n]*tags: \['CT'\], diff: 3 \}/, 'internal hernia stays unlinked')
 assert.match(fs.readFileSync('docs/lesson-quality/inguinal-femoral-hernia-abdomen-p93-p94.md', 'utf8'), /PDF pp\.93–94 \/ printed pp\.92–93/)
+for (const id of ['inguinalhernie', 'femoralhernie']) {
+  const topic = CURRICULUM.flatMap(subject => subject.kapitel).flatMap(chapter => chapter.themen).find(item => item.id === id)
+  assert.equal(topic?.link, '/abdomen/hernien/inguinal-femoral')
+  assert.equal(topic?.mcqLink, `/ueben/quiz?fach=abdomen&n=1&themen=${id}`)
+  assert.equal(topic?.flashcardLink, '/flashcards/inguinal-femoral-hernia')
+  assert.ok(FLASHCARD_TOPICS.some(item => item.id === 'inguinal-femoral-hernia'))
+  assert.equal(getLessonLinkForFlashcard(topic.flashcardLink), '/abdomen/hernien/inguinal-femoral')
+}
+assert.equal(getCardsByTopic('inguinal-femoral-hernia').length, 4)
+for (const language of ['de', 'en', 'fa']) {
+  for (const id of ['abdomen-inguinal-hernia-landmarks', 'abdomen-femoral-hernia-landmarks']) {
+    const question = QUESTION_BANK[language].find(item => item.id === `${id}-${language}-01`)
+    assert.ok(question, `${id} registered in ${language}`)
+    assert.equal(question.options.length, 4)
+    assert.ok(question.options.some(option => option.id === question.correct))
+  }
+  for (const card of getCardsByTopic('inguinal-femoral-hernia')) assert.ok(card.front[language] && card.answer[language] && card.explanation[language])
+}
 for (const language of ['de', 'en', 'fa']) {
   activeLanguage = language
   const html = renderToStaticMarkup(React.createElement(Page))
@@ -69,5 +90,7 @@ for (const language of ['de', 'en', 'fa']) {
   assert.ok(html.includes(lesson.check.prompt[language]), `${language} self-check`)
   assert.ok(html.includes(lesson.sourceNote[language]) && html.includes('Abdomen.pdf'), `${language} source scope`)
   assert.ok(html.includes(lesson.visual.alt[language]), `${language} image alternative text`)
+  assert.ok(html.includes('/ueben/quiz?fach=abdomen&amp;n=2&amp;themen=inguinalhernie,femoralhernie'), `${language} lesson quiz action`)
+  assert.ok(html.includes('/flashcards/inguinal-femoral-hernia'), `${language} lesson flashcard action`)
 }
-console.log('Inguinal/femoral hernia SSR, locale parity, source scope, asset, and curriculum checks passed.')
+console.log('Inguinal/femoral hernia SSR and retrieval integration PASS: DE/EN/FA, two exact curriculum topics/questions, four shared flashcards, lesson actions, source scope, and diagram.')
