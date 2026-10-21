@@ -198,6 +198,8 @@ export const HMA_LESSON = {
       [L('Grad 3', 'Grade 3', 'درجه ۳'), L('Ausgedehnte periventrikuläre WMH', 'Extensive periventricular WMH', 'WMH پریونتریکولار وسیع'), L('Großflächig konfluierend', 'Large confluent areas', 'مناطق تجمع وسیع')],
     ],
     fazekasTitle: L('Fazekas-Skala (FLAIR/T2)', 'Fazekas Scale (FLAIR/T2)', 'مقیاس Fazekas (FLAIR/T2)'),
+    fazekasImageAlt: L('FLAIR-MRT-Beispiele für Fazekas-Grade 1, 2 und 3; die Abbildungen zeigen zunehmende Konfluenz periventrikulärer und tiefer Marklagerhyperintensitäten.', 'FLAIR MRI examples of Fazekas grades 1, 2 and 3, showing increasing confluence of periventricular and deep white-matter hyperintensities.', 'نمونه‌های FLAIR برای درجات ۱، ۲ و ۳ فازکاس؛ تصاویر افزایش پیوستگی هایپراینتنسیتی‌های پری‌ونتریکولار و ماده سفید عمقی را نشان می‌دهند.'),
+    fazekasImageCaption: L('Quelle: Gehirn.pdf, S. 25 (gedruckte S. 24); Bildnachweis E. De Marzio. Originalausschnitt aus dem bereitgestellten PDF.', 'Source: Gehirn.pdf, p. 25 (printed p. 24); image credit E. De Marzio. Cropped from the supplied PDF.', 'منبع: Gehirn.pdf، صفحهٔ ۲۵ (شمارهٔ چاپی ۲۴)؛ اعتبار تصویر: E. De Marzio. برش از PDF ارائه‌شده.'),
     key: L(
       'Tiefe CMBs in SWI + Fazekas WMH + lakunäre Infarkte in DWI = MRT-Trias der chronischen hypertensiven Mikroangiopathie.',
       'Deep CMBs on SWI + Fazekas WMH + lacunar infarcts on DWI = MRI triad of chronic hypertensive microangiopathy.',

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img">
+  <defs>
+    <linearGradient id="vessel" x1="0" x2="1">
+      <stop stop-color="#e89a9a"/><stop offset="1" stop-color="#a93d59"/>
+    </linearGradient>
+    <radialGradient id="lesion"><stop stop-color="#76d5ef" stop-opacity=".78"/><stop offset="1" stop-color="#1687b2" stop-opacity=".12"/></radialGradient>
+  </defs>
+  <path d="M60 74h520v272H60z" fill="#102b48" stroke="#5bc4df" stroke-width="3" rx="24"/>
+  <path d="M94 210h222" fill="none" stroke="url(#vessel)" stroke-width="38" stroke-linecap="round"/>
+  <path d="M296 210c60 0 48-93 109-93m-109 93c60 0 48 93 109 93" fill="none" stroke="#cf6b7e" stroke-width="19" stroke-linecap="round"/>
+  <path d="M192 193c12 9 12 25 0 34m-28-34c12 9 12 25 0 34" fill="none" stroke="#ffe0d8" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="443" cy="116" r="42" fill="url(#lesion)" stroke="#8be1f5" stroke-width="3"/>
+  <circle cx="443" cy="303" r="56" fill="url(#lesion)" stroke="#8be1f5" stroke-width="3"/>
+  <circle cx="529" cy="211" r="28" fill="url(#lesion)" stroke="#8be1f5" stroke-width="3"/>
+  <path d="M345 153l19 19m0-19-19 19M345 247l19 19m0-19-19 19" stroke="#ffc86e" stroke-width="5" stroke-linecap="round"/>
+</svg>

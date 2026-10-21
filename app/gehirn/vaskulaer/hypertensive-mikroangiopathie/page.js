@@ -6,6 +6,7 @@ import InProgressBanner from '@/components/InProgressBanner'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
+import LessonHero from '@/components/LessonHero'
 import { HMA_LESSON } from '@/data/hypertensive-mikroangiopathie'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
 
@@ -19,8 +20,7 @@ const UI = {
 
 function Section({ id, title, lead, children }) {
   const mobile = useMobileLearningLayout()
-  const [open, setOpen] = useState(true)
-  useEffect(() => setOpen(false), [id])
+  const [open, setOpen] = useState(id === 'grundlagen')
   return (
     <section id={id} className={styles.section}>
       <button type="button" className={styles.sectionHeader} onClick={() => setOpen(v => !v)} aria-expanded={open}>
@@ -156,29 +156,15 @@ export default function HypertensiveMikroangiopathiePage() {
           <span>{c(HMA_LESSON.breadcrumb)}</span>
         </div>
 
-        <div className={styles.hero}>
-          <div className={styles.heroText}>
-            <span className={styles.sourceBadge}>{HMA_LESSON.sourceLabel}</span>
-            <h1>{c(HMA_LESSON.title)}</h1>
-            <p>{c(HMA_LESSON.definition)}</p>
-            <div className={styles.actions}>
-              <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=gehirn&n=12&themen=hypertensive-mikroangiopathie&from=${encodeURIComponent(withLang(path))}`)}>
-                🎯 MCQ
-              </Link>
-              <Link className={styles.actionBtn} href={withLang(`/flashcards/hypertensive-mikroangiopathie?from=${encodeURIComponent(withLang(path))}`)}>
-                🧠 {c({ de: 'Flashcards', en: 'Flashcards', fa: 'فلش‌کارت' })}
-              </Link>
-            </div>
-          </div>
-          <div className={styles.heroStats}>
-            {HMA_LESSON.heroCards.map(card => (
-              <div className={styles.heroStat} key={c(card.value)}>
-                <strong>{c(card.value)}</strong>
-                <span>{c(card.label)}</span>
-                <small>{c(card.text)}</small>
-              </div>
-            ))}
-          </div>
+        <LessonHero
+          title={c(HMA_LESSON.title)}
+          imageSrc="/hypertensive-mikroangiopathie/hero.svg"
+          imageAlt={c({ de: 'Schematische Darstellung einer geschädigten kleinen Hirnarterie mit Veränderungen der tiefen weißen Substanz.', en: 'Schematic of an injured small cerebral artery and changes in deep white matter.', fa: 'نمای شماتیک آسیب یک شریان کوچک مغزی و تغییرات مادهٔ سفید عمقی.' })}
+          lang={lang}
+        />
+        <div className={styles.actions}>
+          <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=gehirn&n=12&themen=hypertensive-mikroangiopathie&from=${encodeURIComponent(withLang(path))}`)}>🎯 MCQ</Link>
+          <Link className={styles.actionBtn} href={withLang(`/flashcards/hypertensive-mikroangiopathie?from=${encodeURIComponent(withLang(path))}`)}>🧠 {c({ de: 'Flashcards', en: 'Flashcards', fa: 'فلش‌کارت' })}</Link>
         </div>
       </header>
 
@@ -271,6 +257,12 @@ export default function HypertensiveMikroangiopathiePage() {
               {c(HMA_LESSON.mrt.fazekasTitle)}
             </h3>
             <Table headers={HMA_LESSON.mrt.fazekasHeaders.map(c)} rows={rows(HMA_LESSON.mrt.fazekasRows)} />
+            <Figure
+              src="/hypertensive-mikroangiopathie/fazekas-pdf-p25.png"
+              alt={c(HMA_LESSON.mrt.fazekasImageAlt)}
+              caption={c(HMA_LESSON.mrt.fazekasImageCaption)}
+              onZoom={setPreview}
+            />
             <Callout label={c(HMA_LESSON.keyLabel)}>{c(HMA_LESSON.mrt.key)}</Callout>
           </Section>
 
