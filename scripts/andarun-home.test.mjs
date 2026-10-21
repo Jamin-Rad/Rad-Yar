@@ -7,11 +7,11 @@ import { ANDARUN_WEB_APPS, getAndarunPwaMetadata } from '../lib/andarunWebApps.j
 test('four groups retain existing modules and expose finance destinations inline', () => {
   const items = ANDARUN_HOME_GROUPS.flatMap(group => group.items)
   assert.deepEqual(ANDARUN_HOME_GROUPS.map(group => group.title), ['Alltag', 'Gesundheit', 'Lernen', 'Finanzen'])
-  assert.equal(items.length, 14)
-  assert.equal(new Set(items.map(item => item.title)).size, 14)
+  assert.equal(items.length, 15)
+  assert.equal(new Set(items.map(item => item.title)).size, 15)
   assert.deepEqual(items.filter(item => item.href).map(item => item.href).sort(), [
     '/andarun/routine', '/andarun/todo', '/andarun/termine', '/andarun/dienste',
-    '/andarun/gesundheit', '/andarun/medikamente', '/andarun/deutsch', '/andarun/befunde', '/andarun/test',
+    '/andarun/gesundheit', '/andarun/medikamente', '/andarun/deutsch', '/andarun/english', '/andarun/befunde', '/andarun/test',
     '/andarun/finanz', '/andarun/urlaub', '/andarun/finanz/freunde', '/digitda',
   ].sort())
   assert.equal(items.some(item => item.action), false)
@@ -32,7 +32,7 @@ test('Jaminova branding preserves installed app URLs and uses a refreshed manife
   for (const [key, app] of Object.entries(ANDARUN_WEB_APPS)) {
     assert.ok(app.startUrl.startsWith('/andarun'))
     assert.equal(app.name.includes('Andarun'), false)
-    assert.equal(getAndarunPwaMetadata(key).manifest, `/andarun/pwa/${key}/manifest.webmanifest?v=3`)
+    assert.equal(getAndarunPwaMetadata(key).manifest, `/andarun/pwa/${key}/manifest.webmanifest?v=4`)
   }
 })
 

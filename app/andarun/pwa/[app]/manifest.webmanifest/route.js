@@ -8,7 +8,7 @@ export async function GET(_request, { params }) {
     return Response.json({ error: 'Unknown Andarun app' }, { status: 404 })
   }
 
-  const isPersian = appKey === 'gefangene' || appKey === 'medikamente'
+  const isPersian = ['gefangene', 'medikamente', 'freunde'].includes(appKey)
 
   return Response.json({
     id: app.startUrl,

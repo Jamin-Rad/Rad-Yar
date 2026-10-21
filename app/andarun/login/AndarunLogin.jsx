@@ -1,12 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import styles from './page.module.css'
 
 export default function AndarunLogin({ nextPath = '/andarun' }) {
-  const router = useRouter()
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -24,8 +22,9 @@ export default function AndarunLogin({ nextPath = '/andarun' }) {
       })
       const data = await response.json()
       if (!response.ok) throw new Error(data.error || 'Zugang fehlgeschlagen.')
-      router.push(nextPath)
-      router.refresh()
+      // A new document also gives home-screen installers the destination app's
+      // manifest instead of retaining the login/parent identity.
+      window.location.assign(nextPath)
     } catch (err) {
       setError(err.message)
       setLoading(false)
