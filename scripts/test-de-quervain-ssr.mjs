@@ -9,10 +9,13 @@ const port = 3192
 const page = await readFile(`${root}/app/msk/hand/de-quervain/page.js`, 'utf8')
 const data = await readFile(`${root}/data/deQuervainLesson.js`, 'utf8')
 const svg = await readFile(`${root}/public/educational/de-quervain/first-extensor-compartment.svg`, 'utf8')
+const caseImage = await readFile(`${root}/public/msk/hand/de-quervain-pdf-p43-pd-fs-pair.png`)
 const ledger = await readFile(`${root}/docs/lesson-quality/de-quervain-msk-p40-p42.md`, 'utf8')
 const curriculum = await readFile(`${root}/data/curriculum.js`, 'utf8')
 
 assert.match(page, /LessonHero/)
+assert.match(page, /item\.caseImage/)
+assert.match(page, /strecksehnenfaecher/)
 assert.match(page, /usePersistedSectionProgress/)
 assert.match(page, /aria-expanded/)
 assert.match(page, /aria-pressed/)
@@ -29,6 +32,8 @@ assert.doesNotMatch(visibleSvg, /Dorsal wrist|Radius|Radial styloid|extensor com
 assert.match(svg, /aria-hidden="true"/)
 assert.match(curriculum, /\{ id: 'de-quervain',[^\n]*link: '\/msk\/hand\/de-quervain',[^\n]*ready: true, inProgress: true/)
 assert.match(data, /M\. abductor pollicis longus/)
+assert.match(data, /PDF-S\. 43 \/ Druck-S\. 42/)
+assert.equal(caseImage.subarray(0, 8).toString('hex'), '89504e470d0a1a0a', 'source MRI pair is a PNG asset')
 assert.match(page, /عضلهٔ دورکنندهٔ بلند شست/)
 for (const [locale, required] of Object.entries({
   de: ['ersten Strecksehnenfach', 'PD-FS oder T2-FS', 'Sehnenscheide'],
@@ -37,7 +42,8 @@ for (const [locale, required] of Object.entries({
 })) {
   for (const phrase of required) assert.ok(data.includes(phrase), `${locale} translation missing ${phrase}`)
 }
-assert.match(ledger, /42 \/ 41/)
+assert.match(ledger, /43 \/ 42/)
+assert.match(ledger, /de-quervain-pdf-p43-pd-fs-pair\.png/)
 assert.match(ledger, /Browser QA must be completed/)
 
 if (process.env.DEQUERVAIN_SKIP_SSR === '1') {

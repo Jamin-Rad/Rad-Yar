@@ -1,4 +1,5 @@
 import { abdomenThoraxAssessmentDrafts as drafts } from './abdomenThoraxAssessmentDrafts'
+import { ADRENAL_QUESTION_DRAFTS } from './abdomenAdrenalLessonMaterials'
 
 const languages = ['de', 'en', 'fa']
 const option = (id, text) => ({ id, text })
@@ -16,6 +17,7 @@ const registrations = [
   { key: 'abdomen-hepatic-steatosis', fach: 'abdomen', tags: ['hepatische-steatose'], extra: { de: 'Die typische Lage allein beweist die Diagnose und macht weitere Charakterisierung unnötig', en: 'Typical location alone proves the diagnosis and makes further characterisation unnecessary', fa: 'محل تیپیک به‌تنهایی تشخیص را ثابت می‌کند و بررسی تکمیلی را غیرضروری می‌سازد' } },
   { key: 'abdomen-renal-masses', fach: 'abdomen', tags: ['nierenzysten'], extra: { de: 'Das Alter der betroffenen Person allein', en: 'The patient’s age alone', fa: 'فقط سن بیمار' } },
   { key: 'abdomen-adrenal-masses', fach: 'abdomen', tags: ['nebennieren-inzidentalom', 'nebennierenadenom'], extra: { de: 'Voraufnahmen bei der Beurteilung ignorieren', en: 'Ignore prior examinations during assessment', fa: 'نادیده‌گرفتن تصاویر قبلی در ارزیابی' } },
+  ...ADRENAL_QUESTION_DRAFTS.map(draft => ({ key: draft.id, fach: 'abdomen', tags: [{ 'adrenal-adenoma-microscopic-fat': 'nebennierenadenom', 'adrenal-myelolipoma-macroscopic-fat': 'myelolipom', 'adrenal-pheochromocytoma-washout': 'phaeochromozytom', 'adrenal-neuroblastoma-origin': 'neuroblastom-nebenniere' }[draft.id]], extra: { de: 'Einzelnes Zeichen ohne Kontext als sicheren Beweis werten', en: 'Treat one isolated sign as definitive proof without context', fa: 'یک نشانهٔ منفرد را بدون زمینه، اثبات قطعی بدانید' } })),
   { key: 'thorax-foreign-body', fach: 'thorax', tags: ['fremdkoerper-atemwege'], extra: { de: 'Ein unauffälliges Röntgenbild schließt die Aspiration sicher aus', en: 'A normal radiograph definitively excludes aspiration', fa: 'رادیوگرافی طبیعی آسپیراسیون را به‌طور قطعی رد می‌کند' } },
   { key: 'pneumonie-muster', fach: 'thorax', tags: ['pneumonie-muster', 'bakterielle-pneumonie', 'virale-pneumonie-covid', 'atypische-pneumonie', 'pcp', 'aspergillus-lunge'], extra: { de: 'Ein bestimmtes Verteilungsmuster beweist den Erreger', en: 'A particular distribution pattern proves the organism', fa: 'یک الگوی توزیع مشخص، عامل بیماری‌زا را ثابت می‌کند' } },
   { key: 'thorax-tuberculosis', fach: 'thorax', tags: ['tuberkulose'], extra: { de: 'Ein unauffälliges Thoraxbild schließt aktive TB sicher aus', en: 'A normal chest image definitively excludes active TB', fa: 'تصویر طبیعی قفسهٔ سینه سل فعال را قطعاً رد می‌کند' } },
@@ -39,7 +41,7 @@ const makeQuestion = ({ key, fach, tags, extra }) => {
       fach,
       question: draft.question[lang],
       options,
-      correct: 'A',
+      correct: String.fromCharCode(65 + (draft.answer ?? 0)),
       explanation: draft.rationale[lang],
       source: draft.source,
     }]

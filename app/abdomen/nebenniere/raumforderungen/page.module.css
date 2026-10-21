@@ -1,0 +1,120 @@
+.lesson {
+  display: grid;
+  gap: 1.75rem;
+  max-width: 100%;
+  color: var(--text);
+}
+
+.section {
+  display: grid;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.section h3 {
+  margin: 0;
+  color: var(--text-strong);
+  font-family: var(--font-display);
+  font-size: clamp(1.18rem, 2vw, 1.5rem);
+  line-height: 1.35;
+}
+
+.section p,
+.figure figcaption,
+.credit {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.cave {
+  margin: 0;
+  padding: 1rem 1.15rem;
+  border-inline-start: 4px solid #d97706;
+  border-radius: 12px;
+  background: color-mix(in srgb, #f59e0b 10%, var(--bg-card));
+}
+
+.cave h4 {
+  margin: 0 0 0.35rem;
+  color: var(--text-strong);
+  font-size: 1rem;
+}
+
+.cave p { margin: 0; line-height: 1.7; }
+
+.figure {
+  display: grid;
+  gap: 0.55rem;
+  justify-items: start;
+  max-width: 100%;
+  margin: 0.3rem 0;
+}
+
+.figure img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-card);
+}
+
+.figure figcaption { max-width: 78ch; font-size: 0.9rem; }
+
+.imagePair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.imagePair .figure { width: 100%; }
+.imagePair .figure img { width: 100%; }
+
+.tableScroll {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-card);
+}
+
+.tableScroll:focus-visible {
+  outline: 3px solid var(--accent, #0ea5e9);
+  outline-offset: 3px;
+}
+
+.tableScroll table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  line-height: 1.6;
+}
+
+.tableScroll th,
+.tableScroll td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.tableScroll thead th {
+  color: var(--text-strong);
+  background: var(--surface-soft);
+  font-weight: 750;
+}
+
+.tableScroll tbody th { color: var(--text-strong); font-weight: 700; }
+.tableScroll tr:last-child > * { border-bottom: 0; }
+
+.related { font-weight: 650; }
+.related a { color: var(--accent, #0369a1); text-underline-offset: 0.18em; }
+
+@media (max-width: 640px) {
+  .imagePair { grid-template-columns: 1fr; }
+  .imagePair .figure img { max-width: min(100%, 24rem); }
+}

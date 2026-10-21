@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Wrist extensor compartment orientation schematic</title>
+  <desc id="desc">A simplified axial orientation map with radius, ulna and six numbered dorsal extensor compartments.</desc>
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f1f8f7"/>
+      <stop offset="1" stop-color="#e4eef1"/>
+    </linearGradient>
+    <linearGradient id="bone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdf7"/>
+      <stop offset="1" stop-color="#e8e5d8"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#36566a" flood-opacity=".12"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="720" rx="42" fill="#142b38"/>
+  <circle cx="1030" cy="110" r="190" fill="#1c3b49" opacity=".72"/>
+  <circle cx="185" cy="630" r="240" fill="#1c3b49" opacity=".6"/>
+  <rect x="48" y="48" width="1104" height="624" rx="30" fill="url(#surface)" filter="url(#shadow)"/>
+  <text x="92" y="112" fill="#38596a" font-family="Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="2">AXIAL ORIENTATION · NON-DIAGNOSTIC SCHEMATIC</text>
+  <text x="600" y="166" text-anchor="middle" fill="#51707e" font-family="Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="2">DORSAL</text>
+  <path d="M270 394c0-132 147-204 330-204s330 72 330 204-147 198-330 198-330-66-330-198Z" fill="#d9e7e8" stroke="#acc3c8" stroke-width="4"/>
+  <path d="M326 393c0-95 123-150 274-150s274 55 274 150-123 144-274 144-274-49-274-144Z" fill="#edf3ef" stroke="#c3d4d2" stroke-width="3"/>
+  <ellipse cx="478" cy="405" rx="103" ry="119" fill="url(#bone)" stroke="#c9c5b8" stroke-width="4"/>
+  <ellipse cx="724" cy="413" rx="75" ry="89" fill="url(#bone)" stroke="#c9c5b8" stroke-width="4"/>
+  <text x="478" y="414" text-anchor="middle" fill="#506674" font-family="Arial, sans-serif" font-size="22" font-weight="700">RADIUS</text>
+  <text x="724" y="421" text-anchor="middle" fill="#506674" font-family="Arial, sans-serif" font-size="20" font-weight="700">ULNA</text>
+  <text x="310" y="433" text-anchor="middle" fill="#176c68" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1">RADIAL</text>
+  <text x="886" y="433" text-anchor="middle" fill="#176c68" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1">ULNAR</text>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <g transform="translate(373 286)"><circle r="36" fill="#176c68"/><text y="8" fill="#fff" font-size="24" font-weight="700">I</text><text y="62" fill="#284452" font-size="16" font-weight="700">APL · EPB</text></g>
+    <g transform="translate(478 250)"><circle r="36" fill="#287f85"/><text y="8" fill="#fff" font-size="24" font-weight="700">II</text><text y="62" fill="#284452" font-size="15" font-weight="700">ECRL · ECRB</text></g>
+    <g transform="translate(580 238)"><circle r="36" fill="#3e8b93"/><text y="8" fill="#fff" font-size="24" font-weight="700">III</text><text y="62" fill="#284452" font-size="16" font-weight="700">EPL</text></g>
+    <g transform="translate(682 250)"><circle r="36" fill="#4d8799"/><text y="8" fill="#fff" font-size="24" font-weight="700">IV</text><text y="62" fill="#284452" font-size="15" font-weight="700">EDC · EIP</text></g>
+    <g transform="translate(782 286)"><circle r="36" fill="#587c91"/><text y="8" fill="#fff" font-size="24" font-weight="700">V</text><text y="62" fill="#284452" font-size="16" font-weight="700">EDM</text></g>
+    <g transform="translate(829 387)"><circle r="36" fill="#6a7187"/><text y="8" fill="#fff" font-size="24" font-weight="700">VI</text><text y="62" fill="#284452" font-size="16" font-weight="700">ECU</text></g>
+  </g>
+  <path d="M503 326v26m0 0h76v-28" fill="none" stroke="#b37841" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="503" cy="352" r="6" fill="#b37841"/>
+  <text x="534" y="378" text-anchor="middle" fill="#885a32" font-family="Arial, sans-serif" font-size="14" font-weight="700">LISTER TUBERCLE</text>
+  <rect x="272" y="577" width="656" height="52" rx="16" fill="#dce9e8"/>
+  <text x="600" y="610" text-anchor="middle" fill="#345965" font-family="Arial, sans-serif" font-size="17" font-weight="700">Compartment map only · use the source MRI below for image orientation</text>
+</svg>

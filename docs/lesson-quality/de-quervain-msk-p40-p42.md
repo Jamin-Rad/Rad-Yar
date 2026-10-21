@@ -1,4 +1,4 @@
-# De Quervain — source and teaching ledger
+# De Quervain — source and teaching ledger (updated for MSK.pdf pp.40–43)
 
 ## Scope and learner outcome
 
@@ -9,7 +9,7 @@
 
 ## Source review and coverage
 
-Source: `C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf`. Physical PDF pages 40–42 were rendered and visually inspected; printed page numbers are 39–41. Text extraction was compared with the page images.
+Source: `C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf`. Physical PDF pages 40–43 were rendered at 300 dpi and visually inspected; printed page numbers are 39–42. Text extraction was compared with the page images.
 
 | Point | PDF page / printed page | Importance | Lesson location | Status |
 | --- | --- | --- | --- | --- |
@@ -24,6 +24,7 @@ Source: `C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf`. Physical PDF pages 4
 | Tendon thickening and increased T2 signal | 42 / 41 | Essential | MRI findings and self-check | Included |
 | Sheath fluid (“halo”) and wall thickening | 42 / 41 | Essential | MRI findings and self-check | Included |
 | Radial peritendinous soft-tissue oedema over styloid | 42 / 41 | Supporting | MRI findings | Included |
+| Two axial PD-FS MRI panels with arrows at APL/EPB; source text describes tendon thickening/increased fluid-sensitive intratendinous signal, sheath fluid and radial subcutaneous oedema/fluid | 43 / 42 | Essential visual | MRI findings figure | Added as paired crop from the supplied PDF; translated caption reports source description and does not claim the panels alone prove diagnosis |
 | Ultrasound appearances / protocol | Not present in these pages | Out of scope | Scope note | Not inferred from curriculum modality tags |
 
 ## Teaching path and visual plan
@@ -31,9 +32,9 @@ Source: `C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf`. Physical PDF pages 4
 1. Localise: first extensor compartment over the radial styloid; APL and EPB.
 2. Recognise the clinical pattern and name the source’s provocative manoeuvre cautiously.
 3. Choose MRI sequences and separate tendon, sheath and peritendinous findings.
-4. Apply the pattern to one short self-check; finish with four portable rules.
+4. Apply the pattern to one short self-check; finish with four portable rules. A link to the six-compartment orientation lesson distinguishes general extensor anatomy from this focused pathology lesson.
 
-The code-authored SVG `public/educational/de-quervain/first-extensor-compartment.svg` is a language-neutral anatomy schematic, not diagnostic imaging. It answers “which tendons and where?” through anatomy and APL/EPB markers; its translated alt text and caption spell out both tendon names. A real MRI case is unavailable in the supplied pages, so none is invented or implied.
+The code-authored SVG `public/educational/de-quervain/first-extensor-compartment.svg` is a language-neutral anatomy schematic, not diagnostic imaging. It answers “which tendons and where?” through anatomy and APL/EPB markers; its translated alt text and caption spell out both tendon names. The paired PD-FS MRI crop at `public/msk/hand/de-quervain-pdf-p43-pd-fs-pair.png` comes from MSK.pdf p.43 / printed p.42. Both panels and source arrows are preserved; the visible source text describes the tendon, sheath and surrounding-tissue findings. This is a user-provided PDF image, with reuse authorized by the user for this lesson.
 
 ## Evidence added beyond the PDF
 
@@ -55,5 +56,5 @@ The code-authored SVG `public/educational/de-quervain/first-extensor-compartment
 
 - The PDF’s naming of the thumb-in-fist manoeuvre conflicts with the distinction in Wu et al.; the lesson identifies this rather than silently repeating it.
 - No ultrasound criteria, treatment advice, anatomic variants or diagnostic thresholds were supplied for this scope.
-- No real-case image or independent clinical sign-off is included. Browser QA must be completed after authorized access; SSR/source checks do not establish mobile layout, keyboard interaction or scientific approval.
-- Independent source/content/nomenclature/assessment review passed. Following review, the schematic was made language-neutral and the exact curriculum ID was linked as `inProgress`. Browser QA remains pending because the local test environment denied localhost socket access; this does not establish mobile layout, keyboard interaction or scientific approval.
+- The source PDF MRI pair is now embedded with a page-specific caption and translated alt. Independent review of this new figure/caption and its cross-link is pending. Browser QA must be completed after authorized access; SSR/source checks do not establish mobile layout, keyboard interaction or scientific approval.
+- Previous bounded source/content/nomenclature/assessment review covered pp.40–42 only. The p.43 image, translated caption, coverage notice and cross-link were added afterward and now require independent delta re-review. Browser QA remains pending because the local test environment denied localhost socket access; this does not establish mobile layout, keyboard interaction or scientific approval.

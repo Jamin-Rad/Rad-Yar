@@ -1,0 +1,31 @@
+.page { --accent: #65c9be; }
+.body { max-width: 980px; margin-inline: auto; }
+.lead, .note { line-height: 1.75; }
+.figure { max-width: 840px; margin: 1.25rem auto 1.5rem; padding: 10px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-card); }
+.figure img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.figure figcaption { padding: 10px 5px 2px; color: var(--text-muted); font-size: .92rem; line-height: 1.65; }
+.tableWrap { max-width: 100%; overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; }
+.tableWrap table { width: 100%; min-width: 680px; border-collapse: collapse; }
+.tableWrap caption { padding: 12px; color: var(--text-muted); text-align: start; }
+.tableWrap th, .tableWrap td { padding: 12px 14px; border-bottom: 1px solid var(--border); text-align: start; vertical-align: top; line-height: 1.65; }
+.tableWrap thead th { background: color-mix(in srgb, #65c9be 12%, var(--bg-card)); font-weight: 750; }
+.tableWrap tbody tr:last-child td { border-bottom: 0; }
+.tableWrap tbody td:first-child { min-width: 132px; font-weight: 700; }
+.note { margin-top: 1rem; padding: 12px 15px; border-inline-start: 4px solid var(--accent); border-radius: 8px; background: color-mix(in srgb, #65c9be 9%, var(--bg-card)); }
+.decision { margin-top: 1.5rem; padding: 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-card); }
+.decision h3 { margin-top: 0; }
+.decision fieldset { display: grid; gap: 9px; border: 0; padding: 0; }
+.decision legend { margin-bottom: 8px; font-weight: 700; }
+.decision label { display: flex; align-items: flex-start; gap: 10px; padding: 11px 12px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; }
+.decision input { margin-top: .35em; accent-color: var(--accent-strong, #176c68); }
+.feedback { line-height: 1.7; }
+.correct { color: var(--accent-strong, #176c68); }
+.related { margin-top: 1.2rem; }
+.related a { color: var(--accent-strong, #176c68); text-underline-offset: .18em; }
+.source { display: block; margin-top: 1rem; color: var(--text-muted); line-height: 1.6; }
+.summary { padding-inline-start: 1.3rem; line-height: 1.75; }
+@media (max-width: 760px) {
+  .figure { margin-inline: 0; padding: 6px; }
+  .tableWrap th, .tableWrap td { padding: 10px; }
+  .decision { padding: 13px; }
+}

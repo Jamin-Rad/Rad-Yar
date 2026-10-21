@@ -1,12 +1,242 @@
 'use client'
-import Link from 'next/link'
+
 import { useLanguage } from '@/providers/LanguageProvider'
 import LessonReferenceShell from '@/components/LessonReferenceShell'
-import styles from '../../gi/divertikulitis/page.module.css'
+import { ADRENAL_LESSON_CHECK } from '@/data/abdomenAdrenalLessonMaterials'
+import styles from './page.module.css'
 
-const C={
- de:{title:'Nebennierenraumforderungen',sub:'Fett, Dichte, Kontrastverhalten und klinischen Kontext zusammendenken.',lead:'Ein Inzidentalom ist eine zufällig entdeckte Nebennierenraumforderung ohne bekannte klinische Fragestellung der Nebenniere. Bei jeder Läsion zunächst native Dichte, Homogenität, Makrofett und klinischen Kontext erfassen.',rows:[['Adenom','Lipidreiches Adenom: homogen und niedrige native CT-Dichte; in der chemical-shift-MRT Signalabfall in opposed-phase. Bei unklarer Läsion kann Washout ergänzen, aber veraltete Grenzwerte nicht unkritisch übernehmen.'],['Myelolipom','Makroskopisches Fett in einer meist gut abgrenzbaren, teils heterogenen Raumforderung; Fett- und hämatopoetische Anteile können gemischt sein.'],['Phäochromozytom','Kann heterogen mit zystischen oder nekrotischen Anteilen und deutlicher Kontrastmittelaufnahme erscheinen. Washout kann Adenom imitieren; Morphologie ist allein nicht sicher genug.'],['Neuroblastom (Kind)','Ursprung im Nebennierenmark oder paraspinalen sympathischen Ganglien. Verkalkungen, Gefäßummauerung und Mittellinienüberschreitung können auftreten; Ursprung und Verdrängung der Niere beurteilen.']],guideline:'Aktualisierte Einordnung: Die ESE/ENSAT-Leitlinie 2023 bewertet eine homogene Raumforderung mit nativer Dichte ≤10 HU als benign; die Empfehlung und ihr klinischer Kontext sind in der Primärleitlinie nachzulesen. Endokrine Abklärung ist nicht durch Bildgebung ersetzbar.',report:['Seite, Größe, native Dichte und Homogenität', 'Makroskopisches Fett, Signalabfall in opposed-phase und Nekrose/Verkalkung', 'Kontrastverhalten mit Protokollphasen, ohne isolierte Washout-Zahl als Diagnose', 'Voraufnahmen, bekannte Tumorerkrankung und klinische/endokrine Fragestellung'],cave:'Pheochromozytome können wie Adenome aussehen und Washout zeigen. Vor invasiver Abklärung oder Intervention müssen passende hormonelle Sicherheitsfragen klinisch berücksichtigt werden.',source:'Abdeckung: Abdomen.pdf, Seiten 58–64. Aktuelle Inzidentalom-Einordnung: ESE/ENSAT Guideline 2023.',url:'https://doi.org/10.1093/ejendo/lvad066'},
- en:{title:'Adrenal masses',sub:'Integrate fat, attenuation, enhancement and clinical context.',lead:'An incidentaloma is an adrenal mass found by chance when the adrenal gland was not the target of clinical evaluation. For each lesion, first record unenhanced attenuation, homogeneity, macroscopic fat and clinical context.',rows:[['Adenoma','Lipid-rich adenoma: homogeneous and low attenuation on unenhanced CT; signal drop on opposed-phase chemical-shift MRI. Washout may help with indeterminate lesions, but do not apply outdated cutoffs uncritically.'],['Myelolipoma','Macroscopic fat within a usually well-defined, sometimes heterogeneous mass; fatty and haematopoietic components may be mixed.'],['Pheochromocytoma','May appear heterogeneous with cystic or necrotic areas and avid enhancement. Washout can mimic adenoma; morphology alone is not sufficiently reliable.'],['Neuroblastoma (child)','Arises from adrenal medulla or paraspinal sympathetic ganglia. Calcification, vascular encasement and crossing the midline may occur; assess the origin and whether the kidney is displaced.']],guideline:'Updated framework: the 2023 ESE/ENSAT guideline considers a homogeneous mass with unenhanced attenuation ≤10 HU benign; consult the primary guideline for the recommendation and its clinical context. Imaging does not replace endocrine assessment.',report:['Side, size, unenhanced attenuation and homogeneity', 'Macroscopic fat, opposed-phase signal drop, necrosis/calcification', 'Enhancement with protocol phases; do not diagnose from an isolated washout value', 'Prior studies, known cancer and clinical/endocrine question'],cave:'Pheochromocytomas can resemble adenomas and demonstrate washout. Relevant hormonal safety questions must be addressed clinically before invasive work-up or intervention.',source:'Coverage: Abdomen.pdf, pp. 58–64. Updated incidentaloma framework: 2023 ESE/ENSAT guideline.',url:'https://doi.org/10.1093/ejendo/lvad066'},
- fa:{title:'توده‌های آدرنال',sub:'چربی، دانسیته، الگوی تقویت و زمینه بالینی را با هم بسنجید.',lead:'اینسی‌دنتالوما توده آدرنالِ تصادفی است که بررسی برای پرسش بالینی مرتبط با آدرنال انجام نشده باشد. در هر ضایعه ابتدا دانسیته بدون تزریق، همگنی، چربی ماکروسکوپیک و زمینه بالینی را ثبت کنید.',rows:[['آدنوم','آدنوم پرچربی: همگن و کم‌دانسیته در CT بدون تزریق؛ افت سیگنال در فاز opposed-phase در MRI chemical-shift. Washout می‌تواند در ضایعه نامعین کمک کند، اما آستانه‌های قدیمی را بی‌بررسی به‌کار نبرید.'],['مایلولیپوما','چربی ماکروسکوپیک در توده‌ای معمولاً مشخص و گاهی ناهمگون؛ اجزای چربی و خون‌ساز ممکن است با هم باشند.'],['فئوکروموسیتوما','ممکن است ناهمگون و دارای بخش کیستیک یا نکروتیک با تقویت واضح باشد. Washout می‌تواند آدنوم را تقلید کند؛ مورفولوژی به‌تنهایی کافی نیست.'],['نوروبلاستوما (کودک)','از مدولای آدرنال یا گانگلیون‌های سمپاتیک پارااسپاینال منشأ می‌گیرد. کلسیفیکاسیون، احاطه عروق و عبور از خط وسط ممکن است دیده شود؛ منشأ توده و جابه‌جایی کلیه را بررسی کنید.']],guideline:'چارچوب به‌روز: راهنمای ESE/ENSAT سال ۲۰۲۳ توده همگن با دانسیته بدون تزریق ≤۱۰ HU را خوش‌خیم در نظر می‌گیرد؛ برای توصیه و زمینه کاربرد به راهنمای اصلی مراجعه کنید. تصویربرداری جایگزین بررسی غدد درون‌ریز نیست.',report:['سمت، اندازه، دانسیته بدون تزریق و همگنی', 'چربی ماکروسکوپیک، افت سیگنال opposed-phase، نکروز/کلسیفیکاسیون', 'تقویت در فازهای پروتکل؛ تشخیص را به یک عدد washout محدود نکنید', 'بررسی‌های قبلی، سرطان شناخته‌شده و پرسش بالینی/غددی'],cave:'فئوکروموسیتوما ممکن است شبیه آدنوم باشد و washout نشان دهد. پرسش‌های ایمنی هورمونی باید پیش از بررسی تهاجمی یا مداخله از نظر بالینی بررسی شوند.',source:'پوشش منبع: Abdomen.pdf، صفحات ۵۸ تا ۶۴. چارچوب به‌روز اینسی‌دنتالوما: راهنمای ESE/ENSAT 2023.',url:'https://doi.org/10.1093/ejendo/lvad066'}}
-export default function AdrenalMassesPage(){const{lang}=useLanguage();const c=C[lang]||C.de;const rtl=lang==='fa';return <LessonReferenceShell lessonId="abdomen-adrenal-masses" lang={lang} title={c.title || c.subtitle || c.sub} diagram="adrenal" copy={c}><main className={styles.page} dir={rtl?'rtl':'ltr'} lang={lang}><header className={styles.header}><div className={styles.breadcrumb}><Link href="/">RadYar</Link><span>›</span><Link href="/lernen/abdomen">Abdomen</Link><span>›</span><span>{c.title}</span></div><div className={styles.hero}><div className={styles.heroText}><h1>{c.title}</h1><p>{c.sub}</p></div></div></header><div className={styles.main} style={{maxWidth:1080,margin:'2rem auto',padding:'0 1rem'}}><section className={styles.section}><p className={styles.lead}>{c.lead}</p><div className={styles.cardsGrid}>{c.rows.map(([a,b])=><article className={styles.infoCard} key={a}><h2>{a}</h2><p>{b}</p></article>)}</div></section><section className={styles.section}><p>{c.guideline}</p><h2>{lang==='fa'?'ساختار گزارش':'Structured report'}</h2><ol>{c.report.map(x=><li key={x}>{x}</li>)}</ol><div className={styles.callout}><strong>⚠</strong><p>{c.cave}</p></div><small>{c.source}</small><p><a href={c.url} target="_blank" rel="noreferrer">ESE/ENSAT guideline 2023 ↗</a></p></section></div></main></LessonReferenceShell>
+const images = {
+  adenoma: '/abdomen/nebenniere/source-pdf/adenoma-washout.jpg',
+  myelolipomaNative: '/abdomen/nebenniere/source-pdf/myelolipoma-native.jpg',
+  myelolipomaContrast: '/abdomen/nebenniere/source-pdf/myelolipoma-postcontrast.jpg',
+  pheochromocytoma: '/abdomen/nebenniere/source-pdf/pheochromocytoma-four-phase.jpg',
+  neuroblastoma: '/abdomen/nebenniere/source-pdf/neuroblastoma-mri-pair.jpg',
+}
+
+const C = {
+  de: {
+    title: 'Nebennierenraumforderungen',
+    contentTitle: 'Vom Bildmuster zur Einordnung',
+    goals: [
+      'Zufallsbefund, Dichte, Fett und klinischen Kontext getrennt erfassen.',
+      'Mikroskopisches Adenomfett von makroskopischem Fett im Myelolipom unterscheiden.',
+      'Phäochromozytom und Neuroblastom anhand von Muster und Ursprung einordnen, ohne Einzelzeichen zu überdehnen.',
+    ],
+    summary: [
+      '„Inzidentalom“ beschreibt den Entdeckungsweg, nicht die Gutartigkeit.',
+      'Homogenität und native Dichte zuerst beurteilen; hormonelle Funktion ist damit nicht beantwortet.',
+      'Adenom: intrazelluläres Fett mit Opposed-Phase-Signalabfall; Myelolipom: makroskopische Fettanteile mit Fettsuppression.',
+      'Washout kann ein Phäochromozytom nicht sicher ausschließen; bei Kindern den Nebennierenursprung gegen den Nierenursprung abgrenzen.',
+    ],
+    incidentalomaTitle: 'Was bedeutet „Inzidentalom“?',
+    incidentaloma: 'Eine Nebennierenraumforderung gilt als Inzidentalom, wenn sie zufällig und ohne gezielte klinische Fragestellung der Nebenniere entdeckt wurde. Der Begriff selbst sagt nichts über Histologie oder Hormonaktivität aus. Die im PDF gezeigte Größen- und Prozentgrafik mit Kontrollintervallen ist keine aktuelle Entscheidungsregel und wird hier nicht verwendet.',
+    adenomaTitle: 'Adenom: mikroskopisches Fett in CT und MRT erkennen',
+    adenoma: 'Ein lipidreiches Adenom enthält mikroskopisches intrazelluläres Fett. Im PDF-Beispiel sind die Messwerte der markierten Läsion nativ −3 HU, arteriell +3 HU, portalvenös +38 HU und spät +12 HU. Das Beispiel illustriert Phasen und ROI-Messungen; die alten Washout-Grenzen und Leistungsangaben der PDF werden nicht als aktuelle allgemeine Diagnosekriterien übernommen.',
+    adenomaAlt: 'Vier axiale CT-Phasen mit ROI-Messungen einer markierten Nebennierenläsion: nativ minus 3 HU, arteriell plus 3 HU, portalvenös plus 38 HU und spät plus 12 HU.',
+    adenomaCaption: 'Einzelfall aus Abdomen.pdf, PDF-Seite 59 (Druckseite 58). Die Phasenmesswerte gehören zu diesem Beispiel und definieren keine universelle Washout-Regel.',
+    fatTitle: 'Mikroskopisches oder makroskopisches Fett?',
+    fatRows: [
+      ['Fettkomponente', 'Adenom: mikroskopisch, intrazellulär', 'Myelolipom: sichtbares makroskopisches Fett mit hämatopoetischen Anteilen'],
+      ['Chemical-shift-MRT', 'Homogener Signalabfall in Opposed-Phase kann auftreten.', 'Kein flächiger Signalabfall der gesamten Läsion; dunkler India-ink-Rand an Fett-Wasser-Grenzen möglich.'],
+      ['Fettsättigung', 'Kein ausgeprägter Signalabfall, da die Sequenz vor allem makroskopisches Fett unterdrückt.', 'Makroskopische Fettanteile zeigen deutlichen Signalabfall.'],
+    ],
+    myelolipomaTitle: 'Myelolipom: makroskopisches Fett und Gewebeanteile',
+    myelolipoma: 'Das PDF beschreibt eine meist gut abgrenzbare, heterogene Läsion aus reifem Fett und hämatopoetischem Gewebe. In den zwei axialen CT-Bildern bleibt die makroskopische Fettkomponente nativ sichtbar; nach Kontrastmittel ist heterogene Anreicherung der weichteildichten Anteile zu sehen. Die Bilder sind nicht als vollständiges Protokoll oder alleiniger Benignitätsnachweis zu verstehen.',
+    myelolipomaNativeAlt: 'Axiales natives CT aus Abdomen.pdf, Seite 61: rechtsseitige Nebennierenraumforderung mit sichtbaren makroskopischen Fettanteilen.',
+    myelolipomaContrastAlt: 'Axiales CT nach Kontrastmittel aus Abdomen.pdf, Seite 61: dieselbe rechtsseitige Nebennierenraumforderung mit heterogenen weichteildichten Anteilen.',
+    nativeLabel: 'Nativ', contrastLabel: 'Nach Kontrastmittel',
+    myelolipomaCaption: 'Quellpaar aus Abdomen.pdf, PDF-Seite 61 (Druckseite 60). Die PDF bezeichnet links als nativ und rechts als Post-KM; keine weitere Phase wird abgeleitet.',
+    pheoTitle: 'Phäochromozytom: Washout schließt es nicht aus',
+    pheo: 'Das PDF-Beispiel zeigt eine heterogene Nebennierenraumforderung mit nekrotischen beziehungsweise zystischen Anteilen und deutlicher Kontrastmittelaufnahme. Die portalvenöse Phase ist in der beschriebenen Falltafel stärker als die arterielle; später nimmt die Anreicherung ab. Da Phäochromozytome Adenome beim Washout imitieren können, ist Washout allein kein sicherer Ausschluss. Die historische „10%-Regel“ der Quelle wird nicht gelehrt.',
+    pheoAlt: 'Vierphasige CT-Falltafel aus Abdomen.pdf mit markierter linker Nebennierenraumforderung: natives CT, arterielle, portalvenöse und späte Phase.',
+    pheoCaption: 'Falltafel aus Abdomen.pdf, PDF-Seite 63 (Druckseite 62). Gezeigt wird der konkrete Phasenverlauf dieser Läsion, keine eindeutige Diagnose durch eine einzelne Phase.',
+    neuroTitle: 'Neuroblastom: den Ursprung von der Niere abgrenzen',
+    neuro: 'Das PDF ordnet das Neuroblastom dem sympathischen Nervensystem zu, meist der Nebenniere oder paraspinalen Ganglien. Eine klare Grenze zur Niere mit Verdrängung statt Nierenursprung, Mittellinienüberschreitung und Gefäßummauerung sprechen im passenden Kontext für einen Nebennieren-/sympathischen Ursprung. Spinalkanalbefall und retroperitoneale Lymphknoten- oder Knochenmetastasen sind mögliche Ausbreitungsbefunde. Das PDF-MRT-Paar ist nicht nach Sequenz beschriftet; daher wird keine Sequenz benannt.',
+    neuroAlt: 'Zwei axiale MRT-Bilder aus Abdomen.pdf, Seite 64: große markierte linke Oberbauchraumforderung, die die Mittellinie überschreitet und Gefäße umgibt; Sequenz nicht angegeben.',
+    neuroCaption: 'MRT-Paar aus Abdomen.pdf, PDF-Seite 64 (Druckseite 63); die Sequenzen sind in der Quelle nicht angegeben. Zur Nierenabgrenzung siehe auch die Lektion zum Nephroblastom.',
+    wilmsLink: 'Nephroblastom (Wilms-Tumor): Nierenursprung und Claw sign',
+    caveTitle: 'Grenzen der Quelle',
+    cave: 'Das PDF enthält ältere Managementgrafiken, Washout-Schwellen und die „10%-Regel“. Diese Angaben werden nicht als aktuelle Empfehlungen übernommen. Die ESE/ENSAT-Leitlinie von 2023 behandelt homogene Läsionen mit ≤10 HU nativ als benign; hormonelle Funktion und der individuelle klinische Kontext müssen unabhängig beurteilt werden.',
+    reference: 'Aktuelle Einordnung des Inzidentaloms: ESE/ENSAT Clinical Practice Guideline 2023. Die Seitenzahlen in diesem Ledger beziehen sich auf physische PDF-Seiten; gedruckte Folios stehen jeweils in Klammern.',
+    tableHeaders: ['Merkmal', 'Lipidreiches Adenom', 'Myelolipom'],
+  },
+  en: {
+    title: 'Adrenal masses',
+    contentTitle: 'From imaging pattern to assessment',
+    goals: [
+      'Separate incidental discovery, attenuation, fat and clinical context.',
+      'Distinguish microscopic adenoma fat from macroscopic fat in myelolipoma.',
+      'Assess pheochromocytoma and neuroblastoma by pattern and site of origin without overcalling a single sign.',
+    ],
+    summary: [
+      '“Incidentaloma” describes how a lesion was found, not whether it is benign.',
+      'Assess homogeneity and unenhanced attenuation first; this does not determine hormonal function.',
+      'Adenoma: intracellular fat with opposed-phase signal loss; myelolipoma: macroscopic fat that suppresses on fat-saturated imaging.',
+      'Washout cannot reliably exclude pheochromocytoma; in children, distinguish adrenal from renal origin.',
+    ],
+    incidentalomaTitle: 'What does “incidentaloma” mean?',
+    incidentaloma: 'An adrenal mass is an incidentaloma when it is found by chance, without a targeted clinical question about the adrenal gland. The term itself says nothing about histology or hormonal activity. The size-based flowchart and follow-up percentages shown in the PDF are not current decision rules and are not used here.',
+    adenomaTitle: 'Adenoma: recognise microscopic fat on CT and MRI',
+    adenoma: 'A lipid-rich adenoma contains microscopic intracellular fat. In the PDF example, ROI values for the marked lesion are −3 HU unenhanced, +3 HU arterial, +38 HU portal venous and +12 HU delayed. This illustrates phase-specific measurements in one case; the PDF’s older washout cutoffs and performance estimates are not presented as current universal diagnostic criteria.',
+    adenomaAlt: 'Four axial CT phases with ROI measurements of a marked adrenal lesion: unenhanced minus 3 HU, arterial plus 3 HU, portal venous plus 38 HU and delayed plus 12 HU.',
+    adenomaCaption: 'Single case from Abdomen.pdf, PDF page 59 (printed page 58). These phase values belong to this example and do not define a universal washout rule.',
+    fatTitle: 'Microscopic or macroscopic fat?',
+    fatRows: [
+      ['Fat component', 'Adenoma: microscopic, intracellular', 'Myelolipoma: visible macroscopic fat with haematopoietic components'],
+      ['Chemical-shift MRI', 'Homogeneous opposed-phase signal loss may occur.', 'No diffuse signal loss of the whole lesion; a dark India-ink rim may appear at fat–water boundaries.'],
+      ['Fat suppression', 'No marked signal loss because the sequence mainly suppresses macroscopic fat.', 'Macroscopic fat shows marked signal loss.'],
+    ],
+    myelolipomaTitle: 'Myelolipoma: macroscopic fat and soft-tissue components',
+    myelolipoma: 'The PDF describes a usually well-defined, heterogeneous lesion containing mature fat and haematopoietic tissue. In the two axial CT images, macroscopic fat remains visible on the unenhanced image; after contrast, the soft-tissue components enhance heterogeneously. These images are not a complete protocol or proof of benignity by themselves.',
+    myelolipomaNativeAlt: 'Axial unenhanced CT from Abdomen.pdf, page 61: right adrenal mass with visible macroscopic fat.',
+    myelolipomaContrastAlt: 'Axial post-contrast CT from Abdomen.pdf, page 61: the same right adrenal mass with heterogeneous soft-tissue components.',
+    nativeLabel: 'Unenhanced', contrastLabel: 'Post-contrast',
+    myelolipomaCaption: 'Source pair from Abdomen.pdf, PDF page 61 (printed page 60). The PDF labels the left image unenhanced and the right image post-contrast; no further phase is inferred.',
+    pheoTitle: 'Pheochromocytoma: washout does not exclude it',
+    pheo: 'The PDF example shows a heterogeneous adrenal mass with necrotic or cystic components and avid enhancement. In the described case panel, portal-venous enhancement exceeds arterial enhancement and decreases later. Because pheochromocytomas can mimic adenomas on washout, washout alone is not a reliable exclusion. The source’s historical “10% rule” is not taught.',
+    pheoAlt: 'Four-phase CT case panel from Abdomen.pdf showing a marked left adrenal mass: unenhanced, arterial, portal venous and delayed phases.',
+    pheoCaption: 'Case panel from Abdomen.pdf, PDF page 63 (printed page 62). It shows this lesion’s phase pattern, not a definitive diagnosis from any single phase.',
+    neuroTitle: 'Neuroblastoma: distinguish its origin from the kidney',
+    neuro: 'The PDF places neuroblastoma in the sympathetic nervous system, usually the adrenal gland or paraspinal ganglia. A clear plane from the kidney with displacement rather than renal origin, midline extension and vascular encasement support an adrenal/sympathetic origin in the appropriate context. Spinal canal involvement and retroperitoneal nodal or bone metastases are possible spread findings. The PDF MRI pair is not sequence-labelled, so no sequence is named here.',
+    neuroAlt: 'Two axial MRI images from Abdomen.pdf, page 64: a large marked left upper-abdominal mass crossing the midline and encasing vessels; sequence not specified.',
+    neuroCaption: 'MRI pair from Abdomen.pdf, PDF page 64 (printed page 63); the source does not identify the sequences. See also the nephroblastoma lesson for renal origin and the claw sign.',
+    wilmsLink: 'Nephroblastoma (Wilms tumour): renal origin and the claw sign',
+    caveTitle: 'Limits of the source',
+    cave: 'The PDF includes older management flowcharts, washout thresholds and the “10% rule”. These are not carried over as current recommendations. The 2023 ESE/ENSAT guideline considers homogeneous lesions with unenhanced attenuation ≤10 HU benign; hormonal function and individual clinical context require separate assessment.',
+    reference: 'Current incidentaloma framework: ESE/ENSAT Clinical Practice Guideline 2023. Page numbers in this ledger refer to physical PDF pages; printed folios are shown in parentheses.',
+    tableHeaders: ['Feature', 'Lipid-rich adenoma', 'Myelolipoma'],
+  },
+  fa: {
+    title: 'توده‌های آدرنال',
+    contentTitle: 'از الگوی تصویربرداری تا ارزیابی',
+    goals: [
+      'کشف اتفاقی، دانسیته، چربی و زمینه بالینی را جداگانه ثبت کنید.',
+      'چربی میکروسکوپیک آدنوم را از چربی ماکروسکوپیک مایلولیپوما افتراق دهید.',
+      'فئوکروموسیتوم و نوروبلاستوما را با توجه به الگو و منشأ ارزیابی کنید و از تعمیم یک نشانه بپرهیزید.',
+    ],
+    summary: [
+      '«اینسی‌دنتالوما» نحوه کشف ضایعه را توصیف می‌کند، نه خوش‌خیم‌بودن آن را.',
+      'ابتدا همگنی و دانسیته بدون تزریق را بسنجید؛ این موارد عملکرد هورمونی را تعیین نمی‌کنند.',
+      'آدنوم: چربی داخل‌سلولی با افت سیگنال opposed-phase؛ مایلولیپوما: چربی ماکروسکوپیک با افت سیگنال در توالی سرکوب چربی.',
+      'Washout فئوکروموسیتوم را با اطمینان رد نمی‌کند؛ در کودکان منشأ آدرنال را از منشأ کلیوی جدا کنید.',
+    ],
+    incidentalomaTitle: '«اینسی‌دنتالوما» یعنی چه؟',
+    incidentaloma: 'توده آدرنال زمانی اینسی‌دنتالوماست که به‌طور اتفاقی و بدون پرسش بالینی هدفمند درباره آدرنال کشف شود. این اصطلاح به‌خودی‌خود بافت‌شناسی یا فعالیت هورمونی را مشخص نمی‌کند. فلوچارت مبتنی بر اندازه و درصدهای پیگیری در PDF، قاعده تصمیم‌گیری جاری نیست و در اینجا به‌کار نرفته است.',
+    adenomaTitle: 'آدنوم: چربی میکروسکوپیک را در CT و MRI بشناسید',
+    adenoma: 'آدنوم پرچربی حاوی چربی میکروسکوپیک داخل‌سلولی است. در نمونه PDF، مقادیر ROI ضایعه مشخص‌شده عبارت‌اند از ۳− HU بدون تزریق، ۳+ HU شریانی، ۳۸+ HU پورت و ۱۲+ HU تأخیری. این نمونه اندازه‌گیری در فازهای مختلف را نشان می‌دهد؛ آستانه‌های قدیمی Washout و اعداد کارایی PDF معیار تشخیصی عمومی و جاری نیستند.',
+    adenomaAlt: 'چهار فاز CT محوری با اندازه‌گیری ROI از ضایعه مشخص‌شده آدرنال: بدون تزریق منفی ۳ HU، شریانی مثبت ۳، پورت مثبت ۳۸ و تأخیری مثبت ۱۲ HU.',
+    adenomaCaption: 'نمونه منفرد از Abdomen.pdf، صفحه ۵۹ فایل (صفحه چاپی ۵۸). مقادیر فازی مربوط به همین نمونه‌اند و قاعده عمومی Washout را تعریف نمی‌کنند.',
+    fatTitle: 'چربی میکروسکوپیک یا ماکروسکوپیک؟',
+    fatRows: [
+      ['جزء چربی', 'آدنوم: میکروسکوپیک و داخل‌سلولی', 'مایلولیپوما: چربی ماکروسکوپیک قابل مشاهده همراه با اجزای خون‌ساز'],
+      ['MRI جابه‌جایی شیمیایی', 'افت همگن سیگنال در opposed-phase ممکن است دیده شود.', 'افت منتشر سیگنال در کل ضایعه وجود ندارد؛ ممکن است حاشیه تیره India-ink در مرز چربی و آب دیده شود.'],
+      ['سرکوب چربی', 'افت سیگنال بارز ندارد، چون توالی عمدتاً چربی ماکروسکوپیک را سرکوب می‌کند.', 'چربی ماکروسکوپیک افت سیگنال بارز دارد.'],
+    ],
+    myelolipomaTitle: 'مایلولیپوما: چربی ماکروسکوپیک و اجزای بافت نرم',
+    myelolipoma: 'در PDF، ضایعه‌ای معمولاً مشخص و ناهمگون از چربی بالغ و بافت خون‌ساز توصیف شده است. در دو تصویر CT محوری، چربی ماکروسکوپیک در تصویر بدون تزریق دیده می‌شود؛ پس از تزریق، اجزای بافت نرم تقویت ناهمگون دارند. این تصاویر پروتکل کامل یا اثبات مستقل خوش‌خیمی نیستند.',
+    myelolipomaNativeAlt: 'CT محوری بدون تزریق از صفحه ۶۱ Abdomen.pdf: توده آدرنال راست با چربی ماکروسکوپیک قابل مشاهده.',
+    myelolipomaContrastAlt: 'CT محوری پس از تزریق از صفحه ۶۱ Abdomen.pdf: همان توده آدرنال راست با اجزای بافت نرم و تقویت ناهمگون.',
+    nativeLabel: 'بدون تزریق', contrastLabel: 'پس از تزریق',
+    myelolipomaCaption: 'دو تصویر منبع از Abdomen.pdf، صفحه ۶۱ فایل (صفحه چاپی ۶۰). تصویر چپ در PDF بدون تزریق و راست پس از تزریق برچسب خورده است؛ فاز دیگری استنباط نشده است.',
+    pheoTitle: 'فئوکروموسیتوم: Washout آن را رد نمی‌کند',
+    pheo: 'نمونه PDF توده‌ای ناهمگون در آدرنال با اجزای نکروتیک یا کیستیک و تقویت واضح نشان می‌دهد. در شرح همین نمونه، تقویت پورت از شریانی بیشتر است و در فاز تأخیری کاهش می‌یابد. چون فئوکروموسیتوم ممکن است در الگوی Washout آدنوم را تقلید کند، Washout به‌تنهایی معیار رد قابل اتکا نیست. «قاعده ۱۰ درصد» تاریخی منبع در این درس آموزش داده نمی‌شود.',
+    pheoAlt: 'مجموعه CT چهار فازی از صفحه ۶۳ Abdomen.pdf با توده مشخص‌شده آدرنال چپ: فاز بدون تزریق، شریانی، پورت و تأخیری.',
+    pheoCaption: 'مجموعه موردی از Abdomen.pdf، صفحه ۶۳ فایل (صفحه چاپی ۶۲). الگوی فازی همین ضایعه را نشان می‌دهد، نه تشخیص قطعی بر پایه یک فاز.',
+    neuroTitle: 'نوروبلاستوما: منشأ آن را از کلیه جدا کنید',
+    neuro: 'در PDF، نوروبلاستوما متعلق به دستگاه عصبی سمپاتیک و معمولاً برخاسته از آدرنال یا گانگلیون‌های پارااسپاینال است. مرز واضح با کلیه و جابه‌جایی آن به‌جای منشأ کلیوی، عبور از خط وسط و احاطه عروق در زمینه مناسب از منشأ آدرنال/سمپاتیک حمایت می‌کنند. درگیری کانال نخاعی و متاستاز غدد لنفاوی رتروپریتوئن یا استخوان ممکن است رخ دهد. دو تصویر MRI در PDF برچسب توالی ندارند و در اینجا نام توالی حدس زده نشده است.',
+    neuroAlt: 'دو تصویر MRI محوری از صفحه ۶۴ Abdomen.pdf: توده بزرگ مشخص‌شده در بخش فوقانی چپ شکم که از خط وسط عبور می‌کند و عروق را احاطه می‌کند؛ توالی مشخص نیست.',
+    neuroCaption: 'دو تصویر MRI از Abdomen.pdf، صفحه ۶۴ فایل (صفحه چاپی ۶۳)؛ توالی‌ها در منبع مشخص نشده‌اند. برای منشأ کلیوی و علامت چنگالی، درس نفروبلاستوما را نیز ببینید.',
+    wilmsLink: 'نفروبلاستوما (تومور ویلمز): منشأ کلیوی و علامت چنگالی',
+    caveTitle: 'محدودیت‌های منبع',
+    cave: 'PDF شامل فلوچارت‌های قدیمی مدیریت، آستانه‌های Washout و «قاعده ۱۰ درصد» است. این موارد به‌عنوان توصیه جاری منتقل نشده‌اند. راهنمای ESE/ENSAT سال ۲۰۲۳ ضایعات همگن با دانسیته بدون تزریق حداکثر ۱۰ HU را خوش‌خیم می‌داند؛ فعالیت هورمونی و زمینه بالینی فرد باید جداگانه ارزیابی شوند.',
+    reference: 'چارچوب جاری اینسی‌دنتالوما: راهنمای بالینی ESE/ENSAT سال ۲۰۲۳. شماره‌های این دفتر به صفحات واقعی PDF اشاره دارند و شماره چاپی داخل پرانتز آمده است.',
+    tableHeaders: ['ویژگی', 'آدنوم پرچربی', 'مایلولیپوما'],
+  },
+}
+
+function Figure({ src, alt, caption, width, height }) {
+  return <figure className={styles.figure}>
+    <img src={src} alt={alt} width={width} height={height} loading="lazy" />
+    <figcaption>{caption}</figcaption>
+  </figure>
+}
+
+export default function AdrenalMassesPage() {
+  const { lang } = useLanguage()
+  const c = C[lang] || C.de
+  const [feature, adenoma, myelolipoma] = c.fatRows
+  const headings = c.tableHeaders
+
+  return <LessonReferenceShell
+    lessonId="abdomen-adrenal-masses"
+    lang={lang}
+    title={c.title}
+    diagram="adrenal"
+    goals={c.goals}
+    copy={{ contentTitle: c.contentTitle, diagramCaption: {
+      de: 'Schematische Lagebeziehung der Nebennieren; keine Patientendarstellung.',
+      en: 'Schematic adrenal location; not patient imaging.',
+      fa: 'شماتیک محل آدرنال‌ها؛ تصویر بیمار نیست.',
+    } }}
+    summary={c.summary}
+    quizHref="/ueben/quiz?fach=abdomen&n=5&themen=nebennieren-inzidentalom,nebennierenadenom,phaeochromozytom,myelolipom,neuroblastom-nebenniere"
+    flashcardsHref="/flashcards/nebennierenraumforderungen"
+    check={ADRENAL_LESSON_CHECK}
+  >
+    <div className={styles.lesson}>
+      <section className={styles.section}>
+        <h3>{c.incidentalomaTitle}</h3>
+        <p>{c.incidentaloma}</p>
+        <aside className={styles.cave}>
+          <h4>{c.caveTitle}</h4>
+          <p>{c.cave}</p>
+        </aside>
+      </section>
+
+      <section className={styles.section}>
+        <h3>{c.adenomaTitle}</h3>
+        <p>{c.adenoma}</p>
+        <Figure src={images.adenoma} width={876} height={798} alt={c.adenomaAlt} caption={c.adenomaCaption} />
+      </section>
+
+      <section className={styles.section}>
+        <h3>{c.fatTitle}</h3>
+        <div className={styles.tableScroll} role="region" tabIndex={0} aria-label={c.fatTitle}>
+          <table>
+            <thead><tr>{headings.map((heading, index) => <th key={index} scope="col">{heading}</th>)}</tr></thead>
+            <tbody>{[feature, adenoma, myelolipoma].map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, columnIndex) => columnIndex === 0 ? <th key={columnIndex} scope="row">{cell}</th> : <td key={columnIndex}>{cell}</td>)}</tr>)}</tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <h3>{c.myelolipomaTitle}</h3>
+        <p>{c.myelolipoma}</p>
+        <div className={styles.imagePair}>
+          <Figure src={images.myelolipomaNative} width={307} height={250} alt={c.myelolipomaNativeAlt} caption={c.nativeLabel} />
+          <Figure src={images.myelolipomaContrast} width={289} height={237} alt={c.myelolipomaContrastAlt} caption={c.contrastLabel} />
+        </div>
+        <p className={styles.credit}>{c.myelolipomaCaption}</p>
+      </section>
+
+      <section className={styles.section}>
+        <h3>{c.pheoTitle}</h3>
+        <p>{c.pheo}</p>
+        <Figure src={images.pheochromocytoma} width={656} height={488} alt={c.pheoAlt} caption={c.pheoCaption} />
+      </section>
+
+      <section className={styles.section}>
+        <h3>{c.neuroTitle}</h3>
+        <p>{c.neuro}</p>
+        <Figure src={images.neuroblastoma} width={1062} height={356} alt={c.neuroAlt} caption={c.neuroCaption} />
+        <p className={styles.related}><a href="/abdomen/niere/wilms-tumour">{c.wilmsLink} →</a></p>
+      </section>
+
+      <section className={styles.section}>
+        <h3>{lang === 'fa' ? 'منبع و چارچوب جاری' : lang === 'en' ? 'Source and current framework' : 'Quelle und aktueller Rahmen'}</h3>
+        <p>{c.reference}</p>
+        <a href="https://www.ese-hormones.org/publications/directory/ese-clinical-practice-guideline-on-the-management-of-adrenal-incidentalomas-in-collaboration-with-the-european-network-for-the-study-of-adrenal-tumors/" target="_blank" rel="noreferrer">ESE/ENSAT adrenal incidentaloma guideline 2023 ↗</a>
+      </section>
+    </div>
+  </LessonReferenceShell>
 }
