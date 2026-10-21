@@ -1,10 +1,10 @@
-# Gehirn.pdf p.18–20: bounded ICH lesson update
+# Gehirn.pdf pp.18–21: bounded ICH lesson update
 
 ## Scope
 
-This batch covers **physical PDF pages 18–20** (printed folios 17–19) only: ICH causes and CT findings, approximate CT evolution, haemoglobin-related MRI signal, and the source's 1.5 T stage table. It does not audit physical p.21, cervical dissection, other ICH cases, the complete route, linked question/card banks, or clinical practice pathways.
+This batch covers **physical PDF pages 18–21** (printed folios 17–20) only: ICH causes and CT findings, approximate CT evolution, haemoglobin-related MRI signal, the source's 1.5 T stage table, and the sequence-selection/differential notes on p.21. It does not audit cervical dissection, other ICH cases, the complete route, every linked question/card, or clinical practice pathways.
 
-Source inspected: C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf, pages 18–20. Text extraction was compared with page renders; p.20 is a dense six-stage table and was read visually. The PDF pages are source material whose reuse the user explicitly authorized.
+Source inspected: C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf, pages 18–21. Text extraction was compared with page renders; p.20 is a dense six-stage table and was read visually, and p.21 was visually inspected for its sequence and differential notes. The PDF pages are source material whose reuse the user explicitly authorized.
 
 ## Page-to-lesson coverage
 
@@ -21,6 +21,7 @@ Source inspected: C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf, pages 18�
 | p.19: oxy-Hb, deoxy-Hb, intracellular/extracellular met-Hb and haemosiderin stages | Core signal relationships retained with typical/often/may wording | Fixed day thresholds and absolute bright-bright specificity have been removed. |
 | p.19: conversion can be peripheral-to-central and boundaries vary by haematoma size | Retained in the MRI caveat | Large haematomas may contain different signal stages at once. |
 | p.20: six-stage 1.5 T MRI signal chart, with stated time ranges and T1/T2/T2*/SWI/DWI pattern | The source image is displayed in the MRI section, with source page, 1.5 T and approximate-model caveat in a localized caption and descriptive alt text | The PDF image is retained as supplied; the caption does not treat the chart's time labels as universal cut-offs. A separate code-authored schematic remains labelled as a conceptual summary. |
+| p.21: useful sequence by stage; SWI/T2* for susceptibility; T1 in subacute course; bright-bright differential includes melanoma metastasis/fat; chronic CT is not categorically blind | `ICB_LESSON.sequenzen`, `ddItems`, q10 and late-subacute flashcard | Sequence choices stay complementary and context-dependent; bright-bright is nonspecific, with SWI/T2*, fat suppression, morphology, follow-up and clinical context considered together. Fixed day threshold and categorical CT-blind claims remain removed. |
 
 ## Instructional structure and media
 
@@ -39,8 +40,8 @@ The source chart at public/icb/mrt-flowchart.png was visually matched to p.20. T
 
 ## Verification and open gates
 
-- Source text and page renders: physical pp.18–20 inspected.
+- Source text and page renders: physical pp.18–21 inspected, including the p.21 sequence/differential summary.
 - `node --check data/icb.js`, `node --check app/gehirn/vaskulaer/intrazerebrale-blutung/page.js`, and `git diff --check` pass.
-- The lesson source range is recorded as physical pages 18–20. The page-20 source chart is explicitly identified as 1.5 T and described as an approximate teaching model; stage boundaries are variable.
+- The lesson source range is recorded as physical pages 18–21. The page-20 source chart is explicitly identified as 1.5 T and described as an approximate teaching model; stage boundaries are variable. Page 21's SWI/T2*, subacute T1, bright-bright mimic and CT caveat are mapped to the sequence/differential section.
 - The adjacent Sequences & Practice summary and DE/EN/FA assessment bank were corrected where they contradicted the inspected signal model (fixed >3-day cutoff, categorical exclusion, fixed HU/day, or categorical CT-blind claims). Spot Sign question/card language was also qualified: CTA timing/protocol affect predictive performance, with no unsupported comparison to Swirl Sign, fixed sensitivity/specificity, or blanket CTA recommendation. A focused independent review of this correction passed.
-- This is a bounded content correction, not an independent scientific approval of the full lesson. The route's other causes, percentages, additional cases, assessment banks, RTL/browser behaviour, typography, mobile layout and clinical sign-off remain open.
+- This is a bounded content correction, not an independent scientific approval of the full lesson. The route's other causes, percentages, additional cases, full route coverage, RTL/browser behaviour, typography, mobile layout and clinical sign-off remain open.

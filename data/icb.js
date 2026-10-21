@@ -6,7 +6,7 @@ const L = (de, en, fa) => ({ de, en, fa })
 // ── LESSON ───────────────────────────────────────────────────────────────────
 
 export const ICB_LESSON = {
-  pdfSourcePages: [18,20], // physical Gehirn.pdf pages inspected for this source slice
+  pdfSourcePages: [18,21], // physical Gehirn.pdf pages inspected for this source slice
 
   toc: L('Inhaltsverzeichnis', 'Contents', 'فهرست مطالب'),
   breadcrumbArea: L('Kopf', 'Head', 'سر'),
@@ -205,7 +205,7 @@ export const ICB_LESSON = {
     ddItems: [
       {
         title: L('Bright–Bright → Melanommetastase?', '"Bright-bright" → melanoma metastasis?', "الگوی روشن-روشن (Bright-Bright) → متاستاز ملانوم؟"),
-        text: L('SWI: Hämosiderin-Saum beim Hämatom. Klinik + MRT-Verlauf. Melanommetastasen zeigen meist kein ausgeprägtes Blooming auf SWI.', 'SWI: haemosiderin rim in haematoma. Clinical context + MRI follow-up. Melanoma metastases rarely show pronounced blooming on SWI.', 'SWI: حلقه هموسیدرین در هماتوم. بافت بالینی + پیگیری MRI.')
+        text: L('T1/T2-Hyperintensität ist unspezifisch und kann auch bei Melanin oder Fett vorkommen. SWI/T2*, fettunterdrückte Sequenzen, Morphologie, Verlauf und Klinik gemeinsam beurteilen; kein Einzelzeichen ist beweisend.', 'T1/T2 hyperintensity is nonspecific and may also occur with melanin or fat. Assess SWI/T2*, fat-suppressed sequences, morphology, interval change and clinical context together; no single sign is definitive.', 'پرسیگنال‌شدن T1/T2 اختصاصی نیست و ممکن است در ملانین یا چربی نیز دیده شود. SWI/T2*، توالی‌های سرکوب چربی، مورفولوژی، تغییرات پیگیری و زمینهٔ بالینی را با هم ارزیابی کنید؛ هیچ علامت منفردی قطعی نیست.')
       },
       {
         title: L('Ringenhancement → Abszess? Tumor?', 'Ring enhancement → abscess? tumour?', 'حلقوی → آبسه؟ تومور؟'),
@@ -478,9 +478,9 @@ const ICB_QUESTION_SEEDS = [
     ],
     correct: 'B',
     explanation: L(
-      'Im spät subakuten Stadium lysieren die Erythrozyten → Met-Hb liegt extrazellulär vor → kein Kompartimentierungseffekt mehr → T1 UND T2 werden hell (bright–bright). Dieses Muster imitiert Melanommetastasen (durch paramagnetsches Melanin) und fettige Läsionen. SWI mit typischem Hämosiderin-Randsaum ist die entscheidende Differenzierung.',
-      'In the late subacute stage erythrocytes lyse → metHb is extracellular → no compartmentalisation effect → T1 AND T2 become bright ("bright-bright"). This mimics melanoma metastases (paramagnetic melanin) and fatty lesions. SWI with a typical haemosiderin rim is the decisive differentiator.',
-      'در مرحله زیرحاد دیررس اریتروسیت‌ها لیز می‌شوند → Met-Hb خارج سلولی → بدون اثر محدودیت → T1 و T2 هر دو روشن (bright-bright). این الگو متاستاز ملانوم و ضایعات چربی را تقلید می‌کند. SWI با حلقه هموسیدرین تفکیک کلیدی است.'
+      'Im spät subakuten Verlauf kann extrazelluläres Met-Hb T1 und T2 hyperintens erscheinen lassen. Das bright-bright-Muster ist unspezifisch und kann Melaninmetastasen oder Fett imitieren. SWI/T2*, fettunterdrückte Sequenzen, Verlauf, Morphologie und Klinik helfen gemeinsam bei der Differenzialdiagnose; ein einzelner Befund ist nicht beweisend.',
+      'During the late subacute course, extracellular metHb may make T1 and T2 hyperintense. The bright-bright pattern is nonspecific and can mimic melanin-containing metastases or fat. SWI/T2*, fat-suppressed sequences, interval change, morphology and clinical context help together with the differential; no single finding is definitive.',
+      'در سیر زیرحاد دیررس، مت‌هموگلوبین خارج‌سلولی ممکن است T1 و T2 را پرسیگنال کند. الگوی روشن-روشن اختصاصی نیست و می‌تواند متاستاز حاوی ملانین یا چربی را تقلید کند. SWI/T2*، توالی‌های سرکوب چربی، تغییرات پیگیری، مورفولوژی و زمینهٔ بالینی در کنار هم به تشخیص افتراقی کمک می‌کنند؛ هیچ یافتهٔ منفردی قطعی نیست.'
     ),
   },
   {
@@ -664,14 +664,14 @@ const ICB_FLASHCARD_SEEDS = [
   {
     front: L('Met-Hb extrazellulär (spät subakut) · T1 und T2?', 'MetHb extracellular (late subacute) · T1 and T2?', 'Met-Hb خارج سلولی (زیرحاد دیررس) · T1 و T2؟'),
     back: L(
-      'T1: ↑↑ HELL\nT2: ↑↑ HELL → "bright–bright"!\nT2*/SWI: ↓ Randsaum (Hämosiderin)\n⚠ imitiert Melanommetastase und Fett!',
-      'T1: ↑↑ BRIGHT\nT2: ↑↑ BRIGHT → "bright-bright"!\nT2*/SWI: ↓ rim (haemosiderin)\n⚠ mimics melanoma metastasis and fat!',
-      'T1: ↑↑ روشن\nT2: ↑↑ روشن → "bright-bright"!\nT2*/SWI: ↓ حلقه (هموسیدرین)\n⚠ متاستاز ملانوم و چربی را تقلید می‌کند!',
+      'T1: ↑↑ hell\nT2: ↑↑ hell → „bright-bright“\nDD: Melaninmetastase oder Fett möglich\nSWI/T2*, Fettsättigung und Verlauf gemeinsam prüfen',
+      'T1: ↑↑ bright\nT2: ↑↑ bright → “bright-bright”\nDD: melanoma or fat may mimic\nAssess SWI/T2*, fat suppression and interval change together',
+      'T1: ↑↑ روشن\nT2: ↑↑ روشن → «bright-bright»\nافتراق: ملانین یا چربی نیز ممکن است\nSWI/T2*، سرکوب چربی و تغییرات پیگیری را با هم بسنجید',
     ),
     explanation: L(
-      'In der spät subakuten Phase lysieren die Erythrozyten → Met-Hb wird extrazellulär frei. Damit verschwindet der Kompartimentierungseffekt: Kein Suszeptibilitätsgradient mehr an Zellmembranen → T2 wird jetzt ebenfalls hell. Ergebnis: T1 UND T2 beide hell ("bright-bright"). Cave: Dieses Muster imitiert Melanommetastasen (paramagnetisches Melanin) und fetthaltige Läsionen. Der SWI-Hämosiderin-Randsaum an der Peripherie ist das entscheidende Differenzierungsmerkmal.',
-      'In the late subacute stage erythrocytes lyse → metHb is released extracellularly. The compartmentalisation effect disappears: no more susceptibility gradient at cell membranes → T2 also brightens. Result: T1 AND T2 both bright ("bright-bright"). Pitfall: this pattern mimics melanoma metastases (paramagnetic melanin) and fatty lesions. The peripheral SWI haemosiderin rim is the key differentiating feature.',
-      'در مرحله زیرحاد دیررس، اریتروسیت‌ها لیز می‌شوند → Met-Hb خارج سلولی آزاد می‌شود. اثر محدودیت از بین می‌رود → T2 نیز روشن می‌شود. نتیجه: T1 و T2 هر دو روشن ("bright-bright"). مراقب: این الگو متاستاز ملانوم (ملانین پاراماگنتیک) و ضایعات چرب را تقلید می‌کند. حلقه هموسیدرین SWI در حاشیه، مشخصه تمایزدهنده است.',
+      'In der spät subakuten Phase kann extrazelluläres Met-Hb T1 und T2 hyperintens erscheinen lassen. Das Muster kann Melaninmetastasen oder Fett imitieren. SWI/T2*, Fettsättigung, Verlauf, Morphologie und Klinik gemeinsam beurteilen; ein Randsaum allein ist nicht beweisend.',
+      'During the late subacute course, extracellular metHb may make T1 and T2 hyperintense. The pattern can mimic melanin-containing metastases or fat. Assess SWI/T2*, fat suppression, interval change, morphology and clinical context together; a rim alone is not definitive.',
+      'در سیر زیرحاد دیررس، مت‌هموگلوبین خارج‌سلولی ممکن است T1 و T2 را پرسیگنال کند. این الگو می‌تواند متاستاز حاوی ملانین یا چربی را تقلید کند. SWI/T2*، سرکوب چربی، تغییرات پیگیری، مورفولوژی و زمینهٔ بالینی را با هم ارزیابی کنید؛ حلقهٔ منفرد قطعی نیست.',
     ),
     diagram: L(
       'Erythrozytenlyse → Met-Hb extrazell. → kein Kompartimentierungseffekt → T1 ↑↑ + T2 ↑↑ → SWI Hämosiderin-Randsaum',
