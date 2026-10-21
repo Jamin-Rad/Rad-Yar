@@ -883,9 +883,9 @@ export const CURRICULUM = [
         icon: '🫘',
         themen: [
           { id: 'nierenzysten', title: { de: 'Nierenzysten', en: 'Renal Cysts', fa: 'کیست‌های کلیوی' }, tags: ['Sono','CT'], diff: 1, link: '/abdomen/niere/nierenzysten', inProgress: true },
-          { id: 'angiomyolipom', title: { de: 'Angiomyolipom', en: 'Angiomyolipoma', fa: 'آنژیومیولیپوم' }, group: ['Benigne Nierentumoren'], tags: ['CT','MRT'], diff: 2, link: '/abdomen/niere/raumforderungen' },
-          { id: 'onkozytom-niere', title: { de: 'Onkozytom', en: 'Oncocytoma', fa: 'انکوسیتوم' }, group: ['Benigne Nierentumoren'], tags: ['CT','MRT'], diff: 2, link: '/abdomen/niere/raumforderungen' },
-          { id: 'nierenzellkarzinom', title: { de: 'Nierenzellkarzinom', en: 'Renal Cell Carcinoma', fa: 'کارسینوم سلول کلیوی' }, tags: ['CT','MRT'], diff: 3, link: '/abdomen/niere/raumforderungen' },
+          { id: 'angiomyolipom', title: { de: 'Angiomyolipom', en: 'Angiomyolipoma', fa: 'آنژیومیولیپوم' }, group: ['Benigne Nierentumoren'], tags: ['CT','MRT'], diff: 2, link: '/abdomen/niere/raumforderungen', mcqLink: '/ueben/quiz?fach=abdomen&n=2&themen=angiomyolipom', flashcardLink: '/flashcards/solide-nierenmassen', inProgress: true, updatedAt: '2026-10-21' },
+          { id: 'onkozytom-niere', title: { de: 'Onkozytom', en: 'Oncocytoma', fa: 'انکوسیتوم' }, group: ['Benigne Nierentumoren'], tags: ['CT','MRT'], diff: 2, link: '/abdomen/niere/raumforderungen', mcqLink: '/ueben/quiz?fach=abdomen&n=1&themen=onkozytom-niere', flashcardLink: '/flashcards/solide-nierenmassen', inProgress: true, updatedAt: '2026-10-21' },
+          { id: 'nierenzellkarzinom', title: { de: 'Nierenzellkarzinom', en: 'Renal Cell Carcinoma', fa: 'کارسینوم سلول کلیوی' }, tags: ['CT','MRT'], diff: 3, link: '/abdomen/niere/raumforderungen', mcqLink: '/ueben/quiz?fach=abdomen&n=2&themen=nierenzellkarzinom', flashcardLink: '/flashcards/solide-nierenmassen', inProgress: true, updatedAt: '2026-10-21' },
           { id: 'nephroblastom-wilms', title: { de: 'Nephroblastom (Wilms-Tumor)', en: 'Nephroblastoma (Wilms tumour)', fa: 'نفروبلاستوما (تومور ویلمز)' }, tags: ['Sono','CT','MRT'], diff: 2, link: '/abdomen/niere/wilms-tumour', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'urothelkarzinom', title: { de: 'Urothelkarzinom', en: 'Urothelial Carcinoma', fa: 'کارسینوم اوروتلیال' }, tags: ['CT'], diff: 3 },
           { id: 'nephrolithiasis', title: { de: 'Nephrolithiasis', en: 'Nephrolithiasis', fa: 'نفرولیتیازیس' }, tags: ['CT','Rö'], diff: 1 },

@@ -19,7 +19,11 @@ const registrations = [
   { key: 'abdomen-pancreatic-cysts', fach: 'abdomen', tags: ['ipmn'], extra: { de: 'Eine solide Raumforderung ohne Gangkommunikation', en: 'A solid mass without duct communication', fa: 'تودهٔ جامد بدون ارتباط با مجرا' } },
   { key: 'abdomen-focal-liver', fach: 'abdomen', tags: ['leberadenom', 'lebermetastasen'], extra: { de: 'Die Läsion nur anhand des nativen CT beurteilen', en: 'Assess the lesion from unenhanced CT alone', fa: 'ارزیابی ضایعه فقط بر اساس CT بدون تزریق' } },
   { key: 'abdomen-hepatic-steatosis', fach: 'abdomen', tags: ['hepatische-steatose'], extra: { de: 'Die typische Lage allein beweist die Diagnose und macht weitere Charakterisierung unnötig', en: 'Typical location alone proves the diagnosis and makes further characterisation unnecessary', fa: 'محل تیپیک به‌تنهایی تشخیص را ثابت می‌کند و بررسی تکمیلی را غیرضروری می‌سازد' } },
-  { key: 'abdomen-renal-masses', fach: 'abdomen', tags: ['nierenzysten'], extra: { de: 'Das Alter der betroffenen Person allein', en: 'The patient’s age alone', fa: 'فقط سن بیمار' } },
+  { key: 'abdomen-renal-masses', fach: 'abdomen', tags: ['angiomyolipom'], optionCount: 3, extra: { de: 'Die Läsion ist damit sicher ein RCC', en: 'The lesion is therefore definitively RCC', fa: 'بنابراین ضایعه قطعاً RCC است' } },
+  { key: 'renal-mass-rcc', fach: 'abdomen', tags: ['nierenzellkarzinom'], optionCount: 3, extra: { de: 'Eine renale Veneninvasion kann in der Bildgebung nicht beurteilt werden', en: 'Renal venous invasion cannot be assessed on imaging', fa: 'تهاجم ورید کلیوی را نمی‌توان در تصویربرداری ارزیابی کرد' } },
+  { key: 'renal-mass-rcc-phases', fach: 'abdomen', tags: ['nierenzellkarzinom'], optionCount: 3, extra: { de: 'Ein einzelner arterieller Schnitt legt den histologischen Subtyp fest', en: 'A single arterial image establishes the histologic subtype', fa: 'یک تصویر شریانی منفرد زیرگروه بافت‌شناسی را تعیین می‌کند' } },
+  { key: 'renal-mass-oncocytoma', fach: 'abdomen', tags: ['onkozytom-niere'], optionCount: 3, extra: { de: 'Eine zentrale Narbe beweist das Onkozytom', en: 'A central scar proves oncocytoma', fa: 'اسکار مرکزی انکوسیتوم را ثابت می‌کند' } },
+  { key: 'renal-mass-fat-poor-aml', fach: 'abdomen', tags: ['angiomyolipom'], optionCount: 3, extra: { de: 'Ohne makroskopisches Fett ist AML sicher ausgeschlossen', en: 'AML is definitively excluded without macroscopic fat', fa: 'بدون چربی ماکروسکوپیک، AML قطعاً رد می‌شود' } },
   { key: 'abdomen-adrenal-masses', fach: 'abdomen', tags: ['nebennieren-inzidentalom', 'nebennierenadenom'], extra: { de: 'Voraufnahmen bei der Beurteilung ignorieren', en: 'Ignore prior examinations during assessment', fa: 'نادیده‌گرفتن تصاویر قبلی در ارزیابی' } },
   ...ADRENAL_QUESTION_DRAFTS.map(draft => ({ key: draft.id, fach: 'abdomen', tags: [{ 'adrenal-adenoma-microscopic-fat': 'nebennierenadenom', 'adrenal-myelolipoma-macroscopic-fat': 'myelolipom', 'adrenal-pheochromocytoma-washout': 'phaeochromozytom', 'adrenal-neuroblastoma-origin': 'neuroblastom-nebenniere' }[draft.id]], extra: { de: 'Einzelnes Zeichen ohne Kontext als sicheren Beweis werten', en: 'Treat one isolated sign as definitive proof without context', fa: 'یک نشانهٔ منفرد را بدون زمینه، اثبات قطعی بدانید' } })),
   { key: 'thorax-foreign-body', fach: 'thorax', tags: ['fremdkoerper-atemwege'], extra: { de: 'Ein unauffälliges Röntgenbild schließt die Aspiration sicher aus', en: 'A normal radiograph definitively excludes aspiration', fa: 'رادیوگرافی طبیعی آسپیراسیون را به‌طور قطعی رد می‌کند' } },
@@ -38,11 +42,11 @@ const registrations = [
   { key: 'abdomen-ileus-ischaemia', fach: 'abdomen', tags: ['ileus-duenndarm'], extra: { de: 'Wandverdickung allein beweist eine transmurale Nekrose', en: 'Wall thickening alone proves transmural necrosis', fa: 'ضخیم‌شدن دیواره به‌تنهایی نکروز تمام‌ضخامت را ثابت می‌کند' } },
 ]
 
-const makeQuestion = ({ key, fach, tags, extra }) => {
+const makeQuestion = ({ key, fach, tags, extra, optionCount }) => {
   const draft = drafts[key]
   if (!draft) throw new Error(`Missing lesson assessment draft: ${key}`)
   return Object.fromEntries(languages.map(lang => {
-    const options = draft.options.map((text, index) => option(String.fromCharCode(65 + index), text[lang]))
+    const options = draft.options.slice(0, optionCount ?? draft.options.length).map((text, index) => option(String.fromCharCode(65 + index), text[lang]))
     options.push(option('D', extra[lang]))
     return [lang, {
       id: `${key}-${lang}-01`,

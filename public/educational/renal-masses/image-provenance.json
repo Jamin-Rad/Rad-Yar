@@ -1,0 +1,12 @@
+{
+  "asset": "aml-axial-ct.png",
+  "source": "User-provided Abdomen.pdf",
+  "pdfPhysicalPage": 50,
+  "printedPage": 49,
+  "sourceLabel": "Angiomyolipoma (AML)",
+  "reusePermission": "User explicitly confirmed project-wide permission to reuse images from the supplied PDFs on 2026-10-21.",
+  "processing": "Tightly cropped from the original page render; no diagnostic annotations added.",
+  "sequenceOrPhase": "Not stated on source slide; lesson caption does not infer it.",
+  "teachingUse": "Locate the exophytic right upper-pole renal lesion (image-left) and inspect morphology; not used to demonstrate macroscopic fat or a phase-specific enhancement pattern.",
+  "review": "Image visually inspected by author and independent reviewer."
+}
