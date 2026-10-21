@@ -9,6 +9,7 @@ import { FLEISCHNER_QUESTIONS } from './fleischnerLearning'
 import { HEMANGIOMA_QUESTIONS } from './haemangiomaTraining'
 import { GIST_QUESTIONS } from './gistLearning'
 import { VOLVULUS_QUESTIONS } from './volvulusLearning'
+import { PNET_QUESTIONS } from './pnetLearning'
 import { WRIST_EXTENSOR_QUESTIONS, DE_QUERVAIN_QUESTIONS } from './wristExtensorAssessments'
 import { GEHIRN_CHIARI_QUESTIONS } from './gehirnChiariLesson'
 import { GEHIRN_NF1_QUESTIONS } from './gehirnNf1CnsLesson'
@@ -4287,9 +4288,11 @@ export const QUESTION_BANK = Object.fromEntries(
 for (const lang of Object.keys(QUESTION_BANK)) {
   QUESTION_BANK[lang].push(...(GIST_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(VOLVULUS_QUESTIONS[lang] || []))
+  QUESTION_BANK[lang].push(...(PNET_QUESTIONS[lang] || []))
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  { fachId: 'abdomen', kapitelId: 'abdomen-pankreas', title: { de: 'Pankreas', en: 'Pancreas', fa: 'پانکراس' }, topics: [{ id: 'pnet', title: { de: 'Neuroendokrine Tumoren (pNET)', en: 'Neuroendocrine tumours (pNET)', fa: 'تومورهای نورواندوکرین پانکراس (pNET)' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-gi-trakt', title: { de: 'Gastrointestinaltrakt', en: 'Gastrointestinal tract', fa: 'دستگاه گوارش' }, topics: [{ id: 'volvulus', title: { de: 'Sigmoid- und Zökumvolvulus', en: 'Sigmoid and caecal volvulus', fa: 'ولولوس سیگموئید و سکوم' } }] },
   TECHNIK_ROENTGEN_TOPIC_GROUP,
   TECHNIK_BOLD_TOPIC_GROUP,
