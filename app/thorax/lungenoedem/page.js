@@ -37,7 +37,7 @@ export default function PulmonaryOedemaPage() {
   const sources = lesson.references.filter(item => item.url).map((item, i) => ({ tag: item.tag ? pick(item.tag, lang) : pick(sourceTags[i], lang), title: pick(item.label, lang), href: item.url, citation: pick(L('Studie oder Konsensusquelle; Stichprobe und Geltungsbereich beachten.', 'Study or consensus source; note its sample and scope.', 'مطالعه یا منبع اجماعی؛ نمونه و محدودهٔ کاربرد را در نظر بگیرید.'), lang) }))
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={pick(lesson.title, lang)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: path('/') }, { label: pick(TITLE, lang), href: path('/lernen/thorax') }]}
-    sections={sections} labels={labels} actions={{}} renderIcon={id => <Icon id={id}/>}
+    sections={sections} labels={labels} actions={{ mcq: { label: pick(L('Quiz zum Lungenödem', 'Pulmonary oedema quiz', 'آزمون ادم ریوی'), lang), href: `/ueben/quiz?fach=thorax&n=2&themen=lungenoedem${lang === 'de' ? '' : `&lang=${lang}`}` }, flashcards: { label: pick(L('Lungenödem-Flashcards', 'Pulmonary oedema flashcards', 'فلش‌کارت‌های ادم ریوی'), lang), href: path('/flashcards/lungenoedem') } }} renderIcon={id => <Icon id={id}/>}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.heroImage, heroImageOpacity: .75, accent: '#70bdc8', accentStrong: '#216a78', accentSoft: '#e1f3f5', secondary: '#9678c5', secondaryStrong: '#63428e', heroBase: '#172c3b' }}
     heroImageAlt={pick(lesson.alt, lang)} className={styles.page} syncHashNavigation
     sources={<LessonSources title={pick(L('Quellen und Geltungsbereich', 'Sources and scope', 'منابع و محدوده'), lang)} items={sources} note={pick(lesson.notice, lang)}/>}

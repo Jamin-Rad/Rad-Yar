@@ -8,6 +8,8 @@ import { DOMParser } from '@xmldom/xmldom'
 import { PULMONARY_EDEMA_LESSON as data } from '../data/pulmonaryEdema.js'
 import { PULMONARY_EDEMA_QUESTIONS } from '../data/pulmonaryEdema.js'
 import { CURRICULUM } from '../data/curriculum.js'
+import { QUESTION_BANK } from '../data/questions.js'
+import { getCardsByTopic } from '../data/flashcards.js'
 
 const require = createRequire(import.meta.url)
 const styles = { default: new Proxy({}, { get: (_, key) => String(key) }) }
@@ -47,6 +49,8 @@ for (const lang of ['de', 'en', 'fa']) {
     for (const row of chapter.rows) for (const cell of row) assert.ok(html.includes(esc(cell[lang])), `${lang}: chapter row`)
   }
   assert.ok(html.includes('id="case"') && html.includes(esc(data.check.prompt[lang])), `${lang}: embedded self-check`)
+  assert.ok(html.includes('/ueben/quiz?fach=thorax&amp;n=2&amp;themen=lungenoedem'), `${lang}: quiz action`)
+  assert.ok(html.includes(`/flashcards/lungenoedem${lang === 'de' ? '' : `?lang=${lang}`}`), `${lang}: flashcard action`)
   assert.ok(html.includes('id="lesson-sources-panel"'), `${lang}: sources`)
   for (const source of data.references.filter(item => item.url)) assert.ok(html.includes(esc(source.label[lang])), `${lang}: localized source label`)
   assert.ok(data.check.correct[lang] && data.check.retry[lang], `${lang}: localized correct/retry feedback is present in lesson data`)
@@ -65,10 +69,23 @@ assert.match(data.chapters.find(chapter => chapter.id === 'hrct').note.fa, /تف
 assert.ok(!JSON.stringify(data).includes('سپتا‌ی'), 'Persian septa spelling is corrected')
 for (const question of PULMONARY_EDEMA_QUESTIONS) {
   const answer = question.options.find(option => option.id === question.correct)
-  assert.match(answer.text, /septal thickening|Septenverdickung|سپتاهای بین‌لوبولی/i, `${question.id}: correct option answers the stem`)
+  assert.ok(answer, `${question.id}: correct option exists`)
+  assert.equal(question.options.length, 4, `${question.id}: four answer choices`)
   assert.equal(Object.keys(question.wrongExplanations).sort().join(','), 'B,C,D', `${question.id}: all distractors have explanations`)
-  assert.match(question.explanation, /no significant difference|did not differ significantly|kein signifikanter Unterschied|تفاوت معناداری/, `${question.id}: study limitation is stated`)
+  assert.ok(question.explanation && question.source, `${question.id}: explanation and source are present`)
+  if (question.id.includes('hrct-pattern')) {
+    assert.match(answer.text, /septal thickening|Septenverdickung|سپتاهای بین‌لوبولی/i, `${question.id}: correct option answers the stem`)
+    assert.match(question.explanation, /no significant difference|did not differ significantly|kein signifikanter Unterschied|تفاوت معناداری/, `${question.id}: study limitation is stated`)
+  }
 }
+for (const lang of ['de', 'en', 'fa']) {
+  for (const prefix of ['lungenoedem', 'ards']) {
+    const questions = QUESTION_BANK[lang].filter(question => question.tags.includes(prefix))
+    assert.ok(questions.length >= (prefix === 'ards' ? 1 : 2), `${lang}: ${prefix} assessment registrations`)
+  }
+}
+assert.equal(getCardsByTopic('lungenoedem').length, 4, 'existing HRCT card plus three source-bound retrieval cards')
+for (const card of getCardsByTopic('lungenoedem')) for (const lang of ['de', 'en', 'fa']) assert.ok(card.front[lang] && card.answer[lang] && card.source, `${card.id}: ${lang} flashcard fields`)
 assert.match(fs.readFileSync('app/thorax/lungenoedem/page.js', 'utf8'), /setAnswer\(null\)/, 'wrong answer offers retry')
 const svg = fs.readFileSync('public/educational/pulmonary-edema-patterns.svg', 'utf8')
 assert.doesNotMatch(svg, /VASCULAR REDISTRIBUTION|INTERSTITIAL SIGNS|ALVEOLAR OPACITIES|Redistribution|Septal \/ peribronchial|Perihilar confluent/, 'language-neutral numbered figure; localized legend is adjacent')
@@ -83,6 +100,8 @@ for (const id of ['lungenoedem', 'ards']) {
   assert.equal(topic.ready, true)
   assert.equal(topic.inProgress, true)
   assert.equal(topic.link, id === 'ards' ? '/thorax/lungenoedem#ards' : '/thorax/lungenoedem')
+  assert.ok(topic.mcqLink, `${id}: curriculum quiz link`)
+  assert.equal(topic.flashcardLink, '/flashcards/lungenoedem', `${id}: shared flashcard deck`)
 }
 assert.ok(fs.existsSync('public/educational/pulmonary-edema-patterns.provenance.json'))
 console.log('Pulmonary oedema actual-route StandardLessonShell SSR PASS: DE/EN/FA, RTL, PDF scope, every chapter/table cell, self-check feedback/retry, SVG/provenance, exact curriculum links and inProgress.')

@@ -14,6 +14,7 @@ export const PULMONARY_EDEMA_LESSON = {
   ],
   references: [
     { tag: L('Globaler Konsens · Definition', 'Global consensus · definition', 'تعریف اجماعی جهانی'), label: L('Neue globale ARDS-Definition (2024), Konsensusbericht', 'A New Global Definition of ARDS (2024), consensus report', 'تعریف جهانی جدید ARDS (۲۰۲۴)، گزارش اجماعی'), url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10870872/' },
+    { tag: L('PCWP · Hämodynamik', 'PCWP · haemodynamics', 'PCWP · همودینامیک'), label: L('Luchsinger et al.: Beziehung zwischen pulmonalem Verschlussdruck und linksatrialem Druck (1962)', 'Luchsinger et al.: Relationship between pulmonary artery wedge pressure and left atrial pressure (1962)', 'Luchsinger و همکاران: رابطهٔ فشار گوه‌ای شریان ریوی و فشار دهلیز چپ (۱۹۶۲)'), url: 'https://doi.org/10.1161/01.RES.2.5.434' },
     { tag: L('ARDS · Berlin-Definition', 'ARDS · Berlin definition', 'ARDS · تعریف برلین'), label: L('Berlin-Definition des ARDS (2012), Primärpublikation', 'Berlin Definition of ARDS (2012), primary publication', 'تعریف برلین ARDS (۲۰۱۲)، مقالهٔ اصلی'), url: 'https://pubmed.ncbi.nlm.nih.gov/22797452/' },
     { tag: L('Röntgen · Vergleichskohorte', 'Radiography · comparative cohort', 'رادیوگرافی · مطالعهٔ مقایسه‌ای'), label: L('Smith et al.: radiografische Differenzierung verschiedener Lungenödem-Ursachen (1987)', 'Smith et al.: radiographic differentiation of pulmonary oedema aetiologies (1987)', 'Smith و همکاران: افتراق رادیوگرافیک علت‌های مختلف ادم ریه (۱۹۸۷)'), url: 'https://doi.org/10.1097/00004424-198711000-00003' },
     { tag: L('HRCT · retrospektive Kohorte', 'HRCT · retrospective cohort', 'HRCT · مطالعهٔ هم‌گروهی گذشته‌نگر'), label: L('Ribeiro et al.: Hydrostatic pulmonary edema on HRCT (2006)', 'Ribeiro et al.: Hydrostatic pulmonary oedema on HRCT (2006)', 'Ribeiro و همکاران: ادم هیدروستاتیک در HRCT (۲۰۰۶)'), url: 'https://pubmed.ncbi.nlm.nih.gov/17440672/' },
@@ -24,7 +25,7 @@ export const PULMONARY_EDEMA_LESSON = {
     {
       id: 'sequence', icon: 'sequence',
       title: L('Wie entwickelt sich das kardiogene Muster?', 'How does the cardiogenic pattern evolve?', 'الگوی کاردیوژنیک چگونه پیشرفت می‌کند؟'),
-      lead: L('Die PDF ordnet die Röntgenzeichen in eine Stufenfolge: zunächst Umverteilung und Gefäßprominenz, dann interstitielle und schließlich alveoläre Flüssigkeit. Die angegebenen PCWP-Bereiche sind eine Lehrvereinfachung; Bildzeichen erlauben keine verlässliche Druckmessung.', 'The PDF arranges radiographic signs in stages: first redistribution and vascular prominence, then interstitial and finally alveolar fluid. The listed PCWP ranges are a teaching simplification; imaging signs do not provide a reliable pressure measurement.', 'PDF نشانه‌های رادیوگرافیک را مرحله‌بندی می‌کند: ابتدا بازتوزیع و برجستگی عروق، سپس مایع بینابینی و در نهایت مایع آلوئولی. محدوده‌های PCWP ارائه‌شده ساده‌سازی آموزشی‌اند؛ نشانه‌های تصویری فشار را به‌طور قابل اتکا اندازه نمی‌گیرند.'),
+      lead: L('Die PDF ordnet die Röntgenzeichen in eine Stufenfolge: zunächst Umverteilung und Gefäßprominenz, dann interstitielle und schließlich alveoläre Flüssigkeit. PCWP (pulmonary capillary wedge pressure) bezeichnet den invasiv gemessenen pulmonalkapillären Verschlussdruck und dient unter passenden hämodynamischen Bedingungen als Schätzer des linksatrialen Drucks. Als Normalbereich nennt die PDF 5–12 mmHg. Die stadienbezogenen Bereiche werden hier nicht als feste Schwellen übernommen: Sie überlappen sich bei 18 mmHg. Bildzeichen erlauben keine verlässliche Druckmessung.', 'The PDF arranges radiographic signs in stages: first redistribution and vascular prominence, then interstitial and finally alveolar fluid. PCWP (pulmonary capillary wedge pressure) is measured invasively by wedging a pulmonary artery catheter and, under appropriate haemodynamic conditions, estimates left atrial pressure. The PDF gives 5–12 mmHg as its reference range. Its stage ranges are not presented here as fixed thresholds because they overlap at 18 mmHg. Imaging signs do not provide a reliable pressure measurement.', 'PDF نشانه‌های رادیوگرافیک را مرحله‌بندی می‌کند: ابتدا بازتوزیع و برجستگی عروق، سپس مایع بینابینی و در نهایت مایع آلوئولی. PCWP (فشار گوه‌ای مویرگ ریوی) با روش تهاجمی اندازه‌گیری می‌شود و در شرایط همودینامیک مناسب، برآوردی از فشار دهلیز چپ است. PDF محدودهٔ مرجع را ۵ تا ۱۲ میلی‌متر جیوه ذکر می‌کند. محدوده‌های مرحله‌ای را به‌عنوان آستانهٔ ثابت نمی‌آوریم، چون در ۱۸ میلی‌متر جیوه هم‌پوشانی دارند. نشانه‌های تصویری فشار را به‌طور قابل اتکا اندازه نمی‌گیرند.'),
       rows: [
         [L('1 · Venöse Stauung', '1 · Venous congestion', '۱ · احتقان وریدی'), L('Kranialisation/Umverteilung der Gefäße und prominente zentrale Gefäße; die Gefäßkonturen können noch scharf sein.', 'Cephalisation/redistribution of vessels and prominent central vessels; vascular margins may remain sharp.', 'سفالیزاسیون/بازتوزیع عروق و برجستگی عروق مرکزی؛ حاشیهٔ عروق ممکن است هنوز واضح باشد.')],
         [L('۲ · Interstitielles Ödem', '2 · Interstitial oedema', '۲ · ادم بینابینی'), L('Kerley-B-Linien (kurz, basal, pleuraständig), Kerley-A-Linien, peribronchiale Manschetten und unscharfe Hilusgefäße.', 'Kerley B lines (short, basal, pleural), Kerley A lines, peribronchial cuffing and indistinct hilar vessels.', 'خطوط Kerley B (کوتاه، قاعده‌ای و نزدیک پلور)، خطوط Kerley A، ضخیم‌شدن اطراف برونش و محوشدن وضوح عروق ناف ریه.')],
@@ -94,7 +95,7 @@ const pulmonaryEdemaQuestionOptions = lang => {
   return texts.map((text, index) => ({ id: String.fromCharCode(65 + index), text }))
 }
 
-export const PULMONARY_EDEMA_QUESTIONS = ['de', 'en', 'fa'].map(lang => ({
+const PULMONARY_EDEMA_HRCT_QUESTIONS = ['de', 'en', 'fa'].map(lang => ({
   id: `lungenoedem-${lang}-hrct-pattern`, fach: 'thorax', tags: ['lungenoedem'],
   question: lang === 'de' ? 'Welcher HRCT-Befund zeigte in einer kleinen Positionsstudie bei Lungenödem ein ausgeprägteres lageabhängiges Verschieben?' : lang === 'en' ? 'Which HRCT finding showed more pronounced positional shifting in a small study of pulmonary oedema?' : 'در یک مطالعهٔ کوچک ادم ریوی، جابه‌جایی وابسته به وضعیت کدام یافتهٔ HRCT بارزتر بود؟',
   options: pulmonaryEdemaQuestionOptions(lang),
@@ -108,6 +109,50 @@ export const PULMONARY_EDEMA_QUESTIONS = ['de', 'en', 'fa'].map(lang => ({
   source: 'Thorax.pdf p. 17 (printed p. 16); Ribeiro et al. 2006; Kim et al. 2001',
 }))
 
+const PULMONARY_EDEMA_RETRIEVAL_QUESTIONS = ['de', 'en', 'fa'].flatMap(lang => {
+  const L = (de, en, fa) => ({ de, en, fa })[lang]
+  const makeOptions = values => values.map((text, i) => ({ id: String.fromCharCode(65 + i), text }))
+  const comparative = {
+    id: `lungenoedem-${lang}-radiograph-differentiation`, fach: 'thorax', tags: ['lungenoedem'],
+    question: L('Welche Merkmalskombination spricht im PDF-Vergleich eher für ein hydrostatisches/kardiogenes Ödem, ohne es allein zu beweisen?', 'In the PDF comparison, which combination is more suggestive of hydrostatic/cardiogenic oedema without proving it on its own?', 'در مقایسهٔ PDF کدام ترکیب بیشتر به نفع ادم هیدروستاتیک/کاردیوژنیک است، اما به‌تنهایی آن را ثابت نمی‌کند؟'),
+    options: makeOptions([
+      L('Vergrößerte Herzsilhouette, zentrale/perihiläre Verteilung und erweiterte Gefäßkaliber mit Kerley-Linien.', 'Enlarged cardiac silhouette, central/perihilar distribution and increased vessel calibre with Kerley lines.', 'بزرگی سایهٔ قلب، توزیع مرکزی/اطراف ناف ریه، قطر افزایش‌یافتهٔ عروق و خطوط Kerley.'),
+      L('Normale Herzgröße, fleckig-periphere Verschattungen und normale oder schmale Gefäße.', 'Normal heart size, patchy peripheral opacities and normal or narrow vessels.', 'اندازهٔ طبیعی قلب، کدورت‌های لکه‌ای محیطی و عروق طبیعی یا باریک.'),
+      L('Normale Herzgröße und periphere Verschattungen, aber zugleich erweiterte Gefäße und häufige Kerley-Linien.', 'Normal heart size and peripheral opacities, but also increased vessel calibre and frequent Kerley lines.', 'اندازهٔ طبیعی قلب و کدورت‌های محیطی، همراه با قطر افزایش‌یافتهٔ عروق و خطوط شایع Kerley.'),
+      L('Vergrößerte Herzsilhouette und zentrale Verschattungen, aber normale oder schmale Gefäße und seltene Kerley-Linien.', 'Enlarged cardiac silhouette and central opacities, but normal or narrow vessels and infrequent Kerley lines.', 'بزرگی سایهٔ قلب و کدورت‌های مرکزی، اما عروق طبیعی یا باریک و خطوط Kerley نادر.'),
+    ]),
+    correct: 'A',
+    explanation: L('Die Tabelle nennt Kardiomegalie, Gefäßumverteilung und Kerley-Linien als eher kardiogene Hinweise. Sie sind Wahrscheinlichkeitsmerkmale; Mischbilder und klinische Korrelation bleiben wichtig.', 'The table lists cardiomegaly, vascular redistribution and Kerley lines as features that may favour a cardiogenic cause. They shift likelihood; mixed patterns and clinical correlation remain important.', 'جدول کاردیومگالی، بازتوزیع عروق و خطوط Kerley را سرنخ‌هایی بیشتر به نفع علت کاردیوژنیک می‌داند. این‌ها احتمال را تغییر می‌دهند؛ الگوهای مختلط و تطبیق بالینی همچنان مهم‌اند.'),
+    wrongExplanations: {
+      B: L('Diese Kombination entspricht eher der permeabilitätsbedingten Spalte der Tabelle.', 'This combination better matches the permeability-oedema column of the table.', 'این ترکیب بیشتر با ستون ادم ناشی از افزایش نفوذپذیری در جدول مطابقت دارد.'),
+      C: L('Die Merkmale widersprechen sich: Herzgröße und Verteilung sprechen eher für die permeabilitätsbedingte Seite, Gefäßkaliber und Kerley-Linien eher für die hydrostatische Seite.', 'The features conflict: heart size and distribution lean toward the permeability pattern, while vessel calibre and Kerley lines lean toward the hydrostatic pattern.', 'یافته‌ها با هم تعارض دارند: اندازهٔ قلب و توزیع بیشتر به نفع الگوی افزایش نفوذپذیری‌اند، درحالی‌که قطر عروق و خطوط Kerley بیشتر به نفع الگوی هیدروستاتیک‌اند.'),
+      D: L('Auch hier ist die Kombination gemischt: Herzgröße und Verteilung passen eher zum hydrostatischen Muster, Gefäßkaliber und Kerley-Linien jedoch weniger.', 'This is also a mixed combination: heart size and distribution lean hydrostatic, but vessel calibre and Kerley lines do not.', 'این ترکیب نیز مختلط است: اندازهٔ قلب و توزیع بیشتر با الگوی هیدروستاتیک جورند، اما قطر عروق و خطوط Kerley کمتر سازگارند.'),
+    },
+    source: 'Thorax.pdf p. 49 (printed p. 48), cardiogenic vs non-cardiogenic comparison; PCWP limitation clarified with primary haemodynamic literature.',
+  }
+  const ards = {
+    id: `lungenoedem-${lang}-ards-imaging-boundary`, fach: 'thorax', tags: ['ards'],
+    question: L('Was folgt aus beidseitigen Verschattungen im passenden Bildkriterium der globalen ARDS-Definition?', 'What follows from bilateral opacities in the imaging criterion of the global ARDS definition?', 'از کدورت‌های دوطرفه در معیار تصویری تعریف جهانی ARDS چه نتیجه‌ای می‌گیریم؟'),
+    options: makeOptions([
+      L('Sie erfüllen das Bildkriterium nur, wenn sie nicht vollständig durch Ergüsse, Kollaps oder Noduli erklärt sind; klinische und Oxygenierungs-Kriterien sind zusätzlich nötig.', 'They meet the imaging criterion only when not fully explained by effusions, collapse or nodules; clinical and oxygenation criteria are also required.', 'فقط اگر کدورت‌ها کاملاً با افیوژن، کلاپس یا ندول توضیح داده نشوند، معیار تصویری را برآورده می‌کنند؛ معیارهای بالینی و اکسیژناسیون نیز لازم‌اند.'),
+      L('Beidseitige Verschattungen und Hypoxämie reichen aus, auch wenn Beginn und klinischer Kontext nicht passen.', 'Bilateral opacities and hypoxaemia are sufficient even when onset and clinical context do not fit.', 'کدورت‌های دوطرفه و هیپوکسمی کافی‌اند، حتی اگر زمان شروع و زمینهٔ بالینی سازگار نباشند.'),
+      L('Beidseitige Verschattungen, die vollständig durch Pleuraergüsse und Atelektasen erklärt werden, erfüllen das Bildkriterium dennoch.', 'Bilateral opacities fully explained by pleural effusions and atelectasis still meet the imaging criterion.', 'کدورت‌های دوطرفه‌ای که کاملاً با افیوژن پلور و آتلکتازی توضیح داده می‌شوند، باز هم معیار تصویری را برآورده می‌کنند.'),
+      L('Eine einseitige lobäre Konsolidierung erfüllt das bilaterale Bildkriterium, sofern die Hypoxämie schwer ist.', 'A unilateral lobar consolidation meets the bilateral imaging criterion when hypoxaemia is severe.', 'یک کنسولیدیشن لوبار یک‌طرفه در صورت هیپوکسمی شدید، معیار تصویری دوطرفه را برآورده می‌کند.'),
+    ]),
+    correct: 'A',
+    explanation: L('Die globale Definition verlangt neben dem Bildkriterium auch klinische und Oxygenierungs-Kriterien. Bilaterale Verschattungen allein sind kein vollständiger ARDS-Nachweis.', 'The global definition requires clinical and oxygenation criteria in addition to the imaging criterion. Bilateral opacities alone do not establish ARDS.', 'تعریف جهانی علاوه بر معیار تصویری، معیارهای بالینی و اکسیژناسیون را هم لازم می‌داند. کدورت‌های دوطرفه به‌تنهایی ARDS را اثبات نمی‌کنند.'),
+    wrongExplanations: {
+      B: L('Hypoxämie allein deckt weder die erforderliche Akuität noch den klinischen Definitionsrahmen ab.', 'Hypoxaemia alone does not establish the required acute timing or the full clinical definition.', 'هیپوکسمی به‌تنهایی حادبودن موردنیاز یا چارچوب کامل بالینی تعریف را مشخص نمی‌کند.'),
+      C: L('Verschattungen, die vollständig durch Ergüsse oder Kollaps erklärt sind, erfüllen das Bildkriterium nicht.', 'Opacities fully explained by effusions or collapse do not meet the imaging criterion.', 'کدورت‌هایی که کاملاً با افیوژن یا کلاپس توضیح داده می‌شوند، معیار تصویری را برآورده نمی‌کنند.'),
+      D: L('Das Bildkriterium verlangt beidseitige Verschattungen; schwere Hypoxämie macht ein einseitiges Muster nicht bilateral.', 'The imaging criterion requires bilateral opacities; severe hypoxaemia does not make a unilateral pattern bilateral.', 'معیار تصویری به کدورت دوطرفه نیاز دارد؛ هیپوکسمی شدید الگوی یک‌طرفه را دوطرفه نمی‌کند.'),
+    },
+    source: 'Global ARDS Definition consensus paper (2024), imaging and diagnostic criteria.',
+  }
+  return [comparative, ards]
+})
+
+export const PULMONARY_EDEMA_QUESTIONS = [...PULMONARY_EDEMA_HRCT_QUESTIONS, ...PULMONARY_EDEMA_RETRIEVAL_QUESTIONS]
+
 export const PULMONARY_EDEMA_FLASHCARD_TOPIC = {
   id: 'lungenoedem', area: 'Thorax', chapter: 'Lungenparenchymerkrankungen', icon: 'CT', color: '#4b8994',
   href: '/flashcards/lungenoedem', title: L('Lungenödem', 'Pulmonary oedema', 'ادم ریوی'),
@@ -119,4 +164,19 @@ export const PULMONARY_EDEMA_FLASHCARDS = [{
   front: L('Welche HRCT-Kombination stützt ein hydrostatisches Ödem?', 'Which HRCT combination supports hydrostatic oedema?', 'کدام ترکیب HRCT از ادم هیدروستاتیک حمایت می‌کند؟'),
   answer: L('Glatte interlobuläre Septenverdickung plus GGO, oft mit perihilärer/schwerkraftabhängiger Verteilung und möglichen Begleitzeichen; kein Einzelzeichen beweist die kardiale Ursache.', 'Smooth interlobular septal thickening plus GGO, often with perihilar/gravity-dependent distribution and possible accompanying signs; no single sign proves a cardiac cause.', 'ضخیم‌شدن صاف سپتاهای بین‌لوبولی همراه GGO، اغلب با توزیع اطراف ناف ریه/وابسته به جاذبه و نشانه‌های همراه احتمالی؛ هیچ نشانهٔ منفردی علت قلبی را ثابت نمی‌کند.'),
   source: 'Thorax.pdf p. 17 (printed p. 16); Ribeiro et al. 2006; Kim et al. 2001',
+}, {
+  id: 'lungenoedem-cardiogenic-vs-permeability', topicId: 'lungenoedem', category: L('Röntgen · Differenzialmuster', 'Radiography · differential pattern', 'رادیوگرافی · الگوی افتراقی'),
+  front: L('Welche Röntgenmerkmale verschieben die Gewichtung eher zum kardiogenen Muster?', 'Which radiographic features shift the likelihood toward a cardiogenic pattern?', 'کدام ویژگی‌های رادیوگرافیک احتمال الگوی کاردیوژنیک را بیشتر می‌کنند؟'),
+  answer: L('Kardiomegalie, Gefäßumverteilung, Kerley-Linien und Pleuraergüsse können dafür sprechen. Es sind keine allein beweisenden Kriterien; Mischbilder und Kontext beachten.', 'Cardiomegaly, vascular redistribution, Kerley lines and pleural effusions may support it. They are not proof on their own; consider mixed patterns and context.', 'کاردیومگالی، بازتوزیع عروق، خطوط Kerley و افیوژن پلور می‌توانند مؤید باشند. این‌ها به‌تنهایی اثبات‌کننده نیستند؛ الگوهای مختلط و زمینه را در نظر بگیرید.'),
+  source: 'Thorax.pdf p. 49 (printed p. 48), cardiogenic vs non-cardiogenic comparison.',
+}, {
+  id: 'lungenoedem-pcwp-definition', topicId: 'lungenoedem', category: L('Hämodynamik', 'Haemodynamics', 'همودینامیک'),
+  front: L('Was bedeutet PCWP, und was misst es nicht?', 'What does PCWP mean, and what does it not measure?', 'PCWP به چه معناست و چه چیزی را اندازه‌گیری نمی‌کند؟'),
+  answer: L('Pulmonary capillary wedge pressure (pulmonalkapillärer Verschlussdruck): ein invasiver hämodynamischer Messwert, der unter passenden Bedingungen den linksatrialen Druck abschätzt. Er ist nicht aus einem Röntgen- oder CT-Bild ablesbar.', 'Pulmonary capillary wedge pressure: an invasive haemodynamic measurement that estimates left atrial pressure under appropriate conditions. It cannot be read from a radiograph or CT image.', 'Pulmonary capillary wedge pressure (فشار گوه‌ای مویرگ ریوی): اندازه‌گیری همودینامیک تهاجمی که در شرایط مناسب فشار دهلیز چپ را برآورد می‌کند. از تصویر رادیوگرافی یا CT قابل خواندن نیست.'),
+  source: 'Thorax.pdf p. 48 (printed p. 47); Luchsinger et al., Circulation Research, primary haemodynamic study.',
+}, {
+  id: 'ards-imaging-boundary', topicId: 'lungenoedem', category: L('ARDS · Bildkriterium', 'ARDS · imaging criterion', 'ARDS · معیار تصویری'),
+  front: L('Beweisen beidseitige Verschattungen allein ein ARDS?', 'Do bilateral opacities alone prove ARDS?', 'آیا کدورت‌های دوطرفه به‌تنهایی ARDS را ثابت می‌کنند؟'),
+  answer: L('Nein. Sie erfüllen ein Bildkriterium; die globale Definition verlangt zusätzlich klinische und Oxygenierungs-Kriterien.', 'No. They meet an imaging criterion; the global definition also requires clinical and oxygenation criteria.', 'خیر. آن‌ها معیار تصویری را برآورده می‌کنند؛ تعریف جهانی علاوه بر آن، معیارهای بالینی و اکسیژناسیون را لازم می‌داند.'),
+  source: 'Global ARDS Definition consensus paper (2024).',
 }]
