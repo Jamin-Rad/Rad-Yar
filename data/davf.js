@@ -7,33 +7,9 @@ export const DAVF_LESSON = {
 
   breadcrumb: L('Durale AV-Fistel (dAVF)', 'Dural Arteriovenous Fistula (dAVF)', 'فیستول شریانی-وریدی دورال (dAVF)'),
   title: L('Durale AV-Fistel (dAVF)', 'Dural Arteriovenous Fistula (dAVF)', 'فیستول شریانی-وریدی دورال (dAVF)'),
-  definition: L(
-    'Erworbene arteriovenöse Verbindung innerhalb der Dura mater zwischen meningealen Arterien und einem duralen Sinus oder kortikaler Vene — ohne Nidus.',
-    'Acquired arteriovenous connection within the dura mater between meningeal arteries and a dural sinus or cortical vein — without a nidus.',
-    'اتصال شریانی-وریدی اکتسابی درون دورامتر بین شریان‌های مننژیال و سینوس دورال یا ورید کورتیکال — بدون نیدوس.'
-  ),
-  sourceLabel: 'Dr. Zia',
   keyLabel: L('Merke', 'Key point', 'نکته کلیدی'),
   caveLabel: L('Cave', 'Warning', 'هشدار'),
   toc: L('Inhalte', 'Contents', 'فهرست'),
-
-  heroCards: [
-    {
-      value: L('Erworben', 'Acquired', 'اکتسابی'),
-      label: L('im Gegensatz zur AVM', 'unlike AVM', 'بر خلاف AVM'),
-      text: L('Sinusthrombose, Trauma oder Infektion als Auslöser', 'Sinus thrombosis, trauma or infection as triggers', 'ترومبوز سینوس، تروما یا عفونت به‌عنوان محرک'),
-    },
-    {
-      value: L('Kein Nidus', 'No nidus', 'بدون نیدوس'),
-      label: L('Wichtigster AVM-Unterschied', 'Key difference from AVM', 'تفاوت اصلی با AVM'),
-      text: L('Direkte Fistelverbindung ohne Nidus', 'Direct fistulous connection without a nidus', 'اتصال مستقیم فیستولی بدون نیدوس'),
-    },
-    {
-      value: L('DSA', 'DSA', 'DSA'),
-      label: L('Goldstandard', 'Gold standard', 'استاندارد طلایی'),
-      text: L('Direkter Fistelpunkt + Feeder-Darstellung', 'Direct fistula point + feeder anatomy', 'نقطه مستقیم فیستول + تغذیه‌کنندگان'),
-    },
-  ],
 
   sections: [
     { id: 'grundlagen',   icon: '📌', label: L('Grundlagen',           'Basics',               'مبانی') },
@@ -75,9 +51,9 @@ export const DAVF_LESSON = {
         icon: '👨‍⚕️',
         title: L('Epidemiologie', 'Epidemiology', 'اپیدمیولوژی'),
         text: L(
-          'Auftreten meist im Erwachsenenalter (40.–60. Lebensjahr). Häufigste Lokalisation: Sinus transversus / sigmoideus. Sinus cavernosus als Sonderform (Carotis-Cavernosus-Fistel).',
-          'Typically presents in adulthood (4th–6th decade). Most common location: transverse/sigmoid sinus. Cavernous sinus is a special variant (carotid-cavernous fistula).',
-          'معمولاً در بزرگسالی (دهه ۴–۶ زندگی) رخ می‌دهد. شایع‌ترین محل: سینوس ترانسورسوس/سیگموئیدوس. سینوس کاورنوسوس به‌عنوان نوع خاص (فیستول کاروتید-کاورنوسوس).'
+          'Auftreten meist im Erwachsenenalter (40.–60. Lebensjahr). Häufigste Lokalisation: Sinus transversus / sigmoideus. Eine kavernöse Sinus-dAVF ist meist eine indirekte durale Karotis-Kavernosus-Fistel (Barrow B–D); sie ist von der direkten ICA-Fistel (Barrow A) zu unterscheiden.',
+          'Typically presents in adulthood (4th–6th decade). Most common location: transverse/sigmoid sinus. A cavernous sinus dAVF is usually an indirect dural carotid-cavernous fistula (Barrow B–D), distinct from a direct ICA fistula (Barrow A).',
+          'معمولاً در بزرگسالی (دهه ۴–۶ زندگی) رخ می‌دهد. شایع‌ترین محل: سینوس ترانسورسوس/سیگموئیدوس. dAVF سینوس کاورنوسوس معمولاً فیستول غیرمستقیم دورال کاروتید–کاورنوسوس (Barrow B–D) است و با فیستول مستقیم ICA (Barrow A) تفاوت دارد.'
         ),
       },
       {
@@ -100,9 +76,9 @@ export const DAVF_LESSON = {
   klinik: {
     title: L('Klinik', 'Clinical Presentation', 'تظاهر بالینی'),
     lead: L(
-      'Die Symptome hängen entscheidend vom Drainagemuster ab — kortikale venöse Drainage bedeutet hohes Blutungsrisiko.',
-      'Symptoms depend critically on the drainage pattern — cortical venous drainage means high haemorrhage risk.',
-      'علائم به‌طور تعیین‌کننده به الگوی درناژ بستگی دارد — درناژ وریدی کورتیکال خطر خونریزی بالا را نشان می‌دهد.'
+      'Die Symptome und das Risiko hängen vom venösen Abfluss ab. Kortikaler Reflux ist ein aggressives Muster; das individuelle Risiko hängt zusätzlich von Präsentation und venöser Ektasie ab.',
+      'Symptoms and risk depend on venous outflow. Cortical venous reflux is an aggressive pattern; individual risk also depends on presentation and venous ectasia.',
+      'علائم و خطر به خروج وریدی بستگی دارند. رفلاکس وریدی کورتیکال الگویی پرخطر است؛ خطر فردی به نحوه تظاهر و اکتازی وریدی نیز بستگی دارد.'
     ),
     headers: [
       L('Lokalisation / Situation', 'Location / Situation', 'محل / وضعیت'),
@@ -123,22 +99,22 @@ export const DAVF_LESSON = {
       [
         L('Kortikale venöse Drainage (CVD)', 'Cortical venous drainage (CVD)', 'درناژ وریدی کورتیکال (CVD)'),
         L('Intrakranielle Blutung, Krampfanfälle, neurologische Defizite, venöse Stauungsenzephalopathie', 'Intracranial haemorrhage, seizures, focal deficits, venous congestive encephalopathy', 'خونریزی داخل جمجمه، تشنج، کسری‌های عصبی، آنسفالوپاتی احتقانی وریدی'),
-        L('Hoch! (Cognard IIb–V)', 'High! (Cognard IIb–V)', 'بالا! (Cognard IIb–V)'),
+        L('Aggressives Muster; Risiko individuell beurteilen', 'Aggressive pattern; assess risk individually', 'الگوی پرخطر؛ ارزیابی خطر به‌صورت فردی'),
       ],
     ],
     cave: L(
-      'Kortikale venöse Drainage (CVD) ist der wichtigste Risikofaktor — sie definiert Cognard IIb und höher und erhöht das jährliche Blutungsrisiko auf bis zu 10 %.',
-      'Cortical venous drainage (CVD) is the most important risk factor — it defines Cognard IIb and above and raises annual haemorrhage risk to up to 10%.',
-      'درناژ وریدی کورتیکال (CVD) مهم‌ترین عامل خطر است — Cognard IIb و بالاتر را تعریف می‌کند و خطر سالانه خونریزی را تا ۱۰٪ افزایش می‌دهد.'
+      'Corticaler venöser Reflux kennzeichnet Cognard IIb, IIa+b, III und IV. Cognard V beschreibt spinalen venösen Abfluss. Blutungs- und neurologisches Risiko variieren unter anderem mit venöser Ektasie und klinischer Präsentation; pauschale Jahresraten sind hierfür nicht geeignet.',
+      'Cortical venous reflux defines Cognard IIb, IIa+b, III and IV. Cognard V describes spinal venous drainage. Haemorrhagic and neurological risk varies with factors including venous ectasia and clinical presentation; one annual rate cannot represent every grade.',
+      'رفلاکس وریدی کورتیکال در درجات Cognard IIb، IIa+b، III و IV وجود دارد. Cognard V درناژ وریدی نخاعی را توصیف می‌کند. خطر خونریزی و علائم عصبی به عواملی مانند اکتازی وریدی و تظاهر بالینی وابسته است؛ یک نرخ سالانه برای همه درجات مناسب نیست.'
     ),
   },
 
   cognard: {
     title: L('Cognard-Klassifikation', 'Cognard Classification', 'طبقه‌بندی Cognard'),
     lead: L(
-      'Die Cognard-Klassifikation beschreibt das venöse Drainagemuster und damit das Blutungsrisiko. Kortikale venöse Drainage (CVD) ist der entscheidende Hochrisikofaktor.',
-      'The Cognard classification describes the venous drainage pattern and thereby the haemorrhage risk. Cortical venous drainage (CVD) is the decisive high-risk factor.',
-      'طبقه‌بندی Cognard الگوی درناژ وریدی و در نتیجه خطر خونریزی را توصیف می‌کند. درناژ وریدی کورتیکال (CVD) عامل خطر کلیدی است.'
+      'Die Cognard-Klassifikation beschreibt das venöse Drainagemuster. CVD liegt bei IIb, IIa+b, III und IV vor; Grad V bezeichnet spinalen venösen Abfluss. Das Muster unterstützt die Risikoeinschätzung, ersetzt aber keine klinische Einzelfallbewertung.',
+      'The Cognard classification describes venous drainage. CVD occurs in IIb, IIa+b, III and IV; grade V denotes spinal venous drainage. The pattern informs risk assessment but does not replace individualized clinical evaluation.',
+      'طبقه‌بندی Cognard الگوی درناژ وریدی را توصیف می‌کند. CVD در IIb، IIa+b، III و IV وجود دارد؛ درجه V درناژ وریدی نخاعی است. این الگو به ارزیابی خطر کمک می‌کند اما جای ارزیابی بالینی فردی را نمی‌گیرد.'
     ),
     headers: [
       L('Grad', 'Grade', 'درجه'),
@@ -149,7 +125,7 @@ export const DAVF_LESSON = {
       [
         'I',
         L('Antegrade Drainage in Sinus — kein CVD', 'Antegrade drainage into sinus — no CVD', 'درناژ آنتروگراد به سینوس — بدون CVD'),
-        L('Niedrig (~2 %/Jahr) → konservativ', 'Low (~2%/year) → conservative', 'پایین (~۲٪/سال) → محافظه‌کارانه'),
+        L('Ohne CVD; Management nach Symptomen und individuellem Befund', 'No CVD; management depends on symptoms and individual findings', 'بدون CVD؛ مدیریت بر اساس علائم و یافته‌های فردی'),
       ],
       [
         'IIa',
@@ -169,12 +145,12 @@ export const DAVF_LESSON = {
       [
         'III',
         L('Direkte CVD — keine venöse Ektasie', 'Direct CVD — no venous ectasia', 'CVD مستقیم — بدون اکتازی وریدی'),
-        L('Hoch (~10 %/Jahr) — Therapie indiziert', 'High (~10%/year) — treatment indicated', 'بالا (~۱۰٪/سال) — درمان اندیکاسیون دارد'),
+        L('CVD ohne Ektasie; klinisches Risiko individuell bewerten', 'CVD without ectasia; assess clinical risk individually', 'CVD بدون اکتازی؛ خطر بالینی فردی ارزیابی شود'),
       ],
       [
         'IV',
         L('Direkte CVD + venöse Ektasie (Varize)', 'Direct CVD + venous ectasia (varix)', 'CVD مستقیم + اکتازی وریدی (واریس)'),
-        L('Sehr hoch (~10 %/Jahr) — dringende Therapie', 'Very high (~10%/year) — urgent treatment', 'بسیار بالا (~۱۰٪/سال) — درمان فوری'),
+        L('CVD mit Ektasie; klinisches Risiko individuell bewerten', 'CVD with ectasia; assess clinical risk individually', 'CVD همراه اکتازی؛ خطر بالینی فردی ارزیابی شود'),
       ],
       [
         'V',
@@ -183,9 +159,9 @@ export const DAVF_LESSON = {
       ],
     ],
     key: L(
-      'CVD = kortikale venöse Drainage. Ab Cognard IIb: CVD vorhanden → hohes Blutungsrisiko → Therapie erforderlich!',
-      'CVD = cortical venous drainage. From Cognard IIb onwards: CVD present → high haemorrhage risk → treatment required!',
-      'CVD = درناژ وریدی کورتیکال. از Cognard IIb به بعد: CVD وجود دارد → خطر خونریزی بالا → درمان لازم!'
+      'CVD = kortikale venöse Drainage. Sie liegt bei Cognard IIb, IIa+b, III und IV vor; Grad V beschreibt spinalen venösen Abfluss. CVD erfordert eine fachärztliche, individualisierte Risikobewertung und Therapieplanung.',
+      'CVD = cortical venous drainage. It occurs in Cognard IIb, IIa+b, III and IV; grade V describes spinal venous drainage. CVD warrants specialist, individualized risk assessment and treatment planning.',
+      'CVD = درناژ وریدی کورتیکال. در Cognard IIb، IIa+b، III و IV وجود دارد؛ درجه V درناژ وریدی نخاعی را توصیف می‌کند. CVD نیازمند ارزیابی خطر و برنامه‌ریزی درمانی فردمحور توسط متخصص است.'
     ),
   },
 
@@ -225,13 +201,13 @@ export const DAVF_LESSON = {
       [
         L('DSA (Goldstandard!)', 'DSA (Gold standard!)', 'DSA (استاندارد طلایی!)'),
         L('Direkter Fistelpunkt; frühe Sinusfüllung in arterieller Phase; selektive Feeder-Darstellung (meist A. carotis externa)', 'Direct fistula point; early sinus filling in arterial phase; selective feeder anatomy (mostly external carotid artery)', 'نقطه مستقیم فیستول؛ پُرشدگی زودرس سینوس در فاز شریانی؛ تصویرسازی انتخابی تغذیه‌کنندگان (اغلب شریان کاروتید خارجی)'),
-        L('Einzige Methode zur Darstellung des genauen Fistelpunkts und zur Therapieplanung', 'Only method to show the exact fistula point and plan treatment', 'تنها روش برای نمایش نقطه دقیق فیستول و برنامه‌ریزی درمان'),
+        L('Referenz zur vollständigen Darstellung von Fistelpunkt, Feeder und Drainagemuster sowie zur Therapieplanung', 'Reference standard for full depiction of fistula point, feeders and drainage pattern and for treatment planning', 'روش مرجع برای نمایش کامل نقطه فیستول، تغذیه‌کنندگان و الگوی درناژ و برنامه‌ریزی درمان'),
       ],
     ],
     key: L(
-      'Pseudophlebitisches Muster in SWI = geschlängelte kortikale Venen = Zeichen der CVD. DSA ist Pflicht vor Therapie.',
-      'Pseudophlebitic pattern on SWI = tortuous cortical veins = sign of CVD. DSA is mandatory before treatment.',
-      'الگوی سودوفلبیتیک در SWI = وریدهای کورتیکال مارپیچ = علامت CVD. DSA قبل از درمان اجباری است.'
+      'Pseudophlebitisches Muster in SWI = geschlängelte kortikale Venen = Hinweis auf CVD. DSA charakterisiert die Angioarchitektur vor Therapie umfassend.',
+      'Pseudophlebitic pattern on SWI = tortuous cortical veins = clue to CVD. DSA comprehensively characterizes angioarchitecture before treatment.',
+      'الگوی سودوفلبیتیک در SWI = وریدهای کورتیکال مارپیچ = نشانه‌ای از CVD. DSA آنژیوآناتومی را پیش از درمان به‌طور کامل مشخص می‌کند.'
     ),
   },
 
@@ -253,7 +229,7 @@ export const DAVF_LESSON = {
       ],
       [
         L('Karotis-Cavernosus-Fistel (direkt)', 'Direct carotid-cavernous fistula', 'فیستول مستقیم کاروتید-کاورنوسوس'),
-        L('Direkter Traumariss der ICA in den Sinus cavernosus; hochfluss; sofortige dramatische Symptome', 'Direct traumatic tear of ICA into cavernous sinus; high flow; immediate dramatic symptoms', 'پارگی تروماتیک مستقیم ICA به سینوس کاورنوسوس؛ پرجریان؛ علائم دراماتیک فوری'),
+        L('Direkte ICA-Fistel (Barrow A; oft traumatisch) von indirekter duraler Karotis-Kavernosus-Fistel (Barrow B–D) unterscheiden.', 'Distinguish a direct ICA fistula (Barrow A; often traumatic) from an indirect dural carotid-cavernous fistula (Barrow B–D).', 'فیستول مستقیم ICA (Barrow A؛ اغلب تروماتیک) را از فیستول غیرمستقیم دورال کاروتید–کاورنوسوس (Barrow B–D) افتراق دهید.'),
       ],
       [
         L('Sinusthrombose', 'Sinus thrombosis', 'ترومبوز سینوس'),
@@ -269,9 +245,9 @@ export const DAVF_LESSON = {
   management: {
     title: L('Management & Therapie', 'Management & Treatment', 'مدیریت و درمان'),
     lead: L(
-      'Die Therapiestrategie hängt vom Cognard-Grad ab. Kortikale venöse Drainage ist immer eine Therapieindikation.',
-      'Treatment strategy depends on the Cognard grade. Cortical venous drainage always indicates treatment.',
-      'استراتژی درمان به درجه Cognard بستگی دارد. درناژ وریدی کورتیکال همیشه اندیکاسیون درمان است.'
+      'Die Therapieentscheidung berücksichtigt Drainagemuster, Symptome, Blutungsanamnese, venöse Ektasie und den Gesamtzustand. CVD verlangt eine zeitnahe neurovaskuläre Fachbeurteilung; das Vorgehen wird individuell geplant.',
+      'Treatment decisions consider drainage pattern, symptoms, haemorrhage history, venous ectasia and overall condition. CVD warrants timely neurovascular specialist assessment; management is individualized.',
+      'تصمیم درمان با توجه به الگوی درناژ، علائم، سابقه خونریزی، اکتازی وریدی و وضعیت کلی گرفته می‌شود. CVD نیازمند ارزیابی به‌موقع متخصص نوروعروقی است و برنامه درمان فردی تعیین می‌شود.'
     ),
     items: [
       {
@@ -303,9 +279,9 @@ export const DAVF_LESSON = {
       },
     ],
     cave: L(
-      'Cognard IIb und höher (CVD vorhanden) = immer Therapie. Jährliches Blutungsrisiko 10 % bei Cognard III–IV — kein Abwarten!',
-      'Cognard IIb and above (CVD present) = always treat. Annual haemorrhage risk is 10% for Cognard III–IV — do not wait!',
-      'Cognard IIb و بالاتر (CVD وجود دارد) = همیشه درمان کنید. خطر سالانه خونریزی ۱۰٪ برای Cognard III–IV — منتظر نمانید!'
+      'Bei CVD ist eine zeitnahe neurovaskuläre Beurteilung angezeigt. Dringlichkeit und Therapie hängen von Drainageanatomie, klinischer Präsentation und individuellen Risikomerkmalen ab; pauschale Jahresraten sind nicht übertragbar.',
+      'CVD warrants timely neurovascular assessment. Urgency and treatment depend on drainage anatomy, clinical presentation and individual risk features; blanket annual rates are not transferable.',
+      'در CVD ارزیابی به‌موقع نوروعروقی لازم است. فوریت و درمان به آناتومی درناژ، تظاهر بالینی و عوامل خطر فردی بستگی دارد؛ نرخ سالانهٔ کلی قابل تعمیم نیست.'
     ),
   },
 
@@ -326,19 +302,19 @@ export const DAVF_LESSON = {
         ),
       },
       {
-        title: L('CVD = Hochrisiko = Therapie', 'CVD = high risk = treat', 'CVD = خطر بالا = درمان'),
+        title: L('CVD = zeitnahe Fachbeurteilung', 'CVD = timely specialist assessment', 'CVD = ارزیابی به‌موقع تخصصی'),
         text: L(
-          'Kortikale venöse Drainage (CVD) ist der entscheidende Risikofaktor. Ab Cognard IIb: CVD vorhanden → jährliches Blutungsrisiko bis 10 % → immer behandeln.',
-          'Cortical venous drainage (CVD) is the decisive risk factor. From Cognard IIb: CVD present → annual haemorrhage risk up to 10% → always treat.',
-          'درناژ وریدی کورتیکال (CVD) عامل خطر تعیین‌کننده است. از Cognard IIb به بعد: CVD وجود دارد → خطر سالانه خونریزی تا ۱۰٪ → همیشه درمان کنید.'
+          'CVD liegt bei Cognard IIb, IIa+b, III und IV vor. Präsentation, Drainageanatomie und venöse Ektasie beeinflussen die individuelle Risikoeinschätzung und Therapieplanung.',
+          'CVD occurs in Cognard IIb, IIa+b, III and IV. Presentation, drainage anatomy and venous ectasia inform individualized risk assessment and treatment planning.',
+          'CVD در درجات Cognard IIb، IIa+b، III و IV وجود دارد. تظاهر، آناتومی درناژ و اکتازی وریدی در ارزیابی خطر و برنامه‌ریزی درمان فردی نقش دارند.'
         ),
       },
       {
-        title: L('DSA vor Therapie obligat', 'DSA mandatory before treatment', 'DSA قبل از درمان اجباری'),
+        title: L('DSA zur Therapieplanung', 'DSA for treatment planning', 'DSA برای برنامه‌ریزی درمان'),
         text: L(
-          'MRT/CTA können die Diagnose nahelegen, aber nur die DSA zeigt den genauen Fistelpunkt, alle Feeder und das venöse Drainagemuster — Pflicht vor Embolisation oder OP.',
-          'MRI/CTA can suggest the diagnosis, but only DSA shows the exact fistula point, all feeders and the venous drainage pattern — mandatory before embolisation or surgery.',
-          'MRI/CTA می‌توانند تشخیص را مطرح کنند، اما فقط DSA نقطه دقیق فیستول، تمام تغذیه‌کنندگان و الگوی درناژ وریدی را نشان می‌دهد — قبل از آمبولیزاسیون یا جراحی اجباری.'
+          'MRT/CTA können die Diagnose nahelegen; die DSA dient als Referenz zur umfassenden Darstellung der Angioarchitektur und Therapieplanung.',
+          'MRI/CTA can suggest the diagnosis; DSA is the reference examination for comprehensive angiographic characterization and treatment planning.',
+          'MRI و CTA می‌توانند تشخیص را مطرح کنند؛ DSA روش مرجع برای بررسی جامع آنژیوآناتومی و برنامه‌ریزی درمان است.'
         ),
       },
     ],
@@ -372,9 +348,9 @@ const TQ = [
       L('Cognard III', 'Cognard III', 'Cognard III'),
       L('Cognard IV', 'Cognard IV', 'Cognard IV'),
     ], 0,
-    L('Cognard I = antegrade Drainage in den Sinus, kein CVD, niedriges Blutungsrisiko (~2 %/Jahr).',
-      'Cognard I = antegrade drainage into sinus, no CVD, low haemorrhage risk (~2%/year).',
-      'Cognard I = درناژ آنتروگراد به سینوس، بدون CVD، خطر پایین خونریزی (~۲٪/سال).')),
+    L('Cognard I = antegrade Sinusdrainage ohne CVD. Das Management richtet sich nach Symptomen und individueller Beurteilung.',
+      'Cognard I = antegrade sinus drainage without CVD. Management depends on symptoms and individualized assessment.',
+      'Cognard I = درناژ آنتروگراد سینوس بدون CVD. مدیریت به علائم و ارزیابی فردی بستگی دارد.')),
 
   Q('03',
     L('Welcher Befund erhöht das Blutungsrisiko bei einer dAVF am stärksten?',
@@ -386,9 +362,9 @@ const TQ = [
       L('Lokalisation am Sinus transversus', 'Transverse sinus location', 'محل سینوس ترانسورسوس'),
       L('Pulssynchroner Tinnitus', 'Pulsatile tinnitus', 'تینیتوس سنکرون با نبض'),
     ], 0,
-    L('CVD (kortikale venöse Drainage) ist der entscheidende Risikofaktor — ab Cognard IIb, Blutungsrisiko bis 10 %/Jahr.',
-      'CVD (cortical venous drainage) is the decisive risk factor — from Cognard IIb onwards, haemorrhage risk up to 10%/year.',
-      'CVD (درناژ وریدی کورتیکال) عامل خطر تعیین‌کننده است — از Cognard IIb به بعد، خطر خونریزی تا ۱۰٪/سال.')),
+    L('CVD kommt bei Cognard IIb, IIa+b, III und IV vor; Grad V beschreibt spinalen venösen Abfluss.',
+      'CVD occurs in Cognard IIb, IIa+b, III and IV; grade V describes spinal venous drainage.',
+      'CVD در Cognard IIb، IIa+b، III و IV وجود دارد؛ درجه V درناژ وریدی نخاعی را توصیف می‌کند.')),
 
   Q('04',
     L('Welches bildgebende Verfahren ist der Goldstandard zur Diagnostik und Therapieplanung der dAVF?',
@@ -400,9 +376,9 @@ const TQ = [
       L('CTA', 'CTA', 'CTA'),
       L('TOF-MRA', 'TOF-MRA', 'TOF-MRA'),
     ], 0,
-    L('Nur die DSA zeigt den genauen Fistelpunkt, alle Feeder und das venöse Drainagemuster — obligat vor Embolisation.',
-      'Only DSA shows the exact fistula point, all feeders and the venous drainage pattern — mandatory before embolisation.',
-      'فقط DSA نقطه دقیق فیستول، تمام تغذیه‌کنندگان و الگوی درناژ وریدی را نشان می‌دهد — اجباری قبل از آمبولیزاسیون.')),
+    L('Die DSA ist die Referenz zur umfassenden Darstellung von Fistelpunkt, Feeder und venösem Drainagemuster als Grundlage der Therapieplanung.',
+      'DSA is the reference examination for comprehensive depiction of fistula point, feeders and venous drainage as a basis for treatment planning.',
+      'DSA روش مرجع برای نمایش جامع نقطه فیستول، تغذیه‌کنندگان و الگوی درناژ وریدی برای برنامه‌ریزی درمان است.')),
 
   Q('05',
     L('Welches Symptom ist typisch für eine Sinus-transversus-dAVF?',
@@ -548,17 +524,17 @@ const TF = [
   F('lokalisation', L('Grundlagen', 'Basics', 'مبانی'),
     L('Häufigste Lokalisation der dAVF?', 'Most common dAVF location?', 'شایع‌ترین محل dAVF؟'),
     L('Sinus transversus / sigmoideus.', 'Transverse / sigmoid sinus.', 'سینوس ترانسورسوس / سیگموئیدوس.'),
-    L('Weitere Lokalisationen: Sinus cavernosus (Carotis-Cavernosus-Fistel als Sonderform), Tentorium, Sinus sagittalis superior, Foramen magnum.', 'Other locations: cavernous sinus (carotid-cavernous fistula as special variant), tentorium, superior sagittal sinus, foramen magnum.', 'محل‌های دیگر: سینوس کاورنوسوس (فیستول کاروتید-کاورنوسوس به‌عنوان نوع خاص)، تنتوریوم، سینوس ساژیتال فوقانی، فورامن ماگنوم.')),
+    L('Weitere Lokalisationen: Sinus cavernosus (meist indirekte durale Barrow-B–D-Fistel), Tentorium, Sinus sagittalis superior, Foramen magnum.', 'Other locations: cavernous sinus (usually an indirect dural Barrow B–D fistula), tentorium, superior sagittal sinus, foramen magnum.', 'محل‌های دیگر: سینوس کاورنوسوس (معمولاً فیستول دورال غیرمستقیم Barrow B–D)، تنتوریوم، سینوس ساژیتال فوقانی، فورامن ماگنوم.')),
 
   F('cognard-cvd', L('Klassifikation', 'Classification', 'طبقه‌بندی'),
     L('Was bedeutet CVD in der Cognard-Klassifikation?', 'What does CVD mean in the Cognard classification?', 'CVD در طبقه‌بندی Cognard چه معنایی دارد؟'),
     L('Kortikale venöse Drainage = Hochrisikofaktor.', 'Cortical venous drainage = high-risk factor.', 'درناژ وریدی کورتیکال = عامل خطر بالا.'),
-    L('CVD (cortical venous drainage) bedeutet, dass das Blut direkt in kortikale Venen drainiert statt in den Sinus. Dies erhöht den venösen Druck im Parenchym und das Blutungsrisiko massiv. Ab Cognard IIb ist CVD vorhanden.', 'CVD means blood drains directly into cortical veins rather than the sinus. This massively increases venous pressure in the parenchyma and haemorrhage risk. CVD is present from Cognard IIb onwards.', 'CVD به این معناست که خون مستقیماً به وریدهای کورتیکال تخلیه می‌شود نه به سینوس. این فشار وریدی در پارانشیم و خطر خونریزی را به‌شدت افزایش می‌دهد. CVD از Cognard IIb به بعد وجود دارد.')),
+    L('CVD bedeutet kortikalen venösen Reflux. Er liegt bei Cognard IIb, IIa+b, III und IV vor; Grad V beschreibt spinalen Abfluss.', 'CVD means cortical venous reflux. It occurs in Cognard IIb, IIa+b, III and IV; grade V describes spinal drainage.', 'CVD به معنای رفلاکس وریدی کورتیکال است. در درجات Cognard IIb، IIa+b، III و IV وجود دارد؛ درجه V درناژ نخاعی را توصیف می‌کند.')),
 
   F('cognard-grading', L('Klassifikation', 'Classification', 'طبقه‌بندی'),
-    L('Ab welchem Cognard-Grad ist immer eine Therapie indiziert?', 'From which Cognard grade is treatment always indicated?', 'از کدام درجه Cognard درمان همیشه اندیکاسیون دارد؟'),
-    L('Ab Cognard IIb (CVD vorhanden).', 'From Cognard IIb onwards (CVD present).', 'از Cognard IIb به بعد (CVD وجود دارد).'),
-    L('Cognard I (kein CVD) kann konservativ beobachtet werden. Ab IIb ist CVD vorhanden → hohes Blutungsrisiko → Embolisation oder OP. Cognard III–IV: Blutungsrisiko ~10 %/Jahr.', 'Cognard I (no CVD) may be observed conservatively. From IIb CVD is present → high haemorrhage risk → embolisation or surgery. Cognard III–IV: ~10%/year haemorrhage risk.', 'Cognard I (بدون CVD) می‌تواند به‌صورت محافظه‌کارانه مشاهده شود. از IIb CVD وجود دارد → خطر خونریزی بالا → آمبولیزاسیون یا جراحی. Cognard III–IV: خطر ~۱۰٪/سال.')),
+    L('Welche Cognard-Grade weisen kortikale venöse Drainage auf?', 'Which Cognard grades have cortical venous drainage?', 'کدام درجات Cognard درناژ وریدی کورتیکال دارند؟'),
+    L('IIb, IIa+b, III und IV.', 'IIb, IIa+b, III and IV.', 'IIb، IIa+b، III و IV.'),
+    L('Grad V beschreibt spinalen venösen Abfluss und gehört nicht zur CVD-Gruppe. Therapieentscheidungen werden anhand von Angiographie und klinischem Risikoprofil individuell getroffen.', 'Grade V describes spinal venous drainage and is not part of the CVD group. Treatment decisions are individualized using angiography and the clinical risk profile.', 'درجه V درناژ وریدی نخاعی را توصیف می‌کند و جزو گروه CVD نیست. تصمیم درمان با توجه به آنژیوگرافی و پروفایل خطر بالینی فردی گرفته می‌شود.')),
 
   F('tinnitus', L('Klinik', 'Clinical', 'بالینی'),
     L('Welches Symptom ist klassisch für eine Sinus-transversus-dAVF?', 'Which symptom is classic for transverse sinus dAVF?', 'کدام علامت برای dAVF سینوس ترانسورسوس کلاسیک است؟'),
@@ -581,9 +557,9 @@ const TF = [
     L('In SWI/T2* erscheinen erweiterte, arterialisierte kortikale Venen als schlängelnde hypointense Strukturen. Dies ist ein wichtiger MRT-Hinweis auf CVD und damit auf hohes Blutungsrisiko.', 'On SWI/T2*, dilated arterialized cortical veins appear as serpentine hypointense structures. This is an important MRI clue to CVD and thereby high haemorrhage risk.', 'در SWI/T2*، وریدهای کورتیکال گشاد و شریانی‌شده به صورت ساختارهای هیپواینتنس مارپیچ ظاهر می‌شوند. این نشانه MRI مهمی از CVD و در نتیجه خطر بالای خونریزی است.')),
 
   F('dsa', L('Bildgebung', 'Imaging', 'تصویربرداری'),
-    L('Warum ist DSA der Goldstandard bei dAVF?', 'Why is DSA the gold standard for dAVF?', 'چرا DSA استاندارد طلایی برای dAVF است؟'),
-    L('Einzige Methode, die Fistelpunkt, alle Feeder und Drainagemuster zeigt.', 'Only method showing fistula point, all feeders and drainage pattern.', 'تنها روشی که نقطه فیستول، همه تغذیه‌کنندگان و الگوی درناژ را نشان می‌دهد.'),
-    L('MRT und CTA können einen Verdacht liefern, aber nur die DSA zeigt: 1. Genauen Fistelpunkt, 2. Alle arteriellen Feeder, 3. Vollständiges venöses Drainagemuster → Grundlage für Therapieplanung.', 'MRI and CTA can raise suspicion but only DSA shows: 1. Exact fistula point, 2. All arterial feeders, 3. Complete venous drainage pattern → basis for treatment planning.', 'MRI و CTA می‌توانند شک ایجاد کنند اما فقط DSA نشان می‌دهد: ۱. نقطه دقیق فیستول، ۲. همه تغذیه‌کنندگان شریانی، ۳. الگوی کامل درناژ وریدی → پایه برنامه‌ریزی درمان.')),
+    L('Warum ist DSA die Referenzuntersuchung bei dAVF?', 'Why is DSA the reference examination for dAVF?', 'چرا DSA روش مرجع بررسی dAVF است؟'),
+    L('Referenzstandard zur vollständigen Charakterisierung von Fistelpunkt, Feeder und Drainagemuster.', 'Reference standard for full characterization of fistula point, feeders and drainage pattern.', 'استاندارد مرجع برای مشخص‌کردن کامل نقطه فیستول، تغذیه‌کنندگان و الگوی درناژ.'),
+    L('MRT und CTA können einen Verdacht liefern; DSA ist die Referenz zur umfassenden Charakterisierung von Fistelpunkt, Feeder und Drainagemuster sowie für die Therapieplanung.', 'MRI and CTA can raise suspicion; DSA is the reference examination for comprehensive characterization of fistula point, feeders and drainage pattern and for treatment planning.', 'MRI و CTA می‌توانند شک ایجاد کنند؛ DSA روش مرجع برای مشخص‌کردن جامع نقطه فیستول، تغذیه‌کنندگان و الگوی درناژ و برنامه‌ریزی درمان است.')),
 
   F('feeder', L('Bildgebung', 'Imaging', 'تصویربرداری'),
     L('Aus welchen Arterien stammen die meisten dAVF-Feeder?', 'From which arteries do most dAVF feeders arise?', 'اغلب تغذیه‌کنندگان dAVF از کدام شریان‌ها می‌آیند؟'),
@@ -598,7 +574,7 @@ const TF = [
   F('konservativ', L('Management', 'Management', 'مدیریت'),
     L('Wann ist konservatives Management bei dAVF akzeptabel?', 'When is conservative management acceptable in dAVF?', 'چه زمانی مدیریت محافظه‌کارانه در dAVF قابل قبول است؟'),
     L('Nur bei Cognard I (kein CVD, asymptomatisch oder Tinnitus).', 'Only for Cognard I (no CVD, asymptomatic or tinnitus only).', 'فقط برای Cognard I (بدون CVD، بدون علامت یا فقط تینیتوس).'),
-    L('Cognard I hat antegrade Sinusdrainage ohne CVD und ein niedriges Blutungsrisiko (~2 %/Jahr). Engmaschige Bildgebungskontrollen. Ab Cognard IIb ist CVD vorhanden → sofortige Therapie.', 'Cognard I has antegrade sinus drainage without CVD and low haemorrhage risk (~2%/year). Close imaging follow-up. From Cognard IIb CVD is present → immediate treatment.', 'Cognard I درناژ آنتروگراد سینوس بدون CVD و خطر پایین خونریزی (~۲٪/سال) دارد. پیگیری تصویربرداری منظم. از Cognard IIb CVD وجود دارد → درمان فوری.')),
+    L('Cognard I hat antegrade Sinusdrainage ohne CVD. Management und Verlaufskontrolle richten sich nach Symptomen und individueller Beurteilung.', 'Cognard I has antegrade sinus drainage without CVD. Management and follow-up depend on symptoms and individualized assessment.', 'Cognard I درناژ آنتروگراد سینوس بدون CVD دارد. مدیریت و پیگیری بر اساس علائم و ارزیابی فردی است.')),
 ]
 
 export const DAVF_FLASHCARDS = TF.map((item, index) => ({

@@ -1,12 +1,14 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import InProgressBanner from '@/components/InProgressBanner'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import { DAVF_LESSON } from '@/data/davf'
+import LessonHero from '@/components/LessonHero'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
 
 const L = (value, lang) => value?.[lang] || value?.de || value
@@ -46,14 +48,13 @@ const UI = {
 
 function Section({ id, title, lead, children }) {
   const mobile = useMobileLearningLayout()
-  const [open, setOpen] = useState(true)
-
-  useEffect(() => setOpen(false), [id])
+  const [open, setOpen] = useState(id === 'grundlagen')
+  const section = DAVF_LESSON.sections.find(item => item.id === id)
 
   return (
     <section id={id} className={styles.section}>
       <button type="button" className={styles.sectionHeader} onClick={() => setOpen(value => !value)} aria-expanded={open}>
-        <h2>{title}</h2>
+        <h2><span aria-hidden="true">{section?.icon} </span>{title}</h2>
         <span>{open ? '−' : '+'}</span>
       </button>
       {open && (
@@ -164,11 +165,9 @@ export default function DavfPage() {
           <span>{c(DAVF_LESSON.breadcrumb)}</span>
         </div>
 
+        <LessonHero title={c(DAVF_LESSON.title)} imageSrc="/davf/hero.svg" imageAlt={c({ de: 'Schema einer duralen AV-Fistel mit duralem Sinus und venösem Abfluss.', en: 'Diagram of a dural AV fistula with dural sinus and venous outflow.', fa: 'طرح‌واره فیستول دورال AV با سینوس دورال و خروج وریدی.' })} />
         <div className={styles.hero}>
           <div className={styles.heroText}>
-            <span className={styles.sourceBadge}>{DAVF_LESSON.sourceLabel}</span>
-            <h1>{c(DAVF_LESSON.title)}</h1>
-            <p>{c(DAVF_LESSON.definition)}</p>
             <div className={styles.actions}>
               <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=gehirn&n=12&themen=davf&from=${encodeURIComponent(withLang('/gehirn/vaskulaer/davf'))}`)}>
                 🎯 {copy.actionMcq}
@@ -177,15 +176,6 @@ export default function DavfPage() {
                 🧠 {copy.actionFlash}
               </Link>
             </div>
-          </div>
-          <div className={styles.heroStats}>
-            {DAVF_LESSON.heroCards.map(card => (
-              <div className={styles.heroStat} key={c(card.value)}>
-                <strong>{c(card.value)}</strong>
-                <span>{c(card.label)}</span>
-                <small>{c(card.text)}</small>
-              </div>
-            ))}
           </div>
         </div>
       </header>
@@ -230,6 +220,13 @@ export default function DavfPage() {
 
           <Section id="cognard" title={c(DAVF_LESSON.cognard.title)} lead={c(DAVF_LESSON.cognard.lead)}>
             <Table headers={DAVF_LESSON.cognard.headers.map(c)} rows={rows(DAVF_LESSON.cognard.rows)} />
+            <figure style={{ margin: '1.5rem 0', padding: '1rem', borderRadius: 16, background: 'rgba(127, 127, 127, .07)' }}>
+              <Image src="/davf/drainage-patterns.svg" alt={c({ de: 'Zwei schematische Abflussmuster: links antegrader Abfluss in den Sinus, rechts Reflux in eine kortikale Vene.', en: 'Two schematic drainage patterns: antegrade flow into the sinus on the left and reflux into a cortical vein on the right.', fa: 'دو الگوی شماتیک درناژ: در چپ جریان آنتروگراد به سینوس و در راست رفلاکس به ورید کورتیکال.' })} width={900} height={360} style={{ width: '100%', height: 'auto', display: 'block' }} />
+              <figcaption style={{ marginTop: 12, lineHeight: 1.8 }}>
+                <div>{c({ de: '1 · Antegrader Sinusabfluss ohne CVD. 2 · Reflux in kortikale Venen = CVD (Cognard IIb, IIa+b, III oder IV).', en: '1 · Antegrade sinus drainage without CVD. 2 · Reflux into cortical veins = CVD (Cognard IIb, IIa+b, III or IV).', fa: '۱ · درناژ آنتروگراد به سینوس بدون CVD. ۲ · رفلاکس به وریدهای کورتیکال = CVD (Cognard IIb، IIa+b، III یا IV).' })}</div>
+                <div>{c({ de: 'Rot: arterieller Feeder · Blau: Sinusabfluss · Violett: kortikaler Reflux', en: 'Red: arterial feeder · Blue: sinus drainage · Purple: cortical reflux', fa: 'قرمز: تغذیه‌کننده شریانی · آبی: درناژ سینوسی · بنفش: رفلاکس کورتیکال' })}</div>
+              </figcaption>
+            </figure>
             <Callout label={c(DAVF_LESSON.keyLabel)}>{c(DAVF_LESSON.cognard.key)}</Callout>
           </Section>
 

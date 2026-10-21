@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" role="img" aria-labelledby="title desc">
+  <title id="title">Dural arteriovenous fistula drainage patterns</title>
+  <desc id="desc">Two schematic drainage patterns: antegrade drainage into a dural sinus, and reflux into a cortical vein.</desc>
+  <defs>
+    <marker id="arrowBlue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L12 6L0 12z" fill="#2563eb"/></marker>
+    <marker id="arrowRed" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L12 6L0 12z" fill="#dc2626"/></marker>
+    <marker id="arrowViolet" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L12 6L0 12z" fill="#7c3aed"/></marker>
+  </defs>
+  <rect x="12" y="12" width="876" height="336" rx="28" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+  <path d="M450 32v296" stroke="#cbd5e1" stroke-width="3" stroke-dasharray="8 9"/>
+  <g transform="translate(28 20)">
+    <path d="M60 82h325" stroke="#94a3b8" stroke-width="32" stroke-linecap="round"/>
+    <path d="M60 82h325" stroke="#dbeafe" stroke-width="16" stroke-linecap="round"/>
+    <path d="M112 284C160 244 182 193 226 163" fill="none" stroke="#dc2626" stroke-width="17" stroke-linecap="round" marker-end="url(#arrowRed)"/>
+    <path d="M226 163C275 142 300 115 335 83" fill="none" stroke="#2563eb" stroke-width="17" stroke-linecap="round" marker-end="url(#arrowBlue)"/>
+    <circle cx="226" cy="163" r="19" fill="#fff" stroke="#7c3aed" stroke-width="9"/>
+  </g>
+  <g transform="translate(478 20)">
+    <path d="M60 82h325" stroke="#94a3b8" stroke-width="32" stroke-linecap="round"/>
+    <path d="M60 82h325" stroke="#dbeafe" stroke-width="16" stroke-linecap="round"/>
+    <path d="M110 284C158 244 181 193 226 163" fill="none" stroke="#dc2626" stroke-width="17" stroke-linecap="round" marker-end="url(#arrowRed)"/>
+    <path d="M226 163C240 212 274 244 318 278" fill="none" stroke="#7c3aed" stroke-width="17" stroke-linecap="round" marker-end="url(#arrowViolet)"/>
+    <circle cx="226" cy="163" r="19" fill="#fff" stroke="#7c3aed" stroke-width="9"/>
+  </g>
+</svg>
