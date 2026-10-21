@@ -40,6 +40,22 @@ No external Radiopaedia asset is used in this adrenal delta.
 - Reuse basis: original project code; not copied from an external figure.
 - External provenance or license: not applicable.
 
+## Pancreatic ductal adenocarcinoma lesson
+
+- Local asset: `public/educational/pdac/source-ct-p36.jpg`
+- Origin: crop of the two axial CT panels embedded in the user-provided `Abdomen.pdf`, physical page 36 (printed page 35); rendered at 160 dpi and cropped at x=128, y=1085, width=1065, height=480 pixels.
+- Figure type: two axial contrast-enhanced CT images from one advanced PDAC case; the source does not label acquisition phases, so the lesson does not assign them.
+- Case attribution visible in the source PDF: Radiopaedia rID 86457, Mohammad Taghi Niknejad. The crop is captioned as advanced local extension, not as a typical early presentation.
+- Reuse basis: the user explicitly authorized reuse of figures in the supplied PDFs for RadYar and confirmed permission for Radiopaedia cases.
+- Exact case-specific license text: not independently retrieved from the Radiopaedia case page; direct web access returned HTTP 402. The user’s explicit project authorization is recorded above.
+
+- Local asset: `public/educational/pdac/source-mri-p37.jpg`
+- Origin: crop of six labelled MRI panels embedded in the user-provided `Abdomen.pdf`, physical page 37 (printed page 36); rendered at 200 dpi and cropped at x=220, y=580, width=1240, height=815 pixels. The crop contains only the six-panel set; the separate image below is excluded.
+- Figure type: three axial and three coronal panels labelled T1w, T2w and T1 C+; the visible source caption describes an irregular ill-defined mass with a necrotic non-enhancing centre and gives Radiopaedia rID 22896. The lesson reports the source description and does not infer additional sequence timing or diagnosis.
+- Contributor/author: not identified in the visible crop.
+- Reuse basis: the user explicitly authorized reuse of figures in the supplied PDFs and Radiopaedia cases for RadYar.
+- Exact case-specific license text: not independently retrieved; provenance does not assert license terms beyond the user’s authorization.
+
 ## Pelvic ring lesson
 
 - Local asset: `public/msk/pelvic-ring/source-pdf-page-26.jpg`

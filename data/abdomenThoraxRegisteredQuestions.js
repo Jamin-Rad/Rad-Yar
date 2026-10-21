@@ -28,6 +28,9 @@ const registrations = [
   { key: 'thorax-chest-xray', fach: 'thorax', tags: ['roentgen-thorax-systematik'], extra: { de: 'Die Kontrastmittelphase', en: 'The contrast phase', fa: 'فاز مادهٔ حاجب' } },
   { key: 'abdomen-cystic-liver-lesions', fach: 'abdomen', tags: ['leberzyste'], extra: { de: 'Der Zysteninhalt reichert nach Kontrastmittel stärker an als Wand und Septen', en: 'The cyst contents enhance more than the wall and septa after contrast', fa: 'محتوای کیست پس از تزریق بیش از دیواره و سپتا جذب دارد' } },
   { key: 'abdomen-appendizitis', fach: 'abdomen', tags: ['appendizitis'], extra: { de: 'Eine nicht dargestellte Appendix als sicheren Ausschluss werten', en: 'Treat a non-visualised appendix as a definite exclusion', fa: 'دیده‌نشدن آپاندیس را رد قطعی بیماری بدانید' } },
+  { key: 'abdomen-pdac-isoattenuating', fach: 'abdomen', tags: ['pdac'], extra: { de: 'Fehlende sichtbare Masse schließt PDAC aus', en: 'Absence of a visible mass excludes PDAC', fa: 'نبود تودهٔ قابل رؤیت PDAC را رد می‌کند' } },
+  { key: 'abdomen-pdac-double-duct', fach: 'abdomen', tags: ['pdac'], extra: { de: 'Es beweist spezifisch ein PDAC und schließt andere Ursachen aus', en: 'It specifically proves PDAC and excludes other causes', fa: 'به‌طور اختصاصی PDAC را ثابت و علل دیگر را رد می‌کند' } },
+  { key: 'abdomen-pdac-vessel-contact', fach: 'abdomen', tags: ['pdac'], extra: { de: 'Nur den Winkel messen und daraus allein die Resektabilität festlegen', en: 'Measure only the angle and determine resectability from that alone', fa: 'فقط زاویه را اندازه بگیرید و قابلیت برداشت را صرفاً بر آن اساس تعیین کنید' } },
   { key: 'abdomen-lower-gi-bleeding', fach: 'abdomen', tags: ['untere-gi-blutung'], extra: { de: 'Ein hyperdichter Lumeninhalt in der nativen Phase beweist bereits eine aktive Extravasation', en: 'Hyperdense luminal material on the unenhanced phase alone proves active extravasation', fa: 'مادهٔ پرچگال داخل لومن در فاز بدون تزریق به‌تنهایی نشت فعال را ثابت می‌کند' } },
   { key: 'abdomen-kolorektales-karzinom', fach: 'abdomen', tags: ['kolorektales-karzinom'], extra: { de: 'Eine Abdomen-CT allein für das lokoregionäre Rektumstaging', en: 'Abdominal CT alone for locoregional rectal staging', fa: 'فقط CT شکم برای مرحله‌بندی موضعی رکتوم' } },
   { key: 'abdomen-ileus-ischaemia', fach: 'abdomen', tags: ['ileus-duenndarm'], extra: { de: 'Wandverdickung allein beweist eine transmurale Nekrose', en: 'Wall thickening alone proves transmural necrosis', fa: 'ضخیم‌شدن دیواره به‌تنهایی نکروز تمام‌ضخامت را ثابت می‌کند' } },
@@ -57,6 +60,9 @@ export const ABDOMEN_THORAX_REGISTERED_QUESTIONS = Object.fromEntries(
 )
 
 export const ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS = [
+  { fachId: 'abdomen', kapitelId: 'abdomen-pankreas', title: { de: 'Pankreas', en: 'Pancreas', fa: 'پانکراس' }, topics: [
+    { id: 'pdac', title: { de: 'Duktales Adenokarzinom (PDAC)', en: 'Ductal adenocarcinoma (PDAC)', fa: 'آدنوکارسینوم داکتال پانکراس (PDAC)' } },
+  ] },
   { fachId: 'abdomen', kapitelId: 'abdomen-gi-trakt', title: { de: 'Ileus & Volvulus', en: 'Ileus & Volvulus', fa: 'ایلئوس و ولوولوس' }, topics: [
     { id: 'ileus-duenndarm', title: { de: 'Dünndarmileus', en: 'Small-bowel obstruction', fa: 'انسداد رودهٔ باریک' } }, { id: 'volvulus', title: { de: 'Volvulus', en: 'Volvulus', fa: 'ولوولوس' } },
   ] },
