@@ -1451,7 +1451,7 @@ export const CURRICULUM = [
         title: { de: '3. Degenerative Erkrankungen', en: '3. Degenerative Diseases', fa: '۳. بیماری‌های دژنراتیو' },
         icon: '⌁',
         themen: [
-          { id: 'bandscheibenpathologien', title: { de: 'Bandscheibenpathologien', en: 'Intervertebral Disc Pathologies', fa: 'بیماری‌های دیسک بین مهره‌ای' }, tags: ['MRT','CT'], diff: 2 },
+          { id: 'bandscheibenpathologien', title: { de: 'Bandscheibenpathologien', en: 'Intervertebral Disc Pathologies', fa: 'بیماری‌های دیسک بین مهره‌ای' }, tags: ['MRT','CT'], diff: 2, link: '/wirbelsaeule/degenerative#disk', mcqLink: '/ueben/quiz?fach=wirbelsaeule&n=4&themen=bandscheibenpathologien', flashcardLink: '/flashcards/bandscheibenpathologien', inProgress: true, updatedAt: '2026-10-21' },
           { id: 'osteochondrosis-intervertebralis', title: { de: 'Osteochondrosis intervertebralis', en: 'Intervertebral Osteochondrosis', fa: 'استئوکندروز بین مهره‌ای' }, tags: ['Rö','CT','MRT'], diff: 2 },
           { id: 'spondylarthrose', title: { de: 'Spondylarthrose', en: 'Facet Arthropathy', fa: 'اسپوندیل‌آرتروز' }, tags: ['CT','MRT'], diff: 2, link: '/wirbelsaeule/degenerative/spondylarthrose', mcqLink: '/ueben/quiz?fach=wirbelsaeule&n=2&themen=spondylarthrose', flashcardLink: '/flashcards/spondylarthrose', inProgress: true, updatedAt: '2026-10-19' },
           { id: 'synovialzyste-facettengelenke', title: { de: 'Synovialzyste der Facettengelenke', en: 'Facet Joint Synovial Cyst', fa: 'کیست سینوویال مفاصل فاست' }, tags: ['MRT'], diff: 2 },

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual disc morphology and axial location map</title>
+  <desc id="desc">Schematic comparison of protrusion, extrusion and sequestration, alongside four axial disc herniation zones. Not to scale and not a patient image.</desc>
+  <rect width="1120" height="620" rx="30" fill="#f5f8fb"/>
+  <rect x="24" y="24" width="620" height="572" rx="22" fill="#ffffff" stroke="#d8e3eb" stroke-width="3"/>
+  <rect x="664" y="24" width="432" height="572" rx="22" fill="#ffffff" stroke="#d8e3eb" stroke-width="3"/>
+  <g font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#526579">
+    <text x="48" y="60">A</text><text x="48" y="238">B</text><text x="48" y="416">C</text>
+    <text x="942" y="82">ANTERIOR</text><text x="951" y="564">POSTERIOR</text>
+  </g>
+  <!-- Three sagittal side-view disc profiles; posterior is to the right. -->
+  <g stroke-linejoin="round">
+    <g transform="translate(92 83)">
+      <path d="M0 0h410v34H0zM0 104h410v34H0z" fill="#e6d9c8" stroke="#a89782" stroke-width="3"/>
+      <path d="M22 39h344q22 0 22 27t-22 27H22q-12 0-12-12V51q0-12 12-12z" fill="#8bd3df" stroke="#187f95" stroke-width="4"/>
+      <path d="M359 41q28 0 32 25t-5 34h32q19 0 21-15t-10-24q-18-15-38-20z" fill="#36a5b7" stroke="#187f95" stroke-width="4"/>
+      <path d="M388 39v58" stroke="#187f95" stroke-width="4" stroke-dasharray="5 6"/>
+      <circle cx="462" cy="68" r="18" fill="#17a2b8"/><text x="456" y="75" fill="#fff" font-family="Arial" font-size="19" font-weight="700">1</text>
+    </g>
+    <g transform="translate(92 261)">
+      <path d="M0 0h410v34H0zM0 104h410v34H0z" fill="#e6d9c8" stroke="#a89782" stroke-width="3"/>
+      <path d="M22 39h344q22 0 22 27t-22 27H22q-12 0-12-12V51q0-12 12-12z" fill="#8bd3df" stroke="#187f95" stroke-width="4"/>
+      <path d="M365 41q30-4 38 22t-10 37q-8 8 7 12 38 4 48-16t-6-39q-25-22-49-19z" fill="#36a5b7" stroke="#187f95" stroke-width="4"/>
+      <path d="M388 39v58" stroke="#187f95" stroke-width="4" stroke-dasharray="5 6"/>
+      <circle cx="462" cy="68" r="18" fill="#17a2b8"/><text x="456" y="75" fill="#fff" font-family="Arial" font-size="19" font-weight="700">2</text>
+    </g>
+    <g transform="translate(92 439)">
+      <path d="M0 0h410v34H0zM0 104h410v34H0z" fill="#e6d9c8" stroke="#a89782" stroke-width="3"/>
+      <path d="M22 39h344q22 0 22 27t-22 27H22q-12 0-12-12V51q0-12 12-12z" fill="#8bd3df" stroke="#187f95" stroke-width="4"/>
+      <path d="M363 43q34-4 41 21t-10 35q-9 9 7 14 36 5 48-14t-5-39q-24-22-50-19z" fill="#36a5b7" stroke="#187f95" stroke-width="4"/>
+      <path d="M427 63q14-9 25 2t5 25q-10 14-23 5t-7-32z" fill="#f08b55" stroke="#b84e29" stroke-width="4"/>
+      <circle cx="462" cy="68" r="18" fill="#17a2b8"/><text x="456" y="75" fill="#fff" font-family="Arial" font-size="19" font-weight="700">3</text>
+    </g>
+  </g>
+  <!-- Axial schematic: anterior body, disc, canal and numbered zones. -->
+  <g transform="translate(700 112)" stroke-linejoin="round">
+    <path d="M98 18q100-32 200 0l-7 109q-93 32-186 0z" fill="#e6d9c8" stroke="#a89782" stroke-width="4"/>
+    <path d="M103 143q95-29 190 0v45q-95 28-190 0z" fill="#8bd3df" stroke="#187f95" stroke-width="4"/>
+    <path d="M111 193q84-24 168 0l-14 32h-140z" fill="#364c63" stroke="#26394d" stroke-width="4"/>
+    <path d="M132 225q63-20 126 0l18 77q-81 49-162 0z" fill="#f2f6fa" stroke="#8ea5b8" stroke-width="4"/>
+    <!-- Central / median -->
+    <path d="M173 185q24-22 48 0v35h-48z" fill="#ec6b58" stroke="#a93d35" stroke-width="3"/>
+    <circle cx="185" cy="199" r="15" fill="#b84e29"/><text x="180" y="205" fill="#fff" font-family="Arial" font-size="16" font-weight="700">4</text>
+    <!-- Subarticular / paramedian -->
+    <path d="M119 187q24-24 48-3l10 25h-47z" fill="#f0b84b" stroke="#9d6b12" stroke-width="3"/>
+    <circle cx="133" cy="198" r="15" fill="#9d6b12"/><text x="128" y="204" fill="#fff" font-family="Arial" font-size="16" font-weight="700">3</text>
+    <!-- Foraminal and extraforaminal -->
+    <path d="M268 165q39-16 61 8l-13 24q-22-14-45 7z" fill="#8c79c6" stroke="#5b4b91" stroke-width="3"/>
+    <circle cx="295" cy="178" r="15" fill="#5b4b91"/><text x="290" y="184" fill="#fff" font-family="Arial" font-size="16" font-weight="700">2</text>
+    <path d="M329 157l38 10-8 31-36-9z" fill="#50a98d" stroke="#28765f" stroke-width="3"/>
+    <circle cx="351" cy="174" r="15" fill="#28765f"/><text x="346" y="180" fill="#fff" font-family="Arial" font-size="16" font-weight="700">1</text>
+  </g>
+</svg>
