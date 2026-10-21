@@ -6,6 +6,8 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import { observeLessonHash } from '../lib/lessonHashNavigation.js'
 import * as data from '../data/gehirnPresLesson.js'
+import { QUESTION_BANK } from '../data/questions.js'
+import { FLASHCARDS, FLASHCARD_TOPICS } from '../data/flashcards.js'
 
 const require = createRequire(import.meta.url)
 const styles = new Proxy({}, { get: (_, key) => key === '__esModule' ? false : String(key) })
@@ -52,5 +54,15 @@ for (const lang of ['de', 'en', 'fa']) {
   assert.ok(data.GEHIRN_PRES_LESSON.assessment.feedback[lang].length > 40, `${lang}: explanatory feedback is localized`)
   assert.ok(data.GEHIRN_PRES_LESSON.assessment.retry[lang].length > 20, `${lang}: retry feedback is localized`)
   for (const item of data.GEHIRN_PRES_LESSON.takeaways) assert.ok(html.includes(escaped(item.title[lang])), `${lang}: summary title`)
+  assert.ok(html.includes('prod-images-static.radiopaedia.org/images/141239/a045b11804f7d4aa5debc023d29425.jpg'), `${lang}: verified Radiopaedia image is present`)
+  assert.ok(html.includes('Hani M. Al Salam'), `${lang}: image contributor credit is present`)
+  assert.ok(html.includes('CC BY-NC-SA'), `${lang}: image license is present`)
 }
+for (const lang of ['de', 'en', 'fa']) {
+  const questions = QUESTION_BANK[lang].filter(question => question.tags?.includes('pres'))
+  assert.equal(questions.length, 1, `${lang}: exact PRES quiz filter returns one question`)
+  assert.equal(questions[0].id, `pres-${lang}-1`, `${lang}: quiz uses the localized PRES question`)
+}
+assert.ok(FLASHCARD_TOPICS.some(topic => topic.id === 'pres'), 'PRES flashcard topic is registered')
+assert.deepEqual(FLASHCARDS.filter(card => card.topicId === 'pres').map(card => card.id), ['pres-01-pattern', 'pres-02-diffusion', 'pres-03-variation'], 'PRES flashcards are registered once and linked to the topic')
 console.log('PRES actual-route semantic SSR PASS: DE/EN/FA, StandardLessonShell, RTL metadata, topic schematic, chapter text, self-check and summary.')

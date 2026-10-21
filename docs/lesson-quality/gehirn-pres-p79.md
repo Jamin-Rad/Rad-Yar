@@ -30,8 +30,8 @@ Source file: `C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf`. PDF page 79 
 ## Visual plan and provenance
 
 1. Topic-specific hero and one distribution diagram use a code-native SVG at `public/educational/pres/posterior-pattern.svg`. Bilateral posterior emphasis is schematic only; no image-generation model or diagnostic-scan simulation is used.
-2. PDF p.79 provides no case image. No case image has been reused, no Radiopaedia URL is invented, and no diagnostic visual requirement is claimed complete. A typical PRES MRI case remains open under VIS until an exact case and image are accessible and reviewed.
-3. Diagram caption, localized alt text, and the three teaching legend units are DE/EN/FA. The SVG contains no visible embedded language labels.
+2. PDF p.79 provides no case image. The lesson supplements it with one frame from Radiopaedia case rID 7697 by Hani M. Al Salam. Study 8515 lists axial T1, axial FLAIR, and sagittal T2; the selected axial FLAIR frame shows bilateral symmetric posterior/occipital hyperintensity. The coordinator and independent reviewer inspected the exact frame at 612×612 px and judged it adequate for this typical-distribution teaching point. It is not used to teach diffusion or atypical variants. The case is tagged “Legacy”; the lesson shows visible contributor/case credit and links Radiopaedia's CC BY-NC-SA case policy. Remote asset: `https://prod-images-static.radiopaedia.org/images/141239/a045b11804f7d4aa5debc023d29425.jpg`; case: `https://radiopaedia.org/cases/posterior-reversible-encephalopathy-syndrome-pres?lang=us`; policy: `https://radiopaedia.org/articles/cases-4?lang=us`. Case rID 10284 is separately linked and labelled as a CT example only. Browser rendering/loading of the remote image in the local lesson remains unverified.
+4. Diagram caption, localized alt text, and the three teaching legend units are DE/EN/FA. The SVG contains no visible embedded language labels.
 
 ## Terminology
 
@@ -45,6 +45,7 @@ Source file: `C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf`. PDF page 79 
 ## Validation and open gates
 
 - Focused route SSR check: `scripts/test-pres-render.mjs` (DE/EN/FA, shared shell, section labels, translated hero alt, lesson text, self-check and feedback).
-- Independent read-only review and delta retest PASS (SRC/EDU/LNG/ASM/REV) for the bounded p.79 lesson. Browser UX, RTL display/keyboard/device matrix, and specialist scientific signoff remain pending.
-- VIS remains unresolved for diagnostic case evidence: page 79 contains no image. The SVG only teaches orientation and distribution.
-- `editorial_qa`: independent review PASS. `scientific_review`: pending specialist signoff. `browser_qa`: BLOCKED pending real browser; diagnostic case VIS remains BLOCKED because p.79 contains no case image. `publication`: not requested. This ledger does not confer clinical or release approval.
+- Independent review found a stale-reference/status contradiction and requested reconciliation. The author corrected the reference scope and ledger; the independent delta review passed. The initial review found EDU/VIS/LNG/ASM acceptable for scoped p.79 content and links, with local browser UX blocked. Specialist scientific signoff remains pending.
+- VIS has a coordinator- and reviewer-inspected MRI frame for the typical posterior pattern. The code-native SVG still teaches orientation and distribution only; neither visual claims to demonstrate diffusion or atypical patterns.
+- MRI case rID 7697 and CT case rID 10284 are linked separately with modality labels. The selected MRI frame is visually verified by the coordinator and has visible localized attribution, limitation, and policy link. Browser rendering/loading of the remote image remains to be tested.
+- `editorial_qa`: independent review and delta review PASS for this bounded lesson and current image/reference change. `scientific_review`: pending specialist signoff. `browser_qa`: BLOCKED pending local-page browser, RTL, and interaction checks (the remote asset itself was opened and visually checked separately). `publication`: not requested. This ledger does not confer clinical or release approval.

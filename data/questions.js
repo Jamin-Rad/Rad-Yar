@@ -11,6 +11,7 @@ import { GIST_QUESTIONS } from './gistLearning'
 import { VOLVULUS_QUESTIONS } from './volvulusLearning'
 import { GEHIRN_CHIARI_QUESTIONS } from './gehirnChiariLesson'
 import { GEHIRN_NF1_QUESTIONS } from './gehirnNf1CnsLesson'
+import { GEHIRN_PRES_QUESTIONS } from './gehirnPresTraining'
 import { BRAIN_METASTASES_QUESTIONS } from './gehirnHirnmetastasenLesson'
 import { KOLLOID_QUESTIONS } from './gehirnKolloidzysteLesson'
 import { UIP_IPF_QUESTIONS } from './thoraxUipIpfLesson'
@@ -618,6 +619,7 @@ const LEGACY_QUESTION_BANK = {
   "de": [
     ...GEHIRN_CHIARI_QUESTIONS.de,
     ...GEHIRN_NF1_QUESTIONS.de,
+    ...GEHIRN_PRES_QUESTIONS.de,
     ...CONTRAST_QUESTIONS.de,
     ...DIVERTICULITIS_QUESTIONS.de,
     ...PANCREATITIS_QUESTIONS.de,
@@ -1815,6 +1817,7 @@ const LEGACY_QUESTION_BANK = {
   "en": [
     ...GEHIRN_CHIARI_QUESTIONS.en,
     ...GEHIRN_NF1_QUESTIONS.en,
+    ...GEHIRN_PRES_QUESTIONS.en,
     ...MAMMA_MRT_QUESTIONS.en,
     ...MAMMA_MRT_LESION_QUESTIONS.en,
     ...MAMMA_KAISER_QUESTIONS.en,
@@ -3012,6 +3015,7 @@ const LEGACY_QUESTION_BANK = {
   "fa": [
     ...GEHIRN_CHIARI_QUESTIONS.fa,
     ...GEHIRN_NF1_QUESTIONS.fa,
+    ...GEHIRN_PRES_QUESTIONS.fa,
     ...MAMMA_MRT_QUESTIONS.fa,
     ...MAMMA_MRT_LESION_QUESTIONS.fa,
     ...MAMMA_KAISER_QUESTIONS.fa,

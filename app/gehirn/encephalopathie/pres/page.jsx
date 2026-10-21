@@ -52,6 +52,33 @@ function PatternFigure({ lang }) {
   </figure>
 }
 
+function CaseFigure({ lang }) {
+  const labels = lang === 'fa'
+    ? {
+        alt: 'تصویر محوری FLAIR از MRI با افزایش سیگنال متقارن در نواحی خلفی و پس‌سری، در کیس PRES.',
+        caption: 'نمونهٔ MRI از الگوی معمول خلفی PRES: افزایش سیگنال متقارن در نواحی خلفی و پس‌سری در FLAIR. این فریم دربارهٔ انتشار یا الگوهای غیرمعمول اطلاعاتی نمی‌دهد.',
+        credit: 'تصویر: Hani M. Al Salam / Radiopaedia، کیس rID 7697، مطالعهٔ MRI شمارهٔ 8515، توالی Axial FLAIR. کیس با برچسب Legacy.',
+        license: 'CC BY-NC-SA؛ جزئیات مجوز',
+      }
+    : lang === 'en'
+      ? {
+          alt: 'Axial FLAIR MRI showing symmetric posterior and occipital hyperintensity in a PRES case.',
+          caption: 'MRI example of the typical posterior PRES pattern: symmetric posterior and occipital FLAIR hyperintensity. This frame does not demonstrate diffusion findings or atypical patterns.',
+          credit: 'Image: Hani M. Al Salam / Radiopaedia, case rID 7697, MRI study 8515, Axial FLAIR. The case is labelled Legacy.',
+          license: 'CC BY-NC-SA; license details',
+        }
+      : {
+          alt: 'Axiale FLAIR-MRT mit symmetrischen posterioren und okzipitalen Hyperintensitäten in einem PRES-Fall.',
+          caption: 'MRT-Beispiel des typischen posterioren PRES-Musters: symmetrische posteriore und okzipitale FLAIR-Hyperintensitäten. Dieser Frame zeigt weder Diffusionsbefunde noch atypische Muster.',
+          credit: 'Bild: Hani M. Al Salam / Radiopaedia, Fall rID 7697, MRT-Studie 8515, Axial FLAIR. Der Fall ist als „Legacy“ gekennzeichnet.',
+          license: 'CC BY-NC-SA; Lizenzdetails',
+        }
+  return <figure className={`${styles.figure} ${styles.caseFigure}`}>
+    <img src="https://prod-images-static.radiopaedia.org/images/141239/a045b11804f7d4aa5debc023d29425.jpg" width="612" height="612" alt={labels.alt} loading="lazy" />
+    <figcaption>{labels.caption}<br /><span>{labels.credit} </span><a href="https://radiopaedia.org/cases/posterior-reversible-encephalopathy-syndrome-pres?lang=us" target="_blank" rel="noopener noreferrer">Radiopaedia case rID 7697</a>.{' '}<a href="https://radiopaedia.org/articles/cases-4?lang=us" target="_blank" rel="noopener noreferrer">{labels.license}</a>.</figcaption>
+  </figure>
+}
+
 function SelfCheck({ lang }) {
   const [answer, setAnswer] = useState(null)
   const t = lang === 'fa'
@@ -77,7 +104,7 @@ export default function PresLessonPage() {
   const sources = lesson.references.filter(item => item.href).map((item, index) => ({
     href: item.href,
     title: item.label,
-    tag: 'Primary study',
+    tag: item.tag || 'Primary source',
     citation: pick(item.scope, lang),
     scope: '',
   }))
@@ -90,7 +117,7 @@ export default function PresLessonPage() {
     className={styles.page} heroImageAlt={pick(lesson.diagramAlt, lang)} syncHashNavigation
     sources={<LessonSources title={t('sources')} items={sources} note={pick(lesson.scopeNote, lang)} />}>
     <div lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
-      <LessonSection id="pattern" title={pick(lesson.chapters[0].title, lang)} icon="pattern"><p className={styles.lead}>{pick(lesson.objective, lang)}</p>{pick(lesson.chapters[0].text, lang).split('\n\n').map((paragraph, index) => <p key={index}>{paragraph}</p>)}<PatternFigure lang={lang} /></LessonSection>
+      <LessonSection id="pattern" title={pick(lesson.chapters[0].title, lang)} icon="pattern"><p className={styles.lead}>{pick(lesson.objective, lang)}</p>{pick(lesson.chapters[0].text, lang).split('\n\n').map((paragraph, index) => <p key={index}>{paragraph}</p>)}<PatternFigure lang={lang} /><CaseFigure lang={lang} /></LessonSection>
       <LessonSection id="diffusion" title={pick(lesson.chapters[1].title, lang)} icon="diffusion">{pick(lesson.chapters[1].text, lang).split('\n\n').map((paragraph, index) => <p key={index} className={index > 0 ? styles.cave : undefined}>{paragraph}</p>)}</LessonSection>
       <LessonSection id="distribution" title={pick(lesson.chapters[2].title, lang)} icon="distribution">{pick(lesson.chapters[2].text, lang).split('\n\n').map((paragraph, index) => <p key={index}>{paragraph}</p>)}</LessonSection>
       <LessonSection id="carry-away" title={pick(lesson.chapters[3].title, lang)} icon="practice">{pick(lesson.chapters[3].text, lang).split('\n\n').map((paragraph, index) => <p key={index}>{paragraph}</p>)}<SelfCheck lang={lang} /></LessonSection>
