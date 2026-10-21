@@ -17,9 +17,9 @@ export const SAB_LESSON = {
   ),
   title: L('Subarachnoidalblutung', 'Subarachnoid Haemorrhage', 'خونریزی زیر عنکبوتیه'),
   subtitle: L(
-    'CT-Diagnostik, Modifizierte Fisher-Skala und Vasospasmusprädiktion',
-    'CT diagnosis, Modified Fisher Scale and vasospasm prediction',
-    'تشخیص CT، مقیاس فیشر اصلاح‌شده و پیش‌بینی وازواسپاسم'
+    'Blutverteilung, Gefäßsuche und Komplikationen im Verlauf',
+    'Blood distribution, vascular investigation and evolving complications',
+    'توزیع خون، بررسی عروق و عوارض در سیر بیماری'
   ),
   sourceLabel: 'Dr. Zia',
   actionMcq: 'MCQ',
@@ -37,30 +37,30 @@ export const SAB_LESSON = {
   ],
   heroCards: [
     {
-      value: '80 %',
-      label: L('Aneurysmatisch', 'Aneurysmal', 'آنوریسمی'),
+      value: 'Verteilung',
+      label: L('Quelle eingrenzen', 'Narrow the source', 'منشأ را محدود کنید'),
       text: L(
-        'Etwa 80 % aller SAB entstehen durch Ruptur eines intrakraniellen Aneurysmas.',
-        'About 80 % of all SAH result from rupture of an intracranial aneurysm.',
-        'حدود ۸۰٪ از SAB‌ها ناشی از پارگی آنوریسم داخل جمجمه‌ای است.'
+        'Zisternen, Sylvische Fissuren und kortikale Sulci systematisch vergleichen.',
+        'Compare the basal cisterns, Sylvian fissures and cortical sulci systematically.',
+        'سیسترن‌های قاعده‌ای، شکاف‌های سیلویوس و شیارهای قشری را نظام‌مند مقایسه کنید.'
       ),
     },
     {
-      value: '~40 %',
-      label: L('Vasospasmus Gr. 4', 'Vasospasm Gr. 4', 'وازواسپاسم درجه ۴'),
+      value: 'IVH + Dicke',
+      label: L('Modified Fisher Grad 4', 'Modified Fisher Grade 4', 'درجهٔ ۴ فیشر اصلاح‌شده'),
       text: L(
-        'Fisher Grad 4 (dickes Blut + IVH) trägt das höchste Vasospasmusprisiko.',
-        'Modified Fisher Grade 4 (thick SAH + IVH) carries the highest vasospasm risk.',
-        'درجه ۴ فیشر (خون ضخیم + IVH) بیشترین خطر وازواسپاسم را دارد.'
+        'Modified-Fisher-Grad 4 kombiniert dickes Zisternenblut und IVH und bezeichnet die höchste Kategorie der Skala.',
+        'Modified Fisher Grade 4 combines thick cisternal blood and IVH and is the scale’s highest category.',
+        'درجه ۴ فیشر اصلاح‌شده ترکیب خون ضخیم سیسترنی و IVH است و بالاترین گروه مقیاس محسوب می‌شود.'
       ),
     },
     {
-      value: '≤ 6 h',
-      label: L('CT-Sensitivität ~100 %', 'CT sensitivity ~100 %', 'حساسیت CT ~۱۰۰٪'),
+      value: '< 6 h',
+      label: L('Diagnostischer Kontext', 'Diagnostic context', 'زمینه تشخیصی'),
       text: L(
-        'Innerhalb von 6 h nach Beginn ist die CT-Sensitivität nahezu 100 %. Sie sinkt danach rasch ab.',
-        'Within 6 h of onset CT sensitivity approaches 100 %, dropping rapidly thereafter.',
-        'در ۶ ساعت اول از شروع علائم حساسیت CT نزدیک به ۱۰۰٪ است و سپس به سرعت کاهش می‌یابد.'
+        'Eine negative CT kann nur unter definierten Bedingungen zum Ausschluss reichen.',
+        'A negative CT can be used to exclude aSAH only under defined conditions.',
+        'CT منفی فقط در شرایط مشخص می‌تواند برای رد aSAB کافی باشد.'
       ),
     },
   ],
@@ -69,18 +69,18 @@ export const SAB_LESSON = {
   klinik: {
     title: L('Klinik & Ätiologie', 'Clinical features & aetiology', 'تظاهرات بالینی و علت‌شناسی'),
     lead: L(
-      'Die SAB ist eine Blutung in den Subarachnoidalraum. Sie macht etwa 5 % aller Schlaganfälle aus, aber rund 25 % der Schlaganfall-Todesfälle. Das Leitsymptom ist der „Vernichtungskopfschmerz" – ein plötzlicher, maximalster Kopfschmerz.',
-      'SAH is bleeding into the subarachnoid space. It accounts for about 5 % of strokes but roughly 25 % of stroke deaths. The hallmark is the "thunderclap headache" — a sudden, maximally severe headache.',
-      'SAB خونریزی در فضای زیر عنکبوتیه است. حدود ۵٪ از سکته‌ها را تشکیل می‌دهد اما مسئول ~۲۵٪ از مرگ‌ومیرهای ناشی از سکته است.'
+      'Die SAB ist eine Blutung in den Subarachnoidalraum. Ein plötzlich maximal starker Kopfschmerz ist ein Warnmuster, aber nicht die einzige mögliche Präsentation und nicht spezifisch für SAB.',
+      'SAH is bleeding into the subarachnoid space. A sudden, severe headache reaching maximal intensity is a warning pattern, but it is neither the only presentation nor specific to SAH.',
+      'SAB خونریزی در فضای زیر عنکبوتیه است. سردرد ناگهانی و بسیار شدید که سریع به اوج می‌رسد الگویی هشداردهنده است، اما تنها تظاهر ممکن نیست و اختصاصی SAB هم نیست.'
     ),
     definitionItems: [
       {
         icon: '🔴',
         title: L('Vernichtungskopfschmerz', 'Thunderclap headache', 'سردرد ضربه رعد'),
         text: L(
-          'Plötzlich einsetzender, maximalster Kopfschmerz – „als ob eine Bombe im Kopf explodiert". Charakteristisch für aneurysmatische SAB. Sofortiger Notfall.',
-          'Sudden-onset, maximally severe headache — "worst headache of my life". Characteristic of aneurysmal SAB. Immediate emergency.',
-          'سردرد ناگهانی و شدید («بدترین سردرد عمرم»). مشخصه SAB آنوریسمی. اورژانس فوری.'
+          'Plötzlich einsetzender, rasch maximaler Kopfschmerz – „wie eine Explosion im Kopf“. Ein dringliches Warnmuster mit breiter Differenzialdiagnose, nicht spezifisch für aneurysmatische SAB.',
+          'Sudden-onset headache reaching maximum intensity rapidly — “like an explosion in the head”. An urgent warning pattern with a broad differential, not specific to aneurysmal SAH.',
+          'سردردی که ناگهانی آغاز می‌شود و سریع به بیشترین شدت می‌رسد («مثل انفجار در سر»). الگویی هشداردهنده و نیازمند بررسی فوری است، اما افتراق گسترده‌ای دارد و اختصاصی SAB آنوریسمی نیست.'
         ),
       },
       {
@@ -113,31 +113,31 @@ export const SAB_LESSON = {
     ],
     aetiologyHeaders: [
       L('Ursache', 'Cause', 'علت'),
-      L('Anteil', 'Proportion', 'درصد'),
+      L('Muster', 'Pattern', 'الگو'),
       L('Merkmale', 'Features', 'ویژگی‌ها'),
     ],
     aetiologyRows: [
       [
         L('Aneurysmaruptur', 'Aneurysm rupture', 'پارگی آنوریسم'),
-        '~80 %',
+        L('häufige Ursache', 'common cause', 'علت شایع'),
         L(
-          'Sakkuäre Aneurysmen an Gefäßgabelungen: AKoA (~30 %), MCA-Bifurkation (~25 %), PCom (~20 %), PICA (~10 %)',
-          'Saccular aneurysms at bifurcations: ACoA (~30 %), MCA (~25 %), PCom (~20 %), PICA (~10 %)',
-          'آنوریسم کیسه‌ای در انشعابات: ACoA (~۳۰٪)، MCA (~۲۵٪)، PCom (~۲۰٪)، PICA (~۱۰٪)'
+          'Sakkuläre Aneurysmen liegen häufig an Gefäßgabelungen; die Blutverteilung lenkt die Suche, beweist den Ursprung aber nicht.',
+          'Saccular aneurysms often arise at arterial branch points; blood distribution guides the search but does not prove the source.',
+          'آنوریسم‌های ساکولار اغلب در محل انشعاب عروق رخ می‌دهند؛ توزیع خون جهت بررسی را مشخص می‌کند، اما منشأ را ثابت نمی‌کند.'
         ),
       ],
       [
         L('Perimesenzephale SAB', 'Perimesencephalic SAH', 'SAB پری‌مزنسفالیک'),
-        '~10 %',
+        L('typisches Verteilungsmuster', 'typical distribution pattern', 'الگوی توزیع تیپیک'),
         L(
-          'Blut auf perimesenzephale Zisternen begrenzt, kein Aneurysma nachweisbar – benigne Prognose, kein Vasospasmus',
-          'Blood confined to perimesencephalic cisterns, no aneurysm detected — benign prognosis, no vasospasm',
-          'خون محدود به سیسترن‌های پری‌مزنسفالیک، بدون آنوریسم — پروگنوز خوش‌خیم، بدون وازواسپاسم'
+          'Blut um das Mittelhirn ohne typische diffuse Sylvische oder interhemisphärische Ausbreitung; die Ursache muss dennoch abgeklärt werden.',
+          'Blood centred around the midbrain without typical diffuse Sylvian or interhemispheric extension; the source still requires evaluation.',
+          'خون پیرامون مغز میانی بدون گسترش منتشر تیپیک به شکاف سیلویوس یا بین‌نیمکره‌ای؛ با این حال منشأ باید بررسی شود.'
         ),
       ],
       [
         L('Traumatisch', 'Traumatic', 'تروماتیک'),
-        L('~5–10 %', '~5–10 %', '~۵-۱۰٪'),
+        L('traumatisches Muster', 'traumatic pattern', 'الگوی تروماتیک'),
         L(
           'Konvexitäres (sulkales) Blut, oft unilateral – häufigste SAB-Ursache insgesamt wenn Trauma eingerechnet',
           'Convexal (sulcal) blood, often unilateral — most common cause of SAH overall when trauma is included',
@@ -155,14 +155,14 @@ export const SAB_LESSON = {
       ],
     ],
     cave: L(
-      'Bis zu 50 % der SAB-Patienten berichten über einen „Warnkopfschmerz" (Sentinel Headache) Tage bis Wochen vorher – ein frühes Warnsignal, das oft fälschlicherweise als Spannungskopfschmerz abgetan wird.',
-      'Up to 50 % of SAH patients report a "sentinel headache" days to weeks before — an early warning often dismissed as tension headache.',
-      'تا ۵۰٪ از بیماران SAB روزها تا هفته‌ها قبل «سردرد هشداردهنده» دارند که اغلب اشتباهاً سردرد تنشی تشخیص داده می‌شود.'
+      'Ein vorausgehender Warnkopfschmerz kann vorkommen. Sein Fehlen schließt eine SAB nicht aus.',
+      'A preceding warning headache may occur. Its absence does not exclude SAH.',
+      'سردرد هشداردهندهٔ پیشین ممکن است رخ دهد؛ نبود آن SAB را رد نمی‌کند.'
     ),
     key: L(
-      'Jeder Vernichtungskopfschmerz ist eine SAB bis zum Beweis des Gegenteils. Sofortige CT-Bildgebung – bei negativem Befund (nach >6 h) Lumbalpunktion zum Xanthochromie-Nachweis.',
-      'Every thunderclap headache is SAH until proven otherwise. Immediate CT — if negative (after >6 h) lumbar puncture to detect xanthochromia.',
-      'هر سردرد ضربه رعد SAB است تا خلافش ثابت شود. CT فوری — اگر منفی (بعد از >۶ ساعت) پونکسیون لومبار برای تشخیص زانتوکرومی.'
+      'Plötzlich maximal starker Kopfschmerz erfordert eine dringliche Abklärung. Die CT- und Liquorentscheidung richtet sich nach Zeitpunkt, neurologischem Befund, Bildqualität und klinischer Wahrscheinlichkeit.',
+      'Sudden severe headache reaching maximal intensity requires urgent evaluation. The CT and CSF pathway depends on timing, neurological findings, image quality and clinical probability.',
+      'سردرد ناگهانی و بسیار شدیدی که به اوج می‌رسد نیازمند بررسی فوری است. مسیر CT و بررسی CSF به زمان، یافته‌های عصبی، کیفیت تصویر و احتمال بالینی بستگی دارد.'
     ),
   },
 
@@ -176,29 +176,19 @@ export const SAB_LESSON = {
     ),
     stagesHeaders: [
       L('Zeitfenster', 'Time window', 'پنجره زمانی'),
-      L('CT-Sensitivität', 'CT sensitivity', 'حساسیت CT'),
+      L('Diagnostischer Kontext', 'Diagnostic context', 'زمینه تشخیصی'),
       L('Empfehlung', 'Recommendation', 'توصیه'),
     ],
     stagesRows: [
       [
-        L('0 – 6 Stunden', '0 – 6 hours', '۰ – ۶ ساعت'),
-        '~98–100 %',
-        L('Bei normalem Neurostatus und hochwertigem CT zum Ausschluss meist ausreichend', 'Usually sufficient to exclude SAH with a normal neurological examination and high-quality CT', 'در معاینه عصبی طبیعی و CT باکیفیت، معمولاً برای رد SAB کافی است'),
+        L('Weniger als 6 Stunden', 'Less than 6 hours', 'کمتر از ۶ ساعت'),
+        L('Hohe diagnostische Aussagekraft unter definierten Bedingungen', 'High diagnostic performance under defined conditions', 'دقت تشخیصی بالا در شرایط مشخص'),
+        L('Bei akutem schwerem Kopfschmerz ohne neues neurologisches Defizit kann ein hochwertiges natives CT, befundet durch einen Facharzt für Neuroradiologie, eine aSAB innerhalb dieses Zeitfensters diagnostizieren oder ausschließen. Die AHA/ASA-Empfehlung nennt ausdrücklich <6 h. Genau 6 h sind durch diese CT-only-Empfehlung nicht abgedeckt und müssen im klinischen Kontext beurteilt werden.', 'For acute severe headache without a new neurological deficit, a high-quality non-contrast CT interpreted by a board-certified neuroradiologist can diagnose or exclude aSAH within this time window. The AHA/ASA recommendation explicitly specifies <6 hours. Exactly 6 hours is not covered by this CT-only recommendation and requires assessment in clinical context.', 'در سردرد حاد و شدید بدون نقص عصبی جدید، CT بدون کنتراست باکیفیت که توسط نورورادیولوژیست دارای بورد تخصصی تفسیر شود می‌تواند در این بازه زمانی aSAB را تشخیص دهد یا رد کند. توصیه AHA/ASA صراحتاً کمتر از ۶ ساعت را ذکر می‌کند. دقیقاً ۶ ساعت تحت پوشش این توصیه CT به‌تنهایی نیست و باید در زمینه بالینی ارزیابی شود.'),
       ],
       [
-        L('6 – 24 Stunden', '6 – 24 hours', '۶ – ۲۴ ساعت'),
-        '~85–90 %',
-        L('CT + LP bei negativem CT und starkem Verdacht', 'CT + LP if CT negative and high suspicion', 'CT + LP در صورت CT منفی و مظنون بالای بالینی'),
-      ],
-      [
-        L('1 – 5 Tage', '1 – 5 days', '۱ – ۵ روز'),
-        '~50–80 %',
-        L('LP zwingend bei negativem CT; ggf. CT-Angiographie', 'LP mandatory if CT negative; consider CTA', 'LP الزامی در CT منفی؛ در نظر گرفتن CTA'),
-      ],
-      [
-        L('> 5 Tage', '> 5 days', '> ۵ روز'),
-        L('Niedrig', 'Low', 'کم'),
-        L('MRT FLAIR + LP; CT oft nicht mehr sensitiv', 'MRI FLAIR + LP; CT often no longer sensitive', 'MRI FLAIR + LP؛ CT اغلب دیگر حساس نیست'),
+        L('Mehr als 6 Stunden oder neues Defizit', 'More than 6 hours or a new deficit', 'بیش از ۶ ساعت یا نقص عصبی جدید'),
+        L('Die Aussagekraft nimmt mit der Zeit ab', 'Diagnostic performance declines over time', 'دقت تشخیصی با گذشت زمان کاهش می‌یابد'),
+        L('Bei Vorstellung mehr als 6 Stunden nach Beginn oder bei neuem neurologischem Defizit empfiehlt die AHA/ASA-Leitlinie nach negativem CT eine Liquorpunktion. Die Entscheidung gehört in den klinischen Kontext.', 'For presentation more than 6 hours after onset or with a new neurological deficit, the AHA/ASA guideline recommends lumbar puncture after a negative CT. Interpret the decision in clinical context.', 'در مراجعه بیش از ۶ ساعت پس از شروع یا وجود نقص عصبی جدید، راهنمای AHA/ASA پس از CT منفی پونکسیون کمری را توصیه می‌کند. تصمیم باید در زمینه بالینی تفسیر شود.'),
       ],
     ],
     signItems: [
@@ -224,25 +214,25 @@ export const SAB_LESSON = {
         icon: '🔸',
         title: L('Perimesenzephale Verteilung', 'Perimesencephalic distribution', 'توزیع پری‌مزنسفالیک'),
         text: L(
-          'Blut beschränkt auf perimesenzephale Zisternen ohne Ausdehnung in Sylvische Fissur oder Interhemisphärenspalt – klassisch für benigne perimesenzephale SAB.',
-          'Blood confined to perimesencephalic cisterns without extension into the Sylvian fissure or interhemispheric fissure — classic for benign perimesencephalic SAH.',
-          'خون محدود به سیسترن‌های پری‌مزنسفالیک بدون انتشار به شکاف سیلویوس یا اینترهمیسفریک — کلاسیک SAB خوش‌خیم غیرآنوریسمی.'
+          'Eine perimesenzephale Verteilung kann auf eine nichtaneurysmatische Ursache hinweisen. Das Muster allein beweist diese Ursache jedoch nicht.',
+          'A perimesencephalic distribution may suggest a non-aneurysmal cause, but the pattern alone does not prove the source.',
+          'توزیع پری‌مزنسفالیک می‌تواند به علت غیرآنوریسمی اشاره کند، اما الگو به‌تنهایی منشأ را ثابت نمی‌کند.'
         ),
       },
       {
         icon: '🧊',
-        title: L('MRT FLAIR – sensitiv bei später SAB', 'MRI FLAIR — sensitive in late SAH', 'MRI FLAIR — حساس در SAB دیررس'),
+        title: L('MRT-FLAIR als ergänzende Sequenz', 'MRI FLAIR as an adjunct sequence', 'سکانس تکمیلی MRI-FLAIR'),
         text: L(
-          'FLAIR zeigt Blut als Hyperintensität in den Subarachnoidalräumen – sensitiver als CT nach >3 Tagen. Cave: falsch-positive FLAIR-Hyperintensität bei Sauerstoffgabe oder Meningitis.',
-          'FLAIR shows blood as hyperintensity in subarachnoid spaces — more sensitive than CT after >3 days. Caution: false-positive FLAIR hyperintensity with supplemental oxygen or meningitis.',
-          'FLAIR خون را به صورت هایپرانتنسیتی در فضاهای زیر عنکبوتیه نشان می‌دهد — بعد از ۳ روز حساس‌تر از CT. احتیاط: FLAIR مثبت کاذب با اکسیژن‌درمانی یا مننژیت.'
+          'FLAIR kann hyperintenses Signal in den Subarachnoidalräumen zeigen, ist aber störanfällig und ersetzt bei akuter Fragestellung nicht den diagnostischen CT-/Liquorpfad. Sauerstoffgabe und Meningitis können falsch-positive Signale verursachen.',
+          'FLAIR may show hyperintense signal in the subarachnoid spaces, but is susceptible to confounders and does not replace the CT/CSF pathway in acute evaluation. Supplemental oxygen and meningitis can cause false-positive signal.',
+          'FLAIR ممکن است سیگنال هایپراینتنس در فضاهای زیرعنکبوتیه نشان دهد، اما مستعد عوامل مخدوش‌کننده است و در ارزیابی حاد جایگزین مسیر CT/CSF نیست. اکسیژن مکمل و مننژیت می‌توانند سیگنال مثبت کاذب ایجاد کنند.'
         ),
       },
     ],
     key: L(
-      'Ein negatives CT schließt eine SAB nicht unter allen Bedingungen aus. Bei Präsentation nach >6 h oder neuem neurologischem Defizit und negativem CT ist eine Lumbalpunktion mit Liquoranalyse erforderlich; lokale Präanalytik beachten.',
-      'A negative CT does not exclude SAH in every setting. If presentation is more than 6 hours after onset or there is a new neurological deficit and CT is negative, lumbar puncture with CSF analysis is required; follow local laboratory protocols.',
-      'CT منفی در همه شرایط SAB را رد نمی‌کند. اگر مراجعه بیش از ۶ ساعت پس از شروع علائم باشد یا نقص عصبی جدید وجود داشته باشد و CT منفی باشد، پونکسیون لومبار و بررسی CSF لازم است؛ پروتکل آزمایشگاه محلی باید رعایت شود.'
+      'Ein negatives CT schließt eine SAB nicht unter allen Bedingungen aus. Bei Vorstellung mehr als 6 Stunden nach Beginn oder bei neuem neurologischem Defizit empfiehlt die AHA/ASA-Leitlinie nach negativem CT eine Lumbalpunktion mit Liquoranalyse; lokale Präanalytik beachten.',
+      'A negative CT does not exclude SAH in every setting. For presentation more than 6 hours after onset or with a new neurological deficit, the AHA/ASA guideline recommends lumbar puncture with CSF analysis after a negative CT; follow local laboratory protocols.',
+      'CT منفی در همه شرایط SAB را رد نمی‌کند. در مراجعه بیش از ۶ ساعت پس از شروع یا وجود نقص عصبی جدید، راهنمای AHA/ASA پس از CT منفی پونکسیون کمری همراه با آنالیز CSF را توصیه می‌کند؛ پروتکل آزمایشگاه محلی باید رعایت شود.'
     ),
   },
 
@@ -250,15 +240,15 @@ export const SAB_LESSON = {
   fisher: {
     title: L('Modifizierte Fisher-Skala', 'Modified Fisher Scale', 'مقیاس فیشر اصلاح‌شده'),
     lead: L(
-      'Die Modifizierte Fisher-Skala (Claassen et al., 2001) bewertet das Ausmaß der SAB auf dem initialen CT und quantifiziert das Risiko eines symptomatischen zerebralen Vasospasmus. Zwei Parameter bestimmen den Grad: Blutdicke in den Zisternen und das Vorhandensein einer intraventrikulären Blutung (IVH).',
-      'The Modified Fisher Scale (Claassen et al., 2001) grades SAH extent on the initial CT and quantifies the risk of symptomatic cerebral vasospasm. Two parameters determine the grade: blood thickness in the cisterns and the presence of intraventricular haemorrhage (IVH).',
-      'مقیاس فیشر اصلاح‌شده (Claassen و همکاران، ۲۰۰۱) میزان SAB در CT اولیه را درجه‌بندی و خطر وازواسپاسم مغزی علامت‌دار را کمی می‌کند. دو پارامتر درجه را تعیین می‌کند: ضخامت خون در سیسترن‌ها و حضور خونریزی داخل بطنی (IVH).'
+      'Die Modifizierte Fisher-Skala (Claassen et al., 2001) klassifiziert die Blutlast im initialen CT anhand von zwei Merkmalen: Blutdicke in den Zisternen und Vorhandensein einer intraventrikulären Blutung (IVH). Sie ersetzt keine patientenspezifische Risikobeurteilung.',
+      'The Modified Fisher Scale (Claassen et al., 2001) classifies blood burden on the initial CT using two features: cisternal blood thickness and the presence of intraventricular haemorrhage (IVH). It does not replace patient-specific risk assessment.',
+      'مقیاس فیشر اصلاح‌شده (Claassen و همکاران، ۲۰۰۱) بار خون را در CT اولیه بر اساس دو ویژگی طبقه‌بندی می‌کند: ضخامت خون سیسترنی و وجود خونریزی داخل‌بطنی (IVH). این مقیاس جایگزین ارزیابی خطر فردی بیمار نیست.'
     ),
     tableHeaders: [
       L('Grad', 'Grade', 'درجه'),
       L('Blut-Dicke', 'Blood thickness', 'ضخامت خون'),
       L('IVH', 'IVH', 'IVH'),
-      L('Vasospasmus-Risiko', 'Vasospasm risk', 'خطر وازواسپاسم'),
+      L('Risikoeinordnung', 'Risk category', 'رده خطر'),
       L('CT-Befund', 'CT appearance', 'یافته CT'),
     ],
     tableRows: [
@@ -266,35 +256,35 @@ export const SAB_LESSON = {
         '0',
         L('Kein SAB', 'No SAH', 'بدون SAB'),
         L('Nein', 'No', 'خیر'),
-        '~0 %',
+        L('kein Blut', 'no visible blood', 'بدون خون قابل مشاهده'),
         L('Normale Zisternen, kein Blut nachweisbar', 'Normal cisterns, no detectable blood', 'سیسترن‌های طبیعی، بدون خون قابل تشخیص'),
       ],
       [
         '1',
         L('Dünn (<1 mm)', 'Thin (<1 mm)', 'نازک (<۱ mm)'),
         L('Nein', 'No', 'خیر'),
-        '~24 %',
+        L('niedriger', 'lower', 'کمتر'),
         L('Dünne Blutschicht in Zisternen, kein Ventrikelblut', 'Thin blood layer in cisterns, no ventricular blood', 'لایه نازک خون در سیسترن‌ها، بدون خون در بطن‌ها'),
       ],
       [
         '2',
         L('Dünn (<1 mm)', 'Thin (<1 mm)', 'نازک (<۱ mm)'),
         L('Ja ✓', 'Yes ✓', 'بله ✓'),
-        '~33 %',
+        L('erhöht', 'elevated', 'افزایش‌یافته'),
         L('Dünne Blutschicht + Blut in ≥1 Seitenventrikel', 'Thin blood + blood in ≥1 lateral ventricle', 'لایه نازک خون + خون در ≥۱ بطن جانبی'),
       ],
       [
         '3',
         L('Dick (≥1 mm)', 'Thick (≥1 mm)', 'ضخیم (≥۱ mm)'),
         L('Nein', 'No', 'خیر'),
-        '~33 %',
+        L('erhöht', 'elevated', 'افزایش‌یافته'),
         L('Dicke Blutansammlung / Zisternenverfüllung, kein IVH', 'Thick blood collection / cistern filling, no IVH', 'تجمع خون ضخیم / پر شدن سیسترن، بدون IVH'),
       ],
       [
         '4',
         L('Dick (≥1 mm)', 'Thick (≥1 mm)', 'ضخیم (≥۱ mm)'),
         L('Ja ✓', 'Yes ✓', 'بله ✓'),
-        '~40 %',
+        L('höchster Grad der Skala', 'highest grade on the scale', 'بالاترین درجهٔ مقیاس'),
         L('Dicke Blutansammlung + Blut in ≥1 Seitenventrikel', 'Thick blood + blood in ≥1 lateral ventricle', 'تجمع خون ضخیم + خون در ≥۱ بطن جانبی'),
       ],
     ],
@@ -304,9 +294,9 @@ export const SAB_LESSON = {
         icon: '📋',
         title: L('Original Fisher-Skala (1980)', 'Original Fisher Scale (1980)', 'مقیاس فیشر اصلی (۱۹۸۰)'),
         text: L(
-          'Grad 1–4. Grad 3 (dickes Blut) hat das HÖCHSTE Risiko. Grad 4 (IVH/ICH) paradoxerweise weniger – kontraintuitiv und weniger präzise als die modifizierte Version.',
-          'Grades 1–4. Grade 3 (thick blood) carries the HIGHEST risk. Grade 4 (IVH/ICH) paradoxically lower — counterintuitive and less precise than the modified version.',
-          'درجات ۱-۴. درجه ۳ (خون ضخیم) بیشترین خطر را دارد. درجه ۴ (IVH/ICH) به طرز متناقضی کمتر — غیرمنطقی و کمتر دقیق از نسخه اصلاح‌شده.'
+          'Grad 3 enthält dickes Zisternenblut und wird in der Originalskala als höchste Risikokategorie eingestuft. Die Skala erfasst IVH nicht getrennt.',
+          'Grade 3 contains thick cisternal blood and is the highest risk category in the original scale. The scale does not score IVH separately.',
+          'درجهٔ ۳ شامل خون ضخیم سیسترنی است و در مقیاس اصلی بالاترین ردهٔ خطر محسوب می‌شود. این مقیاس IVH را جداگانه امتیازدهی نمی‌کند.'
         ),
       },
       {
@@ -322,21 +312,21 @@ export const SAB_LESSON = {
         icon: '⚡',
         title: L('Klinische Konsequenz', 'Clinical consequence', 'پیامد بالینی'),
         text: L(
-          'Grad 4 → intensiviertes Vasospasmus-Monitoring (täglicher TCD, engmaschige klinische Kontrollen), frühzeitig Nimodipin. Vasospasmus-Gipfel: Tag 4–14 nach SAB.',
-          'Grade 4 → intensive vasospasm monitoring (daily TCD, close clinical checks), early nimodipine. Vasospasm peak: day 4–14 after SAH.',
-          'درجه ۴ → مانیتورینگ فشرده وازواسپاسم (TCD روزانه، کنترل بالینی نزدیک)، نیمودیپین زودهنگام. اوج وازواسپاسم: روز ۴-۱۴ پس از SAB.'
+          'Die modifizierte Skala berücksichtigt die Kombination aus Blutdicke und IVH. Sie unterstützt die Risikoeinordnung, ersetzt aber keine klinische Überwachung.',
+          'The modified scale accounts for the combination of blood thickness and IVH. It supports risk stratification but does not replace clinical monitoring.',
+          'مقیاس اصلاح‌شده ترکیب ضخامت خون و IVH را در نظر می‌گیرد. این مقیاس به رده‌بندی خطر کمک می‌کند اما جای پایش بالینی را نمی‌گیرد.'
         ),
       },
     ],
     cave: L(
-      'Grad 2 (dünn + IVH) und Grad 3 (dick ohne IVH) zeigten in der ursprünglichen Validierung ein ähnlich hohes Risiko für symptomatischen Vasospasmus (je ~33 %). Grad 4 trägt mit ~40 % das höchste Risiko.',
-      'Grade 2 (thin SAH with IVH) and Grade 3 (thick SAH without IVH) had a similarly elevated risk of symptomatic vasospasm in the original validation (about 33% each). Grade 4 carries the highest risk at about 40%.',
-      'در اعتبارسنجی اولیه، درجه ۲ (خون نازک همراه IVH) و درجه ۳ (خون ضخیم بدون IVH) خطر تقریباً مشابهی برای وازواسپاسم علامت‌دار داشتند (هر کدام حدود ۳۳٪). درجه ۴ با حدود ۴۰٪ بیشترین خطر را دارد.'
+      'Die Skala erfasst CT-Blutdicke und IVH als gemeinsame Risikomerkmale. Ihre Kategorien sind keine patientenspezifischen Wahrscheinlichkeiten und müssen zusammen mit Klinik und Verlauf interpretiert werden.',
+      'The scale combines CT blood thickness and IVH as risk markers. Its categories are not patient-specific probabilities and must be interpreted with the clinical picture and course.',
+      'این مقیاس ضخامت خون در CT و IVH را به‌عنوان نشانگرهای خطر ترکیب می‌کند. رده‌های آن احتمال فردی بیمار نیستند و باید همراه وضعیت و سیر بالینی تفسیر شوند.'
     ),
     key: L(
-      'Zwei Schlüsselparameter: (1) Blutdicke < 1 mm (dünn) vs. ≥ 1 mm (dick) und (2) IVH vorhanden oder nicht. Grad 4 = dick + IVH = höchstes Risiko (~40 % in der ursprünglichen Validierung).',
-      'Two key parameters: (1) blood thickness <1 mm (thin) vs. ≥1 mm (thick) and (2) IVH present or absent. Grade 4 = thick + IVH = highest risk (about 40% in the original validation).',
-      'دو پارامتر کلیدی: (۱) ضخامت خون <۱ mm (نازک) در مقابل ≥۱ mm (ضخیم) و (۲) وجود یا عدم IVH. درجه ۴ = خون ضخیم + IVH و در اعتبارسنجی اولیه بیشترین خطر را داشت (حدود ۴۰٪).'
+      'Zwei Parameter: Blutdicke (<1 mm vs. ≥1 mm) und IVH (vorhanden oder nicht). Grad 4 kombiniert dickes Zisternenblut und IVH; die Skala dient der Risikoeinordnung, nicht als individuelle Vorhersage.',
+      'Two parameters: blood thickness (<1 mm vs ≥1 mm) and IVH (present or absent). Grade 4 combines thick cisternal blood with IVH; the scale supports risk stratification, not individual prediction.',
+      'دو پارامتر: ضخامت خون (<۱ در برابر ≥۱ میلی‌متر) و وجود یا عدم IVH. درجهٔ ۴ خون ضخیم سیسترنی را با IVH ترکیب می‌کند؛ مقیاس برای رده‌بندی خطر است، نه پیش‌بینی فردی.'
     ),
   },
 
@@ -353,43 +343,43 @@ export const SAB_LESSON = {
         icon: '🔭',
         title: L('CT-Angiographie (CTA)', 'CT angiography (CTA)', 'CT آنژیوگرافی (CTA)'),
         text: L(
-          'Sensitivität >95 % für Aneurysmen >3 mm. Schnell, nicht invasiv, sofort verfügbar. Erste Wahl zur Aneurysmasuche nach gesicherter SAB.',
-          'Sensitivity >95 % for aneurysms >3 mm. Fast, non-invasive, immediately available. First choice for aneurysm detection after confirmed SAH.',
-          'حساسیت >۹۵٪ برای آنوریسم‌های >۳ mm. سریع، غیرتهاجمی، فوری در دسترس. اولین انتخاب برای تشخیص آنوریسم پس از تأیید SAB.'
+          'CTA dient der raschen Suche nach einem vaskulären Blutungsherd. Kleine oder schwer darstellbare Läsionen können übersehen werden; die Blutverteilung beeinflusst die weitere Gefäßdiagnostik.',
+          'CTA provides rapid evaluation for a vascular bleeding source. Small or difficult-to-visualise lesions may be missed; the haemorrhage distribution informs further vascular imaging.',
+          'CTA برای جست‌وجوی سریع منشأ عروقی خونریزی به‌کار می‌رود. ضایعات کوچک یا دشوار برای مشاهده ممکن است دیده نشوند؛ توزیع خونریزی در انتخاب بررسی عروقی بعدی مؤثر است.'
         ),
       },
       {
         icon: '🎯',
         title: L('DSA (Goldstandard)', 'DSA (gold standard)', 'DSA (استاندارد طلایی)'),
         text: L(
-          'Invasiv, aber ermöglicht gleichzeitig interventionelle Therapie (endovaskuläres Coiling). Unerlässlich bei negativer CTA und fortbestehendem klinischem Verdacht oder bei komplexer Gefäßanatomie.',
-          'Invasive, but enables simultaneous interventional treatment (endovascular coiling). Essential when CTA is negative but clinical suspicion remains, or for complex vascular anatomy.',
-          'تهاجمی، اما امکان درمان مداخله‌ای همزمان (کویلینگ داخل عروقی) را فراهم می‌کند. ضروری وقتی CTA منفی است اما مظنون بالینی ادامه دارد یا آناتومی عروقی پیچیده است.'
+          'Invasiv, aber ermöglicht gleichzeitig interventionelle Therapie (endovaskuläres Coiling). Bei spontaner SAB und hoher aneurysmatischer Wahrscheinlichkeit ist DSA auch nach negativer oder unklarer CTA indiziert.',
+          'Invasive, but enables simultaneous intervention (endovascular coiling). In spontaneous SAH with high concern for an aneurysm, DSA is indicated even after a negative or inconclusive CTA.',
+          'تهاجمی است، اما هم‌زمان امکان درمان مداخله‌ای (کویلینگ داخل عروقی) را فراهم می‌کند. در SAB خودبه‌خودی با احتمال بالای آنوریسم، حتی پس از CTA منفی یا نامشخص، DSA اندیکاسیون دارد.'
         ),
       },
       {
         icon: '🧲',
         title: L('MR-Angiographie (MRA)', 'MR angiography (MRA)', 'MR آنژیوگرافی (MRA)'),
         text: L(
-          'TOF-MRA für Follow-up behandelter Aneurysmen geeignet. In der Akutphase weniger sensitiv als CTA für Aneurysmen <3 mm. Keine Strahlung.',
-          'TOF-MRA suitable for follow-up of treated aneurysms. In the acute phase less sensitive than CTA for aneurysms <3 mm. No radiation.',
-          'TOF-MRA برای پیگیری آنوریسم‌های درمان‌شده مناسب است. در مرحله حاد برای آنوریسم‌های <۳ mm نسبت به CTA حساسیت کمتری دارد. بدون اشعه.'
+          'TOF-MRA kann zur Verlaufskontrolle behandelter Aneurysmen beitragen. Für die Akutdiagnostik einer Blutungsquelle ist sie kein Ersatz für die leitliniengerechte CTA/DSA-Abklärung.',
+          'TOF-MRA may contribute to follow-up of treated aneurysms. It does not replace guideline-directed CTA/DSA evaluation of an acute bleeding source.',
+          'TOF-MRA می‌تواند در پیگیری آنوریسم‌های درمان‌شده کمک‌کننده باشد. برای بررسی حاد منشأ خونریزی جایگزین ارزیابی CTA/DSA طبق راهنما نیست.'
         ),
       },
       {
         icon: '🔊',
         title: L('TCD-Monitoring (Vasospasmus)', 'TCD monitoring (vasospasm)', 'مانیتورینگ TCD (وازواسپاسم)'),
         text: L(
-          'Transkranieller Doppler zur Vasospasmusdetektion ab Tag 3–4. Mittlere Flussgeschwindigkeit MCA >120 cm/s verdächtig, >200 cm/s hochgradig vasospasmussuspekt. Täglich in der Vasospasmusphase (Tag 4–14).',
-          'Transcranial Doppler for vasospasm detection from day 3–4. Mean MCA flow velocity >120 cm/s suspicious, >200 cm/s highly suspect for vasospasm. Daily during the vasospasm window (day 4–14).',
-          'داپلر ترانس‌کرانیال برای تشخیص وازواسپاسم از روز ۳-۴. سرعت جریان متوسط MCA >۱۲۰ cm/s مشکوک، >۲۰۰ cm/s بسیار مشکوک. روزانه در فاز وازواسپاسم (روز ۴-۱۴).'
+          'TCD kann im klinischen Kontext zur Erkennung eines Vasospasmus beitragen. Zeitpunkt und Frequenz der Untersuchungen richten sich nach Verlauf und lokalem neurointensivmedizinischem Protokoll.',
+          'TCD can help detect vasospasm in the clinical context. Timing and frequency of examinations depend on the course and local neurocritical-care protocol.',
+          'TCD می‌تواند در زمینه بالینی به تشخیص وازواسپاسم کمک کند. زمان و تناوب بررسی‌ها به سیر بیمار و پروتکل مراقبت ویژه عصبی محلی بستگی دارد.'
         ),
       },
     ],
     key: L(
-      'Bei klassisch perimesenzephaler Blutverteilung und negativer CTA: DSA nicht zwingend erforderlich – das Rezidivblutungsrisiko ist minimal und die Prognose gut.',
-      'With a classic perimesencephalic blood distribution and negative CTA: DSA is not mandatory — rebleed risk is minimal and prognosis is good.',
-      'با توزیع خون کلاسیک پری‌مزنسفالیک و CTA منفی: DSA اجباری نیست — خطر خونریزی مجدد حداقل و پروگنوز خوب است.'
+          'Bei diffuser SAB und hoher aneurysmatischer Wahrscheinlichkeit kann trotz negativer oder unklarer CTA eine DSA erforderlich sein. Für eine typische perimesenzephale Verteilung ist der Weg CTA allein versus DSA laut AHA/ASA nicht abschließend geklärt.',
+      'With diffuse SAH and strong concern for an aneurysm, DSA may be indicated despite negative or inconclusive CTA. For a typical perimesencephalic pattern, AHA/ASA notes that the choice between CTA alone and DSA is not settled.',
+      'در SAB منتشر و احتمال بالای آنوریسم، با وجود CTA منفی یا نامشخص ممکن است DSA لازم باشد. برای الگوی تیپیک پری‌مزنسفالیک، طبق AHA/ASA انتخاب بین CTA تنها و DSA هنوز قطعی نشده است.'
     ),
   },
 
@@ -406,27 +396,27 @@ export const SAB_LESSON = {
         icon: '💥',
         title: L('Rezidivblutung (früh)', 'Rebleeding (early)', 'خونریزی مجدد (زود)'),
         text: L(
-          'Höchstes Risiko in den ersten 24 h (bis 13 %). Ohne Aneurysmabehandlung kumulatives Risiko ~50 % in 6 Monaten. Klinisch: plötzliche Verschlechterung, CT zeigt mehr Blut. → Sofortiger Aneurysmaversch luss (Coiling oder Clipping).',
-          'Highest risk in the first 24 h (up to 13 %). Without aneurysm treatment cumulative risk ~50 % at 6 months. Clinically: sudden deterioration, CT shows more blood. → Immediate aneurysm occlusion (coiling or clipping).',
-          'بیشترین خطر در ۲۴ ساعت اول (تا ۱۳٪). بدون درمان آنوریسم خطر تجمعی ~۵۰٪ در ۶ ماه. بالینی: بدتر شدن ناگهانی، CT خون بیشتر. → انسداد فوری آنوریسم (کویلینگ یا کلیپینگ).'
+          'Das Reblutungsrisiko ist früh besonders relevant. Eine neue Blutung oder Zunahme des Blutvolumens in der Kontrollbildgebung muss dringend kommuniziert werden. Bei rupturiertem Aneurysma wird die zügige Abklärung und Behandlung durch ein erfahrenes Team empfohlen, vorzugsweise innerhalb von 24 Stunden.',
+          'Rebleeding is an important early risk. New haemorrhage or increased blood volume on follow-up imaging requires urgent communication. For a ruptured aneurysm, prompt evaluation and treatment by an experienced team is recommended, preferably within 24 hours.',
+          'خونریزی مجدد در ساعات اولیه اهمیت ویژه دارد. خونریزی جدید یا افزایش حجم خون در تصویربرداری پیگیری باید فوری گزارش شود. برای آنوریسم پاره‌شده، بررسی و درمان سریع توسط تیم باتجربه، ترجیحاً در ۲۴ ساعت، توصیه می‌شود.'
         ),
       },
       {
         icon: '🫀',
         title: L('Zerebraler Vasospasmus / DCI (spät)', 'Cerebral vasospasm / DCI (late)', 'وازواسپاسم مغزی / DCI (دیررس)'),
         text: L(
-          'Tritt typischerweise zwischen Tag 4–14 auf. Kann zu verzögerter zerebraler Ischämie (DCI) führen. Risiko richtet sich nach Fisher-Grad. Prophylaxe: Nimodipin (60 mg alle 4 h, 21 Tage). Therapie: Triple-H (Hypertension, Hypervolämie, Hämodilution).',
-          'Typically occurs between day 4–14. Can cause delayed cerebral ischaemia (DCI). Risk determined by Fisher grade. Prophylaxis: nimodipine (60 mg every 4 h, 21 days). Treatment: Triple-H (hypertension, hypervolaemia, haemodilution).',
-          'معمولاً بین روز ۴-۱۴ رخ می‌دهد. می‌تواند به ایسکمی مغزی تأخیری (DCI) منجر شود. خطر بر اساس درجه فیشر. پروفیلاکسی: نیمودیپین (۶۰ mg هر ۴ ساعت، ۲۱ روز). درمان: Triple-H.'
+          'Vasospasmus tritt häufig im Verlauf der ersten zwei Wochen auf, ist aber nicht mit verzögerter zerebraler Ischämie (DCI) gleichzusetzen. Frühe enterale Nimodipin-Gabe verbessert nach der AHA/ASA-Leitlinie die funktionellen Ergebnisse. Prophylaktische Hypervolämie oder hämodynamische Augmentation wird nicht empfohlen.',
+          'Vasospasm often occurs during the first two weeks, but it is not synonymous with delayed cerebral ischaemia (DCI). The AHA/ASA guideline recommends early enteral nimodipine to improve functional outcomes. Prophylactic hypervolaemia or haemodynamic augmentation is not recommended.',
+          'وازواسپاسم اغلب طی دو هفتهٔ نخست رخ می‌دهد، اما با ایسکمی مغزی تأخیری (DCI) یکسان نیست. راهنمای AHA/ASA نیمودیپین خوراکی زودهنگام را برای بهبود پیامد عملکردی توصیه می‌کند. افزایش پیشگیرانه حجم یا تقویت همودینامیک توصیه نمی‌شود.'
         ),
       },
       {
         icon: '💧',
         title: L('Hydrozephalus', 'Hydrocephalus', 'هیدروسفالی'),
         text: L(
-          'Akut (obstruktiv durch IVH) in den ersten Stunden/Tagen. Chronisch kommunizierend durch gestörte Liquorresorption Wochen später. Therapie: Externe Ventrikeldrainage (EVD) akut, VP-Shunt im Verlauf.',
-          'Acute (obstructive from IVH) in the first hours/days. Chronic communicating from impaired CSF resorption weeks later. Treatment: external ventricular drainage (EVD) acutely, VP shunt later.',
-          'حاد (انسدادی ناشی از IVH) در ساعات/روزهای اول. ارتباطی مزمن ناشی از اختلال جذب CSF هفته‌ها بعد. درمان: EVD در مرحله حاد، شانت VP در ادامه.'
+          'Ein akuter obstruktiver Hydrozephalus kann früh, oft bei IVH, auftreten. Ein chronisch kommunizierender Hydrozephalus kann Wochen später durch gestörte Liquorresorption entstehen. Je nach Befund kann akut eine EVD und bei persistierendem Verlauf ein VP-Shunt erforderlich sein.',
+          'Acute obstructive hydrocephalus can occur early, often with IVH. Chronic communicating hydrocephalus can develop weeks later from impaired CSF resorption. Depending on findings, acute EVD or a VP shunt for a persistent course may be required.',
+          'هیدروسفالی انسدادی حاد ممکن است زودهنگام، اغلب همراه با IVH، رخ دهد. هیدروسفالی ارتباطی مزمن ممکن است چند هفته بعد به‌علت اختلال جذب CSF ایجاد شود. بسته به یافته‌ها، ممکن است در مرحله حاد درناژ بطنی خارجی (EVD) یا در صورت تداوم، شانت VP لازم باشد.'
         ),
       },
       {
@@ -435,14 +425,14 @@ export const SAB_LESSON = {
         text: L(
           'Katecholaminsturm bei massiver SAB → Takotsubo-Kardiomyopathie, Arrhythmien, QT-Verlängerung. Neurogenes Lungenödem möglich. EKG und Troponin bei Aufnahme und im Verlauf kontrollieren.',
           'Catecholamine surge in massive SAH → Takotsubo cardiomyopathy, arrhythmias, QT prolongation. Neurogenic pulmonary oedema possible. Monitor ECG and troponin on admission and serially.',
-          'طوفان کاتکولامین در SAB ماسیو → کاردیومیوپاتی تاکوتسوبو، آریتمی، طولانی شدن QT. ادم ریوی نوروژنیک ممکن. ECG و تروپونین را در بدو پذیرش و بعداً کنترل کنید.'
+          'در SAB شدید، افزایش کاتکولامین‌ها می‌تواند باعث کاردیومیوپاتی تاکوتسوبو، آریتمی و طولانی‌شدن QT شود. ادم ریوی نوروژنیک نیز ممکن است رخ دهد. ECG و تروپونین را هنگام پذیرش و به‌صورت سریال پایش کنید.'
         ),
       },
     ],
     cave: L(
-      'Hyponatriämie durch SIADH oder Cerebral Salt Wasting (CSW) ist bei SAB häufig und verstärkt das Vasospasmusprisiko. Tägliche Elektrolytkontrollen sind Pflicht – Natrium nicht unter 135 mmol/l fallen lassen.',
-      'Hyponatraemia from SIADH or Cerebral Salt Wasting (CSW) is common after SAH and worsens vasospasm risk. Daily electrolyte monitoring is mandatory — do not allow sodium to fall below 135 mmol/l.',
-      'هیپوناترمی ناشی از SIADH یا Cerebral Salt Wasting (CSW) در SAB شایع و خطر وازواسپاسم را تشدید می‌کند. کنترل الکترولیت روزانه الزامی است — سدیم نباید زیر ۱۳۵ mmol/l باشد.'
+      'Elektrolytstörungen können den klinischen Verlauf komplizieren. Ihre Beurteilung und Behandlung richtet sich nach dem Gesamtzustand und lokalen neurointensivmedizinischen Protokollen.',
+      'Electrolyte disturbances may complicate the clinical course. Their assessment and treatment depend on the overall condition and local neurocritical-care protocols.',
+      'اختلالات الکترولیتی می‌توانند سیر بالینی را پیچیده کنند. ارزیابی و درمان آن‌ها به وضعیت کلی بیمار و پروتکل‌های مراقبت ویژه عصبی محلی بستگی دارد.'
     ),
     key: L(
       'Die zwei größten Komplikationen: Rezidivblutung (früh, Tag 0–1) und Vasospasmus/DCI (spät, Tag 4–14). Zeitliche Abgrenzung ist entscheidend für Therapieplanung.',
@@ -463,33 +453,33 @@ export const SAB_LESSON = {
       {
         title: L('Vernichtungskopfschmerz = sofort CT', 'Thunderclap headache = immediate CT', 'سردرد ضربه رعد = CT فوری'),
         text: L(
-          'Jeder plötzlich maximale Kopfschmerz ist eine SAB bis zum Beweis des Gegenteils. Kein Abwarten – sofort CT nativ.',
-          'Every sudden severe headache is SAH until proven otherwise. Never wait — immediate non-contrast CT.',
-          'هر سردرد ناگهانی و شدید SAB است تا خلافش ثابت شود. هرگز منتظر نمانید — CT بدون کنتراست فوری.'
+          'Plötzlich maximaler Kopfschmerz ist ein Warnmuster und muss dringlich abgeklärt werden; er ist nicht spezifisch für SAB.',
+          'A sudden maximal headache is a warning pattern requiring urgent evaluation; it is not specific to SAH.',
+          'سردرد ناگهانی و شدید یک الگوی هشداردهنده است و باید فوری بررسی شود؛ اما اختصاصی SAB نیست.'
         ),
       },
       {
         title: L('CT-Sensitivität kennen', 'Know CT sensitivity', 'حساسیت CT را بدانید'),
         text: L(
-          'Nahezu 100 % in 0–6 h, sinkt auf ~50 % nach 5 Tagen. Negativer CT-Befund nach >6 h → Lumbalpunktion oder MRT FLAIR.',
-          'Nearly 100 % at 0–6 h, drops to ~50 % after 5 days. Negative CT after >6 h → lumbar puncture or MRI FLAIR.',
-          'نزدیک به ۱۰۰٪ در ۰-۶ ساعت، کاهش به ~۵۰٪ بعد از ۵ روز. CT منفی بعد از >۶ ساعت → پونکسیون لومبار یا MRI FLAIR.'
+          'Bei akutem schwerem Kopfschmerz und negativem CT hängt der nächste Schritt von Zeitpunkt, neurologischem Befund und CT-Qualität ab; ein negatives CT ist kein universeller Ausschluss.',
+          'With acute severe headache and a negative CT, the next step depends on timing, neurological findings and CT quality; a negative CT is not a universal rule-out.',
+          'در سردرد حاد و شدید با CT منفی، گام بعدی به زمان، یافته‌های عصبی و کیفیت CT وابسته است؛ CT منفی برای همه شرایط ردکننده نیست.'
         ),
       },
       {
         title: L('Fisher-Grad bestimmen', 'Determine Fisher grade', 'درجه فیشر را تعیین کنید'),
         text: L(
-          'Blutdicke (<1 mm vs. ≥1 mm) + IVH (ja/nein) → Grad 0–4. Grad 4 = dick + IVH = höchstes Vasospasmusrisiko (~40 % in der ursprünglichen Validierung).',
-          'Blood thickness (<1 mm vs. ≥1 mm) + IVH (yes/no) → grade 0–4. Grade 4 = thick + IVH = highest vasospasm risk (about 40% in the original validation).',
+          'Blutdicke (<1 mm vs. ≥1 mm) + IVH (ja/nein) → Grad 0–4. Grad 4 = dick + IVH und höchste Kategorie der Skala; die Skala ersetzt keine klinische Überwachung.',
+          'Blood thickness (<1 mm vs. ≥1 mm) + IVH (yes/no) → grades 0–4. Grade 4 = thick blood + IVH and the scale’s highest category; the scale does not replace clinical monitoring.',
           'ضخامت خون (<۱ mm در مقابل ≥۱ mm) + IVH (بله/خیر) → درجه ۰ تا ۴. درجه ۴ = خون ضخیم + IVH و در اعتبارسنجی اولیه بیشترین خطر را داشت (حدود ۴۰٪).'
         ),
       },
       {
         title: L('CTA sofort, dann Aneurysmaausschluss', 'CTA immediately, then exclude aneurysm', 'CTA فوری، سپس رد آنوریسم'),
         text: L(
-          'CTA Sensitivität >95 % für Aneurysmen >3 mm. Perimesenzephale Blutung + negative CTA = benigne, DSA optional.',
-          'CTA sensitivity >95 % for aneurysms >3 mm. Perimesencephalic blood + negative CTA = benign, DSA optional.',
-          'حساسیت CTA >۹۵٪ برای آنوریسم‌های >۳ mm. خون پری‌مزنسفالیک + CTA منفی = خوش‌خیم، DSA اختیاری.'
+          'Die CTA kann kleine oder schwer erkennbare Läsionen übersehen. Bei diffuser Blutung und hoher aneurysmatischer Wahrscheinlichkeit kann DSA trotz negativer CTA angezeigt sein; für perimesenzephale SAB ist der optimale Weg nicht abschließend geklärt.',
+          'CTA may miss small or difficult-to-visualise lesions. With diffuse haemorrhage and strong concern for an aneurysm, DSA may be indicated despite negative CTA; the optimal pathway for perimesencephalic SAH is not settled.',
+          'CTA ممکن است ضایعات کوچک یا دشوار برای مشاهده را از دست بدهد. در خونریزی منتشر و احتمال بالای آنوریسم، با وجود CTA منفی ممکن است DSA لازم باشد؛ مسیر بهینه برای SAB پری‌مزنسفالیک هنوز قطعی نیست.'
         ),
       },
       {
@@ -510,21 +500,21 @@ const SAB_QUESTION_CONTENT = [
   {
     id: 'sab-q1',
     question: L(
-      'Ein 48-jähriger Patient mit normalem Neurostatus klagt über plötzlich einsetzenden Vernichtungskopfschmerz. Ein modernes, qualitativ hochwertiges Nativ-CT wird 45 Minuten nach Beginn fachkundig als negativ beurteilt. Welche Aussage ist richtig?',
-      'A 48-year-old patient with a normal neurological examination reports a thunderclap headache. A modern high-quality non-contrast CT performed 45 minutes after onset is expertly interpreted as negative. Which statement is correct?',
-      'بیمار ۴۸ ساله با معاینه عصبی طبیعی دچار سردرد ناگهانی و بسیار شدید شده است. CT بدون کنتراست مدرن و باکیفیت ۴۵ دقیقه پس از شروع، توسط فرد مجرب منفی گزارش می‌شود. کدام عبارت درست است؟'
+      'Ein 48-jähriger Patient mit normalem Neurostatus klagt über plötzlich einsetzenden Vernichtungskopfschmerz. Ein modernes, qualitativ hochwertiges Nativ-CT wird 45 Minuten nach Beginn durch einen Facharzt für Neuroradiologie als negativ beurteilt. Welche Aussage ist richtig?',
+      'A 48-year-old patient with a normal neurological examination reports a thunderclap headache. A modern high-quality non-contrast CT performed 45 minutes after onset is interpreted as negative by a board-certified neuroradiologist. Which statement is correct?',
+      'بیمار ۴۸ ساله با معاینه عصبی طبیعی دچار سردرد ناگهانی و بسیار شدید شده است. CT بدون کنتراست مدرن و باکیفیت، ۴۵ دقیقه پس از شروع توسط نورورادیولوژیست دارای بورد تخصصی منفی گزارش می‌شود. کدام عبارت درست است؟'
     ),
     options: [
-      L('Unter diesen Bedingungen kann das CT zum Ausschluss einer SAB ausreichen; Bildqualität und klinischer Kontext müssen stimmen', 'Under these conditions CT can be sufficient to exclude SAH, provided image quality and clinical context are appropriate', 'در این شرایط CT می‌تواند برای رد SAB کافی باشد، به شرط مناسب بودن کیفیت تصویر و زمینه بالینی'),
+      L('Unter diesen Bedingungen kann das CT als Ausschlussweg vertretbar sein; Bildqualität und klinischer Kontext müssen stimmen', 'Under these conditions, CT may be a reasonable rule-out pathway, provided image quality and clinical context are appropriate', 'در این شرایط CT می‌تواند یک مسیر قابل‌قبول برای رد SAB باشد، به شرط مناسب بودن کیفیت تصویر و زمینه بالینی'),
       L('Unabhängig von Zeitpunkt und CT-Qualität ist immer eine Lumbalpunktion vorgeschrieben', 'Lumbar puncture is mandatory regardless of timing and CT quality', 'صرف‌نظر از زمان و کیفیت CT، پونکسیون لومبار همیشه الزامی است'),
       L('Eine negative CTA würde jede Form der SAB sicher ausschließen', 'A negative CTA would reliably exclude every form of SAH', 'CTA منفی همه انواع SAB را با قطعیت رد می‌کند'),
       L('Der Patient kann ohne Prüfung von Bildqualität oder klinischem Risiko entlassen werden', 'The patient can be discharged without checking image quality or clinical risk', 'بیمار را می‌توان بدون بررسی کیفیت تصویر یا خطر بالینی ترخیص کرد'),
     ],
     correct: 'A',
     explanation: L(
-      'Nach der AHA/ASA-Leitlinie kann bei Beginn vor weniger als 6 Stunden, normalem Neurostatus und hochwertigem, fachkundig beurteiltem Nativ-CT der CT-Befund zum Ausschluss einer SAB ausreichen. Bei unzureichender Qualität, neuem Defizit, späterer Vorstellung oder anhaltend hohem Verdacht ist die weitere Abklärung mit Liquoranalyse beziehungsweise nach lokalem Algorithmus erforderlich.',
-      'According to the AHA/ASA guideline, a high-quality, expertly interpreted non-contrast CT can be sufficient to exclude SAH when performed within 6 hours in a patient with a normal neurological examination. Inadequate image quality, a new deficit, later presentation, or persistent high suspicion requires further evaluation with CSF analysis or the local diagnostic pathway.',
-      'طبق راهنمای AHA/ASA، در بیماری با معاینه عصبی طبیعی، CT بدون کنتراست باکیفیت و تفسیرشده توسط فرد مجرب که در ۶ ساعت اول انجام شده باشد، می‌تواند برای رد SAB کافی باشد. کیفیت ناکافی، نقص عصبی جدید، مراجعه دیرتر یا شک بالینی پایدار نیازمند بررسی بیشتر با آنالیز CSF یا الگوریتم تشخیصی محلی است.'
+      'Die AHA/ASA-Leitlinie hält bei Beginn <6 Stunden, ohne neues neurologisches Defizit und mit hochwertigem Nativ-CT, befundet durch einen Facharzt für Neuroradiologie, den CT-Ausschlussweg für vertretbar. Genau 6 Stunden sind von dieser CT-only-Empfehlung nicht abgedeckt und müssen klinisch beurteilt werden. Bei Vorstellung >6 Stunden oder bei neuem Defizit empfiehlt die Leitlinie nach negativem CT eine Liquorpunktion. Bei unzureichender Qualität oder anhaltend hohem Verdacht ist weitere Abklärung erforderlich.',
+      'The AHA/ASA guideline considers a high-quality non-contrast CT interpreted by a board-certified neuroradiologist a reasonable rule-out pathway when onset was <6 hours earlier and there is no new neurological deficit. Exactly 6 hours is not covered by this CT-only recommendation and requires clinical assessment. For presentation >6 hours or with a new deficit, the guideline recommends lumbar puncture after a negative CT. Inadequate image quality or persistent high suspicion requires further evaluation.',
+      'راهنمای AHA/ASA، در صورت شروع علائم کمتر از ۶ ساعت قبل، نبود نقص عصبی جدید و انجام CT بدون کنتراست باکیفیت که توسط نورورادیولوژیست دارای بورد تخصصی تفسیر شده باشد، مسیر رد با CT را قابل‌قبول می‌داند. دقیقاً ۶ ساعت تحت پوشش این توصیه CT به‌تنهایی نیست و نیاز به ارزیابی بالینی دارد. در مراجعه بیش از ۶ ساعت یا وجود نقص جدید، راهنما پس از CT منفی پونکسیون کمری را توصیه می‌کند. کیفیت ناکافی یا شک بالینی پایدار نیازمند بررسی بیشتر است.'
     ),
   },
   {
@@ -542,29 +532,29 @@ const SAB_QUESTION_CONTENT = [
     ],
     correct: 'D',
     explanation: L(
-      'Grad 4 der Modifizierten Fisher-Skala erfordert: (1) dickes Blut ≥1 mm in den Zisternen UND (2) IVH (Blut in mindestens einem Seitenventrikel). In der ursprünglichen Validierung hatte dieser Grad das höchste Risiko für symptomatischen Vasospasmus (~40 %).',
-      'Modified Fisher Grade 4 requires: (1) thick blood ≥1 mm in the cisterns AND (2) IVH (blood in at least one lateral ventricle). In the original validation this grade had the highest risk of symptomatic vasospasm (about 40%).',
-      'درجه ۴ فیشر اصلاح‌شده نیاز دارد: (۱) خون ضخیم ≥۱ mm در سیسترن‌ها و (۲) IVH در حداقل یک بطن جانبی. در اعتبارسنجی اولیه این درجه بیشترین خطر وازواسپاسم علامت‌دار را داشت (حدود ۴۰٪).'
+      'Grad 4 der Modifizierten Fisher-Skala: dickes Zisternenblut (≥1 mm) UND IVH. Die Skala ordnet die Blutlast ein und ersetzt keine klinische Überwachung.',
+      'Modified Fisher Grade 4: thick cisternal blood (≥1 mm) AND IVH. The scale classifies blood burden and does not replace clinical monitoring.',
+      'درجه ۴ فیشر اصلاح‌شده: خون ضخیم سیسترنی (≥۱ mm) و IVH. این مقیاس میزان خون را طبقه‌بندی می‌کند و جایگزین پایش بالینی نیست.'
     ),
   },
   {
     id: 'sab-q3',
     question: L(
-      'Welches Vasospasmusprisiko haben Patienten mit Modifizierter Fisher Grad 2 (dünnes Blut + IVH) im Vergleich zu Grad 3 (dickes Blut, kein IVH)?',
-      'What vasospasm risk do patients with Modified Fisher Grade 2 (thin blood + IVH) have compared with Grade 3 (thick blood, no IVH)?',
-      'بیماران با درجه ۲ فیشر اصلاح‌شده (خون نازک + IVH) در مقایسه با درجه ۳ (خون ضخیم، بدون IVH) چه خطر وازواسپاسمی دارند؟'
+      'Wie unterscheiden sich Modified-Fisher-Grad 2 (dünnes Blut + IVH) und Grad 3 (dickes Blut, kein IVH) anatomisch?',
+      'How do Modified Fisher Grades 2 (thin blood + IVH) and 3 (thick blood, no IVH) differ anatomically?',
+      'درجه ۲ فیشر اصلاح‌شده (خون نازک + IVH) و درجه ۳ (خون ضخیم، بدون IVH) چه تفاوتی دارند؟'
     ),
     options: [
       L('Grad 2 hat deutlich niedrigeres Risiko als Grad 3', 'Grade 2 has a markedly lower risk than Grade 3', 'درجه ۲ خطر بسیار کمتری از درجه ۳ دارد'),
-      L('Beide haben ein ähnlich erhöhtes Risiko von jeweils etwa 33 %', 'Both have a similarly elevated risk of about 33% each', 'هر دو خطر افزایش‌یافته و تقریباً مشابهی، حدود ۳۳٪، دارند'),
+      L('Die Skala stuft beide Muster als relevante Risikomerkmale ein; sie liefert keine individuelle Prozentwahrscheinlichkeit.', 'The scale treats both patterns as relevant risk markers; it does not provide an individual percentage probability.', 'مقیاس هر دو الگو را نشانگر خطر می‌داند؛ احتمال درصدی فردی ارائه نمی‌کند.'),
       L('Grad 2 hat etwa doppelt so hohes Risiko wie Grad 3', 'Grade 2 has about twice the risk of Grade 3', 'درجه ۲ تقریباً دو برابر درجه ۳ خطر دارد'),
       L('Grad 3 hat unabhängig von IVH immer das höchste Risiko aller Grade', 'Grade 3 always has the highest risk of all grades regardless of IVH', 'درجه ۳ صرف‌نظر از IVH همیشه بیشترین خطر را در میان همه درجات دارد'),
     ],
     correct: 'B',
     explanation: L(
-      'In der ursprünglichen Validierung der Modifizierten Fisher-Skala entwickelten bei Grad 2 und Grad 3 jeweils etwa 33 % einen symptomatischen Vasospasmus. Die Skala bewertet deshalb Blutdicke und IVH gemeinsam; Grad 4 hatte mit etwa 40 % das höchste Risiko.',
-      'In the original validation of the Modified Fisher Scale, about 33% of patients in both Grade 2 and Grade 3 developed symptomatic vasospasm. The scale therefore considers cisternal blood thickness together with IVH; Grade 4 had the highest risk at about 40%.',
-      'در اعتبارسنجی اولیه مقیاس فیشر اصلاح‌شده، حدود ۳۳٪ بیماران در هر دو درجه ۲ و ۳ دچار وازواسپاسم علامت‌دار شدند. بنابراین این مقیاس ضخامت خون سیسترنی و IVH را با هم در نظر می‌گیرد؛ درجه ۴ با حدود ۴۰٪ بیشترین خطر را داشت.'
+      'Grad 2 kombiniert dünnes Zisternenblut mit IVH; Grad 3 zeigt dickes Zisternenblut ohne IVH. Die Skala kombiniert beide Merkmale, um die Risikoeinordnung zu unterstützen; sie liefert keine patientenspezifische Ereignisrate.',
+      'Grade 2 combines thin cisternal blood with IVH; Grade 3 has thick cisternal blood without IVH. The scale combines both features to support risk stratification; it does not provide a patient-specific event rate.',
+      'درجهٔ ۲ خون نازک سیسترنی همراه IVH دارد؛ درجهٔ ۳ خون ضخیم سیسترنی بدون IVH. مقیاس این دو ویژگی را برای رده‌بندی خطر ترکیب می‌کند و میزان رخداد فردی بیمار را پیش‌بینی نمی‌کند.'
     ),
   },
   {
@@ -576,15 +566,15 @@ const SAB_QUESTION_CONTENT = [
     ),
     options: [
       L('DSA zwingend erforderlich – CTA reicht nie aus', 'DSA mandatory — CTA is never sufficient', 'DSA اجباری است — CTA هرگز کافی نیست'),
-      L('Benigne Prognose; DSA nicht zwingend, da Rezidivblutungsrisiko minimal', 'Benign prognosis; DSA not mandatory as rebleed risk is minimal', 'پروگنوز خوش‌خیم؛ DSA اجباری نیست چون خطر خونریزی مجدد حداقل است'),
+      L('Der Befund bleibt kontextabhängig; die Wahl zwischen CTA allein und DSA ist für diese Verteilung nicht abschließend geklärt.', 'Interpretation remains context-dependent; the choice between CTA alone and DSA is not settled for this pattern.', 'تفسیر وابسته به زمینه است؛ انتخاب CTA تنها یا DSA برای این الگو هنوز قطعی نشده است.'),
       L('Sofortige neurochirurgische Intervention erforderlich', 'Immediate neurosurgical intervention required', 'مداخله جراحی اعصاب فوری لازم است'),
       L('Intensiviertes Vasospasmusmonitoring ab Tag 4 notwendig', 'Intensive vasospasm monitoring from day 4 required', 'مانیتورینگ فشرده وازواسپاسم از روز ۴ لازم است'),
     ],
     correct: 'B',
     explanation: L(
-      'Die perimesenzephale SAB ist eine eigenständige Entität mit exzellenter Prognose. Wenn die Blutung auf die perimesenzephalen Zisternen begrenzt ist und die CTA kein Aneurysma zeigt, ist das Rezidivblutungsrisiko sehr gering und die Prognose gut. DSA ist in dieser Situation nicht zwingend erforderlich. Vasospasmus ist bei perimesenzephaler SAB selten.',
-      'Perimesencephalic SAH is a distinct entity with excellent prognosis. When blood is confined to perimesencephalic cisterns and CTA shows no aneurysm, rebleed risk is very low and prognosis is good. DSA is not mandatory in this situation. Vasospasm is rare in perimesencephalic SAH.',
-      'SAB پری‌مزنسفالیک یک موجودیت مستقل با پروگنوز عالی است. وقتی خون محدود به سیسترن‌های پری‌مزنسفالیک است و CTA آنوریسمی نشان نمی‌دهد، خطر خونریزی مجدد بسیار کم و پروگنوز خوب است. DSA در این وضعیت اجباری نیست. وازواسپاسم در SAB پری‌مزنسفالیک نادر است.'
+      'Ein typisches perimesenzephales Muster kann mit einer nichtaneurysmatischen Ursache und günstigerem Verlauf vereinbar sein. Das Muster plus negative CTA klärt die Quelle jedoch nicht in jedem Fall abschließend; die AHA/ASA beschreibt die Wahl CTA allein versus DSA als ungeklärt.',
+      'A typical perimesencephalic pattern may be consistent with a non-aneurysmal source and a more favourable course. The pattern plus a negative CTA does not settle the source in every case; AHA/ASA describes the choice of CTA alone versus DSA as unresolved.',
+      'الگوی تیپیک پری‌مزنسفالیک می‌تواند با علت غیرآنوریسمی و سیر مطلوب‌تر سازگار باشد. با این حال، الگو به‌همراه CTA منفی در همهٔ موارد منشأ را قطعی نمی‌کند؛ AHA/ASA انتخاب CTA تنها در برابر DSA را حل‌نشده می‌داند.'
     ),
   },
   {
@@ -602,9 +592,9 @@ const SAB_QUESTION_CONTENT = [
     ],
     correct: 'C',
     explanation: L(
-      'Der zerebrale Vasospasmus tritt typischerweise zwischen Tag 4 und 14 nach SAB auf, mit einem Gipfel um Tag 7–10. In dieser Phase ist ein tägliches TCD-Monitoring sowie eine enge klinische Überwachung unter laufender Nimodipin-Therapie essenziell.',
-      'Cerebral vasospasm typically occurs between day 4 and 14 after SAH, with a peak around day 7–10. During this phase daily TCD monitoring and close clinical observation under ongoing nimodipine therapy are essential.',
-      'وازواسپاسم مغزی معمولاً بین روز ۴ تا ۱۴ پس از SAB رخ می‌دهد، با اوج در حدود روز ۷-۱۰. در این فاز مانیتورینگ TCD روزانه و نظارت بالینی نزدیک تحت درمان نیمودیپین ضروری است.'
+      'Das Risiko für DCI und Vasospasmus besteht im Verlauf der ersten zwei Wochen, ist aber nicht auf einen festen Tagesbereich begrenzt. DCI kann auch ohne nachweisbaren großgefäßigen Vasospasmus auftreten.',
+      'Risk of DCI and vasospasm extends through the first two weeks, but is not limited to a fixed day range. DCI can occur without demonstrable large-vessel vasospasm.',
+      'خطر DCI و وازواسپاسم طی دو هفتهٔ نخست مطرح است، اما به بازهٔ روزی ثابتی محدود نیست. DCI می‌تواند بدون وازواسپاسم قابل‌مشاهده در عروق بزرگ هم رخ دهد.'
     ),
   },
   {
@@ -622,9 +612,9 @@ const SAB_QUESTION_CONTENT = [
     ],
     correct: 'B',
     explanation: L(
-      'Aneurysmen der A. communicans anterior (AKoA) sind mit ~30 % die häufigste Ursache der aneurysmatischen SAB. Gefolgt von MCA-Bifurkation (~25 %) und A. communicans posterior (~20 %). PICA-Aneurysmen (~10 %) verursachen Blutungen in der hinteren Schädelgrube.',
-      'Anterior communicating artery (ACoA) aneurysms are the most common cause of aneurysmal SAH at ~30 %, followed by MCA bifurcation (~25 %) and posterior communicating artery (~20 %). PICA aneurysms (~10 %) cause bleeds in the posterior fossa.',
-      'آنوریسم‌های شریان ارتباطی قدامی (ACoA) با ~۳۰٪ شایع‌ترین علت SAB آنوریسمی هستند. پس از آن انشعاب MCA (~۲۵٪) و شریان ارتباطی خلفی (~۲۰٪). آنوریسم‌های PICA (~۱۰٪) باعث خونریزی در حفره خلفی می‌شوند.'
+      'Die Aneurysmasuche richtet sich nach der Blutverteilung: zum Beispiel interhemisphärische Blutung mit Blick auf die A. communicans anterior, einseitige Fossa-Sylvii-Blutung mit Blick auf die A. cerebri media und Blut an der hinteren Schädelbasis mit Blick auf die hintere Zirkulation. Das sind Suchhinweise, keine Beweise.',
+      'Use the blood distribution to guide aneurysm search: for example, interhemispheric blood prompts review of the anterior communicating artery, unilateral Sylvian blood prompts review of the middle cerebral artery, and posterior basal blood prompts review of the posterior circulation. These are search clues, not proof.',
+      'توزیع خون مسیر جست‌وجوی آنوریسم را هدایت می‌کند: برای مثال، خون بین‌نیمکره‌ای توجه به شریان ارتباطی قدامی، خون یک‌طرفه در شکاف سیلویوس توجه به شریان مغزی میانی و خون در قاعدهٔ خلفی توجه به گردش خون خلفی را برمی‌انگیزد. این‌ها سرنخ هستند، نه اثبات.'
     ),
   },
 ]
@@ -676,9 +666,9 @@ export const SAB_FLASHCARDS = [
       '۱. ضخامت خون (نازک < ۱mm / ضخیم ≥ ۱mm)  ۲. IVH (بله / خیر)'
     ),
     explanation: L(
-      'Aus diesen zwei Parametern ergibt sich Grad 0–4. In der ursprünglichen Validierung lag das Risiko eines symptomatischen Vasospasmus bei Grad 0 bei ~0 %, Grad 1 bei ~24 %, Grad 2 und 3 bei je ~33 % und Grad 4 bei ~40 %.',
-      'These two parameters determine grades 0–4. In the original validation, symptomatic vasospasm risk was about 0% for Grade 0, 24% for Grade 1, 33% each for Grades 2 and 3, and 40% for Grade 4.',
-      'این دو پارامتر درجات ۰ تا ۴ را تعیین می‌کنند. در اعتبارسنجی اولیه، خطر وازواسپاسم علامت‌دار در درجه ۰ حدود ۰٪، درجه ۱ حدود ۲۴٪، درجات ۲ و ۳ هر کدام حدود ۳۳٪ و درجه ۴ حدود ۴۰٪ بود.'
+      'Aus diesen zwei Parametern ergibt sich Grad 0–4. Höhere Grade beschreiben eine größere Blutlast; das individuelle Risiko hängt zusätzlich vom klinischen Verlauf ab.',
+      'These two parameters determine grades 0–4. Higher grades describe greater blood burden; individual risk also depends on the clinical course.',
+      'این دو پارامتر درجات ۰ تا ۴ را تعیین می‌کنند. درجات بالاتر نشان‌دهنده بار خونی بیشترند؛ خطر فردی به سیر بالینی نیز وابسته است.'
     ),
     diagram: L(
       'Blutdicke messen → dünn / dick → IVH? ja/nein → Grad 0–4',
@@ -691,24 +681,24 @@ export const SAB_FLASHCARDS = [
   {
     id: 'sab-fc-2',
     front: L(
-      'Welcher Modifizierter Fisher Grad hat das höchste Vasospasmusrisiko?',
-      'Which Modified Fisher Grade carries the highest vasospasm risk?',
-      'کدام درجه فیشر اصلاح‌شده بیشترین خطر وازواسپاسم را دارد؟'
+      'Welche Merkmale kennzeichnen Modified-Fisher-Grad 4?',
+      'Which features define Modified Fisher Grade 4?',
+      'چه یافته‌هایی درجه ۴ فیشر اصلاح‌شده را مشخص می‌کنند؟'
     ),
     back: L(
-      'Grad 4 (dick + IVH) → ~40 % in der ursprünglichen Validierung',
-      'Grade 4 (thick + IVH) → about 40% in the original validation',
-      'درجه ۴ (خون ضخیم + IVH) → حدود ۴۰٪ در اعتبارسنجی اولیه'
+      'Dickes Zisternenblut (≥1 mm) + IVH',
+      'Thick cisternal blood (≥1 mm) + IVH',
+      'خون ضخیم سیسترنی (≥۱ mm) + IVH'
     ),
     explanation: L(
-      'Grad 4 kombiniert dickes Zisternenblut und IVH und hatte in der ursprünglichen Validierung das höchste Risiko. Die beobachteten Raten waren: Grad 0 ~0 %, Grad 1 ~24 %, Grad 2 ~33 %, Grad 3 ~33 %, Grad 4 ~40 %.',
-      'Grade 4 combines thick cisternal blood and IVH and had the highest risk in the original validation. Observed rates were: Grade 0 about 0%, Grade 1 24%, Grade 2 33%, Grade 3 33%, and Grade 4 40%.',
-      'درجه ۴ ترکیب خون ضخیم سیسترنی و IVH است و در اعتبارسنجی اولیه بیشترین خطر را داشت. میزان‌های مشاهده‌شده: درجه ۰ حدود ۰٪، درجه ۱ حدود ۲۴٪، درجه ۲ حدود ۳۳٪، درجه ۳ حدود ۳۳٪ و درجه ۴ حدود ۴۰٪.'
+      'Grad 4 kombiniert dickes Zisternenblut und IVH. Die Skala beschreibt die Blutlast und ist kein individueller Wahrscheinlichkeitsrechner.',
+      'Grade 4 combines thick cisternal blood and IVH. The scale describes blood burden; it is not an individual probability calculator.',
+      'درجه ۴ ترکیب خون ضخیم سیسترنی و IVH است. مقیاس میزان خون را توصیف می‌کند و محاسبه‌گر احتمال فردی نیست.'
     ),
     diagram: L(
-      'Gr.0: ~0% → Gr.1: ~24% → Gr.2: ~33% → Gr.3: ~33% → Gr.4: ~40%',
-      'Gr.0: ~0% → Gr.1: ~24% → Gr.2: ~33% → Gr.3: ~33% → Gr.4: ~40%',
-      'Gr.0: ~۰٪ → Gr.1: ~۲۴٪ → Gr.2: ~۳۳٪ → Gr.3: ~۳۳٪ → Gr.4: ~۴۰٪'
+      'Blutdicke + IVH bestimmen Modified-Fisher-Grad 0–4',
+      'Blood thickness + IVH determine Modified Fisher Grade 0–4',
+      'ضخامت خون + IVH درجه ۰ تا ۴ فیشر اصلاح‌شده را تعیین می‌کنند'
     ),
     topicId: 'subarachnoidalblutung',
     tags: ['fisher-skala', 'vasospasmus'],
@@ -716,24 +706,24 @@ export const SAB_FLASHCARDS = [
   {
     id: 'sab-fc-3',
     front: L(
-      'Wie unterscheiden sich Fisher Grad 2 und Grad 3 beim Risiko eines symptomatischen Vasospasmus?',
-      'How do Fisher Grades 2 and 3 compare in symptomatic vasospasm risk?',
-      'خطر وازواسپاسم علامت‌دار در درجات ۲ و ۳ فیشر چگونه با هم مقایسه می‌شود؟'
+      'Wie unterscheiden sich Modified-Fisher-Grad 2 (dünnes Blut + IVH) und Grad 3 (dickes Blut, kein IVH)?',
+      'How do Modified Fisher Grade 2 (thin blood + IVH) and Grade 3 (thick blood, no IVH) differ?',
+      'درجه ۲ فیشر اصلاح‌شده (خون نازک + IVH) و درجه ۳ (خون ضخیم، بدون IVH) چه تفاوتی دارند؟'
     ),
     back: L(
-      'In der ursprünglichen Validierung war das Risiko ähnlich hoch: jeweils ~33 %.',
-      'In the original validation, risk was similarly elevated at about 33% for each.',
-      'در اعتبارسنجی اولیه، خطر در هر دو تقریباً مشابه و حدود ۳۳٪ بود.'
+      'Grad 2: dünnes Blut + IVH. Grad 3: dickes Blut ohne IVH.',
+      'Grade 2: thin blood + IVH. Grade 3: thick blood without IVH.',
+      'درجه ۲: خون نازک + IVH. درجه ۳: خون ضخیم بدون IVH.'
     ),
     explanation: L(
-      'Grad 2 kombiniert dünnes Zisternenblut mit IVH, Grad 3 dickes Zisternenblut ohne IVH. Beide Gruppen zeigten in der ursprünglichen Studie eine Rate von etwa 33 %; erst Grad 4 war mit etwa 40 % höher.',
-      'Grade 2 combines thin cisternal blood with IVH, whereas Grade 3 has thick cisternal blood without IVH. Both groups had a rate of about 33% in the original study; Grade 4 was higher at about 40%.',
-      'درجه ۲ شامل خون نازک سیسترنی همراه IVH و درجه ۳ شامل خون ضخیم سیسترنی بدون IVH است. در مطالعه اولیه میزان هر دو حدود ۳۳٪ بود و درجه ۴ با حدود ۴۰٪ بالاتر بود.'
+      'Die Grade unterscheiden sich durch die Kombination von Blutdicke und IVH. Grad 2: dünn + IVH; Grad 3: dick + kein IVH.',
+      'The grades differ by the combination of blood thickness and IVH. Grade 2: thin + IVH; Grade 3: thick + no IVH.',
+      'درجات با ترکیب ضخامت خون و IVH تفاوت دارند. درجه ۲: نازک + IVH؛ درجه ۳: ضخیم + بدون IVH.'
     ),
     diagram: L(
-      'Grad 2: dünn + IVH → ~33%\nGrad 3: dick + kein IVH → ~33%',
-      'Grade 2: thin + IVH → ~33%\nGrade 3: thick + no IVH → ~33%',
-      'درجه ۲: خون نازک + IVH → ~۳۳٪\nدرجه ۳: خون ضخیم + بدون IVH → ~۳۳٪'
+      'Grad 2: dünn + IVH\nGrad 3: dick + kein IVH',
+      'Grade 2: thin + IVH\nGrade 3: thick + no IVH',
+      'درجه ۲: نازک + IVH\nدرجه ۳: ضخیم + بدون IVH'
     ),
     topicId: 'subarachnoidalblutung',
     tags: ['fisher-skala', 'vasospasmus'],
@@ -741,14 +731,14 @@ export const SAB_FLASHCARDS = [
   {
     id: 'sab-fc-4',
     front: L(
-      'Wie sensitiv ist die CT bei SAB in den ersten 6 h und was tun bei negativem Befund?',
-      'How sensitive is CT for SAH within the first 6 h, and what to do if negative?',
-      'حساسیت CT در SAB در ۶ ساعت اول چقدر است و در صورت منفی بودن چه کنیم؟'
+      'Wann kann ein negatives natives CT eine SAB ausschließen, und wann ist weitere Abklärung nötig?',
+      'When can a negative non-contrast CT exclude SAH, and when is further evaluation needed?',
+      'چه زمانی CT منفی می‌تواند SAB را رد کند و چه وقت بررسی بیشتر لازم است؟'
     ),
     back: L(
-      'Innerhalb 6 h kann ein hochwertiges, fachkundig beurteiltes CT bei normalem Neurostatus zum Ausschluss ausreichen; nach >6 h oder bei neuem Defizit ist bei negativem CT eine Liquoranalyse erforderlich.',
-      'Within 6 hours, a high-quality expertly interpreted CT may be sufficient to exclude SAH when the neurological examination is normal; after 6 hours or with a new deficit, negative CT requires CSF analysis.',
-      'در ۶ ساعت اول، CT باکیفیت و تفسیرشده توسط فرد مجرب در بیمار با معاینه عصبی طبیعی می‌تواند برای رد SAB کافی باشد؛ پس از ۶ ساعت یا در نقص عصبی جدید، CT منفی نیازمند بررسی CSF است.'
+      'Bei <6 h, ohne neues neurologisches Defizit und mit hochwertigem Nativ-CT, befundet durch einen Facharzt für Neuroradiologie, kann ein negativer CT-Befund vertretbar zum Ausschluss beitragen. Genau 6 h ist durch diese Empfehlung nicht abgedeckt. Bei >6 h oder neuem Defizit empfiehlt die Leitlinie nach negativem CT eine Liquoranalyse.',
+      'At <6 hours, with no new neurological deficit and a high-quality non-contrast CT interpreted by a board-certified neuroradiologist, a negative CT may reasonably contribute to exclusion. Exactly 6 hours is not covered by this recommendation. At >6 hours or with a new deficit, the guideline recommends CSF analysis after a negative CT.',
+      'در کمتر از ۶ ساعت، بدون نقص عصبی جدید و با CT بدون کنتراست باکیفیت که توسط نورورادیولوژیست دارای بورد تخصصی تفسیر شده باشد، CT منفی می‌تواند به‌طور قابل‌قبول در رد بیماری نقش داشته باشد. دقیقاً ۶ ساعت تحت پوشش این توصیه نیست. پس از بیش از ۶ ساعت یا در صورت نقص جدید، راهنما پس از CT منفی آنالیز CSF را توصیه می‌کند.'
     ),
     explanation: L(
       'Die Aussagekraft des CT nimmt mit der Zeit ab. Bei später Vorstellung oder unzureichender CT-Qualität umfasst die weitere Abklärung eine Lumbalpunktion mit Erythrozyten- und Xanthochromieanalyse nach lokalem Laborprotokoll; ein starres Zwei-Stunden-Fenster ist nicht allgemein gültig.',
@@ -756,9 +746,9 @@ export const SAB_FLASHCARDS = [
       'حساسیت CT با گذشت زمان کاهش می‌یابد. در مراجعه دیرهنگام یا کیفیت ناکافی CT، بررسی بیشتر شامل پونکسیون لومبار و ارزیابی گلبول قرمز و زانتوکرومی طبق پروتکل آزمایشگاه محلی است؛ قانون ثابت دو ساعته اعتبار عمومی ندارد.'
     ),
     diagram: L(
-      '0–6 h: ~100% → 24 h: ~85% → 5 Tage: ~50%',
-      '0–6 h: ~100% → 24 h: ~85% → 5 days: ~50%',
-      '۰-۶ ساعت: ~۱۰۰٪ → ۲۴ ساعت: ~۸۵٪ → ۵ روز: ~۵۰٪'
+      'Zeitpunkt + Neurostatus + CT-Qualität → diagnostischen Weg wählen',
+      'Timing + neurological examination + CT quality → choose the diagnostic pathway',
+      'زمان + معاینه عصبی + کیفیت CT → انتخاب مسیر تشخیصی'
     ),
     topicId: 'subarachnoidalblutung',
     tags: ['ct-diagnostik'],
@@ -771,19 +761,19 @@ export const SAB_FLASHCARDS = [
       'SAB پری‌مزنسفالیک چیست و چه پیامدی دارد؟'
     ),
     back: L(
-      'Blut nur perimesenzephal, kein Aneurysma – benigne Prognose, DSA nicht zwingend.',
-      'Blood only perimesencephalic, no aneurysm — benign prognosis, DSA not mandatory.',
-      'خون فقط پری‌مزنسفالیک، بدون آنوریسم — پروگنوز خوش‌خیم، DSA اجباری نیست.'
+      'Typisches perimesenzephales Blutmuster; CTA-vs.-DSA-Strategie ist nicht abschließend geklärt.',
+      'Typical perimesencephalic blood pattern; the CTA-versus-DSA strategy is not settled.',
+      'الگوی خونریزی پری‌مزنسفالیک تیپیک؛ راهبرد CTA در برابر DSA هنوز قطعی نیست.'
     ),
     explanation: L(
-      'CT: Blut begrenzt auf Zisternen um das Mesenzephalon, OHNE Ausdehnung in Sylvische Fissur. CTA meist negativ (~90 %). Kein Vasospasmus, kein Rezidivblutungsrisiko. Bei typischem CT-Muster + negativer CTA ist DSA optional.',
-      'CT: blood confined to cisterns around the mesencephalon, WITHOUT extension to the Sylvian fissure. CTA usually negative (~90 %). No vasospasm, no rebleed risk. With classic CT pattern + negative CTA, DSA is optional.',
-      'CT: خون محدود به سیسترن‌های اطراف مزنسفال، بدون انتشار به شکاف سیلویوس. CTA اغلب منفی (~۹۰٪). بدون وازواسپاسم، بدون خطر خونریزی مجدد. با الگوی CT کلاسیک + CTA منفی، DSA اختیاری است.'
+      'Das typische Muster ist auf die perimesenzephalen Zisternen konzentriert. Die AHA/ASA-Leitlinie beschreibt Unsicherheit, ob bei klassischem Muster CTA allein oder zusätzlich DSA genügt.',
+      'The typical pattern is centred on the perimesencephalic cisterns. The AHA/ASA guideline notes uncertainty about CTA alone versus additional DSA for a classic pattern.',
+      'الگوی تیپیک در سیسترن‌های پری‌مزنسفالیک متمرکز است. راهنمای AHA/ASA درباره کفایت CTA به‌تنهایی یا نیاز به DSA اضافی در الگوی کلاسیک عدم قطعیت را بیان می‌کند.'
     ),
     diagram: L(
-      'CT perimesenzephal → CTA negativ → kein Aneurysma → DSA optional → exzellente Prognose',
-      'CT perimesencephalic → CTA negative → no aneurysm → DSA optional → excellent prognosis',
-      'CT پری‌مزنسفالیک → CTA منفی → بدون آنوریسم → DSA اختیاری → پروگنوز عالی'
+      'Perimesenzephales Muster → CTA; mögliche zusätzliche DSA im klinischen Kontext',
+      'Perimesencephalic pattern → CTA; consider additional DSA in clinical context',
+      'الگوی پری‌مزنسفالیک → CTA؛ بررسی DSA اضافی با توجه به زمینه بالینی'
     ),
     topicId: 'subarachnoidalblutung',
     tags: ['aetiologie', 'ct-diagnostik'],
@@ -801,9 +791,9 @@ export const SAB_FLASHCARDS = [
       'خونریزی مجدد (روز ۰–۱) و وازواسپاسم/DCI (روز ۴–۱۴).'
     ),
     explanation: L(
-      'Rezidivblutung: bis 13 % in 24 h → sofortiger Aneurysma-Verschluss (Coiling/Clipping). Vasospasmus: Gipfel Tag 7–10 → Nimodipin 60 mg alle 4 h × 21 Tage. Beide Komplikationen haben klare Zeitfenster.',
-      'Rebleeding: up to 13 % in 24 h → immediate aneurysm occlusion (coiling/clipping). Vasospasm: peak day 7–10 → nimodipine 60 mg every 4 h × 21 days. Both complications have clear time windows.',
-      'خونریزی مجدد: تا ۱۳٪ در ۲۴ ساعت → انسداد فوری آنوریسم (کویلینگ/کلیپینگ). وازواسپاسم: اوج روز ۷-۱۰ → نیمودیپین ۶۰ mg هر ۴ ساعت × ۲۱ روز.'
+      'Frühe Rezidivblutung ist eine akute Gefahr. Bei aSAB soll das rupturierte Aneurysma durch ein erfahrenes Team zügig, möglichst innerhalb von 24 Stunden, gesichert werden. DCI und Vasospasmus treten typischerweise später auf; Nimodipin wird früh enteral gegeben.',
+      'Early rebleeding is an acute danger. In aSAH, an experienced team should secure the ruptured aneurysm promptly, preferably within 24 hours. DCI and vasospasm typically occur later; nimodipine is started early by the enteral route.',
+      'خونریزی مجدد زودرس یک خطر حاد است. در aSAB، تیم باتجربه باید آنوریسم پاره‌شده را سریع و ترجیحاً ظرف ۲۴ ساعت ایمن‌سازی کند. DCI و وازواسپاسم معمولاً دیرتر رخ می‌دهند؛ نیمودیپین زودهنگام از راه انتروال شروع می‌شود.'
     ),
     diagram: L(
       'Tag 0–1: Rezidivblutung → Tag 4–14: Vasospasmus/DCI',
@@ -821,14 +811,14 @@ export const SAB_FLASHCARDS = [
       '«سردرد ضربه رعد» چیست و چرا اورژانس است؟'
     ),
     back: L(
-      'Plötzlich einsetzender, maximalster Kopfschmerz (Sekunden) – SAB bis Beweis des Gegenteils.',
-      'Sudden-onset, maximally severe headache (seconds to peak) — SAH until proven otherwise.',
-      'سردرد ناگهانی و شدیدترین (ثانیه‌ها) — SAB تا اثبات خلاف.'
+      'Plötzlich einsetzender, innerhalb kurzer Zeit maximal starker Kopfschmerz – ein Warnmuster, das dringlich abgeklärt werden muss.',
+      'A headache that begins suddenly and reaches maximum intensity rapidly is a warning pattern requiring urgent evaluation.',
+      'سردردی که ناگهانی آغاز می‌شود و در مدت کوتاهی به بیشترین شدت می‌رسد، یک الگوی هشداردهنده است و باید فوری بررسی شود.'
     ),
     explanation: L(
-      'Differenzialdiagnosen: SAB (häufigste lebensbedrohliche Ursache), RCVS, Arteriendissektion, Zerebrale Venenthrombose, Hypertensive Krise, Migräne (Ausschluss). Sofortmaßnahme: CT nativ → bei negativem Befund LP.',
-      'Differential diagnoses: SAH (most common life-threatening cause), RCVS, arterial dissection, cerebral venous thrombosis, hypertensive crisis, migraine (exclusion). Immediate action: non-contrast CT → if negative, LP.',
-      'تشخیص افتراقی: SAB (شایع‌ترین علت تهدیدکننده حیات)، RCVS، دیسکسیون شریانی، ترومبوز وریدی مغزی، بحران هیپرتانسیو، میگرن. اقدام فوری: CT بدون کنتراست → در صورت منفی LP.'
+      'Mögliche Ursachen umfassen SAB, RCVS, Dissektion und zerebrale Venenthrombose. Initiales natives CT; bei negativem CT richtet sich die weitere Abklärung nach Zeitpunkt, Neurostatus, Bildqualität und klinischem Verdacht.',
+      'Possible causes include SAH, RCVS, dissection and cerebral venous thrombosis. Start with non-contrast CT; after a negative CT, further evaluation depends on timing, neurological findings, image quality and clinical suspicion.',
+      'علل احتمالی شامل SAB، RCVS، دیسکسیون و ترومبوز وریدی مغزی است. بررسی با CT بدون کنتراست آغاز می‌شود؛ پس از CT منفی، ارزیابی بیشتر به زمان، یافته‌های عصبی، کیفیت تصویر و شک بالینی بستگی دارد.'
     ),
     topicId: 'subarachnoidalblutung',
     tags: ['klinik'],
@@ -841,19 +831,19 @@ export const SAB_FLASHCARDS = [
       '«سردرد هشداردهنده (sentinel headache)» چیست و چه خطری دارد؟'
     ),
     back: L(
-      'Warnkopfschmerz Tage–Wochen vor der SAB, bei ~50 % der Patienten – oft verkannt.',
-      'Warning headache days–weeks before SAH, in ~50 % of patients — often missed.',
-      'سردرد هشداردهنده روزها-هفته‌ها قبل از SAB، در ~۵۰٪ بیماران — اغلب نادیده گرفته می‌شود.'
+      'Ein vorausgehender Warnkopfschmerz kann vorkommen; seine Häufigkeit ist variabel und sein Fehlen schließt SAB nicht aus.',
+      'A preceding warning headache may occur; reported frequency varies, and its absence does not exclude SAH.',
+      'سردرد هشداردهنده ممکن است پیش از آن رخ دهد؛ فراوانی گزارش‌شده متغیر است و نبود آن SAB را رد نمی‌کند.'
     ),
     explanation: L(
-      'Ursache: Minor leak oder Aneurysmaexpansion. Wird häufig als Spannungskopfschmerz fehlgedeutet → verzögerte Diagnose → katastrophale Rezidivblutung. Konsequenz: Jeden plötzlichen starken Kopfschmerz abklären.',
-      'Cause: minor leak or aneurysm expansion. Often misdiagnosed as tension headache → delayed diagnosis → catastrophic rebleed. Consequence: investigate every sudden severe headache.',
-      'علت: خونریزی جزئی یا گسترش آنوریسم. اغلب سردرد تنشی تشخیص داده می‌شود → تشخیص تأخیری → خونریزی مجدد فاجعه‌آمیز. هر سردرد ناگهانی شدید را بررسی کنید.'
+      'Ein Sentinel-Kopfschmerz kann bei einer kleinen vorausgehenden Blutung oder Aneurysmaveränderung auftreten; der Mechanismus ist nicht immer sicher feststellbar. Er ist ein Warnsymptom, aber weder ein Beweis für eine bevorstehende Ruptur noch eine Vorhersage einer Rezidivblutung. Plötzlich maximaler Kopfschmerz muss dringend abgeklärt werden.',
+      'A sentinel headache may occur with a small preceding leak or aneurysm change, although the mechanism is not always established. It is a warning symptom, but neither proof of an impending rupture nor a prediction of rebleeding. Sudden maximal headache requires urgent evaluation.',
+      'سردرد هشداردهنده ممکن است با نشت خون اندک یا تغییر آنوریسم پیش از خونریزی عمده همراه باشد، اما سازوکار آن همیشه روشن نیست. این سردرد علامت هشدار است، نه اثبات پارگی قریب‌الوقوع و نه پیش‌بینی‌کنندهٔ خونریزی مجدد. سردرد ناگهانی که سریع به اوج می‌رسد باید فوری بررسی شود.'
     ),
     diagram: L(
-      'Aneurysmaexpansion → Sentinel Headache → verkannt → große SAB',
-      'Aneurysm expansion → Sentinel Headache → missed → major SAH',
-      'گسترش آنوریسم → سردرد هشداردهنده (sentinel headache) → نادیده گرفته → SAB بزرگ'
+      'Possible leak/change → warning headache → urgent assessment; rebleed is not inevitable',
+      'Possible leak/change → warning headache → urgent assessment; rebleed is not inevitable',
+      'نشت/تغییر احتمالی → سردرد هشداردهنده → بررسی فوری؛ خونریزی مجدد حتمی نیست'
     ),
     topicId: 'subarachnoidalblutung',
     tags: ['klinik'],

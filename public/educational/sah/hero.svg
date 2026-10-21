@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" fill="none">
+  <defs>
+    <linearGradient id="brain" x1="132" y1="102" x2="567" y2="393" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E7F4F6"/><stop offset="1" stop-color="#A8D4DA"/>
+    </linearGradient>
+    <filter id="glow" x="180" y="146" width="360" height="220" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+  <path d="M360 43c-84 0-159 18-215 55-55 37-88 89-88 146 0 57 33 109 88 146 56 37 131 55 215 55s159-18 215-55c55-37 88-89 88-146 0-57-33-109-88-146-56-37-131-55-215-55Z" fill="#0D2534" stroke="#79C7D1" stroke-width="5"/>
+  <path d="M360 81c-67 0-126 15-170 44-44 29-70 70-70 119s26 90 70 119c44 29 103 44 170 44s126-15 170-44c44-29 70-70 70-119s-26-90-70-119c-44-29-103-44-170-44Z" fill="url(#brain)" stroke="#F3FBFC" stroke-width="4"/>
+  <path d="M360 91v302M190 243h340" stroke="#689BA6" stroke-width="2" stroke-dasharray="7 9" opacity=".7"/>
+  <path d="M293 198c-20 13-31 29-31 47 0 18 11 34 31 47 15 10 35 17 58 20 23-3 43-10 58-20 20-13 31-29 31-47 0-18-11-34-31-47-15-10-35-17-58-20-23 3-43 10-58 20Z" fill="#1C6477" opacity=".22" stroke="#155B70" stroke-width="4"/>
+  <g filter="url(#glow)" opacity=".55"><path d="M294 202c-18 12-28 27-28 43 0 16 10 31 28 43 18 12 41 20 66 23 25-3 48-11 66-23 18-12 28-27 28-43 0-16-10-31-28-43-18-12-41-20-66-23-25 3-48 11-66 23Z" fill="#F07867"/></g>
+  <path d="M302 207c-17 11-26 24-26 38 0 14 9 27 26 38 16 11 36 18 58 21 22-3 42-10 58-21 17-11 26-24 26-38 0-14-9-27-26-38-16-11-36-18-58-21-22 3-42 10-58 21Z" fill="#E87968" fill-opacity=".88" stroke="#A84545" stroke-width="3"/>
+  <path d="M208 165c25-20 56-32 91-37m213 37c-25-20-56-32-91-37M177 244h57m252 0h57M218 324c26 20 55 30 84 34m196-34c-26 20-55 30-84 34" stroke="#155B70" stroke-width="9" stroke-linecap="round" opacity=".78"/>
+  <path d="M145 243h55m375 0h-55" stroke="#F4B291" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="360" cy="244" r="7" fill="#FFF7ED"/>
+</svg>
