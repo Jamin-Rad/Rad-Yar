@@ -1,0 +1,12 @@
+{
+  "asset": "mri-mrcp-pdf-p41.jpg",
+  "route": "/abdomen/pankreas/zystische-tumoren",
+  "sourceDocument": "User-supplied Abdomen.pdf",
+  "sourcePdfPage": 41,
+  "printedPage": 40,
+  "sourceImageDescription": "Paired axial MRI and MRCP examples shown under the source slide's IPMN radiological-features section, beside text emphasizing lesion morphology and communication with the pancreatic duct.",
+  "transformation": "Cropped from a 320 dpi rasterisation of physical PDF page 41 to retain the paired MRI/MRCP panels. The neighboring CT panel, slide text, borders and page footer were excluded; the images themselves were not altered.",
+  "teachingPurpose": "Provide the source's own MRI/MRCP examples beside the duct-communication learning point. The panels are unannotated; the lesson explicitly says they do not establish a particular duct connection by themselves.",
+  "rights": "The user explicitly confirmed that images in the supplied PDFs are licensed for RadYar use. The small embedded source identifier and contributor/licence metadata are not independently verified and are not inferred.",
+  "captionAndAlt": "Localized German, English and Persian caption and alt text are stored in app/abdomen/pankreas/zystische-tumoren/page.js."
+}

@@ -831,9 +831,9 @@ export const CURRICULUM = [
           { id: 'chronische-pankreatitis', title: { de: 'Chronische Pankreatitis', en: 'Chronic Pancreatitis', fa: 'پانکراتیت مزمن' }, tags: ['CT','MRT'], diff: 2, link: '/abdomen/pankreas/pankreatitis', mcqLink: '/ueben/quiz?fach=abdomen&n=10&themen=pankreatitis', flashcardLink: '/flashcards/pankreatitis', ready: true, updatedAt: '2026-07-02' },
           { id: 'pdac', title: { de: 'Duktales Adenokarzinom (PDAC)', en: 'Ductal Adenocarcinoma (PDAC)', fa: 'آدنوکارسینوم داکتال پانکراس (PDAC)' }, tags: ['CT','MRT'], diff: 3, link: '/abdomen/pankreas/pankreaskarzinom', mcqLink: '/ueben/quiz?fach=abdomen&n=3&themen=pdac', flashcardLink: '/flashcards/pdac', inProgress: true, updatedAt: '2026-10-21' },
           { id: 'pnet', title: { de: 'Neuroendokrine Tumoren (pNET)', en: 'Neuroendocrine Tumours (pNET)', fa: 'تومورهای نورواندوکرین پانکراس (pNET)' }, tags: ['CT','MRT'], diff: 3, link: '/abdomen/pankreas/neuroendokrine-tumoren', mcqLink: '/ueben/quiz?fach=abdomen&n=4&themen=pnet', flashcardLink: '/flashcards/pnet', inProgress: true, updatedAt: '2026-10-21' },
-          { id: 'ipmn', title: { de: 'IPMN', en: 'IPMN', fa: 'IPMN' }, tags: ['MRT','CT'], diff: 2, link: '/abdomen/pankreas/zystische-tumoren' },
-          { id: 'mcn-pankreas', title: { de: 'Muzinöses Zystadenom (MCN)', en: 'Mucinous Cystic Neoplasm (MCN)', fa: 'نئوپلاسم کیستیک موسینی (MCN)' }, tags: ['MRT','CT'], diff: 2, link: '/abdomen/pankreas/zystische-tumoren' },
-          { id: 'seroeses-zystadenom', title: { de: 'Seröses Zystadenom', en: 'Serous Cystadenoma', fa: 'سیستادنوم سروز' }, tags: ['MRT','CT'], diff: 2, link: '/abdomen/pankreas/zystische-tumoren' },
+          { id: 'ipmn', title: { de: 'IPMN', en: 'IPMN', fa: 'IPMN' }, tags: ['MRT','CT'], diff: 2, link: '/abdomen/pankreas/zystische-tumoren', mcqLink: '/ueben/quiz?fach=abdomen&n=1&themen=ipmn', flashcardLink: '/flashcards/abdomen-pancreatic-cysts' },
+          { id: 'mcn-pankreas', title: { de: 'Muzinöses Zystadenom (MCN)', en: 'Mucinous Cystic Neoplasm (MCN)', fa: 'نئوپلاسم کیستیک موسینی (MCN)' }, tags: ['MRT','CT'], diff: 2 },
+          { id: 'seroeses-zystadenom', title: { de: 'Seröses Zystadenom', en: 'Serous Cystadenoma', fa: 'سیستادنوم سروز' }, tags: ['MRT','CT'], diff: 2, link: '/abdomen/pankreas/zystische-tumoren', flashcardLink: '/flashcards/abdomen-pancreatic-cysts' },
         ],
       },
       {
