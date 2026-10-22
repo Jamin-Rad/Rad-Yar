@@ -54,4 +54,11 @@ export const TECHNIK_ROENTGEN_FLASHCARDS = [
     explanation: { de: 'Bei Compton werden Energie und Impuls teilweise auf ein Elektron übertragen. Der quantitative Anteil kohärenter Streuung hängt von der Energie ab.', en: 'In Compton scatter, some energy and momentum are transferred to an electron. The proportion of coherent scatter depends on energy.', fa: 'در پراکندگی کامپتون بخشی از انرژی و تکانه به الکترون منتقل می‌شود. سهم کمّی پراکندگی همدوس به انرژی وابسته است.' },
     source: 'Technik.pdf physical p40 (printed p39); IAEA Diagnostic Radiology Physics, ch. 2',
   },
+  {
+    id: 'roentgenanlage-roehre-08-mtf-dqe', topicId: 'roentgenanlage-roehre', category: 'Bildgüte',
+    front: { de: 'Wofür stehen MTF und DQE bei einem digitalen Detektor?', en: 'What do MTF and DQE describe for a digital detector?', fa: 'MTF و DQE در آشکارساز دیجیتال چه چیزی را توصیف می‌کنند؟' },
+    answer: { de: 'MTF beschreibt die Kontrastübertragung über Ortsfrequenzen; DQE beschreibt, wie effizient der Detektor das Eingangs-Signal-Rausch-Verhältnis erhält.', en: 'MTF describes contrast transfer across spatial frequencies; DQE describes how efficiently the detector preserves input signal-to-noise ratio.', fa: 'MTF انتقال کنتراست در فرکانس‌های مکانی را توصیف می‌کند؛ DQE کارایی حفظ نسبت سیگنال به نویز ورودی را بیان می‌کند.' },
+    explanation: { de: 'Beide Kennwerte sind frequenzabhängig und müssen unter vergleichbaren Messbedingungen interpretiert werden. Ein guter Kennwert allein beweist weder klinische Überlegenheit noch eine niedrigere Patientendosis.', en: 'Both metrics vary with spatial frequency and must be interpreted under comparable measurement conditions. One favorable metric alone proves neither clinical superiority nor lower patient dose.', fa: 'هر دو شاخص به فرکانس مکانی وابسته‌اند و باید در شرایط اندازه‌گیری قابل‌مقایسه تفسیر شوند. یک شاخص مطلوب به‌تنهایی برتری بالینی یا دوز کمتر بیمار را ثابت نمی‌کند.' },
+    source: 'Technik.pdf physical p43 (printed p42); IAEA handbook ch. 4; AAPM TG-150',
+  },
 ]
