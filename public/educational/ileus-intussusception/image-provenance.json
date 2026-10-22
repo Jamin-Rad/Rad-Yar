@@ -1,0 +1,47 @@
+{
+  "topic": "Intussusception",
+  "source": {
+    "site": "Radiopaedia",
+    "caseId": "232928",
+    "caseUrl": "https://radiopaedia.org/cases/232928",
+    "contributor": "Soo Tze Hui",
+    "accessed": "2026-10-22",
+    "permission": "The user explicitly confirmed in this project conversation that they have permission to use Radiopaedia cases, including for subscription-supported RadYar. No separate license document was inspected by this author."
+  },
+  "assets": [
+    {
+      "file": "rid-232928-transverse.png",
+      "studyFrame": "74523028",
+      "view": "Transverse ultrasound with target sign; includes colour Doppler panel",
+      "teachingPurpose": "Show concentric bowel-wall layers in cross-section.",
+      "caption": {
+        "de": "Querschnitt mit Target-Zeichen aus einem bestätigten Radiopaedia-Fall; rechts ein Farbdoppler-Bild. Fall rID 232928, Beitrag von Soo Tze Hui. Das Kind war 2 Monate alt und damit jünger als das typische Häufigkeitsmaximum.",
+        "en": "Transverse view of a confirmed Radiopaedia case showing the target sign; colour Doppler panel at right. Case rID 232928, contributed by Soo Tze Hui. The child was 2 months old, younger than the typical peak age.",
+        "fa": "نمای عرضی از کیس تأییدشده Radiopaedia با علامت هدف؛ پنل داپلر رنگی در سمت راست است. کیس rID 232928، از Soo Tze Hui. کودک ۲ ماهه بود؛ سنی پایین‌تر از اوج معمول بروز."
+      },
+      "alt": {
+        "de": "Transversale Sonographie mit konzentrischen Darmwandschichten als Target-Zeichen; daneben Farbdoppler desselben Befunds.",
+        "en": "Transverse ultrasound showing concentric bowel-wall layers as a target sign, with colour Doppler of the same intussusception beside it.",
+        "fa": "سونوگرافی عرضی با لایه‌های متحدالمرکز دیواره روده به شکل علامت هدف؛ در کنار آن داپلر رنگی از همان اینتوساسپشن."
+      }
+    },
+    {
+      "file": "rid-232928-longitudinal.png",
+      "studyFrame": "74523027",
+      "view": "Cropped left-hand longitudinal ultrasound panel from the source composite frame 74523027",
+      "crop": "Left 421 px of the 847 × 575 source frame, full height; the adjacent transverse panel is omitted to match the lesson's long-axis teaching point. No diagnostic image processing or generated content added.",
+      "teachingPurpose": "Show the elongated bowel-within-bowel/pseudokidney configuration in the long axis.",
+      "caption": {
+        "de": "Längsschnitt derselben Radiopaedia-Untersuchung; die ineinandergeschobenen Darmabschnitte erscheinen länglich. Fall rID 232928, Beitrag von Soo Tze Hui.",
+        "en": "Longitudinal view from the same Radiopaedia study; the telescoped bowel segments are elongated. Case rID 232928, contributed by Soo Tze Hui.",
+        "fa": "نمای طولی از همان بررسی Radiopaedia؛ قطعات تلسکوپی روده در امتداد طولی دیده می‌شوند. کیس rID 232928، از Soo Tze Hui."
+      },
+      "alt": {
+        "de": "Längsschnittsonographie derselben Invagination mit länglicher Pseudonieren- beziehungsweise Sandwich-Konfiguration.",
+        "en": "Longitudinal ultrasound of the same intussusception, showing the elongated pseudokidney/sandwich configuration.",
+        "fa": "سونوگرافی طولی از همان اینتوساسپشن با نمای کشیده شبه‌کلیه/ساندویچ."
+      }
+    }
+  ],
+  "selectionRationale": "A confirmed pediatric ultrasound case with both transverse and longitudinal frames was visually inspected in the Radiopaedia viewer. It demonstrates the two orientations needed for this focused teaching point. The recorded age is 2 months, below the typical peak; this is disclosed in the transverse caption rather than presented as the canonical age pattern."
+}
