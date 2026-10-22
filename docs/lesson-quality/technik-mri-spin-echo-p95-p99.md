@@ -18,4 +18,14 @@ The existing `/technik/grundlagen#mrt` section covered T1/T2, SE-vs-GRE in one b
 
 ## Assessment and review status
 
-The new block uses three-language code-native SE timing/TR/TE figure, one MCQ on the PD setting pattern, and four retrieval cards including active HASTE retrieval. The source-dense accelerated-SE row is split into separate TSE, HASTE, BLADE and PD rows. DE/EN/FA content is linked to curriculum ID `mrt-spin-echo`, the existing `/technik/grundlagen#mrt` route and central quiz/flashcards. Focused SSR/registry tests, MCQ audit and independent review are pending. This is bounded source coverage, not a specialist clinical or complete protocol review.
+The new block uses a code-native SE timing/TR/TE figure with DE/EN/FA labels, one MCQ on the PD setting pattern, and four retrieval cards including active HASTE retrieval. The source-dense accelerated-SE row is split into separate TSE, HASTE, BLADE and PD rows. DE/EN/FA content is linked to curriculum ID `mrt-spin-echo`, the existing `/technik/grundlagen#mrt` route and central quiz/flashcards.
+
+### Verification update — 2026-10-22
+
+- `node --import tsx scripts/test-technik-mri-artifacts-render.mjs` — PASS; covers localized SSR, curriculum links, question and card retrieval for the MRI block.
+- `node --import tsx scripts/test-technik-mri-basics-render.mjs` — PASS; localized MRI fundamentals and shared rendering.
+- `npm run audit:mcq` — PASS; 713 questions and 18 cases per language, with valid answer keys and option explanations.
+- Independent source/education/assessment review — PASS. The reviewer confirmed the page 95 susceptibility qualification, the bounded HASTE statement and qualitative PD settings. No blocking content finding remained.
+- VIS and LNG browser-render gates — BLOCKED: the timing diagram’s rendered appearance and Persian RTL behavior have not been verified in a browser.
+- UX — BLOCKED: no browser evidence for responsive layout, theme, interaction or accessibility states.
+- Specialist clinical sign-off by Dr. Zia and release approval remain pending. This is bounded source coverage, not a full protocol review or publication clearance.
