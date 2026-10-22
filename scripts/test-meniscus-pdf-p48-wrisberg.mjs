@@ -31,7 +31,7 @@ const route = fs.readFileSync('app/msk/knie/meniskus/page.js', 'utf8')
 assert.match(route, /SSR consensus · Standardized MRI nomenclature/)
 assert.match(route, /MENISCUS_PDF_GAP_ADDENDUM\.tearTypes\.map/)
 assert.match(route, /data-pdf-source-addendum="msk-48-49-50-51"/)
-const ledger = fs.readFileSync('docs/lesson-quality/meniskus-msk-p49-p55-addendum.md', 'utf8')
+const ledger = fs.readFileSync('docs/lesson-quality/meniskus-msk-p47-p55-addendum.md', 'utf8')
 for (const phrase of ['MEN-48-01', 'physical p.48 / printed p.47', 'anatomic wording first', 'current SSR nomenclature']) assert.ok(ledger.includes(phrase))
 
 console.log('Meniscus MSK.pdf p.48: localized source image, anatomic Wrisberg-rip description, ligament pitfall and assessment/card wiring PASS.')

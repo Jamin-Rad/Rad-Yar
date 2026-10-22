@@ -52,8 +52,8 @@ assert.match(route, /meniscocapsular separation/)
 assert.match(route, /physical PDF p\.\$\{item\.sourcePage\} \(printed p\.\$\{item\.printedPage\}\)/)
 assert.match(route, /MENISCUS_PDF_GAP_ADDENDUM\.rootTear\.evidence/)
 
-const ledger = fs.readFileSync('docs/lesson-quality/meniskus-msk-p49-p55-addendum.md', 'utf8')
-for (const phrase of ['physical p.48 / printed p.47', 'physical p.49 / printed p.48', 'physical p.50 / printed p.49', 'physical p.51 / printed p.50', 'physical p.52 / printed p.51', 'physical p.54 / printed p.53', 'physical p.55 / printed p.54', 'MEN-48-01', 'MEN-49-01', 'MEN-50-01', 'MEN-51-01', 'MEN-52-01', 'MEN-52-02', 'MEN-54-01', 'MEN-55-01', 'nine fresh-frozen cadaver knees', 'does not establish clinical cartilage damage, OA risk, or clinical course']) {
+const ledger = fs.readFileSync('docs/lesson-quality/meniskus-msk-p47-p55-addendum.md', 'utf8')
+for (const phrase of ['physical p.47 / printed p.46', 'physical p.48 / printed p.47', 'physical p.49 / printed p.48', 'physical p.50 / printed p.49', 'physical p.51 / printed p.50', 'physical p.52 / printed p.51', 'physical p.54 / printed p.53', 'physical p.55 / printed p.54', 'MEN-47-01', 'MEN-48-01', 'MEN-49-01', 'MEN-50-01', 'MEN-51-01', 'MEN-52-01', 'MEN-52-02', 'MEN-54-01', 'MEN-55-01', 'nine fresh-frozen cadaver knees', 'does not establish clinical cartilage damage, OA risk, or clinical course']) {
   assert.ok(ledger.toLowerCase().includes(phrase.toLowerCase()), `ledger: ${phrase}`)
 }
 console.log('Meniscus MSK.pdf p.49/p.52/p.54/p.55 addendum: source image crops, three-language claims, page mapping, ACL context, root morphology and cautious biomechanical attribution PASS.')

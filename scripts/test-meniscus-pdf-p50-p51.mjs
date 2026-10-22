@@ -40,7 +40,7 @@ assert.match(route, /MENISCUS_PDF_GAP_ADDENDUM\.tearTypes\.map/)
 assert.match(route, /Helms et al\. · Bucket-handle tear MRI signs/)
 assert.match(route, /Haims et al\. · The flipped meniscus sign/)
 
-const ledger = fs.readFileSync('docs/lesson-quality/meniskus-msk-p49-p55-addendum.md', 'utf8')
+const ledger = fs.readFileSync('docs/lesson-quality/meniskus-msk-p47-p55-addendum.md', 'utf8')
 for (const phrase of ['physical p.50 / printed p.49', 'physical p.51 / printed p.50', 'Double-PCL', 'anterior-horn variant', '210 dpi', 'MEN-50-01', 'MEN-51-01']) {
   assert.ok(ledger.toLowerCase().includes(phrase.toLowerCase()), `ledger includes ${phrase}`)
 }
