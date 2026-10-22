@@ -6,6 +6,12 @@ const langs = ['de', 'en', 'fa']
 const imageDir = new URL('../public/distale-radiusfraktur/', import.meta.url)
 const topic = DISTALE_RADIUS_LESSON
 const ledger = fs.readFileSync(new URL('../docs/lesson-quality/source-ledgers/distale-radius-msk-p17-p18.md', import.meta.url), 'utf8')
+const routeSource = fs.readFileSync(new URL('../app/msk/trauma/distale-radiusfraktur/page.js', import.meta.url), 'utf8')
+assert.doesNotMatch(routeSource, /useEffect\(\(\)\s*=>\s*setOpen\(false\)/, 'sections stay open on initial render')
+assert.match(routeSource, /querySelector\('button\[aria-expanded="false"\]'\)/, 'TOC finds a collapsed destination section')
+assert.match(routeSource, /header\?\.click\(\)[\s\S]*target\?\.scrollIntoView/, 'TOC expands before scrolling')
+assert.match(ledger, /DRF-UX-01[\s\S]*route now keeps/i, 'independent UX finding and correction are recorded')
+assert.match(ledger, /DRF-LNG-01[\s\S]*three-language legend/i, 'embedded English labels have a recorded localized legend')
 
 for (const lang of langs) {
   const fernandez = topic.fernandez
@@ -26,6 +32,8 @@ for (const lang of langs) {
   assert.match(topic.muster.items[0].text[lang], /dorsal|dorsal|دورسال/i)
   assert.match(topic.muster.items[1].text[lang], /volar|palmar|ولار/i)
   assert.match(topic.muster.items[2].text[lang], /carpus|Karpus|کارپ/i)
+  assert.equal(topic.muster.imageLegend.length, 3, `${lang}: embedded figure labels have a localized legend`)
+  for (const item of topic.muster.imageLegend) assert.ok(item.title[lang] && item.text[lang], `${lang}: figure legend item is translated`)
   const chauffeur = topic.sonderformen.items.find(item => /Chauffeur/i.test(`${item.title.de} ${item.title.en}`))
   assert.match(chauffeur.text[lang], /bony avulsion|knöcherne Avulsion|آولسیون استخوانی/i)
   const slText = topic.begleitverletzungen.items[0].text[lang]

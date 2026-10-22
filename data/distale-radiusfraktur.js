@@ -58,6 +58,12 @@ export const DISTALE_RADIUS_LESSON = {
     ),
     imageSrc: '/distale-radiusfraktur/klassische-muster.png',
     imageAlt: L('Colles-, Smith-, dorsale und volare Barton-Fraktur im Vergleich', 'Comparison of Colles, Smith, dorsal and volar Barton fractures', 'مقایسه شکستگی‌های کولس، اسمیت، بارتون دورسال و ولار'),
+    imageLegendTitle: L('Begriffe in der Abbildung', 'Labels in the figure', 'برچسب‌های داخل تصویر'),
+    imageLegend: [
+      { title: L('Häufige distale Radiusfrakturen', 'Common distal radius fractures', 'شکستگی‌های شایع دیستال رادیوس'), text: L('Übersetzung der englischen Bildüberschrift.', 'German and Persian translation of the embedded English heading.', 'ترجمهٔ آلمانی و فارسی عنوان انگلیسیِ درج‌شده در تصویر.') },
+      { title: L('Extraartikulär / intraartikulär', 'Extra-articular / intra-articular', 'خارج‌مفصلی / داخل‌مفصلی'), text: L('Außerhalb des Gelenks / mit Beteiligung der Gelenkfläche.', 'Fracture outside the joint / involving the articular surface.', 'شکستگی خارج از مفصل / همراه با درگیری سطح مفصلی.') },
+      { title: L('Dorsale / palmare (volare) Angulation', 'Dorsal / volar angulation', 'زاویه‌داری دورسال / ولار'), text: L('Abkippung des distalen Fragments nach dorsal / zur Handflächenseite.', 'Angulation of the distal fragment dorsally / toward the palm.', 'زاویه‌داری قطعهٔ دیستال به سمت پشت دست / کف دست.') },
+    ],
     items: [
       { icon: '↗', title: L('Colles-Fraktur', 'Colles fracture', 'شکستگی کولس'), text: L('Extraartikuläre distale Radiusfraktur mit dorsaler Angulation/Dislokation des distalen Fragments, meist nach Sturz auf die extendierte Hand.', 'Extra-articular distal radius fracture with dorsal angulation/displacement of the distal fragment, usually after a fall on an extended hand.', 'شکستگی خارج‌مفصلی دیستال رادیوس با زاویه‌داری/جابجایی دورسال قطعه دیستال، معمولاً پس از افتادن روی دست اکستاند.') },
       { icon: '↘', title: L('Smith-Fraktur', 'Smith fracture', 'شکستگی اسمیت'), text: L('Extraartikuläre Fraktur mit palmarer Angulation/Dislokation, klassisch nach Sturz auf das flektierte Handgelenk; „reverse Colles“.', 'Extra-articular fracture with volar angulation/displacement, classically after a fall on a flexed wrist; reverse Colles.', 'شکستگی خارج‌مفصلی با زاویه‌داری/جابجایی ولار، معمولاً پس از افتادن روی مچ فلکس؛ کولس معکوس.') },

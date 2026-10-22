@@ -50,4 +50,20 @@
 - MCQ registry audit: `node --import tsx scripts/audit-mcq-bank.mjs` — passed (730 questions and 18 cases per language).
 - `git diff --check` — passed.
 - PDF text extraction utility was unavailable; source transcription used rendered images. Both physical pages were rendered with Poppler and visually inspected.
-- Browser behavior was not tested in this bounded batch. Independent reviewer and Dr. Zia scientific review remain pending; the Radiopaedia case page could not be fetched to verify contributor/full-study details.
+- Independent source/education/assessment review passed for this bounded page pair. UX and translation findings from that review are addressed structurally; browser verification and Dr. Zia scientific review remain pending. The Radiopaedia case page could not be fetched to verify contributor/full-study details.
+
+## Independent review and UX correction
+
+The independent reviewer identified `DRF-UX-01`: sections initialized open
+but an effect collapsed them on mount, and the table of contents did not expand
+a collapsed destination. The route now keeps sections open on mount and expands
+a collapsed destination before scrolling. The focused test asserts this static
+behavior. Browser behavior remains unverified; this finding does not change the
+bounded source or clinical-review limits above.
+
+The reviewer also identified `DRF-LNG-01`: the supplied comparison graphic
+contains English labels in German and Persian views. The original authorized
+figure remains in place, with a three-language legend directly below it
+translating its heading, extra-/intra-articular labels, and dorsal/volar
+angulation terms. Structural tests check all three languages; rendered layout
+and Persian RTL behavior still need browser verification.

@@ -19,7 +19,6 @@ const UI = {
 function Section({ id, title, lead, children }) {
   const mobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
-  useEffect(() => setOpen(false), [id])
   return <section id={id} className={styles.section}>
     <button type="button" className={styles.sectionHeader} onClick={() => setOpen(value => !value)} aria-expanded={open}><h2>{title}</h2><span>{open ? '−' : '+'}</span></button>
     {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
@@ -97,10 +96,15 @@ export default function DistaleRadiusfrakturPage() {
     </header>
     <div className={styles.readBar}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>
     <div className={styles.layout}>
-      <aside className={styles.sidebar}><div className={styles.sideTitle}>{c(data.toc)}</div>{data.sections.map(section => <button type="button" key={section.id} className={`${styles.sideItem} ${active === section.id ? styles.sideItemActive : ''}`} onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth' })} style={section.emphasis ? { color: '#f97316', border: '1px solid rgba(249,115,22,.5)', background: 'rgba(249,115,22,.12)', fontWeight: 950 } : undefined}><span>{section.icon}</span><strong>{c(section.label)}</strong></button>)}</aside>
+      <aside className={styles.sidebar}><div className={styles.sideTitle}>{c(data.toc)}</div>{data.sections.map(section => <button type="button" key={section.id} className={`${styles.sideItem} ${active === section.id ? styles.sideItemActive : ''}`} onClick={() => {
+        const target = document.getElementById(section.id)
+        const header = target?.querySelector('button[aria-expanded="false"]')
+        header?.click()
+        target?.scrollIntoView({ behavior: 'smooth' })
+      }} style={section.emphasis ? { color: '#f97316', border: '1px solid rgba(249,115,22,.5)', background: 'rgba(249,115,22,.12)', fontWeight: 950 } : undefined}><span>{section.icon}</span><strong>{c(section.label)}</strong></button>)}</aside>
       <div className={styles.main}>
         <Section id="diagnostik" title={c(data.diagnostik.title)} lead={c(data.diagnostik.lead)}><Table headers={data.diagnostik.headers.map(c)} rows={rows(data.diagnostik.rows)} /><Callout label="CT">{c(data.diagnostik.ct)}</Callout></Section>
-        <Section id="muster" title={c(data.muster.title)} lead={c(data.muster.lead)}><ZoomImage src={data.muster.imageSrc} alt={c(data.muster.imageAlt)} copy={copy} /><Cards items={data.muster.items} lang={lang} /><Callout label={c(data.caveLabel)} cave>{c(data.muster.cave)}</Callout></Section>
+        <Section id="muster" title={c(data.muster.title)} lead={c(data.muster.lead)}><ZoomImage src={data.muster.imageSrc} alt={c(data.muster.imageAlt)} copy={copy} /><h3>{c(data.muster.imageLegendTitle)}</h3><Cards items={data.muster.imageLegend} lang={lang} /><Cards items={data.muster.items} lang={lang} /><Callout label={c(data.caveLabel)} cave>{c(data.muster.cave)}</Callout></Section>
         <Section id="fernandez" title={c(data.fernandez.title)} lead={c(data.fernandez.lead)}><div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '1rem' }}><ZoomImage src={data.fernandez.schemaSrc} alt={c(data.fernandez.schemaAlt)} copy={copy} /><ZoomImage src={data.fernandez.xraySrc} alt={c(data.fernandez.xrayAlt)} copy={copy} /></div><Table headers={data.fernandez.headers.map(c)} rows={rows(data.fernandez.rows)} /><Callout label={c(data.keyLabel)}>{c(data.fernandez.key)}</Callout></Section>
         <Section id="sonderformen" title={c(data.sonderformen.title)} lead={c(data.sonderformen.lead)}><Cards items={data.sonderformen.items} lang={lang} /></Section>
         <Section id="begleitverletzungen" title={c(data.begleitverletzungen.title)} lead={c(data.begleitverletzungen.lead)}><CaseGallery title={c(data.begleitverletzungen.caseTitle)} image={{ ...data.begleitverletzungen.images[0], caption: c(data.begleitverletzungen.images[0].caption) }} radiopaediaUrl={data.begleitverletzungen.radiopaediaUrl} copy={copy} /><Cards items={data.begleitverletzungen.items} lang={lang} /><Callout label={c(data.caveLabel)} cave>{c(data.begleitverletzungen.cave)}</Callout></Section>
