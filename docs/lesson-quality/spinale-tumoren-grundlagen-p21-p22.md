@@ -1,12 +1,12 @@
 # Spinale Tumoren: Grundlagen nach Kompartiment — Wirbelsäule.pdf S. 21–22
 
-Stand: 19.10.2026. Begrenzte Lesson für die existierende Curriculum-ID `spinale-tumoren-grundlagen`; Route `/wirbelsaeule/tumoren/grundlagen`. Sie verwendet nur PDF-Seiten 21–22 (gedruckte Seiten 20–21). PDF-Seiten 23–24 wurden nicht geprüft oder zugeordnet.
+Stand: 23.10.2026. Begrenzte Lesson für die existierende Curriculum-ID `spinale-tumoren-grundlagen`; Route `/wirbelsaeule/tumoren/grundlagen`. Der verwandte Topic-Eintrag `wirbelmetastasen` ist jetzt mit dem Ivory-Vertebra-Abschnitt, einem MCQ und einer Flashcard verknüpft. Die Lesson verwendet nur PDF-Seiten 21–22 (gedruckte Seiten 20–21). PDF-Seiten 23–24 wurden nicht geprüft oder zugeordnet.
 
 ## Lernziel und Schnitt
 
 Lernende sollen zunächst zwischen einer sklerotischen Wirbelkörperveränderung und einer Raumforderung im Spinalkanal unterscheiden, die in der PDF genannte Lage relativ zu Myelon/Duralsack beschreiben und eine Lagebeschreibung nicht als Histologie ausgeben.
 
-Die drei Kapitel folgen der Quelle: (1) intramedullär, intradural-extramedullär und extradural (PDF S. 22); (2) Ivory-Vertebra und ausdrücklich im PDF benannte Differenziale (PDF S. 21); (3) ausgewählte MRT-Stichwörter zu den auf S. 22 aufgeführten Läsionen. Ein Selbstcheck prüft nur die Lagekategorie. Keine separaten Lektionen zu den Einzelentitäten werden beansprucht.
+Die drei Kapitel folgen der Quelle: (1) intramedullär, intradural-extramedullär und extradural (PDF S. 22); (2) Ivory-Vertebra und ausdrücklich im PDF benannte Differenziale (PDF S. 21); (3) ausgewählte MRT-Stichwörter zu den auf S. 22 aufgeführten Läsionen. Der eingebettete Selbstcheck prüft die Lagekategorie; ein separates MCQ und eine Flashcard verknüpfen nun das Sklerosemuster mit dem destruktiven extraduralen Metastasenmuster. Keine separaten Lektionen zu den Einzelentitäten werden beansprucht.
 
 ## Abdeckungsledger
 

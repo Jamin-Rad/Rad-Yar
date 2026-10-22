@@ -1507,7 +1507,7 @@ export const CURRICULUM = [
           { id: 'osteochondrom-ws', title: { de: 'Osteochondrom', en: 'Osteochondroma', fa: 'استئوکندروما' }, group: ['Extradurale Tumoren'], tags: ['CT','MRT'], diff: 2 },
           { id: 'riesenzelltumor-ws', title: { de: 'Riesenzelltumor', en: 'Giant Cell Tumour', fa: 'تومور سلول غول‌آسا' }, group: ['Extradurale Tumoren'], tags: ['CT','MRT'], diff: 3 },
           { id: 'chordom-ws', title: { de: 'Chordom', en: 'Chordoma', fa: 'کوردوما' }, group: ['Extradurale Tumoren'], tags: ['CT','MRT'], diff: 3 },
-          { id: 'wirbelmetastasen', title: { de: 'Wirbelmetastasen', en: 'Vertebral Metastases', fa: 'متاستاز مهره‌ای' }, group: ['Extradurale Tumoren'], tags: ['CT','MRT'], diff: 2 },
+          { id: 'wirbelmetastasen', title: { de: 'Wirbelmetastasen', en: 'Vertebral Metastases', fa: 'متاستاز مهره‌ای' }, group: ['Extradurale Tumoren'], tags: ['CT','MRT'], diff: 2, link: '/wirbelsaeule/tumoren/grundlagen#ivory-vertebra', mcqLink: '/ueben/quiz?fach=msk&n=1&themen=wirbelmetastasen', flashcardLink: '/flashcards/wirbelmetastasen', ready: true, inProgress: true, updatedAt: '2026-10-23' },
           { id: 'plasmozytom-myelom-ws', title: { de: 'Plasmozytom / Multiples Myelom', en: 'Plasmacytoma / Multiple Myeloma', fa: 'پلاسماسیتوما / میلوم متعدد' }, group: ['Extradurale Tumoren'], tags: ['CT','MRT'], diff: 3 },
           { id: 'lch-wirbelsaeule', title: { de: 'Langerhans-Zell-Histiozytose', en: 'Langerhans Cell Histiocytosis', fa: 'هیستیوسیتوز سلول لانگرهانس' }, group: ['Extradurale Tumoren'], tags: ['Rö','CT','MRT'], diff: 3 },
           { id: 'meningeom-spinal', title: { de: 'Meningeom', en: 'Meningioma', fa: 'مننژیوم' }, group: ['Intradural-extramedulläre Tumoren'], tags: ['MRT'], diff: 3 },

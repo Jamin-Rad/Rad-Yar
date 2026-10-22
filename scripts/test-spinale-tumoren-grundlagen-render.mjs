@@ -5,6 +5,9 @@ import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import { SPINALE_TUMOREN_GRUNDLAGEN as lesson } from '../data/spinaleTumorenGrundlagen.js'
+import { WIRBELMETASTASEN_QUESTIONS, WIRBELMETASTASEN_FLASHCARDS } from '../data/wirbelmetastasenAssessment.js'
+import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
+import { FLASHCARDS, FLASHCARD_TOPICS } from '../data/flashcards.js'
 
 const require = createRequire(import.meta.url)
 let activeLanguage = 'de'
@@ -40,8 +43,18 @@ const assertLocalized = value => {
   Object.values(value).forEach(assertLocalized)
 }
 assertLocalized(lesson)
+assertLocalized(WIRBELMETASTASEN_FLASHCARDS)
 assert.equal(lesson.id, 'spinale-tumoren-grundlagen')
 assert.equal(lesson.check.answerIndex, 0)
+for (const lang of ['de', 'en', 'fa']) {
+  const question = WIRBELMETASTASEN_QUESTIONS.find(item => item.id === `wirbelmetastasen-${lang}-ivory-vs-destructive`)
+  assert.ok(question && QUESTION_BANK[lang].some(item => item.id === question.id), `${lang} vertebral-metastasis MCQ is registered`)
+  assert.equal(question.options.length, 4)
+}
+assert.ok(MCQ_TOPIC_GROUPS.some(group => group.topics.some(topic => topic.id === 'wirbelmetastasen')))
+assert.ok(WIRBELMETASTASEN_FLASHCARDS.length === 1 && WIRBELMETASTASEN_FLASHCARDS[0].topicId === 'wirbelmetastasen')
+assert.ok(FLASHCARD_TOPICS.some(topic => topic.id === 'wirbelmetastasen') && FLASHCARDS.some(card => card.topicId === 'wirbelmetastasen'))
+assert.match(fs.readFileSync('data/curriculum.js', 'utf8'), /id: 'wirbelmetastasen'[^\n]*link: '\/wirbelsaeule\/tumoren\/grundlagen#ivory-vertebra'[^\n]*mcqLink: '[^']*themen=wirbelmetastasen'[^\n]*flashcardLink: '\/flashcards\/wirbelmetastasen'/)
 const allSignalRows = lesson.chapters.find(chapter => chapter.id === 'signal-patterns').rows
 for (const name of ['Astrozytom', 'Ependymom', 'Meningeom', 'Schwannom', 'Epidermoidzyste', 'Metastase', 'Epiduralabszess']) {
   assert.ok(allSignalRows.some(([label]) => label.de.includes(name)), `missing PDF p.22 descriptor row: ${name}`)
