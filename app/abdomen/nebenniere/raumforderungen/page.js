@@ -52,9 +52,12 @@ const C = {
     pheoAlt: 'Vierphasige CT-Falltafel aus Abdomen.pdf mit markierter linker Nebennierenraumforderung: natives CT, arterielle, portalvenöse und späte Phase.',
     pheoCaption: 'Falltafel aus Abdomen.pdf, PDF-Seite 63 (Druckseite 62). Gezeigt wird der konkrete Phasenverlauf dieser Läsion, keine eindeutige Diagnose durch eine einzelne Phase.',
     neuroTitle: 'Neuroblastom: den Ursprung von der Niere abgrenzen',
-    neuro: 'Das PDF ordnet das Neuroblastom dem sympathischen Nervensystem zu, meist der Nebenniere oder paraspinalen Ganglien. Eine klare Grenze zur Niere mit Verdrängung statt Nierenursprung, Mittellinienüberschreitung und Gefäßummauerung sprechen im passenden Kontext für einen Nebennieren-/sympathischen Ursprung. Das PDF nennt Verkalkungen als möglichen CT-Befund; die gezeigten MRT-Bilder belegen dies nicht. Spinalkanalbefall und retroperitoneale Lymphknoten- oder Knochenmetastasen sind mögliche Ausbreitungsbefunde. Das PDF-MRT-Paar ist nicht nach Sequenz beschriftet; daher wird keine Sequenz benannt.',
+    neuro: [
+      'Neuroblastome entstehen entlang des sympathischen Nervensystems, häufig in der Nebenniere oder in paraspinalen Ganglien. Eine sichtbare Abgrenzung zur Niere mit Verdrängung stützt einen extrarenalen Ursprung. Mittellinienüberschreitung und Gefäßummauerung sind zusätzliche Musterhinweise; die Ummauerung allein beweist keine Invasion der Gefäßwand.',
+      'Das PDF nennt Verkalkungen als möglichen CT-Befund; sie sind in diesem MRT-Paar nicht dargestellt. Ein möglicher Spinalkanalbefall sowie retroperitoneale Lymphknoten- oder Knochenmetastasen beschreiben mögliche Ausbreitungsorte. Die Quelle benennt die MRT-Sequenzen nicht.',
+    ],
     neuroAlt: 'Zwei axiale MRT-Bilder aus Abdomen.pdf, Seite 64: große markierte linke Oberbauchraumforderung, die die Mittellinie überschreitet und Gefäße umgibt; Sequenz nicht angegeben.',
-    neuroCaption: 'MRT-Paar aus Abdomen.pdf, PDF-Seite 64 (Druckseite 63); die Sequenzen sind in der Quelle nicht angegeben. Zur Nierenabgrenzung siehe auch die Lektion zum Nephroblastom.',
+    neuroCaption: 'Fallbeispiel aus Abdomen.pdf, PDF-Seite 64 (Druckseite 63): linksseitige zystisch-solide Raumforderung mit Mittellinienüberschreitung, Verdrängung der linken Niere und Ummauerung der Gefäße; Aorta und V. cava sind nach ventral verlagert. Die MRT-Sequenzen sind nicht angegeben.',
     wilmsLink: 'Nephroblastom (Wilms-Tumor): Nierenursprung und Claw sign',
     caveTitle: 'Grenzen der Quelle',
     cave: 'Das PDF enthält ältere Managementgrafiken, Washout-Schwellen und historische epidemiologische Faustregeln. Diese Angaben werden nicht als aktuelle Empfehlungen übernommen. Auf PDF-Seite 62 steht außerdem nur ein kurzer Hinweis: Nebennierenzysten sind selten und können auch ohne soliden Anteil neoplastisch sein; das ist keine vollständige Klassifikation oder Managementempfehlung. Bildgebung allein bestimmt keine hormonelle Aktivität: Eine relevante klinische und biochemische Abklärung gehört in den ärztlichen Kontext (Endocrine Society PPGL guideline, 2014). Nach ESE/ENSAT 2023 gelten homogene Nebenniereninzidentalome mit ≤10 HU in der Nativ-CT als benigne und benötigen unabhängig von der Größe keine weitere Bildgebung. Bei anderen Befunden werden Homogenität, native Dichte, Größe und klinischer Kontext zusammen bewertet; diese Lektion bildet keinen vollständigen Managementalgorithmus ab.',
@@ -99,9 +102,12 @@ const C = {
     pheoAlt: 'Four-phase CT case panel from Abdomen.pdf showing a marked left adrenal mass: unenhanced, arterial, portal venous and delayed phases.',
     pheoCaption: 'Case panel from Abdomen.pdf, PDF page 63 (printed page 62). It shows this lesion’s phase pattern, not a definitive diagnosis from any single phase.',
     neuroTitle: 'Neuroblastoma: distinguish its origin from the kidney',
-    neuro: 'The PDF places neuroblastoma in the sympathetic nervous system, usually the adrenal gland or paraspinal ganglia. A clear plane from the kidney with displacement rather than renal origin, midline extension and vascular encasement support an adrenal/sympathetic origin in the appropriate context. The PDF also notes calcification as a possible CT finding; the displayed MRI pair does not demonstrate it. Spinal canal involvement and retroperitoneal nodal or bone metastases are possible spread findings. The PDF MRI pair is not sequence-labelled, so no sequence is named here.',
+    neuro: [
+      'Neuroblastoma arises along the sympathetic nervous system, commonly in the adrenal gland or paraspinal ganglia. A visible plane from the kidney with displacement supports an extra-renal origin. Midline extension and vascular encasement are additional pattern clues; encasement alone does not prove vessel-wall invasion.',
+      'The PDF notes calcification as a possible CT finding; it is not shown in this MRI pair. Possible spinal canal involvement and retroperitoneal nodal or bone metastases describe potential sites of spread. The source does not identify the MRI sequences.',
+    ],
     neuroAlt: 'Two axial MRI images from Abdomen.pdf, page 64: a large marked left upper-abdominal mass crossing the midline and encasing vessels; sequence not specified.',
-    neuroCaption: 'MRI pair from Abdomen.pdf, PDF page 64 (printed page 63); the source does not identify the sequences. See also the nephroblastoma lesson for renal origin and the claw sign.',
+    neuroCaption: 'Case example from Abdomen.pdf, PDF page 64 (printed page 63): a left-sided cystic-solid mass crosses the midline, displaces the left kidney and encases vessels; the aorta and IVC are displaced anteriorly. MRI sequences are not specified.',
     wilmsLink: 'Nephroblastoma (Wilms tumour): renal origin and the claw sign',
     caveTitle: 'Limits of the source',
     cave: 'The PDF includes older management flowcharts, washout thresholds and historical epidemiological mnemonics. These are not carried over as current recommendations. PDF page 62 also briefly notes that adrenal cysts are rare and may be neoplastic even without a solid component; this is not a full classification or management pathway. Imaging alone does not establish hormonal activity: clinically relevant assessment, including biochemical evaluation, belongs in the clinical context (Endocrine Society PPGL guideline, 2014). Under the 2023 ESE/ENSAT guideline, homogeneous adrenal incidentalomas with unenhanced CT attenuation ≤10 HU are benign and need no further imaging, irrespective of size. Other findings are assessed using homogeneity, unenhanced attenuation, size and clinical context together; this lesson does not provide a complete management algorithm.',
@@ -146,9 +152,12 @@ const C = {
     pheoAlt: 'مجموعه CT چهار فازی از صفحه ۶۳ Abdomen.pdf با توده مشخص‌شده آدرنال چپ: فاز بدون تزریق، شریانی، پورت و تأخیری.',
     pheoCaption: 'مجموعه موردی از Abdomen.pdf، صفحه ۶۳ فایل (صفحه چاپی ۶۲). الگوی فازی همین ضایعه را نشان می‌دهد، نه تشخیص قطعی بر پایه یک فاز.',
     neuroTitle: 'نوروبلاستوما: منشأ آن را از کلیه جدا کنید',
-    neuro: 'در PDF، نوروبلاستوما متعلق به دستگاه عصبی سمپاتیک و معمولاً برخاسته از آدرنال یا گانگلیون‌های پارااسپاینال است. مرز واضح با کلیه و جابه‌جایی آن به‌جای منشأ کلیوی، عبور از خط وسط و احاطه عروق در زمینه مناسب از منشأ آدرنال/سمپاتیک حمایت می‌کنند. PDF کلسیفیکاسیون را نیز به‌عنوان یافته احتمالی CT ذکر می‌کند؛ تصاویر MRI نمایش‌داده‌شده آن را نشان نمی‌دهند. درگیری کانال نخاعی و متاستاز غدد لنفاوی رتروپریتوئن یا استخوان ممکن است رخ دهد. دو تصویر MRI در PDF برچسب توالی ندارند و در اینجا نام توالی حدس زده نشده است.',
+    neuro: [
+      'نوروبلاستوما در امتداد دستگاه عصبی سمپاتیک ایجاد می‌شود و اغلب از آدرنال یا گانگلیون‌های پارااسپاینال منشأ می‌گیرد. وجود مرز قابل مشاهده با کلیه همراه با جابه‌جایی آن از منشأ خارج‌کلیوی حمایت می‌کند. عبور از خط وسط و احاطه عروق سرنخ‌های تکمیلی‌اند؛ احاطه عروق به‌تنهایی تهاجم به دیواره عروق را ثابت نمی‌کند.',
+      'PDF کلسیفیکاسیون را به‌عنوان یافته احتمالی CT ذکر می‌کند؛ این یافته در این جفت تصویر MRI نشان داده نشده است. درگیری احتمالی کانال نخاعی و متاستاز غدد لنفاوی رتروپریتوئن یا استخوان، محل‌های ممکن گسترش بیماری‌اند. منبع توالی‌های MRI را مشخص نمی‌کند.',
+    ],
     neuroAlt: 'دو تصویر MRI محوری از صفحه ۶۴ Abdomen.pdf: توده بزرگ مشخص‌شده در بخش فوقانی چپ شکم که از خط وسط عبور می‌کند و عروق را احاطه می‌کند؛ توالی مشخص نیست.',
-    neuroCaption: 'دو تصویر MRI از Abdomen.pdf، صفحه ۶۴ فایل (صفحه چاپی ۶۳)؛ توالی‌ها در منبع مشخص نشده‌اند. برای منشأ کلیوی و علامت چنگالی، درس نفروبلاستوما را نیز ببینید.',
+    neuroCaption: 'نمونه موردی از Abdomen.pdf، صفحه ۶۴ فایل (صفحه چاپی ۶۳): توده کیستیک-جامد چپ از خط وسط عبور می‌کند، کلیه چپ را جابه‌جا می‌کند و عروق را احاطه کرده است؛ آئورت و ورید اجوف تحتانی به جلو جابه‌جا شده‌اند. توالی‌های MRI مشخص نیستند.',
     wilmsLink: 'نفروبلاستوما (تومور ویلمز): منشأ کلیوی و علامت چنگالی',
     caveTitle: 'محدودیت‌های منبع',
     cave: 'PDF شامل فلوچارت‌های قدیمی مدیریت، آستانه‌های Washout و میان‌برهای تاریخی اپیدمیولوژیک است. این موارد به‌عنوان توصیه جاری منتقل نشده‌اند. صفحه ۶۲ PDF همچنین به‌اختصار می‌گوید کیست آدرنال نادر است و حتی بدون جزء جامد ممکن است نئوپلاستیک باشد؛ این اشاره طبقه‌بندی یا مسیر مدیریت کامل نیست. تصویربرداری به‌تنهایی فعالیت هورمونی را مشخص نمی‌کند؛ ارزیابی بالینی مرتبط، از جمله بررسی بیوشیمیایی، باید در زمینه بالینی انجام شود (راهنمای PPGL انجمن غدد درون‌ریز، ۲۰۱۴). بر اساس راهنمای ESE/ENSAT سال ۲۰۲۳، اینسی‌دنتالوم همگن آدرنال با دانسیته بدون تزریق ≤۱۰ HU خوش‌خیم است و مستقل از اندازه به تصویربرداری بیشتر نیاز ندارد. سایر یافته‌ها با ارزیابی هم‌زمان همگنی، دانسیته بدون تزریق، اندازه و زمینه بالینی بررسی می‌شوند؛ این درس الگوریتم کامل مدیریت را ارائه نمی‌کند.',
@@ -230,7 +239,7 @@ export default function AdrenalMassesPage() {
 
       <section className={styles.section}>
         <h3>{c.neuroTitle}</h3>
-        <p>{c.neuro}</p>
+        {c.neuro.map((paragraph, index) => <p key={`neuro-${index}`}>{paragraph}</p>)}
         <Figure src={images.neuroblastoma} width={1062} height={356} alt={c.neuroAlt} caption={c.neuroCaption} />
         <p className={styles.related}><a href="/abdomen/niere/wilms-tumour">{c.wilmsLink} →</a></p>
       </section>

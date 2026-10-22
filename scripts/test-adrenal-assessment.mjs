@@ -55,6 +55,11 @@ const adrenalAssessmentText = ['de', 'en', 'fa'].map(lang => {
   const cards = getCardsByTopic('nebennierenraumforderungen').flatMap(card => [card.front[lang], card.answer[lang], card.explanation[lang]])
   const check = [ADRENAL_LESSON_CHECK.question[lang], ...ADRENAL_LESSON_CHECK.options.map(option => option[lang]), ADRENAL_LESSON_CHECK.explanation[lang]]
   const allText = [...questions.flatMap(question => [question.question, ...question.options.map(option => option.text), question.explanation]), ...cards, ...check].join(' ')
+  const neuroCard = getCardsByTopic('nebennierenraumforderungen').find(card => card.id.endsWith('-neuroblastoma-localisation'))
+  assert.ok(neuroCard, `${lang}: neuroblastoma localization card exists`)
+  if (lang === 'de') assert.match(neuroCard.explanation[lang], /sichtbare Abgrenzung mit Verdrängung der Niere.*Gefäßummauerung ist nicht gleichbedeutend mit Gefäßwandinvasion/s)
+  if (lang === 'en') assert.match(neuroCard.explanation[lang], /visible plane with kidney displacement.*Vascular encasement is not the same as vessel-wall invasion/s)
+  if (lang === 'fa') assert.match(neuroCard.explanation[lang], /مرز قابل مشاهده همراه با جابه‌جایی کلیه.*احاطه عروق به‌معنای تهاجم به دیواره عروق نیست/s)
   const pheoId = `adrenal-pheochromocytoma-washout-${lang}-01`
   const pheoQuestion = questions.find(question => question.id === pheoId)
   assert.ok(pheoQuestion, `${lang}: pheochromocytoma washout MCQ is registered`)
@@ -82,7 +87,16 @@ for (const phrase of [
   'متاستاز پرعروق نیز ممکن است ظاهر مشابهی داشته باشد',
   'Verkalkungen als möglichen CT-Befund',
   'calcification as a possible CT finding',
-  'کلسیفیکاسیون را نیز به‌عنوان یافته احتمالی CT ذکر می‌کند',
+  'PDF کلسیفیکاسیون را به‌عنوان یافته احتمالی CT ذکر می‌کند',
+  'Eine sichtbare Abgrenzung zur Niere mit Verdrängung stützt einen extrarenalen Ursprung',
+  'A visible plane from the kidney with displacement supports an extra-renal origin',
+  'وجود مرز قابل مشاهده با کلیه همراه با جابه‌جایی آن از منشأ خارج‌کلیوی حمایت می‌کند',
+  'die Ummauerung allein beweist keine Invasion der Gefäßwand',
+  'encasement alone does not prove vessel-wall invasion',
+  'احاطه عروق به‌تنهایی تهاجم به دیواره عروق را ثابت نمی‌کند',
+  'Die Quelle benennt die MRT-Sequenzen nicht',
+  'The source does not identify the MRI sequences',
+  'منبع توالی‌های MRI را مشخص نمی‌کند',
   'Nebennierenzysten sind selten und können auch ohne soliden Anteil neoplastisch sein',
   'adrenal cysts are rare and may be neoplastic even without a solid component',
   'کیست آدرنال نادر است و حتی بدون جزء جامد ممکن است نئوپلاستیک باشد',

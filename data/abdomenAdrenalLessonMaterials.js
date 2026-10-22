@@ -107,7 +107,7 @@ const cards = [
     category: L('Neuroblastom', 'Neuroblastoma', 'نوروبلاستوما'),
     front: L('Welche Bildbeziehungen stützen bei einer kindlichen Raumforderung einen sympathoadrenalen Ursprung?', 'Which imaging relationships support a sympathoadrenal origin in a child’s mass?', 'کدام روابط تصویری در توده کودک از منشأ سمپاتوآدرنال حمایت می‌کنند؟'),
     answer: L('Verdrängung der Niere, Mittellinienüberschreitung und Gefäßummauerung im Gesamtmuster.', 'Displacement of the kidney, midline crossing and vascular encasement in the overall pattern.', 'جابجایی کلیه، عبور از خط وسط و احاطه عروق در الگوی کلی.'),
-    explanation: L('Diese Zeichen stützen die Einordnung im passenden Kontext, sind aber keine isolierten Beweise. Sequenzen des Quell-MRT sind nicht dokumentiert.', 'These signs support assessment in context but are not standalone proof. The source MRI sequences are not documented.', 'این نشانه‌ها در زمینه مناسب به ارزیابی کمک می‌کنند، اما به‌تنهایی اثبات‌کننده نیستند. توالی‌های MRI منبع ثبت نشده‌اند.'),
+    explanation: L('Eine sichtbare Abgrenzung mit Verdrängung der Niere stützt einen extrarenalen Ursprung. Gefäßummauerung ist nicht gleichbedeutend mit Gefäßwandinvasion; kein Einzelzeichen beweist die Diagnose. Sequenzen des Quell-MRT sind nicht dokumentiert.', 'A visible plane with kidney displacement supports an extra-renal origin. Vascular encasement is not the same as vessel-wall invasion; no single sign proves the diagnosis. The source MRI sequences are not documented.', 'مرز قابل مشاهده همراه با جابه‌جایی کلیه از منشأ خارج‌کلیوی حمایت می‌کند. احاطه عروق به‌معنای تهاجم به دیواره عروق نیست؛ هیچ نشانه‌ای به‌تنهایی تشخیص را ثابت نمی‌کند. توالی‌های MRI منبع ثبت نشده‌اند.'),
   },
 ]
 
