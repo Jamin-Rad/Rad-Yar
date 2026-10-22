@@ -14,7 +14,8 @@ retrieval question.
 1. Start with the question each quantity can answer.
 2. Separate physical energy deposition (Gy) from weighted protection quantities (Sv).
 3. Read CTDIvol, DLP and KAP/DFP as output/documentation quantities with limits.
-4. Retrieve the consequence of a changed scan length without inferring individual risk.
+4. Distinguish incident from entrance-surface air kerma, including backscatter and the limits of estimating skin dose from KAP/DFP.
+5. Retrieve the consequence of a changed scan length without inferring individual risk.
 
 ## Source coverage ledger
 
@@ -25,7 +26,7 @@ retrieval question.
 | D-03 | Technik.pdf, PDF p.5 / printed p.4 | Organ dose and radiation weighting examples | Core | The lesson explains H_T conceptually. Numerical weighting factors and examples are deliberately omitted; the PDF's examples are unnecessary for the learning objective and would require expanded validation. |
 | D-04 | Technik.pdf, PDF pp.5–6 / printed pp.4–5 | Effective dose is a weighted sum across tissues and supports broad comparisons | Core | Included with explicit reference-model limitation. Individual risk/prognostic interpretation is qualified using ICRP 147. |
 | D-05 | Technik.pdf, PDF p.6 / printed p.5 | CT effective-dose estimate from DLP and conversion factors | Supporting / context-dependent | The estimate's existence is stated as model-dependent in prose; source-page numerical conversion factors and patient-specific inference are omitted. |
-| D-06 | Technik.pdf, PDF p.7 / printed p.6 | Entrance/skin dose and KAP/DFP in projection imaging | Core subset | KAP/DAP/DFP included as an output/documentation quantity; entrance/skin dose definitions and measurement methods are deferred to a separate dosimetry lesson. |
+| D-06 | Technik.pdf, PDF p.7 / printed p.6 | Entrance/skin dose and KAP/DFP in projection imaging | Core, terminology qualified | The PDF calls the skin-entry quantity “Oberflächendosis/ESD” and describes inclusion of backscatter plus TLD or DFP-based assessment. Because this terminology can conflate absorbed skin dose with entrance-surface air kerma, the lesson uses the IAEA-defined measurable `entrance-surface air kerma` Kₑ and labels it explicitly; it does not claim Kₑ is identical to absorbed skin dose. Kᵢ excludes patient backscatter; Kₑ = Kᵢ × B, where B is a backscatter factor dependent on beam quality/field. Direct TLD assessment and indirect estimation are included. KAP/DFP alone is explicitly not an individual skin dose. |
 | D-07 | Technik.pdf, PDF p.8 / printed p.7 | CTDIvol is a scanner quantity for protocol/volume and independent of scan length; DLP = CTDIvol × length | Core | Included; standardized phantom reference and individual-organ limitation made explicit per AAPM reports. Inline assessment tests the scan-length relationship and guards against patient-dose inference. |
 | D-08 | Technik.pdf, PDF p.9 / printed p.8 | Personnel dosimeters and register number | Adjacent, excluded | Occupational monitoring is a separate learning objective and not mixed with patient imaging dose quantities. This page is not claimed covered. |
 | D-09 | Technik.pdf, PDF p.6 / printed p.5 | Effective-dose comparison table (exam and background values) | Context-sensitive, excluded | Not reproduced: values are protocol/population/context dependent and not needed for the definitions objective. |
@@ -48,12 +49,21 @@ Shared terms in DE/EN/FA: Energiedosis / absorbed dose / دوز جذب‌شده 
 طول اسکن; Dosis-Längen-Produkt / dose-length product / محصول دوزـطول. DLP is
 kept in Latin letters across languages. KAP/DAP and German DFP are retained as
 aliases, with the expansion translated in the lesson.
+Incident air kerma Kᵢ / entrance-surface air kerma Kₑ are kept in English
+alongside symbols because German and Persian usage varies; Persian explanations
+define each quantity and preserve Kᵢ/Kₑ in Latin notation.
 
 ## Sources and scientific limits
 
 - IAEA Human Health Series No. 42, *Establishing and Improving Interventional
   Radiology* (2023), §5.2 (KAP/DFP definition; PDF p.53 / printed p.41):
   https://www-pub.iaea.org/MTCD/Publications/PDF/PUB1983_web.pdf
+- IAEA Technical Reports Series No. 457, *Dosimetry in Diagnostic Radiology: An
+  International Code of Practice* (2007), §§8.4.3.3–8.4.3.4, PDF pp.137–138:
+  incident and entrance-surface air kerma, direct TLD assessment and indirect
+  estimation using backscatter factors; §8.4.3.4 gives Kₑ = Kᵢ × B. This
+  source is used to disambiguate the PDF's broader “ESD/Oberflächendosis” label.
+  https://www-pub.iaea.org/MTCD/publications/PDF/TRS457_web.pdf
 - ICRP Publication 103, *The 2007 Recommendations of the International Commission
   on Radiological Protection* (2007), definitions of absorbed, equivalent and
   effective dose: https://www.icrp.org/publication.asp?id=ICRP+Publication+103
@@ -67,7 +77,7 @@ aliases, with the expansion translated in the lesson.
 
 ## Verification
 
-- `node scripts/test-technik-dosimetrie-render.mjs` — PASS (23 localized content units; route copy/props, language/RTL metadata, source links, assessment options, exact curriculum mapping and schematic metadata). The harness stubs `StandardLessonShell` and `LessonSection`; it does not verify the live shared-shell navigation or source-panel rendering.
+- `node scripts/test-technik-dosimetrie-render.mjs` — PASS (localized content units are counted by the test; route copy/props, language/RTL metadata, source links, assessment options, exact curriculum mapping and schematic metadata). The harness stubs `StandardLessonShell` and `LessonSection`; it does not verify the live shared-shell navigation or source-panel rendering.
 - `git diff --check` — PASS after source citation correction.
-- Independent bounded source/content/language/assessment review: PASS; the IAEA source title/scope and Persian absorbed-dose wording were corrected and rechecked.
+- Independent bounded source/content/language/assessment review: pending final pass. Reviewer caught and prompted correction of an erroneous additive diagram; it now shows Kₑ = Kᵢ × B. The PDF/IAEA terminology distinction is recorded above.
 - Browser interaction/responsive/RTL review and specialist signoff — pending.

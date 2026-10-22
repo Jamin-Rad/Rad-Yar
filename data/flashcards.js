@@ -10,6 +10,7 @@ import { BRAIN_METASTASES_FLASHCARDS, BRAIN_METASTASES_FLASHCARD_TOPIC } from '.
 import { HEMANGIOMA_FLASHCARDS } from './haemangiomaTraining'
 import { HEPATIC_ANGIOMYOLIPOMA_FLASHCARDS, HEPATIC_ANGIOMYOLIPOMA_FLASHCARD_TOPIC } from './hepaticAngiomyolipomaLearning'
 import { PSC_MRCP_FLASHCARDS, PSC_MRCP_FLASHCARD_TOPIC } from './pscMrcpLearning'
+import { TECHNIK_ENTRANCE_KERMA_FLASHCARDS, TECHNIK_ENTRANCE_KERMA_FLASHCARD_TOPIC } from './technikEntranceKermaAssessment'
 // Auto-generated RadYar flashcard data.
 
 import { CONTRAST_FLASHCARDS, CONTRAST_FLASHCARD_TOPICS } from './contrastMedia'
@@ -353,6 +354,7 @@ export const FLASHCARD_TOPICS = [
     }
   },
   KNIE_LIGAMENTE_FLASHCARD_TOPIC,
+  TECHNIK_ENTRANCE_KERMA_FLASHCARD_TOPIC,
   {
     "id": "haemangiom",
     "area": "Abdomen",
@@ -3719,6 +3721,7 @@ export const FLASHCARDS = [
   ...TECHNIK_BOLD_FLASHCARDS,
   ...TECHNIK_CINE_FLASHCARDS,
   ...TECHNIK_FLUORO_ZOOM_FLASHCARDS,
+  ...TECHNIK_ENTRANCE_KERMA_FLASHCARDS,
   ...TECHNIK_ROENTGEN_FLASHCARDS,
   { id: 'lebermetastasen-01-phasenvergleich', topicId: 'lebermetastasen', category: 'Abdomen', front: { de: 'Welche Phasen helfen, die Vaskularität einer Leberläsion einzuordnen?', en: 'Which phases help classify the vascularity of a liver lesion?', fa: 'کدام فازها برای طبقه‌بندی عروق‌رسانی ضایعهٔ کبدی کمک می‌کنند؟' }, answer: { de: 'Vor allem die arterielle und portalvenöse Phase vergleichen; eine Spätphase nur berücksichtigen, wenn sie akquiriert wurde.', en: 'Compare the arterial and portal venous phases; consider a delayed phase only when it was acquired.', fa: 'فاز شریانی و پورت را مقایسه کنید؛ فاز تأخیری را فقط در صورت انجام‌شدن بررسی کنید.' }, explanation: { de: 'Das PDF zeigt unterschiedliche hypo- und hypervaskuläre Muster über mehrere Kontrastphasen. Einzelbilder reichen nicht für die Einordnung.', en: 'The PDF shows different hypo- and hypervascular patterns across contrast phases. A single image is insufficient for classification.', fa: 'PDF الگوهای کم‌عروق و پرعروق را در چند فاز تزریق نشان می‌دهد. یک تصویر منفرد برای طبقه‌بندی کافی نیست.' }, diagram: { de: 'arteriell → portalvenös → ggf. spät', en: 'arterial → portal venous → delayed if acquired', fa: 'شریانی ← پورت ← در صورت انجام، تأخیری' } },
   ...STEATOSIS_FLASHCARDS,
