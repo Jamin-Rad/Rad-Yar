@@ -59,6 +59,9 @@ for (const locale of ['de', 'en', 'fa']) {
   assert.ok(html.includes(locale === 'de' ? 'häufig mono- oder polyostotisch' : locale === 'en' ? 'often monostotic or polyostotic' : 'اغلب تک‌استخوانی یا چنداستخوانی'), `${locale} source-described focality distribution`)
   assert.ok(html.includes(locale === 'de' ? 'Becken, Wirbelsäule, Femur und Schädel' : locale === 'en' ? 'pelvis, spine, femur and skull' : 'لگن، ستون فقرات، فمور و جمجمه'), `${locale} common sites listed in the PDF`)
   assert.ok(html.includes(locale === 'de' ? 'keine Rangfolge' : locale === 'en' ? 'not a ranked list' : 'رتبه‌بندی نیست'), `${locale} avoids overstating the source site list`)
+  assert.ok(html.includes(locale === 'de' ? 'können im selben Knochen nebeneinander vorkommen' : locale === 'en' ? 'can coexist in the same bone' : 'ممکن است در یک استخوان هم‌زمان دیده شوند'), `${locale} describes phases as coexisting parts of a continuum`)
+  assert.ok(html.includes(locale === 'de' ? 'nicht für sich pathognomonisch' : locale === 'en' ? 'No single feature is pathognomonic on its own' : 'به‌تنهایی پاتوگنومونیک نیست'), `${locale} avoids treating individual findings as pathognomonic`)
+  assert.ok(html.includes(locale === 'de' ? 'Positionspapier · 2024' : locale === 'en' ? 'position paper · 2024' : 'بیانیهٔ موضع‌گیری انجمن تخصصی · ۲۰۲۴'), `${locale} includes the updated clinical source`)
   for (const id of ['pattern', 'imaging', 'context', 'check', 'take-home']) assert.ok(html.includes(`id="${id}"`), `${locale} section ${id}`)
 }
 assert.ok(fs.existsSync('public/educational/morbus-paget/hero.svg'), 'hero asset exists')
