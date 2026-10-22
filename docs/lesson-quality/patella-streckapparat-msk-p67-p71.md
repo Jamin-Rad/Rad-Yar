@@ -80,4 +80,8 @@ risk estimates, or treatment advice are imported.
 - Independent review: content and technical/editorial gates PASS. Visual/language
   delta PASS after removing Saupe material from the crop and translating the
   comparison as HTML. Browser/device and interaction evidence remain pending.
+- The exact curriculum topic now links to two four-option DE/EN/FA MCQs and two
+  localized flashcards on the bipartite-patella differential and the transient
+  lateral-dislocation contusion pattern. The lesson shell exposes both practice
+  actions; the topic remains `inProgress` pending broader gates.
 - Scientific review/sign-off and publication status: pending coordinator/owner.

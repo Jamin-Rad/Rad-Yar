@@ -41,7 +41,7 @@ export default function PatellaStreckapparatPage() {
   const figure = (src, alt, caption, width, height) => <figure className={styles.figure}><Image src={src} width={width} height={height} alt={t(alt)} sizes="(max-width: 760px) 100vw, 760px"/><figcaption>{t(caption)}</figcaption></figure>
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={t(lesson.title)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: langHref('/') }, { label: t(L('MSK', 'MSK', 'عضلانی‌اسکلتی')), href: langHref('/lernen/msk') }, { label: t(lesson.title) }]}
-    sections={sections} labels={Object.fromEntries(Object.entries(LABELS).map(([key, value]) => [key, t(value)]))} renderIcon={id => <Icon id={id}/>} actions={{}}
+    sections={sections} labels={Object.fromEntries(Object.entries(LABELS).map(([key, value]) => [key, t(value)]))} renderIcon={id => <Icon id={id}/>} actions={{ mcq: { href: langHref('/ueben/quiz?fach=msk&n=8&themen=patella-streckapparat'), label: t(L('Übungsfragen', 'Practice questions', 'سؤالات تمرینی')) }, flashcards: { href: langHref('/flashcards/patella-streckapparat'), label: t(L('Flashkarten', 'Flashcards', 'فلش‌کارت‌ها')) } }}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.hero, heroImageOpacity: .85, accent: '#6aabc1', accentStrong: '#27576b', accentSoft: '#e7f1f4', secondary: '#d8a36f', secondaryStrong: '#80552d', heroBase: '#203746' }}
     heroImageAlt={t(lesson.heroAlt)} className={styles.page}
     sources={<LessonSources title={t(LABELS.sources)} items={sources} note={t(lesson.scope)}/>}
