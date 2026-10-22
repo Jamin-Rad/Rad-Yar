@@ -14,7 +14,7 @@
 | Claim ID | Source | Essential point | Lesson location | Status / boundary |
 |---|---|---|---|---|
 | MCB-21-01 | MSK.pdf, physical p.21, printed p.20 | Bennett: intra-articular oblique fracture, two-fragment pattern | `muster`, `vergleich`, self-check feedback, summary | Included in DE/EN/FA |
-| MCB-21-02 | MSK.pdf, physical p.21, printed p.20 | Small ulnopalmar fragment remains attached to trapezium through anterior oblique ligament; shaft displaced radial/dorsal/proximal by APL | `muster` | Included in DE/EN/FA; direction and mechanism are source wording |
+| MCB-21-02 | MSK.pdf, physical p.21, printed p.20; AO Surgery Reference | Small ulnopalmar fragment remains attached to trapezium through anterior oblique ligament; shaft is displaced radial/dorsal, while APL displaces the first metacarpal proximally and adductor pollicis adducts/supinates the remainder | `muster` | PDF's bundled attribution of all directions to APL was corrected against AO. DE/EN/FA now separate observed radial/dorsal displacement from the distinct muscle actions. |
 | MCB-21-03 | MSK.pdf, physical p.21, printed p.20 | Rolando: intra-articular comminuted fracture, often T/Y-shaped, with three main fragments (shaft, ulnar, radial) | `muster`, `vergleich`, assessment, summary | Included with “often” qualifier for shape |
 | MCB-21-04 | MSK.pdf, physical p.21, printed p.20 | Winterstein: simple fracture near base without joint involvement, usually transverse or oblique | `muster`, `vergleich`, assessment, summary | Included; “stable” and treatment statements from PDF deliberately omitted |
 | MCB-21-05 | MSK.pdf, physical p.21, Image310.jpg | Side-by-side illustrations labelled Bennett, Rolando, Winterstein | `vergleich` image | Inspected and included from user-provided PDF under project authorization; exact source/page caption retained; no Radiopaedia provenance or diagnostic modality claimed |
@@ -26,7 +26,7 @@
 - The route uses the maintained `StandardLessonShell` and CAA-oriented short chapters. There is no separate “Befund & Selbsttest” chapter; the retrieval question sits inside the classification task.
 - The base-pattern section has three plausible choices; the Boxer-fracture section has its own localized retrieval check. Both provide option-specific explanatory feedback in DE/EN/FA. A corresponding base-pattern MCQ remains registered for the exact curriculum tag and linked from the route.
 - No flashcards were added because the single bounded target is adequately assessed by the inline question and linked MCQ; no flashcard route is advertised.
-- Independent content/source/translation/visual/assessment review and corrective APL delta PASS. Browser matrix and specialist clinical sign-off remain pending. `inProgress` is intentional.
+- Independent content/source/translation/visual/assessment review identified MCB-SRC-01; the APL/adductor-pollicis mechanism attribution was corrected in DE/EN/FA against the [AO Surgery Reference](https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/thumb/metacarpal-bennett-fracture/definition). Delta review and browser matrix remain pending; specialist clinical sign-off remains open. `inProgress` is intentional.
 
 ## Boxer fracture extension — MSK.pdf p.24
 
