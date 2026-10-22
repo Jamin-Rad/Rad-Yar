@@ -51,7 +51,7 @@ The three-part SVG is an original code-native explanatory schematic, not a patie
 
 - Source map: independently checked against rendered source pages by the PDF mapper.
 - Focused SSR and assessment integration test: PASS — DE/EN/FA route render, RTL marker, chapter/table content, source labels, quiz and flashcard actions, question registration, source notes, and four localized cards.
-- MCQ bank audit: PASS — 709 questions and 18 cases per language; answer keys and option-specific explanations valid.
+- MCQ bank audit: PASS — 773 questions and 18 cases per language; answer keys and option-specific explanations valid (current audit rerun 2026-10-23).
 - Independent review: SRC/EDU/VIS/LNG/REV PASS; ASM PASS after the distractor-repair re-review. The reviewer inspected the rendered PDF pages and found the source ledger aligned to the included normal range and omitted overlapping stage bands.
 - UX: BLOCKED. A direct browser attempt returned `net::ERR_BLOCKED_BY_CLIENT`; responsive behavior, theme, keyboard and live RTL interactions remain unverified.
 - Scientific review by Dr. Zia and publication approval: pending.
