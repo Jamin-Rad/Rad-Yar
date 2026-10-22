@@ -223,6 +223,13 @@ export default function ContrastGroupPage({ groupId }) {
                 <span><i className={styles.ivRouteLegend} aria-hidden="true" />{localizeContrast({ de: 'IV: Kreislauf → Niere', en: 'IV: circulation → kidney', fa: 'وریدی: کلیه ← گردش خون' }, lang)}</span>
                 <span><i className={styles.iaRouteLegend} aria-hidden="true" />{localizeContrast({ de: 'IA-Erstpass: direkt zur Niere', en: 'IA first pass: direct to kidney', fa: 'عبور اول شریانی: کلیه ← مسیر مستقیم شریانی' }, lang)}</span>
               </div>
+            </figure> : groupId === 'mrt' ? <figure className={styles.heroVisual}>
+              <Image src="/educational/gadolinium-chelate.svg" alt={localizeContrast({ de: 'Konzeptschema: ein linearer Ligand umgibt Gadolinium offen; ein makrozyklischer Ligand bildet einen geschlossenen Ring. Nicht maßstabsgetreu und keine Molekülstruktur.', en: 'Concept schematic: a linear ligand loosely surrounds gadolinium, while a macrocyclic ligand forms a closed ring. Not to scale and not a molecular structure.', fa: 'طرح مفهومی: لیگاند خطی گادولینیوم را به‌صورت باز احاطه می‌کند و لیگاند ماکروسیکلیک حلقه‌ای بسته می‌سازد. مقیاس‌دار یا ساختار مولکولی دقیق نیست.' }, lang)} width={280} height={160} priority />
+              <figcaption>{localizeContrast({ de: 'Chelatgeometrie: offene Kette und geschlossener Ring', en: 'Chelate geometry: open chain and closed ring', fa: 'هندسهٔ شلات: زنجیرهٔ باز و حلقهٔ بسته' }, lang)}</figcaption>
+              <div className={styles.heroVisualLegend}>
+                <span><i className={styles.linearLegend} aria-hidden="true" />{localizeContrast({ de: 'Linear, schematisch', en: 'Linear, schematic', fa: 'خطی، شماتیک' }, lang)}</span>
+                <span><i className={styles.macrocyclicLegend} aria-hidden="true" />{localizeContrast({ de: 'Makrozyklisch, schematisch', en: 'Macrocyclic, schematic', fa: 'ماکروسیکلیک، شماتیک' }, lang)}</span>
+              </div>
             </figure> : null}
             <div className={styles.heroStats}>{lesson.stats.map(stat => (
               <div className={styles.heroStat} key={stat.value}><strong>{stat.value}</strong><span>{localizeContrast(stat.label, lang)}</span><small>{localizeContrast(stat.text, lang)}</small></div>

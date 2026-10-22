@@ -47,6 +47,9 @@
 .ivRouteLegend, .iaRouteLegend { width: 10px; height: 10px; flex: 0 0 10px; border-radius: 3px; }
 .ivRouteLegend { background: #0284c7; }
 .iaRouteLegend { background: #7c3aed; }
+.linearLegend, .macrocyclicLegend { width: 10px; height: 10px; flex: 0 0 10px; border-radius: 3px; }
+.linearLegend { background: #0ea5e9; }
+.macrocyclicLegend { background: #8b5cf6; }
 .heroVisual figcaption { color: var(--text-muted); font-size: 11px; font-weight: 750; line-height: 1.45; text-align: center; }
 .heroStats { display: grid; gap: 12px; }
 .heroStat { padding: 20px; border-radius: 24px; color: white; background: linear-gradient(135deg, #064e3b, #059669); box-shadow: 0 18px 40px rgba(5, 150, 105, .2); }
