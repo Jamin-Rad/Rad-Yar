@@ -42,6 +42,9 @@ Module._load = function (request, parent, isMain) {
 }
 
 const { default: Route } = require(path.join(root, 'app/abdomen/gi/ileus-volvulus/page.js'))
+const { QUESTION_BANK } = require(path.join(root, 'data/questions.js'))
+const { FLASHCARDS, getFlashcardTopic } = require(path.join(root, 'data/flashcards.js'))
+const { CURRICULUM } = require(path.join(root, 'data/curriculum.js'))
 for (const file of ['rid-232928-transverse.png', 'rid-232928-longitudinal.png']) {
   assert.ok(fs.statSync(path.join(root, 'public/educational/ileus-intussusception', file)).size > 100_000, `${file} exists and is non-empty`)
 }
@@ -59,4 +62,17 @@ for (const locale of ['de', 'en', 'fa']) {
   assert.ok(html.includes('rid-232928-longitudinal.png'), `${locale} renders longitudinal source image`)
   assert.ok(!html.includes('Befund &amp; Selbsttest'), `${locale} has no invented boilerplate chapter`)
 }
+for (const locale of ['de', 'en', 'fa']) {
+  const question = QUESTION_BANK[locale].find(item => item.id === `abdomen-intussusception-initial-imaging-${locale}-01`)
+  assert.ok(question, `${locale} has the exact-topic intussusception MCQ`)
+  assert.deepEqual(question.tags, ['intussusception'])
+  assert.equal(question.options.length, 4)
+  assert.equal(question.correct, 'A')
+}
+assert.equal(getFlashcardTopic('intussusception')?.href, '/flashcards/intussusception')
+assert.equal(FLASHCARDS.filter(card => card.topicId === 'intussusception').length, 1)
+const intussusceptionTopic = CURRICULUM.flatMap(subject => subject.kapitel || []).flatMap(chapter => chapter.themen || []).find(topic => topic.id === 'intussusception')
+assert.equal(intussusceptionTopic?.link, '/abdomen/gi/ileus-volvulus#intussusception')
+assert.match(intussusceptionTopic?.mcqLink || '', /themen=intussusception/)
+assert.equal(intussusceptionTopic?.flashcardLink, '/flashcards/intussusception')
 console.log('PASS: intussusception definition, age context, initial imaging and two case views render in DE/EN/FA')

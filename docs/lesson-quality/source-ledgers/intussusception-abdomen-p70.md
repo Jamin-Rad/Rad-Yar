@@ -27,7 +27,7 @@ Existing subsection retained: **Intussuszeption / Intussusception / اینتوس
 | A bowel segment invaginates into the following aboral segment | Abdomen.pdf, physical p.70 / printed p.69 | `#intussusception`, definition paragraph | Covered. Wording is concise and preserves the distal direction. |
 | Intussusception is common in infancy/children in the first/second year and is a common cause of ileus in childhood | Abdomen.pdf, physical p.70 / printed p.69 | `#intussusception`, age paragraph | Covered as the PDF's framing, with current age context added from RCH. |
 | Target/sandwich and pseudokidney are sonographic signs | Abdomen.pdf, physical p.70 / printed p.69 | `#intussusception`, two-view explanation and figures | The PDF names the signs but does not provide intussusception images. Real case views were added with attribution and frame provenance; the page's unrelated Fat Notch CT is excluded. |
-| Suspected pediatric intussusception: ultrasound is the initial imaging study | RCH Clinical Practice Guideline; ACR Appropriateness Criteria | `#intussusception`, modality paragraph | Supplementary, clinically material claim, checked against the cited sources. |
+| Suspected pediatric intussusception: ultrasound is the initial imaging study | RCH Clinical Practice Guideline; ACR Appropriateness Criteria | `#intussusception`, modality paragraph; MCQ `abdomen-intussusception-initial-imaging` | Supplementary, clinically material claim, checked against the cited sources. |
 | Age distribution: any age, most common 3 months–2 years, peak 4–9 months | RCH Clinical Practice Guideline | `#intussusception`, age paragraph | Supplementary. The displayed Radiopaedia case is 2 months old and captioned as younger than typical peak. |
 
 ## Visual and rights record
@@ -51,11 +51,11 @@ license document. Source case: https://radiopaedia.org/cases/232928.
 
 ## Assessment and exclusions
 
-No new MCQ or flashcard is added in this focused patch. Existing ileus assessment
-IDs remain unchanged; there is no exact small-bowel intussusception curriculum ID
-in the available registry, so the unrelated rectal `rektuminvagination` ID is not
-reused. Existing shared closed-loop and gallstone questions are outside this
-subsection's learning objective.
+The dedicated curriculum ID `intussusception` links to the exact lesson anchor,
+one four-option initial-imaging MCQ, and one three-language two-view flashcard.
+Both retrieval items are tagged to the exact topic; the existing ileus IDs and
+unrelated rectal `rektuminvagination` topic remain unchanged. The MCQ cites the
+PDF plus RCH/ACR sources; its distractors contrast initial imaging choices.
 
 This subsection does not teach reduction, lead points, management, complications,
 or adult intussusception. Do not infer their coverage from this entry.
@@ -78,6 +78,11 @@ or adult intussusception. Do not infer their coverage from this entry.
   not connect to the local server, so rendered layout, RTL and responsive UX
   remain unverified. Two other neighboring checks are stale or blocked by a
   missing module and were not changed in this focused patch.
-- Independent source, education, visual, language and assessment review passed
-  for this delta. UX remains blocked; scientific sign-off by Dr. Zia and release
-  approval remain separate and pending.
+- The first independent review found dedicated retrieval missing. This was fixed
+  by adding the exact-topic curriculum ID, MCQ and flashcard; a second independent
+  review passed SRC/EDU/VIS/LNG/ASM/REV for the delta. UX remains blocked for lack
+  of browser evidence; scientific sign-off by Dr. Zia and release approval remain
+  separate and pending.
+- Focused SSR/registry/link test and the registered assessment retrieval audit
+  passed after the addition (775 total MCQs; 41 registered questions; 48 exact
+  topic tags across DE/EN/FA).

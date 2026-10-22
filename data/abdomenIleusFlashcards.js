@@ -44,3 +44,25 @@ export const ILEUS_FLASHCARDS = cards.map((card, index) => ({
   id: `ileus-duenndarm-${String(index + 1).padStart(2, '0')}-${card.id}`,
   topicId: 'ileus-duenndarm',
 }))
+
+export const INTUSSUSCEPTION_FLASHCARD_TOPIC = {
+  id: 'intussusception',
+  area: 'Abdomen',
+  chapter: 'Gastrointestinaltrakt',
+  icon: 'Sono',
+  iconImage: '/fach/abdomen.png',
+  color: '#0e7490',
+  href: '/flashcards/intussusception',
+  title: L('Intussuszeption', 'Intussusception', 'اینتوساسپشن'),
+  subtitle: L('Sonografische Zeichen · zwei Ebenen', 'Sonographic signs · two planes', 'نشانه‌های سونوگرافی · دو صفحه'),
+}
+
+export const INTUSSUSCEPTION_FLASHCARDS = [{
+  id: 'intussusception-01-two-views',
+  topicId: 'intussusception',
+  category: L('Sonografie', 'Ultrasound', 'سونوگرافی'),
+  front: L('Welche Zeichen können dieselbe Intussuszeption in Quer- und Längsschnitt zeigen?', 'Which signs can show the same intussusception in transverse and longitudinal views?', 'کدام نشانه‌ها می‌توانند همان اینتوساسپشن را در برش عرضی و طولی نشان دهند؟'),
+  answer: L('Im Querschnitt das Ziel- oder Doughnut-Zeichen; im Längsschnitt das Pseudokidney- oder Sandwich-Zeichen.', 'The transverse view may show the target or doughnut sign; the longitudinal view may show the pseudokidney or sandwich sign.', 'در نمای عرضی ممکن است علامت هدف یا دونات دیده شود؛ در نمای طولی علامت شبه‌کلیه یا ساندویچی.'),
+  explanation: L('Die unterschiedlichen Namen beschreiben Ansichten desselben ineinandergeschobenen Darmsegments. Beide Ebenen gemeinsam beurteilen.', 'The different names describe views of the same telescoped bowel segment. Assess both planes together.', 'نام‌های متفاوت، نماهای گوناگون از همان بخش روده‌ای فرورفته در بخش دیگر را توصیف می‌کنند. هر دو صفحه را با هم ارزیابی کنید.'),
+  diagram: L('Querschnitt: Ziel / Doughnut · Längsschnitt: Pseudokidney / Sandwich', 'Transverse: target / doughnut · longitudinal: pseudokidney / sandwich', 'عرضی: هدف / دونات · طولی: شبه‌کلیه / ساندویچ'),
+}]
