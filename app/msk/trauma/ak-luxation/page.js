@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
 import InProgressBanner from '@/components/InProgressBanner'
+import LessonHero from '@/components/LessonHero'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
@@ -190,7 +191,7 @@ export default function AkLuxationPage() {
   }, [])
 
   return (
-    <main className={`${styles.page} ${styles.mskTraumaPage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+    <main className={`${styles.page} ${styles.mskTraumaPage} ${styles.akLuxationPage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
       <InProgressBanner lang={lang} />
 
       <header className={styles.header}>
@@ -204,8 +205,12 @@ export default function AkLuxationPage() {
         <div className={styles.hero}>
           <div className={styles.heroText}>
             <span className={styles.sourceBadge}>{D.sourceLabel}</span>
-            <h1>{c(D.title)}</h1>
-            <p>{c(D.definition)}</p>
+            <LessonHero
+              title={c(D.title)}
+              imageSrc={D.rockwood.illustrationSrc}
+              imageAlt={c(D.rockwood.illustrationAlt)}
+              lang={lang}
+            />
             <div className={styles.actions}>
               <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=msk&n=12&themen=ak-luxation&from=${encodeURIComponent(withLang(route))}`)}>🎯 {copy.mcq}</Link>
               <Link className={styles.actionBtn} href={withLang(`/flashcards/ak-luxation?from=${encodeURIComponent(withLang(route))}`)}>🧠 {copy.flash}</Link>
@@ -244,7 +249,7 @@ export default function AkLuxationPage() {
         <div className={styles.main}>
 
           {/* ANATOMIE */}
-          <Section id="anatomie" title={c(D.anatomie.title)} lead={c(D.anatomie.lead)}>
+          <Section id="anatomie" title={c(D.anatomie.title)} lead={`${c(D.definition)} ${c(D.anatomie.lead)}`}>
             <Cards items={D.anatomie.items} lang={lang} />
             <Callout label={c(D.keyLabel)}>{c(D.anatomie.key)}</Callout>
           </Section>

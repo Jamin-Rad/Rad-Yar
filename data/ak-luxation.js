@@ -82,9 +82,9 @@ export const AK_LUXATION_LESSON = {
       },
     ],
     key: L(
-      'CC-Bänder halten die Klavikula in der Vertikalen; AC-Bänder sichern sie horizontal. Erst bei Ruptur beider Systeme kommt es zur vollständigen Luxation (Rockwood ≥ III).',
-      'CC ligaments hold the clavicle vertically; AC ligaments secure it horizontally. Complete dislocation (Rockwood ≥ III) only occurs when both systems rupture.',
-      'رباط‌های CC کلاویکول را به صورت عمودی نگه می‌دارند؛ رباط‌های AC آن را به صورت افقی ثابت می‌کنند. لوکساسیون کامل (راک‌وود ≥ III) فقط هنگامی رخ می‌دهد که هر دو سیستم پاره شوند.'
+      'CC-Bänder tragen vor allem zur vertikalen, AC-Kapsel/Bänder zur horizontalen Stabilität bei. Das Rockwood-Muster ergibt sich aus Bandverletzung und Dislokationsrichtung; Typ III bedeutet eine Ruptur beider Bandgruppen.',
+      'CC ligaments primarily contribute to vertical stability, while the AC capsule/ligaments contribute to horizontal stability. Rockwood grading reflects ligament injury and displacement direction; Type III denotes rupture of both ligament groups.',
+      'رباط‌های CC عمدتاً در پایداری عمودی و کپسول/رباط‌های AC در پایداری افقی نقش دارند. درجه‌بندی راک‌وود بر اساس آسیب رباط‌ها و جهت جابجایی است؛ نوع III به پارگی هر دو گروه رباط اشاره دارد.'
     ),
   },
 
@@ -158,9 +158,9 @@ export const AK_LUXATION_LESSON = {
     ccdNote: {
       title: L('CCD-Messung', 'CCD Measurement', 'اندازه‌گیری CCD'),
       text: L(
-        'Die PDF nennt 11–13 mm als Orientierungsbereich; ein passender unabhängiger Normwertbeleg ist noch ausstehend. Technik und individuelle Varianz beachten und möglichst mit der Gegenseite vergleichen. Zur Zusatzklassifikation durch Belastungsaufnahmen ist die Evidenz widersprüchlich: Nordin et al. (online 2020, Ausgabe 2021; doi:10.1177/0284185120939270) fanden keinen signifikanten Klassifikationsgewinn; Ibrahim et al. (2015; doi:10.1016/j.injury.2015.06.028) berichteten einen Nutzen bilateraler gewichteter Aufnahmen.',
-        'The PDF gives 11–13 mm as an orienting range; an appropriate independent normative reference is still pending. Account for technique and individual variation, and compare with the other side when possible. Evidence on added classification from weighted views conflicts: Nordin et al. (online 2020, issue 2021; doi:10.1177/0284185120939270) found no significant classification gain, while Ibrahim et al. (2015; doi:10.1016/j.injury.2015.06.028) reported value from bilateral weighted views.',
-        'PDF محدوده ۱۱ تا ۱۳ میلی‌متر را به‌عنوان راهنما ذکر می‌کند؛ منبع مستقل و مناسب برای مقدار هنجار هنوز در انتظار بررسی است. تفاوت تکنیک و فردی را لحاظ کنید و در صورت امکان طرف مقابل را مقایسه کنید. شواهد ارزش افزوده نماهای وزنه‌دار برای طبقه‌بندی متناقض است: نوردین و همکاران (انتشار آنلاین ۲۰۲۰، شماره ۲۰۲۱؛ doi:10.1177/0284185120939270) بهبود معناداری در طبقه‌بندی نیافتند، اما ابراهیم و همکاران (۲۰۱۵؛ doi:10.1016/j.injury.2015.06.028) برای نماهای وزنه‌دار دوطرفه ارزش گزارش کردند.'
+      'Die PDF nennt 11–13 mm als Orientierungsbereich; publizierte radiologische Referenzen geben denselben Bereich an, weisen aber auf individuelle Varianz hin. Technik beachten und möglichst mit der Gegenseite vergleichen. Zur Zusatzklassifikation durch Belastungsaufnahmen ist die Evidenz widersprüchlich: Nordin et al. (online 2020, Ausgabe 2021; doi:10.1177/0284185120939270) fanden keinen signifikanten Klassifikationsgewinn; Ibrahim et al. (2015; doi:10.1016/j.injury.2015.06.028) berichteten einen Nutzen bilateraler gewichteter Aufnahmen. Die PDF-Angabe 10–15 kg pro Seite ist eine Quellangabe, keine Routineempfehlung; andere Referenzen nennen geringere Lasten.',
+      'The PDF gives 11–13 mm as an orienting range; published radiology references report the same range but note individual variation. Account for technique and compare with the other side when possible. Evidence on added classification from weighted views conflicts: Nordin et al. (online 2020, issue 2021; doi:10.1177/0284185120939270) found no significant classification gain, while Ibrahim et al. (2015; doi:10.1016/j.injury.2015.06.028) reported value from bilateral weighted views. The PDF’s 10–15 kg per-side load is a source-specific statement, not a routine recommendation; other references describe lower loads.',
+      'PDF محدوده ۱۱ تا ۱۳ میلی‌متر را به‌عنوان راهنما ذکر می‌کند؛ منابع منتشرشده رادیولوژی نیز همین محدوده را گزارش می‌کنند، اما به تفاوت فردی اشاره دارند. تکنیک را در نظر بگیرید و در صورت امکان طرف مقابل را مقایسه کنید. شواهد ارزش افزوده نماهای وزنه‌دار برای طبقه‌بندی متناقض است: نوردین و همکاران (انتشار آنلاین ۲۰۲۰، شماره ۲۰۲۱؛ doi:10.1177/0284185120939270) بهبود معناداری نیافتند، اما ابراهیم و همکاران (۲۰۱۵؛ doi:10.1016/j.injury.2015.06.028) برای نماهای وزنه‌دار دوطرفه ارزش گزارش کردند. بار ۱۰ تا ۱۵ کیلوگرم در هر طرف، نقل قول اختصاصی از PDF است و توصیه‌ای برای استفاده روتین نیست؛ منابع دیگر بار کمتری ذکر می‌کنند.'
       ),
     },
     caseTitle: L('Fallbeispiel Normal / Typ I – AP-Aufnahme (rID:48600)', 'Case: Normal / Type I – AP view (rID:48600)', 'مورد: طبیعی / نوع I – نمای AP (rID:48600)'),
@@ -176,9 +176,9 @@ export const AK_LUXATION_LESSON = {
       },
     ],
     cave: L(
-      'Typ IV (posteriore Dislokation) ist im AP-Bild oft unauffällig! Axiale Aufnahme ist obligat zum Ausschluss.',
-      'Type IV (posterior dislocation) is often inconspicuous on AP! Axial view is mandatory to exclude it.',
-      'نوع IV (جابجایی خلفی) در نمای AP اغلب قابل توجه نیست! نمای محوری برای رد آن اجباری است.'
+      'Eine posteriore Dislokation (Typ IV) kann im AP-Bild schwer erkennbar sein. Bei klinischem oder radiologischem Verdacht ergänzt eine axiale/axilläre Projektion die Abklärung.',
+      'Posterior displacement (Type IV) can be difficult to see on the AP view. If clinically or radiographically suspected, add an axial/axillary projection for assessment.',
+      'جابجایی خلفی (نوع IV) ممکن است در نمای AP به‌سختی دیده شود. در صورت شک بالینی یا رادیوگرافیک، نمای محوری/آگزیلاری را برای ارزیابی اضافه کنید.'
     ),
   },
 
@@ -191,9 +191,9 @@ export const AK_LUXATION_LESSON = {
     ),
     illustrationSrc: '/ak-luxation/rockwood-klassifikation.png',
     illustrationAlt: L(
-      'Rockwood-Klassifikation Typ I–VI – schematische Darstellung (Radiopaedia)',
-      'Rockwood Classification Types I–VI – schematic illustration (Radiopaedia)',
-      'طبقه‌بندی راک‌وود نوع I–VI – نمایش شماتیک (رادیوپدیا)'
+      'Rockwood-Schema I–VI (Radiopaedia): I Distorsion ohne Dislokation; II AC-Ruptur/CC-Zerrung; III AC- und CC-Ruptur; IV posterior; V ausgeprägter Hochstand mit deltotrapezialer Ablösung; VI inferior.',
+      'Rockwood schematic I–VI (Radiopaedia): I sprain without displacement; II AC tear/CC sprain; III AC and CC rupture; IV posterior; V marked elevation with deltotrapezial detachment; VI inferior.',
+      'نمای شماتیک راک‌وود I–VI (رادیوپدیا): I کشیدگی بدون جابجایی؛ II پارگی AC/کشیدگی CC؛ III پارگی AC و CC؛ IV خلفی؛ V ارتفاع شدید با جداشدگی دلتوتراپزیوس؛ VI تحتانی.'
     ),
     headers: [
       L('Typ', 'Type', 'نوع'),
@@ -210,44 +210,43 @@ export const AK_LUXATION_LESSON = {
       ],
       [
         L('II', 'II', 'II'),
-        L('Ruptur AC-Bänder + Zerrung CC-Bänder + Kapselriss', 'Rupture of AC ligaments + sprain of CC ligaments + capsular tear', 'پارگی رباط‌های AC + کشش رباط‌های CC + پارگی کپسول'),
-        L('Leichte Dehiszenz; Hochstand < 50 % der Gelenkhöhe', 'Mild widening; elevation < 50 % of joint height', 'اتساع خفیف؛ ارتفاع < ۵۰٪ ارتفاع مفصل'),
-        L('CCD leicht erhöht (< 25 % Seitendifferenz)', 'CCD mildly elevated (< 25 % side difference)', 'CCD اندکی افزایش یافته (< ۲۵٪ تفاوت دو طرف)'),
+        L('Ruptur der AC-Bänder/Kapsel; CC-Bänder gezerrt oder partiell verletzt', 'Rupture of AC ligaments/capsule; CC ligaments sprained or partially injured', 'پارگی رباط‌ها/کپسول AC؛ کشیدگی یا آسیب جزئی رباط‌های CC'),
+        L('Leichte Dehiszenz; CCD-Zunahme < 25 % gegenüber der unverletzten Seite', 'Mild widening; CCD increase <25% compared with the uninjured side', 'اتساع خفیف؛ افزایش CCD کمتر از ۲۵٪ در مقایسه با سمت سالم'),
+        L('Im Seitenvergleich messen; absolute CCD-Werte individuell variieren', 'Measure side to side; absolute CCD values vary between individuals', 'اندازه‌گیری در مقایسه دو طرف؛ مقدار مطلق CCD بین افراد متفاوت است'),
       ],
       [
         L('III', 'III', 'III'),
         L('Ruptur AC- und CC-Bänder', 'Rupture of both AC and CC ligaments', 'پارگی رباط‌های AC و CC'),
-        L('Komplette Luxation; Hochstand > 50 % (CCD < 25 mm)', 'Complete dislocation; elevation > 50 % (CCD < 25 mm)', 'لوکساسیون کامل؛ ارتفاع > ۵۰٪ (CCD < ۲۵ میلی‌متر)'),
-        L('Therapie kontrovers (konservativ vs. OP)', 'Treatment controversial (conservative vs. surgery)', 'درمان بحث‌برانگیز (محافظه‌کارانه در مقابل جراحی)'),
+        L('Klavikula über dem Akromion; CCD-Zunahme 25–100 % gegenüber der unverletzten Seite', 'Clavicle elevated above the acromion; CCD increase 25–100% versus the uninjured side', 'کلاویکول بالاتر از آکرومیون؛ افزایش CCD به میزان ۲۵ تا ۱۰۰٪ نسبت به سمت سالم'),
+        L('Therapie kontrovers; keine automatische OP-Indikation', 'Treatment is debated; this is not an automatic indication for surgery', 'درمان مورد اختلاف است؛ این یافته به‌تنهایی اندیکاسیون قطعی جراحی نیست'),
       ],
       [
         L('IV', 'IV', 'IV'),
-        L('Ruptur AC- und CC-Bänder + posteriore Dislokation', 'Rupture of AC and CC ligaments + posterior dislocation', 'پارگی رباط‌های AC و CC + جابجایی خلفی'),
-        L('Klavikula nach posterior in M. trapezius verlagert', 'Clavicle displaced posteriorly into trapezius muscle', 'کلاویکول به صورت خلفی در عضله تراپزیوس جابجا شده'),
-        L('AP oft unauffällig → Axiale Aufnahme obligat', 'AP often unremarkable → axial view mandatory', 'AP اغلب طبیعی → نمای محوری اجباری'),
+        L('AC-Bänder rupturiert; posteriore Dislokation in/durch den M. trapezius; CC-Verletzung möglich', 'AC ligaments torn; posterior displacement into/through trapezius; CC injury may occur', 'رباط‌های AC پاره؛ جابجایی خلفی به داخل/از میان تراپزیوس؛ احتمال آسیب CC'),
+        L('Axial-/Axillärprojektion bei Verdacht ergänzen', 'Add an axial/axillary view when suspected', 'در صورت شک، نمای محوری/آگزیلاری اضافه شود'),
       ],
       [
         L('V', 'V', 'V'),
         L('Wie Typ III, plus Abriss M. deltoideus/trapezius', 'Like Type III, plus avulsion of deltoid/trapezius', 'مثل نوع III، به علاوه جداشدگی عضلات دلتوئید/تراپزیوس'),
-        L('Extremer Hochstand (CCD > 25 mm / > 100 % Seitendifferenz)', 'Extreme elevation (CCD > 25 mm / > 100 % side difference)', 'ارتفاع شدید (CCD > ۲۵ میلی‌متر / > ۱۰۰٪ تفاوت دو طرف)'),
+        L('Deutlicher Hochstand; CCD-Zunahme meist >100 % (ca. 100–300 %) gegenüber der Gegenseite', 'Marked elevation; CCD increase usually >100% (about 100–300%) versus the opposite side', 'ارتفاع واضح؛ افزایش CCD معمولاً بیش از ۱۰۰٪ (حدود ۱۰۰ تا ۳۰۰٪) نسبت به سمت مقابل'),
         L('Muskelkontinuität unterbrochen', 'Muscle continuity disrupted', 'پیوستگی عضلانی قطع شده'),
       ],
       [
         L('VI', 'VI', 'VI'),
-        L('Ruptur AC- und CC-Bänder + inferiore Dislokation', 'Rupture of AC and CC ligaments + inferior dislocation', 'پارگی رباط‌های AC و CC + جابجایی تحتانی'),
+        L('Inferiore Dislokation; Verletzungsmuster der Bänder kann variieren', 'Inferior displacement; ligament injury pattern may vary', 'جابجایی تحتانی؛ الگوی آسیب رباط‌ها ممکن است متفاوت باشد'),
         L('Klavikula inferior unter Akromion/Proc. coracoideus luxiert', 'Clavicle dislocated inferiorly below acromion/coracoid', 'کلاویکول به صورت تحتانی زیر آکرومیون/پروسه کوراکوئید جابجا شده'),
         L('Seltenster Typ; meistens schweres Trauma', 'Rarest type; usually severe trauma', 'نادرترین نوع؛ معمولاً تروما شدید'),
       ],
     ],
     tossy: L(
-      'Historisch: Tossy-Klassifikation (I–III) → heute ersetzt durch Rockwood. Tossy I ≈ Rockwood I, Tossy II ≈ Rockwood II, Tossy III ≈ Rockwood III.',
-      'Historical note: Tossy classification (I–III) → now replaced by Rockwood. Tossy I ≈ Rockwood I, Tossy II ≈ Rockwood II, Tossy III ≈ Rockwood III.',
-      'تاریخچه: طبقه‌بندی توسی (I–III) → اکنون با راک‌وود جایگزین شده. توسی I ≈ راک‌وود I، توسی II ≈ راک‌وود II، توسی III ≈ راک‌وود III.'
+      'Historisch: Tossy I–III entsprechen ungefähr Rockwood I–III; Rockwood ergänzt die Richtungs-/Schweregrade IV–VI. Die Systeme sind nicht in jedem Detail deckungsgleich.',
+      'Historical note: Tossy I–III roughly correspond to Rockwood I–III; Rockwood adds the directional/severity grades IV–VI. The systems are not identical in every detail.',
+      'تاریخی: توسی I–III تقریباً با راک‌وود I–III مطابقت دارند؛ راک‌وود انواع IV–VI را بر اساس جهت/شدت اضافه می‌کند. این دو طبقه‌بندی در همه جزئیات کاملاً یکسان نیستند.'
     ),
     key: L(
-      'Entscheidend für die Therapie: Rockwood I+II → konservativ. Rockwood IV–VI → operativ. Rockwood III → individuell (Alter, Aktivität, Beruf).',
-      'Key for treatment: Rockwood I+II → conservative. Rockwood IV–VI → surgical. Rockwood III → individualised (age, activity, occupation).',
-      'کلیدی برای درمان: راک‌وود I+II → محافظه‌کارانه. راک‌وود IV–VI → جراحی. راک‌وود III → فردی (سن، فعالیت، شغل).'
+      'Typ I–II werden üblicherweise konservativ behandelt. Bei symptomatischen Typen IV–VI wird eine operative Versorgung häufig empfohlen/erwogen. Typ III bleibt umstritten; Entscheidung individuell nach Befund und Patientenzielen.',
+      'Types I–II are usually managed conservatively. Symptomatic Types IV–VI are commonly considered for operative treatment. Type III remains debated; decisions are individualised around findings and patient goals.',
+      'نوع I–II معمولاً به‌صورت محافظه‌کارانه درمان می‌شوند. برای انواع علامت‌دار IV–VI اغلب درمان جراحی مطرح یا توصیه می‌شود. درمان نوع III همچنان مورد اختلاف است و بر اساس یافته‌ها و اهداف بیمار فردی‌سازی می‌شود.'
     ),
   },
 
@@ -267,23 +266,23 @@ export const AK_LUXATION_LESSON = {
       [
         L('I und II', 'I and II', 'I و II'),
         L('Konservativ', 'Conservative', 'محافظه‌کارانه'),
-        L('Ruhigstellung im Gilchrist-Verband (1–3 Wo.) → Analgesie → Physiotherapie. Vollständige Erholung zu erwarten.', 'Immobilisation in Gilchrist sling (1–3 weeks) → analgesia → physiotherapy. Full recovery expected.', 'تثبیت در باند گیلکریست (۱–۳ هفته) → ضد درد → فیزیوتراپی. بهبودی کامل انتظار می‌رود.'),
+        L('Kurzzeitige Ruhigstellung/Schlinge nach Bedarf, Analgesie und schrittweise Mobilisation/Physiotherapie; Dauer nach Symptomen und lokalem Protokoll.', 'Brief sling use as needed, analgesia, and gradual mobilisation/physiotherapy; duration depends on symptoms and local protocol.', 'استفاده کوتاه‌مدت از آویز در صورت نیاز، ضد درد و شروع تدریجی حرکت/فیزیوتراپی؛ مدت بر اساس علائم و پروتکل محلی تعیین می‌شود.'),
       ],
       [
         L('III (kontrovers)', 'III (controversial)', 'III (بحث‌برانگیز)'),
         L('Individuell', 'Individualised', 'فردی'),
-        L('Konservativ bei niedrigem Anspruch; OP bei Überkopfarbeitern, Hochleistungssportlern oder persistierender Symptomatik (> 3 Monate)', 'Conservative for low-demand patients; surgery for overhead workers, high-performance athletes, or persistent symptoms (> 3 months)', 'محافظه‌کارانه برای بیماران با فعالیت فیزیکی پایین؛ جراحی برای کارگران سر بالا، ورزشکاران حرفه‌ای یا علائم مداوم (> ۳ ماه)'),
+        L('Häufig zunächst konservativ. Bei anhaltender funktioneller Einschränkung kann eine operative Option nach individueller orthopädischer Beurteilung und gemeinsamer Entscheidungsfindung erwogen werden; Beruf/Sport allein erzwingen keine OP.', 'Often initially managed conservatively. If functional limitation persists, operative treatment may be considered after individual orthopaedic assessment and shared decision-making; occupation or sport alone does not mandate surgery.', 'اغلب ابتدا درمان محافظه‌کارانه انجام می‌شود. در صورت تداوم محدودیت عملکرد، پس از ارزیابی ارتوپدی فردی و تصمیم‌گیری مشترک می‌توان جراحی را بررسی کرد؛ شغل یا ورزش به‌تنهایی جراحی را الزامی نمی‌کند.'),
       ],
       [
         L('IV, V, VI', 'IV, V, VI', 'IV، V، VI'),
-        L('Operativ', 'Surgical', 'جراحی'),
-        L('Tight-Rope-System (arthroskopisch, CC-Rekonstruktion) oder Hakenplatte (Hook-Plate). Ziel: anatomische Reposition und Bandrekonstruktion.', 'Tight-rope system (arthroscopic, CC reconstruction) or hook plate. Goal: anatomical reduction and ligament reconstruction.', 'سیستم تایت‌روپ (آرتروسکوپیک، بازسازی CC) یا صفحه قلاب‌دار (Hook-Plate). هدف: ریداکسیون آناتومیک و بازسازی رباط.'),
+        L('Häufig operative Versorgung erwägen', 'Operative treatment is commonly considered', 'اغلب درمان جراحی بررسی می‌شود'),
+        L('Bei symptomatischen Typen IV–VI häufig operative Stabilisierung/Rekonstruktion; Entscheidung nach Orthopädie/Traumatologie, Verletzungsmuster, Begleitverletzungen und Patientenzielen. Verfahren variieren.', 'Symptomatic Types IV–VI are commonly treated with operative stabilisation/reconstruction; the decision depends on orthopaedic/trauma assessment, injury pattern, associated injuries, and patient goals. Techniques vary.', 'در انواع علامت‌دار IV–VI اغلب تثبیت/بازسازی جراحی انجام می‌شود؛ تصمیم بر اساس ارزیابی ارتوپدی/تروما، الگوی آسیب، آسیب‌های همراه و اهداف بیمار است. روش‌ها متفاوت‌اند.'),
       ],
     ],
     key: L(
-      'Merke: Typ III ist die klinische Grauzone. Überlegte Indikationsstellung – nicht jede Typ-III-Luxation braucht eine Operation.',
-      'Note: Type III is the clinical grey zone. Careful indication setting – not every Type III dislocation requires surgery.',
-      'نکته: نوع III ناحیه خاکستری بالینی است. تعیین دقیق اندیکاسیون – هر لوکساسیون نوع III نیازی به جراحی ندارد.'
+      'Typ III ist umstritten: Weder die Klassifikation noch ein einzelner Aktivitätsfaktor ordnet automatisch eine Operation an; Befund, Funktion, Beschwerden und Patientenziele gemeinsam bewerten.',
+      'Type III management is debated: neither the classification nor one activity factor automatically mandates surgery; consider findings, function, symptoms, and patient goals together.',
+      'درمان نوع III مورد اختلاف است: نه طبقه‌بندی و نه یک عامل فعالیت به‌تنهایی جراحی را الزامی نمی‌کند؛ یافته‌ها، عملکرد، علائم و اهداف بیمار را با هم ارزیابی کنید.'
     ),
   },
 
@@ -293,23 +292,23 @@ export const AK_LUXATION_LESSON = {
     items: [
       {
         title: L('Sturz auf adduzierte Schulter', 'Fall onto adducted shoulder', 'افتادن روی شانه آدوکته'),
-        text: L('Direkter Mechanismus → Kraft auf Akromion bei fixierter Klavikula → Bänderverletzung in typischer Reihenfolge: AC → CC → Muskelansätze.', 'Direct mechanism → force on acromion with fixed clavicle → ligament failure in sequence: AC → CC → muscle insertions.', 'مکانیسم مستقیم → نیرو روی آکرومیون با کلاویکول ثابت → آسیب رباط به ترتیب: AC → CC → محل‌های اتصال عضله.'),
+        text: L('Direkter Mechanismus → Kraft auf Akromion bei relativ fixierter Klavikula → je nach Ausmaß Verletzung von AC-/CC-Stabilisatoren und gegebenenfalls deltotrapezialen Ansätzen.', 'Direct mechanism → force on the acromion while the clavicle is relatively fixed → depending on severity, injury to AC/CC stabilisers and possibly deltotrapezial attachments.', 'مکانیسم مستقیم → نیرو روی آکرومیون در حالی که کلاویکول نسبتاً ثابت است → بسته به شدت، آسیب تثبیت‌کننده‌های AC/CC و گاهی محل اتصال دلتوتراپزیوس.'),
       },
       {
         title: L('CCD im Seitenvergleich messen', 'Measure CCD on both sides', 'CCD را در مقایسه دو طرف اندازه‌گیری کنید'),
-        text: L('Absoluten CCD-Wert im Kontext beurteilen; Seitenvergleich hilft, individuelle Varianz zu berücksichtigen. 11–13 mm ist die PDF-Angabe, deren unabhängige Normwertquelle noch aussteht. Die Evidenz zur Zusatzklassifikation durch Belastungsaufnahmen ist widersprüchlich: Nordin et al. (online 2020/Ausgabe 2021, doi:10.1177/0284185120939270) fanden keinen signifikanten Gewinn; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) berichteten einen Nutzen bilateraler Gewichtung.', 'Interpret the absolute CCD in context; side-to-side comparison helps account for individual variation. The 11–13 mm value is quoted from the PDF and its independent normative source is pending. Evidence on classification benefit from weighted views conflicts: Nordin et al. (online 2020/issue 2021, doi:10.1177/0284185120939270) found no significant gain; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) reported value from bilateral weighting.', 'مقدار مطلق CCD را در زمینه بالینی تفسیر کنید؛ مقایسه دو طرف به تفاوت فردی کمک می‌کند. مقدار ۱۱ تا ۱۳ میلی‌متر از PDF نقل شده و منبع هنجاری مستقل آن در انتظار بررسی است. شواهد ارزش طبقه‌بندی نماهای وزنه‌دار متناقض است: نوردین و همکاران (آنلاین ۲۰۲۰/شماره ۲۰۲۱، doi:10.1177/0284185120939270) بهبود معناداری نیافتند؛ ابراهیم و همکاران (۲۰۱۵، doi:10.1016/j.injury.2015.06.028) ارزش وزن‌دهی دوطرفه را گزارش کردند.'),
+      text: L('CCD im Seitenvergleich messen. 11–13 mm sind ein publizierter Orientierungsbereich mit individueller Varianz. Die Evidenz zu Belastungsaufnahmen ist widersprüchlich: Nordin et al. (online 2020/Ausgabe 2021, doi:10.1177/0284185120939270) fanden keinen signifikanten Gewinn; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) berichteten einen Nutzen. Die PDF-Angabe 10–15 kg pro Seite ist keine Routineempfehlung; andere Quellen nennen geringere Lasten.', 'Measure CCD side to side. 11–13 mm is a published orienting range with individual variation. Evidence on weighted views conflicts: Nordin et al. (online 2020/issue 2021, doi:10.1177/0284185120939270) found no significant gain; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) reported value. The PDF’s 10–15 kg per-side load is not a routine recommendation; other sources describe lower loads.', 'CCD را در دو طرف اندازه‌گیری و مقایسه کنید. ۱۱ تا ۱۳ میلی‌متر محدوده‌ای راهنما در منابع منتشرشده است و تفاوت فردی دارد. شواهد نماهای وزنه‌دار متناقض است: نوردین و همکاران (آنلاین ۲۰۲۰/شماره ۲۰۲۱، doi:10.1177/0284185120939270) بهبود معناداری نیافتند؛ ابراهیم و همکاران (۲۰۱۵، doi:10.1016/j.injury.2015.06.028) ارزش آن را گزارش کردند. بار ۱۰ تا ۱۵ کیلوگرم در هر طرف که در PDF آمده توصیه روتین نیست؛ منابع دیگر بار کمتری ذکر می‌کنند.'),
       },
       {
-        title: L('Typ IV – Axiale Aufnahme obligat', 'Type IV – Axial view is mandatory', 'نوع IV – نمای محوری اجباری است'),
-        text: L('Posteriore Dislokation der Klavikula im AP-Bild oft nicht erkennbar! Axiale Projektion schließt Typ IV aus.', 'Posterior clavicular dislocation is often missed on AP view! Axial projection rules out Type IV.', 'جابجایی خلفی کلاویکول در نمای AP اغلب دیده نمی‌شود! نمای محوری نوع IV را رد می‌کند.'),
+        title: L('Typ IV – hintere Dislokation', 'Type IV – posterior displacement', 'نوع IV – جابجایی خلفی'),
+        text: L('Bei Verdacht auf posteriore Verlagerung ergänzt eine axiale/axilläre Projektion die AP-Aufnahme; keine einzelne Projektion schließt alle Verletzungen sicher aus.', 'If posterior displacement is suspected, add an axial/axillary projection to the AP view; no single projection excludes every injury with certainty.', 'در صورت شک به جابجایی خلفی، نمای محوری/آگزیلاری را به نمای AP اضافه کنید؛ هیچ نمای منفردی همه آسیب‌ها را با قطعیت رد نمی‌کند.'),
       },
       {
-        title: L('Tossy ist veraltet', 'Tossy is outdated', 'توسی منسوخ شده است'),
-        text: L('Tossy I–III entspricht Rockwood I–III, aber Rockwood unterscheidet zusätzlich Typ IV–VI. In der modernen Literatur und Klinik stets Rockwood verwenden.', 'Tossy I–III corresponds to Rockwood I–III, but Rockwood additionally distinguishes Types IV–VI. Always use Rockwood in modern literature and clinical practice.', 'توسی I–III با راک‌وود I–III مطابقت دارد، اما راک‌وود علاوه بر این نوع IV–VI را متمایز می‌کند. همیشه در ادبیات و عمل بالینی مدرن از راک‌وود استفاده کنید.'),
+        title: L('Tossy und Rockwood', 'Tossy and Rockwood', 'توسی و راک‌وود'),
+        text: L('Tossy I–III entsprechen ungefähr Rockwood I–III; Rockwood ergänzt die Richtungs-/Schweregrade IV–VI. Die Systeme sind nicht in jedem Detail deckungsgleich.', 'Tossy I–III roughly correspond to Rockwood I–III; Rockwood adds directional/severity grades IV–VI. The systems are not identical in every detail.', 'توسی I–III تقریباً با راک‌وود I–III مطابقت دارد؛ راک‌وود انواع IV–VI را بر اساس جهت/شدت اضافه می‌کند. این دو طبقه‌بندی در همه جزئیات کاملاً یکسان نیستند.'),
       },
       {
         title: L('Therapieprinzip', 'Treatment principle', 'اصل درمان'),
-        text: L('I+II konservativ, IV–VI operativ, III individuell. Bei Typ III Entscheidung abhängig von Alter, Aktivitätsniveau und Beruf.', 'I+II conservative, IV–VI surgical, III individualised. For Type III, decision depends on age, activity level, and occupation.', 'I+II محافظه‌کارانه، IV–VI جراحی، III فردی. برای نوع III، تصمیم به سن، سطح فعالیت و شغل بستگی دارد.'),
+        text: L('I–II üblicherweise konservativ; symptomatische IV–VI häufig operativ beurteilt; III umstritten und individuell. Befund, Funktion, Begleitverletzungen und Patientenziele berücksichtigen.', 'I–II usually conservative; symptomatic IV–VI commonly assessed for surgery; III debated and individualised. Consider findings, function, associated injuries, and patient goals.', 'I–II معمولاً محافظه‌کارانه؛ برای IV–VI علامت‌دار اغلب جراحی بررسی می‌شود؛ III مورد اختلاف و فردی‌سازی‌شده است. یافته‌ها، عملکرد، آسیب‌های همراه و اهداف بیمار را لحاظ کنید.'),
       },
     ],
   },
@@ -352,7 +351,7 @@ export const AK_LUXATION_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(l
       L('Korakohumerale Bänder', 'Coracohumeral ligaments', 'رباط‌های کوراکوهومرال')[lang],
     ],
     1,
-    L('Die korakoklavikulären Bänder (Trapezoid + Konoid) stabilisieren gegen vertikale Kräfte. Die AC-Bänder sichern primär die horizontale (AP) Stabilität. Beide müssen rupturieren für eine vollständige Luxation (Rockwood ≥ III).', 'The coracoclavicular ligaments (trapezoid + conoid) stabilise against vertical forces. The AC ligaments secure primarily horizontal (AP) stability. Both must rupture for complete dislocation (Rockwood ≥ III).', 'رباط‌های کوراکوکلاویکولار (ترپزوئید + کونوئید) در برابر نیروهای عمودی تثبیت می‌کنند. رباط‌های AC عمدتاً پایداری افقی (AP) را تأمین می‌کنند. هر دو باید پاره شوند تا لوکساسیون کامل ایجاد شود (راک‌وود ≥ III).')[lang]
+    L('CC-Bänder tragen vor allem zur vertikalen, AC-Kapsel/Bänder zur horizontalen Stabilität bei. Typ III umfasst eine Ruptur beider Bandgruppen; die übrigen Rockwood-Typen unterscheiden sich zusätzlich nach Richtung und Ausmaß der Dislokation.', 'CC ligaments mainly contribute to vertical stability, while the AC capsule/ligaments contribute to horizontal stability. Type III includes rupture of both ligament groups; other Rockwood types are further distinguished by displacement direction and extent.', 'رباط‌های CC عمدتاً در پایداری عمودی و کپسول/رباط‌های AC در پایداری افقی نقش دارند. نوع III شامل پارگی هر دو گروه رباط است؛ انواع دیگر راک‌وود علاوه بر آن بر اساس جهت و میزان جابجایی متمایز می‌شوند.')[lang]
   ),
 
   Q(`ak-lux-rock-1-${lang}`,
@@ -361,12 +360,12 @@ export const AK_LUXATION_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(l
       'در راک‌وود نوع II، رادیوگرافی نشان می‌دهد:')[lang],
     [
       L('Normalbefund', 'Normal X-ray', 'رادیوگرافی طبیعی')[lang],
-      L('Leichte Dehiszenz / Hochstand < 50 % der Gelenkhöhe', 'Mild widening / elevation < 50 % of joint height', 'اتساع خفیف / ارتفاع < ۵۰٪ ارتفاع مفصل')[lang],
-      L('Komplette Luxation mit CCD > 25 mm', 'Complete dislocation with CCD > 25 mm', 'لوکساسیون کامل با CCD > ۲۵ میلی‌متر')[lang],
+      L('Leichte Dehiszenz; CCD-Zunahme < 25 % gegenüber der unverletzten Seite', 'Mild widening; CCD increase <25% versus the uninjured side', 'اتساع خفیف؛ افزایش CCD کمتر از ۲۵٪ نسبت به سمت سالم')[lang],
+      L('Deutlicher Hochstand; CCD-Zunahme 25–100 % gegenüber der unverletzten Seite', 'Marked elevation; CCD increase 25–100% versus the uninjured side', 'ارتفاع واضح؛ افزایش CCD به میزان ۲۵ تا ۱۰۰٪ نسبت به سمت سالم')[lang],
       L('Posteriore Verlagerung der Klavikula', 'Posterior displacement of the clavicle', 'جابجایی خلفی کلاویکول')[lang],
     ],
     1,
-    L('Rockwood II = Ruptur AC-Bänder + Zerrung CC-Bänder. Röntgen: leichte Dehiszenz und Hochstand < 50 % der Gelenkhöhe. Therapie: konservativ.', 'Rockwood II = AC ligament rupture + CC ligament sprain. X-ray: mild joint widening and elevation < 50 % of joint height. Treatment: conservative.', 'راک‌وود II = پارگی رباط‌های AC + کشش رباط‌های CC. رادیوگرافی: اتساع خفیف مفصل و ارتفاع < ۵۰٪ ارتفاع مفصل. درمان: محافظه‌کارانه.')[lang]
+    L('Rockwood II = AC-Bänder rupturiert, CC-Bänder gezerrt/partiell verletzt; die CCD-Zunahme liegt üblicherweise unter 25 % gegenüber der unverletzten Seite. Typ I–II werden meist konservativ behandelt.', 'Rockwood II = AC ligaments torn, CC ligaments sprained/partially injured; CCD increase is usually below 25% versus the uninjured side. Types I–II are usually managed conservatively.', 'راک‌وود II = پارگی رباط‌های AC و کشیدگی/آسیب جزئی رباط‌های CC؛ افزایش CCD معمولاً کمتر از ۲۵٪ نسبت به سمت سالم است. انواع I–II معمولاً محافظه‌کارانه درمان می‌شوند.')[lang]
   ),
 
   Q(`ak-lux-rock-2-${lang}`,
@@ -376,11 +375,11 @@ export const AK_LUXATION_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(l
     [
       L('Anteriore Dislokation der Klavikula', 'Anterior dislocation of the clavicle', 'جابجایی قدامی کلاویکول')[lang],
       L('Posteriore Dislokation der Klavikula', 'Posterior dislocation of the clavicle', 'جابجایی خلفی کلاویکول')[lang],
-      L('Extremer Hochstand (CCD > 25 mm) + Abriss M. deltoideus/trapezius', 'Extreme elevation (CCD > 25 mm) + avulsion of deltoid/trapezius', 'ارتفاع شدید (CCD > ۲۵ میلی‌متر) + جداشدگی دلتوئید/تراپزیوس')[lang],
+      L('Wie Typ III, zusätzlich deltotrapeziale Faszienablösung und CCD-Zunahme meist >100 % gegenüber der Gegenseite', 'As Type III, plus deltotrapezial fascia detachment and usually >100% CCD increase versus the opposite side', 'مانند نوع III، به‌علاوه جداشدگی فاسیای دلتوتراپزیوس و معمولاً افزایش CCD بیش از ۱۰۰٪ نسبت به سمت مقابل')[lang],
       L('Inferiore Luxation der Klavikula', 'Inferior dislocation of the clavicle', 'جابجایی تحتانی کلاویکول')[lang],
     ],
     2,
-    L('Typ V hat die gleiche Bandpathologie wie Typ III (Ruptur AC + CC), aber der Hochstand ist extrem (CCD > 25 mm / > 100 % Seitendifferenz) und die muskulären Ansätze (M. deltoideus, M. trapezius) sind abgerissen. Immer operativ.', 'Type V has the same ligament pathology as Type III (AC + CC rupture), but the elevation is extreme (CCD > 25 mm / > 100 % side difference) and the muscular insertions (deltoid, trapezius) are avulsed. Always surgical.', 'نوع V پاتولوژی رباط یکسانی با نوع III دارد (پارگی AC + CC)، اما ارتفاع شدید است (CCD > ۲۵ میلی‌متر / > ۱۰۰٪ تفاوت دو طرف) و محل‌های اتصال عضلانی (دلتوئید، تراپزیوس) جدا شده‌اند. همیشه جراحی.')[lang]
+    L('Typ V umfasst wie Typ III eine Verletzung der AC- und CC-Stabilisatoren, zusätzlich eine Ablösung der deltotrapezialen Faszie und meist eine CCD-Zunahme von etwa 100–300 % gegenüber der Gegenseite. Die Therapie wird fachärztlich beurteilt; Typ V allein ersetzt keine individuelle Indikationsstellung.', 'Type V, like Type III, involves injury to the AC and CC stabilisers, with additional deltotrapezial fascia detachment and usually about 100–300% CCD increase versus the opposite side. Treatment requires specialist assessment; the Type V label does not replace individual indication setting.', 'نوع V مانند نوع III شامل آسیب تثبیت‌کننده‌های AC و CC است و علاوه بر آن فاسیای دلتوتراپزیوس جدا می‌شود و معمولاً CCD حدود ۱۰۰ تا ۳۰۰٪ نسبت به سمت مقابل افزایش می‌یابد. درمان باید توسط متخصص ارزیابی شود؛ برچسب نوع V جایگزین تعیین اندیکاسیون فردی نیست.')[lang]
   ),
 
   Q(`ak-lux-rock-3-${lang}`,
@@ -394,7 +393,7 @@ export const AK_LUXATION_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(l
       L('Rockwood VI', 'Rockwood VI', 'راک‌وود VI')[lang],
     ],
     2,
-    L('Rockwood Typ IV: Posteriore Dislokation der Klavikula in den M. trapezius. Im AP-Bild oft unauffällig – deshalb ist die axiale Aufnahme obligat! Therapie: immer operativ.', 'Rockwood Type IV: Posterior dislocation of the clavicle into the trapezius muscle. Often unremarkable on AP – axial view is therefore mandatory! Treatment: always surgical.', 'راک‌وود نوع IV: جابجایی خلفی کلاویکول به داخل عضله تراپزیوس. در نمای AP اغلب طبیعی – بنابراین نمای محوری اجباری است! درمان: همیشه جراحی.')[lang]
+    L('Rockwood Typ IV: posteriore Verlagerung in/durch den M. trapezius. Bei Verdacht axiale/axilläre Aufnahme ergänzen. Symptomatische Typ-IV-Verletzungen werden häufig operativ beurteilt/behandelt; diese allgemeine Regel ersetzt keine fachärztliche Beurteilung.', 'Rockwood Type IV: posterior displacement into/through trapezius. Add an axial/axillary view when suspected. Symptomatic Type IV injuries are commonly assessed/treated surgically; this general pattern does not replace specialist assessment.', 'راک‌وود نوع IV: جابجایی خلفی به داخل/از میان تراپزیوس. در صورت شک، نمای محوری/آگزیلاری اضافه کنید. آسیب‌های علامت‌دار نوع IV اغلب برای درمان جراحی ارزیابی می‌شوند؛ این الگوی کلی جایگزین ارزیابی تخصصی نیست.')[lang]
   ),
 
   Q(`ak-lux-ccd-1-${lang}`,
@@ -403,12 +402,12 @@ export const AK_LUXATION_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(l
       'مقدار ۱۱ تا ۱۳ میلی‌متر CCD در PDF را چگونه باید تفسیر کرد؟')[lang],
     [
       L('1–5 mm', '1–5 mm', '۱–۵ میلی‌متر')[lang],
-      L('Als PDF-Orientierungswert, nicht als unabhängig bestätigte starre Norm; Seitenvergleich und Technik berücksichtigen.', 'As a PDF orienting value, not an independently verified rigid norm; consider side-to-side comparison and technique.', 'به‌عنوان مقدار راهنمای PDF، نه هنجار قطعیِ مستقلاً تأییدشده؛ مقایسه دو طرف و تکنیک را در نظر بگیرید.')[lang],
+      L('Als publizierter Orientierungsbereich, nicht als starre Einzelgrenze; individuelle Varianz, Technik und Seitenvergleich berücksichtigen.', 'As a published orienting range, not a rigid standalone cutoff; account for individual variation, technique, and side-to-side comparison.', 'به‌عنوان محدوده راهنمای منتشرشده، نه حد قطعیِ منفرد؛ تفاوت فردی، تکنیک و مقایسه دو طرف را در نظر بگیرید.')[lang],
       L('20–25 mm', '20–25 mm', '۲۰–۲۵ میلی‌متر')[lang],
       L('30–35 mm', '30–35 mm', '۳۰–۳۵ میلی‌متر')[lang],
     ],
     1,
-    L('Die PDF nennt 11–13 mm als Orientierungswert; ein unabhängiger Normwertbeleg ist noch ausstehend. Technik und individuelle Varianz beachten. Beim Rockwood-Typ V kann die CCD deutlich erhöht sein (PDF-Grenze >25 mm); wenn möglich mit der Gegenseite vergleichen.', 'The PDF gives 11–13 mm as an orienting value; an independent normative reference is still pending. Account for technique and individual variation. Rockwood Type V may show marked CCD widening (PDF threshold >25 mm); compare with the other side when possible.', 'PDF مقدار ۱۱ تا ۱۳ میلی‌متر را به‌عنوان راهنما ذکر می‌کند؛ منبع مستقل برای مقدار هنجار هنوز در انتظار بررسی است. تکنیک و تفاوت فردی را لحاظ کنید. در راک‌وود نوع V ممکن است CCD به‌طور واضح افزایش یابد (آستانه PDF بیش از ۲۵ میلی‌متر)؛ در صورت امکان با طرف مقابل مقایسه کنید.')[lang]
+    L('11–13 mm ist ein publizierter Orientierungsbereich mit individueller Varianz. CCD im Seitenvergleich und mit einheitlicher Technik messen. Typ V wird relativ zur Gegenseite meist durch eine Zunahme von etwa 100–300 % beschrieben; ein einzelner absoluter mm-Grenzwert genügt nicht.', '11–13 mm is a published orienting range with individual variation. Compare CCD side to side using consistent technique. Type V is usually described relative to the opposite side as an increase of about 100–300%; a single absolute mm cutoff is insufficient.', '۱۱ تا ۱۳ میلی‌متر محدوده‌ای راهنما در منابع منتشرشده است و تفاوت فردی دارد. CCD را با تکنیک یکسان در دو طرف مقایسه کنید. نوع V معمولاً با افزایش حدود ۱۰۰ تا ۳۰۰٪ نسبت به طرف مقابل توصیف می‌شود؛ یک حد مطلق برحسب میلی‌متر به‌تنهایی کافی نیست.')[lang]
   ),
 
   Q(`ak-lux-therapie-1-${lang}`,
@@ -417,18 +416,18 @@ export const AK_LUXATION_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(l
       'کدام گزینه درباره درمان لوکساسیون مفصل AC درست است؟')[lang],
     [
       L('Rockwood III wird immer operiert', 'Rockwood III is always treated surgically', 'راک‌وود III همیشه جراحی می‌شود')[lang],
-      L('Rockwood I und II werden konservativ behandelt', 'Rockwood I and II are treated conservatively', 'راک‌وود I و II به صورت محافظه‌کارانه درمان می‌شوند')[lang],
+      L('Rockwood I und II werden üblicherweise konservativ behandelt', 'Rockwood I and II are usually managed conservatively', 'راک‌وود I و II معمولاً به‌صورت محافظه‌کارانه درمان می‌شوند')[lang],
       L('Rockwood IV wird primär konservativ behandelt', 'Rockwood IV is primarily treated conservatively', 'راک‌وود IV به صورت اولیه محافظه‌کارانه درمان می‌شود')[lang],
       L('Typ VI tritt am häufigsten auf', 'Type VI is the most common type', 'نوع VI شایع‌ترین است')[lang],
     ],
     1,
-    L('Rockwood I und II → konservativ (Gilchrist-Verband). Rockwood IV–VI → immer operativ. Rockwood III → kontrovers / individuell. Typ VI ist der seltenste Typ.', 'Rockwood I and II → conservative (Gilchrist sling). Rockwood IV–VI → always surgical. Rockwood III → controversial / individualised. Type VI is the rarest type.', 'راک‌وود I و II → محافظه‌کارانه (باند گیلکریست). راک‌وود IV–VI → همیشه جراحی. راک‌وود III → بحث‌برانگیز / فردی. نوع VI نادرترین نوع است.')[lang]
+    L('Typ I–II werden üblicherweise konservativ behandelt; symptomatische IV–VI werden häufig operativ beurteilt. Typ III bleibt umstritten und individuell. Typ VI ist selten. Therapieentscheidung nach klinischem Gesamtbild.', 'Types I–II are usually managed conservatively; symptomatic IV–VI are commonly assessed for surgery. Type III remains debated and individualised. Type VI is rare. Treatment decisions depend on the overall clinical picture.', 'نوع I–II معمولاً محافظه‌کارانه درمان می‌شوند؛ انواع علامت‌دار IV–VI اغلب برای جراحی ارزیابی می‌شوند. نوع III همچنان مورد اختلاف و فردی‌سازی‌شده است. نوع VI نادر است. تصمیم درمانی بر اساس کل وضعیت بالینی گرفته می‌شود.')[lang]
   ),
 
   Q(`ak-lux-tossy-1-${lang}`,
-    L('Warum wird die Tossy-Klassifikation heute nicht mehr verwendet?',
-      'Why is the Tossy classification no longer used today?',
-      'چرا طبقه‌بندی توسی امروزه دیگر استفاده نمی‌شود؟')[lang],
+    L('Welche Einschränkung hat die Tossy-Klassifikation gegenüber Rockwood?',
+      'What is a limitation of the Tossy classification compared with Rockwood?',
+      'محدودیت طبقه‌بندی توسی در مقایسه با راک‌وود چیست؟')[lang],
     [
       L('Weil sie zu komplex ist', 'Because it is too complex', 'چون خیلی پیچیده است')[lang],
       L('Weil sie nur 3 Typen unterscheidet und die posteriore/inferiore Dislokation nicht erfasst', 'Because it only distinguishes 3 types and does not capture posterior/inferior dislocation', 'چون فقط ۳ نوع را متمایز می‌کند و جابجایی خلفی/تحتانی را در نظر نمی‌گیرد')[lang],
@@ -436,7 +435,7 @@ export const AK_LUXATION_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(l
       L('Weil sie keine klinischen Zeichen einbezieht', 'Because it does not include clinical signs', 'چون علائم بالینی را در بر نمی‌گیرد')[lang],
     ],
     1,
-    L('Tossy (I–III) unterscheidet nur drei Typen und erfasst nicht die posteriore Dislokation (Typ IV), den extremen Hochstand mit Muskelausriss (Typ V) und die inferiore Dislokation (Typ VI). Rockwood bietet die vollständige Einteilung.', 'Tossy (I–III) only distinguishes three types and does not capture posterior dislocation (Type IV), extreme elevation with muscle avulsion (Type V), or inferior dislocation (Type VI). Rockwood provides the complete classification.', 'توسی (I–III) فقط سه نوع را متمایز می‌کند و جابجایی خلفی (نوع IV)، ارتفاع شدید با جداشدگی عضله (نوع V) و جابجایی تحتانی (نوع VI) را در بر نمی‌گیرد. راک‌وود طبقه‌بندی کامل را ارائه می‌دهد.')[lang]
+    L('Tossy I–III deckt posteriore/inferiore Dislokationen und extreme Hochstände nicht ab; Rockwood erweitert die Einteilung auf IV–VI. Rockwood ist verbreitet, die Klassifikation ersetzt jedoch keine klinische Beurteilung.', 'Tossy I–III does not cover posterior/inferior displacement or extreme elevation; Rockwood extends the classification to IV–VI. Rockwood is widely used, but classification does not replace clinical assessment.', 'توسی I–III جابجایی خلفی/تحتانی یا ارتفاع شدید را پوشش نمی‌دهد؛ راک‌وود طبقه‌بندی را به IV–VI گسترش می‌دهد. راک‌وود رایج است، اما طبقه‌بندی جایگزین ارزیابی بالینی نیست.')[lang]
   ),
 
   Q(`ak-lux-belastung-1-${lang}`,
@@ -464,7 +463,7 @@ export const AK_LUXATION_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(l
       L('Fraktur der Klavikula', 'Fracture of the clavicle', 'شکستگی کلاویکول')[lang],
     ],
     2,
-    L('Rockwood VI ist der seltenste Typ. Die Klavikula luxiert inferior unter das Akromion oder den Processus coracoideus. Immer schweres Trauma. Therapie: operativ.', 'Rockwood VI is the rarest type. The clavicle dislocates inferiorly below the acromion or coracoid process. Always involves severe trauma. Treatment: surgical.', 'راک‌وود VI نادرترین نوع است. کلاویکول به صورت تحتانی زیر آکرومیون یا پروسه کوراکوئید جابجا می‌شود. همیشه با تروما شدید همراه است. درمان: جراحی.')[lang]
+    L('Rockwood VI ist selten; die Klavikula ist inferior subakromial oder subkorakoidal verlagert. Diese Hochgradverletzung erfordert zeitnahe fachärztliche Beurteilung; konkrete Therapie nach Gesamtbefund und Patient.', 'Rockwood VI is rare; the clavicle is displaced inferiorly into a subacromial or subcoracoid position. This high-grade injury warrants timely specialist assessment; treatment depends on the overall findings and patient.', 'راک‌وود VI نادر است؛ کلاویکول به موقعیت تحتانی زیرآکرومیال یا زیرکوراکوئید جابجا می‌شود. این آسیب شدید نیازمند ارزیابی به‌موقع متخصص است؛ درمان بر اساس یافته‌های کلی و شرایط بیمار تعیین می‌شود.')[lang]
   ),
 
   Q(`ak-lux-norm-1-${lang}`,
@@ -474,11 +473,11 @@ export const AK_LUXATION_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(l
     [
       L('Leichte Dehiszenz des AC-Gelenks', 'Mild AC joint widening', 'اتساع خفیف مفصل AC')[lang],
       L('Normales Röntgenbild – klinische Diagnose', 'Normal X-ray – clinical diagnosis', 'رادیوگرافی طبیعی – تشخیص بالینی')[lang],
-      L('CCD > 25 mm', 'CCD > 25 mm', 'CCD > ۲۵ میلی‌متر')[lang],
+      L('Hochstand > 100 % gegenüber der Gegenseite', 'Elevation >100% versus the opposite side', 'ارتفاع بیش از ۱۰۰٪ نسبت به سمت مقابل')[lang],
       L('Posteriore Verlagerung der Klavikula', 'Posterior displacement of the clavicle', 'جابجایی خلفی کلاویکول')[lang],
     ],
     1,
-    L('Typ I = Zerrung (partielle Ruptur) der AC-Bänder ohne vollständige Ruptur. Röntgenbild: normal. Diagnose klinisch (lokaler Druckschmerz über AC-Gelenk). Therapie: konservativ, Ausheilung in 1–2 Wochen.', 'Type I = sprain (partial rupture) of AC ligaments without complete rupture. X-ray: normal. Diagnosis clinical (local tenderness over AC joint). Treatment: conservative, heals in 1–2 weeks.', 'نوع I = کشش (پارگی جزئی) رباط‌های AC بدون پارگی کامل. رادیوگرافی: طبیعی. تشخیص بالینی (حساسیت موضعی روی مفصل AC). درمان: محافظه‌کارانه، بهبودی در ۱–۲ هفته.')[lang]
+    L('Typ I: leichte AC-Banddistorsion ohne radiologische Dislokation; Diagnose klinisch bei passenden Befunden. Üblicherweise konservative symptomorientierte Behandlung.', 'Type I: mild AC-ligament sprain without radiographic displacement; diagnosis is clinical when findings fit. Usually managed conservatively according to symptoms.', 'نوع I: کشیدگی خفیف رباط AC بدون جابجایی رادیوگرافیک؛ در صورت تطابق یافته‌ها تشخیص بالینی است. معمولاً بر اساس علائم به‌صورت محافظه‌کارانه درمان می‌شود.')[lang]
   ),
 
   Q(`ak-lux-op-1-${lang}`,
@@ -492,7 +491,7 @@ export const AK_LUXATION_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(l
       L('Gipsruhigstellung für 12 Wochen', 'Plaster cast immobilisation for 12 weeks', 'تثبیت گچی برای ۱۲ هفته')[lang],
     ],
     1,
-    L('Das arthroskopische Tight-Rope-System (CC-Rekonstruktion mit Fadenschlinge) und die offene Hakenplatte sind die häufigsten Verfahren. Ziel: anatomische Reposition und Bandrekonstruktion. Die Hakenplatte muss nach Heilung entfernt werden.', 'The arthroscopic tight-rope system (CC reconstruction with suture loop) and open hook plate are the most common procedures. Goal: anatomical reduction and ligament reconstruction. The hook plate must be removed after healing.', 'سیستم تایت‌روپ آرتروسکوپیک (بازسازی CC با حلقه بخیه) و صفحه قلاب‌دار باز شایع‌ترین روش‌ها هستند. هدف: ریداکسیون آناتومیک و بازسازی رباط. صفحه قلاب‌دار باید بعد از بهبودی برداشته شود.')[lang]
+    L('Suspensionssysteme (z. B. Tight-Rope) und Hakenplatten sind Beispiele operativer Stabilisierung. Technik und zusätzliche Bandrekonstruktion richten sich nach Verletzungsmuster und lokalem Vorgehen; eine spätere Entfernung der Hakenplatte hängt vom Implantat-/Behandlungsplan ab.', 'Suspensory devices (e.g. tight-rope) and hook plates are examples of operative stabilisation. Technique and additional ligament reconstruction depend on the injury pattern and local approach; later hook-plate removal depends on the implant/treatment plan.', 'سیستم‌های تعلیقی (مانند تایت‌روپ) و صفحات قلاب‌دار نمونه‌هایی از تثبیت جراحی هستند. روش و بازسازی اضافی رباط بر اساس الگوی آسیب و رویکرد محلی انتخاب می‌شود؛ خارج کردن بعدی صفحه قلاب‌دار به نوع ایمپلنت و برنامه درمان بستگی دارد.')[lang]
   ),
 
 ].map(q => ({ ...q, tags: ['ak-luxation'] }))]))
@@ -501,50 +500,50 @@ export const AK_LUXATION_FLASHCARDS = [
 
   F('ak-lux-fc-1', L('Anatomie', 'Anatomy', 'آناتومی'),
     L('Welche zwei Bandgruppen stabilisieren das AC-Gelenk?', 'Which two ligament groups stabilise the AC joint?', 'کدام دو گروه رباط مفصل AC را تثبیت می‌کنند؟'),
-    L('1) AC-Bänder → horizontale Stabilität (AP). 2) CC-Bänder (Trapezoid + Konoid) → vertikale Stabilität. Beide müssen reißen → vollständige Luxation.', '1) AC ligaments → horizontal stability (AP). 2) CC ligaments (trapezoid + conoid) → vertical stability. Both must rupture → complete dislocation.', '۱) رباط‌های AC → پایداری افقی (AP). ۲) رباط‌های CC (ترپزوئید + کونوئید) → پایداری عمودی. هر دو باید پاره شوند → لوکساسیون کامل.'),
-    L('AC = horizontal, CC = vertikal. Beide weg → Typ III oder höher.', 'AC = horizontal, CC = vertical. Both gone → Type III or higher.', 'AC = افقی، CC = عمودی. هر دو پاره → نوع III یا بالاتر.')
+    L('1) AC-Kapsel/Bänder tragen zur horizontalen (AP), 2) CC-Bänder (Trapezoid + Konoid) zur vertikalen Stabilität bei. Typ III umfasst eine Ruptur beider Bandgruppen.', '1) AC capsule/ligaments contribute to horizontal (AP), and 2) CC ligaments (trapezoid + conoid) to vertical stability. Type III includes rupture of both ligament groups.', '۱) کپسول/رباط‌های AC در پایداری افقی (AP) و ۲) رباط‌های CC (ترپزوئید و کونوئید) در پایداری عمودی نقش دارند. نوع III شامل پارگی هر دو گروه رباط است.'),
+    L('AC = vor allem horizontal; CC = vor allem vertikal. Klassifikation anhand des gesamten Verletzungsmusters.', 'AC = mainly horizontal; CC = mainly vertical. Classification uses the overall injury pattern.', 'AC = عمدتاً افقی؛ CC = عمدتاً عمودی. طبقه‌بندی بر اساس الگوی کلی آسیب است.')
   ),
 
   F('ak-lux-fc-2', L('Bildgebung', 'Imaging', 'تصویربرداری'),
     L('Wie hilft der CCD-Seitenvergleich; wann kann Zusatzbelastung erwogen werden?', 'How does side-to-side CCD comparison help, and when might added load be considered?', 'مقایسه CCD دو طرف چه کمکی می‌کند و چه زمانی می‌توان بارگذاری افزوده را در نظر گرفت؟'),
-    L('CCD beidseits vergleichen; 11–13 mm ist nur der PDF-Orientierungswert, ein unabhängiger Normwertbeleg steht aus. Die Evidenz zur Zusatzbelastung ist widersprüchlich: Nordin et al. (online 2020/Ausgabe 2021, doi:10.1177/0284185120939270) fanden keinen signifikanten Gewinn; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) berichteten Nutzen. Nur konkrete Fragestellung/lokales Protokoll, keine Routine.', 'Compare CCD on both sides; 11–13 mm is only the PDF orienting value and an independent normative reference is pending. Evidence on added load conflicts: Nordin et al. (online 2020/issue 2021, doi:10.1177/0284185120939270) found no significant gain; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) reported value. Use only for a specific question/local protocol, not routinely.', 'CCD را در دو طرف مقایسه کنید؛ ۱۱ تا ۱۳ میلی‌متر فقط مقدار راهنمای PDF است و منبع هنجاری مستقل آن در انتظار بررسی است. شواهد بارگذاری افزوده متناقض است: نوردین و همکاران (آنلاین ۲۰۲۰/شماره ۲۰۲۱، doi:10.1177/0284185120939270) بهبود معناداری نیافتند؛ ابراهیم و همکاران (۲۰۱۵، doi:10.1016/j.injury.2015.06.028) ارزش آن را گزارش کردند. فقط برای پرسش مشخص/پروتکل محلی، نه به‌صورت روتین.'),
+    L('CCD im Seitenvergleich messen; 11–13 mm ist ein publizierter Orientierungsbereich mit individueller Varianz. Die Evidenz zur Zusatzbelastung ist widersprüchlich: Nordin et al. (online 2020/Ausgabe 2021, doi:10.1177/0284185120939270) fanden keinen signifikanten Gewinn; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) berichteten Nutzen. Die PDF-Angabe 10–15 kg pro Seite ist keine Routineempfehlung; andere Quellen nennen geringere Lasten.', 'Measure CCD side to side; 11–13 mm is a published orienting range with individual variation. Evidence on weighted views conflicts: Nordin et al. (online 2020/issue 2021, doi:10.1177/0284185120939270) found no significant gain; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) reported value. The PDF’s 10–15 kg per-side load is not a routine recommendation; other sources describe lower loads.', 'CCD را در دو طرف اندازه‌گیری و مقایسه کنید؛ ۱۱ تا ۱۳ میلی‌متر محدوده‌ای راهنما در منابع منتشرشده است و تفاوت فردی دارد. شواهد نماهای وزنه‌دار متناقض است: نوردین و همکاران (آنلاین ۲۰۲۰/شماره ۲۰۲۱، doi:10.1177/0284185120939270) بهبود معناداری نیافتند؛ ابراهیم و همکاران (۲۰۱۵، doi:10.1016/j.injury.2015.06.028) ارزش آن را گزارش کردند. بار ۱۰ تا ۱۵ کیلوگرم در هر طرف که در PDF آمده توصیه روتین نیست؛ منابع دیگر بار کمتری ذکر می‌کنند.'),
     L('Seitenvergleich, keine starre Einzelgrenze; gewichtete Aufnahme nur gezielt.', 'Compare sides, avoid rigid single cutoff; use weighted view selectively.', 'مقایسه دو طرف، نه مرز مطلق؛ نمای وزنه‌دار فقط به‌صورت انتخابی.')
   ),
 
   F('ak-lux-fc-3', L('Rockwood', 'Rockwood', 'راک‌وود'),
     L('Rockwood I–VI: Therapieprinzip?', 'Rockwood I–VI: Treatment principle?', 'راک‌وود I–VI: اصل درمان؟'),
-    L('I+II → Konservativ (Gilchrist-Verband). III → Individuell (Alter, Aktivität, Beruf). IV–VI → Operativ (Tight-Rope oder Hakenplatte).', 'I+II → Conservative (Gilchrist sling). III → Individualised (age, activity, occupation). IV–VI → Surgical (tight-rope or hook plate).', 'I+II → محافظه‌کارانه (باند گیلکریست). III → فردی (سن، فعالیت، شغل). IV–VI → جراحی (تایت‌روپ یا صفحه قلاب‌دار).'),
-    L('Grauzone = Typ III. Regel: I+II konservativ, IV–VI operativ.', 'Grey zone = Type III. Rule: I+II conservative, IV–VI surgical.', 'ناحیه خاکستری = نوع III. قانون: I+II محافظه‌کارانه، IV–VI جراحی.')
+    L('I–II meist konservativ. III umstritten und individuell. Symptomatische IV–VI häufig operativ beurteilt; Befund, Begleitverletzungen und Patientenziele einbeziehen.', 'I–II usually conservative. III debated and individualised. Symptomatic IV–VI commonly assessed for surgery; consider findings, associated injuries, and patient goals.', 'I–II معمولاً محافظه‌کارانه. III مورد اختلاف و فردی‌سازی‌شده. IV–VI علامت‌دار اغلب برای جراحی ارزیابی می‌شوند؛ یافته‌ها، آسیب‌های همراه و اهداف بیمار را لحاظ کنید.'),
+    L('Therapieprinzipien sind Orientierung, keine automatische OP-Regel; Typ III bleibt die Grauzone.', 'Treatment principles are guidance, not automatic surgery rules; Type III remains the grey zone.', 'اصول درمان راهنما هستند، نه قاعده خودکار جراحی؛ نوع III همچنان ناحیه خاکستری است.')
   ),
 
   F('ak-lux-fc-4', L('Rockwood', 'Rockwood', 'راک‌وود'),
     L('Rockwood Typ IV: Worin besteht die Besonderheit?', 'Rockwood Type IV: What is the distinctive feature?', 'راک‌وود نوع IV: ویژگی خاص چیست؟'),
-    L('Posteriore Dislokation der Klavikula in den M. trapezius. Im AP-Röntgen oft unauffällig! Axiale Aufnahme ist zwingend erforderlich. Immer operative Therapie.', 'Posterior dislocation of the clavicle into the trapezius. Often unremarkable on AP X-ray! Axial view is mandatory. Always surgical treatment.', 'جابجایی خلفی کلاویکول به داخل عضله تراپزیوس. در رادیوگرافی AP اغلب طبیعی! نمای محوری اجباری است. همیشه درمان جراحی.'),
-    L('Typ IV = posterior. AP normal → Axial obligat!', 'Type IV = posterior. AP normal → axial mandatory!', 'نوع IV = خلفی. AP طبیعی → محوری اجباری!')
+    L('Posteriore Verlagerung der Klavikula in/durch den M. trapezius. Bei Verdacht axiale/axilläre Projektion ergänzen; symptomatische Verletzungen häufig fachärztlich operativ beurteilen.', 'Posterior displacement of the clavicle into/through trapezius. Add an axial/axillary projection when suspected; symptomatic injuries are commonly assessed for surgery by a specialist.', 'جابجایی خلفی کلاویکول به داخل/از میان تراپزیوس. در صورت شک نمای محوری/آگزیلاری اضافه کنید؛ آسیب‌های علامت‌دار اغلب توسط متخصص برای جراحی ارزیابی می‌شوند.'),
+    L('Typ IV = posterior; bei Verdacht axial/axillär ergänzen.', 'Type IV = posterior; add axial/axillary view when suspected.', 'نوع IV = خلفی؛ در صورت شک نمای محوری/آگزیلاری اضافه شود.')
   ),
 
   F('ak-lux-fc-5', L('Rockwood', 'Rockwood', 'راک‌وود'),
     L('Unterschied Rockwood III vs. V?', 'Difference Rockwood III vs. V?', 'تفاوت راک‌وود III در مقابل V؟'),
-    L('Typ III: Ruptur AC + CC-Bänder, CCD erhöht, Hochstand > 50 % der Gelenkhöhe. Typ V: wie III + Abriss M. deltoideus/trapezius + extremer Hochstand (CCD > 25 mm).', 'Type III: AC + CC ligament rupture, elevated CCD, elevation > 50 % of joint height. Type V: like III + deltoid/trapezius avulsion + extreme elevation (CCD > 25 mm).', 'نوع III: پارگی رباط AC + CC، CCD افزایش یافته، ارتفاع > ۵۰٪ ارتفاع مفصل. نوع V: مثل III + جداشدگی دلتوئید/تراپزیوس + ارتفاع شدید (CCD > ۲۵ میلی‌متر).'),
-    L('V = III + Muskelabriss + extremer Hochstand (CCD > 25 mm).', 'V = III + muscle avulsion + extreme elevation (CCD > 25 mm).', 'V = III + جداشدگی عضله + ارتفاع شدید (CCD > ۲۵ میلی‌متر).')
+    L('Typ III: AC- und CC-Bandverletzung mit CCD-Zunahme 25–100 % im Seitenvergleich. Typ V: zusätzliche Ablösung der deltotrapezialen Faszie und meist 100–300 % CCD-Zunahme.', 'Type III: AC and CC ligament injury with 25–100% CCD increase side to side. Type V: additional deltotrapezial fascia detachment and usually 100–300% CCD increase.', 'نوع III: آسیب رباط‌های AC و CC با افزایش ۲۵ تا ۱۰۰٪ CCD در مقایسه دو طرف. نوع V: به‌علاوه جداشدگی فاسیای دلتوتراپزیوس و معمولاً افزایش ۱۰۰ تا ۳۰۰٪ CCD.'),
+    L('V = stärkere vertikale Verschiebung plus deltotrapeziale Faszienablösung; Prozentwerte im Seitenvergleich.', 'V = greater vertical displacement plus deltotrapezial fascia detachment; percentages refer to side-to-side comparison.', 'V = جابجایی عمودی بیشتر به‌علاوه جداشدگی فاسیای دلتوتراپزیوس؛ درصدها بر پایه مقایسه دو طرف هستند.')
   ),
 
   F('ak-lux-fc-6', L('Bildgebung', 'Imaging', 'تصویربرداری'),
     L('Wann ist ein normales AP-Röntgen trotzdem falsch-negativ für eine AC-Luxation?', 'When is a normal AP X-ray still falsely negative for AC dislocation?', 'چه زمانی رادیوگرافی AP طبیعی برای لوکساسیون AC کاذب-منفی است؟'),
-    L('Bei Rockwood Typ IV (posteriore Dislokation). Das AP-Bild zeigt keinen vertikalen Hochstand → axiale Aufnahme zwingend nötig. Auch bei Typ I ist das Röntgen normal (klinische Diagnose).', 'In Rockwood Type IV (posterior dislocation). The AP view shows no vertical elevation → axial view mandatory. Also in Type I the X-ray is normal (clinical diagnosis).', 'در راک‌وود نوع IV (جابجایی خلفی). نمای AP ارتفاع عمودی نشان نمی‌دهد → نمای محوری اجباری. همچنین در نوع I رادیوگرافی طبیعی است (تشخیص بالینی).'),
-    L('Typ I und IV → AP normal. Typ IV → Axial obligat.', 'Type I and IV → AP normal. Type IV → Axial mandatory.', 'نوع I و IV → AP طبیعی. نوع IV → محوری اجباری.')
+    L('Bei Verdacht auf Typ IV kann posteriore Verlagerung im AP übersehen werden; axial/axillär ergänzen. Typ I zeigt typischerweise keine radiologische Dislokation.', 'If Type IV is suspected, posterior displacement may be missed on AP; add an axial/axillary view. Type I typically has no radiographic displacement.', 'در صورت شک به نوع IV، جابجایی خلفی ممکن است در AP دیده نشود؛ نمای محوری/آگزیلاری اضافه شود. نوع I معمولاً جابجایی رادیوگرافیک ندارد.'),
+    L('Typ IV: Verdacht → axiale/axilläre Zusatzprojektion; Typ I: meist Normalbefund.', 'Type IV: suspicion → add axial/axillary view; Type I: usually normal radiograph.', 'نوع IV: شک بالینی → نمای محوری/آگزیلاری افزوده؛ نوع I: معمولاً رادیوگرافی طبیعی.')
   ),
 
   F('ak-lux-fc-7', L('Anatomie', 'Anatomy', 'آناتومی'),
-    L('Tossy vs. Rockwood: Warum ist Tossy veraltet?', 'Tossy vs. Rockwood: Why is Tossy outdated?', 'توسی در مقابل راک‌وود: چرا توسی منسوخ است؟'),
-    L('Tossy unterscheidet nur 3 Typen (I–III). Rockwood ergänzt Typ IV (posteriore), V (extremer Hochstand + Muskelabriss) und VI (inferiore Dislokation). Diese Zusatztypen haben jeweils distinkte Therapieimplikationen.', 'Tossy distinguishes only 3 types (I–III). Rockwood adds Type IV (posterior), V (extreme elevation + muscle avulsion), and VI (inferior dislocation). These additional types each have distinct treatment implications.', 'توسی فقط ۳ نوع (I–III) را متمایز می‌کند. راک‌وود نوع IV (خلفی)، V (ارتفاع شدید + جداشدگی عضله) و VI (جابجایی تحتانی) را اضافه می‌کند. این انواع اضافی هر کدام مفاهیم درمانی متمایزی دارند.'),
-    L('Tossy = I–III (veraltet). Rockwood = I–VI (aktuell).', 'Tossy = I–III (outdated). Rockwood = I–VI (current).', 'توسی = I–III (منسوخ). راک‌وود = I–VI (فعلی).')
+    L('Tossy vs. Rockwood: Was ergänzt Rockwood?', 'Tossy vs. Rockwood: What does Rockwood add?', 'توسی در برابر راک‌وود: راک‌وود چه چیزی اضافه می‌کند؟'),
+    L('Tossy I–III deckt posteriore/inferiore Dislokation und extreme Hochstände nicht ab; Rockwood ergänzt Typ IV–VI. Rockwood ist verbreitet, ersetzt aber keine klinische Beurteilung.', 'Tossy I–III does not cover posterior/inferior displacement or extreme elevation; Rockwood adds Types IV–VI. Rockwood is widely used but does not replace clinical assessment.', 'توسی I–III جابجایی خلفی/تحتانی و ارتفاع شدید را پوشش نمی‌دهد؛ راک‌وود انواع IV–VI را اضافه می‌کند. راک‌وود رایج است اما جایگزین ارزیابی بالینی نیست.'),
+    L('Tossy I–III entsprechen ungefähr Rockwood I–III; Rockwood ergänzt IV–VI.', 'Tossy I–III roughly correspond to Rockwood I–III; Rockwood adds IV–VI.', 'توسی I–III تقریباً متناظر با راک‌وود I–III؛ راک‌وود IV–VI را اضافه می‌کند.')
   ),
 
   F('ak-lux-fc-8', L('Therapie', 'Treatment', 'درمان'),
     L('Welche OP-Verfahren werden bei Typ IV–VI eingesetzt?', 'Which surgical procedures are used for Types IV–VI?', 'کدام روش‌های جراحی برای نوع IV–VI استفاده می‌شوند؟'),
-    L('1) Tight-Rope-System: arthroskopisch, CC-Rekonstruktion mit Fadenschlinge. 2) Hakenplatte (Hook-Plate): offen, muss nach Heilung entfernt werden. Ziel: anatomische Reposition + Bandrekonstruktion.', '1) Tight-rope system: arthroscopic, CC reconstruction with suture loop. 2) Hook plate: open, must be removed after healing. Goal: anatomical reduction + ligament reconstruction.', '۱) سیستم تایت‌روپ: آرتروسکوپیک، بازسازی CC با حلقه بخیه. ۲) صفحه قلاب‌دار: باز، باید بعد از بهبودی برداشته شود. هدف: ریداکسیون آناتومیک + بازسازی رباط.'),
-    L('Tight-Rope = arthroskopisch. Hakenplatte = offen, muss entfernt werden.', 'Tight-rope = arthroscopic. Hook plate = open, must be removed.', 'تایت‌روپ = آرتروسکوپیک. صفحه قلاب‌دار = باز، باید برداشته شود.')
+    L('Suspensionssysteme (z. B. Tight-Rope) und Hakenplatten sind Beispiele operativer Stabilisierung. Technik und zusätzliche Bandrekonstruktion richten sich nach Verletzungsmuster und lokalem Vorgehen; eine spätere Entfernung der Hakenplatte hängt vom Implantat-/Behandlungsplan ab.', 'Suspensory devices (e.g. tight-rope) and hook plates are examples of operative stabilisation. Technique and additional ligament reconstruction depend on the injury pattern and local approach; later hook-plate removal depends on the implant/treatment plan.', 'سیستم‌های تعلیقی (مانند تایت‌روپ) و صفحات قلاب‌دار نمونه‌هایی از تثبیت جراحی هستند. روش و بازسازی اضافی رباط بر اساس الگوی آسیب و رویکرد محلی انتخاب می‌شود؛ خارج کردن بعدی صفحه قلاب‌دار به نوع ایمپلنت و برنامه درمان بستگی دارد.'),
+    L('Beispiele, keine abschließende Methodenliste; Eingriff und Implantatmanagement werden individuell festgelegt.', 'Examples, not an exhaustive list; the operation and implant plan are individualised.', 'نمونه‌هایی از روش‌ها، نه فهرستی جامع؛ عمل و برنامه ایمپلنت به‌صورت فردی تعیین می‌شود.')
   ),
 
 ].map(fc => ({

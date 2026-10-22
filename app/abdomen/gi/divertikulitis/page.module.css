@@ -825,6 +825,24 @@
 .mskTraumaPage .actionBtn { color: #ea580c; }
 .mskTraumaPage .sourceBadge { background: linear-gradient(135deg, #c2410c, #f97316); }
 .mskTraumaPage .heroText::after { background: linear-gradient(90deg, #ea580c, #f97316, #eab308); }
+.akLuxationPage .heroText :global([data-lesson-hero]) h1 {
+  margin: 0;
+  font-family: var(--font-newsreader, var(--font-fraunces, Georgia, serif));
+  font-size: clamp(36px, 4.5vw, 62px);
+  font-style: normal;
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: var(--text-strong);
+}
+.akLuxationPage .heroText :global([data-lesson-hero][lang='fa']) h1 {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.akLuxationPage .heroText :global([data-lesson-hero]) figure { margin: 0; }
+.akLuxationPage .heroText :global([data-lesson-hero]) figure img { transform: none; object-fit: contain; }
 .mskTraumaPage .heroStat:nth-child(1) { background: linear-gradient(135deg, #9a3412, #ea580c); }
 .mskTraumaPage .heroStat:nth-child(2) { background: linear-gradient(135deg, #b45309, #f59e0b); }
 .mskTraumaPage .heroStat:nth-child(3) { color: #7c2d12; background: linear-gradient(135deg, #fff7ed, #fefce8); }

@@ -134,7 +134,7 @@ const akText = JSON.stringify({ lesson: AK_LUXATION_LESSON, questions: AK_LUXATI
 assert.ok(akText.includes('10–15 kg'), 'AK lesson should preserve the PDF-described weighted-view technique as source data')
 assert.ok(akText.includes('Nordin et al.') && akText.includes('10.1177/0284185120939270'), 'AK lesson must correctly attribute the 2020-online/2021-issue weighted-view study to Nordin et al.')
 assert.ok(akText.includes('Ibrahim et al. (2015') && akText.includes('10.1016/j.injury.2015.06.028'), 'AK lesson should document the conflicting Ibrahim 2015 study')
-assert.ok(akText.includes('independent normative reference is still pending') && akText.includes('منبع هنجاری مستقل آن در انتظار بررسی است'), '11–13 mm must remain explicitly marked pending independent normative sourcing')
+assert.ok(akText.includes('11–13 mm is a published orienting range with individual variation') && akText.includes('۱۱ تا ۱۳ میلی‌متر محدوده‌ای راهنما در منابع منتشرشده است و تفاوت فردی دارد'), '11–13 mm must be sourced as a published orienting range and qualified for individual variation')
 assert.doesNotMatch(akText, /Ibrahim et al\. 2020|ابراهیم و همکاران، ۲۰۲۰/, 'weighted-view DOI must not be attributed to Ibrahim')
 for (const obsolete of [/Goldstandard/i, /Stressaufnahmen sind wichtig.*Typ III.*V/i, /important for differentiating type III from V/i, /تفاوت نوع III و V.*ضروری/i]) {
   assert.doesNotMatch(akText, obsolete, `obsolete categorical weighted-view claim: ${obsolete}`)
