@@ -27,7 +27,7 @@ new Function('require', 'module', 'exports', compiled)(name => {
 const { CONTENT } = module.exports
 assert.ok(CONTENT?.fa)
 
-const allowedSharedCopy = new Set(['', 'Dr. Zia', 'CT', 'MRI', 'Weber A', 'Weber B', 'Weber C', 'Weber A–C', 'bildgebung', 'analyse', 'weber', 'stabilitaet', 'sonderformen', 'ct', 'fall', 'takehome', 'pilon', 'mais', 'bi', '🩻', '🔍', '🦴', '⚠️', '🧩', '◫', '🧪', '💡'])
+const allowedSharedCopy = new Set(['', 'Dr. Zia', 'CT', 'MRI', 'AP', 'Mortise', 'Weber A', 'Weber B', 'Weber C', 'Weber A–C', 'bildgebung', 'analyse', 'weber', 'stabilitaet', 'sonderformen', 'ct', 'fall', 'takehome', 'pilon', 'mais', 'bi', '🩻', '🔍', '🦴', '⚠️', '🧩', '◫', '🧪', '💡'])
 const untranslated = []
 function compareEnglishAndPersian(en, fa, path = 'CONTENT') {
   if (typeof en === 'string' && typeof fa === 'string') {

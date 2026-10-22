@@ -349,6 +349,24 @@
   height: auto;
 }
 
+.weberFigure figcaption {
+  padding: 10px 14px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.sourceNote {
+  margin: 12px 0 0;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.sourceNote a {
+  color: var(--accent, #f97316);
+  text-underline-offset: 3px;
+}
+
 .infoCard,
 .highlightBox,
 .takeHomeItem {

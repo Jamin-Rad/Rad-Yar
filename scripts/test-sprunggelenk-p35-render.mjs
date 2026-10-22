@@ -57,9 +57,9 @@ assert.ok(topic, 'exact existing ankle curriculum entry exists')
 assert.equal(topic.link, '/msk/trauma/sprunggelenk')
 
 const expected = {
-  de: ['Spezielle Frakturmuster erkennen', 'Bimalleoläre Fraktur', 'Trimalleoläre Fraktur', 'Syndesmosenruptur', 'Pilon-/Plafond-Fraktur', 'Chaput vs. Volkmann', 'PDF-S. 35 (gedruckte S. 34)', 'Muster erkennen', 'Trümmerfraktur des tibialen Plafonds'],
-  en: ['Recognise specific fracture patterns', 'Bimalleolar fracture', 'Trimalleolar fracture', 'Syndesmotic rupture', 'Pilon / plafond fracture', 'Chaput vs Volkmann', 'PDF p. 35 (printed p. 34)', 'Identify the pattern', 'Comminuted tibial plafond fracture'],
-  fa: ['الگوهای ویژه شکستگی را بشناسید', 'شکستگی دو قوزکی', 'شکستگی سه‌قوزکی', 'پارگی سندسموز', 'شکستگی Pilon / plafond', 'Chaput در برابر Volkmann', 'صفحه PDF شماره ۳۵', 'الگو را تشخیص دهید', 'شکستگی خردشده سطح مفصلی تیبیا'],
+  de: ['Bildgebung beim Sprunggelenktrauma', '3 Ansichten', 'AP-Projektion mit 15–20° Innenrotation', 'MSK.pdf beschreibt auf S. 34 zwei Ebenen', 'ACR: übliche Drei-Ansichten-Serie', 'CT ergänzt das Röntgen', 'Weber-Klassifikation', 'Abbildung aus MSK.pdf, PDF-S. 34 (Druck-S. 33)', 'Spezielle Frakturmuster erkennen', 'Bimalleoläre Fraktur', 'Trimalleoläre Fraktur', 'Syndesmosenruptur', 'Pilon-/Plafond-Fraktur', 'Chaput vs. Volkmann', 'PDF-S. 35 (gedruckte S. 34)', 'Muster erkennen', 'Trümmerfraktur des tibialen Plafonds'],
+  en: ['Imaging ankle trauma', '3 views', 'AP projection with 15–20° internal rotation', 'MSK.pdf p. 34 describes two projections', 'ACR: typical three-view series', 'CT complements radiography', 'Weber classification', 'Figure from MSK.pdf, PDF p. 34 (printed p. 33)', 'Recognise specific fracture patterns', 'Bimalleolar fracture', 'Trimalleolar fracture', 'Syndesmotic rupture', 'Pilon / plafond fracture', 'Chaput vs Volkmann', 'PDF p. 35 (printed p. 34)', 'Identify the pattern', 'Comminuted tibial plafond fracture'],
+  fa: ['تصویربرداری در ترومای مچ پا', '۳ نما', 'نمای AP با ۱۵–۲۰ درجه چرخش داخلی', 'MSK.pdf در صفحهٔ ۳۴ دو نما را توصیف می‌کند', 'ACR: سری رایج سه‌نمایی', 'طبقه‌بندی Weber', 'تصویر از MSK.pdf، صفحهٔ PDF شمارهٔ ۳۴', 'الگوهای ویژه شکستگی را بشناسید', 'شکستگی دو قوزکی', 'شکستگی سه‌قوزکی', 'پارگی سندسموز', 'شکستگی Pilon / plafond', 'Chaput در برابر Volkmann', 'صفحه PDF شماره ۳۵', 'الگو را تشخیص دهید', 'شکستگی خردشده سطح مفصلی تیبیا'],
 }
 
 for (const locale of ['de', 'en', 'fa']) {

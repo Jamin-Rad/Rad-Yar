@@ -32,20 +32,22 @@ export const CONTENT = {
       { id: 'takehome', label: 'Take home message', icon: '💡' },
     ],
     heroCards: [
-      { value: '2 Ebenen', label: 'Röntgen als Basis', text: 'a.-p./Mortise und seitlich' },
+      { value: '3 Ansichten', label: 'übliche Röntgenserie', text: 'AP, Mortise und seitlich' },
       { value: '15–20°', label: 'Mortise-View', text: 'Innenrotation für freien Gelenkspalt' },
       { value: 'Weber A–C', label: 'Bezug zur Syndesmose', text: 'unterhalb, auf Höhe, oberhalb' },
     ],
     imaging: {
       title: 'Bildgebung beim Sprunggelenktrauma',
-      lead: 'Die konventionelle Röntgendiagnostik ist die Basis. Entscheidend sind korrekt eingestellte Aufnahmen, auf denen der gesamte obere Gelenkspalt und beide Malleolen beurteilbar sind.',
+      lead: 'Die konventionelle Röntgendiagnostik ist die Basis. Die übliche Serie umfasst AP, Mortise und seitlich. MSK.pdf beschreibt auf S. 34 zwei Ebenen (seitlich und AP in 15–20° Innenrotation); diese Quellenangabe ist nicht mit der üblichen Drei-Ansichten-Serie gleichzusetzen.',
       rows: [
-        ['a.-p. / Mortise', '15–20° Innenrotation', 'Gelenkgabel, medialer und superiorer Gelenkspalt, Syndesmose'],
+        ['AP', 'neutrale a.-p. Projektion', 'Ausrichtung, Frakturen und Gelenkflächen'],
+        ['Mortise', 'AP-Projektion mit 15–20° Innenrotation', 'Gelenkgabel, medialer und superiorer Gelenkspalt, Syndesmose'],
         ['Seitlich', 'Talus und distale Tibia überlagert', 'Hinterkante, Talusstellung, Gelenkerguss, dorsale Fragmente'],
         ['Zusatzaufnahme', 'je nach Klinik, z. B. prox. Fibula bei Druckschmerz (Maisonneuve?), Belastungsaufnahme bei Außenbandinstabilität, Fuß wenn mitbetroffen', ''],
       ],
       headers: ['Aufnahme', 'Technik', 'Beurteilung'],
-      key: 'Mortise-View: 15–20° Innenrotation – Fibula darf die Gelenkgabel nicht überlagern.',
+      key: 'Mortise-View: 15–20° Innenrotation – Fibula darf die Gelenkgabel nicht überlagern. Die lokale Untersuchungstechnik kann abweichen.',
+      protocolLinkLabel: 'ACR: übliche Drei-Ansichten-Serie',
     },
     analysis: {
       title: 'Systematische Bildanalyse',
@@ -62,6 +64,7 @@ export const CONTENT = {
       title: 'Weber-Klassifikation',
       lead: 'Die Weber-Klassifikation ordnet die Fibulafraktur nach ihrer Höhe relativ zur distalen Tibiofibularsyndesmose ein.',
       imageAlt: 'Weber-Klassifikation der Sprunggelenkfrakturen mit Weber A, B und C',
+      imageCaption: 'Abbildung aus MSK.pdf, PDF-S. 34 (Druck-S. 33). Die eingebetteten englischen Labels heißen Fibula, Tibia und ruptured syndesmosis; die Weber-Tabelle darunter erläutert sie auf Deutsch.',
       rows: [
         ['Weber A', 'unterhalb der Syndesmose', 'Syndesmose meist intakt; häufig stabil, mediale Verletzung ausschließen'],
         ['Weber B', 'auf Höhe der Syndesmose', 'Syndesmose oft teilweise verletzt; Stabilität variabel'],
@@ -135,7 +138,7 @@ export const CONTENT = {
       title: 'Take home message',
       lead: 'Die wichtigsten Punkte für den Alltag.',
       items: [
-        { title: 'Saubere Projektionen', text: 'Mindestens zwei Ebenen; Mortise-View mit frei beurteilbarem gesamten Gelenkspalt.' },
+        { title: 'Saubere Projektionen', text: 'Übliche Serie aus AP, Mortise und seitlicher Aufnahme; die Mortise-Aufnahme muss den Gelenkspalt frei zeigen.' },
         { title: 'Weber richtig nutzen', text: 'A unterhalb, B auf Höhe und C oberhalb der Syndesmose.' },
         { title: 'Stabilität entscheidet', text: 'Taluszentrierung, medialer Komplex und Syndesmose sind wichtiger als die Frakturhöhe allein.' },
         { title: 'Gesamte Verletzungskette', text: 'Bei Syndesmosenverdacht proximale Fibula und Hinterkante nicht vergessen.' },
@@ -162,20 +165,22 @@ export const CONTENT = {
       { id: 'takehome', label: 'Take home message', icon: '💡' },
     ],
     heroCards: [
-      { value: '2 views', label: 'radiography first', text: 'AP/mortise and lateral' },
+      { value: '3 views', label: 'typical radiographic series', text: 'AP, mortise and lateral' },
       { value: '15–20°', label: 'mortise view', text: 'internal rotation opens the joint space' },
       { value: 'Weber A–C', label: 'relation to syndesmosis', text: 'below, at, above' },
     ],
     imaging: {
       title: 'Imaging ankle trauma',
-      lead: 'Plain radiographs are the foundation. Correct positioning must show the whole ankle mortise and both malleoli.',
+      lead: 'Plain radiographs are the foundation. A typical series includes AP, mortise and lateral views. MSK.pdf p. 34 describes two projections (lateral and AP with 15–20° internal rotation); that source wording is distinct from the typical three-view series.',
       rows: [
-        ['AP / mortise', '15–20° internal rotation', 'mortise, medial and superior clear spaces, syndesmosis'],
+        ['AP', 'neutral anteroposterior projection', 'alignment, fractures and joint surfaces'],
+        ['Mortise', 'AP projection with 15–20° internal rotation', 'mortise, medial and superior clear spaces, syndesmosis'],
         ['Lateral', 'talus and distal tibia aligned', 'posterior malleolus, talar position, effusion, posterior fragments'],
         ['Additional view', 'as clinically indicated, e.g. proximal fibula if tender (Maisonneuve?), stress view for lateral ligament instability, foot if involved', ''],
       ],
       headers: ['View', 'Technique', 'Assessment'],
-      key: 'Mortise view: 15–20° internal rotation – fibula must not overlap the ankle mortise.',
+      key: 'Mortise view: 15–20° internal rotation – the fibula should not obscure the mortise. Local imaging protocols may vary.',
+      protocolLinkLabel: 'ACR: typical three-view series',
     },
     analysis: {
       title: 'Systematic image analysis',
@@ -192,6 +197,7 @@ export const CONTENT = {
       title: 'Weber classification',
       lead: 'The Weber classification categorises a fibular fracture by its level relative to the distal tibiofibular syndesmosis.',
       imageAlt: 'Weber classification of ankle fractures showing Weber A, B and C',
+      imageCaption: 'Figure from MSK.pdf, PDF p. 34 (printed p. 33). Its embedded labels read Fibula, Tibia and ruptured syndesmosis; the table below explains the Weber patterns.',
       rows: [
         ['Weber A', 'below the syndesmosis', 'syndesmosis usually intact; often stable, exclude medial injury'],
         ['Weber B', 'at the syndesmosis', 'syndesmosis may be partly injured; stability varies'],
@@ -265,7 +271,7 @@ export const CONTENT = {
       title: 'Take home message',
       lead: 'The essentials for daily reporting.',
       items: [
-        { title: 'Good projections', text: 'At least two views; the whole mortise must be visible on the mortise view.' },
+        { title: 'Good projections', text: 'Typical series: AP, mortise and lateral views; the mortise view must show the joint space clearly.' },
         { title: 'Use Weber correctly', text: 'A below, B at and C above the syndesmosis.' },
         { title: 'Stability matters', text: 'Talar centring, medial structures and syndesmosis matter more than fracture level alone.' },
         { title: 'Full injury chain', text: 'With suspected syndesmotic injury, do not forget the proximal fibula and posterior malleolus.' },
@@ -295,20 +301,22 @@ CONTENT.fa = {
     { id: 'takehome', label: 'نکات پایانی', icon: '💡' },
   ],
   heroCards: [
-    { value: '۲ نما', label: 'رادیوگرافی پایه', text: 'قدامی‌ـ‌خلفی / Mortise و نمای جانبی' },
+    { value: '۳ نما', label: 'سری رایج رادیوگرافی', text: 'AP، Mortise و نمای جانبی' },
     { value: '۱۵–۲۰°', label: 'نمای Mortise', text: 'چرخش داخلی برای بازشدن فضای مفصلی' },
     { value: 'Weber A–C', label: 'نسبت با سندسموز', text: 'پایین‌تر، هم‌سطح، بالاتر' },
   ],
   imaging: {
     title: 'تصویربرداری در ترومای مچ پا',
-    lead: 'رادیوگرافی ساده پایهٔ بررسی است. وضعیت‌گیری مناسب باید امکان ارزیابی کامل مفصل مچ و هر دو قوزک را فراهم کند.',
+    lead: 'رادیوگرافی ساده پایهٔ بررسی است. سری رایج شامل نماهای AP، Mortise و جانبی است. MSK.pdf در صفحهٔ ۳۴ دو نما را توصیف می‌کند (جانبی و AP با ۱۵–۲۰ درجه چرخش داخلی)؛ این عبارت منبع با سری رایج سه‌نمایی یکی نیست.',
     rows: [
-      ['قدامی‌ـ‌خلفی / Mortise', '۱۵–۲۰ درجه چرخش داخلی', 'مفصل مچ، فضای مفصلی داخلی و فوقانی، سندسموز'],
+      ['AP', 'نمای قدامی‌ـ‌خلفی خنثی', 'راستای مفصل، شکستگی‌ها و سطوح مفصلی'],
+      ['Mortise', 'نمای AP با ۱۵–۲۰ درجه چرخش داخلی', 'مفصل مچ، فضای مفصلی داخلی و فوقانی، سندسموز'],
       ['جانبی', 'تالوس و انتهای دیستال تیبیا در وضعیت جانبی مناسب', 'لبهٔ خلفی تیبیا، وضعیت تالوس، افیوژن و قطعات خلفی'],
       ['نمای تکمیلی', 'برحسب علائم؛ مثلاً در حساسیت پروگزیمال فیبولا به آسیب Maisonneuve فکر کنید؛ نماهای استرس یا پا فقط با پرسش بالینی مرتبط', ''],
     ],
     headers: ['نما', 'روش', 'موارد ارزیابی'],
-    key: 'نمای Mortise با ۱۵–۲۰ درجه چرخش داخلی گرفته می‌شود؛ فیبولا نباید مانع ارزیابی مفصل مچ شود.',
+    key: 'نمای Mortise با ۱۵–۲۰ درجه چرخش داخلی گرفته می‌شود؛ فیبولا نباید مانع ارزیابی مفصل مچ شود. پروتکل محلی تصویربرداری ممکن است متفاوت باشد.',
+    protocolLinkLabel: 'ACR: سری رایج سه‌نمایی',
   },
   analysis: {
     title: 'بررسی سیستماتیک تصاویر',
@@ -325,6 +333,7 @@ CONTENT.fa = {
     title: 'طبقه‌بندی Weber',
     lead: 'طبقه‌بندی Weber شکستگی فیبولا را بر اساس ارتفاع آن نسبت به سندسموز تیبیوفیبولار دیستال دسته‌بندی می‌کند.',
     imageAlt: 'شماتیک طبقه‌بندی شکستگی مچ پا بر اساس Weber A، B و C',
+    imageCaption: 'تصویر از MSK.pdf، صفحهٔ PDF شمارهٔ ۳۴ (صفحهٔ چاپی ۳۳). برچسب‌های داخل تصویر به انگلیسی‌اند؛ جدول زیر، الگوهای Weber را به فارسی توضیح می‌دهد.',
     rows: [
       ['Weber A', 'پایین‌تر از سندسموز', 'سندسموز معمولاً سالم است؛ اغلب پایدار، اما آسیب سمت داخلی را هم بررسی کنید'],
       ['Weber B', 'هم‌سطح سندسموز', 'سندسموز ممکن است تا حدی آسیب دیده باشد؛ پایداری متغیر است'],
@@ -398,7 +407,7 @@ CONTENT.fa = {
     title: 'نکات پایانی',
     lead: 'نکات کلیدی برای مرور روزمره.',
     items: [
-      { title: 'نماهای مناسب', text: 'حداقل دو نما؛ در نمای Mortise کل فضای مفصلی باید قابل ارزیابی باشد.' },
+      { title: 'نماهای مناسب', text: 'سری رایج شامل نماهای AP، Mortise و جانبی است؛ در نمای Mortise فضای مفصلی باید به‌خوبی دیده شود.' },
       { title: 'تفسیر درست Weber', text: 'A پایین‌تر، B هم‌سطح و C بالاتر از سندسموز است.' },
       { title: 'پایداری تعیین‌کننده است', text: 'مرکزیت تالوس، سمت داخلی و سندسموز از ارتفاع شکستگی مهم‌ترند.' },
       { title: 'کل زنجیرهٔ آسیب را ببینید', text: 'در صورت شک به آسیب سندسموز، فیبولای پروگزیمال و قوزک خلفی را فراموش نکنید.' },
@@ -601,6 +610,7 @@ export default function SprunggelenkTraumaPage() {
           <Section id="bildgebung" title={copy.imaging.title} lead={copy.imaging.lead}>
             <Table headers={copy.imaging.headers} rows={copy.imaging.rows} />
             <Callout label={copy.keyLabel}>{copy.imaging.key}</Callout>
+            <p className={styles.sourceNote}><a href="https://acsearch.acr.org/docs/69436/Narrative/" target="_blank" rel="noreferrer">{copy.imaging.protocolLinkLabel}</a></p>
           </Section>
 
           <Section id="analyse" title={copy.analysis.title} lead={copy.analysis.lead}>
@@ -618,6 +628,7 @@ export default function SprunggelenkTraumaPage() {
                 sizes="(max-width: 980px) calc(100vw - 64px), 850px"
                 priority
               />
+              <figcaption>{copy.weber.imageCaption}</figcaption>
             </figure>
             <Table headers={copy.weber.headers} rows={copy.weber.rows} />
             <Callout label={copy.keyLabel}>{copy.weber.key}</Callout>
