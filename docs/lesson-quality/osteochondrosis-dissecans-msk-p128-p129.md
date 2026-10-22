@@ -55,7 +55,7 @@
 - The MCQ is tied to MSK.pdf p.129 (printed p.128) and distinguishes the source-described normal ossification variant from OCD/SONK using age, posterior location, symmetry, and absent oedema. It does not claim that one feature alone establishes a diagnosis.
 - The card is tied to MSK.pdf p.128 (printed p.127) and asks for the source's three predilection sites. It is distinct from the MCQ and existing embedded stage check.
 - Curriculum `mcqLink` and `flashcardLink` are registered. Visible DE/EN/FA quiz and card actions on the route pass a `from` return URL to `#check`.
-- Focused runtime test: PASS. Global MCQ audit: PASS (767 questions per language). `git diff --check`: PASS. Independent review of this delta: pending. Browser and clinician review remain open.
+- Focused runtime test: PASS. Global MCQ audit: PASS (767 questions per language). `git diff --check`: PASS. Independent review of this delta: SRC/EDU/VIS/LNG/ASM/REV PASS. Browser and clinician review remain open.
 
 ## External verification and limits
 
@@ -69,9 +69,8 @@
 - `node scripts/test-msk-osteochondrosis-dissecans-render.mjs`: PASS (SSR coverage for DE/EN/FA, RTL, PDF scope/case, all four stages, juvenile MRI caveat, differential, and unselected retrieval).
 - `node --import tsx scripts/test-osteochondrosis-dissecans-assessments.mjs`: PASS (exact curriculum links, runtime MCQ selection in DE/EN/FA, localized card registry, route actions and return anchor).
 - `npm run audit:mcq`: PASS (767 questions and 18 cases per language); `git diff --check`: PASS.
-- Production build was attempted but blocked by `ENOTFOUND fonts.googleapis.com` and `EPERM` while creating `.next`; CUA browser inventory returned no available apps or browsers, so live route/interaction evidence is unavailable.
-- `git diff --check`: PASS for the scoped lesson files.
-- Independent review and citation delta: PASS for the original bounded source/teaching/image/language/assessment scope. The reviewer caught two incorrect article metadata records; both were corrected to PMID 20970949 (Heywood et al., 2011) and PMID 30995094 (Hu et al., 2019), then rechecked. The current assessment delta is awaiting its own independent review.
-- Browser/device/theme/interaction evidence: blocked; no browser surface was available. Build is blocked by network and `.next` filesystem errors described above.
+- Production build was attempted but blocked by `ENOTFOUND fonts.googleapis.com` and `EPERM` while creating `.next`; no browser surface was available and reviewer navigation to localhost returned `ERR_CONNECTION_REFUSED`, so live route/interaction evidence is unavailable.
+- Independent review and citation delta: PASS for the original bounded source/teaching/image/language/assessment scope. The reviewer caught two incorrect article metadata records; both were corrected and rechecked. Current assessment delta SRC/EDU/VIS/LNG/ASM/REV: PASS.
+- Browser/device/theme/interaction evidence: blocked; no browser surface was available and localhost refused the connection. Build is blocked by network and `.next` filesystem errors described above.
 - Clinician review and Dr. Zia scientific approval: pending.
 - Release/publication approval: not asserted.
