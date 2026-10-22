@@ -4498,6 +4498,7 @@ export const MCQ_TOPIC_GROUPS = [
     title: { de: '10. Traumatologie & Frakturen', en: '10. Trauma & Fractures', fa: '۱۰. تروما و شکستگی‌ها' },
     topics: [
       { id: 'frakturbeschreibung', title: { de: 'Frakturbeschreibung', en: 'Fracture description', fa: 'توصیف شکستگی' } },
+      { id: 'stressfrakturen', title: { de: 'Stressfrakturen', en: 'Stress fractures', fa: 'شکستگی‌های استرسی' } },
       { id: 'frakturen-kindesalter', title: { de: 'Frakturen im Kindesalter', en: 'Paediatric Fractures', fa: 'شکستگی‌های دوران کودکی' } },
       { id: 'ak-luxation', title: { de: 'Akromioklavikuläre Luxation', en: 'AC Joint Dislocation', fa: 'لوکساسیون مفصل AC' } },
       { id: 'radiuskoepfchenfraktur', title: { de: 'Radiusköpfchenfraktur', en: 'Radial Head Fracture', fa: 'شکستگی سر رادیوس' } },

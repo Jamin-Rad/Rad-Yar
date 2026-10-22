@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
-import { FRAKTUR_LESSON, FRAKTUR_QUESTIONS, FRAKTUR_FLASHCARDS } from '../data/frakturbeschreibung.js'
+import { FRAKTUR_LESSON, FRAKTUR_QUESTIONS, FRAKTUR_FLASHCARDS, FRAKTUR_STRESS_FLASHCARDS, FRAKTUR_STRESS_FLASHCARD_TOPIC } from '../data/frakturbeschreibung.js'
+import { FLASHCARDS, FLASHCARD_TOPICS } from '../data/flashcards.js'
+import { MCQ_TOPIC_GROUPS } from '../data/questions.js'
 
 const langs = ['de', 'en', 'fa']
 const localized = value => {
@@ -33,6 +35,16 @@ for (const lang of langs) {
     assert.ok(question.explanation.trim(), `${question.id}: missing explanation`)
   }
 }
+for (const lang of langs) {
+  const stressQuestions = FRAKTUR_QUESTIONS[lang].filter(question => question.tags.includes('stressfrakturen'))
+  assert.deepEqual(stressQuestions.map(question => question.id.slice(-2)).sort(), ['05', '06', '11'])
+  assert.ok(stressQuestions.every(question => question.tags.includes('frakturbeschreibung')))
+}
+assert.ok(MCQ_TOPIC_GROUPS.some(group => group.topics.some(topic => topic.id === 'stressfrakturen')),'stress fracture topic is searchable in the quiz topic selector')
+assert.equal(FRAKTUR_STRESS_FLASHCARD_TOPIC.id,'stressfrakturen')
+assert.ok(FRAKTUR_STRESS_FLASHCARDS.length===1&&FRAKTUR_STRESS_FLASHCARDS[0].topicId==='stressfrakturen')
+assert.ok(FLASHCARD_TOPICS.some(topic=>topic.id==='stressfrakturen')&&FLASHCARDS.some(card=>card.topicId==='stressfrakturen'),'dedicated stress-fracture flashcard deck is registered')
+assert.match(fs.readFileSync('data/curriculum.js','utf8'),/id: 'stressfrakturen'[^\n]*link: '\/msk\/trauma\/frakturbeschreibung#entstehung'[^\n]*mcqLink: '[^']*themen=stressfrakturen'[^\n]*flashcardLink: '\/flashcards\/stressfrakturen'/,'stress fracture curriculum item links its lesson and exact assessment retrieval')
 assert.equal(FRAKTUR_FLASHCARDS.length, 15)
 for (const card of FRAKTUR_FLASHCARDS) {
   localized(card.front)
