@@ -19,7 +19,6 @@ const UI = {
 function Section({ id, title, lead, children }) {
   const mobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
-  useEffect(() => setOpen(false), [id])
   return (
     <section id={id} className={styles.section}>
       <button type="button" className={styles.sectionHeader} onClick={() => setOpen(v => !v)} aria-expanded={open}>
@@ -235,7 +234,12 @@ export default function RadiuskoepfchenfrakturPage() {
           {D.sections.map(s => (
             <button type="button" key={s.id}
               className={`${styles.sideItem} ${active === s.id ? styles.sideItemActive : ''}`}
-              onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const section = document.getElementById(s.id)
+                const header = section?.querySelector('button[aria-expanded="false"]')
+                header?.click()
+                section?.scrollIntoView({ behavior: 'smooth' })
+              }}
               style={s.emphasis ? { color: '#0891b2', border: '1px solid rgba(8,145,178,.48)', background: 'rgba(8,145,178,.12)', fontWeight: 950 } : undefined}>
               <span>{s.icon}</span>
               <strong>{c(s.label)}</strong>
