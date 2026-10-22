@@ -104,6 +104,7 @@ import { EPIPLOICA_QUESTIONS } from './epiploicaLesson'
 import { PANNICULITIS_QUESTIONS } from './panniculitisLesson'
 import { PERITONEAL_QUESTIONS } from './peritonealCarcinomatosisLesson'
 import { MSK_SPINE_REGISTERED_QUESTIONS } from './mskSpineRegisteredQuestions'
+import { MSK_BONE_AGGRESSIVENESS_QUESTIONS, MSK_BONE_AGGRESSIVENESS_TOPIC_GROUP } from './mskBoneAggressivenessAssessments'
 import { SPINE_MODIC_QUESTIONS, SPINE_MODIC_TOPIC_GROUP } from './spineModicAssessment'
 
 
@@ -4316,6 +4317,7 @@ export const QUESTION_BANK = Object.fromEntries(
 )
 
 for (const lang of Object.keys(QUESTION_BANK)) {
+  QUESTION_BANK[lang].push(...(MSK_BONE_AGGRESSIVENESS_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(GIST_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(VOLVULUS_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(PNET_QUESTIONS[lang] || []))
@@ -4327,6 +4329,7 @@ for (const lang of Object.keys(QUESTION_BANK)) {
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  MSK_BONE_AGGRESSIVENESS_TOPIC_GROUP,
   SPINE_MODIC_TOPIC_GROUP,
   { fachId: 'msk', kapitelId: 'msk-knee-lower-leg', title: { de: 'Knie & Unterschenkel', en: 'Knee & lower leg', fa: 'زانو و ساق' }, topics: [{ id: 'patella-streckapparat', title: { de: 'Patella & Streckapparat', en: 'Patella & extensor mechanism', fa: 'کشکک و مکانیسم اکستانسور' } }] },
   { fachId: 'msk', kapitelId: 'msk-knee-lower-leg', title: { de: 'Knie & Unterschenkel', en: 'Knee & lower leg', fa: 'زانو و ساق' }, topics: [{ id: 'patellafraktur-trauma', title: { de: 'Patellafraktur', en: 'Patellar fracture', fa: 'شکستگی کشکک' } }] },

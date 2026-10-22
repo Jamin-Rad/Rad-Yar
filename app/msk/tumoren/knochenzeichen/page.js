@@ -69,14 +69,15 @@ export default function BoneAggressivenessPage() {
   const sources = lesson.references.map(source => ({ tag: pick(source.tag, lang), title: pick(source.label, lang), href: source.url }))
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={pick(lesson.title, lang)} author="RadYar" heroImageAlt={pick(lesson.alt, lang)} syncHashNavigation
     breadcrumbs={[{ label: 'RadYar', href: localized('/') }, { label: 'MSK', href: localized('/lernen/msk') }, { label: pick(lesson.title, lang) }]}
-    sections={sections} labels={translatedLabels} actions={{}} renderIcon={id => <Icon id={id}/>}
+    sections={sections} labels={translatedLabels} actions={{ mcq: { label: pick(L('Frage zum Quellenbeispiel', 'Question on the source example', 'پرسش دربارهٔ نمونهٔ منبع'), lang), href: `/ueben/quiz?fach=msk&n=1&themen=riesenzelltumor&from=${encodeURIComponent(localized('/msk/tumoren/knochenzeichen#lodwick'))}` }, flashcards: { label: pick(L('Lernkarte zum Quellenbeispiel', 'Flashcard on the source example', 'فلش‌کارت دربارهٔ نمونهٔ منبع'), lang), href: `/flashcards/riesenzelltumor?from=${encodeURIComponent(localized('/msk/tumoren/knochenzeichen#lodwick'))}` } }} renderIcon={id => <Icon id={id}/>}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.heroImage, heroImageOpacity: .8, accent: '#8ab9a7', accentStrong: '#286451', accentSoft: '#e8f2ed', secondary: '#d19b64', secondaryStrong: '#815124', heroBase: '#18342e' }}
     className={styles.page} sources={<LessonSources title={pick(L('Quellen und Umfang', 'Sources and scope', 'منابع و دامنه'), lang)} items={sources} note={pick(lesson.notice, lang)}/>}
   >
     {lesson.chapters.map(chapter => <LessonSection key={chapter.id} id={chapter.id} icon={chapter.id} title={pick(chapter.title, lang)} bodyClassName={styles.body}>
       <p>{pick(chapter.lead, lang)}</p><PatternTable rows={chapter.rows} lang={lang}/>
       {chapter.id === 'lodwick' && <LodwickSchematic lang={lang}/>}
-      {chapter.extraRows && <><h3>{pick(chapter.subheading, lang)}</h3><PatternTable rows={chapter.extraRows} lang={lang} title={L('Zusätzliche Merkmale', 'Additional features', 'یافته‌های تکمیلی')}/></>}
+      {chapter.extraRows && <><h3>{pick(chapter.subheading, lang)}</h3><PatternTable rows={chapter.extraRows} lang={lang} title={chapter.id === 'lodwick' ? L('Quellenbeispiel', 'Source example', 'نمونهٔ منبع') : L('Zusätzliche Merkmale', 'Additional features', 'یافته‌های تکمیلی')}/></>}
+      {chapter.exampleNote && <p className={styles.note}>{pick(chapter.exampleNote, lang)}</p>}
       <p className={styles.note}>{pick(chapter.note, lang)}</p>
     </LessonSection>)}
     <LessonSection id="case" icon="case" title={pick(lesson.case.title, lang)} bodyClassName={styles.body}><SelfCheck lang={lang}/></LessonSection>

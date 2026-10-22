@@ -42,9 +42,9 @@ Module._load = function (request, parent, isMain) {
 
 const { default: Route } = require(path.join(root, 'app/msk/tumoren/knochenzeichen/page.js'))
 const expected = {
-  de: ['Aggressivität fokaler Knochenläsionen', 'Das Muster ist nicht exklusiv.', 'Endosteales Scalloping', 'Geographisch · I', 'Mottenfraß · II', 'Konzeptzeichnung nach MSK.pdf', 'annähernd senkrechte Spiculae', 'divergierenden „Sunburst“', 'Knochenbildende Tumorzellen produzieren Osteoid', 'RadioGraphics · 2023', 'Imaging Review · 2020'],
-  en: ['Aggressiveness of focal bone lesions', 'The pattern is not exclusive.', 'Endosteal scalloping', 'Geographic · I', 'Moth-eaten · II', 'Conceptual drawing based on MSK.pdf', 'approximately perpendicular to the cortex', 'divergent “sunburst”', 'Bone-forming tumour cells produce osteoid', 'RadioGraphics · 2023', 'Imaging Review · 2020'],
-  fa: ['ارزیابی تهاجمی‌بودن ضایعات کانونی استخوان', 'اختصاصی آن‌ها نیست', 'فرسایش اندوستئال', 'جغرافیایی · I', 'بیدخورده · II', 'طرح مفهومی بر پایهٔ MSK.pdf', 'تقریباً عمود بر کورتکس', 'الگوی واگرای «sunburst»', 'سلول‌های تومورهای استخوان‌ساز استئوئید تولید می‌کنند', 'RadioGraphics · ۲۰۲۳', 'Imaging Review · ۲۰۲۰'],
+  de: ['Aggressivität fokaler Knochenläsionen', 'Das Muster ist nicht exklusiv.', 'Endosteales Scalloping', 'Geographisch · I', 'Mottenfraß · II', 'Konzeptzeichnung nach MSK.pdf', 'annähernd senkrechte Spiculae', 'divergierenden „Sunburst“', 'Knochenbildende Tumorzellen produzieren Osteoid', 'Riesenzelltumor als Beispiel', 'vereinfachte Tabellenangabe', 'keine individuelle Risikoeinstufung', 'RadioGraphics · 2023', 'Imaging Review · 2020'],
+  en: ['Aggressiveness of focal bone lesions', 'The pattern is not exclusive.', 'Endosteal scalloping', 'Geographic · I', 'Moth-eaten · II', 'Conceptual drawing based on MSK.pdf', 'approximately perpendicular to the cortex', 'divergent “sunburst”', 'Bone-forming tumour cells produce osteoid', 'lists giant cell tumour as an example', 'simplified table wording', 'individual risk classification', 'RadioGraphics · 2023', 'Imaging Review · 2020'],
+  fa: ['ارزیابی تهاجمی‌بودن ضایعات کانونی استخوان', 'اختصاصی آن‌ها نیست', 'فرسایش اندوستئال', 'جغرافیایی · I', 'بیدخورده · II', 'طرح مفهومی بر پایهٔ MSK.pdf', 'تقریباً عمود بر کورتکس', 'الگوی واگرای «sunburst»', 'سلول‌های تومورهای استخوان‌ساز استئوئید تولید می‌کنند', 'تومور سلول غول‌آسا را نمونه می‌داند', 'عبارت جدول ساده‌شده', 'ارزیابی خطر فردی', 'RadioGraphics · ۲۰۲۳', 'Imaging Review · ۲۰۲۰'],
 }
 
 for (const locale of Object.keys(expected)) {
@@ -55,6 +55,9 @@ for (const locale of Object.keys(expected)) {
   for (const phrase of expected[locale]) assert.ok(html.includes(phrase), `${locale} SSR includes ${phrase}`)
   assert.ok(html.includes('aria-expanded="true"'), `${locale} SSR includes an initially open chapter`)
   assert.ok(html.includes('msk-bone-aggressiveness.svg'), `${locale} SSR includes the topic schematic`)
+  assert.ok(html.includes('/ueben/quiz?fach=msk&amp;n=1&amp;themen=riesenzelltumor&amp;from='), `${locale} SSR links the exact-topic quiz`)
+  assert.ok(html.includes('/flashcards/riesenzelltumor?from='), `${locale} SSR links the scoped flashcard`)
+  assert.ok(html.includes('%2Fmsk%2Ftumoren%2Fknochenzeichen%23lodwick'), `${locale} assessment actions return to the Lodwick anchor`)
   assert.match(html, /role="region"[^>]*tabindex="0"[^>]*aria-label=/, `${locale} Lodwick figure has a labelled keyboard-scroll region`)
 }
 
