@@ -2,9 +2,9 @@ const PALETTE = { ink: '#24304a', muted: '#64748b', blue: '#38aeb1', blueLight: 
 
 function Lungs({ variant, lang }) {
   const labels = {
-    de: { tb: 'disseminierte Noduli', pneumonia: 'alveoläre Verschattung', hrct: 'interstitielles Muster', sarcoidosis: 'perilymphatische Noduli · bihiläre Lymphknoten' },
-    en: { tb: 'diffuse nodules', pneumonia: 'air-space opacity', hrct: 'interstitial pattern', sarcoidosis: 'perilymphatic nodules · bilateral hilar nodes' },
-    fa: { tb: 'ندول‌های منتشر', pneumonia: 'کدورت فضای هوایی', hrct: 'الگوی بینابینی', sarcoidosis: 'ندول‌های پری‌لنفاتیک · لنف‌نودهای بی‌هیلار' },
+    de: { tb: 'disseminierte Noduli', tuberculosis: 'miliäre Noduli', pneumonia: 'alveoläre Verschattung', hrct: 'interstitielles Muster', sarcoidosis: 'perilymphatische Noduli · bihiläre Lymphknoten' },
+    en: { tb: 'diffuse nodules', tuberculosis: 'miliary nodules', pneumonia: 'air-space opacity', hrct: 'interstitial pattern', sarcoidosis: 'perilymphatic nodules · bilateral hilar nodes' },
+    fa: { tb: 'ندول‌های منتشر', tuberculosis: 'ندول‌های میلیاری', pneumonia: 'کدورت فضای هوایی', hrct: 'الگوی بینابینی', sarcoidosis: 'ندول‌های پری‌لنفاتیک · لنف‌نودهای بی‌هیلار' },
   }[lang] || { tb: 'diffuse nodules', pneumonia: 'air-space opacity', hrct: 'interstitial pattern' }
   const marks = variant === 'tuberculosis'
     ? <g fill={PALETTE.coral}><circle cx="130" cy="76" r="6"/><circle cx="148" cy="87" r="4"/><circle cx="169" cy="74" r="5"/><circle cx="255" cy="80" r="5"/><circle cx="276" cy="90" r="4"/><circle cx="294" cy="75" r="5"/><circle cx="142" cy="112" r="3"/><circle cx="270" cy="119" r="3"/></g>
@@ -269,7 +269,9 @@ function Ultrasound({ lang }) {
 }
 
 export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de', title }) {
-  const accessibleDescription = variant === 'sarcoidosis'
+  const accessibleDescription = variant === 'tuberculosis'
+    ? ({ de: 'Lernschema der Lungen mit diffus verteilten Noduli bei miliarer Aussaat; schematisch, keine Patientenaufnahme.', en: 'Teaching schematic of the lungs with diffusely distributed nodules in miliary spread; schematic, not patient imaging.', fa: 'شماتیک آموزشی ریه‌ها با ندول‌های منتشر در انتشار میلیاری؛ نمای شماتیک است و تصویر بیمار نیست.' }[lang] || 'Teaching schematic of diffuse miliary nodules; not patient imaging.')
+    : variant === 'sarcoidosis'
     ? ({ de: 'Schematische Lungen mit perilymphatisch verteilten Noduli und beidseitigen Hiluslymphknoten; keine Patientenaufnahme.', en: 'Schematic lungs with perilymphatically distributed nodules and bilateral hilar nodes; not patient imaging.', fa: 'شماتیک ریه با ندول‌های پری‌لنفاتیک و لنف‌نودهای بی‌هیلار دوطرفه؛ تصویر بیمار نیست.' }[lang] || 'Sarcoidosis teaching schematic; not patient imaging.')
     : variant === 'renal-anatomy'
     ? ({ de: 'Lernschema eines Nierenquerschnitts mit Rinde, Markpyramiden, Kelchen, Nierenbecken und Ureter.', en: 'Teaching schematic of a kidney cross-section with cortex, medullary pyramids, calyces, renal pelvis and ureter.', fa: 'شماتیک آموزشی برش کلیه با قشر، هرم‌های مدولاری، کالیس‌ها، لگنچه و حالب.' }[lang] || 'Teaching schematic of kidney anatomy.')
