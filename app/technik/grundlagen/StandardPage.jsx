@@ -247,7 +247,7 @@ export default function TechnikGrundlagenStandardPage() {
         {section.id === 'mrt' ? <><MRIKnowledgeCheck lang={lang}/><RetrievalCheck kind="dixon" lang={lang}/><MriFundamentalsActions lang={lang}/><FatSuppressionActions lang={lang}/></> : null}
         {section.id === 'mrt-spezial' ? <><RetrievalCheck kind="perfusion" lang={lang}/><RetrievalCheck kind="ciss" lang={lang}/><CineActions lang={lang}/><MraActions lang={lang}/></> : null}
         {section.id === 'fmri-bold' ? <><RetrievalCheck kind="bold" lang={lang}/><BoldActions lang={lang}/></> : null}
-        {section.id === 'leber-mrt-protokoll' ? <><LiverProtocolFigure lang={lang}/><RetrievalCheck kind="liverProtocol" lang={lang}/></> : null}
+        {section.id === 'leber-mrt-protokoll' ? <><LiverProtocolFigure lang={lang}/><RetrievalCheck kind="liverProtocol" lang={lang}/><LiverProtocolActions lang={lang}/></> : null}
         {section.id === 'mrcp-protokoll' ? <RetrievalCheck kind="mrcp" lang={lang}/> : null}
         {section.id === 'mrt-sicherheit' ? <><MRIArtifactKnowledgeCheck lang={lang}/><MriSafetyActions lang={lang}/></> : null}
         {section.id === 'ct' ? <><CtReconstructionActions lang={lang}/><HrctActions lang={lang}/><RetrievalCheck kind="ctPerfusion" lang={lang}/><RetrievalCheck kind="ctQuality" lang={lang}/></> : null}
@@ -266,6 +266,21 @@ export default function TechnikGrundlagenStandardPage() {
     </StandardLessonShell>
     <Footer/>
   </>
+}
+
+function LiverProtocolActions({ lang }) {
+  const returnTo = lang === 'de' ? '/technik/grundlagen#leber-mrt-protokoll' : `/technik/grundlagen?lang=${lang}#leber-mrt-protokoll`
+  const from = encodeURIComponent(returnTo)
+  const labels = {
+    de: { title: 'Leber-MRT-Protokoll vertiefen', quiz: 'MC-Frage zu Phasen-Timing' },
+    en: { title: 'Review the liver MRI protocol', quiz: 'MCQ on phase timing' },
+    fa: { title: 'مرور پروتکل MRI کبد', quiz: 'سؤال چندگزینه‌ای دربارهٔ زمان‌بندی فازها' },
+  }[lang] || { title: 'Leber-MRT-Protokoll vertiefen', quiz: 'MC-Frage zu Phasen-Timing' }
+  const language = lang === 'de' ? '' : `&lang=${lang}`
+  return <nav aria-label={labels.title} style={{ display: 'flex', flexWrap: 'wrap', gap: 12, margin: '18px 0', padding: 14, border: '1px solid var(--border)', borderRadius: 14, background: 'var(--surface-soft)' }}>
+    <strong style={{ alignSelf: 'center' }}>{labels.title}</strong>
+    <a href={`/ueben/quiz?fach=technik&n=1&themen=leber-mrt-protokoll&from=${from}${language}`}>{labels.quiz}</a>
+  </nav>
 }
 
 function CtReconstructionActions({ lang }) {

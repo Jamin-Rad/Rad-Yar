@@ -24,7 +24,7 @@ Quelle: `Technik.pdf`, PDF-S. 119 (gedruckte S. 118). Die Seite wurde als Bild g
 3. Hepatobiliäre Phase als kontrastmittelabhängige Ergänzung einordnen.
 4. MRCP als zusätzliche Gangfrage abgrenzen.
 
-Eine vierteilige code-native Prozessgrafik und ein dreisprachiger Inline-MCQ prüfen diese Zuordnung. Ein Flashcard-Topic enthält eine Transferkarte. Da die Quelle kein diagnostisches Fallbild bietet, wurde kein Scan erfunden oder hinzugefügt.
+Eine vierteilige code-native Prozessgrafik und ein dreisprachiger Inline-MCQ prüfen die Sequenzgruppen. Eine global verknüpfte MCQ prüft zusätzlich, dass reale Phasen anhand von Bolus und tatsächlich erfasster Akquisition statt anhand universeller Sekundenwerte eingeordnet werden. Das Flashcard-Topic enthält eine Transferkarte. Da die Quelle kein diagnostisches Fallbild bietet, wurde kein Scan erfunden oder hinzugefügt.
 
 ## Ergänzende Quellen
 
@@ -38,11 +38,11 @@ Eine vierteilige code-native Prozessgrafik und ein dreisprachiger Inline-MCQ pr�
 - EDU: kompakte Sequenzgruppen-/Fragefolge statt langer Text; browser layout noch ausstehend.
 - VIS: Konzeptgrafik erklärt Ablauf, nicht Bilddiagnostik; PDF enthält hier kein diagnostisches Bild.
 - LNG: DE/EN/FA-Text und MCQ/Flashcard angelegt; unabhängige semantische Prüfung noch ausstehend.
-- ASM: Inline-MCQ mit begründeter Rückmeldung plus eine Transferkarte; fachübergreifende Fragebank-Integration nicht beansprucht.
-- UX: kein Browsernachweis in diesem Batch.
-- REV: unabhängiger Review und beide Delta-Retests PASS im statisch überprüfbaren Umfang. Die VIS/LNG-Pfeilrichtung, der Flashcard-Rücklink und die Parser-kompatible Persian-card-Diagrammfolge wurden bestätigt. Kein Browsernachweis; kein klinischer Fachfreigabeanspruch.
+- ASM: Inline-MCQ, ein global registriertes DE/EN/FA-MCQ mit Antwort- und Distraktorfeedback sowie eine Transferkarte; Curriculum-Quizlink und sichtbare Routenaktion mit Rückkehranker registriert.
+- UX: für den aktuellen Delta-Review war keine Browserumgebung verfügbar; Linkdarstellung und Rückkehrverhalten bleiben im echten Browser ungeprüft.
+- REV: unabhängige Prüfung und Delta-Retests der Lektionseinheit sowie unabhängiger statischer Review des aktuellen globalen MCQ/Quiz-Aktionsdeltas PASS. Kein Browsernachweis; kein klinischer Fachfreigabeanspruch.
 - Scientific approval: nicht erteilt; keine Freigabe klinischer Routineparameter.
 
 ## Prüfungen
 
-Nach Implementierung auszuführen: `git diff --check`, dedizierter Build/SSR der route, curriculum-link and flashcard lookup, and required lesson audits. Browser interactions remain unverified until a browser session is available.
+Prüfungen für dieses Assessment-Delta: `node --import tsx scripts/test-technik-liver-mri-protocol.mjs` PASS (inklusive Runtime-Frageauswahl in DE/EN/FA), `npm run audit:mcq` PASS (766 Fragen und 18 Fälle je Sprache), `git diff --check` PASS. `npm run build` scheiterte an `ENOTFOUND fonts.googleapis.com` und anschließend `EPERM` beim Schreiben nach `.next`; CUA meldete keine verfügbaren Browser. Route-Rendering und Interaktionen bleiben daher ungeprüft.
