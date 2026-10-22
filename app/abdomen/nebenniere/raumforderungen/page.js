@@ -42,7 +42,7 @@ const C = {
       ['Fettsättigung', 'Kein ausgeprägter Signalabfall, da die Sequenz vor allem makroskopisches Fett unterdrückt.', 'Makroskopische Fettanteile zeigen deutlichen Signalabfall.'],
     ],
     myelolipomaTitle: 'Myelolipom: makroskopisches Fett und Gewebeanteile',
-    myelolipoma: 'Das PDF beschreibt eine meist gut abgrenzbare, heterogene Läsion aus reifem Fett und hämatopoetischem Gewebe. In den zwei axialen CT-Bildern bleibt die makroskopische Fettkomponente nativ sichtbar; nach Kontrastmittel ist heterogene Anreicherung der weichteildichten Anteile zu sehen. Die Bilder sind nicht als vollständiges Protokoll oder alleiniger Benignitätsnachweis zu verstehen.',
+    myelolipoma: 'Das PDF beschreibt Myelolipome als meist gut abgrenzbare, heterogene Läsionen aus reifem Fett und hämatopoetischem Gewebe; deren Anteile variieren von kleinen Fetteinseln bis zu überwiegend fetthaltigen Massen. In den zwei axialen CT-Bildern bleibt die makroskopische Fettkomponente nativ sichtbar; nach Kontrastmittel ist heterogene Anreicherung der weichteildichten Anteile zu sehen. Die Bilder sind nicht als vollständiges Protokoll oder alleiniger Benignitätsnachweis zu verstehen.',
     myelolipomaNativeAlt: 'Axiales natives CT aus Abdomen.pdf, Seite 61: rechtsseitige Nebennierenraumforderung mit sichtbaren makroskopischen Fettanteilen.',
     myelolipomaContrastAlt: 'Axiales CT nach Kontrastmittel aus Abdomen.pdf, Seite 61: dieselbe rechtsseitige Nebennierenraumforderung mit heterogenen weichteildichten Anteilen.',
     nativeLabel: 'Nativ', contrastLabel: 'Nach Kontrastmittel',
@@ -92,7 +92,7 @@ const C = {
       ['Fat suppression', 'No marked signal loss because the sequence mainly suppresses macroscopic fat.', 'Macroscopic fat shows marked signal loss.'],
     ],
     myelolipomaTitle: 'Myelolipoma: macroscopic fat and soft-tissue components',
-    myelolipoma: 'The PDF describes a usually well-defined, heterogeneous lesion containing mature fat and haematopoietic tissue. In the two axial CT images, macroscopic fat remains visible on the unenhanced image; after contrast, the soft-tissue components enhance heterogeneously. These images are not a complete protocol or proof of benignity by themselves.',
+    myelolipoma: 'The PDF describes myelolipomas as usually well-defined, heterogeneous lesions containing mature fat and haematopoietic tissue, with proportions ranging from small fat islands to predominantly fatty masses. In the two axial CT images, macroscopic fat remains visible on the unenhanced image; after contrast, the soft-tissue components enhance heterogeneously. These images are not a complete protocol or proof of benignity by themselves.',
     myelolipomaNativeAlt: 'Axial unenhanced CT from Abdomen.pdf, page 61: right adrenal mass with visible macroscopic fat.',
     myelolipomaContrastAlt: 'Axial post-contrast CT from Abdomen.pdf, page 61: the same right adrenal mass with heterogeneous soft-tissue components.',
     nativeLabel: 'Unenhanced', contrastLabel: 'Post-contrast',
@@ -142,7 +142,7 @@ const C = {
       ['سرکوب چربی', 'افت سیگنال بارز ندارد، چون توالی عمدتاً چربی ماکروسکوپیک را سرکوب می‌کند.', 'چربی ماکروسکوپیک افت سیگنال بارز دارد.'],
     ],
     myelolipomaTitle: 'مایلولیپوما: چربی ماکروسکوپیک و اجزای بافت نرم',
-    myelolipoma: 'در PDF، ضایعه‌ای معمولاً مشخص و ناهمگون از چربی بالغ و بافت خون‌ساز توصیف شده است. در دو تصویر CT محوری، چربی ماکروسکوپیک در تصویر بدون تزریق دیده می‌شود؛ پس از تزریق، اجزای بافت نرم تقویت ناهمگون دارند. این تصاویر پروتکل کامل یا اثبات مستقل خوش‌خیمی نیستند.',
+    myelolipoma: 'PDF مایلولیپوما را معمولاً به‌صورت ضایعه‌ای مشخص و ناهمگون از چربی بالغ و بافت خون‌ساز توصیف می‌کند؛ نسبت این اجزا از جزیره‌های کوچک چربی تا توده‌های عمدتاً چربی‌دار متغیر است. در دو تصویر CT محوری، چربی ماکروسکوپیک در تصویر بدون تزریق دیده می‌شود؛ پس از تزریق، اجزای بافت نرم تقویت ناهمگون دارند. این تصاویر پروتکل کامل یا اثبات مستقل خوش‌خیمی نیستند.',
     myelolipomaNativeAlt: 'CT محوری بدون تزریق از صفحه ۶۱ Abdomen.pdf: توده آدرنال راست با چربی ماکروسکوپیک قابل مشاهده.',
     myelolipomaContrastAlt: 'CT محوری پس از تزریق از صفحه ۶۱ Abdomen.pdf: همان توده آدرنال راست با اجزای بافت نرم و تقویت ناهمگون.',
     nativeLabel: 'بدون تزریق', contrastLabel: 'پس از تزریق',
@@ -176,7 +176,7 @@ function Figure({ src, alt, caption, width, height }) {
 export default function AdrenalMassesPage() {
   const { lang } = useLanguage()
   const c = C[lang] || C.de
-  const [feature, adenoma, myelolipoma] = c.fatRows
+  const fatRows = c.fatRows
   const headings = c.tableHeaders
 
   return <LessonReferenceShell
@@ -216,7 +216,7 @@ export default function AdrenalMassesPage() {
         <div className={styles.tableScroll} role="region" tabIndex={0} aria-label={c.fatTitle}>
           <table>
             <thead><tr>{headings.map((heading, index) => <th key={index} scope="col">{heading}</th>)}</tr></thead>
-            <tbody>{[feature, adenoma, myelolipoma].map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, columnIndex) => columnIndex === 0 ? <th key={columnIndex} scope="row">{cell}</th> : <td key={columnIndex}>{cell}</td>)}</tr>)}</tbody>
+            <tbody>{fatRows.map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, columnIndex) => columnIndex === 0 ? <th key={columnIndex} scope="row">{cell}</th> : <td key={columnIndex}>{cell}</td>)}</tr>)}</tbody>
           </table>
         </div>
       </section>
