@@ -7,7 +7,7 @@ import { transformSync } from 'esbuild'
 import { TECHNIK_GRUNDLAGEN } from '../data/technikGrundlagenLesson.js'
 import { MRI_ARTIFACT_BLOCKS, MRI_ARTIFACT_QUESTIONS, MRI_ARTIFACT_TOPIC_GROUP, MRI_ARTIFACT_FLASHCARD_TOPIC, MRI_ARTIFACT_FLASHCARDS } from '../data/technikMriArtifacts.js'
 import { MRI_QUALITY_FLASHCARDS } from '../data/technikMRIFundamentalsLesson.js'
-import { MRI_SAFETY_BLOCK, MRI_SAFETY_QUESTIONS, MRI_SAFETY_TOPIC_GROUP, MRI_SAFETY_FLASHCARD_TOPIC, MRI_SAFETY_FLASHCARDS } from '../data/technikMriSafetyLesson.js'
+import { MRI_SAFETY_BLOCK, MRI_SAFETY_QUESTIONS, MRI_SAFETY_PREGNANCY_QUESTIONS, MRI_SAFETY_TOPIC_GROUP, MRI_SAFETY_FLASHCARD_TOPIC, MRI_SAFETY_FLASHCARDS } from '../data/technikMriSafetyLesson.js'
 import { MRI_SPIN_ECHO_BLOCK, MRI_SPIN_ECHO_QUESTIONS, MRI_SPIN_ECHO_TOPIC_GROUP, MRI_SPIN_ECHO_FLASHCARD_TOPIC, MRI_SPIN_ECHO_FLASHCARDS } from '../data/technikMriSpinEchoLesson.js'
 import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
 import { FLASHCARD_TOPICS, FLASHCARDS, getCardsByTopic } from '../data/flashcards.js'
@@ -142,11 +142,15 @@ assert.match(entry, /mcqLink: '\/ueben\/quiz\?fach=technik&n=1&themen=mrt-bildqu
 assert.match(entry, /flashcardLink: '\/flashcards\/mrt-bildqualitaet-artefakte-snr'/)
 assert.match(entry, /inProgress: true/)
 
-assert.equal(MRI_SAFETY_BLOCK.rows.length, 3)
+assert.equal(MRI_SAFETY_BLOCK.rows.length, 4)
 assert.match(MRI_SAFETY_BLOCK.rows[1][1].en, /local hot spots are not equivalent/)
-assert.match(MRI_SAFETY_BLOCK.rows[1][1].en, /GRE lower than SE, with TSE highest/)
+assert.match(MRI_SAFETY_BLOCK.rows[1][1].en, /GRE < SE, TSE highest/)
 assert.match(MRI_SAFETY_BLOCK.note.en, /PDF pp\. 92–94/)
-assert.match(MRI_SAFETY_BLOCK.note.en, /not adopted as current rules/)
+assert.match(MRI_SAFETY_BLOCK.note.en, /not current universal rules/)
+assert.match(MRI_SAFETY_BLOCK.rows[1][1].en, /Normal and First-Level Controlled are distinct operating modes/)
+assert.match(MRI_SAFETY_BLOCK.rows[3][1].en, /Patient: Clinical MRI/)
+assert.match(MRI_SAFETY_BLOCK.rows[3][1].en, /pregnant staff/)
+assert.match(MRI_SAFETY_BLOCK.rows[3][1].en, /during active scanning/)
 assert.ok(fs.existsSync(`public${MRI_SAFETY_BLOCK.visual.src}`))
 for (const lang of langs) {
   assert.ok(fs.existsSync(`public${MRI_SAFETY_BLOCK.visual.srcLocalized[lang]}`))
@@ -164,6 +168,10 @@ for (const lang of langs) {
   assert.ok(MRI_SAFETY_QUESTIONS.some(q => q.id === `mri-safety-${lang}-hotspot`))
   const q = MRI_SAFETY_QUESTIONS.find(q => q.id === `mri-safety-${lang}-hotspot`)
   assert.ok(QUESTION_BANK[lang].some(item => item.id === q.id))
+  const pregnancyQuestion = MRI_SAFETY_PREGNANCY_QUESTIONS.find(q => q.id === `mri-safety-${lang}-pregnancy`)
+  assert.ok(QUESTION_BANK[lang].some(item => item.id === pregnancyQuestion.id))
+  assert.equal(pregnancyQuestion.options.length, 4)
+  assert.ok(pregnancyQuestion.explanation && Object.keys(pregnancyQuestion.wrongExplanations).length === 3)
   assert.deepEqual(Object.keys(q.wrongExplanations).sort(), ['B', 'C', 'D'])
   assert.ok(MRI_SAFETY_FLASHCARDS.every(card => card.front[lang] && card.answer[lang]))
   const html = renderToStaticMarkup(React.createElement(Page))
@@ -172,13 +180,20 @@ for (const lang of langs) {
   assert.ok(html.includes(MRI_SAFETY_BLOCK.visual.alt[lang]))
   assert.ok(html.includes(`/flashcards/mrt-sicherheit-risiken?from=`))
 }
+for (const [lang, terms] of Object.entries({ de: [/Patientin/, /Beschäftigte/, /Zone IV/], en: [/patient/, /staff/, /Zone IV/], fa: [/بیمار/, /کارکنان/, /Zone IV/] })) {
+  const q = MRI_SAFETY_PREGNANCY_QUESTIONS.find(question => question.id === `mri-safety-${lang}-pregnancy`)
+  assert.ok(terms.every(term => term.test(`${q.question} ${q.options[0]} ${q.explanation}`)), `${lang}: patient/staff distinction translated`)
+}
 assert.ok(MCQ_TOPIC_GROUPS.includes(MRI_SAFETY_TOPIC_GROUP))
 assert.ok(FLASHCARD_TOPICS.some(topic => topic.id === MRI_SAFETY_FLASHCARD_TOPIC.id))
 assert.equal(MRI_SAFETY_FLASHCARDS.length, 3)
 assert.ok(MRI_SAFETY_FLASHCARDS.some(card => card.id === 'mri-safety-gradient-noise'))
 const gradientCard = MRI_SAFETY_FLASHCARDS.find(card => card.id === 'mri-safety-gradient-noise')
-for (const [lang, terms] of Object.entries({ de: [/Nerven/, /Geräusch/], en: [/nerve/, /noise/], fa: [/عصب/, /صدا/] })) {
+for (const [lang, terms] of Object.entries({ de: [/Nerven/, /implant/, /Gehörschutz/], en: [/nerve/, /implanted devices/, /hearing protection/], fa: [/عصب/, /ایمپلنت/, /محافظ شنوایی/] })) {
   assert.ok(terms.every(term => term.test(`${gradientCard.front[lang]} ${gradientCard.answer[lang]}`)), `${lang}: gradient stimulation and acoustic noise are actively retrievable`)
+}
+for (const [lang, terms] of Object.entries({ de: [/bis 3 T/, /ohne Kontrast/, /keine praktische Alternative/], en: [/up to 3 T/, /without contrast/, /no practical alternative/], fa: [/۳ تسلا/, /بدون مادهٔ حاجب/, /جایگزین عملی/] })) {
+  assert.ok(terms.every(term => term.test(MRI_SAFETY_BLOCK.rows[3][1][lang])), `${lang}: pregnant-patient recommendation has bounded indication`)
 }
 assert.equal(getCardsByTopic(MRI_SAFETY_FLASHCARD_TOPIC.id).length, MRI_SAFETY_FLASHCARDS.length)
 inspect(MRI_SAFETY_BLOCK)
