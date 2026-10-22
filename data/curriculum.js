@@ -527,7 +527,7 @@ export const CURRICULUM = [
         themen: [
           { id: 'akute-le', title: { de: 'Akute LE', en: 'Acute Pulmonary Embolism', fa: 'آمبولی حاد ریه' }, group: ['Lungenembolie (LE)'], tags: ['CT'], diff: 2, link: '/thorax/akute-le', ready: true, inProgress: true, updatedAt: '2026-10-19' },
           { id: 'cteph', title: { de: 'CTEPH', en: 'CTEPH', fa: 'CTEPH (هایپرتانسیون ریوی ترومبوآمبولیک مزمن)' }, group: ['Lungenembolie (LE)'], tags: ['CT'], diff: 3 },
-          { id: 'pulmonale-hypertonie', title: { de: 'Pulmonale Hypertonie', en: 'Pulmonary Hypertension', fa: 'هایپرتانسیون ریوی' }, group: ['Pulmonale Hypertonie'], tags: ['CT','Rö'], diff: 2, link: '/thorax/pulmonale-hypertonie' },
+          { id: 'pulmonale-hypertonie', title: { de: 'Pulmonale Hypertonie', en: 'Pulmonary Hypertension', fa: 'هایپرتانسیون ریوی' }, group: ['Pulmonale Hypertonie'], tags: ['CT','Rö'], diff: 2, link: '/thorax/pulmonale-hypertonie', mcqLink: '/ueben/quiz?fach=thorax&n=2&themen=pulmonale-hypertonie', flashcardLink: '/flashcards/pulmonale-hypertonie', updatedAt: '2026-10-22' },
           { id: 'pulmonale-avm', title: { de: 'Pulmonale AV-Malformation', en: 'Pulmonary Arteriovenous Malformation', fa: 'مالفورماسیون شریانی-وریدی ریوی' }, tags: ['CT'], diff: 3 },
         ],
       },

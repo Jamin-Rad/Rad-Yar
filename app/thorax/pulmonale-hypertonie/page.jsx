@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import StandardLessonShell, { LessonSection, LessonSources, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import PulmonaryHypertensionDiagram, { PulmonaryHypertensionFigureCaption } from '@/components/PulmonaryHypertensionDiagram'
@@ -53,6 +54,7 @@ function Section({ id, title, children }) { return <LessonSection id={id} title=
 function TeachingContent({ lang }) {
   const [answer, setAnswer] = useState(null)
   const fa = lang === 'fa'
+  const langHref = path => lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
   const yes = L( 'Richtig. Pulmonalarteriendurchmesser und Verhältnis zur Aorta sind Hinweise; die hämodynamische Diagnose wird im Rechtsherzkatheter gestellt.', 'Correct. Pulmonary-artery size and its ratio to the aorta are clues; haemodynamic diagnosis is established by right-heart catheterisation.','درست. قطر شریان ریوی و نسبت آن به آئورت سرنخ‌اند؛ تشخیص همودینامیک با کاتتریزاسیون راست قلب انجام می‌شود.')
   const no = L( 'Nicht allein. Durchmesser und Verhältnis können den Verdacht stützen, beweisen die pulmonale Hypertonie aber nicht.', 'Not by itself. Pulmonary-artery size and ratio raise suspicion but do not establish pulmonary hypertension.','نه. قطر و نسبت شریان ریوی احتمال را مطرح می‌کنند، اما به‌تنهایی پرفشاری ریوی را اثبات نمی‌کنند.')
   return <>
@@ -88,6 +90,14 @@ function TeachingContent({ lang }) {
         {answer !== null && <p className={answer === 1 ? styles.correct : styles.feedback} aria-live="polite">{t(answer === 1 ? yes : no, lang)}</p>}
       </div>
     </Section>
+    <nav className={styles.actions} aria-label={t(L('Weitere Übungen', 'More practice', 'تمرین‌های بیشتر'), lang)}>
+      <Link href={langHref('/ueben/quiz?fach=thorax&n=2&themen=pulmonale-hypertonie&from=%2Fthorax%2Fpulmonale-hypertonie')}>
+        {t(L('MCQ üben', 'Practise the MCQs', 'تمرین پرسش‌های چندگزینه‌ای'), lang)}
+      </Link>
+      <Link href={langHref('/flashcards/pulmonale-hypertonie?from=%2Fthorax%2Fpulmonale-hypertonie')}>
+        {t(L('Lernkarten öffnen', 'Open flashcards', 'بازکردن فلش‌کارت‌ها'), lang)}
+      </Link>
+    </nav>
     <Section id="take-home" title={t(SECTIONS[4].label, lang)}>
       <TakeHomeList items={[
         { title: t(L( 'CT liefert Hinweise; die hämodynamische Diagnose wird im Rechtsherzkatheter gestellt.', 'CT raises clues; RHC establishes the haemodynamic diagnosis.', 'CT سرنخ می‌دهد؛ RHC تشخیص همودینامیک را تثبیت می‌کند.'), lang), detail: t(L( 'Zur Definition und Einteilung der PH Drücke und Gefäßwiderstand im passenden Kontext beurteilen.', 'Use pressures and vascular resistance in the appropriate context to define and classify PH.', 'برای تعریف PH و گروه‌بندی، فشارها و مقاومت عروقی را در زمینه مناسب بررسی کنید.'), lang) },
@@ -104,7 +114,7 @@ export default function PulmonaryHypertensionPage() {
   const sources = REFERENCES.map(([title, href, citation]) => ({ tag: t(L( 'Leitlinie','Guideline','راهنما'), lang), title, href, citation }))
   const labels = Object.fromEntries(['contents', 'path', 'progress', 'continue', 'completeLesson', 'lessonCompleted', 'complete', 'completed', 'open', 'close', 'takeHome'].map(key => [key, t(COPY[key], lang)]))
   const fa = lang === 'fa'
-  const langHref = path => lang === 'de' ? path : `${path}?lang=${lang}`
+  const langHref = path => lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
   return <StandardLessonShell
     lessonId={ID} lang={lang} title={t(COPY.title, lang)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: langHref('/') }, { label: t(COPY.thorax, lang), href: langHref('/lernen/thorax') }, { label: t(COPY.chapter, lang) }, { label: t(COPY.title, lang) }]}

@@ -35,11 +35,11 @@ Sequence: haemodynamic definition and catheterisation; radiograph and CT clues w
 
 ## Translation and assessment audit
 
-All lesson strings use canonical `L(de, en, fa)` ordering. The parity checker requires German, English and Persian script in their respective slots, checks aligned translated anchors for the definition, group 4/4.1, radiograph signs and SVG label, and validates key values and the curriculum route. The self-check answer says imaging raises suspicion but further haemodynamic work-up is needed.
+All lesson strings use canonical `L(de, en, fa)` ordering. The parity checker requires German, English and Persian script in their respective slots, checks aligned translated anchors for the definition, group 4/4.1, radiograph signs and SVG label, and validates key values and the curriculum route. The self-check answer says imaging raises suspicion but further haemodynamic work-up is needed. The two central MCQs and two flashcards are separately registered under the exact curriculum ID; their localized distractor explanations were independently reviewed, and script-parity, registry, route-render, and global MCQ checks pass.
 
 ## Open gates
 
-- Independent review and retest closed the reported translation, source-label, SVG-clipping, and projection-mapping findings in the declared scope. This does not replace specialist clinical approval.
+- Independent review and retest closed the reported translation, source-label, SVG-clipping, projection-mapping, and assessment-feedback findings in the declared scope. The assessment delta review gates SRC/EDU/VIS/LNG/ASM/REV PASS; this does not replace specialist clinical approval.
 - Browser and RTL verification across widths/themes, keyboard and persisted lesson controls: pending.
-- Curriculum link is added; MCQ and flashcard banks are not created or linked in this scoped change.
+- A localized, centrally registered two-question MCQ set and two retrieval cards are now linked from the lesson and curriculum. These assess haemodynamic definition and limits of imaging signs; they do not expand the PDF coverage scope.
 - No scientific approval or publication readiness is claimed.

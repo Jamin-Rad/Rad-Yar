@@ -33,6 +33,9 @@
 .correct, .feedback { margin: .25rem 0 0; padding: .8rem; border-radius: 9px; }
 .correct { background: #e2f4e8; color: #155d32; }
 .feedback { background: #fff1d8; color: #713f00; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1rem 0; }
+.actions a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: .65rem 1rem; border: 1px solid var(--lesson-accent-strong); border-radius: 999px; color: var(--lesson-accent-strong); font-weight: 700; text-decoration: none; }
+.actions a:hover, .actions a:focus-visible { background: var(--lesson-accent-soft); outline: 2px solid var(--lesson-accent-strong); outline-offset: 2px; }
 
 @media (max-width: 720px) {
   .definitionGrid, .signGrid { grid-template-columns: 1fr; }
