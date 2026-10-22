@@ -33,4 +33,25 @@ export const TECHNIK_ROENTGEN_FLASHCARDS = [
     explanation: { de: 'Die Konversionskette beschreibt das Prinzip, beweist aber keine generell bessere Bildqualität oder geringere Patientendosis.', en: 'The conversion chain describes the principle but does not establish universally better image quality or lower patient dose.', fa: 'زنجیرهٔ تبدیل، اصل کار را بیان می‌کند اما به‌تنهایی کیفیت بهتر همگانی یا دوز کمتر بیمار را ثابت نمی‌کند.' },
     diagram: { de: 'CR: Speicherplatte, dann Laserleser. Indirekt: Röntgen, Licht, Ladung. Direkt: Röntgen, unmittelbar Ladung.', en: 'CR: storage plate, then laser reader. Indirect: X-ray, light, charge. Direct: X-ray, then charge.', fa: 'CR: صفحهٔ ذخیره‌ساز و سپس خوانش لیزری. DR غیرمستقیم: پرتو ایکس، نور، بار. DR مستقیم: پرتو ایکس و سپس بار.' },
   },
+  {
+    id: 'roentgenanlage-roehre-05-photoelectric', topicId: 'roentgenanlage-roehre', category: 'Wechselwirkung',
+    front: { de: 'Was geschieht beim Photoeffekt mit dem einfallenden Photon?', en: 'What happens to the incident photon in the photoelectric effect?', fa: 'در اثر فوتوالکتریک چه اتفاقی برای فوتون فرودی می‌افتد؟' },
+    answer: { de: 'Es wird vollständig absorbiert und überträgt seine Energie auf ein gebundenes Elektron, das freigesetzt wird.', en: 'It is fully absorbed and transfers its energy to a bound electron, which is ejected.', fa: 'فوتون کاملاً جذب می‌شود و انرژی خود را به الکترون مقیدی می‌دهد که آزاد می‌شود.' },
+    explanation: { de: 'Es gibt danach kein gestreutes Primärphoton. Davon unterscheidet sich Compton: Dort wird nur ein Teil der Energie übertragen.', en: 'There is no scattered primary photon afterward. Compton differs: only part of the photon energy is transferred.', fa: 'پس از آن فوتون اولیهٔ پراکنده‌ای باقی نمی‌ماند. در کامپتون فقط بخشی از انرژی فوتون منتقل می‌شود.' },
+    source: 'Technik.pdf physical p39 (printed p38); IAEA Diagnostic Radiology Physics, ch. 2',
+  },
+  {
+    id: 'roentgenanlage-roehre-06-compton', topicId: 'roentgenanlage-roehre', category: 'Wechselwirkung',
+    front: { de: 'Welche Energiebilanz kennzeichnet die Compton-Streuung?', en: 'Which energy pattern characterizes Compton scatter?', fa: 'کدام الگوی انرژی، پراکندگی کامپتون را مشخص می‌کند؟' },
+    answer: { de: 'Ein Teil der Photonenergie geht auf ein Elektron über; das abgelenkte Photon bleibt erhalten, aber mit geringerer Energie.', en: 'Part of the photon energy is transferred to an electron; the deflected photon remains but has lower energy.', fa: 'بخشی از انرژی فوتون به الکترون منتقل می‌شود؛ فوتون منحرف‌شده باقی می‌ماند اما انرژی کمتری دارد.' },
+    explanation: { de: 'Das gestreute Photon kann den Detektor erreichen und den Bildkontrast senken. Die Wechselwirkung wird nicht in Photoabsorption umgewandelt.', en: 'The scattered photon may reach the detector and reduce image contrast. The interaction is not converted into photoelectric absorption.', fa: 'فوتون پراکنده ممکن است به آشکارساز برسد و کنتراست تصویر را کاهش دهد. این برهم‌کنش به جذب فوتوالکتریک تبدیل نمی‌شود.' },
+    source: 'Technik.pdf physical p40 (printed p39); IAEA Diagnostic Radiology Physics, ch. 2',
+  },
+  {
+    id: 'roentgenanlage-roehre-07-coherent', topicId: 'roentgenanlage-roehre', category: 'Wechselwirkung',
+    front: { de: 'Wie unterscheidet sich kohärente Streuung von Compton-Streuung?', en: 'How does coherent scatter differ from Compton scatter?', fa: 'پراکندگی همدوس چه تفاوتی با پراکندگی کامپتون دارد؟' },
+    answer: { de: 'Das Photon ändert seine Richtung, ohne wesentliche Energie zu übertragen oder zu ionisieren.', en: 'The photon changes direction without substantial energy transfer or ionization.', fa: 'فوتون جهت خود را بدون انتقال چشمگیر انرژی یا یونش تغییر می‌دهد.' },
+    explanation: { de: 'Bei Compton werden Energie und Impuls teilweise auf ein Elektron übertragen. Der quantitative Anteil kohärenter Streuung hängt von der Energie ab.', en: 'In Compton scatter, some energy and momentum are transferred to an electron. The proportion of coherent scatter depends on energy.', fa: 'در پراکندگی کامپتون بخشی از انرژی و تکانه به الکترون منتقل می‌شود. سهم کمّی پراکندگی همدوس به انرژی وابسته است.' },
+    source: 'Technik.pdf physical p40 (printed p39); IAEA Diagnostic Radiology Physics, ch. 2',
+  },
 ]

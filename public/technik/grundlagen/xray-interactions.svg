@@ -8,11 +8,10 @@
   <circle cx="230" cy="174" r="8" fill="#5b7280"/><circle cx="676" cy="174" r="8" fill="#5b7280"/>
   <path d="M60 174H184" stroke="#1687b2" stroke-width="6" marker-end="url(#blueArrow)"/>
   <path d="M506 174H630" stroke="#1687b2" stroke-width="6" marker-end="url(#blueArrow)"/>
-  <path d="M700 150L814 76" stroke="#1687b2" stroke-width="5" marker-end="url(#blueArrow)"/>
+  <path d="M700 150L814 76" stroke="#1687b2" stroke-width="3" marker-end="url(#blueArrow)"/>
   <path d="M244 148L333 69" stroke="#dc8735" stroke-width="5" marker-end="url(#orangeArrow)"/>
   <path d="M690 204L764 270" stroke="#dc8735" stroke-width="5" marker-end="url(#orangeArrow)"/>
   <text x="70" y="142" font-family="Arial,sans-serif" font-size="18" fill="#214256">hν</text><text x="516" y="142" font-family="Arial,sans-serif" font-size="18" fill="#214256">hν</text>
+  <text x="780" y="62" font-family="Arial,sans-serif" font-size="16" fill="#214256">hν′ &lt; hν</text>
   <text x="347" y="65" font-family="Arial,sans-serif" font-size="18" fill="#8d511d">e⁻</text><text x="774" y="284" font-family="Arial,sans-serif" font-size="18" fill="#8d511d">e⁻</text>
-  <text x="213" y="235" font-family="Arial,sans-serif" font-size="14" fill="#526b78">absorbed</text>
-  <text x="660" y="235" font-family="Arial,sans-serif" font-size="14" fill="#526b78">scattered</text>
 </svg>
