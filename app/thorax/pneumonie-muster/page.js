@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import LessonReferenceShell from '@/components/LessonReferenceShell'
 import styles from './page.module.css'
@@ -50,6 +51,7 @@ export default function PneumoniaPatternsPage() {
    <h2 className={styles.heading}>{lang === 'fa' ? 'نمونه‌های تصویری' : lang === 'en' ? 'Imaging examples' : 'Bildbeispiele'}</h2>
    <div className={styles.figures}>{figures.map(figure => <figure className={styles.figure} key={figure.src}><Image src={figure.src} alt={figure.alt} width={figure.width} height={figure.height} sizes="(max-width: 760px) 100vw, 50vw" /><figcaption>{figure.caption}</figcaption></figure>)}</div>
    <section className={styles.workflow}><h2>{lang === 'fa' ? 'توالی کاربردی' : lang === 'en' ? 'Practical sequence' : 'Praktisches Vorgehen'}</h2><ol>{c.workflow.map(item => <li key={item}>{item}</li>)}</ol><p className={styles.cave}>{c.cave}</p><small>{c.source}</small></section>
+   <nav className={styles.workflow} aria-label={lang === 'fa' ? 'درس مرتبط' : lang === 'en' ? 'Related lesson' : 'Verwandte Lektion'}><Link href={lang === 'de' ? '/thorax/kavitaeten' : `/thorax/kavitaeten?lang=${lang}`}>{lang === 'fa' ? 'درس متمرکز کاویتی' : lang === 'en' ? 'Focused cavity lesson' : 'Fokussierte Kavitäten-Lektion'}</Link></nav>
   </main>
  </LessonReferenceShell>
 }

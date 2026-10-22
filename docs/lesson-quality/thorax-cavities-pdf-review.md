@@ -77,3 +77,7 @@ links to `/ueben/quiz?fach=thorax&n=1&themen=lungenabszess` and
 Focused retrieval and lesson-action link checks are recorded in
 `scripts/test-thorax-lung-abscess-assessment.mjs`. Independent review, browser UX and
 clinical approval remain pending until their evidence is recorded.
+
+## Related-route navigation delta (2026-10-23)
+
+The pneumonia-pattern route now exposes the curriculum-declared related cavity lesson with a localized, language-preserving link. This closes the assertion in `scripts/test-thorax-cavities-render.mjs`; the render test passes in DE/EN/FA. No diagnostic or clinical content changed. Browser click-through remains unverified.
