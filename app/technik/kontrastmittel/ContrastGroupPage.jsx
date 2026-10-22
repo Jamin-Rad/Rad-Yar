@@ -43,6 +43,25 @@ function TableBlock({ block, lang }) {
   )
 }
 
+function SelfCheckBlock({ block, lang }) {
+  const [selected, setSelected] = useState(null)
+  const correct = selected === block.correct
+  return (
+    <div className={styles.selfCheck}>
+      <h3>{localizeContrast(block.title, lang)}</h3>
+      <p>{localizeContrast(block.question, lang)}</p>
+      <div className={styles.selfCheckOptions}>
+        {block.options.map((option, index) => (
+          <button type="button" key={index} aria-pressed={selected === index} className={`${styles.selfCheckOption} ${selected === index ? (correct ? styles.selfCheckCorrect : styles.selfCheckIncorrect) : ''}`} onClick={() => setSelected(index)}>
+            {localizeContrast(option, lang)}
+          </button>
+        ))}
+      </div>
+      {selected !== null ? <p className={styles.selfCheckFeedback} role="status"><strong>{correct ? localizeContrast(block.correctLabel, lang) : localizeContrast(block.reviewLabel, lang)}</strong> {localizeContrast(block.feedback, lang)}</p> : null}
+    </div>
+  )
+}
+
 function CardBlock({ block, lang }) {
   return (
     <div className={`${styles.cardsGrid} ${block.columns === 2 ? styles.cardsTwo : ''}`}>
@@ -79,6 +98,7 @@ function ImageGallery({ block, lang, ui, onOpen }) {
 }
 
 function ContentBlock({ block, lang, ui, withLang, onOpen }) {
+  if (block.type === 'selfCheck') return <SelfCheckBlock block={block} lang={lang} />
   if (block.type === 'cards') return <CardBlock block={block} lang={lang} />
   if (block.type === 'table') return <TableBlock block={block} lang={lang} />
   if (block.type === 'imageGallery') return <ImageGallery block={block} lang={lang} ui={ui} onOpen={onOpen} />
@@ -184,12 +204,19 @@ export default function ContrastGroupPage({ groupId }) {
             <div className={styles.heroText}>
               <span className={styles.sourceBadge}>{lesson.sourceLabel}</span>
               <h1>{localizeContrast(lesson.title, lang)}</h1>
-              {lesson.subtitle ? <p>{localizeContrast(lesson.subtitle, lang)}</p> : null}
               <div className={styles.actions}>
                 <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=technik&n=10&themen=${topicIds}&from=${encodeURIComponent(pagePath)}`)}>{ui.mcq}</Link>
                 <Link className={styles.actionBtn} href={withLang(`/flashcards/${group.flashcardId}?from=${encodeURIComponent(pagePath)}`)}>{ui.flashcards}</Link>
               </div>
             </div>
+            {groupId === 'roentgen' ? <figure className={styles.heroVisual}>
+              <Image src="/educational/xray-contrast-attenuation.svg" alt={localizeContrast({ de: 'Schema: Jod schwächt Röntgenstrahlen stärker als Weichteilgewebe.', en: 'Schematic: iodine attenuates X-rays more strongly than soft tissue.', fa: 'طرح شماتیک: ید پرتو ایکس را بیش از بافت نرم تضعیف می‌کند.' }, lang)} width={280} height={220} priority />
+              <figcaption>{localizeContrast({ de: 'Jodkontrast durch stärkere Röntgenabsorption', en: 'Iodine contrast through stronger X-ray attenuation', fa: 'کنتراست ید به‌دلیل جذب بیشتر پرتو ایکس' }, lang)}</figcaption>
+              <div className={styles.heroVisualLegend}>
+                <span><i className={styles.softTissueLegend} aria-hidden="true" />{localizeContrast({ de: 'Weichteilgewebe', en: 'Soft tissue', fa: 'بافت نرم' }, lang)}</span>
+                <span><i className={styles.iodineLegend} aria-hidden="true" />{localizeContrast({ de: 'Jodhaltiges KM', en: 'Iodinated contrast', fa: 'مادهٔ حاجب یددار' }, lang)}</span>
+              </div>
+            </figure> : null}
             <div className={styles.heroStats}>{lesson.stats.map(stat => (
               <div className={styles.heroStat} key={stat.value}><strong>{stat.value}</strong><span>{localizeContrast(stat.label, lang)}</span><small>{localizeContrast(stat.text, lang)}</small></div>
             ))}</div>

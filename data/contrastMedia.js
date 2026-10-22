@@ -272,7 +272,8 @@ const QUESTION_SEEDS = {
   ],
   'km-jod-reaktionen': [
     ['Was ist bei schwerer anaphylaktischer KM-Reaktion das wichtigste Medikament?', 'Intramuskuläres Adrenalin', ['Orales Antihistaminikum', 'Intramuskuläres Adrenalin', 'Metformin', 'Bariumsulfat'], 'B'],
-    ['Welcher Faktor erhöht das Risiko einer erneuten allergieähnlichen Reaktion am stärksten?', 'Eine frühere Reaktion auf dieselbe KM-Klasse', ['Alter unter 30', 'Eine frühere Reaktion auf dieselbe KM-Klasse', 'Normale Nierenfunktion', 'Nüchternheit'], 'B'],
+    ['Welche Anamneseangabe ist ein wichtiger Risikofaktor für eine erneute allergieartige KM-Reaktion?', 'Eine frühere allergieartige oder unklare Reaktion auf dieselbe KM-Klasse', ['Alter unter 30', 'Eine frühere allergieartige oder unklare Reaktion auf dieselbe KM-Klasse', 'Normale Nierenfunktion', 'Nüchternheit'], 'B'],
+    ['Welche Aussage unterscheidet physiologische und allergieartige KM-Reaktionen korrekt?', 'Physiologische Reaktionen sind vorhersehbar; Hypersensitivität kann IgE- oder nicht-IgE-vermittelt sein.', ['Beide Reaktionstypen sind immer IgE-vermittelt.', 'Physiologische Reaktionen sind vorhersehbar; Hypersensitivität kann IgE- oder nicht-IgE-vermittelt sein.', 'Jede Hypersensitivitätsreaktion wird durch das Jodatom ausgelöst.', 'Physiologische Reaktionen sind grundsätzlich lebensbedrohlich.'], 'B'],
   ],
   'km-gastrointestinal': [
     ['Welches enterale KM ist bei vermuteter Perforation problematisch?', 'Bariumsulfat', ['Wasser', 'Bariumsulfat', 'Luft', 'Neutrale Lösung'], 'B'],
@@ -316,7 +317,8 @@ const translateQuestion = (seed, lang) => {
       'Welche Maßnahme kann die Viskosität jodhaltiger KM reduzieren?': ['Which measure can reduce iodinated contrast viscosity?', 'Warming to body temperature', ['Cooling', 'Warming to body temperature', 'Diluting with air', 'Freezing']],
       'Wie werden Jodkonzentration, Volumen und Flussrate für eine CT-Injektion gewählt?': ['How should iodine concentration, volume and flow rate be selected for a CT injection?', 'Individually, according to the examination goal, scan duration, patient, access and local protocol', ['Always by one fixed standard value', 'Individually, according to the examination goal, scan duration, patient, access and local protocol', 'Only according to body weight', 'Regardless of access and injector']],
       'Was ist bei schwerer anaphylaktischer KM-Reaktion das wichtigste Medikament?': ['What is the key medication in a severe anaphylactic contrast reaction?', 'Intramuscular epinephrine', ['Oral antihistamine', 'Intramuscular epinephrine', 'Metformin', 'Barium sulphate']],
-      'Welcher Faktor erhöht das Risiko einer erneuten allergieähnlichen Reaktion am stärksten?': ['Which factor most increases the risk of another allergic-like reaction?', 'A previous reaction to the same contrast class', ['Age below 30', 'A previous reaction to the same contrast class', 'Normal renal function', 'Fasting']],
+      'Welche Anamneseangabe ist ein wichtiger Risikofaktor für eine erneute allergieartige KM-Reaktion?': ['Which history is an important risk factor for another allergic-like contrast reaction?', 'A previous allergic-like or unknown-type reaction to the same contrast class', ['Age below 30', 'A previous allergic-like or unknown-type reaction to the same contrast class', 'Normal renal function', 'Fasting']],
+      'Welche Aussage unterscheidet physiologische und allergieartige KM-Reaktionen korrekt?': ['Which statement correctly distinguishes physiologic from allergic-like contrast reactions?', 'Physiologic reactions are predictable; hypersensitivity can be IgE-mediated or non-IgE-mediated.', ['Both reaction types are always IgE-mediated.', 'Physiologic reactions are predictable; hypersensitivity can be IgE-mediated or non-IgE-mediated.', 'Every hypersensitivity reaction is triggered by the iodine atom.', 'Physiologic reactions are always life-threatening.']],
       'Welches enterale KM ist bei vermuteter Perforation problematisch?': ['Which enteric agent is problematic when perforation is suspected?', 'Barium sulphate', ['Water', 'Barium sulphate', 'Air', 'Neutral solution']],
       'Welche Gefahr besteht bei Aspiration hyperosmolarer wasserlöslicher KM?': ['What is the danger of aspirating hyperosmolar water-soluble contrast?', 'Severe pulmonary oedema', ['NSF', 'Severe pulmonary oedema', 'Hyperthyroidism within minutes', 'Gadolinium retention']],
       'Welche Gadolinium-Chelate sind stabiler?': ['Which gadolinium chelates are more stable?', 'Macrocyclic agents', ['Linear agents', 'Macrocyclic agents', 'Ionic iodine agents', 'Barium salts']],
@@ -343,7 +345,8 @@ const translateQuestion = (seed, lang) => {
       'Welche Maßnahme kann die Viskosität jodhaltiger KM reduzieren?': ['کدام اقدام ویسکوزیته ماده حاجب یددار را کاهش می‌دهد؟', 'گرم‌کردن تا دمای بدن', ['سردکردن', 'گرم‌کردن تا دمای بدن', 'رقیق‌کردن با هوا', 'منجمدکردن']],
       'Wie werden Jodkonzentration, Volumen und Flussrate für eine CT-Injektion gewählt?': ['غلظت ید، حجم و سرعت تزریق CT چگونه انتخاب می‌شوند؟', 'بر اساس هدف بررسی، زمان اسکن، بیمار، مسیر تزریق و پروتکل محلی به‌طور فردی', ['همیشه بر اساس یک عدد ثابت', 'بر اساس هدف بررسی، زمان اسکن، بیمار، مسیر تزریق و پروتکل محلی به‌طور فردی', 'فقط بر اساس وزن بدن', 'بدون توجه به مسیر تزریق یا انژکتور']],
       'Was ist bei schwerer anaphylaktischer KM-Reaktion das wichtigste Medikament?': ['مهم‌ترین دارو در واکنش آنافیلاکسی شدید چیست؟', 'آدرنالین عضلانی', ['آنتی‌هیستامین خوراکی', 'آدرنالین عضلانی', 'متفورمین', 'باریم']],
-      'Welcher Faktor erhöht das Risiko einer erneuten allergieähnlichen Reaktion am stärksten?': ['مهم‌ترین عامل خطر واکنش مجدد آلرژی‌مانند چیست؟', 'واکنش قبلی به همان کلاس ماده حاجب', ['سن زیر ۳۰', 'واکنش قبلی به همان کلاس ماده حاجب', 'عملکرد طبیعی کلیه', 'ناشتایی']],
+      'Welche Anamneseangabe ist ein wichtiger Risikofaktor für eine erneute allergieartige KM-Reaktion?': ['کدام سابقه عامل خطر مهمی برای تکرار واکنش شبه‌آلرژیک به مادهٔ حاجب است؟', 'سابقهٔ واکنش شبه‌آلرژیک یا نامشخص به همان گروه مادهٔ حاجب', ['سن زیر ۳۰', 'سابقهٔ واکنش شبه‌آلرژیک یا نامشخص به همان گروه مادهٔ حاجب', 'عملکرد طبیعی کلیه', 'ناشتایی']],
+      'Welche Aussage unterscheidet physiologische und allergieartige KM-Reaktionen korrekt?': ['کدام عبارت تفاوت واکنش فیزیولوژیک و شبه‌آلرژیک به مادهٔ حاجب را درست بیان می‌کند؟', 'واکنش فیزیولوژیک قابل‌پیش‌بینی است؛ حساسیت می‌تواند با یا بدون واسطه‌گری IgE رخ دهد.', ['هر دو نوع واکنش همیشه با واسطه‌گری IgE رخ می‌دهند.', 'واکنش فیزیولوژیک قابل‌پیش‌بینی است؛ حساسیت می‌تواند با یا بدون واسطه‌گری IgE رخ دهد.', 'هر واکنش حساسیتی به‌وسیلهٔ اتم ید ایجاد می‌شود.', 'واکنش‌های فیزیولوژیک همیشه تهدیدکنندهٔ حیات هستند.']],
       'Welches enterale KM ist bei vermuteter Perforation problematisch?': ['در شک به پرفوراسیون کدام ماده گوارشی مشکل‌ساز است؟', 'باریم سولفات', ['آب', 'باریم سولفات', 'هوا', 'محلول خنثی']],
       'Welche Gefahr besteht bei Aspiration hyperosmolarer wasserlöslicher KM?': ['خطر آسپیراسیون ماده محلول در آب هایپراسمولار چیست؟', 'ادم شدید ریه', ['NSF', 'ادم شدید ریه', 'پرکاری تیروئید فوری', 'احتباس گادولینیوم']],
       'Welche Gadolinium-Chelate sind stabiler?': ['کدام کلات‌های گادولینیوم پایدارترند؟', 'ماکروسیکلیک', ['خطی', 'ماکروسیکلیک', 'مواد یددار یونی', 'نمک باریم']],
@@ -367,6 +370,14 @@ const translateQuestion = (seed, lang) => {
   return [question, answer, options, seed[3]]
 }
 
+const QUESTION_EXPLANATIONS = {
+  'Welche Aussage unterscheidet physiologische und allergieartige KM-Reaktionen korrekt?': {
+    de: 'Physiologische Reaktionen sind vorhersehbare Wirkungen des Kontrastmittels. Hypersensitivitätsreaktionen sind davon getrennt zu beurteilen und können IgE- oder andere Mechanismen haben.',
+    en: 'Physiologic reactions are predictable effects of the contrast medium. Hypersensitivity reactions are a separate category and may involve IgE or other mechanisms.',
+    fa: 'واکنش‌های فیزیولوژیک اثرهای قابل‌پیش‌بینی مادهٔ حاجب‌اند. واکنش‌های حساسیتی دسته‌ای جداگانه هستند و ممکن است با IgE یا سازوکارهای دیگری رخ دهند.',
+  },
+}
+
 export const CONTRAST_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [
   lang,
   CONTRAST_TOPICS.flatMap(topic => QUESTION_SEEDS[topic.id].map((seed, index) => {
@@ -378,7 +389,7 @@ export const CONTRAST_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang
       question: translated[0],
       options: translated[2].map((text, optionIndex) => ({ id: ['A', 'B', 'C', 'D'][optionIndex], text })),
       correct: translated[3],
-      explanation: translated[1],
+      explanation: QUESTION_EXPLANATIONS[seed[0]]?.[lang] || translated[1],
     }
   })),
 ]))
@@ -410,7 +421,7 @@ export const CONTRAST_FLASHCARDS = CONTRAST_TOPICS.flatMap(topic => {
               en: 'The PDF values are examples, not fixed instructions. The examination goal, scan duration, patient, venous access, injector and local protocol determine the parameters; do not lower the diagnostic dose below the required threshold.',
               fa: 'اعداد PDF نمونه‌اند و دستور ثابت نیستند. هدف بررسی، زمان اسکن، بیمار، مسیر وریدی، انژکتور و پروتکل محلی پارامترها را تعیین می‌کنند؛ دوز تشخیصی را از حد لازم پایین‌تر نبرید.',
             }[lang]
-          : topic.id === 'km-ultraschall' ? translated[1] : (CONTRAST_LESSON[lang].sections[topic.id]?.takeHome || translated[1]),
+          : QUESTION_EXPLANATIONS[seed[0]]?.[lang] || (topic.id === 'km-ultraschall' ? translated[1] : (CONTRAST_LESSON[lang].sections[topic.id]?.takeHome || translated[1])),
       }
     }
     return {
