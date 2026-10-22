@@ -11,16 +11,18 @@ import { MRI_SIGNAL_TOPIC, MRI_QUALITY_TOPIC, MRI_SIGNAL_BLOCK, MRI_QUALITY_BLOC
 import { MRI_SPIN_ECHO_BLOCK, MRI_SPIN_ECHO_QUESTIONS, MRI_SPIN_ECHO_FLASHCARDS } from '../data/technikMriSpinEchoLesson.js'
 import { MRI_GRADIENT_ECHO_BLOCK, MRI_GRADIENT_ECHO_QUESTIONS, MRI_GRADIENT_ECHO_FLASHCARDS, MRI_GRADIENT_ECHO_TOPIC_GROUP, MRI_GRADIENT_ECHO_FLASHCARD_TOPIC } from '../data/technikMriGradientEchoLesson.js'
 import { MRI_INVERSION_RECOVERY_BLOCK, MRI_INVERSION_RECOVERY_QUESTIONS, MRI_INVERSION_RECOVERY_FLASHCARDS, MRI_INVERSION_RECOVERY_TOPIC_GROUP, MRI_INVERSION_RECOVERY_FLASHCARD_TOPIC } from '../data/technikMriInversionRecoveryLesson.js'
+import { MRI_FAT_SUPPRESSION_BLOCK, MRI_FAT_SUPPRESSION_QUESTIONS, MRI_FAT_SUPPRESSION_FLASHCARDS, MRI_FAT_SUPPRESSION_TOPIC_GROUP, MRI_FAT_SUPPRESSION_FLASHCARD_TOPIC } from '../data/technikMriFatSuppressionLesson.js'
 
 const langs = ['de', 'en', 'fa']
 const mri = TECHNIK_GRUNDLAGEN.sections.find(section => section.id === 'mrt')
 assert.ok(mri)
-assert.equal(mri.teachingBlocks.length, 8)
-assert.deepEqual(mri.teachingBlocks.map(block => block.id), ['mri-resonance-signal', 'mri-field-coil-shimming', 'signal-formation', 'spatial-encoding', 'snr-tradeoffs', 'mri-spin-echo-tr-te', 'mri-gradient-echo-swi', 'mri-inversion-recovery'])
-assert.ok(mri.curriculumId.includes(MRI_SIGNAL_TOPIC.id) && mri.curriculumId.includes(MRI_QUALITY_TOPIC.id) && mri.curriculumId.includes('mrt-spin-echo') && mri.curriculumId.includes('mrt-gradient-echo') && mri.curriculumId.includes('mrt-inversion-recovery'))
+assert.equal(mri.teachingBlocks.length, 9)
+assert.deepEqual(mri.teachingBlocks.map(block => block.id), ['mri-resonance-signal', 'mri-field-coil-shimming', 'signal-formation', 'spatial-encoding', 'snr-tradeoffs', 'mri-spin-echo-tr-te', 'mri-gradient-echo-swi', 'mri-inversion-recovery', 'mri-fat-suppression-methods'])
+assert.ok(mri.curriculumId.includes(MRI_SIGNAL_TOPIC.id) && mri.curriculumId.includes(MRI_QUALITY_TOPIC.id) && mri.curriculumId.includes('mrt-spin-echo') && mri.curriculumId.includes('mrt-gradient-echo') && mri.curriculumId.includes('mrt-inversion-recovery') && mri.curriculumId.includes('mrt-fettsuppression'))
 assert.ok(mri.teachingBlocks.includes(MRI_SPIN_ECHO_BLOCK))
 assert.ok(mri.teachingBlocks.includes(MRI_GRADIENT_ECHO_BLOCK))
 assert.ok(mri.teachingBlocks.includes(MRI_INVERSION_RECOVERY_BLOCK))
+assert.ok(mri.teachingBlocks.includes(MRI_FAT_SUPPRESSION_BLOCK))
 assert.equal(MRI_GRADIENT_ECHO_BLOCK.rows.length, 7)
 assert.equal(MRI_GRADIENT_ECHO_QUESTIONS.length, 3)
 assert.equal(MRI_GRADIENT_ECHO_FLASHCARDS.length, 4)
@@ -46,6 +48,22 @@ assert.ok(MCQ_TOPIC_GROUPS.includes(MRI_INVERSION_RECOVERY_TOPIC_GROUP))
 assert.ok(FLASHCARD_TOPICS.some(topic => topic.id === MRI_INVERSION_RECOVERY_FLASHCARD_TOPIC.id))
 assert.equal(getCardsByTopic(MRI_INVERSION_RECOVERY_FLASHCARD_TOPIC.id).length, MRI_INVERSION_RECOVERY_FLASHCARDS.length)
 assert.ok(MRI_INVERSION_RECOVERY_QUESTIONS.every(item => item.correct === 'A' && item.options.length === 4 && Object.keys(item.wrongExplanations).length === 3))
+assert.equal(MRI_FAT_SUPPRESSION_BLOCK.rows.length, 8)
+assert.equal(MRI_FAT_SUPPRESSION_QUESTIONS.length, 6)
+assert.equal(MRI_FAT_SUPPRESSION_FLASHCARDS.length, 4)
+assert.ok(mri.curriculumId.includes('mrt-fettsuppression'))
+assert.match(MRI_FAT_SUPPRESSION_BLOCK.rows[1][1].en, /no method is superior in every situation/)
+assert.match(MRI_FAT_SUPPRESSION_BLOCK.rows[2][1].en, /more sensitive to B₀\/B₁ inhomogeneity and susceptibility/)
+assert.match(MRI_FAT_SUPPRESSION_BLOCK.rows[3][1].en, /more robust near metal.*not a primary method for assessing enhancement/)
+assert.match(MRI_FAT_SUPPRESSION_BLOCK.rows[4][1].en, /Combines spectral selection and inversion recovery/)
+assert.match(MRI_FAT_SUPPRESSION_BLOCK.rows[5][1].en, /water-fat swaps/)
+assert.match(MRI_FAT_SUPPRESSION_BLOCK.rows[6][1].en, /steatosis or intracellular fat.*not a diagnosis/)
+assert.match(MRI_FAT_SUPPRESSION_BLOCK.rows[6][1].en, /mixed voxels.*directional chemical-shift displacement/)
+assert.match(MRI_FAT_SUPPRESSION_BLOCK.rows[7][1].en, /not signal loss in the acquired in-\/opposed-phase images/)
+assert.ok(MCQ_TOPIC_GROUPS.includes(MRI_FAT_SUPPRESSION_TOPIC_GROUP))
+assert.ok(FLASHCARD_TOPICS.some(topic => topic.id === MRI_FAT_SUPPRESSION_FLASHCARD_TOPIC.id))
+assert.equal(getCardsByTopic(MRI_FAT_SUPPRESSION_FLASHCARD_TOPIC.id).length, MRI_FAT_SUPPRESSION_FLASHCARDS.length)
+assert.ok(MRI_FAT_SUPPRESSION_QUESTIONS.every(item => item.correct === 'A' && item.options.length === 4 && Object.keys(item.wrongExplanations).length === 3))
 assert.match(MRI_SPIN_ECHO_BLOCK.rows[0][1].en, /180° pulse reverses their relative phase/)
 assert.match(MRI_SPIN_ECHO_BLOCK.rows[0][1].en, /one echo per TR makes conventional SE longer/)
 assert.match(MRI_SPIN_ECHO_BLOCK.rows[1][1].en, /long TR and short TE/)
@@ -198,6 +216,8 @@ for (const lang of langs) {
   const from = lang === 'de' ? '%2Ftechnik%2Fgrundlagen%23mrt' : `%2Ftechnik%2Fgrundlagen%3Flang%3D${lang}%23mrt`
   assert.ok(html.includes(`themen=mrt-grundprinzip-signalbildung,mrt-spin-echo,mrt-gradient-echo,mrt-inversion-recovery,mrt-bildqualitaet-artefakte-snr&amp;from=${from}`), `${lang}: linked MRI quiz returns to MRI section`)
   assert.ok(html.includes(`/flashcards/mrt-inversion-recovery?from=${from}`), `${lang}: IR cards return to MRI section`)
+  assert.ok(html.includes(`themen=mrt-fettsuppression&amp;from=${from}`), `${lang}: fat-suppression quiz returns to MRI section`)
+  assert.ok(html.includes(`/flashcards/mrt-fettsuppression?from=${from}`), `${lang}: fat-suppression cards return to MRI section`)
   assert.ok(html.includes(MRI_INVERSION_RECOVERY_BLOCK.title[lang]), `${lang}: IR block is rendered`)
   assert.ok(html.includes(MRI_INVERSION_RECOVERY_BLOCK.visual.srcLocalized[lang]), `${lang}: localized IR SVG is rendered`)
   assert.ok(html.includes(MRI_INVERSION_RECOVERY_BLOCK.visual.alt[lang]))
@@ -214,6 +234,13 @@ for (const lang of langs) {
   assert.ok(html.includes(lang === 'fa' ? 'رابطهٔ تکمیلی (در PDF نیامده است)' : lang === 'en' ? 'Supplemental relationship (not stated in the PDF)' : 'Zusatzbeziehung (nicht aus der PDF)'))
   assert.ok(html.includes(lang === 'fa' ? 'منبع تکمیلی:' : lang === 'en' ? 'Supplemental source:' : 'Ergänzende Quelle:'))
   assert.ok(html.includes(lang === 'fa' ? 'سیگنال قابل‌اندازه‌گیری' : lang === 'en' ? 'measurable signal' : 'messbare Signal'))
+}
+for (const lang of langs) {
+  const svgPath = `public${MRI_FAT_SUPPRESSION_BLOCK.visual.srcLocalized[lang]}`
+  assert.ok(fs.existsSync(svgPath), `${lang}: localized fat-suppression diagram exists`)
+  const svg = fs.readFileSync(svgPath, 'utf8')
+  assert.ok(svg.includes('<title') && svg.includes('<desc'), `${lang}: SVG has accessible title/description`)
+  assert.ok(svg.includes('x1="205" y1="235" x2="120" y2="235"') && svg.includes('points="120,235 141,222 141,248"'), `${lang}: opposed-phase fat vector points opposite the water vector`)
 }
 
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')

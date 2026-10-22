@@ -241,7 +241,7 @@ export default function TechnikGrundlagenStandardPage() {
           {block.supplement?<aside className={styles.callout}><strong>{t(L('Zusatzbeziehung (nicht aus der PDF)','Supplemental relationship (not stated in the PDF)','رابطهٔ تکمیلی (در PDF نیامده است)'))}</strong><p>{t(block.supplement)}</p></aside>:null}
           {block.note?<aside className={styles.callout}><strong>{t(L('Einordnung und Grenzen','Interpretation and limitations','تفسیر و محدودیت‌ها'))}</strong><p>{t(block.note)}</p></aside>:null}
         </section>)}
-        {section.id === 'mrt' ? <><MRIKnowledgeCheck lang={lang}/><RetrievalCheck kind="dixon" lang={lang}/><MriFundamentalsActions lang={lang}/></> : null}
+        {section.id === 'mrt' ? <><MRIKnowledgeCheck lang={lang}/><RetrievalCheck kind="dixon" lang={lang}/><MriFundamentalsActions lang={lang}/><FatSuppressionActions lang={lang}/></> : null}
         {section.id === 'mrt-spezial' ? <><RetrievalCheck kind="perfusion" lang={lang}/><RetrievalCheck kind="ciss" lang={lang}/><MraActions lang={lang}/></> : null}
         {section.id === 'fmri-bold' ? <><RetrievalCheck kind="bold" lang={lang}/><BoldActions lang={lang}/></> : null}
         {section.id === 'leber-mrt-protokoll' ? <><LiverProtocolFigure lang={lang}/><RetrievalCheck kind="liverProtocol" lang={lang}/></> : null}
@@ -351,6 +351,21 @@ function BoldFigure({ lang, visual }) {
     </ol>
     <figcaption style={{ marginTop:8 }}>{copy.legend} {t(visual.caption)}</figcaption>
   </figure>
+}
+
+function FatSuppressionActions({ lang }) {
+  const returnTo = lang === 'de' ? '/technik/grundlagen#mrt' : `/technik/grundlagen?lang=${lang}#mrt`
+  const from = encodeURIComponent(returnTo)
+  const labels = {
+    de: { title: 'Fettsuppression vertiefen', quiz: 'Zwei MC-Fragen', cards: 'Vier Lernkarten' },
+    en: { title: 'Review fat suppression', quiz: 'Two MCQs', cards: 'Four flashcards' },
+    fa: { title: 'مرور سرکوب چربی', quiz: 'دو سؤال چندگزینه‌ای', cards: 'چهار فلش‌کارت' },
+  }[lang] || { title: 'Fettsuppression vertiefen', quiz: 'Zwei MC-Fragen', cards: 'Vier Lernkarten' }
+  return <nav aria-label={labels.title} style={{ display:'flex', flexWrap:'wrap', gap:12, margin:'18px 0', padding:14, border:'1px solid var(--border)', borderRadius:14, background:'var(--surface-soft)' }}>
+    <strong style={{ alignSelf:'center' }}>{labels.title}</strong>
+    <a href={`/ueben/quiz?fach=technik&n=2&themen=mrt-fettsuppression&from=${from}`}>{labels.quiz}</a>
+    <a href={`/flashcards/mrt-fettsuppression?from=${from}`}>{labels.cards}</a>
+  </nav>
 }
 
 function MriFundamentalsActions({ lang }) {

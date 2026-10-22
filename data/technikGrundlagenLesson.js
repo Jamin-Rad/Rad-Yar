@@ -3,6 +3,7 @@ import { MRI_SAFETY_BLOCK } from './technikMriSafetyLesson.js'
 import { MRI_SPIN_ECHO_BLOCK } from './technikMriSpinEchoLesson.js'
 import { MRI_GRADIENT_ECHO_BLOCK } from './technikMriGradientEchoLesson.js'
 import { MRI_INVERSION_RECOVERY_BLOCK } from './technikMriInversionRecoveryLesson.js'
+import { MRI_FAT_SUPPRESSION_BLOCK } from './technikMriFatSuppressionLesson.js'
 import { MR_PERFUSION_BLOCK } from './technikMrtPerfusionLesson.js'
 import { CT_ARTIFACTS_BLOCK, CT_QUALITY_BLOCK } from './technikCTQuality.js'
 import { CT_PERFUSION_BLOCK } from './technikCTPerfusionLesson.js'
@@ -283,6 +284,7 @@ export const TECHNIK_GRUNDLAGEN = {
         MRI_SPIN_ECHO_BLOCK,
         MRI_GRADIENT_ECHO_BLOCK,
         MRI_INVERSION_RECOVERY_BLOCK,
+        MRI_FAT_SUPPRESSION_BLOCK,
       ],
       visualGuides: [
         [
