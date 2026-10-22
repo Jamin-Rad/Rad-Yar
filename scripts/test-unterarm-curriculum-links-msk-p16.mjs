@@ -1,4 +1,7 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
+import { dirname, resolve } from 'node:path'
 import { CURRICULUM } from '../data/curriculum.js'
 import { UNTERARM_LESSON, UNTERARM_QUESTIONS, UNTERARM_FLASHCARDS } from '../data/unterarmschaftfrakturen.js'
 
@@ -7,6 +10,13 @@ const flattenTopics = (sections) => sections.flatMap((section) => [
   ...flattenTopics(section.kapitel ?? section.chapters ?? []),
 ])
 const items = flattenTopics(CURRICULUM)
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+const routeSource = readFileSync(resolve(root, 'app/msk/trauma/unterarmschaftfrakturen/page.js'), 'utf8')
+const reviewLedger = readFileSync(resolve(root, 'docs/lesson-quality/unterarmschaftfrakturen-msk-p16.md'), 'utf8')
+assert.doesNotMatch(routeSource, /useEffect\(\(\)\s*=>\s*setOpen\(false\)/, 'sections stay open on initial render')
+assert.match(routeSource, /querySelector\('button\[aria-expanded="false"\]'\)/, 'TOC finds a collapsed destination section')
+assert.match(routeSource, /header\?\.click\(\)[\s\S]*target\?\.scrollIntoView/, 'TOC expands before scrolling')
+assert.match(reviewLedger, /FK-UX-UF-01[\s\S]*corrected/i, 'independent UX finding and correction are recorded')
 const byId = new Map(items.map((item) => [item.id, item]))
 for (const id of ['monteggia-fraktur', 'galeazzi-fraktur']) {
   const item = byId.get(id)

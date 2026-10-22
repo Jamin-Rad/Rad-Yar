@@ -19,7 +19,6 @@ const UI = {
 function Section({ id, title, lead, children }) {
   const mobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
-  useEffect(() => setOpen(false), [id])
   return (
     <section id={id} className={styles.section}>
       <button type="button" className={styles.sectionHeader} onClick={() => setOpen(value => !value)} aria-expanded={open}>
@@ -212,7 +211,12 @@ export default function UnterarmschaftfrakturenPage() {
           {data.sections.map(section => (
             <button type="button" key={section.id}
               className={`${styles.sideItem} ${active === section.id ? styles.sideItemActive : ''}`}
-              onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const target = document.getElementById(section.id)
+                const header = target?.querySelector('button[aria-expanded="false"]')
+                header?.click()
+                target?.scrollIntoView({ behavior: 'smooth' })
+              }}
               style={section.emphasis ? { color: '#f97316', border: '1px solid rgba(249,115,22,.5)', background: 'rgba(249,115,22,.12)', fontWeight: 950 } : undefined}>
               <span>{section.icon}</span><strong>{c(section.label)}</strong>
             </button>
