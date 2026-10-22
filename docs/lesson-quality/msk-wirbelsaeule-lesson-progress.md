@@ -129,3 +129,7 @@ Zwei Vier-Optionen-MCQs und zwei Lernkarten zu Pauwels (AO 30°/50°) sowie zur 
 ### Distale Femurfraktur · MSK.pdf S.31 (22.10.2026)
 
 Zwei MCQs mit vier Optionen und zwei Lernkarten zu AO 33/Hoffa und zur AP-/seitlichen Projektion sind unter `distale-femurfraktur` in den DE/EN/FA-Banken registriert. Die Unterrichtsseite und der Curriculum-Eintrag verwenden die passende Quiz- und Kartenroute. SSR und MCQ-Audit bestanden; unabhängige Delta-Prüfung bestanden. Browser und klinische Prüfung offen.
+
+### Tibiakopffraktur · MSK.pdf S.32–33 (22.10.2026)
+
+Zwei Vier-Optionen-MCQs und zwei Lernkarten zu Schatzker II sowie zur vorsichtigen Einordnung des Segond-Zeichens sind unter `tibiakopffraktur` registriert. Quiz, Karten und Curriculum verwenden die exakte Themen-ID. SSR und MCQ-Bank-Audit bestanden; unabhängige Delta-Prüfung bestanden. Browser-/klinische Prüfung offen.

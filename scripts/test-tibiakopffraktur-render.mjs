@@ -6,6 +6,8 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import { DOMParser } from '@xmldom/xmldom'
 import { TIBIAKOPFFRAKTUR_LESSON as lesson } from '../data/tibiakopffraktur.js'
+import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
+import { FLASHCARD_TOPICS, getCardsByTopic } from '../data/flashcards.js'
 
 const route = 'app/msk/trauma/tibiakopffraktur/page.jsx'
 assert.equal(lesson.id, 'tibiakopffraktur')
@@ -13,6 +15,17 @@ assert.equal(lesson.sections.length, 2)
 assert.equal(lesson.sections[0].rows.length, 6)
 assert.equal(lesson.sections[1].answer, 1)
 assert.equal(lesson.sections[1].options.length, 4)
+assert.ok(MCQ_TOPIC_GROUPS.flatMap(group => group.topics).some(topic => topic.id === 'tibiakopffraktur'))
+assert.equal(FLASHCARD_TOPICS.filter(topic => topic.id === 'tibiakopffraktur').length, 1)
+const cards = getCardsByTopic('tibiakopffraktur')
+assert.equal(cards.length, 2)
+assert.ok(cards.every(card => ['de', 'en', 'fa'].every(locale => card.front[locale] && card.answer[locale] && card.explanation[locale])))
+assert.ok(cards.every(card => card.front.de !== card.front.en))
+for (const locale of ['de', 'en', 'fa']) {
+  const questions = QUESTION_BANK[locale].filter(question => question.tags?.includes('tibiakopffraktur'))
+  assert.equal(questions.length, 2)
+  assert.ok(questions.every(question => question.options.length === 4 && question.question && question.explanation))
+}
 for (const asset of [lesson.hero, ...lesson.sections.filter(section => section.image).map(section => section.image)]) assert.ok(fs.existsSync(`public${asset}`), asset)
 assert.match(lesson.sections[1].paragraphs[0].en, /percentages.*not treated as universal frequencies/i)
 assert.match(lesson.sections[1].paragraphs[1].en, /combination varies/i)
@@ -65,6 +78,8 @@ const escape = value => renderToStaticMarkup(React.createElement(React.Fragment,
 for (const locale of ['de', 'en', 'fa']) {
   lang = locale
   const html = renderToStaticMarkup(React.createElement(Page))
+  assert.ok(html.includes('/ueben/quiz?fach=msk&amp;n=8&amp;themen=tibiakopffraktur'))
+  assert.ok(html.includes('/flashcards/tibiakopffraktur'))
   assert.ok(html.includes(`lang="${locale}"`) && html.includes(`dir="${locale === 'fa' ? 'rtl' : 'ltr'}"`), `${locale}: language/direction`)
   assert.ok(html.includes(escape(lesson.title[locale])) && html.includes(escape(lesson.heroAlt[locale])))
   for (const section of lesson.sections) {
@@ -89,5 +104,5 @@ for (const id of ['TPF-32-01','TPF-32-02','TPF-32-03','TPF-32-04','TPF-32-05','T
 const provenance = fs.readFileSync('docs/lesson-quality/media-provenance.md', 'utf8')
 for (const detail of ['Image375.jpg', 'Image382.jpg', 'rID:9758', 'physical page 32', 'physical page 33', 'not asserted']) assert.ok(provenance.includes(detail))
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
-assert.match(curriculum, /\{ id: 'tibiakopffraktur',[^\n]*link: '\/msk\/trauma\/tibiakopffraktur',[^\n]*inProgress: true/)
-console.log('Tibial plateau lesson: SSR/content parity PASS for DE/EN/FA, RTL, Schatzker I–VI, source images/captions, qualified avulsion associations and inline retrieval feedback.')
+assert.match(curriculum, /\{ id: 'tibiakopffraktur',[^\n]*link: '\/msk\/trauma\/tibiakopffraktur',[^\n]*mcqLink: '\/ueben\/quiz\?fach=msk&n=8&themen=tibiakopffraktur',[^\n]*flashcardLink: '\/flashcards\/tibiakopffraktur'/)
+console.log('Tibial plateau lesson: SSR parity PASS for DE/EN/FA, RTL, exact-topic quiz/cards, Schatzker I–VI, source images and qualified avulsion associations.')

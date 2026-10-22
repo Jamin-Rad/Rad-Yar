@@ -40,3 +40,7 @@
 - Route and page styles: `app/msk/trauma/tibiakopffraktur/`
 - Assets: `public/msk/tibial-plateau/`
 - Focused test: `scripts/test-tibiakopffraktur-render.mjs`
+
+## Retrieval practice registration (2026-10-22)
+
+Two localized four-option MCQs and two flashcards are registered under exact curriculum ID `tibiakopffraktur`. They assess Schatzker II split-plus-depression morphology and the qualified interpretation of a Segond sign. The lesson and curriculum link to these exact-topic resources. Focused SSR and global question-bank checks pass; independent assessment delta review passed. Browser click-through and clinician review remain open.
