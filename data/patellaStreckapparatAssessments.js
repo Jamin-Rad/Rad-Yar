@@ -24,6 +24,13 @@ const seeds = [
     correct: 0,
     explanation: L('Die typische Impaktionskonstellation betrifft die mediale Patella und den lateralen Femurkondylus. Sie ist ein Hinweis im passenden Kontext, kein alleiniger Beweis.', 'The typical impaction pattern involves the medial patella and lateral femoral condyle. It is a clue in context, not proof by itself.', 'الگوی تیپیک برخورد، سطح داخلی کشکک و کندیل خارجی فمور را درگیر می‌کند. این یافته در زمینهٔ مناسب یک سرنخ است، نه اثبات مستقل تشخیص.'),
   },
+  {
+    id: 'transverse-fracture-mechanism', topicId: 'patellafraktur-trauma',
+    question: L('Welche Frakturrichtung passt laut PDF am ehesten zu einer indirekten Zugbelastung des Streckapparats?', 'Which fracture orientation is most associated in the PDF with indirect traction through the extensor mechanism?', 'طبق PDF کدام جهت خط شکستگی بیشتر با نیروی کششی غیرمستقیم مکانیسم اکستانسور مرتبط است؟'),
+    options: [L('Querfraktur.', 'Transverse fracture.', 'شکستگی عرضی.'), L('Längsfraktur.', 'Longitudinal fracture.', 'شکستگی طولی.'), L('Trümmerfraktur.', 'Comminuted fracture.', 'شکستگی چندقطعه‌ای.'), L('Die Frakturrichtung lässt sich aus dem Mechanismus nicht beschreiben.', 'Fracture orientation cannot be described in relation to mechanism.', 'جهت خط شکستگی را نمی‌توان در ارتباط با مکانیسم توصیف کرد.')],
+    correct: 0,
+    explanation: L('Die PDF beschreibt Querfrakturen häufig als Folge indirekter Zugbelastung. Das ist eine Musterassoziation und bestimmt nicht allein die Stabilität.', 'The PDF often associates transverse fractures with indirect traction. This is a pattern association and does not by itself determine stability.', 'PDF شکستگی عرضی را اغلب پیامد کشش غیرمستقیم می‌داند. این یک ارتباط الگویی است و به‌تنهایی پایداری را تعیین نمی‌کند.'),
+  },
 ]
 
 export const PATELLA_STRECKAPPARAT_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [lang,
@@ -33,7 +40,7 @@ export const PATELLA_STRECKAPPARAT_QUESTIONS = Object.fromEntries(['de', 'en', '
     options: seed.options.map((option, index) => ({ id: ['A', 'B', 'C', 'D'][index], text: option[lang] })),
     correct: ['A', 'B', 'C', 'D'][seed.correct],
     explanation: seed.explanation[lang],
-    tags: ['patella-streckapparat'],
+    tags: [seed.topicId || 'patella-streckapparat'],
     fach: 'msk',
   })),
 ]))
@@ -41,7 +48,15 @@ export const PATELLA_STRECKAPPARAT_QUESTIONS = Object.fromEntries(['de', 'en', '
 export const PATELLA_STRECKAPPARAT_FLASHCARDS = [
   { id: 'patella-extensor-bipartite', topicId: 'patella-streckapparat', category: L('Differenzialdiagnose', 'Differential diagnosis', 'تشخیص افتراقی'), front: L('Welche Merkmale stützen eine bipartite Patella?', 'Which features support a bipartite patella?', 'کدام ویژگی‌ها از کشکک دوقسمتی حمایت می‌کنند؟'), answer: L('Typisch sind superolaterale Lage und glatte, kortizierte Ränder; fehlendes Knochenmarködem kann unterstützen.', 'Typical features are superolateral location and smooth corticated margins; absence of marrow oedema may support it.', 'محل فوقانی‌ـ‌خارجی و حاشیه‌های صاف و کورتیکه‌شده تیپیک‌اند؛ نبود ادم مغز استخوان می‌تواند مؤید باشد.'), explanation: L('Kein einzelnes Merkmal ist absolut: Trauma, Kontur, kortikalisierung und MRT-Befunde zusammen beurteilen.', 'No single feature is absolute: assess trauma, contour, cortication and MRI findings together.', 'هیچ ویژگی منفردی قطعی نیست؛ سابقهٔ ضربه، شکل، کورتیکه‌شدن و یافته‌های MRI را با هم بسنجید.') },
   { id: 'patella-extensor-dislocation', topicId: 'patella-streckapparat', category: L('MRT-Muster', 'MRI pattern', 'الگوی MRI'), front: L('Welche beiden Knochen sind beim typischen Impaktionsmuster nach lateraler Patellaluxation betroffen?', 'Which two bones show the typical impaction pattern after lateral patellar dislocation?', 'در الگوی تیپیک برخورد پس از دررفتگی خارجی کشکک، کدام دو استخوان درگیرند؟'), answer: L('Mediale Patella und lateraler Femurkondylus.', 'Medial patella and lateral femoral condyle.', 'سطح داخلی کشکک و کندیل خارجی فمور.'), explanation: L('Das Muster unterstützt die Einordnung im passenden Kontext, beweist die Luxation aber nicht allein.', 'The pattern supports interpretation in context but does not prove dislocation by itself.', 'این الگو در زمینهٔ مناسب به تفسیر کمک می‌کند، اما به‌تنهایی دررفتگی را ثابت نمی‌کند.') },
+  { id: 'patella-fracture-pattern', topicId: 'patellafraktur-trauma', category: L('Frakturmorphologie', 'Fracture morphology', 'مورفولوژی شکستگی'), front: L('Welche Frakturformen werden in der PDF meist mit direktem Trauma verbunden?', 'Which fracture patterns does the PDF mostly associate with direct trauma?', 'در PDF کدام الگوهای شکستگی بیشتر با ترومای مستقیم مرتبط‌اند؟'), answer: L('Längs- und Trümmerfraktur; diese Quell-Tendenz ersetzt keine individuelle Mechanismus- oder Stabilitätsbeurteilung.', 'Longitudinal and comminuted fractures; this source tendency does not replace individual mechanism or stability assessment.', 'شکستگی طولی و چندقطعه‌ای؛ این گرایش منبع جای ارزیابی فردی مکانیسم یا پایداری را نمی‌گیرد.'), explanation: L('Die Quellseite beschreibt Längs- und Trümmerfrakturen meist nach direktem Trauma. Morphologie allein entscheidet jedoch keine Stabilität.', 'The source page describes longitudinal and comminuted fractures as usually following direct trauma. Morphology alone does not determine stability.', 'صفحهٔ منبع شکستگی‌های طولی و چندقطعه‌ای را معمولاً پس از ضربهٔ مستقیم توصیف می‌کند؛ بااین‌حال، مورفولوژی به‌تنهایی پایداری را تعیین نمی‌کند.') },
 ]
+
+export const PATELLAFRAKTUR_FLASHCARD_TOPIC = {
+  id: 'patellafraktur-trauma', title: L('Patellafraktur', 'Patellar fracture', 'شکستگی کشکک'),
+  subtitle: L('Frakturlinie · Fragmentmuster', 'Fracture line · fragment pattern', 'خط شکستگی · الگوی قطعات'),
+  area: 'MSK', chapter: L('Knie & Unterschenkel', 'Knee & lower leg', 'زانو و ساق'), icon: '🦴', iconImage: '/fach/msk.png',
+  color: '#6aabc1', href: '/flashcards/patellafraktur-trauma',
+}
 
 export const PATELLA_STRECKAPPARAT_FLASHCARD_TOPIC = {
   id: 'patella-streckapparat', title: L('Patella & Streckapparat', 'Patella & extensor mechanism', 'کشکک و مکانیسم اکستانسور'),

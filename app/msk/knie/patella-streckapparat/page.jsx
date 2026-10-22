@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
@@ -16,19 +17,19 @@ const LABELS = {
   lessonCompleted: L('Ganze Lektion gelesen', 'Full lesson marked as read', 'کل درس خوانده شد'),
   complete: L('Abschnitt als gelesen markieren', 'Mark section as read', 'این بخش را خواندم'), completed: L('Als gelesen markiert', 'Marked as read', 'خوانده‌شده'),
   open: L('Abschnitt öffnen', 'Open section', 'بازکردن بخش'), close: L('Schließen', 'Close', 'بستن'),
+  fracturePractice: L('Frakturfragen üben', 'Practice fracture questions', 'تمرین پرسش‌های شکستگی'), fractureCards: L('Fraktur-Flashcards', 'Fracture flashcards', 'فلش‌کارت‌های شکستگی'),
   takeHome: L('Vier Regeln merken', 'Four rules to remember', 'چهار قاعده را به خاطر بسپارید'), sources: L('Quellen', 'Sources', 'منابع'),
 }
 function Icon({ id }) {
-  const d = { anatomy: 'M12 3v18M5 8h14M7 8v10m10-10v10', morphology: 'M4 6h16v12H4zM4 12h16', dislocation: 'M5 5l14 14M19 5 5 19', tendinopathy: 'M12 3v18M8 7h8m-8 10h8', summary: 'M5 5h14M5 12h14M5 19h14' }[id] || 'M4 12h16'
+  const d = { anatomy: 'M12 3v18M5 8h14M7 8v10m10-10v10', morphology: 'M4 6h16v12H4zM4 12h16', 'fracture-patterns': 'M5 12h14M12 4v16M7 8l2 2m6 4 2 2', dislocation: 'M5 5l14 14M19 5 5 19', tendinopathy: 'M12 3v18M8 7h8m-8 10h8', summary: 'M5 5h14M5 12h14M5 19h14' }[id] || 'M4 12h16'
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true"><path d={d}/></svg>
 }
-function Decision({ lang }) {
+function Decision({ lang, check = lesson.check, name = 'patella-dislocation-pattern' }) {
   const [answer, setAnswer] = useState(null)
-  const check = lesson.check
   const c = (de, en, fa) => pick(L(de, en, fa), lang)
   return <div className={styles.check}>
     <h3>{c('Selbst prüfen', 'Check your understanding', 'خودآزمایی')}</h3><p>{pick(check.question, lang)}</p>
-    <fieldset><legend>{c('Eine Antwort auswählen', 'Choose one answer', 'یک پاسخ را انتخاب کنید')}</legend>{check.options.map((option, i) => <label key={i}><input type="radio" name="patella-dislocation-pattern" checked={answer === i} onChange={() => setAnswer(i)}/><span>{pick(option, lang)}</span></label>)}</fieldset>
+    <fieldset><legend>{c('Eine Antwort auswählen', 'Choose one answer', 'یک پاسخ را انتخاب کنید')}</legend>{check.options.map((option, i) => <label key={i}><input type="radio" name={name} checked={answer === i} onChange={() => setAnswer(i)}/><span>{pick(option, lang)}</span></label>)}</fieldset>
     {answer !== null ? <p role="status" className={answer === check.answer ? styles.correct : styles.feedback}><strong>{answer === check.answer ? c('Richtig. ', 'Correct. ', 'درست است. ') : c('Noch einmal prüfen. ', 'Review the pattern. ', 'الگو را دوباره بررسی کنید. ')}</strong>{pick(check.feedback[answer], lang)}</p> : null}
   </div>
 }
@@ -59,12 +60,23 @@ export default function PatellaStreckapparatPage() {
       <p className={styles.note}>{t(lesson.morphology.comparisonNote)}</p>
       {figure(lesson.morphology.comparisonImage, lesson.morphology.comparisonAlt, lesson.morphology.comparisonCaption, 380, 282)}
     </LessonSection>
-    <LessonSection id="dislocation" icon="dislocation" title={t(lesson.sections[2].title)} bodyClassName={styles.body}>
+    <LessonSection id="fracture-patterns" icon="morphology" title={t(lesson.sections[2].title)} bodyClassName={styles.body}>
+      <p className={styles.lead}>{t(lesson.fracturePatterns.lead)}</p>
+      {figure(lesson.fracturePatterns.image, lesson.fracturePatterns.imageAlt, lesson.fracturePatterns.imageCaption, 760, 250)}
+      <div className={styles.tableWrap}><table><caption>{t(L('Frakturverlauf und im PDF beschriebene Tendenzen', 'Fracture-line pattern and tendencies described in the PDF', 'الگوی خط شکستگی و گرایش‌های توصیف‌شده در PDF'))}</caption><thead><tr><th scope="col">{t(L('Muster', 'Pattern', 'الگو'))}</th><th scope="col">{t(L('Verlauf', 'Orientation', 'جهت'))}</th><th scope="col">{t(L('Mechanismus laut PDF', 'Mechanism stated in PDF', 'مکانیسم بر اساس PDF'))}</th><th scope="col">{t(L('Einordnung', 'Interpretation', 'تفسیر'))}</th></tr></thead><tbody>{lesson.fracturePatterns.rows.map((row, i) => <tr key={i}>{row.map((cell, j) => j === 0 ? <th scope="row" key={j}>{t(cell)}</th> : <td key={j}>{t(cell)}</td>)}</tr>)}</tbody></table></div>
+      <p className={styles.note}>{t(lesson.fracturePatterns.caveat)}</p>
+      <Decision lang={lang} check={lesson.fracturePatterns.check} name="patella-fracture-stability"/>
+      <nav className={styles.topicActions} aria-label={t(L('Übungen zur Patellafraktur', 'Patellar fracture practice', 'تمرین شکستگی کشکک'))}>
+        <Link href={langHref('/ueben/quiz?fach=msk&n=1&themen=patellafraktur-trauma&from=%2Fmsk%2Fknie%2Fpatella-streckapparat%23fracture-patterns')}>{t(LABELS.fracturePractice)}</Link>
+        <Link href={langHref('/flashcards/patellafraktur-trauma?from=%2Fmsk%2Fknie%2Fpatella-streckapparat%23fracture-patterns')}>{t(LABELS.fractureCards)}</Link>
+      </nav>
+    </LessonSection>
+    <LessonSection id="dislocation" icon="dislocation" title={t(lesson.sections[3].title)} bodyClassName={styles.body}>
       <p className={styles.lead}>{t(lesson.dislocation.lead)}</p><ol className={styles.list}>{lesson.dislocation.paragraphs.map((paragraph, i) => <li key={i}>{t(paragraph)}</li>)}</ol>
       {figure(lesson.dislocation.image, lesson.dislocation.imageAlt, lesson.dislocation.imageCaption, 680, 480)}
       <Decision lang={lang}/>
     </LessonSection>
-    <LessonSection id="tendinopathy" icon="tendinopathy" title={t(lesson.sections[3].title)} bodyClassName={styles.body}>
+    <LessonSection id="tendinopathy" icon="tendinopathy" title={t(lesson.sections[4].title)} bodyClassName={styles.body}>
       <p className={styles.lead}>{t(lesson.tendinopathy.lead)}</p>{lesson.tendinopathy.paragraphs.map((paragraph, i) => <p key={i}>{t(paragraph)}</p>)}
       {figure(lesson.tendinopathy.image, lesson.tendinopathy.imageAlt, lesson.tendinopathy.imageCaption, 620, 280)}
     </LessonSection>

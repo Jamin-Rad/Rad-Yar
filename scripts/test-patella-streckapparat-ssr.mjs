@@ -7,10 +7,12 @@ import { transformSync } from 'esbuild'
 import { DOMParser } from '@xmldom/xmldom'
 import sharp from 'sharp'
 import { PATELLA_STRECKAPPARAT_LESSON as lesson } from '../data/patellaStreckapparatLesson.js'
+import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
+import { getCardsByTopic, getFlashcardTopic } from '../data/flashcards.js'
 
 const route = 'app/msk/knie/patella-streckapparat/page.jsx'
 assert.equal(lesson.id, 'patella-streckapparat')
-assert.equal(lesson.sections.length, 4)
+assert.equal(lesson.sections.length, 5)
 assert.equal(lesson.morphology.rows.length, 3)
 assert.equal(lesson.check.options.length, 4)
 assert.equal(lesson.check.feedback.length, 4)
@@ -57,25 +59,32 @@ for (const locale of ['de', 'en', 'fa']) {
   for (const section of lesson.sections) {
     assert.ok(html.includes(`id="${section.id}"`) && html.includes(htmlText(section.title[locale])))
   }
-  for (const part of [lesson.anatomy, lesson.morphology, lesson.dislocation, lesson.tendinopathy]) {
+  for (const part of [lesson.anatomy, lesson.morphology, lesson.fracturePatterns, lesson.dislocation, lesson.tendinopathy]) {
     if (part.lead) assert.ok(html.includes(htmlText(part.lead[locale])))
     for (const paragraph of part.paragraphs || []) assert.ok(html.includes(htmlText(paragraph[locale])))
   }
   for (const row of lesson.morphology.rows) for (const cell of row) assert.ok(html.includes(htmlText(cell[locale])))
+  for (const row of lesson.fracturePatterns.rows) for (const cell of row) assert.ok(html.includes(htmlText(cell[locale])), `${locale}: localized fracture-pattern table`)
+  assert.ok(html.includes(htmlText(lesson.fracturePatterns.imageAlt[locale])) && html.includes(htmlText(lesson.fracturePatterns.imageCaption[locale])))
+  assert.ok(html.includes(htmlText({ de: 'Frakturfragen üben', en: 'Practice fracture questions', fa: 'تمرین پرسش‌های شکستگی' }[locale])), `${locale}: exact-topic MCQ action`)
+  assert.ok(html.includes(htmlText({ de: 'Fraktur-Flashcards', en: 'Fracture flashcards', fa: 'فلش‌کارت‌های شکستگی' }[locale])), `${locale}: exact-topic flashcard action`)
+  assert.ok(html.includes('/ueben/quiz?fach=msk&amp;n=1&amp;themen=patellafraktur-trauma&amp;from=%2Fmsk%2Fknie%2Fpatella-streckapparat%23fracture-patterns'), `${locale}: exact-topic MCQ destination`)
+  assert.ok(html.includes('/flashcards/patellafraktur-trauma?from=%2Fmsk%2Fknie%2Fpatella-streckapparat%23fracture-patterns'), `${locale}: exact-topic flashcard destination`)
+  assert.ok(lesson.fracturePatterns.check.options.every(option => option[locale]) && lesson.fracturePatterns.check.feedback.every(item => item[locale]), `${locale}: fracture self-check parity`)
   assert.equal(lesson.morphology.comparisonRows.length, 4)
   for (const row of lesson.morphology.comparisonRows) for (const cell of row) assert.ok(html.includes(htmlText(cell[locale])), `${locale}: localized bipartite/fracture table cell`)
   assert.ok(html.includes(htmlText(lesson.morphology.comparisonNote[locale])))
   assert.ok(html.includes(htmlText(lesson.check.question[locale])))
   assert.ok(lesson.check.options.every(option => option[locale]), `${locale}: all options translated`)
   assert.ok(lesson.check.feedback.every(feedback => feedback[locale]), `${locale}: per-option feedback translated`)
-  for (const media of [lesson.morphology, lesson.dislocation, lesson.tendinopathy]) {
+  for (const media of [lesson.morphology, lesson.fracturePatterns, lesson.dislocation, lesson.tendinopathy]) {
     for (const key of ['imageAlt', 'imageCaption']) assert.ok(media[key][locale], `${locale}: ${key}`)
   }
   assert.ok(lesson.summary.every(rule => rule[locale]), `${locale}: summary`)
   assert.ok(lesson.references.every(ref => typeof ref.citation === 'string' || ref.citation[locale]), `${locale}: citations`)
   assert.ok(!html.includes('Morbus Osgood-Schlatter'), 'does not duplicate the existing Osgood-Schlatter lesson')
 }
-for (const svgPath of [lesson.hero, lesson.dislocation.image]) {
+for (const svgPath of [lesson.hero, lesson.fracturePatterns.image, lesson.dislocation.image]) {
   const svg = fs.readFileSync(`public${svgPath}`, 'utf8')
   assert.equal(new DOMParser().parseFromString(svg, 'image/svg+xml').getElementsByTagName('parsererror').length, 0, `${svgPath}: valid SVG`)
 }
@@ -85,4 +94,17 @@ for (const asset of ['wiberg-morphology-source.jpg','bipartite-fracture-radiogra
 assert.match(ledger, /radiographs only/i)
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
 assert.match(curriculum, /\{ id: 'patella-streckapparat',[^\n]*link: '\/msk\/knie\/patella-streckapparat',[^\n]*ready: true, inProgress: true/)
-console.log('Patella & extensor mechanism lesson: SSR/content parity PASS for DE/EN/FA, RTL, localized comparison table, assessment feedback, source crops, diagrams, curriculum link and scope ledger. Independent visual delta passed; browser and clinical approval remain separate.')
+assert.ok(curriculum.includes("{ id: 'patellafraktur-trauma'"))
+assert.ok(curriculum.includes("link: '/msk/knie/patella-streckapparat#fracture-patterns'"))
+assert.ok(curriculum.includes("themen=patellafraktur-trauma"))
+assert.ok(curriculum.includes("flashcardLink: '/flashcards/patellafraktur-trauma?from=%2Fmsk%2Fknie%2Fpatella-streckapparat%23fracture-patterns'"))
+for (const locale of ['de', 'en', 'fa']) {
+  const matching = QUESTION_BANK[locale].filter(question => question.tags?.includes('patellafraktur-trauma'))
+  assert.equal(matching.length, 1, `${locale}: exact-topic global MCQ`)
+  assert.equal(matching[0].options.length, 4)
+  assert.ok(MCQ_TOPIC_GROUPS.some(group => group.topics?.some(topic => topic.id === 'patellafraktur-trauma')), `${locale}: MCQ selector topic`)
+}
+assert.equal(getFlashcardTopic('patellafraktur-trauma')?.href, '/flashcards/patellafraktur-trauma')
+assert.equal(getCardsByTopic('patellafraktur-trauma').length, 1)
+assert.ok(getCardsByTopic('patellafraktur-trauma')[0].front.fa && getCardsByTopic('patellafraktur-trauma')[0].answer.fa)
+console.log('Patella & extensor mechanism lesson: SSR/content parity PASS for DE/EN/FA, RTL, localized comparison and fracture-pattern tables, both self-checks, source crops, diagrams, exact-topic global MCQ/flashcard links and scope ledger. Browser and clinical approval remain separate.')

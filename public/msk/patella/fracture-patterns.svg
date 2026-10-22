@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 250" role="img" aria-labelledby="title desc">
+  <title id="title">Patellar fracture-line morphology schematic</title>
+  <desc id="desc">Three non-diagnostic outline sketches show transverse, longitudinal and comminuted fracture lines in a simplified patella. Not patient imaging and not to scale.</desc>
+  <rect width="760" height="250" rx="18" fill="#f7fbfc"/>
+  <g fill="#d8e9ee" stroke="#2d6476" stroke-width="4" stroke-linejoin="round">
+    <path d="M120 32 C82 34 61 78 67 130 C72 177 91 211 120 216 C149 211 168 177 173 130 C179 78 158 34 120 32Z"/>
+    <path d="M380 32 C342 34 321 78 327 130 C332 177 351 211 380 216 C409 211 428 177 433 130 C439 78 418 34 380 32Z"/>
+    <path d="M640 32 C602 34 581 78 587 130 C592 177 611 211 640 216 C669 211 688 177 693 130 C699 78 678 34 640 32Z"/>
+  </g>
+  <g fill="none" stroke="#9a4d43" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M79 126 L161 126"/>
+    <path d="M380 45 L380 202"/>
+    <path d="M616 77 L640 111 L616 135 L647 155 L624 183"/>
+    <path d="M640 111 L670 91 M616 135 L589 124 M647 155 L675 173"/>
+  </g>
+</svg>

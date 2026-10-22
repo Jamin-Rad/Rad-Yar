@@ -1,20 +1,23 @@
 # Patella und Streckapparat — source and teaching ledger
 
-Status: bounded lesson; independent source/content/visual/language/assessment review
-and visual/language delta PASS; curriculum linked as `inProgress`. This is not
-browser acceptance, scientific sign-off, or publication approval.
+Status: bounded lesson; independent static review and delta review PASS for the
+p.69 / printed p.68 fracture-morphology addendum; curriculum linked as
+`inProgress`. Browser evidence and Dr. Zia scientific approval remain open. This
+is not publication approval.
 
 ## Learning promise and route
 
 - Curriculum ID: `patella-streckapparat`; route `/msk/knie/patella-streckapparat`.
 - Audience: radiology learners familiar with basic knee anatomy.
 - Promise: describe patellar-facet morphology, distinguish a bipartite variant
-  from an acute fracture pattern, and recognise MRI findings after lateral
-  patellar dislocation and in patellar tendinopathy.
+  from an acute fracture pattern, compare the main patellar fracture-line
+  patterns, and recognise MRI findings after lateral patellar dislocation and in
+  patellar tendinopathy.
 - Chapter outline: (1) extensor mechanism and passive stabilisers; (2) Wiberg
-  shape plus bipartite-versus-fracture comparison; (3) transient lateral
-  dislocation MRI footprints and associated morphology; (4) proximal patellar
-  tendinopathy MRI pattern; (5) four-rule take-home summary.
+  shape plus bipartite-versus-fracture comparison; (3) fracture-line orientation
+  and fragment pattern, with stability assessed separately; (4) transient lateral
+  dislocation MRI footprints and associated morphology; (5) proximal patellar
+  tendinopathy MRI pattern; (6) concise take-home summary.
 - Teaching check: one four-option retrieval task on the paired marrow-contusion
   pattern after transient lateral dislocation, with feedback for every option.
 
@@ -32,6 +35,7 @@ browser acceptance, scientific sign-off, or publication approval.
 | PAT-68-01 | MSK.pdf, physical PDF p. 69 (printed p. 68) | Transient lateral patellar dislocation and medial patella/lateral femoral-condyle bone-bruise pattern | `dislocation` | Included; described as a typical clue, not a stand-alone diagnosis |
 | PAT-68-02 | MSK.pdf, physical PDF p. 69 (printed p. 68) | MPFL/medial retinaculum injury and possible associated osteochondral injury | `dislocation` | Included as structures to inspect, not an incidence or treatment claim |
 | PAT-68-03 | MSK.pdf, physical PDF p. 69 (printed p. 68) | Trochlear morphology and patella alta as predisposition features | `dislocation` | Included without numeric thresholds; systematic review supports association |
+| PAT-68-04 | MSK.pdf, physical PDF p. 69 (printed p. 68) | Transverse fracture: often indirect traction and labelled unstable / at risk of displacement; longitudinal: usually direct trauma/vertical and often stable per PDF; comminuted: multifragmentary, usually direct trauma and labelled unstable | `fracture-patterns` section, section-local exact-topic links, localized MCQ/card under curriculum ID `patellafraktur-trauma` | Independent review confirms source tendency labels are explicit and qualified, not case-specific rules; displacement, articular surface and extensor mechanism need separate assessment. |
 | PAT-69-01 | MSK.pdf, physical PDF p. 70 (printed p. 69) | Jumper’s knee as chronic traction-related patellar tendinopathy | `tendinopathy` | Included, shortened; treatment and sport-specific generalisation omitted |
 | PAT-69-02 | MSK.pdf, physical PDF p. 70 (printed p. 69) | Proximal tendon thickening and signal change on MRI; T1/STIR example | `tendinopathy` | Included; labels are preserved from source; single example is not universal |
 | PAT-70-01 | MSK.pdf, physical PDF p. 71 (printed p. 70) | Osgood-Schlatter disease | Existing `/msk/osteochondrosen/osgood-schlatter` lesson | Duplicate/assigned to existing lesson; not repeated |
@@ -44,6 +48,7 @@ browser acceptance, scientific sign-off, or publication approval.
 | `public/msk/patella/wiberg-morphology-source.jpg` | Crop from rendered supplied MSK.pdf p. 68 / printed p. 67, upper Wiberg figure strip | Source PDF page raster (`tmp/mskgap-068.jpg`); shows types I–III. Crop visually checked. User authorised reuse of supplied-PDF images. No external contributor or licence asserted. |
 | `public/msk/patella/bipartite-fracture-radiographs.jpg` | Crop from rendered supplied MSK.pdf p. 68 / printed p. 67, radiograph examples only | Source PDF page raster (`tmp/mskgap-068.jpg`); embedded German comparison table and following Saupe heading/percentages are excluded. User authorised reuse of supplied-PDF images. No external contributor or licence asserted. Comparison criteria are rendered as localized HTML above this image. |
 | `public/msk/patella/lateral-dislocation-impact-pattern.svg` | Original conceptual SVG marking approximate medial-patellar and lateral-femoral impact sites | Not patient imaging, not to scale, does not represent an actual diagnostic study; alt text translated. PDF p. 69 has explanatory text but no corresponding case-MRI image. |
+| `public/msk/patella/fracture-patterns.svg` | Original code-native conceptual sketch comparing transverse, longitudinal and multi-fragment fracture-line patterns from PDF p.69 | No patient imaging, diagnostic evidence or scale claim; translated alt and caption. |
 | `public/msk/patella/tendinopathy-mri-source.jpg` | Crop from rendered supplied MSK.pdf p. 70 / printed p. 69, paired sagittal MRI images labelled T1 and STIR | Arrows and sequence labels retained; user authorised reuse of supplied-PDF image. Contributor and underlying Radiopaedia case identity not legible in provided crop; no external attribution or licence claim. |
 
 ## Terminology and source verification
@@ -66,7 +71,8 @@ dislocation (Danielsen et al., 2023 systematic review, PMID 36854995); patellar
 tendinopathy MRI morphology and the limitation of isolated signal (El-Khoury et
 al., Radiology 1992, PMID 1509078; Khan et al., AJR 1995, PMID 7785569; MRI
 signal review, PMID 30903258); fracture differential (Jarraya et al., PMID
-27905071). No numeric thresholds, prevalence, individual
+27905071); separate stability considerations (Hargett et al., 2021, PMID
+33405488). No numeric thresholds, prevalence, individual
 risk estimates, or treatment advice are imported.
 
 ## Validation evidence and open work
@@ -84,4 +90,8 @@ risk estimates, or treatment advice are imported.
   localized flashcards on the bipartite-patella differential and the transient
   lateral-dislocation contusion pattern. The lesson shell exposes both practice
   actions; the topic remains `inProgress` pending broader gates.
+- p.69 / printed p.68 addendum: localized comparison table, conceptual SVG,
+  inline stability check, one global MCQ and one exact-topic flashcard for
+  `patellafraktur-trauma`. Focused re-test, independent review, and browser
+  evidence remain pending.
 - Scientific review/sign-off and publication status: pending coordinator/owner.

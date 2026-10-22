@@ -4329,6 +4329,7 @@ for (const lang of Object.keys(QUESTION_BANK)) {
 export const MCQ_TOPIC_GROUPS = [
   SPINE_MODIC_TOPIC_GROUP,
   { fachId: 'msk', kapitelId: 'msk-knee-lower-leg', title: { de: 'Knie & Unterschenkel', en: 'Knee & lower leg', fa: 'زانو و ساق' }, topics: [{ id: 'patella-streckapparat', title: { de: 'Patella & Streckapparat', en: 'Patella & extensor mechanism', fa: 'کشکک و مکانیسم اکستانسور' } }] },
+  { fachId: 'msk', kapitelId: 'msk-knee-lower-leg', title: { de: 'Knie & Unterschenkel', en: 'Knee & lower leg', fa: 'زانو و ساق' }, topics: [{ id: 'patellafraktur-trauma', title: { de: 'Patellafraktur', en: 'Patellar fracture', fa: 'شکستگی کشکک' } }] },
   { fachId: 'msk', kapitelId: 'msk-schulter', title: { de: 'Schulter', en: 'Shoulder', fa: 'شانه' }, topics: [{ id: 'impingement-kalkschulter', title: { de: 'Schulter-Impingement', en: 'Shoulder impingement', fa: 'ایمپینجمنت شانه' } }] },
   { fachId: 'msk', kapitelId: 'msk-fuss', title: { de: 'Sprunggelenk & Fuß', en: 'Ankle & foot', fa: 'مچ پا و پا' }, topics: [{ id: 'osg-fraktur', title: { de: 'Sprunggelenktrauma', en: 'Ankle trauma', fa: 'ترومای مچ پا' } }] },
   { fachId: 'msk', kapitelId: 'msk-knee-lower-leg', title: { de: 'Knie & Unterschenkel', en: 'Knee & lower leg', fa: 'زانو و ساق' }, topics: [{ id: 'tibiakopffraktur', title: { de: 'Tibiakopffraktur', en: 'Tibial plateau fracture', fa: 'شکستگی پلاتوی تیبیا' } }] },
