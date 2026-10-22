@@ -25,8 +25,9 @@ The source’s disc morphology is aligned with the Spine/ASSR/ASNR/NASS consensu
 - Existing route found before editing: `app/wirbelsaeule/degenerative/page.js` renders the route; content is in `data/spineDegenerative.js` and already included the Modic table and disc-morphology/location teaching points.
 - Added the source sagittal MRI crop only to the existing Modic chapter. The existing route renderer already supports a chapter-local `visual` object.
 - No separate route was created. The existing curriculum ID `bandscheibenpathologien` links to `/wirbelsaeule/degenerative#disk`, a four-question filtered quiz and a matching flashcard topic.
+- The existing Modic section is now separately discoverable through the exact curriculum ID `osteochondrosis-intervertebralis`, linked to `/wirbelsaeule/degenerative#modic`, one source-bounded localized MCQ, and one localized flashcard. The route exposes direct quiz/card actions that return to the Modic anchor. This does not duplicate or broaden the disc-pathology module.
 - Scientific references below support terminology and interpretive limits, but do not clinically validate the particular source image.
-- Pending checks: parent’s independent reviewer; browser visual inspection; expert clinical sign-off. A build or code review does not establish diagnostic correctness.
+- Pending checks: independent reviewer for the new Modic assessment integration; browser visual inspection; expert clinical sign-off. A build or code review does not establish diagnostic correctness.
 
 ## References
 

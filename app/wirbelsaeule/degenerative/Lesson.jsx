@@ -18,6 +18,7 @@ export default function SpineSourceLesson({ lessonData = lesson, sectionName = n
   const { lang } = useLanguage()
   const rtl = lang === 'fa'
   const c = value => L(value, lang)
+  const withLang = href => lang === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${lang}`
   const copy = SOURCE_LESSON_UI[lang] || SOURCE_LESSON_UI.de
   const { isRead, toggleRead, authError } = useLessonReadStatus(lessonData.id)
   const trackedSections = useMemo(() => [
@@ -63,6 +64,19 @@ export default function SpineSourceLesson({ lessonData = lesson, sectionName = n
     {chapter.visual && <figure className={styles.sourceFigure}><img src={chapter.visual.src} alt={c(chapter.visual.alt)} loading="lazy"/><figcaption>{c(chapter.visual.caption)}</figcaption></figure>}
     <p className={styles.note}>{c(chapter.note)}</p>
     <small>{copy.chapterSource} {c(chapter.source)}</small>
+    {chapter.id === 'modic' && (() => {
+      const returnTo = lang === 'de' ? '/wirbelsaeule/degenerative#modic' : `/wirbelsaeule/degenerative?lang=${lang}#modic`
+      const from = encodeURIComponent(returnTo)
+      const labels = {
+        de: { name: 'Modic-Veränderungen üben', quiz: 'MC-Frage', cards: 'Lernkarte' },
+        en: { name: 'Practise Modic changes', quiz: 'MCQ', cards: 'Flashcard' },
+        fa: { name: 'تمرین تغییرات مودیک', quiz: 'سؤال چندگزینه‌ای', cards: 'فلش‌کارت' },
+      }[lang]
+      return <nav className={styles.practiceActions} aria-label={labels.name}>
+        <Link className={styles.practicePrimary} href={withLang(`/ueben/quiz?fach=wirbelsaeule&n=1&themen=osteochondrosis-intervertebralis&from=${from}`)}>{labels.quiz}</Link>
+        <Link className={styles.practiceSecondary} href={withLang(`/flashcards/osteochondrosis-intervertebralis?from=${from}`)}>{labels.cards}</Link>
+      </nav>
+    })()}
   </>
 
   const renderTrackedSection = (section, children) => {
