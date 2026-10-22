@@ -1,0 +1,13 @@
+{
+  "asset": "axial-spondyloarthritis-rid54155-p12.png",
+  "type": "source-derived diagnostic radiograph crop",
+  "source": "Wirbelsäule.pdf, physical PDF p.12 (printed p.11), Radiopaedia case rID 54155, Ankylosing spondylitis with dagger sign",
+  "contributor": "M. Niknejad (as identified in the source-case attribution)",
+  "modalitiesAndViews": ["AP pelvis radiograph", "lateral lumbar spine radiograph"],
+  "crop": "Both radiograph panels from the PDF page; the nearby small STIR thumbnail is excluded because sequence/case provenance is not independently clear and the panel is too small for a reliable teaching target.",
+  "purpose": "Illustrates established structural radiographic change in the source case; it is not evidence of active MRI sacroiliitis and no single sign is presented as independently diagnostic.",
+  "rightsBasis": "The user explicitly authorized RadYar's use of supplied PDF images and Radiopaedia cases, including subscription use. The source PDF identifies the case and contributor; the page ledger records the confirmed project authorization.",
+  "originalCaseIdentifier": "https://doi.org/10.53347/rID-54155",
+  "licenseLabelInCaseIndex": "CC BY-NC-SA 3.0; project use additionally relies on the user's explicit permission",
+  "diagnosticUse": true
+}

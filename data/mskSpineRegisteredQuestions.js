@@ -28,6 +28,10 @@ const registrations = [
     fourth: L('Es beweist eine axSpA, wenn es auf mindestens einer Schicht sichtbar ist.', 'It proves axSpA when visible on at least one slice.', 'اگر در دست‌کم یک برش دیده شود، axSpA را ثابت می‌کند.'),
   },
   {
+    key: 'ws-axspa-negative-mri-01', topicId: 'morbus-bechterew-ws',
+    fourth: L('Das 3:1-Verhältnis aus der PDF schließt axSpA bei Frauen praktisch aus.', 'The PDF’s 3:1 ratio effectively excludes axSpA in women.', 'نسبت ۳ به ۱ در PDF عملاً axSpA را در زنان رد می‌کند.'),
+  },
+  {
     key: 'ws-scheuermann-sorensen-01', topicId: 'morbus-scheuermann',
     fourth: L('Eine Keilung von ≥5° an nur einem Wirbel.', '≥5° wedging in only one vertebra.', 'گوه‌ای‌شدن ≥۵° فقط در یک مهره.'),
   },

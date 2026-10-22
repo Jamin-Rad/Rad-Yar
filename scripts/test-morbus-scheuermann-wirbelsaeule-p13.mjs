@@ -59,6 +59,11 @@ assert.equal(chapter.visual?.src, '/educational/scheuermann-wirbelsaeule-p13.png
 assert.ok(fs.existsSync(`public${chapter.visual.src}`), 'source crop asset exists')
 assert.ok(lesson.references.some(item => item.url.includes('aofoundation.org')))
 
+const clinicalChapter = lesson.chapters.find(item => item.id === 'ankylosing-clinical-context')
+const structuralChapter = lesson.chapters.find(item => item.id === 'ankylosing-structural')
+assert.ok(clinicalChapter && structuralChapter, 'p.11–12 axSpA chapters are present')
+assert.equal(structuralChapter.visual?.src, '/educational/axial-spondyloarthritis-rid54155-p12.png')
+
 for (const lang of ['de', 'en', 'fa']) {
   activeLanguage = lang
   const html = renderToStaticMarkup(React.createElement(Page))
@@ -70,6 +75,10 @@ for (const lang of ['de', 'en', 'fa']) {
   assert.ok(html.includes(esc(chapter.visual.caption[lang])), `${lang}: localized provenance/caveat`)
   for (const row of chapter.rows) for (const cell of row) assert.ok(html.includes(esc(cell[lang])), `${lang}: translated row`)
   assert.ok(html.includes(esc(chapter.note[lang])), `${lang}: source and threshold caveat`)
+  assert.ok(html.includes(esc(clinicalChapter.title[lang])), `${lang}: p.11 clinical chapter title`)
+  assert.ok(html.includes(esc(clinicalChapter.note[lang])), `${lang}: epidemiology/HLA caveat`)
+  assert.ok(html.includes(esc(structuralChapter.visual.caption[lang])), `${lang}: rID 54155 provenance caption`)
+  assert.ok(html.includes(esc(lesson.chapters.find(item => item.id === 'ankylosing-mri').note[lang])), `${lang}: ASAS/negative MRI caveat`)
   assert.ok(html.includes(esc(lesson.case.prompt[lang])), `${lang}: case prompt`)
   assert.ok(lesson.case.feedbackIncorrect[lang], `${lang}: explanatory wrong-answer feedback is localized`)
 }
@@ -87,7 +96,20 @@ assert.equal(card?.topicId, 'morbus-scheuermann')
 assert.ok(MSK_SPINE_REGISTERED_FLASHCARD_TOPICS.some(item => item.id === 'morbus-scheuermann'))
 assert.ok(FLASHCARDS.some(item => item.id === card.id))
 assert.ok(getCardsByTopic('morbus-scheuermann').some(item => item.id === card.id))
+const axspaQuestion = MSK_SPINE_REGISTERED_QUESTIONS.find(item => item.de.id.startsWith('ws-axspa-negative-mri-01-'))
+assert.ok(axspaQuestion, 'new negative-MRI follow-up check is registered')
+const axspaCard = MSK_SPINE_REGISTERED_FLASHCARDS.find(item => item.id === 'ws-axspa-negative-mri')
+assert.equal(axspaCard?.topicId, 'morbus-bechterew-ws')
+assert.ok(getCardsByTopic('morbus-bechterew-ws').some(item => item.id === axspaCard.id))
+for (const lang of ['de', 'en', 'fa']) {
+  assert.ok(axspaQuestion[lang].question && axspaQuestion[lang].explanation, `${lang}: question and feedback localized`)
+  assert.equal(axspaQuestion[lang].tags[0], 'morbus-bechterew-ws')
+  assert.equal(axspaQuestion[lang].options.length, 4)
+  assert.ok(QUESTION_BANK[lang].some(item => item.id === axspaQuestion[lang].id))
+  assert.ok(getQuestions(['morbus-bechterew-ws'], lang, 20).some(item => item.id === axspaQuestion[lang].id))
+  assert.ok(axspaCard.front[lang] && axspaCard.answer[lang] && axspaCard.explanation[lang])
+}
 assert.ok(fs.readFileSync('app/wirbelsaeule/entzuendlich/page.js', 'utf8').includes('SPINE_INFLAMMATORY_STRUCTURAL_LESSON'))
 assert.ok(fs.readFileSync('app/wirbelsaeule/degenerative/Lesson.jsx', 'utf8').includes('lessonData.case.feedbackIncorrect'), 'actual route presents explanatory feedback on an incorrect answer')
 
-console.log('Scheuermann PDF p.13 route SSR PASS: source-backed coverage, lateral source image, DE/EN/FA+RTL, exact curriculum route, and registered MCQ/flashcard retrieval.')
+console.log('Wirbelsäule PDF p.11–13 route SSR PASS: axSpA clinical context and negative-MRI retrieval, Scheuermann source coverage, DE/EN/FA+RTL, source attribution, exact curriculum retrieval.')

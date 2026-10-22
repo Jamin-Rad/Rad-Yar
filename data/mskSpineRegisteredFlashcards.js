@@ -26,6 +26,7 @@ const topicByDraftId = {
   'spondylodiszitis-tb-clues': 'spondylodiszitis',
   'knochentumor-grundlagen-periosteum': 'knochentumor-grundlagen',
   'ws-entzuendlich-asas-mri': 'morbus-bechterew-ws',
+  'ws-axspa-negative-mri': 'morbus-bechterew-ws',
   'ws-scheuermann-sorensen': 'morbus-scheuermann',
 }
 
