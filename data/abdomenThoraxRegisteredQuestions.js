@@ -30,6 +30,7 @@ const registrations = [
   { key: 'pneumonie-muster', fach: 'thorax', tags: ['pneumonie-muster', 'bakterielle-pneumonie', 'virale-pneumonie-covid', 'atypische-pneumonie', 'pcp', 'aspergillus-lunge'], extra: { de: 'Ein bestimmtes Verteilungsmuster beweist den Erreger', en: 'A particular distribution pattern proves the organism', fa: 'یک الگوی توزیع مشخص، عامل بیماری‌زا را ثابت می‌کند' } },
   { key: 'thorax-tuberculosis', fach: 'thorax', tags: ['tuberkulose'], extra: { de: 'Ein unauffälliges Thoraxbild schließt aktive TB sicher aus', en: 'A normal chest image definitively excludes active TB', fa: 'تصویر طبیعی قفسهٔ سینه سل فعال را قطعاً رد می‌کند' } },
   { key: 'thorax-chest-xray', fach: 'thorax', tags: ['roentgen-thorax-systematik'], extra: { de: 'Die Kontrastmittelphase', en: 'The contrast phase', fa: 'فاز مادهٔ حاجب' } },
+  { key: 'thorax-heart-size', fach: 'thorax', tags: ['herzgroesse-roentgen'], extra: { de: 'Beide Projektionen zeigen die Herzsilhouette ohne geometrische Vergrößerung gleich groß', en: 'Both projections show the cardiac silhouette at the same size without geometric magnification', fa: 'هر دو پروجکشن سایه قلب را بدون بزرگ‌نمایی هندسی به یک اندازه نشان می‌دهند' } },
   { key: 'abdomen-cystic-liver-lesions', fach: 'abdomen', tags: ['leberzyste'], extra: { de: 'Der Zysteninhalt reichert nach Kontrastmittel stärker an als Wand und Septen', en: 'The cyst contents enhance more than the wall and septa after contrast', fa: 'محتوای کیست پس از تزریق بیش از دیواره و سپتا جذب دارد' } },
   { key: 'abdomen-appendizitis', fach: 'abdomen', tags: ['appendizitis'], extra: { de: 'Eine nicht dargestellte Appendix als sicheren Ausschluss werten', en: 'Treat a non-visualised appendix as a definite exclusion', fa: 'دیده‌نشدن آپاندیس را رد قطعی بیماری بدانید' } },
   { key: 'abdomen-pdac-isoattenuating', fach: 'abdomen', tags: ['pdac'], extra: { de: 'Fehlende sichtbare Masse schließt PDAC aus', en: 'Absence of a visible mass excludes PDAC', fa: 'نبود تودهٔ قابل رؤیت PDAC را رد می‌کند' } },
@@ -89,6 +90,7 @@ export const ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS = [
   ] },
   { fachId: 'thorax', kapitelId: 'thorax-grundlagen', title: { de: 'Thoraxgrundlagen', en: 'Thoracic imaging fundamentals', fa: 'مبانی تصویربرداری قفسهٔ سینه' }, topics: [
     { id: 'roentgen-thorax-systematik', title: { de: 'Systematische Röntgenanalyse', en: 'Systematic chest radiograph review', fa: 'مرور نظام‌مند رادیوگرافی قفسهٔ سینه' } },
+    { id: 'herzgroesse-roentgen', title: { de: 'Herzgröße im Röntgen', en: 'Cardiac size on chest radiography', fa: 'اندازه قلب در رادیوگرافی قفسه سینه' } },
   ] },
   { fachId: 'thorax', kapitelId: 'thorax-atemwege', title: { de: 'Atemwege', en: 'Airways', fa: 'راه‌های هوایی' }, topics: [
     { id: 'fremdkoerper-atemwege', title: { de: 'Fremdkörperaspiration', en: 'Airway foreign body aspiration', fa: 'آسپیراسیون جسم خارجی' } },

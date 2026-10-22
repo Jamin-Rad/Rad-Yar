@@ -548,7 +548,7 @@ export const CURRICULUM = [
         title: { de: '11. Herz / Kardio-MRT', en: '11. Heart / Cardiac MRI', fa: '۱۱. قلب / MRI قلب' },
         icon: '❤️',
         themen: [
-          { id: 'herzgroesse-roentgen', title: { de: 'Herzgrößenbeurteilung im Röntgen', en: 'Cardiac Size Assessment on X-ray', fa: 'ارزیابی اندازه قلب در رادیوگرافی' }, tags: ['Rö'], diff: 1 },
+          { id: 'herzgroesse-roentgen', title: { de: 'Herzgrößenbeurteilung im Röntgen', en: 'Cardiac Size Assessment on X-ray', fa: 'ارزیابی اندازه قلب در رادیوگرافی' }, tags: ['Rö'], diff: 1, link: '/thorax/roentgen-thorax-systematik#projection', mcqLink: '/ueben/quiz?fach=thorax&n=1&themen=herzgroesse-roentgen', flashcardLink: '/flashcards/herzgroesse-roentgen', inProgress: true, updatedAt: '2026-10-22' },
           { id: 'kardiale-dekompensation', title: { de: 'Kardiale Dekompensation', en: 'Cardiac Decompensation', fa: 'دکمپانساسیون قلبی' }, tags: ['Rö','CT'], diff: 1 },
           { id: 'kardio-mrt-basics', title: { de: 'Kardio-MRT: Grundlagen', en: 'Cardiac MRI: Basics', fa: 'MRI قلب: مبانی' }, group: ['Kardio-MRT'], tags: ['MRT'], diff: 2, link: '/thorax/kardio/kardio-mrt-basics', ready: true, updatedAt: '2026-09-16' },
           { id: 'kardio-mrt-indikationen', title: { de: 'Kardio-MRT: Indikationen', en: 'Cardiac MRI: Indications', fa: 'MRI قلب: اندیکاسیون‌ها' }, group: ['Kardio-MRT'], tags: ['MRT'], diff: 2, link: '/thorax/kardio/kardio-mrt-indikationen', ready: true, updatedAt: '2026-09-26' },
