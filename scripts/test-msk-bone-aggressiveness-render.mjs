@@ -42,9 +42,9 @@ Module._load = function (request, parent, isMain) {
 
 const { default: Route } = require(path.join(root, 'app/msk/tumoren/knochenzeichen/page.js'))
 const expected = {
-  de: ['Aggressivität fokaler Knochenläsionen', 'Das Muster ist nicht exklusiv.', 'Endosteales Scalloping', 'Geographisch · I', 'Mottenfraß · II', 'Konzeptzeichnung nach MSK.pdf'],
-  en: ['Aggressiveness of focal bone lesions', 'The pattern is not exclusive.', 'Endosteal scalloping', 'Geographic · I', 'Moth-eaten · II', 'Conceptual drawing based on MSK.pdf'],
-  fa: ['ارزیابی تهاجمی‌بودن ضایعات کانونی استخوان', 'اختصاصی آن‌ها نیست', 'فرسایش اندوستئال', 'جغرافیایی · I', 'بیدخورده · II', 'طرح مفهومی بر پایهٔ MSK.pdf'],
+  de: ['Aggressivität fokaler Knochenläsionen', 'Das Muster ist nicht exklusiv.', 'Endosteales Scalloping', 'Geographisch · I', 'Mottenfraß · II', 'Konzeptzeichnung nach MSK.pdf', 'annähernd senkrechte Spiculae', 'divergierenden „Sunburst“', 'Knochenbildende Tumorzellen produzieren Osteoid', 'RadioGraphics · 2023', 'Imaging Review · 2020'],
+  en: ['Aggressiveness of focal bone lesions', 'The pattern is not exclusive.', 'Endosteal scalloping', 'Geographic · I', 'Moth-eaten · II', 'Conceptual drawing based on MSK.pdf', 'approximately perpendicular to the cortex', 'divergent “sunburst”', 'Bone-forming tumour cells produce osteoid', 'RadioGraphics · 2023', 'Imaging Review · 2020'],
+  fa: ['ارزیابی تهاجمی‌بودن ضایعات کانونی استخوان', 'اختصاصی آن‌ها نیست', 'فرسایش اندوستئال', 'جغرافیایی · I', 'بیدخورده · II', 'طرح مفهومی بر پایهٔ MSK.pdf', 'تقریباً عمود بر کورتکس', 'الگوی واگرای «sunburst»', 'سلول‌های تومورهای استخوان‌ساز استئوئید تولید می‌کنند', 'RadioGraphics · ۲۰۲۳', 'Imaging Review · ۲۰۲۰'],
 }
 
 for (const locale of Object.keys(expected)) {

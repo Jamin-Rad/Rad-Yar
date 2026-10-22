@@ -66,7 +66,7 @@ export default function BoneAggressivenessPage() {
   const localized = path => lang === 'de' ? path : `${path}?lang=${lang}`
   const translatedLabels = Object.fromEntries(Object.entries(labels).map(([key, value]) => [key, pick(value, lang)]))
   const sections = [...lesson.chapters.map(chapter => ({ id: chapter.id, label: pick(chapter.title, lang), icon: chapter.icon })), { id: 'case', label: pick(lesson.case.title, lang), icon: 'case' }, { id: 'take-home', label: translatedLabels.takeHome, icon: 'takeHome', emphasis: true }]
-  const sources = lesson.references.map((source, index) => ({ tag: index === 0 ? 'Radiology · 1980' : index === 1 ? 'Skeletal Radiol · 2022' : 'Radiology · 1969', title: pick(source.label, lang), href: source.url }))
+  const sources = lesson.references.map(source => ({ tag: pick(source.tag, lang), title: pick(source.label, lang), href: source.url }))
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={pick(lesson.title, lang)} author="RadYar" heroImageAlt={pick(lesson.alt, lang)} syncHashNavigation
     breadcrumbs={[{ label: 'RadYar', href: localized('/') }, { label: 'MSK', href: localized('/lernen/msk') }, { label: pick(lesson.title, lang) }]}
     sections={sections} labels={translatedLabels} actions={{}} renderIcon={id => <Icon id={id}/>}
