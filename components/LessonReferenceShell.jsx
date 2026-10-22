@@ -19,7 +19,7 @@ const pick = (value, lang) => typeof value === 'string' ? value : value?.[lang] 
 const CHAPTERS = ['content', 'self-check', 'take-home']
 
 export default function LessonReferenceShell({ lang = 'de', lessonId, title, diagram, heroVisual, goals, check, summary, copy: lessonCopy, quizHref, flashcardsHref, children }) {
-  const t = copy[lang] || copy.de
+  const t = { ...(copy[lang] || copy.de), ...(lessonCopy?.labels?.[lang] || {}) }
   const lessonGoals = goals || (lessonCopy?.subtitle || lessonCopy?.sub ? [lessonCopy.subtitle || lessonCopy.sub] : [])
   const lessonContentTitle = lessonCopy?.contentTitle || lessonCopy?.sections?.[0]?.[1] || lessonCopy?.toc || t.content
   const reportItems = lessonCopy?.report || lessonCopy?.workflow || lessonCopy?.plan || []

@@ -924,7 +924,7 @@ export const CURRICULUM = [
         icon: '🩸',
         themen: [
           { id: 'aaa', title: { de: 'Abdominelles Aortenaneurysma (AAA)', en: 'Abdominal Aortic Aneurysm (AAA)', fa: 'آنوریسم آئورت شکمی (AAA)' }, tags: ['CT','Sono'], diff: 2 },
-          { id: 'fibromuskulaere-dysplasie', title: { de: 'Fibromuskuläre Dysplasie', en: 'Fibromuscular Dysplasia', fa: 'دیسپلازی فیبروماسکولار' }, tags: ['CT'], diff: 3 },
+          { id: 'fibromuskulaere-dysplasie', title: { de: 'Fibromuskuläre Dysplasie', en: 'Fibromuscular Dysplasia', fa: 'دیسپلازی فیبروماسکولار' }, tags: ['CT'], diff: 3, link: '/abdomen/gefaesse/fmd', mcqLink: '/ueben/quiz?fach=abdomen&n=3&themen=fibromuskulaere-dysplasie', flashcardLink: '/flashcards/fibromuskulaere-dysplasie', inProgress: true, updatedAt: '2026-10-22' },
         ],
       },
       {

@@ -11,7 +11,10 @@
 .label { font-size: 20px; font-weight: 700; fill: #24304a; }
 .caption { font-size: 15px; fill: #46576b; }
 .figure figcaption { color: #526274; font-size: .9rem; line-height: 1.6; margin-top: .5rem; }
+.caseFigure { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(16rem, .9fr); gap: 1rem; align-items: center; margin: 1.25rem 0 1.5rem; padding: 1rem; border: 1px solid #d8e4e8; border-radius: 16px; background: #f8fbfc; }
+.caseFigure img { display: block; width: 100%; max-height: 34rem; object-fit: contain; background: #111; border-radius: 8px; }
+.caseFigure figcaption { color: #526274; font-size: .9rem; line-height: 1.65; }
 .caution { border-inline-start: 4px solid #d97706; background: #fff8ed; padding: .85rem 1rem; margin: 1.25rem 0; border-radius: 8px; }
 .caution p { margin-bottom: 0; line-height: 1.7; }
 .source { color: #556579; font-size: .9rem; }
-@media (max-width: 640px) { .page { padding-inline: .8rem; } .svg { min-height: 130px; } }
+@media (max-width: 640px) { .page { padding-inline: .8rem; } .svg { min-height: 130px; } .caseFigure { grid-template-columns: 1fr; } .caseFigure img { max-height: 28rem; } }

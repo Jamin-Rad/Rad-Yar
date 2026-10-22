@@ -124,13 +124,29 @@ export default function FmdPage() {
   const check = { question: { de: C.de.checkQ, en: C.en.checkQ, fa: C.fa.checkQ }, options: C.de.options.map((_, i) => ({ de: C.de.options[i], en: C.en.options[i], fa: C.fa.options[i] })), answer: 0, explanation: { de: C.de.explanation, en: C.en.explanation, fa: C.fa.explanation }, diagramCaption: { de: C.de.diagramCaption, en: C.en.diagramCaption, fa: C.fa.diagramCaption } }
   const goals = C.de.goals.map((_, i) => ({ de: C.de.goals[i], en: C.en.goals[i], fa: C.fa.goals[i] }))
   const summary = C.de.summary.map((_, i) => ({ de: C.de.summary[i], en: C.en.summary[i], fa: C.fa.summary[i] }))
-  return <LessonReferenceShell lessonId="abdomen-fmd" lang={lang} title={{ de: C.de.title, en: C.en.title, fa: C.fa.title }} diagram="fmd" goals={goals} check={check} summary={summary}>
+  const shellCopy = {
+    contentTitle: { de: 'Von der Gefäßform zur Bildgebung', en: 'From vascular pattern to imaging choice', fa: 'از الگوی عروقی تا انتخاب تصویربرداری' },
+    labels: {
+      de: { selfCheck: 'Welche Methode beantwortet welche Frage?', summary: 'Drei Regeln zur Einordnung' },
+      en: { selfCheck: 'Which test answers which question?', summary: 'Three interpretation rules' },
+      fa: { selfCheck: 'کدام روش به کدام پرسش پاسخ می‌دهد؟', summary: 'سه قاعده برای تفسیر' },
+    },
+  }
+  return <LessonReferenceShell lessonId="abdomen-fmd" lang={lang} title={{ de: C.de.title, en: C.en.title, fa: C.fa.title }} diagram="fmd" goals={goals} check={check} summary={summary} lessonCopy={shellCopy}
+    quizHref="/ueben/quiz?fach=abdomen&n=3&themen=fibromuskulaere-dysplasie"
+    flashcardsHref="/flashcards/fibromuskulaere-dysplasie">
     <main className={styles.page} lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
       <p className={styles.lead}>{c.intro}</p>
       <section className={styles.section}><h2>{lang === 'fa' ? 'تعریف' : lang === 'de' ? 'Definition' : 'Definition'}</h2><p>{c.definition}</p></section>
       <section className={styles.section}><h2>{c.patternTitle}</h2><div className={styles.grid}>{c.pattern.map(([title, text]) => <L title={title} text={text} key={title}/>)}</div><h3>{c.diagramTitle}</h3><FmdSchematic lang={lang}/></section>
       <section className={styles.section}><h2>{c.locationTitle}</h2><div className={styles.grid}>{c.locations.map(([title, text]) => <L title={title} text={text} key={title}/>)}</div></section>
-      <section className={styles.section}><h2>{c.imagingTitle}</h2><div className={styles.grid}>{c.imaging.map(([title, text]) => <L title={title} text={text} key={title}/>)}</div><aside className={styles.caution}><strong>{lang === 'fa' ? 'محدودیت و اختلاف منبع' : lang === 'de' ? 'Quellenabgleich' : 'Source reconciliation'}</strong><p>{c.caution}</p></aside><p className={styles.source}>{c.source}</p><p><a href="https://doi.org/10.1177/1358863X18821816" target="_blank" rel="noreferrer">{lang === 'fa' ? 'اجماع بین‌المللی FMD، ۲۰۱۹ ↗' : 'First International Consensus on FMD, 2019 ↗'}</a></p></section>
+      <section className={styles.section}><h2>{c.imagingTitle}</h2>
+        <figure className={styles.caseFigure}>
+          <img src="/abdomen/fmd/renal-cta-source.png" width="476" height="540" loading="lazy"
+            alt={lang === 'fa' ? 'برش CTA کلیه و آئورت از PDF آموزشی، نمونهٔ تصویری بدون تعیین شدت همودینامیک.' : lang === 'de' ? 'Nieren- und Aorten-CTA aus dem Lehr-PDF; das Bild allein bestimmt keine hämodynamische Relevanz.' : 'Renal and aortic CTA crop from the teaching PDF; the image alone does not establish haemodynamic significance.'}/>
+          <figcaption>{lang === 'fa' ? 'نمونهٔ CTA کلیوی از Abdomen.pdf، صفحهٔ PDF ۹۲ (صفحهٔ چاپی ۹۱؛ rID: 31157 همان‌طور که در صفحه آمده است). برش برای یافتن شریان‌های کلیوی و الگوی عروقی است؛ شدت همودینامیک را به‌تنهایی نشان نمی‌دهد.' : lang === 'de' ? 'Renales CTA-Beispiel aus Abdomen.pdf, PDF-Seite 92 (Druckseite 91; rID 31157 wie auf der Seite angegeben). Nutzen Sie den Ausschnitt zur Orientierung an den Nierenarterien; die hämodynamische Bedeutung lässt sich daraus allein nicht ableiten.' : 'Renal CTA example from Abdomen.pdf, PDF p. 92 (printed p. 91; rID 31157 as printed on the page). Use the crop to orient to the renal arteries; haemodynamic significance cannot be determined from it alone.'}</figcaption>
+        </figure>
+        <div className={styles.grid}>{c.imaging.map(([title, text]) => <L title={title} text={text} key={title}/>)}</div><aside className={styles.caution}><strong>{lang === 'fa' ? 'محدودیت و اختلاف منبع' : lang === 'de' ? 'Quellenabgleich' : 'Source reconciliation'}</strong><p>{c.caution}</p></aside><p className={styles.source}>{c.source}</p><p><a href="https://doi.org/10.1177/1358863X18821816" target="_blank" rel="noreferrer">{lang === 'fa' ? 'اجماع بین‌المللی FMD، ۲۰۱۹ ↗' : 'First International Consensus on FMD, 2019 ↗'}</a></p></section>
     </main>
   </LessonReferenceShell>
 }

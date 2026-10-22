@@ -1,0 +1,28 @@
+{
+  "asset": "renal-cta-source.png",
+  "source": "User-provided Abdomen.pdf",
+  "physicalPdfPage": 92,
+  "printedPage": 91,
+  "sourceRender": {
+    "tool": "Poppler pdftoppm",
+    "dpi": 240,
+    "width": 1985,
+    "height": 2807,
+    "path": "tmp/pdfs/abdomen92/page-92.png"
+  },
+  "cropPixels": {
+    "left": 1394,
+    "top": 2150,
+    "width": 476,
+    "height": 540
+  },
+  "assetDimensions": {
+    "width": 476,
+    "height": 540
+  },
+  "content": "Renal and aortic CTA example from the FMD source page. The visible page prints rID:31157. The image is presented as an orientation example; the lesson does not infer haemodynamic significance from it.",
+  "contributor": "Not identified on the supplied PDF page; no name inferred.",
+  "rights": "User explicitly authorized re-use of supplied PDF images in RadYar. The page's original contributor and separate Radiopaedia image terms were not independently verified.",
+  "processing": "Crop only from 240 dpi page render. No arrows, labels, or diagnostic markings were added.",
+  "inspection": "Full rendered page and final crop visually inspected at original resolution on 2026-10-22."
+}
