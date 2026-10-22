@@ -67,6 +67,7 @@ import { AK_LUXATION_QUESTIONS } from './ak-luxation'
 import { RADIUSKOPF_QUESTIONS } from './radiuskopf'
 import { UNTERARM_QUESTIONS } from './unterarmschaftfrakturen'
 import { DISTALE_RADIUS_QUESTIONS } from './distale-radiusfraktur'
+import { SCAPHOID_QUESTIONS } from './scaphoidAssessments'
 import { METACARPAL_BASE_QUESTIONS } from './metacarpalBaseQuestions'
 import { HRCT_QUESTIONS } from './hrct-muster'
 import { SPINE_TRAUMA_QUESTIONS } from './spineTrauma'
@@ -657,6 +658,7 @@ const LEGACY_QUESTION_BANK = {
     ...RADIUSKOPF_QUESTIONS.de,
     ...UNTERARM_QUESTIONS.de,
     ...DISTALE_RADIUS_QUESTIONS.de,
+    ...SCAPHOID_QUESTIONS.de,
     ...KNIE_LIGAMENTE_QUESTIONS.de,
     ...SPINE_TRAUMA_QUESTIONS.de,
     ...HRCT_QUESTIONS.de,
@@ -1865,6 +1867,7 @@ const LEGACY_QUESTION_BANK = {
     ...RADIUSKOPF_QUESTIONS.en,
     ...UNTERARM_QUESTIONS.en,
     ...DISTALE_RADIUS_QUESTIONS.en,
+    ...SCAPHOID_QUESTIONS.en,
     ...KNIE_LIGAMENTE_QUESTIONS.en,
     ...SPINE_TRAUMA_QUESTIONS.en,
     ...HRCT_QUESTIONS.en,
@@ -3063,6 +3066,7 @@ const LEGACY_QUESTION_BANK = {
     ...RADIUSKOPF_QUESTIONS.fa,
     ...UNTERARM_QUESTIONS.fa,
     ...DISTALE_RADIUS_QUESTIONS.fa,
+    ...SCAPHOID_QUESTIONS.fa,
     ...KNIE_LIGAMENTE_QUESTIONS.fa,
     ...SPINE_TRAUMA_QUESTIONS.fa,
     ...HRCT_QUESTIONS.fa,
@@ -4298,6 +4302,7 @@ for (const lang of Object.keys(QUESTION_BANK)) {
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  { fachId: 'msk', kapitelId: 'msk-hand', title: { de: 'Hand & Handwurzel', en: 'Hand & carpus', fa: 'دست و کارپ' }, topics: [{ id: 'skaphoidfraktur', title: { de: 'Skaphoidfraktur', en: 'Scaphoid fracture', fa: 'شکستگی اسکافوئید' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-leber', title: { de: 'Leber', en: 'Liver', fa: 'کبد' }, topics: [{ id: 'hepatisches-angiomyolipom', title: { de: 'Hepatisches Angiomyolipom', en: 'Hepatic angiomyolipoma', fa: 'آنژیومیولیپوم کبدی' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-pankreas', title: { de: 'Pankreas', en: 'Pancreas', fa: 'پانکراس' }, topics: [{ id: 'pnet', title: { de: 'Neuroendokrine Tumoren (pNET)', en: 'Neuroendocrine tumours (pNET)', fa: 'تومورهای نورواندوکرین پانکراس (pNET)' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-gi-trakt', title: { de: 'Gastrointestinaltrakt', en: 'Gastrointestinal tract', fa: 'دستگاه گوارش' }, topics: [{ id: 'volvulus', title: { de: 'Sigmoid- und Zökumvolvulus', en: 'Sigmoid and caecal volvulus', fa: 'ولولوس سیگموئید و سکوم' } }] },

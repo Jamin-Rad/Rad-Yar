@@ -6,6 +6,8 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import { DOMParser } from '@xmldom/xmldom'
 import { SKAPHOIDFRAKTUR_LESSON as lesson } from '../data/skaphoidfraktur.js'
+import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
+import { FLASHCARD_TOPICS, getCardsByTopic } from '../data/flashcards.js'
 
 const route = 'app/msk/trauma/skaphoidfraktur/page.jsx'
 assert.equal(lesson.id, 'skaphoidfraktur')
@@ -72,6 +74,7 @@ for (const locale of ['de', 'en', 'fa']) {
     assert.ok(html.includes(`id="${section.id}"`) && html.includes(escape(section.title[locale])))
     assert.ok(html.includes(escape(section.lead[locale])) && html.includes(section.image))
     if (section.imageCaption) assert.ok(html.includes(escape(section.imageCaption[locale])), `${locale}: rendered image caption`)
+    for (const label of section.imageLabelTranslations || []) assert.ok(html.includes(escape(label[locale])), `${locale}: rendered translated image label`)
     for (const paragraph of section.paragraphs || []) assert.ok(html.includes(escape(paragraph[locale])))
     for (const row of section.rows || []) for (const cell of row) assert.ok(html.includes(escape(cell[locale])))
   }
@@ -89,4 +92,15 @@ const ledger = fs.readFileSync('docs/lesson-quality/skaphoidfraktur-msk-p19-p20.
 for (const detail of ['SCAP-19-01', 'SCAP-19-02', 'SCAP-19-04', 'SCAP-20-01', 'source-herbert-classification-p19.jpg', 'source-pseudarthrosis-vs-bipartitum-p19.jpg', 'source-snac-radiograph-p20.jpg', '220 dpi', 'user supplied the PDF']) assert.ok(ledger.includes(detail), `ledger detail missing: ${detail}`)
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
 assert.match(curriculum, /\{ id: 'skaphoidfraktur',[^\n]*link: '\/msk\/trauma\/skaphoidfraktur',[^\n]*inProgress: true/)
+for (const locale of ['de', 'en', 'fa']) {
+  const questions = QUESTION_BANK[locale].filter(item => item.tags?.includes('skaphoidfraktur'))
+  assert.equal(questions.length, 2, `${locale}: exact-topic quiz questions are registered`)
+  assert.ok(questions.every(item => item.options.length === 4 && item.options.every(option => option.text)), `${locale}: four localized options`)
+  assert.ok(questions.every(item => item.explanation), `${locale}: answer explanations`)
+}
+assert.ok(MCQ_TOPIC_GROUPS.some(group => group.topics.some(topic => topic.id === 'skaphoidfraktur')), 'quiz topic selector registers the exact curriculum ID')
+assert.ok(FLASHCARD_TOPICS.some(topic => topic.id === 'skaphoidfraktur'), 'flashcard topic is registered')
+const cards = getCardsByTopic('skaphoidfraktur')
+assert.equal(cards.length, 2, 'exact-topic flashcard deck is registered')
+for (const card of cards) for (const field of ['front', 'answer', 'explanation']) for (const locale of ['de', 'en', 'fa']) assert.ok(card[field][locale], `${card.id} ${field} ${locale}`)
 console.log('Scaphoid fracture/SNAC lesson: SSR and content parity PASS for DE/EN/FA, RTL, source figures, conceptual SVG, retrieval check, and references.')
