@@ -33,3 +33,7 @@
 - Route and styles: `app/msk/trauma/distale-femurfraktur/`
 - Media: `public/msk/distal-femur/`
 - Test: `scripts/test-distale-femurfraktur-ssr.mjs`
+
+## Retrieval practice registration (2026-10-22)
+
+Two four-option MCQs and two flashcards are registered under the exact curriculum ID `distale-femurfraktur`. The MCQs assess AO 33/Hoffa morphology and the AP-versus-lateral visibility caveat without inferring treatment. Lesson actions and curriculum links point to the matching bank topic. SSR and global bank checks pass; independent assessment delta review passed. Browser click-through and clinical sign-off remain open.

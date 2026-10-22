@@ -125,3 +125,7 @@ Zwei MCQs mit je vier Antwortoptionen und zwei Lernkarten sind unter `periprothe
 ### Proximale Femurfraktur · MSK.pdf S.29–30 (22.10.2026)
 
 Zwei Vier-Optionen-MCQs und zwei Lernkarten zu Pauwels (AO 30°/50°) sowie zur Aussagegrenze von Garden sind unter `proximale-femurfraktur` in die DE/EN/FA-Banken aufgenommen. Lesson und Curriculum verlinken exakt auf Frage- und Kartenroute. SSR und globales MCQ-Audit bestanden; unabhängige Delta-Prüfung inklusive Übersetzungskorrektur bestanden. Browser und klinische Prüfung bleiben offen.
+
+### Distale Femurfraktur · MSK.pdf S.31 (22.10.2026)
+
+Zwei MCQs mit vier Optionen und zwei Lernkarten zu AO 33/Hoffa und zur AP-/seitlichen Projektion sind unter `distale-femurfraktur` in den DE/EN/FA-Banken registriert. Die Unterrichtsseite und der Curriculum-Eintrag verwenden die passende Quiz- und Kartenroute. SSR und MCQ-Audit bestanden; unabhängige Delta-Prüfung bestanden. Browser und klinische Prüfung offen.

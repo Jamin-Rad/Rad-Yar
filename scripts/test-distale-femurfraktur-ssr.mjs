@@ -6,6 +6,8 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import { DOMParser } from '@xmldom/xmldom'
 import { DISTALE_FEMURFRAKTUR_LESSON as lesson } from '../data/distaleFemurfraktur.js'
+import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
+import { FLASHCARD_TOPICS, getCardsByTopic } from '../data/flashcards.js'
 
 const route = 'app/msk/trauma/distale-femurfraktur/page.jsx'
 assert.equal(lesson.id, 'distale-femurfraktur')
@@ -13,6 +15,17 @@ assert.equal(lesson.sections.length, 1)
 assert.equal(lesson.sections[0].rows.length, 3)
 assert.equal(lesson.sections[0].answer, 1)
 assert.equal(lesson.sections[0].options.length, 3)
+assert.ok(MCQ_TOPIC_GROUPS.flatMap(group => group.topics).some(topic => topic.id === 'distale-femurfraktur'))
+assert.equal(FLASHCARD_TOPICS.filter(topic => topic.id === 'distale-femurfraktur').length, 1)
+const cards = getCardsByTopic('distale-femurfraktur')
+assert.equal(cards.length, 2)
+assert.ok(cards.every(card => ['de', 'en', 'fa'].every(locale => card.front[locale] && card.answer[locale] && card.explanation[locale])))
+assert.ok(cards.every(card => card.front.de !== card.front.en))
+for (const locale of ['de', 'en', 'fa']) {
+  const questions = QUESTION_BANK[locale].filter(question => question.tags?.includes('distale-femurfraktur'))
+  assert.equal(questions.length, 2)
+  assert.ok(questions.every(question => question.options.length === 4 && question.question && question.explanation))
+}
 assert.ok(fs.existsSync(`public${lesson.hero}`))
 assert.ok(fs.existsSync(`public${lesson.sections[0].image}`))
 assert.match(lesson.sections[0].rows[1][1].en, /coronal-plane condylar fragment/i)
@@ -61,6 +74,8 @@ for (const locale of ['de', 'en', 'fa']) {
   lang = locale
   const html = renderToStaticMarkup(React.createElement(Page))
   assert.ok(html.includes(`lang="${locale}"`) && html.includes(`dir="${locale === 'fa' ? 'rtl' : 'ltr'}"`), `${locale}: language/direction`)
+  assert.ok(html.includes('/ueben/quiz?fach=msk&amp;n=8&amp;themen=distale-femurfraktur'))
+  assert.ok(html.includes('/flashcards/distale-femurfraktur'))
   assert.ok(html.includes(escape(lesson.title[locale])) && html.includes(escape(lesson.heroAlt[locale])))
   assert.ok(html.includes(escape(lesson.scope[locale])), `${locale}: localized source scope`)
   assert.ok(html.includes(lesson.hero) && html.includes(lesson.sections[0].image))
@@ -80,5 +95,5 @@ assert.equal(new DOMParser().parseFromString(svg, 'image/svg+xml').getElementsBy
 const ledger = fs.readFileSync('docs/lesson-quality/distale-femurfraktur-msk-p31.md', 'utf8')
 for (const id of ['DF-31-01', 'DF-31-02', 'DF-31-03', 'DF-31-04', 'DF-31-05', 'DF-31-06']) assert.ok(ledger.includes(id))
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
-assert.match(curriculum, /\{ id: 'distale-femurfraktur',[^\n]*link: '\/msk\/trauma\/distale-femurfraktur',[^\n]*inProgress: true/)
-console.log('Distal femur lesson: SSR/content parity PASS for DE/EN/FA, RTL, AO 33 morphology, Hoffa source radiographs, retrieval feedback and source ledger.')
+assert.match(curriculum, /\{ id: 'distale-femurfraktur',[^\n]*link: '\/msk\/trauma\/distale-femurfraktur',[^\n]*mcqLink: '\/ueben\/quiz\?fach=msk&n=8&themen=distale-femurfraktur',[^\n]*flashcardLink: '\/flashcards\/distale-femurfraktur'/)
+console.log('Distal femur lesson: SSR/content parity PASS for DE/EN/FA, RTL, exact-topic quiz/cards, AO 33 morphology, Hoffa source radiographs and retrieval feedback.')

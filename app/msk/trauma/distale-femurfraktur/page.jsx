@@ -17,6 +17,7 @@ const LABELS = {
   complete: L('Abschnitt als gelesen markieren', 'Mark section as read', 'این بخش را خواندم'), completed: L('Als gelesen markiert', 'Marked as read', 'خوانده‌شده'),
   open: L('Abschnitt öffnen', 'Open section', 'بازکردن بخش'), close: L('Schließen', 'Close', 'بستن'),
   takeHome: L('Drei Muster merken', 'Remember three patterns', 'سه الگو را به خاطر بسپارید'),
+  quiz: L('Fragen zur distalen Femurfraktur', 'Distal femur questions', 'پرسش‌های شکستگی دیستال فمور'), cards: L('Lernkarten zur distalen Femurfraktur', 'Distal femur flashcards', 'فلش‌کارت‌های شکستگی دیستال فمور'),
 }
 function Icon({ id }) {
   const d = { pattern: 'M5 18 12 5l7 13M8 13h8', summary: 'M5 5h14M5 12h14M5 19h14' }[id] || 'M4 12h16'
@@ -43,7 +44,7 @@ export default function DistaleFemurfrakturPage() {
   const section = lesson.sections[0]
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={pick(lesson.title, lang)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: langHref('/') }, { label: pick(L('MSK', 'MSK', 'عضلانی‌اسکلتی'), lang), href: langHref('/lernen/msk') }, { label: pick(lesson.title, lang) }]}
-    sections={sections} labels={Object.fromEntries(Object.entries(LABELS).map(([key, value]) => [key, pick(value, lang)]))} renderIcon={id => <Icon id={id}/>} actions={{}}
+    sections={sections} labels={Object.fromEntries(Object.entries(LABELS).map(([key, value]) => [key, pick(value, lang)]))} renderIcon={id => <Icon id={id}/>} actions={{ mcq: { label: t('quiz'), href: langHref('/ueben/quiz?fach=msk&n=8&themen=distale-femurfraktur') }, flashcards: { label: t('cards'), href: langHref('/flashcards/distale-femurfraktur') } }}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.hero, heroImageOpacity: .72, accent: '#63c7bd', accentStrong: '#176c68', accentSoft: '#d8f2ed', secondary: '#9fb4c0', secondaryStrong: '#476273', heroBase: '#182d3a' }}
     heroImageAlt={pick(lesson.heroAlt, lang)} className={styles.page}
     sources={<LessonSources title={pick(L('Quellen', 'Sources', 'منابع'), lang)} items={sourceItems} note={pick(lesson.scope, lang)}/>}
