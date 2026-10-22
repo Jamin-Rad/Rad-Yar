@@ -41,7 +41,12 @@ export default function PulmonaryCavitiesPage() {
   const { lang } = useLanguage()
   const rtl = lang === 'fa'
   const label = key => pick(labels[key], lang)
-  const route = href => lang === 'de' ? href : `${href}?lang=${lang}`
+  const route = href => {
+    const [path, hash] = href.split('#', 2)
+    const localizedPath = lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
+    return hash ? `${localizedPath}#${hash}` : localizedPath
+  }
+  const lessonReturn = route('/thorax/kavitaeten#infection-patterns')
   const sectionList = [
     { id: 'start', label: pick(L('Hohlraum einordnen', 'Classify the space', 'نوع فضا را مشخص کنید'), lang), icon: 'start' },
     ...lesson.chapters.map(chapter => ({ id: chapter.id, label: pick(chapter.title, lang), icon: chapter.icon })),
@@ -81,7 +86,10 @@ export default function PulmonaryCavitiesPage() {
   }))
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={pick(lesson.title, lang)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: route('/') }, { label: pick(titleThorax, lang), href: route('/lernen/thorax') }]}
-    sections={sectionList} labels={Object.fromEntries(Object.keys(labels).map(key => [key, label(key)]))} actions={{}} renderIcon={id => <Icon id={id}/>}
+    sections={sectionList} labels={Object.fromEntries(Object.keys(labels).map(key => [key, label(key)]))} actions={{
+      mcq: { label: pick(L('Abszess und Empyem üben', 'Practise abscess vs empyema', 'تمرین افتراق آبسه و آمپیم'), lang), href: route(`/ueben/quiz?fach=thorax&n=1&themen=lungenabszess&from=${encodeURIComponent(lessonReturn)}`) },
+      flashcards: { label: pick(L('Lernkarte zu Abszess und Empyem', 'Abscess and empyema flashcard', 'فلش‌کارت آبسه و آمپیم'), lang), href: route(`/flashcards/lungenabszess?from=${encodeURIComponent(lessonReturn)}`) },
+    }} renderIcon={id => <Icon id={id}/>}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.heroImage, heroImageOpacity: .75, accent: '#70bdc8', accentStrong: '#216a78', accentSoft: '#e1f3f5', secondary: '#9678c5', secondaryStrong: '#63428e', heroBase: '#172c3b' }}
     heroImageAlt={pick(lesson.alt, lang)} className={styles.page} syncHashNavigation
     sources={<LessonSources title={pick(L('Quellen und Geltungsbereich', 'Sources and scope', 'منابع و محدوده'), lang)} items={sources} note={pick(lesson.notice, lang)}/>}

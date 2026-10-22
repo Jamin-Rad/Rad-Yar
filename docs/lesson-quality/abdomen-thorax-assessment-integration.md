@@ -25,6 +25,7 @@ The following lesson drafts are represented in `QUESTION_BANK` in DE, EN and FA.
 | `abdomen-lower-gi-bleeding` | `untere-gi-blutung` | Abdomen pp. 86–87; ESGE 2021; ACG 2023; ACR |
 | `abdomen-kolorektales-karzinom` | `kolorektales-karzinom` | Abdomen pp. 88–89; ACR 2025; SAR 2023 |
 | `abdomen-mesenteric-ischaemia-cta-protocol` | `mesenteriale-ischaemie` | ESVS 2025 Clinical Practice Guidelines, Recommendation 33; DOI `10.1016/j.ejvs.2025.06.010` |
+| `thorax-lung-abscess-empyema` | `lungenabszess` | Thorax.pdf p.26; Williford & Godwin, 1983, PMID 6635173 |
 
 ## Left disconnected
 

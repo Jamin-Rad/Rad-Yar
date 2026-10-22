@@ -476,7 +476,7 @@ export const CURRICULUM = [
           { id: 'tuberkulose', title: { de: 'Tuberkulose', en: 'Tuberculosis', fa: 'سل (توبرکلوز)' }, tags: ['Rö','CT'], diff: 2, link: '/thorax/tuberkulose-muster', relatedLink: '/thorax/kavitaeten', flashcardLink: '/flashcards/tuberkulose', inProgress: true, updatedAt: '2026-10-22' },
           { id: 'aspergillus-lunge', title: { de: 'Aspergillus', en: 'Aspergillus', fa: 'آسپرژیلوس ریوی' }, group: ['Pilzinfektionen'], tags: ['CT'], diff: 3, link: '/thorax/pneumonie-muster', relatedLink: '/thorax/kavitaeten' },
           { id: 'pcp', title: { de: 'Pneumocystis jirovecii (PCP)', en: 'Pneumocystis jirovecii Pneumonia (PCP)', fa: 'پنومونی پنوموسیستیس ژیرووسی (PCP)' }, group: ['Pilzinfektionen'], tags: ['CT'], diff: 3, link: '/thorax/pneumonie-muster' },
-          { id: 'lungenabszess', title: { de: 'Lungenabszess', en: 'Lung Abscess', fa: 'آبسه ریه' }, tags: ['CT'], diff: 2, link: '/thorax/kavitaeten', inProgress: true, updatedAt: '2026-10-19' },
+          { id: 'lungenabszess', title: { de: 'Lungenabszess', en: 'Lung Abscess', fa: 'آبسه ریه' }, tags: ['CT'], diff: 2, link: '/thorax/kavitaeten', mcqLink: '/ueben/quiz?fach=thorax&n=1&themen=lungenabszess', flashcardLink: '/flashcards/lungenabszess', inProgress: true, updatedAt: '2026-10-22' },
         ],
       },
       {

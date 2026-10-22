@@ -65,3 +65,15 @@ contributor and external reuse terms remain unverified; the PDF image itself is
 user-authorized for project use. Live browser UX and specialist clinical approval
 remain pending. No actual positional aspergilloma image or complete case stack is
 included, so those recognition tasks are not covered.
+
+## Assessment integration delta (2026-10-22)
+
+The lesson's embedded check remains about a mobile intracavitary fungal ball. A
+separate exact-topic MCQ and one flashcard now assess the PDF p.26 lung-abscess /
+pleural-empyema distinction in DE/EN/FA. Both emphasize location and morphology;
+an air-fluid level alone does not determine cause. Curriculum ID `lungenabszess`
+links to `/ueben/quiz?fach=thorax&n=1&themen=lungenabszess` and
+`/flashcards/lungenabszess`; lesson actions return to `#infection-patterns`.
+Focused retrieval and lesson-action link checks are recorded in
+`scripts/test-thorax-lung-abscess-assessment.mjs`. Independent review, browser UX and
+clinical approval remain pending until their evidence is recorded.
