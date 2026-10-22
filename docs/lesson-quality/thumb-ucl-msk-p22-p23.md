@@ -46,7 +46,17 @@ Chapter path: (1) structure and injury mechanism; (2) radiographic avulsion chec
 ## QA status
 
 - Content sources checked: supplied MSK.pdf pp.22–23 page renders and text; ACR Acute Hand and Wrist Trauma; Qamhawi et al. 2021 systematic review/meta-analysis; Melville et al. 2013 ultrasound study.
-- SSR parity test: PASS with `node scripts/test-thumb-ucl-ssr.mjs`; DE/EN/FA content, RTL direction, p.23 MRI figure and caption, option-specific feedback data, reference links and take-home rules checked.
-- Independent review: pending.
+- SSR parity test: PASS with `node --import tsx scripts/test-thumb-ucl-ssr.mjs`; DE/EN/FA content, RTL direction, p.23 MRI figure and caption, inline feedback, exact-topic bank entries, rendered actions, reference links and take-home rules checked.
+- Independent bounded source/content/visual/language review passed for MSK.pdf pp.22–23. The reviewer found no exact-topic bank MCQ/card; two localized MCQs and two flashcards are now registered under curriculum ID `bandverletzungen-daumen`, with quiz/card actions wired from the lesson. Read-only delta review confirmed the registry wiring and focused test.
 - Browser/device/theme/interaction evidence: pending; no browser result is inferred from SSR.
 - Scientific review and publication: pending.
+
+### Independent review delta
+
+The p.23 MRI panels and arrow/caption attribution match the supplied PDF;
+the page identifies rID 33700 but no individual contributor, and the lesson
+does not invent one. Treatment and the source's displacement threshold remain
+out of scope. The review's assessment-coverage finding was addressed by adding
+two four-option DE/EN/FA questions and two localized cards under the exact
+curriculum ID, plus visible lesson actions. Browser/device review remains
+unverified and clinical sign-off remains pending.

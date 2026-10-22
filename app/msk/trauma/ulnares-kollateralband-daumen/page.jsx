@@ -42,7 +42,10 @@ export default function ThumbUclLessonPage() {
     breadcrumbs={[{ label: 'RadYar', href: langHref('/') }, { label: t('MSK', 'MSK', 'عضلانی‌اسکلتی'), href: langHref('/lernen/msk') }, { label: pick(lesson.title, lang) }]}
     sections={sections}
     labels={{ contents: t('Lektionsinhalt', 'Lesson content', 'محتوای درس'), toc: t('Lernpfad', 'Learning path', 'مسیر یادگیری'), path: t('Lernpfad', 'Learning path', 'مسیر یادگیری'), progress: t('gelesen', 'read', 'خوانده‌شده'), continue: t('Lektion fortsetzen', 'Continue lesson', 'ادامهٔ درس'), completeLesson: t('Ganze Lektion als gelesen markieren', 'Mark full lesson as read', 'علامت‌گذاری کل درس به‌عنوان خوانده‌شده'), lessonCompleted: t('Ganze Lektion gelesen', 'Full lesson marked as read', 'کل درس خوانده شد'), complete: t('Abschnitt als gelesen markieren', 'Mark section as read', 'این بخش را خواندم'), completed: t('Als gelesen markiert', 'Marked as read', 'خوانده‌شده'), open: t('Abschnitt öffnen', 'Open section', 'بازکردن بخش'), close: t('Schließen', 'Close', 'بستن'), takeHome: t('Vier Muster merken', 'Remember four patterns', 'چهار الگو را به خاطر بسپارید'), sources: t('Quellen', 'Sources', 'منابع') }}
-    actions={{}}
+    actions={{
+      mcq: { label: t('Quiz zur Daumen-UCL-Verletzung', 'Thumb UCL injury questions', 'آزمون آسیب UCL شست'), href: langHref('/ueben/quiz?fach=msk&n=8&themen=bandverletzungen-daumen') },
+      flashcards: { label: t('Lernkarten zur Daumen-UCL-Verletzung', 'Thumb UCL injury flashcards', 'فلش‌کارت‌های آسیب UCL شست'), href: langHref('/flashcards/bandverletzungen-daumen') },
+    }}
     renderIcon={id => <Icon id={id} />}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.hero, heroImageOpacity: .72, accent: '#69c8c0', accentStrong: '#176c68', accentSoft: '#d9f2ee', secondary: '#a4b6c3', secondaryStrong: '#4f6575', heroBase: '#172d3a' }}
     heroImageAlt={pick(lesson.heroAlt, lang)} className={styles.page}

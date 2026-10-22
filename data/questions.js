@@ -68,6 +68,7 @@ import { RADIUSKOPF_QUESTIONS } from './radiuskopf'
 import { UNTERARM_QUESTIONS } from './unterarmschaftfrakturen'
 import { DISTALE_RADIUS_QUESTIONS } from './distale-radiusfraktur'
 import { SCAPHOID_QUESTIONS } from './scaphoidAssessments'
+import { THUMB_UCL_QUESTIONS } from './thumbUclAssessments'
 import { METACARPAL_BASE_QUESTIONS } from './metacarpalBaseQuestions'
 import { HRCT_QUESTIONS } from './hrct-muster'
 import { SPINE_TRAUMA_QUESTIONS } from './spineTrauma'
@@ -659,6 +660,7 @@ const LEGACY_QUESTION_BANK = {
     ...UNTERARM_QUESTIONS.de,
     ...DISTALE_RADIUS_QUESTIONS.de,
     ...SCAPHOID_QUESTIONS.de,
+    ...THUMB_UCL_QUESTIONS.de,
     ...KNIE_LIGAMENTE_QUESTIONS.de,
     ...SPINE_TRAUMA_QUESTIONS.de,
     ...HRCT_QUESTIONS.de,
@@ -1868,6 +1870,7 @@ const LEGACY_QUESTION_BANK = {
     ...UNTERARM_QUESTIONS.en,
     ...DISTALE_RADIUS_QUESTIONS.en,
     ...SCAPHOID_QUESTIONS.en,
+    ...THUMB_UCL_QUESTIONS.en,
     ...KNIE_LIGAMENTE_QUESTIONS.en,
     ...SPINE_TRAUMA_QUESTIONS.en,
     ...HRCT_QUESTIONS.en,
@@ -3067,6 +3070,7 @@ const LEGACY_QUESTION_BANK = {
     ...UNTERARM_QUESTIONS.fa,
     ...DISTALE_RADIUS_QUESTIONS.fa,
     ...SCAPHOID_QUESTIONS.fa,
+    ...THUMB_UCL_QUESTIONS.fa,
     ...KNIE_LIGAMENTE_QUESTIONS.fa,
     ...SPINE_TRAUMA_QUESTIONS.fa,
     ...HRCT_QUESTIONS.fa,
@@ -4324,7 +4328,7 @@ export const MCQ_TOPIC_GROUPS = [
   MRI_FAT_SUPPRESSION_TOPIC_GROUP,
   MR_ANGIOGRAPHY_TOPIC_GROUP,
   CT_QUALITY_TOPIC_GROUP,
-  { fachId: 'msk', kapitelId: 'msk-hand', title: { de: 'Hand & Mittelhand', en: 'Hand & metacarpals', fa: 'دست و متاکارپ' }, topics: [{ id: 'metakarpale-frakturen', title: { de: 'Metakarpalbasisfrakturen', en: 'Metacarpal base fractures', fa: 'شکستگی‌های قاعدهٔ متاکارپ' } }] },
+  { fachId: 'msk', kapitelId: 'msk-hand', title: { de: 'Hand & Mittelhand', en: 'Hand & metacarpals', fa: 'دست و متاکارپ' }, topics: [{ id: 'metakarpale-frakturen', title: { de: 'Metakarpalbasisfrakturen', en: 'Metacarpal base fractures', fa: 'شکستگی‌های قاعدهٔ متاکارپ' } }, { id: 'bandverletzungen-daumen', title: { de: 'UCL-Verletzung am Daumen', en: 'Thumb UCL injury', fa: 'آسیب UCL شست' } }] },
   { fachId: 'msk', kapitelId: 'msk-shoulder-upper-arm', title: { de: 'Schulter & Oberarm', en: 'Shoulder & upper arm', fa: 'شانه و بازو' }, topics: [{ id: 'proximale-humerusfraktur', title: { de: 'Proximale Humerusfraktur', en: 'Proximal humerus fracture', fa: 'شکستگی پروگزیمال هومروس' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-peritoneum', title: { de: 'Peritoneum & Mesenterium', en: 'Peritoneum & mesentery', fa: 'پریتوئن و مزانتر' }, topics: [{ id: 'appendicitis-epiploica', title: { de: 'Epiploische Appendagitis', en: 'Epiploic appendagitis', fa: 'التهاب زائدهٔ چربی کولون' } }, { id: 'mesenteriale-panniculitis', title: { de: 'Mesenteriale Panniculitis', en: 'Mesenteric panniculitis', fa: 'پانیکولیت مزانتریک' } }, { id: 'peritonealkarzinose', title: { de: 'Peritonealkarzinose', en: 'Peritoneal carcinomatosis', fa: 'کارسینوماتوز پریتوئن' } }] },
   { fachId: 'technik', kapitelId: 'technik-onkologie', title: { de: 'Onkologische Verlaufsmessung', en: 'Oncological response measurement', fa: 'اندازه‌گیری پاسخ انکولوژیک' }, topics: [{ id: 'recist-1-1', title: { de: 'RECIST 1.1', en: 'RECIST 1.1', fa: 'RECIST 1.1' } }] },

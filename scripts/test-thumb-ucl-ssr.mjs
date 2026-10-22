@@ -6,6 +6,8 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import { DOMParser } from '@xmldom/xmldom'
 import { THUMB_UCL_LESSON as lesson } from '../data/thumbUclLesson.js'
+import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
+import { FLASHCARD_TOPICS, getCardsByTopic } from '../data/flashcards.js'
 
 const route = 'app/msk/trauma/ulnares-kollateralband-daumen/page.jsx'
 assert.equal(lesson.id, 'ulnares-kollateralband-daumen')
@@ -51,6 +53,8 @@ for (const lang of ['de', 'en', 'fa']) {
   const html = renderToStaticMarkup(React.createElement(Page))
   assert.ok(html.includes(`lang="${lang}"`) && html.includes(`dir="${lang === 'fa' ? 'rtl' : 'ltr'}"`), `${lang}: language and RTL`)
   assert.ok(html.includes(escape(lesson.title[lang])) && html.includes(escape(lesson.heroAlt[lang])))
+  assert.ok(html.includes('/ueben/quiz?fach=msk&amp;n=8&amp;themen=bandverletzungen-daumen'), `${lang}: linked quiz action`)
+  assert.ok(html.includes('/flashcards/bandverletzungen-daumen'), `${lang}: linked flashcard action`)
   const keyLabels = {
     de: ['intaktes UCL unter der Aponeurose', 'Stener-Läsion mit dazwischenliegender Aponeurose', 'Adduktorenaponeurose'],
     en: ['intact UCL beneath the aponeurosis', 'Stener lesion with the aponeurosis interposed', 'adductor aponeurosis'],
@@ -81,4 +85,13 @@ assert.match(source, /role="status"/)
 assert.match(source, /StandardLessonShell/)
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
 assert.match(curriculum, /\{ id: 'bandverletzungen-daumen',[^\n]*link: '\/msk\/trauma\/ulnares-kollateralband-daumen',[^\n]*ready: true, inProgress: true/)
+assert.match(curriculum, /\{ id: 'bandverletzungen-daumen',[^\n]*mcqLink: '[^']+'[^\n]*flashcardLink: '[^']+'/)
+assert.ok(MCQ_TOPIC_GROUPS.some(group => group.topics.some(topic => topic.id === 'bandverletzungen-daumen')), 'quiz selector registers the exact curriculum ID')
+for (const locale of ['de', 'en', 'fa']) {
+  const questions = QUESTION_BANK[locale].filter(item => item.tags?.includes('bandverletzungen-daumen'))
+  assert.equal(questions.length, 2, `${locale}: exact-topic questions are registered`)
+  assert.ok(questions.every(item => item.options.length === 4 && item.explanation), `${locale}: four options and explanation`)
+}
+assert.ok(FLASHCARD_TOPICS.some(topic => topic.id === 'bandverletzungen-daumen'))
+assert.equal(getCardsByTopic('bandverletzungen-daumen').length, 2)
 console.log('Thumb MCP UCL / Stener lesion: SSR content parity PASS for DE/EN/FA, RTL, source MRI figure and caption, three-answer image self-check with feedback, source links and four take-home rules. Browser QA remains separate.')
