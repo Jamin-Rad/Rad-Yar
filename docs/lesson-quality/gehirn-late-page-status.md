@@ -24,7 +24,7 @@ Rendered Gehirn.pdf PDF pages 72–89 with Poppler at 900 px and visually inspec
 
 ## Unauthored items in this page range
 
-All were visually inspected, but are not represented as covered by the new routes:
+All were visually inspected. The table records the disposition of the later-page topics; rows marked with an existing route are mapped but remain in progress:
 
 | PDF pages | Topic | Current disposition |
 |---|---|---|
@@ -35,7 +35,7 @@ All were visually inspected, but are not represented as covered by the new route
 | 77–78 | Parkinson disease / parkinsonism | `/gehirn/neurodegeneration/parkinson` is linked from exact curriculum ID `morbus-parkinson` and remains `inProgress`. Bounded MRI nigrosome-1 and DAT-SPECT comparison; PDF p.77 normal/PD-labelled axial MRI examples included. FDG-PET deferred. Bibliography corrected and performance limits added; independent bounded review PASS. Browser review and specialist approval remain pending. Source case IDs and original reuse terms remain unknown. |
 | 82–84 | Neurofibromatosis type 1: CNS and peripheral nerve patterns plus bounded cross-specialty overview | Draft at `/gehirn/neurofibromatose/nf1`, curriculum ID `neurofibromatose-typ1`, three filtered MCQs. Page 84 includes long-bone/vertebral, vascular, and abdominal findings as referral cues only; detailed systemic assessment is deferred. The rID-10282 crop is excluded pending anatomy/case verification after independent QA. Browser/RTL and release-rights checks pending. |
 | 87–88 | Chiari malformations | Draft at `/gehirn/anatomie/chiari`; a single threshold is not treated as a diagnosis. Adult/pediatric consensus reconciled, specialist review pending. |
-| 89 | Unilateral paranasal sinus opacification | Not authored. It spans sinonasal tumour, dental/infectious disease, and mucocele; page's dose comparison and percentages are withheld, and ownership may belong outside the brain curriculum. |
+| 89 | Unilateral paranasal sinus opacification | Bounded lesson at `/gehirn/hals-nnh/einseitige-verschattung` now maps to four exact curriculum IDs. It covers the PDF differentials and inverted-papilloma clues; dose comparison and percentages are withheld. No diagnostic patient image is on the source page. Independent review and corrective delta PASS; three-language SSR PASS; browser and specialist review remain open. See `gehirn-technik-curriculum-matrix.md` and `einseitige-nnh-verschattung-gehirn-p89.md`. |
 
 ## Validation state
 
