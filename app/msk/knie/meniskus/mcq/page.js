@@ -1607,9 +1607,9 @@ const CONTENT = {
       { id: 'lernvideo', label: 'Lernvideo', icon: '▶️' },
     ],
     heroCards: [
-      { value: '2/3', label: 'aller Risse', text: 'betreffen den Innenmeniskus' },
-      { value: '98 %', label: 'Innenmeniskus', text: 'Risse typischerweise im Hinterhorn' },
-      { value: '3 mm', label: 'Standard', text: 'MRT-Schnittdicke im Knieprotokoll' },
+      { value: 'C-förmig', label: 'Innenmeniskus', text: 'kapsel- und MCL-fixiert, dadurch weniger beweglich' },
+      { value: '4 Wurzeln', label: 'Tibiale Verankerung', text: 'Vorder- und Hinterwurzel an jedem Meniskus' },
+      { value: '3 Ebenen', label: 'Knie-MRT', text: 'sagittal, koronal und transversal beurteilen' },
     ],
     basics: {
       title: 'Kniegelenk · Meniskus · Grundlagen',
@@ -1627,9 +1627,7 @@ const CONTENT = {
       tableRows: [
         ['Form', 'C-förmig', 'eher O-förmig'],
         ['Fixierung', 'fest mit Gelenkkapsel und medialem Seitenband verwachsen', 'nicht mit den lateralen Bändern fixiert'],
-        ['Mobilität', 'wenig beweglich', 'mobiler und dadurch weniger verletzungsanfällig'],
-        ['Risshäufigkeit', 'etwa zwei Drittel aller Meniskusrisse', 'seltener betroffen'],
-        ['Häufigste Lokalisation', 'Hinterhorn in ca. 98 %', 'Hinterhorn in ca. 50 %, Rest in Corpus und Vorderhorn'],
+        ['Mobilität', 'wenig beweglich', 'mobiler'],
       ],
       rootsTitle: 'Anschlüsse und Meniskuswurzeln',
       rootsText: 'Die Anschlüsse sollten getrennt betrachtet werden: femoral als Gleitkontakt zu den Femurkondylen und tibial als feste Verankerung über die Meniskuswurzeln.',
@@ -1637,32 +1635,34 @@ const CONTENT = {
         { title: 'Femoro-meniskaler Kontakt', text: 'Die Menisken artikulieren mit den Femurkondylen; ihre proximale Oberfläche ist konvex.' },
         { title: 'Tibiale Verankerung', text: 'Die feste Verankerung am Tibiaplateau erfolgt über die Meniskuswurzeln am Vorder- und Hinterhorn jedes Meniskus.' },
       ],
-      imageCaption: 'Schematische Übersicht der Meniskuswurzeln: Vorderhorn, Corpus und Hinterhorn.',
-      key: 'Die verminderte Beweglichkeit des Innenmeniskus ist der wichtigste Grund, warum er deutlich verletzungsanfälliger ist.',
+      imageAlt: 'Schema beider Menisken auf dem Tibiaplateau mit vorderen und hinteren Wurzelansätzen; medial C-förmig, lateral O-förmig.',
+      imageCaption: 'Wurzelansätze am Vorder- und Hinterhorn beider Menisken. Schema aus MSK.pdf, PDF-S. 44 (Druck-S. 43).',
+      key: 'Die stärkere Fixierung erklärt die geringere Beweglichkeit des Innenmeniskus. Sie kann das Verletzungsmuster mitbeeinflussen, bestimmt es aber nicht allein.',
     },
     vascular: {
       title: 'Vaskularisation und Heilungspotenzial',
-      lead: 'Die Blutversorgung erfolgt nur kapselnah über den perimeniskalen Plexus. Von peripher nach zentral nimmt die Durchblutung ab. Daraus ergibt sich direkt die Heilungschance.',
+      lead: 'Die Durchblutung nimmt von der peripheren zur inneren Meniskuszone ab. Die Einteilung in Rot-Rot, Rot-Weiß und Weiß-Weiß ist ein klinisches Orientierungsmodell; Gefäßversorgung und Heilungspotenzial lassen sich nicht durch eine feste Distanz oder Zone allein bestimmen.',
       zones: [
-        { name: 'Rote Zone · Zone I', range: '< 3 mm von der Kapsel', status: 'gut durchblutet', therapy: 'beste Nahtchance' },
-        { name: 'Rot-weiße Zone · Zone II', range: '3–5 mm von der Kapsel', status: 'eingeschränkte Durchblutung', therapy: 'Naht individuell abwägen' },
-        { name: 'Weiße Zone · Zone III', range: 'zentral gelegen', status: 'avaskulär', therapy: 'keine relevante Heilungstendenz' },
+        { name: 'Rote Zone · periphere Zone', range: 'äußeres Drittel', status: 'vaskularisiert', therapy: 'günstigeres, aber nicht garantiertes Heilungspotenzial' },
+        { name: 'Rot-weiße Zone · mittlere Zone', range: 'mittleres Drittel', status: 'variable Durchblutung', therapy: 'Potenzial variabel' },
+        { name: 'Weiße Zone · innere Zone', range: 'inneres Drittel am freien Rand', status: 'im Regelfall avaskulär', therapy: 'geringeres, nicht gleich null gesetztes Heilungspotenzial' },
       ],
       tableHeaders: ['Zone', 'Lage', 'Durchblutung'],
       tableRows: [
-        ['Rote Zone', '< 3 mm von der Kapsel', 'gut'],
-        ['Rot-weiße Zone', '3–5 mm von der Kapsel', 'eingeschränkt'],
-        ['Weiße Zone', 'zentral', 'avaskulär'],
+        ['Rote Zone', 'äußeres Drittel', 'vaskularisiert'],
+        ['Rot-weiße Zone', 'mittleres Drittel', 'variabel'],
+        ['Weiße Zone', 'inneres Drittel', 'im Regelfall avaskulär'],
       ],
-      key: 'Je näher der Riss an der Kapsel liegt, desto besser ist das Heilungspotenzial.',
+      imageAlt: 'Schema der medialen und lateralen Menisken mit äußerer vaskularisierter, mittlerer variabel vaskularisierter und innerer meist avaskulärer Zone.',
+      imageCaption: 'Schematische Gefäßzonen, keine patientenbezogene Bildgebung. MSK.pdf, PDF-S. 45 (Druck-S. 44); Grenzen sind nicht als feste Distanzen zu verstehen.',
+      key: 'Die Zone beschreibt ein grobes Gefäßmuster. Reparabilität und Heilung hängen auch von Rissform, Gewebe, Alter und klinischem Kontext ab; eine feste Distanz entscheidet sie nicht allein.',
     },
     mri: {
       title: 'Die MRT-Diagnostik',
-      lead: 'Die MRT-Diagnostik des Meniskus basiert auf einem dünnschichtigen Knieprotokoll und flüssigkeitssensitiven Sequenzen.',
+      lead: 'Ein Knie-MRT wird in drei orthogonalen Ebenen beurteilt. Das Basisprotokoll enthält T1-gewichtete und flüssigkeitssensitive Bilder; die konkrete Sequenzwahl hängt vom lokalen Protokoll ab.',
       protocol: [
-        { name: 'T1-Wichtung', text: 'Anatomische Übersicht und Beurteilung chronischer Fibrose.' },
-        { name: 'T2-w / PD-fs', text: 'Nachweis von Rissen, Knochenödemen und Kontinuitätsunterbrechungen der Bänder.' },
-        { name: 'Schnittdicke', text: 'Standardmäßig 3 mm, damit kleine Risse nicht durch Volumenmitteleffekt übersehen werden.' },
+        { name: 'T1-gewichtet', text: 'Teil des Basisprotokolls; ergänzt die Beurteilung von Knochenmark und Anatomie.' },
+        { name: 'Flüssigkeitssensitiv', text: 'Zeigt unter anderem Knochenmarködem und weitere flüssigkeitsreiche Veränderungen. PD-gewichtete Sequenzen sind eine verbreitete Protokolloption.' },
       ],
       normalTitle: 'Normalbefund',
       normalText: 'Der gesunde Meniskus stellt sich homogen hypointens dar. In der sagittalen Ansicht besitzt er eine typische dreieckige Struktur.',
@@ -1802,9 +1802,9 @@ const CONTENT = {
       { id: 'lernvideo', label: 'Learning video', icon: '▶️' },
     ],
     heroCards: [
-      { value: '2/3', label: 'of tears', text: 'involve the medial meniscus' },
-      { value: '98%', label: 'medial meniscus', text: 'typically posterior horn tears' },
-      { value: '3 mm', label: 'standard', text: 'MRI slice thickness in knee protocols' },
+      { value: 'C-shaped', label: 'Medial meniscus', text: 'capsular and MCL attachments restrict mobility' },
+      { value: '4 roots', label: 'Tibial anchoring', text: 'anterior and posterior roots on each meniscus' },
+      { value: '3 planes', label: 'Knee MRI', text: 'assess sagittal, coronal and transverse planes' },
     ],
     basics: {
       title: 'Knee joint · Meniscus · Basics',
@@ -1822,9 +1822,7 @@ const CONTENT = {
       tableRows: [
         ['Shape', 'C-shaped', 'more O-shaped'],
         ['Fixation', 'firmly attached to capsule and medial collateral ligament', 'not fixed to the lateral ligaments'],
-        ['Mobility', 'less mobile', 'more mobile and therefore less injury-prone'],
-        ['Frequency of tears', 'about two thirds of all meniscal tears', 'less commonly affected'],
-        ['Most common location', 'posterior horn in approx. 98%', 'posterior horn in approx. 50%, remainder in body and anterior horn'],
+        ['Mobility', 'less mobile', 'more mobile'],
       ],
       rootsTitle: 'Attachments and meniscal roots',
       rootsText: 'The attachments should be considered separately: femoral gliding contact with the condyles and tibial anchoring through the meniscal roots.',
@@ -1832,32 +1830,34 @@ const CONTENT = {
         { title: 'Femoro-meniscal contact', text: 'The menisci articulate with the femoral condyles; their proximal surface is convex.' },
         { title: 'Tibial anchoring', text: 'Firm anchoring to the tibial plateau is provided by the meniscal roots at the anterior and posterior horn of each meniscus.' },
       ],
-      imageCaption: 'Schematic overview of the meniscal roots: anterior horn, body and posterior horn.',
-      key: 'Reduced mobility of the medial meniscus is the main reason why it is clearly more prone to injury.',
+      imageAlt: 'Schematic of both menisci on the tibial plateau with anterior and posterior root attachments; C-shaped medially and O-shaped laterally.',
+      imageCaption: 'Anterior and posterior root attachments of both menisci. Schematic from MSK.pdf, physical p.44 (printed p.43).',
+      key: 'The medial meniscus is more firmly attached and therefore less mobile. This can contribute to injury patterns, but does not determine them on its own.',
     },
     vascular: {
       title: 'Vascular supply and healing potential',
-      lead: 'Blood supply is limited to the capsular periphery via the perimeniscal plexus. Vascularity decreases from the periphery to the center, directly determining healing potential.',
+      lead: 'Vascularity decreases from the peripheral to the inner meniscal zone. The red-red, red-white and white-white scheme is a clinical orientation model; vascularity and healing potential cannot be determined by a fixed distance or zone alone.',
       zones: [
-        { name: 'Red zone · Zone I', range: '< 3 mm from the capsule', status: 'well vascularized', therapy: 'best chance for repair' },
-        { name: 'Red-white zone · Zone II', range: '3–5 mm from the capsule', status: 'limited blood supply', therapy: 'repair depends on case' },
-        { name: 'White zone · Zone III', range: 'central area', status: 'avascular', therapy: 'no relevant healing potential' },
+        { name: 'Red zone · peripheral zone', range: 'outer third', status: 'vascularized', therapy: 'more favorable, but not guaranteed, healing potential' },
+        { name: 'Red-white zone · middle zone', range: 'middle third', status: 'variable vascularity', therapy: 'variable potential' },
+        { name: 'White zone · inner zone', range: 'inner third near the free edge', status: 'generally avascular', therapy: 'lower, not necessarily absent, healing potential' },
       ],
       tableHeaders: ['Zone', 'Location', 'Vascularity'],
       tableRows: [
-        ['Red zone', '< 3 mm from the capsule', 'good'],
-        ['Red-white zone', '3–5 mm from the capsule', 'limited'],
-        ['White zone', 'central', 'avascular'],
+        ['Red zone', 'outer third', 'vascularized'],
+        ['Red-white zone', 'middle third', 'variable'],
+        ['White zone', 'inner third', 'generally avascular'],
       ],
-      key: 'The closer the tear is to the capsule, the better its healing potential.',
+      imageAlt: 'Schematic of the medial and lateral menisci with an outer vascularized zone, a middle zone with variable vascularity, and an inner usually avascular zone.',
+      imageCaption: 'Schematic vascular zones, not patient imaging. MSK.pdf, physical p.45 (printed p.44); boundaries should not be read as fixed distances.',
+      key: 'The zone is a broad vascularity pattern. Repairability and healing also depend on tear pattern, tissue, age and clinical context; a fixed distance alone does not determine them.',
     },
     mri: {
       title: 'MRI diagnosis',
-      lead: 'MRI assessment of the meniscus relies on a thin-slice knee protocol and fluid-sensitive sequences.',
+      lead: 'Knee MRI is assessed in three orthogonal planes. The basic protocol includes T1-weighted and fluid-sensitive images; exact sequence selection depends on the local protocol.',
       protocol: [
-        { name: 'T1-weighting', text: 'Anatomical overview and assessment of chronic fibrosis.' },
-        { name: 'T2-w / PD-fs', text: 'Detection of tears, bone marrow edema and ligament discontinuity.' },
-        { name: 'Slice thickness', text: 'Usually 3 mm so that small tears are not hidden by volume averaging.' },
+        { name: 'T1-weighted', text: 'Part of the basic protocol; complements assessment of bone marrow and anatomy.' },
+        { name: 'Fluid-sensitive', text: 'Shows bone marrow edema and other fluid-rich changes. PD-weighted sequences are a common protocol option.' },
       ],
       normalTitle: 'Normal appearance',
       normalText: 'A healthy meniscus is homogeneously hypointense. On sagittal images it has a typical triangular configuration.',
@@ -1997,9 +1997,9 @@ const CONTENT = {
       { id: 'lernvideo', label: 'ویدیوی آموزشی', icon: '▶️' },
     ],
     heroCards: [
-      { value: '۲/۳', label: 'پارگی‌ها', text: 'مربوط به منیسک داخلی هستند' },
-      { value: '۹۸٪', label: 'منیسک داخلی', text: 'اغلب در شاخ پشتی پاره می‌شود' },
-      { value: '۳ mm', label: 'استاندارد', text: 'ضخامت برش در پروتکل MRI زانو' },
+      { value: 'C شکل', label: 'منیسک داخلی', text: 'اتصال به کپسول و MCL تحرک آن را محدود می‌کند' },
+      { value: '۴ ریشه', label: 'اتصال به تیبیا', text: 'ریشه قدامی و خلفی برای هر منیسک' },
+      { value: '۳ صفحه', label: 'MRI زانو', text: 'ارزیابی ساژیتال، کرونال و ترانسورس' },
     ],
     basics: {
       title: 'مفصل زانو · منیسک · مبانی',
@@ -2017,9 +2017,7 @@ const CONTENT = {
       tableRows: [
         ['شکل', 'C شکل', 'بیشتر O شکل'],
         ['تثبیت', 'به کپسول مفصلی و رباط جانبی داخلی متصل است', 'به رباط‌های خارجی متصل نیست'],
-        ['تحرک', 'کم‌تحرک', 'متحرک‌تر و در نتیجه کمتر مستعد آسیب'],
-        ['شیوع پارگی', 'حدود دو سوم همه پارگی‌های منیسک', 'کمتر درگیر می‌شود'],
-        ['محل شایع پارگی', 'شاخ پشتی در حدود ۹۸٪', 'شاخ پشتی در حدود ۵۰٪، بقیه در بدنه و شاخ قدامی'],
+        ['تحرک', 'کم‌تحرک', 'متحرک‌تر'],
       ],
       rootsTitle: 'اتصالات و ریشه‌های منیسک',
       rootsText: 'اتصالات بهتر است جداگانه بررسی شوند: تماس لغزشی با کندیل‌های فمور و اتصال محکم به تیبیا از طریق ریشه‌های منیسک.',
@@ -2027,32 +2025,34 @@ const CONTENT = {
         { title: 'تماس فمورو-منیسکال', text: 'منیسک‌ها با کندیل‌های فمور مفصل می‌شوند و سطح پروگزیمال آن‌ها محدب است.' },
         { title: 'اتصال به تیبیا', text: 'اتصال محکم به پلاتوی تیبیا از طریق ریشه‌های منیسک در شاخ قدامی و خلفی هر منیسک انجام می‌شود.' },
       ],
-      imageCaption: 'نمای شماتیک ریشه‌های منیسک: شاخ قدامی، بدنه و شاخ خلفی.',
-      key: 'تحرک کمتر منیسک داخلی مهم‌ترین دلیل آسیب‌پذیری بیشتر آن است.',
+      imageAlt: 'شماتیک هر دو منیسک روی پلاتوی تیبیا با اتصال ریشه قدامی و خلفی؛ C شکل در سمت داخلی و O شکل در سمت خارجی.',
+      imageCaption: 'اتصال ریشه قدامی و خلفی هر دو منیسک. شماتیک از MSK.pdf، صفحهٔ PDF ۴۴ (چاپی ۴۳).',
+      key: 'اتصال محکم‌تر منیسک داخلی تحرک آن را کاهش می‌دهد. این تفاوت می‌تواند بر الگوی آسیب اثر بگذارد، اما به‌تنهایی تعیین‌کننده نیست.',
     },
     vascular: {
       title: 'خون‌رسانی و پتانسیل ترمیم',
-      lead: 'خون‌رسانی منیسک فقط از ناحیه نزدیک کپسول و از طریق شبکه پیرامنیسکی انجام می‌شود. هرچه به مرکز نزدیک‌تر شویم خون‌رسانی کمتر می‌شود و شانس ترمیم هم کاهش می‌یابد.',
+      lead: 'خون‌رسانی از ناحیه محیطی به سمت بخش داخلی منیسک کاهش می‌یابد. تقسیم‌بندی قرمز-قرمز، قرمز-سفید و سفید-سفید یک الگوی بالینی کلی است؛ خون‌رسانی و پتانسیل ترمیم را نمی‌توان فقط با فاصله ثابت یا یک ناحیه تعیین کرد.',
       zones: [
-        { name: 'ناحیه قرمز · Zone I', range: 'کمتر از ۳ میلی‌متر از کپسول', status: 'خون‌رسانی خوب', therapy: 'بهترین شانس برای بخیه' },
-        { name: 'ناحیه قرمز-سفید · Zone II', range: '۳ تا ۵ میلی‌متر از کپسول', status: 'خون‌رسانی محدود', therapy: 'بخیه بسته به شرایط' },
-        { name: 'ناحیه سفید · Zone III', range: 'قسمت مرکزی', status: 'بدون عروق', therapy: 'ترمیم قابل توجه ندارد' },
+        { name: 'ناحیه قرمز · ناحیه محیطی', range: 'یک‌سوم خارجی', status: 'دارای عروق', therapy: 'پتانسیل ترمیم بیشتر، اما تضمین‌نشده' },
+        { name: 'ناحیه قرمز-سفید · ناحیه میانی', range: 'یک‌سوم میانی', status: 'خون‌رسانی متغیر', therapy: 'پتانسیل متغیر' },
+        { name: 'ناحیه سفید · ناحیه داخلی', range: 'یک‌سوم داخلی نزدیک لبه آزاد', status: 'معمولاً بدون عروق', therapy: 'پتانسیل کمتر، نه لزوماً صفر' },
       ],
       tableHeaders: ['ناحیه', 'محل', 'خون‌رسانی'],
       tableRows: [
-        ['قرمز', 'کمتر از ۳ میلی‌متر از کپسول', 'خوب'],
-        ['قرمز-سفید', '۳ تا ۵ میلی‌متر از کپسول', 'محدود'],
-        ['سفید', 'مرکزی', 'بدون عروق'],
+        ['قرمز', 'یک‌سوم خارجی', 'دارای عروق'],
+        ['قرمز-سفید', 'یک‌سوم میانی', 'متغیر'],
+        ['سفید', 'یک‌سوم داخلی', 'معمولاً بدون عروق'],
       ],
-      key: 'هرچه پارگی به کپسول نزدیک‌تر باشد، پتانسیل ترمیم بهتر است.',
+      imageAlt: 'شماتیک منیسک داخلی و خارجی با ناحیه محیطی دارای عروق، ناحیه میانی با خون‌رسانی متغیر و ناحیه داخلی که معمولاً بدون عروق است.',
+      imageCaption: 'شماتیک نواحی عروقی، نه تصویر بیمار. MSK.pdf، صفحهٔ PDF ۴۵ (چاپی ۴۴)؛ مرزها فاصله‌های ثابت نیستند.',
+      key: 'این ناحیه فقط الگوی کلی عروق را توصیف می‌کند. ترمیم‌پذیری و بهبود به شکل پارگی، کیفیت بافت، سن و شرایط بالینی هم بستگی دارد؛ فاصله ثابت به‌تنهایی تعیین‌کننده نیست.',
     },
     mri: {
       title: 'تشخیص MRI',
-      lead: 'ارزیابی MRI منیسک بر اساس پروتکل زانو با برش‌های نازک و سکانس‌های حساس به مایع انجام می‌شود.',
+      lead: 'MRI زانو در سه صفحه عمود بر هم ارزیابی می‌شود. پروتکل پایه شامل تصاویر T1 و تصاویر حساس به مایع است؛ انتخاب دقیق سکانس به پروتکل مرکز بستگی دارد.',
       protocol: [
-        { name: 'T1', text: 'نمای کلی آناتومیک و ارزیابی فیبروز مزمن.' },
-        { name: 'T2-w / PD-fs', text: 'تشخیص پارگی، ادم استخوان و قطع‌شدگی رباط‌ها.' },
-        { name: 'ضخامت برش', text: 'به طور استاندارد ۳ میلی‌متر، تا پارگی‌های کوچک به علت Volume Averaging پنهان نشوند.' },
+        { name: 'T1-weighted', text: 'بخشی از پروتکل پایه؛ ارزیابی مغز استخوان و آناتومی را تکمیل می‌کند.' },
+        { name: 'حساس به مایع', text: 'از جمله ادم مغز استخوان و تغییرات پرمایع را نشان می‌دهد. سکانس PD-weighted یکی از گزینه‌های رایج پروتکل است.' },
       ],
       normalTitle: 'نمای طبیعی',
       normalText: 'منیسک سالم به صورت هموژن هیپواینتنس دیده می‌شود. در نمای ساژیتال شکل مثلثی تیپیک دارد.',
@@ -2426,7 +2426,7 @@ export default function MeniskusPage() {
                   <p>{copy.anatomy.rootsText}</p>
                 )}
               </div>
-              <ImageFigure src="/meniskus/anatomy-roots.png" alt={copy.anatomy.rootsTitle} caption={copy.anatomy.imageCaption} />
+              <ImageFigure src="/meniskus/anatomy-roots.png" alt={copy.anatomy.imageAlt} caption={copy.anatomy.imageCaption} />
             </div>
             <Callout label={copy.keyLabel}>{copy.anatomy.key}</Callout>
           </Section>
@@ -2443,7 +2443,7 @@ export default function MeniskusPage() {
               ))}
             </div>
             <div className={styles.splitGrid}>
-              <ImageFigure src="/meniskus/vascular-zones.png" alt={copy.vascular.title} />
+              <ImageFigure src="/meniskus/vascular-zones.png" alt={copy.vascular.imageAlt} caption={copy.vascular.imageCaption} />
               <Table headers={copy.vascular.tableHeaders} rows={copy.vascular.tableRows} />
             </div>
             <Callout label={copy.keyLabel}>{copy.vascular.key}</Callout>

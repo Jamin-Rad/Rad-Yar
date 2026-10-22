@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { existsSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { QUESTION_BANK, getQuestionsForIds, getQuestionsByIds, countQuestions } from '../data/questions.js'
 import { getCardsByTopic, getCardById } from '../data/flashcards.js'
@@ -42,4 +42,38 @@ for (const lang of languages) {
   }
 }
 for (const suffix of ['08', '17', '25', '26']) assert.equal(getCardById(`meniskus-${suffix}`), undefined)
+
+const lesson = readFileSync('app/msk/knie/meniskus/page.js', 'utf8')
+const mcqLesson = readFileSync('app/msk/knie/meniskus/mcq/page.js', 'utf8')
+const boundedCopy = `${lesson}\n${mcqLesson}`
+for (const unsupported of [
+  /about two thirds of all meniscal tears/i,
+  /etwa zwei drittel aller meniskusrisse/i,
+  /حدود دو سوم همه پارگی‌های منیسک/,
+  /posterior horn in approx\. 98%/i,
+  /Hinterhorn in ca\. 98\s*%/i,
+  /شاخ پشتی در حدود ۹۸٪/,
+  /red-white-white scheme/i,
+  /rot-weiß-weiße einteilung/i,
+  /تقسیم‌بندی قرمز-سفید-سفید/,
+  /standardmäßig 3 mm/i,
+  /usually 3 mm so that/i,
+  /به طور استاندارد ۳ میلی‌متر/,
+]) assert.doesNotMatch(boundedCopy, unsupported, `Unsupported generalized source claim remains: ${unsupported}`)
+for (const expected of [
+  'outer third', 'middle third', 'inner third',
+  'äußeres Drittel', 'mittleres Drittel', 'inneres Drittel',
+  'یک‌سوم خارجی', 'یک‌سوم میانی', 'یک‌سوم داخلی',
+  'red-red, red-white and white-white', 'Rot-Rot, Rot-Weiß und Weiß-Weiß', 'قرمز-قرمز، قرمز-سفید و سفید-سفید',
+  'three orthogonal planes', 'drei orthogonalen Ebenen', 'سه صفحه عمود بر هم',
+  'Schematic from MSK.pdf, physical p.44', 'Schema aus MSK.pdf, PDF-S. 44', 'شماتیک از MSK.pdf، صفحهٔ PDF ۴۴',
+  'Schematic vascular zones, not patient imaging', 'Schematische Gefäßzonen, keine patientenbezogene Bildgebung', 'شماتیک نواحی عروقی، نه تصویر بیمار',
+]) assert.ok(boundedCopy.includes(expected), `Missing localized lesson wording: ${expected}`)
+for (const asset of ['public/meniskus/anatomy-roots.png', 'public/meniskus/vascular-zones.png']) assert.ok(existsSync(asset), `Missing source schematic: ${asset}`)
+const sliceCard = getCardById('meniskus-10')
+for (const lang of languages) assert.ok(/4 mm|۴ میلی‌متر/.test(sliceCard.explanation[lang]), `Slice thickness consensus absent: ${lang}`)
+const sourceLedger = readFileSync('docs/lesson-quality/meniskus-msk-p44-p45.md', 'utf8')
+for (const sourcePoint of ['MEN-44-01', 'MEN-44-02', 'MEN-45-01', 'MEN-45-02', 'MEN-45-03', 'physical PDF pages 44–45', 'PMC11399221', 'PMC13424353']) {
+  assert.ok(sourceLedger.includes(sourcePoint), `Missing p.44–45 coverage evidence: ${sourcePoint}`)
+}
 console.log(`Meniscus audit passed: ${banks[0].length} MCQs, ${cards.length} cards, 3 languages, all distractor feedback, cross-language lookups and image credits/assets.`)

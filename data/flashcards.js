@@ -1083,9 +1083,9 @@ const LEGACY_FLASHCARDS = [
       "fa": "حجم‌جزئی کمتر و نمایش بهتر نقص‌های کوچک."
     },
     "explanation": {
-      "de": "Bei 2D-Aufnahmen werden häufig etwa 3 mm verwendet; die optimale Auflösung hängt vom Protokoll ab. Die Anzahl sichtbarer Meniskusschichten muss immer relativ zur Schnittdicke interpretiert werden.",
-      "en": "About 3 mm is often used in 2D imaging; optimal resolution depends on the protocol. Interpret the number of visible meniscal slices relative to slice thickness.",
-      "fa": "در تصویربرداری دوبعدی اغلب حدود ۳ میلی‌متر به‌کار می‌رود و تفکیک مطلوب به پروتکل وابسته است؛ تعداد برش‌های دارای منیسک باید نسبت به ضخامت تفسیر شود."
+      "de": "Laut ESSR sind 4 mm akzeptabel, ≤3 mm vorzuziehen; 3 mm sind kein universeller Standard. Die Zahl sichtbarer Schichten stets relativ zu Dicke und Protokoll interpretieren.",
+      "en": "ESSR considers 4 mm acceptable and ≤3 mm preferable; 3 mm is not a universal standard. Interpret visible slice count relative to slice thickness and protocol.",
+      "fa": "طبق توصیه ESSR، ضخامت ۴ میلی‌متر قابل‌قبول و ≤۳ میلی‌متر ترجیح‌داده‌شده است؛ ۳ میلی‌متر استاندارد همگانی نیست. تعداد برش‌های قابل مشاهده را با توجه به ضخامت و پروتکل تفسیر کنید."
     }
   },
   {
