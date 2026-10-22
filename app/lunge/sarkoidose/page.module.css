@@ -16,9 +16,10 @@
 .heroText, .heroStats, .section, .sidebar, .infoCard, .caseCard { background: var(--bg-card); border:1px solid var(--border); box-shadow:0 18px 45px var(--shadow-soft); }
 .heroText { position:relative; overflow:hidden; border-radius:34px; padding:38px; background: radial-gradient(circle at top right, rgba(56,189,248,.18), transparent 18rem), linear-gradient(135deg, var(--bg-card), var(--surface-soft)); }
 .heroText::after { content:''; position:absolute; left:34px; right:34px; bottom:0; height:5px; border-radius:999px 999px 0 0; background:linear-gradient(90deg,#0284c7,#38bdf8,#7c3aed); }
-.sourceBadge { display:inline-flex; width:max-content; margin-bottom:16px; padding:8px 14px; border-radius:999px; background:linear-gradient(135deg,#0284c7,#38bdf8); color:#fff; font-size:12px; font-weight:950; letter-spacing:.08em; text-transform:uppercase; }
-.heroText h1 { margin:0; color:var(--text); font-size:clamp(44px,6vw,78px); line-height:.95; letter-spacing:-.055em; font-family:var(--font-display); font-weight:950; }
-.heroText p { margin:18px 0 24px; max-width:760px; color:var(--text-muted); font-size:18px; line-height:1.7; }
+.heroText :global([data-lesson-hero]) { grid-template-columns:minmax(0,1fr) minmax(180px,280px); min-height:160px; gap:12px; padding-block:0; }
+.heroText :global([data-lesson-hero] h1) { color:var(--text); font-size:clamp(34px,4.2vw,58px); line-height:1.1; letter-spacing:-.035em; }
+.heroText :global([data-lesson-hero] figure) { height:155px; }
+.heroText :global([data-lesson-hero] figcaption) { color:var(--text-muted); }
 .heroActions { display:flex; flex-wrap:wrap; gap:10px; }
 .actionBtn { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:11px 17px; border-radius:999px; background:linear-gradient(135deg,#e0f2fe,#fff); border:1px solid #bae6fd; color:#0369a1; font-weight:950; text-decoration:none; }
 .readControl { display:grid; gap:8px; min-width:min(100%,270px); }
@@ -65,6 +66,9 @@
 .infoCard p, .caseCard p, .takeHomeItem p { margin:0; color:var(--text-muted); line-height:1.7; }
 .splitGrid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
 .tableWrap { width:100%; overflow-x:auto; border:1px solid var(--border); border-radius:20px; background:var(--bg-card); margin:18px 0; }
+.sourceFigure { max-width:740px; margin:24px auto; padding:12px; border:1px solid var(--border); border-radius:18px; background:var(--bg-card); box-shadow:0 12px 28px var(--shadow-soft); }
+.sourceFigure img { display:block; width:100%; height:auto; border-radius:10px; background:#101820; }
+.sourceFigure figcaption { margin:10px 4px 2px; color:var(--text-muted); font-size:12px; line-height:1.55; }
 .table { width:100%; border-collapse:collapse; min-width:620px; }
 .table th { background:linear-gradient(135deg,#e0f2fe,#f8fafc); color:#0369a1; text-align:start; padding:13px 15px; font-size:12px; letter-spacing:.06em; text-transform:uppercase; border-bottom:1px solid #bae6fd; }
 .table td { padding:14px 15px; border-bottom:1px solid var(--border); color:var(--text-muted); font-size:14px; line-height:1.65; vertical-align:top; }
@@ -92,7 +96,7 @@
 .takeHomeItem > span { display:grid; place-items:center; width:54px; height:42px; border-radius:15px; background:#e0f2fe; color:#0284c7; border:1px solid #bae6fd; font-weight:950; }
 [dir='rtl'] .breadcrumb, [dir='rtl'] .heroText, [dir='rtl'] .sectionToggle, [dir='rtl'] .sideItem, [dir='rtl'] .infoCard, [dir='rtl'] .table th, [dir='rtl'] .table td, [dir='rtl'] .caseCard, [dir='rtl'] .takeHomeItem, [dir='rtl'] .callout { text-align:right; }
 @media (max-width:1020px){ .hero, .layout, [dir='rtl'] .layout, .splitGrid { grid-template-columns:1fr; } .sidebar { position:static; } .sideItem { display:inline-flex; width:auto; } .sidebar { display:flex; flex-wrap:wrap; gap:8px; } .sideTitle { width:100%; } }
-@media (max-width:760px){ .page{padding-top:56px;} .header{padding:20px 14px 10px;} .readBar{padding:0 14px;} .readBar .readControl{max-width:none;} .layout{padding:14px 14px 48px;} .heroText{padding:24px;border-radius:24px;} .heroText h1{font-size:clamp(38px,13vw,56px);} .heroStats{border-radius:22px;} .section{border-radius:22px;} .sectionBody{padding:18px;} .sectionToggle{padding:16px 18px;} .cardGrid,.caseGrid{grid-template-columns:1fr;} .table{min-width:560px;} .sidebar{display:none;} }
+@media (max-width:760px){ .page{padding-top:56px;} .header{padding:20px 14px 10px;} .readBar{padding:0 14px;} .readBar .readControl{max-width:none;} .layout{padding:14px 14px 48px;} .heroText{padding:24px;border-radius:24px;} .heroText :global([data-lesson-hero]){grid-template-columns:minmax(0,1fr) 135px;min-height:140px;gap:12px;} .heroText :global([data-lesson-hero] h1){font-size:clamp(28px,7vw,40px);} .heroStats{border-radius:22px;} .section{border-radius:22px;} .sectionBody{padding:18px;} .sectionToggle{padding:16px 18px;} .cardGrid,.caseGrid{grid-template-columns:1fr;} .table{min-width:560px;} .sidebar{display:none;} .sourceFigure{margin:18px 0;padding:8px;border-radius:14px;} .sourceFigure figcaption{font-size:11px;} }
 :global(html[data-theme='dark']) .readButton { color:var(--text); background:var(--bg-card); border-color:rgba(148,163,184,.20); }
 :global(html[data-theme='dark']) .readButtonActive { color:#6ee7b7; background:rgba(16,185,129,.12); border-color:rgba(52,211,153,.30); }
 :global(html[data-theme='dark']) .readError { background:rgba(127,29,29,.22); border-color:rgba(248,113,113,.28); color:#fecaca; }

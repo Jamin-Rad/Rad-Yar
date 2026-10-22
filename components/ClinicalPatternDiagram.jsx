@@ -2,12 +2,18 @@ const PALETTE = { ink: '#24304a', muted: '#64748b', blue: '#38aeb1', blueLight: 
 
 function Lungs({ variant, lang }) {
   const labels = {
-    de: { tb: 'disseminierte Noduli', pneumonia: 'alveoläre Verschattung', hrct: 'interstitielles Muster' },
-    en: { tb: 'diffuse nodules', pneumonia: 'air-space opacity', hrct: 'interstitial pattern' },
-    fa: { tb: 'ندول‌های منتشر', pneumonia: 'کدورت فضای هوایی', hrct: 'الگوی بینابینی' },
+    de: { tb: 'disseminierte Noduli', pneumonia: 'alveoläre Verschattung', hrct: 'interstitielles Muster', sarcoidosis: 'perilymphatische Noduli · bihiläre Lymphknoten' },
+    en: { tb: 'diffuse nodules', pneumonia: 'air-space opacity', hrct: 'interstitial pattern', sarcoidosis: 'perilymphatic nodules · bilateral hilar nodes' },
+    fa: { tb: 'ندول‌های منتشر', pneumonia: 'کدورت فضای هوایی', hrct: 'الگوی بینابینی', sarcoidosis: 'ندول‌های پری‌لنفاتیک · لنف‌نودهای بی‌هیلار' },
   }[lang] || { tb: 'diffuse nodules', pneumonia: 'air-space opacity', hrct: 'interstitial pattern' }
   const marks = variant === 'tuberculosis'
     ? <g fill={PALETTE.coral}><circle cx="130" cy="76" r="6"/><circle cx="148" cy="87" r="4"/><circle cx="169" cy="74" r="5"/><circle cx="255" cy="80" r="5"/><circle cx="276" cy="90" r="4"/><circle cx="294" cy="75" r="5"/><circle cx="142" cy="112" r="3"/><circle cx="270" cy="119" r="3"/></g>
+    : variant === 'sarcoidosis'
+      ? <g fill={PALETTE.coral} stroke={PALETTE.paper} strokeWidth="1.5">
+          <circle cx="130" cy="82" r="5"/><circle cx="145" cy="97" r="4"/><circle cx="126" cy="119" r="4"/><circle cx="157" cy="134" r="4"/>
+          <circle cx="269" cy="82" r="5"/><circle cx="254" cy="97" r="4"/><circle cx="274" cy="118" r="4"/><circle cx="244" cy="136" r="4"/>
+          <circle cx="174" cy="106" r="8" fill={PALETTE.plum}/><circle cx="226" cy="106" r="8" fill={PALETTE.plum}/><circle cx="209" cy="80" r="7" fill={PALETTE.plum}/>
+        </g>
     : variant === 'pneumonia'
       ? <g fill={PALETTE.blue} opacity=".82"><path d="M110 92q25-26 55-7v70q-23 24-52 4z"/><path d="M260 100q27-25 50-10v67q-25 24-50 3z"/></g>
       : <g fill="none" stroke={PALETTE.plum} strokeWidth="7"><path d="M114 83q20-18 42-7m-41 25q18-15 40-4m-38 23q15-12 35-3"/><path d="M265 91q19-18 42-6m-40 27q18-14 39-2"/></g>
@@ -15,7 +21,7 @@ function Lungs({ variant, lang }) {
     <path d="M198 37v56m0-34-22 21m22-21 22 21" fill="none" stroke={PALETTE.ink} strokeWidth="6" strokeLinecap="round"/>
     <path d="M177 58c-29 1-57 18-65 45-8 28 3 65 20 77 17 12 47 4 59-16 7-12 10-38 10-58V68c-6-6-14-10-24-10Zm44 0c29 1 57 18 65 45 8 28-3 65-20 77-17 12-47 4-59-16-7-12-10-38-10-58V68c6-6 14-10 24-10Z" fill={PALETTE.blueLight} stroke={PALETTE.ink} strokeWidth="3"/>
     {marks}
-    <text x="200" y="202" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{variant === 'tuberculosis' ? labels.tb : variant === 'pneumonia' ? labels.pneumonia : labels.hrct}</text>
+    <text x="200" y="202" textAnchor="middle" fill={PALETTE.muted} fontSize="13">{labels[variant] || labels.hrct}</text>
   </g>
 }
 
@@ -263,7 +269,9 @@ function Ultrasound({ lang }) {
 }
 
 export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de', title }) {
-  const accessibleDescription = variant === 'renal-anatomy'
+  const accessibleDescription = variant === 'sarcoidosis'
+    ? ({ de: 'Schematische Lungen mit perilymphatisch verteilten Noduli und beidseitigen Hiluslymphknoten; keine Patientenaufnahme.', en: 'Schematic lungs with perilymphatically distributed nodules and bilateral hilar nodes; not patient imaging.', fa: 'شماتیک ریه با ندول‌های پری‌لنفاتیک و لنف‌نودهای بی‌هیلار دوطرفه؛ تصویر بیمار نیست.' }[lang] || 'Sarcoidosis teaching schematic; not patient imaging.')
+    : variant === 'renal-anatomy'
     ? ({ de: 'Lernschema eines Nierenquerschnitts mit Rinde, Markpyramiden, Kelchen, Nierenbecken und Ureter.', en: 'Teaching schematic of a kidney cross-section with cortex, medullary pyramids, calyces, renal pelvis and ureter.', fa: 'شماتیک آموزشی برش کلیه با قشر، هرم‌های مدولاری، کالیس‌ها، لگنچه و حالب.' }[lang] || 'Teaching schematic of kidney anatomy.')
     : variant === 'gist'
     ? ({ de: 'Lernschema: Der Magen ist dargestellt; eine Raumforderung wächst nach außen aus der Magenwand. Kein Patientenbild.', en: 'Teaching schematic: the stomach is shown with a mass growing outward from its wall. Not patient imaging.', fa: 'نمای شماتیک آموزشی: معده و توده‌ای که به بیرون از دیواره معده رشد می‌کند نشان داده شده‌اند؛ تصویر بیمار نیست.' }[lang] || 'Teaching schematic of a stomach with an exophytic mass; not patient imaging.')
@@ -274,7 +282,7 @@ export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de',
     <title>{accessibleDescription}</title>
     <rect x="5" y="5" width="390" height="240" rx="22" fill="#fff" stroke={PALETTE.line} strokeWidth="2"/>
     {variant === 'nf1' ? <NF1 lang={lang}/> :
-      variant === 'pneumonia' || variant === 'tuberculosis' || variant === 'hrct' ? <Lungs variant={variant} lang={lang}/> :
+      variant === 'pneumonia' || variant === 'tuberculosis' || variant === 'hrct' || variant === 'sarcoidosis' ? <Lungs variant={variant} lang={lang}/> :
       variant === 'cystic-pancreas' || variant === 'pdac' || variant === 'pnet' ? <Pancreas variant={variant} lang={lang}/> :
       variant === 'wilms-tumour' ? <Wilms lang={lang}/> :
       variant === 'fmd' ? <FibromuscularDysplasia lang={lang}/> :

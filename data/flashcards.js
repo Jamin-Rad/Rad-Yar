@@ -3080,9 +3080,9 @@ const LEGACY_FLASHCARDS = [
       "fa": "ندول‌های کوچک و بسیار نزدیک به هم."
     },
     "explanation": {
-      "de": "Die Noduli liegen so dicht zusammen, dass sie fast wie ein einzelner Herd wirken. Das hilft, noduläre Sarkoidosemuster zu erkennen.",
-      "en": "The nodules are so closely packed that they almost mimic a single lesion. This helps recognize nodular sarcoid patterns.",
-      "fa": "ندول‌ها آنقدر نزدیک هستند که تقریباً شبیه یک ضایعه واحد دیده می‌شوند. این موضوع به تشخیص الگوهای ندولار سارکوئیدوز کمک می‌کند."
+      "de": "Die Noduli liegen so dicht zusammen, dass sie fast wie ein einzelner Herd wirken. Das ist ein deskriptives Muster und für sich allein nicht diagnostisch.",
+      "en": "The nodules are so closely packed that they almost mimic a single lesion. This is a descriptive pattern and is not diagnostic on its own.",
+      "fa": "ندول‌ها آن‌قدر نزدیک هستند که تقریباً شبیه یک ضایعه واحد دیده می‌شوند. این یک الگوی توصیفی است و به‌تنهایی تشخیصی نیست."
     },
     "topicId": "sarkoidose"
   },

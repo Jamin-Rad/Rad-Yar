@@ -3757,7 +3757,7 @@ const LEGACY_QUESTION_BANK = {
         },
         {
           "id": "C",
-          "text": "فقط نمای لانه‌زنبوری (نمای لانه‌زنبوری (Honeycombing)) بازال ساب‌پلورال"
+          "text": "فقط نمای لانه‌زنبوری (Honeycombing) بازال ساب‌پلورال"
         },
         {
           "id": "D",

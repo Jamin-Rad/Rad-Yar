@@ -1,0 +1,9 @@
+{
+  "asset": "galaxy-rid-29251.jpg",
+  "source": "User-provided Thorax.pdf, physical page 42 (printed page 41), embedded image object Image532; adjacent source text labels the finding Sarcoid Galaxy Sign.",
+  "caseId": "Radiopaedia rID 29251 (as printed in the PDF)",
+  "modality": "Axial CT image; no sequence, contrast phase, or acquisition details are stated in the PDF.",
+  "derivation": "Direct extraction of the embedded 664×379 JPEG panel from the user-provided PDF page. No decorative starfield, neighboring text, or annotation added; the source arrow is retained.",
+  "rights": "Reuse authorized by the user for images in the supplied PDFs. Contributor identity and original case license are not identified in the PDF.",
+  "use": "Teaching example of the visible nodular aggregate with nearby smaller nodules, presented with the PDF's Galaxy-sign label. It is not specific for sarcoidosis and is not standalone diagnostic evidence."
+}

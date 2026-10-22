@@ -5,6 +5,9 @@ import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
+import LessonHero from '@/components/LessonHero'
+import ClinicalPatternDiagram from '@/components/ClinicalPatternDiagram'
+import Image from 'next/image'
 import styles from './page.module.css'
 import InProgressBanner from '@/components/InProgressBanner'
 
@@ -14,8 +17,7 @@ const CONTENT = {
     "breadcrumbThorax": "Thorax",
     "breadcrumbCurrent": "Lunge · Sarkoidose",
     "title": "Sarkoidose",
-    "subtitle": "Scadding-Stadien, HRCT-Muster, Lymphknoten und wichtige Differentialdiagnosen",
-    "sourceLabel": "Dr. Zia",
+    "heroCaption": "Lehrschema: perilymphatische Noduli und bihiläre Lymphknoten; keine Patientenaufnahme.",
     "actionMcq": "MCQ",
     "actionFlash": "Flashcards",
     "keyLabel": "Merke",
@@ -48,8 +50,8 @@ const CONTENT = {
       },
       {
         "id": "fallbeispiele",
-        "label": "Fallbeispiele",
-        "icon": "🧪"
+        "label": "Artikel",
+        "icon": "↗"
       },
       {
         "id": "takehome",
@@ -92,7 +94,7 @@ const CONTENT = {
         },
         {
           "title": "Epidemiologie",
-          "text": "Altersgipfel 20–40 Jahre und 60–70 Jahre; Frauen häufiger betroffen."
+          "text": "Häufiger Beginn im jungen bis mittleren Erwachsenenalter; Altersverteilung und Geschlechtsunterschiede variieren deutlich zwischen Populationen."
         }
       ],
       "key": "Das zentrale Bildmuster der thorakalen Sarkoidose ist die Kombination aus symmetrischer bihilärer Lymphadenopathie und perilymphatischen Mikronoduli."
@@ -136,7 +138,7 @@ const CONTENT = {
     },
     "hrct": {
       "title": "HRCT: Lymphknoten und Parenchymmuster",
-      "lead": "Die HRCT ist der Goldstandard zur Beurteilung des Parenchymbefalls. Besonders wichtig sind Lymphknotenverteilung und perilymphatische Mikronoduli.",
+      "lead": "Die HRCT ist eine zentrale Methode zur Charakterisierung des Lungenparenchyms. Ein typisches Bildmuster allein beweist keine Sarkoidose; klinischer Kontext und mögliche Alternativdiagnosen bleiben entscheidend.",
       "lymphTitle": "Lymphknoten",
       "lymph": [
         {
@@ -186,10 +188,12 @@ const CONTENT = {
         [
           "Cluster Sign",
           "viele kleine Noduli liegen dicht zusammen",
-          "wirkt fast wie ein einzelner Herd"
+          "deskriptives Muster, für sich allein keine Diagnose"
         ]
       ],
       "key": "Perilymphatische Noduli an Fissuren und bronchovaskulären Bündeln sind deutlich typischer für Sarkoidose als zufällig verstreute zentrilobuläre Noduli."
+      ,"galaxyImageAlt": "Axiale CT-Aufnahme mit nodulärem Aggregat und benachbarten kleineren Noduli; der Pfeil markiert den Befund."
+      ,"galaxyImageCaption": "Als Galaxy Sign im Quell-PDF bezeichnet · CT · Thorax.pdf, PDF-Seite 42 (gedruckte Seite 41) · Radiopaedia rID 29251. Die Sequenz und Kontrastphase sind nicht angegeben. Das Muster ist nicht spezifisch."
     },
     "extra": {
       "title": "Extrapulmonale Manifestationen",
@@ -286,34 +290,34 @@ const CONTENT = {
       "key": "Eggshell-Verkalkungen sind kein Alleinstellungsmerkmal der Sarkoidose; die Anamnese und das gesamte Verteilungsmuster sind entscheidend."
     },
     "cases": {
-      "title": "Fallbeispiele",
-      "lead": "Echte Fälle und Referenzartikel von Radiopaedia.org zu den wichtigsten Mustern der pulmonalen Sarkoidose.",
-      "openCase": "Fall in Radiopaedia öffnen",
+      "title": "Weiterführende Radiopaedia-Artikel",
+      "lead": "Die folgenden Links führen zu Hintergrundartikeln von Radiopaedia.org und sind keine Fallvorschau. Das CT oben stammt aus der bereitgestellten Thorax-PDF.",
+      "openCase": "Artikel in Radiopaedia öffnen",
       "items": [
         {
-          "label": "Scadding I",
-          "title": "Symmetrische bihiläre und rechts paratracheale Lymphadenopathie",
-          "tags": ["Röntgen", "1-2-3-Zeichen"],
-          "icon": "🫁",
-          "meta": "Röntgen oder CT zeigt beidseitige hiläre Lymphknoten plus rechten Paratrachealraum, aber kein sicherer Parenchymbefall.",
+          "label": "Übersichtsartikel",
+          "title": "Pulmonale Sarkoidose",
+          "tags": ["Hintergrund"],
+          "icon": "↗",
+          "meta": "Weiterführender Artikel; kein hier gezeigtes Röntgen- oder CT-Fallbild.",
           "credit": "Quelle: Radiopaedia.org",
           "url": "https://radiopaedia.org/articles/pulmonary-sarcoidosis"
         },
         {
-          "label": "HRCT-Muster",
-          "title": "Perilymphatische Mikronoduli entlang der Fissuren",
-          "tags": ["HRCT", "perilymphatisch"],
-          "icon": "🔬",
-          "meta": "HRCT zeigt 2–4-mm-Noduli entlang Fissuren, Pleura und bronchovaskulären Bündeln, bevorzugt in Ober- und Mittelfeldern.",
+          "label": "Übersichtsartikel",
+          "title": "Sarkoidose",
+          "tags": ["Hintergrund"],
+          "icon": "↗",
+          "meta": "Weiterführender Artikel; auf dieser Karte wird kein HRCT-Fallbild gezeigt.",
           "credit": "Quelle: Radiopaedia.org",
           "url": "https://radiopaedia.org/articles/sarcoidosis"
         },
         {
-          "label": "DD Silikose",
-          "title": "Eggshell-Lymphknotenverkalkungen bei Staubexposition",
-          "tags": ["CT", "Verkalkung"],
-          "icon": "🥚",
-          "meta": "Schalenförmige Lymphknotenverkalkungen und Oberlappenbetonung bei beruflicher Quarzstaubexposition.",
+          "label": "Übersichtsartikel",
+          "title": "Eggshell-Kalzifikation",
+          "tags": ["Hintergrund"],
+          "icon": "↗",
+          "meta": "Weiterführender Artikel zur Terminologie; kein hier gezeigtes CT-Fallbild.",
           "credit": "Quelle: Radiopaedia.org",
           "url": "https://radiopaedia.org/articles/eggshell-calcification"
         }
@@ -347,8 +351,7 @@ const CONTENT = {
     "breadcrumbThorax": "Thorax",
     "breadcrumbCurrent": "Lung · Sarcoidosis",
     "title": "Sarcoidosis",
-    "subtitle": "Scadding stages, HRCT pattern, lymph nodes and key differentials",
-    "sourceLabel": "Dr. Zia",
+    "heroCaption": "Teaching schematic: perilymphatic nodules and bilateral hilar nodes; not patient imaging.",
     "actionMcq": "MCQ",
     "actionFlash": "Flashcards",
     "keyLabel": "Key point",
@@ -381,8 +384,8 @@ const CONTENT = {
       },
       {
         "id": "fallbeispiele",
-        "label": "Cases",
-        "icon": "🧪"
+        "label": "Articles",
+        "icon": "↗"
       },
       {
         "id": "takehome",
@@ -425,7 +428,7 @@ const CONTENT = {
         },
         {
           "title": "Epidemiology",
-          "text": "Age peaks at 20–40 and 60–70 years; women are affected more often."
+          "text": "Onset is more common in young to middle adulthood; age patterns and sex differences vary substantially between populations."
         }
       ],
       "key": "The key thoracic pattern is symmetric bilateral hilar lymphadenopathy combined with perilymphatic micronodules."
@@ -469,7 +472,7 @@ const CONTENT = {
     },
     "hrct": {
       "title": "HRCT: lymph nodes and parenchymal pattern",
-      "lead": "HRCT is the gold standard for assessing parenchymal involvement. Lymph-node distribution and perilymphatic micronodules are central.",
+      "lead": "HRCT is a key method for characterizing lung parenchyma. A typical imaging pattern alone does not prove sarcoidosis; clinical context and alternative diagnoses remain important.",
       "lymphTitle": "Lymph nodes",
       "lymph": [
         {
@@ -519,10 +522,12 @@ const CONTENT = {
         [
           "Cluster sign",
           "many small nodules packed together",
-          "may almost mimic one single lesion"
+          "descriptive pattern; not diagnostic on its own"
         ]
       ],
       "key": "Perilymphatic nodules along fissures and bronchovascular bundles are much more typical of sarcoidosis than randomly scattered centrilobular nodules."
+      ,"galaxyImageAlt": "Axial CT image with a nodular aggregate and nearby smaller nodules; the arrow marks the finding."
+      ,"galaxyImageCaption": "Labelled as the Galaxy sign in the source PDF · CT · Thorax.pdf, PDF p. 42 (printed p. 41) · Radiopaedia rID 29251. Sequence and contrast phase are not stated. The pattern is non-specific."
     },
     "extra": {
       "title": "Extrapulmonary manifestations",
@@ -619,34 +624,34 @@ const CONTENT = {
       "key": "Eggshell calcification is not unique to sarcoidosis; exposure history and the full distribution pattern are decisive."
     },
     "cases": {
-      "title": "Cases",
-      "lead": "Real cases and reference articles from Radiopaedia.org on the key patterns of pulmonary sarcoidosis.",
-      "openCase": "Open case in Radiopaedia",
+      "title": "Further Radiopaedia reading",
+      "lead": "The links below open background articles from Radiopaedia.org; they are not case previews. The CT shown above comes from the supplied Thorax PDF.",
+      "openCase": "Open article in Radiopaedia",
       "items": [
         {
-          "label": "Scadding I",
-          "title": "Symmetric bihilar and right paratracheal lymphadenopathy",
-          "tags": ["X-ray", "1-2-3 sign"],
-          "icon": "🫁",
-          "meta": "X-ray or CT shows bilateral hilar nodes plus right paratracheal nodes, but no definite parenchymal disease.",
+          "label": "Review article",
+          "title": "Pulmonary sarcoidosis",
+          "tags": ["Background"],
+          "icon": "↗",
+          "meta": "Further reading; no chest radiograph or CT case image is shown here.",
           "credit": "Source: Radiopaedia.org",
           "url": "https://radiopaedia.org/articles/pulmonary-sarcoidosis"
         },
         {
-          "label": "HRCT pattern",
-          "title": "Perilymphatic micronodules along the fissures",
-          "tags": ["HRCT", "perilymphatic"],
-          "icon": "🔬",
-          "meta": "HRCT shows 2–4-mm nodules along fissures, pleura and bronchovascular bundles, predominantly in the upper/middle zones.",
+          "label": "Review article",
+          "title": "Sarcoidosis",
+          "tags": ["Background"],
+          "icon": "↗",
+          "meta": "Further reading; no HRCT case image is shown on this card.",
           "credit": "Source: Radiopaedia.org",
           "url": "https://radiopaedia.org/articles/sarcoidosis"
         },
         {
-          "label": "DD silicosis",
-          "title": "Eggshell nodal calcifications with dust exposure",
-          "tags": ["CT", "calcification"],
-          "icon": "🥚",
-          "meta": "Eggshell-like nodal calcifications and upper-lobe predominance in a patient with quartz dust exposure.",
+          "label": "Review article",
+          "title": "Eggshell calcification",
+          "tags": ["Background"],
+          "icon": "↗",
+          "meta": "Further reading on terminology; no CT case image is shown here.",
           "credit": "Source: Radiopaedia.org",
           "url": "https://radiopaedia.org/articles/eggshell-calcification"
         }
@@ -680,8 +685,7 @@ const CONTENT = {
     "breadcrumbThorax": "توراکس",
     "breadcrumbCurrent": "ریه · سارکوئیدوز",
     "title": "سارکوئیدوز",
-    "subtitle": "مراحل Scadding، الگوی HRCT، لنف‌نودها و تشخیص‌های افتراقی مهم",
-    "sourceLabel": "Dr. Zia",
+    "heroCaption": "شماتیک آموزشی: ندول‌های پری‌لنفاتیک و لنف‌نودهای بی‌هیلار؛ تصویر بیمار نیست.",
     "actionMcq": "MCQ",
     "actionFlash": "فلش‌کارت",
     "keyLabel": "نکته مهم",
@@ -714,8 +718,8 @@ const CONTENT = {
       },
       {
         "id": "fallbeispiele",
-        "label": "نمونه کیس‌ها",
-        "icon": "🧪"
+        "label": "مقاله‌ها",
+        "icon": "↗"
       },
       {
         "id": "takehome",
@@ -758,7 +762,7 @@ const CONTENT = {
         },
         {
           "title": "اپیدمیولوژی",
-          "text": "دو پیک سنی ۲۰–۴۰ و ۶۰–۷۰ سال؛ در زنان شایع‌تر."
+          "text": "شروع بیماری در بزرگسالی جوان تا میانسالی شایع‌تر است؛ الگوی سنی و تفاوت‌های جنسیتی بین جمعیت‌ها تفاوت قابل‌توجهی دارد."
         }
       ],
       "key": "الگوی اصلی سارکوئیدوز توراسیک، ترکیب لنفادنوپاتی بی‌هیلار متقارن و میکروندول‌های پری‌لنفاتیک است."
@@ -802,7 +806,7 @@ const CONTENT = {
     },
     "hrct": {
       "title": "HRCT: لنف‌نود و الگوی پارانشیم",
-      "lead": "HRCT استاندارد طلایی برای ارزیابی درگیری پارانشیم است. توزیع لنف‌نودها و میکروندول‌های پری‌لنفاتیک بسیار مهم هستند.",
+      "lead": "HRCT روشی کلیدی برای مشخص‌کردن الگوی پارانشیم ریه است. الگوی تصویربرداری تیپیک به‌تنهایی سارکوئیدوز را ثابت نمی‌کند؛ زمینهٔ بالینی و تشخیص‌های جایگزین همچنان مهم‌اند.",
       "lymphTitle": "لنف‌نودها",
       "lymph": [
         {
@@ -852,10 +856,12 @@ const CONTENT = {
         [
           "علامت خوشه‌ای (Cluster sign)",
           "تعداد زیادی ندول کوچک نزدیک به هم",
-          "تقریباً شبیه یک ضایعه واحد دیده می‌شود"
+          "یک الگوی توصیفی است و به‌تنهایی تشخیصی نیست"
         ]
       ],
       "key": "ندول‌های پری‌لنفاتیک در امتداد فیشورها و دسته‌های برونکوواسکولار برای سارکوئیدوز تیپیک‌تر از ندول‌های سنترلوبولار پراکنده هستند."
+      ,"galaxyImageAlt": "تصویر محوری CT با تجمع ندولار و ندول‌های کوچک‌تر مجاور؛ پیکان یافته را نشان می‌دهد."
+      ,"galaxyImageCaption": "در PDF منبع با عنوان Galaxy sign آمده است · CT · فایل Thorax.pdf، صفحهٔ PDF ۴۲ (صفحهٔ چاپی ۴۱) · مورد رادیوپدیا rID 29251. سکانس و فاز تزریق در منبع ذکر نشده‌اند. این الگو اختصاصی نیست."
     },
     "extra": {
       "title": "تظاهرات خارج ریوی",
@@ -952,34 +958,34 @@ const CONTENT = {
       "key": "کلسیفیکاسیون Eggshell مخصوص سارکوئیدوز نیست؛ شرح‌حال تماس و الگوی کامل توزیع تعیین‌کننده است."
     },
     "cases": {
-      "title": "نمونه کیس‌ها",
-      "lead": "کیس‌های واقعی و مقالات مرجع از Radiopaedia.org درباره مهم‌ترین الگوهای سارکوئیدوز ریوی.",
-      "openCase": "باز کردن کیس در Radiopaedia",
+      "title": "مطالعهٔ بیشتر در Radiopaedia",
+      "lead": "پیوندهای زیر به مقاله‌های مروری Radiopaedia.org می‌روند و پیش‌نمایش کیس نیستند. تصویر CT بالا از PDF ارائه‌شدهٔ توراکس آمده است.",
+      "openCase": "بازکردن مقاله در Radiopaedia",
       "items": [
         {
-          "label": "Scadding I",
-          "title": "لنفادنوپاتی بی‌هیلار متقارن و پارا تراکئال راست",
-          "tags": ["رادیوگرافی", "علامت 1-2-3"],
-          "icon": "🫁",
-          "meta": "رادیوگرافی یا CT لنف‌نودهای دو هیلوم و ناحیه پارا تراکئال راست را نشان می‌دهد، بدون درگیری قطعی پارانشیم.",
+          "label": "مقالهٔ مروری",
+          "title": "سارکوئیدوز ریوی",
+          "tags": ["مطالعهٔ بیشتر"],
+          "icon": "↗",
+          "meta": "مقاله‌ای برای مطالعهٔ بیشتر؛ در اینجا تصویر مورد رادیوگرافی یا CT نمایش داده نمی‌شود.",
           "credit": "منبع: Radiopaedia.org",
           "url": "https://radiopaedia.org/articles/pulmonary-sarcoidosis"
         },
         {
-          "label": "الگوی HRCT",
-          "title": "میکروندول‌های پری‌لنفاتیک در امتداد فیشورها",
-          "tags": ["HRCT", "پری‌لنفاتیک"],
-          "icon": "🔬",
-          "meta": "HRCT ندول‌های ۲–۴ میلی‌متری در امتداد فیشورها، پلور و دسته‌های برونکوواسکولار نشان می‌دهد، بیشتر در نواحی فوقانی و میانی.",
+          "label": "مقالهٔ مروری",
+          "title": "سارکوئیدوز",
+          "tags": ["مطالعهٔ بیشتر"],
+          "icon": "↗",
+          "meta": "مقاله‌ای برای مطالعهٔ بیشتر؛ این کارت تصویر مورد HRCT را نشان نمی‌دهد.",
           "credit": "منبع: Radiopaedia.org",
           "url": "https://radiopaedia.org/articles/sarcoidosis"
         },
         {
-          "label": "DD سیلیکوز",
-          "title": "کلسیفیکاسیون Eggshell با سابقه تماس با غبار",
-          "tags": ["CT", "کلسیفیکاسیون"],
-          "icon": "🥚",
-          "meta": "کلسیفیکاسیون شبیه پوسته تخم‌مرغ در لنف‌نودها و درگیری لوب فوقانی در فرد با تماس شغلی با غبار کوارتز.",
+          "label": "مقالهٔ مروری",
+          "title": "کلسیفیکاسیون Eggshell",
+          "tags": ["مطالعهٔ بیشتر"],
+          "icon": "↗",
+          "meta": "مقاله‌ای برای مطالعهٔ بیشتر دربارهٔ اصطلاح؛ در اینجا تصویر مورد CT نمایش داده نمی‌شود.",
           "credit": "منبع: Radiopaedia.org",
           "url": "https://radiopaedia.org/articles/eggshell-calcification"
         }
@@ -1126,9 +1132,7 @@ export default function SarkoidosePage() {
         </div>
         <div className={styles.hero}>
           <div className={styles.heroText}>
-            <span className={styles.sourceBadge}>{copy.sourceLabel}</span>
-            <h1>{copy.title}</h1>
-            <p>{copy.subtitle}</p>
+            <LessonHero title={copy.title} lang={lang} visual={<ClinicalPatternDiagram variant="sarcoidosis" lang={lang} />} visualCaption={copy.heroCaption} />
             <div className={styles.heroActions}>
               <Link href={withLang(`/ueben/quiz?fach=thorax&n=10&themen=sarkoidose&from=${encodeURIComponent(withLang('/lunge/sarkoidose'))}`)} className={styles.actionBtn}>🎯 {copy.actionMcq}</Link>
               <Link href={withLang(`/flashcards/sarkoidose?from=${encodeURIComponent(withLang('/lunge/sarkoidose'))}`)} className={styles.actionBtn}>🧠 {copy.actionFlash}</Link>
@@ -1182,6 +1186,10 @@ export default function SarkoidosePage() {
             </div>
             <h3 className={styles.subTitle}>{copy.hrct.signsTitle}</h3>
             <Table headers={copy.hrct.signHeaders || ['Sign', 'Morphologie', 'Hinweis']} rows={copy.hrct.signRows} />
+            <figure className={styles.sourceFigure}>
+              <Image src="/educational/sarkoidose/galaxy-rid-29251.jpg" alt={copy.hrct.galaxyImageAlt} width={664} height={379} sizes="(max-width: 760px) 100vw, 640px" />
+              <figcaption>{copy.hrct.galaxyImageCaption}</figcaption>
+            </figure>
             <Callout label={copy.keyLabel}>{copy.hrct.key}</Callout>
           </Section>
 
