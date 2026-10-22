@@ -36,9 +36,7 @@ wissenschaftlich validiert übernommen.
 - `node --import tsx scripts/test-technik-p128-gadolinium-visual.mjs` prüft
   Quelle, Attribution, drei Sprachfassungen, Curriculum-Verknüpfung und
   bestehende MCQ-/Flashcard-Retrieval-Verknüpfungen.
-- Unabhängiger Review, Browser-/RTL-/Responsive-Test und klinisch-wissenschaftliche
-  Fachprüfung sind offen. Der bestehende Text und die Assessmentclaims zur
-  Gadolinium-Retention/NSF sind nicht Gegenstand einer wissenschaftlichen
-  Neubewertung in diesem engen Bild-Addendum.
+- Independent bounded review of physical p.128 passed SRC/EDU/VIS/LNG/ASM/REV: the actual page panels, arrowed native axial T1 finding, caption, attribution, three languages and linked image question/cards were inspected. FDA labeling/review supports the wording that clinical consequences remain unknown; the page-specific liver-agent statements were not found to contain a demonstrated error. This is not a full scientific re-evaluation of the wider retention/NSF lesson or GBCA route.
+- The shared contrast-route header now uses `LessonHero`; a separate delta review confirmed the MRI route retains the localized chelate schematic and the p.128 gallery/caption/attribution. Browser/RTL/responsive behavior remains BLOCKED because no browser evidence was available. Dr. Zia's scientific approval remains open.
 - Das gesamte Themenfeld MRT-Kontrastmittel und die übrigen PDF-Seiten sind
   weiterhin nicht vollständig abgeglichen oder freigegeben.

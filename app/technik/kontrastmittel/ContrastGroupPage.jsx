@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+import LessonHero from '@/components/LessonHero'
 import InProgressBanner from '@/components/InProgressBanner'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
@@ -168,6 +169,33 @@ export default function ContrastGroupPage({ groupId }) {
   const topicIds = group.topicIds.join(',')
   const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
   const sectionIds = useMemo(() => lesson.sections.map(section => section.id), [lesson.sections])
+  const heroImage = groupId === 'roentgen'
+    ? {
+        src: '/educational/xray-contrast-attenuation.svg', width: 280, height: 220,
+        alt: { de: 'Schema: Jod schwächt Röntgenstrahlen stärker als Weichteilgewebe.', en: 'Schematic: iodine attenuates X-rays more strongly than soft tissue.', fa: 'طرح شماتیک: ید پرتو ایکس را بیش از بافت نرم تضعیف می‌کند.' },
+        caption: { de: 'Jodkontrast durch stärkere Röntgenabsorption', en: 'Iodine contrast through stronger X-ray attenuation', fa: 'کنتراست ید به‌دلیل جذب بیشتر پرتو ایکس' },
+        legend: <><span><i className={styles.softTissueLegend} aria-hidden="true" />{localizeContrast({ de: 'Weichteilgewebe', en: 'Soft tissue', fa: 'بافت نرم' }, lang)}</span><span><i className={styles.iodineLegend} aria-hidden="true" />{localizeContrast({ de: 'Jodhaltiges KM', en: 'Iodinated contrast', fa: 'مادهٔ حاجب یددار' }, lang)}</span></>,
+      }
+    : groupId === 'nierenfunktion'
+      ? {
+          src: '/educational/renal-contrast-pass.svg', width: 300, height: 200,
+          alt: { de: 'Konzeptdiagramm: intravenöses Kontrastmittel erreicht die Niere nach dem Kreislauf; bei einer arteriellen Erstpassage gelangt es direkt über die Nierenarterie dorthin.', en: 'Conceptual diagram: intravenous contrast reaches the kidneys after systemic circulation; with an arterial first pass it reaches them directly through the renal artery.', fa: 'طرح مفهومی: مادهٔ حاجب وریدی پس از گردش سیستمیک به کلیه می‌رسد؛ در عبور اول شریانی، مستقیماً از شریان کلیوی وارد می‌شود.' },
+          caption: { de: 'Applikationsweg und renale Erstpassage', en: 'Administration route and renal first pass', fa: 'مسیر تزریق و عبور اول کلیوی' },
+          legend: <><span><i className={styles.ivRouteLegend} aria-hidden="true" />{localizeContrast({ de: 'IV: Kreislauf → Niere', en: 'IV: circulation → kidney', fa: 'وریدی: کلیه ← گردش خون' }, lang)}</span><span><i className={styles.iaRouteLegend} aria-hidden="true" />{localizeContrast({ de: 'IA-Erstpass: direkt zur Niere', en: 'IA first pass: direct to kidney', fa: 'عبور اول شریانی: کلیه ← مسیر مستقیم شریانی' }, lang)}</span></>,
+        }
+      : groupId === 'mrt'
+        ? {
+            src: '/educational/gadolinium-chelate.svg', width: 280, height: 160,
+            alt: { de: 'Konzeptschema: ein linearer Ligand umgibt Gadolinium offen; ein makrozyklischer Ligand bildet einen geschlossenen Ring. Nicht maßstabsgetreu und keine Molekülstruktur.', en: 'Concept schematic: a linear ligand loosely surrounds gadolinium, while a macrocyclic ligand forms a closed ring. Not to scale and not a molecular structure.', fa: 'طرح مفهومی: لیگاند خطی گادولینیوم را به‌صورت باز احاطه می‌کند و لیگاند ماکروسیکلیک حلقه‌ای بسته می‌سازد. مقیاس‌دار یا ساختار مولکولی دقیق نیست.' },
+            caption: { de: 'Chelatgeometrie: offene Kette und geschlossener Ring', en: 'Chelate geometry: open chain and closed ring', fa: 'هندسهٔ شلات: زنجیرهٔ باز و حلقهٔ بسته' },
+            legend: <><span><i className={styles.linearLegend} aria-hidden="true" />{localizeContrast({ de: 'Linear, schematisch', en: 'Linear, schematic', fa: 'خطی، شماتیک' }, lang)}</span><span><i className={styles.macrocyclicLegend} aria-hidden="true" />{localizeContrast({ de: 'Makrozyklisch, schematisch', en: 'Macrocyclic, schematic', fa: 'ماکروسیکلیک، شماتیک' }, lang)}</span></>,
+          }
+        : groupId === 'schwangerschaft' ? {
+            src: '/educational/pregnancy-contrast-pathways.svg', width: 300, height: 169,
+            alt: { de: 'Konzeptschema, nicht anatomisch: zwei getrennte Wege der Exposition – Plazentaübertritt während der Schwangerschaft und begrenzter Übertritt in die Muttermilch nach der Geburt.', en: 'Conceptual, non-anatomical diagram of two separate exposure routes: placental transfer during pregnancy and limited transfer into breast milk after birth.', fa: 'طرح مفهومی و غیرآناتومیک از دو مسیر جداگانهٔ مواجهه: عبور از جفت در بارداری و انتقال محدود به شیر مادر پس از تولد.' },
+            caption: { de: 'Schwangerschaft: Plazentapassage · Stillzeit: Übertritt in die Milch', en: 'Pregnancy: placental transfer · Lactation: transfer into milk', fa: 'بارداری: عبور از جفت · شیردهی: انتقال به شیر' },
+            legend: <><span><i className={styles.iodineLegend} aria-hidden="true" />{localizeContrast({ de: 'In utero: fetale Exposition', en: 'In utero: fetal exposure', fa: 'در رحم: مواجههٔ جنین' }, lang)}</span><span><i className={styles.macrocyclicLegend} aria-hidden="true" />{localizeContrast({ de: 'Nach Geburt: Milchtransfer', en: 'After birth: milk transfer', fa: 'پس از تولد: انتقال به شیر' }, lang)}</span></>,
+          } : null
 
   useEffect(() => {
     const observers = sectionIds.map(id => {
@@ -201,43 +229,20 @@ export default function ContrastGroupPage({ groupId }) {
             <span>{localizeContrast(lesson.title, lang)}</span>
           </nav>
           <div className={styles.hero}>
-            <div className={styles.heroText}>
+            <div className={styles.heroLearning}>
               <span className={styles.sourceBadge}>{lesson.sourceLabel}</span>
-              <h1>{localizeContrast(lesson.title, lang)}</h1>
+              <LessonHero
+                title={localizeContrast(lesson.title, lang)}
+                lang={lang}
+                titleClassName={styles.contrastHeroTitle}
+                visual={<><Image src={heroImage.src} alt={localizeContrast(heroImage.alt, lang)} width={heroImage.width} height={heroImage.height} priority /><div className={styles.heroVisualLegend}>{heroImage.legend}</div></>}
+                visualCaption={localizeContrast(heroImage.caption, lang)}
+              />
               <div className={styles.actions}>
                 <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=technik&n=10&themen=${topicIds}&from=${encodeURIComponent(pagePath)}`)}>{ui.mcq}</Link>
                 <Link className={styles.actionBtn} href={withLang(`/flashcards/${group.flashcardId}?from=${encodeURIComponent(pagePath)}`)}>{ui.flashcards}</Link>
               </div>
             </div>
-            {groupId === 'roentgen' ? <figure className={styles.heroVisual}>
-              <Image src="/educational/xray-contrast-attenuation.svg" alt={localizeContrast({ de: 'Schema: Jod schwächt Röntgenstrahlen stärker als Weichteilgewebe.', en: 'Schematic: iodine attenuates X-rays more strongly than soft tissue.', fa: 'طرح شماتیک: ید پرتو ایکس را بیش از بافت نرم تضعیف می‌کند.' }, lang)} width={280} height={220} priority />
-              <figcaption>{localizeContrast({ de: 'Jodkontrast durch stärkere Röntgenabsorption', en: 'Iodine contrast through stronger X-ray attenuation', fa: 'کنتراست ید به‌دلیل جذب بیشتر پرتو ایکس' }, lang)}</figcaption>
-              <div className={styles.heroVisualLegend}>
-                <span><i className={styles.softTissueLegend} aria-hidden="true" />{localizeContrast({ de: 'Weichteilgewebe', en: 'Soft tissue', fa: 'بافت نرم' }, lang)}</span>
-                <span><i className={styles.iodineLegend} aria-hidden="true" />{localizeContrast({ de: 'Jodhaltiges KM', en: 'Iodinated contrast', fa: 'مادهٔ حاجب یددار' }, lang)}</span>
-              </div>
-            </figure> : groupId === 'nierenfunktion' ? <figure className={styles.heroVisual}>
-              <Image src="/educational/renal-contrast-pass.svg" alt={localizeContrast({ de: 'Konzeptdiagramm: intravenöses Kontrastmittel erreicht die Niere nach dem Kreislauf; bei einer arteriellen Erstpassage gelangt es direkt über die Nierenarterie dorthin.', en: 'Conceptual diagram: intravenous contrast reaches the kidneys after systemic circulation; with an arterial first pass it reaches them directly through the renal artery.', fa: 'طرح مفهومی: مادهٔ حاجب وریدی پس از گردش سیستمیک به کلیه می‌رسد؛ در عبور اول شریانی، مستقیماً از شریان کلیوی وارد می‌شود.' }, lang)} width={300} height={200} priority />
-              <figcaption>{localizeContrast({ de: 'Applikationsweg und renale Erstpassage', en: 'Administration route and renal first pass', fa: 'مسیر تزریق و عبور اول کلیوی' }, lang)}</figcaption>
-              <div className={styles.heroVisualLegend}>
-                <span><i className={styles.ivRouteLegend} aria-hidden="true" />{localizeContrast({ de: 'IV: Kreislauf → Niere', en: 'IV: circulation → kidney', fa: 'وریدی: کلیه ← گردش خون' }, lang)}</span>
-                <span><i className={styles.iaRouteLegend} aria-hidden="true" />{localizeContrast({ de: 'IA-Erstpass: direkt zur Niere', en: 'IA first pass: direct to kidney', fa: 'عبور اول شریانی: کلیه ← مسیر مستقیم شریانی' }, lang)}</span>
-              </div>
-            </figure> : groupId === 'mrt' ? <figure className={styles.heroVisual}>
-              <Image src="/educational/gadolinium-chelate.svg" alt={localizeContrast({ de: 'Konzeptschema: ein linearer Ligand umgibt Gadolinium offen; ein makrozyklischer Ligand bildet einen geschlossenen Ring. Nicht maßstabsgetreu und keine Molekülstruktur.', en: 'Concept schematic: a linear ligand loosely surrounds gadolinium, while a macrocyclic ligand forms a closed ring. Not to scale and not a molecular structure.', fa: 'طرح مفهومی: لیگاند خطی گادولینیوم را به‌صورت باز احاطه می‌کند و لیگاند ماکروسیکلیک حلقه‌ای بسته می‌سازد. مقیاس‌دار یا ساختار مولکولی دقیق نیست.' }, lang)} width={280} height={160} priority />
-              <figcaption>{localizeContrast({ de: 'Chelatgeometrie: offene Kette und geschlossener Ring', en: 'Chelate geometry: open chain and closed ring', fa: 'هندسهٔ شلات: زنجیرهٔ باز و حلقهٔ بسته' }, lang)}</figcaption>
-              <div className={styles.heroVisualLegend}>
-                <span><i className={styles.linearLegend} aria-hidden="true" />{localizeContrast({ de: 'Linear, schematisch', en: 'Linear, schematic', fa: 'خطی، شماتیک' }, lang)}</span>
-                <span><i className={styles.macrocyclicLegend} aria-hidden="true" />{localizeContrast({ de: 'Makrozyklisch, schematisch', en: 'Macrocyclic, schematic', fa: 'ماکروسیکلیک، شماتیک' }, lang)}</span>
-              </div>
-            </figure> : groupId === 'schwangerschaft' ? <figure className={styles.heroVisual}>
-              <Image src="/educational/pregnancy-contrast-pathways.svg" alt={localizeContrast({ de: 'Konzeptschema, nicht anatomisch: zwei getrennte Wege der Exposition – Plazentaübertritt während der Schwangerschaft und begrenzter Übertritt in die Muttermilch nach der Geburt.', en: 'Conceptual, non-anatomical diagram of two separate exposure routes: placental transfer during pregnancy and limited transfer into breast milk after birth.', fa: 'طرح مفهومی و غیرآناتومیک از دو مسیر جداگانهٔ مواجهه: عبور از جفت در بارداری و انتقال محدود به شیر مادر پس از تولد.' }, lang)} width={300} height={169} priority />
-              <figcaption>{localizeContrast({ de: 'Schwangerschaft: Plazentapassage · Stillzeit: Übertritt in die Milch', en: 'Pregnancy: placental transfer · Lactation: transfer into milk', fa: 'بارداری: عبور از جفت · شیردهی: انتقال به شیر' }, lang)}</figcaption>
-              <div className={styles.heroVisualLegend}>
-                <span><i className={styles.iodineLegend} aria-hidden="true" />{localizeContrast({ de: 'In utero: fetale Exposition', en: 'In utero: fetal exposure', fa: 'در رحم: مواجههٔ جنین' }, lang)}</span>
-                <span><i className={styles.macrocyclicLegend} aria-hidden="true" />{localizeContrast({ de: 'Nach Geburt: Milchtransfer', en: 'After birth: milk transfer', fa: 'پس از تولد: انتقال به شیر' }, lang)}</span>
-              </div>
-            </figure> : null}
             <div className={styles.heroStats}>{lesson.stats.map(stat => (
               <div className={styles.heroStat} key={stat.value}><strong>{stat.value}</strong><span>{localizeContrast(stat.label, lang)}</span><small>{localizeContrast(stat.text, lang)}</small></div>
             ))}</div>
