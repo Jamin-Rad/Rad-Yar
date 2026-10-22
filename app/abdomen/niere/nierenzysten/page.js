@@ -108,11 +108,19 @@ export default function RenalCystsPage() {
     { id: 'takehome', label: t(L('Drei Regeln', 'Three rules', 'سه قاعده'), lang), icon: 'takehome', emphasis: true },
   ]
   const labels = Object.fromEntries(Object.entries({ complete: L('Als gelesen markieren', 'Mark as read', 'به‌عنوان خوانده‌شده علامت بزنید'), completed: L('Gelesen', 'Read', 'خوانده شد'), continue: L('Weiter', 'Continue', 'ادامه'), path: L('Lernpfad', 'Learning path', 'مسیر یادگیری'), progress: L('Fortschritt', 'Progress', 'پیشرفت'), takeHome: L('Drei Regeln', 'Three rules', 'سه قاعده'), sources: L('Quellen', 'Sources', 'منابع'), close: L('Schließen', 'Close', 'بستن'), contents: L('Seitenpfad', 'Breadcrumb', 'مسیر صفحه'), open: L('Öffnen', 'Open', 'بازکردن'), completeLesson: L('Lektion abschließen', 'Complete lesson', 'درس را کامل کنید'), lessonCompleted: L('Lektion abgeschlossen', 'Lesson completed', 'درس کامل شد') }).map(([key, value]) => [key, t(value, lang)]))
-  const local = path => lang === 'de' ? path : `${path}?lang=${lang}`
+  const local = href => {
+    const [path, hash] = href.split('#', 2)
+    const localizedPath = lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
+    return hash ? `${localizedPath}#${hash}` : localizedPath
+  }
+  const lessonReturn = local('/abdomen/niere/nierenzysten#classes')
   const sources = [{ tag: t(L('Klassifikation', 'Classification', 'طبقه‌بندی'), lang), title: 'Silverman SG, Pedrosa I, Ellis JH, et al. Bosniak Classification of Cystic Renal Masses, Version 2019: An Update Proposal and Needs Assessment. Radiology. 2019;292:475–488. doi:10.1148/radiol.2019182646.', href: 'https://doi.org/10.1148/radiol.2019182646', citation: t(L('Primärpublikation mit den Kriterien der Version 2019.', 'Primary proposal defining the version 2019 criteria.', 'مقاله اصلی و معیارهای نسخه ۲۰۱۹.'), lang) }]
   return <StandardLessonShell lessonId="abdomen-renal-cysts" lang={lang} title={c.title} author="RadYar"
     breadcrumbs={[{ label: 'RadYar', href: local('/') }, { label: t(L('Abdomen', 'Abdomen', 'شکم'), lang), href: local('/lernen/abdomen') }, { label: t(L('Niere', 'Kidney', 'کلیه'), lang) }, { label: c.title }]}
-    sections={sections} labels={labels} renderIcon={id => <Icon id={id} />} actions={{}} syncHashNavigation heroImageAlt={t(L('Code-native Schema einer zystischen Nierenmasse; keine Patientenaufnahme.', 'Code-native schematic of a cystic renal mass; not a patient image.', 'شماتیک کدنویسی‌شده از توده کیستیک کلیه؛ تصویر بیمار نیست.'), lang)}
+    sections={sections} labels={labels} renderIcon={id => <Icon id={id} />} actions={{
+      mcq: { label: t(L('Bosniak-Morphologie üben', 'Practise Bosniak morphology', 'تمرین مورفولوژی Bosniak'), lang), href: local(`/ueben/quiz?fach=abdomen&n=1&themen=nierenzysten&from=${encodeURIComponent(lessonReturn)}`) },
+      flashcards: { label: t(L('Bosniak-Lernkarte', 'Bosniak flashcard', 'فلش‌کارت Bosniak'), lang), href: local(`/flashcards/nierenzysten?from=${encodeURIComponent(lessonReturn)}`) },
+    }} syncHashNavigation heroImageAlt={t(L('Code-native Schema einer zystischen Nierenmasse; keine Patientenaufnahme.', 'Code-native schematic of a cystic renal mass; not a patient image.', 'شماتیک کدنویسی‌شده از توده کیستیک کلیه؛ تصویر بیمار نیست.'), lang)}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/educational/nierenzysten/hero.svg', heroImageOpacity: .95, accent: '#4caeb9', accentStrong: '#145f69', accentSoft: '#dff3f2', secondary: '#d69c5b', secondaryStrong: '#784316', heroBase: '#101b2d' }} className={styles.page}
     sources={<LessonSources title={labels.sources} items={sources} note={c.source} />}><Content lang={lang} /></StandardLessonShell>
 }
