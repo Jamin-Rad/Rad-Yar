@@ -1,0 +1,73 @@
+.architectureHero {
+  margin-block: 12px 20px;
+  padding: 18px 22px 20px;
+  border: 1px solid rgba(14, 165, 233, .22);
+  border-radius: 20px;
+  background: linear-gradient(135deg, #082f49, #0f172a);
+  box-shadow: 0 16px 38px rgba(2, 6, 23, .16);
+}
+
+.architectureHero :global([data-lesson-hero]) h1 {
+  color: #f8fafc;
+}
+
+.architectureHero :global([data-lesson-hero]) figure svg {
+  transform: none;
+}
+
+.architectureHero :global([data-lesson-hero]) figcaption {
+  color: #dbeafe;
+}
+
+.patternDiagram { display:block; width:100%; height:100%; }
+
+.architectureActions { display:flex; flex-wrap:wrap; gap:10px; margin-block:0 10px; }
+.architectureActions a { color:#0284c7; }
+
+.imageSource {
+  border-top: 1px solid var(--line);
+  padding-top: 7px;
+}
+
+.imageSource summary {
+  color: #0284c7;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.imageSource p {
+  margin: 8px 0;
+  font-weight: 500;
+}
+
+.imageSource a { color:#0284c7; font-weight:800; }
+
+.selfCheck {
+  margin: 14px 0;
+  padding: 20px;
+  border: 1px solid rgba(14,165,233,.28);
+  border-radius: 16px;
+  background: var(--bg-card);
+  box-shadow: 0 10px 26px var(--shadow-soft);
+}
+
+.selfCheck h2 {
+  margin: 0 0 10px;
+  color: #0284c7;
+  font: 850 clamp(20px,2.2vw,27px)/1.2 var(--font-display,Georgia,serif);
+}
+
+.selfCheck > p { line-height:1.7; }
+.selfCheck fieldset { display:grid; gap:8px; margin:14px 0; padding:14px; border:1px solid var(--line); border-radius:10px; }
+.selfCheck legend { padding-inline:6px; font-weight:800; }
+.selfCheck label { display:flex; align-items:flex-start; gap:9px; padding:10px; border:1px solid var(--line); border-radius:8px; cursor:pointer; }
+.selfCheck label.selected { border-color:#0284c7; background:rgba(14,165,233,.08); }
+.selfCheck input { margin-top:4px; accent-color:#0284c7; }
+.feedback { margin:12px 0 0; padding:13px 15px; border-radius:9px; line-height:1.65; }
+.correct { color:#145b49; background:#e8f7f2; }
+.incorrect { color:#81500b; background:#fff3e5; }
+
+@media(max-width:760px) {
+  .architectureHero { padding:12px; }
+  .selfCheck { padding:15px 12px; }
+}

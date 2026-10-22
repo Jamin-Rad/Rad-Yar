@@ -159,12 +159,12 @@ export const HRCT_LESSONS = {
         id: 'honeycombing', icon: '🍯', title: L('Honeycombing', 'Honeycombing', 'هانی‌کومبینگ'),
         lead: L('Honeycombing ist ein Fibrosezeichen mit zerstörter Lungenarchitektur, nicht einfach eine Ansammlung beliebiger Zysten.', 'Honeycombing is a sign of fibrosis with destroyed lung architecture, not merely a collection of arbitrary cysts.', 'هانی‌کومبینگ علامت فیبروز با تخریب معماری ریه است، نه صرفاً مجموعه‌ای از کیست‌ها.'),
         cards: [
-          { title: L('Morphologie', 'Morphology', 'مورفولوژی'), text: L('Mehrere übereinanderliegende, meist 3–10 mm große, dickwandige subpleurale Hohlräume.', 'Multiple stacked, usually 3–10 mm, thick-walled subpleural air spaces.', 'فضاهای هوایی متعدد، لایه‌ای، معمولاً ۳–۱۰ میلی‌متر و دیواره‌ضخیم در ساب‌پلورال.') },
+          { title: L('Morphologie', 'Morphology', 'مورفولوژی'), text: L('Benachbarte, gut abgrenzbare subpleurale Zysten; meist 3–10 mm, gelegentlich bis 25 mm. Wanddicke und Schichtung variieren.', 'Adjacent, well-defined subpleural cystic spaces, usually 3–10 mm and occasionally up to 25 mm. Wall thickness and layering vary.', 'فضاهای کیستیک مجاور و مشخص در ساب‌پلورال؛ معمولاً ۳–۱۰ میلی‌متر و گاهی تا ۲۵ میلی‌متر. ضخامت دیواره و لایه‌بندی متغیر است.') },
           { title: L('Kontext', 'Context', 'زمینه'), text: L('Zusammen mit Retikulation, Traktionsbronchiektasen und Volumenverlust; basal-subpleural typisch für UIP.', 'Occurs with reticulation, traction bronchiectasis and volume loss; basal subpleural distribution is typical of UIP.', 'همراه رتیکولاسیون، برونشکتازی کششی و کاهش حجم؛ توزیع بازال ساب‌پلورال تیپیک UIP.') },
         ],
         images: [
           img('/hrct/architekturmuster/image24.png', 'Honigwabe als morphologische Merkhilfe', 'Honeycomb as a morphological mnemonic', 'لانه زنبور به‌عنوان یادآور مورفولوژیک'),
-          img('/hrct/architekturmuster/image25.jpeg', 'Subpleurales Honeycombing · rID 35820', 'Subpleural honeycombing · rID 35820', 'هانی‌کومبینگ ساب‌پلورال · rID 35820', 35820),
+          { ...img('/hrct/architekturmuster/image25.jpeg', 'Achte auf benachbarte subpleurale Zysten und die fibrotische Architektur.', 'Look for adjacent subpleural cysts and the surrounding fibrotic architecture.', 'به کیست‌های مجاور ساب‌پلورال و معماری فیبروتیک اطراف نگاه کنید.', 35820, { source: 'Thorax.pdf', page: 22, printedPage: 21, radiopaediaId: 35820, match: 'Local CT asset visually matches the honeycombing panel on physical p.22; local asset derivation and case frame/contributor are not independently recorded.' }), alt: L('CT mit subpleuralem Honeycombing', 'CT showing subpleural honeycombing', 'CT با هانی‌کومبینگ ساب‌پلورال') },
         ],
       },
       {
@@ -175,7 +175,7 @@ export const HRCT_LESSONS = {
           { title: L('Small airways', 'Small airways', 'راه‌های هوایی کوچک'), text: L('Die dunkleren Areale sind durch Air Trapping abnormal; in Exspiration bleibt ihre Dichte niedrig.', 'The darker regions are abnormal from air trapping and remain low attenuation on expiration.', 'نواحی تیره‌تر به علت Air trapping غیرطبیعی‌اند و در بازدم کم‌دانسیته باقی می‌مانند.') },
           { title: L('Vaskulär', 'Vascular', 'عروقی'), text: L('Die dunkleren Areale sind oligämisch; kleine Gefäße und Perfusionsdefekte unterstützen die Diagnose.', 'The darker regions are oligaemic; small vessels and perfusion defects support the diagnosis.', 'نواحی تیره‌تر اولیگمیک‌اند؛ عروق کوچک و نقص پرفیوژن تشخیص را حمایت می‌کنند.') },
         ],
-        images: [img('/hrct/architekturmuster/image26.jpeg', 'Mosaikmuster · rID 14799', 'Mosaic attenuation · rID 14799', 'الگوی موزائیک · rID 14799', 14799)],
+        images: [{ ...img('/hrct/architekturmuster/image26.jpeg', 'Vergleiche die Dichte der Areale und das Kaliber der Gefäße.', 'Compare regional attenuation and vessel calibre.', 'دانسیتهٔ نواحی و قطر عروق را با هم مقایسه کنید.', 14799, { source: 'Thorax.pdf', page: 22, printedPage: 21, radiopaediaId: 14799, match: 'Local CT asset visually matches the mosaic-attenuation panel on physical p.22; local asset derivation and case frame/contributor are not independently recorded.' }), alt: L('CT mit Mosaikattenuation', 'CT showing mosaic attenuation', 'CT با الگوی موزائیک') }],
       },
       {
         id: 'crazypaving', icon: '🧱', title: L('Crazy Paving', 'Crazy Paving', 'کریزی‌پیونگ'),
@@ -184,7 +184,7 @@ export const HRCT_LESSONS = {
           { title: L('Klassische Assoziation', 'Classic association', 'ارتباط کلاسیک'), text: L('Pulmonale Alveolarproteinose, häufig geografisch begrenzt.', 'Pulmonary alveolar proteinosis, often with geographic margins.', 'پروتئینوز آلوئولی ریه، اغلب با حدود جغرافیایی.') },
           { title: L('Wichtige DD', 'Important differentials', 'افتراق‌های مهم'), text: L('Infektion einschließlich PJP/viral, Ödem, Hämorrhagie, ARDS und Adenokarzinom.', 'Infection including PJP/viral, oedema, haemorrhage, ARDS and adenocarcinoma.', 'عفونت از جمله PJP/ویروسی، ادم، خونریزی، ARDS و آدنوکارسینوم.') },
         ],
-        images: [img('/hrct/architekturmuster/image27.jpeg', 'Crazy Paving · rID 63668', 'Crazy paving · rID 63668', 'کریزی‌پیونگ · rID 63668', 63668)],
+        images: [{ ...img('/hrct/architekturmuster/image27.jpeg', 'Erkenne die Kombination aus Milchglas und glatten Septen.', 'Identify the combination of ground-glass opacity and smooth septal thickening.', 'ترکیب شیشه‌مات و ضخیم‌شدگی صاف سپتا را شناسایی کنید.', 63668, { source: 'Thorax.pdf', page: 23, printedPage: 22, radiopaediaId: 63668, match: 'Local CT asset visually matches the crazy-paving panel on physical p.23; local asset derivation and case frame/contributor are not independently recorded.' }), alt: L('CT mit Crazy-Paving-Muster', 'CT showing a crazy-paving pattern', 'CT با الگوی کریزی‌پیونگ') }],
         cave: L('Crazy Paving ist ein Muster, keine Diagnose. Akuität, Klinik und Verteilung entscheiden über die Differenzialdiagnose.', 'Crazy paving is a pattern, not a diagnosis. Acuity, clinical context and distribution determine the differential.', 'کریزی‌پیونگ یک الگو است نه تشخیص؛ حادبودن، زمینه بالینی و توزیع افتراق را تعیین می‌کنند.'),
       },
     ],
@@ -193,6 +193,16 @@ export const HRCT_LESSONS = {
       L('Beim Mosaikmuster Gefäßkaliber vergleichen und Exspirations-CT nutzen.', 'In mosaic attenuation compare vessel calibre and use expiratory CT.', 'در موزائیک قطر عروق را مقایسه و از CT بازدمی استفاده کنید.'),
       L('Crazy Paving = Milchglas + Septenverdickung; die Ursache bleibt kontextabhängig.', 'Crazy paving = GGO plus septal thickening; the cause remains context-dependent.', 'کریزی‌پیونگ = شیشه‌مات + ضخیم‌شدگی سپتا؛ علت وابسته به زمینه است.'),
     ],
+    selfCheck: {
+      question: L('Welche Befundkombination spricht im Mosaikmuster eher für eine vaskuläre als für eine Small-Airways-Ursache?', 'In mosaic attenuation, which combination favors a vascular over a small-airway cause?', 'در دانسیته موزائیک، کدام مجموعه یافته بیشتر به نفع علت عروقی در برابر علت راه هوایی کوچک است؟'),
+      options: [
+        L('Kleinere Gefäße in den hypodensen Arealen ohne überzeugendes Air Trapping in Exspiration', 'Smaller vessels in low-attenuation regions without convincing expiratory air trapping', 'عروق کوچک‌تر در نواحی کم‌دانسیته، بدون شواهد قانع‌کنندهٔ به‌دام‌افتادگی هوا در بازدم'),
+        L('Persistierende Minderattenuation mit Air Trapping in Exspiration', 'Persistent low attenuation with expiratory air trapping', 'باقی‌ماندن دانسیته پایین همراه به‌دام‌افتادگی هوا در بازدم'),
+        L('Dichtere Areale mit fleckigem Milchglas und ähnlichem Gefäßkaliber', 'Denser regions with patchy ground-glass opacity and similar vessel calibre', 'نواحی متراکم‌تر با شیشه‌مات لکه‌ای و قطر عروق مشابه'),
+      ],
+      answer: 0,
+      explanation: L('Kleineres Gefäßkaliber stützt eine vaskuläre Ursache, während Air Trapping in Exspiration eher für eine Small-Airways-Erkrankung spricht. Hypoventilation kann die Gefäße ebenfalls verkleinert erscheinen lassen; die Kombination unterstützt, beweist aber keine Ursache.', 'Smaller vessel calibre supports a vascular cause, whereas expiratory air trapping favors small-airway disease. Hypoventilation can also make vessels appear smaller; the combination supports but does not prove a cause.', 'قطر کمتر عروق از علت عروقی حمایت می‌کند، درحالی‌که Air Trapping در بازدم بیشتر به نفع بیماری راه هوایی کوچک است. کم‌تهویگی هم می‌تواند عروق را کوچک‌تر نشان دهد؛ این مجموعه فقط حمایت‌کننده است و علت را ثابت نمی‌کند.'),
+    },
   },
   'hrct-dichteminderung': {
     id: 'hrct-dichteminderung', slug: 'dichteminderung',
@@ -292,7 +302,7 @@ const compactFactSets = {
     ['Miliarmuster', 'zahllose random Mikronoduli', 'hämatogene Streuung'],
   ],
   'hrct-architekturmuster': [
-    ['Honeycombing', 'geschichtete subpleurale Hohlräume', 'Endstadiumfibrose'],
+    ['Honeycombing', 'gut abgrenzbare subpleurale Zysten, meist 3–10 mm, gelegentlich bis 25 mm', 'mit Fibrose und Architekturverlust'],
     ['UIP-Verteilung', 'basal und subpleural betont', 'Honeycombing/Traktionsbronchiektasen'],
     ['Mosaik interstitiell', 'dichtere Areale sind krank', 'fleckiges Milchglas'],
     ['Mosaik small airways', 'dunklere Areale sind krank', 'Air Trapping'],
@@ -303,7 +313,7 @@ const compactFactSets = {
     ['Alveolarproteinose', 'geografisches Crazy Paving', 'klassische Assoziation'],
     ['Crazy-Paving-DD', 'Infektion, Ödem, Blutung, ARDS, Tumor', 'klinischer Kontext'],
     ['Traktionsbronchiektase', 'Bronchusdilatation durch Zug', 'Fibrose'],
-    ['Honeycombing vs Zysten', 'subpleurale Schichtung plus Fibrosezeichen', 'Honeycombing'],
+    ['Honeycombing vs Zysten', 'subpleurale Zysten plus Fibrosezeichen und Architekturverlust', 'Honeycombing'],
   ],
   'hrct-dichteminderung': [
     ['Bulla', '≥1 cm und Wand ≤1 mm', 'Emphysem'],
@@ -332,10 +342,10 @@ const factTranslations = {
   },
   'hrct-architekturmuster': {
     en: [
-      ['Honeycombing', 'stacked subpleural air spaces', 'end-stage fibrosis'], ['UIP distribution', 'basal and subpleural predominance', 'honeycombing/traction bronchiectasis'], ['Interstitial mosaic', 'denser regions are abnormal', 'patchy GGO'], ['Small-airway mosaic', 'darker regions are abnormal', 'air trapping'], ['Vascular mosaic', 'darker regions with small vessels', 'oligaemia'], ['Expiratory CT', 'persistent low attenuation', 'air trapping'], ['Vessel calibre', 'smaller in darker regions', 'vascular or hypoventilated lung'], ['Crazy paving', 'GGO plus smooth septal thickening', 'pattern, not a diagnosis'], ['Alveolar proteinosis', 'geographic crazy paving', 'classic association'], ['Crazy-paving differential', 'infection, oedema, haemorrhage, ARDS, tumour', 'clinical context'], ['Traction bronchiectasis', 'bronchial dilatation caused by traction', 'fibrosis'], ['Honeycombing vs cysts', 'subpleural stacking plus fibrotic signs', 'honeycombing'],
+      ['Honeycombing', 'well-defined subpleural cystic spaces, usually 3–10 mm and occasionally up to 25 mm', 'fibrosis and architectural distortion'], ['UIP distribution', 'basal and subpleural predominance', 'honeycombing/traction bronchiectasis'], ['Interstitial mosaic', 'denser regions are abnormal', 'patchy GGO'], ['Small-airway mosaic', 'darker regions are abnormal', 'air trapping'], ['Vascular mosaic', 'darker regions with small vessels', 'oligaemia'], ['Expiratory CT', 'persistent low attenuation', 'air trapping'], ['Vessel calibre', 'smaller in darker regions', 'vascular or hypoventilated lung'], ['Crazy paving', 'GGO plus smooth septal thickening', 'pattern, not a diagnosis'], ['Alveolar proteinosis', 'geographic crazy paving', 'classic association'], ['Crazy-paving differential', 'infection, oedema, haemorrhage, ARDS, tumour', 'clinical context'], ['Traction bronchiectasis', 'bronchial dilatation caused by traction', 'fibrosis'], ['Honeycombing vs cysts', 'subpleural cysts plus fibrosis and architectural distortion', 'honeycombing'],
     ],
     fa: [
-      ['هانی‌کومبینگ', 'فضاهای هوایی لایه‌ای ساب‌پلورال', 'فیبروز انتهایی'], ['توزیع UIP', 'غلبه بازال و ساب‌پلورال', 'هانی‌کومبینگ/برونشکتازی کششی'], ['موزائیک بینابینی', 'نواحی متراکم‌تر بیمارند', 'شیشه‌مات لکه‌ای'], ['موزائیک راه هوایی کوچک', 'نواحی تیره‌تر بیمارند', 'به‌دام‌افتادگی هوا'], ['موزائیک عروقی', 'نواحی تیره‌تر با عروق کوچک', 'اولیگمی'], ['CT بازدمی', 'باقی‌ماندن دانسیته پایین', 'به‌دام‌افتادگی هوا'], ['قطر عروق', 'کوچک‌تر در نواحی تیره', 'ریه عروقی یا کم‌تهویه'], ['کریزی‌پیونگ', 'شیشه‌مات همراه ضخیم‌شدگی صاف سپتا', 'الگو نه تشخیص'], ['پروتئینوز آلوئولی', 'کریزی‌پیونگ جغرافیایی', 'ارتباط کلاسیک'], ['افتراق کریزی‌پیونگ', 'عفونت، ادم، خونریزی، ARDS، تومور', 'زمینه بالینی'], ['برونشکتازی کششی', 'اتساع برونش بر اثر کشش', 'فیبروز'], ['هانی‌کومبینگ در برابر کیست', 'لایه‌بندی ساب‌پلورال همراه علائم فیبروز', 'هانی‌کومبینگ'],
+      ['هانی‌کومبینگ', 'فضاهای کیستیک مشخص ساب‌پلورال، معمولاً ۳–۱۰ و گاهی تا ۲۵ میلی‌متر', 'فیبروز و تخریب معماری'], ['توزیع UIP', 'غلبه بازال و ساب‌پلورال', 'هانی‌کومبینگ/برونشکتازی کششی'], ['موزائیک بینابینی', 'نواحی متراکم‌تر بیمارند', 'شیشه‌مات لکه‌ای'], ['موزائیک راه هوایی کوچک', 'نواحی تیره‌تر بیمارند', 'به‌دام‌افتادگی هوا'], ['موزائیک عروقی', 'نواحی تیره‌تر با عروق کوچک', 'اولیگمی'], ['CT بازدمی', 'باقی‌ماندن دانسیته پایین', 'به‌دام‌افتادگی هوا'], ['قطر عروق', 'کوچک‌تر در نواحی تیره', 'ریه عروقی یا کم‌تهویه'], ['کریزی‌پیونگ', 'شیشه‌مات همراه ضخیم‌شدگی صاف سپتا', 'الگو نه تشخیص'], ['پروتئینوز آلوئولی', 'کریزی‌پیونگ جغرافیایی', 'ارتباط کلاسیک'], ['افتراق کریزی‌پیونگ', 'عفونت، ادم، خونریزی، ARDS، تومور', 'زمینه بالینی'], ['برونشکتازی کششی', 'اتساع برونش بر اثر کشش', 'فیبروز'], ['هانی‌کومبینگ در برابر کیست', 'کیست‌های ساب‌پلورال همراه فیبروز و تخریب معماری', 'هانی‌کومبینگ'],
     ],
   },
   'hrct-dichteminderung': {
@@ -426,12 +436,17 @@ for (const [topicId, facts] of Object.entries(quizFacts)) {
     sourceFacts.forEach((fact, index) => {
       const en = factTranslations[topicId].en[index]
       const fa = factTranslations[topicId].fa[index]
+      const architectureCard = topicId === 'hrct-architekturmuster'
       HRCT_FLASHCARDS.push({
         id: `${topicId}-fc-${String(index + 1).padStart(2, '0')}`, topicId,
         category: L('Mustererkennung', 'Pattern recognition', 'تشخیص الگو'),
-        front: L(`Welche zentrale HRCT-Assoziation gehört zu ${fact[0]}?`, genericCardTranslations.en.q(en[0]), genericCardTranslations.fa.q(fa[0])),
+        front: architectureCard
+          ? L(`Welches Merkmal beschreibt ${fact[0]}?`, `Which feature describes ${en[0]}?`, `کدام ویژگی ${fa[0]} را توصیف می‌کند؟`)
+          : L(`Welche zentrale HRCT-Assoziation gehört zu ${fact[0]}?`, genericCardTranslations.en.q(en[0]), genericCardTranslations.fa.q(fa[0])),
         answer: L(fact[1], genericCardTranslations.en.a(en[1]), genericCardTranslations.fa.a(fa[1])),
-        explanation: L(`${fact[0]} erkennt man an ${fact[1]}. In passender Verteilung und Klinik weist dies besonders auf ${fact[2]} hin.`, genericCardTranslations.en.e(en[0], en[1], en[2]), genericCardTranslations.fa.e(fa[0], fa[1], fa[2])),
+        explanation: architectureCard
+          ? L(`${fact[0]} wird durch ${fact[1]} beschrieben; die Ursache ist anhand von Verteilung und klinischem Kontext einzuordnen.`, `${en[0]} is described by ${en[1]}; interpret the cause in the context of distribution and clinical findings.`, `${fa[0]} با ${fa[1]} توصیف می‌شود؛ علت را با توجه به توزیع و زمینه بالینی تفسیر کنید.`)
+          : L(`${fact[0]} erkennt man an ${fact[1]}. In passender Verteilung und Klinik weist dies besonders auf ${fact[2]} hin.`, genericCardTranslations.en.e(en[0], en[1], en[2]), genericCardTranslations.fa.e(fa[0], fa[1], fa[2])),
       })
     })
   } else {

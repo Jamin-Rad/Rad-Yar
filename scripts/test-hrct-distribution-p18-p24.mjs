@@ -38,8 +38,8 @@ assert.deepEqual(architecture.sourceReferences[0].pages, [22, 23])
 assert.deepEqual(architecture.sourceReferences[0].printedPages, [21, 22])
 
 const lowDensity = HRCT_LESSONS['hrct-dichteminderung']
-assert.deepEqual(lowDensity.sourceReferences[0].pages, [24])
-assert.deepEqual(lowDensity.sourceReferences[0].printedPages, [23])
+assert.deepEqual(lowDensity.sourceReferences[0].pages, [24, 25, 26])
+assert.deepEqual(lowDensity.sourceReferences[0].printedPages, [23, 24, 25])
 for (const [filename, id] of [['image28.jpeg', 7959], ['image29.jpeg', 10493]]) {
   const image = lowDensity.sections.flatMap((section) => section.images ?? []).find((item) => item.src.endsWith(filename))
   assert.ok(image, `Missing ${filename}`)
