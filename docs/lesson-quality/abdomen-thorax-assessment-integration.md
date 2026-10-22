@@ -24,6 +24,7 @@ The following lesson drafts are represented in `QUESTION_BANK` in DE, EN and FA.
 | `abdomen-appendizitis` | `appendizitis` | Abdomen pp. 79–80; WSES 2025; ACR RLQ 2022 |
 | `abdomen-lower-gi-bleeding` | `untere-gi-blutung` | Abdomen pp. 86–87; ESGE 2021; ACG 2023; ACR |
 | `abdomen-kolorektales-karzinom` | `kolorektales-karzinom` | Abdomen pp. 88–89; ACR 2025; SAR 2023 |
+| `abdomen-mesenteric-ischaemia-cta-protocol` | `mesenteriale-ischaemie` | ESVS 2025 Clinical Practice Guidelines, Recommendation 33; DOI `10.1016/j.ejvs.2025.06.010` |
 
 ## Left disconnected
 
@@ -41,3 +42,4 @@ The following lesson drafts are represented in `QUESTION_BANK` in DE, EN and FA.
 - This is a structural and retrieval check. It does not verify semantic translation parity, independently validate clinical claims against the cited sources, complete browser/runtime testing, establish Dr. Zia's scientific approval, or establish full Abdomen/Thorax PDF coverage. Those remain open in the batch ledger.
 - Focused volvulus verification passes: one question retrieves in each language under the exact `volvulus` tag, with three cards under the same topic. The existing closed-loop/gallstone ileus items remain under `ileus-duenndarm`.
 - Focused hepatic AML verification (`node --import tsx scripts/test-hepatic-angiomyolipoma-integration.mjs`) passed on 2026-10-22: four exact-topic four-option MCQs and four cards retrieve in each language; the shell self-check and hepatic curriculum ID stay separate from renal AML. This is structural evidence, not a scientific approval.
+- Focused mesenteric-ischaemia delta (`node --import tsx scripts/test-mesenteric-ischaemia-assessment.mjs`) verifies one exact-topic MCQ and one flashcard in DE/EN/FA, direct return to `#cta-protocol`, and curriculum links. It assesses the separately sourced CTA protocol, not the existing inline NOMI check. Independent delta review passed SRC/EDU/LNG/ASM/REV; VIS is N/A because no visual changed. Browser UX remains open. The broader abdomen/thorax retrieval audit still fails at the pre-existing `leberadenom` overlap listed above.

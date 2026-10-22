@@ -41,6 +41,7 @@ const registrations = [
   { key: 'abdomen-lower-gi-bleeding', fach: 'abdomen', tags: ['untere-gi-blutung'], extra: { de: 'Ein hyperdichter Lumeninhalt in der nativen Phase beweist bereits eine aktive Extravasation', en: 'Hyperdense luminal material on the unenhanced phase alone proves active extravasation', fa: 'مادهٔ پرچگال داخل لومن در فاز بدون تزریق به‌تنهایی نشت فعال را ثابت می‌کند' } },
   { key: 'abdomen-kolorektales-karzinom', fach: 'abdomen', tags: ['kolorektales-karzinom'], extra: { de: 'Eine Abdomen-CT allein für das lokoregionäre Rektumstaging', en: 'Abdominal CT alone for locoregional rectal staging', fa: 'فقط CT شکم برای مرحله‌بندی موضعی رکتوم' } },
   { key: 'abdomen-ileus-ischaemia', fach: 'abdomen', tags: ['ileus-duenndarm'], extra: { de: 'Wandverdickung allein beweist eine transmurale Nekrose', en: 'Wall thickening alone proves transmural necrosis', fa: 'ضخیم‌شدن دیواره به‌تنهایی نکروز تمام‌ضخامت را ثابت می‌کند' } },
+  { key: 'abdomen-mesenteric-ischaemia-cta-protocol', fach: 'abdomen', tags: ['mesenteriale-ischaemie'], extra: { de: 'Nur eine native CT ohne Kontrastmittel, um die Nieren zu schützen', en: 'Unenhanced CT only to protect the kidneys', fa: 'فقط CT بدون تزریق برای محافظت از کلیه‌ها' } },
 ]
 
 const makeQuestion = ({ key, fach, tags, extra, optionCount }) => {
@@ -70,8 +71,8 @@ export const ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS = [
   { fachId: 'abdomen', kapitelId: 'abdomen-pankreas', title: { de: 'Pankreas', en: 'Pancreas', fa: 'پانکراس' }, topics: [
     { id: 'pdac', title: { de: 'Duktales Adenokarzinom (PDAC)', en: 'Ductal adenocarcinoma (PDAC)', fa: 'آدنوکارسینوم داکتال پانکراس (PDAC)' } },
   ] },
-  { fachId: 'abdomen', kapitelId: 'abdomen-gi-trakt', title: { de: 'Ileus & Volvulus', en: 'Ileus & Volvulus', fa: 'ایلئوس و ولوولوس' }, topics: [
-    { id: 'ileus-duenndarm', title: { de: 'Dünndarmileus', en: 'Small-bowel obstruction', fa: 'انسداد رودهٔ باریک' } }, { id: 'volvulus', title: { de: 'Volvulus', en: 'Volvulus', fa: 'ولوولوس' } },
+  { fachId: 'abdomen', kapitelId: 'abdomen-gi-trakt', title: { de: 'Dünndarm & Mesenterium', en: 'Small bowel & mesentery', fa: 'رودهٔ باریک و مزانتر' }, topics: [
+    { id: 'ileus-duenndarm', title: { de: 'Dünndarmileus', en: 'Small-bowel obstruction', fa: 'انسداد رودهٔ باریک' } }, { id: 'volvulus', title: { de: 'Volvulus', en: 'Volvulus', fa: 'ولوولوس' } }, { id: 'mesenteriale-ischaemie', title: { de: 'Mesenteriale Ischämie', en: 'Mesenteric ischaemia', fa: 'ایسکمی مزانتریک' } },
   ] },
   { fachId: 'abdomen', kapitelId: 'abdomen-leber', title: { de: 'Leberläsionen', en: 'Liver lesions', fa: 'ضایعات کبدی' }, topics: [
     { id: 'leberadenom', title: { de: 'Leberadenom', en: 'Hepatic adenoma', fa: 'آدنوم کبدی' } }, { id: 'lebermetastasen', title: { de: 'Lebermetastasen', en: 'Liver metastases', fa: 'متاستازهای کبدی' } }, { id: 'leberzyste', title: { de: 'Leberzyste', en: 'Hepatic cyst', fa: 'کیست کبدی' } }, { id: 'hepatische-steatose', title: { de: 'Hepatische Steatose', en: 'Hepatic steatosis', fa: 'استئاتوز کبدی' } },

@@ -90,11 +90,13 @@ function SearchFlow({ c }) {
 export default function MesentericIschaemiaPage() {
   const { lang } = useLanguage()
   const c = C[lang] || C.de
+  const langHref = path => lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
+  const lessonReturn = `${langHref('/abdomen/gi/mesenteriale-ischaemie')}#cta-protocol`
   const check = { question: c.checkQ, options: c.options, answer: 0, explanation: c.explanation, diagramCaption: { de: 'Schema zur Orientierung; keine Patientendarstellung.', en: 'Orientation schematic; not patient data.', fa: 'شماتیک راهنما؛ تصویر بیمار نیست.' } }
-  return <LessonReferenceShell lessonId="mesenteriale-ischaemie" lang={lang} title={c.title} diagram="bowel" goals={c.goals} check={check} summary={c.summary} copy={{ contentTitle: { de: c.contentTitle, en: c.contentTitle, fa: c.contentTitle } }}>
+  return <LessonReferenceShell lessonId="mesenteriale-ischaemie" lang={lang} title={c.title} diagram="bowel" goals={c.goals} check={check} summary={c.summary} copy={{ contentTitle: { de: c.contentTitle, en: c.contentTitle, fa: c.contentTitle } }} actions={{ mcq: { label: lang === 'fa' ? 'تمرین پرسش CTA' : lang === 'en' ? 'Practise the CTA protocol' : 'CTA-Protokoll üben', href: langHref(`/ueben/quiz?fach=abdomen&n=1&themen=mesenteriale-ischaemie&from=${encodeURIComponent(lessonReturn)}`) }, flashcards: { label: lang === 'fa' ? 'فلش‌کارت پروتکل CTA' : lang === 'en' ? 'CTA protocol flashcard' : 'CTA-Protokoll-Lernkarte', href: langHref(`/flashcards/mesenteriale-ischaemie?from=${encodeURIComponent(lessonReturn)}`) } }}>
     <main className={styles.content}>
       <p className={styles.lead}>{c.intro}</p>
-      <section className={styles.panel}><h2>{c.protocolTitle}</h2><p>{c.protocol}</p><SearchFlow c={c}/></section>
+      <section id="cta-protocol" className={styles.panel}><h2>{c.protocolTitle}</h2><p>{c.protocol}</p><SearchFlow c={c}/></section>
       <div className={styles.patterns}>
         <section><h2>{c.arterial}</h2><p>{c.arterialText}</p></section>
         <section><h2>{c.venous}</h2><p>{c.venousText}</p></section>
