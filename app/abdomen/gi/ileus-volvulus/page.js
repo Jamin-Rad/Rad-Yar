@@ -8,6 +8,7 @@ import LessonReferenceShell from '@/components/LessonReferenceShell'
 import SmallBowelFecesCard from '@/components/SmallBowelFecesCard'
 import IleusIschaemiaWarningCard from '@/components/IleusIschaemiaWarningCard'
 import { VOLVULUS_COPY as V, VOLVULUS_SHELL } from '@/data/volvulusLearning'
+import { FORAMEN_WINSLOW_ILEUS as W } from '@/data/foramenWinslowIleus'
 
 const L=(de,en,fa)=>({de,en,fa})
 const shell={goals:[L('Dilatierte und kollabierte Darmschlingen vergleichen.','Compare dilated and collapsed bowel.','روده متسع و فروریخته را مقایسه کنید.'),L('Übergang, Closed loop und Volvulus lokalisieren.','Localise the transition, closed loop and volvulus.','نقطه گذار، لوپ بسته و ولولوس را مکان‌یابی کنید.')],summary:[L('Erst Muster und Kalibersprung, dann Ursache suchen.','Identify the pattern and calibre change before the cause.','ابتدا الگو و تغییر قطر را پیدا کنید، سپس علت را.'),L('Bei zwei Übergängen an eine geschlossene Schlinge denken.','Two transition points suggest a closed loop.','دو نقطه گذار، لوپ بسته را مطرح می‌کند.'),L('Morphologie allein beweist keine Ischämie.','Morphology alone does not prove ischaemia.','مورفولوژی به‌تنهایی ایسکمی را ثابت نمی‌کند.')],check:{diagramCaption:L('Skizze: Übergangspunkt und isolierte Darmschlinge.','Diagram: transition point and isolated bowel loop.','شمای آموزشی: نقطه گذار و لوپ جداشده.'),question:L('Welche Kombination spricht am stärksten für eine Closed-loop-Obstruktion?','Which combination most strongly suggests a closed-loop obstruction?','کدام ترکیب بیش از همه به نفع انسداد لوپ بسته است؟'),options:[L('Ein Übergang und normale Gefäße.','One transition and normal vessels.','یک نقطه گذار و عروق طبیعی.'),L('Zwei nahe Übergänge mit isoliert dilatierter Schlinge.','Two nearby transitions with an isolated dilated loop.','دو نقطه گذار نزدیک همراه لوپ متسع ایزوله.'),L('Nur freie Flüssigkeit.','Free fluid alone.','فقط مایع آزاد.')],answer:1,explanation:L('Zwei Übergänge begrenzen ein isoliertes Darmsegment; zusätzliche Gefäß-/Wandzeichen bestimmen die Gefährdung.','Two transitions isolate a bowel segment; additional vascular and wall findings assess danger.','دو نقطه گذار یک قطعه روده را جدا می‌کنند؛ علائم دیواره و عروق خطر را مشخص می‌کنند.')}}
@@ -32,6 +33,24 @@ export default function IleusVolvulusPage() {
       <section id="obstruction" className={styles.section}>
         <h2>{c.sections[0][1]}</h2>
         <p className={styles.lead}>{c.intro}</p>
+        <article className={styles.infoCard}>
+          <h3>{W[lang].title}</h3>
+          <p>{W[lang].definition}</p>
+          <h4>{lang === 'de' ? 'Paralytisch: fehlende Peristaltik' : lang === 'fa' ? 'فلجی: نبود پریستالسی' : 'Paralytic: absent peristalsis'}</h4>
+          <p>{W[lang].paralytic}</p>
+          <h4>{lang === 'de' ? 'Mechanisch: physisches Hindernis' : lang === 'fa' ? 'مکانیکی: مانع فیزیکی' : 'Mechanical: physical obstruction'}</h4>
+          <p>{W[lang].mechanical}</p>
+          <h4>{W[lang].herniaTitle}</h4>
+          <p>{W[lang].hernia}</p>
+          <h4>{W[lang].locationTitle}</h4>
+          <p>{W[lang].location}</p>
+          <figure style={figureStyle}>
+            <Image src="/educational/abdomen-ileus/foramen-winslow-p69-ct-pair.png" alt={W[lang].alt} width={720} height={350} style={imageStyle} />
+            <figcaption style={captionStyle}>{W[lang].caption}</figcaption>
+          </figure>
+          <p className={styles.callout}><strong>⚠</strong> {W[lang].cave}</p>
+          <small>{lang === 'de' ? 'Quelle: Abdomen.pdf, physische S. 69 (Druckseite 68).' : lang === 'fa' ? 'منبع: Abdomen.pdf، صفحهٔ فیزیکی ۶۹ (شمارهٔ چاپی ۶۸).' : 'Source: Abdomen.pdf, physical p. 69 (printed p. 68).'}</small>
+        </article>
         <div className={styles.tableWrap}><table className={styles.table}><tbody>{c.rows.slice(0, 2).map(([label, text]) => <tr key={label}><th>{label}</th><td>{text}</td></tr>)}</tbody></table></div>
         <article className={styles.infoCard}>
           <h3>{a.title}</h3><p>{a.mechanism}</p><h4>{a.notchTitle}</h4><p>{a.notch}</p>

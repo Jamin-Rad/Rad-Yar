@@ -1,0 +1,43 @@
+const L = (de, en, fa) => ({ de, en, fa })
+
+export const FORAMEN_WINSLOW_ILEUS = {
+  de: {
+    title: 'Ileus: paralytisch oder mechanisch?',
+    definition: 'Ein Ileus unterbricht die Darmpassage.',
+    paralytic: 'Beim paralytischen Ileus fehlt die Peristaltik. Die PDF nennt als Beispiele den postoperativen Zustand sowie entzündliche Ursachen wie Pankreatitis oder Appendizitis und vaskuläre Ursachen.',
+    mechanical: 'Beim mechanischen Ileus liegt ein physisches Hindernis vor; die PDF nennt Hernien und Tumoren als Beispiele.',
+    herniaTitle: 'Innere Hernie durch das Foramen omentale (Winslow)',
+    hernia: 'Bei der Foramen-Winslow-Hernie tritt eine Darmschlinge durch das Foramen omentale in die Bursa omentalis, den Raum hinter dem Magen. Die PDF-Abbildung bezeichnet den dargestellten Inhalt als fehlgelagertes Zökum.',
+    locationTitle: 'Wo liegt die Darmschlinge im CT?',
+    location: 'Die PDF beschreibt luft- oder flüssigkeitsgefüllte Darmschlingen im Epigastrium, typischerweise hinter dem Magen und vor der Vena cava. Für die abgebildete Foramen-Winslow-Hernie ist die Lage in der Bursa omentalis der entscheidende räumliche Hinweis.',
+    alt: 'Paar aus axialer und koronarer CT-Aufnahme aus Abdomen.pdf; die Folie bezeichnet den Inhalt der Bursa omentalis als fehlgelagertes Zökum bei Foramen-Winslow-Hernie.',
+    caption: 'Abdomen.pdf, physische S. 69 (Druckseite 68), CT-Paar, auf der Folie mit rID 44820 gekennzeichnet. Die Folienbeschriftung ordnet das dargestellte, fehlgelagerte Zökum einer Verlagerung durch das Foramen Winslow in die Bursa omentalis zu.',
+    cave: 'Die Lageangabe ist ein spezifischer Hinweis aus diesem PDF-Beispiel. Sie ist keine allgemeine Regel zur Lokalisation jeder Dünndarmobstruktion.',
+  },
+  en: {
+    title: 'Ileus: paralytic or mechanical?',
+    definition: 'An ileus interrupts the passage of bowel contents.',
+    paralytic: 'In paralytic ileus, peristalsis is absent. The PDF gives postoperative state, inflammatory causes such as pancreatitis or appendicitis, and vascular causes as examples.',
+    mechanical: 'Mechanical ileus has a physical obstruction; the PDF lists hernias and tumours as examples.',
+    herniaTitle: 'Internal hernia through the epiploic foramen (of Winslow)',
+    hernia: 'In a foramen of Winslow hernia, a bowel loop passes through the epiploic foramen into the lesser sac, the space behind the stomach. The PDF labels the content shown in its figure as a displaced caecum.',
+    locationTitle: 'Where is the bowel loop on CT?',
+    location: 'The PDF describes gas- or fluid-filled bowel loops in the epigastrium, typically behind the stomach and anterior to the vena cava. For the illustrated foramen of Winslow hernia, the lesser-sac location is the key spatial clue.',
+    alt: 'Paired axial and coronal CT views from Abdomen.pdf; the slide labels the lesser-sac content as a displaced caecum in a foramen of Winslow hernia.',
+    caption: 'Abdomen.pdf, physical p. 69 (printed p. 68), CT pair, identified on the slide as rID 44820. The slide caption attributes the displaced caecum to passage through the foramen of Winslow into the lesser sac.',
+    cave: 'This location is a specific clue from the PDF example. It is not a general localisation rule for every small-bowel obstruction.',
+  },
+  fa: {
+    title: 'ایلئوس: فلجی یا مکانیکی؟',
+    definition: 'ایلئوس عبور محتویات روده را مختل می‌کند.',
+    paralytic: 'در ایلئوس فلجی، پریستالسی وجود ندارد. PDF وضعیت پس از جراحی، علل التهابی مانند پانکراتیت یا آپاندیسیت و علل عروقی را به‌عنوان نمونه ذکر می‌کند.',
+    mechanical: 'در ایلئوس مکانیکی یک مانع فیزیکی وجود دارد؛ PDF فتق و تومور را به‌عنوان نمونه نام می‌برد.',
+    herniaTitle: 'فتق داخلی از سوراخ اپی‌پلوئیک (وینسلو)',
+    hernia: 'در فتق فورامن وینسلو، یک لوپ روده از سوراخ اپی‌پلوئیک وارد بورس امنتال، یعنی فضای پشت معده، می‌شود. PDF محتوای نشان‌داده‌شده در تصویر را سکوم جابه‌جا‌شده توصیف می‌کند.',
+    locationTitle: 'لوپ روده در CT کجا قرار دارد؟',
+    location: 'PDF لوپ‌های روده‌ای پُر از گاز یا مایع را در اپی‌گاستر و معمولاً پشت معده و جلوی ورید اجوف توصیف می‌کند. در فتق فورامن وینسلوی نشان‌داده‌شده، قرارگیری در بورس امنتال سرنخ مکانی اصلی است.',
+    alt: 'دو نمای محوری و کرونال CT از Abdomen.pdf؛ اسلاید محتویات بورس امنتال را سکوم جابه‌جا‌شده در فتق فورامن وینسلو معرفی می‌کند.',
+    caption: 'Abdomen.pdf، صفحهٔ فیزیکی ۶۹ (شمارهٔ چاپی ۶۸)، جفت تصویر CT که در اسلاید با rID 44820 مشخص شده است. توضیح اسلاید، سکوم جابه‌جا‌شده را ناشی از عبور از فورامن وینسلو به بورس امنتال می‌داند.',
+    cave: 'این محل‌یابی، سرنخی اختصاصی از نمونهٔ PDF است و قاعده‌ای عمومی برای محل هر انسداد رودهٔ باریک نیست.',
+  },
+}

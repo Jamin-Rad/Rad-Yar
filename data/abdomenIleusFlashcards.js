@@ -37,6 +37,14 @@ const cards = [
     explanation: L('Das sind Warnzeichen, keine Einzelbeweise. Wandverdickung ist unspezifisch; kein einzelnes CT-Zeichen schließt eine Ischämie zuverlässig aus. Befunde im Gesamtmuster beurteilen.', 'These are warning signs, not standalone proof. Wall thickening is nonspecific; no single CT sign reliably excludes ischaemia. Interpret findings as a whole pattern.', 'این‌ها نشانه‌های هشدارند، نه اثبات منفرد. ضخیم‌شدن دیواره غیراختصاصی است؛ هیچ نشانهٔ منفرد CT ایسکمی را با اطمینان رد نمی‌کند. یافته‌ها را در الگوی کلی تفسیر کنید.'),
     diagram: L('Wand · Kontrastierung · Mesenterium · Schlingenkonfiguration gemeinsam beurteilen', 'Assess wall · enhancement · mesentery · loop configuration together', 'دیواره · جذب مادهٔ حاجب · مزانتر · شکل لوپ را با هم ارزیابی کنید'),
   },
+  {
+    id: 'foramen-winslow-location',
+    category: L('Lokalisation im CT', 'CT localisation', 'محل‌یابی در CT'),
+    front: L('Welche Lage beschreibt Abdomen.pdf p. 69 als spezifischen CT-Hinweis bei der gezeigten Foramen-Winslow-Hernie?', 'Which location does Abdomen.pdf p. 69 describe as a specific CT clue in the illustrated foramen of Winslow hernia?', 'صفحهٔ ۶۹ Abdomen.pdf چه محل‌یابی‌ای را به‌عنوان سرنخ اختصاصی CT در فتق فورامن وینسلوی نشان‌داده‌شده بیان می‌کند؟'),
+    answer: L('Darmschlingen in der Bursa omentalis, also hinter dem Magen; die PDF-Abbildung bezeichnet den Inhalt als fehlgelagertes Zökum.', 'Bowel in the lesser sac, behind the stomach; the PDF figure labels the content as a displaced caecum.', 'روده در بورس امنتال، یعنی پشت معده؛ شکل PDF محتوا را سکوم جابه‌جا‌شده معرفی می‌کند.'),
+    explanation: L('Die Folie nennt zusätzlich Darmschlingen im Epigastrium, typischerweise hinter dem Magen und vor der Vena cava. Das ist ein lagebezogener Hinweis aus diesem Beispiel, keine allgemeine Regel für jede Obstruktion.', 'The slide also describes bowel in the epigastrium, typically behind the stomach and anterior to the vena cava. This is a location clue from this example, not a general rule for every obstruction.', 'اسلاید همچنین لوپ‌های روده را در اپی‌گاستر و معمولاً پشت معده و جلوی ورید اجوف توصیف می‌کند. این سرنخی مکانی از همین نمونه است، نه قاعده‌ای عمومی برای هر انسداد.'),
+    diagram: L('Bursa omentalis · hinter dem Magen', 'Lesser sac · behind the stomach', 'بورس امنتال · پشت معده'),
+  },
 ]
 
 export const ILEUS_FLASHCARDS = cards.map((card, index) => ({

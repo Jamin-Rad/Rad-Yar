@@ -1,5 +1,5 @@
 {
-  "assetSet": "adhesive-ileus-abdomen-p70",
+  "assetSet": "ileus-source-pdf-images",
   "authorization": "User authorized use of images contained in the six supplied PDFs for this project. This authorization is recorded here; independent rights clearance has not been performed.",
   "assets": [
     {
@@ -27,6 +27,19 @@
       "reuseTerms": "Not identified in the supplied PDF; relies on explicit user authorization for this project.",
       "selectionRationale": "The source arrows point to the pneumatosis finding being discussed; the localized caption attributes the label to the PDF and does not treat it as standalone proof of transmural necrosis.",
       "crop": "Central coronal CT field cropped to 292x320 px; all three source arrows retained. The tighter crop removes faint watermark fragments and orientation markers at the outer edges, along with surrounding page text."
+    },
+    {
+      "path": "/educational/abdomen-ileus/foramen-winslow-p69-ct-pair.png",
+      "sourceFile": "Abdomen.pdf",
+      "pdfPage": 69,
+      "printedPage": 68,
+      "sourcePanel": "Paired axial and coronal CT views of the Foramen-Winslow hernia example; source slide labels the displaced content as caecum and shows rID 44820.",
+      "sourceCaption": "The source slide describes gas- or fluid-filled bowel in the epigastrium, typically behind the stomach and anterior to the vena cava, and identifies this illustrated displaced caecum as herniated through the Foramen of Winslow into the lesser sac.",
+      "visibleIdentifiers": "rID 44820 printed at the lower right of the source image pair; contributor not identified.",
+      "originalContributor": "Not identified in the supplied PDF page crop.",
+      "reuseTerms": "Not identified in the supplied PDF; relies on the user's explicit project authorization for images in the six supplied PDFs.",
+      "selectionRationale": "The paired source CT views illustrate the source-described spatial clue and allow axial/coronal orientation; caption limits interpretation to this labelled case.",
+      "crop": "Both CT panels retained side-by-side from a 140-dpi render of physical PDF p.69; surrounding text and page frame excluded; small watermark fragment remains at the upper-left edge of the crop."
     }
   ]
 }

@@ -10,6 +10,7 @@ The following lesson drafts are represented in `QUESTION_BANK` in DE, EN and FA.
 | Draft key | Exact curriculum tags | PDF/reference recorded in draft |
 |---|---|---|
 | `abdomen-ileus-volvulus` (existing closed-loop question) | `ileus-duenndarm` | Abdomen pp. 69–72 |
+| `abdomen-foramen-winslow` (Foramen-Winslow location) | `ileus-duenndarm` | Abdomen p. 69 (printed p. 68) |
 | `volvulus-de/en/fa-1` (new focused question) | `volvulus` | Abdomen physical pp. 76–78 / printed pp. 75–77 |
 | `abdomen-pancreatic-cysts` | `ipmn` | Abdomen pp. 40–42; Kyoto 2024 |
 | `abdomen-focal-liver` | `leberadenom`, `lebermetastasen` | Abdomen pp. 5, 14–27; ACG 2024 |
@@ -36,8 +37,8 @@ The following lesson drafts are represented in `QUESTION_BANK` in DE, EN and FA.
 
 ## Verification and remaining limits
 
-- `npm run audit:mcq` currently passes: 773 questions and 18 cases per language.
-- `node --import tsx scripts/audit-abdomen-thorax-assessment-retrieval.mjs` currently passes: 40 registered questions and 47 exact curriculum tags retrieve in DE/EN/FA. The audit now checks that every registered question under a tag is retrievable, allowing multiple valid questions for a topic such as focal liver lesions instead of incorrectly requiring exactly one.
+- `npm run audit:mcq` currently passes: 781 questions and 18 cases per language (rechecked 23 October 2026).
+- `node --import tsx scripts/audit-abdomen-thorax-assessment-retrieval.mjs` currently passes: 42 registered questions and 49 exact curriculum tags retrieve in DE/EN/FA (rechecked 23 October 2026). The audit now checks that every registered question under a tag is retrievable, allowing multiple valid questions for a topic such as focal liver lesions instead of incorrectly requiring exactly one.
 - Registered topic groups use existing curriculum chapter IDs; the retrieval audit asserts that each `fachId`/`kapitelId` pair exists in `data/curriculum.js`.
 - `data/abdomenThoraxAssessmentDrafts.js` continues to drive lesson-shell self-checks; the registry adapter adds a fourth distractor for global quiz compatibility. The focused volvulus quiz item is registered separately in `data/questions.js` and uses only the `volvulus` topic tag.
 - Tag correction for this addendum: the existing closed-loop/gallstone ileus items stay under `ileus-duenndarm`; the new sigmoid-volvulus recognition item is tagged only `volvulus`, matching its exact curriculum ID. The linked query `fach=abdomen&n=1&themen=volvulus` retrieves that item.
@@ -47,3 +48,4 @@ The following lesson drafts are represented in `QUESTION_BANK` in DE, EN and FA.
 - Focused mesenteric-ischaemia delta (`node --import tsx scripts/test-mesenteric-ischaemia-assessment.mjs`) verifies one exact-topic MCQ and one flashcard in DE/EN/FA, direct return to `#cta-protocol`, and curriculum links. It assesses the separately sourced CTA protocol, not the existing inline NOMI check. Independent delta review passed SRC/EDU/LNG/ASM/REV; VIS is N/A because no visual changed. Browser UX remains open. The broader abdomen/thorax retrieval audit still fails at the pre-existing `leberadenom` overlap listed above.
 - Tuberculosis MCQ discovery is connected through the exact curriculum `mcqLink`; the existing card, question content and route content are unchanged. `node --import tsx scripts/test-tuberculosis-flashcard-integration.mjs` verifies the exact linked topic and physical/printed source mapping. This is an assessment-discovery delta, not additional lesson coverage or clinical approval.
 - Focused renal-cyst delta (`node --import tsx scripts/test-renal-cyst-assessment.mjs`) verifies one exact-topic Bosniak v2019 category-IV MCQ and one category-II flashcard in DE/EN/FA, lesson actions returning to `#classes`, and corrected `abdomen-renal-masses` tag mapping (`angiomyolipom`). Independent review passed SRC/EDU/LNG/ASM/REV; VIS is N/A, UX is blocked pending browser evidence. No unversioned PDF risk percentages or management guidance were added.
+- Focused ileus p.69 delta (`node --import tsx scripts/test-ileus-fat-notch-p70-render.mjs`) verifies the Foramen-Winslow lesson copy and source CT pair in DE/EN/FA, one four-option exact-topic MCQ per language, and four exact-topic cards; the full MCQ and assessment-retrieval audits also pass. Independent review and browser/RTL review remain pending.
