@@ -54,7 +54,7 @@ const adrenalAssessmentText = ['de', 'en', 'fa'].map(lang => {
   const cards = getCardsByTopic('nebennierenraumforderungen').flatMap(card => [card.front[lang], card.answer[lang], card.explanation[lang]])
   return [...questions.flatMap(question => [question.question, ...question.options.map(option => option.text), question.explanation]), ...cards].join(' ')
 }).join(' ')
-assert.doesNotMatch(adrenalAssessmentText, /(?:<\s*4|4\s*[–-]\s*6|>\s*6)\s*cm|2\s*%|6\s*%|25\s*%/i, 'the legacy p.58 size bands and malignancy percentages must not leak into learner assessments')
+assert.doesNotMatch(adrenalAssessmentText, /(?:<\s*4|4\s*[–-]\s*6|>\s*6)\s*cm|2\s*%|6\s*%|25\s*%|(?:absolute|relatives?|relative)\s+washout[^.]{0,60}(?:60|40)\s*%|100\s*%\s*(?:specificity|Spezifität)|(?:50\s*%\s*(?:sensitivity|Sensitivität))/i, 'legacy size-only risks, p.59 washout cutoffs and source performance statistics must not leak into learner assessments')
 for (const phrase of [
   'unabhängig von der Größe keine weitere Bildgebung',
   'irrespective of size',

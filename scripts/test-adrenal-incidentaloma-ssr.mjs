@@ -35,9 +35,9 @@ const Page = compile('app/abdomen/nebenniere/raumforderungen/page.js', {
 }).default
 
 const expected = {
-  de: ['Die im PDF gezeigte Größen- und Prozentgrafik mit Kontrollintervallen ist keine aktuelle Entscheidungsregel', 'homogene Nebenniereninzidentalome mit ≤10 HU in der Nativ-CT als benigne und benötigen unabhängig von der Größe keine weitere Bildgebung', 'Bei anderen Befunden werden Homogenität, native Dichte, Größe und klinischer Kontext zusammen bewertet'],
-  en: ['The size-based flowchart and follow-up percentages shown in the PDF are not current decision rules', 'homogeneous adrenal incidentalomas with unenhanced CT attenuation ≤10 HU are benign and need no further imaging, irrespective of size', 'Other findings are assessed using homogeneity, unenhanced attenuation, size and clinical context together'],
-  fa: ['فلوچارت مبتنی بر اندازه و درصدهای پیگیری در PDF، قاعده تصمیم‌گیری جاری نیست', 'اینسی‌دنتالوم همگن آدرنال با دانسیته بدون تزریق ≤۱۰ HU خوش‌خیم است و مستقل از اندازه به تصویربرداری بیشتر نیاز ندارد', 'سایر یافته‌ها با ارزیابی هم‌زمان همگنی، دانسیته بدون تزریق، اندازه و زمینه بالینی بررسی می‌شوند'],
+  de: ['Die im PDF gezeigte Größen- und Prozentgrafik mit Kontrollintervallen ist keine aktuelle Entscheidungsregel', 'homogene Nebenniereninzidentalome mit ≤10 HU in der Nativ-CT als benigne und benötigen unabhängig von der Größe keine weitere Bildgebung', 'nativ −3 HU, arteriell +3 HU, portalvenös +38 HU und spät +12 HU', 'definieren keine universelle Washout-Regel'],
+  en: ['The size-based flowchart and follow-up percentages shown in the PDF are not current decision rules', 'homogeneous adrenal incidentalomas with unenhanced CT attenuation ≤10 HU are benign and need no further imaging, irrespective of size', '−3 HU unenhanced, +3 HU arterial, +38 HU portal venous and +12 HU delayed', 'do not define a universal washout rule'],
+  fa: ['فلوچارت مبتنی بر اندازه و درصدهای پیگیری در PDF، قاعده تصمیم‌گیری جاری نیست', 'اینسی‌دنتالوم همگن آدرنال با دانسیته بدون تزریق ≤۱۰ HU خوش‌خیم است و مستقل از اندازه به تصویربرداری بیشتر نیاز ندارد', '۳− HU بدون تزریق، ۳+ HU شریانی، ۳۸+ HU پورت و ۱۲+ HU تأخیری', 'قاعده عمومی Washout را تعریف نمی‌کنند'],
 }
 for (const locale of ['de', 'en', 'fa']) {
   lang = locale
@@ -46,5 +46,6 @@ for (const locale of ['de', 'en', 'fa']) {
   for (const phrase of expected[locale]) assert.ok(html.includes(phrase), `${locale}: rendered copy includes ${phrase}`)
   assert.ok(html.includes('nebennieren-inzidentalom,nebennierenadenom'), `${locale}: exact lesson quiz topics remain linked`)
   assert.ok(html.includes('/flashcards/nebennierenraumforderungen'), `${locale}: lesson flashcards remain linked`)
+  assert.doesNotMatch(html, /(?:absolute|relative|relatives?)\s+washout[^.]{0,80}(?:>\s*)?(?:60|40)\s*%|100\s*%\s*(?:specificity|Spezifität)|50\s*%\s*(?:sensitivity|Sensitivität)/i, `${locale}: legacy washout thresholds and source statistics are not presented as general criteria`)
 }
-console.log('Adrenal incidentaloma SSR PASS: DE/EN/FA, RTL, no size-only flowchart, current ESE/ENSAT any-size homogeneous ≤10 HU framing, existing lesson interactions and links.')
+console.log('Adrenal incidentaloma SSR PASS: DE/EN/FA, RTL, excluded size-only flowchart and legacy washout statistics, current ESE/ENSAT any-size homogeneous ≤10 HU framing, exact four-phase ROI values, existing lesson interactions and links.')
