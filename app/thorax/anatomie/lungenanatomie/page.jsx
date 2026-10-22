@@ -77,7 +77,12 @@ export default function LungAnatomyPage() {
   const { lang } = useLanguage()
   const sections = D.chapters.map(item => ({ ...item, label: t(item.title, lang) }))
   const labels = Object.fromEntries(Object.entries(D.labels).map(([key, value]) => [key, t(value, lang)]))
-  const local = path => lang === 'de' ? path : `${path}?lang=${lang}`
+  const local = href => {
+    const [path, hash] = href.split('#', 2)
+    const localizedPath = lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
+    return hash ? `${localizedPath}#${hash}` : localizedPath
+  }
+  const lessonReturn = local('/thorax/anatomie/lungenanatomie#segments')
   const sources = [
     { tag: t(L('Glossar', 'Glossary', 'واژه‌نامه'), lang), title: 'Bankier AA, MacMahon H, Colby T, et al. Fleischner Society: Glossary of Terms for Thoracic Imaging. Radiology. 2024;310(2):e232558. doi:10.1148/radiol.232558.', href: 'https://doi.org/10.1148/radiol.232558', citation: t(L('Begriffe Lobulus sekundarius, Azinus und pulmonales Interstitium.', 'Definitions of secondary pulmonary lobule, acinus and pulmonary interstitium.', 'تعریف لوبول ثانویه، آسینوس و اینترستیتیوم ریوی.'), lang) },
     { tag: t(L('Übersicht', 'Review', 'مرور'), lang), title: 'Ohno Y, et al. Pulmonary Functional Imaging: Part 1—State-of-the-Art Technical and Physiologic Underpinnings. Radiology. 2021;299(3):508–523. doi:10.1148/radiol.2021203711.', href: 'https://doi.org/10.1148/radiol.2021203711', citation: t(L('Größenordnung und Aufbau des sekundären Lobulus.', 'Scale and structure of the secondary pulmonary lobule.', 'ابعاد و ساختار لوبول ثانویه.'), lang) },
@@ -87,7 +92,10 @@ export default function LungAnatomyPage() {
   ]
   return <StandardLessonShell lessonId="lungenanatomie" lang={lang} title={t(D.title, lang)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: local('/') }, { label: t(L('Thorax', 'Thorax', 'قفسهٔ سینه'), lang), href: local('/lernen/thorax') }, { label: t(L('Anatomie', 'Anatomy', 'آناتومی'), lang) }, { label: t(D.title, lang) }]}
-    sections={sections} labels={labels} renderIcon={id => <Icon id={id} />} actions={{}} syncHashNavigation
+    sections={sections} labels={labels} renderIcon={id => <Icon id={id} />} actions={{
+      mcq: { label: t(L('Segmentanatomie üben', 'Practise segmental anatomy', 'تمرین آناتومی سگمنتال'), lang), href: local(`/ueben/quiz?fach=thorax&n=1&themen=lungenanatomie&from=${encodeURIComponent(lessonReturn)}`) },
+      flashcards: { label: t(L('Karte zu linken Basalsegmenten', 'Left basal segments flashcard', 'فلش‌کارت سگمان‌های بازال چپ'), lang), href: local(`/flashcards/lungenanatomie?from=${encodeURIComponent(lessonReturn)}`) },
+    }} syncHashNavigation
     heroImageAlt={t(D.alt, lang)}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/educational/lungenanatomie/hero.svg', heroImageOpacity: .95, accent: '#54c5c2', accentStrong: '#155d70', accentSoft: '#d9f4f0', secondary: '#e89abb', secondaryStrong: '#8b3458', heroBase: '#101b2d' }} className={styles.page}
     sources={<LessonSources title={labels.sources} items={sources} note={t(L('Abdeckungsquelle: Thorax.pdf, PDF-Seiten 5–9 (gedruckte Seiten 4–8), einschließlich der Segmentkarte auf PDF-Seite 7 (Druckseite 6). Die Segmentübersicht ist ein neu erstelltes Code-Schema; die CT/Röntgen-Ausschnitte zu Fissuren und Azygosvariante stammen aus diesem Nutzer-PDF. Bezeichnungen und CT-Grenzen wurden anhand der aufgeführten Literatur abgeglichen.', 'Coverage source: Thorax.pdf, PDF pages 5–9 (printed pages 4–8), including the segment map on PDF page 7 (printed page 6). The segment overview is a newly authored code schematic; the fissure and azygos CT/radiograph crops come from the supplied PDF. Nomenclature and CT boundary visibility were checked against the cited literature.', 'منبع پوشش: Thorax.pdf، صفحات PDF شمارهٔ ۵ تا ۹ (صفحات چاپی ۴ تا ۸)، شامل نقشهٔ سگمان‌ها در صفحهٔ PDF شمارهٔ ۷ (صفحهٔ چاپی ۶). نمای سگمان‌ها شماتیکی است که از نو با کد ساخته شده؛ برش‌های CT و رادیوگرافی فیشورها و واریانت آزایگوس از همین PDF کاربر هستند. نام‌گذاری و قابل‌مشاهده‌بودن مرزها در CT با منابع ذکرشده تطبیق داده شده‌اند.'), lang)} />}>

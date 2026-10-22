@@ -27,6 +27,7 @@
 | LA-11 | PDF p.7 / print p.6; Siddharthan et al. 2025, Table 1 | Left S7+8 combined as anteromedial basal; separated medial S7/anterior S8 components may be named according to convention | Essential | `segments`, nomenclature caveat and self-check | Included with variation qualified; not presented as a CT-visible boundary. |
 | LA-12 | Siddharthan et al. 2025, section 1 | Boundaries between most adjacent pulmonary segments are not clearly visible on routine clinical CT | Essential safety caveat | `segments` CT orientation warning | Included; primary source directly states this limitation. |
 | LA-13 | PDF p.9 / print p.8, lower page | Pectus excavatum and radiographic effects | Adjacent topic | Not expanded | Explicitly deferred to chest-wall/pectus topic; curriculum mapping remains unresolved and should be handled in the PDF topic inventory, not folded into lung anatomy |
+| LA-14 | PDF p.7 / print p.6; existing segment principles cross-checked against the cited pulmonary vascular anatomy review | Segmental bronchus and accompanying pulmonary artery run mainly intrasegmentally; pulmonary veins often mark intersegmental planes | Assessment delta | `/thorax/anatomie/lungenanatomie#segments`, one exact-topic MCQ | Added as a distinct retrieval question; the existing inline check remains about lingular lobe localisation. The cross-sectional caution is retained; segment boundaries are not implied to be visible lines. |
 
 ## Learning path
 
@@ -73,4 +74,5 @@
 - Local route semantic SSR in DE/EN/FA and required asset checks are covered by `scripts/test-lungenanatomie-render.mjs`, including the segment table, localized caveat/self-check and S7+8/S4/S5 mapping.
 - Independent bounded review previously passed for the lobule/interstitium/fissure/azygos scope. A separate independent review of the new segment chapter also passed source nomenclature, laterality, diagram abstraction, caveat and language checks; it did not constitute browser or clinical signoff.
 - No live-browser evidence has been collected. Browser UX and clinical specialist review remain pending.
+- Assessment delta: one exact-topic MCQ tests bronchus/artery versus intersegmental-vein relationships, while one flashcard tests the left lower-lobe S7+8 naming variant. Both are registered in DE/EN/FA and return to `#segments`; the existing Lingula self-check is not duplicated. Independent delta review and focused registry/URL test passed. Browser rendering and clinical signoff remain open.
 - PDF pages 5–9 were inspected; this is not a complete audit of all Thorax.pdf topics or all lung anatomy pages.

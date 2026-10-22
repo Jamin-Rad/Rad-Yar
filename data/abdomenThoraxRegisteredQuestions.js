@@ -33,6 +33,7 @@ const registrations = [
   { key: 'thorax-lung-abscess-empyema', fach: 'thorax', tags: ['lungenabszess'], extra: { de: 'Ein Luft-Flüssigkeitsspiegel allein beweist die Ursache', en: 'An air-fluid level alone proves the cause', fa: 'سطح هواـمایع به‌تنهایی علت را ثابت می‌کند' } },
   { key: 'thorax-chest-xray', fach: 'thorax', tags: ['roentgen-thorax-systematik'], extra: { de: 'Die Kontrastmittelphase', en: 'The contrast phase', fa: 'فاز مادهٔ حاجب' } },
   { key: 'thorax-heart-size', fach: 'thorax', tags: ['herzgroesse-roentgen'], extra: { de: 'Beide Projektionen zeigen die Herzsilhouette ohne geometrische Vergrößerung gleich groß', en: 'Both projections show the cardiac silhouette at the same size without geometric magnification', fa: 'هر دو پروجکشن سایه قلب را بدون بزرگ‌نمایی هندسی به یک اندازه نشان می‌دهند' } },
+  { key: 'thorax-lung-segmental-anatomy', fach: 'thorax', tags: ['lungenanatomie'], extra: { de: 'Pulmonalvenen und Lymphbahnen verlaufen überwiegend im Segmentzentrum', en: 'Pulmonary veins and lymphatics run mainly through the segment centre', fa: 'وریدهای ریوی و مسیرهای لنفاوی عمدتاً در مرکز سگمان قرار دارند' } },
   { key: 'abdomen-cystic-liver-lesions', fach: 'abdomen', tags: ['leberzyste'], extra: { de: 'Der Zysteninhalt reichert nach Kontrastmittel stärker an als Wand und Septen', en: 'The cyst contents enhance more than the wall and septa after contrast', fa: 'محتوای کیست پس از تزریق بیش از دیواره و سپتا جذب دارد' } },
   { key: 'abdomen-appendizitis', fach: 'abdomen', tags: ['appendizitis'], extra: { de: 'Eine nicht dargestellte Appendix als sicheren Ausschluss werten', en: 'Treat a non-visualised appendix as a definite exclusion', fa: 'دیده‌نشدن آپاندیس را رد قطعی بیماری بدانید' } },
   { key: 'abdomen-pdac-isoattenuating', fach: 'abdomen', tags: ['pdac'], extra: { de: 'Fehlende sichtbare Masse schließt PDAC aus', en: 'Absence of a visible mass excludes PDAC', fa: 'نبود تودهٔ قابل رؤیت PDAC را رد می‌کند' } },
@@ -94,6 +95,9 @@ export const ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS = [
   { fachId: 'thorax', kapitelId: 'thorax-grundlagen', title: { de: 'Thoraxgrundlagen', en: 'Thoracic imaging fundamentals', fa: 'مبانی تصویربرداری قفسهٔ سینه' }, topics: [
     { id: 'roentgen-thorax-systematik', title: { de: 'Systematische Röntgenanalyse', en: 'Systematic chest radiograph review', fa: 'مرور نظام‌مند رادیوگرافی قفسهٔ سینه' } },
     { id: 'herzgroesse-roentgen', title: { de: 'Herzgröße im Röntgen', en: 'Cardiac size on chest radiography', fa: 'اندازه قلب در رادیوگرافی قفسه سینه' } },
+  ] },
+  { fachId: 'thorax', kapitelId: 'thorax-anatomie', title: { de: 'Lungenanatomie', en: 'Lung anatomy', fa: 'آناتومی ریه' }, topics: [
+    { id: 'lungenanatomie', title: { de: 'Lungenanatomie und Segmente', en: 'Lung anatomy and segments', fa: 'آناتومی و سگمان‌های ریه' } },
   ] },
   { fachId: 'thorax', kapitelId: 'thorax-atemwege', title: { de: 'Atemwege', en: 'Airways', fa: 'راه‌های هوایی' }, topics: [
     { id: 'fremdkoerper-atemwege', title: { de: 'Fremdkörperaspiration', en: 'Airway foreign body aspiration', fa: 'آسپیراسیون جسم خارجی' } },
