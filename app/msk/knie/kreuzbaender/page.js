@@ -82,7 +82,7 @@ const COPY = {
         cards: [
           ['Epidemiologie', ['Isolierte HKB-Verletzungen sind selten.', 'Die HKB-Ruptur ist deutlich seltener als die VKB-Ruptur.']],
           ['Mechanismus', ['Typisch ist ein direkter anteriorer Anprall auf die Tibia bei gebeugtem Knie.', 'Klassisches Beispiel: Dashboard Injury; alternativ extreme Hyperflexion.']],
-          ['MRT', ['Rupturiertes HKB erscheint oft verdickt, signalverändert oder diskontinuierlich.', 'Operative Rekonstruktion meist nur bei ausgeprägter Instabilität oder kombinierten Verletzungen.']],
+          ['MRT', ['Rupturiertes HKB erscheint oft verdickt, signalverändert oder diskontinuierlich.', 'Eine Rekonstruktion kann bei ausgeprägter symptomatischer Instabilität trotz nichtoperativer Behandlung oder bei kombinierten Verletzungen erwogen werden; die Entscheidung ist individuell.']],
         ],
       },
       takehome: {
@@ -107,7 +107,7 @@ const COPY = {
       medial: [
         ['/knieligamente/medial-complex-anatomy.png', 'Medialer Komplex mit MCL, POL und Semimembranosus-Anteilen.'],
         ['/knieligamente/mcl-layered-anatomy.png', 'Oberflächliches und tiefes MCL mit Nähe zum Innenmeniskus.'],
-        ['/knieligamente/mcl-partial-followup.png', 'MCL-Partialruptur im Verlauf: Trauma, nach 6 Wochen und nach 12 Wochen. Das periligamentäre Ödem nimmt ab; eine narbige Verdickung bzw. intraligamentäre Signalhebung kann als Heilungszeichen verbleiben.'],
+        ['/knieligamente/mcl-partial-followup.png', 'MCL-Partialruptur im Verlauf: Trauma, nach 6 Wochen und nach 12 Wochen. Das periligamentäre Ödem nimmt ab; eine narbige Verdickung bzw. intraligamentäre Signalhebung kann als Heilungszeichen verbleiben. Quelle: MSK.pdf, PDF-S. 61 (Druck-S. 60). Der eingeblendete PDF-Hinweis lautet: „MCL-Verletzungen häufig, Therapie meist konservativ“ – eine allgemeine Quellenangabe, keine individuelle Therapieempfehlung.'],
         ['/knieligamente/mcl-sprain-followup.png', 'Beispiel einer Grad-I-MCL-Zerrung: im Ausgangsbild periligamentäres Ödem bei erhaltener Bandkontur und ohne intraligamentäre Signalsteigerung; nach 2 Wochen deutlich rückläufig. Quelle: MSK.pdf, PDF-S. 61 (Druck-S. 60).'],
         ['/knieligamente/mcl-pol-rupture.png', 'MCL-Ruptur mit Beteiligung des POL in koronarer und axialer Darstellung. Quelle: MSK.pdf, PDF-S. 62 (Druck-S. 61).'],
       ],
@@ -213,7 +213,7 @@ COPY.en.sections = {
     cards: [
       ['Epidemiology', ['Isolated PCL injuries are rare.', 'PCL tears are much less common than ACL tears.']],
       ['Mechanism', ['A direct anterior blow to the tibia with the knee flexed is typical.', 'Classic example: dashboard injury; another mechanism is extreme hyperflexion.']],
-      ['MRI', ['A torn PCL often appears thickened, signal-altered or discontinuous.', 'Reconstruction is usually reserved for marked instability or combined injuries.']],
+      ['MRI', ['A torn PCL often appears thickened, signal-altered or discontinuous.', 'Reconstruction may be considered for marked symptomatic instability that persists despite non-operative care, or for combined injuries; the decision is individualised.']],
     ],
   },
   takehome: {
@@ -238,7 +238,7 @@ COPY.en.figures = {
   medial: [
     ['/knieligamente/medial-complex-anatomy.png', 'Medial complex with MCL, POL and semimembranosus components.'],
     ['/knieligamente/mcl-layered-anatomy.png', 'Superficial and deep MCL with close relationship to the medial meniscus.'],
-    ['/knieligamente/mcl-partial-followup.png', 'Partial MCL tear over time: trauma, after 6 weeks and after 12 weeks. Periligamentous oedema decreases; scar-like thickening or intraligamentous signal may remain as a healing finding.'],
+    ['/knieligamente/mcl-partial-followup.png', 'Partial MCL tear over time: trauma, after 6 weeks and after 12 weeks. Periligamentous oedema decreases; scar-like thickening or intraligamentous signal may remain as a healing finding. Source: MSK.pdf, physical p. 61 (printed p. 60). The embedded source note says “MCL injuries are common; treatment is usually conservative”; this is a general source statement, not an individual treatment recommendation.'],
     ['/knieligamente/mcl-sprain-followup.png', 'Example of a grade I MCL sprain: initial periligamentous oedema with preserved ligament contour and no intraligamentous signal increase; markedly reduced after 2 weeks. Source: MSK.pdf, PDF p. 61 (printed p. 60).'],
     ['/knieligamente/mcl-pol-rupture.png', 'MCL tear with POL involvement on coronal and axial images. Source: MSK.pdf, PDF p. 62 (printed p. 61).'],
   ],
@@ -305,7 +305,7 @@ COPY.fa.sections = {
     cards: [
       ['اپیدمیولوژی', ['آسیب منفرد PCL نادر است.', 'پارگی PCL بسیار کمتر از پارگی ACL دیده می‌شود.']],
       ['مکانیسم', ['ضربه مستقیم از جلو به تیبیا در زانوی خم‌شده تیپیک است.', 'مثال کلاسیک: dashboard injury؛ مکانیسم دیگر هایپرفلکشن شدید است.']],
-      ['MRI', ['PCL پاره اغلب ضخیم، پرسیگنال یا ناپیوسته دیده می‌شود.', 'بازسازی معمولاً برای ناپایداری شدید یا آسیب‌های ترکیبی نگه داشته می‌شود.']],
+      ['MRI', ['PCL پاره اغلب ضخیم، پرسیگنال یا ناپیوسته دیده می‌شود.', 'در صورت ناپایداری علامت‌دار و شدید که با درمان غیرجراحی برطرف نشده یا در آسیب‌های ترکیبی، بازسازی ممکن است مطرح شود؛ تصمیم‌گیری باید فردمحور باشد.']],
     ],
   },
   takehome: {
@@ -330,7 +330,7 @@ COPY.fa.figures = {
   medial: [
     ['/knieligamente/medial-complex-anatomy.png', 'کمپلکس مدیال شامل MCL، POL و اجزای سمی‌ممبرانوسوس.'],
     ['/knieligamente/mcl-layered-anatomy.png', 'MCL سطحی و عمقی با ارتباط نزدیک به منیسک داخلی.'],
-    ['/knieligamente/mcl-partial-followup.png', 'سیر پارگی نسبی MCL: زمان تروما، پس از ۶ هفته و پس از ۱۲ هفته. ادم اطراف رباط کم می‌شود؛ ضخیم‌شدن اسکاری یا سیگنال داخل رباط می‌تواند به عنوان نشانه ترمیم باقی بماند.'],
+    ['/knieligamente/mcl-partial-followup.png', 'سیر پارگی نسبی MCL: زمان تروما، پس از ۶ هفته و پس از ۱۲ هفته. ادم اطراف رباط کم می‌شود؛ ضخیم‌شدن اسکاری یا سیگنال داخل رباط می‌تواند به‌عنوان یافتهٔ ترمیم باقی بماند. منبع: MSK.pdf، صفحهٔ PDF ۶۱ (چاپی ۶۰). یادداشت داخل تصویر منبع می‌گوید «آسیب‌های MCL شایع‌اند؛ درمان معمولاً محافظه‌کارانه است»؛ این بیان کلی منبع است و توصیهٔ درمانی برای یک بیمار خاص نیست.'],
     ['/knieligamente/mcl-sprain-followup.png', 'نمونهٔ کشیدگی درجهٔ I در MCL: در تصویر اولیه ادم اطراف رباط با کانتور حفظ‌شده و بدون افزایش سیگنال داخل رباط؛ پس از دو هفته به‌وضوح کمتر شده است. منبع: MSK.pdf، صفحهٔ PDF ۶۱ (صفحهٔ چاپی ۶۰).'],
     ['/knieligamente/mcl-pol-rupture.png', 'پارگی MCL با درگیری POL در تصاویر کرونال و اکسیال. منبع: MSK.pdf، صفحهٔ PDF ۶۲ (صفحهٔ چاپی ۶۱).'],
   ],
