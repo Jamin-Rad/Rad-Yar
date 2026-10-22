@@ -49,8 +49,11 @@ for (const lang of ['de', 'en', 'fa']) {
   assert.ok(html.includes(HIRNABZESS_COPY.title[lang]), `${lang} page title`)
   assert.ok(html.includes(HIRNABZESS_COPY.sequence[0].title[lang]), `${lang} first sequence heading`)
   assert.ok(html.includes('Radiopaedia case') || html.includes('Radiopaedia-Fall') || lang === 'fa', `${lang} case reference`)
+  assert.ok(html.includes('/educational/hirnabszess/radiopaedia-dual-rim-luu-hanh.jpeg'), `${lang} embedded source case image`)
+  assert.ok(html.includes(HIRNABZESS_COPY.caseFigureAlt[lang]) && html.includes(HIRNABZESS_COPY.caseFigureCaption[lang]), `${lang} case image alt and caption`)
   assert.ok(html.includes('/educational/hirnabszess/hero.svg'), `${lang} concept image`)
   assert.ok(html.includes('not a diagnostic MRI') || html.includes('kein diagnostisches MRT') || html.includes('تصویر تشخیصی MRI نیست'), `${lang} schematic limitation`)
 }
 assert.ok(fs.existsSync('public/educational/hirnabszess/hero.svg'))
-console.log('Brain abscess route semantic SSR PASS: DE/EN/FA, localized headings, RTL, source-linked case and explicit non-diagnostic schematic boundary.')
+assert.ok(fs.existsSync('public/educational/hirnabszess/radiopaedia-dual-rim-luu-hanh.jpeg'))
+console.log('Brain abscess route semantic SSR PASS: DE/EN/FA, localized headings, RTL, attributed Radiopaedia case image, explicit sequence limitation and non-diagnostic schematic boundary.')

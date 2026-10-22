@@ -26,17 +26,17 @@ Learning task: assess a ring-enhancing intracranial lesion by combining central 
 | Low capsule rCBV | p. 68 | Optional | Omitted; not necessary for the short decision path and comparative values require further validation. |
 | Treatment: aspiration + 4–8 weeks antibiotics; craniotomy in selected cases | p. 68 | High-impact, out of scope | Omitted as treatment advice. Current ESCMID guideline has more nuanced diagnostic and treatment recommendations; lesson explicitly says it is not a treatment guide. |
 | Abscess vs metastasis: DWI/ADC, T2 rim, enhancement rim, SWI, rCBV, number and clinical context | p. 68 | Essential | Rebuilt as a qualified comparison. No binary rule; necrotic metastases may restrict, and number/context do not decide alone. |
-| Figure/case images | pp. 67–68 | Essential visual requirement | The two pages contain text/table but no diagnostic image. An appropriate Radiopaedia case was inspected in browser: “Brain abscess with dual rim sign,” contributor Luu Hanh, axial T1/T2/FLAIR/SWI/DWI/ADC/T1 C+ and annotated image. Stable locally reusable image asset and licence terms were not obtained for this bounded task; not copied or hotlinked. Local case imagery and browser image review remain open. |
+| Figure/case images | pp. 67–68 | Essential visual requirement | The source pages contain text/table but no diagnostic image. The linked Radiopaedia case “Brain abscess with dual rim sign” (case 87566; contributor Luu Hanh) was inspected in browser. One unchanged annotated case frame is now embedded at `public/educational/hirnabszess/radiopaedia-dual-rim-luu-hanh.jpeg`. Visible arrows identify the inner hyperintense and outer hypointense rims. The sequence label for this standalone frame is not reliable, so it is used only to teach the dual-rim appearance; it is not evidence for DWI/ADC. User-provided project authorization is recorded in the source citation; this is not an independent legal opinion. |
 
 ## Chapter outline and media plan
 
 1. **Read centre and rim:** one focused concept schematic; the learner checks DWI and ADC together, then the rim and oedema.
-2. **Integrate the pattern:** broad pathophysiologic progression and an explicitly qualified dual-rim discussion; link to a real Radiopaedia case for independent viewing. No diagnostic image is embedded yet.
+2. **Integrate the pattern:** broad pathophysiologic progression, an explicitly qualified dual-rim discussion, and one source-attributed Radiopaedia case frame. The annotated frame is not assigned a sequence because the visible label is ambiguous.
 3. **Differentiate carefully:** concise comparison table and an explicit warning about overlap.
 4. **Self-check:** embedded one-question decision with explanatory feedback.
 5. **Take-home:** four short rules.
 
-The SVG is a labelled concept diagram only. It is not medical imaging and is identified that way in alt text and captions. Required real diagnostic case media is still missing, so VIS and live browser acceptance must remain open.
+The SVG remains a labelled concept diagram, not medical imaging. A separate, unchanged and attributed Radiopaedia case frame is now embedded for the dual-rim appearance; it is not assigned a sequence and does not support DWI/ADC claims. Independent Radiopaedia asset verification was blocked by HTTP 402. Live browser and RTL acceptance remain open.
 
 ## Three-language term map
 
@@ -55,9 +55,9 @@ The SVG is a labelled concept diagram only. It is not medical imaging and is ide
 - Bodilsen et al., ESCMID guideline, *Clinical Microbiology and Infection* 2024;30:66–89, DOI [10.1016/j.cmi.2023.08.016](https://doi.org/10.1016/j.cmi.2023.08.016); corrigendum DOI [10.1016/j.cmi.2024.01.026](https://doi.org/10.1016/j.cmi.2024.01.026). The guideline strongly recommends MRI including DWI/ADC and T1 pre/post contrast when brain abscess is suspected.
 - Nadal Desbarats et al. 2003, PMID [12915196](https://pubmed.ncbi.nlm.nih.gov/12915196/), compared 14 abscesses, 10 high-grade gliomas and 2 metastases; used only to support joint DWI/ADC interpretation, not universal certainty.
 - Toh et al. 2012, PMID [22422181](https://pubmed.ncbi.nlm.nih.gov/22422181/), SWI study with 12 abscesses and 20 glioblastomas; sample-limited dual-rim evidence.
-- Radiopaedia case reviewed: [Brain abscess with dual rim sign](https://radiopaedia.org/cases/brain-abscess-with-dual-rim-sign-1), contributor Luu Hanh. The case page showed the actual sequence labels and annotated dual-rim image. Local image reuse terms and stable source asset were not inspected.
-- No independent scientific specialist approval, local diagnostic image review, or browser UX test has been completed for this route.
+- Radiopaedia case reviewed: [Brain abscess with dual rim sign](https://radiopaedia.org/cases/brain-abscess-with-dual-rim-sign-1), contributor Luu Hanh, case 87566. The local image is the unchanged page asset `abcess-brain-with-dual-rim-sign_big_gallery.jpeg` (Radiopaedia image id 54573996), bundled from the case page. The user previously confirmed explicit project authorization for case reuse. No DWI/ADC finding is attributed to this unlabeled single frame.
+- Independent review of the newly embedded asset is pending. In-app browser/RTL rendering and clinician approval remain open.
 
 ## Status proposal
 
-`editorial_qa: independent review PASS (SRC/EDU/LNG/ASM/REV); VIS BLOCKED for absent embedded diagnostic case media` · `scientific_review: pending Dr. Zia` · `browser_qa: pending real browser review; diagnostic images not embedded` · `publication: not requested`.
+`editorial_qa: prior lesson review PASS; new image delta pending independent VIS/provenance review` · `scientific_review: pending Dr. Zia` · `browser_qa: pending in-app browser/RTL review` · `publication: not requested`.
