@@ -96,6 +96,11 @@ const checks = {
     en: { title: 'Self-check: what does detector type tell you about dose?', question: 'A flat-panel detector is installed. Which statement about patient dose is justified?', options: ['Detector type alone does not guarantee lower dose; task, protocol and required image quality matter.', 'Digital post-processing makes dose independent of exposure.', 'Direct DR uses less dose than indirect DR for every task.'], answer: 0, feedback: ['Correct. Detector performance depends on task and exposure; system type alone does not establish a dose benefit.', 'Brightness can be post-processed, but acquisition exposure remains relevant and affects image noise.', 'Direct and indirect conversion use different signal chains, but have no universal dose ranking.'] },
     fa: { title: 'خودآزمایی: نوع آشکارساز دربارهٔ دوز چه می‌گوید؟', question: 'آشکارساز تخت نصب شده است. کدام گزاره دربارهٔ دوز بیمار قابل دفاع است؟', options: ['نوع آشکارساز به‌تنهایی کاهش دوز را تضمین نمی‌کند؛ هدف، پروتکل و کیفیت تصویر لازم اهمیت دارند.', 'پردازش دیجیتال پس از تصویربرداری، دوز را از پرتودهی مستقل می‌کند.', 'DR مستقیم برای هر پرسشی دوز کمتری از DR غیرمستقیم دارد.'], answer: 0, feedback: ['درست است. عملکرد آشکارساز به هدف و پرتودهی وابسته است؛ نوع سامانه به‌تنهایی مزیت دوز را ثابت نمی‌کند.', 'روشنایی را می‌توان پس از تصویربرداری پردازش کرد، اما پرتودهی هنگام تصویربرداری همچنان مهم است و بر نویز اثر می‌گذارد.', 'تبدیل مستقیم و غیرمستقیم زنجیره‌های سیگنال متفاوتی دارند، اما رتبه‌بندی دوز همگانی ندارند.'] },
   },
+  dwiAdc: {
+    de: { title: 'Selbstcheck: DWI und ADC zusammen lesen', question: 'Ein Herd ist auf hoher b-Wichtung hell. Die ADC-Karte ist ebenfalls hell. Welche Aussage passt am besten?', options: ['T2-shine-through ist möglich; der ADC unterstützt in diesem Muster keine echte Restriktion.', 'Sichere Restriktion, weil jedes helle DWI-Signal eine Restriktion beweist.', 'Die ADC-Karte ist für die DWI-Interpretation grundsätzlich ohne Bedeutung.'], answer: 0, feedback: ['Richtig. Helles DWI bei normalem oder hohem ADC passt zu T2-shine-through; die anatomischen Sequenzen bleiben wichtig.', 'DWI-Helligkeit allein beweist keine Restriktion. Prüfen Sie den ADC.', 'Der ADC hilft, T2-shine-through von einem Restriktionsmuster abzugrenzen.'] },
+    en: { title: 'Self-check: read DWI and ADC together', question: 'A focus is bright on high-b DWI. The ADC map is also bright. Which statement fits best?', options: ['T2 shine-through is possible; this ADC pattern does not support true restriction.', 'Definite restriction, because every bright DWI signal proves restriction.', 'The ADC map is generally irrelevant to DWI interpretation.'], answer: 0, feedback: ['Correct. Bright DWI with normal or high ADC fits T2 shine-through; anatomical sequences still matter.', 'DWI brightness alone does not prove restriction. Check ADC.', 'ADC helps distinguish T2 shine-through from a restriction pattern.'] },
+    fa: { title: 'خودآزمایی: DWI و ADC را با هم بخوانید', question: 'کانونی در DWI با b بالا روشن است و نقشهٔ ADC هم روشن است. کدام عبارت مناسب‌تر است؟', options: ['عبور سیگنال T2 ممکن است؛ این الگوی ADC از محدودیت واقعی حمایت نمی‌کند.', 'محدودیت قطعی است، چون هر سیگنال روشن DWI محدودیت را ثابت می‌کند.', 'نقشهٔ ADC معمولاً برای تفسیر DWI اهمیتی ندارد.'], answer: 0, feedback: ['درست است. DWI روشن همراه ADC طبیعی یا بالا با عبور سیگنال T2 سازگار است؛ توالی‌های آناتومیک هم اهمیت دارند.', 'روشن‌بودن DWI به‌تنهایی محدودیت را ثابت نمی‌کند؛ ADC را بررسی کنید.', 'ADC به افتراق عبور سیگنال T2 از الگوی محدودیت کمک می‌کند.'] },
+  },
   mriArtifacts: {
     de: { title: 'Selbstcheck: Aliasing oder RF-Störung?', question: 'Die Nasenspitze erscheint zusätzlich am Hinterkopf, entlang der Phasenkodierrichtung. Welche Erklärung und Maßnahme passen?', options: ['Zipper durch RF-Leckage; die Empfangsbandbreite erhöhen.', 'Aliasing: Anatomie außerhalb des FOV wurde in die Gegenseite gefaltet; Phasen-FOV erweitern oder Phase-oversampling einsetzen.', 'Gibbs-Ringing; die Phasenkodierrichtung ändern.'], answer: 1, correct: 'Richtig. Das Muster passt zu Faltung von Anatomie außerhalb des FOV entlang der Phasenkodierung. Phase-oversampling kann die Messzeit verlängern.', retry: 'Eine schmale feste Linie spricht eher für RF-Störung; eine auf der Gegenseite auftauchende Anatomie für Faltung außerhalb des FOV.' },
     en: { title: 'Self-check: aliasing or RF interference?', question: 'The nose appears again at the back of the head, along the phase-encoding direction. Which explanation and response fit?', options: ['Zipper from RF leakage; increase receiver bandwidth.', 'Aliasing: anatomy outside the FOV folded to the opposite side; enlarge phase FOV or use phase oversampling.', 'Gibbs ringing; change phase-encoding direction.'], answer: 1, correct: 'Correct. This fits anatomy outside the FOV folding along phase encoding. Phase oversampling can increase scan time.', retry: 'A narrow fixed line suggests RF interference; anatomy reappearing on the opposite side suggests wrap-around from outside the FOV.' },
@@ -243,6 +248,7 @@ export default function TechnikGrundlagenStandardPage() {
           </div>:null}
           {block.supplement?<aside className={styles.callout}><strong>{t(L('Zusatzbeziehung (nicht aus der PDF)','Supplemental relationship (not stated in the PDF)','رابطهٔ تکمیلی (در PDF نیامده است)'))}</strong><p>{t(block.supplement)}</p></aside>:null}
           {block.note?<aside className={styles.callout}><strong>{t(L('Einordnung und Grenzen','Interpretation and limitations','تفسیر و محدودیت‌ها'))}</strong><p>{t(block.note)}</p></aside>:null}
+          {block.id === 'dwi-adc-reading' ? <><RetrievalCheck kind="dwiAdc" lang={lang}/><DwiAdcActions lang={lang}/></> : null}
         </section>)}
         {section.id === 'mrt' ? <><MRIKnowledgeCheck lang={lang}/><RetrievalCheck kind="dixon" lang={lang}/><MriFundamentalsActions lang={lang}/><FatSuppressionActions lang={lang}/></> : null}
         {section.id === 'mrt-spezial' ? <><RetrievalCheck kind="perfusion" lang={lang}/><RetrievalCheck kind="ciss" lang={lang}/><CineActions lang={lang}/><MraActions lang={lang}/></> : null}
@@ -325,6 +331,20 @@ function CtProtocolActions({ lang }) {
     <strong style={{ alignSelf: 'center' }}>{labels.title}</strong>
     <a href={`/ueben/quiz?fach=technik&n=1&themen=ct-methodik-km-phasen&from=${from}`}>{labels.quiz}</a>
     <a href={`/flashcards/ct-methodik-km-phasen?from=${from}`}>{labels.cards}</a>
+  </nav>
+}
+
+function DwiAdcActions({ lang }) {
+  const copy = {
+    de: { title: 'DWI / ADC wiederholen', quiz: 'Selbsttest-Frage', cards: 'DWI/ADC-Karte' },
+    en: { title: 'Review DWI / ADC', quiz: 'Self-check question', cards: 'DWI/ADC flashcard' },
+    fa: { title: 'مرور DWI / ADC', quiz: 'سؤال خودآزمایی', cards: 'فلش‌کارت DWI/ADC' },
+  }[lang] || { title: 'DWI / ADC wiederholen', quiz: 'Selbsttest-Frage', cards: 'DWI/ADC-Karte' }
+  const suffix = lang === 'de' ? '' : `&lang=${lang}`
+  return <nav aria-label={copy.title} style={{ display: 'flex', flexWrap: 'wrap', gap: 12, margin: '18px 0', padding: 14, border: '1px solid var(--border)', borderRadius: 14, background: 'var(--surface-soft)' }}>
+    <strong style={{ alignSelf: 'center' }}>{copy.title}</strong>
+    <a href={`/ueben/quiz?fach=technik&n=1&themen=mrt-dwi-adc${suffix}`}>{copy.quiz}</a>
+    <a href={`/flashcards/mrt-dwi-adc${lang === 'de' ? '' : `?lang=${lang}`}`}>{copy.cards}</a>
   </nav>
 }
 

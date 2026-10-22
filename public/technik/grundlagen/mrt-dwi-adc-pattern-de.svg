@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" role="img" aria-labelledby="title desc">
+<title id="title">Vergleich der DWI- und ADC-Muster</title><desc id="desc">Helles DWI mit niedrigem ADC spricht für eine Diffusionsrestriktion. Helles DWI mit normalem oder hohem ADC passt zu T2-shine-through.</desc>
+<rect width="900" height="300" rx="20" fill="#f7fafc"/><g font-family="Arial,sans-serif" fill="#16324a">
+<text x="30" y="48" font-size="24" font-weight="700">DWI und ADC gemeinsam lesen</text>
+<rect x="28" y="72" width="410" height="196" rx="14" fill="#e7f4f3" stroke="#73b8b2" stroke-width="2"/><rect x="462" y="72" width="410" height="196" rx="14" fill="#f2edf8" stroke="#aa91c8" stroke-width="2"/>
+<text x="50" y="108" font-size="19" font-weight="700">Muster bei Diffusionsrestriktion</text><text x="484" y="108" font-size="19" font-weight="700">Muster bei T2-shine-through</text>
+<text x="54" y="158" font-size="22">DWI</text><rect x="135" y="132" width="92" height="38" rx="8" fill="#fff" stroke="#b8c7d2"/><text x="153" y="158" font-size="18" font-weight="700">HELL</text>
+<text x="54" y="218" font-size="22">ADC</text><rect x="135" y="192" width="92" height="38" rx="8" fill="#d5e6eb" stroke="#9bb8c3"/><text x="155" y="218" font-size="18" font-weight="700">NIEDRIG</text><text x="247" y="184" font-size="17">spricht für Restriktion</text>
+<text x="488" y="158" font-size="22">DWI</text><rect x="569" y="132" width="92" height="38" rx="8" fill="#fff" stroke="#b8c7d2"/><text x="587" y="158" font-size="18" font-weight="700">HELL</text>
+<text x="488" y="218" font-size="22">ADC</text><rect x="569" y="192" width="132" height="38" rx="8" fill="#fff" stroke="#b8c7d2"/><text x="582" y="218" font-size="16" font-weight="700">NORMAL / HOCH</text><text x="719" y="184" font-size="17">T2-shine-through</text>
+</g></svg>
+
+
+
