@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-labelledby="title desc">
+  <title id="title">Contrast administration routes and renal first pass</title>
+  <desc id="desc">Conceptual flow diagram contrasting intravenous systemic circulation with direct arterial first-pass delivery to the kidney.</desc>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L10 5L0 10z" fill="#0284c7"/>
+    </marker>
+    <marker id="arrow-violet" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L10 5L0 10z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="598" height="398" rx="28" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <rect x="24" y="24" width="552" height="166" rx="20" fill="#e0f2fe"/>
+  <rect x="24" y="210" width="552" height="166" rx="20" fill="#f3e8ff"/>
+  <circle cx="93" cy="106" r="37" fill="#fff" stroke="#0284c7" stroke-width="5"/>
+  <path d="M80 106h26M93 93v26" stroke="#0284c7" stroke-width="6" stroke-linecap="round"/>
+  <path d="M135 106h119" stroke="#0284c7" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+  <circle cx="302" cy="106" r="39" fill="#fff" stroke="#0284c7" stroke-width="5"/>
+  <path d="M281 106c0-14 10-24 21-24s21 10 21 24-10 24-21 24" fill="none" stroke="#0284c7" stroke-width="5" stroke-linecap="round"/>
+  <path d="M344 106h91" stroke="#0284c7" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+  <path d="M475 75c-21 0-34 20-29 39 4 16 17 26 29 32 12-6 25-16 29-32 5-19-8-39-29-39z" fill="#fff" stroke="#0f766e" stroke-width="5"/>
+  <path d="M475 84v52" stroke="#0f766e" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="93" cy="292" r="37" fill="#fff" stroke="#7c3aed" stroke-width="5"/>
+  <path d="M80 292h26M93 279v26" stroke="#7c3aed" stroke-width="6" stroke-linecap="round"/>
+  <path d="M135 292h295" stroke="#7c3aed" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow-violet)"/>
+  <path d="M475 261c-21 0-34 20-29 39 4 16 17 26 29 32 12-6 25-16 29-32 5-19-8-39-29-39z" fill="#fff" stroke="#0f766e" stroke-width="5"/>
+  <path d="M475 270v52" stroke="#0f766e" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="434" cy="292" r="7" fill="#7c3aed"/>
+</svg>

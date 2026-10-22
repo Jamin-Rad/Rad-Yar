@@ -216,6 +216,13 @@ export default function ContrastGroupPage({ groupId }) {
                 <span><i className={styles.softTissueLegend} aria-hidden="true" />{localizeContrast({ de: 'Weichteilgewebe', en: 'Soft tissue', fa: 'بافت نرم' }, lang)}</span>
                 <span><i className={styles.iodineLegend} aria-hidden="true" />{localizeContrast({ de: 'Jodhaltiges KM', en: 'Iodinated contrast', fa: 'مادهٔ حاجب یددار' }, lang)}</span>
               </div>
+            </figure> : groupId === 'nierenfunktion' ? <figure className={styles.heroVisual}>
+              <Image src="/educational/renal-contrast-pass.svg" alt={localizeContrast({ de: 'Konzeptdiagramm: intravenöses Kontrastmittel erreicht die Niere nach dem Kreislauf; bei einer arteriellen Erstpassage gelangt es direkt über die Nierenarterie dorthin.', en: 'Conceptual diagram: intravenous contrast reaches the kidneys after systemic circulation; with an arterial first pass it reaches them directly through the renal artery.', fa: 'طرح مفهومی: مادهٔ حاجب وریدی پس از گردش سیستمیک به کلیه می‌رسد؛ در عبور اول شریانی، مستقیماً از شریان کلیوی وارد می‌شود.' }, lang)} width={300} height={200} priority />
+              <figcaption>{localizeContrast({ de: 'Applikationsweg und renale Erstpassage', en: 'Administration route and renal first pass', fa: 'مسیر تزریق و عبور اول کلیوی' }, lang)}</figcaption>
+              <div className={styles.heroVisualLegend}>
+                <span><i className={styles.ivRouteLegend} aria-hidden="true" />{localizeContrast({ de: 'IV: Kreislauf → Niere', en: 'IV: circulation → kidney', fa: 'وریدی: کلیه ← گردش خون' }, lang)}</span>
+                <span><i className={styles.iaRouteLegend} aria-hidden="true" />{localizeContrast({ de: 'IA-Erstpass: direkt zur Niere', en: 'IA first pass: direct to kidney', fa: 'عبور اول شریانی: کلیه ← مسیر مستقیم شریانی' }, lang)}</span>
+              </div>
             </figure> : null}
             <div className={styles.heroStats}>{lesson.stats.map(stat => (
               <div className={styles.heroStat} key={stat.value}><strong>{stat.value}</strong><span>{localizeContrast(stat.label, lang)}</span><small>{localizeContrast(stat.text, lang)}</small></div>
