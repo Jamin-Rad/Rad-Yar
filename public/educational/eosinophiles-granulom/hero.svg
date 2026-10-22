@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" role="img" aria-labelledby="title desc">
+  <title id="title">Osseous LCH teaching schematic</title>
+  <desc id="desc">Non-diagnostic long-bone diagram with a diaphyseal lytic focus and surrounding periosteal reaction.</desc>
+  <defs>
+    <linearGradient id="bone" x1="0" x2="1"><stop stop-color="#f6e6ca"/><stop offset=".5" stop-color="#fff7e9"/><stop offset="1" stop-color="#e7cba5"/></linearGradient>
+    <linearGradient id="focus" x1="0" x2="1"><stop stop-color="#b85b60"/><stop offset="1" stop-color="#e5a56e"/></linearGradient>
+  </defs>
+  <rect x="12" y="12" width="496" height="276" rx="24" fill="#17343c"/>
+  <circle cx="420" cy="72" r="95" fill="#315f68" opacity=".34"/>
+  <path d="M163 57c-41 9-45 37-12 57l-3 72c-34 21-28 49 12 57 29 6 58-3 65-23 9-24 9-116 0-140-8-21-34-29-62-23Z" fill="url(#bone)" stroke="#d5b587" stroke-width="3"/>
+  <path d="M168 120c-17 15-18 65 0 82 16 10 42 5 49-8 7-17 7-51-1-67-9-14-32-18-48-7Z" fill="url(#focus)" stroke="#8f3f4c" stroke-width="3"/>
+  <path d="M150 113c-18 20-20 72-1 96M145 106c-24 22-27 84-2 109M234 112c18 20 20 72 1 96M239 105c24 22 27 84 2 109" fill="none" stroke="#75b7bd" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+  <path d="M224 151h95" stroke="#f3d8b3" stroke-width="2" stroke-dasharray="5 6"/>
+  <circle cx="224" cy="151" r="5" fill="#d59c6d"/>
+  <path d="M326 152h-83" stroke="#d59c6d" stroke-width="2"/>
+</svg>

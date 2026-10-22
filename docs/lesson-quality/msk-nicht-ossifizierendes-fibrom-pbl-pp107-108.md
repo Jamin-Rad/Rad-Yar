@@ -48,3 +48,8 @@ The header uses an original code-drawn schematic of eccentric metaphyseal lucenc
 - More-than-50% involvement appears in the PDF and published CT/radiographic fracture-risk work. It is presented as a concern cue only; neither lesion size nor that percentage alone dictates surgery.
 - The Herget study is a retrospective cohort, so observed fracture association is not framed as universal risk prediction.
 - Independent source/content/visual/language review passed. The curriculum route is linked and asserted by the scoped test. Browser/authenticated lesson view and clinician approval remain open.
+
+
+## Supplemental LCH curriculum link
+
+- The former N12 differential mention for eosinophilic granuloma is now linked to the supplemental osseous LCH lesson at /msk/tumoren/eosinophiles-granulom. MSK.pdf p.108 remains a differential-only source and does not support the LCH imaging content. See [LCH source ledger](eosinophiles-granulom-source-ledger.md) for its external evidence, case attribution, scope and open review gates.

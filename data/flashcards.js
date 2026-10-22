@@ -3,6 +3,7 @@ import { MEDULLO_FLASHCARDS, MEDULLO_FLASHCARD_TOPIC } from './medulloblastomLes
 import { RECIST_FLASHCARDS, RECIST_FLASHCARD_TOPIC } from './recist11Lesson'
 import { FLEISCHNER_FLASHCARDS, FLEISCHNER_FLASHCARD_TOPIC } from './fleischnerLearning'
 import { BONE_INFARCT_FLASHCARDS, BONE_INFARCT_FLASHCARD_TOPIC } from './knocheninfarktLesson'
+import { EOSINOPHILIC_GRANULOMA_FLASHCARDS, EOSINOPHILIC_GRANULOMA_FLASHCARD_TOPIC } from './eosinophilesGranulomLesson'
 import { FACET_FLASHCARDS, FACET_FLASHCARD_TOPIC } from './spondylarthroseLesson'
 import { PCNSL_FLASHCARDS, PCNSL_FLASHCARD_TOPIC } from './pcnslLesson'
 import { BRAIN_METASTASES_FLASHCARDS, BRAIN_METASTASES_FLASHCARD_TOPIC } from './gehirnHirnmetastasenLesson'
@@ -150,6 +151,7 @@ export const FLASHCARD_TOPICS = [
   FACET_FLASHCARD_TOPIC,
   { id: 'bandscheibenpathologien', area: 'Wirbelsäule', chapter: 'Degenerative Erkrankungen', icon: 'MRI', color: '#0e7490', href: '/flashcards/bandscheibenpathologien', title: { de: 'Bandscheibenpathologien', en: 'Intervertebral disc pathologies', fa: 'بیماری‌های دیسک بین‌مهره‌ای' }, subtitle: { de: 'Protrusion · Extrusion · Sequester · axiale Lage', en: 'Protrusion · extrusion · sequestration · axial location', fa: 'پروتروژن · اکستروژن · سکوستراسیون · محل آکسیال' } },
   BONE_INFARCT_FLASHCARD_TOPIC,
+  EOSINOPHILIC_GRANULOMA_FLASHCARD_TOPIC,
   FLEISCHNER_FLASHCARD_TOPIC,
   MAMMA_MRT_FLASHCARD_TOPIC,
   MAMMA_MRT_LESION_FLASHCARD_TOPIC,
@@ -3674,6 +3676,7 @@ export const FLASHCARDS = [
   { id: 'bandscheibenpathologien-axial-zones', topicId: 'bandscheibenpathologien', category: { de: 'Axiale Lage', en: 'Axial location', fa: 'محل آکسیال' }, front: { de: 'Welche vier axialen Zonen unterscheidet die Lektion?', en: 'Which four axial zones does the lesson distinguish?', fa: 'درس کدام چهار ناحیهٔ آکسیال را از هم جدا می‌کند؟' }, answer: { de: 'Zentral/median, subartikulär/paramedian, foraminal und extraforaminal.', en: 'Central/median, subarticular/paramedian, foraminal and extraforaminal.', fa: 'مرکزی/مدیان، ساب‌آرتیکولار/پارامدیان، فورامینال و خارج‌فورامینال.' }, explanation: { de: 'Foraminal liegt innerhalb des Neuroforamens; extraforaminal liegt lateral außerhalb davon. Die axiale Zone ersetzt nicht die Angabe von Etage und tatsächlich betroffener Struktur.', en: 'Foraminal means within the neural foramen; extraforaminal lies lateral and outside it. The zone does not replace stating the level and structure actually affected.', fa: 'فورامینال درون فورامن عصبی و خارج‌فورامینال در سمت خارجی و بیرون آن است. ذکر ناحیه جای بیان سطح و ساختار واقعاً درگیر را نمی‌گیرد.' }, source: 'Wirbelsäule.pdf PDF S. 6 / printed p. 5' },
   { id: 'bandscheibenpathologien-neural-structure', topicId: 'bandscheibenpathologien', category: { de: 'Befundung', en: 'Reporting', fa: 'گزارش‌دهی' }, front: { de: 'Was solltest du zusätzlich zu Morphologie und axialer Zone dokumentieren?', en: 'What should you document in addition to morphology and axial zone?', fa: 'علاوه بر مورفولوژی و ناحیهٔ آکسیال چه چیزی را باید ثبت کنید؟' }, answer: { de: 'Wirbelsäulenetage und tatsächlich bedrängte neurale Struktur; die mögliche Auswirkung hängt von der Höhe ab.', en: 'The spinal level and neural structure actually affected; the possible effect depends on level.', fa: 'سطح ستون فقرات و ساختار عصبی واقعاً تحت فشار؛ اثر احتمالی به سطح بستگی دارد.' }, explanation: { de: 'Eine zentrale Läsion bedeutet nicht auf jeder Etage Myelonkompression. Unterhalb des Conus verlaufen im lumbalen Duralsack vorwiegend Cauda-equina-Wurzeln.', en: 'A central lesion does not mean cord compression at every level. Below the conus, the lumbar thecal sac mainly contains cauda equina roots.', fa: 'ضایعهٔ مرکزی در همهٔ سطوح به معنی فشار بر نخاع نیست. در زیر کونوس، ساک دورال کمری عمدتاً حاوی ریشه‌های دم‌اسبی است.' }, source: 'Wirbelsäule.pdf PDF S. 6 / printed p. 5; level-dependent anatomy' },
   ...BONE_INFARCT_FLASHCARDS,
+  ...EOSINOPHILIC_GRANULOMA_FLASHCARDS,
   ...LEGACY_FLASHCARDS.filter(card => card.topicId !== 'haemangiom'),
   ...HEMANGIOMA_FLASHCARDS,
   ...MSK_SPINE_REGISTERED_FLASHCARDS,
