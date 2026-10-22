@@ -64,6 +64,22 @@ const adrenalAssessmentText = ['de', 'en', 'fa'].map(lang => {
   const pheoQuestion = questions.find(question => question.id === pheoId)
   assert.ok(pheoQuestion, `${lang}: pheochromocytoma washout MCQ is registered`)
   assert.match(`${pheoQuestion.options.map(option => option.text).join(' ')} ${pheoQuestion.explanation}`, /washout|فئوکروموسیتوم/i)
+  const adenomaQuestion = questions.find(question => question.id === `adrenal-adenoma-microscopic-fat-${lang}-01`)
+  assert.ok(adenomaQuestion, `${lang}: adrenal adenoma MRI question is registered`)
+  const adenomaCard = getCardsByTopic('nebennierenraumforderungen').find(card => card.id.endsWith('-adenoma-microscopic-fat'))
+  assert.ok(adenomaCard, `${lang}: adrenal adenoma microscopic-fat flashcard exists`)
+  if (lang === 'de') {
+    assert.match(adenomaQuestion.explanation, /unterstützt.*ist aber allein kein Diagnosenachweis/)
+    assert.match(adenomaCard.explanation[lang], /beweist die Diagnose aber nicht allein/)
+  }
+  if (lang === 'en') {
+    assert.match(adenomaQuestion.explanation, /supports.*but it is not diagnostic by itself/)
+    assert.match(adenomaCard.explanation[lang], /does not establish the diagnosis by itself/)
+  }
+  if (lang === 'fa') {
+    assert.match(adenomaQuestion.explanation, /حمایت می‌کند، اما به‌تنهایی تشخیصی نیست/)
+    assert.match(adenomaCard.explanation[lang], /به‌تنهایی تشخیص را ثابت نمی‌کند/)
+  }
   const myeloQuestion = questions.find(question => question.id === `adrenal-myelolipoma-macroscopic-fat-${lang}-01`)
   assert.ok(myeloQuestion, `${lang}: myelolipoma MCQ is registered`)
   assert.ok(myeloQuestion.tags.includes('myelolipom'), `${lang}: myelolipoma MCQ uses the exact topic tag`)

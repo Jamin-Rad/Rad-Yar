@@ -25,7 +25,7 @@ const C = {
     summary: [
       '„Inzidentalom“ beschreibt den Entdeckungsweg, nicht die Gutartigkeit.',
       'Homogenität und native Dichte zuerst beurteilen; hormonelle Funktion ist damit nicht beantwortet.',
-      'Adenom: intrazelluläres Fett mit Opposed-Phase-Signalabfall; Myelolipom: makroskopische Fettanteile mit Fettsuppression.',
+      'Adenom: mikroskopisches intrazelluläres Fett kann auf Opposed-Phase homogen signalabfallen; das stützt, beweist aber allein kein Adenom. Myelolipom: makroskopisches Fett zeigt Signalabfall in fettgesättigten Sequenzen.',
       'Washout kann ein Phäochromozytom nicht sicher ausschließen; bei Kindern den Nebennierenursprung gegen den Nierenursprung abgrenzen.',
     ],
     incidentalomaTitle: 'Was bedeutet „Inzidentalom“?',
@@ -38,8 +38,8 @@ const C = {
     fatRows: [
       ['Fettkomponente', 'Adenom: mikroskopisch, intrazellulär', 'Myelolipom: sichtbares makroskopisches Fett mit hämatopoetischen Anteilen'],
       ['T1-/T2-Signal', 'Meist isointens bis leicht hypointens zum Leberparenchym.', 'Fettanteile T1/T2 hyperintens; hämatopoetische Weichteilanteile intermediär.'],
-      ['Chemical-shift-MRT', 'Homogener Signalabfall in Opposed-Phase kann auftreten.', 'Kein flächiger Signalabfall der gesamten Läsion; dunkler India-ink-Rand an Fett-Wasser-Grenzen möglich.'],
-      ['Fettsättigung', 'Kein ausgeprägter Signalabfall, da die Sequenz vor allem makroskopisches Fett unterdrückt.', 'Makroskopische Fettanteile zeigen deutlichen Signalabfall.'],
+      ['T1w In-/Opposed-Phase', 'Bei homogener Läsion kann ein homogener Signalabfall in Opposed-Phase für mikroskopisches Lipid sprechen; allein beweist er kein Adenom.', 'Kein diffuser Signalabfall der gesamten Läsion; ein dunkler India-ink-Rand an Fett-Wasser-Grenzen ist möglich.'],
+      ['T1w-Fettsättigung / STIR', 'Kein ausgeprägter Signalabfall durch Fettsättigung. STIR ist nicht fettspezifisch und weist intrazelluläres Lipid nicht nach.', 'Makroskopische Fettanteile zeigen deutlichen Signalabfall.'],
     ],
     myelolipomaTitle: 'Myelolipom: makroskopisches Fett und Gewebeanteile',
     myelolipoma: 'Das PDF beschreibt Myelolipome als meist gut abgrenzbare, heterogene Läsionen aus reifem Fett und hämatopoetischem Gewebe; deren Anteile variieren von kleinen Fetteinseln bis zu überwiegend fetthaltigen Massen. In den zwei axialen CT-Bildern bleibt die makroskopische Fettkomponente nativ sichtbar; nach Kontrastmittel ist heterogene Anreicherung der weichteildichten Anteile zu sehen. Die Bilder sind nicht als vollständiges Protokoll oder alleiniger Benignitätsnachweis zu verstehen.',
@@ -75,7 +75,7 @@ const C = {
     summary: [
       '“Incidentaloma” describes how a lesion was found, not whether it is benign.',
       'Assess homogeneity and unenhanced attenuation first; this does not determine hormonal function.',
-      'Adenoma: intracellular fat with opposed-phase signal loss; myelolipoma: macroscopic fat that suppresses on fat-saturated imaging.',
+      'Adenoma: microscopic intracellular fat may show homogeneous opposed-phase signal loss; this supports but does not by itself diagnose adenoma. Myelolipoma: macroscopic fat loses signal on fat-suppressed imaging.',
       'Washout cannot reliably exclude pheochromocytoma; in children, distinguish adrenal from renal origin.',
     ],
     incidentalomaTitle: 'What does “incidentaloma” mean?',
@@ -88,8 +88,8 @@ const C = {
     fatRows: [
       ['Fat component', 'Adenoma: microscopic, intracellular', 'Myelolipoma: visible macroscopic fat with haematopoietic components'],
       ['T1/T2 signal', 'Usually isointense to slightly hypointense relative to liver parenchyma.', 'Fatty components are T1/T2 hyperintense; haematopoietic soft-tissue components are intermediate in signal.'],
-      ['Chemical-shift MRI', 'Homogeneous opposed-phase signal loss may occur.', 'No diffuse signal loss of the whole lesion; a dark India-ink rim may appear at fat–water boundaries.'],
-      ['Fat suppression', 'No marked signal loss because the sequence mainly suppresses macroscopic fat.', 'Macroscopic fat shows marked signal loss.'],
+      ['T1-weighted in-/opposed-phase', 'In a homogeneous lesion, homogeneous opposed-phase signal loss may support microscopic lipid; it does not by itself diagnose adenoma.', 'No diffuse signal loss of the whole lesion; a dark India-ink rim may appear at fat–water boundaries.'],
+      ['T1-weighted fat-sat / STIR', 'No marked signal loss with fat suppression. STIR is not fat-specific and does not demonstrate intracellular lipid.', 'Macroscopic fat shows marked signal loss.'],
     ],
     myelolipomaTitle: 'Myelolipoma: macroscopic fat and soft-tissue components',
     myelolipoma: 'The PDF describes myelolipomas as usually well-defined, heterogeneous lesions containing mature fat and haematopoietic tissue, with proportions ranging from small fat islands to predominantly fatty masses. In the two axial CT images, macroscopic fat remains visible on the unenhanced image; after contrast, the soft-tissue components enhance heterogeneously. These images are not a complete protocol or proof of benignity by themselves.',
@@ -125,7 +125,7 @@ const C = {
     summary: [
       '«اینسی‌دنتالوما» نحوه کشف ضایعه را توصیف می‌کند، نه خوش‌خیم‌بودن آن را.',
       'ابتدا همگنی و دانسیته بدون تزریق را بسنجید؛ این موارد عملکرد هورمونی را تعیین نمی‌کنند.',
-      'آدنوم: چربی داخل‌سلولی با افت سیگنال opposed-phase؛ مایلولیپوما: چربی ماکروسکوپیک با افت سیگنال در توالی سرکوب چربی.',
+      'آدنوم: چربی میکروسکوپیک داخل‌سلولی ممکن است در opposed-phase افت همگن سیگنال نشان دهد؛ این یافته حمایت‌کننده است، اما به‌تنهایی آدنوم را تشخیص نمی‌دهد. مایلولیپوما: چربی ماکروسکوپیک در تصویربرداری با سرکوب چربی افت سیگنال دارد.',
       'Washout فئوکروموسیتوم را با اطمینان رد نمی‌کند؛ در کودکان منشأ آدرنال را از منشأ کلیوی جدا کنید.',
     ],
     incidentalomaTitle: '«اینسی‌دنتالوما» یعنی چه؟',
@@ -138,8 +138,8 @@ const C = {
     fatRows: [
       ['جزء چربی', 'آدنوم: میکروسکوپیک و داخل‌سلولی', 'مایلولیپوما: چربی ماکروسکوپیک قابل مشاهده همراه با اجزای خون‌ساز'],
       ['سیگنال T1/T2', 'معمولاً نسبت به پارانشیم کبد هم‌سیگنال تا کمی کم‌سیگنال.', 'اجزای چربی در T1/T2 پرسیگنال‌اند؛ اجزای بافت نرم خون‌ساز سیگنال میانی دارند.'],
-      ['MRI جابه‌جایی شیمیایی', 'افت همگن سیگنال در opposed-phase ممکن است دیده شود.', 'افت منتشر سیگنال در کل ضایعه وجود ندارد؛ ممکن است حاشیه تیره India-ink در مرز چربی و آب دیده شود.'],
-      ['سرکوب چربی', 'افت سیگنال بارز ندارد، چون توالی عمدتاً چربی ماکروسکوپیک را سرکوب می‌کند.', 'چربی ماکروسکوپیک افت سیگنال بارز دارد.'],
+      ['T1w هم‌فاز / ناهم‌فاز', 'در ضایعه همگن، افت همگن سیگنال در opposed-phase می‌تواند از چربی میکروسکوپیک حمایت کند؛ به‌تنهایی آدنوم را تشخیص نمی‌دهد.', 'افت منتشر سیگنال در کل ضایعه وجود ندارد؛ ممکن است حاشیه تیره India-ink در مرز چربی و آب دیده شود.'],
+      ['T1w با سرکوب چربی / STIR', 'با سرکوب چربی افت سیگنال بارزی دیده نمی‌شود. STIR اختصاصی چربی نیست و چربی داخل‌سلولی را اثبات نمی‌کند.', 'چربی ماکروسکوپیک افت سیگنال بارز دارد.'],
     ],
     myelolipomaTitle: 'مایلولیپوما: چربی ماکروسکوپیک و اجزای بافت نرم',
     myelolipoma: 'PDF مایلولیپوما را معمولاً به‌صورت ضایعه‌ای مشخص و ناهمگون از چربی بالغ و بافت خون‌ساز توصیف می‌کند؛ نسبت این اجزا از جزیره‌های کوچک چربی تا توده‌های عمدتاً چربی‌دار متغیر است. در دو تصویر CT محوری، چربی ماکروسکوپیک در تصویر بدون تزریق دیده می‌شود؛ پس از تزریق، اجزای بافت نرم تقویت ناهمگون دارند. این تصاویر پروتکل کامل یا اثبات مستقل خوش‌خیمی نیستند.',

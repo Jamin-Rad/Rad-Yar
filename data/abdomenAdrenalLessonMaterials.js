@@ -33,7 +33,7 @@ export const ADRENAL_QUESTION_DRAFTS = [
       L('Starker Signalabfall makroskopischer Fettanteile nur in der Fettsättigung.', 'Marked signal loss of macroscopic fat only on fat-suppressed imaging.', 'افت بارز سیگنال چربی ماکروسکوپیک فقط در تصویربرداری با سرکوب چربی.'),
     ],
     answer: 0,
-    rationale: L('Opposed-Phase kann den mikroskopischen intrazellulären Fettanteil als diffusen homogenen Signalabfall zeigen. Ein India-ink-Rand markiert dagegen Fett-Wasser-Grenzen.', 'Opposed-phase imaging can show microscopic intracellular fat as diffuse homogeneous signal loss. An India-ink rim instead marks fat–water interfaces.', 'تصویربرداری opposed-phase می‌تواند چربی میکروسکوپیک داخل‌سلولی را به‌صورت افت همگن و منتشر سیگنال نشان دهد؛ حاشیه India-ink مرز چربی و آب را مشخص می‌کند.'),
+    rationale: L('Paarige T1w In-/Opposed-Phase-Aufnahmen können mikroskopisches intrazelluläres Fett als homogenen Signalabfall zeigen. Das unterstützt ein lipidreiches Adenom bei passender homogener Läsion, ist aber allein kein Diagnosenachweis. Ein India-ink-Rand markiert dagegen makroskopische Fett-Wasser-Grenzen.', 'Paired T1-weighted in-/opposed-phase images can show microscopic intracellular fat as homogeneous signal loss. In a compatible homogeneous lesion this supports a lipid-rich adenoma, but it is not diagnostic by itself. An India-ink rim instead marks macroscopic fat–water interfaces.', 'تصاویر جفت‌شده T1w هم‌فاز/ناهم‌فاز می‌توانند چربی میکروسکوپیک داخل‌سلولی را به‌صورت افت همگن سیگنال نشان دهند. در ضایعه همگن و زمینه مناسب، این یافته از آدنوم پرچربی حمایت می‌کند، اما به‌تنهایی تشخیصی نیست. حاشیه India-ink در مقابل، مرز چربی ماکروسکوپیک و آب را نشان می‌دهد.'),
   },
   {
     id: 'adrenal-myelolipoma-macroscopic-fat',
@@ -86,7 +86,7 @@ const cards = [
     category: L('Adenom', 'Adenoma', 'آدنوم'),
     front: L('Welches MRT-Zeichen passt zu mikroskopischem intrazellulärem Fett im lipidreichen Adenom?', 'Which MRI sign fits microscopic intracellular fat in a lipid-rich adenoma?', 'کدام نشانه MRI با چربی میکروسکوپیک داخل‌سلولی در آدنوم پرچربی سازگار است؟'),
     answer: L('Ein homogener Signalabfall in der Opposed-Phase.', 'Homogeneous signal loss on opposed-phase imaging.', 'افت همگن سیگنال در تصویربرداری opposed-phase.'),
-    explanation: L('Dieses Muster unterscheidet sich vom deutlichen Signalabfall makroskopischer Fettanteile in fettgesättigten Sequenzen.', 'This pattern differs from the marked signal loss of macroscopic fat on fat-suppressed sequences.', 'این الگو با افت بارز سیگنال چربی ماکروسکوپیک در توالی‌های سرکوب چربی تفاوت دارد.'),
+    explanation: L('Dieses Muster unterscheidet sich vom deutlichen Signalabfall makroskopischer Fettanteile in fettgesättigten Sequenzen. Es unterstützt eine lipidreiche Adenomkomponente, beweist die Diagnose aber nicht allein.', 'This pattern differs from the marked signal loss of macroscopic fat on fat-suppressed sequences. It supports a lipid-rich adenoma component but does not establish the diagnosis by itself.', 'این الگو با افت بارز سیگنال چربی ماکروسکوپیک در توالی‌های سرکوب چربی تفاوت دارد. از وجود جزء آدنوم پرچربی حمایت می‌کند، اما به‌تنهایی تشخیص را ثابت نمی‌کند.'),
   },
   {
     id: 'myelolipoma-macroscopic-fat',

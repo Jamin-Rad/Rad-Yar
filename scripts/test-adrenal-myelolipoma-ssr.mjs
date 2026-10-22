@@ -36,14 +36,18 @@ const Page = compile('app/abdomen/nebenniere/raumforderungen/page.js', {
 
 const expected = {
   de: [
+    'Bei homogener Läsion kann ein homogener Signalabfall in Opposed-Phase für mikroskopisches Lipid sprechen; allein beweist er kein Adenom.',
+    'STIR ist nicht fettspezifisch und weist intrazelluläres Lipid nicht nach.',
     'deren Anteile variieren von kleinen Fetteinseln bis zu überwiegend fetthaltigen Massen.',
     'In den zwei axialen CT-Bildern bleibt die makroskopische Fettkomponente nativ sichtbar; nach Kontrastmittel ist heterogene Anreicherung der weichteildichten Anteile zu sehen.',
     'Quellpaar aus Abdomen.pdf, PDF-Seite 61 (Druckseite 60).',
     'Fettanteile T1/T2 hyperintens; hämatopoetische Weichteilanteile intermediär.',
-    'Kein flächiger Signalabfall der gesamten Läsion; dunkler India-ink-Rand an Fett-Wasser-Grenzen möglich.',
+    'Kein diffuser Signalabfall der gesamten Läsion; ein dunkler India-ink-Rand an Fett-Wasser-Grenzen ist möglich.',
     'Makroskopische Fettanteile zeigen deutlichen Signalabfall.',
   ],
   en: [
+    'In a homogeneous lesion, homogeneous opposed-phase signal loss may support microscopic lipid; it does not by itself diagnose adenoma.',
+    'STIR is not fat-specific and does not demonstrate intracellular lipid.',
     'with proportions ranging from small fat islands to predominantly fatty masses.',
     'In the two axial CT images, macroscopic fat remains visible on the unenhanced image; after contrast, the soft-tissue components enhance heterogeneously.',
     'Source pair from Abdomen.pdf, PDF page 61 (printed page 60).',
@@ -52,6 +56,8 @@ const expected = {
     'Macroscopic fat shows marked signal loss.',
   ],
   fa: [
+    'در ضایعه همگن، افت همگن سیگنال در opposed-phase می‌تواند از چربی میکروسکوپیک حمایت کند؛ به‌تنهایی آدنوم را تشخیص نمی‌دهد.',
+    'STIR اختصاصی چربی نیست و چربی داخل‌سلولی را اثبات نمی‌کند.',
     'نسبت این اجزا از جزیره‌های کوچک چربی تا توده‌های عمدتاً چربی‌دار متغیر است.',
     'در دو تصویر CT محوری، چربی ماکروسکوپیک در تصویر بدون تزریق دیده می‌شود؛ پس از تزریق، اجزای بافت نرم تقویت ناهمگون دارند.',
     'دو تصویر منبع از Abdomen.pdf، صفحه ۶۱ فایل (صفحه چاپی ۶۰).',
@@ -69,4 +75,4 @@ for (const locale of ['de', 'en', 'fa']) {
   assert.ok(html.includes('/abdomen/nebenniere/source-pdf/myelolipoma-postcontrast.jpg'), `${locale}: post-contrast source image remains attached`)
   assert.doesNotMatch(html, /20\s*[–-]\s*30\s*%|20\s*%\s*(?:to|bis)\s*30\s*%|(?:−|-)30\s*(?:to|bis)\s*(?:−|-)?120\s*HU|hormonally inactive|hormonell inaktiv|ه‌ورمونی غیرفعال/i, `${locale}: source calcification percentages/ranges and unverified inactivity claim are not presented`)
 }
-console.log('Myelolipoma SSR PASS: DE/EN/FA, RTL, variable tissue proportions, source-labeled p61 CT pair, MRI fat-pattern distinction, and excluded broad calcification/range/inactivity claims.')
+console.log('Adrenal MRI SSR PASS: DE/EN/FA, RTL, adenoma opposed-phase qualification, STIR caveat, myelolipoma fat pattern, source-labeled p61 CT pair, and excluded unverified source claims.')
