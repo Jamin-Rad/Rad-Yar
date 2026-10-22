@@ -4329,6 +4329,11 @@ for (const lang of Object.keys(QUESTION_BANK)) {
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  {
+    fachId: 'msk', kapitelId: 'msk-osteochondrosen',
+    title: { de: 'Osteochondrosen', en: 'Osteochondroses', fa: 'استئوکندروزها' },
+    topics: [{ id: 'morbus-scheuermann', title: { de: 'Morbus Scheuermann', en: "Scheuermann's disease", fa: 'بیماری شویرمان' } }],
+  },
   MSK_BONE_AGGRESSIVENESS_TOPIC_GROUP,
   SPINE_MODIC_TOPIC_GROUP,
   { fachId: 'msk', kapitelId: 'msk-knee-lower-leg', title: { de: 'Knie & Unterschenkel', en: 'Knee & lower leg', fa: 'زانو و ساق' }, topics: [{ id: 'patella-streckapparat', title: { de: 'Patella & Streckapparat', en: 'Patella & extensor mechanism', fa: 'کشکک و مکانیسم اکستانسور' } }] },

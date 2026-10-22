@@ -8,7 +8,7 @@ import { CURRICULUM } from '../data/curriculum.js'
 import { SPINE_INFLAMMATORY_STRUCTURAL_LESSON as lesson } from '../data/spineInflammatoryStructural.js'
 import { MSK_SPINE_REGISTERED_QUESTIONS } from '../data/mskSpineRegisteredQuestions.js'
 import { MSK_SPINE_REGISTERED_FLASHCARDS, MSK_SPINE_REGISTERED_FLASHCARD_TOPICS } from '../data/mskSpineRegisteredFlashcards.js'
-import { QUESTION_BANK, getQuestions } from '../data/questions.js'
+import { QUESTION_BANK, getQuestions, MCQ_TOPIC_GROUPS } from '../data/questions.js'
 import { FLASHCARDS, getCardsByTopic } from '../data/flashcards.js'
 
 const require = createRequire(import.meta.url)
@@ -44,7 +44,10 @@ const Page = compile('app/wirbelsaeule/entzuendlich/page.js', {
 
 const topic = CURRICULUM.flatMap(group => group.kapitel || []).flatMap(chapter => chapter.themen || []).find(item => item.id === 'morbus-scheuermann')
 assert.equal(topic?.link, '/wirbelsaeule/entzuendlich')
+assert.equal(topic?.mcqLink, '/ueben/quiz?fach=msk&n=1&themen=morbus-scheuermann')
+assert.equal(topic?.flashcardLink, '/flashcards/morbus-scheuermann')
 assert.equal(topic?.inProgress, true)
+assert.ok(MCQ_TOPIC_GROUPS.some(group => group.fachId === 'msk' && group.kapitelId === 'msk-osteochondrosen' && group.topics.some(item => item.id === 'morbus-scheuermann')), 'Scheuermann appears in the matching global quiz chapter')
 const chapter = lesson.chapters.find(item => item.id === 'scheuermann')
 assert.ok(chapter)
 assert.equal(chapter.source.de.includes('PDF S. 13 (Druckseite 12)'), true)
@@ -81,6 +84,10 @@ for (const lang of ['de', 'en', 'fa']) {
   assert.ok(html.includes(esc(lesson.chapters.find(item => item.id === 'ankylosing-mri').note[lang])), `${lang}: ASAS/negative MRI caveat`)
   assert.ok(html.includes(esc(lesson.case.prompt[lang])), `${lang}: case prompt`)
   assert.ok(lesson.case.feedbackIncorrect[lang], `${lang}: explanatory wrong-answer feedback is localized`)
+  assert.ok(html.includes('/ueben/quiz?fach=msk&amp;n=1&amp;themen=morbus-scheuermann&amp;from='), `${lang}: exact-topic quiz action is rendered`)
+  assert.ok(html.includes('/flashcards/morbus-scheuermann?from='), `${lang}: exact-topic flashcard action is rendered`)
+  const localizedReturn = lang === 'de' ? '/wirbelsaeule/entzuendlich#scheuermann' : `/wirbelsaeule/entzuendlich?lang=${lang}#scheuermann`
+  assert.ok(html.includes(`from=${encodeURIComponent(localizedReturn)}`), `${lang}: assessment returns to the localized Scheuermann anchor`)
 }
 
 const registeredQuestion = MSK_SPINE_REGISTERED_QUESTIONS.find(item => item.de.tags.includes('morbus-scheuermann'))

@@ -18,7 +18,11 @@ export default function SpineSourceLesson({ lessonData = lesson, sectionName = n
   const { lang } = useLanguage()
   const rtl = lang === 'fa'
   const c = value => L(value, lang)
-  const withLang = href => lang === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${lang}`
+  const withLang = href => {
+    const [path, hash] = href.split('#', 2)
+    const localizedPath = lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
+    return hash ? `${localizedPath}#${hash}` : localizedPath
+  }
   const copy = SOURCE_LESSON_UI[lang] || SOURCE_LESSON_UI.de
   const { isRead, toggleRead, authError } = useLessonReadStatus(lessonData.id)
   const trackedSections = useMemo(() => [
@@ -65,7 +69,7 @@ export default function SpineSourceLesson({ lessonData = lesson, sectionName = n
     <p className={styles.note}>{c(chapter.note)}</p>
     <small>{copy.chapterSource} {c(chapter.source)}</small>
     {chapter.id === 'modic' && (() => {
-      const returnTo = lang === 'de' ? '/wirbelsaeule/degenerative#modic' : `/wirbelsaeule/degenerative?lang=${lang}#modic`
+      const returnTo = withLang('/wirbelsaeule/degenerative#modic')
       const from = encodeURIComponent(returnTo)
       const labels = {
         de: { name: 'Modic-Veränderungen üben', quiz: 'MC-Frage', cards: 'Lernkarte' },
@@ -75,6 +79,19 @@ export default function SpineSourceLesson({ lessonData = lesson, sectionName = n
       return <nav className={styles.practiceActions} aria-label={labels.name}>
         <Link className={styles.practicePrimary} href={withLang(`/ueben/quiz?fach=wirbelsaeule&n=1&themen=osteochondrosis-intervertebralis&from=${from}`)}>{labels.quiz}</Link>
         <Link className={styles.practiceSecondary} href={withLang(`/flashcards/osteochondrosis-intervertebralis?from=${from}`)}>{labels.cards}</Link>
+      </nav>
+    })()}
+    {chapter.id === 'scheuermann' && (() => {
+      const returnTo = withLang('/wirbelsaeule/entzuendlich#scheuermann')
+      const from = encodeURIComponent(returnTo)
+      const labels = {
+        de: { name: 'Scheuermann üben', quiz: 'MC-Frage', cards: 'Lernkarte' },
+        en: { name: "Practise Scheuermann's disease", quiz: 'MCQ', cards: 'Flashcard' },
+        fa: { name: 'تمرین بیماری شویرمان', quiz: 'سؤال چندگزینه‌ای', cards: 'فلش‌کارت' },
+      }[lang]
+      return <nav className={styles.practiceActions} aria-label={labels.name}>
+        <Link className={styles.practicePrimary} href={withLang(`/ueben/quiz?fach=msk&n=1&themen=morbus-scheuermann&from=${from}`)}>{labels.quiz}</Link>
+        <Link className={styles.practiceSecondary} href={withLang(`/flashcards/morbus-scheuermann?from=${from}`)}>{labels.cards}</Link>
       </nav>
     })()}
   </>

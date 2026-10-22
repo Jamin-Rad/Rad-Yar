@@ -25,11 +25,11 @@ The source image itself is a contextual example and is modest in resolution with
 
 ## Assessment and curriculum
 
-The exact `morbus-scheuermann` curriculum topic now points to `/wirbelsaeule/entzuendlich` and remains `inProgress`. The existing three-language Sørensen MCQ and flashcard are wired to that exact topic for retrieval; no axSpA items or chapter content were changed.
+The exact `morbus-scheuermann` curriculum topic points to `/wirbelsaeule/entzuendlich` and remains `inProgress`. Its existing three-language Sørensen MCQ and flashcard are discoverable through exact curriculum links and the global `msk-osteochondrosen` quiz group. The lesson chapter exposes localized quiz/card actions that return to `#scheuermann`; no axSpA items or chapter content were changed.
 
 ## Verification and open gates
 
-- `node --import tsx scripts/test-morbus-scheuermann-wirbelsaeule-p13.mjs` — route SSR in DE/EN/FA, RTL, source page identity, figure/caption, criterion/differential semantics, exact curriculum mapping and assessment retrieval.
+- `node --import tsx scripts/test-morbus-scheuermann-wirbelsaeule-p13.mjs` — route SSR in DE/EN/FA, RTL, source page identity, figure/caption, criterion/differential semantics, exact curriculum mapping, global quiz discovery, localized assessment actions and return anchors.
 - `node --import tsx scripts/audit-msk-spine-assessment-retrieval.mjs` — global question/card schema and topic retrieval.
 - `node --import tsx scripts/check-msk-spine-authorship.mjs` — lesson structure and translations.
 - `git diff --check` — whitespace validation.
