@@ -121,3 +121,7 @@ Die unabhängige Prüfung fand eine Verwechslungsgefahr zwischen Tile-Grundtyp B
 ### Vancouver periprothetische Femurfraktur · MSK.pdf S.27 (22.10.2026)
 
 Zwei MCQs mit je vier Antwortoptionen und zwei Lernkarten sind unter `periprothetische-femurfraktur` in die globalen DE/EN/FA-Banken aufgenommen. Die Lektion und der Curriculum-Eintrag verlinken exakt auf diese Inhalte. SSR-Test und Fragenbank-Audit bestanden; unabhängige Delta-Prüfung bestanden. Browser-Klickprüfung und klinische Freigabe bleiben offen.
+
+### Proximale Femurfraktur · MSK.pdf S.29–30 (22.10.2026)
+
+Zwei Vier-Optionen-MCQs und zwei Lernkarten zu Pauwels (AO 30°/50°) sowie zur Aussagegrenze von Garden sind unter `proximale-femurfraktur` in die DE/EN/FA-Banken aufgenommen. Lesson und Curriculum verlinken exakt auf Frage- und Kartenroute. SSR und globales MCQ-Audit bestanden; unabhängige Delta-Prüfung inklusive Übersetzungskorrektur bestanden. Browser und klinische Prüfung bleiben offen.

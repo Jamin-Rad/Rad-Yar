@@ -5,6 +5,8 @@ import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import { PROXIMALE_FEMURFRAKTUR_LESSON as lesson } from '../data/proximaleFemurfrakturLesson.js'
+import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
+import { FLASHCARD_TOPICS, getCardsByTopic } from '../data/flashcards.js'
 
 const langs = ['de', 'en', 'fa']
 assert.equal(lesson.id, 'proximale-femurfraktur')
@@ -19,6 +21,19 @@ assert.equal(classifications.visuals.length, 2)
 assert.equal(lesson.check.answer, 0)
 assert.equal(lesson.check.options.length, 3)
 assert.equal(lesson.references.length, 6)
+assert.ok(MCQ_TOPIC_GROUPS.flatMap(group => group.topics).some(topic => topic.id === 'proximale-femurfraktur'))
+assert.equal(FLASHCARD_TOPICS.filter(topic => topic.id === 'proximale-femurfraktur').length, 1)
+const cards = getCardsByTopic('proximale-femurfraktur')
+assert.equal(cards.length, 2)
+assert.ok(cards.every(card => ['de', 'en', 'fa'].every(lang => card.front[lang] && card.answer[lang] && card.explanation[lang])))
+assert.ok(cards.every(card => card.front.de !== card.front.en))
+for (const lang of langs) {
+  const questions = QUESTION_BANK[lang].filter(question => question.tags?.includes('proximale-femurfraktur'))
+  assert.equal(questions.length, 2)
+  assert.ok(questions.every(question => question.options.length === 4 && question.explanation))
+  assert.ok(questions.every(question => question.question && question.options.every(option => option.text)))
+}
+assert.equal(QUESTION_BANK.de.find(question => question.tags?.includes('proximale-femurfraktur') && question.id.includes('pauwels-angle')).options[3].text, 'Die Einteilung verwendet nur die Dislokation, nicht den Winkel.')
 
 const allLocalized = value => {
   if (!value || typeof value !== 'object') return
@@ -86,6 +101,8 @@ for (const lang of langs) {
   const html = renderToStaticMarkup(React.createElement(Page))
   assert.ok(html.includes(`lang="${lang}"`))
   assert.ok(html.includes(`dir="${lang === 'fa' ? 'rtl' : 'ltr'}"`))
+  assert.ok(html.includes('/ueben/quiz?fach=msk&amp;n=8&amp;themen=proximale-femurfraktur'))
+  assert.ok(html.includes('/flashcards/proximale-femurfraktur'))
   assert.ok(html.includes('id="regions"') && html.includes('id="classifications"'))
   assert.ok(html.includes(lesson.title[lang]))
   assert.ok(html.includes(regions.imageAlt[lang]) && html.includes(regions.imageCaption[lang]))
@@ -105,5 +122,5 @@ const ledger = fs.readFileSync('docs/lesson-quality/proximale-femurfraktur-msk-p
 for (const id of ['PF-01', 'PF-02', 'PF-03', 'PF-04', 'PF-05', 'PF-06', 'PF-07', 'PF-08']) assert.ok(ledger.includes(id))
 assert.match(ledger, /II 30–50°, III >50°/)
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
-assert.match(curriculum, /\{ id: 'proximale-femurfraktur',[^\n]*link: '\/msk\/trauma\/proximale-femurfraktur',[^\n]*inProgress: true/)
-console.log('Proximal femur fractures MSK.pdf pp.29–30: source conflict, page-linked ledger, concept visuals and embedded check; shared-shell DE/EN/FA+RTL SSR passed.')
+assert.match(curriculum, /\{ id: 'proximale-femurfraktur',[^\n]*link: '\/msk\/trauma\/proximale-femurfraktur',[^\n]*mcqLink: '\/ueben\/quiz\?fach=msk&n=8&themen=proximale-femurfraktur',[^\n]*flashcardLink: '\/flashcards\/proximale-femurfraktur'/)
+console.log('Proximal femur lesson: source conflict, exact-topic MCQ/cards, concept visuals and embedded check; DE/EN/FA+RTL SSR passed.')

@@ -15,6 +15,7 @@ const labels = {
   completed: L('Als gelesen markiert', 'Marked as read', 'خوانده‌شده'), open: L('Abschnitt öffnen', 'Open section', 'بازکردن بخش'), close: L('Schließen', 'Close', 'بستن'),
   takeHome: L('Drei Regeln mitnehmen', 'Three rules to remember', 'سه قاعده برای یادآوری'), sources: L('Quellen und Umfang', 'Sources and scope', 'منابع و دامنه'),
   feature: L('Merkmal', 'Feature', 'ویژگی'), interpretation: L('Einordnung', 'Interpretation', 'تفسیر'), choose: L('Eine Antwort auswählen', 'Choose one answer', 'یک پاسخ را انتخاب کنید'),
+  quiz: L('Fragen zur proximalen Femurfraktur', 'Proximal femur questions', 'پرسش‌های شکستگی پروگزیمال فمور'), cards: L('Lernkarten zur proximalen Femurfraktur', 'Proximal femur flashcards', 'فلش‌کارت‌های شکستگی پروگزیمال فمور'),
 }
 const icons = { clinical: 'M12 3v18M5 8h14M7 16h10', imaging: 'M4 5h16v14H4zM7 15l3-4 2 2 3-5 3 7', differential: 'M12 3v5m0 4v9M5 8h14M5 16h14', check: 'M4 4h16v16H4zM8 9h8m-8 4h5', summary: 'M5 5h14M5 12h14M5 19h14' }
 function Icon({ id }) { return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={icons[id] || icons.clinical} /></svg> }
@@ -38,13 +39,13 @@ export default function ProximaleFemurfrakturPage() {
   const { lang } = useLanguage()
   const t = value => pick(value, lang)
   const translatedLabels = Object.fromEntries(Object.entries(labels).map(([key, value]) => [key, t(value)]))
-  const languagePath = path => lang === 'de' ? path : `${path}?lang=${lang}`
+  const languagePath = path => lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
   const sections = [...lesson.sections.map(section => ({ id: section.id, label: t(section.title), icon: section.icon })), { id: 'take-home', label: translatedLabels.takeHome, icon: 'summary', emphasis: true }]
   const references = lesson.references.map(reference => ({ ...reference, title: t(reference.title), citation: typeof reference.citation === 'string' ? reference.citation : t(reference.citation) }))
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={t(lesson.title)} author="RadYar" syncHashNavigation
     heroImageAlt={t(L('Schematische proximale Femurform mit markierten Frakturlinien; kein Patientenbild.', 'Schematic proximal femur with fracture lines; not a patient image.', 'نمای شماتیک فمور پروگزیمال با خطوط شکستگی؛ تصویر بیمار نیست.'))}
     breadcrumbs={[{ label: 'RadYar', href: languagePath('/') }, { label: 'MSK', href: languagePath('/lernen/msk') }, { label: t(lesson.title) }]}
-    sections={sections} labels={translatedLabels} actions={{}} renderIcon={id => <Icon id={id} />}
+    sections={sections} labels={translatedLabels} actions={{ mcq: { label: translatedLabels.quiz, href: languagePath('/ueben/quiz?fach=msk&n=8&themen=proximale-femurfraktur') }, flashcards: { label: translatedLabels.cards, href: languagePath('/flashcards/proximale-femurfraktur') } }} renderIcon={id => <Icon id={id} />}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.hero, heroImageOpacity: .94, accent: '#d49a61', accentStrong: '#79502d', accentSoft: '#f2e9de', secondary: '#8ab9a7', secondaryStrong: '#286451', heroBase: '#18342e' }}
     className={styles.page} sources={<LessonSources title={translatedLabels.sources} items={references} note={t(lesson.sourceNote)} />}>
     {lesson.sections.map(section => <LessonSection key={section.id} id={section.id} icon={section.icon} title={t(section.title)} bodyClassName={styles.body}>

@@ -36,3 +36,7 @@ No case images occur on these pages. Both pages contain illustrations. The lesso
 ## Verification limits
 
 Focused SSR will check DE/EN/FA, RTL, localized figure text and the embedded retrieval check. Browser review and specialist clinical sign-off remain pending. The lesson omits treatment recommendations and does not claim to teach fracture diagnosis from patient radiographs.
+
+## Retrieval practice registration (2026-10-22)
+
+Two localized four-option MCQs and two flashcards are now registered under the exact curriculum ID `proximale-femurfraktur`. The questions target the corrected AO Pauwels 30°/50° thresholds and the limited descriptive scope of Garden. The lesson actions and curriculum entry link to the registered resources. Focused SSR/content retrieval and global question-bank checks pass; independent assessment review and corrective translation delta passed. Browser click-through and Dr. Zia's clinical review remain pending.
