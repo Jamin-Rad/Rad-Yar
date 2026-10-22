@@ -1227,7 +1227,7 @@ export default function MeniskusPage() {
 
           <Section id="risstypen" eyebrow="04" title={copy.tearTypes.title} lead={copy.tearTypes.lead} {...sectionProps('risstypen')}>
             <TearTypeExplorer lang={lang} />
-            <div className={`${styles.subSectionBlock} ${contentStyles.rootsGrid}`} data-pdf-source-addendum="msk-49-50-51">
+            <div className={`${styles.subSectionBlock} ${contentStyles.rootsGrid}`} data-pdf-source-addendum="msk-48-49-50-51">
               {MENISCUS_PDF_GAP_ADDENDUM.tearTypes.map(item => (
                 <article className={contentStyles.normalCard} key={item.id} data-source-page={item.sourcePage}>
                   <h3>{item.title[lang] || item.title.de}</h3>

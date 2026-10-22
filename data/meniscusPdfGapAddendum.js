@@ -1,9 +1,22 @@
 const L = (de, en, fa) => ({ de, en, fa })
 
 export const MENISCUS_PDF_GAP_ADDENDUM = {
-  sourcePages: [49, 50, 51, 52, 54, 55],
-  printedPages: [48, 49, 50, 51, 53, 54],
+  sourcePages: [48, 49, 50, 51, 52, 54, 55],
+  printedPages: [47, 48, 49, 50, 51, 53, 54],
   tearTypes: [
+    {
+      id: 'posterior-meniscofemoral-attachment-tear',
+      sourcePage: 48,
+      image: '/msk/knie/meniskus/posterior-meniscofemoral-attachment-pdf-p48.png',
+      imageAlt: L('PDF-Beispiel: sagittale MRT-Schichten eines longitudinal-vertikalen Risses am Hinterhorn des Außenmeniskus nahe dem posterioren meniskofemoralen Ansatz.', 'PDF example: sagittal MRI slices of a longitudinal-vertical tear at the lateral meniscus posterior horn near the posterior meniscofemoral attachment.', 'نمونهٔ PDF: برش‌های ساژیتال MRI از پارگی طولی-عمودی در شاخ خلفی منیسک خارجی، نزدیک اتصال خلفی منیسکوفمورال.'),
+      printedPage: 47,
+      title: L('Riss am posterioren meniskofemoralen Ansatz (PDF: „Wrisberg-Riss“)', 'Tear at the posterior meniscofemoral attachment (PDF term: “Wrisberg rip”)', 'پارگی در اتصال خلفی منیسکوفمورال (اصطلاح PDF: Wrisberg rip)'),
+      text: L(
+        'Der PDF-Begriff „Wrisberg-Riss“ bezeichnet hier einen longitudinal-vertikalen Riss am Hinterhorn des Außenmeniskus nahe dem Ansatz des posterioren meniskofemoralen Ligaments. Im selben Bereich kann das intakte Ligament einen Pseudoriss vortäuschen: Verfolge seine Kontinuität zum Femur über benachbarte sagittale Schichten. Die Quelle nennt eine häufige VKB-Assoziation; das Muster allein beweist keine VKB-Ruptur. In Befunden ist die anatomische Beschreibung präziser als der Eponym.',
+        'The PDF term “Wrisberg rip” here describes a longitudinal-vertical tear of the lateral meniscus posterior horn near the posterior meniscofemoral ligament attachment. An intact ligament in the same region can mimic a tear: trace its continuity to the femur across adjacent sagittal slices. The source notes frequent ACL association; this pattern alone does not prove an ACL tear. Anatomic wording is more precise than the eponym in reports.',
+        'اصطلاح PDF یعنی «Wrisberg rip» در اینجا به پارگی طولی-عمودی شاخ خلفی منیسک خارجی، نزدیک اتصال رباط منیسکوفمورال خلفی، اشاره دارد. رباط سالم در همین ناحیه می‌تواند پارگی را تقلید کند؛ پیوستگی آن تا فمور را در برش‌های ساژیتال مجاور دنبال کنید. منبع همراهی شایع با پارگی ACL را ذکر می‌کند، اما این الگو به‌تنهایی پارگی ACL را ثابت نمی‌کند. در گزارش، توصیف آناتومیک از اپونیم دقیق‌تر است.'
+      ),
+    },
     {
       id: 'parrot-beak',
       sourcePage: 49,

@@ -1663,6 +1663,30 @@ const LEGACY_FLASHCARDS = [
     }
   },
   {
+    "id": "meniskus-37",
+    "topicId": "meniskus",
+    "front": {
+      "de": "Wie lässt sich ein PDF-„Wrisberg-Riss“ anatomisch präziser beschreiben?",
+      "en": "How can the PDF’s “Wrisberg rip” be described more precisely in anatomic terms?",
+      "fa": "اصطلاح Wrisberg rip در PDF را چگونه می‌توان با توصیف آناتومیک دقیق‌تر بیان کرد؟"
+    },
+    "answer": {
+      "de": "Longitudinal-vertikaler Riss am Hinterhorn des Außenmeniskus nahe dem posterioren meniskofemoralen Ansatz.",
+      "en": "Longitudinal-vertical tear of the lateral meniscus posterior horn near the posterior meniscofemoral attachment.",
+      "fa": "پارگی طولی-عمودی شاخ خلفی منیسک خارجی نزدیک اتصال خلفی منیسکوفمورال."
+    },
+    "explanation": {
+      "de": "Ein intaktes posterior-meniskofemorales Ligament kann einen Pseudoriss vortäuschen. Seine Kontinuität zum Femur über Nachbarschichten verfolgen. Der Rissbegriff allein belegt keine VKB-Ruptur.",
+      "en": "An intact posterior meniscofemoral ligament can mimic a tear. Trace its continuity to the femur across adjacent slices. The tear pattern alone does not establish an ACL rupture.",
+      "fa": "رباط منیسکوفمورال خلفی سالم می‌تواند پارگی را تقلید کند؛ پیوستگی آن را در برش‌های مجاور تا فمور دنبال کنید. این الگو به‌تنهایی پارگی ACL را ثابت نمی‌کند."
+    },
+    "category": {
+      "de": "Rissmuster und Pseudorisse",
+      "en": "Tear patterns and pseudotears",
+      "fa": "الگوهای پارگی و پارگی کاذب"
+    }
+  },
+  {
     "id": "haemangiom-01-definition",
     "topicId": "haemangiom",
     "category": {

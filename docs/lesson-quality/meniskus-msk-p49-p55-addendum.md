@@ -1,9 +1,10 @@
-# Meniscus lesson addendum — MSK.pdf pp.49–55
+# Meniscus lesson addendum — MSK.pdf pp.48–55
 
 Scope: bounded source additions to the existing `/msk/knie/meniskus` lesson. The PDF pages below were inspected as text and rendered page images. Page numbers distinguish physical PDF position from the printed page footer.
 
 | Key | Source point | Lesson disposition | Visual / limits |
 | --- | --- | --- | --- |
+| MEN-48-01 | MSK.pdf physical p.48 / printed p.47: “Wrisberg rip” is a longitudinal-vertical tear at the lateral meniscus posterior horn near the posterior meniscofemoral attachment; source notes frequent ACL association | Added using anatomic wording first and retaining the PDF eponym only as a source synonym. A localized MCQ/card distinguish the tear from the intact meniscofemoral ligament pseudotear described on p.52. | Source crop retains sagittal MRI examples and source schema. The association alone is explicitly not treated as proof of ACL injury. Current SSR consensus favors anatomic description over the eponym. |
 | MEN-49-01 | MSK.pdf physical p.49 / printed p.48: parrot-beak tear combines radial and longitudinal morphology; curved course changes capsule distance across sagittal slices (wandering effect) | Added under existing tear-types chapter; tells learners to follow adjacent sagittal slices | Source crop from p.49 included; describes morphology, no treatment claim. |
 | MEN-50-01 | MSK.pdf physical p.50 / printed p.49: displaced bucket-handle fragment lies in the intercondylar notch; double-PCL sign may be present | Added as a concise pattern card in the tear-types chapter; learners are asked to identify the fragment directly and correlate across planes | Source crop retains the sagittal/coronal/axial examples and simplified source schema. The PDF's “pathognomonic” claim is narrowed: a double-PCL sign is highly specific but can be mimicked; no single sign replaces anatomic correlation. |
 | MEN-51-01 | MSK.pdf physical p.51 / printed p.50: posterior horn displaced anteriorly; double-anterior-horn and empty-posterior-horn signs | Added as a separate DE/EN/FA pattern card and one connected retrieval MCQ/flashcard | Source crop retains sagittal examples and source schema. The empty native posterior horn is included as a supporting sign; an anterior-horn variant remains a stated pitfall. |
@@ -14,12 +15,14 @@ Scope: bounded source additions to the existing `/msk/knie/meniskus` lesson. The
 
 ## Media and structure
 
-The page excerpts were rendered directly from the user's MSK.pdf at 210 dpi using page-specific PDF crop boxes, retaining the source MRI panels and diagrams without adding labels. Captions name the physical and printed page. The additions are placed inside the existing MRI and tear-type chapters; no new route or chapter was introduced. The root-tear biomechanical claim is attributed to the primary cadaveric study and explicitly qualified. The double-PCL discussion is additionally cross-checked against Helms et al. (PMID 12719929) and the published pitfalls report (PMID 19234702); the flipped-meniscus description is cross-checked against Haims et al. (PMID 8316871).
+The page excerpts were rendered directly from the user's MSK.pdf at 210 dpi using page-specific PDF crop boxes, retaining the source MRI panels and diagrams without adding labels. Captions name the physical and printed page. The additions are placed inside the existing MRI and tear-type chapters; no new route or chapter was introduced. The root-tear biomechanical claim is attributed to the primary cadaveric study and explicitly qualified. The double-PCL discussion is additionally cross-checked against Helms et al. (PMID 12719929) and the published pitfalls report (PMID 19234702); the flipped-meniscus description is cross-checked against Haims et al. (PMID 8316871). The p.48 “Wrisberg rip” is framed anatomically in keeping with current SSR nomenclature; the source eponym is retained only as a searchable synonym.
 
 ## Validation
 
 - Focused regression: `node --import tsx scripts/test-meniscus-pdf-p49-p55.mjs`.
 - Focused p.50–51 regression: `node --import tsx scripts/test-meniscus-pdf-p50-p51.mjs`.
+- Focused p.48 regression: `node --import tsx scripts/test-meniscus-pdf-p48-wrisberg.mjs`.
 - Three-language strings, source page mapping, referenced crop assets and the root-tear evidence link are checked by the focused test.
 - This bounded change does not validate the rest of the meniscus lesson clinically or establish browser/device QA. Those remain separate review gates.
 - Independent p.50–51 delta review passed source mapping, crop integrity, DE/EN/FA wording, diagnostic caveats, and MCQ/flashcard wiring. Focused p.50–51 and existing p.49–55 regression tests passed. Browser/device QA and Dr. Zia's clinical sign-off remain open.
+- The independent p.48 review requested a clearer Q37 stem because its original “distinguish” wording could key either the tear location or the ligament continuity. The stem now asks what the PDF eponym describes, with the anatomic tear as the unambiguous keyed answer; the source-addendum wrapper now also lists p.48. Independent delta re-review passed and both focused tests passed. Browser/device QA and Dr. Zia's clinical sign-off remain open.

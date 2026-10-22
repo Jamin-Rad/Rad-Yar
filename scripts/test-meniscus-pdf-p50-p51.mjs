@@ -35,7 +35,7 @@ for (const locale of ['de', 'en', 'fa']) {
 }
 
 const route = fs.readFileSync('app/msk/knie/meniskus/page.js', 'utf8')
-assert.match(route, /data-pdf-source-addendum="msk-49-50-51"/)
+assert.match(route, /data-pdf-source-addendum="msk-48-49-50-51"/)
 assert.match(route, /MENISCUS_PDF_GAP_ADDENDUM\.tearTypes\.map/)
 assert.match(route, /Helms et al\. · Bucket-handle tear MRI signs/)
 assert.match(route, /Haims et al\. · The flipped meniscus sign/)
