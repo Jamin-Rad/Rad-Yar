@@ -46,4 +46,6 @@ Route: `/msk/postop/osteosynthese`. شناسهٔ دقیق `osteosynthese` به �
 
 - متن کامل صفحهٔ PDF با pypdf استخراج و برای تعیین ترتیب/نکات بررسی شد؛ تصویر تشخیصی یا شکل آموزشی در صفحه نیست. در PDF تعداد ۹ تصویر تعبیه‌شده استخراج‌شده صرفاً glyphهای فهرست/نشانه‌ها هستند، نه کیس رادیوگرافی.
 - ترجمهٔ ساختاری DE/EN/FA با آزمون متمرکز کنترل می‌شود؛ بررسی دیداری RTL در مرورگر، تم‌ها و ابعاد صفحه هنوز انجام نشده است.
-- بازبینی مستقل هنوز لازم است. هیچ ادعای درستی بالینی دربارهٔ آستانهٔ پیچ یا تأیید انتشار ارائه نمی‌شود.
+- بازبینی مستقل محدود روی انطباق صفحه با PDF، دامنهٔ درس، سه زبان و self-check انجام شد؛ ترتیب و چهار نکتهٔ عمومی با منبع منطبق بود و نمودار غیرتشخیصی نیز به‌درستی چنین معرفی شده است. رهنمود موقعیت پیچ DHS/PFN با منبع اولیهٔ مختص نوع ایمپلنت به‌طور مستقل راستی‌آزمایی نشد؛ عدد ۵ میلی‌متر همچنان فقط یادداشت منبع است.
+- آزمون متمرکز این صفحه و ممیزی سراسری ۷۳۰ سؤال پاس شدند. مشاهده و تعامل واقعی مرورگر، RTL دیداری، تم‌ها و ابعاد صفحه هنوز تأیید نشده‌اند؛ تأیید علمی دکتر ضیا و تأیید انتشار هم ثبت نشده است.
+- A bounded independent review of source alignment, lesson scope, localization, and the self-check found no mismatch in the four general checklist points or the non-diagnostic schematic. DHS/PFN screw-position guidance was not independently verified against current implant-specific primary evidence; the 5 mm value remains only a source note.
