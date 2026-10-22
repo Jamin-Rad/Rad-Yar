@@ -23,6 +23,14 @@ for (const locale of locales) {
   for (const cell of [...recommendationTable.headers, ...recommendationTable.rows.flat()]) {
     assert.ok(cell[locale]?.length > 0, `${locale}: table cell is translated`)
   }
+  const selfCheck = section.blocks.find(block => block.type === 'selfCheck')
+  assert.ok(selfCheck, `${locale}: reaction section includes an aligned self-check`)
+  assert.equal(selfCheck.options.length, 3)
+  assert.equal(selfCheck.correct, 0)
+  for (const value of [selfCheck.title, selfCheck.question, ...selfCheck.options, selfCheck.feedback]) {
+    assert.ok(value[locale]?.length > 0, `${locale}: self-check text and feedback are translated`)
+  }
+  assert.match(selfCheck.feedback[locale], locale === 'de' ? /Verlauf, Begleitzeichen/ : locale === 'en' ? /progression, associated signs/ : /روند، علائم همراه/)
   assert.ok(section.blocks.some(block => block.type === 'sourceLink' && block.href === 'https://doi.org/10.1148/radiol.240100' && block.label[locale]), `${locale}: joint 2025 consensus is linked`)
   assert.ok(section.blocks.some(block => block.type === 'sourceLink' && block.href === 'https://doi.org/10.1007/s00330-025-11676-0' && block.label[locale]), `${locale}: ESUR 2025 guidance is linked`)
 }
