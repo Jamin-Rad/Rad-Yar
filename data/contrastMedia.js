@@ -294,7 +294,7 @@ const QUESTION_SEEDS = {
   ],
   'km-niereninsuffizienz': [
     ['Ab welcher eGFR ist eine besonders sorgfältige Nutzen-Risiko-Abwägung üblich?', 'Unter 30 ml/min/1,73 m²', ['Unter 120', 'Unter 90', 'Unter 60 bei jedem Patienten', 'Unter 30 ml/min/1,73 m²'], 'D'],
-    ['Soll wegen einer einmaligen KM-Gabe routinemäßig neu mit Dialyse begonnen werden?', 'Nein', ['Ja, immer', 'Nur nach USKM', 'Nein', 'Nur nach oralem Barium'], 'C'],
+    ['Welche Aussage zur Dialyse nach GBCA ist korrekt?', 'Eine neue Dialyse wird nicht routinemäßig allein wegen GBCA begonnen; bei bestehender Hämodialyse unterscheiden Empfehlungen nach Mitteltyp und Leitlinie.', ['Nach jedem GBCA sofort HD beginnen, auch ohne bestehende Dialyse.', 'Eine neue Dialyse wird nicht routinemäßig allein wegen GBCA begonnen; bei bestehender Hämodialyse unterscheiden Empfehlungen nach Mitteltyp und Leitlinie.', 'Dialyse verhindert NSF sicher, unabhängig vom Mittel.', 'Makrozyklische GBCA erfordern immer drei zusätzliche HD-Sitzungen.'], 'B'],
   ],
   'km-schilddruese': [
     ['Welche Schilddrüsensituation ist für jodhaltiges KM besonders relevant?', 'Manifeste Hyperthyreose', ['Behandelte Hypothyreose', 'Manifeste Hyperthyreose', 'Normales TSH', 'Zustand nach Appendektomie'], 'B'],
@@ -331,7 +331,7 @@ const translateQuestion = (seed, lang) => {
       'Wo verbleiben diagnostische Ultraschall-Mikrobläschen?': ['Where do diagnostic ultrasound microbubbles remain?', 'Intravascularly', ['Intracellularly', 'Intravascularly', 'Only in bile ducts', 'In bone marrow']],
       'Wie wird der Gasanteil von USKM überwiegend eliminiert?': ['How is the gas component of UCA mainly eliminated?', 'Through the lungs', ['Through the kidneys', 'Through the lungs', 'Through the thyroid', 'Through the skin']],
       'Ab welcher eGFR ist eine besonders sorgfältige Nutzen-Risiko-Abwägung üblich?': ['At which eGFR is especially careful benefit-risk assessment customary?', 'Below 30 ml/min/1.73 m²', ['Below 120', 'Below 90', 'Below 60 in every patient', 'Below 30 ml/min/1.73 m²']],
-      'Soll wegen einer einmaligen KM-Gabe routinemäßig neu mit Dialyse begonnen werden?': ['Should dialysis routinely be initiated because of one contrast dose?', 'No', ['Yes, always', 'Only after UCA', 'No', 'Only after oral barium']],
+      'Welche Aussage zur Dialyse nach GBCA ist korrekt?': ['Which statement about dialysis after a GBCA is correct?', 'Do not routinely start dialysis solely for a GBCA; recommendations for patients already on haemodialysis vary by agent type and guideline.', ['Start immediate haemodialysis after every GBCA, even if the patient is not on dialysis.', 'Do not routinely start dialysis solely for a GBCA; recommendations for patients already on haemodialysis vary by agent type and guideline.', 'Dialysis reliably prevents NSF, regardless of agent.', 'Macrocyclic GBCAs always require three extra haemodialysis sessions.']],
       'Welche Schilddrüsensituation ist für jodhaltiges KM besonders relevant?': ['Which thyroid condition is particularly relevant for iodinated contrast?', 'Overt hyperthyroidism', ['Treated hypothyroidism', 'Overt hyperthyroidism', 'Normal TSH', 'Previous appendectomy']],
       'Was kann jodhaltiges KM nachfolgend beeinflussen?': ['What can iodinated contrast subsequently interfere with?', 'Nuclear thyroid imaging', ['Knee MRI', 'Nuclear thyroid imaging', 'Lung function permanently', 'Bone density']],
       'Welche Aussage zur Stillzeit nach intravaskulärem KM ist korrekt?': ['Which statement about breastfeeding after intravascular contrast is correct?', 'Interruption is usually not required', ['Always pause for 48 hours', 'Interruption is usually not required', 'Stop only after UCA', 'The infant needs activated charcoal']],
@@ -359,7 +359,7 @@ const translateQuestion = (seed, lang) => {
       'Wo verbleiben diagnostische Ultraschall-Mikrobläschen?': ['میکروبابل‌های تشخیصی سونوگرافی کجا باقی می‌مانند؟', 'داخل عروق', ['داخل سلول', 'داخل عروق', 'فقط مجاری صفراوی', 'مغز استخوان']],
       'Wie wird der Gasanteil von USKM überwiegend eliminiert?': ['گاز USKM عمدتاً چگونه دفع می‌شود؟', 'از راه ریه', ['از راه کلیه', 'از راه ریه', 'از راه تیروئید', 'از راه پوست']],
       'Ab welcher eGFR ist eine besonders sorgfältige Nutzen-Risiko-Abwägung üblich?': ['در چه eGFR ارزیابی دقیق سود و خطر مهم است؟', 'کمتر از ۳۰ ml/min/1.73 m²', ['کمتر از ۱۲۰', 'کمتر از ۹۰', 'کمتر از ۶۰ در همه بیماران', 'کمتر از ۳۰ ml/min/1.73 m²']],
-      'Soll wegen einer einmaligen KM-Gabe routinemäßig neu mit Dialyse begonnen werden?': ['آیا فقط به دلیل یک تزریق باید دیالیز جدید آغاز شود؟', 'خیر', ['بله، همیشه', 'فقط پس از USKM', 'خیر', 'فقط پس از باریم خوراکی']],
+      'Welche Aussage zur Dialyse nach GBCA ist korrekt?': ['کدام عبارت دربارهٔ دیالیز پس از GBCA درست است؟', 'صرفاً به‌دلیل GBCA دیالیز جدید را به‌طور معمول آغاز نکنید؛ توصیه برای بیمار از قبل همودیالیزی به نوع ماده و راهنما وابسته است.', ['پس از هر GBCA همودیالیز فوری شروع شود، حتی اگر بیمار دیالیزی نیست.', 'صرفاً به‌دلیل GBCA دیالیز جدید را به‌طور معمول آغاز نکنید؛ توصیه برای بیمار از قبل همودیالیزی به نوع ماده و راهنما وابسته است.', 'دیالیز مستقل از نوع ماده با اطمینان از NSF پیشگیری می‌کند.', 'GBCA ماکروسیکلیک همیشه به سه جلسهٔ اضافهٔ همودیالیز نیاز دارد.']],
       'Welche Schilddrüsensituation ist für jodhaltiges KM besonders relevant?': ['کدام وضعیت تیروئید برای ماده یددار مهم‌تر است؟', 'پرکاری آشکار تیروئید', ['کم‌کاری درمان‌شده', 'پرکاری آشکار تیروئید', 'TSH طبیعی', 'آپاندکتومی قبلی']],
       'Was kann jodhaltiges KM nachfolgend beeinflussen?': ['ماده یددار کدام بررسی بعدی را مختل می‌کند؟', 'تصویربرداری هسته‌ای تیروئید', ['MRI زانو', 'تصویربرداری هسته‌ای تیروئید', 'عملکرد دائمی ریه', 'تراکم استخوان']],
       'Welche Aussage zur Stillzeit nach intravaskulärem KM ist korrekt?': ['کدام عبارت درباره شیردهی پس از ماده حاجب درست است؟', 'معمولاً قطع شیردهی لازم نیست', ['همیشه ۴۸ ساعت قطع شود', 'معمولاً قطع شیردهی لازم نیست', 'فقط پس از USKM قطع شود', 'نوزاد زغال فعال نیاز دارد']],
@@ -371,6 +371,11 @@ const translateQuestion = (seed, lang) => {
 }
 
 const QUESTION_EXPLANATIONS = {
+  'Welche Aussage zur Dialyse nach GBCA ist korrekt?': {
+    de: 'ESUR unterscheidet bei bereits bestehender Hämodialyse zwischen makrozyklischen und linearen GBCA. ACR rät davon ab, Dialyse allein wegen einer Gruppe-II/III-GBCA-Gabe einzuleiten oder zu ändern. Bei Peritonealdialyse und linearem GBCA muss der mögliche NSF-Nutzen gegen das Katheterrisiko abgewogen werden.',
+    en: 'For patients already on haemodialysis, ESUR distinguishes macrocyclic from linear GBCAs. ACR advises against initiating or changing dialysis solely because a group II/III GBCA was given. With peritoneal dialysis and a linear GBCA, weigh possible NSF benefit against catheter risk.',
+    fa: 'برای بیمار از قبل همودیالیزی، ESUR بین GBCA ماکروسیکلیک و خطی تفاوت می‌گذارد. ACR آغاز یا تغییر دیالیز را صرفاً به‌دلیل GBCA گروه II/III توصیه نمی‌کند. در دیالیز صفاقی همراه GBCA خطی، سود احتمالی NSF را در برابر خطر کاتتر بسنجید.',
+  },
   'Welche Aussage unterscheidet physiologische und allergieartige KM-Reaktionen korrekt?': {
     de: 'Physiologische Reaktionen sind vorhersehbare Wirkungen des Kontrastmittels. Hypersensitivitätsreaktionen sind davon getrennt zu beurteilen und können IgE- oder andere Mechanismen haben.',
     en: 'Physiologic reactions are predictable effects of the contrast medium. Hypersensitivity reactions are a separate category and may involve IgE or other mechanisms.',
