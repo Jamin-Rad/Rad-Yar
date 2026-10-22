@@ -26,7 +26,7 @@
 - The route uses the maintained `StandardLessonShell` and CAA-oriented short chapters. There is no separate “Befund & Selbsttest” chapter; the retrieval question sits inside the classification task.
 - The base-pattern section has three plausible choices; the Boxer-fracture section has its own localized retrieval check. Both provide option-specific explanatory feedback in DE/EN/FA. A corresponding base-pattern MCQ remains registered for the exact curriculum tag and linked from the route.
 - No flashcards were added because the single bounded target is adequately assessed by the inline question and linked MCQ; no flashcard route is advertised.
-- Independent content/source/translation/visual/assessment review identified MCB-SRC-01; the APL/adductor-pollicis mechanism attribution was corrected in DE/EN/FA against the [AO Surgery Reference](https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/thumb/metacarpal-bennett-fracture/definition). Delta review and browser matrix remain pending; specialist clinical sign-off remains open. `inProgress` is intentional.
+- Independent content/source/translation/visual/assessment review identified MCB-SRC-01; the APL/adductor-pollicis mechanism attribution was corrected in DE/EN/FA against the [AO Surgery Reference](https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/thumb/metacarpal-bennett-fracture/definition). An independent delta review confirmed the correction and bounded pp.21/24 coverage PASS. Browser matrix remains pending; specialist clinical sign-off remains open. `inProgress` is intentional.
 
 ## Boxer fracture extension — MSK.pdf p.24
 
