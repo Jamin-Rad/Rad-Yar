@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="360" viewBox="0 0 1000 360" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Reaction pattern and severity</title>
+  <desc id="desc">Warmth and nausea symbols and separate hives and airway symbols lead to a shared reassessment of progression and associated signs, followed by a three-level severity scale. The diagram is conceptual and does not diagnose from one symptom.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M1 1L9 5L1 9" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect x="10" y="10" width="980" height="340" rx="28" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <rect x="32" y="44" width="290" height="128" rx="22" fill="#FFF7ED" stroke="#FDBA74" stroke-width="2"/>
+  <rect x="32" y="188" width="290" height="128" rx="22" fill="#F5F3FF" stroke="#C4B5FD" stroke-width="2"/>
+  <g stroke="#EA580C" stroke-width="5" stroke-linecap="round">
+    <path d="M83 78C74 88 92 98 83 108C74 118 92 128 83 138"/>
+    <path d="M101 78C92 88 110 98 101 108C92 118 110 128 101 138"/>
+    <path d="M119 78C110 88 128 98 119 108C110 118 128 128 119 138"/>
+  </g>
+  <path d="M192 82C176 82 166 95 166 110C166 125 178 139 194 139C206 139 215 130 215 119C215 108 208 103 200 103C195 103 192 106 192 111" stroke="#C2410C" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="244" cy="106" r="25" fill="#FED7AA"/>
+  <path d="M231 107C237 97 251 97 257 107M231 116C237 126 251 126 257 116" stroke="#9A3412" stroke-width="4" stroke-linecap="round"/>
+  <g fill="#7C3AED" stroke="#6D28D9" stroke-width="2">
+    <circle cx="74" cy="225" r="8"/><circle cx="101" cy="216" r="8"/><circle cx="128" cy="229" r="8"/>
+    <circle cx="88" cy="253" r="8"/><circle cx="117" cy="255" r="8"/>
+  </g>
+  <path d="M214 216C198 202 176 212 176 235V275C176 286 187 291 196 283L218 260M220 216C236 202 258 212 258 235V275C258 286 247 291 238 283L216 260" stroke="#6D28D9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M322 108H380M322 252H380M380 108C409 108 403 180 432 180M380 252C409 252 403 180 432 180" stroke="#64748B" stroke-width="3" marker-end="url(#arrow)"/>
+  <circle cx="508" cy="180" r="70" fill="#ECFEFF" stroke="#67E8F9" stroke-width="3"/>
+  <circle cx="508" cy="180" r="35" fill="#fff" stroke="#0891B2" stroke-width="4"/>
+  <path d="M482 181C490 166 498 196 506 181C514 166 522 196 530 181" stroke="#0E7490" stroke-width="4" stroke-linecap="round"/>
+  <path d="M508 119V134M508 226V241M447 180H462M554 180H569" stroke="#0891B2" stroke-width="4" stroke-linecap="round"/>
+  <path d="M578 180H660" stroke="#64748B" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="686" y="86" width="74" height="188" rx="18" fill="#DCFCE7" stroke="#86EFAC" stroke-width="2"/>
+  <rect x="770" y="86" width="74" height="188" rx="18" fill="#FEF3C7" stroke="#FCD34D" stroke-width="2"/>
+  <rect x="854" y="86" width="74" height="188" rx="18" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="2"/>
+  <g font-family="Arial,sans-serif" font-size="32" font-weight="700" text-anchor="middle">
+    <text x="723" y="192" fill="#166534">1</text>
+    <text x="807" y="192" fill="#92400E">2</text>
+    <text x="891" y="192" fill="#991B1B">3</text>
+  </g>
+  <path d="M723 223V242M807 207V242M891 185V242" stroke="#475569" stroke-width="7" stroke-linecap="round"/>
+</svg>
