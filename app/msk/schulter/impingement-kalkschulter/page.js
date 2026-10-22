@@ -62,7 +62,7 @@ const C = {
 
 export default function ImpingementLessonPage(){
   const { lang='de' } = useLanguage(); const c=C[lang]||C.de
-  return <LessonReferenceShell lessonId="impingement-kalkschulter" lang={lang} title={c.title} contentTitle={c.contentTitle} heroVisual={<ShoulderImpingementDiagram lang={lang}/>} goals={c.goals} check={c.check} summary={c.summary} copy={{contentTitle:c.contentTitle}}>
+  return <LessonReferenceShell lessonId="impingement-kalkschulter" lang={lang} title={c.title} contentTitle={c.contentTitle} heroVisual={<ShoulderImpingementDiagram lang={lang}/>} goals={c.goals} check={c.check} summary={c.summary} copy={{contentTitle:c.contentTitle}} quizHref="/ueben/quiz?fach=msk&n=8&themen=impingement-kalkschulter" flashcardsHref="/flashcards/impingement-kalkschulter">
     <div className={styles.content} lang={lang} dir={lang==='fa'?'rtl':'ltr'}>
       <p className={styles.lead}>{c.intro}</p>
       <section><h2>{c.xrayTitle}</h2><p>{c.xrayLead}</p></section>

@@ -52,6 +52,7 @@ No shoulder diagnostic MRI/radiograph case is present on these pages; the lesson
 - Focused SSR test `node scripts/test-shoulder-impingement-ssr.mjs`: PASS for DE/EN/FA, RTL, page image, localized topic schematic and option-specific feedback.
 - The shared shell's optional `heroVisual` prop is additive: absent that prop, its existing shared `ClinicalPatternDiagram` behavior and arguments remain unchanged. Focused SSR coverage checks both paths; `ClinicalPatternDiagram.jsx` is untouched.
 - Curriculum ID `impingement-kalkschulter` now links to this route and remains `ready: true, inProgress: true` because calcific tendinopathy is outside the inspected source scope.
+- The exact topic now has two four-option DE/EN/FA MCQs and two localized flashcards. The lesson shell exposes both practice links; a focused registration test checks the exact topic and preserves the partial-coverage status.
 - Scoped `git diff --check`: PASS.
 - Independent source/content/visual/language/assessment review: PASS. Corrected
   source-page mapping, citation metadata, and nested landmark in response to
