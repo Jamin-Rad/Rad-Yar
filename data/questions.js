@@ -45,6 +45,7 @@ import { CT_BASICS_QUESTIONS, CT_BASICS_TOPIC_GROUP } from './technikCTBasicsLes
 import { TECHNIK_ROENTGEN_QUESTIONS, TECHNIK_ROENTGEN_TOPIC_GROUP } from './technikRoentgenQuestions'
 import { TECHNIK_BOLD_QUESTIONS, TECHNIK_BOLD_TOPIC_GROUP } from './technikBoldQuestions'
 import { TECHNIK_CINE_QUESTIONS, TECHNIK_CINE_TOPIC_GROUP } from './technikCineQuestions'
+import { TECHNIK_FLUORO_ZOOM_QUESTIONS, TECHNIK_FLUORO_ZOOM_TOPIC_GROUP } from './technikFluoroZoom'
 import { DWI_ADC_QUESTIONS } from './technikDwiAdcLesson'
 // ── RADYAR QUESTION BANK ────────────────────────────────────────────────────
 
@@ -4318,6 +4319,7 @@ export const QUESTION_BANK = Object.fromEntries(
 )
 
 for (const lang of Object.keys(QUESTION_BANK)) {
+  QUESTION_BANK[lang].push(TECHNIK_FLUORO_ZOOM_QUESTIONS.find(question => question.id === `fluoro-zoom-${lang}-digital-vs-acquisition`))
   QUESTION_BANK[lang].push(...(MSK_BONE_AGGRESSIVENESS_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(GIST_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(VOLVULUS_QUESTIONS[lang] || []))
@@ -4355,6 +4357,7 @@ export const MCQ_TOPIC_GROUPS = [
   { fachId: 'abdomen', kapitelId: 'abdomen-gi-trakt', title: { de: 'Gastrointestinaltrakt', en: 'Gastrointestinal tract', fa: 'دستگاه گوارش' }, topics: [{ id: 'volvulus', title: { de: 'Sigmoid- und Zökumvolvulus', en: 'Sigmoid and caecal volvulus', fa: 'ولولوس سیگموئید و سکوم' } }] },
   TECHNIK_ROENTGEN_TOPIC_GROUP,
   TECHNIK_CINE_TOPIC_GROUP,
+  TECHNIK_FLUORO_ZOOM_TOPIC_GROUP,
   TECHNIK_BOLD_TOPIC_GROUP,
   CT_BASICS_TOPIC_GROUP,
   CT_PERFUSION_TOPIC_GROUP,

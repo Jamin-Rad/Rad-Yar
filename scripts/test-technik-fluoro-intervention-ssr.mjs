@@ -48,7 +48,8 @@ translate(lesson)
 const fluoro=TECHNIK_GRUNDLAGEN.sections.find(section=>section.id==='fluoro')
 assert.ok(fluoro,'existing fluoro chapter found')
 assert.deepEqual(fluoro.curriculumId,['fluoroskopie-durchleuchtung','dsa-grundlagen'])
-assert.equal(fluoro.teachingBlocks.length,2)
+assert.equal(fluoro.teachingBlocks.length,3)
+assert.ok(fluoro.teachingBlocks.some(block=>block.id==='fluoro-zoom'),'PDF pp.63–64 zoom block is connected to the existing fluoroscopy section')
 assert.ok(fs.existsSync(`public${lesson.hero}`),'hero schematic exists')
 assert.match(fs.readFileSync(`public/${lesson.hero.slice(1)}`,'utf8'),/NOT A CLINICAL IMAGE/)
 const dsaImage='public/technik/interventionelle-radiologie/dsa-triptych-p62.png'
@@ -70,6 +71,14 @@ assert.doesNotMatch(curriculum,/id: 'ir-seldinger-technik'[^\n]*link:/,'Seldinge
 assert.match(fs.readFileSync('docs/lesson-quality/technik-fluoroskopie-ir-p59-p68.md','utf8'),/does not describe Seldinger puncture steps/)
 assert.match(lesson.sourceNote.en,/not an instruction for vascular access/i)
 assert.equal(lesson.check.answer,0)
+const { QUESTION_BANK } = await import('../data/questions.js')
+const { FLASHCARDS } = await import('../data/flashcards.js')
+for(const locale of ['de','en','fa']) {
+  const q=QUESTION_BANK[locale].find(item=>item.id===`fluoro-zoom-${locale}-digital-vs-acquisition`)
+  assert.ok(q&&q.correct==='A'&&q.tags.includes('fluoroskopie-durchleuchtung'),`${locale} zoom MCQ registered under the existing topic`)
+  assert.equal(q.options.length,4,`${locale} zoom MCQ has four options`)
+}
+assert.ok(FLASHCARDS.some(card=>card.id==='fluoro-zoom-display-vs-acquisition'&&card.topicId==='fluoroskopie-durchleuchtung'),'zoom flashcard is registered to the existing topic')
 
 for(const locale of ['de','en','fa']) {
   lang=locale
@@ -87,6 +96,7 @@ for(const locale of ['de','en','fa']) {
   assert.ok(html.includes(lesson.check.prompt[locale])&&lesson.check.feedback[locale].length>40&&lesson.check.retry[locale].length>40,`${locale} feedback content`)
   const foundation=renderToStaticMarkup(React.createElement(GrundPage))
   for(const block of fluoro.teachingBlocks) assert.ok(foundation.includes(block.title[locale]),`${locale} fluoroscopy teaching block`)
+  assert.ok(foundation.includes(fluoro.teachingBlocks.find(block=>block.id==='fluoro-zoom').supplement[locale]),`${locale} dose qualifier rendered`)
   assert.ok(foundation.includes(fluoro.title[locale]),`${locale} existing fluoroscopy section title`)
 }
 
