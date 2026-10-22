@@ -14,7 +14,7 @@ import styles from './page.module.css'
 
 const SOURCES = [
   { label: 'ESUR Contrast Media Safety Guidelines 2026', href: 'https://www.esur.org/esur-guidelines-2026/' },
-  { label: 'ACR Manual on Contrast Media', href: 'https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Contrast-Manual' },
+  { label: 'ACR Manual on Contrast Media 2026', href: 'https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Contrast-Manual' },
   { label: 'EMA: Gadolinium contrast agents', href: 'https://www.ema.europa.eu/en/medicines/human/referrals/gadolinium-containing-contrast-agents' },
 ]
 
@@ -229,6 +229,13 @@ export default function ContrastGroupPage({ groupId }) {
               <div className={styles.heroVisualLegend}>
                 <span><i className={styles.linearLegend} aria-hidden="true" />{localizeContrast({ de: 'Linear, schematisch', en: 'Linear, schematic', fa: 'خطی، شماتیک' }, lang)}</span>
                 <span><i className={styles.macrocyclicLegend} aria-hidden="true" />{localizeContrast({ de: 'Makrozyklisch, schematisch', en: 'Macrocyclic, schematic', fa: 'ماکروسیکلیک، شماتیک' }, lang)}</span>
+              </div>
+            </figure> : groupId === 'schwangerschaft' ? <figure className={styles.heroVisual}>
+              <Image src="/educational/pregnancy-contrast-pathways.svg" alt={localizeContrast({ de: 'Konzeptschema, nicht anatomisch: zwei getrennte Wege der Exposition – Plazentaübertritt während der Schwangerschaft und begrenzter Übertritt in die Muttermilch nach der Geburt.', en: 'Conceptual, non-anatomical diagram of two separate exposure routes: placental transfer during pregnancy and limited transfer into breast milk after birth.', fa: 'طرح مفهومی و غیرآناتومیک از دو مسیر جداگانهٔ مواجهه: عبور از جفت در بارداری و انتقال محدود به شیر مادر پس از تولد.' }, lang)} width={300} height={169} priority />
+              <figcaption>{localizeContrast({ de: 'Schwangerschaft: Plazentapassage · Stillzeit: Übertritt in die Milch', en: 'Pregnancy: placental transfer · Lactation: transfer into milk', fa: 'بارداری: عبور از جفت · شیردهی: انتقال به شیر' }, lang)}</figcaption>
+              <div className={styles.heroVisualLegend}>
+                <span><i className={styles.iodineLegend} aria-hidden="true" />{localizeContrast({ de: 'In utero: fetale Exposition', en: 'In utero: fetal exposure', fa: 'در رحم: مواجههٔ جنین' }, lang)}</span>
+                <span><i className={styles.macrocyclicLegend} aria-hidden="true" />{localizeContrast({ de: 'Nach Geburt: Milchtransfer', en: 'After birth: milk transfer', fa: 'پس از تولد: انتقال به شیر' }, lang)}</span>
               </div>
             </figure> : null}
             <div className={styles.heroStats}>{lesson.stats.map(stat => (

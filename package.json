@@ -11,6 +11,7 @@
     "test:liver-metastases-sync": "node --import tsx scripts/test-liver-metastases-sync.mjs",
     "test:pnet-registration": "node --import tsx scripts/test-pnet-registration.mjs",
     "test:technik-roentgen-sync": "node --import tsx scripts/test-technik-roentgen-sync.mjs",
+    "test:technik-pregnancy-p131": "node --import tsx scripts/test-technik-pregnancy-p131.mjs",
     "start": "next start",
     "test:english": "node --import tsx --test app/andarun/english/courseEngine.test.mjs",
     "android:sync": "cap sync android",

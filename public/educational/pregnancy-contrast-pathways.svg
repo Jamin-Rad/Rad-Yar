@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Pregnancy and lactation contrast pathways</title>
+  <desc id="desc">Conceptual illustration of two separate exposure pathways: placental transfer during pregnancy and limited transfer through breast milk after birth.</desc>
+  <rect x="12" y="12" width="616" height="336" rx="28" fill="#F7FAFC"/>
+  <rect x="28" y="28" width="286" height="304" rx="22" fill="#FFF7ED" stroke="#FED7AA" stroke-width="2"/>
+  <rect x="326" y="28" width="286" height="304" rx="22" fill="#F0FDFA" stroke="#99F6E4" stroke-width="2"/>
+
+  <!-- Pregnancy: maternal circulation, placenta, and fetus are symbolic, not anatomical. -->
+  <circle cx="171" cy="122" r="68" fill="#FFEDD5"/>
+  <path d="M148 70c-20 7-34 24-37 44-3 18 4 33 16 43 12 10 16 23 16 39 0 14 9 25 24 25h42c14 0 23-9 23-21 0-8-5-13-13-16-10-4-15-11-15-21 0-7 4-13 10-18 10-9 15-21 13-35-3-25-24-44-49-44-9 0-17 2-24 6-2-3-4-5-6-7Z" fill="#F8B4A6" stroke="#B4534B" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M179 117c8-14 28-11 33 4 4 12-4 20-12 26-8 6-13 13-14 23-14-5-23-17-22-30 1-9 6-17 15-23Z" fill="#FDE68A" stroke="#B7791F" stroke-width="3"/>
+  <circle cx="190" cy="144" r="6" fill="#B7791F"/>
+  <path d="M82 224h56" stroke="#C2410C" stroke-width="5" stroke-linecap="round"/>
+  <path d="m128 214 12 10-12 10" stroke="#C2410C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M220 224h60" stroke="#C2410C" stroke-width="5" stroke-linecap="round"/>
+  <path d="m270 214 12 10-12 10" stroke="#C2410C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="66" cy="224" r="15" fill="#C2410C"/>
+  <path d="M61 224h10M66 219v10" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="298" cy="224" r="9" fill="#F59E0B"/>
+
+  <!-- Lactation: symbolic milk droplet and infant, without implying a diagnostic image. -->
+  <circle cx="469" cy="122" r="68" fill="#CCFBF1"/>
+  <path d="M433 91c-14 16-23 32-23 46 0 17 13 30 29 30s29-13 29-30c0-14-9-30-23-46l-6-7-6 7Z" fill="#5EEAD4" stroke="#0F766E" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M436 132c2 7 8 11 15 11" stroke="#F0FDFA" stroke-width="5" stroke-linecap="round"/>
+  <path d="M482 150c0-18 13-32 30-32s30 14 30 32v15h-60v-15Z" fill="#A7F3D0" stroke="#0F766E" stroke-width="4"/>
+  <circle cx="512" cy="107" r="17" fill="#F8B4A6" stroke="#B4534B" stroke-width="4"/>
+  <path d="M503 150c4 6 9 9 16 9" stroke="#0F766E" stroke-width="3" stroke-linecap="round"/>
+  <path d="M367 224h56" stroke="#0F766E" stroke-width="5" stroke-linecap="round" stroke-dasharray="7 8"/>
+  <path d="m413 214 12 10-12 10" stroke="#0F766E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M522 224h58" stroke="#0F766E" stroke-width="5" stroke-linecap="round" stroke-dasharray="7 8"/>
+  <path d="m570 214 12 10-12 10" stroke="#0F766E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="350" cy="224" r="9" fill="#14B8A6"/>
+  <circle cx="596" cy="224" r="15" fill="#14B8A6"/>
+  <path d="M591 224h10M596 219v10" stroke="white" stroke-width="3" stroke-linecap="round"/>
+</svg>
