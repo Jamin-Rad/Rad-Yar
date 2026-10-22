@@ -27,6 +27,8 @@ assert.equal(lesson.sections[1].image, '/msk/scaphoid/source-snac-radiograph-p20
 assert.equal(lesson.sections[2].image, '/msk/scaphoid/source-pseudarthrosis-vs-bipartitum-p19.jpg')
 assert.equal(lesson.sections[0].answer, 2)
 assert.equal(lesson.sections[0].options.length, 4)
+assert.match(lesson.sections[0].imageLabelTranslations[2].en, /figure preserves.*displaced or gaping.*AO defines B2 as a complete waist fracture/)
+assert.match(lesson.sections[0].paragraphs[0].en, /B2 complete waist fracture/)
 assert.ok(lesson.sections.every(section => section.lead.de && section.lead.en && section.lead.fa))
 for (const section of lesson.sections) {
   assert.ok(fs.existsSync(`public${section.image}`), `missing ${section.image}`)
