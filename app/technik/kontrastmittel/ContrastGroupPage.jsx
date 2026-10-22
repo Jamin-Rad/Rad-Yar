@@ -13,7 +13,7 @@ import { CONTRAST_LESSONS, CONTRAST_UI, localizeContrast } from '@/data/contrast
 import styles from './page.module.css'
 
 const SOURCES = [
-  { label: 'ESUR Guidelines on Contrast Agents', href: 'https://www.esur.org/esur-guidelines-on-contrast-agents/' },
+  { label: 'ESUR Contrast Media Safety Guidelines 2026', href: 'https://www.esur.org/esur-guidelines-2026/' },
   { label: 'ACR Manual on Contrast Media', href: 'https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Contrast-Manual' },
   { label: 'EMA: Gadolinium contrast agents', href: 'https://www.ema.europa.eu/en/medicines/human/referrals/gadolinium-containing-contrast-agents' },
 ]
