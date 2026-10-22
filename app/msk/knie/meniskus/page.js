@@ -984,6 +984,9 @@ const SOURCES = [
   { label: 'Magnetic resonance imaging of the knee (2020)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/' },
   { label: 'Crues et al. · Meniscal tears of the knee: accuracy of MR imaging (Radiology, 1987)', href: 'https://pubmed.ncbi.nlm.nih.gov/3602385/' },
   { label: 'De Smet & Tuite · Two-slice-touch rule (AJR, 2006)', href: 'https://pubmed.ncbi.nlm.nih.gov/16985134/' },
+  { label: 'Helms et al. · Bucket-handle tear MRI signs (Radiology, 2003)', href: 'https://pubmed.ncbi.nlm.nih.gov/12719929/' },
+  { label: 'Haims et al. · The flipped meniscus sign (Radiology, 1993)', href: 'https://pubmed.ncbi.nlm.nih.gov/8316871/' },
+  { label: 'Schweitzer et al. · Potential pitfalls of a double PCL sign (2009)', href: 'https://pubmed.ncbi.nlm.nih.gov/19234702/' },
   { label: 'Nguyen et al. · MR Imaging–based Diagnosis and Classification of Meniscal Tears (RadioGraphics, 2014)', href: 'https://pubs.rsna.org/doi/10.1148/rg.344125202' },
   { label: 'Samato et al. · MRI criteria for discoid lateral meniscus', href: 'https://pubmed.ncbi.nlm.nih.gov/11973030/' },
   { label: 'SSR consensus · Standardized MRI nomenclature for knee meniscal lesions (2026)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/' },
@@ -1224,7 +1227,7 @@ export default function MeniskusPage() {
 
           <Section id="risstypen" eyebrow="04" title={copy.tearTypes.title} lead={copy.tearTypes.lead} {...sectionProps('risstypen')}>
             <TearTypeExplorer lang={lang} />
-            <div className={`${styles.subSectionBlock} ${contentStyles.rootsGrid}`} data-pdf-source-addendum="msk-49">
+            <div className={`${styles.subSectionBlock} ${contentStyles.rootsGrid}`} data-pdf-source-addendum="msk-49-50-51">
               {MENISCUS_PDF_GAP_ADDENDUM.tearTypes.map(item => (
                 <article className={contentStyles.normalCard} key={item.id} data-source-page={item.sourcePage}>
                   <h3>{item.title[lang] || item.title.de}</h3>

@@ -1639,6 +1639,30 @@ const LEGACY_FLASHCARDS = [
     }
   },
   {
+    "id": "meniskus-36",
+    "topicId": "meniskus",
+    "front": {
+      "de": "Welche zwei sagittalen Zeichen stützen einen Flipped-Meniskus?",
+      "en": "Which two sagittal signs support a flipped meniscus?",
+      "fa": "کدام دو علامت ساژیتال به نفع منیسک وارونه‌شده‌اند؟"
+    },
+    "answer": {
+      "de": "Double-Anterior-Horn-Zeichen und Empty-Posterior-Horn-Zeichen.",
+      "en": "Double-anterior-horn sign and empty-posterior-horn sign.",
+      "fa": "علامت شاخ قدامی دوگانه و علامت شاخ خلفی خالی."
+    },
+    "explanation": {
+      "de": "Ein nach anterior verlagertes Hinterhorn kann am Vorderhorn doppelte Meniskusstruktur vortäuschen; am ursprünglichen Hinterhorn fehlt das normale signalärmere Meniskusgewebe. Eine Vorderhornvariante kann die Verdopplung imitieren.",
+      "en": "An anteriorly displaced posterior horn can create duplicated meniscal tissue at the anterior horn; normal low-signal meniscal tissue is absent at the native posterior-horn position. An anterior-horn variant can mimic the duplication.",
+      "fa": "شاخ خلفیِ جابه‌جاشده به قدام می‌تواند در محل شاخ قدامی ساختار منیسک دوگانه ایجاد کند؛ در محل اصلی شاخ خلفی بافت منیسک کم‌سیگنال طبیعی دیده نمی‌شود. واریانت شاخ قدامی می‌تواند این دوگانگی را تقلید کند."
+    },
+    "category": {
+      "de": "Dislozierte Meniskusrisse",
+      "en": "Displaced meniscal tears",
+      "fa": "پارگی‌های جابه‌جاشدهٔ منیسک"
+    }
+  },
+  {
     "id": "haemangiom-01-definition",
     "topicId": "haemangiom",
     "category": {

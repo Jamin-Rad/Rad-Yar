@@ -1,8 +1,8 @@
 const L = (de, en, fa) => ({ de, en, fa })
 
 export const MENISCUS_PDF_GAP_ADDENDUM = {
-  sourcePages: [49, 52, 54, 55],
-  printedPages: [48, 51, 53, 54],
+  sourcePages: [49, 50, 51, 52, 54, 55],
+  printedPages: [48, 49, 50, 51, 53, 54],
   tearTypes: [
     {
       id: 'parrot-beak',
@@ -15,6 +15,32 @@ export const MENISCUS_PDF_GAP_ADDENDUM = {
         'Der Parrot-beak-Riss kombiniert einen radiären mit einem schräg oder bogenförmig weiterlaufenden longitudinalen Anteil. Er beginnt häufig am freien Meniskusrand. Durch den gekrümmten Verlauf ändert sich auf sagittalen Schichten der Abstand zur Kapsel (Wander-Effekt); beurteile daher den Riss über benachbarte Schichten statt nach einer einzelnen Ebene.',
         'A parrot-beak tear combines a radial component with an oblique or curved longitudinal extension. It often starts at the free meniscal edge. Because the tear curves, its distance from the capsule changes across sagittal slices (the wandering effect); follow it across adjacent slices rather than judging it on one image.',
         'پارگی منقار طوطی ترکیبی از جزء شعاعی و امتداد طولیِ مایل یا قوسی‌شکل است و اغلب از لبهٔ آزاد منیسک آغاز می‌شود. به‌دلیل مسیر خمیده، فاصلهٔ پارگی تا کپسول در برش‌های ساژیتال تغییر می‌کند (اثر جابه‌جایی)؛ بنابراین آن را در برش‌های مجاور دنبال کنید و بر پایهٔ یک تصویر قضاوت نکنید.'
+      ),
+    },
+    {
+      id: 'bucket-handle-signs',
+      sourcePage: 50,
+      image: '/msk/knie/meniskus/bucket-handle-signs-pdf-p50.png',
+      imageAlt: L('PDF-Beispiel mit disloziertem Meniskusfragment im Intercondylärraum und schematischer Lage zum HKB.', 'PDF example of a displaced meniscal fragment in the intercondylar notch and a schematic of its position relative to the PCL.', 'نمونهٔ PDF از قطعهٔ جابه‌جاشدهٔ منیسک در ناچ بین‌کندیلی و شماتیک موقعیت آن نسبت به PCL.'),
+      printedPage: 49,
+      title: L('Korbhenkelriss: disloziertes Fragment suchen', 'Bucket-handle tear: identify the displaced fragment', 'پارگی دسته‌سطلی: قطعهٔ جابه‌جاشده را پیدا کنید'),
+      text: L(
+        'Bei einem dislozierten Korbhenkelriss liegt das abgelöste zentrale Längsfragment im Intercondylärraum. Ein Double-PCL-Zeichen kann dazu passen; prüfe das Fragment direkt und in mehreren Ebenen. Das Zeichen ist hochspezifisch, aber weder jedes Korbhenkelriss-Muster zeigt es noch ist es ohne anatomische Korrelation beweisend.',
+        'In a displaced bucket-handle tear, the detached central longitudinal fragment lies in the intercondylar notch. A double-PCL sign may support this pattern; identify the fragment directly and correlate across planes. The sign is highly specific, but not every bucket-handle tear shows it and it is not diagnostic without anatomic correlation.',
+        'در پارگی دسته‌سطلی جابه‌جاشده، قطعهٔ طولیِ مرکزیِ جداشده در ناچ بین‌کندیلی قرار می‌گیرد. علامت PCL دوگانه می‌تواند با این الگو سازگار باشد؛ قطعه را مستقیماً پیدا کنید و در چند صفحه تطبیق دهید. این علامت اختصاصیت بالایی دارد، اما در همهٔ پارگی‌های دسته‌سطلی دیده نمی‌شود و بدون تطبیق آناتومیک تشخیصی نیست.'
+      ),
+    },
+    {
+      id: 'flipped-meniscus',
+      sourcePage: 51,
+      image: '/msk/knie/meniskus/flipped-meniscus-signs-pdf-p51.png',
+      imageAlt: L('PDF-Beispiel mit nach anterior verlagertem Hinterhorn, Doppel-Vorderhorn und leerem ursprünglichem Hinterhorn.', 'PDF example of an anteriorly displaced posterior horn, double anterior horn, and an empty native posterior-horn position.', 'نمونهٔ PDF از جابه‌جایی قدامی شاخ خلفی، شاخ قدامی دوگانه و خالی‌بودن محل اصلی شاخ خلفی.'),
+      printedPage: 50,
+      title: L('Flipped-Meniskus: Doppel-Vorderhorn und leeres Hinterhorn', 'Flipped meniscus: double anterior horn and empty posterior horn', 'منیسک وارونه‌شده: شاخ قدامی دوگانه و شاخ خلفی خالی'),
+      text: L(
+        'Beim Flipped-Meniskus ist ein disloziertes Hinterhorn nach anterior verlagert und kann neben oder oberhalb des Vorderhorns liegen. Suche sagittal nach zwei meniskusähnlichen Strukturen anterior (Double-Anterior-Horn-Zeichen) und nach fehlendem normalem Meniskussignal am ursprünglichen Hinterhorn (Empty-Posterior-Horn-Zeichen). Eine anatomische Vorderhornvariante kann die Verdopplung vortäuschen; die fehlende hintere Struktur und das Gesamtmuster mitprüfen.',
+        'With a flipped meniscus, a displaced posterior horn has moved anteriorly and may lie beside or above the anterior horn. On sagittal images, look for two meniscus-like structures anteriorly (double-anterior-horn sign) and loss of the normal meniscal signal at the native posterior-horn position (empty-posterior-horn sign). An anterior-horn variant may mimic duplication; check the absent posterior structure and the overall pattern.',
+        'در منیسک وارونه‌شده، شاخ خلفیِ جابه‌جاشده به سمت قدام منتقل می‌شود و ممکن است کنار یا بالای شاخ قدامی قرار گیرد. در تصاویر ساژیتال، دو ساختار شبیه منیسک در قدام (علامت شاخ قدامی دوگانه) و نبود سیگنال طبیعی منیسک در محل اصلی شاخ خلفی (علامت شاخ خلفی خالی) را بررسی کنید. یک واریانت آناتومیک شاخ قدامی می‌تواند دوگانگی را تقلید کند؛ نبود ساختار خلفی و الگوی کلی را هم بررسی کنید.'
       ),
     },
   ],
