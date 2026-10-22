@@ -44,7 +44,7 @@ for (const [locale, required] of Object.entries({
 }
 assert.match(ledger, /43 \/ 42/)
 assert.match(ledger, /de-quervain-pdf-p43-pd-fs-pair\.png/)
-assert.match(ledger, /Browser QA must be completed/)
+assert.match(ledger, /browser\/rendered UX, mobile layout and keyboard interaction remain unverified/)
 
 if (process.env.DEQUERVAIN_SKIP_SSR === '1') {
   console.log('Static lesson/source/localization/curriculum assertions passed; browser SSR probe was explicitly skipped.')

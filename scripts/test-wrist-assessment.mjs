@@ -5,7 +5,7 @@ import { CURRICULUM, getLessonLinkForFlashcard } from '../data/curriculum.js'
 
 const topics = CURRICULUM.flatMap(subject => subject.kapitel).flatMap(chapter => chapter.themen)
 const definitions = [
-  { id: 'sehnenpathologien-hand', route: '/msk/hand/strecksehnenfaecher', questions: 1, cards: 2 },
+  { id: 'sehnenpathologien-hand', route: '/msk/hand/strecksehnenfaecher', questions: 1, cards: 3 },
   { id: 'de-quervain', route: '/msk/hand/de-quervain', questions: 1, cards: 3 },
 ]
 
