@@ -48,6 +48,18 @@ for (const [asset, page] of [
   assert.ok(mediaProvenance.includes(page), `${asset}: provenance records ${page}`)
 }
 assert.ok(mediaProvenance.includes('identified in the inspected source file.'))
+const adrenalQuestionIds = new Set(['abdomen-adrenal-masses', 'adrenal-adenoma-microscopic-fat', 'adrenal-myelolipoma-macroscopic-fat', 'adrenal-pheochromocytoma-washout', 'adrenal-neuroblastoma-origin'])
+const adrenalAssessmentText = ['de', 'en', 'fa'].map(lang => {
+  const questions = QUESTION_BANK[lang].filter(question => adrenalQuestionIds.has(question.id.replace(/-\w{2}-01$/, '')))
+  const cards = getCardsByTopic('nebennierenraumforderungen').flatMap(card => [card.front[lang], card.answer[lang], card.explanation[lang]])
+  return [...questions.flatMap(question => [question.question, ...question.options.map(option => option.text), question.explanation]), ...cards].join(' ')
+}).join(' ')
+assert.doesNotMatch(adrenalAssessmentText, /(?:<\s*4|4\s*[–-]\s*6|>\s*6)\s*cm|2\s*%|6\s*%|25\s*%/i, 'the legacy p.58 size bands and malignancy percentages must not leak into learner assessments')
+for (const phrase of [
+  'unabhängig von der Größe keine weitere Bildgebung',
+  'irrespective of size',
+  'مستقل از اندازه',
+]) assert.ok(lessonRoute.includes(phrase), `current ESE/ENSAT rule is explicit in localized lesson copy: ${phrase}`)
 for (const phrase of [
   'Meist isointens bis leicht hypointens zum Leberparenchym.',
   'Usually isointense to slightly hypointense relative to liver parenchyma.',
