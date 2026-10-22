@@ -268,6 +268,7 @@ const QUESTION_SEEDS = {
   'km-jod-typen': [
     ['Welche Eigenschaft entspricht modernen intravaskulären CT-Kontrastmitteln?', 'Nicht-ionisch und niedrig- oder isoosmolar', ['Nur ionisch und hochosmolar', 'Nicht-ionisch und niedrig- oder isoosmolar', 'Immer oral verabreicht', 'Ohne Jod'], 'B'],
     ['Welche Maßnahme kann die Viskosität jodhaltiger KM reduzieren?', 'Erwärmen auf Körpertemperatur', ['Abkühlen', 'Erwärmen auf Körpertemperatur', 'Verdünnen mit Luft', 'Einfrieren'], 'B'],
+    ['Wie werden Jodkonzentration, Volumen und Flussrate für eine CT-Injektion gewählt?', 'Individuell nach Untersuchungsziel, Scanzeit, Patient, Zugang und lokalem Protokoll', ['Immer nach einem festen Standardwert', 'Individuell nach Untersuchungsziel, Scanzeit, Patient, Zugang und lokalem Protokoll', 'Nur nach dem Körpergewicht', 'Unabhängig von Zugang und Injektor'], 'B'],
   ],
   'km-jod-reaktionen': [
     ['Was ist bei schwerer anaphylaktischer KM-Reaktion das wichtigste Medikament?', 'Intramuskuläres Adrenalin', ['Orales Antihistaminikum', 'Intramuskuläres Adrenalin', 'Metformin', 'Bariumsulfat'], 'B'],
@@ -313,6 +314,7 @@ const translateQuestion = (seed, lang) => {
       'Was hilft bei niedrigem MI, das CEUS-Signal von Mikrobläschen gegenüber Gewebe hervorzuheben?': ['At low MI, what helps distinguish the CEUS microbubble signal from tissue?', 'Nonlinear bubble oscillations generate harmonic components; contrast-specific modes suppress tissue signals', ['Tissue always generates stronger harmonic signals than microbubbles', 'Nonlinear bubble oscillations generate harmonic components; contrast-specific modes suppress tissue signals', 'A high MI prevents all microbubble destruction', 'Microbubbles leave the vascular space before imaging']],
       'Welche Eigenschaft entspricht modernen intravaskulären CT-Kontrastmitteln?': ['Which property describes modern intravascular CT contrast agents?', 'Non-ionic and low- or iso-osmolar', ['Ionic and high-osmolar only', 'Non-ionic and low- or iso-osmolar', 'Always administered orally', 'Iodine-free']],
       'Welche Maßnahme kann die Viskosität jodhaltiger KM reduzieren?': ['Which measure can reduce iodinated contrast viscosity?', 'Warming to body temperature', ['Cooling', 'Warming to body temperature', 'Diluting with air', 'Freezing']],
+      'Wie werden Jodkonzentration, Volumen und Flussrate für eine CT-Injektion gewählt?': ['How should iodine concentration, volume and flow rate be selected for a CT injection?', 'Individually, according to the examination goal, scan duration, patient, access and local protocol', ['Always by one fixed standard value', 'Individually, according to the examination goal, scan duration, patient, access and local protocol', 'Only according to body weight', 'Regardless of access and injector']],
       'Was ist bei schwerer anaphylaktischer KM-Reaktion das wichtigste Medikament?': ['What is the key medication in a severe anaphylactic contrast reaction?', 'Intramuscular epinephrine', ['Oral antihistamine', 'Intramuscular epinephrine', 'Metformin', 'Barium sulphate']],
       'Welcher Faktor erhöht das Risiko einer erneuten allergieähnlichen Reaktion am stärksten?': ['Which factor most increases the risk of another allergic-like reaction?', 'A previous reaction to the same contrast class', ['Age below 30', 'A previous reaction to the same contrast class', 'Normal renal function', 'Fasting']],
       'Welches enterale KM ist bei vermuteter Perforation problematisch?': ['Which enteric agent is problematic when perforation is suspected?', 'Barium sulphate', ['Water', 'Barium sulphate', 'Air', 'Neutral solution']],
@@ -339,6 +341,7 @@ const translateQuestion = (seed, lang) => {
       'Was hilft bei niedrigem MI, das CEUS-Signal von Mikrobläschen gegenüber Gewebe hervorzuheben?': ['در MI پایین، چه چیزی به برجسته‌شدن سیگنال میکروحباب‌ها نسبت به بافت کمک می‌کند؟', 'نوسان غیرخطی حباب مؤلفه‌های هارمونیک می‌سازد و حالت‌های اختصاصی کنتراست سیگنال بافت را سرکوب می‌کنند', ['بافت همیشه سیگنال هارمونیک قوی‌تری از میکروحباب می‌سازد', 'نوسان غیرخطی حباب مؤلفه‌های هارمونیک می‌سازد و حالت‌های اختصاصی کنتراست سیگنال بافت را سرکوب می‌کنند', 'MI بالا از تخریب همهٔ میکروحباب‌ها جلوگیری می‌کند', 'میکروحباب‌ها پیش از تصویربرداری از فضای عروقی خارج می‌شوند']],
       'Welche Eigenschaft entspricht modernen intravaskulären CT-Kontrastmitteln?': ['کدام ویژگی مربوط به مواد حاجب عروقی مدرن CT است؟', 'غیر یونی و کم‌اسمولار یا ایزواسمولار', ['فقط یونی و پُراسمولار', 'غیر یونی و کم‌اسمولار یا ایزواسمولار', 'همیشه خوراکی', 'بدون ید']],
       'Welche Maßnahme kann die Viskosität jodhaltiger KM reduzieren?': ['کدام اقدام ویسکوزیته ماده حاجب یددار را کاهش می‌دهد؟', 'گرم‌کردن تا دمای بدن', ['سردکردن', 'گرم‌کردن تا دمای بدن', 'رقیق‌کردن با هوا', 'منجمدکردن']],
+      'Wie werden Jodkonzentration, Volumen und Flussrate für eine CT-Injektion gewählt?': ['غلظت ید، حجم و سرعت تزریق CT چگونه انتخاب می‌شوند؟', 'بر اساس هدف بررسی، زمان اسکن، بیمار، مسیر تزریق و پروتکل محلی به‌طور فردی', ['همیشه بر اساس یک عدد ثابت', 'بر اساس هدف بررسی، زمان اسکن، بیمار، مسیر تزریق و پروتکل محلی به‌طور فردی', 'فقط بر اساس وزن بدن', 'بدون توجه به مسیر تزریق یا انژکتور']],
       'Was ist bei schwerer anaphylaktischer KM-Reaktion das wichtigste Medikament?': ['مهم‌ترین دارو در واکنش آنافیلاکسی شدید چیست؟', 'آدرنالین عضلانی', ['آنتی‌هیستامین خوراکی', 'آدرنالین عضلانی', 'متفورمین', 'باریم']],
       'Welcher Faktor erhöht das Risiko einer erneuten allergieähnlichen Reaktion am stärksten?': ['مهم‌ترین عامل خطر واکنش مجدد آلرژی‌مانند چیست؟', 'واکنش قبلی به همان کلاس ماده حاجب', ['سن زیر ۳۰', 'واکنش قبلی به همان کلاس ماده حاجب', 'عملکرد طبیعی کلیه', 'ناشتایی']],
       'Welches enterale KM ist bei vermuteter Perforation problematisch?': ['در شک به پرفوراسیون کدام ماده گوارشی مشکل‌ساز است؟', 'باریم سولفات', ['آب', 'باریم سولفات', 'هوا', 'محلول خنثی']],
@@ -401,7 +404,13 @@ export const CONTRAST_FLASHCARDS = CONTRAST_TOPICS.flatMap(topic => {
       content[lang] = {
         front: translated[0],
         answer: translated[1],
-        explanation: topic.id === 'km-ultraschall' ? translated[1] : (CONTRAST_LESSON[lang].sections[topic.id]?.takeHome || translated[1]),
+        explanation: topic.id === 'km-jod-typen' && index === 2
+          ? {
+              de: 'Die Werte aus der PDF sind Beispiele, keine festen Vorgaben. Untersuchungsziel, Scanzeit, Patient, venöser Zugang, Injektor und lokales Protokoll bestimmen die Parameter; die diagnostische Dosis nicht unter die erforderliche Schwelle senken.',
+              en: 'The PDF values are examples, not fixed instructions. The examination goal, scan duration, patient, venous access, injector and local protocol determine the parameters; do not lower the diagnostic dose below the required threshold.',
+              fa: 'اعداد PDF نمونه‌اند و دستور ثابت نیستند. هدف بررسی، زمان اسکن، بیمار، مسیر وریدی، انژکتور و پروتکل محلی پارامترها را تعیین می‌کنند؛ دوز تشخیصی را از حد لازم پایین‌تر نبرید.',
+            }[lang]
+          : topic.id === 'km-ultraschall' ? translated[1] : (CONTRAST_LESSON[lang].sections[topic.id]?.takeHome || translated[1]),
       }
     }
     return {

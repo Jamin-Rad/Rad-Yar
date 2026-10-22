@@ -184,7 +184,7 @@ export default function ContrastGroupPage({ groupId }) {
             <div className={styles.heroText}>
               <span className={styles.sourceBadge}>{lesson.sourceLabel}</span>
               <h1>{localizeContrast(lesson.title, lang)}</h1>
-              <p>{localizeContrast(lesson.subtitle, lang)}</p>
+              {lesson.subtitle ? <p>{localizeContrast(lesson.subtitle, lang)}</p> : null}
               <div className={styles.actions}>
                 <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=technik&n=10&themen=${topicIds}&from=${encodeURIComponent(pagePath)}`)}>{ui.mcq}</Link>
                 <Link className={styles.actionBtn} href={withLang(`/flashcards/${group.flashcardId}?from=${encodeURIComponent(pagePath)}`)}>{ui.flashcards}</Link>
