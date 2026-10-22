@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { CURRICULUM } from '../data/curriculum.js'
+import { getQuestions } from '../data/questions.js'
+import { getCardsByTopic } from '../data/flashcards.js'
 import { SPINE_INFECTION_LESSON } from '../data/spineInfection.js'
 import { MSK_SPINE_LESSON_QUESTION_DRAFTS, MSK_SPINE_LESSON_FLASHCARD_DRAFTS } from '../data/mskSpineLessonAssessmentDrafts.js'
 
@@ -31,8 +33,10 @@ const spine = CURRICULUM.find(({ id }) => id === 'wirbelsaeule')
 const topic = spine?.kapitel.flatMap(({ kapitel, themen }) => [...(kapitel || []).flatMap(item => item.themen || []), ...(themen || [])]).find(({ id }) => id === 'spondylodiszitis')
 assert.ok(topic, 'exact spondylodiszitis curriculum ID must exist')
 assert.equal(topic.link, '/wirbelsaeule/infektion', 'the existing exact route link must be preserved')
-assert.equal(topic.mcqLink, undefined, 'global MCQ integration remains pending')
-assert.equal(topic.flashcardLink, undefined, 'global flashcard integration remains pending')
+assert.equal(topic.mcqLink, '/ueben/quiz?fach=wirbelsaeule&n=1&themen=spondylodiszitis')
+assert.equal(topic.flashcardLink, '/flashcards/spondylodiszitis')
+for (const lang of langs) assert.equal(getQuestions(['spondylodiszitis'], lang, 20).length, 1, `${lang}: expected one globally retrievable exact-topic question`)
+assert.equal(getCardsByTopic('spondylodiszitis').length, 1, 'expected one globally registered exact-topic flashcard')
 
 const question = MSK_SPINE_LESSON_QUESTION_DRAFTS.filter(({ tags }) => tags.includes('spondylodiszitis'))
 const cards = MSK_SPINE_LESSON_FLASHCARD_DRAFTS.filter(({ topicId }) => topicId === 'spondylodiszitis')
@@ -49,17 +53,21 @@ for (const item of question) {
 }
 
 const route = await readFile('app/wirbelsaeule/infektion/page.js', 'utf8')
-const component = await readFile('app/wirbelsaeule/degenerative/Lesson.jsx', 'utf8')
 const svg = await readFile('public/educational/spine-infection-schematic.svg', 'utf8')
 const ledger = await readFile('docs/lesson-quality/spine-infection-14-15.md', 'utf8')
 assert.match(route, /SPINE_INFECTION_LESSON/)
 assert.match(route, /Vier Regeln merken/)
 assert.match(route, /ACR · Pädiatrie/)
 assert.match(route, /ACR · کودکان/)
-assert.match(component, /visualCaption=/)
+assert.match(route, /n=1&themen=spondylodiszitis/)
+assert.match(route, /flashcards\/spondylodiszitis/)
+assert.match(route, /from=\$\{encodeURIComponent\(lessonReturn\)\}/)
+assert.match(route, /heroImage: lesson\.heroImage/)
+assert.match(route, /heroImageAlt=\{pick\(lesson\.alt, lang\)\}/)
 assert.match(svg, /^\s*<svg\b/)
 assert.match(svg, /<\/svg>\s*$/)
 assert.match(ledger, /WS S\. 14–15|Wirbelsäule\.pdf.*14–15/)
-assert.match(ledger, /noch nicht in globale Question-\/Flashcard-Bänke verdrahtet/)
+assert.match(ledger, /Ein dreisprachiger TB-Muster-MCQ und eine dreisprachige Flashcard sind global registriert/)
+assert.match(ledger, /DWI-Claw-MCQ und die dazugehörige Karte bleiben lokale Entwürfe/)
 
 console.log('Spine infection pp. 14–15 checks passed: source scope, DE/EN/FA parity, ACR supplement, cautious pattern language, exact curriculum ID status, assessments, route, visual and ledger.')

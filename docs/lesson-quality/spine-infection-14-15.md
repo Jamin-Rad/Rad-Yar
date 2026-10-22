@@ -37,8 +37,8 @@ Nach der Lektion sollen Lernende ein vermutetes infektiöses Muster über Bandsc
 
 ## Verknüpfungen und Status
 
-- Der vorhandene Curriculum-Eintrag `spondylodiszitis` ist bereits mit der exakten Route `/wirbelsaeule/infektion` verknüpft. Zentrale Curriculum-Datei wurde nicht geändert. Globale Quiz-/Flashcard-Links fehlen; Assessment-Entwürfe sind noch nicht zentral verdrahtet. Der vorhandene Status `ready: true` lag bereits im Ziel-Worktree; Freigabe/Statusänderung bleibt explizit beim Koordinator.
-- Ein dreisprachiger TB-Muster-MCQ, ein dreisprachiger DWI-Claw-MCQ und zwei Flashcards liegen in `data/mskSpineLessonAssessmentDrafts.js`. Sie sind lokale Entwürfe und noch nicht in globale Question-/Flashcard-Bänke verdrahtet. Der Mini-Fall ist direkt in der Lektion eingebettet.
+- Der vorhandene Curriculum-Eintrag `spondylodiszitis` ist mit der exakten Route `/wirbelsaeule/infektion` und den bereits zentral registrierten Fragen/Karten verknüpft. Ergänzend wurden Quiz- und Flashcard-Links sowie lokalisierte Seitenaktionen mit Rückkehr zum TB-Musterabschnitt verdrahtet. Der vorhandene Status `ready: true` lag bereits im Ziel-Worktree; Freigabe/Statusänderung bleibt explizit beim Koordinator.
+- Ein dreisprachiger TB-Muster-MCQ und eine dreisprachige Flashcard sind global registriert und über das exakte Thema `spondylodiszitis` abrufbar. Der DWI-Claw-MCQ und die dazugehörige Karte bleiben lokale Entwürfe und sind nicht global verknüpft. Der Mini-Fall ist zusätzlich direkt in der Lektion eingebettet.
 - Der vorhandene `/wirbelsaeule/infektion`-Entwurf ist genau dieser Seitenstrecke zugeordnet. Keine zweite Spondylodiszitis-Route angelegt.
 
 ## Prüfung und verbleibende Lücken

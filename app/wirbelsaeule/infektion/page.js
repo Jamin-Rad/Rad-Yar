@@ -53,7 +53,23 @@ export default function SpineInfectionPage() {
   const { lang } = useLanguage()
   const t = key => pick(LABELS[key], lang)
   const labels = Object.fromEntries(Object.keys(LABELS).map(key => [key, t(key)]))
-  const localizedPath = path => lang === 'de' ? path : `${path}?lang=${lang}`
+  const localizedPath = path => {
+    if (lang === 'de') return path
+    const [pathname, hash = ''] = path.split('#')
+    const separator = pathname.includes('?') ? '&' : '?'
+    return `${pathname}${separator}lang=${lang}${hash ? `#${hash}` : ''}`
+  }
+  const lessonReturn = localizedPath('/wirbelsaeule/infektion#tuberculosis')
+  const actions = {
+    mcq: {
+      href: `/ueben/quiz?fach=wirbelsaeule&n=1&themen=spondylodiszitis&from=${encodeURIComponent(lessonReturn)}${lang === 'de' ? '' : `&lang=${lang}`}`,
+      label: pick(L('Passende MC-Frage', 'Related MCQ', 'پرسش چندگزینه‌ای مرتبط'), lang),
+    },
+    flashcards: {
+      href: `${localizedPath('/flashcards/spondylodiszitis')}${lang === 'de' ? '?' : '&'}from=${encodeURIComponent(lessonReturn)}`,
+      label: pick(L('Lernkarten zur Spondylodiszitis', 'Spondylodiscitis flashcards', 'فلش‌کارت‌های اسپوندیلودیسکیت'), lang),
+    },
+  }
   const chapters = lesson.chapters
   const sections = [
     { id: 'start', label: pick(lesson.intro.title, lang), icon: 'start' },
@@ -77,7 +93,7 @@ export default function SpineInfectionPage() {
   }))
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={pick(lesson.title, lang)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: localizedPath('/') }, { label: pick(TITLE, lang), href: localizedPath('/lernen/wirbelsaeule') }]}
-    sections={sections} labels={labels} actions={{}} renderIcon={id => <Icon id={id}/>}
+    sections={sections} labels={labels} actions={actions} renderIcon={id => <Icon id={id}/>}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.heroImage, heroImageOpacity: .6, accent: '#72b7c7', accentStrong: '#236c7d', accentSoft: '#dff2f5', secondary: '#9a79c5', secondaryStrong: '#62418e', heroBase: '#172c3b' }}
     heroImageAlt={pick(lesson.alt, lang)} className={styles.page} syncHashNavigation
     sources={<LessonSources title={pick(L('Quellen und Geltungsbereich', 'Sources and scope', 'منابع و محدوده'), lang)} items={sources} note={pick(lesson.notice, lang)}/>}
