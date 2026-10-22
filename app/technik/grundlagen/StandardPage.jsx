@@ -357,15 +357,16 @@ function MriFundamentalsActions({ lang }) {
   const returnTo = lang === 'de' ? '/technik/grundlagen#mrt' : `/technik/grundlagen?lang=${lang}#mrt`
   const from = encodeURIComponent(returnTo)
   const labels = {
-    de: { title:'MRT-Grundlagen üben', quiz:'Drei MC-Fragen', signal:'Signalbildung-Karten', spin:'Spin-Echo-Karten', quality:'Bildqualität-Karten' },
-    en: { title:'Practise MRI fundamentals', quiz:'Three MCQs', signal:'Signal-formation cards', spin:'Spin-echo cards', quality:'Image-quality cards' },
-    fa: { title:'تمرین مبانی MRI', quiz:'سه سؤال چندگزینه‌ای', signal:'فلش‌کارت‌های تشکیل سیگنال', spin:'فلش‌کارت‌های اسپین‌اکو', quality:'فلش‌کارت‌های کیفیت تصویر' },
-  }[lang] || { title:'MRT-Grundlagen üben', quiz:'Drei MC-Fragen', signal:'Signalbildung-Karten', spin:'Spin-Echo-Karten', quality:'Bildqualität-Karten' }
+    de: { title:'MRT-Grundlagen üben', quiz:'Vier MC-Fragen', signal:'Signalbildung-Karten', spin:'Spin-Echo-Karten', gre:'Gradient-Echo-Karten', quality:'Bildqualität-Karten' },
+    en: { title:'Practise MRI fundamentals', quiz:'Four MCQs', signal:'Signal-formation cards', spin:'Spin-echo cards', gre:'Gradient-echo cards', quality:'Image-quality cards' },
+    fa: { title:'تمرین مبانی MRI', quiz:'چهار سؤال چندگزینه‌ای', signal:'فلش‌کارت‌های تشکیل سیگنال', spin:'فلش‌کارت‌های اسپین‌اکو', gre:'فلش‌کارت‌های گرادیان‌اکو', quality:'فلش‌کارت‌های کیفیت تصویر' },
+  }[lang] || { title:'MRT-Grundlagen üben', quiz:'Vier MC-Fragen', signal:'Signalbildung-Karten', spin:'Spin-Echo-Karten', gre:'Gradient-Echo-Karten', quality:'Bildqualität-Karten' }
   return <nav aria-label={labels.title} style={{ display:'flex', flexWrap:'wrap', gap:12, margin:'18px 0', padding:14, border:'1px solid var(--border)', borderRadius:14, background:'var(--surface-soft)' }}>
     <strong style={{ alignSelf:'center' }}>{labels.title}</strong>
-    <a href={`/ueben/quiz?fach=technik&n=3&themen=mrt-grundprinzip-signalbildung,mrt-spin-echo,mrt-bildqualitaet-artefakte-snr&from=${from}`}>{labels.quiz}</a>
+    <a href={`/ueben/quiz?fach=technik&n=4&themen=mrt-grundprinzip-signalbildung,mrt-spin-echo,mrt-gradient-echo,mrt-bildqualitaet-artefakte-snr&from=${from}`}>{labels.quiz}</a>
     <a href={`/flashcards/mrt-grundprinzip-signalbildung?from=${from}`}>{labels.signal}</a>
     <a href={`/flashcards/mrt-spin-echo?from=${from}`}>{labels.spin}</a>
+    <a href={`/flashcards/mrt-gradient-echo?from=${from}`}>{labels.gre}</a>
     <a href={`/flashcards/mrt-bildqualitaet-artefakte-snr?from=${from}`}>{labels.quality}</a>
   </nav>
 }
