@@ -45,3 +45,7 @@ Sections: (1) locate AG/AL, B and C relative to the stem; (2) compare B1/B2/B3 a
 ## Validation and open evidence
 
 The focused SSR check exercises all three locales, RTL direction, translated source and image captions, table content, self-check feedback and exact lesson ID. It does not establish browser behavior, specialist clinical approval or production publication. Browser QA and Dr. Zia's scientific review remain pending for the coordinator.
+
+## Retrieval practice registration (2026-10-22)
+
+The lesson now links to the global question bank and flashcard route using the exact curriculum ID `periprothetische-femurfraktur`. Two localized MCQs (four options each) assess B1/B2/B3 criteria and type C location; two cards reinforce those same classifications. Source and management caveats from the lesson remain in place. The focused SSR test checks exact-tag retrieval, localization, route actions, and curriculum URLs. Browser click-through and Dr. Zia's clinical review remain pending.

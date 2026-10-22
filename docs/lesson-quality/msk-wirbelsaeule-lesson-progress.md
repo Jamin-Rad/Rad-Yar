@@ -117,3 +117,7 @@ Das Scheuermann-MCQ und die Scheuermann-Karte wurden nach der exakten Curriculum
 ### Beckenringfraktur · MSK.pdf S.25–26 (22.10.2026)
 
 Die unabhängige Prüfung fand eine Verwechslungsgefahr zwischen Tile-Grundtyp B und AO/OTA-2018-Untergruppe 61B1/61B2. Der Lektionstext trennt diese Bezeichnungen jetzt explizit und verweist auf die AO-Definitionen. Zwei MCQs und zwei Lernkarten sind unter der exakten Curriculum-ID `beckenringfraktur` registriert; beide Aktionen sind aus der Lektion erreichbar. SSR-/Inhaltstest und globale Fragenbankprüfung bestanden. Browser-/klinische Freigabe bleibt offen.
+
+### Vancouver periprothetische Femurfraktur · MSK.pdf S.27 (22.10.2026)
+
+Zwei MCQs mit je vier Antwortoptionen und zwei Lernkarten sind unter `periprothetische-femurfraktur` in die globalen DE/EN/FA-Banken aufgenommen. Die Lektion und der Curriculum-Eintrag verlinken exakt auf diese Inhalte. SSR-Test und Fragenbank-Audit bestanden; unabhängige Delta-Prüfung bestanden. Browser-Klickprüfung und klinische Freigabe bleiben offen.

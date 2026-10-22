@@ -17,6 +17,8 @@ const LABELS = {
   complete: L('Abschnitt als gelesen markieren', 'Mark section as read', 'این بخش را خواندم'), completed: L('Als gelesen markiert', 'Marked as read', 'خوانده‌شده'),
   open: L('Abschnitt öffnen', 'Open section', 'بازکردن بخش'), close: L('Schließen', 'Close', 'بستن'),
   takeHome: L('Drei Regeln merken', 'Three rules to remember', 'سه قاعده را به خاطر بسپارید'),
+  quiz: L('Fragen zur Vancouver-Klassifikation', 'Vancouver classification questions', 'پرسش‌های طبقه‌بندی ونکوور'),
+  cards: L('Lernkarten zur Vancouver-Klassifikation', 'Vancouver classification flashcards', 'فلش‌کارت‌های طبقه‌بندی ونکوور'),
 }
 function Icon({ id }) {
   const d = { lokalisation: 'M12 3v18M3 12h18', 'b-typen': 'M4 5h16M4 12h16M4 19h16', selbstpruefung: 'M4 12h16m-7-7 7 7-7 7', summary: 'M5 5h14M5 12h14M5 19h14' }[id] || 'M4 12h16'
@@ -43,7 +45,7 @@ export default function PeriprothetischeFemurfrakturPage() {
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={pick(lesson.title, lang)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: langHref('/') }, { label: pick(L('MSK', 'MSK', 'عضلانی‌اسکلتی'), lang), href: langHref('/lernen/msk') }, { label: pick(lesson.title, lang) }]}
     sections={sections} labels={Object.fromEntries(Object.entries(LABELS).map(([key, value]) => [key, pick(value, lang)]))} renderIcon={id => <Icon id={id}/>}
-    actions={{}} theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.hero, heroImageOpacity: .72, accent: '#63c7bd', accentStrong: '#176c68', accentSoft: '#d8f2ed', secondary: '#9fb4c0', secondaryStrong: '#476273', heroBase: '#182d3a' }}
+    actions={{ mcq: { label: t('quiz'), href: langHref('/ueben/quiz?fach=msk&n=8&themen=periprothetische-femurfraktur') }, flashcards: { label: t('cards'), href: langHref('/flashcards/periprothetische-femurfraktur') } }} theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.hero, heroImageOpacity: .72, accent: '#63c7bd', accentStrong: '#176c68', accentSoft: '#d8f2ed', secondary: '#9fb4c0', secondaryStrong: '#476273', heroBase: '#182d3a' }}
     heroImageAlt={pick(lesson.heroAlt, lang)} className={styles.page}
     sources={<LessonSources title={pick(L('Quellen', 'Sources', 'منابع'), lang)} items={sourceItems} note={pick(lesson.scope, lang)}/>}
   >
