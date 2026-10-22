@@ -35,6 +35,8 @@ for (const section of lesson.sections) {
 }
 assert.ok(fs.existsSync(`public${lesson.hero}`))
 assert.ok(lesson.references.some(ref => ref.href === 'https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/further-reading/classifications-for-fractures-of-carpal-bones'))
+assert.ok(lesson.references.some(ref => ref.href === 'https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/scaphoid-proximal-pole/definition'))
+for (const locale of ['de', 'en', 'fa']) assert.ok(lesson.sections[0].paragraphs.some(item => /osteonecrosis|Osteonekrose|استئونکروز/i.test(item[locale]) && /B3/.test(item[locale])), `${locale}: B3 vascularity and osteonecrosis risk is qualified`)
 assert.ok(lesson.references.some(ref => ref.href === 'https://pubmed.ncbi.nlm.nih.gov/3611645/'))
 
 const require = createRequire(import.meta.url)
@@ -89,7 +91,7 @@ for (const locale of ['de', 'en', 'fa']) {
 const svg = fs.readFileSync(`public${lesson.hero}`, 'utf8')
 assert.equal(new DOMParser().parseFromString(svg, 'image/svg+xml').getElementsByTagName('parsererror').length, 0)
 const ledger = fs.readFileSync('docs/lesson-quality/skaphoidfraktur-msk-p19-p20.md', 'utf8')
-for (const detail of ['SCAP-19-01', 'SCAP-19-02', 'SCAP-19-04', 'SCAP-20-01', 'source-herbert-classification-p19.jpg', 'source-pseudarthrosis-vs-bipartitum-p19.jpg', 'source-snac-radiograph-p20.jpg', '220 dpi', 'user supplied the PDF']) assert.ok(ledger.includes(detail), `ledger detail missing: ${detail}`)
+for (const detail of ['SCAP-19-01', 'SCAP-19-02', 'SCAP-19-04', 'SCAP-19-05', 'SCAP-20-01', 'source-herbert-classification-p19.jpg', 'source-pseudarthrosis-vs-bipartitum-p19.jpg', 'source-snac-radiograph-p20.jpg', '220 dpi', 'user supplied the PDF']) assert.ok(ledger.includes(detail), `ledger detail missing: ${detail}`)
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
 assert.match(curriculum, /\{ id: 'skaphoidfraktur',[^\n]*link: '\/msk\/trauma\/skaphoidfraktur',[^\n]*inProgress: true/)
 for (const locale of ['de', 'en', 'fa']) {
