@@ -4,6 +4,7 @@ import { createElement } from 'react'
 import * as React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { getCardsByTopic, getFlashcardTopic } from '../data/flashcards.js'
+import { getQuestions } from '../data/questions.js'
 import DiagramModule from '../components/ClinicalPatternDiagram.jsx'
 
 const ClinicalPatternDiagram = DiagramModule.default || DiagramModule
@@ -20,6 +21,7 @@ assert.equal(learning.TUBERCULOSIS_FLASHCARD_TOPIC.id, 'tuberkulose')
 assert.equal(getFlashcardTopic('tuberkulose')?.href, '/flashcards/tuberkulose')
 assert.deepEqual(getCardsByTopic('tuberkulose').map(card => card.id), ['tuberkulose-miliares-verteilungsmuster'])
 for (const lang of ['de', 'en', 'fa']) {
+  assert.deepEqual(getQuestions(['tuberkulose'], lang, 20).map(question => question.id), [`thorax-tuberculosis-${lang}-01`], `${lang}: exact-topic MCQ retrieval`)
   const card = learning.TUBERCULOSIS_FLASHCARDS[0]
   assert.ok(card.front[lang] && card.answer[lang] && card.explanation[lang], `${lang}: localized card fields`)
   assert.ok(card.explanation[lang].includes(lang === 'fa' ? 'صفحهٔ ۳۷' : lang === 'de' ? 'PDF-S. 37' : 'PDF p. 37'), `${lang}: physical source page`)
@@ -41,6 +43,7 @@ const ledger = await read('docs/lesson-quality/abdomen-thorax-authoring-ledger.m
 const map = await read('docs/lesson-quality/pdf-map-abdomen-thorax.md')
 
 assert.match(questions, /key: 'thorax-tuberculosis'.*tags: \['tuberkulose'\]/)
+assert.match(curriculum, /id: 'tuberkulose'.*mcqLink: '\/ueben\/quiz\?fach=thorax&n=1&themen=tuberkulose'/)
 assert.match(curriculum, /id: 'tuberkulose'.*flashcardLink: '\/flashcards\/tuberkulose'/)
 assert.match(flashcards, /TUBERCULOSIS_FLASHCARD_TOPIC/)
 assert.match(flashcards, /\.\.\.TUBERCULOSIS_FLASHCARDS/)
