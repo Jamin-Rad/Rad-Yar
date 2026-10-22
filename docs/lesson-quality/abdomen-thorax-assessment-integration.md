@@ -5,7 +5,7 @@ Scope: connect eligible entries from `data/abdomenThoraxAssessmentDrafts.js` to 
 
 ## Registered
 
-The following 13 lesson drafts are represented in `QUESTION_BANK` in DE, EN and FA. Each question has a stable per-language ID, four options, the exact curriculum topic tags listed below, and is retrievable through `getQuestions()` in each language.
+The following lesson drafts are represented in `QUESTION_BANK` in DE, EN and FA. Each question has a stable per-language ID, four options, the exact curriculum topic tags listed below, and is retrievable through `getQuestions()` in each language. The hepatic AML row was added after the initial ledger version.
 
 | Draft key | Exact curriculum tags | PDF/reference recorded in draft |
 |---|---|---|
@@ -20,6 +20,7 @@ The following 13 lesson drafts are represented in `QUESTION_BANK` in DE, EN and 
 | `thorax-tuberculosis` | `tuberkulose` | Thorax pp. 36–37; ATS/CDC/IDSA |
 | `thorax-chest-xray` | `roentgen-thorax-systematik` | Thorax pp. 27–28 |
 | `abdomen-cystic-liver-lesions` | `leberzyste` | Abdomen pp. 5–7; ACG 2024; WHO 2025 |
+| `hepatisches-angiomyolipom` | `hepatisches-angiomyolipom` | Abdomen physical pp. 12–13; Wang 2009; Ding 2017; gadoxetic MRI cohort |
 | `abdomen-appendizitis` | `appendizitis` | Abdomen pp. 79–80; WSES 2025; ACR RLQ 2022 |
 | `abdomen-lower-gi-bleeding` | `untere-gi-blutung` | Abdomen pp. 86–87; ESGE 2021; ACG 2023; ACR |
 | `abdomen-kolorektales-karzinom` | `kolorektales-karzinom` | Abdomen pp. 88–89; ACR 2025; SAR 2023 |
@@ -28,7 +29,6 @@ The following 13 lesson drafts are represented in `QUESTION_BANK` in DE, EN and 
 
 | Draft key | Reason |
 |---|---|
-| `abdomen-hepatic-aml` | No hepatic-AML curriculum ID exists. The exact ID `angiomyolipom` is filed under benign renal tumours; using it would cause wrong-topic retrieval. The lesson also explicitly preserves an unresolved PDF/reference discrepancy. |
 | `abdomen-psc-mrcp` | The only matching curriculum ID is `psc-pbc`, a combined PSC/PBC topic, while this route and question cover PSC alone. Linking would overstate lesson coverage. |
 
 ## Verification and remaining limits
@@ -40,3 +40,4 @@ The following 13 lesson drafts are represented in `QUESTION_BANK` in DE, EN and 
 - Tag correction for this addendum: the existing closed-loop/gallstone ileus items stay under `ileus-duenndarm`; the new sigmoid-volvulus recognition item is tagged only `volvulus`, matching its exact curriculum ID. The linked query `fach=abdomen&n=1&themen=volvulus` retrieves that item.
 - This is a structural and retrieval check. It does not verify semantic translation parity, independently validate clinical claims against the cited sources, complete browser/runtime testing, establish Dr. Zia's scientific approval, or establish full Abdomen/Thorax PDF coverage. Those remain open in the batch ledger.
 - Focused volvulus verification passes: one question retrieves in each language under the exact `volvulus` tag, with three cards under the same topic. The existing closed-loop/gallstone ileus items remain under `ileus-duenndarm`.
+- Focused hepatic AML verification (`node --import tsx scripts/test-hepatic-angiomyolipoma-integration.mjs`) passed on 2026-10-22: four exact-topic four-option MCQs and four cards retrieve in each language; the shell self-check and hepatic curriculum ID stay separate from renal AML. This is structural evidence, not a scientific approval.

@@ -277,6 +277,8 @@ export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de',
     ? ({ de: 'Lernschema: Der Magen ist dargestellt; eine Raumforderung wächst nach außen aus der Magenwand. Kein Patientenbild.', en: 'Teaching schematic: the stomach is shown with a mass growing outward from its wall. Not patient imaging.', fa: 'نمای شماتیک آموزشی: معده و توده‌ای که به بیرون از دیواره معده رشد می‌کند نشان داده شده‌اند؛ تصویر بیمار نیست.' }[lang] || 'Teaching schematic of a stomach with an exophytic mass; not patient imaging.')
     : variant === 'volvulus'
     ? ({ de: 'Lehrschema mit Kolonverlauf und zwei vereinfachten Volvulus-Konfigurationen; keine diagnostische Aufnahme.', en: 'Teaching schematic of the colon and two simplified volvulus configurations; not a diagnostic image.', fa: 'شماتیک آموزشی مسیر کولون و دو نمای ساده‌شده از ولولوس؛ تصویر تشخیصی نیست.' }[lang] || 'Teaching schematic; not diagnostic imaging.')
+    : variant === 'hepatic-aml'
+    ? ({ de: 'Schematische Läsion mit markiertem makroskopischem Fettanteil; keine Patientenaufnahme.', en: 'Teaching schematic of a lesion with macroscopic fat; not patient imaging.', fa: 'شماتیک آموزشی ضایعه با چربی ماکروسکوپیک؛ تصویر بیمار نیست.' }[lang] || 'Teaching schematic of a lesion with macroscopic fat; not patient imaging.')
     : title
   return <svg viewBox="0 0 400 250" role="img" aria-label={accessibleDescription} xmlns="http://www.w3.org/2000/svg">
     <title>{accessibleDescription}</title>
