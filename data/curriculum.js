@@ -461,7 +461,7 @@ export const CURRICULUM = [
           { id: 'bronchiolitis', title: { de: 'Bronchiolitis', en: 'Bronchiolitis', fa: 'برونشیولیت' }, tags: ['CT'], diff: 2 },
           { id: 'tracheomalazie', title: { de: 'Tracheomalazie', en: 'Tracheomalacia', fa: 'تراکئومالاسی' }, group: ['Trachea & zentrale Atemwege'], tags: ['CT'], diff: 2 },
           { id: 'trachealstenose', title: { de: 'Trachealstenose', en: 'Tracheal Stenosis', fa: 'تنگی تراشه' }, group: ['Trachea & zentrale Atemwege'], tags: ['CT'], diff: 2 },
-          { id: 'fremdkoerper-atemwege', title: { de: 'Fremdkörper', en: 'Airway Foreign Body', fa: 'جسم خارجی راه هوایی' }, group: ['Trachea & zentrale Atemwege'], tags: ['Rö','CT'], diff: 1, link: '/thorax/fremdkoerperaspiration' },
+          { id: 'fremdkoerper-atemwege', title: { de: 'Fremdkörper', en: 'Airway Foreign Body', fa: 'جسم خارجی راه هوایی' }, group: ['Trachea & zentrale Atemwege'], tags: ['Rö','CT'], diff: 1, link: '/thorax/fremdkoerperaspiration', mcqLink: '/ueben/quiz?fach=thorax&n=10&themen=fremdkoerper-atemwege', flashcardLink: '/flashcards/fremdkoerper-atemwege', inProgress: true, updatedAt: '2026-10-22' },
         ],
       },
       {

@@ -10,6 +10,7 @@ import { FLEISCHNER_QUESTIONS } from './fleischnerLearning'
 import { HEMANGIOMA_QUESTIONS } from './haemangiomaTraining'
 import { HEPATIC_ANGIOMYOLIPOMA_QUESTIONS } from './hepaticAngiomyolipomaLearning'
 import { PSC_MRCP_QUESTIONS } from './pscMrcpLearning'
+import { FOREIGN_BODY_ASPIRATION_QUESTIONS } from './foreignBodyAspirationLearning'
 import { GIST_QUESTIONS } from './gistLearning'
 import { VOLVULUS_QUESTIONS } from './volvulusLearning'
 import { PNET_QUESTIONS } from './pnetLearning'
@@ -4318,6 +4319,7 @@ for (const lang of Object.keys(QUESTION_BANK)) {
   QUESTION_BANK[lang].push(...(PNET_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(HEPATIC_ANGIOMYOLIPOMA_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(PSC_MRCP_QUESTIONS[lang] || []))
+  QUESTION_BANK[lang].push(...(FOREIGN_BODY_ASPIRATION_QUESTIONS[lang] || []))
 }
 
 export const MCQ_TOPIC_GROUPS = [
@@ -4363,6 +4365,7 @@ export const MCQ_TOPIC_GROUPS = [
   { fachId: 'abdomen', kapitelId: 'abdomen-retroperitoneum', title: { de: 'Retroperitoneum', en: 'Retroperitoneum', fa: 'رتروپریتوئن' }, topics: [{ id: 'morbus-ormond', title: { de: 'Morbus Ormond', en: 'Ormond disease', fa: 'بیماری اورموند' } }] },
   { fachId: 'gehirn', kapitelId: 'kopf-tumoren', title: { de: 'Hirntumoren', en: 'Brain tumours', fa: 'تومورهای مغزی' }, topics: [{ id: 'meningeom', title: { de: 'Meningeom', en: 'Meningioma', fa: 'مننژیوم' } }, { id: 'medulloblastom', title: { de: 'Medulloblastom', en: 'Medulloblastoma', fa: 'مدولوبلاستوم' } }, { id: 'lymphom-zns', title: { de: 'Primäres ZNS-Lymphom', en: 'Primary CNS lymphoma', fa: 'لنفوم اولیه سیستم عصبی مرکزی' } }, { id: 'metastasen-meningeosis', title: { de: 'Hirnmetastasen · parenchymal', en: 'Brain metastases · parenchymal', fa: 'متاستاز مغزی پارانشیمی' } }, { id: 'kolloidzyste', title: { de: 'Kolloidzyste', en: 'Colloid cyst', fa: 'کیست کلوئید' } }] },
   { fachId: 'thorax', kapitelId: 'thorax-lunge', title: { de: 'Lungenparenchymerkrankungen', en: 'Pulmonary parenchymal diseases', fa: 'بیماری‌های پارانشیم ریه' }, topics: [{ id: 'uip-ipf', title: { de: 'UIP / IPF', en: 'UIP / IPF', fa: 'UIP / IPF' } }, { id: 'lungenoedem', title: { de: 'Lungenödem · HRCT', en: 'Pulmonary oedema · HRCT', fa: 'ادم ریه · HRCT' } }] },
+  { fachId: 'thorax', kapitelId: 'thorax-lunge', title: { de: 'Lunge', en: 'Lung', fa: 'ریه' }, topics: [{ id: 'fremdkoerper-atemwege', title: { de: 'Fremdkörperaspiration bei Kindern', en: 'Foreign-body aspiration in children', fa: 'آسپیراسیون جسم خارجی در کودکان' } }] },
   { fachId: 'msk', kapitelId: 'msk-knochennekrosen', title: { de: 'Knochennekrosen', en: 'Bone necrosis', fa: 'نکروزهای استخوانی' }, topics: [{ id: 'knocheninfarkt', title: { de: 'Knocheninfarkt', en: 'Bone infarct', fa: 'انفارکت استخوان' } }] },
   { fachId: 'msk', kapitelId: 'msk-knochentumoren', title: { de: 'Tumorähnliche Läsionen', en: 'Tumour-like lesions', fa: 'ضایعات شبه‌توموری' }, topics: [{ id: 'eosinophiles-granulom', title: { de: 'Langerhans-Zell-Histiozytose des Knochens', en: 'Osseous Langerhans cell histiocytosis', fa: 'هیستیوسیتوز سلول لانگرهانس در استخوان' } }] },
   ...ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS,
