@@ -21,7 +21,7 @@
 
 | Claim | Location | Evidence / disposition |
 | --- | --- | --- |
-| Fernandez is mechanism-oriented and is not a substitute for describing morphology or assessing stability | `fernandez.key`, card `drf-fc-04` | Source pages support mechanism groups. A published review notes limited reliability/reproducibility across established systems: [classification systems review](https://pmc.ncbi.nlm.nih.gov/articles/PMC5694815/). The lesson therefore avoids saying Types II–V are monotonically “increasingly unstable.” |
+| Fernandez is mechanism-oriented and is not a substitute for describing morphology or assessing stability | `fernandez.lead`, `fernandez.key`, card `drf-fc-04` | Source pages support mechanism groups. A prospective reliability study found fair intraobserver reliability and poor-to-fair interobserver reliability for full classification systems, including Fernandez; the lesson says the mechanism may offer clues to instability/associated injury, not predict them, and does not replace individual assessment ([Kleinlugtenbelt et al.](https://pmc.ncbi.nlm.nih.gov/articles/PMC5694815/)). |
 | SL interval around 3 mm | associated-injury text, MCQ `sl`, card `drf-fc-10` | Not on pp.17–18. Kept as a rough guide, not a universal cutoff, and added projection/contralateral comparison because reported normal limits vary by location/position: [RSNA review](https://pubs.rsna.org/radiology/doi/full/10.1148/rg.210123). |
 | Lunate/perilunate signs and alignment | associated-injury text, MCQ `lunate`, card `drf-fc-11` | Not detailed on pp.17–18. The radiographic distinction is supported by [primary image-diagnosis review](https://pmc.ncbi.nlm.nih.gov/articles/PMC3327118/) and [wrist-trauma imaging review](https://pmc.ncbi.nlm.nih.gov/articles/PMC12169939/). |
 | Other numeric measures (e.g. articular step, radial tilt, SL angle) and management principles elsewhere in the route | Other sections and assessments | Outside the assigned pages and not revised in this batch. This ledger does not validate the rest of the lesson’s measurements or treatment section. |
@@ -67,3 +67,11 @@ figure remains in place, with a three-language legend directly below it
 translating its heading, extra-/intra-articular labels, and dorsal/volar
 angulation terms. Structural tests check all three languages; rendered layout
 and Persian RTL behavior still need browser verification.
+
+The later independent bounded review recommended softening “predicts instability
+and associated injuries.” The lesson now uses “offers clues to possible
+instability and associated injuries” in the lead and take-home copy across
+DE/EN/FA, and the focused test guards that wording. This is a language/evidence
+calibration, not approval of the rest of the route. Radiopaedia rID 88989
+contributor/full-study details, browser behavior and specialist review remain
+open.

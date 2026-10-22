@@ -78,9 +78,9 @@ export const DISTALE_RADIUS_LESSON = {
   fernandez: {
     title: L('Fernandez-Klassifikation', 'Fernandez Classification', 'طبقه‌بندی فرناندز'),
     lead: L(
-      'Fernandez ordnet die distale Radiusfraktur nach dem zugrunde liegenden Verletzungsmechanismus und hilft, Instabilität und Begleitverletzungen vorauszusehen.',
-      'Fernandez classifies distal radius fractures by injury mechanism and helps predict instability and associated injuries.',
-      'فرناندز شکستگی دیستال رادیوس را بر اساس مکانیسم آسیب طبقه‌بندی می‌کند و به پیش‌بینی ناپایداری و آسیب‌های همراه کمک می‌کند.'
+      'Fernandez ordnet die distale Radiusfraktur nach dem zugrunde liegenden Verletzungsmechanismus und kann Hinweise auf mögliche Instabilität und Begleitverletzungen geben.',
+      'Fernandez classifies distal radius fractures by injury mechanism and can offer clues to possible instability and associated injuries.',
+      'فرناندز شکستگی دیستال رادیوس را بر اساس مکانیسم آسیب طبقه‌بندی می‌کند و می‌تواند سرنخ‌هایی دربارهٔ احتمال ناپایداری و آسیب‌های همراه بدهد.'
     ),
     schemaSrc: '/distale-radiusfraktur/fernandez-schema.png',
     xraySrc: '/distale-radiusfraktur/fernandez-roentgen.png',
@@ -164,7 +164,7 @@ export const DISTALE_RADIUS_LESSON = {
     items: [
       { title: L('Muster vollständig beschreiben', 'Describe the complete pattern', 'الگو را کامل توصیف کنید'), text: L('Eponym plus extra-/intraartikulär, Fragmente und Dislokation.', 'Use the eponym plus articular involvement, fragments and displacement.', 'اپونیم همراه با درگیری مفصل، قطعات و جابجایی ذکر شود.') },
       { title: L('Geometrie messen', 'Measure geometry', 'هندسه را اندازه بگیرید'), text: L('Tilt, Inklination, Radiuslänge/Ulnavarianz sowie Gelenkstufe dokumentieren.', 'Document tilt, inclination, radial length/ulnar variance and articular step.', 'تیلت، شیب، طول رادیوس/واریانس اولنار و پله مفصل ثبت شود.') },
-      { title: L('Fernandez verstehen', 'Understand Fernandez', 'فرناندز را درک کنید'), text: L('Mechanismus sagt etwas über Fragmente, Instabilität und Begleitverletzungen aus.', 'Mechanism predicts fragments, instability and associated injury.', 'مکانیسم درباره قطعات، ناپایداری و آسیب همراه اطلاعات می‌دهد.') },
+      { title: L('Fernandez verstehen', 'Understand Fernandez', 'فرناندز را درک کنید'), text: L('Der Mechanismus liefert Hinweise auf Fragmentmuster, mögliche Instabilität und Begleitverletzungen; er ersetzt nicht die individuelle Beurteilung.', 'Mechanism offers clues to fragment patterns, possible instability and associated injuries; it does not replace individual assessment.', 'مکانیسم سرنخ‌هایی دربارهٔ الگوی قطعات، احتمال ناپایداری و آسیب‌های همراه می‌دهد؛ اما جای ارزیابی فردی را نمی‌گیرد.') },
       { title: L('Karpus nicht vergessen', 'Do not forget the carpus', 'کارپ را فراموش نکنید'), text: L('SL-Intervall, Gilula-Bögen und Lunatum-/Kapitatumachse aktiv prüfen.', 'Actively assess the SL interval, Gilula arcs and lunate/capitate alignment.', 'فاصله SL، قوس‌های گیلولا و محور لونیت/کاپیتیت فعالانه بررسی شوند.') },
       { title: L('CT gezielt einsetzen', 'Use CT selectively', 'CT را هدفمند استفاده کنید'), text: L('Bei intraartikulärer Mehrfragmentfraktur, Die-Punch, Barton oder unklarer Gelenkfläche.', 'Use it for intra-articular comminution, die-punch, Barton or uncertain articular anatomy.', 'در خردشدگی داخل‌مفصلی، Die-Punch، بارتون یا آناتومی مفصلی نامشخص.') },
     ],

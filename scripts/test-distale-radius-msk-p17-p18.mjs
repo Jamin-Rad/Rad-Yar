@@ -56,6 +56,9 @@ assert.doesNotMatch(ledger, /code-native diagram/i, 'do not misidentify the supp
 const q = (id, lang) => DISTALE_RADIUS_QUESTIONS[lang].find(question => question.id === `distaleradius-${lang}-${id}`)
 const answer = question => question.options.find(option => option.id === question.correct)?.text
 for (const lang of langs) {
+  assert.match(topic.fernandez.lead[lang], /clues|Hinweise|سرنخ/i)
+  assert.doesNotMatch(topic.fernandez.lead[lang], /predict|vorauszusehen|پیش‌بینی/i)
+  assert.match(topic.takehome.items.find(item => item.title[lang] === ({ de: 'Fernandez verstehen', en: 'Understand Fernandez', fa: 'فرناندز را درک کنید' })[lang]).text[lang], /clues|Hinweise|سرنخ/i)
   const fernandezQ = q('fernandez-ii', lang)
   assert.ok(fernandezQ)
   assert.match(answer(fernandezQ), /II|Barton|بارتون/i)
