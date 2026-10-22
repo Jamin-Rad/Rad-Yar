@@ -20,11 +20,11 @@ PDF-Seiten 133–134 waren die erklärte Inhaltsquelle dieses Teilbatches; die v
 
 Lernpfad: Mikrobläschen-Mechanismus → Anwendungs-/Zulassungsgrenzen → produktspezifische Sicherheit → Selbstcheck und Take-home. Kein generisches Kapitel „Befund & Selbsttest“ wurde eingeführt. Ein code-natives Prozessschema erläutert die Signalentstehung; es ist gekennzeichnet als Schema, nicht als Patientendarstellung.
 
-Das neue Topic `km-ultraschall` besitzt Übersetzungen DE/EN/FA, zwei übersetzte MCQs und zwei daraus erzeugte Flashcards. Curriculumgruppe, Kursliste, Quizaggregation und Flashcardgruppe sind statisch überprüft.
+Das neue Topic `km-ultraschall` besitzt Übersetzungen DE/EN/FA, drei übersetzte MCQs je Sprache und drei daraus erzeugte Flashcards. Curriculumgruppe, Kursliste, Quizaggregation und Flashcardgruppe sind statisch überprüft.
 
 ## Verifikation und offene Punkte
 
-- PASS: `esbuild`-JSX-Parse; statische Datenprüfung von drei Sprachen, zwei MCQs je Sprache, vier Antwortoptionen, Group-/Flashcard-Verknüpfung; vollständiger MCQ-Audit (597 Fragen und 18 Fälle je Sprache); `git diff --check` (nur Windows-Zeilenendenhinweis).
+- PASS: `esbuild`-JSX-Parse; statische Datenprüfung von drei Sprachen, drei MCQs und drei Flashcards je Topic, vier Antwortoptionen, Group-/Flashcard-Verknüpfung; vollständiger MCQ-Audit (774 Fragen und 18 Fälle je Sprache); `git diff --check` (nur Windows-Zeilenendenhinweis).
 - BLOCKED: Browserroute konnte wegen `ERR_CONNECTION_TIMED_OUT` zu `localhost:3003` nicht geöffnet werden. Runtime, responsive Darstellung, Interaktion, Theme und RTL-Layout sind nicht beobachtet.
 - BLOCKED: Produktionsbuild schlug erneut fehl: `fonts.googleapis.com` nicht erreichbar und `EPERM` beim Erstellen von `.next/server/app/abdomen/leber`. Das belegt keinen Fehler des CEUS-Moduls, lässt den integrierten Build aber ungeprüft.
 - PASS im erklärten redaktionellen/technischen Umfang: unabhängige, read-only Prüfung von Technik.pdf PDF-S. 133–134 und EMA SonoVue-Produktinformation (20.03.2026). Finding CEUS-SRC-01 (Hypersensitivität/Dobutamin), CEUS-SRC-02 (nicht übernommene PDF-Sicherheitsbehauptungen mit fehlender aktueller Quellenbestätigung), CEUS-ASM-01 (Quizlink) und CEUS-ASM-02 (Flashcard-Erklärung) wurden korrigiert oder transparent begrenzt. Retest schloss CEUS-SRC-03 durch Trennung allgemeiner Überempfindlichkeit von IV-spezifischen Kontraindikationen. Keine wissenschaftliche Endfreigabe durch Dr. Zia.
