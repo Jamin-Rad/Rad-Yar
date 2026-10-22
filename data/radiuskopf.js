@@ -168,48 +168,43 @@ export const RADIUSKOPF_LESSON = {
   mason: {
     title: L('Mason-Klassifikation', 'Mason Classification', 'طبقه‌بندی ماسون'),
     lead: L(
-      'Die Mason-Klassifikation (modifiziert nach Johnston, Hotchkiss und Broberg) unterscheidet vier Typen nach Dislokation und Fragmentanzahl – die Grundlage für die Therapieentscheidung.',
-      'The Mason classification (modified by Johnston, Hotchkiss and Broberg) distinguishes four types based on displacement and fragment count – the basis for treatment decisions.',
-      'طبقه‌بندی ماسون (اصلاح‌شده توسط جانستون، هاچکیس و برابرگ) چهار نوع را بر اساس جابجایی و تعداد قطعات متمایز می‌کند – پایه تصمیم‌گیری درمانی.'
+      'Die Mason-Einteilung auf der PDF-Seite ordnet die Frakturen nach Dislokation, Fragmentierung und Ellenbogenluxation ein. Die Tabelle direkt unter der Abbildung dient zugleich als übersetzte Bildlegende.',
+      'The Mason scheme on the PDF page classifies fractures by displacement, fragmentation, and elbow dislocation. The table directly below the figure also serves as its translated legend.',
+      'طبقه‌بندی ماسون در صفحهٔ PDF شکستگی‌ها را بر اساس جابجایی، چندقطعه‌ای بودن و لوکساسیون آرنج دسته‌بندی می‌کند. جدول زیر تصویر، راهنمای ترجمه‌شدهٔ آن نیز هست.'
     ),
-    schemaSrc: '/radiuskopf/mason-klassifikation-schema.png',
-    schemaAlt: L('Mason-Klassifikation Typ I–IV – Schematische Darstellung', 'Mason Classification Types I–IV – Schematic diagram', 'طبقه‌بندی ماسون نوع I–IV – نمایش شماتیک'),
+    schemaSrc: '/radiuskopf/mason-klassifikation-msk-p15.png',
+    schemaAlt: L('Ausschnitt der Mason-Schemata auf MSK.pdf S. 15: Typen I–IV, bei Typ IV mit Ellenbogenluxation', 'Crop of the Mason schematics on MSK.pdf p. 15: Types I–IV, with elbow dislocation in Type IV', 'برشی از شماتیک‌های ماسون در MSK.pdf صفحهٔ ۱۵: انواع I تا IV؛ نوع IV همراه با لوکساسیون آرنج'),
     headers: [
       L('Typ', 'Type', 'نوع'),
       L('Definition', 'Definition', 'تعریف'),
       L('Radiologisches Merkmal', 'Radiological feature', 'ویژگی رادیولوژیک'),
-      L('Therapie', 'Treatment', 'درمان'),
     ],
     rows: [
       [
         L('I', 'I', 'I'),
         L('Nicht oder minimal dislozierte Fraktur', 'Non- or minimally displaced fracture', 'شکستگی بدون یا حداقل جابجایی'),
-        L('Gelenkstufe < 2 mm; > 70 % der Gelenkfläche intakt', 'Joint step < 2 mm; > 70 % of articular surface intact', 'پله مفصلی < ۲ میلی‌متر؛ > ۷۰٪ سطح مفصلی سالم'),
-        L('Konservativ: Gilchrist/Schlinge 1–2 Wo., frühe Mobilisation', 'Conservative: sling 1–2 weeks, early mobilisation', 'محافظه‌کارانه: اسلینگ ۱–۲ هفته، تحرک زودهنگام'),
+        L('Gelenkstufe < 2 mm', 'Joint step < 2 mm', 'پله مفصلی < ۲ میلی‌متر'),
       ],
       [
         L('II', 'II', 'II'),
         L('Dislozierte marginale Fraktur (Keilfraktur)', 'Displaced marginal fracture (wedge)', 'شکستگی حاشیه‌ای جابجا شده (گوه‌ای)'),
-        L('Gelenkstufe > 2 mm ODER > 30 % der Gelenkfläche; Keilfragment; intra- oder extraartikulär', 'Joint step > 2 mm OR > 30 % of articular surface; wedge fragment; intra- or extra-articular', 'پله مفصلی > ۲ میلی‌متر یا > ۳۰٪ سطح مفصلی؛ قطعه گوه‌ای؛ داخل یا خارج مفصل'),
-        L('Ohne mechanischen Block oft konservativ mit früher Mobilisation; ORIF bei mechanischem Block, Instabilität oder relevanter Inkongruenz', 'Often non-operative with early mobilisation if there is no mechanical block; ORIF for mechanical block, instability or relevant incongruity', 'در نبود بلوک مکانیکی اغلب درمان غیرجراحی با تحرک زودهنگام؛ ORIF در بلوک مکانیکی، ناپایداری یا ناهمخوانی مهم مفصل'),
+        L('Gelenkstufe > 2 mm ODER > 30 % Gelenkfläche; oft Keilfraktur; intra- oder extraartikulär', 'Joint step > 2 mm OR > 30 % of the articular surface; often a wedge fracture; intra- or extra-articular', 'پله مفصلی > ۲ میلی‌متر یا درگیری > ۳۰٪ سطح مفصلی؛ اغلب شکستگی گوه‌ای؛ داخل یا خارج مفصل'),
       ],
       [
         L('III', 'III', 'III'),
         L('Mehrfragmentäre / Trümmerfraktur', 'Multi-fragmentary / comminuted fracture', 'شکستگی چندقطعه‌ای / خرد شده'),
-        L('≥ 3 Fragmente; gesamtes Radiusköpfchen zertrümmert; keine ORIF möglich', '≥ 3 fragments; entire radial head comminuted; ORIF not feasible', '≥ ۳ قطعه؛ تمام سر رادیوس خرد شده؛ ORIF ممکن نیست'),
-        L('Radiusköpfchenprothese (Metallimplantat) oder Resektion (nur bei isolierter Fraktur ohne Instabilität)', 'Radial head arthroplasty (metal implant) or resection (only isolated fracture without instability)', 'پروتز سر رادیوس (ایمپلنت فلزی) یا رزکسیون (فقط شکستگی مجزا بدون ناپایداری)'),
+        L('Mason III: mehrfragmentär / Trümmerfraktur; keine Mindestzahl auf der PDF-Seite', 'Mason III: multi-fragmentary / comminuted; no minimum count on the PDF page', 'ماسون III: چندقطعه‌ای / خردشده؛ صفحهٔ PDF حداقل تعداد را ذکر نمی‌کند'),
       ],
       [
         L('IV', 'IV', 'IV'),
         L('Jede Radiusköpfchenfraktur + Ellenbogenluxation', 'Any radial head fracture + elbow dislocation', 'هر شکستگی سر رادیوس + لوکساسیون آرنج'),
-        L('Radiocapitellar Line unterbrochen; Frakturtyp I–III kombiniert mit Dislokation', 'Radiocapitellar line disrupted; fracture type I–III combined with dislocation', 'خط رادیوکاپیتلار قطع شده؛ نوع شکستگی I–III همراه با جابجایی'),
-        L('Zuerst Reposition der Luxation; dann Versorgung der Fraktur je nach Typ', 'First reduce the dislocation; then address the fracture according to type', 'ابتدا کاهش لوکساسیون؛ سپس درمان شکستگی بر اساس نوع'),
+        L('Jede Radiusköpfchenfraktur mit Ellenbogenluxation', 'Any radial head fracture with elbow dislocation', 'هر شکستگی سر رادیوس همراه با لوکساسیون آرنج'),
       ],
     ],
     key: L(
-      'Die Mason-Klassifikation beschreibt Morphologie, entscheidet aber nicht allein über die Therapie. Entscheidend sind mechanischer Bewegungsblock, Gelenkstabilität, Rekonstruierbarkeit und Begleitverletzungen. Bei unklarem Befund hilft CT.',
-      'The Mason classification describes morphology but does not determine treatment by itself. Mechanical block, joint stability, reconstructibility and associated injuries guide management. CT helps when findings are unclear.',
-      'طبقه‌بندی ماسون مورفولوژی را توصیف می‌کند، اما به‌تنهایی درمان را تعیین نمی‌کند. بلوک مکانیکی حرکت، پایداری مفصل، امکان بازسازی و آسیب‌های همراه تعیین‌کننده‌اند. در یافته‌های نامشخص CT کمک‌کننده است.'
+      'Bildlegende: I nicht/minimal disloziert; II dislozierte Rand-/Keilfraktur; III mehrfragmentär/Trümmerfraktur; IV Radiusköpfchenfraktur mit Ellenbogenluxation. Laut PDF gilt Typ I bei Gelenkstufe < 2 mm und Typ II bei > 2 mm oder > 30 % Gelenkfläche; exakt 2 mm ohne > 30 % Beteiligung wird auf dieser Seite nicht zugeordnet. Die Klassifikation beschreibt Morphologie, nicht automatisch die Therapie; Mason-Modifikationen können abweichen.',
+      'Figure legend: I non/minimally displaced; II displaced marginal/wedge fracture; III multi-fragmentary/comminuted; IV radial head fracture with elbow dislocation. The PDF assigns Type I to a joint step < 2 mm and Type II to > 2 mm or > 30 % articular involvement; it does not assign exactly 2 mm without > 30 % involvement. The classification describes morphology, not an automatic treatment; Mason modifications may differ.',
+      'راهنمای تصویر: I بدون جابجایی/با جابجایی کم؛ II شکستگی حاشیه‌ای/گوه‌ای جابجا‌شده؛ III چندقطعه‌ای/خردشده؛ IV شکستگی سر رادیوس همراه لوکساسیون آرنج. طبق PDF، پلهٔ < ۲ میلی‌متر نوع I و پلهٔ > ۲ میلی‌متر یا درگیری > ۳۰٪ نوع II است؛ برای پلهٔ دقیقاً ۲ میلی‌متر بدون درگیری > ۳۰٪، صفحه نوعی تعیین نمی‌کند. طبقه‌بندی مورفولوژی را توصیف می‌کند، نه درمان خودکار؛ نسخه‌های اصلاح‌شدهٔ ماسون ممکن است متفاوت باشند.'
     ),
   },
 
@@ -232,29 +227,29 @@ export const RADIUSKOPF_LESSON = {
       },
       {
         icon: '🔩',
-        title: L('Mason II – ORIF', 'Mason II – ORIF', 'ماسون II – ORIF'),
+        title: L('Mason II – Therapie nach Befund', 'Mason II – treatment based on findings', 'ماسون II – درمان بر اساس یافته‌ها'),
         text: L(
-          'Offene Reposition und interne Fixation (ORIF) mit Herbert-Schrauben oder Mini-Fragmente-Platten wenn: Gelenkstufe > 2 mm, > 30 % Gelenkfläche, Bewegungsblockierung. Ziel: anatomische Rekonstruktion.',
-          'Open reduction and internal fixation (ORIF) with Herbert screws or mini-fragment plates when: joint step > 2 mm, > 30 % articular surface involved, motion block. Goal: anatomical reconstruction.',
-          'کاهش باز و تثبیت داخلی (ORIF) با پیچ‌های هربرت یا صفحات قطعه‌کوچک در صورت: پله مفصلی > ۲ میلی‌متر، > ۳۰٪ سطح مفصلی، بلوک حرکتی. هدف: بازسازی آناتومیک.'
+          'Eine Gelenkstufe > 2 mm oder ein Befall von > 30 % ordnet die Fraktur in der PDF-Kurzfassung Typ II zu, begründet für sich allein aber keine ORIF. Therapieentscheidungen berücksichtigen unter anderem einen persistierenden mechanischen Bewegungsblock, Stabilität, Rekonstruierbarkeit und Begleitverletzungen.',
+          'A joint step > 2 mm or involvement of > 30 % places the fracture in Type II in the PDF summary, but does not by itself justify ORIF. Treatment decisions also consider a persistent mechanical block, stability, reconstructibility, and associated injuries.',
+          'در خلاصهٔ PDF، پلهٔ مفصلی > ۲ میلی‌متر یا درگیری > ۳۰٪ شکستگی را در نوع II قرار می‌دهد، اما به‌تنهایی توجیه‌کنندهٔ ORIF نیست. تصمیم درمانی همچنین به بلوک مکانیکی پایدار، پایداری، امکان بازسازی و آسیب‌های همراه توجه می‌کند.'
         ),
       },
       {
         icon: '🦾',
-        title: L('Mason III – Prothese', 'Mason III – Arthroplasty', 'ماسون III – پروتز'),
+        title: L('Mason III – Rekonstruierbarkeit prüfen', 'Mason III – assess reconstructibility', 'ماسون III – امکان بازسازی را بسنجید'),
         text: L(
-          'Radiusköpfchenprothese (modulares Metallimplantat). ORIF nicht möglich bei Trümmerfraktur. Keine isolierte Resektion wenn Instabilität vorliegt (Essex-Lopresti, MCL-Ruptur) → Prothese.',
-          'Radial head arthroplasty (modular metal implant). ORIF not possible in comminuted fracture. No isolated resection if instability present (Essex-Lopresti, MCL rupture) → arthroplasty.',
-          'پروتز سر رادیوس (ایمپلنت فلزی مدولار). ORIF در شکستگی خرد شده ممکن نیست. رزکسیون مجزا در صورت ناپایداری ممنوع است (اسکس-لوپرستی، پارگی MCL) → پروتز.'
+          'Mehrfragmentär bedeutet nicht automatisch unreponierbar. Ob eine Fixation möglich ist und ob ein Ersatz des Radiusköpfchens erforderlich wird, hängt von Rekonstruierbarkeit, Ellenbogenstabilität und Begleitverletzungen ab; diese Klassifikationsseite legt keine Behandlung fest.',
+          'Multi-fragmentary does not automatically mean unreconstructible. Whether fixation is feasible or radial-head replacement is needed depends on reconstructibility, elbow stability, and associated injuries; this classification page does not prescribe treatment.',
+          'چندقطعه‌ای بودن به‌طور خودکار به معنای غیرقابل بازسازی بودن نیست. امکان تثبیت یا نیاز به جایگزینی سر رادیوس به قابلیت بازسازی، پایداری آرنج و آسیب‌های همراه بستگی دارد؛ این صفحهٔ طبقه‌بندی درمانی تجویز نمی‌کند.'
         ),
       },
       {
         icon: '🔄',
         title: L('Mason IV – Reposition zuerst', 'Mason IV – Reduction first', 'ماسون IV – ابتدا کاهش'),
         text: L(
-          'Geschlossene Reposition der Ellenbogenluxation in Analgosedierung/Narkose → dann Stabilität prüfen → dann Frakturversorgung je nach Typ (I: konservativ, II: ORIF, III: Prothese).',
-          'Closed reduction of elbow dislocation under anaesthesia/sedation → assess stability → then fracture treatment according to type (I: conservative, II: ORIF, III: arthroplasty).',
-          'کاهش بسته لوکساسیون آرنج زیر بیهوشی/بی‌دردی → ارزیابی پایداری → سپس درمان شکستگی بر اساس نوع (I: محافظه‌کارانه، II: ORIF، III: پروتز).'
+          'Ellenbogenluxation zeitnah geschlossen reponieren → anschließend Stabilität beurteilen. Die weitere Frakturbehandlung wird orthopädisch anhand von Stabilität, Rekonstruierbarkeit, Begleitverletzungen und patientenbezogenen Faktoren festgelegt; Mason-Typ II oder III schreibt nicht automatisch ORIF oder Prothese vor.',
+          'Promptly reduce the elbow dislocation, then assess stability. Orthopaedic assessment determines subsequent fracture treatment based on stability, reconstructibility, associated injuries, and patient factors; Mason Type II or III does not automatically prescribe ORIF or arthroplasty.',
+          'لوکساسیون آرنج را به‌موقع به‌صورت بسته جااندازی کنید و سپس پایداری را ارزیابی کنید. درمان بعدی شکستگی باید با ارزیابی ارتوپدی و بر اساس پایداری، قابلیت بازسازی، آسیب‌های همراه و عوامل مربوط به بیمار تعیین شود؛ ماسون II یا III به‌طور خودکار ORIF یا پروتز را تجویز نمی‌کند.'
         ),
       },
     ],
@@ -325,12 +320,12 @@ export const RADIUSKOPF_LESSON = {
         text: L('In jeder Ellenbogenaufnahme die Linie durch den Radius-Schaft auf das Capitulum prüfen. Abweichung = Luxation → Mason IV oder Monteggia.', 'On every elbow X-ray, check the line through the radial shaft to the capitellum. Deviation = dislocation → Mason IV or Monteggia.', 'در هر رادیوگرافی آرنج، خط از تنه رادیوس به کاپیتولوم را بررسی کنید. انحراف = لوکساسیون → ماسون IV یا مونتگیا.'),
       },
       {
-        title: L('2 mm / 30 % – Grenze Mason I vs. II', '2 mm / 30 % – threshold Mason I vs. II', '۲ میلی‌متر / ۳۰٪ – آستانه ماسون I در مقابل II'),
-        text: L('Gelenkstufe ≤ 2 mm und ≤ 30 % Gelenkfläche = Mason I (konservativ). Gelenkstufe > 2 mm oder > 30 % = Mason II (ORIF). Bei Unklarheit: CT.', 'Joint step ≤ 2 mm and ≤ 30 % articular surface = Mason I (conservative). Step > 2 mm or > 30 % = Mason II (ORIF). If unclear: CT.', 'پله مفصلی ≤ ۲ میلی‌متر و ≤ ۳۰٪ سطح مفصلی = ماسون I (محافظه‌کارانه). پله > ۲ میلی‌متر یا > ۳۰٪ = ماسون II (ORIF). در صورت ابهام: CT.'),
+        title: L('Mason I vs. II – PDF-Grenzwerte', 'Mason I vs. II – PDF thresholds', 'ماسون I در برابر II – آستانه‌های PDF'),
+        text: L('PDF-Kurzfassung: Typ I Gelenkstufe < 2 mm; Typ II > 2 mm ODER > 30 % Gelenkfläche. Exakt 2 mm ohne > 30 % Beteiligung bleibt auf dieser Seite unzugeordnet. Die Grenzwerte beschreiben Morphologie und ordnen keine Therapie an.', 'PDF summary: Type I joint step < 2 mm; Type II > 2 mm OR > 30 % articular surface involvement. Exactly 2 mm without > 30 % involvement is unassigned on this page. These thresholds describe morphology and do not prescribe treatment.', 'خلاصهٔ PDF: پلهٔ نوع I < ۲ میلی‌متر؛ نوع II > ۲ میلی‌متر یا درگیری > ۳۰٪ سطح مفصلی است. پلهٔ دقیقاً ۲ میلی‌متر بدون درگیری > ۳۰٪ در این صفحه تعیین‌تکلیف نشده است. این آستانه‌ها مورفولوژی را توصیف می‌کنند و درمان تجویز نمی‌کنند.'),
       },
       {
-        title: L('Mason III → Prothese, nicht Resektion', 'Mason III → arthroplasty, not resection', 'ماسون III → پروتز، نه رزکسیون'),
-        text: L('Bei Trümmerfraktur und vorhandener Instabilität (MCL-Ruptur, Essex-Lopresti) ist die isolierte Resektion kontraindiziert. Radiusköpfchenprothese als Platzhalter für axiale Stabilität.', 'In comminuted fracture with instability (MCL rupture, Essex-Lopresti), isolated resection is contraindicated. Radial head prosthesis as spacer for axial stability.', 'در شکستگی خرد شده با ناپایداری (پارگی MCL، اسکس-لوپرستی)، رزکسیون مجزا منع مصرف است. پروتز سر رادیوس به عنوان فاصله‌انداز برای پایداری محوری.'),
+        title: L('Mason III – Klassifikationsmerkmal', 'Mason III – classification feature', 'ماسون III – ویژگی طبقه‌بندی'),
+        text: L('Die PDF-Seite definiert Mason III als mehrfragmentäre oder Trümmerfraktur des Radiusköpfchens. Sie gibt weder eine Mindestzahl von Fragmenten noch eine Therapieempfehlung; die Klasse allein bedeutet keine automatische Prothese.', 'The PDF page defines Mason III as a multi-fragmentary or comminuted radial head fracture. It gives neither a minimum fragment count nor a treatment recommendation; the class alone does not mandate arthroplasty.', 'صفحهٔ PDF ماسون III را شکستگی چندقطعه‌ای یا خردشدهٔ سر رادیوس تعریف می‌کند. در آن نه حداقل تعداد قطعات آمده و نه توصیهٔ درمانی؛ این طبقه به‌تنهایی پروتز را الزامی نمی‌کند.'),
       },
       {
         title: L('Assoziierte Verletzungen ausschließen', 'Exclude associated injuries', 'آسیب‌های همراه را رد کنید'),
@@ -358,12 +353,12 @@ export const RADIUSKOPF_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(la
       'کدام معیار مرز بین ماسون نوع I و نوع II را تعریف می‌کند؟')[lang],
     [
       L('Gelenkstufe < 1 mm', 'Joint step < 1 mm', 'پله مفصلی < ۱ میلی‌متر')[lang],
-      L('Gelenkstufe 2 mm und/oder > 30 % der Gelenkfläche betroffen', 'Joint step 2 mm and/or > 30 % of articular surface involved', 'پله مفصلی ۲ میلی‌متر و/یا > ۳۰٪ سطح مفصلی درگیر')[lang],
+      L('Gelenkstufe > 2 mm oder > 30 % der Gelenkfläche betroffen', 'Joint step > 2 mm or > 30 % of the articular surface involved', 'پلهٔ مفصلی > ۲ میلی‌متر یا درگیری > ۳۰٪ سطح مفصلی')[lang],
       L('Anzahl der Fragmente (≥ 2)', 'Number of fragments (≥ 2)', 'تعداد قطعات (≥ ۲)')[lang],
       L('Vorliegen einer Ellenbogenluxation', 'Presence of elbow dislocation', 'وجود لوکساسیون آرنج')[lang],
     ],
     1,
-    L('Mason I: Gelenkstufe < 2 mm UND ≤ 30 % der Gelenkfläche → konservativ. Mason II: Gelenkstufe > 2 mm ODER > 30 % der Gelenkfläche → meist ORIF.', 'Mason I: joint step < 2 mm AND ≤ 30 % articular surface → conservative. Mason II: step > 2 mm OR > 30 % → usually ORIF.', 'ماسون I: پله مفصلی < ۲ میلی‌متر و ≤ ۳۰٪ سطح مفصلی → محافظه‌کارانه. ماسون II: پله > ۲ میلی‌متر یا > ۳۰٪ → معمولاً ORIF.')[lang]
+    L('Laut PDF-Kurzfassung: Mason I mit Gelenkstufe < 2 mm; Typ II mit Gelenkstufe > 2 mm oder > 30 % Gelenkflächenbeteiligung. Exakt 2 mm ohne > 30 % Beteiligung wird auf dieser Seite nicht zugeordnet. Morphologie, keine automatische Therapieentscheidung.', 'In the PDF summary: Mason I has a joint step < 2 mm; Type II has a step > 2 mm or > 30 % articular involvement. Exactly 2 mm without > 30 % involvement is not assigned on this page. These are morphological criteria, not an automatic treatment decision.', 'طبق خلاصهٔ PDF: ماسون I پلهٔ مفصلی < ۲ میلی‌متر دارد؛ نوع II پلهٔ > ۲ میلی‌متر یا درگیری > ۳۰٪ سطح مفصلی دارد. پلهٔ دقیقاً ۲ میلی‌متر بدون درگیری > ۳۰٪ در این صفحه به نوعی اختصاص داده نشده است. این‌ها معیارهای مورفولوژیک‌اند، نه تصمیم خودکار درمانی.')[lang]
   ),
 
   Q(`rk-mason-2-${lang}`,
@@ -377,7 +372,7 @@ export const RADIUSKOPF_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(la
       L('Fraktur mit Essex-Lopresti-Verletzung', 'Fracture with Essex-Lopresti lesion', 'شکستگی با ضایعه اسکس-لوپرستی')[lang],
     ],
     1,
-    L('Mason IV = jede Radiusköpfchenfraktur (Typ I–III) in Kombination mit einer Ellenbogenluxation. Therapie: zuerst Reposition der Luxation, dann Frakturversorgung je nach Grundtyp.', 'Mason IV = any radial head fracture (Type I–III) combined with elbow dislocation. Treatment: first reduce dislocation, then address fracture according to underlying type.', 'ماسون IV = هر شکستگی سر رادیوس (نوع I–III) همراه با لوکساسیون آرنج. درمان: ابتدا کاهش لوکساسیون، سپس درمان شکستگی بر اساس نوع اصلی.')[lang]
+    L('Mason IV = jede Radiusköpfchenfraktur in Kombination mit einer Ellenbogenluxation – unabhängig von der Fragmentzahl.', 'Mason IV = any radial head fracture combined with an elbow dislocation, regardless of fragment count.', 'ماسون IV = هر شکستگی سر رادیوس همراه با لوکساسیون آرنج، مستقل از تعداد قطعات.')[lang]
   ),
 
   Q(`rk-fettkissen-1-${lang}`,
@@ -409,17 +404,17 @@ export const RADIUSKOPF_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(la
   ),
 
   Q(`rk-therapie-1-${lang}`,
-    L('Warum ist bei Mason III eine Radiusköpfchenresektion ohne Prothese bei Instabilität kontraindiziert?',
-      'Why is radial head resection without prosthesis contraindicated in Mason III with instability?',
-      'چرا رزکسیون سر رادیوس بدون پروتز در ماسون III با ناپایداری منع مصرف است؟')[lang],
+    L('Welches Merkmal beschreibt Mason Typ III auf der PDF-Seite?',
+      'Which feature describes Mason Type III on the PDF page?',
+      'کدام ویژگی ماسون نوع III را در صفحهٔ PDF توصیف می‌کند؟')[lang],
     [
-      L('Weil die Prothese billiger ist', 'Because the prosthesis is cheaper', 'چون پروتز ارزان‌تر است')[lang],
-      L('Weil das Radiusköpfchen als axialer Stabilisator des Unterarms wirkt – Resektion → Cubitus valgus + proximale Radiusmigration', 'Because the radial head acts as an axial forearm stabiliser – resection → cubitus valgus + proximal radial migration', 'چون سر رادیوس به عنوان تثبیت‌کننده محوری ساعد عمل می‌کند – رزکسیون → کوبیتوس والگوس + مهاجرت پروگزیمال رادیوس')[lang],
-      L('Wegen Infektionsgefahr', 'Due to infection risk', 'به دلیل خطر عفونت')[lang],
-      L('Weil der N. interosseus posterior verletzt werden kann', 'Because the posterior interosseous nerve may be injured', 'چون عصب بین‌استخوانی خلفی ممکن است آسیب ببیند')[lang],
+      L('Mehrfragmentäre oder Trümmerfraktur des Radiusköpfchens', 'Multi-fragmentary or comminuted radial head fracture', 'شکستگی چندقطعه‌ای یا خردشدهٔ سر رادیوس')[lang],
+      L('Jede Fraktur mit Gelenkstufe > 2 mm', 'Any fracture with a joint step > 2 mm', 'هر شکستگی با پلهٔ مفصلی > ۲ میلی‌متر')[lang],
+      L('Jede Fraktur mit Ellenbogenluxation', 'Any fracture with elbow dislocation', 'هر شکستگی همراه با لوکساسیون آرنج')[lang],
+      L('Jede Fraktur mit einer Essex-Lopresti-Verletzung', 'Any fracture with an Essex-Lopresti injury', 'هر شکستگی همراه با آسیب اسکس-لوپرستی')[lang],
     ],
-    1,
-    L('Das Radiusköpfchen überträgt 60 % der axialen Last und ist wichtiger Antagonist des medialen Kollateralbandes. Bei Instabilität (MCL-Ruptur, Essex-Lopresti) ohne Prothese → chronische Valgusinstabilität, proximale Radiusmigration, DRUG-Instabilität.', 'The radial head transmits 60 % of the axial load and is a key antagonist of the medial collateral ligament. With instability (MCL rupture, Essex-Lopresti) without prosthesis → chronic valgus instability, proximal radial migration, DRUJ instability.', 'سر رادیوس ۶۰٪ بار محوری را منتقل می‌کند و آنتاگونیست مهم رباط جانبی مدیال است. با ناپایداری (پارگی MCL، اسکس-لوپرستی) بدون پروتز → ناپایداری والگوس مزمن، مهاجرت پروگزیمال رادیوس، ناپایداری DRUJ.')[lang]
+    0,
+    L('Die PDF-Seite beschreibt Mason III als mehrfragmentäre oder Trümmerfraktur; sie nennt weder eine feste Fragmentzahl noch Rekonstruierbarkeit oder Therapie.', 'The PDF page describes Mason III as a multi-fragmentary or comminuted fracture; it specifies neither a fixed fragment count nor reconstructibility or treatment.', 'صفحهٔ PDF ماسون III را شکستگی چندقطعه‌ای یا خردشده تعریف می‌کند؛ نه تعداد قطعات ثابتی می‌دهد و نه امکان بازسازی یا درمان را مشخص می‌کند.')[lang]
   ),
 
   Q(`rk-terrible-triad-1-${lang}`,
@@ -433,7 +428,7 @@ export const RADIUSKOPF_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(la
       L('Dislocated olecranon + radial head + humerus', 'Dislocated olecranon + radial head + humerus', 'اولکرانون جابجا شده + سر رادیوس + هومروس')[lang],
     ],
     1,
-    L('Terrible Triad: 1) Ellenbogenluxation (posteriore), 2) Radiusköpfchenfraktur, 3) Coronoidfraktur der Ulna. Hochinstabiles Muster → alle drei Strukturen müssen chirurgisch versorgt werden. MRT für Bandbeurteilung.', 'Terrible Triad: 1) Elbow dislocation (posterior), 2) radial head fracture, 3) coronoid process fracture of the ulna. Highly unstable pattern → all three structures must be surgically addressed. MRI for ligament assessment.', 'سه‌گانه وحشتناک: ۱) لوکساسیون آرنج (خلفی)، ۲) شکستگی سر رادیوس، ۳) شکستگی زائده کرونوئید اولنا. الگوی بسیار ناپایدار → هر سه ساختار باید جراحی شوند. MRI برای ارزیابی رباط.')[lang]
+    L('Die Kombination ist häufig instabil. Stabilität und jede Begleitverletzung beurteilen; die Therapie wird anhand des Gesamtbefunds, der Rekonstruierbarkeit und patientenbezogener Faktoren geplant. Eine operative Versorgung aller Komponenten oder ein MRT ist nicht automatisch erforderlich.', 'This combination is often unstable. Assess stability and each associated injury; plan treatment based on the overall findings, reconstructibility, and patient factors. Surgery for every component or MRI is not automatic.', 'این ترکیب اغلب ناپایدار است. پایداری و هر آسیب همراه را ارزیابی کنید؛ درمان را بر اساس مجموع یافته‌ها، قابلیت بازسازی و عوامل مربوط به بیمار برنامه‌ریزی کنید. جراحی همهٔ مؤلفه‌ها یا MRI به‌طور خودکار لازم نیست.')[lang]
   ),
 
   Q(`rk-essex-1-${lang}`,
@@ -447,7 +442,7 @@ export const RADIUSKOPF_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(la
       L('Radiusköpfchenfraktur + Koronodfraktur', 'Radial head fracture + coronoid fracture', 'شکستگی سر رادیوس + شکستگی کرونوئید')[lang],
     ],
     1,
-    L('Essex-Lopresti = Radiusköpfchenfraktur + Ruptur der Membrana interossea des Unterarms + Verletzung des distalen Radioulnargelenks (DRUG). Führt zu axialer Instabilität des Unterarms. Isolierte Resektion des Radiusköpfchens kontraindiziert → Prothese!', 'Essex-Lopresti = radial head fracture + interosseous membrane rupture + distal radioulnar joint (DRUJ) injury. Results in axial forearm instability. Isolated radial head resection contraindicated → prosthesis!', 'اسکس-لوپرستی = شکستگی سر رادیوس + پارگی غشای بین‌استخوانی ساعد + آسیب مفصل رادیواولنار دیستال (DRUJ). منجر به ناپایداری محوری ساعد می‌شود. رزکسیون مجزای سر رادیوس منع مصرف → پروتز!')[lang]
+    L('Essex-Lopresti = Radiusköpfchenfraktur + Ruptur der Membrana interossea + DRUG-Verletzung; das Muster kann longitudinale Unterarminstabilität verursachen. DRUG und Unterarmlänge/Stabilität prüfen. Bei bestätigter Instabilität wird die radiale Länge erhalten oder wiederhergestellt; Fixation oder Ersatz richten sich nach Rekonstruierbarkeit und Begleitverletzungen. Keine automatische Prothese und keine pauschale Resektionsregel.', 'Essex-Lopresti = radial head fracture + interosseous membrane rupture + DRUJ injury; the pattern can cause longitudinal forearm instability. Assess the DRUJ and forearm length/stability. With confirmed instability, preserve or restore radial length; fixation or replacement depends on reconstructibility and associated injuries. Neither arthroplasty nor a blanket rule against resection is automatic.', 'اسکس-لوپرستی = شکستگی سر رادیوس + پارگی غشای بین‌استخوانی + آسیب DRUJ؛ این الگو می‌تواند موجب ناپایداری طولی ساعد شود. DRUJ و طول/پایداری ساعد را ارزیابی کنید. در ناپایداری تأییدشده، طول رادیوس حفظ یا بازسازی می‌شود؛ تثبیت یا جایگزینی به قابلیت بازسازی و آسیب‌های همراه بستگی دارد. نه پروتز خودکار است و نه قاعده‌ای مطلق برای منع رزکسیون وجود دارد.')[lang]
   ),
 
   Q(`rk-mechanismus-1-${lang}`,
@@ -525,15 +520,15 @@ export const RADIUSKOPF_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(la
 export const RADIUSKOPF_FLASHCARDS = [
 
   F('rk-fc-1', L('Mason', 'Mason', 'ماسون'),
-    L('Mason I vs. II: Grenzwerte?', 'Mason I vs. II: Threshold values?', 'ماسون I در مقابل II: مقادیر آستانه؟'),
-    L('Mason I: Gelenkstufe < 2 mm UND ≤ 30 % Gelenkfläche → konservativ. Mason II: > 2 mm ODER > 30 % → ORIF. CT bei Unklarheit.', 'Mason I: step < 2 mm AND ≤ 30 % articular surface → conservative. Mason II: > 2 mm OR > 30 % → ORIF. CT if unclear.', 'ماسون I: پله < ۲ میلی‌متر و ≤ ۳۰٪ سطح مفصلی → محافظه‌کارانه. ماسون II: > ۲ میلی‌متر یا > ۳۰٪ → ORIF. CT در صورت ابهام.'),
-    L('2 mm / 30 % ist die magische Grenze. Darunter konservativ, darüber ORIF.', '2 mm / 30 % is the magic threshold. Below conservative, above ORIF.', '۲ میلی‌متر / ۳۰٪ آستانه جادویی است. زیر آن محافظه‌کارانه، بالای آن ORIF.')
+    L('Welche PDF-Merkmale trennen Mason I und II?', 'Which PDF features distinguish Mason I and II?', 'کدام ویژگی‌های PDF ماسون I را از II جدا می‌کنند؟'),
+    L('PDF-Kurzfassung: Typ I Gelenkstufe < 2 mm; Typ II Gelenkstufe > 2 mm ODER > 30 % Gelenkfläche. Exakt 2 mm ohne > 30 % Beteiligung bleibt auf der Seite unzugeordnet.', 'PDF summary: Type I joint step < 2 mm; Type II joint step > 2 mm OR > 30 % articular surface. Exactly 2 mm without > 30 % involvement is unassigned on the page.', 'خلاصهٔ PDF: نوع I پلهٔ مفصلی < ۲ میلی‌متر؛ نوع II پلهٔ > ۲ میلی‌متر یا درگیری > ۳۰٪ سطح مفصلی. پلهٔ دقیقاً ۲ میلی‌متر بدون درگیری > ۳۰٪ در صفحه تعیین‌تکلیف نشده است.'),
+    L('Die Zahlen beschreiben die Klassifikation. Sie allein ordnen keine ORIF an.', 'The numbers describe the classification. They do not, by themselves, mandate ORIF.', 'این اعداد طبقه‌بندی را توصیف می‌کنند و به‌تنهایی ORIF را الزامی نمی‌کنند.')
   ),
 
   F('rk-fc-2', L('Mason', 'Mason', 'ماسون'),
-    L('Mason III – warum keine ORIF, warum Prothese?', 'Mason III – why no ORIF, why arthroplasty?', 'ماسون III – چرا نه ORIF، چرا پروتز؟'),
-    L('Trümmerfraktur (≥ 3 Fragmente): ORIF technisch nicht möglich. Prothese gibt axiale Stabilität (Ersatz für MCL-Antagonist) und verhindert proximale Radiusmigration. Resektion nur wenn keine Instabilität.', 'Comminuted (≥ 3 fragments): ORIF technically not feasible. Prosthesis provides axial stability (replaces MCL antagonist) and prevents proximal radial migration. Resection only if no instability.', 'خرد شده (≥ ۳ قطعه): ORIF از نظر فنی ممکن نیست. پروتز پایداری محوری می‌دهد (جایگزین آنتاگونیست MCL) و از مهاجرت پروگزیمال رادیوس جلوگیری می‌کند. رزکسیون فقط اگر ناپایداری نباشد.'),
-    L('III = Trümmer → Prothese. Resektion nur ohne Instabilität!', 'III = comminuted → prosthesis. Resection only without instability!', 'III = خرد → پروتز. رزکسیون فقط بدون ناپایداری!')
+    L('Was sagt die PDF-Seite über Mason III?', 'What does the PDF page say about Mason III?', 'صفحهٔ PDF دربارهٔ ماسون III چه می‌گوید؟'),
+    L('Mehrfragmentäre oder Trümmerfraktur des Radiusköpfchens. Keine Fragment-Mindestzahl und keine Therapieempfehlung angegeben.', 'A multi-fragmentary or comminuted radial head fracture. No minimum fragment count or treatment recommendation is given.', 'شکستگی چندقطعه‌ای یا خردشدهٔ سر رادیوس؛ حداقل تعداد قطعه و توصیهٔ درمانی ذکر نشده است.'),
+    L('Die Fragmentzahl allein beweist weder fehlende Rekonstruierbarkeit noch eine bestimmte Therapie.', 'Fragment count alone does not establish irreconstructibility or dictate a specific treatment.', 'تعداد قطعات به‌تنهایی غیرقابل‌بازسازی بودن یا درمان مشخصی را ثابت نمی‌کند.')
   ),
 
   F('rk-fc-3', L('Bildgebung', 'Imaging', 'تصویربرداری'),
@@ -550,14 +545,14 @@ export const RADIUSKOPF_FLASHCARDS = [
 
   F('rk-fc-5', L('Assoziiert', 'Associated', 'همراه'),
     L('Essex-Lopresti: Was ist es und warum wichtig?', 'Essex-Lopresti: what is it and why important?', 'اسکس-لوپرستی: چیست و چرا مهم است؟'),
-    L('Radiusköpfchenfraktur + Ruptur Membrana interossea + DRUG-Verletzung. → Axiale Unterarminstabilität. Klinisch: DRUG-Ballottement-Test. Therapie: Radiusköpfchen MUSS ersetzt werden (Prothese) – nie resezieren!', 'Radial head fracture + interosseous membrane rupture + DRUJ injury. → Axial forearm instability. Clinically: DRUJ ballottement test. Treatment: radial head MUST be replaced (prosthesis) – never resect!', 'شکستگی سر رادیوس + پارگی غشای بین‌استخوانی + آسیب DRUJ. → ناپایداری محوری ساعد. بالینی: تست بالوتمنت DRUJ. درمان: سر رادیوس باید جایگزین شود (پروتز) – هرگز رزکسیون نکنید!'),
-    L('Essex-Lopresti: 3 Strukturen. Resektion = absolut kontraindiziert.', 'Essex-Lopresti: 3 structures. Resection = absolutely contraindicated.', 'اسکس-لوپرستی: ۳ ساختار. رزکسیون = منع مطلق.')
+    L('Radiusköpfchenfraktur + Ruptur der Membrana interossea + DRUG-Verletzung → Risiko longitudinaler Unterarminstabilität. DRUG und Unterarmlänge/Stabilität gezielt prüfen. Bei bestätigter Instabilität wird die radiale Länge erhalten oder wiederhergestellt; Fixation oder Ersatz richten sich nach Rekonstruierbarkeit und Begleitverletzungen. Eine Resektion ist keine pauschale Option, aber auch eine Prothese nicht automatisch vorgeschrieben.', 'Radial head fracture + interosseous membrane rupture + DRUJ injury → risk of longitudinal forearm instability. Assess the DRUJ and forearm length/stability. With confirmed instability, preserve or restore radial length; fixation or replacement depends on reconstructibility and associated injuries. Resection is not a default option, but arthroplasty is not automatic either.', 'شکستگی سر رادیوس + پارگی غشای بین‌استخوانی + آسیب DRUJ → خطر ناپایداری طولی ساعد. DRUJ و طول/پایداری ساعد را هدفمند ارزیابی کنید. در ناپایداری تأییدشده، طول رادیوس حفظ یا بازسازی می‌شود؛ تثبیت یا جایگزینی به قابلیت بازسازی و آسیب‌های همراه بستگی دارد. رزکسیون گزینهٔ پیش‌فرض نیست، اما پروتز هم خودکار تجویز نمی‌شود.'),
+    L('Essex-Lopresti: 3 Strukturen; Längsstabilität prüfen und Therapie individuell planen.', 'Essex-Lopresti: 3 structures; assess longitudinal stability and individualise treatment.', 'اسکس-لوپرستی: ۳ ساختار؛ پایداری طولی را بسنجید و درمان را فردی تعیین کنید.')
   ),
 
   F('rk-fc-6', L('Assoziiert', 'Associated', 'همراه'),
     L('Terrible Triad des Ellenbogens: 3 Komponenten?', 'Terrible Triad of the elbow: 3 components?', 'سه‌گانه وحشتناک آرنج: ۳ مؤلفه؟'),
-    L('1) Ellenbogenluxation (posterior). 2) Radiusköpfchenfraktur. 3) Coronoidfraktur der Ulna. Sehr instabil → alle 3 chirurgisch versorgen + Bandrekonstruktion + MRT präoperativ.', '1) Elbow dislocation (posterior). 2) Radial head fracture. 3) Coronoid process fracture. Very unstable → repair all 3 surgically + ligament reconstruction + MRI preoperatively.', '۱) لوکساسیون آرنج (خلفی). ۲) شکستگی سر رادیوس. ۳) شکستگی زائده کرونوئید. بسیار ناپایدار → هر ۳ را جراحی کنید + بازسازی رباط + MRI قبل از عمل.'),
-    L('Terrible Triad = Luxation + Radiusköpfchen + Coronoid. Alle 3 operativ!', 'Terrible Triad = dislocation + radial head + coronoid. All 3 surgical!', 'سه‌گانه = لوکساسیون + سر رادیوس + کرونوئید. هر ۳ جراحی!')
+    L('1) Ellenbogenluxation (posterior). 2) Radiusköpfchenfraktur. 3) Coronoidfraktur der Ulna. Begleitverletzungen und Stabilität jeder Komponente beurteilen; die Behandlungsplanung ist individuell und orientiert sich an der Gesamtstabilität.', '1) Posterior elbow dislocation. 2) Radial head fracture. 3) Coronoid process fracture. Assess associated injuries and the stability of each component; individualise management to the overall stability.', '۱) لوکساسیون خلفی آرنج. ۲) شکستگی سر رادیوس. ۳) شکستگی زائدهٔ کرونوئید اولنا. آسیب‌های همراه و پایداری هر مؤلفه را بسنجید؛ درمان را بر اساس پایداری کلی و به‌صورت فردی برنامه‌ریزی کنید.'),
+    L('Terrible Triad: 3 Verletzungen erkennen; Therapie nach Gesamtstabilität planen.', 'Terrible triad: identify the 3 injuries; plan treatment for overall stability.', 'سه‌گانهٔ وحشتناک: سه آسیب را بشناسید؛ درمان را بر پایهٔ پایداری کلی برنامه‌ریزی کنید.')
   ),
 
   F('rk-fc-7', L('Therapie', 'Treatment', 'درمان'),
@@ -568,8 +563,8 @@ export const RADIUSKOPF_FLASHCARDS = [
 
   F('rk-fc-8', L('Anatomie', 'Anatomy', 'آناتومی'),
     L('Welchen Anteil der axialen Last überträgt das Radiusköpfchen?', 'What proportion of axial load does the radial head transmit?', 'چه نسبتی از بار محوری را سر رادیوس منتقل می‌کند؟'),
-    L('~60 % der axialen Kraft vom Unterarm auf den Humerus (via Capitulum). Wichtig: deshalb Radiusköpfchen bei Instabilität nicht einfach resezieren – axiale Instabilität droht.', '~60 % of axial force from forearm to humerus (via capitellum). Important: therefore do not simply resect the radial head with instability – axial instability will follow.', '~۶۰٪ نیروی محوری از ساعد به هومروس (از طریق کاپیتولوم). مهم: بنابراین سر رادیوس را در صورت ناپایداری به سادگی رزکسیون نکنید – ناپایداری محوری در پیش است.'),
-    L('60 % axiale Last + MCL-Antagonist → nie resezieren bei Instabilität!', '60 % axial load + MCL antagonist → never resect with instability!', '۶۰٪ بار محوری + آنتاگونیست MCL → هرگز در صورت ناپایداری رزکسیون نکنید!')
+    L('Das Radiusköpfchen trägt zur axialen Unterarmstabilität bei. Bei vermuteter Instabilität vor einer Resektion die Begleitverletzungen und Längsstabilität vollständig beurteilen; Erhalt, Fixation oder Ersatz hängen vom Gesamtbefund ab.', 'The radial head contributes to axial forearm stability. If instability is suspected, assess associated injuries and longitudinal stability fully before considering excision; preservation, fixation, or replacement depends on the overall injury.', 'سر رادیوس به پایداری محوری ساعد کمک می‌کند. در صورت شک به ناپایداری، پیش از بررسی رزکسیون، آسیب‌های همراه و پایداری طولی را کامل ارزیابی کنید؛ حفظ، تثبیت یا جایگزینی به مجموع یافته‌ها بستگی دارد.'),
+    L('Radialkopf stabilisiert mit – erst Begleitverletzungen und Längsstabilität prüfen, dann individuell entscheiden.', 'The radial head contributes to stability—assess associated injuries and longitudinal stability before deciding.', 'سر رادیوس در پایداری نقش دارد؛ ابتدا آسیب‌های همراه و پایداری طولی را بسنجید، سپس فردی تصمیم بگیرید.')
   ),
 
 ].map(fc => ({
