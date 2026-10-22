@@ -9,6 +9,7 @@ import { PCNSL_QUESTIONS } from './pcnslLesson'
 import { FLEISCHNER_QUESTIONS } from './fleischnerLearning'
 import { HEMANGIOMA_QUESTIONS } from './haemangiomaTraining'
 import { HEPATIC_ANGIOMYOLIPOMA_QUESTIONS } from './hepaticAngiomyolipomaLearning'
+import { PSC_MRCP_QUESTIONS } from './pscMrcpLearning'
 import { GIST_QUESTIONS } from './gistLearning'
 import { VOLVULUS_QUESTIONS } from './volvulusLearning'
 import { PNET_QUESTIONS } from './pnetLearning'
@@ -4316,6 +4317,7 @@ for (const lang of Object.keys(QUESTION_BANK)) {
   QUESTION_BANK[lang].push(...(VOLVULUS_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(PNET_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(HEPATIC_ANGIOMYOLIPOMA_QUESTIONS[lang] || []))
+  QUESTION_BANK[lang].push(...(PSC_MRCP_QUESTIONS[lang] || []))
 }
 
 export const MCQ_TOPIC_GROUPS = [
@@ -4331,6 +4333,7 @@ export const MCQ_TOPIC_GROUPS = [
   { fachId: 'msk', kapitelId: 'msk-hip-pelvis', title: { de: 'Hüfte & Becken', en: 'Hip & pelvis', fa: 'لگن و مفصل ران' }, topics: [{ id: 'beckenringfraktur', title: { de: 'Beckenringfraktur', en: 'Pelvic ring fracture', fa: 'شکستگی حلقهٔ لگنی' } }] },
   { fachId: 'msk', kapitelId: 'msk-hand', title: { de: 'Hand & Handwurzel', en: 'Hand & carpus', fa: 'دست و کارپ' }, topics: [{ id: 'skaphoidfraktur', title: { de: 'Skaphoidfraktur', en: 'Scaphoid fracture', fa: 'شکستگی اسکافوئید' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-leber', title: { de: 'Leber', en: 'Liver', fa: 'کبد' }, topics: [{ id: 'hepatisches-angiomyolipom', title: { de: 'Hepatisches Angiomyolipom', en: 'Hepatic angiomyolipoma', fa: 'آنژیومیولیپوم کبدی' } }] },
+  { fachId: 'abdomen', kapitelId: 'abdomen-gallenwege', title: { de: 'Gallenwege', en: 'Bile ducts', fa: 'مجاری صفراوی' }, topics: [{ id: 'psc-pbc', title: { de: 'PSC im MRCP', en: 'PSC on MRCP', fa: 'PSC در MRCP' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-gefaesse', title: { de: 'Aorta & viszerale Gefäße', en: 'Aorta & visceral vessels', fa: 'آئورت و عروق احشایی' }, topics: [{ id: 'fibromuskulaere-dysplasie', title: { de: 'Fibromuskuläre Dysplasie', en: 'Fibromuscular dysplasia', fa: 'دیسپلازی فیبروماسکولار' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-pankreas', title: { de: 'Pankreas', en: 'Pancreas', fa: 'پانکراس' }, topics: [{ id: 'pnet', title: { de: 'Neuroendokrine Tumoren (pNET)', en: 'Neuroendocrine tumours (pNET)', fa: 'تومورهای نورواندوکرین پانکراس (pNET)' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-gi-trakt', title: { de: 'Gastrointestinaltrakt', en: 'Gastrointestinal tract', fa: 'دستگاه گوارش' }, topics: [{ id: 'volvulus', title: { de: 'Sigmoid- und Zökumvolvulus', en: 'Sigmoid and caecal volvulus', fa: 'ولولوس سیگموئید و سکوم' } }] },

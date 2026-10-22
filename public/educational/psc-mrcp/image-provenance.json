@@ -1,0 +1,12 @@
+{
+  "asset": "mrcp-pdf-p29.png",
+  "route": "/abdomen/leber/psc-mrcp",
+  "sourceDocument": "User-supplied Abdomen.pdf",
+  "sourcePdfPage": 29,
+  "printedPage": 28,
+  "sourceImageDescription": "MRCP image shown on the PSC page alongside the perlschnur-pattern teaching text.",
+  "transformation": "Cropped from a 240 dpi rasterisation of PDF page 29 to isolate the MRCP figure; no diagnostic content was altered.",
+  "teachingPurpose": "Show the source example associated with multifocal PSC duct strictures and variable duct calibre.",
+  "rights": "The user explicitly confirmed that images in the supplied PDFs are licensed for RadYar use. The embedded image identifier and original contributor metadata are not legible/verified and are not inferred.",
+  "captionAndAlt": "Localized German, English and Persian caption and alt text are stored in app/abdomen/leber/psc-mrcp/page.js."
+}

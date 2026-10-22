@@ -817,7 +817,7 @@ export const CURRICULUM = [
           { id: 'cholezystolithiasis', title: { de: 'Cholezystolithiasis & Choledocholithiasis', en: 'Cholecystolithiasis & Choledocholithiasis', fa: 'کوله‌سیستولیتیازیس و کلدوکولیتیازیس' }, tags: ['Sono','CT'], diff: 1 },
           { id: 'cholezystitis', title: { de: 'Cholezystitis', en: 'Cholecystitis', fa: 'کوله‌سیستیت' }, tags: ['Sono','CT'], diff: 2 },
           { id: 'gallenwegserweiterung', title: { de: 'Gallenwegserweiterung', en: 'Bile Duct Dilatation', fa: 'اتساع مجاری صفراوی' }, tags: ['Sono','CT','MRT'], diff: 2 },
-          { id: 'psc-pbc', title: { de: 'PSC / PBC', en: 'PSC / PBC', fa: 'PSC / PBC (کلانژیت اسکلروزان / سیروز بیلیاری اولیه)' }, tags: ['MRT'], diff: 3 },
+          { id: 'psc-pbc', title: { de: 'PSC (MRCP; PBC nicht behandelt)', en: 'PSC (MRCP; PBC not covered)', fa: 'PSC (MRCP؛ آموزش PBC در این درس نیست)' }, tags: ['MRT'], diff: 3, link: '/abdomen/leber/psc-mrcp', mcqLink: '/ueben/quiz?fach=abdomen&n=10&themen=psc-pbc', flashcardLink: '/flashcards/psc-pbc', inProgress: true, updatedAt: '2026-10-22' },
           { id: 'gallenblasenkarzinom', title: { de: 'Gallenblasenkarzinom', en: 'Gallbladder Carcinoma', fa: 'کارسینوم کیسه صفرا' }, tags: ['CT','MRT'], diff: 3 },
           { id: 'klatskin-tumor', title: { de: 'Cholangiokarzinom (Klatskin)', en: 'Cholangiocarcinoma (Klatskin Tumour)', fa: 'تومور کلاتسکین (Klatskin)' }, tags: ['MRT','CT'], diff: 3 },
         ],
