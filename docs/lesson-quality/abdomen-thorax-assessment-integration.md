@@ -36,8 +36,8 @@ The following lesson drafts are represented in `QUESTION_BANK` in DE, EN and FA.
 
 ## Verification and remaining limits
 
-- `npm run audit:mcq` passed after this addendum: 675 questions and 18 cases per language.
-- The latest `npx tsx scripts/audit-abdomen-thorax-assessment-retrieval.mjs` did not pass: at `de/lebermetastasen`, actual retrieval contains `abdomen-focal-liver-de-01` and `abdomen-liver-metastases-de-01`, while the script expects only the latter. This overlap is outside the volvulus addendum and needs a separate taxonomy/audit decision; the full batch retrieval audit must remain reported as failing until resolved.
+- `npm run audit:mcq` currently passes: 773 questions and 18 cases per language.
+- `node --import tsx scripts/audit-abdomen-thorax-assessment-retrieval.mjs` currently passes: 40 registered questions and 47 exact curriculum tags retrieve in DE/EN/FA. The audit now checks that every registered question under a tag is retrievable, allowing multiple valid questions for a topic such as focal liver lesions instead of incorrectly requiring exactly one.
 - Registered topic groups use existing curriculum chapter IDs; the retrieval audit asserts that each `fachId`/`kapitelId` pair exists in `data/curriculum.js`.
 - `data/abdomenThoraxAssessmentDrafts.js` continues to drive lesson-shell self-checks; the registry adapter adds a fourth distractor for global quiz compatibility. The focused volvulus quiz item is registered separately in `data/questions.js` and uses only the `volvulus` topic tag.
 - Tag correction for this addendum: the existing closed-loop/gallstone ileus items stay under `ileus-duenndarm`; the new sigmoid-volvulus recognition item is tagged only `volvulus`, matching its exact curriculum ID. The linked query `fach=abdomen&n=1&themen=volvulus` retrieves that item.
