@@ -44,6 +44,22 @@ function SelfCheck({ lang }) {
   </div>
 }
 
+function AssessmentActions({ lang }) {
+  const returnTo = lang === 'de' ? '/msk/osteochondrosen/osteochondrosis-dissecans#check' : `/msk/osteochondrosen/osteochondrosis-dissecans?lang=${lang}#check`
+  const from = encodeURIComponent(returnTo)
+  const language = lang === 'de' ? '' : `&lang=${lang}`
+  const copy = {
+    de: { title: 'Wissen festigen', quiz: 'MC-Frage zur Differenzialdiagnose', cards: 'Lernkarte zu Prädilektionsstellen' },
+    en: { title: 'Review and practise', quiz: 'MCQ on the differential', cards: 'Flashcard on common sites' },
+    fa: { title: 'مرور و تمرین', quiz: 'سؤال چندگزینه‌ای دربارهٔ تشخیص افتراقی', cards: 'فلش‌کارت محل‌های شایع' },
+  }[lang] || { title: 'Wissen festigen', quiz: 'MC-Frage üben', cards: 'Lernkarte öffnen' }
+  return <nav aria-label={copy.title} style={{ display: 'flex', flexWrap: 'wrap', gap: 12, margin: '18px 0', padding: 14, border: '1px solid var(--line)', borderRadius: 14, background: 'var(--paper)' }}>
+    <strong style={{ alignSelf: 'center' }}>{copy.title}</strong>
+    <a href={`/ueben/quiz?fach=msk&n=1&themen=osteochondrosis-dissecans&from=${from}${language}`}>{copy.quiz}</a>
+    <a href={`/flashcards/osteochondrosis-dissecans?from=${from}${language}`}>{copy.cards}</a>
+  </nav>
+}
+
 export default function OsteochondrosisDissecansPage() {
   const { lang } = useLanguage()
   const t = value => pick(value, lang)
@@ -63,7 +79,7 @@ export default function OsteochondrosisDissecansPage() {
       {section.image ? <figure className={styles.caseImage}><img src={section.image} alt={t(section.imageAlt)} loading="lazy" /><figcaption>{t(section.imageCaption)}</figcaption></figure> : null}
       {section.note ? <aside className={styles.note}>{t(section.note)}</aside> : null}
     </LessonSection>)}
-    <LessonSection id="check" icon="check" title={t(lesson.check.title)} bodyClassName={styles.body}><SelfCheck lang={lang} /></LessonSection>
+    <LessonSection id="check" icon="check" title={t(lesson.check.title)} bodyClassName={styles.body}><SelfCheck lang={lang} /><AssessmentActions lang={lang}/></LessonSection>
     <LessonSection id="take-home" icon="summary" title={translatedLabels.takeHome} bodyClassName={styles.body}><ol className={styles.summary}>{lesson.summary.map((item, index) => <li key={index}>{t(item)}</li>)}</ol></LessonSection>
   </StandardLessonShell>
 }

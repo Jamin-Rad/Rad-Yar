@@ -47,7 +47,15 @@
 
 - `data/curriculum.js` contains the exact topic ID `osteochondrosis-dissecans`, now linked to `/msk/osteochondrosen/osteochondrosis-dissecans` and kept `inProgress`.
 - The OCD route is `/msk/osteochondrosen/osteochondrosis-dissecans`; its sibling Morbus Perthes route is `/msk/osteochondrosen/morbus-perthes`.
-- No OCD-specific MCQ or flashcard registration was found. The AVN lesson briefly lists OCD as a differential, but does not assess OCD staging or instability. This lesson adds one embedded three-option check; shared assessment banks were not changed.
+- Before this assessment delta, no OCD-specific MCQ or flashcard registration existed. The AVN lesson briefly lists OCD as a differential, but does not assess OCD staging or instability. The embedded three-option check already tests stage III versus IV and the juvenile MRI caveat; the global MCQ added here tests a different source point, the symmetric posterior femoral-condyle ossification variant without oedema. One separate retrieval card reviews the source-listed predilection sites.
+
+## Assessment integration delta
+
+- Exact ID: `osteochondrosis-dissecans`; one localized global MCQ, one localized flashcard, and one exact MCQ topic group were added.
+- The MCQ is tied to MSK.pdf p.129 (printed p.128) and distinguishes the source-described normal ossification variant from OCD/SONK using age, posterior location, symmetry, and absent oedema. It does not claim that one feature alone establishes a diagnosis.
+- The card is tied to MSK.pdf p.128 (printed p.127) and asks for the source's three predilection sites. It is distinct from the MCQ and existing embedded stage check.
+- Curriculum `mcqLink` and `flashcardLink` are registered. Visible DE/EN/FA quiz and card actions on the route pass a `from` return URL to `#check`.
+- Focused runtime test: PASS. Global MCQ audit: PASS (767 questions per language). `git diff --check`: PASS. Independent review of this delta: pending. Browser and clinician review remain open.
 
 ## External verification and limits
 
@@ -57,10 +65,13 @@
 
 ## Validation and review status
 
-- Source text extracted and pages 128–129 visually inspected; page 130 confirmed as a divider.
+- Source text extracted and pages 128–129 visually inspected: physical p.128 is printed p.127 and contains clinical/radiological features; physical p.129 is printed p.128 and contains the attributed case, MR arthrography, Rodegerdts/Heuck table, and differentials. Page 130 confirmed as a divider.
 - `node scripts/test-msk-osteochondrosis-dissecans-render.mjs`: PASS (SSR coverage for DE/EN/FA, RTL, PDF scope/case, all four stages, juvenile MRI caveat, differential, and unselected retrieval).
+- `node --import tsx scripts/test-osteochondrosis-dissecans-assessments.mjs`: PASS (exact curriculum links, runtime MCQ selection in DE/EN/FA, localized card registry, route actions and return anchor).
+- `npm run audit:mcq`: PASS (767 questions and 18 cases per language); `git diff --check`: PASS.
+- Production build was attempted but blocked by `ENOTFOUND fonts.googleapis.com` and `EPERM` while creating `.next`; CUA browser inventory returned no available apps or browsers, so live route/interaction evidence is unavailable.
 - `git diff --check`: PASS for the scoped lesson files.
-- Independent review and citation delta: PASS for the bounded source/teaching/image/language/assessment scope. The reviewer caught two incorrect article metadata records; both were corrected to PMID 20970949 (Heywood et al., 2011) and PMID 30995094 (Hu et al., 2019), then rechecked. The route remains partial and has no global MCQ/flashcard bank entry.
-- Browser/device/theme/interaction evidence: pending.
+- Independent review and citation delta: PASS for the original bounded source/teaching/image/language/assessment scope. The reviewer caught two incorrect article metadata records; both were corrected to PMID 20970949 (Heywood et al., 2011) and PMID 30995094 (Hu et al., 2019), then rechecked. The current assessment delta is awaiting its own independent review.
+- Browser/device/theme/interaction evidence: blocked; no browser surface was available. Build is blocked by network and `.next` filesystem errors described above.
 - Clinician review and Dr. Zia scientific approval: pending.
 - Release/publication approval: not asserted.

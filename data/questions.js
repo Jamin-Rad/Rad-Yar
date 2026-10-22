@@ -12,6 +12,7 @@ import { HEPATIC_ANGIOMYOLIPOMA_QUESTIONS } from './hepaticAngiomyolipomaLearnin
 import { PSC_MRCP_QUESTIONS } from './pscMrcpLearning'
 import { FOREIGN_BODY_ASPIRATION_QUESTIONS } from './foreignBodyAspirationLearning'
 import { LIVER_MRI_PROTOCOL_QUESTIONS, LIVER_MRI_PROTOCOL_TOPIC_GROUP } from './technikLiverMriProtocolAssessment'
+import { OSTEOCHONDROSIS_DISSECANS_QUESTIONS, OSTEOCHONDROSIS_DISSECANS_TOPIC_GROUP } from './osteochondrosisDissecansAssessments'
 import { GIST_QUESTIONS } from './gistLearning'
 import { VOLVULUS_QUESTIONS } from './volvulusLearning'
 import { PNET_QUESTIONS } from './pnetLearning'
@@ -4322,6 +4323,7 @@ for (const lang of Object.keys(QUESTION_BANK)) {
   QUESTION_BANK[lang].push(...(PSC_MRCP_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(FOREIGN_BODY_ASPIRATION_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(LIVER_MRI_PROTOCOL_QUESTIONS[lang] || []))
+  QUESTION_BANK[lang].push(...(OSTEOCHONDROSIS_DISSECANS_QUESTIONS[lang] || []))
 }
 
 export const MCQ_TOPIC_GROUPS = [
@@ -4361,6 +4363,7 @@ export const MCQ_TOPIC_GROUPS = [
   MR_ANGIOGRAPHY_TOPIC_GROUP,
   CT_QUALITY_TOPIC_GROUP,
   LIVER_MRI_PROTOCOL_TOPIC_GROUP,
+  OSTEOCHONDROSIS_DISSECANS_TOPIC_GROUP,
   { fachId: 'msk', kapitelId: 'msk-hand', title: { de: 'Hand & Mittelhand', en: 'Hand & metacarpals', fa: 'دست و متاکارپ' }, topics: [{ id: 'metakarpale-frakturen', title: { de: 'Metakarpalbasisfrakturen', en: 'Metacarpal base fractures', fa: 'شکستگی‌های قاعدهٔ متاکارپ' } }, { id: 'bandverletzungen-daumen', title: { de: 'UCL-Verletzung am Daumen', en: 'Thumb UCL injury', fa: 'آسیب UCL شست' } }] },
   { fachId: 'msk', kapitelId: 'msk-shoulder-upper-arm', title: { de: 'Schulter & Oberarm', en: 'Shoulder & upper arm', fa: 'شانه و بازو' }, topics: [{ id: 'proximale-humerusfraktur', title: { de: 'Proximale Humerusfraktur', en: 'Proximal humerus fracture', fa: 'شکستگی پروگزیمال هومروس' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-peritoneum', title: { de: 'Peritoneum & Mesenterium', en: 'Peritoneum & mesentery', fa: 'پریتوئن و مزانتر' }, topics: [{ id: 'appendicitis-epiploica', title: { de: 'Epiploische Appendagitis', en: 'Epiploic appendagitis', fa: 'التهاب زائدهٔ چربی کولون' } }, { id: 'mesenteriale-panniculitis', title: { de: 'Mesenteriale Panniculitis', en: 'Mesenteric panniculitis', fa: 'پانیکولیت مزانتریک' } }, { id: 'peritonealkarzinose', title: { de: 'Peritonealkarzinose', en: 'Peritoneal carcinomatosis', fa: 'کارسینوماتوز پریتوئن' } }] },
