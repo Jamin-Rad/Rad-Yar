@@ -1,0 +1,27 @@
+{
+  "asset": "ao32-source-cases.jpg",
+  "source": "User-provided MSK.pdf",
+  "physicalPdfPage": 31,
+  "printedPage": 30,
+  "originalPageRender": {
+    "tool": "Poppler pdftoppm",
+    "dpi": 240,
+    "width": 1985,
+    "height": 2807
+  },
+  "cropPixels": {
+    "left": 436,
+    "top": 916,
+    "width": 1112,
+    "height": 610
+  },
+  "assetDimensions": {
+    "width": 1112,
+    "height": 610
+  },
+  "content": "Three source radiograph panels labelled 32-A1 spiral, 32-A2 oblique (>=30 degrees), and 32-A3 transverse (<30 degrees). Original source arrows, labels and panel arrangement retained.",
+  "contributor": "Not identified on the supplied page; no name inferred.",
+  "rights": "User explicitly authorized use of supplied-PDF images in RadYar. Original external attribution/licence details were not visible on the supplied page and were not inferred.",
+  "processing": "Crop only from the PDF page render; no diagnostic markings or image content added.",
+  "inspection": "Complete rendered source page and final crop visually inspected at original resolution on 2026-10-22."
+}

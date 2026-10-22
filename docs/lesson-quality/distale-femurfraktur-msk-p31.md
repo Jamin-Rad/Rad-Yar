@@ -17,7 +17,7 @@
 | DF-31-03 | same: Hoffa fracture through a condyle in the coronal plane; may be overlooked on AP | Essential | `ao-morphology` explanation, paired source image, retrieval question | Included; cautioned as potentially difficult to see, not categorically invisible |
 | DF-31-04 | same: 33-C complete-articular, joint surface separated from shaft | Essential | `ao-morphology` comparison and schematic | Included |
 | DF-31-05 | p.31 images, embedded pair under Hoffa heading | Essential visual | `public/msk/distal-femur/hoffa-source-cases.jpg` | Included; crop of user-provided radiographs, physical p.31 / printed p.30; contributor unknown and no external license asserted; user authorized supplied-PDF imagery |
-| DF-31-06 | p.31 proximal shaft-fracture heading and AO 32-A/B/C material | Out of scope | — | Not included; this route covers the distinct distal femur topic only |
+| DF-31-06 | p.31 proximal shaft-fracture heading and AO 32-A/B/C material | Out of scope for the AO 33 route | Separate bounded route: `/msk/trauma/femurschaftfraktur` | The neighboring AO 32 material is covered independently in [the femoral shaft lesson ledger](femoral-shaft-fracture-msk-p31.md); it is not folded into this distal-femur lesson. |
 
 ## Verification and limits
 

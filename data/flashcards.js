@@ -43,6 +43,7 @@ import { PELVIC_RING_FLASHCARDS, PELVIC_RING_FLASHCARD_TOPIC } from './pelvicRin
 import { VANCOUVER_FLASHCARDS, VANCOUVER_FLASHCARD_TOPIC } from './vancouverAssessments'
 import { PROXIMAL_FEMUR_FLASHCARDS, PROXIMAL_FEMUR_FLASHCARD_TOPIC } from './proximalFemurAssessments'
 import { DISTAL_FEMUR_FLASHCARDS, DISTAL_FEMUR_FLASHCARD_TOPIC } from './distalFemurAssessments'
+import { FEMORAL_SHAFT_FLASHCARDS, FEMORAL_SHAFT_FLASHCARD_TOPIC } from './femoralShaftAssessments'
 import { TIBIAL_PLATEAU_FLASHCARDS, TIBIAL_PLATEAU_FLASHCARD_TOPIC } from './tibialPlateauAssessments'
 import { ANKLE_TRAUMA_FLASHCARDS, ANKLE_TRAUMA_FLASHCARD_TOPIC } from './ankleTraumaAssessments'
 import { SHOULDER_IMPINGEMENT_FLASHCARDS, SHOULDER_IMPINGEMENT_FLASHCARD_TOPIC } from './shoulderImpingementAssessments'
@@ -152,6 +153,7 @@ export const FLASHCARD_TOPICS = [
   { id: 'bandscheibenpathologien', area: 'Wirbelsäule', chapter: 'Degenerative Erkrankungen', icon: 'MRI', color: '#0e7490', href: '/flashcards/bandscheibenpathologien', title: { de: 'Bandscheibenpathologien', en: 'Intervertebral disc pathologies', fa: 'بیماری‌های دیسک بین‌مهره‌ای' }, subtitle: { de: 'Protrusion · Extrusion · Sequester · axiale Lage', en: 'Protrusion · extrusion · sequestration · axial location', fa: 'پروتروژن · اکستروژن · سکوستراسیون · محل آکسیال' } },
   BONE_INFARCT_FLASHCARD_TOPIC,
   EOSINOPHILIC_GRANULOMA_FLASHCARD_TOPIC,
+  FEMORAL_SHAFT_FLASHCARD_TOPIC,
   FLEISCHNER_FLASHCARD_TOPIC,
   MAMMA_MRT_FLASHCARD_TOPIC,
   MAMMA_MRT_LESION_FLASHCARD_TOPIC,
@@ -3649,6 +3651,7 @@ export const FLASHCARDS = [
   ...SHOULDER_IMPINGEMENT_FLASHCARDS,
   ...PATELLA_STRECKAPPARAT_FLASHCARDS,
   ...DISTAL_FEMUR_FLASHCARDS,
+  ...FEMORAL_SHAFT_FLASHCARDS,
   ...PROXIMAL_FEMUR_FLASHCARDS,
   ...VANCOUVER_FLASHCARDS,
   ...PELVIC_RING_FLASHCARDS,

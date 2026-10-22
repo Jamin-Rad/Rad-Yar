@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual femoral shaft fracture patterns</title>
+  <desc id="desc">Three simplified long-bone shaft diagrams compare a single fracture line, a wedge fragment, and a multifragmentary break. Not diagnostic imaging.</desc>
+  <defs>
+    <linearGradient id="cortex" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5ddc9"/><stop offset="1" stop-color="#d5a47f"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#071a23" flood-opacity=".24"/></filter>
+  </defs>
+  <rect x="34" y="34" width="1132" height="582" rx="36" fill="#172b35"/>
+  <g opacity=".28" stroke="#7fa6ac" stroke-width="2"><path d="M92 494H1108M92 156H1108"/><path d="M400 84V566M800 84V566"/></g>
+  <g filter="url(#shadow)" stroke="#a16e4b" stroke-width="7" stroke-linejoin="round">
+    <!-- Simple oblique shaft fracture -->
+    <path d="M190 130c-30 28-36 64-30 105l20 151-14 45c-11 34-8 75 3 109 8 26 25 45 48 45s40-19 48-45c11-34 14-75 3-109l-14-45 20-151c6-41 0-77-30-105-15-14-39-14-54 0Z" fill="url(#cortex)"/>
+    <path d="m170 328 86-78" stroke="#74462d" stroke-width="15" stroke-linecap="round"/>
+    <!-- Wedge fragment -->
+    <path d="M555 130c-30 28-36 64-30 105l20 151-14 45c-11 34-8 75 3 109 8 26 25 45 48 45s40-19 48-45c11-34 14-75 3-109l-14-45 20-151c6-41 0-77-30-105-15-14-39-14-54 0Z" fill="url(#cortex)"/>
+    <path d="m540 295 22-21 33 47-22 21Z" fill="#c78960" stroke="#74462d" stroke-width="8"/>
+    <path d="m540 295 22-21m33 47 12 18m-45-44-19 4m30 40-17 18" stroke="#74462d" stroke-width="10" stroke-linecap="round"/>
+    <!-- Multifragmentary shaft break -->
+    <path d="M920 130c-30 28-36 64-30 105l20 151-14 45c-11 34-8 75 3 109 8 26 25 45 48 45s40-19 48-45c11-34 14-75 3-109l-14-45 20-151c6-41 0-77-30-105-15-14-39-14-54 0Z" fill="url(#cortex)"/>
+    <path d="m900 270 49 15-29 32 41 20-45 26-35-18 27-28-39-18Z" fill="#c78960" stroke="#74462d" stroke-width="8"/>
+    <path d="m900 270 49 15-29 32m45 20-45 26-35-18m27-28-39-18" stroke="#74462d" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g stroke="#75c4c2" stroke-width="3" opacity=".9"><path d="M195 100h76M560 100h76M925 100h76"/><circle cx="233" cy="100" r="8" fill="#75c4c2"/><circle cx="598" cy="100" r="8" fill="#75c4c2"/><circle cx="963" cy="100" r="8" fill="#75c4c2"/></g>
+</svg>
