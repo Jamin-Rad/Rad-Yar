@@ -92,6 +92,7 @@ import { RENAL_ANATOMY_FLASHCARDS, RENAL_ANATOMY_FLASHCARD_TOPIC } from './renal
 import { SOLID_RENAL_MASS_FLASHCARDS, SOLID_RENAL_MASS_FLASHCARD_TOPIC } from './solidRenalMassesFlashcards'
 import { LOWER_GI_BLEEDING_FLASHCARDS, LOWER_GI_BLEEDING_FLASHCARD_TOPIC } from './lowerGIBleedingFlashcards'
 import { TECHNIK_BOLD_FLASHCARDS, TECHNIK_BOLD_TOPIC } from './technikBoldFlashcards'
+import { TECHNIK_CINE_FLASHCARDS, TECHNIK_CINE_FLASHCARD_TOPIC } from './technikCineFlashcards'
 import { VOLVULUS_FLASHCARDS, VOLVULUS_FLASHCARD_TOPIC } from './volvulusLearning'
 import { APPENDIZITIS_FLASHCARDS, APPENDIZITIS_FLASHCARD_TOPIC } from './appendizitisFlashcards'
 import { WRIST_EXTENSOR_FLASHCARDS, WRIST_EXTENSOR_FLASHCARD_TOPIC, DE_QUERVAIN_FLASHCARDS, DE_QUERVAIN_FLASHCARD_TOPIC } from './wristExtensorAssessments'
@@ -126,6 +127,7 @@ export const FLASHCARD_TOPICS = [
   SOLID_RENAL_MASS_FLASHCARD_TOPIC,
   LOWER_GI_BLEEDING_FLASHCARD_TOPIC,
   TECHNIK_BOLD_TOPIC,
+  TECHNIK_CINE_FLASHCARD_TOPIC,
   TECHNIK_ROENTGEN_FLASHCARD_TOPIC,
   { id: 'lebermetastasen', area: 'Abdomen', chapter: 'Leberläsionen', icon: 'CT', iconImage: '/fach/abdomen.png', color: '#10b981', href: '/flashcards/lebermetastasen', title: { de: 'Lebermetastasen', en: 'Liver metastases', fa: 'متاستازهای کبدی' }, subtitle: { de: 'Phasenmuster · Vaskularität · Befundung', en: 'Phase pattern · vascularity · reporting', fa: 'الگوی فازی · عروق‌رسانی · گزارش' } },
   STEATOSIS_FLASHCARD_TOPIC,
@@ -3668,6 +3670,7 @@ export const FLASHCARDS = [
   ...SOLID_RENAL_MASS_FLASHCARDS,
   ...LOWER_GI_BLEEDING_FLASHCARDS,
   ...TECHNIK_BOLD_FLASHCARDS,
+  ...TECHNIK_CINE_FLASHCARDS,
   ...TECHNIK_ROENTGEN_FLASHCARDS,
   { id: 'lebermetastasen-01-phasenvergleich', topicId: 'lebermetastasen', category: 'Abdomen', front: { de: 'Welche Phasen helfen, die Vaskularität einer Leberläsion einzuordnen?', en: 'Which phases help classify the vascularity of a liver lesion?', fa: 'کدام فازها برای طبقه‌بندی عروق‌رسانی ضایعهٔ کبدی کمک می‌کنند؟' }, answer: { de: 'Vor allem die arterielle und portalvenöse Phase vergleichen; eine Spätphase nur berücksichtigen, wenn sie akquiriert wurde.', en: 'Compare the arterial and portal venous phases; consider a delayed phase only when it was acquired.', fa: 'فاز شریانی و پورت را مقایسه کنید؛ فاز تأخیری را فقط در صورت انجام‌شدن بررسی کنید.' }, explanation: { de: 'Das PDF zeigt unterschiedliche hypo- und hypervaskuläre Muster über mehrere Kontrastphasen. Einzelbilder reichen nicht für die Einordnung.', en: 'The PDF shows different hypo- and hypervascular patterns across contrast phases. A single image is insufficient for classification.', fa: 'PDF الگوهای کم‌عروق و پرعروق را در چند فاز تزریق نشان می‌دهد. یک تصویر منفرد برای طبقه‌بندی کافی نیست.' }, diagram: { de: 'arteriell → portalvenös → ggf. spät', en: 'arterial → portal venous → delayed if acquired', fa: 'شریانی ← پورت ← در صورت انجام، تأخیری' } },
   ...STEATOSIS_FLASHCARDS,

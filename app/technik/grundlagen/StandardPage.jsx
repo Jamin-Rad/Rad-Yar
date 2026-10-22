@@ -245,7 +245,7 @@ export default function TechnikGrundlagenStandardPage() {
           {block.note?<aside className={styles.callout}><strong>{t(L('Einordnung und Grenzen','Interpretation and limitations','تفسیر و محدودیت‌ها'))}</strong><p>{t(block.note)}</p></aside>:null}
         </section>)}
         {section.id === 'mrt' ? <><MRIKnowledgeCheck lang={lang}/><RetrievalCheck kind="dixon" lang={lang}/><MriFundamentalsActions lang={lang}/><FatSuppressionActions lang={lang}/></> : null}
-        {section.id === 'mrt-spezial' ? <><RetrievalCheck kind="perfusion" lang={lang}/><RetrievalCheck kind="ciss" lang={lang}/><MraActions lang={lang}/></> : null}
+        {section.id === 'mrt-spezial' ? <><RetrievalCheck kind="perfusion" lang={lang}/><RetrievalCheck kind="ciss" lang={lang}/><CineActions lang={lang}/><MraActions lang={lang}/></> : null}
         {section.id === 'fmri-bold' ? <><RetrievalCheck kind="bold" lang={lang}/><BoldActions lang={lang}/></> : null}
         {section.id === 'leber-mrt-protokoll' ? <><LiverProtocolFigure lang={lang}/><RetrievalCheck kind="liverProtocol" lang={lang}/></> : null}
         {section.id === 'mrcp-protokoll' ? <RetrievalCheck kind="mrcp" lang={lang}/> : null}
@@ -325,6 +325,21 @@ function MraActions({ lang }) {
     <strong style={{ alignSelf: 'center' }}>{labels.title}</strong>
     <a href={`/ueben/quiz?fach=technik&n=1&themen=mrt-gefaessdarstellung&from=${from}`}>{labels.quiz}</a>
     <a href={`/flashcards/mrt-gefaessdarstellung?from=${from}`}>{labels.cards}</a>
+  </nav>
+}
+
+function CineActions({ lang }) {
+  const returnTo = lang === 'de' ? '/technik/grundlagen#mrt-spezial' : `/technik/grundlagen?lang=${lang}#mrt-spezial`
+  const from = encodeURIComponent(returnTo)
+  const labels = {
+    de: { title: 'CINE-MRT üben', quiz: 'MC-Frage zu CINE', cards: 'Zwei Lernkarten' },
+    en: { title: 'Practise cine MRI', quiz: 'Cine MRI MCQ', cards: 'Two flashcards' },
+    fa: { title: 'تمرین MRI سینمایی', quiz: 'سؤال CINE', cards: 'دو فلش‌کارت' },
+  }[lang] || { title: 'CINE-MRT üben', quiz: 'MC-Frage zu CINE', cards: 'Zwei Lernkarten' }
+  return <nav aria-label={labels.title} style={{ display:'flex', flexWrap:'wrap', gap:12, margin:'18px 0', padding:14, border:'1px solid var(--border)', borderRadius:14, background:'var(--surface-soft)' }}>
+    <strong style={{ alignSelf:'center' }}>{labels.title}</strong>
+    <a href={`/ueben/quiz?fach=technik&n=1&themen=mrt-cine&from=${from}`}>{labels.quiz}</a>
+    <a href={`/flashcards/mrt-cine?from=${from}`}>{labels.cards}</a>
   </nav>
 }
 

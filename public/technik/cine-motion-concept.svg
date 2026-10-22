@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 250" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual time-resolved cine sequence</title>
+  <desc id="desc">Three frames show a generic moving marker at different positions, joined by arrows into a sequence.</desc>
+  <rect width="900" height="250" rx="24" fill="#f4fafb"/>
+  <g fill="#fff" stroke="#75b8c2" stroke-width="3">
+    <rect x="34" y="42" width="220" height="150" rx="16"/>
+    <rect x="340" y="42" width="220" height="150" rx="16"/>
+    <rect x="646" y="42" width="220" height="150" rx="16"/>
+  </g>
+  <g fill="none" stroke="#397f8d" stroke-width="7" stroke-linecap="round">
+    <path d="M105 132 C126 75 163 75 184 132"/>
+    <path d="M411 132 C432 75 469 75 490 132"/>
+    <path d="M717 132 C738 75 775 75 796 132"/>
+  </g>
+  <g fill="#d09b46" stroke="#75531f" stroke-width="3">
+    <circle cx="132" cy="109" r="12"/>
+    <circle cx="451" cy="82" r="12"/>
+    <circle cx="770" cy="109" r="12"/>
+  </g>
+  <g fill="none" stroke="#7b6aa6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M270 117h45m-12-12 12 12-12 12"/>
+    <path d="M576 117h45m-12-12 12 12-12 12"/>
+  </g>
+  <g fill="#254f58" font-family="Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle">
+    <text x="144" y="224">t₁</text><text x="450" y="224">t₂</text><text x="756" y="224">t₃</text>
+  </g>
+</svg>
