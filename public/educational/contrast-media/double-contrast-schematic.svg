@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Double-contrast principle</title>
+  <desc id="desc">Barium coats the inner bowel surface while gas distends the lumen, revealing mucosal relief.</desc>
+  <rect width="1200" height="520" rx="24" fill="#f7fbfd"/>
+  <g transform="translate(80 105)">
+    <circle cx="230" cy="18" r="22" fill="#246b82"/><text x="230" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#fff">1</text>
+    <path d="M35 115 C105 65 145 165 215 115 S325 65 395 115" fill="none" stroke="#b3c6cc" stroke-width="62" stroke-linecap="round"/>
+    <path d="M35 115 C105 65 145 165 215 115 S325 65 395 115" fill="none" stroke="#f2fcff" stroke-width="43" stroke-linecap="round"/>
+    <path d="M35 115 C105 65 145 165 215 115 S325 65 395 115" fill="none" stroke="#20a6bf" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <path d="M560 245 H632" stroke="#67818b" stroke-width="5" marker-end="url(#arrow)"/>
+  <g transform="translate(700 105)">
+    <circle cx="210" cy="18" r="22" fill="#246b82"/><text x="210" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#fff">2</text>
+    <path d="M25 115 C95 38 150 192 220 115 S345 38 415 115" fill="none" stroke="#b3c6cc" stroke-width="78" stroke-linecap="round"/>
+    <path d="M25 115 C95 38 150 192 220 115 S345 38 415 115" fill="none" stroke="#eaf7fb" stroke-width="60" stroke-linecap="round"/>
+    <path d="M25 115 C95 38 150 192 220 115 S345 38 415 115" fill="none" stroke="#20a6bf" stroke-width="8" stroke-linecap="round"/>
+    <path d="M120 119 C144 95 165 140 189 116 S235 95 259 119" fill="none" stroke="#afd9e5" stroke-width="3" stroke-dasharray="7 8"/>
+  </g>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#67818b"/></marker></defs>
+</svg>
