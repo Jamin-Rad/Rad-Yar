@@ -8,7 +8,7 @@ const topics = ['roentgenanlage-roehre', 'roentgenstrahlung-spektrum', 'roentgen
 for (const lang of ['de', 'en', 'fa']) {
   for (const topic of topics) {
     const questions = QUESTION_BANK[lang].filter(question => question.tags.includes(topic))
-    const expectedCount = ['roentgen-wechselwirkung-materie', 'roentgen-bildentstehung-detektor'].includes(topic) ? 2 : 1
+    const expectedCount = ['roentgenanlage-roehre', 'roentgen-wechselwirkung-materie', 'roentgen-bildentstehung-detektor'].includes(topic) ? 2 : 1
     assert.equal(questions.length, expectedCount, `${lang}: ${topic} must have ${expectedCount} linked MCQ(s)`)
     for (const question of questions) {
       assert.equal(question.options.length, 4)
@@ -17,6 +17,11 @@ for (const lang of ['de', 'en', 'fa']) {
     }
     if (topic === 'roentgen-bildentstehung-detektor') {
       assert.ok(questions.some(question => question.id === `roentgen-detektor-${lang}-02`), `${lang}: detector metrics MCQ must be linked`)
+    }
+    if (topic === 'roentgenanlage-roehre') {
+      const heel = questions.find(question => question.id === `roentgenanlage-roehre-${lang}-02`)
+      assert.ok(heel, `${lang}: heel-effect transfer MCQ must be linked`)
+      assert.match(heel.explanation, /Kathodenseite|cathode side|سمت کاتد/)
     }
   }
 }
@@ -81,10 +86,10 @@ assert.match(lesson, /geometrische Unschärfe/)
 assert.match(lesson, /geometric unsharpness/)
 assert.match(lesson, /محوشدگی هندسی/)
 assert.match(lesson, /AAPM Task Group 150/)
-for (const content of ['Kathode und Elektronenfokus', 'Tatsächlicher, thermischer und optischer Brennfleck', 'Vakuumhülle und Schutzgehäuse', 'Wovon hängt die Abschwächung ab?', 'K-Kantenfilter in der Mammographie', 'Computed Radiography (CR)', 'DR direkt']) assert.ok(lesson.includes(content), `Source-led lesson detail missing: ${content}`)
+for (const content of ['Kathode und Elektronenfokus', 'Tatsächlicher, thermischer und optischer Brennfleck', 'Anode: fest oder rotierend', 'Vakuumhülle und Schutzgehäuse', 'Wovon hängt die Abschwächung ab?', 'K-Kantenfilter in der Mammographie', 'Computed Radiography (CR)', 'DR direkt']) assert.ok(lesson.includes(content), `Source-led lesson detail missing: ${content}`)
 for (const asset of ['xray-tube.svg', 'heel-effect.svg', 'xray-interactions.svg', 'mammography-k-edge.svg', 'detector-chain.svg']) assert.ok(lesson.includes(asset), `Teaching diagram missing: ${asset}`)
 assert.ok(page.includes('RetrievalCheck kind="roehre"') && page.includes('RetrievalCheck kind="wechselwirkung"') && page.includes('RetrievalCheck kind="detektor"'), 'Each updated chapter must include an inline knowledge check')
-assert.ok(curriculum.includes("mcqLink: '/ueben/quiz?fach=technik&n=1&themen=roentgenanlage-roehre'") && curriculum.includes("flashcardLink: '/flashcards/roentgenanlage-roehre'"), 'Curriculum links should target the registered assessment and card deck')
+assert.ok(curriculum.includes("mcqLink: '/ueben/quiz?fach=technik&n=2&themen=roentgenanlage-roehre'") && curriculum.includes("flashcardLink: '/flashcards/roentgenanlage-roehre'"), 'Curriculum links should target both registered tube questions and the card deck')
 assert.match(page, /roentgen-wechselwirkung-materie[\s\S]*?Acht Lernkarten öffnen/)
 
 console.log('Technik Röntgen sync passed: four source-linked topic IDs, DE/EN/FA checks, 8 cards and chapter visuals.')
