@@ -28,5 +28,6 @@ assert.ok(page.includes("window.history.replaceState(null, '', `#${id}`)") && pa
 assert.ok(page.includes('hepatozellulären Adenom') && page.includes('تقویت همگن در برابر ندول‌های محیطی همانژیوم'), 'Corrected German and Persian terminology should remain present')
 const fnhEntry = curriculum.slice(curriculum.indexOf("id: 'fnh'"), curriculum.indexOf("id: 'leberadenom'"))
 assert.ok(fnhEntry.includes('inProgress: true') && !fnhEntry.includes('ready: true'), 'Curriculum status must agree with the in-progress route banner')
+assert.ok(fnhEntry.includes("mcqLink: '/ueben/quiz?fach=abdomen&n=10&themen=fnh'"), 'Curriculum should expose all ten exact-topic FNH MCQs')
 
 console.log('FNH sync passed: 10 MCQs, 12 cards, source-image placement, shared hero, mobile nav, terminology and curriculum state.')

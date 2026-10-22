@@ -781,6 +781,7 @@ export const CURRICULUM = [
             title: { de: 'FNH', en: 'Focal Nodular Hyperplasia (FNH)', fa: 'هیپرپلازی ندولار فوکال (FNH)' },
             group: ['Benigne Leberläsionen'], tags: ['CT','MRT'], diff: 2,
             link: '/abdomen/leber/fnh',
+            mcqLink: '/ueben/quiz?fach=abdomen&n=10&themen=fnh',
             flashcardLink: '/flashcards/fnh',
             inProgress: true, updatedAt: '2026-10-21',
           },
