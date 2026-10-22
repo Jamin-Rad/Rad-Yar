@@ -3,6 +3,7 @@ import fs from 'node:fs'
 import { QUESTION_BANK } from '../data/questions.js'
 import { FLASHCARD_TOPICS, getCardsByTopic } from '../data/flashcards.js'
 import { CURRICULUM, getLessonLinkForFlashcard } from '../data/curriculum.js'
+import { ADRENAL_LESSON_CHECK } from '../data/abdomenAdrenalLessonMaterials.js'
 
 const definitions = [
   { id: 'nebennieren-inzidentalom', route: '/abdomen/nebenniere/raumforderungen', cards: 5, questions: ['abdomen-adrenal-masses'] },
@@ -52,9 +53,18 @@ const adrenalQuestionIds = new Set(['abdomen-adrenal-masses', 'adrenal-adenoma-m
 const adrenalAssessmentText = ['de', 'en', 'fa'].map(lang => {
   const questions = QUESTION_BANK[lang].filter(question => adrenalQuestionIds.has(question.id.replace(/-\w{2}-01$/, '')))
   const cards = getCardsByTopic('nebennierenraumforderungen').flatMap(card => [card.front[lang], card.answer[lang], card.explanation[lang]])
-  return [...questions.flatMap(question => [question.question, ...question.options.map(option => option.text), question.explanation]), ...cards].join(' ')
+  const check = [ADRENAL_LESSON_CHECK.question[lang], ...ADRENAL_LESSON_CHECK.options.map(option => option[lang]), ADRENAL_LESSON_CHECK.explanation[lang]]
+  const allText = [...questions.flatMap(question => [question.question, ...question.options.map(option => option.text), question.explanation]), ...cards, ...check].join(' ')
+  const pheoId = `adrenal-pheochromocytoma-washout-${lang}-01`
+  const pheoQuestion = questions.find(question => question.id === pheoId)
+  assert.ok(pheoQuestion, `${lang}: pheochromocytoma washout MCQ is registered`)
+  assert.match(`${pheoQuestion.options.map(option => option.text).join(' ')} ${pheoQuestion.explanation}`, /washout|فئوکروموسیتوم/i)
+  if (lang === 'de') assert.match(allText, /Washout allein schließt ein Phäochromozytom nicht sicher aus/)
+  if (lang === 'en') assert.match(allText, /Washout alone does not reliably exclude pheochromocytoma/)
+  if (lang === 'fa') assert.match(allText, /Washout به‌تنهایی فئوکروموسیتوم را با اطمینان رد نمی‌کند/)
+  return allText
 }).join(' ')
-assert.doesNotMatch(adrenalAssessmentText, /(?:<\s*4|4\s*[–-]\s*6|>\s*6)\s*cm|2\s*%|6\s*%|25\s*%|(?:absolute|relatives?|relative)\s+washout[^.]{0,60}(?:60|40)\s*%|100\s*%\s*(?:specificity|Spezifität)|(?:50\s*%\s*(?:sensitivity|Sensitivität))/i, 'legacy size-only risks, p.59 washout cutoffs and source performance statistics must not leak into learner assessments')
+assert.doesNotMatch(adrenalAssessmentText, /(?:<\s*4|4\s*[–-]\s*6|>\s*6)\s*cm|2\s*%|6\s*%|25\s*%|(?:absolute|relatives?|relative)\s+washout[^.]{0,60}(?:60|40)\s*%|100\s*%\s*(?:specificity|Spezifität)|(?:50\s*%\s*(?:sensitivity|Sensitivität))|10\s*%|10%-Regel|10% rule|110\s*[–-]\s*120\s*HU|(?:one|a) third|ein Drittel|یک سوم/i, 'legacy incidentaloma/pheochromocytoma source rules, washout cutoffs and performance statistics must not leak into learner assessments')
 for (const phrase of [
   'unabhängig von der Größe keine weitere Bildgebung',
   'irrespective of size',
