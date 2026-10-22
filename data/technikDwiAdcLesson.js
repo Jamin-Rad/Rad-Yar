@@ -23,7 +23,7 @@ export const DWI_ADC_BLOCK = {
 }
 
 export const DWI_ADC_QUESTIONS = ['de', 'en', 'fa'].map(lang => ({
-  id: `mrt-dwi-adc-${lang}-shine-through`, topicId: 'mrt-dwi-adc', fach: 'technik',
+  id: `mrt-dwi-adc-${lang}-shine-through`, topicId: 'mrt-dwi-adc', fach: 'technik', tags: ['mrt-dwi-adc', 'mrt', 'technik'],
   question: lang === 'de' ? 'Ein Fokus ist auf hoher b-Wichtung hell, auf der ADC-Karte aber normal bis signalreich. Welche Aussage passt am besten?' : lang === 'en' ? 'A focus is bright on high-b DWI but normal to bright on the ADC map. Which interpretation fits best?' : 'کانونی در DWI با b بالا روشن است، اما در نقشهٔ ADC طبیعی تا پرسیگنال دیده می‌شود. کدام تفسیر مناسب‌تر است؟',
   options: (lang === 'de' ? ['T2-shine-through; die ADC-Karte stützt keine echte Restriktion.', 'Sichere echte Restriktion mit erniedrigtem ADC.', 'ADC und DWI sind immer gleich zu interpretieren.', 'Ein hoher b-Wert beweist unabhängig vom ADC eine Restriktion.'] : lang === 'en' ? ['T2 shine-through; the ADC map does not support true restriction.', 'Definite true restriction with low ADC.', 'ADC and DWI must always be interpreted identically.', 'A high b-value proves restriction regardless of ADC.'] : ['عبور سیگنال T2؛ نقشهٔ ADC از محدودیت واقعی حمایت نمی‌کند.', 'محدودیت واقعی قطعی همراه با ADC پایین.', 'ADC و DWI همیشه باید یکسان تفسیر شوند.', 'b-value بالا بدون توجه به ADC محدودیت را ثابت می‌کند.']).map((text, index) => ({ id: String.fromCharCode(65 + index), text })),
   correct: 'A',

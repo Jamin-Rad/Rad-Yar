@@ -4,7 +4,7 @@ Bounded addition to `/technik/grundlagen#mrt-spezial`, exact curriculum ID `mrt-
 
 ## Source inspection and learning path
 
-The author text-extracted and visually inspected Technik.pdf pp.110–113 (printed pp.109–112). Page 111 is effectively blank; pages 110, 112 and 113 contain the relevant prose, while p.113 has a three-image comparison labeled TOF-MRA, contrast-enhanced MRA and phase-contrast MRA. The independent reviewer verified the extracted text but could not visually inspect the source-page images because a PDF renderer was unavailable. The new visuals below are concept schematics, not diagnostic examples.
+The author and independent reviewer text-extracted and visually inspected Technik.pdf pp.110–113 (printed pp.109–112). Page 111 is effectively blank; pages 110, 112 and 113 contain the relevant prose, while p.113 has a three-image comparison labeled TOF-MRA, contrast-enhanced MRA and phase-contrast MRA. The images are not used as finding-level cases; no patient, diagnosis, protocol or sequence details are inferred from the labels. The lesson uses concept schematics, not diagnostic examples.
 
 Learner promise: explain what makes vessels bright in CE-MRA, TOF and PC-MRA, identify their main flow/timing limitations, and distinguish lumen-focused angiography from black-blood vessel-wall imaging.
 
@@ -36,4 +36,4 @@ Visual plan: a language-neutral code-native four-panel schematic contrasts bolus
 
 ## Assessment and validation
 
-One localized MCQ tests the VENC tradeoff; four flashcards cover CE-MRA timing, TOF inflow, PC/VENC and black-blood purpose. Focused StandardPage SSR/registry test passed for exact curriculum/assessment links, localized DE/EN/FA copy, RTL, diagram and visible quiz/card actions. The MCQ-bank audit passed. Existing perfusion and CISS focused tests also passed after integration. The SVG was rendered and visually inspected. Independent review passed the lesson text/content, concept visual, language and assessment; source-page image verification remains blocked because the reviewer lacked a PDF renderer. Browser UX remains blocked without live-browser evidence; these checks are not clinical approval.
+One localized MCQ tests the VENC tradeoff; four flashcards cover CE-MRA timing, TOF inflow, PC/VENC and black-blood purpose. Focused StandardPage SSR/registry test passed for exact curriculum/assessment links, localized DE/EN/FA copy, RTL, diagram and visible quiz/card actions. The MCQ-bank audit passed. Existing perfusion and CISS focused tests also passed after integration. The SVG was rendered and visually inspected. Independent SRC/EDU/VIS/LNG/ASM/REV review passed, including source-page image and label verification. UX remains BLOCKED without live-browser evidence; clinical approval by Dr. Zia remains pending and these checks are not release approval.

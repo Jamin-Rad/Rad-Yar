@@ -16,6 +16,7 @@ assert.equal(DWI_ADC_FLASHCARDS.length, 1)
 for (const lang of ['de', 'en', 'fa']) {
   const question = QUESTION_BANK[lang].filter(item => item.topicId === 'mrt-dwi-adc')
   assert.equal(question.length, 1, `${lang} exact topic MCQ`)
+  assert.ok(question[0].tags.includes('mrt-dwi-adc'), `${lang} exact-topic retrieval tag`)
   assert.equal(question[0].options.length, 4)
   assert.equal(question[0].options.find(option => option.id === question[0].correct).id, 'A')
   for (const option of question[0].options) assert.ok(option.text.length > 10)
