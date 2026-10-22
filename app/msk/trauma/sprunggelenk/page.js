@@ -481,6 +481,11 @@ export default function SprunggelenkTraumaPage() {
         </div>
       </header>
 
+      <nav className={`${styles.actions} ${styles.readBar}`} aria-label={lang === 'fa' ? 'تمرین و مرور' : lang === 'en' ? 'Practice and review' : 'Üben und Wiederholen'}>
+        <Link className={styles.actionBtn} href={withLang('/ueben/quiz?fach=msk&n=8&themen=osg-fraktur')}>{lang === 'fa' ? 'تمرین چندگزینه‌ای' : lang === 'en' ? 'Multiple-choice practice' : 'Multiple-Choice-Fragen'}</Link>
+        <Link className={styles.actionBtn} href={withLang('/flashcards/osg-fraktur')}>{lang === 'fa' ? 'فلش‌کارت‌ها' : lang === 'en' ? 'Flashcards' : 'Flashkarten'}</Link>
+      </nav>
+
       <div className={styles.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
 
       <div className={styles.layout}>

@@ -21,6 +21,6 @@
 
 ## Translation and verification
 
-The comparison table, headers, chapter title, introduction, diagram labels, self-check prompt/options/feedback and source note are localized in German, English and Persian. Focused SSR/logic test checks all five morphology distinctions, exact existing curriculum linkage, visible options, and correct/incorrect feedback behavior in each language. Browser, mobile/RTL layout, clinical correctness beyond source transcription, and scientific approval remain open.
+The comparison table, headers, chapter title, introduction, diagram labels, self-check prompt/options/feedback and source note are localized in German, English and Persian. The exact topic now also has two four-option DE/EN/FA MCQs (Maisonneuve injury chain; Chaput versus Volkmann), two localized flashcards, and visible lesson links to both practice surfaces. Focused route/logic and assessment-registration checks cover all five morphology distinctions, exact curriculum linkage, selectable assessment options and localized feedback. Browser, mobile/RTL layout, clinical correctness beyond source transcription, and scientific approval remain open.
 
 No curriculum ID was created or changed. No treatment recommendation or threshold was added.
