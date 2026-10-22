@@ -112,3 +112,8 @@ Das Scheuermann-MCQ und die Scheuermann-Karte wurden nach der exakten Curriculum
 2. Seitenbilder der offenen/illustrationsreichen Strecken einzeln zuordnen, insbesondere MSK 11–43 und 73–138 sowie WS 11–29.
 3. Die unabhängige Review-Runde für neu integrierte Fragen/Karten und alle Autoränderungen abschließen.
 4. Browser-/Build-Prüfung koordiniert auf Repository-Ebene durchführen; keine Freigabe aus dieser Autorarbeit ableiten.
+
+
+### Beckenringfraktur · MSK.pdf S.25–26 (22.10.2026)
+
+Die unabhängige Prüfung fand eine Verwechslungsgefahr zwischen Tile-Grundtyp B und AO/OTA-2018-Untergruppe 61B1/61B2. Der Lektionstext trennt diese Bezeichnungen jetzt explizit und verweist auf die AO-Definitionen. Zwei MCQs und zwei Lernkarten sind unter der exakten Curriculum-ID `beckenringfraktur` registriert; beide Aktionen sind aus der Lektion erreichbar. SSR-/Inhaltstest und globale Fragenbankprüfung bestanden. Browser-/klinische Freigabe bleibt offen.

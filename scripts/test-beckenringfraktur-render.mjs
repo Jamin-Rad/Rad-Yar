@@ -6,6 +6,8 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import { DOMParser } from '@xmldom/xmldom'
 import { BECKENRINGFRAKTUR_LESSON as lesson } from '../data/beckenringfraktur.js'
+import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
+import { FLASHCARD_TOPICS, getCardsByTopic } from '../data/flashcards.js'
 
 const route = 'app/msk/trauma/beckenringfraktur/page.jsx'
 assert.equal(lesson.id, 'beckenringfraktur')
@@ -13,6 +15,16 @@ assert.equal(lesson.sections.length, 3)
 assert.equal(lesson.sections[1].rows.length, 3)
 assert.equal(lesson.sections[2].answer, 1)
 assert.equal(lesson.sections[2].options.length, 4)
+assert.match(lesson.sections[1].paragraphs[0].de, /AO\/OTA 2018.*61B1.*61B2/s)
+const topicGroup = MCQ_TOPIC_GROUPS.flatMap(group => group.topics).find(topic => topic.id === 'beckenringfraktur')
+assert.ok(topicGroup, 'exact pelvic-ring MCQ topic is registered')
+assert.equal(FLASHCARD_TOPICS.filter(topic => topic.id === 'beckenringfraktur').length, 1)
+assert.equal(getCardsByTopic('beckenringfraktur').length, 2)
+for (const locale of ['de', 'en', 'fa']) {
+  const questions = QUESTION_BANK[locale].filter(question => question.tags?.includes('beckenringfraktur'))
+  assert.equal(questions.length, 2)
+  assert.ok(questions.every(question => question.options.length === 4 && question.explanation))
+}
 assert.ok(fs.existsSync(`public${lesson.hero}`))
 assert.ok(fs.existsSync(`public${lesson.sections[1].image}`))
 assert.match(lesson.sections[2].paragraphs[0].en, /no association.*pelvic-ring stability/i)
@@ -51,6 +63,8 @@ for (const locale of ['de', 'en', 'fa']) {
   const html = renderToStaticMarkup(React.createElement(Page))
   assert.ok(html.includes(`lang="${locale}"`) && html.includes(`dir="${locale === 'fa' ? 'rtl' : 'ltr'}"`), `${locale}: language/direction`)
   assert.ok(html.includes(escape(lesson.title[locale])) && html.includes(escape(lesson.heroAlt[locale])))
+  assert.ok(html.includes('/ueben/quiz?fach=msk&amp;n=8&amp;themen=beckenringfraktur'))
+  assert.ok(html.includes('/flashcards/beckenringfraktur'))
   assert.ok(html.includes(lesson.hero) && html.includes(lesson.sections[1].image))
   for (const section of lesson.sections) {
     assert.ok(html.includes(`id="${section.id}"`) && html.includes(escape(section.title[locale])))
@@ -73,5 +87,5 @@ for (const id of ['PEL-25-01','PEL-25-02','PEL-25-03','PEL-25-04','PEL-25-05','P
 const provenance = fs.readFileSync('docs/lesson-quality/media-provenance.md', 'utf8')
 for (const detail of ['source-pdf-page-26.jpg', 'Image342.jpg', 'physical PDF page 26', 'unknown', 'explicitly authorized', 'not asserted']) assert.ok(provenance.includes(detail))
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
-assert.match(curriculum, /\{ id: 'beckenringfraktur',[^\n]*link: '\/msk\/trauma\/beckenringfraktur',[^\n]*inProgress: true/)
-console.log('Pelvic ring fracture lesson: SSR/content parity PASS for DE/EN/FA, RTL, source image/hero, AO/Tile patterns, L5 evidence caveat and inline retrieval feedback.')
+assert.match(curriculum, /\{ id: 'beckenringfraktur',[^\n]*link: '\/msk\/trauma\/beckenringfraktur',[^\n]*mcqLink: '\/ueben\/quiz\?fach=msk&n=8&themen=beckenringfraktur',[^\n]*flashcardLink: '\/flashcards\/beckenringfraktur'/)
+console.log('Pelvic ring fracture lesson: SSR/content parity PASS for DE/EN/FA, RTL, AO/Tile distinction, exact-topic quiz/cards, source image/hero, L5 evidence caveat and inline retrieval feedback.')
