@@ -1,0 +1,15 @@
+.lessonHeroShell {
+  margin-top: 4px;
+  padding: 18px 28px 22px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(249,115,22,.22), transparent 20rem),
+    linear-gradient(135deg, #211529, #38203f 62%, #4a281e);
+  box-shadow: 0 22px 54px rgba(31,15,38,.20);
+}
+
+@media (max-width: 680px) {
+  .lessonHeroShell { padding: 12px 14px 16px; border-radius: 20px; }
+}

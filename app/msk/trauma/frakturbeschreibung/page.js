@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import InProgressBanner from '@/components/InProgressBanner'
+import LessonHero from '@/components/LessonHero'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import { FRAKTUR_LESSON } from '@/data/frakturbeschreibung'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
+import heroStyles from './page.module.css'
 
 const L = (v,l)=>v?.[l]||v?.de||v
 const UI={
@@ -46,12 +48,12 @@ export default function FrakturbeschreibungPage(){
  useEffect(()=>{const os=FRAKTUR_LESSON.sections.map(s=>{const el=document.getElementById(s.id);if(!el)return null;const o=new IntersectionObserver(es=>{if(es[0].isIntersecting)setActive(s.id)},{rootMargin:'-30% 0px -60% 0px'});o.observe(el);return o});return()=>os.forEach(o=>o?.disconnect())},[])
  return <main className={`${styles.page} ${styles.mskTraumaPage}`} dir={rtl?'rtl':'ltr'} lang={lang}>
   <InProgressBanner lang={lang}/>
-  <header className={styles.header}><div className={styles.breadcrumb}><Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/msk')}>MSK</Link><span>›</span><span>{c(FRAKTUR_LESSON.breadcrumb)}</span></div><div className={styles.hero}><div className={styles.heroText}><span className={styles.sourceBadge}>{FRAKTUR_LESSON.sourceLabel}</span><h1>{c(FRAKTUR_LESSON.title)}</h1><p>{c(FRAKTUR_LESSON.definition)}</p><div className={styles.actions}><Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=msk&n=12&themen=frakturbeschreibung&from=${encodeURIComponent(withLang(route))}`)}>🎯 {copy.mcq}</Link><Link className={styles.actionBtn} href={withLang(`/flashcards/frakturbeschreibung?from=${encodeURIComponent(withLang(route))}`)}>🧠 {copy.flash}</Link></div></div><div className={styles.heroStats}>{FRAKTUR_LESSON.heroCards.map(card=><div className={styles.heroStat} key={c(card.value)}><strong>{c(card.value)}</strong><span>{c(card.label)}</span><small>{c(card.text)}</small></div>)}</div></div></header>
+  <header className={styles.header}><div className={styles.breadcrumb}><Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/msk')}>MSK</Link><span>›</span><span>{c(FRAKTUR_LESSON.breadcrumb)}</span></div><div className={heroStyles.lessonHeroShell}><LessonHero title={c(FRAKTUR_LESSON.title)} imageSrc={FRAKTUR_LESSON.morphologie.image} imageAlt={c(FRAKTUR_LESSON.morphologie.imageAlt)} visualCaption={c(FRAKTUR_LESSON.morphologie.imageCredit)} lang={lang}/></div><div className={styles.actions}><Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=msk&n=12&themen=frakturbeschreibung&from=${encodeURIComponent(withLang(route))}`)}>🎯 {copy.mcq}</Link><Link className={styles.actionBtn} href={withLang(`/flashcards/frakturbeschreibung?from=${encodeURIComponent(withLang(route))}`)}>🧠 {copy.flash}</Link></div></header>
   <div className={styles.readBar}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}/></div>
   <div className={styles.layout}><aside className={styles.sidebar}><div className={styles.sideTitle}>{c(FRAKTUR_LESSON.toc)}</div>{FRAKTUR_LESSON.sections.map(s=><button type="button" key={s.id} className={`${styles.sideItem} ${active===s.id?styles.sideItemActive:''}`} onClick={()=>document.getElementById(s.id)?.scrollIntoView({behavior:'smooth'})} style={s.emphasis?{color:'#f59e0b',border:'1px solid rgba(245,158,11,.48)',background:'rgba(245,158,11,.12)',fontWeight:950}:undefined}><span>{s.icon}</span><strong>{c(s.label)}</strong></button>)}</aside>
   <div className={styles.main}>
    <Section id="systematik" title={c(FRAKTUR_LESSON.systematik.title)} lead={c(FRAKTUR_LESSON.systematik.lead)}><Cards items={FRAKTUR_LESSON.systematik.items} lang={lang}/><Callout label={c(FRAKTUR_LESSON.keyLabel)}>{c(FRAKTUR_LESSON.systematik.key)}</Callout></Section>
-   <Section id="entstehung" title={c(FRAKTUR_LESSON.entstehung.title)} lead={c(FRAKTUR_LESSON.entstehung.lead)}><Table headers={FRAKTUR_LESSON.entstehung.headers.map(c)} rows={rows(FRAKTUR_LESSON.entstehung.rows)}/></Section>
+   <Section id="entstehung" title={c(FRAKTUR_LESSON.entstehung.title)} lead={c(FRAKTUR_LESSON.entstehung.lead)}><Table headers={FRAKTUR_LESSON.entstehung.headers.map(c)} rows={rows(FRAKTUR_LESSON.entstehung.rows)}/><Callout label={c(FRAKTUR_LESSON.caveLabel)} cave>{c(FRAKTUR_LESSON.entstehung.note)}</Callout></Section>
    <Section id="morphologie" title={c(FRAKTUR_LESSON.morphologie.title)} lead={c(FRAKTUR_LESSON.morphologie.lead)}>
     <Table headers={FRAKTUR_LESSON.morphologie.headers.map(c)} rows={rows(FRAKTUR_LESSON.morphologie.rows)}/>
     <button type="button" className={styles.fractureMorphologyImage} onClick={()=>setZoomed(true)} aria-label={`${copy.zoom}: ${c(FRAKTUR_LESSON.morphologie.imageAlt)}`}><Image src={FRAKTUR_LESSON.morphologie.image} alt={c(FRAKTUR_LESSON.morphologie.imageAlt)} width={960} height={420}/></button>
