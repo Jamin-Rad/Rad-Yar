@@ -32,3 +32,11 @@ DE/EN/FA content and Persian RTL are checked by the focused script. Automated ch
 - Type V is described as often recognized retrospectively and potentially visible on follow-up, without making growth arrest a prerequisite for initial suspicion.
 - Type II outcome wording is qualified as generally/usually favourable.
 - Added visible localized source links and localized text equivalents for labels embedded in the Salter–Harris, shaft-pattern and triplane schemas.
+
+## Independent review round: assessment, media labels, and navigation
+
+The independent reviewer identified an AP ankle frame mislabeled as a second lateral view, an invalid “highest risk” Salter–Harris question, an English mnemonic diagram spelling “SALTE R” against the lesson's SALTR mnemonic, a German hero-card typo, and a chapter navigation state that could land on a closed section. The reviewer also flagged unsupported numeric remodelling rules and overgeneralized child-protection assessment wording in a linked question/card.
+
+Corrections made and independently re-reviewed: the image file/reference/caption now identify the AP projection; the growth-risk ranking question now asks the objective Type IV morphology; the Salter–Harris picture is replaced by a simplified SVG showing Type I–V paths without a conflicting mnemonic; the hero label reads “Okkulte Fraktur”; chapter sections remain open on first load and TOC navigation expands a manually closed destination; numeric remodelling thresholds are removed in favor of explicit contextual dependencies; safeguarding wording requires assessment with age, development, history, and the total findings and states that one fracture type alone is not diagnostic. The AAP 2025 clinical report and RCH physeal-injury reference were added as localized sources. The final independent static review found no remaining blocker in these deltas.
+
+Focused DE/EN/FA source test, p.10 source test, global MCQ audit, and `git diff --check` pass after these edits. Static checks do not replace browser checks. Browser interaction, RTL page rendering, and scientific approval remain open until directly verified.

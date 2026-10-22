@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+  <title id="title">Salter-Harris physeal fracture patterns, types I to V</title>
+  <desc id="desc">Five schematic long-bone ends show fracture paths through metaphysis, physis, and epiphysis. Type I crosses the physis; II extends into metaphysis; III into epiphysis; IV crosses all three; V compresses the physis.</desc>
+  <defs>
+    <style>
+      .head{font:700 25px Arial,sans-serif;fill:#16324f}.bone{fill:#e9eff4;stroke:#89a1b5;stroke-width:2}.phy{fill:#f5cf73}.fracture{fill:none;stroke:#c43d4b;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+  <rect x="1" y="1" width="1198" height="428" rx="18" fill="#f7fafc" stroke="#cbd7e2" stroke-width="2"/>
+  <g transform="translate(35 70)">
+    <g transform="translate(0)">
+      <text x="100" y="30" text-anchor="middle" class="head">I</text>
+      <rect class="bone" x="42" y="56" width="116" height="210" rx="35"/><rect class="phy" x="42" y="151" width="116" height="24"/>
+      <path class="fracture" d="M43 163h114"/>
+    </g>
+    <g transform="translate(225)">
+      <text x="100" y="30" text-anchor="middle" class="head">II</text>
+      <rect class="bone" x="42" y="56" width="116" height="210" rx="35"/><rect class="phy" x="42" y="151" width="116" height="24"/>
+      <path class="fracture" d="M157 112l-40 47H43"/>
+    </g>
+    <g transform="translate(450)">
+      <text x="100" y="30" text-anchor="middle" class="head">III</text>
+      <rect class="bone" x="42" y="56" width="116" height="210" rx="35"/><rect class="phy" x="42" y="151" width="116" height="24"/>
+      <path class="fracture" d="M43 163h67l38 77"/>
+    </g>
+    <g transform="translate(675)">
+      <text x="100" y="30" text-anchor="middle" class="head">IV</text>
+      <rect class="bone" x="42" y="56" width="116" height="210" rx="35"/><rect class="phy" x="42" y="151" width="116" height="24"/>
+      <path class="fracture" d="M49 72l52 91 48 102"/>
+    </g>
+    <g transform="translate(900)">
+      <text x="100" y="30" text-anchor="middle" class="head">V</text>
+      <rect class="bone" x="42" y="56" width="116" height="210" rx="35"/><rect class="phy" x="42" y="151" width="116" height="24"/>
+      <path class="fracture" d="M54 153l22 17 24-16 24 17 24-16"/>
+    </g>
+  </g>
+</svg>

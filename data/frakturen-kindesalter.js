@@ -27,7 +27,7 @@ export const FRAKTUR_KINDER_LESSON = {
     },
     {
       value: L('Toddler', 'Toddler', 'توددلر'),
-      label: L('Fraktur okkulto', 'occult fracture', 'شکستگی پنهان'),
+      label: L('Okkulte Fraktur', 'occult fracture', 'شکستگی پنهان'),
       text: L('Röntgen oft negativ', 'X-ray often negative', 'رادیوگرافی اغلب منفی'),
     },
   ],
@@ -62,9 +62,9 @@ export const FRAKTUR_KINDER_LESSON = {
         icon: '📏',
         title: L('Wachstumsfuge (Physis)', 'Growth Plate (Physis)', 'صفحه رشد (فیزیس)'),
         text: L(
-          'Knorpelige Zone zwischen Epi- und Metaphyse. Schwächste Struktur im kindlichen Skelett → bevorzugte Frakturlinie, v.a. unter Scherbelastung.',
-          'Cartilaginous zone between epiphysis and metaphysis. Weakest structure in the paediatric skeleton → preferred fracture line, especially under shear stress.',
-          'ناحیه غضروفی بین اپی‌فیز و متافیز. ضعیف‌ترین ساختار در اسکلت کودکان → خط شکستگی ترجیحی، به‌ویژه تحت نیروی برشی.'
+          'Knorpelige Wachstumszone zwischen Epi- und Metaphyse; eine charakteristische Lokalisation für Frakturen im wachsenden Skelett.',
+          'Cartilaginous growth zone between epiphysis and metaphysis; a characteristic site of fractures in the growing skeleton.',
+          'ناحیه غضروفی رشد میان اپی‌فیز و متافیز؛ محل مشخصی برای شکستگی در اسکلت در حال رشد.'
         ),
       },
       {
@@ -87,9 +87,9 @@ export const FRAKTUR_KINDER_LESSON = {
       },
     ],
     key: L(
-      'Bänder und Kapseln sind bei Kindern oft stabiler als die Physis – deshalb Luxation bei Kindern seltener, Physenverletzung häufiger.',
-      'Ligaments and capsules are often stronger than the physis in children – so dislocation is rarer in children, physeal injury is more common.',
-      'رباط‌ها و کپسول‌ها در کودکان اغلب از فیزیس محکم‌ترند – بنابراین دررفتگی در کودکان نادرتر و آسیب به فیزیس شایع‌تر است.'
+      'Bei offenen Wachstumsfugen die Physis als mögliche Verletzungsstruktur und mögliche Wachstumsfolgen mitbeurteilen.',
+      'When growth plates are open, include the physis as a possible injury site and consider potential growth consequences.',
+      'هنگامی که صفحه رشد باز است، فیزیس را به‌عنوان محل احتمالی آسیب و پیامدهای احتمالی رشد در ارزیابی در نظر بگیرید.'
     ),
   },
 
@@ -101,7 +101,7 @@ export const FRAKTUR_KINDER_LESSON = {
       'این طبقه‌بندی پنج مسیر شکستگی درگیرکنندهٔ فیزیس را توصیف می‌کند. خطر اختلال رشد به نوع و آسیب مشخص بستگی دارد؛ انواع III/IV به سطح مفصلی می‌رسند و نوع V ممکن است در ابتدا ظریف باشد.'
     ),
     schema: {
-      src: '/frakturen-kindesalter/salter-harris-schema.png',
+      src: '/frakturen-kindesalter/salter-harris-schema.svg',
       alt: L('Salter-Harris Klassifikation Schema (Typ I–V)', 'Salter-Harris Classification Diagram (Type I–V)', 'شمای طبقه‌بندی سالتر-هریس (نوع I–V)'),
       note: L('I: Physis · II: Physis + Metaphyse · III: Physis + Epiphyse · IV: Metaphyse + Physis + Epiphyse · V: Kompression der Physis', 'I: physis · II: physis + metaphysis · III: physis + epiphysis · IV: metaphysis + physis + epiphysis · V: physeal compression', 'I: فیزیس · II: فیزیس + متافیز · III: فیزیس + اپی‌فیز · IV: متافیز + فیزیس + اپی‌فیز · V: فشار فیزیس'),
     },
@@ -313,8 +313,8 @@ export const FRAKTUR_KINDER_LESSON = {
           caption: L('Sprunggelenk lateral – Metaphysenfragment posterior (Triplane)', 'Ankle lateral – posterior metaphyseal fragment (Triplane)', 'مچ پا جانبی – قطعه متافیزی خلفی (سه‌صفحه‌ای)'),
         },
         {
-          src: '/frakturen-kindesalter/triplane-lateral-2.jpeg',
-          caption: L('Sprunggelenk lateral 2 – weitere Frakturlinien erkennbar', 'Ankle lateral 2 – further fracture lines visible', 'مچ پا جانبی ۲ – خطوط شکستگی بیشتر قابل مشاهده'),
+          src: '/frakturen-kindesalter/triplane-ap.jpeg',
+          caption: L('Sprunggelenk AP – Frakturlinien des Triplane-Musters', 'Ankle AP – fracture lines of the triplane pattern', 'مچ پا AP – خطوط شکستگی الگوی سه‌صفحه‌ای'),
         },
         {
           src: '/frakturen-kindesalter/triplane-ct-sagittal.png',
@@ -346,8 +346,8 @@ export const FRAKTUR_KINDER_LESSON = {
     lead: L('Die wichtigsten Merksätze für die Praxis.', 'The most important points for clinical practice.', 'مهم‌ترین نکات برای عمل بالینی.'),
     items: [
       {
-        title: L('Physis = schwächste Struktur', 'Physis = weakest structure', 'فیزیس = ضعیف‌ترین ساختار'),
-        text: L('Bei Kindern bricht die Physis vor Bändern und Kapseln. Bei klinischem Verdacht und negativem Röntgen an Salter-Harris I oder V denken.', 'In children, the physis fails before ligaments and capsules. With clinical suspicion and negative X-ray, consider Salter-Harris I or V.', 'در کودکان، فیزیس قبل از رباط‌ها و کپسول‌ها آسیب می‌بیند. در صورت ظن بالینی و رادیوگرافی منفی، به سالتر-هریس I یا V فکر کنید.'),
+        title: L('Physis: typische Verletzungszone', 'Physis: characteristic injury site', 'فیزیس: محل شاخص آسیب'),
+        text: L('Die Physis ist eine knorpelige Wachstumszone. Bei passendem klinischem Verdacht und zunächst unauffälligem Röntgenbild können insbesondere Typ I oder V subtil sein.', 'The physis is a cartilaginous growth zone. With compatible clinical suspicion and initially unremarkable radiographs, type I or V injuries may be subtle.', 'فیزیس ناحیه غضروفی رشد است. در صورت ظن بالینی سازگار و طبیعی بودن رادیوگرافی اولیه، آسیب نوع I یا V ممکن است ظریف باشد.'),
       },
       {
         title: L('Salter-Harris: Verlauf der Frakturlinie', 'Salter-Harris: fracture-line path', 'سالتر-هریس: مسیر خط شکستگی'),
@@ -363,7 +363,7 @@ export const FRAKTUR_KINDER_LESSON = {
       },
       {
         title: L('Remodellierung', 'Remodelling', 'بازسازی استخوان'),
-        text: L('Achsfehlstellungen < 20–25° in der Wachstumsachse korrigieren sich oft. Rotationsfehlstellungen und Verkürzungen korrigieren sich NICHT.', 'Angular deformities < 20–25° in the growth axis often self-correct. Rotational malalignment and shortening do NOT correct.', 'ناهنجاری‌های محوری < ۲۰–۲۵ درجه در محور رشد اغلب خودبخود اصلاح می‌شوند. ناهنجاری‌های چرخشی و کوتاه شدن اصلاح نمی‌شوند.'),
+        text: L('Korrektur durch Remodellierung hängt unter anderem von Alter, Knochen, Frakturort und Deformitätsebene ab. Rotationsfehlstellungen korrigieren sich in der Regel nicht zuverlässig.', 'Remodelling depends on factors including age, bone, fracture location, and plane of deformity. Rotational malalignment generally does not correct reliably.', 'اصلاح با بازسازی استخوان به عواملی مانند سن، استخوان، محل شکستگی و صفحه ناهنجاری بستگی دارد. ناهنجاری چرخشی معمولاً به‌طور قابل اتکا اصلاح نمی‌شود.'),
       },
     ],
   },
@@ -373,7 +373,9 @@ export const FRAKTUR_KINDER_LESSON = {
     items: [
       { label: L('Royal Children’s Hospital Melbourne: Tibial shaft fractures (ED guideline)', 'Royal Children’s Hospital Melbourne: Tibial shaft fractures (ED guideline)', 'بیمارستان سلطنتی کودکان ملبورن: شکستگی‌های تنهٔ تیبیا (راهنمای اورژانس)'), href: 'https://www.rch.org.au/clinicalguide/guideline_index/fractures/tibial_shaft_emergency/' },
       { label: L('Royal Children’s Hospital Melbourne: Distal tibia/fibula physeal fractures (ED guideline)', 'Royal Children’s Hospital Melbourne: Distal tibia/fibula physeal fractures (ED guideline)', 'بیمارستان سلطنتی کودکان ملبورن: شکستگی‌های فیزیال دیستال تیبیا/فیبولا (راهنمای اورژانس)'), href: 'https://www.rch.org.au/clinicalguide/guideline_index/fractures/ankle_emergency/' },
+      { label: L('Royal Children’s Hospital Melbourne: Physeal (growth plate) injuries', 'Royal Children’s Hospital Melbourne: Physeal (growth plate) injuries', 'بیمارستان سلطنتی کودکان ملبورن: آسیب‌های فیزیس (صفحهٔ رشد)'), href: 'https://www.rch.org.au/fracture-education/growth_plate_injuries/physeal_growth_plate_injuries/' },
       { label: L('BSCOS: Paediatric fracture templates', 'BSCOS: Paediatric fracture templates', 'انجمن ارتوپدی کودکان بریتانیا: الگوهای شکستگی کودکان'), href: 'https://www.bscos.org.uk/Portals/0/downloads/resources/BSCOS%20modifiable%20fracture%20templates.pdf' },
+      { label: L('American Academy of Pediatrics: Evaluating Young Children With Fractures for Child Abuse (2025)', 'American Academy of Pediatrics: Evaluating Young Children With Fractures for Child Abuse (2025)', 'آکادمی پزشکی کودکان آمریکا: ارزیابی شکستگی در کودکان خردسال در زمینهٔ کودک‌آزاری (۲۰۲۵)'), href: 'https://publications.aap.org/pediatrics/article/155/2/e2024070074/200638/Evaluating-Young-Children-With-Fractures-for-Child' },
     ],
   },
 }
@@ -433,9 +435,9 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
   ),
 
   Q(`fk-sh-4-${lang}`,
-    L('Welcher Salter-Harris-Typ hat das höchste Risiko für Wachstumsfugenbrücken (physeal bars)?',
-      'Which Salter-Harris type carries the highest risk of physeal bar formation?',
-      'کدام نوع سالتر-هریس بیشترین خطر تشکیل بار فیزیال (فیزیال بار) را دارد؟')[lang],
+    L('Welcher Salter-Harris-Typ verläuft durch Metaphyse, Physis und Epiphyse?',
+      'Which Salter-Harris type crosses the metaphysis, physis, and epiphysis?',
+      'کدام نوع سالتر-هریس از متافیز، فیزیس و اپی‌فیز عبور می‌کند؟')[lang],
     [
       L('Typ I', 'Type I', 'نوع I')[lang],
       L('Typ II', 'Type II', 'نوع II')[lang],
@@ -443,7 +445,7 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
       L('Typ III', 'Type III', 'نوع III')[lang],
     ],
     2,
-    L('Typ IV verläuft durch Metaphyse, Physis und Epiphyse und hat ein Risiko für Wachstumsstörung; Risiko und Ausmaß hängen von der konkreten Verletzung ab.', 'Type IV crosses the metaphysis, physis, and epiphysis and carries a risk of growth disturbance; risk and extent depend on the specific injury.', 'نوع IV از متافیز، فیزیس و اپی‌فیز می‌گذرد و خطر اختلال رشد دارد؛ خطر و میزان آن به آسیب مشخص بستگی دارد.')[lang]
+    L('Typ IV durchquert alle drei Abschnitte. Typ V ist dagegen eine Kompressionsverletzung der Physis.', 'Type IV crosses all three regions. Type V, by contrast, is a compression injury of the physis.', 'نوع IV از هر سه بخش عبور می‌کند. در مقابل، نوع V آسیب فشاری فیزیس است.')[lang]
   ),
 
   Q(`fk-sh-5-${lang}`,
@@ -557,17 +559,17 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
   ),
 
   Q(`fk-misshandlung-1-${lang}`,
-    L('Welches Frakturmuster gilt als hochverdächtig für Kindesmisshandlung?',
-      'Which fracture pattern is highly suspicious for non-accidental injury (NAI)?',
-      'کدام الگوی شکستگی بسیار مشکوک به کودک‌آزاری است؟')[lang],
+    L('Wie sollen auffällige Frakturmuster im Kinderschutz eingeordnet werden?',
+      'How should concerning fracture patterns be interpreted in safeguarding assessment?',
+      'الگوهای شکستگی نگران‌کننده در ارزیابی حمایت از کودک چگونه باید تفسیر شوند؟')[lang],
     [
       L('Distale Radiusfraktur nach Sturz auf die Hand', 'Distal radius fracture after fall on outstretched hand', 'شکستگی دیستال رادیوس بعد از افتادن روی دست')[lang],
-      L('Klassische Metaphysenfraktur (corner fracture) + posteriore Rippenfrakturen verschiedenen Alters', 'Classic metaphyseal lesion (corner fracture) + posterior rib fractures of different ages', 'ضایعه متافیزی کلاسیک (شکستگی گوشه) + شکستگی‌های دنده‌های خلفی در سنین مختلف')[lang],
+      L('Klassische metaphysäre Läsion oder posteriore Rippenfraktur: im Gesamtkontext sorgfältig abklären', 'Classic metaphyseal lesion or posterior rib fracture: assess carefully in the full context', 'ضایعه متافیزی کلاسیک یا شکستگی دنده خلفی: با توجه به کل زمینه با دقت بررسی شود')[lang],
       L('Wulstfraktur des distalen Radius', 'Torus fracture of the distal radius', 'شکستگی توروس رادیوس دیستال')[lang],
       L('Klavikulafraktur nach Geburt', 'Clavicle fracture at birth', 'شکستگی کلاویکول هنگام تولد')[lang],
     ],
     1,
-    L('Klassische Metaphysenfraktur (bucket-handle/corner fracture) und posteriore Rippenfrakturen sind hochspezifisch für nicht-akzidentelles Trauma. Multiple Frakturen verschiedenen Alters, Schädel-, Spiral- oder Femurfrakturen ohne Erklärung → Kinderschutzprotokoll.', 'Classic metaphyseal lesion and posterior rib fractures are highly specific for non-accidental trauma. Multiple fractures of different ages, skull, spiral, or femur fractures without explanation → child protection protocol.', 'ضایعه متافیزی کلاسیک (سطل/گوشه) و شکستگی‌های دنده‌های خلفی برای تروما غیرعمدی بسیار اختصاصی هستند. شکستگی‌های متعدد در سنین مختلف، جمجمه، مارپیچ یا فمور بدون توضیح → پروتکل حمایت از کودک.')[lang]
+    L('Verletzungsmuster zusammen mit Alter, Entwicklungsstand, Anamnese und Gesamtbefund bewerten; der Frakturtyp allein beweist keine Misshandlung.', 'Assess injury patterns alongside age, developmental ability, history, and the overall findings; fracture type alone does not prove abuse.', 'الگوی آسیب را همراه با سن، توانایی رشدی، شرح‌حال و مجموعه یافته‌ها ارزیابی کنید؛ نوع شکستگی به‌تنهایی کودک‌آزاری را ثابت نمی‌کند.')[lang]
   ),
 
 ].map(q => ({ ...q, tags: ['frakturen-kindesalter'] }))]))
@@ -642,20 +644,19 @@ export const FRAKTUR_KINDER_FLASHCARDS = [
 
   F('fk-fc-remodel', L('Grundlagen', 'Basics', 'مبانی'),
     L('Was remodelliert sich bei Kinderfrakturen, was nicht?', 'What remodels and what does NOT in paediatric fractures?', 'در شکستگی‌های کودکان چه چیزی بازسازی می‌شود و چه چیزی نه؟'),
-    L('Remodelliert: Achsfehlstellungen in der Bewegungsebene < 20–25° (v.a. physennah, junges Alter). NICHT: Rotationsfehlstellungen, erhebliche Verkürzungen, Achsfehlstellungen > 25°.', 'Remodels: angular deformities in the plane of motion < 20–25° (especially near physis, young age). Does NOT: rotational malalignment, significant shortening, angular deformities > 25°.', 'بازسازی می‌شود: ناهنجاری‌های محوری در صفحه حرکت < ۲۰–۲۵ درجه (به‌ویژه نزدیک فیزیس، سن پایین). نمی‌شود: ناهنجاری‌های چرخشی، کوتاه‌شدگی قابل توجه، ناهنجاری‌های محوری > ۲۵ درجه.'),
+    L('Korrektur durch Remodellierung hängt unter anderem von Alter, Knochen, Frakturort und Deformitätsebene ab. Rotationsfehlstellungen korrigieren sich in der Regel nicht zuverlässig.', 'Remodelling depends on factors including age, bone, fracture location, and plane of deformity. Rotational malalignment generally does not correct reliably.', 'اصلاح با بازسازی استخوان به عواملی مانند سن، استخوان، محل شکستگی و صفحه ناهنجاری بستگی دارد. ناهنجاری چرخشی معمولاً به‌طور قابل اتکا اصلاح نمی‌شود.'),
     L('Rotation remodelliert NICHT – Achse ja, Rotation nein!', 'Rotation does NOT remodel – axis yes, rotation no!', 'چرخش بازسازی نمی‌شود – محور بله، چرخش نه!')
   ),
 
   F('fk-fc-physis-anat', L('Grundlagen', 'Basics', 'مبانی'),
-    L('Warum ist die Physis (Wachstumsfuge) die schwächste Struktur im kindlichen Skelett?', 'Why is the physis (growth plate) the weakest structure in the paediatric skeleton?', 'چرا فیزیس (صفحه رشد) ضعیف‌ترین ساختار در اسکلت کودکان است؟'),
-    L('Knorpeliges Gewebe mit geringer Scherfestigkeit. Unter Scherbelastung oder Torsion gibt sie vor Bändern und Kapseln nach → bei Erwachsenen Bandruptur, bei Kindern Physenfraktur. Zonen der hypertrophen Chondrozyten sind am vulnerabelsten.', 'Cartilaginous tissue with low shear strength. Under shear or torsional load, it fails before ligaments and capsules → adults get ligament rupture, children get physeal fracture. The hypertrophic chondrocyte zone is most vulnerable.', 'بافت غضروفی با مقاومت برشی کم. تحت بار برشی یا پیچشی، قبل از رباط‌ها و کپسول‌ها آسیب می‌بیند → بزرگسالان پارگی رباط، کودکان شکستگی فیزیس. ناحیه کندروسیت‌های هیپرتروفیک آسیب‌پذیرترین است.'),
-    L('Kinder luxieren seltener – sie frakturieren die Physis stattdessen.', 'Children rarely dislocate – they fracture the physis instead.', 'کودکان به ندرت دچار دررفتگی می‌شوند – به جای آن فیزیس را می‌شکنند.')
+    L('Was ist die Physis und welche Rolle spielt sie bei kindlichen Frakturen?', 'What is the physis and what role does it play in paediatric fractures?', 'فیزیس چیست و چه نقشی در شکستگی‌های کودکان دارد؟'),
+    L('Die Physis ist die knorpelige Wachstumszone zwischen Epiphyse und Metaphyse und damit eine charakteristische Verletzungslokalisation im wachsenden Skelett.', 'The physis is the cartilaginous growth zone between epiphysis and metaphysis and therefore a characteristic injury site in the growing skeleton.', 'فیزیس ناحیه غضروفی رشد بین اپی‌فیز و متافیز است و بنابراین محل شاخص آسیب در اسکلت در حال رشد محسوب می‌شود.'),
+    L('Physis = Wachstumszone zwischen Meta- und Epiphyse.', 'Physis = growth zone between metaphysis and epiphysis.', 'فیزیس = ناحیه رشد بین متافیز و اپی‌فیز.')
   ),
 
   F('fk-fc-nai', L('Grundlagen', 'Basics', 'مبانی'),
-    L('Welche Frakturtypen sind hochspezifisch für Kindesmisshandlung (NAI)?', 'Which fracture types are highly specific for non-accidental injury (NAI)?', 'کدام انواع شکستگی برای کودک‌آزاری (NAI) بسیار اختصاصی هستند؟'),
-    L('Klassische Metaphysenfraktur (bucket-handle/corner), posteriore Rippenfrakturen, Schädelbasisfrakturen ohne Trauma, multiple Frakturen verschiedenen Alters. Cave: Toddler-Fraktur kann ähnlich aussehen.', 'Classic metaphyseal lesion (bucket-handle/corner), posterior rib fractures, skull base fractures without trauma, multiple fractures of different ages. Caution: Toddler fracture can look similar.', 'ضایعه متافیزی کلاسیک (سطل/گوشه)، شکستگی‌های دنده‌های خلفی، شکستگی‌های پایه جمجمه بدون ضربه، شکستگی‌های متعدد در سنین مختلف. هشدار: شکستگی توددلر می‌تواند مشابه به نظر برسد.'),
-    L('NAI-Triad: Metaphysenfraktur + Rippenfraktur + intrakranielle Verletzung.', 'NAI triad: metaphyseal fracture + rib fracture + intracranial injury.', 'سه‌گانه NAI: شکستگی متافیز + شکستگی دنده + آسیب داخل جمجمه.')
+    L('Wie werden auffällige Verletzungsmuster bewertet?', 'How are concerning injury patterns assessed?', 'الگوهای آسیب نگران‌کننده چگونه ارزیابی می‌شوند؟'),
+    L('Im Kontext von Alter, Entwicklungsstand, Anamnese und Gesamtbefund; kein einzelner Frakturtyp beweist für sich Misshandlung.', 'In context of age, developmental ability, history, and overall findings; no single fracture type alone proves abuse.', 'در زمینه سن، توانایی رشدی، شرح‌حال و مجموعه یافته‌ها؛ هیچ نوع شکستگی به‌تنهایی کودک‌آزاری را ثابت نمی‌کند.')
   ),
 
   F('fk-fc-uebergang-ct', L('Übergangsfrakturen', 'Transitional Fractures', 'شکستگی‌های گذار'),

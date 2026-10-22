@@ -34,7 +34,7 @@ assert.match(route, /D\.sources\.items\.map/)
 assert.match(route, /D\.salterHarris\.schema\.note/)
 assert.match(route, /D\.schaft\.schema\.note/)
 assert.match(route, /D\.uebergang\.triplane\.schema\.note/)
-for (const href of ['tibial_shaft_emergency', 'ankle_emergency', 'BSCOS%20modifiable%20fracture%20templates.pdf']) {
+for (const href of ['tibial_shaft_emergency', 'ankle_emergency', 'BSCOS%20modifiable%20fracture%20templates.pdf', 'physeal_growth_plate_injuries', 'e2024070074']) {
   assert.ok(lesson.sources.items.some(source => source.href.includes(href)), `missing learner-facing source ${href}`)
 }
 assert.doesNotMatch(JSON.stringify(lesson.schaft.wulstCase.images), /wulst-lateral/)
@@ -45,8 +45,19 @@ assert.match(cards.find(card => card.id === 'fk-fc-sh2').answer.en, /generally f
 assert.match(cards.find(card => card.id === 'fk-fc-sh5').answer.en, /may be subtle initially/)
 assert.doesNotMatch(lesson.schaft.lead.en, /do not occur in adults/i)
 assert.match(lesson.schaft.lead.en, /far more common in children than in adults/i)
+assert.match(lesson.heroCards[2].label.de, /Okkulte Fraktur/)
+assert.equal(lesson.uebergang.triplane.images[1].src, '/frakturen-kindesalter/triplane-ap.jpeg')
+assert.match(lesson.uebergang.triplane.images[1].caption.en, /Ankle AP/)
+assert.match(questions.de.find(q => q.id === 'fk-sh-4-de').question, /Metaphyse, Physis und Epiphyse/)
+assert.doesNotMatch(JSON.stringify({ lesson, cards, questions }), /20–25°|20-25°|highly specific for non-accidental|hoch spezifisch für Kindesmisshandlung/i)
+assert.match(cards.find(card => card.id === 'fk-fc-remodel').answer.en, /depends on factors including age, bone, fracture location/i)
+assert.match(cards.find(card => card.id === 'fk-fc-nai').answer.en, /no single fracture type alone proves abuse/i)
+const salterSchema = await readFile(new URL('../public/frakturen-kindesalter/salter-harris-schema.svg', import.meta.url), 'utf8')
+assert.match(salterSchema, /IV crosses all three/)
+assert.match(salterSchema, /fill="#f7fafc"/)
+assert.doesNotMatch(salterSchema, /<text[^>]*>[^<]*[a-zA-Z]{4,}/)
 for (const prefix of ['/frakturen-kindesalter/', '/public/frakturen-kindesalter/']) {
-  const images = [...route.matchAll(/src:\s*['"]([^'"]+\.(?:png|jpe?g|webp))['"]/gi)].map(match => match[1])
+  const images = [...route.matchAll(/src:\s*['"]([^'"]+\.(?:png|jpe?g|webp|svg))['"]/gi)].map(match => match[1])
   for (const src of images) {
     const file = src.startsWith('/public/') ? `.${src.replace('/public', '')}` : `public${src}`
     assert.ok(existsSync(file), `missing lesson image asset ${src}`)
