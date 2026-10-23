@@ -1,0 +1,15 @@
+{
+  "asset": "/educational/spine-infection-radiopaedia-rID-82471-frame-53560591.jpeg",
+  "imageUrl": "https://prod-images-static.radiopaedia.org/images/53560591/IMG-0026-00015_big_gallery.jpeg",
+  "caseUrl": "https://radiopaedia.org/cases/82471/studies/96614#t=im&v1i=53560591&v1z=1",
+  "case": "Spondylodiscitis - lumbar spine",
+  "radiopaediaId": "rID 82471",
+  "study": "MRI, study 96614",
+  "frame": "53560591; sagittal T1 fat-suppressed post-contrast image",
+  "verifiedInViewer": "2026-10-23",
+  "contributor": "Ammar Haouimi; additional contributor A. Ramdani, MD",
+  "observedTeachingTarget": "L4-L5 spondylodiscitis with endplate/disc abnormality and adjacent soft-tissue extension; caption limits interpretation to this single frame and directs learners to the full study and clinical/microbiological context.",
+  "reuseAuthorization": "The user explicitly authorized use of Radiopaedia case images for this project on 2026-10-19. Case attribution and original-study link are retained.",
+  "display": "Locally stored source image linked to original Radiopaedia study.",
+  "browserQa": "Image pixels, case identity and sequence/frame designation were inspected in the Radiopaedia viewer. RadYar responsive rendering remains unverified because the local app browser cannot reach the development server."
+}

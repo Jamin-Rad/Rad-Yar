@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
+import { existsSync } from 'node:fs'
 import { CURRICULUM } from '../data/curriculum.js'
 import { getQuestions } from '../data/questions.js'
 import { getCardsByTopic } from '../data/flashcards.js'
@@ -54,6 +55,7 @@ for (const item of question) {
 
 const route = await readFile('app/wirbelsaeule/infektion/page.js', 'utf8')
 const svg = await readFile('public/educational/spine-infection-schematic.svg', 'utf8')
+const caseProvenance = JSON.parse(await readFile('public/educational/spine-infection-case-frame.provenance.json', 'utf8'))
 const ledger = await readFile('docs/lesson-quality/spine-infection-14-15.md', 'utf8')
 assert.match(route, /SPINE_INFECTION_LESSON/)
 assert.match(route, /Vier Regeln merken/)
@@ -66,6 +68,16 @@ assert.match(route, /heroImage: lesson\.heroImage/)
 assert.match(route, /heroImageAlt=\{pick\(lesson\.alt, lang\)\}/)
 assert.match(svg, /^\s*<svg\b/)
 assert.match(svg, /<\/svg>\s*$/)
+assert.match(svg, /<path[^>]*fill="#f97373"/)
+assert.doesNotMatch(svg, /M470 126|M470 234|M470 334/)
+assert.match(route, /chapter\.id === 'pattern'/)
+assert.equal(SPINE_INFECTION_LESSON.caseImage.src, caseProvenance.asset)
+assert.ok(existsSync(`public${caseProvenance.asset}`), 'verified Radiopaedia frame is available locally')
+assert.match(caseProvenance.imageUrl, /images\/53560591\/IMG-0026-00015_big_gallery\.jpeg/)
+assert.equal(caseProvenance.radiopaediaId, 'rID 82471')
+assert.match(caseProvenance.frame, /sagittal T1 fat-suppressed post-contrast/)
+assert.match(route, /Radiopaedia öffnen/)
+assert.match(ledger, /rID 82471/)
 assert.match(ledger, /WS S\. 14–15|Wirbelsäule\.pdf.*14–15/)
 assert.match(ledger, /Ein dreisprachiger TB-Muster-MCQ und eine dreisprachige Flashcard sind global registriert/)
 assert.match(ledger, /DWI-Claw-MCQ und die dazugehörige Karte bleiben lokale Entwürfe/)

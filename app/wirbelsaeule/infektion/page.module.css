@@ -17,5 +17,16 @@
 .feedback { display: grid; gap: .5rem; padding: .8rem; border-inline-start: 3px solid var(--lesson-accent); background: var(--paper, white); line-height: 1.65; }
 .feedback button { justify-self: start; border: 1px solid var(--lesson-accent-strong); border-radius: 7px; padding: .4rem .75rem; color: var(--lesson-accent-strong); background: transparent; cursor: pointer; }
 .rules { display: grid; gap: .8rem; padding-inline-start: 1.5rem; line-height: 1.75; }
+.legend { display: flex; flex-wrap: wrap; gap: .55rem 1rem; margin: 0; padding: 0; list-style: none; }
+.legend li { display: inline-flex; align-items: center; gap: .45rem; color: var(--body, #334); font-size: .9rem; }
+.legend li span { width: .85rem; height: .85rem; border: 1px solid #657582; border-radius: 3px; flex: 0 0 auto; }
+.vertebraSwatch { background: #d9e5ef; }
+.discSwatch { background: #f97373; }
+.collectionSwatch { background: #fb923c; }
+.caseFigure { width: min(100%, 54rem); margin: .4rem auto; overflow: hidden; border: 1px solid var(--line, #d6dfe5); border-radius: 12px; background: var(--paper, white); }
+.caseFigure img { display: block; width: 100%; height: auto; background: #111; }
+.caseFigure figcaption { display: grid; gap: .45rem; padding: .8rem 1rem; color: var(--muted, #586773); font-size: .84rem; line-height: 1.65; }
+.caseFigure figcaption p { margin: 0; }
+.caseFigure figcaption a { width: fit-content; color: var(--lesson-accent-strong); text-underline-offset: .18em; }
 .page :is(button, input):focus-visible { outline: 2px solid var(--lesson-accent-strong); outline-offset: 3px; }
 @media(max-width: 520px) { .tableWrap th, .tableWrap td { padding: .65rem; } .tableWrap tbody th { min-width: 6rem; } }

@@ -7,5 +7,5 @@
   "purpose": "Shows the disc, adjacent vertebral endplates, and a paravertebral collection as separate compartments; it does not depict MRI signal, a real patient, or a verified case.",
   "sourceCoverage": "Wirbelsäule.pdf, PDF pp. 14–15 (printed pp. 13–14); no matching infection case image was present on the reviewed pages.",
   "userAuthorization": "The user authorized project use of supplied PDF images and Radiopaedia examples. This authorization does not identify a particular case, contributor, license, or reuse terms. No diagnostic source image is included in this asset.",
-  "diagnosticCaseStatus": "unresolved; requires a frame-verified, properly attributed case image before visual evidence can pass"
+  "diagnosticCaseStatus": "resolved for this lesson by the frame-verified Radiopaedia case recorded in spine-infection-case-frame.provenance.json; browser fit remains untested"
 }

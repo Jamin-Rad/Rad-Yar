@@ -45,6 +45,14 @@ for (const lang of ['de', 'en', 'fa']) {
   assert.ok(html.includes('src="/educational/spine-infection-schematic.svg"'), `${lang}: explanatory schematic`)
   assert.ok(html.includes(escaped(data.SPINE_INFECTION_LESSON.alt[lang])), `${lang}: schematic alt text`)
   assert.ok(html.includes(escaped(data.SPINE_INFECTION_LESSON.media[lang])), `${lang}: schematic is disclosed as non-diagnostic`)
+  assert.ok(html.includes(escaped(data.SPINE_INFECTION_LESSON.caseImage.alt[lang])), `${lang}: real MRI image has localized alt text`)
+  assert.ok(html.includes(escaped(data.SPINE_INFECTION_LESSON.caseImage.caption[lang])), `${lang}: real MRI image has localized caption`)
+  assert.ok(html.includes(data.SPINE_INFECTION_LESSON.caseImage.src), `${lang}: verified case image is rendered`)
+  assert.ok(html.includes(escaped(data.SPINE_INFECTION_LESSON.caseImage.href)), `${lang}: case link is rendered`)
+  for (const term of ['Wirbelkörper / Endplatten', 'Bandscheibe', 'Paravertebrale Kollektion']) {
+    const localized = term === 'Wirbelkörper / Endplatten' ? ['Wirbelkörper / Endplatten', 'Vertebral bodies / endplates', 'مهره‌ها / صفحات انتهایی'] : term === 'Bandscheibe' ? ['Bandscheibe', 'Intervertebral disc', 'دیسک بین‌مهره‌ای'] : ['Paravertebrale Kollektion', 'Paravertebral collection', 'تجمع پاراورتیبرال']
+    assert.ok(html.includes(escaped(localized[['de','en','fa'].indexOf(lang)])), `${lang}: schematic legend ${term}`)
+  }
   for (const chapter of data.SPINE_INFECTION_LESSON.chapters) {
     assert.ok(html.includes(`id="${chapter.id}"`), `${lang}: ${chapter.id} anchor`)
     assert.ok(html.includes(escaped(chapter.title[lang])), `${lang}: ${chapter.id} title`)
