@@ -45,7 +45,10 @@ export default function EpiploicaPage() {
     heroImageAlt={pick(lesson.heroAlt, lang)} syncHashNavigation
     breadcrumbs={[{ label: 'RadYar', href: langHref('/') }, { label: pick(L('Abdomen', 'Abdomen', 'شکم'), lang), href: langHref('/lernen/abdomen') }, { label: pick(L('Peritoneum & Mesenterium', 'Peritoneum & mesentery', 'پریتوئن و مزانتر'), lang) }]}
     sections={sections} labels={labels} renderIcon={id => <Icon id={id}/>}
-    actions={{ mcq: { label: pick(L('Prüfungsfrage', 'Practice question', 'سؤال تمرینی'), lang), href: langHref('/ueben/quiz?fach=abdomen&n=1&themen=appendicitis-epiploica') } }}
+    actions={{
+      mcq: { label: pick(L('Prüfungsfrage', 'Practice question', 'سؤال تمرینی'), lang), href: langHref('/ueben/quiz?fach=abdomen&n=1&themen=appendicitis-epiploica') },
+      flashcards: { label: pick(L('Lernkarten', 'Flashcards', 'فلش‌کارت‌ها'), lang), href: langHref('/flashcards/appendicitis-epiploica') },
+    }}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/abdomen/epiploica/hero.svg', heroImageOpacity: .9, accent: '#d7aa62', accentStrong: '#795321', accentSoft: '#f7eddb', secondary: '#69aeb1', secondaryStrong: '#286c70', heroBase: '#152c35' }}
     className={styles.page}
     sources={<LessonSources title={pick(L('Quellen', 'Sources', 'منابع'), lang)} items={sources} note={pick(L('Bild und Themenbasis: bereitgestelltes Abdomen.pdf, PDF S.97 / Druck S.96. Die vier Fallbilder sind ausgewählte axiale Ansichten. Therapieaussagen gelten für das unkomplizierte primäre Muster und ersetzen nicht die Beurteilung des gesamten Befunds.', 'Image and topic source: supplied Abdomen.pdf, PDF p.97 / printed p.96. The four case images are selected axial views. Management statements concern the uncomplicated primary pattern and do not replace assessment of the complete examination.', 'منبع تصویر و مباحث: Abdomen.pdf ارائه‌شده، صفحهٔ PDF ۹۷ / چاپی ۹۶. چهار تصویر کیس، نماهای محوری منتخب‌اند. نکات درمانی مربوط به الگوی اولیه و بدون عارضه‌اند و جایگزین بررسی کامل یافته‌ها نیستند.'), lang)}/>}

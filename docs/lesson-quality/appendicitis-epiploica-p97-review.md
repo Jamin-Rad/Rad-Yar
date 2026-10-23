@@ -51,19 +51,25 @@ Check date for all: 2026-10-19.
 
 ## Terminology
 
-Epiploische Appendagitis / epiploic appendagitis / التهاب زائدهٔ چربی کولون؛ Appendix epiploica / epiploic appendage / زائدهٔ چربی کولون؛ hyperattenuierender Randsaum / hyperattenuating rim / حاشیهٔ پُرچگال؛ central dot sign / central dot sign / نشانهٔ نقطهٔ مرکزی. Keep existing curriculum ID/title; explain the anatomy in the lesson.
+Epiploische Appendagitis / epiploic appendagitis / التهاب زائدهٔ چربی کولون؛ Appendix epiploica / epiploic appendage / زائدهٔ چربی کولون؛ hyperattenuierender Randsaum / hyperattenuating rim / حاشیهٔ پُرچگال؛ central dot sign / central dot sign / نشانهٔ نقطهٔ مرکزی. Keep the existing curriculum ID; align all display titles with the non-ambiguous Persian name and explain the anatomy in the lesson.
 
 ## Validation and handoff
 
-Implemented files: `data/epiploicaLesson.js`; `app/abdomen/peritoneum/appendicitis-epiploica/page.jsx` and CSS; three assets in `public/abdomen/epiploica/`; this ledger; `scripts/check-epiploica-lesson.mjs`. Only the exact curriculum ID and question-bank import/spread/topic group were added to shared registries. Other authors' current registry additions were preserved, including the medulloblastoma registration.
+Implemented files: `data/epiploicaLesson.js`; `app/abdomen/peritoneum/appendicitis-epiploica/page.jsx` and CSS; three assets in `public/abdomen/epiploica/`; this ledger; `scripts/check-epiploica-lesson.mjs`. The exact curriculum ID is connected to lesson, quiz and flashcard routes; localized question and flashcard data use that same ID. Other authors' current registry additions were preserved, including the medulloblastoma registration.
 
 - `node scripts/check-epiploica-lesson.mjs`: PASS — 35 content and 27 interface translation units after the hero-alt correction, JSX AST, 3 chapters, 3 CT observations, one connected four-option question per language, 3 retrieval cards, image dimensions/provenance and exact curriculum/bank mapping. Structural/string checks do not establish clinical accuracy; direct author semantic comparison also covered all DE/EN/FA prose, captions, options, feedback and accessible labels.
-- `npm run audit:mcq`: PASS — 633 questions and 18 cases per language at the shared-bank snapshot. Only one question per language belongs to this lesson; the full count includes concurrent work.
+- `npm run audit:mcq`: PASS — latest shared-bank audit returned 784 questions and 18 cases per language. One question per language belongs to this lesson; the full count includes other lessons.
 - Scoped tracked `git diff --check` and new-file `git diff --no-index --check`: no whitespace errors. Routine LF/CRLF warnings and no-index exit 1 for added-file differences are not validation failures.
 - Main PDF crop and original SVG hero opened and inspected; no diagnostic pixels generated or annotations invented. The original case website remains inaccessible, so contributor metadata is unresolved rather than legally cleared.
 - Browser desktop/mobile, RTL, theme, complete/read behaviour, full-size link and question interaction remain BLOCKED; no new server was started in the restricted shared environment. No production build or browser PASS claimed.
 
-One connected four-option question per language and three local retrieval cards; no global flashcard route claimed. Independent source/education/visual/language/assessment review remains pending. Keep `inProgress`; no commit, push, release or scientific approval.
+One connected four-option question per language and three flashcards registered under the existing topic ID. Keep `inProgress`; no commit, push, release or scientific approval is implied.
+
+## Independent re-review and bounded corrections — 2026-10-23
+
+Independent review found: curriculum Persian title ambiguity; local retrieval cards not connected to the global flashcard bank; and overly absolute MCQ distractors. The lesson title and question-bank group already used “التهاب زائدهٔ چربی کولون”; the curriculum title is now aligned in DE/EN/FA, a global flashcard topic and three cards are registered under `appendicitis-epiploica`, the curriculum and lesson shell link to that route, and distractors now model sigmoid diverticulitis, omental infarction and an indeterminate focal fat infarct without changing the keyed answer. The registered card content reuses the lesson's three existing localized retrieval pairs.
+
+Independent review before these corrections: SRC and EDU PASS; VIS PASS for the inspected PDF montage and schematic (case contributor remains unverified); LNG and ASM REVISE for the findings above; UX BLOCKED without rendered browser evidence. Independent delta retest confirms the titles match across lesson/curriculum/question topic/flashcard topic, the exact global flashcard route retrieves all three cards and links back to the lesson, and the revised MCQ retains a consistent B key with plausible translated distractors. SRC, EDU, LNG, ASM and REV now PASS for this bounded delta; VIS remains PASS for the previously inspected media while contributor metadata remain unverified; UX remains BLOCKED. User-authorised PDF image reuse is recorded, but independent contributor metadata and browser/runtime behavior are not verified.
 
 ## Author repairs for independent UX findings — pending independent retest
 

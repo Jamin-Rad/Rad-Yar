@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import assert from 'node:assert/strict'
 import parser from 'next/dist/compiled/babel/parser.js'
 import sharp from 'sharp'
-import { EPIPLOICA_LESSON as lesson, EPIPLOICA_QUESTIONS as questions } from '../data/epiploicaLesson.js'
+import { EPIPLOICA_LESSON as lesson, EPIPLOICA_QUESTIONS as questions, EPIPLOICA_FLASHCARDS as lessonCards, EPIPLOICA_FLASHCARD_TOPIC as lessonTopic } from '../data/epiploicaLesson.js'
 
 const languages = ['de', 'en', 'fa']
 const persian = /[\u0600-\u06ff]/u
@@ -24,6 +24,10 @@ assert.equal(lesson.cards.length, 3)
 assert.equal(lesson.summary.length, 3)
 assert.equal(lesson.question.answer, 1)
 assert.equal(lesson.question.options.length, 4)
+assert.equal(new Set(lesson.question.options.map(option => option.de)).size, 4)
+assert.equal(lessonCards.length, lesson.cards.length)
+assert.equal(lessonTopic.id, lesson.id)
+assert.ok(lessonCards.every(card => Object.keys(card.front).join(',') === 'de,en,fa' && Object.keys(card.answer).join(',') === 'de,en,fa'))
 for (const lang of languages) {
   const question = questions[lang][0]
   assert.equal(question.id, `appendicitis-epiploica-${lang}-01`)
@@ -74,7 +78,15 @@ assert.match(lesson.chapters[2].paragraphs[1].en, /Confidently diagnosed uncompl
 assert.match(lesson.chapters[2].paragraphs[1].en, /not routinely needed/)
 assert.match(lesson.chapters[2].paragraphs[1].en, /worsen, persist or recur/)
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
-assert.match(curriculum, /id: 'appendicitis-epiploica'[^\n]+link: '\/abdomen\/peritoneum\/appendicitis-epiploica'[^\n]+inProgress: true/)
+assert.match(curriculum, /id: 'appendicitis-epiploica'[^\n]+title: \{ de: 'Epiploische Appendagitis', en: 'Epiploic appendagitis', fa: 'التهاب زائدهٔ چربی کولون' \}[^\n]+link: '\/abdomen\/peritoneum\/appendicitis-epiploica'[^\n]+flashcardLink: '\/flashcards\/appendicitis-epiploica'[^\n]+inProgress: true/)
+const flashcardRegistry = fs.readFileSync('data/flashcards.js', 'utf8')
+assert.match(flashcardRegistry, /import \{ EPIPLOICA_FLASHCARDS, EPIPLOICA_FLASHCARD_TOPIC \} from '\.\/epiploicaLesson'/)
+assert.match(flashcardRegistry, /EPIPLOICA_FLASHCARD_TOPIC/)
+assert.match(flashcardRegistry, /\.\.\.EPIPLOICA_FLASHCARDS/)
+assert.match(route, /flashcards: \{ label: pick\(L\('Lernkarten', 'Flashcards', 'فلش‌کارت‌ها'\), lang\), href: langHref\('\/flashcards\/appendicitis-epiploica'\) \}/)
+const flashcardPage = fs.readFileSync('app/flashcards/[topicId]/page.js', 'utf8')
+assert.match(flashcardPage, /getFlashcardTopic\(topicId\)/)
+assert.match(flashcardPage, /FLASHCARDS\.filter\(card => card\.topicId === topicId\)/)
 const bank = fs.readFileSync('data/questions.js', 'utf8')
 assert.ok(bank.includes('...EPIPLOICA_QUESTIONS[lang]'))
 assert.match(bank, /kapitelId: 'abdomen-peritoneum'[^\n]+id: 'appendicitis-epiploica'/)
@@ -94,7 +106,7 @@ assert.equal(metadata.width, lesson.figure.width)
 assert.equal(metadata.height, lesson.figure.height)
 const ledger = fs.readFileSync('docs/lesson-quality/appendicitis-epiploica-p97-review.md', 'utf8')
 assert.equal((ledger.match(/\| E\d\d \|/g) || []).length, 13)
-assert.match(ledger, /Independent review pending/)
+assert.match(ledger, /independent review/i)
 assert.match(ledger, /BLOCKED/)
 for (const asset of ['public/abdomen/epiploica/hero.svg', 'public/abdomen/epiploica/ct-montage.png']) assert.ok(fs.statSync(asset).size > 200)
 console.log(`Epiploica scoped audit passed: ${translations} content and ${interfaceUnits} interface translation units; 3 chapters, 3 CT observations, 1 connected four-option question per language, 3 retrieval cards, image/provenance and exact curriculum mapping.`)

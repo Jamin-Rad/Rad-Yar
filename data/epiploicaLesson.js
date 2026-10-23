@@ -33,13 +33,13 @@ export const EPIPLOICA_LESSON = {
   question: {
     question: L('Bei akutem linkem Unterbauchschmerz zeigt CT eine kleine ovale Fettgewebsläsion am Sigma mit dünnem dichtem Randsaum und kaum Darmwandreaktion. Ein zentraler Dot ist nicht erkennbar. Welche Einordnung ist am besten begründet?', 'With acute left lower quadrant pain, CT shows a small oval fat-density lesion beside the sigmoid with a thin dense rim and minimal bowel-wall reaction. No central dot is visible. Which interpretation is best supported?', 'در درد حاد ربع تحتانی چپ شکم، CT ضایعهٔ کوچک و بیضی با چگالی چربی کنار سیگموئید، حاشیهٔ باریک پُرچگال و واکنش اندک دیوارهٔ روده نشان می‌دهد. نقطهٔ مرکزی دیده نمی‌شود. کدام تفسیر بیش از همه پشتیبانی می‌شود؟'),
     options: [
-      L('Ohne zentralen Dot ist eine epiploische Appendagitis ausgeschlossen.', 'An absent central dot excludes epiploic appendagitis.', 'نبود نقطهٔ مرکزی، التهاب زائدهٔ چربی را رد می‌کند.'),
+      L('Eine Sigmadivertikulitis mit sekundärer Fettreaktion ist wahrscheinlicher; Darmwand und Divertikel gezielt nachprüfen.', 'Sigmoid diverticulitis with secondary fat stranding is more likely; reassess the bowel wall and look specifically for an inflamed diverticulum.', 'دیورتیکولیت سیگموئید با التهاب ثانویهٔ چربی محتمل‌تر است؛ دیوارهٔ روده را دوباره بررسی کنید و به‌طور مشخص در پی دیورتیکول ملتهب باشید.'),
       L('Das Muster spricht für primäre epiploische Appendagitis; den übrigen Darm und klinischen Kontext mitbeurteilen.', 'The pattern favours primary epiploic appendagitis; also assess the remaining bowel and clinical context.', 'الگو به نفع التهاب اولیهٔ زائدهٔ چربی است؛ سایر قسمت‌های روده و زمینهٔ بالینی نیز بررسی شوند.'),
-      L('Die Diagnose kann allein durch eine Größe unter 3 cm gesichert werden.', 'A size below 3 cm alone establishes the diagnosis.', 'اندازهٔ کمتر از ۳ سانتی‌متر به‌تنهایی تشخیص را قطعی می‌کند.'),
-      L('Jede perikolische Fettgewebsreaktion beweist eine Divertikulitis.', 'Any pericolonic fat stranding proves diverticulitis.', 'هر رشتهٔ التهابی در چربی پیرامون کولون، دیورتیکولیت را ثابت می‌کند.'),
+      L('Ein Omentuminfarkt ist wahrscheinlicher; die Beziehung der Läsion zum Kolon ist für diese Einordnung zweitrangig.', 'Omental infarction is more likely; the lesion’s relationship to the colon is secondary to that interpretation.', 'انفارکتوس امنتوم محتمل‌تر است؛ ارتباط ضایعه با کولون در این تفسیر اهمیت ثانویه دارد.'),
+      L('Die Fettgewebsreaktion ist unspezifisch; ohne zentralen Dot lässt sich der Infarkttyp nicht weiter einordnen.', 'The fat stranding is non-specific; without a central dot, the type of infarction cannot be further classified.', 'التهاب چربی غیراختصاصی است؛ بدون نقطهٔ مرکزی نمی‌توان نوع انفارکتوس را بیشتر مشخص کرد.'),
     ],
     answer: 1,
-    feedback: L('Entscheidend ist die Kombination aus kolonständigem Fettzentrum, Randsaum und geringer Wandreaktion. Der Dot ist nicht obligat und die Größe allein ist kein Beweis. Eine Fettgewebsreaktion hat mehrere Ursachen; nach einer entzündeten Darmwand oder einem Divertikel suchen, bevor das Muster als primär eingeordnet wird.', 'The combination of a fatty centre abutting the colon, a rim and little wall reaction is key. The dot is optional and size alone is not proof. Fat stranding has several causes; look for bowel-wall inflammation or an inflamed diverticulum before classifying the pattern as primary.', 'ترکیب مرکز چربی چسبیده به کولون، حاشیه و واکنش اندک دیواره مهم است. نقطهٔ مرکزی الزامی نیست و اندازه به‌تنهایی اثبات‌کننده نیست. رشته‌های التهابی چربی علت‌های مختلف دارند؛ پیش از اولیه‌دانستن الگو، التهاب دیوارهٔ روده یا دیورتیکول ملتهب را جست‌وجو کنید.'),
+    feedback: L('Entscheidend ist die Kombination aus kolonständigem Fettzentrum, dünnem Randsaum und geringer Wandreaktion. Der Dot ist nicht obligat. Eine Divertikulitis wird wahrscheinlicher, wenn die Darmwand und ein Divertikel im Zentrum der Entzündung stehen; ein Omentuminfarkt liegt typischerweise nicht direkt am Kolon an. Die vollständige CT-Serie und der klinische Kontext bleiben wichtig.', 'The combination of a fat-centred lesion abutting the colon, a thin rim and little wall reaction is key. A central dot is not required. Diverticulitis becomes more likely when the bowel wall and a diverticulum are the inflammatory epicentre; an omental infarct is typically not directly attached to the colon. The full CT series and clinical context remain important.', 'ترکیب ضایعهٔ چربی‌محور چسبیده به کولون، حاشیهٔ باریک و واکنش اندک دیواره مهم است. وجود نقطهٔ مرکزی الزامی نیست. اگر مرکز التهاب دیوارهٔ روده و یک دیورتیکول باشد، دیورتیکولیت محتمل‌تر می‌شود؛ انفارکتوس امنتوم معمولاً مستقیماً به کولون نمی‌چسبد. بررسی مجموعهٔ کامل CT و زمینهٔ بالینی همچنان اهمیت دارد.'),
   },
   cards: [
     [L('Wo liegt das Entzündungszentrum?', 'Where is the inflammation centred?', 'مرکز التهاب کجاست؟'), L('Im Fettanhang direkt außen am Kolon; angrenzende Darmwand separat prüfen.', 'In a fat appendage on the outside of the colon; assess the adjacent bowel wall separately.', 'در زائدهٔ چربی روی سطح بیرونی کولون؛ دیوارهٔ مجاور روده جداگانه بررسی شود.')],
@@ -59,3 +59,18 @@ export const EPIPLOICA_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lan
   options: EPIPLOICA_LESSON.question.options.map((value, index) => ({ id: String.fromCharCode(65 + index), text: value[lang] })),
   correct: 'B', explanation: EPIPLOICA_LESSON.question.feedback[lang],
 }]]))
+
+export const EPIPLOICA_FLASHCARD_TOPIC = {
+  id: 'appendicitis-epiploica', area: 'Abdomen', chapter: 'Peritoneum & Mesenterium', icon: 'CT', iconImage: '/fach/abdomen.png', color: '#b5853c',
+  href: '/flashcards/appendicitis-epiploica',
+  title: L('Epiploische Appendagitis', 'Epiploic appendagitis', 'التهاب زائدهٔ چربی کولون'),
+  subtitle: L('CT-Muster · Randsaum · Darmwandkontext', 'CT pattern · hyperattenuating rim · bowel-wall context', 'الگوی CT · حاشیهٔ پُرچگال · وضعیت دیوارهٔ روده'),
+}
+
+export const EPIPLOICA_FLASHCARDS = EPIPLOICA_LESSON.cards.map(([front, answer], index) => ({
+  id: `appendicitis-epiploica-${index + 1}`,
+  topicId: EPIPLOICA_FLASHCARD_TOPIC.id,
+  category: L('CT-Muster', 'CT pattern', 'الگوی CT'),
+  front, answer,
+  source: 'Abdomen.pdf PDF p.97 (printed p.96); RadYar lesson /abdomen/peritoneum/appendicitis-epiploica',
+}))
