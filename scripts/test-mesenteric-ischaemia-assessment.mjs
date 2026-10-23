@@ -29,6 +29,8 @@ const route = readFileSync(new URL('../app/abdomen/gi/mesenteriale-ischaemie/pag
 assert.ok(route.includes('id="cta-protocol"'))
 assert.ok(route.includes('/ueben/quiz?fach=abdomen&n=1&themen=mesenteriale-ischaemie&from='))
 assert.ok(route.includes('/flashcards/mesenteriale-ischaemie?from='))
+assert.ok(route.includes('quizHref={langHref('), 'quiz CTA must use a prop accepted by LessonReferenceShell')
+assert.ok(route.includes('flashcardsHref={langHref('), 'flashcard CTA must use a prop accepted by LessonReferenceShell')
 assert.ok(route.includes("`${langHref('/abdomen/gi/mesenteriale-ischaemie')}#cta-protocol`"))
 assert.ok(route.includes('encodeURIComponent(lessonReturn)'))
 for (const lang of ['de', 'en', 'fa']) {

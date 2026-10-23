@@ -1,0 +1,14 @@
+{
+  "asset": "/abdomen/mesenteric/arterial-occlusion-cta.png",
+  "source": "Abdomen.pdf",
+  "pdf_page": 75,
+  "printed_page": 74,
+  "figure": "Multi-panel CTA montage with source arrows and labels for mesenteric arterial occlusion (rID 84614 as printed in the PDF).",
+  "crop": "Source CT/CTA panels extracted from the supplied PDF; original arrows and labels are retained.",
+  "rights_basis": "The user explicitly confirmed that figures in the supplied PDFs are authorized for use in RadYar.",
+  "teaching_purpose": "Illustrate the source's arterial mesenteric occlusion pattern for descriptive review alongside the full CTA protocol lesson.",
+  "diagnostic_evidence": true,
+  "case_attribution": "The PDF displays rID 84614; no external contributor or institution is inferred.",
+  "sequence_or_phase": "CTA montage; individual phase labels are not assigned beyond what is visible in the source.",
+  "caption_and_alt": "Localized in app/abdomen/gi/mesenteriale-ischaemie/page.js for DE, EN and FA."
+}

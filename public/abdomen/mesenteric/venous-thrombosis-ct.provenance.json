@@ -1,0 +1,14 @@
+{
+  "asset": "/abdomen/mesenteric/venous-thrombosis-ct.png",
+  "source": "Abdomen.pdf",
+  "pdf_page": 74,
+  "printed_page": 73,
+  "figure": "Two CT examples of mesenteric venous thrombosis with source-marked thrombus and associated mesenteric/bowel findings.",
+  "crop": "Source CT panels extracted from the supplied PDF; original arrows/markings are retained where present.",
+  "rights_basis": "The user explicitly confirmed that figures in the supplied PDFs are authorized for use in RadYar.",
+  "teaching_purpose": "Illustrate the source's mesenteric venous thrombosis pattern with accompanying findings, without replacing full image interpretation.",
+  "diagnostic_evidence": true,
+  "case_attribution": "No rID, contributor or institution is identified in the source figure.",
+  "sequence_or_phase": "CT example; the image caption does not specify a phase beyond the source text.",
+  "caption_and_alt": "Localized in app/abdomen/gi/mesenteriale-ischaemie/page.js for DE, EN and FA."
+}

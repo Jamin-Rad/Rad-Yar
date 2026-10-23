@@ -41,3 +41,7 @@ DE is the base language. The same lesson units, three stations, three cause/patt
 - Clinical approval: not claimed. ESVS-based claims above were checked; all other claims are constrained to source-supported descriptive teaching.
 - Whole Abdomen.pdf coverage: not claimed; this record covers only PDF pp.73–75.
 - Assessment: the embedded formative self-check remains the NOMI-pattern task. A separate global exact-topic MCQ and one flashcard now test the CTA protocol from ESVS 2025 Recommendation 33; both return to `#cta-protocol`. The global question is not a duplicate of the embedded check. Independent delta review passed SRC/EDU/LNG/ASM/REV; no new visuals were introduced (VIS N/A). Browser UX remains blocked without live-browser evidence, and clinical approval remains pending.
+
+## Independent review and repair — 2026-10-23
+
+An independent read-only review of the current Main source found that the page passed an unsupported `actions` prop to `LessonReferenceShell`; the intended lesson-level CTA links were therefore not rendered. The reviewer also requested per-image provenance sidecars for the two PDF crops. The route now passes the supported `quizHref` and `flashcardsHref` props, and each crop has a sidecar recording its PDF page, printed page, figure identity, rights basis, caption/alt location and attribution limits. Focused audits now assert both the shell prop contract and asset-level provenance. These fixes are awaiting independent re-review. Browser UX remains blocked; Dr. Zia's clinical sign-off is separate and pending.

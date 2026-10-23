@@ -6,6 +6,7 @@ const routePath = 'app/abdomen/gi/mesenteriale-ischaemie/page.js'
 const route = readFileSync(resolve(root, routePath), 'utf8')
 const curriculum = readFileSync(resolve(root, 'data/curriculum.js'), 'utf8')
 const ledger = readFileSync(resolve(root, 'docs/lesson-quality/mesenterial-ischaemie-pdf-review.md'), 'utf8')
+const shell = readFileSync(resolve(root, 'components/LessonReferenceShell.jsx'), 'utf8')
 
 const required = [
   ['route uses shared shell', /LessonReferenceShell/.test(route)],
@@ -13,6 +14,7 @@ const required = [
   ['German, English and Persian dictionaries', /de:\s*\{/.test(route) && /en:\s*\{/.test(route) && /fa:\s*\{/.test(route)],
   ['curriculum route link', /id:\s*'mesenteriale-ischaemie'[^\n]*link:\s*'\/abdomen\/gi\/mesenteriale-ischaemie'/.test(curriculum)],
   ['source pages and current guideline in ledger', /Abdomen\.pdf.*p\.73/.test(ledger) && /ESVS 2025/.test(ledger)],
+  ['quiz and flashcard CTAs use props supported by the shared shell', /quizHref=\{langHref/.test(route) && /flashcardsHref=\{langHref/.test(route) && /quizHref, flashcardsHref/.test(shell)],
 ]
 
 for (const key of ['protocolTitle', 'flow', 'arterialText', 'venousText', 'strangulationTitle', 'strangulationText', 'nomiText', 'bowelTitle', 'bowel', 'cave', 'imageArterialAlt', 'imageVenousAlt', 'arterialCaption', 'venousCaption', 'checkQ', 'options', 'explanation', 'summary']) {
@@ -25,6 +27,11 @@ required.push(['closed-loop/strangulation included without copied frequency', /C
 
 for (const asset of ['public/abdomen/mesenteric/arterial-occlusion-cta.png', 'public/abdomen/mesenteric/venous-thrombosis-ct.png']) {
   required.push([`image asset exists: ${asset}`, existsSync(resolve(root, asset)) && statSync(resolve(root, asset)).size > 10_000])
+}
+for (const [asset, page] of [['arterial-occlusion-cta', 75], ['venous-thrombosis-ct', 74]]) {
+  const provenancePath = resolve(root, `public/abdomen/mesenteric/${asset}.provenance.json`)
+  const provenance = existsSync(provenancePath) ? JSON.parse(readFileSync(provenancePath, 'utf8')) : null
+  required.push([`asset provenance records Abdomen.pdf p.${page} and user-confirmed rights: ${asset}`, provenance?.source === 'Abdomen.pdf' && provenance?.pdf_page === page && /user explicitly confirmed/i.test(provenance?.rights_basis || '')])
 }
 
 const failed = required.filter(([, pass]) => !pass)
