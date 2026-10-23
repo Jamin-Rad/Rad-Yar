@@ -29,3 +29,20 @@ Sources: [EASL](https://pmc.ncbi.nlm.nih.gov/articles/PMC7206317/); [ACG DOI
 
 Image reuse is authorized by the user for figures in the supplied PDFs. This
 record does not constitute independent rights verification or clinical approval.
+
+## Independent corrective review — 2026-10-23
+
+The independent review of the existing FNH lesson found repeated arterial-pattern
+recall in one MCQ/card pair, implausible distractors in the CT/MRI questions, and
+an ungrammatical Persian singular for the Doppler vessel. The repeated item now
+tests the supplementary hepatobiliary-phase FNH/HCA distinction in the lesson
+and card, with the subtype/exception caveat and ACG 2024 attribution. Q04–Q09
+distractors now use plausible nearby lesion patterns; the Persian phrase is
+corrected consistently in the lesson, card, and linked MCQ. Regression checks
+cover the revised question focus, distractor patterns, and Persian wording.
+
+Independent review and retest: SRC/EDU/VIS/LNG/ASM/REV PASS for the bounded
+lesson and these corrections. FNH sync, Abdomen/Thorax exact retrieval, global
+MCQ audit, and scoped diff-check pass. Browser layout/RTL/interactions, clinical
+approval, and independent case-page rights/metadata verification remain open;
+these checks do not establish publication approval.

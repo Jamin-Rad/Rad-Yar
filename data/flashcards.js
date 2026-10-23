@@ -2221,9 +2221,9 @@ const LEGACY_FLASHCARDS = [
       "fa": "کدام الگوی داپلر برای FNH تیپیک است؟"
     },
     "answer": {
-      "de": "Spoke-wheel-Muster: zentrales Gefäß mit radiären Ästen.",
+      "de": "Spoke-wheel-Muster: ein zentrales Gefäß mit radiären Ästen.",
       "en": "Spoke-wheel pattern: central vessel with radiating branches.",
-      "fa": "الگوی spoke-wheel: عروق مرکزی با شاخه‌های رادیال."
+      "fa": "الگوی spoke-wheel: یک رگ مرکزی با شاخه‌های شعاعی."
     },
     "explanation": {
       "de": "Dieses Muster entsteht durch die zentrale Versorgungsarterie der FNH, von der radiäre Gefäßäste in die Läsion ausstrahlen.",
@@ -2419,24 +2419,24 @@ const LEGACY_FLASHCARDS = [
       "fa": "تشخیص افتراقی"
     },
     "front": {
-      "de": "Welches Muster passt eher zu typischer FNH, schließt HCC aber nicht allein aus?",
-      "en": "Which pattern favours typical FNH but does not alone exclude HCC?",
-      "fa": "کدام الگو بیشتر به نفع FNH تیپیک است، اما به‌تنهایی HCC را رد نمی‌کند؟"
+      "de": "Welches Signal in der hepatobiliären MRT-Phase passt eher zu FNH als zu einem hepatozellulären Adenom?",
+      "en": "Which hepatobiliary-phase signal favours FNH over hepatocellular adenoma?",
+      "fa": "کدام سیگنال در فاز هپاتوبیلیاری MRI بیشتر به نفع FNH نسبت به آدنوم هپاتوسلولار است؟"
     },
     "answer": {
-      "de": "Homogene arterielle Anreicherung ohne typisches Wash-out kann im passenden Gesamtkontext für FNH sprechen.",
-      "en": "Homogeneous arterial enhancement without typical wash-out can support FNH in the appropriate overall context.",
-      "fa": "تقویت شریانی هموژن بدون واش‌اوت تیپیک، در زمینهٔ کلیِ سازگار می‌تواند به نفع FNH باشد."
+      "de": "FNH ist meist iso- bis hyperintens; viele Adenome sind in der hepatobiliären Phase hypointens.",
+      "en": "FNH is usually iso- to hyperintense; many adenomas are hypointense on the hepatobiliary phase.",
+      "fa": "FNH معمولاً ایزو تا هایپرسیگنال است؛ بسیاری از آدنوم‌ها در فاز هپاتوبیلیاری هیپوسیگنال‌اند."
     },
     "explanation": {
-      "de": "Das Muster allein schließt ein HCC nicht aus. Risikokontext, vollständige Phasenbeurteilung und weitere Merkmale müssen mitbewertet werden.",
-      "en": "The pattern alone does not exclude HCC. Risk context, full-phase assessment and other features must also be considered.",
-      "fa": "این الگو به‌تنهایی HCC را رد نمی‌کند؛ زمینهٔ خطر، ارزیابی کامل فازها و سایر ویژگی‌ها نیز باید در نظر گرفته شوند."
+      "de": "Die hepatobiliäre Phase unterstützt die Abgrenzung, ist wegen Subtypen und Ausnahmen aber kein Einzelbeweis. Ergänzende Quelle: ACG 2024.",
+      "en": "The hepatobiliary phase supports differentiation but is not definitive because subtypes and exceptions exist. Supplementary source: ACG 2024.",
+      "fa": "فاز هپاتوبیلیاری به افتراق کمک می‌کند، اما به‌دلیل زیرگروه‌ها و استثناها به‌تنهایی قطعی نیست. منبع تکمیلی: ACG 2024."
     },
     "diagram": {
-      "de": "Homogen arteriell + kein typisches Wash-out → spricht im Kontext für FNH, kein HCC-Ausschluss",
-      "en": "Homogeneous arterial + no typical wash-out → supports FNH in context; does not exclude HCC",
-      "fa": "تقویت شریانی هموژن + بدون واش‌اوت تیپیک → در زمینهٔ مناسب به نفع FNH است؛ HCC را رد نمی‌کند"
+      "de": "Hepatobiliäre Phase: FNH meist iso-/hyperintens, Adenom häufig hypointens",
+      "en": "Hepatobiliary phase: FNH usually iso-/hyperintense; adenoma often hypointense",
+      "fa": "فاز هپاتوبیلیاری: FNH معمولاً ایزو/هایپرسیگنال؛ آدنوم اغلب هیپوسیگنال"
     }
   },
   {
