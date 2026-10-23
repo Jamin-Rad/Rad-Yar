@@ -1,0 +1,12 @@
+{
+  "asset": "/educational/atrt-mri-pattern.svg",
+  "source": "Original code-native RadYar schematic; no patient image or external figure copied.",
+  "purpose": "Orient the learner to a reporting workflow using the posterior fossa as one possible example location; it does not indicate typical location or frequency.",
+  "clinicalUse": "Non-diagnostic conceptual graphic, not to scale. It does not depict a real ATRT, MRI sequence signal, or pathognomonic pattern.",
+  "sequence": "This schematic is not based on the unverified case panels in Gehirn.pdf p.44.",
+  "alt": {
+    "de": "Konzeptskizze mit posteriorer Schädelgruben-Masse als einem möglichen Beispielort und T1-, FLAIR-, DWI- und ADC-Hinweisen. Kein Patientenscan; keine Aussage zu Häufigkeit, typischem Ort oder spezifischem ATRT-Muster.",
+    "en": "Concept schematic using a posterior-fossa mass as one possible example location, with T1, FLAIR, DWI and ADC prompts. Not a patient scan; it makes no claim about frequency, typical location or a specific ATRT pattern.",
+    "fa": "طرح مفهومی با توده‌ای در حفرهٔ خلفی به‌عنوان یکی از محل‌های ممکن و یادآورهای T1، FLAIR، DWI و ADC. تصویر بیمار نیست و دربارهٔ فراوانی، محل تیپیک یا الگوی اختصاصی ATRT ادعایی ندارد."
+  }
+}

@@ -1,0 +1,22 @@
+.page { --lesson-accent:#668ca4; --lesson-accent-strong:#315d78; --lesson-accent-soft:#e8f1f6; --lesson-secondary:#bf8b65; }
+.lessonCopy { color:#263847; }
+.lead { font-size:1.08rem; line-height:1.75; font-weight:560; }
+.scope,.note { margin:1.35rem 0; padding:1rem 1.15rem; border-inline-start:4px solid #638ba3; border-radius:12px; background:#eef4f7; }
+.scope strong,.note strong { display:block; margin-bottom:.35rem; color:#315d78; }
+.scope p,.note p { margin:0; line-height:1.72; }
+.tableWrap { width:100%; overflow-x:auto; margin:1.3rem 0; border:1px solid #d6e1e7; border-radius:14px; }
+.tableWrap table { width:100%; min-width:600px; border-collapse:collapse; background:#fff; }
+.tableWrap th,.tableWrap td { padding:.9rem 1rem; border-bottom:1px solid #e1e9ee; text-align:start; vertical-align:top; line-height:1.65; }
+.tableWrap thead th { color:#264b61; background:#eaf2f6; font-weight:700; }
+.tableWrap tbody th { width:26%; color:#315d78; font-weight:700; }
+.tableWrap tbody tr:last-child th,.tableWrap tbody tr:last-child td { border-bottom:0; }
+.check { margin:1rem 0; padding:1.1rem; border-radius:16px; background:#f2f6f8; border:1px solid #d7e2e8; }
+.question { font-weight:700; line-height:1.7; }
+.options { display:grid; gap:.65rem; }
+.options button { display:flex; align-items:flex-start; gap:.7rem; width:100%; padding:.78rem .9rem; border:1px solid #cbd9e1; border-radius:12px; background:#fff; color:#263847; text-align:start; line-height:1.6; cursor:pointer; }
+.options button:hover { border-color:#668ca4; background:#f7fbfd; }
+.options button:focus-visible { outline:3px solid #d09569; outline-offset:2px; }
+.options button[aria-pressed="true"] { border-color:#315d78; box-shadow:0 0 0 2px #315d7830; }
+.options button strong { flex:0 0 1.7rem; color:#315d78; }
+.feedback { margin:1rem 0 0; padding:.85rem 1rem; border-radius:10px; background:#e7f0f4; line-height:1.7; }
+@media (max-width:640px) { .tableWrap table { min-width:540px; } .lead { font-size:1rem; } .scope,.note { padding:.85rem; } }

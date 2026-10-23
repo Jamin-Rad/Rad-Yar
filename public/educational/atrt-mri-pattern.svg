@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual MRI sequence map</title>
+  <desc id="desc">Non-diagnostic diagram using the posterior fossa as one possible example location, with variable components and sequence prompts. Not a patient scan or an ATRT-specific pattern.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#132a3b"/><stop offset="1" stop-color="#27465d"/></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f9fcff" stop-opacity=".15"/><stop offset="1" stop-color="#f9fcff" stop-opacity=".05"/></linearGradient>
+    <linearGradient id="lesion" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4b678"/><stop offset=".55" stop-color="#ce7f77"/><stop offset="1" stop-color="#8b759d"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#071724" flood-opacity=".32"/></filter>
+  </defs>
+  <rect x="8" y="8" width="744" height="314" rx="25" fill="url(#bg)"/>
+  <path d="M84 92c-5-26 15-48 41-48 14-23 49-29 69-10 22-15 51-4 57 20 24 8 31 38 15 57 7 22-10 43-31 44-13 20-43 23-60 7-20 11-45 2-50-18-22 4-43-19-41-42Z" fill="url(#glass)" stroke="#a8c4d3" stroke-width="3"/>
+  <path d="M112 93c15-16 30 15 46-2s30 14 47-1m-83 37c16-12 29 14 44 1s32 8 48-5" fill="none" stroke="#8ba8bb" stroke-width="5" stroke-linecap="round" opacity=".7"/>
+  <path d="M228 99c21-7 40 3 47 20 6 17-2 36-19 42-8 12-25 15-39 8" fill="#7c97a7" fill-opacity=".42" stroke="#b7ced9" stroke-width="2"/>
+  <path d="M237 112c10-12 29-12 39 0 9 10 8 28-2 37-11 9-28 7-37-4-9-10-9-24 0-33Z" fill="url(#lesion)" stroke="#f7dbc5" stroke-width="2" filter="url(#shadow)"/>
+  <path d="M239 117c7-6 17-5 23 1 5 5 5 13 0 18-6 6-15 7-22 3-7-5-8-15-1-22Z" fill="#f8d9b0" fill-opacity=".83"/>
+  <path d="M252 116c8 1 13 7 13 14s-5 13-12 14" fill="none" stroke="#a55f69" stroke-width="3"/>
+  <path d="M282 124h66" stroke="#b9d0dc" stroke-width="2" stroke-dasharray="4 6"/>
+  <circle cx="350" cy="124" r="4" fill="#e6aa7a"/>
+  <g filter="url(#shadow)">
+    <rect x="385" y="42" width="326" height="210" rx="20" fill="url(#glass)" stroke="#54778d"/>
+    <text x="410" y="78" fill="#dceaf0" font-family="Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="1.5">T1 · T2/FLAIR · DWI/ADC</text>
+    <rect x="409" y="98" width="278" height="31" rx="10" fill="#e3edf2" fill-opacity=".1"/><text x="428" y="119" fill="#e8f1f5" font-family="Arial,sans-serif" font-size="15" font-weight="700">T1</text><path d="M475 113h188" stroke="#91adbb" stroke-width="2" stroke-linecap="round"/>
+    <rect x="409" y="139" width="278" height="31" rx="10" fill="#e3edf2" fill-opacity=".1"/><text x="428" y="160" fill="#e8f1f5" font-family="Arial,sans-serif" font-size="15" font-weight="700">T2 / FLAIR</text><path d="M515 154h148" stroke="#c8dce5" stroke-width="4" stroke-linecap="round"/>
+    <rect x="409" y="180" width="278" height="31" rx="10" fill="#e3edf2" fill-opacity=".1"/><text x="428" y="201" fill="#e8f1f5" font-family="Arial,sans-serif" font-size="15" font-weight="700">DWI  +  ADC</text><path d="M536 195h25" stroke="#e9ad78" stroke-width="5" stroke-linecap="round"/><path d="M576 195h87" stroke="#92aabd" stroke-width="2" stroke-linecap="round"/>
+    <text x="83" y="280" fill="#b9d0dc" font-family="Arial,sans-serif" font-size="13" letter-spacing="1">● · ◌ · △</text>
+    <text x="410" y="280" fill="#b9d0dc" font-family="Arial,sans-serif" font-size="12">◇ · ○ · ▧</text>
+  </g>
+</svg>
