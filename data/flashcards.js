@@ -4,7 +4,7 @@ import { RECIST_FLASHCARDS, RECIST_FLASHCARD_TOPIC } from './recist11Lesson'
 import { FLEISCHNER_FLASHCARDS, FLEISCHNER_FLASHCARD_TOPIC } from './fleischnerLearning'
 import { BONE_INFARCT_FLASHCARDS, BONE_INFARCT_FLASHCARD_TOPIC } from './knocheninfarktLesson'
 import { EOSINOPHILIC_GRANULOMA_FLASHCARDS, EOSINOPHILIC_GRANULOMA_FLASHCARD_TOPIC } from './eosinophilesGranulomLesson'
-import { FACET_FLASHCARDS, FACET_FLASHCARD_TOPIC } from './spondylarthroseLesson'
+import { FACET_FLASHCARDS, FACET_FLASHCARD_TOPIC, FACET_SYNOVIAL_CYST_FLASHCARD_TOPIC } from './spondylarthroseLesson'
 import { PCNSL_FLASHCARDS, PCNSL_FLASHCARD_TOPIC } from './pcnslLesson'
 import { BRAIN_METASTASES_FLASHCARDS, BRAIN_METASTASES_FLASHCARD_TOPIC } from './gehirnHirnmetastasenLesson'
 import { HEMANGIOMA_FLASHCARDS } from './haemangiomaTraining'
@@ -190,6 +190,7 @@ export const FLASHCARD_TOPICS = [
   MENING_FLASHCARD_TOPIC,
   RECIST_FLASHCARD_TOPIC,
   FACET_FLASHCARD_TOPIC,
+  FACET_SYNOVIAL_CYST_FLASHCARD_TOPIC,
   { id: 'bandscheibenpathologien', area: 'Wirbelsäule', chapter: 'Degenerative Erkrankungen', icon: 'MRI', color: '#0e7490', href: '/flashcards/bandscheibenpathologien', title: { de: 'Bandscheibenpathologien', en: 'Intervertebral disc pathologies', fa: 'بیماری‌های دیسک بین‌مهره‌ای' }, subtitle: { de: 'Protrusion · Extrusion · Sequester · axiale Lage', en: 'Protrusion · extrusion · sequestration · axial location', fa: 'پروتروژن · اکستروژن · سکوستراسیون · محل آکسیال' } },
   BONE_INFARCT_FLASHCARD_TOPIC,
   EOSINOPHILIC_GRANULOMA_FLASHCARD_TOPIC,

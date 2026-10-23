@@ -38,3 +38,29 @@ Reviewer independently reran both commands in initial review and bounded re-revi
 - `npm run audit:mcq`: PASS, 624 questions and 18 cases per language at review time.
 
 No open demonstrated critical/major clinical, semantic or assessment defect in inspected scope. This does not convert missing diagnostic-media/browser evidence into a pass. Scientific approval by Dr. Zia: pending. Publication: not_requested. No unconditional acceptance.
+
+## Independent bounded delta review — juxtafacet cyst (2026-10-23)
+
+Reviewer: separate read-only agent. Scope was the new Wirbelsäule.pdf p.7
+(printed p.6) juxtafacet-cyst assessment/card and curriculum integration, not
+the entire spondylarthrosis lesson. The reviewer visually inspected the source
+page and confirmed it supports only possible canal/recess narrowing; no
+characteristic signal, treatment, differential or pain attribution was
+inferred. The question asks for level/side, spatial relationship and actually
+visible neural effect, and the card stays within that scope.
+
+| Gate | Result | Evidence / limit |
+| --- | --- | --- |
+| SRC | PASS, bounded | Added content stays within PDF p.7/printed p.6. |
+| EDU | PASS | The reporting check does not add a generic chapter and follows its related teaching. |
+| VIS | BLOCKED | No diagnostic CT/MRI frame for this cyst is present on the source page or in the bounded addition; the existing schematic is conceptual. |
+| LNG | PASS, static only | DE/EN/FA assessment wording and canonical language-ID mapping agree; browser RTL display remains untested. |
+| ASM | PASS, static | One localized four-option question and one card per language retrieve under the exact cyst ID. Finding CY-ASM-001 (missing quiz return destination) was corrected to return to `/wirbelsaeule/degenerative/spondylarthrose#space`; the focused checker verifies the decoded target. |
+| UX | BLOCKED | Browser interaction, real return flow, keyboard, persistence and RTL could not be exercised. |
+| REV | PASS, bounded delta | Independent review and static retest were completed; this does not review all lesson claims or provide clinical approval. |
+
+After the return-link correction, `node --import tsx
+scripts/check-spondylarthrose.mjs`, `node --import tsx
+scripts/audit-mcq-bank.mjs` (787 questions and 18 cases per language), and
+`git diff --check` passed. Browser evidence and Dr. Zia's scientific approval
+remain open.

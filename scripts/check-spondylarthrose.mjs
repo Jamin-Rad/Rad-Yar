@@ -29,8 +29,14 @@ assert.ok(MCQ_TOPIC_GROUPS.some(group => group.fachId === 'wirbelsaeule' && grou
 const degenerativeGroups = MCQ_TOPIC_GROUPS.filter(group => group.fachId === 'wirbelsaeule' && group.kapitelId === 'ws-degenerativ')
 assert.equal(degenerativeGroups.length, 1, 'one setup group per existing degenerative chapter')
 assert.ok(degenerativeGroups[0].topics.some(topic => topic.id === 'spinalkanalstenose'))
+const synovialTopic = topics.find(item => item.id === 'synovialzyste-facettengelenke')
+assert.equal(synovialTopic.link, `${FACET_PATH}#space`)
+assert.equal(synovialTopic.mcqLink, '/ueben/quiz?fach=wirbelsaeule&n=1&themen=synovialzyste-facettengelenke&from=%2Fwirbelsaeule%2Fdegenerative%2Fspondylarthrose%23space')
+assert.equal(new URL(`http://local${synovialTopic.mcqLink}`).searchParams.get('from'), `${FACET_PATH}#space`)
+assert.equal(synovialTopic.flashcardLink, '/flashcards/synovialzyste-facettengelenke')
+assert.equal(getLessonLinkForFlashcard(synovialTopic.flashcardLink), `${FACET_PATH}#space`)
 assert.equal(countQuestions(['spondylarthrose']), 2)
-const deIds = FACET_QUESTIONS.de.map(q => q.id)
+const deIds = FACET_QUESTIONS.de.filter(q => q.tags.includes('spondylarthrose')).map(q => q.id)
 for (const lang of langs) {
   const actual = QUESTION_BANK[lang].filter(q => q.tags.includes('spondylarthrose'))
   assert.equal(actual.length, 2)
@@ -44,6 +50,20 @@ for (const lang of langs) {
 }
 assert.equal(FLASHCARDS.filter(card => card.topicId === 'spondylarthrose').length, 2)
 assert.ok(getFlashcardTopic('spondylarthrose'))
+assert.equal(countQuestions(['synovialzyste-facettengelenke']), 1)
+assert.ok(MCQ_TOPIC_GROUPS.some(group => group.fachId === 'wirbelsaeule' && group.topics.some(item => item.id === 'synovialzyste-facettengelenke')))
+assert.equal(FLASHCARDS.filter(card => card.topicId === 'synovialzyste-facettengelenke').length, 1)
+assert.ok(getFlashcardTopic('synovialzyste-facettengelenke'))
+for (const lang of langs) {
+  const question = FACET_QUESTIONS[lang].find(item => item.tags.includes('synovialzyste-facettengelenke'))
+  assert.ok(question && QUESTION_BANK[lang].some(item => item.id === question.id))
+  assert.equal(question.options.length, 4)
+  assert.equal(question.correct, 'B')
+  const lengths = question.options.map(option => option.text.length)
+  assert.ok(Math.max(...lengths) / Math.min(...lengths) < 1.25, `${lang} cyst question options should not reveal the answer by length`)
+  assert.deepEqual(Object.keys(question.wrongExplanations).sort(), question.options.map(option => option.id).filter(id => id !== question.correct).sort())
+  assert.deepEqual(getQuestionsForIds([question.id], lang).map(item => item.id), [question.id])
+}
 assert.equal(FACET_CHECK.correct, 2)
 assert.equal(FACET_CHECK.feedback.length, FACET_CHECK.options.length)
 const jsx = await readFile('app/wirbelsaeule/degenerative/spondylarthrose/page.js', 'utf8')
@@ -59,4 +79,4 @@ for (const lang of langs) {
   assert.equal(quiz.searchParams.get('from'), localized)
   assert.equal(quiz.searchParams.get('lang') || 'de', lang)
 }
-console.log(`Spondylarthrose scoped checks passed: ${semanticUnits} localized semantic units present; exact curriculum/status, 6 MCQs with option feedback, 2 cards, language-ID mapping, assets and JSX syntax. Browser/clinical equivalence not established by this check.`)
+console.log(`Spondylarthrose scoped checks passed: ${semanticUnits} localized semantic units present; exact curriculum/status, 6 facet MCQs plus one juxtafacet-cyst MCQ per language, 2 facet cards plus one cyst card, language-ID mapping, assets and JSX syntax. Browser/clinical equivalence not established by this check.`)

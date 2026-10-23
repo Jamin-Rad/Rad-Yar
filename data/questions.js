@@ -4396,7 +4396,6 @@ export const MCQ_TOPIC_GROUPS = [
   { fachId: 'msk', kapitelId: 'msk-knochentumoren', title: { de: 'Tumorähnliche Läsionen', en: 'Tumour-like lesions', fa: 'ضایعات شبه‌توموری' }, topics: [{ id: 'eosinophiles-granulom', title: { de: 'Langerhans-Zell-Histiozytose des Knochens', en: 'Osseous Langerhans cell histiocytosis', fa: 'هیستیوسیتوز سلول لانگرهانس در استخوان' } }] },
   ...ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS,
   PULMONARY_HYPERTENSION_TOPIC_GROUP,
-  { fachId: 'wirbelsaeule', kapitelId: 'ws-degenerativ', title: { de: 'Degenerative Erkrankungen', en: 'Degenerative diseases', fa: 'بیماری‌های دژنراتیو' }, topics: [{ id: 'spinalkanalstenose', title: { de: 'Spinalkanalstenose', en: 'Spinal canal stenosis', fa: 'تنگی کانال نخاعی' } }, { id: 'spondylarthrose', title: { de: 'Spondylarthrose', en: 'Facet arthropathy', fa: 'آرتروز فاست' } }, { id: 'bandscheibenpathologien', title: { de: 'Bandscheibenpathologien', en: 'Intervertebral disc pathologies', fa: 'بیماری‌های دیسک بین‌مهره‌ای' } }] },
   { fachId: 'wirbelsaeule', kapitelId: 'ws-entzuendlich', title: { de: 'Entzündliche Erkrankungen', en: 'Inflammatory diseases', fa: 'بیماری‌های التهابی' }, topics: [
     { id: 'spondylodiszitis', title: { de: 'Spondylodiszitis', en: 'Spondylodiscitis', fa: 'اسپوندیلودی‌سکیت' } },
     { id: 'morbus-bechterew-ws', title: { de: 'Morbus Bechterew', en: 'Ankylosing spondylitis', fa: 'اسپوندیلیت آنکیلوزان' } },

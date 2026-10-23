@@ -27,7 +27,13 @@ export const SPINE_MODIC_TOPIC_GROUP = {
   fachId: 'wirbelsaeule',
   kapitelId: 'ws-degenerativ',
   title: L('Degenerative Erkrankungen', 'Degenerative diseases', 'بیماری‌های دژنراتیو'),
-  topics: [{ id: 'osteochondrosis-intervertebralis', title: L('Modic-Veränderungen', 'Modic changes', 'تغییرات مودیک') }],
+  topics: [
+    { id: 'spinalkanalstenose', title: L('Spinalkanalstenose', 'Spinal canal stenosis', 'تنگی کانال نخاعی') },
+    { id: 'osteochondrosis-intervertebralis', title: L('Modic-Veränderungen', 'Modic changes', 'تغییرات مودیک') },
+    { id: 'spondylarthrose', title: L('Spondylarthrose', 'Facet arthropathy', 'آرتروز فاست') },
+    { id: 'synovialzyste-facettengelenke', title: L('Juxtafacettäre Synovialzyste', 'Juxtafacet synovial cyst', 'کیست سینوویال کنار فاست') },
+    { id: 'bandscheibenpathologien', title: L('Bandscheibenpathologien', 'Intervertebral disc pathologies', 'بیماری‌های دیسک بین‌مهره‌ای') },
+  ],
 }
 
 export const SPINE_MODIC_FLASHCARD_TOPIC = {
