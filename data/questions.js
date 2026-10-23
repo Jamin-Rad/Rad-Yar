@@ -49,6 +49,7 @@ import { TECHNIK_CINE_QUESTIONS, TECHNIK_CINE_TOPIC_GROUP } from './technikCineQ
 import { TECHNIK_FLUORO_ZOOM_QUESTIONS, TECHNIK_FLUORO_ZOOM_TOPIC_GROUP } from './technikFluoroZoom'
 import { DWI_ADC_QUESTIONS } from './technikDwiAdcLesson'
 import { WIRBELMETASTASEN_QUESTIONS, WIRBELMETASTASEN_TOPIC_GROUP } from './wirbelmetastasenAssessment'
+import { SPINAL_INTRAMEDULLARY_TUMOR_QUESTIONS, SPINAL_INTRAMEDULLARY_TUMOR_TOPIC_GROUP, SPINAL_EXTRAMEDULLARY_QUESTIONS, SPINAL_EXTRAMEDULLARY_TOPIC_GROUP } from './spinalIntramedullaryTumorAssessments'
 import { TECHNIK_ENTRANCE_KERMA_QUESTIONS, TECHNIK_ENTRANCE_KERMA_TOPIC_GROUP } from './technikEntranceKermaAssessment'
 // ── RADYAR QUESTION BANK ────────────────────────────────────────────────────
 
@@ -4323,6 +4324,8 @@ export const QUESTION_BANK = Object.fromEntries(
 
 for (const lang of Object.keys(QUESTION_BANK)) {
   QUESTION_BANK[lang].push(WIRBELMETASTASEN_QUESTIONS.find(question => question.id === `wirbelmetastasen-${lang}-ivory-vs-destructive`))
+  QUESTION_BANK[lang].push(SPINAL_INTRAMEDULLARY_TUMOR_QUESTIONS.find(question => question.id === `spinal-intramedullary-${lang}-pattern-comparison`))
+  QUESTION_BANK[lang].push(SPINAL_EXTRAMEDULLARY_QUESTIONS.find(question => question.id === `spinal-extramedullary-${lang}-pdf-patterns`))
   QUESTION_BANK[lang].push(TECHNIK_FLUORO_ZOOM_QUESTIONS.find(question => question.id === `fluoro-zoom-${lang}-digital-vs-acquisition`))
   QUESTION_BANK[lang].push(TECHNIK_ENTRANCE_KERMA_QUESTIONS.find(question => question.id === `entrance-kerma-${lang}-backscatter`))
   QUESTION_BANK[lang].push(...(MSK_BONE_AGGRESSIVENESS_QUESTIONS[lang] || []))
@@ -4356,6 +4359,7 @@ export const MCQ_TOPIC_GROUPS = [
   { fachId: 'msk', kapitelId: 'msk-hip-pelvis', title: { de: 'Hüfte & Becken', en: 'Hip & pelvis', fa: 'لگن و مفصل ران' }, topics: [{ id: 'beckenringfraktur', title: { de: 'Beckenringfraktur', en: 'Pelvic ring fracture', fa: 'شکستگی حلقهٔ لگنی' } }] },
   { fachId: 'msk', kapitelId: 'msk-hand', title: { de: 'Hand & Handwurzel', en: 'Hand & carpus', fa: 'دست و کارپ' }, topics: [{ id: 'skaphoidfraktur', title: { de: 'Skaphoidfraktur', en: 'Scaphoid fracture', fa: 'شکستگی اسکافوئید' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-leber', title: { de: 'Leber', en: 'Liver', fa: 'کبد' }, topics: [{ id: 'hepatisches-angiomyolipom', title: { de: 'Hepatisches Angiomyolipom', en: 'Hepatic angiomyolipoma', fa: 'آنژیومیولیپوم کبدی' } }] },
+  { fachId: 'abdomen', kapitelId: 'abdomen-niere', title: { de: 'Niere', en: 'Kidney', fa: 'کلیه' }, topics: [{ id: 'nierentrauma', title: { de: 'Nierentrauma', en: 'Renal trauma', fa: 'تروما کلیه' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-gallenwege', title: { de: 'Gallenwege', en: 'Bile ducts', fa: 'مجاری صفراوی' }, topics: [{ id: 'psc-pbc', title: { de: 'PSC im MRCP', en: 'PSC on MRCP', fa: 'PSC در MRCP' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-gefaesse', title: { de: 'Aorta & viszerale Gefäße', en: 'Aorta & visceral vessels', fa: 'آئورت و عروق احشایی' }, topics: [{ id: 'fibromuskulaere-dysplasie', title: { de: 'Fibromuskuläre Dysplasie', en: 'Fibromuscular dysplasia', fa: 'دیسپلازی فیبروماسکولار' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-pankreas', title: { de: 'Pankreas', en: 'Pancreas', fa: 'پانکراس' }, topics: [{ id: 'pnet', title: { de: 'Neuroendokrine Tumoren (pNET)', en: 'Neuroendocrine tumours (pNET)', fa: 'تومورهای نورواندوکرین پانکراس (pNET)' } }] },
@@ -4365,6 +4369,8 @@ export const MCQ_TOPIC_GROUPS = [
   TECHNIK_FLUORO_ZOOM_TOPIC_GROUP,
   TECHNIK_ENTRANCE_KERMA_TOPIC_GROUP,
   WIRBELMETASTASEN_TOPIC_GROUP,
+  SPINAL_INTRAMEDULLARY_TUMOR_TOPIC_GROUP,
+  SPINAL_EXTRAMEDULLARY_TOPIC_GROUP,
   TECHNIK_BOLD_TOPIC_GROUP,
   CT_BASICS_TOPIC_GROUP,
   CT_PERFUSION_TOPIC_GROUP,
