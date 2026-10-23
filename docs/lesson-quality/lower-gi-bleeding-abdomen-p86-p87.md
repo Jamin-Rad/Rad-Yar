@@ -67,3 +67,13 @@ Targeted validation after these corrections: `audit-abdomen-thorax-assessment-re
 Independent review found that the route duplicated the title and added an explanatory subtitle beneath the shared `LessonHero`, while also nesting a second `<main>` inside the shell's `<article>` (LOWERGI-UX-01, major). The route now relies on the shell's single title/hero, moves the concise introduction to the first teaching content, supplies a source-specific localized chapter title, and opts into the shell's outer main landmark. The route body is a `<div>` inside the shell article. `scripts/test-lower-gi-bleeding-shell.mjs` asserts the single-landmark structure, absence of duplicated title/subtitle, and localized chapter title. The independent reviewer confirmed the structural issue before correction and independently retested the correction: the focused shell assertion, assessment retrieval audit, and MCQ audit all pass. Rendered browser behavior remains unverified.
 
 The shell-level correction passed its focused source-structure assertion and JSX parsing. Rendered accessibility-tree, responsive/browser, RTL interaction and keyboard retest remain blocked by lack of browser access. This fix does not change CTA/angiography content; source, semantic parity and assessment review for the bounded PDF delta remain PASS. Dr. Zia's scientific sign-off is still pending.
+
+## Curriculum return-link correction — 2026-10-23
+
+Both the curriculum MCQ and flashcard URLs now include the encoded return path to
+`/abdomen/gi/untere-gi-blutung`, matching the lesson's own language-preserving
+actions. The independent reviewer confirmed that quiz and flashcard consumers
+use `from` as their back target. `audit-abdomen-thorax-assessment-retrieval.mjs`,
+`test-lower-gi-bleeding-shell.mjs`, and `npm run audit:mcq` pass. ASM and REV
+pass statically for this link delta; browser click-through and clinical approval
+remain open.

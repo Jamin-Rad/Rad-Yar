@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import fs from 'node:fs'
 import { CURRICULUM } from '../data/curriculum.js'
 import { QUESTION_BANK, getQuestions } from '../data/questions.js'
 import { ABDOMEN_THORAX_REGISTERED_QUESTIONS, ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS } from '../data/abdomenThoraxRegisteredQuestions.js'
@@ -49,5 +50,20 @@ for (const tag of new Set(Object.values(ABDOMEN_THORAX_REGISTERED_QUESTIONS).fla
     for (const id of expectedIds) assert.ok(retrievedIds.has(id), `${lang}/${tag}: registered question ${id} is not retrievable`)
   }
 }
+
+const lowerGIBleeding = ABDOMEN_THORAX_REGISTERED_QUESTIONS['abdomen-lower-gi-bleeding']
+assert.ok(lowerGIBleeding, 'Lower-GI bleeding MCQ registration is missing')
+for (const lang of languages) {
+  const question = lowerGIBleeding[lang]
+  assert.equal(question.tags[0], 'untere-gi-blutung')
+  assert.equal(question.options.length, 4)
+  assert.equal(question.correct, 'A')
+  assert.equal(new Set(question.options.map(option => option.text)).size, 4)
+}
+const lowerGIPage = fs.readFileSync('app/abdomen/gi/untere-gi-blutung/page.js', 'utf8')
+assert.match(lowerGIPage, /n=1&themen=untere-gi-blutung&from=\$\{encodeURIComponent\(lessonReturn\)\}/)
+assert.match(lowerGIPage, /flashcardsHref=\{withLang\(`\/flashcards\/untere-gi-blutung\?from=\$\{encodeURIComponent\(lessonReturn\)\}`\)\}/)
+const lowerGICurriculum = fs.readFileSync('data/curriculum.js', 'utf8')
+assert.match(lowerGICurriculum, /id: 'untere-gi-blutung'[^\n]+mcqLink: '\/ueben\/quiz\?fach=abdomen&n=1&themen=untere-gi-blutung&from=%2Fabdomen%2Fgi%2Funtere-gi-blutung'[^\n]+flashcardLink: '\/flashcards\/untere-gi-blutung\?from=%2Fabdomen%2Fgi%2Funtere-gi-blutung'/)
 
 console.log(`Assessment retrieval passed: ${Object.keys(ABDOMEN_THORAX_REGISTERED_QUESTIONS).length} registered questions, ${topicCount} exact curriculum tags, DE/EN/FA retrieval.`)
