@@ -960,7 +960,7 @@ export const CURRICULUM = [
           { id: 'trauma-grundlagen-abdomen', title: { de: 'Grundlagen der Traumabildgebung', en: 'Fundamentals of Trauma Imaging', fa: 'مبانی تصویربرداری تروما' }, tags: ['CT'], diff: 1 },
           { id: 'lebertrauma', title: { de: 'Lebertrauma', en: 'Liver Trauma', fa: 'تروما کبدی' }, tags: ['CT'], diff: 2 },
           { id: 'milztrauma', title: { de: 'Milztrauma', en: 'Splenic Trauma', fa: 'تروما طحال' }, tags: ['CT'], diff: 2 },
-          { id: 'nierentrauma', title: { de: 'Nierentrauma', en: 'Renal Trauma', fa: 'تروما کلیوی' }, tags: ['CT'], diff: 2, link: '/abdomen/niere/renaltrauma', inProgress: true, updatedAt: '2026-10-20' },
+          { id: 'nierentrauma', title: { de: 'Nierentrauma', en: 'Renal trauma', fa: 'تروما کلیه' }, tags: ['CT'], diff: 2, link: '/abdomen/niere/renaltrauma', mcqLink: '/ueben/quiz?fach=abdomen&n=1&themen=nierentrauma&from=%2Fabdomen%2Fniere%2Frenaltrauma', flashcardLink: '/flashcards/nierentrauma', inProgress: true, updatedAt: '2026-10-23' },
           { id: 'hohlorganverletzungen', title: { de: 'Hohlorganverletzungen', en: 'Hollow Viscus Injuries', fa: 'آسیب احشای توخالی' }, tags: ['CT'], diff: 3 },
         ],
       },

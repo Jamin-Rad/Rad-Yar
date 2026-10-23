@@ -43,8 +43,15 @@ The PDF case proves a urinary leak pattern as described by its caption. Its plac
 
 ## Validation and review handoff
 
-- Focused route SSR: `node --import tsx scripts/test-renal-trauma-abdomen-p56-p57.mjs` — checks DE/EN/FA, RTL, exact curriculum mapping and `inProgress`, source media disclosure, case-mechanism caveat, localized phase schematic and self-check feedback.
+- Focused route SSR: `node --import tsx scripts/test-renal-trauma-abdomen-p56-p57.mjs` — checks DE/EN/FA, RTL, exact curriculum mapping and `inProgress`, source media disclosure, case-mechanism caveat, localized phase schematic, four-option self-check, exact-topic MCQ/card registration and return-linked action paths.
 - Independent review findings RT-SRC-01, RT-VIS-01 and RT-LNG-01 were addressed: native-phase source findings added and mapped above, phase arrow now points toward the delayed phase in the fixed diagram order, and German case grammar corrected. Delta review remains required.
-- `git diff --check` is required after authoring.
+- `node --import tsx scripts/test-renal-trauma-abdomen-p56-p57.mjs`: PASS after assessment integration.
+- `node --import tsx scripts/audit-abdomen-thorax-assessment-retrieval.mjs`: PASS (42 registered items, 49 exact tags; this shared audit covers its registered set).
+- `npm run audit:mcq`: PASS, 785 questions / 18 cases per language, with answer-specific feedback valid.
+- `git diff --check`: PASS; only existing line-ending warnings.
 - The test is technical/editorial evidence only. It does not prove guideline concordance, scientific correctness, browser behavior or clinical approval.
 - Independent reviewer should verify the actual PDF pages, each phase claim against the cited EAU text, the AAST 2025 version warning against the current official scale, translation parity, source image interpretation and crop, and the rendered route in desktop/mobile, light/dark and keyboard interactions.
+
+## Retrieval integration and independent delta review — 2026-10-23
+
+Added one four-option MCQ per language under the exact curriculum tag `nierentrauma`, with answer-specific explanations distinguishing urinary extravasation from arterial bleeding, unsupported case-cause inference, and grading from an incomplete phase. Added three localized flashcards covering phase targets, leak evidence, and the PDF case's causal limit. Registered the topic/cards in the shared bank and added curriculum plus lesson-shell links that preserve the selected language and return to the lesson. The local check now has four more discriminating options and retains the explanation that phase roles differ. Independent delta review PASS: exact topic retrieval, localized MCQ key/feedback, card parity, route return paths and prior SRC/EDU/VIS/LNG findings stand. UX remains BLOCKED without rendered-browser evidence; Dr. Zia clinical and release approval remain unestablished.
