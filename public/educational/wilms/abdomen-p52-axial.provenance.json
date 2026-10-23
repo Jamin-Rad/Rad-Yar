@@ -1,0 +1,14 @@
+{
+  "asset": "/educational/wilms/abdomen-p52-axial.png",
+  "source": "Abdomen.pdf",
+  "pdf_page": 52,
+  "printed_page": 51,
+  "figure": "Axial CT image with red arrows at the renal parenchyma–mass interface",
+  "crop": "Rendered at approximately 150 dpi and cropped to the axial CT frame including both source arrows; page text and margins removed.",
+  "rights_basis": "The user stated that figures in the supplied PDFs are authorized for use in RadYar.",
+  "teaching_purpose": "Show the axial renal parenchyma–mass interface called the claw sign in the PDF.",
+  "diagnostic_evidence": true,
+  "case_attribution": "Not provided on the source page; no external case identity inferred.",
+  "sequence_or_phase": "CT; phase not stated on the source page.",
+  "caption_and_alt": "Localized in data/wilmsLesson.js and rendered by app/abdomen/niere/wilms-tumour/page.jsx for DE, EN and FA."
+}

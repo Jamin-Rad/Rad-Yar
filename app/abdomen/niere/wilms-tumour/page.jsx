@@ -17,6 +17,8 @@ const labels = {
   complete: L('Abschnitt als gelesen markieren', 'Mark section as read', 'این بخش را خواندم'), completed: L('Als gelesen markiert', 'Marked as read', 'خوانده‌شده'),
   open: L('Abschnitt öffnen', 'Open section', 'بازکردن بخش'), close: L('Schließen', 'Close', 'بستن'),
   takeHome: L('Drei Regeln mitnehmen', 'Three rules to remember', 'سه نکته برای یادآوری'),
+  quiz: L('Wissen testen', 'Test your knowledge', 'آزمودن آموخته‌ها'),
+  flashcards: L('Karteikarten', 'Flashcards', 'فلش‌کارت‌ها'),
 }
 
 function Icon({ id }) {
@@ -51,17 +53,22 @@ export default function WilmsTumourLessonPage() {
   ]
   const langHref = path => lang === 'de' ? path : `${path}?lang=${lang}`
   const takeHome = l.summary.map((item, index) => ({ title: pick(L(`Regel ${index + 1}`, `Rule ${index + 1}`, `قاعدهٔ ${index + 1}`), lang), detail: pick(item, lang) }))
-  const sourceItems = [{ id: 'abdomen-p52', tag: 'PDF · 52 / printed 51', title: pick(L('Abdomen.pdf – Nephroblastom (Wilms-Tumor)', 'Abdomen.pdf – Nephroblastoma (Wilms tumour)', 'Abdomen.pdf – نفروبلاستوما (تومور ویلمز)'), lang), citation: pick(L('Abdeckungsquelle: Bildmuster und genannte Metastasenorte; Fallbild und ungeprüfte Epidemiologie-/Prognoseangaben ausgeschlossen.', 'Coverage source: imaging pattern and listed metastatic sites; the case image and unverified epidemiology/prognosis claims are excluded.', 'مبنای پوشش: الگوی تصویربرداری و محل‌های متاستاز ذکرشده؛ تصویر کیس و ادعاهای تأییدنشده درباره پیش‌آگهی/همه‌گیرشناسی وارد نشده‌اند.'), lang), scope: pick(l.media, lang) }]
+  const sourceItems = [
+    { id: 'abdomen-p52', tag: 'PDF · 52 / printed 51', title: pick(L('Abdomen.pdf – Nephroblastom (Wilms-Tumor)', 'Abdomen.pdf – Nephroblastoma (Wilms tumour)', 'Abdomen.pdf – نفروبلاستوما (تومور ویلمز)'), lang), citation: pick(L('Abdeckungsquelle: Bildmuster, Claw sign und genannte Metastasenorte; ungeprüfte Epidemiologie-/Prognoseangaben ausgeschlossen.', 'Coverage source: imaging pattern, claw sign and listed metastatic sites; unverified epidemiology/prognosis claims are excluded.', 'مبنای پوشش: الگوی تصویربرداری، علامت claw و محل‌های متاستاز ذکرشده؛ ادعاهای تأییدنشدهٔ همه‌گیرشناسی و پیش‌آگهی وارد نشده‌اند.'), lang), scope: pick(l.media, lang) },
+    { id: 'combrink-claw', tag: 'MRI · 2021', href: 'https://sajr.org.za/index.php/sajr/article/view/2012', title: pick(L('Combrink & Beviss-Challinor – Claw sign', 'Combrink & Beviss-Challinor – claw sign', 'کامبرینک و بیویس-چلینور – علامت claw'), lang), citation: pick(L('MRT-Kohorte; stützt die Einordnung als Hinweis auf renalen Ursprung, nicht als histologische Diagnose. Die Winkeldefinition wird wegen der anderen Modalität nicht direkt auf CT übertragen.', 'MRI cohort; supports use as a clue to renal origin, not as a histological diagnosis. Its angle definition is not transferred directly to CT because the modality differs.', 'این مطالعهٔ MRI از کاربرد علامت به‌عنوان سرنخ منشأ کلیوی حمایت می‌کند، نه تشخیص بافت‌شناختی. به‌دلیل تفاوت روش تصویربرداری، تعریف زاویه مستقیماً به CT تعمیم داده نمی‌شود.'), lang) },
+  ]
   return <StandardLessonShell lessonId={l.id} lang={lang} title={pick(l.title, lang)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: langHref('/') }, { label: pick(L('Abdomen', 'Abdomen', 'شکم'), lang), href: langHref('/lernen/abdomen') }, { label: pick(L('Niere', 'Kidney', 'کلیه'), lang), href: langHref('/lernen/abdomen') }]}
-    sections={sections} labels={localizedLabels} renderIcon={id => <Icon id={id}/>} syncHashNavigation actions={{}}
-    theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/educational/wilms/hero.svg', heroImageOpacity: .9, accent: '#78d0d7', accentStrong: '#166c78', accentSoft: '#e1f3f4', secondary: '#b8a0cf', secondaryStrong: '#674c81', heroBase: '#173341' }}
-    heroImageAlt={pick(L('Schematische Niere mit großer Raumforderung; keine diagnostische Aufnahme', 'Schematic kidney with a large mass; not a diagnostic image', 'شماتیک کلیه با توده بزرگ؛ تصویر تشخیصی نیست'), lang)}
+    sections={sections} labels={localizedLabels} renderIcon={id => <Icon id={id}/>} syncHashNavigation actions={{
+      mcq: { label: localizedLabels.quiz, href: langHref(`/ueben/quiz?fach=abdomen&n=1&themen=nephroblastom-wilms&from=${encodeURIComponent('/abdomen/niere/wilms-tumour')}`) },
+      flashcards: { label: localizedLabels.flashcards, href: langHref(`/flashcards/nephroblastom-wilms?from=${encodeURIComponent('/abdomen/niere/wilms-tumour')}`) },
+    }}
+    theme={{ backgroundImage: '/andarun-galaxy-v3.png', accent: '#78d0d7', accentStrong: '#166c78', accentSoft: '#e1f3f4', secondary: '#b8a0cf', secondaryStrong: '#674c81', heroBase: '#173341' }}
     className={styles.page} sources={<LessonSources title={pick(L('Quellen und Umfang', 'Sources and scope', 'منابع و دامنه'), lang)} items={sourceItems} note={pick(l.sourceReview, lang)}/>}>
     {l.sections.map((section, index) => <LessonSection key={sections[index].id} id={sections[index].id} icon={sections[index].icon} title={pick(section.title, lang)}>
       <p className={styles.body}>{pick(section.body, lang)}</p>
       <p className={styles.note}>{pick(section.implication, lang)}</p>
-      {index === 1 ? <><figure className={styles.diagram}><ClinicalPatternDiagram variant="wilms-tumour" lang={lang} title={pick(l.check.diagramCaption, lang)}/><figcaption>{pick(l.check.diagramCaption, lang)}</figcaption></figure><Decision lang={lang}/></> : null}
+      {index === 1 ? <><div className={styles.imageGrid}>{l.images.map(image => <figure className={styles.sourceImage} key={image.src}><img src={image.src} alt={pick(image.alt, lang)}/><figcaption>{pick(image.caption, lang)}</figcaption></figure>)}</div><figure className={styles.diagram}><ClinicalPatternDiagram variant="wilms-tumour" lang={lang} title={pick(l.check.diagramCaption, lang)}/><figcaption>{pick(l.check.diagramCaption, lang)}</figcaption></figure><Decision lang={lang}/></> : null}
     </LessonSection>)}
     <LessonSection id="take-home" icon="summary" title={localizedLabels.takeHome}><TakeHomeList items={takeHome}/></LessonSection>
   </StandardLessonShell>

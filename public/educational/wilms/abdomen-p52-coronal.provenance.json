@@ -1,0 +1,14 @@
+{
+  "asset": "/educational/wilms/abdomen-p52-coronal.png",
+  "source": "Abdomen.pdf",
+  "pdf_page": 52,
+  "printed_page": 51,
+  "figure": "Coronal CT image of a large renal-region mass and adjacent structures",
+  "crop": "Rendered at approximately 150 dpi and cropped to the coronal CT frame; page header, text and margins removed.",
+  "rights_basis": "The user stated that figures in the supplied PDFs are authorized for use in RadYar.",
+  "teaching_purpose": "Show the mass extent and relation to adjacent organs in the coronal plane.",
+  "diagnostic_evidence": true,
+  "case_attribution": "Not provided on the source page; no external case identity inferred.",
+  "sequence_or_phase": "CT; phase not stated on the source page.",
+  "caption_and_alt": "Localized in data/wilmsLesson.js and rendered by app/abdomen/niere/wilms-tumour/page.jsx for DE, EN and FA."
+}
