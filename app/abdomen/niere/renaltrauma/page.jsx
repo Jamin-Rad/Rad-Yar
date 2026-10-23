@@ -26,6 +26,8 @@ const labels = {
   diagramTargets: [L('Gefäße · aktive Blutung', 'Vessels · active bleeding', 'عروق · خونریزی فعال'), L('Parenchym · Lazeration', 'Parenchyma · laceration', 'پارانشیم · پارگی'), L('Sammelsystem · Urinleck', 'Collecting system · urine leak', 'سیستم جمع‌کننده · نشت ادرار')],
   diagramCaption: L('Die Phasen beantworten verschiedene Fragen. Ein unauffälliger verzögerter Scan in Hypovolämie schließt eine Leckage nicht zuverlässig aus.', 'The phases answer different questions. A negative delayed scan in hypovolaemia does not reliably exclude a leak.', 'فازها به پرسش‌های متفاوت پاسخ می‌دهند. CT تأخیری منفی در هیپوولمی، نشت را با اطمینان رد نمی‌کند.'),
   imageTitle: L('PDF-Beispiel: Urinkontrast außerhalb des Sammelsystems', 'PDF example: urinary contrast outside the collecting system', 'نمونهٔ PDF: ماده حاجب ادراری خارج از سیستم جمع‌کننده'),
+  quizAction: L('Wissensfrage', 'Knowledge check', 'پرسش دانشی'),
+  flashcardAction: L('Lernkarten', 'Flashcards', 'فلش‌کارت‌ها'),
 }
 
 function Icon({ id }) {
@@ -87,6 +89,10 @@ export default function RenalTraumaPage() {
     {id:'take-home',label:localizedLabels.takeHome,icon:'summary',emphasis:true},
   ]
   const langHref=path=>lang==='de'?path:`${path}?lang=${lang}`
+  const withLang=href=>lang==='de'?href:`${href}${href.includes('?')?'&':'?'}lang=${lang}`
+  const lessonPath=langHref('/abdomen/niere/renaltrauma')
+  const quizHref=withLang(`/ueben/quiz?fach=abdomen&n=1&themen=nierentrauma&from=${encodeURIComponent(lessonPath)}`)
+  const flashcardsHref=withLang(`/flashcards/nierentrauma?from=${encodeURIComponent(lessonPath)}`)
   const sources=[
     {id:'abdomen-p56-p57',tag:'PDF · 56–57 / printed 55–56',title:'Abdomen.pdf – Nierenverletzung / Fornixruptur',citation:pick(lesson.media,lang),scope:pick(lesson.sourceReview,lang)},
     {id:'eau-urological-trauma-2026',tag:'EAU · 2026',title:'EAU Guidelines on Urological Trauma',href:'https://uroweb.org/guidelines/urological-trauma/chapter/urogenital-trauma-guidelines',citation:pick(lesson.sections[0].implication,lang)},
@@ -95,9 +101,12 @@ export default function RenalTraumaPage() {
   ]
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={pick(lesson.title,lang)} author="Dr. Zia"
     breadcrumbs={[{label:'RadYar',href:langHref('/')},{label:pick(L('Abdomen','Abdomen','شکم'),lang),href:langHref('/lernen/abdomen')},{label:pick(L('Niere','Kidney','کلیه'),lang),href:langHref('/lernen/abdomen')}]}
-    sections={sections} labels={localizedLabels} renderIcon={id=><Icon id={id}/>} syncHashNavigation actions={{}}
+    sections={sections} labels={localizedLabels} renderIcon={id=><Icon id={id}/>} syncHashNavigation actions={{
+      mcq:{label:pick(labels.quizAction,lang),href:quizHref},
+      flashcards:{label:pick(labels.flashcardAction,lang),href:flashcardsHref},
+    }}
     theme={{backgroundImage:'/andarun-galaxy-v3.png',heroImage:'/educational/nierentrauma/hero-v2.webp',heroImageOpacity:.92,accent:'#78d0d7',accentStrong:'#166c78',accentSoft:'#e1f3f4',secondary:'#b8a0cf',secondaryStrong:'#674c81',heroBase:'#173341'}}
-    heroImageAlt={pick(L('Schematische Niere mit einer kortikalen Verletzung und kleinem Hämatom; keine diagnostische Aufnahme','Schematic kidney with a cortical injury and a small haematoma; not a diagnostic image','شماتیک کلیه با آسیب قشری و هماتوم کوچک؛ تصویر تشخیصی نیست'),lang)}
+    heroImageAlt={pick(L('Schematische Nierenansicht mit kortikaler Verletzung und ausgedehntem sichelförmigem perirenalem Hämatom; keine diagnostische Aufnahme.','Schematic kidney with a cortical injury and an extensive crescent-shaped perirenal haematoma; not a diagnostic image.','نمای شماتیک کلیه با آسیب قشری و هماتوم گستردهٔ هلالی‌شکل اطراف کلیه؛ تصویر تشخیصی نیست.'),lang)}
     className={styles.page} sources={<LessonSources title={localizedLabels.sources} items={sources} note={pick(lesson.sourceReview,lang)}/> }>
     <LessonSection id="phases" icon="phases" title={pick(lesson.sections[0].title,lang)}>
       <p className={styles.body}>{pick(lesson.sections[0].body,lang)}</p>
