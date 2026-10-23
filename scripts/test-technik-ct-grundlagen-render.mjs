@@ -1,3 +1,5 @@
+import * as accessAssessment from '../data/technikTopicAccessAssessment.js'
+import * as remainingBlocks from '../data/technikRemainingBlocks.js'
 import fs from 'node:fs'
 import assert from 'node:assert/strict'
 import { createRequire } from 'node:module'
@@ -53,7 +55,12 @@ const require=createRequire(import.meta.url)
 const styles=new Proxy({}, {get:(_,key)=>String(key)})
 let activeLang='de'
 const moduleData=await import('../data/technikCTBasicsLesson.js')
+const assessmentModule = { exports: {} }
+new Function('require', 'module', 'exports', transformSync(fs.readFileSync('components/lesson-template/TopicAssessment.jsx','utf8'), {loader:'jsx',jsx:'automatic',format:'cjs'}).code)(require,assessmentModule,assessmentModule.exports)
 const replacements={
+  '@/components/lesson-template/TopicAssessment': assessmentModule.exports,
+  '@/data/technikTopicAccessAssessment': accessAssessment,
+  '@/data/technikRemainingBlocks': remainingBlocks,
   '@/components/Footer':{__esModule:true,default:()=>React.createElement('footer')},
   '@/components/lesson-template/StandardLessonShell':{
     __esModule:true,

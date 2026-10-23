@@ -1,3 +1,5 @@
+> Technik update, 2026-10-24: historical Technik gap/status statements below are superseded by [the complete 134-page source map](technik-pdf-completion-ledger.md) and [completion review](technik-completion-review.md). Gehirn history is unchanged. Coverage does not equal scientific approval.
+
 # Gehirn.pdf und Technik.pdf: Abgleich mit Curriculum und Lesson-Routen
 
 Stand: 20.10.2026. PDF-Mapping und punktuelle Coverage-Updates mit `data/curriculum.js` und den vorhandenen `app/gehirn/**`- und `app/technik/**`-Seiten.

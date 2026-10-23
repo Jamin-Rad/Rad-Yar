@@ -1,3 +1,6 @@
+import { REMAINING_BLOCK_FLASHCARDS, REMAINING_BLOCK_FLASHCARD_TOPICS } from './technikRemainingBlocks'
+import { ACCESS_FLASHCARDS, ACCESS_FLASHCARD_TOPICS } from './technikTopicAccessAssessment'
+import { MR_MYEL_CARDS, MR_MYEL_CARD_TOPIC } from './technikMrMyelographyLesson'
 import { STERNUM_RIB_FLASHCARDS, STERNUM_RIB_FLASHCARD_TOPIC } from './sternumRibLesson'
 import { GLENOHUMERAL_OA_FLASHCARDS, GLENOHUMERAL_OA_LESSON, GLENOHUMERAL_OA_TOPIC_ID } from './mskGlenohumeralOaLesson'
 import { UPPER_ARTERY_CARDS, UPPER_ARTERY_CARD_TOPIC } from './upperLimbArteriesLesson'
@@ -193,6 +196,9 @@ export const FLASHCARD_TOPICS = [
   { id: 'lebermetastasen', area: 'Abdomen', chapter: 'Leberläsionen', icon: 'CT', iconImage: '/fach/abdomen.png', color: '#10b981', href: '/flashcards/lebermetastasen', title: { de: 'Lebermetastasen', en: 'Liver metastases', fa: 'متاستازهای کبدی' }, subtitle: { de: 'Phasenmuster · Vaskularität · Befundung', en: 'Phase pattern · vascularity · reporting', fa: 'الگوی فازی · عروق‌رسانی · گزارش' } },
   STEATOSIS_FLASHCARD_TOPIC,
   ...CT_BASICS_FLASHCARD_TOPICS,
+  MR_MYEL_CARD_TOPIC,
+  ...REMAINING_BLOCK_FLASHCARD_TOPICS,
+  ...ACCESS_FLASHCARD_TOPICS,
   CT_PERFUSION_FLASHCARD_TOPIC,
   CT_RECONSTRUCTION_FLASHCARD_TOPIC,
   HRCT_TECHNIK_FLASHCARD_TOPIC,
@@ -3821,6 +3827,9 @@ export const FLASHCARDS = [
   ...HRCT_TECHNIK_FLASHCARDS,
   ...CT_PROTOCOL_FLASHCARDS,
   ...CT_BASICS_FLASHCARDS,
+  ...MR_MYEL_CARDS,
+  ...REMAINING_BLOCK_FLASHCARDS,
+  ...ACCESS_FLASHCARDS,
 ]
 
 export function getFlashcardTopic(topicId) {

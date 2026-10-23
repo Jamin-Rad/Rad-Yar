@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react'
+import TopicAssessment from '@/components/lesson-template/TopicAssessment'
+import { ACCESS_QUESTIONS } from '@/data/technikTopicAccessAssessment'
 import Footer from '@/components/Footer'
 import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -79,7 +81,7 @@ export default function CTBasicsPage() {
       <div className={styles.tableWrap}><table className={styles.table}><thead><tr><th>{t(L('Baustein','Component','بخش'))}</th><th>{t(L('Funktion / Bedeutung','Function / meaning','کارکرد / معنا'))}</th></tr></thead><tbody>{section.rows.map(([term,detail],index)=><tr key={index}><th scope="row">{t(term)}</th><td>{t(detail)}</td></tr>)}</tbody></table></div>
       <figure className={styles.figure}><img src={section.visual.src} alt={t(section.visual.alt)} loading="lazy"/><figcaption>{t(section.visual.caption)}</figcaption><p>{t(section.visual.legend)}</p></figure>
       <aside className={styles.note}><strong>{t(L('Einordnung','Interpretation','توضیح'))}</strong><p>{t(section.note)}</p></aside>
-      <Check section={section} lang={lang}/><TopicLinks section={section} lang={lang}/>
+      <Check section={section} lang={lang}/>{section.id === 'ct-grundprinzip-aufbau' ? <TopicAssessment key={lang} question={ACCESS_QUESTIONS.find(q => q.id === `photon-counting-ct-${lang}-01`)} topic="photon-counting-ct" lang={lang} returnTo={`/technik/ct-grundlagen?lang=${lang}#ct-grundprinzip-aufbau`}/> : null}<TopicLinks section={section} lang={lang}/>
     </LessonSection>)}
     <LessonSection id="take-home" icon="summary" title={pageLabels.takeHome}>
       <ol className={styles.rules}>

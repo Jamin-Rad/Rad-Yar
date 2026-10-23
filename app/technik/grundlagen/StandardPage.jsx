@@ -1,5 +1,8 @@
 'use client'
 
+import TopicAssessment from '@/components/lesson-template/TopicAssessment'
+import { REMAINING_BLOCK_QUESTIONS, REMAINING_BLOCK_TOPICS } from '@/data/technikRemainingBlocks'
+import { ACCESS_QUESTIONS } from '@/data/technikTopicAccessAssessment'
 import Footer from '@/components/Footer'
 import InProgressBanner from '@/components/InProgressBanner'
 import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
@@ -7,6 +10,7 @@ import { useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { TECHNIK_GRUNDLAGEN as lesson } from '@/data/technikGrundlagenLesson'
 import styles from '../kontrastmittel/page.module.css'
+import completionStyles from './completion.module.css'
 
 const L = (de, en, fa) => ({ de, en, fa })
 const pick = (v, lang) => v?.[lang] || v?.de || ''
@@ -229,7 +233,7 @@ export default function TechnikGrundlagenStandardPage() {
         <p>{lang==='fa'?`صفحهٔ PDF: ${section.pages}`:lang==='en'?`PDF page: ${section.pages}`:`PDF-Seite: ${section.pages}`}</p>
         <div className={styles.tableWrap}><table className={styles.table}><thead><tr><th>{t(L('Begriff','Concept','مفهوم'))}</th><th>{t(L('Lernpunkt','Learning point','نکتهٔ آموزشی'))}</th></tr></thead><tbody>{section.rows.map((row,i)=><tr key={i}>{row.map((cell,j)=><td key={j}>{t(cell)}</td>)}</tr>)}</tbody></table></div>
         {section.id === 'fmri-bold' ? <BoldFigure lang={lang} visual={section.visual} /> : section.visuals?.map((v,i)=><figure key={v.src} style={{margin:'22px 0',padding:14,border:'1px solid var(--border)',borderRadius:16,background:'var(--surface-soft)'}}><img src={v.src} alt={t(v.alt)} loading="lazy" style={{display:'block',width:'100%',height:'auto',borderRadius:10}}/><figcaption style={{marginTop:10}}>{t(v.caption)}</figcaption></figure>)}
-        {section.teachingBlocks?.map(block=><section key={block.id} aria-labelledby={`${block.id}-title`} style={{marginTop:30}}>
+        {section.teachingBlocks?.map(block=><section key={block.id} className={REMAINING_BLOCK_TOPICS.some(topic => topic.id === block.id) ? completionStyles.responsiveBlock : undefined} aria-labelledby={`${block.id}-title`} style={{marginTop:30}}>
           <h3 id={`${block.id}-title`}>{t(block.title)}</h3><p>{t(block.lead)}</p>
           <div className={styles.tableWrap}><table className={styles.table}><thead><tr><th>{t(L('Schritt / Begriff','Step / concept','گام / مفهوم'))}</th><th>{t(L('Was geschieht?','What happens?','چه رخ می‌دهد؟'))}</th></tr></thead><tbody>{block.rows.map((row,i)=><tr key={i}>{row.map((cell,j)=><td key={j}>{t(cell)}</td>)}</tr>)}</tbody></table></div>
           {block.crossReference?<p><a href={block.crossReference.href}>{t(block.crossReference.label)}</a></p>:null}
@@ -248,6 +252,7 @@ export default function TechnikGrundlagenStandardPage() {
           </div>:null}
           {block.supplement?<aside className={styles.callout}><strong>{t(L('Zusatzbeziehung (nicht aus der PDF)','Supplemental relationship (not stated in the PDF)','رابطهٔ تکمیلی (در PDF نیامده است)'))}</strong><p>{t(block.supplement)}</p></aside>:null}
           {block.note?<aside className={styles.callout}><strong>{t(L('Einordnung und Grenzen','Interpretation and limitations','تفسیر و محدودیت‌ها'))}</strong><p>{t(block.note)}</p></aside>:null}
+          {REMAINING_BLOCK_TOPICS.filter(topic => topic.id === block.id).map(topic => <TopicAssessment key={`${topic.id}-${lang}`} question={REMAINING_BLOCK_QUESTIONS.find(q => q.id === `${topic.id}-${lang}-01`)} topic={topic.id} lang={lang} returnTo={`/technik/grundlagen?lang=${lang}#${section.id}`}/>)}
           {block.id === 'dwi-adc-reading' ? <><RetrievalCheck kind="dwiAdc" lang={lang}/><DwiAdcActions lang={lang}/></> : null}
         </section>)}
         {section.id === 'mrt' ? <><MRIKnowledgeCheck lang={lang}/><RetrievalCheck kind="dixon" lang={lang}/><MriFundamentalsActions lang={lang}/><FatSuppressionActions lang={lang}/></> : null}
@@ -266,9 +271,9 @@ export default function TechnikGrundlagenStandardPage() {
         {section.id === 'wirkung' ? <RetrievalCheck kind="effects" lang={lang}/> : null}
         {section.id === 'dosis' ? <RetrievalCheck kind="dose" lang={lang}/> : null}
         {section.id === 'optimierung' ? <RetrievalCheck kind="optimization" lang={lang}/> : null}
-        {section.id === 'teleradiologie' ? <RetrievalCheck kind="roles" lang={lang}/> : null}
+        <TopicAssessment key={`${section.id}-${lang}`} question={ACCESS_QUESTIONS.find(q => q.id === `${section.id}-${lang}-01`)} topic={section.id} lang={lang} returnTo={`/technik/grundlagen?lang=${lang}#${section.id}`}/>
       </LessonSection>)}
-      <LessonSection id="take-home" title={labels.takeHome} icon="summary"><ol><li>{t(L('Die Bildentstehung als Kette von Quelle, Wechselwirkung und Detektor verstehen.','Understand image formation as a chain from source through interaction to detector.','تشکیل تصویر را زنجیره‌ای از منبع، برهم‌کنش و آشکارساز بدانید.'))}</li><li>{t(L('Menge, Energie, Geometrie und Signalverarbeitung als unterschiedliche Einflussgrößen auseinanderhalten.','Distinguish quantity, energy, geometry and signal processing as different influences.','کمیت، انرژی، هندسه و پردازش سیگنال را به‌عنوان عوامل متفاوت از هم تفکیک کنید.'))}</li><li>{t(L('Konkrete Einstellungen und Qualitätsaussagen immer im Kontext von Aufgabe und System bewerten.','Assess settings and image-quality claims in the context of the task and system.','تنظیمات و ادعاهای کیفیت تصویر را در زمینهٔ هدف و سامانهٔ مشخص ارزیابی کنید.'))}</li></ol></LessonSection>
+      <LessonSection id="take-home" title={labels.takeHome} icon="summary"><ol><li>{t(L('Die Bildentstehung als Kette von Quelle, Wechselwirkung und Detektor verstehen.','Understand image formation as a chain from source through interaction to detector.','تشکیل تصویر را زنجیره‌ای از منبع، برهم‌کنش و آشکارساز بدانید.'))}</li><li>{t(L('Vor medizinischer Exposition die individuelle rechtfertigende Indikation stellen; die Aufnahme anschließend auf die Fragestellung optimieren.','Before medical exposure, establish individual justification; then optimize acquisition for the clinical question.','پیش از مواجههٔ پزشکی، اندیکاسیون توجیه‌کنندهٔ فردی را تعیین کنید؛ سپس تصویربرداری را بر اساس پرسش بالینی بهینه کنید.'))}</li><li>{t(L('Qualifikation und Verantwortung an der Aufgabe prüfen – auch in der Teleradiologie; die Bestellung eines SSB entlastet den SSV nicht von seiner Verantwortung.','Check qualification and responsibility against the task, including teleradiology; appointing an SSB does not remove the SSV’s responsibility.','صلاحیت و مسئولیت را با وظیفه تطبیق دهید، حتی در تلرادیولوژی؛ انتصاب SSB مسئولیت SSV را از بین نمی‌برد.'))}</li></ol></LessonSection>
     </StandardLessonShell>
     <Footer/>
   </>

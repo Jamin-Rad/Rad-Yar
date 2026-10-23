@@ -1,0 +1,19 @@
+@media (max-width: 640px) {
+  .responsiveBlock table {
+    min-width: 0 !important;
+    width: 100%;
+    table-layout: auto;
+  }
+  .responsiveBlock thead { display: none; }
+  .responsiveBlock tbody,
+  .responsiveBlock tr,
+  .responsiveBlock td {
+    display: block;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+  }
+  .responsiveBlock td { overflow-wrap: anywhere; }
+  .responsiveBlock td:first-child { padding-bottom: 6px; border-bottom: 0; }
+  .responsiveBlock td:last-child { padding-top: 0; }
+}

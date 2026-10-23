@@ -1,3 +1,5 @@
+> Technik update, 2026-10-24: historical Technik gap/status statements below are superseded by [the complete 134-page source map](technik-pdf-completion-ledger.md) and [completion review](technik-completion-review.md). Gehirn history is unchanged. Coverage does not equal scientific approval.
+
 # Gehirn / Technik authoring status
 
 > Gehirn update, 2026-10-23: the older Gehirn progress notes below are historical. Use [the current page/topic inventory](gehirn-pdf-completion-2026-10-23.md) for current lesson coverage and bounded additions. This notice does not update Technik or imply scientific/visual approval.

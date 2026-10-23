@@ -1,3 +1,5 @@
+import * as accessAssessment from '../data/technikTopicAccessAssessment.js'
+import * as remainingBlocks from '../data/technikRemainingBlocks.js'
 import fs from 'node:fs'
 import assert from 'node:assert/strict'
 import { createRequire } from 'node:module'
@@ -46,13 +48,19 @@ assert.match(intervention.lead.fa, /پراکندگی پرتو از بیمار/)
 const require = createRequire(import.meta.url)
 let activeLang = 'de'
 const styles = new Proxy({}, { get: (_, key) => String(key) })
+const assessmentModule = { exports: {} }
+new Function('require', 'module', 'exports', transformSync(fs.readFileSync('components/lesson-template/TopicAssessment.jsx','utf8'), {loader:'jsx',jsx:'automatic',format:'cjs'}).code)(require,assessmentModule,assessmentModule.exports)
 const replacements = {
+  '@/components/lesson-template/TopicAssessment': assessmentModule.exports,
+  '@/data/technikTopicAccessAssessment': accessAssessment,
+  '@/data/technikRemainingBlocks': remainingBlocks,
   'next/link': { __esModule: true, default: ({ href, children, ...props }) => React.createElement('a', { href, ...props }, children) },
   '@/components/Footer': { __esModule: true, default: () => React.createElement('footer') },
   '@/components/lesson-template/StandardLessonShell': { __esModule: true, default: ({ children, lang, syncHashNavigation, sections, sources }) => React.createElement('main', { lang, 'data-shell': 'StandardLessonShell', 'data-sync-hash': syncHashNavigation, 'data-section-count': sections.length }, children, sources), LessonSection: ({ id, title, children }) => React.createElement('section', { id }, React.createElement('h2', null, title), children), LessonSources: ({ title, items }) => React.createElement('aside', null, React.createElement('h2', null, title), items.map(item => React.createElement('div', { key: item.href }, React.createElement('small', null, item.tag), React.createElement('a', { href: item.href }, item.title), React.createElement('p', null, item.citation), React.createElement('p', null, item.scope)))) },
   '@/components/InProgressBanner': { __esModule: true, default: () => React.createElement('aside', null, 'in progress') },
   '@/providers/LanguageProvider': { useLanguage: () => ({ lang: activeLang }) },
   '@/data/technikGrundlagenLesson': { TECHNIK_GRUNDLAGEN },
+  './completion.module.css': { __esModule: true, default: styles },
   '../kontrastmittel/page.module.css': { __esModule: true, default: styles },
 }
 const source = transformSync(fs.readFileSync('app/technik/grundlagen/StandardPage.jsx', 'utf8'), { loader: 'jsx', jsx: 'automatic', format: 'cjs' }).code
