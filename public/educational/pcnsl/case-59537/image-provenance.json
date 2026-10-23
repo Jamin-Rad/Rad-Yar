@@ -1,0 +1,21 @@
+{
+  "lessonId": "lymphom-zns",
+  "case": {
+    "source": "Radiopaedia",
+    "caseId": 59537,
+    "title": "Primary diffuse large B-cell lymphoma of the CNS",
+    "contributor": "Frank Gaillard",
+    "studyId": 66926,
+    "caseUrl": "https://radiopaedia.org/cases/primary-diffuse-large-b-cell-lymphoma-of-the-cns?lang=gb",
+    "accessed": "2026-10-23",
+    "reuseBasis": "The user explicitly authorized Radiopaedia images for RadYar, including its commercial subscription context. This is project authorization, not a claim of a Creative Commons license.",
+    "selection": "A same-study axial set provides post-contrast T1, DWI and ADC for paired visual reading. This case has heterogeneous ring-like enhancement and is explicitly labelled as an example of pattern variability, not as the typical homogeneous pattern or a frequency claim.",
+    "clinicalContext": "Case page reports histological confirmation. No additional patient history or immune status is asserted in the lesson.",
+    "imageHandling": "Original case images copied as delivered; no crop, annotation, recoloring or diagnostic overlay added.",
+    "frames": [
+      { "file": "t1c-axial.png", "imageId": 37684454, "sequence": "Axial T1 C+", "plane": "axial", "dimensions": "448x448", "purpose": "Shows the enhancing right basal-ganglia lesion and central nonenhancing component." },
+      { "file": "dwi-axial.png", "imageId": 37684174, "sequence": "Axial DWI", "plane": "axial", "dimensions": "448x448", "purpose": "Paired diffusion image from the same study and lesion." },
+      { "file": "adc-axial.png", "imageId": 37684231, "sequence": "Axial ADC", "plane": "axial", "dimensions": "448x448", "purpose": "Matching ADC map from the same study, used with DWI to assess corresponding low ADC." }
+    ]
+  }
+}

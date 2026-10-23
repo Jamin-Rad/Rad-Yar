@@ -38,6 +38,12 @@ No demonstrated critical, major or minor correction request in inspected scope.
 
 Scientific sources: Mansour2014 https://link.springer.com/article/10.1186/1470-7330-14-22 ; Sutherland2012 https://pubmed.ncbi.nlm.nih.gov/22697326/ ; Schroeder2006 https://pubmed.ncbi.nlm.nih.gov/16947010/ . These support the recorded departures from PDF absolutes; clinical-media and runtime verification remain independent requirements.
 
+## Independent re-review — Radiopaedia image addition (2026-10-23)
+
+Separate read-only reviewer `/root/pcnsl_image_recheck` inspected the source case in the browser, all three actual local image pixels, provenance JSON, sequence labels, route placement, DE/EN/FA captions/alts/note and reran `npx tsx scripts/check-pcnsl.mjs`. Source case rID 59537 / study 66926 lists Axial DWI, Axial ADC and Axial T1 C+; the image IDs in the provenance match the observed source assets. The right basal-nuclei enhancing lesion, central nonenhancing component and paired DWI/ADC appearance are visible. The lesson explicitly labels heterogeneous ring-like enhancement as pattern variability and does not claim it is typical, establish a universal cutoff, or prove diagnosis from imaging. No correction finding was raised for this addition.
+
+Narrow re-review result: VIS PASS for selected media/source match/attribution/fit; LNG PASS for static semantic parity of the new figure; REV PASS for this independent re-review. This did not re-audit full lesson SRC/EDU/ASM and did not render the local route. Browser/RTL/viewport UX remains BLOCKED; Dr. Zia scientific approval remains pending. PC-UX-002 from the original review remains open.
+
 ## Decision
 
 Reviewed draft with unresolved clinical-media/browser evidence; no unconditional acceptance. Scientific approval by Dr. Zia: pending. Publication: not_requested. No correction cycle required for demonstrated defects. Source inspection, an integrated curriculum link and passing audits do not imply release approval.

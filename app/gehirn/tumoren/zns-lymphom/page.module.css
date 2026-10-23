@@ -41,3 +41,12 @@
 .diagram { margin: 24px 0; }
 .diagram img { display: block; width: 100%; height: auto; max-height: 420px; object-fit: contain; }
 .diagram figcaption { font-size: 14px; line-height: 1.85; color: var(--body); margin-top: 14px; }
+.caseFigure { margin-block: 26px; padding: clamp(14px,3vw,22px); border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.caseFigure figcaption { margin-bottom: 14px; color: var(--body); font-weight: 650; line-height: 1.75; }
+.caseImages { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.caseImages section { min-width: 0; }
+.caseImages h3 { margin: 0 0 8px; color: var(--teal-700); font-size: 1rem; }
+.caseImages img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: #111; }
+.caseFigure p { line-height: 1.8; }
+.caseFigure a { color: var(--teal-700); text-underline-offset: 3px; }
+@media(max-width:760px) { .caseImages { grid-template-columns: 1fr; } }

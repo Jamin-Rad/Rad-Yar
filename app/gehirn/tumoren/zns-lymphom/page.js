@@ -23,10 +23,23 @@ function SelfCheck({ lang }) {
   const [answer, setAnswer] = useState(null)
   return <section className={styles.quiz} aria-labelledby="pcnsl-check"><h3 id="pcnsl-check">{pick(CHAPTERS[2].title, lang)}</h3><p>{pick(CHECK.question, lang)}</p><div className={styles.answers}>{CHECK.options.map((option, index) => <button type="button" key={index} aria-pressed={answer === index} onClick={() => setAnswer(index)}>{pick(option, lang)}</button>)}</div><div aria-live="polite" aria-atomic="true">{answer !== null && <p className={styles.feedback}>{pick(CHECK.feedback[answer], lang)}</p>}</div></section>
 }
+function CaseFigure({ lang }) {
+  const c = value => pick(value, lang)
+  return <figure className={styles.caseFigure}>
+    <figcaption>{c(COPY.caseTitle)}<br />{c(COPY.caseCaption)}</figcaption>
+    <div className={styles.caseImages}>
+      <section><h3>T1 C+</h3><img src="/educational/pcnsl/case-59537/t1c-axial.png" width="448" height="448" loading="lazy" alt={c(COPY.caseT1Alt)} /></section>
+      <section><h3>DWI</h3><img src="/educational/pcnsl/case-59537/dwi-axial.png" width="448" height="448" loading="lazy" alt={c(COPY.caseDwiAlt)} /></section>
+      <section><h3>ADC</h3><img src="/educational/pcnsl/case-59537/adc-axial.png" width="448" height="448" loading="lazy" alt={c(COPY.caseAdcAlt)} /></section>
+    </div>
+    <p>{c(COPY.caseNote)}</p>
+    <a href="https://radiopaedia.org/cases/primary-diffuse-large-b-cell-lymphoma-of-the-cns?lang=gb" target="_blank" rel="noopener noreferrer">Radiopaedia · rID 59537</a>
+  </figure>
+}
 function Chapter({ id, lang }) {
   const c = value => pick(value, lang)
   if (id === 'location') return <><p className={reference.lead}>{c(COPY.basics)}</p><p>{c(COPY.location)}</p><figure className={styles.diagram}><img src="/educational/pcnsl-schematic.svg" alt={c(COPY.heroAlt)} width="840" height="600" /><figcaption>{c(COPY.diagramCaption)}</figcaption></figure><p>{c(COPY.immuneContext)}</p></>
-  if (id === 'pattern') return <><p className={reference.lead}>{c(COPY.patternIntro)}</p><Table headers={COPY.patternHeaders} rows={COPY.patternRows} lang={lang} /><details className={styles.sources}><summary>{c(COPY.advanced)}</summary><Table headers={COPY.patternHeaders} rows={COPY.advancedRows} lang={lang} /></details></>
+  if (id === 'pattern') return <><p className={reference.lead}>{c(COPY.patternIntro)}</p><Table headers={COPY.patternHeaders} rows={COPY.patternRows} lang={lang} /><CaseFigure lang={lang} /><details className={styles.sources}><summary>{c(COPY.advanced)}</summary><Table headers={COPY.patternHeaders} rows={COPY.advancedRows} lang={lang} /></details></>
   if (id === 'differentials') return <><p className={reference.lead}>{c(COPY.differentialIntro)}</p><Table headers={COPY.patternHeaders} rows={COPY.differentialRows} lang={lang} /><aside className={reference.warning}><span className={reference.calloutLabel}>{c(COPY.caution)}</span><p>{c(COPY.warning)}</p></aside><SelfCheck lang={lang} /></>
   return <ul className={styles.summary}>{COPY.summary.map((rule, i) => <li key={i}><Icon name="check" /><span>{c(rule)}</span></li>)}</ul>
 }
