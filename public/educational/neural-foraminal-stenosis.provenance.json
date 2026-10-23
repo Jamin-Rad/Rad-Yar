@@ -1,0 +1,12 @@
+{
+  "asset": "neural-foraminal-stenosis.svg",
+  "type": "original code-native educational schematic",
+  "clinicalUse": "Non-diagnostic conceptual graphic, not to scale and not a patient image.",
+  "purpose": "Illustrate the progression used in the lumbar Lee MRI grading: preserved perineural fat, fat obliteration in one opposing axis, obliteration in both axes without root deformation, and root deformation.",
+  "sourceBasis": [
+    "Lee et al. AJR 2010;194:1095-1098. DOI 10.2214/AJR.09.2772.",
+    "Lee et al. Korean J Radiol 2023;24:224-234. DOI 10.3348/kjr.2022.0351."
+  ],
+  "localization": "No language-specific text is embedded in the SVG; translated alt text and the adjacent table provide the localized explanation.",
+  "reviewStatus": "Independent visual review passed on 2026-10-23; conceptual, non-diagnostic scope confirmed."
+}

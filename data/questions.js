@@ -26,6 +26,7 @@ import { BRAIN_METASTASES_QUESTIONS } from './gehirnHirnmetastasenLesson'
 import { KOLLOID_QUESTIONS } from './gehirnKolloidzysteLesson'
 import { UIP_IPF_QUESTIONS } from './thoraxUipIpfLesson'
 import { BRONCHIECTASIS_QUESTIONS } from './bronchiectasisLesson'
+import { NEUROFORAMENSTENOSE_QUESTIONS, NEUROFORAMENSTENOSE_TOPIC_GROUP } from './neuroforamenstenoseLesson'
 import { RENAL_TRAUMA_QUESTIONS } from './renalTraumaLesson'
 import { ADPKD_QUESTIONS, ADPKD_TOPIC_GROUP } from './adpkdImagingAssessments'
 import { PULMONARY_EDEMA_QUESTIONS } from './pulmonaryEdema'
@@ -4346,9 +4347,11 @@ for (const lang of Object.keys(QUESTION_BANK)) {
   QUESTION_BANK[lang].push(...(LIVER_MRI_PROTOCOL_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(OSTEOCHONDROSIS_DISSECANS_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(SHOULDER_INSTABILITY_QUESTIONS[lang] || []))
+  QUESTION_BANK[lang].push(...(NEUROFORAMENSTENOSE_QUESTIONS[lang] || []))
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  NEUROFORAMENSTENOSE_TOPIC_GROUP,
   SHOULDER_INSTABILITY_TOPIC_GROUP,
   ADPKD_TOPIC_GROUP,
   {
