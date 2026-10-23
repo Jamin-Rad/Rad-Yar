@@ -309,15 +309,9 @@ const CASE_COPY = {
   de: {
     label: 'Fallbeispiele',
     title: 'Fallbeispiele',
-    lead: 'Externe Textverweise auf Radiopaedia.org; hier werden keine Radiopaedia-Bilder eingebettet. Fallangaben bitte auf der Originalseite prüfen.',
+    lead: 'Ein ausgewähltes Mehrphasen-CT und ein ergänzender Fall zu HHT.',
     openCase: 'Radiopaedia-Seite öffnen',
     cases: [
-      {
-        title: 'Radiopaedia-Fall: Hepatische AVM',
-        label: 'AVM',
-        meta: 'Externer Fallverweis. Bilder und Fallbeschreibung sind auf der Originalseite zu prüfen.',
-        url: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
-      },
       {
         title: 'Radiopaedia-Fall: HHT mit Leberbeteiligung',
         label: 'HHT',
@@ -329,15 +323,9 @@ const CASE_COPY = {
   en: {
     label: 'Cases',
     title: 'Cases',
-    lead: 'External text links to Radiopaedia.org; no Radiopaedia images are embedded here. Check case details on the original pages.',
+    lead: 'A selected multiphase CT case and a supplementary HHT case.',
     openCase: 'Open Radiopaedia page',
     cases: [
-      {
-        title: 'Radiopaedia case: Hepatic AVM',
-        label: 'AVM',
-        meta: 'External case link. Check images and case description on the original page.',
-        url: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
-      },
       {
         title: 'Radiopaedia case: HHT with liver involvement',
         label: 'HHT',
@@ -349,15 +337,9 @@ const CASE_COPY = {
   fa: {
     label: 'نمونه کیس‌ها',
     title: 'نمونه کیس‌ها',
-    lead: 'پیوند متنی به صفحات خارجی Radiopaedia.org؛ تصویری از این سایت در اینجا درج نشده است. جزئیات کیس را در صفحهٔ اصلی بررسی کنید.',
+    lead: 'یک کیس CT چندفازی و یک نمونهٔ تکمیلی از HHT.',
     openCase: 'باز کردن صفحهٔ Radiopaedia',
     cases: [
-      {
-        title: 'کیس Radiopaedia: AVM کبدی',
-        label: 'AVM',
-        meta: 'پیوند به کیس خارجی؛ تصاویر و شرح کیس را در صفحهٔ اصلی بررسی کنید.',
-        url: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
-      },
       {
         title: 'کیس Radiopaedia: HHT با درگیری کبد',
         label: 'HHT',
@@ -373,6 +355,46 @@ const AVM_PDF_CASE = {
   en: { title: 'Abdomen.pdf p. 11: non-diagnostic source figure', text: 'The PDF reports normal DWI and early arterial enhancement followed by wash-out. It names HCC as an important differential and additionally advises considering cirrhosis and the DWI sequence. This is the slide’s advice, not an independently validated decision rule. The eight CT/MRI frames are shown only as a non-diagnostic source figure; they are not labelled by phase or target structure, so it remains unclear whether wash-out refers to the shunt or a separate lesion. This single observation is not a general AVM rule.', alt: 'Non-diagnostic, unlabelled CT and MRI montage from Abdomen.pdf, physical page 11 (printed page 10); no phase or target structure is assigned.', question: 'What can safely be concluded from text and figure?', options: ['Wash-out proves HCC and makes cirrhosis context irrelevant.', 'The PDF reports normal DWI and early arterial enhancement followed by wash-out; it advises considering cirrhosis and DWI, but the montage does not identify the target structure.', 'Every hepatic AVM shows wash-out.'], answer: 'Correct: the source reports those findings and the cirrhosis/DWI context, but the image does not assign wash-out to a specific target.' },
   fa: { title: 'Abdomen.pdf صفحهٔ ۱۱: تصویر منبعِ غیرتشخیصی', text: 'PDF، DWI طبیعی و جذب زودرس شریانی مادهٔ حاجب و سپس wash-out را گزارش می‌کند. HCC را تشخیص افتراقی مهم می‌داند و توجه به سیروز کبدی و سکانس DWI را نیز توصیه می‌کند. این توصیهٔ اسلاید است، نه قاعدهٔ تصمیم‌گیری که مستقلاً اعتبارسنجی شده باشد. هشت تصویر CT/MRI فقط به‌عنوان تصویر منبعِ غیرتشخیصی نمایش داده می‌شوند و بر اساس فاز یا ساختار هدف برچسب ندارند؛ بنابراین مشخص نیست wash-out به شانت مربوط است یا ضایعه‌ای جداگانه، و این مشاهدهٔ منفرد را نمی‌توان به همهٔ AVMها تعمیم داد.', alt: 'مونتاژ غیرتشخیصی و بدون برچسب CT/MRI از صفحهٔ فیزیکی ۱۱ (صفحهٔ چاپی ۱۰) Abdomen.pdf؛ فاز یا ساختار هدفی تعیین نشده است.', question: 'از متن و تصویر چه نتیجه‌ای را می‌توان با اطمینان گرفت؟', options: ['Wash-out، HCC را ثابت می‌کند و زمینهٔ سیروز اهمیتی ندارد.', 'PDF، DWI طبیعی و جذب زودرس شریانی و سپس wash-out را گزارش می‌کند؛ توجه به زمینهٔ سیروز و DWI را توصیه می‌کند، اما مونتاژ ساختار هدف را مشخص نمی‌کند.', 'همهٔ AVMهای کبدی wash-out نشان می‌دهند.'], answer: 'درست است: منبع این یافته‌ها و توجه به زمینهٔ سیروز/DWI را ذکر می‌کند، اما تصویر wash-out را به ساختار مشخصی نسبت نمی‌دهد.' },
 }
+
+const RADIOPAEDIA_AVM_CASE = {
+  de: {
+    title: 'Mehrphasen-CT: hepatische AVM',
+    intro: 'Bei einer 85-jährigen Patientin mit abdomineller Distension war eine Läsion im rechten Leberlappen zuvor als Hämangiom bezeichnet worden. Vergleiche die vier CT-Phasen und achte auf die Gefäßstrukturen sowie die frühe Portalvenenopazifizierung.',
+    labels: ['Nativ', 'Arterielle Phase', 'Portalvenöse Phase', 'Verzögerte Phase'],
+    finding: 'Beschrieben werden dilatierte, geschlängelte periphere Gefäßkanäle, eine hypertrophierte rechte Leberarterie und eine Opazifizierung der Portalvenenäste bereits in der arteriellen Phase – passend zu einem arterioportalen Shunt. Die Originalfallbeschreibung nennt eine hepatische AVM.',
+    credit: 'Bilder: Fall von Adarsh Ad, Radiopaedia.org, rID 71969, CC BY-NC-SA 3.0.',
+    link: 'Originalfall und Bildserie auf Radiopaedia öffnen',
+    alt: ['Axiales CT nativ aus dem Radiopaedia-Fall einer hepatischen AVM.', 'Axiales CT in arterieller Phase aus dem Radiopaedia-Fall einer hepatischen AVM.', 'Axiales CT in portalvenöser Phase aus dem Radiopaedia-Fall einer hepatischen AVM.', 'Axiales CT in verzögerter Phase aus dem Radiopaedia-Fall einer hepatischen AVM.'],
+    url: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
+  },
+  en: {
+    title: 'Multiphase CT: hepatic AVM',
+    intro: 'An 85-year-old woman presented with abdominal distension. A right hepatic lobe lesion had previously been reported as a haemangioma. Compare the four CT phases and look for the vascular channels and early portal-vein opacification.',
+    labels: ['Non-contrast', 'Arterial phase', 'Portal venous phase', 'Delayed phase'],
+    finding: 'The case describes dilated tortuous peripheral vascular channels, a hypertrophied right hepatic artery, and opacification of portal-vein branches during the arterial phase, consistent with an arterioportal shunt. The original case diagnosis is hepatic AVM.',
+    credit: 'Images: case contributed by Adarsh Ad, Radiopaedia.org, rID 71969, CC BY-NC-SA 3.0.',
+    link: 'Open the original Radiopaedia case and image series',
+    alt: ['Axial non-contrast CT from a Radiopaedia hepatic AVM case.', 'Axial arterial-phase CT from a Radiopaedia hepatic AVM case.', 'Axial portal-venous-phase CT from a Radiopaedia hepatic AVM case.', 'Axial delayed-phase CT from a Radiopaedia hepatic AVM case.'],
+    url: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
+  },
+  fa: {
+    title: 'CT چندفازی: AVM کبدی',
+    intro: 'بیمار خانمی ۸۵ ساله با اتساع شکم بود. در گزارش قبلی، ضایعهٔ لوب راست کبد همانژیوم تشخیص داده شده بود. چهار فاز CT را مقایسه کنید و به مجاری عروقی و اپاسیفیکاسیون زودرس ورید پورت توجه کنید.',
+    labels: ['بدون کنتراست', 'فاز شریانی', 'فاز ورید پورت', 'فاز تأخیری'],
+    finding: 'در شرح کیس، مجاری عروقی محیطیِ متسع و پیچ‌خورده، شریان کبدی راستِ هیپرتروفیه و اپاسیفیکاسیون شاخه‌های ورید پورت در فاز شریانی توصیف شده‌اند؛ الگویی سازگار با شانت آرتریوپورتال. تشخیص ثبت‌شده در کیس اصلی AVM کبدی است.',
+    credit: 'تصاویر: کیس ارسالی Adarsh Ad، Radiopaedia.org، شناسهٔ rID 71969، مجوز CC BY-NC-SA 3.0.',
+    link: 'باز کردن کیس و سری تصاویر اصلی در Radiopaedia',
+    alt: ['CT اکسیال بدون کنتراست از کیس AVM کبدی در Radiopaedia.', 'CT اکسیال در فاز شریانی از کیس AVM کبدی در Radiopaedia.', 'CT اکسیال در فاز ورید پورت از کیس AVM کبدی در Radiopaedia.', 'CT اکسیال در فاز تأخیری از کیس AVM کبدی در Radiopaedia.'],
+    url: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
+  },
+}
+
+const RADIOPAEDIA_AVM_IMAGES = [
+  '/avm-liver/radiopaedia-71969/noncontrast.jpeg',
+  '/avm-liver/radiopaedia-71969/arterial.jpeg',
+  '/avm-liver/radiopaedia-71969/portal-venous.jpeg',
+  '/avm-liver/radiopaedia-71969/delayed.jpeg',
+]
 
 const READ_COPY = {
   de: { mark: 'Als gelesen markieren', read: 'Als gelesen markiert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
@@ -468,6 +490,7 @@ export default function LeberAvmPage() {
   const { lang } = useLanguage()
   const copy = CONTENT[lang] || CONTENT.de
   const caseCopy = CASE_COPY[lang] || CASE_COPY.de
+  const radiopaediaCase = RADIOPAEDIA_AVM_CASE[lang] || RADIOPAEDIA_AVM_CASE.de
   const pageSections = useMemo(() => {
     const exists = copy.sections.some(section => section.id === 'fallbeispiele')
     if (exists) return copy.sections
@@ -613,6 +636,22 @@ export default function LeberAvmPage() {
 
 
           <Section id="fallbeispiele" title={caseCopy.title} lead={caseCopy.lead}>
+            <article className={styles.radiopaediaCase}>
+              <div className={styles.radiopaediaCaseIntro}>
+                <h3>{radiopaediaCase.title}</h3>
+                <p>{radiopaediaCase.intro}</p>
+              </div>
+              <div className={styles.radiopaediaPhaseGrid}>
+                {RADIOPAEDIA_AVM_IMAGES.map((src, index) => (
+                  <figure key={src}>
+                    <Image src={src} alt={radiopaediaCase.alt[index]} width={480} height={480} sizes="(max-width: 680px) 100vw, 25vw" unoptimized />
+                    <figcaption>{radiopaediaCase.labels[index]}</figcaption>
+                  </figure>
+                ))}
+              </div>
+              <p className={styles.radiopaediaCaseFinding}>{radiopaediaCase.finding}</p>
+              <footer className={styles.radiopaediaCaseCredit}>{radiopaediaCase.credit} <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 3.0</a> · <a href={radiopaediaCase.url} target="_blank" rel="noopener noreferrer">{radiopaediaCase.link}</a></footer>
+            </article>
             <div className={styles.caseGrid}>
               {caseCopy.cases.map(item => (
                 <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>

@@ -1,0 +1,15 @@
+{
+  "caseUrl": "https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1",
+  "radiopaediaCaseId": "71969",
+  "contributor": "Adarsh Ad",
+  "license": "CC BY-NC-SA 3.0",
+  "reuseAuthorization": "The user explicitly confirmed permission to use Radiopaedia cases in RadYar, including in the paid-subscription context.",
+  "verification": "The root agent inspected the guest-accessible case page and its CT study in the in-app browser on 2026-10-23. The independent reviewer could not access the page from its environment and records that evidence limitation.",
+  "images": [
+    { "file": "noncontrast.jpeg", "imageId": "51701706", "phase": "Axial non-contrast" },
+    { "file": "arterial.jpeg", "imageId": "51701682", "phase": "Axial C+ arterial phase" },
+    { "file": "portal-venous.jpeg", "imageId": "51701798", "phase": "Axial C+ portal venous phase" },
+    { "file": "delayed.jpeg", "imageId": "51701830", "phase": "Axial C+ delayed" }
+  ],
+  "interpretationLimit": "This is a separately sourced CT teaching example. The PDF p.11 also includes four unlabelled MRI frames; no one-to-one match to its eight-frame montage is claimed."
+}

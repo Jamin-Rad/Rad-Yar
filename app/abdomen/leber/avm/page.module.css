@@ -573,6 +573,20 @@
   margin: 18px 0;
 }
 
+.radiopaediaCase { margin: 0 0 24px; overflow: hidden; border: 1px solid var(--line, #d8e2e8); border-radius: 18px; background: var(--surface, #fff); }
+.radiopaediaCaseIntro { padding: 20px 22px 8px; }
+.radiopaediaCaseIntro h3 { margin: 0 0 8px; font-size: 1.2rem; }
+.radiopaediaCaseIntro p, .radiopaediaCaseFinding { margin: 0; line-height: 1.7; }
+.radiopaediaPhaseGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 12px 20px; }
+.radiopaediaPhaseGrid figure { min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--line, #d8e2e8); border-radius: 10px; background: #080b10; }
+.radiopaediaPhaseGrid img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; }
+.radiopaediaPhaseGrid figcaption { padding: 8px 10px; background: var(--surface, #fff); font-size: .9rem; font-weight: 700; text-align: center; }
+.radiopaediaCaseFinding { padding: 10px 22px 14px; }
+.radiopaediaCaseCredit { padding: 12px 22px 18px; border-top: 1px solid var(--line, #d8e2e8); color: var(--text-soft); font-size: .86rem; line-height: 1.65; }
+.radiopaediaCaseCredit a { color: #0e7490; font-weight: 750; text-underline-offset: 3px; }
+:global(html[data-theme='dark']) .radiopaediaCase { background: var(--surface, #171d26); }
+:global(html[data-theme='dark']) .radiopaediaPhaseGrid figcaption { background: #171d26; }
+
 .caseCardLink {
   display: block;
   overflow: hidden;
@@ -638,6 +652,8 @@
   .caseBody { padding: 16px; }
   .caseBody h3 { font-size: 17px; }
   .caseBody p { font-size: 16px; line-height: 1.72; }
+  .radiopaediaPhaseGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 10px 12px; }
+  .radiopaediaCaseIntro, .radiopaediaCaseFinding, .radiopaediaCaseCredit { padding-inline: 14px; }
 }
 
 :global(html[data-theme='dark']) .caseCardLink {
