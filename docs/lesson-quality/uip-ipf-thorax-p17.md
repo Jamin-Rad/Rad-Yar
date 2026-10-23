@@ -34,7 +34,7 @@ Ein code-native Schema zeigt basal-subpleurale retikuläre Linien, Traktionsverz
 
 ## Assessments und Integrationshaken
 
-Die Lektion exportiert `UIP_IPF_QUESTIONS` (je eine vieroptionige Frage pro Sprache, korrekter Index und antwortspezifische Erklärungen), `UIP_IPF_FLASHCARD_TOPIC` und `UIP_IPF_FLASHCARDS`. Die zentrale Registrierung in `data/questions.js`, `data/flashcards.js`, das Curriculum und die batchweite Matrix liegen außerhalb dieses Autorenscopes und müssen durch die Koordination integriert und anschließend erneut getestet werden.
+Die Lektion exportiert `UIP_IPF_QUESTIONS` (je eine vieroptionige Frage pro Sprache, korrekter Index und antwortspezifische Erklärungen), `UIP_IPF_FLASHCARD_TOPIC` und `UIP_IPF_FLASHCARDS`. Die Frage ist in `data/questions.js`, Thema und Karte sind in `data/flashcards.js` registriert; `data/curriculum.js` verlinkt Lektion, Quiz und Karte. Die zentrale Integration ist vorhanden. Der gezielte Abruf und Sprachparität müssen bei jeder relevanten Änderung erneut geprüft werden.
 
 ## Quellen
 
@@ -56,11 +56,15 @@ Die Lektion exportiert `UIP_IPF_QUESTIONS` (je eine vieroptionige Frage pro Spra
 
 ## QA-Status
 
-- SRC: PDF p.17 rendered and read; notes above the UIP subsection and the lower diagram were visually separated. Statements are mapped in the ledger. Independent source review pending.
-- EDU: concise three-part teaching path with UIP/IPF distinction, pattern table, cave and self-check; independent review pending.
+- SRC: PDF p.17 rendered and read; notes above the UIP subsection and the lower diagram were visually separated. Statements are mapped in the ledger. The PDF's upper CT panels are correctly identified as oedema, not UIP. Current consensus sources are linked. Independent delta review pending.
+- EDU: concise teaching path with UIP/IPF distinction, pattern table, cave and self-check; independent delta review pending.
 - VIS: authored concept diagram is relevant but non-diagnostic. PDF CT examples are not UIP. Typical UIP case-image verification remains unresolved; Radiopaedia rID 13199 was inaccessible at authoring time.
-- LNG: authored DE/EN/FA keys in parallel units; Persian rendering of “mosaic attenuation” was clarified after independent review; semantic delta review pending.
-- ASM: inline check is 4-choice with per-option feedback. MCQ URL language query delimiter was corrected after independent review. Export hooks exist; central-bank, flashcard-page and curriculum connections remain pending coordinator integration.
+- LNG: authored DE/EN/FA keys in parallel units; Persian rendering of “mosaic attenuation” was clarified. Independent review found a Persian self-check prompt in the German slot; it was corrected and independently retested against all localized MCQs.
+- ASM: inline check is 4-choice with per-option feedback. MCQ URL uses the language query delimiter; central MCQ, flashcard, and curriculum connections are present. Exact locale retrieval, answer/explanation consistency, and global MCQ bank audit pass. Browser rendering remains unverified.
 - UX: build/browser desktop, mobile and RTL evidence pending; no runtime claim.
-- REV: first independent review completed; SRC/EDU PASS. Corrections were made for LNG-01 (Persian term) and ASM-01 (quiz URL delimiter); delta retest pending. VIS/UX remain blocked on accessible case/runtime evidence; central integrations await coordinator.
+- REV: independent post-fix review PASS for SRC, EDU, LNG, ASM and the concept graphic's accuracy. It confirmed the German-slot correction and all DE/EN/FA quiz/card/curriculum links. VIS is BLOCKED pending an inspected typical UIP HRCT case/frame; UX is BLOCKED pending browser evidence for languages, RTL, themes, viewport and interactions. No Dr. Zia clinical or release approval is established.
 - Scientific approval and release approval: not established.
+
+## Zweite unabhängige Delta-Prüfung — 2026-10-23
+
+Ein weiterer unabhängiger Review fand zwei nachzubessernde Punkte: In der Zeile „wahrscheinliche UIP“ fehlte „kein subpleurales Sparing“, und die richtige MCQ-Antwort war deutlich länger als die Distraktoren. ATS/ERS/JRS/ALAT 2022, Tabelle 3 (PMC9851481), bestätigt als Merkmal der wahrscheinlichen UIP das Fehlen von subpleural sparing. Das Merkmal wurde in die DE/EN/FA-Zeile und den Selbstcheck aufgenommen. Die vier MCQ-Optionen wurden auf kurze, parallele Kategorien reduziert; die Erklärungen tragen weiterhin die Begründung. `scripts/test-uip-ipf-assessment.mjs` prüft Kriterium, lokalisierte Frage, Antwortlängenverteilung, exakten Abruf und Karte. Der fokussierte Test besteht. Unabhängiger Retest der beiden Korrekturen steht noch aus; VIS bleibt wegen fehlendem geprüftem UIP-Fallbild BLOCKED, UX wegen fehlender Browserprüfung BLOCKED.
