@@ -67,6 +67,21 @@ assert.match(data.chapters.find(chapter => chapter.id === 'hrct').note.de, /kein
 assert.match(data.chapters.find(chapter => chapter.id === 'hrct').note.en, /no significant difference/)
 assert.match(data.chapters.find(chapter => chapter.id === 'hrct').note.fa, /تفاوت معناداری دیده نشد/)
 assert.ok(!JSON.stringify(data).includes('سپتا‌ی'), 'Persian septa spelling is corrected')
+const hrctChapter = data.chapters.find(chapter => chapter.id === 'hrct')
+const modalityChapter = data.chapters.find(chapter => chapter.id === 'differentiate')
+assert.ok(!hrctChapter.figure, 'mixed-modality source montage is not presented under the HRCT heading')
+assert.equal(modalityChapter.figure?.src, '/educational/pulmonary-edema/pdf-p17-examples.png', 'source montage appears in the modality-comparison chapter')
+for (const phrase of [
+  'first two panels are axial and coronal CT',
+  'Die ersten beiden Felder sind axiale und koronare CT',
+  'دو پنل نخست CT محوری و کرونال‌اند',
+  'third panel is a chest radiograph',
+  'dritte Feld ist eine Thoraxaufnahme',
+  'پنل سوم رادیوگرافی قفسه سینه',
+]) assert.ok(JSON.stringify(modalityChapter.figure).includes(phrase), `modality caption is explicit and localized: ${phrase}`)
+const mediaProvenance = fs.readFileSync('docs/lesson-quality/media-provenance.md', 'utf8')
+assert.match(mediaProvenance, /Local asset: `public\/educational\/pulmonary-edema\/pdf-p17-examples\.png`/)
+assert.match(mediaProvenance, /user explicitly authorized reuse of images in the supplied PDFs for RadYar/)
 for (const question of PULMONARY_EDEMA_QUESTIONS) {
   const answer = question.options.find(option => option.id === question.correct)
   assert.ok(answer, `${question.id}: correct option exists`)

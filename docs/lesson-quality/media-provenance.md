@@ -74,6 +74,16 @@ No external Radiopaedia asset is used in this adrenal delta.
 - Reuse basis: the user explicitly authorized reuse of images contained in their supplied PDFs for RadYar lessons.
 - External provenance or license: not asserted.
 
+## Pulmonary oedema modality-comparison figure
+
+- Local asset: `public/educational/pulmonary-edema/pdf-p17-examples.png` (760 × 225 px).
+- Origin: crop of the three-panel upper “Kardiogenes Lungenödem” section in the user-provided `Thorax.pdf`, physical page 17 (printed page 16).
+- Figure type: axial CT, coronal CT and frontal chest radiograph; the source does not provide reliable panel-specific acquisition metadata or contributors.
+- Lesson use: modality comparison only. The first two panels are presented as CT examples for the combined pattern discussed in the table; the third is explicitly labelled as a chest radiograph. No individual sign is attributed to a particular panel and none is presented as a standalone diagnostic criterion.
+- Reuse basis: the user explicitly authorized reuse of images in the supplied PDFs for RadYar.
+- Selection rationale: preserves the source's cardiogenic-oedema examples while teaching the distinction between HRCT and radiography.
+- External provenance or license: not asserted; contributors are not identified in the source crop.
+
 - Local asset: `public/msk/tibial-plateau/source-pdf-page-33-segond.jpg`
 - Origin: embedded `Image382.jpg` (relationship ID `rID:9758`) in the user-provided `MSK.pdf`, physical page 33 (printed page 32).
 - Figure type: AP knee radiograph embedded beside the Segond/reverse-Segond teaching text; the visible small fragment is at the lateral plateau.
