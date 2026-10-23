@@ -30,6 +30,10 @@ const titles = [
   { de: 'Selbstcheck: Was trägt die Aussage?', en: 'Self-check: what supports the conclusion?', fa: 'خودآزمایی: چه چیزی از نتیجه حمایت می‌کند؟' },
   { de: 'Vier übertragbare Merksätze', en: 'Four transferable takeaways', fa: 'چهار نکتهٔ کاربردی' },
 ]
+const caseImage = {
+  flair: 'https://prod-images-static.radiopaedia.org/images/54573996/abcess-brain-with-dual-rim-sign_big_gallery.jpeg',
+  t1: 'https://prod-images-static.radiopaedia.org/images/54570647/2_big_gallery.jpeg',
+}
 const icons = {
   scan: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V4h4m8 0h4v4M20 16v4h-4M8 20H4v-4M7 12h10M12 7v10" /></svg>,
   brain: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5a4 4 0 0 0-7 3 4 4 0 0 0-1 7 4 4 0 0 0 7 4V5m2 0a4 4 0 0 1 7 3 4 4 0 0 1 1 7 4 4 0 0 1-7 4V5" /></svg>,
@@ -43,6 +47,41 @@ function ConceptDiagram({ lang }) {
     <figcaption>{value(C.visualCaption, lang)}</figcaption>
     <img src="/educational/hirnabszess/hero.svg" width="840" height="430" alt={value(C.heroAlt, lang)} />
     <ul className={styles.diagramLegend}>{C.visualLegend.map((item, index) => <li key={index}>{value(item, lang)}</li>)}</ul>
+  </figure>
+}
+
+function RadiopaediaCaseFigure({ lang }) {
+  const copy = {
+    de: {
+      caption: 'Radiopaedia-Fall 87566 · annotiertes Bildpaar aus FLAIR und T1 C+. Die Pfeile markieren die zwei Randsäume im FLAIR-Bild.',
+      flair: 'FLAIR-Bild aus Radiopaedia-Fall 87566; grüne und rote Pfeile markieren die zwei konzentrischen Randsäume.',
+      t1: 'T1-Bild nach Kontrastmittelgabe aus Radiopaedia-Fall 87566.',
+      note: 'Dieses Bildpaar zeigt eine FLAIR-/T1-C+-Darstellung. Es ist kein SWI-Nachweis des Dual-Rim-Zeichens; die SWI-Eigenschaften werden separat beschrieben.',
+      credit: 'Bildnachweis: Luu Hanh · Radiopaedia-Fall rID 87566 · annotierte Studie 103939 · mit Projektgenehmigung verwendet; Bilder unverändert.',
+    },
+    en: {
+      caption: 'Radiopaedia case 87566 · annotated FLAIR and T1 C+ image pair. The arrows mark the two rims on the FLAIR image.',
+      flair: 'FLAIR image from Radiopaedia case 87566; green and red arrows mark the two concentric rims.',
+      t1: 'Post-contrast T1 image from Radiopaedia case 87566.',
+      note: 'This pair shows FLAIR and T1 C+ appearances. It does not demonstrate the SWI dual-rim sign; SWI features are described separately.',
+      credit: 'Image credit: Luu Hanh · Radiopaedia case rID 87566 · annotated study 103939 · used with project permission; images unmodified.',
+    },
+    fa: {
+      caption: 'کیس ۸۷۵۶۶ در Radiopaedia · جفت تصویر علامت‌گذاری‌شدهٔ FLAIR و T1 پس از تزریق کنتراست. فلش‌ها دو حاشیه را در تصویر FLAIR مشخص می‌کنند.',
+      flair: 'تصویر FLAIR از کیس ۸۷۵۶۶ در Radiopaedia؛ فلش‌های سبز و قرمز دو حاشیهٔ متحدالمرکز را نشان می‌دهند.',
+      t1: 'تصویر T1 پس از تزریق کنتراست از کیس ۸۷۵۶۶ در Radiopaedia.',
+      note: 'این جفت تصویر، نمای FLAIR و T1 پس از کنتراست را نشان می‌دهد. این تصویر اثبات علامت حاشیهٔ دوگانه در SWI نیست؛ ویژگی‌های SWI جداگانه توضیح داده شده‌اند.',
+      credit: 'اعتبار تصویر: Luu Hanh · کیس Radiopaedia با شناسهٔ ۸۷۵۶۶ · مطالعهٔ علامت‌گذاری‌شدهٔ ۱۰۳۹۳۹ · با مجوز پروژه استفاده شده؛ تصاویر بدون تغییر هستند.',
+    },
+  }[lang]
+  return <figure className={styles.caseFigure}>
+    <figcaption>{copy.caption}</figcaption>
+    <div className={styles.caseImages}>
+      <img src={caseImage.flair} width="598" height="630" loading="lazy" alt={copy.flair} />
+      <img src={caseImage.t1} width="589" height="630" loading="lazy" alt={copy.t1} />
+    </div>
+    <p>{copy.note}</p>
+    <small>{copy.credit}</small>
   </figure>
 }
 
@@ -81,8 +120,8 @@ export default function HirnabszessLesson() {
         <h3>{lang === 'fa' ? 'سیر کلی، نه تقویم قطعی' : lang === 'en' ? 'A broad progression, not a fixed calendar' : 'Grobe Entwicklung, kein fester Zeitplan'}</h3>
         <p>{value(C.stage, lang)}</p>
         <h3>{lang === 'fa' ? 'علامت حاشیهٔ دوگانه در SWI' : lang === 'en' ? 'The SWI dual-rim sign' : 'Dual-Rim-Zeichen in SWI'}</h3><p>{value(C.dualRim, lang)}</p>
-        <p className={styles.caseLink}>{lang === 'fa' ? 'برای مشاهدهٔ کیس واقعی و سکانس‌ها:' : lang === 'en' ? 'View the real case and its sequence stack:' : 'Realen Fall und die Sequenzen ansehen:'}{' '}<a href="https://radiopaedia.org/cases/brain-abscess-with-dual-rim-sign-1" target="_blank" rel="noreferrer">{lang === 'fa' ? 'کیس Radiopaedia با علامت حاشیهٔ دوگانه' : lang === 'en' ? 'Radiopaedia case: brain abscess with dual-rim sign' : 'Radiopaedia-Fall: Hirnabszess mit Dual-Rim-Zeichen'}</a></p>
-        <p>{lang === 'fa' ? 'فریم تصویری این کیس در این درس نمایش داده نمی‌شود، چون توالی آن از منبع قابل تأیید نبود.' : lang === 'en' ? 'The case frame is not reproduced here because its sequence could not be verified from the source.' : 'Das Fallbild wird hier nicht wiedergegeben, weil seine Sequenz anhand der Quelle nicht verifiziert werden konnte.'}</p>
+        <RadiopaediaCaseFigure lang={lang}/>
+        <p className={styles.caseLink}>{lang === 'fa' ? 'برای دیدن مطالعه و توالی‌های بیشتر:' : lang === 'en' ? 'Open the full study and additional sequences:' : 'Die vollständige Studie und weitere Sequenzen öffnen:'}{' '}<a href="https://radiopaedia.org/cases/brain-abscess-with-dual-rim-sign-1" target="_blank" rel="noreferrer">{lang === 'fa' ? 'کیس Radiopaedia: آبسهٔ مغزی با علامت حاشیهٔ دوگانه' : lang === 'en' ? 'Radiopaedia case: brain abscess with dual-rim sign' : 'Radiopaedia-Fall: Hirnabszess mit Dual-Rim-Zeichen'}</a></p>
       </LessonSection>
       <LessonSection id="differentiate" title={value(titles[2], lang)} icon="compare">
         <p>{value(C.caveat, lang)}</p>

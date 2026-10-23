@@ -63,12 +63,20 @@ for (const lang of ['de', 'en', 'fa']) {
   assert.ok(html.includes(HIRNABZESS_COPY.title[lang]), `${lang} page title`)
   assert.ok(html.includes(HIRNABZESS_COPY.sequence[0].title[lang]), `${lang} first sequence heading`)
   assert.ok(html.includes('radiopaedia.org/cases/brain-abscess-with-dual-rim-sign-1'), `${lang} links to sequence-verifiable source case`)
-  const sequenceDisclosure = {
-    de: 'weil seine Sequenz anhand der Quelle nicht verifiziert werden konnte',
-    en: 'because its sequence could not be verified from the source',
-    fa: 'چون توالی آن از منبع قابل تأیید نبود',
+  assert.ok(html.includes('54573996/abcess-brain-with-dual-rim-sign_big_gallery.jpeg'), `${lang} embeds the verified annotated FLAIR case image`)
+  assert.ok(html.includes('54570647/2_big_gallery.jpeg'), `${lang} embeds the verified T1 C+ companion image`)
+  const localizedVisualEvidence = {
+    de: ['grüne und rote Pfeile markieren die zwei konzentrischen Randsäume', 'Bildnachweis: Luu Hanh'],
+    en: ['green and red arrows mark the two concentric rims', 'Image credit: Luu Hanh'],
+    fa: ['فلش‌های سبز و قرمز دو حاشیهٔ متحدالمرکز را نشان می‌دهند', 'اعتبار تصویر: Luu Hanh'],
   }
-  assert.ok(html.includes(sequenceDisclosure[lang]), `${lang} explains why no standalone frame is embedded in the active language`)
+  for (const evidence of localizedVisualEvidence[lang]) assert.ok(html.includes(evidence), `${lang} localized alt/attribution includes ${evidence}`)
+  const caseSequenceBoundary = {
+    de: 'kein SWI-Nachweis des Dual-Rim-Zeichens',
+    en: 'does not demonstrate the SWI dual-rim sign',
+    fa: 'اثبات علامت حاشیهٔ دوگانه در SWI نیست',
+  }
+  assert.ok(html.includes(caseSequenceBoundary[lang]), `${lang} distinguishes the case pair from SWI`)
   assert.ok(html.includes('/educational/hirnabszess/hero.svg'), `${lang} concept image`)
   assert.ok(html.includes(HIRNABZESS_COPY.heroAlt[lang]), `${lang} concept image has localized, non-diagnostic alt text`)
   for (const [index, item] of HIRNABZESS_COPY.visualLegend.entries()) {
@@ -76,5 +84,4 @@ for (const lang of ['de', 'en', 'fa']) {
   }
 }
 assert.ok(fs.existsSync('public/educational/hirnabszess/hero.svg'))
-assert.ok(!fs.existsSync('public/educational/hirnabszess/radiopaedia-dual-rim-luu-hanh.jpeg'))
-console.log('Brain abscess route semantic SSR PASS: DE/EN/FA, localized headings, RTL, linked Radiopaedia case, explicit image-sequence limitation and non-diagnostic schematic boundary.')
+console.log('Brain abscess route semantic SSR PASS: DE/EN/FA, localized headings, RTL, attributed Radiopaedia FLAIR/T1 C+ pair, explicit distinction from SWI, and non-diagnostic schematic boundary.')

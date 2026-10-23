@@ -14,6 +14,12 @@
 .sequence p { margin-bottom:0; }
 .caseLink { padding:14px 16px; border-radius:10px; background:var(--lesson-accent-soft,#e2f3f4); }
 .caseLink a { color:var(--lesson-accent-strong,#185d69); font-weight:700; text-underline-offset:3px; }
+.caseFigure { margin:22px 0; padding:clamp(14px,3vw,22px); border:1px solid var(--line,#d9e3e7); border-radius:14px; background:var(--paper,#fff); }
+.caseFigure figcaption { margin-bottom:14px; color:var(--body,#49636a); font-weight:700; line-height:1.65; }
+.caseImages { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; gap:12px; }
+.caseImages img { display:block; width:100%; height:auto; border:1px solid var(--line,#d9e3e7); border-radius:8px; }
+.caseFigure p { margin:14px 0 8px; line-height:1.7; }
+.caseFigure small { display:block; color:var(--body,#49636a); font-size:.86rem; line-height:1.6; }
 .tableScroll { max-width:100%; overflow-x:auto; margin-block:18px; border:1px solid var(--line,#d9e3e7); border-radius:10px; }
 .tableScroll table { width:100%; min-width:640px; border-collapse:collapse; text-align:start; line-height:1.65; }
 .tableScroll th,.tableScroll td { padding:13px 15px; border-bottom:1px solid var(--line,#d9e3e7); vertical-align:top; }
@@ -28,3 +34,4 @@
 .feedback { margin-block:14px 0; padding:12px 14px; border-radius:8px; background:var(--paper,#fff); font-weight:600; }
 .page[dir='rtl'] { font-family:'Vazirmatn',sans-serif; letter-spacing:0; }
 @media(max-width:760px) { .sequence { grid-template-columns:1fr; } }
+@media(max-width:540px) { .caseImages { grid-template-columns:1fr; } }
