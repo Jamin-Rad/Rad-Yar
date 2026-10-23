@@ -132,10 +132,10 @@ export default function FmdPage() {
       fa: { selfCheck: 'کدام روش به کدام پرسش پاسخ می‌دهد؟', summary: 'سه قاعده برای تفسیر' },
     },
   }
-  return <LessonReferenceShell lessonId="abdomen-fmd" lang={lang} title={{ de: C.de.title, en: C.en.title, fa: C.fa.title }} diagram="fmd" goals={goals} check={check} summary={summary} lessonCopy={shellCopy}
+  return <LessonReferenceShell lessonId="abdomen-fmd" lang={lang} title={{ de: C.de.title, en: C.en.title, fa: C.fa.title }} diagram="fmd" goals={goals} check={check} summary={summary} lessonCopy={shellCopy} mainLandmark
     quizHref="/ueben/quiz?fach=abdomen&n=3&themen=fibromuskulaere-dysplasie"
     flashcardsHref="/flashcards/fibromuskulaere-dysplasie">
-    <main className={styles.page} lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+    <div className={styles.page} lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
       <p className={styles.lead}>{c.intro}</p>
       <section className={styles.section}><h2>{lang === 'fa' ? 'تعریف' : lang === 'de' ? 'Definition' : 'Definition'}</h2><p>{c.definition}</p></section>
       <section className={styles.section}><h2>{c.patternTitle}</h2><div className={styles.grid}>{c.pattern.map(([title, text]) => <L title={title} text={text} key={title}/>)}</div><h3>{c.diagramTitle}</h3><FmdSchematic lang={lang}/></section>
@@ -147,6 +147,6 @@ export default function FmdPage() {
           <figcaption>{lang === 'fa' ? 'نمونهٔ CTA کلیوی از Abdomen.pdf، صفحهٔ PDF ۹۲ (صفحهٔ چاپی ۹۱؛ rID: 31157 همان‌طور که در صفحه آمده است). برش برای یافتن شریان‌های کلیوی و الگوی عروقی است؛ شدت همودینامیک را به‌تنهایی نشان نمی‌دهد.' : lang === 'de' ? 'Renales CTA-Beispiel aus Abdomen.pdf, PDF-Seite 92 (Druckseite 91; rID 31157 wie auf der Seite angegeben). Nutzen Sie den Ausschnitt zur Orientierung an den Nierenarterien; die hämodynamische Bedeutung lässt sich daraus allein nicht ableiten.' : 'Renal CTA example from Abdomen.pdf, PDF p. 92 (printed p. 91; rID 31157 as printed on the page). Use the crop to orient to the renal arteries; haemodynamic significance cannot be determined from it alone.'}</figcaption>
         </figure>
         <div className={styles.grid}>{c.imaging.map(([title, text]) => <L title={title} text={text} key={title}/>)}</div><aside className={styles.caution}><strong>{lang === 'fa' ? 'محدودیت و اختلاف منبع' : lang === 'de' ? 'Quellenabgleich' : 'Source reconciliation'}</strong><p>{c.caution}</p></aside><p className={styles.source}>{c.source}</p><p><a href="https://doi.org/10.1177/1358863X18821816" target="_blank" rel="noreferrer">{lang === 'fa' ? 'اجماع بین‌المللی FMD، ۲۰۱۹ ↗' : 'First International Consensus on FMD, 2019 ↗'}</a></p></section>
-    </main>
+    </div>
   </LessonReferenceShell>
 }

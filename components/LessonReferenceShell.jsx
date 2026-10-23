@@ -18,7 +18,7 @@ const copy = {
 const pick = (value, lang) => typeof value === 'string' ? value : value?.[lang] ?? value?.de ?? ''
 const CHAPTERS = ['content', 'self-check', 'take-home']
 
-export default function LessonReferenceShell({ lang = 'de', lessonId, title, diagram, heroVisual, goals, check, summary, copy: lessonCopy, quizHref, flashcardsHref, children }) {
+export default function LessonReferenceShell({ lang = 'de', lessonId, title, diagram, heroVisual, goals, check, summary, copy: lessonCopy, quizHref, flashcardsHref, mainLandmark = false, children }) {
   const t = { ...(copy[lang] || copy.de), ...(lessonCopy?.labels?.[lang] || {}) }
   const lessonGoals = goals || (lessonCopy?.subtitle || lessonCopy?.sub ? [lessonCopy.subtitle || lessonCopy.sub] : [])
   const lessonContentTitle = lessonCopy?.contentTitle || lessonCopy?.sections?.[0]?.[1] || lessonCopy?.toc || t.content
@@ -64,6 +64,14 @@ export default function LessonReferenceShell({ lang = 'de', lessonId, title, dia
   })
   const markAll = () => setReadSections(lessonComplete ? new Set() : new Set(SECTION_IDS))
   const legacyChildren = Children.map(children, child => isValidElement(child) ? cloneElement(child, { 'data-lesson-legacy': '' }) : child)
+  const layout = <div className={styles.layout}>
+    <aside className={styles.sidebar}><h2>{t.learningPath}</h2><nav aria-label={t.learningPath}>{CHAPTERS.map(id => <button type="button" key={id} className={openId === id ? styles.active : ''} aria-current={openId === id ? 'location' : undefined} onClick={() => select(id)}><span className={styles.dot} aria-hidden="true">{readSections.has(id) ? '✓' : '•'}</span>{id === 'content' ? pick(lessonContentTitle, lang) : t[id === 'self-check' ? 'selfCheck' : 'summary']}</button>)}</nav></aside>
+    <article className={styles.chapters}>
+      <section id="lesson-content" className={styles.chapter}><h2>{pick(lessonContentTitle, lang)}</h2><div id="lesson-content-panel" className={styles.panel}>{legacyChildren}<button type="button" aria-pressed={readSections.has('content')} onClick={() => markRead('content')}>{readSections.has('content') ? t.marked : t.mark}</button></div></section>
+      <section id="lesson-self-check" className={styles.chapter}><h2><button type="button" aria-expanded={openId === 'self-check'} aria-controls="lesson-self-check-panel" onClick={() => select('self-check')}>{t.selfCheck}<span>{openId === 'self-check' ? '−' : '+'}</span></button></h2><div id="lesson-self-check-panel" hidden={openId !== 'self-check'} className={styles.panel}><p>{pick(lessonCheck.question, lang)}</p><fieldset><legend>{t.choose}</legend>{lessonCheck.options.map((option, index) => <label key={index} className={picked === index ? styles.selected : ''}><input type="radio" name={`self-check-${lessonId}`} checked={picked === index} onChange={() => setPicked(index)} />{pick(option, lang)}</label>)}</fieldset>{picked === null ? <p className={styles.feedback}>{t.reveal}</p> : <div className={`${styles.feedback} ${picked === lessonCheck.answer ? styles.correct : styles.incorrect}`} role="status"><strong>{picked === lessonCheck.answer ? t.correct : t.incorrect}</strong>{pick(lessonCheck.explanation, lang)}</div>}<button type="button" aria-pressed={readSections.has('self-check')} onClick={() => markRead('self-check')}>{readSections.has('self-check') ? t.marked : t.mark}</button></div></section>
+      <section id="lesson-take-home" className={`${styles.chapter} ${styles.takeHome}`}><h2><button type="button" aria-expanded={openId === 'take-home'} aria-controls="lesson-take-home-panel" onClick={() => select('take-home')}>{t.summary}<span>{openId === 'take-home' ? '−' : '+'}</span></button></h2><div id="lesson-take-home-panel" hidden={openId !== 'take-home'} className={styles.panel}><ol>{lessonSummary.map((rule, index) => <li key={index}>{pick(rule, lang)}</li>)}</ol><button type="button" aria-pressed={readSections.has('take-home')} onClick={() => markRead('take-home')}>{readSections.has('take-home') ? t.marked : t.mark}</button></div></section>
+    </article>
+  </div>
 
   return <div className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang} data-lesson-shell={lessonId}>
     <InProgressBanner lang={lang} />
@@ -83,13 +91,6 @@ export default function LessonReferenceShell({ lang = 'de', lessonId, title, dia
         <button type="button" onClick={() => select(CHAPTERS[Math.min(activeIndex + 1, CHAPTERS.length - 1)])} disabled={activeIndex === CHAPTERS.length - 1}>{t.next} →</button>
       </div>
     </header>
-    <div className={styles.layout}>
-      <aside className={styles.sidebar}><h2>{t.learningPath}</h2><nav aria-label={t.learningPath}>{CHAPTERS.map(id => <button type="button" key={id} className={openId === id ? styles.active : ''} aria-current={openId === id ? 'location' : undefined} onClick={() => select(id)}><span className={styles.dot} aria-hidden="true">{readSections.has(id) ? '✓' : '•'}</span>{id === 'content' ? pick(lessonContentTitle, lang) : t[id === 'self-check' ? 'selfCheck' : 'summary']}</button>)}</nav></aside>
-      <article className={styles.chapters}>
-        <section id="lesson-content" className={styles.chapter}><h2>{pick(lessonContentTitle, lang)}</h2><div id="lesson-content-panel" className={styles.panel}>{legacyChildren}<button type="button" aria-pressed={readSections.has('content')} onClick={() => markRead('content')}>{readSections.has('content') ? t.marked : t.mark}</button></div></section>
-        <section id="lesson-self-check" className={styles.chapter}><h2><button type="button" aria-expanded={openId === 'self-check'} aria-controls="lesson-self-check-panel" onClick={() => select('self-check')}>{t.selfCheck}<span>{openId === 'self-check' ? '−' : '+'}</span></button></h2><div id="lesson-self-check-panel" hidden={openId !== 'self-check'} className={styles.panel}><p>{pick(lessonCheck.question, lang)}</p><fieldset><legend>{t.choose}</legend>{lessonCheck.options.map((option, index) => <label key={index} className={picked === index ? styles.selected : ''}><input type="radio" name={`self-check-${lessonId}`} checked={picked === index} onChange={() => setPicked(index)} />{pick(option, lang)}</label>)}</fieldset>{picked === null ? <p className={styles.feedback}>{t.reveal}</p> : <div className={`${styles.feedback} ${picked === lessonCheck.answer ? styles.correct : styles.incorrect}`} role="status"><strong>{picked === lessonCheck.answer ? t.correct : t.incorrect}</strong>{pick(lessonCheck.explanation, lang)}</div>}<button type="button" aria-pressed={readSections.has('self-check')} onClick={() => markRead('self-check')}>{readSections.has('self-check') ? t.marked : t.mark}</button></div></section>
-        <section id="lesson-take-home" className={`${styles.chapter} ${styles.takeHome}`}><h2><button type="button" aria-expanded={openId === 'take-home'} aria-controls="lesson-take-home-panel" onClick={() => select('take-home')}>{t.summary}<span>{openId === 'take-home' ? '−' : '+'}</span></button></h2><div id="lesson-take-home-panel" hidden={openId !== 'take-home'} className={styles.panel}><ol>{lessonSummary.map((rule, index) => <li key={index}>{pick(rule, lang)}</li>)}</ol><button type="button" aria-pressed={readSections.has('take-home')} onClick={() => markRead('take-home')}>{readSections.has('take-home') ? t.marked : t.mark}</button></div></section>
-      </article>
-    </div>
+    {mainLandmark ? <main>{layout}</main> : layout}
   </div>
 }
