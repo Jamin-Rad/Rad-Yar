@@ -197,10 +197,10 @@ function RectalMRI({ lang }) {
   return <g>
     <ellipse cx="200" cy="123" rx="100" ry="72" fill={PALETTE.blueLight} stroke={PALETTE.blue} strokeWidth="4"/>
     <ellipse cx="200" cy="123" rx="54" ry="43" fill={PALETTE.paper} stroke={PALETTE.ink} strokeWidth="5"/>
-    <path d="M197 85q34-6 43 17-3 20-23 22-19-2-20-19Z" fill={PALETTE.coral}/>
-    <path d="M200 123 253 92" stroke={PALETTE.amber} strokeWidth="4" strokeDasharray="5 4"/>
-    <circle cx="253" cy="92" r="5" fill={PALETTE.amber}/>
-    <path d="M221 103 272 62" stroke={PALETTE.coral} strokeWidth="1.5"/>
+    <path d="M247 84q16 8 10 25l24 2-3 18-25-2q-9 15-25 10-13-6-12-22 1-16 15-23Z" fill={PALETTE.coral}/>
+    <path d="M280 123 299 123" stroke={PALETTE.amber} strokeWidth="4" strokeDasharray="5 4"/>
+    <circle cx="280" cy="123" r="4" fill={PALETTE.amber}/><circle cx="299" cy="123" r="4" fill={PALETTE.amber}/>
+    <path d="M252 105 272 62" stroke={PALETTE.coral} strokeWidth="1.5"/>
     <text x="275" y="60" fill={PALETTE.ink} fontSize="11">{labels.tumor}</text>
     <path d="M240 159 277 180" stroke={PALETTE.blue} strokeWidth="1.5"/>
     <text x="280" y="184" fill={PALETTE.ink} fontSize="10">{labels.fat}</text>

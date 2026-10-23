@@ -35,8 +35,8 @@ const cards = [
   },
   {
     front: L('Warum genügt die Lymphknotengröße im Rektum-MRT nicht allein?', 'Why is lymph-node size alone insufficient on rectal MRI?', 'چرا اندازه غدد لنفاوی به‌تنهایی در MRI رکتوم کافی نیست؟'),
-    answer: L('Weil Form, Rand und innere Signalstruktur sowie das Gesamtmuster mitbewertet werden müssen.', 'Because shape, border, internal signal and the overall pattern also need assessment.', 'زیرا شکل، حاشیه، سیگنال داخلی و الگوی کلی نیز باید ارزیابی شوند.'),
-    explanation: L('Die Bildgebung kann mikroskopischen Lymphknotenbefall nicht sicher ausschließen.', 'Imaging cannot reliably exclude microscopic nodal disease.', 'تصویربرداری نمی‌تواند درگیری میکروسکوپی غدد را با اطمینان رد کند.'),
+    answer: L('cN patientenbezogen mit angegebener Sicherheit einordnen und T-Kategorie, EMVI, Anzahl sowie Morphologie berücksichtigen. Bei obturatorischen und internen iliakalen Seitenknoten gilt ≥7 mm Kurzachse als verdächtig; 5–7 mm können bei suspekter Morphologie ebenfalls auffällig sein.', 'Classify cN per patient, state confidence, and consider T category, EMVI, node number and morphology. For obturator and internal iliac lateral nodes, a short axis ≥7 mm is suspicious; 5–7 mm nodes may also be suspicious when morphology is concerning.', 'cN را برای هر بیمار با ذکر میزان اطمینان تعیین کنید و دسته T، وجود EMVI، تعداد و مورفولوژی غدد را در نظر بگیرید. در غدد لترال ابتوراتور و ایلیاک داخلی، محور کوتاه ≥۷ میلی‌متر مشکوک است؛ غدد ۵ تا ۷ میلی‌متری نیز با مورفولوژی مشکوک ممکن است مطرح باشند.'),
+    explanation: L('Die Größenangabe gilt für obturatorische und interne iliakale Seitenknoten; für andere Knotenstationen darf sie nicht pauschal übertragen werden. Bildgebung kann mikroskopischen Befall nicht sicher ausschließen.', 'The size criterion applies to obturator and internal iliac lateral nodes; do not generalise it to other nodal stations. Imaging cannot reliably exclude microscopic disease.', 'این معیار اندازه برای غدد لترال ابتوراتور و ایلیاک داخلی است و نباید به همه ایستگاه‌های غدد تعمیم داده شود. تصویربرداری درگیری میکروسکوپی را با اطمینان رد نمی‌کند.'),
   },
 ]
 
