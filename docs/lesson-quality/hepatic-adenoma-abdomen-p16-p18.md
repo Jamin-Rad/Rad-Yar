@@ -35,3 +35,13 @@ was corrected and is asserted against the registered question bank. Browser
 rendering/interaction and RTL behavior could not be checked because localhost
 access was unavailable. The lesson remains `inProgress`; these pages do not
 establish complete coverage of every benign liver lesion or clinical approval.
+
+## Assessment return-path correction — 2026-10-23
+
+The lesson's quiz and flashcard actions now include an encoded return target to
+`/abdomen/leber/adenom`; EN/FA targets retain `?lang=en|fa`, and destination
+URLs carry the active language. The curriculum links return to the German
+default lesson. Independent review checked both downstream `from` consumers and
+confirmed that quiz and flashcards use the target as their back link. The HCA
+integration checker, global MCQ audit and scoped diff-check pass. ASM and REV
+pass for this link-only delta; browser interaction and RTL remain unverified.

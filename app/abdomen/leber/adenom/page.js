@@ -87,6 +87,7 @@ const rows = (headers, data) => <div className={styles.tableWrap}><table><thead>
 export default function HepaticAdenomaPage() {
   const { lang } = useLanguage()
   const c = C[lang] || C.de
+  const lessonReturn = `/abdomen/leber/adenom${lang === 'de' ? '' : `?lang=${lang}`}`
   return <LessonReferenceShell
     lessonId="abdomen-hepatic-adenoma"
     lang={lang}
@@ -95,8 +96,8 @@ export default function HepaticAdenomaPage() {
     goals={c.goals}
     copy={{ contentTitle: c.contentTitle, diagramCaption: { de: 'Lagebeziehung der Leber; Schema, keine Patientendarstellung.', en: 'Liver location; schematic, not patient imaging.', fa: 'نمای شماتیک موقعیت کبد؛ تصویر بیمار نیست.' } }}
     summary={c.summary}
-    quizHref="/ueben/quiz?fach=abdomen&n=4&themen=leberadenom"
-    flashcardsHref="/flashcards/leberadenom"
+    quizHref={`/ueben/quiz?fach=abdomen&n=4&themen=leberadenom&from=${encodeURIComponent(lessonReturn)}&lang=${lang}`}
+    flashcardsHref={`/flashcards/leberadenom?from=${encodeURIComponent(lessonReturn)}&lang=${lang}`}
     check={{ question: c.check.question, options: c.check.options, answer: c.check.answer, explanation: c.check.explanation, diagramCaption: { de: 'Schematische Lagebeziehung der Leber; keine Patientendarstellung.', en: 'Schematic liver location; not patient imaging.', fa: 'نمای شماتیک موقعیت کبد؛ تصویر بیمار نیست.' } }}
   >
     <main className={styles.page}>

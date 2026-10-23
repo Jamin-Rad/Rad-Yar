@@ -15,8 +15,8 @@ const definitions = [
 const topic = CURRICULUM.flatMap(subject => subject.kapitel).flatMap(chapter => chapter.themen).find(item => item.id === topicId)
 assert.ok(topic, 'existing leberadenom curriculum topic exists')
 assert.equal(topic.link, route)
-assert.equal(topic.flashcardLink, '/flashcards/leberadenom')
-assert.equal(topic.mcqLink, '/ueben/quiz?fach=abdomen&n=4&themen=leberadenom')
+assert.equal(topic.flashcardLink, '/flashcards/leberadenom?from=%2Fabdomen%2Fleber%2Fadenom')
+assert.equal(topic.mcqLink, '/ueben/quiz?fach=abdomen&n=4&themen=leberadenom&from=%2Fabdomen%2Fleber%2Fadenom')
 assert.equal(getLessonLinkForFlashcard(topic.flashcardLink), route)
 assert.ok(FLASHCARD_TOPICS.some(item => item.id === topicId))
 assert.equal(getCardsByTopic(topicId).length, 5)
@@ -43,6 +43,18 @@ const dynamicCtDe = QUESTION_BANK.de.find(item => item.id === 'hepatic-adenoma-d
 assert.ok(dynamicCtDe.options.some(option => option.id === 'D' && option.text === 'Ein portalvenöses Hypoenhancement ist spezifisch für HCA'))
 
 const routeSource = fs.readFileSync(new URL('../app/abdomen/leber/adenom/page.js', import.meta.url), 'utf8')
+assert.match(routeSource, /const lessonReturn = `\/abdomen\/leber\/adenom\$\{lang === 'de' \? '' : `\?lang=\$\{lang\}`\}`/)
+assert.match(routeSource, /quizHref=\{`\/ueben\/quiz\?fach=abdomen&n=4&themen=leberadenom&from=\$\{encodeURIComponent\(lessonReturn\)\}&lang=\$\{lang\}`\}/)
+assert.match(routeSource, /flashcardsHref=\{`\/flashcards\/leberadenom\?from=\$\{encodeURIComponent\(lessonReturn\)\}&lang=\$\{lang\}`\}/)
+for (const lang of ['de', 'en', 'fa']) {
+  const lessonReturn = `/abdomen/leber/adenom${lang === 'de' ? '' : `?lang=${lang}`}`
+  const quiz = new URL(`/ueben/quiz?fach=abdomen&n=4&themen=leberadenom&from=${encodeURIComponent(lessonReturn)}&lang=${lang}`, 'http://localhost')
+  const flashcards = new URL(`/flashcards/leberadenom?from=${encodeURIComponent(lessonReturn)}&lang=${lang}`, 'http://localhost')
+  assert.equal(quiz.searchParams.get('from'), lessonReturn, `${lang}: quiz returns to the lesson in the current language`)
+  assert.equal(flashcards.searchParams.get('from'), lessonReturn, `${lang}: flashcards return to the lesson in the current language`)
+  assert.equal(quiz.searchParams.get('lang'), lang)
+  assert.equal(flashcards.searchParams.get('lang'), lang)
+}
 const focalRoute = fs.readFileSync(new URL('../app/abdomen/leber/fokale-laesionen/page.js', import.meta.url), 'utf8')
 assert.ok(focalRoute.includes('title={copy.title}'), 'focal liver comparison uses the defined localized copy object')
 const asset = new URL('../public/educational/hepatic-adenoma/source-mri-p17.jpg', import.meta.url)
