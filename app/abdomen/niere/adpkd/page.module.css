@@ -1,0 +1,22 @@
+.page { min-width: 0; }
+.lead { max-width: 78ch; line-height: 1.75; font-size: 1.06rem; }
+.figure { max-width: 760px; margin: 1.25rem auto; padding: 1rem; border: 1px solid #c9d8d4; border-radius: 16px; background: #f8fbfa; }
+.figure svg { display: block; width: 100%; height: auto; }
+.figureTitle { margin: 0 0 .5rem; color: #205e58; font-weight: 700; text-align: center; }
+.diagramLabel { fill: #273b3a; font-size: 19px; font-weight: 650; }
+.caption { margin-top: .65rem; color: #425451; font-size: .93rem; line-height: 1.6; }
+.cave { margin-block: 1rem; padding: 1rem 1.1rem; border-inline-start: 4px solid #c87861; border-radius: 10px; background: #fbf3ef; }
+.cave p { margin: .35rem 0 0; line-height: 1.65; }
+.check { margin-block: 1.2rem; padding: 1rem; border: 1px solid #9bbdb5; border-radius: 14px; background: #f0f7f4; }
+.check > p:first-child { margin-top: 0; font-weight: 700; }
+.options { display: grid; gap: .55rem; }
+.options button { padding: .7rem .85rem; border: 1px solid #9fb7b1; border-radius: 10px; color: #1c3331; background: white; text-align: start; line-height: 1.5; cursor: pointer; }
+.options button[aria-pressed='true'] { border-color: #205e58; outline: 2px solid #205e58; outline-offset: 1px; }
+.options button:focus-visible { outline: 3px solid #205e58; outline-offset: 2px; }
+.feedback { margin-bottom: 0; font-weight: 600; line-height: 1.6; }
+:global([dir='rtl']) .figureTitle { text-align: center; }
+@media (max-width: 600px) {
+  .figure { padding: .65rem; }
+  .lead { font-size: 1rem; }
+  .diagramLabel { font-size: 16px; }
+}
