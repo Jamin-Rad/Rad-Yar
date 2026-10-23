@@ -80,12 +80,9 @@ export default function HirnabszessLesson() {
       <LessonSection id="integrate" title={value(titles[1], lang)} icon="brain">
         <h3>{lang === 'fa' ? 'سیر کلی، نه تقویم قطعی' : lang === 'en' ? 'A broad progression, not a fixed calendar' : 'Grobe Entwicklung, kein fester Zeitplan'}</h3>
         <p>{value(C.stage, lang)}</p>
-        <h3>{lang === 'fa' ? 'حاشیهٔ دوگانه در SWI' : lang === 'en' ? 'The SWI dual-rim sign' : 'Dual-Rim-Zeichen in SWI'}</h3><p>{value(C.dualRim, lang)}</p>
+        <h3>{lang === 'fa' ? 'علامت حاشیهٔ دوگانه در SWI' : lang === 'en' ? 'The SWI dual-rim sign' : 'Dual-Rim-Zeichen in SWI'}</h3><p>{value(C.dualRim, lang)}</p>
         <p className={styles.caseLink}>{lang === 'fa' ? 'برای مشاهدهٔ کیس واقعی و سکانس‌ها:' : lang === 'en' ? 'View the real case and its sequence stack:' : 'Realen Fall und die Sequenzen ansehen:'}{' '}<a href="https://radiopaedia.org/cases/brain-abscess-with-dual-rim-sign-1" target="_blank" rel="noreferrer">{lang === 'fa' ? 'کیس Radiopaedia با علامت حاشیهٔ دوگانه' : lang === 'en' ? 'Radiopaedia case: brain abscess with dual-rim sign' : 'Radiopaedia-Fall: Hirnabszess mit Dual-Rim-Zeichen'}</a></p>
-        <figure className={styles.caseFigure}>
-          <img className={styles.caseImage} src="/educational/hirnabszess/radiopaedia-dual-rim-luu-hanh.jpeg" alt={value(C.caseFigureAlt, lang)} />
-          <figcaption>{value(C.caseFigureCaption, lang)}</figcaption>
-        </figure>
+        <p>{lang === 'fa' ? 'فریم تصویری این کیس در این درس نمایش داده نمی‌شود، چون توالی آن از منبع قابل تأیید نبود.' : lang === 'en' ? 'The case frame is not reproduced here because its sequence could not be verified from the source.' : 'Das Fallbild wird hier nicht wiedergegeben, weil seine Sequenz anhand der Quelle nicht verifiziert werden konnte.'}</p>
       </LessonSection>
       <LessonSection id="differentiate" title={value(titles[2], lang)} icon="compare">
         <p>{value(C.caveat, lang)}</p>

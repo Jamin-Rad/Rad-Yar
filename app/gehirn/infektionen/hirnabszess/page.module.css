@@ -14,9 +14,6 @@
 .sequence p { margin-bottom:0; }
 .caseLink { padding:14px 16px; border-radius:10px; background:var(--lesson-accent-soft,#e2f3f4); }
 .caseLink a { color:var(--lesson-accent-strong,#185d69); font-weight:700; text-underline-offset:3px; }
-.caseFigure { margin:18px 0 22px; padding:clamp(12px,2.5vw,20px); border:1px solid var(--line,#d9e3e7); border-radius:12px; background:var(--paper,#fff); }
-.caseImage { display:block; width:min(100%,598px); height:auto; margin-inline:auto; }
-.caseFigure figcaption { max-width:74ch; margin:12px auto 0; color:var(--body,#49636a); font-size:.94rem; line-height:1.65; }
 .tableScroll { max-width:100%; overflow-x:auto; margin-block:18px; border:1px solid var(--line,#d9e3e7); border-radius:10px; }
 .tableScroll table { width:100%; min-width:640px; border-collapse:collapse; text-align:start; line-height:1.65; }
 .tableScroll th,.tableScroll td { padding:13px 15px; border-bottom:1px solid var(--line,#d9e3e7); vertical-align:top; }
