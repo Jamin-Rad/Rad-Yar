@@ -18,7 +18,7 @@ export const DAVF_LESSON = {
     { id: 'bildgebung',   icon: '🧲', label: L('Bildgebung',           'Imaging',              'تصویربرداری') },
     { id: 'differenzial', icon: '⚖️', label: L('Differenzialdiagnose', 'Differential',         'افتراقی') },
     { id: 'management',   icon: '🔧', label: L('Management',           'Management',           'مدیریت') },
-    { id: 'takehome',     icon: '🏁', label: L('TAKE HOME MESSAGE',    'TAKE HOME MESSAGE',    'TAKE HOME MESSAGE'), emphasis: true },
+    { id: 'takehome',     icon: '🏁', label: L('Merke', 'Take-home message', 'نکات کلیدی'), emphasis: true },
   ],
 
   grundlagen: {

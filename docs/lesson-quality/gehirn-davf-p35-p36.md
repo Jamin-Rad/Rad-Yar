@@ -27,3 +27,8 @@ Seven chapters: basics → presentation → Cognard drainage pattern → imaging
 - Focused checker `node scripts/test-gehirn-davf-p35-p36.mjs` passes. `git diff --check` passes. The global MCQ audit could not run because Node 24 fails resolving extensionless imports in `data/questions.js` (`ERR_MODULE_NOT_FOUND`); this is an environment/tooling failure, not a passing audit.
 - Browser review remains unavailable; UX is BLOCKED and Persian RTL/responsive rendering are unverified. `npm run build` was attempted but failed: font fetches hit `ENOTFOUND fonts.googleapis.com`, then webpack hit `EPERM` creating `.next/server/app/api/admin`; this does not establish a dAVF-specific compile defect or a successful build.
 - Clinical verification beyond the cited classification and specialist sign-off are pending. `inProgress` is not interpreted as release approval.
+
+### Follow-up: localized take-home TOC label
+
+- Independent review found the sidebar chapter label was English-only in all three locales even though the chapter heading itself was localized. The TOC label is now `Merke` / `Take-home message` / `نکات کلیدی` (DE/EN/FA).
+- The focused test asserts the exact localized values; independent re-review confirmed the route renders this field and the check passes. This narrow localization fix is PASS. Browser rendering remains unverified, so UX remains BLOCKED.
