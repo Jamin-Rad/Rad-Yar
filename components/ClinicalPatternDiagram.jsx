@@ -219,6 +219,33 @@ function Liver({ lang }) {
   </g>
 }
 
+function HepaticAdenomaPattern({ lang }) {
+  const labels = lang === 'fa'
+    ? ['شریانی', 'هپاتوبیلیاری', 'تقویت شریانی', 'کم‌سیگنال نسبی']
+    : lang === 'de'
+      ? ['Arteriell', 'Hepatobiliär', 'arterielle Anreicherung', 'relativ signalarm']
+      : ['Arterial', 'Hepatobiliary', 'arterial enhancement', 'relatively low signal']
+  const liver = 'M18 42c24-28 64-31 99-21 22 6 40 1 62 4 7 19-2 47-22 58-19 10-47 5-65 6-24 1-57 14-77-1-12-9-13-27-2-46Z'
+  return <g>
+    <rect x="28" y="34" width="162" height="146" rx="14" fill="#fff" stroke={PALETTE.line} strokeWidth="2"/>
+    <rect x="210" y="34" width="162" height="146" rx="14" fill="#fff" stroke={PALETTE.line} strokeWidth="2"/>
+    <text x="109" y="55" textAnchor="middle" fill={PALETTE.ink} fontSize="12" fontWeight="700">{labels[0]}</text>
+    <text x="291" y="55" textAnchor="middle" fill={PALETTE.ink} fontSize="12" fontWeight="700">{labels[1]}</text>
+    <g transform="translate(39 59)">
+      <path d={liver} fill="#b85c53" fillOpacity=".78" stroke={PALETTE.ink} strokeWidth="2.5"/>
+      <circle cx="87" cy="48" r="13" fill={PALETTE.coral} stroke="#fff" strokeWidth="3"/>
+    </g>
+    <g transform="translate(221 59)">
+      <path d={liver} fill="#b85c53" fillOpacity=".78" stroke={PALETTE.ink} strokeWidth="2.5"/>
+      <circle cx="87" cy="48" r="13" fill={PALETTE.plum} stroke="#fff" strokeWidth="3"/>
+    </g>
+    <path d="M193 112h13m-5-5 5 5-5 5" fill="none" stroke={PALETTE.blue} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+    <text x="109" y="164" textAnchor="middle" fill={PALETTE.muted} fontSize="9">{labels[2]}</text>
+    <text x="291" y="164" textAnchor="middle" fill={PALETTE.muted} fontSize="9">{labels[3]}</text>
+    <text x="200" y="211" textAnchor="middle" fill={PALETTE.muted} fontSize="11">{lang === 'fa' ? 'الگوی شماتیک؛ تصویر تشخیصی نیست' : lang === 'de' ? 'Schema, kein diagnostisches Bild' : 'schematic pattern, not diagnostic imaging'}</text>
+  </g>
+}
+
 function Hepatobiliary({ variant, lang }) {
   const label = lang === 'fa' ? (variant === 'psc' ? 'تنگی‌های چندکانونی مجاری' : 'چربی ماکروسکوپی داخل توده')
     : lang === 'de' ? (variant === 'psc' ? 'Multifokale Gangstenosen' : 'Makroskopisches Fett im Herd')
@@ -289,6 +316,8 @@ export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de',
     ? ({ de: 'Lernschema: Der Magen ist dargestellt; eine Raumforderung wächst nach außen aus der Magenwand. Kein Patientenbild.', en: 'Teaching schematic: the stomach is shown with a mass growing outward from its wall. Not patient imaging.', fa: 'نمای شماتیک آموزشی: معده و توده‌ای که به بیرون از دیواره معده رشد می‌کند نشان داده شده‌اند؛ تصویر بیمار نیست.' }[lang] || 'Teaching schematic of a stomach with an exophytic mass; not patient imaging.')
     : variant === 'volvulus'
     ? ({ de: 'Lehrschema mit Kolonverlauf und zwei vereinfachten Volvulus-Konfigurationen; keine diagnostische Aufnahme.', en: 'Teaching schematic of the colon and two simplified volvulus configurations; not a diagnostic image.', fa: 'شماتیک آموزشی مسیر کولون و دو نمای ساده‌شده از ولولوس؛ تصویر تشخیصی نیست.' }[lang] || 'Teaching schematic; not diagnostic imaging.')
+    : variant === 'hepatic-adenoma'
+    ? ({ de: 'Lernschema des typischen Bildmusters eines hepatozellulären Adenoms: kräftige arterielle Anreicherung und meist relativ signalarmes Areal in der hepatobiliären Phase; schematisch, keine Patientenaufnahme.', en: 'Teaching schematic of the typical hepatocellular adenoma pattern: avid arterial enhancement and usually a relatively low-signal focus on the hepatobiliary phase; schematic, not patient imaging.', fa: 'شماتیک آموزشی الگوی معمول آدنوم هپاتوسلولار: تقویت واضح شریانی و معمولاً کانون با سیگنال نسبی پایین در فاز هپاتوبیلیاری؛ تصویر بیمار نیست.' }[lang] || 'Hepatic adenoma teaching schematic; not patient imaging.')
     : variant === 'hepatic-aml'
     ? ({ de: 'Schematische Läsion mit markiertem makroskopischem Fettanteil; keine Patientenaufnahme.', en: 'Teaching schematic of a lesion with macroscopic fat; not patient imaging.', fa: 'شماتیک آموزشی ضایعه با چربی ماکروسکوپیک؛ تصویر بیمار نیست.' }[lang] || 'Teaching schematic of a lesion with macroscopic fat; not patient imaging.')
     : variant === 'rectal-mri'
@@ -312,6 +341,7 @@ export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de',
       variant === 'adrenal' ? <Adrenal lang={lang}/> :
       variant === 'liver-cyst' || variant === 'hydatid' ? <LiverCyst variant={variant} lang={lang}/> :
       variant === 'gist' ? <Gist lang={lang}/> :
+      variant === 'hepatic-adenoma' ? <HepaticAdenomaPattern lang={lang}/> :
       variant === 'psc' || variant === 'hepatic-aml' ? <Hepatobiliary variant={variant} lang={lang}/> :
       variant === 'ultrasound' ? <Ultrasound lang={lang}/> : <Liver lang={lang}/>}
   </svg>

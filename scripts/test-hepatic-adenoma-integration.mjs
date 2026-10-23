@@ -65,26 +65,46 @@ assert.ok(provenance.includes('x=225, y=936, width=1200, height=585'))
 assert.ok(provenance.includes('user explicitly authorized reuse of figures in the supplied PDFs'))
 for (const phrase of [
   'Hepatozelluläres Adenom', 'Hepatocellular adenoma', 'آدنوم هپاتوسلولار',
-  'Die hepatobiliäre Phase ist auf dieser Bildtafel nicht enthalten.',
-  'The hepatobiliary phase is not included in this figure.',
+  'die hepatobiliäre Phase ist auf dieser Bildtafel nicht enthalten.',
+  'the hepatobiliary phase is not included in this figure.',
   'فاز هپاتوبیلیاری در این تصویر وجود ندارد.',
   'every 6 months for 2 years, then annually',
   'هر ۶ ماه به‌مدت ۲ سال و سپس سالانه',
   'alle 6 Monate für 2 Jahre, danach jährlich',
-  'definitive treatment should be pursued if size remains ≥5 cm',
+  'Definitive treatment should be pursued if size remains ≥5 cm',
   'soll eine definitive Behandlung erfolgen',
-  'درمان قطعی باید انجام شود',
+  'درمان قطعی باید پیگیری شود',
   'https://doi.org/10.14309/ajg.0000000000002857',
 ]) assert.ok(routeSource.includes(phrase), `HCA source, scope and localized route content include: ${phrase}`)
 for (const phrase of [
-  'Bei Frauen mit Läsionen ≥5 cm zunächst Risikofaktoren anpassen',
-  'For women with lesions ≥5 cm, risk-factor modification',
-  'برای زنان با ضایعات ۵ سانتی‌متر یا بزرگ‌تر',
-]) assert.ok(routeSource.includes(phrase), `ACG 2024 ≥5 cm observation branch is limited to women: ${phrase}`)
+  'sofern keine bildgebenden Malignitätsmerkmale vorliegen und kein β-Catenin-aktivierter Subtyp bekannt ist',
+  'when there are no imaging features concerning for malignancy and no known β-catenin-activated subtype',
+  'در نبود نشانهٔ تصویری بدخیمی و زیرگروه شناخته‌شدهٔ فعال‌شده با β-catenin',
+  'β-Catenin-mutierte Adenome sollen unabhängig von der Größe reseziert werden',
+  'β-catenin-mutated adenomas should be resected regardless of size',
+  'آدنوم‌های جهش‌یافتهٔ β-catenin باید مستقل از اندازه برداشته شوند',
+  'resection should be considered for men regardless of size',
+  'Resektion unabhängig von der Größe erwogen werden',
+  'برای مردان نیز رزکسیون مستقل از اندازه باید مدنظر باشد',
+  'high-risk features for rupture',
+  'hohem Rupturrisiko soll die Läsion behandelt werden',
+  'has high-risk features for rupture, it should be treated',
+  'ویژگی‌های پرخطر پارگی، ضایعه باید درمان شود',
+]) assert.ok(routeSource.includes(phrase), `ACG 2024 management caveat is localized: ${phrase}`)
 for (const phrase of [
   'Zusammenhang von Dauer und Dosis der Hormonexposition',
   'correlating with hormone-exposure duration and dose',
   'ارتباط مدت و دوز مواجههٔ هورمونی',
 ]) assert.ok(routeSource.includes(phrase), `PDF risk association is preserved without quantitative overstatement: ${phrase}`)
+
+const diagramSource = fs.readFileSync(new URL('../components/ClinicalPatternDiagram.jsx', import.meta.url), 'utf8')
+assert.match(routeSource, /diagram="hepatic-adenoma"/, 'HCA lesson uses the topic-specific diagram')
+assert.match(diagramSource, /<circle cx="87" cy="48" r="13" fill=\{PALETTE\.plum\}/, 'HBP lesion is visibly lower signal than the liver background')
+for (const phrase of ['hepatic-adenoma', 'usually a relatively low-signal focus', 'meist relativ signalarmes Areal', 'معمولاً کانون با سیگنال نسبی پایین']) {
+  assert.ok(diagramSource.includes(phrase) || routeSource.includes(phrase), `HCA diagram has localized purpose and accessibility text: ${phrase}`)
+}
+for (const phrase of ['Follow the right-lobe lesion across T1 in-/out-of-phase and dynamic T1 images', 'Verfolgen Sie die Läsion im rechten Leberlappen über T1 In-/Out-of-phase', 'ضایعهٔ لوب راست کبد را در تصاویر T1 in-/out-of-phase']) {
+  assert.ok(routeSource.includes(phrase), `HCA source figure has localized viewing guidance: ${phrase}`)
+}
 
 console.log('Hepatic adenoma integration PASS: exact curriculum route, four localized MCQs, five localized flashcards, source figure/provenance and language coverage.')

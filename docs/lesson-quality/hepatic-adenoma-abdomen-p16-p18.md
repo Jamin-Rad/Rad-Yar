@@ -45,3 +45,31 @@ default lesson. Independent review checked both downstream `from` consumers and
 confirmed that quiz and flashcards use the target as their back link. The HCA
 integration checker, global MCQ audit and scoped diff-check pass. ASM and REV
 pass for this link-only delta; browser interaction and RTL remain unverified.
+
+## Independent review corrections — 2026-10-23
+
+An independent review of the tracked route and rendered PDF pages 16–18 found
+that the previous ACG summary overstated the recommendation for men and omitted
+exceptions to observation of lesions ≥5 cm. The clinical overview now distinguishes
+asymptomatic women with lesions <5 cm, women with lesions ≥5 cm without imaging
+features concerning for malignancy (where 6–12 months of observation may be
+considered), immediate treatment when concerning features are present, resection
+of β-catenin-mutated adenomas regardless of size, and consideration of resection
+for men regardless of size. Pregnancy monitoring and the >6.5 cm / high-rupture-risk
+intervention cues are also stated. Wording was compared with the primary [ACG
+2024 guideline](https://doi.org/10.14309/ajg.0000000000002857), including Key
+Concepts 11 and 13–16 and the corresponding management text.
+
+The generic liver header schematic was replaced by a localized HCA-specific
+concept diagram showing the typical arterial-enhancement and hepatobiliary-phase
+pattern, with an explicit schematic/non-patient-image description. The source
+MRI caption and alt text now direct the learner to follow the right-lobe lesion
+across the labelled in-/out-of-phase and dynamic T1 images. The actual figure was
+visually checked at display size; it contains six labelled panels and no
+hepatobiliary-phase image.
+
+Retest: focused route/assessment/provenance/language assertions and global MCQ
+audit pass; scoped `git diff --check` passes. Independent correction retest
+confirmed SRC, VIS, ASM and REV PASS for the scoped changes. Browser UX/RTL remain
+BLOCKED: the local browser connection to port 3011 timed out even while the
+development server reported ready. Clinical approval by Dr. Zia remains pending.
