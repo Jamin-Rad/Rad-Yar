@@ -1,0 +1,14 @@
+{
+  "asset": "bronchiectasis-hero.svg",
+  "type": "original code-native teaching schematic",
+  "createdFor": "RadYar bronchiectasis CT reporting lesson",
+  "source": "Original SVG authored from BTS adult guideline CT descriptors; it is not copied from a patient case or source figure.",
+  "rights": "RadYar-authored original educational graphic. No patient image or third-party figure reproduced.",
+  "clinicalUse": "Non-diagnostic conceptual graphic, not to scale. It does not represent CT findings in an individual patient.",
+  "purpose": "Show the internal bronchial lumen compared with the outer diameter of the accompanying pulmonary artery (with the schematic ratio drawn >1), and contrast normal tapering with persistent airway calibre near a pleural landmark.",
+  "altTranslations": {
+    "de": "Schematische Darstellung eines Bronchus neben einer Lungenarterie; Lehrgrafik, keine CT-Aufnahme.",
+    "en": "Schematic of a bronchus beside a pulmonary artery; teaching graphic, not a CT image.",
+    "fa": "نمای شماتیک برونش در کنار شریان ریوی؛ تصویر آموزشی است و CT نیست."
+  }
+}

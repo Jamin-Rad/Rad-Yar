@@ -457,7 +457,7 @@ export const CURRICULUM = [
         themen: [
           { id: 'copd', title: { de: 'COPD', en: 'COPD', fa: 'COPD' }, tags: ['Rö','CT'], diff: 1 },
           { id: 'asthma', title: { de: 'Asthma', en: 'Asthma', fa: 'آسم' }, tags: ['Rö','CT'], diff: 1 },
-          { id: 'bronchiektasen', title: { de: 'Bronchiektasen', en: 'Bronchiectasis', fa: 'برونشیکتازی' }, tags: ['CT'], diff: 2 },
+          { id: 'bronchiektasen', title: { de: 'Bronchiektasen', en: 'Bronchiectasis', fa: 'برونشیکتازی' }, tags: ['CT'], diff: 2, link: '/thorax/bronchiektasen', mcqLink: '/ueben/quiz?fach=thorax&n=1&themen=bronchiektasen', flashcardLink: '/flashcards/bronchiektasen', inProgress: true, updatedAt: '2026-10-23' },
           { id: 'bronchiolitis', title: { de: 'Bronchiolitis', en: 'Bronchiolitis', fa: 'برونشیولیت' }, tags: ['CT'], diff: 2 },
           { id: 'tracheomalazie', title: { de: 'Tracheomalazie', en: 'Tracheomalacia', fa: 'تراکئومالاسی' }, group: ['Trachea & zentrale Atemwege'], tags: ['CT'], diff: 2 },
           { id: 'trachealstenose', title: { de: 'Trachealstenose', en: 'Tracheal Stenosis', fa: 'تنگی تراشه' }, group: ['Trachea & zentrale Atemwege'], tags: ['CT'], diff: 2 },

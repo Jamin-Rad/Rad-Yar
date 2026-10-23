@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Teaching schematic of bronchial dilatation</title>
+  <desc id="desc">A teaching cross-section compares a bronchial lumen with an accompanying pulmonary artery, showing a ratio greater than one. Two branches contrast normal tapering with lack of tapering toward a pleural landmark. Not to scale and not a patient image.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#eef7f6"/><stop offset="1" stop-color="#f8fafb"/></linearGradient>
+    <linearGradient id="airway" x1="0" x2="1"><stop stop-color="#b7e0db"/><stop offset="1" stop-color="#8acbc4"/></linearGradient>
+    <linearGradient id="vessel" x1="0" x2="1"><stop stop-color="#d6c5e8"/><stop offset="1" stop-color="#ae92d0"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#355566" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="520" rx="28" fill="url(#bg)"/>
+  <g fill="#213b4c" font-family="Arial, sans-serif">
+    <text x="54" y="58" font-size="20" font-weight="700" letter-spacing="2" fill="#3d7678">CT REPORTING · TEACHING SCHEMATIC</text>
+    <text x="54" y="94" font-size="29" font-weight="700">Compare morphology, then add context</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="48" y="122" width="532" height="340" rx="22" fill="#fff"/>
+    <rect x="600" y="122" width="552" height="340" rx="22" fill="#fff"/>
+  </g>
+  <g font-family="Arial, sans-serif" fill="#213b4c">
+    <text x="78" y="164" font-size="21" font-weight="700">1 · Airway : artery</text>
+    <text x="78" y="194" font-size="16" fill="#617681">Measure in a comparable plane</text>
+    <circle cx="212" cy="310" r="70" fill="#f2f7f7" stroke="#d8e4e6" stroke-width="3"/>
+    <circle cx="212" cy="310" r="49" fill="url(#airway)" stroke="#398b88" stroke-width="4"/>
+    <circle cx="212" cy="310" r="41" fill="#fff" stroke="#398b88" stroke-width="2"/>
+    <circle cx="383" cy="310" r="33" fill="url(#vessel)" stroke="#8f70b4" stroke-width="4"/>
+    <circle cx="383" cy="310" r="19" fill="#fff" stroke="#8f70b4" stroke-width="2"/>
+    <path d="M171 390H253" stroke="#276c70" stroke-width="3"/><path d="M171 381v18M253 381v18" stroke="#276c70" stroke-width="3"/>
+    <path d="M350 377H416" stroke="#75559b" stroke-width="3"/><path d="M350 368v18M416 368v18" stroke="#75559b" stroke-width="3"/>
+    <text x="153" y="426" font-size="15" font-weight="700">Airway lumen</text><text x="327" y="426" font-size="15" font-weight="700">Outer artery</text>
+    <rect x="475" y="260" width="74" height="92" rx="15" fill="#e9f4f2"/>
+    <text x="512" y="294" font-size="15" text-anchor="middle" font-weight="700">ratio</text><text x="512" y="327" font-size="22" text-anchor="middle" font-weight="700" fill="#286c70">&gt;1</text>
+  </g>
+  <g font-family="Arial, sans-serif" fill="#213b4c">
+    <text x="632" y="164" font-size="21" font-weight="700">2 · Tapering &amp; pleural visibility</text>
+    <text x="632" y="194" font-size="16" fill="#617681">Compare normal narrowing with persistent calibre</text>
+    <text x="662" y="249" font-size="14" font-weight="700" fill="#617681">NORMAL</text>
+    <path d="M725 239 C820 239 922 239 1052 247 L1052 261 C922 269 820 269 725 269 Z" fill="#86bcb8"/>
+    <path d="M725 247 C820 247 922 247 1052 251 L1052 257 C922 261 820 261 725 261 Z" fill="#fff"/>
+    <path d="M1052 244v20M1090 220v214" stroke="#df9b63" stroke-width="4" stroke-dasharray="8 8"/>
+    <text x="1090" y="449" font-size="14" text-anchor="end" fill="#a46638">pleural surface</text>
+    <path d="M1052 278h38" stroke="#a46638" stroke-width="2"/><path d="M1052 271v14M1090 271v14" stroke="#a46638" stroke-width="2"/>
+    <text x="1071" y="301" font-size="14" text-anchor="middle" fill="#a46638">~1 cm</text>
+    <text x="662" y="340" font-size="14" font-weight="700" fill="#286c70">BRONCHIECTASIS</text>
+    <path d="M725 361 C820 361 902 361 1052 361" fill="none" stroke="#398b88" stroke-width="34" stroke-linecap="round"/>
+    <path d="M725 361 C820 361 902 361 1052 361" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round"/>
+    <rect x="658" y="395" width="402" height="40" rx="12" fill="#eef6f5"/>
+    <text x="859" y="421" font-size="15" text-anchor="middle" font-weight="700" fill="#286c70">Report persistent calibre; check pleural distance</text>
+  </g>
+  <text x="600" y="493" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#687b86">Conceptual, not to scale · no CT data · not diagnostic evidence</text>
+</svg>
