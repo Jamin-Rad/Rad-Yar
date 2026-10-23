@@ -189,14 +189,24 @@ function GIbleed({ lang }) {
 }
 
 function RectalMRI({ lang }) {
-  const label = lang === 'fa' ? 'تومور، مزورکتوم و فاسیای مزورکتال' : lang === 'de' ? 'Tumor, Mesorektum und Mesorektalfaszie' : 'tumour, mesorectum and mesorectal fascia'
+  const labels = lang === 'fa'
+    ? { tumor: 'تومور', fat: 'چربی مزورکتال', fascia: 'MRF', distance: 'فاصله تا MRF' }
+    : lang === 'de'
+      ? { tumor: 'Tumor', fat: 'Mesorektales Fett', fascia: 'MRF', distance: 'Abstand zur MRF' }
+      : { tumor: 'tumour', fat: 'mesorectal fat', fascia: 'MRF', distance: 'distance to MRF' }
   return <g>
     <ellipse cx="200" cy="123" rx="100" ry="72" fill={PALETTE.blueLight} stroke={PALETTE.blue} strokeWidth="4"/>
     <ellipse cx="200" cy="123" rx="54" ry="43" fill={PALETTE.paper} stroke={PALETTE.ink} strokeWidth="5"/>
     <path d="M197 85q34-6 43 17-3 20-23 22-19-2-20-19Z" fill={PALETTE.coral}/>
     <path d="M200 123 253 92" stroke={PALETTE.amber} strokeWidth="4" strokeDasharray="5 4"/>
     <circle cx="253" cy="92" r="5" fill={PALETTE.amber}/>
-    <text x="200" y="222" textAnchor="middle" fill={PALETTE.muted} fontSize="12">{label}</text>
+    <path d="M221 103 272 62" stroke={PALETTE.coral} strokeWidth="1.5"/>
+    <text x="275" y="60" fill={PALETTE.ink} fontSize="11">{labels.tumor}</text>
+    <path d="M240 159 277 180" stroke={PALETTE.blue} strokeWidth="1.5"/>
+    <text x="280" y="184" fill={PALETTE.ink} fontSize="10">{labels.fat}</text>
+    <path d="M272 83 300 68" stroke={PALETTE.blue} strokeWidth="1.5"/>
+    <text x="303" y="67" fill={PALETTE.ink} fontSize="11">{labels.fascia}</text>
+    <text x="200" y="218" textAnchor="middle" fill={PALETTE.muted} fontSize="10">{labels.distance} · {lang === 'fa' ? 'شماتیک، نه اندازه‌گیری مقیاس‌دار' : lang === 'de' ? 'schematisch, nicht maßstabsgetreu' : 'schematic, not to scale'}</text>
   </g>
 }
 
@@ -281,6 +291,8 @@ export default function ClinicalPatternDiagram({ variant = 'lungs', lang = 'de',
     ? ({ de: 'Lehrschema mit Kolonverlauf und zwei vereinfachten Volvulus-Konfigurationen; keine diagnostische Aufnahme.', en: 'Teaching schematic of the colon and two simplified volvulus configurations; not a diagnostic image.', fa: 'شماتیک آموزشی مسیر کولون و دو نمای ساده‌شده از ولولوس؛ تصویر تشخیصی نیست.' }[lang] || 'Teaching schematic; not diagnostic imaging.')
     : variant === 'hepatic-aml'
     ? ({ de: 'Schematische Läsion mit markiertem makroskopischem Fettanteil; keine Patientenaufnahme.', en: 'Teaching schematic of a lesion with macroscopic fat; not patient imaging.', fa: 'شماتیک آموزشی ضایعه با چربی ماکروسکوپیک؛ تصویر بیمار نیست.' }[lang] || 'Teaching schematic of a lesion with macroscopic fat; not patient imaging.')
+    : variant === 'rectal-mri'
+    ? ({ de: 'Lernschema zur Rektum-MRT: Tumor, mesorektales Fett, MRF und schematischer Abstand; nicht maßstabsgetreu und keine Patientenaufnahme.', en: 'Rectal MRI teaching schematic: tumour, mesorectal fat, MRF and schematic distance; not to scale and not patient imaging.', fa: 'شماتیک آموزشی MRI رکتوم: تومور، چربی مزورکتال، MRF و فاصله شماتیک؛ بدون مقیاس و تصویر بیمار نیست.' }[lang] || 'Rectal MRI teaching schematic; not patient imaging.')
     : title
   return <svg viewBox="0 0 400 250" role="img" aria-label={accessibleDescription} xmlns="http://www.w3.org/2000/svg">
     <title>{accessibleDescription}</title>
