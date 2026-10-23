@@ -1,5 +1,7 @@
 .caseGrid { display:grid; grid-template-columns:repeat(2,minmax(0,220px)); gap:12px; align-items:start; max-width:460px; }
+.assessmentLinks { display:flex; flex-wrap:wrap; gap:.65rem 1rem; padding:.75rem 0; }
+.assessmentLinks a { color:var(--lesson-accent-strong,#236b78); text-underline-offset:.18em; }
 .caseFigure { min-width:0; margin:0; padding:8px; border:1px solid var(--line,#d6dfe5); border-radius:10px; background:var(--paper,#fff); }
 .caseFigure img { display:block; width:auto; max-width:100%; height:auto; max-height:250px; margin-inline:auto; object-fit:contain; }
 .caseFigure figcaption { margin-top:8px; color:var(--muted,#586773); font-size:.88rem; line-height:1.6; }
-@media(max-width:520px) { .caseGrid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; } .caseFigure { padding:5px; } }
+@media(max-width:520px) { .caseGrid { grid-template-columns:minmax(0,1fr); gap:10px; max-width:460px; } .caseFigure { padding:8px; } .caseFigure img { max-height:400px; } }

@@ -1,0 +1,31 @@
+{
+  "lesson": "/wirbelsaeule/tumoren/grundlagen#signal-patterns",
+  "verified": "2026-10-23",
+  "permission": "User explicitly confirmed permission to use Radiopaedia cases in RadYar, including paid access.",
+  "images": [
+    {
+      "local": "/educational/spinal-ependymoma-radiopaedia-rID-19319.jpeg",
+      "case": "https://radiopaedia.org/cases/spinal-ependymoma-18",
+      "caseRid": 19319,
+      "studyRid": 19334,
+      "imageId": 2324899,
+      "sequence": "Sagittal T2",
+      "contributor": "Frank Gaillard",
+      "original": "https://prod-images-static.radiopaedia.org/images/2324899/downloaded_image20240817-776-fwfmzm_big_gallery.jpeg",
+      "diagnosis": "Histologically confirmed spinal ependymoma; source case describes a cervical intramedullary lesion.",
+      "verification": "Case page, sequence/viewer and downloaded pixels inspected."
+    },
+    {
+      "local": "/educational/spinal-pilocytic-astrocytoma-radiopaedia-rID-152705.jpeg",
+      "case": "https://radiopaedia.org/cases/spinal-pilocytic-astrocytoma-3",
+      "caseRid": 152705,
+      "studyRid": 126541,
+      "imageId": 59654435,
+      "sequence": "Sagittal T2",
+      "contributor": "Joe Cyriac",
+      "original": "https://prod-images-static.radiopaedia.org/images/59654435/b0ec6845adc0e85694a8edd567b265053ca7d481b3b856445799fb16abfef681_big_gallery.jpeg",
+      "diagnosis": "Histologically confirmed pilocytic astrocytoma; source case describes a long-segment intramedullary lesion.",
+      "verification": "Case page, sequence/viewer and downloaded pixels inspected."
+    }
+  ]
+}
