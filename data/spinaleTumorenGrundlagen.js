@@ -51,6 +51,34 @@ export const SPINALE_TUMOREN_GRUNDLAGEN = {
       source: { de: 'Quelle: Wirbelsäule.pdf, PDF S. 22 (gedruckt S. 21).', en: 'Source: Wirbelsäule.pdf, PDF p. 22 (printed p. 21).', fa: 'منبع: Wirbelsäule.pdf، صفحهٔ PDF ۲۲ (شمارهٔ چاپی ۲۱).' },
     },
   ],
+  ivoryFigures: [
+    {
+      src: '/educational/ivory-vertebra-p21-a.png',
+      alt: {
+        de: 'Beckenübersicht in AP-Projektion; das PDF markiert Beispiel A mit einer diffus und homogen sklerosierten Wirbelkörpersäule.',
+        en: 'AP pelvic overview; the PDF labels example A with a diffusely and homogeneously sclerotic vertebral body.',
+        fa: 'نمای کلی لگن در پروجکشن AP؛ PDF مثال A را با اسکلروز منتشر و همگن یک جسم مهره مشخص می‌کند.'
+      },
+      caption: {
+        de: 'A · L4: Das PDF beschreibt eine homogene Sklerosierung bei erhaltener Größe und Kontur, im Kontext bekannter osteoblastischer Prostatakarzinommetastasen.',
+        en: 'A · L4: the PDF describes homogeneous sclerosis with preserved size and contour, in the context of known osteoblastic prostate-cancer metastases.',
+        fa: 'A · مهرهٔ L4: PDF اسکلروز همگن با اندازه و حاشیهٔ حفظ‌شده را در زمینهٔ متاستازهای استئوبلاستیک شناخته‌شدهٔ سرطان پروستات توصیف می‌کند.'
+      }
+    },
+    {
+      src: '/educational/ivory-vertebra-p21-b.png',
+      alt: {
+        de: 'Seitliche Röntgenaufnahme der Brustwirbelsäule; das PDF markiert Beispiel B mit diffuser homogener Sklerosierung eines Wirbelkörpers.',
+        en: 'Lateral thoracic-spine radiograph; the PDF labels example B with diffuse homogeneous sclerosis of a vertebral body.',
+        fa: 'رادیوگرافی لترال ستون مهره‌های سینه‌ای؛ PDF مثال B را با اسکلروز منتشر و همگن یک جسم مهره مشخص می‌کند.'
+      },
+      caption: {
+        de: 'B · BWK 6: Im PDF sind Höhe und Kontur erhalten. Zusätzlich nennt die Bildlegende fleckige Sklerosierung und Destruktion an BWK 4; die Fälle stehen im Kontext eines bekannten Prostatakarzinoms.',
+        en: 'B · T6: the PDF describes preserved height and contour. The source caption also notes patchy sclerosis and destruction at T4; the examples are in the context of known prostate cancer.',
+        fa: 'B · مهرهٔ T6: PDF حفظ ارتفاع و حاشیه را توصیف می‌کند. کپشن منبع همچنین اسکلروز لکه‌ای و تخریب T4 را ذکر می‌کند؛ مثال‌ها در زمینهٔ سرطان پروستات شناخته‌شده‌اند.'
+      }
+    }
+  ],
   check: {
     title: { de: 'Selbstcheck: Was folgt aus der Lage?', en: 'Self-check: what follows from location?', fa: 'خودآزمایی: از محل ضایعه چه نتیجه‌ای می‌گیریم؟' },
     prompt: { de: 'Eine Raumforderung liegt innerhalb des Duralsacks, aber außerhalb des Myelons. Welche Aussage ist durch diese Beschreibung gedeckt?', en: 'A mass lies within the dural sac but outside the cord. Which statement is supported by this description?', fa: 'توده داخل کیسهٔ دورال ولی خارج از طناب نخاعی است. کدام گزاره از این توصیف پشتیبانی می‌شود؟' },

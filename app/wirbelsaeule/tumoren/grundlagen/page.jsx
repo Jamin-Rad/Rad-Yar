@@ -5,6 +5,7 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
 import { SPINALE_TUMOREN_GRUNDLAGEN as lesson } from '@/data/spinaleTumorenGrundlagen'
 import styles from '../../infektion/page.module.css'
+import mediaStyles from './page.module.css'
 
 const L = (de, en, fa) => ({ de, en, fa })
 const pick = (value, lang) => typeof value === 'string' ? value : value?.[lang] || value?.de || ''
@@ -59,7 +60,7 @@ export default function SpinaleTumorenGrundlagenPage() {
     sources={<LessonSources title={pick(L('Quelle und Reichweite', 'Source and scope', 'منبع و محدوده'), lang)} items={sources} note={pick(lesson.notice, lang)}/>}
   >
     <LessonSection id="start" icon="start" title={pick(lesson.intro.title, lang)}><div className={styles.body}><p>{pick(lesson.intro.text, lang)}</p><CompartmentLegend lang={lang}/><p className={styles.scope}>{pick(lesson.notice, lang)}</p></div></LessonSection>
-    {lesson.chapters.map(ch => <LessonSection key={ch.id} id={ch.id} icon={ch.icon} title={pick(ch.title, lang)}><div className={styles.body}><p>{pick(ch.lead, lang)}</p><Table rows={ch.rows} lang={lang}/><p className={styles.scope}>{pick(ch.note, lang)}</p><small>{pick(ch.source, lang)}</small></div></LessonSection>)}
+    {lesson.chapters.map(ch => <LessonSection key={ch.id} id={ch.id} icon={ch.icon} title={pick(ch.title, lang)}><div className={styles.body}><p>{pick(ch.lead, lang)}</p><Table rows={ch.rows} lang={lang}/>{ch.id === 'ivory-vertebra' ? <><div className={mediaStyles.caseGrid}>{lesson.ivoryFigures.map((figure, index) => <figure key={figure.src} className={mediaStyles.caseFigure}><img src={figure.src} alt={pick(figure.alt, lang)} width={index === 0 ? 176 : 218} height="250"/><figcaption>{pick(figure.caption, lang)}</figcaption></figure>)}</div><p className={styles.scope}>{pick(L('Bildquelle: Zuschnitte der beiden unveränderten Radiographien aus Wirbelsäule.pdf, PDF S. 21 (gedruckte S. 20); die Quellseite nennt Radiopaedia rID 25354 und 96568. Die Seitenbeschriftungen A/B und der sichtbare Bildinhalt bleiben erhalten.', 'Image source: crops of the two unchanged radiographs in Wirbelsäule.pdf, PDF p. 21 (printed p. 20); the source page lists Radiopaedia rIDs 25354 and 96568. The A/B labels and visible image content are retained.', 'منبع تصویر: برش‌هایی از دو رادیوگرافی بدون تغییر در Wirbelsäule.pdf، صفحهٔ PDF ۲۱ (شمارهٔ چاپی ۲۰)؛ صفحهٔ منبع شناسه‌های Radiopaedia rID 25354 و 96568 را ذکر می‌کند. برچسب‌های A/B و محتوای تصویری قابل مشاهده حفظ شده‌اند.'), lang)}</p></> : null}<p className={styles.scope}>{pick(ch.note, lang)}</p><small>{pick(ch.source, lang)}</small></div></LessonSection>)}
     <LessonSection id="check" icon="check" title={pick(lesson.check.title, lang)}><SelfCheck lang={lang}/></LessonSection>
     <LessonSection id="take-home" icon="pattern" title={tr('takeHome')}><ol className={styles.rules}>{lesson.takeHome.map((item, i) => <li key={i}>{pick(item, lang)}</li>)}</ol></LessonSection>
   </StandardLessonShell>

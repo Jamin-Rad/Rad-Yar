@@ -31,6 +31,7 @@ const page = compile('app/wirbelsaeule/tumoren/grundlagen/page.jsx', {
   '@/providers/LanguageProvider': { useLanguage: () => ({ lang: activeLanguage }) },
   '@/components/lesson-template/StandardLessonShell': shell,
   '@/data/spinaleTumorenGrundlagen': { SPINALE_TUMOREN_GRUNDLAGEN: lesson },
+  './page.module.css': { __esModule: true, default: styles },
   '../../infektion/page.module.css': { __esModule: true, default: styles },
 })
 const assertLocalized = value => {
@@ -46,6 +47,8 @@ assertLocalized(lesson)
 assertLocalized(WIRBELMETASTASEN_FLASHCARDS)
 assert.equal(lesson.id, 'spinale-tumoren-grundlagen')
 assert.equal(lesson.check.answerIndex, 0)
+assert.equal(lesson.ivoryFigures.length, 2, 'both source radiographs should be represented')
+for (const figure of lesson.ivoryFigures) assert.ok(fs.existsSync(`public${figure.src}`), `missing source image ${figure.src}`)
 for (const lang of ['de', 'en', 'fa']) {
   const question = WIRBELMETASTASEN_QUESTIONS.find(item => item.id === `wirbelmetastasen-${lang}-ivory-vs-destructive`)
   assert.ok(question && QUESTION_BANK[lang].some(item => item.id === question.id), `${lang} vertebral-metastasis MCQ is registered`)
@@ -79,5 +82,11 @@ for (const lang of ['de', 'en', 'fa']) {
   assert.match(html, /not been independently confirmed|nicht unabhängig bestätigt|مستقلاً تأیید نشده/)
   assert.match(html, /outside the cord|außerhalb des Myelons|خارج از طناب نخاعی/)
   assert.match(html, /outside the dural sac, inside the bony canal|außerhalb des Duralsacks, innerhalb des knöchernen Spinalkanals|خارج از کیسهٔ دورال/)
+  for (const figure of lesson.ivoryFigures) {
+    assert.ok(html.includes(figure.src), `${lang} displays the source radiograph`)
+    assert.ok(html.includes(figure.alt[lang]), `${lang} has localized image alt text`)
+    assert.ok(html.includes(figure.caption[lang]), `${lang} has localized, source-bounded caption`)
+  }
+  assert.match(html, /Radiopaedia rIDs 25354 and 96568|Radiopaedia rID 25354 und 96568|شناسه‌های Radiopaedia rID 25354 و 96568/)
 }
-console.log('spinale-tumoren-grundlagen SSR, locales, source limits, and check markup: PASS')
+console.log('spinale-tumoren-grundlagen SSR, locales, source limits, ivory-vertebra images, and check markup: PASS')

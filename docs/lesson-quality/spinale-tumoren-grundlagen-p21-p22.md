@@ -12,7 +12,7 @@ Die drei Kapitel folgen der Quelle: (1) intramedullär, intradural-extramedullä
 
 | PDF-Stelle | Quellinhalt | Entscheidung / Ort | Grenze |
 |---|---|---|---|
-| S. 21, Definition und A/B | Einzelner diffus und homogen sklerosierter Wirbelkörper; erhaltene Größe/Kontur; zwei Radiographien; Beispiele im Kontext bekannter osteoblastischer Prostatakarzinommetastasen | Kapitel `ivory-vertebra` | Gezeigte Fälle sind Beispiele, kein exklusives Zeichen; PDF nennt rID 25354 und 96568, deren externe Ursprünge/Lizenzen wurden nicht verifiziert. Keine dieser Radiographien wird ins Produkt kopiert. |
+| S. 21, Definition und A/B | Einzelner diffus und homogen sklerosierter Wirbelkörper; erhaltene Größe/Kontur; zwei Radiographien; Beispiele im Kontext bekannter osteoblastischer Prostatakarzinommetastasen | Kapitel `ivory-vertebra`; two unretouched crops from the supplied PDF page are shown with localized captions and alt text | Gezeigte Fälle sind Beispiele, kein exklusives Zeichen; the PDF visibly lists rIDs 25354 and 96568. The crops retain the source A/B labels; no sequence, patient identity or new diagnostic feature is inferred. The user confirmed the supplied PDF figures are licensed for RadYar. |
 | S. 21, DD | Osteoblastische Metastasen (PDF nennt Prostata bei Männern, Mamma bei Frauen), Morbus Paget mit Größen-/Kortikalis-/Trabekelhinweisen, Lymphom/Hodgkin | Teilweise unter `ivory-vertebra`; die Geschlechtszuordnung und pauschale Hodgkin-Aussage werden wegen fehlender unabhängiger klinischer Prüfung nicht als Regeln gelehrt | Originalformulierungen der knappen PDF nicht durch aktuelle Epidemiologie ersetzt. |
 | S. 22, Tumorübersicht | Astrozytom und Ependymom intramedullär; Meningeom, Schwannom und Epidermoidzyste intradural-extramedullär; Metastase und Epiduralabszess extradural | `compartments`, `signal-patterns` | Epidermoidzyste und Epiduralabszess sind keine Tumoren; sie bleiben als Differenziale sichtbar. Nicht genannte Entitäten/Untertypen werden nicht ergänzt. |
 | S. 22, Astrozytom | Alter, langstreckige Myelonauftreibung, T2-Hyperintensität, unscharfe Begrenzung, variable/oft geringe KM-Aufnahme | Eigene Zeile in `signal-patterns` | PDF-Stichwörter, nicht unabhängig klinisch geprüft. |
@@ -25,13 +25,14 @@ Die drei Kapitel folgen der Quelle: (1) intramedullär, intradural-extramedullä
 ## Medien- und Übersetzungsplan
 
 - Hero: lokales, code-natives axiales Kompartiment-Schema `public/educational/spinal-tumour-compartments.svg`; bony canal, Duralsack und Myelon haben separate Grenzen. Drei farbige Marker werden in der direkt anschließenden lokalisierten Legende räumlich zugeordnet; der extradural-Marker liegt innerhalb des knöchernen Kanals, aber außerhalb des Duralsacks. Das Bild ist ausdrücklich nicht diagnostisch.
-- PDF-Radiographien A/B werden für diesen begrenzten Entwurf nicht wiederverwendet; es gibt kein diagnostisches MRT auf den verwendeten Seiten, das spinalen Tumorkompartimenten zugeordnet werden könnte.
+- Two diagnostic radiographs A/B from PDF p.21 are cropped from the 849×1200 page render to keep the source views and A/B markers together with readable localized captions. They illustrate the adjacent ivory-vertebra subsection only; they are not used as MRI or compartment examples. The source-page pixels are not retouched or annotated. At native resolution the images are small and soft, matching the PDF's available detail.
 - Inhalt, Kapitel, Selbstcheck, Feedback, Alt-Text und Quellengrenze sind DE/EN/FA lokalisiert. Die Tabellenantworten bleiben semantisch parallel; die lokalisierte RTL-Anzeige ist im Browser noch nicht geprüft.
 - Es wurde keine zusätzliche externe wissenschaftliche Quelle hinzugefügt. Alle Läsionsdetails bleiben sichtbar als Angabe aus der PDF gekennzeichnet, weil keine unabhängige klinische Prüfung Teil dieses Arbeitsschritts war.
 
 ## Validierung und offene Gates
 
 - `node_modules/.bin/tsx scripts/test-spinale-tumoren-grundlagen-render.mjs` — PASS: tatsächliches Shell-SSR in drei Sprachen, lokalisierte Datenfelder, Quellen- und Prüfungsmarker.
+- Focused regression now also verifies both p.21 crops exist, render in DE/EN/FA, and retain localized alt text, bounded captions and the source-page rID attribution.
 - `git diff --check` — PASS für diese Lesson-Änderungen.
 - Browserdesktop/mobil, Theme, Interaktionen in echter Browserumgebung: offen.
 - Unabhängige wissenschaftliche/klinische Review: offen; alle kurzen Befundbehauptungen sind daher quellgebundene Lernnotizen, keine Freigabe.
