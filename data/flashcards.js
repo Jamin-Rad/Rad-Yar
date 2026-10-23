@@ -2529,14 +2529,14 @@ const LEGACY_FLASHCARDS = [
       "fa": "مبانی"
     },
     "front": {
-      "de": "Welche drei Shunt-Typen werden bei hepatischen AVMs unterschieden?",
-      "en": "Which three shunt types are distinguished in hepatic AVMs?",
-      "fa": "سه نوع شانت در AVM‌های کبدی کدامند؟"
+      "de": "Welche drei intrahepatischen Shunt-Verbindungen werden in der Lektion unterschieden?",
+      "en": "Which three intrahepatic shunt pathways are distinguished in this lesson?",
+      "fa": "در این درس سه مسیر شانت داخل‌کبدی کدام‌اند؟"
     },
     "answer": {
-      "de": "Arterioportal, arteriovenös und portosystemisch.",
-      "en": "Arterioportal, arteriovenous and portosystemic.",
-      "fa": "آرتریوپورتال، آرتریوونوس و پورتوسیستمیک."
+      "de": "Arterioportal und arteriovenös sind arterielle Shunts. Portosystemisch verbindet die Pfortader mit einer Lebervene und ist keine AV-Fistel.",
+      "en": "Arterioportal and arteriovenous are arterial shunts. A portosystemic shunt connects the portal vein to a hepatic vein and is not an AV fistula.",
+      "fa": "شانت آرتریوپورتال و شریانی‌وریدی منشأ شریانی دارند. شانت پورتوسیستمیک ورید پورت را به ورید کبدی وصل می‌کند و فیستول شریانی‌وریدی نیست."
     },
     "explanation": {
       "de": "Arterioportale Shunts verbinden die A. hepatica mit einem Pfortaderast, arteriovenöse Shunts die A. hepatica mit einer Lebervene und portosystemische Shunts die Pfortader mit einer Lebervene. Die konkrete Verbindung ist anhand der Gefäßdarstellung zu bestimmen.",
