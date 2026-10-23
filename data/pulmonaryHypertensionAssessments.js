@@ -153,6 +153,15 @@ export const PULMONARY_HYPERTENSION_FLASHCARDS = [
     explanation: L('Mit Morphologie, weiteren Zeichen, klinischem Kontext und hämodynamischer Abklärung zusammenführen.', 'Integrate them with morphology, other signs, clinical context and haemodynamic assessment.', 'آن‌ها را با مورفولوژی، سایر نشانه‌ها، زمینهٔ بالینی و ارزیابی همودینامیک تلفیق کنید.'),
     source: '2022 ESC/ERS Guidelines, CT signs suggesting PH; Thorax.pdf p.47.',
   },
+  {
+    id: 'pulmonale-hypertonie-postcapillary',
+    topicId: 'pulmonale-hypertonie',
+    category: L('Hämodynamik', 'Haemodynamics', 'همودینامیک'),
+    front: L('Wie unterscheiden sich IpcPH und CpcPH bei postkapillärer PH?', 'How do IpcPH and CpcPH differ in post-capillary PH?', 'در PH پس‌مویرگی، IpcPH و CpcPH چه تفاوتی دارند؟'),
+    answer: L('Bei beiden: mPAP >20 mmHg und PAWP >15 mmHg. IpcPH: PVR ≤2 WU; CpcPH: PVR >2 WU.', 'Both: mPAP >20 mmHg and PAWP >15 mmHg. IpcPH: PVR ≤2 WU; CpcPH: PVR >2 WU.', 'در هر دو: mPAP بیش از ۲۰ و PAWP بیش از ۱۵ mmHg. در IpcPH، ‏PVR ≤2 WU و در CpcPH، ‏PVR >2 WU است.'),
+    explanation: L('Der PVR trennt die isoliert postkapilläre von der kombinierten post- und präkapillären Form.', 'PVR distinguishes isolated post-capillary from combined post- and pre-capillary PH.', 'PVR نوع پس‌مویرگی منفرد را از نوع پس‌مویرگی و پیش‌مویرگی ترکیبی جدا می‌کند.'),
+    source: '2022 ESC/ERS Guidelines, Table 5: haemodynamic definitions.',
+  },
 ]
 
 export const PULMONARY_HYPERTENSION_TOPIC_GROUP = {

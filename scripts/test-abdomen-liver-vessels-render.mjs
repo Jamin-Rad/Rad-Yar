@@ -61,9 +61,9 @@ for (const path of ['/educational/abdomen-liver-vessels/source-p2-arterial-overv
 }
 assert.match(provenance['source-p3-portal-confluence.png'].scope, /left=55, top=35, width=800, height=565/)
 const expected = {
-  de: ['lang="de"', 'dir="ltr"', 'Lebergefäße: Zufluss und Abfluss', 'V. mesenterica superior', 'Vv. hepaticae', 'Truncus coeliacus', 'A. gastrica sinistra und A. splenica', 'Abdomen.pdf'],
-  en: ['lang="en"', 'dir="ltr"', 'Liver vessels: inflow and outflow', 'superior mesenteric vein', 'hepatic veins', 'celiac trunk', 'left gastric and splenic arteries', 'Abdomen.pdf'],
-  fa: ['lang="fa"', 'dir="rtl"', 'عروق کبد: ورودی و خروجی', 'ورید مزانتریک فوقانی', 'وریدهای کبدی', 'تنهٔ سلیاک', 'شریان معده‌ای چپ و شریان طحالی', 'Abdomen.pdf'],
+  de: ['lang="de"', 'dir="ltr"', 'Lebergefäße: Zufluss und Abfluss', 'V. mesenterica superior', 'Vv. hepaticae', 'Truncus coeliacus', 'A. gastrica sinistra und A. splenica', 'Abdomen.pdf', 'Drei passende Fragen', '/ueben/quiz?fach=abdomen&amp;n=3&amp;themen=leber-anatomie,gefaesse-anatomie-abdomen&amp;from=%2Fabdomen%2Fleber%2Fgefaesse', '/flashcards/leber-gefaesse-anatomie?from=%2Fabdomen%2Fleber%2Fgefaesse'],
+  en: ['lang="en"', 'dir="ltr"', 'Liver vessels: inflow and outflow', 'superior mesenteric vein', 'hepatic veins', 'celiac trunk', 'left gastric and splenic arteries', 'Abdomen.pdf', 'Three focused questions', '/ueben/quiz?fach=abdomen&amp;n=3&amp;themen=leber-anatomie,gefaesse-anatomie-abdomen&amp;from=%2Fabdomen%2Fleber%2Fgefaesse'],
+  fa: ['lang="fa"', 'dir="rtl"', 'عروق کبد: ورودی و خروجی', 'ورید مزانتریک فوقانی', 'وریدهای کبدی', 'تنهٔ سلیاک', 'شریان معده‌ای چپ و شریان طحالی', 'Abdomen.pdf', 'سه پرسش مرتبط', 'lang=fa'],
 }
 for (const lang of ['de', 'en', 'fa']) {
   language = lang
@@ -71,6 +71,7 @@ for (const lang of ['de', 'en', 'fa']) {
   for (const phrase of expected[lang]) assert.ok(html.includes(phrase), `${lang} contains ${phrase}`)
   assert.ok(html.includes('data-lesson-progress-managed="true"'), `${lang} uses StandardLessonShell`)
   assert.ok(html.includes('data-lesson-hero'), `${lang} has topic hero`)
+  assert.ok(html.includes('/flashcards/leber-gefaesse-anatomie?from=%2Fabdomen%2Fleber%2Fgefaesse'), `${lang} has linked flashcards and lesson return path`)
   for (const check of lesson.checks) for (const option of check.options) assert.ok(html.includes(option[lang]), `${lang} includes self-check option ${option[lang]}`)
 }
 console.log('Liver vessel orientation SSR PASS: source-page provenance, bounded aortic-branch orientation, DE/EN/FA direction, liver inflow/outflow, and two explanatory self-checks. Browser and clinician review remain open.')

@@ -27,6 +27,7 @@ export default function LiverVesselsPage() {
   const { lang } = useLanguage()
   const t = value => pick(value, lang)
   const local = path => lang === 'de' ? path : `${path}?lang=${lang}`
+  const actionPath = path => lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
   const text = {
     path: t(L('Lernpfad', 'Learning path', 'مسیر یادگیری')), progress: t(L('Fortschritt', 'Progress', 'پیشرفت')),
     continue: t(L('Weiter', 'Continue', 'ادامه')), complete: t(L('Abschnitt als gelesen markieren', 'Mark section as read', 'علامت‌گذاری بخش به‌عنوان خوانده‌شده')),
@@ -40,7 +41,7 @@ export default function LiverVesselsPage() {
   const refs = lesson.references.map(reference => ({ ...reference, title: t(reference.title), citation: t(reference.citation) }))
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={t(lesson.title)} author="RadYar" syncHashNavigation
     breadcrumbs={[{ label: 'RadYar', href: local('/') }, { label: t(L('Abdomen', 'Abdomen', 'شکم')), href: local('/lernen/abdomen') }, { label: t(L('Leber', 'Liver', 'کبد')), href: local('/abdomen/leber/haemangiom') }, { label: t(lesson.title) }]}
-    sections={sectionDefs} labels={text} actions={{}} renderIcon={id => <Icon id={id}/>} theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.hero, heroImageOpacity: .95, accent: '#55a5b4', accentStrong: '#185967', accentSoft: '#e1f3f4', secondary: '#d69553', secondaryStrong: '#784316', heroBase: '#101b2d' }}
+    sections={sectionDefs} labels={text} actions={{ mcq: { label: t(L('Drei passende Fragen', 'Three focused questions', 'سه پرسش مرتبط')), href: actionPath('/ueben/quiz?fach=abdomen&n=3&themen=leber-anatomie,gefaesse-anatomie-abdomen&from=%2Fabdomen%2Fleber%2Fgefaesse') }, flashcards: { label: t(L('Lernkarten öffnen', 'Open flashcards', 'بازکردن فلش‌کارت‌ها')), href: actionPath('/flashcards/leber-gefaesse-anatomie?from=%2Fabdomen%2Fleber%2Fgefaesse') } }} renderIcon={id => <Icon id={id}/>} theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.hero, heroImageOpacity: .95, accent: '#55a5b4', accentStrong: '#185967', accentSoft: '#e1f3f4', secondary: '#d69553', secondaryStrong: '#784316', heroBase: '#101b2d' }}
     heroImageAlt={t(L('Nichtdiagnostische Skizze: Pfortader und Leberarterie führen zur Leber; Lebervenen drainieren in die Vena cava inferior.', 'Non-diagnostic schematic: the portal vein and hepatic artery enter the liver; hepatic veins drain into the inferior vena cava.', 'شماتیک غیرتشخیصی: ورید پورت و شریان کبدی وارد کبد می‌شوند؛ وریدهای کبدی به ورید اجوف تحتانی تخلیه می‌شوند.'))}
     sources={<LessonSources title={text.sources} items={refs} note={t(lesson.sourceNote)}/> }>
     {lesson.sections.map(section => <LessonSection key={section.id} id={section.id} icon={section.icon} title={t(section.title)} bodyClassName={styles.body}>

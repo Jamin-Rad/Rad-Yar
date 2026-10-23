@@ -727,7 +727,7 @@ export const CURRICULUM = [
         title: { de: '1. Anatomie', en: '1. Anatomy', fa: '۱. آناتومی' },
         icon: '🗺️',
         themen: [
-          { id: 'leber-anatomie', title: { de: 'Leber', en: 'Liver', fa: 'کبد' }, tags: ['CT','MRT'], diff: 1, link: '/abdomen/leber/gefaesse', ready: true, inProgress: true, updatedAt: '2026-10-20' },
+          { id: 'leber-anatomie', title: { de: 'Leber', en: 'Liver', fa: 'کبد' }, tags: ['CT','MRT'], diff: 1, link: '/abdomen/leber/gefaesse', mcqLink: '/ueben/quiz?fach=abdomen&n=3&themen=leber-anatomie,gefaesse-anatomie-abdomen', flashcardLink: '/flashcards/leber-gefaesse-anatomie', ready: true, inProgress: true, updatedAt: '2026-10-20' },
           { id: 'gallenwege-anatomie', title: { de: 'Gallenblase & Gallenwege', en: 'Gallbladder & Bile Ducts', fa: 'کیسه صفرا و مجاری صفراوی' }, tags: ['CT','MRT'], diff: 1 },
           { id: 'pankreas-anatomie', title: { de: 'Pankreas', en: 'Pancreas', fa: 'پانکراس' }, tags: ['CT','MRT'], diff: 1 },
           { id: 'milz-anatomie', title: { de: 'Milz', en: 'Spleen', fa: 'طحال' }, tags: ['CT','MRT'], diff: 1 },
@@ -736,7 +736,7 @@ export const CURRICULUM = [
           { id: 'nebenniere-anatomie', title: { de: 'Nebennieren', en: 'Adrenal Glands', fa: 'غدد فوق کلیوی' }, tags: ['CT','MRT'], diff: 1 },
           { id: 'retroperitoneum-anatomie', title: { de: 'Retroperitoneum', en: 'Retroperitoneum', fa: 'رتروپریتوئن' }, tags: ['CT','MRT'], diff: 1 },
           { id: 'peritoneum-anatomie', title: { de: 'Peritoneum & Kompartimente', en: 'Peritoneum & Compartments', fa: 'پریتوئن و کمپارتمان‌ها' }, tags: ['CT','MRT'], diff: 1 },
-          { id: 'gefaesse-anatomie-abdomen', title: { de: 'Gefäßanatomie', en: 'Vascular Anatomy', fa: 'آناتومی عروقی' }, tags: ['CT','MRT'], diff: 1, link: '/abdomen/leber/gefaesse', ready: true, inProgress: true, updatedAt: '2026-10-20' },
+          { id: 'gefaesse-anatomie-abdomen', title: { de: 'Gefäßanatomie', en: 'Vascular Anatomy', fa: 'آناتومی عروقی' }, tags: ['CT','MRT'], diff: 1, link: '/abdomen/leber/gefaesse', mcqLink: '/ueben/quiz?fach=abdomen&n=3&themen=leber-anatomie,gefaesse-anatomie-abdomen', flashcardLink: '/flashcards/leber-gefaesse-anatomie', ready: true, inProgress: true, updatedAt: '2026-10-20' },
         ],
       },
       {

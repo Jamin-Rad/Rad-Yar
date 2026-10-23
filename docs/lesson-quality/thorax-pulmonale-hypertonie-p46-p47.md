@@ -1,6 +1,6 @@
 # Pulmonary hypertension lesson — source and author QA ledger
 
-Status: independent source, translation, and standalone-visual review/retest passed for reported findings; full browser/RTL QA and specialist clinical approval remain pending.
+Status: PDF coverage and translation checks pass; independent review identified a missing post-capillary haemodynamic distinction, now addressed in the lesson. Patient-image selection/rendering, full browser/RTL QA, and specialist clinical approval remain pending.
 Scope: curriculum topic `pulmonale-hypertonie`, route `/thorax/pulmonale-hypertonie`.
 
 ## Source coverage
@@ -27,7 +27,7 @@ Sequence: haemodynamic definition and catheterisation; radiograph and CT clues w
 
 ## Scientific reconciliation
 
-- ESC/ERS 2022 defines PH by mPAP >20 mmHg at rest. Pre-capillary PH additionally requires PAWP ≤15 mmHg and PVR >2 WU. The lesson does not call mPAP alone PAH or use it to assign a group.
+- ESC/ERS 2022 defines PH by mPAP >20 mmHg at rest. Pre-capillary PH additionally requires PAWP ≤15 mmHg and PVR >2 WU. Post-capillary PH has PAWP >15 mmHg; IpcPH has PVR ≤2 WU and CpcPH has PVR >2 WU. The lesson states that mPAP >20 mmHg is also required for each haemodynamic category and does not call mPAP alone PAH or use it to assign a group.
 - ESC/ERS CT clues include enlarged PA, PA/Ao >0.9 and right-heart enlargement. These are supportive signs; none confirms PH alone.
 - The current group-4 label is “PH associated with pulmonary artery obstructions”; CTEPH is presented as the principal group 4.1 example. Group-4 imaging clues include webs/bands, stenoses or cut-off, mosaic perfusion and bronchial collaterals.
 - The PDF thresholds (main PA >29 mm; PA/Aorta >1.0) remain attributed to the PDF and are explicitly not promoted to universal diagnostic criteria.
@@ -39,7 +39,9 @@ All lesson strings use canonical `L(de, en, fa)` ordering. The parity checker re
 
 ## Open gates
 
-- Independent review and retest closed the reported translation, source-label, SVG-clipping, projection-mapping, and assessment-feedback findings in the declared scope. The assessment delta review gates SRC/EDU/VIS/LNG/ASM/REV PASS; this does not replace specialist clinical approval.
+- Independent review confirmed the PDF coverage and localized assessments but identified the omitted post-capillary definitions (PH-EDU-01); the lesson now adds IpcPH and CpcPH criteria in DE/EN/FA. Targeted translation, source, assessment, and server-render checks pass after this change; independent delta review is pending. A reviewer inspected SVG coordinates but did not certify rendered clipping.
+- The existing schematic explains PA/Ao and right-heart enlargement but does not substitute for a patient image. Radiopaedia rID 35454 is a possible CXR example (enlarged pulmonary trunk; suspected ASD; no haemodynamic confirmation), but the image pixels and exact frame were not independently accessible in this review. Keep VIS open until a selected frame is visually checked and its live lesson rendering is verified, or the lesson objective is explicitly limited to conceptual review.
 - Browser and RTL verification across widths/themes, keyboard and persisted lesson controls: pending.
-- A localized, centrally registered two-question MCQ set and two retrieval cards are now linked from the lesson and curriculum. These assess haemodynamic definition and limits of imaging signs; they do not expand the PDF coverage scope.
+- A localized, centrally registered two-question MCQ set and three retrieval cards are linked from the lesson and curriculum. The added card rehearses IpcPH/CpcPH haemodynamic criteria; the others assess PH definition and limits of imaging signs. These do not expand the PDF coverage scope.
+- The user directly confirmed that Radiopaedia authorized image use for RadYar, including its intended commercial/subscription context. Preserve case/contributor attribution and follow that separate project-specific permission; do not imply the generic CC BY-NC-SA terms alone authorize commercial reuse.
 - No scientific approval or publication readiness is claimed.

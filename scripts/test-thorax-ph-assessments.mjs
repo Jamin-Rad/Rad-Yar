@@ -36,7 +36,7 @@ for (const lang of languages) {
     for (const [optionId, text] of Object.entries(question.wrongExplanations)) assertLanguageSlot(lang, text, `${question.id}: feedback ${optionId}`)
   }
   const cards = getCardsByTopic(topicId)
-  assert.equal(cards.length, 2, `${lang}: two cards registered under the exact topic ID`)
+  assert.equal(cards.length, 3, `${lang}: three cards registered under the exact topic ID`)
   for (const card of cards) {
     assert.ok(card.front[lang] && card.answer[lang] && card.explanation[lang] && card.source, `${card.id}: localized card fields`)
     assertLanguageSlots(card.front, `${card.id}: front`)

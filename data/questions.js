@@ -27,6 +27,7 @@ import { UIP_IPF_QUESTIONS } from './thoraxUipIpfLesson'
 import { RENAL_TRAUMA_QUESTIONS } from './renalTraumaLesson'
 import { PULMONARY_EDEMA_QUESTIONS } from './pulmonaryEdema'
 import { PULMONARY_HYPERTENSION_QUESTIONS, PULMONARY_HYPERTENSION_TOPIC_GROUP } from './pulmonaryHypertensionAssessments'
+import { LIVER_VESSELS_QUESTIONS, LIVER_VESSELS_TOPIC_GROUP } from './abdomenLiverVesselsAssessments'
 import { DUAL_ENERGY_CT_QUESTIONS, DUAL_ENERGY_CT_TOPIC_GROUP } from './technikDualEnergyLesson'
 import { MR_PERFUSION_QUESTIONS, MR_PERFUSION_TOPIC_GROUP } from './technikMrtPerfusionLesson'
 import { MRI_ARTIFACT_QUESTIONS, MRI_ARTIFACT_TOPIC_GROUP } from './technikMriArtifacts'
@@ -4323,6 +4324,10 @@ export const QUESTION_BANK = Object.fromEntries(
 )
 
 for (const lang of Object.keys(QUESTION_BANK)) {
+  QUESTION_BANK[lang].push(...LIVER_VESSELS_QUESTIONS.filter(question => question.id.startsWith(`liver-vessels-${lang}-`)))
+}
+
+for (const lang of Object.keys(QUESTION_BANK)) {
   QUESTION_BANK[lang].push(WIRBELMETASTASEN_QUESTIONS.find(question => question.id === `wirbelmetastasen-${lang}-ivory-vs-destructive`))
   QUESTION_BANK[lang].push(SPINAL_INTRAMEDULLARY_TUMOR_QUESTIONS.find(question => question.id === `spinal-intramedullary-${lang}-pattern-comparison`))
   QUESTION_BANK[lang].push(SPINAL_EXTRAMEDULLARY_QUESTIONS.find(question => question.id === `spinal-extramedullary-${lang}-pdf-patterns`))
@@ -4402,6 +4407,7 @@ export const MCQ_TOPIC_GROUPS = [
   { fachId: 'msk', kapitelId: 'msk-knochentumoren', title: { de: 'Tumorähnliche Läsionen', en: 'Tumour-like lesions', fa: 'ضایعات شبه‌توموری' }, topics: [{ id: 'eosinophiles-granulom', title: { de: 'Langerhans-Zell-Histiozytose des Knochens', en: 'Osseous Langerhans cell histiocytosis', fa: 'هیستیوسیتوز سلول لانگرهانس در استخوان' } }] },
   ...ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS,
   PULMONARY_HYPERTENSION_TOPIC_GROUP,
+  LIVER_VESSELS_TOPIC_GROUP,
   { fachId: 'wirbelsaeule', kapitelId: 'ws-entzuendlich', title: { de: 'Entzündliche Erkrankungen', en: 'Inflammatory diseases', fa: 'بیماری‌های التهابی' }, topics: [
     { id: 'spondylodiszitis', title: { de: 'Spondylodiszitis', en: 'Spondylodiscitis', fa: 'اسپوندیلودی‌سکیت' } },
     { id: 'morbus-bechterew-ws', title: { de: 'Morbus Bechterew', en: 'Ankylosing spondylitis', fa: 'اسپوندیلیت آنکیلوزان' } },
