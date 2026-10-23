@@ -7,7 +7,8 @@
   "source-p2-arterial-overview.png": {
     "type": "rendered source page",
     "source": "Abdomen.pdf, PDF p.2, supplied by the user",
-    "scope": "Whole-page reproduction at 110 dpi; used as a reference plate for the abdominal arterial main axis."
+    "illustrationCredit": "Dr. A. Michelau, as printed on the source page",
+    "scope": "Whole-page reproduction at 110 dpi; used as a labelled orientation plate for the major branches of the abdominal aorta. Shows the teaching figure's labels, not a complete vascular atlas. User has authorized use of images from the supplied PDFs; separate publisher/contributor reuse terms are not stated on the page."
   },
   "source-p3-portal-confluence.png": {
     "type": "rendered source page",

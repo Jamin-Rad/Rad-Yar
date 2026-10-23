@@ -41,8 +41,12 @@ function localized(value, where = 'lesson') {
 }
 localized(lesson)
 assert.equal(lesson.id, 'abdomen-liver-vessels')
-assert.equal(lesson.sections.length, 2)
-assert.equal(lesson.check.answer, 0)
+assert.equal(lesson.sections.length, 3)
+assert.equal(lesson.checks.length, 2)
+assert.equal(lesson.checks[0].answer, 0)
+assert.equal(lesson.checks[1].answer, 0)
+assert.equal(lesson.sections.find(section => section.id === 'aortic-branches').image.src, '/educational/abdomen-liver-vessels/source-p2-arterial-overview.png')
+assert.equal(lesson.sections.find(section => section.id === 'outflow').image, null)
 assert.ok(fs.existsSync('app/abdomen/leber/gefaesse/page.jsx'), 'bounded route exists')
 const provenance = JSON.parse(fs.readFileSync('public/educational/abdomen-liver-vessels/provenance.json', 'utf8'))
 const curriculumSource = fs.readFileSync('data/curriculum.js', 'utf8')
@@ -57,9 +61,9 @@ for (const path of ['/educational/abdomen-liver-vessels/source-p2-arterial-overv
 }
 assert.match(provenance['source-p3-portal-confluence.png'].scope, /left=55, top=35, width=800, height=565/)
 const expected = {
-  de: ['lang="de"', 'dir="ltr"', 'Lebergefäße: Zufluss und Abfluss', 'V. mesenterica superior', 'Vv. hepaticae', 'Truncus coeliacus', 'Abdomen.pdf'],
-  en: ['lang="en"', 'dir="ltr"', 'Liver vessels: inflow and outflow', 'superior mesenteric vein', 'hepatic veins', 'celiac trunk', 'Abdomen.pdf'],
-  fa: ['lang="fa"', 'dir="rtl"', 'عروق کبد: ورودی و خروجی', 'ورید مزانتریک فوقانی', 'وریدهای کبدی', 'تنهٔ سلیاک', 'Abdomen.pdf'],
+  de: ['lang="de"', 'dir="ltr"', 'Lebergefäße: Zufluss und Abfluss', 'V. mesenterica superior', 'Vv. hepaticae', 'Truncus coeliacus', 'A. gastrica sinistra und A. splenica', 'Abdomen.pdf'],
+  en: ['lang="en"', 'dir="ltr"', 'Liver vessels: inflow and outflow', 'superior mesenteric vein', 'hepatic veins', 'celiac trunk', 'left gastric and splenic arteries', 'Abdomen.pdf'],
+  fa: ['lang="fa"', 'dir="rtl"', 'عروق کبد: ورودی و خروجی', 'ورید مزانتریک فوقانی', 'وریدهای کبدی', 'تنهٔ سلیاک', 'شریان معده‌ای چپ و شریان طحالی', 'Abdomen.pdf'],
 }
 for (const lang of ['de', 'en', 'fa']) {
   language = lang
@@ -67,6 +71,6 @@ for (const lang of ['de', 'en', 'fa']) {
   for (const phrase of expected[lang]) assert.ok(html.includes(phrase), `${lang} contains ${phrase}`)
   assert.ok(html.includes('data-lesson-progress-managed="true"'), `${lang} uses StandardLessonShell`)
   assert.ok(html.includes('data-lesson-hero'), `${lang} has topic hero`)
-  for (const option of lesson.check.options) assert.ok(html.includes(option[lang]), `${lang} includes self-check option ${option[lang]}`)
+  for (const check of lesson.checks) for (const option of check.options) assert.ok(html.includes(option[lang]), `${lang} includes self-check option ${option[lang]}`)
 }
-console.log('Liver vessel orientation SSR PASS: source-page provenance, bounded scope, DE/EN/FA direction, two inflows versus hepatic venous outflow, and explanatory self-check. Browser and clinician review remain open.')
+console.log('Liver vessel orientation SSR PASS: source-page provenance, bounded aortic-branch orientation, DE/EN/FA direction, liver inflow/outflow, and two explanatory self-checks. Browser and clinician review remain open.')
