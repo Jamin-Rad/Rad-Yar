@@ -6,6 +6,8 @@ Stand: 19.10.2026. Read-only-Mapping des PDF-Inhalts mit `data/curriculum.js` un
 
 ## MSK.pdf
 
+> Aktualisierung 24.10.2026: Die vollständige aktuelle Seitenzuordnung ist im [MSK-Abschlussledger](msk-pdf-completion-2026-10-24.md) dokumentiert. Die ältere Tabelle unten enthält historische QA-Nachweise und überholte Sammelstatus. Insbesondere p39-Arthrose, p13-Sternum/Rippen und p134-Armarterien erhalten eigene begrenzte Ergänzungen; p59-Bizepsfemoris ist ergänzt. Aus der älteren Sammelspalte keine noch fehlenden PDF-Lektionen ableiten. Unabhängige Review-, Browser- und Publikationsnachweise bleiben getrennt.
+
 PDF: `C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf` — 138 Seiten, Deutsch.
 
 | PDF-Seiten | Thema / Quellinhalte | Curriculum-ID(s) | Route / Quelldatei, falls vorhanden | Status | Visueller Bedarf |

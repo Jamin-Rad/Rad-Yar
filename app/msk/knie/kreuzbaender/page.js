@@ -6,6 +6,7 @@ import styles from './page.module.css'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import LessonHero from '@/components/LessonHero'
+import { KNEE_BICEPS_COMPLETION, KNEE_BICEPS_CORRECT_INDEX, KNEE_BICEPS_SOURCE } from '@/data/kneeBicepsCompletion'
 
 const COPY = {
   de: {
@@ -104,7 +105,7 @@ const COPY = {
         ['/knieligamente/lateral-collateral-complex.png', 'Lateraler Kollateralbandkomplex: LCL, Popliteus und Biceps-femoris-Bezug.'],
         ['/knieligamente/lcl-biceps-v-sign.png', 'Sagittales V am Fibulaköpfchen: LCL anteromedial, Biceps-femoris-Sehne posterolateral.'],
         ['/knieligamente/lcl-followup-series.png', 'LCL-Verlauf von links nach rechts: initial, nach 3 Monaten, nach 6 Monaten und nach 24 Monaten. Das akute Umgebungsödem nimmt ab, die Bandkontinuität stellt sich wieder dar; eine milde intraligamentäre Signalhebung kann persistieren.'],
-        ['/knieligamente/arcuate-sign.png', 'Arcuate Sign: Avulsion am Fibulaköpfchen als Hinweis auf PLC-Verletzung.'],
+        ['/knieligamente/plc-anatomy-axial.png', KNEE_BICEPS_COMPLETION.de.anatomyCaption],
       ],
       medial: [
         ['/knieligamente/medial-complex-anatomy.png', 'Medialer Komplex mit MCL, POL und Semimembranosus-Anteilen.'],
@@ -236,7 +237,7 @@ COPY.en.figures = {
     ['/knieligamente/lateral-collateral-complex.png', 'Lateral collateral complex: LCL, popliteus and biceps femoris relationship.'],
     ['/knieligamente/lcl-biceps-v-sign.png', 'Sagittal V at the fibular head: LCL anteromedial, biceps femoris tendon posterolateral.'],
     ['/knieligamente/lcl-followup-series.png', 'LCL follow-up from left to right: initial, after 3 months, after 6 months and after 24 months. The acute surrounding oedema decreases and ligament continuity returns; mild intraligamentous signal may persist.'],
-    ['/knieligamente/arcuate-sign.png', 'Arcuate sign: fibular head avulsion suggesting PLC injury.'],
+    ['/knieligamente/plc-anatomy-axial.png', KNEE_BICEPS_COMPLETION.en.anatomyCaption],
   ],
   medial: [
     ['/knieligamente/medial-complex-anatomy.png', 'Medial complex with MCL, POL and semimembranosus components.'],
@@ -329,7 +330,7 @@ COPY.fa.figures = {
     ['/knieligamente/lateral-collateral-complex.png', 'کمپلکس لترال: ارتباط LCL، پوپلیتئوس و بایسپس فموریس.'],
     ['/knieligamente/lcl-biceps-v-sign.png', 'V ساژیتال در سر فیبولا: LCL قدام-مدیال و تاندون بایسپس فموریس خلف-لترال.'],
     ['/knieligamente/lcl-followup-series.png', 'سیر LCL از چپ به راست: اولیه، پس از ۳ ماه، پس از ۶ ماه و پس از ۲۴ ماه. ادم حاد اطراف رباط کاهش می‌یابد و پیوستگی رباط دوباره دیده می‌شود؛ افزایش خفیف سیگنال داخل رباط می‌تواند باقی بماند.'],
-    ['/knieligamente/arcuate-sign.png', "علامت آرکوات (Arcuate sign): کندگی سر فیبولا به نفع آسیب PLC."],
+    ['/knieligamente/plc-anatomy-axial.png', KNEE_BICEPS_COMPLETION.fa.anatomyCaption],
   ],
   medial: [
     ['/knieligamente/medial-complex-anatomy.png', 'کمپلکس مدیال شامل MCL، POL و اجزای سمی‌ممبرانوسوس.'],
@@ -448,6 +449,24 @@ function ReadButton({ isRead, onClick, authError, signInHref = '/sign-in', class
   )
 }
 
+function BicepsTeaching({ lang, zoomLabel, onImageZoom }) {
+  const copy = KNEE_BICEPS_COMPLETION[lang] || KNEE_BICEPS_COMPLETION.de
+  const [answer, setAnswer] = useState(null)
+  return (
+    <div className={styles.bicepsTeaching} data-teaching="biceps-femoris">
+      <h3>{copy.title}</h3>
+      {copy.paragraphs.map(text => <p key={text}>{text}</p>)}
+      <Figure src="/knieligamente/biceps-femoris-injury-followup.jpg" caption={copy.caption} zoomLabel={zoomLabel} onZoom={() => onImageZoom({ src: '/knieligamente/biceps-femoris-injury-followup.jpg', alt: copy.caption })} />
+      <fieldset className={styles.bicepsDecision}>
+        <legend>{copy.question}</legend>
+        {copy.options.map((option, index) => <button key={index} type="button" aria-pressed={answer === index} onClick={() => setAnswer(index)}>{option}</button>)}
+        {answer !== null && <p role="status" data-correct={answer === KNEE_BICEPS_CORRECT_INDEX}>{copy.feedback[answer]}</p>}
+      </fieldset>
+      <p className={styles.bicepsSource}><a href={KNEE_BICEPS_SOURCE} target="_blank" rel="noreferrer">{copy.source}</a></p>
+    </div>
+  )
+}
+
 function Section({ id, data, figures, children, defaultOpen = true, className = '', showLead = true, zoomLabel = 'Bild vergrößern', onImageZoom }) {
   const [isOpen, setIsOpen] = useState(defaultOpen)
 
@@ -487,7 +506,6 @@ function Section({ id, data, figures, children, defaultOpen = true, className = 
             {data.cards.map(([title, bullets]) => <Card key={title} title={title} bullets={bullets} />)}
           </div>
         )}
-        {children}
         {data.note && <div className={styles.note}>{data.note}</div>}
         {figures?.length > 0 && (
           <div className={styles.imageGrid} style={{ marginTop: 16 }}>
@@ -502,6 +520,7 @@ function Section({ id, data, figures, children, defaultOpen = true, className = 
             ))}
           </div>
         )}
+        {children}
       </div>
     </section>
   )
@@ -611,7 +630,9 @@ export default function KneeLigamentsPage() {
 
           <div className={styles.main}>
             <Section id="grading" data={copy.sections.grading} defaultOpen={sectionDefaultOpen} />
-            <Section id="lateral" data={copy.sections.lateral} figures={copy.figures.lateral} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />
+            <Section id="lateral" data={copy.sections.lateral} figures={copy.figures.lateral} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage}>
+              <BicepsTeaching key={lang} lang={lang} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />
+            </Section>
             <Section id="medial" data={copy.sections.medial} figures={copy.figures.medial} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />
             <Section id="acl" data={copy.sections.acl} figures={copy.figures.acl} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />
             <Section id="pcl" data={copy.sections.pcl} figures={copy.figures.pcl} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />

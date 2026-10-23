@@ -1,3 +1,5 @@
+import { KNEE_BICEPS_COMPLETION, KNEE_BICEPS_CORRECT_INDEX } from './kneeBicepsCompletion'
+
 export const KNIE_LIGAMENTE_FLASHCARD_TOPIC = {
   id: 'kreuzbaender',
   area: 'MSK',
@@ -163,6 +165,14 @@ const CONTENT = [
   ),
 ]
 
+CONTENT.push(q(
+  'biceps-tendon-versus-avulsion',
+  Object.fromEntries(['de', 'en', 'fa'].map(lang => [lang, KNEE_BICEPS_COMPLETION[lang].question])),
+  [0, 1, 2, 3].map(index => Object.fromEntries(['de', 'en', 'fa'].map(lang => [lang, KNEE_BICEPS_COMPLETION[lang].options[index]]))),
+  String.fromCharCode(65 + KNEE_BICEPS_CORRECT_INDEX),
+  Object.fromEntries(['de', 'en', 'fa'].map(lang => [lang, KNEE_BICEPS_COMPLETION[lang].feedback[KNEE_BICEPS_CORRECT_INDEX]])),
+))
+
 export const KNIE_LIGAMENTE_QUESTIONS = Object.fromEntries(
   ['de', 'en', 'fa'].map(lang => [
     lang,
@@ -305,3 +315,20 @@ export const KNIE_LIGAMENTE_FLASHCARDS = [
     },
   },
 ]
+
+KNIE_LIGAMENTE_FLASHCARDS.push({
+  id: 'kreuzbaender-07',
+  topicId: 'kreuzbaender',
+  category: { de: 'Biceps femoris / PLC', en: 'Biceps femoris / PLC', fa: 'بایسپس فموریس / PLC' },
+  front: {
+    de: 'Ist eine distale Biceps-femoris-Ruptur ohne Knochenfragment ein Arcuate Sign?',
+    en: 'Is a distal biceps femoris tear without a bone fragment an arcuate sign?',
+    fa: 'آیا پارگی دیستال بایسپس فموریس بدون قطعهٔ استخوانی، علامت آرکوات محسوب می‌شود؟',
+  },
+  answer: {
+    de: 'Nein. Das Arcuate Sign bezeichnet eine knöcherne Avulsion am Fibulaköpfchen.',
+    en: 'No. The arcuate sign denotes a bony avulsion at the fibular head.',
+    fa: 'خیر. علامت آرکوات به آولسیون استخوانی در سر فیبولا اشاره دارد.',
+  },
+  explanation: Object.fromEntries(['de', 'en', 'fa'].map(lang => [lang, KNEE_BICEPS_COMPLETION[lang].feedback[1]])),
+})

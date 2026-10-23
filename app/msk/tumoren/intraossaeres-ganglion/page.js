@@ -1,4 +1,4 @@
-import IntraosseousGanglionPage from './page.jsx'
+import IntraosseousGanglionPage from './LessonClient.jsx'
 
 export const metadata = {
   title: 'Intraossäres Ganglion | RadYar',

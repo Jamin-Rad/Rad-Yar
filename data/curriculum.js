@@ -1277,6 +1277,7 @@ export const CURRICULUM = [
         title: { de: '10. Traumatologie & Frakturen', en: '10. Trauma & Fractures', fa: '۱۰. تروما و شکستگی‌ها' },
         icon: '🚑',
         themen: [
+          {"id": "sternum-rippen-trauma", "title": {"de": "Sternum- und Rippentrauma", "en": "Sternal and rib trauma", "fa": "ترومای جناغ و دنده‌ها"}, "tags": ["Rö", "CT"], "diff": 1, "link": "/msk/trauma/sternum-rippen", "mcqLink": "/ueben/quiz?fach=msk&n=2&themen=sternum-rippen-trauma", "flashcardLink": "/flashcards/sternum-rippen-trauma", "ready": true, "inProgress": true, "updatedAt": "2026-10-24"},
           { id: 'frakturbeschreibung', title: { de: 'Frakturbeschreibung', en: 'Fracture Description', fa: 'توصیف شکستگی' }, group: ['Grundlagen'], tags: ['Rö'], diff: 1, link: '/msk/trauma/frakturbeschreibung', mcqLink: '/ueben/quiz?fach=msk&n=12&themen=frakturbeschreibung', flashcardLink: '/flashcards/frakturbeschreibung', ready: true, inProgress: true, updatedAt: '2026-06-20' },
           { id: 'frakturheilung', title: { de: 'Frakturheilung & Komplikationen', en: 'Fracture Healing & Complications', fa: 'ترمیم شکستگی و عوارض' }, group: ['Grundlagen'], tags: ['Rö'], diff: 2 },
           { id: 'stressfrakturen', title: { de: 'Stressfrakturen', en: 'Stress Fractures', fa: 'شکستگی‌های استرسی' }, group: ['Grundlagen'], tags: ['MRT','Rö'], diff: 2, link: '/msk/trauma/frakturbeschreibung#entstehung', mcqLink: '/ueben/quiz?fach=msk&n=3&themen=stressfrakturen', flashcardLink: '/flashcards/stressfrakturen', ready: true, inProgress: true, updatedAt: '2026-10-23' },
@@ -1317,6 +1318,7 @@ export const CURRICULUM = [
         title: { de: '11. Schulter', en: '11. Shoulder', fa: '۱۱. شانه' },
         icon: '💪',
         themen: [
+          {"id": "glenohumerale-arthrose", "title": {"de": "Glenohumerale Arthrose", "en": "Glenohumeral osteoarthritis", "fa": "آرتروز گلنوهومرال"}, "tags": ["Rö", "CT"], "diff": 1, "link": "/msk/schulter/arthrose", "mcqLink": "/ueben/quiz?fach=msk&n=2&themen=glenohumerale-arthrose", "flashcardLink": "/flashcards/glenohumerale-arthrose", "ready": true, "inProgress": true, "updatedAt": "2026-10-24"},
           { id: 'rotatorenmanschette', title: { de: 'Rotatorenmanschette', en: 'Rotator Cuff', fa: 'روتاتور کاف' }, tags: ['MRT'], diff: 2, link: '/msk/schulter/rotatorenmanschette', mcqLink: '/ueben/quiz?fach=msk&n=10&themen=rotatorenmanschette&from=%2Fmsk%2Fschulter%2Frotatorenmanschette', flashcardLink: '/flashcards/rotatorenmanschette', ready: true, updatedAt: '2026-10-23' },
           { id: 'schulterinstabilitaet', title: { de: 'Schulterinstabilität / Labrumläsionen', en: 'Shoulder Instability / Labral Tears', fa: 'ناپایداری شانه / ضایعات لابروم' }, tags: ['MRT'], diff: 3, link: '/msk/schulter/instabilitaet', mcqLink: '/ueben/quiz?fach=msk&n=2&themen=schulterinstabilitaet&from=%2Fmsk%2Fschulter%2Finstabilitaet', flashcardLink: '/flashcards/schulterinstabilitaet', inProgress: true, updatedAt: '2026-10-23' },
           { id: 'impingement-kalkschulter', title: { de: 'Impingement-Syndrom & Kalkschulter', en: 'Impingement Syndrome & Calcific Tendinitis', fa: 'سندرم ایمپینجمنت و شانه کلسیفیه' }, tags: ['MRT','Rö'], diff: 2, link: '/msk/schulter/impingement-kalkschulter', mcqLink: '/ueben/quiz?fach=msk&n=8&themen=impingement-kalkschulter', flashcardLink: '/flashcards/impingement-kalkschulter', ready: true, inProgress: true, updatedAt: '2026-10-22' },
@@ -1611,6 +1613,7 @@ export const CURRICULUM = [
         title: { de: '1. Grundlagen der Gefäßbildgebung', en: '1. Fundamentals of Vascular Imaging', fa: '۱. مبانی تصویربرداری عروقی' },
         icon: '🩻',
         themen: [
+          {"id": "arterien-obere-extremitaet", "title": {"de": "Arterien der oberen Extremität", "en": "Arteries of the upper limb", "fa": "شریان‌های اندام فوقانی"}, "tags": ["Anatomie"], "diff": 1, "link": "/gefaesse/anatomie-obere-extremitaet", "mcqLink": "/ueben/quiz?fach=gefaesse-ir&n=2&themen=arterien-obere-extremitaet", "flashcardLink": "/flashcards/arterien-obere-extremitaet", "ready": true, "inProgress": true, "updatedAt": "2026-10-24"},
           { id: 'gefaesse-cta-mra-duplex', title: { de: 'CTA / MRA / Duplex', en: 'CTA / MRA / Duplex', fa: 'CTA / MRA / داپلکس' }, tags: ['CT','MRT','Sono'], diff: 1 },
           { id: 'gefaesse-dsa', title: { de: 'DSA', en: 'DSA', fa: 'DSA' }, tags: ['DSA'], diff: 1, link: '/technik/grundlagen#fluoro', inProgress: true, updatedAt: '2026-10-20' },
           { id: 'gefaessanatomie-kollateralen', title: { de: 'Gefäßanatomie & Kollateralen', en: 'Vascular Anatomy & Collaterals', fa: 'آناتومی عروقی و عروق جانبی' }, tags: ['CT','MRT','DSA'], diff: 2, link: '/gefaesse/anatomie-untere-extremitaet', inProgress: true, updatedAt: '2026-10-20' },

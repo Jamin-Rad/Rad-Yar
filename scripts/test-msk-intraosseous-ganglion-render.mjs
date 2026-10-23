@@ -25,12 +25,21 @@ const shell = compile('components/lesson-template/StandardLessonShell.jsx', {
   '@/lib/lessonHashNavigation': { observeLessonHash: () => () => {} },
   './StandardLessonShell.module.css': styles,
 })
-const Page = compile('app/msk/tumoren/intraossaeres-ganglion/page.jsx', {
+const routeDir = 'app/msk/tumoren/intraossaeres-ganglion'
+assert.deepEqual(fs.readdirSync(routeDir).filter(file => /^page\.(js|jsx|ts|tsx)$/.test(file)), ['page.js'], 'route has exactly one Next.js page entry')
+const entrySource = fs.readFileSync(`${routeDir}/page.js`, 'utf8')
+assert.doesNotMatch(entrySource, /from\s+['"]\.\/page(?:\.[jt]sx?)?['"]/, 'server entry must not import itself')
+const Client = compile(`${routeDir}/LessonClient.jsx`, {
   '@/components/lesson-template/StandardLessonShell': { ...shell, __esModule: true },
   '@/providers/LanguageProvider': { useLanguage: () => ({ lang: activeLanguage }) },
   '@/data/mskIntraosseousGanglionLesson': { INTRAOSSEOUS_GANGLION_LESSON: lesson },
   './page.module.css': styles,
-}).default
+})
+const entry = compile(`${routeDir}/page.js`, {
+  './LessonClient.jsx': { ...Client, __esModule: true },
+})
+const Page = entry.default
+assert.equal(entry.metadata.title, 'Intraossäres Ganglion | RadYar')
 
 function assertLocalized(value, key = 'lesson') {
   if (Array.isArray(value)) return value.forEach((item, index) => assertLocalized(item, `${key}[${index}]`))

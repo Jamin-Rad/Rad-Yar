@@ -1,3 +1,6 @@
+import { STERNUM_RIB_QUESTIONS, STERNUM_RIB_COPY, STERNUM_RIB_ID } from './sternumRibLesson'
+import { GLENOHUMERAL_OA_QUESTIONS, GLENOHUMERAL_OA_LESSON, GLENOHUMERAL_OA_TOPIC_ID } from './mskGlenohumeralOaLesson'
+import { UPPER_ARTERY_QUESTIONS, UPPER_ARTERY_TOPIC_GROUP } from './upperLimbArteriesLesson'
 import { DIFFUSE_GLIOMA_QUESTIONS, DIFFUSE_GLIOMA_TOPIC_GROUP } from './diffuseGliomaLesson'
 import { MENING_QUESTIONS } from './gehirnMeningeomLesson'
 import { MEDULLO_QUESTIONS } from './medulloblastomLesson'
@@ -4358,7 +4361,14 @@ for (const lang of Object.keys(QUESTION_BANK)) {
   QUESTION_BANK[lang].push(...(DIFFUSE_GLIOMA_QUESTIONS[lang] || []))
 }
 
+for (const lang of ['de', 'en', 'fa']) {
+  QUESTION_BANK[lang].push(...STERNUM_RIB_QUESTIONS[lang], ...GLENOHUMERAL_OA_QUESTIONS[lang], ...UPPER_ARTERY_QUESTIONS[lang])
+}
+
 export const MCQ_TOPIC_GROUPS = [
+  { fachId: 'msk', kapitelId: 'msk-trauma', title: STERNUM_RIB_COPY.title, topics: [{ id: STERNUM_RIB_ID, title: STERNUM_RIB_COPY.title }] },
+  { fachId: 'msk', kapitelId: 'msk-schulter', title: GLENOHUMERAL_OA_LESSON.title, topics: [{ id: GLENOHUMERAL_OA_TOPIC_ID, title: GLENOHUMERAL_OA_LESSON.title }] },
+  UPPER_ARTERY_TOPIC_GROUP,
   DIFFUSE_GLIOMA_TOPIC_GROUP,
   ATRT_TOPIC_GROUP,
   COPD_TOPIC_GROUP,

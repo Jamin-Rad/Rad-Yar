@@ -1,5 +1,7 @@
 # MSK und Wirbelsäule: PDF-zu-Lektion Fortschritt
 
+> MSK-Aktualisierung 24.10.2026: Die vollständige Seitenzuordnung und der aktuelle Ergänzungsstand stehen im [MSK-Abschlussledger](msk-pdf-completion-2026-10-24.md). Die folgenden älteren Batch- und Einzelprüfungsnotizen bleiben historische Nachweise ihres jeweiligen Umfangs; ihre damaligen Aussagen über fehlende MSK-Routen sind kein aktueller Gesamtstatus. Die Wirbelsäulenangaben wurden in diesem Durchgang nicht neu geprüft.
+
 Stand: 19.10.2026. Arbeitsledger für `MSK.pdf` (138 PDF-Seiten) und `Wirbelsäule.pdf` (29 PDF-Seiten). Es trennt tatsächliche Routen von PDF-Themen; ein Routenname belegt keine inhaltliche Deckung. Die PDF-Seiten wurden textuell extrahiert; die Seiten 5–10 der Wirbelsäule wurden zusätzlich visuell geprüft. Das ist keine klinische Freigabe.
 
 ## Vorhandene Lektionen mit klarer Themenüberschneidung
@@ -90,15 +92,10 @@ Sechs MCQs und sechs Lernkarten aus dem lokalen Entwurf sind jetzt in die global
 
 Das Scheuermann-MCQ und die Scheuermann-Karte wurden nach der exakten Curriculum-Verknüpfung in die globale Fragen- und Karteikartenbank aufgenommen. Nicht verlinkte IDs wie `myelopathie-degenerativ` und `wirbelsaeulentuberkulose` werden weiterhin nicht als Ersatz-Tags verwendet.
 
-## Nicht abgedeckte PDF-Themen und Grenzen
+## Historische Grenzen und aktueller MSK-Verweis
 
-- MSK S. 11–33: zahlreiche obere Extremitäten-, Becken- und Hüftfrakturen, Skaphoid/Karpalia, Daumenband und Femur. Für viele Curriculum-IDs existiert noch keine Route; konkrete Lektionen sind nicht in diesem Batch-Schritt gebaut.
-- MSK S. 39–43: Schulterinstabilität und Hand-/Handgelenks-MRT inklusive De-Quervain. Keine passende Route verifiziert.
-- MSK S. 67–71: Patella, Patellafraktur und Osgood-Schlatter; keine passende Route verifiziert.
-- MSK S. 72: Infektionsabschnitt im Textauszug fast leer. Die Themen Osteomyelitis/septische Arthritis brauchen Bild-/Seitenprüfung, bevor eine inhaltliche Lektion daraus abgeleitet wird.
-- MSK S. 73–76: allgemeine Aggressivitätsmuster als Entwurf angelegt. MSK S. 77–119 umfasst viele primäre/metastatische/tumorähnliche Knochenläsionen; pro Diagnose wurde hier noch keine seitenweise Lektion angelegt oder wissenschaftlich abgeglichen.
-- MSK S. 120–129: AVN, Knocheninfarkt, Osteochondrosen und OCD; keine passende Route verifiziert.
-- MSK S. 130–138: metabolische Osteopathien und Gefäße/PAVK; keine passende Route verifiziert.
+Der frühere MSK-Fehlbestand dieser Liste ist überholt. Für alle 138 Seiten einschließlich der drei neuen Themen, der Knieergänzung und verbleibender Qualitätsgrenzen gilt der [Stand vom 24.10.2026](msk-pdf-completion-2026-10-24.md). Die folgenden Wirbelsäulenpunkte sind historische Notizen, keine neu validierte Bestandsaufnahme.
+
 - Wirbelsäule S. 4–10: neuer Entwurf deckt nur S. 5–8 ab. S. 4 ist Überschrift, S. 9–10 bleiben wegen OCR-/Lesbarkeitslücken offen.
 - Wirbelsäule S. 11–13: lokaler Entwurf zu Morbus Bechterew/axSpA und Morbus Scheuermann angelegt; offen bleiben unabhängige Inhaltsprüfung, klinische Quellenprüfung, echte Diagnostikbilder/Rechte und spätere zentrale Registrierung/Navigation.
 - Wirbelsäule PDF S. 14–15 (Druckseiten 13–14): begrenzte Spondylodiszitis-Lektion mit TB-/Mimic-Mustern und expliziter Einordnung des PDF-Konflikts zur Destruktion/Enhancement; keine vollständigen separaten Lektionen zu TB, erosiver Osteochondrose oder Andersson-Läsion.

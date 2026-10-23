@@ -266,7 +266,10 @@ export default function LessonEnhancer() {
       progressHost.dataset.lessonDesktopProgressHost = 'true'
       progressHost.dataset.lessonProgressUi = 'true'
       progressHost.className = styles.desktopProgressHost
-      const firstEntry = entries[0]
+      // Menu buttons may be nested inside a nav/list. insertBefore requires
+      // a direct child of the insertion parent, not an arbitrary descendant.
+      let firstEntry = entries[0]
+      while (firstEntry && firstEntry.parentElement !== sidebar.aside) firstEntry = firstEntry.parentElement
       if (firstEntry) sidebar.aside.insertBefore(progressHost, firstEntry)
       else sidebar.aside.appendChild(progressHost)
     }

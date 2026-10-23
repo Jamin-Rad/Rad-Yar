@@ -1,5 +1,4 @@
-import { INTRAOSSEOUS_LIPOMA_LESSON } from '@/data/mskIntraosseousLipomaLesson'
-import IntraosseousLipomaPage from './page'
+import IntraosseousLipomaPage from './LessonClient.jsx'
 
 export const metadata = {
   title: 'Intraossäres Lipom | RadYar',

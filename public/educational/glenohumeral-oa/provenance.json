@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-10-24",
+  "assets": [
+    {
+      "path": "/educational/glenohumeral-oa/typical-oa.jpg",
+      "kind": "clinical radiograph",
+      "origin": "https://doi.org/10.4172/2167-7921.1000200",
+      "contributors": "Vladimir V. Senatorov, Ramon Cuevas-Trisan, Francisco J. Garcia, Gabriel P. Suciu, Robert H. Parkes and Alina M. Alonso",
+      "retrievalPage": "https://commons.wikimedia.org/wiki/File:X-ray_of_osteoarthritis_of_the_shoulder.jpg",
+      "retrievalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f8/X-ray_of_osteoarthritis_of_the_shoulder.jpg",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "dimensions": [364,382],
+      "selection": "Typical OA signs: visible inferior humeral-head osteophyte and narrowed glenohumeral joint space, without marked superior migration. No numeric grade assigned.",
+      "processing": "Original reproduction bytes retained, unchanged.",
+      "visuallyInspected": true
+    },
+    {
+      "path": "/educational/glenohumeral-oa/hero.png",
+      "kind": "AI-generated non-diagnostic schematic",
+      "tool": "image_gen",
+      "original": "C:/Users/Drham/.codex/generated_images/01a16b07-f2e3-7eb1-9c99-d67881b9adbb/exec-fcfb7964-6878-4be1-8c83-6bfdaf17ff9e.png",
+      "prompt": "Create a refined educational anatomical illustration for a radiology lesson header: glenohumeral osteoarthritis. A single anatomically plausible shoulder joint, humeral head articulating with shallow glenoid scapula, small inferior humeral osteophyte and subtly narrowed cartilage region highlighted muted amber. Clean ivory bone, teal-blue background, elegant professional medical atlas painting, readable small-scale composition. No text, no labels, no logos, no X-ray/CT/MRI simulation, no diagnostic scan. Landscape composition. Non-diagnostic schematic, avoid extra bones or dislocated joint.",
+      "visuallyInspected": true
+    },
+    {
+      "path": "/educational/glenohumeral-oa/radiopaedia-43425.png",
+      "kind": "clinical radiograph",
+      "origin": "https://radiopaedia.org/cases/43425",
+      "contributor": "Domenico Nicoletti",
+      "retrievalPage": "https://www.orthopaedia.com/glenohumeral-arthritis/",
+      "figure": "5",
+      "retrievalUrl": "https://orthopaedia.com/wp-content/uploads/2023/10/490f2d4a-26fd-4555-9bfe-e5707f820231-1568319491720.png",
+      "reuseBasis": "User explicitly authorized Radiopaedia reuse in RadYar including subscriptions. Mirror figure explicitly attributes Radiopaedia case43425.",
+      "dimensions": [263,266],
+      "selection": "Advanced comparison: marked superior migration and degenerative remodelling; not a canonical isolated primary OA case.",
+      "processing": "Original reproduction bytes retained, no image edits.",
+      "visuallyInspected": true
+    }
+  ]
+}

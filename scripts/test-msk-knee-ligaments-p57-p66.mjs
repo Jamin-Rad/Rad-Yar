@@ -81,7 +81,7 @@ for (const [pageNo, topic] of pageTopics) {
   const line = ledger.split('\n').find(row => row.startsWith(`| ${pageNo} |`))
   assert.ok(line?.includes(topic), `source ledger maps PDF p.${pageNo} to ${topic}`)
 }
-assert.match(ledger, /biceps heading has no accompanying explanatory content/i)
+assert.match(ledger, /previously omitted biceps MRI montage is now present/i)
 assert.match(ledger, /failed non-operative management/i)
 assert.match(ledger, /embedded German treatment note in DE\/EN\/FA/i)
 assert.doesNotMatch(page, /Fallbeispiele|Open space for your later cases|فضای آزاد برای کیس‌های بعدی/)
