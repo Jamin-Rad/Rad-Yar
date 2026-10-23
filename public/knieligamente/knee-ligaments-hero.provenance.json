@@ -1,0 +1,8 @@
+{
+  "asset": "knee-ligaments-hero.png",
+  "type": "AI-generated educational schematic",
+  "generator": "OpenAI image_gen built-in tool",
+  "prompt": "Polished clinical atlas illustration for a radiology lesson header about knee ligaments. Wide 16:9 composition. Show a medically plausible three-quarter cutaway knee: distal femur above, proximal tibia below, fibular head on the lateral side. Clearly show the ACL and PCL crossing centrally inside the joint, MCL as a broad medial strap, and LCL as a thin lateral cord attaching toward the fibula. Preserve recognizable bone contours and correct ligament attachment regions. Refined, realistic-but-schematic medical education art with crisp edges, restrained blue-grey bone, warm ivory cartilage, and subtle terracotta/teal ligament accents; neutral light background, generous margins, clear at small display size. Schematic only, not patient imaging. No text, labels, letters, arrows, UI, logo, or watermark.",
+  "use": "Non-diagnostic lesson hero illustration; not evidence for a clinical imaging finding.",
+  "humanReview": "Visual plausibility reviewed by the author; does not replace specialist anatomical validation."
+}

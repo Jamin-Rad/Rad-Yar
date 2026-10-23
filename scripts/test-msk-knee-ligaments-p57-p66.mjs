@@ -5,6 +5,17 @@ import sharp from 'sharp'
 const page = fs.readFileSync('app/msk/knie/kreuzbaender/page.js', 'utf8')
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
 const ledger = fs.readFileSync('docs/lesson-quality/knieligamente-msk-p57-p66.md', 'utf8')
+const assessments = fs.readFileSync('data/knieligamente.js', 'utf8')
+const heroProvenance = JSON.parse(fs.readFileSync('public/knieligamente/knee-ligaments-hero.provenance.json', 'utf8'))
+assert.match(page, /import LessonHero from '@\/components\/LessonHero'/)
+assert.match(page, /<LessonHero title=\{copy\.title\} imageSrc="\/knieligamente\/knee-ligaments-hero\.png" imageAlt=\{copy\.heroAlt\}/)
+assert.match(page, /heroAlt: 'Schematische Knieanatomie/)
+assert.match(page, /heroAlt: 'Schematic knee anatomy/)
+assert.match(page, /heroAlt: 'نمای شماتیک آناتومی زانو/)
+assert.doesNotMatch(page, /<p className=\{styles\.lead\}>\{copy\.lead\}<\/p>/)
+assert.equal(heroProvenance.type, 'AI-generated educational schematic')
+const heroMetadata = await sharp('public/knieligamente/knee-ligaments-hero.png').metadata()
+assert.ok(heroMetadata.width >= 1200 && heroMetadata.height >= 600, 'knee lesson hero has usable landscape dimensions')
 
 for (const [locale, start, end] of [
   ['de', 'de: {', 'en: {'],
@@ -29,9 +40,21 @@ assert.match(page, /PDF-S\. 64 \(Druck-S\. 63\), rID 90186/)
 assert.match(page, /PDF p\. 61 \(printed p\. 60\)/)
 assert.match(page, /PDF p\. 62 \(printed p\. 61\)/)
 assert.match(page, /PDF p\. 64 \(printed p\. 63\), rID 90186/)
+assert.match(page, /<LessonHero title=\{copy\.title\} imageSrc="\/knieligamente\/knee-ligaments-hero\.png" imageAlt=\{copy\.heroAlt\} lang=\{lang\} \/>/)
+assert.doesNotMatch(page, /<p className=\{styles\.lead\}>\{copy\.lead\}<\/p>/)
+for (const alt of [
+  'Schematische Knieanatomie mit Kreuzbändern im Gelenkzentrum und medialem sowie lateralem Seitenband.',
+  'Schematic knee anatomy showing the cruciate ligaments centrally and the medial and lateral collateral ligaments.',
+  'نمای شماتیک آناتومی زانو با رباط‌های صلیبی در مرکز مفصل و رباط‌های جانبی مدیال و لترال.',
+]) assert.ok(page.includes(alt), `LessonHero alt text is localized: ${alt}`)
+assert.match(heroProvenance.use, /not evidence for a clinical imaging finding/)
 assert.match(page, /صفحهٔ PDF ۶۱ \(صفحهٔ چاپی ۶۰\)/)
 assert.match(page, /صفحهٔ PDF ۶۲ \(صفحهٔ چاپی ۶۱\)/)
 assert.match(page, /صفحهٔ PDF ۶۴ \(صفحهٔ چاپی ۶۳\)، rID 90186/)
+assert.match(assessments, /'acl-xray'/)
+for (const phrase of [
+  'Segond-Fraktur am lateralen Tibiaplateau', 'Segond fracture at the lateral tibial plateau', 'شکستگی Segond در پلاتوی لترال تیبیا',
+]) assert.ok(assessments.includes(phrase), `ACL radiograph MCQ includes ${phrase}`)
 assert.match(page, /marked symptomatic instability that persists despite non-operative care/)
 assert.match(page, /ausgeprägter symptomatischer Instabilität trotz nichtoperativer Behandlung/)
 assert.match(page, /ناپایداری علامت‌دار و شدید که با درمان غیرجراحی برطرف نشده/)

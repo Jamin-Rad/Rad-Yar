@@ -59,6 +59,28 @@
   box-shadow: 0 24px 70px rgba(13, 27, 42, 0.12);
 }
 
+.heroMain :global([data-lesson-hero]) {
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+  min-height: 190px;
+  padding: 0;
+}
+
+.heroMain :global([data-lesson-hero] figure) {
+  height: 190px;
+  border-radius: 18px;
+  background: #f8fafc;
+}
+
+.heroMain :global([data-lesson-hero] h1) {
+  color: #0d1b2a !important;
+  font-family: var(--font-fraunces, Georgia, serif) !important;
+}
+
+.heroMain :global([data-lesson-hero] figure img) {
+  object-fit: contain !important;
+  transform: none !important;
+}
+
 .eyebrow {
   display: inline-flex;
   width: fit-content;
@@ -805,15 +827,14 @@
     border-radius: 24px;
   }
 
-  .heroMain h1 {
-    margin-top: 14px;
-    font-size: clamp(38px, 13vw, 56px);
-    line-height: 1;
+  .heroMain :global([data-lesson-hero]) {
+    grid-template-columns: minmax(0, 1fr) 145px;
+    min-height: 140px;
+    gap: 12px;
   }
 
-  .lead {
-    font-size: 16px;
-    line-height: 1.72;
+  .heroMain :global([data-lesson-hero] figure) {
+    height: 130px;
   }
 
   .actions {
@@ -902,6 +923,10 @@ html[data-theme='dark'] .section h2,
 html[data-theme='dark'] .toc strong,
 html[data-theme='dark'] .takeHomeItem h3 {
   color: #f8fafc;
+}
+
+html[data-theme='dark'] .heroMain :global([data-lesson-hero] h1) {
+  color: #f8fafc !important;
 }
 
 html[data-theme='dark'] .lead,

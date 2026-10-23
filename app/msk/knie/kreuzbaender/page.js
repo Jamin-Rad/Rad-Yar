@@ -5,6 +5,7 @@ import Link from 'next/link'
 import styles from './page.module.css'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
+import LessonHero from '@/components/LessonHero'
 
 const COPY = {
   de: {
@@ -12,7 +13,7 @@ const COPY = {
     crumbKnee: 'Knie',
     badge: 'Dr. Zia',
     title: 'Knie-Ligamente',
-    lead: 'Kompakte Lernseite zu den Kniebändern: Schweregrade, lateraler und medialer Kollateralbandkomplex, VKB-Ruptur, mukoide VKB-Degeneration und HKB-Ruptur.',
+    heroAlt: 'Schematische Knieanatomie mit Kreuzbändern im Gelenkzentrum und medialem sowie lateralem Seitenband.',
     quiz: 'MCQ',
     cards: 'Flashcards',
     zoomImage: 'Bild vergrößern',
@@ -72,6 +73,7 @@ const COPY = {
           ['Normale Bündelung', ['AM- und PL-Bündel verlaufen in Extension weitgehend parallel.', 'Feine streifige Signalanhebungen zwischen den Bündeln können physiologisch sein.']],
           ['VKB-Ruptur', ['Direkte Zeichen: Faserdiskontinuität, T2/PD-Signalsteigerung, flacher oder welliger Verlauf.', 'Indirekte Zeichen: Kissing contusions, anteriore Tibiasubluxation über 7 mm, gebogenes HKB.']],
           ['Mechanismus und Begleitzeichen', ['Häufig ist ein indirekter, nicht-kontaktbedingter Dreh-/Valgusmechanismus, etwa beim Sport.', 'Kissing contusions betreffen typischerweise den lateralen Femurkondylus und das posterolaterale Tibiaplateau.']],
+          ['Röntgen und Therapieziele', ['Begleitzeichen im Röntgen sind ein Gelenkerguss und eine Impressionsfraktur am lateralen Femurkondylus; eine Segond-Fraktur ist ein wichtiger Hinweis auf eine VKB-Verletzung.', 'Therapie und Prognose richten sich auch nach dem Aktivitätsniveau. Ein wesentliches Ziel ist, chronische Instabilität und daraus folgende sekundäre Meniskus- und Knorpelschäden zu vermeiden.']],
           ['Mukoide Degeneration', ['Chronische Einlagerung von Glykosaminoglykanen zwischen die Fasern.', 'Sellerie-Zeichen: intakte dunkle Fasern in hellem T2-hyperintensem Schleimgewebe.']],
         ],
         note: 'Unhappy Triad: VKB-Ruptur, MCL-Ruptur und Innenmeniskusläsion nach Valgustrauma mit Außenrotation bei fixiertem Unterschenkel.',
@@ -131,7 +133,7 @@ const COPY = {
     crumbKnee: 'Knee',
     badge: 'Dr. Zia',
     title: 'Knee ligaments',
-    lead: 'Compact lesson on knee ligaments: grading, lateral and medial collateral complexes, ACL tear, mucoid ACL degeneration and PCL tear.',
+    heroAlt: 'Schematic knee anatomy showing the cruciate ligaments centrally and the medial and lateral collateral ligaments.',
     quiz: 'MCQ',
     cards: 'Flashcards',
     zoomImage: 'Enlarge image',
@@ -149,7 +151,7 @@ const COPY = {
     crumbKnee: 'زانو',
     badge: 'Dr. Zia',
     title: 'رباط‌های زانو',
-    lead: 'درس فشرده درباره رباط‌های زانو: درجه‌بندی، کمپلکس لترال و مدیال، پارگی ACL، دژنراسیون موکوئید ACL و پارگی PCL.',
+    heroAlt: 'نمای شماتیک آناتومی زانو با رباط‌های صلیبی در مرکز مفصل و رباط‌های جانبی مدیال و لترال.',
     quiz: 'MCQ',
     cards: 'فلش‌کارت‌ها',
     zoomImage: 'بزرگ‌نمایی تصویر',
@@ -203,6 +205,7 @@ COPY.en.sections = {
       ['Normal bundles', ['The AM and PL bundles run largely parallel in extension.', 'Fine streaky signal between the bundles may be physiologic.']],
       ['ACL tear', ['Direct signs: fibre discontinuity, T2/PD signal increase, flattened or wavy course.', 'Indirect signs: kissing contusions, anterior tibial subluxation over 7 mm, buckled PCL.']],
       ['Mechanism and associated signs', ['An indirect, non-contact pivot/valgus mechanism during sport is common.', 'Kissing contusions typically involve the lateral femoral condyle and posterolateral tibial plateau.']],
+      ['Radiographs and treatment goals', ['Associated radiographic signs include a joint effusion and an impaction fracture of the lateral femoral condyle; a Segond fracture is an important clue to ACL injury.', 'Treatment and prognosis also depend on activity level. A key goal is to prevent chronic instability and resulting secondary meniscal and cartilage damage.']],
       ['Mucoid degeneration', ['Chronic glycosaminoglycan deposition between ACL fibres.', 'Celery-stalk sign: intact dark fibres within bright T2-hyperintense mucoid tissue.']],
     ],
     note: 'Unhappy triad: ACL tear, MCL tear and medial meniscus lesion after valgus trauma with external rotation and a fixed lower leg.',
@@ -295,6 +298,7 @@ COPY.fa.sections = {
       ['باندل‌های طبیعی', ['باندل‌های AM و PL در اکستانسیون عمدتاً موازی‌اند.', 'سیگنال‌های خطی ظریف بین باندل‌ها می‌تواند فیزیولوژیک باشد.']],
       ['پارگی ACL', ['علائم مستقیم: قطع فیبرها، افزایش سیگنال T2/PD، مسیر صاف یا موج‌دار.', 'علائم غیرمستقیم: kissing contusions، سابلوکساسیون قدامی تیبیا بیش از ۷ میلی‌متر، PCL خمیده.']],
       ['مکانیسم و علائم همراه', ['مکانیسم چرخشی/والگوس غیرتماسی، برای نمونه هنگام ورزش، شایع است.', 'Kissing contusions معمولاً کندیل لترال فمور و بخش خلفی-لترال پلاتوی تیبیا را درگیر می‌کنند.']],
+      ['رادیوگرافی و اهداف درمان', ['یافته‌های همراه در رادیوگرافی شامل افیوژن مفصل و فرورفتگی کندیل لترال فمور است؛ شکستگی Segond سرنخ مهمی برای آسیب ACL است.', 'درمان و پیش‌آگهی به سطح فعالیت هم بستگی دارند. یکی از هدف‌های اصلی پیشگیری از ناپایداری مزمن و آسیب‌های ثانویه منیسک و غضروف است.']],
       ['دژنراسیون موکوئید', ['رسوب مزمن گلیکوزآمینوگلیکان‌ها بین فیبرهای ACL.', 'علامت celery-stalk: فیبرهای تیره سالم در میان بافت موکوئید روشن در T2.']],
     ],
     note: 'Unhappy triad: پارگی ACL، پارگی MCL و ضایعه منیسک داخلی پس از ترومای والگوس با چرخش خارجی و ساق ثابت.',
@@ -566,12 +570,7 @@ export default function KneeLigamentsPage() {
         <header className={styles.hero}>
           <div className={styles.heroMain}>
             <span className={styles.eyebrow}>{copy.badge}</span>
-            <h1>{copy.title}</h1>
-            <p className={styles.lead}>{copy.lead}</p>
-            <div className={styles.actions}>
-              <Link className={`${styles.action} ${styles.actionPrimary}`} href={withLang('/ueben/quiz?fach=msk&n=10&themen=kreuzbaender&from=/msk/knie/kreuzbaender', lang)}><span>🎯</span>{copy.quiz}</Link>
-              <Link className={styles.action} href={withLang('/flashcards/kreuzbaender?from=/msk/knie/kreuzbaender', lang)}><span>🧠</span>{copy.cards}</Link>
-            </div>
+            <LessonHero title={copy.title} imageSrc="/knieligamente/knee-ligaments-hero.png" imageAlt={copy.heroAlt} lang={lang} />
           </div>
           <aside className={styles.heroSide}>
             {copy.stats.map(([value, text]) => (
@@ -582,6 +581,11 @@ export default function KneeLigamentsPage() {
             ))}
           </aside>
         </header>
+
+        <div className={styles.actions}>
+          <Link className={`${styles.action} ${styles.actionPrimary}`} href={withLang('/ueben/quiz?fach=msk&n=10&themen=kreuzbaender&from=/msk/knie/kreuzbaender', lang)}><span aria-hidden="true">🎯</span>{copy.quiz}</Link>
+          <Link className={styles.action} href={withLang('/flashcards/kreuzbaender?from=/msk/knie/kreuzbaender', lang)}><span aria-hidden="true">🧠</span>{copy.cards}</Link>
+        </div>
 
         <div className={styles.readBar}>
           <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} signInHref={signInHref} />

@@ -122,6 +122,26 @@ const CONTENT = [
     },
   ),
   q(
+    'acl-xray',
+    {
+      de: 'Welcher Röntgenbefund ist ein wichtiger Hinweis auf eine VKB-Verletzung?',
+      en: 'Which radiographic finding is an important clue to ACL injury?',
+      fa: 'کدام یافتهٔ رادیوگرافی سرنخ مهمی برای آسیب ACL است؟',
+    },
+    [
+      { de: 'Segond-Fraktur am lateralen Tibiaplateau', en: 'Segond fracture at the lateral tibial plateau', fa: 'شکستگی Segond در پلاتوی لترال تیبیا' },
+      { de: 'Osteophyten am medialen Femurkondylus', en: 'Osteophytes at the medial femoral condyle', fa: 'استئوفیت در کندیل مدیال فمور' },
+      { de: 'Patella alta ohne Erguss', en: 'Patella alta without an effusion', fa: 'پاتلا آلتا بدون افیوژن' },
+      { de: 'Chondrocalcinose im Meniskus', en: 'Meniscal chondrocalcinosis', fa: 'کندروکلسینوز منیسک' },
+    ],
+    'A',
+    {
+      de: 'Die Segond-Fraktur ist im PDF als pathognomonischer Hinweis genannt; im Lerntext bleibt sie als wichtiger Hinweis auf eine VKB-Verletzung formuliert.',
+      en: 'The PDF calls the Segond fracture pathognomonic; the lesson phrases it as an important clue to ACL injury.',
+      fa: 'PDF شکستگی Segond را پاتوگنومونیک می‌داند؛ متن آموزشی آن را به‌صورت سرنخ مهمی برای آسیب ACL بیان می‌کند.',
+    },
+  ),
+  q(
     'pcl-mechanism',
     {
       de: 'Welcher Mechanismus passt klassisch zur HKB-Ruptur?',
