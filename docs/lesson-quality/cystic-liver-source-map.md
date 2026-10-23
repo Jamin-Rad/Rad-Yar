@@ -15,6 +15,7 @@ clinical validation or release approval.
 | Echinococcal cyst may remain asymptomatic; rupture, infection and biliary entry | 6 | Echinococcal cyst · clinical course | Included |
 | Before puncture, consider anaphylaxis and secondary spread to bile ducts, pleura and lungs | 6 | Safe reporting sequence | Included as source safety warning; not a treatment pathway |
 | CT: smooth round/oval lesion; density varies with protein/debris | 6 | Echinococcal cyst · CT and MRI | Included |
+| CT phase comparison, arterial (left) and portal-venous (right) | 6 | Echinococcal cyst · paired CT figure | Added as a source-labelled paired example; only phase labels and visible morphology are described, with no timing or additional enhancement rule inferred. Crop/provenance in `public/educational/hydatid-liver/source-provenance.json`. |
 | Daughter cysts with diverticulum-like protrusions | 6 | Echinococcal cyst · possible morphology | Included |
 | Water-lily sign: detached endocyst and free-floating membrane | 6 | Echinococcal cyst · possible morphology; linked flashcard | Included |
 | MRI T1 content varies from low to mixed signal | 7 | Echinococcal cyst · CT and MRI | Included |

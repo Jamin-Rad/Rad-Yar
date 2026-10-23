@@ -16,5 +16,28 @@
     }
   ],
   "crop": "Figure pair cropped from the p.7 source slide; surrounding text and page watermark removed. Original image content retained.",
-  "reuseAuthorization": "The user explicitly authorized reuse of figures contained in the supplied PDFs."
+  "reuseAuthorization": "The user explicitly authorized reuse of figures contained in the supplied PDFs.",
+  "additionalSourceImages": [
+    {
+      "image": "source-ct-phases-p6.png",
+      "sourceFile": "Abdomen.pdf supplied by the user",
+      "pdfPage": 6,
+      "printedPage": 5,
+      "figurePanels": [
+        {
+          "side": "left",
+          "phase": "arterial phase (source label)",
+          "teachingPoint": "The source's axial CT view of the same cystic liver example; no unlabelled timing or enhancement rule is inferred."
+        },
+        {
+          "side": "right",
+          "phase": "portal-venous phase (source label)",
+          "teachingPoint": "Paired axial CT view from the source example; source phase label retained."
+        }
+      ],
+      "crop": "Both side-by-side panels cropped together from a 140-dpi render of physical PDF p.6. The arterial and portal-venous labels and source arrows were preserved; surrounding text, page frame and watermark were excluded.",
+      "visibleCaseIdentifier": "No contributor or case identifier is visible on this paired panel in the cropped page render.",
+      "reuseTerms": "Not stated on the supplied PDF page; reused under the user's explicit project authorization for supplied-PDF images. No independent rights clearance is claimed."
+    }
+  ]
 }
