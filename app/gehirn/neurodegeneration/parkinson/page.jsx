@@ -20,15 +20,14 @@ const LABELS = {
 }
 
 function Icon({ id }) {
-  const paths = { mri: 'M4 7h16v10H4zM7 10h4m2 4h4', nuclear: 'M12 2v5m0 10v5M2 12h5m10 0h5M5 5l3.5 3.5m7 7L19 19m0-14-3.5 3.5m-7 7L5 19', report: 'M5 3h14v18H5zM8 8h8m-8 4h8m-8 4h5', summary: 'M5 5h14M5 12h14M5 19h14' }
+  const paths = { fdg: 'M3 12h4l3-7 4 14 3-7h4', mri: 'M4 7h16v10H4zM7 10h4m2 4h4', nuclear: 'M12 2v5m0 10v5M2 12h5m10 0h5M5 5l3.5 3.5m7 7L19 19m0-14-3.5 3.5m-7 7L5 19', report: 'M5 3h14v18H5zM8 8h8m-8 4h8m-8 4h5', summary: 'M5 5h14M5 12h14M5 19h14' }
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[id] || paths.report}/></svg>
 }
 
-function Decision({ lang }) {
+function Decision({ lang, question = lesson.assessment, title = L('Selbstcheck: technische Sicherheit', 'Self-check: technical confidence', 'خودآزمایی: اطمینان فنی') }) {
   const [answer, setAnswer] = useState(null)
-  const question = lesson.assessment
   return <div className={styles.decision}>
-    <h3>{pick(L('Selbstcheck: technische Sicherheit', 'Self-check: technical confidence', 'خودآزمایی: اطمینان فنی'), lang)}</h3>
+    <h3>{pick(title, lang)}</h3>
     <p>{pick(question.question, lang)}</p>
     <fieldset><legend>{pick(L('Eine Antwort auswählen', 'Choose one answer', 'یک پاسخ را انتخاب کنید'), lang)}</legend>
       {question.options.map((option, index) => <label key={index}><input type="radio" name={question.id} checked={answer === index} onChange={() => setAnswer(index)}/><span>{pick(option, lang)}</span></label>)}
@@ -42,10 +41,10 @@ export default function ParkinsonPage() {
   const labels = Object.fromEntries(Object.entries(LABELS).map(([key, value]) => [key, pick(value, lang)]))
   const sections = [...lesson.chapters.map(chapter => ({ id: chapter.id, label: pick(chapter.title, lang), icon: chapter.id })), { id: 'take-home', label: labels.takeHome, icon: 'summary', emphasis: true }]
   const langHref = path => lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
-  const sources = lesson.references.filter(reference => reference.href).map(reference => ({ tag: reference.href.includes('8323030') || reference.href.includes('4975367') ? 'MRT / SWI' : reference.href.includes('7300075') ? 'DAT-SPECT' : 'Klinik', title: reference.label, href: reference.href, citation: reference.href.includes('8323030') ? 'Brain Behav. 2021;11:e02202. doi:10.1002/brb3.2202.' : reference.href.includes('4975367') ? 'Pol J Radiol. 2016;81:363–369. doi:10.12659/PJR.897090.' : reference.href.includes('7300075') ? 'Eur J Nucl Med Mol Imaging. 2020;47:1885–1912. doi:10.1007/s00259-020-04817-8.' : 'Mov Disord. 2015;30:1591–1601. doi:10.1002/mds.26424.' }))
+  const sources = lesson.references.filter(reference => reference.href).map(reference => ({ tag: reference.tag || (reference.href.includes('8323030') || reference.href.includes('4975367') ? 'MRT / SWI' : reference.href.includes('7300075') ? 'DAT-SPECT' : 'Klinik'), title: reference.label, href: reference.href, citation: reference.citation || (reference.href.includes('8323030') ? 'Brain Behav. 2021;11:e02202. doi:10.1002/brb3.2202.' : reference.href.includes('4975367') ? 'Pol J Radiol. 2016;81:363–369. doi:10.12659/PJR.897090.' : reference.href.includes('7300075') ? 'Eur J Nucl Med Mol Imaging. 2020;47:1885–1912. doi:10.1007/s00259-020-04817-8.' : 'Mov Disord. 2015;30:1591–1601. doi:10.1002/mds.26424.') }))
   const takeHome = [
     { title: pick(L('Technik zuerst prüfen', 'Check technique first', 'ابتدا کیفیت فنی را بررسی کنید'), lang), detail: pick(L('Sequenz, Ebene und Bildqualität bestimmen, ob Nigrosom 1 sicher beurteilbar ist.', 'Sequence, plane, and image quality determine whether nigrosome 1 can be assessed confidently.', 'توالی، صفحه و کیفیت تصویر تعیین می‌کنند که ارزیابی نیگروزوم ۱ قابل‌اعتماد است یا نه.'), lang) },
-    { title: pick(L('MRT und DAT-SPECT getrennt einordnen', 'Interpret MRI and DAT-SPECT separately', 'MRI و DAT-SPECT را جداگانه تفسیر کنید'), lang), detail: pick(L('Die MRT zeigt Struktur; DAT-SPECT erfasst funktionell die präsynaptische DAT-Bindung.', 'MRI depicts structure; DAT-SPECT functionally assesses presynaptic DAT binding.', 'MRI ساختار را نشان می‌دهد؛ DAT-SPECT اتصال پیش‌سیناپسی DAT را به‌صورت عملکردی می‌سنجد.'), lang) },
+    { title: pick(L('Messgrößen unterscheiden', 'Distinguish the measurements', 'کمیت‌های اندازه‌گیری‌شده را تفکیک کنید'), lang), detail: pick(L('MRT zeigt Struktur; DAT-SPECT erfasst Transporterbindung, FDG-PET regionale Stoffwechselmuster.', 'MRI depicts structure; DAT-SPECT assesses transporter binding, FDG PET regional metabolic patterns.', 'MRI ساختار را نشان می‌دهد؛ DAT-SPECT اتصال ناقل و FDG-PET الگوهای منطقه‌ای متابولیسم را ارزیابی می‌کند.'), lang) },
     { title: pick(L('Bildgebung bleibt ergänzend', 'Imaging remains adjunctive', 'تصویربرداری نقش تکمیلی دارد'), lang), detail: pick(L('Konventionelle MRT ist bei idiopathischem Parkinson oft unauffällig und sucht vor allem strukturelle Alternativen.', 'Conventional MRI is often normal in idiopathic Parkinson disease and mainly looks for structural alternatives.', 'MRI معمول در پارکینسون ایدیوپاتیک اغلب طبیعی است و بیشتر برای یافتن علل ساختاری جایگزین به‌کار می‌رود.'), lang) },
   ]
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={pick(lesson.title, lang)} author="Dr. Zia"
@@ -64,6 +63,14 @@ export default function ParkinsonPage() {
         <Image src="/educational/parkinson/nigrosome-parkinson.png" width={700} height={470} alt={pick(L('PDF-Beispiel, als Parkinson beschriftet: Nigrosom-Zeichen nicht sichtbar', 'PDF example labelled Parkinson disease: nigrosome sign not visible', 'نمونهٔ PDF با برچسب پارکینسون: نشانهٔ نیگروزوم دیده نمی‌شود'), lang)} sizes="(max-width: 760px) 100vw, 680px"/>
       </div><figcaption>{pick(lesson.imageCaption, lang)}</figcaption></figure> : null}
       {chapter.id === 'report' ? <Decision lang={lang}/> : null}
+      {chapter.id === 'fdg' ? <>
+        <div className={styles.tableWrap}><table className={styles.comparison}>
+          <caption>{pick(lesson.modalityComparison.caption, lang)}</caption>
+          <thead><tr>{lesson.modalityComparison.headings.map((heading, index) => <th scope="col" key={index}>{pick(heading, lang)}</th>)}</tr></thead>
+          <tbody>{lesson.modalityComparison.rows.map(([method, measure]) => <tr key={method}><th scope="row"><bdi>{method}</bdi></th><td>{pick(measure, lang)}</td></tr>)}</tbody>
+        </table></div>
+        <Decision lang={lang} question={lesson.fdgAssessment} title={L('Selbstcheck: die zusätzliche Messgröße', 'Self-check: the additional measurement', 'خودآزمایی: کمیت تکمیلی')}/>
+      </> : null}
     </LessonSection>)}
     <LessonSection id="take-home" icon="summary" title={labels.takeHome}><TakeHomeList items={takeHome}/></LessonSection>
   </StandardLessonShell>

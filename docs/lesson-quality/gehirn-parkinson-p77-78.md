@@ -20,7 +20,7 @@ Status: authored draft, 2026-10-19. This record does not imply clinical approval
 | Conventional MRI is often normal in idiopathic PD; assess structural alternatives including vascular lesions and normal-pressure hydrocephalus | p.78 | Essential scope limit | Report chapter names both alternatives. No unsupported diagnostic criteria or thresholds added. |
 | DaTSCAN FP-CIT SPECT depicts presynaptic dopamine transporter; reduced striatal binding is a functional signal | p.78 | Essential modality distinction | Nuclear-medicine chapter. |
 | DAT imaging indicates presynaptic dopaminergic deficit but cannot distinguish idiopathic PD from DLB, PSP, CBD, or MSA | p.78; Morbelli et al. 2020 EANM/SNMMI guideline | Essential caveat | Nuclear-medicine chapter states the limit without implying syndrome-specific diagnosis. |
-| FDG-PET and differential by glucose-metabolism pattern | p.78 | Deferred | Not taught: the PDF offers no defined pattern or precise question for safe instructional coverage. |
+| FDG-PET and differential by glucose-metabolism pattern | p.78; SNMMI/EANM 2024 IV.A.2 | Essential modality distinction | FDG chapter, measurement table and localized self-check. Regional relative increases and decreases can coexist; treatment affects the pattern. No diagnostic threshold or FDG scan-recognition task. |
 | Clinical symptom/definition/pathophysiology detail | p.77 | Deferred | Outside this imaging-focused lesson; would require a separate clinical source/objective. |
 
 ## Media ledger
@@ -41,6 +41,18 @@ Status: authored draft, 2026-10-19. This record does not imply clinical approval
 Terminology: Nigrosom 1 / nigrosome 1 / نیگروزوم ۱; suszeptibilitätsgewichtete Bildgebung (SWI) / susceptibility-weighted imaging / تصویربرداری حساس به سوسپتیبیلیتی; Dopamintransporter-SPECT / dopamine-transporter SPECT / SPECT ناقل دوپامین.
 
 ## Validation and open gates
+
+### FDG extension, 2026-10-23
+
+- The outline now includes regional FDG-PET metabolism between DAT-SPECT and reporting, with a comparison table and answer-specific self-check in DE/EN/FA.
+- Primary source: SNMMI/EANM brain FDG PET guideline version 2.0 (2024), section IV.A.2, doi:10.2967/jnumed.124.268754; consulted directly. The blanket reduced-metabolism wording from PDF p.78 is qualified using the guideline's regional patterns and treatment effects.
+- PDF physical p.78 inspected; no FDG case image appears there. The table explains measurement differences; it is not diagnostic image training.
+- Independent read-only review found the source correspondence, DE/EN/FA text and all option-specific feedback sound. Its requested ledger correction is included here.
+- `node --import tsx scripts/test-gehirn-parkinson-ssr.mjs` passed in all three languages, including the new chapter, table, reference and assessment.
+- The local Next route compiled and served on port 3021. Initial browser access reached the sign-in gate; after normal session hydration, desktop FDG content was checked in FA/light and DE/dark, including the measurement table and wrong-to-correct feedback. Screenshot: `tmp/gehirn-browser/parkinson-de-dark.png`. Mobile and full keyboard checks remain open. No gate was altered.
+- Existing content outside the FDG delta was not comprehensively re-reviewed. Clinical sign-off and later lesson-by-lesson optimization remain open.
+
+### Earlier lesson evidence
 
 - `node scripts/check-gehirn-late-lessons.mjs`: checks DE/EN/FA data structure, source metadata, assessment schema, exact curriculum link, shared shell, image/provenance presence, and JSX parsing.
 - `node scripts/test-gehirn-parkinson-ssr.mjs`: actual route and maintained shared shell rendered with React SSR in DE/EN/FA; checks one title, initial single-open chapter, RTL direction, source images, references, and localized answer-specific retry feedback. CSS modules and language provider are test fixtures; this is not a browser or Next production-build test.

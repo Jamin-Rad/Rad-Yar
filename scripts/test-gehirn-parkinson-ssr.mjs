@@ -45,13 +45,24 @@ for (const lang of ['de', 'en', 'fa']) {
   assert.ok(html.includes(`lang="${lang}"`), `${lang} SSR root language missing`)
   assert.ok(html.includes(`dir="${lang === 'fa' ? 'rtl' : 'ltr'}"`), `${lang} SSR direction incorrect`)
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${lang} route should render exactly one h1 and no nested duplicate header`)
-  for (const id of ['mri', 'nuclear', 'report']) {
+  for (const id of ['mri', 'nuclear', 'fdg', 'report']) {
     const panel = html.match(new RegExp(`<div id="${id}-panel"[^>]*>`))?.[0]
     assert.ok(panel, `${lang} route is missing ${id} lesson panel`)
     assert.equal(panel.includes('hidden=""'), id !== 'mri', `${lang} SSR should initially open only the first chapter`)
   }
   assert.ok(!html.includes('Befund & Selbsttest'), `${lang} output includes unrelated default chapter label`)
   assert.ok(!html.includes('morbus-parkinson'), `${lang} route should not link a nonexistent quiz topic`)
+  assert.ok(html.includes('10.2967/jnumed.124.268754'), `${lang}: FDG source must render its own DOI`)
+  assert.ok(html.includes('gehirn-parkinson-fdg-check'), `${lang}: FDG retrieval interaction rendered`)
+  assert.ok(html.includes('<caption>') && html.includes('FDG-PET'), `${lang}: modality comparison table rendered`)
+}
+const { GEHIRN_PARKINSON_LESSON: lesson } = await import('../data/gehirnParkinsonLesson.js')
+assert.equal(lesson.fdgAssessment.correctIndex, 1)
+for (const locale of ['de', 'en', 'fa']) {
+  assert.equal(lesson.fdgAssessment.options.length, lesson.fdgAssessment.optionFeedback.length)
+  for (const option of lesson.fdgAssessment.options) assert.ok(option[locale])
+  for (const feedback of lesson.fdgAssessment.optionFeedback) assert.ok(feedback[locale])
+  assert.ok(lesson.chapters.find(chapter => chapter.id === 'fdg').text[locale])
 }
 const routeSource = fs.readFileSync(path.join(root, 'app/gehirn/neurodegeneration/parkinson/page.jsx'), 'utf8')
 assert.ok(routeSource.includes("from '@/components/lesson-template/StandardLessonShell'"), 'route must use the maintained shared lesson shell')

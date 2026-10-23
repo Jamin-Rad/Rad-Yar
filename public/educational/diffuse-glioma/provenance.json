@@ -1,0 +1,97 @@
+{
+  "purpose": "Verified original clinical figures, not generated diagnostic evidence",
+  "figures": [
+    {
+      "asset": "/educational/diffuse-glioma/astrocytoma.jpg",
+      "copyKey": "astro",
+      "sourceUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/be91/10411771/9d98a4868db8/rb-56-03-0157-g01.jpg",
+      "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10411771/",
+      "figure": 1,
+      "creator": "Renata Tarraf Fernandes et al.",
+      "license": "Creative Commons Attribution (article statement; version not asserted)",
+      "rightsVerified": "2026-10-23, original article copyright statement",
+      "inspected": "2026-10-23: actual downloaded pixels opened and compared with source caption",
+      "transformations": "none",
+      "alt": {
+        "de": "Vier axiale Originalpanels: T2, FLAIR, späteres T1 mit Kontrastmittel und Perfusionskarte, mit Originalpfeilen.",
+        "en": "Four original axial panels: T2, FLAIR, later postcontrast T1 and perfusion map, with original arrows.",
+        "fa": "چهار پنل محوری اصلی: T2، FLAIR، T1 پس از تزریق در پیگیری و نقشهٔ پرفیوژن، با پیکان‌های اصلی."
+      },
+      "caption": {
+        "de": "A/B: T2/FLAIR-Mismatch. C/D: elf Jahre später Enhancement und hohe Perfusion; Gewebe: Grad 4.",
+        "en": "A/B: T2/FLAIR mismatch. C/D: eleven years later, enhancement and high perfusion; tissue: grade 4.",
+        "fa": "A/B: ناهمخوانی T2/FLAIR. C/D: یازده سال بعد، enhancement و پرفیوژن بالا؛ بافت: درجهٔ ۴."
+      },
+      "sha256": "34ed8ee5fa8c443e96d85e43f7a4140a3518994773e4eef56f4d7b2b2eafc938"
+    },
+    {
+      "asset": "/educational/diffuse-glioma/oligodendroglioma.jpg",
+      "copyKey": "oligo",
+      "sourceUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/be91/10411771/4036cf7506ac/rb-56-03-0157-g02.jpg",
+      "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10411771/",
+      "figure": 2,
+      "creator": "Renata Tarraf Fernandes et al.",
+      "license": "Creative Commons Attribution (article statement; version not asserted)",
+      "rightsVerified": "2026-10-23, original article copyright statement",
+      "inspected": "2026-10-23: actual downloaded pixels opened and compared with source caption",
+      "transformations": "none",
+      "alt": {
+        "de": "Originalpanels eines Oligodendroglioms: CT mit Verkalkung, T1 nach Kontrastmittel und Perfusionskarte.",
+        "en": "Original oligodendroglioma panels: CT with calcification, postcontrast T1 and perfusion map.",
+        "fa": "پنل‌های اصلی الیگودندروگلیوما: CT با کلسیفیکاسیون، T1 پس از تزریق و نقشهٔ پرفیوژن."
+      },
+      "caption": {
+        "de": "A: Kalk. B: fokales Enhancement. C: erhöhte Perfusion. Dennoch histomolekular Grad 2.",
+        "en": "A: calcium. B: focal enhancement. C: increased perfusion. Histomolecular diagnosis: grade 2.",
+        "fa": "A: کلسیم. B: enhancement کانونی. C: پرفیوژن بالا. تشخیص بافتی‌مولکولی: درجهٔ ۲."
+      },
+      "sha256": "2de9e06f137f21baa13eea787191bffb2cf3c0cd612a71779905bbcf9f3a6c1a"
+    },
+    {
+      "asset": "/educational/diffuse-glioma/glioblastoma.jpg",
+      "copyKey": "gbm",
+      "sourceUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/be91/10411771/9026bc465c41/rb-56-03-0157-g03.jpg",
+      "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10411771/",
+      "figure": 3,
+      "creator": "Renata Tarraf Fernandes et al.",
+      "license": "Creative Commons Attribution (article statement; version not asserted)",
+      "rightsVerified": "2026-10-23, original article copyright statement",
+      "inspected": "2026-10-23: actual downloaded pixels opened and compared with source caption",
+      "transformations": "none",
+      "alt": {
+        "de": "Originalfall mit FLAIR und T1 nach Kontrastmittel: rechts temporale Läsion mit begrenztem Enhancement.",
+        "en": "Original case with FLAIR and postcontrast T1: right temporal lesion with limited enhancement.",
+        "fa": "کیس اصلی با FLAIR و T1 پس از تزریق: ضایعهٔ تمپورال راست با enhancement محدود."
+      },
+      "caption": {
+        "de": "A: ausgedehnte FLAIR-Veränderung. B: nur kleines Enhancement. Molekular gesichertes Glioblastom.",
+        "en": "A: extensive FLAIR abnormality. B: only small enhancement. Molecularly confirmed glioblastoma.",
+        "fa": "A: تغییر گستردهٔ FLAIR. B: enhancement کوچک. گلیوبلاستومای تأییدشدهٔ مولکولی."
+      },
+      "sha256": "8787515af99b80a152812a7102c3bbc62b83daa0fb8a51b0c9a0cc37619a064b"
+    },
+    {
+      "asset": "/educational/diffuse-glioma/glioblastoma-typical.jpg",
+      "copyKey": "gbmTypical",
+      "sourceUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/0865/10854536/3a85ba0abf56/cancers-16-00589-g001.jpg",
+      "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10854536/",
+      "figure": 1,
+      "creator": "Keon Mahmoudi et al.",
+      "license": "CC BY 4.0",
+      "rightsVerified": "2026-10-23, original article copyright statement",
+      "inspected": "2026-10-23: actual downloaded pixels opened and compared with source caption",
+      "transformations": "none",
+      "alt": {
+        "de": "Originale MRT-Serien eines rechts temporalen Glioblastoms: FLAIR, T1 C+, DWI und ADC; darunter dieselben Bilder mit blauer Forschungssegmentierung.",
+        "en": "Original MRI series of a right temporal glioblastoma: FLAIR, T1 C+, DWI and ADC; the same images below include blue research segmentation.",
+        "fa": "توالی‌های اصلی MRI گلیوبلاستومای تمپورال راست: FLAIR، T1 C+، DWI و ADC؛ تصاویر همانند در پایین با سگمنتیشن پژوهشی آبی."
+      },
+      "caption": {
+        "de": "Oben von links: FLAIR, T1 nach Kontrastmittel, DWI b1000 und ADC. Rechts temporales Glioblastom mit anreicherndem Tumoranteil; FLAIR reicht darüber hinaus. Unten: Originalsegmentierung der Studie in Blau — keine histologisch gesicherte Tumorgrenze.",
+        "en": "Top, from left: FLAIR, postcontrast T1, DWI b1000 and ADC. Right temporal glioblastoma with enhancing tumour; FLAIR extends beyond it. Bottom: the study’s original segmentation in blue — not a histologically proven tumour boundary.",
+        "fa": "بالا از چپ: FLAIR، T1 پس از تزریق، DWI با b1000 و ADC. گلیوبلاستومای تمپورال راست با جزء توموری دارای enhancement؛ FLAIR فراتر از آن است. پایین: سگمنتیشن اصلی مطالعه به رنگ آبی؛ این مرز بافت‌شناختی تأییدشدهٔ تومور نیست."
+      },
+      "sha256": "6484218be4dd31fac3425fcf9e72bd8fecd9f2885eb8361ac287920672166a1f"
+    }
+  ]
+}

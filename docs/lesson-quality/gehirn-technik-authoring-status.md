@@ -1,5 +1,7 @@
 # Gehirn / Technik authoring status
 
+> Gehirn update, 2026-10-23: the older Gehirn progress notes below are historical. Use [the current page/topic inventory](gehirn-pdf-completion-2026-10-23.md) for current lesson coverage and bounded additions. This notice does not update Technik or imply scientific/visual approval.
+
 Stand: 19.10.2026. This is a work-in-progress ledger for the current batch, not a clinical or publication approval.
 
 ## Zusatz-Teilbatch B-1: Sonographie-Physik

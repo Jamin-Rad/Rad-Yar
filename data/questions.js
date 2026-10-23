@@ -1,3 +1,4 @@
+import { DIFFUSE_GLIOMA_QUESTIONS, DIFFUSE_GLIOMA_TOPIC_GROUP } from './diffuseGliomaLesson'
 import { MENING_QUESTIONS } from './gehirnMeningeomLesson'
 import { MEDULLO_QUESTIONS } from './medulloblastomLesson'
 import { ATRT_QUESTIONS, ATRT_TOPIC_GROUP } from './atrtLesson'
@@ -4354,9 +4355,11 @@ for (const lang of Object.keys(QUESTION_BANK)) {
   QUESTION_BANK[lang].push(...(NEUROFORAMENSTENOSE_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(COPD_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(ATRT_QUESTIONS[lang] || []))
+  QUESTION_BANK[lang].push(...(DIFFUSE_GLIOMA_QUESTIONS[lang] || []))
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  DIFFUSE_GLIOMA_TOPIC_GROUP,
   ATRT_TOPIC_GROUP,
   COPD_TOPIC_GROUP,
   NEUROFORAMENSTENOSE_TOPIC_GROUP,
