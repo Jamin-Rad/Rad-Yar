@@ -113,8 +113,13 @@ an air-fluid level alone does not determine cause. Curriculum ID `lungenabszess`
 links to `/ueben/quiz?fach=thorax&n=1&themen=lungenabszess` and
 `/flashcards/lungenabszess`; lesson actions return to `#infection-patterns`.
 Focused retrieval and lesson-action link checks are recorded in
-`scripts/test-thorax-lung-abscess-assessment.mjs`. Independent review, browser UX and
-clinical approval remain pending until their evidence is recorded.
+`scripts/test-thorax-lung-abscess-assessment.mjs`. Independent review found a
+minor overlap between two distractors: both overstated what an air-fluid level
+proves. Option D now tests the distinct misconception that pleural proximity
+alone proves empyema; the regression test asserts that D is separate from the
+air-fluid-level distractor in DE/EN/FA. Independent SRC/EDU/LNG/ASM/REV review
+and retest pass; focused lesson-link, retrieval, global MCQ audit and diff-check
+pass. Browser UX and clinical approval remain pending.
 
 ## Related-route navigation delta (2026-10-23)
 
