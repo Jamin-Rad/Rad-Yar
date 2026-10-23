@@ -2,3 +2,12 @@
 .caseImage { display: block; width: min(100%, 770px); height: auto; border: 1px solid var(--line, #d6dfe5); border-radius: 10px; background: #111; }
 .caseFigure figcaption { max-width: 84ch; color: var(--muted, #586773); font-size: .92rem; line-height: 1.65; text-align: start; }
 .caseFigure a { color: var(--lesson-accent-strong, #216a78); }
+.locationFigure { display: grid; justify-items: center; gap: .45rem; margin: 1rem auto; max-width: 840px; }
+.locationSvg { display: block; width: 100%; height: auto; overflow: visible; }
+.locationFigure figcaption { color: var(--muted, #586773); font-size: .88rem; text-align: center; }
+.locationCard { fill: var(--bg-card, #fff); stroke: var(--line, #d6dfe5); stroke-width: 1.5; }
+.locationHeading { fill: var(--text, #20313c); font: 600 16px system-ui, sans-serif; }
+.lungOutline { fill: color-mix(in srgb, var(--lesson-accent, #70bdc8) 15%, transparent); stroke: var(--lesson-accent-strong, #216a78); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.locationMark { fill: var(--lesson-accent-strong, #216a78); stroke: #fff; stroke-width: 2; }
+.locationWedge { fill: color-mix(in srgb, var(--secondary, #9678c5) 55%, transparent); stroke: var(--secondary-strong, #63428e); stroke-width: 2; stroke-linejoin: round; }
+@media (max-width: 640px) { .locationFigure { margin-inline: -.35rem; } .locationHeading { font-size: 15px; } }

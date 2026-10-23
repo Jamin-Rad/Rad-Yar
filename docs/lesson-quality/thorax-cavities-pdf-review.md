@@ -54,13 +54,51 @@ shows one actual PDF CT panel with the visible rID 16033 retained; no contributo
   Henry Knipe, cavitating lung lesion—tuberculosis rID 30280. Both pages are
   cited in the lesson; the original image series has not been embedded.
 
-PDF p. 25 also lists GPA, septic emboli, pulmonary infarct and Klebsiella location examples; they are deferred from this focused four-pattern lesson and should not be read as fully covered.
+The original review deferred the PDF p.25 location examples for GPA, septic emboli,
+pulmonary infarct and Klebsiella from the focused four-pattern lesson. Their
+bounded follow-up is recorded below.
+
+## Topography delta (2026-10-23)
+
+The location examples on physical p.25 / printed p.24 are now included in three
+short rows in the existing morphology table, with no new chapter or disease
+route. Reactivated TB and cavitating Klebsiella infection are compatible upper-
+lobe considerations, not pathogen-identifying locations. Multiple peripheral
+nodules (sometimes cavitating) and pleura-based wedge-shaped opacities support
+consideration of septic pulmonary emboli only in clinical context. A peripheral
+wedge-shaped opacity may also represent infarction; cavitation is explicitly
+rare. GPA and pulmonary metastases remain among the possibilities for multiple
+cavitary nodules; morphology and distribution overlap. A new embedded self-check
+tests the septic-embolism pattern and its context limitation. No location or
+sign is treated as diagnostic.
+
+Clinical cross-checks: Chou et al. (20-patient retrospective ICU cohort) for
+septic pulmonary emboli, PMID 27759843; Russell et al. (225-patient GPA imaging
+cohort), PMID 28992397; Giacomelli et al. (102-patient retrospective cohort of
+multiple cavitary lung lesions), PMID 31859704; Yoo et al. (small retrospective series of complicated
+Klebsiella infection), PMID 7890837; and a 2025 case report/literature review
+for the rare possibility of cavitary pulmonary infarction, PMCID PMC12677935.
+These sources support pattern associations with different strengths and do not
+make the patterns specific. A 198-patient Klebsiella CT cohort (PMID 19034459)
+did not establish an upper-lobe cavitation rule; accordingly, upper-lobe
+topography is not used to identify Klebsiella. The reviewer also found no direct
+support in the cited Chou cohort for a basal distribution; the lesson therefore
+uses only the supported peripheral location. The current CT image illustrates
+one cavity and nearby nodules only; it does not illustrate or validate this new
+set of etiologic patterns. A localized code-native schematic maps distribution
+concepts only and is captioned as non-diagnostic. The independent delta reviewer
+passed SRC, EDU, VIS, LNG, ASM and REV after corrections. UX remains blocked
+because the local server could not be reached from the browser; focused SSR tests
+do not substitute for browser QA. Clinical approval remains separate.
 
 The sources support pattern teaching only. They do not constitute scientific
 approval of the finished RadYar lesson. Independent bounded source/education/
-visual/language/assessment/integration review and delta retests PASS; the author
-closed the citation, case-attribution boundary, canonical curriculum mapping,
-and language-preserving related-link findings. The original rID 16033 case page,
+visual/language/assessment/integration review and delta retests for the original
+four-pattern lesson passed; the author closed the citation, case-attribution
+boundary, canonical curriculum mapping, and language-preserving related-link
+findings. The 2026-10-23 topography delta passed independent SRC, EDU, VIS, LNG,
+ASM and REV review after corrections; its UX gate remains blocked pending live
+browser evidence. The original rID 16033 case page,
 contributor and external reuse terms remain unverified; the PDF image itself is
 user-authorized for project use. Live browser UX and specialist clinical approval
 remain pending. No actual positional aspergilloma image or complete case stack is

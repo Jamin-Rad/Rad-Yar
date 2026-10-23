@@ -26,15 +26,44 @@ function FeatureTable({ rows, lang }) {
   return <div className={styles.tableWrap}><table><thead><tr><th scope="col">{pick(L('Muster', 'Pattern', 'الگو'), lang)}</th><th scope="col">{pick(L('Bildgebende Einordnung', 'Imaging interpretation', 'تفسیر تصویربرداری'), lang)}</th></tr></thead><tbody>{rows.map(([label, value], i) => <tr key={i}><th scope="row">{pick(label, lang)}</th><td>{pick(value, lang)}</td></tr>)}</tbody></table></div>
 }
 
-function Check({ lang }) {
+function Check({ lang, item, name }) {
   const [answer, setAnswer] = useState(null)
-  const item = lesson.check
   const text = key => pick(labels[key], lang)
   return <div className={styles.check}>
     <h3>{pick(item.title, lang)}</h3><p>{pick(item.prompt, lang)}</p>
-    <fieldset><legend>{pick(L('Eine Antwort wählen', 'Choose one answer', 'یک پاسخ را انتخاب کنید'), lang)}</legend>{item.options.map((option, i) => <label key={i}><input type="radio" name="thorax-cavities-check" checked={answer === i} onChange={() => setAnswer(i)}/><span>{pick(option, lang)}</span></label>)}</fieldset>
+    <fieldset><legend>{pick(L('Eine Antwort wählen', 'Choose one answer', 'یک پاسخ را انتخاب کنید'), lang)}</legend>{item.options.map((option, i) => <label key={i}><input type="radio" name={name} checked={answer === i} onChange={() => setAnswer(i)}/><span>{pick(option, lang)}</span></label>)}</fieldset>
     {answer !== null ? <div role="status" className={styles.feedback}><strong>{pick(answer === item.answerIndex ? L('Richtig. ', 'Correct. ', 'درست است. ') : L('Noch einmal prüfen. ', 'Try again. ', 'دوباره بررسی کنید. '), lang)}</strong>{pick(answer === item.answerIndex ? item.correct : item.retry, lang)}{answer !== item.answerIndex ? <button type="button" onClick={() => setAnswer(null)}>{text('retry')}</button> : null}</div> : null}
   </div>
+}
+
+function TopographyDiagram({ lang }) {
+  const copy = {
+    title: L('Topographie: Beispiele für die Verteilung', 'Topography: examples of distribution', 'توپوگرافی: نمونه‌هایی از توزیع'),
+    desc: L('Schematische Lungenansichten: oberlappenbetonte Läsion, periphere Noduli mit keilförmigem Herd und multiple Noduli. Die Skizze zeigt Verteilungsmuster, keine Diagnose.', 'Schematic lung views: upper-lobe lesion, peripheral nodules with a wedge-shaped focus, and multiple nodules. The sketch shows distribution patterns, not a diagnosis.', 'نمای شماتیک ریه: ضایعه با غلبهٔ لوب فوقانی، ندول‌های محیطی همراه کانون گوه‌ای، و ندول‌های متعدد. طرح فقط الگوی توزیع را نشان می‌دهد، نه تشخیص.'),
+    upper: L('Oberlappen', 'Upper lobe', 'لوب فوقانی'),
+    peripheral: L('Periphere Noduli', 'Peripheral nodules', 'ندول‌های محیطی'),
+    multiple: L('Multiple Noduli', 'Multiple nodules', 'ندول‌های متعدد'),
+    schematic: L('Schematische Orientierung · keine diagnostische CT', 'Schematic orientation · not diagnostic CT', 'نمای شماتیک · CT تشخیصی نیست'),
+  }
+  const text = key => pick(copy[key], lang)
+  const lung = 'M0 4 C-24 10 -30 34 -28 57 C-27 75 -16 89 -3 84 C4 81 5 67 5 56 L5 16 C5 8 4 3 0 4 Z'
+  return <figure className={mediaStyles.locationFigure}>
+    <svg className={mediaStyles.locationSvg} viewBox="0 0 840 252" role="img" aria-labelledby={`topography-title-${lang} topography-desc-${lang}`}>
+      <title id={`topography-title-${lang}`}>{text('title')}</title><desc id={`topography-desc-${lang}`}>{text('desc')}</desc>
+      {[0, 280, 560].map((x, i) => <g key={x} transform={`translate(${x + 10} 8)`}>
+        <rect className={mediaStyles.locationCard} x="0" y="0" width="260" height="228" rx="14"/>
+        <text className={mediaStyles.locationHeading} x="130" y="28" textAnchor="middle">{text(['upper','peripheral','multiple'][i])}</text>
+        <g className={mediaStyles.lungOutline} transform="translate(130 52)">
+          <path d={lung} transform="translate(-8 0)"/><path d={lung} transform="scale(-1 1) translate(-8 0)"/>
+          <path d="M0 -3 V20 M-4 12 L-19 25 M4 12 L19 25"/>
+        </g>
+        {i === 0 ? <circle className={mediaStyles.locationMark} cx="130" cy="76" r="8"/> : null}
+        {i === 1 ? <><circle className={mediaStyles.locationMark} cx="92" cy="105" r="7"/><circle className={mediaStyles.locationMark} cx="168" cy="112" r="7"/><path className={mediaStyles.locationWedge} d="M60 119 L87 101 L95 131 Z"/></> : null}
+        {i === 2 ? <><circle className={mediaStyles.locationMark} cx="101" cy="82" r="6"/><circle className={mediaStyles.locationMark} cx="155" cy="100" r="6"/><circle className={mediaStyles.locationMark} cx="91" cy="137" r="6"/><circle className={mediaStyles.locationMark} cx="164" cy="151" r="6"/></> : null}
+      </g>)}
+    </svg>
+    <figcaption>{text('schematic')}</figcaption>
+  </figure>
 }
 
 export default function PulmonaryCavitiesPage() {
@@ -65,6 +94,11 @@ export default function PulmonaryCavitiesPage() {
     'lung-cancer-study': L('Bildgebende Kohorte · Malignität', 'Imaging cohort · malignancy', 'مطالعهٔ تصویربرداری · بدخیمی'),
     'aspergilloma-guideline': L('Fachleitlinie · IDSA', 'Practice guideline · IDSA', 'راهنمای تخصصی · IDSA'),
     'aspergilloma-ers': L('Fachleitlinie · ERS', 'Practice guideline · ERS', 'راهنمای تخصصی · ERS'),
+    'septic-embolism-cohort': L('Kohortenstudie · septische Embolien', 'Cohort study · septic emboli', 'مطالعهٔ کوهورت · آمبولی سپتیک'),
+    'gpa-cavitary-cohort': L('Bildgebungsstudie · GPA', 'Imaging study · GPA', 'مطالعهٔ تصویربرداری · GPA'),
+    'klebs-necrosis-study': L('CT-Serie · Klebsiella', 'CT series · Klebsiella', 'سری CT · کلبسیلا'),
+    'cavitary-infarct-review': L('Fallbericht · seltener Infarkt', 'Case report · uncommon infarction', 'گزارش مورد · انفارکت غیرشایع'),
+    'multiple-cavities-cohort': L('CT-Kohorte · multiple Kavitäten', 'CT cohort · multiple cavities', 'کوهورت CT · کاویتی‌های متعدد'),
   }
   const sourceNotes = {
     'fleichner-glossary': L('Begriffsstandard; morphologische Benennung, keine Ätiologiediagnose.', 'Terminology standard; morphologic naming, not an aetiologic diagnosis.', 'استاندارد اصطلاح‌شناسی؛ توصیف مورفولوژیک است، نه تشخیص علت.'),
@@ -78,6 +112,11 @@ export default function PulmonaryCavitiesPage() {
     'lung-cancer-study': L('Retrospektive HRCT-Kohorte zum Vergleich kavitierender Adenokarzinome und Plattenepithelkarzinome; keine allgemeine Diagnosegrenze.', 'Retrospective HRCT cohort comparing cavitating adenocarcinoma and squamous cell carcinoma; no general diagnostic threshold.', 'کوهورت گذشته‌نگر HRCT برای مقایسهٔ آدنوکارسینوم و کارسینوم سلول سنگفرشی کاویتاری؛ آستانهٔ تشخیصی همگانی نیست.'),
     'aspergilloma-guideline': L('Quelle für fungal-ball-Morphologie; Befund in den klinischen Rahmen einordnen.', 'Source for fungal-ball morphology; interpret in clinical context.', 'منبع مورفولوژی تودهٔ قارچی؛ یافته را در زمینهٔ بالینی تفسیر کنید.'),
     'aspergilloma-ers': L('Quelle zur Mobilität des Pilzballs zwischen Rücken- und Bauchlage.', 'Source for mobility of a fungal ball between supine and prone positions.', 'منبع حرکت تودهٔ قارچی بین وضعیت طاق‌باز و دمر.'),
+    'septic-embolism-cohort': L('Retrospektive Intensivkohorte; periphere Noduli, teils kavitierend, und keilförmige Opazitäten sind Kontextzeichen, keine alleinige Diagnose.', 'Retrospective ICU cohort; peripheral nodules, sometimes cavitating, and wedge-shaped opacities are contextual clues, not a diagnosis by themselves.', 'کوهورت گذشته‌نگر ICU؛ ندول‌های محیطی، گاهی کاویتاری، و اپاسیته‌های گوه‌ای سرنخ‌های زمینه‌ای‌اند، نه تشخیص مستقل.'),
+    'gpa-cavitary-cohort': L('Klinische Bildgebungskohorte; GPA kann kavitäre Noduli verursachen, deren Erscheinungsbild andere Erkrankungen nachahmt.', 'Clinical imaging cohort; GPA can cause cavitary nodules whose appearance overlaps with other diseases.', 'کوهورت تصویربرداری بالینی؛ GPA می‌تواند ندول‌های کاویتاری ایجاد کند که با بیماری‌های دیگر هم‌پوشانی دارند.'),
+    'klebs-necrosis-study': L('Kleine retrospektive Serie komplizierter Infektionen; Nekrose und Kavitation sind möglich, aber keine topographische Erregerdiagnose.', 'Small retrospective series of complicated infection; necrosis and cavitation can occur, but location does not identify the organism.', 'سری گذشته‌نگر کوچک از عفونت‌های پیچیده؛ نکروز و کاویتاسیون ممکن‌اند، اما محل عامل را مشخص نمی‌کند.'),
+    'cavitary-infarct-review': L('Einzelfall mit Literaturüberblick; stützt nur, dass Kavitation bei Lungeninfarkt selten, aber möglich ist.', 'Single case with literature review; supports only that cavitation in pulmonary infarction is rare but possible.', 'گزارش یک مورد همراه مرور منابع؛ فقط نشان می‌دهد کاویتاسیون در انفارکت ریه نادر اما ممکن است.'),
+    'multiple-cavities-cohort': L('102-Patienten-Studie zu multiplen Kavitäten; mehrere Ursachen überlappen, der klinische Kontext bleibt wesentlich.', '102-patient study of multiple cavities; several causes overlap, so clinical context remains essential.', 'مطالعهٔ ۱۰۲ بیمار با کاویتی‌های متعدد؛ علل مختلف هم‌پوشانی دارند، بنابراین زمینهٔ بالینی ضروری است.'),
   }
   const sources = lesson.references.map(item => ({
     tag: pick(sourceTags[item.id], lang),
@@ -107,8 +146,8 @@ export default function PulmonaryCavitiesPage() {
         <p className={styles.scope}>{pick(L('Die Wanddicke hilft, ist aber kein alleiniger Grenzwert für die Ursache. Beschreibe die Morphologie und nutze die gesamte Verteilung sowie Vergleichsaufnahmen.', 'Wall thickness helps, but it is not a stand-alone threshold for cause. Describe the morphology and use the full distribution and prior imaging.', 'ضخامت دیواره کمک‌کننده است، اما آستانهٔ مستقلی برای تعیین علت نیست. مورفولوژی، توزیع کامل و تصاویر قبلی را در نظر بگیرید.'), lang)}</p>
       </div>
     </LessonSection>
-    {lesson.chapters.map(chapter => <LessonSection key={chapter.id} id={chapter.id} icon={chapter.icon} title={pick(chapter.title, lang)}><div className={styles.body}><p>{pick(chapter.lead, lang)}</p><FeatureTable rows={chapter.rows} lang={lang}/><p className={styles.scope}>{pick(chapter.note, lang)}</p><small>{pick(L('Thorax.pdf, PDF S. 25–26. Begriffe und diagnostische Einordnung ergänzt mit den verlinkten Quellen.', 'Thorax.pdf, PDF pp. 25–26. Terminology and diagnostic context supplemented by the linked sources.', 'Thorax.pdf، صفحات PDF ۲۵–۲۶. اصطلاحات و تفسیر تشخیصی با منابع پیوندشده تکمیل شده‌اند.'), lang)}</small></div></LessonSection>)}
-    <LessonSection id="check" icon="case" title={pick(lesson.check.title, lang)}><div className={styles.body}><Check lang={lang}/><p className={styles.scope}>{pick(L('Der CT-Ausschnitt aus dem PDF ist eingebettet und nur mit der sichtbaren ID (rID 16033) gekennzeichnet; externe Website und Mitwirkende wurden nicht unabhängig verifiziert. Die separaten Radiopaedia-Referenzen zu Abszess und TB sind Links, keine eingebetteten Fälle.', 'The PDF-supplied CT crop is embedded and labeled only with its visible ID (rID 16033); its external site/contributor attribution was not independently verified. The separate abscess and TB Radiopaedia references below are links, not embedded cases.', 'برش CT برگرفته از PDF در صفحه درج شده و فقط با شناسهٔ قابل‌مشاهدهٔ rID 16033 مشخص شده است؛ وب‌سایت و مشارکت‌کنندهٔ بیرونی مستقلاً تأیید نشده‌اند. پیوندهای جداگانهٔ Radiopaedia برای آبسه و سل، لینک هستند و تصویر کیس را جاسازی نمی‌کنند.'), lang)}</p><nav aria-label={pick(L('Verwandte Lektionen', 'Related lessons', 'درس‌های مرتبط'), lang)}><ul><li><Link href={route('/thorax/tuberkulose-muster')}>{pick(L('Tuberkulose-Muster', 'Tuberculosis patterns', 'الگوهای سل'), lang)}</Link></li><li><Link href={route('/thorax/pneumonie-muster')}>{pick(L('Pneumoniemuster', 'Pneumonia patterns', 'الگوهای پنومونی'), lang)}</Link></li><li><Link href={route('/thorax/hrct/dichteminderung')}>{pick(L('HRCT: Dichteminderung', 'HRCT: decreased attenuation', 'HRCT: کاهش دانسیته'), lang)}</Link></li></ul></nav></div></LessonSection>
+    {lesson.chapters.map(chapter => <LessonSection key={chapter.id} id={chapter.id} icon={chapter.icon} title={pick(chapter.title, lang)}><div className={styles.body}><p>{pick(chapter.lead, lang)}</p><FeatureTable rows={chapter.rows} lang={lang}/>{chapter.id === 'read-the-space' ? <TopographyDiagram lang={lang}/> : null}<p className={styles.scope}>{pick(chapter.note, lang)}</p><small>{pick(L('Thorax.pdf, PDF S. 25–26. Begriffe und diagnostische Einordnung ergänzt mit den verlinkten Quellen.', 'Thorax.pdf, PDF pp. 25–26. Terminology and diagnostic context supplemented by the linked sources.', 'Thorax.pdf، صفحات PDF ۲۵–۲۶. اصطلاحات و تفسیر تشخیصی با منابع پیوندشده تکمیل شده‌اند.'), lang)}</small></div></LessonSection>)}
+    <LessonSection id="check" icon="case" title={pick(lesson.check.title, lang)}><div className={styles.body}><Check lang={lang} item={lesson.check} name="thorax-cavities-check"/><Check lang={lang} item={lesson.locationCheck} name="thorax-cavities-location-check"/><p className={styles.scope}>{pick(L('Der CT-Ausschnitt aus dem PDF ist eingebettet und nur mit der sichtbaren ID (rID 16033) gekennzeichnet; externe Website und Mitwirkende wurden nicht unabhängig verifiziert. Die separaten Radiopaedia-Referenzen zu Abszess und TB sind Links, keine eingebetteten Fälle.', 'The PDF-supplied CT crop is embedded and labeled only with the visible ID (rID 16033); its external site/contributor attribution was not independently verified. The separate abscess and TB Radiopaedia references below are links, not embedded cases.', 'برش CT برگرفته از PDF در صفحه درج شده و فقط با شناسهٔ قابل‌مشاهدهٔ rID 16033 مشخص شده است؛ وب‌سایت و مشارکت‌کنندهٔ بیرونی مستقلاً تأیید نشده‌اند. پیوندهای جداگانهٔ Radiopaedia برای آبسه و سل، لینک هستند و تصویر کیس را جاسازی نمی‌کنند.'), lang)}</p><nav aria-label={pick(L('Verwandte Lektionen', 'Related lessons', 'درس‌های مرتبط'), lang)}><ul><li><Link href={route('/thorax/tuberkulose-muster')}>{pick(L('Tuberkulose-Muster', 'Tuberculosis patterns', 'الگوهای سل'), lang)}</Link></li><li><Link href={route('/thorax/pneumonie-muster')}>{pick(L('Pneumoniemuster', 'Pneumonia patterns', 'الگوهای پنومونی'), lang)}</Link></li><li><Link href={route('/thorax/hrct/dichteminderung')}>{pick(L('HRCT: Dichteminderung', 'HRCT: decreased attenuation', 'HRCT: کاهش دانسیته'), lang)}</Link></li></ul></nav></div></LessonSection>
     <LessonSection id="take-home" icon="summary" title={label('takeHome')}><ol className={styles.rules}>{lesson.takeHome.map((rule, i) => <li key={i}>{pick(rule, lang)}</li>)}</ol></LessonSection>
   </StandardLessonShell>
 }

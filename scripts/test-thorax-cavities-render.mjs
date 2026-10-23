@@ -38,25 +38,31 @@ for (const lang of ['de', 'en', 'fa']) {
   assert.ok(html.includes(`lang="${lang}"`) && html.includes(`dir="${lang === 'fa' ? 'rtl' : 'ltr'}"`), `${lang}: language/direction`)
   assert.ok(html.includes(esc(data.title[lang])), `${lang}: title`)
   assert.ok(html.includes(`src="${data.heroImage}"`) && html.includes(esc(data.alt[lang])), `${lang}: educational SVG and accessible disclosure`)
+  assert.ok(html.includes(`topography-title-${lang}`) && html.includes(esc(lang === 'de' ? 'Schematische Orientierung · keine diagnostische CT' : lang === 'en' ? 'Schematic orientation · not diagnostic CT' : 'نمای شماتیک · CT تشخیصی نیست')), `${lang}: localized, non-diagnostic topography schematic`)
+  const diagramDescription = lang === 'de' ? 'Schematische Lungenansichten' : lang === 'en' ? 'Schematic lung views' : 'نمای شماتیک ریه'
+  assert.ok(html.includes(esc(diagramDescription)) && !/basal|قاعده‌ای/.test(html), `${lang}: schematic avoids unsupported basal distribution`)
   assert.ok(html.includes(`src="${data.caseImage}"`) && html.includes(esc(data.caseImageAlt[lang])) && html.includes(esc(data.caseImageCaption[lang])), `${lang}: source CT, alt and case attribution`)
   for (const chapter of data.chapters) {
     assert.ok(html.includes(`id="${chapter.id}"`) && html.includes(esc(chapter.title[lang])), `${lang}: chapter ${chapter.id}`)
     assert.ok(html.includes(esc(chapter.lead[lang])) && html.includes(esc(chapter.note[lang])), `${lang}: chapter prose and note`)
     for (const row of chapter.rows) for (const cell of row) assert.ok(html.includes(esc(cell[lang])), `${lang}: table cell`)
   }
+  for (const expectedLabel of [lang === 'de' ? 'Oberlappen' : lang === 'en' ? 'Upper lobe' : 'لوب فوقانی', lang === 'de' ? 'Periphere Noduli' : lang === 'en' ? 'Peripheral nodules' : 'ندول‌های محیطی', lang === 'de' ? 'Multiple kavitäre Noduli' : lang === 'en' ? 'Multiple cavitary nodules' : 'ندول‌های کاویتاری متعدد']) assert.ok(data.chapters.flatMap(chapter => chapter.rows).some(([label]) => label[lang] === expectedLabel), `${lang}: concise PDF p.25 topography row ${expectedLabel}`)
   const carcinoma = data.chapters.flatMap(chapter => chapter.rows).find(([label]) => label[lang] === (lang === 'de' ? 'Kavitierendes Karzinom' : lang === 'en' ? 'Cavitating carcinoma' : 'کارسینوم کاویتاری'))
   assert.ok(carcinoma, `${lang}: cavitating carcinoma comparison row`)
   const eccentricCue = lang === 'de' ? 'exzentrisch' : lang === 'en' ? 'eccentric' : 'خارج‌مرکزی'
   assert.ok(carcinoma[1][lang].includes(eccentricCue), `${lang}: PDF p.26 eccentric cavity cue`)
   assert.ok(!/häufigstes|most frequent|شایع‌ترین/i.test(carcinoma[1][lang]), `${lang}: defer PDF prevalence claim`)
-  assert.ok(html.includes('id="check"') && html.includes(esc(data.check.prompt[lang])), `${lang}: self-check`)
+  assert.ok(html.includes('id="check"') && html.includes(esc(data.check.prompt[lang])) && html.includes(esc(data.locationCheck.prompt[lang])), `${lang}: aspergilloma and topography self-checks`)
   for (const source of data.references) assert.ok(html.includes(esc(source.label[lang])), `${lang}: source ${source.id}`)
+  for (const id of ['septic-embolism-cohort', 'gpa-cavitary-cohort', 'klebs-necrosis-study', 'cavitary-infarct-review', 'multiple-cavities-cohort']) assert.ok(html.includes(esc(data.references.find(source => source.id === id).label[lang])), `${lang}: verified location-differential source ${id}`)
   assert.ok(html.includes('rID 97293') && html.includes('rID 30280'), `${lang}: attributed Radiopaedia cases`)
   assert.ok(data.check.correct[lang] && data.check.retry[lang], `${lang}: localized feedback`)
 }
 assert.ok(!data.references.some(item => item.id.includes('case') && item.embeddedImage), 'case image is not claimed as embedded')
 assert.match(data.notice.fa, /به‌تنهایی علت یا فعال‌بودن بیماری را ثابت نمی‌کند/)
 assert.equal(data.check.answerIndex, 0)
+assert.equal(data.locationCheck.answerIndex, 0)
 assert.match(fs.readFileSync('app/thorax/kavitaeten/page.js', 'utf8'), /setAnswer\(null\)/, 'wrong answer can be retried')
 assert.match(fs.readFileSync('docs/lesson-quality/thorax-cavities-pdf-review.md', 'utf8'), /Thorax\.pdf p\. 25/)
 const provenance = JSON.parse(fs.readFileSync('public/educational/thorax-cavities.provenance.json', 'utf8'))
