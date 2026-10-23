@@ -17,7 +17,7 @@ Learners should be able to describe focal renal parenchymal hypoenhancement, map
 |---|---|---:|---|---|
 | Acute pyelonephritis as bacterial inflammation of renal parenchyma and pelvis, usually ascending | Abdomen.pdf, physical p.53 / printed p.52 | Essential context | Section 1 | Included in DE/EN/FA; no additional pathogen claim. |
 | PDF lists suspected urinary drainage obstruction, diabetes or immunosuppression as contexts for complication assessment | Abdomen.pdf, physical p.53 / printed p.52 | Essential context | Section 3 | Explicitly attributed to the PDF; does not imply each factor alone mandates CT. Current EAU imaging guidance added separately. |
-| Portal-venous CT: parenchymal enlargement and patchy/wedge-shaped hypoattenuating areas | Abdomen.pdf, physical p.53 / printed p.52 | Essential | Section 1 | Text and source example included. Morphology is described as compatible, not diagnostic. The PDF does not state rID, contributor or case metadata. |
+| Portal-venous CT: parenchymal enlargement and patchy/wedge-shaped hypoattenuating areas | Abdomen.pdf, physical p.53 / printed p.52 | Essential | Section 1 | PDF phase wording is explicitly source-only; the image itself has no separate phase label. Morphology is described as compatible, not diagnostic. The PDF does not state rID, contributor or case metadata. |
 | Renal/perirenal abscess | Abdomen.pdf, physical p.53 / printed p.52 | Essential complication | Section 3 | Kept as a possible collection; no invented case image or sensitivity claim. |
 | Emphysematous pyelonephritis: gas-forming infection; enlarged/destroyed renal parenchyma, gas bubbles/linear gas, gas-fluid levels, focal necrosis and possible abscess | Abdomen.pdf, physical p.53 / printed p.52 | Essential | Section 2–3 | Added concise localized list of small/linear gas, gas-fluid levels, focal necrosis and possible abscess; no organism or severity grading inferred. |
 | Gas may extend beyond parenchyma into perinephric space; retroperitoneal gas indicates Gerota fascia breach | Abdomen.pdf, physical p.54 / printed p.53 | Essential | Section 2, figure caption, self-check | “Indicates” retained as source wording; lesson teaches description of involved compartments, not a treatment decision. |
@@ -28,9 +28,9 @@ Learners should be able to describe focal renal parenchymal hypoenhancement, map
 ## Visual plan and provenance
 
 - Lesson hero: route-local, non-diagnostic vector schematic showing a focal renal zone and outward compartments; no labels embedded in SVG, with localized alt text.
-- Parenchymal example: `public/niere/pyelonephritis-ct-pdf-p53.png`, cropped from the axial CT figure on physical p.53 (printed p.52). No case or sequence metadata inferred.
+- Parenchymal example: `public/niere/pyelonephritis-ct-pdf-p53.png`, cropped from the axial CT figure on physical p.53 (printed p.52). The adjacent PDF text names a portal-venous phase, but the image itself has no separate phase label. No case or sequence metadata inferred. Provenance: `public/niere/pyelonephritis-ct-pdf-p53.provenance.json`.
 - Separate pattern diagram: explicitly non-diagnostic kidney schematic marks an abstract wedge-shaped reduced-enhancement region; it guides interpretation without claiming that the small source crop itself clearly demonstrates that exact focus.
-- Emphysematous example: `public/niere/pyelonephritis-emphysematous-ct-pdf-p54.png`, cropped from physical p.54 (printed p.53). The figure is used to discuss gas outside the renal parenchyma; caption notes the source's perinephric and Gerota description.
+- Emphysematous example: `public/niere/pyelonephritis-emphysematous-ct-pdf-p54.png`, cropped from physical p.54 (printed p.53). The figure is used to discuss gas outside the renal parenchyma; caption notes the source's perinephric and Gerota description. Provenance: `public/niere/pyelonephritis-emphysematous-ct-pdf-p54.provenance.json`.
 
 ## Unresolved / verification limits
 

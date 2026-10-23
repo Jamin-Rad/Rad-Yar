@@ -68,6 +68,11 @@ for (const lang of ['de', 'en', 'fa']) {
     lang === 'de' ? 'fokale nekrotische' : lang === 'en' ? 'focal necrotic' : 'نکروز کانونی',
   ]) assert.ok(lesson.sections.some(section => section.body[lang].includes(phrase)), `${lang}: source-specific imaging/clinical context ${phrase}`)
   for (const phrase of [
+    lang === 'de' ? 'portalvenöse Phase' : lang === 'en' ? 'portal-venous phase' : 'فاز پورتوونوس',
+    lang === 'de' ? 'keine allgemeine Protokollvorgabe' : lang === 'en' ? 'not a general protocol recommendation' : 'توصیهٔ عمومی پروتکل نیست',
+    lang === 'de' ? 'keine separate Phasenangabe' : lang === 'en' ? 'no separate phase label' : 'برچسب جداگانه‌ای برای فاز ندارد',
+  ]) assert.ok(lesson.sections[0].body[lang].includes(phrase), `${lang}: source-only CT phase caveat ${phrase}`)
+  for (const phrase of [
     lang === 'de' ? 'gasbildende Infektion' : lang === 'en' ? 'gas-forming infection' : 'عفونت گازساز',
     lang === 'de' ? 'vergrößert und zerstört' : lang === 'en' ? 'enlarged and destroyed' : 'بزرگ و تخریب‌شده',
   ]) assert.ok(lesson.sections[1].body[lang].includes(phrase), `${lang}: emphysematous morphology ${phrase}`)
@@ -92,4 +97,15 @@ for (const mapping of ['physical p.53 / printed p.52', 'physical p.54 / printed 
 assert.match(ledger, /Renal\/perirenal abscess[^\n]*Abdomen\.pdf, physical p\.53 \/ printed p\.52[^\n]*Section 3/, 'renal abscess is bounded to the source-supported complication coverage on p.53')
 assert.match(lesson.sections[2].implication.en, /48–72 hours/)
 for (const asset of ['public/niere/pyelonephritis-ct-pdf-p53.png', 'public/niere/pyelonephritis-emphysematous-ct-pdf-p54.png', 'public/educational/pyelonephritis/hero.svg']) assert.ok(fs.existsSync(path.join(root, asset)), `asset exists: ${asset}`)
+for (const [file, sourcePage, printedPage] of [
+  ['public/niere/pyelonephritis-ct-pdf-p53.provenance.json', 53, 52],
+  ['public/niere/pyelonephritis-emphysematous-ct-pdf-p54.provenance.json', 54, 53],
+]) {
+  const provenance = JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'))
+  assert.equal(provenance.source, 'Abdomen.pdf')
+  assert.equal(provenance.physicalPage, sourcePage)
+  assert.equal(provenance.printedPage, printedPage)
+  assert.equal(provenance.radiopaediaId, null)
+  assert.equal(provenance.contributor, null)
+}
 console.log('Pyelonephritis p53–54 SSR/source/localization checks PASS for DE/EN/FA and RTL. Browser and clinical approval remain pending.')

@@ -1,0 +1,13 @@
+{
+  "asset": "/niere/pyelonephritis-emphysematous-ct-pdf-p54.png",
+  "source": "Abdomen.pdf",
+  "physicalPage": 54,
+  "printedPage": 53,
+  "sourceRegion": "Cropped axial CT figure from the user-supplied PDF page.",
+  "reuseAuthorization": "The user explicitly authorized reuse of images in the supplied PDFs for RadYar on 2026-10-19.",
+  "radiopaediaId": null,
+  "contributor": null,
+  "caseMetadata": null,
+  "sequence": null,
+  "phaseNote": null
+}
