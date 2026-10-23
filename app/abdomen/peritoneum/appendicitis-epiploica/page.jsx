@@ -35,6 +35,7 @@ export default function EpiploicaPage() {
   const labels = Object.fromEntries(Object.entries(LABELS).map(([key, value]) => [key, pick(value, lang)]))
   const sections = [...lesson.chapters.map(chapter => ({ id: chapter.id, label: pick(chapter.title, lang), icon: chapter.icon })), { id: 'take-home', label: labels.takeHome, icon: 'summary', emphasis: true }]
   const langHref = path => lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
+  const lessonReturn = `/abdomen/peritoneum/appendicitis-epiploica${lang === 'de' ? '' : `?lang=${lang}`}`
   const sources = [
     { tag: 'CT', title: 'Singh et al. 2004 · CT appearance of acute appendagitis', href: 'https://pubmed.ncbi.nlm.nih.gov/15505294/', citation: 'AJR. 2004;183:1303–1307. DOI 10.2214/ajr.183.5.1831303.' },
     { tag: 'CT', title: 'Jalaguier et al. 2010 · Primary epiploic appendagitis versus diverticulitis-associated secondary appendagitis', href: 'https://pubmed.ncbi.nlm.nih.gov/19517148/', citation: 'Emerg Radiol. 2010;17:51–56. DOI 10.1007/s10140-009-0822-x.' },
@@ -46,8 +47,8 @@ export default function EpiploicaPage() {
     breadcrumbs={[{ label: 'RadYar', href: langHref('/') }, { label: pick(L('Abdomen', 'Abdomen', 'شکم'), lang), href: langHref('/lernen/abdomen') }, { label: pick(L('Peritoneum & Mesenterium', 'Peritoneum & mesentery', 'پریتوئن و مزانتر'), lang) }]}
     sections={sections} labels={labels} renderIcon={id => <Icon id={id}/>}
     actions={{
-      mcq: { label: pick(L('Prüfungsfrage', 'Practice question', 'سؤال تمرینی'), lang), href: langHref('/ueben/quiz?fach=abdomen&n=1&themen=appendicitis-epiploica') },
-      flashcards: { label: pick(L('Lernkarten', 'Flashcards', 'فلش‌کارت‌ها'), lang), href: langHref('/flashcards/appendicitis-epiploica') },
+      mcq: { label: pick(L('Prüfungsfrage', 'Practice question', 'سؤال تمرینی'), lang), href: langHref(`/ueben/quiz?fach=abdomen&n=1&themen=appendicitis-epiploica&from=${encodeURIComponent(lessonReturn)}`) },
+      flashcards: { label: pick(L('Lernkarten', 'Flashcards', 'فلش‌کارت‌ها'), lang), href: langHref(`/flashcards/appendicitis-epiploica?from=${encodeURIComponent(lessonReturn)}`) },
     }}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/abdomen/epiploica/hero.svg', heroImageOpacity: .9, accent: '#d7aa62', accentStrong: '#795321', accentSoft: '#f7eddb', secondary: '#69aeb1', secondaryStrong: '#286c70', heroBase: '#152c35' }}
     className={styles.page}
