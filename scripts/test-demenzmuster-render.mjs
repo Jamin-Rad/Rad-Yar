@@ -52,6 +52,11 @@ for (const lang of ['de', 'en', 'fa']) {
       assert.ok(html.includes(escaped(chapter.figure.caption[lang])), `${lang}: caption ${chapter.id}`)
     }
   })
+  const lewyText = data.GEHIRN_DEMENZMUSTER_LESSON.chapters.find(chapter => chapter.id === 'lewy').text[lang]
+  assert.match(lewyText, /insula|insula|اینسولا/i, `${lang}: source-described insular emphasis is retained`)
+  const ftd = data.GEHIRN_DEMENZMUSTER_LESSON.chapters.find(chapter => chapter.id === 'ftd')
+  assert.match(ftd.text[lang], /sequence|sequenz|توالی/i, `${lang}: unspecified source-image sequence is disclosed`)
+  assert.doesNotMatch(ftd.figure.caption[lang], /\bT1\b/i, `${lang}: caption does not infer an unlabelled sequence`)
   assert.ok(html.includes(escaped(data.GEHIRN_DEMENZMUSTER_LESSON.assessment.question[lang])))
   data.GEHIRN_DEMENZMUSTER_LESSON.assessment.options.forEach(option => assert.ok(html.includes(escaped(option[lang]))))
   data.GEHIRN_DEMENZMUSTER_LESSON.takeaways.forEach(item => assert.ok(html.includes(escaped(item.detail[lang]))))

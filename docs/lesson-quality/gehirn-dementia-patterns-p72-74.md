@@ -48,6 +48,7 @@ The user authorized images from all six supplied PDFs on 2026-10-19, and the pro
 - Route uses the maintained `StandardLessonShell`, `LessonHero`, `LessonSection`, `LessonSources`, and `TakeHomeList`; progress is explicit and one chapter is active at a time.
 - Route semantic SSR: PASS in `scripts/test-demenzmuster-render.mjs` for DE/EN/FA, including responsive figure class, localized age-75 caveat, sources, assessment and takeaways.
 - Independent content/source/language review: PASS for the bounded p.72–74 comparison after fixes; MTA numeric cut-offs remain omitted, and the DLB diagnostic-image gap is explicitly recorded.
+- A subsequent independent review identified an omitted PDF p.73 insular emphasis and unsupported T1 labeling for the FTD image pair. Both were corrected in DE/EN/FA: the source-described insular emphasis is now explicitly non-specific, and the FTD images are called MRI examples with sequence unspecified. The focused route test now asserts these boundaries.
 - Browser matrix and interactive UX: not yet run; keep UX blocked pending actual browser evidence.
 - Scientific approval by Dr. Zia: pending. The PDF MTA age cut-offs are omitted from learner copy; the source’s “pathognomonic” wording is not presented as a definitive standalone criterion.
 - Production/release approval: not inferred from this draft or its checks.
