@@ -14,30 +14,35 @@ import {
 const locales = ['de', 'en', 'fa']
 assert.equal(path, '/gehirn/tumoren/hirnmetastasen')
 assert.equal(id, 'metastasen-meningeosis')
-assert.deepEqual(sections.map(({ id }) => id), ['pattern', 'review', 'self-check', 'take-home'])
+assert.deepEqual(sections.map(({ id }) => id), ['pattern', 'review', 'leptomeningeal', 'self-check', 'take-home'])
 assert.equal(sections.filter(section => section.emphasis).length, 1)
 
-for (const key of ['title', 'heroAlt', 'objective', 'intro', 'pattern', 'workflow', 'visualTitle', 'visualCaption', 'warning', 'question', 'scopeNote']) {
+for (const key of ['title', 'heroAlt', 'objective', 'intro', 'pattern', 'workflow', 'visualTitle', 'visualCaption', 'warning', 'question', 'scopeNote', 'leptomeningealTitle', 'leptomeningeal', 'leptomeningealWorkflow', 'leptomeningealWarning', 'leptomeningealVisualTitle', 'leptomeningealVisualCaption', 'leptomeningealQuestion']) {
   assert.deepEqual(Object.keys(copy[key]).sort(), locales.slice().sort(), `${key}: locale keys`)
   for (const lang of locales) assert.ok(copy[key][lang].trim().length > 20, `${key}/${lang}: non-empty localized text`)
 }
 assert.equal(copy.options.length, 4)
 assert.equal(copy.feedback.length, 4)
-assert.equal(copy.takeaway.length, 3)
+assert.equal(copy.leptomeningealOptions.length, 4)
+assert.equal(copy.leptomeningealFeedback.length, 4)
+assert.equal(copy.takeaway.length, 5)
 for (const [index, item] of copy.takeaway.entries()) for (const field of ['title', 'detail']) {
   assert.deepEqual(Object.keys(item[field]).sort(), locales.slice().sort(), `takeaway ${index}/${field}: locale keys`)
   for (const lang of locales) assert.ok(item[field][lang].trim().length > 4, `takeaway ${index}/${field}/${lang}: non-empty`)
 }
-for (const [index, localized] of [...copy.options, ...copy.feedback].entries()) for (const lang of locales) {
+for (const [index, localized] of [...copy.options, ...copy.feedback, ...copy.leptomeningealOptions, ...copy.leptomeningealFeedback].entries()) for (const lang of locales) {
   assert.ok(localized[lang].trim().length > 15, `assessment ${index}/${lang}: non-empty localized text`)
 }
 for (const lang of locales) {
-  assert.equal(registeredQuestions[lang].length, 1)
-  assert.equal(registeredQuestions[lang][0].correct, 'A')
-  assert.deepEqual(registeredQuestions[lang][0].options.map(option => option.id), ['A', 'B', 'C', 'D'])
-  assert.equal(registeredQuestions[lang][0].tags[0], id)
+  assert.equal(registeredQuestions[lang].length, 2)
+  for (const question of registeredQuestions[lang]) {
+    assert.equal(question.correct, 'A')
+    assert.deepEqual(question.options.map(option => option.id), ['A', 'B', 'C', 'D'])
+    assert.equal(question.tags[0], id)
+    assert.equal(Object.keys(question.wrongExplanations).length, 3)
+  }
 }
-assert.equal(cards.length, 3)
+assert.equal(cards.length, 5)
 assert.equal(cardTopic.id, id)
 assert.equal(cardTopic.href, `/flashcards/${id}`)
 
@@ -47,7 +52,7 @@ const terms = {
   fa: ['توصیف‌های مکتوب', 'پارانشیمی', 'لپتومننژیال', 'تومور اولیه'],
 }
 for (const lang of locales) for (const term of terms[lang]) {
-  const allLessonText = [copy.objective, copy.intro, copy.pattern, copy.workflow, copy.warning, copy.question, ...copy.options, ...copy.feedback,
+  const allLessonText = [copy.objective, copy.intro, copy.pattern, copy.workflow, copy.warning, copy.leptomeningeal, copy.leptomeningealWorkflow, copy.leptomeningealWarning, copy.question, copy.leptomeningealQuestion, ...copy.options, ...copy.feedback, ...copy.leptomeningealOptions, ...copy.leptomeningealFeedback,
     ...copy.takeaway.flatMap(item => [item.title, item.detail])].map(value => value[lang]).join('\n')
   assert.ok(allLessonText.includes(term), `semantic coverage missing ${lang}: ${term}`)
 }
@@ -66,6 +71,7 @@ for (const lang of locales) {
   assert.match(copy.scopeNote[lang], /parenchymal|parenchymale|پارانشیمی/i)
 }
 assert.ok(sources.some(source => source.href.includes('eano.eu')))
+assert.ok(sources.some(source => source.href.includes('PMC10619142')))
 assert.ok(sources.some(source => source.href.includes('PMC9527527')))
 for (const source of sources) for (const lang of locales) assert.ok(source.citation[lang].trim(), `source translation ${lang}`)
 const hero = await readFile(new URL('../public/educational/hirnmetastasen/hero.svg', import.meta.url), 'utf8')
@@ -81,4 +87,4 @@ assert.match(questionRegistry, /BRAIN_METASTASES_QUESTIONS/)
 assert.match(flashcardRegistry, /BRAIN_METASTASES_FLASHCARD_TOPIC/)
 assert.match(flashcardRegistry, /\.\.\.BRAIN_METASTASES_FLASHCARDS/)
 
-console.log('Brain metastases checker passed: source scope, sections, question/feedback and DE/EN/FA semantic anchors.')
+console.log('Brain metastases checker passed: source scope, sections, two question/feedback sets and DE/EN/FA semantic anchors.')

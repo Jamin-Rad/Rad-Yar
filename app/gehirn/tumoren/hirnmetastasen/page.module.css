@@ -3,7 +3,7 @@
 .page p { line-height: 1.85; }
 .lead { font-size: 1.1rem; font-weight: 600; }
 .diagram { margin: 26px 0; padding: clamp(14px, 3vw, 26px); border: 1px solid var(--line, #d9e3e7); border-radius: 16px; background: var(--paper, #fff); }
-.diagram > figcaption:first-child { margin-bottom: 14px; font-size: 1.02rem; font-weight: 700; }
+.diagramTitle { margin: 0 0 14px; font-size: 1.02rem; font-weight: 700; }
 .diagram svg { display: block; width: 100%; height: auto; max-height: 340px; }
 .svgLabel { fill: var(--ink, #193842); font-size: 15px; font-family: inherit; }
 .svgSub { fill: #526b73; font-size: 13px; font-family: inherit; }
