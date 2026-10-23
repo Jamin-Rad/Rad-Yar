@@ -7,7 +7,7 @@ context. It is not an individual management pathway or clinical sign-off.
 
 | Physical PDF page (printed) | Source teaching point | Lesson disposition |
 | --- | --- | --- |
-| 16 (15) | Definition; epidemiology; hormonal and metabolic risk factors; haemorrhage and malignant-transformation relevance; variable ultrasound and CT patterns. | Definition and risk context included concisely. Ultrasound is left out of the focused module because the source calls it nonspecific. CT table teaches unenhanced, arterial and later-phase pattern with nonspecificity caveats. Fixed risk percentages and the source's 90% female estimate are omitted. |
+| 16 (15) | Definition; epidemiology; hormonal and metabolic risk factors, including the source's duration/dose association; haemorrhage and malignant-transformation relevance; variable ultrasound and CT patterns. | Definition and risk context included concisely, including the duration/dose association without inventing a quantitative estimate. Ultrasound is left out of the focused module because the source calls it nonspecific. CT table teaches unenhanced, arterial and later-phase pattern with nonspecificity caveats. Fixed risk percentages and the source's 90% female estimate are omitted. |
 | 17 (16) | Native T1 may be high with fat/glycogen; opposed-phase signal drop; mildly high T2; arterial hyperenhancement, later persistent enhancement/no classic HCC wash-out; usually low hepatobiliary-phase signal; older management diagram. Six-panel MRI plate. | All imaging points are summarized in a sequence/phase table. The six-panel source figure is cropped with its labels and reading order retained; the caption explicitly states that HBP is not shown. The old management graphic is not reproduced. |
 | 18 (17) | HBP and opposed-phase comparison with FNH; typical haemangioma and HCC contrast cues. | HCA/FNH HBP comparison is included, with exceptions and subtype overlap. Haemangioma/HCC reminders are not repeated because their dedicated lessons and the focal-lesion comparison cover them. |
 
@@ -15,7 +15,7 @@ Clinical context was updated against the [ACG Clinical Guideline: Focal Liver
 Lesions (2024)](https://doi.org/10.14309/ajg.0000000000002857), rather than copying
 the PDF's older size-based flowchart. The overview states the guideline's broad
 sex/size distinction, surveillance intervals for women with lesions under 5 cm,
-the observation approach for lesions at least 5 cm, treatment recommendation
+the observation approach for women with lesions at least 5 cm, treatment recommendation
 for men regardless of size, and pregnancy monitoring interval. It is labelled
 educational, not individualized treatment advice. It does not teach biopsy,
 procedure selection, pregnancy intervention thresholds, or transplant criteria.

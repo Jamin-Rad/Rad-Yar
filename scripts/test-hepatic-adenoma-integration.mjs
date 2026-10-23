@@ -64,5 +64,15 @@ for (const phrase of [
   'درمان قطعی باید انجام شود',
   'https://doi.org/10.14309/ajg.0000000000002857',
 ]) assert.ok(routeSource.includes(phrase), `HCA source, scope and localized route content include: ${phrase}`)
+for (const phrase of [
+  'Bei Frauen mit Läsionen ≥5 cm zunächst Risikofaktoren anpassen',
+  'For women with lesions ≥5 cm, risk-factor modification',
+  'برای زنان با ضایعات ۵ سانتی‌متر یا بزرگ‌تر',
+]) assert.ok(routeSource.includes(phrase), `ACG 2024 ≥5 cm observation branch is limited to women: ${phrase}`)
+for (const phrase of [
+  'Zusammenhang von Dauer und Dosis der Hormonexposition',
+  'correlating with hormone-exposure duration and dose',
+  'ارتباط مدت و دوز مواجههٔ هورمونی',
+]) assert.ok(routeSource.includes(phrase), `PDF risk association is preserved without quantitative overstatement: ${phrase}`)
 
 console.log('Hepatic adenoma integration PASS: exact curriculum route, four localized MCQs, five localized flashcards, source figure/provenance and language coverage.')
