@@ -2,265 +2,100 @@
 
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-import { STORAGE_KEY, assessmentQuestions, writingPrompts, speakingPrompts, emptyProgress, readProgress, getResults, createReport } from './learning'
-import CourseApp from './CourseApp'
-import { COURSE_STORAGE_KEY, readCourseState, courseReport } from './courseEngine'
+import { lesson, categories, questionMap } from './courseContent'
+import { STORAGE_KEY, emptyState, readState, startSession, currentQuestion, optionOrder, answer, advance, result } from './courseEngine'
 import styles from './page.module.css'
 
-const sections = [['course', 'مسیر درس‌ها'], ['review', 'مرور هدفمند'], ['assessment', 'تعیین سطح'], ['speaking', 'مکالمه']]
-const fa = value => new Intl.NumberFormat('fa-IR').format(value)
-const wordCount = value => value.trim() ? value.trim().split(/\s+/u).length : 0
-
-function Icon({ name = 'arrow' }) {
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    {name === 'arrow' ? <path d="M19 12H5m6-6-6 6 6 6" /> : null}
-    {name === 'book' ? <><path d="M12 5C8 3 5 3 2 4v15c4-1 7-1 10 1 3-2 6-2 10-1V4c-3-1-6-1-10 1Z" /><path d="M12 5v15" /></> : null}
-    {name === 'page' ? <><path d="M5 2h9l5 5v15H5Z M14 2v6h5M9 12h6M9 16h6" /></> : null}
-    {name === 'mic' ? <><rect x="9" y="2" width="6" height="13" rx="3" /><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8" /></> : null}
-    {name === 'chat' ? <><path d="M14 14a7 7 0 1 0-9 0l-2 5 6-3a7 7 0 0 0 5-2Z" /><path d="M17 7a7 7 0 0 1 4 11l1 4-5-2a7 7 0 0 1-5-2" /></> : null}
-    {name === 'sound' ? <><path d="m11 4-6 5H2v6h3l6 5ZM15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14" /></> : null}
-  </svg>
+const fa = n => new Intl.NumberFormat('fa-IR').format(n)
+const date = n => new Intl.DateTimeFormat('fa-IR', { timeZone: 'Europe/Berlin', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(n)
+function Text({ plain = false }) {
+  return <div className={styles.reading} lang="en" dir="ltr">{lesson.paragraphs.map((p, i) => <p key={i}>{plain ? p.replaceAll('**', '') : p.split(/(\*\*.*?\*\*)/g).map((part, j) => part.startsWith('**') ? <strong key={j}>{part.slice(2, -2)}</strong> : part)}</p>)}</div>
 }
-
-function Choices({ question, value, onChange, revealed = false, name }) {
-  return <fieldset className={styles.choices}>
-    <legend className={styles.srOnly}>انتخاب پاسخ</legend>
-    {[...question.options, ...(!revealed || value === -1 ? ['نمی‌دانم'] : [])].map((option, i) => {
-      const index = i === question.options.length ? -1 : i
-      return <label key={index} className={`${styles.choice} ${value === index ? styles.selected : ''} ${revealed && index === question.answer ? styles.correct : ''} ${revealed && value === index && index !== question.answer ? styles.incorrect : ''}`}>
-        <input type="radio" name={name} value={index} checked={value === index} disabled={revealed} onChange={() => onChange(index)} />
-        <span lang={index === -1 ? 'fa' : 'en'} dir={index === -1 ? 'rtl' : 'ltr'}>{option}</span>
-        {revealed && index === question.answer ? <small>پاسخ درست</small> : null}
-      </label>
-    })}
-  </fieldset>
+function Icon() {
+  return <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M24 10C17 6 10 6 5 8v30c6-2 13-2 19 2 6-4 13-4 19-2V8c-5-2-12-2-19 2Zm0 0v30M11 15c3-1 5 0 8 1m-8 7c3-1 5 0 8 1m10-8c3-1 5-2 8-1m-8 9c3-1 5-2 8-1" /></svg>
 }
-
-function Speaking({ progress, update, speak, notify }) {
-  const [promptIndex, setPromptIndex] = useState(0)
-  const [status, setStatus] = useState('idle')
-  const [seconds, setSeconds] = useState(0)
-  const [audioUrl, setAudioUrl] = useState('')
-  const [audioType, setAudioType] = useState('audio/webm')
-  const [error, setError] = useState('')
-  const recorder = useRef(null)
-  const stream = useRef(null)
-  const audioUrlRef = useRef('')
-  const active = useRef(true)
-  const prompt = speakingPrompts[promptIndex]
-
-  useEffect(() => {
-    active.current = true
-    return () => {
-      active.current = false
-      if (recorder.current?.state === 'recording') recorder.current.stop()
-      stream.current?.getTracks().forEach(track => track.stop())
-      if (audioUrlRef.current) URL.revokeObjectURL(audioUrlRef.current)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (status !== 'recording') return
-    const start = Date.now()
-    const timer = setInterval(() => {
-      const elapsed = Math.floor((Date.now() - start) / 1000)
-      setSeconds(elapsed)
-      if (elapsed >= 120 && recorder.current?.state === 'recording') recorder.current.stop()
-    }, 250)
-    return () => clearInterval(timer)
-  }, [status])
-
-  async function startRecording() {
-    setError('')
-    if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === 'undefined') {
-      setError('ضبط صدا در این مرورگر در دسترس نیست. با صدای بلند تمرین کن و نکته‌هایت را پایین بنویس.')
-      return
-    }
-    window.speechSynthesis?.cancel()
-    setStatus('requesting')
-    try {
-      const media = await navigator.mediaDevices.getUserMedia({ audio: true })
-      if (!active.current) { media.getTracks().forEach(track => track.stop()); return }
-      stream.current = media
-      const recording = new MediaRecorder(media)
-      recorder.current = recording
-      const chunks = []
-      recording.ondataavailable = event => { if (event.data.size) chunks.push(event.data) }
-      recording.onstop = () => {
-        media.getTracks().forEach(track => track.stop())
-        if (!active.current) return
-        const type = recording.mimeType || 'audio/webm'
-        const blob = new Blob(chunks, { type })
-        if (audioUrlRef.current) URL.revokeObjectURL(audioUrlRef.current)
-        audioUrlRef.current = URL.createObjectURL(blob)
-        setAudioUrl(audioUrlRef.current)
-        setAudioType(type)
-        setStatus('idle')
-      }
-      recording.onerror = () => {
-        media.getTracks().forEach(track => track.stop())
-        if (active.current) { setStatus('idle'); setError('ضبط متوقف شد. دوباره امتحان کن یا یادداشت بنویس.') }
-      }
-      recording.start()
-      setSeconds(0)
-      setStatus('recording')
-    } catch {
-      stream.current?.getTracks().forEach(track => track.stop())
-      if (active.current) { setStatus('idle'); setError('دسترسی به میکروفن برقرار نشد. اجازهٔ میکروفن را در مرورگر بررسی کن؛ تمرین بدون ضبط هم ممکن است.') }
-    }
-  }
-
-  function changePrompt() {
-    setPromptIndex(i => (i + 1) % speakingPrompts.length)
-    if (audioUrlRef.current) URL.revokeObjectURL(audioUrlRef.current)
-    audioUrlRef.current = ''
-    setAudioUrl('')
-    setError('')
-    setSeconds(0)
-  }
-
-  return <>
-    <div className={styles.sectionTitle}><h1>یک دقیقه، با صدای خودت.</h1><p>۳۰ ثانیه فکر کن، حدود یک دقیقه صحبت کن، بعد به صدای خودت گوش بده.</p></div>
-    <div className={styles.practiceGrid}>
-      <section className={styles.paper} aria-labelledby="speaking-title">
-        <div className={styles.between}><span className={styles.muted}>موضوع {fa(promptIndex + 1)} از {fa(speakingPrompts.length)}</span><button className={styles.textButton} disabled={status !== 'idle'} onClick={changePrompt}>موضوع بعدی <Icon /></button></div>
-        <h2 id="speaking-title">{prompt.title}</h2>
-        <p className={styles.englishPrompt} lang="en" dir="ltr">{prompt.prompt}</p>
-        <button className={styles.textButton} disabled={status !== 'idle'} onClick={() => speak(prompt.prompt)}><Icon name="sound" /> شنیدن سؤال</button>
-        <div className={styles.helpers}><span>برای شروع جمله:</span>{prompt.helpers.map(text => <span lang="en" dir="ltr" key={text}>{text}</span>)}</div>
-        <div className={styles.recorder}>
-          <span className={styles.clock} lang="en" dir="ltr">{String(Math.floor(seconds / 60)).padStart(2, '0')}:{String(seconds % 60).padStart(2, '0')}</span>
-          {status === 'recording' ? <button className={styles.stop} onClick={() => recorder.current?.stop()}>توقف ضبط</button> : <button className={styles.primary} disabled={status === 'requesting'} onClick={startRecording}><Icon name="mic" />{status === 'requesting' ? 'در انتظار میکروفن…' : audioUrl ? 'ضبط دوباره' : 'شروع ضبط'}</button>}
-          <p className={styles.muted}>حداکثر ۲ دقیقه؛ صدا به سرور فرستاده نمی‌شود.</p>
-        </div>
-        {error ? <p className={styles.error} role="alert">{error}</p> : null}
-        {audioUrl ? <div className={styles.audio}><audio controls src={audioUrl} aria-label="بازپخش تمرین مکالمه" /><a className={styles.textButton} href={audioUrl} download={`jaminova-speaking-${promptIndex + 1}.${audioType.includes('mp4') ? 'm4a' : audioType.includes('ogg') ? 'ogg' : 'webm'}`}>دانلود صدای من</a></div> : null}
-        <p className={styles.small}>ضبط فقط تا زمانی که این بخش باز است نگه داشته می‌شود. برای نگه‌داشتن آن، فایل را دانلود کن. این نسخه بازخورد خودکار تلفظ ندارد.</p>
-      </section>
-      <aside className={styles.paper}>
-        <h2>دوباره گوش کن.</h2><p className={styles.muted}>این بررسی را خودت انجام بده:</p>
-        <div className={styles.checklist}>{prompt.checks.map((text, i) => <label key={`${promptIndex}-${i}`}><input type="checkbox" checked={(progress.speakingChecks[promptIndex] || []).includes(i)} onChange={event => update(p => ({ ...p, speakingChecks: { ...p.speakingChecks, [promptIndex]: event.target.checked ? [...(p.speakingChecks[promptIndex] || []), i] : (p.speakingChecks[promptIndex] || []).filter(n => n !== i) } }))} />{text}</label>)}</div>
-        <label className={styles.field}>کجا گیر کردی؟<textarea lang="en" dir="ltr" rows={5} maxLength={12000} value={progress.speakingNotes[promptIndex] || ''} onChange={event => update(p => ({ ...p, speakingNotes: { ...p.speakingNotes, [promptIndex]: event.target.value } }))} placeholder="Words I needed, sentences I want to improve…" /></label>
-        <button className={styles.primary} onClick={() => { update(p => ({ ...p, sessions: [...p.sessions, { prompt: promptIndex, date: new Date().toISOString() }].slice(-100) })); notify('تمرین مکالمه ثبت شد. یادداشت‌ها در گزارش هم می‌آیند.') }}>ثبت تمرین</button>
-      </aside>
-    </div>
-  </>
-}
-
 export default function EnglishApp() {
-  const [section, setSection] = useState('course')
-  const [progress, setProgress] = useState(emptyProgress)
+  const [state, setState] = useState(emptyState)
   const [loaded, setLoaded] = useState(false)
-  const [storageError, setStorageError] = useState('')
+  const [screen, setScreen] = useState('lesson')
   const [notice, setNotice] = useState('')
-  const content = useRef(null)
-  const reportUrl = useRef(null)
-
+  const [clock, setClock] = useState(0)
+  const [speaking, setSpeaking] = useState(false)
+  const heading = useRef(null)
+  const speech = useRef(null)
   useEffect(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY)
-      if (saved) setProgress(readProgress(JSON.parse(saved)))
-    } catch { setStorageError('پیشرفت قبلی خوانده نشد. می‌توانی تمرین کنی و گزارش را دانلود کنی.') }
-    setLoaded(true)
-    return () => { window.speechSynthesis?.cancel(); if (reportUrl.current) URL.revokeObjectURL(reportUrl.current) }
+      const raw = localStorage.getItem(STORAGE_KEY)
+      if (raw) {
+        const restored = readState(JSON.parse(raw)); setState(restored)
+        if (restored.session) setScreen('quiz')
+      }
+    } catch { setNotice('پیشرفت قبلی خوانده نشد؛ می‌توانی تمرین را شروع کنی.') }
+    setClock(Date.now()); setLoaded(true)
+    const timer = setInterval(() => setClock(Date.now()), 30000)
+    return () => { clearInterval(timer); window.speechSynthesis?.cancel() }
   }, [])
-
   useEffect(() => {
     if (!loaded) return
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)) }
-    catch { setStorageError('ذخیره در مرورگر ممکن نشد. برای نگه‌داشتن پاسخ‌ها، گزارش را دانلود کن.') }
-  }, [progress, loaded])
-
-  useEffect(() => {
-    if (!notice) return
-    const timer = setTimeout(() => setNotice(''), 6000)
-    return () => clearTimeout(timer)
-  }, [notice])
-
-  function navigate(next) {
-    window.speechSynthesis?.cancel()
-    setSection(next)
-    setNotice('')
-    content.current?.focus({ preventScroll: true })
-    window.scrollTo({ top: 0, behavior: 'instant' })
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)) }
+    catch { setNotice('ذخیره در این مرورگر ممکن نیست؛ با بستن صفحه پیشرفت این نوبت از دست می‌رود.') }
+  }, [state, loaded])
+  useEffect(() => { if (loaded) heading.current?.focus() }, [screen, state.session?.index, loaded])
+  function stopAudio() { window.speechSynthesis?.cancel(); setSpeaking(false) }
+  function begin(mode) { stopAudio(); setState(p => startSession(p, mode)); setScreen('quiz') }
+  function play() {
+    if (speaking) { stopAudio(); return }
+    if (!window.speechSynthesis || !window.SpeechSynthesisUtterance) { setNotice('خواندن صوتی در این مرورگر در دسترس نیست.'); return }
+    const utterance = new SpeechSynthesisUtterance(lesson.paragraphs.join('\n').replaceAll('**', ''))
+    utterance.lang = 'en-GB'; utterance.rate = 0.88
+    utterance.onend = () => setSpeaking(false)
+    utterance.onerror = () => { setSpeaking(false); setNotice('پخش صوت انجام نشد؛ صدای انگلیسی مرورگر را بررسی کن.') }
+    speech.current = utterance; window.speechSynthesis.speak(utterance); setSpeaking(true)
   }
-
-  function speak(text) {
-    if (!('speechSynthesis' in window)) { setNotice('پخش تلفظ در این مرورگر در دسترس نیست.'); return }
-    window.speechSynthesis.cancel()
-    const utterance = new SpeechSynthesisUtterance(text)
-    utterance.lang = 'en-GB'
-    utterance.rate = 0.9
-    const voice = window.speechSynthesis.getVoices().find(v => v.lang === 'en-GB') || window.speechSynthesis.getVoices().find(v => v.lang.startsWith('en'))
-    if (voice) utterance.voice = voice
-    utterance.onerror = event => { if (!['interrupted', 'canceled'].includes(event.error)) setNotice('پخش تلفظ ممکن نشد؛ صدای انگلیسی دستگاه را بررسی کن.') }
-    window.speechSynthesis.speak(utterance)
-  }
-
-  function buildReport() {
-    let report = createReport(progress)
-    try { report += '\n\n' + courseReport(readCourseState(JSON.parse(localStorage.getItem(COURSE_STORAGE_KEY)))) }
-    catch { report += '\nCourse progress could not be read from this browser.' }
-    return report
-  }
-
-  function downloadReport() {
-    if (reportUrl.current) URL.revokeObjectURL(reportUrl.current)
-    reportUrl.current = URL.createObjectURL(new Blob([buildReport()], { type: 'text/plain;charset=utf-8' }))
-    const anchor = document.createElement('a')
-    anchor.href = reportUrl.current
-    anchor.download = 'jaminova-english-report.txt'
-    anchor.click()
-    setNotice('گزارش تعیین سطح و پیشرفت دوره آمادهٔ دانلود شد.')
-  }
-
-  async function copyReport() {
-    try { await navigator.clipboard.writeText(buildReport()); setNotice('گزارش تعیین سطح و پیشرفت دوره کپی شد.') }
-    catch { setNotice('کپی در این مرورگر ممکن نشد. از «دانلود گزارش» استفاده کن.') }
-  }
-
-  const answered = assessmentQuestions.filter(q => Number.isInteger(progress.answers[q.id])).length
-  const results = getResults(progress.answers)
-  const assessment = assessmentQuestions[progress.step]
-
-  return <main className={styles.app} lang="fa" dir="rtl">
-    <div className={styles.shell}>
-      <header className={styles.header}>
-        <Link href="/andarun" className={styles.back}>بازگشت به فضای شخصی <span className={styles.flipped}><Icon /></span></Link>
-        <button className={styles.brand} onClick={() => navigate('course')} aria-label="Jaminova English، صفحهٔ شروع" lang="en" dir="ltr"><Icon name="chat" /><span><strong>Jaminova</strong><small>ENGLISH</small></span></button>
-      </header>
-      <nav className={styles.nav} aria-label="بخش‌های آموزش انگلیسی">{sections.map(([key, label]) => <button key={key} aria-current={section === key ? 'page' : undefined} className={section === key ? styles.activeNav : ''} onClick={() => navigate(key)}>{label}</button>)}</nav>
-      {storageError ? <p className={styles.error} role="alert">{storageError}</p> : null}
-      <p className={styles.notice} role="status" aria-live="polite">{notice}</p>
-      <div className={styles.content} ref={content} tabIndex={-1}>
-        {!loaded ? <p className={styles.loading} role="status">در حال آماده‌سازی تمرین‌ها…</p> : <>
-          {section === 'course' || section === 'review' ? <CourseApp mode={section} diagnostic={progress} speak={speak} /> : null}
-
-          {section === 'assessment' ? <>
-            <div className={styles.sectionTitle}><h1>ببینیم از کجا شروع کنیم.</h1><p>این ارزیابی کوتاه تشخیصی است؛ سطح رسمی CEFR و توانایی شنیداری یا گفتاری را تعیین نمی‌کند.</p></div>
-            {progress.submittedAt ? <>
-              <section className={styles.paper}><div className={styles.between}><h2>نتیجهٔ گرامر و واژگان</h2><span className={styles.muted}>B1 قبلی: به گفتهٔ تو</span></div><div className={styles.scores}>{results.map(r => <div key={r.skill}><strong>{fa(r.correct)} <small>از {fa(r.total)}</small></strong><span>{r.skill === 'grammar' ? 'گرامر' : 'واژگان'}</span></div>)}</div><p>این نمره فقط پاسخ به همین سؤال‌ها را نشان می‌دهد. نوشته‌ها هنوز بررسی نشده‌اند.</p><div className={styles.actions}><button className={styles.primary} onClick={copyReport}>کپی گزارش برای چت</button><button className={styles.secondary} onClick={downloadReport}>دانلود گزارش</button><button className={styles.textButton} onClick={() => setProgress(p => ({ ...p, submittedAt: null, step: 0 }))}>ویرایش پاسخ‌ها</button></div></section>
-              <section className={styles.paper}><h2>قدم بعدی تمرین</h2><p className={styles.muted}>موضوع‌های زیر از پاسخ‌های همین آزمون به دست آمده‌اند.</p><ul className={styles.topicList}>{[...new Set(assessmentQuestions.map(q => q.topic))].map(topic => {
-                const questions = assessmentQuestions.filter(q => q.topic === topic)
-                const correct = questions.filter(q => progress.answers[q.id] === q.answer).length
-                return <li key={topic}><strong>{topic}</strong><span>{fa(correct)} از {fa(questions.length)} پاسخ درست؛ {correct === questions.length ? 'در این نمونه خوب پاسخ دادی.' : 'در برنامهٔ مرور قرار بده.'}</span></li>
-              })}</ul><div className={styles.actions}><button className={styles.secondary} onClick={() => navigate('course')}>مسیر درس‌ها</button><button className={styles.secondary} onClick={() => navigate('review')}>مرور هدفمند</button></div></section>
-              <h2 className={styles.reviewTitle}>مرور پاسخ‌ها</h2>{assessmentQuestions.map((q, i) => <details className={styles.answerDetail} key={q.id}><summary>{fa(i + 1)}. {q.topic}<span>{progress.answers[q.id] === q.answer ? 'درست' : progress.answers[q.id] === -1 ? 'نمی‌دانستم' : 'نیاز به تمرین'}</span></summary><p className={styles.englishPrompt} dir="ltr" lang="en">{q.prompt}</p><p>پاسخ تو: <bdi lang="en">{q.options[progress.answers[q.id]] || 'نمی‌دانم'}</bdi></p><p>پاسخ درست: <bdi lang="en">{q.options[q.answer]}</bdi></p><p className={styles.feedback}>{q.why}</p></details>)}
-            </> : <section className={styles.paper}>
-              <div className={styles.between}><span className={styles.muted}>{assessment ? `سؤال ${fa(progress.step + 1)} از ${fa(assessmentQuestions.length)}` : 'نوبت نوشتهٔ توست'}</span><span className={styles.muted}>{fa(answered)} پاسخ ثبت‌شده</span></div>
-              <progress className={styles.progress} value={answered} max={assessmentQuestions.length} aria-label="پیشرفت پاسخ به سؤال‌های تعیین سطح" />
-              {assessment ? <><h2>{assessment.skill === 'grammar' ? 'جمله را کامل کن.' : 'واژه را در موقعیت انتخاب کن.'}</h2><p className={styles.englishPrompt} lang="en" dir="ltr">{assessment.prompt}</p><Choices name={assessment.id} question={assessment} value={progress.answers[assessment.id]} onChange={value => setProgress(p => ({ ...p, answers: { ...p.answers, [assessment.id]: value } }))} /><p className={styles.small}>نمی‌دانی؟ همان گزینه را انتخاب کن؛ حدس زدن اجباری نیست.</p></> : <div className={styles.writing}>{writingPrompts.map(q => <label className={styles.field} key={q.id}><strong>{q.title}</strong><span className={styles.englishPrompt} lang="en" dir="ltr">{q.prompt}</span><span className={styles.muted}>{q.hint}</span><textarea lang="en" dir="ltr" rows={q.id === 'story' ? 7 : 3} maxLength={12000} value={progress.writing[q.id] || ''} onChange={event => setProgress(p => ({ ...p, writing: { ...p.writing, [q.id]: event.target.value } }))} /><span className={styles.small}>{fa(wordCount(progress.writing[q.id] || ''))} کلمه · بررسی نوشته در چت انجام می‌شود.</span></label>)}</div>}
-              <div className={styles.actions}>
-                {assessment ? <button className={styles.primary} disabled={!Number.isInteger(progress.answers[assessment.id])} onClick={() => setProgress(p => ({ ...p, step: p.step + 1 }))}>بعدی <Icon /></button> : <button className={styles.primary} onClick={() => { setProgress(p => ({ ...p, submittedAt: new Date().toISOString() })); setNotice('نتیجه ثبت شد. برای بازخورد روی نوشته‌ها، گزارش را در چت بفرست.'); window.scrollTo({ top: 0 }) }}>ثبت و دیدن نتیجه</button>}
-                <button className={styles.secondary} disabled={progress.step === 0} onClick={() => setProgress(p => ({ ...p, step: p.step - 1 }))}>قبلی</button>
-              </div>{!assessment ? <p className={styles.small}>می‌توانی نوشته‌ها را بعداً تکمیل کنی. متن خالی نمرهٔ خودکار نمی‌گیرد.</p> : null}
-            </section>}
-          </> : null}
-
-          {section === 'speaking' ? <Speaking progress={progress} update={setProgress} speak={speak} notify={setNotice} /> : null}
-        </>}
+  const session = state.session
+  const q = currentQuestion(session)
+  const selected = q ? session.answers[q.id] : undefined
+  const mistakes = Object.keys(state.mistakes)
+  const due = mistakes.filter(id => state.mistakes[id].due <= clock)
+  const finished = session && session.index === session.ids.length
+  const score = finished ? result(session) : null
+  return <main className={styles.app} dir="rtl" lang="fa"><div className={styles.shell}>
+    <header className={styles.header}>
+      <Link href="/andarun" className={styles.back}>بازگشت به یامینوا</Link>
+      <div className={styles.brand} dir="ltr" lang="en"><Icon /><span><strong>English</strong><small>JAMINOVA</small></span></div>
+    </header>
+    <nav className={styles.nav} aria-label="بخش‌های درس">
+      <button aria-current={screen === 'lesson' ? 'page' : undefined} onClick={() => setScreen('lesson')}>درس اول B1</button>
+      <button aria-current={screen === 'review' ? 'page' : undefined} onClick={() => { stopAudio(); setScreen('review') }}>مرور اشتباهات {mistakes.length ? `(${fa(mistakes.length)})` : ''}</button>
+      {session ? <button aria-current={screen === 'quiz' ? 'page' : undefined} onClick={() => { stopAudio(); setScreen('quiz') }}>{finished ? 'نتیجهٔ آخرین تمرین' : 'ادامهٔ آزمون'}</button> : null}
+    </nav>
+    {notice ? <p role="status" className={styles.notice}>{notice}</p> : null}
+    {!loaded ? <p role="status">در حال آماده‌سازی درس…</p> : screen === 'lesson' ? <>
+      <section className={styles.intro}><span className={styles.kicker}>B1 · درس ۱ از مسیر ۲۰ درسی</span><h1 tabIndex={-1} ref={heading}>{lesson.title}</h1><p>آشنایی، صحبت دربارهٔ کار و هماهنگ‌کردن یک گفت‌وگوی کوتاه.</p><p className={styles.muted}>فعلاً فقط درس اول آماده است · حدود ۲۰ تا ۳۰ دقیقه · تمام تمرین‌ها چهارگزینه‌ای</p></section>
+      <div className={styles.studyGrid}>
+        <article className={styles.paper}><div className={styles.sectionHead}><div><span className={styles.kicker}>۱ · بخوان و گوش بده</span><h2 lang="en" dir="ltr">{lesson.subtitle}</h2></div><button className={styles.secondary} onClick={play}>{speaking ? 'توقف صدا' : 'شنیدن متن'}</button></div><Text /><p className={styles.muted}>عبارت‌های کاربردی و نمونه‌های گرامر بولد شده‌اند. صدا با صدای مصنوعی مرورگر خوانده می‌شود.</p></article>
+        <aside className={styles.side}><div className={styles.darkPanel}><span className={styles.kicker}>تمرین امروز</span><h2>بخوان. انتخاب کن. مرور کن.</h2><p>۵ تست درک متن، ۵ واژگان، ۵ گرامر و ۵ پاسخ در مکالمه.</p>{session && !finished ? <button className={styles.lightButton} onClick={() => { stopAudio(); setScreen('quiz') }}>ادامهٔ آزمون ذخیره‌شده</button> : <button className={styles.lightButton} onClick={() => begin('test')}>شروع ۲۰ تست</button>}<p className={styles.fine}>بعد از هر پاسخ، توضیح فارسی می‌بینی. اشتباه‌ها برای تمرین با سؤال تازه ذخیره می‌شوند.</p></div><div className={styles.sideNote}><strong>تمرکز گرامر</strong><p>{lesson.grammar}</p><strong>هدف این درس</strong><p>انتخاب پاسخ طبیعی در آشنایی با همکار و تشخیص کار معمول از وضعیت موقتی.</p></div></aside>
       </div>
-      <footer className={styles.footer}><p>پیشرفتت در همین مرورگر ذخیره می‌شود؛ بین دستگاه‌ها همگام نمی‌شود.</p>{loaded ? <div><button onClick={downloadReport}>دانلود گزارش</button><button onClick={copyReport}>کپی برای چت</button></div> : null}</footer>
-    </div>
-  </main>
+      <section className={styles.paper}><span className={styles.kicker}>۲ · عبارت‌های کاربردی</span><h2>۱۰ عبارت برای زندگی و کار</h2><div className={styles.wordGrid}>{lesson.words.map(([term, meaning, example]) => <div className={styles.word} key={term}><strong lang="en" dir="ltr">{term}</strong><span>{meaning}</span><p lang="en" dir="ltr">{example}</p></div>)}</div></section>
+      <section className={styles.paper}><span className={styles.kicker}>۳ · گرامر کوتاه</span><h2>{lesson.grammar}</h2><div className={styles.grammarGrid}>{lesson.grammarNotes.map(([title, body, example]) => <div key={title}><h3>{title}</h3><p>{body}</p><p className={styles.example} lang="en" dir="ltr">{example}</p></div>)}</div></section>
+      <div className={styles.bottomAction}><p>آماده‌ای؟ توضیح‌ها بعد از انتخاب پاسخ نمایش داده می‌شوند.</p><button className={styles.primary} onClick={() => session && !finished ? setScreen('quiz') : begin('test')}>{session && !finished ? 'ادامهٔ آزمون' : 'شروع آزمون درس اول'}</button></div>
+    </> : screen === 'review' ? <>
+      <section className={styles.intro}><h1 tabIndex={-1} ref={heading}>مرور اشتباهات</h1><p>همان نکته، با یک سؤال تازه.</p></section>
+      <section className={styles.paper}><h2>{mistakes.length ? `${fa(mistakes.length)} نکته برای تثبیت` : 'هنوز اشتباهی برای مرور نداری'}</h2><p>پاسخ غلط وارد این فهرست می‌شود. یک پاسخ درست در مرور، نکته را برای فردا زمان‌بندی می‌کند؛ پاسخ درست در مرور روز بعد آن را از فهرست حذف می‌کند. تمرین زودتر از موعد، مرحله را جلو نمی‌برد.</p><p>{fa(due.length)} نکته آمادهٔ مرور است.</p>{mistakes.length ? <button className={styles.primary} disabled={Boolean(session && !finished)} onClick={() => begin('review')}>شروع مرور چهارگزینه‌ای</button> : <button className={styles.primary} onClick={() => session && !finished ? setScreen('quiz') : begin('test')}>{session && !finished ? 'ادامهٔ آزمون' : 'شروع آزمون درس'}</button>}{session && !finished && mistakes.length ? <p>اول آزمون ذخیره‌شده را تمام کن. <button className={styles.textButton} onClick={() => setScreen('quiz')}>ادامهٔ آزمون</button></p> : null}
+      <ul className={styles.reviewList}>{mistakes.map(id => <li key={id}><span>{categories[questionMap[id].category]} · <bdi lang="en">{questionMap[id].variants[0].prompt}</bdi></span><small>{state.mistakes[id].streak ? `مرور بعد: ${date(state.mistakes[id].due)}` : 'نیاز به تمرین'}</small></li>)}</ul></section>
+    </> : finished ? <>
+      <section className={styles.intro}><h1 tabIndex={-1} ref={heading}>نتیجهٔ {session.mode === 'test' ? 'آزمون درس اول' : 'مرور'}</h1><p>هر سؤال فقط یک بار در نمرهٔ این نوبت حساب شده است.</p></section>
+      <section className={styles.paper}><div className={styles.score}><strong>{fa(Math.round(score.correct / score.total * 100))}٪</strong><span>{fa(score.correct)} پاسخ درست از {fa(score.total)}</span></div><div className={styles.results}>{Object.entries(score.rows).map(([key, row]) => <div key={key}><span>{categories[key]}</span><strong>{fa(row.correct)} از {fa(row.total)}</strong></div>)}</div><p>این نمره مربوط به همین تمرین است و سنجش مهارت گفتاری نیست.</p><div className={styles.actions}>{mistakes.length ? <button className={styles.primary} onClick={() => begin('review')}>مرور {fa(mistakes.length)} نکته</button> : null}<button className={styles.secondary} onClick={() => begin('test')}>آزمون دوباره با ترتیب تازه</button><button className={styles.textButton} onClick={() => setScreen('lesson')}>بازگشت به درس</button></div></section>
+      <section className={styles.paper}><h2>پاسخ‌ها و توضیح‌ها</h2>{session.ids.map(id => { const item = questionMap[id].variants[session.variant]; return <details className={styles.answerDetail} key={id}><summary><span>{session.answers[id] === item.answer ? 'درست' : 'نیاز به مرور'} · {categories[questionMap[id].category]}</span><span lang="en" dir="ltr">{item.prompt}</span></summary><p lang="en" dir="ltr">Your answer: {item.options[session.answers[id]]}</p><p lang="en" dir="ltr">Correct answer: {item.options[item.answer]}</p><p>{item.explanation}</p></details> })}</section>
+    </> : q ? <section className={styles.exercise}>
+      <div className={styles.sectionHead}><span>{session.mode === 'test' ? 'آزمون درس اول' : 'مرور اشتباهات'} · {categories[q.category]}</span><button className={styles.textButton} onClick={() => setScreen('lesson')}>بازگشت به درس</button></div>
+      <progress value={session.index} max={session.ids.length} aria-label="پیشرفت آزمون" />
+      <p className={styles.muted}>سؤال {fa(session.index + 1)} از {fa(session.ids.length)}</p>
+      <h1 className={styles.prompt} ref={heading} tabIndex={-1} lang="en" dir="ltr">{q.prompt}</h1>
+      <fieldset className={styles.options} disabled={selected !== undefined}><legend className={styles.srOnly}>یک پاسخ انتخاب کن</legend>{optionOrder(session).map((index, pos) => <button data-option={index} key={index} className={`${styles.option} ${selected !== undefined && index === q.answer ? styles.correct : ''} ${selected === index && index !== q.answer ? styles.wrong : ''}`} onClick={() => setState(p => answer(p, index))}><span className={styles.optionNumber}>{fa(pos + 1)}</span><span lang="en" dir="ltr">{q.options[index]}</span>{selected !== undefined && index === q.answer ? <small>پاسخ درست</small> : selected === index ? <small>انتخاب تو</small> : null}</button>)}</fieldset>
+      {selected !== undefined ? <div className={styles.feedback} role="status"><strong>{selected === q.answer ? 'درست بود.' : 'این نکته برای مرور ذخیره شد.'}</strong><p>{q.explanation}</p><button className={styles.primary} onClick={() => setState(p => advance(p))}>{session.index + 1 === session.ids.length ? 'دیدن نتیجه' : 'سؤال بعدی'}</button></div> : <p className={styles.muted}>یک گزینه را انتخاب کن؛ پاسخ نهایی می‌شود و توضیح را می‌بینی.</p>}
+      <details className={styles.textReference}><summary>دیدن متن درس بدون بولد</summary><Text plain /></details>
+    </section> : <button className={styles.primary} onClick={() => setScreen('lesson')}>بازگشت به درس اول</button>}
+    <footer className={styles.footer}>پیشرفت و اشتباهات در همین مرورگر ذخیره می‌شوند؛ با پاک‌کردن داده‌های مرورگر از دست می‌روند.</footer>
+  </div></main>
 }
