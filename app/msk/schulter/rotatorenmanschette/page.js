@@ -4,9 +4,8 @@ import { useMemo, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
-import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import styles from './page.module.css'
-import InProgressBanner from '@/components/InProgressBanner'
+import LessonHero from '@/components/LessonHero'
 
 const CONTENT = {
   "de": {
@@ -14,10 +13,12 @@ const CONTENT = {
     "breadcrumbMsk": "Muskuloskelettales",
     "breadcrumbCurrent": "Schulter · Rotatorenmanschette",
     "title": "Rotatorenmanschette: Tendinopathie, Partial- und Komplettrupturen",
-    "subtitle": "Anatomie, MRT-Protokoll, Rupturmuster und die Klassifikationen nach Patte und Goutallier für die Schulter-MRT",
+    "heroAlt": "Schematische Darstellung der vier Sehnen der Rotatorenmanschette um den Humeruskopf",
+    "heroCaption": "Schematische Orientierung der vier Sehnen um den Humeruskopf; keine diagnostische Aufnahme.",
     "sourceLabel": "Dr. Zia",
     "actionMcq": "MCQ",
     "actionFlash": "Flashcards",
+    "impingementLink": "Impingement-Muster gezielt vertiefen",
     "keyLabel": "Merke",
     "caveLabel": "CAVE",
     "sections": [
@@ -26,7 +27,7 @@ const CONTENT = {
       { "id": "partialruptur", "label": "Partialrupturen", "icon": "🔍" },
       { "id": "komplettruptur", "label": "Komplettrupturen", "icon": "⚠️" },
       { "id": "begleit", "label": "Begleitbefunde", "icon": "🩹" },
-      { "id": "takehome", "label": "Take home message", "icon": "💡" }
+      { "id": "takehome", "label": "Zusammenfassung", "icon": "💡" }
     ],
     "heroCards": [
       { "value": "Supraspinatus", "label": "häufigste betroffene Sehne", "text": "v. a. in der „Critical Zone“ vor dem Ansatz" },
@@ -80,7 +81,7 @@ const CONTENT = {
       "tableRows": [
         ["Diskontinuität", "vollständige T2-hyperintense Unterbrechung der Sehne mit Flüssigkeit im Sehnendefekt"],
         ["Retraktion", "Abstand des Sehnenstumpfes vom Footprint - Einteilung nach Patte (Grad 1-3)"],
-        ["Tangentenzeichen", "Humeruskopf überschreitet die Tangente zwischen Akromion und Korakoid - Hinweis auf eine massive Ruptur"],
+        ["Tangentenzeichen", "Auf der sagittal-schrägen Y-Aufnahme verbindet die Tangente den Oberrand der Spina scapulae mit dem Oberrand des Korakoids. Positiv: Der Supraspinatus-Muskelbauch reicht nicht über die Linie hinaus - Hinweis auf Atrophie."],
         ["Muskelatrophie", "fettige Degeneration des Muskelbauchs - Klassifikation nach Goutallier (Grad 0-4)"],
         ["Humeruskopfhochstand", "verminderter akromiohumeraler Abstand (< 7 mm) bei chronischer Massenruptur"]
       ],
@@ -104,7 +105,7 @@ const CONTENT = {
       "key": "Impingement, Bursitis, ACG-Arthrose und Bizepssehnenpathologien sind häufige Begleitbefunde, die das klinische Bild und die Therapieentscheidung mitbestimmen."
     },
     "takehome": {
-      "title": "Take home message",
+      "title": "Zusammenfassung",
       "lead": "Die wichtigsten Punkte für die Befundung.",
       "items": [
         { "title": "Anatomie", "text": "Vier Muskeln (SSP, ISP, TM, SSC) - die Supraspinatussehne ist in der Critical Zone am häufigsten betroffen." },
@@ -119,10 +120,12 @@ const CONTENT = {
     "breadcrumbMsk": "Musculoskeletal",
     "breadcrumbCurrent": "Shoulder · Rotator Cuff",
     "title": "Rotator Cuff: Tendinopathy, Partial and Full-Thickness Tears",
-    "subtitle": "Anatomy, MRI protocol, tear patterns and the Patte and Goutallier classifications for shoulder MRI",
+    "heroAlt": "Schematic of the four rotator cuff tendons surrounding the humeral head",
+    "heroCaption": "Orientation schematic of the four tendons around the humeral head; not a diagnostic image.",
     "sourceLabel": "Dr. Zia",
     "actionMcq": "MCQ",
     "actionFlash": "Flashcards",
+    "impingementLink": "Review impingement patterns",
     "keyLabel": "Key point",
     "caveLabel": "Caution",
     "sections": [
@@ -131,7 +134,7 @@ const CONTENT = {
       { "id": "partialruptur", "label": "Partial Tears", "icon": "🔍" },
       { "id": "komplettruptur", "label": "Full-Thickness Tears", "icon": "⚠️" },
       { "id": "begleit", "label": "Associated Findings", "icon": "🩹" },
-      { "id": "takehome", "label": "Take home message", "icon": "💡" }
+      { "id": "takehome", "label": "Summary", "icon": "💡" }
     ],
     "heroCards": [
       { "value": "Supraspinatus", "label": "most commonly affected tendon", "text": "especially in the \"critical zone\" near its insertion" },
@@ -185,7 +188,7 @@ const CONTENT = {
       "tableRows": [
         ["Discontinuity", "complete T2-hyperintense interruption of the tendon with fluid in the tendon gap"],
         ["Retraction", "distance of the tendon stump from the footprint - graded according to Patte (grade 1-3)"],
-        ["Tangent sign", "humeral head crosses the tangent line between acromion and coracoid - sign of a massive tear"],
+        ["Tangent sign", "On the oblique sagittal Y view, the line joins the superior scapular spine and superior coracoid margins. Positive: the supraspinatus muscle belly does not extend above the line, indicating atrophy."],
         ["Muscle atrophy", "fatty degeneration of the muscle belly - graded according to Goutallier (grade 0-4)"],
         ["Superior migration of the humeral head", "decreased acromiohumeral distance (<7 mm) in chronic massive tears"]
       ],
@@ -209,7 +212,7 @@ const CONTENT = {
       "key": "Impingement, bursitis, AC joint osteoarthritis and LHB pathology are common associated findings that influence the clinical picture and treatment decision."
     },
     "takehome": {
-      "title": "Take home message",
+      "title": "Summary",
       "lead": "The most important points for reporting.",
       "items": [
         { "title": "Anatomy", "text": "Four muscles (SSP, ISP, TM, SSC) - the supraspinatus tendon in the critical zone is most commonly affected." },
@@ -224,10 +227,12 @@ const CONTENT = {
     "breadcrumbMsk": "اسکلتی-عضلانی",
     "breadcrumbCurrent": "شانه · روتاتور کاف",
     "title": "روتاتور کاف: تاندینوپاتی، پارگی‌های جزئی و کامل",
-    "subtitle": "آناتومی، پروتکل MRI، الگوهای پارگی و طبقه‌بندی‌های Patte و Goutallier در MRI شانه",
+    "heroAlt": "طرح شماتیک چهار تاندون روتاتور کاف پیرامون سر استخوان بازو",
+    "heroCaption": "نمای شماتیک چهار تاندون پیرامون سر استخوان بازو؛ تصویر تشخیصی نیست.",
     "sourceLabel": "Dr. Zia",
     "actionMcq": "MCQ",
     "actionFlash": "فلش‌کارت",
+    "impingementLink": "مرور متمرکز الگوهای ایمپینجمنت",
     "keyLabel": "نکته مهم",
     "caveLabel": "احتیاط",
     "sections": [
@@ -236,7 +241,7 @@ const CONTENT = {
       { "id": "partialruptur", "label": "پارگی‌های جزئی", "icon": "🔍" },
       { "id": "komplettruptur", "label": "پارگی‌های کامل", "icon": "⚠️" },
       { "id": "begleit", "label": "یافته‌های همراه", "icon": "🩹" },
-      { "id": "takehome", "label": "Take home message", "icon": "💡" }
+      { "id": "takehome", "label": "جمع‌بندی", "icon": "💡" }
     ],
     "heroCards": [
       { "value": "سوپراسپیناتوس", "label": "شایع‌ترین تاندون درگیر", "text": "به‌ویژه در «Critical Zone» نزدیک محل اتصال" },
@@ -290,7 +295,7 @@ const CONTENT = {
       "tableRows": [
         ["عدم تداوم", "قطع کامل و هیپراینتنس در T2 با مایع در محل نقص تاندون"],
         ["رتراکشن", "فاصله انتهای تاندون از محل اتصال تاندون (footprint) - طبقه‌بندی Patte (درجه ۱ تا ۳)"],
-        ["علامت تانژانت", "سر هومروس از خط فرضی بین آکرومیون و کوراکوئید عبور می‌کند - نشانه پارگی وسیع"],
+        ["علامت تانژانت", "در نمای ساژیتال مایل Y، خط فرضی از لبه فوقانی خار اسکاپولا تا لبه فوقانی کوراکوئید کشیده می‌شود. مثبت بودن علامت یعنی شکم عضله سوپراسپیناتوس از خط بالاتر نمی‌رود و به نفع آتروفی است."],
         ["آتروفی عضلانی", "دژنراسیون چربی شکم عضله - طبقه‌بندی Goutallier (درجه ۰ تا ۴)"],
         ["بالا رفتن سر هومروس", "کاهش فاصله آکرومیوهومرال (< ۷ میلی‌متر) در پارگی‌های وسیع مزمن"]
       ],
@@ -314,7 +319,7 @@ const CONTENT = {
       "key": "ایمپینجمنت، بورسیت، آرتروز ACG و پاتولوژی تاندون بایسپس یافته‌های همراه شایعی هستند که بر تصویر بالینی و تصمیم درمانی اثر می‌گذارند."
     },
     "takehome": {
-      "title": "Take home message",
+      "title": "جمع‌بندی",
       "lead": "مهم‌ترین نکات برای گزارش‌نویسی.",
       "items": [
         { "title": "آناتومی", "text": "چهار عضله (SSP, ISP, TM, SSC) - تاندون سوپراسپیناتوس در Critical Zone شایع‌ترین محل درگیری است." },
@@ -374,13 +379,10 @@ function Callout({ type = 'note', label, children }) {
   )
 }
 
-function Section({ id, title, lead, children }) {
-  const isMobile = useMobileLearningLayout()
-  const [open, setOpen] = useState(true)
-  useEffect(() => setOpen(false), [id])
+function Section({ id, title, lead, children, open, onToggle }) {
   return (
     <section id={id} className={styles.section}>
-      <button className={styles.sectionHeader} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}>
+      <button className={styles.sectionHeader} type="button" onClick={onToggle} aria-expanded={open}>
         <h2>{title}</h2>
         <span>{open ? '−' : '+'}</span>
       </button>
@@ -399,32 +401,60 @@ export default function RotatorenmanschettePage() {
   const copy = CONTENT[lang] || CONTENT.de
   const isRTL = lang === 'fa'
   const [activeId, setActiveId] = useState(copy.sections[0].id)
+  const [openId, setOpenId] = useState(copy.sections[0].id)
+  const [selfCheckAnswer, setSelfCheckAnswer] = useState(null)
   const { isRead, toggleRead, authError } = useLessonReadStatus('rotatorenmanschette')
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
   const sectionIds = useMemo(() => copy.sections.map(section => section.id), [copy.sections])
 
   const scrollTo = (id) => {
+    setOpenId(id)
+    setActiveId(id)
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
+  const sectionProps = (id) => ({ open: openId === id, onToggle: () => setOpenId(current => current === id ? null : id) })
+  const checkCopy = {
+    de: { title: 'Kurz prüfen', question: 'Woran wird ein positives Tangentenzeichen erkannt?', options: ['Der Humeruskopf liegt oberhalb der Linie Akromion–Korakoid.', 'Der Supraspinatus-Muskelbauch reicht nicht oberhalb der Linie zwischen Spina scapulae und Korakoid.', 'Die Sehne zeigt eine T2-hyperintense Unterbrechung.'], feedback: 'Richtig: Das Zeichen beurteilt die Supraspinatusatrophie in der sagittal-schrägen Y-Ebene; es ist kein Zeichen dafür, dass der Humeruskopf eine Linie überschreitet.' },
+    en: { title: 'Quick check', question: 'What defines a positive tangent sign?', options: ['The humeral head lies above the acromion–coracoid line.', 'The supraspinatus muscle belly does not extend above the line between the scapular spine and coracoid.', 'The tendon has a T2-hyperintense discontinuity.'], feedback: 'Correct: the sign assesses supraspinatus atrophy on the oblique sagittal Y view; it does not describe the humeral head crossing a line.' },
+    fa: { title: 'خودآزمایی کوتاه', question: 'علامت تانژانت مثبت چگونه تعریف می‌شود؟', options: ['سر هومروس بالاتر از خط آکرومیون–کوراکوئید قرار دارد.', 'شکم عضله سوپراسپیناتوس از خط بین خار اسکاپولا و کوراکوئید بالاتر نمی‌رود.', 'در تاندون قطع‌شدگی هیپراینتنس در T2 دیده می‌شود.'], feedback: 'درست است: این علامت آتروفی سوپراسپیناتوس را در نمای ساژیتال مایل Y ارزیابی می‌کند؛ منظور عبور سر هومروس از خط نیست.' }
+  }[lang] || null
+  const check = checkCopy || { title: 'Kurz prüfen', question: 'Woran wird ein positives Tangentenzeichen erkannt?', options: ['Der Humeruskopf liegt oberhalb der Linie Akromion–Korakoid.', 'Der Supraspinatus-Muskelbauch reicht nicht oberhalb der Linie zwischen Spina scapulae und Korakoid.', 'Die Sehne zeigt eine T2-hyperintense Unterbrechung.'], feedback: 'Richtig: Das Zeichen beurteilt die Supraspinatusatrophie in der sagittal-schrägen Y-Ebene.' }
 
   useEffect(() => {
+    const syncFromHash = () => {
+      const id = decodeURIComponent(window.location.hash.slice(1))
+      if (!sectionIds.includes(id)) return
+      setActiveId(id)
+      setOpenId(id)
+      window.requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ block: 'start' }))
+    }
+    window.addEventListener('hashchange', syncFromHash)
+    syncFromHash()
     const observers = sectionIds.map(id => {
       const el = document.getElementById(id)
       if (!el) return null
       const observer = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveId(id) },
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveId(id)
+            setOpenId(id)
+            window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${id}`)
+          }
+        },
         { rootMargin: '-18% 0px -72% 0px', threshold: 0.01 }
       )
       observer.observe(el)
       return observer
     })
-    return () => observers.forEach(observer => observer?.disconnect())
+    return () => {
+      window.removeEventListener('hashchange', syncFromHash)
+      observers.forEach(observer => observer?.disconnect())
+    }
   }, [sectionIds])
 
   return (
     <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
-      <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
           <Link href={withLang('/')}>RadYar</Link>
@@ -435,9 +465,7 @@ export default function RotatorenmanschettePage() {
         </div>
         <div className={styles.hero}>
           <div className={styles.heroText}>
-            <span className={styles.sourceBadge}>{copy.sourceLabel}</span>
-            <h1>{copy.title}</h1>
-            <p>{copy.subtitle}</p>
+            <LessonHero title={copy.title} imageSrc="/educational/rotator-cuff-schematic.svg" imageAlt={copy.heroAlt} visualCaption={copy.heroCaption} lang={lang} />
             <div className={styles.actions}>
               <Link href={withLang(`/ueben/quiz?fach=msk&n=10&themen=rotatorenmanschette&from=${encodeURIComponent(withLang('/msk/schulter/rotatorenmanschette'))}`)} className={styles.actionBtn}>🎯 {copy.actionMcq}</Link>
               <Link href={withLang(`/flashcards/rotatorenmanschette?from=${encodeURIComponent(withLang('/msk/schulter/rotatorenmanschette'))}`)} className={styles.actionBtn}>🧠 {copy.actionFlash}</Link>
@@ -477,7 +505,7 @@ export default function RotatorenmanschettePage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="grundlagen" title={copy.basics.title} lead={copy.basics.lead}>
+          <Section id="grundlagen" title={copy.basics.title} lead={copy.basics.lead} {...sectionProps('grundlagen')}>
             <div className={styles.cardsGrid}>
               {copy.basics.items.map(item => (
                 <div className={styles.infoCard} key={item.title}>
@@ -489,7 +517,7 @@ export default function RotatorenmanschettePage() {
             <Callout label={copy.keyLabel}>{copy.basics.key}</Callout>
           </Section>
 
-          <Section id="mrt" title={copy.mri.title} lead={copy.mri.lead}>
+          <Section id="mrt" title={copy.mri.title} lead={copy.mri.lead} {...sectionProps('mrt')}>
             <Table headers={copy.mri.tableHeaders} rows={copy.mri.tableRows} />
             <div className={styles.splitGrid}>
               <div className={styles.infoCard}>
@@ -504,7 +532,7 @@ export default function RotatorenmanschettePage() {
             <Callout label={copy.keyLabel}>{copy.mri.key}</Callout>
           </Section>
 
-          <Section id="partialruptur" title={copy.partial.title} lead={copy.partial.lead}>
+          <Section id="partialruptur" title={copy.partial.title} lead={copy.partial.lead} {...sectionProps('partialruptur')}>
             <Table headers={copy.partial.tableHeaders} rows={copy.partial.tableRows} />
             <div className={styles.highlightBox}>
               <h3>{copy.partial.irisTitle}</h3>
@@ -513,7 +541,7 @@ export default function RotatorenmanschettePage() {
             <Callout label={copy.keyLabel}>{copy.partial.key}</Callout>
           </Section>
 
-          <Section id="komplettruptur" title={copy.full.title} lead={copy.full.lead}>
+          <Section id="komplettruptur" title={copy.full.title} lead={copy.full.lead} {...sectionProps('komplettruptur')}>
             <Table headers={copy.full.tableHeaders} rows={copy.full.tableRows} />
             <div className={styles.splitGrid}>
               <div className={styles.infoCard}>
@@ -526,15 +554,21 @@ export default function RotatorenmanschettePage() {
               </div>
             </div>
             <Callout label={copy.keyLabel}>{copy.full.key}</Callout>
+            <div className={styles.selfCheck}>
+              <h3>{check.title}</h3><p>{check.question}</p>
+              {check.options.map((option, index) => <button type="button" key={option} className={selfCheckAnswer === index ? styles.selfCheckSelected : ''} onClick={() => setSelfCheckAnswer(index)}>{option}</button>)}
+              {selfCheckAnswer !== null && <p role="status" className={selfCheckAnswer === 1 ? styles.selfCheckCorrect : styles.selfCheckIncorrect}>{selfCheckAnswer === 1 ? check.feedback : (lang === 'fa' ? 'این گزینه درست نیست. به محل شکم عضله سوپراسپیناتوس و خط مرجع دقت کنید.' : lang === 'en' ? 'Not quite. Focus on the supraspinatus muscle belly and the reference line.' : 'Nicht ganz. Achte auf den Supraspinatus-Muskelbauch und die Referenzlinie.')}</p>}
+            </div>
           </Section>
 
-          <Section id="begleit" title={copy.begleit.title} lead={copy.begleit.lead}>
+          <Section id="begleit" title={copy.begleit.title} lead={copy.begleit.lead} {...sectionProps('begleit')}>
             <Table headers={copy.begleit.tableHeaders} rows={copy.begleit.tableRows} />
             <Callout type="cave" label={copy.caveLabel}>{copy.begleit.cave}</Callout>
             <Callout label={copy.keyLabel}>{copy.begleit.key}</Callout>
+            <Link href={withLang('/msk/schulter/impingement-kalkschulter')} className={styles.relatedLessonLink}>{copy.impingementLink}</Link>
           </Section>
 
-          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>
+          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead} {...sectionProps('takehome')}>
             <div className={styles.takeHomeGrid}>
               {copy.takehome.items.map((item, index) => (
                 <div className={styles.takeHomeItem} key={item.title}>

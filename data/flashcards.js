@@ -3646,9 +3646,9 @@ const LEGACY_FLASHCARDS = [
       "fa": "طبقه‌بندی Patte چه چیزی را توصیف می‌کند و 'علامت تانژانت' چیست؟"
     },
     "answer": {
-      "de": "Patte: Grad der Sehnenretraktion (1–3). Tangent sign positiv = Humeruskopf überschreitet die Linie Akromion–Korakoid → ausgedehnte Ruptur.",
-      "en": "Patte: degree of tendon retraction (1–3). Positive tangent sign = humeral head crosses the acromion–coracoid line → extensive tear.",
-      "fa": "Patte: درجه رتراکشن تاندون (۱ تا ۳). علامت تانژانت مثبت = سر هومروس از خط آکرومیون-کوراکوئید عبور می‌کند → پارگی وسیع."
+      "de": "Patte: Grad der Sehnenretraktion (1–3). Tangentenzeichen positiv = der Supraspinatus-Muskelbauch reicht auf der sagittal-schrägen Y-Aufnahme nicht über die Linie zwischen oberer Spina scapulae und oberem Korakoidrand hinaus; Hinweis auf Muskelatrophie.",
+      "en": "Patte: degree of tendon retraction (1–3). Positive tangent sign = on the oblique sagittal Y view, the supraspinatus muscle belly does not extend above the line joining the superior scapular spine and coracoid margins; this indicates muscle atrophy.",
+      "fa": "Patte: درجه رتراکشن تاندون (۱ تا ۳). علامت تانژانت مثبت یعنی در نمای ساژیتال مایل Y، شکم عضله سوپراسپیناتوس از خط بین لبه فوقانی خار اسکاپولا و لبه فوقانی کوراکوئید بالاتر نمی‌رود؛ این یافته به نفع آتروفی عضله است."
     },
     "explanation": {
       "de": "Patte Grad 1 = Stumpf nahe Footprint, Grad 3 = Retraktion bis Glenoidniveau. Beides sind wichtige Parameter für die OP-Planung (Reparierbarkeit).",
@@ -3656,9 +3656,9 @@ const LEGACY_FLASHCARDS = [
       "fa": "Patte درجه ۱ = انتهای تاندون نزدیک محل اتصال تاندون (footprint)، درجه ۳ = رتراکشن تا سطح گلنوئید. هر دو از پارامترهای مهم برنامه‌ریزی جراحی (قابلیت ترمیم) هستند."
     },
     "diagram": {
-      "de": "Patte 1 (nahe Footprint) → 2 → 3 (Glenoidniveau)\nTangent sign + → Humeruskopf > Linie Akromion-Korakoid",
-      "en": "Patte 1 (near footprint) → 2 → 3 (glenoid level)\nTangent sign + → humeral head > acromion-coracoid line",
-      "fa": "Patte ۱ (نزدیک محل اتصال تاندون (footprint)) → ۲ → ۳ (سطح گلنوئید)\nعلامت تانژانت + → سر هومروس > خط آکرومیون-کوراکوئید"
+      "de": "Patte 1 (nahe Footprint) → 2 → 3 (Glenoidniveau)\nTangentenzeichen + → Supraspinatus-Muskelbauch bleibt unter der Linie Spina scapulae–Korakoid",
+      "en": "Patte 1 (near footprint) → 2 → 3 (glenoid level)\nPositive tangent sign → supraspinatus muscle belly remains below the scapular spine–coracoid line",
+      "fa": "Patte ۱ (نزدیک محل اتصال تاندون (footprint)) → ۲ → ۳ (سطح گلنوئید)\nعلامت تانژانت مثبت → شکم سوپراسپیناتوس زیر خط خار اسکاپولا–کوراکوئید باقی می‌ماند"
     }
   },
   {

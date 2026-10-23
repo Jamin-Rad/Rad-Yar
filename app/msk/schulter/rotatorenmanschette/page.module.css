@@ -9,6 +9,23 @@
   font-family: var(--font-main);
 }
 
+.relatedLessonLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 14px;
+  padding: 10px 16px;
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  border-radius: 12px;
+  background: var(--bg-card);
+  color: #c2410c;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.relatedLessonLink:hover { background: var(--surface-soft); }
+.relatedLessonLink:focus-visible { outline: 3px solid #f97316; outline-offset: 3px; }
+
 .header {
   max-width: 1240px;
   margin: 0 auto;
@@ -49,6 +66,10 @@
   border: 1px solid var(--border);
   box-shadow: 0 24px 70px var(--shadow-soft);
 }
+
+.heroText :global([data-lesson-hero]) { min-height: 220px; padding-block: 0 8px; }
+.heroText :global([data-lesson-hero] h1) { color: var(--text-strong); }
+.heroText :global([data-lesson-hero] img) { transform: none; }
 
 .heroText::after {
   content: '';
@@ -314,6 +335,14 @@
 .sectionBody {
   padding: 24px 26px 26px;
 }
+
+.selfCheck { display: grid; gap: 10px; margin-top: 22px; padding: 18px; border: 1px solid rgba(249,115,22,.3); border-radius: 18px; background: var(--surface-soft); }
+.selfCheck h3, .selfCheck p { margin: 0; }
+.selfCheck button { padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); color: var(--text); text-align: start; font: inherit; cursor: pointer; }
+.selfCheck button:focus-visible { outline: 3px solid #f97316; outline-offset: 2px; }
+.selfCheck .selfCheckSelected { border-color: #f97316; background: rgba(249,115,22,.1); }
+.selfCheckCorrect { color: #166534; font-weight: 700; }
+.selfCheckIncorrect { color: #b91c1c; font-weight: 700; }
 
 .lead {
   margin: 0 0 18px;

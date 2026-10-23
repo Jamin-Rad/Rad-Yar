@@ -1316,7 +1316,7 @@ export const CURRICULUM = [
         title: { de: '11. Schulter', en: '11. Shoulder', fa: '۱۱. شانه' },
         icon: '💪',
         themen: [
-          { id: 'rotatorenmanschette', title: { de: 'Rotatorenmanschette', en: 'Rotator Cuff', fa: 'روتاتور کاف' }, tags: ['MRT'], diff: 2, link: '/msk/schulter/rotatorenmanschette', flashcardLink: '/flashcards/rotatorenmanschette', ready: true, updatedAt: '2026-06-15' },
+          { id: 'rotatorenmanschette', title: { de: 'Rotatorenmanschette', en: 'Rotator Cuff', fa: 'روتاتور کاف' }, tags: ['MRT'], diff: 2, link: '/msk/schulter/rotatorenmanschette', mcqLink: '/ueben/quiz?fach=msk&n=10&themen=rotatorenmanschette&from=%2Fmsk%2Fschulter%2Frotatorenmanschette', flashcardLink: '/flashcards/rotatorenmanschette', ready: true, updatedAt: '2026-10-23' },
           { id: 'schulterinstabilitaet', title: { de: 'Schulterinstabilität / Labrumläsionen', en: 'Shoulder Instability / Labral Tears', fa: 'ناپایداری شانه / ضایعات لابروم' }, tags: ['MRT'], diff: 3 },
           { id: 'impingement-kalkschulter', title: { de: 'Impingement-Syndrom & Kalkschulter', en: 'Impingement Syndrome & Calcific Tendinitis', fa: 'سندرم ایمپینجمنت و شانه کلسیفیه' }, tags: ['MRT','Rö'], diff: 2, link: '/msk/schulter/impingement-kalkschulter', mcqLink: '/ueben/quiz?fach=msk&n=8&themen=impingement-kalkschulter', flashcardLink: '/flashcards/impingement-kalkschulter', ready: true, inProgress: true, updatedAt: '2026-10-22' },
           { id: 'bizepssehne-schulter', title: { de: 'Bizepssehne', en: 'Biceps Tendon', fa: 'تاندون بایسپس' }, tags: ['MRT'], diff: 2 },
