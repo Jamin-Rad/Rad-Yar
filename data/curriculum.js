@@ -455,7 +455,7 @@ export const CURRICULUM = [
         title: { de: '4. Atemwegserkrankungen', en: '4. Airway Diseases', fa: '۴. بیماری‌های راه هوایی' },
         icon: '🌬️',
         themen: [
-          { id: 'copd', title: { de: 'COPD', en: 'COPD', fa: 'COPD' }, tags: ['Rö','CT'], diff: 1 },
+          { id: 'copd', title: { de: 'COPD', en: 'COPD', fa: 'COPD' }, tags: ['Rö','CT'], diff: 1, link: '/thorax/copd-bildgebung', mcqLink: '/ueben/quiz?fach=thorax&n=1&themen=copd', flashcardLink: '/flashcards/copd', inProgress: true, updatedAt: '2026-10-23' },
           { id: 'asthma', title: { de: 'Asthma', en: 'Asthma', fa: 'آسم' }, tags: ['Rö','CT'], diff: 1 },
           { id: 'bronchiektasen', title: { de: 'Bronchiektasen', en: 'Bronchiectasis', fa: 'برونشیکتازی' }, tags: ['CT'], diff: 2, link: '/thorax/bronchiektasen', mcqLink: '/ueben/quiz?fach=thorax&n=1&themen=bronchiektasen', flashcardLink: '/flashcards/bronchiektasen', inProgress: true, updatedAt: '2026-10-23' },
           { id: 'bronchiolitis', title: { de: 'Bronchiolitis', en: 'Bronchiolitis', fa: 'برونشیولیت' }, tags: ['CT'], diff: 2 },

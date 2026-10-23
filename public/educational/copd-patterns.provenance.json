@@ -1,0 +1,12 @@
+{
+  "asset": "/educational/copd-patterns.svg",
+  "source": "Original RadYar code-native conceptual schematic, created 2026-10-23.",
+  "purpose": "Compare conceptual distribution patterns of centrilobular, panlobular, and paraseptal emphysema.",
+  "clinicalUse": "Non-diagnostic conceptual graphic, not to scale. It is not an axial CT, does not depict a patient, and must not be used to diagnose COPD.",
+  "evidence": "Pattern terminology follows Lynch et al., Fleischner Society statement, Radiology 2015;277:192–205, DOI 10.1148/radiol.2015141579. The graphic is an explanatory abstraction, not reproduced source imagery.",
+  "alt": {
+    "de": "Konzeptskizze, von links nach rechts: zentrilobuläres, panlobuläres und subpleural-paraseptales Emphysemmuster; keine CT-Aufnahme.",
+    "en": "Conceptual schematic, from left to right: centrilobular, panlobular, and subpleural paraseptal emphysema patterns; not a CT image.",
+    "fa": "شماتیک مفهومی از چپ به راست: الگوی سنترلوبولار، پان‌لوبولار و پاراسپتال زیرپلورال آمفیزم؛ CT نیست."
+  }
+}
