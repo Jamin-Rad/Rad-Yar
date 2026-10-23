@@ -13,6 +13,7 @@ import { PSC_MRCP_QUESTIONS } from './pscMrcpLearning'
 import { FOREIGN_BODY_ASPIRATION_QUESTIONS } from './foreignBodyAspirationLearning'
 import { LIVER_MRI_PROTOCOL_QUESTIONS, LIVER_MRI_PROTOCOL_TOPIC_GROUP } from './technikLiverMriProtocolAssessment'
 import { OSTEOCHONDROSIS_DISSECANS_QUESTIONS, OSTEOCHONDROSIS_DISSECANS_TOPIC_GROUP } from './osteochondrosisDissecansAssessments'
+import { SHOULDER_INSTABILITY_QUESTIONS, SHOULDER_INSTABILITY_TOPIC_GROUP } from './shoulderInstabilityAssessments'
 import { GIST_QUESTIONS } from './gistLearning'
 import { VOLVULUS_QUESTIONS } from './volvulusLearning'
 import { PNET_QUESTIONS } from './pnetLearning'
@@ -4342,9 +4343,11 @@ for (const lang of Object.keys(QUESTION_BANK)) {
   QUESTION_BANK[lang].push(...(FOREIGN_BODY_ASPIRATION_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(LIVER_MRI_PROTOCOL_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(OSTEOCHONDROSIS_DISSECANS_QUESTIONS[lang] || []))
+  QUESTION_BANK[lang].push(...(SHOULDER_INSTABILITY_QUESTIONS[lang] || []))
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  SHOULDER_INSTABILITY_TOPIC_GROUP,
   {
     fachId: 'msk', kapitelId: 'msk-osteochondrosen',
     title: { de: 'Osteochondrosen', en: 'Osteochondroses', fa: 'استئوکندروزها' },

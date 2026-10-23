@@ -1,0 +1,21 @@
+.page{--lesson-accent:#d68145;--lesson-accent-strong:#704124;--lesson-accent-soft:#f6e9dd;--lesson-secondary:#78bdc4;--lesson-secondary-strong:#285b62}
+.body{display:grid;gap:1rem}
+.body>p{margin:0;max-width:84ch;line-height:1.8}
+.body h3{margin:.7rem 0 0;line-height:1.5}
+.body ul{display:grid;gap:.55rem;line-height:1.75}
+.figure{width:min(100%,760px);margin:.6rem auto 1rem;padding:10px;border:1px solid var(--line);border-radius:13px;background:var(--paper)}
+.figure svg{display:block;width:100%;height:auto}
+.figure figcaption{margin-top:9px;color:var(--muted);font-size:.88rem;line-height:1.65}
+.diagramHeading{font:600 17px system-ui,sans-serif;fill:#23414e}
+.diagramLabel{font:500 14px system-ui,sans-serif;fill:#704124}
+.diagramNote{font:13px system-ui,sans-serif;fill:#526c76}
+.note{margin:0;padding:1rem;border-inline-start:4px solid var(--lesson-secondary);border-radius:9px;background:color-mix(in srgb,var(--paper) 82%,var(--lesson-secondary));line-height:1.75}
+.note p{margin:.45rem 0 0}
+.decision{display:grid;gap:.8rem;padding:1rem;border:1px solid var(--line);border-radius:13px;background:color-mix(in srgb,var(--paper) 88%,var(--lesson-accent-soft))}
+.decision>p{margin:0;line-height:1.75}
+.decision fieldset{display:grid;gap:.65rem;margin:0;padding:1rem;border:1px solid var(--line);border-radius:10px}
+.decision label{display:flex;gap:.65rem;align-items:flex-start;padding:.7rem;border:1px solid var(--line);border-radius:8px;cursor:pointer;line-height:1.65}
+.decision input{margin-top:.45rem}
+.feedback{padding:.8rem;border-inline-start:4px solid var(--lesson-accent);background:var(--paper);line-height:1.7}
+.quizLink{margin:0;line-height:1.7}
+@media(max-width:640px){.figure{padding:6px}.diagramLabel{font-size:12px}.diagramNote{font-size:11px}}
