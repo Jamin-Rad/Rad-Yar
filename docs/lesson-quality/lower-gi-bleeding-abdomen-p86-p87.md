@@ -1,6 +1,6 @@
 # Lower GI bleeding: Abdomen.pdf physical pp. 86–87
 
-Status: bounded lesson update; independent review pending; browser evidence blocked by the authenticated route.
+Status: bounded lesson update; independent source/education/language/assessment review passed. UX correction was independently retested statically; browser evidence remains blocked.
 
 ## Learning path
 
@@ -53,5 +53,17 @@ The lesson, process steps, self-check, MCQ and three flashcards contain DE/EN/FA
 
 - Source: physical pages 86–87 inspected as rendered page images. p.86 has a three-panel CTA image sequence without legible phase labels; p.87 contains text only. No image-derived phase claims were added.
 - Scientific search: ESGE 2021 primary guideline, ACR 2021 criteria/update, and ACG 2023 guideline reviewed for pathway qualification. Browser has not yet been re-tested.
-- Still required: independent source/content/translation/assessment review; browser test in DE/EN/FA, desktop/mobile, light/dark and interactions; separate clinical sign-off by Dr. Zia.
+- Still required: browser test in DE/EN/FA, desktop/mobile, light/dark and interactions; separate clinical sign-off by Dr. Zia.
 - Status: curriculum remains `inProgress`. This ledger, a passing code check, or an AI review does not mean clinical approval or publication readiness.
+
+## Independent review and assessment repairs — 2026-10-23
+
+The independent review confirmed source coverage, conditional CTA→angiography→possible selective embolisation wording, vessel territories, image handling, and static DE/EN/FA parity. It found that the lesson requested 10 quiz questions despite one registered question, the quiz had no return path, and distractors were overly absolute/uneven. The lesson and curriculum now request exactly one question and pass a language-preserving `from` path; its flashcard link also returns to the lesson. The inline check distractors now describe plausible interpretation/territory errors with less giveaway wording. The registered MCQ asks why bleeding can remain clinically relevant after negative CTA; distractors address native hyperdensity, phase-only interpretation and intermittent bleeding exclusion. Independent retest confirms the curriculum deep link decodes to the lesson path, each language retrieves exactly one four-option MCQ with key A, and the links align.
+
+Targeted validation after these corrections: `audit-abdomen-thorax-assessment-retrieval.mjs` passes with one four-option item per language under the exact topic, matching the lesson's `n=1` link and return URL; `npm run audit:mcq` passes with 784 questions / 18 cases per language; `audit-abdomen-thorax-copy-parity.cjs` confirms 19 locale units for this route. These checks do not establish rendered browser behavior or clinical approval.
+
+## Independent UX finding and correction — 2026-10-23
+
+Independent review found that the route duplicated the title and added an explanatory subtitle beneath the shared `LessonHero`, while also nesting a second `<main>` inside the shell's `<article>` (LOWERGI-UX-01, major). The route now relies on the shell's single title/hero, moves the concise introduction to the first teaching content, supplies a source-specific localized chapter title, and opts into the shell's outer main landmark. The route body is a `<div>` inside the shell article. `scripts/test-lower-gi-bleeding-shell.mjs` asserts the single-landmark structure, absence of duplicated title/subtitle, and localized chapter title. The independent reviewer confirmed the structural issue before correction and independently retested the correction: the focused shell assertion, assessment retrieval audit, and MCQ audit all pass. Rendered browser behavior remains unverified.
+
+The shell-level correction passed its focused source-structure assertion and JSX parsing. Rendered accessibility-tree, responsive/browser, RTL interaction and keyboard retest remain blocked by lack of browser access. This fix does not change CTA/angiography content; source, semantic parity and assessment review for the bounded PDF delta remain PASS. Dr. Zia's scientific sign-off is still pending.
