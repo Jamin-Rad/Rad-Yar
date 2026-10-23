@@ -1,0 +1,10 @@
+{
+  "asset": "/educational/lung-carcinoma-report-map.svg",
+  "creation": "Original hand-authored SVG schematic created for this lesson; no patient image, external image, or generative image model used.",
+  "clinicalUse": "Non-diagnostic conceptual graphic. It marks reporting locations only; anatomy is simplified and not to scale. It must not be used to infer disease, lesion distribution, nodal status, metastasis, or stage.",
+  "alt": {
+    "de": "Nichtdiagnostische Orientierungsskizze: Lungenherd, Hilus und Mediastinum, Pleura sowie Nebennieren als getrennte Orte der Befundbeschreibung; keine CT-Aufnahme.",
+    "en": "Non-diagnostic orientation schematic: lung lesion, hilum and mediastinum, pleura, and adrenals as separate reporting locations; not a CT image.",
+    "fa": "شماتیک جهت‌یابی غیرتشخیصی: ضایعهٔ ریوی، ناف و مدیاستن، پلور و آدرنال‌ها به‌عنوان محل‌های جداگانهٔ توصیف؛ CT نیست."
+  }
+}

@@ -1,0 +1,33 @@
+.page { --lesson-accent: #84b5b0; }
+.body { display: grid; gap: 1rem; color: #344953; line-height: 1.72; }
+.body p { margin: 0; }
+.intro { font-size: 1.08rem; font-weight: 600; color: #203b46; }
+.scope { padding: .9rem 1rem; border-inline-start: 3px solid #84b5b0; border-radius: .65rem; background: rgba(132,181,176,.12); }
+.tableWrap { max-width: 100%; overflow-x: auto; border: 1px solid #d7e4e2; border-radius: .8rem; }
+.tableWrap table { width: 100%; border-collapse: collapse; min-width: 35rem; }
+.tableWrap th, .tableWrap td { padding: .8rem .9rem; text-align: start; vertical-align: top; border-bottom: 1px solid #d7e4e2; }
+.tableWrap thead th { background: #eaf3f1; color: #24585c; font-size: .92rem; }
+.tableWrap tbody tr:last-child th, .tableWrap tbody tr:last-child td { border-bottom: 0; }
+.tableWrap tbody th { width: 11rem; color: #294b53; }
+.figure { display: grid; gap: .55rem; justify-items: center; margin: .3rem auto; width: min(100%, 48rem); }
+.figure img { display: block; width: 100%; height: auto; border-radius: 1rem; box-shadow: 0 12px 32px rgba(18,49,62,.16); }
+.figure figcaption { max-width: 42rem; color: #5b6c70; text-align: center; font-size: .9rem; }
+.points { margin: 0; padding-inline-start: 1.35rem; display: grid; gap: .7rem; }
+.points li { padding-inline-start: .2rem; }
+.note, .cave { padding: .9rem 1rem; border-radius: .75rem; background: #f1f6f4; }
+.note strong, .cave strong { display: block; color: #24585c; margin-block-end: .35rem; }
+.note p, .cave p { margin: 0; }
+.cave { border-inline-start: 3px solid #c39a62; background: #fbf6ed; }
+.cave strong { color: #75572f; }
+.check { display: grid; gap: 1rem; color: #344953; }
+.check > p { margin: 0; font-weight: 600; }
+.check fieldset { display: grid; gap: .7rem; margin: 0; padding: 1rem; border: 1px solid #d7e4e2; border-radius: .8rem; }
+.check legend { padding-inline: .35rem; font-weight: 650; color: #294b53; }
+.check label { display: flex; align-items: flex-start; gap: .65rem; padding: .75rem; border-radius: .65rem; background: #f5f8f7; cursor: pointer; }
+.check label:has(input:checked) { outline: 2px solid #84b5b0; background: #eef6f4; }
+.check input { flex: 0 0 auto; margin-block-start: .35rem; accent-color: #286c70; }
+.feedback { display: grid; gap: .35rem; padding: .9rem 1rem; border-radius: .75rem; background: #edf5f2; }
+.feedback strong { color: #24585c; }
+.feedback button { justify-self: start; margin-block-start: .35rem; padding: .45rem .8rem; border: 1px solid #7ba9a5; border-radius: 999px; color: #205f64; background: white; font: inherit; cursor: pointer; }
+.check :focus-visible, .tableWrap:focus-visible { outline: 3px solid #b47f37; outline-offset: 3px; }
+@media (max-width: 600px) { .tableWrap table { min-width: 31rem; } .tableWrap th, .tableWrap td { padding: .7rem; } .tableWrap tbody th { width: 8rem; } .figure figcaption { text-align: start; } }

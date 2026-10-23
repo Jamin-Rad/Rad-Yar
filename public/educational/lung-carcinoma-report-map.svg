@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" role="img" aria-labelledby="title desc">
+  <title id="title">Lung cancer imaging report landmarks</title>
+  <desc id="desc">Original non-diagnostic schematic of lungs, a generic lesion marker, central nodes, pleura and adrenal landmarks.</desc>
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#edf6f4"/><stop offset="1" stop-color="#d9e9e7"/></linearGradient>
+    <linearGradient id="lung" x2="1" y2="1"><stop stop-color="#f9fcfb"/><stop offset="1" stop-color="#d7e7e5"/></linearGradient>
+  </defs>
+  <rect x="8" y="8" width="944" height="604" rx="40" fill="url(#bg)" stroke="#a8c9c5" stroke-width="4"/>
+  <path d="M478 108v137m0-98-78 61m78-61 78 61" fill="none" stroke="#6c9694" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M398 202c-77-54-176 11-198 126-22 116 18 205 111 199 68-5 131-106 131-225 0-50-15-81-44-100Zm160 0c77-54 176 11 198 126 22 116-18 205-111 199-68-5-131-106-131-225 0-50 15-81 44-100Z" fill="url(#lung)" stroke="#91b4b1" stroke-width="7"/>
+  <path d="M480 245v260" stroke="#a9c8c5" stroke-width="7" stroke-dasharray="10 14"/>
+  <circle cx="337" cy="330" r="25" fill="#c97757" stroke="#fff" stroke-width="9"/>
+  <circle cx="482" cy="290" r="12" fill="#d3a758" stroke="#fff" stroke-width="7"/><circle cx="482" cy="325" r="12" fill="#d3a758" stroke="#fff" stroke-width="7"/><circle cx="482" cy="360" r="12" fill="#d3a758" stroke="#fff" stroke-width="7"/>
+  <path d="M260 420c35 40 75 59 122 62m318-62c-35 40-75 59-122 62" fill="none" stroke="#739e9b" stroke-width="7" stroke-dasharray="11 12"/>
+  <path d="M359 518q36-29 72 0-36 22-72 0Zm170 0q36-29 72 0-36 22-72 0Z" fill="#d3a758" stroke="#fff" stroke-width="5"/>
+</svg>

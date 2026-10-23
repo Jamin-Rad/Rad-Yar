@@ -15,6 +15,7 @@ import { FOREIGN_BODY_ASPIRATION_QUESTIONS } from './foreignBodyAspirationLearni
 import { LIVER_MRI_PROTOCOL_QUESTIONS, LIVER_MRI_PROTOCOL_TOPIC_GROUP } from './technikLiverMriProtocolAssessment'
 import { OSTEOCHONDROSIS_DISSECANS_QUESTIONS, OSTEOCHONDROSIS_DISSECANS_TOPIC_GROUP } from './osteochondrosisDissecansAssessments'
 import { SHOULDER_INSTABILITY_QUESTIONS, SHOULDER_INSTABILITY_TOPIC_GROUP } from './shoulderInstabilityAssessments'
+import { LUNG_CARCINOMA_QUESTIONS, LUNG_CARCINOMA_TOPIC_GROUP } from './lungCarcinomaImagingLesson'
 import { GIST_QUESTIONS } from './gistLearning'
 import { VOLVULUS_QUESTIONS } from './volvulusLearning'
 import { PNET_QUESTIONS } from './pnetLearning'
@@ -4349,6 +4350,7 @@ for (const lang of Object.keys(QUESTION_BANK)) {
   QUESTION_BANK[lang].push(...(LIVER_MRI_PROTOCOL_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(OSTEOCHONDROSIS_DISSECANS_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(SHOULDER_INSTABILITY_QUESTIONS[lang] || []))
+  QUESTION_BANK[lang].push(...(LUNG_CARCINOMA_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(NEUROFORAMENSTENOSE_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(COPD_QUESTIONS[lang] || []))
   QUESTION_BANK[lang].push(...(ATRT_QUESTIONS[lang] || []))
@@ -4439,6 +4441,7 @@ export const MCQ_TOPIC_GROUPS = [
     topics: [{ id: 'migraene', title: { de: 'Migräne', en: 'Migraine', fa: 'میگرن' } }],
   },
   { fachId: 'thorax', kapitelId: 'thorax-tumoren', title: { de: 'Lungentumoren', en: 'Lung tumours', fa: 'تومورهای ریه' }, topics: [{ id: 'fleischner-kriterien', title: { de: 'Fleischner-Kriterien', en: 'Fleischner criteria', fa: 'معیارهای Fleischner' } }] },
+  LUNG_CARCINOMA_TOPIC_GROUP,
   {
     fachId: 'thorax',
     kapitelId: 'thorax-kardio',

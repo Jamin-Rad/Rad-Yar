@@ -511,8 +511,8 @@ export const CURRICULUM = [
         title: { de: '8. Lungentumoren', en: '8. Lung Tumours', fa: '۸. تومورهای ریه' },
         icon: '🔬',
         themen: [
-          { id: 'nsclc', title: { de: 'NSCLC', en: 'NSCLC', fa: 'NSCLC (سرطان ریه غیر سلول کوچک)' }, group: ['Lungenkarzinom'], tags: ['CT'], diff: 3 },
-          { id: 'sclc', title: { de: 'SCLC', en: 'SCLC', fa: 'SCLC (سرطان ریه سلول کوچک)' }, group: ['Lungenkarzinom'], tags: ['CT'], diff: 3 },
+          { id: 'nsclc', title: { de: 'NSCLC', en: 'NSCLC', fa: 'NSCLC (سرطان ریه غیر سلول کوچک)' }, group: ['Lungenkarzinom'], tags: ['CT'], diff: 3, link: '/thorax/bronchialkarzinom-bildgebung', flashcardLink: '/flashcards/lungenkarzinom-bildgebung', mcqLink: '/ueben/quiz?fach=thorax&n=1&themen=nsclc,sclc', inProgress: true, updatedAt: '2026-10-23' },
+          { id: 'sclc', title: { de: 'SCLC', en: 'SCLC', fa: 'SCLC (سرطان ریه سلول کوچک)' }, group: ['Lungenkarzinom'], tags: ['CT'], diff: 3, link: '/thorax/bronchialkarzinom-bildgebung', flashcardLink: '/flashcards/lungenkarzinom-bildgebung', mcqLink: '/ueben/quiz?fach=thorax&n=1&themen=nsclc,sclc', inProgress: true, updatedAt: '2026-10-23' },
           { id: 'fleischner-kriterien', title: { de: 'Fleischner-Kriterien', en: 'Fleischner Criteria', fa: 'معیارهای Fleischner' }, group: ['Solitärer Lungenrundherd'], tags: ['CT'], diff: 2, link: '/thorax/fleischner-kriterien', flashcardLink: '/flashcards/fleischner-kriterien' },
           { id: 'lung-rads', title: { de: 'Lung-RADS', en: 'Lung-RADS', fa: 'سیستم Lung-RADS' }, group: ['Solitärer Lungenrundherd'], tags: ['CT'], diff: 2, link: '/thorax/lung-rads', ready: true, inProgress: true, updatedAt: '2026-10-19' },
           { id: 'karzinoid-lunge', title: { de: 'Karzinoide / Neuroendokrine Tumoren', en: 'Carcinoid / Neuroendocrine Tumours', fa: 'کارسینوئید / تومورهای نورواندوکرین' }, tags: ['CT'], diff: 3 },
