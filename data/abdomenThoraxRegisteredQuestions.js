@@ -80,7 +80,7 @@ export const ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS = [
     { id: 'ileus-duenndarm', title: { de: 'Dünndarmileus', en: 'Small-bowel obstruction', fa: 'انسداد رودهٔ باریک' } }, { id: 'intussusception', title: { de: 'Intussuszeption', en: 'Intussusception', fa: 'اینتوساسپشن' } }, { id: 'volvulus', title: { de: 'Volvulus', en: 'Volvulus', fa: 'ولوولوس' } }, { id: 'mesenteriale-ischaemie', title: { de: 'Mesenteriale Ischämie', en: 'Mesenteric ischaemia', fa: 'ایسکمی مزانتریک' } },
   ] },
   { fachId: 'abdomen', kapitelId: 'abdomen-leber', title: { de: 'Leberläsionen', en: 'Liver lesions', fa: 'ضایعات کبدی' }, topics: [
-    { id: 'leberadenom', title: { de: 'Leberadenom', en: 'Hepatic adenoma', fa: 'آدنوم کبدی' } }, { id: 'lebermetastasen', title: { de: 'Lebermetastasen', en: 'Liver metastases', fa: 'متاستازهای کبدی' } }, { id: 'leberzyste', title: { de: 'Leberzyste', en: 'Hepatic cyst', fa: 'کیست کبدی' } }, { id: 'hepatische-steatose', title: { de: 'Hepatische Steatose', en: 'Hepatic steatosis', fa: 'استئاتوز کبدی' } },
+    { id: 'leberadenom', title: { de: 'Leberadenom', en: 'Hepatic adenoma', fa: 'آدنوم کبدی' } }, { id: 'lebermetastasen', title: { de: 'Lebermetastasen', en: 'Liver metastases', fa: 'متاستازهای کبدی' } }, { id: 'leberzyste', title: { de: 'Zystische Leberläsionen', en: 'Cystic Liver Lesions', fa: 'ضایعات کیستیک کبد' } }, { id: 'hepatische-steatose', title: { de: 'Hepatische Steatose', en: 'Hepatic steatosis', fa: 'استئاتوز کبدی' } },
   ] },
   { fachId: 'abdomen', kapitelId: 'abdomen-pankreas', title: { de: 'Zystische Pankreasläsionen', en: 'Cystic pancreatic lesions', fa: 'ضایعات کیستیک پانکراس' }, topics: [
     { id: 'ipmn', title: { de: 'IPMN', en: 'IPMN', fa: 'IPMN' } },

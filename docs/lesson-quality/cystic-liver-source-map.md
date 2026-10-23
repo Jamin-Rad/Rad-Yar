@@ -22,6 +22,9 @@ clinical validation or release approval.
 | MRI T2 hyperintensity; septa and daughter cysts are conspicuous; low-signal rim/pericyst | 7 | Echinococcal cyst · CT and MRI / after contrast | Included |
 | Post-contrast wall/septa enhance; cyst contents do not | 7 | Figure caption, card, MCQ and flashcard | Included; source MRI crop and exact sequences recorded in `public/educational/hydatid-liver/source-provenance.json` |
 
-Deferred: cyst-stage classification and treatment selection. This focused imaging lesson
-does not infer diagnosis or therapy from imaging alone. ACG 2024 and WHO 2025 are
-supplementary references; the source PDF remains the coverage basis.
+The existing curriculum ID `leberzyste` remains attached to this route because it covers
+both simple and echinococcal cystic liver lesions; its visible DE/EN/FA label now matches
+the broader route title, and its registered MCQ has a direct curriculum link. No separate
+hydatid ID was added. The supplied pp. 5–7 do not teach cyst-stage classification or
+treatment selection, so those are outside this PDF lesson. WHO 2025 is supplemental
+context only; imaging alone does not determine diagnosis or therapy.

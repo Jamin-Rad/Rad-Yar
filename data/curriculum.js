@@ -758,7 +758,7 @@ export const CURRICULUM = [
           { id: 'hepatische-steatose', title: { de: 'Hepatische Steatose', en: 'Hepatic Steatosis', fa: 'استئاتوز کبدی' }, group: ['Diffuse Lebererkrankungen'], tags: ['Sono','CT','MRT'], diff: 1, link: '/abdomen/leber/steatose', mcqLink: '/ueben/quiz?fach=abdomen&n=1&themen=hepatische-steatose', flashcardLink: '/flashcards/hepatische-steatose', inProgress: true },
           { id: 'leberzirrhose', title: { de: 'Leberzirrhose', en: 'Liver Cirrhosis', fa: 'سیروز کبدی' }, group: ['Diffuse Lebererkrankungen'], tags: ['Sono','CT','MRT'], diff: 2 },
           { id: 'hepatitis-leber', title: { de: 'Hepatitis', en: 'Hepatitis', fa: 'هپاتیت' }, group: ['Diffuse Lebererkrankungen'], tags: ['Sono','CT','MRT'], diff: 1 },
-          { id: 'leberzyste', title: { de: 'Leberzyste', en: 'Hepatic Cyst', fa: 'کیست کبدی' }, group: ['Benigne Leberläsionen'], tags: ['Sono','CT','MRT'], diff: 1, link: '/abdomen/leber/zystische-laesionen', flashcardLink: '/flashcards/leberzyste', inProgress: true, updatedAt: '2026-10-20' },
+          { id: 'leberzyste', title: { de: 'Zystische Leberläsionen', en: 'Cystic Liver Lesions', fa: 'ضایعات کیستیک کبد' }, group: ['Benigne Leberläsionen'], tags: ['Sono','CT','MRT'], diff: 1, link: '/abdomen/leber/zystische-laesionen', mcqLink: '/ueben/quiz?fach=abdomen&n=1&themen=leberzyste', flashcardLink: '/flashcards/leberzyste', inProgress: true, updatedAt: '2026-10-23' },
           {
             id: 'haemangiom',
             title: { de: 'Hämangiom', en: 'Liver Haemangioma', fa: 'همانژیوم کبد' },
