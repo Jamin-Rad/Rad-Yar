@@ -73,3 +73,13 @@ assert.match(jsx,/c\(COPY.scope\)/, 'The narrowed goal must be visible to learne
 assert.match(MENING_CHECK.question.en,/A report describes/)
 for (const question of MENING_QUESTIONS.en) assert.match(question.question,/A report describes/)
 assert.match(MENING_COPY.mediaLimit.en,/contain no patient images/)
+assert.ok(MENING_COPY.caseCaption.en.includes('rID 50810'))
+assert.ok(MENING_COPY.caseNote.en.includes('study 56299'))
+assert.ok(jsx.includes('/educational/meningeom/case-50810/t1c-sagittal.jpg'))
+assert.ok(jsx.includes('/educational/meningeom/case-50810/t1c-coronal.jpg'))
+assert.match(MENING_COPY.mediaLimit.en,/One labelled real MRI case/)
+const caseProvenance = JSON.parse(await readFile('public/educational/meningeom/image-provenance.json','utf8')).caseImages
+assert.equal(caseProvenance.caseId,50810)
+assert.equal(caseProvenance.studyId,56299)
+assert.deepEqual(caseProvenance.frames.map(frame=>frame.imageId),[28020528,28020530])
+for (const frame of caseProvenance.frames) await readFile(`public/educational/meningeom/${frame.file}`)

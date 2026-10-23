@@ -11,16 +11,33 @@
     "4": "Displaced/indented brain tissue boundary"
   },
   "revision": "Replaces prior draft diagram with incorrect mass/cleft interface positioning. No synthetic diagnostic pixels or copied patient media.",
-  "limits": "Not scale anatomy, CT, MRI, observed patient evidence, or proof of tissue invasion/grade. Current bounded goal is interpretation of supplied report descriptors, not independent image recognition. Real postcontrast MRI/interface and CT bone-window cases remain unresolved for future image-recognition coverage.",
+  "limits": "This hero SVG remains a conceptual non-patient diagram, not scale anatomy, CT/MRI or proof of tissue invasion/grade. One real postcontrast MRI case below illustrates a dural-based mass in two planes. The lesson still does not train independent recognition of all signs, and CT bone-window case media remain unresolved.",
   "createdAt": "2026-10-19",
   "inspection": "Author rasterized original SVG with Sharp and opened actual PNG: mass beneath dura, blue cleft at mass–brain interface, displaced brain boundary and dural extension labels1–4 visible. Independent review pending; browser rendering not verified.",
+  "caseImages": {
+    "source": "Radiopaedia",
+    "caseId": 50810,
+    "title": "Meningioma",
+    "contributors": ["Hidayatullah Hamidi", "Najibullah Rasouly"],
+    "studyId": 56299,
+    "caseUrl": "https://radiopaedia.org/cases/meningioma-56?lang=gb",
+    "accessed": "2026-10-23",
+    "diagnosticConfidence": "Radiopaedia labels diagnosis almost certain; case discussion describes a typical meningioma.",
+    "reuseBasis": "User explicitly authorized Radiopaedia images for RadYar, including its commercial subscription context. This is project authorization, not a claim of a Creative Commons license.",
+    "selection": "Two post-contrast T1 planes from one MRI study show the same left frontotemporal dural-based, avidly enhancing mass. Selected for orientation to extra-axial location; no independent sign-recognition test or histologic inference is added.",
+    "imageHandling": "Original case images copied as delivered; no crop, annotation, recoloring or diagnostic overlay added.",
+    "frames": [
+      { "file": "case-50810/t1c-sagittal.jpg", "imageId": 28020528, "sequence": "Sagittal T1 C+", "plane": "sagittal", "dimensions": "557x630" },
+      { "file": "case-50810/t1c-coronal.jpg", "imageId": 28020530, "sequence": "Coronal T1 C+", "plane": "coronal", "dimensions": "630x621" }
+    ]
+  },
   "caseAccessAttempts": [
     {
       "caseId": "rID7679",
       "source": "https://radiopaedia.org/cases/meningioma",
       "contributor": "Hani M. Al Salam",
       "metadataEvidence": "Indexed original case text; published18Nov2009; DOI10.53347/rID-7679; T1/T2/FLAIR and postcontrast sequences listed. No actual pixels inspected.",
-      "access": "Direct source fetch402; NCCommons study8496 cache miss; local network DNS11001. Not used as media."
+      "access": "Direct source fetch initially returned402 and NCCommons study8496 cache missed. Browser access later succeeded; study8496 was visually inspected and found flagged as a legacy case. Not selected as media."
     },
     {
       "caseId": "rID8574",

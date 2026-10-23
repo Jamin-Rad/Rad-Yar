@@ -23,10 +23,22 @@ function SelfCheck({ lang }) {
   const [answer, setAnswer] = useState(null)
   return <section className={styles.quiz} aria-labelledby="meningeom-check"><h3 id="meningeom-check">{pick(CHAPTERS[2].title, lang)}</h3><p>{pick(CHECK.question, lang)}</p><div className={styles.answers}>{CHECK.options.map((option, index) => <button type="button" key={index} aria-pressed={answer === index} onClick={() => setAnswer(index)}>{pick(option, lang)}</button>)}</div><div aria-live="polite" aria-atomic="true">{answer !== null && <p className={styles.feedback}>{pick(CHECK.feedback[answer], lang)}</p>}</div></section>
 }
+function CaseFigure({ lang }) {
+  const c = value => pick(value, lang)
+  return <figure className={styles.caseFigure}>
+    <figcaption><strong>{c(COPY.caseTitle)}</strong><br />{c(COPY.caseCaption)}</figcaption>
+    <div className={styles.caseImages}>
+      <section><h3>Sagittal T1 C+</h3><img src="/educational/meningeom/case-50810/t1c-sagittal.jpg" width="557" height="630" loading="lazy" alt={c(COPY.caseSagittalAlt)} /></section>
+      <section><h3>Coronal T1 C+</h3><img src="/educational/meningeom/case-50810/t1c-coronal.jpg" width="630" height="621" loading="lazy" alt={c(COPY.caseCoronalAlt)} /></section>
+    </div>
+    <p>{c(COPY.caseNote)}</p>
+    <a href="https://radiopaedia.org/cases/meningioma-56?lang=gb" target="_blank" rel="noopener noreferrer">Radiopaedia · rID 50810</a>
+  </figure>
+}
 function Chapter({ id, lang }) {
   const c = value => pick(value, lang)
   if (id === 'location') return <><p className={reference.lead}>{c(COPY.basics)}</p><p>{c(COPY.scope)}</p><p>{c(COPY.location)}</p><Table headers={COPY.headers} rows={COPY.locationRows} lang={lang} /><figure className={styles.diagram}><img src="/educational/meningeom/hero.svg" alt={c(COPY.heroAlt)} width="840" height="520" /><figcaption>{c(COPY.diagramCaption)}</figcaption></figure><details className={styles.sources}><summary>{c(COPY.extraTitle)}</summary><p>{c(COPY.extra)}</p></details></>
-  if (id === 'pattern') return <><p className={reference.lead}>{c(COPY.patternIntro)}</p><Table headers={COPY.headers} rows={COPY.patternRows} lang={lang} /><details className={styles.sources}><summary>{c(COPY.advancedTitle)}</summary><Table headers={COPY.headers} rows={COPY.advancedRows} lang={lang} /></details></>
+  if (id === 'pattern') return <><p className={reference.lead}>{c(COPY.patternIntro)}</p><Table headers={COPY.headers} rows={COPY.patternRows} lang={lang} /><CaseFigure lang={lang} /><details className={styles.sources}><summary>{c(COPY.advancedTitle)}</summary><Table headers={COPY.headers} rows={COPY.advancedRows} lang={lang} /></details></>
   if (id === 'limits') return <><p className={reference.lead}>{c(COPY.limitsIntro)}</p><p>{c(COPY.diffusion)}</p><p>{c(COPY.mediaLimit)}</p><SelfCheck lang={lang} /></>
   return <ul className={styles.summary}>{COPY.summary.map((rule, i) => <li key={i}><Icon name="check" /><span>{c(rule)}</span></li>)}</ul>
 }
