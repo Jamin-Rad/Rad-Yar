@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
+import StandardLessonShell, { LessonSection, LessonSources , TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { MENINGITIS_COPY as C, MENINGITIS_ID, MENINGITIS_SECTIONS, MENINGITIS_SOURCES } from '@/data/gehirnMeningitisEnzephalitisLesson'
 import styles from './page.module.css'
@@ -52,7 +52,7 @@ export default function MeningitisEnzephalitisLesson() {
   const sources = MENINGITIS_SOURCES.map(source => ({ ...source, tag: value(source.tag, lang), citation: value(source.citation, lang), scope: value(source.scope, lang) }))
   return <StandardLessonShell lessonId={MENINGITIS_ID} lang={lang} title={value(C.title, lang)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: langPath('/') }, { label: value(C.chapter, lang), href: langPath('/lernen/gehirn') }, { label: value(C.title, lang) }]}
-    sections={sections} labels={Object.fromEntries(Object.entries(labels).map(([key, item]) => [key, value(item, lang)]))} actions={{}}
+    sections={[...(sections),{id:'takehome',label:lang==='fa'?'پیام نهایی':'Take Home Message',icon:'summary',emphasis:true}]} labels={Object.fromEntries(Object.entries(labels).map(([key, item]) => [key, value(item, lang)]))} actions={{}}
     renderIcon={id => icons[id] || icons.brain}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: `/educational/meningitis-enzephalitis/compartments-${lang}.svg`, heroImageOpacity: .92, accent: '#58b5c2', accentStrong: '#185d69', accentSoft: '#e2f3f4', secondary: '#d18469', secondaryStrong: '#784632', heroBase: '#102734' }}
     className={styles.page} heroImageAlt={value(C.heroAlt, lang)} syncHashNavigation
@@ -73,5 +73,7 @@ export default function MeningitisEnzephalitisLesson() {
       </LessonSection>
       <LessonSection id="self-check" title={value(chapterTitles[2], lang)} icon="check"><Check lang={lang}/></LessonSection>
     </div>
-  </StandardLessonShell>
+
+<LessonSection id="takehome" icon="summary"><TakeHomeList items={C.concepts.map(item=>({title:value(item.title,lang),detail:value(item.text,lang)}))}/></LessonSection>
+</StandardLessonShell>
 }

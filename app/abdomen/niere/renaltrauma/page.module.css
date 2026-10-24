@@ -1,4 +1,4 @@
-.page { --lesson-ink:#203344; --lesson-body:#425669; --lesson-line:rgba(255,255,255,.24); }
+.page { --lesson-ink:var(--ink); --lesson-body:var(--body); --lesson-line:var(--line); }
 .body { max-width:76ch; margin:0 0 14px; color:var(--lesson-body); font-size:clamp(16px,1.25vw,18px); line-height:1.75; }
 .note { max-width:76ch; margin:0; padding:12px 15px; border-inline-start:4px solid #38aeb1; border-radius:7px; background:rgba(56,174,177,.1); color:var(--lesson-body); line-height:1.65; }
 .figure { width:min(100%,704px); margin:24px auto; }
@@ -22,7 +22,7 @@
   .phaseName { font-size:20px; }
   .phaseTarget { font-size:16px; }
 }
-:global(html[data-theme='dark']) .page .body,:global(html[data-theme='dark']) .page .note,:global(html[data-theme='dark']) .page .figure figcaption { color:#d0c8d2; }
+
 :global(html[data-theme='dark']) .phaseDiagram { background:linear-gradient(135deg,#162f3c,#172532); border-color:rgba(255,255,255,.2); }
 :global(html[data-theme='dark']) .phaseName { fill:#b3e5e8; }
 :global(html[data-theme='dark']) .phaseTarget { fill:#d0dde3; }

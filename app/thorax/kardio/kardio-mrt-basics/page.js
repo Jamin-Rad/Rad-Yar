@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { Fragment, useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import LessonKeyPoints from '@/components/LessonKeyPoints'
@@ -145,6 +147,23 @@ function ReadButton({ lang, isRead, toggleRead, authError }) {
   return <div className={base.readControl}><button type="button" className={`${base.readButton} ${isRead ? base.readButtonActive : ''}`} onClick={toggleRead}><span className={base.readCheck}>{isRead ? '✓' : ''}</span><span>{isRead ? ui.readDone : ui.read}</span></button>{authError && <div className={base.readError}><span>{ui.auth}</span><Link href="/sign-in">{ui.signIn}</Link></div>}</div>
 }
 
+
+// Five teaching tasks regroup the six original statements and their memory box.
+function groupedCardiacTakeHome(markdown) {
+  const clean = value => value.replace(/\*\*/g, '').trim()
+  const [core, memory = ''] = markdown.split('# Radyar Memory Box')
+  const statements = core.split('\n').map(clean).filter(line => line && !line.startsWith('#') && line !== '---')
+  const memoryLines = memory.split('\n').map(clean).filter(Boolean)
+  const matching = prefix => memoryLines.find(line => line.startsWith(prefix)) || ''
+  const context = memoryLines.filter(line => !/^(Cine|Perfusion|T2|LGE) =/.test(line)).map(line => line.replace(/^#+\s*/, ''))
+  return [
+    { title:'Morphologie · Funktion · Perfusion · Gewebe', detail:[statements[0], statements[5], ...context].filter(Boolean).join(' ') },
+    { title:'Cine-bSSFP', detail:[statements[1], matching('Cine =')].filter(Boolean).join(' ') },
+    { title:'First-Pass-Perfusion', detail:[statements[2], matching('Perfusion =')].filter(Boolean).join(' ') },
+    { title:'T2 / T2-Mapping', detail:[statements[3], matching('T2 =')].filter(Boolean).join(' ') },
+    { title:'LGE', detail:[statements[4], matching('LGE =')].filter(Boolean).join(' ') },
+  ]
+}
 export default function CardiacMriBasicsPage() {
   const lehrMode = useLehrModeActive()
   const { lang } = useLanguage()
@@ -174,7 +193,7 @@ export default function CardiacMriBasicsPage() {
     window.setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 20)
   }
 
-  return <main className={`${base.page} ${styles.page}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
+  return <LegacyLessonMigration className={`${base.page} ${styles.page}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/thorax/kardio/kardio-mrt-basics" summaryFallback={groupedCardiacTakeHome(grouped.takehome.join('\n'))} lessonId="/thorax/kardio/kardio-mrt-basics">
     <header className={`${base.header} ${styles.header}`}>
       <nav className={`${base.breadcrumb} ${styles.breadcrumb}`} aria-label="Breadcrumb"><Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/thorax')}>{ui.thorax}</Link><span>›</span><Link href={withLang('/lernen/thorax')}>{ui.chapter}</Link><span>›</span><strong>{ui.title}</strong></nav>
       <div className={`${base.hero} ${styles.hero}`}>
@@ -182,7 +201,7 @@ export default function CardiacMriBasicsPage() {
         <LessonKeyPoints points={[[PILLARS[0].title, PILLARS[0].memory], [PILLARS[1].title, PILLARS[1].memory], [PILLARS[2].title, PILLARS[2].memory], [PILLARS[3].title, PILLARS[3].memory]]} />
       </div>
     </header>
-    <div className={`${base.readBar} ${styles.readBar}`}><ReadButton lang={lang} isRead={isRead} toggleRead={toggleRead} authError={authError} /></div>
+    <div className={`${base.readBar} ${styles.readBar}`}><ReadButton lang={lang} isRead={isRead} toggleRead={toggleRead} authError={authError}  migrationReadControl/></div>
     <div className={`${base.layout} ${styles.layout}`}>
       <aside className={`${base.sidebar} ${styles.sidebar}`}><div className={base.sideTitle}>{ui.contents}</div>{SECTION_IDS.map(id => <button key={id} type="button" className={`${base.sideItem} ${styles.sideItem} ${activeId === id ? `${base.sideItemActive} ${styles.sideItemActive}` : ''}`} onClick={() => jumpTo(id)}><span className={styles.sideIcon}><SectionIcon id={id} /></span><strong>{SECTION_LABELS[id][lang] || SECTION_LABELS[id].de}</strong></button>)}</aside>
       <div className={`${base.main} ${styles.content}`}>
@@ -195,11 +214,11 @@ export default function CardiacMriBasicsPage() {
           const open = lehrMode || openId === id
           return <section id={id} className={`${base.section} ${styles.section}`} key={id}>
             <button type="button" className={`${base.sectionHeader} ${styles.sectionHeader}`} aria-expanded={open} onClick={() => { if (!lehrMode) setOpenId(open ? null : id) }} data-lehr-section-managed><span className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2>{SECTION_LABELS[id][lang] || SECTION_LABELS[id].de}</h2></span><span className={styles.sectionToggle}>{open ? '−' : '+'}</span></button>
-            {open && <div className={`${base.sectionBody} ${styles.sectionBody}`}><MarkdownBlock markdown={grouped[id].join('\n')} /></div>}
+            <div className={`${base.sectionBody} ${styles.sectionBody}`}><MarkdownBlock markdown={grouped[id].join('\n')} /></div>
           </section>
         })}
-        <div className={`${base.readBar} ${styles.bottomRead}`}><ReadButton lang={lang} isRead={isRead} toggleRead={toggleRead} authError={authError} /></div>
+        <div className={`${base.readBar} ${styles.bottomRead}`}><ReadButton lang={lang} isRead={isRead} toggleRead={toggleRead} authError={authError}  migrationReadControl/></div>
       </div>
     </div>
-  </main>
+  </LegacyLessonMigration>
 }

@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import InProgressBanner from '@/components/InProgressBanner'
@@ -56,12 +58,10 @@ function Section({ id, title, lead, children }) {
         <h2>{title}</h2>
         <span>{open ? '−' : '+'}</span>
       </button>
-      {open && (
-        <div className={styles.sectionBody}>
+      <div className={styles.sectionBody}>
           {lead && <p className={styles.lead}>{lead}</p>}
           {children}
         </div>
-      )}
     </section>
   )
 }
@@ -155,6 +155,15 @@ function CaseGallery({ fall, lang, copy, onZoom }) {
   )
 }
 
+
+// Group the existing authored clauses by clinical task; every original clause is retained.
+function groupedTakeHome(pick) {
+  const original = KAVERNOM_LESSON.takehome
+  return [[0,1],[2],[3],[4,5]].map((indices, groupIndex) => ({
+    title: pick(original.items[indices[0]].title),
+    detail: [groupIndex === 0 ? pick(original.lead) : '', ...indices.flatMap((index, within) => [within ? pick(original.items[index].title) : '', pick(original.items[index].text)])].filter(Boolean).join(' '),
+  }))
+}
 export default function KavernomPage() {
   const { lang } = useLanguage()
   const copy = UI[lang] || UI.de
@@ -202,7 +211,7 @@ export default function KavernomPage() {
   const zoomedImage = zoomed === null ? null : KAVERNOM_LESSON.fall.images[zoomed]
 
   return (
-    <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/gehirn/vaskulaer/kavernom" summaryFallback={groupedTakeHome(c)} lessonId="/gehirn/vaskulaer/kavernom">
       <InProgressBanner lang={lang} />
 
       <header className={styles.header}>
@@ -241,7 +250,7 @@ export default function KavernomPage() {
       </header>
 
       <div className={styles.readBar}>
-        <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} />
+        <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/>
       </div>
 
       <div className={styles.layout}>
@@ -268,17 +277,17 @@ export default function KavernomPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="grundlagen" title={c(KAVERNOM_LESSON.grundlagen.title)} lead={c(KAVERNOM_LESSON.grundlagen.lead)}>
+          <Section id="grundlagen" title={c(KAVERNOM_LESSON.grundlagen.title)} lead={c(KAVERNOM_LESSON.grundlagen.lead)} migrationChapter>
             <Cards items={KAVERNOM_LESSON.grundlagen.items} lang={lang} />
             <Callout label={c(KAVERNOM_LESSON.keyLabel)}>{c(KAVERNOM_LESSON.grundlagen.key)}</Callout>
           </Section>
 
-          <Section id="klinik" title={c(KAVERNOM_LESSON.klinik.title)} lead={c(KAVERNOM_LESSON.klinik.lead)}>
+          <Section id="klinik" title={c(KAVERNOM_LESSON.klinik.title)} lead={c(KAVERNOM_LESSON.klinik.lead)} migrationChapter>
             <Table headers={KAVERNOM_LESSON.klinik.headers.map(c)} rows={rows(KAVERNOM_LESSON.klinik.rows)} />
             <Callout label={c(KAVERNOM_LESSON.caveLabel)} cave>{c(KAVERNOM_LESSON.klinik.cave)}</Callout>
           </Section>
 
-          <Section id="mrt" title={c(KAVERNOM_LESSON.mrt.title)} lead={c(KAVERNOM_LESSON.mrt.lead)}>
+          <Section id="mrt" title={c(KAVERNOM_LESSON.mrt.title)} lead={c(KAVERNOM_LESSON.mrt.lead)} migrationChapter>
             <Table headers={KAVERNOM_LESSON.mrt.headers.map(c)} rows={rows(KAVERNOM_LESSON.mrt.rows)} />
             <h3 style={{ margin: '24px 0 12px' }}>{c(KAVERNOM_LESSON.mrt.teachingTitle)}</h3>
             <div className={styles.caseGrid}>
@@ -296,20 +305,20 @@ export default function KavernomPage() {
             </div>
           </Section>
 
-          <Section id="zabramski" title={c(KAVERNOM_LESSON.zabramski.title)} lead={c(KAVERNOM_LESSON.zabramski.lead)}>
+          <Section id="zabramski" title={c(KAVERNOM_LESSON.zabramski.title)} lead={c(KAVERNOM_LESSON.zabramski.lead)} migrationChapter>
             <Table headers={KAVERNOM_LESSON.zabramski.headers.map(c)} rows={rows(KAVERNOM_LESSON.zabramski.rows)} />
           </Section>
 
-          <Section id="assoziation" title={c(KAVERNOM_LESSON.assoziation.title)} lead={c(KAVERNOM_LESSON.assoziation.lead)}>
+          <Section id="assoziation" title={c(KAVERNOM_LESSON.assoziation.title)} lead={c(KAVERNOM_LESSON.assoziation.lead)} migrationChapter>
             <Cards items={KAVERNOM_LESSON.assoziation.items} lang={lang} />
             <Callout label={c(KAVERNOM_LESSON.caveLabel)} cave>{c(KAVERNOM_LESSON.assoziation.cave)}</Callout>
           </Section>
 
-          <Section id="differenzial" title={c(KAVERNOM_LESSON.differenzial.title)} lead={c(KAVERNOM_LESSON.differenzial.lead)}>
+          <Section id="differenzial" title={c(KAVERNOM_LESSON.differenzial.title)} lead={c(KAVERNOM_LESSON.differenzial.lead)} migrationChapter>
             <Table headers={KAVERNOM_LESSON.differenzial.headers.map(c)} rows={rows(KAVERNOM_LESSON.differenzial.rows)} />
           </Section>
 
-          <Section id="fall" title={c(KAVERNOM_LESSON.fall.title)} lead={c(KAVERNOM_LESSON.fall.lead)}>
+          <Section id="fall" title={c(KAVERNOM_LESSON.fall.title)} lead={c(KAVERNOM_LESSON.fall.lead)} migrationChapter>
             <CaseGallery fall={KAVERNOM_LESSON.fall} lang={lang} copy={copy} onZoom={setZoomed} />
 
             <h3 style={{ margin: '24px 0 12px' }}>{c(KAVERNOM_LESSON.fall.findingsTitle)}</h3>
@@ -327,12 +336,12 @@ export default function KavernomPage() {
             <Callout label={c({ de: 'Diagnose', en: 'Diagnosis', fa: 'تشخیص' })}>{c(KAVERNOM_LESSON.fall.diagnosis)}</Callout>
           </Section>
 
-          <Section id="management" title={c(KAVERNOM_LESSON.management.title)} lead={c(KAVERNOM_LESSON.management.lead)}>
+          <Section id="management" title={c(KAVERNOM_LESSON.management.title)} lead={c(KAVERNOM_LESSON.management.lead)} migrationChapter>
             <Cards items={KAVERNOM_LESSON.management.items} lang={lang} />
             <Callout label={c(KAVERNOM_LESSON.caveLabel)} cave>{c(KAVERNOM_LESSON.management.cave)}</Callout>
           </Section>
 
-          <Section id="takehome" title={c(KAVERNOM_LESSON.takehome.title)} lead={c(KAVERNOM_LESSON.takehome.lead)}>
+          <Section id="takehome" title={c(KAVERNOM_LESSON.takehome.title)} lead={c(KAVERNOM_LESSON.takehome.lead)} migrationChapter>
             <div className={styles.takeHomeGrid}>
               {KAVERNOM_LESSON.takehome.items.map((item, index) => (
                 <div className={styles.takeHomeItem} key={c(item.title)}>
@@ -347,7 +356,7 @@ export default function KavernomPage() {
           </Section>
 
           <div className={styles.readBarBottom}>
-            <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} />
+            <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/>
           </div>
         </div>
       </div>
@@ -362,6 +371,6 @@ export default function KavernomPage() {
           </div>
         </div>
       )}
-    </main>
+    </LegacyLessonMigration>
   )
 }

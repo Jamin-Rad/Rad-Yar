@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import InProgressBanner from '@/components/InProgressBanner'
@@ -21,7 +23,7 @@ function Section({ id, title, lead, children }) {
   const [open, setOpen] = useState(true)
   return <section id={id} className={styles.section}>
     <button type="button" className={styles.sectionHeader} onClick={() => setOpen(value => !value)} aria-expanded={open}><h2>{title}</h2><span>{open ? '−' : '+'}</span></button>
-    {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+    <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>
   </section>
 }
 
@@ -85,7 +87,7 @@ export default function DistaleRadiusfrakturPage() {
     return () => observers.forEach(observer => observer?.disconnect())
   }, [data.sections])
 
-  return <main className={`${styles.page} ${styles.mskTraumaPage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+  return <LegacyLessonMigration className={`${styles.page} ${styles.mskTraumaPage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/msk/trauma/distale-radiusfraktur" lessonId="/msk/trauma/distale-radiusfraktur">
     <InProgressBanner lang={lang} />
     <header className={styles.header}>
       <div className={styles.breadcrumb}><Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/msk')}>MSK</Link><span>›</span><span>{c(data.breadcrumb)}</span></div>
@@ -94,7 +96,7 @@ export default function DistaleRadiusfrakturPage() {
         <div className={styles.heroStats}>{data.heroCards.map(card => <div className={styles.heroStat} key={c(card.value)}><strong>{c(card.value)}</strong><span>{c(card.label)}</span><small>{c(card.text)}</small></div>)}</div>
       </div>
     </header>
-    <div className={styles.readBar}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>
+    <div className={styles.readBar}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/></div>
     <div className={styles.layout}>
       <aside className={styles.sidebar}><div className={styles.sideTitle}>{c(data.toc)}</div>{data.sections.map(section => <button type="button" key={section.id} className={`${styles.sideItem} ${active === section.id ? styles.sideItemActive : ''}`} onClick={() => {
         const target = document.getElementById(section.id)
@@ -103,16 +105,16 @@ export default function DistaleRadiusfrakturPage() {
         target?.scrollIntoView({ behavior: 'smooth' })
       }} style={section.emphasis ? { color: '#f97316', border: '1px solid rgba(249,115,22,.5)', background: 'rgba(249,115,22,.12)', fontWeight: 950 } : undefined}><span>{section.icon}</span><strong>{c(section.label)}</strong></button>)}</aside>
       <div className={styles.main}>
-        <Section id="diagnostik" title={c(data.diagnostik.title)} lead={c(data.diagnostik.lead)}><Table headers={data.diagnostik.headers.map(c)} rows={rows(data.diagnostik.rows)} /><Callout label="CT">{c(data.diagnostik.ct)}</Callout></Section>
-        <Section id="muster" title={c(data.muster.title)} lead={c(data.muster.lead)}><ZoomImage src={data.muster.imageSrc} alt={c(data.muster.imageAlt)} copy={copy} /><h3>{c(data.muster.imageLegendTitle)}</h3><Cards items={data.muster.imageLegend} lang={lang} /><Cards items={data.muster.items} lang={lang} /><Callout label={c(data.caveLabel)} cave>{c(data.muster.cave)}</Callout></Section>
-        <Section id="fernandez" title={c(data.fernandez.title)} lead={c(data.fernandez.lead)}><div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '1rem' }}><ZoomImage src={data.fernandez.schemaSrc} alt={c(data.fernandez.schemaAlt)} copy={copy} /><ZoomImage src={data.fernandez.xraySrc} alt={c(data.fernandez.xrayAlt)} copy={copy} /></div><Table headers={data.fernandez.headers.map(c)} rows={rows(data.fernandez.rows)} /><Callout label={c(data.keyLabel)}>{c(data.fernandez.key)}</Callout></Section>
-        <Section id="sonderformen" title={c(data.sonderformen.title)} lead={c(data.sonderformen.lead)}><Cards items={data.sonderformen.items} lang={lang} /></Section>
-        <Section id="begleitverletzungen" title={c(data.begleitverletzungen.title)} lead={c(data.begleitverletzungen.lead)}><CaseGallery title={c(data.begleitverletzungen.caseTitle)} image={{ ...data.begleitverletzungen.images[0], caption: c(data.begleitverletzungen.images[0].caption) }} radiopaediaUrl={data.begleitverletzungen.radiopaediaUrl} copy={copy} /><Cards items={data.begleitverletzungen.items} lang={lang} /><Callout label={c(data.caveLabel)} cave>{c(data.begleitverletzungen.cave)}</Callout></Section>
-        <Section id="befund" title={c(data.befund.title)} lead={c(data.befund.lead)}><Cards items={data.befund.items} lang={lang} /><div className={styles.fractureReportTemplate}><strong>{copy.report}</strong><p>{c(data.befund.sample)}</p></div></Section>
-        <Section id="therapie" title={c(data.therapie.title)} lead={c(data.therapie.lead)}><Cards items={data.therapie.items} lang={lang} /></Section>
-        <Section id="takehome" title={c(data.takehome.title)} lead={c(data.takehome.lead)}><div className={styles.takeHomeGrid}>{data.takehome.items.map((item, index) => <div className={styles.takeHomeItem} key={c(item.title)}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{c(item.title)}</h3><p>{c(item.text)}</p></div></div>)}</div></Section>
-        <div className={styles.readBarBottom}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>
+        <Section id="diagnostik" title={c(data.diagnostik.title)} lead={c(data.diagnostik.lead)} migrationChapter><Table headers={data.diagnostik.headers.map(c)} rows={rows(data.diagnostik.rows)} /><Callout label="CT">{c(data.diagnostik.ct)}</Callout></Section>
+        <Section id="muster" title={c(data.muster.title)} lead={c(data.muster.lead)} migrationChapter><ZoomImage src={data.muster.imageSrc} alt={c(data.muster.imageAlt)} copy={copy} /><h3>{c(data.muster.imageLegendTitle)}</h3><Cards items={data.muster.imageLegend} lang={lang} /><Cards items={data.muster.items} lang={lang} /><Callout label={c(data.caveLabel)} cave>{c(data.muster.cave)}</Callout></Section>
+        <Section id="fernandez" title={c(data.fernandez.title)} lead={c(data.fernandez.lead)} migrationChapter><div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '1rem' }}><ZoomImage src={data.fernandez.schemaSrc} alt={c(data.fernandez.schemaAlt)} copy={copy} /><ZoomImage src={data.fernandez.xraySrc} alt={c(data.fernandez.xrayAlt)} copy={copy} /></div><Table headers={data.fernandez.headers.map(c)} rows={rows(data.fernandez.rows)} /><Callout label={c(data.keyLabel)}>{c(data.fernandez.key)}</Callout></Section>
+        <Section id="sonderformen" title={c(data.sonderformen.title)} lead={c(data.sonderformen.lead)} migrationChapter><Cards items={data.sonderformen.items} lang={lang} /></Section>
+        <Section id="begleitverletzungen" title={c(data.begleitverletzungen.title)} lead={c(data.begleitverletzungen.lead)} migrationChapter><CaseGallery title={c(data.begleitverletzungen.caseTitle)} image={{ ...data.begleitverletzungen.images[0], caption: c(data.begleitverletzungen.images[0].caption) }} radiopaediaUrl={data.begleitverletzungen.radiopaediaUrl} copy={copy} /><Cards items={data.begleitverletzungen.items} lang={lang} /><Callout label={c(data.caveLabel)} cave>{c(data.begleitverletzungen.cave)}</Callout></Section>
+        <Section id="befund" title={c(data.befund.title)} lead={c(data.befund.lead)} migrationChapter><Cards items={data.befund.items} lang={lang} /><div className={styles.fractureReportTemplate}><strong>{copy.report}</strong><p>{c(data.befund.sample)}</p></div></Section>
+        <Section id="therapie" title={c(data.therapie.title)} lead={c(data.therapie.lead)} migrationChapter><Cards items={data.therapie.items} lang={lang} /></Section>
+        <Section id="takehome" title={c(data.takehome.title)} lead={c(data.takehome.lead)} migrationChapter><div className={styles.takeHomeGrid}>{data.takehome.items.map((item, index) => <div className={styles.takeHomeItem} key={c(item.title)}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{c(item.title)}</h3><p>{c(item.text)}</p></div></div>)}</div></Section>
+        <div className={styles.readBarBottom}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/></div>
       </div>
     </div>
-  </main>
+  </LegacyLessonMigration>
 }

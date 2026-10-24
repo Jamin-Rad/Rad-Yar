@@ -6,6 +6,7 @@
 .figure img { display:block; max-width:100%; width:100%; height:auto; }
 .figure figcaption { padding:.8rem 1rem; color:var(--body); font-size:.9rem; line-height:1.6; }
 .diagram { background:#14283c; }
+.diagram figcaption,.diagram figcaption p { color:#e2edf5; }
 .diagram img { max-height:480px; object-fit:contain; }
 .segmentDiagram { background:#f3f8fc; }
 .segmentDiagram img { max-height:340px; object-fit:contain; }

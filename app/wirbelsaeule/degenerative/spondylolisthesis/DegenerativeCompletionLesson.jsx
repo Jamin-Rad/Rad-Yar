@@ -21,7 +21,7 @@ export default function DegenerativeCompletionLesson({lesson}) {
  const returnTo=local(lesson.path)
  const sections=lesson.chapters.map(c=>({...c,label:t(c.title)}))
  return <StandardLessonShell lessonId={lesson.id} lang={lang} title={t(lesson.title)} author="Dr. Zia" syncHashNavigation
- breadcrumbs={[{label:'RadYar',href:local('/')},{label:t(labels.chapter),href:local('/lernen/wirbelsaeule')},{label:t(lesson.title)}]} sections={sections} labels={Object.fromEntries(Object.entries(labels).map(([k,v])=>[k,t(v)]))} renderIcon={name=><Icon name={name}/>}
+ breadcrumbs={[{label:'RadYar',href:local('/')},{label:t(labels.chapter),href:local('/lernen/wirbelsaeule')},{label:t(lesson.title)}]} sections={[...(sections),{id:'takehome',label:lang==='fa'?'پیام نهایی':'Take Home Message',icon:'summary',emphasis:true}]} labels={Object.fromEntries(Object.entries(labels).map(([k,v])=>[k,t(v)]))} renderIcon={name=><Icon name={name}/>}
  actions={{mcq:{label:t(labels.practice),href:local(`/ueben/quiz?fach=wirbelsaeule&n=2&themen=${lesson.id}&from=${encodeURIComponent(returnTo)}`)},flashcards:{label:t(labels.cards),href:local(`/flashcards/${lesson.id}?from=${encodeURIComponent(returnTo)}`)}}}
  theme={{backgroundImage:'/andarun-galaxy-v3.png',heroImage:lesson.hero,heroImageOpacity:.64,accent:'#477e85',accentStrong:'#285a64',accentSoft:'#e6f1f3',secondary:'#a17b96',secondaryStrong:'#69566d',heroBase:'#142a37'}} heroImageAlt={t(lesson.heroAlt)} className={styles.page}
  sources={<LessonSources title={t(labels.sources)} note={t(lesson.scope)} items={lesson.sources.map(s=>({...s,tag:'Wirbelsäule'}))}/> }>
@@ -31,7 +31,9 @@ export default function DegenerativeCompletionLesson({lesson}) {
  {section.cave&&<aside className={styles.cave}>{t(section.cave)}</aside>}
  {section.diagram && <OrientationDiagram kind={section.diagram} lang={lang}/>}
  {section.checks?.map(i=><Check key={`${lang}-${i}`} item={lesson.checks[i]} lang={lang} lessonId={lesson.id}/>)}
- {section.takeaways&&<TakeHomeList items={section.takeaways.map(item=>({title:t(item),detail:''}))}/>}
+
  </LessonSection>)}</div>
- </StandardLessonShell>
+
+<LessonSection id="takehome" icon="summary"><TakeHomeList items={lesson.chapters.flatMap(chapter=>chapter.takeaways||[]).map(item=>({title:t(item),detail:''}))}/></LessonSection>
+</StandardLessonShell>
 }

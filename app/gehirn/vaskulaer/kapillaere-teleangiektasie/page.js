@@ -1,4 +1,5 @@
 'use client'
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
@@ -78,7 +79,8 @@ export default function KapillaereTeleangiektasiePage() {
 
   const zoomedCase = zoomed === null ? null : lesson.fall.cases[zoomed.caseIndex]
   const zoomedImage = zoomed === null ? null : (zoomedCase.sequenceImages?.[zoomed.sequenceIndex] || { image: zoomedCase.image, alt: zoomedCase.alt })
-  return <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+  return <LegacyLessonMigration lessonRoute="/gehirn/vaskulaer/kapillaere-teleangiektasie" lessonId="/gehirn/vaskulaer/kapillaere-teleangiektasie" lang={lang}>
+    <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
     <InProgressBanner lang={lang} />
     <header className={styles.header}>
       <div className={styles.breadcrumb}><Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/gehirn')}>{c({ de: 'Kopf', en: 'Head', fa: 'سر' })}</Link><span>›</span><span>{c(lesson.breadcrumb)}</span></div>
@@ -97,11 +99,11 @@ export default function KapillaereTeleangiektasiePage() {
     <div className={styles.layout}>
       <aside className={styles.sidebar}><div className={styles.sideTitle}>{c(lesson.toc)}</div>{lesson.sections.map(section => <button type="button" key={section.id} className={`${styles.sideItem} ${active === section.id ? styles.sideItemActive : ''}`} onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth' })} style={section.emphasis ? { color: '#f59e0b', border: '1px solid rgba(245,158,11,.48)', background: 'rgba(245,158,11,.12)', fontWeight: 950, boxShadow: '0 8px 20px rgba(245,158,11,.10)' } : undefined}><span>{section.icon}</span><strong>{c(section.label)}</strong></button>)}</aside>
       <div className={styles.main}>
-        <Section id="grundlagen" title={c(lesson.grundlagen.title)} lead={c(lesson.grundlagen.lead)}><Cards items={lesson.grundlagen.items} lang={lang} /><Callout label={c(lesson.keyLabel)}>{c(lesson.grundlagen.key)}</Callout></Section>
-        <Section id="klinik" title={c(lesson.klinik.title)} lead={c(lesson.klinik.lead)}><Table headers={lesson.klinik.headers.map(c)} rows={rows(lesson.klinik.rows)} /><Callout label={c(lesson.caveLabel)} cave>{c(lesson.klinik.cave)}</Callout></Section>
-        <Section id="bildgebung" title={c(lesson.bildgebung.title)} lead={c(lesson.bildgebung.lead)}><Table headers={lesson.bildgebung.headers.map(c)} rows={rows(lesson.bildgebung.rows)} /><Callout label={c(lesson.keyLabel)}>{c(lesson.bildgebung.key)}</Callout></Section>
-        <Section id="differenzial" title={c(lesson.differenzial.title)} lead={c(lesson.differenzial.lead)}><Table headers={lesson.differenzial.headers.map(c)} rows={rows(lesson.differenzial.rows)} /></Section>
-        <Section id="fall" title={c(lesson.fall.title)} lead={c(lesson.fall.lead)}>
+        <Section migrationChapter id="grundlagen" title={c(lesson.grundlagen.title)} lead={c(lesson.grundlagen.lead)}><Cards items={lesson.grundlagen.items} lang={lang} /><Callout label={c(lesson.keyLabel)}>{c(lesson.grundlagen.key)}</Callout></Section>
+        <Section migrationChapter id="klinik" title={c(lesson.klinik.title)} lead={c(lesson.klinik.lead)}><Table headers={lesson.klinik.headers.map(c)} rows={rows(lesson.klinik.rows)} /><Callout label={c(lesson.caveLabel)} cave>{c(lesson.klinik.cave)}</Callout></Section>
+        <Section migrationChapter id="bildgebung" title={c(lesson.bildgebung.title)} lead={c(lesson.bildgebung.lead)}><Table headers={lesson.bildgebung.headers.map(c)} rows={rows(lesson.bildgebung.rows)} /><Callout label={c(lesson.keyLabel)}>{c(lesson.bildgebung.key)}</Callout></Section>
+        <Section migrationChapter id="differenzial" title={c(lesson.differenzial.title)} lead={c(lesson.differenzial.lead)}><Table headers={lesson.differenzial.headers.map(c)} rows={rows(lesson.differenzial.rows)} /></Section>
+        <Section migrationChapter id="fall" title={c(lesson.fall.title)} lead={c(lesson.fall.lead)}>
           <div className={styles.caseGrid}>{lesson.fall.cases.map((item, index) => {
             const images = item.sequenceImages || [{ image: item.image, alt: item.alt, label: item.tags.join(' · ') }]
             return <article className={styles.caseCardLink} key={item.url}>
@@ -118,11 +120,12 @@ export default function KapillaereTeleangiektasiePage() {
           })}</div>
           <h3 className={styles.subsectionTitle}>{c(lesson.fall.findingsTitle)}</h3><div className={styles.cardsGrid}>{lesson.fall.findings.map((finding, index) => <div className={styles.infoCard} key={c(finding)}><span className={styles.cardNumber}>{String(index + 1).padStart(2, '0')}</span><p>{c(finding)}</p></div>)}</div><Callout label={c({ de: 'Diagnose', en: 'Diagnosis', fa: 'تشخیص' })}>{c(lesson.fall.diagnosis)}</Callout>
         </Section>
-        <Section id="management" title={c(lesson.management.title)} lead={c(lesson.management.lead)}><Cards items={lesson.management.items} lang={lang} /><Callout label={c(lesson.caveLabel)} cave>{c(lesson.management.cave)}</Callout></Section>
-        <Section id="takehome" title={c(lesson.takehome.title)} lead={c(lesson.takehome.lead)}><div className={styles.takeHomeGrid}>{lesson.takehome.items.map((item, index) => <div className={styles.takeHomeItem} key={c(item.title)}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{c(item.title)}</h3><p>{c(item.text)}</p></div></div>)}</div></Section>
+        <Section migrationChapter id="management" title={c(lesson.management.title)} lead={c(lesson.management.lead)}><Cards items={lesson.management.items} lang={lang} /><Callout label={c(lesson.caveLabel)} cave>{c(lesson.management.cave)}</Callout></Section>
+        <Section migrationChapter id="takehome" title={c(lesson.takehome.title)} lead={c(lesson.takehome.lead)}><div className={styles.takeHomeGrid}>{lesson.takehome.items.map((item, index) => <div className={styles.takeHomeItem} key={c(item.title)}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{c(item.title)}</h3><p>{c(item.text)}</p></div></div>)}</div></Section>
         <div className={styles.readBarBottom}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>
       </div>
     </div>
     {zoomedCase && <div className={styles.strokeImageModal} role="dialog" aria-modal="true" aria-label={c(zoomedImage.alt)} onClick={() => setZoomed(null)}><div className={styles.strokeImageModalContent} onClick={event => event.stopPropagation()}><button type="button" className={styles.strokeImageModalClose} onClick={() => setZoomed(null)} aria-label={copy.close}>×</button><img src={zoomedImage.image} alt={c(zoomedImage.alt)} /><p>{c(zoomedCase.title)} · {zoomedImage.label ? c(zoomedImage.label) : ''}</p></div></div>}
   </main>
+    </LegacyLessonMigration>
 }

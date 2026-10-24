@@ -1,4 +1,5 @@
 'use client'
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
@@ -209,7 +210,8 @@ export default function IschaemischerSchlaganfallPage() {
 
   return (
     <>
-      <main className={`${styles.page} ${styles.strokePage}`} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+      <LegacyLessonMigration lessonRoute="/gehirn/vaskulaer/isch-aemischer-schlaganfall" lessonId="/gehirn/vaskulaer/isch-aemischer-schlaganfall" lang={lang}>
+    <main className={`${styles.page} ${styles.strokePage}`} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
         <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
@@ -237,62 +239,66 @@ export default function IschaemischerSchlaganfallPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="klassifikation" title={c(STROKE_LESSON.basics.classificationTitle)}>
+          <Section migrationChapter id="klassifikation" title={c(STROKE_LESSON.basics.classificationTitle)}>
             <StrokeClassification lesson={STROKE_LESSON.basics} lang={lang} localizeValue={c} />
           </Section>
 
-          <Section id="grundlagen" title={c(STROKE_LESSON.basics.title)}>
+          <Section migrationChapter id="grundlagen" title={c(STROKE_LESSON.basics.title)}>
             <ClinicalBasics lesson={STROKE_LESSON.basics} lang={lang} localizeValue={c} />
             <Callout label={c(STROKE_LESSON.keyLabel)}>{c(STROKE_LESSON.basics.key)}</Callout>
           </Section>
 
-          <Section id="akut-ct" title={c(STROKE_LESSON.acuteCt.title)} lead={c(STROKE_LESSON.acuteCt.lead)}>
+          <Section migrationChapter id="akut-ct" title={c(STROKE_LESSON.acuteCt.title)} lead={c(STROKE_LESSON.acuteCt.lead)}>
             <Table headers={STROKE_LESSON.acuteCt.headers.map(c)} rows={localizedRows(STROKE_LESSON.acuteCt.rows, lang)} />
             <Cards items={localizedItems(STROKE_LESSON.acuteCt.earlySigns, lang)} />
             <Callout type="cave" label={c(STROKE_LESSON.caveLabel)}>{c(STROKE_LESSON.acuteCt.cave)}</Callout>
           </Section>
 
-          <Section id="ctp" title={c(STROKE_LESSON.ctpInterpretation.title)} lead={c(STROKE_LESSON.ctpInterpretation.lead)}>
+          <Section migrationChapter id="ctp" title={c(STROKE_LESSON.ctpInterpretation.title)} lead={c(STROKE_LESSON.ctpInterpretation.lead)}>
             <Cards items={localizedItems(STROKE_LESSON.ctpInterpretation.items, lang)} />
             <Cards items={localizedItems(STROKE_LESSON.ctpInterpretation.steps, lang)} />
             <Callout type="cave" label={c(STROKE_LESSON.caveLabel)}>{c(STROKE_LESSON.ctpInterpretation.cave)}</Callout>
           </Section>
 
-          <Section id="aspects" title={c(STROKE_LESSON.aspects.title)} lead={c(STROKE_LESSON.aspects.lead)}>
+          <Section migrationChapter id="aspects" title={c(STROKE_LESSON.aspects.title)} lead={c(STROKE_LESSON.aspects.lead)}>
+            <figure className={strokeStyles.strokeAspectsMap}>
+              <Image src="/stroke/aspects-regions-p4.png" alt={c(STROKE_LESSON.aspects.imageAlt)} width={840} height={605} style={{ width: '100%', height: 'auto' }} />
+              <figcaption>{c(STROKE_LESSON.aspects.sourceCaption)}</figcaption>
+            </figure>
             <AspectsMap lesson={STROKE_LESSON.aspects} localizeValue={c} />
           </Section>
 
-          <Section id="ct-verlauf" title={c(STROKE_LESSON.ctTimeline.title)} lead={c(STROKE_LESSON.ctTimeline.lead)}>
+          <Section migrationChapter id="ct-verlauf" title={c(STROKE_LESSON.ctTimeline.title)} lead={c(STROKE_LESSON.ctTimeline.lead)}>
             <Table headers={STROKE_LESSON.ctTimeline.headers.map(c)} rows={localizedRows(STROKE_LESSON.ctTimeline.rows, lang)} />
           </Section>
 
-          <Section id="mrt" title={c(STROKE_LESSON.mri.title)} lead={c(STROKE_LESSON.mri.lead)}>
+          <Section migrationChapter id="mrt" title={c(STROKE_LESSON.mri.title)} lead={c(STROKE_LESSON.mri.lead)}>
             <Table headers={STROKE_LESSON.mri.headers.map(c)} rows={localizedRows(STROKE_LESSON.mri.rows, lang)} />
             <Callout label={c(STROKE_LESSON.mri.mismatchTitle)}>{c(STROKE_LESSON.mri.mismatchText)}</Callout>
             <Callout type="cave" label={c(STROKE_LESSON.caveLabel)}>{c(STROKE_LESSON.mri.cave)}</Callout>
           </Section>
 
-          <Section id="mrt-verlauf" title={c(STROKE_LESSON.mriTimeline.title)} lead={c(STROKE_LESSON.mriTimeline.lead)}>
+          <Section migrationChapter id="mrt-verlauf" title={c(STROKE_LESSON.mriTimeline.title)} lead={c(STROKE_LESSON.mriTimeline.lead)}>
             <Table headers={STROKE_LESSON.mriTimeline.headers.map(c)} rows={localizedRows(STROKE_LESSON.mriTimeline.rows, lang)} />
             <Callout type="cave" label={c(STROKE_LESSON.mriTimeline.enhancementTitle)}>{c(STROKE_LESSON.mriTimeline.enhancementText)}</Callout>
           </Section>
 
-          <Section id="verlauf" title={c(STROKE_LESSON.pitfalls.title)} lead={c(STROKE_LESSON.pitfalls.lead)}>
+          <Section migrationChapter id="verlauf" title={c(STROKE_LESSON.pitfalls.title)} lead={c(STROKE_LESSON.pitfalls.lead)}>
             <Cards items={localizedItems(STROKE_LESSON.pitfalls.items, lang)} />
             <Callout type="cave" label={c(STROKE_LESSON.caveLabel)}>{c(STROKE_LESSON.pitfalls.cave)}</Callout>
           </Section>
 
-          <Section id="therapie" title={c(STROKE_LESSON.treatment.title)} lead={c(STROKE_LESSON.treatment.lead)}>
+          <Section migrationChapter id="therapie" title={c(STROKE_LESSON.treatment.title)} lead={c(STROKE_LESSON.treatment.lead)}>
             <Cards items={localizedItems(STROKE_LESSON.treatment.items, lang)} />
             <Cards items={localizedItems(STROKE_LESSON.treatment.reportItems, lang)} />
             <Callout label={c(STROKE_LESSON.keyLabel)}>{c(STROKE_LESSON.treatment.key)}</Callout>
           </Section>
 
-          <Section id="faelle" title={c(STROKE_LESSON.cases.title)} lead={c(STROKE_LESSON.cases.lead)}>
+          <Section migrationChapter id="faelle" title={c(STROKE_LESSON.cases.title)} lead={c(STROKE_LESSON.cases.lead)}>
             <div className={styles.caseGrid}>{STROKE_LEARNING_CASES.map(item => <CaseCard key={item.id} item={item} lang={lang} openCase={c(STROKE_LESSON.openCase)} onZoom={setPreviewImage} zoomLabel={imageUi.zoom} />)}</div>
           </Section>
 
-          <Section id="takehome" title={c(STROKE_LESSON.takehome.title)} lead={c(STROKE_LESSON.takehome.lead)}>
+          <Section migrationChapter id="takehome" title={c(STROKE_LESSON.takehome.title)} lead={c(STROKE_LESSON.takehome.lead)}>
             <div className={styles.takeHomeGrid}>
               {localizedItems(STROKE_LESSON.takehome.items, lang).map((item, index) => <div className={styles.takeHomeItem} key={item.title}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></div>)}
             </div>
@@ -302,6 +308,7 @@ export default function IschaemischerSchlaganfallPage() {
         </div>
       </div>
       </main>
+    </LegacyLessonMigration>
       {previewImage && (
         <div className={styles.strokeImageModal} role="dialog" aria-modal="true" aria-label={imageUi.zoom} onClick={() => setPreviewImage(null)}>
           <div className={styles.strokeImageModalContent} onClick={event => event.stopPropagation()}>

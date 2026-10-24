@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
 import InProgressBanner from '@/components/InProgressBanner'
@@ -24,7 +26,7 @@ function Section({ id, title, lead, children }) {
       <button type="button" className={styles.sectionHeader} onClick={() => setOpen(v => !v)} aria-expanded={open}>
         <h2>{title}</h2><span>{open ? '−' : '+'}</span>
       </button>
-      {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+      <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>
     </section>
   )
 }
@@ -189,7 +191,7 @@ export default function RadiuskoepfchenfrakturPage() {
   }, [])
 
   return (
-    <main className={`${styles.page} ${styles.mskTraumaPage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={`${styles.page} ${styles.mskTraumaPage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/msk/trauma/radiuskoepfchenfraktur" lessonId="/msk/trauma/radiuskoepfchenfraktur">
       <InProgressBanner lang={lang} />
 
       <header className={styles.header}>
@@ -225,7 +227,7 @@ export default function RadiuskoepfchenfrakturPage() {
       </header>
 
       <div className={styles.readBar}>
-        <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} />
+        <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/>
       </div>
 
       <div className={styles.layout}>
@@ -250,12 +252,12 @@ export default function RadiuskoepfchenfrakturPage() {
         <div className={styles.main}>
 
           {/* ANATOMIE */}
-          <Section id="anatomie" title={c(D.anatomie.title)} lead={c(D.anatomie.lead)}>
+          <Section id="anatomie" title={c(D.anatomie.title)} lead={c(D.anatomie.lead)} migrationChapter>
             <Cards items={D.anatomie.items} lang={lang} />
           </Section>
 
           {/* BILDGEBUNG */}
-          <Section id="bildgebung" title={c(D.bildgebung.title)} lead={c(D.bildgebung.lead)}>
+          <Section id="bildgebung" title={c(D.bildgebung.title)} lead={c(D.bildgebung.lead)} migrationChapter>
             <Table headers={D.bildgebung.aufnahmen.headers.map(c)} rows={rows(D.bildgebung.aufnahmen.rows)} />
 
             {/* Fettkissenzeichen */}
@@ -285,25 +287,25 @@ export default function RadiuskoepfchenfrakturPage() {
           </Section>
 
           {/* MASON KLASSIFIKATION */}
-          <Section id="mason" title={c(D.mason.title)} lead={c(D.mason.lead)}>
+          <Section id="mason" title={c(D.mason.title)} lead={c(D.mason.lead)} migrationChapter>
             <SchemaImage src={D.mason.schemaSrc} alt={c(D.mason.schemaAlt)} copy={copy} fullWidth />
             <Table headers={D.mason.headers.map(c)} rows={rows(D.mason.rows)} />
             <Callout label={c(D.keyLabel)}>{c(D.mason.key)}</Callout>
           </Section>
 
           {/* THERAPIE */}
-          <Section id="therapie" title={c(D.therapie.title)} lead={c(D.therapie.lead)}>
+          <Section id="therapie" title={c(D.therapie.title)} lead={c(D.therapie.lead)} migrationChapter>
             <Cards items={D.therapie.items} lang={lang} />
             <Callout label={c(D.caveLabel)} cave>{c(D.therapie.cave)}</Callout>
           </Section>
 
           {/* ASSOZIIERTE VERLETZUNGEN */}
-          <Section id="assoziiert" title={c(D.assoziiert.title)} lead={c(D.assoziiert.lead)}>
+          <Section id="assoziiert" title={c(D.assoziiert.title)} lead={c(D.assoziiert.lead)} migrationChapter>
             <Cards items={D.assoziiert.items} lang={lang} />
           </Section>
 
           {/* TAKE-HOME */}
-          <Section id="takehome" title={c(D.takehome.title)} lead={c(D.takehome.lead)}>
+          <Section id="takehome" title={c(D.takehome.title)} lead={c(D.takehome.lead)} migrationChapter>
             <div className={styles.takeHomeGrid}>
               {D.takehome.items.map((item, i) => (
                 <div className={styles.takeHomeItem} key={c(item.title)}>
@@ -318,10 +320,10 @@ export default function RadiuskoepfchenfrakturPage() {
           </Section>
 
           <div className={styles.readBarBottom}>
-            <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} />
+            <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/>
           </div>
         </div>
       </div>
-    </main>
+    </LegacyLessonMigration>
   )
 }

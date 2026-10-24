@@ -1,4 +1,5 @@
 'use client'
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
@@ -201,6 +202,7 @@ export default function CadasilPage() {
   const zoomedImage = zoomed === null ? null : CADASIL_LESSON.fall.images[zoomed]
 
   return (
+    <LegacyLessonMigration lessonRoute="/gehirn/vaskulaer/cadasil" lessonId="/gehirn/vaskulaer/cadasil" lang={lang}>
     <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
       <InProgressBanner lang={lang} />
 
@@ -253,17 +255,17 @@ export default function CadasilPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="grundlagen" title={c(CADASIL_LESSON.grundlagen.title)} lead={c(CADASIL_LESSON.grundlagen.lead)}>
+          <Section migrationChapter id="grundlagen" title={c(CADASIL_LESSON.grundlagen.title)} lead={c(CADASIL_LESSON.grundlagen.lead)}>
             <Cards items={CADASIL_LESSON.grundlagen.items} lang={lang} />
             <Callout label={c(CADASIL_LESSON.keyLabel)}>{c(CADASIL_LESSON.grundlagen.key)}</Callout>
           </Section>
 
-          <Section id="klinik" title={c(CADASIL_LESSON.klinik.title)} lead={c(CADASIL_LESSON.klinik.lead)}>
+          <Section migrationChapter id="klinik" title={c(CADASIL_LESSON.klinik.title)} lead={c(CADASIL_LESSON.klinik.lead)}>
             <Table headers={CADASIL_LESSON.klinik.headers.map(c)} rows={rows(CADASIL_LESSON.klinik.rows)} />
             <Callout label={c(CADASIL_LESSON.caveLabel)} cave>{c(CADASIL_LESSON.klinik.cave)}</Callout>
           </Section>
 
-          <Section id="mrt" title={c(CADASIL_LESSON.mrt.title)} lead={c(CADASIL_LESSON.mrt.lead)}>
+          <Section migrationChapter id="mrt" title={c(CADASIL_LESSON.mrt.title)} lead={c(CADASIL_LESSON.mrt.lead)}>
             <Table headers={CADASIL_LESSON.mrt.headers.map(c)} rows={rows(CADASIL_LESSON.mrt.rows)} />
             <p className={styles.lead}>{c({ de: 'Schematische Übersicht der beteiligten Marklagerregionen; sie ersetzt nicht die Beurteilung der individuellen MRT-Verteilung.', en: 'Schematic overview of involved white-matter regions; it does not replace assessment of the individual MRI distribution.', fa: 'نمای شماتیک نواحی درگیر ماده سفید؛ جایگزین ارزیابی توزیع MRI در هر بیمار نیست.' })}</p>
             <img src="/cadasil/distribution.svg" alt={c({ de: 'Schematischer axialer Überblick mit relativer kortikaler Aussparung und beispielhaften Läsionen im Marklager, frontoparietalen Marklager, Corpus callosum und an den anterioren Temporalpolen.', en: 'Schematic axial overview with relative cortical sparing and example lesions in white matter, frontal-parietal white matter, corpus callosum and anterior temporal poles.', fa: 'نمای محوری شماتیک با حفظ نسبی قشر و نمونه ضایعات در ماده سفید، ماده سفید فرونتوپاریتال، جسم پینه‌ای و قطب‌های قدامی تمپورال.' })} style={{ display: 'block', width: 'min(100%, 620px)', height: 'auto', margin: '20px auto' }} />
@@ -278,16 +280,16 @@ export default function CadasilPage() {
             <Callout label={c(CADASIL_LESSON.keyLabel)}>{c(CADASIL_LESSON.mrt.key)}</Callout>
           </Section>
 
-          <Section id="diagnostik" title={c(CADASIL_LESSON.diagnostik.title)} lead={c(CADASIL_LESSON.diagnostik.lead)}>
+          <Section migrationChapter id="diagnostik" title={c(CADASIL_LESSON.diagnostik.title)} lead={c(CADASIL_LESSON.diagnostik.lead)}>
             <Cards items={CADASIL_LESSON.diagnostik.steps} lang={lang} />
             <Callout label={c(CADASIL_LESSON.caveLabel)} cave>{c(CADASIL_LESSON.diagnostik.cave)}</Callout>
           </Section>
 
-          <Section id="differenzial" title={c(CADASIL_LESSON.differenzial.title)} lead={c(CADASIL_LESSON.differenzial.lead)}>
+          <Section migrationChapter id="differenzial" title={c(CADASIL_LESSON.differenzial.title)} lead={c(CADASIL_LESSON.differenzial.lead)}>
             <Table headers={CADASIL_LESSON.differenzial.headers.map(c)} rows={rows(CADASIL_LESSON.differenzial.rows)} />
           </Section>
 
-          <Section id="fall" title={c(CADASIL_LESSON.fall.title)} lead={c(CADASIL_LESSON.fall.lead)}>
+          <Section migrationChapter id="fall" title={c(CADASIL_LESSON.fall.title)} lead={c(CADASIL_LESSON.fall.lead)}>
             <CaseGallery fall={CADASIL_LESSON.fall} lang={lang} copy={copy} onZoom={setZoomed} />
 
             <h3 style={{ margin: '24px 0 12px' }}>{c(CADASIL_LESSON.fall.findingsTitle)}</h3>
@@ -305,12 +307,12 @@ export default function CadasilPage() {
             <Callout label={c({ de: 'Diagnose', en: 'Diagnosis', fa: 'تشخیص' })}>{c(CADASIL_LESSON.fall.diagnosis)}</Callout>
           </Section>
 
-          <Section id="management" title={c(CADASIL_LESSON.management.title)} lead={c(CADASIL_LESSON.management.lead)}>
+          <Section migrationChapter id="management" title={c(CADASIL_LESSON.management.title)} lead={c(CADASIL_LESSON.management.lead)}>
             <Cards items={CADASIL_LESSON.management.items} lang={lang} />
             <Callout label={c(CADASIL_LESSON.caveLabel)} cave>{c(CADASIL_LESSON.management.cave)}</Callout>
           </Section>
 
-          <Section id="takehome" title={c(CADASIL_LESSON.takehome.title)} lead={c(CADASIL_LESSON.takehome.lead)}>
+          <Section migrationChapter id="takehome" title={c(CADASIL_LESSON.takehome.title)} lead={c(CADASIL_LESSON.takehome.lead)}>
             <div className={styles.takeHomeGrid}>
               {CADASIL_LESSON.takehome.items.map((item, index) => (
                 <div className={styles.takeHomeItem} key={c(item.title)}>
@@ -341,5 +343,6 @@ export default function CadasilPage() {
         </div>
       )}
     </main>
+    </LegacyLessonMigration>
   )
 }

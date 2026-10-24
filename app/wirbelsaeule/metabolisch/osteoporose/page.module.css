@@ -10,7 +10,7 @@
 .options button:focus-visible { outline:3px solid #b97842; outline-offset:3px; }
 .options b { color:#315b72; min-width:1.2rem; }
 .feedback { padding:.8rem; background:#e2edf2; border-radius:8px; }
-:global(html[data-theme='dark']) .copy { color:#d8e1e7; }
+:global(html[data-theme='dark']) .copy { color:var(--body); }
 :global(html[data-theme='dark']) .options button { background:#202c34; border-color:#586e7d; color:#edf2f5; }
 :global(html[data-theme='dark']) .options button:hover { border-color:#a8d6ec; }
 :global(html[data-theme='dark']) .options button[aria-pressed="true"] { box-shadow:0 0 0 2px #a8d6ec; }
@@ -25,7 +25,7 @@
 .caveat { border-inline-start:3px solid #b97842; padding:.7rem 1rem; background:#f8f3ea; border-radius:6px; }
 :global(html[data-theme='dark']) .caveat { background:#3c352a; color:#f2e8da; }
 @media(max-width:700px) { .images { grid-template-columns:1fr; } }
-:global(html[data-theme='dark']) .check { background:#24343d; border-color:#52636d; }
+:global(html[data-theme='dark']) .check { background:#24343d; border-color:#52636d; color:#e1e8ed; }
 :global(html[data-theme='dark']) .options b { color:#a8d6ec; }
 @media(max-width:640px) { .lead { font-size:1rem; } .check { padding:.8rem; } }
 .images { grid-template-columns:1fr; }

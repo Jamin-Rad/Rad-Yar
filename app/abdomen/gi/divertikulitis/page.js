@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -360,7 +362,7 @@ function Section({ id, title, lead, children }) {
         <h2>{title}</h2>
         <span>{open ? '−' : '+'}</span>
       </button>
-      {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+      <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>
     </section>
   )
 }
@@ -422,7 +424,7 @@ export default function DivertikulitisPage() {
   }, [sectionIds])
 
   return (
-    <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/abdomen/gi/divertikulitis" lessonId="/abdomen/gi/divertikulitis">
       <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
@@ -451,7 +453,7 @@ export default function DivertikulitisPage() {
         </div>
       </header>
 
-      <div className={styles.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+      <div className={styles.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
 
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
@@ -470,39 +472,39 @@ export default function DivertikulitisPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="grundlagen" title={copy.basics.title} lead={copy.basics.lead}>
+          <Section id="grundlagen" title={copy.basics.title} lead={copy.basics.lead} migrationChapter>
             <Cards items={copy.basics.items} />
             <Callout label={copy.keyLabel}>{copy.basics.key}</Callout>
           </Section>
 
-          <Section id="ct" title={copy.ct.title} lead={copy.ct.lead}>
+          <Section id="ct" title={copy.ct.title} lead={copy.ct.lead} migrationChapter>
             <Table headers={copy.ct.headers} rows={copy.ct.rows} />
             <Cards items={copy.ct.protocol} />
             <Callout type="cave" label={copy.caveLabel}>{copy.ct.cave}</Callout>
           </Section>
 
-          <Section id="cdd" title={copy.cdd.title} lead={copy.cdd.lead}>
+          <Section id="cdd" title={copy.cdd.title} lead={copy.cdd.lead} migrationChapter>
             <Table headers={copy.cdd.headers} rows={copy.cdd.rows} />
             <Callout label={copy.keyLabel}>{copy.cdd.key}</Callout>
           </Section>
 
-          <Section id="komplikationen" title={copy.complications.title} lead={copy.complications.lead}>
+          <Section id="komplikationen" title={copy.complications.title} lead={copy.complications.lead} migrationChapter>
             <Cards items={copy.complications.items} />
             <Callout type="cave" label={copy.caveLabel}>{copy.complications.cave}</Callout>
           </Section>
 
-          <Section id="befundung" title={copy.reporting.title} lead={copy.reporting.lead}>
+          <Section id="befundung" title={copy.reporting.title} lead={copy.reporting.lead} migrationChapter>
             <Cards items={copy.reporting.items} />
             <Callout label={copy.keyLabel}>{copy.reporting.key}</Callout>
           </Section>
 
-          <Section id="faelle" title={copy.cases.title} lead={copy.cases.lead}>
+          <Section id="faelle" title={copy.cases.title} lead={copy.cases.lead} migrationChapter>
             <div className={styles.caseGrid}>
               {LEARNING_CASES.map(item => <CaseCard item={item} copy={copy} key={item.id} />)}
             </div>
           </Section>
 
-          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>
+          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead} migrationChapter>
             <div className={styles.takeHomeGrid}>
               {copy.takehome.items.map((item, index) => (
                 <div className={styles.takeHomeItem} key={item.title}>
@@ -513,9 +515,9 @@ export default function DivertikulitisPage() {
             </div>
           </Section>
 
-          <div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+          <div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
         </div>
       </div>
-    </main>
+    </LegacyLessonMigration>
   )
 }

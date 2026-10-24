@@ -17,6 +17,9 @@ export default function LessonTakeHome({ points, lang, idPrefix }) {
 
   return <ol className={styles.takeHome}>{points.map((point, index) => {
     const open = openItems.has(index)
+    const genericTitle = /^(?:Regel|Rule|قاعده[ٔ‌]*)\s*[0-9۰-۹٠-٩]+[.:]?$/iu.test(String(pick(point.title, lang)).trim())
+    if (genericTitle && point.detail) return <li key={index}><div className={styles.takeHomeStatic}><span className={styles.takeHomePriority}>{String(index + 1).padStart(2, '0')}</span><strong>{pick(point.detail, lang)}</strong></div></li>
+    if (!point.detail || pick(point.detail, lang) === pick(point.title, lang)) return <li key={index}><div className={styles.takeHomeStatic}><span className={styles.takeHomePriority}>{String(index + 1).padStart(2, '0')}</span><strong>{pick(point.title, lang)}</strong></div></li>
     const detailId = idPrefix + '-detail-' + index
     return <li key={index} className={open ? styles.takeHomeItemOpen : ''}>
       <button type="button" aria-expanded={open} aria-controls={detailId} onClick={() => toggleItem(index)}>

@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { LessonIcon, MeasurementIllustration } from './Illustrations'
@@ -76,7 +78,7 @@ export default function FleischnerPage() {
   const from = encodeURIComponent(withLang(lessonPath))
   const readControl = <div className={styles.readControl}><button className={styles.primary} type="button" aria-pressed={isRead} onClick={toggleRead}>{isRead ? '✓ ' : '○ '}{c(isRead ? copy.done : copy.read)}</button>{authError && <p role="alert">{c(copy.auth)} <Link href={withLang('/sign-in')}>{c(copy.login)}</Link></p>}</div>
 
-  return <main className={styles.page} lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+  return <LegacyLessonMigration className={styles.page} lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'} lessonRoute="/thorax/fleischner-kriterien" lessonId="/thorax/fleischner-kriterien">
     <div className={styles.container}>
       <nav className={styles.breadcrumb} aria-label={c(copy.back)}><Link href={withLang('/lernen')}>RadYar</Link><span aria-hidden="true">/</span><Link href={withLang('/lernen/thorax')}>{c(copy.back)}</Link><span aria-hidden="true">/</span><span>{c(copy.title)}</span></nav>
       <header className={styles.hero}>
@@ -95,7 +97,7 @@ export default function FleischnerPage() {
       <div className={styles.layout}>
         <aside className={styles.sidebar}><nav aria-label={c(copy.toc)}><h2>{c(copy.toc)}</h2>{nav.map(item => <a key={item.id} href={`#${item.id}`} className={active === item.id ? styles.activeLink : undefined} aria-current={active === item.id ? 'location' : undefined} onClick={event => { event.preventDefault(); selectSection(item.id) }}><LessonIcon id={item.id}/><span>{title(item.title)}</span></a>)}</nav></aside>
         <div className={styles.article}>
-          {sections.map(section => <LessonSection key={section.id} id={section.id} title={title(section.title)} active={active} onSelect={selectSection}>
+          {sections.map(section => <LessonSection key={section.id} id={section.id} title={title(section.title)} active={active} onSelect={selectSection} migrationChapter>
             {section.lead && <p>{c(section.lead)}</p>}
             {section.id === 'messen' && <MeasurementIllustration c={c}/>}
             {section.cards && <div className={styles.cards}>{section.cards.map((card, index) => <article key={index} className={styles.card}>
@@ -111,13 +113,13 @@ export default function FleischnerPage() {
             {section.note && <div className={styles.note}><strong>{c(copy.note)}</strong><p>{c(section.note)}</p></div>}
             {section.warning && <div className={styles.warning}><strong>{c({ de: 'Solide Komponente beachten', en: 'Check the solid component', fa: 'به جزء جامد توجه کنید' })}</strong><p>{c(section.warning)}</p></div>}
           </LessonSection>)}
-          <LessonSection id="cases" title={title(labels.cases)} active={active} onSelect={selectSection}><p>{c(copy.casesIntro)}</p><div className={styles.cases}>{cases.map((item, index) => <LearningCase key={index} item={item} index={index} c={c} />)}</div></LessonSection>
-          <LessonSection id="summary" title={title(labels.summary)} active={active} onSelect={selectSection}><ul className={styles.takehome}>{takehome.map((item, index) => <li key={index}>{c(item)}</li>)}</ul>
+          <LessonSection id="cases" title={title(labels.cases)} active={active} onSelect={selectSection} migrationChapter><p>{c(copy.casesIntro)}</p><div className={styles.cases}>{cases.map((item, index) => <LearningCase key={index} item={item} index={index} c={c} />)}</div></LessonSection>
+          <LessonSection id="summary" title={title(labels.summary)} active={active} onSelect={selectSection} migrationChapter><ul className={styles.takehome}>{takehome.map((item, index) => <li key={index}>{c(item)}</li>)}</ul>
           </LessonSection>
         </div>
       </div>
       {readControl}
       <footer className={styles.sourceFooter}><span>{c(labels.sources)}: </span><a href="https://doi.org/10.1148/radiol.2017161659" target="_blank" rel="noreferrer">MacMahon et al. · Fleischner 2017</a><span> · </span><a href="https://doi.org/10.1148/radiol.2017162894" target="_blank" rel="noreferrer">Bankier et al. · Radiology 2017</a></footer>
     </div>
-  </main>
+  </LegacyLessonMigration>
 }

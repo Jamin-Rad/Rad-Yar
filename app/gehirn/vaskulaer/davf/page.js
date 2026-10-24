@@ -1,4 +1,5 @@
 'use client'
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
@@ -153,6 +154,7 @@ export default function DavfPage() {
   const rows = value => value.map(row => row.map(c))
 
   return (
+    <LegacyLessonMigration lessonRoute="/gehirn/vaskulaer/davf" lessonId="/gehirn/vaskulaer/davf" lang={lang}>
     <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
       <InProgressBanner lang={lang} />
 
@@ -208,17 +210,17 @@ export default function DavfPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="grundlagen" title={c(DAVF_LESSON.grundlagen.title)} lead={c(DAVF_LESSON.grundlagen.lead)}>
+          <Section migrationChapter id="grundlagen" title={c(DAVF_LESSON.grundlagen.title)} lead={c(DAVF_LESSON.grundlagen.lead)}>
             <Cards items={DAVF_LESSON.grundlagen.items} lang={lang} />
             <Callout label={c(DAVF_LESSON.keyLabel)}>{c(DAVF_LESSON.grundlagen.key)}</Callout>
           </Section>
 
-          <Section id="klinik" title={c(DAVF_LESSON.klinik.title)} lead={c(DAVF_LESSON.klinik.lead)}>
+          <Section migrationChapter id="klinik" title={c(DAVF_LESSON.klinik.title)} lead={c(DAVF_LESSON.klinik.lead)}>
             <Table headers={DAVF_LESSON.klinik.headers.map(c)} rows={rows(DAVF_LESSON.klinik.rows)} />
             <Callout label={c(DAVF_LESSON.caveLabel)} cave>{c(DAVF_LESSON.klinik.cave)}</Callout>
           </Section>
 
-          <Section id="cognard" title={c(DAVF_LESSON.cognard.title)} lead={c(DAVF_LESSON.cognard.lead)}>
+          <Section migrationChapter id="cognard" title={c(DAVF_LESSON.cognard.title)} lead={c(DAVF_LESSON.cognard.lead)}>
             <Table headers={DAVF_LESSON.cognard.headers.map(c)} rows={rows(DAVF_LESSON.cognard.rows)} />
             <figure style={{ margin: '1.5rem 0', padding: '1rem', borderRadius: 16, background: 'rgba(127, 127, 127, .07)' }}>
               <Image src="/davf/drainage-patterns.svg" alt={c({ de: 'Zwei schematische Abflussmuster: links antegrader Abfluss in den Sinus, rechts Reflux in eine kortikale Vene.', en: 'Two schematic drainage patterns: antegrade flow into the sinus on the left and reflux into a cortical vein on the right.', fa: 'دو الگوی شماتیک درناژ: در چپ جریان آنتروگراد به سینوس و در راست رفلاکس به ورید کورتیکال.' })} width={900} height={360} style={{ width: '100%', height: 'auto', display: 'block' }} />
@@ -230,21 +232,21 @@ export default function DavfPage() {
             <Callout label={c(DAVF_LESSON.keyLabel)}>{c(DAVF_LESSON.cognard.key)}</Callout>
           </Section>
 
-          <Section id="bildgebung" title={c(DAVF_LESSON.bildgebung.title)} lead={c(DAVF_LESSON.bildgebung.lead)}>
+          <Section migrationChapter id="bildgebung" title={c(DAVF_LESSON.bildgebung.title)} lead={c(DAVF_LESSON.bildgebung.lead)}>
             <Table headers={DAVF_LESSON.bildgebung.headers.map(c)} rows={rows(DAVF_LESSON.bildgebung.rows)} />
             <Callout label={c(DAVF_LESSON.keyLabel)}>{c(DAVF_LESSON.bildgebung.key)}</Callout>
           </Section>
 
-          <Section id="differenzial" title={c(DAVF_LESSON.differenzial.title)} lead={c(DAVF_LESSON.differenzial.lead)}>
+          <Section migrationChapter id="differenzial" title={c(DAVF_LESSON.differenzial.title)} lead={c(DAVF_LESSON.differenzial.lead)}>
             <Table headers={DAVF_LESSON.differenzial.headers.map(c)} rows={rows(DAVF_LESSON.differenzial.rows)} />
           </Section>
 
-          <Section id="management" title={c(DAVF_LESSON.management.title)} lead={c(DAVF_LESSON.management.lead)}>
+          <Section migrationChapter id="management" title={c(DAVF_LESSON.management.title)} lead={c(DAVF_LESSON.management.lead)}>
             <Cards items={DAVF_LESSON.management.items} lang={lang} />
             <Callout label={c(DAVF_LESSON.caveLabel)} cave>{c(DAVF_LESSON.management.cave)}</Callout>
           </Section>
 
-          <Section id="takehome" title={c(DAVF_LESSON.takehome.title)} lead={c(DAVF_LESSON.takehome.lead)}>
+          <Section migrationChapter id="takehome" title={c(DAVF_LESSON.takehome.title)} lead={c(DAVF_LESSON.takehome.lead)}>
             <div className={styles.takeHomeGrid}>
               {DAVF_LESSON.takehome.items.map((item, index) => (
                 <div className={styles.takeHomeItem} key={c(item.title)}>
@@ -264,5 +266,6 @@ export default function DavfPage() {
         </div>
       </div>
     </main>
+    </LegacyLessonMigration>
   )
 }

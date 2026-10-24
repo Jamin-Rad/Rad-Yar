@@ -1,4 +1,5 @@
 'use client'
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
@@ -467,6 +468,30 @@ function BicepsTeaching({ lang, zoomLabel, onImageZoom }) {
   )
 }
 
+function SectionBody({ data, figures, children, showLead = true, zoomLabel = 'Bild vergrößern', onImageZoom }) { return <>
+        {showLead && data.lead && <p className={styles.sectionLead}>{data.lead}</p>}
+        {data.cards && (
+          <div className={styles.grid}>
+            {data.cards.map(([title, bullets]) => <Card key={title} title={title} bullets={bullets} />)}
+          </div>
+        )}
+        {data.note && <div className={styles.note}>{data.note}</div>}
+        {figures?.length > 0 && (
+          <div className={styles.imageGrid} style={{ marginTop: 16 }}>
+            {figures.map(([src, caption]) => (
+              <Figure
+                key={src}
+                src={src}
+                caption={caption}
+                zoomLabel={zoomLabel}
+                onZoom={() => onImageZoom?.({ src, alt: caption })}
+              />
+            ))}
+          </div>
+        )}
+        {children}
+</> }
+
 function Section({ id, data, figures, children, defaultOpen = true, className = '', showLead = true, zoomLabel = 'Bild vergrößern', onImageZoom }) {
   const [isOpen, setIsOpen] = useState(defaultOpen)
 
@@ -576,6 +601,7 @@ export default function KneeLigamentsPage() {
   }, [sectionIds])
 
   return (
+    <LegacyLessonMigration lessonRoute="/msk/knie/kreuzbaender" lessonId="/msk/knie/kreuzbaender" lang={lang}>
     <main className={styles.page} dir={dir}>
       <div className={styles.shell}>
         <nav className={styles.breadcrumb} aria-label="Breadcrumb">
@@ -629,15 +655,15 @@ export default function KneeLigamentsPage() {
           </aside>
 
           <div className={styles.main}>
-            <Section id="grading" data={copy.sections.grading} defaultOpen={sectionDefaultOpen} />
-            <Section id="lateral" data={copy.sections.lateral} figures={copy.figures.lateral} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage}>
+            <Section migrationChapter id="grading" data={copy.sections.grading} defaultOpen={sectionDefaultOpen} title={copy.sections.grading.title}><SectionBody id="grading" data={copy.sections.grading} defaultOpen={sectionDefaultOpen}></SectionBody></Section>
+            <Section migrationChapter id="lateral" data={copy.sections.lateral} figures={copy.figures.lateral} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} title={copy.sections.lateral.title}><SectionBody id="lateral" data={copy.sections.lateral} figures={copy.figures.lateral} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage}>
               <BicepsTeaching key={lang} lang={lang} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />
-            </Section>
-            <Section id="medial" data={copy.sections.medial} figures={copy.figures.medial} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />
-            <Section id="acl" data={copy.sections.acl} figures={copy.figures.acl} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />
-            <Section id="pcl" data={copy.sections.pcl} figures={copy.figures.pcl} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />
+            </SectionBody></Section>
+            <Section migrationChapter id="medial" data={copy.sections.medial} figures={copy.figures.medial} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} title={copy.sections.medial.title}><SectionBody id="medial" data={copy.sections.medial} figures={copy.figures.medial} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage}></SectionBody></Section>
+            <Section migrationChapter id="acl" data={copy.sections.acl} figures={copy.figures.acl} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} title={copy.sections.acl.title}><SectionBody id="acl" data={copy.sections.acl} figures={copy.figures.acl} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage}></SectionBody></Section>
+            <Section migrationChapter id="pcl" data={copy.sections.pcl} figures={copy.figures.pcl} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} title={copy.sections.pcl.title}><SectionBody id="pcl" data={copy.sections.pcl} figures={copy.figures.pcl} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage}></SectionBody></Section>
 
-            <Section id="takehome" data={copy.sections.takehome} defaultOpen={!isMobile} className={styles.takeHomeSection} showLead={false}>
+            <Section title={copy.sections.takehome.title} lead={copy.sections.takehome.lead} migrationChapter id="takehome" data={copy.sections.takehome} defaultOpen={!isMobile} className={styles.takeHomeSection} showLead={false}>
               <div className={styles.takeHomeBox}>
                 <p className={styles.takeHomeIntro}>{copy.sections.takehome.lead}</p>
                 <div className={styles.takeHomeList}>
@@ -671,5 +697,6 @@ export default function KneeLigamentsPage() {
         </div>
       )}
     </main>
+    </LegacyLessonMigration>
   )
 }

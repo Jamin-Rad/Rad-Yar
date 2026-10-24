@@ -1,17 +1,15 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Navbar from '@/components/Navbar'
-import LessonHero from '@/components/LessonHero'
-import InProgressBanner from '@/components/InProgressBanner'
+import StandardLessonShell, { LessonSection, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
-import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import { CONTRAST_GROUPS, getContrastGroup } from '@/data/contrastMedia'
 import { CONTRAST_LESSONS, CONTRAST_UI, localizeContrast } from '@/data/contrastLessons'
 import styles from './page.module.css'
+import design from './standard-design.module.css'
 
 const SOURCES = [
   { label: 'ESUR Contrast Media Safety Guidelines 2026', href: 'https://www.esur.org/esur-guidelines-2026/' },
@@ -136,39 +134,17 @@ function ContentBlock({ block, lang, ui, withLang, onOpen }) {
   return null
 }
 
-function LessonSection({ section, lang, ui, withLang, onOpen }) {
-  const isMobile = useMobileLearningLayout()
-  const [open, setOpen] = useState(true)
-
-  useEffect(() => setOpen(false), [section.id])
-
-  return (
-    <section id={section.id} className={styles.section}>
-      <button type="button" className={styles.sectionHeader} onClick={() => setOpen(value => !value)} aria-expanded={open}>
-        <span className={styles.sectionHeading}><span className={styles.sectionIcon}>{section.icon}</span><h2>{localizeContrast(section.title, lang)}</h2></span>
-        <span className={styles.sectionToggle}>{open ? '−' : '+'}</span>
-      </button>
-      {open ? <div className={styles.sectionBody}>
-        {section.lead ? <p className={styles.lead}>{localizeContrast(section.lead, lang)}</p> : null}
-        {section.blocks.map((block, index) => <ContentBlock block={block} lang={lang} ui={ui} withLang={withLang} onOpen={onOpen} key={`${section.id}-${block.type}-${index}`} />)}
-      </div> : null}
-    </section>
-  )
-}
-
 export default function ContrastGroupPage({ groupId }) {
   const group = getContrastGroup(groupId)
   const lesson = CONTRAST_LESSONS[groupId]
   const { lang } = useLanguage()
   const ui = CONTRAST_UI[lang] || CONTRAST_UI.de
   const isRTL = lang === 'fa'
-  const [activeId, setActiveId] = useState(lesson.sections[0].id)
   const [lightbox, setLightbox] = useState(null)
   const { isRead, toggleRead, authError } = useLessonReadStatus(group.readId)
   const pagePath = `/technik/kontrastmittel/${group.id}`
   const topicIds = group.topicIds.join(',')
   const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
-  const sectionIds = useMemo(() => lesson.sections.map(section => section.id), [lesson.sections])
   const heroImage = groupId === 'roentgen'
     ? {
         src: '/educational/xray-contrast-attenuation.svg', width: 280, height: 220,
@@ -198,85 +174,33 @@ export default function ContrastGroupPage({ groupId }) {
           } : null
 
   useEffect(() => {
-    const observers = sectionIds.map(id => {
-      const element = document.getElementById(id)
-      if (!element) return null
-      const observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) setActiveId(id)
-      }, { rootMargin: '-18% 0px -72% 0px', threshold: 0.01 })
-      observer.observe(element)
-      return observer
-    })
-    return () => observers.forEach(observer => observer?.disconnect())
-  }, [sectionIds])
-
-  useEffect(() => {
     if (!lightbox) return undefined
     const close = event => { if (event.key === 'Escape') setLightbox(null) }
     window.addEventListener('keydown', close)
     return () => window.removeEventListener('keydown', close)
   }, [lightbox])
 
-  return (
-    <>
-      <Navbar />
-      <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
-        <InProgressBanner lang={lang} />
-        <header className={styles.header}>
-          <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-            <Link href={withLang('/')}>RadYar</Link><span>›</span>
-            <Link href={withLang('/lernen/technik')}>{ui.breadcrumb}</Link><span>›</span>
-            <span>{localizeContrast(lesson.title, lang)}</span>
-          </nav>
-          <div className={styles.hero}>
-            <div className={styles.heroLearning}>
-              <span className={styles.sourceBadge}>{lesson.sourceLabel}</span>
-              <LessonHero
-                title={localizeContrast(lesson.title, lang)}
-                lang={lang}
-                titleClassName={styles.contrastHeroTitle}
-                visual={<><Image src={heroImage.src} alt={localizeContrast(heroImage.alt, lang)} width={heroImage.width} height={heroImage.height} priority /><div className={styles.heroVisualLegend}>{heroImage.legend}</div></>}
-                visualCaption={localizeContrast(heroImage.caption, lang)}
-              />
-              <div className={styles.actions}>
-                <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=technik&n=10&themen=${topicIds}&from=${encodeURIComponent(pagePath)}`)}>{ui.mcq}</Link>
-                <Link className={styles.actionBtn} href={withLang(`/flashcards/${group.flashcardId}?from=${encodeURIComponent(pagePath)}`)}>{ui.flashcards}</Link>
-              </div>
-            </div>
-            <div className={styles.heroStats}>{lesson.stats.map(stat => (
-              <div className={styles.heroStat} key={stat.value}><strong>{stat.value}</strong><span>{localizeContrast(stat.label, lang)}</span><small>{localizeContrast(stat.text, lang)}</small></div>
-            ))}</div>
-          </div>
-        </header>
+  const sectionLabels = {
+    de: { contents: 'Seitenpfad', path: 'Lernpfad', progress: 'gelesen', continue: 'Weiterlernen', complete: 'Abschnitt als gelesen markieren', completed: 'Als gelesen markiert', completeLesson: 'Gesamte Lektion als gelesen markieren', lessonCompleted: 'Alle Kapitel gelesen', open: 'Öffnen', close: 'Schließen', takeHome: 'Take Home Message' },
+    en: { contents: 'Breadcrumb', path: 'Learning path', progress: 'read', continue: 'Continue', complete: 'Mark section as read', completed: 'Marked as read', completeLesson: 'Mark the entire lesson as read', lessonCompleted: 'All chapters read', open: 'Open', close: 'Close', takeHome: 'Take Home Message' },
+    fa: { contents: 'مسیر صفحه', path: 'مسیر یادگیری', progress: 'خوانده‌شده', continue: 'ادامهٔ درس', complete: 'علامت‌گذاری بخش به‌عنوان خوانده‌شده', completed: 'خوانده شد', completeLesson: 'علامت‌گذاری کل درس به‌عنوان خوانده‌شده', lessonCompleted: 'همهٔ فصل‌ها خوانده شده‌اند', open: 'باز کردن', close: 'بستن', takeHome: 'پیام نهایی' },
+  }[lang] || {}
+  const sections = lesson.sections.map(section => ({ id: section.id, label: localizeContrast(section.title, lang), icon: section.id === 'takehome' ? 'summary' : 'content', emphasis: section.id === 'takehome' }))
+  const renderIcon = name => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={name === 'summary' ? 'M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z' : 'M4 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-2H4zM13 7a3 3 0 0 1 3-3h5v15h-4a4 4 0 0 0-4 2'} /></svg>
 
-        <div className={styles.readBar}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} ui={ui} withLang={withLang} /></div>
-
-        <div className={styles.layout}>
-          <aside className={styles.sidebar}>
-            <div className={styles.sideTitle}>{ui.toc}</div>
-            {lesson.sections.map(section => (
-              <button type="button" key={section.id} className={`${styles.sideItem} ${activeId === section.id ? styles.sideItemActive : ''}`} onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
-                <span>{section.icon}</span><strong>{localizeContrast(section.nav, lang)}</strong>
-              </button>
-            ))}
-            <div className={styles.otherLessons}><h3>{ui.otherLessons}</h3>{CONTRAST_GROUPS.filter(item => item.id !== group.id).map(item => <Link href={withLang(`/technik/kontrastmittel/${item.id}`)} key={item.id}><span>{item.icon}</span>{localizeContrast(item.title, lang)}</Link>)}</div>
-          </aside>
-
-          <div className={styles.main}>
-            {lesson.sections.map(section => <LessonSection section={section} lang={lang} ui={ui} withLang={withLang} onOpen={setLightbox} key={section.id} />)}
-            <section className={styles.sources}><h2>{ui.sources}</h2><p>{ui.sourceNote}</p><div>{SOURCES.map(source => <a href={source.href} target="_blank" rel="noreferrer" key={source.href}>{source.label} ↗</a>)}</div></section>
-            <div className={styles.readBarBottom}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} ui={ui} withLang={withLang} /></div>
-          </div>
-        </div>
-
-        {lightbox ? <div className={styles.lightbox} role="dialog" aria-modal="true" aria-label={lightbox.alt} onClick={() => setLightbox(null)}>
-          <div className={styles.lightboxContent} onClick={event => event.stopPropagation()}>
-            <button type="button" onClick={() => setLightbox(null)} aria-label={ui.closeImage}>×</button>
-            <Image src={lightbox.src} alt={lightbox.alt} width={1200} height={1200} priority />
-            <p>{lightbox.alt}</p>
-          </div>
-        </div> : null}
-      </main>
-    </>
-  )
+  return <>
+    <StandardLessonShell lessonId={group.readId} heroLessonId={pagePath} lang={lang} title={localizeContrast(lesson.title, lang)} author={lesson.sourceLabel}
+      sections={sections} labels={sectionLabels} syncHashNavigation renderIcon={renderIcon} heroImageAlt={localizeContrast(lesson.title, lang)}
+      breadcrumbs={[{ label: 'RadYar', href: withLang('/') }, { label: ui.breadcrumb, href: withLang('/lernen/technik') }, { label: localizeContrast(lesson.title, lang) }]}
+      actions={{ mcq: { label: ui.mcq, href: withLang(`/ueben/quiz?fach=technik&n=10&themen=${topicIds}&from=${encodeURIComponent(pagePath)}`) }, flashcards: { label: ui.flashcards, href: withLang(`/flashcards/${group.flashcardId}?from=${encodeURIComponent(pagePath)}`) } }}
+      theme={{ backgroundImage: '/andarun-galaxy-v3.png', accent: '#8c6a9b', accentStrong: '#573763', accentSoft: '#efe5f3', secondary: '#68a5ac', secondaryStrong: '#2f6670', heroBase: '#201829' }}
+      sources={<aside className={design.sources}><h2>{ui.sources}</h2><p>{ui.sourceNote}</p>{SOURCES.map(source => <p key={source.href}><a href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a></p>)}<h3>{ui.otherLessons}</h3><nav aria-label={ui.otherLessons}>{CONTRAST_GROUPS.filter(item => item.id !== group.id).map(item => <Link href={withLang(`/technik/kontrastmittel/${item.id}`)} key={item.id}>{localizeContrast(item.title, lang)} →</Link>)}</nav><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} ui={ui} withLang={withLang} /></aside>}>
+      {lesson.sections.map((section, index) => <LessonSection id={section.id} key={section.id} bodyClassName={design.content}>
+        {index === 0 ? <><dl className={design.orientation}>{lesson.stats.map(stat => <div key={stat.value}><dt>{stat.value} · {localizeContrast(stat.label, lang)}</dt><dd>{localizeContrast(stat.text, lang)}</dd></div>)}</dl>{heroImage ? <figure className={design.diagram}><Image src={heroImage.src} alt={localizeContrast(heroImage.alt, lang)} width={heroImage.width} height={heroImage.height} /><figcaption>{localizeContrast(heroImage.caption, lang)}</figcaption><div className={styles.heroVisualLegend}>{heroImage.legend}</div></figure> : null}</> : null}
+        {section.lead ? <p className={design.lead}>{localizeContrast(section.lead, lang)}</p> : null}
+        {section.blocks.map((block, blockIndex) => block.type === 'takehome' ? <TakeHomeList key={blockIndex} items={block.items.map(item => ({ title: localizeContrast(item.title, lang), detail: localizeContrast(item.text, lang) }))} /> : <ContentBlock block={block} lang={lang} ui={ui} withLang={withLang} onOpen={setLightbox} key={`${section.id}-${block.type}-${blockIndex}`} />)}
+      </LessonSection>)}
+    </StandardLessonShell>
+    {lightbox ? <div className={styles.lightbox} role="dialog" aria-modal="true" aria-label={lightbox.alt} onClick={() => setLightbox(null)}><div className={styles.lightboxContent} onClick={event => event.stopPropagation()}><button type="button" onClick={() => setLightbox(null)} aria-label={ui.closeImage}>×</button><Image src={lightbox.src} alt={lightbox.alt} width={1200} height={1200} priority /><p>{lightbox.alt}</p></div></div> : null}
+  </>
 }

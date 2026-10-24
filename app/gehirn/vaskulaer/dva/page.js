@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import InProgressBanner from '@/components/InProgressBanner'
@@ -56,12 +58,10 @@ function Section({ id, title, lead, children }) {
         <h2>{title}</h2>
         <span>{open ? '−' : '+'}</span>
       </button>
-      {open && (
-        <div className={styles.sectionBody}>
+      <div className={styles.sectionBody}>
           {lead && <p className={styles.lead}>{lead}</p>}
           {children}
         </div>
-      )}
     </section>
   )
 }
@@ -155,6 +155,15 @@ function CaseGallery({ fall, lang, copy, onZoom }) {
   )
 }
 
+
+// Group the existing authored clauses by clinical task; every original clause is retained.
+function groupedTakeHome(pick) {
+  const original = DVA_LESSON.takehome
+  return [[0,1],[2],[3],[4],[5]].map((indices, groupIndex) => ({
+    title: pick(original.items[indices[0]].title),
+    detail: [groupIndex === 0 ? pick(original.lead) : '', ...indices.flatMap((index, within) => [within ? pick(original.items[index].title) : '', pick(original.items[index].text)])].filter(Boolean).join(' '),
+  }))
+}
 export default function DvaPage() {
   const { lang } = useLanguage()
   const copy = UI[lang] || UI.de
@@ -202,7 +211,7 @@ export default function DvaPage() {
   const zoomedImage = zoomed === null ? null : DVA_LESSON.fall.images[zoomed]
 
   return (
-    <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/gehirn/vaskulaer/dva" summaryFallback={groupedTakeHome(c)} lessonId="/gehirn/vaskulaer/dva">
       <InProgressBanner lang={lang} />
 
       <header className={styles.header}>
@@ -241,7 +250,7 @@ export default function DvaPage() {
       </header>
 
       <div className={styles.readBar}>
-        <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} />
+        <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/>
       </div>
 
       <div className={styles.layout}>
@@ -268,34 +277,34 @@ export default function DvaPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="grundlagen" title={c(DVA_LESSON.grundlagen.title)} lead={c(DVA_LESSON.grundlagen.lead)}>
+          <Section id="grundlagen" title={c(DVA_LESSON.grundlagen.title)} lead={c(DVA_LESSON.grundlagen.lead)} migrationChapter>
             <Cards items={DVA_LESSON.grundlagen.items} lang={lang} />
             <Callout label={c(DVA_LESSON.keyLabel)}>{c(DVA_LESSON.grundlagen.key)}</Callout>
           </Section>
 
-          <Section id="anatomie" title={c(DVA_LESSON.anatomie.title)} lead={c(DVA_LESSON.anatomie.lead)}>
+          <Section id="anatomie" title={c(DVA_LESSON.anatomie.title)} lead={c(DVA_LESSON.anatomie.lead)} migrationChapter>
             <Table headers={DVA_LESSON.anatomie.headers.map(c)} rows={rows(DVA_LESSON.anatomie.rows)} />
             <Callout label={c(DVA_LESSON.keyLabel)}>{c(DVA_LESSON.anatomie.key)}</Callout>
           </Section>
 
-          <Section id="bildgebung" title={c(DVA_LESSON.bildgebung.title)} lead={c(DVA_LESSON.bildgebung.lead)}>
+          <Section id="bildgebung" title={c(DVA_LESSON.bildgebung.title)} lead={c(DVA_LESSON.bildgebung.lead)} migrationChapter>
             <Table headers={DVA_LESSON.bildgebung.headers.map(c)} rows={rows(DVA_LESSON.bildgebung.rows)} />
           </Section>
 
-          <Section id="assoziationen" title={c(DVA_LESSON.assoziationen.title)} lead={c(DVA_LESSON.assoziationen.lead)}>
+          <Section id="assoziationen" title={c(DVA_LESSON.assoziationen.title)} lead={c(DVA_LESSON.assoziationen.lead)} migrationChapter>
             <Cards items={DVA_LESSON.assoziationen.items} lang={lang} />
             <Callout label={c(DVA_LESSON.caveLabel)} cave>{c(DVA_LESSON.assoziationen.cave)}</Callout>
           </Section>
 
-          <Section id="komplikationen" title={c(DVA_LESSON.komplikationen.title)} lead={c(DVA_LESSON.komplikationen.lead)}>
+          <Section id="komplikationen" title={c(DVA_LESSON.komplikationen.title)} lead={c(DVA_LESSON.komplikationen.lead)} migrationChapter>
             <Table headers={DVA_LESSON.komplikationen.headers.map(c)} rows={rows(DVA_LESSON.komplikationen.rows)} />
           </Section>
 
-          <Section id="differenzial" title={c(DVA_LESSON.differenzial.title)} lead={c(DVA_LESSON.differenzial.lead)}>
+          <Section id="differenzial" title={c(DVA_LESSON.differenzial.title)} lead={c(DVA_LESSON.differenzial.lead)} migrationChapter>
             <Table headers={DVA_LESSON.differenzial.headers.map(c)} rows={rows(DVA_LESSON.differenzial.rows)} />
           </Section>
 
-          <Section id="fall" title={c(DVA_LESSON.fall.title)} lead={c(DVA_LESSON.fall.lead)}>
+          <Section id="fall" title={c(DVA_LESSON.fall.title)} lead={c(DVA_LESSON.fall.lead)} migrationChapter>
             <CaseGallery fall={DVA_LESSON.fall} lang={lang} copy={copy} onZoom={setZoomed} />
 
             <h3 style={{ margin: '24px 0 12px' }}>{c(DVA_LESSON.fall.findingsTitle)}</h3>
@@ -313,12 +322,12 @@ export default function DvaPage() {
             <Callout label={c({ de: 'Diagnose', en: 'Diagnosis', fa: 'تشخیص' })}>{c(DVA_LESSON.fall.diagnosis)}</Callout>
           </Section>
 
-          <Section id="management" title={c(DVA_LESSON.management.title)} lead={c(DVA_LESSON.management.lead)}>
+          <Section id="management" title={c(DVA_LESSON.management.title)} lead={c(DVA_LESSON.management.lead)} migrationChapter>
             <Cards items={DVA_LESSON.management.items} lang={lang} />
             <Callout label={c(DVA_LESSON.caveLabel)} cave>{c(DVA_LESSON.management.cave)}</Callout>
           </Section>
 
-          <Section id="takehome" title={c(DVA_LESSON.takehome.title)} lead={c(DVA_LESSON.takehome.lead)}>
+          <Section id="takehome" title={c(DVA_LESSON.takehome.title)} lead={c(DVA_LESSON.takehome.lead)} migrationChapter>
             <div className={styles.takeHomeGrid}>
               {DVA_LESSON.takehome.items.map((item, index) => (
                 <div className={styles.takeHomeItem} key={c(item.title)}>
@@ -333,7 +342,7 @@ export default function DvaPage() {
           </Section>
 
           <div className={styles.readBarBottom}>
-            <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} />
+            <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/>
           </div>
         </div>
       </div>
@@ -348,6 +357,6 @@ export default function DvaPage() {
           </div>
         </div>
       )}
-    </main>
+    </LegacyLessonMigration>
   )
 }

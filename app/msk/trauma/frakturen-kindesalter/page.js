@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
 import InProgressBanner from '@/components/InProgressBanner'
@@ -24,7 +26,7 @@ function Section({ id, title, lead, children }) {
       <button type="button" className={styles.sectionHeader} onClick={() => setOpen(v => !v)} aria-expanded={open}>
         <h2>{title}</h2><span>{open ? '−' : '+'}</span>
       </button>
-      {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+      <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>
     </section>
   )
 }
@@ -191,7 +193,7 @@ export default function FrakturenKindesalterPage() {
   }, [])
 
   return (
-    <main className={`${styles.page} ${styles.mskTraumaPage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={`${styles.page} ${styles.mskTraumaPage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/msk/trauma/frakturen-kindesalter" lessonId="/msk/trauma/frakturen-kindesalter">
       <InProgressBanner lang={lang} />
 
       <header className={styles.header}>
@@ -225,7 +227,7 @@ export default function FrakturenKindesalterPage() {
       </header>
 
       <div className={styles.readBar}>
-        <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} />
+        <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/>
       </div>
 
       <div className={styles.layout}>
@@ -250,13 +252,13 @@ export default function FrakturenKindesalterPage() {
         <div className={styles.main}>
 
           {/* GRUNDLAGEN */}
-          <Section id="grundlagen" title={c(D.grundlagen.title)} lead={c(D.grundlagen.lead)}>
+          <Section id="grundlagen" title={c(D.grundlagen.title)} lead={c(D.grundlagen.lead)} migrationChapter>
             <Cards items={D.grundlagen.items} lang={lang} />
             <Callout label={c(D.keyLabel)}>{c(D.grundlagen.key)}</Callout>
           </Section>
 
           {/* SALTER-HARRIS */}
-          <Section id="salter-harris" title={c(D.salterHarris.title)} lead={c(D.salterHarris.lead)}>
+          <Section id="salter-harris" title={c(D.salterHarris.title)} lead={c(D.salterHarris.lead)} migrationChapter>
             <SchemaImage src={D.salterHarris.schema.src} alt={c(D.salterHarris.schema.alt)} copy={copy} />
             <p style={{ margin: '0.25rem 0 1rem', fontSize: '0.9rem', opacity: 0.78 }}>{c(D.salterHarris.schema.note)}</p>
             <Table headers={D.salterHarris.headers.map(c)} rows={rows(D.salterHarris.rows)} />
@@ -265,7 +267,7 @@ export default function FrakturenKindesalterPage() {
           </Section>
 
           {/* SCHAFTSFRAKTUREN */}
-          <Section id="schaft" title={c(D.schaft.title)} lead={c(D.schaft.lead)}>
+          <Section id="schaft" title={c(D.schaft.title)} lead={c(D.schaft.lead)} migrationChapter>
             <SchemaImage src={D.schaft.schema.src} alt={c(D.schaft.schema.alt)} copy={copy} />
             <p style={{ margin: '0.25rem 0 1rem', fontSize: '0.9rem', opacity: 0.78 }}>{c(D.schaft.schema.note)}</p>
             <Table headers={D.schaft.headers.map(c)} rows={rows(D.schaft.rows)} />
@@ -287,7 +289,7 @@ export default function FrakturenKindesalterPage() {
           </Section>
 
           {/* TODDLER */}
-          <Section id="toddler" title={c(D.toddler.title)} lead={c(D.toddler.lead)}>
+          <Section id="toddler" title={c(D.toddler.title)} lead={c(D.toddler.lead)} migrationChapter>
             <Cards items={D.toddler.items} lang={lang} />
             <CaseGallery
               title={c(D.toddler.caseTitle)}
@@ -300,7 +302,7 @@ export default function FrakturenKindesalterPage() {
           </Section>
 
           {/* ÜBERGANGSFRAKTUREN */}
-          <Section id="uebergang" title={c(D.uebergang.title)} lead={c(D.uebergang.lead)}>
+          <Section id="uebergang" title={c(D.uebergang.title)} lead={c(D.uebergang.lead)} migrationChapter>
 
             <div style={{ marginBottom: '1.5rem' }}>
               <h3 style={{ fontSize: '1.05rem', marginBottom: '0.5rem', color: '#d97706' }}>{c(D.uebergang.tillaux.title)}</h3>
@@ -344,7 +346,7 @@ export default function FrakturenKindesalterPage() {
           </Section>
 
           {/* TAKE-HOME */}
-          <Section id="takehome" title={c(D.takehome.title)} lead={c(D.takehome.lead)}>
+          <Section id="takehome" title={c(D.takehome.title)} lead={c(D.takehome.lead)} migrationChapter>
             <div className={styles.takeHomeGrid}>
               {D.takehome.items.map((item, i) => (
                 <div className={styles.takeHomeItem} key={c(item.title)}>
@@ -368,10 +370,10 @@ export default function FrakturenKindesalterPage() {
           </section>
 
           <div className={styles.readBarBottom}>
-            <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} />
+            <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/>
           </div>
         </div>
       </div>
-    </main>
+    </LegacyLessonMigration>
   )
 }

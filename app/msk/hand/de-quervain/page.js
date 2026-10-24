@@ -1,4 +1,5 @@
 'use client'
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
@@ -47,7 +48,7 @@ export default function DeQuervainLesson() {
     return next
   })
   const toggleAllRead = () => setReadSections(completed ? new Set() : new Set(ids))
-  const renderMark = id => <button className={`${styles.mark} ${readSections.has(id) ? styles.markDone : ''}`} type="button" aria-pressed={readSections.has(id)} onClick={() => toggleSectionRead(id)}>{readSections.has(id) ? `✓ ${copy.read}` : copy.mark}</button>
+  const renderMark = id => <button data-legacy-section-read className={`${styles.mark} ${readSections.has(id) ? styles.markDone : ''}`} type="button" aria-pressed={readSections.has(id)} onClick={() => toggleSectionRead(id)}>{readSections.has(id) ? `✓ ${copy.read}` : copy.mark}</button>
   const chapter = item => <section className={`${styles.chapter} ${openId === item.id ? styles.chapterOpen : ''}`} id={item.id} key={item.id}>
     <button className={styles.chapterToggle} type="button" aria-expanded={openId === item.id} aria-controls={`${item.id}-panel`} onClick={() => selectSection(openId === item.id ? '' : item.id)}><span aria-hidden="true">{item.icon}</span><strong>{c(item.title)}</strong><i aria-hidden="true">{openId === item.id ? '−' : '+'}</i></button>
     <div id={`${item.id}-panel`} hidden={openId !== item.id} className={styles.chapterBody}>
@@ -59,7 +60,8 @@ export default function DeQuervainLesson() {
     </div>
   </section>
 
-  return <main className={styles.page} dir={rtl ? 'rtl' : 'ltr'} lang={lang} data-lesson-progress-managed="true">
+  return <LegacyLessonMigration lessonRoute="/msk/hand/de-quervain" lessonId={lesson.id} lang={lang} lessonRead={isRead} summaryFallback={lesson.takeHome.map(item => ({ title: c(item), detail: "" }))}>
+    <main className={styles.page} dir={rtl ? 'rtl' : 'ltr'} lang={lang} data-lesson-progress-managed="true">
     <div className={styles.wrap}>
       <nav className={styles.breadcrumb} aria-label={copy.breadcrumb}><Link href={lang === 'de' ? '/' : `/?lang=${lang}`}>RadYar</Link><span>›</span><Link href={lang === 'de' ? '/lernen/msk' : `/lernen/msk?lang=${lang}`}>{lang === 'fa' ? 'اسکلتی‌عضلانی' : 'MSK'}</Link><span>›</span><span>{c(lesson.title)}</span></nav>
       <LessonHero title={c(lesson.title)} imageSrc={lesson.heroImage} imageAlt={c(lesson.alt)} lang={lang} />
@@ -74,7 +76,8 @@ export default function DeQuervainLesson() {
       <section className={`${styles.chapter} ${openId === 'case' ? styles.chapterOpen : ''}`} id="case"><button className={styles.chapterToggle} type="button" aria-expanded={openId === 'case'} aria-controls="case-panel" onClick={() => selectSection(openId === 'case' ? '' : 'case')}><span aria-hidden="true">◇</span><strong>{c(lesson.case.title)}</strong><i aria-hidden="true">{openId === 'case' ? '−' : '+'}</i></button><div id="case-panel" hidden={openId !== 'case'} className={styles.chapterBody}><p>{c(lesson.case.prompt)}</p><div className={styles.options}>{lesson.case.options.map((option, i) => <button key={i} className={answer === String(i) ? styles.selected : ''} type="button" aria-pressed={answer === String(i)} onClick={() => setAnswer(String(i))}>{c(option)}</button>)}</div>{answer !== '' && <p className={styles.feedback} role="status">{Number(answer) === lesson.case.answerIndex ? c(lesson.case.feedbackCorrect) : c(lesson.case.feedbackIncorrect)}</p>}<small>{copy.chapterSource} {c(lesson.case.source)}</small>{renderMark('case')}</div></section>
       <section className={`${styles.chapter} ${openId === 'take-home' ? styles.chapterOpen : ''}`} id="take-home"><button className={styles.chapterToggle} type="button" aria-expanded={openId === 'take-home'} aria-controls="take-home-panel" onClick={() => selectSection(openId === 'take-home' ? '' : 'take-home')}><strong>{copy.takeHome}</strong><i aria-hidden="true">{openId === 'take-home' ? '−' : '+'}</i></button><div id="take-home-panel" hidden={openId !== 'take-home'} className={styles.chapterBody}><ul>{lesson.takeHome.map((item, i) => <li key={i}>{c(item)}</li>)}</ul></div></section>
       <section className={`${styles.chapter} ${openId === 'sources' ? styles.chapterOpen : ''}`} id="sources"><button className={styles.chapterToggle} type="button" aria-expanded={openId === 'sources'} aria-controls="sources-panel" onClick={() => selectSection(openId === 'sources' ? '' : 'sources')}><strong>{copy.sources}</strong><i aria-hidden="true">{openId === 'sources' ? '−' : '+'}</i></button><div id="sources-panel" hidden={openId !== 'sources'} className={styles.chapterBody}><p>{c(lesson.notice)}</p><ul>{lesson.references.map(item => <li key={item.url}><a href={item.url} target="_blank" rel="noopener noreferrer">{c(item.label)}</a></li>)}</ul></div></section>
-      <div className={styles.read}><button type="button" onClick={toggleRead}>{isRead ? '✓ ' : ''}{isRead ? copy.lessonCompleted : copy.completeLesson}</button>{authError && <p role="alert">{copy.auth} <Link href={`/sign-in?lang=${lang}`}>{copy.signIn}</Link></p>}</div>
+      <div className={styles.read} data-migration-read-control=""><button type="button" onClick={toggleRead}>{isRead ? '✓ ' : ''}{isRead ? copy.lessonCompleted : copy.completeLesson}</button>{authError && <p role="alert">{copy.auth} <Link href={`/sign-in?lang=${lang}`}>{copy.signIn}</Link></p>}</div>
     </div>
   </main>
+    </LegacyLessonMigration>
 }

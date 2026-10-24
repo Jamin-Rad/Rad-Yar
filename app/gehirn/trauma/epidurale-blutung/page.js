@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -79,7 +81,7 @@ function Section({ id, title, lead, titleClassName = '', children }) {
       <button className={shared.sectionHeader} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}>
         <h2 className={titleClassName}>{title}</h2><span aria-hidden="true">{open ? '−' : '+'}</span>
       </button>
-      {open && <div className={shared.sectionBody}>{lead && <p className={shared.lead}>{lead}</p>}{children}</div>}
+      <div className={shared.sectionBody}>{lead && <p className={shared.lead}>{lead}</p>}{children}</div>
     </section>
   )
 }
@@ -143,7 +145,7 @@ export default function EpiduralhaematomPage() {
 
   return (
     <>
-      <main className={`${shared.page} ${shared.strokePage} ${local.page}`} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+      <LegacyLessonMigration className={`${shared.page} ${shared.strokePage} ${local.page}`} dir={isRTL ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/gehirn/trauma/epidurale-blutung" lessonId="/gehirn/trauma/epidurale-blutung">
         <InProgressBanner lang={lang} />
         <header className={shared.header}>
           <div className={`${shared.breadcrumb} ${local.breadcrumb}`}>
@@ -167,7 +169,7 @@ export default function EpiduralhaematomPage() {
           </div>
         </header>
 
-        <div className={shared.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang} /></div>
+        <div className={shared.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang}  migrationReadControl/></div>
 
         <div className={shared.layout}>
           <aside className={`${shared.sidebar} ${local.desktopToc}`}>
@@ -180,63 +182,63 @@ export default function EpiduralhaematomPage() {
           </aside>
 
           <div className={shared.main}>
-            <Section id="grundlagen" title={c(EDH_LESSON.basics.title)} lead={c(EDH_LESSON.basics.lead)}>
+            <Section id="grundlagen" title={c(EDH_LESSON.basics.title)} lead={c(EDH_LESSON.basics.lead)} migrationChapter>
               <Cards items={localizedItems(EDH_LESSON.basics.items, lang)} />
               <Callout label={c(EDH_LESSON.keyLabel)}>{c(EDH_LESSON.basics.key)}</Callout>
             </Section>
 
-            <Section id="pathomechanismus" title={c(EDH_LESSON.mechanism.title)} lead={c(EDH_LESSON.mechanism.lead)}>
+            <Section id="pathomechanismus" title={c(EDH_LESSON.mechanism.title)} lead={c(EDH_LESSON.mechanism.lead)} migrationChapter>
               <Table headers={EDH_LESSON.mechanism.headers.map(c)} rows={localizedRows(EDH_LESSON.mechanism.rows, lang)} />
               <Callout label={c(EDH_LESSON.keyLabel)}>{c(EDH_LESSON.mechanism.key)}</Callout>
             </Section>
 
-            <Section id="ct" title={c(EDH_LESSON.ct.title)} lead={c(EDH_LESSON.ct.lead)}>
+            <Section id="ct" title={c(EDH_LESSON.ct.title)} lead={c(EDH_LESSON.ct.lead)} migrationChapter>
               <Table headers={EDH_LESSON.ct.headers.map(c)} rows={localizedRows(EDH_LESSON.ct.rows, lang)} />
               <Callout label={c(EDH_LESSON.keyLabel)}>{c(EDH_LESSON.ct.key)}</Callout>
             </Section>
 
-            <Section id="fraktur" title={c(EDH_LESSON.fracture.title)} lead={c(EDH_LESSON.fracture.lead)}>
+            <Section id="fraktur" title={c(EDH_LESSON.fracture.title)} lead={c(EDH_LESSON.fracture.lead)} migrationChapter>
               <Cards items={localizedItems(EDH_LESSON.fracture.items, lang)} />
               <Callout type="cave" label={c(EDH_LESSON.caveLabel)}>{c(EDH_LESSON.fracture.cave)}</Callout>
             </Section>
 
-            <Section id="blutungszeichen" title={c(EDH_LESSON.bleeding.title)} lead={c(EDH_LESSON.bleeding.lead)}>
+            <Section id="blutungszeichen" title={c(EDH_LESSON.bleeding.title)} lead={c(EDH_LESSON.bleeding.lead)} migrationChapter>
               <Cards items={localizedItems(EDH_LESSON.bleeding.items, lang)} />
               <Callout type="cave" label={c(EDH_LESSON.caveLabel)}>{c(EDH_LESSON.bleeding.cave)}</Callout>
             </Section>
 
-            <Section id="notfall" title={c(EDH_LESSON.emergency.title)} lead={c(EDH_LESSON.emergency.lead)}>
+            <Section id="notfall" title={c(EDH_LESSON.emergency.title)} lead={c(EDH_LESSON.emergency.lead)} migrationChapter>
               <Table headers={EDH_LESSON.emergency.headers.map(c)} rows={localizedRows(EDH_LESSON.emergency.rows, lang)} />
               <Callout type="cave" label={c(EDH_LESSON.caveLabel)}>{c(EDH_LESSON.emergency.cave)}</Callout>
             </Section>
 
-            <Section id="differenzialdiagnosen" title={c(EDH_LESSON.differential.title)} lead={c(EDH_LESSON.differential.lead)}>
+            <Section id="differenzialdiagnosen" title={c(EDH_LESSON.differential.title)} lead={c(EDH_LESSON.differential.lead)} migrationChapter>
               <Table headers={EDH_LESSON.differential.headers.map(c)} rows={localizedRows(EDH_LESSON.differential.rows, lang)} />
               <Callout label={c(EDH_LESSON.keyLabel)}>{c(EDH_LESSON.differential.key)}</Callout>
             </Section>
 
-            <Section id="befundung" title={c(EDH_LESSON.reporting.title)} lead={c(EDH_LESSON.reporting.lead)}>
+            <Section id="befundung" title={c(EDH_LESSON.reporting.title)} lead={c(EDH_LESSON.reporting.lead)} migrationChapter>
               <Cards items={localizedItems(EDH_LESSON.reporting.reportItems, lang)} />
               <Table headers={EDH_LESSON.reporting.criteriaHeaders.map(c)} rows={localizedRows(EDH_LESSON.reporting.criteriaRows, lang)} />
               <Callout type="cave" label={c(EDH_LESSON.caveLabel)}>{c(EDH_LESSON.reporting.cave)}</Callout>
             </Section>
 
-            <Section id="faelle" title={c(EDH_LESSON.cases.title)} lead={c(EDH_LESSON.cases.lead)}>
+            <Section id="faelle" title={c(EDH_LESSON.cases.title)} lead={c(EDH_LESSON.cases.lead)} migrationChapter>
               <div className={local.caseGrid}>
                 {EDH_LEARNING_CASES.map(item => <CaseCard key={item.id} item={item} lang={lang} imageUi={imageUi} onZoom={setPreviewImage} openLabel={c(EDH_LESSON.openCase)} />)}
               </div>
             </Section>
 
-            <Section id="takehome" title={EDH_LESSON.takehome.title} lead={c(EDH_LESSON.takehome.lead)} titleClassName={local.takeHomeTitle}>
+            <Section id="takehome" title={EDH_LESSON.takehome.title} lead={c(EDH_LESSON.takehome.lead)} titleClassName={local.takeHomeTitle} migrationChapter>
               <div className={local.takeHomeGrid}>
                 {localizedItems(EDH_LESSON.takehome.items, lang).map(item => <article className={local.takeHomeItem} key={item.title}><h3>{item.title}</h3><p>{item.text}</p></article>)}
               </div>
             </Section>
 
-            <div className={shared.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang} /></div>
+            <div className={shared.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang}  migrationReadControl/></div>
           </div>
         </div>
-      </main>
+      </LegacyLessonMigration>
 
       {previewImage && (
         <div className={shared.strokeImageModal} role="dialog" aria-modal="true" aria-label={imageUi.zoom} onClick={() => setPreviewImage(null)}>

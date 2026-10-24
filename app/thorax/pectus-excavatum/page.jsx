@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
-import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
+import StandardLessonShell, { LessonSection, LessonSources , TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { PECTUS_LESSON as lesson } from '@/data/thoraxPectusLesson'
 import styles from './page.module.css'
 
@@ -32,7 +32,7 @@ function PectusContent({ lang }) {
   ]
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={t(lesson.title)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: local('/') }, { label: t(L('Thorax','Thorax','قفسهٔ سینه')), href: local('/lernen/thorax') }, { label: t(lesson.title) }]}
-    sections={lesson.chapters.map(c => ({ ...c, label: t(c.title) }))} labels={Object.fromEntries(Object.entries(LABELS).map(([k,v]) => [k,t(v)]))}
+    sections={(lesson.chapters.map(c => ({ ...c, label: t(c.title) }))).map(section=>({...section,emphasis:section.emphasis||["summary"].includes(section.id)}))} labels={Object.fromEntries(Object.entries(LABELS).map(([k,v]) => [k,t(v)]))}
     actions={{ mcq: { href: local(`/ueben/quiz?fach=thorax&themen=pectus-excavatum&n=2&from=${encodeURIComponent(local('/thorax/pectus-excavatum'))}`), label: t(L('Quiz öffnen','Open quiz','بازکردن آزمون')) }, flashcards: { href: local(`/flashcards/pectus-excavatum?from=${encodeURIComponent(local('/thorax/pectus-excavatum'))}`), label: t(L('Flashcards','Flashcards','فلش‌کارت‌ها')) } }}
     renderIcon={id => <Icon id={id}/>} syncHashNavigation className={styles.page}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/educational/pectus-excavatum/hero.png', heroImageOpacity: .8, accent: '#70bdc8', accentStrong: '#216a78', accentSoft: '#e1f3f5', secondary: '#a991c1', secondaryStrong: '#63428e', heroBase: '#172c3b' }} heroImageAlt={t(lesson.heroAlt)}
@@ -52,6 +52,6 @@ function PectusContent({ lang }) {
         {answer !== null && <div role="status" className={styles.feedback}><strong>{t(answer === lesson.check.answerIndex ? L('Richtig. ','Correct. ','درست است. ') : L('Noch einmal prüfen. ','Review your choice. ','دوباره بررسی کنید. '))}</strong>{t(lesson.check.explanation)}</div>}
       </div>
     </div></LessonSection>
-    <LessonSection id="summary" icon="summary" title={t(lesson.chapters[2].title)}><ol className={styles.rules}>{lesson.takeHome.map((p,i) => <li key={i}>{t(p)}</li>)}</ol></LessonSection>
+    <LessonSection id="summary" icon="summary" title={t(lesson.chapters[2].title)}><TakeHomeList items={lesson.takeHome.map((p,i)=>({title:t(p),detail:''}))}/></LessonSection>
   </StandardLessonShell>
 }

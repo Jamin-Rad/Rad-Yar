@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
 import InProgressBanner from '@/components/InProgressBanner'
@@ -24,7 +26,7 @@ function Section({ id, title, lead, children }) {
       <button type="button" className={styles.sectionHeader} onClick={() => setOpen(value => !value)} aria-expanded={open}>
         <h2>{title}</h2><span>{open ? '−' : '+'}</span>
       </button>
-      {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+      <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>
     </section>
   )
 }
@@ -179,7 +181,7 @@ export default function UnterarmschaftfrakturenPage() {
   }, [data.sections])
 
   return (
-    <main className={`${styles.page} ${styles.mskTraumaPage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={`${styles.page} ${styles.mskTraumaPage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/msk/trauma/unterarmschaftfrakturen" lessonId="/msk/trauma/unterarmschaftfrakturen">
       <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
@@ -203,7 +205,7 @@ export default function UnterarmschaftfrakturenPage() {
         </div>
       </header>
 
-      <div className={styles.readBar}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>
+      <div className={styles.readBar}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/></div>
 
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
@@ -224,30 +226,30 @@ export default function UnterarmschaftfrakturenPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="grundlagen" title={c(data.grundlagen.title)} lead={c(data.grundlagen.lead)}>
+          <Section id="grundlagen" title={c(data.grundlagen.title)} lead={c(data.grundlagen.lead)} migrationChapter>
             <Cards items={data.grundlagen.items} lang={lang} />
             <Callout label={c(data.keyLabel)}>{c(data.grundlagen.key)}</Callout>
           </Section>
 
-          <Section id="bildgebung" title={c(data.bildgebung.title)} lead={c(data.bildgebung.lead)}>
+          <Section id="bildgebung" title={c(data.bildgebung.title)} lead={c(data.bildgebung.lead)} migrationChapter>
             <Table headers={data.bildgebung.headers.map(c)} rows={rows(data.bildgebung.rows)} />
             <Callout label={c(data.caveLabel)} cave>{c(data.bildgebung.cave)}</Callout>
           </Section>
 
-          <Section id="monteggia" title={c(data.monteggia.title)} lead={c(data.monteggia.lead)}>
+          <Section id="monteggia" title={c(data.monteggia.title)} lead={c(data.monteggia.lead)} migrationChapter>
             <ZoomImage src={data.monteggia.schemaSrc} alt={c(data.monteggia.schemaAlt)} copy={copy} />
             <Table headers={data.monteggia.headers.map(c)} rows={rows(data.monteggia.rows)} />
             <Callout label={c(data.keyLabel)}>{c(data.monteggia.key)}</Callout>
             <Callout label={c(data.caveLabel)} cave>{c(data.monteggia.cave)}</Callout>
           </Section>
 
-          <Section id="galeazzi" title={c(data.galeazzi.title)} lead={c(data.galeazzi.lead)}>
+          <Section id="galeazzi" title={c(data.galeazzi.title)} lead={c(data.galeazzi.lead)} migrationChapter>
             <CaseGallery title={c(data.galeazzi.caseTitle)} images={data.galeazzi.images.map(image => ({ ...image, caption: c(image.caption) }))} radiopaediaUrl={data.galeazzi.radiopaediaUrl} copy={copy} />
             <div style={{ marginTop: '1.4rem' }}><Cards items={data.galeazzi.signs} lang={lang} /></div>
             <Callout label={c(data.keyLabel)}>{c(data.galeazzi.key)}</Callout>
           </Section>
 
-          <Section id="befund" title={c(data.befund.title)} lead={c(data.befund.lead)}>
+          <Section id="befund" title={c(data.befund.title)} lead={c(data.befund.lead)} migrationChapter>
             <Cards items={data.befund.items} lang={lang} />
             <div className={styles.fractureReportTemplate}>
               <strong>{copy.report}</strong>
@@ -255,12 +257,12 @@ export default function UnterarmschaftfrakturenPage() {
             </div>
           </Section>
 
-          <Section id="therapie" title={c(data.therapie.title)} lead={c(data.therapie.lead)}>
+          <Section id="therapie" title={c(data.therapie.title)} lead={c(data.therapie.lead)} migrationChapter>
             <Cards items={data.therapie.items} lang={lang} />
             <Callout label={c(data.caveLabel)} cave>{c(data.therapie.cave)}</Callout>
           </Section>
 
-          <Section id="takehome" title={c(data.takehome.title)} lead={c(data.takehome.lead)}>
+          <Section id="takehome" title={c(data.takehome.title)} lead={c(data.takehome.lead)} migrationChapter>
             <div className={styles.takeHomeGrid}>
               {data.takehome.items.map((item, index) => (
                 <div className={styles.takeHomeItem} key={c(item.title)}>
@@ -271,9 +273,9 @@ export default function UnterarmschaftfrakturenPage() {
             </div>
           </Section>
 
-          <div className={styles.readBarBottom}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>
+          <div className={styles.readBarBottom}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/></div>
         </div>
       </div>
-    </main>
+    </LegacyLessonMigration>
   )
 }

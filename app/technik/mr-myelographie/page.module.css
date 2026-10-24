@@ -16,8 +16,8 @@
 .options button:focus-visible { outline:3px solid #b97842; outline-offset:3px; }
 .options b { color:#315b72; min-width:1.2rem; }
 .feedback { padding:.8rem; background:#e2edf2; border-radius:8px; }
-:global(html[data-theme='dark']) .copy { color:#d8e1e7; }
-:global(html[data-theme='dark']) .diagram,:global(html[data-theme='dark']) .check { background:#24343d; border-color:#52636d; }
+:global(html[data-theme='dark']) .copy { color:var(--body); }
+:global(html[data-theme='dark']) .diagram,:global(html[data-theme='dark']) .check { background:#24343d; border-color:#52636d; color:#e1e8ed; }
 :global(html[data-theme='dark']) .diagram figcaption { color:#c3d2db; }
 :global(html[data-theme='dark']) .flow strong { background:#202c34; border-color:#7ca0b5; color:#d8eaf4; }
 :global(html[data-theme='dark']) .flow span,:global(html[data-theme='dark']) .options b { color:#a8d6ec; }

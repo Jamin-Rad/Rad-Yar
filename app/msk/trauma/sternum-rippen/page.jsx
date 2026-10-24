@@ -33,7 +33,7 @@ export default function SternumRibLesson() {
   const sections=STERNUM_RIB_SECTIONS.map(s=>({...s,label:v(s.label,lang)}))
   return <StandardLessonShell lessonId={STERNUM_RIB_ID} lang={lang} title={v(C.title,lang)} author="Dr. Zia"
     breadcrumbs={[{label:'RadYar',href:langPath('/')},{label:v(C.chapter,lang),href:langPath('/lernen/msk')},{label:v(C.title,lang)}]}
-    sections={sections} labels={Object.fromEntries(Object.entries(LABELS).map(([k,val])=>[k,v(val,lang)]))} renderIcon={iconFor} syncHashNavigation
+    sections={(sections).map(section=>({...section,emphasis:section.emphasis||["traumabefund"].includes(section.id)}))} labels={Object.fromEntries(Object.entries(LABELS).map(([k,val])=>[k,v(val,lang)]))} renderIcon={iconFor} syncHashNavigation
     actions={{mcq:{label:t('practice'),href:langPath(`/ueben/quiz?fach=msk&n=2&themen=${STERNUM_RIB_ID}&from=${encodeURIComponent(returnPath)}`)},flashcards:{label:t('cards'),href:langPath(`/flashcards/${STERNUM_RIB_ID}?from=${encodeURIComponent(returnPath)}`)}}}
     theme={{backgroundImage:'/andarun-galaxy-v3.png',heroImage:'/educational/sternum-rippen/hero.png',heroImageOpacity:.55,accent:'#537f89',accentStrong:'#315c66',accentSoft:'#e8f2f3',secondary:'#bd8d61',secondaryStrong:'#765237',heroBase:'#132b32'}}
     heroImageAlt={v(C.heroAlt,lang)} className={styles.page}

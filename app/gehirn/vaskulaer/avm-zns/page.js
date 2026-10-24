@@ -1,4 +1,5 @@
 'use client'
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
@@ -201,6 +202,7 @@ export default function AvmPage() {
   const zoomedImage = zoomed === null ? null : fall.images[zoomed]
 
   return (
+    <LegacyLessonMigration lessonRoute="/gehirn/vaskulaer/avm-zns" lessonId="/gehirn/vaskulaer/avm-zns" lang={lang}>
     <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
       <InProgressBanner lang={lang} />
 
@@ -257,7 +259,7 @@ export default function AvmPage() {
 
         <div className={styles.main}>
           {/* Grundlagen */}
-          <Section id="grundlagen" icon={sections[0].icon} title={c(AVM_LESSON.grundlagen.title)} lead={c(AVM_LESSON.grundlagen.lead)} open={openSection === 'grundlagen'} onToggle={() => toggleSection('grundlagen')}>
+          <Section migrationChapter id="grundlagen" icon={sections[0].icon} title={c(AVM_LESSON.grundlagen.title)} lead={c(AVM_LESSON.grundlagen.lead)} open={openSection === 'grundlagen'} onToggle={() => toggleSection('grundlagen')}>
             <figure style={{ margin: '0 0 20px', padding: 16, borderRadius: 14, background: 'rgba(124,58,237,.06)' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/avm/flow-path.svg" alt={c(AVM_LESSON.grundlagen.visualAlt)} style={{ display: 'block', width: '100%', maxWidth: 720, margin: '0 auto' }} />
@@ -273,13 +275,13 @@ export default function AvmPage() {
           </Section>
 
           {/* Klinik */}
-          <Section id="klinik" icon={sections[1].icon} title={c(AVM_LESSON.klinik.title)} lead={c(AVM_LESSON.klinik.lead)} open={openSection === 'klinik'} onToggle={() => toggleSection('klinik')}>
+          <Section migrationChapter id="klinik" icon={sections[1].icon} title={c(AVM_LESSON.klinik.title)} lead={c(AVM_LESSON.klinik.lead)} open={openSection === 'klinik'} onToggle={() => toggleSection('klinik')}>
             <Table headers={AVM_LESSON.klinik.headers.map(c)} rows={rows(AVM_LESSON.klinik.rows)} />
             <Callout label={c(AVM_LESSON.caveLabel)} cave>{c(AVM_LESSON.klinik.cave)}</Callout>
           </Section>
 
           {/* Spetzler-Martin */}
-          <Section id="spetzler" icon={sections[2].icon} title={c(AVM_LESSON.spetzler.title)} lead={c(AVM_LESSON.spetzler.lead)} open={openSection === 'spetzler'} onToggle={() => toggleSection('spetzler')}>
+          <Section migrationChapter id="spetzler" icon={sections[2].icon} title={c(AVM_LESSON.spetzler.title)} lead={c(AVM_LESSON.spetzler.lead)} open={openSection === 'spetzler'} onToggle={() => toggleSection('spetzler')}>
             <h3 style={{ margin: '0 0 10px', fontSize: 14, fontWeight: 700, opacity: 0.7, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
               {c({ de: 'Kriterienpunkte', en: 'Scoring criteria', fa: 'معیارهای امتیازدهی' })}
             </h3>
@@ -296,13 +298,13 @@ export default function AvmPage() {
           </Section>
 
           {/* Bildgebung */}
-          <Section id="bildgebung" icon={sections[3].icon} title={c(AVM_LESSON.bildgebung.title)} lead={c(AVM_LESSON.bildgebung.lead)} open={openSection === 'bildgebung'} onToggle={() => toggleSection('bildgebung')}>
+          <Section migrationChapter id="bildgebung" icon={sections[3].icon} title={c(AVM_LESSON.bildgebung.title)} lead={c(AVM_LESSON.bildgebung.lead)} open={openSection === 'bildgebung'} onToggle={() => toggleSection('bildgebung')}>
             <Table headers={AVM_LESSON.bildgebung.headers.map(c)} rows={rows(AVM_LESSON.bildgebung.rows)} />
             <Callout label={c(AVM_LESSON.keyLabel)}>{c(AVM_LESSON.bildgebung.key)}</Callout>
           </Section>
 
           {/* Fallbeispiel */}
-          <Section id="fall" icon={sections[4].icon} title={c(fall.title)} lead={c(fall.lead)} open={openSection === 'fall'} onToggle={() => toggleSection('fall')}>
+          <Section migrationChapter id="fall" icon={sections[4].icon} title={c(fall.title)} lead={c(fall.lead)} open={openSection === 'fall'} onToggle={() => toggleSection('fall')}>
             <div className={styles.caseGrid}>
               <article className={`${styles.caseCardLink} ${styles.cadasilCaseCard}`}>
                 <div className={`${styles.caseImages} ${styles.cadasilCaseImages}`}>
@@ -357,18 +359,18 @@ export default function AvmPage() {
           </Section>
 
           {/* Differenzialdiagnose */}
-          <Section id="differenzial" icon={sections[5].icon} title={c(AVM_LESSON.differenzial.title)} lead={c(AVM_LESSON.differenzial.lead)} open={openSection === 'differenzial'} onToggle={() => toggleSection('differenzial')}>
+          <Section migrationChapter id="differenzial" icon={sections[5].icon} title={c(AVM_LESSON.differenzial.title)} lead={c(AVM_LESSON.differenzial.lead)} open={openSection === 'differenzial'} onToggle={() => toggleSection('differenzial')}>
             <Table headers={AVM_LESSON.differenzial.headers.map(c)} rows={rows(AVM_LESSON.differenzial.rows)} />
           </Section>
 
           {/* Management */}
-          <Section id="management" icon={sections[6].icon} title={c(AVM_LESSON.management.title)} lead={c(AVM_LESSON.management.lead)} open={openSection === 'management'} onToggle={() => toggleSection('management')}>
+          <Section migrationChapter id="management" icon={sections[6].icon} title={c(AVM_LESSON.management.title)} lead={c(AVM_LESSON.management.lead)} open={openSection === 'management'} onToggle={() => toggleSection('management')}>
             <Cards items={AVM_LESSON.management.items} lang={lang} />
             <Callout label={c(AVM_LESSON.caveLabel)} cave>{c(AVM_LESSON.management.cave)}</Callout>
           </Section>
 
           {/* Take-Home */}
-          <Section id="takehome" icon={sections[7].icon} title={c(AVM_LESSON.takehome.title)} lead={c(AVM_LESSON.takehome.lead)} open={openSection === 'takehome'} onToggle={() => toggleSection('takehome')}>
+          <Section migrationChapter id="takehome" icon={sections[7].icon} title={c(AVM_LESSON.takehome.title)} lead={c(AVM_LESSON.takehome.lead)} open={openSection === 'takehome'} onToggle={() => toggleSection('takehome')}>
             <div className={styles.takeHomeGrid}>
               {AVM_LESSON.takehome.items.map((item, index) => (
                 <div className={styles.takeHomeItem} key={c(item.title)}>
@@ -409,5 +411,6 @@ export default function AvmPage() {
         </div>
       )}
     </main>
+    </LegacyLessonMigration>
   )
 }

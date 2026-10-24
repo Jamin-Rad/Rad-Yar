@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useLanguage } from '@/providers/LanguageProvider'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
 import { useLehrModeActive } from '@/hooks/useLehrModeActive'
@@ -9,6 +10,13 @@ import { observeLessonHash } from '@/lib/lessonHashNavigation'
 import styles from './StandardLessonShell.module.css'
 
 const LessonShellContext = createContext(null)
+
+const DEFAULT_LABELS = {
+  de: { contents:'Lektionsinhalt', path:'Lernpfad', progress:'gelesen', continue:'Lektion fortsetzen', close:'Schließen', complete:'Abschnitt als gelesen markieren', completed:'Als gelesen markiert', completeLesson:'Ganze Lektion als gelesen markieren', lessonCompleted:'Ganze Lektion gelesen', open:'Abschnitt öffnen', takeHome:'Take Home Message' },
+  en: { contents:'Lesson contents', path:'Learning path', progress:'read', continue:'Continue lesson', close:'Close', complete:'Mark section as read', completed:'Marked as read', completeLesson:'Mark whole lesson as read', lessonCompleted:'Whole lesson read', open:'Open section', takeHome:'Take Home Message' },
+  fa: { contents:'محتوای درس', path:'مسیر یادگیری', progress:'خوانده‌شده', continue:'ادامهٔ درس', close:'بستن', complete:'علامت‌گذاری بخش به‌عنوان خوانده‌شده', completed:'خوانده‌شده', completeLesson:'علامت‌گذاری کل درس به‌عنوان خوانده‌شده', lessonCompleted:'کل درس خوانده شد', open:'بازکردن بخش', takeHome:'پیام نهایی' },
+}
+
 
 function replaceLessonHash(id) {
   const baseUrl = `${window.location.pathname}${window.location.search}`
@@ -50,9 +58,9 @@ function MobileLearningPath() {
   const [panelOpen, setPanelOpen] = useState(false)
   if (!context) return null
 
-  const { labels, openId, readSections, trackedSections, openSection, renderIcon } = context
+  const { labels, openId, readSections, trackedSections, trackedIds, openSection, renderIcon } = context
   const activeSection = trackedSections.find(section => section.id === openId) || trackedSections[0]
-  const progress = trackedSections.length ? (readSections.size / trackedSections.length) * 360 : 0
+  const progress = trackedIds.length ? (readSections.size / trackedIds.length) * 360 : 0
   const selectFromPanel = id => {
     openSection(id)
     setPanelOpen(false)
@@ -60,7 +68,7 @@ function MobileLearningPath() {
 
   return <div className={styles.mobileLearningPath}>
     {panelOpen ? <section id="standard-mobile-learning-path-panel" className={styles.mobilePathPanel} role="dialog" aria-label={labels.path}>
-      <header><div><small>{labels.progress}</small><strong>{readSections.size} / {trackedSections.length}</strong></div><button type="button" onClick={() => setPanelOpen(false)} aria-label={labels.close}><Icon name="close" /></button></header>
+      <header><div><small>{labels.progress}</small><strong><bdi dir="ltr">{readSections.size} / {trackedIds.length}</bdi></strong></div><button type="button" onClick={() => setPanelOpen(false)} aria-label={labels.close}><Icon name="close" /></button></header>
       <nav>{trackedSections.map(section => <button type="button" key={section.id} className={openId === section.id ? styles.mobilePathCurrent : ''} onClick={() => selectFromPanel(section.id)} aria-current={openId === section.id ? 'location' : undefined}>
         <span className={styles.mobilePathItemIcon}>{renderIcon(section.icon || section.id)}</span>
         <span><strong>{section.label}</strong></span>
@@ -68,7 +76,7 @@ function MobileLearningPath() {
       </button>)}</nav>
     </section> : null}
     <button type="button" className={styles.mobilePathButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="standard-mobile-learning-path-panel">
-      <span className={styles.mobileProgressRing} style={{ '--mobile-progress': `${progress}deg` }}><b>{readSections.size}</b><small>/{trackedSections.length}</small></span>
+      <span dir="ltr" className={styles.mobileProgressRing} style={{ '--mobile-progress': `${progress}deg` }}><b>{readSections.size}</b><small>/{trackedIds.length}</small></span>
       <span className={styles.mobileCurrentIcon}>{renderIcon(activeSection?.icon || activeSection?.id)}</span>
       <span className={styles.mobilePathLabel}><strong>{labels.path}</strong><small>{activeSection?.label}</small></span>
     </button>
@@ -79,21 +87,22 @@ export function LessonSection({ id, title, icon, children, bodyClassName = '' })
   const context = useContext(LessonShellContext)
   if (!context) throw new Error('LessonSection must be rendered inside StandardLessonShell')
 
-  const { labels, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, renderIcon, lehrMode } = context
+  const { labels, trackedIds, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, renderIcon, lehrMode } = context
   const section = sections.find(item => item.id === id)
   const emphasis = Boolean(section?.emphasis)
+  const summaryTitle = context.lang === 'fa' ? 'پیام نهایی' : 'Take Home Message'
   const open = lehrMode || (emphasis ? summaryOpen : openId === id)
   const isRead = readSections.has(id)
 
   return <section id={id} className={`${styles.section} ${open ? styles.sectionOpen : ''} ${emphasis ? styles.takeHomeSection : ''}`}>
     <button type="button" className={styles.sectionHeader} onClick={() => { if (!lehrMode) (emphasis ? toggleSummary() : openSection(id)) }} aria-expanded={open} aria-controls={`${id}-panel`} data-lehr-section-managed>
       <span className={styles.sectionIcon}>{renderIcon(icon || section?.icon || id)}</span>
-      <span><strong>{title || section?.label}</strong></span>
+      <span><strong>{emphasis ? summaryTitle : (title || section?.label)}</strong></span>
       <span className={`${styles.toggle} ${open ? styles.toggleOpen : ''}`} aria-hidden="true"><Icon name="chevron" /></span>
     </button>
     <div id={`${id}-panel`} hidden={!open} className={`${styles.sectionBody} ${bodyClassName}`}>
       {children}
-      {!emphasis ? <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonDone : ''}`} aria-pressed={isRead} onClick={() => toggleSectionRead(id)}><Icon name="check" />{isRead ? labels.completed : labels.complete}</button> : null}
+      {(!emphasis || context.progressIncludesSummary) ? <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonDone : ''}`} aria-pressed={isRead} onClick={() => toggleSectionRead(id)}><Icon name="check" />{isRead ? labels.completed : labels.complete}</button> : null}
     </div>
   </section>
 }
@@ -110,6 +119,9 @@ export function TakeHomeList({ items }) {
 
   return <ol className={styles.takeHomeList}>{items.map((item, index) => {
     const open = lehrMode || openItems.has(index)
+    const genericTitle = /^(?:Regel|Rule|قاعده[ٔ‌]*)\s*[0-9۰-۹٠-٩]+[.:]?$/iu.test(String(item.title).trim())
+    if (genericTitle && item.detail) return <li key={`${index}-${item.title}`}><div className={styles.takeHomeStatic}><span className={styles.takeHomeNumber}>{String(index + 1).padStart(2, '0')}</span><strong>{item.detail}</strong></div></li>
+    if (!item.detail || item.detail === item.title) return <li key={`${index}-${item.title}`}><div className={styles.takeHomeStatic}><span className={styles.takeHomeNumber}>{String(index + 1).padStart(2, '0')}</span><strong>{item.title}</strong></div></li>
     return <li key={`${index}-${item.title}`} className={open ? styles.takeHomeItemOpen : ''}>
       <button type="button" onClick={() => { if (!lehrMode) toggle(index) }} aria-expanded={open} aria-controls={`take-home-detail-${index}`} data-lehr-section-managed>
         <span className={styles.takeHomeNumber}>{String(index + 1).padStart(2, '0')}</span>
@@ -121,7 +133,13 @@ export function TakeHomeList({ items }) {
   })}</ol>
 }
 
-export function LessonSources({ title, items, note }) {
+export function LessonSources({ title, items, note, lang: requestedLang }) {
+  const { lang: currentLang } = useLanguage()
+  const sourceLang = requestedLang || currentLang || 'de'
+  const localize = value => value && typeof value === 'object' && !value.$$typeof && ('de' in value || 'en' in value || 'fa' in value) ? (value[sourceLang] || value.de || value.en || value.fa) : value
+  items = items.map(item => ({ ...item, title: localize(item.title), citation: localize(item.citation), scope: localize(item.scope), tag: localize(item.tag) }))
+  title = localize(title)
+  note = localize(note)
   const lehrMode = useLehrModeActive()
   const [open, setOpen] = useState(false)
   const expanded = lehrMode || open
@@ -144,22 +162,28 @@ export default function StandardLessonShell({
   author,
   breadcrumbs,
   sections,
-  labels,
-  actions,
+  labels: suppliedLabels,
+  actions = {},
   renderIcon,
   theme,
   className = '',
   children,
   sources,
   heroImageAlt,
+  heroImageSrc,
+  heroVisual,
+  heroLessonId = lessonId,
+  progressIncludesSummary = false,
+  lessonRead = false,
   syncHashNavigation = false,
 }) {
+  const labels = { ...(DEFAULT_LABELS[lang] || DEFAULT_LABELS.de), ...Object.fromEntries(Object.entries(suppliedLabels || {}).filter(([, value]) => value !== undefined && value !== null)) }
   const trackedSections = useMemo(() => sections.filter(section => !section.emphasis), [sections])
   const lehrMode = useLehrModeActive()
-  const trackedIds = useMemo(() => trackedSections.map(section => section.id), [trackedSections])
+  const trackedIds = useMemo(() => (progressIncludesSummary ? sections : trackedSections).map(section => section.id), [sections, trackedSections, progressIncludesSummary])
   const [openId, setOpenId] = useState(trackedSections[0]?.id || sections[0]?.id || null)
   const [summaryOpen, setSummaryOpen] = useState(false)
-  const [readSections, setReadSections] = usePersistedSectionProgress(lessonId, trackedIds)
+  const [readSections, setReadSections] = usePersistedSectionProgress(lessonId, trackedIds, lessonRead)
   const activeIndex = trackedSections.findIndex(section => section.id === openId)
   const summarySection = sections.find(section => section.emphasis)
 
@@ -196,12 +220,10 @@ export default function StandardLessonShell({
 
   const toggleSummary = () => {
     if (!summarySection) return
-    setSummaryOpen(previous => {
-      const next = !previous
-      replaceLessonHash(next ? summarySection.id : openId)
-      if (next) scrollToLessonSection(summarySection.id)
-      return next
-    })
+    const next = !summaryOpen
+    setSummaryOpen(next)
+    replaceLessonHash(next ? summarySection.id : openId)
+    if (next) scrollToLessonSection(summarySection.id)
   }
 
   const advance = () => {
@@ -219,8 +241,17 @@ export default function StandardLessonShell({
   const lessonComplete = trackedIds.length > 0 && readSections.size === trackedIds.length
   const toggleLessonComplete = () => setReadSections(lessonComplete ? new Set() : new Set(trackedIds))
   const progress = trackedIds.length ? (readSections.size / trackedIds.length) * 100 : 0
-  const context = { labels, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, trackedSections, renderIcon, lehrMode }
+  const context = { lang, progressIncludesSummary, labels, trackedIds, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, trackedSections, renderIcon, lehrMode }
+  const atmosphereIndex = [...String(heroLessonId)].reduce((value, char) => (value * 31 + char.charCodeAt(0)) >>> 0, 0) % 6
+  const atmosphere = ['#3a1e46', '#123a46', '#283d36', '#33254d', '#453028', '#1d304d'][atmosphereIndex]
   const shellStyle = {
+    '--paper': '#fff',
+    '--ink': '#181522',
+    '--body': '#505264',
+    '--muted': '#66687a',
+    '--line': '#dcdce4',
+    '--canvas': '#f5f4f7',
+    '--lesson-atmosphere': atmosphere,
     '--lesson-background-image': `url("${theme.backgroundImage}")`,
     '--lesson-hero-image': theme.heroImage ? `url("${theme.heroImage}")` : 'none',
     '--lesson-hero-image-opacity': theme.heroImageOpacity ?? .42,
@@ -235,16 +266,13 @@ export default function StandardLessonShell({
   const summaryAction = summarySection ? { label: labels.takeHome, onClick: openSummary, trailingIcon: 'down' } : null
   const isAtLastTrackedSection = activeIndex === trackedSections.length - 1
 
-  return <main className={`${styles.page} ${className}`} style={shellStyle} data-lesson-progress-managed="true" data-lehr-sections-managed="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
+  return <main className={`${styles.page} ${className}`} style={shellStyle} data-lesson-shell={heroLessonId} data-lesson-progress-managed="true" data-lehr-sections-managed="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <header className={styles.header}>
       <div className={styles.topline}>
         <nav className={styles.breadcrumb} aria-label={labels.contents}>{breadcrumbs.map((item, index) => <span key={`${item.label}-${index}`}>{index ? <i aria-hidden="true">/</i> : null}{item.href ? <Link href={item.href}>{item.label}</Link> : <strong>{item.label}</strong>}</span>)}</nav>
         <span className={styles.author}>{author}</span>
       </div>
-      {heroImageAlt ? <div className={styles.semanticHero}><LessonHero title={title} imageSrc={theme.heroImage} imageAlt={heroImageAlt} lang={lang} /></div> : <div className={styles.hero}>
-        <div className={styles.heroCopy}><h1>{title}</h1></div>
-        <div className={styles.heroVisual} aria-hidden="true" />
-      </div>}
+      <div className={styles.semanticHero}><LessonHero lessonId={heroLessonId} title={title} imageSrc={heroImageSrc || theme.heroImage} imageAlt={heroImageAlt || title} visual={heroVisual} lang={lang} /></div>
       <div className={styles.actions}>
         <Action action={summaryAction} className={styles.takeHomeJump} icon="summary" />
         <Action action={actions.mcq} className={styles.primaryAction} icon="quiz" />
@@ -252,7 +280,7 @@ export default function StandardLessonShell({
       </div>
       <div className={styles.progressBar}>
         <div className={styles.progressTrack} role="progressbar" aria-label={labels.progress} aria-valuemin={0} aria-valuemax={trackedIds.length} aria-valuenow={readSections.size}><i style={{ width: `${progress}%` }} /></div>
-        <span>{readSections.size} / {trackedIds.length} {labels.progress}</span>
+        <span><bdi dir="ltr">{readSections.size} / {trackedIds.length}</bdi> {labels.progress}</span>
         <div className={styles.progressActions}>
           <button type="button" className={styles.continueButton} onClick={advance} disabled={isAtLastTrackedSection}>{labels.continue}<Icon name="arrow" /></button>
           <button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{lessonComplete ? labels.lessonCompleted : labels.completeLesson}</button>

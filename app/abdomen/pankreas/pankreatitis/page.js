@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -422,7 +424,7 @@ function Section({ id, title, lead, children }) {
         <h2>{title}</h2>
         <span>{open ? '−' : '+'}</span>
       </button>
-      {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+      <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>
     </section>
   )
 }
@@ -464,7 +466,7 @@ export default function PankreatitisPage() {
   }, [sectionIds])
 
   return (
-    <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/abdomen/pankreas/pankreatitis" lessonId="/abdomen/pankreas/pankreatitis">
       <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
@@ -492,7 +494,7 @@ export default function PankreatitisPage() {
         </div>
       </header>
 
-      <div className={styles.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+      <div className={styles.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
 
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
@@ -510,39 +512,39 @@ export default function PankreatitisPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="grundlagen" title={copy.basics.title} lead={copy.basics.lead}>
+          <Section id="grundlagen" title={copy.basics.title} lead={copy.basics.lead} migrationChapter>
             <Cards items={copy.basics.items} />
             <Callout label={copy.keyLabel}>{copy.basics.key}</Callout>
           </Section>
 
-          <Section id="atlanta" title={copy.atlanta.title} lead={copy.atlanta.lead}>
+          <Section id="atlanta" title={copy.atlanta.title} lead={copy.atlanta.lead} migrationChapter>
             <Cards items={copy.atlanta.morphology} />
             <Table headers={copy.atlanta.collectionHeaders} rows={copy.atlanta.collections} />
             <Callout label={copy.keyLabel}>{copy.atlanta.key}</Callout>
           </Section>
 
-          <Section id="ctsi" title={copy.ctsi.title} lead={copy.ctsi.lead}>
+          <Section id="ctsi" title={copy.ctsi.title} lead={copy.ctsi.lead} migrationChapter>
             <Table headers={copy.ctsi.balthazarHeaders} rows={copy.ctsi.balthazarRows} />
             <Table headers={copy.ctsi.necrosisHeaders} rows={copy.ctsi.necrosisRows} />
             <Table headers={copy.ctsi.interpretationHeaders} rows={copy.ctsi.interpretationRows} />
           </Section>
 
-          <Section id="komplikationen" title={copy.complications.title} lead={copy.complications.lead}>
+          <Section id="komplikationen" title={copy.complications.title} lead={copy.complications.lead} migrationChapter>
             <Cards items={copy.complications.items} />
             <Callout type="cave" label={copy.caveLabel}>{copy.complications.cave}</Callout>
           </Section>
 
-          <Section id="chronisch" title={copy.chronic.title} lead={copy.chronic.lead}>
+          <Section id="chronisch" title={copy.chronic.title} lead={copy.chronic.lead} migrationChapter>
             <Cards items={copy.chronic.items} />
             <Callout label={copy.keyLabel}>{copy.chronic.key}</Callout>
           </Section>
 
-          <Section id="dd" title={copy.dd.title} lead={copy.dd.lead}>
+          <Section id="dd" title={copy.dd.title} lead={copy.dd.lead} migrationChapter>
             <Table headers={copy.dd.headers} rows={copy.dd.rows} />
             <Callout type="cave" label={copy.caveLabel}>{copy.dd.cave}</Callout>
           </Section>
 
-          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>
+          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead} migrationChapter>
             <div className={styles.takeHomeGrid}>
               {copy.takehome.items.map((item, index) => (
                 <div className={styles.takeHomeItem} key={item.title}>
@@ -553,9 +555,9 @@ export default function PankreatitisPage() {
             </div>
           </Section>
 
-          <p><a href="https://gut.bmj.com/content/62/1/102">Revised Atlanta 2012</a> · <a href="https://doi.org/10.1186/s13017-019-0247-0">WSES 2019</a> · <a href="https://gastro.org/clinical-guidance/management-of-pancreatic-necrosis/">AGA: Pancreatic necrosis</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8068672/">Secretin-MRCP expert panel</a></p><div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+          <p><a href="https://gut.bmj.com/content/62/1/102">Revised Atlanta 2012</a> · <a href="https://doi.org/10.1186/s13017-019-0247-0">WSES 2019</a> · <a href="https://gastro.org/clinical-guidance/management-of-pancreatic-necrosis/">AGA: Pancreatic necrosis</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8068672/">Secretin-MRCP expert panel</a></p><div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
         </div>
       </div>
-    </main>
+    </LegacyLessonMigration>
   )
 }

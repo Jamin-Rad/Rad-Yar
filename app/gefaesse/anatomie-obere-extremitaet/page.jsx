@@ -50,7 +50,7 @@ export default function UpperLimbArteriesLesson() {
   const sections=UPPER_ARTERY_SECTIONS.map(s=>({...s,label:v(s.title,lang)}))
   return <StandardLessonShell lessonId={UPPER_ARTERY_ID} lang={lang} title={v(UPPER_ARTERY_TITLE,lang)} author="Dr. Zia"
     breadcrumbs={[{label:'RadYar',href:langPath('/')},{label:t('chapter'),href:langPath('/lernen/gefaesse-ir')},{label:v(UPPER_ARTERY_TITLE,lang)}]}
-    sections={sections} labels={Object.fromEntries(Object.entries(LABELS).map(([key,value])=>[key,v(value,lang)]))} renderIcon={iconFor} syncHashNavigation
+    sections={[...(sections),{id:'takehome',label:lang==='fa'?'پیام نهایی':'Take Home Message',icon:'summary',emphasis:true}]} labels={Object.fromEntries(Object.entries(LABELS).map(([key,value])=>[key,v(value,lang)]))} renderIcon={iconFor} syncHashNavigation
     actions={{mcq:{label:t('practice'),href:langPath(`/ueben/quiz?fach=gefaesse-ir&n=2&themen=${UPPER_ARTERY_ID}&from=${encodeURIComponent(returnPath)}`)},flashcards:{label:t('cards'),href:langPath(`/flashcards/${UPPER_ARTERY_ID}?from=${encodeURIComponent(returnPath)}`)}}}
     theme={{backgroundImage:'/andarun-galaxy-v3.png',heroImage:'/educational/upper-limb-arteries/hero.png',heroImageOpacity:.55,accent:'#9d5353',accentStrong:'#793b3b',accentSoft:'#f7eded',secondary:'#537f89',secondaryStrong:'#315c66',heroBase:'#152a35'}}
     heroImageAlt={t('heroAlt')} className={styles.page}
@@ -61,8 +61,10 @@ export default function UpperLimbArteriesLesson() {
         {i===0&&<><MainPath lang={lang}/><Check item={UPPER_ARTERY_CHECKS[0]} lang={lang}/></>}
         {i===1&&<DistalPath lang={lang}/>}
         {i===2&&<><DistalPath lang={lang} arches/><Check item={UPPER_ARTERY_CHECKS[1]} lang={lang}/></>}
-        {i===3&&<TakeHomeList items={takeaways.map(item=>({title:v(item.title,lang),detail:v(item.detail,lang)}))}/>}
+
       </LessonSection>)}
     </div>
-  </StandardLessonShell>
+
+<LessonSection id="takehome" icon="summary"><TakeHomeList items={takeaways.map(item=>({title:v(item.title,lang),detail:v(item.detail,lang)}))}/></LessonSection>
+</StandardLessonShell>
 }

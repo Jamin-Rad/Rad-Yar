@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -392,7 +394,7 @@ function Section({ id, title, lead, children }) {
         <h2>{title}</h2>
         <span>{open ? '−' : '+'}</span>
       </button>
-      {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+      <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>
     </section>
   )
 }
@@ -419,7 +421,7 @@ export default function AortenbogenPage() {
   }, [sectionIds])
 
   return (
-    <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/thorax/anatomie/aortenbogen" lessonId="/thorax/anatomie/aortenbogen">
       <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
@@ -446,7 +448,7 @@ export default function AortenbogenPage() {
         </div>
       </header>
 
-      <div className={styles.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+      <div className={styles.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
 
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
@@ -465,7 +467,7 @@ export default function AortenbogenPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="normal" title={c(LESSON.normal.title)} lead={c(LESSON.normal.lead)}>
+          <Section id="normal" title={c(LESSON.normal.title)} lead={c(LESSON.normal.lead)} migrationChapter>
             <div className={styles.figureGrid}>
               <Table headers={LESSON.normal.headers} rows={LESSON.normal.rows} />
               <figure className={styles.figure}>
@@ -476,11 +478,11 @@ export default function AortenbogenPage() {
             <Callout label={ui.keyLabel}>{c(LESSON.normal.key)}</Callout>
           </Section>
 
-          <Section id="abgaenge" title={c(LESSON.branches.title)} lead={c(LESSON.branches.lead)}>
+          <Section id="abgaenge" title={c(LESSON.branches.title)} lead={c(LESSON.branches.lead)} migrationChapter>
             <Cards items={LESSON.branches.items} />
           </Section>
 
-          <Section id="varianten" title={c(LESSON.variants.title)} lead={c(LESSON.variants.lead)}>
+          <Section id="varianten" title={c(LESSON.variants.title)} lead={c(LESSON.variants.lead)} migrationChapter>
             <figure className={styles.figure}>
               <Image src="/aortenbogen/aortenbogen-varianten.svg" alt={c(L('Schema wichtiger Aortenbogenvarianten', 'Diagram of key aortic arch variants', 'شماتیک واریانت های مهم قوس آئورت'))} width={1200} height={760} />
               <figcaption>{c(L('Varianten nach Ursprung, Seitenlage und Beziehung zu Trachea/Ösophagus einordnen.', 'Classify variants by origin, arch side and relation to trachea/oesophagus.', 'واریانت ها را بر اساس منشا، سمت قوس و ارتباط با تراشه/مری طبقه بندی کنید.'))}</figcaption>
@@ -488,25 +490,25 @@ export default function AortenbogenPage() {
             <Table headers={LESSON.variants.headers} rows={LESSON.variants.rows} />
           </Section>
 
-          <Section id="ringe" title={c(LESSON.rings.title)} lead={c(LESSON.rings.lead)}>
+          <Section id="ringe" title={c(LESSON.rings.title)} lead={c(LESSON.rings.lead)} migrationChapter>
             <Cards items={LESSON.rings.items} />
             <Callout type="cave" label={ui.caveLabel}>{c(LESSON.rings.cave)}</Callout>
           </Section>
 
-          <Section id="bildgebung" title={c(LESSON.imaging.title)} lead={c(LESSON.imaging.lead)}>
+          <Section id="bildgebung" title={c(LESSON.imaging.title)} lead={c(LESSON.imaging.lead)} migrationChapter>
             <Cards items={LESSON.imaging.items} />
           </Section>
 
-          <Section id="befundung" title={c(LESSON.reporting.title)} lead={c(LESSON.reporting.lead)}>
+          <Section id="befundung" title={c(LESSON.reporting.title)} lead={c(LESSON.reporting.lead)} migrationChapter>
             <Cards items={LESSON.reporting.items} />
             <Callout label={ui.keyLabel}>{c(LESSON.reporting.key)}</Callout>
           </Section>
 
-          <Section id="fallstricke" title={c(LESSON.pitfalls.title)} lead={c(LESSON.pitfalls.lead)}>
+          <Section id="fallstricke" title={c(LESSON.pitfalls.title)} lead={c(LESSON.pitfalls.lead)} migrationChapter>
             <Cards items={LESSON.pitfalls.items} />
           </Section>
 
-          <Section id="takehome" title={c(L('Take home message', 'Take home message', 'جمع بندی'))}>
+          <Section id="takehome" title={c(L('Take home message', 'Take home message', 'جمع بندی'))} migrationChapter>
             <div className={styles.takeHomeGrid}>
               {LESSON.takehome.map((item, index) => (
                 <div className={styles.takeHomeItem} key={c(item.title)}>
@@ -517,9 +519,9 @@ export default function AortenbogenPage() {
             </div>
           </Section>
 
-          <div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+          <div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
         </div>
       </div>
-    </main>
+    </LegacyLessonMigration>
   )
 }

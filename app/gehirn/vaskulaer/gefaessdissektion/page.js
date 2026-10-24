@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -26,7 +28,7 @@ function Section({ id, title, lead, children }) {
   useEffect(() => setOpen(false), [id])
   return <section id={id} className={styles.section}>
     <button type="button" className={styles.sectionHeader} onClick={() => setOpen(value => !value)} aria-expanded={open}><h2>{title}</h2><span>{open ? '−' : '+'}</span></button>
-    {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+    <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>
   </section>
 }
 
@@ -122,7 +124,7 @@ export default function GefaessdissektionPage() {
   ]
 
   return <>
-    <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/gehirn/vaskulaer/gefaessdissektion" lessonId="/gehirn/vaskulaer/gefaessdissektion">
       <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}><Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/gehirn')}>{c({ de: 'Kopf', en: 'Head', fa: 'سر' })}</Link><span>›</span><span>{c(DISSECTION_LESSON.breadcrumb)}</span></div>
@@ -133,22 +135,22 @@ export default function GefaessdissektionPage() {
           <div className={styles.heroStats}>{DISSECTION_LESSON.heroCards.map(card => <div className={styles.heroStat} key={card.value}><strong>{card.value}</strong><span>{c(card.label)}</span><small>{c(card.text)}</small></div>)}</div>
         </div>
       </header>
-      <div className={styles.readBar}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>
+      <div className={styles.readBar}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/></div>
       <div className={styles.layout}>
         <aside className={styles.sidebar}><div className={styles.sideTitle}>{c(DISSECTION_LESSON.toc)}</div>{DISSECTION_LESSON.sections.map(section => <button type="button" key={section.id} className={`${styles.sideItem} ${active === section.id ? styles.sideItemActive : ''}`} onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth' })}><span>{section.icon}</span><strong>{c(section.label)}</strong></button>)}</aside>
         <div className={styles.main}>
-          <Section id="grundlagen" title={c(DISSECTION_LESSON.basics.title)} lead={c(DISSECTION_LESSON.basics.lead)}><Cards items={DISSECTION_LESSON.basics.items} lang={lang} /><Callout cave label={copy.cave}>{c(DISSECTION_LESSON.basics.cave)}</Callout></Section>
-          <Section id="patho" title={c(DISSECTION_LESSON.patho.title)} lead={c(DISSECTION_LESSON.patho.lead)}><LearningFigure src="/dissection/dissection-pathway.svg" alt={c(DISSECTION_LESSON.patho.imageAlt)} onZoom={setPreview} copy={copy} /><Callout label={copy.key}>{c(DISSECTION_LESSON.patho.key)}</Callout></Section>
-          <Section id="cta" title={c(DISSECTION_LESSON.cta.title)} lead={c(DISSECTION_LESSON.cta.lead)}><Table headers={DISSECTION_LESSON.cta.headers.map(c)} rows={rows(DISSECTION_LESSON.cta.rows)} /><LearningFigure src="/dissection/imaging-signs.svg" alt={c(DISSECTION_LESSON.cta.imageAlt)} onZoom={setPreview} copy={copy} /><Callout cave label={copy.cave}>{c(DISSECTION_LESSON.cta.cave)}</Callout></Section>
-          <Section id="mrt" title={c(DISSECTION_LESSON.mri.title)} lead={c(DISSECTION_LESSON.mri.lead)}><Table headers={DISSECTION_LESSON.mri.headers.map(c)} rows={rows(DISSECTION_LESSON.mri.rows)} /><Callout cave label={copy.cave}>{c(DISSECTION_LESSON.mri.cave)}</Callout></Section>
-          <Section id="komplikationen" title={c(DISSECTION_LESSON.complications.title)} lead={c(DISSECTION_LESSON.complications.lead)}><Cards items={DISSECTION_LESSON.complications.items} lang={lang} /><p>{c(DISSECTION_LESSON.complications.sourceNote)} {DISSECTION_LESSON.complications.references.map((reference, index) => <span key={reference.href}>{index > 0 ? ' · ' : ''}<a href={reference.href} target="_blank" rel="noopener noreferrer">{c(reference.label)}</a></span>)}</p><Callout cave label={copy.cave}>{c(DISSECTION_LESSON.complications.cave)}</Callout></Section>
-          <Section id="befund" title={c(DISSECTION_LESSON.report.title)} lead={c(DISSECTION_LESSON.report.lead)}><Cards items={DISSECTION_LESSON.report.items} lang={lang} /></Section>
-          <Section id="fallbeispiele" title={c(DISSECTION_LESSON.cases.title)} lead={c(DISSECTION_LESSON.cases.lead)}><div className={styles.caseGrid}>{cases.map((item, index) => <article className={styles.caseCardLink} key={item.url}><CaseViewer frames={item.frames} initial={item.initial} alt={`${c(DISSECTION_LESSON.cases.title)} ${index + 1}`} copy={copy} onZoom={setPreview} /><div className={styles.caseBody}><div className={styles.caseLabelRow}><span className={styles.caseLabel}>{index ? 'CTA' : 'MRI'}</span></div><h3>{c({ de: 'Fallbeispiel', en: 'Case', fa: 'نمونه کیس' })}</h3><p>{item.meta}</p><small>{item.credit}</small><a href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseExternalLink}>{c(DISSECTION_LESSON.cases.open)} ↗</a></div></article>)}</div></Section>
-          <Section id="takehome" title={c(DISSECTION_LESSON.takehome.title)} lead={c(DISSECTION_LESSON.takehome.lead)}><div className={styles.takeHomeGrid}>{DISSECTION_LESSON.takehome.items.map((item, index) => <div className={styles.takeHomeItem} key={c(item.title)}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{c(item.title)}</h3><p>{c(item.text)}</p></div></div>)}</div></Section>
-          <div className={styles.readBarBottom}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>
+          <Section id="grundlagen" title={c(DISSECTION_LESSON.basics.title)} lead={c(DISSECTION_LESSON.basics.lead)} migrationChapter><Cards items={DISSECTION_LESSON.basics.items} lang={lang} /><Callout cave label={copy.cave}>{c(DISSECTION_LESSON.basics.cave)}</Callout></Section>
+          <Section id="patho" title={c(DISSECTION_LESSON.patho.title)} lead={c(DISSECTION_LESSON.patho.lead)} migrationChapter><LearningFigure src="/dissection/dissection-pathway.svg" alt={c(DISSECTION_LESSON.patho.imageAlt)} onZoom={setPreview} copy={copy} /><Callout label={copy.key}>{c(DISSECTION_LESSON.patho.key)}</Callout></Section>
+          <Section id="cta" title={c(DISSECTION_LESSON.cta.title)} lead={c(DISSECTION_LESSON.cta.lead)} migrationChapter><Table headers={DISSECTION_LESSON.cta.headers.map(c)} rows={rows(DISSECTION_LESSON.cta.rows)} /><LearningFigure src="/dissection/imaging-signs.svg" alt={c(DISSECTION_LESSON.cta.imageAlt)} onZoom={setPreview} copy={copy} /><Callout cave label={copy.cave}>{c(DISSECTION_LESSON.cta.cave)}</Callout></Section>
+          <Section id="mrt" title={c(DISSECTION_LESSON.mri.title)} lead={c(DISSECTION_LESSON.mri.lead)} migrationChapter><Table headers={DISSECTION_LESSON.mri.headers.map(c)} rows={rows(DISSECTION_LESSON.mri.rows)} /><Callout cave label={copy.cave}>{c(DISSECTION_LESSON.mri.cave)}</Callout></Section>
+          <Section id="komplikationen" title={c(DISSECTION_LESSON.complications.title)} lead={c(DISSECTION_LESSON.complications.lead)} migrationChapter><Cards items={DISSECTION_LESSON.complications.items} lang={lang} /><p>{c(DISSECTION_LESSON.complications.sourceNote)} {DISSECTION_LESSON.complications.references.map((reference, index) => <span key={reference.href}>{index > 0 ? ' · ' : ''}<a href={reference.href} target="_blank" rel="noopener noreferrer">{c(reference.label)}</a></span>)}</p><Callout cave label={copy.cave}>{c(DISSECTION_LESSON.complications.cave)}</Callout></Section>
+          <Section id="befund" title={c(DISSECTION_LESSON.report.title)} lead={c(DISSECTION_LESSON.report.lead)} migrationChapter><Cards items={DISSECTION_LESSON.report.items} lang={lang} /></Section>
+          <Section id="fallbeispiele" title={c(DISSECTION_LESSON.cases.title)} lead={c(DISSECTION_LESSON.cases.lead)} migrationChapter><div className={styles.caseGrid}>{cases.map((item, index) => <article className={styles.caseCardLink} key={item.url}><CaseViewer frames={item.frames} initial={item.initial} alt={`${c(DISSECTION_LESSON.cases.title)} ${index + 1}`} copy={copy} onZoom={setPreview} /><div className={styles.caseBody}><div className={styles.caseLabelRow}><span className={styles.caseLabel}>{index ? 'CTA' : 'MRI'}</span></div><h3>{c({ de: 'Fallbeispiel', en: 'Case', fa: 'نمونه کیس' })}</h3><p>{item.meta}</p><small>{item.credit}</small><a href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseExternalLink}>{c(DISSECTION_LESSON.cases.open)} ↗</a></div></article>)}</div></Section>
+          <Section id="takehome" title={c(DISSECTION_LESSON.takehome.title)} lead={c(DISSECTION_LESSON.takehome.lead)} migrationChapter><div className={styles.takeHomeGrid}>{DISSECTION_LESSON.takehome.items.map((item, index) => <div className={styles.takeHomeItem} key={c(item.title)}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{c(item.title)}</h3><p>{c(item.text)}</p></div></div>)}</div></Section>
+          <div className={styles.readBarBottom}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/></div>
         </div>
       </div>
       {preview && <div className={styles.strokeImageModal} role="dialog" aria-modal="true" aria-label={copy.zoom} onClick={() => setPreview(null)}><div className={styles.strokeImageModalContent} onClick={event => event.stopPropagation()} onWheel={event => { if (!preview.frames?.length) return; event.preventDefault(); movePreview(event.deltaY > 0 ? 1 : -1) }}><button type="button" className={styles.strokeImageModalClose} onClick={() => setPreview(null)} aria-label={copy.close}>×</button><img src={preview.src} alt={preview.alt} />{preview.frames?.length > 1 && <><div style={{ width: 'min(720px,92%)', display: 'grid', gridTemplateColumns: '42px minmax(0,1fr) 42px', gap: 12, alignItems: 'center', marginTop: 12 }}><button type="button" onClick={() => movePreview(-1)} disabled={preview.index === 0}>‹</button><input type="range" min="0" max={preview.frames.length - 1} value={preview.index} onChange={event => { const index = Number(event.target.value); setPreview(value => ({ ...value, index, src: value.frames[index] })) }} style={{ width: '100%', accentColor: '#8b5cf6' }} /><button type="button" onClick={() => movePreview(1)} disabled={preview.index === preview.frames.length - 1}>›</button></div><small style={{ color: '#cbd5e1', marginTop: 7 }}>{copy.image(preview.index + 1, preview.frames.length)} · {copy.scroll}</small></>}</div></div>}
-    </main>
+    </LegacyLessonMigration>
   </>
 }

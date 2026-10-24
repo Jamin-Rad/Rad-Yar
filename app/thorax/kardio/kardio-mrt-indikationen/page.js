@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import LessonKeyPoints from '@/components/LessonKeyPoints'
@@ -294,7 +296,7 @@ export default function CardiacMriIndicationsPage() {
     scrollIntoViewAfterLayout(document.getElementById(id))
   }
 
-  return <main className={`${base.page} ${styles.page}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
+  return <LegacyLessonMigration className={`${base.page} ${styles.page}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/thorax/kardio/kardio-mrt-indikationen" lessonId="/thorax/kardio/kardio-mrt-indikationen">
     <header className={`${base.header} ${styles.header}`}>
       <nav className={`${base.breadcrumb} ${styles.breadcrumb}`} aria-label="Breadcrumb"><Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/thorax')}>{ui.thorax}</Link><span>›</span><Link href={withLang('/lernen/thorax')}>{ui.chapter}</Link><span>›</span><strong>{ui.title}</strong></nav>
       <div className={`${base.hero} ${styles.hero}`}>
@@ -303,7 +305,7 @@ export default function CardiacMriIndicationsPage() {
       </div>
     </header>
 
-    <div className={`${base.readBar} ${styles.readBar}`}><ReadButton ui={ui} isRead={isRead} toggleRead={toggleRead} authError={authError} withLang={withLang} /></div>
+    <div className={`${base.readBar} ${styles.readBar}`}><ReadButton ui={ui} isRead={isRead} toggleRead={toggleRead} authError={authError} withLang={withLang}  migrationReadControl/></div>
 
     <div className={`${base.layout} ${styles.layout}`}>
       <aside className={`${base.sidebar} ${styles.sidebar}`}><div className={base.sideTitle}>{ui.contents}</div>{SECTION_IDS.map(id => <button key={id} type="button" className={`${base.sideItem} ${styles.sideItem} ${activeId === id ? `${base.sideItemActive} ${styles.sideItemActive}` : ''}`} onClick={() => jumpTo(id)}><span className={styles.sideIcon}><SectionIcon id={id} /></span><strong>{c(SECTION_LABELS[id])}</strong></button>)}</aside>
@@ -316,40 +318,40 @@ export default function CardiacMriIndicationsPage() {
           {questionId === 'ischaemia' && lang === 'de' ? <KhkDetail /> : null}
         </section>
 
-        <Section id="overview" title={c(SECTION_LABELS.overview)} openId={openId} setOpenId={setOpenId}>
+        <Section id="overview" title={c(SECTION_LABELS.overview)} openId={openId} setOpenId={setOpenId} migrationChapter>
           <div className={styles.principleGrid}><article><span>01</span><h3>{c(L('Wenn Gewebe zählt', 'When tissue matters', 'وقتی بافت اهمیت دارد'))}</h3><p>{c(L('CMR erkennt Ödem, Fibrose, Narbe, Fett, Eisen und diffuse Infiltration – Informationen, die Echo und CT nur eingeschränkt liefern.', 'CMR detects oedema, fibrosis, scar, fat, iron and diffuse infiltration—information only partly available from echo or CT.', 'CMR ادم، فیبروز، اسکار، چربی، آهن و نفوذ منتشر را شناسایی می‌کند؛ اطلاعاتی که اکو یا CT فقط به‌صورت محدود ارائه می‌کنند.'))}</p></article><article><span>02</span><h3>{c(L('Wenn Quantifizierung zählt', 'When quantification matters', 'وقتی کمی‌سازی اهمیت دارد'))}</h3><p>{c(L('CMR ist Referenzmethode für biventrikuläre Volumina und Funktion und besonders stark beim rechten Ventrikel.', 'CMR is the reference method for biventricular volumes and function and is especially strong for the right ventricle.', 'CMR روش مرجع برای حجم و عملکرد هر دو بطن است و به‌ویژه در ارزیابی بطن راست برتری دارد.'))}</p></article><article><span>03</span><h3>{c(L('Wenn mehrere Fragen zusammenkommen', 'When questions overlap', 'وقتی چند پرسش هم‌زمان مطرح است'))}</h3><p>{c(L('Morphologie, Funktion, Perfusion, Fluss und Gewebe lassen sich in einer maßgeschneiderten Untersuchung kombinieren.', 'Morphology, function, perfusion, flow and tissue can be combined in one tailored examination.', 'مورفولوژی، عملکرد، پرفیوژن، جریان و بافت را می‌توان در یک بررسی هدفمند ترکیب کرد.'))}</p></article></div>
           <div className={styles.note}><strong>{ui.noRadiation}</strong><p>{ui.contrastNote}</p></div>
         </Section>
 
-        <Section id="indications" title={c(SECTION_LABELS.indications)} openId={openId} setOpenId={setOpenId}>
+        <Section id="indications" title={c(SECTION_LABELS.indications)} openId={openId} setOpenId={setOpenId} migrationChapter>
           <div className={styles.indicationGrid}>{CORE_INDICATIONS.map(([title, text], index) => <article key={c(title)}><span>{String(index + 1).padStart(2, '0')}</span><h3>{c(title)}</h3><p>{c(text)}</p></article>)}</div>
           <div className={styles.ruleBox}><strong>{c(L('Merksatz', 'Rule of thumb', 'نکتهٔ کلیدی'))}</strong><p>{c(L('CMR ist indiziert, wenn die Antwort die Diagnose, Risikostratifikation, Therapie oder Verlaufskontrolle voraussichtlich verändert und eine andere Methode die Frage nicht gleichwertig beantwortet.', 'CMR is indicated when its answer is likely to change diagnosis, risk stratification, treatment or follow-up and another method cannot answer the question equivalently.', 'CMR زمانی اندیکاسیون دارد که پاسخ آن احتمالاً تشخیص، ارزیابی خطر، درمان یا پیگیری را تغییر دهد و روش دیگری پاسخ هم‌ارز ارائه نکند.'))}</p></div>
         </Section>
 
-        <Section id="triage" title={c(SECTION_LABELS.triage)} openId={openId} setOpenId={setOpenId}>
+        <Section id="triage" title={c(SECTION_LABELS.triage)} openId={openId} setOpenId={setOpenId} migrationChapter>
           <div className={styles.alert}><strong>{ui.important}</strong><p>{ui.notEmergency}</p></div>
           <div className={styles.triageGrid}>{TRIAGE.map(([title, text]) => <article key={c(title)}><h3>{c(title)}</h3><p>{c(text)}</p></article>)}</div>
         </Section>
 
-        <Section id="safety" title={c(SECTION_LABELS.safety)} openId={openId} setOpenId={setOpenId}>
+        <Section id="safety" title={c(SECTION_LABELS.safety)} openId={openId} setOpenId={setOpenId} migrationChapter>
           <div className={styles.safetyList}>{SAFETY.map(([title, text], index) => <article key={c(title)}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{c(title)}</h3><p>{c(text)}</p></div></article>)}</div>
         </Section>
 
-        <Section id="referral" title={c(SECTION_LABELS.referral)} openId={openId} setOpenId={setOpenId}>
+        <Section id="referral" title={c(SECTION_LABELS.referral)} openId={openId} setOpenId={setOpenId} migrationChapter>
           <div className={styles.checklist}>{REFERRAL_CHECKLIST.map(item => <div key={c(item)}><span>✓</span><p>{c(item)}</p></div>)}</div>
           <div className={styles.referralExample}><strong>{ui.example}</strong><p>{c(L('„Unklare nichtischämische LV-Dysfunktion (LVEF 38 % im Echo), Koronarangiographie ohne relevante Stenose. Frage: Kardiomyopathie-Phänotyp, Myokardnarbe und aktive Entzündung? Sinusrhythmus, eGFR 72 ml/min/1,73 m², kein Implantat.“', '“Unexplained non-ischaemic LV dysfunction (echo LVEF 38%); coronary angiography without relevant stenosis. Question: cardiomyopathy phenotype, myocardial scar and active inflammation? Sinus rhythm, eGFR 72 mL/min/1.73 m², no implant.”', '«اختلال عملکرد غیرایسکمیک نامشخص LV (LVEF در اکو ۳۸٪)، آنژیوگرافی کرونر بدون تنگی مهم. پرسش: فنوتیپ کاردیومیوپاتی، اسکار میوکارد و التهاب فعال؟ ریتم سینوسی، eGFR برابر ۷۲ و بدون ایمپلنت.»'))}</p></div>
         </Section>
 
-        <Section id="takehome" title={c(SECTION_LABELS.takehome)} openId={openId} setOpenId={setOpenId}>
+        <Section id="takehome" title={c(SECTION_LABELS.takehome)} openId={openId} setOpenId={setOpenId} migrationChapter>
           <div className={styles.takeHomeGrid}>{TAKE_HOME.map(item => <div key={c(item)}><span>✓</span><p>{c(item)}</p></div>)}</div>
         </Section>
 
-        <Section id="sources" title={ui.sources} openId={openId} setOpenId={setOpenId}>
+        <Section id="sources" title={ui.sources} openId={openId} setOpenId={setOpenId} migrationChapter>
           <div className={styles.sources}>{SOURCES.map(([label, href]) => <a key={href} href={href} target="_blank" rel="noopener noreferrer">{label}<span>↗</span></a>)}</div>
         </Section>
 
-        <div className={`${base.readBar} ${styles.bottomRead}`}><ReadButton ui={ui} isRead={isRead} toggleRead={toggleRead} authError={authError} withLang={withLang} /></div>
+        <div className={`${base.readBar} ${styles.bottomRead}`}><ReadButton ui={ui} isRead={isRead} toggleRead={toggleRead} authError={authError} withLang={withLang}  migrationReadControl/></div>
       </div>
     </div>
-  </main>
+  </LegacyLessonMigration>
 }

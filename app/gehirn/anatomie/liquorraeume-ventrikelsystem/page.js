@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -845,7 +847,7 @@ function Section({ id, title, lead, children }) {
       <button type="button" className={styles.sectionHeader} onClick={() => setOpen(value => !value)} aria-expanded={open}>
         <h2>{title}</h2><span>{open ? '−' : '+'}</span>
       </button>
-      {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+      <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>
     </section>
   )
 }
@@ -957,7 +959,7 @@ export default function CsfSpacesPage() {
   return (
     <>
     <InProgressBanner lang={lang} />
-    <main className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/gehirn/anatomie/liquorraeume-ventrikelsystem" lessonId="/gehirn/anatomie/liquorraeume-ventrikelsystem">
       <header className={styles.header}>
         <nav className={styles.breadcrumb}>
           <Link href={withLang('/')}>RadYar</Link><span>›</span>
@@ -980,7 +982,7 @@ export default function CsfSpacesPage() {
         </div>
       </header>
 
-      <div className={styles.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+      <div className={styles.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
 
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
@@ -993,37 +995,37 @@ export default function CsfSpacesPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="anatomie" title={copy.anatomy.title} lead={copy.anatomy.lead}>
+          <Section id="anatomie" title={copy.anatomy.title} lead={copy.anatomy.lead} migrationChapter>
             <Table headers={copy.anatomy.headers} rows={copy.anatomy.rows} />
             <Cards items={copy.anatomy.cards} />
             <Callout label={copy.keyLabel}>{copy.anatomy.key}</Callout>
           </Section>
 
-          <Section id="liquorfluss" title={copy.flow.title} lead={copy.flow.lead}>
+          <Section id="liquorfluss" title={copy.flow.title} lead={copy.flow.lead} migrationChapter>
             <div className={styles.flowGrid}>
               {copy.flow.steps.map(step => <article className={styles.flowStep} key={step.title}><h3>{step.title}</h3><p>{step.text}</p></article>)}
             </div>
             <Callout label={copy.keyLabel}>{copy.flow.key}</Callout>
           </Section>
 
-          <Section id="bildgebung" title={copy.imaging.title} lead={copy.imaging.lead}>
+          <Section id="bildgebung" title={copy.imaging.title} lead={copy.imaging.lead} migrationChapter>
             <Table headers={copy.imaging.headers} rows={copy.imaging.rows} />
             <Callout type="cave" label={copy.caveLabel}>{copy.imaging.cave}</Callout>
           </Section>
 
-          <Section id="beurteilung" title={copy.assessment.title} lead={copy.assessment.lead}>
+          <Section id="beurteilung" title={copy.assessment.title} lead={copy.assessment.lead} migrationChapter>
             <Cards items={copy.assessment.items} />
             <Table headers={copy.assessment.metricsHeaders} rows={copy.assessment.metricsRows} />
             <Callout label={copy.keyLabel}>{copy.assessment.key}</Callout>
           </Section>
 
-          <Section id="hydrozephalus" title={copy.hydro.title} lead={copy.hydro.lead}>
+          <Section id="hydrozephalus" title={copy.hydro.title} lead={copy.hydro.lead} migrationChapter>
             <Table headers={copy.hydro.headers} rows={copy.hydro.rows} />
             <Cards items={copy.hydro.danger} />
             <Callout type="cave" label={copy.caveLabel}>{copy.hydro.cave}</Callout>
           </Section>
 
-          <Section id="normvarianten" title={copy.orientation.title} lead={copy.orientation.lead}>
+          <Section id="normvarianten" title={copy.orientation.title} lead={copy.orientation.lead} migrationChapter>
             <Cards items={copy.orientation.cards} />
             <figure className={styles.teachingFigure}>
               <ClickableImage src="/mittellinienzysten/cavum-comparison.jpg" alt={copy.orientation.figureAlt} label={copy.enlarge} onOpen={setLightbox} />
@@ -1060,22 +1062,22 @@ export default function CsfSpacesPage() {
             <Cards items={copy.differential.report} />
           </Section>
 
-          <Section id="faelle" title={copy.cases.title} lead={copy.cases.lead}>
+          <Section id="faelle" title={copy.cases.title} lead={copy.cases.lead} migrationChapter>
             <div className={styles.caseGrid}>{CASES.map(item => <CaseCard key={item.id} item={item} copy={copy} onOpen={setLightbox} />)}</div>
           </Section>
 
-          <Section id="befundung" title={copy.reporting.title} lead={copy.reporting.lead}>
+          <Section id="befundung" title={copy.reporting.title} lead={copy.reporting.lead} migrationChapter>
             <Cards items={copy.reporting.items} />
             <Callout label={copy.keyLabel}>{copy.reporting.example}</Callout>
           </Section>
 
-          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>
+          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead} migrationChapter>
             <div className={styles.takeHomeGrid}>
               {copy.takehome.items.map((item, index) => <article className={styles.takeHomeItem} key={item.title}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></article>)}
             </div>
           </Section>
 
-          <div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+          <div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
         </div>
       </div>
 
@@ -1085,7 +1087,7 @@ export default function CsfSpacesPage() {
           <img src={lightbox.src} alt={lightbox.alt} onClick={event => event.stopPropagation()} />
         </div>
       )}
-    </main>
+    </LegacyLessonMigration>
     </>
   )
 }

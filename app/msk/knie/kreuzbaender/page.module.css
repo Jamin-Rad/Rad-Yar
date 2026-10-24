@@ -930,7 +930,7 @@ html[data-theme='dark'] .heroMain :global([data-lesson-hero] h1) {
 }
 
 html[data-theme='dark'] .lead,
-html[data-theme='dark'] .sectionLead,
+
 html[data-theme='dark'] .card ul,
 html[data-theme='dark'] .placeholder p,
 html[data-theme='dark'] .takeHomeIntro,
@@ -977,3 +977,6 @@ html[data-theme='dark'] .figure img {
 .bicepsDecision button:focus-visible { outline: 3px solid #0d9488; outline-offset: 3px; }
 .bicepsSource { font-size: .88rem; }
 .bicepsSource a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Chapter introductions stay on the shared lesson paper. */
+html[data-theme='dark'] .sectionLead { color:var(--body); }

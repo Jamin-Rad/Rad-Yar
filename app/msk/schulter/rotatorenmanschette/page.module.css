@@ -492,7 +492,8 @@
   background: linear-gradient(135deg, rgba(249, 115, 22, .10), rgba(249, 115, 22, .06));
 }
 
-:global(html[data-theme='dark']) .heroStat:nth-child(3),
+:global(html[data-theme='dark']) .heroStat:nth-child(3) { background:#fff7ed; color:#7c2d12; }
+
 :global(html[data-theme='dark']) .takeHomeItem > span {
   background: rgba(249, 115, 22, .14);
   color: #fdba74;

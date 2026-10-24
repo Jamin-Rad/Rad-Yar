@@ -19,7 +19,7 @@ export default function CysticFibrosisLesson() {
  const returnPath=langPath(CF_PATH),sections=CF_SECTIONS.map(s=>({...s,label:s.title[lang]}))
  return <StandardLessonShell lessonId={CF_ID} lang={lang} title={CF_TITLE[lang]} author="Dr. Zia"
  breadcrumbs={[{label:'RadYar',href:langPath('/')},{label:t('chapter'),href:langPath('/lernen/thorax')},{label:CF_TITLE[lang]}]}
- sections={sections} labels={Object.fromEntries(Object.entries(CF_LABELS).map(([key,value])=>[key,value[lang]]))} renderIcon={iconFor} syncHashNavigation
+ sections={[...(sections),{id:'takehome',label:lang==='fa'?'پیام نهایی':'Take Home Message',icon:'summary',emphasis:true}]} labels={Object.fromEntries(Object.entries(CF_LABELS).map(([key,value])=>[key,value[lang]]))} renderIcon={iconFor} syncHashNavigation
  actions={{mcq:{label:t('practice'),href:langPath(`/ueben/quiz?fach=thorax&n=2&themen=${CF_ID}&from=${encodeURIComponent(returnPath)}`)},flashcards:{label:t('cards'),href:langPath(`/flashcards/${CF_ID}?from=${encodeURIComponent(returnPath)}`)}}}
  theme={{backgroundImage:'/andarun-galaxy-v3.png',heroImage:'/educational/thorax-cf/hero.png',heroImageOpacity:.6,accent:'#507f97',accentStrong:'#315b72',accentSoft:'#e8f1f5',secondary:'#648d96',secondaryStrong:'#315c66',heroBase:'#102435'}} heroImageAlt={t('heroAlt')} className={styles.page}
  sources={<LessonSources title={t('sources')} note={t('scope')} items={[
@@ -32,7 +32,9 @@ export default function CysticFibrosisLesson() {
  {section.text.map((text,j)=><p key={j} className={j===0?styles.lead:undefined}>{text[lang]}</p>)}
  {i===1&&<><div className={styles.images}>{CF_IMAGES.map(img=><figure key={img.src}><h3>{img.label[lang]}</h3><a href={img.src} target="_blank" rel="noopener noreferrer"><Image src={img.src} alt={img.alt[lang]} width={img.width} height={img.height} sizes="(max-width: 700px) 90vw, 40vw"/></a><figcaption>{img.caption[lang]}</figcaption></figure>)}</div><p className={styles.source}><a href="https://radiopaedia.org/cases/13187" target="_blank" rel="noopener noreferrer">{t('imageSource')}</a></p><p className={styles.caveat}>{t('imageLimit')}</p><Check key={`${lang}-${CF_CHECKS[0].slug}`} item={CF_CHECKS[0]} lang={lang}/></>}
  {i===0&&<p><a href={langPath('/thorax/bronchiektasen')}>{t('related')}</a></p>}
- {i===2&&<><Check key={`${lang}-${CF_CHECKS[1].slug}`} item={CF_CHECKS[1]} lang={lang}/><TakeHomeList items={CF_TAKEAWAYS.map(item=>({title:item.title[lang],detail:item.detail[lang]}))}/></>}
+ {i===2&&<><Check key={`${lang}-${CF_CHECKS[1].slug}`} item={CF_CHECKS[1]} lang={lang}/></>}
  </LessonSection>)}</div>
- </StandardLessonShell>
+
+<LessonSection id="takehome" icon="summary"><TakeHomeList items={CF_TAKEAWAYS.map(item=>({title:item.title[lang],detail:item.detail[lang]}))}/></LessonSection>
+</StandardLessonShell>
 }

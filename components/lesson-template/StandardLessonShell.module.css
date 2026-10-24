@@ -10,6 +10,16 @@
   --muted: #7c7e8d;
   --line: #dcdce4;
   --paper: #fff;
+  --plum-950: #241126;
+  --plum-900: #3b163d;
+  --plum-800: var(--lesson-accent-strong);
+  --plum-700: var(--lesson-accent);
+  --plum-100: var(--lesson-accent-soft);
+  --teal-700: var(--lesson-secondary-strong);
+  --teal-500: var(--lesson-secondary);
+  --teal-100: #d9f2f1;
+  --text-soft: var(--body);
+  --surface-soft: var(--canvas);
   --canvas: #f5f4f7;
   --calc: var(--lesson-accent);
   --navy: var(--lesson-accent-strong);
@@ -35,9 +45,9 @@
   inset: 64px 0 0;
   z-index: 0;
   pointer-events: none;
-  background-image: linear-gradient(180deg,rgba(13,10,22,.48),rgba(14,11,21,.72)),var(--lesson-background-image);
-  background-position: center,center;
-  background-size: cover,cover;
+  background-image: radial-gradient(ellipse at 85% 12%,color-mix(in srgb,var(--lesson-atmosphere,#3a1e46) 68%,transparent),transparent 68%),linear-gradient(180deg,rgba(13,10,22,.48),rgba(14,11,21,.72)),var(--lesson-background-image);
+  background-position: center,center,center;
+  background-size: cover,cover,cover;
   background-repeat: no-repeat;
   filter: saturate(.64) contrast(.94) brightness(.82) blur(.7px);
 }
@@ -148,20 +158,6 @@
 .mobileLearningPath { display: none; }
 .page :is(a,button):focus-visible { outline: 3px solid var(--lesson-secondary); outline-offset: 3px; }
 
-:global(html[data-theme='dark']) .page { --ink: #f7f2f7; --body: #cdc5cf; --muted: #9c94a1; --line: #443b48; --paper: #221f27; --canvas: #0c0a0f; background: var(--lesson-hero-base); }
-:global(html[data-theme='dark']) .progressBar,:global(html[data-theme='dark']) .sidebar,:global(html[data-theme='dark']) .section { background: rgba(31,27,35,.95); }
-:global(html[data-theme='dark']) .secondaryAction { border-color: #675d6c !important; background: #29242d; color: #f5edf4; }
-:global(html[data-theme='dark']) .takeHomeJump { border-color: color-mix(in srgb,var(--lesson-accent) 62%,transparent) !important; background: color-mix(in srgb,var(--lesson-accent-strong) 52%,#211b23); color: #fff1f6; }
-:global(html[data-theme='dark']) .progressTrack { background: #39323d; }
-:global(html[data-theme='dark']) .progressBar button { color: #f3e7ef; }
-:global(html[data-theme='dark']) .lessonCompleteButton { border-color: #79677a !important; background: color-mix(in srgb,var(--lesson-accent) 20%,transparent); }
-:global(html[data-theme='dark']) .activeSideItem { color: #fff !important; }
-:global(html[data-theme='dark']) .readButton[aria-pressed='false'] { color: #fff; }
-:global(html[data-theme='dark']) .takeHomeSection { border-color: color-mix(in srgb,var(--lesson-accent) 58%,#312633); background: linear-gradient(145deg,color-mix(in srgb,var(--lesson-accent-strong) 24%,#211a23),#211d24); }
-:global(html[data-theme='dark']) .takeHomeSection .sectionHeader { color: #ffe9f1; }
-:global(html[data-theme='dark']) .takeHomeList li > button { color: #f7edf1; }
-:global(html[data-theme='dark']) .takeHomeNumber { color: #fff; background: color-mix(in srgb,var(--lesson-accent) 28%,transparent); }
-:global(html[data-theme='dark']) .takeHomeDetail p { color: #d8c4cd; }
 
 [dir='rtl'].page { font-family: var(--font-persian,"Vazirmatn",sans-serif); }
 [dir='rtl'] .sectionBody { padding: 24px 82px 26px 24px; }
@@ -232,5 +228,5 @@
 @media (prefers-reduced-motion:reduce) { .page *,.page *::before,.page *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
 @media print { .page { padding: 0; background: #fff; } .page::before,.heroVisual,.sidebar,.actions,.progressBar,.readButton,.mobileLearningPath,.sources { display: none; } .layout { display: block; } .section { break-inside: avoid; content-visibility: visible; } }
 /* Preserve contrast when an active navigation item is hovered in dark mode. */
-:global(html[data-theme='dark']) .sidebar button:hover { background:#304552; color:#f1f6fa; }
-:global(html[data-theme='dark']) .mobilePathPanel nav .mobilePathCurrent { background:#304552; }
+
+.takeHomeStatic { display:grid; grid-template-columns:36px minmax(0,1fr); align-items:start; gap:16px; padding:18px 20px; color:var(--ink); line-height:1.7; }

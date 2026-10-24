@@ -1,4 +1,5 @@
 'use client'
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
@@ -153,7 +154,8 @@ export default function IntrazerebraleBluturngPage() {
 
   return (
     <>
-      <main className={`${styles.page} ${styles.strokePage}`} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+      <LegacyLessonMigration lessonRoute="/gehirn/vaskulaer/intrazerebrale-blutung" lessonId="/gehirn/vaskulaer/intrazerebrale-blutung" lang={lang}>
+    <main className={`${styles.page} ${styles.strokePage}`} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
         <InProgressBanner lang={lang} />
         <header className={styles.header}>
           <div className={styles.breadcrumb}>
@@ -211,7 +213,7 @@ export default function IntrazerebraleBluturngPage() {
           <div className={styles.main}>
 
             {/* ── 1. Klinik & Ätiologie ──────────────────────────────────── */}
-            <Section id="klinik" title={c(ICB_LESSON.klinik.title)} lead={c(ICB_LESSON.klinik.lead)}>
+            <Section migrationChapter id="klinik" title={c(ICB_LESSON.klinik.title)} lead={c(ICB_LESSON.klinik.lead)}>
               <Cards items={localizedItems(ICB_LESSON.klinik.definitionItems, lang)} />
               <Table
                 headers={ICB_LESSON.klinik.aetiologyHeaders.map(c)}
@@ -222,7 +224,7 @@ export default function IntrazerebraleBluturngPage() {
             </Section>
 
             {/* ── 2. CT-Diagnostik ─────────────────────────────────────────── */}
-            <Section id="ct" title={c(ICB_LESSON.ct.title)} lead={c(ICB_LESSON.ct.lead)}>
+            <Section migrationChapter id="ct" title={c(ICB_LESSON.ct.title)} lead={c(ICB_LESSON.ct.lead)}>
               <Table
                 headers={ICB_LESSON.ct.stagesHeaders.map(c)}
                 rows={localizedRows(ICB_LESSON.ct.stagesRows, lang)}
@@ -245,7 +247,7 @@ export default function IntrazerebraleBluturngPage() {
             </Section>
 
             {/* ── 3. MRT-Signalverhalten ───────────────────────────────────── */}
-            <Section id="mrt" title={c(ICB_LESSON.mrt.title)} lead={c(ICB_LESSON.mrt.lead)}>
+            <Section migrationChapter id="mrt" title={c(ICB_LESSON.mrt.title)} lead={c(ICB_LESSON.mrt.lead)}>
               <Cards items={localizedItems(ICB_LESSON.mrt.pathophysItems, lang)} />
               <LearningFigure
                 src="/icb/mrt-flowchart.png"
@@ -259,7 +261,7 @@ export default function IntrazerebraleBluturngPage() {
             </Section>
 
             {/* ── 4. Sequenzen & Praxis ─────────────────────────────────────── */}
-            <Section id="sequenzen" title={c(ICB_LESSON.sequenzen.title)} lead={c(ICB_LESSON.sequenzen.lead)}>
+            <Section migrationChapter id="sequenzen" title={c(ICB_LESSON.sequenzen.title)} lead={c(ICB_LESSON.sequenzen.lead)}>
               <Cards items={localizedItems(ICB_LESSON.sequenzen.items, lang)} />
               <h3 style={{ margin: '32px 0 12px', fontSize: 15, fontWeight: 700 }}>
                 {c({ de: 'Differenzialdiagnosen', en: 'Differential diagnoses', fa: 'تشخیص‌های افتراقی' })}
@@ -269,7 +271,7 @@ export default function IntrazerebraleBluturngPage() {
             </Section>
 
             {/* ── 5. Fallbeispiele ──────────────────────────────────────────── */}
-            <Section id="faelle" title={c(ICB_LESSON.cases.title)} lead={c(ICB_LESSON.cases.lead)}>
+            <Section migrationChapter id="faelle" title={c(ICB_LESSON.cases.title)} lead={c(ICB_LESSON.cases.lead)}>
               <div className={styles.caseGrid}>
                 {ICB_LEARNING_CASES.map(item => (
                   <CaseCard
@@ -285,7 +287,7 @@ export default function IntrazerebraleBluturngPage() {
             </Section>
 
             {/* ── 6. Take home ─────────────────────────────────────────────── */}
-            <Section id="takehome" title={c(ICB_LESSON.takehome.title)} lead={c(ICB_LESSON.takehome.lead)}>
+            <Section migrationChapter id="takehome" title={c(ICB_LESSON.takehome.title)} lead={c(ICB_LESSON.takehome.lead)}>
               <div className={styles.takeHomeGrid}>
                 {localizedItems(ICB_LESSON.takehome.items, lang).map((item, index) => (
                   <div className={styles.takeHomeItem} key={item.title}>
@@ -302,6 +304,7 @@ export default function IntrazerebraleBluturngPage() {
           </div>
         </div>
       </main>
+    </LegacyLessonMigration>
 
       {previewImage && (
         <div className={styles.strokeImageModal} role="dialog" aria-modal="true" aria-label={imageUi.zoom} onClick={() => setPreviewImage(null)}>

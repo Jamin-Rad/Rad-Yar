@@ -19,14 +19,16 @@ export default function PulmonaryLchLesson() {
  const returnPath=langPath(LCH_PATH),sections=LCH_SECTIONS.map(s=>({...s,label:s.title[lang]}))
  return <StandardLessonShell lessonId={LCH_ID} lang={lang} title={LCH_TITLE[lang]} author="Dr. Zia"
  breadcrumbs={[{label:'RadYar',href:langPath('/')},{label:t('chapter'),href:langPath('/lernen/thorax')},{label:LCH_TITLE[lang]}]}
- sections={sections} labels={Object.fromEntries(Object.entries(LCH_LABELS).map(([key,value])=>[key,value[lang]]))} renderIcon={iconFor} syncHashNavigation
+ sections={[...(sections),{id:'takehome',label:lang==='fa'?'پیام نهایی':'Take Home Message',icon:'summary',emphasis:true}]} labels={Object.fromEntries(Object.entries(LCH_LABELS).map(([key,value])=>[key,value[lang]]))} renderIcon={iconFor} syncHashNavigation
  actions={{mcq:{label:t('practice'),href:langPath(`/ueben/quiz?fach=thorax&n=2&themen=${LCH_ID}&from=${encodeURIComponent(returnPath)}`)},flashcards:{label:t('cards'),href:langPath(`/flashcards/${LCH_ID}?from=${encodeURIComponent(returnPath)}`)}}}
  theme={{backgroundImage:'/andarun-galaxy-v3.png',heroImage:'/educational/thorax-lch/hero.png',heroImageOpacity:.6,accent:'#507f97',accentStrong:'#315b72',accentSoft:'#e8f1f5',secondary:'#648d96',secondaryStrong:'#315c66',heroBase:'#102435'}} heroImageAlt={t('heroAlt')} className={styles.page}
  sources={<LessonSources title={t('sources')} note={t('scope')} items={[{tag:'Consensus',href:'https://doi.org/10.1182/blood.2021014343',title:'Goyal et al. · Blood · 2022',citation:'International expert consensus recommendations for the diagnosis and treatment of Langerhans cell histiocytosis in adults. 139:2601–2621.',scope:t('consensusScope')}]}/> }>
  <div className={styles.copy} lang={lang} dir={lang==='fa'?'rtl':'ltr'}>{sections.map((section,i)=><LessonSection key={section.id} id={section.id} title={section.label} icon={section.icon}>
  {section.text.map((text,j)=><p key={j} className={j===0?styles.lead:undefined}>{text[lang]}</p>)}
  {i===1&&<><div className={styles.images}>{LCH_IMAGES.map(img=><figure key={img.src}><h3>{img.label[lang]}</h3><a href={img.src} target="_blank" rel="noopener noreferrer"><Image src={img.src} alt={img.alt[lang]} width={img.width} height={img.height} sizes="(max-width: 700px) 90vw, 40vw"/></a><figcaption>{img.caption[lang]}</figcaption></figure>)}</div><p className={styles.source}><a href="https://radiopaedia.org/cases/161054" target="_blank" rel="noopener noreferrer">{t('imageSource')}</a></p><p className={styles.caveat}>{t('imageLimit')}</p><Check key={`${lang}-${LCH_CHECKS[0].slug}`} item={LCH_CHECKS[0]} lang={lang}/></>}
- {i===2&&<><Check key={`${lang}-${LCH_CHECKS[1].slug}`} item={LCH_CHECKS[1]} lang={lang}/><TakeHomeList items={LCH_TAKEAWAYS.map(item=>({title:item.title[lang],detail:item.detail[lang]}))}/></>}
+ {i===2&&<><Check key={`${lang}-${LCH_CHECKS[1].slug}`} item={LCH_CHECKS[1]} lang={lang}/></>}
  </LessonSection>)}</div>
- </StandardLessonShell>
+
+<LessonSection id="takehome" icon="summary"><TakeHomeList items={LCH_TAKEAWAYS.map(item=>({title:item.title[lang],detail:item.detail[lang]}))}/></LessonSection>
+</StandardLessonShell>
 }

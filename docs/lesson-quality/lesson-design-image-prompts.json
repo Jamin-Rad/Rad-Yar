@@ -1,0 +1,1052 @@
+{
+  "dates": [
+    "2026-10-24",
+    "2026-10-25"
+  ],
+  "tool": "Built-in image_gen.imagegen; no CLI/API fallback",
+  "referenceImage": "/educational/caa-hero-schematic.webp",
+  "transparentBackground": true,
+  "templates": {
+    "a": "Create a sophisticated medical atlas header illustration for the specific radiology lesson \"{subject}\". Read the anatomical region and precise disease/procedure from this topic. Choose ONE coherent anatomically plausible composition showing the relevant organ or equipment and the characteristic structural concept; at most one enlarged detail inset when educationally useful. Match the supplied CAA style reference in sculptural detailed tissue rendering, ivory/blush anatomy, restrained plum/coral/teal accents and fine soft lighting. For technique lessons depict the actual modality/equipment/physical principle, not unrelated anatomy. This is a conceptual educational illustration, never a diagnostic CT/MRI image. NO text, labels, letters, numbers, arrows, symbols, badges or diagram grids. No generic medical icon, no cartoon, no gratuitous gore. Wide composition with clean silhouette, full subject visible, generous padding and genuinely transparent background. Topic-specific professional illustration, subtle and elegant.",
+    "b": "Create one exquisite 3D medical atlas illustration for a professional radiology lesson specifically about \"{subject}\". Infer the correct anatomical region and disease/procedure from the full subject. Depict one coherent anatomically plausible relevant organ/equipment composition, with one finely detailed enlarged inset only if it clarifies the specific concept. Match the supplied CAA illustration's high-quality sculptural ivory/blush tissue, restrained plum/coral/teal accents, fine vessels and soft studio lighting. For technique topics show the actual imaging equipment/physical principle, not irrelevant brain anatomy. Full subject visible with generous margins, wide clean composition, genuinely transparent background. No text, labels, letters, numbers, arrows, badges, icons, grids, cartoon shapes or gratuitous gore. Conceptual educational artwork, never a fake diagnostic scan.",
+    "c": "Create one sophisticated 3D medical atlas header illustration for a professional radiology lesson specifically on \"{subject}\". Identify the correct anatomical region and precise disease/procedure from this full topic. Show one coherent anatomically plausible organ/equipment composition expressing its characteristic concept, at most one finely detailed enlarged inset if educationally useful. Match the supplied CAA reference's premium sculptural ivory/blush tissue, restrained plum/coral/teal accents, fine texture and soft lighting. For imaging technique topics depict the relevant equipment/physical principle, not irrelevant anatomy. Genuinely transparent background, clean silhouette, wide composition, full subject visible and generous padding. No words, text, labels, letters, numbers, arrows, badges, icons or diagram grids. No cartoon or gratuitous gore. Conceptual medical illustration, never a fake diagnostic scan."
+  },
+  "entries": [
+    {
+      "route": "/abdomen/gi/divertikulitis",
+      "subject": "abdomen / gi / divertikulitis",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/gi/ileus-volvulus",
+      "subject": "abdomen / gi / ileus volvulus",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/gi/kolitis-patterns",
+      "subject": "abdomen / gi / kolitis patterns",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/gi/kolorektales-karzinom",
+      "subject": "abdomen / gi / kolorektales karzinom",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/gi/mesenteriale-ischaemie",
+      "subject": "abdomen / gi / mesenteriale ischaemie",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/gi/pylorusstenose",
+      "subject": "abdomen / gi / pylorusstenose",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/gi/untere-gi-blutung",
+      "subject": "abdomen / gi / untere gi blutung",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/hernien/inguinal-femoral",
+      "subject": "abdomen / hernien / inguinal femoral",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/leber/adenom",
+      "subject": "abdomen / leber / adenom",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/leber/angiomyolipom",
+      "subject": "abdomen / leber / angiomyolipom",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/leber/avm",
+      "subject": "abdomen / leber / avm",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/leber/fnh",
+      "subject": "abdomen / leber / fnh",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/leber/fokale-laesionen",
+      "subject": "abdomen / leber / fokale laesionen",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/leber/gefaesse",
+      "subject": "abdomen / leber / gefaesse",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/leber/hcc",
+      "subject": "abdomen / leber / hcc",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/leber/li-rads",
+      "subject": "abdomen / leber / li rads",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/leber/metastasen",
+      "subject": "abdomen / leber / metastasen",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/leber/psc-mrcp",
+      "subject": "abdomen / leber / psc mrcp",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/leber/steatose",
+      "subject": "abdomen / leber / steatose",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/leber/zystische-laesionen",
+      "subject": "abdomen / leber / zystische laesionen",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/nebenniere/raumforderungen",
+      "subject": "abdomen / nebenniere / raumforderungen",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/niere/adpkd",
+      "subject": "abdomen / niere / adpkd",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/niere/anatomie",
+      "subject": "abdomen / niere / anatomie",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/niere/nierenzysten",
+      "subject": "abdomen / niere / nierenzysten",
+      "template": "a"
+    },
+    {
+      "route": "/abdomen/niere/pyelonephritis",
+      "subject": "abdomen / niere / pyelonephritis",
+      "template": "b"
+    },
+    {
+      "route": "/abdomen/niere/raumforderungen",
+      "subject": "abdomen / niere / raumforderungen",
+      "template": "b"
+    },
+    {
+      "route": "/abdomen/niere/wilms-tumour",
+      "subject": "abdomen / niere / wilms tumour",
+      "template": "b"
+    },
+    {
+      "route": "/abdomen/pankreas/neuroendokrine-tumoren",
+      "subject": "abdomen / pankreas / neuroendokrine tumoren",
+      "template": "b"
+    },
+    {
+      "route": "/abdomen/pankreas/pankreaskarzinom",
+      "subject": "abdomen / pankreas / pankreaskarzinom",
+      "template": "b"
+    },
+    {
+      "route": "/abdomen/pankreas/pankreatitis",
+      "subject": "abdomen / pankreas / pankreatitis",
+      "template": "b"
+    },
+    {
+      "route": "/abdomen/pankreas/zystische-tumoren",
+      "subject": "abdomen / pankreas / zystische tumoren",
+      "template": "b"
+    },
+    {
+      "route": "/abdomen/peritoneum/appendicitis-epiploica",
+      "subject": "abdomen / peritoneum / appendicitis epiploica",
+      "template": "b"
+    },
+    {
+      "route": "/abdomen/peritoneum/mesenteriale-panniculitis",
+      "subject": "abdomen / peritoneum / mesenteriale panniculitis",
+      "template": "b"
+    },
+    {
+      "route": "/abdomen/peritoneum/peritonealkarzinose",
+      "subject": "abdomen / peritoneum / peritonealkarzinose",
+      "template": "b"
+    },
+    {
+      "route": "/abdomen/retroperitoneum/morbus-ormond",
+      "subject": "abdomen / retroperitoneum / morbus ormond",
+      "template": "b"
+    },
+    {
+      "route": "/gefaesse/anatomie-untere-extremitaet",
+      "subject": "gefaesse / anatomie untere extremitaet",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/anatomie/balkenagenesie",
+      "subject": "gehirn / anatomie / balkenagenesie",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/anatomie/chiari",
+      "subject": "gehirn / anatomie / chiari",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/anatomie/liquorraeume-ventrikelsystem",
+      "subject": "gehirn / anatomie / liquorraeume ventrikelsystem",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/anatomie/normaldruckhydrozephalus",
+      "subject": "gehirn / anatomie / normaldruckhydrozephalus",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/anatomie/pvl",
+      "subject": "gehirn / anatomie / pvl",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/encephalopathie/pres",
+      "subject": "gehirn / encephalopathie / pres",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/entzuendlich/demyelinisierende-muster",
+      "subject": "gehirn / entzuendlich / demyelinisierende muster",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/hals-nnh/einseitige-verschattung",
+      "subject": "gehirn / hals nnh / einseitige verschattung",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/infektionen/herpes-enzephalitis",
+      "subject": "gehirn / infektionen / herpes enzephalitis",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/infektionen/hirnabszess",
+      "subject": "gehirn / infektionen / hirnabszess",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/infektionen/hiv-enzephalopathie",
+      "subject": "gehirn / infektionen / hiv enzephalopathie",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/infektionen/meningitis-enzephalitis",
+      "subject": "gehirn / infektionen / meningitis enzephalitis",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/infektionen/muster",
+      "subject": "gehirn / infektionen / muster",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/neurodegeneration/cjd",
+      "subject": "gehirn / neurodegeneration / cjd",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/neurodegeneration/demenzmuster",
+      "subject": "gehirn / neurodegeneration / demenzmuster",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/neurodegeneration/parkinson",
+      "subject": "gehirn / neurodegeneration / parkinson",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/neurofibromatose/nf1",
+      "subject": "gehirn / neurofibromatose / nf1",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/trauma/epidurale-blutung",
+      "subject": "gehirn / trauma / epidurale blutung",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/tumoren/atrt",
+      "subject": "gehirn / tumoren / atrt",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/tumoren/ependymom",
+      "subject": "gehirn / tumoren / ependymom",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/tumoren/epidermoid-arachnoid",
+      "subject": "gehirn / tumoren / epidermoid arachnoid",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/tumoren/gliome",
+      "subject": "gehirn / tumoren / gliome",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/tumoren/haemangioblastom-vhl",
+      "subject": "gehirn / tumoren / haemangioblastom vhl",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/tumoren/hirnmetastasen",
+      "subject": "gehirn / tumoren / hirnmetastasen",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/tumoren/kolloidzyste",
+      "subject": "gehirn / tumoren / kolloidzyste",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/tumoren/medulloblastom",
+      "subject": "gehirn / tumoren / medulloblastom",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/tumoren/meningeom",
+      "subject": "gehirn / tumoren / meningeom",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/tumoren/muster",
+      "subject": "gehirn / tumoren / muster",
+      "template": "b"
+    },
+    {
+      "route": "/gehirn/tumoren/schwannom-cpa",
+      "subject": "gehirn / tumoren / schwannom cpa",
+      "template": "c"
+    },
+    {
+      "route": "/gehirn/tumoren/sella-parasella",
+      "subject": "gehirn / tumoren / sella parasella",
+      "template": "c"
+    },
+    {
+      "route": "/gehirn/tumoren/zns-lymphom",
+      "subject": "gehirn / tumoren / zns lymphom",
+      "template": "c"
+    },
+    {
+      "route": "/gehirn/vaskulaer/cadasil",
+      "subject": "gehirn / vaskulaer / cadasil",
+      "template": "c"
+    },
+    {
+      "route": "/gehirn/vaskulaer/davf",
+      "subject": "gehirn / vaskulaer / davf",
+      "template": "c"
+    },
+    {
+      "route": "/gehirn/vaskulaer/dva",
+      "subject": "gehirn / vaskulaer / dva",
+      "template": "c"
+    },
+    {
+      "route": "/gehirn/vaskulaer/gefaessdissektion",
+      "subject": "gehirn / vaskulaer / gefaessdissektion",
+      "template": "c"
+    },
+    {
+      "route": "/gehirn/vaskulaer/hypertensive-mikroangiopathie",
+      "subject": "gehirn / vaskulaer / hypertensive mikroangiopathie",
+      "template": "c"
+    },
+    {
+      "route": "/gehirn/vaskulaer/hypoxisch-ischaemische-hirnschaedigung",
+      "subject": "gehirn / vaskulaer / hypoxisch ischaemische hirnschaedigung",
+      "template": "c"
+    },
+    {
+      "route": "/gehirn/vaskulaer/intrazerebrale-blutung",
+      "subject": "gehirn / vaskulaer / intrazerebrale blutung",
+      "template": "c"
+    },
+    {
+      "route": "/gehirn/vaskulaer/isch-aemischer-schlaganfall",
+      "subject": "gehirn / vaskulaer / isch aemischer schlaganfall",
+      "template": "c"
+    },
+    {
+      "route": "/gehirn/vaskulaer/kapillaere-teleangiektasie",
+      "subject": "gehirn / vaskulaer / kapillaere teleangiektasie",
+      "template": "c"
+    },
+    {
+      "route": "/gehirn/vaskulaer/kavernom",
+      "subject": "gehirn / vaskulaer / kavernom",
+      "template": "c"
+    },
+    {
+      "route": "/gehirn/vaskulaer/moya-moya",
+      "subject": "gehirn / vaskulaer / moya moya",
+      "template": "c"
+    },
+    {
+      "route": "/gehirn/vaskulaer/subarachnoidalblutung",
+      "subject": "gehirn / vaskulaer / subarachnoidalblutung",
+      "template": "c"
+    },
+    {
+      "route": "/gehirn/vaskulaer/subduralhaematom",
+      "subject": "gehirn / vaskulaer / subduralhaematom",
+      "template": "c"
+    },
+    {
+      "route": "/lunge/sarkoidose",
+      "subject": "lunge / sarkoidose",
+      "template": "c"
+    },
+    {
+      "route": "/mamma/bildgebung/mammographie/grundlagen",
+      "subject": "mamma / bildgebung / mammographie / grundlagen",
+      "template": "c"
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/basics",
+      "subject": "mamma / bildgebung / mrt / basics",
+      "template": "c"
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/besondere-mammakarzinome",
+      "subject": "mamma / bildgebung / mrt / besondere mammakarzinome",
+      "template": "c"
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/kaiser-score",
+      "subject": "mamma / bildgebung / mrt / kaiser score",
+      "template": "c"
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/laesionscharakterisierung",
+      "subject": "mamma / bildgebung / mrt / laesionscharakterisierung",
+      "template": "c"
+    },
+    {
+      "route": "/msk/gefaesse/pavk-stenosen",
+      "subject": "msk / gefaesse / pavk stenosen",
+      "template": "c"
+    },
+    {
+      "route": "/msk/hand/de-quervain",
+      "subject": "msk / hand / de quervain",
+      "template": "c"
+    },
+    {
+      "route": "/msk/hand/strecksehnenfaecher",
+      "subject": "msk / hand / strecksehnenfaecher",
+      "template": "c"
+    },
+    {
+      "route": "/msk/infektionen/osteomyelitis",
+      "subject": "msk / infektionen / osteomyelitis",
+      "template": "c"
+    },
+    {
+      "route": "/msk/knie/chondrokalzinose",
+      "subject": "msk / knie / chondrokalzinose",
+      "template": "c"
+    },
+    {
+      "route": "/msk/knie/meniskus",
+      "subject": "msk / knie / meniskus",
+      "template": "c"
+    },
+    {
+      "route": "/msk/knie/patella-streckapparat",
+      "subject": "msk / knie / patella streckapparat",
+      "template": "c"
+    },
+    {
+      "route": "/msk/knochennekrosen/avn-huefte",
+      "subject": "msk / knochennekrosen / avn huefte",
+      "template": "c"
+    },
+    {
+      "route": "/msk/knochennekrosen/knocheninfarkt",
+      "subject": "msk / knochennekrosen / knocheninfarkt",
+      "template": "c"
+    },
+    {
+      "route": "/msk/knochenstoffwechsel/melorheostose",
+      "subject": "msk / knochenstoffwechsel / melorheostose",
+      "template": "c"
+    },
+    {
+      "route": "/msk/knochenstoffwechsel/morbus-paget",
+      "subject": "msk / knochenstoffwechsel / morbus paget",
+      "template": "c"
+    },
+    {
+      "route": "/msk/osteochondrosen/morbus-perthes",
+      "subject": "msk / osteochondrosen / morbus perthes",
+      "template": "c"
+    },
+    {
+      "route": "/msk/osteochondrosen/osgood-schlatter",
+      "subject": "msk / osteochondrosen / osgood schlatter",
+      "template": "c"
+    },
+    {
+      "route": "/msk/osteochondrosen/osteochondrosis-dissecans",
+      "subject": "msk / osteochondrosen / osteochondrosis dissecans",
+      "template": "c"
+    },
+    {
+      "route": "/msk/osteochondrosen/weitere-osteochondrosen",
+      "subject": "msk / osteochondrosen / weitere osteochondrosen",
+      "template": "c"
+    },
+    {
+      "route": "/msk/schulter/impingement-kalkschulter",
+      "subject": "msk / schulter / impingement kalkschulter",
+      "template": "c"
+    },
+    {
+      "route": "/msk/schulter/instabilitaet",
+      "subject": "msk / schulter / instabilitaet",
+      "template": "c"
+    },
+    {
+      "route": "/msk/schulter/rotatorenmanschette",
+      "subject": "msk / schulter / rotatorenmanschette",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/ak-luxation",
+      "subject": "msk / trauma / ak luxation",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/beckenringfraktur",
+      "subject": "msk / trauma / beckenringfraktur",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/distale-femurfraktur",
+      "subject": "msk / trauma / distale femurfraktur",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/distale-radiusfraktur",
+      "subject": "msk / trauma / distale radiusfraktur",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/femurschaftfraktur",
+      "subject": "msk / trauma / femurschaftfraktur",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/frakturbeschreibung",
+      "subject": "msk / trauma / frakturbeschreibung",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/frakturen-kindesalter",
+      "subject": "msk / trauma / frakturen kindesalter",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/metakarpale-frakturen",
+      "subject": "msk / trauma / metakarpale frakturen",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/periprothetische-femurfraktur",
+      "subject": "msk / trauma / periprothetische femurfraktur",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/proximale-femurfraktur",
+      "subject": "msk / trauma / proximale femurfraktur",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/proximale-humerusfraktur",
+      "subject": "msk / trauma / proximale humerusfraktur",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/radiuskoepfchenfraktur",
+      "subject": "msk / trauma / radiuskoepfchenfraktur",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/skaphoidfraktur",
+      "subject": "msk / trauma / skaphoidfraktur",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/sprunggelenk",
+      "subject": "msk / trauma / sprunggelenk",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/tibiakopffraktur",
+      "subject": "msk / trauma / tibiakopffraktur",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/ulnares-kollateralband-daumen",
+      "subject": "msk / trauma / ulnares kollateralband daumen",
+      "template": "c"
+    },
+    {
+      "route": "/msk/trauma/unterarmschaftfrakturen",
+      "subject": "msk / trauma / unterarmschaftfrakturen",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/aneurysmal-bone-cyst",
+      "subject": "msk / tumoren / aneurysmal bone cyst",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/chondrosarkom",
+      "subject": "msk / tumoren / chondrosarkom",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/einfache-knochenzyste",
+      "subject": "msk / tumoren / einfache knochenzyste",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/enchondrom",
+      "subject": "msk / tumoren / enchondrom",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/enostose",
+      "subject": "msk / tumoren / enostose",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/eosinophiles-granulom",
+      "subject": "msk / tumoren / eosinophiles granulom",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/ewing-sarkom",
+      "subject": "msk / tumoren / ewing sarkom",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/fibroese-dysplasie",
+      "subject": "msk / tumoren / fibroese dysplasie",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/intraossaeres-ganglion",
+      "subject": "msk / tumoren / intraossaeres ganglion",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/intraossaeres-lipom",
+      "subject": "msk / tumoren / intraossaeres lipom",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/knochenlymphom",
+      "subject": "msk / tumoren / knochenlymphom",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/knochenmetastasen",
+      "subject": "msk / tumoren / knochenmetastasen",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/knochenzeichen",
+      "subject": "msk / tumoren / knochenzeichen",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/nicht-ossifizierendes-fibrom",
+      "subject": "msk / tumoren / nicht ossifizierendes fibrom",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/osteoblastom",
+      "subject": "msk / tumoren / osteoblastom",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/osteochondrom",
+      "subject": "msk / tumoren / osteochondrom",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/osteoid-osteom",
+      "subject": "msk / tumoren / osteoid osteom",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/osteom",
+      "subject": "msk / tumoren / osteom",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/osteosarkom",
+      "subject": "msk / tumoren / osteosarkom",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/plasmozytom-myelom",
+      "subject": "msk / tumoren / plasmozytom myelom",
+      "template": "c"
+    },
+    {
+      "route": "/msk/tumoren/tgct",
+      "subject": "msk / tumoren / tgct",
+      "template": "c"
+    },
+    {
+      "route": "/technik/berufsdosimetrie",
+      "subject": "technik / berufsdosimetrie",
+      "template": "c"
+    },
+    {
+      "route": "/technik/ct-grundlagen",
+      "subject": "technik / ct grundlagen",
+      "template": "c"
+    },
+    {
+      "route": "/technik/ct-perfusion",
+      "subject": "technik / ct perfusion",
+      "template": "c"
+    },
+    {
+      "route": "/technik/dosimetrie",
+      "subject": "technik / dosimetrie",
+      "template": "c"
+    },
+    {
+      "route": "/technik/dual-energy-ct",
+      "subject": "technik / dual energy ct",
+      "template": "c"
+    },
+    {
+      "route": "/technik/grundlagen",
+      "subject": "technik / grundlagen",
+      "template": "c"
+    },
+    {
+      "route": "/technik/interventionelle-radiologie",
+      "subject": "technik / interventionelle radiologie",
+      "template": "c"
+    },
+    {
+      "route": "/technik/kontrastmittel/mrt",
+      "subject": "technik / kontrastmittel / mrt",
+      "template": "c"
+    },
+    {
+      "route": "/technik/kontrastmittel/nierenfunktion",
+      "subject": "technik / kontrastmittel / nierenfunktion",
+      "template": "c"
+    },
+    {
+      "route": "/technik/kontrastmittel/roentgen",
+      "subject": "technik / kontrastmittel / roentgen",
+      "template": "c"
+    },
+    {
+      "route": "/technik/kontrastmittel/schwangerschaft",
+      "subject": "technik / kontrastmittel / schwangerschaft",
+      "template": "c"
+    },
+    {
+      "route": "/technik/kontrastmittel/ultraschall",
+      "subject": "technik / kontrastmittel / ultraschall",
+      "template": "c"
+    },
+    {
+      "route": "/technik/onkologie/recist-1-1",
+      "subject": "technik / onkologie / recist 1 1",
+      "template": "c"
+    },
+    {
+      "route": "/technik/qualitaetssicherung-vorkommnisse",
+      "subject": "technik / qualitaetssicherung vorkommnisse",
+      "template": "c"
+    },
+    {
+      "route": "/technik/sonographie/grundlagen",
+      "subject": "technik / sonographie / grundlagen",
+      "template": "c"
+    },
+    {
+      "route": "/technik/strahlenbelastung",
+      "subject": "technik / strahlenbelastung",
+      "template": "c"
+    },
+    {
+      "route": "/technik/strahlenschutz/praenatale-exposition",
+      "subject": "technik / strahlenschutz / praenatale exposition",
+      "template": "c"
+    },
+    {
+      "route": "/technik/strahlungsarten",
+      "subject": "technik / strahlungsarten",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/akute-le",
+      "subject": "thorax / akute le",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/anatomie/aortenbogen",
+      "subject": "thorax / anatomie / aortenbogen",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/anatomie/lungenanatomie",
+      "subject": "thorax / anatomie / lungenanatomie",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/bronchialkarzinom-bildgebung",
+      "subject": "thorax / bronchialkarzinom bildgebung",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/bronchiektasen",
+      "subject": "thorax / bronchiektasen",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/copd-bildgebung",
+      "subject": "thorax / copd bildgebung",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/fleischner-kriterien",
+      "subject": "thorax / fleischner kriterien",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/fremdkoerperaspiration",
+      "subject": "thorax / fremdkoerperaspiration",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/hrct/architekturmuster",
+      "subject": "thorax / hrct / architekturmuster",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/hrct/dichteanhebung",
+      "subject": "thorax / hrct / dichteanhebung",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/hrct/dichteminderung",
+      "subject": "thorax / hrct / dichteminderung",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/hrct/retikulaer-nodulaer",
+      "subject": "thorax / hrct / retikulaer nodulaer",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/kardio/arvc",
+      "subject": "thorax / kardio / arvc",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/kardio/kardio-mrt-basics",
+      "subject": "thorax / kardio / kardio mrt basics",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/kardio/kardio-mrt-indikationen",
+      "subject": "thorax / kardio / kardio mrt indikationen",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/kardio/kardiomyopathien",
+      "subject": "thorax / kardio / kardiomyopathien",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/kardio/myokardinfarkt-mrt",
+      "subject": "thorax / kardio / myokardinfarkt mrt",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/kavitaeten",
+      "subject": "thorax / kavitaeten",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/lung-rads",
+      "subject": "thorax / lung rads",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/lungenoedem",
+      "subject": "thorax / lungenoedem",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/pneumonie-muster",
+      "subject": "thorax / pneumonie muster",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/pulmonale-hypertonie",
+      "subject": "thorax / pulmonale hypertonie",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/rippenpathologien",
+      "subject": "thorax / rippenpathologien",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/roentgen-thorax-systematik",
+      "subject": "thorax / roentgen thorax systematik",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/tuberkulose-muster",
+      "subject": "thorax / tuberkulose muster",
+      "template": "c"
+    },
+    {
+      "route": "/thorax/uip-ipf",
+      "subject": "thorax / uip ipf",
+      "template": "c"
+    },
+    {
+      "route": "/wirbelsaeule/arachnoiditis",
+      "subject": "wirbelsaeule / arachnoiditis",
+      "template": "c"
+    },
+    {
+      "route": "/wirbelsaeule/degenerative",
+      "subject": "wirbelsaeule / degenerative",
+      "template": "c"
+    },
+    {
+      "route": "/wirbelsaeule/degenerative/spondylarthrose",
+      "subject": "wirbelsaeule / degenerative / spondylarthrose",
+      "template": "c"
+    },
+    {
+      "route": "/wirbelsaeule/entzuendlich/guillain-barre-syndrom",
+      "subject": "wirbelsaeule / entzuendlich / guillain barre syndrom",
+      "template": "c"
+    },
+    {
+      "route": "/wirbelsaeule/entzuendlich",
+      "subject": "wirbelsaeule / entzuendlich",
+      "template": "c"
+    },
+    {
+      "route": "/wirbelsaeule/metabolisch/funikulaere-myelose",
+      "subject": "wirbelsaeule / metabolisch / funikulaere myelose",
+      "template": "c"
+    },
+    {
+      "route": "/wirbelsaeule/neuroforamenstenose",
+      "subject": "wirbelsaeule / neuroforamenstenose",
+      "template": "c"
+    },
+    {
+      "route": "/wirbelsaeule/trauma/bws-lws-frakturen",
+      "subject": "wirbelsaeule / trauma / bws lws frakturen",
+      "template": "c"
+    },
+    {
+      "route": "/wirbelsaeule/trauma/hws-verletzungen",
+      "subject": "wirbelsaeule / trauma / hws verletzungen",
+      "template": "c"
+    },
+    {
+      "route": "/wirbelsaeule/trauma/kraniozervikaler-uebergang",
+      "subject": "wirbelsaeule / trauma / kraniozervikaler uebergang",
+      "template": "c"
+    },
+    {
+      "route": "/wirbelsaeule/tumoren/grundlagen",
+      "subject": "wirbelsaeule / tumoren / grundlagen",
+      "template": "c"
+    }
+  ],
+  "manualRevisions": [
+    {
+      "route": "/abdomen/gi/appendizitis",
+      "brief": "Cecum and terminal ileum with an inflamed vermiform appendix and enlarged thickened-wall inset; CAA-style detailed ivory/blush tissue; transparent, no text."
+    },
+    {
+      "route": "/abdomen/gefaesse/fmd",
+      "prompt": "Create one sophisticated 3D medical atlas illustration for a radiology lesson. Fibromuscular dysplasia: elegant kidney cutaway and renal artery, clearly showing alternating narrow and expanded portions in the middle and distal renal artery, a small enlarged vessel-wall inset, no plaque or stent. Match supplied CAA reference's sculptural detailed tissue rendering and fine soft lighting. Single polished isolated medical composition with generous padding, no words, labels, letters, numbers, arrows, icons or badges. Educational concept illustration, not a diagnostic scan. Transparent background. Avoid flat shapes, cartoon anatomy, simple icons, blood and gratuitous decoration."
+    },
+    {
+      "route": "/abdomen/gi/gist",
+      "prompt": "Create one sophisticated 3D medical atlas illustration for a radiology lesson. Gastrointestinal stromal tumor: anatomically plausible stomach cutaway with a smooth submucosal mass growing outward from the gastric muscular wall, ivory/blush gastric tissue, restrained plum/coral mass, small wall-layer inset. Match supplied CAA reference's sculptural detailed tissue rendering and fine soft lighting. Single polished isolated medical composition with generous padding, no words, labels, letters, numbers, arrows, icons or badges. Educational concept illustration, not a diagnostic scan. Transparent background. Avoid flat shapes, cartoon anatomy, simple icons, blood and gratuitous decoration."
+    },
+    {
+      "route": "/gehirn/vaskulaer/dva",
+      "brief": "Developmental venous anomaly: blue medullary veins radiate into one collector vein (caput medusae); no arterial clot, stent or thrombectomy. Replaces wrong-topic first output."
+    },
+    {
+      "route": "/gehirn/vaskulaer/hypoxisch-ischaemische-hirnschaedigung",
+      "brief": "Symmetric bilateral global cortical/deep gray-matter vulnerability; no focal arterial occlusion or clot. Replaces focal-stroke first output."
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/basics",
+      "brief": "Dedicated MRI receiver coil, scanner and sealed glandular tissue phantom; equipment-only conceptual illustration."
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/besondere-mammakarzinome",
+      "brief": "Three isolated microscopic glandular tissue specimens with branching ducts and irregular nodules, no human external anatomy."
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/laesionscharakterisierung",
+      "brief": "Smooth and irregular nodules inside an isolated diagnostic tissue phantom beside a receiver coil."
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/kaiser-score",
+      "brief": "Smooth, lobulated and irregular nodule morphology in three sculptural glandular tissue blocks beside MRI receiver coil."
+    },
+    {
+      "route": "/wirbelsaeule/infektion",
+      "brief": "Lumbar spondylodiscitis: adjacent endplates and intervening disc inflammation, subtle paravertebral tissue inflammation and interface inset; no fracture or tumor."
+    },
+    {
+      "route": "/gehirn/vaskulaer/avm-zns",
+      "brief": "Compact AVM nidus linking feeding red arteries and draining blue veins in an ivory hemisphere; no clot/device; transparent cutout replaces white-matte prior artwork."
+    },
+    {
+      "route": "/msk/knie/kreuzbaender",
+      "brief": "Anatomical opened knee with femur, tibia, menisci and crossing ACL/PCL distinguished by muted plum/teal fibers; transparent cutout replaces white-matte prior artwork."
+    }
+  ],
+  "scope": "Header concept illustrations only, not diagnostic patient images. Reviewer checked topic/style fit; this is not medical approval. Batch prompt templates are exact; manually revised briefs summarize the final specific direction where raw text was not retained."
+}

@@ -1,4 +1,5 @@
 'use client'
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 
 import { useMemo, useState, useEffect } from 'react'
 import Link from 'next/link'
@@ -525,6 +526,7 @@ export default function LeberAvmPage() {
   }, [sectionIds])
 
   return (
+    <LegacyLessonMigration lessonRoute="/abdomen/leber/avm" lessonId="/abdomen/leber/avm" lang={lang}>
     <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
       <InProgressBanner lang={lang} />
       <header className={styles.header}>
@@ -564,7 +566,7 @@ export default function LeberAvmPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="grundlagen" title={copy.basics.title} lead={copy.basics.lead}>
+          <Section migrationChapter id="grundlagen" title={copy.basics.title} lead={copy.basics.lead}>
             <div className={styles.cardsGrid}>
               {copy.basics.items.map(item => (
                 <div className={styles.infoCard} key={item.title}>
@@ -576,7 +578,7 @@ export default function LeberAvmPage() {
             <Callout label={copy.keyLabel}>{copy.basics.key}</Callout>
           </Section>
 
-          <Section id="sono" title={copy.sono.title} lead={copy.sono.lead}>
+          <Section migrationChapter id="sono" title={copy.sono.title} lead={copy.sono.lead}>
             <Table headers={copy.sono.tableHeaders} rows={copy.sono.tableRows} />
             <p className={styles.sourceLinks}>
               {lang === 'fa' ? 'مرجع الگوهای داپلر: ' : lang === 'en' ? 'Doppler waveform reference: ' : 'Referenz für Doppler-Wellenformen: '}
@@ -585,7 +587,7 @@ export default function LeberAvmPage() {
             <Callout label={copy.keyLabel}>{copy.sono.key}</Callout>
           </Section>
 
-          <Section id="ct" title={copy.ct.title} lead={copy.ct.lead}>
+          <Section migrationChapter id="ct" title={copy.ct.title} lead={copy.ct.lead}>
             <Table headers={copy.ct.tableHeaders} rows={copy.ct.tableRows} />
             <figure className={styles.sourceFigure}>
               <div className={styles.sourceFigureImage}><Image src="/educational/avm-liver/abdomen-p11-montage.svg" alt={pdfCase.alt} width={1191} height={985} sizes="(max-width: 760px) 100vw, 900px" unoptimized /></div>
@@ -603,7 +605,7 @@ export default function LeberAvmPage() {
             <Callout label={copy.keyLabel}>{copy.ct.key}</Callout>
           </Section>
 
-          <Section id="mrt" title={copy.mri.title} lead={copy.mri.lead}>
+          <Section migrationChapter id="mrt" title={copy.mri.title} lead={copy.mri.lead}>
             <Table headers={copy.mri.tableHeaders} rows={copy.mri.tableRows} />
             <div className={styles.splitGrid}>
               <div className={styles.infoCard}>
@@ -618,7 +620,7 @@ export default function LeberAvmPage() {
             <Callout label={copy.keyLabel}>{copy.mri.key}</Callout>
           </Section>
 
-          <Section id="hht" title={copy.hht.title} lead={copy.hht.lead}>
+          <Section migrationChapter id="hht" title={copy.hht.title} lead={copy.hht.lead}>
             <Table headers={copy.hht.tableHeaders} rows={copy.hht.tableRows} />
             <Callout type="cave" label={copy.caveLabel}>{copy.hht.cave}</Callout>
             <Callout label={copy.keyLabel}>{copy.hht.key}</Callout>
@@ -633,7 +635,7 @@ export default function LeberAvmPage() {
           </Section>
 
 
-          <Section id="fallbeispiele" title={caseCopy.title} lead={caseCopy.lead}>
+          <Section migrationChapter id="fallbeispiele" title={caseCopy.title} lead={caseCopy.lead}>
             <article className={styles.radiopaediaCase}>
               <div className={styles.radiopaediaCaseIntro}>
                 <h3>{radiopaediaCase.title}</h3>
@@ -666,7 +668,7 @@ export default function LeberAvmPage() {
             </div>
           </Section>
 
-          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>
+          <Section migrationChapter id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>
             <div className={styles.takeHomeGrid}>
               {copy.takehome.items.map((item, index) => (
                 <div className={styles.takeHomeItem} key={item.title}>
@@ -685,5 +687,6 @@ export default function LeberAvmPage() {
         </div>
       </div>
     </main>
+    </LegacyLessonMigration>
   )
 }

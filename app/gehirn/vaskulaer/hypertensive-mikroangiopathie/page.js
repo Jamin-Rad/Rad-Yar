@@ -1,4 +1,5 @@
 'use client'
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
@@ -143,6 +144,7 @@ export default function HypertensiveMikroangiopathiePage() {
   const rows = value => value.map(row => row.map(c))
 
   return (
+    <LegacyLessonMigration lessonRoute="/gehirn/vaskulaer/hypertensive-mikroangiopathie" lessonId="/gehirn/vaskulaer/hypertensive-mikroangiopathie" lang={lang}>
     <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
       <InProgressBanner lang={lang} />
 
@@ -193,19 +195,19 @@ export default function HypertensiveMikroangiopathiePage() {
         <div className={styles.main}>
 
           {/* 1 – Grundlagen */}
-          <Section id="grundlagen" title={c(HMA_LESSON.grundlagen.title)} lead={c(HMA_LESSON.grundlagen.lead)}>
+          <Section migrationChapter id="grundlagen" title={c(HMA_LESSON.grundlagen.title)} lead={c(HMA_LESSON.grundlagen.lead)}>
             <Cards items={HMA_LESSON.grundlagen.items} lang={lang} />
             <Callout label={c(HMA_LESSON.keyLabel)}>{c(HMA_LESSON.grundlagen.key)}</Callout>
           </Section>
 
           {/* 2 – Pathophysiologie */}
-          <Section id="pathophysio" title={c(HMA_LESSON.pathophysio.title)} lead={c(HMA_LESSON.pathophysio.lead)}>
+          <Section migrationChapter id="pathophysio" title={c(HMA_LESSON.pathophysio.title)} lead={c(HMA_LESSON.pathophysio.lead)}>
             <Table headers={HMA_LESSON.pathophysio.headers.map(c)} rows={rows(HMA_LESSON.pathophysio.rows)} />
             <Callout label={c(HMA_LESSON.keyLabel)}>{c(HMA_LESSON.pathophysio.key)}</Callout>
           </Section>
 
           {/* 3 – CCT & CTA */}
-          <Section id="cct" title={c(HMA_LESSON.cct.title)} lead={c(HMA_LESSON.cct.lead)}>
+          <Section migrationChapter id="cct" title={c(HMA_LESSON.cct.title)} lead={c(HMA_LESSON.cct.lead)}>
             <h3 style={{ marginTop: 4, marginBottom: 10, fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {c(HMA_LESSON.cct.morphTitle)}
             </h3>
@@ -251,7 +253,7 @@ export default function HypertensiveMikroangiopathiePage() {
           </Section>
 
           {/* 4 – MRT */}
-          <Section id="mrt" title={c(HMA_LESSON.mrt.title)} lead={c(HMA_LESSON.mrt.lead)}>
+          <Section migrationChapter id="mrt" title={c(HMA_LESSON.mrt.title)} lead={c(HMA_LESSON.mrt.lead)}>
             <Table headers={HMA_LESSON.mrt.seqHeaders.map(c)} rows={rows(HMA_LESSON.mrt.seqRows)} />
             <h3 style={{ marginTop: 24, marginBottom: 10, fontSize: '0.95rem', color: 'var(--text)', fontWeight: 700 }}>
               {c(HMA_LESSON.mrt.fazekasTitle)}
@@ -267,7 +269,7 @@ export default function HypertensiveMikroangiopathiePage() {
           </Section>
 
           {/* 5 – Klinik */}
-          <Section id="klinik" title={c(HMA_LESSON.klinik.title)} lead={c(HMA_LESSON.klinik.lead)}>
+          <Section migrationChapter id="klinik" title={c(HMA_LESSON.klinik.title)} lead={c(HMA_LESSON.klinik.lead)}>
             <h3 style={{ marginTop: 4, marginBottom: 10, fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {c(HMA_LESSON.klinik.lacunarTitle)}
             </h3>
@@ -276,19 +278,19 @@ export default function HypertensiveMikroangiopathiePage() {
           </Section>
 
           {/* 6 – Differenzialdiagnose */}
-          <Section id="differenzial" title={c(HMA_LESSON.differenzial.title)} lead={c(HMA_LESSON.differenzial.lead)}>
+          <Section migrationChapter id="differenzial" title={c(HMA_LESSON.differenzial.title)} lead={c(HMA_LESSON.differenzial.lead)}>
             <Table headers={HMA_LESSON.differenzial.ddHeaders.map(c)} rows={rows(HMA_LESSON.differenzial.ddRows)} />
             <Callout label={c(HMA_LESSON.keyLabel)}>{c(HMA_LESSON.differenzial.key)}</Callout>
           </Section>
 
           {/* 7 – Therapie */}
-          <Section id="therapie" title={c(HMA_LESSON.therapie.title)} lead={c(HMA_LESSON.therapie.lead)}>
+          <Section migrationChapter id="therapie" title={c(HMA_LESSON.therapie.title)} lead={c(HMA_LESSON.therapie.lead)}>
             <Cards items={HMA_LESSON.therapie.items} lang={lang} />
             <Callout label={c(HMA_LESSON.caveLabel)} cave>{c(HMA_LESSON.therapie.cave)}</Callout>
           </Section>
 
           {/* 8 – Take-home */}
-          <Section id="takehome" title={c(HMA_LESSON.takehome.title)} lead={c(HMA_LESSON.takehome.lead)}>
+          <Section migrationChapter id="takehome" title={c(HMA_LESSON.takehome.title)} lead={c(HMA_LESSON.takehome.lead)}>
             <div className={styles.takeHomeGrid}>
               {HMA_LESSON.takehome.items.map((item, i) => (
                 <div className={styles.takeHomeItem} key={c(item.title)}>
@@ -318,5 +320,6 @@ export default function HypertensiveMikroangiopathiePage() {
         </div>
       )}
     </main>
+    </LegacyLessonMigration>
   )
 }

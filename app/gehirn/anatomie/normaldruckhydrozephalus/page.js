@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -54,7 +56,7 @@ function Section({ id, title, lead, children }) {
       <button type="button" className={styles.sectionHeader} onClick={() => setOpen(value => !value)} aria-expanded={open}>
         <h2>{title}</h2><span>{open ? '−' : '+'}</span>
       </button>
-      {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+      <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>
     </section>
   )
 }
@@ -172,7 +174,7 @@ export default function NormaldruckhydrozephalusPage() {
   const zoomLabel = zoomed === null ? '' : c(NPH_LESSON.fall.frameLabels[zoomed])
 
   return (
-    <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/gehirn/anatomie/normaldruckhydrozephalus" lessonId="/gehirn/anatomie/normaldruckhydrozephalus">
       <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
@@ -195,7 +197,7 @@ export default function NormaldruckhydrozephalusPage() {
         </div>
       </header>
 
-      <div className={styles.readBar}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>
+      <div className={styles.readBar}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/></div>
 
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
@@ -211,26 +213,26 @@ export default function NormaldruckhydrozephalusPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="grundlagen" title={c(NPH_LESSON.grundlagen.title)} lead={c(NPH_LESSON.grundlagen.lead)}>
+          <Section id="grundlagen" title={c(NPH_LESSON.grundlagen.title)} lead={c(NPH_LESSON.grundlagen.lead)} migrationChapter>
             <Cards items={NPH_LESSON.grundlagen.items} lang={lang} /><Callout label={c(NPH_LESSON.keyLabel)}>{c(NPH_LESSON.grundlagen.key)}</Callout>
           </Section>
-          <Section id="klinik" title={c(NPH_LESSON.klinik.title)} lead={c(NPH_LESSON.klinik.lead)}>
+          <Section id="klinik" title={c(NPH_LESSON.klinik.title)} lead={c(NPH_LESSON.klinik.lead)} migrationChapter>
             <Table headers={NPH_LESSON.klinik.headers.map(c)} rows={rows(NPH_LESSON.klinik.rows)} /><Callout label={c(NPH_LESSON.caveLabel)} cave>{c(NPH_LESSON.klinik.cave)}</Callout>
           </Section>
-          <Section id="morphologie" title={c(NPH_LESSON.morphologie.title)} lead={c(NPH_LESSON.morphologie.lead)}>
+          <Section id="morphologie" title={c(NPH_LESSON.morphologie.title)} lead={c(NPH_LESSON.morphologie.lead)} migrationChapter>
             <Cards items={NPH_LESSON.morphologie.items} lang={lang} /><Callout label={c(NPH_LESSON.keyLabel)}>{c(NPH_LESSON.morphologie.key)}</Callout>
             <p><small><a href={NPH_LESSON.morphologie.reference.url} target="_blank" rel="noopener noreferrer">{c(NPH_LESSON.morphologie.reference.label)}</a></small></p>
           </Section>
-          <Section id="messungen" title={c(NPH_LESSON.messungen.title)} lead={c(NPH_LESSON.messungen.lead)}>
+          <Section id="messungen" title={c(NPH_LESSON.messungen.title)} lead={c(NPH_LESSON.messungen.lead)} migrationChapter>
             <Table headers={NPH_LESSON.messungen.headers.map(c)} rows={rows(NPH_LESSON.messungen.rows)} /><Callout label={c(NPH_LESSON.caveLabel)} cave>{c(NPH_LESSON.messungen.cave)}</Callout>
           </Section>
-          <Section id="mrt" title={c(NPH_LESSON.mrt.title)} lead={c(NPH_LESSON.mrt.lead)}>
+          <Section id="mrt" title={c(NPH_LESSON.mrt.title)} lead={c(NPH_LESSON.mrt.lead)} migrationChapter>
             <Table headers={NPH_LESSON.mrt.headers.map(c)} rows={rows(NPH_LESSON.mrt.rows)} /><Callout label={c(NPH_LESSON.keyLabel)}>{c(NPH_LESSON.mrt.key)}</Callout>
           </Section>
-          <Section id="differenzial" title={c(NPH_LESSON.differenzial.title)} lead={c(NPH_LESSON.differenzial.lead)}>
+          <Section id="differenzial" title={c(NPH_LESSON.differenzial.title)} lead={c(NPH_LESSON.differenzial.lead)} migrationChapter>
             <Table headers={NPH_LESSON.differenzial.headers.map(c)} rows={rows(NPH_LESSON.differenzial.rows)} />
           </Section>
-          <Section id="fall" title={c(NPH_LESSON.fall.title)} lead={c(NPH_LESSON.fall.lead)}>
+          <Section id="fall" title={c(NPH_LESSON.fall.title)} lead={c(NPH_LESSON.fall.lead)} migrationChapter>
             <div className={styles.caseGrid}>
               <article className={`${styles.caseCardLink} ${styles.cadasilCaseCard}`}>
                 <CaseSequenceViewer fall={NPH_LESSON.fall} lang={lang} copy={copy} onZoom={setZoomed} />
@@ -245,13 +247,13 @@ export default function NormaldruckhydrozephalusPage() {
             <div className={styles.cardsGrid}>{NPH_LESSON.fall.findings.map((finding, index) => <div className={styles.infoCard} key={c(finding)}><span className={styles.cardNumber}>{String(index + 1).padStart(2, '0')}</span><p>{c(finding)}</p></div>)}</div>
             <Callout label={c({ de: 'Diagnose', en: 'Diagnosis', fa: 'تشخیص' })}>{c(NPH_LESSON.fall.diagnosis)}</Callout>
           </Section>
-          <Section id="diagnostik" title={c(NPH_LESSON.diagnostik.title)} lead={c(NPH_LESSON.diagnostik.lead)}>
+          <Section id="diagnostik" title={c(NPH_LESSON.diagnostik.title)} lead={c(NPH_LESSON.diagnostik.lead)} migrationChapter>
             <Cards items={NPH_LESSON.diagnostik.items} lang={lang} /><Callout label={c(NPH_LESSON.caveLabel)} cave>{c(NPH_LESSON.diagnostik.cave)}</Callout>
           </Section>
-          <Section id="takehome" title={c(NPH_LESSON.takehome.title)} lead={c(NPH_LESSON.takehome.lead)}>
+          <Section id="takehome" title={c(NPH_LESSON.takehome.title)} lead={c(NPH_LESSON.takehome.lead)} migrationChapter>
             <div className={styles.takeHomeGrid}>{NPH_LESSON.takehome.items.map((item, index) => <div className={styles.takeHomeItem} key={c(item.title)}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{c(item.title)}</h3><p>{c(item.text)}</p></div></div>)}</div>
           </Section>
-          <div className={styles.readBarBottom}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>
+          <div className={styles.readBarBottom}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/></div>
         </div>
       </div>
 
@@ -263,6 +265,6 @@ export default function NormaldruckhydrozephalusPage() {
           </div>
         </div>
       )}
-    </main>
+    </LegacyLessonMigration>
   )
 }

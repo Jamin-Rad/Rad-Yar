@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -517,7 +519,7 @@ function Section({ id, title, lead, children }) {
         <h2>{title}</h2>
         <span>{open ? '−' : '+'}</span>
       </button>
-      {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+      <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>
     </section>
   )
 }
@@ -559,7 +561,7 @@ export default function SprunggelenkTraumaPage() {
   }, [sectionIds])
 
   return (
-    <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/msk/trauma/sprunggelenk" lessonId="/msk/trauma/sprunggelenk">
       <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
@@ -588,7 +590,7 @@ export default function SprunggelenkTraumaPage() {
         <Link className={styles.actionBtn} href={withLang('/flashcards/osg-fraktur')}>{lang === 'fa' ? 'فلش‌کارت‌ها' : lang === 'en' ? 'Flashcards' : 'Flashkarten'}</Link>
       </nav>
 
-      <div className={styles.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+      <div className={styles.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
 
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
@@ -607,18 +609,18 @@ export default function SprunggelenkTraumaPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="bildgebung" title={copy.imaging.title} lead={copy.imaging.lead}>
+          <Section id="bildgebung" title={copy.imaging.title} lead={copy.imaging.lead} migrationChapter>
             <Table headers={copy.imaging.headers} rows={copy.imaging.rows} />
             <Callout label={copy.keyLabel}>{copy.imaging.key}</Callout>
             <p className={styles.sourceNote}><a href="https://acsearch.acr.org/docs/69436/Narrative/" target="_blank" rel="noreferrer">{copy.imaging.protocolLinkLabel}</a></p>
           </Section>
 
-          <Section id="analyse" title={copy.analysis.title} lead={copy.analysis.lead}>
+          <Section id="analyse" title={copy.analysis.title} lead={copy.analysis.lead} migrationChapter>
             <Cards items={copy.analysis.items} />
             <Callout type="cave" label={copy.caveLabel}>{copy.analysis.cave}</Callout>
           </Section>
 
-          <Section id="weber" title={copy.weber.title} lead={copy.weber.lead}>
+          <Section id="weber" title={copy.weber.title} lead={copy.weber.lead} migrationChapter>
             <figure className={styles.weberFigure}>
               <Image
                 src="/sprunggelenk/weber-klassifikation.png"
@@ -634,13 +636,13 @@ export default function SprunggelenkTraumaPage() {
             <Callout label={copy.keyLabel}>{copy.weber.key}</Callout>
           </Section>
 
-          <Section id="stabilitaet" title={copy.stability.title} lead={copy.stability.lead}>
+          <Section id="stabilitaet" title={copy.stability.title} lead={copy.stability.lead} migrationChapter>
             <Table headers={copy.stability.headers} rows={copy.stability.rows} />
             <Callout type="cave" label={copy.caveLabel}>{copy.stability.cave}</Callout>
             <Callout label={copy.keyLabel}>{copy.stability.key}</Callout>
           </Section>
 
-          <Section id="sonderformen" title={copy.specialForms.title} lead={copy.specialForms.lead}>
+          <Section id="sonderformen" title={copy.specialForms.title} lead={copy.specialForms.lead} migrationChapter>
             <PatternDiagram copy={copy} />
             <Table headers={copy.specialForms.headers} rows={copy.specialForms.rows} />
             <Callout label={copy.specialForms.sourceLabel}>{copy.specialForms.source}</Callout>
@@ -658,12 +660,12 @@ export default function SprunggelenkTraumaPage() {
             </section>
           </Section>
 
-          <Section id="ct" title={copy.ct.title} lead={copy.ct.lead}>
+          <Section id="ct" title={copy.ct.title} lead={copy.ct.lead} migrationChapter>
             <Cards items={copy.ct.items} />
             <Callout label={copy.keyLabel}>{copy.ct.key}</Callout>
           </Section>
 
-          <Section id="fall" title={copy.caseStudy.title} lead={copy.caseStudy.lead}>
+          <Section id="fall" title={copy.caseStudy.title} lead={copy.caseStudy.lead} migrationChapter>
             <div className={styles.caseGrid}>
               <article className={styles.caseCardLink}>
                 <CaseImages copy={copy.caseStudy} />
@@ -681,7 +683,7 @@ export default function SprunggelenkTraumaPage() {
             </div>
           </Section>
 
-          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>
+          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead} migrationChapter>
             <div className={styles.takeHomeGrid}>
               {copy.takehome.items.map((item, index) => (
                 <div className={styles.takeHomeItem} key={item.title}>
@@ -692,9 +694,9 @@ export default function SprunggelenkTraumaPage() {
             </div>
           </Section>
 
-          <div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+          <div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
         </div>
       </div>
-    </main>
+    </LegacyLessonMigration>
   )
 }

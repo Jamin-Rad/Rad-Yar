@@ -1,0 +1,189 @@
+{
+  "scope": "Actual baseline HEAD app page graph versus current SSR in DE/EN/FA; chapter body mounts exposed in baseline for complete text visibility. CSS/session fixtures identical. Checks clinical paragraphs, headings, table cells, captions, leaf-list records. Site navigation and role/control labels excluded only explicitly.",
+  "checkedRecords": 33376,
+  "missing": [],
+  "explicitDesignExclusions": [
+    [
+      "de",
+      "/gehirn/anatomie/chiari",
+      "Lernentwurf; nicht für klinische Entscheidungen.",
+      "user requested draft notice removal"
+    ],
+    [
+      "de",
+      "/mamma/bildgebung/mrt/basics",
+      "01 Zuerst klären BPE oder echter Befund?",
+      "number/sequence UI replaced by summary rows; clinical labels retained"
+    ],
+    [
+      "de",
+      "/mamma/bildgebung/mrt/basics",
+      "02 Dann einordnen Mass · Non-Mass Enhancement",
+      "number/sequence UI replaced by summary rows; clinical labels retained"
+    ],
+    [
+      "de",
+      "/mamma/bildgebung/mrt/basics",
+      "03 Erst danach beurteilen Morphologie · T2 · DWI · Kinetik · Begleitbefunde",
+      "number/sequence UI replaced by summary rows; clinical labels retained"
+    ],
+    [
+      "de",
+      "/thorax/kardio/kardio-mrt-basics",
+      "Take-Home Messages",
+      "summary role heading replaced by standard Take Home Message"
+    ],
+    [
+      "de",
+      "/thorax/kardio/kardio-mrt-basics",
+      "Radyar Memory Box",
+      "summary role heading replaced by standard Take Home Message"
+    ],
+    [
+      "en",
+      "/gehirn/anatomie/chiari",
+      "Teaching draft; not for clinical decision-making.",
+      "user requested draft notice removal"
+    ],
+    [
+      "en",
+      "/mamma/bildgebung/mrt/basics",
+      "01 First clarify BPE or a true finding?",
+      "number/sequence UI replaced by summary rows; clinical labels retained"
+    ],
+    [
+      "en",
+      "/mamma/bildgebung/mrt/basics",
+      "02 Then classify Mass · Non-Mass Enhancement",
+      "number/sequence UI replaced by summary rows; clinical labels retained"
+    ],
+    [
+      "en",
+      "/mamma/bildgebung/mrt/basics",
+      "03 Only then assess Morphology · T2 · DWI · kinetics · associated findings",
+      "number/sequence UI replaced by summary rows; clinical labels retained"
+    ],
+    [
+      "en",
+      "/thorax/kardio/kardio-mrt-basics",
+      "Take-Home Messages",
+      "summary role heading replaced by standard Take Home Message"
+    ],
+    [
+      "en",
+      "/thorax/kardio/kardio-mrt-basics",
+      "Radyar Memory Box",
+      "summary role heading replaced by standard Take Home Message"
+    ],
+    [
+      "fa",
+      "/gehirn/anatomie/chiari",
+      "پیش‌نویس آموزشی؛ برای تصمیم بالینی استفاده نشود.",
+      "user requested draft notice removal"
+    ],
+    [
+      "fa",
+      "/thorax/kardio/kardio-mrt-basics",
+      "Take-Home Messages",
+      "summary role heading replaced by standard Take Home Message"
+    ],
+    [
+      "fa",
+      "/thorax/kardio/kardio-mrt-basics",
+      "Radyar Memory Box",
+      "summary role heading replaced by standard Take Home Message"
+    ]
+  ],
+  "baselineUnavailable": [
+    {
+      "route": "/abdomen/pankreas/pankreaskarzinom",
+      "lang": "de",
+      "error": [
+        "Objects are not valid as a React child (found: object with keys {de, en, fa}). If you meant to render a collection of children, use an array instead."
+      ]
+    },
+    {
+      "route": "/abdomen/pankreas/pankreaskarzinom",
+      "lang": "en",
+      "error": [
+        "Objects are not valid as a React child (found: object with keys {de, en, fa}). If you meant to render a collection of children, use an array instead."
+      ]
+    },
+    {
+      "route": "/abdomen/pankreas/pankreaskarzinom",
+      "lang": "fa",
+      "error": [
+        "Objects are not valid as a React child (found: object with keys {de, en, fa}). If you meant to render a collection of children, use an array instead."
+      ]
+    }
+  ],
+  "date": "2026-10-24",
+  "baseline": "HEAD before lesson-design changes",
+  "result": "Historical parity PASS for available baseline renders with explicit requested design exclusions and three pre-existing PDAC baseline render errors. This comparison predates five intentional German locale corrections recorded below; the current text is therefore not byte-identical to the baseline.",
+  "baselineCaptures": "tmp/lesson-design-baseline/",
+  "currentCaptures": "tmp/lesson-design-all-routes/",
+  "comparisonDate": "2026-10-24",
+  "postParityCorrections": {
+    "date": "2026-10-25",
+    "route": "/gehirn/tumoren/kolloidzyste",
+    "source": "data/gehirnKolloidzysteLesson.js",
+    "reason": "Five German locale values incorrectly contained Persian text. They were replaced by German wording expressing the existing clinical meaning; English and Persian values were retained exactly. This is an intentional locale correction after the historical parity run, not an unrecorded content removal.",
+    "verification": "Compared all localized KOLLOID_COPY objects from git HEAD with the current source: exactly five German values differ; every English and Persian value is identical.",
+    "changes": [
+      {
+        "key": "KOLLOID_COPY.obstruction.de",
+        "before": "به‌علت نزدیکی به سوراخ‌های مونرو، کیست می‌تواند جریان CSF از بطن‌های جانبی به بطن سوم را مختل کند. به اتساع بطن‌های جانبی، شاخ‌های تمپورال و عدم تقارن یا تغییر نسبت به بررسی قبلی توجه کنید. یک ضایعهٔ کوچک بدون اتساع بطن با انسداد فعال یکسان نیست.",
+        "after": "Durch ihre Nähe zu den Foramina Monroi kann die Zyste den Liquorfluss aus den Seitenventrikeln in den dritten Ventrikel behindern. Beurteilen Sie die Weite der Seitenventrikel und Temporalhörner sowie Asymmetrien und Veränderungen gegenüber Voruntersuchungen. Eine kleine Läsion ohne Ventrikulomegalie ist nicht mit einer aktiven Obstruktion gleichzusetzen.",
+        "englishUnchanged": true,
+        "persianUnchanged": true
+      },
+      {
+        "key": "KOLLOID_COPY.takeaways[0].de",
+        "before": "در بخش قدامی بطن سوم و نزدیک Foramen Monro جست‌وجو کنید.",
+        "after": "Suchen Sie im vorderen dritten Ventrikel nahe dem Foramen Monroi.",
+        "englishUnchanged": true,
+        "persianUnchanged": true
+      },
+      {
+        "key": "KOLLOID_COPY.takeaways[1].de",
+        "before": "CT اغلب پُرچگال است، اما CT و MRI هر دو تنوع دارند.",
+        "after": "Im CT häufig hyperdens; das Erscheinungsbild ist jedoch sowohl im CT als auch im MRT variabel.",
+        "englishUnchanged": true,
+        "persianUnchanged": true
+      },
+      {
+        "key": "KOLLOID_COPY.takeaways[2].de",
+        "before": "شدت سیگنال T1/T2 را به‌تنهایی معیار رد یا تأیید نکنید.",
+        "after": "Verwenden Sie das T1-/T2-Signal nicht allein, um eine Kolloidzyste zu bestätigen oder auszuschließen.",
+        "englishUnchanged": true,
+        "persianUnchanged": true
+      },
+      {
+        "key": "KOLLOID_COPY.takeaways[3].de",
+        "before": "همیشه بطن‌ها و شواهد انسداد CSF را نیز بسنجید.",
+        "after": "Beurteilen Sie stets auch die Ventrikel und Hinweise auf eine Liquorabflussbehinderung.",
+        "englishUnchanged": true,
+        "persianUnchanged": true
+      }
+    ]
+  },
+  "uiHeadingCleanupVerification": {
+    "date": "2026-10-25",
+    "scope": "JSX AST inspection of all 23 backing files in the summary-hoist migration configuration.",
+    "remainingStandaloneSummaryHeadings": 0,
+    "checkedLabels": [
+      "Merksätze",
+      "Take-home points",
+      "نکته‌های کلیدی",
+      "Take-home-Regeln",
+      "Take-home rules"
+    ],
+    "focusedRoutes": [
+      "/msk/knochenstoffwechsel/melorheostose",
+      "/msk/osteochondrosen/osgood-schlatter"
+    ],
+    "finding": "The former orphan body h3 summary labels had already been removed. Each focused route retains its authored medical text and dedicated final shared TakeHomeList. Remaining Merksätze strings are action-label metadata, not standalone body headings.",
+    "changesInThisVerification": "QA metadata only; no app source or medical text changed.",
+    "parityTreatment": "Standalone summary-role UI heading removal is an explicit presentation change; no additional missing clinical records or historical comparison exclusions were fabricated."
+  }
+}

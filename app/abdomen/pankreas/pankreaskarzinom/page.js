@@ -56,15 +56,15 @@ export default function PancreaticAdenocarcinomaPage() {
       <section className={styles.section}>
         <h2>{caseCopy.title}</h2>
         <figure className={styles.case}>
-          <img src="/educational/pdac/source-ct-p36.jpg" width="1065" height="480" alt={L('Zwei axiale kontrastverstärkte CT-Aufnahmen eines fortgeschrittenen Pankreastumors.', 'Two axial contrast-enhanced CT images of an advanced pancreatic tumour.', 'دو تصویر محوری CT با تزریق از تومور پیشرفتهٔ پانکراس.')} />
+          <img src="/educational/pdac/source-ct-p36.jpg" width="1065" height="480" alt={L('Zwei axiale kontrastverstärkte CT-Aufnahmen eines fortgeschrittenen Pankreastumors.', 'Two axial contrast-enhanced CT images of an advanced pancreatic tumour.', 'دو تصویر محوری CT با تزریق از تومور پیشرفتهٔ پانکراس.')[lang]} />
           <figcaption>{caseCopy.text}<br /><a href="https://doi.org/10.53347/rID-86457" target="_blank" rel="noopener noreferrer">{caseCopy.link} ↗</a></figcaption>
         </figure>
       </section>
       <section className={styles.section}>
-        <h2>{L('MRT-Muster im Vergleich', 'MRI patterns side by side', 'مقایسهٔ الگوهای MRI')}</h2>
+        <h2>{L('MRT-Muster im Vergleich', 'MRI patterns side by side', 'مقایسهٔ الگوهای MRI')[lang]}</h2>
         <figure className={styles.case}>
-          <img src="/educational/pdac/source-mri-p37.jpg" width="1240" height="815" alt={L('Sechs beschriftete MRT-Aufnahmen in den Sequenzen T1w, T2w und T1 C+ in axialer und koronarer Ebene.', 'Six labelled MRI panels showing T1w, T2w and post-contrast T1 in axial and coronal planes.', 'شش پنل MRI با برچسب‌های T1w، T2w و T1 پس از تزریق در نماهای محوری و کرونال.')} />
-          <figcaption>{L('Die Bildbeschriftungen folgen der PDF-Vorlage. Im dargestellten Fall wird eine unregelmäßige, unscharf begrenzte Raumforderung mit nekrotischem, nicht anreicherndem Zentrum beschrieben (Radiopaedia rID 22896).', 'Sequence labels follow the PDF source. The source describes an irregular, ill-defined mass with a necrotic, non-enhancing centre (Radiopaedia case rID 22896).', 'برچسب توالی‌ها مطابق PDF است. منبع، توده‌ای نامنظم و با حاشیهٔ نامشخص با مرکز نکروتیکِ بدون تقویت را توصیف می‌کند (مورد Radiopaedia با شناسهٔ rID 22896).')}<br /><small>{L('Quelle: Abdomen.pdf, S. 37 (druckseitig S. 36).', 'Source: Abdomen.pdf, p. 37 (printed p. 36).', 'منبع: Abdomen.pdf، صفحهٔ PDF ۳۷ (صفحهٔ چاپی ۳۶).')}</small></figcaption>
+          <img src="/educational/pdac/source-mri-p37.jpg" width="1240" height="815" alt={L('Sechs beschriftete MRT-Aufnahmen in den Sequenzen T1w, T2w und T1 C+ in axialer und koronarer Ebene.', 'Six labelled MRI panels showing T1w, T2w and post-contrast T1 in axial and coronal planes.', 'شش پنل MRI با برچسب‌های T1w، T2w و T1 پس از تزریق در نماهای محوری و کرونال.')[lang]} />
+          <figcaption>{L('Die Bildbeschriftungen folgen der PDF-Vorlage. Im dargestellten Fall wird eine unregelmäßige, unscharf begrenzte Raumforderung mit nekrotischem, nicht anreicherndem Zentrum beschrieben (Radiopaedia rID 22896).', 'Sequence labels follow the PDF source. The source describes an irregular, ill-defined mass with a necrotic, non-enhancing centre (Radiopaedia case rID 22896).', 'برچسب توالی‌ها مطابق PDF است. منبع، توده‌ای نامنظم و با حاشیهٔ نامشخص با مرکز نکروتیکِ بدون تقویت را توصیف می‌کند (مورد Radiopaedia با شناسهٔ rID 22896).')[lang]}<br /><small>{L('Quelle: Abdomen.pdf, S. 37 (druckseitig S. 36).', 'Source: Abdomen.pdf, p. 37 (printed p. 36).', 'منبع: Abdomen.pdf، صفحهٔ PDF ۳۷ (صفحهٔ چاپی ۳۶).')[lang]}</small></figcaption>
         </figure>
       </section>
       <section className={styles.section}>

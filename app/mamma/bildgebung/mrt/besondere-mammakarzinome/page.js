@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -41,7 +43,7 @@ function Section({ id, eyebrow, title, children }) {
       <span className={basics.sectionHeading}><small>{eyebrow}</small><h2>{title}</h2></span>
       <span className={basics.sectionToggle}>{open ? '−' : '+'}</span>
     </button>
-    {open && <div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>}
+    <div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>
   </section>
 }
 
@@ -85,7 +87,7 @@ export default function BesondereMammakarzinomePage() {
     return () => observers.forEach(observer => observer?.disconnect())
   }, [sectionIds])
 
-  return <main className={`${base.page} ${basics.page} ${styles.page} ${lang === 'fa' ? styles.rtl : ''}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
+  return <LegacyLessonMigration className={`${base.page} ${basics.page} ${styles.page} ${lang === 'fa' ? styles.rtl : ''}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/mamma/bildgebung/mrt/besondere-mammakarzinome" lessonId="/mamma/bildgebung/mrt/besondere-mammakarzinome" summaryFallback={REPORT_STEPS.slice(0,5).map(item=>({title:tx(item.label),detail:tx(item.text)}))}>
     <header className={base.header}>
       <nav className={`${base.breadcrumb} ${basics.breadcrumb}`} aria-label={tx(COPY.contents)}>
         <Link href={withLang('/')}>RadYar</Link><span>›</span>
@@ -110,7 +112,7 @@ export default function BesondereMammakarzinomePage() {
       </div>
     </header>
 
-    <div className={base.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang} /></div>
+    <div className={base.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang}  migrationReadControl/></div>
     <div className={base.layout}>
       <aside className={`${base.sidebar} ${basics.sidebar}`}>
         <div className={base.sideTitle}>{tx(COPY.contents)}</div>
@@ -120,7 +122,7 @@ export default function BesondereMammakarzinomePage() {
       </aside>
 
       <div className={base.main}>
-        <Section id="warum" eyebrow={tx({ de: '01 · Orientierung', en: '01 · Orientation', fa: '۰۱ · جهت‌گیری' })} title={tx(SECTIONS[0].label)}>
+        <Section id="warum" eyebrow={tx({ de: '01 · Orientierung', en: '01 · Orientation', fa: '۰۱ · جهت‌گیری' })} title={tx(SECTIONS[0].label)} migrationChapter>
           <p className={styles.lead}>{tx({
             de: 'Der histologische oder molekulare Subtyp lässt sich nicht sicher aus der MRT ablesen. Er erklärt aber, warum manche Karzinome typische Erwartungen durchbrechen – und genau diese Abweichungen sind diagnostisch wertvoll.',
             en: 'Histological or molecular subtype cannot be determined reliably from MRI alone. It does explain why some cancers break typical expectations, and those deviations are diagnostically valuable.',
@@ -130,14 +132,14 @@ export default function BesondereMammakarzinomePage() {
           <div className={styles.caution}><strong>{tx({ de: 'Leitprinzip', en: 'Guiding principle', fa: 'اصل راهنما' })}</strong><p>{tx({ de: 'Benigne Morphologie schließt aggressive Biologie nicht aus. Umgekehrt ist kein MRT-Zeichen histologiespezifisch.', en: 'Benign morphology does not exclude aggressive biology. Conversely, no MRI sign is histology-specific.', fa: 'مورفولوژی خوش‌خیم، زیست‌شناسی تهاجمی را رد نمی‌کند؛ در مقابل، هیچ علامت MRI اختصاصی یک نوع بافت‌شناختی نیست.' })}</p></div>
         </Section>
 
-        <Section id="ilc" eyebrow="02 · ILC" title={tx(SECTIONS[1].label)}><TumourLesson tumour={TUMOURS.ilc} lang={lang} /></Section>
-        <Section id="muzinoes" eyebrow={tx({ de: '03 · Muzinös', en: '03 · Mucinous', fa: '۰۳ · موسینوس' })} title={tx(SECTIONS[2].label)}><TumourLesson tumour={TUMOURS.muzinoes} lang={lang} /></Section>
-        <Section id="tnbc" eyebrow="04 · TNBC" title={tx(SECTIONS[3].label)}><TumourLesson tumour={TUMOURS.tnbc} lang={lang} /></Section>
-        <Section id="inflammatorisch" eyebrow="05 · IBC" title={tx(SECTIONS[4].label)}><TumourLesson tumour={TUMOURS.inflammatorisch} lang={lang} /></Section>
-        <Section id="paget" eyebrow="06 · Paget" title={tx(SECTIONS[5].label)}><TumourLesson tumour={TUMOURS.paget} lang={lang} /></Section>
-        <Section id="metaplastisch" eyebrow={tx({ de: '07 · Metaplastisch', en: '07 · Metaplastic', fa: '۰۷ · متاپلاستیک' })} title={tx(SECTIONS[6].label)}><TumourLesson tumour={TUMOURS.metaplastisch} lang={lang} /></Section>
+        <Section id="ilc" eyebrow="02 · ILC" title={tx(SECTIONS[1].label)} migrationChapter><TumourLesson tumour={TUMOURS.ilc} lang={lang} /></Section>
+        <Section id="muzinoes" eyebrow={tx({ de: '03 · Muzinös', en: '03 · Mucinous', fa: '۰۳ · موسینوس' })} title={tx(SECTIONS[2].label)} migrationChapter><TumourLesson tumour={TUMOURS.muzinoes} lang={lang} /></Section>
+        <Section id="tnbc" eyebrow="04 · TNBC" title={tx(SECTIONS[3].label)} migrationChapter><TumourLesson tumour={TUMOURS.tnbc} lang={lang} /></Section>
+        <Section id="inflammatorisch" eyebrow="05 · IBC" title={tx(SECTIONS[4].label)} migrationChapter><TumourLesson tumour={TUMOURS.inflammatorisch} lang={lang} /></Section>
+        <Section id="paget" eyebrow="06 · Paget" title={tx(SECTIONS[5].label)} migrationChapter><TumourLesson tumour={TUMOURS.paget} lang={lang} /></Section>
+        <Section id="metaplastisch" eyebrow={tx({ de: '07 · Metaplastisch', en: '07 · Metaplastic', fa: '۰۷ · متاپلاستیک' })} title={tx(SECTIONS[6].label)} migrationChapter><TumourLesson tumour={TUMOURS.metaplastisch} lang={lang} /></Section>
 
-        <Section id="vergleich" eyebrow={tx({ de: '08 · Integration', en: '08 · Integration', fa: '۰۸ · جمع‌بندی' })} title={tx(SECTIONS[7].label)}>
+        <Section id="vergleich" eyebrow={tx({ de: '08 · Integration', en: '08 · Integration', fa: '۰۸ · جمع‌بندی' })} title={tx(SECTIONS[7].label)} migrationChapter>
           <div className={styles.comparison} role="table" aria-label={tx({ de: 'Vergleich besonderer Mammakarzinome', en: 'Comparison of special breast carcinomas', fa: 'مقایسه کارسینوم‌های ویژه پستان' })}>
             <div className={styles.comparisonHeader} role="row"><strong role="columnheader">{tx({ de: 'Tumortyp', en: 'Tumour type', fa: 'نوع تومور' })}</strong><strong role="columnheader">{tx({ de: 'MRT-Muster', en: 'MRI pattern', fa: 'الگوی MRI' })}</strong><strong role="columnheader">{tx({ de: 'Fallstrick', en: 'Pitfall', fa: 'دام تشخیصی' })}</strong><strong role="columnheader">{tx({ de: 'Merke', en: 'Remember', fa: 'نکته' })}</strong></div>
             {COMPARISON_ROWS.map((row, index) => <div className={styles.comparisonRow} role="row" key={tx(row.tumour)}><span className={styles.rowNumber}>{String(index + 1).padStart(2, '0')}</span><strong role="cell">{tx(row.tumour)}</strong><span role="cell">{tx(row.pattern)}</span><span role="cell">{tx(row.pitfall)}</span><span role="cell">{tx(row.key)}</span></div>)}
@@ -148,5 +150,5 @@ export default function BesondereMammakarzinomePage() {
         </Section>
       </div>
     </div>
-  </main>
+  </LegacyLessonMigration>
 }

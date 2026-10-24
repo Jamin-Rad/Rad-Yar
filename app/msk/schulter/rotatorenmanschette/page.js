@@ -1,7 +1,9 @@
 'use client'
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 
 import { useMemo, useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import styles from './page.module.css'
@@ -454,6 +456,7 @@ export default function RotatorenmanschettePage() {
   }, [sectionIds])
 
   return (
+    <LegacyLessonMigration lessonRoute="/msk/schulter/rotatorenmanschette" lessonId="/msk/schulter/rotatorenmanschette" lang={lang}>
     <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
@@ -505,7 +508,8 @@ export default function RotatorenmanschettePage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="grundlagen" title={copy.basics.title} lead={copy.basics.lead} {...sectionProps('grundlagen')}>
+          <Section migrationChapter id="grundlagen" title={copy.basics.title} lead={copy.basics.lead} {...sectionProps('grundlagen')}>
+            <figure style={{maxWidth:650,margin:"1rem auto"}}><Image src="/educational/rotator-cuff-schematic.svg" alt={copy.heroAlt} width={840} height={520} style={{width:"100%",height:"auto"}} /><figcaption>{copy.heroCaption}</figcaption></figure>
             <div className={styles.cardsGrid}>
               {copy.basics.items.map(item => (
                 <div className={styles.infoCard} key={item.title}>
@@ -517,7 +521,7 @@ export default function RotatorenmanschettePage() {
             <Callout label={copy.keyLabel}>{copy.basics.key}</Callout>
           </Section>
 
-          <Section id="mrt" title={copy.mri.title} lead={copy.mri.lead} {...sectionProps('mrt')}>
+          <Section migrationChapter id="mrt" title={copy.mri.title} lead={copy.mri.lead} {...sectionProps('mrt')}>
             <Table headers={copy.mri.tableHeaders} rows={copy.mri.tableRows} />
             <div className={styles.splitGrid}>
               <div className={styles.infoCard}>
@@ -532,7 +536,7 @@ export default function RotatorenmanschettePage() {
             <Callout label={copy.keyLabel}>{copy.mri.key}</Callout>
           </Section>
 
-          <Section id="partialruptur" title={copy.partial.title} lead={copy.partial.lead} {...sectionProps('partialruptur')}>
+          <Section migrationChapter id="partialruptur" title={copy.partial.title} lead={copy.partial.lead} {...sectionProps('partialruptur')}>
             <Table headers={copy.partial.tableHeaders} rows={copy.partial.tableRows} />
             <div className={styles.highlightBox}>
               <h3>{copy.partial.irisTitle}</h3>
@@ -541,7 +545,7 @@ export default function RotatorenmanschettePage() {
             <Callout label={copy.keyLabel}>{copy.partial.key}</Callout>
           </Section>
 
-          <Section id="komplettruptur" title={copy.full.title} lead={copy.full.lead} {...sectionProps('komplettruptur')}>
+          <Section migrationChapter id="komplettruptur" title={copy.full.title} lead={copy.full.lead} {...sectionProps('komplettruptur')}>
             <Table headers={copy.full.tableHeaders} rows={copy.full.tableRows} />
             <div className={styles.splitGrid}>
               <div className={styles.infoCard}>
@@ -561,14 +565,14 @@ export default function RotatorenmanschettePage() {
             </div>
           </Section>
 
-          <Section id="begleit" title={copy.begleit.title} lead={copy.begleit.lead} {...sectionProps('begleit')}>
+          <Section migrationChapter id="begleit" title={copy.begleit.title} lead={copy.begleit.lead} {...sectionProps('begleit')}>
             <Table headers={copy.begleit.tableHeaders} rows={copy.begleit.tableRows} />
             <Callout type="cave" label={copy.caveLabel}>{copy.begleit.cave}</Callout>
             <Callout label={copy.keyLabel}>{copy.begleit.key}</Callout>
             <Link href={withLang('/msk/schulter/impingement-kalkschulter')} className={styles.relatedLessonLink}>{copy.impingementLink}</Link>
           </Section>
 
-          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead} {...sectionProps('takehome')}>
+          <Section migrationChapter id="takehome" title={copy.takehome.title} lead={copy.takehome.lead} {...sectionProps('takehome')}>
             <div className={styles.takeHomeGrid}>
               {copy.takehome.items.map((item, index) => (
                 <div className={styles.takeHomeItem} key={item.title}>
@@ -587,5 +591,6 @@ export default function RotatorenmanschettePage() {
         </div>
       </div>
     </main>
+    </LegacyLessonMigration>
   )
 }

@@ -1,11 +1,10 @@
 'use client'
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import LessonHero from '@/components/LessonHero'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
@@ -69,7 +68,8 @@ export default function BoneLymphomaLesson() {
   </section>
 
   return <>
-    <Navbar />
+
+    <LegacyLessonMigration lessonRoute="/msk/tumoren/knochenlymphom" lessonId={lesson.id} lang={lang} lessonRead={isRead} summaryFallback={lesson.takeHome.map(item => ({ title: c(item), detail: "" }))}>
     <main className={styles.page} dir={rtl ? 'rtl' : 'ltr'} lang={lang} data-lesson-progress-managed="true">
       <div className={styles.wrap}>
         <nav className={styles.breadcrumb} aria-label={copy.breadcrumb}><Link href={lang === 'de' ? '/' : `/?lang=${lang}`}>RadYar</Link><span>›</span><Link href={lang === 'de' ? '/lernen/msk' : `/lernen/msk?lang=${lang}`}>{lang === 'fa' ? 'اسکلتی‌عضلانی' : 'MSK'}</Link><span>›</span><span>{c(lesson.title)}</span></nav>
@@ -85,9 +85,10 @@ export default function BoneLymphomaLesson() {
         <section className={`${styles.chapter} ${openId === 'case' ? styles.chapterOpen : ''}`} id="case"><button className={styles.chapterToggle} type="button" aria-expanded={openId === 'case'} aria-controls="case-panel" onClick={() => selectSection(openId === 'case' ? '' : 'case')}><span aria-hidden="true">◇</span><strong>{c(lesson.case.title)}</strong><i aria-hidden="true">{openId === 'case' ? '−' : '+'}</i></button><div id="case-panel" hidden={openId !== 'case'} className={styles.chapterBody}><p>{c(lesson.case.prompt)}</p><div className={styles.options}>{lesson.case.options.map((option, i) => <button key={i} className={answer === String(i) ? styles.selected : ''} onClick={() => setAnswer(String(i))} type="button" aria-pressed={answer === String(i)}>{c(option)}</button>)}</div>{answer !== '' && <p className={styles.feedback} role="status">{Number(answer) === lesson.case.answerIndex ? c(lesson.case.feedbackCorrect) : c(lesson.case.feedbackIncorrect)}</p>}<button className={`${styles.sectionRead} ${readSections.has('case') ? styles.sectionReadDone : ''}`} type="button" aria-pressed={readSections.has('case')} onClick={() => toggleSectionRead('case')}>{readSections.has('case') ? `✓ ${copy.read}` : copy.mark}</button></div></section>
         <section className={`${styles.scope} ${openId === 'take-home' ? styles.chapterOpen : ''}`} id="take-home"><button className={styles.chapterToggle} type="button" aria-expanded={openId === 'take-home'} aria-controls="take-home-panel" onClick={() => selectSection(openId === 'take-home' ? '' : 'take-home')}><strong>{copy.takeHome}</strong><i aria-hidden="true">{openId === 'take-home' ? '−' : '+'}</i></button><div id="take-home-panel" hidden={openId !== 'take-home'} className={styles.chapterBody}><ul>{lesson.takeHome.map((item, i) => <li key={i}>{c(item)}</li>)}</ul></div></section>
         <section className={`${styles.scope} ${openId === 'sources' ? styles.chapterOpen : ''}`} id="sources"><button className={styles.chapterToggle} type="button" aria-expanded={openId === 'sources'} aria-controls="sources-panel" onClick={() => selectSection(openId === 'sources' ? '' : 'sources')}><strong>{copy.sources}</strong><i aria-hidden="true">{openId === 'sources' ? '−' : '+'}</i></button><div id="sources-panel" hidden={openId !== 'sources'} className={styles.chapterBody}><h2>{copy.source}</h2><p>{c(lesson.notice)}</p><ul>{lesson.references.map(item => <li key={item.url}><a href={item.url} target="_blank" rel="noopener noreferrer">{c(item.label)}</a></li>)}</ul></div></section>
-        <div className={styles.read}><button type="button" onClick={toggleRead}>{isRead ? '✓ ' : ''}{isRead ? copy.lessonCompleted : copy.completeLesson}</button>{authError && <p role="alert">{copy.auth} <Link href={`/sign-in?lang=${lang}`}>{copy.signIn}</Link></p>}</div>
+        <div className={styles.read} data-migration-read-control=""><button type="button" onClick={toggleRead}>{isRead ? '✓ ' : ''}{isRead ? copy.lessonCompleted : copy.completeLesson}</button>{authError && <p role="alert">{copy.auth} <Link href={`/sign-in?lang=${lang}`}>{copy.signIn}</Link></p>}</div>
       </div>
     </main>
-    <Footer />
+    </LegacyLessonMigration>
+
   </>
 }

@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -25,7 +27,7 @@ function ReadButton({ isRead, onClick, authError, lang }) {
 function Section({ id, icon, title, open, onToggle, children }) {
   const lehrMode = useLehrModeActive()
   const expanded = lehrMode || open
-  return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}><button className={`${base.sectionHeader} ${basics.sectionHeader}`} type="button" onClick={() => { if (!lehrMode) onToggle(id) }} aria-expanded={expanded} data-lehr-section-managed><span className={basics.sectionHeading}><span className={`${basics.sectionIcon} ${styles.sectionIcon}`}><SectionIcon name={icon} /></span><h2>{title}</h2></span><span className={basics.sectionToggle}>{expanded ? '−' : '+'}</span></button>{expanded && <div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
+  return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}><button className={`${base.sectionHeader} ${basics.sectionHeader}`} type="button" onClick={() => { if (!lehrMode) onToggle(id) }} aria-expanded={expanded} data-lehr-section-managed><span className={basics.sectionHeading}><span className={`${basics.sectionIcon} ${styles.sectionIcon}`}><SectionIcon name={icon} /></span><h2>{title}</h2></span><span className={basics.sectionToggle}>{expanded ? '−' : '+'}</span></button><div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div></section>
 }
 
 const SECTION_ICON_PATHS = {
@@ -111,7 +113,7 @@ export default function LesionscharakterisierungPage() {
     selectSection(id)
   }
 
-  return <main className={`${base.page} ${basics.page} ${styles.page} ${lang === 'fa' ? styles.rtl : ''}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
+  return <LegacyLessonMigration className={`${base.page} ${basics.page} ${styles.page} ${lang === 'fa' ? styles.rtl : ''}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/mamma/bildgebung/mrt/laesionscharakterisierung" lessonId="/mamma/bildgebung/mrt/laesionscharakterisierung" summaryFallback={SUMMARY_STEPS.slice(0,5).map(item=>({title:tx(item),detail:tx(item)}))}>
     <header className={base.header}>
       <nav className={`${base.breadcrumb} ${basics.breadcrumb}`} aria-label={tx(COPY.contents)}><Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/mamma')}>{tx(COPY.mamma)}</Link><span>›</span><Link href={withLang('/lernen/mamma')}>{tx(COPY.imaging)}</Link><span>›</span><span>{tx(COPY.breastMri)}</span><span>›</span><strong>{tx(COPY.title)}</strong></nav>
       <div className={base.hero}>
@@ -120,11 +122,11 @@ export default function LesionscharakterisierungPage() {
       </div>
     </header>
 
-    <div className={base.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang} /></div>
+    <div className={base.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang}  migrationReadControl/></div>
     <div className={base.layout}>
       <aside className={`${base.sidebar} ${basics.sidebar}`}><div className={base.sideTitle}>{tx(COPY.contents)}</div>{SECTIONS.map(section => <button key={section.id} type="button" className={`${base.sideItem} ${basics.sideItem} ${activeId === section.id ? `${base.sideItemActive} ${basics.sideItemActive}` : ''}`} onClick={() => selectSection(section.id)}><span className={basics.sideNumber}><SectionIcon name={section.icon} /></span><strong>{tx(section.label)}</strong></button>)}</aside>
       <div className={base.main}>
-        <Section id="start" icon={SECTIONS[0].icon} title={tx(SECTIONS[0].label)} open={openId === 'start'} onToggle={toggleSection}>
+        <Section id="start" icon={SECTIONS[0].icon} title={tx(SECTIONS[0].label)} open={openId === 'start'} onToggle={toggleSection} migrationChapter>
           <figure className={`${basics.enhancementMedia} ${styles.enhancementOverview}`}>
             <a href="/mamma/mrt/enhancement-types.png" target="_blank" rel="noreferrer" aria-label={tx({ de: 'Enhancement-Typen in voller Größe öffnen', en: 'Open enhancement types full size', fa: 'نمایش تصویر انواع افزایش سیگنال پس از تزریق در اندازه کامل' })}>
               <Image src="/mamma/mrt/enhancement-types.png" alt={tx({ de: 'MRT-Beispiele für Mass und Non-Mass Enhancement', en: 'MRI examples of mass and non-mass enhancement', fa: 'نمونه‌های MRI از توده و افزایش سیگنال غیرتوده‌ای (NME)' })} width={1536} height={1024} sizes="(max-width: 900px) calc(100vw - 48px), 860px" />
@@ -134,7 +136,7 @@ export default function LesionscharakterisierungPage() {
           <p className={styles.classificationPrompt}><strong>{tx({ de: 'Zuerst richtig klassifizieren', en: 'Classify correctly first', fa: 'ابتدا طبقه‌بندی صحیح' })}</strong></p>
         </Section>
 
-        <Section id="mass" icon={SECTIONS[1].icon} title={tx(SECTIONS[1].label)} open={openId === 'mass'} onToggle={toggleSection}>
+        <Section id="mass" icon={SECTIONS[1].icon} title={tx(SECTIONS[1].label)} open={openId === 'mass'} onToggle={toggleSection} migrationChapter>
           <div className={styles.definitionCard}><h3>{tx({ de: 'Dreidimensionale Läsion mit konvexer Außenkontur', en: 'A three-dimensional lesion with a convex outer contour', fa: 'ضایعه سه‌بعدی با کانتور خارجی محدب' })}</h3><p>{tx({ de: 'Eine Mass verdrängt oder ersetzt Gewebe und lässt sich räumlich als eigenes Volumen abgrenzen. Kannst du keinen konvexen Rand und keine echte Raumforderung definieren, darfst du nicht künstlich Form und Rand vergeben – dann ist NME wahrscheinlicher.', en: 'A mass displaces or replaces tissue and can be outlined as a distinct volume. If no convex margin and no true space-occupying lesion can be defined, do not invent shape and margin; NME is more likely.', fa: 'توده بافت را جابه‌جا یا جایگزین می‌کند و به‌صورت حجمی مستقل قابل ترسیم است. اگر حاشیه محدب و ضایعه فضاگیر واقعی تعریف نمی‌شود، Shape و Margin را به‌زور تعیین نکنید؛ احتمال NME بیشتر است.' })}</p></div>
           <div className={styles.formula}>{tx({ de: 'Form', en: 'Shape', fa: 'شکل' })} <i>→</i> {tx({ de: 'Rand', en: 'Margin', fa: 'حاشیه' })} <i>→</i> {tx({ de: 'Internes Anreicherungsmuster', en: 'Internal Enhancement', fa: 'الگوی افزایش سیگنال پس از تزریق داخلی' })}</div>
           <ReasoningPath items={MASS_WORKFLOW} />
@@ -152,7 +154,7 @@ export default function LesionscharakterisierungPage() {
           <ReportExample label={{ de: 'So klingt ein klarer Befund', en: 'A clear report sounds like this', fa: 'نمونه گزارش واضح' }} text={{ de: 'Rechts bei 10 Uhr zeigt sich eine 13 × 10 × 9 mm große, irregulär geformte Mass mit spikuliertem Rand und heterogenem internem Enhancement. Sie ist T2-hypointens, zeigt eine Diffusionsrestriktion und eine Washout-Kinetik und ist neu gegenüber der Voruntersuchung.', en: 'At 10 o’clock in the right breast, there is a 13 × 10 × 9 mm irregular mass with a spiculated margin and heterogeneous internal enhancement. It is T2 hypointense, demonstrates restricted diffusion and washout kinetics, and is new compared with the prior examination.', fa: 'در ساعت ۱۰ پستان راست، توده نامنظم به ابعاد ۱۳ × ۱۰ × ۹ میلی‌متر با حاشیه اسپیکوله و افزایش سیگنال پس از تزریق داخلی ناهمگن دیده می‌شود. ضایعه در T2 کم‌سیگنال است، محدودیت دیفیوژن و کینتیک واش‌اوت دارد و نسبت به بررسی قبلی جدید است.' }} checklist={[{ de: 'Seite · Uhrzeit · Abstand zur Mamille', en: 'Side · clock position · distance from nipple', fa: 'سمت · موقعیت ساعت · فاصله از نوک پستان' }, { de: 'Größe in drei Ebenen', en: 'Size in three dimensions', fa: 'اندازه در سه بعد' }, { de: 'Form · Rand · internes Enhancement', en: 'Shape · margin · internal enhancement', fa: 'شکل · حاشیه · افزایش سیگنال پس از تزریق داخلی' }, { de: 'T2 · DWI/ADC · Kinetik · Vorvergleich', en: 'T2 · DWI/ADC · kinetics · comparison', fa: 'T2 · DWI/ADC · کینتیک · مقایسه قبلی' }]} />
         </Section>
 
-        <Section id="nme" icon={SECTIONS[2].icon} title={tx(SECTIONS[2].label)} open={openId === 'nme'} onToggle={toggleSection}>
+        <Section id="nme" icon={SECTIONS[2].icon} title={tx(SECTIONS[2].label)} open={openId === 'nme'} onToggle={toggleSection} migrationChapter>
           <div className={`${styles.definitionCard} ${styles.definitionCardNme}`}><span>{tx({ de: 'Der entscheidende Unterschied', en: 'The key distinction', fa: 'تفاوت کلیدی' })}</span><h3>{tx({ de: 'NME = Anreicherung ohne abgrenzbare dreidimensionale Mass', en: 'NME = enhancement without a discrete three-dimensional mass', fa: 'NME = افزایش سیگنال پس از تزریق بدون توده سه‌بعدی مشخص' })}</h3><p>{tx({ de: 'Normales Drüsengewebe oder Fett bleibt zwischen den anreichernden Anteilen sichtbar; eine konvexe Außenkontur fehlt. „Non-Mass“ bedeutet nicht „kein Tumor“: Besonders DCIS kann sich als NME ausbreiten.', en: 'Normal glandular tissue or fat remains visible between enhancing components and there is no convex outer contour. “Non-mass” does not mean “no tumour”: DCIS in particular may spread as NME.', fa: 'بافت غده‌ای طبیعی یا چربی میان اجزای دارای افزایش سیگنال پس از تزریق باقی می‌ماند و کانتور خارجی محدب وجود ندارد. «غیرتوده‌ای» به معنی «بدون تومور» نیست؛ به‌ویژه DCIS می‌تواند به‌شکل NME گسترش یابد.' })}</p></div>
           <p className={styles.lead}>{tx({ de: 'Bei NME ersetzt die Verteilung die Form- und Randbeschreibung. Zwei getrennte Fragen verhindern typische Verwechslungen:', en: 'For NME, distribution replaces shape and margin. Two separate questions prevent common mix-ups:', fa: 'در NME، توزیع جایگزین توصیف شکل و حاشیه می‌شود. دو پرسش جدا از اشتباهات رایج جلوگیری می‌کند:' })}</p><div className={styles.formula}>{tx({ de: 'Wo und wie weit?', en: 'Where and how far?', fa: 'کجا و تا چه وسعت؟' })} <i>→</i> {tx({ de: 'Welches innere Muster?', en: 'Which internal pattern?', fa: 'کدام الگوی داخلی؟' })}</div>
           <ReasoningPath items={NME_WORKFLOW} />
@@ -167,7 +169,7 @@ export default function LesionscharakterisierungPage() {
           <ReportExample label={{ de: 'So klingt ein klarer Befund', en: 'A clear report sounds like this', fa: 'نمونه گزارش واضح' }} text={{ de: 'Links zentral besteht über 42 × 28 × 18 mm ein segmental verteiltes NME mit klumpigem bis gruppiert-ringförmigem internem Enhancement, neu gegenüber der Voruntersuchung.', en: 'In the central left breast, there is 42 × 28 × 18 mm segmental NME with clumped to clustered-ring internal enhancement, new from the prior examination.', fa: 'در بخش مرکزی پستان چپ، NME سگمنتال به ابعاد ۴۲ × ۲۸ × ۱۸ میلی‌متر با الگوی افزایش سیگنال داخلی کلامپ‌شده تا حلقه‌های خوشه‌ای دیده می‌شود که نسبت به بررسی قبلی جدید است.' }} checklist={[{ de: 'Seite · Lokalisation · Ausdehnung', en: 'Side · location · full extent', fa: 'سمت · محل · وسعت کامل' }, { de: 'Verteilung zuerst', en: 'Distribution first', fa: 'ابتدا توزیع' }, { de: 'Dann internes Muster', en: 'Then internal pattern', fa: 'سپس الگوی داخلی' }, { de: 'Asymmetrie · BPE · Vorvergleich · Begleitbefunde', en: 'Asymmetry · BPE · priors · associated findings', fa: 'عدم تقارن · BPE · مقایسه قبلی · یافته‌های همراه' }]} />
         </Section>
 
-        <Section id="kinetik" icon={SECTIONS[3].icon} title={tx(SECTIONS[3].label)} open={openId === 'kinetik'} onToggle={toggleSection}>
+        <Section id="kinetik" icon={SECTIONS[3].icon} title={tx(SECTIONS[3].label)} open={openId === 'kinetik'} onToggle={toggleSection} migrationChapter>
           <p className={styles.lead}>{tx({ de: 'Die DCE-Kinetik beschreibt nicht nur die Kurvenform: Zuerst wird die Geschwindigkeit des initialen Enhancements, danach der Verlauf in der späten Phase beurteilt. Gemessen wird im am schnellsten anreichernden beziehungsweise kinetisch suspektesten Läsionsanteil.', en: 'DCE kinetics describe more than the curve shape: first assess the speed of initial enhancement, then the delayed-phase course. Sampling should target the fastest-enhancing or kinetically most suspicious part of the lesion.', fa: 'کینتیک DCE فقط شکل منحنی را توصیف نمی‌کند؛ ابتدا سرعت افزایش سیگنال پس از تزریق اولیه و سپس روند فاز تأخیری ارزیابی می‌شود. اندازه‌گیری باید در سریع‌ترین بخش دارای افزایش سیگنال پس از تزریق یا مشکوک‌ترین بخش ضایعه از نظر کینتیک انجام شود.' })}</p>
           <div className={styles.phaseGrid}>{KINETIC_PHASES.map(phase => <article key={pick(phase.title, 'de')}><span>{tx({ de: 'Schritt', en: 'Step', fa: 'مرحله' })}</span><h3>{tx(phase.title)}</h3><p>{tx(phase.text)}</p><div>{phase.items.map(item => <strong key={pick(item, 'de')}>{tx(item)}</strong>)}</div></article>)}</div>
           <div className={styles.kineticGallery}>{CURVES.map(curve => <article className={`${styles.kineticCard} ${styles[curve.tone]}`} key={curve.type}>
@@ -177,7 +179,7 @@ export default function LesionscharakterisierungPage() {
           <div className={`${styles.note} ${styles.warning}`}><strong>{tx({ de: 'Entscheidende Einordnung', en: 'Key interpretation point', fa: 'نکته کلیدی در تفسیر' })}</strong><p>{tx({ de: 'Kinetik verändert die Wahrscheinlichkeit, stellt aber keine Diagnose. Morphologie, Verteilung, T2-Signal, Diffusion, Voraufnahmen und klinischer Kontext haben Vorrang in der Gesamtbewertung. Besonders bei NME und DCIS kann eine suspekte Morphologie ohne klassische Washout-Kurve vorliegen.', en: 'Kinetics modify probability but do not establish a diagnosis. Morphology, distribution, T2 signal, diffusion, prior examinations and clinical context take precedence in the overall assessment. Suspicious NME and DCIS may lack a classic washout curve.', fa: 'کینتیک احتمال را تغییر می‌دهد، اما به‌تنهایی تشخیص قطعی ایجاد نمی‌کند. در ارزیابی نهایی، مورفولوژی، توزیع، سیگنال T2، دیفیوژن، مطالعات قبلی و زمینه بالینی اهمیت بیشتری دارند. NME مشکوک و DCIS ممکن است بدون منحنی کلاسیک واش‌اوت دیده شوند.' })}</p></div>
         </Section>
 
-        <Section id="t2-diffusion" icon={SECTIONS[4].icon} title={tx(SECTIONS[4].label)} open={openId === 't2-diffusion'} onToggle={toggleSection}>
+        <Section id="t2-diffusion" icon={SECTIONS[4].icon} title={tx(SECTIONS[4].label)} open={openId === 't2-diffusion'} onToggle={toggleSection} migrationChapter>
           <div className={styles.t2Grid}>
             <article className={styles.t2Article}>
               <span className={styles.t2Tag}>T2</span>
@@ -202,7 +204,7 @@ export default function LesionscharakterisierungPage() {
           </div>
         </Section>
 
-        <Section id="algorithmus" icon={SECTIONS[5].icon} title={tx(SECTIONS[5].label)} open={openId === 'algorithmus'} onToggle={toggleSection}>
+        <Section id="algorithmus" icon={SECTIONS[5].icon} title={tx(SECTIONS[5].label)} open={openId === 'algorithmus'} onToggle={toggleSection} migrationChapter>
           <ol className={styles.algorithm}>{SUMMARY_STEPS.map((step, index) => <li key={tx(step)}><span>{String(index + 1).padStart(2, '0')}</span><strong>{tx(step)}</strong></li>)}</ol>
           <div className={styles.exampleCompare}><article><span>{tx({ de: 'Eher benign', en: 'More likely benign', fa: 'بیشتر به نفع خوش‌خیمی' })}</span><strong>{tx({ de: 'Oval + umschrieben + homogen + T2-hyperintens + persistierend', en: 'Oval + circumscribed + homogeneous + T2 hyperintense + persistent', fa: 'بیضی + حاشیه مشخص + همگن + پرسیگنال در T2 + منحنی پایدار' })}</strong></article><i>{tx({ de: 'vs.', en: 'vs.', fa: 'در برابر' })}</i><article><span>{tx({ de: 'Deutlich suspekter', en: 'Considerably more suspicious', fa: 'به‌مراتب مشکوک‌تر' })}</span><strong>{tx({ de: 'Irregulär + spikuliert + heterogen/randständig anreichernd + Diffusionsrestriktion + Wash-out', en: 'Irregular + spiculated + heterogeneous/rim enhancement + diffusion restriction + washout', fa: 'نامنظم + اسپیکوله + تقویت ناهمگن/حلقوی + محدودیت انتشار + واش‌اوت' })}</strong></article></div>
           <div className={styles.takeHome}>
@@ -214,8 +216,8 @@ export default function LesionscharakterisierungPage() {
             </ol>
           </div>
         </Section>
-        <div className={base.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang} /></div>
+        <div className={base.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang}  migrationReadControl/></div>
       </div>
     </div>
-  </main>
+  </LegacyLessonMigration>
 }

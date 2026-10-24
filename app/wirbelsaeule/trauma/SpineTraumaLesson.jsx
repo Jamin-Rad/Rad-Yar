@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -909,7 +911,7 @@ function Section({ id, title, lead, children }) {
         <h2>{title}</h2>
         <span>{open ? '−' : '+'}</span>
       </button>
-      {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+      <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>
     </section>
   )
 }
@@ -950,7 +952,7 @@ export default function SpineTraumaLesson({ topicId }) {
   }, [sectionIds])
 
   return (
-    <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang} lessonRoute={topic.href} lessonId={topic.href}>
       <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
@@ -988,7 +990,7 @@ export default function SpineTraumaLesson({ topicId }) {
         </div>
       </header>
 
-      <div className={styles.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+      <div className={styles.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
 
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
@@ -1016,35 +1018,35 @@ export default function SpineTraumaLesson({ topicId }) {
             </div>
           </div>
 
-          <Section id="grundlagen" title={topic.basics.title} lead={topic.basics.lead}>
+          <Section id="grundlagen" title={topic.basics.title} lead={topic.basics.lead} migrationChapter>
             <Cards items={topic.basics.items} />
             <Callout label={copy.keyLabel}>{topic.basics.key}</Callout>
           </Section>
 
-          <Section id="anatomie" title={topic.anatomy.title} lead={topic.anatomy.lead}>
+          <Section id="anatomie" title={topic.anatomy.title} lead={topic.anatomy.lead} migrationChapter>
             <Table headers={topic.anatomy.headers} rows={topic.anatomy.rows} />
           </Section>
 
-          <Section id="klassifikation" title={topic.classification.title} lead={topic.classification.lead}>
+          <Section id="klassifikation" title={topic.classification.title} lead={topic.classification.lead} migrationChapter>
             <Table headers={topic.classification.headers} rows={topic.classification.rows} />
             <Callout label={copy.keyLabel}>{topic.classification.key}</Callout>
           </Section>
 
-          <Section id="bildgebung" title={topic.imaging.title} lead={topic.imaging.lead}>
+          <Section id="bildgebung" title={topic.imaging.title} lead={topic.imaging.lead} migrationChapter>
             <Cards items={topic.imaging.items} />
             <Callout type="cave" label={copy.caveLabel}>{topic.imaging.cave}</Callout>
           </Section>
 
-          <Section id="befundung" title={topic.reporting.title} lead={topic.reporting.lead}>
+          <Section id="befundung" title={topic.reporting.title} lead={topic.reporting.lead} migrationChapter>
             <Cards items={topic.reporting.items} />
             <Callout label={copy.keyLabel}>{topic.reporting.key}</Callout>
           </Section>
 
-          <Section id="fallstricke" title={topic.pitfalls.title} lead={topic.pitfalls.lead}>
+          <Section id="fallstricke" title={topic.pitfalls.title} lead={topic.pitfalls.lead} migrationChapter>
             <Cards items={topic.pitfalls.items} />
           </Section>
 
-          <Section id="takehome" title={topic.sections.find(section => section.id === 'takehome')?.label || 'Take home message'}>
+          <Section id="takehome" title={topic.sections.find(section => section.id === 'takehome')?.label || 'Take home message'} migrationChapter>
             <div className={styles.takeHomeGrid}>
               {topic.takehome.map((item, index) => (
                 <div className={styles.takeHomeItem} key={item.title}>
@@ -1055,9 +1057,9 @@ export default function SpineTraumaLesson({ topicId }) {
             </div>
           </Section>
 
-          <div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+          <div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
         </div>
       </div>
-    </main>
+    </LegacyLessonMigration>
   )
 }

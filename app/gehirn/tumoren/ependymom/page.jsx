@@ -75,7 +75,7 @@ export default function EpendymomaLesson() {
   const sources = EPENDYMOMA_SOURCES.map(source => ({ ...source, citation: value(source.citation, lang), scope: value(source.scope, lang) }))
   return <StandardLessonShell lessonId={EPENDYMOMA_ID} lang={lang} title={value(C.title, lang)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: langPath('/') }, { label: value(C.chapter, lang), href: langPath('/lernen/gehirn') }, { label: value(C.title, lang) }]}
-    sections={sections} labels={Object.fromEntries(Object.entries(labels).map(([key, localized]) => [key, value(localized, lang)]))} actions={{}}
+    sections={(sections).map(section=>({...section,emphasis:section.emphasis||["take-home"].includes(section.id)}))} labels={Object.fromEntries(Object.entries(labels).map(([key, localized]) => [key, value(localized, lang)]))} actions={{}}
     renderIcon={id => icons[id] || icons.scan}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/educational/ependymoma/outlet-pattern.svg', heroImageOpacity: .9, accent: '#48b5c8', accentStrong: '#155d70', accentSoft: '#e0f4f6', secondary: '#d18b53', secondaryStrong: '#704325', heroBase: '#102535' }}
     className={styles.page} heroImageAlt={value(C.heroAlt, lang)} syncHashNavigation

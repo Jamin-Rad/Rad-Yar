@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -95,7 +97,7 @@ function Section({ id, title, lead, titleClassName = '', children }) {
         <h2 className={titleClassName}>{title}</h2>
         <span aria-hidden="true">{open ? '−' : '+'}</span>
       </button>
-      {open && <div className={shared.sectionBody}>{lead && <p className={shared.lead}>{lead}</p>}{children}</div>}
+      <div className={shared.sectionBody}>{lead && <p className={shared.lead}>{lead}</p>}{children}</div>
     </section>
   )
 }
@@ -178,7 +180,7 @@ export default function HypoxischIschaemischeHirnschaedigungPage() {
 
   return (
     <>
-      <main className={`${shared.page} ${shared.strokePage} ${local.page}`} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+      <LegacyLessonMigration className={`${shared.page} ${shared.strokePage} ${local.page}`} dir={isRTL ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/gehirn/vaskulaer/hypoxisch-ischaemische-hirnschaedigung" lessonId="/gehirn/vaskulaer/hypoxisch-ischaemische-hirnschaedigung">
         <InProgressBanner lang={lang} />
 
         <header className={shared.header}>
@@ -207,7 +209,7 @@ export default function HypoxischIschaemischeHirnschaedigungPage() {
           </div>
         </header>
 
-        <div className={shared.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang} /></div>
+        <div className={shared.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang}  migrationReadControl/></div>
 
         <div className={shared.layout}>
           <aside className={`${shared.sidebar} ${local.desktopToc}`}>
@@ -225,54 +227,54 @@ export default function HypoxischIschaemischeHirnschaedigungPage() {
           </aside>
 
           <div className={shared.main}>
-            <Section id="grundlagen" title={c(HIE_LESSON.basics.title)} lead={c(HIE_LESSON.basics.lead)}>
+            <Section id="grundlagen" title={c(HIE_LESSON.basics.title)} lead={c(HIE_LESSON.basics.lead)} migrationChapter>
               <Cards items={localizedItems(HIE_LESSON.basics.items, lang)} />
               <Table headers={[c({ de: 'Phase', en: 'Phase', fa: 'مرحله' }), c({ de: 'Klinik', en: 'Clinical features', fa: 'تظاهرات بالینی' })]} rows={localizedRows(HIE_LESSON.basics.clinical, lang)} />
               <Callout label={c(HIE_LESSON.keyLabel)}>{c(HIE_LESSON.basics.key)}</Callout>
             </Section>
 
-            <Section id="vulnerabilitaet" title={c(HIE_LESSON.vulnerability.title)} lead={c(HIE_LESSON.vulnerability.lead)}>
+            <Section id="vulnerabilitaet" title={c(HIE_LESSON.vulnerability.title)} lead={c(HIE_LESSON.vulnerability.lead)} migrationChapter>
               <Table headers={HIE_LESSON.vulnerability.headers.map(c)} rows={localizedRows(HIE_LESSON.vulnerability.rows, lang)} />
               <Callout label={c(HIE_LESSON.keyLabel)}>{c(HIE_LESSON.vulnerability.key)}</Callout>
             </Section>
 
-            <Section id="muster" title={c(HIE_LESSON.patterns.title)} lead={c(HIE_LESSON.patterns.lead)}>
+            <Section id="muster" title={c(HIE_LESSON.patterns.title)} lead={c(HIE_LESSON.patterns.lead)} migrationChapter>
               <Cards items={localizedItems(HIE_LESSON.patterns.items, lang)} />
               <Callout type="cave" label={c(HIE_LESSON.caveLabel)}>{c(HIE_LESSON.patterns.cave)}</Callout>
             </Section>
 
-            <Section id="ct" title={c(HIE_LESSON.ct.title)} lead={c(HIE_LESSON.ct.lead)}>
+            <Section id="ct" title={c(HIE_LESSON.ct.title)} lead={c(HIE_LESSON.ct.lead)} migrationChapter>
               <Table headers={HIE_LESSON.ct.headers.map(c)} rows={localizedRows(HIE_LESSON.ct.rows, lang)} />
               <Callout type="cave" label={c(HIE_LESSON.caveLabel)}>{c(HIE_LESSON.ct.cave)}</Callout>
             </Section>
 
-            <Section id="mrt" title={c(HIE_LESSON.mri.title)} lead={c(HIE_LESSON.mri.lead)}>
+            <Section id="mrt" title={c(HIE_LESSON.mri.title)} lead={c(HIE_LESSON.mri.lead)} migrationChapter>
               <Table headers={HIE_LESSON.mri.headers.map(c)} rows={localizedRows(HIE_LESSON.mri.rows, lang)} />
               <Callout label={c(HIE_LESSON.keyLabel)}>{c(HIE_LESSON.mri.key)}</Callout>
             </Section>
 
-            <Section id="zeitverlauf" title={c(HIE_LESSON.timeline.title)} lead={c(HIE_LESSON.timeline.lead)}>
+            <Section id="zeitverlauf" title={c(HIE_LESSON.timeline.title)} lead={c(HIE_LESSON.timeline.lead)} migrationChapter>
               <Timeline items={localizedItems(HIE_LESSON.timeline.items, lang)} />
               <Callout label={c(HIE_LESSON.keyLabel)}>{c(HIE_LESSON.timeline.key)}</Callout>
             </Section>
 
-            <Section id="sonderformen" title={c(HIE_LESSON.special.title)} lead={c(HIE_LESSON.special.lead)}>
+            <Section id="sonderformen" title={c(HIE_LESSON.special.title)} lead={c(HIE_LESSON.special.lead)} migrationChapter>
               <Table headers={HIE_LESSON.special.headers.map(c)} rows={localizedRows(HIE_LESSON.special.rows, lang)} />
               <Callout type="cave" label={c(HIE_LESSON.caveLabel)}>{c(HIE_LESSON.special.cave)}</Callout>
             </Section>
 
-            <Section id="prognose" title={c(HIE_LESSON.prognosis.title)} lead={c(HIE_LESSON.prognosis.lead)}>
+            <Section id="prognose" title={c(HIE_LESSON.prognosis.title)} lead={c(HIE_LESSON.prognosis.lead)} migrationChapter>
               <Cards items={localizedItems(HIE_LESSON.prognosis.reportItems, lang)} />
               <Callout type="cave" label={c(HIE_LESSON.caveLabel)}>{c(HIE_LESSON.prognosis.guideline)}</Callout>
             </Section>
 
-            <Section id="faelle" title={c(HIE_LESSON.cases.title)} lead={c(HIE_LESSON.cases.lead)}>
+            <Section id="faelle" title={c(HIE_LESSON.cases.title)} lead={c(HIE_LESSON.cases.lead)} migrationChapter>
               <div className={local.caseGrid}>
                 {HIE_LEARNING_CASES.map(item => <CaseCard key={item.id} item={item} lang={lang} imageUi={imageUi} onZoom={setPreviewImage} openLabel={c(HIE_LESSON.openCase)} />)}
               </div>
             </Section>
 
-            <Section id="takehome" title={HIE_LESSON.takehome.title} lead={c(HIE_LESSON.takehome.lead)} titleClassName={local.takeHomeTitle}>
+            <Section id="takehome" title={HIE_LESSON.takehome.title} lead={c(HIE_LESSON.takehome.lead)} titleClassName={local.takeHomeTitle} migrationChapter>
               <div className={local.takeHomeGrid}>
                 {localizedItems(HIE_LESSON.takehome.items, lang).map(item => (
                   <article className={local.takeHomeItem} key={item.title}><h3>{item.title}</h3><p>{item.text}</p></article>
@@ -280,10 +282,10 @@ export default function HypoxischIschaemischeHirnschaedigungPage() {
               </div>
             </Section>
 
-            <div className={shared.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang} /></div>
+            <div className={shared.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang}  migrationReadControl/></div>
           </div>
         </div>
-      </main>
+      </LegacyLessonMigration>
 
       {previewImage && (
         <div className={shared.strokeImageModal} role="dialog" aria-modal="true" aria-label={imageUi.zoom} onClick={() => setPreviewImage(null)}>

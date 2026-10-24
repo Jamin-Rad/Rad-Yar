@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -27,7 +29,7 @@ function Section({ id, title, lead, children }) {
       <button type="button" className={styles.sectionHeader} onClick={() => setOpen(v => !v)} aria-expanded={open}>
         <h2>{title}</h2><span>{open ? '−' : '+'}</span>
       </button>
-      {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+      <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>
     </section>
   )
 }
@@ -189,7 +191,7 @@ export default function MoyaMoyaPage() {
   ]
 
   return (
-    <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/gehirn/vaskulaer/moya-moya" lessonId="/gehirn/vaskulaer/moya-moya">
       <InProgressBanner lang={lang} />
 
       {/* ── Header ─────────────────────────────────────────────────────── */}
@@ -229,7 +231,7 @@ export default function MoyaMoyaPage() {
       </header>
 
       <div className={styles.readBar}>
-        <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} />
+        <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/>
       </div>
 
       <div className={styles.layout}>
@@ -253,17 +255,17 @@ export default function MoyaMoyaPage() {
         <div className={styles.main}>
 
           {/* 1 – Grundlagen */}
-          <Section id="grundlagen" title={c(MOYAMOYA_LESSON.grundlagen.title)} lead={c(MOYAMOYA_LESSON.grundlagen.lead)}>
+          <Section id="grundlagen" title={c(MOYAMOYA_LESSON.grundlagen.title)} lead={c(MOYAMOYA_LESSON.grundlagen.lead)} migrationChapter>
             <Cards items={MOYAMOYA_LESSON.grundlagen.items} lang={lang} />
           </Section>
 
           {/* 2 – Pathophysiologie */}
-          <Section id="pathophysio" title={c(MOYAMOYA_LESSON.pathophysio.title)} lead={c(MOYAMOYA_LESSON.pathophysio.lead)}>
+          <Section id="pathophysio" title={c(MOYAMOYA_LESSON.pathophysio.title)} lead={c(MOYAMOYA_LESSON.pathophysio.lead)} migrationChapter>
             <Table headers={MOYAMOYA_LESSON.pathophysio.headers.map(c)} rows={rows(MOYAMOYA_LESSON.pathophysio.rows)} />
           </Section>
 
           {/* 3 – Klinik */}
-          <Section id="klinik" title={c(MOYAMOYA_LESSON.klinik.title)} lead={c(MOYAMOYA_LESSON.klinik.lead)}>
+          <Section id="klinik" title={c(MOYAMOYA_LESSON.klinik.title)} lead={c(MOYAMOYA_LESSON.klinik.lead)} migrationChapter>
             <Table headers={MOYAMOYA_LESSON.klinik.headers.map(c)} rows={rows(MOYAMOYA_LESSON.klinik.rows)} />
             <h3 style={{ marginTop: 24, marginBottom: 8, fontSize: '0.9rem', color: 'var(--text-muted)' }}>{c(MOYAMOYA_LESSON.klinik.associationsItems?.[0] ? { de: 'Assoziierte Erkrankungen (Moya-Moya-Syndrom)', en: 'Associated conditions (Moyamoya syndrome)', fa: 'بیماری‌های مرتبط (سندرم Moya-Moya)' } : {})}</h3>
             <Cards items={MOYAMOYA_LESSON.klinik.associationsItems} lang={lang} />
@@ -271,7 +273,7 @@ export default function MoyaMoyaPage() {
           </Section>
 
           {/* 4 – CT & MRT */}
-          <Section id="bildgebung" title={c(MOYAMOYA_LESSON.bildgebung.title)} lead={c(MOYAMOYA_LESSON.bildgebung.lead)}>
+          <Section id="bildgebung" title={c(MOYAMOYA_LESSON.bildgebung.title)} lead={c(MOYAMOYA_LESSON.bildgebung.lead)} migrationChapter>
             <h3 style={{ marginTop: 4, marginBottom: 10, fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>CT</h3>
             <Cards items={MOYAMOYA_LESSON.bildgebung.ctItems} lang={lang} />
             <h3 style={{ marginTop: 22, marginBottom: 10, fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>MRT / MRI</h3>
@@ -280,7 +282,7 @@ export default function MoyaMoyaPage() {
           </Section>
 
           {/* 5 – MRA, CTA & DSA */}
-          <Section id="dsa" title={c(MOYAMOYA_LESSON.dsa.title)} lead={c(MOYAMOYA_LESSON.dsa.lead)}>
+          <Section id="dsa" title={c(MOYAMOYA_LESSON.dsa.title)} lead={c(MOYAMOYA_LESSON.dsa.lead)} migrationChapter>
             <Table headers={MOYAMOYA_LESSON.dsa.modesHeaders.map(c)} rows={rows(MOYAMOYA_LESSON.dsa.modesRows)} />
             <h3 style={{ marginTop: 24, marginBottom: 10, fontSize: '0.95rem', color: 'var(--text)', fontWeight: 700 }}>{c(MOYAMOYA_LESSON.dsa.suzukiTitle)}</h3>
             <Table headers={MOYAMOYA_LESSON.dsa.suzukiHeaders.map(c)} rows={rows(MOYAMOYA_LESSON.dsa.suzukiRows)} />
@@ -288,13 +290,13 @@ export default function MoyaMoyaPage() {
           </Section>
 
           {/* 6 – Therapie */}
-          <Section id="therapie" title={c(MOYAMOYA_LESSON.therapie.title)} lead={c(MOYAMOYA_LESSON.therapie.lead)}>
+          <Section id="therapie" title={c(MOYAMOYA_LESSON.therapie.title)} lead={c(MOYAMOYA_LESSON.therapie.lead)} migrationChapter>
             <Cards items={MOYAMOYA_LESSON.therapie.items} lang={lang} />
             <Callout cave label={c(MOYAMOYA_LESSON.caveLabel)}>{c(MOYAMOYA_LESSON.therapie.cave)}</Callout>
           </Section>
 
           {/* 7 – Fallbeispiele */}
-          <Section id="fallbeispiele" title={c(MOYAMOYA_LESSON.cases.title)} lead={c(MOYAMOYA_LESSON.cases.lead)}>
+          <Section id="fallbeispiele" title={c(MOYAMOYA_LESSON.cases.title)} lead={c(MOYAMOYA_LESSON.cases.lead)} migrationChapter>
             <div className={styles.caseGrid}>
               {cases.map((item, idx) => (
                 <article className={styles.caseCardLink} key={item.url}>
@@ -320,7 +322,7 @@ export default function MoyaMoyaPage() {
           </Section>
 
           {/* 8 – Take-home */}
-          <Section id="takehome" title={c(MOYAMOYA_LESSON.takehome.title)} lead={c(MOYAMOYA_LESSON.takehome.lead)}>
+          <Section id="takehome" title={c(MOYAMOYA_LESSON.takehome.title)} lead={c(MOYAMOYA_LESSON.takehome.lead)} migrationChapter>
             <div className={styles.takeHomeGrid}>
               {MOYAMOYA_LESSON.takehome.items.map((item, i) => (
                 <div className={styles.takeHomeItem} key={c(item.title)}>
@@ -335,7 +337,7 @@ export default function MoyaMoyaPage() {
           </Section>
 
           <div className={styles.readBarBottom}>
-            <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} />
+            <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/>
           </div>
         </div>
       </div>
@@ -370,6 +372,6 @@ export default function MoyaMoyaPage() {
           </div>
         </div>
       )}
-    </main>
+    </LegacyLessonMigration>
   )
 }

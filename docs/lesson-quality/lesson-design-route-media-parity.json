@@ -1,0 +1,805 @@
+{
+  "scope": "Baseline HEAD and current actual route SSR. Header images intentionally replaced are identified by rendered header/lesson-hero ancestors; logo images excluded explicitly. Asset URLs normalize Next image optimization parameters; external source references checked, social/payment links excluded. PDAC baseline is unavailable due existing locale-object render failure.",
+  "baselineImages": 2295,
+  "baselineExternalReferences": 2772,
+  "missing": [],
+  "explicitHeaderReplacements": [
+    {
+      "route": "/abdomen/leber/gefaesse",
+      "lang": "de",
+      "asset": "/educational/abdomen-liver-vessels/hero.svg"
+    },
+    {
+      "route": "/abdomen/niere/adpkd",
+      "lang": "de",
+      "asset": "/educational/adpkd/hero.svg"
+    },
+    {
+      "route": "/abdomen/niere/nierenzysten",
+      "lang": "de",
+      "asset": "/educational/nierenzysten/hero.svg"
+    },
+    {
+      "route": "/abdomen/peritoneum/appendicitis-epiploica",
+      "lang": "de",
+      "asset": "/abdomen/epiploica/hero.svg"
+    },
+    {
+      "route": "/abdomen/peritoneum/mesenteriale-panniculitis",
+      "lang": "de",
+      "asset": "/abdomen/panniculitis/hero.svg"
+    },
+    {
+      "route": "/abdomen/peritoneum/peritonealkarzinose",
+      "lang": "de",
+      "asset": "/abdomen/peritoneal-carcinomatosis/hero.svg"
+    },
+    {
+      "route": "/abdomen/retroperitoneum/morbus-ormond",
+      "lang": "de",
+      "asset": "/abdomen/ormond/hero.svg"
+    },
+    {
+      "route": "/gefaesse/anatomie-untere-extremitaet",
+      "lang": "de",
+      "asset": "/educational/lower-limb-arterial-hero.svg"
+    },
+    {
+      "route": "/gehirn/anatomie/balkenagenesie",
+      "lang": "de",
+      "asset": "/educational/callosal/planes.svg"
+    },
+    {
+      "route": "/gehirn/anatomie/pvl",
+      "lang": "de",
+      "asset": "/educational/pvl/temporal-course.svg"
+    },
+    {
+      "route": "/gehirn/hals-nnh/einseitige-verschattung",
+      "lang": "de",
+      "asset": "/educational/einseitige-nnh-verschattung/hero.svg"
+    },
+    {
+      "route": "/gehirn/infektionen/herpes-enzephalitis",
+      "lang": "de",
+      "asset": "/educational/herpes-enzephalitis/hero.svg"
+    },
+    {
+      "route": "/gehirn/neurodegeneration/cjd",
+      "lang": "de",
+      "asset": "/educational/cjd/pattern-overview.svg"
+    },
+    {
+      "route": "/gehirn/neurodegeneration/demenzmuster",
+      "lang": "de",
+      "asset": "/educational/demenzmuster/atrophy-distribution.svg"
+    },
+    {
+      "route": "/gehirn/neurodegeneration/parkinson",
+      "lang": "de",
+      "asset": "/educational/parkinson/hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/atrt",
+      "lang": "de",
+      "asset": "/educational/atrt-mri-pattern.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/gliome",
+      "lang": "de",
+      "asset": "/educational/gliome/pilocytic-hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/haemangioblastom-vhl",
+      "lang": "de",
+      "asset": "/educational/haemangioblastoma-vhl/hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/hirnmetastasen",
+      "lang": "de",
+      "asset": "/educational/hirnmetastasen/hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/kolloidzyste",
+      "lang": "de",
+      "asset": "/educational/colloid-cyst/hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/medulloblastom",
+      "lang": "de",
+      "asset": "/educational/medulloblastom/hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/schwannom-cpa",
+      "lang": "de",
+      "asset": "/educational/schwannoma-cpa/hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/avm-zns",
+      "lang": "de",
+      "asset": "/avm/hero-generated.webp"
+    },
+    {
+      "route": "/gehirn/vaskulaer/cadasil",
+      "lang": "de",
+      "asset": "/cadasil/hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/davf",
+      "lang": "de",
+      "asset": "/davf/hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/hypertensive-mikroangiopathie",
+      "lang": "de",
+      "asset": "/hypertensive-mikroangiopathie/hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/intrazerebrale-blutung",
+      "lang": "de",
+      "asset": "/educational/icb-hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/kapillaere-teleangiektasie",
+      "lang": "de",
+      "asset": "/kapillaere-teleangiektasie/hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/subarachnoidalblutung",
+      "lang": "de",
+      "asset": "/educational/sah/hero.svg"
+    },
+    {
+      "route": "/msk/gefaesse/pavk-stenosen",
+      "lang": "de",
+      "asset": "/educational/pavk-stenosis-hero.svg"
+    },
+    {
+      "route": "/msk/hand/strecksehnenfaecher",
+      "lang": "de",
+      "asset": "/educational/wrist-extensor-compartments/hero.svg"
+    },
+    {
+      "route": "/msk/infektionen/osteomyelitis",
+      "lang": "de",
+      "asset": "/educational/msk-osteomyelitis/bone-focus.svg"
+    },
+    {
+      "route": "/msk/knie/chondrokalzinose",
+      "lang": "de",
+      "asset": "/educational/chondrokalzinose-knee.svg"
+    },
+    {
+      "route": "/msk/knie/kreuzbaender",
+      "lang": "de",
+      "asset": "/knieligamente/knee-ligaments-hero.png"
+    },
+    {
+      "route": "/msk/knie/patella-streckapparat",
+      "lang": "de",
+      "asset": "/msk/patella/extensor-mechanism.svg"
+    },
+    {
+      "route": "/msk/knochennekrosen/avn-huefte",
+      "lang": "de",
+      "asset": "/educational/avn-huefte/hero.svg"
+    },
+    {
+      "route": "/msk/knochennekrosen/knocheninfarkt",
+      "lang": "de",
+      "asset": "/educational/knocheninfarkt-schematic.svg"
+    },
+    {
+      "route": "/msk/knochenstoffwechsel/melorheostose",
+      "lang": "de",
+      "asset": "/educational/melorheostose/hero.svg"
+    },
+    {
+      "route": "/msk/knochenstoffwechsel/morbus-paget",
+      "lang": "de",
+      "asset": "/educational/morbus-paget/hero.svg"
+    },
+    {
+      "route": "/msk/osteochondrosen/morbus-perthes",
+      "lang": "de",
+      "asset": "/educational/perthes-hero.svg"
+    },
+    {
+      "route": "/msk/osteochondrosen/osgood-schlatter",
+      "lang": "de",
+      "asset": "/educational/osgood-schlatter/hero.svg"
+    },
+    {
+      "route": "/msk/osteochondrosen/osteochondrosis-dissecans",
+      "lang": "de",
+      "asset": "/educational/osteochondrosis-dissecans/hero.svg"
+    },
+    {
+      "route": "/msk/osteochondrosen/weitere-osteochondrosen",
+      "lang": "de",
+      "asset": "/educational/osteochondrosen-orientation-v2.webp"
+    },
+    {
+      "route": "/msk/schulter/instabilitaet",
+      "lang": "de",
+      "asset": "/educational/schulterinstabilitaet/hero.svg"
+    },
+    {
+      "route": "/msk/trauma/beckenringfraktur",
+      "lang": "de",
+      "asset": "/msk/pelvic-ring/aotile-stability-schematic.svg"
+    },
+    {
+      "route": "/msk/trauma/femurschaftfraktur",
+      "lang": "de",
+      "asset": "/msk/femoral-shaft/ao32-schematic.svg"
+    },
+    {
+      "route": "/msk/trauma/metakarpale-frakturen",
+      "lang": "de",
+      "asset": "/msk/metacarpal/first-ray-base-patterns.svg"
+    },
+    {
+      "route": "/msk/trauma/periprothetische-femurfraktur",
+      "lang": "de",
+      "asset": "/msk/vancouver/vancouver-overview.svg"
+    },
+    {
+      "route": "/msk/trauma/proximale-femurfraktur",
+      "lang": "de",
+      "asset": "/educational/proximale-femurfraktur/hero.svg"
+    },
+    {
+      "route": "/msk/trauma/skaphoidfraktur",
+      "lang": "de",
+      "asset": "/msk/scaphoid/scaphoid-fracture-schematic.svg"
+    },
+    {
+      "route": "/msk/tumoren/knochenlymphom",
+      "lang": "de",
+      "asset": "/educational/knochenlymphom/hero-schematic.svg"
+    },
+    {
+      "route": "/wirbelsaeule/degenerative",
+      "lang": "de",
+      "asset": "/educational/spine-degenerative-schematic.svg"
+    },
+    {
+      "route": "/wirbelsaeule/entzuendlich",
+      "lang": "de",
+      "asset": "/educational/spine-inflammatory-structural-schematic.svg"
+    },
+    {
+      "route": "/abdomen/leber/gefaesse",
+      "lang": "en",
+      "asset": "/educational/abdomen-liver-vessels/hero.svg"
+    },
+    {
+      "route": "/abdomen/niere/adpkd",
+      "lang": "en",
+      "asset": "/educational/adpkd/hero.svg"
+    },
+    {
+      "route": "/abdomen/niere/nierenzysten",
+      "lang": "en",
+      "asset": "/educational/nierenzysten/hero.svg"
+    },
+    {
+      "route": "/abdomen/peritoneum/appendicitis-epiploica",
+      "lang": "en",
+      "asset": "/abdomen/epiploica/hero.svg"
+    },
+    {
+      "route": "/abdomen/peritoneum/mesenteriale-panniculitis",
+      "lang": "en",
+      "asset": "/abdomen/panniculitis/hero.svg"
+    },
+    {
+      "route": "/abdomen/peritoneum/peritonealkarzinose",
+      "lang": "en",
+      "asset": "/abdomen/peritoneal-carcinomatosis/hero.svg"
+    },
+    {
+      "route": "/abdomen/retroperitoneum/morbus-ormond",
+      "lang": "en",
+      "asset": "/abdomen/ormond/hero.svg"
+    },
+    {
+      "route": "/gefaesse/anatomie-untere-extremitaet",
+      "lang": "en",
+      "asset": "/educational/lower-limb-arterial-hero.svg"
+    },
+    {
+      "route": "/gehirn/anatomie/balkenagenesie",
+      "lang": "en",
+      "asset": "/educational/callosal/planes.svg"
+    },
+    {
+      "route": "/gehirn/anatomie/pvl",
+      "lang": "en",
+      "asset": "/educational/pvl/temporal-course.svg"
+    },
+    {
+      "route": "/gehirn/hals-nnh/einseitige-verschattung",
+      "lang": "en",
+      "asset": "/educational/einseitige-nnh-verschattung/hero.svg"
+    },
+    {
+      "route": "/gehirn/infektionen/herpes-enzephalitis",
+      "lang": "en",
+      "asset": "/educational/herpes-enzephalitis/hero.svg"
+    },
+    {
+      "route": "/gehirn/neurodegeneration/cjd",
+      "lang": "en",
+      "asset": "/educational/cjd/pattern-overview.svg"
+    },
+    {
+      "route": "/gehirn/neurodegeneration/demenzmuster",
+      "lang": "en",
+      "asset": "/educational/demenzmuster/atrophy-distribution.svg"
+    },
+    {
+      "route": "/gehirn/neurodegeneration/parkinson",
+      "lang": "en",
+      "asset": "/educational/parkinson/hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/atrt",
+      "lang": "en",
+      "asset": "/educational/atrt-mri-pattern.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/gliome",
+      "lang": "en",
+      "asset": "/educational/gliome/pilocytic-hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/haemangioblastom-vhl",
+      "lang": "en",
+      "asset": "/educational/haemangioblastoma-vhl/hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/hirnmetastasen",
+      "lang": "en",
+      "asset": "/educational/hirnmetastasen/hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/kolloidzyste",
+      "lang": "en",
+      "asset": "/educational/colloid-cyst/hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/medulloblastom",
+      "lang": "en",
+      "asset": "/educational/medulloblastom/hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/schwannom-cpa",
+      "lang": "en",
+      "asset": "/educational/schwannoma-cpa/hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/avm-zns",
+      "lang": "en",
+      "asset": "/avm/hero-generated.webp"
+    },
+    {
+      "route": "/gehirn/vaskulaer/cadasil",
+      "lang": "en",
+      "asset": "/cadasil/hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/davf",
+      "lang": "en",
+      "asset": "/davf/hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/hypertensive-mikroangiopathie",
+      "lang": "en",
+      "asset": "/hypertensive-mikroangiopathie/hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/intrazerebrale-blutung",
+      "lang": "en",
+      "asset": "/educational/icb-hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/kapillaere-teleangiektasie",
+      "lang": "en",
+      "asset": "/kapillaere-teleangiektasie/hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/subarachnoidalblutung",
+      "lang": "en",
+      "asset": "/educational/sah/hero.svg"
+    },
+    {
+      "route": "/msk/gefaesse/pavk-stenosen",
+      "lang": "en",
+      "asset": "/educational/pavk-stenosis-hero.svg"
+    },
+    {
+      "route": "/msk/hand/strecksehnenfaecher",
+      "lang": "en",
+      "asset": "/educational/wrist-extensor-compartments/hero.svg"
+    },
+    {
+      "route": "/msk/infektionen/osteomyelitis",
+      "lang": "en",
+      "asset": "/educational/msk-osteomyelitis/bone-focus.svg"
+    },
+    {
+      "route": "/msk/knie/chondrokalzinose",
+      "lang": "en",
+      "asset": "/educational/chondrokalzinose-knee.svg"
+    },
+    {
+      "route": "/msk/knie/kreuzbaender",
+      "lang": "en",
+      "asset": "/knieligamente/knee-ligaments-hero.png"
+    },
+    {
+      "route": "/msk/knie/patella-streckapparat",
+      "lang": "en",
+      "asset": "/msk/patella/extensor-mechanism.svg"
+    },
+    {
+      "route": "/msk/knochennekrosen/avn-huefte",
+      "lang": "en",
+      "asset": "/educational/avn-huefte/hero.svg"
+    },
+    {
+      "route": "/msk/knochennekrosen/knocheninfarkt",
+      "lang": "en",
+      "asset": "/educational/knocheninfarkt-schematic.svg"
+    },
+    {
+      "route": "/msk/knochenstoffwechsel/melorheostose",
+      "lang": "en",
+      "asset": "/educational/melorheostose/hero.svg"
+    },
+    {
+      "route": "/msk/knochenstoffwechsel/morbus-paget",
+      "lang": "en",
+      "asset": "/educational/morbus-paget/hero.svg"
+    },
+    {
+      "route": "/msk/osteochondrosen/morbus-perthes",
+      "lang": "en",
+      "asset": "/educational/perthes-hero.svg"
+    },
+    {
+      "route": "/msk/osteochondrosen/osgood-schlatter",
+      "lang": "en",
+      "asset": "/educational/osgood-schlatter/hero.svg"
+    },
+    {
+      "route": "/msk/osteochondrosen/osteochondrosis-dissecans",
+      "lang": "en",
+      "asset": "/educational/osteochondrosis-dissecans/hero.svg"
+    },
+    {
+      "route": "/msk/osteochondrosen/weitere-osteochondrosen",
+      "lang": "en",
+      "asset": "/educational/osteochondrosen-orientation-v2.webp"
+    },
+    {
+      "route": "/msk/schulter/instabilitaet",
+      "lang": "en",
+      "asset": "/educational/schulterinstabilitaet/hero.svg"
+    },
+    {
+      "route": "/msk/trauma/beckenringfraktur",
+      "lang": "en",
+      "asset": "/msk/pelvic-ring/aotile-stability-schematic.svg"
+    },
+    {
+      "route": "/msk/trauma/femurschaftfraktur",
+      "lang": "en",
+      "asset": "/msk/femoral-shaft/ao32-schematic.svg"
+    },
+    {
+      "route": "/msk/trauma/metakarpale-frakturen",
+      "lang": "en",
+      "asset": "/msk/metacarpal/first-ray-base-patterns.svg"
+    },
+    {
+      "route": "/msk/trauma/periprothetische-femurfraktur",
+      "lang": "en",
+      "asset": "/msk/vancouver/vancouver-overview.svg"
+    },
+    {
+      "route": "/msk/trauma/proximale-femurfraktur",
+      "lang": "en",
+      "asset": "/educational/proximale-femurfraktur/hero.svg"
+    },
+    {
+      "route": "/msk/trauma/skaphoidfraktur",
+      "lang": "en",
+      "asset": "/msk/scaphoid/scaphoid-fracture-schematic.svg"
+    },
+    {
+      "route": "/msk/tumoren/knochenlymphom",
+      "lang": "en",
+      "asset": "/educational/knochenlymphom/hero-schematic.svg"
+    },
+    {
+      "route": "/wirbelsaeule/degenerative",
+      "lang": "en",
+      "asset": "/educational/spine-degenerative-schematic.svg"
+    },
+    {
+      "route": "/wirbelsaeule/entzuendlich",
+      "lang": "en",
+      "asset": "/educational/spine-inflammatory-structural-schematic.svg"
+    },
+    {
+      "route": "/abdomen/leber/gefaesse",
+      "lang": "fa",
+      "asset": "/educational/abdomen-liver-vessels/hero.svg"
+    },
+    {
+      "route": "/abdomen/niere/adpkd",
+      "lang": "fa",
+      "asset": "/educational/adpkd/hero.svg"
+    },
+    {
+      "route": "/abdomen/niere/nierenzysten",
+      "lang": "fa",
+      "asset": "/educational/nierenzysten/hero.svg"
+    },
+    {
+      "route": "/abdomen/peritoneum/appendicitis-epiploica",
+      "lang": "fa",
+      "asset": "/abdomen/epiploica/hero.svg"
+    },
+    {
+      "route": "/abdomen/peritoneum/mesenteriale-panniculitis",
+      "lang": "fa",
+      "asset": "/abdomen/panniculitis/hero.svg"
+    },
+    {
+      "route": "/abdomen/peritoneum/peritonealkarzinose",
+      "lang": "fa",
+      "asset": "/abdomen/peritoneal-carcinomatosis/hero.svg"
+    },
+    {
+      "route": "/abdomen/retroperitoneum/morbus-ormond",
+      "lang": "fa",
+      "asset": "/abdomen/ormond/hero.svg"
+    },
+    {
+      "route": "/gefaesse/anatomie-untere-extremitaet",
+      "lang": "fa",
+      "asset": "/educational/lower-limb-arterial-hero.svg"
+    },
+    {
+      "route": "/gehirn/anatomie/balkenagenesie",
+      "lang": "fa",
+      "asset": "/educational/callosal/planes.svg"
+    },
+    {
+      "route": "/gehirn/anatomie/pvl",
+      "lang": "fa",
+      "asset": "/educational/pvl/temporal-course.svg"
+    },
+    {
+      "route": "/gehirn/hals-nnh/einseitige-verschattung",
+      "lang": "fa",
+      "asset": "/educational/einseitige-nnh-verschattung/hero.svg"
+    },
+    {
+      "route": "/gehirn/infektionen/herpes-enzephalitis",
+      "lang": "fa",
+      "asset": "/educational/herpes-enzephalitis/hero.svg"
+    },
+    {
+      "route": "/gehirn/neurodegeneration/cjd",
+      "lang": "fa",
+      "asset": "/educational/cjd/pattern-overview.svg"
+    },
+    {
+      "route": "/gehirn/neurodegeneration/demenzmuster",
+      "lang": "fa",
+      "asset": "/educational/demenzmuster/atrophy-distribution.svg"
+    },
+    {
+      "route": "/gehirn/neurodegeneration/parkinson",
+      "lang": "fa",
+      "asset": "/educational/parkinson/hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/atrt",
+      "lang": "fa",
+      "asset": "/educational/atrt-mri-pattern.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/gliome",
+      "lang": "fa",
+      "asset": "/educational/gliome/pilocytic-hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/haemangioblastom-vhl",
+      "lang": "fa",
+      "asset": "/educational/haemangioblastoma-vhl/hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/hirnmetastasen",
+      "lang": "fa",
+      "asset": "/educational/hirnmetastasen/hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/kolloidzyste",
+      "lang": "fa",
+      "asset": "/educational/colloid-cyst/hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/medulloblastom",
+      "lang": "fa",
+      "asset": "/educational/medulloblastom/hero.svg"
+    },
+    {
+      "route": "/gehirn/tumoren/schwannom-cpa",
+      "lang": "fa",
+      "asset": "/educational/schwannoma-cpa/hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/avm-zns",
+      "lang": "fa",
+      "asset": "/avm/hero-generated.webp"
+    },
+    {
+      "route": "/gehirn/vaskulaer/cadasil",
+      "lang": "fa",
+      "asset": "/cadasil/hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/davf",
+      "lang": "fa",
+      "asset": "/davf/hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/hypertensive-mikroangiopathie",
+      "lang": "fa",
+      "asset": "/hypertensive-mikroangiopathie/hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/intrazerebrale-blutung",
+      "lang": "fa",
+      "asset": "/educational/icb-hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/kapillaere-teleangiektasie",
+      "lang": "fa",
+      "asset": "/kapillaere-teleangiektasie/hero.svg"
+    },
+    {
+      "route": "/gehirn/vaskulaer/subarachnoidalblutung",
+      "lang": "fa",
+      "asset": "/educational/sah/hero.svg"
+    },
+    {
+      "route": "/msk/gefaesse/pavk-stenosen",
+      "lang": "fa",
+      "asset": "/educational/pavk-stenosis-hero.svg"
+    },
+    {
+      "route": "/msk/hand/strecksehnenfaecher",
+      "lang": "fa",
+      "asset": "/educational/wrist-extensor-compartments/hero.svg"
+    },
+    {
+      "route": "/msk/infektionen/osteomyelitis",
+      "lang": "fa",
+      "asset": "/educational/msk-osteomyelitis/bone-focus.svg"
+    },
+    {
+      "route": "/msk/knie/chondrokalzinose",
+      "lang": "fa",
+      "asset": "/educational/chondrokalzinose-knee.svg"
+    },
+    {
+      "route": "/msk/knie/kreuzbaender",
+      "lang": "fa",
+      "asset": "/knieligamente/knee-ligaments-hero.png"
+    },
+    {
+      "route": "/msk/knie/patella-streckapparat",
+      "lang": "fa",
+      "asset": "/msk/patella/extensor-mechanism.svg"
+    },
+    {
+      "route": "/msk/knochennekrosen/avn-huefte",
+      "lang": "fa",
+      "asset": "/educational/avn-huefte/hero.svg"
+    },
+    {
+      "route": "/msk/knochennekrosen/knocheninfarkt",
+      "lang": "fa",
+      "asset": "/educational/knocheninfarkt-schematic.svg"
+    },
+    {
+      "route": "/msk/knochenstoffwechsel/melorheostose",
+      "lang": "fa",
+      "asset": "/educational/melorheostose/hero.svg"
+    },
+    {
+      "route": "/msk/knochenstoffwechsel/morbus-paget",
+      "lang": "fa",
+      "asset": "/educational/morbus-paget/hero.svg"
+    },
+    {
+      "route": "/msk/osteochondrosen/morbus-perthes",
+      "lang": "fa",
+      "asset": "/educational/perthes-hero.svg"
+    },
+    {
+      "route": "/msk/osteochondrosen/osgood-schlatter",
+      "lang": "fa",
+      "asset": "/educational/osgood-schlatter/hero.svg"
+    },
+    {
+      "route": "/msk/osteochondrosen/osteochondrosis-dissecans",
+      "lang": "fa",
+      "asset": "/educational/osteochondrosis-dissecans/hero.svg"
+    },
+    {
+      "route": "/msk/osteochondrosen/weitere-osteochondrosen",
+      "lang": "fa",
+      "asset": "/educational/osteochondrosen-orientation-v2.webp"
+    },
+    {
+      "route": "/msk/schulter/instabilitaet",
+      "lang": "fa",
+      "asset": "/educational/schulterinstabilitaet/hero.svg"
+    },
+    {
+      "route": "/msk/trauma/beckenringfraktur",
+      "lang": "fa",
+      "asset": "/msk/pelvic-ring/aotile-stability-schematic.svg"
+    },
+    {
+      "route": "/msk/trauma/femurschaftfraktur",
+      "lang": "fa",
+      "asset": "/msk/femoral-shaft/ao32-schematic.svg"
+    },
+    {
+      "route": "/msk/trauma/metakarpale-frakturen",
+      "lang": "fa",
+      "asset": "/msk/metacarpal/first-ray-base-patterns.svg"
+    },
+    {
+      "route": "/msk/trauma/periprothetische-femurfraktur",
+      "lang": "fa",
+      "asset": "/msk/vancouver/vancouver-overview.svg"
+    },
+    {
+      "route": "/msk/trauma/proximale-femurfraktur",
+      "lang": "fa",
+      "asset": "/educational/proximale-femurfraktur/hero.svg"
+    },
+    {
+      "route": "/msk/trauma/skaphoidfraktur",
+      "lang": "fa",
+      "asset": "/msk/scaphoid/scaphoid-fracture-schematic.svg"
+    },
+    {
+      "route": "/msk/tumoren/knochenlymphom",
+      "lang": "fa",
+      "asset": "/educational/knochenlymphom/hero-schematic.svg"
+    },
+    {
+      "route": "/wirbelsaeule/degenerative",
+      "lang": "fa",
+      "asset": "/educational/spine-degenerative-schematic.svg"
+    },
+    {
+      "route": "/wirbelsaeule/entzuendlich",
+      "lang": "fa",
+      "asset": "/educational/spine-inflammatory-structural-schematic.svg"
+    }
+  ],
+  "date": "2026-10-24",
+  "result": "PASS: available baseline body-image URLs and external references retained; explicit header replacements recorded separately. Image pixel quality/loading require browser review."
+}

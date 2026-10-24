@@ -15,10 +15,3 @@
 .cave { margin: 1rem 0; padding: .85rem 1rem; border-inline-start: 4px solid #d97706; border-radius: 8px; background: #fffbeb; line-height: 1.65; }
 [dir='rtl'] .content { text-align: right; }
 @media (max-width: 700px) { .figures { grid-template-columns: 1fr; }.content { padding-inline: .75rem; }.table { min-width: 580px; } }
-:global(html[data-theme='dark']) .content { color: #e5e7eb; }
-:global(html[data-theme='dark']) .table, :global(html[data-theme='dark']) .figure { background: #111827; }
-:global(html[data-theme='dark']) .table th { background: #123346; color: #bae6fd; }
-:global(html[data-theme='dark']) .table th, :global(html[data-theme='dark']) .table td { border-color: #334155; }
-:global(html[data-theme='dark']) .figure figcaption { color: #cbd5e1; }
-:global(html[data-theme='dark']) .workflow { background: #102538; }
-:global(html[data-theme='dark']) .cave { background: #342915; }

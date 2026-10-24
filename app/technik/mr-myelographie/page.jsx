@@ -21,14 +21,16 @@ export default function MrMyelographyLesson() {
  const returnPath=langPath(MR_MYEL_PATH),sections=MR_MYEL_SECTIONS.map(s=>({...s,label:s.title[lang]}))
  return <><StandardLessonShell lessonId={MR_MYEL_ID} lang={lang} title={MR_MYEL_TITLE[lang]} author="Dr. Zia"
  breadcrumbs={[{label:'RadYar',href:langPath('/')},{label:t('chapter'),href:langPath('/lernen/technik')},{label:MR_MYEL_TITLE[lang]}]}
- sections={sections} labels={Object.fromEntries(Object.entries(MR_MYEL_LABELS).map(([key,value])=>[key,value[lang]]))} renderIcon={iconFor} syncHashNavigation
+ sections={[...(sections),{id:'takehome',label:lang==='fa'?'پیام نهایی':'Take Home Message',icon:'summary',emphasis:true}]} labels={Object.fromEntries(Object.entries(MR_MYEL_LABELS).map(([key,value])=>[key,value[lang]]))} renderIcon={iconFor} syncHashNavigation
  actions={{mcq:{label:t('practice'),href:langPath(`/ueben/quiz?fach=technik&n=2&themen=${MR_MYEL_ID}&from=${encodeURIComponent(returnPath)}`)},flashcards:{label:t('cards'),href:langPath(`/flashcards/${MR_MYEL_ID}?from=${encodeURIComponent(returnPath)}`)}}}
  theme={{backgroundImage:'/andarun-galaxy-v3.png',heroImage:'/educational/mr-myelography/hero.png',heroImageOpacity:.6,accent:'#507f97',accentStrong:'#315b72',accentSoft:'#e8f1f5',secondary:'#648d96',secondaryStrong:'#315c66',heroBase:'#102435'}} heroImageAlt={t('heroAlt')} className={styles.page}
  sources={<LessonSources title={t('sources')} note={t('scope')} items={[{tag:'Primary study',href:'https://pmc.ncbi.nlm.nih.gov/articles/PMC7357665/',title:'Dobrocky et al. · AJNR · 2020',citation:'doi:10.3174/ajnr.A6592',scope:lang==='de'?'Stark T2-gewichtete Sequenzen: Nachweis epiduraler Flüssigkeit und Grenzen der Lecklokalisation.':lang==='en'?'Heavily T2-weighted sequences: epidural fluid detection and limits of leak localization.':'توالی‌های با وزن‌دهی شدید T2: تشخیص مایع اپیدورال و محدودیت تعیین محل نشت.'}]}/> }>
  <div className={styles.copy} lang={lang} dir={lang==='fa'?'rtl':'ltr'}>{sections.map((section,i)=><LessonSection key={section.id} id={section.id} title={section.label} icon={section.icon}>
  {section.text.map((text,j)=><p key={j} className={j===0?styles.lead:undefined}>{text[lang]}</p>)}
  {i===1&&<><figure className={styles.diagram}><ol className={styles.flow}>{['acquisition','mip','correlation'].map((key,j)=><li key={key}><strong>{t(key)}</strong>{j<2&&<span aria-hidden="true">↓</span>}</li>)}</ol><figcaption>{t('diagram')}</figcaption></figure><Check item={MR_MYEL_CHECKS[0]} lang={lang}/></>}
- {i===3&&<><TakeHomeList items={MR_MYEL_TAKEAWAYS.map(item=>({title:item.title[lang],detail:item.detail[lang]}))}/><Check item={MR_MYEL_CHECKS[1]} lang={lang}/></>}
+ {i===3&&<><Check item={MR_MYEL_CHECKS[1]} lang={lang}/></>}
  </LessonSection>)}</div>
- </StandardLessonShell><Footer/></>
+
+<LessonSection id="takehome" icon="summary"><TakeHomeList items={MR_MYEL_TAKEAWAYS.map(item=>({title:item.title[lang],detail:item.detail[lang]}))}/></LessonSection>
+</StandardLessonShell><Footer/></>
 }

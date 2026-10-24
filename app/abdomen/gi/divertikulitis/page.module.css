@@ -1394,3 +1394,6 @@
 @media (max-width: 760px) {
   .sidebar { display: none; }
 }
+
+/* The retained AK-luxation fact card stays on light teaching paper. */
+:global(html[data-theme='dark']) .heroStat[data-retained-stat='accent'] { background:#fff7ed; color:#7c2d12; }

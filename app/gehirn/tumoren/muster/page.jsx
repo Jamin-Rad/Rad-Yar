@@ -2,8 +2,9 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import LessonHero from '@/components/LessonHero'
-import InProgressBanner from '@/components/InProgressBanner'
+import StandardLessonShell, { LessonSection, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
+import { SOURCE_LESSON_UI } from '@/data/sourceLessonUi'
+import design from '@/app/gehirn/shared-pattern-design.module.css'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { GEHIRN_TUMORMUSTER } from '@/data/gehirnTumorMusterLesson'
 import styles from '@/app/technik/kontrastmittel/page.module.css'
@@ -35,30 +36,36 @@ function RetrievalQuestion({ lang }) {
   return <section className={styles.section} aria-labelledby="tumor-check"><div className={styles.sectionBody}><h2 id="tumor-check">{t.title}</h2><p className={styles.lead}>{t.q}</p><div style={{display:'grid',gap:8}}>{t.a.map((option,i)=><button type="button" aria-pressed={answer===i} onClick={()=>setAnswer(i)} key={option} style={{padding:12,border:'1px solid var(--border)',borderRadius:12,background:'var(--bg-card)',color:'var(--text)',textAlign:'start',cursor:'pointer'}}>{option}</button>)}</div>{answer!==null?<p role="status" style={{marginTop:12}}>{answer===1?t.ok:t.no}</p>:null}</div></section>
 }
 
-export default function BrainTumourPatternsPage() {
+export default function BrainPatternsPage() {
   const { lang } = useLanguage()
-  const rtl = lang === 'fa'
-  const withLang = href => lang === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${lang}`
-  return <><main className={styles.page} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
-    <InProgressBanner lang={lang} />
-    <header className={styles.header}>
-      <nav className={styles.breadcrumb} aria-label={lang === 'de' ? 'Seitennavigation' : lang === 'fa' ? 'مسیر صفحه' : 'Breadcrumb'}>
-        <Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/gehirn')}>{lang === 'fa' ? 'مغز' : lang === 'de' ? 'Gehirn' : 'Brain'}</Link><span>›</span><span>{pick(GEHIRN_TUMORMUSTER.title, lang)}</span>
-      </nav>
-      <div className={styles.hero}><div className={styles.heroText}><span className={styles.sourceBadge}>{lang==='fa'?'مغز · پیش‌نویس آموزشی PDF':lang==='en'?'Brain · PDF teaching draft':'Gehirn · PDF-Lernentwurf'}</span><LessonHero title={pick(GEHIRN_TUMORMUSTER.title,lang)} lang={lang} visual={<svg viewBox="0 0 240 150" role="img" aria-label={lang==='fa'?'شماتیک مفهومی بررسی تودهٔ مغزی':lang==='en'?'Concept schematic for assessing a brain mass':'Konzeptschema zur Beurteilung einer Hirnläsion'}><path d="M54 107c-22-11-27-37-12-55 10-12 25-17 39-12 10-18 35-18 47-3 19-8 40 8 37 28 18 13 11 41-10 47-10 13-35 14-48 3-14 12-37 8-44-5-3 0-6-1-9-3z" fill="#d9eaf0" stroke="#39849a" strokeWidth="3"/><circle cx="128" cy="68" r="21" fill="#a38ab7"/><circle cx="128" cy="68" r="10" fill="#74557f"/><path d="M149 68h46m-7-7 7 7-7 7" stroke="#159c7e" strokeWidth="3" fill="none"/><text x="120" y="140" textAnchor="middle" fontSize="12" fill="var(--text)">{lang==='fa'?'محل · سیگنال · افتراق':lang==='en'?'Location · signal · differential':'Lokalisation · Signal · Differenzialdiagnose'}</text></svg>} />
-        <div className={styles.heroStats}><div className={styles.heroStat}><strong>41–60</strong><span>PDF-Seiten</span><small>{lang === 'fa' ? 'الگوهای توموری و افتراق' : lang === 'en' ? 'Tumour patterns and differentials' : 'Tumormuster und Differenzialdiagnosen'}</small></div></div></div></div>
-    </header>
-    <div className={styles.layout}><aside className={styles.sidebar}><div className={styles.sideTitle}>{lang === 'fa' ? 'فهرست مطالب' : lang === 'en' ? 'Contents' : 'Inhalt'}</div>
-      {GEHIRN_TUMORMUSTER.topics.map(topic => <a className={styles.sideItem} href={`#${topic.id}`} key={topic.id}><span>◈</span><strong>{pick(topic.title, lang)}</strong></a>)}
-    </aside><div className={styles.main}>
-      <section className={styles.section}><div className={styles.sectionBody}><p className={styles.lead}>{pick(GEHIRN_TUMORMUSTER.intro, lang)}</p><PatternPath lang={lang} /></div></section>
-      {GEHIRN_TUMORMUSTER.topics.map(topic => <section id={topic.id} className={styles.section} key={topic.id}>
-        <div className={styles.sectionHeader}><span className={styles.sectionHeading}><span className={styles.sectionIcon}>◈</span><h2>{pick(topic.title, lang)}</h2></span><span className={styles.sectionToggle} style={{ width: 'auto', paddingInline: 12, flex: '0 0 auto', fontSize: 11 }}>{lang === 'fa' ? `صفحهٔ PDF ${topic.pages}` : lang === 'en' ? `PDF page ${topic.pages}` : `PDF-Seite ${topic.pages}`}</span></div>
-        <div className={styles.sectionBody}><p className={styles.lead}>{pick(topic.pattern, lang)}</p>{topic.dd ? <aside className={styles.callout}><strong>{lang === 'fa' ? 'افتراق' : lang === 'en' ? 'Differential' : 'Differenzialdiagnose'}</strong><p>{pick(topic.dd, lang)}</p></aside> : null}</div>
-      </section>)}
-      <RetrievalQuestion lang={lang} />
-      <section className={styles.section}><div className={styles.sectionBody}><h2>{lang==='fa'?'سه قاعدهٔ خواندن تصویر':lang==='en'?'Three image-reading rules':'Drei Regeln zum Bildlesen'}</h2><ol><li>{lang==='fa'?'ابتدا خارج‌محوری یا داخل‌محوری بودن و محل را مشخص کنید.':lang==='en'?'First determine the compartment and location.':'Bestimmen Sie zuerst Kompartiment und Lokalisation.'}</li><li>{lang==='fa'?'یک علامت منفرد، مثل دُرال‌تیل، تشخیص قطعی نیست.':lang==='en'?'A single sign, such as a dural tail, is not diagnostic by itself.':'Ein Einzelzeichen wie der Dural Tail ist für sich nicht diagnostisch.'}</li><li>{lang==='fa'?'DWI را با ADC و FLAIR تطبیق دهید.':lang==='en'?'Correlate DWI with ADC and FLAIR.':'Korrelieren Sie DWI mit ADC und FLAIR.'}</li></ol></div></section>
-      <aside className={`${styles.callout} ${styles.calloutCave}`}><strong>{lang === 'fa' ? 'محدودیت منبع و بازبینی' : lang === 'en' ? 'Source and review limits' : 'Quellen- und Prüfgrenzen'}</strong><p>{pick(GEHIRN_TUMORMUSTER.limitations, lang)}</p><p>{pick(GEHIRN_TUMORMUSTER.verification, lang)}</p><p>{lang === 'fa' ? 'این پیش‌نویس هنوز ترجمه و رفتار مرورگر مستقل بازبینی نشده است؛ تصویر Radiopaedia هم بازنشر نشده است.' : lang === 'en' ? 'This draft has not had independent translation or browser review; no Radiopaedia image has been republished.' : 'Dieser Entwurf wurde noch nicht unabhängig sprachlich oder im Browser geprüft; Radiopaedia-Bilder wurden nicht erneut veröffentlicht.'}</p><ul>{GEHIRN_TUMORMUSTER.references.map(ref=><li key={ref.href}><a href={ref.href} target="_blank" rel="noopener noreferrer">{ref.label}</a></li>)}</ul></aside>
-    </div></div>
-  </main></>
+  const ui = SOURCE_LESSON_UI[lang] || SOURCE_LESSON_UI.de
+  const summary = lang === 'fa' ? 'پیام نهایی' : 'Take Home Message'
+  const labels = { contents: ui.breadcrumb, path: ui.toc, progress: ui.progress, complete: ui.mark, completed: ui.read, continue: ui.continue, completeLesson: ui.completeLesson, lessonCompleted: ui.lessonCompleted, open: ui.open, close: ui.close, takeHome: summary }
+  const url = path => lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
+  const lesson = GEHIRN_TUMORMUSTER
+  const route = '/gehirn/tumoren/muster'
+  const firstTitle = lang === 'fa' ? 'مسیر خواندن تصویر' : lang === 'en' ? 'Image-reading path' : 'Lesepfad'
+  const checkTitle = lang === 'fa' ? 'خودآزمایی: افتراق کیست‌ها' : lang === 'en' ? 'Retrieval check: cyst differential' : 'Wiederabruf: Zystendifferenzierung'
+  const summaryRules = lang === 'fa' ? ['ابتدا خارج‌محوری یا داخل‌محوری بودن و محل را مشخص کنید.', 'یک علامت منفرد، مثل دُرال‌تیل، تشخیص قطعی نیست.', 'DWI را با ADC و FLAIR تطبیق دهید.'] : lang === 'en' ? ['First determine the compartment and location.', 'A single sign, such as a dural tail, is not diagnostic by itself.', 'Correlate DWI with ADC and FLAIR.'] : ['Bestimmen Sie zuerst Kompartiment und Lokalisation.', 'Ein Einzelzeichen wie der Dural Tail ist für sich nicht diagnostisch.', 'Korrelieren Sie DWI mit ADC und FLAIR.']
+  const summaryItems = summaryRules.map(title => ({ title, detail: '' }))
+  const sections = [{ id: 'orientation', label: firstTitle, icon: 'content' }, ...lesson.topics.map(topic => ({ id: topic.id, label: pick(topic.title, lang), icon: 'content' })), { id: 'self-check', label: checkTitle, icon: 'check' }, { id: 'takehome', label: summary, icon: 'summary', emphasis: true }]
+  const icon = name => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={name === 'summary' ? 'M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z' : name === 'check' ? 'M4 12l5 5L20 6' : 'M4 4h16v16H4zM7 12h10M12 7v10'} /></svg>
+  return <StandardLessonShell lessonId={route} heroLessonId={route} lang={lang} title={pick(lesson.title, lang)} author="Dr. Zia" sections={sections} labels={labels} syncHashNavigation renderIcon={icon} heroImageAlt={pick(lesson.title, lang)}
+    breadcrumbs={[{ label: 'RadYar', href: url('/') }, { label: lang === 'fa' ? 'مغز' : lang === 'en' ? 'Brain' : 'Gehirn', href: url('/lernen/gehirn') }, { label: pick(lesson.title, lang) }]}
+    actions={{}} theme={{ backgroundImage: '/andarun-galaxy-v3.png', accent: '#658c9b', accentStrong: '#31596d', accentSoft: '#e5f0f5', secondary: '#ab87a4', secondaryStrong: '#69506b', heroBase: '#132533' }}
+    sources={<aside className={design.sources}><h2>{lang === 'fa' ? 'منبع و محدودیت‌ها' : lang === 'en' ? 'Source and limits' : 'Quelle und Grenzen'}</h2>
+      <p>{pick(lesson.limitations, lang)}</p><p>{pick(lesson.verification, lang)}</p><p>{lang === 'fa' ? 'این پیش‌نویس هنوز ترجمه و رفتار مرورگر مستقل بازبینی نشده است؛ تصویر Radiopaedia هم بازنشر نشده است.' : lang === 'en' ? 'This draft has not had independent translation or browser review; no Radiopaedia image has been republished.' : 'Dieser Entwurf wurde noch nicht unabhängig sprachlich oder im Browser geprüft; Radiopaedia-Bilder wurden nicht erneut veröffentlicht.'}</p><ul>{lesson.references.map(ref => <li key={ref.href}><a href={ref.href} target="_blank" rel="noopener noreferrer">{ref.label}</a></li>)}</ul>
+    </aside>}>
+    <LessonSection id="orientation" bodyClassName={design.content}><p className={design.lead}>{pick(lesson.intro, lang)}</p>
+      <PatternPath lang={lang} />
+    </LessonSection>
+    {lesson.topics.map(topic => <LessonSection id={topic.id} key={topic.id} bodyClassName={design.content}>
+      <p className={design.lead}>{pick(topic.pattern, lang)}</p>{topic.dd ? <aside className={styles.callout}><strong>{lang === 'fa' ? 'افتراق' : lang === 'en' ? 'Differential' : 'Differenzialdiagnose'}</strong><p>{pick(topic.dd, lang)}</p></aside> : null}
+      <small>{lang === 'fa' ? `صفحهٔ PDF ${topic.pages}` : lang === 'en' ? `PDF page ${topic.pages}` : `PDF-Seite ${topic.pages}`}</small>
+    </LessonSection>)}
+    <LessonSection id="self-check" bodyClassName={design.content}>
+      <RetrievalQuestion key={lang} lang={lang} />
+    </LessonSection>
+    <LessonSection id="takehome"><TakeHomeList items={summaryItems} /></LessonSection>
+  </StandardLessonShell>
 }

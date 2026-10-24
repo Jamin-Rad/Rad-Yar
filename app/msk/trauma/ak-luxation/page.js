@@ -1,4 +1,5 @@
 'use client'
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 
 import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
@@ -191,6 +192,7 @@ export default function AkLuxationPage() {
   }, [])
 
   return (
+    <LegacyLessonMigration lessonRoute="/msk/trauma/ak-luxation" lessonId="/msk/trauma/ak-luxation" lang={lang}>
     <main className={`${styles.page} ${styles.mskTraumaPage} ${styles.akLuxationPage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
       <InProgressBanner lang={lang} />
 
@@ -217,8 +219,8 @@ export default function AkLuxationPage() {
             </div>
           </div>
           <div className={styles.heroStats}>
-            {D.heroCards.map(card => (
-              <div className={styles.heroStat} key={c(card.value)}>
+            {D.heroCards.map((card, index) => (
+              <div className={styles.heroStat} data-retained-stat={index === 2 ? 'accent' : undefined} key={c(card.value)}>
                 <strong>{c(card.value)}</strong>
                 <span>{c(card.label)}</span>
                 <small>{c(card.text)}</small>
@@ -249,18 +251,18 @@ export default function AkLuxationPage() {
         <div className={styles.main}>
 
           {/* ANATOMIE */}
-          <Section id="anatomie" title={c(D.anatomie.title)} lead={`${c(D.definition)} ${c(D.anatomie.lead)}`}>
+          <Section migrationChapter id="anatomie" title={c(D.anatomie.title)} lead={`${c(D.definition)} ${c(D.anatomie.lead)}`}>
             <Cards items={D.anatomie.items} lang={lang} />
             <Callout label={c(D.keyLabel)}>{c(D.anatomie.key)}</Callout>
           </Section>
 
           {/* MECHANISMUS */}
-          <Section id="mechanismus" title={c(D.mechanismus.title)} lead={c(D.mechanismus.lead)}>
+          <Section migrationChapter id="mechanismus" title={c(D.mechanismus.title)} lead={c(D.mechanismus.lead)}>
             <Cards items={D.mechanismus.items} lang={lang} />
           </Section>
 
           {/* BILDGEBUNG */}
-          <Section id="bildgebung" title={c(D.bildgebung.title)} lead={c(D.bildgebung.lead)}>
+          <Section migrationChapter id="bildgebung" title={c(D.bildgebung.title)} lead={c(D.bildgebung.lead)}>
             <Table headers={D.bildgebung.headers.map(c)} rows={rows(D.bildgebung.rows)} />
             <div style={{ marginTop: '1rem', padding: '0.85rem 1rem', background: 'rgba(29,78,216,0.1)', border: '1px solid rgba(29,78,216,0.3)', borderRadius: '8px' }}>
               <strong style={{ fontSize: '0.9rem' }}>{c(D.bildgebung.ccdNote.title)}</strong>
@@ -276,7 +278,7 @@ export default function AkLuxationPage() {
           </Section>
 
           {/* ROCKWOOD */}
-          <Section id="rockwood" title={c(D.rockwood.title)} lead={c(D.rockwood.lead)}>
+          <Section migrationChapter id="rockwood" title={c(D.rockwood.title)} lead={c(D.rockwood.lead)}>
             <SchemaImage src={D.rockwood.illustrationSrc} alt={c(D.rockwood.illustrationAlt)} copy={copy} fullWidth />
             <Table headers={D.rockwood.headers.map(c)} rows={rows(D.rockwood.rows)} />
             <div style={{ marginTop: '1rem', padding: '0.75rem 1rem', background: 'rgba(255,255,255,0.06)', borderRadius: '8px', fontSize: '0.85rem', opacity: 0.8 }}>
@@ -286,13 +288,13 @@ export default function AkLuxationPage() {
           </Section>
 
           {/* THERAPIE */}
-          <Section id="therapie" title={c(D.therapie.title)} lead={c(D.therapie.lead)}>
+          <Section migrationChapter id="therapie" title={c(D.therapie.title)} lead={c(D.therapie.lead)}>
             <Table headers={D.therapie.headers.map(c)} rows={rows(D.therapie.rows)} />
             <Callout label={c(D.keyLabel)}>{c(D.therapie.key)}</Callout>
           </Section>
 
           {/* TAKE-HOME */}
-          <Section id="takehome" title={c(D.takehome.title)} lead={c(D.takehome.lead)}>
+          <Section migrationChapter id="takehome" title={c(D.takehome.title)} lead={c(D.takehome.lead)}>
             <div className={styles.takeHomeGrid}>
               {D.takehome.items.map((item, i) => (
                 <div className={styles.takeHomeItem} key={c(item.title)}>
@@ -312,5 +314,6 @@ export default function AkLuxationPage() {
         </div>
       </div>
     </main>
+    </LegacyLessonMigration>
   )
 }

@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -54,7 +56,7 @@ function Section({ id, title, children }) {
         <span className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon name={SECTIONS.find(section => section.id === id)?.icon} /></span><h2>{title}</h2></span>
         <span className={styles.sectionToggle}>{open ? '−' : '+'}</span>
       </button>
-      {open && <div className={`${base.sectionBody} ${styles.sectionBody}`}>{children}</div>}
+      <div className={`${base.sectionBody} ${styles.sectionBody}`}>{children}</div>
     </section>
   )
 }
@@ -106,7 +108,7 @@ export default function MammaMrtBasicsPage() {
   }, [sectionIds])
 
   return (
-    <main className={`${base.page} ${styles.page} ${lang === 'fa' ? styles.rtl : ''}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={`${base.page} ${styles.page} ${lang === 'fa' ? styles.rtl : ''}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/mamma/bildgebung/mrt/basics" lessonId="/mamma/bildgebung/mrt/basics" summaryFallback={[tx('BPE oder echter Befund?'),'Mass · Non-Mass Enhancement',tx('Morphologie · T2 · DWI · Kinetik · Begleitbefunde')].map(item=>({title:item,detail:item}))}>
       <header className={base.header}>
         <nav className={`${base.breadcrumb} ${styles.breadcrumb}`} aria-label={tx('Inhaltsverzeichnis')}>
           <Link href={withLang('/')}>RadYar</Link><span>›</span>
@@ -133,7 +135,7 @@ export default function MammaMrtBasicsPage() {
         </div>
       </header>
 
-      <div className={base.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+      <div className={base.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
 
       <div className={base.layout}>
         <aside className={`${base.sidebar} ${styles.sidebar}`}>
@@ -146,14 +148,14 @@ export default function MammaMrtBasicsPage() {
         </aside>
 
         <div className={base.main}>
-          <Section id="indikationen" title={tx('Indikationen')}>
+          <Section id="indikationen" title={tx('Indikationen')} migrationChapter>
             <p className={styles.lead}>{tx('Die Mamma-MRT ist die')} <strong>{tx('sensitivste bildgebende Methode')}</strong> {tx('zum Nachweis eines Mammakarzinoms. Ihre hohe Sensitivität beruht vor allem auf der Darstellung der')} <strong>{tx('Tumorvaskularisation und Kontrastmittelaufnahme')}</strong>. {tx('Gleichzeitig ist die Spezifität begrenzt: Auch zahlreiche benigne Veränderungen können Kontrastmittel aufnehmen.')}</p>
             <div className={styles.indicationGrid}>{INDICATIONS.map(item => <article className={styles.indicationCard} key={item.title}><span>{tx(item.tag)}</span><h3>{tx(item.title)}</h3><p>{tx(item.text)}</p></article>)}</div>
             <div className={styles.problemBox}><div><span>{tx('Problem Solving · Beispiele')}</span><h3>{tx('Wenn die konventionelle Diagnostik unklar bleibt')}</h3></div><ul><li>{tx('nicht sicher erklärbare Asymmetrie')}</li><li>{tx('unklare Architekturstörung')}</li><li>{tx('diskrepante Befunde zwischen Mammographie und Sonographie')}</li><li>{tx('schwer beurteilbare postoperative Veränderungen')}</li></ul></div>
             <Callout cave label={tx('Wichtig')}>{tx('Die MRT sollte nicht dazu verwendet werden, eine indizierte Biopsie eines suspekten Befundes zu vermeiden. Ein klar suspekter und bioptisch zugänglicher Befund sollte in der Regel histologisch abgeklärt werden.')}</Callout>
           </Section>
 
-          <Section id="sequenzen" title={tx('Welche Sequenzen brauchen wir?')}>
+          <Section id="sequenzen" title={tx('Welche Sequenzen brauchen wir?')} migrationChapter>
             <div className={styles.sequenceGrid}>{SEQUENCES.map(sequence => (
               <article className={`${styles.sequenceCard} ${styles[sequence.accent]}`} key={sequence.key}>
                 <div className={styles.sequenceTop}><strong>{sequence.key}</strong><span>{tx(sequence.role)}</span></div>
@@ -175,7 +177,7 @@ export default function MammaMrtBasicsPage() {
             </div>
           </Section>
 
-          <Section id="systematik" title={tx('Wie liest man eine Mamma-MRT systematisch?')}>
+          <Section id="systematik" title={tx('Wie liest man eine Mamma-MRT systematisch?')} migrationChapter>
             <p className={styles.lead}>{tx('Ein fester Ablauf hilft, nichts zu übersehen.')}</p>
             <ol className={styles.workflow}>{WORKFLOW.map((step, index) => (
               <li key={step.title}>
@@ -207,7 +209,7 @@ export default function MammaMrtBasicsPage() {
             ))}</ol>
           </Section>
 
-          <Section id="fgt-bpe" title={tx('FGT und BPE')}>
+          <Section id="fgt-bpe" title={tx('FGT und BPE')} migrationChapter>
             <div className={styles.compareGrid}>
               <article className={styles.fgtCard}>
                 <div className={styles.compareHeading}><span className={styles.term}>FGT</span><div><small>{tx('Fibroglanduläres Gewebe')}</small><h3>Fibroglandular Tissue</h3></div></div>
@@ -289,7 +291,7 @@ export default function MammaMrtBasicsPage() {
             </aside>
           </Section>
 
-          <Section id="prinzip" title={tx('Take-Home Message')}>
+          <Section id="prinzip" title={tx('Take-Home Message')} migrationChapter>
             <div className={styles.takeHomeAlgorithm}>
               <div className={styles.takeHomeQuestion}>
                 <span>{tx('Auch bei auffälligem Enhancement')}</span>
@@ -304,9 +306,9 @@ export default function MammaMrtBasicsPage() {
             </div>
           </Section>
 
-          <div className={base.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+          <div className={base.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
         </div>
       </div>
-    </main>
+    </LegacyLessonMigration>
   )
 }

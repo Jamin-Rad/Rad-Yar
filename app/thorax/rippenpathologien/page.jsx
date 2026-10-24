@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
-import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
+import StandardLessonShell, { LessonSection, LessonSources , TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { FIRST_RIB_LESSON as lesson, L } from '@/data/firstRibPseudoarticulation'
 import styles from './page.module.css'
 
@@ -34,7 +34,7 @@ export default function FirstRibPseudoarticulationPage() {
   const langTitle = pick(lesson.title, lang)
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={langTitle} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: local('/') }, { label: pick(L('Thorax', 'Thorax', 'قفسهٔ سینه'), lang), href: local('/lernen/thorax') }, { label: langTitle }]}
-    sections={sections} labels={labels} actions={{ mcq: { label: pick(L('MC-Frage üben', 'Practise the MCQ', 'تمرین سؤال چندگزینه‌ای'), lang), href: `/ueben/quiz?fach=thorax&n=1&themen=${lesson.id}&lang=${lang}&from=${encodeURIComponent('/thorax/rippenpathologien?lang=' + lang)}` }, flashcards: { label: pick(L('Flashcard wiederholen', 'Review flashcard', 'مرور فلش‌کارت'), lang), href: `/flashcards/${lesson.id}?lang=${lang}&from=${encodeURIComponent('/thorax/rippenpathologien?lang=' + lang)}` } }} renderIcon={id => <Icon id={id}/>} syncHashNavigation
+    sections={(sections).map(section=>({...section,emphasis:section.emphasis||["summary"].includes(section.id)}))} labels={labels} actions={{ mcq: { label: pick(L('MC-Frage üben', 'Practise the MCQ', 'تمرین سؤال چندگزینه‌ای'), lang), href: `/ueben/quiz?fach=thorax&n=1&themen=${lesson.id}&lang=${lang}&from=${encodeURIComponent('/thorax/rippenpathologien?lang=' + lang)}` }, flashcards: { label: pick(L('Flashcard wiederholen', 'Review flashcard', 'مرور فلش‌کارت'), lang), href: `/flashcards/${lesson.id}?lang=${lang}&from=${encodeURIComponent('/thorax/rippenpathologien?lang=' + lang)}` } }} renderIcon={id => <Icon id={id}/>} syncHashNavigation
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/educational/first-rib-pseudoarticulation-p10.png', heroImageOpacity: .72, accent: '#70bdc8', accentStrong: '#216a78', accentSoft: '#e1f3f5', secondary: '#9678c5', secondaryStrong: '#63428e', heroBase: '#172c3b' }}
     heroImageAlt={pick(lesson.imageAlt, lang)} className={styles.page}
     sources={<LessonSources title={pick(L('Quellen und Geltungsbereich', 'Sources and scope', 'منابع و محدوده'), lang)} items={sources} note={pick(L('Eng begrenzte Lektion zum einzelnen Lehrbeispiel auf Thorax.pdf S. 10. Bildausschnitt aus dem vom Nutzer bereitgestellten PDF; für die Verwendung freigegeben. Kein vollständiger Überblick über Rippenvarianten, Frakturen oder Lungennodulmanagement.', 'A narrowly scoped lesson on the teaching example on Thorax.pdf p. 10. Image crop from the user-supplied PDF, authorised for use. This is not a comprehensive review of rib variants, fractures or pulmonary nodule management.', 'درس محدود به نمونهٔ آموزشی Thorax.pdf صفحهٔ ۱۰ است. برش تصویر از PDF ارائه‌شده توسط کاربر و مجاز برای استفاده است. این درس مرور جامع واریانت‌های دنده، شکستگی یا مدیریت ندول ریه نیست.'), lang)}/>}
@@ -49,6 +49,6 @@ export default function FirstRibPseudoarticulationPage() {
       <aside className={styles.cave}>{pick(L('Wichtige Grenze: Eine plausible knöcherne Überlagerung ist keine Ausschlussdiagnose für einen Lungenherd.', 'Important limit: a plausible bony overlap does not rule out a pulmonary lesion.', 'محدودیت مهم: هم‌پوشانی استخوانی محتمل، تشخیصِ ردکنندهٔ ضایعهٔ ریوی نیست.'), lang)}</aside>
       <Check key={lang} lang={lang}/>
     </div></LessonSection>
-    <LessonSection id="summary" icon="summary" title={pick(lesson.chapters[2].title, lang)}><ol className={styles.rules}>{lesson.summary.map((item, i) => <li key={i}>{pick(item, lang)}</li>)}</ol></LessonSection>
+    <LessonSection id="summary" icon="summary" title={pick(lesson.chapters[2].title, lang)}><TakeHomeList items={lesson.summary.map((item,i)=>({title:pick(item, lang),detail:''}))}/></LessonSection>
   </StandardLessonShell>
 }

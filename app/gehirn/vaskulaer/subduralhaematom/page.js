@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -29,7 +31,7 @@ function Section({ id, title, lead, children }) {
       <button type="button" className={styles.sectionHeader} onClick={() => setOpen(v => !v)} aria-expanded={open}>
         <h2>{title}</h2><span>{open ? '−' : '+'}</span>
       </button>
-      {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+      <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>
     </section>
   )
 }
@@ -143,7 +145,7 @@ export default function SubduralhaematomPage() {
 
   return <>
     <InProgressBanner lang={lang} />
-    <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/gehirn/vaskulaer/subduralhaematom" lessonId="/gehirn/vaskulaer/subduralhaematom">
       <header className={styles.header}>
         <div className={styles.breadcrumb}><Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/gehirn')}>{c({ de: 'Kopf', en: 'Head', fa: 'سر' })}</Link><span>›</span><span>{c(SDH_LESSON.breadcrumb)}</span></div>
         <div className={styles.hero}>
@@ -158,23 +160,23 @@ export default function SubduralhaematomPage() {
           <div className={styles.heroStats}>{SDH_LESSON.heroCards.map(card => <div className={styles.heroStat} key={card.value}><strong>{card.value}</strong><span>{c(card.label)}</span><small>{c(card.text)}</small></div>)}</div>
         </div>
       </header>
-      <div className={styles.readBar}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>
+      <div className={styles.readBar}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/></div>
       <div className={styles.layout}>
         <aside className={styles.sidebar}><div className={styles.sideTitle}>{c(SDH_LESSON.toc)}</div>{sections.map(s => <button type="button" key={s.id} className={`${styles.sideItem} ${active === s.id ? styles.sideItemActive : ''}`} onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth' })}><span>{s.icon}</span><strong>{c(s.label)}</strong></button>)}</aside>
         <div className={styles.main}>
-          <Section id="grundlagen" title={c(SDH_LESSON.basics.title)} lead={c(SDH_LESSON.basics.lead)}><Cards items={SDH_LESSON.basics.items} lang={lang} /><Callout cave label="CAVE">{c(SDH_LESSON.basics.cave)}</Callout></Section>
-          <Section id="ct" title={c(SDH_LESSON.ct.title)} lead={c(SDH_LESSON.ct.lead)}><Table headers={SDH_LESSON.ct.headers.map(c)} rows={rows(SDH_LESSON.ct.rows)} /><Callout label={c({ de: 'Merke', en: 'Key point', fa: 'نکته مهم' })}>{c(SDH_LESSON.ct.key)}</Callout></Section>
-          <Section id="zeit" title={c(SDH_LESSON.timeline.title)} lead={c(SDH_LESSON.timeline.lead)}><Table headers={SDH_LESSON.timeline.headers.map(c)} rows={rows(SDH_LESSON.timeline.rows)} /><Figure src="/subdural/sdh-density-timeline.png" alt={c(SDH_LESSON.timeline.imageAlt)} onZoom={setPreview} copy={copy} /><Callout cave label="CAVE">{c(SDH_LESSON.timeline.cave)}</Callout></Section>
-          <Section id="dd" title={c(SDH_LESSON.dd.title)} lead={c(SDH_LESSON.dd.lead)}><Table headers={SDH_LESSON.dd.headers.map(c)} rows={rows(SDH_LESSON.dd.rows)} /></Section>
-          <Section id="befund" title={c(SDH_LESSON.report.title)} lead={c(SDH_LESSON.report.lead)}><Cards items={SDH_LESSON.report.items} lang={lang} /><Callout cave label="CAVE">{c(SDH_LESSON.report.cave)}</Callout></Section>
-          <Section id="fallbeispiele" title={c(SDH_LESSON.cases.title)} lead={c(SDH_LESSON.cases.lead)}>
+          <Section id="grundlagen" title={c(SDH_LESSON.basics.title)} lead={c(SDH_LESSON.basics.lead)} migrationChapter><Cards items={SDH_LESSON.basics.items} lang={lang} /><Callout cave label="CAVE">{c(SDH_LESSON.basics.cave)}</Callout></Section>
+          <Section id="ct" title={c(SDH_LESSON.ct.title)} lead={c(SDH_LESSON.ct.lead)} migrationChapter><Table headers={SDH_LESSON.ct.headers.map(c)} rows={rows(SDH_LESSON.ct.rows)} /><Callout label={c({ de: 'Merke', en: 'Key point', fa: 'نکته مهم' })}>{c(SDH_LESSON.ct.key)}</Callout></Section>
+          <Section id="zeit" title={c(SDH_LESSON.timeline.title)} lead={c(SDH_LESSON.timeline.lead)} migrationChapter><Table headers={SDH_LESSON.timeline.headers.map(c)} rows={rows(SDH_LESSON.timeline.rows)} /><Figure src="/subdural/sdh-density-timeline.png" alt={c(SDH_LESSON.timeline.imageAlt)} onZoom={setPreview} copy={copy} /><Callout cave label="CAVE">{c(SDH_LESSON.timeline.cave)}</Callout></Section>
+          <Section id="dd" title={c(SDH_LESSON.dd.title)} lead={c(SDH_LESSON.dd.lead)} migrationChapter><Table headers={SDH_LESSON.dd.headers.map(c)} rows={rows(SDH_LESSON.dd.rows)} /></Section>
+          <Section id="befund" title={c(SDH_LESSON.report.title)} lead={c(SDH_LESSON.report.lead)} migrationChapter><Cards items={SDH_LESSON.report.items} lang={lang} /><Callout cave label="CAVE">{c(SDH_LESSON.report.cave)}</Callout></Section>
+          <Section id="fallbeispiele" title={c(SDH_LESSON.cases.title)} lead={c(SDH_LESSON.cases.lead)} migrationChapter>
             <div className={styles.caseGrid}>{cases.map((item, index) => <article className={styles.caseCardLink} key={item.url}>
               <CaseViewer frames={item.frames} initial={item.initial} alt={`${c(SDH_LESSON.cases.title)} ${index + 1}`} copy={copy} onZoom={setPreview} />
               <div className={styles.caseBody}><div className={styles.caseLabelRow}><span className={styles.caseLabel}>CT</span></div><h3>{c({ de: 'Fallbeispiel', en: 'Case', fa: 'نمونه کیس' })}</h3><p>{item.meta}</p><small>{item.credit}</small><a href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseExternalLink}>{c(SDH_LESSON.cases.open)} ↗</a></div>
             </article>)}</div>
           </Section>
-          <Section id="takehome" title={c(SDH_LESSON.takehome.title)} lead={c(SDH_LESSON.takehome.lead)}><div className={styles.takeHomeGrid}>{SDH_LESSON.takehome.items.map((item, i) => <div className={styles.takeHomeItem} key={c(item.title)}><span>{String(i + 1).padStart(2, '0')}</span><div><h3>{c(item.title)}</h3><p>{c(item.text)}</p></div></div>)}</div></Section>
-          <div className={styles.readBarBottom}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>
+          <Section id="takehome" title={c(SDH_LESSON.takehome.title)} lead={c(SDH_LESSON.takehome.lead)} migrationChapter><div className={styles.takeHomeGrid}>{SDH_LESSON.takehome.items.map((item, i) => <div className={styles.takeHomeItem} key={c(item.title)}><span>{String(i + 1).padStart(2, '0')}</span><div><h3>{c(item.title)}</h3><p>{c(item.text)}</p></div></div>)}</div></Section>
+          <div className={styles.readBarBottom}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/></div>
         </div>
       </div>
       {preview && <div className={styles.strokeImageModal} role="dialog" aria-modal="true" aria-label={copy.zoom} onClick={() => setPreview(null)}>
@@ -208,6 +210,6 @@ export default function SubduralhaematomPage() {
           {preview.frames?.length > 1 && <small style={{ color: '#cbd5e1', marginTop: 7 }}>{copy.image(preview.index + 1, preview.frames.length)} · {copy.scroll}</small>}
         </div>
       </div>}
-    </main>
+    </LegacyLessonMigration>
   </>
 }

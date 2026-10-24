@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { HCC_PLANNING } from '@/data/abdomenHccPlanning'
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
@@ -347,7 +349,7 @@ function Section({ id, title, lead, children }) {
   return (
     <section id={id} className={styles.section}>
       <button className={styles.sectionHeader} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}><h2>{title}</h2><span>{open ? '−' : '+'}</span></button>
-      {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+      <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>
     </section>
   )
 }
@@ -373,7 +375,7 @@ export default function HccPage() {
   }, [sectionIds])
 
   return (
-    <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/abdomen/leber/hcc" lessonId="/abdomen/leber/hcc">
       <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}><Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/abdomen')}>{copy.breadcrumbAbdomen}</Link><span>›</span><span>{copy.breadcrumbCurrent}</span></div>
@@ -389,7 +391,7 @@ export default function HccPage() {
         </div>
       </header>
 
-      <div className={styles.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+      <div className={styles.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
           <div className={styles.sideTitle}>{copy.toc}</div>
@@ -407,44 +409,44 @@ export default function HccPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="grundlagen" title={copy.basics.title} lead={copy.basics.lead}>
+          <Section id="grundlagen" title={copy.basics.title} lead={copy.basics.lead} migrationChapter>
             <div className={styles.cardsGrid}>{copy.basics.items.map(item => <div className={styles.infoCard} key={item.title}><h3>{item.title}</h3><p>{item.text}</p></div>)}</div>
             <Callout label={copy.keyLabel}>{copy.basics.key}</Callout>
           </Section>
-          <Section id="ct" title={copy.ct.title} lead={copy.ct.lead}>
+          <Section id="ct" title={copy.ct.title} lead={copy.ct.lead} migrationChapter>
             <Table headers={copy.ct.headers} rows={copy.ct.rows} />
             <div className={styles.highlightBox}><h3>{copy.ct.highlightTitle}</h3><p>{copy.ct.highlightText}</p></div>
             <Callout label={copy.keyLabel}>{copy.ct.key}</Callout>
           </Section>
-          <Section id="mrt" title={copy.mri.title} lead={copy.mri.lead}>
+          <Section id="mrt" title={copy.mri.title} lead={copy.mri.lead} migrationChapter>
             <Table headers={copy.mri.headers} rows={copy.mri.rows} />
             <div className={styles.splitGrid}>{copy.mri.cards.map(card => <div className={styles.infoCard} key={card.title}><h3>{card.title}</h3><p>{card.text}</p></div>)}</div>
             <Callout type="cave" label={copy.caveLabel}>{copy.mri.cave}</Callout>
             <Callout label={copy.keyLabel}>{copy.mri.key}</Callout>
           </Section>
-          <Section id="infiltrativ" title={copy.infiltrative.title} lead={copy.infiltrative.lead}>
+          <Section id="infiltrativ" title={copy.infiltrative.title} lead={copy.infiltrative.lead} migrationChapter>
             <Table headers={copy.infiltrative.headers} rows={copy.infiltrative.rows} />
             <Callout type="cave" label={copy.caveLabel}>{copy.infiltrative.cave}</Callout>
             <Callout label={copy.keyLabel}>{copy.infiltrative.key}</Callout>
           </Section>
-          <Section id="fallbeispiele" title={copy.cases.title} lead={copy.cases.lead}>
+          <Section id="fallbeispiele" title={copy.cases.title} lead={copy.cases.lead} migrationChapter>
             <figure className={styles.pdfCase}>
               <img src="/abdomen/hcc/abdomen-pdf-p19-multiphase.png" alt={copy.cases.pdfExample.alt} />
               <figcaption><strong>{copy.cases.pdfExample.title}</strong><p>{copy.cases.pdfExample.text}</p><small>{copy.cases.pdfExample.credit}</small></figcaption>
             </figure>
             <div className={styles.caseGrid}>{copy.cases.items.map(item => <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}><div className={styles.caseImage} aria-hidden="true">CT</div><div className={styles.caseBody}><div className={styles.caseLabelRow}>{item.tags.map(tag => <span key={tag} className={styles.caseLabel}>{tag}</span>)}</div><h3>{item.title}</h3><p>{item.text}</p><small>{item.credit}</small><strong>{copy.cases.open}</strong></div></a>)}</div>
           </Section>
-          <Section id="therapieplanung" title={HCC_PLANNING.title[lang]} lead={HCC_PLANNING.intro[lang]}>
+          <Section id="therapieplanung" title={HCC_PLANNING.title[lang]} lead={HCC_PLANNING.intro[lang]} migrationChapter>
             <div className={styles.cardsGrid}>{HCC_PLANNING.rows.map(([title, text], i) => <div className={styles.infoCard} key={i}><h3>{title[lang]}</h3><p>{text[lang]}</p></div>)}</div>
             <p>{HCC_PLANNING.note[lang]}</p><p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/" target="_blank" rel="noopener noreferrer">AASLD2023</a> · <a href="https://easlcampus.eu/sites/default/files/2025-02/EASL_CPG_Management_HCC.pdf" target="_blank" rel="noopener noreferrer">EASL2025</a></p>
             <Link href={withLang('/abdomen/leber/fibrolamellaeres-karzinom')}>{({de:'Eigenständige Lektion: Fibrolamelläres Karzinom',en:'Separate lesson: fibrolamellar carcinoma',fa:'درس جداگانه: کارسینوم فیبرولاملار'})[lang]}</Link>
           </Section>
-          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>
+          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead} migrationChapter>
             <div className={styles.takeHomeGrid}>{copy.takehome.items.map((item, index) => <div className={styles.takeHomeItem} key={item.title}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></div>)}</div>
           </Section>
-          <div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+          <div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError}  migrationReadControl/></div>
         </div>
       </div>
-    </main>
+    </LegacyLessonMigration>
   )
 }

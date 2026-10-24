@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
-import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
+import StandardLessonShell, { LessonSection, LessonSources , TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { EOSINOPHILIC_GRANULOMA_LESSON as lesson } from '@/data/eosinophilesGranulomLesson'
 import styles from './page.module.css'
 
@@ -54,7 +54,7 @@ export default function EosinophilicGranulomaPage() {
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={t(lesson.title)} author="RadYar"
     heroImageAlt={t(L('Nichtdiagnostisches Schema: lange Röhrenknochen mit markierter diaphysärer Osteolyse und umgebender Reaktion.', 'Non-diagnostic schematic: long bone with a diaphyseal lytic focus and surrounding reaction.', 'شماتیک غیرتشخیصی: استخوان بلند با کانون لیتیک دیافیزی و واکنش پیرامونی.'))}
     syncHashNavigation breadcrumbs={[{ label: 'RadYar', href: langHref('/') }, { label: 'MSK', href: langHref('/lernen/msk') }, { label: t(lesson.title) }]}
-    sections={lesson.sections.map(section => ({ id: section.id, label: t(section.title), icon: section.icon }))} labels={labels}
+    sections={[...(lesson.sections.map(section => ({ id: section.id, label: t(section.title), icon: section.icon }))),{id:'takehome',label:lang==='fa'?'پیام نهایی':'Take Home Message',icon:'summary',emphasis:true}]} labels={labels}
     actions={{
       mcq: { label: t(L('Drei passende MCQs', 'Three related MCQs', 'سه پرسش مرتبط')), href: langHref(`/ueben/quiz?fach=msk&n=3&themen=${lesson.id}&from=${encodeURIComponent(returnPath)}`) },
       flashcards: { label: t(L('Drei Flashcards', 'Three flashcards', 'سه فلش‌کارت')), href: langHref(`/flashcards/${lesson.id}?from=${encodeURIComponent(returnPath)}`) },
@@ -82,7 +82,9 @@ export default function EosinophilicGranulomaPage() {
     </LessonSection>
     <LessonSection id="transfer" icon="check" title={t(lesson.sections[3].title)} bodyClassName={styles.body}>
       <SelfCheck lang={lang} />
-      <ol className={styles.summary}>{lesson.takeHome.map((item, i) => <li key={i}>{t(item)}</li>)}</ol>
+
     </LessonSection>
-  </StandardLessonShell>
+
+<LessonSection id="takehome" icon="summary"><TakeHomeList items={lesson.takeHome.map((item,i)=>({title:t(item),detail:''}))}/></LessonSection>
+</StandardLessonShell>
 }

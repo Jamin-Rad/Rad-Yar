@@ -40,7 +40,27 @@
 
 .sharedHeroFrame { overflow:hidden; padding:18px 28px 20px; border:1px solid rgba(255,255,255,.16); border-radius:24px; background:linear-gradient(135deg,#171320,#30213a 62%,#193344); box-shadow:0 22px 55px rgba(23,19,32,.22); }
 .sharedHeroFrame > span { display:inline-block; margin-inline-start:4px; }
-.fnhHeroDiagram { display:block; width:100%; height:100%; }
+.fnhHeroDiagram {
+  --canvas: #f6f5f7;
+  --body: #4f5169;
+  --fnh-liver: #d9e8e5;
+  --fnh-lesion: #f7eadb;
+  --teal-700: #0d7580;
+  --plum-700: #713574;
+  --plum-800: #57245a;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+:global(html[data-theme='dark']) .fnhHeroDiagram {
+  --canvas: #10141c;
+  --body: #d1c8d4;
+  --fnh-liver: #254247;
+  --fnh-lesion: #674d38;
+  --teal-700: #74c6ce;
+  --plum-700: #cda7d4;
+  --plum-800: #ddc5e2;
+}
 .sharedHeroActions { display:flex; flex-wrap:wrap; gap:10px; margin-top:-4px; }
 .sectionHeading { margin:0; font-size:inherit; }
 .mobilePath { display:none; }

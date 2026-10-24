@@ -1,19 +1,19 @@
-.page { --lesson-ink:#203344; --lesson-body:#435467; --lesson-line:rgba(255,255,255,.24); }
+.page { --lesson-ink:var(--ink); --lesson-body:var(--body); --lesson-line:var(--line); }
 .body { max-width:76ch; margin:0 0 14px; color:var(--lesson-body); font-size:clamp(16px,1.25vw,18px); line-height:1.75; }
-.note { max-width:76ch; margin:0; padding:12px 15px; border-inline-start:4px solid #38aeb1; border-radius:7px; background:rgba(56,174,177,.1); color:var(--lesson-body); line-height:1.65; }
+.note { max-width:76ch; margin:0; padding:12px 15px; border-inline-start:4px solid #38aeb1; border-radius:7px; background:color-mix(in srgb,#38aeb1 10%,var(--paper)); color:var(--lesson-body); line-height:1.65; }
 .diagram { max-width:620px; margin:22px auto; text-align:center; }
 .diagram svg { display:block; width:100%; height:auto; }
 .diagram figcaption { margin-top:8px; color:var(--lesson-body); font-size:13px; line-height:1.5; }
 .imageGrid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:22px 0; align-items:start; }
-.sourceImage { min-width:0; margin:0; padding:10px; border:1px solid rgba(32,51,68,.18); border-radius:12px; background:rgba(255,255,255,.88); }
+.sourceImage { min-width:0; margin:0; padding:10px; border:1px solid var(--line); border-radius:12px; background:var(--paper); }
 .sourceImage img { display:block; width:100%; height:auto; border-radius:7px; }
 .sourceImage figcaption { margin-top:9px; color:var(--lesson-body); font-size:13px; line-height:1.55; }
-.decision { max-width:760px; margin:24px 0 8px; padding:18px; border:1px solid rgba(22,108,120,.28); border-radius:12px; background:rgba(225,243,244,.6); color:var(--lesson-ink); }
+.decision { max-width:760px; margin:24px 0 8px; padding:18px; border:1px solid rgba(22,108,120,.28); border-radius:12px; background:color-mix(in srgb,#e1f3f4 60%,var(--paper)); color:var(--lesson-ink); }
 .decision h3 { margin:0 0 10px; font-size:1.15rem; }
 .decision p { line-height:1.65; }
 .decision fieldset { display:grid; gap:9px; margin:14px 0; padding:12px; border:1px solid rgba(32,51,68,.2); border-radius:9px; }
 .decision legend { padding-inline:5px; font-weight:750; }
-.decision label { display:flex; align-items:flex-start; gap:10px; padding:10px; border:1px solid rgba(32,51,68,.16); border-radius:8px; background:rgba(255,255,255,.8); cursor:pointer; }
+.decision label { display:flex; align-items:flex-start; gap:10px; padding:10px; border:1px solid var(--line); border-radius:8px; background:var(--paper); cursor:pointer; }
 .decision input { margin-top:5px; accent-color:#166c78; }
 .feedback { padding:12px; border-radius:8px; background:rgba(56,174,177,.13); }
 @media (max-width:600px) { .decision { padding:13px; } .body { font-size:16px; } .imageGrid { grid-template-columns:1fr; } }

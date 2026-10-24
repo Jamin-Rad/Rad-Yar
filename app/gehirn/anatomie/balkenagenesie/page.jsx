@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
+import StandardLessonShell, { LessonSection, LessonSources , TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { GEHIRN_BALKENAGENESIE_LESSON as lesson } from '@/data/gehirnBalkenagenesieLesson'
 import styles from './page.module.css'
@@ -56,7 +56,7 @@ export default function CallosalAgenesisPage() {
   ]
   return <StandardLessonShell lessonId="balkenfehlbildung" lang={lang} title={value(lesson.title, lang)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: path('/') }, { label: text.crumb, href: path('/lernen/gehirn') }, { label: value(lesson.title, lang) }]}
-    sections={sections} labels={Object.fromEntries(Object.entries(labels).map(([key, localized]) => [key, value(localized, lang)]))} actions={{}}
+    sections={[...(sections),{id:'takehome',label:lang==='fa'?'پیام نهایی':'Take Home Message',icon:'summary',emphasis:true}]} labels={Object.fromEntries(Object.entries(labels).map(([key, localized]) => [key, value(localized, lang)]))} actions={{}}
     renderIcon={id => icons[id] || icons.planes}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/educational/callosal/planes.svg', heroImageOpacity: .9, accent: '#48b5c8', accentStrong: '#155d70', accentSoft: '#e0f4f6', secondary: '#d18b53', secondaryStrong: '#704325', heroBase: '#102535' }}
     className={styles.page} heroImageAlt={text.visual} syncHashNavigation>
@@ -76,5 +76,7 @@ export default function CallosalAgenesisPage() {
       </LessonSection>)}
     </div>
     <LessonSources title={t('sources')} items={sources} note={text.note} />
-  </StandardLessonShell>
+
+<LessonSection id="takehome" icon="summary"><TakeHomeList items={lesson.chapters.map(chapter=>({title:value(chapter.title,lang),detail:value(chapter.text,lang).split('\n\n')[0]}))}/></LessonSection>
+</StandardLessonShell>
 }

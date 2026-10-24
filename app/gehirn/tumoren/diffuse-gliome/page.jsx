@@ -41,7 +41,7 @@ export default function DiffuseGliomaLesson() {
   const cards = id => langPath(`/flashcards/${id}?from=${encodeURIComponent(returnPath)}`)
   return <StandardLessonShell lessonId={DIFFUSE_GLIOMA_ID} lang={lang} title={v(C.title, lang)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: langPath('/') }, { label: v(C.chapter, lang), href: langPath('/lernen/gehirn') }, { label: v(C.title, lang) }]}
-    sections={sections} labels={Object.fromEntries(Object.entries(DIFFUSE_GLIOMA_LABELS).map(([key, val]) => [key, v(val, lang)]))}
+    sections={[...(sections),{id:'takehome',label:lang==='fa'?'پیام نهایی':'Take Home Message',icon:'summary',emphasis:true}]} labels={Object.fromEntries(Object.entries(DIFFUSE_GLIOMA_LABELS).map(([key, val]) => [key, v(val, lang)]))}
     renderIcon={iconFor} actions={{ mcq: { label: t('practice'), href: quiz() }, flashcards: { label: lang === 'de' ? 'Karteikarten wählen' : lang === 'en' ? 'Choose flashcards' : 'انتخاب فلش‌کارت', href: `${returnPath}#muster-einordnen` } }}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/educational/diffuse-glioma/hero.png', heroImageOpacity: .55, accent: '#608a9d', accentStrong: '#315b72', accentSoft: '#e8f1f5', secondary: '#b78b68', secondaryStrong: '#785437', heroBase: '#13232d' }}
     heroImageAlt={v({ de: 'KI-generierte Konzeptillustration eines diffus infiltrierenden Hirntumors; keine diagnostische Aufnahme.', en: 'AI-generated conceptual illustration of a diffusely infiltrating brain tumour; not a diagnostic image.', fa: 'تصویر مفهومی تولیدشده با هوش مصنوعی از تومور نفوذی منتشر مغز؛ تصویر تشخیصی نیست.' }, lang)} className={styles.page} syncHashNavigation
@@ -69,10 +69,12 @@ export default function DiffuseGliomaLesson() {
         <ClinicalFigure kind="glioblastoma" copy={C.gbm} figure={3} lang={lang} /><Check item={DIFFUSE_GLIOMA_CHECKS[2]} lang={lang} />
       </LessonSection>
       <LessonSection id={sections[4].id} title={sections[4].label} icon="check">
-        <TakeHomeList items={C.takeaways.map(item => ({ title: v(item.title, lang), detail: v(item.detail, lang) }))} />
+
         <p>{v(C.report, lang)}</p>
         <div className={styles.practice}>{DIFFUSE_GLIOMA_TOPIC_IDS.map((id, i) => <div key={id}><h3>{v(C.classification[i][0], lang)}</h3><Link href={quiz(id)}>{t('practice')}</Link><Link href={cards(id)}>{t('cards')}</Link></div>)}</div>
       </LessonSection>
     </div>
-  </StandardLessonShell>
+
+<LessonSection id="takehome" icon="summary"><TakeHomeList items={C.takeaways.map(item => ({ title: v(item.title, lang), detail: v(item.detail, lang) }))}/></LessonSection>
+</StandardLessonShell>
 }

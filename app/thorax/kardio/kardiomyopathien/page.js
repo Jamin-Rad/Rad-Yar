@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -122,7 +124,7 @@ function ReadButton({ isRead, onClick, authError, ui, withLang }) {
 function Section({ id, title, children }) {
   useMobileLearningLayout()
   const [open, setOpen] = useState(id === 'overview')
-  return <section id={id} className={`${base.section} ${styles.section}`}><button className={`${base.sectionHeader} ${styles.sectionHeader}`} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}><div className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2>{title}</h2></div><span className={styles.sectionToggle}>{open ? '−' : '+'}</span></button>{open && <div className={`${base.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
+  return <section id={id} className={`${base.section} ${styles.section}`}><button className={`${base.sectionHeader} ${styles.sectionHeader}`} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}><div className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2>{title}</h2></div><span className={styles.sectionToggle}>{open ? '−' : '+'}</span></button><div className={`${base.sectionBody} ${styles.sectionBody}`}>{children}</div></section>
 }
 
 function ZoomImage({ src, alt, width = 674, height = 764, className, children, labels }) {
@@ -163,7 +165,7 @@ export default function KardiomyopathienPage() {
   }, [sections])
 
   return (
-    <main className={`${base.page} ${styles.page}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
+    <LegacyLessonMigration className={`${base.page} ${styles.page}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang} lessonRoute="/thorax/kardio/kardiomyopathien" lessonId="/thorax/kardio/kardiomyopathien">
       <header className={`${base.header} ${styles.header}`}>
         <nav className={`${base.breadcrumb} ${styles.breadcrumb}`} aria-label="Breadcrumb">
           <Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/thorax')}>{labels.thorax}</Link><span>›</span><Link href={withLang('/lernen/thorax')}>{labels.cardiac}</Link><span>›</span><strong>{c(lesson.title)}</strong>
@@ -173,39 +175,39 @@ export default function KardiomyopathienPage() {
           <LessonKeyPoints points={[[c(L('Phänotyp zuerst', 'Phenotype first', 'ابتدا فنوتیپ')), c(L('HCM · DCM · NDLVC · ARVC · RCM', 'HCM · DCM · NDLVC · ARVC · RCM', 'HCM · DCM · NDLVC · ARVC · RCM'))], [c(L('Funktion', 'Function', 'عملکرد')), c(L('Cine: Volumina, EF und regionale Bewegung.', 'Cine: volumes, EF and regional motion.', 'Cine: حجم‌ها، EF و حرکت موضعی.'))], [c(L('Gewebe', 'Tissue', 'بافت')), c(L('T2/Mapping plus LGE-Muster und -Ausmaß.', 'T2/mapping plus LGE pattern and extent.', 'T2/mapping همراه الگو و وسعت LGE.'))]]} />
         </div>
       </header>
-      <div className={`${base.readBar} ${styles.readBar}`}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} ui={ui} withLang={withLang} /></div>
+      <div className={`${base.readBar} ${styles.readBar}`}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} ui={ui} withLang={withLang}  migrationReadControl/></div>
       <div className={`${base.layout} ${styles.layout}`}>
           <aside className={`${base.sidebar} ${styles.sidebar}`}><div className={base.sideTitle}>{labels.contents}</div>{sections.map(([id, label]) => <button key={id} type="button" className={`${base.sideItem} ${styles.sideItem} ${activeId === id ? `${base.sideItemActive} ${styles.sideItemActive}` : ''}`} onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}><span className={styles.sideIcon}><SectionIcon id={id} /></span><strong>{label}</strong></button>)}</aside>
           <div className={`${base.main} ${styles.content}`}>
-            <Section id="overview" title={ui.overview}>
+            <Section id="overview" title={ui.overview} migrationChapter>
               <div className={styles.quickGrid}><div><small>{ui.definition}</small><p>{c(lesson.definition)}</p></div><div><small>{ui.clinic}</small><p>{c(lesson.clinic)}</p></div></div>
               <div className={styles.callout}><strong>{ui.class}</strong><p>{c(lesson.classNote)}</p></div>
             </Section>
-            <Section id="phenotypes" title={ui.phenotype}>
+            <Section id="phenotypes" title={ui.phenotype} migrationChapter>
               <div className={styles.tabList} role="tablist" aria-label={ui.phenotype}>{phenotypes.map(item => <button key={item.id} type="button" role="tab" aria-selected={selected === item.id} className={selected === item.id ? styles.selectedTab : ''} onClick={() => setSelected(item.id)}><b>{item.short}</b><span>{c(item.name)}</span></button>)}</div>
               <article className={styles.featureCard} role="tabpanel">
                 <div className={styles.featureImage}><ZoomImage src={current.image} alt={c(current.tissue)} className={styles.featureZoom} labels={labels}><small>{ui.sample} · {labels.zoom}</small></ZoomImage></div>
                 <div className={styles.featureText}><div className={styles.featureTitle}><span>{current.short}</span><h3>{c(current.name)}</h3></div><p className={styles.shape}>{c(current.shape)}</p><dl><div><dt>{ui.cine}</dt><dd>{c(current.cine)}</dd></div><div><dt>{ui.lge}</dt><dd>{c(current.tissue)}</dd></div></dl><div className={styles.warning}><strong>{ui.pitfall}</strong><p>{c(current.cave)}</p></div></div>
               </article>
             </Section>
-            <Section id="special" title={ui.special}>
+            <Section id="special" title={ui.special} migrationChapter>
               <div className={styles.specialGrid}>{specialPatterns.map(item => <article key={item.id} className={styles.specialCard}><div className={styles.specialTitle}><span>{item.short}</span><h3>{c(item.name)}</h3></div><p className={styles.shape}>{c(item.shape)}</p><dl><div><dt>{ui.cine}</dt><dd>{c(item.cine)}</dd></div><div><dt>{ui.lge}</dt><dd>{c(item.tissue)}</dd></div></dl><div className={styles.warning}><strong>{ui.pitfall}</strong><p>{c(item.cave)}</p></div></article>)}</div>
             </Section>
-            <Section id="protocol" title={ui.protocol}>
+            <Section id="protocol" title={ui.protocol} migrationChapter>
               <div className={styles.protocolGrid}>{protocol.map(step => <div key={c(step.title)}><h3>{c(step.title)}</h3><p>{c(step.text)}</p></div>)}</div>
               <div className={styles.callout}><strong>LGE</strong><p>{c(lesson.lgeRule)}</p></div>
             </Section>
-            <Section id="atlas" title={ui.atlas}><p className={styles.sectionLead}>{ui.imageHint} · {ui.sample}</p>
+            <Section id="atlas" title={ui.atlas} migrationChapter><p className={styles.sectionLead}>{ui.imageHint} · {ui.sample}</p>
               <div className={styles.atlasGrid}>{atlas.map(item => <figure key={item.id} className={styles.atlasCard}><ZoomImage src={item.image} alt={c(item.caption)} labels={labels} /><figcaption><strong>{item.short} · {c(item.name)}</strong><button type="button" aria-expanded={Boolean(revealed[item.id])} onClick={() => setRevealed(previous => ({ ...previous, [item.id]: !previous[item.id] }))}>{revealed[item.id] ? ui.hide : ui.reveal}</button>{revealed[item.id] && <p>{c(item.caption)}</p>}</figcaption></figure>)}</div>
             </Section>
-            <Section id="reporting" title={labels.reporting}><div className={styles.reportGrid}>{reportSteps.map((step, index) => <div key={index}><span>{String(index + 1).padStart(2, '0')}</span><h3>{c(step.title)}</h3><p>{c(step.text)}</p></div>)}</div><div className={styles.reportExample}><strong>{labels.reportExample}</strong><p>{c(reportExample)}</p></div></Section>
-            <Section id="takehome" title={labels.takehome}><div className={styles.takeHomeGrid}>{takeHomes.map((item, index) => <div key={index}><span>✓</span><p>{c(item)}</p></div>)}</div><div className={styles.actionFooter}><Link href={withLang(`/ueben/quiz?fach=thorax&n=10&themen=kardiomyopathien&from=${encodeURIComponent(withLang(lessonPath))}`)}>🎯 MCQ</Link><Link href={withLang(`/flashcards/kardiomyopathien?from=${encodeURIComponent(withLang(lessonPath))}`)}>🧠 {labels.flashcards}</Link></div></Section>
-            <Section id="sources" title={ui.sources}>
+            <Section id="reporting" title={labels.reporting} migrationChapter><div className={styles.reportGrid}>{reportSteps.map((step, index) => <div key={index}><span>{String(index + 1).padStart(2, '0')}</span><h3>{c(step.title)}</h3><p>{c(step.text)}</p></div>)}</div><div className={styles.reportExample}><strong>{labels.reportExample}</strong><p>{c(reportExample)}</p></div></Section>
+            <Section id="takehome" title={labels.takehome} migrationChapter><div className={styles.takeHomeGrid}>{takeHomes.map((item, index) => <div key={index}><span>✓</span><p>{c(item)}</p></div>)}</div><div className={styles.actionFooter}><Link href={withLang(`/ueben/quiz?fach=thorax&n=10&themen=kardiomyopathien&from=${encodeURIComponent(withLang(lessonPath))}`)}>🎯 MCQ</Link><Link href={withLang(`/flashcards/kardiomyopathien?from=${encodeURIComponent(withLang(lessonPath))}`)}>🧠 {labels.flashcards}</Link></div></Section>
+            <Section id="sources" title={ui.sources} migrationChapter>
               <div className={styles.sources}>{links.map(link => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>)}</div>
             </Section>
-            <div className={`${base.readBar} ${styles.bottomRead}`}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} ui={ui} withLang={withLang} /></div>
+            <div className={`${base.readBar} ${styles.bottomRead}`}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} ui={ui} withLang={withLang}  migrationReadControl/></div>
           </div>
         </div>
-    </main>
+    </LegacyLessonMigration>
   )
 }

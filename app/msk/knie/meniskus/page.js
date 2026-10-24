@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import Link from 'next/link'
@@ -820,7 +822,7 @@ const YOUTUBE_EMBED_URL = 'https://www.youtube-nocookie.com/embed/L03fPcRZm_o'
 function Table({ headers, rows, className = '' }) {
   return (
     <div className={styles.tableWrap}>
-      <table className={`${styles.table} ${className}`}>
+      <table className={`${styles.table} ${contentStyles.paperTable} ${className}`}>
         <thead>
           <tr>{headers.map(header => <th key={header} scope="col">{header}</th>)}</tr>
         </thead>
@@ -842,9 +844,9 @@ function Callout({ type = 'note', label, children }) {
   if (!children) return null
   const icon = type === 'cave' ? 'cave' : type === 'success' ? 'check' : 'note'
   return (
-    <div className={`${styles.callout} ${styles[type]}`}>
-      <span className={styles.calloutLabel}><SectionIcon id={icon} /> {label}</span>
-      <div className={styles.calloutBody}>{children}</div>
+    <div className={`${styles.callout} ${styles[type]} ${contentStyles.paperCallout}`}>
+      <span className={`${styles.calloutLabel} ${contentStyles.paperCalloutLabel}`}><SectionIcon id={icon} /> {label}</span>
+      <div className={`${styles.calloutBody} ${contentStyles.paperCalloutBody}`}>{children}</div>
     </div>
   )
 }
@@ -1079,11 +1081,11 @@ export default function MeniskusPage() {
   }, [previewImage])
 
   return (
-    <main
+    <LegacyLessonMigration
       className={styles.page}
       dir={isRTL ? 'rtl' : 'ltr'}
       lang={lang}
-    >
+     lessonRoute="/msk/knie/meniskus" lessonId={'meniskus'}>
       <header className={styles.header}>
         <div className={styles.topline}>
           <div className={styles.breadcrumb}>
@@ -1131,7 +1133,7 @@ export default function MeniskusPage() {
           <Sidebar sections={copy.sections} toc={copy.toc} activeId={openId} onClick={selectSection} />
 
         <article className={styles.main} ref={mainRef} data-disable-lesson-explorer="true">
-          <Section id="anatomie" eyebrow="01" title={copy.anatomy.title} lead={copy.anatomy.lead} {...sectionProps('anatomie')}>
+          <Section id="anatomie" eyebrow="01" title={copy.anatomy.title} lead={copy.anatomy.lead} {...sectionProps('anatomie')} migrationChapter>
             <Table headers={copy.anatomy.tableHeaders} rows={copy.anatomy.tableRows} />
             <div className={`${styles.splitGrid} ${contentStyles.rootsGrid}`}>
               <div className={styles.card}>
@@ -1173,7 +1175,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="mrt" eyebrow="02" title={copy.mri.title} lead="" {...sectionProps('mrt')}>
+          <Section id="mrt" eyebrow="02" title={copy.mri.title} lead="" {...sectionProps('mrt')} migrationChapter>
             <MeniscusTextLesson lang={lang} />
             <div className={contentStyles.subSectionBlock} data-pdf-source-addendum="msk-53-56">
               <h3 className={styles.subSectionTitle}>{MENISCUS_PDF_P53_P56.heading[lang] || MENISCUS_PDF_P53_P56.heading.de}</h3>
@@ -1206,7 +1208,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="grading" eyebrow="03" title={copy.grading.extendedTitle} lead="" {...sectionProps('grading')}>
+          <Section id="grading" eyebrow="03" title={copy.grading.extendedTitle} lead="" {...sectionProps('grading')} migrationChapter>
             <p className={styles.subSectionLead}>{copy.grading.lead}</p>
             <LotyschClassification copy={copy.grading} lang={lang} />
             <p className={contentStyles.classificationSourceNote} data-pdf-source-note="msk-p46-stoller-lotysch">{copy.grading.sourceCrossReference}</p>
@@ -1225,7 +1227,7 @@ export default function MeniskusPage() {
           </Section>
 
 
-          <Section id="risstypen" eyebrow="04" title={copy.tearTypes.title} lead={copy.tearTypes.lead} {...sectionProps('risstypen')}>
+          <Section id="risstypen" eyebrow="04" title={copy.tearTypes.title} lead={copy.tearTypes.lead} {...sectionProps('risstypen')} migrationChapter>
             <TearTypeExplorer lang={lang} />
             <div className={`${styles.subSectionBlock} ${contentStyles.rootsGrid}`} data-pdf-source-addendum="msk-48-49-50-51">
               {MENISCUS_PDF_GAP_ADDENDUM.tearTypes.map(item => (
@@ -1250,7 +1252,7 @@ export default function MeniskusPage() {
             <Callout type="cave" label={copy.tearTypes.caveTitle}>{copy.tearTypes.caveText}</Callout>
           </Section>
 
-          <Section id="discoider" eyebrow="05" title={copy.discoid.title} lead={copy.discoid.lead} {...sectionProps('discoider')}>
+          <Section id="discoider" eyebrow="05" title={copy.discoid.title} lead={copy.discoid.lead} {...sectionProps('discoider')} migrationChapter>
             <div className={styles.discoidStats}>
               {copy.discoid.stats.map(stat => (
                 <div key={stat.label} className={`${styles.discoidStatCard} ${stat.qualitative ? contentStyles.discoidAnatomyStat : ''}`}>
@@ -1296,7 +1298,7 @@ export default function MeniskusPage() {
             title={<>{copy.therapy.titlePrefix || copy.therapy.title}: <span className={styles.greenTitle}>{copy.therapy.saveText || 'Save the Meniscus'}</span></>}
             lead={copy.therapy.lead}
             {...sectionProps('therapie')}
-          >
+           migrationChapter>
             <div className={contentStyles.discoidCriteriaWrap}>
               <table className={`${contentStyles.discoidCriteriaTable} ${contentStyles.therapyTable}`} data-therapy-table aria-label={copy.therapy.title}>
                 <thead><tr>{copy.therapy.tableHeaders.map(header => <th key={header} scope="col">{header}</th>)}</tr></thead>
@@ -1311,7 +1313,7 @@ export default function MeniskusPage() {
             <Callout label={copy.keyLabel}>{copy.therapy.key}</Callout>
           </Section>
 
-          <Section id="lernvideo" eyebrow="07" title={copy.video.title} lead="" {...sectionProps('lernvideo')}>
+          <Section id="lernvideo" eyebrow="07" title={copy.video.title} lead="" {...sectionProps('lernvideo')} migrationChapter>
             <div className={styles.videoCard}>
               <div className={styles.videoFrameWrap}>
                 <iframe
@@ -1330,7 +1332,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="takehome" eyebrow="08" title={takeHomeCopy.title} lead="" className={styles.takeHomeSection} {...sectionProps('takehome')}>
+          <Section id="takehome" eyebrow="08" title={takeHomeCopy.title} lead="" className={styles.takeHomeSection} {...sectionProps('takehome')} migrationChapter>
             <p className={contentStyles.summaryLead}>{takeHomeCopy.lead}</p>
             <TakeHomeItems items={takeHomeItems} />
           </Section>
@@ -1359,6 +1361,6 @@ export default function MeniskusPage() {
 
       <MobileLearningPath sections={copy.sections} toc={copy.toc} activeId={openId} readSections={readSections} onSelect={selectSection} />
 
-    </main>
+    </LegacyLessonMigration>
   )
 }

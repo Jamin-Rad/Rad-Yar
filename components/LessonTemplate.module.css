@@ -457,3 +457,5 @@
 }
 
 .compactCase .caseDescription{margin:0;color:var(--body);font-size:15px;line-height:1.75}
+
+.takeHomeStatic { display:grid; grid-template-columns:36px minmax(0,1fr); align-items:start; gap:16px; padding:20px 0; color:var(--ink); line-height:1.7; }

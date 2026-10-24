@@ -67,7 +67,7 @@ export default function ColloidCystLesson() {
   const sources = KOLLOID_SOURCES.map(source => ({ ...source, title: t(source.title), citation: source.citation, scope: t(source.scope) }))
   return <StandardLessonShell lessonId="kolloidzyste" lang={lang} title={t(C.title)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: langPath('/') }, { label: t({ de: 'Gehirn', en: 'Brain', fa: 'مغز' }), href: langPath('/lernen/gehirn') }, { label: t(C.title) }]}
-    sections={KOLLOID_SECTIONS.map(section => ({ ...section, label: t(section.label) }))}
+    sections={(KOLLOID_SECTIONS.map(section => ({ ...section, label: t(section.label) }))).map(section=>({...section,emphasis:section.emphasis||["take-home"].includes(section.id)}))}
     labels={Object.fromEntries(Object.entries(labels).map(([key, value]) => [key, t(value)]))}
     actions={{}} renderIcon={name => icons[name] || icons.scan} syncHashNavigation className={styles.page}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/educational/colloid-cyst/hero.svg', heroImageOpacity: .9, accent: '#6d8fb0', accentStrong: '#345977', accentSoft: '#eaf2f8', secondary: '#bc8756', secondaryStrong: '#70472b', heroBase: '#142838' }}
@@ -95,7 +95,7 @@ export default function ColloidCystLesson() {
         <p>{t(C.obstruction)}</p><aside className={styles.cave}><strong>{t({ de: 'CAVE', en: 'Caution', fa: 'احتیاط' })}</strong><p>{t(C.warning)}</p></aside>
       </LessonSection>
       <LessonSection id="self-check" title={t(KOLLOID_SECTIONS[3].label)} icon="check"><SelfCheck lang={lang} /></LessonSection>
-      <LessonSection id="take-home" title={t(KOLLOID_SECTIONS[4].label)} icon="summary" emphasis><ol className={styles.takeaways}>{C.takeaways.map((item, index) => <li key={index}>{t(item)}</li>)}</ol></LessonSection>
+      <LessonSection id="take-home" title={t(KOLLOID_SECTIONS[4].label)} icon="summary" emphasis><TakeHomeList items={C.takeaways.map((item,index)=>({title:t(item),detail:''}))}/></LessonSection>
     </div>
   </StandardLessonShell>
 }

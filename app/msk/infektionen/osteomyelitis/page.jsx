@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
-import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
+import StandardLessonShell, { LessonSection, LessonSources , TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { MSK_OSTEOMYELITIS_LESSON as lesson } from '@/data/mskOsteomyelitisLesson'
 import styles from './page.module.css'
 
@@ -61,7 +61,7 @@ export default function OsteomyelitisPage() {
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={pick(lesson.title, lang)} author="RadYar"
     heroImageAlt={pick(lesson.alt, lang)} syncHashNavigation
     breadcrumbs={[{ label: 'RadYar', href: langHref('/') }, { label: 'MSK', href: langHref('/lernen/msk') }, { label: pick(lesson.title, lang) }]}
-    sections={sections} labels={labels} actions={{}}
+    sections={(sections).map(section=>({...section,emphasis:section.emphasis||["take-home"].includes(section.id)}))} labels={labels} actions={{}}
     renderIcon={id => <Icon id={id} />}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.heroImage, heroImageOpacity: .85, accent: '#8ab9a7', accentStrong: '#286451', accentSoft: '#e8f2ed', secondary: '#d19b64', secondaryStrong: '#815124', heroBase: '#18342e' }}
     className={styles.page}
@@ -73,6 +73,6 @@ export default function OsteomyelitisPage() {
       <p className={styles.note}>{pick(chapter.note, lang)}</p>
     </LessonSection>)}
     <LessonSection id="case" icon="case" title={pick(lesson.case.title, lang)} bodyClassName={styles.body}><SelfCheck lang={lang} /></LessonSection>
-    <LessonSection id="take-home" icon="takeHome" title={labels.takeHome} bodyClassName={styles.body}><ol className={styles.rules}>{pick(lesson.takeHome, lang).map((rule, index) => <li key={index}>{rule}</li>)}</ol></LessonSection>
+    <LessonSection id="take-home" icon="takeHome" title={labels.takeHome} bodyClassName={styles.body}><TakeHomeList items={pick(lesson.takeHome, lang).map((rule,index)=>({title:rule,detail:''}))}/></LessonSection>
   </StandardLessonShell>
 }

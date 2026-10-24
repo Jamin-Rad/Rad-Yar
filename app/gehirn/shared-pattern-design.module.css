@@ -1,0 +1,12 @@
+.content, .check { --bg-card: var(--paper); --surface-soft: var(--canvas); --text: var(--ink); --text-strong: var(--ink); --text-muted: var(--body); --border: var(--line); color: var(--body); line-height: 1.85; }
+.content p, .check p { margin: .7rem 0 1.2rem; }
+.lead { font-size: 1.08rem; line-height: 1.85; }
+.options { display: grid; gap: .65rem; margin: 1.1rem 0; }
+.options button { padding: .9rem 1rem; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); background: var(--paper); cursor: pointer; text-align: start; line-height: 1.7; }
+.options button[aria-pressed='true'] { border-color: var(--lesson-accent); background: var(--lesson-accent-soft); }
+.options button:focus-visible { outline: 3px solid var(--lesson-secondary-strong); outline-offset: 3px; }
+.feedback { padding: 1rem; border: 1px solid var(--line); border-radius: 8px; background: var(--canvas); }
+.sources { padding: 1.1rem 1.3rem; border: 1px solid var(--line); border-radius: 9px; color: var(--body); background: var(--paper); line-height: 1.8; }
+.sources h2 { color: var(--ink); font-size: 1.15rem; }
+.sources a { color: var(--lesson-accent-strong); }
+.path { display: flex; flex-wrap: wrap; gap: .8rem; padding: 1rem; margin: 1.1rem 0; border: 1px solid var(--line); border-radius: 8px; background: var(--canvas); color: var(--ink); }

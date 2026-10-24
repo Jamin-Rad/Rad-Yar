@@ -1,5 +1,7 @@
 'use client'
 
+
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -197,7 +199,7 @@ export default function MyokardinfarktMrtPage() {
     </section>
   }
 
-  return <main className={`${template.page} ${styles.page}`} data-lesson-progress-managed="true" dir={current === 'fa' ? 'rtl' : 'ltr'} lang={current}>
+  return <LegacyLessonMigration className={`${template.page} ${styles.page}`} data-lesson-progress-managed="true" dir={current === 'fa' ? 'rtl' : 'ltr'} lang={current} lessonRoute="/thorax/kardio/myokardinfarkt-mrt" lessonId="/thorax/kardio/myokardinfarkt-mrt" summaryFallback={sections.filter(item=>item.takeaway).slice(0,5).map(item=>({title:t(item.title),detail:t(item.takeaway)}))}>
     <header className={template.header}>
       <div className={template.topline}><nav className={template.breadcrumb} aria-label="Breadcrumb"><Link href={withLang('/')}>RadYar</Link><span>/</span><Link href={withLang('/lernen/thorax')}>{t(copy.thorax)}</Link><span>/</span><span>{t(copy.chapter)}</span><span>/</span><strong>{t(copy.title)}</strong></nav><span className={template.author}>Dr. Zia</span></div>
       <div className={template.hero}>
@@ -221,5 +223,5 @@ export default function MyokardinfarktMrtPage() {
       {mobilePathOpen && <section id="mrt-mobile-learning-path" className={`${template.mobilePathPanel} ${styles.mobilePathPanel}`} role="dialog" aria-label={t(copy.path)}><header><div><small>{t(copy.progress)}</small><strong>{readSections.size} / {lessonSections.length}</strong></div><button type="button" onClick={() => setMobilePathOpen(false)} aria-label={t(copy.close)}>×</button></header><nav>{lessonSections.map(section => <button type="button" key={section.id} className={openId === section.id ? `${template.mobilePathCurrent} ${styles.mobileActive}` : ''} onClick={() => selectSection(section.id)} aria-current={openId === section.id ? 'location' : undefined}><span className={template.mobilePathItemIcon}><SectionIcon id={section.id} /></span><span><strong>{t(section.title)}</strong><small>{t(section.title)}</small></span><i aria-hidden="true">{readSections.has(section.id) ? '✓' : ''}</i></button>)}</nav></section>}
       <button type="button" className={template.mobilePathButton} onClick={() => setMobilePathOpen(value => !value)} aria-expanded={mobilePathOpen} aria-controls="mrt-mobile-learning-path"><span className={template.mobileProgressRing} style={{ '--mobile-progress': `${(readSections.size / lessonSections.length) * 360}deg` }}><b>{readSections.size}</b><small>/{lessonSections.length}</small></span><span className={template.mobileCurrentIcon}><SectionIcon id={activeSection.id} /></span><span className={template.mobilePathLabel}><strong>{t(copy.path)}</strong><small>{t(activeSection.title)}</small></span></button>
     </div>
-  </main>
+  </LegacyLessonMigration>
 }

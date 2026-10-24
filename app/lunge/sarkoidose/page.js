@@ -1,4 +1,5 @@
 'use client'
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
@@ -1122,6 +1123,7 @@ export default function SarkoidosePage() {
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
   return (
+    <LegacyLessonMigration lessonRoute="/lunge/sarkoidose" lessonId="/lunge/sarkoidose" lang={lang}>
     <div className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
       <InProgressBanner lang={lang} />
       <header className={styles.header}>
@@ -1163,17 +1165,17 @@ export default function SarkoidosePage() {
         </aside>
 
         <main className={styles.main}>
-          <Section id="grundlagen" title={copy.basics.title} lead={copy.basics.lead}>
+          <Section migrationChapter id="grundlagen" title={copy.basics.title} lead={copy.basics.lead}>
             <CardGrid items={copy.basics.items} />
             <Callout label={copy.keyLabel}>{copy.basics.key}</Callout>
           </Section>
 
-          <Section id="roentgen" title={copy.xray.title} lead={copy.xray.lead}>
+          <Section migrationChapter id="roentgen" title={copy.xray.title} lead={copy.xray.lead}>
             <Table headers={copy.xray.headers} rows={copy.xray.rows} />
             <Callout label={copy.keyLabel}>{copy.xray.key}</Callout>
           </Section>
 
-          <Section id="hrct" title={copy.hrct.title} lead={copy.hrct.lead}>
+          <Section migrationChapter id="hrct" title={copy.hrct.title} lead={copy.hrct.lead}>
             <div className={styles.splitGrid}>
               <div>
                 <h3 className={styles.subTitle}>{copy.hrct.lymphTitle}</h3>
@@ -1193,18 +1195,18 @@ export default function SarkoidosePage() {
             <Callout label={copy.keyLabel}>{copy.hrct.key}</Callout>
           </Section>
 
-          <Section id="extrapulmonal" title={copy.extra.title} lead={copy.extra.lead}>
+          <Section migrationChapter id="extrapulmonal" title={copy.extra.title} lead={copy.extra.lead}>
             <CardGrid items={copy.extra.items} />
             <Callout label={copy.keyLabel}>{copy.extra.key}</Callout>
           </Section>
 
-          <Section id="dd" title={copy.dd.title} lead={copy.dd.lead}>
+          <Section migrationChapter id="dd" title={copy.dd.title} lead={copy.dd.lead}>
             <Table headers={copy.dd.headers} rows={copy.dd.rows} />
             <Table headers={copy.dd.compareHeaders} rows={copy.dd.compareRows} className={styles.compareTable} />
             <Callout label={copy.keyLabel} type="cave">{copy.dd.key}</Callout>
           </Section>
 
-          <Section id="fallbeispiele" title={copy.cases.title} lead={copy.cases.lead}>
+          <Section migrationChapter id="fallbeispiele" title={copy.cases.title} lead={copy.cases.lead}>
             <div className={styles.caseGrid}>
               {copy.cases.items.map(item => (
                 <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
@@ -1224,7 +1226,7 @@ export default function SarkoidosePage() {
             </div>
           </Section>
 
-          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>
+          <Section migrationChapter id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>
             <div className={styles.takeHomeList}>
               {copy.takehome.items.map((item, idx) => (
                 <div key={item.title} className={styles.takeHomeItem}>
@@ -1240,5 +1242,6 @@ export default function SarkoidosePage() {
         </main>
       </div>
     </div>
+    </LegacyLessonMigration>
   )
 }

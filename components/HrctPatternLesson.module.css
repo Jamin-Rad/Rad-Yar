@@ -71,3 +71,15 @@
   .architectureHero { padding:12px; }
   .selfCheck { padding:15px 12px; }
 }
+.content { --surface:var(--paper); --surface-soft:var(--canvas); --text:var(--body); --border:var(--line); color:var(--body); line-height:1.8; }
+.content p { margin: .5rem 0 1.1rem; }
+.lead { font-size: 1.08rem; line-height: 1.8; }
+.orientation { display: grid; gap: .75rem; margin: 1.1rem 0 1.5rem; padding-inline-start: 1rem; border-inline-start: 3px solid var(--lesson-secondary); }
+.orientation dt { font-weight: 800; color: var(--ink); }
+.orientation dd { margin: .25rem 0 0; }
+.cards { display: grid; gap: 1.1rem; margin: 1.25rem 0; }
+.cards article { padding-block: .25rem 1rem; border-bottom: 1px solid var(--line); }
+.cards h3 { margin: 0 0 .5rem; color: var(--ink); font-size: 1.12rem; }
+.cave { margin: 1.1rem 0; padding: 1rem 1.2rem; background: #fff3e5; color: #744511; border-inline-start: 3px solid #d18b48; border-radius: 7px; }
+.cave p { margin: .5rem 0 0; }
+.readStatus { padding: 1rem; border: 1px solid var(--line); border-radius: 9px; background: var(--paper); color: var(--body); }

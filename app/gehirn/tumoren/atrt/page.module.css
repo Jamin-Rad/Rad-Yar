@@ -1,5 +1,5 @@
 .page { --lesson-accent:#668ca4; --lesson-accent-strong:#315d78; --lesson-accent-soft:#e8f1f6; --lesson-secondary:#bf8b65; }
-.lessonCopy { color:#263847; }
+.lessonCopy { color:var(--body); }
 .lead { font-size:1.08rem; line-height:1.75; font-weight:560; }
 .scope,.note { margin:1.35rem 0; padding:1rem 1.15rem; border-inline-start:4px solid #638ba3; border-radius:12px; background:#eef4f7; }
 .scope strong,.note strong { display:block; margin-bottom:.35rem; color:#315d78; }

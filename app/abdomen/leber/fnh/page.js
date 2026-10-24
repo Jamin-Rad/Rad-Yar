@@ -1,4 +1,5 @@
 'use client'
+import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 
 import Image from 'next/image'
 import LessonHero from '@/components/LessonHero'
@@ -90,7 +91,8 @@ const CONTENT = {
       "tableHeaders": ["Sequenz", "Typischer Befund", "Praktische Bedeutung"],
       "tableRows": [
         ["T1 nativ", "iso- bis leicht hypointens zum Leberparenchym", "unspezifisch"],
-        ["T2", "iso- bis leicht hyperintens zum Leberparenchym", "Läsion oft nur diskret abgrenzbar"],        ["T1 C+ arteriell", "scharf abgrenzbare, homogene, kräftige Kontrastmittelaufnahme", "Schlüsselbefund"],
+        ["T2", "iso- bis leicht hyperintens zum Leberparenchym", "Läsion oft nur diskret abgrenzbar"],
+        ["T1 C+ arteriell", "scharf abgrenzbare, homogene, kräftige Kontrastmittelaufnahme", "Schlüsselbefund"],
         ["T1 C+ portalvenös/spät", "fehlendes Wash-out, iso- bis leicht hyperintens", "passt zum typischen Muster, ist allein aber kein Ausschluss anderer Läsionen"],
         ["Hepatobiliäre Phase", "FNH meist iso- bis hyperintens; Adenome häufiger hypointens", "ACG 2024 empfiehlt multiphasische MRT mit hepatobiliär-spezifischem Kontrastmittel zur Abgrenzung; Subtypen und Ausnahmen beachten"],
         ["Zentrale Narbe – T2", "hyperintens", "in ca. 70 % der Fälle"],
@@ -107,7 +109,8 @@ const CONTENT = {
       "lead": "Etwa 20 % der FNH zeigen ein atypisches Erscheinungsbild, das die Abgrenzung zu anderen Lebertumoren erschweren kann.",
       "tableHeaders": ["Merkmal", "Typische FNH", "Atypische FNH"],
       "tableRows": [
-        ["Zentrale Narbe", "bei etwa 70 % sichtbar", "kann fehlen"],        ["Erscheinungsbild", "homogen", "heterogen"],
+        ["Zentrale Narbe", "bei etwa 70 % sichtbar", "kann fehlen"],
+        ["Erscheinungsbild", "homogen", "heterogen"],
         ["Kapsel", "keine echte Kapsel", "Pseudokapsel möglich"],
         ["Narbenanreicherung", "verzögerte KM-Aufnahme der Narbe", "fehlende Narbenanreicherung"],
         ["Fett", "kein intraläsionales Fett", "intraläsionales Fett möglich"]
@@ -204,7 +207,8 @@ const CONTENT = {
       "tableHeaders": ["Sequence", "Typical finding", "Practical meaning"],
       "tableRows": [
         ["Native T1", "iso- to mildly hypointense to liver parenchyma", "non-specific"],
-        ["T2", "iso- to mildly hyperintense to liver parenchyma", "lesion often only subtly visible"],        ["T1 C+ arterial", "sharply defined, homogeneous, strong enhancement", "key finding"],
+        ["T2", "iso- to mildly hyperintense to liver parenchyma", "lesion often only subtly visible"],
+        ["T1 C+ arterial", "sharply defined, homogeneous, strong enhancement", "key finding"],
         ["T1 C+ portal venous/delayed", "no wash-out, iso- to mildly hyperintense", "fits the typical pattern but does not by itself exclude other lesions"],
         ["Hepatobiliary phase", "FNH is usually iso- to hyperintense; adenomas are more often hypointense", "ACG 2024 recommends multiphase MRI with hepatobiliary-specific contrast to distinguish them; consider subtype and exceptions"],
         ["Central scar – T2", "hyperintense", "in about 70% of cases"],
@@ -221,7 +225,8 @@ const CONTENT = {
       "lead": "About 20% of FNH lesions show an atypical appearance that can make differentiation from other liver tumours difficult.",
       "tableHeaders": ["Feature", "Typical FNH", "Atypical FNH"],
       "tableRows": [
-        ["Central scar", "visible in about 70%", "may be absent"],        ["Appearance", "homogeneous", "heterogeneous"],
+        ["Central scar", "visible in about 70%", "may be absent"],
+        ["Appearance", "homogeneous", "heterogeneous"],
         ["Capsule", "no true capsule", "pseudocapsule possible"],
         ["Scar enhancement", "delayed enhancement of the scar", "absent scar enhancement"],
         ["Fat", "no intralesional fat", "intralesional fat possible"]
@@ -318,7 +323,8 @@ const CONTENT = {
       "tableHeaders": ["سکانس", "یافته تیپیک", "معنای عملی"],
       "tableRows": [
         ["T1 نیتیو", "ایزو تا کمی هیپواینتنس نسبت به پارانشیم کبد", "غیراختصاصی"],
-        ["T2", "ایزو تا کمی هایپراینتنس نسبت به پارانشیم کبد", "ضایعه اغلب فقط به‌طور خفیف قابل مشاهده است"],        ["T1 C+ شریانی", "تقویت پس از تزریق واضح، هموژن و قوی", "یافته کلیدی"],
+        ["T2", "ایزو تا کمی هایپراینتنس نسبت به پارانشیم کبد", "ضایعه اغلب فقط به‌طور خفیف قابل مشاهده است"],
+        ["T1 C+ شریانی", "تقویت پس از تزریق واضح، هموژن و قوی", "یافته کلیدی"],
         ["T1 C+ پورتال/تأخیری", "بدون واش‌اوت، ایزو تا کمی هایپراینتنس", "با الگوی تیپیک سازگار است، اما به‌تنهایی ضایعات دیگر را رد نمی‌کند"],
         ["فاز هپاتوبیلیاری", "FNH معمولاً ایزو تا هایپراینتنس؛ آدنوم‌ها بیشتر هیپواینتنس", "ACG 2024 برای افتراق از آدنوم، MRI چندفازی با ماده حاجب اختصاصی هپاتوبیلیاری را توصیه می‌کند؛ زیرگروه‌ها و استثناها را در نظر بگیرید"],
         ["اسکار مرکزی – T2", "هایپراینتنس", "حدود ۷۰٪ موارد"],
@@ -335,7 +341,8 @@ const CONTENT = {
       "lead": "حدود ۲۰٪ از موارد FNH ظاهر آتیپیک دارند که می‌تواند افتراق از سایر تومورهای کبدی را دشوار کند.",
       "tableHeaders": ["ویژگی", "FNH تیپیک", "FNH آتیپیک"],
       "tableRows": [
-        ["اسکار مرکزی", "در حدود ۷۰٪ قابل مشاهده است", "ممکن است وجود نداشته باشد"],        ["ظاهر", "هموژن", "هتروژن"],
+        ["اسکار مرکزی", "در حدود ۷۰٪ قابل مشاهده است", "ممکن است وجود نداشته باشد"],
+        ["ظاهر", "هموژن", "هتروژن"],
         ["کپسول", "کپسول واقعی ندارد", "پسودوکپسول ممکن است"],
         ["تقویت پس از تزریق اسکار", "تقویت تأخیری اسکار", "فقدان تقویت اسکار"],
         ["چربی", "بدون چربی داخل ضایعه", "چربی داخل ضایعه ممکن است"]
@@ -564,25 +571,10 @@ export default function LeberFnhPage() {
     return () => window.removeEventListener('hashchange', syncHash)
   }, [sectionIds])
 
-  useEffect(() => {
-    const observers = sectionIds.map(id => {
-      const el = document.getElementById(id)
-      if (!el) return null
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (!entry.isIntersecting) return
-          setActiveId(id)
-          if (window.location.hash !== `#${id}`) window.history.replaceState(null, '', `#${id}`)
-        },
-        { rootMargin: '-18% 0px -72% 0px', threshold: 0.01 }
-      )
-      observer.observe(el)
-      return observer
-    })
-    return () => observers.forEach(observer => observer?.disconnect())
-  }, [sectionIds])
+
 
   return (
+    <LegacyLessonMigration lessonRoute="/abdomen/leber/fnh" lessonId="/abdomen/leber/fnh" lang={lang} summaryFallback={copy.takehome.items.map(item => ({ title: item.title, detail: item.text }))}>
     <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
       <InProgressBanner lang={lang} />
       <header className={`${styles.header} ${reference.header}`}>
@@ -631,7 +623,7 @@ export default function LeberFnhPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="grundlagen" title={copy.basics.title} lead={copy.basics.lead} open={openSectionId === 'grundlagen'} onToggle={toggleSection}>
+          <Section migrationChapter id="grundlagen" title={copy.basics.title} lead={copy.basics.lead} open={openSectionId === 'grundlagen'} onToggle={toggleSection}>
             <div className={styles.cardsGrid}>
               {copy.basics.items.map(item => (
                 <div className={styles.infoCard} key={item.title}>
@@ -643,12 +635,12 @@ export default function LeberFnhPage() {
             <Callout label={copy.keyLabel}>{copy.basics.key}</Callout>
           </Section>
 
-          <Section id="sono" title={copy.sono.title} lead={copy.sono.lead} open={openSectionId === 'sono'} onToggle={toggleSection}>
+          <Section migrationChapter id="sono" title={copy.sono.title} lead={copy.sono.lead} open={openSectionId === 'sono'} onToggle={toggleSection}>
             <Table headers={copy.sono.tableHeaders} rows={copy.sono.tableRows} />
             <Callout label={copy.keyLabel}>{copy.sono.key}</Callout>
           </Section>
 
-          <Section id="ct" title={copy.ct.title} lead={copy.ct.lead} open={openSectionId === 'ct'} onToggle={toggleSection}>
+          <Section migrationChapter id="ct" title={copy.ct.title} lead={copy.ct.lead} open={openSectionId === 'ct'} onToggle={toggleSection}>
             <Table headers={copy.ct.tableHeaders} rows={copy.ct.tableRows} />
             <div className={styles.highlightBox}>
               <h3>{copy.ct.irisTitle}</h3>
@@ -657,7 +649,7 @@ export default function LeberFnhPage() {
             <Callout label={copy.keyLabel}>{copy.ct.key}</Callout>
           </Section>
 
-          <Section id="mrt" title={copy.mri.title} lead={copy.mri.lead} open={openSectionId === 'mrt'} onToggle={toggleSection}>
+          <Section migrationChapter id="mrt" title={copy.mri.title} lead={copy.mri.lead} open={openSectionId === 'mrt'} onToggle={toggleSection}>
             <Table headers={copy.mri.tableHeaders} rows={copy.mri.tableRows} />
             <figure className={styles.pdfCase}>
               <Image src="/educational/fnh/source-mri-p14.jpg" alt={copy.mri.figureAlt} width={565} height={488} sizes="(max-width: 760px) calc(100vw - 64px), 60vw" />
@@ -693,14 +685,14 @@ export default function LeberFnhPage() {
             <Callout label={copy.keyLabel}>{copy.mri.key}</Callout>
           </Section>
 
-          <Section id="atypisch" title={copy.atypical.title} lead={copy.atypical.lead} open={openSectionId === 'atypisch'} onToggle={toggleSection}>
+          <Section migrationChapter id="atypisch" title={copy.atypical.title} lead={copy.atypical.lead} open={openSectionId === 'atypisch'} onToggle={toggleSection}>
             <Table headers={copy.atypical.tableHeaders} rows={copy.atypical.tableRows} />
             <Callout type="cave" label={copy.caveLabel}>{copy.atypical.cave}</Callout>
             <Callout label={copy.keyLabel}>{copy.atypical.key}</Callout>
           </Section>
 
 
-          <Section id="fallbeispiele" title={caseCopy.title} lead={caseCopy.lead} open={openSectionId === 'fallbeispiele'} onToggle={toggleSection}>
+          <Section migrationChapter id="fallbeispiele" title={caseCopy.title} lead={caseCopy.lead} open={openSectionId === 'fallbeispiele'} onToggle={toggleSection}>
             <div className={styles.caseGrid}>
               {caseCopy.cases.map(item => (
                 <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
@@ -719,7 +711,7 @@ export default function LeberFnhPage() {
             </div>
           </Section>
 
-          <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead} open={openSectionId === 'takehome'} onToggle={toggleSection}>
+          <Section migrationChapter id="takehome" title={copy.takehome.title} lead={copy.takehome.lead} open={openSectionId === 'takehome'} onToggle={toggleSection}>
             <div className={styles.takeHomeGrid}>
               {copy.takehome.items.map((item, index) => (
                 <div className={styles.takeHomeItem} key={item.title}>
@@ -738,5 +730,6 @@ export default function LeberFnhPage() {
         </div>
       </div>
     </main>
+    </LegacyLessonMigration>
   )
 }

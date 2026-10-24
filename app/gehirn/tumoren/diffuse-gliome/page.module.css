@@ -28,7 +28,7 @@
 .practice > div { padding:1rem; background:#edf3f6; border-radius:10px; }
 .practice h3 { margin:0 0 .7rem; font-size:1rem; }
 .practice a { display:inline-block; margin-inline-end:1rem; color:#315b72; text-decoration:underline; }
-:global(html[data-theme='dark']) .copy { color:#d8e1e7; }
+:global(html[data-theme='dark']) .copy { color:var(--body); }
 :global(html[data-theme='dark']) .tableWrap,
 :global(html[data-theme='dark']) .figure,
 :global(html[data-theme='dark']) .check { border-color:#475662; }
