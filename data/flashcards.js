@@ -1,3 +1,9 @@
+import { ABDOMEN_EXISTING_CARDS, ABDOMEN_EXISTING_CARD_TOPICS } from './abdomenExistingPractice'
+import { ABDOMEN_LEGACY_CARDS, ABDOMEN_LEGACY_CARD_TOPICS } from './abdomenLegacyCardAccess'
+import { LIRADS_CARDS, LIRADS_CARD_TOPIC } from './abdomenHccPlanning'
+import { FLC_CARDS, FLC_CARD_TOPIC } from './abdomenFlcLesson'
+import { ABDOMEN_GI_CARDS, ABDOMEN_GI_CARD_TOPICS } from './abdomenGiCompletion'
+import { CIRRHOSIS_CARDS, CIRRHOSIS_CARD_TOPIC } from './abdomenCirrhosisLesson'
 import { SPINE_METABOLIC_CARDS, SPINE_METABOLIC_CARD_TOPICS } from './spineMetabolicCompletion'
 import { SPINE_INFECTIOUS_CARDS, SPINE_INFECTIOUS_CARD_TOPICS } from './spineInfectiousCompletion'
 import { SPINE_DEGENERATIVE_COMPLETION_CARDS, SPINE_DEGENERATIVE_COMPLETION_CARD_TOPICS } from './spineDegenerativeCompletion'
@@ -222,6 +228,12 @@ export const FLASHCARD_TOPICS = [
   ...SPINE_DEGENERATIVE_COMPLETION_CARD_TOPICS,
   ...SPINE_INFECTIOUS_CARD_TOPICS,
   ...SPINE_METABOLIC_CARD_TOPICS,
+  CIRRHOSIS_CARD_TOPIC,
+  ...ABDOMEN_EXISTING_CARD_TOPICS,
+  ...ABDOMEN_LEGACY_CARD_TOPICS,
+  LIRADS_CARD_TOPIC,
+  FLC_CARD_TOPIC,
+  ...ABDOMEN_GI_CARD_TOPICS,
   ...SPINE_COMPLETION_CARD_TOPICS,
   ...SPINE_PATTERN_CARD_TOPICS,
   ...THORAX_EXISTING_CARD_TOPICS,
@@ -690,9 +702,9 @@ const PANCREATITIS_FLASHCARD_CONTENT = [
     id: 'necrosis-timing',
     category: { de: 'CT-Zeitpunkt', en: 'CT timing', fa: 'زمان CT' },
     front: { de: 'Warum ist die Nekrosebeurteilung in der Frühphase schwierig?', en: 'Why is necrosis assessment difficult early on?', fa: 'چرا ارزیابی نکروز در فاز خیلی زود دشوار است؟' },
-    answer: { de: 'Pankreasnekrosen sind erst nach 48–72 Stunden zuverlässig nachweisbar.', en: 'Pancreatic necrosis is reliably detected only after 48–72 hours.', fa: 'نکروز پانکراس معمولاً فقط پس از ۴۸–۷۲ ساعت قابل اعتماد ارزیابی می‌شود.' },
-    explanation: { de: 'Eine sehr frühe CT kann das Ausmaß der Nekrose unterschätzen; Verlauf und Klinik entscheiden über Wiederholung.', en: 'Very early CT can underestimate necrosis; clinical course determines follow-up imaging.', fa: 'CT خیلی زود ممکن است نکروز را کمتر نشان دهد؛ روند بالینی تعیین‌کننده تصویربرداری پیگیری است.' },
-    diagram: { de: '<48 h: vorsichtig\n48–72 h: Nekrose besser sichtbar', en: '<48 h: cautious\n48–72 h: necrosis clearer', fa: '<۴۸ ساعت: احتیاط\n۴۸–۷۲ ساعت: نکروز واضح‌تر' },
+    answer: {"de": "Frühe CT kann das Ausmaß der Nekrose unterschätzen; es gibt keinen Zeitpunkt mit garantierter Nachweisbarkeit.", "en": "Early CT can underestimate the extent of necrosis; no time point guarantees detection.", "fa": "CT زودهنگام ممکن است وسعت نکروز را کمتر نشان دهد؛ هیچ زمان ثابتی تشخیص را تضمین نمی‌کند."},
+    explanation: {"de": "Bei schwerer Pankreatitis erste kontrastverstärkte CT idealerweise 72–96 h ab Symptombeginn; bei diagnostischer Unsicherheit oder dringlichen Komplikationen früher.", "en": "In severe pancreatitis, initial contrast-enhanced CT is ideally obtained 72–96 h from symptom onset; earlier for diagnostic uncertainty or urgent complications.", "fa": "در پانکراتیت شدید، CT اولیهٔ کنتراست‌دار ترجیحاً ۷۲–۹۶ ساعت از شروع علائم؛ در ابهام تشخیصی یا عوارض فوری، زودتر."},
+    diagram: {"de": "Früh: Nekrose unterschätzbar\nZeitpunkt nach klinischer Frage wählen", "en": "Early: necrosis may be underestimated\nChoose timing according to the clinical question", "fa": "زودهنگام: احتمال کم‌برآورد نکروز\nزمان‌بندی بر اساس سؤال بالینی"},
   },
   {
     id: 'atlanta-morphology',
@@ -731,16 +743,16 @@ const PANCREATITIS_FLASHCARD_CONTENT = [
     category: { de: 'Komplikationen', en: 'Complications', fa: 'عوارض' },
     front: { de: 'Welches Zeichen spricht im CT für infizierte Nekrose?', en: 'Which CT sign indicates infected necrosis?', fa: 'کدام علامت CT به نفع نکروز عفونی است؟' },
     answer: { de: 'Gas im Nekroseareal.', en: 'Gas within the necrotic area.', fa: 'گاز داخل ناحیه نکروز.' },
-    explanation: { de: 'Gas in der Nekrose ist praktisch pathognomonisch, wenn kein Eingriff vorausgegangen ist.', en: 'Gas in necrosis is virtually pathognomonic if there has been no intervention.', fa: 'گاز داخل نکروز، در نبود مداخله قبلی، تقریباً پاتوگنومونیک است.' },
-    diagram: { de: 'Nekrose + Gas → infiziert', en: 'necrosis + gas → infected', fa: 'نکروز + گاز → عفونی' },
+    explanation: {"de": "Gas spricht im passenden Kontext stark für Infektion, ist aber kein absoluter Beweis; Eingriffe und enterische Fisteln berücksichtigen.", "en": "Gas strongly suggests infection in context but is not absolute proof; consider interventions and enteric fistulas.", "fa": "گاز در زمینهٔ مناسب قویاً به نفع عفونت است، اما اثبات قطعی نیست؛ مداخلات و فیستول‌های روده‌ای را در نظر بگیرید."},
+    diagram: {"de": "Nekrose + Gas → Infektion stark vermuten", "en": "Necrosis + gas → strongly suspect infection", "fa": "نکروز + گاز ← شک قوی به عفونت"},
   },
   {
     id: 'duct-disruption',
     category: { de: 'Komplikationen', en: 'Complications', fa: 'عوارض' },
     front: { de: 'Welcher MRCP-Befund spricht für eine Pankreasgangruptur mit möglichem Disconnected-Duct-Syndrom?', en: 'Which MRCP finding suggests pancreatic duct disruption with possible disconnected duct syndrome?', fa: 'کدام یافته در MRCP به نفع پارگی مجرای پانکراس با احتمال سندرم مجرای جداشده است؟' },
-    answer: { de: 'Kontrastmittelaustritt aus dem Pankreasgang; bei Disconnection ist das distale Gangsegment vom Hauptgang getrennt.', en: 'Contrast extravasation from the pancreatic duct; with disconnection, the distal duct segment is separated from the main duct.', fa: 'نشت ماده حاجب از مجرای پانکراس؛ در قطع ارتباط، بخش دیستال مجرا از مجرای اصلی جدا شده است.' },
-    explanation: { de: 'Die Quelle zeigt den Kontrastmittelaustritt im MRCP als Hinweis auf Gangruptur. Die genaue Beurteilung eines disconnected duct erfordert die Darstellung der Gangkontinuität.', en: 'The source shows contrast extravasation on MRCP as a sign of duct disruption. Assessing a disconnected duct requires evaluating duct continuity.', fa: 'منبع، خروج ماده حاجب در MRCP را نشانه پارگی مجرا می‌داند. ارزیابی مجرای جداشده نیازمند بررسی پیوستگی مجراست.' },
-    diagram: { de: 'MRCP: Kontrastmittelaustritt → Gangruptur\nfehlende Kontinuität → disconnected duct erwägen', en: 'MRCP: contrast leak → duct disruption\nloss of continuity → consider disconnected duct', fa: 'MRCP: نشت ماده حاجب ← پارگی مجرا\nقطع پیوستگی ← احتمال مجرای جداشده' },
+    answer: {"de": "Fehlende Gangkontinuität; bei Disconnection bleibt ein vitaler vorgeschalteter Pankreasanteil vom ableitenden Gang getrennt.", "en": "Loss of duct continuity; in disconnection, viable upstream pancreas is separated from the draining duct.", "fa": "قطع پیوستگی مجرا؛ در قطع ارتباط کامل، بخش زندهٔ بالادست پانکراس از مجرای تخلیه‌کننده جدا می‌شود."},
+    explanation: {"de": "Standard-MRCP stellt Flüssigkeit T2-gewichtet dar. Sekretin-MRCP kann neu auftretende oder zunehmende Flüssigkeit außerhalb des Gangs zeigen; nicht als Kontrastmittelleck der Standard-MRCP bezeichnen.", "en": "Standard MRCP depicts fluid with T2 weighting. Secretin-enhanced MRCP can show new or increasing fluid outside the duct; do not call this a contrast leak on standard MRCP.", "fa": "MRCP معمول مایع را با وزن T2 نشان می‌دهد. MRCP با سکرتین ممکن است مایع تازه یا رو به افزایش خارج مجرا را نشان دهد؛ این یافته نشت مادهٔ حاجب در MRCP معمول نیست."},
+    diagram: {"de": "MRCP → Gangkontinuität\nSekretin-MRCP → möglicher Flüssigkeitsaustritt", "en": "MRCP → duct continuity\nSecretin MRCP → possible fluid leakage", "fa": "MRCP ← پیوستگی مجرا\nMRCP با سکرتین ← احتمال نشت مایع"},
   },
   {
     id: 'chronic-triad',
@@ -3867,6 +3879,12 @@ export const FLASHCARDS = [
   ...SPINE_DEGENERATIVE_COMPLETION_CARDS,
   ...SPINE_INFECTIOUS_CARDS,
   ...SPINE_METABOLIC_CARDS,
+  ...CIRRHOSIS_CARDS,
+  ...ABDOMEN_EXISTING_CARDS,
+  ...ABDOMEN_LEGACY_CARDS,
+  ...LIRADS_CARDS,
+  ...FLC_CARDS,
+  ...ABDOMEN_GI_CARDS,
   ...SPINE_COMPLETION_CARDS,
   ...SPINE_PATTERN_CARDS,
   ...THORAX_EXISTING_CARDS,

@@ -359,41 +359,39 @@ const AVM_PDF_CASE = {
 const RADIOPAEDIA_AVM_CASE = {
   de: {
     title: 'Mehrphasen-CT: hepatische AVM',
-    intro: 'Bei einer 85-jährigen Patientin mit abdomineller Distension war eine Läsion im rechten Leberlappen zuvor als Hämangiom bezeichnet worden. Vergleiche die vier CT-Phasen und achte auf die Gefäßstrukturen sowie die frühe Portalvenenopazifizierung.',
-    labels: ['Nativ', 'Arterielle Phase', 'Portalvenöse Phase', 'Verzögerte Phase'],
+    intro: 'Bei einer 85-jährigen Patientin mit abdomineller Distension war eine Läsion im rechten Leberlappen zuvor als Hämangiom bezeichnet worden. Vergleiche die arterielle und portalvenöse CT-Phase und achte auf die Gefäßstrukturen sowie die frühe Portalvenenopazifizierung.',
+    labels: ['Arterielle Phase', 'Portalvenöse Phase'],
     finding: 'Beschrieben werden dilatierte, geschlängelte periphere Gefäßkanäle, eine hypertrophierte rechte Leberarterie und eine Opazifizierung der Portalvenenäste bereits in der arteriellen Phase – passend zu einem arterioportalen Shunt. Die Originalfallbeschreibung nennt eine hepatische AVM.',
     credit: 'Bilder: Fall von Adarsh Ad, Radiopaedia.org, rID 71969, CC BY-NC-SA 3.0.',
     link: 'Originalfall und Bildserie auf Radiopaedia öffnen',
-    alt: ['Axiales CT nativ aus dem Radiopaedia-Fall einer hepatischen AVM.', 'Axiales CT in arterieller Phase aus dem Radiopaedia-Fall einer hepatischen AVM.', 'Axiales CT in portalvenöser Phase aus dem Radiopaedia-Fall einer hepatischen AVM.', 'Axiales CT in verzögerter Phase aus dem Radiopaedia-Fall einer hepatischen AVM.'],
+    alt: ['Axiales CT in arterieller Phase aus dem Radiopaedia-Fall einer hepatischen AVM.', 'Axiales CT in portalvenöser Phase aus dem Radiopaedia-Fall einer hepatischen AVM.'],
     url: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
   },
   en: {
     title: 'Multiphase CT: hepatic AVM',
-    intro: 'An 85-year-old woman presented with abdominal distension. A right hepatic lobe lesion had previously been reported as a haemangioma. Compare the four CT phases and look for the vascular channels and early portal-vein opacification.',
-    labels: ['Non-contrast', 'Arterial phase', 'Portal venous phase', 'Delayed phase'],
+    intro: 'An 85-year-old woman presented with abdominal distension. A right hepatic lobe lesion had previously been reported as a haemangioma. Compare the arterial and portal venous CT phases and look for the vascular channels and early portal-vein opacification.',
+    labels: ['Arterial phase', 'Portal venous phase'],
     finding: 'The case describes dilated tortuous peripheral vascular channels, a hypertrophied right hepatic artery, and opacification of portal-vein branches during the arterial phase, consistent with an arterioportal shunt. The original case diagnosis is hepatic AVM.',
     credit: 'Images: case contributed by Adarsh Ad, Radiopaedia.org, rID 71969, CC BY-NC-SA 3.0.',
     link: 'Open the original Radiopaedia case and image series',
-    alt: ['Axial non-contrast CT from a Radiopaedia hepatic AVM case.', 'Axial arterial-phase CT from a Radiopaedia hepatic AVM case.', 'Axial portal-venous-phase CT from a Radiopaedia hepatic AVM case.', 'Axial delayed-phase CT from a Radiopaedia hepatic AVM case.'],
+    alt: ['Axial arterial-phase CT from a Radiopaedia hepatic AVM case.', 'Axial portal-venous-phase CT from a Radiopaedia hepatic AVM case.'],
     url: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
   },
   fa: {
     title: 'CT چندفازی: AVM کبدی',
-    intro: 'بیمار خانمی ۸۵ ساله با اتساع شکم بود. در گزارش قبلی، ضایعهٔ لوب راست کبد همانژیوم تشخیص داده شده بود. چهار فاز CT را مقایسه کنید و به مجاری عروقی و اپاسیفیکاسیون زودرس ورید پورت توجه کنید.',
-    labels: ['بدون کنتراست', 'فاز شریانی', 'فاز ورید پورت', 'فاز تأخیری'],
+    intro: 'بیمار خانمی ۸۵ ساله با اتساع شکم بود. در گزارش قبلی، ضایعهٔ لوب راست کبد همانژیوم تشخیص داده شده بود. فاز شریانی و ورید پورت CT را مقایسه کنید و به مجاری عروقی و اپاسیفیکاسیون زودرس ورید پورت توجه کنید.',
+    labels: ['فاز شریانی', 'فاز ورید پورت'],
     finding: 'در شرح کیس، مجاری عروقی محیطیِ متسع و پیچ‌خورده، شریان کبدی راستِ هیپرتروفیه و اپاسیفیکاسیون شاخه‌های ورید پورت در فاز شریانی توصیف شده‌اند؛ الگویی سازگار با شانت آرتریوپورتال. تشخیص ثبت‌شده در کیس اصلی AVM کبدی است.',
     credit: 'تصاویر: کیس ارسالی Adarsh Ad، Radiopaedia.org، شناسهٔ rID 71969، مجوز CC BY-NC-SA 3.0.',
     link: 'باز کردن کیس و سری تصاویر اصلی در Radiopaedia',
-    alt: ['CT اکسیال بدون کنتراست از کیس AVM کبدی در Radiopaedia.', 'CT اکسیال در فاز شریانی از کیس AVM کبدی در Radiopaedia.', 'CT اکسیال در فاز ورید پورت از کیس AVM کبدی در Radiopaedia.', 'CT اکسیال در فاز تأخیری از کیس AVM کبدی در Radiopaedia.'],
+    alt: ['CT اکسیال در فاز شریانی از کیس AVM کبدی در Radiopaedia.', 'CT اکسیال در فاز ورید پورت از کیس AVM کبدی در Radiopaedia.'],
     url: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
   },
 }
 
 const RADIOPAEDIA_AVM_IMAGES = [
-  '/avm-liver/radiopaedia-71969/noncontrast.jpeg',
   '/avm-liver/radiopaedia-71969/arterial.jpeg',
   '/avm-liver/radiopaedia-71969/portal-venous.jpeg',
-  '/avm-liver/radiopaedia-71969/delayed.jpeg',
 ]
 
 const READ_COPY = {

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { getPracticeActions } from '../ulkuserkrankung/ExistingPracticeActions'
 import Image from 'next/image'
 import StandardLessonShell, { LessonSection, LessonSources, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -42,7 +43,7 @@ export default function PylorusPage() {
   ]
   const shellProps = {
     lessonId:'abdomen-pylorusstenose', lang, title:c.title, author:'RadYar', breadcrumbs, sections, labels,
-    renderIcon:id => <Icon id={id}/>, actions:{}, syncHashNavigation:true,
+    renderIcon:id => <Icon id={id}/>, actions:getPracticeActions('pylorusstenose','/abdomen/gi/pylorusstenose',lang), syncHashNavigation:true,
     theme:{backgroundImage:'/andarun-galaxy-v3.png',heroImage:'/educational/pylorus/hero.svg',heroImageOpacity:.95,accent:'#55a5b4',accentStrong:'#185967',accentSoft:'#e1f3f4',secondary:'#d69553',secondaryStrong:'#784316',heroBase:'#101b2d'},
     heroImageAlt:t(L('Schematische Darstellung der Messachsen für Pylorusmuskulatur und -kanal; keine Patientenaufnahme.','Schematic of pyloric muscle and canal measurement axes; not a patient ultrasound.','شماتیک محورهای اندازه‌گیری عضله و کانال پیلور؛ نه سونوگرافی بیمار.'),lang),
     sources:<LessonSources title={labels.sources} items={sources} note={c.sourceNote}/>,

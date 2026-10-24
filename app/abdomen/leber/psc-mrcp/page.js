@@ -1,9 +1,11 @@
 'use client'
+import {AbdomenClinicalContext} from '@/components/lesson-template/AbdomenContextAdditions'
 
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import LessonReferenceShell from '@/components/LessonReferenceShell'
 import styles from '../../gi/divertikulitis/page.module.css'
+import theme from './theme.module.css'
 
 const SECTION_LABELS = {
   de: { selfCheck: 'Perlschnur-Muster erkennen', summary: 'Befundung und Einordnung' },
@@ -29,12 +31,12 @@ export default function PscMrcpPage() {
   const backHref = lang === 'de' ? '/lernen/abdomen' : `/lernen/abdomen?lang=${lang}`
 
   return <LessonReferenceShell lessonId="abdomen-psc-mrcp" lang={lang} title={c.title} diagram="psc" copy={{ ...c, labels: SECTION_LABELS }} quizHref={quizHref} flashcardsHref={flashcardsHref} summary={c.summary}>
-    <div className={styles.main} style={{ maxWidth: 1080, margin: '0 auto', padding: '0 1rem' }}>
+    <div className={`${styles.main} ${theme.content}`} style={{ maxWidth: 1080, margin: '0 auto', padding: '0 1rem' }}>
       <nav aria-label={c.actionBack} style={{ margin: '0 0 1rem', display: 'flex', justifyContent: lang === 'fa' ? 'flex-end' : 'flex-start' }}>
         <Link href={backHref}>{c.actionBack}</Link>
       </nav>
       <section className={styles.section}>
-        <p className={styles.lead}>{c.lead}</p>
+        <p className={styles.lead}>{c.lead}</p><AbdomenClinicalContext kind="psc" lang={lang}/>
         <figure style={{ maxWidth: 560, margin: '1.25rem auto', textAlign: 'center' }}>
           <img src="/educational/psc-mrcp/mrcp-pdf-p29.png" alt={c.imageAlt} style={{ display: 'block', width: '100%', height: 'auto', borderRadius: '.5rem' }} />
           <figcaption style={{ marginTop: '.5rem', fontSize: '.9rem' }}>{c.imageCaption}</figcaption>

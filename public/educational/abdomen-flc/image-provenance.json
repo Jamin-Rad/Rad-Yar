@@ -1,0 +1,7 @@
+{
+  "topic": "fibrolamellaeres-karzinom",
+  "assets": [
+    {"file":"hero.png","type":"generated conceptual illustration","tool":"image_gen built-in","prompt":"Polished navy medical header; smooth noncirrhotic liver cutaway with single lobulated mass and central stellate scar; no text, no diagnostic scan.","review":"Author visually inspected; schematic only; not a diagnostic image."},
+    {"file":"takahashi-2021-figure1.jpg","type":"clinical CT/MRI","source":"https://doi.org/10.1186/s40792-021-01295-4","mirror":"https://pmc.ncbi.nlm.nih.gov/articles/PMC8448801/","figure":"1, panels A–F","authors":"Takahashi et al.","year":2021,"license":"CC BY 4.0","licenseUrl":"https://creativecommons.org/licenses/by/4.0/","changes":"None; original six-panel figure retained.","verified":"Publisher rights section includes figures unless otherwise credited; no separate figure restriction. Downloaded PMC mirror; author inspected full image. A native CT; B arterial; C delayed; D T2; E DWI; F hepatobiliary. ADC unavailable, so DWI alone not called restriction.","selection":"Young noncirrhotic case with clear large lobulated mass, arterial heterogeneity and central scar. Histology and molecular testing confirmed FLC. Typical teaching morphology; do not infer every FLC has the same scar signal."}
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "checked": "2026-10-24",
+  "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3748773/",
+  "credit": "Guillermo P. Sangster et al. 2013",
+  "license": "Creative Commons Attribution, article-specific copyright statement verified in PMC full text",
+  "images": [
+    {
+      "file": "morphology.jpg",
+      "figure": "3(a)",
+      "sourceFileUnchanged": true,
+      "display": "CSS clip of CT panel only (600/555), operative panel not displayed",
+      "finding": "Macronodular irregular liver surface, arterial CT, alcohol-associated cirrhosis",
+      "inspection": "Original full-resolution pixels and actual desktop/mobile screenshots inspected independently"
+    },
+    {
+      "file": "portal-hypertension.jpg",
+      "figure": "17",
+      "finding": "Sagittal contrast CT: splenomegaly S, retrogastric varices at G and splenorenal shunt; different patient from figure3",
+      "inspection": "Original pixels and caption inspected; browser chapter evidence recorded separately"
+    },
+    {
+      "file": "hero.png",
+      "source": "Generated anatomical concept illustration",
+      "diagnosticEvidence": false
+    }
+  ]
+}

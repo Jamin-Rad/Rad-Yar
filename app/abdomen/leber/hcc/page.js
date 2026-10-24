@@ -1,5 +1,6 @@
 'use client'
 
+import { HCC_PLANNING } from '@/data/abdomenHccPlanning'
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -26,7 +27,7 @@ const CONTENT = {
       { id: 'mrt', label: 'MRT & LI-RADS', icon: '🧲' },
       { id: 'infiltrativ', label: 'Infiltratives HCC', icon: '⚠️' },
       { id: 'fallbeispiele', label: 'Fallbeispiele', icon: '🧪' },
-      { id: 'takehome', label: 'Take home message', icon: '💡' },
+      { id: 'therapieplanung', label: 'Therapieplanung', icon: '◎' }, { id: 'takehome', label: 'Take home message', icon: '💡' },
     ],
     heroCards: [
       { value: 'APHE', label: 'arterielle Hypervaskularisation', text: 'non-rim arterial phase hyperenhancement' },
@@ -134,7 +135,7 @@ const CONTENT = {
     sections: [
       { id: 'grundlagen', label: 'Basics', icon: '🧬' }, { id: 'ct', label: 'Dynamic CT', icon: '🩻' },
       { id: 'mrt', label: 'MRI & LI-RADS', icon: '🧲' }, { id: 'infiltrativ', label: 'Infiltrative HCC', icon: '⚠️' },
-      { id: 'fallbeispiele', label: 'Cases', icon: '🧪' }, { id: 'takehome', label: 'Take home message', icon: '💡' },
+      { id: 'fallbeispiele', label: 'Cases', icon: '🧪' }, { id: 'therapieplanung', label: 'Treatment planning', icon: '◎' }, { id: 'takehome', label: 'Take home message', icon: '💡' },
     ],
     heroCards: [
       { value: 'APHE', label: 'arterial hyperenhancement', text: 'non-rim arterial phase hyperenhancement' },
@@ -223,7 +224,7 @@ const CONTENT = {
     sections: [
       { id: 'grundlagen', label: 'مبانی', icon: '🧬' }, { id: 'ct', label: 'CT دینامیک', icon: '🩻' },
       { id: 'mrt', label: 'MRI و LI-RADS', icon: '🧲' }, { id: 'infiltrativ', label: 'HCC انفیلتراتیو', icon: '⚠️' },
-      { id: 'fallbeispiele', label: 'نمونه کیس‌ها', icon: '🧪' }, { id: 'takehome', label: 'Take home message', icon: '💡' },
+      { id: 'fallbeispiele', label: 'نمونه کیس‌ها', icon: '🧪' }, { id: 'therapieplanung', label: 'برنامه‌ریزی درمان', icon: '◎' }, { id: 'takehome', label: 'Take home message', icon: '💡' },
     ],
     heroCards: [
       { value: 'APHE', label: 'تقویت شریانی بیش از پارانشیم', text: 'الگوی غیرحلقوی' },
@@ -337,7 +338,12 @@ function Callout({ type = 'note', label, children }) {
 function Section({ id, title, lead, children }) {
   const isMobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
-  useEffect(() => setOpen(false), [id])
+  useEffect(() => {
+    const applyHash = () => setOpen(window.location.hash === `#${id}`)
+    applyHash()
+    window.addEventListener('hashchange', applyHash)
+    return () => window.removeEventListener('hashchange', applyHash)
+  }, [id])
   return (
     <section id={id} className={styles.section}>
       <button className={styles.sectionHeader} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}><h2>{title}</h2><span>{open ? '−' : '+'}</span></button>
@@ -393,7 +399,7 @@ export default function HccPage() {
               key={section.id}
               data-section-id={section.id}
               className={`${styles.sideItem} ${activeId === section.id ? styles.sideItemActive : ''}`}
-              onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+              onClick={() => { window.location.hash = section.id; document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}
             >
               <span>{section.icon}</span><strong>{section.label}</strong>
             </button>
@@ -427,6 +433,11 @@ export default function HccPage() {
               <figcaption><strong>{copy.cases.pdfExample.title}</strong><p>{copy.cases.pdfExample.text}</p><small>{copy.cases.pdfExample.credit}</small></figcaption>
             </figure>
             <div className={styles.caseGrid}>{copy.cases.items.map(item => <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}><div className={styles.caseImage} aria-hidden="true">CT</div><div className={styles.caseBody}><div className={styles.caseLabelRow}>{item.tags.map(tag => <span key={tag} className={styles.caseLabel}>{tag}</span>)}</div><h3>{item.title}</h3><p>{item.text}</p><small>{item.credit}</small><strong>{copy.cases.open}</strong></div></a>)}</div>
+          </Section>
+          <Section id="therapieplanung" title={HCC_PLANNING.title[lang]} lead={HCC_PLANNING.intro[lang]}>
+            <div className={styles.cardsGrid}>{HCC_PLANNING.rows.map(([title, text], i) => <div className={styles.infoCard} key={i}><h3>{title[lang]}</h3><p>{text[lang]}</p></div>)}</div>
+            <p>{HCC_PLANNING.note[lang]}</p><p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/" target="_blank" rel="noopener noreferrer">AASLD2023</a> · <a href="https://easlcampus.eu/sites/default/files/2025-02/EASL_CPG_Management_HCC.pdf" target="_blank" rel="noopener noreferrer">EASL2025</a></p>
+            <Link href={withLang('/abdomen/leber/fibrolamellaeres-karzinom')}>{({de:'Eigenständige Lektion: Fibrolamelläres Karzinom',en:'Separate lesson: fibrolamellar carcinoma',fa:'درس جداگانه: کارسینوم فیبرولاملار'})[lang]}</Link>
           </Section>
           <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>
             <div className={styles.takeHomeGrid}>{copy.takehome.items.map((item, index) => <div className={styles.takeHomeItem} key={item.title}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></div>)}</div>

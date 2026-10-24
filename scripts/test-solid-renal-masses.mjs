@@ -63,10 +63,13 @@ const shell = compile('components/lesson-template/StandardLessonShell.jsx', {
   '@/components/LessonHero': ({ title, imageSrc, imageAlt }) => React.createElement('div', { className: 'hero', role: 'img', 'aria-label': imageAlt }, title, imageSrc),
   '@/lib/lessonHashNavigation': { observeLessonHash }, './StandardLessonShell.module.css': styles,
 })
+const contextAdditions=compile('components/lesson-template/AbdomenContextAdditions.jsx',{})
+const practiceActions=compile('app/abdomen/gi/ulkuserkrankung/ExistingPracticeActions.jsx',{'next/link':Link,'./page.module.css':styles})
 let lang = 'de'
 const Page = compile('app/abdomen/niere/raumforderungen/page.js', {
   '@/providers/LanguageProvider': { useLanguage: () => ({ lang }) },
   '@/components/lesson-template/StandardLessonShell': shell,
+  '@/components/lesson-template/AbdomenContextAdditions':contextAdditions,
   './page.module.css': styles,
 }).default
 for (const locale of ['de', 'en', 'fa']) {

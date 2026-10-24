@@ -1,0 +1,12 @@
+/* Pair the imported card styles with the reference shell's paper, not the app background. */
+.content {
+  --bg-card: var(--paper, #fff);
+  --surface-soft: var(--paper, #fff);
+  --text: var(--ink, #171426);
+  --text-strong: var(--ink, #171426);
+  --text-soft: var(--body, #4f5169);
+  --text-muted: var(--body, #4f5169);
+  --border: var(--line, #dddde5);
+  color: var(--ink, #171426);
+}
+.content a { color: var(--plum, #57245a); text-decoration: underline; }

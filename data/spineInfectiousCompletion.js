@@ -1,3 +1,4 @@
+import { completeExamOptions } from './reviewedExamDistractors'
 const L = (de,en,fa) => ({de,en,fa})
 const guideline = {title:'AAN/ACR/IDSA: Lyme disease guideline (2020)',href:'https://www.idsociety.org/practice-guideline/lyme-disease/'}
 const cohort = {title:'Volk et al. Spectrum of MRI findings in CNS Lyme neuroborreliosis (2024), Fig. 3 · CC BY 4.0',href:'https://pmc.ncbi.nlm.nih.gov/articles/PMC11139962/'}
@@ -43,7 +44,9 @@ const existing = [
 ]
 export const SPINE_EXISTING_INFECTION_PRACTICE = existing.map(({id,title,anchor})=>({id,title,anchor}))
 const entries = [...SPINE_INFECTIOUS_LESSONS.map(lesson=>({id:lesson.id,title:lesson.title,checks:lesson.checks,source:lesson.sources.map(s=>s.href).join('; ')})),...existing.map(e=>({...e,checks:[e.check],source:infectionSource}))]
-export const SPINE_INFECTIOUS_QUESTIONS = Object.fromEntries(['de','en','fa'].map(lang=>[lang,entries.flatMap(e=>e.checks.map(c=>({id:`${e.id}-${c.slug}-${lang}`,fach:'wirbelsaeule',tags:[e.id],question:c.prompt[lang],options:c.options.map((o,i)=>({id:'ABC'[i],text:o[lang]})),correct:'ABC'[c.answer],explanation:c.explanation[lang],wrongExplanations:Object.fromEntries(c.options.flatMap((_,i)=>i===c.answer?[]:[['ABC'[i],c.retry[lang]]])),source:e.source})))]))
+const RAW_SPINE_INFECTIOUS_QUESTIONS = Object.fromEntries(['de','en','fa'].map(lang=>[lang,entries.flatMap(e=>e.checks.map(c=>({id:`${e.id}-${c.slug}-${lang}`,fach:'wirbelsaeule',tags:[e.id],question:c.prompt[lang],options:c.options.map((o,i)=>({id:'ABC'[i],text:o[lang]})),correct:'ABC'[c.answer],explanation:c.explanation[lang],wrongExplanations:Object.fromEntries(c.options.flatMap((_,i)=>i===c.answer?[]:[['ABC'[i],c.retry[lang]]])),source:e.source})))]))
 export const SPINE_INFECTIOUS_CARDS = entries.flatMap(e=>e.checks.map(c=>({id:`${e.id}-${c.slug}`,topicId:e.id,category:e.title,front:c.prompt,answer:c.options[c.answer],explanation:c.explanation,source:e.source})))
 export const SPINE_INFECTIOUS_CARD_TOPICS = entries.map(e=>({id:e.id,href:`/flashcards/${e.id}`,title:e.title,description:e.title,icon:'◉',color:'#397c8b'}))
 export const SPINE_INFECTIOUS_TOPIC_GROUPS = entries.map(e=>({fachId:'wirbelsaeule',kapitelId:'ws-entzuendlich',title:e.title,topics:[{id:e.id,title:e.title}]}))
+
+export const SPINE_INFECTIOUS_QUESTIONS = completeExamOptions(RAW_SPINE_INFECTIOUS_QUESTIONS)

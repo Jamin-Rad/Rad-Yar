@@ -348,3 +348,34 @@
 @keyframes adminPdfPulse {
   50% { opacity: .42; transform: scale(.9); }
 }
+
+/* Keep admin tools in their own popover on narrow screens: they must never
+   overflow the brand area and intercept language/profile controls. */
+.adminGroup { position: relative; flex: 0 0 auto; }
+.adminMenuToggle { display: none; }
+@media (max-width: 920px) {
+  .adminMenuToggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 36px; padding: 0; border: 1px solid rgba(148,163,184,.3);
+    border-radius: 10px; color: #e2e8f0; background: #111827; cursor: pointer;
+  }
+  .adminMenuToggle:focus-visible { outline: 2px solid #fb923c; outline-offset: 2px; }
+  .adminGroup .adminPortals { display: none; }
+  .adminGroup .adminPortalsOpen {
+    display: flex; position: fixed; top: calc(var(--jaminova-header-height, 0px) + 64px);
+    left: 8px; right: 8px; width: auto; min-height: 48px; padding: 6px;
+    flex-wrap: wrap; gap: 6px; background: #0f172a; border-color: #475569;
+  }
+}
+@media (max-width: 480px) {
+  .nav { padding-inline: 8px; gap: 4px; }
+  .brandGroup { gap: 4px; flex-shrink: 0; }
+  .adminMenuToggle { width: 30px; }
+}
+@media (max-width: 360px) {
+  .nav { padding-inline: 6px; gap: 3px; }
+  .brandGroup { gap: 3px; }
+  .right { gap: 3px; }
+  .adminMenuToggle { width: 28px; }
+  .langBtn { min-width: 25px; padding-inline: 4px; }
+}

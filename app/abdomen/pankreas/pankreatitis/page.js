@@ -31,7 +31,7 @@ const CONTENT = {
     ],
     heroCards: [
       { value: '40–50 %', label: 'biliär', text: 'Choledocholithiasis oder Mikrolithiasis' },
-      { value: '48–72 h', label: 'Nekrose-Zeitfenster', text: 'Nekrosen erst dann zuverlässig beurteilbar' },
+      { value: '72–96 h', label: 'Schwere Pankreatitis', text: 'Erste CT-Beurteilung ab Symptombeginn; früher bei dringlicher Indikation' },
       { value: 'CTSI 0–10', label: 'Schweregrad', text: 'Balthazar-Grad plus Nekrose-Score' },
     ],
     basics: {
@@ -43,14 +43,14 @@ const CONTENT = {
         { title: 'Seltene Ursachen', text: 'Hypertriglyzeridämie, Hyperkalzämie, Medikamente wie Azathioprin, Furosemid, Steroide oder ACE-Hemmer, viral, autoimmun und iatrogen.' },
         { title: 'Post-ERCP', text: 'Die akute Pankreatitis ist die häufigste Komplikation nach ERCP. Auch abdominelle Eingriffe können Auslöser sein.' },
       ],
-      key: 'Bei früher CT kann die Pankreatitis unterschätzt werden: Nekrosebeurteilung ist erst nach 48–72 Stunden wirklich belastbar.',
+      key: 'Eine frühe CT kann Nekrose unterschätzen. Bei schwerer Pankreatitis ist die erste kontrastverstärkte CT zur Beurteilung idealerweise 72–96 Stunden nach Symptombeginn vorgesehen; diagnostische Unsicherheit oder dringliche Komplikationen können frühere Bildgebung erfordern.',
     },
     atlanta: {
       title: 'Atlanta-Klassifikation: Morphologie und Kollektionen',
       lead: 'Atlanta trennt die interstitiell-ödematöse von der nekrotisierenden Pankreatitis und benennt peripankreatische Kollektionen nach Morphologie und Zeitverlauf.',
       morphology: [
         { title: 'Interstitiell-ödematös', text: 'Diffuse Parenchymschwellung, homogene Kontrastmittelaufnahme und peripankreatisches Fett-Stranding.' },
-        { title: 'Nekrotisierend', text: 'Parenchym- und/oder Fettgewebsnekrosen. Typisch sind fehlendes Enhancement, inhomogene Areale, >30 % oder >3 cm Nekrose.' },
+        { title: 'Nekrotisierend', text: 'Pankreatische und/oder peripankreatische Nekrose, ohne Mindestgröße oder Mindestanteil. Fehlendes Parenchym-Enhancement und heterogene peripankreatische Veränderungen unterstützen die Einordnung.' },
       ],
       collectionHeaders: ['Form', '< 4 Wochen', '> 4 Wochen'],
       collections: [
@@ -90,8 +90,8 @@ const CONTENT = {
       items: [
         { title: 'Pseudoaneurysma', text: 'Rundliche, scharf begrenzte arterielle Struktur in oder nahe einer Kollektion/Nekrose. Entsteht durch Arrosion der Gefäßwand durch Pankreasenzyme; häufig A. lienalis.' },
         { title: 'Venenthrombose', text: 'Entzündliche Infiltrate und Druck durch Ödeme verlangsamen den Fluss und reizen die Venenwand. Häufig V. lienalis und V. portae.' },
-        { title: 'Infizierte Nekrose', text: 'Gas im Nekroseareal ist im CT praktisch pathognomonisch für eine infizierte Nekrose.' },
-        { title: 'Gangruptur', text: 'MRCP kann ein Kontrastmittel-Extravasat oder ein Disconnected-Duct-Syndrom zeigen.' },
+        { title: 'Infizierte Nekrose', text: 'Gas im Nekroseareal spricht im passenden klinischen Kontext stark für infizierte Nekrose. Vorangegangene Eingriffe und eine mögliche enterische Fistel mitberücksichtigen.' },
+        { title: 'Gangruptur', text: 'T2-gewichtete MRCP beurteilt die Gangkontinuität und mögliche Disconnection. Sekretin-MRCP kann den Nachweis eines Flüssigkeitsaustritts unterstützen; dies ist kein Kontrastmittelextravasat in der Standard-MRCP.' },
       ],
       cave: 'Ein Pseudoaneurysma darf nicht als „kleine hyperdense Struktur“ übersehen werden: arterielle Phase und Lage zur Kollektion sind entscheidend.',
     },
@@ -150,7 +150,7 @@ const CONTENT = {
     ],
     heroCards: [
       { value: '40–50%', label: 'biliary', text: 'choledocholithiasis or microlithiasis' },
-      { value: '48–72 h', label: 'necrosis timing', text: 'reliable assessment after this interval' },
+      { value: '72–96 h', label: 'Severe pancreatitis', text: 'Initial CT assessment from symptom onset; earlier for urgent indications' },
       { value: 'CTSI 0–10', label: 'severity', text: 'Balthazar grade plus necrosis score' },
     ],
     basics: {
@@ -162,14 +162,14 @@ const CONTENT = {
         { title: 'Rare causes', text: 'Hypertriglyceridaemia, hypercalcaemia, drugs such as azathioprine, furosemide, steroids or ACE inhibitors, viral, autoimmune and iatrogenic causes.' },
         { title: 'Post-ERCP', text: 'Acute pancreatitis is the most common complication after ERCP. Abdominal surgery may also trigger it.' },
       ],
-      key: 'Early CT can underestimate disease: necrosis is assessed reliably only after 48–72 hours.',
+      key: 'Early CT can underestimate necrosis. In severe pancreatitis, initial contrast-enhanced CT assessment is ideally performed 72–96 hours after symptom onset; diagnostic uncertainty or urgent complications may require earlier imaging.',
     },
     atlanta: {
       title: 'Atlanta classification: morphology and collections',
       lead: 'Atlanta separates interstitial oedematous from necrotising pancreatitis and names peripancreatic collections according to time and content.',
       morphology: [
         { title: 'Interstitial oedematous', text: 'Diffuse pancreatic swelling, homogeneous enhancement and peripancreatic fat stranding.' },
-        { title: 'Necrotising', text: 'Pancreatic parenchymal and/or fat necrosis. Typical findings are absent enhancement and heterogeneous areas, >30% or >3 cm.' },
+        { title: 'Necrotising', text: 'Pancreatic and/or peripancreatic necrosis, without a minimum size or proportion. Absent parenchymal enhancement and heterogeneous peripancreatic changes support classification.' },
       ],
       collectionHeaders: ['Type', '< 4 weeks', '> 4 weeks'],
       collections: [
@@ -209,8 +209,8 @@ const CONTENT = {
       items: [
         { title: 'Pseudoaneurysm', text: 'Round, sharply defined arterial structure in or near a collection/necrosis. It results from enzymatic arterial wall erosion, often involving the splenic artery.' },
         { title: 'Venous thrombosis', text: 'Inflammation and oedema slow flow and irritate adjacent veins. The splenic and portal veins are commonly affected.' },
-        { title: 'Infected necrosis', text: 'Gas within necrotic tissue is virtually pathognomonic on CT.' },
-        { title: 'Duct rupture', text: 'MRCP may show contrast extravasation or disconnected duct syndrome.' },
+        { title: 'Infected necrosis', text: 'Gas within necrotic tissue strongly suggests infected necrosis in the appropriate clinical context. Consider prior interventions and a possible enteric fistula.' },
+        { title: 'Duct rupture', text: 'T2-weighted MRCP assesses duct continuity and possible disconnection. Secretin-enhanced MRCP may support detection of fluid leakage; this is not contrast extravasation on standard MRCP.' },
       ],
       cave: 'Do not miss a pseudoaneurysm as a small hyperdense focus: arterial phase and relation to a collection are essential.',
     },
@@ -269,7 +269,7 @@ const CONTENT = {
     ],
     heroCards: [
       { value: '۴۰–۵۰٪', label: 'صفراوی', text: 'کلدوکولیتیازیس یا میکرولیتیازیس' },
-      { value: '۴۸–۷۲ ساعت', label: 'زمان ارزیابی نکروز', text: 'ارزیابی نکروز پس از این زمان مطمئن‌تر است' },
+      { value: '۷۲–۹۶ ساعت', label: 'پانکراتیت شدید', text: 'ارزیابی اولیه CT از شروع علائم؛ زودتر در اندیکاسیون فوری' },
       { value: 'CTSI 0–10', label: 'شدت', text: 'گرید Balthazar به‌علاوه امتیاز نکروز' },
     ],
     basics: {
@@ -281,14 +281,14 @@ const CONTENT = {
         { title: 'علل نادر', text: 'هیپرتری‌گلیسریدمی، هیپرکلسمی، داروها مانند آزاتیوپرین، فوروزماید، استروئیدها یا ACE inhibitor، علل ویروسی، خودایمنی و یاتروژنیک.' },
         { title: 'پس از ERCP', text: 'پانکراتیت حاد شایع‌ترین عارضه پس از ERCP است. جراحی‌های شکمی نیز می‌توانند محرک باشند.' },
       ],
-      key: 'CT خیلی زود ممکن است شدت بیماری را کمتر نشان دهد؛ ارزیابی نکروز معمولاً پس از ۴۸–۷۲ ساعت قابل اعتماد است.',
+      key: 'CT زودهنگام ممکن است نکروز را کمتر نشان دهد. در پانکراتیت شدید، ارزیابی اولیه با CT کنتراست‌دار ترجیحاً ۷۲–۹۶ ساعت پس از شروع علائم انجام می‌شود؛ ابهام تشخیصی یا عوارض فوری ممکن است تصویربرداری زودتر را ضروری کند.',
     },
     atlanta: {
       title: 'طبقه‌بندی آتلانتا: مورفولوژی و تجمعات',
       lead: 'آتلانتا پانکراتیت ادماتوی بینابینی را از نوع نکروزان جدا می‌کند و تجمعات اطراف پانکراس را بر اساس زمان و محتوا نام‌گذاری می‌کند.',
       morphology: [
         { title: 'ادماتوی بینابینی', text: 'تورم منتشر پانکراس، تقویت همگن پس از تزریق و استرندینگ چربی اطراف پانکراس.' },
-        { title: 'نکروزان', text: 'نکروز پارانشیم پانکراس و/یا چربی. عدم تقویت پس از تزریق و نواحی ناهمگن، به‌ویژه بیش از ۳۰٪ یا بیش از ۳ سانتی‌متر.' },
+        { title: 'نکروزان', text: 'نکروز پانکراس و/یا بافت اطراف آن، بدون حداقل اندازه یا درصد. عدم تقویت پارانشیم و تغییرات ناهمگن اطراف پانکراس از این طبقه‌بندی حمایت می‌کند.' },
       ],
       collectionHeaders: ['نوع', '< ۴ هفته', '> ۴ هفته'],
       collections: [
@@ -328,8 +328,8 @@ const CONTENT = {
       items: [
         { title: 'پسودوآنوریسم', text: 'ساختار گرد و واضح در فاز شریانی داخل یا کنار تجمع/نکروز. به علت خوردگی دیواره عروق توسط آنزیم‌های پانکراس ایجاد می‌شود؛ شایعاً شریان طحالی.' },
         { title: 'ترومبوز وریدی', text: 'التهاب و فشار ادم جریان خون را کند و دیواره ورید را تحریک می‌کند. ورید طحالی و ورید پورت شایع‌تر درگیر می‌شوند.' },
-        { title: 'نکروز عفونی', text: 'گاز داخل ناحیه نکروز در CT تقریباً پاتوگنومونیک است.' },
-        { title: 'پارگی مجرا', text: 'MRCP می‌تواند نشت کنتراست یا سندرم قطع‌شدگی مجرای پانکراس را نشان دهد.' },
+        { title: 'نکروز عفونی', text: 'گاز در ناحیهٔ نکروز در زمینهٔ بالینی مناسب قویاً به نفع نکروز عفونی است. مداخلات قبلی و احتمال فیستول روده‌ای را نیز در نظر بگیرید.' },
+        { title: 'پارگی مجرا', text: 'MRCP با وزن T2 پیوستگی مجرا و احتمال قطع ارتباط را ارزیابی می‌کند. MRCP با سکرتین ممکن است به شناسایی نشت مایع کمک کند؛ این یافته نشت مادهٔ حاجب در MRCP معمول نیست.' },
       ],
       cave: 'پسودوآنوریسم نباید با یک کانون هایپردنس کوچک اشتباه گرفته شود؛ فاز شریانی و ارتباط با تجمع بسیار مهم است.',
     },
@@ -553,7 +553,7 @@ export default function PankreatitisPage() {
             </div>
           </Section>
 
-          <div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
+          <p><a href="https://gut.bmj.com/content/62/1/102">Revised Atlanta 2012</a> · <a href="https://doi.org/10.1186/s13017-019-0247-0">WSES 2019</a> · <a href="https://gastro.org/clinical-guidance/management-of-pancreatic-necrosis/">AGA: Pancreatic necrosis</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8068672/">Secretin-MRCP expert panel</a></p><div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
         </div>
       </div>
     </main>

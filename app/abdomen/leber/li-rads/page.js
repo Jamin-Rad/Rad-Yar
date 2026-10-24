@@ -3,6 +3,7 @@
 import LessonReferenceShell from '@/components/LessonReferenceShell'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
+import { LIRADS_NEXT } from '@/data/abdomenHccPlanning'
 
 const C = {
   de: {
@@ -33,7 +34,7 @@ const C = {
     ],
     cautionTitle: 'Ancillary Features sind keine Abkürzung', caution: 'Ancillary Features können die Kategorie nach ACR-Regeln höchstens bis LR-4 hochstufen; sie dürfen nicht zu LR-5 führen. Wenn Merkmale für Malignität und Benignität zugleich vorliegen, wird nicht angepasst. LR-5 bedeutet innerhalb der geeigneten Zielgruppe „sicher HCC“; das ist keine Aussage über Patienten außerhalb dieser Zielgruppe.',
     reportTitle: 'Was gehört in den Bericht?', report: 'Beobachtung einzeln lokalisieren und messen, relevante Major Features nennen und die Kategorie mit der verwendeten CT/MRT- und LI-RADS-Version angeben. Bei LR-M die wahrscheinliche Ätiologie nennen, falls möglich; bei LR-TIV betroffene Vene und wahrscheinlichen Ursprung beschreiben. Empfehlungen zu Verlauf, Biopsie oder Therapie hängen vom klinischen Kontext und multidisziplinärer Entscheidung ab.',
-    source: 'Quellen: Abdomen.pdf, PDF-Seiten 20–23 (Druckseiten 19–22); ACR LI-RADS CT/MRI v2018 Core, Diagnostic Algorithm / Getting Started / Diagnostic Table / Ancillary Features. PDF-Management- und Therapieangaben auf pp.22–23 werden hier nicht als aktuelle Empfehlungen übernommen.',
+    source: 'Quellen: Abdomen.pdf, PDF-Seiten 20–23 (Druckseiten 19–22); ACR LI-RADS CT/MRI v2018 Core, Diagnostic Algorithm / Getting Started / Diagnostic Table / Ancillary Features. Die nächsten Schritte sind mit AASLD2023 ergänzt; die Therapieplanung ist separat verlinkt.',
     checkQ: 'Erwachsene Person mit Zirrhose, unbehandelte 15-mm-Beobachtung: nicht-randständiges APHE und nicht-peripheres Wash-out. Welche Kategorie ergibt sich nach CT/MRT LI-RADS v2018?',
     options: ['LR-5', 'LR-4, weil die Beobachtung nur 15 mm misst', 'LR-3, weil Beobachtungen unter 20 mm nicht LR-5 sein können'],
     why: 'In der 10–19-mm-Klasse erreicht nicht-randständiges APHE plus nicht-peripheres Wash-out LR-5. Das gilt nur, wenn Zielgruppe und technische Voraussetzungen erfüllt sind.',
@@ -67,7 +68,7 @@ const C = {
     ],
     cautionTitle: 'Ancillary features are not a shortcut', caution: 'Under ACR rules, ancillary features may upgrade a category only as far as LR-4; they cannot produce LR-5. If features favouring malignancy and benignity are both present, do not adjust. LR-5 means “definitely HCC” within the eligible target population; it does not apply to patients outside that population.',
     reportTitle: 'What belongs in the report?', report: 'Localise and measure each observation, state relevant major features, and give the category together with the CT/MRI and LI-RADS version used. For LR-M, name the likely aetiology if possible; for LR-TIV, describe the involved vein and likely origin. Follow-up, biopsy, or treatment recommendations depend on clinical context and multidisciplinary discussion.',
-    source: 'Sources: Abdomen.pdf, PDF pp.20–23 (printed pp.19–22); ACR LI-RADS CT/MRI v2018 Core, Diagnostic Algorithm / Getting Started / Diagnostic Table / Ancillary Features. PDF management and treatment notes on pp.22–23 are not adopted here as current recommendations.',
+    source: 'Sources: Abdomen.pdf, PDF pp.20–23 (printed pp.19–22); ACR LI-RADS CT/MRI v2018 Core, Diagnostic Algorithm / Getting Started / Diagnostic Table / Ancillary Features. Next-step guidance is supplemented by AASLD2023; treatment planning is linked separately.',
     checkQ: 'An adult with cirrhosis has an untreated 15-mm observation with nonrim APHE and nonperipheral washout. Which category follows CT/MRI LI-RADS v2018?',
     options: ['LR-5', 'LR-4, because the observation measures only 15 mm', 'LR-3, because observations below 20 mm cannot be LR-5'],
     why: 'In the 10–19 mm class, nonrim APHE plus nonperipheral washout meets LR-5. This applies only when the target population and technical requirements are met.',
@@ -101,7 +102,7 @@ const C = {
     ],
     cautionTitle: 'ویژگی‌های کمکی راه میان‌بُر نیستند', caution: 'طبق قواعد ACR، ویژگی کمکی می‌تواند رده را حداکثر تا LR-4 بالا ببرد و نمی‌تواند LR-5 ایجاد کند. اگر هم ویژگی به نفع بدخیمی و هم ویژگی به نفع خوش‌خیمی وجود دارد، رده را تغییر ندهید. LR-5 در گروه هدف واجد شرایط به معنای «قطعاً HCC» است؛ این رده برای افراد خارج از گروه هدف کاربرد ندارد.',
     reportTitle: 'چه مواردی در گزارش بیاید؟', report: 'هر ضایعه را مکان‌یابی و اندازه‌گیری کنید، ویژگی‌های اصلی مرتبط را بنویسید و رده را همراه نسخه CT/MRI و LI-RADS ذکر کنید. برای LR-M در صورت امکان منشأ محتمل را بنویسید؛ در LR-TIV ورید درگیر و منشأ احتمالی را توصیف کنید. توصیه پیگیری، نمونه‌برداری یا درمان به زمینه بالینی و تصمیم چندتخصصی وابسته است.',
-    source: 'منابع: Abdomen.pdf، صفحات PDF ۲۰–۲۳ (صفحات چاپی ۱۹–۲۲)؛ ACR LI-RADS CT/MRI v2018 Core، الگوریتم تشخیصی / گروه هدف / جدول تشخیصی / ویژگی‌های کمکی. توصیه‌های مدیریت و درمان PDF در صفحات ۲۲–۲۳ در این درس به‌عنوان توصیه جاری استفاده نشده‌اند.',
+    source: 'منابع: Abdomen.pdf، صفحات PDF ۲۰–۲۳ (صفحات چاپی ۱۹–۲۲)؛ ACR LI-RADS CT/MRI v2018 Core، الگوریتم تشخیصی / گروه هدف / جدول تشخیصی / ویژگی‌های کمکی. اقدام بعدی با AASLD2023 تکمیل شده است؛ برنامه‌ریزی درمان در پیوند جداگانه آمده است.',
     checkQ: 'در فرد بزرگسال مبتلا به سیروز، یک ضایعه درمان‌نشده ۱۵ میلی‌متری دارای APHE غیرحاشیه‌ای و wash-out غیرمحیطی است. طبق LI-RADS CT/MRI v2018 کدام رده مناسب است؟',
     options: ['LR-5', 'LR-4، چون اندازه ضایعه فقط ۱۵ میلی‌متر است', 'LR-3، چون ضایعات کوچک‌تر از ۲۰ میلی‌متر نمی‌توانند LR-5 باشند'],
     why: 'در رده اندازه ۱۰ تا ۱۹ میلی‌متر، APHE غیرحاشیه‌ای همراه wash-out غیرمحیطی معیار LR-5 است. این نتیجه فقط با برقرار بودن گروه هدف و شرایط فنی معتبر است.',
@@ -116,8 +117,11 @@ function DecisionFlow({ c }) {
 export default function LiRadsPage() {
   const { lang } = useLanguage()
   const c = C[lang] || C.de
+  const t = value => value[lang] || value.de
+  const local = path => `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
+  const from = encodeURIComponent(local('/abdomen/leber/li-rads'))
   const check = { question:c.checkQ, options:c.options, answer:0, explanation:c.why, diagramCaption:c.flowCaption }
-  return <LessonReferenceShell lessonId="li-rads" lang={lang} title={c.title} diagram="liver" goals={c.goals} check={check} summary={c.summary} copy={{ contentTitle:{ de:'Die diagnostische Kategorie sicher anwenden', en:'Applying the diagnostic category safely', fa:'کاربرد ایمن رده تشخیصی' } }}>
+  return <LessonReferenceShell lessonId="li-rads" lang={lang} title={c.title} quizHref={local(`/ueben/quiz?fach=abdomen&n=2&themen=li-rads&from=${from}`)} flashcardsHref={local(`/flashcards/li-rads?from=${from}`)} diagram="liver" goals={c.goals} check={check} summary={c.summary} copy={{ contentTitle:{ de:'Die diagnostische Kategorie sicher anwenden', en:'Applying the diagnostic category safely', fa:'کاربرد ایمن رده تشخیصی' } }}>
     <main className={styles.content}>
       <p className={styles.lead}>{c.intro}</p>
       <section className={styles.panel}><h2>{c.flowTitle}</h2><DecisionFlow c={c}/><p className={styles.caption}>{c.flowCaption}</p></section>
@@ -127,6 +131,7 @@ export default function LiRadsPage() {
       <section className={styles.decision}><h2>{c.lr5Title}</h2><ol>{c.lr5.map(point=><li key={point}>{point}</li>)}</ol></section>
       <aside className={styles.cave}><h2>{c.cautionTitle}</h2><p>{c.caution}</p></aside>
       <section className={styles.panel}><h2>{c.reportTitle}</h2><p>{c.report}</p></section>
+      <section className={styles.panel}><h2>{t(LIRADS_NEXT.title)}</h2><dl className={styles.categories}>{LIRADS_NEXT.rows.map(([term, text]) => <div key={term}><dt>{term}</dt><dd>{t(text)}</dd></div>)}</dl><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/" target="_blank" rel="noopener noreferrer">AASLD2023 · 19–21</a><p><a href={`${local('/abdomen/leber/hcc')}#therapieplanung`}>{t({de:'Zur HCC-Therapieplanung',en:'HCC treatment planning',fa:'برنامه‌ریزی درمان HCC'})}</a></p></section>
       <small className={styles.source}>{c.source}</small>
     </main>
   </LessonReferenceShell>

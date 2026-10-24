@@ -16,8 +16,10 @@ const titles={de:'Kolitis im CT: zwei unterschiedliche Muster',en:'Colitis on CT
 const sourceNotes={de:'PDF-Seiten 81–82',en:'PDF pages 81–82',fa:'صفحات PDF ۸۱–۸۲'}
 const sourceTitles={de:'Abdomen.pdf, PDF-Seiten 81–82',en:'Abdomen.pdf, PDF pages 81–82',fa:'Abdomen.pdf، صفحات PDF ۸۱–۸۲'}
 const navLabels={de:['Das Grundmuster erkennen','Akute Kolitis: passt das Muster zu PMC?','Kolitis im CT: zwei unterschiedliche Muster'],en:['Recognize the core pattern','Acute colitis: does the pattern fit PMC?','Colitis on CT: two different patterns'],fa:['الگوی اصلی را بشناسید','کولیت حاد: آیا الگو با PMC سازگار است؟','کولیت در CT: دو الگوی متفاوت']}
+const contextAdditions=compile('components/lesson-template/AbdomenContextAdditions.jsx',{})
+const practiceActions=compile('app/abdomen/gi/ulkuserkrankung/ExistingPracticeActions.jsx',{'next/link':Link,'./page.module.css':styles})
 let lang='de'
-const Page=compile('app/abdomen/gi/kolitis-patterns/page.js',{'next/image':Image,'@/providers/LanguageProvider':{useLanguage:()=>({lang})},'@/components/lesson-template/StandardLessonShell':shell,'./page.module.css':styles}).default
+const Page=compile('app/abdomen/gi/kolitis-patterns/page.js',{'next/image':Image,'@/providers/LanguageProvider':{useLanguage:()=>({lang})},'@/components/lesson-template/StandardLessonShell':shell,'@/components/lesson-template/AbdomenContextAdditions':contextAdditions,'../ulkuserkrankung/ExistingPracticeActions':practiceActions,'./page.module.css':styles}).default
 for(const locale of ['de','en','fa']){
   lang=locale
   const html=renderToStaticMarkup(React.createElement(Page))

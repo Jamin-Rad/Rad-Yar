@@ -1,3 +1,8 @@
+import { ABDOMEN_EXISTING_QUESTIONS, ABDOMEN_EXISTING_TOPIC_GROUPS } from './abdomenExistingPractice'
+import { LIRADS_QUESTIONS, LIRADS_TOPIC_GROUP } from './abdomenHccPlanning'
+import { FLC_QUESTIONS, FLC_TOPIC_GROUP } from './abdomenFlcLesson'
+import { ABDOMEN_GI_QUESTIONS, ABDOMEN_GI_TOPIC_GROUPS } from './abdomenGiCompletion'
+import { CIRRHOSIS_QUESTIONS, CIRRHOSIS_TOPIC_GROUP } from './abdomenCirrhosisLesson'
 import { SPINE_METABOLIC_QUESTIONS, SPINE_METABOLIC_TOPIC_GROUPS } from './spineMetabolicCompletion'
 import { SPINE_INFECTIOUS_QUESTIONS, SPINE_INFECTIOUS_TOPIC_GROUPS } from './spineInfectiousCompletion'
 import { SPINE_DEGENERATIVE_COMPLETION_QUESTIONS, SPINE_DEGENERATIVE_COMPLETION_TOPIC_GROUPS } from './spineDegenerativeCompletion'
@@ -425,23 +430,11 @@ const PANCREATITIS_QUESTION_CONTENT = [
   },
   {
     id: 'necrosis-timing',
-    question: {
-      de: 'Wann ist der CT-Nachweis einer Pankreasnekrose typischerweise zuverlässig?',
-      en: 'When is CT detection of pancreatic necrosis typically reliable?',
-      fa: 'تشخیص نکروز پانکراس در CT معمولاً چه زمانی قابل اعتماد است؟',
-    },
-    options: [
-      { id: 'A', text: { de: 'Sofort in der ersten Stunde', en: 'Immediately in the first hour', fa: 'بلافاصله در ساعت اول' } },
-      { id: 'B', text: { de: 'Nach 48–72 Stunden', en: 'After 48–72 hours', fa: 'پس از ۴۸–۷۲ ساعت' } },
-      { id: 'C', text: { de: 'Erst nach 12 Monaten', en: 'Only after 12 months', fa: 'فقط پس از ۱۲ ماه' } },
-      { id: 'D', text: { de: 'Nur in der Nativ-CT', en: 'Only on non-contrast CT', fa: 'فقط در CT بدون کنتراست' } },
-    ],
-    correct: 'B',
-    explanation: {
-      de: 'Nekrosen können in sehr früher Bildgebung unterschätzt werden. Nach 48–72 Stunden ist fehlendes Enhancement besser beurteilbar.',
-      en: 'Necrosis may be underestimated very early. After 48–72 hours absent enhancement is more reliably assessed.',
-      fa: 'نکروز در تصویربرداری خیلی زود ممکن است کمتر دیده شود. پس از ۴۸–۷۲ ساعت فقدان تقویت قابل اعتمادتر است.',
-    },
+    question: {"de": "Bei schwerer akuter Pankreatitis ohne dringliche frühere Indikation: Wann empfiehlt WSES die erste kontrastverstärkte CT-Beurteilung?", "en": "In severe acute pancreatitis without an urgent earlier indication, when does WSES recommend initial contrast-enhanced CT assessment?", "fa": "در پانکراتیت حاد شدید بدون اندیکاسیون فوری برای تصویربرداری زودتر، WSES چه زمانی را برای ارزیابی اولیه با CT کنتراست‌دار توصیه می‌کند؟"},
+    options: [{"id": "A", "text": {"de": "Routinemäßig innerhalb der ersten 24 Stunden.", "en": "Routinely within the first 24 hours.", "fa": "به‌طور روتین در ۲۴ ساعت اول."}}, {"id": "B", "text": {"de": "Idealerweise 72–96 Stunden ab Symptombeginn.", "en": "Ideally 72–96 hours from symptom onset.", "fa": "ترجیحاً ۷۲–۹۶ ساعت پس از شروع علائم."}}, {"id": "C", "text": {"de": "Routinemäßig bis nach vier Wochen warten.", "en": "Routinely wait until after four weeks.", "fa": "به‌طور روتین تا پس از چهار هفته صبر کنید."}}, {"id": "D", "text": {"de": "Stets am selben festen Termin, auch bei akuter Verschlechterung.", "en": "Always at the same fixed interval, even during acute deterioration.", "fa": "همیشه در زمان ثابت، حتی هنگام بدتر شدن حاد وضعیت."}}],
+    correct:'B',
+    explanation:{"de": "Frühe CT kann Nekrose unterschätzen. Das Zeitfenster gilt für die erste Beurteilung schwerer Erkrankung; diagnostische Unsicherheit oder dringliche Komplikationen können frühere Bildgebung erfordern.", "en": "Early CT can underestimate necrosis. This interval concerns initial assessment of severe disease; diagnostic uncertainty or urgent complications can require earlier imaging.", "fa": "CT زودهنگام ممکن است نکروز را کمتر نشان دهد. این بازه برای ارزیابی اولیهٔ بیماری شدید است؛ ابهام تشخیصی یا عوارض فوری ممکن است تصویربرداری زودتر را ضروری کند."},
+    source:'https://doi.org/10.1186/s13017-019-0247-0',
   },
   {
     id: 'atlanta-morphology',
@@ -4382,7 +4375,22 @@ for (const lang of ['de', 'en', 'fa']) {
   QUESTION_BANK[lang].push(...STERNUM_RIB_QUESTIONS[lang], ...GLENOHUMERAL_OA_QUESTIONS[lang], ...UPPER_ARTERY_QUESTIONS[lang])
 }
 
+for (const lang of ['de','en','fa']) QUESTION_BANK[lang].push(...CIRRHOSIS_QUESTIONS[lang])
+
+for (const lang of ['de','en','fa']) QUESTION_BANK[lang].push(...ABDOMEN_GI_QUESTIONS[lang])
+
+for (const lang of ['de','en','fa']) QUESTION_BANK[lang].push(...FLC_QUESTIONS[lang])
+
+for (const lang of ['de','en','fa']) QUESTION_BANK[lang].push(...LIRADS_QUESTIONS[lang])
+
+for (const lang of ['de','en','fa']) QUESTION_BANK[lang].push(...ABDOMEN_EXISTING_QUESTIONS[lang])
+
 export const MCQ_TOPIC_GROUPS = [
+  ...ABDOMEN_EXISTING_TOPIC_GROUPS,
+  LIRADS_TOPIC_GROUP,
+  FLC_TOPIC_GROUP,
+  ...ABDOMEN_GI_TOPIC_GROUPS,
+  CIRRHOSIS_TOPIC_GROUP,
   { fachId: 'msk', kapitelId: 'msk-trauma', title: STERNUM_RIB_COPY.title, topics: [{ id: STERNUM_RIB_ID, title: STERNUM_RIB_COPY.title }] },
   { fachId: 'msk', kapitelId: 'msk-schulter', title: GLENOHUMERAL_OA_LESSON.title, topics: [{ id: GLENOHUMERAL_OA_TOPIC_ID, title: GLENOHUMERAL_OA_LESSON.title }] },
   UPPER_ARTERY_TOPIC_GROUP,
@@ -4415,7 +4423,6 @@ export const MCQ_TOPIC_GROUPS = [
   { fachId: 'abdomen', kapitelId: 'abdomen-gallenwege', title: { de: 'Gallenwege', en: 'Bile ducts', fa: 'مجاری صفراوی' }, topics: [{ id: 'psc-pbc', title: { de: 'PSC im MRCP', en: 'PSC on MRCP', fa: 'PSC در MRCP' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-gefaesse', title: { de: 'Aorta & viszerale Gefäße', en: 'Aorta & visceral vessels', fa: 'آئورت و عروق احشایی' }, topics: [{ id: 'fibromuskulaere-dysplasie', title: { de: 'Fibromuskuläre Dysplasie', en: 'Fibromuscular dysplasia', fa: 'دیسپلازی فیبروماسکولار' } }] },
   { fachId: 'abdomen', kapitelId: 'abdomen-pankreas', title: { de: 'Pankreas', en: 'Pancreas', fa: 'پانکراس' }, topics: [{ id: 'pnet', title: { de: 'Neuroendokrine Tumoren (pNET)', en: 'Neuroendocrine tumours (pNET)', fa: 'تومورهای نورواندوکرین پانکراس (pNET)' } }] },
-  { fachId: 'abdomen', kapitelId: 'abdomen-gi-trakt', title: { de: 'Gastrointestinaltrakt', en: 'Gastrointestinal tract', fa: 'دستگاه گوارش' }, topics: [{ id: 'volvulus', title: { de: 'Sigmoid- und Zökumvolvulus', en: 'Sigmoid and caecal volvulus', fa: 'ولولوس سیگموئید و سکوم' } }] },
   TECHNIK_ROENTGEN_TOPIC_GROUP,
   TECHNIK_CINE_TOPIC_GROUP,
   TECHNIK_FLUORO_ZOOM_TOPIC_GROUP,

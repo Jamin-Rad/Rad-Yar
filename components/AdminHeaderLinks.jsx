@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { ClerkLoaded, useUser } from '@clerk/nextjs'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import {
   isLessonPdfPath,
@@ -12,6 +12,7 @@ import {
 } from '@/lib/lessonPdf'
 import styles from './Navbar.module.css'
 import FamilyPortalMenu from './FamilyPortalMenu'
+import { useLanguage } from '@/providers/LanguageProvider'
 
 const ICONS = {
   control: (
@@ -50,9 +51,14 @@ const ICONS = {
 
 function LoadedAdminLinks() {
   const { user, isSignedIn } = useUser()
+  const { lang } = useLanguage()
+  const adminLabel = ({ de: 'Admin-Navigation', en: 'Admin navigation', fa: 'ناوبری مدیریت' })[lang] || 'Admin navigation'
   const pathname = usePathname()
   const isAdmin = isSignedIn && user?.primaryEmailAddress?.emailAddress === 'dr.benjaminzia@gmail.com'
   const [lehrActive, setLehrActive] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const menuRef = useRef(null)
+  const toggleRef = useRef(null)
   const [pdfState, setPdfState] = useState({ available: false, preparing: false })
   const pdfPath = isLessonPdfPath(pathname)
 
@@ -73,10 +79,26 @@ function LoadedAdminLinks() {
     return () => window.removeEventListener(LESSON_PDF_STATE_EVENT, handleState)
   }, [pathname])
 
+  useEffect(() => setMenuOpen(false), [pathname])
+  useEffect(() => {
+    if (!menuOpen) return undefined
+    const closeOutside = event => { if (!menuRef.current?.contains(event.target)) setMenuOpen(false) }
+    document.addEventListener('pointerdown', closeOutside)
+    return () => document.removeEventListener('pointerdown', closeOutside)
+  }, [menuOpen])
+
   if (!isAdmin) return null
 
   return (
-    <nav className={styles.adminPortals} aria-label="Admin-Navigation" dir="ltr">
+    <div className={styles.adminGroup} ref={menuRef} onKeyDown={event => {
+      if (event.key === 'Escape' && menuOpen) { setMenuOpen(false); toggleRef.current?.focus() }
+    }} onBlur={event => {
+      if (!event.currentTarget.contains(event.relatedTarget)) setMenuOpen(false)
+    }}>
+      <button type="button" ref={toggleRef} className={styles.adminMenuToggle}
+        aria-label={adminLabel} aria-expanded={menuOpen} aria-controls="radyar-admin-navigation"
+        onClick={() => setMenuOpen(value => !value)}><span className={styles.portalIcon}>{ICONS.control}</span></button>
+      <nav id="radyar-admin-navigation" className={`${styles.adminPortals} ${menuOpen ? styles.adminPortalsOpen : ''}`} aria-label={adminLabel} dir="ltr">
       <Link
         href="/admin"
         className={styles.portalAdmin}
@@ -124,7 +146,8 @@ function LoadedAdminLinks() {
         <span className={styles.portalIcon}>{ICONS.andarun}</span>
         <span className={styles.portalLabel}>Jaminova</span>
       </FamilyPortalMenu>
-    </nav>
+      </nav>
+    </div>
   )
 }
 

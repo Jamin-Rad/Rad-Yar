@@ -1,4 +1,6 @@
-.content { max-width: 1000px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; color: var(--text); }
+/* This legacy content sits on the reference shell's paper in either app theme. */
+.content { --bg-card: var(--paper, #fff); --text: var(--ink, #171426); --text-strong: var(--ink, #171426); --text-muted: var(--body, #4f5169); --border: var(--line, #dddde5); max-width: 1000px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; color: var(--text); }
+.content a { color: var(--plum, #57245a); text-decoration: underline; }
 .lead { max-width: 82ch; font-size: 1.08rem; line-height: 1.7; }
 .panel, .decision, .cave { border: 1px solid var(--border); border-radius: 16px; background: var(--bg-card); padding: 1.1rem 1.25rem; margin: 1.15rem 0; }
 .panel h2, .decision h2, .cave h2 { margin: 0 0 .7rem; font-size: 1.15rem; }

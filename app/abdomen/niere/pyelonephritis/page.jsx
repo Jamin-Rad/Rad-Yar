@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
+import ExistingPracticeActions, { getPracticeActions } from '../../gi/ulkuserkrankung/ExistingPracticeActions'
 import { useLanguage } from '@/providers/LanguageProvider'
 import StandardLessonShell, { LessonSection, LessonSources, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { PYELONEPHRITIS_LESSON as lesson } from '@/data/pyelonephritisLesson'
@@ -83,7 +84,7 @@ export default function PyelonephritisPage() {
   ]
   return <StandardLessonShell lessonId={l.id} lang={lang} title={pick(l.title, lang)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: langHref('/') }, { label: 'Abdomen', href: langHref('/lernen/abdomen') }, { label: pick(L('Niere', 'Kidney', 'کلیه'), lang), href: langHref('/lernen/abdomen') }]}
-    sections={sections} labels={localizedLabels} renderIcon={id => <Icon id={id}/>} syncHashNavigation actions={{}}
+    sections={sections} labels={localizedLabels} renderIcon={id => <Icon id={id}/>} syncHashNavigation actions={getPracticeActions('pyelonephritis','/abdomen/niere/pyelonephritis',lang)}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: '/educational/pyelonephritis/hero.svg', heroImageOpacity: .9, accent: '#78d0d7', accentStrong: '#166c78', accentSoft: '#e1f3f4', secondary: '#b8a0cf', secondaryStrong: '#674c81', heroBase: '#173341' }}
     heroImageAlt={pick(L('Schematische Niere mit einer fokalen Parenchymzone und umgebenden Ausbreitungsräumen; keine diagnostische Aufnahme', 'Schematic kidney with a focal parenchymal area and surrounding spread compartments; not a diagnostic image', 'شماتیک کلیه با ناحیهٔ کانونی پارانشیم و فضاهای اطراف برای نمایش گسترش؛ تصویر تشخیصی نیست'), lang)}
     className={styles.page} sources={<LessonSources title={pick(L('Quellen und Umfang', 'Sources and scope', 'منابع و دامنه'), lang)} items={sourceItems} note={pick(l.sourceReview, lang)}/> }>
@@ -102,6 +103,7 @@ export default function PyelonephritisPage() {
     <LessonSection id="complications" icon="report" title={pick(l.sections[2].title, lang)}>
       <p className={styles.body}>{pick(l.sections[2].body, lang)}</p>
       <p className={styles.note}>{pick(l.sections[2].implication, lang)}</p>
+      <ExistingPracticeActions topic="nierenabszess" path="/abdomen/niere/pyelonephritis" lang={lang} anchor="complications" title={pick(L('Nierenabszess üben','Practise renal abscess','تمرین آبسهٔ کلیه'),lang)}/>
     </LessonSection>
     <LessonSection id="take-home" icon="summary" title={localizedLabels.takeHome}><TakeHomeList items={takeHome}/></LessonSection>
   </StandardLessonShell>

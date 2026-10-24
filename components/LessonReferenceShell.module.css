@@ -3,6 +3,12 @@
 .breadcrumb { display:flex;flex-wrap:wrap;align-items:center;gap:9px;color:#c8c2cf;font-size:13px;margin:0; }
 .breadcrumb a { color:#ecd6ee;font-weight:800;text-decoration:none; }
 .breadcrumb strong { color:#fff;font-weight:700; }
+/* Verified legacy routes use the app's pale background in light mode. */
+:global(html:not([data-theme='dark'])) .page:is([data-lesson-shell='li-rads'], [data-lesson-shell='abdomen-psc-mrcp']) .breadcrumb { color:var(--body); }
+:global(html:not([data-theme='dark'])) .page:is([data-lesson-shell='li-rads'], [data-lesson-shell='abdomen-psc-mrcp']) .breadcrumb a { color:var(--plum); }
+:global(html:not([data-theme='dark'])) .page:is([data-lesson-shell='li-rads'], [data-lesson-shell='abdomen-psc-mrcp']) .breadcrumb strong,
+:global(html:not([data-theme='dark'])) .page:is([data-lesson-shell='li-rads'], [data-lesson-shell='abdomen-psc-mrcp']) .header :global([data-lesson-hero]) h1 { color:var(--ink); }
+:global(html:not([data-theme='dark'])) .page:is([data-lesson-shell='li-rads'], [data-lesson-shell='abdomen-psc-mrcp']) .header :global([data-lesson-hero]) figcaption { color:var(--body); }
 .intro { max-width:1020px;margin:4px 0 16px;padding:12px 16px;border:1px solid rgba(56,174,177,.35);border-radius:9px;background:rgba(255,255,255,.93);color:var(--body); }
 .intro strong { color:var(--plum);font-family:var(--font-newsreader,Georgia,serif);font-size:18px; }
 .intro ul { display:flex;flex-wrap:wrap;gap:6px 25px;margin:8px 0 0;padding-inline-start:20px;line-height:1.55; }
