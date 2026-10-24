@@ -9,7 +9,7 @@ const labels = {
 }
 
 // The registry question is also the inline check, keeping feedback in sync.
-export default function TopicAssessment({ question, topic, lang = 'de', returnTo }) {
+export default function TopicAssessment({ question, topic, lang = 'de', returnTo, fach = 'technik' }) {
   const [choice, setChoice] = useState(null)
   if (!question) return null
   const text = labels[lang] || labels.de
@@ -25,7 +25,7 @@ export default function TopicAssessment({ question, topic, lang = 'de', returnTo
     </div>
     <p role="status" aria-live="polite">{choice ? (choice === question.correct ? question.explanation : question.wrongExplanations[choice]) : ''}</p>
     <nav aria-label={text.check} style={{ display: 'flex', flexWrap: 'wrap', gap: 18 }}>
-      <a href={`/ueben/quiz?fach=technik&n=1&themen=${topic}&${context}`}>{text.quiz}</a>
+      <a href={`/ueben/quiz?fach=${encodeURIComponent(fach)}&n=1&themen=${topic}&${context}`}>{text.quiz}</a>
       <a href={`/flashcards/${topic}?${context}`}>{text.cards}</a>
     </nav>
   </section>

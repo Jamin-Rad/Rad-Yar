@@ -1,0 +1,11 @@
+import styles from './page.module.css'
+const captions={de:['PLCH: ober- und mittelfeldbetont; Noduli und irreguläre Zysten.','LAM: diffuse runde Zysten, auch basal.','BHD: häufig basale Betonung; Kontext entscheidend.'],en:['PLCH: upper/mid-lung predominance; nodules and irregular cysts.','LAM: diffuse round cysts, including bases.','BHD: often basal predominance; context is essential.'],fa:['PLCH: غلبهٔ فوقانی و میانی؛ ندول‌ها و کیست‌های نامنظم.','LAM: کیست‌های گرد منتشر، شامل قاعده‌ها.','BHD: اغلب غلبهٔ قاعده‌ای؛ زمینه ضروری است.']}
+export default function DistributionDiagram({lang}) {
+ const points=[[[76,55],[82,66],[144,55],[173,73],[60,98],[159,105]],[[76,55],[80,80],[48,115],[74,148],[143,55],[174,86],[153,119],[177,153]],[[53,132],[78,150],[44,166],[148,141],[177,163],[162,120]]]
+ return <figure className={styles.distribution}><div className={styles.diagramGrid}>{points.map((locations,i)=><div key={i}><h4 dir="ltr">{['PLCH','LAM','BHD'][i]}</h4><svg viewBox="0 0 220 205" role="img" aria-label={captions[lang][i]}>
+ <path d="M94 22C69 20 34 60 29 105s0 77 21 78c22 1 48-19 48-44V40M126 22c25-2 60 38 65 83s0 77-21 78c-22 1-48-19-48-44V40" fill="none" stroke="currentColor" strokeWidth="2"/>
+ <path d="M26 84h73m23 0h73M27 130h71m24 0h73" stroke="currentColor" opacity=".25" strokeDasharray="4 4"/>
+ {locations.map(([x,y],j)=>i===0?<path key={j} d={`M${x-7} ${y-5}q8-8 13 1l-2 9q-12 4-11-10Z`} fill="none" stroke="#537f97" strokeWidth="2.5"/>:<ellipse key={j} cx={x} cy={y} rx={i===2?10:7} ry={i===2?5:7} transform={i===2?`rotate(-25 ${x} ${y})`:undefined} fill="none" stroke="#537f97" strokeWidth="2.5"/>)}
+ {i===0&&[[83,43],[45,75],[135,43],[143,85]].map(([x,y],j)=><circle key={j} cx={x} cy={y} r="3" fill="#b97842"/>)}
+ </svg><p>{captions[lang][i]}</p></div>)}</div><figcaption>{{de:'Schematische Verteilung, keine CT-Aufnahmen und kein Diagnosealgorithmus. Überlappungen sind möglich; die Zystenzahl ist nicht maßstabsgetreu.',en:'Schematic distribution, not CT images or a diagnostic algorithm. Patterns may overlap; cyst counts are not to scale.',fa:'توزیع شماتیک است، نه CT یا الگوریتم تشخیصی. الگوها ممکن است هم‌پوشانی داشته باشند؛ تعداد کیست‌ها مقیاس واقعی ندارد.'}[lang]}</figcaption></figure>
+}

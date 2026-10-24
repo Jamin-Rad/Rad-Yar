@@ -231,3 +231,6 @@
 @keyframes mobilePathIn { from { opacity: 0; transform: translateY(8px) scale(.985); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion:reduce) { .page *,.page *::before,.page *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
 @media print { .page { padding: 0; background: #fff; } .page::before,.heroVisual,.sidebar,.actions,.progressBar,.readButton,.mobileLearningPath,.sources { display: none; } .layout { display: block; } .section { break-inside: avoid; content-visibility: visible; } }
+/* Preserve contrast when an active navigation item is hovered in dark mode. */
+:global(html[data-theme='dark']) .sidebar button:hover { background:#304552; color:#f1f6fa; }
+:global(html[data-theme='dark']) .mobilePathPanel nav .mobilePathCurrent { background:#304552; }

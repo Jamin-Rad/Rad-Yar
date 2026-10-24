@@ -1,0 +1,18 @@
+.copy { color:var(--text); line-height:1.75; min-width:0; }
+.grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin-block:1.25rem; }
+.grid article { min-width:0; padding:1rem; border:1px solid var(--border); border-radius:12px; background:var(--surface-soft); }
+.grid h3 { margin:0 0 .5rem; font-size:1.05rem; }
+.grid p { margin:0; }
+.figure { margin:1.5rem auto; max-width:630px; }
+.figure img { width:100%; height:auto; display:block; border-radius:12px; }
+.figure figcaption { font-size:.9rem; margin-top:.8rem; }
+.copy a { color:inherit; text-decoration:underline; text-underline-offset:3px; }
+.related { display:flex; flex-wrap:wrap; gap:1rem; margin-block:1rem; }
+@media(max-width:700px){.grid{grid-template-columns:1fr;}}
+
+.distribution { margin:1.5rem 0; padding:1rem; border:1px solid var(--border); border-radius:12px; }
+.diagramGrid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+.diagramGrid svg { display:block; width:100%; max-width:250px; margin:auto; }
+.diagramGrid h4 { text-align:center; margin:.3rem; }
+.diagramGrid p,.distribution figcaption { font-size:.9rem; }
+@media(max-width:700px){.diagramGrid{grid-template-columns:1fr;}.diagramGrid svg{max-width:200px;}}

@@ -210,17 +210,17 @@ export const HRCT_LESSONS = {
     title: L('HRCT: Dichteminderung', 'HRCT: Decreased Density', 'HRCT: کاهش دانسیته'),
     definition: L('Bulla, Zyste und Kaverne anhand von Wand, Umgebung und Entstehungsmechanismus unterscheiden.', 'Distinguish bulla, cyst and cavity by wall, surrounding lung and mechanism.', 'بولا، کیست و کاویتی را بر اساس دیواره، ریه اطراف و مکانیسم تفکیک کنید.'),
     heroCards: [
-      { value: L('Bulla', 'Bulla', 'بولا'), label: L('≥ 1 cm', '≥1 cm', '≥۱ سانتی‌متر'), text: L('Wand ≤ 1 mm', 'wall ≤1 mm', 'دیواره ≤۱ میلی‌متر') },
+      { value: L('Bulla', 'Bulla', 'بولا'), label: L('Luftraumdestruktion', 'airspace destruction', 'تخریب فضای هوایی'), text: L('sehr feine Wand', 'very fine wall', 'دیوارهٔ بسیار ظریف') },
       { value: L('Zyste', 'Cyst', 'کیست'), label: L('dünne Wand', 'thin wall', 'دیواره نازک'), text: L('runde Luftstruktur', 'round air space', 'فضای هوایی گرد') },
       { value: L('Kaverne', 'Cavity', 'کاویتی'), label: L('in Läsion', 'within a lesion', 'داخل ضایعه'), text: L('Nekrose/Drainage', 'necrosis/drainage', 'نکروز/درناژ') },
     ],
     sections: [
       {
         id: 'begriffe', icon: '⭕', title: L('Bulla, Zyste, Kaverne', 'Bulla, Cyst, Cavity', 'بولا، کیست، کاویتی'),
-        lead: L('Die Begriffe sind nicht austauschbar: Entscheidend sind Wanddicke, Hintergrundparenchym und Einbettung in eine andere Läsion.', 'The terms are not interchangeable: wall thickness, background lung and containment within another lesion are decisive.', 'این اصطلاحات قابل جایگزینی نیستند؛ ضخامت دیواره، پارانشیم زمینه و قرارگیری داخل ضایعه دیگر تعیین‌کننده‌اند.'),
+        lead: L('Wand, Hintergrundparenchym und Bezug zu einer anderen Läsion gemeinsam beurteilen. Nach dem Fleischner-Glossar 2024 überlappen zystische Formen; starre Wanddickengrenzen trennen sie nicht zuverlässig.', 'Assess the wall, background lung and relation to another lesion together. The Fleischner 2024 glossary recognizes overlap among cystic structures; rigid wall-thickness cutoffs do not reliably separate them.', 'دیواره، پارانشیم زمینه و ارتباط با ضایعهٔ دیگر را با هم ارزیابی کنید. واژه‌نامهٔ فلایشنر ۲۰۲۴ هم‌پوشانی ساختارهای کیستیک را می‌پذیرد؛ آستانهٔ ثابت ضخامت دیواره آن‌ها را با اطمینان جدا نمی‌کند.'),
         cards: [
-          { title: L('Bulla', 'Bulla', 'بولا'), text: L('Lufthaltiger Raum ≥ 1 cm mit sehr dünner Wand ≤ 1 mm, gewöhnlich in emphysematös verändertem Parenchym.', 'Air-containing space ≥1 cm with a very thin wall ≤1 mm, usually in emphysematous lung.', 'فضای هوادار ≥۱ سانتی‌متر با دیواره بسیار نازک ≤۱ میلی‌متر، معمولاً در ریه آمفیزماتوز.') },
-          { title: L('Zyste', 'Cyst', 'کیست'), text: L('Runder intrapulmonaler Raum mit definierter epithelialer oder fibröser Wand, meist < 2 mm und luftgefüllt.', 'Rounded intrapulmonary space with a defined epithelial or fibrous wall, usually <2 mm and air-filled.', 'فضای گرد داخل‌ریوی با دیواره مشخص اپی‌تلیال یا فیبروز، معمولاً <۲ میلی‌متر و پر از هوا.') },
+          { title: L('Bulla', 'Bulla', 'بولا'), text: L('Lufthaltiger Raum durch Erweiterung und Destruktion distaler Lufträume, meist mit sehr feiner Wand; Begleitemphysem beachten.', 'Air-containing space from enlargement and destruction of distal airspaces, usually with a very fine wall; assess associated emphysema.', 'فضای هوادار ناشی از اتساع و تخریب فضاهای هوایی دیستال، معمولاً با دیوارهٔ بسیار ظریف؛ آمفیزم همراه را بررسی کنید.') },
+          { title: L('Zyste', 'Cyst', 'کیست'), text: L('Umschriebener lufthaltiger Raum mit meist dünner, regelmäßiger Wand. Morphologie und Ursache trennen; die Histologie der Wand ist im CT nicht bestimmbar.', 'A circumscribed air-containing space, usually with a thin, regular wall. Separate morphology from cause; CT cannot determine the wall histology.', 'فضای هوادار با حدود مشخص و معمولاً دیوارهٔ نازک و منظم. مورفولوژی را از علت جدا کنید؛ بافت‌شناسی دیواره در CT مشخص نمی‌شود.') },
           { title: L('Kaverne', 'Cavity', 'کاویتی'), text: L('Gasraum innerhalb einer Konsolidierung, eines Nodulus oder einer Raumforderung infolge Nekrose und Drainage.', 'Gas-filled space within consolidation, a nodule or a mass due to necrosis and drainage.', 'فضای گازی داخل کنسولیدیشن، ندول یا توده بر اثر نکروز و درناژ.') },
         ],
         images: [
@@ -316,8 +316,8 @@ const compactFactSets = {
     ['Honeycombing vs Zysten', 'subpleurale Zysten plus Fibrosezeichen und Architekturverlust', 'Honeycombing'],
   ],
   'hrct-dichteminderung': [
-    ['Bulla', '≥1 cm und Wand ≤1 mm', 'Emphysem'],
-    ['Zyste', 'runde Luftstruktur mit meist <2 mm Wand', 'definierte Wand'],
+    ['Bulla', 'Luftraumdestruktion mit sehr feiner Wand', 'Emphysem'],
+    ['Zyste', 'umschriebener Luftraum mit meist dünner regelmäßiger Wand', 'definierte Wand'],
     ['Kaverne', 'Gasraum innerhalb Nodulus, Masse oder Konsolidierung', 'Nekrose/Drainage'],
     ['Dünne Kaverne', '<4 mm Wand', 'eher benigne, nicht beweisend'],
     ['Indeterminierte Wand', '4–15 mm', 'Morphologie und Verlauf entscheiden'],
@@ -350,10 +350,10 @@ const factTranslations = {
   },
   'hrct-dichteminderung': {
     en: [
-      ['Bulla', '≥1 cm with wall ≤1 mm', 'emphysema'], ['Cyst', 'round air space with wall usually <2 mm', 'defined wall'], ['Cavity', 'gas space within a nodule, mass or consolidation', 'necrosis/drainage'], ['Thin cavity', 'wall <4 mm', 'more often benign, not definitive'], ['Indeterminate wall', '4–15 mm', 'morphology and follow-up decide'], ['Thick cavity', '>15 mm', 'higher malignancy suspicion'], ['Irregular inner contour', 'nodular wall components', 'suspicious'], ['Air-fluid level', 'gas and liquid within a space', 'abscess or superinfection'], ['Aspergilloma', 'mobile intracavitary mass with air crescent', 'mycetoma'], ['Upper-lobe cavity', 'consider TB or squamous carcinoma', 'topography'], ['Dependent cavity', 'consider aspiration/abscess', 'topography'], ['Cavity vs cyst', 'surrounding lesion and thicker irregular wall', 'cavity'],
+      ['Bulla', 'airspace destruction with a very fine wall', 'emphysema'], ['Cyst', 'circumscribed airspace with a usually thin regular wall', 'defined wall'], ['Cavity', 'gas space within a nodule, mass or consolidation', 'necrosis/drainage'], ['Thin cavity', 'wall <4 mm', 'more often benign, not definitive'], ['Indeterminate wall', '4–15 mm', 'morphology and follow-up decide'], ['Thick cavity', '>15 mm', 'higher malignancy suspicion'], ['Irregular inner contour', 'nodular wall components', 'suspicious'], ['Air-fluid level', 'gas and liquid within a space', 'abscess or superinfection'], ['Aspergilloma', 'mobile intracavitary mass with air crescent', 'mycetoma'], ['Upper-lobe cavity', 'consider TB or squamous carcinoma', 'topography'], ['Dependent cavity', 'consider aspiration/abscess', 'topography'], ['Cavity vs cyst', 'surrounding lesion and thicker irregular wall', 'cavity'],
     ],
     fa: [
-      ['بولا', '≥۱ سانتی‌متر با دیواره ≤۱ میلی‌متر', 'آمفیزم'], ['کیست', 'فضای هوایی گرد با دیواره معمولاً <۲ میلی‌متر', 'دیواره مشخص'], ['کاویتی', 'فضای گازی داخل ندول، توده یا کنسولیدیشن', 'نکروز/درناژ'], ['کاویتی نازک', 'دیواره <۴ میلی‌متر', 'اغلب خوش‌خیم‌تر، نه قطعی'], ['دیواره نامعین', '۴–۱۵ میلی‌متر', 'مورفولوژی و پیگیری تعیین‌کننده'], ['کاویتی ضخیم', '>۱۵ میلی‌متر', 'شک بیشتر به بدخیمی'], ['کانتور داخلی نامنظم', 'اجزای ندولار دیواره', 'مشکوک'], ['سطح هوا-مایع', 'گاز و مایع داخل حفره', 'آبسه یا عفونت ثانویه'], ['آسپرژیلوم', 'توده متحرک داخل کاویتی با هلال هوا', 'میستوم'], ['کاویتی لوب فوقانی', 'سل یا کارسینوم سنگفرشی را در نظر بگیرید', 'توپوگرافی'], ['کاویتی وابسته', 'آسپیراسیون/آبسه را در نظر بگیرید', 'توپوگرافی'], ['کاویتی در برابر کیست', 'ضایعه اطراف و دیواره ضخیم‌تر نامنظم', 'کاویتی'],
+      ['بولا', 'تخریب فضای هوایی با دیوارهٔ بسیار ظریف', 'آمفیزم'], ['کیست', 'فضای هوایی با حدود مشخص و معمولاً دیوارهٔ نازک منظم', 'دیواره مشخص'], ['کاویتی', 'فضای گازی داخل ندول، توده یا کنسولیدیشن', 'نکروز/درناژ'], ['کاویتی نازک', 'دیواره <۴ میلی‌متر', 'اغلب خوش‌خیم‌تر، نه قطعی'], ['دیواره نامعین', '۴–۱۵ میلی‌متر', 'مورفولوژی و پیگیری تعیین‌کننده'], ['کاویتی ضخیم', '>۱۵ میلی‌متر', 'شک بیشتر به بدخیمی'], ['کانتور داخلی نامنظم', 'اجزای ندولار دیواره', 'مشکوک'], ['سطح هوا-مایع', 'گاز و مایع داخل حفره', 'آبسه یا عفونت ثانویه'], ['آسپرژیلوم', 'توده متحرک داخل کاویتی با هلال هوا', 'میستوم'], ['کاویتی لوب فوقانی', 'سل یا کارسینوم سنگفرشی را در نظر بگیرید', 'توپوگرافی'], ['کاویتی وابسته', 'آسپیراسیون/آبسه را در نظر بگیرید', 'توپوگرافی'], ['کاویتی در برابر کیست', 'ضایعه اطراف و دیواره ضخیم‌تر نامنظم', 'کاویتی'],
     ],
   },
 }

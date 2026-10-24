@@ -1,0 +1,8 @@
+# Pulmonary LCH hero
+
+Generated 2026-10-24 with the built-in image_gen tool using the imagegen skill. Asset: hero.png, 1536×1024. Copied from the tool-created exec-eaea5cf7-fdbd-4434-8dd6-768d56c8f312.png; original retained. Visually inspected after generation. Conceptual medical illustration only, not CT or diagnostic evidence. Translated alt is in LCH_LABELS.heroAlt.
+
+Prompt:
+> Create a refined medical educational website hero image, wide landscape 1536x1024. Conceptual anatomical illustration, NOT a radiology scan and not diagnostic evidence. Show a credible pair of human lungs with trachea and main bronchi in an oblique frontal view, translucent muted blue-grey tissue. Focus in upper lungs on a restrained mixture of small solid nodules and irregular thin-walled air spaces, as a conceptual reference to pulmonary Langerhans cell histiocytosis. Keep lung anatomy natural, lower lungs quieter. Editorial medical textbook realism with softly lit three-dimensional material, calm navy and teal palette, no glowing science fiction. Position lungs in right two thirds with substantial uncluttered dark navy space to left for website title overlay. No text, no labels, no numbers, no arrows, no logos, no scan frames, no inset panels. Professional and quiet, no playful icons or cartoon clouds.
+
+Actual CT teaching assets remain unchanged at public/hrct/retikulaer-nodulaer/image22.jpeg and image23.jpeg; visually matched to Thorax.pdf physical p21 (printed20), panels A/B, rID161054. Their contributor and extraction history are not documented in the PDF. Reuse authority: user's explicit PDF and Radiopaedia permission statement in this task. Full source/media ledger: docs/lesson-quality/thorax-lch-source-plan.md.

@@ -6,7 +6,8 @@ import InProgressBanner from '@/components/InProgressBanner'
 import LessonHero from '@/components/LessonHero'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
-import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
+import TopicAssessment from '@/components/lesson-template/TopicAssessment'
+import { ATELECTASIS_QUESTIONS } from '@/data/thoraxAtelectasisAssessment'
 import styles from '@/app/abdomen/gi/divertikulitis/page.module.css'
 import localStyles from './HrctPatternLesson.module.css'
 
@@ -17,15 +18,12 @@ const UI = {
   fa: { contents: 'فهرست', mark: 'علامت‌گذاری به‌عنوان خوانده‌شده', read: 'خوانده شد', signIn: 'ورود', auth: 'برای ذخیره پیشرفت وارد شوید.', mcq: 'MCQ', flash: 'فلش‌کارت', zoom: 'بزرگ‌نمایی تصویر', close: 'بستن تصویر', source: 'باز کردن رادیوپدیا', takehome: 'پیام نهایی', cave: 'هشدار', provenance: 'منبع و توضیحات تصویر', pdf: 'تطبیق با Thorax.pdf، صفحه PDF', printed: 'صفحه چاپی', case: 'شناسه Radiopaedia', provenanceNote: 'تطبیق بصری با PDF انجام شده؛ مشارکت‌کننده، مطالعه و فریم جداگانه تأیید نشده‌اند.', answer: 'یک پاسخ را انتخاب کنید', correct: 'درست است.', incorrect: 'یک‌بار دیگر بررسی کنید.', check: 'خودآزمایی کوتاه' },
 }
 
-function Section({ id, title, lead, children }) {
-  const mobile = useMobileLearningLayout()
-  const [open, setOpen] = useState(true)
-  useEffect(() => setOpen(false), [id])
+function Section({ id, title, lead, children, open, onToggle }) {
   return <section id={id} className={styles.section}>
-    <button type="button" className={styles.sectionHeader} onClick={() => setOpen(value => !value)} aria-expanded={open}>
+    <button type="button" className={styles.sectionHeader} onClick={onToggle} aria-expanded={open} aria-controls={`${id}-body`}>
       <h2>{title}</h2><span>{open ? '−' : '+'}</span>
     </button>
-    {open && <div className={styles.sectionBody}>{lead ? <p className={styles.lead}>{lead}</p> : null}{children}</div>}
+    {open && <div id={`${id}-body`} className={styles.sectionBody}>{lead ? <p className={styles.lead}>{lead}</p> : null}{children}</div>}
   </section>
 }
 
@@ -104,10 +102,37 @@ export default function HrctPatternLesson({ lesson }) {
   const c = value => L(value, lang)
   const rtl = lang === 'fa'
   const route = `/thorax/hrct/${lesson.slug}`
-  const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
+  const withLang = href => {
+    const [path, hash] = href.split('#')
+    const translated = lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
+    return hash ? `${translated}#${hash}` : translated
+  }
   const { isRead, toggleRead, authError } = useLessonReadStatus(lesson.id)
   const [active, setActive] = useState('')
   const [picked, setPicked] = useState(null)
+  const [openSection, setOpenSection] = useState(lesson.sections[0]?.id || null)
+  const navigateSection = id => {
+    setOpenSection(id)
+    setActive(id)
+    window.history.pushState(null, '', id ? `#${id}` : `${window.location.pathname}${window.location.search}`)
+    requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }))
+  }
+  useEffect(() => {
+    const syncHash = () => {
+      const id = window.location.hash.slice(1)
+      const target = lesson.sections.some(section => section.id === id) || id === 'takehome' ? id : lesson.sections[0]?.id || null
+      setOpenSection(target)
+      setActive(target || '')
+    }
+    setPicked(null)
+    syncHash()
+    window.addEventListener('hashchange', syncHash)
+    window.addEventListener('popstate', syncHash)
+    return () => {
+      window.removeEventListener('hashchange', syncHash)
+      window.removeEventListener('popstate', syncHash)
+    }
+  }, [lesson])
   const architectureLesson = lesson.id === 'hrct-architekturmuster'
 
   useEffect(() => {
@@ -151,14 +176,15 @@ export default function HrctPatternLesson({ lesson }) {
     <div className={styles.layout}>
       <aside className={styles.sidebar}>
         <div className={styles.sideTitle}>{copy.contents}</div>
-        {lesson.sections.map(section => <button type="button" key={section.id} className={`${styles.sideItem} ${active === section.id ? styles.sideItemActive : ''}`} onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth' })}><span>{section.icon}</span><strong>{c(section.title)}</strong></button>)}
-        <button type="button" className={`${styles.sideItem} ${active === 'takehome' ? styles.sideItemActive : ''}`} onClick={() => document.getElementById('takehome')?.scrollIntoView({ behavior: 'smooth' })} style={{ fontWeight: 950 }}><span>🏁</span><strong>{copy.takehome}</strong></button>
+        {lesson.sections.map(section => <button type="button" key={section.id} className={`${styles.sideItem} ${active === section.id ? styles.sideItemActive : ''}`} onClick={() => navigateSection(section.id)}><span>{section.icon}</span><strong>{c(section.title)}</strong></button>)}
+        <button type="button" className={`${styles.sideItem} ${active === 'takehome' ? styles.sideItemActive : ''}`} onClick={() => navigateSection('takehome')} style={{ fontWeight: 950 }}><span>🏁</span><strong>{copy.takehome}</strong></button>
       </aside>
       <div className={styles.main}>
-        {lesson.sections.map(section => <Section id={section.id} title={c(section.title)} lead={c(section.lead)} key={section.id}>
+        {lesson.sections.map(section => <Section id={section.id} title={c(section.title)} lead={c(section.lead)} key={section.id} open={openSection === section.id} onToggle={() => navigateSection(openSection === section.id ? null : section.id)}>
           {section.cards?.length > 0 && <div className={styles.cardsGrid}>{section.cards.map(card => <article className={styles.infoCard} key={c(card.title)}><h3>{c(card.title)}</h3><p>{c(card.text)}</p></article>)}</div>}
           {section.images?.length > 0 && <div className={styles.hrctGallery}>{section.images.map(image => <ImageCard key={image.src} image={image} lang={lang} copy={copy} />)}</div>}
           {section.cave && <div className={`${styles.callout} ${styles.cave}`}><strong>⚠️ {copy.cave}</strong><p>{c(section.cave)}</p></div>}
+          {lesson.id === 'hrct-dichteanhebung' && section.id === 'atelektase' && <TopicAssessment key={lang} question={ATELECTASIS_QUESTIONS[lang]?.[0] || ATELECTASIS_QUESTIONS.de[0]} topic="atelektase" fach="thorax" lang={lang} returnTo={withLang(`${route}#atelektase`)} />}
         </Section>)}
         {lesson.selfCheck && <section className={localStyles.selfCheck} aria-labelledby="hrct-self-check-title">
           <h2 id="hrct-self-check-title">{copy.check}</h2>
@@ -173,7 +199,7 @@ export default function HrctPatternLesson({ lesson }) {
             <strong>{picked === lesson.selfCheck.answer ? copy.correct : copy.incorrect}</strong> {c(lesson.selfCheck.explanation)}
           </div>}
         </section>}
-        <Section id="takehome" title={copy.takehome}>
+        <Section id="takehome" title={copy.takehome} open={openSection === 'takehome'} onToggle={() => navigateSection(openSection === 'takehome' ? null : 'takehome')}>
           <div className={styles.takeHomeGrid}>{lesson.takehome.map((item, index) => <div className={styles.takeHomeItem} key={index}><span>{String(index + 1).padStart(2, '0')}</span><div><p>{c(item)}</p></div></div>)}</div>
         </Section>
         <div className={styles.readBarBottom}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>
