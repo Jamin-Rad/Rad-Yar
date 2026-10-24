@@ -1,3 +1,4 @@
+import * as spinePracticeLinks from '../data/spinePracticeLinks.js'
 import fs from 'node:fs'
 import assert from 'node:assert/strict'
 import { createRequire } from 'node:module'
@@ -54,6 +55,7 @@ const shell = compile('components/lesson-template/StandardLessonShell.jsx', {
   './StandardLessonShell.module.css': styles,
 })
 const Page = compile(route, {
+  '@/data/spinePracticeLinks': spinePracticeLinks,
   '@/providers/LanguageProvider': { useLanguage: () => ({ lang }) },
   '@/components/lesson-template/StandardLessonShell': shell,
   '@/data/guillainBarreSpineLesson': { GUILLAIN_BARRE_SPINE_LESSON: data },

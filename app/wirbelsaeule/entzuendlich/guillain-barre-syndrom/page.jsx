@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { spinePracticeActions } from '@/data/spinePracticeLinks'
 import { useLanguage } from '@/providers/LanguageProvider'
 import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
 import { GUILLAIN_BARRE_SPINE_LESSON as lesson } from '@/data/guillainBarreSpineLesson'
@@ -65,7 +66,7 @@ export default function GuillainBarreSpinePage() {
   const references = lesson.references.map(reference => ({ tag: reference.tag, title: t(reference.title), href: reference.href, citation: t(reference.citation) }))
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={t(lesson.title)} author="RadYar" heroImageAlt={t(lesson.alt)} syncHashNavigation
     breadcrumbs={[{ label: 'RadYar', href: localized('/') }, { label: t(L('Wirbelsäule', 'Spine', 'ستون فقرات')), href: localized('/lernen/wirbelsaeule') }, { label: t(lesson.title) }]}
-    sections={sections} labels={labels} actions={{}} renderIcon={id => <Icon id={id}/>}
+    sections={sections} labels={labels} actions={spinePracticeActions(lesson.id, '/wirbelsaeule/entzuendlich/guillain-barre-syndrom', lang)} renderIcon={id => <Icon id={id}/>}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.hero, heroImageOpacity: .95, accent: '#81bfca', accentStrong: '#255e69', accentSoft: '#e4f1f3', secondary: '#a34d7b', secondaryStrong: '#713450', heroBase: '#18333d' }}
     className={styles.page} sources={<LessonSources title={t(LABELS.sources)} items={references} note={t(lesson.scope)}/>}
   >
@@ -79,7 +80,7 @@ export default function GuillainBarreSpinePage() {
       <FeatureTable rows={section.rows} lang={lang}/>
       {section.note ? <aside className={styles.note}>{t(section.note)}</aside> : null}
     </LessonSection>)}
-    <LessonSection id="check" icon="check" title={t(lesson.check.title)} bodyClassName={styles.body}><SelfCheck lang={lang}/></LessonSection>
+    <LessonSection id="check" icon="check" title={t(lesson.check.title)} bodyClassName={styles.body}><SelfCheck key={lang} lang={lang}/></LessonSection>
     <LessonSection id="take-home" icon="summary" title={labels.takeHome} bodyClassName={styles.body}><ol className={styles.summary}>{lesson.summary.map((item, index) => <li key={index}>{t(item)}</li>)}</ol></LessonSection>
   </StandardLessonShell>
 }

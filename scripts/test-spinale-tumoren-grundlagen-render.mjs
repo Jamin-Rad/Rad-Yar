@@ -1,3 +1,5 @@
+import * as spinePatternPractice from '../data/spinePatternPractice.js'
+import * as spinePracticeLinks from '../data/spinePracticeLinks.js'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import { createRequire } from 'node:module'
@@ -29,6 +31,9 @@ const shell = compile('components/lesson-template/StandardLessonShell.jsx', {
 })
 const page = compile('app/wirbelsaeule/tumoren/grundlagen/page.jsx', {
   'next/link': { __esModule: true, default: ({ children, ...props }) => React.createElement('a', props, children) },
+  '@/data/spinePracticeLinks': spinePracticeLinks,
+  '@/data/spinePatternPractice': spinePatternPractice,
+  '@/components/lesson-template/TopicAssessment': compile('components/lesson-template/TopicAssessment.jsx', {}),
   '@/providers/LanguageProvider': { useLanguage: () => ({ lang: activeLanguage }) },
   '@/components/lesson-template/StandardLessonShell': shell,
   '@/data/spinaleTumorenGrundlagen': { SPINALE_TUMOREN_GRUNDLAGEN: lesson },

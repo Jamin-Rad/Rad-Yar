@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { spinePracticeActions } from '@/data/spinePracticeLinks'
 import { useLanguage } from '@/providers/LanguageProvider'
 import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
 import { FUNIKULAERE_MYELOSE_LESSON as lesson } from '@/data/funikulaereMyeloseLesson'
@@ -95,7 +96,7 @@ export default function FunikulaereMyelosePage() {
 
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={t(lesson.title)} author="RadYar" heroImageAlt={t(heroAlt)} syncHashNavigation
     breadcrumbs={[{ label: 'RadYar', href: languagePath('/') }, { label: t(L('Wirbelsäule', 'Spine', 'ستون فقرات')), href: languagePath('/lernen/wirbelsaeule') }, { label: t(lesson.title) }]}
-    sections={sections} labels={labels} actions={{}} renderIcon={id => <Icon id={id} />}
+    sections={sections} labels={labels} actions={spinePracticeActions(lesson.id, '/wirbelsaeule/metabolisch/funikulaere-myelose', lang)} renderIcon={id => <Icon id={id} />}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.hero, heroImageOpacity: .92, accent: '#77c5cf', accentStrong: '#255b68', accentSoft: '#e5f2f2', secondary: '#d49a61', secondaryStrong: '#79502d', heroBase: '#173843' }}
     className={styles.page} sources={<LessonSources title={labels.sources} items={references} note={t(lesson.sourceNote)} />}
   >
@@ -105,7 +106,7 @@ export default function FunikulaereMyelosePage() {
       {section.id === 'imaging' ? <PatternDiagram lang={lang} /> : null}
       {section.note ? <aside className={styles.note}>{t(section.note)}</aside> : null}
     </LessonSection>)}
-    <LessonSection id="check" icon="check" title={t(lesson.check.title)} bodyClassName={styles.body}><SelfCheck lang={lang} /></LessonSection>
+    <LessonSection id="check" icon="check" title={t(lesson.check.title)} bodyClassName={styles.body}><SelfCheck key={lang} lang={lang} /></LessonSection>
     <LessonSection id="take-home" icon="summary" title={labels.takeHome} bodyClassName={styles.body}><ol className={styles.summary}>{lesson.summary.map((item, index) => <li key={index}>{t(item)}</li>)}</ol></LessonSection>
   </StandardLessonShell>
 }

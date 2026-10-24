@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { spinePracticeActions } from '@/data/spinePracticeLinks'
 import { useLanguage } from '@/providers/LanguageProvider'
 import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
 import { SPINALE_ARACHNOIDITIS_LESSON as lesson } from '@/data/spinaleArachnoiditisLesson'
@@ -56,7 +57,7 @@ export default function SpinaleArachnoiditisPage() {
   const sourceNote = t(lesson.sourceNote)
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={t(lesson.title)} author="RadYar" heroImageAlt={t(lesson.alt)} syncHashNavigation
     breadcrumbs={[{ label: 'RadYar', href: localized('/') }, { label: t(L('Wirbelsäule', 'Spine', 'ستون فقرات')), href: localized('/lernen/wirbelsaeule') }, { label: t(lesson.title) }]}
-    sections={sections} labels={Object.fromEntries(Object.keys(labels).map(key => [key, t(labels[key])]))} actions={{}} renderIcon={id => <Icon id={id}/>}
+    sections={sections} labels={Object.fromEntries(Object.keys(labels).map(key => [key, t(labels[key])]))} actions={spinePracticeActions(lesson.id, '/wirbelsaeule/arachnoiditis', lang)} renderIcon={id => <Icon id={id}/>}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.hero, heroImageOpacity: .92, accent: '#81bfca', accentStrong: '#255e69', accentSoft: '#e4f1f3', secondary: '#a34d7b', secondaryStrong: '#713450', heroBase: '#18333d' }}
     className={styles.page} sources={<LessonSources title={t(labels.sources)} items={references} note={sourceNote}/>}
   >
@@ -72,7 +73,7 @@ export default function SpinaleArachnoiditisPage() {
       {section.image ? <figure className={styles.caseFigure}><img src={section.image.src} alt={t(section.image.alt)}/><figcaption>{t(section.image.caption)}</figcaption></figure> : null}
       {section.note ? <aside className={styles.note}>{t(section.note)}</aside> : null}
     </LessonSection>)}
-    <LessonSection id="check" icon="check" title={t(lesson.check.title)} bodyClassName={styles.body}><SelfCheck lang={lang}/></LessonSection>
+    <LessonSection id="check" icon="check" title={t(lesson.check.title)} bodyClassName={styles.body}><SelfCheck key={lang} lang={lang}/></LessonSection>
     <LessonSection id="take-home" icon="pattern" title={t(labels.takeHome)} bodyClassName={styles.body}><ol className={styles.summary}>{lesson.summary.map((item, i) => <li key={i}>{t(item)}</li>)}</ol></LessonSection>
   </StandardLessonShell>
 }

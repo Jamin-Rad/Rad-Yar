@@ -90,7 +90,7 @@ for (const locale of Object.keys(expected)) {
   assert.ok(html.includes('data-lesson-hero'), `${locale} has semantic lesson hero`)
   assert.ok(html.includes('/educational/funikulaere-myelose/hero.svg'), `${locale} has topic-specific schematic`)
   assert.ok(html.includes('Wirbelsäule.pdf · pp. 28–29'), `${locale} shows exact source pages`)
-  assert.ok(html.includes('26965759') && html.includes('NG239') && html.includes('A5881'), `${locale} retains clinical/imaging references`)
+  assert.ok(html.includes('26965759') && html.includes('NG239') && html.includes('PMC6108975'), `${locale} retains clinical/imaging references`)
   assert.ok((html.match(/type="radio"/g) || []).length === 3, `${locale} renders three retrieval choices`)
   assert.ok(!html.includes('checked=""'), `${locale} has no preselected retrieval answer`)
   assert.ok((html.match(/data-lehr-section-managed/g) || []).length >= 6, `${locale} retains shell section controls`)

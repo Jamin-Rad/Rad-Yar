@@ -5,6 +5,7 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
 import { SPINE_INFECTION_LESSON as lesson } from '@/data/spineInfection'
 import styles from './page.module.css'
+import { SPINE_EXISTING_INFECTION_PRACTICE } from '@/data/spineInfectiousCompletion'
 
 const L = (de, en, fa) => ({ de, en, fa })
 const pick = (value, lang) => typeof value === 'string' ? value : value?.[lang] || value?.de || ''
@@ -59,7 +60,7 @@ export default function SpineInfectionPage() {
     const separator = pathname.includes('?') ? '&' : '?'
     return `${pathname}${separator}lang=${lang}${hash ? `#${hash}` : ''}`
   }
-  const lessonReturn = localizedPath('/wirbelsaeule/infektion#tuberculosis')
+  const lessonReturn = localizedPath('/wirbelsaeule/infektion#pattern')
   const actions = {
     mcq: {
       href: `/ueben/quiz?fach=wirbelsaeule&n=1&themen=spondylodiszitis&from=${encodeURIComponent(lessonReturn)}${lang === 'de' ? '' : `&lang=${lang}`}`,
@@ -102,9 +103,9 @@ export default function SpineInfectionPage() {
       <div className={styles.body}><p>{pick(lesson.intro.text, lang)}</p><p className={styles.scope}>{pick(lesson.media, lang)}</p><ul className={styles.legend} aria-label={pick(L('Legende der Schemafarben', 'Schematic colour legend', 'راهنمای رنگ شماتیک'), lang)}><li><span className={styles.vertebraSwatch}/>{pick(L('Wirbelkörper / Endplatten', 'Vertebral bodies / endplates', 'مهره‌ها / صفحات انتهایی'), lang)}</li><li><span className={styles.discSwatch}/>{pick(L('Bandscheibe', 'Intervertebral disc', 'دیسک بین‌مهره‌ای'), lang)}</li><li><span className={styles.collectionSwatch}/>{pick(L('Paravertebrale Kollektion', 'Paravertebral collection', 'تجمع پاراورتیبرال'), lang)}</li></ul><p className={styles.scope}>{pick(L('Lernziel: das Muster aus Bandscheibe, angrenzenden Endplatten und Weichteilausdehnung gemeinsam beschreiben. Das ist kein Erregernachweis.', 'Objective: describe the combined disc, adjacent endplate and soft-tissue pattern. This does not identify an organism.', 'هدف: الگوی دیسک، صفحات انتهایی مجاور و گسترش بافت نرم را در کنار هم توصیف کنید. این کار عامل عفونی را مشخص نمی‌کند.'), lang)}</p></div>
     </LessonSection>
     {chapters.map(chapter => <LessonSection key={chapter.id} id={chapter.id} icon={chapter.icon} title={pick(chapter.title, lang)}>
-      <div className={styles.body}><p>{pick(chapter.lead, lang)}</p><Comparison rows={chapter.rows} lang={lang}/>{chapter.id === 'pattern' && <figure className={styles.caseFigure}><img src={lesson.caseImage.src} alt={pick(lesson.caseImage.alt, lang)} loading="lazy"/><figcaption><p>{pick(lesson.caseImage.caption, lang)}</p><a href={lesson.caseImage.href} target="_blank" rel="noreferrer">{pick(L('Originalfall auf Radiopaedia öffnen', 'Open the original Radiopaedia case', 'باز کردن کیس اصلی در Radiopaedia'), lang)}</a></figcaption></figure>}<p className={styles.scope}>{pick(chapter.note, lang)}</p><small>{pick(chapter.source, lang)}</small></div>
+      <div className={styles.body}><p>{pick(chapter.lead, lang)}</p><Comparison rows={chapter.rows} lang={lang}/>{chapter.id === 'pattern' && <figure className={styles.caseFigure}><img src={lesson.caseImage.src} alt={pick(lesson.caseImage.alt, lang)} loading="lazy"/><figcaption><p>{pick(lesson.caseImage.caption, lang)}</p><a href={lesson.caseImage.href} target="_blank" rel="noreferrer">{pick(L('Originalfall auf Radiopaedia öffnen', 'Open the original Radiopaedia case', 'باز کردن کیس اصلی در Radiopaedia'), lang)}</a></figcaption></figure>}<p className={styles.scope}>{pick(chapter.note, lang)}</p><small>{pick(chapter.source, lang)}</small>{SPINE_EXISTING_INFECTION_PRACTICE.filter(item=>item.anchor===chapter.id).map(item=>{const back=localizedPath(`/wirbelsaeule/infektion#${item.anchor}`);return <nav key={item.id} id={item.id} aria-label={pick(item.title,lang)}><h3>{pick(item.title,lang)}</h3><p><a href={localizedPath(`/ueben/quiz?fach=wirbelsaeule&n=1&themen=${item.id}&from=${encodeURIComponent(back)}`)}>{pick(L('Passende MC-Frage','Related MCQ','پرسش چندگزینه‌ای مرتبط'),lang)}</a>{' · '}<a href={localizedPath(`/flashcards/${item.id}?from=${encodeURIComponent(back)}`)}>{pick(L('Karteikarte','Flashcard','فلش‌کارت'),lang)}</a></p></nav>})}</div>
     </LessonSection>)}
-    <LessonSection id="case" icon="case" title={pick(lesson.case.title, lang)}><SelfCheck lang={lang}/></LessonSection>
+    <LessonSection id="case" icon="case" title={pick(lesson.case.title, lang)}><SelfCheck key={lang} lang={lang}/></LessonSection>
     <LessonSection id="take-home" icon="summary" title={t('takeHome')}><ol className={styles.rules}>{(lesson.takeHome || []).map((rule, index) => <li key={index}>{pick(rule, lang)}</li>)}</ol></LessonSection>
   </StandardLessonShell>
 }

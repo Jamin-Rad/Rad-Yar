@@ -1,0 +1,17 @@
+# Degenerative spine completion: source, teaching and media plan
+
+PDF source inspected as page images and text: Wirbelsäule.pdf physical p9 (printed8): spondylolisthesis/pseudospondylolisthesis headings only; p10 (printed9): ossification of spinal ligaments heading only. No clinical detail or diagnostic image is supplied on these pages. All clinical teaching below is explicit supplementary material.
+
+## Spondylolisthesis
+Promise: distinguish displacement from its cause, and describe position-dependent slip without confusing it with symptom severity.
+Sequence: displacement and pars integrity; compare clinical images across positions; report level/direction/extent/position and neural effect with three takeaways. Compact schematic teaches offset direction, not a diagnostic threshold. Two embedded decisions feed the exact bank/cards.
+Primary sources: NASS degenerative lumbar spondylolisthesis guideline summary (2016), doi10.1016/j.spinee.2015.11.055, primary society recommendation for lateral standing radiograph when possible and MRI for accompanying stenosis. Krenzlin etal FrontSurg2022;9:860865 doi10.3389/fsurg.2022.860865: original113-patient retrospective cohort, Figure1 demonstrates positions/modalities; not adopted as a universal instability or treatment threshold. Thompson etal CORR2023 doi10.1097/CORR.0000000000002695 supports position sensitivity and no single pair detects every dynamic case. Pars distinction supported by the Krenzlin introduction and degenerative guideline.
+Clinical media: Krenzlin etal Figure1, original image, CC BY4.0. Panels A slump sitting,B flexion,C neutral,D extension,E prone,F MRI,G CT, as source caption. No claim all panels are a time-series or postoperative comparison. Isolated images do not prove symptom causation. Full figure linked for enlargement; locally scrollable panel preserves readability on mobile.
+
+## Ligament ossification
+Promise: localize ossification anterior to the bodies, ventral to the cord or dorsal to it, and distinguish bone assessment from neural assessment.
+Sequence: precise anatomical diagram + DISH/OPLL/OLF distinction; inspect explicitly combined-disease CT; report canal involvement and neural impact, not just label. Two decisions feed exact bank/cards. No surgical thresholds, prevalence claims or mandatory screening protocol.
+Primary source: Nishimura etal JClinMed2021;10:4690 doi10.3390/jcm10204690, multicentre239-patient symptomatic-cervical-OPLL cohort, Figure2 original CC BY4.0. Selected figure combines DISH/OPLL/OLF/ONL/OSIL, labelled as coexistence rather than a typical isolated first case. Diagram establishes three main sites before the complex clinical image. Formal DISH criteria not reduced to anterior bridging alone. CT bone localization vs MRI neural effect additionally supported by Chikuda primary OPLL2019 diagnosis guidance (2021 publication), doi10.22603/ssrr.2021-0118.
+
+## Media and localization
+Heroes are generated conceptual illustrations, not diagnostic scans; exact clinical anatomy taught by code-native diagrams and actual research figures. CC BY provenance stored alongside assets. DE/EN/FA terms: Wirbelgleiten/spondylolisthesis/لغزش مهره; Pars interarticularis/pars interarticularis/پارس اینترآرتیکولاریس; Hinterkantenversatz/posterior-margin offset/جابه‌جایی حاشیه خلفی; Bandverknöcherung/ligament ossification/استخوانی‌شدن رباط. Preserve uncertainty, location and phase in all languages. No application gates modified. Parent owns registry integration, independent review and browser QA.

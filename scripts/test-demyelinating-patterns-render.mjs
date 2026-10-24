@@ -1,3 +1,4 @@
+import * as spinePatternPractice from '../data/spinePatternPractice.js'
 import fs from 'node:fs'
 import assert from 'node:assert/strict'
 import { createRequire } from 'node:module'
@@ -29,6 +30,8 @@ const ShellModule = compileExports('components/lesson-template/StandardLessonShe
 const Page = compile('app/gehirn/entzuendlich/demyelinisierende-muster/page.jsx', {
   'next/link': { __esModule: true, default: ({ children, ...props }) => React.createElement('a', props, children) },
   '@/components/lesson-template/StandardLessonShell': ShellModule,
+  '@/data/spinePatternPractice': spinePatternPractice,
+  '@/components/lesson-template/TopicAssessment': compileExports('components/lesson-template/TopicAssessment.jsx', {}),
   '@/providers/LanguageProvider': { useLanguage: () => ({ lang: activeLanguage }) },
   '@/data/gehirnDemyelinationLesson': { DEMYELINATION_COPY: C, DEMYELINATION_IDS, DEMYELINATION_PATH, DEMYELINATION_SECTIONS, DEMYELINATION_SOURCES },
   './page.module.css': styles,

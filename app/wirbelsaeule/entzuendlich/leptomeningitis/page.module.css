@@ -1,0 +1,30 @@
+.copy {color:var(--ink);min-width:0;}
+.copy p {line-height:1.8;margin:0 0 1rem;}
+.copy svg {width:24px;height:24px;}
+.figure {margin:1.4rem 0;}
+.figure img {display:block;width:100%;max-width:560px;height:auto;object-fit:contain;background:#111;border-radius:12px;margin-inline:auto;}
+.figure figcaption {font-size:.95rem;line-height:1.75;margin:.8rem 0;color:var(--body);}
+.figure a {display:block;margin-top:.6rem;font-size:.85rem;color:inherit;text-decoration:underline;text-underline-offset:3px;}
+.tableWrap {width:100%;overflow:auto;margin:1.4rem 0;border:1px solid var(--line);border-radius:12px;}
+.tableWrap table {width:100%;border-collapse:collapse;table-layout:fixed;}
+.tableWrap th,.tableWrap td {text-align:start;vertical-align:top;padding:.9rem;line-height:1.7;overflow-wrap:anywhere;border-bottom:1px solid var(--line);}
+.tableWrap th:first-child {width:31%;}
+.tableWrap thead {background:var(--lesson-accent-soft);}
+.cave {padding:1rem;border-inline-start:3px solid #af8a55;border-radius:8px;background:color-mix(in srgb,var(--paper) 90%,#b58a4c);line-height:1.8;}
+.check {margin:1.4rem 0;padding:1rem;border:1px solid var(--line);border-radius:12px;background:var(--canvas);}
+.check h3 {margin:.2rem 0 .8rem;font-size:1.05rem;}
+.options {display:grid;gap:.7rem;}
+.options button {display:flex;align-items:flex-start;gap:.75rem;text-align:start;font:inherit;line-height:1.7;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:.85rem;width:100%;cursor:pointer;overflow-wrap:anywhere;}
+.options button[aria-pressed='true'] {outline:2px solid var(--lesson-accent);outline-offset:1px;}
+.options button:focus-visible,.tableWrap:focus-visible {outline:3px solid #b38445;outline-offset:3px;}
+.options b {flex:0 0 1.3rem;}
+.check .feedback {margin-top:1rem;margin-bottom:0;padding:.8rem;background:var(--lesson-accent-soft);border-radius:8px;color:var(--ink);}
+@media(max-width:640px){.tableWrap th,.tableWrap td {padding:.6rem;font-size:.94rem;}.tableWrap th:first-child {width:34%;}.check {padding:.75rem;}}
+
+.diagram {margin:1.3rem 0;padding:1rem;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);}
+.diagram h3 {font-size:1.05rem;margin:0 0 1rem;}
+.diagram svg {display:block;width:100%;height:auto;max-width:520px;margin-inline:auto;direction:ltr;}
+.diagramLabels {direction:ltr;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem;text-align:center;font-size:.85rem;line-height:1.5;max-width:520px;margin:auto;}
+.phaseLabels {display:flex;justify-content:space-around;gap:1rem;margin:1.3rem 0 0;font-size:.9rem;direction:ltr;}
+.diagram figcaption {font-size:.9rem;line-height:1.7;color:var(--body);}
+.diagram li {line-height:1.7;margin:.4rem 0;}

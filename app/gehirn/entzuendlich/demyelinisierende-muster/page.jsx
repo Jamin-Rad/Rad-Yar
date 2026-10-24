@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react'
+import TopicAssessment from '@/components/lesson-template/TopicAssessment'
+import { SPINE_PATTERN_QUESTIONS } from '@/data/spinePatternPractice'
 import StandardLessonShell, { LessonSection, LessonSources, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { DEMYELINATION_COPY as C, DEMYELINATION_IDS, DEMYELINATION_PATH, DEMYELINATION_SECTIONS, DEMYELINATION_SOURCES } from '@/data/gehirnDemyelinationLesson'
@@ -62,6 +64,7 @@ export default function DemyelinatingPatternsLesson() {
   const langPath = path => lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
   const sections = DEMYELINATION_SECTIONS.map((section, index) => ({ ...section, label: value(titles[index], lang) }))
   const sources = DEMYELINATION_SOURCES.map(source => ({ ...source, tag: value(source.tag, lang), citation: value(source.citation, lang), scope: value(source.scope, lang) }))
+  sources.push({ title: 'Filippi et al. · Spinal cord lesion assessment (2019)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6598631/', citation: 'Brain. 2019;142:1858–1875. doi:10.1093/brain/awz144.' })
   return <StandardLessonShell lessonId={DEMYELINATION_IDS[0]} lang={lang} title={value(C.title, lang)} author="Dr. Zia"
     breadcrumbs={[{ label: 'RadYar', href: langPath('/') }, { label: value(C.chapter, lang), href: langPath('/lernen/gehirn') }, { label: value(C.title, lang) }]}
     sections={sections} labels={Object.fromEntries(Object.entries(labels).map(([key, item]) => [key, value(item, lang)]))} actions={{}}
@@ -80,8 +83,9 @@ export default function DemyelinatingPatternsLesson() {
         <div className={styles.tableScroll} role="region" tabIndex={0} aria-label={lang === 'fa' ? 'مقایسهٔ الگوهای تصویربرداری' : lang === 'en' ? 'Imaging pattern comparison' : 'Vergleich der Bildmuster'}>
           <table><thead><tr><th scope="col">{lang === 'fa' ? 'یافته' : lang === 'en' ? 'Feature' : 'Merkmal'}</th><th scope="col">MS</th><th scope="col">NMOSD</th><th scope="col">MOGAD</th><th scope="col">ADEM</th></tr></thead><tbody>{C.comparison.map(row => <tr key={row.feature.en}><th scope="row">{value(row.feature, lang)}</th><td>{value(row.ms, lang)}</td><td>{value(row.nmosd, lang)}</td><td>{value(row.mog, lang)}</td><td>{value(row.adem, lang)}</td></tr>)}</tbody></table>
         </div>
+        <TopicAssessment key={lang} question={SPINE_PATTERN_QUESTIONS[lang][1]} topic="multiple-sklerose-spinal" lang={lang} fach="wirbelsaeule" returnTo={`${DEMYELINATION_PATH}?lang=${lang}#compare`} />
       </LessonSection>
-      <LessonSection id="self-check" title={value(titles[2], lang)} icon="check"><SelfCheck lang={lang}/></LessonSection>
+      <LessonSection id="self-check" title={value(titles[2], lang)} icon="check"><SelfCheck key={lang} lang={lang}/></LessonSection>
       <LessonSection id="take-home" title={value(titles[3], lang)} icon="summary"><TakeHomeList items={C.summary.map((item, index) => ({ title: value([{ de: 'Zuerst beschreiben', en: 'Describe first', fa: 'ابتدا توصیف کنید' }, { de: 'Optik und Myelon prüfen', en: 'Check optic pathways and cord', fa: 'راه بینایی و نخاع را بررسی کنید' }, { de: 'Überlappung berücksichtigen', en: 'Allow for overlap', fa: 'هم‌پوشانی را در نظر بگیرید' }, { de: 'Befund integrieren', en: 'Integrate the findings', fa: 'یافته‌ها را یکپارچه کنید' }][index], lang), detail: value(item, lang) }))}/></LessonSection>
       <p className={styles.curriculum}>{lang === 'fa' ? 'موضوع‌های مرتبط در برنامهٔ درسی:' : lang === 'en' ? 'Related curriculum topics:' : 'Verknüpfte Themen im Curriculum:'}{' '}{DEMYELINATION_IDS.map((id, index) => <span key={id}>{index ? ' · ' : ''}{id === 'multiple-sklerose' ? 'MS' : id.toUpperCase()}</span>)}</p>
     </div>

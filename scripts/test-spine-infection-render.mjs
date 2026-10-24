@@ -5,6 +5,7 @@ import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import * as data from '../data/spineInfection.js'
+import * as infectiousPractice from '../data/spineInfectiousCompletion.js'
 
 const require = createRequire(import.meta.url)
 const styles = { default: new Proxy({}, { get: (_, key) => String(key) }) }
@@ -33,6 +34,7 @@ const Page = compile('app/wirbelsaeule/infektion/page.js', {
   '@/components/lesson-template/StandardLessonShell': shell,
   '@/providers/LanguageProvider': { useLanguage: () => ({ lang: activeLanguage }) },
   '@/data/spineInfection': data,
+  '@/data/spineInfectiousCompletion': infectiousPractice,
   './page.module.css': styles,
 }).default
 const escaped = value => renderToStaticMarkup(React.createElement(React.Fragment, null, value))
