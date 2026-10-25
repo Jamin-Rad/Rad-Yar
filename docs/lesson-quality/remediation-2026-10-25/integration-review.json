@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/brain_remediation; independent read-only review of root integration",
+  "status": "ACCEPT_BOUNDED_TECHNICAL_INTEGRATION_AFTER_RETEST",
+  "scope": "Shared reviewed-snapshot integration, missing lesson assessment links, quiz/flashcard return navigation, and content-version session invalidation. Actual source inspection and isolated bundled runtime probes; no Next build or browser run by this reviewer.",
+  "filesRead": [
+    "data/assessmentQuality/index.js",
+    "data/assessmentQuality/publishedBank.json summary and exact ID allowlist comparison",
+    "data/assessmentQuality/reviewedPackets.json",
+    "data/assessmentQuality/routeLinks.json",
+    "scripts/publish-reviewed-assessment-packets.mjs",
+    "scripts/generate-assessment-quality-links.mjs",
+    "lib/lessonAssessmentLinks.js",
+    "components/lesson-template/StandardLessonShell.jsx fallback integration",
+    "lib/assessmentNavigation.js",
+    "app/ueben/quiz/page.jsx session/translation/return/option-shuffle paths",
+    "app/flashcards/[topicId]/page.js return and lesson shortcut paths",
+    "data/questions.js getQuestionSetVersion/getQuestionsForIds/supplement consumer",
+    "data/flashcards.js supplement consumer",
+    "data/curriculum.js getLessonLinkForFlashcard",
+    "scripts/test-assessment-return-navigation.mjs",
+    "scripts/test-assessment-content-version.mjs",
+    "lib/assessmentContentVersion.js",
+    "lib/assessmentIdentity.js",
+    "data/assessmentQuality/legacySessionBaseline.json metadata/shape",
+    "tmp/assessment-quality/capture-legacy-version-baseline.mjs"
+  ],
+  "runtimeEvidence": {
+    "probe": "tmp/brain-integration-probe.mjs plus entry file; esbuild isolated node bundle, no source mutation persisted",
+    "supplementSnapshot": {
+      "questionsPerLanguage": 32,
+      "cards": 31,
+      "unapprovedIDs": 0,
+      "containsHSV": false,
+      "containsPerthes": false
+    },
+    "lightweightShellRegistry": {
+      "routeLinksBytes": 12477,
+      "publishedBankBytes": 274772,
+      "finding": "StandardLessonShell imports only tiny link helper/registry; no question/card bank imported into lesson shell."
+    },
+    "fallback": "PVL FA emitted MCQ route includes fach=gehirn,n=3,themen=aq-pvl,lang=fa and from=/gehirn/anatomie/pvl?lang=fa; card link carries same from/lang.",
+    "existingActionPreservation": "Custom mcq.onClick/label remained present, label Custom; fallback adds only missing action objects.",
+    "returnNavigationTest": "PASS direct node test preserves current DE/EN/FA, existing query and hash and rejects protocol-relative external return target.",
+    "existingVersionTest": "PASS when bundled with esbuild; direct node cannot resolve project's extensionless data imports, a runner issue rather than a production failure.",
+    "localeOnlyProbe": {
+      "before": "ssok4c",
+      "after": "ssok4c",
+      "englishOnlyStemCorrectionInvalidatedSession": false
+    },
+    "directCardLessonLookup": {
+      "/flashcards/aq-pvl": null,
+      "/flashcards/aq-balkenagenesie": null
+    }
+  },
+  "findings": [
+    {
+      "id": "INT-ASM-VERSION-LOCALE",
+      "severity": "major",
+      "file": "data/questions.js",
+      "key": "getQuestionSetVersion",
+      "observed": "Only QUESTION_BANK.de contributes stem/options/key to the hash. Independently changing the selected English Mamma question's stem in memory leaves the version unchanged. A meaningful EN/FA translation/key correction can therefore reuse prior answers despite changed assessment content.",
+      "requiredCorrection": "Hash canonical DE/EN/FA content together (or an equivalent reviewed semantic content version), so language switches stay stable while substantive corrections to any selected locale invalidate the affected selection. Add EN-only and FA-only regression checks plus unrelated-topic checks.",
+      "status": "CLOSED",
+      "retest": "Independent cycle1 read-only retest: actual new helper, committed baseline capture script, quiz key consumer, canonical identity helper and curriculum fallback read. Bundled regression and independent probes passed; details in repairRetest."
+    },
+    {
+      "id": "INT-UX-LEGACY-SESSIONS",
+      "severity": "moderate",
+      "file": "app/ueben/quiz/page.jsx",
+      "key": "sessionKey parts/getQuestionSetVersion",
+      "observed": "The new hash is an extra part of every existing v2 storage key. Every pre-change quiz key consequently differs, including wholly unmodified topics. Current tests show unrelated revisions preserve a new-style hash, not that unaffected legacy sessions survive first rollout.",
+      "requiredCorrection": "Either safely preserve/migrate unaffected legacy sessions, including their original option-shuffle seed, or explicitly report the one-time universal saved-session reset as a limitation and remove claims that only affected old sessions reset. Do not copy old displayed option answers under a new shuffle seed without preserving their meaning.",
+      "status": "CLOSED",
+      "retest": "Independent cycle1 read-only retest: actual new helper, committed baseline capture script, quiz key consumer, canonical identity helper and curriculum fallback read. Bundled regression and independent probes passed; details in repairRetest."
+    },
+    {
+      "id": "INT-LNG-CANONICAL-SUFFIX",
+      "severity": "moderate",
+      "file": "app/ueben/quiz/page.jsx",
+      "key": "canonicalQuestionId",
+      "observed": "canonicalQuestionId matches /-(de|en|fa)-/ only inside IDs. Existing MSK bank IDs end in -de/-en/-fa. Explicit retry/profile fragen values with a trailing locale are not canonicalized; after language switching getQuestionsForIds can drop them. The nearby bank lookup correctly supports end-of-ID tokens, so the two normalizers disagree.",
+      "requiredCorrection": "Use the same locale-token boundary rule for both inside and trailing tokens, and test explicit IDs such as rk-fettkissen-1-en across all three languages without losing order or answers.",
+      "status": "CLOSED",
+      "retest": "Independent cycle1 read-only retest: actual new helper, committed baseline capture script, quiz key consumer, canonical identity helper and curriculum fallback read. Bundled regression and independent probes passed; details in repairRetest."
+    },
+    {
+      "id": "INT-UX-DIRECT-CARD-BACKLINK",
+      "severity": "minor",
+      "file": "data/curriculum.js; app/flashcards/[topicId]/page.js",
+      "key": "getLessonLinkForFlashcard and showLessonShortcut",
+      "observed": "New reviewed card topics aq-pvl and aq-balkenagenesie resolve to no lesson when opened directly from the flashcard index. The new registry knows their routes, but lesson lookup searches only CURRICULUM. Lesson-origin links work because they carry from; direct card-page Study lesson shortcuts are absent.",
+      "requiredCorrection": "Extend direct topic-to-lesson lookup with the reviewed lightweight route registry or equivalent explicit mapping, preserving existing curriculum links and language/query behavior.",
+      "status": "CLOSED",
+      "retest": "Independent cycle1 read-only retest: actual new helper, committed baseline capture script, quiz key consumer, canonical identity helper and curriculum fallback read. Bundled regression and independent probes passed; details in repairRetest."
+    }
+  ],
+  "positiveChecks": [
+    "Current published snapshot contains only explicitly allowed supplemental IDs in every locale; draft HSV/Perthes additions do not leak.",
+    "The runtime index imports the reviewed JSON snapshot rather than authoring modules; author files can hold later pending packets without direct runtime bank exposure.",
+    "Return links use the currently selected practice language and preserve lesson query/hash; no subscription/access check was removed in the inspected paths.",
+    "Quiz still caps free-account counts through hasFullAccess/FREE_ITEM_LIMIT; flashcard page retains existing access logic.",
+    "Goal-mapped route registry derives question counts from actual registered pools rather than fabricated quotas, and preserves existing custom topic selections.",
+    "Translation lookup already supports locale tokens at the end of IDs; the remaining mismatch is specifically the quiz canonicalizer.",
+    "Existing version test restores all in-memory test mutations; independent probe likewise restores its selected question."
+  ],
+  "rootClinicalFollowups": {
+    "status": "ACCEPT_BOUNDED_DELTAS",
+    "read": "Actual Lung-RADS new-solid DE/EN/FA optionD now category4B diagnostic evaluation, keyC/clinical thresholds unchanged; actual lesson notice explicitly separates Thorax.pdf pp14–15 Fleischner material from ACR2022 screening rules; working official Sitecore source constant.",
+    "primary": "Official Lung-RADS2022 PDF page1: new solid6 to<8mm is4A with3-month LDCT;4B new/growing≥8mm has clinically selected diagnostic evaluation. OptionD is now a plausible competing category rather than mandatory immediate biopsy.",
+    "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/Lung-RADS/Lung-RADS-2022.pdf",
+    "limit": "No new PDF-page visual review of Thorax.pdf by this reviewer; this checks corrected attribution wording, not an independent whole-source map."
+  },
+  "gates": {
+    "ASM": "PASS bounded content-version and published-ID integration",
+    "LNG": "PASS canonical locale normalization and return-language helper tests",
+    "UX": "PASS source/runtime navigation checks; actual browser interactions remain root-owned",
+    "REV": "Independent read-only repair retest completed"
+  },
+  "clinicalApproval": "No global clinical approval inferred from this technical integration review.",
+  "repairRetest": {
+    "cycle": 1,
+    "readOnly": true,
+    "localeVersion": {
+      "englishOnlyStemCorrectionInvalidated": true,
+      "before": "7ozpez",
+      "after": "1fsvr88",
+      "englishAndFarsiOptionMutationRegression": "PASS in updated bundled test"
+    },
+    "baseline": {
+      "commit": "145955752d4d2159e22f2db2280c76ddb2c17256",
+      "capture": "Script loads repository module text exclusively via git show committed revision; node_modules excluded. Only IDs/tags/triad fingerprints retained.",
+      "consumer": "Current versus baseline selected fingerprints compared; quiz appends revision only on mismatch. Unchanged selection therefore retains the exact prior v2 key and seed."
+    },
+    "identity": "Updated canonicalAssessmentId handles trailing en/fa; updated all915-ID DE/EN/FA roundtrip test PASS",
+    "directShortcuts": {
+      "/flashcards/aq-pvl": "/gehirn/anatomie/pvl",
+      "/flashcards/aq-balkenagenesie": "/gehirn/anatomie/balkenagenesie"
+    },
+    "snapshot": "Still32Q/lang+31cards; no unapproved supplement IDs, HSV or Perthes leak",
+    "limitations": "No new production browser by this reviewer. No clinical correctness inferred. Historical findings retained with retest closure."
+  }
+}

@@ -72,8 +72,8 @@ const CONTENT = {
         ["Intratendinös", "innerhalb der Sehne, ohne Oberflächenkontakt", "lineare/fokale T2-hyperintense Signalanhebung ohne Kontakt zur Bursa oder zum Gelenk"],
         ["Tendinopathie", "diffuse Degeneration", "intratendinöse Signalanhebung in PD/T1, kein eindeutiges T2-Flüssigkeitssignal, ggf. Sehnenverdickung"]
       ],
-      "irisTitle": "Wann ist eine Naht sinnvoll? - die Footprint-Beteiligung",
-      "irisText": "Bei der PASTA-Läsion ist das Ausmaß der Footprint-Beteiligung (in % der Sehnenbreite bzw. -tiefe) entscheidend: Bei > 50 % wird häufig eine operative Refixation erwogen, bei < 50 % oft konservativ behandelt oder debridiert.",
+      "irisTitle": "Sehnendicke und klinischer Kontext",
+      "irisText": "Bei PASTA-Läsionen die Defekttiefe als Anteil der Sehnendicke angeben, nicht als beliebige Footprint-Fläche oder anteroposteriore Breite. Der medial-laterale freiliegende Footprint kann die Tiefe arthroskopisch abschätzen. Eine Läsion > 50 % Sehnendicke ist ein Behandlungsfaktor, keine alleinige OP-Indikation: Symptome, Funktion und Ansprechen auf nichtoperative Therapie mitbeurteilen.",
       "key": "Bursaseitige, gelenkseitige (PASTA) und intratendinöse Partialrupturen unterscheiden sich durch ihre Lage relativ zu Bursa und Gelenkspalt - alle drei zeigen eine fokale T2-hyperintense Signalanhebung."
     },
     "full": {
@@ -179,8 +179,8 @@ const CONTENT = {
         ["Intratendinous", "within the tendon, no surface contact", "linear/focal T2-hyperintense signal without contact to the bursa or joint"],
         ["Tendinopathy", "diffuse degeneration", "intratendinous signal elevation on PD/T1, no clear T2 fluid signal, possible tendon thickening"]
       ],
-      "irisTitle": "When is repair indicated? - footprint involvement",
-      "irisText": "For PASTA lesions, the extent of footprint involvement (as a percentage of tendon width/thickness) is decisive: >50% often prompts surgical refixation, <50% is often managed conservatively or with debridement.",
+      "irisTitle": "Tendon thickness and clinical context",
+      "irisText": "For PASTA lesions, report tear depth as a proportion of tendon thickness, not arbitrary footprint area or anteroposterior width. Mediolateral exposed footprint can estimate depth arthroscopically. A tear >50% of tendon thickness is one treatment factor, not a stand-alone indication for surgery: also assess symptoms, function and response to nonoperative care.",
       "key": "Bursal-sided, articular-sided (PASTA) and intratendinous partial tears differ by their location relative to the bursa and joint space - all three show focal T2-hyperintense signal."
     },
     "full": {
@@ -286,8 +286,8 @@ const CONTENT = {
         ["داخل تاندونی", "درون تاندون، بدون تماس با سطح", "سیگنال خطی/کانونی هیپراینتنس T2 بدون تماس با بورس یا مفصل"],
         ["تاندینوپاتی", "دژنراسیون منتشر", "افزایش سیگنال داخل تاندونی در PD/T1، بدون سیگنال مایع واضح در T2، احتمال ضخیم‌شدن تاندون"]
       ],
-      "irisTitle": "ترمیم جراحی چه زمانی مناسب است؟ - میزان درگیری محل اتصال تاندون (footprint)",
-      "irisText": "در ضایعات PASTA، میزان درگیری محل اتصال تاندون (footprint) (به درصد عرض/عمق تاندون) تعیین‌کننده است: در درگیری > ۵۰٪ معمولاً ترمیم جراحی در نظر گرفته می‌شود، در < ۵۰٪ اغلب درمان محافظه‌کارانه یا دبریدمان انجام می‌شود.",
+      "irisTitle": "ضخامت تاندون و زمینهٔ بالینی",
+      "irisText": "در ضایعهٔ PASTA، عمق نقص به‌صورت سهمی از ضخامت تاندون گزارش شود، نه مساحت دلخواه footprint یا عرض قدامی‌خلفی. پهنای داخلی‌خارجی footprint نمایان می‌تواند در آرتروسکوپی عمق را تخمین بزند. پارگی بیش از ۵۰٪ ضخامت تاندون یکی از عوامل تصمیم درمانی است، نه اندیکاسیون مستقل جراحی؛ علائم، عملکرد و پاسخ به درمان غیرجراحی نیز بررسی شوند.",
       "key": "پارگی‌های سمت بورسال، سمت مفصلی (PASTA) و داخل تاندونی بر اساس محل خود نسبت به بورس و فضای مفصلی متفاوت‌اند - هر سه با سیگنال کانونی هیپراینتنس T2 مشخص می‌شوند."
     },
     "full": {

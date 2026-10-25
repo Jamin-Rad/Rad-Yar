@@ -1,3 +1,4 @@
+import { qualityCards, qualityTopics } from './assessmentQuality'
 import { ABDOMEN_EXISTING_CARDS, ABDOMEN_EXISTING_CARD_TOPICS } from './abdomenExistingPractice'
 import { ABDOMEN_LEGACY_CARDS, ABDOMEN_LEGACY_CARD_TOPICS } from './abdomenLegacyCardAccess'
 import { LIRADS_CARDS, LIRADS_CARD_TOPIC } from './abdomenHccPlanning'
@@ -3651,34 +3652,35 @@ const LEGACY_FLASHCARDS = [
     }
   },
   {
-    "id": "rotatorenmanschette-09",
-    "topicId": "rotatorenmanschette",
-    "category": {
-      "de": "Partialruptur",
-      "en": "Partial tear",
-      "fa": "پارگی جزئی"
-    },
-    "front": {
-      "de": "Ab welchem Footprint-Befall wird bei einer PASTA-Läsion meist eine OP erwogen?",
-      "en": "From what footprint involvement is surgery usually considered in a PASTA lesion?",
-      "fa": "از چه میزان درگیری محل اتصال تاندون (footprint) در ضایعه PASTA معمولاً جراحی در نظر گرفته می‌شود؟"
-    },
-    "answer": {
-      "de": ">50% der Footprint-Breite.",
-      "en": ">50% of footprint width.",
-      "fa": "بیش از ۵۰٪ عرض محل اتصال تاندون (footprint)."
-    },
-    "explanation": {
-      "de": "Bei <50% Footprint-Befall wird meist konservativ behandelt oder débridiert, bei >50% wird häufig eine operative Refixation diskutiert.",
-      "en": "With <50% footprint involvement, conservative treatment or debridement is preferred; with >50%, surgical repair is often discussed.",
-      "fa": "در درگیری کمتر از ۵۰٪ معمولاً درمان محافظه‌کارانه یا دبریدمان انجام می‌شود؛ در بیش از ۵۰٪ اغلب ترمیم جراحی مطرح می‌شود."
-    },
-    "diagram": {
-      "de": "Footprint-Befall <50% → konservativ/Débridement\nFootprint-Befall >50% → OP-Diskussion",
-      "en": "Footprint involvement <50% → conservative/debridement\nFootprint involvement >50% → surgery discussion",
-      "fa": "درگیری محل اتصال تاندون (footprint) <۵۰٪ → محافظه‌کارانه/دبریدمان\nدرگیری محل اتصال تاندون (footprint) >۵۰٪ → بحث جراحی"
-    }
+  "id": "rotatorenmanschette-09",
+  "topicId": "rotatorenmanschette",
+  "category": {
+    "de": "Partialruptur",
+    "en": "Partial tear",
+    "fa": "پارگی جزئی"
   },
+  "front": {
+    "de": "PASTA: Was bezeichnet die 50-%-Grenze, und warum entscheidet sie nicht allein über eine Operation?",
+    "en": "PASTA: what does the 50% threshold measure, and why does it not decide surgery alone?",
+    "fa": "PASTA: آستانهٔ ۵۰٪ چه چیزی را اندازه می‌گیرد و چرا به‌تنهایی جراحی را تعیین نمی‌کند؟"
+  },
+  "answer": {
+    "de": "Anteil der Defekttiefe an der Sehnendicke; Symptome, Funktion und Ansprechen auf nichtoperative Behandlung mitbeurteilen.",
+    "en": "Tear depth as a proportion of tendon thickness; also assess symptoms, function and response to nonoperative care.",
+    "fa": "سهم عمق نقص از ضخامت تاندون؛ علائم، عملکرد و پاسخ به درمان غیرجراحی نیز ارزیابی شوند."
+  },
+  "explanation": {
+    "de": "Die 50-%-Angabe bezieht sich auf die Sehnendicke beziehungsweise Defekttiefe. Freiliegender medial-lateraler Footprint kann die Tiefe arthroskopisch abschätzen; Fläche oder anteroposteriore Breite sind nicht dasselbe. Symptome, Funktion und bisherige Behandlung mitberücksichtigen; der Messwert allein ordnet keine Operation an.",
+    "en": "The 50% refers to tendon thickness or tear depth. Mediolateral exposed footprint can estimate depth arthroscopically; area or anteroposterior width is not equivalent. Consider symptoms, function and previous treatment; the measurement alone does not mandate surgery.",
+    "fa": "۵۰٪ به ضخامت تاندون یا عمق پارگی اشاره دارد. پهنای داخلی‌خارجی footprint نمایان می‌تواند در آرتروسکوپی عمق را تخمین بزند؛ مساحت یا عرض قدامی‌خلفی معادل آن نیست. علائم، عملکرد و درمان قبلی نیز لحاظ شوند؛ اندازه‌گیری به‌تنهایی جراحی را الزامی نمی‌کند."
+  },
+  "diagram": {
+    "de": "Defekttiefe / Sehnendicke → Ausmaß\nAusmaß + klinischer Verlauf → individuelle Planung",
+    "en": "Tear depth / tendon thickness → extent\nExtent + clinical course → individual planning",
+    "fa": "عمق نقص / ضخامت تاندون ← میزان درگیری\nمیزان درگیری + سیر بالینی ← برنامه‌ریزی فردی"
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/15007313/ ; https://pmc.ncbi.nlm.nih.gov/articles/PMC3728419/"
+},
   {
     "id": "rotatorenmanschette-10",
     "topicId": "rotatorenmanschette",
@@ -3891,6 +3893,14 @@ export const FLASHCARDS = [
   ...REMAINING_BLOCK_FLASHCARDS,
   ...ACCESS_FLASHCARDS,
 ]
+
+const registeredQualityCardTopics = new Set(FLASHCARD_TOPICS.map(topic => topic.id))
+for (const topic of qualityTopics) {
+  if (registeredQualityCardTopics.has(topic.id)) continue
+  FLASHCARD_TOPICS.push(topic)
+  registeredQualityCardTopics.add(topic.id)
+}
+FLASHCARDS.push(...qualityCards)
 
 export function getFlashcardTopic(topicId) {
   return FLASHCARD_TOPICS.find(topic => topic.id === topicId)

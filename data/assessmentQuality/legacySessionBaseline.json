@@ -1,0 +1,7166 @@
+{
+  "revision": "145955752d4d2159e22f2db2280c76ddb2c17256",
+  "scope": "Fingerprints only, captured from the committed pre-remediation quiz bank. Untouched legacy sessions retain their original storage key and shuffle seed.",
+  "records": [
+    {
+      "id": "chiari-malformation-de-1",
+      "tags": [
+        "chiari-malformation"
+      ],
+      "fingerprint": "gnea0a"
+    },
+    {
+      "id": "neurofibromatose-typ1-de-fasi",
+      "tags": [
+        "neurofibromatose-typ1"
+      ],
+      "fingerprint": "1yw5j87"
+    },
+    {
+      "id": "neurofibromatose-typ1-de-pathway",
+      "tags": [
+        "neurofibromatose-typ1"
+      ],
+      "fingerprint": "rqcav5"
+    },
+    {
+      "id": "neurofibromatose-typ1-de-systemic",
+      "tags": [
+        "neurofibromatose-typ1"
+      ],
+      "fingerprint": "5mqg7o"
+    },
+    {
+      "id": "pres-de-1",
+      "tags": [
+        "pres"
+      ],
+      "fingerprint": "1q3lruy"
+    },
+    {
+      "id": "km-ultraschall-de-1",
+      "tags": [
+        "km-ultraschall"
+      ],
+      "fingerprint": "1n586uq"
+    },
+    {
+      "id": "km-ultraschall-de-2",
+      "tags": [
+        "km-ultraschall"
+      ],
+      "fingerprint": "lqu2nd"
+    },
+    {
+      "id": "km-ultraschall-de-3",
+      "tags": [
+        "km-ultraschall"
+      ],
+      "fingerprint": "12t34wp"
+    },
+    {
+      "id": "km-jod-typen-de-1",
+      "tags": [
+        "km-jod-typen"
+      ],
+      "fingerprint": "uyxo41"
+    },
+    {
+      "id": "km-jod-typen-de-2",
+      "tags": [
+        "km-jod-typen"
+      ],
+      "fingerprint": "1m9gv5m"
+    },
+    {
+      "id": "km-jod-typen-de-3",
+      "tags": [
+        "km-jod-typen"
+      ],
+      "fingerprint": "1af2ory"
+    },
+    {
+      "id": "km-jod-reaktionen-de-1",
+      "tags": [
+        "km-jod-reaktionen"
+      ],
+      "fingerprint": "1pj3nyi"
+    },
+    {
+      "id": "km-jod-reaktionen-de-2",
+      "tags": [
+        "km-jod-reaktionen"
+      ],
+      "fingerprint": "w14jom"
+    },
+    {
+      "id": "km-jod-reaktionen-de-3",
+      "tags": [
+        "km-jod-reaktionen"
+      ],
+      "fingerprint": "15m9wmx"
+    },
+    {
+      "id": "km-jod-reaktionen-de-4",
+      "tags": [
+        "km-jod-reaktionen"
+      ],
+      "fingerprint": "bb1sjn"
+    },
+    {
+      "id": "km-gastrointestinal-de-1",
+      "tags": [
+        "km-gastrointestinal"
+      ],
+      "fingerprint": "156zvsf"
+    },
+    {
+      "id": "km-gastrointestinal-de-2",
+      "tags": [
+        "km-gastrointestinal"
+      ],
+      "fingerprint": "x2d9cy"
+    },
+    {
+      "id": "km-gadolinium-de-1",
+      "tags": [
+        "km-gadolinium"
+      ],
+      "fingerprint": "6n1wz5"
+    },
+    {
+      "id": "km-gadolinium-de-2",
+      "tags": [
+        "km-gadolinium"
+      ],
+      "fingerprint": "1x2m4v1"
+    },
+    {
+      "id": "km-gadolinium-de-3",
+      "tags": [
+        "km-gadolinium"
+      ],
+      "fingerprint": "1jbtcfa"
+    },
+    {
+      "id": "km-gadolinium-retention-nsf-de-1",
+      "tags": [
+        "km-gadolinium-retention-nsf"
+      ],
+      "fingerprint": "wggzz5"
+    },
+    {
+      "id": "km-gadolinium-retention-nsf-de-2",
+      "tags": [
+        "km-gadolinium-retention-nsf"
+      ],
+      "fingerprint": "bbul5m"
+    },
+    {
+      "id": "km-gadolinium-retention-nsf-de-3",
+      "tags": [
+        "km-gadolinium-retention-nsf"
+      ],
+      "fingerprint": "1j1403l"
+    },
+    {
+      "id": "km-buscopan-de-1",
+      "tags": [
+        "km-buscopan"
+      ],
+      "fingerprint": "wsml1i"
+    },
+    {
+      "id": "km-buscopan-de-2",
+      "tags": [
+        "km-buscopan"
+      ],
+      "fingerprint": "s75h8g"
+    },
+    {
+      "id": "km-niereninsuffizienz-de-1",
+      "tags": [
+        "km-niereninsuffizienz"
+      ],
+      "fingerprint": "1s22e91"
+    },
+    {
+      "id": "km-niereninsuffizienz-de-2",
+      "tags": [
+        "km-niereninsuffizienz"
+      ],
+      "fingerprint": "6t9ued"
+    },
+    {
+      "id": "km-niereninsuffizienz-de-3",
+      "tags": [
+        "km-niereninsuffizienz"
+      ],
+      "fingerprint": "1m4k0va"
+    },
+    {
+      "id": "km-schilddruese-de-1",
+      "tags": [
+        "km-schilddruese"
+      ],
+      "fingerprint": "s2qvxv"
+    },
+    {
+      "id": "km-schilddruese-de-2",
+      "tags": [
+        "km-schilddruese"
+      ],
+      "fingerprint": "1khydxv"
+    },
+    {
+      "id": "km-schilddruese-de-3",
+      "tags": [
+        "km-schilddruese"
+      ],
+      "fingerprint": "1ww3u9h"
+    },
+    {
+      "id": "km-schwangerschaft-stillzeit-de-1",
+      "tags": [
+        "km-schwangerschaft-stillzeit"
+      ],
+      "fingerprint": "1pb9sq2"
+    },
+    {
+      "id": "km-schwangerschaft-stillzeit-de-2",
+      "tags": [
+        "km-schwangerschaft-stillzeit"
+      ],
+      "fingerprint": "1or8ecq"
+    },
+    {
+      "id": "km-schwangerschaft-stillzeit-de-3",
+      "tags": [
+        "km-schwangerschaft-stillzeit"
+      ],
+      "fingerprint": "om0oz0"
+    },
+    {
+      "id": "divertikulitis-de-definition",
+      "tags": [
+        "divertikulitis",
+        "kolon",
+        "abdomen"
+      ],
+      "fingerprint": "p8wnn3"
+    },
+    {
+      "id": "divertikulitis-de-ct-triad",
+      "tags": [
+        "divertikulitis",
+        "kolon",
+        "abdomen"
+      ],
+      "fingerprint": "eak4l8"
+    },
+    {
+      "id": "divertikulitis-de-protocol",
+      "tags": [
+        "divertikulitis",
+        "kolon",
+        "abdomen"
+      ],
+      "fingerprint": "1shjoh5"
+    },
+    {
+      "id": "divertikulitis-de-cdd-1b",
+      "tags": [
+        "divertikulitis",
+        "kolon",
+        "abdomen"
+      ],
+      "fingerprint": "1wvc1o6"
+    },
+    {
+      "id": "divertikulitis-de-cdd-2a",
+      "tags": [
+        "divertikulitis",
+        "kolon",
+        "abdomen"
+      ],
+      "fingerprint": "u17aaq"
+    },
+    {
+      "id": "divertikulitis-de-cdd-3c",
+      "tags": [
+        "divertikulitis",
+        "kolon",
+        "abdomen"
+      ],
+      "fingerprint": "qspgxo"
+    },
+    {
+      "id": "divertikulitis-de-macroabscess",
+      "tags": [
+        "divertikulitis",
+        "kolon",
+        "abdomen"
+      ],
+      "fingerprint": "k2p33c"
+    },
+    {
+      "id": "divertikulitis-de-fistula",
+      "tags": [
+        "divertikulitis",
+        "kolon",
+        "abdomen"
+      ],
+      "fingerprint": "1gz26ys"
+    },
+    {
+      "id": "divertikulitis-de-free-perforation",
+      "tags": [
+        "divertikulitis",
+        "kolon",
+        "abdomen"
+      ],
+      "fingerprint": "11iia80"
+    },
+    {
+      "id": "divertikulitis-de-cancer-differential",
+      "tags": [
+        "divertikulitis",
+        "kolon",
+        "abdomen"
+      ],
+      "fingerprint": "105sbm7"
+    },
+    {
+      "id": "divertikulitis-de-reporting",
+      "tags": [
+        "divertikulitis",
+        "kolon",
+        "abdomen"
+      ],
+      "fingerprint": "j6gjao"
+    },
+    {
+      "id": "pankreatitis-de-biliary-cause",
+      "tags": [
+        "pankreatitis",
+        "akute-pankreatitis",
+        "chronische-pankreatitis",
+        "abdomen"
+      ],
+      "fingerprint": "193wqgi"
+    },
+    {
+      "id": "pankreatitis-de-alcohol",
+      "tags": [
+        "pankreatitis",
+        "akute-pankreatitis",
+        "chronische-pankreatitis",
+        "abdomen"
+      ],
+      "fingerprint": "1uv4y69"
+    },
+    {
+      "id": "pankreatitis-de-necrosis-timing",
+      "tags": [
+        "pankreatitis",
+        "akute-pankreatitis",
+        "chronische-pankreatitis",
+        "abdomen"
+      ],
+      "fingerprint": "1uocav0"
+    },
+    {
+      "id": "pankreatitis-de-atlanta-morphology",
+      "tags": [
+        "pankreatitis",
+        "akute-pankreatitis",
+        "chronische-pankreatitis",
+        "abdomen"
+      ],
+      "fingerprint": "t4icoj"
+    },
+    {
+      "id": "pankreatitis-de-collections",
+      "tags": [
+        "pankreatitis",
+        "akute-pankreatitis",
+        "chronische-pankreatitis",
+        "abdomen"
+      ],
+      "fingerprint": "1pke7a0"
+    },
+    {
+      "id": "pankreatitis-de-walled-off-necrosis",
+      "tags": [
+        "pankreatitis",
+        "akute-pankreatitis",
+        "chronische-pankreatitis",
+        "abdomen"
+      ],
+      "fingerprint": "6t4vsb"
+    },
+    {
+      "id": "pankreatitis-de-ctsi-severe",
+      "tags": [
+        "pankreatitis",
+        "akute-pankreatitis",
+        "chronische-pankreatitis",
+        "abdomen"
+      ],
+      "fingerprint": "fke8rv"
+    },
+    {
+      "id": "pankreatitis-de-pseudoaneurysm",
+      "tags": [
+        "pankreatitis",
+        "akute-pankreatitis",
+        "chronische-pankreatitis",
+        "abdomen"
+      ],
+      "fingerprint": "1sxwjom"
+    },
+    {
+      "id": "pankreatitis-de-infected-necrosis",
+      "tags": [
+        "pankreatitis",
+        "akute-pankreatitis",
+        "chronische-pankreatitis",
+        "abdomen"
+      ],
+      "fingerprint": "2ddcig"
+    },
+    {
+      "id": "pankreatitis-de-carcinoma-dd",
+      "tags": [
+        "pankreatitis",
+        "akute-pankreatitis",
+        "chronische-pankreatitis",
+        "abdomen"
+      ],
+      "fingerprint": "gnyau1"
+    },
+    {
+      "id": "ischaemischer-schlaganfall-de-01",
+      "tags": [
+        "ischaemischer-schlaganfall",
+        "schlaganfall",
+        "gehirn"
+      ],
+      "fingerprint": "1nfcqrr"
+    },
+    {
+      "id": "ischaemischer-schlaganfall-de-02",
+      "tags": [
+        "ischaemischer-schlaganfall",
+        "schlaganfall",
+        "gehirn"
+      ],
+      "fingerprint": "1cdt23"
+    },
+    {
+      "id": "ischaemischer-schlaganfall-de-03",
+      "tags": [
+        "ischaemischer-schlaganfall",
+        "schlaganfall",
+        "gehirn"
+      ],
+      "fingerprint": "ol1iu"
+    },
+    {
+      "id": "ischaemischer-schlaganfall-de-04",
+      "tags": [
+        "ischaemischer-schlaganfall",
+        "schlaganfall",
+        "gehirn"
+      ],
+      "fingerprint": "19jrz73"
+    },
+    {
+      "id": "ischaemischer-schlaganfall-de-05",
+      "tags": [
+        "ischaemischer-schlaganfall",
+        "schlaganfall",
+        "gehirn"
+      ],
+      "fingerprint": "esi8jz"
+    },
+    {
+      "id": "ischaemischer-schlaganfall-de-06",
+      "tags": [
+        "ischaemischer-schlaganfall",
+        "schlaganfall",
+        "gehirn"
+      ],
+      "fingerprint": "e51wfj"
+    },
+    {
+      "id": "ischaemischer-schlaganfall-de-07",
+      "tags": [
+        "ischaemischer-schlaganfall",
+        "schlaganfall",
+        "gehirn"
+      ],
+      "fingerprint": "yddmuq"
+    },
+    {
+      "id": "ischaemischer-schlaganfall-de-08",
+      "tags": [
+        "ischaemischer-schlaganfall",
+        "schlaganfall",
+        "gehirn"
+      ],
+      "fingerprint": "ertzi7"
+    },
+    {
+      "id": "ischaemischer-schlaganfall-de-09",
+      "tags": [
+        "ischaemischer-schlaganfall",
+        "schlaganfall",
+        "gehirn"
+      ],
+      "fingerprint": "f1kkq2"
+    },
+    {
+      "id": "ischaemischer-schlaganfall-de-10",
+      "tags": [
+        "ischaemischer-schlaganfall",
+        "schlaganfall",
+        "gehirn"
+      ],
+      "fingerprint": "e8o01c"
+    },
+    {
+      "id": "ischaemischer-schlaganfall-de-11",
+      "tags": [
+        "ischaemischer-schlaganfall",
+        "schlaganfall",
+        "gehirn"
+      ],
+      "fingerprint": "el8f0w"
+    },
+    {
+      "id": "ischaemischer-schlaganfall-de-12",
+      "tags": [
+        "ischaemischer-schlaganfall",
+        "schlaganfall",
+        "gehirn"
+      ],
+      "fingerprint": "1ldje6k"
+    },
+    {
+      "id": "ischaemischer-schlaganfall-de-13",
+      "tags": [
+        "ischaemischer-schlaganfall",
+        "schlaganfall",
+        "gehirn"
+      ],
+      "fingerprint": "1d3bn94"
+    },
+    {
+      "id": "ischaemischer-schlaganfall-de-14",
+      "tags": [
+        "ischaemischer-schlaganfall",
+        "schlaganfall",
+        "gehirn"
+      ],
+      "fingerprint": "1vzldak"
+    },
+    {
+      "id": "ischaemischer-schlaganfall-de-15",
+      "tags": [
+        "ischaemischer-schlaganfall",
+        "schlaganfall",
+        "gehirn"
+      ],
+      "fingerprint": "y50ua8"
+    },
+    {
+      "id": "icb-q01",
+      "tags": [
+        "intrazerebrale-blutung",
+        "gehirn-blutung"
+      ],
+      "fingerprint": "10rv23s"
+    },
+    {
+      "id": "icb-q02",
+      "tags": [
+        "intrazerebrale-blutung",
+        "gehirn-blutung"
+      ],
+      "fingerprint": "1xe3siw"
+    },
+    {
+      "id": "icb-q03",
+      "tags": [
+        "intrazerebrale-blutung",
+        "gehirn-blutung"
+      ],
+      "fingerprint": "8z5no7"
+    },
+    {
+      "id": "icb-q04",
+      "tags": [
+        "intrazerebrale-blutung",
+        "gehirn-blutung"
+      ],
+      "fingerprint": "m9cyha"
+    },
+    {
+      "id": "icb-q05",
+      "tags": [
+        "intrazerebrale-blutung",
+        "gehirn-blutung"
+      ],
+      "fingerprint": "m1drw3"
+    },
+    {
+      "id": "icb-q06",
+      "tags": [
+        "intrazerebrale-blutung",
+        "gehirn-blutung"
+      ],
+      "fingerprint": "1jt4jgk"
+    },
+    {
+      "id": "icb-q07",
+      "tags": [
+        "intrazerebrale-blutung",
+        "gehirn-blutung"
+      ],
+      "fingerprint": "zo4ign"
+    },
+    {
+      "id": "icb-q08",
+      "tags": [
+        "intrazerebrale-blutung",
+        "gehirn-blutung"
+      ],
+      "fingerprint": "2srq0d"
+    },
+    {
+      "id": "icb-q09",
+      "tags": [
+        "intrazerebrale-blutung",
+        "gehirn-blutung"
+      ],
+      "fingerprint": "19pcr8b"
+    },
+    {
+      "id": "icb-q10",
+      "tags": [
+        "intrazerebrale-blutung",
+        "gehirn-blutung"
+      ],
+      "fingerprint": "zq9787"
+    },
+    {
+      "id": "icb-q11",
+      "tags": [
+        "intrazerebrale-blutung",
+        "gehirn-blutung"
+      ],
+      "fingerprint": "17583m6"
+    },
+    {
+      "id": "icb-q12",
+      "tags": [
+        "intrazerebrale-blutung",
+        "gehirn-blutung"
+      ],
+      "fingerprint": "19kkdfv"
+    },
+    {
+      "id": "icb-q13",
+      "tags": [
+        "intrazerebrale-blutung",
+        "gehirn-blutung"
+      ],
+      "fingerprint": "twr9kw"
+    },
+    {
+      "id": "icb-q14",
+      "tags": [
+        "intrazerebrale-blutung",
+        "gehirn-blutung"
+      ],
+      "fingerprint": "1jd5puy"
+    },
+    {
+      "id": "icb-q15",
+      "tags": [
+        "intrazerebrale-blutung",
+        "gehirn-blutung"
+      ],
+      "fingerprint": "1w62oue"
+    },
+    {
+      "id": "hie-de-01-earliest-sequence",
+      "tags": [
+        "hypoxisch-ischaemische-hirnschaedigung",
+        "hie",
+        "gehirn"
+      ],
+      "fingerprint": "16vjxzs"
+    },
+    {
+      "id": "hie-de-02-profound-pattern",
+      "tags": [
+        "hypoxisch-ischaemische-hirnschaedigung",
+        "hie",
+        "gehirn"
+      ],
+      "fingerprint": "1vxyo7j"
+    },
+    {
+      "id": "hie-de-03-watershed",
+      "tags": [
+        "hypoxisch-ischaemische-hirnschaedigung",
+        "hie",
+        "gehirn"
+      ],
+      "fingerprint": "12jorh2"
+    },
+    {
+      "id": "hie-de-04-pseudo-sah",
+      "tags": [
+        "hypoxisch-ischaemische-hirnschaedigung",
+        "hie",
+        "gehirn"
+      ],
+      "fingerprint": "r2sjvv"
+    },
+    {
+      "id": "hie-de-05-white-cerebellum",
+      "tags": [
+        "hypoxisch-ischaemische-hirnschaedigung",
+        "hie",
+        "gehirn"
+      ],
+      "fingerprint": "fl23vj"
+    },
+    {
+      "id": "hie-de-06-laminar-necrosis",
+      "tags": [
+        "hypoxisch-ischaemische-hirnschaedigung",
+        "hie",
+        "gehirn"
+      ],
+      "fingerprint": "1g8k2lb"
+    },
+    {
+      "id": "hie-de-07-co",
+      "tags": [
+        "hypoxisch-ischaemische-hirnschaedigung",
+        "hie",
+        "gehirn"
+      ],
+      "fingerprint": "17gpos0"
+    },
+    {
+      "id": "hie-de-08-hypoglycaemia",
+      "tags": [
+        "hypoxisch-ischaemische-hirnschaedigung",
+        "hie",
+        "gehirn"
+      ],
+      "fingerprint": "11z3vxx"
+    },
+    {
+      "id": "hie-de-09-delayed-leuko",
+      "tags": [
+        "hypoxisch-ischaemische-hirnschaedigung",
+        "hie",
+        "gehirn"
+      ],
+      "fingerprint": "1xayi6v"
+    },
+    {
+      "id": "hie-de-10-prognosis",
+      "tags": [
+        "hypoxisch-ischaemische-hirnschaedigung",
+        "hie",
+        "gehirn"
+      ],
+      "fingerprint": "1ucwf8l"
+    },
+    {
+      "id": "sab-q1",
+      "tags": [
+        "subarachnoidalblutung",
+        "fisher-skala"
+      ],
+      "fingerprint": "mwqrz2"
+    },
+    {
+      "id": "sab-q2",
+      "tags": [
+        "subarachnoidalblutung",
+        "fisher-skala"
+      ],
+      "fingerprint": "1ox8sht"
+    },
+    {
+      "id": "sab-q3",
+      "tags": [
+        "subarachnoidalblutung",
+        "fisher-skala"
+      ],
+      "fingerprint": "1srgts"
+    },
+    {
+      "id": "sab-q4",
+      "tags": [
+        "subarachnoidalblutung",
+        "fisher-skala"
+      ],
+      "fingerprint": "3cb0v0"
+    },
+    {
+      "id": "sab-q5",
+      "tags": [
+        "subarachnoidalblutung",
+        "fisher-skala"
+      ],
+      "fingerprint": "1u252m5"
+    },
+    {
+      "id": "sab-q6",
+      "tags": [
+        "subarachnoidalblutung",
+        "fisher-skala"
+      ],
+      "fingerprint": "18c9g4f"
+    },
+    {
+      "id": "edh-de-01-shape-suture",
+      "tags": [
+        "epidurale-blutung",
+        "epiduralhaematom",
+        "gehirn",
+        "trauma"
+      ],
+      "fingerprint": "17zu9g3"
+    },
+    {
+      "id": "edh-de-02-source",
+      "tags": [
+        "epidurale-blutung",
+        "epiduralhaematom",
+        "gehirn",
+        "trauma"
+      ],
+      "fingerprint": "w51oz2"
+    },
+    {
+      "id": "edh-de-03-swirl",
+      "tags": [
+        "epidurale-blutung",
+        "epiduralhaematom",
+        "gehirn",
+        "trauma"
+      ],
+      "fingerprint": "rxamg"
+    },
+    {
+      "id": "edh-de-04-window",
+      "tags": [
+        "epidurale-blutung",
+        "epiduralhaematom",
+        "gehirn",
+        "trauma"
+      ],
+      "fingerprint": "cxm6d1"
+    },
+    {
+      "id": "edh-de-05-observation",
+      "tags": [
+        "epidurale-blutung",
+        "epiduralhaematom",
+        "gehirn",
+        "trauma"
+      ],
+      "fingerprint": "1xwo74t"
+    },
+    {
+      "id": "edh-de-06-volume",
+      "tags": [
+        "epidurale-blutung",
+        "epiduralhaematom",
+        "gehirn",
+        "trauma"
+      ],
+      "fingerprint": "1tut9ot"
+    },
+    {
+      "id": "edh-de-07-posterior",
+      "tags": [
+        "epidurale-blutung",
+        "epiduralhaematom",
+        "gehirn",
+        "trauma"
+      ],
+      "fingerprint": "1hvd6vm"
+    },
+    {
+      "id": "edh-de-08-sdh-dd",
+      "tags": [
+        "epidurale-blutung",
+        "epiduralhaematom",
+        "gehirn",
+        "trauma"
+      ],
+      "fingerprint": "xzb9e5"
+    },
+    {
+      "id": "edh-de-09-report",
+      "tags": [
+        "epidurale-blutung",
+        "epiduralhaematom",
+        "gehirn",
+        "trauma"
+      ],
+      "fingerprint": "82a6ei"
+    },
+    {
+      "id": "edh-de-10-deterioration",
+      "tags": [
+        "epidurale-blutung",
+        "epiduralhaematom",
+        "gehirn",
+        "trauma"
+      ],
+      "fingerprint": "atninr"
+    },
+    {
+      "id": "liquorraeume-ventrikelsystem-de-flow",
+      "tags": [
+        "liquorraeume-ventrikelsystem",
+        "cavum",
+        "gehirn"
+      ],
+      "fingerprint": "1aq6rth"
+    },
+    {
+      "id": "liquorraeume-ventrikelsystem-de-aqueduct",
+      "tags": [
+        "liquorraeume-ventrikelsystem",
+        "cavum",
+        "gehirn"
+      ],
+      "fingerprint": "q950be"
+    },
+    {
+      "id": "liquorraeume-ventrikelsystem-de-hydrocephalus-atrophy",
+      "tags": [
+        "liquorraeume-ventrikelsystem",
+        "cavum",
+        "gehirn"
+      ],
+      "fingerprint": "1nm3fz7"
+    },
+    {
+      "id": "sdh-de-compartment",
+      "tags": [
+        "subdurale-blutung",
+        "sdh",
+        "gehirn"
+      ],
+      "fingerprint": "1wmgkde"
+    },
+    {
+      "id": "sdh-de-shape",
+      "tags": [
+        "subdurale-blutung",
+        "sdh",
+        "gehirn"
+      ],
+      "fingerprint": "1bsi0u0"
+    },
+    {
+      "id": "sdh-de-boundaries",
+      "tags": [
+        "subdurale-blutung",
+        "sdh",
+        "gehirn"
+      ],
+      "fingerprint": "4q41ul"
+    },
+    {
+      "id": "sdh-de-density",
+      "tags": [
+        "subdurale-blutung",
+        "sdh",
+        "gehirn"
+      ],
+      "fingerprint": "12u138z"
+    },
+    {
+      "id": "sdh-de-isodense",
+      "tags": [
+        "subdurale-blutung",
+        "sdh",
+        "gehirn"
+      ],
+      "fingerprint": "n1r33a"
+    },
+    {
+      "id": "sdh-de-mixed",
+      "tags": [
+        "subdurale-blutung",
+        "sdh",
+        "gehirn"
+      ],
+      "fingerprint": "fim8l0"
+    },
+    {
+      "id": "sdh-de-window",
+      "tags": [
+        "subdurale-blutung",
+        "sdh",
+        "gehirn"
+      ],
+      "fingerprint": "40oloj"
+    },
+    {
+      "id": "sdh-de-hygroma",
+      "tags": [
+        "subdurale-blutung",
+        "sdh",
+        "gehirn"
+      ],
+      "fingerprint": "mnahxj"
+    },
+    {
+      "id": "sdh-de-edh",
+      "tags": [
+        "subdurale-blutung",
+        "sdh",
+        "gehirn"
+      ],
+      "fingerprint": "1pla9xy"
+    },
+    {
+      "id": "sdh-de-mass-effect",
+      "tags": [
+        "subdurale-blutung",
+        "sdh",
+        "gehirn"
+      ],
+      "fingerprint": "18guq60"
+    },
+    {
+      "id": "sdh-de-report",
+      "tags": [
+        "subdurale-blutung",
+        "sdh",
+        "gehirn"
+      ],
+      "fingerprint": "lh3t84"
+    },
+    {
+      "id": "sdh-de-bilateral",
+      "tags": [
+        "subdurale-blutung",
+        "sdh",
+        "gehirn"
+      ],
+      "fingerprint": "rpu71"
+    },
+    {
+      "id": "dissection-de-young-stroke",
+      "tags": [
+        "gefaessdissektion-hirn",
+        "dissektion",
+        "gehirn"
+      ],
+      "fingerprint": "10ufleu"
+    },
+    {
+      "id": "dissection-de-horner",
+      "tags": [
+        "gefaessdissektion-hirn",
+        "dissektion",
+        "gehirn"
+      ],
+      "fingerprint": "1s05wyq"
+    },
+    {
+      "id": "dissection-de-location-ica",
+      "tags": [
+        "gefaessdissektion-hirn",
+        "dissektion",
+        "gehirn"
+      ],
+      "fingerprint": "1f5mknw"
+    },
+    {
+      "id": "dissection-de-crescent",
+      "tags": [
+        "gefaessdissektion-hirn",
+        "dissektion",
+        "gehirn"
+      ],
+      "fingerprint": "f667eg"
+    },
+    {
+      "id": "dissection-de-early-mri",
+      "tags": [
+        "gefaessdissektion-hirn",
+        "dissektion",
+        "gehirn"
+      ],
+      "fingerprint": "7lw7q"
+    },
+    {
+      "id": "dissection-de-string",
+      "tags": [
+        "gefaessdissektion-hirn",
+        "dissektion",
+        "gehirn"
+      ],
+      "fingerprint": "1bo88f7"
+    },
+    {
+      "id": "dissection-de-flame",
+      "tags": [
+        "gefaessdissektion-hirn",
+        "dissektion",
+        "gehirn"
+      ],
+      "fingerprint": "yw4ea"
+    },
+    {
+      "id": "dissection-de-tof-pitfall",
+      "tags": [
+        "gefaessdissektion-hirn",
+        "dissektion",
+        "gehirn"
+      ],
+      "fingerprint": "1uf763s"
+    },
+    {
+      "id": "dissection-de-pseudoaneurysm",
+      "tags": [
+        "gefaessdissektion-hirn",
+        "dissektion",
+        "gehirn"
+      ],
+      "fingerprint": "f4l23s"
+    },
+    {
+      "id": "dissection-de-stroke-mechanism",
+      "tags": [
+        "gefaessdissektion-hirn",
+        "dissektion",
+        "gehirn"
+      ],
+      "fingerprint": "gt1pl"
+    },
+    {
+      "id": "dissection-de-intracranial",
+      "tags": [
+        "gefaessdissektion-hirn",
+        "dissektion",
+        "gehirn"
+      ],
+      "fingerprint": "p2duwg"
+    },
+    {
+      "id": "dissection-de-report",
+      "tags": [
+        "gefaessdissektion-hirn",
+        "dissektion",
+        "gehirn"
+      ],
+      "fingerprint": "1g1z6bl"
+    },
+    {
+      "id": "moyamoya-de-name",
+      "tags": [
+        "moya-moya",
+        "moyamoya",
+        "gehirn"
+      ],
+      "fingerprint": "oimjkn"
+    },
+    {
+      "id": "moyamoya-de-vessel",
+      "tags": [
+        "moya-moya",
+        "moyamoya",
+        "gehirn"
+      ],
+      "fingerprint": "bheblg"
+    },
+    {
+      "id": "moyamoya-de-ivysign",
+      "tags": [
+        "moya-moya",
+        "moyamoya",
+        "gehirn"
+      ],
+      "fingerprint": "1yjqr62"
+    },
+    {
+      "id": "moyamoya-de-goldstandard",
+      "tags": [
+        "moya-moya",
+        "moyamoya",
+        "gehirn"
+      ],
+      "fingerprint": "1urm3e1"
+    },
+    {
+      "id": "moyamoya-de-flowvoids",
+      "tags": [
+        "moya-moya",
+        "moyamoya",
+        "gehirn"
+      ],
+      "fingerprint": "17u2of0"
+    },
+    {
+      "id": "moyamoya-de-hemorrhage",
+      "tags": [
+        "moya-moya",
+        "moyamoya",
+        "gehirn"
+      ],
+      "fingerprint": "qg2qte"
+    },
+    {
+      "id": "moyamoya-de-suzuki1",
+      "tags": [
+        "moya-moya",
+        "moyamoya",
+        "gehirn"
+      ],
+      "fingerprint": "1fu5qi4"
+    },
+    {
+      "id": "moyamoya-de-edas",
+      "tags": [
+        "moya-moya",
+        "moyamoya",
+        "gehirn"
+      ],
+      "fingerprint": "o04yad"
+    },
+    {
+      "id": "moyamoya-de-hypervent",
+      "tags": [
+        "moya-moya",
+        "moyamoya",
+        "gehirn"
+      ],
+      "fingerprint": "hw7kk2"
+    },
+    {
+      "id": "moyamoya-de-sequence",
+      "tags": [
+        "moya-moya",
+        "moyamoya",
+        "gehirn"
+      ],
+      "fingerprint": "rwgz4w"
+    },
+    {
+      "id": "moyamoya-de-association",
+      "tags": [
+        "moya-moya",
+        "moyamoya",
+        "gehirn"
+      ],
+      "fingerprint": "1kntqtq"
+    },
+    {
+      "id": "moyamoya-de-perfusion",
+      "tags": [
+        "moya-moya",
+        "moyamoya",
+        "gehirn"
+      ],
+      "fingerprint": "h8d8b1"
+    },
+    {
+      "id": "moyamoya-de-bilateral",
+      "tags": [
+        "moya-moya",
+        "moyamoya",
+        "gehirn"
+      ],
+      "fingerprint": "xzszcz"
+    },
+    {
+      "id": "hma-de-hma-01",
+      "tags": [
+        "hypertensive-mikroangiopathie",
+        "hypertensive-icb",
+        "gehirn"
+      ],
+      "fingerprint": "gnsryx"
+    },
+    {
+      "id": "hma-de-hma-02",
+      "tags": [
+        "hypertensive-mikroangiopathie",
+        "hypertensive-icb",
+        "gehirn"
+      ],
+      "fingerprint": "sfc4eb"
+    },
+    {
+      "id": "hma-de-hma-03",
+      "tags": [
+        "hypertensive-mikroangiopathie",
+        "hypertensive-icb",
+        "gehirn"
+      ],
+      "fingerprint": "184l9q"
+    },
+    {
+      "id": "hma-de-hma-04",
+      "tags": [
+        "hypertensive-mikroangiopathie",
+        "hypertensive-icb",
+        "gehirn"
+      ],
+      "fingerprint": "mza96k"
+    },
+    {
+      "id": "hma-de-hma-05",
+      "tags": [
+        "hypertensive-mikroangiopathie",
+        "hypertensive-icb",
+        "gehirn"
+      ],
+      "fingerprint": "1tbz77q"
+    },
+    {
+      "id": "hma-de-hma-06",
+      "tags": [
+        "hypertensive-mikroangiopathie",
+        "hypertensive-icb",
+        "gehirn"
+      ],
+      "fingerprint": "zchzlf"
+    },
+    {
+      "id": "hma-de-hma-07",
+      "tags": [
+        "hypertensive-mikroangiopathie",
+        "hypertensive-icb",
+        "gehirn"
+      ],
+      "fingerprint": "ozdz37"
+    },
+    {
+      "id": "hma-de-hma-08",
+      "tags": [
+        "hypertensive-mikroangiopathie",
+        "hypertensive-icb",
+        "gehirn"
+      ],
+      "fingerprint": "1swq9et"
+    },
+    {
+      "id": "hma-de-hma-09",
+      "tags": [
+        "hypertensive-mikroangiopathie",
+        "hypertensive-icb",
+        "gehirn"
+      ],
+      "fingerprint": "4k20zu"
+    },
+    {
+      "id": "hma-de-hma-10",
+      "tags": [
+        "hypertensive-mikroangiopathie",
+        "hypertensive-icb",
+        "gehirn"
+      ],
+      "fingerprint": "a6ewc7"
+    },
+    {
+      "id": "hma-de-hma-11",
+      "tags": [
+        "hypertensive-mikroangiopathie",
+        "hypertensive-icb",
+        "gehirn"
+      ],
+      "fingerprint": "1e8g6gb"
+    },
+    {
+      "id": "hma-de-hma-12",
+      "tags": [
+        "hypertensive-mikroangiopathie",
+        "hypertensive-icb",
+        "gehirn"
+      ],
+      "fingerprint": "1cb777r"
+    },
+    {
+      "id": "caa-de-caa-01",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "v9t9of"
+    },
+    {
+      "id": "caa-de-caa-02",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "d7eyig"
+    },
+    {
+      "id": "caa-de-caa-03",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "1jxnwen"
+    },
+    {
+      "id": "caa-de-caa-04",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "6xe6a4"
+    },
+    {
+      "id": "caa-de-caa-05",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "1h6qofh"
+    },
+    {
+      "id": "caa-de-caa-06",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "9h3wdd"
+    },
+    {
+      "id": "caa-de-caa-07",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "z0lwwb"
+    },
+    {
+      "id": "caa-de-caa-08",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "4lygns"
+    },
+    {
+      "id": "caa-de-caa-09",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "18k85ey"
+    },
+    {
+      "id": "caa-de-caa-10",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "1tk256v"
+    },
+    {
+      "id": "caa-de-caa-11",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "18c76ho"
+    },
+    {
+      "id": "caa-de-caa-12",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "d9345n"
+    },
+    {
+      "id": "caa-de-caa-13",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "13lb5y5"
+    },
+    {
+      "id": "caa-de-caa-14",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "1s39exw"
+    },
+    {
+      "id": "caa-de-caa-15",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "13no6bu"
+    },
+    {
+      "id": "caa-de-caa-16",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "1o156ag"
+    },
+    {
+      "id": "caa-de-caa-17",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "x8ly1z"
+    },
+    {
+      "id": "caa-de-caa-18",
+      "tags": [
+        "caa",
+        "zerebrale-amyloidangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "1l5e40f"
+    },
+    {
+      "id": "migraene-de-01",
+      "tags": [
+        "migraene",
+        "migraine",
+        "gehirn"
+      ],
+      "fingerprint": "rbgwu7"
+    },
+    {
+      "id": "migraene-de-02",
+      "tags": [
+        "migraene",
+        "migraine",
+        "gehirn"
+      ],
+      "fingerprint": "178x8ks"
+    },
+    {
+      "id": "migraene-de-03",
+      "tags": [
+        "migraene",
+        "migraine",
+        "gehirn"
+      ],
+      "fingerprint": "1ff4qdf"
+    },
+    {
+      "id": "migraene-de-04",
+      "tags": [
+        "migraene",
+        "migraine",
+        "gehirn"
+      ],
+      "fingerprint": "1iz3h3r"
+    },
+    {
+      "id": "migraene-de-05",
+      "tags": [
+        "migraene",
+        "migraine",
+        "gehirn"
+      ],
+      "fingerprint": "gqkmhu"
+    },
+    {
+      "id": "migraene-de-06",
+      "tags": [
+        "migraene",
+        "migraine",
+        "gehirn"
+      ],
+      "fingerprint": "17x0380"
+    },
+    {
+      "id": "migraene-de-07",
+      "tags": [
+        "migraene",
+        "migraine",
+        "gehirn"
+      ],
+      "fingerprint": "fyihh0"
+    },
+    {
+      "id": "migraene-de-08",
+      "tags": [
+        "migraene",
+        "migraine",
+        "gehirn"
+      ],
+      "fingerprint": "fxldmo"
+    },
+    {
+      "id": "cadasil-de-01",
+      "tags": [
+        "cadasil",
+        "mikroangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "1bshj3a"
+    },
+    {
+      "id": "cadasil-de-02",
+      "tags": [
+        "cadasil",
+        "mikroangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "y0mspn"
+    },
+    {
+      "id": "cadasil-de-03",
+      "tags": [
+        "cadasil",
+        "mikroangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "1po4598"
+    },
+    {
+      "id": "cadasil-de-04",
+      "tags": [
+        "cadasil",
+        "mikroangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "mniov"
+    },
+    {
+      "id": "cadasil-de-05",
+      "tags": [
+        "cadasil",
+        "mikroangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "b0m09p"
+    },
+    {
+      "id": "cadasil-de-06",
+      "tags": [
+        "cadasil",
+        "mikroangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "14emuyt"
+    },
+    {
+      "id": "cadasil-de-07",
+      "tags": [
+        "cadasil",
+        "mikroangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "m4vxlg"
+    },
+    {
+      "id": "cadasil-de-08",
+      "tags": [
+        "cadasil",
+        "mikroangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "hc2dh9"
+    },
+    {
+      "id": "cadasil-de-09",
+      "tags": [
+        "cadasil",
+        "mikroangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "1vqgqy9"
+    },
+    {
+      "id": "cadasil-de-10",
+      "tags": [
+        "cadasil",
+        "mikroangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "iczteq"
+    },
+    {
+      "id": "cadasil-de-11",
+      "tags": [
+        "cadasil",
+        "mikroangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "1bbwukm"
+    },
+    {
+      "id": "cadasil-de-12",
+      "tags": [
+        "cadasil",
+        "mikroangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "1pfqqcl"
+    },
+    {
+      "id": "cadasil-de-13",
+      "tags": [
+        "cadasil",
+        "mikroangiopathie",
+        "gehirn"
+      ],
+      "fingerprint": "1nw6u87"
+    },
+    {
+      "id": "dva-de-01",
+      "tags": [
+        "dva",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "tkuoov"
+    },
+    {
+      "id": "dva-de-02",
+      "tags": [
+        "dva",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "17n7bfo"
+    },
+    {
+      "id": "dva-de-03",
+      "tags": [
+        "dva",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "zbt5wx"
+    },
+    {
+      "id": "dva-de-04",
+      "tags": [
+        "dva",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "ohh9u"
+    },
+    {
+      "id": "dva-de-05",
+      "tags": [
+        "dva",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1bai407"
+    },
+    {
+      "id": "dva-de-06",
+      "tags": [
+        "dva",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "yubokq"
+    },
+    {
+      "id": "dva-de-07",
+      "tags": [
+        "dva",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "15p69q9"
+    },
+    {
+      "id": "dva-de-08",
+      "tags": [
+        "dva",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "75clj"
+    },
+    {
+      "id": "dva-de-09",
+      "tags": [
+        "dva",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "6gpxhz"
+    },
+    {
+      "id": "dva-de-10",
+      "tags": [
+        "dva",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "10errqe"
+    },
+    {
+      "id": "dva-de-11",
+      "tags": [
+        "dva",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "c7qslo"
+    },
+    {
+      "id": "dva-de-12",
+      "tags": [
+        "dva",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1swsy11"
+    },
+    {
+      "id": "kavernom-de-01",
+      "tags": [
+        "kavernom",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1jq823y"
+    },
+    {
+      "id": "kavernom-de-02",
+      "tags": [
+        "kavernom",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1elzx3h"
+    },
+    {
+      "id": "kavernom-de-03",
+      "tags": [
+        "kavernom",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "10qrqx2"
+    },
+    {
+      "id": "kavernom-de-04",
+      "tags": [
+        "kavernom",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1816oru"
+    },
+    {
+      "id": "kavernom-de-05",
+      "tags": [
+        "kavernom",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "res5p0"
+    },
+    {
+      "id": "kavernom-de-06",
+      "tags": [
+        "kavernom",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "id78vu"
+    },
+    {
+      "id": "kavernom-de-07",
+      "tags": [
+        "kavernom",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1dhpzkk"
+    },
+    {
+      "id": "kavernom-de-08",
+      "tags": [
+        "kavernom",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1av2lir"
+    },
+    {
+      "id": "kavernom-de-09",
+      "tags": [
+        "kavernom",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "18lieqx"
+    },
+    {
+      "id": "kavernom-de-10",
+      "tags": [
+        "kavernom",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "7rkwhk"
+    },
+    {
+      "id": "kavernom-de-11",
+      "tags": [
+        "kavernom",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1r7qlst"
+    },
+    {
+      "id": "kavernom-de-12",
+      "tags": [
+        "kavernom",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1t4izh0"
+    },
+    {
+      "id": "normaldruckhydrozephalus-de-01",
+      "tags": [
+        "normaldruckhydrozephalus",
+        "hydrozephalus",
+        "gehirn"
+      ],
+      "fingerprint": "yycqyl"
+    },
+    {
+      "id": "normaldruckhydrozephalus-de-02",
+      "tags": [
+        "normaldruckhydrozephalus",
+        "hydrozephalus",
+        "gehirn"
+      ],
+      "fingerprint": "i8rrm5"
+    },
+    {
+      "id": "normaldruckhydrozephalus-de-03",
+      "tags": [
+        "normaldruckhydrozephalus",
+        "hydrozephalus",
+        "gehirn"
+      ],
+      "fingerprint": "1ous4lx"
+    },
+    {
+      "id": "normaldruckhydrozephalus-de-04",
+      "tags": [
+        "normaldruckhydrozephalus",
+        "hydrozephalus",
+        "gehirn"
+      ],
+      "fingerprint": "l763pw"
+    },
+    {
+      "id": "normaldruckhydrozephalus-de-05",
+      "tags": [
+        "normaldruckhydrozephalus",
+        "hydrozephalus",
+        "gehirn"
+      ],
+      "fingerprint": "y7zh4o"
+    },
+    {
+      "id": "normaldruckhydrozephalus-de-06",
+      "tags": [
+        "normaldruckhydrozephalus",
+        "hydrozephalus",
+        "gehirn"
+      ],
+      "fingerprint": "cfw9fl"
+    },
+    {
+      "id": "normaldruckhydrozephalus-de-07",
+      "tags": [
+        "normaldruckhydrozephalus",
+        "hydrozephalus",
+        "gehirn"
+      ],
+      "fingerprint": "1sdcjna"
+    },
+    {
+      "id": "normaldruckhydrozephalus-de-08",
+      "tags": [
+        "normaldruckhydrozephalus",
+        "hydrozephalus",
+        "gehirn"
+      ],
+      "fingerprint": "1hp3kyz"
+    },
+    {
+      "id": "normaldruckhydrozephalus-de-09",
+      "tags": [
+        "normaldruckhydrozephalus",
+        "hydrozephalus",
+        "gehirn"
+      ],
+      "fingerprint": "1wr99ax"
+    },
+    {
+      "id": "normaldruckhydrozephalus-de-10",
+      "tags": [
+        "normaldruckhydrozephalus",
+        "hydrozephalus",
+        "gehirn"
+      ],
+      "fingerprint": "1afajy7"
+    },
+    {
+      "id": "normaldruckhydrozephalus-de-11",
+      "tags": [
+        "normaldruckhydrozephalus",
+        "hydrozephalus",
+        "gehirn"
+      ],
+      "fingerprint": "1kzvlpd"
+    },
+    {
+      "id": "normaldruckhydrozephalus-de-12",
+      "tags": [
+        "normaldruckhydrozephalus",
+        "hydrozephalus",
+        "gehirn"
+      ],
+      "fingerprint": "9t8yan"
+    },
+    {
+      "id": "kapillaere-teleangiektasie-de-01",
+      "tags": [
+        "kapillaere-teleangiektasie",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1oeklvg"
+    },
+    {
+      "id": "kapillaere-teleangiektasie-de-02",
+      "tags": [
+        "kapillaere-teleangiektasie",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "ksf8mf"
+    },
+    {
+      "id": "kapillaere-teleangiektasie-de-03",
+      "tags": [
+        "kapillaere-teleangiektasie",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "16tp7nx"
+    },
+    {
+      "id": "kapillaere-teleangiektasie-de-04",
+      "tags": [
+        "kapillaere-teleangiektasie",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "th8yxa"
+    },
+    {
+      "id": "kapillaere-teleangiektasie-de-05",
+      "tags": [
+        "kapillaere-teleangiektasie",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "12iwo5"
+    },
+    {
+      "id": "kapillaere-teleangiektasie-de-06",
+      "tags": [
+        "kapillaere-teleangiektasie",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1va6nwp"
+    },
+    {
+      "id": "kapillaere-teleangiektasie-de-07",
+      "tags": [
+        "kapillaere-teleangiektasie",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "6izamu"
+    },
+    {
+      "id": "kapillaere-teleangiektasie-de-08",
+      "tags": [
+        "kapillaere-teleangiektasie",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "i8go9"
+    },
+    {
+      "id": "kapillaere-teleangiektasie-de-09",
+      "tags": [
+        "kapillaere-teleangiektasie",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "14epo6d"
+    },
+    {
+      "id": "kapillaere-teleangiektasie-de-10",
+      "tags": [
+        "kapillaere-teleangiektasie",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1t455y5"
+    },
+    {
+      "id": "kapillaere-teleangiektasie-de-11",
+      "tags": [
+        "kapillaere-teleangiektasie",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1tbfcev"
+    },
+    {
+      "id": "kapillaere-teleangiektasie-de-12",
+      "tags": [
+        "kapillaere-teleangiektasie",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1876xzo"
+    },
+    {
+      "id": "sinusvenenthrombose-de-01",
+      "tags": [
+        "svt",
+        "sinusvenenthrombose",
+        "venoes",
+        "gehirn"
+      ],
+      "fingerprint": "1w7ef6l"
+    },
+    {
+      "id": "sinusvenenthrombose-de-02",
+      "tags": [
+        "svt",
+        "sinusvenenthrombose",
+        "venoes",
+        "gehirn"
+      ],
+      "fingerprint": "ehlfpu"
+    },
+    {
+      "id": "sinusvenenthrombose-de-03",
+      "tags": [
+        "svt",
+        "sinusvenenthrombose",
+        "venoes",
+        "gehirn"
+      ],
+      "fingerprint": "f1ejpw"
+    },
+    {
+      "id": "sinusvenenthrombose-de-04",
+      "tags": [
+        "svt",
+        "sinusvenenthrombose",
+        "venoes",
+        "gehirn"
+      ],
+      "fingerprint": "wx3li7"
+    },
+    {
+      "id": "sinusvenenthrombose-de-05",
+      "tags": [
+        "svt",
+        "sinusvenenthrombose",
+        "venoes",
+        "gehirn"
+      ],
+      "fingerprint": "xn35r4"
+    },
+    {
+      "id": "sinusvenenthrombose-de-06",
+      "tags": [
+        "svt",
+        "sinusvenenthrombose",
+        "venoes",
+        "gehirn"
+      ],
+      "fingerprint": "19bk43b"
+    },
+    {
+      "id": "sinusvenenthrombose-de-07",
+      "tags": [
+        "svt",
+        "sinusvenenthrombose",
+        "venoes",
+        "gehirn"
+      ],
+      "fingerprint": "1bo8d59"
+    },
+    {
+      "id": "sinusvenenthrombose-de-08",
+      "tags": [
+        "svt",
+        "sinusvenenthrombose",
+        "venoes",
+        "gehirn"
+      ],
+      "fingerprint": "tf3tzc"
+    },
+    {
+      "id": "sinusvenenthrombose-de-09",
+      "tags": [
+        "svt",
+        "sinusvenenthrombose",
+        "venoes",
+        "gehirn"
+      ],
+      "fingerprint": "1sfehju"
+    },
+    {
+      "id": "sinusvenenthrombose-de-10",
+      "tags": [
+        "svt",
+        "sinusvenenthrombose",
+        "venoes",
+        "gehirn"
+      ],
+      "fingerprint": "16q3rt3"
+    },
+    {
+      "id": "sinusvenenthrombose-de-11",
+      "tags": [
+        "svt",
+        "sinusvenenthrombose",
+        "venoes",
+        "gehirn"
+      ],
+      "fingerprint": "dl2erb"
+    },
+    {
+      "id": "sinusvenenthrombose-de-12",
+      "tags": [
+        "svt",
+        "sinusvenenthrombose",
+        "venoes",
+        "gehirn"
+      ],
+      "fingerprint": "17r7ini"
+    },
+    {
+      "id": "frakturbeschreibung-de-01",
+      "tags": [
+        "frakturbeschreibung",
+        "trauma",
+        "msk"
+      ],
+      "fingerprint": "1ier9tm"
+    },
+    {
+      "id": "frakturbeschreibung-de-02",
+      "tags": [
+        "frakturbeschreibung",
+        "trauma",
+        "msk"
+      ],
+      "fingerprint": "5pwa1h"
+    },
+    {
+      "id": "frakturbeschreibung-de-03",
+      "tags": [
+        "frakturbeschreibung",
+        "trauma",
+        "msk"
+      ],
+      "fingerprint": "uc5drm"
+    },
+    {
+      "id": "frakturbeschreibung-de-04",
+      "tags": [
+        "frakturbeschreibung",
+        "trauma",
+        "msk"
+      ],
+      "fingerprint": "zndh3i"
+    },
+    {
+      "id": "frakturbeschreibung-de-05",
+      "tags": [
+        "frakturbeschreibung",
+        "trauma",
+        "msk",
+        "stressfrakturen"
+      ],
+      "fingerprint": "ty6jjd"
+    },
+    {
+      "id": "frakturbeschreibung-de-06",
+      "tags": [
+        "frakturbeschreibung",
+        "trauma",
+        "msk",
+        "stressfrakturen"
+      ],
+      "fingerprint": "15eh7v4"
+    },
+    {
+      "id": "frakturbeschreibung-de-07",
+      "tags": [
+        "frakturbeschreibung",
+        "trauma",
+        "msk"
+      ],
+      "fingerprint": "a76mse"
+    },
+    {
+      "id": "frakturbeschreibung-de-08",
+      "tags": [
+        "frakturbeschreibung",
+        "trauma",
+        "msk"
+      ],
+      "fingerprint": "eea9m0"
+    },
+    {
+      "id": "frakturbeschreibung-de-09",
+      "tags": [
+        "frakturbeschreibung",
+        "trauma",
+        "msk"
+      ],
+      "fingerprint": "pynkba"
+    },
+    {
+      "id": "frakturbeschreibung-de-10",
+      "tags": [
+        "frakturbeschreibung",
+        "trauma",
+        "msk"
+      ],
+      "fingerprint": "v523j0"
+    },
+    {
+      "id": "frakturbeschreibung-de-11",
+      "tags": [
+        "frakturbeschreibung",
+        "trauma",
+        "msk",
+        "stressfrakturen"
+      ],
+      "fingerprint": "vjlvfg"
+    },
+    {
+      "id": "frakturbeschreibung-de-12",
+      "tags": [
+        "frakturbeschreibung",
+        "trauma",
+        "msk"
+      ],
+      "fingerprint": "1nblc9j"
+    },
+    {
+      "id": "davf-de-01",
+      "tags": [
+        "davf",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "mvabbu"
+    },
+    {
+      "id": "davf-de-02",
+      "tags": [
+        "davf",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "aaaygq"
+    },
+    {
+      "id": "davf-de-03",
+      "tags": [
+        "davf",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1dw9tm3"
+    },
+    {
+      "id": "davf-de-04",
+      "tags": [
+        "davf",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "kt3gxp"
+    },
+    {
+      "id": "davf-de-05",
+      "tags": [
+        "davf",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "6i5ka4"
+    },
+    {
+      "id": "davf-de-06",
+      "tags": [
+        "davf",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1o1o7zn"
+    },
+    {
+      "id": "davf-de-07",
+      "tags": [
+        "davf",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1ijd96w"
+    },
+    {
+      "id": "davf-de-08",
+      "tags": [
+        "davf",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "eupac7"
+    },
+    {
+      "id": "davf-de-09",
+      "tags": [
+        "davf",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "5tt8zc"
+    },
+    {
+      "id": "davf-de-10",
+      "tags": [
+        "davf",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1iv6jcc"
+    },
+    {
+      "id": "davf-de-11",
+      "tags": [
+        "davf",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "o19weg"
+    },
+    {
+      "id": "davf-de-12",
+      "tags": [
+        "davf",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1fsy51j"
+    },
+    {
+      "id": "avm-zns-de-01",
+      "tags": [
+        "avm-zns",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "uw7cz9"
+    },
+    {
+      "id": "avm-zns-de-02",
+      "tags": [
+        "avm-zns",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1o3jl15"
+    },
+    {
+      "id": "avm-zns-de-03",
+      "tags": [
+        "avm-zns",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1o42cq"
+    },
+    {
+      "id": "avm-zns-de-04",
+      "tags": [
+        "avm-zns",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1xakv86"
+    },
+    {
+      "id": "avm-zns-de-05",
+      "tags": [
+        "avm-zns",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1l6y4vj"
+    },
+    {
+      "id": "avm-zns-de-06",
+      "tags": [
+        "avm-zns",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "dcd1nf"
+    },
+    {
+      "id": "avm-zns-de-07",
+      "tags": [
+        "avm-zns",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1ii0v5g"
+    },
+    {
+      "id": "avm-zns-de-08",
+      "tags": [
+        "avm-zns",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "o4o665"
+    },
+    {
+      "id": "avm-zns-de-09",
+      "tags": [
+        "avm-zns",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "14hty5q"
+    },
+    {
+      "id": "avm-zns-de-10",
+      "tags": [
+        "avm-zns",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "1lm8ic7"
+    },
+    {
+      "id": "avm-zns-de-11",
+      "tags": [
+        "avm-zns",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "s5yj2s"
+    },
+    {
+      "id": "avm-zns-de-12",
+      "tags": [
+        "avm-zns",
+        "gefaessmalformationen",
+        "gehirn"
+      ],
+      "fingerprint": "zgfydp"
+    },
+    {
+      "id": "fk-sh-1-de",
+      "tags": [
+        "frakturen-kindesalter"
+      ],
+      "fingerprint": "jxiusg"
+    },
+    {
+      "id": "fk-sh-2-de",
+      "tags": [
+        "frakturen-kindesalter"
+      ],
+      "fingerprint": "1f3ccf0"
+    },
+    {
+      "id": "fk-sh-3-de",
+      "tags": [
+        "frakturen-kindesalter"
+      ],
+      "fingerprint": "1sjyj8r"
+    },
+    {
+      "id": "fk-sh-4-de",
+      "tags": [
+        "frakturen-kindesalter"
+      ],
+      "fingerprint": "196nlq9"
+    },
+    {
+      "id": "fk-sh-5-de",
+      "tags": [
+        "frakturen-kindesalter"
+      ],
+      "fingerprint": "1fqyiky"
+    },
+    {
+      "id": "fk-wulst-1-de",
+      "tags": [
+        "frakturen-kindesalter"
+      ],
+      "fingerprint": "11wzpxt"
+    },
+    {
+      "id": "fk-gruenholz-1-de",
+      "tags": [
+        "frakturen-kindesalter"
+      ],
+      "fingerprint": "1s4oe0k"
+    },
+    {
+      "id": "fk-toddler-1-de",
+      "tags": [
+        "frakturen-kindesalter"
+      ],
+      "fingerprint": "bbr2zm"
+    },
+    {
+      "id": "fk-tillaux-1-de",
+      "tags": [
+        "frakturen-kindesalter"
+      ],
+      "fingerprint": "1punjy4"
+    },
+    {
+      "id": "fk-triplane-1-de",
+      "tags": [
+        "frakturen-kindesalter"
+      ],
+      "fingerprint": "17a5wnp"
+    },
+    {
+      "id": "fk-two-plane-1-de",
+      "tags": [
+        "frakturen-kindesalter"
+      ],
+      "fingerprint": "lvrk42"
+    },
+    {
+      "id": "fk-remodel-1-de",
+      "tags": [
+        "frakturen-kindesalter"
+      ],
+      "fingerprint": "11l4nke"
+    },
+    {
+      "id": "fk-misshandlung-1-de",
+      "tags": [
+        "frakturen-kindesalter"
+      ],
+      "fingerprint": "kau363"
+    },
+    {
+      "id": "ak-lux-mech-1-de",
+      "tags": [
+        "ak-luxation"
+      ],
+      "fingerprint": "qznksj"
+    },
+    {
+      "id": "ak-lux-band-1-de",
+      "tags": [
+        "ak-luxation"
+      ],
+      "fingerprint": "x5qz43"
+    },
+    {
+      "id": "ak-lux-rock-1-de",
+      "tags": [
+        "ak-luxation"
+      ],
+      "fingerprint": "9fxdzr"
+    },
+    {
+      "id": "ak-lux-rock-2-de",
+      "tags": [
+        "ak-luxation"
+      ],
+      "fingerprint": "1be34l6"
+    },
+    {
+      "id": "ak-lux-rock-3-de",
+      "tags": [
+        "ak-luxation"
+      ],
+      "fingerprint": "rc91pd"
+    },
+    {
+      "id": "ak-lux-ccd-1-de",
+      "tags": [
+        "ak-luxation"
+      ],
+      "fingerprint": "1cuea8c"
+    },
+    {
+      "id": "ak-lux-therapie-1-de",
+      "tags": [
+        "ak-luxation"
+      ],
+      "fingerprint": "lcpq7i"
+    },
+    {
+      "id": "ak-lux-tossy-1-de",
+      "tags": [
+        "ak-luxation"
+      ],
+      "fingerprint": "6c463n"
+    },
+    {
+      "id": "ak-lux-belastung-1-de",
+      "tags": [
+        "ak-luxation"
+      ],
+      "fingerprint": "1o1ttl5"
+    },
+    {
+      "id": "ak-lux-rock-vi-1-de",
+      "tags": [
+        "ak-luxation"
+      ],
+      "fingerprint": "y9075g"
+    },
+    {
+      "id": "ak-lux-norm-1-de",
+      "tags": [
+        "ak-luxation"
+      ],
+      "fingerprint": "hm3cir"
+    },
+    {
+      "id": "ak-lux-op-1-de",
+      "tags": [
+        "ak-luxation"
+      ],
+      "fingerprint": "162szbv"
+    },
+    {
+      "id": "rk-mason-1-de",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "fingerprint": "9g5zlb"
+    },
+    {
+      "id": "rk-mason-2-de",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "fingerprint": "1fnbhug"
+    },
+    {
+      "id": "rk-fettkissen-1-de",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "fingerprint": "h6fccs"
+    },
+    {
+      "id": "rk-rcline-1-de",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "fingerprint": "1i8ovm9"
+    },
+    {
+      "id": "rk-therapie-1-de",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "fingerprint": "mduqjh"
+    },
+    {
+      "id": "rk-terrible-triad-1-de",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "fingerprint": "1b3bory"
+    },
+    {
+      "id": "rk-essex-1-de",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "fingerprint": "bjhhhb"
+    },
+    {
+      "id": "rk-mechanismus-1-de",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "fingerprint": "1yb3wwp"
+    },
+    {
+      "id": "rk-nerv-1-de",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "fingerprint": "14skl0y"
+    },
+    {
+      "id": "rk-mason-therapie-2-de",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "fingerprint": "1qphd81"
+    },
+    {
+      "id": "rk-komplikation-1-de",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "fingerprint": "7430dz"
+    },
+    {
+      "id": "rk-kinder-1-de",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "fingerprint": "luss9y"
+    },
+    {
+      "id": "unterarm-de-monteggia-definition",
+      "tags": [
+        "unterarmschaftfrakturen"
+      ],
+      "fingerprint": "1db1xhd"
+    },
+    {
+      "id": "unterarm-de-bado-basis",
+      "tags": [
+        "unterarmschaftfrakturen"
+      ],
+      "fingerprint": "1ejj8xi"
+    },
+    {
+      "id": "unterarm-de-bado-one",
+      "tags": [
+        "unterarmschaftfrakturen"
+      ],
+      "fingerprint": "11mlejf"
+    },
+    {
+      "id": "unterarm-de-galeazzi-definition",
+      "tags": [
+        "unterarmschaftfrakturen"
+      ],
+      "fingerprint": "19zkf7f"
+    },
+    {
+      "id": "unterarm-de-imaging-extent",
+      "tags": [
+        "unterarmschaftfrakturen"
+      ],
+      "fingerprint": "1l8xrs8"
+    },
+    {
+      "id": "unterarm-de-rcl",
+      "tags": [
+        "unterarmschaftfrakturen"
+      ],
+      "fingerprint": "1104law"
+    },
+    {
+      "id": "unterarm-de-druj-pitfall",
+      "tags": [
+        "unterarmschaftfrakturen"
+      ],
+      "fingerprint": "18z5xg4"
+    },
+    {
+      "id": "unterarm-de-nightstick",
+      "tags": [
+        "unterarmschaftfrakturen"
+      ],
+      "fingerprint": "1aj7hdo"
+    },
+    {
+      "id": "unterarm-de-adult-treatment",
+      "tags": [
+        "unterarmschaftfrakturen"
+      ],
+      "fingerprint": "1yuqhqj"
+    },
+    {
+      "id": "unterarm-de-child-bowing",
+      "tags": [
+        "unterarmschaftfrakturen"
+      ],
+      "fingerprint": "1sq7kac"
+    },
+    {
+      "id": "unterarm-de-compartment",
+      "tags": [
+        "unterarmschaftfrakturen"
+      ],
+      "fingerprint": "e2djbt"
+    },
+    {
+      "id": "unterarm-de-post-reduction",
+      "tags": [
+        "unterarmschaftfrakturen"
+      ],
+      "fingerprint": "o4hbtu"
+    },
+    {
+      "id": "distaleradius-de-colles",
+      "tags": [
+        "distale-radiusfraktur"
+      ],
+      "fingerprint": "1wjkwz7"
+    },
+    {
+      "id": "distaleradius-de-smith",
+      "tags": [
+        "distale-radiusfraktur"
+      ],
+      "fingerprint": "13wvch0"
+    },
+    {
+      "id": "distaleradius-de-barton",
+      "tags": [
+        "distale-radiusfraktur"
+      ],
+      "fingerprint": "wnh5nt"
+    },
+    {
+      "id": "distaleradius-de-fernandez-iii",
+      "tags": [
+        "distale-radiusfraktur"
+      ],
+      "fingerprint": "4hu2so"
+    },
+    {
+      "id": "distaleradius-de-fernandez-ii",
+      "tags": [
+        "distale-radiusfraktur"
+      ],
+      "fingerprint": "1y7m9v4"
+    },
+    {
+      "id": "distaleradius-de-chauffeur",
+      "tags": [
+        "distale-radiusfraktur"
+      ],
+      "fingerprint": "6htxf0"
+    },
+    {
+      "id": "distaleradius-de-step",
+      "tags": [
+        "distale-radiusfraktur"
+      ],
+      "fingerprint": "1nafqn4"
+    },
+    {
+      "id": "distaleradius-de-tilt",
+      "tags": [
+        "distale-radiusfraktur"
+      ],
+      "fingerprint": "1osdmhm"
+    },
+    {
+      "id": "distaleradius-de-sl",
+      "tags": [
+        "distale-radiusfraktur"
+      ],
+      "fingerprint": "1v0qxu8"
+    },
+    {
+      "id": "distaleradius-de-lunate",
+      "tags": [
+        "distale-radiusfraktur"
+      ],
+      "fingerprint": "ad5k71"
+    },
+    {
+      "id": "distaleradius-de-ct",
+      "tags": [
+        "distale-radiusfraktur"
+      ],
+      "fingerprint": "127033m"
+    },
+    {
+      "id": "distaleradius-de-urgent",
+      "tags": [
+        "distale-radiusfraktur"
+      ],
+      "fingerprint": "8wof15"
+    },
+    {
+      "id": "scaphoid-herbert-b4",
+      "tags": [
+        "skaphoidfraktur"
+      ],
+      "fingerprint": "dcd96d"
+    },
+    {
+      "id": "scaphoid-snac-pattern",
+      "tags": [
+        "skaphoidfraktur"
+      ],
+      "fingerprint": "ki7rxe"
+    },
+    {
+      "id": "thumb-ucl-stener",
+      "tags": [
+        "bandverletzungen-daumen"
+      ],
+      "fingerprint": "12vwvbv"
+    },
+    {
+      "id": "thumb-ucl-radiograph-avulsion",
+      "tags": [
+        "bandverletzungen-daumen"
+      ],
+      "fingerprint": "xnlmre"
+    },
+    {
+      "id": "kreuzbaender-de-01",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fingerprint": "1t2nxqk"
+    },
+    {
+      "id": "kreuzbaender-de-02",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fingerprint": "1208kh7"
+    },
+    {
+      "id": "kreuzbaender-de-03",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fingerprint": "5ksp73"
+    },
+    {
+      "id": "kreuzbaender-de-04",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fingerprint": "1y6xlo7"
+    },
+    {
+      "id": "kreuzbaender-de-05",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fingerprint": "52ypk8"
+    },
+    {
+      "id": "kreuzbaender-de-06",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fingerprint": "t2x3ho"
+    },
+    {
+      "id": "kreuzbaender-de-07",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fingerprint": "1g40xju"
+    },
+    {
+      "id": "kreuzbaender-de-08",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fingerprint": "u0t5cp"
+    },
+    {
+      "id": "kraniozervikaler-uebergang-trauma-de-01-instability",
+      "tags": [
+        "kraniozervikaler-uebergang-trauma",
+        "wirbelsaeule-trauma"
+      ],
+      "fingerprint": "1e4oa4b"
+    },
+    {
+      "id": "kraniozervikaler-uebergang-trauma-de-02-cta",
+      "tags": [
+        "kraniozervikaler-uebergang-trauma",
+        "wirbelsaeule-trauma"
+      ],
+      "fingerprint": "l4hugl"
+    },
+    {
+      "id": "hws-verletzungen-de-03-facet",
+      "tags": [
+        "hws-verletzungen",
+        "wirbelsaeule-trauma"
+      ],
+      "fingerprint": "1hia6qx"
+    },
+    {
+      "id": "hws-verletzungen-de-04-mri",
+      "tags": [
+        "hws-verletzungen",
+        "wirbelsaeule-trauma"
+      ],
+      "fingerprint": "18lr0xd"
+    },
+    {
+      "id": "bws-lws-frakturen-de-05-burst",
+      "tags": [
+        "bws-lws-frakturen",
+        "wirbelsaeule-trauma"
+      ],
+      "fingerprint": "pr71j9"
+    },
+    {
+      "id": "bws-lws-frakturen-de-06-plc",
+      "tags": [
+        "bws-lws-frakturen",
+        "wirbelsaeule-trauma"
+      ],
+      "fingerprint": "pnecjw"
+    },
+    {
+      "id": "hrct-dichteanhebung-de-01",
+      "tags": [
+        "hrct-dichteanhebung"
+      ],
+      "fingerprint": "4ibcvt"
+    },
+    {
+      "id": "hrct-dichteanhebung-de-02",
+      "tags": [
+        "hrct-dichteanhebung"
+      ],
+      "fingerprint": "1p9ehqg"
+    },
+    {
+      "id": "hrct-dichteanhebung-de-03",
+      "tags": [
+        "hrct-dichteanhebung"
+      ],
+      "fingerprint": "edfzyr"
+    },
+    {
+      "id": "hrct-dichteanhebung-de-04",
+      "tags": [
+        "hrct-dichteanhebung"
+      ],
+      "fingerprint": "369fbv"
+    },
+    {
+      "id": "hrct-dichteanhebung-de-05",
+      "tags": [
+        "hrct-dichteanhebung"
+      ],
+      "fingerprint": "1tig7cj"
+    },
+    {
+      "id": "hrct-dichteanhebung-de-06",
+      "tags": [
+        "hrct-dichteanhebung"
+      ],
+      "fingerprint": "1adivtb"
+    },
+    {
+      "id": "hrct-dichteanhebung-de-07",
+      "tags": [
+        "hrct-dichteanhebung"
+      ],
+      "fingerprint": "15gdutb"
+    },
+    {
+      "id": "hrct-dichteanhebung-de-08",
+      "tags": [
+        "hrct-dichteanhebung"
+      ],
+      "fingerprint": "1x1koig"
+    },
+    {
+      "id": "hrct-dichteanhebung-de-09",
+      "tags": [
+        "hrct-dichteanhebung"
+      ],
+      "fingerprint": "1bxntvp"
+    },
+    {
+      "id": "hrct-dichteanhebung-de-10",
+      "tags": [
+        "hrct-dichteanhebung"
+      ],
+      "fingerprint": "1hhgidt"
+    },
+    {
+      "id": "hrct-dichteanhebung-de-11",
+      "tags": [
+        "hrct-dichteanhebung"
+      ],
+      "fingerprint": "1uuxsno"
+    },
+    {
+      "id": "hrct-dichteanhebung-de-12",
+      "tags": [
+        "hrct-dichteanhebung"
+      ],
+      "fingerprint": "8qsozj"
+    },
+    {
+      "id": "hrct-retikulaer-nodulaer-de-01",
+      "tags": [
+        "hrct-retikulaer-nodulaer"
+      ],
+      "fingerprint": "i9jgp0"
+    },
+    {
+      "id": "hrct-retikulaer-nodulaer-de-02",
+      "tags": [
+        "hrct-retikulaer-nodulaer"
+      ],
+      "fingerprint": "15jb9v4"
+    },
+    {
+      "id": "hrct-retikulaer-nodulaer-de-03",
+      "tags": [
+        "hrct-retikulaer-nodulaer"
+      ],
+      "fingerprint": "te365k"
+    },
+    {
+      "id": "hrct-retikulaer-nodulaer-de-04",
+      "tags": [
+        "hrct-retikulaer-nodulaer"
+      ],
+      "fingerprint": "xwjbn7"
+    },
+    {
+      "id": "hrct-retikulaer-nodulaer-de-05",
+      "tags": [
+        "hrct-retikulaer-nodulaer"
+      ],
+      "fingerprint": "b5u3lb"
+    },
+    {
+      "id": "hrct-retikulaer-nodulaer-de-06",
+      "tags": [
+        "hrct-retikulaer-nodulaer"
+      ],
+      "fingerprint": "1bkdahv"
+    },
+    {
+      "id": "hrct-retikulaer-nodulaer-de-07",
+      "tags": [
+        "hrct-retikulaer-nodulaer"
+      ],
+      "fingerprint": "alvudc"
+    },
+    {
+      "id": "hrct-retikulaer-nodulaer-de-08",
+      "tags": [
+        "hrct-retikulaer-nodulaer"
+      ],
+      "fingerprint": "1pb7sfg"
+    },
+    {
+      "id": "hrct-retikulaer-nodulaer-de-09",
+      "tags": [
+        "hrct-retikulaer-nodulaer"
+      ],
+      "fingerprint": "1p3p041"
+    },
+    {
+      "id": "hrct-retikulaer-nodulaer-de-10",
+      "tags": [
+        "hrct-retikulaer-nodulaer"
+      ],
+      "fingerprint": "6283ej"
+    },
+    {
+      "id": "hrct-retikulaer-nodulaer-de-11",
+      "tags": [
+        "hrct-retikulaer-nodulaer"
+      ],
+      "fingerprint": "1u3f4sc"
+    },
+    {
+      "id": "hrct-retikulaer-nodulaer-de-12",
+      "tags": [
+        "hrct-retikulaer-nodulaer"
+      ],
+      "fingerprint": "axozw9"
+    },
+    {
+      "id": "hrct-architekturmuster-de-01",
+      "tags": [
+        "hrct-architekturmuster"
+      ],
+      "fingerprint": "18taq9l"
+    },
+    {
+      "id": "hrct-architekturmuster-de-02",
+      "tags": [
+        "hrct-architekturmuster"
+      ],
+      "fingerprint": "dsr36l"
+    },
+    {
+      "id": "hrct-architekturmuster-de-03",
+      "tags": [
+        "hrct-architekturmuster"
+      ],
+      "fingerprint": "lixr27"
+    },
+    {
+      "id": "hrct-architekturmuster-de-04",
+      "tags": [
+        "hrct-architekturmuster"
+      ],
+      "fingerprint": "vb0rq6"
+    },
+    {
+      "id": "hrct-architekturmuster-de-05",
+      "tags": [
+        "hrct-architekturmuster"
+      ],
+      "fingerprint": "182gweu"
+    },
+    {
+      "id": "hrct-architekturmuster-de-06",
+      "tags": [
+        "hrct-architekturmuster"
+      ],
+      "fingerprint": "1j5ln5s"
+    },
+    {
+      "id": "hrct-architekturmuster-de-07",
+      "tags": [
+        "hrct-architekturmuster"
+      ],
+      "fingerprint": "46mp7z"
+    },
+    {
+      "id": "hrct-architekturmuster-de-08",
+      "tags": [
+        "hrct-architekturmuster"
+      ],
+      "fingerprint": "1im3cqh"
+    },
+    {
+      "id": "hrct-architekturmuster-de-09",
+      "tags": [
+        "hrct-architekturmuster"
+      ],
+      "fingerprint": "7x3xgp"
+    },
+    {
+      "id": "hrct-architekturmuster-de-10",
+      "tags": [
+        "hrct-architekturmuster"
+      ],
+      "fingerprint": "1nhlgvd"
+    },
+    {
+      "id": "hrct-architekturmuster-de-11",
+      "tags": [
+        "hrct-architekturmuster"
+      ],
+      "fingerprint": "1jk6qfk"
+    },
+    {
+      "id": "hrct-architekturmuster-de-12",
+      "tags": [
+        "hrct-architekturmuster"
+      ],
+      "fingerprint": "10cnay4"
+    },
+    {
+      "id": "hrct-dichteminderung-de-01",
+      "tags": [
+        "hrct-dichteminderung"
+      ],
+      "fingerprint": "uwh8sf"
+    },
+    {
+      "id": "hrct-dichteminderung-de-02",
+      "tags": [
+        "hrct-dichteminderung"
+      ],
+      "fingerprint": "12y7zbu"
+    },
+    {
+      "id": "hrct-dichteminderung-de-03",
+      "tags": [
+        "hrct-dichteminderung"
+      ],
+      "fingerprint": "trdmhg"
+    },
+    {
+      "id": "hrct-dichteminderung-de-04",
+      "tags": [
+        "hrct-dichteminderung"
+      ],
+      "fingerprint": "1c6mpu"
+    },
+    {
+      "id": "hrct-dichteminderung-de-05",
+      "tags": [
+        "hrct-dichteminderung"
+      ],
+      "fingerprint": "2u6n56"
+    },
+    {
+      "id": "hrct-dichteminderung-de-06",
+      "tags": [
+        "hrct-dichteminderung"
+      ],
+      "fingerprint": "1sbpuis"
+    },
+    {
+      "id": "hrct-dichteminderung-de-07",
+      "tags": [
+        "hrct-dichteminderung"
+      ],
+      "fingerprint": "5a0vnn"
+    },
+    {
+      "id": "hrct-dichteminderung-de-08",
+      "tags": [
+        "hrct-dichteminderung"
+      ],
+      "fingerprint": "17v587z"
+    },
+    {
+      "id": "hrct-dichteminderung-de-09",
+      "tags": [
+        "hrct-dichteminderung"
+      ],
+      "fingerprint": "1tcdsqi"
+    },
+    {
+      "id": "hrct-dichteminderung-de-10",
+      "tags": [
+        "hrct-dichteminderung"
+      ],
+      "fingerprint": "12k00lf"
+    },
+    {
+      "id": "hrct-dichteminderung-de-11",
+      "tags": [
+        "hrct-dichteminderung"
+      ],
+      "fingerprint": "1hu71bt"
+    },
+    {
+      "id": "hrct-dichteminderung-de-12",
+      "tags": [
+        "hrct-dichteminderung"
+      ],
+      "fingerprint": "9abrs8"
+    },
+    {
+      "id": "mamma-mrt-basics-de-sensitivity",
+      "tags": [
+        "mamma-mrt-basics",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "1nbraer"
+    },
+    {
+      "id": "mamma-mrt-basics-de-indication",
+      "tags": [
+        "mamma-mrt-basics",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "1nmcwtj"
+    },
+    {
+      "id": "mamma-mrt-basics-de-adc",
+      "tags": [
+        "mamma-mrt-basics",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "1qopcr"
+    },
+    {
+      "id": "mamma-mrt-basics-de-fgt-bpe",
+      "tags": [
+        "mamma-mrt-basics",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "9av6v5"
+    },
+    {
+      "id": "mamma-mrt-basics-de-focus",
+      "tags": [
+        "mamma-mrt-basics",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "1esyiv8"
+    },
+    {
+      "id": "mamma-mrt-basics-de-nme",
+      "tags": [
+        "mamma-mrt-basics",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "77am2a"
+    },
+    {
+      "id": "mamma-mrt-basics-de-biopsy",
+      "tags": [
+        "mamma-mrt-basics",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "mzk1dd"
+    },
+    {
+      "id": "mamma-mrt-basics-de-workflow",
+      "tags": [
+        "mamma-mrt-basics",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "1e8kdet"
+    },
+    {
+      "id": "mamma-mrt-laesionscharakterisierung-de-focus-change",
+      "tags": [
+        "mamma-mrt-laesionscharakterisierung",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "15rod5g"
+    },
+    {
+      "id": "mamma-mrt-laesionscharakterisierung-de-mass-features",
+      "tags": [
+        "mamma-mrt-laesionscharakterisierung",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "1h82vzb"
+    },
+    {
+      "id": "mamma-mrt-laesionscharakterisierung-de-spiculated",
+      "tags": [
+        "mamma-mrt-laesionscharakterisierung",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "1rl16uf"
+    },
+    {
+      "id": "mamma-mrt-laesionscharakterisierung-de-dark-septa",
+      "tags": [
+        "mamma-mrt-laesionscharakterisierung",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "1q78675"
+    },
+    {
+      "id": "mamma-mrt-laesionscharakterisierung-de-nme-distribution",
+      "tags": [
+        "mamma-mrt-laesionscharakterisierung",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "18rexkq"
+    },
+    {
+      "id": "mamma-mrt-laesionscharakterisierung-de-nme-clustered-ring",
+      "tags": [
+        "mamma-mrt-laesionscharakterisierung",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "gip2gl"
+    },
+    {
+      "id": "mamma-mrt-laesionscharakterisierung-de-kinetics-morphology",
+      "tags": [
+        "mamma-mrt-laesionscharakterisierung",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "d9gt9s"
+    },
+    {
+      "id": "mamma-mrt-laesionscharakterisierung-de-adc",
+      "tags": [
+        "mamma-mrt-laesionscharakterisierung",
+        "mamma",
+        "mrt"
+      ],
+      "fingerprint": "d94hr0"
+    },
+    {
+      "id": "mamma-mrt-kaiser-score-de-principle",
+      "tags": [
+        "mamma-mrt-kaiser-score",
+        "mamma",
+        "mrt",
+        "kaiser-score"
+      ],
+      "fingerprint": "q4ayje"
+    },
+    {
+      "id": "mamma-mrt-kaiser-score-de-features",
+      "tags": [
+        "mamma-mrt-kaiser-score",
+        "mamma",
+        "mrt",
+        "kaiser-score"
+      ],
+      "fingerprint": "1kvxgl"
+    },
+    {
+      "id": "mamma-mrt-kaiser-score-de-root-sign",
+      "tags": [
+        "mamma-mrt-kaiser-score",
+        "mamma",
+        "mrt",
+        "kaiser-score"
+      ],
+      "fingerprint": "1ve70tu"
+    },
+    {
+      "id": "mamma-mrt-kaiser-score-de-curve-definition",
+      "tags": [
+        "mamma-mrt-kaiser-score",
+        "mamma",
+        "mrt",
+        "kaiser-score"
+      ],
+      "fingerprint": "ehyc4y"
+    },
+    {
+      "id": "mamma-mrt-kaiser-score-de-score-1",
+      "tags": [
+        "mamma-mrt-kaiser-score",
+        "mamma",
+        "mrt",
+        "kaiser-score"
+      ],
+      "fingerprint": "i4t1z1"
+    },
+    {
+      "id": "mamma-mrt-kaiser-score-de-score-3",
+      "tags": [
+        "mamma-mrt-kaiser-score",
+        "mamma",
+        "mrt",
+        "kaiser-score"
+      ],
+      "fingerprint": "11wpnoo"
+    },
+    {
+      "id": "mamma-mrt-kaiser-score-de-score-2",
+      "tags": [
+        "mamma-mrt-kaiser-score",
+        "mamma",
+        "mrt",
+        "kaiser-score"
+      ],
+      "fingerprint": "ynsy6g"
+    },
+    {
+      "id": "mamma-mrt-kaiser-score-de-score-5",
+      "tags": [
+        "mamma-mrt-kaiser-score",
+        "mamma",
+        "mrt",
+        "kaiser-score"
+      ],
+      "fingerprint": "4hqqc6"
+    },
+    {
+      "id": "mamma-mrt-kaiser-score-de-score-4",
+      "tags": [
+        "mamma-mrt-kaiser-score",
+        "mamma",
+        "mrt",
+        "kaiser-score"
+      ],
+      "fingerprint": "1gr8adr"
+    },
+    {
+      "id": "mamma-mrt-kaiser-score-de-score-8",
+      "tags": [
+        "mamma-mrt-kaiser-score",
+        "mamma",
+        "mrt",
+        "kaiser-score"
+      ],
+      "fingerprint": "1kjpvbb"
+    },
+    {
+      "id": "mamma-mrt-kaiser-score-de-score-6",
+      "tags": [
+        "mamma-mrt-kaiser-score",
+        "mamma",
+        "mrt",
+        "kaiser-score"
+      ],
+      "fingerprint": "7mh5xj"
+    },
+    {
+      "id": "mamma-mrt-kaiser-score-de-score-7",
+      "tags": [
+        "mamma-mrt-kaiser-score",
+        "mamma",
+        "mrt",
+        "kaiser-score"
+      ],
+      "fingerprint": "rfr6xp"
+    },
+    {
+      "id": "mamma-mrt-kaiser-score-de-score-10",
+      "tags": [
+        "mamma-mrt-kaiser-score",
+        "mamma",
+        "mrt",
+        "kaiser-score"
+      ],
+      "fingerprint": "1crfcts"
+    },
+    {
+      "id": "mamma-mrt-kaiser-score-de-score-9",
+      "tags": [
+        "mamma-mrt-kaiser-score",
+        "mamma",
+        "mrt",
+        "kaiser-score"
+      ],
+      "fingerprint": "4bgy4c"
+    },
+    {
+      "id": "mamma-mrt-kaiser-score-de-score-11-context",
+      "tags": [
+        "mamma-mrt-kaiser-score",
+        "mamma",
+        "mrt",
+        "kaiser-score"
+      ],
+      "fingerprint": "1qrv7d5"
+    },
+    {
+      "id": "mamma-mrt-besondere-mammakarzinome-de-ilc-extent",
+      "tags": [
+        "mamma-mrt-besondere-mammakarzinome",
+        "mamma",
+        "mrt",
+        "mammakarzinom"
+      ],
+      "fingerprint": "1u9p7tn"
+    },
+    {
+      "id": "mamma-mrt-besondere-mammakarzinome-de-mucinous-t2",
+      "tags": [
+        "mamma-mrt-besondere-mammakarzinome",
+        "mamma",
+        "mrt",
+        "mammakarzinom"
+      ],
+      "fingerprint": "11gj9i0"
+    },
+    {
+      "id": "mamma-mrt-besondere-mammakarzinome-de-tnbc-mimic",
+      "tags": [
+        "mamma-mrt-besondere-mammakarzinome",
+        "mamma",
+        "mrt",
+        "mammakarzinom"
+      ],
+      "fingerprint": "pcoj88"
+    },
+    {
+      "id": "mamma-mrt-besondere-mammakarzinome-de-ibc-clinical",
+      "tags": [
+        "mamma-mrt-besondere-mammakarzinome",
+        "mamma",
+        "mrt",
+        "mammakarzinom"
+      ],
+      "fingerprint": "1wqfvz"
+    },
+    {
+      "id": "mamma-mrt-besondere-mammakarzinome-de-paget-negative-mri",
+      "tags": [
+        "mamma-mrt-besondere-mammakarzinome",
+        "mamma",
+        "mrt",
+        "mammakarzinom"
+      ],
+      "fingerprint": "172qe81"
+    },
+    {
+      "id": "mamma-mrt-besondere-mammakarzinome-de-metaplastic-discordance",
+      "tags": [
+        "mamma-mrt-besondere-mammakarzinome",
+        "mamma",
+        "mrt",
+        "mammakarzinom"
+      ],
+      "fingerprint": "9jwp9d"
+    },
+    {
+      "id": "mamma-mrt-besondere-mammakarzinome-de-subtype-limits",
+      "tags": [
+        "mamma-mrt-besondere-mammakarzinome",
+        "mamma",
+        "mrt",
+        "mammakarzinom"
+      ],
+      "fingerprint": "mj8h85"
+    },
+    {
+      "id": "mamma-mrt-besondere-mammakarzinome-de-reporting-integration",
+      "tags": [
+        "mamma-mrt-besondere-mammakarzinome",
+        "mamma",
+        "mrt",
+        "mammakarzinom"
+      ],
+      "fingerprint": "159kcfb"
+    },
+    {
+      "id": "mammographie-grundlagen-de-describe-first",
+      "tags": [
+        "mammographie-grundlagen",
+        "mamma",
+        "mammographie",
+        "bi-rads"
+      ],
+      "fingerprint": "16csgwe"
+    },
+    {
+      "id": "mammographie-grundlagen-de-composition-c",
+      "tags": [
+        "mammographie-grundlagen",
+        "mamma",
+        "mammographie",
+        "bi-rads"
+      ],
+      "fingerprint": "lt9jyw"
+    },
+    {
+      "id": "mammographie-grundlagen-de-obscured-indistinct",
+      "tags": [
+        "mammographie-grundlagen",
+        "mamma",
+        "mammographie",
+        "bi-rads"
+      ],
+      "fingerprint": "831xxr"
+    },
+    {
+      "id": "mammographie-grundlagen-de-mass-density",
+      "tags": [
+        "mammographie-grundlagen",
+        "mamma",
+        "mammographie",
+        "bi-rads"
+      ],
+      "fingerprint": "wohcbx"
+    },
+    {
+      "id": "mammographie-grundlagen-de-calc-combination",
+      "tags": [
+        "mammographie-grundlagen",
+        "mamma",
+        "mammographie",
+        "bi-rads"
+      ],
+      "fingerprint": "34itb"
+    },
+    {
+      "id": "mammographie-grundlagen-de-asymmetry-workup",
+      "tags": [
+        "mammographie-grundlagen",
+        "mamma",
+        "mammographie",
+        "bi-rads"
+      ],
+      "fingerprint": "3v859g"
+    },
+    {
+      "id": "mammographie-grundlagen-de-distortion",
+      "tags": [
+        "mammographie-grundlagen",
+        "mamma",
+        "mammographie",
+        "bi-rads"
+      ],
+      "fingerprint": "1aqvmfq"
+    },
+    {
+      "id": "mammographie-grundlagen-de-cem-calc",
+      "tags": [
+        "mammographie-grundlagen",
+        "mamma",
+        "mammographie",
+        "bi-rads"
+      ],
+      "fingerprint": "e712ve"
+    },
+    {
+      "id": "mammographie-grundlagen-de-birads-6",
+      "tags": [
+        "mammographie-grundlagen",
+        "mamma",
+        "mammographie",
+        "bi-rads"
+      ],
+      "fingerprint": "10zthm4"
+    },
+    {
+      "id": "mammographie-grundlagen-de-case-final",
+      "tags": [
+        "mammographie-grundlagen",
+        "mamma",
+        "mammographie",
+        "bi-rads"
+      ],
+      "fingerprint": "1goo8h3"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-size-alone",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "l7l0zi"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-magnification",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "lfiodh"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-popcorn",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "f8hvjt"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-milk-calcium",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "c3h0va"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-rods-versus-linear",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "3yissf"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-amorphous-distribution",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "sqdbz3"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-pleomorphic-segmental",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "7nckw0"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-highest-suspicion",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "1ayhfmt"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-evolution-context",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "1dpzj0m"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-no-correlate",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "1ulpql7"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-round-group-followup",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "106kt5c"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-stable-suspicious",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "1b3yhrl"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-regional-definition",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "17b58z5"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-segmental-apex",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "gvf9io"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-modifiers-not-score",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "136wc6k"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-mri-4a-selected",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "1anlg3q"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-mri-4b-risk",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "1qwqxjr"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-coarse-heterogeneous-size",
+      "tags": [
+        "mammographie-mikrokalk",
+        "mamma",
+        "mammographie",
+        "verkalkungen",
+        "bi-rads"
+      ],
+      "fingerprint": "1s2zw5e"
+    },
+    {
+      "id": "kardiomyopathien-de-classification",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "1c3uxrd"
+    },
+    {
+      "id": "kardiomyopathien-de-ischaemic-lge",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "s9uz3a"
+    },
+    {
+      "id": "kardiomyopathien-de-hcm",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "11jd7p5"
+    },
+    {
+      "id": "kardiomyopathien-de-dcm",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "1nvfnk0"
+    },
+    {
+      "id": "kardiomyopathien-de-ndlvc",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "tx446t"
+    },
+    {
+      "id": "kardiomyopathien-de-arvc",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "ycy1g9"
+    },
+    {
+      "id": "kardiomyopathien-de-amyloid",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "1j6ur2z"
+    },
+    {
+      "id": "kardiomyopathien-de-fabry",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "1n69oki"
+    },
+    {
+      "id": "kardiomyopathien-de-report",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "di8u06"
+    },
+    {
+      "id": "kardiomyopathien-de-lvnc",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "t0f64z"
+    },
+    {
+      "id": "kardiomyopathien-de-pattern-dcm",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "qalkyj"
+    },
+    {
+      "id": "kardiomyopathien-de-pattern-hcm",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "5fm55d"
+    },
+    {
+      "id": "kardiomyopathien-de-pattern-ndlvc",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "j3bzu9"
+    },
+    {
+      "id": "kardiomyopathien-de-pattern-arvc",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "y7fbj"
+    },
+    {
+      "id": "kardiomyopathien-de-pattern-rcm",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "1rogqvc"
+    },
+    {
+      "id": "kardiomyopathien-de-pattern-lvnc",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "mutdz"
+    },
+    {
+      "id": "kardiomyopathien-de-pattern-takotsubo",
+      "tags": [
+        "kardiomyopathien",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "1401i1w"
+    },
+    {
+      "id": "arvc-de-spectrum",
+      "tags": [
+        "arvc",
+        "acm",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "9u4pjk"
+    },
+    {
+      "id": "arvc-de-major-boundary",
+      "tags": [
+        "arvc",
+        "acm",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "1inrmzw"
+    },
+    {
+      "id": "arvc-de-female-minor",
+      "tags": [
+        "arvc",
+        "acm",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "1m5eo25"
+    },
+    {
+      "id": "arvc-de-no-regional",
+      "tags": [
+        "arvc",
+        "acm",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "jl8adi"
+    },
+    {
+      "id": "arvc-de-ef-boundary",
+      "tags": [
+        "arvc",
+        "acm",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "137x7li"
+    },
+    {
+      "id": "arvc-de-double-count",
+      "tags": [
+        "arvc",
+        "acm",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "15gd7uf"
+    },
+    {
+      "id": "arvc-de-junction",
+      "tags": [
+        "arvc",
+        "acm",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "1tfy1h6"
+    },
+    {
+      "id": "arvc-de-isolated-lv",
+      "tags": [
+        "arvc",
+        "acm",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "5hp073"
+    },
+    {
+      "id": "arvc-de-fat",
+      "tags": [
+        "arvc",
+        "acm",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "1s7y6mn"
+    },
+    {
+      "id": "arvc-de-paediatric",
+      "tags": [
+        "arvc",
+        "acm",
+        "kardio-mrt",
+        "thorax"
+      ],
+      "fingerprint": "6d0lzg"
+    },
+    {
+      "id": "myokardinfarkt-differentialdiagnosen-de-01",
+      "tags": [
+        "myokardinfarkt-differentialdiagnosen",
+        "kardio-mrt"
+      ],
+      "fingerprint": "1iqs5bc"
+    },
+    {
+      "id": "myokardinfarkt-differentialdiagnosen-de-02",
+      "tags": [
+        "myokardinfarkt-differentialdiagnosen",
+        "kardio-mrt"
+      ],
+      "fingerprint": "ypat96"
+    },
+    {
+      "id": "myokardinfarkt-differentialdiagnosen-de-03",
+      "tags": [
+        "myokardinfarkt-differentialdiagnosen",
+        "kardio-mrt"
+      ],
+      "fingerprint": "1clmhoy"
+    },
+    {
+      "id": "myokardinfarkt-differentialdiagnosen-de-04",
+      "tags": [
+        "myokardinfarkt-differentialdiagnosen",
+        "kardio-mrt"
+      ],
+      "fingerprint": "11nqr8s"
+    },
+    {
+      "id": "myokardinfarkt-differentialdiagnosen-de-05",
+      "tags": [
+        "myokardinfarkt-differentialdiagnosen",
+        "kardio-mrt"
+      ],
+      "fingerprint": "wpjgxk"
+    },
+    {
+      "id": "myokardinfarkt-differentialdiagnosen-de-06",
+      "tags": [
+        "myokardinfarkt-differentialdiagnosen",
+        "kardio-mrt"
+      ],
+      "fingerprint": "vzxpmq"
+    },
+    {
+      "id": "myokardinfarkt-differentialdiagnosen-de-07",
+      "tags": [
+        "myokardinfarkt-differentialdiagnosen",
+        "kardio-mrt"
+      ],
+      "fingerprint": "61usc3"
+    },
+    {
+      "id": "myokardinfarkt-differentialdiagnosen-de-08",
+      "tags": [
+        "myokardinfarkt-differentialdiagnosen",
+        "kardio-mrt"
+      ],
+      "fingerprint": "tyzxqo"
+    },
+    {
+      "id": "myokardinfarkt-differentialdiagnosen-de-09",
+      "tags": [
+        "myokardinfarkt-differentialdiagnosen",
+        "kardio-mrt"
+      ],
+      "fingerprint": "15te4ai"
+    },
+    {
+      "id": "myokardinfarkt-differentialdiagnosen-de-10",
+      "tags": [
+        "myokardinfarkt-differentialdiagnosen",
+        "kardio-mrt"
+      ],
+      "fingerprint": "ebmiuw"
+    },
+    {
+      "id": "fleischner-kriterien-de-screening",
+      "tags": [
+        "fleischner-kriterien",
+        "thorax"
+      ],
+      "fingerprint": "bz56xw"
+    },
+    {
+      "id": "fleischner-kriterien-de-measurement",
+      "tags": [
+        "fleischner-kriterien",
+        "thorax"
+      ],
+      "fingerprint": "97ewwq"
+    },
+    {
+      "id": "fleischner-kriterien-de-solid-small",
+      "tags": [
+        "fleischner-kriterien",
+        "thorax"
+      ],
+      "fingerprint": "12atg90"
+    },
+    {
+      "id": "fleischner-kriterien-de-solid-single",
+      "tags": [
+        "fleischner-kriterien",
+        "thorax"
+      ],
+      "fingerprint": "1htgl0u"
+    },
+    {
+      "id": "fleischner-kriterien-de-solid-multiple",
+      "tags": [
+        "fleischner-kriterien",
+        "thorax"
+      ],
+      "fingerprint": "keulz6"
+    },
+    {
+      "id": "fleischner-kriterien-de-ggo",
+      "tags": [
+        "fleischner-kriterien",
+        "thorax"
+      ],
+      "fingerprint": "ttp2xd"
+    },
+    {
+      "id": "fleischner-kriterien-de-part-solid",
+      "tags": [
+        "fleischner-kriterien",
+        "thorax"
+      ],
+      "fingerprint": "1nn59jm"
+    },
+    {
+      "id": "fleischner-kriterien-de-solid-component",
+      "tags": [
+        "fleischner-kriterien",
+        "thorax"
+      ],
+      "fingerprint": "vs0u5z"
+    },
+    {
+      "id": "fleischner-kriterien-de-multiple-subsolid",
+      "tags": [
+        "fleischner-kriterien",
+        "thorax"
+      ],
+      "fingerprint": "1tkivyc"
+    },
+    {
+      "id": "fleischner-kriterien-de-eight-mm",
+      "tags": [
+        "fleischner-kriterien",
+        "thorax"
+      ],
+      "fingerprint": "hzfi09"
+    },
+    {
+      "id": "meniskus-de-01",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "gnxff"
+    },
+    {
+      "id": "meniskus-de-02",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "16o4woz"
+    },
+    {
+      "id": "meniskus-de-03",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "1ls4g1d"
+    },
+    {
+      "id": "meniskus-de-04",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "176ujf7"
+    },
+    {
+      "id": "meniskus-de-07",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "187575u"
+    },
+    {
+      "id": "meniskus-de-08",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "1h995fa"
+    },
+    {
+      "id": "meniskus-de-10",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "1cqxngs"
+    },
+    {
+      "id": "meniskus-de-11",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "1dwbi4k"
+    },
+    {
+      "id": "meniskus-de-12",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "g01h4r"
+    },
+    {
+      "id": "meniskus-de-13",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "1hc2m88"
+    },
+    {
+      "id": "meniskus-de-14",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "1i56ghq"
+    },
+    {
+      "id": "meniskus-de-15",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "f8ak2d"
+    },
+    {
+      "id": "meniskus-de-16",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "1svazvv"
+    },
+    {
+      "id": "meniskus-de-17",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "fjo3fn"
+    },
+    {
+      "id": "meniskus-de-18",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "10z5n8n"
+    },
+    {
+      "id": "meniskus-de-19",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "9j1zt0"
+    },
+    {
+      "id": "meniskus-de-20",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "ur4est"
+    },
+    {
+      "id": "meniskus-de-21",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "1rkslya"
+    },
+    {
+      "id": "meniskus-de-22",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "3tfkz"
+    },
+    {
+      "id": "meniskus-de-23",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "doegt5"
+    },
+    {
+      "id": "meniskus-de-36",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "ezlpb5"
+    },
+    {
+      "id": "meniskus-de-37",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fingerprint": "1cvxk2g"
+    },
+    {
+      "id": "fnh-de-01",
+      "tags": [
+        "fnh",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "vs9et6"
+    },
+    {
+      "id": "fnh-de-02",
+      "tags": [
+        "fnh",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "8s2n87"
+    },
+    {
+      "id": "fnh-de-03",
+      "tags": [
+        "fnh",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "1m685pd"
+    },
+    {
+      "id": "fnh-de-04",
+      "tags": [
+        "fnh",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "eiplix"
+    },
+    {
+      "id": "fnh-de-05",
+      "tags": [
+        "fnh",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "4uodj3"
+    },
+    {
+      "id": "fnh-de-06",
+      "tags": [
+        "fnh",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "znp0ab"
+    },
+    {
+      "id": "fnh-de-07",
+      "tags": [
+        "fnh",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "5wn90h"
+    },
+    {
+      "id": "fnh-de-08",
+      "tags": [
+        "fnh",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "7l2ecd"
+    },
+    {
+      "id": "fnh-de-09",
+      "tags": [
+        "fnh",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "1bljj53"
+    },
+    {
+      "id": "fnh-de-10",
+      "tags": [
+        "fnh",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "1c6fbc9"
+    },
+    {
+      "id": "avm-de-01",
+      "tags": [
+        "avm",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "1yo9nye"
+    },
+    {
+      "id": "avm-de-02",
+      "tags": [
+        "avm",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "1gyaq8z"
+    },
+    {
+      "id": "avm-de-03",
+      "tags": [
+        "avm",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "1gzlstp"
+    },
+    {
+      "id": "avm-de-04",
+      "tags": [
+        "avm",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "1xc4i9a"
+    },
+    {
+      "id": "avm-de-05",
+      "tags": [
+        "avm",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "hls3k3"
+    },
+    {
+      "id": "avm-de-06",
+      "tags": [
+        "avm",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "qm2gp"
+    },
+    {
+      "id": "avm-de-07",
+      "tags": [
+        "avm",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "1k5au7q"
+    },
+    {
+      "id": "avm-de-08",
+      "tags": [
+        "avm",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "h05pv7"
+    },
+    {
+      "id": "avm-de-09",
+      "tags": [
+        "avm",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "1qaadnu"
+    },
+    {
+      "id": "avm-de-10",
+      "tags": [
+        "avm",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "1khtrrb"
+    },
+    {
+      "id": "hcc-de-01",
+      "tags": [
+        "hcc",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "uxjv1s"
+    },
+    {
+      "id": "hcc-de-02",
+      "tags": [
+        "hcc",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "11yupqb"
+    },
+    {
+      "id": "hcc-de-03",
+      "tags": [
+        "hcc",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "tkxnmx"
+    },
+    {
+      "id": "hcc-de-04",
+      "tags": [
+        "hcc",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "1rc7da5"
+    },
+    {
+      "id": "hcc-de-05",
+      "tags": [
+        "hcc",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "1qcxag7"
+    },
+    {
+      "id": "hcc-de-06",
+      "tags": [
+        "hcc",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "5237yt"
+    },
+    {
+      "id": "hcc-de-07",
+      "tags": [
+        "hcc",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "8x9681"
+    },
+    {
+      "id": "hcc-de-08",
+      "tags": [
+        "hcc",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "1r6igcd"
+    },
+    {
+      "id": "hcc-de-09",
+      "tags": [
+        "hcc",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "1ehq3wz"
+    },
+    {
+      "id": "hcc-de-10",
+      "tags": [
+        "hcc",
+        "leber",
+        "abdomen"
+      ],
+      "fingerprint": "5lm9fc"
+    },
+    {
+      "id": "sarkoidose-de-01",
+      "tags": [
+        "sarkoidose",
+        "thorax",
+        "lunge"
+      ],
+      "fingerprint": "1ldw4q4"
+    },
+    {
+      "id": "sarkoidose-de-02",
+      "tags": [
+        "sarkoidose",
+        "thorax",
+        "lunge"
+      ],
+      "fingerprint": "16ltbcc"
+    },
+    {
+      "id": "sarkoidose-de-03",
+      "tags": [
+        "sarkoidose",
+        "thorax",
+        "lunge"
+      ],
+      "fingerprint": "rfiidf"
+    },
+    {
+      "id": "sarkoidose-de-04",
+      "tags": [
+        "sarkoidose",
+        "thorax",
+        "lunge"
+      ],
+      "fingerprint": "m9qgww"
+    },
+    {
+      "id": "sarkoidose-de-05",
+      "tags": [
+        "sarkoidose",
+        "thorax",
+        "lunge"
+      ],
+      "fingerprint": "ymo67k"
+    },
+    {
+      "id": "sarkoidose-de-06",
+      "tags": [
+        "sarkoidose",
+        "thorax",
+        "lunge"
+      ],
+      "fingerprint": "548dmn"
+    },
+    {
+      "id": "sarkoidose-de-07",
+      "tags": [
+        "sarkoidose",
+        "thorax",
+        "lunge"
+      ],
+      "fingerprint": "1o3vupw"
+    },
+    {
+      "id": "sarkoidose-de-08",
+      "tags": [
+        "sarkoidose",
+        "thorax",
+        "lunge"
+      ],
+      "fingerprint": "35a5kb"
+    },
+    {
+      "id": "sarkoidose-de-09",
+      "tags": [
+        "sarkoidose",
+        "thorax",
+        "lunge"
+      ],
+      "fingerprint": "l6v2gf"
+    },
+    {
+      "id": "sarkoidose-de-10",
+      "tags": [
+        "sarkoidose",
+        "thorax",
+        "lunge"
+      ],
+      "fingerprint": "1c461a3"
+    },
+    {
+      "id": "rotatorenmanschette-de-01",
+      "tags": [
+        "rotatorenmanschette",
+        "schulter"
+      ],
+      "fingerprint": "76ynjj"
+    },
+    {
+      "id": "rotatorenmanschette-de-02",
+      "tags": [
+        "rotatorenmanschette",
+        "schulter"
+      ],
+      "fingerprint": "8v5x7k"
+    },
+    {
+      "id": "rotatorenmanschette-de-03",
+      "tags": [
+        "rotatorenmanschette",
+        "schulter"
+      ],
+      "fingerprint": "e3snf4"
+    },
+    {
+      "id": "rotatorenmanschette-de-04",
+      "tags": [
+        "rotatorenmanschette",
+        "schulter"
+      ],
+      "fingerprint": "1x1ic62"
+    },
+    {
+      "id": "rotatorenmanschette-de-05",
+      "tags": [
+        "rotatorenmanschette",
+        "schulter"
+      ],
+      "fingerprint": "tqk1cm"
+    },
+    {
+      "id": "rotatorenmanschette-de-06",
+      "tags": [
+        "rotatorenmanschette",
+        "schulter"
+      ],
+      "fingerprint": "d354yl"
+    },
+    {
+      "id": "rotatorenmanschette-de-07",
+      "tags": [
+        "rotatorenmanschette",
+        "schulter"
+      ],
+      "fingerprint": "1sejbrq"
+    },
+    {
+      "id": "rotatorenmanschette-de-08",
+      "tags": [
+        "rotatorenmanschette",
+        "schulter"
+      ],
+      "fingerprint": "1c5ivo"
+    },
+    {
+      "id": "rotatorenmanschette-de-09",
+      "tags": [
+        "rotatorenmanschette",
+        "schulter"
+      ],
+      "fingerprint": "1ksow33"
+    },
+    {
+      "id": "rotatorenmanschette-de-10",
+      "tags": [
+        "rotatorenmanschette",
+        "schulter"
+      ],
+      "fingerprint": "1ipa68d"
+    },
+    {
+      "id": "rotatorenmanschette-de-11",
+      "tags": [
+        "rotatorenmanschette",
+        "schulter"
+      ],
+      "fingerprint": "pua2m6"
+    },
+    {
+      "id": "rotatorenmanschette-de-12",
+      "tags": [
+        "rotatorenmanschette",
+        "schulter"
+      ],
+      "fingerprint": "155yqau"
+    },
+    {
+      "id": "rotatorenmanschette-de-13",
+      "tags": [
+        "rotatorenmanschette",
+        "schulter"
+      ],
+      "fingerprint": "px16x1"
+    },
+    {
+      "id": "rotatorenmanschette-de-14",
+      "tags": [
+        "rotatorenmanschette",
+        "schulter"
+      ],
+      "fingerprint": "r7c9or"
+    },
+    {
+      "id": "rotatorenmanschette-de-15",
+      "tags": [
+        "rotatorenmanschette",
+        "schulter"
+      ],
+      "fingerprint": "1h9n5wg"
+    },
+    {
+      "id": "mrt-dwi-adc-de-shine-through",
+      "tags": [
+        "mrt-dwi-adc",
+        "mrt",
+        "technik"
+      ],
+      "fingerprint": "pwepcq"
+    },
+    {
+      "id": "haemangiom-de-01",
+      "tags": [
+        "haemangiom"
+      ],
+      "fingerprint": "1gmzd7s"
+    },
+    {
+      "id": "haemangiom-de-02",
+      "tags": [
+        "haemangiom"
+      ],
+      "fingerprint": "w7b4b1"
+    },
+    {
+      "id": "haemangiom-de-03",
+      "tags": [
+        "haemangiom"
+      ],
+      "fingerprint": "m8kzn8"
+    },
+    {
+      "id": "haemangiom-de-04",
+      "tags": [
+        "haemangiom"
+      ],
+      "fingerprint": "kvxmls"
+    },
+    {
+      "id": "haemangiom-de-05",
+      "tags": [
+        "haemangiom"
+      ],
+      "fingerprint": "g0r8mb"
+    },
+    {
+      "id": "haemangiom-de-06",
+      "tags": [
+        "haemangiom"
+      ],
+      "fingerprint": "13w4pdn"
+    },
+    {
+      "id": "haemangiom-de-07",
+      "tags": [
+        "haemangiom"
+      ],
+      "fingerprint": "9ueg13"
+    },
+    {
+      "id": "haemangiom-de-08",
+      "tags": [
+        "haemangiom"
+      ],
+      "fingerprint": "1p1qykx"
+    },
+    {
+      "id": "beckenring-ao-version",
+      "tags": [
+        "beckenringfraktur"
+      ],
+      "fingerprint": "trdp6s"
+    },
+    {
+      "id": "beckenring-l5-clue",
+      "tags": [
+        "beckenringfraktur"
+      ],
+      "fingerprint": "aqd2zy"
+    },
+    {
+      "id": "vancouver-b-subtypes-de",
+      "tags": [
+        "periprothetische-femurfraktur"
+      ],
+      "fingerprint": "v26zsh"
+    },
+    {
+      "id": "vancouver-regions-de",
+      "tags": [
+        "periprothetische-femurfraktur"
+      ],
+      "fingerprint": "1zy9qc"
+    },
+    {
+      "id": "proximal-femur-trauma-imaging-position-de",
+      "tags": [
+        "proximale-femurfraktur"
+      ],
+      "fingerprint": "t6lukc"
+    },
+    {
+      "id": "proximal-femur-pauwels-angle-de",
+      "tags": [
+        "proximale-femurfraktur"
+      ],
+      "fingerprint": "74v8j3"
+    },
+    {
+      "id": "proximal-femur-garden-de",
+      "tags": [
+        "proximale-femurfraktur"
+      ],
+      "fingerprint": "1m4o8qm"
+    },
+    {
+      "id": "distal-femur-ao33-hoffa-de",
+      "tags": [
+        "distale-femurfraktur"
+      ],
+      "fingerprint": "1ufumlm"
+    },
+    {
+      "id": "distal-femur-hoffa-projection-de",
+      "tags": [
+        "distale-femurfraktur"
+      ],
+      "fingerprint": "lhkv3"
+    },
+    {
+      "id": "femoral-shaft-ao32-simple-subtype-de",
+      "tags": [
+        "femurschaftfraktur"
+      ],
+      "fingerprint": "visn8v"
+    },
+    {
+      "id": "femoral-shaft-ao32-groups-de",
+      "tags": [
+        "femurschaftfraktur"
+      ],
+      "fingerprint": "nbrqn1"
+    },
+    {
+      "id": "tibial-plateau-schatzker-ii-de",
+      "tags": [
+        "tibiakopffraktur"
+      ],
+      "fingerprint": "tuz9h7"
+    },
+    {
+      "id": "tibial-plateau-segond-de",
+      "tags": [
+        "tibiakopffraktur"
+      ],
+      "fingerprint": "nzb0v9"
+    },
+    {
+      "id": "ankle-trauma-maisonneuve-chain-de",
+      "tags": [
+        "osg-fraktur"
+      ],
+      "fingerprint": "f26l82"
+    },
+    {
+      "id": "ankle-trauma-chaput-volkmann-de",
+      "tags": [
+        "osg-fraktur"
+      ],
+      "fingerprint": "18rw36y"
+    },
+    {
+      "id": "shoulder-impingement-measurement-limit-de",
+      "tags": [
+        "impingement-kalkschulter"
+      ],
+      "fingerprint": "l4lsbs"
+    },
+    {
+      "id": "shoulder-impingement-bigliani-limit-de",
+      "tags": [
+        "impingement-kalkschulter"
+      ],
+      "fingerprint": "kpc5lv"
+    },
+    {
+      "id": "patella-extensor-bipartite-vs-fracture-de",
+      "tags": [
+        "patella-streckapparat"
+      ],
+      "fingerprint": "53whn0"
+    },
+    {
+      "id": "patella-extensor-transient-dislocation-de",
+      "tags": [
+        "patella-streckapparat"
+      ],
+      "fingerprint": "19o22t"
+    },
+    {
+      "id": "patella-extensor-transverse-fracture-mechanism-de",
+      "tags": [
+        "patellafraktur-trauma"
+      ],
+      "fingerprint": "sxc636"
+    },
+    {
+      "id": "kolloidzyste-de-location",
+      "tags": [
+        "kolloidzyste"
+      ],
+      "fingerprint": "12tt6wo"
+    },
+    {
+      "id": "uip-ipf-de-probable-pattern",
+      "tags": [
+        "uip-ipf"
+      ],
+      "fingerprint": "1hm3stp"
+    },
+    {
+      "id": "bronchiektasen-de-core-ct-signs",
+      "tags": [
+        "bronchiektasen"
+      ],
+      "fingerprint": "7a39id"
+    },
+    {
+      "id": "nierentrauma-de-delayed-urinary-leak",
+      "tags": [
+        "nierentrauma"
+      ],
+      "fingerprint": "yy9fj2"
+    },
+    {
+      "id": "adpkd-bildgebung-de-pattern",
+      "tags": [
+        "adpkd-bildgebung"
+      ],
+      "fingerprint": "125f68f"
+    },
+    {
+      "id": "adpkd-bildgebung-de-uncertain",
+      "tags": [
+        "adpkd-bildgebung"
+      ],
+      "fingerprint": "11calzp"
+    },
+    {
+      "id": "lungenoedem-de-hrct-pattern",
+      "tags": [
+        "lungenoedem"
+      ],
+      "fingerprint": "1jl7es6"
+    },
+    {
+      "id": "lungenoedem-de-radiograph-differentiation",
+      "tags": [
+        "lungenoedem"
+      ],
+      "fingerprint": "p7mpyr"
+    },
+    {
+      "id": "lungenoedem-de-ards-imaging-boundary",
+      "tags": [
+        "ards"
+      ],
+      "fingerprint": "163b1bq"
+    },
+    {
+      "id": "pulmonale-hypertonie-de-haemodynamics",
+      "tags": [
+        "pulmonale-hypertonie"
+      ],
+      "fingerprint": "1059rhc"
+    },
+    {
+      "id": "pulmonale-hypertonie-de-ct-signs",
+      "tags": [
+        "pulmonale-hypertonie"
+      ],
+      "fingerprint": "16rh8ij"
+    },
+    {
+      "id": "dual-energy-ct-de-low-kev",
+      "tags": [
+        "dual-energy-ct"
+      ],
+      "fingerprint": "1gtqe3e"
+    },
+    {
+      "id": "mrt-perfusion-de-signal-response",
+      "tags": [
+        "mrt-perfusion"
+      ],
+      "fingerprint": "b09vyt"
+    },
+    {
+      "id": "mrt-cine-de-motion-flow",
+      "tags": [
+        "mrt-cine"
+      ],
+      "fingerprint": "mxay37"
+    },
+    {
+      "id": "fmri-bold-de-mechanism",
+      "tags": [
+        "fmri-bold"
+      ],
+      "fingerprint": "1ty0x58"
+    },
+    {
+      "id": "mri-artifacts-de-aliasing",
+      "tags": [
+        "mrt-bildqualitaet-artefakte-snr"
+      ],
+      "fingerprint": "1rl6fd0"
+    },
+    {
+      "id": "mri-safety-de-hotspot",
+      "tags": [
+        "mrt-sicherheit-risiken"
+      ],
+      "fingerprint": "1au68t2"
+    },
+    {
+      "id": "mri-safety-de-pregnancy",
+      "tags": [
+        "mrt-sicherheit-risiken"
+      ],
+      "fingerprint": "aofph1"
+    },
+    {
+      "id": "mrt-spin-echo-de-pd",
+      "tags": [
+        "mrt-spin-echo"
+      ],
+      "fingerprint": "4fv9vs"
+    },
+    {
+      "id": "mrt-gradient-echo-de-refocusing",
+      "tags": [
+        "mrt-gradient-echo"
+      ],
+      "fingerprint": "mb79f5"
+    },
+    {
+      "id": "mrt-inversion-recovery-de-targets",
+      "tags": [
+        "mrt-inversion-recovery"
+      ],
+      "fingerprint": "2509rx"
+    },
+    {
+      "id": "mrt-fat-suppression-de-stir",
+      "tags": [
+        "mrt-fettsuppression"
+      ],
+      "fingerprint": "189oocm"
+    },
+    {
+      "id": "mrt-fat-suppression-de-opposed-phase",
+      "tags": [
+        "mrt-fettsuppression"
+      ],
+      "fingerprint": "17r49m1"
+    },
+    {
+      "id": "mrt-signal-de-resonance",
+      "tags": [
+        "mrt-grundprinzip-signalbildung"
+      ],
+      "fingerprint": "7bq2yk"
+    },
+    {
+      "id": "mrt-quality-de-shimming-coil",
+      "tags": [
+        "mrt-bildqualitaet-artefakte-snr"
+      ],
+      "fingerprint": "1xgnw2u"
+    },
+    {
+      "id": "mrt-gefaessdarstellung-de-venc",
+      "tags": [
+        "mrt-gefaessdarstellung"
+      ],
+      "fingerprint": "1x8g9da"
+    },
+    {
+      "id": "ct-quality-de-partial-volume",
+      "tags": [
+        "ct-bildqualitaet-artefakte"
+      ],
+      "fingerprint": "bja7l1"
+    },
+    {
+      "id": "ct-perfusion-de-parameter",
+      "tags": [
+        "ct-perfusion-technik"
+      ],
+      "fingerprint": "96fbtq"
+    },
+    {
+      "id": "ct-reconstruction-de-window-kernel",
+      "tags": [
+        "ct-rekonstruktion-nachverarbeitung"
+      ],
+      "fingerprint": "v8x74k"
+    },
+    {
+      "id": "hrct-technik-de-expiratory",
+      "tags": [
+        "hrct-technik"
+      ],
+      "fingerprint": "wrhm90"
+    },
+    {
+      "id": "ct-protocol-de-pancreas-phase",
+      "tags": [
+        "ct-methodik-km-phasen"
+      ],
+      "fingerprint": "17c0ikb"
+    },
+    {
+      "id": "mr-myelographie-de-mip",
+      "tags": [
+        "mr-myelographie"
+      ],
+      "fingerprint": "j3lr5n"
+    },
+    {
+      "id": "mr-myelographie-de-leck",
+      "tags": [
+        "mr-myelographie"
+      ],
+      "fingerprint": "1kjvgz5"
+    },
+    {
+      "id": "atelektase-de-volume",
+      "tags": [
+        "atelektase"
+      ],
+      "fingerprint": "y5qbih"
+    },
+    {
+      "id": "lch-lunge-de-verlauf",
+      "tags": [
+        "lch-lunge"
+      ],
+      "fingerprint": "1av3tvb"
+    },
+    {
+      "id": "lch-lunge-de-diagnose",
+      "tags": [
+        "lch-lunge"
+      ],
+      "fingerprint": "17sf3py"
+    },
+    {
+      "id": "mukoviszidose-de-mosaik",
+      "tags": [
+        "mukoviszidose"
+      ],
+      "fingerprint": "prwzrn"
+    },
+    {
+      "id": "mukoviszidose-de-diagnose",
+      "tags": [
+        "mukoviszidose"
+      ],
+      "fingerprint": "1xicdfn"
+    },
+    {
+      "id": "bronchiolitis-de-pattern",
+      "tags": [
+        "bronchiolitis"
+      ],
+      "fingerprint": "10rgapf"
+    },
+    {
+      "id": "bronchiolitis-de-cause",
+      "tags": [
+        "bronchiolitis"
+      ],
+      "fingerprint": "1og0n4m"
+    },
+    {
+      "id": "hypersensitivitaetspneumonitis-de-expiration",
+      "tags": [
+        "hypersensitivitaetspneumonitis"
+      ],
+      "fingerprint": "rnikth"
+    },
+    {
+      "id": "hypersensitivitaetspneumonitis-de-igg",
+      "tags": [
+        "hypersensitivitaetspneumonitis"
+      ],
+      "fingerprint": "o3f5xs"
+    },
+    {
+      "id": "thorax-pattern-pneumonie-muster-de-01",
+      "tags": [
+        "pneumonie-muster"
+      ],
+      "fingerprint": "17uzh6n"
+    },
+    {
+      "id": "thorax-pattern-bakterielle-pneumonie-de-01",
+      "tags": [
+        "bakterielle-pneumonie"
+      ],
+      "fingerprint": "1tj88kl"
+    },
+    {
+      "id": "thorax-pattern-virale-pneumonie-covid-de-01",
+      "tags": [
+        "virale-pneumonie-covid"
+      ],
+      "fingerprint": "1qdsv14"
+    },
+    {
+      "id": "thorax-pattern-atypische-pneumonie-de-01",
+      "tags": [
+        "atypische-pneumonie"
+      ],
+      "fingerprint": "jot5fn"
+    },
+    {
+      "id": "thorax-pattern-aspergillus-lunge-de-01",
+      "tags": [
+        "aspergillus-lunge"
+      ],
+      "fingerprint": "18lk55f"
+    },
+    {
+      "id": "thorax-pattern-pcp-de-01",
+      "tags": [
+        "pcp"
+      ],
+      "fingerprint": "eiuahg"
+    },
+    {
+      "id": "thorax-pattern-pleuraempyem-de-01",
+      "tags": [
+        "pleuraempyem"
+      ],
+      "fingerprint": "2hng4j"
+    },
+    {
+      "id": "lungenzysten-differentialdiagnose-de-einzelbild",
+      "tags": [
+        "lungenzysten-differentialdiagnose"
+      ],
+      "fingerprint": "1x8hlg7"
+    },
+    {
+      "id": "lungenzysten-differentialdiagnose-de-bhd-kontext",
+      "tags": [
+        "lungenzysten-differentialdiagnose"
+      ],
+      "fingerprint": "1d83grc"
+    },
+    {
+      "id": "pectus-excavatum-de-lateral-localisation",
+      "tags": [
+        "pectus-excavatum"
+      ],
+      "fingerprint": "1yuyfrh"
+    },
+    {
+      "id": "pectus-excavatum-de-coexisting-opacity",
+      "tags": [
+        "pectus-excavatum"
+      ],
+      "fingerprint": "mnoe0z"
+    },
+    {
+      "id": "spondylolisthesis-de-pars",
+      "tags": [
+        "spondylolisthesis"
+      ],
+      "fingerprint": "1wv5d2v"
+    },
+    {
+      "id": "spondylolisthesis-de-position",
+      "tags": [
+        "spondylolisthesis"
+      ],
+      "fingerprint": "27y0v9"
+    },
+    {
+      "id": "dish-ossifikation-ligamente-de-location",
+      "tags": [
+        "dish-ossifikation-ligamente"
+      ],
+      "fingerprint": "iz5089"
+    },
+    {
+      "id": "dish-ossifikation-ligamente-de-modality",
+      "tags": [
+        "dish-ossifikation-ligamente"
+      ],
+      "fingerprint": "xpqfds"
+    },
+    {
+      "id": "spinale-leptomeningitis-pattern-de",
+      "tags": [
+        "spinale-leptomeningitis"
+      ],
+      "fingerprint": "1jvagbn"
+    },
+    {
+      "id": "spinale-leptomeningitis-compartment-de",
+      "tags": [
+        "spinale-leptomeningitis"
+      ],
+      "fingerprint": "cpq75v"
+    },
+    {
+      "id": "neuroborreliose-spinal-roots-de",
+      "tags": [
+        "neuroborreliose-spinal"
+      ],
+      "fingerprint": "hqjlq4"
+    },
+    {
+      "id": "neuroborreliose-spinal-csf-de",
+      "tags": [
+        "neuroborreliose-spinal"
+      ],
+      "fingerprint": "1kl7u24"
+    },
+    {
+      "id": "wirbelsaeulentuberkulose-tb-de",
+      "tags": [
+        "wirbelsaeulentuberkulose"
+      ],
+      "fingerprint": "1vets3z"
+    },
+    {
+      "id": "paravertebraler-abszess-paravertebral-de",
+      "tags": [
+        "paravertebraler-abszess"
+      ],
+      "fingerprint": "159xae2"
+    },
+    {
+      "id": "epiduraler-abszess-epidural-de",
+      "tags": [
+        "epiduraler-abszess"
+      ],
+      "fingerprint": "1atzd4t"
+    },
+    {
+      "id": "osteoporose-fraktur-ws-de-oedem",
+      "tags": [
+        "osteoporose-fraktur-ws"
+      ],
+      "fingerprint": "1raz4n5"
+    },
+    {
+      "id": "osteoporose-fraktur-ws-de-dxa",
+      "tags": [
+        "osteoporose-fraktur-ws"
+      ],
+      "fingerprint": "pf0rk3"
+    },
+    {
+      "id": "renale-osteodystrophie-ws-de-muster",
+      "tags": [
+        "renale-osteodystrophie-ws"
+      ],
+      "fingerprint": "1vh4ra7"
+    },
+    {
+      "id": "renale-osteodystrophie-ws-de-dichte",
+      "tags": [
+        "renale-osteodystrophie-ws"
+      ],
+      "fingerprint": "b1adlv"
+    },
+    {
+      "id": "spinale-tumoren-grundlagen-de-source-check",
+      "tags": [
+        "spinale-tumoren-grundlagen"
+      ],
+      "fingerprint": "gabk3p"
+    },
+    {
+      "id": "spinale-arachnoiditis-de-source-check",
+      "tags": [
+        "spinale-arachnoiditis"
+      ],
+      "fingerprint": "1dk5p0f"
+    },
+    {
+      "id": "guillain-barre-syndrom-de-source-check",
+      "tags": [
+        "guillain-barre-syndrom"
+      ],
+      "fingerprint": "1s0bxv6"
+    },
+    {
+      "id": "funikulaere-myelose-de-source-check",
+      "tags": [
+        "funikulaere-myelose"
+      ],
+      "fingerprint": "6ge3r7"
+    },
+    {
+      "id": "epidermoid-spinal-de-pattern",
+      "tags": [
+        "epidermoid-spinal"
+      ],
+      "fingerprint": "447ny6"
+    },
+    {
+      "id": "multiple-sklerose-spinal-de-pattern",
+      "tags": [
+        "multiple-sklerose-spinal"
+      ],
+      "fingerprint": "1ea6bwq"
+    },
+    {
+      "id": "rippenpathologien-de-source-check",
+      "tags": [
+        "rippenpathologien"
+      ],
+      "fingerprint": "95s12u"
+    },
+    {
+      "id": "akute-le-de-source-check",
+      "tags": [
+        "akute-le"
+      ],
+      "fingerprint": "sgq5oa"
+    },
+    {
+      "id": "roentgen-streustrahlenraster-de-01",
+      "tags": [
+        "roentgen-streustrahlenraster"
+      ],
+      "fingerprint": "10tpw30"
+    },
+    {
+      "id": "c-arm-ct-de-01",
+      "tags": [
+        "c-arm-ct"
+      ],
+      "fingerprint": "1viul25"
+    },
+    {
+      "id": "strahlenschutz-gesetzliche-grundlagen-de-01",
+      "tags": [
+        "strahlenschutz-gesetzliche-grundlagen"
+      ],
+      "fingerprint": "9zvm6f"
+    },
+    {
+      "id": "strahlenschutzbereiche-verantwortliche-de-01",
+      "tags": [
+        "strahlenschutzbereiche-verantwortliche"
+      ],
+      "fingerprint": "1mb4229"
+    },
+    {
+      "id": "fachkunde-strahlenschutz-de-01",
+      "tags": [
+        "fachkunde-strahlenschutz"
+      ],
+      "fingerprint": "sgqrm6"
+    },
+    {
+      "id": "teleradiologie-de-01",
+      "tags": [
+        "teleradiologie"
+      ],
+      "fingerprint": "16s4j87"
+    },
+    {
+      "id": "photon-counting-ct-de-01",
+      "tags": [
+        "photon-counting-ct"
+      ],
+      "fingerprint": "1cf94mv"
+    },
+    {
+      "id": "ct-grundprinzip-aufbau-de-01",
+      "tags": [
+        "ct-grundprinzip-aufbau"
+      ],
+      "fingerprint": "zfhoor"
+    },
+    {
+      "id": "ct-aufnahmetechniken-de-01",
+      "tags": [
+        "ct-aufnahmetechniken"
+      ],
+      "fingerprint": "1o613rd"
+    },
+    {
+      "id": "roentgenanlage-roehre-de-01",
+      "tags": [
+        "roentgenanlage-roehre",
+        "roentgenstrahlung-spektrum"
+      ],
+      "fingerprint": "cd416t"
+    },
+    {
+      "id": "roentgenanlage-roehre-de-02",
+      "tags": [
+        "roentgenanlage-roehre"
+      ],
+      "fingerprint": "1ob1ktd"
+    },
+    {
+      "id": "roentgen-wechselwirkung-de-01",
+      "tags": [
+        "roentgen-wechselwirkung-materie"
+      ],
+      "fingerprint": "t87o6v"
+    },
+    {
+      "id": "roentgen-wechselwirkung-de-02",
+      "tags": [
+        "roentgen-wechselwirkung-materie"
+      ],
+      "fingerprint": "1ipaw7d"
+    },
+    {
+      "id": "roentgen-detektor-de-01",
+      "tags": [
+        "roentgen-bildentstehung-detektor"
+      ],
+      "fingerprint": "1f7x5ml"
+    },
+    {
+      "id": "roentgen-detektor-de-02",
+      "tags": [
+        "roentgen-bildentstehung-detektor"
+      ],
+      "fingerprint": "1u2czp5"
+    },
+    {
+      "id": "hepatic-adenoma-hbp-de-01",
+      "tags": [
+        "leberadenom"
+      ],
+      "fingerprint": "vmdnsw"
+    },
+    {
+      "id": "hepatic-adenoma-opposed-phase-de-01",
+      "tags": [
+        "leberadenom"
+      ],
+      "fingerprint": "13oe78b"
+    },
+    {
+      "id": "hepatic-adenoma-dynamic-ct-de-01",
+      "tags": [
+        "leberadenom"
+      ],
+      "fingerprint": "jgkte3"
+    },
+    {
+      "id": "hepatic-adenoma-caveat-de-01",
+      "tags": [
+        "leberadenom"
+      ],
+      "fingerprint": "1ur5do1"
+    },
+    {
+      "id": "abdomen-renal-anatomy-de-01",
+      "tags": [
+        "niere-anatomie"
+      ],
+      "fingerprint": "oleowj"
+    },
+    {
+      "id": "abdomen-liver-metastases-de-01",
+      "tags": [
+        "lebermetastasen"
+      ],
+      "fingerprint": "z1vp5e"
+    },
+    {
+      "id": "abdomen-small-bowel-feces-de-01",
+      "tags": [
+        "ileus-duenndarm"
+      ],
+      "fingerprint": "16fzq4j"
+    },
+    {
+      "id": "abdomen-foramen-winslow-de-01",
+      "tags": [
+        "ileus-duenndarm"
+      ],
+      "fingerprint": "mwjj1o"
+    },
+    {
+      "id": "abdomen-ileus-volvulus-de-01",
+      "tags": [
+        "ileus-duenndarm"
+      ],
+      "fingerprint": "1a66riy"
+    },
+    {
+      "id": "abdomen-intussusception-initial-imaging-de-01",
+      "tags": [
+        "intussusception"
+      ],
+      "fingerprint": "e18soa"
+    },
+    {
+      "id": "abdomen-pancreatic-cysts-de-01",
+      "tags": [
+        "ipmn"
+      ],
+      "fingerprint": "3v6sp2"
+    },
+    {
+      "id": "abdomen-focal-liver-de-01",
+      "tags": [
+        "leberadenom",
+        "lebermetastasen"
+      ],
+      "fingerprint": "7wv27k"
+    },
+    {
+      "id": "abdomen-hepatic-steatosis-de-01",
+      "tags": [
+        "hepatische-steatose"
+      ],
+      "fingerprint": "nozxzp"
+    },
+    {
+      "id": "abdomen-renal-masses-de-01",
+      "tags": [
+        "angiomyolipom"
+      ],
+      "fingerprint": "1itoc0h"
+    },
+    {
+      "id": "abdomen-renal-cyst-bosniak-nodule-de-01",
+      "tags": [
+        "nierenzysten"
+      ],
+      "fingerprint": "8slqai"
+    },
+    {
+      "id": "renal-mass-rcc-de-01",
+      "tags": [
+        "nierenzellkarzinom"
+      ],
+      "fingerprint": "yb5msm"
+    },
+    {
+      "id": "renal-mass-rcc-phases-de-01",
+      "tags": [
+        "nierenzellkarzinom"
+      ],
+      "fingerprint": "1qwthsl"
+    },
+    {
+      "id": "renal-mass-oncocytoma-de-01",
+      "tags": [
+        "onkozytom-niere"
+      ],
+      "fingerprint": "1w03eq8"
+    },
+    {
+      "id": "renal-mass-fat-poor-aml-de-01",
+      "tags": [
+        "angiomyolipom"
+      ],
+      "fingerprint": "1w6jzaj"
+    },
+    {
+      "id": "abdomen-adrenal-masses-de-01",
+      "tags": [
+        "nebennieren-inzidentalom",
+        "nebennierenadenom"
+      ],
+      "fingerprint": "u7jcuk"
+    },
+    {
+      "id": "adrenal-adenoma-microscopic-fat-de-01",
+      "tags": [
+        "nebennierenadenom"
+      ],
+      "fingerprint": "18c6dqm"
+    },
+    {
+      "id": "adrenal-myelolipoma-macroscopic-fat-de-01",
+      "tags": [
+        "myelolipom"
+      ],
+      "fingerprint": "d4r621"
+    },
+    {
+      "id": "adrenal-pheochromocytoma-washout-de-01",
+      "tags": [
+        "phaeochromozytom"
+      ],
+      "fingerprint": "1fjaovj"
+    },
+    {
+      "id": "adrenal-neuroblastoma-origin-de-01",
+      "tags": [
+        "neuroblastom-nebenniere"
+      ],
+      "fingerprint": "t9nxxk"
+    },
+    {
+      "id": "thorax-foreign-body-de-01",
+      "tags": [
+        "fremdkoerper-atemwege"
+      ],
+      "fingerprint": "lx0bzf"
+    },
+    {
+      "id": "thorax-tuberculosis-de-01",
+      "tags": [
+        "tuberkulose"
+      ],
+      "fingerprint": "106rmcb"
+    },
+    {
+      "id": "thorax-lung-abscess-empyema-de-01",
+      "tags": [
+        "lungenabszess"
+      ],
+      "fingerprint": "4qk0qv"
+    },
+    {
+      "id": "thorax-chest-xray-de-01",
+      "tags": [
+        "roentgen-thorax-systematik"
+      ],
+      "fingerprint": "u4zf08"
+    },
+    {
+      "id": "thorax-heart-size-de-01",
+      "tags": [
+        "herzgroesse-roentgen"
+      ],
+      "fingerprint": "15t4amn"
+    },
+    {
+      "id": "thorax-lung-segmental-anatomy-de-01",
+      "tags": [
+        "lungenanatomie"
+      ],
+      "fingerprint": "y8vkey"
+    },
+    {
+      "id": "abdomen-cystic-liver-lesions-de-01",
+      "tags": [
+        "leberzyste"
+      ],
+      "fingerprint": "wmhcjc"
+    },
+    {
+      "id": "abdomen-appendizitis-de-01",
+      "tags": [
+        "appendizitis"
+      ],
+      "fingerprint": "3nzqzq"
+    },
+    {
+      "id": "abdomen-pdac-isoattenuating-de-01",
+      "tags": [
+        "pdac"
+      ],
+      "fingerprint": "twx4kc"
+    },
+    {
+      "id": "abdomen-pdac-double-duct-de-01",
+      "tags": [
+        "pdac"
+      ],
+      "fingerprint": "c8r46w"
+    },
+    {
+      "id": "abdomen-pdac-vessel-contact-de-01",
+      "tags": [
+        "pdac"
+      ],
+      "fingerprint": "1v1z4ut"
+    },
+    {
+      "id": "abdomen-inguinal-hernia-landmarks-de-01",
+      "tags": [
+        "inguinalhernie"
+      ],
+      "fingerprint": "14n27gs"
+    },
+    {
+      "id": "abdomen-femoral-hernia-landmarks-de-01",
+      "tags": [
+        "femoralhernie"
+      ],
+      "fingerprint": "1cj0p6k"
+    },
+    {
+      "id": "abdomen-lower-gi-bleeding-de-01",
+      "tags": [
+        "untere-gi-blutung"
+      ],
+      "fingerprint": "7bp9e3"
+    },
+    {
+      "id": "abdomen-kolorektales-karzinom-de-01",
+      "tags": [
+        "kolorektales-karzinom"
+      ],
+      "fingerprint": "13kfu6z"
+    },
+    {
+      "id": "nephroblastom-wilms-de-01",
+      "tags": [
+        "nephroblastom-wilms"
+      ],
+      "fingerprint": "1f0ya35"
+    },
+    {
+      "id": "abdomen-ileus-ischaemia-de-01",
+      "tags": [
+        "ileus-duenndarm"
+      ],
+      "fingerprint": "14cvv4c"
+    },
+    {
+      "id": "abdomen-mesenteric-ischaemia-cta-protocol-de-01",
+      "tags": [
+        "mesenteriale-ischaemie"
+      ],
+      "fingerprint": "15cuqjg"
+    },
+    {
+      "id": "degenerative-wirbelsaeule-cord-vs-cauda-01-de",
+      "tags": [
+        "spinalkanalstenose"
+      ],
+      "fingerprint": "1uquq7"
+    },
+    {
+      "id": "degenerative-wirbelsaeule-signal-prognosis-02-de",
+      "tags": [
+        "spinalkanalstenose"
+      ],
+      "fingerprint": "1hcszmo"
+    },
+    {
+      "id": "spondylodiszitis-tb-pattern-01-de",
+      "tags": [
+        "spondylodiszitis"
+      ],
+      "fingerprint": "oqh5jx"
+    },
+    {
+      "id": "knochentumor-grundlagen-lodwick-01-de",
+      "tags": [
+        "knochentumor-grundlagen"
+      ],
+      "fingerprint": "a3pw0f"
+    },
+    {
+      "id": "ws-entzuendlich-asas-mri-01-de",
+      "tags": [
+        "morbus-bechterew-ws"
+      ],
+      "fingerprint": "1ufo391"
+    },
+    {
+      "id": "ws-axspa-negative-mri-01-de",
+      "tags": [
+        "morbus-bechterew-ws"
+      ],
+      "fingerprint": "cxu3s8"
+    },
+    {
+      "id": "ws-scheuermann-sorensen-01-de",
+      "tags": [
+        "morbus-scheuermann"
+      ],
+      "fingerprint": "1idp7u5"
+    },
+    {
+      "id": "osteochondrosis-intervertebralis-de-modic-ii-signal",
+      "tags": [
+        "osteochondrosis-intervertebralis"
+      ],
+      "fingerprint": "1m7p3jx"
+    },
+    {
+      "id": "sehnenpathologien-hand-de-01",
+      "tags": [
+        "sehnenpathologien-hand"
+      ],
+      "fingerprint": "mjcrmq"
+    },
+    {
+      "id": "sehnenpathologien-hand-de-02",
+      "tags": [
+        "sehnenpathologien-hand"
+      ],
+      "fingerprint": "1s7mzur"
+    },
+    {
+      "id": "de-quervain-de-01",
+      "tags": [
+        "de-quervain"
+      ],
+      "fingerprint": "1bkc5e7"
+    },
+    {
+      "id": "proximale-humerusfraktur-de-01",
+      "tags": [
+        "proximale-humerusfraktur"
+      ],
+      "fingerprint": "mny036"
+    },
+    {
+      "id": "proximale-humerusfraktur-de-02",
+      "tags": [
+        "proximale-humerusfraktur"
+      ],
+      "fingerprint": "4wzguy"
+    },
+    {
+      "id": "metacarpal-base-pattern-de-01",
+      "tags": [
+        "metakarpale-frakturen"
+      ],
+      "fingerprint": "dm45ln"
+    },
+    {
+      "id": "knocheninfarkt-de-location",
+      "tags": [
+        "knocheninfarkt"
+      ],
+      "fingerprint": "vos9l8"
+    },
+    {
+      "id": "knocheninfarkt-de-pattern",
+      "tags": [
+        "knocheninfarkt"
+      ],
+      "fingerprint": "j194rj"
+    },
+    {
+      "id": "knocheninfarkt-de-infection",
+      "tags": [
+        "knocheninfarkt"
+      ],
+      "fingerprint": "1phwsux"
+    },
+    {
+      "id": "eosinophiles-granulom-de-pattern",
+      "tags": [
+        "eosinophiles-granulom"
+      ],
+      "fingerprint": "16n73gw"
+    },
+    {
+      "id": "eosinophiles-granulom-de-modality",
+      "tags": [
+        "eosinophiles-granulom"
+      ],
+      "fingerprint": "1qf75qv"
+    },
+    {
+      "id": "eosinophiles-granulom-de-interpretation",
+      "tags": [
+        "eosinophiles-granulom"
+      ],
+      "fingerprint": "1r50ddp"
+    },
+    {
+      "id": "fmd-multifocal-pattern-de",
+      "tags": [
+        "fibromuskulaere-dysplasie"
+      ],
+      "fingerprint": "ij5nto"
+    },
+    {
+      "id": "fmd-focal-fmd-de",
+      "tags": [
+        "fibromuskulaere-dysplasie"
+      ],
+      "fingerprint": "dxxtdl"
+    },
+    {
+      "id": "fmd-imaging-sequence-de",
+      "tags": [
+        "fibromuskulaere-dysplasie"
+      ],
+      "fingerprint": "18g1e47"
+    },
+    {
+      "id": "spondylarthrose-de-structure",
+      "tags": [
+        "spondylarthrose"
+      ],
+      "fingerprint": "1m5n3ci"
+    },
+    {
+      "id": "spondylarthrose-de-space",
+      "tags": [
+        "spondylarthrose"
+      ],
+      "fingerprint": "1dc12ok"
+    },
+    {
+      "id": "synovialzyste-facettengelenke-de-juxtafacet-cyst",
+      "tags": [
+        "synovialzyste-facettengelenke"
+      ],
+      "fingerprint": "lajihq"
+    },
+    {
+      "id": "bandscheibenpathologien-de-protrusion-base",
+      "tags": [
+        "bandscheibenpathologien"
+      ],
+      "fingerprint": "7cdq2r"
+    },
+    {
+      "id": "bandscheibenpathologien-de-sequester-continuity",
+      "tags": [
+        "bandscheibenpathologien"
+      ],
+      "fingerprint": "11rjvr"
+    },
+    {
+      "id": "bandscheibenpathologien-de-foraminal-zone",
+      "tags": [
+        "bandscheibenpathologien"
+      ],
+      "fingerprint": "1ors0f4"
+    },
+    {
+      "id": "bandscheibenpathologien-de-subarticular-location",
+      "tags": [
+        "bandscheibenpathologien"
+      ],
+      "fingerprint": "33tgaj"
+    },
+    {
+      "id": "lymphom-zns-de-pattern",
+      "tags": [
+        "lymphom-zns"
+      ],
+      "fingerprint": "1mfqfzs"
+    },
+    {
+      "id": "lymphom-zns-de-overlap",
+      "tags": [
+        "lymphom-zns"
+      ],
+      "fingerprint": "nxbbjo"
+    },
+    {
+      "id": "medulloblastom-de-evidence",
+      "tags": [
+        "medulloblastom"
+      ],
+      "fingerprint": "18w5jma"
+    },
+    {
+      "id": "medulloblastom-de-enhancement",
+      "tags": [
+        "medulloblastom"
+      ],
+      "fingerprint": "15sbolm"
+    },
+    {
+      "id": "meningeom-de-tail",
+      "tags": [
+        "meningeom"
+      ],
+      "fingerprint": "a0mxyc"
+    },
+    {
+      "id": "meningeom-de-grade",
+      "tags": [
+        "meningeom"
+      ],
+      "fingerprint": "s85nyz"
+    },
+    {
+      "id": "recist-1-1-de-reference",
+      "tags": [
+        "recist-1-1"
+      ],
+      "fingerprint": "8mu94v"
+    },
+    {
+      "id": "recist-1-1-de-absolute",
+      "tags": [
+        "recist-1-1"
+      ],
+      "fingerprint": "1r1cycp"
+    },
+    {
+      "id": "recist-1-1-de-node",
+      "tags": [
+        "recist-1-1"
+      ],
+      "fingerprint": "le941g"
+    },
+    {
+      "id": "morbus-ormond-de-01",
+      "tags": [
+        "morbus-ormond"
+      ],
+      "fingerprint": "l7ouxv"
+    },
+    {
+      "id": "appendicitis-epiploica-de-01",
+      "tags": [
+        "appendicitis-epiploica"
+      ],
+      "fingerprint": "s5137f"
+    },
+    {
+      "id": "mesenteriale-panniculitis-de-01",
+      "tags": [
+        "mesenteriale-panniculitis"
+      ],
+      "fingerprint": "2u1zlw"
+    },
+    {
+      "id": "peritonealkarzinose-de-01",
+      "tags": [
+        "peritonealkarzinose"
+      ],
+      "fingerprint": "k3mn0i"
+    },
+    {
+      "id": "metastasen-meningeosis-de-parenchymal-pattern",
+      "tags": [
+        "metastasen-meningeosis"
+      ],
+      "fingerprint": "vjbey3"
+    },
+    {
+      "id": "metastasen-meningeosis-de-leptomeningeal-pattern",
+      "tags": [
+        "metastasen-meningeosis"
+      ],
+      "fingerprint": "1ey1f1x"
+    },
+    {
+      "id": "liver-vessels-de-aortic-celiac-branches",
+      "tags": [
+        "leber-anatomie",
+        "gefaesse-anatomie-abdomen"
+      ],
+      "fingerprint": "13h6c0y"
+    },
+    {
+      "id": "liver-vessels-de-portal-confluence",
+      "tags": [
+        "leber-anatomie",
+        "gefaesse-anatomie-abdomen"
+      ],
+      "fingerprint": "hr0byg"
+    },
+    {
+      "id": "liver-vessels-de-hepatic-outflow",
+      "tags": [
+        "leber-anatomie",
+        "gefaesse-anatomie-abdomen"
+      ],
+      "fingerprint": "1hhikle"
+    },
+    {
+      "id": "wirbelmetastasen-de-ivory-vs-destructive",
+      "tags": [
+        "wirbelmetastasen"
+      ],
+      "fingerprint": "o56oia"
+    },
+    {
+      "id": "spinal-intramedullary-de-pattern-comparison",
+      "tags": [
+        "astrozytom-spinal",
+        "ependymom-spinal"
+      ],
+      "fingerprint": "18ag4fb"
+    },
+    {
+      "id": "spinal-extramedullary-de-pdf-patterns",
+      "tags": [
+        "meningeom-spinal",
+        "schwannom-neurofibrom-spinal"
+      ],
+      "fingerprint": "l4ndz3"
+    },
+    {
+      "id": "fluoro-zoom-de-digital-vs-acquisition",
+      "tags": [
+        "fluoroskopie-durchleuchtung"
+      ],
+      "fingerprint": "z6qgfp"
+    },
+    {
+      "id": "entrance-kerma-de-backscatter",
+      "tags": [
+        "dosisgroessen-dosimetrie"
+      ],
+      "fingerprint": "1yvov7i"
+    },
+    {
+      "id": "riesenzelltumor-lodwick-source-example-01-de",
+      "tags": [
+        "riesenzelltumor"
+      ],
+      "fingerprint": "19uct23"
+    },
+    {
+      "id": "gist-ct-01",
+      "tags": [
+        "gist"
+      ],
+      "fingerprint": "61xrv"
+    },
+    {
+      "id": "volvulus-de-1",
+      "tags": [
+        "volvulus"
+      ],
+      "fingerprint": "2dvvbv"
+    },
+    {
+      "id": "pnet-de-01",
+      "tags": [
+        "pnet"
+      ],
+      "fingerprint": "1ru4xla"
+    },
+    {
+      "id": "pnet-de-02",
+      "tags": [
+        "pnet"
+      ],
+      "fingerprint": "11dbkde"
+    },
+    {
+      "id": "pnet-de-03",
+      "tags": [
+        "pnet"
+      ],
+      "fingerprint": "gfhpmi"
+    },
+    {
+      "id": "pnet-de-04",
+      "tags": [
+        "pnet"
+      ],
+      "fingerprint": "91ixrc"
+    },
+    {
+      "id": "hepatisches-angiomyolipom-fat-de",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fingerprint": "1ti5yd2"
+    },
+    {
+      "id": "hepatisches-angiomyolipom-washout-de",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fingerprint": "1fbrbkz"
+    },
+    {
+      "id": "hepatisches-angiomyolipom-hcc-de",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fingerprint": "1eo0o0v"
+    },
+    {
+      "id": "hepatisches-angiomyolipom-report-de",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fingerprint": "4k7fuj"
+    },
+    {
+      "id": "psc-pbc-mrcp-beading-de",
+      "tags": [
+        "psc-pbc"
+      ],
+      "fingerprint": "phuttm"
+    },
+    {
+      "id": "fremdkoerper-atemwege-decubitus-de",
+      "tags": [
+        "fremdkoerper-atemwege"
+      ],
+      "fingerprint": "1q3324u"
+    },
+    {
+      "id": "leber-mrt-protokoll-de-phase-timing",
+      "tags": [
+        "leber-mrt-protokoll"
+      ],
+      "fingerprint": "1k3qcp5"
+    },
+    {
+      "id": "osteochondrosis-dissecans-de-ossification-variant",
+      "tags": [
+        "osteochondrosis-dissecans"
+      ],
+      "fingerprint": "ha26v3"
+    },
+    {
+      "id": "schulterinstabilitaet-de-pattern",
+      "tags": [
+        "schulterinstabilitaet"
+      ],
+      "fingerprint": "r0eis3"
+    },
+    {
+      "id": "schulterinstabilitaet-de-modality",
+      "tags": [
+        "schulterinstabilitaet"
+      ],
+      "fingerprint": "mdbeb5"
+    },
+    {
+      "id": "lungenkarzinom-de-histology-boundary",
+      "tags": [
+        "nsclc",
+        "sclc"
+      ],
+      "fingerprint": "yvbiqo"
+    },
+    {
+      "id": "neuroforamenstenose-de-lee-grade",
+      "tags": [
+        "neuroforamenstenose"
+      ],
+      "fingerprint": "1xptwg5"
+    },
+    {
+      "id": "copd-de-ct-diagnosis-boundary",
+      "tags": [
+        "copd"
+      ],
+      "fingerprint": "15og58g"
+    },
+    {
+      "id": "atrt-de-diffusion-limit",
+      "tags": [
+        "atrt"
+      ],
+      "fingerprint": "qpjk20"
+    },
+    {
+      "id": "astrozytom-idh-mutiert-de-mismatch-limit",
+      "tags": [
+        "astrozytom-idh-mutiert"
+      ],
+      "fingerprint": "athsji"
+    },
+    {
+      "id": "oligodendrogliom-idh-mutiert-de-enhancement-grade",
+      "tags": [
+        "oligodendrogliom-idh-mutiert"
+      ],
+      "fingerprint": "n8z2bf"
+    },
+    {
+      "id": "glioblastom-de-flair-extent",
+      "tags": [
+        "glioblastom"
+      ],
+      "fingerprint": "tls6di"
+    },
+    {
+      "id": "sternum-rippen-trauma-de-normal-radiograph",
+      "tags": [
+        "sternum-rippen-trauma"
+      ],
+      "fingerprint": "fnzmgy"
+    },
+    {
+      "id": "sternum-rippen-trauma-de-sternum-plane",
+      "tags": [
+        "sternum-rippen-trauma"
+      ],
+      "fingerprint": "1an58ha"
+    },
+    {
+      "id": "glenohumerale-arthrose-de-localisation",
+      "tags": [
+        "glenohumerale-arthrose"
+      ],
+      "fingerprint": "ndgk0u"
+    },
+    {
+      "id": "glenohumerale-arthrose-de-high-head",
+      "tags": [
+        "glenohumerale-arthrose"
+      ],
+      "fingerprint": "s72l7i"
+    },
+    {
+      "id": "arterien-obere-extremitaet-de-landmark",
+      "tags": [
+        "arterien-obere-extremitaet"
+      ],
+      "fingerprint": "39w133"
+    },
+    {
+      "id": "arterien-obere-extremitaet-de-arches",
+      "tags": [
+        "arterien-obere-extremitaet"
+      ],
+      "fingerprint": "1x5bvzw"
+    },
+    {
+      "id": "leberzirrhose-de-collaterals",
+      "tags": [
+        "leberzirrhose"
+      ],
+      "fingerprint": "2h6cp4"
+    },
+    {
+      "id": "leberzirrhose-de-limits",
+      "tags": [
+        "leberzirrhose"
+      ],
+      "fingerprint": "2xkl00"
+    },
+    {
+      "id": "ulkuserkrankung-negative-ct-de",
+      "tags": [
+        "ulkuserkrankung"
+      ],
+      "fingerprint": "1hf247c"
+    },
+    {
+      "id": "ulkuserkrankung-perforation-de",
+      "tags": [
+        "ulkuserkrankung"
+      ],
+      "fingerprint": "yxbcl"
+    },
+    {
+      "id": "duodenaldivertikel-communication-de",
+      "tags": [
+        "duodenaldivertikel"
+      ],
+      "fingerprint": "1y3gv45"
+    },
+    {
+      "id": "duodenaldivertikel-gas-location-de",
+      "tags": [
+        "duodenaldivertikel"
+      ],
+      "fingerprint": "xeu4kp"
+    },
+    {
+      "id": "flc-de-scar",
+      "tags": [
+        "fibrolamellaeres-karzinom"
+      ],
+      "fingerprint": "mswk67"
+    },
+    {
+      "id": "flc-de-staging",
+      "tags": [
+        "fibrolamellaeres-karzinom"
+      ],
+      "fingerprint": "1s8fp8w"
+    },
+    {
+      "id": "li-rads-de-eligible",
+      "tags": [
+        "li-rads"
+      ],
+      "fingerprint": "o4inbo"
+    },
+    {
+      "id": "li-rads-de-lr4",
+      "tags": [
+        "li-rads"
+      ],
+      "fingerprint": "hunnsj"
+    },
+    {
+      "id": "fornixruptur-direct-de",
+      "tags": [
+        "fornixruptur"
+      ],
+      "fingerprint": "1swl8wf"
+    },
+    {
+      "id": "fornixruptur-report-de",
+      "tags": [
+        "fornixruptur"
+      ],
+      "fingerprint": "1h2rkbh"
+    },
+    {
+      "id": "pylorusstenose-dynamic-de",
+      "tags": [
+        "pylorusstenose"
+      ],
+      "fingerprint": "lt8ir7"
+    },
+    {
+      "id": "pylorusstenose-measurement-de",
+      "tags": [
+        "pylorusstenose"
+      ],
+      "fingerprint": "1449sbq"
+    },
+    {
+      "id": "pmc-kolitis-distribution-de",
+      "tags": [
+        "pmc-kolitis"
+      ],
+      "fingerprint": "1c93my1"
+    },
+    {
+      "id": "pmc-kolitis-accordion-de",
+      "tags": [
+        "pmc-kolitis"
+      ],
+      "fingerprint": "9pg8s1"
+    },
+    {
+      "id": "colitis-ulcerosa-pattern-de",
+      "tags": [
+        "colitis-ulcerosa"
+      ],
+      "fingerprint": "1ipku3w"
+    },
+    {
+      "id": "colitis-ulcerosa-urgent-de",
+      "tags": [
+        "colitis-ulcerosa"
+      ],
+      "fingerprint": "1uf260p"
+    },
+    {
+      "id": "pyelonephritis-parenchyma-de",
+      "tags": [
+        "pyelonephritis"
+      ],
+      "fingerprint": "13mg5ij"
+    },
+    {
+      "id": "pyelonephritis-gas-de",
+      "tags": [
+        "pyelonephritis"
+      ],
+      "fingerprint": "25anr2"
+    },
+    {
+      "id": "nierenabszess-collection-de",
+      "tags": [
+        "nierenabszess"
+      ],
+      "fingerprint": "1qtx2zt"
+    },
+    {
+      "id": "nierenabszess-obstruction-de",
+      "tags": [
+        "nierenabszess"
+      ],
+      "fingerprint": "1apheyu"
+    }
+  ]
+}

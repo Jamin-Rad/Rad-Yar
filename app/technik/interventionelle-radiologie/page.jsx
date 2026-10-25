@@ -27,7 +27,7 @@ function DsaSequence({ lang, caption }) {
   const labels = {
     de: { alt:'DSA-Beispiel aus Technik.pdf, Druckseite 61, Abb. a–c: Füllungsbild, natives Bild und subtrahiertes Angiogramm eines Basilariskopfaneurysmas.' },
     en: { alt:'DSA example from Technik.pdf, printed page 61, panels a–c: contrast-filled frame, native frame and subtracted angiogram of a basilar tip aneurysm.' },
-    fa: { alt:'نمونهٔ DSA از Technik.pdf، صفحهٔ چاپی ۶۱، پنل‌های a تا c: تصویر پُرشدن با کنتراست، تصویر بومی و آنژیوگرام تفریق‌شدهٔ آنوریسم نوک بازیلار.' },
+    fa: { alt:'نمونهٔ DSA از Technik.pdf، صفحهٔ چاپی ۶۱، پنل‌های a تا c: تصویر پُرشدن با کنتراست، تصویر بدون کنتراست (ماسک) و آنژیوگرام تفریق‌شدهٔ آنوریسم نوک بازیلار.' },
   }[lang] || null
   if (!labels) return null
   return <figure className={styles.sequence} role="group" aria-label={labels.alt}><img src="/technik/interventionelle-radiologie/dsa-triptych-p62.png" alt={labels.alt} loading="lazy"/><figcaption>{caption}<br/><span>sourceRef: Technik.pdf#page=62 · printed p. 61 · panels a–c</span></figcaption></figure>

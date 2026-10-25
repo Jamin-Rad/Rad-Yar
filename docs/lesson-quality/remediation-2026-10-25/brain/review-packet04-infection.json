@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root; independent read-only review of brain author packet04",
+  "status": "ACCEPT_BOUNDED_ASSESSMENT_PACKET_AFTER_RETEST",
+  "scope": {
+    "routes": [
+      "/gehirn/infektionen/herpes-enzephalitis",
+      "/gehirn/infektionen/hirnabszess"
+    ],
+    "questionTriads": 6,
+    "cardTriads": 6,
+    "inlineChecks": 2,
+    "fields": "All actual exported DE/EN/FA stems,24options,6keys,6correctrationales,18wrongrationales,and6cardfront/answer/explanationtriads read; actual inline objects compared."
+  },
+  "findings": [
+    {
+      "id": "INF04-LNG-ANTIINFECTIVE",
+      "severity": "minor",
+      "file": "data/assessmentQuality/brain.js",
+      "item": "HSV urgent-communication FA optionC and wrongExplanations.C",
+      "observed": "درمان عفونی is awkward and درمان تجربی ضدعفونی reads like empirical disinfection rather than anti-infective therapy.",
+      "requiredCorrection": "Use natural درمان ضدعفونت or, in the HSV-specific sentence, درمان تجربی ضدویروسی. Preserve the distinction between parallel EEG and prompt empirical treatment.",
+      "status": "CLOSED_AFTER_INDEPENDENT_RETEST"
+    },
+    {
+      "id": "INF04-ASM-PROTOCOL",
+      "severity": "moderate",
+      "file": "data/assessmentQuality/brain.js",
+      "item": "abscess protocol optionB",
+      "observed": "An arterial TOF-MRA-centred study is off-task rather than a plausible competing structural/tissue protocol for a ring lesion.",
+      "requiredCorrection": "Replace with a credible partial conventional MRI protocol for the same ring-lesion question, and explain the missing contribution of DWI/ADC or pre/postcontrast assessment. Retain one best answer.",
+      "status": "CLOSED_AFTER_INDEPENDENT_RETEST"
+    },
+    {
+      "id": "INF04-SRC-ADULTS",
+      "severity": "minor",
+      "file": "data/assessmentQuality/brain.js and HSV lesson check/sourceNote",
+      "item": "HSV question/card scope",
+      "observed": "The linked EAN/ESCMID2026 guideline and Chow2015 cohort are explicitly adult sources, but current new vignettes and empirical-treatment card do not state adult scope.",
+      "requiredCorrection": "Specify adult patients in the new HSV cases and relevant treatment card/source note. Do not generalise adult guidance to neonatal encephalitis.",
+      "status": "CLOSED_AFTER_INDEPENDENT_RETEST"
+    },
+    {
+      "id": "INF04-EDU-CARD-FRONT",
+      "severity": "minor",
+      "file": "data/assessmentQuality/brain.js",
+      "item": "HSV mimic retrievalfront",
+      "observed": "The front asks only whether the MRI proves HSV; learners can begin with a reflex no rather than retrieving the confirmatory method/timing caveat.",
+      "requiredCorrection": "Prefer a short how/what prompt asking which etiological test complements the pattern and why timing matters. Existing answer content can remain.",
+      "status": "CLOSED_AFTER_INDEPENDENT_RETEST"
+    }
+  ],
+  "primaryEvidence": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4462661/",
+      "read": "Original251adult temporal-encephalitis cohort abstract/results/discussion via indexed primary text: acute febrile context supports prioritising HSV but mimics remain."
+    },
+    {
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/ene.70647",
+      "read": "Original2026adult guideline actual table2 sections3–9 and detailed treatment section4.4: PCR and early non-diagnostic sampling caveats, MRI supportive rather than pathogen proof, early IVaciclovir; no new dose/window taught."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11673170/",
+      "read": "Original17ring-lesion diffusion cohort abstract and methods/results: central restriction supports abscess but metastasis exception and nonrestricting abscess present; no invented sensitivity."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22422181/",
+      "read": "OriginalToh2012abstract:12abscesses/20glioblastomas,outerhypo/innerhyperrelativecavitycontents,9of12dualrim,absence not exclusion."
+    },
+    {
+      "url": "https://doi.org/10.1016/j.cmi.2023.08.016",
+      "read": "OriginalESCMID2024table1recommendation as indexed originalPDF text; society-participating GuidelineCentral copy corroborated. Directpublisherfetch unstable. DWI/ADC plusT1pre/postgadolinium supported."
+    }
+  ],
+  "positiveChecks": [
+    "No demonstrated wrong clinical key, safety polarity inversion or mandatory dual-rim claim.",
+    "All new vignettes self-contained; no unseen diagnostic figure asserted.",
+    "Morphology/diffusion and microbiological confirmation appropriately separated; primary-source scope limits preserved.",
+    "Current three-goal maps give pattern interpretation, etiological/protocol reasoning and urgent communication/SWI recognition; no arbitrary count claim.",
+    "One urgency item is foundational clinical awareness, not an advanced discriminator; no empirical item difficulty claimed."
+  ],
+  "limits": [
+    "No PDF-wide source remap or existing diagnostic-image reread in this bounded assessment packet.",
+    "Browser interaction and updated globalSSR remain root release tasks.",
+    "No whole-lesson or Dr.Zia clinical acceptance inferred."
+  ],
+  "retest": {
+    "read": "Actual changed DE/EN/FA adult HSV stems/cardfronts/answers/source-note; natural FA urgent therapy wording; all3 abscess partial-protocolB options and specific feedback.",
+    "runtime": "Original twoinline prompt/option triads match canonical stems/options in6locale checks;Akeys unchanged.",
+    "source": "Original primary sources in initial review retained; no new numerical treatment criteria introduced.",
+    "limits": "No browser/global scientific release approval."
+  }
+}

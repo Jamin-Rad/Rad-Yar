@@ -145,7 +145,7 @@ export const AK_LUXATION_LESSON = {
         L('CCD-Messung, Hochstand der Klavikula, Achsfehlstellung', 'CCD measurement, clavicular elevation, axis malalignment', 'اندازه‌گیری CCD، ارتفاع کلاویکول، ناهنجاری محوری'),
       ],
       [
-        L('Schulter axial', 'Shoulder axial/lateral', 'شانه محوری/جانبی'),
+        L('Schulter axial', "Shoulder axial", "شانه محوری"),
         L('Standardprojektionen', 'Standard projections', 'نماهای استاندارد'),
         L('Posteriore Dislokation (Typ IV)', 'Posterior dislocation (Type IV)', 'جابجایی خلفی (نوع IV)'),
       ],
@@ -314,6 +314,26 @@ export const AK_LUXATION_LESSON = {
   },
 }
 
+const TARGETED_WRONG_FEEDBACK = {
+  "ak-lux-ccd-1": {
+    "A": {
+      "de": "3 mm ist die absolute Differenz; geteilt durch 10 mm ergibt sie 30 %, nicht 3 %.",
+      "en": "3 mm is the absolute difference; dividing by 10 mm gives 30%, not 3%.",
+      "fa": "۳ میلی‌متر اختلاف مطلق است؛ تقسیم آن بر ۱۰ میلی‌متر، ۳۰٪ می‌دهد، نه ۳٪."
+    },
+    "C": {
+      "de": "13 / 10 ergibt 130 % des Ausgangswerts; die Zunahme gegenüber diesem Ausgangswert beträgt 30 %.",
+      "en": "13 / 10 is 130% of the reference value; the increase above that reference is 30%.",
+      "fa": "۱۳ / ۱۰ برابر ۱۳۰٪ مقدار مرجع است؛ افزایش نسبت به آن مرجع ۳۰٪ است."
+    },
+    "D": {
+      "de": "Etwa 23 % entsteht mit 13 mm im Nenner. Für den gefragten Seitenvergleich ist aber die unverletzte Seite mit 10 mm die Referenz.",
+      "en": "About 23% results from using 13 mm as denominator. For this comparison, the uninjured 10 mm side is the reference.",
+      "fa": "حدود ۲۳٪ از قرار دادن ۱۳ میلی‌متر در مخرج حاصل می‌شود؛ در این مقایسه، سمت سالم با ۱۰ میلی‌متر مرجع است."
+    }
+  }
+}
+const targetedWrongFeedback = id => { const lang=id.match(/-(de|en|fa)$/)?.[1]; const feedback=TARGETED_WRONG_FEEDBACK[id.replace(/-(de|en|fa)$/, '')]; return feedback ? Object.fromEntries(Object.entries(feedback).map(([key,value])=>[key,value[lang]])) : undefined }
 const LETTERS = ['A', 'B', 'C', 'D', 'E']
 const Q = (id, question, options, correct, explanation) => ({
   id,
@@ -321,6 +341,7 @@ const Q = (id, question, options, correct, explanation) => ({
   options: options.map((text, i) => ({ id: LETTERS[i], text })),
   correct: LETTERS[correct],
   explanation,
+  ...(targetedWrongFeedback(id) ? { wrongExplanations: targetedWrongFeedback(id) } : {}),
 })
 const F = (id, category, front, answer, explanation) => ({ id, category, front, answer, explanation })
 
@@ -397,17 +418,17 @@ export const AK_LUXATION_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(l
   ),
 
   Q(`ak-lux-ccd-1-${lang}`,
-    L('Wie ist die CCD-Angabe 11–13 mm aus der PDF einzuordnen?',
-      'How should the PDF value of 11–13 mm for CCD be interpreted?',
-      'مقدار ۱۱ تا ۱۳ میلی‌متر CCD در PDF را چگونه باید تفسیر کرد؟')[lang],
+    L("Nach Schultertrauma beträgt die CCD bei gleicher Aufnahmetechnik rechts 13 mm, links unverletzt 10 mm. Wie wird die relative Zunahme rechts korrekt angegeben?",
+      "After shoulder trauma, using the same radiographic technique, CCD measures 13 mm on the right and 10 mm on the uninjured left. How is the relative right-sided increase correctly reported?",
+      "پس از ترومای شانه، با تکنیک یکسان، CCD در راست ۱۳ میلی‌متر و در چپِ سالم ۱۰ میلی‌متر است. افزایش نسبی سمت راست چگونه درست گزارش می‌شود؟")[lang],
     [
-      L('1–5 mm', '1–5 mm', '۱–۵ میلی‌متر')[lang],
-      L('Als publizierter Orientierungsbereich, nicht als starre Einzelgrenze; individuelle Varianz, Technik und Seitenvergleich berücksichtigen.', 'As a published orienting range, not a rigid standalone cutoff; account for individual variation, technique, and side-to-side comparison.', 'به‌عنوان محدوده راهنمای منتشرشده، نه حد قطعیِ منفرد؛ تفاوت فردی، تکنیک و مقایسه دو طرف را در نظر بگیرید.')[lang],
-      L('20–25 mm', '20–25 mm', '۲۰–۲۵ میلی‌متر')[lang],
-      L('30–35 mm', '30–35 mm', '۳۰–۳۵ میلی‌متر')[lang],
+      L("Zunahme um 3 % gegenüber der unverletzten Seite.", "A 3% increase relative to the uninjured side.", "افزایش ۳٪ نسبت به سمت سالم.")[lang],
+      L("Zunahme um 30 % gegenüber der unverletzten Seite.", "A 30% increase relative to the uninjured side.", "افزایش ۳۰٪ نسبت به سمت سالم.")[lang],
+      L("Zunahme um 130 % gegenüber der unverletzten Seite.", "A 130% increase relative to the uninjured side.", "افزایش ۱۳۰٪ نسبت به سمت سالم.")[lang],
+      L("Zunahme um etwa 23 % gegenüber der unverletzten Seite.", "An approximately 23% increase relative to the uninjured side.", "افزایش حدود ۲۳٪ نسبت به سمت سالم.")[lang],
     ],
     1,
-    L('11–13 mm ist ein publizierter Orientierungsbereich mit individueller Varianz. CCD im Seitenvergleich und mit einheitlicher Technik messen. Typ V wird relativ zur Gegenseite meist durch eine Zunahme von etwa 100–300 % beschrieben; ein einzelner absoluter mm-Grenzwert genügt nicht.', '11–13 mm is a published orienting range with individual variation. Compare CCD side to side using consistent technique. Type V is usually described relative to the opposite side as an increase of about 100–300%; a single absolute mm cutoff is insufficient.', '۱۱ تا ۱۳ میلی‌متر محدوده‌ای راهنما در منابع منتشرشده است و تفاوت فردی دارد. CCD را با تکنیک یکسان در دو طرف مقایسه کنید. نوع V معمولاً با افزایش حدود ۱۰۰ تا ۳۰۰٪ نسبت به طرف مقابل توصیف می‌شود؛ یک حد مطلق برحسب میلی‌متر به‌تنهایی کافی نیست.')[lang]
+    L("Die Zunahme wird auf die unverletzte Seite bezogen: (13 − 10) / 10 × 100 = 30 %. Ein absoluter Wert von 13 mm reicht zur Klassifikation nicht; Verlagerungsrichtung und gesamte Morphologie mitbeurteilen.", "Reference the increase to the uninjured side: (13 − 10) / 10 × 100 = 30%. An absolute value of 13 mm is insufficient for classification; assess displacement direction and overall morphology.", "افزایش نسبت به سمت سالم محاسبه می‌شود: (۱۳ − ۱۰) / ۱۰ × ۱۰۰ = ۳۰٪. مقدار مطلق ۱۳ میلی‌متر برای طبقه‌بندی کافی نیست؛ جهت جابه‌جایی و مورفولوژی کلی نیز ارزیابی شوند.")[lang]
   ),
 
   Q(`ak-lux-therapie-1-${lang}`,

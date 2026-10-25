@@ -1,10 +1,13 @@
 'use client'
+
+import { assessmentReturnHref } from '@/lib/assessmentNavigation'
+import { canonicalAssessmentId } from '@/lib/assessmentIdentity'
 import { useState, useEffect, useMemo, useRef, Suspense } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useUser } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { shuffleQuestionIds, getQuestionsForIds } from '@/data/questions'
+import { shuffleQuestionIds, getQuestionsForIds, getQuestionSetRevision } from '@/data/questions'
 import { hasFullAccess, FREE_ITEM_LIMIT } from '@/utils/subscription'
 import { getCorrectAnswerExplanation, getWrongAnswerExplanation } from '@/utils/answerFeedback'
 import { persistProgressWrite } from '@/utils/progressSync'
@@ -192,9 +195,7 @@ function hashString(value) {
 }
 
 function canonicalQuestionId(questionId) {
-  return typeof questionId === 'string'
-    ? questionId.replace(/-(?:de|en|fa)-/, '-de-')
-    : questionId
+  return canonicalAssessmentId(questionId)
 }
 
 function seededShuffle(items, seedInput) {
@@ -250,7 +251,7 @@ function QuizContent() {
   const nParam      = parseInt(searchParams.get('n') || '10', 10)
   const fromParam   = searchParams.get('from') || ''
   const fragenParam = searchParams.get('fragen') || ''
-  const backHref    = fromParam || '/ueben'
+  const backHref    = assessmentReturnHref(fromParam, lang, '/ueben')
 
   const fachIds   = fachParam.split(',').filter(Boolean)
   const themenIds = themenParam.split(',').filter(Boolean)
@@ -267,6 +268,8 @@ function QuizContent() {
       effectiveN,
       timed ? 'timed' : 'untimed',
     ]
+    const revision = getQuestionSetRevision(themenIds, questionIds.map(canonicalQuestionId))
+    if (revision) parts.push(revision)
     return `radyar_mcq_session_v2:${parts.join('|')}`
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fachParam, themenParam, fragenParam, effectiveN, timed])

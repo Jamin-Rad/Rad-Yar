@@ -1,103 +1,5 @@
+import { QUESTION_CONTENT } from './mammaBasicsClinical'
 const L = (de, en, fa) => ({ de, en, fa })
-
-const QUESTION_CONTENT = [
-  {
-    id: 'sensitivity',
-    question: L('Was erklärt hauptsächlich die hohe Sensitivität der Mamma-MRT?', 'What mainly explains the high sensitivity of breast MRI?', 'علت اصلی حساسیت بالای MRI پستان چیست؟'),
-    options: [
-      L('Darstellung von Tumorvaskularisation und Kontrastmittelaufnahme', 'Visualisation of tumour vascularity and contrast enhancement', "نمایش عروق تومور و الگوی افزایش سیگنال پس از تزریق"),
-      L('Ausschließliche Darstellung von Verkalkungen', 'Exclusive depiction of calcifications', 'نمایش انحصاری کلسیفیکاسیون‌ها'),
-      L('Messung der Brustdichte ohne Kontrastmittel', 'Measurement of breast density without contrast', 'اندازه‌گیری دانسیته پستان بدون کنتراست'),
-      L('Beurteilung nur der Implantathülle', 'Assessment of the implant shell only', 'ارزیابی فقط پوشش ایمپلنت'),
-    ],
-    correct: 'A',
-    explanation: L('Die hohe Sensitivität beruht vor allem auf der Darstellung von Tumorvaskularisation und Kontrastmittelaufnahme; die Spezifität ist jedoch begrenzt.', 'Its high sensitivity is mainly based on depicting tumour vascularity and contrast enhancement, while specificity remains limited.', "حساسیت بالای MRI عمدتاً به نمایش عروق تومور و افزایش سیگنال پس از تزریق مربوط می‌شود؛ با این حال اختصاصیت آن محدود است."),
-  },
-  {
-    id: 'indication',
-    question: L('Welche Situation ist eine typische Indikation für die Mamma-MRT?', 'Which situation is a typical indication for breast MRI?', 'کدام مورد، یکی از کاربردهای اصلی MRI پستان است؟'),
-    options: [
-      L('Hochrisiko-Screening', 'High-risk screening', 'غربالگری پرخطر'),
-      L('Ersatz jeder Mammographie bei Durchschnittsrisiko', 'Replacement of every mammogram in average-risk women', 'جایگزینی تمام ماموگرافی‌ها در افراد با خطر متوسط'),
-      L('Vermeidung einer indizierten Biopsie', 'Avoidance of an indicated biopsy', 'اجتناب از انجام بیوپسیِ لازم'),
-      L('Routineuntersuchung ohne klinische Fragestellung', 'Routine examination without a clinical question', 'بررسی روتین بدون سؤال بالینی'),
-    ],
-    correct: 'A',
-    explanation: L('Die kontrastmittelgestützte MRT ist besonders wichtig beim Hochrisiko-Screening und wird gezielt ergänzend eingesetzt.', 'Contrast-enhanced MRI is particularly important for high-risk screening and is used as a targeted adjunct.', 'MRI با تزریق ماده حاجب، به‌ویژه در غربالگری افراد پرخطر اهمیت دارد و به‌صورت هدفمند در کنار ماموگرافی و سونوگرافی استفاده می‌شود.'),
-  },
-  {
-    id: 'adc',
-    question: L('Wie ist ein niedriger ADC in einer Brustläsion zu interpretieren?', 'How should a low ADC in a breast lesion be interpreted?', 'ADC پایین در یک ضایعه پستان چگونه تفسیر می‌شود؟'),
-    options: [
-      L('Als zusätzlicher Hinweis, nicht als alleiniger Krebsnachweis', 'As an additional clue, not proof of cancer by itself', 'به‌عنوان نشانه تکمیلی، نه اثبات مستقل سرطان'),
-      L('Als beweisend für Malignität, wenn gleichzeitig ein hohes DWI-Signal vorliegt', 'As proof of malignancy when high DWI signal is also present', 'اگر هم‌زمان سیگنال DWI بالا باشد، به‌عنوان اثبات بدخیمی'),
-      L('Als verlässlich benigne, wenn die Läsion zusätzlich T2-hyperintens ist', 'As reliably benign when the lesion is also T2 hyperintense', 'اگر ضایعه هم‌زمان در T2 پرسیگنال باشد، به‌عنوان یافتهٔ مطمئناً خوش‌خیم'),
-      L('Als nicht verwertbar, sofern keine Wash-out-Kinetik vorliegt', 'As non-interpretable unless wash-out kinetics are present', 'در صورت نبود کینتیک شست‌وشوی سریع، به‌عنوان یافتهٔ غیرقابل تفسیر'),
-    ],
-    correct: 'A',
-    explanation: L('DWI und ADC sind zusätzliche Bausteine. Auch benigne Läsionen können niedrige ADC-Werte zeigen.', 'DWI and ADC are adjuncts. Benign lesions can also show low ADC values.', 'DWI و ADC ابزارهای تکمیلی‌اند و ضایعات خوش‌خیم نیز می‌توانند ADC پایین داشته باشند.'),
-  },
-  {
-    id: 'fgt-bpe',
-    question: L('Welche Zuordnung von FGT und BPE ist korrekt?', 'Which pairing of FGT and BPE is correct?', 'کدام تطبیق FGT و BPE درست است؟'),
-    options: [
-      L('FGT = Gewebemenge; BPE = Anreicherung des normalen Gewebes', 'FGT = amount of tissue; BPE = enhancement of normal tissue', 'FGT = مقدار بافت فیبروگلاندولار؛ BPE = میزان افزایش سیگنال پس از تزریق بافت طبیعی'),
-      L('FGT = Anreicherung des normalen Gewebes; BPE = Gewebemenge', 'FGT = enhancement of normal tissue; BPE = amount of tissue', 'FGT = میزان افزایش سیگنال پس از تزریق بافت طبیعی؛ BPE = مقدار بافت'),
-      L('FGT = mammographische Brustdichte; BPE = T2-Signal des Parenchyms', 'FGT = mammographic breast density; BPE = T2 signal of the parenchyma', 'FGT = دانسیتهٔ ماموگرافیک پستان؛ BPE = سیگنال T2 پارانشیم'),
-      L('FGT und BPE werden ausschließlich für die Charakterisierung suspekter Läsionen bestimmt', 'FGT and BPE are assessed exclusively to characterise suspicious lesions', 'FGT و BPE فقط برای توصیف ضایعات مشکوک تعیین می‌شوند'),
-    ],
-    correct: 'A',
-    explanation: L('FGT beschreibt die Menge fibroglandulären Gewebes. BPE beschreibt dessen normale Kontrastmittelanreicherung.', 'FGT describes the amount of fibroglandular tissue; BPE describes its normal contrast enhancement.', 'FGT مقدار بافت فیبروگلاندولار را بیان می‌کند؛ BPE میزان تقویت این بافت طبیعی پس از تزریق را نشان می‌دهد.'),
-  },
-  {
-    id: 'focus',
-    question: L('Wie war ein Focus im BI-RADS-MRT-Lexikon von 2013 definiert?', 'How was a focus defined in the 2013 BI-RADS MRI lexicon?', 'کانون در واژه‌نامهٔ MRI نسخهٔ ۲۰۱۳ BI-RADS چگونه تعریف می‌شد؟'),
-    options: [
-      L('Enhancement < 5 mm, zu klein für sichere Morphologie', 'Enhancement < 5 mm, too small for reliable morphology', 'یک نقطه افزایش سیگنال پس از تزریق کوچک‌تر از ۵ میلی‌متر که مورفولوژی آن قابل ارزیابی دقیق نیست'),
-      L('Jede Läsion über 5 cm', 'Any lesion larger than 5 cm', 'هر ضایعه بزرگ‌تر از ۵ سانتی‌متر'),
-      L('Diffuse Hautverdickung', 'Diffuse skin thickening', 'ضخیم‌شدگی منتشر پوست'),
-      L('Jede Läsion mit niedrigem ADC', 'Any lesion with a low ADC', 'هر ضایعه با ADC پایین'),
-    ],
-    correct: 'A',
-    explanation: L('Historisch bezeichnete Focus ein Enhancement unter 5 mm, zu klein für eine verlässliche Morphologie. In BI-RADS v2025 entfällt Focus als eigenständige Befundkategorie; der Begriff in alten Berichten bedeutet keine Benignität.', 'Historically, focus described enhancement under 5 mm, too small for reliable morphological characterisation. BI-RADS v2025 removes focus as a separate finding category; its use in old reports does not imply benignity.', 'در نسخهٔ قدیمی، کانون به تقویت زیر ۵ میلی‌متر گفته می‌شد که برای توصیف مطمئن مورفولوژیک بیش از حد کوچک بود. در BI-RADS v2025 کانون دیگر دستهٔ مستقل یافته نیست؛ این واژه در گزارش قدیمی به معنی خوش‌خیمی نیست.'),
-  },
-  {
-    id: 'nme',
-    question: L('Was kennzeichnet ein Non-Mass Enhancement?', 'What characterises non-mass enhancement?', 'کدام تعریف برای افزایش سیگنال غیرتوده‌ای (NME) درست است؟'),
-    options: [
-      L('Enhancement ohne dreidimensionale Raumforderung, abgrenzbar vom BPE', 'Enhancement without a three-dimensional mass, distinguishable from BPE', 'افزایش سیگنال پس از تزریق قابل تفکیک از BPE که یک توده سه‌بعدی تشکیل نمی‌دهد'),
-      L('Eine sicher zystische Raumforderung', 'A definitely cystic mass', 'یک توده قطعاً کیستیک'),
-      L('Ein Punkt unter 5 mm', 'A dot smaller than 5 mm', 'یک نقطه کمتر از ۵ میلی‌متر'),
-      L('Normales symmetrisches BPE', 'Normal symmetric BPE', 'BPE طبیعی و متقارن'),
-    ],
-    correct: 'A',
-    explanation: L('NME ist ein vom BPE unterscheidbarer Anreicherungsbereich ohne dreidimensionale Mass.', 'NME is an area of enhancement distinct from BPE that does not form a three-dimensional mass.', 'NME ناحیه‌ای از تقویت پس از تزریق متمایز از BPE است که تودهٔ سه‌بعدی تشکیل نمی‌دهد.'),
-  },
-  {
-    id: 'biopsy',
-    question: L('Welche Aussage zum Problem Solving ist richtig?', 'Which statement about problem solving is correct?', 'کدام عبارت درباره Problem Solving صحیح است؟'),
-    options: [
-      L('Eine indizierte Biopsie darf durch MRT nicht umgangen werden.', 'MRI must not be used to avoid an indicated biopsy.', 'نباید از MRI برای جلوگیری از انجام بیوپسیِ لازم استفاده کرد.'),
-      L('MRT ersetzt immer die Histologie.', 'MRI always replaces histology.', 'MRI همیشه جایگزین نمونه‌برداری و بررسی بافت‌شناسی است.'),
-      L('Jeder suspekte Befund wird nur kontrolliert.', 'Every suspicious finding is followed only.', 'هر یافته مشکوک فقط پیگیری می‌شود.'),
-      L('Sonographie ist vor MRT nie erforderlich.', 'Ultrasound is never required before MRI.', 'سونوگرافی پیش از MRI هرگز لازم نیست.'),
-    ],
-    correct: 'A',
-    explanation: L('Ein klar suspekter und bioptisch zugänglicher Befund sollte in der Regel histologisch abgeklärt werden.', 'A clearly suspicious and biopsy-accessible finding should generally undergo histological assessment.', 'یافته واضحاً مشکوک و قابل بیوپسی معمولاً باید از نظر بافت‌شناسی بررسی شود.'),
-  },
-  {
-    id: 'workflow',
-    question: L('Was ist der erste Schritt bei einem auffälligen Enhancement?', 'What is the first step when an abnormal enhancement is found?', 'اولین گام در برخورد با یک ناحیه دارای افزایش سیگنال پس از تزریق غیرطبیعی چیست؟'),
-    options: [
-      L('Zuerst von BPE abgrenzen und als Mass oder NME beschreiben', 'First distinguish it from BPE and describe it as a mass or NME', 'ابتدا آن را از BPE جدا کرده و به‌صورت توده یا NME توصیف کنید'),
-      L('Zuerst anhand von DWI und ADC zwischen benigne und maligne entscheiden', 'First decide between benign and malignant using DWI and ADC', 'ابتدا فقط بر اساس DWI و ADC دربارهٔ خوش‌خیم یا بدخیم بودن تصمیم بگیرید'),
-      L('Zuerst die Kinetikkurve auswerten und die morphologische Kategorie nur bei Wash-out festlegen', 'First assess the kinetic curve and assign a morphological category only if wash-out is present', 'ابتدا منحنی کینتیک را ارزیابی کنید و فقط در صورت وجود شست‌وشوی سریع دستهٔ مورفولوژیک را تعیین کنید'),
-      L('Jedes Enhancement isoliert beurteilen, ohne es mit dem umgebenden BPE zu vergleichen', 'Assess each enhancement in isolation without comparing it with the surrounding BPE', 'هر افزایش سیگنال پس از تزریق را بدون مقایسه با BPE اطراف، به‌صورت جداگانه ارزیابی کنید'),
-    ],
-    correct: 'A',
-    explanation: L('Zunächst normales BPE von einem echten Befund unterscheiden und den Läsionstyp beschreiben. Focus ist seit BI-RADS v2025 keine eigenständige Befundkategorie mehr.', 'First distinguish normal BPE from a true finding and describe the lesion type. Focus is no longer a separate finding category in BI-RADS v2025.', 'ابتدا BPE طبیعی را از یافتهٔ واقعی جدا و نوع ضایعه را توصیف می‌کنیم. در BI-RADS v2025 کانون دیگر دستهٔ مستقل یافته نیست.'),
-  },
-]
 
 export const MAMMA_MRT_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [lang, QUESTION_CONTENT.map(item => ({
   id: `mamma-mrt-basics-${lang}-${item.id}`,
@@ -107,16 +9,18 @@ export const MAMMA_MRT_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lan
   options: item.options.map((text, index) => ({ id: String.fromCharCode(65 + index), text: text[lang] })),
   correct: item.correct,
   explanation: item.explanation[lang],
+  wrongExplanations: Object.fromEntries(Object.entries(item.wrongExplanations).map(([id,text]) => [id,text[lang]])),
+  source: item.source,
 }))]))
 
 const FLASHCARD_CONTENT = [
   ['Protokoll', 'Welche Funktionen hat die T1-Sequenz vor Kontrastmittel in einem Mamma-MRT-Protokoll?', 'Sie dient als Ausgangsbasis und ermöglicht die spätere Subtraktion.', 'Zusätzlich hilft sie, Fett, Blutprodukte und vorbestehend hohes T1-Signal zu erkennen.', 'Protocol', 'What are the functions of the pre-contrast T1 sequence in a breast MRI protocol?', 'It provides the baseline and enables subsequent subtraction.', 'It also helps identify fat, blood products and pre-existing high T1 signal.', 'پروتکل', 'سکانس T1 پیش از تزریق در پروتکل MRI پستان چه کاربردهایی دارد؟', 'تصویر پایه را فراهم می‌کند و تفریق تصاویر بعدی را امکان‌پذیر می‌سازد.', 'همچنین در تشخیص چربی، محصولات خونی و سیگنال بالای T1 که پیش از تزریق وجود داشته کمک‌کننده است.'],
   ['Subtraktion', 'Welchen diagnostischen Zweck erfüllt die Subtraktion in der kontrastmittelgestützten Mamma-MRT?', 'Sie macht echtes Kontrastmittel-Enhancement deutlich besser sichtbar.', 'Dazu wird das Präkontrastbild vereinfacht vom Postkontrastbild abgezogen.', 'Subtraction', 'What diagnostic purpose does subtraction serve in contrast-enhanced breast MRI?', 'It makes true contrast enhancement much more conspicuous.', 'The pre-contrast image is subtracted from the post-contrast image.', 'تفریق تصاویر', 'تفریق تصاویر در MRI پستان با تزریق چه هدف تشخیصی دارد؟', 'تقویت واقعی پس از تزریق را بسیار واضح‌تر می‌کند.', 'برای این کار تصویر پیش از تزریق از تصویر پس از تزریق کم می‌شود.'],
   ['MIP', 'Wofür wird die MIP bei der systematischen Auswertung einer Mamma-MRT eingesetzt?', 'Für einen schnellen Überblick über beide Brüste und zum Suchen auffälliger Enhancements.', 'Die endgültige Beurteilung muss in den Quellbildern erfolgen.', 'MIP', 'How is the MIP used during systematic breast MRI interpretation?', 'For a rapid bilateral overview and to search for suspicious enhancement.', 'Final assessment must be performed on the source images.', 'MIP', 'MIP در ارزیابی سیستماتیک MRI پستان چه کاربردی دارد؟', 'برای مرور سریع هر دو پستان و جست‌وجوی نواحی مشکوک دارای تقویت پس از تزریق.', 'ارزیابی نهایی باید در تصاویر اصلی انجام شود.'],
-  ['Diffusion', 'Bedeutet ein niedriger ADC bei einer Läsion in der Mamma-MRT automatisch Mammakarzinom?', 'Nein.', 'DWI und ADC sind zusätzliche Bausteine und müssen mit Morphologie, T2-Signal und Kinetik korreliert werden.', 'Diffusion', 'Does a low ADC in a breast MRI lesion automatically indicate breast cancer?', 'No.', 'DWI and ADC are adjuncts and must be correlated with morphology, T2 signal and kinetics.', 'انتشار', 'آیا ADC پایین در یک ضایعه در MRI پستان خودبه‌خود به معنی سرطان پستان است؟', 'خیر.', 'DWI و ADC یافته‌های تکمیلی‌اند و باید با مورفولوژی، سیگنال T2 و کینتیک تطبیق داده شوند.'],
+  ['Diffusion', 'Wie wird ein niedriger ADC einer Brustläsion klinisch eingeordnet?', 'Als ergänzender Befund zusammen mit Morphologie und übrigen Sequenzen.', 'DWI und ADC sind zusätzliche Bausteine und müssen mit Morphologie, T2-Signal und Kinetik korreliert werden.', 'Diffusion', 'How is a low ADC in a breast lesion interpreted clinically?', 'As an adjunct interpreted with morphology and the other sequences.', 'DWI and ADC are adjuncts and must be correlated with morphology, T2 signal and kinetics.', 'انتشار', 'ADC پایین ضایعهٔ پستان از نظر بالینی چگونه تفسیر می‌شود؟', 'به‌عنوان یافتهٔ مکمل همراه با مورفولوژی و سکانس‌های دیگر.', 'DWI و ADC یافته‌های تکمیلی‌اند و باید با مورفولوژی، سیگنال T2 و کینتیک تطبیق داده شوند.'],
   ['FGT', 'Was beschreibt FGT bei der Befundung einer Mamma-MRT?', 'Die Menge des fibroglandulären Brustgewebes.', 'FGT ist unabhängig davon, wie stark dieses Gewebe nach Kontrastmittelgabe anreichert.', 'FGT', 'What does FGT describe in breast MRI reporting?', 'The amount of fibroglandular breast tissue.', 'FGT is independent of how strongly that tissue enhances after contrast.', 'FGT', 'FGT در گزارش MRI پستان چه چیزی را توصیف می‌کند؟', 'مقدار بافت فیبروگلاندولار پستان.', 'FGT مستقل از میزان تقویت این بافت پس از تزریق است.'],
   ['BPE', 'Was beschreibt BPE bei der Befundung einer kontrastmittelgestützten Mamma-MRT?', 'Die Kontrastmittelanreicherung des normalen fibroglandulären Gewebes.', 'Die BI-RADS-Kategorien sind minimal, mild, moderate und marked.', 'BPE', 'What does BPE describe in contrast-enhanced breast MRI reporting?', 'Contrast enhancement of normal fibroglandular tissue.', 'The BI-RADS categories are minimal, mild, moderate and marked.', 'BPE', 'BPE در گزارش MRI پستان با تزریق چه چیزی را توصیف می‌کند؟', 'میزان تقویت بافت طبیعی فیبروگلاندولار پس از تزریق.', 'دسته‌های BI-RADS شامل حداقل، خفیف، متوسط و شدید هستند.'],
-  ['Focus', 'Wie war ein Focus im BI-RADS-MRT-Lexikon von 2013 definiert?', 'Ein punktförmiges Enhancement kleiner als 5 mm.', 'Historische Definition; in BI-RADS v2025 entfällt Focus als eigenständige Befundkategorie.', 'Focus', 'How was a focus defined in the 2013 BI-RADS MRI lexicon?', 'A punctate enhancement smaller than 5 mm.', 'Historical definition; BI-RADS v2025 removes focus as a separate finding category.', 'کانون', 'کانون در واژه‌نامهٔ MRI نسخهٔ ۲۰۱۳ BI-RADS چگونه تعریف می‌شد؟', 'یک افزایش سیگنال پس از تزریق نقطه‌ای کوچک‌تر از ۵ میلی‌متر.', 'این تعریف تاریخی است؛ در BI-RADS v2025 کانون دیگر دستهٔ مستقل یافته نیست.'],
+  ['Focus', 'Was bezeichnete ein Focus im historischen BI-RADS-MRT-Lexikon?', 'Ein punktförmiges Enhancement kleiner als 5 mm.', 'Historische Definition; in BI-RADS v2025 entfällt Focus als eigenständige Befundkategorie.', 'Focus', 'What did a focus describe in the historical BI-RADS MRI lexicon?', 'A punctate enhancement smaller than 5 mm.', 'Historical definition; BI-RADS v2025 removes focus as a separate finding category.', 'کانون', 'کانون در واژه‌نامهٔ تاریخی MRI در BI-RADS چه معنایی داشت؟', 'یک افزایش سیگنال پس از تزریق نقطه‌ای کوچک‌تر از ۵ میلی‌متر.', 'این تعریف تاریخی است؛ در BI-RADS v2025 کانون دیگر دستهٔ مستقل یافته نیست.'],
   ['Mass', 'Wie ist eine Mass in der Mamma-MRT definiert und welche Merkmale werden beurteilt?', 'Eine Mass ist eine echte dreidimensionale Läsion.', 'Beurteilt werden Form, Rand, internes Enhancement und nach BI-RADS v2025 auch die T2-Signalintensität.', 'Mass', 'How is a mass defined in breast MRI and which features are assessed?', 'A mass is a true three-dimensional lesion.', 'Shape, margin and internal enhancement are assessed, together with T2 signal intensity in BI-RADS v2025.', 'توده', 'توده در MRI پستان چگونه تعریف می‌شود و چه ویژگی‌هایی ارزیابی می‌شوند؟', 'توده یک ضایعهٔ واقعی و سه‌بعدی است.', 'شکل، حاشیه و الگوی تقویت داخلی پس از تزریق و در BI-RADS v2025 شدت سیگنال T2 نیز ارزیابی می‌شوند.'],
   ['NME', 'Wie ist ein Non-Mass Enhancement in der Mamma-MRT definiert?', 'Ein vom normalen BPE abgrenzbares Enhancement ohne dreidimensionale Mass.', 'Es bildet keine dreidimensionale Mass und hebt sich vom BPE ab.', 'NME', 'How is non-mass enhancement defined in breast MRI?', 'Enhancement distinguishable from normal BPE without a three-dimensional mass.', 'It does not form a three-dimensional mass and is distinct from BPE.', 'NME', 'افزایش سیگنال غیرتوده‌ای (NME) در MRI پستان چگونه تعریف می‌شود؟', 'افزایش سیگنال پس از تزریق قابل تفکیک از BPE طبیعی که توده سه‌بعدی تشکیل نمی‌دهد.', 'این یافته تودهٔ سه‌بعدی تشکیل نمی‌دهد و از BPE متمایز است.'],
 ]
@@ -128,6 +32,7 @@ export const MAMMA_MRT_FLASHCARDS = FLASHCARD_CONTENT.map((item, index) => ({
   front: L(item[1], item[5], item[9]),
   answer: L(item[2], item[6], item[10]),
   explanation: L(item[3], item[7], item[11]),
+  ...(index === 6 ? { source: 'https://cs.acr.org/-/media/ACR/NOINDEX/Research/ACRIN/Legacy-Trials/ACRIN-6667_Protocol.pdf', references: ['https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-MRI.pdf'] } : {}),
 }))
 
 export const MAMMA_MRT_FLASHCARD_TOPIC = {
@@ -135,3 +40,30 @@ export const MAMMA_MRT_FLASHCARD_TOPIC = {
   title: L('Mamma-MRT: Basics', 'Breast MRI: Basics', 'MRI پستان: مبانی'),
   subtitle: L('Indikationen · Sequenzen · FGT/BPE · Enhancement-Typen', 'Indications · sequences · FGT/BPE · enhancement types', 'موارد کاربرد · MRI سکانس‌ها · FGT/BPE · انواع افزایش سیگنال پس از تزریق'),
 }
+
+MAMMA_MRT_FLASHCARDS.push(
+  {
+    id:'mamma-mrt-basics-risk-context', topicId:'mamma-mrt-basics', category:L('Indikation','Indication','اندیکاسیون'),
+    front:L('Warum ist Symptomfreiheit bei genetischem Hochrisiko kein Grund, die MRT-Vorsorge zurückzustellen?','Why is absence of symptoms not a reason to defer MRI surveillance in genetic high risk?','چرا بی‌علامت بودن در خطر ژنتیکی بالا دلیل تعویق پایش MRI نیست؟'),
+    answer:L('Screening untersucht asymptomatische Personen mit definiertem Risiko. Genetisches Hochrisiko kann regelmäßige MRT-Überwachung begründen.','Screening addresses asymptomatic people at defined risk. Genetic high risk can support regular MRI surveillance.','غربالگری برای افراد بدون علامت با خطر مشخص است. خطر ژنتیکی بالا می‌تواند پایش منظم MRI را توجیه کند.'),
+    explanation:L('Nach ACR beginnt diese Überwachung typischerweise mit 25–30 Jahren; zusätzliche Mammographie hängt von Risikotyp und Alter ab.','Under ACR guidance this surveillance typically begins at 25–30 years; additional mammography depends on risk type and age.','طبق ACR این پایش معمولاً از ۲۵ تا ۳۰سالگی آغاز می‌شود؛ ماموگرافی همراه به نوع خطر و سن بستگی دارد.'),source:'https://pubmed.ncbi.nlm.nih.gov/37150275/',
+  },
+  {
+    id:'mamma-mrt-basics-biopsy-limit', topicId:'mamma-mrt-basics', category:L('Abklärung','Workup','بررسی تشخیصی'),
+    front:L('Was ändert eine negative MRT an der Biopsieindikation gut zugänglicher suspekter mammographischer Verkalkungen?','How does negative MRI affect biopsy of accessible suspicious mammographic calcifications?','MRI منفی چه اثری بر اندیکاسیون بیوپسی کلسیفیکاسیون مشکوک و قابل دسترس در ماموگرافی دارد؟'),
+    answer:L('Sie hebt die begründete Biopsieindikation nicht auf.','It does not cancel the established biopsy indication.','اندیکاسیون بیوپسیِ دارای مبنا را برطرف نمی‌کند.'),
+    explanation:L('Die Bildführung richtet sich nach der zuverlässigen Sichtbarkeit des Zielbefunds; fehlendes Enhancement ersetzt keine Gewebeabklärung.','Guidance follows reliable visibility of the target; absent enhancement does not replace tissue assessment.','هدایت بر اساس رؤیت قابل اعتماد هدف است؛ نبود تقویت جای بررسی بافتی را نمی‌گیرد.'),source:'https://www.acr.org/-/media/ACR/Files/Practice-Parameters/MR-Contrast-Breast.pdf',
+  },
+  {
+    id:'mamma-mrt-basics-adc-roi', topicId:'mamma-mrt-basics', category:L('ADC-Messung','ADC measurement','اندازه‌گیری ADC'),
+    front:L('Wo liegt eine gezielte kleine ADC-ROI in einer heterogenen anreichernden Brustläsion?','Where is a targeted small ADC ROI placed in a heterogeneous enhancing breast lesion?','ROI کوچک هدفمند ADC در ضایعهٔ ناهمگن پستان با تقویت کجا قرار می‌گیرد؟'),
+    answer:L('Im geeigneten dunkelsten ADC-Bereich des anreichernden soliden Anteils, korreliert mit DWI.','In the appropriate darkest ADC region of the enhancing solid component, correlated with DWI.','در تیره‌ترین ناحیهٔ مناسب ADC در بخش جامد دارای تقویت، با تطبیق DWI.'),
+    explanation:L('Nekrose, nicht anreichernde oder verrauschte Voxel und Artefakte vermeiden; ROI vollständig in der Läsion. ADC mit übriger Bildgebung interpretieren.','Avoid necrosis, non-enhancing or noisy voxels and artifact; keep the ROI entirely within the lesion. Interpret ADC with the other imaging.','از نکروز، وکسل‌های بدون تقویت یا پرنویز و آرتیفکت اجتناب کنید؛ ROI کاملاً داخل ضایعه باشد. ADC همراه سایر تصاویر تفسیر شود.'),source:'https://pmc.ncbi.nlm.nih.gov/articles/PMC7033067/',
+  },
+  {
+    id:'mamma-mrt-basics-subtraction-motion', topicId:'mamma-mrt-basics', category:L('Subtraktion','Subtraction','تفریق'),
+    front:L('Warum müssen benachbarte helle und dunkle Subtraktionskanten nach Bewegung in den Quellbildern geprüft werden?','Why should adjacent bright and dark subtraction edges after motion be checked on source images?','چرا لبه‌های روشن و تیرهٔ مجاور در تفریق پس از حرکت باید در تصاویر اصلی بررسی شوند؟'),
+    answer:L('Sie können durch Fehlregistrierung statt durch echtes Enhancement entstehen.','They may result from misregistration rather than true enhancement.','ممکن است ناشی از ناهم‌ترازی باشند، نه تقویت واقعی.'),
+    explanation:L('Prä-/Postkontrastbilder und Ausrichtung vergleichen, bevor eine Läsionskinetik aus dem Rand gemessen wird.','Compare pre/post-contrast images and alignment before measuring lesion kinetics from the edge.','پیش از اندازه‌گیری کینتیک ضایعه از لبه، تصاویر پیش/پس از تزریق و هم‌ترازی مقایسه شوند.'),source:'https://www.acr.org/-/media/ACR/Files/Practice-Parameters/MR-Contrast-Breast.pdf',
+  },
+)

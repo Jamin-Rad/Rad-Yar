@@ -1,0 +1,45 @@
+{
+  "title": {
+    "de": "Selbstcheck: Instrumente im Einsatz",
+    "en": "Self-check: devices in use",
+    "fa": "خودآزمایی: نقش ابزار در عمل"
+  },
+  "prompt": {
+    "de": "Ein Ballonkatheter soll über eine Gefäßstenose geführt werden. Welche Aufgabe übernimmt dabei der Führungsdraht?",
+    "en": "A balloon catheter must cross a vascular stenosis. What role does the guidewire serve?",
+    "fa": "کاتتر بالون باید از تنگی عروقی عبور کند. وایر راهنما چه نقشی دارد؟"
+  },
+  "options": [
+    {
+      "de": "Er verbleibt als dauerhaftes Gefäßgerüst.",
+      "en": "It remains as a permanent vessel scaffold.",
+      "fa": "به‌عنوان داربست دائمی رگ باقی می‌ماند."
+    },
+    {
+      "de": "Er schafft eine Führung für Katheter und Ballon über die Läsion.",
+      "en": "It provides a track for the catheter and balloon across the lesion.",
+      "fa": "مسیر هدایت کاتتر و بالون از ضایعه را فراهم می‌کند."
+    },
+    {
+      "de": "Er ersetzt die Zugangsschleuse als äußeren Zugangskanal.",
+      "en": "It replaces the sheath as the outer access conduit.",
+      "fa": "به‌جای شیت، کانال خارجی دسترسی را ایجاد می‌کند."
+    },
+    {
+      "de": "Er erzeugt durch Aufblasen die Dilatation.",
+      "en": "It produces dilation by inflation.",
+      "fa": "با بادشدن اتساع ایجاد می‌کند."
+    }
+  ],
+  "answer": 1,
+  "feedback": {
+    "de": "Der Draht führt die nachfolgenden Instrumente. Schleuse, Ballon und Stent haben andere Funktionen; Drahtlage und Materialkompatibilität müssen unter Bildführung kontrolliert werden.",
+    "en": "The wire guides subsequent devices. The sheath, balloon and stent have different functions; wire position and device compatibility require image-guided assessment.",
+    "fa": "وایر ابزارهای بعدی را هدایت می‌کند. شیت، بالون و استنت کارکرد دیگری دارند؛ موقعیت وایر و سازگاری ابزار باید تحت هدایت تصویر ارزیابی شوند."
+  },
+  "retry": {
+    "de": "Unterscheiden Sie Führung, Zugang, Dilatation und dauerhafte Abstützung.",
+    "en": "Distinguish guidance, access, dilation and permanent support.",
+    "fa": "هدایت، دسترسی، اتساع و حمایت دائمی را از هم جدا کنید."
+  }
+}

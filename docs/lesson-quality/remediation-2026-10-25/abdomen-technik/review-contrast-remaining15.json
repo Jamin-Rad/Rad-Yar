@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/remove_lesson_notice",
+  "role": "Independent read-only review; not author of contrast revisions",
+  "status": "PASS_BOUNDED_AFTER_INDEPENDENT_RETEST",
+  "scope": {
+    "questionPairs": 15,
+    "localizedQuestions": 45,
+    "cards": 15,
+    "locales": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "read": "All 45 complete current stems, options, explanations and wrong feedback read comparatively. All 45 localized card answers read. Canonical card fronts equal reviewed question stems, answers equal keyed options, explanations equal reviewed question explanations, verified at runtime. Categories and generic diagrams inspected separately.",
+    "runtime": "Fresh esbuild bundle of data/contrastMedia.js: all 45 current manifest question field sets match actual producer; all 15 cards match actual producer; every localized front/answer/explanation maps to its reviewed question and key. Initial comparison included manifest-only lang; corrected fieldwise comparison has zero differences.",
+    "limits": "No full contrast lesson prose review, browser acceptance, patient-specific prescribing validation or general release approval. Earlier 14 pairs accepted separately in review-packet01.json. Basic recognition items are not claimed as advanced clinical reasoning."
+  },
+  "items": [
+    "km-ultraschall-de-1",
+    "km-ultraschall-de-2",
+    "km-ultraschall-de-3",
+    "km-jod-typen-de-3",
+    "km-jod-reaktionen-de-3",
+    "km-jod-reaktionen-de-4",
+    "km-gadolinium-de-3",
+    "km-buscopan-de-1",
+    "km-buscopan-de-2",
+    "km-niereninsuffizienz-de-1",
+    "km-niereninsuffizienz-de-2",
+    "km-niereninsuffizienz-de-3",
+    "km-schilddruese-de-3",
+    "km-schwangerschaft-stillzeit-de-2",
+    "km-schwangerschaft-stillzeit-de-3"
+  ],
+  "findings": [
+    {
+      "id": "ATV15-EDU-001",
+      "severity": "major",
+      "file": "data/assessmentQuality/contrastRevisions.js",
+      "keys": [
+        "km-jod-typen:2"
+      ],
+      "observed": "Concentration-change stem supplies no concentration/flow relationship to interpret; prudent multifactor answer competes with explicitly retaining old parameters or ignoring concentration/access. Caution cues identify the answer without understanding iodine delivery.",
+      "requiredCorrection": "Replace with a self-contained hypothetical concentration/flow relationship task with homogeneous plausible numerical or mechanistic alternatives, specific wrong feedback and equivalent DE/EN/FA card. Explicitly distinguish the calculation from a universal patient injection prescription.",
+      "status": "CLOSED_AFTER_INDEPENDENT_RETEST",
+      "retestEvidence": "Read six revised question/card locale units including all distractor feedback. Correct arithmetic 300×3=900 mgI/s, 900/400=2.25 mL/s; homogeneous numerical options, language/units/key preserved, hypothetical-only boundary explicit."
+    },
+    {
+      "id": "ATV15-SRC-002",
+      "severity": "minor",
+      "file": "data/assessmentQuality/contrastRevisions.js",
+      "keys": [
+        "km-schwangerschaft-stillzeit:2"
+      ],
+      "observed": "Neonatal explanation frames ESUR first-week testing versus ACR routine screening as a difference without ESUR current qualification that thyroid testing is universal/routine in European countries.",
+      "requiredCorrection": "State that timely routine first-week screening can fulfil ESUR too and that no automatic duplicate test is implied. Preserve the accurate first-week ESUR and routine-screening ACR attribution in DE/EN/FA.",
+      "source": "https://www.esur.org/wp-content/uploads/2026/10/Guidelines-2026.pdf",
+      "sourceLocation": "PDF page 26 (zero-based 25), pregnancy / iodine-based agents",
+      "status": "CLOSED_AFTER_INDEPENDENT_RETEST",
+      "retestEvidence": "Read revised DE/EN/FA keyed option, complete explanation, D feedback and matching lesson callout/Take Home. Timely routine screening may fulfil first-week recommendation, no automatic duplicate sampling. Matches actual ESUR2026 paragraph."
+    },
+    {
+      "id": "ATV15-VIS-003",
+      "severity": "minor",
+      "file": "data/contrastMedia.js",
+      "keys": [
+        "all29 generic card diagrams"
+      ],
+      "observed": "Diagram properties repeat topic/group metadata, sometimes identical words on both sides of an arrow, rather than an educational relationship.",
+      "requiredCorrection": "Remove generic diagram properties without deleting clinical card fields, sources or IDs; no fabricated replacement diagram.",
+      "status": "CLOSED_AFTER_INDEPENDENT_RETEST",
+      "retestEvidence": "Current canonical producer has zero diagram properties across all29 cards. Clinical fields and IDs retained; unaffected13 pairs exactly unchanged."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Contrast-Manual",
+      "actualDocument": "Official current 2026 PDF linked by ACR landing page",
+      "read": "NSF classification and elective HD scheduling; individual renal risk assessment; metformin/AKI and route qualifiers; thyroid history versus storm; pregnancy and neonatal screening. Current groups must not be inferred from linear/macrocyclic structure alone."
+    },
+    {
+      "url": "https://www.esur.org/wp-content/uploads/2026/10/Guidelines-2026.pdf",
+      "read": "Current agent risk groups, macrocyclic versus linear dialysis guidance, pregnancy, first-week neonatal screening context, metformin and manifest hyperthyroidism. Group terminology differs from ACR."
+    },
+    {
+      "url": "https://pubs.rsna.org/doi/full/10.1148/radiol.240100",
+      "read": "2025 ACR/AAAAI recommendations 6–9: severe immediate prior reaction, alternatives first, unavoidable same-class use requires qualified precautions. No elimination-of-risk claim."
+    },
+    {
+      "url": "https://www.medicines.org.uk/emc/product/890/smpc",
+      "read": "Injection contraindications explicitly narrow-angle glaucoma and prostate hypertrophy with urinary retention."
+    },
+    {
+      "url": "https://www.ema.europa.eu/en/documents/product-information/sonovue-epar-product-information_en.pdf",
+      "read": "Indications distinguish route and age; pharmacodynamics describe blood echogenicity enhancement. Broader CEUS physics additionally checked against AIUM."
+    },
+    {
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/jum.16360",
+      "read": "Low-MI real-time contrast-specific nonlinear detection, tissue suppression, high-MI destruction/replenishment distinction and agent/application constraints."
+    }
+  ],
+  "clinicalResult": "No other confirmed key error, polarity inversion or meaning-changing DE/EN/FA disagreement identified within the 15 pairs. This is bounded item review, not whole-site scientific approval.",
+  "retest": {
+    "unchangedLocalizedQuestions": 39,
+    "pairedLocalizedCards": 45,
+    "canonicalCards": 29,
+    "remainingGenericDiagrams": 0,
+    "changedQuestionTriads": 2,
+    "manualRead": "All changed complete DE/EN/FA fields and lessonMirror current source read, not merely structural pass."
+  }
+}

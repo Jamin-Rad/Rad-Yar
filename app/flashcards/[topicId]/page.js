@@ -1,5 +1,7 @@
 'use client'
 
+import { assessmentReturnHref } from '@/lib/assessmentNavigation'
+
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import Link from 'next/link'
 import { useParams, useSearchParams } from 'next/navigation'
@@ -232,7 +234,7 @@ export default function FlashcardReviewPage() {
   const boxValue = searchParams.get('box')
   const boxFilter = boxValue ? Number(boxValue) : null
   const fromParam = searchParams.get('from')
-  const backHref = fromParam || (lang === 'de' ? '/flashcards' : `/flashcards?lang=${lang}`)
+  const backHref = assessmentReturnHref(fromParam, lang, '/flashcards')
   const backLabel = fromParam ? t.backToLesson : t.back
   const showLessonShortcut = Boolean(lessonLink && !fromParam)
 

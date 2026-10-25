@@ -13,6 +13,27 @@ import base from '@/app/abdomen/gi/divertikulitis/page.module.css'
 import styles from './page.module.css'
 import { BPE_CATEGORIES, FGT_CATEGORIES, INDICATIONS, SECTIONS, SEQUENCES, WORKFLOW, translate } from './content'
 
+const CLINICAL_NOTES = {
+  de: {
+    screening: 'Hochrisiko-Screening richtet sich an asymptomatische Personen: Nach ACR beginnt die MRT-Überwachung bei genetisch erhöhtem Risiko typischerweise mit 25–30 Jahren. Der Mammographie-Anteil hängt von Risikotyp und Alter ab.',
+    roi: 'ADC gezielt messen: eine kleine ROI im geeigneten dunkelsten ADC-Bereich des anreichernden soliden Läsionsanteils platzieren und mit DWI korrelieren. Nekrose, nicht anreichernde oder verrauschte Voxel und Artefakte vermeiden. Der ADC allein bestimmt keine Diagnose.',
+    subtraction: 'Bewegung zwischen Prä- und Postkontrastbildern kann helle und dunkle Kanten in der Subtraktion erzeugen. Vor Enhancement- oder Kinetikbeurteilung Quellbilder und Registrierung prüfen.',
+    historical: 'Alte Berichte: „Focus“ bezeichnete ein Enhancement unter 5 mm, zu klein für verlässliche Form-/Randanalyse. Das bedeutete nicht automatisch benign. Seit BI-RADS v2025 ist Focus keine eigenständige Befundkategorie mehr; kleine Befunde werden morphologisch eingeordnet.',
+  },
+  en: {
+    screening: 'High-risk screening addresses asymptomatic people: ACR generally starts MRI surveillance at 25–30 years for genetic high risk. The mammography component depends on risk type and age.',
+    roi: 'Target ADC measurement: place a small ROI in the appropriate darkest ADC region of the enhancing solid lesion component and correlate with DWI. Avoid necrosis, non-enhancing or noisy voxels, and artifact. ADC alone does not determine the diagnosis.',
+    subtraction: 'Motion between pre- and post-contrast images can create bright and dark subtraction edges. Check source images and registration before interpreting enhancement or kinetics.',
+    historical: 'Older reports: “focus” meant enhancement under 5 mm, too small for reliable shape/margin analysis. It did not automatically mean benign. Since BI-RADS v2025, focus is no longer a separate finding category; small findings are classified morphologically.',
+  },
+  fa: {
+    screening: 'غربالگری پرخطر برای افراد بدون علامت است: ACR معمولاً پایش MRI را در خطر ژنتیکی بالا از ۲۵ تا ۳۰سالگی آغاز می‌کند. سهم ماموگرافی به نوع خطر و سن بستگی دارد.',
+    roi: 'اندازه‌گیری هدفمند ADC: یک ROI کوچک در تیره‌ترین ناحیهٔ مناسب ADC در بخش جامد دارای تقویت قرار دهید و با DWI تطبیق دهید. از نکروز، وکسل‌های بدون تقویت یا پرنویز و آرتیفکت دوری کنید. ADC به‌تنهایی تشخیص را تعیین نمی‌کند.',
+    subtraction: 'حرکت بین تصاویر پیش و پس از تزریق می‌تواند در تفریق لبه‌های روشن و تیره ایجاد کند. پیش از تفسیر تقویت یا کینتیک، تصاویر اصلی و هم‌ترازی را بررسی کنید.',
+    historical: 'گزارش‌های قدیمی: «کانون» به تقویت زیر ۵ میلی‌متر گفته می‌شد که برای تحلیل مطمئن شکل/حاشیه بیش از حد کوچک بود؛ این اصطلاح خودبه‌خود به معنی خوش‌خیمی نبود. از BI-RADS v2025 کانون دیگر دستهٔ مستقل یافته نیست و یافته‌های کوچک مورفولوژیک طبقه‌بندی می‌شوند.',
+  },
+}
+
 const READ_COPY = {
   de: { mark: 'Als gelesen markieren', read: 'Als gelesen markiert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
   en: { mark: 'Mark as read', read: 'Marked as read', error: 'Please sign in to save your learning progress.', signIn: 'Sign in' },
@@ -87,6 +108,7 @@ function ZoomFigure({ figureClassName, src, width, height, alt, sizes, loading, 
 
 export default function MammaMrtBasicsPage() {
   const { lang } = useLanguage()
+  const clinicalNotes = CLINICAL_NOTES[lang] || CLINICAL_NOTES.de
   const tx = value => translate(lang, value)
   const [activeId, setActiveId] = useState(SECTIONS[0].id)
   const { isRead, toggleRead, authError } = useLessonReadStatus('mamma-mrt-basics')
@@ -151,6 +173,7 @@ export default function MammaMrtBasicsPage() {
           <Section id="indikationen" title={tx('Indikationen')} migrationChapter>
             <p className={styles.lead}>{tx('Die Mamma-MRT ist die')} <strong>{tx('sensitivste bildgebende Methode')}</strong> {tx('zum Nachweis eines Mammakarzinoms. Ihre hohe Sensitivität beruht vor allem auf der Darstellung der')} <strong>{tx('Tumorvaskularisation und Kontrastmittelaufnahme')}</strong>. {tx('Gleichzeitig ist die Spezifität begrenzt: Auch zahlreiche benigne Veränderungen können Kontrastmittel aufnehmen.')}</p>
             <div className={styles.indicationGrid}>{INDICATIONS.map(item => <article className={styles.indicationCard} key={item.title}><span>{tx(item.tag)}</span><h3>{tx(item.title)}</h3><p>{tx(item.text)}</p></article>)}</div>
+            <p>{clinicalNotes.screening} <a href="https://pubmed.ncbi.nlm.nih.gov/37150275/" target="_blank" rel="noopener noreferrer">ACR 2023 ↗</a></p>
             <div className={styles.problemBox}><div><span>{tx('Problem Solving · Beispiele')}</span><h3>{tx('Wenn die konventionelle Diagnostik unklar bleibt')}</h3></div><ul><li>{tx('nicht sicher erklärbare Asymmetrie')}</li><li>{tx('unklare Architekturstörung')}</li><li>{tx('diskrepante Befunde zwischen Mammographie und Sonographie')}</li><li>{tx('schwer beurteilbare postoperative Veränderungen')}</li></ul></div>
             <Callout cave label={tx('Wichtig')}>{tx('Die MRT sollte nicht dazu verwendet werden, eine indizierte Biopsie eines suspekten Befundes zu vermeiden. Ein klar suspekter und bioptisch zugänglicher Befund sollte in der Regel histologisch abgeklärt werden.')}</Callout>
           </Section>
@@ -167,6 +190,8 @@ export default function MammaMrtBasicsPage() {
                 </div>
               </article>
             ))}</div>
+            <Callout label="DWI / ADC">{clinicalNotes.roi} <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7033067/" target="_blank" rel="noopener noreferrer">EUSOBI ↗</a></Callout>
+            <Callout label={tx('Subtraktion')}>{clinicalNotes.subtraction}</Callout>
             <div className={styles.sequenceSummary}>
               <span>{tx('Merke')}</span>
               <ul>
@@ -179,6 +204,7 @@ export default function MammaMrtBasicsPage() {
 
           <Section id="systematik" title={tx('Wie liest man eine Mamma-MRT systematisch?')} migrationChapter>
             <p className={styles.lead}>{tx('Ein fester Ablauf hilft, nichts zu übersehen.')}</p>
+            <p>{clinicalNotes.historical}</p>
             <ol className={styles.workflow}>{WORKFLOW.map((step, index) => (
               <li key={step.title}>
                 <span>{String(index + 1).padStart(2, '0')}</span>

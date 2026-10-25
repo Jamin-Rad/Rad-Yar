@@ -1,0 +1,166 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/design_inventory",
+  "role": "Independent read-only reviewer; no brain content rewritten",
+  "status": "ACCEPT_BOUNDED_PACKET_AFTER_RETEST",
+  "scope": {
+    "routes": [
+      "/gehirn/anatomie/balkenagenesie",
+      "/gehirn/anatomie/pvl",
+      "/gehirn/encephalopathie/pres",
+      "/gehirn/anatomie/chiari"
+    ],
+    "newMCQTriadsRead": 11,
+    "newCardTriadsRead": 11,
+    "localeQuestionRows": 33,
+    "inlineTriadsCompared": 3,
+    "excluded": "Later NPH additions and unfinished other brain routes are outside this packet."
+  },
+  "sourceVersion": {
+    "brainModuleSHA256": "134032f6f615fa8c658db735b084c852ff3bf1d37d75eb3ce435cbbdb38546bb"
+  },
+  "findings": [
+    {
+      "id": "REV-BRAIN01-SRC01",
+      "severity": "moderate",
+      "gate": "SRC",
+      "item": "aq-brain-aq-pvl-LOCALE-modality",
+      "file": "data/assessmentQuality/brain.js",
+      "observed": "The MRI DWI/ADC question inherits the 1985 longitudinal ultrasound/myelination-series source. That abstract supports cyst evolution but not the particular diffusion/ADC distinction.",
+      "impact": "A clinically reasonable key is attached to evidence that does not substantiate its specific mechanism.",
+      "required": "Provide an item-level diffusion reference and preserve it on the card. Original Inder et al. 1999 PMID10228300 directly reports early white-matter diffusion decrease with reduced ADC in a premature infant; do not generalise that case to a diagnostic sensitivity claim.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/10228300/",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "originalStatus": "REVISE"
+    },
+    {
+      "id": "REV-BRAIN01-SRC02",
+      "severity": "minor",
+      "gate": "SRC",
+      "item": "PRES distribution and restriction; all newCards",
+      "file": "data/assessmentQuality/brain.js",
+      "observed": "Question source is assigned once per block, so PRES distribution/restriction inherit Covarrubias2002 rather than the specific Bartynski2007 cohort documented separately. New cards omit source properties entirely.",
+      "impact": "Per-item source provenance is weaker than the source ledger, especially when items are displayed independently.",
+      "required": "Allow item-specific source override, use the distribution/restriction cohort where appropriate, and retain source on each exported card.",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7977645/",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "originalStatus": "REVISE"
+    },
+    {
+      "id": "REV-BRAIN01-ASM01",
+      "severity": "moderate",
+      "gate": "ASM",
+      "item": "aq-brain-chiari-malformation-LOCALE-associated-syrinx, option B",
+      "file": "data/assessmentQuality/brain.js",
+      "observed": "Contrast-enhanced CT of the calvarium is an off-target distractor for hand paraesthesia with an unexamined spinal cord. It is not a plausible competing investigation for the stated clinical task.",
+      "impact": "The learner can eliminate it without understanding Chiari-associated syringomyelia.",
+      "required": "Replace with a plausible competing study or scope of imaging, with a specific explanation of why it does not answer the spinal-cord question. Keep source Grade-C limitation.",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "originalStatus": "REVISE"
+    },
+    {
+      "id": "REV-BRAIN01-ASM02",
+      "severity": "moderate",
+      "gate": "ASM",
+      "item": "aq-brain-pres-LOCALE-restriction, options B/C/D",
+      "file": "data/assessmentQuality/brain.js",
+      "observed": "The three distractors are a guarantee of reversibility, negation of one lesion by ADC elsewhere, and automatic extension of focal restriction to every other region. All are categorical extremes; none is a plausible differentiated report of the mixed pattern.",
+      "impact": "The single qualified option is conspicuous; it tests avoidance of absolutes more than clinical interpretation.",
+      "required": "Use comparable competing regional interpretations or reporting decisions, preserving the correct focal-versus-background distinction and not asserting that every restricted focus is inevitably infarcted.",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "originalStatus": "REVISE"
+    },
+    {
+      "id": "REV-BRAIN01-EDU01",
+      "severity": "minor",
+      "gate": "EDU",
+      "item": "Chiari goal measure-and-context",
+      "file": "data/assessmentQuality/brain.js",
+      "observed": "The landmark/context goal maps the existing MCQ but has an empty cardIds array; the route blueprint reports no preexisting cards.",
+      "impact": "The declared foundational goal has no focused retrieval opportunity, although the two advanced goals have cards.",
+      "required": "Add a concise retrieval card for landmark/context assessment or explicitly justify the learning-mode exception; do not invent a numerical threshold as a standalone diagnostic rule.",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "originalStatus": "REVISE"
+    },
+    {
+      "id": "REV-BRAIN01-LNG01",
+      "severity": "minor",
+      "gate": "LNG",
+      "item": "aq-brain-aq-balkenagenesie-LOCALE-direct-assessment option C",
+      "file": "data/assessmentQuality/brain.js",
+      "observed": "FA جریان مجرا omits the anatomical aqueduct name in DE Aquäduktfluss / EN aqueductal flow.",
+      "impact": "FA presents a less precise anatomical alternative.",
+      "required": "Name the cerebral aqueduct explicitly, e.g. آکوئداکت مغزی, while retaining CSF flow and phase-contrast context.",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "originalStatus": "REVISE"
+    }
+  ],
+  "evidence": {
+    "runtime": "tmp/assessment-quality/brain-packet01-independent-runtime.json",
+    "inline": "All three actual data-module inline question texts, option vectors and correctIndex match the corresponding canonical new item in DE/EN/FA. Actual route consumers read: correctIndex selects feedback versus retry.",
+    "translation": "All 11 stems, 44 options, 11 correct explanations, 33 wrong explanations, 11 fronts and 11 answers read in all three languages. No demonstrated changed key or clinically consequential negation mismatch found; one bounded anatomical omission recorded.",
+    "sourceChecks": [
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/3983387/",
+        "read": "Original abstract, sagittal direct anatomy and complete/partial callosal cases."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/17056927/",
+        "read": "Original cohort abstract and specific associated-malformation findings; no cohort percentages imported into questions."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/3890765/",
+        "read": "Original 3-infant serial-US abstract: cyst evolution/resolution with later ventricular enlargement. Does not verify DWI item."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/10228300/",
+        "read": "Independent additional original diffusion-case abstract, offered as source correction."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/12063238/",
+        "read": "Original quantitative PRES abstract: increased ADC in vasogenic oedema; high DWI with pseudonormal ADC and infarct progression in some regions. Does not imply all restricted regions irreversibly infarct."
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7977645/",
+        "read": "Original cohort distribution and restricted-diffusion/residual encephalomalacia results."
+      },
+      {
+        "url": "https://www.cns.org/guidelines/browse-guidelines-detail/1-imaging",
+        "read": "Official recommendations1-1 and1-2, Grade C and mixed cine-MRI evidence."
+      }
+    ]
+  },
+  "gates": {
+    "SRC": "ACCEPT_BOUNDED_PACKET_SOURCE_DELTAS",
+    "EDU": "ACCEPT_RECORDED_GOAL_RETRIEVAL_REPAIR",
+    "ASM": "ACCEPT_SPECIFIED_DISTRACTOR_REPAIRS",
+    "LNG": "ACCEPT_BOUNDED_TRIADS_AFTER_AQUEDUCT_REPAIR",
+    "VIS": "NOT_APPLICABLE new items explicitly written text vignettes; no new diagnostic image claimed",
+    "UX": "NOT_RUN browser interaction; runtime export/inline compatibility checked",
+    "REV": "Initial findings independently retested and closed; browser and whole-lesson scientific review excluded."
+  },
+  "limits": [
+    "No complete scientific review of original lessons or PDFs.",
+    "No learner-performance evidence; predicted distractor usefulness is editorial review.",
+    "No production browser or release approval."
+  ],
+  "retest": {
+    "date": "2026-10-25",
+    "scope": "Only the six recorded packet01 findings and changed dependent inline checks. New NPH work remains excluded.",
+    "deltaEvidence": "tmp/assessment-quality/brain-packet01-retest-deltas.json",
+    "runtime": "tmp/assessment-quality/brain-packet01-independent-runtime.json",
+    "moduleSHA256": "3ece5f174b967a8b30364d668d3438db3ae3c9f34ba8910833108cc53932a7a5",
+    "read": "All changed DE/EN/FA alternatives and feedback read; all12cards retain sources; new landmark card all3locales read. Current33questionrows structurally valid and3inline question/option/key triads remain synchronized.",
+    "sources": [
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/10228300/",
+        "evidence": "Original Inder1999 abstract directly demonstrates decreased ADC in early white-matter injury; no diagnostic-accuracy statistic imported."
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9130617/",
+        "evidence": "Original measurement methods and acquisition/reformat description read. McRae midsagittal basion-opisthion reference and separate parasagittal methods distinguished; no universal cutoff or patient outcome asserted by the new card."
+      }
+    ],
+    "pedagogy": "Chiari alternatives now represent plausible competing neuroimaging studies with distinct scopes. PRES alternatives compare uniform vasogenic oedema, regional mixed restriction, arterial infarction and chronic gliosis, so ADC interpretation rather than categorical-word cues identifies the best answer."
+  }
+}

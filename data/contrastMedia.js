@@ -1,3 +1,4 @@
+import { getContrastRevision, contrastRevisionForSeed } from './assessmentQuality/contrastRevisions'
 export const CONTRAST_TOPICS = [
   {
     id: 'km-ultraschall',
@@ -312,6 +313,11 @@ const QUESTION_SEEDS = {
 }
 
 const translateQuestion = (seed, lang) => {
+  const revision = contrastRevisionForSeed(seed, QUESTION_SEEDS)
+  if (revision) {
+    const options = revision.options.map(option => option[lang])
+    return [revision.question[lang], options['ABCD'.indexOf(revision.correct)], options, revision.correct]
+  }
   if (lang === 'de') return seed
   const translations = {
     en: {
@@ -447,6 +453,7 @@ export const CONTRAST_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang
   lang,
   CONTRAST_TOPICS.flatMap(topic => QUESTION_SEEDS[topic.id].map((seed, index) => {
     const translated = translateQuestion(seed, lang)
+    const revision = getContrastRevision(topic.id, index)
     return {
       id: `${topic.id}-${lang}-${index + 1}`,
       tags: [topic.id],
@@ -454,7 +461,8 @@ export const CONTRAST_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang
       question: translated[0],
       options: translated[2].map((text, optionIndex) => ({ id: ['A', 'B', 'C', 'D'][optionIndex], text })),
       correct: translated[3],
-      explanation: QUESTION_EXPLANATIONS[seed[0]]?.[lang] || translated[1],
+      explanation: revision?.explanation[lang] || QUESTION_EXPLANATIONS[seed[0]]?.[lang] || translated[1],
+      ...(revision ? { source: revision.source, wrongExplanations: Object.fromEntries(revision.feedback.flatMap((feedback, i) => feedback ? [['ABCD'[i], feedback[lang]]] : [])) } : {}),
     }
   })),
 ]))
@@ -480,27 +488,24 @@ export const CONTRAST_FLASHCARDS = CONTRAST_TOPICS.flatMap(topic => {
       content[lang] = {
         front: translated[0],
         answer: translated[1],
-        explanation: topic.id === 'km-jod-typen' && index === 2
+        explanation: getContrastRevision(topic.id, index)?.explanation[lang] || (topic.id === 'km-jod-typen' && index === 2
           ? {
               de: 'Die Werte aus der PDF sind Beispiele, keine festen Vorgaben. Untersuchungsziel, Scanzeit, Patient, venöser Zugang, Injektor und lokales Protokoll bestimmen die Parameter; die diagnostische Dosis nicht unter die erforderliche Schwelle senken.',
               en: 'The PDF values are examples, not fixed instructions. The examination goal, scan duration, patient, venous access, injector and local protocol determine the parameters; do not lower the diagnostic dose below the required threshold.',
               fa: 'اعداد PDF نمونه‌اند و دستور ثابت نیستند. هدف بررسی، زمان اسکن، بیمار، مسیر وریدی، انژکتور و پروتکل محلی پارامترها را تعیین می‌کنند؛ دوز تشخیصی را از حد لازم پایین‌تر نبرید.',
             }[lang]
-          : QUESTION_EXPLANATIONS[seed[0]]?.[lang] || (topic.id === 'km-ultraschall' ? translated[1] : (CONTRAST_LESSON[lang].sections[topic.id]?.takeHome || translated[1])),
+          : QUESTION_EXPLANATIONS[seed[0]]?.[lang] || (topic.id === 'km-ultraschall' ? translated[1] : (CONTRAST_LESSON[lang].sections[topic.id]?.takeHome || translated[1]))),
       }
     }
     return {
       id: `${topic.id}-card-${index + 1}`,
       topicId: topic.id,
+      ...(getContrastRevision(topic.id, index) ? { source: getContrastRevision(topic.id, index).source } : {}),
       category: topic.title,
       front: Object.fromEntries(Object.entries(content).map(([lang, value]) => [lang, value.front])),
       answer: Object.fromEntries(Object.entries(content).map(([lang, value]) => [lang, value.answer])),
       explanation: Object.fromEntries(Object.entries(content).map(([lang, value]) => [lang, value.explanation])),
-      diagram: {
-        de: `${topic.group.de} → ${topic.title.de}`,
-        en: `${topic.group.en} → ${topic.title.en}`,
-        fa: `${topic.group.fa} → ${topic.title.fa}`,
-      },
+
     }
   })
 })

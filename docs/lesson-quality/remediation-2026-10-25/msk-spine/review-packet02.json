@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/brain_remediation; independent of MSK author and root canonical-patch author",
+  "status": "ACCEPT_BOUNDED_ASSESSMENT_PACKET_AFTER_RETEST",
+  "scope": {
+    "routes": [
+      "/msk/osteochondrosen/morbus-perthes",
+      "/msk/knie/chondrokalzinose",
+      "/msk/osteochondrosen/osgood-schlatter",
+      "/msk/osteochondrosen/weitere-osteochondrosen",
+      "/msk/knie/patella-streckapparat",
+      "/msk/osteochondrosen/osteochondrosis-dissecans"
+    ],
+    "newQuestionTriads": 8,
+    "newCardTriads": 15,
+    "canonicalPatchedQuestionRows": 6,
+    "fieldsRead": "All new DE/EN/FA stems, alternatives, keys, correct and individual wrong explanations, card fronts/answers/explanations and image metadata. Actual canonical OCD and patellar transverse-fracture producer rows compared field-by-field to six intended patches. Existing untouched pools not comprehensively rereviewed."
+  },
+  "findings": [
+    {
+      "id": "MSK02-CARD-IMAGE-CONTEXT",
+      "severity": "moderate",
+      "file": "data/assessmentQuality/mskSpine.js",
+      "item": "aq-msk-perthes-image-report explanation DE/EN/FA",
+      "observed": "The standalone image-free card reused a displayed-right-femoral-head explanation from the visual MCQ.",
+      "impact": "Learner cannot identify the asserted visible finding in the independent flashcard pool.",
+      "requiredCorrection": "Use a self-contained follow-up reporting checklist or supply the actual attributed image.",
+      "status": "CLOSED_AFTER_AUTHOR_REPAIR",
+      "retest": "Read actual exported DE/EN/FA after-values: systematic density/ossification/height/contour comparison against prior imaging, no displayed/right-side assertion; individual prognosis/treatment limits retained."
+    }
+  ],
+  "evidence": {
+    "primary": [
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/2915033/",
+        "read": "Complete original abstract: two children with initially normal radiographs and MRI evidence preceding later radiographic changes; limited added-value claim supported, no sensitivity taught."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/18552309/",
+        "read": "Complete indexed original abstract: arthroscopy-correlated juvenile/adult groups, lower specificity of conventional juvenile criteria; no universal stage or treatment assertion inferred."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21267576/",
+        "read": "Complete indexed original abstract:315 condylar-defect MRIs, posterior distribution/maturation/no oedema favour ossification variation; qualitative card/question claim qualified."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30903258/",
+        "read": "Complete original indexed100-MRI abstract and bibliographic metadata: proximal T2 signal frequently without associated clinical tendinopathy; correct Skeletal Radiology journal."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/11566703/",
+        "read": "Complete original indexed37 versus34 arthroscopy study abstract: meniscal chondrocalcinosis high signal/reduced tear accuracy, radiographic correlation reduces overcalling."
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11103298/",
+        "read": "Actual overarching principles C/D and explanatory paragraphs: deposits need not explain symptoms, patient/laboratory context required."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/1438775/",
+        "read": "Complete original28-case imaging abstract: tendon/bursal findings and persistent nonunited ossicles despite pain relief; no imaging-only symptom/treatment rule."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/19398884/",
+        "read": "Original seven-athlete abstract: inferior-patellar localization, variable imaging and overlapping differential; no diagnostic specificity invented."
+      },
+      {
+        "url": "https://posna.org/physician-education/study-guide/legg-calve-perthes-disease",
+        "read": "Official key points and clinical/imaging sections: synchronous symmetric bilateral changes prompt other causes; prognostic versus temporal staging distinction."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35415150/",
+        "read": "Original indexed Morquio mimic abstract: systemic context and additional skeletal findings, case-report scope preserved."
+      }
+    ],
+    "visuals": {
+      "originalPDFPagesRead": [
+        124,
+        126,
+        128,
+        129,
+        69
+      ],
+      "filesViewed": [
+        "tmp/msk-inventory/osteochondrosis-p124-remediation.png",
+        "tmp/msk-inventory/perthes-p126-remediation.png",
+        "tmp/msk-inventory/ocd-remediation-128.png",
+        "tmp/msk-inventory/ocd-remediation-129.png",
+        "tmp/msk-inventory/patella-p69-remediation.png",
+        "public/educational/perthes/rid-9742-10-months.jpg",
+        "public/msk/knie/chondrokalzinose/msk-p56-rid-22147-joint-detail.jpg"
+      ],
+      "result": "Actual stored image morphology supports Perthes flattening/irregular fragmentation and fine meniscal calcifications. Source timing/crop matches10-month row; neutral pelvic projection avoids disputed PA/AP. Source OCD stageIV displacement and patellar indirect transverse mechanism verified. No inference that every PDF scientific simplification is valid."
+    },
+    "technical": {
+      "probe": "tmp/brain-review-msk2-check.mjs",
+      "canonicalAfterValues": "6/6 exact deep-equal content fields (object order ignored)",
+      "ssr": "Independently rebuilt actual six-route graph with standard context/CSS fixtures;18/18 DE/EN/FA render checks passed. Report docs/lesson-quality/remediation-2026-10-25/msk-spine/brain-review-packet02-ssr.json",
+      "goals": "Packet maps3–4 observable goals per lesson; recognition plus targeted recall/reporting tasks, no arbitrary quota. Terminology items foundational; no measured psychometric difficulty claim."
+    }
+  },
+  "gates": {
+    "SRC": "PASS_BOUNDED_SOURCES_AND_IMAGES",
+    "EDU": "PASS_BOUNDED_AFTER_CARD_CONTEXT_REPAIR",
+    "VIS": "PASS_REFERENCED_TEACHING_IMAGE_MATCH_ONLY",
+    "LNG": "PASS_BOUNDED_TRIAD_SEMANTICS",
+    "ASM": "PASS_BOUNDED_NEW_AND_SIX_PATCHED_ROWS",
+    "UX": "BLOCKED_BROWSER_NOT_RUN",
+    "REV": "INDEPENDENT_BOUNDED_REVIEW_COMPLETE"
+  },
+  "limits": [
+    "No actual browser interaction, live deployment comparison, responsive/theme QA or authentication validation performed in this read-only review. Root owns release QA.",
+    "No whole78-route MSK, ACL/meniscus packet3, unchanged original assessment pool, or whole-PDF scientific acceptance implied.",
+    "Educational difficulty judged editorially; no learner-performance calibration.",
+    "Dr. Zia scientific/release approval remains separate."
+  ]
+}

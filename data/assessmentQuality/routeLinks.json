@@ -1,0 +1,552 @@
+{
+  "routes": {
+    "/gehirn/anatomie/balkenagenesie": {
+      "topicIds": [
+        "aq-balkenagenesie"
+      ],
+      "questionCount": 3,
+      "cardTopic": "aq-balkenagenesie",
+      "subject": "gehirn"
+    },
+    "/gehirn/encephalopathie/pres": {
+      "topicIds": [
+        "pres"
+      ],
+      "questionCount": 4,
+      "cardTopic": "pres",
+      "subject": "gehirn"
+    },
+    "/gehirn/anatomie/pvl": {
+      "topicIds": [
+        "aq-pvl"
+      ],
+      "questionCount": 3,
+      "cardTopic": "aq-pvl",
+      "subject": "gehirn"
+    },
+    "/gehirn/anatomie/chiari": {
+      "topicIds": [
+        "chiari-malformation"
+      ],
+      "questionCount": 3,
+      "cardTopic": "chiari-malformation",
+      "subject": "gehirn"
+    },
+    "/gehirn/infektionen/herpes-enzephalitis": {
+      "topicIds": [
+        "aq-hsv-enzephalitis"
+      ],
+      "questionCount": 3,
+      "cardTopic": "aq-hsv-enzephalitis",
+      "subject": "gehirn"
+    },
+    "/gehirn/infektionen/hirnabszess": {
+      "topicIds": [
+        "aq-hirnabszess"
+      ],
+      "questionCount": 3,
+      "cardTopic": "aq-hirnabszess",
+      "subject": "gehirn"
+    },
+    "/msk/trauma/radiuskoepfchenfraktur": {
+      "topicIds": [
+        "radiuskoepfchenfraktur"
+      ],
+      "questionCount": 13,
+      "cardTopic": "radiuskoepfchenfraktur"
+    },
+    "/msk/schulter/rotatorenmanschette": {
+      "topicIds": [
+        "rotatorenmanschette"
+      ],
+      "questionCount": 15,
+      "cardTopic": "rotatorenmanschette",
+      "subject": "msk"
+    },
+    "/msk/trauma/ak-luxation": {
+      "topicIds": [
+        "ak-luxation"
+      ],
+      "questionCount": 12,
+      "cardTopic": "ak-luxation"
+    },
+    "/msk/trauma/frakturen-kindesalter": {
+      "topicIds": [
+        "frakturen-kindesalter"
+      ],
+      "questionCount": 13,
+      "cardTopic": "frakturen-kindesalter"
+    },
+    "/msk/trauma/frakturbeschreibung": {
+      "topicIds": [
+        "frakturbeschreibung"
+      ],
+      "questionCount": 13,
+      "cardTopic": "frakturbeschreibung",
+      "subject": "msk"
+    },
+    "/msk/trauma/unterarmschaftfrakturen": {
+      "topicIds": [
+        "unterarmschaftfrakturen"
+      ],
+      "questionCount": 12,
+      "cardTopic": "unterarmschaftfrakturen",
+      "subject": "msk"
+    },
+    "/msk/trauma/distale-radiusfraktur": {
+      "topicIds": [
+        "distale-radiusfraktur"
+      ],
+      "questionCount": 12,
+      "cardTopic": "distale-radiusfraktur",
+      "subject": "msk"
+    },
+    "/msk/osteochondrosen/morbus-perthes": {
+      "topicIds": [
+        "morbus-perthes"
+      ],
+      "questionCount": 2,
+      "cardTopic": "morbus-perthes",
+      "subject": "msk"
+    },
+    "/msk/knie/chondrokalzinose": {
+      "topicIds": [
+        "chondrokalzinose"
+      ],
+      "questionCount": 2,
+      "cardTopic": "chondrokalzinose",
+      "subject": "msk"
+    },
+    "/msk/osteochondrosen/osgood-schlatter": {
+      "topicIds": [
+        "osgood-schlatter"
+      ],
+      "questionCount": 1,
+      "cardTopic": "osgood-schlatter",
+      "subject": "msk"
+    },
+    "/msk/osteochondrosen/weitere-osteochondrosen": {
+      "topicIds": [
+        "weitere-osteochondrosen"
+      ],
+      "questionCount": 2,
+      "cardTopic": "weitere-osteochondrosen",
+      "subject": "msk"
+    },
+    "/msk/knie/patella-streckapparat": {
+      "topicIds": [
+        "patella-streckapparat"
+      ],
+      "questionCount": 2,
+      "cardTopic": "patella-streckapparat",
+      "subject": "msk"
+    },
+    "/msk/osteochondrosen/osteochondrosis-dissecans": {
+      "topicIds": [
+        "osteochondrosis-dissecans"
+      ],
+      "questionCount": 2,
+      "cardTopic": "osteochondrosis-dissecans",
+      "subject": "msk"
+    },
+    "/technik/interventionelle-radiologie": {
+      "topicIds": [
+        "aq-atv-intervention"
+      ],
+      "questionCount": 4,
+      "cardTopic": "aq-atv-intervention",
+      "subject": "technik"
+    },
+    "/technik/kontrastmittel/ultraschall": {
+      "topicIds": [
+        "km-ultraschall"
+      ],
+      "questionCount": 3,
+      "cardTopic": "km-ultraschall",
+      "subject": "technik"
+    },
+    "/technik/kontrastmittel/roentgen": {
+      "topicIds": [
+        "km-jod-typen"
+      ],
+      "questionCount": 3,
+      "cardTopic": "km-jod-typen",
+      "subject": "technik"
+    },
+    "/technik/kontrastmittel/mrt": {
+      "topicIds": [
+        "km-gadolinium"
+      ],
+      "questionCount": 3,
+      "cardTopic": "km-gadolinium",
+      "subject": "technik"
+    },
+    "/technik/kontrastmittel/nierenfunktion": {
+      "topicIds": [
+        "km-niereninsuffizienz"
+      ],
+      "questionCount": 3,
+      "cardTopic": "km-niereninsuffizienz",
+      "subject": "technik"
+    },
+    "/technik/kontrastmittel/schwangerschaft": {
+      "topicIds": [
+        "km-schwangerschaft-stillzeit"
+      ],
+      "questionCount": 3,
+      "cardTopic": "km-schwangerschaft-stillzeit",
+      "subject": "technik"
+    },
+    "/thorax/lung-rads": {
+      "topicIds": [
+        "lung-rads"
+      ],
+      "questionCount": 3,
+      "cardTopic": "lung-rads",
+      "subject": "thorax"
+    },
+    "/thorax/kardio/kardio-mrt-basics": {
+      "topicIds": [
+        "kardio-mrt-basics"
+      ],
+      "questionCount": 3,
+      "cardTopic": "kardio-mrt-basics",
+      "subject": "thorax"
+    },
+    "/thorax/kardio/kardio-mrt-indikationen": {
+      "topicIds": [
+        "kardio-mrt-indikationen"
+      ],
+      "questionCount": 3,
+      "cardTopic": "kardio-mrt-indikationen",
+      "subject": "thorax"
+    },
+    "/thorax/kardio/myokardinfarkt-mrt": {
+      "topicIds": [
+        "myokardinfarkt-mrt"
+      ],
+      "questionCount": 3,
+      "cardTopic": "myokardinfarkt-mrt",
+      "subject": "thorax"
+    },
+    "/thorax/anatomie/aortenbogen": {
+      "topicIds": [
+        "aortenbogen"
+      ],
+      "questionCount": 3,
+      "cardTopic": "aortenbogen",
+      "subject": "thorax"
+    },
+    "/mamma/bildgebung/mrt/basics": {
+      "topicIds": [
+        "mamma-mrt-basics"
+      ],
+      "questionCount": 8,
+      "cardTopic": "mamma-mrt-basics",
+      "subject": "mamma"
+    }
+  },
+  "counts": {
+    "chiari-malformation": 3,
+    "neurofibromatose-typ1": 3,
+    "pres": 4,
+    "km-ultraschall": 3,
+    "km-jod-typen": 3,
+    "km-jod-reaktionen": 4,
+    "km-gastrointestinal": 2,
+    "km-gadolinium": 3,
+    "km-gadolinium-retention-nsf": 3,
+    "km-buscopan": 2,
+    "km-niereninsuffizienz": 3,
+    "km-schilddruese": 3,
+    "km-schwangerschaft-stillzeit": 3,
+    "divertikulitis": 11,
+    "kolon": 11,
+    "abdomen": 51,
+    "pankreatitis": 10,
+    "akute-pankreatitis": 10,
+    "chronische-pankreatitis": 10,
+    "ischaemischer-schlaganfall": 15,
+    "schlaganfall": 15,
+    "gehirn": 210,
+    "intrazerebrale-blutung": 15,
+    "gehirn-blutung": 15,
+    "hypoxisch-ischaemische-hirnschaedigung": 10,
+    "hie": 10,
+    "subarachnoidalblutung": 6,
+    "fisher-skala": 6,
+    "epidurale-blutung": 10,
+    "epiduralhaematom": 10,
+    "trauma": 22,
+    "liquorraeume-ventrikelsystem": 3,
+    "cavum": 3,
+    "subdurale-blutung": 12,
+    "sdh": 12,
+    "gefaessdissektion-hirn": 12,
+    "dissektion": 12,
+    "moya-moya": 13,
+    "moyamoya": 13,
+    "hypertensive-mikroangiopathie": 12,
+    "hypertensive-icb": 12,
+    "caa": 18,
+    "zerebrale-amyloidangiopathie": 18,
+    "migraene": 8,
+    "migraine": 8,
+    "cadasil": 13,
+    "mikroangiopathie": 13,
+    "dva": 12,
+    "gefaessmalformationen": 60,
+    "kavernom": 12,
+    "normaldruckhydrozephalus": 12,
+    "hydrozephalus": 12,
+    "kapillaere-teleangiektasie": 12,
+    "svt": 12,
+    "sinusvenenthrombose": 12,
+    "venoes": 12,
+    "frakturbeschreibung": 13,
+    "msk": 12,
+    "stressfrakturen": 3,
+    "davf": 12,
+    "avm-zns": 12,
+    "frakturen-kindesalter": 13,
+    "ak-luxation": 12,
+    "radiuskoepfchenfraktur": 13,
+    "unterarmschaftfrakturen": 12,
+    "distale-radiusfraktur": 12,
+    "skaphoidfraktur": 2,
+    "bandverletzungen-daumen": 2,
+    "kreuzbaender": 8,
+    "knieligamente": 8,
+    "knie": 30,
+    "kraniozervikaler-uebergang-trauma": 2,
+    "wirbelsaeule-trauma": 6,
+    "hws-verletzungen": 2,
+    "bws-lws-frakturen": 2,
+    "hrct-dichteanhebung": 12,
+    "hrct-retikulaer-nodulaer": 12,
+    "hrct-architekturmuster": 12,
+    "hrct-dichteminderung": 12,
+    "mamma-mrt-basics": 8,
+    "mamma": 67,
+    "mrt": 40,
+    "mamma-mrt-laesionscharakterisierung": 8,
+    "mamma-mrt-kaiser-score": 15,
+    "kaiser-score": 15,
+    "mamma-mrt-besondere-mammakarzinome": 8,
+    "mammakarzinom": 8,
+    "mammographie-grundlagen": 10,
+    "mammographie": 28,
+    "bi-rads": 28,
+    "mammographie-mikrokalk": 18,
+    "verkalkungen": 18,
+    "kardiomyopathien": 17,
+    "kardio-mrt": 37,
+    "thorax": 47,
+    "arvc": 10,
+    "acm": 10,
+    "myokardinfarkt-differentialdiagnosen": 10,
+    "fleischner-kriterien": 10,
+    "meniskus": 22,
+    "fnh": 10,
+    "leber": 30,
+    "avm": 10,
+    "hcc": 10,
+    "sarkoidose": 10,
+    "lunge": 10,
+    "rotatorenmanschette": 15,
+    "schulter": 15,
+    "mrt-dwi-adc": 1,
+    "technik": 1,
+    "haemangiom": 8,
+    "beckenringfraktur": 2,
+    "periprothetische-femurfraktur": 2,
+    "proximale-femurfraktur": 3,
+    "distale-femurfraktur": 2,
+    "femurschaftfraktur": 2,
+    "tibiakopffraktur": 2,
+    "osg-fraktur": 2,
+    "impingement-kalkschulter": 2,
+    "patella-streckapparat": 2,
+    "patellafraktur-trauma": 1,
+    "kolloidzyste": 1,
+    "uip-ipf": 1,
+    "bronchiektasen": 1,
+    "nierentrauma": 1,
+    "adpkd-bildgebung": 2,
+    "lungenoedem": 2,
+    "ards": 1,
+    "pulmonale-hypertonie": 2,
+    "dual-energy-ct": 1,
+    "mrt-perfusion": 1,
+    "mrt-cine": 1,
+    "fmri-bold": 1,
+    "mrt-bildqualitaet-artefakte-snr": 2,
+    "mrt-sicherheit-risiken": 2,
+    "mrt-spin-echo": 1,
+    "mrt-gradient-echo": 1,
+    "mrt-inversion-recovery": 1,
+    "mrt-fettsuppression": 2,
+    "mrt-grundprinzip-signalbildung": 1,
+    "mrt-gefaessdarstellung": 1,
+    "ct-bildqualitaet-artefakte": 1,
+    "ct-perfusion-technik": 1,
+    "ct-rekonstruktion-nachverarbeitung": 1,
+    "hrct-technik": 1,
+    "ct-methodik-km-phasen": 1,
+    "mr-myelographie": 2,
+    "atelektase": 1,
+    "lch-lunge": 2,
+    "mukoviszidose": 2,
+    "bronchiolitis": 2,
+    "hypersensitivitaetspneumonitis": 2,
+    "pneumonie-muster": 1,
+    "bakterielle-pneumonie": 1,
+    "virale-pneumonie-covid": 1,
+    "atypische-pneumonie": 1,
+    "aspergillus-lunge": 1,
+    "pcp": 1,
+    "pleuraempyem": 1,
+    "lungenzysten-differentialdiagnose": 2,
+    "pectus-excavatum": 2,
+    "spondylolisthesis": 2,
+    "dish-ossifikation-ligamente": 2,
+    "spinale-leptomeningitis": 2,
+    "neuroborreliose-spinal": 2,
+    "wirbelsaeulentuberkulose": 1,
+    "paravertebraler-abszess": 1,
+    "epiduraler-abszess": 1,
+    "osteoporose-fraktur-ws": 2,
+    "renale-osteodystrophie-ws": 2,
+    "spinale-tumoren-grundlagen": 1,
+    "spinale-arachnoiditis": 1,
+    "guillain-barre-syndrom": 1,
+    "funikulaere-myelose": 1,
+    "epidermoid-spinal": 1,
+    "multiple-sklerose-spinal": 1,
+    "rippenpathologien": 1,
+    "akute-le": 1,
+    "roentgen-streustrahlenraster": 1,
+    "c-arm-ct": 1,
+    "strahlenschutz-gesetzliche-grundlagen": 1,
+    "strahlenschutzbereiche-verantwortliche": 1,
+    "fachkunde-strahlenschutz": 1,
+    "teleradiologie": 1,
+    "photon-counting-ct": 1,
+    "ct-grundprinzip-aufbau": 1,
+    "ct-aufnahmetechniken": 1,
+    "roentgenanlage-roehre": 2,
+    "roentgenstrahlung-spektrum": 1,
+    "roentgen-wechselwirkung-materie": 2,
+    "roentgen-bildentstehung-detektor": 2,
+    "leberadenom": 5,
+    "niere-anatomie": 1,
+    "lebermetastasen": 2,
+    "ileus-duenndarm": 4,
+    "intussusception": 1,
+    "ipmn": 1,
+    "hepatische-steatose": 1,
+    "angiomyolipom": 2,
+    "nierenzysten": 1,
+    "nierenzellkarzinom": 2,
+    "onkozytom-niere": 1,
+    "nebennieren-inzidentalom": 1,
+    "nebennierenadenom": 2,
+    "myelolipom": 1,
+    "phaeochromozytom": 1,
+    "neuroblastom-nebenniere": 1,
+    "fremdkoerper-atemwege": 2,
+    "tuberkulose": 1,
+    "lungenabszess": 1,
+    "roentgen-thorax-systematik": 1,
+    "herzgroesse-roentgen": 1,
+    "lungenanatomie": 1,
+    "leberzyste": 1,
+    "appendizitis": 1,
+    "pdac": 3,
+    "inguinalhernie": 1,
+    "femoralhernie": 1,
+    "untere-gi-blutung": 1,
+    "kolorektales-karzinom": 1,
+    "nephroblastom-wilms": 1,
+    "mesenteriale-ischaemie": 1,
+    "spinalkanalstenose": 2,
+    "spondylodiszitis": 1,
+    "knochentumor-grundlagen": 1,
+    "morbus-bechterew-ws": 2,
+    "morbus-scheuermann": 1,
+    "osteochondrosis-intervertebralis": 1,
+    "sehnenpathologien-hand": 2,
+    "de-quervain": 1,
+    "proximale-humerusfraktur": 2,
+    "metakarpale-frakturen": 1,
+    "knocheninfarkt": 3,
+    "eosinophiles-granulom": 3,
+    "fibromuskulaere-dysplasie": 3,
+    "spondylarthrose": 2,
+    "synovialzyste-facettengelenke": 1,
+    "bandscheibenpathologien": 4,
+    "lymphom-zns": 2,
+    "medulloblastom": 2,
+    "meningeom": 2,
+    "recist-1-1": 3,
+    "morbus-ormond": 1,
+    "appendicitis-epiploica": 1,
+    "mesenteriale-panniculitis": 1,
+    "peritonealkarzinose": 1,
+    "metastasen-meningeosis": 2,
+    "leber-anatomie": 3,
+    "gefaesse-anatomie-abdomen": 3,
+    "wirbelmetastasen": 1,
+    "astrozytom-spinal": 1,
+    "ependymom-spinal": 1,
+    "meningeom-spinal": 1,
+    "schwannom-neurofibrom-spinal": 1,
+    "fluoroskopie-durchleuchtung": 1,
+    "dosisgroessen-dosimetrie": 1,
+    "riesenzelltumor": 1,
+    "gist": 1,
+    "volvulus": 1,
+    "pnet": 4,
+    "hepatisches-angiomyolipom": 4,
+    "psc-pbc": 1,
+    "leber-mrt-protokoll": 1,
+    "osteochondrosis-dissecans": 2,
+    "schulterinstabilitaet": 2,
+    "nsclc": 1,
+    "sclc": 1,
+    "neuroforamenstenose": 1,
+    "copd": 1,
+    "atrt": 1,
+    "astrozytom-idh-mutiert": 1,
+    "oligodendrogliom-idh-mutiert": 1,
+    "glioblastom": 1,
+    "sternum-rippen-trauma": 2,
+    "glenohumerale-arthrose": 2,
+    "arterien-obere-extremitaet": 2,
+    "leberzirrhose": 2,
+    "ulkuserkrankung": 2,
+    "duodenaldivertikel": 2,
+    "fibrolamellaeres-karzinom": 2,
+    "li-rads": 2,
+    "fornixruptur": 2,
+    "pylorusstenose": 2,
+    "pmc-kolitis": 2,
+    "colitis-ulcerosa": 2,
+    "pyelonephritis": 2,
+    "nierenabszess": 2,
+    "aq-balkenagenesie": 3,
+    "aq-pvl": 3,
+    "aq-atv-intervention": 4,
+    "lung-rads": 3,
+    "kardio-mrt-basics": 3,
+    "kardio-mrt-indikationen": 3,
+    "myokardinfarkt-mrt": 3,
+    "aortenbogen": 3,
+    "aq-hsv-enzephalitis": 3,
+    "aq-hirnabszess": 3,
+    "morbus-perthes": 2,
+    "chondrokalzinose": 2,
+    "osgood-schlatter": 1,
+    "weitere-osteochondrosen": 2
+  }
+}

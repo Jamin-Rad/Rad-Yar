@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/brain_remediation; independent read-only review of root-authored Mamma packet",
+  "status": "ACCEPTED_BOUNDED_PACKET",
+  "scope": {
+    "route": "/mamma/bildgebung/mrt/basics",
+    "questionTriadsRead": 8,
+    "cardTriadsRead": 13,
+    "lessonUnitsRead": "All four new CLINICAL_NOTES in DE/EN/FA, actual insertion sites and canonical question consumer; bounded FA Correlate correction; five mapped learning goals",
+    "excluded": "Unchanged full lesson, clinical figures, global Mamma bank and production browser"
+  },
+  "filesRead": [
+    "data/mammaBasicsClinical.js",
+    "data/mammaMrtBasics.js",
+    "app/mamma/bildgebung/mrt/basics/page.js changed units",
+    "app/mamma/bildgebung/mrt/basics/content.js changed FA unit",
+    "data/assessmentQuality/mammaCoverage.js five goals as reproduced in packet02-mamma-basics.json",
+    "docs/lesson-quality/remediation-2026-10-25/thorax-mamma/packet02-mamma-basics.json"
+  ],
+  "sourceEvidence": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37150275/",
+      "read": "Actual abstract lines242–245: genetic high risk, MRI surveillance25–30, mammography ages vary by risk, mutation carriers may delay mammography with annual MRI. Scoped32-year-old vignette and card match."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7033067/",
+      "read": "Actual consensus lines178–179,316–324,348–356: preferred focused ROI in appropriate darkest ADC part, avoid necrosis/noise/nonenhancing voxels; correlate enhanced and high-b DWI tissue; multiparametric interpretation. Current keyD scientifically consistent."
+    },
+    {
+      "url": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-MRI.pdf",
+      "read": "Official four-page v2025 lexicon summary, breast tissue and findings: FGT/BPE distinction, mass3D, NME distinct from BPE, T2descriptor. Focus absent from current finding types; no claim that every small lesion is benign."
+    },
+    {
+      "url": "https://www.acr.org/-/media/ACR/Files/Practice-Parameters/MR-Contrast-Breast.pdf",
+      "read": "Direct open currently redirects to Sitecore login; indexed original ACR parameter paragraph retrieved by search describes pre/post-T1, subtraction, misregistration limitation. Direct-link availability is recorded, not treated as content contradiction."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7002629/",
+      "read": "Original EUSOBI biopsy recommendation NoteC: mammography/tomosynthesis guidance for suspicious finding visible only on those methods; MRI guidance for MRI-only target. Supports target-modality distinction."
+    },
+    {
+      "url": "https://www.cancerimagingarchive.net/wp-content/uploads/ACRIN-6667_Protocol.pdf",
+      "read": "Original ACR trial protocol AppendixIV historical focus/foci tiny enhancement<5mm; retrieved indexed text. This is historical evidence, not current management guidance."
+    }
+  ],
+  "findings": [
+    {
+      "id": "MAMMA-P2-ASM-ADC",
+      "severity": "moderate",
+      "gate": "ASM",
+      "file": "data/mammaBasicsClinical.js",
+      "key": "adc optionsB/C",
+      "observed": "The targeted-ROI stem names viable enhancing solid tissue and nonenhancing necrosis. Alternatives deliberately placing the ROI partly outside the lesion in normal fat or in an acknowledged adjacent artifact zone remain implausible, leaving a conspicuously qualified correct answer. The key and EUSOBI explanation are sound.",
+      "impact": "The new item can be answered by basic avoidance of obviously invalid measurement rather than selecting among plausible lesion-sampling choices.",
+      "requiredCorrection": "Keep the bounded EUSOBI claim, but replace at leastB/C with competing within-lesion sampling strategies or a realistic low-ADC signal-blackout pitfall. Preserve a unique key, the stated small-ROI purpose, DE/EN/FA parity and individual feedback.",
+      "status": "CLOSED",
+      "retest": "Independent cycle1: actual DE/EN/FA original source re-read. ADC now compares within-solid bright/dark and boundary partial-volume strategies; BPE explicitly minimal; historical card front no longer claims2013 and carries legacy source/currentlexicon references; question carries primary historical source."
+    },
+    {
+      "id": "MAMMA-P2-LNG-BPE",
+      "severity": "minor",
+      "gate": "ASM/LNG",
+      "file": "data/mammaBasicsClinical.js",
+      "key": "fgt-bpe stem",
+      "observed": "The stem says nur wenig / little / اندک enhancement but keys the formal minimal BPE category. Little enhancement could also describe mild; the binary option structure hides the category ambiguity.",
+      "requiredCorrection": "State near-absent/minimal enhancement consistently in the three stems, or avoid assigning a precise minimal category from unspecified little enhancement.",
+      "status": "CLOSED",
+      "retest": "Independent cycle1: actual DE/EN/FA original source re-read. ADC now compares within-solid bright/dark and boundary partial-volume strategies; BPE explicitly minimal; historical card front no longer claims2013 and carries legacy source/currentlexicon references; question carries primary historical source."
+    },
+    {
+      "id": "MAMMA-P2-SRC-FOCUS",
+      "severity": "minor",
+      "gate": "SRC",
+      "file": "data/mammaBasicsClinical.js and data/mammaMrtBasics.js",
+      "key": "focus item source and historical card07",
+      "observed": "The item-level source points only to the current v2025 lexicon although the question/explanation and card also teach the historical<5mm definition. The packet ledger has legacy evidence, but it does not travel with the item. Card07 specifically names2013, while the supplied primary protocol evidence is older.",
+      "requiredCorrection": "Attach the historical primary reference as well as the current lexicon to the historical item/card, and either provide the actual2013 source or use version-neutral historical wording for the card front. Keep the v2025 distinction.",
+      "status": "CLOSED",
+      "retest": "Independent cycle1: actual DE/EN/FA original source re-read. ADC now compares within-solid bright/dark and boundary partial-volume strategies; BPE explicitly minimal; historical card front no longer claims2013 and carries legacy source/currentlexicon references; question carries primary historical source."
+    }
+  ],
+  "positiveChecks": [
+    "All eight keys are clinically/morphologically consistent with their text vignettes; no demonstrated correct-answer translation inversion.",
+    "Each question has individual explanations for all three wrong options, and canonical consumer preserves these fields and stable IDs.",
+    "Screening and biopsy-limit goals now have focused retrieval cards rather than numerical quota additions.",
+    "Subtraction questions and cards distinguish pre-existing T1 signal from true enhancement and explicitly assess motion misregistration.",
+    "No ADC-only malignancy rule is taught; ROI caveat is present in lesson, question and retrieval card.",
+    "Historical focus is explicitly distinguished from current v2025 morphology; no automatic benign label or biopsy waiver is implied.",
+    "Changed FA vocabulary removes Correlate and uses natural wording; important negations, timing, anatomy and clinical-selection qualifiers match DE/EN."
+  ],
+  "gates": {
+    "SRC": "PASS bounded primary provenance, with old ACR direct-link redirect recorded as access limitation",
+    "EDU": "PASS bounded five-goal sequence and complementary retrieval design",
+    "ASM": "PASS bounded revised keys, clinical distractors and category specificity",
+    "LNG": "PASS semantic triad comparison apart from shared BPEcategory specificity issue",
+    "VIS": "NOT_APPLICABLE no new image claim in this packet",
+    "UX": "NOT_RUN by reviewer; root owns browser verification",
+    "REV": "Independent review complete; repair retest required"
+  },
+  "limits": [
+    "No empirical difficulty or learner-response validation; difficulty judgement is editorial.",
+    "No complete scientific approval of the whole Mamma lesson.",
+    "No production browser, publication or DrZia approval inferred."
+  ],
+  "clinicalApproval": "PENDING_DR_ZIA",
+  "retest": {
+    "cycle": 1,
+    "readOnly": true,
+    "sourceUnits": "ADC full stem/options/key/correct and wrong feedback; FGT-BPE stem/options/explanation; focus historical stem/source and card07front/answer/explanation/source references in actual canonical mapper",
+    "languages": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "limitations": "No new diagnostic image or browser test; no empirical difficulty certification or wholelesson scientific approval."
+  }
+}

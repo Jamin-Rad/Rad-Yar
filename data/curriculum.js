@@ -8,6 +8,7 @@
 // "ready"-Themen haben link/mcqLink/flashcardLink/fallLink + updatedAt.
 
 import { CONTRAST_GROUPS } from './contrastMedia'
+import assessmentLinks from './assessmentQuality/routeLinks.json'
 
 export const CURRICULUM = [
   {
@@ -1881,5 +1882,7 @@ export const getLessonLinkForFlashcard = (flashcardHref) => {
       }
     }
   }
-  return null
+  const topicId = String(flashcardHref || '').split('?')[0].match(/^\/flashcards\/([^/]+)$/)?.[1]
+  if (!topicId) return null
+  return Object.entries(assessmentLinks.routes).find(([, mapping]) => mapping.cardTopic === topicId)?.[0] || null
 }

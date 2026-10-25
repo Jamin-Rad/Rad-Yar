@@ -1,6 +1,8 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { lessonAssessmentActions } from '@/lib/lessonAssessmentLinks'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
@@ -177,6 +179,8 @@ export default function StandardLessonShell({
   lessonRead = false,
   syncHashNavigation = false,
 }) {
+  const pathname = usePathname()
+  const assessmentActions = lessonAssessmentActions(pathname, lang, actions)
   const labels = { ...(DEFAULT_LABELS[lang] || DEFAULT_LABELS.de), ...Object.fromEntries(Object.entries(suppliedLabels || {}).filter(([, value]) => value !== undefined && value !== null)) }
   const trackedSections = useMemo(() => sections.filter(section => !section.emphasis), [sections])
   const lehrMode = useLehrModeActive()
@@ -275,8 +279,8 @@ export default function StandardLessonShell({
       <div className={styles.semanticHero}><LessonHero lessonId={heroLessonId} title={title} imageSrc={heroImageSrc || theme.heroImage} imageAlt={heroImageAlt || title} visual={heroVisual} lang={lang} /></div>
       <div className={styles.actions}>
         <Action action={summaryAction} className={styles.takeHomeJump} icon="summary" />
-        <Action action={actions.mcq} className={styles.primaryAction} icon="quiz" />
-        <Action action={actions.flashcards} className={styles.secondaryAction} icon="cards" />
+        <Action action={assessmentActions.mcq} className={styles.primaryAction} icon="quiz" />
+        <Action action={assessmentActions.flashcards} className={styles.secondaryAction} icon="cards" />
       </div>
       <div className={styles.progressBar}>
         <div className={styles.progressTrack} role="progressbar" aria-label={labels.progress} aria-valuemin={0} aria-valuemax={trackedIds.length} aria-valuenow={readSections.size}><i style={{ width: `${progress}%` }} /></div>

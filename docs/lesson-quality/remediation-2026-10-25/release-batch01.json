@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-25",
+  "status": "REVIEWED_CHANGES_QUEUED_FOR_FINAL_BUILD_AND_LIVE_CHECK",
+  "baseline": "145955752d4d2159e22f2db2280c76ddb2c17256",
+  "scope": "First bounded remediation release within the ongoing234-lesson task. This does not declare31wholelessons or the course scientifically complete.",
+  "activeSupplementQuestionsPerLanguage": 46,
+  "activeSupplementCards": 52,
+  "routeMappings": [
+    "/gehirn/anatomie/balkenagenesie",
+    "/gehirn/encephalopathie/pres",
+    "/gehirn/anatomie/pvl",
+    "/gehirn/anatomie/chiari",
+    "/msk/trauma/radiuskoepfchenfraktur",
+    "/msk/schulter/rotatorenmanschette",
+    "/msk/trauma/ak-luxation",
+    "/msk/trauma/frakturen-kindesalter",
+    "/msk/trauma/frakturbeschreibung",
+    "/msk/trauma/unterarmschaftfrakturen",
+    "/msk/trauma/distale-radiusfraktur",
+    "/technik/interventionelle-radiologie",
+    "/technik/kontrastmittel/ultraschall",
+    "/technik/kontrastmittel/roentgen",
+    "/technik/kontrastmittel/mrt",
+    "/technik/kontrastmittel/nierenfunktion",
+    "/technik/kontrastmittel/schwangerschaft",
+    "/thorax/lung-rads",
+    "/thorax/kardio/kardio-mrt-basics",
+    "/thorax/kardio/kardio-mrt-indikationen",
+    "/thorax/kardio/myokardinfarkt-mrt",
+    "/thorax/anatomie/aortenbogen",
+    "/mamma/bildgebung/mrt/basics",
+    "/gehirn/infektionen/herpes-enzephalitis",
+    "/gehirn/infektionen/hirnabszess",
+    "/msk/osteochondrosen/morbus-perthes",
+    "/msk/knie/chondrokalzinose",
+    "/msk/osteochondrosen/osgood-schlatter",
+    "/msk/osteochondrosen/weitere-osteochondrosen",
+    "/msk/knie/patella-streckapparat",
+    "/msk/osteochondrosen/osteochondrosis-dissecans"
+  ],
+  "otherReviewedChanges": [
+    "29existingcontrast question/cardpairs",
+    "8existingMammaBasicsMCQs+13cards",
+    "PASTA3localequestions/1card",
+    "6canonicalOCD/Patellaquestionrows",
+    "CTSI/FNH/HCCboundedsharedpatches",
+    "Stablequizidentity,locale-awarecontentversions,legacy-keypreservation,language-preservingreturnlinks"
+  ],
+  "reviews": [
+    "integration-review.json",
+    "brain/review-packet01.json",
+    "brain/review-packet04-infection.json",
+    "brain/pvl-restoration-ssr.json",
+    "msk-spine/review-packet01.json",
+    "msk-spine/review-packet02.json",
+    "abdomen-technik/review-packet01.json",
+    "abdomen-technik/review-contrast-remaining15.json",
+    "thorax-mamma/review-packet01.json",
+    "thorax-mamma/review-packet02-mamma-basics.json"
+  ],
+  "unreleasedActiveProducers": [
+    "ATV02/03FMD/GIST/GIoriginalproducers",
+    "BrainNPH/ICB/Moyamoya/dAVF/HMAandHIVoriginalproducers",
+    "MSK03ACL/Meniscus/AVN/Melor/BoneInfarct",
+    "RemainingThorax/Mammarevisions"
+  ],
+  "evidence": {
+    "firstProductionBuild": "PASS beforelatestsharedfixes;finalbuildpending",
+    "allRoutesSSR": "702/702 afterPVLrestoration;rerunafterselectedreleasechangespending",
+    "browser": "LungRADS3-questionlink,shuffledwrongfeedbackDE/EN/FA,FAcardflip/explanationvisuallychecked;newreturnlinkfixpendingrebuild"
+  },
+  "publication": "NOT_PUSHED_YET"
+}

@@ -25,12 +25,59 @@ const seeds = [
     explanation: L('Die typische Impaktionskonstellation betrifft die mediale Patella und den lateralen Femurkondylus. Sie ist ein Hinweis im passenden Kontext, kein alleiniger Beweis.', 'The typical impaction pattern involves the medial patella and lateral femoral condyle. It is a clue in context, not proof by itself.', 'الگوی تیپیک برخورد، سطح داخلی کشکک و کندیل خارجی فمور را درگیر می‌کند. این یافته در زمینهٔ مناسب یک سرنخ است، نه اثبات مستقل تشخیص.'),
   },
   {
-    id: 'transverse-fracture-mechanism', topicId: 'patellafraktur-trauma',
-    question: L('Welche Frakturrichtung passt laut PDF am ehesten zu einer indirekten Zugbelastung des Streckapparats?', 'Which fracture orientation is most associated in the PDF with indirect traction through the extensor mechanism?', 'طبق PDF کدام جهت خط شکستگی بیشتر با نیروی کششی غیرمستقیم مکانیسم اکستانسور مرتبط است؟'),
-    options: [L('Querfraktur.', 'Transverse fracture.', 'شکستگی عرضی.'), L('Längsfraktur.', 'Longitudinal fracture.', 'شکستگی طولی.'), L('Trümmerfraktur.', 'Comminuted fracture.', 'شکستگی چندقطعه‌ای.'), L('Die Frakturrichtung lässt sich aus dem Mechanismus nicht beschreiben.', 'Fracture orientation cannot be described in relation to mechanism.', 'جهت خط شکستگی را نمی‌توان در ارتباط با مکانیسم توصیف کرد.')],
-    correct: 0,
-    explanation: L('Die PDF beschreibt Querfrakturen häufig als Folge indirekter Zugbelastung. Das ist eine Musterassoziation und bestimmt nicht allein die Stabilität.', 'The PDF often associates transverse fractures with indirect traction. This is a pattern association and does not by itself determine stability.', 'PDF شکستگی عرضی را اغلب پیامد کشش غیرمستقیم می‌داند. این یک ارتباط الگویی است و به‌تنهایی پایداری را تعیین نمی‌کند.'),
+  "id": "transverse-fracture-mechanism",
+  "topicId": "patellafraktur-trauma",
+  "question": {
+    "de": "Welche Frakturrichtung passt laut PDF am ehesten zu einer indirekten Zugbelastung des Streckapparats?",
+    "en": "Which fracture orientation is most associated in the PDF with indirect traction through the extensor mechanism?",
+    "fa": "طبق PDF کدام جهت خط شکستگی بیشتر با نیروی کششی غیرمستقیم مکانیسم اکستانسور مرتبط است؟"
   },
+  "options": [
+    {
+      "de": "Querfraktur.",
+      "en": "Transverse fracture.",
+      "fa": "شکستگی عرضی."
+    },
+    {
+      "de": "Längsfraktur.",
+      "en": "Longitudinal fracture.",
+      "fa": "شکستگی طولی."
+    },
+    {
+      "de": "Trümmerfraktur.",
+      "en": "Comminuted fracture.",
+      "fa": "شکستگی چندقطعه‌ای."
+    },
+    {
+      "de": "Schrägfraktur.",
+      "en": "Oblique fracture.",
+      "fa": "شکستگی مایل."
+    }
+  ],
+  "correct": 0,
+  "explanation": {
+    "de": "Die PDF beschreibt Querfrakturen häufig als Folge indirekter Zugbelastung. Das ist eine Musterassoziation und bestimmt nicht allein die Stabilität.",
+    "en": "The PDF often associates transverse fractures with indirect traction. This is a pattern association and does not by itself determine stability.",
+    "fa": "PDF شکستگی عرضی را اغلب پیامد کشش غیرمستقیم می‌داند. این یک ارتباط الگویی است و به‌تنهایی پایداری را تعیین نمی‌کند."
+  },
+  "wrongExplanations": {
+    "B": {
+      "de": "Die Quelle verbindet Längsfrakturen eher mit direkter Einwirkung; die Frage sucht das typische indirekte Zugmuster.",
+      "en": "The source associates longitudinal fractures more with direct impact; the question asks for the typical indirect tensile pattern.",
+      "fa": "منبع شکستگی طولی را بیشتر با ضربهٔ مستقیم مرتبط می‌کند؛ سؤال الگوی تیپیک کشش غیرمستقیم را می‌پرسد."
+    },
+    "C": {
+      "de": "Trümmerfrakturen werden in der Quelle eher mit direkter Einwirkung verbunden, nicht als typisches indirektes Zugmuster.",
+      "en": "The source associates comminution more with direct impact, rather than the typical indirect tensile pattern.",
+      "fa": "خردشدگی در منبع بیشتر با ضربهٔ مستقیم مرتبط است، نه الگوی تیپیک کشش غیرمستقیم."
+    },
+    "D": {
+      "de": "Die Quelle ordnet der indirekten Zugbelastung typischerweise die Querfraktur zu. Die Frakturlinie wird bildmorphologisch beschrieben; aus dieser Tendenz folgt keine individuelle Stabilitätsbewertung.",
+      "en": "The source associates indirect tensile loading typically with a transverse fracture. Describe the imaged fracture line; this tendency does not determine individual stability.",
+      "fa": "منبع بارگذاری کششی غیرمستقیم را معمولاً با شکستگی عرضی مرتبط می‌کند. خط شکستگی را از روی تصویر توصیف کنید؛ این گرایش، پایداری فردی را تعیین نمی‌کند."
+    }
+  }
+},
 ]
 
 export const PATELLA_STRECKAPPARAT_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [lang,
@@ -40,6 +87,7 @@ export const PATELLA_STRECKAPPARAT_QUESTIONS = Object.fromEntries(['de', 'en', '
     options: seed.options.map((option, index) => ({ id: ['A', 'B', 'C', 'D'][index], text: option[lang] })),
     correct: ['A', 'B', 'C', 'D'][seed.correct],
     explanation: seed.explanation[lang],
+    ...(seed.wrongExplanations ? { wrongExplanations: Object.fromEntries(Object.entries(seed.wrongExplanations).map(([id,text]) => [id,text[lang]])) } : {}),
     tags: [seed.topicId || 'patella-streckapparat'],
     fach: 'msk',
   })),

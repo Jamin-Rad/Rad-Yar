@@ -59,7 +59,7 @@ const QUESTIONS = [
     protocol: L('Cine · T1/T2-Mapping · LGE · ggf. Flussmessung', 'Cine · T1/T2 mapping · LGE · flow imaging when needed', 'Cine · مپینگ T1/T2 · LGE · در صورت نیاز اندازه‌گیری جریان'),
   },
   {
-    id: 'ischaemia', short: 'KHK', title: L('KHK / Myokardischämie', 'CAD / myocardial ischaemia', 'بیماری کرونر / ایسکمی میوکارد'),
+    id: 'ischaemia', short: L('KHK', 'CAD', 'بیماری کرونر'), title: L('KHK / Myokardischämie', 'CAD / myocardial ischaemia', 'بیماری کرونر / ایسکمی میوکارد'),
     indication: L('Funktionelle Beurteilung einer vermuteten KHK oder unklarer Relevanz bekannter Koronarstenosen.', 'Functional assessment of suspected coronary disease or uncertain significance of known coronary stenoses.', 'ارزیابی عملکردی بیماری کرونری مشکوک یا اهمیت نامشخص تنگی‌های شناخته‌شده.'),
     value: L('Stressinduzierte Perfusionsdefekte, Wandbewegung, LV-Funktion und Infarktnarbe in einer Untersuchung.', 'Stress-induced perfusion defects, wall motion, LV function and infarct scar in one examination.', 'نقص پرفیوژن ناشی از استرس، حرکت دیواره، عملکرد LV و اسکار انفارکت در یک بررسی.'),
     protocol: L('Vasodilatator-Stressperfusion · Cine · LGE · Ruheperfusion optional', 'Vasodilator stress perfusion · cine · LGE · optional rest perfusion', 'پرفیوژن استرس با وازودیلاتور · Cine · LGE · پرفیوژن استراحت اختیاری'),
@@ -80,10 +80,10 @@ const QUESTIONS = [
     id: 'infiltration', short: 'T1 / T2*', title: L('Infiltration & Speichererkrankungen', 'Infiltration & storage disease', 'بیماری‌های نفوذی و ذخیره‌ای'),
     indication: L('Verdacht auf Amyloidose, Fabry, kardiale Sarkoidose oder Eisenüberladung.', 'Suspected amyloidosis, Fabry disease, cardiac sarcoidosis or iron overload.', 'شک به آمیلوئیدوز، فابری، سارکوئیدوز قلبی یا اضافه‌بار آهن.'),
     value: L('Charakteristische Mapping- und LGE-Muster; T2* quantifiziert myokardiales Eisen.', 'Characteristic mapping and LGE patterns; T2* quantifies myocardial iron.', 'الگوهای مشخص مپینگ و LGE؛ T2* آهن میوکارد را کمی‌سازی می‌کند.'),
-    protocol: L('Cine · natives T1/ECV · T2/T2* · LGE je nach Fragestellung', 'Cine · native T1/ECV · T2/T2* · LGE tailored to the question', 'Cine · T1 طبیعی/ECV · T2/T2* · LGE متناسب با پرسش'),
+    protocol: L('Cine · natives T1/ECV · T2/T2* · LGE je nach Fragestellung', 'Cine · native T1/ECV · T2/T2* · LGE tailored to the question', 'Cine · T1 بدون تزریق/ECV · T2/T2* · LGE متناسب با پرسش'),
   },
   {
-    id: 'mass', short: 'MASS', title: L('Raumforderung, Thrombus & Perikard', 'Mass, thrombus & pericardium', 'توده، ترومبوز و پریکارد'),
+    id: 'mass', short: 'MASS', title: L('Raumforderung, Thrombus & Perikard', 'Mass, thrombus & pericardium', 'توده، ترومبوس و پریکارد'),
     indication: L('Unklare intrakardiale Struktur, Tumorverdacht, Perikardentzündung oder Verdacht auf Konstriktion.', 'Uncertain intracardiac structure, suspected tumour, pericardial inflammation or possible constriction.', 'ساختار نامشخص داخل قلب، شک به تومور، التهاب پریکارد یا احتمال کنستریکشن.'),
     value: L('Gewebecharakterisierung, Perfusion und Enhancement; Echtzeit-Cine zeigt ventrikuläre Interdependenz bei Konstriktion.', 'Tissue characterisation, perfusion and enhancement; real-time cine shows ventricular interdependence in constriction.', 'توصیف بافت، پرفیوژن و enhancement؛ Cine زمان‌واقعی وابستگی متقابل بطنی را در کنستریکشن نشان می‌دهد.'),
     protocol: L('Cine · T1/T2 · Perfusion · LGE · Echtzeit-Cine bei Atmung', 'Cine · T1/T2 · perfusion · LGE · free-breathing real-time cine', 'Cine · T1/T2 · پرفیوژن · LGE · Cine زمان‌واقعی حین تنفس'),
@@ -127,6 +127,7 @@ const TAKE_HOME = [
 ]
 
 const SOURCES = [
+  ['ESC · Acute coronary syndromes (2023)', 'https://academic.oup.com/eurheartj/article/44/38/3720/7243210'],
   ['SCMR · Clinical indications for CMR (2020)', 'https://doi.org/10.1186/s12968-020-00682-4'],
   ['SCMR · Standardized CMR protocols (2020)', 'https://scmr.org/news/standardized-cardiovascular-magnetic-resonance-imaging-cmr-protocols-2020-update/'],
   ['EACVI · CMR Pocket Guides', 'https://www.escardio.org/communities/associations/eacvi/scientific-documents-and-publications/cmr-pocket-guides/'],
@@ -313,8 +314,8 @@ export default function CardiacMriIndicationsPage() {
       <div className={`${base.main} ${styles.content}`}>
         <section className={styles.questionLab} aria-label={ui.choose}>
           <header><span>QUESTION FIRST</span><h2>{ui.choose}</h2></header>
-          <div className={styles.questionTabs} role="tablist" aria-label={ui.choose}>{QUESTIONS.map(item => <button key={item.id} type="button" role="tab" aria-selected={questionId === item.id} className={questionId === item.id ? styles.questionActive : ''} onClick={() => setQuestionId(item.id)}><small>{item.short}</small><strong>{c(item.title)}</strong></button>)}</div>
-          <article className={styles.questionPanel} role="tabpanel"><div className={styles.questionBadge}>{selectedQuestion.short}</div><div><small>{ui.indication}</small><h3>{c(selectedQuestion.title)}</h3><p>{c(selectedQuestion.indication)}</p></div><dl><div><dt>{ui.value}</dt><dd>{c(selectedQuestion.value)}</dd></div><div><dt>{ui.sequence}</dt><dd>{c(selectedQuestion.protocol)}</dd></div></dl></article>
+          <div className={styles.questionTabs} role="tablist" aria-label={ui.choose}>{QUESTIONS.map(item => <button key={item.id} type="button" role="tab" aria-selected={questionId === item.id} className={questionId === item.id ? styles.questionActive : ''} onClick={() => setQuestionId(item.id)}><small>{c(item.short)}</small><strong>{c(item.title)}</strong></button>)}</div>
+          <article className={styles.questionPanel} role="tabpanel"><div className={styles.questionBadge}>{c(selectedQuestion.short)}</div><div><small>{ui.indication}</small><h3>{c(selectedQuestion.title)}</h3><p>{c(selectedQuestion.indication)}</p></div><dl><div><dt>{ui.value}</dt><dd>{c(selectedQuestion.value)}</dd></div><div><dt>{ui.sequence}</dt><dd>{c(selectedQuestion.protocol)}</dd></div></dl></article>
           {questionId === 'ischaemia' && lang === 'de' ? <KhkDetail /> : null}
         </section>
 

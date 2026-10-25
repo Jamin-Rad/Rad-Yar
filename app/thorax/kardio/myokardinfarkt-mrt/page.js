@@ -18,7 +18,7 @@ const copy = {
   chapter: L('Kardiale Bildgebung / Kardio-MRT', 'Cardiac imaging / cardiac MRI', 'تصویربرداری قلبی / MRI قلب'),
   thorax: L('Thorax', 'Thorax', 'قفسه سینه'),
   contents: L('Inhaltsverzeichnis', 'Contents', 'فهرست مطالب'),
-  preview: L('Lektion im Aufbau · LGE und Stress-Perfusion', 'Lesson in progress · LGE and stress perfusion', 'درس در حال تکمیل · LGE و پرفیوژن استرس'),
+  preview: L('LGE und Stress-Perfusion', 'LGE and stress perfusion', 'LGE و پرفیوژن استرس'),
   read: L('Als gelesen markieren', 'Mark as read', 'علامت‌گذاری به‌عنوان خوانده‌شده'),
   readDone: L('Als gelesen markiert', 'Marked as read', 'خوانده‌شده'),
   auth: L('Bitte melde dich an, um deinen Lernfortschritt zu speichern.', 'Please sign in to save your learning progress.', 'برای ذخیرهٔ پیشرفت آموزشی وارد حساب شوید.'),

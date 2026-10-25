@@ -115,7 +115,7 @@ export const RADIUSKOPF_LESSON = {
         ],
         [
           L('CT', 'CT', 'CT'),
-          L('Bei unklarer Fragmentanzahl (Mason III vs. IV), präoperative OP-Planung, komplexe Luxationsfrakturen', 'For unclear fragment count (Mason III vs. IV), preoperative planning, complex fracture-dislocations', 'برای تعداد نامشخص قطعات (ماسون III در مقابل IV)، برنامه‌ریزی قبل از عمل، شکستگی‌های لوکساسیون پیچیده'),
+          L("Bei unklarer Fragmentmorphologie, zur präoperativen Planung und bei komplexen Frakturluxationen.", "For uncertain fragment morphology, preoperative planning and complex fracture-dislocations.", "در مورفولوژی نامشخص قطعات، برنامه‌ریزی پیش از عمل و شکستگی‌دررفتگی‌های پیچیده."),
         ],
       ],
     },
@@ -150,7 +150,7 @@ export const RADIUSKOPF_LESSON = {
       ],
     },
     masonIVCase: {
-      title: L('Radiusköpfchenluxation – Mason IV', 'Radial head dislocation – Mason IV', 'لوکساسیون سر رادیوس – ماسون IV'),
+      title: L("Radiokapitellare Fehlstellung erkennen", "Recognise radiocapitellar malalignment", "تشخیص بدراستایی رادیوکاپیتلار"),
       images: [
         {
           src: '/radiuskopf/mason-iv-luxation.jpeg',
@@ -220,9 +220,9 @@ export const RADIUSKOPF_LESSON = {
         icon: '🩹',
         title: L('Mason I – Konservativ', 'Mason I – Conservative', 'ماسون I – محافظه‌کارانه'),
         text: L(
-          'Gilchrist-Schlinge oder Oberarmgips für 1–2 Wochen. Frühfunktionelle Mobilisation nach Schmerzrückgang (Ziel: keine Steifigkeit!). Vollbelastung und Arbeitsfähigkeit nach 4–6 Wochen.',
-          'Gilchrist sling or above-elbow cast for 1–2 weeks. Early functional mobilisation once pain decreases (goal: avoid stiffness!). Full loading and return to work after 4–6 weeks.',
-          'اسلینگ گیلکریست یا گچ بالای آرنج برای ۱–۲ هفته. تحرک عملکردی زودهنگام پس از کاهش درد (هدف: از سفتی جلوگیری کنید!). بار کامل و بازگشت به کار بعد از ۴–۶ هفته.'
+          "Bei isolierter stabiler, nicht oder gering verschobener Fraktur früh schmerzadaptiert mobilisieren; eine Schlinge kann kurzzeitig entlasten. Keine pauschale Wartezeit von 1–2 Wochen oder feste Freigabe zur Vollbelastung: Belastungsaufbau und Rückkehr zur Arbeit richten sich nach Stabilität, Beschwerden und klinischer Kontrolle.",
+          "For an isolated stable, nondisplaced or minimally displaced fracture, begin early pain-adapted motion; a sling may provide brief support. There is no universal 1–2-week wait or fixed clearance for full loading: loading progression and return to work depend on stability, symptoms and clinical follow-up.",
+          "در شکستگی منفرد و پایدار، بدون جابه‌جایی یا با جابه‌جایی کم، حرکت زودهنگام متناسب با درد آغاز می‌شود؛ اسلینگ می‌تواند مدت کوتاهی برای راحتی استفاده شود. انتظار همگانی ۱ تا ۲ هفته یا زمان ثابتی برای تحمل بار کامل وجود ندارد؛ افزایش بار و بازگشت به کار به پایداری، علائم و پیگیری بالینی بستگی دارند."
         ),
       },
       {
@@ -254,9 +254,9 @@ export const RADIUSKOPF_LESSON = {
       },
     ],
     cave: L(
-      'Ellenbogensteifigkeit ist die häufigste Komplikation! Jede unnötige Immobilisierung > 2 Wochen erhöht das Risiko drastisch. Frühfunktionelle Nachbehandlung ist entscheidend – besonders nach Mason I.',
-      'Elbow stiffness is the most common complication! Any unnecessary immobilisation > 2 weeks dramatically increases the risk. Early functional rehabilitation is crucial – especially after Mason I.',
-      'سفتی آرنج شایع‌ترین عارضه است! هر ایمبیلیزاسیون غیرضروری > ۲ هفته خطر را به شدت افزایش می‌دهد. توان‌بخشی عملکردی زودهنگام حیاتی است – به‌ویژه بعد از ماسون I.'
+      "Unnötig lange Ruhigstellung begünstigt eine Bewegungseinschränkung. Bei einfachen stabilen Verletzungen früh schmerzadaptiert üben; eine angeleitete Eigenübung kann genügen. Formale Physiotherapie ist nicht für jede isolierte gering verschobene Fraktur obligatorisch.",
+      "Unnecessarily prolonged immobilisation favours loss of motion. With simple stable injuries, start early pain-adapted exercises; instructed home exercise may suffice. Formal physiotherapy is not mandatory for every isolated minimally displaced fracture.",
+      "بی‌حرکتی غیرضروری و طولانی محدودیت حرکت را تشدید می‌کند. در آسیب ساده و پایدار، تمرین زودهنگام متناسب با درد آغاز شود؛ تمرین خانگی با آموزش مناسب ممکن است کافی باشد. فیزیوتراپی رسمی برای همهٔ شکستگی‌های منفرد با جابه‌جایی کم الزامی نیست."
     ),
   },
 
@@ -281,9 +281,9 @@ export const RADIUSKOPF_LESSON = {
         icon: '😱',
         title: L('Terrible Triad', 'Terrible Triad', 'سه‌گانه وحشتناک'),
         text: L(
-          'Ellenbogenluxation + Radiusköpfchenfraktur + Proc.-coronoideus-Fraktur der Ulna. Hochinstabile Verletzung → chirurgische Versorgung aller drei Komponenten erforderlich. MRT zum Ligamentassessment.',
-          'Elbow dislocation + radial head fracture + coronoid process fracture of the ulna. Highly unstable injury → surgical repair of all three components required. MRI for ligament assessment.',
-          'لوکساسیون آرنج + شکستگی سر رادیوس + شکستگی زائده کرونوئید اولنا. آسیب بسیار ناپایدار → نیاز به ترمیم جراحی هر سه مؤلفه. MRI برای ارزیابی رباط.'
+          "Ellenbogenluxation mit Radiusköpfchen- und Coronoidfraktur. Häufig instabil: nach Reposition Gelenkkongruenz, Bewegungsblock und Stabilität prüfen und die Frakturen meist im CT charakterisieren. Die orthopädische Therapie wird individuell geplant; sorgfältig ausgewählte stabile Verletzungen können unter engmaschiger Kontrolle nichtoperativ behandelt werden. Nicht jede Komponente erfordert automatisch eine Operation.",
+          "Elbow dislocation with radial-head and coronoid fractures. Often unstable: after reduction assess joint congruity, mechanical block and stability, and usually characterise the fractures with CT. Orthopaedic treatment is individualised; carefully selected stable injuries may be managed nonoperatively with close follow-up. Not every component automatically requires surgery.",
+          "دررفتگی آرنج همراه شکستگی سر رادیوس و کرونوئید. اغلب ناپایدار است؛ پس از جااندازی، تطابق مفصل، مانع مکانیکی حرکت و پایداری بررسی و شکستگی‌ها معمولاً با CT توصیف شوند. درمان ارتوپدی فردی‌سازی می‌شود؛ آسیب‌های پایدارِ با انتخاب دقیق ممکن است با پایش نزدیک غیرجراحی درمان شوند. هر مؤلفه به‌طور خودکار نیازمند جراحی نیست."
         ),
       },
       {
@@ -335,6 +335,26 @@ export const RADIUSKOPF_LESSON = {
   },
 }
 
+const TARGETED_WRONG_FEEDBACK = {
+  "rk-komplikation-1": {
+    "A": {
+      "de": "Ohne Infektzeichen ist eine Infektion nicht die typische Erklärung der Bewegungseinschränkung.",
+      "en": "Without signs of infection, infection is not the typical explanation for loss of motion.",
+      "fa": "بدون علائم عفونت، عفونت توضیح معمول محدودیت حرکت نیست."
+    },
+    "C": {
+      "de": "Gelenksteife ist die häufige funktionelle Komplikation; eine Nekrose ist nicht damit gleichzusetzen.",
+      "en": "Joint stiffness is the common functional complication; necrosis is not equivalent.",
+      "fa": "سفتی مفصل عارضهٔ عملکردی شایع است؛ نکروز معادل آن نیست."
+    },
+    "D": {
+      "de": "Eine Nervenläsion verursacht ein motorisches Ausfallmuster, nicht allein eine Gelenksteife.",
+      "en": "A nerve injury produces a motor deficit pattern, not simply joint stiffness.",
+      "fa": "آسیب عصبی الگوی نقص حرکتی ایجاد می‌کند، نه صرفاً سفتی مفصل."
+    }
+  }
+}
+const targetedWrongFeedback = id => { const lang=id.match(/-(de|en|fa)$/)?.[1]; const feedback=TARGETED_WRONG_FEEDBACK[id.replace(/-(de|en|fa)$/, '')]; return feedback ? Object.fromEntries(Object.entries(feedback).map(([key,value])=>[key,value[lang]])) : undefined }
 const LETTERS = ['A', 'B', 'C', 'D', 'E']
 const Q = (id, question, options, correct, explanation) => ({
   id,
@@ -342,6 +362,7 @@ const Q = (id, question, options, correct, explanation) => ({
   options: options.map((text, i) => ({ id: LETTERS[i], text })),
   correct: LETTERS[correct],
   explanation,
+  ...(targetedWrongFeedback(id) ? { wrongExplanations: targetedWrongFeedback(id) } : {}),
 })
 const F = (id, category, front, answer, explanation) => ({ id, category, front, answer, explanation })
 
@@ -498,7 +519,7 @@ export const RADIUSKOPF_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(la
       L('Lähmung des N. radialis', 'Radial nerve palsy', 'فلج عصب رادیال')[lang],
     ],
     1,
-    L('Ellenbogensteifigkeit ist die häufigste Komplikation. Prolongierte Immobilisation > 2 Wochen fördert sie massiv. Deshalb: frühfunktionelle Mobilisation sobald tolerierbar (nach 1–2 Wochen). Physiotherapie essenziell.', 'Elbow stiffness is the most common complication. Prolonged immobilisation > 2 weeks greatly increases risk. Therefore: early functional mobilisation as soon as tolerable (after 1–2 weeks). Physiotherapy is essential.', 'سفتی آرنج شایع‌ترین عارضه است. ایمبیلیزاسیون طولانی > ۲ هفته خطر را به شدت افزایش می‌دهد. بنابراین: تحرک عملکردی زودهنگام به محض تحمل (بعد از ۱–۲ هفته). فیزیوتراپی ضروری است.')[lang]
+    L("Ellenbogensteifigkeit ist eine wichtige Komplikation. Bei einfachen stabilen Frakturen unterstützt frühe schmerzadaptierte Bewegung die Funktion; unnötig lange Ruhigstellung vermeiden. Eine starre Wartezeit von 1–2 Wochen und formale Physiotherapie für jeden Fall sind nicht belegt. Die Begleitverletzungen bestimmen die individuelle Nachbehandlung.", "Elbow stiffness is an important complication. In simple stable fractures, early pain-adapted motion supports function; avoid unnecessary prolonged immobilisation. A fixed 1–2-week wait and formal physiotherapy for every case are not supported. Associated injuries determine individual rehabilitation.", "سفتی آرنج عارضه‌ای مهم است. در شکستگی ساده و پایدار، حرکت زودهنگام متناسب با درد به عملکرد کمک می‌کند؛ از بی‌حرکتی غیرضروری و طولانی پرهیز شود. انتظار ثابت ۱ تا ۲ هفته و فیزیوتراپی رسمی برای همهٔ موارد پشتوانه ندارد. آسیب‌های همراه برنامهٔ توان‌بخشی فردی را تعیین می‌کنند.")[lang]
   ),
 
   Q(`rk-kinder-1-${lang}`,
@@ -557,7 +578,7 @@ export const RADIUSKOPF_FLASHCARDS = [
 
   F('rk-fc-7', L('Therapie', 'Treatment', 'درمان'),
     L('Häufigste Komplikation nach Radiusköpfchenfraktur?', 'Most common complication after radial head fracture?', 'شایع‌ترین عارضه پس از شکستگی سر رادیوس؟'),
-    L('Ellenbogensteifigkeit. Verhindert durch: frühfunktionelle Mobilisation (nach 1–2 Wo.), keine prolongierte Immobilisation. Physiotherapie zur Wiederherstellung der Pronosupination und Flexion/Extension.', 'Elbow stiffness. Prevented by: early functional mobilisation (after 1–2 weeks), no prolonged immobilisation. Physiotherapy to restore pronosupination and flexion/extension.', 'سفتی آرنج. پیشگیری: تحرک عملکردی زودهنگام (بعد از ۱–۲ هفته)، عدم ایمبیلیزاسیون طولانی. فیزیوتراپی برای بازگرداندن پروناسیون/سوپیناسیون و خم/صاف شدن.'),
+    L("Ellenbogensteifigkeit. Unnötig lange Ruhigstellung begünstigt eine Bewegungseinschränkung. Bei einfachen stabilen Verletzungen früh schmerzadaptiert üben; eine angeleitete Eigenübung kann genügen. Formale Physiotherapie ist nicht für jede isolierte gering verschobene Fraktur obligatorisch.", "Elbow stiffness. Unnecessarily prolonged immobilisation favours loss of motion. With simple stable injuries, start early pain-adapted exercises; instructed home exercise may suffice. Formal physiotherapy is not mandatory for every isolated minimally displaced fracture.", "سفتی آرنج. بی‌حرکتی غیرضروری و طولانی محدودیت حرکت را تشدید می‌کند. در آسیب ساده و پایدار، تمرین زودهنگام متناسب با درد آغاز شود؛ تمرین خانگی با آموزش مناسب ممکن است کافی باشد. فیزیوتراپی رسمی برای همهٔ شکستگی‌های منفرد با جابه‌جایی کم الزامی نیست."),
     L('Steifigkeit = Hauptkomplikation. Früh mobilisieren!', 'Stiffness = main complication. Mobilise early!', 'سفتی = عارضه اصلی. زود تحرک دهید!')
   ),
 

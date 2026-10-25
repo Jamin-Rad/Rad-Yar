@@ -219,7 +219,7 @@ const FA_REFINED = {
   'Dreidimensionale raumfordernde Läsion.': 'یک ضایعه فضاگیر سه‌بعدی.',
   'Enhancement ohne klare dreidimensionale Raumforderung.': 'افزایش سیگنال پس از تزریق بدون تشکیل یک توده سه‌بعدی مشخص.',
   'Sequenzen abgleichen': 'یافته را در تمام سکانس‌های MRI تطبیق دهید',
-  'Suspekte Läsionen in allen Sequenzen korrelieren.': 'ضایعات مشکوک را در T2، تصاویر دینامیک T1، DWI و ADC با یکدیگر Correlate کنید.',
+  'Suspekte Läsionen in allen Sequenzen korrelieren.': 'ضایعات مشکوک را در T2، تصاویر دینامیک T1، DWI و ADC با یکدیگر تطبیق دهید.',
   'Umgebung prüfen': 'ساختارهای اطراف را فراموش نکنید',
   'Haut, Mamille, Pectoralis, Thoraxwand und Lymphknoten nicht vergessen.': 'پوست، نوک پستان، عضله پکتورال، دیواره قفسه سینه و غدد لنفاوی را نیز بررسی کنید.',
   'Fibroglanduläres Gewebe': 'بافت فیبروگلاندولار',

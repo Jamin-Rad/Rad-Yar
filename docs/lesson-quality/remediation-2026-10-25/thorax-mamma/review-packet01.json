@@ -1,0 +1,174 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/design_inventory",
+  "role": "Independent read-only review; author files not edited",
+  "status": "ACCEPT_BOUNDED_PACKET_AFTER_RETEST",
+  "scope": {
+    "routes": 5,
+    "newMCQTriadsRead": 15,
+    "newCardTriadsRead": 15,
+    "questionLocaleRows": 45,
+    "fields": "All stems,60options,15keys,15correct explanations,45wrong explanations,15fronts,15answers and15card explanations compared in DE/EN/FA; supplemental structural checks separate from semantic review."
+  },
+  "version": {
+    "file": "data/assessmentQuality/thoraxMamma.js",
+    "sha256": "81af1506335d45b3a34b40a98f2e1a448158a59d7b37669c5685ef041318461c"
+  },
+  "findings": [
+    {
+      "id": "REV-TM01-EDU01",
+      "severity": "moderate",
+      "gate": "EDU",
+      "item": "aq-thorax-lung-rads-LOCALE-stepped-management",
+      "file": "data/lungRadsLesson.js:46",
+      "observed": "The maintained lesson only states that stepped management has separate rules. It does not teach the tested stable4A at3months -> category3 and6months from current examination pathway.",
+      "impact": "The new declared learning goal assesses a precise interval not explained in the lesson.",
+      "required": "Teach the short versioned pathway and current-examination anchor in DE/EN/FA in the appropriate existing chapter, with original ACR source; preserve exclusions and no new/growing-suspicious findings context.",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "originalStatus": "REVISE"
+    },
+    {
+      "id": "REV-TM01-EDU02",
+      "severity": "moderate",
+      "gate": "EDU",
+      "item": "aq-thorax-kardio-mrt-basics-LOCALE-flow-aliasing",
+      "file": "app/thorax/kardio/kardio-mrt-basics/page.js",
+      "observed": "No VENC or aliasing teaching is present in the actual current CMR-basics source/captured chapter text; FLOW currently labels first-pass perfusion. The new third goal requires troubleshooting phase-contrast VENC.",
+      "impact": "A meaningful assessment is disconnected from the taught prerequisite.",
+      "required": "Add a concise phase-contrast/VENC teaching unit with plane and aliasing caveats, or map this item to an actual lesson that teaches that goal. Do not imply phase-contrast flow equals first-pass perfusion.",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "originalStatus": "REVISE"
+    },
+    {
+      "id": "REV-TM01-ASM01",
+      "severity": "moderate",
+      "gate": "ASM",
+      "item": "aq-thorax-kardio-mrt-basics-LOCALE-flow-aliasing, option C",
+      "file": "data/assessmentQuality/thoraxMamma.js",
+      "observed": "Obtaining a flow value from LGE is off-target rather than a plausible adjustment to a phase-contrast acquisition.",
+      "impact": "It can be eliminated without understanding VENC or velocity encoding.",
+      "required": "Use a plausible competing acquisition adjustment, with specific feedback about why it does not correct velocity wrapping.",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "originalStatus": "REVISE"
+    },
+    {
+      "id": "REV-TM01-ASM02",
+      "severity": "moderate",
+      "gate": "ASM",
+      "item": "aq-thorax-kardio-mrt-indikationen-LOCALE-referral and aq-thorax-myokardinfarkt-mrt-LOCALE-acute-protocol",
+      "file": "data/assessmentQuality/thoraxMamma.js",
+      "observed": "Viability referral distractors are iron-only T2*, aortic Qp/Qs and pericardial thickness; acute-MI protocol includes pulmonary-artery phase contrast alone. These are largely other-disease or off-task examinations rather than credible competing myocardial function/injury protocols.",
+      "impact": "The correct answer is identifiable by relevance to the named disease, with little protocol reasoning.",
+      "required": "Replace the cited off-task options by comparable partial or differently sequenced protocols addressing the same myocardial question, while keeping one unambiguously best combination and specific feedback. Leave correct basic sequence-to-question distinctions intact.",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "originalStatus": "REVISE"
+    },
+    {
+      "id": "REV-TM01-SRC01",
+      "severity": "moderate",
+      "gate": "SRC",
+      "item": "aq-thorax-kardio-mrt-indikationen-LOCALE-urgent-care",
+      "file": "data/assessmentQuality/thoraxMamma.js",
+      "observed": "The key appropriately prioritises acute coronary/reperfusion care, but the item/card source is the CMR protocol article rather than the acute-care guideline supporting this time-critical management assertion.",
+      "impact": "A clinically important management recommendation has insufficiently specific linked provenance.",
+      "required": "Retain the safe clinical priority and add the primary ACS guideline, e.g.2023ESC section5.1/5.2, which explicitly recommends immediate reperfusion/invasive management for working STEMI. No delay thresholds or drugs need adding.",
+      "source": "https://academic.oup.com/eurheartj/article/44/38/3720/7243210",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "originalStatus": "REVISE"
+    },
+    {
+      "id": "REV-TM01-EDU03",
+      "severity": "minor",
+      "gate": "EDU",
+      "item": "Lung-RADS new-solid goal/card mapping",
+      "file": "data/assessmentQuality/thoraxMamma.js",
+      "observed": "The new-nodule threshold question maps a retrieval card about mean diameter calculation, whereas the baseline card contains the actual baseline-versus-new distinction.",
+      "impact": "The per-goal map understates which retrieval item addresses the goal and overstates another.",
+      "required": "Map the baseline-versus-new retrieval card to both relevant threshold goals, or make the new-solid retrieval card directly rehearse the new-nodule threshold distinction while retaining diameter retrieval elsewhere.",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "originalStatus": "REVISE"
+    }
+  ],
+  "evidence": {
+    "runtime": "tmp/assessment-quality/thorax-packet01-independent-runtime.json",
+    "sourceChecks": [
+      {
+        "url": "https://www.acr.org/-/media/ACR/Files/RADS/Lung-RADS/Lung-RADS-2022.pdf",
+        "read": "Indexed original ACR solid-nodule rows: baseline6–<8 category3, new6–<8 category4A, three-month4A and >=8mmPET consideration. Direct old-url fetch currently redirects; original indexed rows were available."
+      },
+      {
+        "url": "https://cs.acr.org/-/media/ACR/Files/RADS/Lung-RADS/Lung-RADS-2022-Summary-_Final.pdf",
+        "read": "Official stepped-management point3: stable/decreased4A at3months ->3, six months from current examination."
+      },
+      {
+        "url": "https://jcmr-online.biomedcentral.com/track/pdf/10.1186/s12968-020-00607-1",
+        "read": "Original SCMR2020 protocol: complete cine coverage; tissue T2/T2*; phase-contrast plane/VENC; acute MI cine,optionalearlycontrast,MVO,LGE; stress only for a selected nonculprit question after revascularization."
+      },
+      {
+        "url": "https://www.nejm.org/doi/full/10.1056/NEJM200011163432003",
+        "read": "Original50-patient study abstract/results/methods: recovery likelihood decreases with hyperenhancement transmurality; no absolute individual guarantee."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/9498540/",
+        "read": "Original44-patient MRI study: early hypoenhancement in infarct core/MVO; no patient-specific prognosis thresholds imported."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/23694814/",
+        "read": "Original1000-patient CTA abstract: shared brachiocephalic/leftcarotid trunk and importance for interventions."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/8231269/",
+        "read": "Original37-operated-patient series abstract: rings, tracheoesophageal obstruction, stridor/respiratory symptoms/dysphagia; no general outcome claim imported."
+      },
+      {
+        "url": "https://academic.oup.com/eurheartj/article/44/38/3720/7243210",
+        "read": "OriginalESC2023 section5.1/5.2 immediate strategy/reperfusion for workingSTEMI; suitable additional source for urgent-care item."
+      }
+    ],
+    "sourceLimits": [
+      {
+        "item": "aortenbogen aberrant-branch",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/23740497/",
+        "status": "PRIMARY_TEXT_NOT_RETRIEVED_IN_THIS_REVIEW",
+        "note": "Citation identity independently resolved as Vucurevic2013 Anatomy/radiology of aortic arch branches in1266patients, DOI10.5603/FM.2013.0019. PubMed/publisher returned inaccessible or footer-only content. Do not label exact four-branch/retro-oesophageal anatomy independently source-verified solely from citation existence."
+      },
+      {
+        "item": "Lung-RADS mean-diameter card",
+        "status": "ROUNDING_DETAIL_NOT_INDEPENDENTLY_RETRIEVED",
+        "note": "Solid-nodule thresholds verified; the exact0.1mm rounding note requires original measurement-note confirmation before source closure."
+      }
+    ],
+    "lessonScope": "Actual current five lesson sources and relevant prior702SSR chapter captures compared to new goals. Two specific taught-content gaps recorded above.",
+    "language": "No clinically consequential DE/EN/FA negation, unit, key or scope mismatch demonstrated in the15newtriads. Root nativeT1/clot/CAD localized wording and removal of construction-preview inspected as bounded source changes; no browser claim."
+  },
+  "gates": {
+    "SRC": "ACCEPT_BOUNDED_PACKET_AFTER_SOURCE_RETEST",
+    "EDU": "ACCEPT_RECORDED_TEACHING_AND_RETRIEVAL_REPAIRS",
+    "ASM": "ACCEPT_SPECIFIED_REVISED_PROTOCOL_CHOICES",
+    "LNG": "PASS_BOUNDED_NEW_TRIADS",
+    "VIS": "NOT_APPLICABLE text-only vignettes; no new image interpreted",
+    "UX": "NOT_RUN browser interaction; exported runtime structure verified",
+    "REV": "Independent findings closed after bounded retest; browser and global scientific acceptance excluded."
+  },
+  "limits": [
+    "No global lesson,PDF or scientific release approval.",
+    "No learner response data or empirical difficulty calibration."
+  ],
+  "retest": {
+    "date": "2026-10-25",
+    "deltaEvidence": "tmp/assessment-quality/thorax-packet01-retest-deltas.json",
+    "runtimeEvidence": "tmp/assessment-quality/thorax-packet01-independent-runtime.json",
+    "read": "All revised15-pair dependent fields DE/EN/FA read. VENC assessment replaced by taught LGE-role item (new correctD, allwrongfeedback updated). Viability/MI protocols use comparable partial protocol alternatives. New-solid retrieval now rehearses its own threshold. Current Lung-RADS teaching includes SOLID4A qualifier in all3languages, current-examination anchor, no additional concerning findings and distinct resolved-lesion caveat.",
+    "sourceLimitsClosed": [
+      {
+        "item": "ARSA source",
+        "evidence": "Fresh primaryPubMedabstract23740497 retrieved by exact-query search: TypeIV explicitly fouraortic origins and rightsubclavianretroesophagealcourse. Nofigure interpreted; no prevalence copied."
+      },
+      {
+        "item": "Diameterroundingcard",
+        "evidence": "The unverified0.1mm detail is removed from this new card; no approval of that removed detail asserted."
+      }
+    ],
+    "specificManagementSource": "Urgent-care item/card now link originalESC2023ACS guideline, which this reviewer independently read atsection5.1/5.2."
+  }
+}

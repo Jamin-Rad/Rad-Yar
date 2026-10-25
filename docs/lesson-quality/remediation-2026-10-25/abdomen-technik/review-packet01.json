@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/remove_lesson_notice",
+  "role": "Independent read-only review; not author of ATV packet01",
+  "status": "PASS_BOUNDED_PACKET01_REPAIRS",
+  "reviewedScope": {
+    "routes": 6,
+    "contrastRevisions": 14,
+    "interventionQuestions": 4,
+    "interventionCards": 4,
+    "locales": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "read": "All14 exact revised contrast stems, options, explanations and wrong-feedback triads read. Four new intervention question/card triads completely read. Current contrastMedia consumer reviewed to verify the14 changes reach existing IDs/cards. Six3–5-goal coverage mappings runtime-tested. No fullmanualreread of15unmodified contrast items or entire six lesson bodies claimed."
+  },
+  "findings": [
+    {
+      "id": "ATV01-EDU-001",
+      "severity": "major",
+      "gate": "ASM/EDU",
+      "file": "data/assessmentQuality/contrastRevisions.js",
+      "keys": [
+        "km-gastrointestinal:0",
+        "km-gastrointestinal:1"
+      ],
+      "observed": "Leckage item optionsC/D are generic choice solely by greatest osmolality/density, rather than credible competing enteric-contrast decisions. Aspiration item has one pulmonary answer versus hepatotoxicity, renal injury without absorption and bowel stenosis; organ-word matching solves it without knowing agent-specific pulmonary effects.",
+      "impact": "Revised pool still rewards test-taking cues rather than the intended contrast-risk interpretation.",
+      "requiredCorrection": "Use homogeneous clinically conceivable alternatives targeting common misconceptions about enteric agent selection and pulmonary aspiration effects. Keep one defensible best answer, route/agent qualifiers and specific wrong feedback in all3 languages. Avoid inventing patient data or shifting into a different management protocol.",
+      "retest": "Re-read revised full triads and confirm current runtime question/card mapping and key.",
+      "status": "CLOSED_AFTER_INDEPENDENT_RETEST",
+      "retestEvidence": "Read both revised complete DE/EN/FA option/explanation/feedback triads. Leak alternatives now compete on enteric positive-agent choice and water-solubility/aspiration misconception; aspiration alternatives stay within pulmonary mechanisms. KeyB and updated card answers verified in fresh actual contrastMedia bundle."
+    },
+    {
+      "id": "ATV01-LNG-002",
+      "severity": "minor",
+      "gate": "LNG",
+      "file": "data/assessmentQuality/contrastRevisions.js",
+      "key": "km-jod-typen:1.explanation.fa",
+      "observed": "FA says benefit is particularly relevant in محلول غلیظ, while DE/EN specifically say viskose/viscous solutions. In this lesson concentration is explicitly held fixed, so غلیظ risks conflating concentration with viscosity.",
+      "requiredCorrection": "Use محلول با ویسکوزیتهٔ بالا (or equivalent) to preserve the intended physical property.",
+      "retest": "Compare only this semantic unit to DE/EN after repair.",
+      "status": "CLOSED_AFTER_INDEPENDENT_RETEST",
+      "retestEvidence": "Read current FA warming explanation: explicitly محلول با ویسکوزیتهٔ بالا; DE/EN clinical property retained."
+    }
+  ],
+  "passedBoundedChecks": [
+    "No confirmed wrong correct-answer key or clinically dangerous polarity inversion in the18 reviewed questions.",
+    "DE/EN/FA preserve the essential agent/route, conditional risk, evidence-vs-harm and individualisation qualifications.",
+    "Onyx precipitation mechanism matches official FDA description and lesson mirror; no blanket device indication inferred.",
+    "Adrenaline priority and supportive ABC measures match current RCUK guidance; adjunct medication does not replace adrenaline.",
+    "Retention/NSF/T1-signal distinction matches EMA assessment and original Kanda correlation study; no harm asserted from signal alone.",
+    "Breastfeeding routine-no-interruption versus optional informed pause remains distinct.",
+    "Six blueprint route mappings resolve existing/new actual question/card IDs; goals number3–5 perroute.",
+    "All-Bsource pattern is not a current user-visible defect: actual quiz shuffleOptionsForSession shuffles, reletters and remaps correct/wrong feedback. Preliminary concern withdrawn."
+  ],
+  "runtime": {
+    "revisedOrNewLocaleRecordsChecked": 54,
+    "goalMappingsChecked": 6,
+    "correctOptionAndWrongFeedbackCompleteness": true,
+    "temporaryBundle": "tmp/assessment-quality/atv-independent-contrast.cjs",
+    "browser": "No independent browser/interaction retest in this scoped pass"
+  },
+  "sources": [
+    {
+      "url": "https://cs.acr.org/-/media/ACR/Files/Clinical-Resources/Contrast_Media.pdf",
+      "type": "Official current ACR guidance",
+      "read": "Targeted indexed chapter extracts: warming/viscosity, same-class reaction history, breastfeeding. Not entire manual."
+    },
+    {
+      "url": "https://www.ema.europa.eu/en/news/emas-final-opinion-confirms-restrictions-use-linear-gadolinium-agents-body-scans",
+      "type": "Official regulatory assessment",
+      "read": "Healthcare-professional statements on retention, neurological harm, macrocyclic/linear release and hepatic uptake."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24475844/",
+      "type": "Original Kanda imaging study",
+      "read": "Full primary abstract including cohort, SI correlation and cautious conclusion."
+    },
+    {
+      "url": "https://www.resus.org.uk/media/337/download",
+      "type": "Official RCUK emergency guideline",
+      "read": "First-line IM adrenaline and non-first-line antihistamine evidence; current landing page says2021 remains latest."
+    },
+    {
+      "url": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=8c2340e4-2b42-45dc-8fac-9960e8172547",
+      "type": "Official Gastrografin product label",
+      "read": "Aspiration pulmonary oedema/pneumonitis/death warning; supports hazard, not pedagogical distractor quality."
+    },
+    {
+      "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf6/H060003b.pdf",
+      "type": "Official Onyx device primary description",
+      "read": "DMSO dissipation and EVOH/tantalum in-situ precipitation. Model-specific regulatory document; mechanism only generalised."
+    },
+    {
+      "url": "https://www.jstage.jst.go.jp/article/jjrt/41/2/41_KJ00001372045/_article/-char/en",
+      "type": "Original DSA misregistration investigation",
+      "read": "Complete primary abstract: spatial mask/live-image displacement; no device-specific numerical threshold imported."
+    },
+    {
+      "url": "https://www.radiologyinfo.org/en/info/angioplasty",
+      "type": "Official ACR/RSNA procedural source",
+      "read": "Balloon, wire and retained stent role definitions."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8314764/",
+      "type": "Official European Thyroid Association guideline publication",
+      "read": "Primary guideline abstract; individualised iodine-related thyroid-risk framing, no fixed waiting interval inferred."
+    }
+  ],
+  "limits": [
+    "Independent acceptance remains pending the two findings above.",
+    "No own source edits performed.",
+    "No fullPDF coverage/image approval or all66-route completion claim.",
+    "minIP/GREchange in broader author changes ledger is outside this six-route18-item scope and not independently accepted here.",
+    "Unmodified15 contrast items, loaded media and browser interactions require their stated separate evidence; build/SSR alone does not establish them."
+  ],
+  "retest": {
+    "cycle": 1,
+    "questionLocaleRecords": 6,
+    "cardAnswerLocaleRecords": 6,
+    "keysPreserved": true,
+    "unmodified15contrastItemsAccepted": false,
+    "browserAcceptance": false
+  }
+}

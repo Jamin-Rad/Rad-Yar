@@ -271,7 +271,7 @@ export const FRAKTUR_KINDER_LESSON = {
       text: L(
         'Abriss des anterolateralen Epiphysenfragments der distalen Tibia durch Zug des vorderen Syndesmosenbandes bei Außenrotationstrauma. Die mediale und zentrale Physis ist bereits geschlossen, nur die anterolaterale Physis ist noch offen (Salter-Harris III).',
         'Avulsion of the anterolateral epiphyseal fragment of the distal tibia by traction of the anterior inferior tibiofibular ligament during external rotation injury. The medial and central physis are already closed; only the anterolateral physis remains open (Salter-Harris III).',
-        'پارگی قطعه اپی‌فیزی قدامی-جانبی تیبیای دیستال توسط کشش رباط سیندزموز قدامی-تحتانی در آسیب چرخش خارجی. فیزیس مدیال و مرکزی قبلاً بسته شده‌اند؛ فقط فیزیس قدامی-جانبی باز مانده (سالتر-هریس III).'
+        "کندگی قطعهٔ استخوانی اپی‌فیزی قدامی‌جانبی تیبیای دیستال توسط کشش رباط سیندزموز قدامی-تحتانی در آسیب چرخش خارجی. فیزیس مدیال و مرکزی قبلاً بسته شده‌اند؛ فقط فیزیس قدامی-جانبی باز مانده (سالتر-هریس III)."
       ),
       age: L('12–14 Jahre', '12–14 years', '۱۲–۱۴ سال'),
       imaging: L(
@@ -468,7 +468,7 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
       'چه چیزی مشخصه شکستگی توروس (باکل) است؟')[lang],
     [
       L('Vollständige Kortexunterbrechung auf beiden Seiten', 'Complete cortical disruption on both sides', 'قطع کامل کورتکس در هر دو طرف')[lang],
-      L('Metaphysäre Kortexaufwerfung ohne vollständige Fraktur – stabile Verletzung', 'Metaphyseal cortical buckling without complete fracture – stable injury', 'فرورفتگی کورتکس متافیزی بدون شکستگی کامل – آسیب پایدار')[lang],
+      L('Metaphysäre Kortexaufwerfung ohne vollständige Fraktur – stabile Verletzung', 'Metaphyseal cortical buckling without complete fracture – stable injury', "برجستگی و چین‌خوردگی کورتکس متافیزی بدون شکستگی کامل – آسیب پایدار")[lang],
       L('Einseitige Kortexunterbrechung mit Biegung', 'Unilateral cortex disruption with bowing', 'قطع یک‌طرفه کورتکس با خم شدن')[lang],
       L('Spiralförmige Fraktur durch axialen Stress', 'Spiral fracture from axial stress', 'شکستگی مارپیچ از استرس محوری')[lang],
     ],
@@ -515,7 +515,7 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
       L('Alle Altersgruppen gleich häufig', 'All age groups equally common', 'همه گروه‌های سنی به یک اندازه شایع')[lang],
     ],
     1,
-    L('Die distale Tibia-Physis schließt von zentral nach lateral. Bei 12–14-Jährigen ist die anterolaterale Physis als letzte noch offen → Tillaux-Fraktur: Abriss durch das vordere Syndesmosenband bei Außenrotationstrauma.', 'The distal tibial physis closes from central to lateral. At 12–14 years, the anterolateral physis is the last to remain open → Tillaux fracture: avulsion by the anterior inferior tibiofibular ligament in external rotation injury.', 'فیزیس تیبیای دیستال از مرکز به جانب بسته می‌شود. در ۱۲–۱۴ سالگی، فیزیس قدامی-جانبی آخرین است که باز می‌ماند → شکستگی تیلو: پارگی توسط رباط سیندزموز قدامی-تحتانی در آسیب چرخش خارجی.')[lang]
+    L('Die distale Tibia-Physis schließt von zentral nach lateral. Bei 12–14-Jährigen ist die anterolaterale Physis als letzte noch offen → Tillaux-Fraktur: Abriss durch das vordere Syndesmosenband bei Außenrotationstrauma.', 'The distal tibial physis closes from central to lateral. At 12–14 years, the anterolateral physis is the last to remain open → Tillaux fracture: avulsion by the anterior inferior tibiofibular ligament in external rotation injury.', "فیزیس تیبیای دیستال از مرکز به جانب بسته می‌شود. در ۱۲–۱۴ سالگی، فیزیس قدامی-جانبی آخرین است که باز می‌ماند → شکستگی تیلو: کندگی قطعهٔ استخوانی با کشش رباط سیندزموز قدامی-تحتانی در آسیب چرخش خارجی.")[lang]
   ),
 
   Q(`fk-triplane-1-${lang}`,
@@ -620,7 +620,7 @@ export const FRAKTUR_KINDER_FLASHCARDS = [
 
   F('fk-fc-tillaux', L('Übergangsfrakturen', 'Transitional Fractures', 'شکستگی‌های گذار'),
     L('Tillaux-Fraktur: Mechanismus, Alter, Lokalisation?', 'Tillaux fracture: mechanism, age, location?', 'شکستگی تیلو: مکانیسم، سن، محل؟'),
-    L('Außenrotationstrauma → Abriss des anterolateralen Epiphysenfragments der distalen Tibia durch vorderes Syndesmosenband. Alter: 12–14 J. Die anterolaterale Physis ist als letzte noch offen (Salter-Harris III). Im Röntgen-AP sichtbar; lateral oft unauffällig.', 'External rotation injury → avulsion of anterolateral epiphyseal fragment of distal tibia by anterior inferior tibiofibular ligament. Age: 12–14 yr. The anterolateral physis is the last to remain open (Salter-Harris III). Visible on AP X-ray; lateral often unremarkable.', 'آسیب چرخش خارجی → پارگی قطعه اپی‌فیزی قدامی-جانبی تیبیای دیستال توسط رباط سیندزموز قدامی-تحتانی. سن: ۱۲–۱۴ سال. فیزیس قدامی-جانبی آخرین باز است (سالتر-هریس III). در رادیوگرافی AP قابل مشاهده؛ نمای جانبی اغلب طبیعی.'),
+    L('Außenrotationstrauma → Abriss des anterolateralen Epiphysenfragments der distalen Tibia durch vorderes Syndesmosenband. Alter: 12–14 J. Die anterolaterale Physis ist als letzte noch offen (Salter-Harris III). Im Röntgen-AP sichtbar; lateral oft unauffällig.', 'External rotation injury → avulsion of anterolateral epiphyseal fragment of distal tibia by anterior inferior tibiofibular ligament. Age: 12–14 yr. The anterolateral physis is the last to remain open (Salter-Harris III). Visible on AP X-ray; lateral often unremarkable.', "آسیب چرخش خارجی → کندگی قطعهٔ استخوانی اپی‌فیزی قدامی‌جانبی تیبیای دیستال توسط رباط سیندزموز قدامی-تحتانی. سن: ۱۲–۱۴ سال. فیزیس قدامی-جانبی آخرین باز است (سالتر-هریس III). در رادیوگرافی AP قابل مشاهده؛ نمای جانبی اغلب طبیعی."),
     L('Tipp: Lateral unauffällig bei Tillaux – immer AP beachten!', 'Tip: Lateral unremarkable in Tillaux – always check AP!', 'نکته: نمای جانبی در تیلو طبیعی است – همیشه AP را بررسی کنید!')
   ),
 

@@ -1,3 +1,6 @@
+import { qualityQuestions, qualityTopics } from './assessmentQuality'
+import legacySessionBaseline from './assessmentQuality/legacySessionBaseline.json'
+import { assessmentVersionRecords, selectedAssessmentVersion } from '../lib/assessmentContentVersion'
 import { ABDOMEN_EXISTING_QUESTIONS, ABDOMEN_EXISTING_TOPIC_GROUPS } from './abdomenExistingPractice'
 import { LIRADS_QUESTIONS, LIRADS_TOPIC_GROUP } from './abdomenHccPlanning'
 import { FLC_QUESTIONS, FLC_TOPIC_GROUP } from './abdomenFlcLesson'
@@ -497,25 +500,71 @@ const PANCREATITIS_QUESTION_CONTENT = [
     },
   },
   {
-    id: 'ctsi-severe',
-    question: {
-      de: 'Welche CTSI-Konstellation gilt als schwer?',
-      en: 'Which CTSI range is considered severe?',
-      fa: 'کدام محدوده CTSI شدید محسوب می‌شود؟',
-    },
-    options: [
-      { id: 'A', text: { de: '0–3 Punkte', en: '0–3 points', fa: '۰–۳ امتیاز' } },
-      { id: 'B', text: { de: '4–6 Punkte', en: '4–6 points', fa: '۴–۶ امتیاز' } },
-      { id: 'C', text: { de: '7–10 Punkte', en: '7–10 points', fa: '۷–۱۰ امتیاز' } },
-      { id: 'D', text: { de: 'Immer Grad A unabhängig von Nekrose', en: 'Always grade A regardless of necrosis', fa: 'همیشه گرید A مستقل از نکروز' } },
-    ],
-    correct: 'C',
-    explanation: {
-      de: 'CTSI 7–10 entspricht einer schweren Pankreatitis und ist mit deutlich erhöhter Mortalität assoziiert.',
-      en: 'CTSI 7–10 indicates severe pancreatitis and is associated with clearly increased mortality.',
-      fa: 'CTSI ۷–۱۰ نشان‌دهنده پانکراتیت شدید و افزایش واضح مرگ‌ومیر است.',
-    },
+  "id": "ctsi-severe",
+  "question": {
+    "de": "Eine akute Pankreatitis hat einen CTSI von 8. Angaben zur Organfunktion fehlen. Welche Aussage ist zulässig?",
+    "en": "Acute pancreatitis has a CTSI of 8; organ-function data are unavailable. Which conclusion is justified?",
+    "fa": "در پانکراتیت حاد، CTSI برابر ۸ است و اطلاعات عملکرد اندام‌ها در دست نیست. کدام نتیجه مجاز است؟"
   },
+  "explanation": {
+    "de": "CTSI 7–10 beschreibt einen hohen morphologischen CT-Score. Schwere akute Pankreatitis nach revidierter Atlanta-Klassifikation erfordert persistierendes Organversagen über 48 Stunden; ein CTSI ersetzt diese klinische Einordnung nicht.",
+    "en": "CTSI 7–10 is a high morphological CT score. Severe acute pancreatitis under revised Atlanta requires persistent organ failure for more than 48 hours; CTSI does not replace that clinical classification.",
+    "fa": "CTSI از ۷ تا ۱۰ امتیاز مورفولوژیک بالای CT است. پانکراتیت حاد شدید طبق آتلانتای بازنگری‌شده به نارسایی پایدار اندام بیش از ۴۸ ساعت نیاز دارد؛ CTSI جای این طبقه‌بندی بالینی را نمی‌گیرد."
+  },
+  "options": [
+    {
+      "id": "A",
+      "text": {
+        "de": "Damit ist eine klinisch milde Pankreatitis nach Atlanta belegt.",
+        "en": "This establishes clinically mild pancreatitis under Atlanta.",
+        "fa": "این یافته پانکراتیت خفیف بالینی طبق آتلانتا را ثابت می‌کند."
+      }
+    },
+    {
+      "id": "B",
+      "text": {
+        "de": "Damit ist eine klinisch mittelschwere Pankreatitis nach Atlanta belegt.",
+        "en": "This establishes clinically moderately severe pancreatitis under Atlanta.",
+        "fa": "این یافته پانکراتیت متوسط بالینی طبق آتلانتا را ثابت می‌کند."
+      }
+    },
+    {
+      "id": "C",
+      "text": {
+        "de": "Der morphologische CT-Schweregrad ist hoch; der klinische Atlanta-Schweregrad braucht Angaben zu Organversagen und Verlauf.",
+        "en": "CT morphological severity is high; clinical Atlanta severity requires organ-failure and time-course data.",
+        "fa": "شدت مورفولوژیک CT بالاست؛ شدت بالینی آتلانتا به اطلاعات نارسایی اندام و سیر زمانی نیاز دارد."
+      }
+    },
+    {
+      "id": "D",
+      "text": {
+        "de": "Damit ist eine infizierte Nekrose belegt.",
+        "en": "This establishes infected necrosis.",
+        "fa": "این یافته نکروز عفونی را ثابت می‌کند."
+      }
+    }
+  ],
+  "correct": "C",
+  "wrongExplanations": {
+    "A": {
+      "de": "Milde Atlanta-Pankreatitis verlangt kein Organversagen und keine lokalen oder systemischen Komplikationen; der Score allein belegt dies nicht.",
+      "en": "Mild Atlanta pancreatitis requires no organ failure and no local or systemic complications; the score alone cannot establish that.",
+      "fa": "آتلانتای خفیف به نبود نارسایی اندام و عوارض موضعی یا سیستمیک نیاز دارد؛ امتیاز به‌تنهایی آن را ثابت نمی‌کند."
+    },
+    "B": {
+      "de": "Mittelschwere Atlanta-Pankreatitis wird klinisch über vorübergehendes Organversagen und/oder Komplikationen ohne persistierendes Organversagen definiert.",
+      "en": "Moderately severe Atlanta pancreatitis is defined by transient organ failure and/or complications without persistent organ failure.",
+      "fa": "آتلانتای متوسط با نارسایی گذرای اندام و/یا عارضه بدون نارسایی پایدار تعریف می‌شود."
+    },
+    "D": {
+      "de": "CTSI misst keine Infektion; klinische und gegebenenfalls mikrobiologische Befunde sind getrennt zu bewerten.",
+      "en": "CTSI does not measure infection; clinical and, where indicated, microbiological findings require separate assessment.",
+      "fa": "CTSI عفونت را نمی‌سنجد؛ یافته‌های بالینی و در صورت لزوم میکروبیولوژیک باید جداگانه ارزیابی شوند."
+    }
+  },
+  "source": "https://gut.bmj.com/content/62/1/102"
+},
   {
     id: 'pseudoaneurysm',
     question: {
@@ -589,6 +638,7 @@ const PANCREATITIS_QUESTIONS = Object.fromEntries(
       options: item.options.map(option => ({ id: option.id, text: option.text[lang] })),
       correct: item.correct,
       explanation: item.explanation[lang],
+      ...(item.wrongExplanations ? { wrongExplanations: Object.fromEntries(Object.entries(item.wrongExplanations).map(([id, texts]) => [id, texts[lang]])), source: item.source } : {}),
     })),
   ])
 )
@@ -1036,19 +1086,35 @@ const LEGACY_QUESTION_BANK = {
       "explanation": "Die FNH ist eine benigne, regenerative Raumforderung der Leber, meist asymptomatisch und ohne Therapiebedarf."
     },
     {
-      "id": "fnh-de-02",
-      "tags": ["fnh", "leber", "abdomen"],
-      "fach": "abdomen",
-      "question": "Welche Aussage zur Epidemiologie der FNH trifft zu?",
-      "options": [
-        { "id": "A", "text": "Sie ist die häufigste benigne Leberläsion überhaupt" },
-        { "id": "B", "text": "Sie ist nach dem Hämangiom die zweithäufigste benigne Leberläsion und betrifft bevorzugt Frauen" },
-        { "id": "C", "text": "Sie tritt überwiegend bei älteren Männern auf" },
-        { "id": "D", "text": "Sie ist eine Präkanzerose mit hohem Malignisierungsrisiko" }
-      ],
-      "correct": "B",
-      "explanation": "Nach dem Hämangiom ist die FNH die zweithäufigste gutartige Leberläsion, am ehesten bei jungen bis mittelalten Erwachsenen mit deutlicher Prädominanz bei Frauen."
+  "id": "fnh-de-02",
+  "tags": [
+    "fnh",
+    "leber",
+    "abdomen"
+  ],
+  "fach": "abdomen",
+  "question": "Welche Aussage zur Epidemiologie der FNH trifft zu?",
+  "options": [
+    {
+      "id": "A",
+      "text": "Sie ist die häufigste benigne Leberläsion überhaupt"
     },
+    {
+      "id": "B",
+      "text": "Sie ist nach dem Hämangiom der zweithäufigste benigne solide Lebertumor und betrifft bevorzugt Frauen"
+    },
+    {
+      "id": "C",
+      "text": "Sie tritt überwiegend bei älteren Männern auf"
+    },
+    {
+      "id": "D",
+      "text": "Sie ist eine Präkanzerose mit hohem Malignisierungsrisiko"
+    }
+  ],
+  "correct": "B",
+  "explanation": "Nach dem Hämangiom ist die FNH der zweithäufigste gutartige solide Lebertumor, am ehesten bei jungen bis mittelalten Erwachsenen mit deutlicher Prädominanz bei Frauen."
+},
     {
       "id": "fnh-de-03",
       "tags": ["fnh", "leber", "abdomen"],
@@ -1774,19 +1840,43 @@ const LEGACY_QUESTION_BANK = {
       "explanation": "Die intratendinöse Partialruptur zeigt eine fokale T2-hyperintense Signalanhebung ohne Oberflächenkontakt, während die Tendinopathie eine intratendinöse PD/T1-Signalanhebung ohne eindeutiges T2-Flüssigkeitssignal aufweist."
     },
     {
-      "id": "rotatorenmanschette-de-09",
-      "tags": ["rotatorenmanschette", "schulter"],
-      "fach": "msk",
-      "question": "Ab welchem Ausmaß der Footprint-Beteiligung wird bei einer PASTA-Läsion häufig eine operative Refixation erwogen?",
-      "options": [
-        { "id": "A", "text": "Bei einer Footprint-Beteiligung von mehr als 50 %" },
-        { "id": "B", "text": "Bei einer Footprint-Beteiligung von mehr als 10 %" },
-        { "id": "C", "text": "Nur bei einer Footprint-Beteiligung von 100 %" },
-        { "id": "D", "text": "Die Footprint-Beteiligung spielt für die Therapieentscheidung keine Rolle" }
-      ],
-      "correct": "A",
-      "explanation": "Bei einer Footprint-Beteiligung von mehr als 50 % wird bei der PASTA-Läsion häufig eine operative Refixation erwogen, bei weniger als 50 % oft konservative Therapie oder Debridement."
+  "id": "rotatorenmanschette-de-09",
+  "tags": [
+    "rotatorenmanschette",
+    "schulter"
+  ],
+  "fach": "msk",
+  "question": "Bei anhaltenden Beschwerden trotz nichtoperativer Behandlung zeigt eine PASTA-Läsion einen Defekt von 60 % der Sehnendicke. Welche Einordnung ist korrekt?",
+  "options": [
+    {
+      "id": "A",
+      "text": "Mehr als die halbe Sehnendicke ist betroffen; eine Reparatur wird im klinischen Kontext erwogen."
     },
+    {
+      "id": "B",
+      "text": "60 % bezeichnet die anteroposteriore Footprint-Breite; die Tiefe ist damit bestimmt."
+    },
+    {
+      "id": "C",
+      "text": "Ein Defekt über 50 % ist definitionsgemäß bereits eine Komplettruptur."
+    },
+    {
+      "id": "D",
+      "text": "Bei einer Partialruptur ist die Defekttiefe für die Planung grundsätzlich unerheblich."
+    }
+  ],
+  "correct": "A",
+  "explanation": "Die 50-%-Angabe bezieht sich auf die Sehnendicke beziehungsweise Defekttiefe. Freiliegender medial-lateraler Footprint kann die Tiefe arthroskopisch abschätzen; Fläche oder anteroposteriore Breite sind nicht dasselbe. Symptome, Funktion und bisherige Behandlung mitberücksichtigen; der Messwert allein ordnet keine Operation an.",
+  "wrongExplanations": {
+    "B": "Die Messrichtungen sind verschieden: anteroposteriore Ausdehnung ist keine Defekttiefe.",
+    "C": "Eine Komplettruptur durchsetzt die gesamte Sehnendicke; 60 % ist weiterhin partiell.",
+    "D": "Die Tiefe ist ein Planungsfaktor, aber kein alleiniger Operationsauftrag."
+  },
+  "sources": [
+    "https://pubmed.ncbi.nlm.nih.gov/15007313/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC3728419/"
+  ]
+},
     {
       "id": "rotatorenmanschette-de-10",
       "tags": ["rotatorenmanschette", "schulter"],
@@ -2236,19 +2326,35 @@ const LEGACY_QUESTION_BANK = {
       "explanation": "FNH is a benign, regenerative liver lesion, usually asymptomatic and not requiring treatment."
     },
     {
-      "id": "fnh-en-02",
-      "tags": ["fnh", "leber", "abdomen"],
-      "fach": "abdomen",
-      "question": "Which statement about the epidemiology of FNH is correct?",
-      "options": [
-        { "id": "A", "text": "It is the most common benign liver lesion overall" },
-        { "id": "B", "text": "It is the second most common benign liver lesion after haemangioma and predominantly affects women" },
-        { "id": "C", "text": "It mainly occurs in elderly men" },
-        { "id": "D", "text": "It is a precancerous lesion with a high risk of malignant transformation" }
-      ],
-      "correct": "B",
-      "explanation": "After haemangioma, FNH is the second most common benign liver lesion, most often in young to middle-aged adults with a clear female predominance."
+  "id": "fnh-en-02",
+  "tags": [
+    "fnh",
+    "leber",
+    "abdomen"
+  ],
+  "fach": "abdomen",
+  "question": "Which statement about the epidemiology of FNH is correct?",
+  "options": [
+    {
+      "id": "A",
+      "text": "It is the most common benign liver lesion overall"
     },
+    {
+      "id": "B",
+      "text": "It is the second most common benign solid liver tumour after haemangioma and predominantly affects women"
+    },
+    {
+      "id": "C",
+      "text": "It mainly occurs in elderly men"
+    },
+    {
+      "id": "D",
+      "text": "It is a precancerous lesion with a high risk of malignant transformation"
+    }
+  ],
+  "correct": "B",
+  "explanation": "After haemangioma, FNH is the second most common benign solid liver tumour, most often in young to middle-aged adults with a clear female predominance."
+},
     {
       "id": "fnh-en-03",
       "tags": ["fnh", "leber", "abdomen"],
@@ -2974,19 +3080,43 @@ const LEGACY_QUESTION_BANK = {
       "explanation": "An intratendinous partial tear shows focal T2-hyperintense signal without surface contact, while tendinopathy shows intratendinous PD/T1 signal elevation without a clear T2 fluid signal."
     },
     {
-      "id": "rotatorenmanschette-en-09",
-      "tags": ["rotatorenmanschette", "schulter"],
-      "fach": "msk",
-      "question": "From what extent of footprint involvement is surgical refixation often considered for a PASTA lesion?",
-      "options": [
-        { "id": "A", "text": "Footprint involvement of more than 50%" },
-        { "id": "B", "text": "Footprint involvement of more than 10%" },
-        { "id": "C", "text": "Only at 100% footprint involvement" },
-        { "id": "D", "text": "Footprint involvement plays no role in the treatment decision" }
-      ],
-      "correct": "A",
-      "explanation": "For a PASTA lesion, footprint involvement of more than 50% often prompts surgical refixation, whereas less than 50% is often managed conservatively or with debridement."
+  "id": "rotatorenmanschette-en-09",
+  "tags": [
+    "rotatorenmanschette",
+    "schulter"
+  ],
+  "fach": "msk",
+  "question": "Despite nonoperative treatment, symptoms persist and a PASTA lesion has a defect involving 60% of tendon thickness. Which interpretation is correct?",
+  "options": [
+    {
+      "id": "A",
+      "text": "More than half the tendon thickness is affected; repair is considered in the clinical context."
     },
+    {
+      "id": "B",
+      "text": "60% denotes anteroposterior footprint width, which establishes the depth."
+    },
+    {
+      "id": "C",
+      "text": "A defect exceeding 50% is, by definition, already a full-thickness tear."
+    },
+    {
+      "id": "D",
+      "text": "In a partial-thickness tear, defect depth is inherently irrelevant to planning."
+    }
+  ],
+  "correct": "A",
+  "explanation": "The 50% refers to tendon thickness or tear depth. Mediolateral exposed footprint can estimate depth arthroscopically; area or anteroposterior width is not equivalent. Consider symptoms, function and previous treatment; the measurement alone does not mandate surgery.",
+  "wrongExplanations": {
+    "B": "These are different dimensions: anteroposterior extent is not tear depth.",
+    "C": "A full-thickness tear traverses the entire tendon thickness; 60% remains partial.",
+    "D": "Depth is one planning factor, although not a stand-alone surgical instruction."
+  },
+  "sources": [
+    "https://pubmed.ncbi.nlm.nih.gov/15007313/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC3728419/"
+  ]
+},
     {
       "id": "rotatorenmanschette-en-10",
       "tags": ["rotatorenmanschette", "schulter"],
@@ -3436,19 +3566,35 @@ const LEGACY_QUESTION_BANK = {
       "explanation": "FNH یک ضایعه خوش‌خیم و رژنراتیو کبد است، معمولاً بدون علامت و بدون نیاز به درمان."
     },
     {
-      "id": "fnh-fa-02",
-      "tags": ["fnh", "leber", "abdomen"],
-      "fach": "abdomen",
-      "question": "کدام گزینه درباره اپیدمیولوژی FNH صحیح است؟",
-      "options": [
-        { "id": "A", "text": "شایع‌ترین ضایعه خوش‌خیم کبد به‌طور کلی است" },
-        { "id": "B", "text": "بعد از همانژیوم، دومین ضایعه خوش‌خیم شایع کبد است و بیشتر در زنان دیده می‌شود" },
-        { "id": "C", "text": "بیشتر در مردان مسن دیده می‌شود" },
-        { "id": "D", "text": "یک ضایعه پره‌کانسر با خطر بالای بدخیمی است" }
-      ],
-      "correct": "B",
-      "explanation": "بعد از همانژیوم، FNH دومین ضایعه خوش‌خیم شایع کبد است؛ بیشتر در بالغین جوان تا میانسال با غلبه واضح در زنان."
+  "id": "fnh-fa-02",
+  "tags": [
+    "fnh",
+    "leber",
+    "abdomen"
+  ],
+  "fach": "abdomen",
+  "question": "کدام گزینه درباره اپیدمیولوژی FNH صحیح است؟",
+  "options": [
+    {
+      "id": "A",
+      "text": "شایع‌ترین ضایعه خوش‌خیم کبد به‌طور کلی است"
     },
+    {
+      "id": "B",
+      "text": "بعد از همانژیوم، دومین تومور جامد خوش‌خیم شایع کبد است و بیشتر در زنان دیده می‌شود"
+    },
+    {
+      "id": "C",
+      "text": "بیشتر در مردان مسن دیده می‌شود"
+    },
+    {
+      "id": "D",
+      "text": "یک ضایعه پره‌کانسر با خطر بالای بدخیمی است"
+    }
+  ],
+  "correct": "B",
+  "explanation": "بعد از همانژیوم، FNH دومین تومور جامد خوش‌خیم شایع کبد است؛ بیشتر در بالغین جوان تا میانسال با غلبه واضح در زنان."
+},
     {
       "id": "fnh-fa-03",
       "tags": ["fnh", "leber", "abdomen"],
@@ -3714,11 +3860,35 @@ const LEGACY_QUESTION_BANK = {
       "correct": "A", "explanation": "تقویت شریانی غیرحلقوی (APHE) و سپس واش‌اوت غیرمحیطی، الگوی دینامیک کلاسیک HCC در بیمار پرخطر است."
     },
     {
-      "id": "hcc-fa-03", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
-      "question": "واش‌اوت در یک ضایعه کبدی به چه معناست؟",
-      "options": [{"id":"A","text":"ضایعه در فازهای دیرتر نسبت به کبد هیپودارای تقویت پس از تزریق می‌شود"},{"id":"B","text":"ضایعه کاملاً ناپدید می‌شود"},{"id":"C","text":"همیشه خونریزی فعال وجود دارد"},{"id":"D","text":"فقط سیگنال T2 افزایش می‌یابد"}],
-      "correct": "A", "explanation": "واش‌اوت یک یافته نسبی است: ضایعه در فاز پورتال یا تأخیری نسبت به کبدی که بیشتر تقویت پس از تزریق می‌یابد، تیره‌تر می‌شود."
+  "id": "hcc-fa-03",
+  "tags": [
+    "hcc",
+    "leber",
+    "abdomen"
+  ],
+  "fach": "abdomen",
+  "question": "واش‌اوت در یک ضایعه کبدی به چه معناست؟",
+  "options": [
+    {
+      "id": "A",
+      "text": "ضایعه در فاز بعدیِ مجاز نسبت به کبد تقویت کمتری نشان می‌دهد"
     },
+    {
+      "id": "B",
+      "text": "ضایعه کاملاً ناپدید می‌شود"
+    },
+    {
+      "id": "C",
+      "text": "همیشه خونریزی فعال وجود دارد"
+    },
+    {
+      "id": "D",
+      "text": "فقط سیگنال T2 افزایش می‌یابد"
+    }
+  ],
+  "correct": "A",
+  "explanation": "واش‌اوت یک یافته نسبی است: ضایعه در فاز پورتال یا تأخیری نسبت به کبدی که بیشتر تقویت پس از تزریق می‌یابد، تیره‌تر می‌شود."
+},
     {
       "id": "hcc-fa-04", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
       "question": "کدام یافته نمای کپسول را توصیف می‌کند؟",
@@ -4174,19 +4344,43 @@ const LEGACY_QUESTION_BANK = {
       "explanation": "پارگی جزئی داخل تاندونی سیگنال کانونی هیپراینتنس T2 بدون تماس با سطح نشان می‌دهد، در حالی که تاندینوپاتی افزایش سیگنال داخل تاندونی در PD/T1 بدون سیگنال مایع واضح در T2 دارد."
     },
     {
-      "id": "rotatorenmanschette-fa-09",
-      "tags": ["rotatorenmanschette", "schulter"],
-      "fach": "msk",
-      "question": "از چه میزان درگیری محل اتصال تاندون (footprint)، ترمیم جراحی برای ضایعه PASTA معمولاً در نظر گرفته می‌شود؟",
-      "options": [
-        { "id": "A", "text": "درگیری محل اتصال تاندون (footprint) بیش از ۵۰٪" },
-        { "id": "B", "text": "درگیری محل اتصال تاندون (footprint) بیش از ۱۰٪" },
-        { "id": "C", "text": "فقط در درگیری ۱۰۰٪ محل اتصال تاندون (footprint)" },
-        { "id": "D", "text": "میزان درگیری محل اتصال تاندون (footprint) در تصمیم درمانی اهمیتی ندارد" }
-      ],
-      "correct": "A",
-      "explanation": "در ضایعه PASTA، درگیری محل اتصال تاندون (footprint) بیش از ۵۰٪ اغلب منجر به در نظر گرفتن ترمیم جراحی می‌شود، در حالی که کمتر از ۵۰٪ معمولاً با درمان محافظه‌کارانه یا دبریدمان مدیریت می‌شود."
+  "id": "rotatorenmanschette-fa-09",
+  "tags": [
+    "rotatorenmanschette",
+    "schulter"
+  ],
+  "fach": "msk",
+  "question": "با وجود درمان غیرجراحی، علائم ادامه دارند و نقص یک ضایعهٔ PASTA، ۶۰٪ ضخامت تاندون را درگیر می‌کند. کدام تفسیر درست است؟",
+  "options": [
+    {
+      "id": "A",
+      "text": "بیش از نصف ضخامت تاندون درگیر است؛ ترمیم در زمینهٔ بالینی بررسی می‌شود."
     },
+    {
+      "id": "B",
+      "text": "۶۰٪ به عرض قدامی‌خلفی footprint اشاره دارد و عمق را تعیین می‌کند."
+    },
+    {
+      "id": "C",
+      "text": "نقص بیش از ۵۰٪ بنا بر تعریف، پارگی تمام‌ضخامت است."
+    },
+    {
+      "id": "D",
+      "text": "در پارگی نسبی، عمق نقص اصولاً در برنامه‌ریزی اهمیتی ندارد."
+    }
+  ],
+  "correct": "A",
+  "explanation": "۵۰٪ به ضخامت تاندون یا عمق پارگی اشاره دارد. پهنای داخلی‌خارجی footprint نمایان می‌تواند در آرتروسکوپی عمق را تخمین بزند؛ مساحت یا عرض قدامی‌خلفی معادل آن نیست. علائم، عملکرد و درمان قبلی نیز لحاظ شوند؛ اندازه‌گیری به‌تنهایی جراحی را الزامی نمی‌کند.",
+  "wrongExplanations": {
+    "B": "جهت‌های اندازه‌گیری متفاوت‌اند؛ گسترش قدامی‌خلفی عمق پارگی نیست.",
+    "C": "پارگی تمام‌ضخامت تمام ضخامت تاندون را قطع می‌کند؛ ۶۰٪ همچنان نسبی است.",
+    "D": "عمق یکی از عوامل برنامه‌ریزی است، اما به‌تنهایی دستور جراحی نیست."
+  },
+  "sources": [
+    "https://pubmed.ncbi.nlm.nih.gov/15007313/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC3728419/"
+  ]
+},
     {
       "id": "rotatorenmanschette-fa-10",
       "tags": ["rotatorenmanschette", "schulter"],
@@ -4384,6 +4578,8 @@ for (const lang of ['de','en','fa']) QUESTION_BANK[lang].push(...FLC_QUESTIONS[l
 for (const lang of ['de','en','fa']) QUESTION_BANK[lang].push(...LIRADS_QUESTIONS[lang])
 
 for (const lang of ['de','en','fa']) QUESTION_BANK[lang].push(...ABDOMEN_EXISTING_QUESTIONS[lang])
+
+for (const lang of ['de','en','fa']) QUESTION_BANK[lang].push(...qualityQuestions(lang))
 
 export const MCQ_TOPIC_GROUPS = [
   ...ABDOMEN_EXISTING_TOPIC_GROUPS,
@@ -4660,6 +4856,13 @@ export const MCQ_TOPIC_GROUPS = [
   },
 ]
 
+const registeredQualityTopics = new Set(MCQ_TOPIC_GROUPS.flatMap(group => group.topics.map(topic => topic.id)))
+for (const topic of qualityTopics) {
+  if (registeredQualityTopics.has(topic.id)) continue
+  MCQ_TOPIC_GROUPS.push({ fachId: topic.subject, kapitelId: `${topic.subject}-clinical-review`, title: topic.title, topics: [{ id: topic.id, title: topic.title }] })
+  registeredQualityTopics.add(topic.id)
+}
+
 export function getAvailableQuestionTopicIds() {
   const tags = new Set(QUESTION_BANK.de.flatMap(question => question.tags))
   return new Set(
@@ -4667,6 +4870,19 @@ export function getAvailableQuestionTopicIds() {
       .map(topic => topic.id)
       .filter(topicId => tags.has(topicId))
   )
+}
+
+// Persisted answers refer to option IDs. A substantive stem/option/key revision
+// must start a fresh quiz session instead of regrading an old answer silently.
+export function getQuestionSetVersion(topicIds = [], canonicalIds = []) {
+  return selectedAssessmentVersion(assessmentVersionRecords(QUESTION_BANK), topicIds, canonicalIds)
+}
+
+export function getQuestionSetRevision(topicIds = [], canonicalIds = []) {
+  const current=getQuestionSetVersion(topicIds, canonicalIds)
+  const legacy=selectedAssessmentVersion(legacySessionBaseline.records, topicIds, canonicalIds)
+  // Unchanged selections retain their exact v2 key and option-shuffle seed.
+  return current===legacy ? null : current
 }
 
 export function countQuestions(themenIds) {

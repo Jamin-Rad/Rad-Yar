@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/brain_remediation (independent of MSK author; read-only)",
+  "scope": "Seven-route packet-1 changed content, not whole MSK certification: actual source diffs, new two-item DE/EN/FA module, four central PASTA before/after records and their presence in current banks, seven-route blueprint and source ledger.",
+  "actuallyRead": [
+    "data/radiuskopf.js changed lesson, question feedback, card, image title",
+    "data/ak-luxation.js changed axial label and CCD question/individual feedback",
+    "data/frakturen-kindesalter.js changed Tillaux and torus language units",
+    "data/frakturbeschreibung.js changed first-ray FA wording",
+    "data/distale-radiusfraktur.js changed FA sign/maintained-reduction wording",
+    "data/unterarmschaftfrakturen.js changed FA maintained-reduction wording and child-bowing alternatives",
+    "app/msk/schulter/rotatorenmanschette/page.js PASTA triad",
+    "data/assessmentQuality/mskSpine.js two complete new items, localised options, keys, explanations and wrong feedback",
+    "central-bank-patches.json all four after records; their question/front text checked in current shared bank source"
+  ],
+  "primaryEvidence": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22576643/",
+      "read": "Full indexed abstract; 180 simple radial-head fractures, early-motion protocols versus seven-day casting; does not support a universal return-to-work/loading deadline."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29664851/",
+      "read": "Full abstract lines244–251; 51 isolated nondisplaced/minimally displaced head/neck fractures; instructed home exercise comparable to formal PT at later follow-up."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4048392/",
+      "read": "Indexed original introduction, inclusion criteria and treatment methods; selected nonoperative triads require concentric reduction, no block, small coronoid fracture and stable motion, with close follow-up."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15007313/",
+      "read": "Full original cadaver-study abstract; exposed medial-lateral footprint relates to tendon substance/depth, not arbitrary AP width or area."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3728419/",
+      "read": "Original introduction and inclusion criteria; >50% tendon-thickness symptomatic articular tears after unsuccessful conservative treatment; compares two repair techniques, not threshold-only surgery versus nonoperative care."
+    }
+  ],
+  "visualEvidence": {
+    "file": "public/radiuskopf/mason-iv-luxation.jpeg",
+    "actuallyViewed": true,
+    "observation": "Two annotated radiograph crops show radial-neck axis failing to align with capitellum. The image is adequate for the limited alignment point and insufficient to establish all components of a Mason-IV fracture-dislocation. Visible English annotations retained; no patient identity inferred."
+  },
+  "gates": {
+    "SRC": "PASS for the bounded changed clinical claims above; no whole-PDF coverage claim",
+    "EDU": "PASS for bounded changed packet, not all original questions",
+    "VIS": "PASS for actual alignment asset and bounded interpretation; browser presentation not observed",
+    "LNG": "PASS for bounded changed units",
+    "ASM": "PASS for bounded repaired keys, answers and feedback",
+    "UX": "BLOCKED: no browser run in this independent check; root owns integrated assessment rendering and language/RTL testing",
+    "REV": "PASS for independence of this review, not acceptance of unresolved findings"
+  },
+  "findings": [
+    {
+      "id": "MSK-P1-EDU-ALIGNMENT",
+      "severity": "major",
+      "file": "data/assessmentQuality/mskSpine.js",
+      "key": "annotated-alignment-limit options A/C/D",
+      "observed": "Fragment counting, proof of post-reduction clinical stability, and diagnosing a PIN lesion from a radiocapitellar line are easy to eliminate without interpreting the shown alignment. The option set repeats precisely the implausible-alternative pattern the user requested to remove.",
+      "impact": "Weak clinical discrimination in a newly authored image question.",
+      "requiredCorrection": "Keep the viewed image and bounded claim, but use comparable plausible radiographic conclusions or next imaging/reporting decisions. If the intended goal is alignment recognition, ask that directly and use anatomically plausible alternatives. Preserve DE/EN/FA meaning and individual feedback.",
+      "status": "CLOSED",
+      "retest": "Independent cycle-1 read-only retest: actual current DE/EN/FA source and emitted rows inspected. Alignment alternatives now radiographic conclusions; stiffness explicitly named; credit localised; CCD vignette uses (13-10)/10=30 percent with specific wrong feedback."
+    },
+    {
+      "id": "MSK-P1-ASM-STIFFNESS",
+      "severity": "minor",
+      "file": "data/radiuskopf.js",
+      "key": "RADIUSKOPF_FLASHCARDS rk-fc-7 answer",
+      "observed": "The front asks for the most common complication, but the revised answer starts with prolonged immobilisation and describes loss of motion without explicitly naming elbow stiffness. The explanation names stiffness, so this is an answer-focus problem rather than an incorrect recommendation.",
+      "requiredCorrection": "Start all three answer fields with Ellenbogensteifigkeit / elbow stiffness / سفتی آرنج, then retain the qualified early-motion guidance.",
+      "status": "CLOSED",
+      "retest": "Independent cycle-1 read-only retest: actual current DE/EN/FA source and emitted rows inspected. Alignment alternatives now radiographic conclusions; stiffness explicitly named; credit localised; CCD vignette uses (13-10)/10=30 percent with specific wrong feedback."
+    },
+    {
+      "id": "MSK-P1-LNG-CREDIT",
+      "severity": "minor",
+      "file": "data/assessmentQuality/mskSpine.js",
+      "key": "annotated-alignment-limit image.credit",
+      "observed": "A plain German string is emitted unchanged for EN and FA, while alt and caption are localised objects.",
+      "requiredCorrection": "Localise credit with equivalent DE/EN/FA text; preserve the visible Radiology Expert attribution.",
+      "status": "CLOSED",
+      "retest": "Independent cycle-1 read-only retest: actual current DE/EN/FA source and emitted rows inspected. Alignment alternatives now radiographic conclusions; stiffness explicitly named; credit localised; CCD vignette uses (13-10)/10=30 percent with specific wrong feedback."
+    },
+    {
+      "id": "MSK-P1-EDU-CCD",
+      "severity": "minor",
+      "file": "data/ak-luxation.js",
+      "key": "ak-lux-ccd-1",
+      "observed": "The new options are dimensionally consistent and the correct caution is sound, but all wrong answers use proves/replaces absolutes. The question also retains unnecessary PDF wording.",
+      "requiredCorrection": "During this route's remaining original-bank sweep, prefer a concrete side-to-side CCD vignette with plausible grades or measurement/reporting choices and remove source-scaffolding phrasing.",
+      "status": "CLOSED",
+      "retest": "Independent cycle-1 read-only retest: actual current DE/EN/FA source and emitted rows inspected. Alignment alternatives now radiographic conclusions; stiffness explicitly named; credit localised; CCD vignette uses (13-10)/10=30 percent with specific wrong feedback."
+    }
+  ],
+  "positiveChecks": [
+    "No universal 1–2-week motion delay or all-patients formal-PT requirement remains in the changed radial-head units.",
+    "Terrible-triad lesson now appropriately separates frequent instability from an automatic operation on every component.",
+    "PASTA lesson, keyed MCQ and card use tendon thickness/depth consistently and preserve clinical-selection qualifiers in DE/EN/FA.",
+    "Changed FA avulsion, cortical buckling and maintained reduction terms convey the intended anatomy more accurately.",
+    "The described tibial reporting item is self-contained and its A key preserves side, direction and shortening; it is a basic reporting exercise, not an advanced diagnostic case.",
+    "Current global quiz source supports q.image at app/ueben/quiz/page.jsx:616–626; rendered browser behavior still pending."
+  ],
+  "decision": "ACCEPTED bounded technical/editorial packet after independent repair retest; whole-route scientific approval and root browser integration remain separate.",
+  "clinicalApproval": "PENDING_DR_ZIA",
+  "browserEvidence": "NOT_PERFORMED_BY_THIS_REVIEWER",
+  "publication": "ROOT_OWNED_PENDING",
+  "retest": {
+    "cycle": 1,
+    "readOnly": true,
+    "questionsRead": "Alignment complete DE/EN/FA stem/options/key/explanations; current CCD vignette/options/key and all wrong feedback in DE/EN/FA",
+    "cardRead": "rk-fc-7 answer and explanation DE/EN/FA",
+    "runtime": "New alignment emitted rows key B, wrong keys A/C/D, credit string in DE/EN/FA",
+    "sourceFigure": "Same actual viewed alignment image retained; new conclusions do not overclaim it",
+    "limitations": "No new independent browser run; author reports 21 SSR checks but this reviewer does not treat that claim as direct browser evidence."
+  }
+}
