@@ -1,0 +1,45 @@
+.page { --shoulder-accent:#245f5d; }
+.body { color:var(--body); font-size:16px; line-height:1.95; }
+.body p { margin:0 0 18px; }
+.body h3 { color:var(--ink); font-size:23px; line-height:1.5; margin:0; }
+.body button { min-height:44px; padding:9px 15px; border:1px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink); font:inherit; font-size:14px; line-height:1.5; cursor:pointer; text-align:start; }
+.body button:hover { background:var(--lesson-accent-soft); }
+.body button[aria-pressed=true] { background:var(--lesson-accent-strong); color:#fff; border-color:var(--lesson-accent-strong); }
+.body button:disabled { opacity:.4; cursor:default; }
+.body :is(button,input,a):focus-visible { outline:3px solid var(--lesson-accent); outline-offset:4px; }
+.targetChoices,.stepChoices { display:flex; gap:8px; flex-wrap:wrap; margin-block:14px; }
+.targetChoices button { border-radius:24px; }
+.stepChoices { padding-bottom:16px; border-bottom:1px solid var(--line); }
+.stepHeading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-block:22px 16px; }
+.stepHeading > span { flex-shrink:0; font-size:13px; color:var(--muted); }
+.explanation { max-width:78ch; }
+.modeChoices { display:flex; gap:5px; border-bottom:1px solid var(--line); padding:12px; background:var(--canvas); border-radius:10px 10px 0 0; }
+.modeChoices button { flex:1; text-align:center; }
+.viewer { border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-block:18px; background:var(--paper); }
+.figure { margin:0; padding:16px; }
+.imageMeta { display:flex; justify-content:center; color:var(--ink); font-size:14px; font-weight:700; padding:0 0 12px; text-align:center; }
+.imageFrame { margin-inline:auto; max-width:390px; border-radius:10px; overflow:hidden; background:#000; direction:ltr; }
+.illustration { max-width:780px; background:#fff; }
+.study { display:block; width:100%; height:auto; }
+.figure figcaption { display:grid; gap:5px; margin-top:12px; color:var(--muted); font-size:12px; line-height:1.8; overflow-wrap:anywhere; }
+.targetLabel { color:var(--ink); font-weight:700; text-align:center; margin:10px 0 0!important; }
+.viewer .reveal { display:block; margin:0 auto 16px; }
+.note { padding:12px 16px; border-inline-start:3px solid var(--lesson-accent); background:color-mix(in srgb,var(--lesson-accent-soft) 42%,var(--paper)); color:var(--body); border-radius:5px; }
+.viewer .note { margin:0 16px 16px; }
+.stepNavigation { display:flex; justify-content:space-between; gap:12px; margin-block:18px; }
+.stepNavigation button:last-child { background:var(--lesson-accent-strong); color:#fff; }
+.check { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1fr); gap:18px; padding-block:20px; border-bottom:1px solid var(--line); align-items:start; }
+.check .figure { padding:0; }
+.check fieldset { min-width:0; border:0; margin:0; padding:0; }
+.check legend { color:var(--ink); font-weight:700; margin-bottom:14px; }
+.check label { min-height:46px; display:flex; gap:10px; align-items:center; padding:10px 13px; margin-bottom:8px; border:1px solid var(--line); border-radius:8px; cursor:pointer; }
+.check input { accent-color:var(--lesson-accent-strong); flex-shrink:0; }
+.selected { background:var(--lesson-accent-soft); color:var(--ink); }
+.feedback { grid-column:1/-1; padding:14px; background:var(--lesson-accent-soft); color:var(--ink); border-radius:8px; }
+.summary { margin:0; padding-inline-start:24px; }
+.summary li { padding:10px 4px; }
+:global(html[data-theme='dark']) .note { background:#203a39; }
+:global(html[data-theme='dark']) .selected,:global(html[data-theme='dark']) .feedback { background:#294847; color:#eff7f5; }
+:global(html[data-theme='dark']) .body button[aria-pressed=true],:global(html[data-theme='dark']) .stepNavigation button:last-child { background:#367e78; color:#fff; }
+@media(max-width:760px) { .body { font-size:15px; } .body h3 { font-size:20px; } .check { grid-template-columns:1fr; } .figure { padding:12px; } .modeChoices { padding:9px; } .body button { padding:9px 12px; } .imageFrame { max-width:340px; } .stepChoices button { flex:1 1 140px; } }
+@media(prefers-reduced-motion:reduce) { .body * { scroll-behavior:auto; } }

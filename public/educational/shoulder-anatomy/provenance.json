@@ -1,0 +1,9 @@
+{
+  "lesson": "/msk/schulter/anatomie",
+  "verifiedAt": "2026-10-25",
+  "illustration": { "file": "orientation.webp", "method": "Built-in Image Gen", "purpose": "Explanatory anterior body orientation; not a diagnostic scan", "promptSummary": "Anterior upper torso, left clavicle gold, scapula turquoise and proximal humerus coral; grey contralateral bones and thorax, no labels, no pathology" },
+  "article": { "authors": "Redouane Kadi, Annemieke Milants, Maryam Shahabpour", "title": "Shoulder Anatomy and Normal Variants", "year": 2017, "url": "https://jbsr.be/articles/10.5334/jbr-btr.1467", "license": "CC BY 4.0", "licenseUrl": "https://creativecommons.org/licenses/by/4.0/", "files": { "radiograph-views.jpg": "Figure 1A–E, original figure; selected projections displayed using a viewport", "bones-im1.webp": "Supplement Fig 1A, PDF p1: anterior CT volume reconstruction", "bones-im2.webp": "Supplement Fig 1B, PDF p1: lateral CT volume reconstruction", "bones-im3.webp": "Supplement Fig 1C, PDF p1: glenoid with humeral head subtracted", "mri-axial.webp": "Supplement Fig 3A, PDF p4; PD, 3T", "mri-sagittal.webp": "Supplement Fig 3B, PDF p5; PD, 3T", "mri-coronal.webp": "Supplement Fig 3C, PDF p6; PD, 3T" }, "supplement": "https://doi.org/10.5334/jbr-btr.1467.s1", "modifications": "Extracted embedded PDF images; WebP compression. Original numeric labels retained. Independently toggleable teaching rings added at runtime without modifying diagnostic pixels." },
+  "grashey": { "file": "grashey.jpg", "author": "Mikael Häggström", "url": "https://commons.wikimedia.org/wiki/File:Anteroposterior_glenoid_(Grashey_view)_X-ray_of_a_normal_shoulder.jpg", "license": "CC0 1.0", "modifications": "Resized for web display; teaching rings added at runtime", "limitation": "Source history includes recurrent dislocation; no claim that the entire shoulder is clinically healthy" },
+  "scientificApproval": "pending",
+  "independentReview": "pending"
+}
