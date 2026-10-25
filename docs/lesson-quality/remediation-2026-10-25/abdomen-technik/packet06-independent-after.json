@@ -1,0 +1,3082 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/brain_original_pools_next",
+  "status": "PASS_ACTUAL_AFTER_AND_EXACT_MINOR_REPAIR",
+  "actualSharedAfter": 40,
+  "otherCanonicalGlobalUnchanged": 54,
+  "actualLocalizedQuestions": 69,
+  "actualCardTriads": 25,
+  "inlineHcc03ActualCanonicalParity": "3/3 languages",
+  "allOriginalBeforeSnapshotsPreserved": true,
+  "onlyChangesFromAcceptedOverlay": [
+    {
+      "path": "overlay.cards.11.answer.de",
+      "before": "Nicht randförmige arterielle Hyperenhancement der Läsion gegenüber der Leber.",
+      "after": "Nicht-randförmiges arterielles Hyperenhancement der Läsion gegenüber der Leber."
+    }
+  ],
+  "allSevenFrozenSourceHashesUnchanged": true,
+  "questionsHashes": {
+    "de": "12915409bd8b81009e8d75ff3be741f9e8c73eb849e5e78b8f9416eb0bd0055e",
+    "en": "1dbc0ae42c1cfd7298cfb7d2d1bfe6176d86c18567ae141ce069b91f25155656",
+    "fa": "67d8fc6dc5e6a5b1a1344eada2c29f4a20dbe19f6a2fd5fc211b7a6ddf8efab0"
+  },
+  "cardsHash": "928ac27b1ced4ff6ee2f63a3008f4defbfa5401ebb90c4c1160205f6e6824d76",
+  "sharedProposalsHash": "6d055e916962109e82f9a455a18a3d998849c5d248e00eeab653a6e225a7c924",
+  "sourceHashes": {
+    "data/haemangiomaTraining.js": "d9d12ee79f802bd321a374ca126555c27eba2a11a9031b5ada81bf3d450916af",
+    "data/haemangiomaLesson.js": "d33379fc199be56f6bcf87f8ced572df20c8ad4563360a51cf57bb2e1a56ae13",
+    "app/abdomen/leber/haemangiom/LessonContent.jsx": "23426dcf1dece2cf6fa3980569dc5e97177d29685ce34502255ab88ec8388adc",
+    "app/abdomen/leber/hcc/page.js": "29e30718c7a578213e83df258a09b34c27b724f549964faee949e3189cba2803",
+    "data/abdomenHccPlanning.js": "376543b1d0a516cdfa97fed94a516aab7e2bddedaa4aaa6aa264eca2c33f93b4",
+    "app/abdomen/leber/li-rads/page.js": "d26df2b26129debd4973463786c40df613acaaad08a65187ae3182a4cfabbab5",
+    "data/assessmentQuality/atvLiver.js": "5f7c685265d77256e57ca5a7756a0c48e30edf73c082b2dfce9bbeb700d1c5a2"
+  },
+  "globalFilesHashes": {
+    "data/questions.js": "c051b6c2014e7e6c24157c91e4512263fd60823922fe2e5d7f9f92df4d895a4e",
+    "data/flashcards.js": "5fb7bf9f0052035538c62d0ba8067e60bc7217ec6dacdaa4412a1ad2d92d65ad"
+  },
+  "actualPayload": {
+    "questions": {
+      "de": [
+        {
+          "id": "haemangiom-de-01",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "Welche Gewebebeschreibung passt zum Leberhämangiom?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Gutartige vaskuläre Läsion mit kavernösen blutgefüllten Räumen"
+            },
+            {
+              "id": "B",
+              "text": "Hepatozelluläre Hyperplasie mit zentraler fibröser Narbe"
+            },
+            {
+              "id": "C",
+              "text": "Umschriebene Fettablagerung bei erhaltener Leberarchitektur"
+            },
+            {
+              "id": "D",
+              "text": "Epithelial ausgekleideter flüssigkeitsgefüllter Hohlraum"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Das Hämangiom besteht aus endothelial ausgekleideten, blutgefüllten Gefäßräumen. Die vaskuläre Natur erklärt sein charakteristisches Kontrastverhalten; die Lage allein bestimmt die Diagnose nicht.",
+          "wrongExplanations": {
+            "B": "Das beschreibt eher eine fokale noduläre Hyperplasie. Beim Hämangiom stehen vaskuläre Räume im Vordergrund, nicht eine Hepatozytenhyperplasie.",
+            "C": "Eine fokale Verfettung ist eine Parenchymveränderung/Pseudoläsion und keine kavernöse vaskuläre Läsion.",
+            "D": "Eine epitheliale Auskleidung gehört zur echten Zyste; sie ist von den blutgefüllten endothelialen Gefäßräumen des Hämangioms zu unterscheiden."
+          },
+          "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+        },
+        {
+          "id": "haemangiom-de-02",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "In welcher Textkonstellation genügt nach EASL2016 die Sonographie zur Diagnose eines typischen Hämangioms?",
+          "options": [
+            {
+              "id": "A",
+              "text": "2,5-cm-Herd, homogen echoreich, scharf begrenzt, dorsale Verstärkung und kein Halo; bekannte Zirrhose"
+            },
+            {
+              "id": "B",
+              "text": "2,5-cm-Herd mit derselben typischen Morphologie; gesunde Leber und keine Tumoranamnese"
+            },
+            {
+              "id": "C",
+              "text": "2,5-cm-Herd mit derselben typischen Morphologie; bekannte extrahepatische Tumorerkrankung"
+            },
+            {
+              "id": "D",
+              "text": "2,5-cm-Herd mit heterogenem Echo und Halo; gesunde Leber ohne Tumoranamnese"
+            }
+          ],
+          "correct": "B",
+          "explanation": "EASL2016 verbindet <3 cm, typische Morphologie und gesunde Leber ohne Tumoranamnese. ACG2024 verwendet eine andere Größenregel (<2 cm); die benannte EASL-Regel darf nicht stillschweigend mit ihr vermischt werden.",
+          "wrongExplanations": {
+            "A": "Bei zugrunde liegender Lebererkrankung fordert EASL eine kontrastverstärkte Charakterisierung trotz scheinbar typischer Sonographie.",
+            "C": "Die Tumoranamnese verändert den diagnostischen Kontext; kontrastverstärkte Charakterisierung ist erforderlich.",
+            "D": "Heterogenität und Halo erfüllen die hier geforderte klassische Morphologie nicht. Die kleine Größe allein genügt nicht."
+          },
+          "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+        },
+        {
+          "id": "haemangiom-de-03",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "Welche Mehrphasen-Dynamik entspricht dem klassischen peripher-nodulären Hämangiommuster?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Durchgehender anreichernder Randsaum mit progredienter zentraler Anreicherung"
+            },
+            {
+              "id": "B",
+              "text": "Homogene arterielle Hyperanreicherung mit späterer Angleichung an das Leberparenchym"
+            },
+            {
+              "id": "C",
+              "text": "Diskontinuierliche periphere Kontrastknoten mit zentripetaler Auffüllung und persistierender blutpoolähnlicher Anreicherung"
+            },
+            {
+              "id": "D",
+              "text": "Nicht-randständiges APHE mit anschließendem nicht-peripherem Wash-out"
+            }
+          ],
+          "correct": "C",
+          "explanation": "Einzelne periphere Kontrastknoten breiten sich nach innen aus und folgen dem Blutpool. Das ist von einem durchgehenden Randsaum zu trennen. Große Läsionen müssen auch spät nicht vollständig gefüllt sein.",
+          "wrongExplanations": {
+            "A": "Ein durchgehender Rim ist nicht gleichbedeutend mit getrennten Kontrastknoten. Ein solches Muster verlangt eine andere oder weiterführende Charakterisierung.",
+            "B": "Homogene arterielle Hyperanreicherung ist ein anderes Muster und kann mehrere Diagnosen haben. Für die gesuchte klassische Variante fehlen die getrennten peripheren Knoten.",
+            "D": "Nicht-peripheres Wash-out gewichtet im passenden Risikokontext HCC, nicht das gesuchte persistierende blutpoolähnliche Hämangiommuster."
+          },
+          "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+        },
+        {
+          "id": "haemangiom-de-04",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "Welche räumlich-zeitliche Kontrastverteilung beschreibt das Irisblendenphänomen?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Progressive Ausbreitung der Anreicherung vom Zentrum zum Rand"
+            },
+            {
+              "id": "B",
+              "text": "Früh bereits homogene Anreicherung ohne erkennbare peripher-zentrale Ausbreitung"
+            },
+            {
+              "id": "C",
+              "text": "Anreicherung eines peripheren Randsaums ohne fortschreitende zentrale Füllung"
+            },
+            {
+              "id": "D",
+              "text": "Progressive Ausbreitung der Anreicherung vom Rand zur Mitte"
+            }
+          ],
+          "correct": "D",
+          "explanation": "Zentripetale Füllung bedeutet vom Rand zur Mitte. Geschwindigkeit und Vollständigkeit variieren; das benannte Muster verlangt nicht in jeder Läsion eine komplette späte Füllung.",
+          "wrongExplanations": {
+            "A": "Das ist die umgekehrte, zentrifugale Richtung. Das Irisblendenphänomen beschreibt die zentripetale Füllung.",
+            "B": "Eine sehr rasche homogene Anreicherung kann bei Flash-filling vorkommen, zeigt aber nicht die hier gefragte sichtbare zentripetale Abfolge.",
+            "C": "Ein statischer anreichernder Rim ohne zunehmende zentrale Füllung entspricht nicht der beschriebenen Irisblenden-Dynamik."
+          },
+          "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+        },
+        {
+          "id": "haemangiom-de-05",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "Welche kombinierte MRT-Konstellation unterstützt ein klassisches Hämangiom am stärksten?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Sehr hohes T2-Signal, periphere Kontrastknoten und progressive zentripetale Füllung"
+            },
+            {
+              "id": "B",
+              "text": "Mäßig hohes T2-Signal, arterieller Randsaum und verzögerte zentrale Anreicherung"
+            },
+            {
+              "id": "C",
+              "text": "Flüssigkeitsähnliches T2-Signal ohne Anreicherung in den Kontrastphasen"
+            },
+            {
+              "id": "D",
+              "text": "Mäßig hohes T2-Signal, nicht-randständiges APHE und nachfolgendes Wash-out"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Ausgeprägte T2-Helligkeit und die passende noduläre Mehrphasendynamik ergeben das klassische Gesamtmuster. T2 allein ist nicht spezifisch und atypische Varianten können davon abweichen.",
+          "wrongExplanations": {
+            "B": "Ein arterieller Rim ist von diskontinuierlichen Kontrastknoten zu unterscheiden. Dieses Muster ist nicht die gesuchte klassische Hämangiomkonstellation.",
+            "C": "Flüssigkeit kann sehr T2-hell sein. Fehlende Anreicherung passt eher zu einer einfachen Zyste als zum vaskulären Hämangiommuster.",
+            "D": "APHE mit Wash-out verlangt eine andere Einordnung, insbesondere im HCC-Risikokontext. Das persistierende blutpoolähnliche Füllungsmuster fehlt."
+          },
+          "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+        },
+        {
+          "id": "haemangiom-de-06",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "Welche Sequenzkombination unterstützt T2-shine-through statt gesicherter Diffusionsrestriktion bei einem sehr T2-hellen Herd?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Hohes DWI-Signal mit korrespondierend niedrigem ADC"
+            },
+            {
+              "id": "B",
+              "text": "Hohes DWI-Signal mit erhaltenem oder hohem ADC"
+            },
+            {
+              "id": "C",
+              "text": "Niedriges DWI-Signal mit hohem ADC"
+            },
+            {
+              "id": "D",
+              "text": "Hohes DWI-Signal bei artefaktbedingt nicht beurteilbarem ADC"
+            }
+          ],
+          "correct": "B",
+          "explanation": "Starkes T2-Signal kann zur DWI-Helligkeit beitragen, ohne dass der ADC erniedrigt ist. Das unterstützt Shine-through, beweist aber keine Gutartigkeit: Morphologie und Mehrphasendynamik mitbewerten.",
+          "wrongExplanations": {
+            "A": "Ein korrespondierend niedriger ADC unterstützt echte Restriktion. Auch sie ist nicht automatisch malignitätsspezifisch.",
+            "C": "Niedriges DWI-Signal mit hohem ADC ist eher mit freierer Diffusion vereinbar und zeigt gerade nicht die gefragte DWI-Aufhellung durch T2.",
+            "D": "Ohne verwertbare ADC-Karte ist die gefragte Unterscheidung nicht zuverlässig möglich. Artefakte nicht als normalen ADC werten."
+          },
+          "source": "https://pubmed.ncbi.nlm.nih.gov/18830105/"
+        },
+        {
+          "id": "haemangiom-de-07",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "Welches Referenzkompartiment ist für die anreichernden Gefäßräume eines Hämangioms über die Kontrastphasen besonders hilfreich?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Leberparenchym derselben Phase"
+            },
+            {
+              "id": "B",
+              "text": "Paraspinale Muskulatur derselben Phase"
+            },
+            {
+              "id": "C",
+              "text": "Blutpool derselben Phase"
+            },
+            {
+              "id": "D",
+              "text": "Gallenblasenflüssigkeit derselben Phase"
+            }
+          ],
+          "correct": "C",
+          "explanation": "Die anreichernden Gefäßräume folgen typischerweise dem Blutpool. Eine Läsion muss deshalb spät nicht genau so hell wie die Leber oder vollständig aufgefüllt sein.",
+          "wrongExplanations": {
+            "A": "Der Lebervergleich beschreibt unter anderem relatives Wash-out, ist aber nicht der spezifische Vergleich für die persistierende vaskuläre Hämangiomanreicherung.",
+            "B": "Muskel ist kein intravaskuläres Referenzkompartiment und bildet den Blutpoolverlauf nicht ab.",
+            "D": "Galle kann als Flüssigkeitsvergleich auf T2 dienen, folgt aber nicht der intravaskulären Mehrphasenanreicherung."
+          },
+          "source": "https://pubmed.ncbi.nlm.nih.gov/18830105/"
+        },
+        {
+          "id": "haemangiom-de-08",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "Zwei Textbefunde: (1) kleine Läsion mit früh homogener kräftiger Anreicherung und späterem Blutpoolverhalten; (2) fibrotisch veränderte Läsion mit geringerem T2-Signal und fehlender typischer Auffüllung. Welche Varianten-Zuordnung passt am besten?",
+          "options": [
+            {
+              "id": "A",
+              "text": "(1) sklerosiert; (2) Flash-filling"
+            },
+            {
+              "id": "B",
+              "text": "(1) klassisch peripher-nodulär; (2) klassisch peripher-nodulär"
+            },
+            {
+              "id": "C",
+              "text": "(1) klassisch peripher-nodulär; (2) Flash-filling"
+            },
+            {
+              "id": "D",
+              "text": "(1) Flash-filling; (2) sklerosiert/hyalinisiert"
+            }
+          ],
+          "correct": "D",
+          "explanation": "Flash-filling bezeichnet rasche homogene Füllung; die späteren Phasen bleiben wichtig. Sklerosierung kann T2-Signal und typische Anreicherung vermindern. Die zweite Konstellation ist nicht allein beweisend für Gutartigkeit und kann weitere Charakterisierung erfordern.",
+          "wrongExplanations": {
+            "A": "Die Zuordnung ist vertauscht: frühe homogene Füllung passt zu Flash-filling, nicht zum fibrosebedingten Verlust des typischen Musters.",
+            "B": "Bei keinem der beiden Textbefunde ist die klassische Abfolge getrennter peripherer Knoten mit sichtbarer progressiver Füllung beschrieben.",
+            "C": "Befund1 beschreibt frühe homogene Füllung; Befund2 gerade den Verlust typischer Füllung bei Fibrose. Das entspricht nicht dieser Paarung."
+          },
+          "source": "https://pubmed.ncbi.nlm.nih.gov/34041675/"
+        },
+        {
+          "id": "hcc-de-01",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Vier Erwachsene haben eine unbehandelte Leberbeobachtung; chronische Hepatitis B und früheres HCC liegen jeweils nicht vor. In welchem Kontext ist die diagnostische CT/MRT-LI-RADS-Anwendung nach v2018 zulässig?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Hepatitis-C-bedingte Leberzirrhose"
+            },
+            {
+              "id": "B",
+              "text": "Metabolische Steatose ohne Zirrhose"
+            },
+            {
+              "id": "C",
+              "text": "Chronische Hepatitis C ohne Zirrhose"
+            },
+            {
+              "id": "D",
+              "text": "Zirrhose durch kardiale Stauungshepatopathie"
+            }
+          ],
+          "correct": "A",
+          "explanation": "CT/MRT-LI-RADS v2018 gilt in der definierten erwachsenen Risikopopulation mit Zirrhose, chronischer HBV-Infektion oder aktuellem/früherem HCC und geeigneter Mehrphasenuntersuchung. Bestimmte vaskulär bedingte Zirrhosen sind ausgenommen. Außerhalb der Zielgruppe ist das typische Muster kein gleichwertiger nichtinvasiver Diagnosenachweis.",
+          "wrongExplanations": {
+            "B": "Steatose ohne Zirrhose und ohne die weiteren genannten Risikofaktoren gehört nicht zur diagnostischen LI-RADS-Zielgruppe.",
+            "C": "Hepatitis C allein ohne Zirrhose erfüllt hier die v2018-Zielgruppe nicht; chronische Hepatitis B ist eine gesonderte Einschlusskonstellation.",
+            "D": "ACR schließt Zirrhose aufgrund kardialer Stauung und bestimmter anderer vaskulärer Erkrankungen aus, weil benigne hyperplastische Knoten HCC imitieren können."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-de-02",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Welche Mehrphasen-Konstellation ist bei geeigneter HCC-Risikopopulation klassisch für HCC?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Nicht-randständiges APHE und nachfolgendes nicht-peripheres Wash-out in zulässiger Phase"
+            },
+            {
+              "id": "B",
+              "text": "Periphere diskontinuierliche Kontrastknoten mit progressiver zentripetaler Füllung"
+            },
+            {
+              "id": "C",
+              "text": "Arterieller anreichernder Randsaum mit verzögerter zentraler Anreicherung"
+            },
+            {
+              "id": "D",
+              "text": "Homogene arterielle Hyperanreicherung mit späterer Angleichung an die Leber"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Nicht-randständiges APHE und nicht-peripheres Wash-out bilden das klassische dynamische Muster. Eine formale Kategorie erfordert zusätzlich Größe, Zielgruppe und die übrigen Algorithmusregeln. APHE allein ist nicht spezifisch.",
+          "wrongExplanations": {
+            "B": "Diese vaskuläre Knoten- und Auffülldynamik ist typisch für ein Hämangiom, nicht für das gesuchte HCC-Muster.",
+            "C": "Ein arterieller Rim mit progressiver zentraler Anreicherung ist ein targetoider Warnbefund für nicht HCC-spezifische Malignität; er ist von nonrim APHE zu trennen.",
+            "D": "Dieses Muster kann bei benignen hypervaskulären Läsionen wie typischer FNH vorkommen. Das gesuchte nicht-periphere Wash-out fehlt."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-de-03",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Gadoxetat-MRT: Welche zeitliche Vergleichskonstellation kann das Major Feature „nicht-peripheres Wash-out“ belegen?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Zuvor anreichernde Beobachtung zeigt portalvenös nicht-periphere relative Hypoanreicherung zur Leber"
+            },
+            {
+              "id": "B",
+              "text": "Portalvenös isointense Beobachtung wird erst in der Transitionalphase relativ hypointens"
+            },
+            {
+              "id": "C",
+              "text": "Portalvenös isointense Beobachtung wird erst hepatobiliär relativ hypointens"
+            },
+            {
+              "id": "D",
+              "text": "Bereits nativ hypointense Beobachtung bleibt ohne nachgewiesene zeitliche Kontraständerung portalvenös dunkel"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Bei Gadoxetat wird Major-Feature-Wash-out nur portalvenös bewertet. Transitional- oder hepatobiliäre Hypointensität kann durch Kontrastaufnahme der Leber entstehen und ist ein Ancillary Feature, kein Ersatz für dieses Wash-out. Bei extrazellulärem Kontrastmittel ist auch die zulässige Spätphase verwendbar.",
+          "wrongExplanations": {
+            "B": "Eine erst transitionale Hypointensität wird bei Gadoxetat nicht als Major-Feature-Wash-out gezählt.",
+            "C": "Hepatobiliäre Hypointensität ist ein unterstützendes Merkmal für Malignität, aber nicht HCC-spezifisch und kein Major-Feature-Wash-out.",
+            "D": "Statische Hypointensität allein zeigt keine zeitliche Abnahme der relativen Anreicherung. Dafür muss eine geeignete frühere Kontrastphase mit der späteren Phase verglichen werden."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-de-04",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Welcher Randbefund erfüllt am ehesten das LI-RADS-Major-Feature „enhancing capsule“?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Glatter, gleichmäßiger anreichernder Randsaum in portalvenöser, später oder Transitionalphase"
+            },
+            {
+              "id": "B",
+              "text": "Dicker unregelmäßiger arterieller Randsaum um eine zentral weniger anreichernde Läsion"
+            },
+            {
+              "id": "C",
+              "text": "Einzelne diskontinuierliche periphere Kontrastknoten mit zentraler Auffüllung"
+            },
+            {
+              "id": "D",
+              "text": "Abgrenzbarer Randsaum ohne nachgewiesene Kontrastanreicherung"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Enhancing capsule beschreibt einen glatten, gleichmäßigen, scharfen anreichernden Rand, auffälliger als das fibrotische Gewebe um Hintergrundknoten. Es ist eine bildgebende Appearance, kein alleiniger histologischer Beweis einer Kapsel oder eines HCC.",
+          "wrongExplanations": {
+            "B": "Ein arterieller Rim ist ein anderes Merkmal als eine spätere glatte Kapselappearance und kann zur LR-M-Einordnung beitragen.",
+            "C": "Periphere Kontrastknoten mit Füllung gewichten ein Hämangiom; sie bilden keinen gleichmäßigen Kapselsaum.",
+            "D": "Ohne nachgewiesene Anreicherung ist das Major Feature „enhancing capsule“ nicht erfüllt; eine nonenhancing capsule wird als Ancillary Feature getrennt behandelt."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-de-05",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Wie erscheint ein HCC im Vergleich zur Leber am häufigsten in der hepatobiliären Phase einer Gadoxetat-MRT?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Hypointens"
+            },
+            {
+              "id": "B",
+              "text": "Isointens"
+            },
+            {
+              "id": "C",
+              "text": "Hyperintens"
+            },
+            {
+              "id": "D",
+              "text": "Zentral höheres Signal mit peripher hypointensem targetoidem Rand"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Viele HCC zeigen verminderte hepatobiliäre Aufnahme, unter anderem bei verminderter Expression hepatozellulärer Aufnahmetransporter. Eine erhaltene oder erhöhte Transporterexpression kann iso-/hyperintense HCC erklären. Das Signal ist daher kein alleiniger HCC- oder Gutartigkeitsnachweis.",
+          "wrongExplanations": {
+            "B": "Isointense HCC kommen bei erhaltener Kontrastaufnahme vor, sind aber nicht das häufigste Muster. Isointensität schließt HCC nicht aus.",
+            "C": "Auch hyperintense HCC sind bei entsprechender Transporterexpression möglich. Die häufigere Konstellation ist jedoch Hypointensität.",
+            "D": "Ein targetoides hepatobiliäres Muster ist kein klassisches homogen hypointenses HCC-Muster und kann zu einer LR-M-Abklärung führen; es ist nicht HCC-spezifisch."
+          },
+          "source": "https://pubmed.ncbi.nlm.nih.gov/20663969/"
+        },
+        {
+          "id": "hcc-de-06",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Welche Kombination unterstützt echte Diffusionsrestriktion als Ancillary Feature bei einer HCC-verdächtigen Beobachtung?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Hohes DWI-Signal mit korrespondierend niedrigem ADC"
+            },
+            {
+              "id": "B",
+              "text": "Hohes DWI-Signal mit erhaltenem oder hohem ADC bei starkem T2-Signal"
+            },
+            {
+              "id": "C",
+              "text": "Niedriges DWI-Signal mit hohem ADC"
+            },
+            {
+              "id": "D",
+              "text": "Hohes DWI-Signal bei artefaktbedingt nicht verwertbarem ADC"
+            }
+          ],
+          "correct": "A",
+          "explanation": "DWI-Aufhellung mit passender ADC-Erniedrigung unterstützt echte Restriktion. Dieses Ancillary Feature ist nicht HCC-spezifisch und darf eine Beobachtung nicht allein zu LR-5 hochstufen.",
+          "wrongExplanations": {
+            "B": "Diese Kombination unterstützt eher T2-shine-through als gesicherte Restriktion. Das bedeutet für sich ebenfalls keinen Gutartigkeitsbeweis.",
+            "C": "Niedriges DWI-Signal und hoher ADC unterstützen nicht die gefragte eingeschränkte Diffusion.",
+            "D": "Ohne verwertbaren ADC ist eine zuverlässige Bestätigung allein anhand der DWI-Aufhellung nicht möglich."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-de-07",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Bei einem portalvenösen Füllungsdefekt: Welcher Zusatzbefund ist für „Tumor in vein“ am stärksten beweisend?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Eindeutig gegenüber nativ nachgewiesene Anreicherung von Weichteilgewebe im Venenlumen"
+            },
+            {
+              "id": "B",
+              "text": "Erweiterung der Vene ohne gesicherte intraluminale Anreicherung"
+            },
+            {
+              "id": "C",
+              "text": "Diffusionsrestriktion im Füllungsdefekt ohne gesicherte Anreicherung"
+            },
+            {
+              "id": "D",
+              "text": "Kontakt des Füllungsdefekts zu einer Lebermasse ohne gesicherte Anreicherung"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Eindeutig anreicherndes Weichteilgewebe in einer Vene ist das Kernkriterium. Ausdehnung und betroffene Venen berichten. LR-TIV ist nicht gleichbedeutend mit HCC: auch andere Malignome können in Venen wachsen.",
+          "wrongExplanations": {
+            "B": "Venenexpansion ist ein Hinweis, kann aber für sich keinen Tumorthrombus sichern.",
+            "C": "Diffusionsrestriktion ist ein zusätzlicher Hinweis, ersetzt aber nicht den eindeutigen Nachweis anreichernden Weichteilgewebes.",
+            "D": "Nachbarschaft zur Masse erhöht den Verdacht, ist ohne belegte intraluminale Anreicherung aber nicht das entscheidende Kernkriterium."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-de-08",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Welches Muster passt zu einem infiltrativen HCC und sollte eine gezielte Malignitätsabklärung auslösen?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Unscharfes permeatives Wachstum über mehrere Segmente mit variablem Enhancement und verdächtiger Gefäßinvasion"
+            },
+            {
+              "id": "B",
+              "text": "Scharf begrenzter solitärer Knoten mit homogenem APHE und glatter Kapsel"
+            },
+            {
+              "id": "C",
+              "text": "Keilförmige arterielle Mehranreicherung mit unverzerrten Gefäßen ohne Raumforderung"
+            },
+            {
+              "id": "D",
+              "text": "Geographisches fibrotisches Areal mit Kapselretraktion und zunehmend verzögerter Anreicherung"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Infiltratives HCC kann mit dem zirrhotischen Parenchym verschmelzen und nur heterogen oder fokal typische Kontrastmerkmale zeigen. Gefäßinvasion und die gesamte Mehrphasendynamik sind wichtige Hinweise; die Konstellation bleibt gezielt abzuklären.",
+          "wrongExplanations": {
+            "B": "Das beschreibt eher ein noduläres als ein permeativ-infiltratives Wachstumsmuster. Ein HCC kann nodulär sein, gefragt ist aber die infiltrative Form.",
+            "C": "Ein keilförmiger Befund ohne Masseneffekt und mit unverzerrtem Gefäßverlauf gewichtet eine Perfusionsänderung. Er unterscheidet sich vom beschriebenen malignitätsverdächtigen Wachstum.",
+            "D": "Diese Kombination gewichtet konfluierende Fibrose als wichtige Differenzialdiagnose. Sie darf nicht mit dem typischen Invasionshinweis der gesuchten Konstellation gleichgesetzt werden."
+          },
+          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3538368/"
+        },
+        {
+          "id": "hcc-de-09",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Welche Mehrphasen-MRT-Dynamik mit extrazellulärem Kontrastmittel gewichtet im passenden Risikokontext HCC gegenüber typischer FNH stärker?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Nicht-randständiges APHE mit nicht-peripherem portalvenösem oder verzögertem Wash-out"
+            },
+            {
+              "id": "B",
+              "text": "Homogene arterielle Hyperanreicherung mit späterer Isointensität zur Leber"
+            },
+            {
+              "id": "C",
+              "text": "Frühe Hyperanreicherung, spätere Angleichung an die Leber und verzögert anreichernde zentrale Narbe"
+            },
+            {
+              "id": "D",
+              "text": "Periphere Kontrastknoten mit zentripetaler Füllung und Blutpoolverhalten"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Typische FNH zeigt kräftige arterielle Anreicherung, aber kein nicht-peripheres Wash-out. Das genannte Wash-out gewichtet HCC im passenden Kontext, ist allein aber kein vollständiger Kategorien- oder Histologienachweis.",
+          "wrongExplanations": {
+            "B": "Diese homogene Dynamik ohne Wash-out kann zur typischen FNH passen und ist nicht das gesuchte HCC-gewichtende Merkmal.",
+            "C": "Eine verzögert anreichernde zentrale Narbe mit sonstiger Angleichung ist mit typischer FNH vereinbar. Die Narbe ist nicht mit einer peripheren Kapsel zu verwechseln.",
+            "D": "Diese noduläre Füllungsdynamik gewichtet ein Hämangiom, nicht das typische HCC-Muster."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-de-10",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Textfall: Der HCC-Befund erfasst Tumorzahl/-größe, Segmente, Gefäßinvasion und Metastasen vollständig. Welche zusätzlichen klinischen Angaben gehören für die BCLC-Stadieneinordnung wesentlich dazu?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Leberfunktion beziehungsweise Dekompensation und ECOG-Performance-Status"
+            },
+            {
+              "id": "B",
+              "text": "Histologischer Differenzierungsgrad und Ki-67-Index"
+            },
+            {
+              "id": "C",
+              "text": "AFP-Konzentration und Viruslast der zugrunde liegenden Hepatitis"
+            },
+            {
+              "id": "D",
+              "text": "Kalenderalter und Body-Mass-Index"
+            }
+          ],
+          "correct": "A",
+          "explanation": "BCLC verbindet Tumorlast mit Leberfunktion und Allgemeinzustand/Performance-Status. Die Bildgebung liefert den anatomischen Anteil; sie entscheidet Stadium und Therapie nicht ohne diese klinischen Informationen.",
+          "wrongExplanations": {
+            "B": "Grading und Proliferation können biologisch informieren, ersetzen aber die klinischen BCLC-Kernelemente Leberfunktion und Performance-Status nicht.",
+            "C": "AFP und Viruslast können für Prognose, Ätiologie oder ausgewählte Therapien relevant sein; die gefragte funktionelle Stadieneinordnung erfordert trotzdem Leberfunktion und ECOG.",
+            "D": "Alter und BMI beeinflussen individuelle Entscheidungen, sind aber kein Ersatz für die direkte Erfassung von Leberreserve und Performance-Status."
+          },
+          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/"
+        },
+        {
+          "id": "li-rads-de-eligible",
+          "fach": "abdomen",
+          "tags": [
+            "li-rads"
+          ],
+          "question": "Bei welcher erwachsenen Person ist diagnostisches CT/MRT-LI-RADS v2018 anwendbar? In allen Fällen liegt eine technisch geeignete Mehrphasenuntersuchung einer unbehandelten, nicht biopsierten Beobachtung vor; Hepatitis B und früheres HCC sind ausgeschlossen.",
+          "options": [
+            {
+              "id": "A",
+              "text": "Zirrhose nach chronischer Hepatitis C"
+            },
+            {
+              "id": "B",
+              "text": "Steatotische Leber ohne Zirrhose"
+            },
+            {
+              "id": "C",
+              "text": "Zirrhose durch kardiale Stauung"
+            },
+            {
+              "id": "D",
+              "text": "Kongenitale hepatische Fibrose"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Die HCV-bedingte Zirrhose erfüllt hier die erwachsene Risikopopulation. Vor jeder Kategorie müssen zusätzlich Technik und unbehandelter Status passen.",
+          "wrongExplanations": {
+            "B": "Steatose ohne Zirrhose erfüllt bei ausgeschlossener Hepatitis B und fehlendem HCC in der Vorgeschichte die Zielpopulation nicht.",
+            "C": "Kardial bedingte vaskuläre Zirrhose ist ausdrücklich ausgenommen: benigne hyperplastische Knoten können die Spezifität beeinträchtigen.",
+            "D": "Kongenitale hepatische Fibrose ist eine ausdrückliche Ausnahme, auch wenn eine Leberbeobachtung technisch gut untersucht ist."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "li-rads-de-lr4",
+          "fach": "abdomen",
+          "tags": [
+            "li-rads"
+          ],
+          "question": "Bei Zirrhose bleibt eine Beobachtung nach technisch vollständiger Bildgebung LR-4. Die jetzt anstehende Therapieentscheidung hängt davon ab, ob tatsächlich HCC vorliegt; Gewebe fehlt. Welche Strategie ist nach AASLD2023 vorrangig im Tumorboard zu besprechen?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Erneute Kontrast-MRT innerhalb von 3 Monaten"
+            },
+            {
+              "id": "B",
+              "text": "Erneute Mehrphasen-CT nach 6 Monaten"
+            },
+            {
+              "id": "C",
+              "text": "Zeitnahe gezielte Biopsie nach multidisziplinärer Abwägung"
+            },
+            {
+              "id": "D",
+              "text": "Lokale HCC-Therapie auf Grundlage der Kategorie beginnen"
+            }
+          ],
+          "correct": "C",
+          "explanation": "AASLD empfiehlt bei LR-4 eine individuelle Wahl zwischen Kontrastbildgebung innerhalb von 3 Monaten und Biopsie. Wenn die sofortige Diagnose das Management verändert, wird die Biopsie gegenüber bloßer Verlaufskontrolle bevorzugt.",
+          "wrongExplanations": {
+            "A": "Die 3-Monats-Bildgebung ist eine LR-4-Option; hier würde jedoch die jetzt benötigte Diagnose die Therapie ändern, weshalb Gewebeklärung vorrangig besprochen wird.",
+            "B": "Sechs Monate überschreiten das empfohlene enge LR-4-Intervall und lösen die aktuelle diagnoseabhängige Entscheidung nicht.",
+            "D": "LR-4 bedeutet wahrscheinlich, nicht sicher HCC. Im beschriebenen Fall ist die Diagnose noch zu klären, bevor eine darauf gestützte Therapie festgelegt wird."
+          },
+          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/"
+        },
+        {
+          "id": "aq-atv-li-rads-de-major-rule",
+          "fach": "abdomen",
+          "tags": [
+            "li-rads"
+          ],
+          "question": "Zirrhose, geeignete Mehrphasen-MRT mit extrazellulärem Kontrastmittel: zwei unbehandelte 15-mm-Beobachtungen, beide mit nonrim APHE, ohne LR-M-Merkmale oder Tumor in vein. X zeigt nicht-peripheres portalvenöses Wash-out; Y eine anreichernde Kapsel, aber kein Wash-out und kein Schwellenwachstum. Welche Kategorien gelten nach v2018?",
+          "options": [
+            {
+              "id": "A",
+              "text": "X: LR-5; Y: LR-5"
+            },
+            {
+              "id": "B",
+              "text": "X: LR-5; Y: LR-4"
+            },
+            {
+              "id": "C",
+              "text": "X: LR-4; Y: LR-5"
+            },
+            {
+              "id": "D",
+              "text": "X: LR-4; Y: LR-4"
+            }
+          ],
+          "correct": "B",
+          "explanation": "Bei 10–19 mm erreicht nonrim APHE plus nicht-peripheres Wash-out LR-5. APHE plus anreichernde Kapsel allein bleibt in dieser Größenklasse LR-4; Schwellenwachstum wäre ebenfalls ein Weg zu LR-5.",
+          "wrongExplanations": {
+            "A": "X ist LR-5, aber Y erreicht mit der Kapsel allein bei 15 mm nicht LR-5.",
+            "C": "Die Kombinationen sind vertauscht: Wash-out bei X trägt hier LR-5, die Kapsel allein bei Y LR-4.",
+            "D": "Y ist LR-4; X erfüllt jedoch trotz seiner Größe unter 20 mm die spezielle LR-5-Regel."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "aq-atv-li-rads-de-ancillary-limit",
+          "fach": "abdomen",
+          "tags": [
+            "li-rads"
+          ],
+          "question": "Eine nach Major Features zunächst LR-3 eingeordnete Beobachtung zeigt nicht-targetoide Diffusionsrestriktion und hepatobiliäre Hypointensität. Keine benignitätsstützenden Ancillary Features, kein Tumor in vein oder LR-M-Merkmal. Welche höchste Kategorie ist durch diese Zusatzzeichen nach ACR v2018 zulässig?",
+          "options": [
+            {
+              "id": "A",
+              "text": "LR-2"
+            },
+            {
+              "id": "B",
+              "text": "LR-3"
+            },
+            {
+              "id": "C",
+              "text": "LR-4"
+            },
+            {
+              "id": "D",
+              "text": "LR-5"
+            }
+          ],
+          "correct": "C",
+          "explanation": "Malignitätsstützende Ancillary Features dürfen optional um eine Kategorie, höchstens bis LR-4, hochstufen. Sie erlauben kein LR-5. Bei gleichzeitigen benignitäts- und malignitätsstützenden Ancillary Features wird nicht angepasst.",
+          "wrongExplanations": {
+            "A": "Die genannten Zusatzzeichen sprechen für Malignität und begründen keine Herabstufung auf LR-2.",
+            "B": "LR-3 beizubehalten ist bei optionaler Anwendung möglich; gefragt ist aber die höchste erlaubte Einstufung, hier LR-4.",
+            "D": "LR-5 verlangt die entsprechenden Hauptmerkmalsregeln; Diffusion und hepatobiliäres Signal ersetzen diese nicht."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "aq-atv-li-rads-de-tiv-specificity",
+          "fach": "abdomen",
+          "tags": [
+            "li-rads"
+          ],
+          "question": "In der geeigneten LI-RADS-Zielgruppe zeigt eine vollständige MRT eindeutig anreicherndes Weichteilgewebe in einem Pfortaderast. Eine zugehörige parenchymale Masse lässt sich nicht sicher charakterisieren. Welche Befundformulierung passt am besten?",
+          "options": [
+            {
+              "id": "A",
+              "text": "LR-5: HCC mit venöser Ausbreitung"
+            },
+            {
+              "id": "B",
+              "text": "LR-M: intrahepatisches Cholangiokarzinom mit venöser Ausbreitung"
+            },
+            {
+              "id": "C",
+              "text": "LR-NC: wegen fehlender abgrenzbarer Parenchymmasse"
+            },
+            {
+              "id": "D",
+              "text": "LR-TIV: Tumor in der Vene; Ursprung anhand weiterer Befunde einordnen"
+            }
+          ],
+          "correct": "D",
+          "explanation": "Eindeutig anreicherndes Weichteilgewebe in einer Vene ist LR-TIV, auch ohne sichtbare Parenchymmasse. Die Kategorie ist nicht HCC-spezifisch; betroffene Vene, Ausdehnung und vermuteten Ursprung berichten, soweit beurteilbar.",
+          "wrongExplanations": {
+            "A": "Tumor in vein wird als LR-TIV kategorisiert; der venöse Befund allein beweist keine HCC-Ätiologie.",
+            "B": "Auch nicht-HCC-Malignome können Tumor in vein verursachen, doch hier ist ein Cholangiokarzinom nicht nachgewiesen; die Sonderkategorie ist LR-TIV.",
+            "C": "LR-NC betrifft unzureichende Information zur Kategorisierung. Der hier eindeutig beurteilbare venöse Tumor erlaubt LR-TIV auch ohne abgrenzbare Masse."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        }
+      ],
+      "en": [
+        {
+          "id": "haemangiom-en-01",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "Which tissue description fits a hepatic haemangioma?",
+          "options": [
+            {
+              "id": "A",
+              "text": "A benign vascular lesion with cavernous blood-filled spaces"
+            },
+            {
+              "id": "B",
+              "text": "Hepatocellular hyperplasia with a central fibrous scar"
+            },
+            {
+              "id": "C",
+              "text": "Focal fat deposition with preserved hepatic architecture"
+            },
+            {
+              "id": "D",
+              "text": "An epithelial-lined fluid-filled cavity"
+            }
+          ],
+          "correct": "A",
+          "explanation": "A haemangioma contains endothelial-lined blood-filled vascular spaces. Its vascular nature explains the characteristic enhancement behaviour; location alone does not determine the diagnosis.",
+          "wrongExplanations": {
+            "B": "This instead describes focal nodular hyperplasia. Vascular spaces, rather than hepatocellular hyperplasia, define haemangioma.",
+            "C": "Focal steatosis is a parenchymal change/pseudolesion, not a cavernous vascular lesion.",
+            "D": "An epithelial lining belongs to a true cyst and differs from a haemangioma’s endothelial vascular spaces filled with blood."
+          },
+          "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+        },
+        {
+          "id": "haemangiom-en-02",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "In which text-based setting is ultrasound sufficient to diagnose a typical haemangioma under EASL2016?",
+          "options": [
+            {
+              "id": "A",
+              "text": "A 2.5 cm homogeneous hyperechoic, well-defined lesion with posterior enhancement and no halo; known cirrhosis"
+            },
+            {
+              "id": "B",
+              "text": "A 2.5 cm lesion with the same typical morphology; healthy liver and no cancer history"
+            },
+            {
+              "id": "C",
+              "text": "A 2.5 cm lesion with the same typical morphology; known extrahepatic cancer"
+            },
+            {
+              "id": "D",
+              "text": "A 2.5 cm lesion with heterogeneous echotexture and a halo; healthy liver without cancer history"
+            }
+          ],
+          "correct": "B",
+          "explanation": "EASL2016 combines <3 cm, typical morphology and a healthy liver without cancer history. ACG2024 uses a different size rule (<2 cm); do not silently merge it with the named EASL rule.",
+          "wrongExplanations": {
+            "A": "With underlying liver disease, EASL requires contrast-enhanced characterisation despite apparently typical ultrasound.",
+            "C": "Cancer history changes the diagnostic context; contrast-enhanced characterisation is required.",
+            "D": "Heterogeneity and a halo do not meet the classic morphology specified here. Small size alone is insufficient."
+          },
+          "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+        },
+        {
+          "id": "haemangiom-en-03",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "Which multiphasic pattern matches the classic peripheral nodular haemangioma pattern?",
+          "options": [
+            {
+              "id": "A",
+              "text": "A continuous enhancing rim with progressive central enhancement"
+            },
+            {
+              "id": "B",
+              "text": "Homogeneous arterial hyperenhancement followed by equilibration with liver parenchyma"
+            },
+            {
+              "id": "C",
+              "text": "Discontinuous peripheral enhancing nodules with centripetal fill-in and persistent blood-pool-like enhancement"
+            },
+            {
+              "id": "D",
+              "text": "Nonrim APHE followed by nonperipheral washout"
+            }
+          ],
+          "correct": "C",
+          "explanation": "Separate peripheral enhancing nodules extend inward and follow the blood pool. Distinguish this from a continuous rim. Large lesions need not fill completely even on delayed imaging.",
+          "wrongExplanations": {
+            "A": "A continuous rim is not equivalent to separate enhancing nodules. Such a pattern requires a different or additional characterisation.",
+            "B": "Homogeneous arterial hyperenhancement is a different pattern with several possible diagnoses. The separate peripheral nodules required for this classic variant are absent.",
+            "D": "Nonperipheral washout favours HCC in an appropriate risk context rather than the persistent blood-pool-like haemangioma pattern sought here."
+          },
+          "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+        },
+        {
+          "id": "haemangiom-en-04",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "Which spatial-temporal enhancement pattern describes the iris diaphragm phenomenon?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Progressive enhancement spreading from the centre to the edge"
+            },
+            {
+              "id": "B",
+              "text": "Early homogeneous enhancement without visible peripheral-to-central progression"
+            },
+            {
+              "id": "C",
+              "text": "Enhancement of a peripheral rim without progressive central fill-in"
+            },
+            {
+              "id": "D",
+              "text": "Progressive enhancement spreading from the edge to the centre"
+            }
+          ],
+          "correct": "D",
+          "explanation": "Centripetal filling means from the edge toward the centre. Speed and completeness vary; this pattern does not require complete delayed filling in every lesion.",
+          "wrongExplanations": {
+            "A": "This is the opposite, centrifugal direction. The iris diaphragm phenomenon describes centripetal filling.",
+            "B": "Very rapid homogeneous enhancement may occur in flash-filling, but it does not show the visible centripetal sequence asked here.",
+            "C": "A static enhancing rim without progressive central filling does not match the iris diaphragm dynamics described."
+          },
+          "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+        },
+        {
+          "id": "haemangiom-en-05",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "Which combined MRI pattern most strongly supports a classic haemangioma?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Marked T2 brightness, peripheral enhancing nodules and progressive centripetal fill-in"
+            },
+            {
+              "id": "B",
+              "text": "Moderate T2 hyperintensity, arterial rim enhancement and delayed central enhancement"
+            },
+            {
+              "id": "C",
+              "text": "Fluid-like T2 signal without enhancement in the contrast phases"
+            },
+            {
+              "id": "D",
+              "text": "Moderate T2 hyperintensity, nonrim APHE and subsequent washout"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Marked T2 brightness plus compatible nodular multiphasic enhancement form the classic overall pattern. T2 alone is not specific, and atypical variants may differ.",
+          "wrongExplanations": {
+            "B": "An arterial rim differs from discontinuous enhancing nodules. This is not the classic haemangioma pattern sought here.",
+            "C": "Fluid can be markedly T2 bright. Absent enhancement instead favours a simple cyst over the vascular haemangioma pattern.",
+            "D": "APHE with washout requires a different interpretation, particularly in an HCC risk context. The persistent blood-pool-like fill-in pattern is absent."
+          },
+          "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+        },
+        {
+          "id": "haemangiom-en-06",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "Which sequence combination supports T2 shine-through rather than established restricted diffusion in a markedly T2-bright lesion?",
+          "options": [
+            {
+              "id": "A",
+              "text": "High DWI signal with corresponding low ADC"
+            },
+            {
+              "id": "B",
+              "text": "High DWI signal with preserved or high ADC"
+            },
+            {
+              "id": "C",
+              "text": "Low DWI signal with high ADC"
+            },
+            {
+              "id": "D",
+              "text": "High DWI signal with ADC rendered nondiagnostic by artefact"
+            }
+          ],
+          "correct": "B",
+          "explanation": "Strong T2 signal can contribute to DWI brightness without low ADC. This supports shine-through but does not establish benignity; also assess morphology and multiphasic enhancement.",
+          "wrongExplanations": {
+            "A": "A corresponding low ADC supports true restriction, which is itself not automatically specific for malignancy.",
+            "C": "Low DWI signal with high ADC instead fits freer diffusion and does not show the DWI brightness from T2 being asked about.",
+            "D": "Without an interpretable ADC map the requested distinction cannot be made reliably. Do not treat artefact as normal ADC."
+          },
+          "source": "https://pubmed.ncbi.nlm.nih.gov/18830105/"
+        },
+        {
+          "id": "haemangiom-en-07",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "Which reference compartment is particularly useful for the enhancing vascular spaces of a haemangioma across contrast phases?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Liver parenchyma in the same phase"
+            },
+            {
+              "id": "B",
+              "text": "Paraspinal muscle in the same phase"
+            },
+            {
+              "id": "C",
+              "text": "Blood pool in the same phase"
+            },
+            {
+              "id": "D",
+              "text": "Gallbladder fluid in the same phase"
+            }
+          ],
+          "correct": "C",
+          "explanation": "The enhancing vascular spaces typically follow the blood pool. The lesion therefore need not match liver brightness or fill completely on delayed imaging.",
+          "wrongExplanations": {
+            "A": "Comparison with liver helps describe relative washout, but it is not the specific reference for persistent vascular haemangioma enhancement.",
+            "B": "Muscle is not an intravascular reference compartment and does not represent the blood-pool enhancement course.",
+            "D": "Bile can provide a fluid comparison on T2 but does not follow intravascular multiphasic enhancement."
+          },
+          "source": "https://pubmed.ncbi.nlm.nih.gov/18830105/"
+        },
+        {
+          "id": "haemangiom-en-08",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "Two text findings: (1) a small lesion with early intense homogeneous enhancement and later blood-pool behaviour; (2) a fibrotic lesion with lower T2 signal and absent typical fill-in. Which variant pairing fits best?",
+          "options": [
+            {
+              "id": "A",
+              "text": "(1) sclerosed; (2) flash-filling"
+            },
+            {
+              "id": "B",
+              "text": "(1) classic peripheral nodular; (2) classic peripheral nodular"
+            },
+            {
+              "id": "C",
+              "text": "(1) classic peripheral nodular; (2) flash-filling"
+            },
+            {
+              "id": "D",
+              "text": "(1) flash-filling; (2) sclerosed/hyalinised"
+            }
+          ],
+          "correct": "D",
+          "explanation": "Flash-filling means rapid homogeneous fill-in; later phases remain important. Sclerosis may reduce T2 signal and typical enhancement. The second pattern alone does not establish benignity and may require further characterisation.",
+          "wrongExplanations": {
+            "A": "The pairing is reversed: early homogeneous filling fits flash-filling, not fibrosis-related loss of the typical pattern.",
+            "B": "Neither text finding describes the classic sequence of separate peripheral nodules with visible progressive filling.",
+            "C": "Finding1 describes early homogeneous filling; finding2 describes loss of typical filling with fibrosis. This does not match the proposed pairing."
+          },
+          "source": "https://pubmed.ncbi.nlm.nih.gov/34041675/"
+        },
+        {
+          "id": "hcc-en-01",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Four adults have an untreated liver observation; none has chronic hepatitis B or prior HCC. Which setting is eligible for diagnostic CT/MRI LI-RADS v2018?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Hepatitis-C-related cirrhosis"
+            },
+            {
+              "id": "B",
+              "text": "Metabolic steatosis without cirrhosis"
+            },
+            {
+              "id": "C",
+              "text": "Chronic hepatitis C without cirrhosis"
+            },
+            {
+              "id": "D",
+              "text": "Cirrhosis due to cardiac congestive hepatopathy"
+            }
+          ],
+          "correct": "A",
+          "explanation": "CT/MRI LI-RADS v2018 requires the defined adult risk population with cirrhosis, chronic HBV or current/prior HCC, and suitable multiphasic imaging. Certain vascular causes of cirrhosis are excluded. Outside that population the typical pattern is not equivalent noninvasive diagnostic evidence.",
+          "wrongExplanations": {
+            "B": "Steatosis without cirrhosis or the other specified risk factors is outside the diagnostic LI-RADS population.",
+            "C": "Hepatitis C alone without cirrhosis does not meet v2018 eligibility here; chronic hepatitis B is a separate qualifying setting.",
+            "D": "ACR excludes cirrhosis from cardiac congestion and certain other vascular disorders because benign hyperplastic nodules may mimic HCC."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-en-02",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Which multiphasic pattern is classic for HCC in an eligible at-risk population?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Nonrim APHE followed by nonperipheral washout in a permissible phase"
+            },
+            {
+              "id": "B",
+              "text": "Discontinuous peripheral enhancing nodules with progressive centripetal fill-in"
+            },
+            {
+              "id": "C",
+              "text": "An arterial enhancing rim with delayed central enhancement"
+            },
+            {
+              "id": "D",
+              "text": "Homogeneous arterial hyperenhancement with later equilibration to liver"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Nonrim APHE and nonperipheral washout form the classic dynamic pattern. A formal category additionally requires size, eligibility and the remaining algorithm rules. APHE alone is not specific.",
+          "wrongExplanations": {
+            "B": "This vascular nodular fill-in pattern is typical of haemangioma, not the HCC pattern requested.",
+            "C": "An arterial rim with progressive central enhancement is a targetoid warning pattern for malignancy not specific to HCC; distinguish it from nonrim APHE.",
+            "D": "This may occur in benign hypervascular lesions such as typical FNH. The nonperipheral washout requested is absent."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-en-03",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "On gadoxetate-enhanced MRI, which temporal comparison can establish the major feature of nonperipheral washout?",
+          "options": [
+            {
+              "id": "A",
+              "text": "A previously enhancing observation shows nonperipheral relative hypoenhancement to liver in the portal venous phase"
+            },
+            {
+              "id": "B",
+              "text": "An observation is isointense in the portal venous phase and becomes relatively hypointense only in the transitional phase"
+            },
+            {
+              "id": "C",
+              "text": "An observation is isointense in the portal venous phase and becomes relatively hypointense only in the hepatobiliary phase"
+            },
+            {
+              "id": "D",
+              "text": "An observation is already hypointense before contrast and remains dark in the portal venous phase without a demonstrated temporal enhancement change"
+            }
+          ],
+          "correct": "A",
+          "explanation": "With gadoxetate, major-feature washout is assessed only in the portal venous phase. Transitional or hepatobiliary hypointensity may reflect liver uptake and is an ancillary feature, not a substitute for this washout. With extracellular agents an appropriate delayed phase may also be used.",
+          "wrongExplanations": {
+            "B": "Hypointensity appearing only in the transitional phase does not count as major-feature washout with gadoxetate.",
+            "C": "Hepatobiliary hypointensity supports malignancy but is not HCC-specific and is not major-feature washout.",
+            "D": "Static hypointensity alone does not demonstrate temporal reduction in relative enhancement. Compare an appropriate earlier contrast phase with the later phase."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-en-04",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Which peripheral finding best fits the LI-RADS major feature of enhancing capsule?",
+          "options": [
+            {
+              "id": "A",
+              "text": "A smooth uniform enhancing border in the portal venous, delayed or transitional phase"
+            },
+            {
+              "id": "B",
+              "text": "A thick irregular arterial enhancing rim around a less-enhancing centre"
+            },
+            {
+              "id": "C",
+              "text": "Separate discontinuous peripheral enhancing nodules with central fill-in"
+            },
+            {
+              "id": "D",
+              "text": "A definable peripheral border without demonstrated enhancement"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Enhancing capsule is a smooth uniform sharp enhancing border, more conspicuous than fibrosis around background nodules. It is an imaging appearance, not standalone histological proof of a capsule or HCC.",
+          "wrongExplanations": {
+            "B": "An arterial rim is different from a later smooth capsule appearance and may support LR-M classification.",
+            "C": "Peripheral enhancing nodules with fill-in favour haemangioma and do not form a uniform capsule border.",
+            "D": "Without demonstrated enhancement the major feature is not met; a nonenhancing capsule is handled separately as an ancillary feature."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-en-05",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "How does HCC most often appear relative to liver in the hepatobiliary phase of gadoxetate MRI?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Hypointense"
+            },
+            {
+              "id": "B",
+              "text": "Isointense"
+            },
+            {
+              "id": "C",
+              "text": "Hyperintense"
+            },
+            {
+              "id": "D",
+              "text": "Higher central signal with a peripheral hypointense targetoid rim"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Many HCCs show reduced hepatobiliary uptake, associated in part with reduced hepatocellular uptake-transporter expression. Preserved or increased expression can explain iso-/hyperintense HCC. Signal alone therefore establishes neither HCC nor benignity.",
+          "wrongExplanations": {
+            "B": "Isointense HCC occurs with preserved uptake but is not the most common pattern. Isointensity does not exclude HCC.",
+            "C": "Hyperintense HCC is possible with appropriate transporter expression, but hypointensity is more common.",
+            "D": "A targetoid hepatobiliary pattern differs from the classic homogeneous hypointense pattern and may prompt LR-M assessment; it is not HCC-specific."
+          },
+          "source": "https://pubmed.ncbi.nlm.nih.gov/20663969/"
+        },
+        {
+          "id": "hcc-en-06",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Which combination supports true restricted diffusion as an ancillary feature in an observation suspicious for HCC?",
+          "options": [
+            {
+              "id": "A",
+              "text": "High DWI signal with corresponding low ADC"
+            },
+            {
+              "id": "B",
+              "text": "High DWI signal with preserved or high ADC and marked T2 signal"
+            },
+            {
+              "id": "C",
+              "text": "Low DWI signal with high ADC"
+            },
+            {
+              "id": "D",
+              "text": "High DWI signal with ADC rendered uninterpretable by artefact"
+            }
+          ],
+          "correct": "A",
+          "explanation": "DWI brightness with corresponding low ADC supports true restriction. This ancillary feature is not HCC-specific and cannot independently upgrade an observation to LR-5.",
+          "wrongExplanations": {
+            "B": "This instead supports T2 shine-through rather than established restriction; it is not standalone proof of benignity either.",
+            "C": "Low DWI signal and high ADC do not support the restricted diffusion asked about.",
+            "D": "Without interpretable ADC, DWI brightness alone cannot reliably confirm restriction."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-en-07",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "For a portal venous filling defect, which additional finding most strongly establishes tumour in vein?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Unequivocal enhancement of intraluminal soft tissue confirmed against precontrast imaging"
+            },
+            {
+              "id": "B",
+              "text": "Venous expansion without established intraluminal enhancement"
+            },
+            {
+              "id": "C",
+              "text": "Restricted diffusion within the filling defect without established enhancement"
+            },
+            {
+              "id": "D",
+              "text": "Contact between the filling defect and a liver mass without established enhancement"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Unequivocal enhancing soft tissue in a vein is the core criterion. Report extent and involved veins. LR-TIV is not synonymous with HCC; other malignancies may also invade veins.",
+          "wrongExplanations": {
+            "B": "Venous expansion is a clue but cannot independently establish tumour thrombus.",
+            "C": "Restriction is an additional clue but does not replace unequivocal enhancing soft tissue.",
+            "D": "Adjacency to a mass raises concern but, without established intraluminal enhancement, is not the defining core criterion."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-en-08",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Which pattern fits infiltrative HCC and should prompt targeted malignancy evaluation?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Ill-defined permeative growth across several segments with variable enhancement and suspicious vascular invasion"
+            },
+            {
+              "id": "B",
+              "text": "A sharply defined solitary nodule with homogeneous APHE and a smooth capsule"
+            },
+            {
+              "id": "C",
+              "text": "Wedge-shaped arterial hyperenhancement with undistorted vessels and no mass"
+            },
+            {
+              "id": "D",
+              "text": "A geographic fibrotic area with capsular retraction and progressive delayed enhancement"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Infiltrative HCC can blend into cirrhotic parenchyma and show typical enhancement only heterogeneously or focally. Vascular invasion and the whole multiphasic pattern are important clues; targeted evaluation remains necessary.",
+          "wrongExplanations": {
+            "B": "This is a nodular rather than permeative infiltrative pattern. HCC can be nodular, but the question asks about the infiltrative form.",
+            "C": "A wedge-shaped non-mass finding with undistorted vessels favours a perfusion change and differs from the suspicious growth described.",
+            "D": "This favours confluent fibrosis, an important differential; it is not equivalent to the invasive pattern in the requested constellation."
+          },
+          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3538368/"
+        },
+        {
+          "id": "hcc-en-09",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Which multiphasic MRI pattern with an extracellular agent more strongly favours HCC over typical FNH in an appropriate risk context?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Nonrim APHE with nonperipheral portal venous or delayed washout"
+            },
+            {
+              "id": "B",
+              "text": "Homogeneous arterial hyperenhancement with later isointensity to liver"
+            },
+            {
+              "id": "C",
+              "text": "Early hyperenhancement, later equilibration with liver and delayed enhancement of a central scar"
+            },
+            {
+              "id": "D",
+              "text": "Peripheral enhancing nodules with centripetal fill-in and blood-pool behaviour"
+            }
+          ],
+          "correct": "A",
+          "explanation": "Typical FNH shows strong arterial enhancement without nonperipheral washout. The specified washout favours HCC in context but alone does not establish a complete category or histology.",
+          "wrongExplanations": {
+            "B": "This homogeneous pattern without washout can fit typical FNH rather than the HCC-favouring feature sought.",
+            "C": "A delayed-enhancing central scar with otherwise liver equilibration is compatible with typical FNH. Do not confuse a central scar with a peripheral capsule.",
+            "D": "This nodular fill-in pattern favours haemangioma, not the typical HCC pattern."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-en-10",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "Text vignette: the HCC imaging report fully documents tumour number/size, segments, vascular invasion and metastases. Which additional clinical information is essential for BCLC staging?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Liver function/decompensation and ECOG performance status"
+            },
+            {
+              "id": "B",
+              "text": "Histological differentiation grade and Ki-67 index"
+            },
+            {
+              "id": "C",
+              "text": "AFP concentration and viral load of the underlying hepatitis"
+            },
+            {
+              "id": "D",
+              "text": "Chronological age and body mass index"
+            }
+          ],
+          "correct": "A",
+          "explanation": "BCLC integrates tumour burden with liver function and performance status. Imaging provides the anatomical contribution; it does not determine stage and treatment without this clinical information.",
+          "wrongExplanations": {
+            "B": "Grade and proliferation may inform tumour biology but do not replace the clinical BCLC core elements of liver function and performance status.",
+            "C": "AFP and viral load may matter for prognosis, aetiology or selected treatments; functional staging still requires liver function and ECOG.",
+            "D": "Age and BMI affect individual decisions but do not substitute for direct liver-reserve and performance assessment."
+          },
+          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/"
+        },
+        {
+          "id": "li-rads-en-eligible",
+          "fach": "abdomen",
+          "tags": [
+            "li-rads"
+          ],
+          "question": "In which adult is diagnostic CT/MRI LI-RADS v2018 applicable? Each has an adequate multiphasic study of an untreated, non-biopsied observation; hepatitis B and prior HCC are excluded.",
+          "options": [
+            {
+              "id": "A",
+              "text": "Cirrhosis after chronic hepatitis C"
+            },
+            {
+              "id": "B",
+              "text": "Steatotic liver without cirrhosis"
+            },
+            {
+              "id": "C",
+              "text": "Cirrhosis due to cardiac congestion"
+            },
+            {
+              "id": "D",
+              "text": "Congenital hepatic fibrosis"
+            }
+          ],
+          "correct": "A",
+          "explanation": "HCV-related cirrhosis meets the adult risk population here. Technical adequacy and untreated status must also be checked before categorisation.",
+          "wrongExplanations": {
+            "B": "Steatosis without cirrhosis does not meet the target population when hepatitis B and prior HCC are absent.",
+            "C": "Cardiac vascular cirrhosis is explicitly excluded: benign hyperplastic nodules can reduce specificity.",
+            "D": "Congenital hepatic fibrosis is an explicit exclusion even when the liver observation is well imaged."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "li-rads-en-lr4",
+          "fach": "abdomen",
+          "tags": [
+            "li-rads"
+          ],
+          "question": "In cirrhosis, an observation remains LR-4 after technically complete imaging. The treatment decision now depends on whether it is HCC, and tissue is unavailable. Which strategy should be prioritised for multidisciplinary discussion under AASLD2023?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Repeat contrast MRI within 3 months"
+            },
+            {
+              "id": "B",
+              "text": "Repeat multiphasic CT after 6 months"
+            },
+            {
+              "id": "C",
+              "text": "Prompt targeted biopsy after multidisciplinary assessment"
+            },
+            {
+              "id": "D",
+              "text": "Begin local HCC treatment based on the category"
+            }
+          ],
+          "correct": "C",
+          "explanation": "For LR-4, AASLD recommends individual selection between repeat contrast imaging within 3 months and biopsy. When an immediate diagnosis changes management, biopsy is preferred over repeat imaging alone.",
+          "wrongExplanations": {
+            "A": "Three-month imaging is an LR-4 option, but here the diagnosis needed now would change treatment, prioritising tissue clarification.",
+            "B": "Six months exceeds the recommended close LR-4 interval and does not resolve the current diagnosis-dependent decision.",
+            "D": "LR-4 means probably, not definitely HCC. In this case, diagnosis still needs clarification before selecting diagnosis-dependent treatment."
+          },
+          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/"
+        },
+        {
+          "id": "aq-atv-li-rads-en-major-rule",
+          "fach": "abdomen",
+          "tags": [
+            "li-rads"
+          ],
+          "question": "Cirrhosis and adequate multiphasic extracellular-agent MRI: two untreated 15-mm observations, both with nonrim APHE, no LR-M features or tumour in vein. X has nonperipheral portal venous washout; Y has an enhancing capsule but no washout or threshold growth. Which v2018 categories apply?",
+          "options": [
+            {
+              "id": "A",
+              "text": "X: LR-5; Y: LR-5"
+            },
+            {
+              "id": "B",
+              "text": "X: LR-5; Y: LR-4"
+            },
+            {
+              "id": "C",
+              "text": "X: LR-4; Y: LR-5"
+            },
+            {
+              "id": "D",
+              "text": "X: LR-4; Y: LR-4"
+            }
+          ],
+          "correct": "B",
+          "explanation": "At 10–19 mm, nonrim APHE plus nonperipheral washout reaches LR-5. APHE plus an enhancing capsule alone remains LR-4 in this size group; threshold growth is another route to LR-5.",
+          "wrongExplanations": {
+            "A": "X is LR-5, but capsule alone does not make the 15-mm Y observation LR-5.",
+            "C": "The combinations are reversed: washout supports LR-5 for X, whereas capsule alone yields LR-4 for Y.",
+            "D": "Y is LR-4, but X meets the specific LR-5 rule despite being under 20 mm."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "aq-atv-li-rads-en-ancillary-limit",
+          "fach": "abdomen",
+          "tags": [
+            "li-rads"
+          ],
+          "question": "An observation is initially LR-3 by major features and shows nontargetoid diffusion restriction and hepatobiliary hypointensity. There are no benignity-favouring ancillary features, tumour in vein or LR-M features. What is the highest category permitted by these additional signs under ACR v2018?",
+          "options": [
+            {
+              "id": "A",
+              "text": "LR-2"
+            },
+            {
+              "id": "B",
+              "text": "LR-3"
+            },
+            {
+              "id": "C",
+              "text": "LR-4"
+            },
+            {
+              "id": "D",
+              "text": "LR-5"
+            }
+          ],
+          "correct": "C",
+          "explanation": "Malignancy-favouring ancillary features may optionally upgrade by one category, no higher than LR-4. They cannot establish LR-5. When benignity- and malignancy-favouring ancillary features coexist, do not adjust.",
+          "wrongExplanations": {
+            "A": "These additional signs favour malignancy and do not support downgrading to LR-2.",
+            "B": "Retaining LR-3 is possible because use is optional, but the question asks for the highest permitted category, LR-4.",
+            "D": "LR-5 requires the relevant major-feature rules; diffusion and hepatobiliary signal do not replace them."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "aq-atv-li-rads-en-tiv-specificity",
+          "fach": "abdomen",
+          "tags": [
+            "li-rads"
+          ],
+          "question": "In the eligible LI-RADS population, a complete MRI shows unequivocally enhancing soft tissue in a portal vein branch. An associated parenchymal mass cannot be confidently characterised. Which report statement is most appropriate?",
+          "options": [
+            {
+              "id": "A",
+              "text": "LR-5: HCC with venous spread"
+            },
+            {
+              "id": "B",
+              "text": "LR-M: intrahepatic cholangiocarcinoma with venous spread"
+            },
+            {
+              "id": "C",
+              "text": "LR-NC: because no discrete parenchymal mass is delineated"
+            },
+            {
+              "id": "D",
+              "text": "LR-TIV: tumour in vein; assess origin using additional findings"
+            }
+          ],
+          "correct": "D",
+          "explanation": "Unequivocally enhancing soft tissue in a vein is LR-TIV even without a visible parenchymal mass. The category is not HCC-specific; report involved vein, extent and suspected origin when assessable.",
+          "wrongExplanations": {
+            "A": "Tumour in vein is categorised LR-TIV; the venous finding alone does not prove HCC aetiology.",
+            "B": "Non-HCC malignancies can also cause tumour in vein, but cholangiocarcinoma is not established here; the special category is LR-TIV.",
+            "C": "LR-NC denotes inadequate information for categorisation. The unequivocal venous tumour permits LR-TIV even without a discrete mass."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        }
+      ],
+      "fa": [
+        {
+          "id": "haemangiom-fa-01",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "کدام توصیف بافتی با همانژیوم کبدی سازگار است؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "ضایعهٔ عروقی خوش‌خیم با فضاهای کاورنوز پُر از خون"
+            },
+            {
+              "id": "B",
+              "text": "هیپرپلازی هپاتوسلولار با اسکار فیبروزی مرکزی"
+            },
+            {
+              "id": "C",
+              "text": "رسوب موضعی چربی با معماری حفظ‌شدهٔ کبد"
+            },
+            {
+              "id": "D",
+              "text": "حفرهٔ پُر از مایع با پوشش اپی‌تلیالی"
+            }
+          ],
+          "correct": "A",
+          "explanation": "همانژیوم حاوی فضاهای عروقی پُر از خون با پوشش اندوتلیالی است. ماهیت عروقی رفتار مشخصهٔ آن در جذب مادهٔ حاجب را توضیح می‌دهد؛ محل به‌تنهایی تشخیص را تعیین نمی‌کند.",
+          "wrongExplanations": {
+            "B": "این توصیف بیشتر با هیپرپلازی ندولار کانونی سازگار است. در همانژیوم فضاهای عروقی مطرح‌اند، نه هیپرپلازی هپاتوسیت‌ها.",
+            "C": "چربی کانونی تغییر پارانشیمی/شبه‌ضایعه است، نه ضایعهٔ عروقی کاورنوز.",
+            "D": "پوشش اپی‌تلیالی مربوط به کیست واقعی است و با فضاهای عروقی اندوتلیالی پُر از خونِ همانژیوم تفاوت دارد."
+          },
+          "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+        },
+        {
+          "id": "haemangiom-fa-02",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "در کدام وضعیت متنی، طبق EASL۲۰۱۶ سونوگرافی برای تشخیص همانژیوم تیپیک کافی است؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "ضایعهٔ ۲٫۵ سانتی‌متری همگن و اکوژن، با مرز مشخص، تقویت صوتی خلفی و بدون هاله؛ سیروز شناخته‌شده"
+            },
+            {
+              "id": "B",
+              "text": "ضایعهٔ ۲٫۵ سانتی‌متری با همان مورفولوژی تیپیک؛ کبد سالم و بدون سابقهٔ سرطان"
+            },
+            {
+              "id": "C",
+              "text": "ضایعهٔ ۲٫۵ سانتی‌متری با همان مورفولوژی تیپیک؛ سرطان خارج‌کبدی شناخته‌شده"
+            },
+            {
+              "id": "D",
+              "text": "ضایعهٔ ۲٫۵ سانتی‌متری با اکوی ناهمگن و هاله؛ کبد سالم بدون سابقهٔ سرطان"
+            }
+          ],
+          "correct": "B",
+          "explanation": "EASL۲۰۱۶ اندازهٔ کمتر از ۳ سانتی‌متر، مورفولوژی تیپیک و کبد سالم بدون سابقهٔ سرطان را با هم در نظر می‌گیرد. ACG۲۰۲۴ قاعدهٔ اندازهٔ متفاوتی دارد (کمتر از ۲ سانتی‌متر)؛ نباید این دو قاعده را بی‌توضیح با هم ادغام کرد.",
+          "wrongExplanations": {
+            "A": "در بیماری زمینه‌ای کبد، EASL با وجود ظاهر ظاهراً تیپیک سونوگرافی، مشخصه‌یابی با مادهٔ حاجب را لازم می‌داند.",
+            "C": "سابقهٔ سرطان زمینهٔ تشخیصی را تغییر می‌دهد؛ مشخصه‌یابی با مادهٔ حاجب لازم است.",
+            "D": "ناهمگنی و هاله با مورفولوژی کلاسیک موردنیاز اینجا تطابق ندارند. اندازهٔ کوچک به‌تنهایی کافی نیست."
+          },
+          "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+        },
+        {
+          "id": "haemangiom-fa-03",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "کدام الگوی چندفازی با الگوی کلاسیک ندولار محیطی همانژیوم مطابقت دارد؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "حلقهٔ محیطی پیوسته با جذب پیشروندهٔ مرکزی"
+            },
+            {
+              "id": "B",
+              "text": "جذب شریانی همگن و بیشتر از کبد و سپس همسان‌شدن با پارانشیم کبد"
+            },
+            {
+              "id": "C",
+              "text": "ندول‌های محیطی ناپیوسته با جذب مادهٔ حاجب، پرشدن مرکزگرا و جذب پایدار مشابه مخزن خون"
+            },
+            {
+              "id": "D",
+              "text": "APHE غیرحاشیه‌ای و سپس واش‌اوت غیرمحیطی"
+            }
+          ],
+          "correct": "C",
+          "explanation": "ندول‌های مجزای محیطی جذب‌کنندهٔ مادهٔ حاجب به داخل گسترش می‌یابند و از مخزن خون پیروی می‌کنند. این الگو با حلقهٔ پیوسته متفاوت است. ضایعات بزرگ حتی در تصاویر تأخیری الزاماً کامل پُر نمی‌شوند.",
+          "wrongExplanations": {
+            "A": "حلقهٔ پیوسته معادل ندول‌های مجزای جذب‌کننده نیست. این الگو به مشخصه‌یابی متفاوت یا تکمیلی نیاز دارد.",
+            "B": "جذب شریانی همگن الگوی دیگری با چند تشخیص ممکن است. ندول‌های محیطی مجزای لازم برای نوع کلاسیک مورد سؤال وجود ندارند.",
+            "D": "واش‌اوت غیرمحیطی در زمینهٔ خطر مناسب بیشتر به نفع HCC است، نه الگوی پایدار مشابه مخزن خون همانژیوم که اینجا مورد سؤال است."
+          },
+          "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+        },
+        {
+          "id": "haemangiom-fa-04",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "کدام توزیع مکانی-زمانی جذب مادهٔ حاجب، پدیدهٔ دیافراگم عنبیه را توصیف می‌کند؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "گسترش پیشروندهٔ جذب از مرکز به محیط"
+            },
+            {
+              "id": "B",
+              "text": "جذب همگن از همان ابتدا، بدون گسترش قابل مشاهده از محیط به مرکز"
+            },
+            {
+              "id": "C",
+              "text": "جذب یک حلقهٔ محیطی بدون پرشدن پیشروندهٔ مرکزی"
+            },
+            {
+              "id": "D",
+              "text": "گسترش پیشروندهٔ جذب از محیط به مرکز"
+            }
+          ],
+          "correct": "D",
+          "explanation": "پرشدن مرکزگرا یعنی از محیط به‌سمت مرکز. سرعت و کامل‌بودن پرشدن متفاوت است؛ این الگو به معنی پرشدن کامل تأخیری در همهٔ ضایعات نیست.",
+          "wrongExplanations": {
+            "A": "این جهت برعکس و مرکزگریز است. پدیدهٔ دیافراگم عنبیه پرشدن مرکزگرا را توصیف می‌کند.",
+            "B": "جذب بسیار سریع و همگن می‌تواند در نوع پرشدن سریع دیده شود، اما توالی قابل مشاهدهٔ مرکزگرای مورد سؤال را نشان نمی‌دهد.",
+            "C": "حلقهٔ دارای جذب ثابت بدون پرشدن افزایشی مرکزی با دینامیک دیافراگم عنبیه تطابق ندارد."
+          },
+          "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+        },
+        {
+          "id": "haemangiom-fa-05",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "کدام ترکیب یافته‌های MRI بیش از بقیه از همانژیوم کلاسیک حمایت می‌کند؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "سیگنال بسیار بالای T2، ندول‌های محیطی دارای جذب مادهٔ حاجب و پرشدن پیشروندهٔ مرکزگرا"
+            },
+            {
+              "id": "B",
+              "text": "سیگنال نسبتاً بالای T2، حلقهٔ شریانی دارای جذب و جذب تأخیری مرکزی"
+            },
+            {
+              "id": "C",
+              "text": "سیگنال T2 مشابه مایع بدون جذب در فازهای پس از تزریق"
+            },
+            {
+              "id": "D",
+              "text": "سیگنال نسبتاً بالای T2، APHE غیرحاشیه‌ای و واش‌اوت پس از آن"
+            }
+          ],
+          "correct": "A",
+          "explanation": "روشنایی شدید T2 همراه دینامیک چندفازی ندولار سازگار، الگوی کلی کلاسیک را می‌سازد. T2 به‌تنهایی اختصاصی نیست و انواع آتیپیک می‌توانند متفاوت باشند.",
+          "wrongExplanations": {
+            "B": "حلقهٔ شریانی با ندول‌های ناپیوستهٔ دارای جذب تفاوت دارد. این الگوی کلاسیک همانژیوم مورد سؤال نیست.",
+            "C": "مایع می‌تواند در T2 بسیار روشن باشد. نبود جذب بیشتر به نفع کیست ساده است تا الگوی عروقی همانژیوم.",
+            "D": "APHE همراه واش‌اوت تفسیر دیگری می‌خواهد، به‌ویژه در زمینهٔ خطر HCC. الگوی پرشدن پایدار مشابه مخزن خون وجود ندارد."
+          },
+          "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+        },
+        {
+          "id": "haemangiom-fa-06",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "در ضایعهٔ بسیار روشن در T2، کدام ترکیب سکانس‌ها از T2 shine-through به‌جای محدودیت انتشار اثبات‌شده حمایت می‌کند؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "سیگنال بالای DWI همراه ADC پایین متناظر"
+            },
+            {
+              "id": "B",
+              "text": "سیگنال بالای DWI همراه ADC حفظ‌شده یا بالا"
+            },
+            {
+              "id": "C",
+              "text": "سیگنال پایین DWI همراه ADC بالا"
+            },
+            {
+              "id": "D",
+              "text": "سیگنال بالای DWI همراه ADC غیرقابل ارزیابی به‌علت آرتیفکت"
+            }
+          ],
+          "correct": "B",
+          "explanation": "سیگنال قوی T2 می‌تواند بدون کاهش ADC در روشنایی DWI نقش داشته باشد. این از shine-through حمایت می‌کند، اما خوش‌خیمی را ثابت نمی‌کند؛ مورفولوژی و دینامیک چندفازی نیز ارزیابی شوند.",
+          "wrongExplanations": {
+            "A": "ADC پایین متناظر از محدودیت واقعی حمایت می‌کند؛ این یافته نیز خودبه‌خود اختصاصی بدخیمی نیست.",
+            "C": "سیگنال پایین DWI با ADC بالا بیشتر با انتشار آزادتر سازگار است و روشنایی DWI ناشی از T2 مورد سؤال را نشان نمی‌دهد.",
+            "D": "بدون نقشهٔ ADC قابل تفسیر، این افتراق با اطمینان ممکن نیست. آرتیفکت را ADC طبیعی تلقی نکنید."
+          },
+          "source": "https://pubmed.ncbi.nlm.nih.gov/18830105/"
+        },
+        {
+          "id": "haemangiom-fa-07",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "کدام بخش مرجع برای مقایسهٔ فضاهای عروقی دارای جذب مادهٔ حاجب در همانژیوم طی فازهای مختلف به‌ویژه مفید است؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "پارانشیم کبد در همان فاز"
+            },
+            {
+              "id": "B",
+              "text": "عضلهٔ کنار ستون فقرات در همان فاز"
+            },
+            {
+              "id": "C",
+              "text": "مخزن خون در همان فاز"
+            },
+            {
+              "id": "D",
+              "text": "مایع کیسهٔ صفرا در همان فاز"
+            }
+          ],
+          "correct": "C",
+          "explanation": "فضاهای عروقی دارای جذب معمولاً از مخزن خون پیروی می‌کنند. بنابراین ضایعه در فاز تأخیری الزاماً دقیقاً هم‌سیگنال کبد یا کاملاً پُرشده نیست.",
+          "wrongExplanations": {
+            "A": "مقایسه با کبد در توصیف واش‌اوت نسبی کمک می‌کند، اما مرجع اختصاصی جذب عروقی پایدار همانژیوم نیست.",
+            "B": "عضله بخش مرجع داخل‌عروقی نیست و سیر جذب مخزن خون را بازنمایی نمی‌کند.",
+            "D": "صفرا می‌تواند در T2 مرجع مقایسهٔ مایع باشد، اما از جذب داخل‌عروقی چندفازی پیروی نمی‌کند."
+          },
+          "source": "https://pubmed.ncbi.nlm.nih.gov/18830105/"
+        },
+        {
+          "id": "haemangiom-fa-08",
+          "tags": [
+            "haemangiom"
+          ],
+          "fach": "abdomen",
+          "question": "دو یافتهٔ متنی: (۱) ضایعهٔ کوچک با جذب شدید و همگن زودرس و رفتار مشابه مخزن خون در فازهای بعد؛ (۲) ضایعهٔ فیبروتیک با سیگنال T2 کمتر و فقدان پرشدن تیپیک. کدام تطبیق انواع مناسب‌تر است؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "(۱) اسکلروزه؛ (۲) پرشدن سریع"
+            },
+            {
+              "id": "B",
+              "text": "(۱) ندولار محیطی کلاسیک؛ (۲) ندولار محیطی کلاسیک"
+            },
+            {
+              "id": "C",
+              "text": "(۱) ندولار محیطی کلاسیک؛ (۲) پرشدن سریع"
+            },
+            {
+              "id": "D",
+              "text": "(۱) پرشدن سریع؛ (۲) اسکلروزه/هیالینیزه"
+            }
+          ],
+          "correct": "D",
+          "explanation": "پرشدن سریع به معنی پُرشدن همگن و سریع است؛ فازهای بعد همچنان مهم‌اند. اسکلروز می‌تواند سیگنال T2 و جذب تیپیک را کاهش دهد. الگوی دوم به‌تنهایی خوش‌خیمی را ثابت نمی‌کند و ممکن است بررسی تکمیلی لازم داشته باشد.",
+          "wrongExplanations": {
+            "A": "تطبیق برعکس است؛ پرشدن همگن زودرس با نوع پرشدن سریع سازگار است، نه ازبین‌رفتن الگوی تیپیک بر اثر فیبروز.",
+            "B": "هیچ‌یک از این دو یافتهٔ متنی توالی کلاسیک ندول‌های محیطی مجزا با پرشدن پیشروندهٔ قابل مشاهده را توصیف نمی‌کند.",
+            "C": "یافتهٔ ۱ پرشدن همگن زودرس را توصیف می‌کند؛ یافتهٔ ۲ ازبین‌رفتن پرشدن تیپیک همراه فیبروز را. این با تطبیق پیشنهادی سازگار نیست."
+          },
+          "source": "https://pubmed.ncbi.nlm.nih.gov/34041675/"
+        },
+        {
+          "id": "hcc-fa-01",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "چهار بزرگسال ضایعهٔ کبدی درمان‌نشده دارند؛ هیچ‌یک هپاتیت B مزمن یا سابقهٔ HCC ندارد. در کدام زمینه به‌کارگیری LI-RADS تشخیصی CT/MRI نسخهٔ ۲۰۱۸ مجاز است؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "سیروز ناشی از هپاتیت C"
+            },
+            {
+              "id": "B",
+              "text": "استئاتوز متابولیک بدون سیروز"
+            },
+            {
+              "id": "C",
+              "text": "هپاتیت C مزمن بدون سیروز"
+            },
+            {
+              "id": "D",
+              "text": "سیروز ناشی از هپاتوپاتی احتقانی قلبی"
+            }
+          ],
+          "correct": "A",
+          "explanation": "LI-RADS CT/MRI نسخهٔ ۲۰۱۸ به جمعیت پرخطر بزرگسال تعریف‌شده با سیروز، HBV مزمن یا HCC فعلی/قبلی و تصویربرداری چندفازی مناسب نیاز دارد. برخی علل عروقی سیروز مستثنا هستند. خارج از گروه هدف، الگوی تیپیک شاهد غیرتهاجمی تشخیصی هم‌ارز نیست.",
+          "wrongExplanations": {
+            "B": "استئاتوز بدون سیروز و بدون سایر عوامل خطر ذکرشده در گروه هدف LI-RADS تشخیصی قرار نمی‌گیرد.",
+            "C": "هپاتیت C به‌تنهایی بدون سیروز در اینجا شرایط گروه هدف نسخهٔ ۲۰۱۸ را ندارد؛ هپاتیت B مزمن وضعیت پذیرش جداگانه‌ای است.",
+            "D": "ACR سیروز ناشی از احتقان قلبی و برخی بیماری‌های عروقی دیگر را مستثنا می‌کند، زیرا ندول‌های هیپرپلاستیک خوش‌خیم می‌توانند HCC را تقلید کنند."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-fa-02",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "در جمعیت واجد شرایطِ پرخطر HCC، کدام الگوی چندفازی برای HCC کلاسیک است؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "APHE غیرحاشیه‌ای و سپس واش‌اوت غیرمحیطی در فاز مجاز"
+            },
+            {
+              "id": "B",
+              "text": "ندول‌های محیطی ناپیوستهٔ دارای جذب با پرشدن پیشروندهٔ مرکزگرا"
+            },
+            {
+              "id": "C",
+              "text": "حلقهٔ شریانی دارای جذب و جذب تأخیری مرکزی"
+            },
+            {
+              "id": "D",
+              "text": "جذب شریانی همگن و بیشتر از کبد با همسان‌شدن بعدی با کبد"
+            }
+          ],
+          "correct": "A",
+          "explanation": "APHE غیرحاشیه‌ای و واش‌اوت غیرمحیطی الگوی دینامیک کلاسیک را می‌سازند. تعیین ردهٔ رسمی علاوه بر آن به اندازه، گروه هدف و سایر قواعد الگوریتم نیاز دارد. APHE به‌تنهایی اختصاصی نیست.",
+          "wrongExplanations": {
+            "B": "این دینامیک ندولار عروقی و پرشدن برای همانژیوم تیپیک است، نه الگوی HCC مورد سؤال.",
+            "C": "حلقهٔ شریانی همراه جذب پیشروندهٔ مرکزی الگوی هشدار هدف‌مانند برای بدخیمی غیراختصاصی HCC است و با APHE غیرحاشیه‌ای تفاوت دارد.",
+            "D": "این الگو می‌تواند در ضایعات هیپرواسکولار خوش‌خیم مانند FNH تیپیک دیده شود. واش‌اوت غیرمحیطی مورد سؤال وجود ندارد."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-fa-03",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "در MRI با گادوکسیتات، کدام مقایسهٔ زمانی می‌تواند ویژگی اصلی «واش‌اوت غیرمحیطی» را اثبات کند؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "ضایعه‌ای که قبلاً جذب داشته، در فاز پورتال جذب کمترِ نسبی و غیرمحیطی نسبت به کبد نشان می‌دهد"
+            },
+            {
+              "id": "B",
+              "text": "ضایعه در فاز پورتال هم‌سیگنال است و تنها در فاز انتقالی نسبتاً کم‌سیگنال می‌شود"
+            },
+            {
+              "id": "C",
+              "text": "ضایعه در فاز پورتال هم‌سیگنال است و تنها در فاز هپاتوبیلیاری نسبتاً کم‌سیگنال می‌شود"
+            },
+            {
+              "id": "D",
+              "text": "ضایعه پیش از تزریق کم‌سیگنال است و بدون تغییر زمانی اثبات‌شدهٔ جذب، در فاز پورتال تیره می‌ماند"
+            }
+          ],
+          "correct": "A",
+          "explanation": "در گادوکسیتات، واش‌اوت به‌عنوان ویژگی اصلی فقط در فاز پورتال ارزیابی می‌شود. کم‌سیگنالی انتقالی یا هپاتوبیلیاری می‌تواند ناشی از جذب کبد باشد و ویژگی کمکی است، نه جایگزین این واش‌اوت. با مادهٔ حاجب خارج‌سلولی، فاز تأخیری مجاز نیز قابل استفاده است.",
+          "wrongExplanations": {
+            "B": "کم‌سیگنالی که فقط در فاز انتقالی ظاهر می‌شود، در گادوکسیتات واش‌اوتِ ویژگی اصلی محسوب نمی‌شود.",
+            "C": "کم‌سیگنالی هپاتوبیلیاری یافتهٔ حمایتی بدخیمی است، اما اختصاصی HCC و واش‌اوتِ ویژگی اصلی نیست.",
+            "D": "کم‌سیگنالی ثابت به‌تنهایی کاهش زمانی جذب نسبی را نشان نمی‌دهد. برای آن باید فاز زودتر مناسبِ پس از تزریق با فاز بعدی مقایسه شود."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-fa-04",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "کدام یافتهٔ محیطی بیش از بقیه با ویژگی اصلی LI-RADS یعنی «کپسول دارای جذب مادهٔ حاجب» مطابقت دارد؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "حاشیهٔ صاف و یکنواختِ دارای جذب در فاز پورتال، تأخیری یا انتقالی"
+            },
+            {
+              "id": "B",
+              "text": "حلقهٔ شریانی ضخیم و نامنظم دور ضایعه‌ای با جذب کمتر مرکزی"
+            },
+            {
+              "id": "C",
+              "text": "ندول‌های محیطی مجزا و ناپیوستهٔ دارای جذب با پرشدن مرکزی"
+            },
+            {
+              "id": "D",
+              "text": "حاشیهٔ محیطی قابل تشخیص بدون جذب اثبات‌شدهٔ مادهٔ حاجب"
+            }
+          ],
+          "correct": "A",
+          "explanation": "کپسول دارای جذب، حاشیهٔ صاف، یکنواخت و واضحی است که از بافت فیبروزی اطراف ندول‌های زمینه‌ای برجسته‌تر است. این نمای تصویربرداری است، نه اثبات بافت‌شناختی مستقلِ کپسول یا HCC.",
+          "wrongExplanations": {
+            "B": "حلقهٔ شریانی با نمای کپسول صاف در فاز بعد متفاوت است و می‌تواند در طبقه‌بندی LR-M نقش داشته باشد.",
+            "C": "ندول‌های محیطی دارای جذب با پرشدن بیشتر به نفع همانژیوم‌اند و حاشیهٔ کپسول یکنواخت ایجاد نمی‌کنند.",
+            "D": "بدون جذب اثبات‌شده، ویژگی اصلی «کپسول دارای جذب» احراز نمی‌شود؛ کپسول بدون جذب جداگانه به‌عنوان ویژگی کمکی مطرح است."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-fa-05",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "HCC در فاز هپاتوبیلیاری MRI با گادوکسیتات اغلب نسبت به کبد چگونه دیده می‌شود؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "کم‌سیگنال"
+            },
+            {
+              "id": "B",
+              "text": "هم‌سیگنال"
+            },
+            {
+              "id": "C",
+              "text": "پُرسیگنال"
+            },
+            {
+              "id": "D",
+              "text": "سیگنال مرکزی بالاتر با حاشیهٔ کم‌سیگنال محیطیِ هدف‌مانند"
+            }
+          ],
+          "correct": "A",
+          "explanation": "بسیاری از HCCها جذب هپاتوبیلیاری کمتری دارند که از جمله با کاهش بیان ناقل‌های جذب هپاتوسلولار مرتبط است. حفظ یا افزایش بیان ناقل می‌تواند HCC هم‌سیگنال/پُرسیگنال را توضیح دهد. بنابراین سیگنال به‌تنهایی نه HCC را ثابت می‌کند و نه خوش‌خیمی را.",
+          "wrongExplanations": {
+            "B": "HCC هم‌سیگنال با جذب حفظ‌شده دیده می‌شود، اما شایع‌ترین الگو نیست. هم‌سیگنالی HCC را رد نمی‌کند.",
+            "C": "HCC پُرسیگنال نیز با بیان مناسب ناقل ممکن است، اما کم‌سیگنالی شایع‌تر است.",
+            "D": "الگوی هدف‌مانند هپاتوبیلیاری با الگوی کلاسیک همگن کم‌سیگنال متفاوت است و می‌تواند ارزیابی LR-M را مطرح کند؛ اختصاصی HCC نیست."
+          },
+          "source": "https://pubmed.ncbi.nlm.nih.gov/20663969/"
+        },
+        {
+          "id": "hcc-fa-06",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "کدام ترکیب از محدودیت انتشار واقعی به‌عنوان ویژگی کمکی در ضایعهٔ مشکوک به HCC حمایت می‌کند؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "سیگنال بالای DWI همراه ADC پایین متناظر"
+            },
+            {
+              "id": "B",
+              "text": "سیگنال بالای DWI با ADC حفظ‌شده یا بالا و سیگنال شدید T2"
+            },
+            {
+              "id": "C",
+              "text": "سیگنال پایین DWI همراه ADC بالا"
+            },
+            {
+              "id": "D",
+              "text": "سیگنال بالای DWI همراه ADC غیرقابل استفاده به‌علت آرتیفکت"
+            }
+          ],
+          "correct": "A",
+          "explanation": "روشنایی DWI با کاهش متناظر ADC از محدودیت واقعی حمایت می‌کند. این ویژگی کمکی اختصاصی HCC نیست و به‌تنهایی نمی‌تواند ضایعه را به LR-5 ارتقا دهد.",
+          "wrongExplanations": {
+            "B": "این ترکیب بیشتر از T2 shine-through حمایت می‌کند تا محدودیت اثبات‌شده؛ آن هم به‌تنهایی خوش‌خیمی را ثابت نمی‌کند.",
+            "C": "سیگنال پایین DWI و ADC بالا از محدودیت انتشار مورد سؤال حمایت نمی‌کنند.",
+            "D": "بدون ADC قابل تفسیر، روشنایی DWI به‌تنهایی تأیید قابل اعتماد محدودیت را فراهم نمی‌کند."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-fa-07",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "در نقص پرشدگی ورید پورت، کدام یافتهٔ تکمیلی قوی‌ترین شاهد تومور داخل ورید است؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "جذب قطعی مادهٔ حاجب در بافت نرم داخل لومن ورید، با تأیید نسبت به تصویر پیش از تزریق"
+            },
+            {
+              "id": "B",
+              "text": "اتساع ورید بدون جذب اثبات‌شدهٔ داخل لومن"
+            },
+            {
+              "id": "C",
+              "text": "محدودیت انتشار در نقص پرشدگی بدون جذب اثبات‌شده"
+            },
+            {
+              "id": "D",
+              "text": "تماس نقص پرشدگی با تودهٔ کبدی بدون جذب اثبات‌شده"
+            }
+          ],
+          "correct": "A",
+          "explanation": "معیار اصلی، بافت نرم داخل ورید با جذب قطعی مادهٔ حاجب است. وسعت و وریدهای درگیر گزارش شوند. LR-TIV مترادف HCC نیست؛ بدخیمی‌های دیگر نیز می‌توانند به ورید تهاجم کنند.",
+          "wrongExplanations": {
+            "B": "اتساع ورید یک سرنخ است، اما به‌تنهایی ترومبوز توموری را قطعی نمی‌کند.",
+            "C": "محدودیت انتشار سرنخ تکمیلی است، اما جای اثبات قطعی بافت نرم دارای جذب را نمی‌گیرد.",
+            "D": "مجاورت با توده شک را افزایش می‌دهد، اما بدون جذب اثبات‌شدهٔ داخل لومن معیار اصلی تعیین‌کننده نیست."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-fa-08",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "کدام الگو با HCC نفوذی سازگار است و باید بررسی هدفمند بدخیمی را برانگیزد؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "رشد نفوذی با مرز نامشخص در چند سگمان، جذب متغیر و تهاجم عروقی مشکوک"
+            },
+            {
+              "id": "B",
+              "text": "ندول منفرد با مرز واضح، APHE همگن و کپسول صاف"
+            },
+            {
+              "id": "C",
+              "text": "جذب شریانی گوه‌ای بیشتر با عروق بدون تغییر مسیر و بدون توده"
+            },
+            {
+              "id": "D",
+              "text": "ناحیهٔ فیبروتیک جغرافیایی با فرورفتگی کپسول و جذب تأخیری افزاینده"
+            }
+          ],
+          "correct": "A",
+          "explanation": "HCC نفوذی می‌تواند با پارانشیم سیروتیک درهم‌آمیزد و ویژگی‌های تیپیک جذب را فقط به‌صورت ناهمگن یا کانونی نشان دهد. تهاجم عروقی و کل الگوی چندفازی سرنخ‌های مهم‌اند؛ بررسی هدفمند همچنان لازم است.",
+          "wrongExplanations": {
+            "B": "این الگو بیشتر ندولار است تا رشد نفوذی. HCC می‌تواند ندولار باشد، اما پرسش دربارهٔ نوع نفوذی است.",
+            "C": "یافتهٔ گوه‌ای بدون اثر توده‌ای و با مسیر عروقی حفظ‌شده بیشتر به نفع تغییر پرفیوژن است و با رشد مشکوک به بدخیمی توصیف‌شده تفاوت دارد.",
+            "D": "این ترکیب بیشتر فیبروز به‌هم‌پیوسته را مطرح می‌کند که افتراق مهمی است؛ نباید با الگوی تهاجمیِ ترکیب مورد سؤال یکی دانسته شود."
+          },
+          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3538368/"
+        },
+        {
+          "id": "hcc-fa-09",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "کدام دینامیک MRI چندفازی با مادهٔ حاجب خارج‌سلولی در زمینهٔ خطر مناسب، HCC را نسبت به FNH تیپیک بیشتر مطرح می‌کند؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "APHE غیرحاشیه‌ای با واش‌اوت غیرمحیطی پورتال یا تأخیری"
+            },
+            {
+              "id": "B",
+              "text": "جذب شریانی همگن و بیشتر از کبد با هم‌سیگنالی بعدی با کبد"
+            },
+            {
+              "id": "C",
+              "text": "جذب زودرس بیشتر از کبد، همسان‌شدن بعدی با کبد و اسکار مرکزی دارای جذب تأخیری"
+            },
+            {
+              "id": "D",
+              "text": "ندول‌های محیطی دارای جذب با پرشدن مرکزگرا و رفتار مشابه مخزن خون"
+            }
+          ],
+          "correct": "A",
+          "explanation": "FNH تیپیک جذب شریانی قوی دارد، اما واش‌اوت غیرمحیطی ندارد. واش‌اوت ذکرشده در زمینهٔ مناسب بیشتر به نفع HCC است، اما به‌تنهایی ردهٔ کامل یا بافت‌شناسی را اثبات نمی‌کند.",
+          "wrongExplanations": {
+            "B": "این دینامیک همگن بدون واش‌اوت می‌تواند با FNH تیپیک سازگار باشد و ویژگی مورد سؤالِ بیشتر به نفع HCC نیست.",
+            "C": "اسکار مرکزی دارای جذب تأخیری همراه همسان‌شدن سایر بخش‌ها با کبد با FNH تیپیک سازگار است. اسکار مرکزی با کپسول محیطی اشتباه نشود.",
+            "D": "این دینامیک پرشدن ندولار بیشتر به نفع همانژیوم است، نه الگوی تیپیک HCC."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "hcc-fa-10",
+          "tags": [
+            "hcc",
+            "leber",
+            "abdomen"
+          ],
+          "fach": "abdomen",
+          "question": "سناریوی متنی: گزارش تصویربرداری HCC تعداد/اندازهٔ تومور، سگمان‌ها، تهاجم عروقی و متاستازها را کامل ثبت کرده است. کدام اطلاعات بالینی اضافی برای مرحله‌بندی BCLC اساسی‌اند؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "عملکرد کبد/دکمپنسیشن و وضعیت عملکردی ECOG"
+            },
+            {
+              "id": "B",
+              "text": "درجهٔ تمایز بافت‌شناختی و شاخص Ki-67"
+            },
+            {
+              "id": "C",
+              "text": "مقدار AFP و بار ویروسی هپاتیت زمینه‌ای"
+            },
+            {
+              "id": "D",
+              "text": "سن تقویمی و شاخص تودهٔ بدنی"
+            }
+          ],
+          "correct": "A",
+          "explanation": "BCLC بار تومور را با عملکرد کبد و وضعیت عملکردی ترکیب می‌کند. تصویربرداری سهم آناتومیک را فراهم می‌کند و بدون این اطلاعات بالینی، مرحله و درمان را تعیین نمی‌کند.",
+          "wrongExplanations": {
+            "B": "درجه و تکثیر می‌توانند دربارهٔ زیست‌شناسی تومور اطلاع دهند، اما جای عناصر بالینی اصلی BCLC یعنی عملکرد کبد و وضعیت عملکردی را نمی‌گیرند.",
+            "C": "AFP و بار ویروسی ممکن است برای پیش‌آگهی، علت یا درمان‌های منتخب مهم باشند؛ مرحله‌بندی عملکردی همچنان به عملکرد کبد و ECOG نیاز دارد.",
+            "D": "سن و BMI بر تصمیم فردی اثر دارند، اما جای سنجش مستقیم ذخیرهٔ کبد و وضعیت عملکردی را نمی‌گیرند."
+          },
+          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/"
+        },
+        {
+          "id": "li-rads-fa-eligible",
+          "fach": "abdomen",
+          "tags": [
+            "li-rads"
+          ],
+          "question": "LI-RADS تشخیصی CT/MRI نسخهٔ ۲۰۱۸ در کدام بزرگسال کاربرد دارد؟ در همهٔ موارد بررسی چندفازی مناسبِ ضایعه‌ای درمان‌نشده و بیوپسی‌نشده موجود است؛ هپاتیت B و HCC قبلی رد شده‌اند.",
+          "options": [
+            {
+              "id": "A",
+              "text": "سیروز پس از هپاتیت C مزمن"
+            },
+            {
+              "id": "B",
+              "text": "کبد استئاتوتیک بدون سیروز"
+            },
+            {
+              "id": "C",
+              "text": "سیروز ناشی از احتقان قلبی"
+            },
+            {
+              "id": "D",
+              "text": "فیبروز مادرزادی کبد"
+            }
+          ],
+          "correct": "A",
+          "explanation": "سیروز ناشی از HCV در اینجا جمعیت پرخطر بزرگسال را برآورده می‌کند. پیش از تعیین رده، کفایت فنی و درمان‌نشده‌بودن نیز باید بررسی شوند.",
+          "wrongExplanations": {
+            "B": "استئاتوز بدون سیروز، با نبود هپاتیت B و سابقهٔ HCC، گروه هدف را برآورده نمی‌کند.",
+            "C": "سیروز عروقی ناشی از بیماری قلبی صریحاً مستثناست؛ ندول‌های هیپرپلاستیک خوش‌خیم می‌توانند اختصاصیت را کاهش دهند.",
+            "D": "فیبروز مادرزادی کبد صریحاً مستثناست، حتی اگر ضایعهٔ کبد به‌خوبی تصویربرداری شده باشد."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "li-rads-fa-lr4",
+          "fach": "abdomen",
+          "tags": [
+            "li-rads"
+          ],
+          "question": "در بیمار سیروتیک، ضایعه پس از تصویربرداری کامل از نظر فنی همچنان LR-4 است. تصمیم درمانی فعلی به وجود واقعی HCC وابسته است و بافت در دسترس نیست. طبق AASLD2023 کدام راهبرد باید در بحث چندتخصصی در اولویت باشد؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "تکرار MRI با حاجب طی ۳ ماه"
+            },
+            {
+              "id": "B",
+              "text": "تکرار CT چندفازی پس از ۶ ماه"
+            },
+            {
+              "id": "C",
+              "text": "بیوپسی هدفمند زودهنگام پس از ارزیابی چندتخصصی"
+            },
+            {
+              "id": "D",
+              "text": "شروع درمان موضعی HCC بر پایهٔ رده"
+            }
+          ],
+          "correct": "C",
+          "explanation": "AASLD در LR-4 انتخاب فردی بین تصویربرداری با حاجب طی ۳ ماه و بیوپسی را توصیه می‌کند. اگر تشخیص فوری مدیریت را تغییر دهد، بیوپسی بر صرف پیگیری تصویربرداری ترجیح دارد.",
+          "wrongExplanations": {
+            "A": "تصویربرداری سه‌ماهه یکی از گزینه‌های LR-4 است، اما اینجا تشخیص موردنیاز فعلی درمان را تغییر می‌دهد و بررسی بافت در اولویت است.",
+            "B": "شش ماه از فاصلهٔ کوتاه توصیه‌شده برای LR-4 بیشتر است و تصمیم فعلی وابسته به تشخیص را حل نمی‌کند.",
+            "D": "LR-4 به معنی HCC محتمل است، نه قطعی. در این مورد، پیش از انتخاب درمان وابسته به تشخیص باید ماهیت ضایعه روشن شود."
+          },
+          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/"
+        },
+        {
+          "id": "aq-atv-li-rads-fa-major-rule",
+          "fach": "abdomen",
+          "tags": [
+            "li-rads"
+          ],
+          "question": "در سیروز و MRI چندفازی مناسب با حاجب خارج‌سلولی، دو ضایعهٔ درمان‌نشدهٔ ۱۵ میلی‌متری هر دو APHE غیرحاشیه‌ای دارند و فاقد ویژگی LR-M یا تومور داخل وریدند. X واش‌اوت غیرمحیطی پورتال دارد؛ Y کپسول دارای جذب دارد، ولی واش‌اوت و رشد آستانه‌ای ندارد. طبق نسخهٔ ۲۰۱۸ رده‌ها کدام‌اند؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "X: LR-5؛ Y: LR-5"
+            },
+            {
+              "id": "B",
+              "text": "X: LR-5؛ Y: LR-4"
+            },
+            {
+              "id": "C",
+              "text": "X: LR-4؛ Y: LR-5"
+            },
+            {
+              "id": "D",
+              "text": "X: LR-4؛ Y: LR-4"
+            }
+          ],
+          "correct": "B",
+          "explanation": "در اندازهٔ ۱۰ تا ۱۹ میلی‌متر، APHE غیرحاشیه‌ای همراه واش‌اوت غیرمحیطی به LR-5 می‌رسد. APHE همراه کپسول دارای جذب به‌تنهایی در این گروه LR-4 می‌ماند؛ رشد آستانه‌ای نیز راه دیگری برای LR-5 است.",
+          "wrongExplanations": {
+            "A": "X برابر LR-5 است، اما کپسول به‌تنهایی ضایعهٔ ۱۵ میلی‌متری Y را LR-5 نمی‌کند.",
+            "C": "ترکیب‌ها جابه‌جا شده‌اند: واش‌اوت در X اینجا LR-5 و کپسول به‌تنهایی در Y ردهٔ LR-4 می‌دهد.",
+            "D": "Y برابر LR-4 است؛ اما X با وجود اندازهٔ زیر ۲۰ میلی‌متر قاعدهٔ ویژهٔ LR-5 را برآورده می‌کند."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "aq-atv-li-rads-fa-ancillary-limit",
+          "fach": "abdomen",
+          "tags": [
+            "li-rads"
+          ],
+          "question": "ضایعه طبق ویژگی‌های اصلی ابتدا LR-3 است و محدودیت انتشار غیرهدف‌مانند و کم‌سیگنالی هپاتوبیلیاری دارد. ویژگی کمکی به نفع خوش‌خیمی، تومور داخل ورید یا ویژگی LR-M وجود ندارد. طبق ACR2018 این علائم تکمیلی حداکثر چه رده‌ای را مجاز می‌کنند؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "LR-2"
+            },
+            {
+              "id": "B",
+              "text": "LR-3"
+            },
+            {
+              "id": "C",
+              "text": "LR-4"
+            },
+            {
+              "id": "D",
+              "text": "LR-5"
+            }
+          ],
+          "correct": "C",
+          "explanation": "ویژگی‌های کمکی به نفع بدخیمی می‌توانند به‌صورت اختیاری یک رده ارتقا دهند، حداکثر تا LR-4. آن‌ها LR-5 ایجاد نمی‌کنند. با هم‌زمانی ویژگی کمکی به نفع خوش‌خیمی و بدخیمی، رده تغییر نمی‌کند.",
+          "wrongExplanations": {
+            "A": "این علائم تکمیلی به نفع بدخیمی‌اند و کاهش به LR-2 را توجیه نمی‌کنند.",
+            "B": "حفظ LR-3 به‌دلیل اختیاری‌بودن کاربرد ممکن است، اما سؤال بالاترین ردهٔ مجاز، یعنی LR-4 را می‌خواهد.",
+            "D": "LR-5 به قواعد مربوط به ویژگی‌های اصلی نیاز دارد؛ دیفیوژن و سیگنال هپاتوبیلیاری جای آن‌ها را نمی‌گیرند."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        },
+        {
+          "id": "aq-atv-li-rads-fa-tiv-specificity",
+          "fach": "abdomen",
+          "tags": [
+            "li-rads"
+          ],
+          "question": "در جمعیت مناسب LI-RADS، MRI کامل بافت نرم داخل شاخهٔ ورید پورت با جذب قطعی نشان می‌دهد. تودهٔ پارانشیمی همراه را نمی‌توان با اطمینان مشخص کرد. کدام عبارت گزارش مناسب‌تر است؟",
+          "options": [
+            {
+              "id": "A",
+              "text": "LR-5: HCC با انتشار وریدی"
+            },
+            {
+              "id": "B",
+              "text": "LR-M: کلانژیوکارسینوم داخل‌کبدی با انتشار وریدی"
+            },
+            {
+              "id": "C",
+              "text": "LR-NC: به‌علت نبود تودهٔ پارانشیمی قابل تفکیک"
+            },
+            {
+              "id": "D",
+              "text": "LR-TIV: تومور داخل ورید؛ منشأ با یافته‌های تکمیلی ارزیابی شود"
+            }
+          ],
+          "correct": "D",
+          "explanation": "بافت نرم داخل ورید با جذب قطعی، حتی بدون تودهٔ پارانشیمی قابل مشاهده، LR-TIV است. این رده اختصاصی HCC نیست؛ ورید درگیر، وسعت و منشأ احتمالی تا حد قابل ارزیابی گزارش شوند.",
+          "wrongExplanations": {
+            "A": "تومور داخل ورید LR-TIV طبقه‌بندی می‌شود؛ یافتهٔ وریدی به‌تنهایی منشأ HCC را اثبات نمی‌کند.",
+            "B": "بدخیمی‌های غیر HCC نیز می‌توانند تومور داخل ورید ایجاد کنند، اما اینجا کلانژیوکارسینوم ثابت نشده است؛ ردهٔ ویژه LR-TIV است.",
+            "C": "LR-NC به اطلاعات ناکافی برای تعیین رده مربوط است. تومور وریدی قطعی اینجا حتی بدون تودهٔ مجزا، تعیین LR-TIV را ممکن می‌کند."
+          },
+          "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+        }
+      ]
+    },
+    "cards": [
+      {
+        "id": "haemangiom-01-definition",
+        "topicId": "haemangiom",
+        "category": {
+          "de": "Leberhämangiom",
+          "en": "Hepatic haemangioma",
+          "fa": "همانژیوم کبدی"
+        },
+        "front": {
+          "de": "Was ist ein Leberhämangiom?",
+          "en": "What is a hepatic haemangioma?",
+          "fa": "همانژیوم کبدی چیست؟"
+        },
+        "answer": {
+          "de": "Eine gutartige vaskuläre Läsion mit kavernösen blutgefüllten Räumen.",
+          "en": "A benign vascular lesion with cavernous blood-filled spaces.",
+          "fa": "ضایعه عروقی خوش‌خیم با فضاهای کاورنوز پُر از خون."
+        },
+        "explanation": {
+          "de": "Die Diagnose beruht auf dem passenden Gesamtmuster und dem klinischen Kontext.",
+          "en": "Diagnosis depends on a compatible overall pattern and clinical context.",
+          "fa": "تشخیص بر مجموعه یافته‌های سازگار و زمینه بالینی تکیه دارد."
+        },
+        "diagram": null,
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+      },
+      {
+        "id": "haemangiom-02-epidemiologie",
+        "topicId": "haemangiom",
+        "category": {
+          "de": "Leberhämangiom",
+          "en": "Hepatic haemangioma",
+          "fa": "همانژیوم کبدی"
+        },
+        "front": {
+          "de": "Welche gutartige solide Leberläsion ist am häufigsten?",
+          "en": "What is the most common benign solid liver lesion?",
+          "fa": "شایع‌ترین ضایعه جامد خوش‌خیم کبد چیست؟"
+        },
+        "answer": {
+          "de": "Das Leberhämangiom.",
+          "en": "Hepatic haemangioma.",
+          "fa": "همانژیوم کبدی."
+        },
+        "explanation": {
+          "de": "Oft ein Zufallsbefund, bei Frauen häufiger. Eine periphere Lage ist kein Diagnosekriterium.",
+          "en": "Often incidental and more frequent in women. Peripheral location is not a diagnostic criterion.",
+          "fa": "اغلب اتفاقی کشف می‌شود و در زنان شایع‌تر است. قرارگیری محیطی معیار تشخیص نیست."
+        },
+        "diagram": null,
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+      },
+      {
+        "id": "haemangiom-03-sono-klassisch",
+        "topicId": "haemangiom",
+        "category": {
+          "de": "Leberhämangiom",
+          "en": "Hepatic haemangioma",
+          "fa": "همانژیوم کبدی"
+        },
+        "front": {
+          "de": "Welche Größenlimits nennen EASL und ACG 2024 für eine typische sonographische Diagnose?",
+          "en": "Which size thresholds do EASL and ACG 2024 use for a typical ultrasound diagnosis?",
+          "fa": "EASL و ACG 2024 برای تشخیص تیپیک با سونوگرافی چه حد اندازه‌ای ذکر می‌کنند؟"
+        },
+        "answer": {
+          "de": "EASL 2016: <3 cm; ACG 2024: <2 cm, jeweils nur bei passender typischer Morphologie und klinischem Kontext.",
+          "en": "EASL 2016: <3 cm; ACG 2024: <2 cm, each only with appropriate typical morphology and clinical context.",
+          "fa": "EASL 2016: کمتر از ۳ سانتی‌متر؛ ACG 2024: کمتر از ۲ سانتی‌متر؛ هر کدام فقط با مورفولوژی تیپیک و زمینه بالینی مناسب."
+        },
+        "explanation": {
+          "de": "Bei Lebererkrankung, Tumoranamnese oder atypischem Befund kontrastverstärkt charakterisieren.",
+          "en": "Use contrast-enhanced characterisation for liver disease, cancer history or atypical findings.",
+          "fa": "در بیماری کبدی، سابقه سرطان یا یافته غیرتیپیک، بررسی با ماده حاجب لازم است."
+        },
+        "diagram": null,
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+      },
+      {
+        "id": "haemangiom-04-ct-muster",
+        "topicId": "haemangiom",
+        "category": {
+          "de": "Leberhämangiom",
+          "en": "Hepatic haemangioma",
+          "fa": "همانژیوم کبدی"
+        },
+        "front": {
+          "de": "Welches dynamische CT-Muster ist typisch?",
+          "en": "Which dynamic CT pattern is typical?",
+          "fa": "کدام الگوی دینامیک CT تیپیک است؟"
+        },
+        "answer": {
+          "de": "Periphere diskontinuierliche Kontrastknoten mit progressiver zentripetaler Auffüllung.",
+          "en": "Discontinuous peripheral enhancing nodules with progressive centripetal fill-in.",
+          "fa": "ندول‌های محیطی ناپیوسته جذب‌کننده کنتراست با پرشدن تدریجی به‌سمت مرکز."
+        },
+        "explanation": {
+          "de": "Nicht mit einem glatten durchgehenden Randsaum verwechseln.",
+          "en": "Do not confuse this with a smooth continuous enhancing rim.",
+          "fa": "این الگو را با حاشیه صاف و پیوسته جذب کنتراست اشتباه نگیرید."
+        },
+        "diagram": null,
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+      },
+      {
+        "id": "haemangiom-05-iris",
+        "topicId": "haemangiom",
+        "category": {
+          "de": "Leberhämangiom",
+          "en": "Hepatic haemangioma",
+          "fa": "همانژیوم کبدی"
+        },
+        "front": {
+          "de": "Was bedeutet Irisblendenphänomen?",
+          "en": "What does the iris diaphragm phenomenon mean?",
+          "fa": "پدیده دیافراگم عنبیه یعنی چه؟"
+        },
+        "answer": {
+          "de": "Auffüllung vom Rand zur Mitte.",
+          "en": "Filling from the edge to the centre.",
+          "fa": "پرشدن از محیط به مرکز."
+        },
+        "explanation": {
+          "de": "Die Füllung muss spät nicht vollständig sein, besonders bei großen Läsionen.",
+          "en": "Delayed filling need not be complete, especially in large lesions.",
+          "fa": "پرشدن در فاز تأخیری، به‌ویژه در ضایعات بزرگ، لزوماً کامل نیست."
+        },
+        "diagram": null,
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+      },
+      {
+        "id": "haemangiom-06-t2",
+        "topicId": "haemangiom",
+        "category": {
+          "de": "Leberhämangiom",
+          "en": "Hepatic haemangioma",
+          "fa": "همانژیوم کبدی"
+        },
+        "front": {
+          "de": "Was ist das Light-Bulb-Zeichen?",
+          "en": "What is the light-bulb sign?",
+          "fa": "علامت لامپ روشن چیست؟"
+        },
+        "answer": {
+          "de": "Sehr hohes T2-Signal eines klassischen Hämangioms.",
+          "en": "Marked T2 brightness of a classic haemangioma.",
+          "fa": "سیگنال بسیار بالای T2 در همانژیوم تیپیک."
+        },
+        "explanation": {
+          "de": "Ein hilfreicher Hinweis, aber zusammen mit der Kontrastdynamik bewerten.",
+          "en": "A useful clue, but assess it together with enhancement dynamics.",
+          "fa": "سرنخ مفیدی است، اما باید همراه الگوی جذب کنتراست ارزیابی شود."
+        },
+        "diagram": null,
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+      },
+      {
+        "id": "haemangiom-07-dwi-adc",
+        "topicId": "haemangiom",
+        "category": {
+          "de": "Leberhämangiom",
+          "en": "Hepatic haemangioma",
+          "fa": "همانژیوم کبدی"
+        },
+        "front": {
+          "de": "Helles DWI ohne niedrigen ADC: wie einordnen?",
+          "en": "Bright DWI without low ADC: how to interpret it?",
+          "fa": "DWI روشن بدون ADC پایین را چگونه تفسیر می‌کنیم؟"
+        },
+        "answer": {
+          "de": "Bei T2-heller Läsion spricht das für T2-shine-through, nicht für bewiesene Restriktion.",
+          "en": "In a T2-bright lesion this supports T2 shine-through, not proven restriction.",
+          "fa": "در ضایعه با T2 روشن، به نفع T2 shine-through است؛ محدودیت انتشار اثبات نشده است."
+        },
+        "explanation": {
+          "de": "ADC allein beweist keine Gutartigkeit; mit Morphologie und Dynamik kombinieren.",
+          "en": "ADC alone does not prove benignity; combine it with morphology and dynamics.",
+          "fa": "ADC به‌تنهایی خوش‌خیمی را ثابت نمی‌کند؛ آن را با مورفولوژی و الگوی دینامیک ترکیب کنید."
+        },
+        "diagram": null,
+        "source": "https://pubmed.ncbi.nlm.nih.gov/18830105/"
+      },
+      {
+        "id": "haemangiom-08-t1c-dynamik",
+        "topicId": "haemangiom",
+        "category": {
+          "de": "Leberhämangiom",
+          "en": "Hepatic haemangioma",
+          "fa": "همانژیوم کبدی"
+        },
+        "front": {
+          "de": "Welche Referenz gilt für die Kontrastanreicherung?",
+          "en": "What is the reference for enhancement?",
+          "fa": "مرجع مقایسه جذب کنتراست چیست؟"
+        },
+        "answer": {
+          "de": "Der Blutpool derselben Phase.",
+          "en": "The blood pool in the same phase.",
+          "fa": "مخزن خون در همان فاز."
+        },
+        "explanation": {
+          "de": "Anreichernde Anteile folgen typischerweise dem Blutpool; sie müssen spät nicht isointens zur Leber sein.",
+          "en": "Enhancing components typically follow the blood pool; they need not be isointense to liver on delayed images.",
+          "fa": "بخش‌های جذب‌کننده کنتراست معمولاً از مخزن خون پیروی می‌کنند؛ در فاز تأخیری لزوماً با کبد هم‌سیگنال نیستند."
+        },
+        "diagram": null,
+        "source": "https://pubmed.ncbi.nlm.nih.gov/18830105/"
+      },
+      {
+        "id": "haemangiom-09-gross",
+        "topicId": "haemangiom",
+        "category": {
+          "de": "Leberhämangiom",
+          "en": "Hepatic haemangioma",
+          "fa": "همانژیوم کبدی"
+        },
+        "front": {
+          "de": "Warum können große Hämangiome inhomogen sein?",
+          "en": "Why may large haemangiomas be heterogeneous?",
+          "fa": "چرا همانژیوم‌های بزرگ ممکن است ناهمگن باشند؟"
+        },
+        "answer": {
+          "de": "Durch Thromben, Fibrose und gelegentlich Verkalkungen.",
+          "en": "Because of thrombus, fibrosis and occasional calcification.",
+          "fa": "به‌علت ترومبوز، فیبروز و گاهی کلسیفیکاسیون."
+        },
+        "explanation": {
+          "de": "Das T2-Signal und die Füllung können dadurch heterogen bleiben; fehlende komplette Füllung allein beweist keine Malignität.",
+          "en": "T2 signal and filling may remain heterogeneous; incomplete filling alone does not prove malignancy.",
+          "fa": "به همین دلیل سیگنال T2 و پرشدن می‌توانند ناهمگن بمانند؛ پرشدن ناقص به‌تنهایی بدخیمی را ثابت نمی‌کند."
+        },
+        "diagram": null,
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001"
+      },
+      {
+        "id": "haemangiom-10-atypisch-definition",
+        "topicId": "haemangiom",
+        "category": {
+          "de": "Leberhämangiom",
+          "en": "Hepatic haemangioma",
+          "fa": "همانژیوم کبدی"
+        },
+        "front": {
+          "de": "Wie unterscheiden sich Flash-filling und Sklerosierung?",
+          "en": "How do flash-filling and sclerosis differ?",
+          "fa": "نوع پرشدن سریع و نوع اسکلروزه چه تفاوتی دارند؟"
+        },
+        "answer": {
+          "de": "Flash-filling: früh homogen kräftig anreichernd. Sklerosierung: oft weniger T2-Signal und weniger typische Anreicherung.",
+          "en": "Flash-filling: early intense homogeneous enhancement. Sclerosis: often reduced T2 signal and less typical enhancement.",
+          "fa": "پرشدن سریع: جذب شدید و همگن زودرس. اسکلروز: اغلب کاهش سیگنال T2 و الگوی جذب کمتر تیپیک."
+        },
+        "explanation": {
+          "de": "Atypische Hämangiome haben kein einheitliches Muster. Eine unklare Läsion nicht allein durch dieses Etikett für gutartig erklären.",
+          "en": "Atypical haemangiomas have no single pattern. Do not declare an indeterminate lesion benign merely by using this label.",
+          "fa": "همانژیوم‌های غیرتیپیک الگوی واحدی ندارند. فقط با این برچسب، ضایعه نامعین را خوش‌خیم اعلام نکنید."
+        },
+        "diagram": null,
+        "source": "https://pubmed.ncbi.nlm.nih.gov/34041675/"
+      },
+      {
+        "id": "hcc-01-risk",
+        "topicId": "hcc",
+        "category": {
+          "de": "Grundlagen",
+          "en": "Basics",
+          "fa": "مبانی"
+        },
+        "front": {
+          "de": "In welchem Kontext ist das typische HCC-Muster besonders diagnostisch?",
+          "en": "In which context is the typical HCC pattern most diagnostic?",
+          "fa": "الگوی تیپیک HCC در چه زمینه‌ای بیشترین ارزش تشخیصی دارد؟"
+        },
+        "answer": {
+          "de": "In der definierten erwachsenen Risikopopulation: Zirrhose, chronische Hepatitis B oder aktuelles/früheres HCC; bestimmte vaskuläre Zirrhosen sind ausgenommen.",
+          "en": "In the defined adult risk population: cirrhosis, chronic hepatitis B or current/prior HCC; certain vascular causes of cirrhosis are excluded.",
+          "fa": "در جمعیت پرخطر بزرگسال تعریف‌شده: سیروز، هپاتیت B مزمن یا HCC فعلی/قبلی؛ برخی علل عروقی سیروز مستثنا هستند."
+        },
+        "explanation": {
+          "de": "Technisch geeignete Mehrphasenbildgebung ist zusätzlich nötig. Bei kongenitaler hepatischer Fibrose oder Zirrhose durch bestimmte vaskuläre Erkrankungen, etwa kardiale Stauung, diagnostisches LI-RADS nicht anwenden.",
+          "en": "Suitable multiphasic imaging is also required. Do not apply diagnostic LI-RADS in congenital hepatic fibrosis or cirrhosis from certain vascular disorders such as cardiac congestion.",
+          "fa": "تصویربرداری چندفازی مناسب نیز لازم است. در فیبروز مادرزادی کبد یا سیروز ناشی از برخی بیماری‌های عروقی، مانند احتقان قلبی، LI-RADS تشخیصی به‌کار نرود."
+        },
+        "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+      },
+      {
+        "id": "hcc-02-aphe",
+        "topicId": "hcc",
+        "category": {
+          "de": "Dynamik",
+          "en": "Dynamic imaging",
+          "fa": "تصویربرداری دینامیک"
+        },
+        "front": {
+          "de": "Was bedeutet non-rim APHE?",
+          "en": "What does non-rim APHE mean?",
+          "fa": "افزایش سیگنال شریانی غیرحلقوی (APHE) به چه معناست؟"
+        },
+        "answer": {
+          "de": "Nicht-randförmiges arterielles Hyperenhancement der Läsion gegenüber der Leber.",
+          "en": "Non-rim arterial phase hyperenhancement relative to the liver.",
+          "fa": "تقویت شریانی غیرحلقوی (APHE) ضایعه نسبت به کبد."
+        },
+        "explanation": {
+          "de": "Nicht-randständige Mehranreicherung relativ zur Leber in der arteriellen Phase. APHE allein ist unspezifisch; Größe und weitere Merkmale im passenden Kontext bewerten.",
+          "en": "Nonrim hyperenhancement relative to liver in the arterial phase. APHE alone is nonspecific; assess size and additional features in context.",
+          "fa": "جذب بیشترِ غیرحاشیه‌ای نسبت به کبد در فاز شریانی. APHE به‌تنهایی غیراختصاصی است؛ اندازه و ویژگی‌های دیگر در زمینهٔ مناسب ارزیابی شوند."
+        },
+        "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+      },
+      {
+        "id": "hcc-03-washout",
+        "topicId": "hcc",
+        "category": {
+          "de": "Dynamik",
+          "en": "Dynamic imaging",
+          "fa": "تصویربرداری دینامیک"
+        },
+        "front": {
+          "de": "Was bedeutet nicht-peripheres Wash-out, und welche Phasen sind zulässig?",
+          "en": "What is nonperipheral washout, and which phases are permissible?",
+          "fa": "واش‌اوت غیرمحیطی چیست و کدام فازها مجازند؟"
+        },
+        "answer": {
+          "de": "Zeitliche Abnahme der relativen Anreicherung bis zur Hypoanreicherung gegenüber der Leber: bei extrazellulärem Kontrastmittel portalvenös oder spät, bei Gadoxetat nur portalvenös.",
+          "en": "Temporal reduction of relative enhancement resulting in hypoenhancement to liver: portal venous or delayed with extracellular agents, but only portal venous with gadoxetate.",
+          "fa": "کاهش زمانی جذب نسبی تا جذب کمتر نسبت به کبد: با مادهٔ حاجب خارج‌سلولی در فاز پورتال یا تأخیری، ولی با گادوکسیتات فقط در فاز پورتال."
+        },
+        "explanation": {
+          "de": "Es braucht keinen absoluten Kontrastmittelverlust. Transitional- oder hepatobiliäre Hypointensität bei Gadoxetat ist ein Ancillary Feature und ersetzt dieses Wash-out nicht.",
+          "en": "Absolute contrast loss is not required. Transitional or hepatobiliary hypointensity with gadoxetate is an ancillary feature and does not replace this washout.",
+          "fa": "خروج مطلق مادهٔ حاجب لازم نیست. کم‌سیگنالی انتقالی یا هپاتوبیلیاری در گادوکسیتات ویژگی کمکی است و جای این واش‌اوت را نمی‌گیرد."
+        },
+        "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+      },
+      {
+        "id": "hcc-04-capsule",
+        "topicId": "hcc",
+        "category": {
+          "de": "Dynamik",
+          "en": "Dynamic imaging",
+          "fa": "تصویربرداری دینامیک"
+        },
+        "front": {
+          "de": "Was ist die Kapselappearance eines HCC?",
+          "en": "What is HCC capsule appearance?",
+          "fa": "نمای کپسول در HCC چیست؟"
+        },
+        "answer": {
+          "de": "Glatter, gleichmäßiger anreichernder Randsaum in portalvenöser, später oder Transitionalphase, auffälliger als Fibrose um Hintergrundknoten.",
+          "en": "A smooth uniform enhancing border in the portal venous, delayed or transitional phase, more conspicuous than fibrosis around background nodules.",
+          "fa": "حاشیهٔ صاف و یکنواخت دارای جذب در فاز پورتال، تأخیری یا انتقالی که از فیبروز اطراف ندول‌های زمینه‌ای برجسته‌تر است."
+        },
+        "explanation": {
+          "de": "Bildgebende Appearance, kein alleiniger histologischer Beweis. Ein nicht anreichernder Saum gehört nicht zum gleichnamigen Major Feature.",
+          "en": "An imaging appearance, not standalone histological proof. A nonenhancing border does not meet this major feature.",
+          "fa": "نمای تصویربرداری است، نه اثبات بافت‌شناختی مستقل. حاشیهٔ بدون جذب این ویژگی اصلی را برآورده نمی‌کند."
+        },
+        "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+      },
+      {
+        "id": "hcc-05-hbp",
+        "topicId": "hcc",
+        "category": {
+          "de": "MRT",
+          "en": "MRI",
+          "fa": "MRI"
+        },
+        "front": {
+          "de": "Wie erscheint ein HCC meist in der hepatobiliären Phase?",
+          "en": "How does HCC usually appear in the hepatobiliary phase?",
+          "fa": "HCC معمولاً در فاز هپاتوبیلیاری چگونه دیده می‌شود؟"
+        },
+        "answer": {
+          "de": "Hypointens zum Leberparenchym.",
+          "en": "Hypointense relative to liver parenchyma.",
+          "fa": "هیپواینتنس نسبت به پارانشیم کبد."
+        },
+        "explanation": {
+          "de": "Viele HCC zeigen verminderte hepatobiliäre Aufnahme, unter anderem bei verminderter Expression hepatozellulärer Aufnahmetransporter. Eine erhaltene oder erhöhte Transporterexpression kann iso-/hyperintense HCC erklären. Das Signal ist daher kein alleiniger HCC- oder Gutartigkeitsnachweis.",
+          "en": "Many HCCs show reduced hepatobiliary uptake, associated in part with reduced hepatocellular uptake-transporter expression. Preserved or increased expression can explain iso-/hyperintense HCC. Signal alone therefore establishes neither HCC nor benignity.",
+          "fa": "بسیاری از HCCها جذب هپاتوبیلیاری کمتری دارند که از جمله با کاهش بیان ناقل‌های جذب هپاتوسلولار مرتبط است. حفظ یا افزایش بیان ناقل می‌تواند HCC هم‌سیگنال/پُرسیگنال را توضیح دهد. بنابراین سیگنال به‌تنهایی نه HCC را ثابت می‌کند و نه خوش‌خیمی را."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/20663969/"
+      },
+      {
+        "id": "hcc-06-dwi",
+        "topicId": "hcc",
+        "category": {
+          "de": "MRT",
+          "en": "MRI",
+          "fa": "MRI"
+        },
+        "front": {
+          "de": "Welcher DWI/ADC-Befund unterstützt die HCC-Diagnose?",
+          "en": "Which DWI/ADC finding supports HCC?",
+          "fa": "کدام یافته DWI/ADC تشخیص HCC را تقویت می‌کند؟"
+        },
+        "answer": {
+          "de": "Hohes DWI-Signal mit korrespondierend niedrigem ADC.",
+          "en": "High DWI signal with corresponding low ADC.",
+          "fa": "سیگنال بالای DWI همراه ADC پایین متناظر."
+        },
+        "explanation": {
+          "de": "DWI-Aufhellung mit passender ADC-Erniedrigung unterstützt echte Restriktion. Dieses Ancillary Feature ist nicht HCC-spezifisch und darf eine Beobachtung nicht allein zu LR-5 hochstufen.",
+          "en": "DWI brightness with corresponding low ADC supports true restriction. This ancillary feature is not HCC-specific and cannot independently upgrade an observation to LR-5.",
+          "fa": "روشنایی DWI با کاهش متناظر ADC از محدودیت واقعی حمایت می‌کند. این ویژگی کمکی اختصاصی HCC نیست و به‌تنهایی نمی‌تواند ضایعه را به LR-5 ارتقا دهد."
+        },
+        "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+      },
+      {
+        "id": "hcc-07-tumour-vein",
+        "topicId": "hcc",
+        "category": {
+          "de": "Staging",
+          "en": "Staging",
+          "fa": "مرحله‌بندی"
+        },
+        "front": {
+          "de": "Welcher Befund spricht für Tumor in vein?",
+          "en": "Which finding suggests tumour in vein?",
+          "fa": "کدام یافته به نفع تومور داخل ورید است؟"
+        },
+        "answer": {
+          "de": "Eindeutig anreicherndes Weichteilgewebe innerhalb einer Vene.",
+          "en": "Unequivocally enhancing soft tissue within a vein.",
+          "fa": "بافت نرم داخل ورید با جذب قطعی مادهٔ حاجب."
+        },
+        "explanation": {
+          "de": "Betroffene Venen und Ausdehnung berichten. Expansion, Restriktion oder Tumornachbarschaft sind Zusatzhinweise; LR-TIV ist nicht HCC-spezifisch und muss vom blanden Thrombus unterschieden werden.",
+          "en": "Report involved veins and extent. Expansion, restriction and tumour adjacency are additional clues; LR-TIV is not HCC-specific and must be distinguished from bland thrombus.",
+          "fa": "وریدهای درگیر و وسعت گزارش شوند. اتساع، محدودیت انتشار و مجاورت تومور سرنخ‌های تکمیلی‌اند؛ LR-TIV اختصاصی HCC نیست و باید از ترومبوز ساده افتراق داده شود."
+        },
+        "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+      },
+      {
+        "id": "hcc-08-infiltrative",
+        "topicId": "hcc",
+        "category": {
+          "de": "Atypische Form",
+          "en": "Atypical form",
+          "fa": "فرم آتیپیک"
+        },
+        "front": {
+          "de": "Wie wächst ein infiltratives HCC?",
+          "en": "How does infiltrative HCC grow?",
+          "fa": "HCC انفیلتراتیو چگونه رشد می‌کند؟"
+        },
+        "answer": {
+          "de": "Unscharf und permeativ über mehrere Segmente oder einen ganzen Leberlappen.",
+          "en": "Ill-defined and permeative across multiple segments or an entire lobe.",
+          "fa": "نامشخص و نفوذی در چند سگمان یا یک لوب کامل."
+        },
+        "explanation": {
+          "de": "Das klassische APHE/Wash-out-Muster kann nur fokal vorhanden sein. Satellitenherde und Gefäßinvasion sind wichtige Hinweise.",
+          "en": "The classic APHE/wash-out pattern may be only focal. Satellite lesions and vascular invasion are important clues.",
+          "fa": "الگوی کلاسیک APHE/واش‌اوت ممکن است فقط فوکال باشد؛ ضایعات ماهواره‌ای و تهاجم عروقی سرنخ‌های مهم هستند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3538368/"
+      },
+      {
+        "id": "hcc-09-dd-fnh",
+        "topicId": "hcc",
+        "category": {
+          "de": "Differenzialdiagnose",
+          "en": "Differential diagnosis",
+          "fa": "تشخیص افتراقی"
+        },
+        "front": {
+          "de": "Welche Dynamik bei extrazellulärem Kontrastmittel gewichtet HCC stärker als typische FNH?",
+          "en": "Which dynamic pattern with an extracellular agent favours HCC over typical FNH?",
+          "fa": "کدام دینامیک با مادهٔ حاجب خارج‌سلولی، HCC را نسبت به FNH تیپیک بیشتر مطرح می‌کند؟"
+        },
+        "answer": {
+          "de": "Nicht-peripheres portalvenöses oder spätes Wash-out; eine anreichernde Kapsel kann zusätzlich unterstützen.",
+          "en": "Nonperipheral portal venous or delayed washout; an enhancing capsule may additionally support it.",
+          "fa": "واش‌اوت غیرمحیطی پورتال یا تأخیری؛ کپسول دارای جذب می‌تواند بیشتر حمایت کند."
+        },
+        "explanation": {
+          "de": "Typische FNH zeigt starke arterielle Anreicherung mit späterer Angleichung und gegebenenfalls zentraler Narbe. Kein Einzelmerkmal ersetzt Zielgruppe, Größe und vollständige Kategorienbewertung.",
+          "en": "Typical FNH shows strong arterial enhancement with later equilibration and sometimes a central scar. No single feature replaces eligibility, size and full category assessment.",
+          "fa": "FNH تیپیک جذب شریانی شدید با همسان‌شدن بعدی و گاهی اسکار مرکزی دارد. هیچ ویژگی منفردی جای گروه هدف، اندازه و ارزیابی کامل رده را نمی‌گیرد."
+        },
+        "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf"
+      },
+      {
+        "id": "hcc-10-reporting",
+        "topicId": "hcc",
+        "category": {
+          "de": "Befundung",
+          "en": "Reporting",
+          "fa": "گزارش‌نویسی"
+        },
+        "front": {
+          "de": "Welche Angaben gehören zwingend in einen HCC-Befund?",
+          "en": "Which details are essential in an HCC report?",
+          "fa": "چه اطلاعاتی باید حتماً در گزارش HCC ذکر شوند؟"
+        },
+        "answer": {
+          "de": "Zahl, Größe, Segment, Enhancement, Satelliten, Gefäßinvasion und extrahepatische Ausbreitung.",
+          "en": "Number, size, segment, enhancement, satellites, vascular invasion and extrahepatic spread.",
+          "fa": "تعداد، اندازه، سگمان، تقویت پس از تزریق، ضایعات ماهواره‌ای، تهاجم عروقی و گسترش خارج کبدی."
+        },
+        "explanation": {
+          "de": "Die Bildgebung erfasst den anatomischen Anteil. BCLC-Staging und Therapieplanung integrieren zusätzlich Leberfunktion, Dekompensation und ECOG-Performance-Status im multidisziplinären Kontext.",
+          "en": "Imaging captures the anatomical contribution. BCLC staging and treatment planning additionally integrate liver function, decompensation and ECOG performance status in a multidisciplinary context.",
+          "fa": "تصویربرداری سهم آناتومیک را ثبت می‌کند. مرحله‌بندی BCLC و برنامه‌ریزی درمان علاوه بر آن عملکرد کبد، دکمپنسیشن و وضعیت عملکردی ECOG را در زمینهٔ چندتخصصی لحاظ می‌کنند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/"
+      },
+      {
+        "id": "li-rads-eligible",
+        "topicId": "li-rads",
+        "category": {
+          "de": "LI-RADS",
+          "en": "LI-RADS",
+          "fa": "LI-RADS"
+        },
+        "front": {
+          "de": "Welche Patienten und Untersuchungen gehören zur diagnostischen CT/MRT-LI-RADS-Zielgruppe?",
+          "en": "Which patients and examinations are eligible for diagnostic CT/MRI LI-RADS?",
+          "fa": "کدام بیماران و بررسی‌ها برای LI-RADS تشخیصی CT/MRI مناسب‌اند؟"
+        },
+        "answer": {
+          "de": "Erwachsene mit Zirrhose, chronischer Hepatitis B oder aktuellem/früherem HCC und geeigneter Mehrphasen-CT/MRT.",
+          "en": "Adults with cirrhosis, chronic hepatitis B or current/prior HCC and suitable multiphasic CT/MRI.",
+          "fa": "بزرگسالان مبتلا به سیروز، هپاتیت B مزمن یا HCC فعلی/قبلی با CT/MRI چندفازی مناسب."
+        },
+        "explanation": {
+          "de": "Kongenitale hepatische Fibrose und bestimmte vaskuläre Zirrhosen, etwa durch kardiale Stauung, sind ausgenommen. Erst Eignung prüfen, dann eine unbehandelte Beobachtung kategorisieren.",
+          "en": "Congenital hepatic fibrosis and certain vascular causes of cirrhosis, such as cardiac congestion, are excluded. Check eligibility before categorising an untreated observation.",
+          "fa": "فیبروز مادرزادی کبد و برخی علل عروقی سیروز، مانند احتقان قلبی، مستثنا هستند. پیش از رده‌بندی ضایعهٔ درمان‌نشده، مناسب‌بودن شرایط بررسی شود."
+        },
+        "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf",
+        "diagram": null
+      },
+      {
+        "id": "li-rads-lr4",
+        "topicId": "li-rads",
+        "category": {
+          "de": "LI-RADS",
+          "en": "LI-RADS",
+          "fa": "LI-RADS"
+        },
+        "front": {
+          "de": "LR-4 nach vollständiger Bildgebung: Wann eher Biopsie statt erneuter Bildgebung?",
+          "en": "LR-4 after complete imaging: when is biopsy favoured over repeat imaging?",
+          "fa": "LR-4 پس از تصویربرداری کامل: چه زمانی بیوپسی بر تکرار تصویربرداری ترجیح دارد؟"
+        },
+        "answer": {
+          "de": "Wenn die jetzt benötigte Diagnose die Behandlung verändern würde: zeitnahe Biopsie im multidisziplinären Kontext erwägen.",
+          "en": "When an immediate diagnosis would change treatment: consider prompt biopsy in a multidisciplinary context.",
+          "fa": "اگر تشخیص فوری درمان را تغییر دهد: بیوپسی زودهنگام در زمینهٔ چندتخصصی در نظر گرفته شود."
+        },
+        "explanation": {
+          "de": "AASLD2023 nennt für LR-4 Biopsie oder erneute Kontrastbildgebung innerhalb von 3 Monaten. Die konkrete klinische Entscheidung bestimmt die Wahl; LR-4 bedeutet nicht sicher HCC.",
+          "en": "AASLD2023 lists biopsy or repeat contrast imaging within 3 months for LR-4. The clinical decision determines the choice; LR-4 is not definite HCC.",
+          "fa": "AASLD2023 برای LR-4 بیوپسی یا تکرار تصویربرداری با حاجب طی ۳ ماه را مطرح می‌کند. تصمیم بالینی مشخص انتخاب را تعیین می‌کند؛ LR-4 به معنی HCC قطعی نیست."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/",
+        "diagram": null
+      },
+      {
+        "id": "aq-atv-li-rads-major-rule",
+        "topicId": "li-rads",
+        "front": {
+          "de": "10–19 mm mit nonrim APHE: Was unterscheidet Wash-out von Kapsel allein für LR-5?",
+          "en": "At 10–19 mm with nonrim APHE, how does washout differ from capsule alone for LR-5?",
+          "fa": "در اندازهٔ ۱۰ تا ۱۹ میلی‌متر همراه APHE غیرحاشیه‌ای، تفاوت واش‌اوت و کپسول به‌تنهایی برای LR-5 چیست؟"
+        },
+        "answer": {
+          "de": "Nicht-peripheres Wash-out → LR-5; anreichernde Kapsel allein → LR-4 (v2018).",
+          "en": "Nonperipheral washout → LR-5; enhancing capsule alone → LR-4 (v2018).",
+          "fa": "واش‌اوت غیرمحیطی ← LR-5؛ کپسول دارای جذب به‌تنهایی ← LR-4 (نسخهٔ ۲۰۱۸)."
+        },
+        "explanation": {
+          "de": "Zielgruppe, Technik und Ausschluss vorrangiger Sonderkategorien müssen stimmen. APHE plus Schwellenwachstum ist in dieser Größenklasse ebenfalls ein LR-5-Weg.",
+          "en": "Eligibility, technique and exclusion of preceding special categories must be satisfied. APHE plus threshold growth is another LR-5 route in this size group.",
+          "fa": "گروه هدف، کفایت فنی و نبود رده‌های ویژهٔ مقدم باید تأیید شوند. APHE همراه رشد آستانه‌ای نیز در این گروه اندازه راه دیگری به LR-5 است."
+        },
+        "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf",
+        "diagram": null
+      },
+      {
+        "id": "aq-atv-li-rads-ancillary-limit",
+        "topicId": "li-rads",
+        "front": {
+          "de": "Wie weit dürfen malignitätsstützende Ancillary Features hochstufen?",
+          "en": "How far may malignancy-favouring ancillary features upgrade an observation?",
+          "fa": "ویژگی‌های کمکی به نفع بدخیمی تا چه حد اجازهٔ ارتقا می‌دهند؟"
+        },
+        "answer": {
+          "de": "Optional um eine Kategorie, höchstens bis LR-4; nie allein zu LR-5.",
+          "en": "Optionally by one category, no higher than LR-4; never to LR-5 by themselves.",
+          "fa": "به‌صورت اختیاری یک رده، حداکثر تا LR-4؛ به‌تنهایی هرگز تا LR-5."
+        },
+        "explanation": {
+          "de": "Malignitätsstützende Ancillary Features dürfen optional um eine Kategorie, höchstens bis LR-4, hochstufen. Sie erlauben kein LR-5. Bei gleichzeitigen benignitäts- und malignitätsstützenden Ancillary Features wird nicht angepasst.",
+          "en": "Malignancy-favouring ancillary features may optionally upgrade by one category, no higher than LR-4. They cannot establish LR-5. When benignity- and malignancy-favouring ancillary features coexist, do not adjust.",
+          "fa": "ویژگی‌های کمکی به نفع بدخیمی می‌توانند به‌صورت اختیاری یک رده ارتقا دهند، حداکثر تا LR-4. آن‌ها LR-5 ایجاد نمی‌کنند. با هم‌زمانی ویژگی کمکی به نفع خوش‌خیمی و بدخیمی، رده تغییر نمی‌کند."
+        },
+        "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf",
+        "diagram": null
+      },
+      {
+        "id": "aq-atv-li-rads-tiv-specificity",
+        "topicId": "li-rads",
+        "front": {
+          "de": "Was definiert LR-TIV, und beweist es HCC?",
+          "en": "What defines LR-TIV, and does it prove HCC?",
+          "fa": "چه چیزی LR-TIV را تعریف می‌کند و آیا HCC را اثبات می‌کند؟"
+        },
+        "answer": {
+          "de": "Eindeutig anreicherndes Weichteilgewebe in einer Vene; es ist nicht HCC-spezifisch.",
+          "en": "Unequivocally enhancing soft tissue within a vein; it is not HCC-specific.",
+          "fa": "بافت نرم داخل ورید با جذب قطعی مادهٔ حاجب؛ اختصاصی HCC نیست."
+        },
+        "explanation": {
+          "de": "Eine sichtbare parenchymale Masse ist nicht erforderlich. Betroffene Vene, Ausdehnung und vermuteten Ursprung berichten; Expansion oder Restriktion allein definiert LR-TIV nicht.",
+          "en": "A visible parenchymal mass is not required. Report involved vein, extent and suspected origin; expansion or restriction alone does not define LR-TIV.",
+          "fa": "وجود تودهٔ پارانشیمی قابل مشاهده الزامی نیست. ورید درگیر، وسعت و منشأ احتمالی گزارش شوند؛ اتساع یا محدودیت انتشار به‌تنهایی LR-TIV را تعریف نمی‌کند."
+        },
+        "source": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf",
+        "diagram": null
+      }
+    ]
+  }
+}

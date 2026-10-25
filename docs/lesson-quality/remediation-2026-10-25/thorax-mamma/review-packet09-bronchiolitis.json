@@ -1,0 +1,184 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/msk_original_pools_next",
+  "author": "root",
+  "independent": true,
+  "route": "/thorax/bronchiolitis",
+  "scope": "Read-only independent review of the entire original2Q/2card triads and actual final3Q/3card triads, all options/correct rationales/27localized wrong rationales, three goals, actual inline consumption, shared HP boundary, all62lessonDelta entries and narrow source/PDF scope. No author artifact rewrites or production changes.",
+  "decisions": {
+    "bounded_assessment_clinical_content": "PASS",
+    "bounded_source_and_goal_consistency": "PASS",
+    "bounded_actual_data_integration": "PASS",
+    "bounded_editorial_content_acceptance": "PASS",
+    "whole_lesson_acceptance": "NOT_ASSESSED",
+    "scientific_approval": "Dr. Zia pending",
+    "browser_qa": "BLOCKED",
+    "publication": "no reviewer action",
+    "openCritical": 0,
+    "openMajor": 0,
+    "openMinor": 0
+  },
+  "filesRead": [
+    "data/thoraxBronchiolitisLesson.js",
+    "app/thorax/bronchiolitis/SmallAirwayLesson.jsx",
+    "app/thorax/bronchiolitis/page.jsx",
+    "app/thorax/hypersensitivitaetspneumonitis/page.jsx",
+    "data/thoraxHypersensitivityLesson.js (shared-consumer boundary)",
+    "docs/lesson-quality/remediation-2026-10-25/thorax-mamma/packet09-bronchiolitis-before.json",
+    "docs/lesson-quality/remediation-2026-10-25/thorax-mamma/packet09-bronchiolitis-author-manifest.json",
+    "docs/lesson-quality/remediation-2026-10-25/thorax-mamma/packet09-bronchiolitis-plan.md",
+    "tmp/assessment-quality/check-bronchiolitis.mjs (read only; not run because it rewrites the author manifest)"
+  ],
+  "sourcesFresh": [
+    {
+      "id": "USER_THORAX_PDF",
+      "path": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Thorax.pdf",
+      "pageCount": 50,
+      "physicalPagesRead": [
+        19,
+        20,
+        29
+      ],
+      "printedPages": [
+        18,
+        19,
+        28
+      ],
+      "method": "Fresh pypdf extraction directly from supplied PDF plus all three local rendered page images viewed.",
+      "imagePaths": [
+        "tmp/assessment-quality/bronchiolitis-19.png",
+        "tmp/assessment-quality/bronchiolitis-20.png",
+        "tmp/assessment-quality/bronchiolitis-29.png"
+      ],
+      "scope": "19centri-lobular pattern/differentials/bronchiolitis image;20tree-in-bud and separate random-nodule topic;29heading-only. No complete50-page audit claimed. Random-distribution differential section is outside this bounded bronchiolitis revision."
+    },
+    {
+      "id": "FLEISCHNER2024",
+      "url": "https://pubs.rsna.org/doi/10.1148/radiol.232558",
+      "doi": "10.1148/radiol.232558",
+      "read": "Fresh official publisher indexed entries Air Trapping, Airways/Bronchiole, Small Airways Disease, centrilobular distribution, tree-in-bud/miliary descriptors and relevant MIP figure captions.",
+      "scope": "Supports connected branching micronodules; peripheral-airway direct/indirect findings; expiratory assessment using inadequate attenuation increase and volume reduction. No downloaded full-glossary PDF or full-image licence review claimed."
+    },
+    {
+      "id": "MILLER_PANOSIAN2013",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23948769/",
+      "doi": "10.1378/chest.13-1270",
+      "read": "Fresh original PubMed-indexed abstract including methods/results/conclusions.",
+      "scope": "Retrospective report search with cause established in only a subset; infection/aspiration patterns and dependent-distribution association support a clinical clue, not proof or an individual risk estimate. Full paywalled body not claimed."
+    }
+  ],
+  "gates": {
+    "SRC": {
+      "status": "PASS",
+      "scope": "Bounded revised assessments/inline checks and source claims only.",
+      "evidence": "Clinical recommendations and descriptor limits agree with freshly read source definitions; aspiration is a qualified association. PDF29 is explicitly heading-only and clinical supplements are declared. No overread of MRI-like model or imaging proof. Source citation language defect is recorded under LNG."
+    },
+    "EDU": {
+      "status": "PASS",
+      "evidence": "Three measurable goals match described pattern recognition, context-sensitive aspiration evaluation and expiratory confirmation. The additional pair closes an existing taught gap rather than a question quota. No new default chapter. Three retained subject-specific sections and take-home retrieval remain concise."
+    },
+    "ASM": {
+      "status": "PASS",
+      "evidence": "OriginalB/C keys and IDs retained; newA. Pattern alternatives are related distributions/airway entities. Cause alternatives are clinically related etiologies with a concrete swallowing/dependent-distribution context. Expiratory question distinguishes acquisition from reconstruction/phase. Every wrong option has specific language-equivalent feedback. Cards ask free retrieval rather than copying old MCQ stems."
+    },
+    "LNG": {
+      "status": "PASS",
+      "evidence": "All original/final triads and62lessonDelta entries read. No clinically material polarity, threshold or uncertainty mismatch found in assessment/goal text. One new source-note teaching qualifier is English-only in all three modes. Repair01 replaces the English teaching note with the exact neutral bibliographic citation; all other lesson/assessment payloads unchanged.",
+      "evidenceBlockers": [
+        "Current actual RTL/browser presentation not supplied or tested."
+      ]
+    },
+    "VIS": {
+      "status": "BLOCKED",
+      "evidence": "Three supplied PDF page pixels actually viewed. Actual lesson case object equals original snapshot; all new questions are labelled text vignettes and no diagnostic-image claim was added.",
+      "evidenceBlockers": [
+        "Retained case full-source frame/provenance/licence/crop/readability audit and current browser pixels outside this bounded review; not certified here."
+      ]
+    },
+    "UX": {
+      "status": "BLOCKED",
+      "evidence": "Source flow verified for three inline checks, per-option status feedback, derived quiz count and conditional objective rendering. HP actual data still has2checks and no learningGoals, so the Bronchiolitis goal block does not appear for HP.",
+      "evidenceBlockers": [
+        "No current build/browser desktop/mobile/themes/languages/keyboard/media/action evidence; no access gate changed."
+      ]
+    },
+    "REV": {
+      "status": "PASS",
+      "evidence": "Reviewer did not author these files; fresh source/fullpool review and independent actual runtime performed. Supported minor fix requested; no scientific approval/publication inferred."
+    }
+  },
+  "findings": [
+    {
+      "id": "BRON09-LNG-01",
+      "severity": "minor",
+      "gates": [
+        "LNG"
+      ],
+      "location": "data/thoraxBronchiolitisLesson.js: BRONCHIOLITIS_LESSON.sources[1].citation; SmallAirwayLesson LessonSources items",
+      "observed": "New citation is the English explanatory note 'Retrospective cohort; clinical and distribution clues, not pathogen proof.' The shared component passes this string unchanged to LessonSources in DE/FA too. This is a teaching qualifier rather than a bibliographic title.",
+      "learnerImpact": "The source-scope qualification is not linguistically equivalent in the otherwise translated lesson, although the same scientific caution is already taught correctly in all3 main texts.",
+      "requiredCorrection": "Use a genuine language-neutral bibliographic citation, for example Chest.2013;144(6):1883–1892.PMID23948769, or localize this note through a supported consumer. Keep the existing three-language clinical caveat.",
+      "retest": "Read actual new source note/consumer and update exact producer/global hashes; content/keys need not change.",
+      "status": "CLOSED",
+      "retestEvidence": "packet09-bronchiolitis-independent-repair01.json: fresh actual one-field value and entire other lesson/pool equality tested."
+    }
+  ],
+  "runtimeEvidence": "packet09-bronchiolitis-independent-runtime.json",
+  "runtimeSha256": {
+    "data/thoraxBronchiolitisLesson.js": "c6de82bd7cbe23330b761c1820e99512b04a69557d9bee1835cd8ad8f61cdf12",
+    "app/thorax/bronchiolitis/SmallAirwayLesson.jsx": "9d49b89f5feeac99aba0ebbd39ec60439fd66723f92e8b76db639996dfaf9ffb"
+  },
+  "actualGlobalHashes": {
+    "questionsDe": "f6f868555e646bbc467948f43eedaa52bebe07893bb39efa6a9cf7bf6cab9a72",
+    "questionsEn": "5e925f283a424bd8f88bc3b694eebe2e510214aaf99ba3852571bcdc059bb6ff",
+    "questionsFa": "cbbd0e49da40181447baec775733d84bdaa0182b8d316bb7e96382bacc3472cf",
+    "cards": "8c4ffcee60333d12fbc4b30f6875cb3fc23d38eee783579942f493d62d6a8d3b"
+  },
+  "validation": {
+    "actualGlobalQuestionObjects": 9,
+    "actualGlobalCardObjects": 3,
+    "localizedWrongFeedbackFields": 27,
+    "exactLessonDeltaEntries": 62,
+    "actualInlineChecks": 3,
+    "sourceSyntaxFiles": 2,
+    "goals": 3,
+    "oldKeysIdsRetained": true,
+    "caseObjectUnchanged": true,
+    "manifestActualParity": true,
+    "sharedBoundary": "HP still2checks/nolearningGoals; derived count and conditional goals use the supplied lesson object. Historical wholeHP equality not asserted.",
+    "noAuthorArtifactRewrite": true,
+    "build": "not run",
+    "server": "not run",
+    "browser": "not run",
+    "git": "no mutation",
+    "latestAcceptance": "Bounded original2Q/2card revision plus1goal-gap pair accepted after one minor repair. Root central3goal admission/build/browser/wholemedia/Dr.Zia release separate."
+  },
+  "repair01Closure": {
+    "date": "2026-10-25",
+    "reviewer": "/root/msk_original_pools_next",
+    "status": "INDEPENDENT_REPAIR01_BOUNDED_ACCEPTED",
+    "finding": "BRON09-LNG-01",
+    "exactField": "lesson.sources.1.citation",
+    "currentBefore": "Retrospective cohort; clinical and distribution clues, not pathogen proof.",
+    "after": "Chest. 2013;144(6):1883–1892. PMID23948769.",
+    "entireOtherLessonPayloadExact": true,
+    "all9GlobalQuestionsUnchanged": true,
+    "all3GlobalCardsUnchanged": true,
+    "coverageAndInlineChecksUnchanged": true,
+    "sharedComponentUnchanged": true,
+    "producerBeforeSha256": "4c0791b4d9368eb0b38bb63816690a3d1d090473a8f62cfaf55c59f63da9b8e4",
+    "producerAfterSha256": "c6de82bd7cbe23330b761c1820e99512b04a69557d9bee1835cd8ad8f61cdf12",
+    "questionHashes": {
+      "de": "f6f868555e646bbc467948f43eedaa52bebe07893bb39efa6a9cf7bf6cab9a72",
+      "en": "5e925f283a424bd8f88bc3b694eebe2e510214aaf99ba3852571bcdc059bb6ff",
+      "fa": "cbbd0e49da40181447baec775733d84bdaa0182b8d316bb7e96382bacc3472cf"
+    },
+    "cardsHash": "8c4ffcee60333d12fbc4b30f6875cb3fc23d38eee783579942f493d62d6a8d3b",
+    "rootRepairRecordRead": true,
+    "authorManifestLeftUnchanged": true,
+    "build": "not run",
+    "browser": "not run",
+    "scientificApproval": "Dr.Zia pending",
+    "wholeLessonAcceptance": "not asserted"
+  }
+}

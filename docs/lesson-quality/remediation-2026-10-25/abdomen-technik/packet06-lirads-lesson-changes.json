@@ -1,0 +1,282 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_COMPLETE_PEER_REVIEW_PENDING",
+  "changes": [
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "path": "C.de.majorFeatures",
+      "currentBefore": [
+        [
+          "Nicht-randständiges APHE",
+          "Arterielle Hyperanreicherung, die nicht nur randständig ist."
+        ],
+        [
+          "Nicht-peripheres Wash-out",
+          "Relative Abnahme der Anreicherung in zulässiger späterer Phase."
+        ],
+        [
+          "Enhancing capsule",
+          "Anreichernde kapselartige Begrenzung."
+        ],
+        [
+          "Größe",
+          "Größenklasse der Beobachtung; an der Phase mit bester Begrenzbarkeit messen, möglichst nicht arteriell."
+        ],
+        [
+          "Threshold growth",
+          "Durchmesserzunahme ≥50 % innerhalb von höchstens 6 Monaten (v2018-Definition)."
+        ]
+      ],
+      "after": [
+        [
+          "Nicht-randständiges APHE",
+          "Arterielle Hyperanreicherung, die nicht nur randständig ist."
+        ],
+        [
+          "Nicht-peripheres Wash-out",
+          "Relative zeitliche Abnahme bis zur Hypoanreicherung: mit extrazellulärem Kontrastmittel portalvenös oder spät, mit Gadoxetat nur portalvenös. Transitional-/hepatobiliäre Hypointensität ersetzt Wash-out nicht."
+        ],
+        [
+          "Enhancing capsule",
+          "Anreichernde kapselartige Begrenzung."
+        ],
+        [
+          "Größe",
+          "Größenklasse der Beobachtung; an der Phase mit bester Begrenzbarkeit messen, möglichst nicht arteriell."
+        ],
+        [
+          "Threshold growth",
+          "Durchmesserzunahme ≥50 % innerhalb von höchstens 6 Monaten (v2018-Definition)."
+        ]
+      ]
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "path": "C.de.goals",
+      "currentBefore": [
+        "Prüfen, ob die diagnostische CT/MRT-LI-RADS-Zielgruppe erfüllt ist.",
+        "Major Features systematisch erfassen und die passende Tabelle anwenden.",
+        "LR-5 von LR-M und LR-TIV unterscheiden; Ancillary Features nicht überbewerten."
+      ],
+      "after": [
+        "LI-RADS-Zielgruppe und technische Eignung vor der Kategorie prüfen.",
+        "Die LR-5-Regel bei 10–19 mm mit den v2018-Major-Features korrekt anwenden.",
+        "Grenzen von Ancillary Features und der HCC-Spezifität von LR-TIV benennen.",
+        "Bei LR-4 Bildkontrolle und Biopsie anhand der konkreten klinischen Entscheidung abwägen."
+      ]
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "path": "C.de.checkQ",
+      "currentBefore": "Erwachsene Person mit Zirrhose, unbehandelte 15-mm-Beobachtung: nicht-randständiges APHE und nicht-peripheres Wash-out. Welche Kategorie ergibt sich nach CT/MRT LI-RADS v2018?",
+      "after": "Zirrhose, geeignete Mehrphasen-MRT mit extrazellulärem Kontrastmittel: zwei unbehandelte 15-mm-Beobachtungen, beide mit nonrim APHE, ohne LR-M-Merkmale oder Tumor in vein. X zeigt nicht-peripheres portalvenöses Wash-out; Y eine anreichernde Kapsel, aber kein Wash-out und kein Schwellenwachstum. Welche Kategorien gelten nach v2018?"
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "path": "C.de.options",
+      "currentBefore": [
+        "LR-5",
+        "LR-4, weil die Beobachtung nur 15 mm misst",
+        "LR-3, weil Beobachtungen unter 20 mm nicht LR-5 sein können"
+      ],
+      "after": [
+        "X: LR-5; Y: LR-5",
+        "X: LR-5; Y: LR-4",
+        "X: LR-4; Y: LR-5",
+        "X: LR-4; Y: LR-4"
+      ]
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "path": "C.de.why",
+      "currentBefore": "In der 10–19-mm-Klasse erreicht nicht-randständiges APHE plus nicht-peripheres Wash-out LR-5. Das gilt nur, wenn Zielgruppe und technische Voraussetzungen erfüllt sind.",
+      "after": "Bei 10–19 mm erreicht nonrim APHE plus nicht-peripheres Wash-out LR-5. APHE plus anreichernde Kapsel allein bleibt in dieser Größenklasse LR-4; Schwellenwachstum wäre ebenfalls ein Weg zu LR-5."
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "path": "C.en.majorFeatures",
+      "currentBefore": [
+        [
+          "Nonrim APHE",
+          "Arterial phase hyperenhancement that is not confined to the rim."
+        ],
+        [
+          "Nonperipheral washout",
+          "Relative reduction in enhancement on an eligible later phase."
+        ],
+        [
+          "Enhancing capsule",
+          "An enhancing capsule-like border."
+        ],
+        [
+          "Size",
+          "Observation size class; measure in the phase where the margin is best defined, preferably not the arterial phase."
+        ],
+        [
+          "Threshold growth",
+          "At least 50% diameter increase within 6 months (v2018 definition)."
+        ]
+      ],
+      "after": [
+        [
+          "Nonrim APHE",
+          "Arterial phase hyperenhancement that is not confined to the rim."
+        ],
+        [
+          "Nonperipheral washout",
+          "Temporal relative reduction resulting in hypoenhancement: portal venous or delayed with extracellular agents, portal venous only with gadoxetate. Transitional/hepatobiliary hypointensity does not replace washout."
+        ],
+        [
+          "Enhancing capsule",
+          "An enhancing capsule-like border."
+        ],
+        [
+          "Size",
+          "Observation size class; measure in the phase where the margin is best defined, preferably not the arterial phase."
+        ],
+        [
+          "Threshold growth",
+          "At least 50% diameter increase within 6 months (v2018 definition)."
+        ]
+      ]
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "path": "C.en.goals",
+      "currentBefore": [
+        "Check whether the diagnostic CT/MRI LI-RADS target population is met.",
+        "Record major features systematically and apply the appropriate table.",
+        "Distinguish LR-5 from LR-M and LR-TIV; do not overstate ancillary features."
+      ],
+      "after": [
+        "Check LI-RADS population and technical eligibility before categorisation.",
+        "Apply the v2018 LR-5 rule for 10–19 mm observations using major features.",
+        "State the limits of ancillary features and the HCC specificity of LR-TIV.",
+        "Weigh follow-up imaging against biopsy in LR-4 according to the clinical decision needed."
+      ]
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "path": "C.en.checkQ",
+      "currentBefore": "An adult with cirrhosis has an untreated 15-mm observation with nonrim APHE and nonperipheral washout. Which category follows CT/MRI LI-RADS v2018?",
+      "after": "Cirrhosis and adequate multiphasic extracellular-agent MRI: two untreated 15-mm observations, both with nonrim APHE, no LR-M features or tumour in vein. X has nonperipheral portal venous washout; Y has an enhancing capsule but no washout or threshold growth. Which v2018 categories apply?"
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "path": "C.en.options",
+      "currentBefore": [
+        "LR-5",
+        "LR-4, because the observation measures only 15 mm",
+        "LR-3, because observations below 20 mm cannot be LR-5"
+      ],
+      "after": [
+        "X: LR-5; Y: LR-5",
+        "X: LR-5; Y: LR-4",
+        "X: LR-4; Y: LR-5",
+        "X: LR-4; Y: LR-4"
+      ]
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "path": "C.en.why",
+      "currentBefore": "In the 10–19 mm class, nonrim APHE plus nonperipheral washout meets LR-5. This applies only when the target population and technical requirements are met.",
+      "after": "At 10–19 mm, nonrim APHE plus nonperipheral washout reaches LR-5. APHE plus an enhancing capsule alone remains LR-4 in this size group; threshold growth is another route to LR-5."
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "path": "C.fa.majorFeatures",
+      "currentBefore": [
+        [
+          "APHE غیرحاشیه‌ای",
+          "تقویت شریانی که فقط به حاشیه محدود نیست."
+        ],
+        [
+          "Wash-out غیرمحیطی",
+          "کاهش نسبی تقویت در فاز بعدی مجاز."
+        ],
+        [
+          "کپسول دارای تقویت",
+          "حدّ شبه‌کپسولی که پس از تزریق تقویت می‌شود."
+        ],
+        [
+          "اندازه",
+          "رده اندازه ضایعه؛ در فازی اندازه بگیرید که حدود بهتر مشخص است و ترجیحاً نه در فاز شریانی."
+        ],
+        [
+          "رشد آستانه‌ای",
+          "افزایش قطر دست‌کم ۵۰٪ طی حداکثر ۶ ماه (تعریف v2018)."
+        ]
+      ],
+      "after": [
+        [
+          "APHE غیرحاشیه‌ای",
+          "تقویت شریانی که فقط به حاشیه محدود نیست."
+        ],
+        [
+          "Wash-out غیرمحیطی",
+          "کاهش زمانی نسبی تا جذب کمتر: با حاجب خارج‌سلولی در فاز پورتال یا تأخیری، با گادوکسیتات فقط پورتال. کم‌سیگنالی انتقالی/هپاتوبیلیاری جای واش‌اوت را نمی‌گیرد."
+        ],
+        [
+          "کپسول دارای تقویت",
+          "حدّ شبه‌کپسولی که پس از تزریق تقویت می‌شود."
+        ],
+        [
+          "اندازه",
+          "رده اندازه ضایعه؛ در فازی اندازه بگیرید که حدود بهتر مشخص است و ترجیحاً نه در فاز شریانی."
+        ],
+        [
+          "رشد آستانه‌ای",
+          "افزایش قطر دست‌کم ۵۰٪ طی حداکثر ۶ ماه (تعریف v2018)."
+        ]
+      ]
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "path": "C.fa.goals",
+      "currentBefore": [
+        "بررسی کنید که بیمار در گروه هدف LI-RADS تشخیصی CT/MRI قرار دارد.",
+        "ویژگی‌های اصلی را منظم ثبت و جدول درست را اعمال کنید.",
+        "LR-5 را از LR-M و LR-TIV تفکیک کنید و ویژگی‌های کمکی را بیش‌ازحد تفسیر نکنید."
+      ],
+      "after": [
+        "پیش از تعیین رده، گروه هدف و کفایت فنی LI-RADS را بررسی کنید.",
+        "قاعدهٔ LR-5 در اندازهٔ ۱۰ تا ۱۹ میلی‌متر را با ویژگی‌های اصلی نسخهٔ ۲۰۱۸ درست به‌کار برید.",
+        "محدودیت ویژگی‌های کمکی و اختصاصیت LR-TIV برای HCC را بیان کنید.",
+        "در LR-4 پیگیری تصویربرداری و بیوپسی را بر پایهٔ تصمیم بالینی موردنیاز بسنجید."
+      ]
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "path": "C.fa.checkQ",
+      "currentBefore": "در فرد بزرگسال مبتلا به سیروز، یک ضایعه درمان‌نشده ۱۵ میلی‌متری دارای APHE غیرحاشیه‌ای و wash-out غیرمحیطی است. طبق LI-RADS CT/MRI v2018 کدام رده مناسب است؟",
+      "after": "در سیروز و MRI چندفازی مناسب با حاجب خارج‌سلولی، دو ضایعهٔ درمان‌نشدهٔ ۱۵ میلی‌متری هر دو APHE غیرحاشیه‌ای دارند و فاقد ویژگی LR-M یا تومور داخل وریدند. X واش‌اوت غیرمحیطی پورتال دارد؛ Y کپسول دارای جذب دارد، ولی واش‌اوت و رشد آستانه‌ای ندارد. طبق نسخهٔ ۲۰۱۸ رده‌ها کدام‌اند؟"
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "path": "C.fa.options",
+      "currentBefore": [
+        "LR-5",
+        "LR-4، چون اندازه ضایعه فقط ۱۵ میلی‌متر است",
+        "LR-3، چون ضایعات کوچک‌تر از ۲۰ میلی‌متر نمی‌توانند LR-5 باشند"
+      ],
+      "after": [
+        "X: LR-5؛ Y: LR-5",
+        "X: LR-5؛ Y: LR-4",
+        "X: LR-4؛ Y: LR-5",
+        "X: LR-4؛ Y: LR-4"
+      ]
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "path": "C.fa.why",
+      "currentBefore": "در رده اندازه ۱۰ تا ۱۹ میلی‌متر، APHE غیرحاشیه‌ای همراه wash-out غیرمحیطی معیار LR-5 است. این نتیجه فقط با برقرار بودن گروه هدف و شرایط فنی معتبر است.",
+      "after": "در اندازهٔ ۱۰ تا ۱۹ میلی‌متر، APHE غیرحاشیه‌ای همراه واش‌اوت غیرمحیطی به LR-5 می‌رسد. APHE همراه کپسول دارای جذب به‌تنهایی در این گروه LR-4 می‌ماند؛ رشد آستانه‌ای نیز راه دیگری برای LR-5 است."
+    }
+  ],
+  "inline": "Active canonical major-rule question directly consumed by stable ID suffix,4options and option-specific feedback; no position-based selection.",
+  "preserved": "All other clinical copy, source notes, flow and layout unchanged; updated4goals and accurate5-question practice count.",
+  "sourceLinksAdded": {
+    "file": "app/abdomen/leber/li-rads/page.js",
+    "clinicalPurpose": "Direct traceability for the repaired major-feature/uptake/infiltrative rules; no new media or unviewed case claim."
+  }
+}

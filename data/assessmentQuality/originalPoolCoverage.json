@@ -1,0 +1,304 @@
+[
+  {
+    "route": "/gehirn/vaskulaer/subarachnoidalblutung",
+    "topicId": "subarachnoidalblutung",
+    "learningGoals": [
+      {
+        "id": "negative-ct",
+        "text": {
+          "de": "Nach negativem CT den weiteren Weg aus Zeitfenster, Neurostatus und CT-Qualität ableiten.",
+          "en": "Choose the negative-CT pathway using timing, neurological status and CT quality.",
+          "fa": "مسیر پس از CT منفی را بر پایهٔ زمان، وضعیت عصبی و کیفیت CT انتخاب کنید."
+        },
+        "questionIds": [
+          "sab-q1"
+        ],
+        "cardIds": [
+          "sab-fc-4",
+          "sab-fc-7",
+          "sab-fc-8"
+        ]
+      },
+      {
+        "id": "modified-fisher",
+        "text": {
+          "de": "Modified-Fisher-Grade aus Blutdicke und IVH zuordnen und von der Originalskala unterscheiden.",
+          "en": "Assign modified Fisher grades from blood thickness and IVH and distinguish the original scale.",
+          "fa": "درجات فیشر اصلاح‌شده را از ضخامت خون و IVH تعیین و از مقیاس اصلی تفکیک کنید."
+        },
+        "questionIds": [
+          "sab-q2",
+          "sab-q3"
+        ],
+        "cardIds": [
+          "sab-fc-1",
+          "sab-fc-2",
+          "sab-fc-3"
+        ]
+      },
+      {
+        "id": "vascular-source",
+        "text": {
+          "de": "Blutverteilung als Suchhinweis nutzen und die kontextabhängige CTA-/DSA-Abklärung begründen.",
+          "en": "Use blood distribution as a search clue and justify context-dependent CTA/DSA work-up.",
+          "fa": "توزیع خون را سرنخ جست‌وجو بدانید و بررسی CTA/DSA متناسب با زمینه را توضیح دهید."
+        },
+        "questionIds": [
+          "sab-q4",
+          "sab-q6"
+        ],
+        "cardIds": [
+          "sab-fc-5"
+        ]
+      },
+      {
+        "id": "dci-deterioration",
+        "text": {
+          "de": "Verzögerte klinische Verschlechterung auf DCI prüfen, ohne sie mit Vasospasmus gleichzusetzen.",
+          "en": "Evaluate delayed clinical deterioration for DCI without equating it with vasospasm.",
+          "fa": "بدترشدن بالینی تأخیری را از نظر DCI بررسی کنید، بدون همسان‌دانستن آن با وازواسپاسم."
+        },
+        "questionIds": [
+          "sab-q5"
+        ],
+        "cardIds": [
+          "sab-fc-6"
+        ]
+      }
+    ],
+    "status": "BOUNDED_FULL_ORIGINAL_POOL_CONTENT_ACCEPTED",
+    "review": "brain/review-sab.json; clinical release separate"
+  },
+  {
+    "route": "/mamma/bildgebung/mammographie/verkalkungen",
+    "topicId": "mammographie-mikrokalk",
+    "status": "BOUNDED_FULL_ORIGINAL_POOL_CONTENT_ACCEPTED",
+    "learningGoals": [
+      {
+        "id": "calc08-characterise",
+        "text": {
+          "de": "Gezielte Detailaufnahmen wählen und typisch benigne sowie suspekte Partikelmorphologie beschreiben, ohne Größe allein als Diagnose zu verwenden.",
+          "en": "Choose targeted detail views and describe typically benign and suspicious particle morphology without treating size alone as diagnostic.",
+          "fa": "نماهای هدفمند جزئیات را انتخاب کنید و مورفولوژی تیپیک خوش‌خیم و مشکوک ذرات را بدون تشخیصی دانستن اندازهٔ منفرد توصیف کنید."
+        },
+        "questionIds": [
+          "mammographie-mikrokalk-de-size-alone",
+          "mammographie-mikrokalk-de-magnification",
+          "mammographie-mikrokalk-de-popcorn",
+          "mammographie-mikrokalk-de-milk-calcium",
+          "mammographie-mikrokalk-de-rods-versus-linear",
+          "mammographie-mikrokalk-de-amorphous-distribution",
+          "mammographie-mikrokalk-de-coarse-heterogeneous-size"
+        ],
+        "questionIdsByLanguage": {
+          "de": [
+            "mammographie-mikrokalk-de-size-alone",
+            "mammographie-mikrokalk-de-magnification",
+            "mammographie-mikrokalk-de-popcorn",
+            "mammographie-mikrokalk-de-milk-calcium",
+            "mammographie-mikrokalk-de-rods-versus-linear",
+            "mammographie-mikrokalk-de-amorphous-distribution",
+            "mammographie-mikrokalk-de-coarse-heterogeneous-size"
+          ],
+          "en": [
+            "mammographie-mikrokalk-en-size-alone",
+            "mammographie-mikrokalk-en-magnification",
+            "mammographie-mikrokalk-en-popcorn",
+            "mammographie-mikrokalk-en-milk-calcium",
+            "mammographie-mikrokalk-en-rods-versus-linear",
+            "mammographie-mikrokalk-en-amorphous-distribution",
+            "mammographie-mikrokalk-en-coarse-heterogeneous-size"
+          ],
+          "fa": [
+            "mammographie-mikrokalk-fa-size-alone",
+            "mammographie-mikrokalk-fa-magnification",
+            "mammographie-mikrokalk-fa-popcorn",
+            "mammographie-mikrokalk-fa-milk-calcium",
+            "mammographie-mikrokalk-fa-rods-versus-linear",
+            "mammographie-mikrokalk-fa-amorphous-distribution",
+            "mammographie-mikrokalk-fa-coarse-heterogeneous-size"
+          ]
+        },
+        "cardIds": [
+          "mammographie-mikrokalk-01",
+          "mammographie-mikrokalk-02",
+          "mammographie-mikrokalk-03",
+          "mammographie-mikrokalk-04",
+          "mammographie-mikrokalk-05",
+          "mammographie-mikrokalk-06",
+          "mammographie-mikrokalk-size",
+          "mammographie-mikrokalk-dbt",
+          "mammographie-mikrokalk-usmacro"
+        ]
+      },
+      {
+        "id": "calc08-distribution",
+        "text": {
+          "de": "Verteilungen unterscheiden und Morphologie und räumliche Architektur zusammen beschreiben, ohne eine historische Matrix als klinische Kategorie zu übernehmen.",
+          "en": "Distinguish distributions and describe morphology together with spatial architecture without adopting a historical matrix as the clinical category.",
+          "fa": "توزیع‌ها را تفکیک کنید و مورفولوژی و معماری فضایی را با هم توصیف کنید، بدون اینکه ماتریس تاریخی را دستهٔ بالینی بدانید."
+        },
+        "questionIds": [
+          "mammographie-mikrokalk-de-pleomorphic-segmental",
+          "mammographie-mikrokalk-de-highest-suspicion",
+          "mammographie-mikrokalk-de-regional-definition",
+          "mammographie-mikrokalk-de-segmental-apex"
+        ],
+        "questionIdsByLanguage": {
+          "de": [
+            "mammographie-mikrokalk-de-pleomorphic-segmental",
+            "mammographie-mikrokalk-de-highest-suspicion",
+            "mammographie-mikrokalk-de-regional-definition",
+            "mammographie-mikrokalk-de-segmental-apex"
+          ],
+          "en": [
+            "mammographie-mikrokalk-en-pleomorphic-segmental",
+            "mammographie-mikrokalk-en-highest-suspicion",
+            "mammographie-mikrokalk-en-regional-definition",
+            "mammographie-mikrokalk-en-segmental-apex"
+          ],
+          "fa": [
+            "mammographie-mikrokalk-fa-pleomorphic-segmental",
+            "mammographie-mikrokalk-fa-highest-suspicion",
+            "mammographie-mikrokalk-fa-regional-definition",
+            "mammographie-mikrokalk-fa-segmental-apex"
+          ]
+        },
+        "cardIds": [
+          "mammographie-mikrokalk-07",
+          "mammographie-mikrokalk-08",
+          "mammographie-mikrokalk-09",
+          "mammographie-mikrokalk-grouped",
+          "mammographie-mikrokalk-segmental"
+        ]
+      },
+      {
+        "id": "calc08-evolution",
+        "text": {
+          "de": "Technisch vergleichbare Voraufnahmen und Begleitbefunde einbeziehen; persistierend suspekte Morphologie trotz Stabilität abklären.",
+          "en": "Integrate technically comparable prior images and associated findings; investigate persistent suspicious morphology despite stability.",
+          "fa": "تصاویر قبلی با تکنیک قابل‌مقایسه و یافته‌های همراه را لحاظ کنید؛ مورفولوژی همچنان مشکوک را با وجود ثبات بررسی کنید."
+        },
+        "questionIds": [
+          "mammographie-mikrokalk-de-evolution-context",
+          "mammographie-mikrokalk-de-stable-suspicious",
+          "mammographie-mikrokalk-de-modifiers-not-score"
+        ],
+        "questionIdsByLanguage": {
+          "de": [
+            "mammographie-mikrokalk-de-evolution-context",
+            "mammographie-mikrokalk-de-stable-suspicious",
+            "mammographie-mikrokalk-de-modifiers-not-score"
+          ],
+          "en": [
+            "mammographie-mikrokalk-en-evolution-context",
+            "mammographie-mikrokalk-en-stable-suspicious",
+            "mammographie-mikrokalk-en-modifiers-not-score"
+          ],
+          "fa": [
+            "mammographie-mikrokalk-fa-evolution-context",
+            "mammographie-mikrokalk-fa-stable-suspicious",
+            "mammographie-mikrokalk-fa-modifiers-not-score"
+          ]
+        },
+        "cardIds": [
+          "mammographie-mikrokalk-10",
+          "mammographie-mikrokalk-stability",
+          "mammographie-mikrokalk-modifiers"
+        ]
+      },
+      {
+        "id": "calc08-management",
+        "text": {
+          "de": "Vollständig abgeklärte wahrscheinlich benigne Muster von biopsiebedürftigen Befunden unterscheiden und die Grenzen negativer Zusatz-MRT einordnen.",
+          "en": "Distinguish completely assessed probably benign patterns from findings requiring biopsy and interpret the limits of negative adjunct MRI.",
+          "fa": "الگوهای احتمالاً خوش‌خیم با بررسی کامل را از یافته‌های نیازمند بیوپسی تفکیک کنید و محدودیت MRI تکمیلی منفی را بسنجید."
+        },
+        "questionIds": [
+          "mammographie-mikrokalk-de-no-correlate",
+          "mammographie-mikrokalk-de-round-group-followup",
+          "mammographie-mikrokalk-de-mri-4a-selected",
+          "mammographie-mikrokalk-de-mri-4b-risk"
+        ],
+        "questionIdsByLanguage": {
+          "de": [
+            "mammographie-mikrokalk-de-no-correlate",
+            "mammographie-mikrokalk-de-round-group-followup",
+            "mammographie-mikrokalk-de-mri-4a-selected",
+            "mammographie-mikrokalk-de-mri-4b-risk"
+          ],
+          "en": [
+            "mammographie-mikrokalk-en-no-correlate",
+            "mammographie-mikrokalk-en-round-group-followup",
+            "mammographie-mikrokalk-en-mri-4a-selected",
+            "mammographie-mikrokalk-en-mri-4b-risk"
+          ],
+          "fa": [
+            "mammographie-mikrokalk-fa-no-correlate",
+            "mammographie-mikrokalk-fa-round-group-followup",
+            "mammographie-mikrokalk-fa-mri-4a-selected",
+            "mammographie-mikrokalk-fa-mri-4b-risk"
+          ]
+        },
+        "cardIds": [
+          "mammographie-mikrokalk-11",
+          "mammographie-mikrokalk-12",
+          "mammographie-mikrokalk-round-3",
+          "mammographie-mikrokalk-mri4a",
+          "mammographie-mikrokalk-mri4b5"
+        ]
+      }
+    ],
+    "review": "thorax-mamma/packet08-calcification-independent-review.json; whole media/browser/scientific release separate"
+  },
+  {
+    "route": "/thorax/bronchiolitis",
+    "topicId": "bronchiolitis",
+    "learningGoals": [
+      {
+        "id": "pattern",
+        "text": {
+          "de": "Ein beschriebenes Tree-in-bud-Muster von anderen nodulären Verteilungen unterscheiden.",
+          "en": "Distinguish described tree-in-bud from other nodular distributions.",
+          "fa": "الگوی توصیف‌شدهٔ درخت در جوانه را از سایر توزیع‌های ندولی جدا کنید."
+        },
+        "questionIds": [
+          "bronchiolitis-de-pattern"
+        ],
+        "cardIds": [
+          "bronchiolitis-pattern"
+        ]
+      },
+      {
+        "id": "cause",
+        "text": {
+          "de": "Klinische Aspirationshinweise bei Tree-in-bud einordnen, ohne einen Erreger oder eine Ursache als bewiesen anzusehen.",
+          "en": "Interpret aspiration clues with tree-in-bud without treating a pathogen or cause as proven.",
+          "fa": "سرنخ‌های آسپیراسیون در درخت در جوانه را بدون اثبات‌دانستن عامل عفونی یا علت تفسیر کنید."
+        },
+        "questionIds": [
+          "bronchiolitis-de-cause"
+        ],
+        "cardIds": [
+          "bronchiolitis-cause"
+        ]
+      },
+      {
+        "id": "expiratory-air-trapping",
+        "text": {
+          "de": "Zur Prüfung von Air-Trapping die Atemphase und die erwartete Dichte-/Volumenänderung benennen.",
+          "en": "State the respiratory phase and expected attenuation/volume change for assessing air trapping.",
+          "fa": "فاز تنفسی و تغییر دانسیته/حجم موردانتظار برای بررسی حبس هوا را بیان کنید."
+        },
+        "questionIds": [
+          "bronchiolitis-de-expiratory-air-trapping"
+        ],
+        "cardIds": [
+          "bronchiolitis-expiratory-air-trapping"
+        ]
+      }
+    ],
+    "status": "BOUNDED_FULL_ORIGINAL_POOL_CONTENT_ACCEPTED",
+    "review": "thorax-mamma/review-packet09-bronchiolitis.json; whole media/browser/scientific release separate"
+  }
+]

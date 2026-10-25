@@ -1,0 +1,156 @@
+{
+  "date": "2026-10-25",
+  "status": "FULL_ORIGINAL_ASSESSMENT_TRIADS_READ_NOT_SCIENTIFIC_PASS",
+  "sourceSnapshot": "tmp/assessment-quality/atv06-original-pool.json",
+  "questions": {
+    "de": [
+      "hcc-de-01",
+      "hcc-de-02",
+      "hcc-de-03",
+      "hcc-de-04",
+      "hcc-de-05",
+      "hcc-de-06",
+      "hcc-de-07",
+      "hcc-de-08",
+      "hcc-de-09",
+      "hcc-de-10",
+      "haemangiom-de-01",
+      "haemangiom-de-02",
+      "haemangiom-de-03",
+      "haemangiom-de-04",
+      "haemangiom-de-05",
+      "haemangiom-de-06",
+      "haemangiom-de-07",
+      "haemangiom-de-08",
+      "li-rads-de-eligible",
+      "li-rads-de-lr4"
+    ],
+    "en": [
+      "hcc-en-01",
+      "hcc-en-02",
+      "hcc-en-03",
+      "hcc-en-04",
+      "hcc-en-05",
+      "hcc-en-06",
+      "hcc-en-07",
+      "hcc-en-08",
+      "hcc-en-09",
+      "hcc-en-10",
+      "haemangiom-en-01",
+      "haemangiom-en-02",
+      "haemangiom-en-03",
+      "haemangiom-en-04",
+      "haemangiom-en-05",
+      "haemangiom-en-06",
+      "haemangiom-en-07",
+      "haemangiom-en-08",
+      "li-rads-en-eligible",
+      "li-rads-en-lr4"
+    ],
+    "fa": [
+      "hcc-fa-01",
+      "hcc-fa-02",
+      "hcc-fa-03",
+      "hcc-fa-04",
+      "hcc-fa-05",
+      "hcc-fa-06",
+      "hcc-fa-07",
+      "hcc-fa-08",
+      "hcc-fa-09",
+      "hcc-fa-10",
+      "haemangiom-fa-01",
+      "haemangiom-fa-02",
+      "haemangiom-fa-03",
+      "haemangiom-fa-04",
+      "haemangiom-fa-05",
+      "haemangiom-fa-06",
+      "haemangiom-fa-07",
+      "haemangiom-fa-08",
+      "li-rads-fa-eligible",
+      "li-rads-fa-lr4"
+    ]
+  },
+  "cards": [
+    "hcc-01-risk",
+    "hcc-02-aphe",
+    "hcc-03-washout",
+    "hcc-04-capsule",
+    "hcc-05-hbp",
+    "hcc-06-dwi",
+    "hcc-07-tumour-vein",
+    "hcc-08-infiltrative",
+    "hcc-09-dd-fnh",
+    "hcc-10-reporting",
+    "haemangiom-01-definition",
+    "haemangiom-02-epidemiologie",
+    "haemangiom-03-sono-klassisch",
+    "haemangiom-04-ct-muster",
+    "haemangiom-05-iris",
+    "haemangiom-06-t2",
+    "haemangiom-07-dwi-adc",
+    "haemangiom-08-t1c-dynamik",
+    "haemangiom-09-gross",
+    "haemangiom-10-atypisch-definition",
+    "li-rads-eligible",
+    "li-rads-lr4"
+  ],
+  "fieldsRead": [
+    "all3locale stems/options/correct keys/correct explanations/existingwrongfeedback",
+    "all3locale card fronts/answers/explanations/diagrams/source metadata"
+  ],
+  "count": {
+    "questionConcepts": 20,
+    "localizedQuestionObjects": 60,
+    "cardTriads": 22
+  },
+  "pdfPagesVisuallyRead": [
+    8,
+    9,
+    10,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "pdfScope": "Physical pages actualPNG seen; wholePDF/media/contributor verification not claimed. FLC subsection22 is outside these three lesson pools.",
+  "readTeachingScope": "Full haemangioma chapter data in all3langs; HCC basics/CT/MRI target fields all3langs; existing HCC_PLANNING and LIRADS_NEXT all3langs. Remaining unchanged detailed cases not independently recertified.",
+  "findings": [
+    {
+      "id": "ATV06-EDU01",
+      "status": "AUTHOR_REPAIRED_INDEPENDENT_RETEST_PENDING",
+      "scope": "All3pools",
+      "finding": "Numerous absurd, off-domain or absolute alternatives and repeated generic wrongfeedback."
+    },
+    {
+      "id": "ATV06-SCI01",
+      "status": "AUTHOR_REPAIRED_INDEPENDENT_RETEST_PENDING",
+      "scope": "HCCq03/q09/cards03/09/MRImirror",
+      "finding": "Washout permissible phase depends on contrast: gadoxetate PVP only; TP/HBP hypointensity ancillary, not majorwashout."
+    },
+    {
+      "id": "ATV06-SCI02",
+      "status": "AUTHOR_REPAIRED_INDEPENDENT_RETEST_PENDING",
+      "scope": "HCCq05/card05/MRIHBProw",
+      "finding": "Absent functioning hepatocytes explanation oversimplifies transporter-dependent HCC uptake; retained/increased transporter expression can produce iso/hyperHBP HCC."
+    },
+    {
+      "id": "ATV06-SRC01",
+      "status": "AUTHOR_REPAIRED_INDEPENDENT_RETEST_PENDING",
+      "scope": "HaemangiomaLessonContent citationPMC9668265",
+      "finding": "Visible2022source author Tsuji mismatches original Takinoshita."
+    },
+    {
+      "id": "ATV06-ASM01",
+      "status": "AUTHOR_REPAIRED_INDEPENDENT_RETEST_PENDING",
+      "scope": "LI-RADS",
+      "finding": "Original2Q/2cards omit central rules tested in lesson; fill three targeted blueprint gaps."
+    }
+  ],
+  "limits": [
+    "No complete clinical/translation acceptance yet",
+    "No browser or source-figure reuse certification",
+    "Do not infer pass from existing labels/build/curriculum"
+  ],
+  "authoringStatus": "All20 original MCQtriads and22cardtriads read and revised/preserved with source justification;3targeted LI-RADS pairs added. Peerreview pending; exact original global HCC stillBefore."
+}

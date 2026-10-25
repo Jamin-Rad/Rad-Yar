@@ -1,0 +1,191 @@
+{
+  "status": "PASS_INDEPENDENT_READONLY_GUARDS",
+  "sharedBefore": 40,
+  "actualCanonicalGlobalObjects": 54,
+  "overlayObjects": 94,
+  "wrongFeedback": 207,
+  "originalKeysRetained": 60,
+  "originalCardIdsRetained": 22,
+  "goalsResolved": 13,
+  "lessonDeltaPaths": 39,
+  "protectedPlanningUnchanged": true,
+  "allSevenFrozenHashesMatch": true,
+  "questionsHashes": {
+    "de": "12915409bd8b81009e8d75ff3be741f9e8c73eb849e5e78b8f9416eb0bd0055e",
+    "en": "1dbc0ae42c1cfd7298cfb7d2d1bfe6176d86c18567ae141ce069b91f25155656",
+    "fa": "67d8fc6dc5e6a5b1a1344eada2c29f4a20dbe19f6a2fd5fc211b7a6ddf8efab0"
+  },
+  "cardsHash": "c2003675d9184c6fecaa06521bd3185fd1cb3a60ddfeb069794abb907d237ccb",
+  "sharedProposalsHash": "92c476af51af6b26076597e408146da2286271e48d2de4f5dee9f9ba5f548156",
+  "sourceHashes": {
+    "data/haemangiomaTraining.js": "d9d12ee79f802bd321a374ca126555c27eba2a11a9031b5ada81bf3d450916af",
+    "data/haemangiomaLesson.js": "d33379fc199be56f6bcf87f8ced572df20c8ad4563360a51cf57bb2e1a56ae13",
+    "app/abdomen/leber/haemangiom/LessonContent.jsx": "23426dcf1dece2cf6fa3980569dc5e97177d29685ce34502255ab88ec8388adc",
+    "app/abdomen/leber/hcc/page.js": "29e30718c7a578213e83df258a09b34c27b724f549964faee949e3189cba2803",
+    "data/abdomenHccPlanning.js": "376543b1d0a516cdfa97fed94a516aab7e2bddedaa4aaa6aa264eca2c33f93b4",
+    "app/abdomen/leber/li-rads/page.js": "d26df2b26129debd4973463786c40df613acaaad08a65187ae3182a4cfabbab5",
+    "data/assessmentQuality/atvLiver.js": "5f7c685265d77256e57ca5a7756a0c48e30edf73c082b2dfce9bbeb700d1c5a2"
+  },
+  "routeCoverageHash": "0735c6028a4f6fea7790e34c68e8c70eb17bcf4e384da841090b70a99f94c0d5",
+  "newIds": [
+    "aq-atv-li-rads-de-major-rule",
+    "aq-atv-li-rads-de-ancillary-limit",
+    "aq-atv-li-rads-de-tiv-specificity"
+  ],
+  "goalGroups": [
+    {
+      "route": "/abdomen/leber/haemangiom",
+      "goals": [
+        {
+          "id": "nature-ultrasound",
+          "questionIds": [
+            "haemangiom-de-01",
+            "haemangiom-de-02"
+          ],
+          "cardIds": [
+            "haemangiom-01-definition",
+            "haemangiom-02-epidemiologie",
+            "haemangiom-03-sono-klassisch"
+          ]
+        },
+        {
+          "id": "dynamic-pattern",
+          "questionIds": [
+            "haemangiom-de-03",
+            "haemangiom-de-04",
+            "haemangiom-de-07"
+          ],
+          "cardIds": [
+            "haemangiom-04-ct-muster",
+            "haemangiom-05-iris",
+            "haemangiom-08-t1c-dynamik"
+          ]
+        },
+        {
+          "id": "mri-diffusion",
+          "questionIds": [
+            "haemangiom-de-05",
+            "haemangiom-de-06"
+          ],
+          "cardIds": [
+            "haemangiom-06-t2",
+            "haemangiom-07-dwi-adc"
+          ]
+        },
+        {
+          "id": "variant-limits",
+          "questionIds": [
+            "haemangiom-de-08"
+          ],
+          "cardIds": [
+            "haemangiom-09-gross",
+            "haemangiom-10-atypisch-definition"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/leber/hcc",
+      "goals": [
+        {
+          "id": "risk-context",
+          "questionIds": [
+            "hcc-de-01"
+          ],
+          "cardIds": [
+            "hcc-01-risk"
+          ]
+        },
+        {
+          "id": "major-features",
+          "questionIds": [
+            "hcc-de-02",
+            "hcc-de-03",
+            "hcc-de-04",
+            "hcc-de-09"
+          ],
+          "cardIds": [
+            "hcc-02-aphe",
+            "hcc-03-washout",
+            "hcc-04-capsule",
+            "hcc-09-dd-fnh"
+          ]
+        },
+        {
+          "id": "ancillary-mri",
+          "questionIds": [
+            "hcc-de-05",
+            "hcc-de-06"
+          ],
+          "cardIds": [
+            "hcc-05-hbp",
+            "hcc-06-dwi"
+          ]
+        },
+        {
+          "id": "invasion-infiltrative",
+          "questionIds": [
+            "hcc-de-07",
+            "hcc-de-08"
+          ],
+          "cardIds": [
+            "hcc-07-tumour-vein",
+            "hcc-08-infiltrative"
+          ]
+        },
+        {
+          "id": "reporting-stage",
+          "questionIds": [
+            "hcc-de-10"
+          ],
+          "cardIds": [
+            "hcc-10-reporting"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/leber/li-rads",
+      "goals": [
+        {
+          "id": "eligibility",
+          "questionIds": [
+            "li-rads-de-eligible"
+          ],
+          "cardIds": [
+            "li-rads-eligible"
+          ]
+        },
+        {
+          "id": "major-rule",
+          "questionIds": [
+            "aq-atv-li-rads-de-major-rule"
+          ],
+          "cardIds": [
+            "aq-atv-li-rads-major-rule"
+          ]
+        },
+        {
+          "id": "specificity-boundaries",
+          "questionIds": [
+            "aq-atv-li-rads-de-ancillary-limit",
+            "aq-atv-li-rads-de-tiv-specificity"
+          ],
+          "cardIds": [
+            "aq-atv-li-rads-ancillary-limit",
+            "aq-atv-li-rads-tiv-specificity"
+          ]
+        },
+        {
+          "id": "lr4-next-step",
+          "questionIds": [
+            "li-rads-de-lr4"
+          ],
+          "cardIds": [
+            "li-rads-lr4"
+          ]
+        }
+      ]
+    }
+  ]
+}

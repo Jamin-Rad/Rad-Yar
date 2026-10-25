@@ -43,6 +43,7 @@ const CALC_MATRIX={
   pleomorphic:{diffuse:'4B',regional:'4B',grouped:'4C',linear:'4C',segmental:'4C'},
   linear:{diffuse:'4C',regional:'4B',grouped:'4C',linear:'5',segmental:'5'},
 }
+const MODEL_MORPH = MORPH.map(item => item.key === 'round' ? { ...item, title: L('Punktförmig (historischer Prädiktor)', 'Punctate (historical predictor)', 'نقطه‌ای (متغیر تاریخی)') } : item)
 const CALC_CLASS={'3':'cat3','4A':'cat4a','4B':'cat4b','4C':'cat4c','5':'cat5'}
 const SECTION_ICON_PATHS={
   grundlagen:'M4 4h6v6H4z M14 4h6v6h-6z M4 14h6v6H4z M14 14h6v6h-6z',
@@ -62,8 +63,8 @@ const SECTION_ICON_PATHS={
 function SectionIcon({id}){return <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d={SECTION_ICON_PATHS[id]||SECTION_ICON_PATHS.ultraschall}/></svg>}
 const CALC_META={
   '3':{risk:'> 0 bis ≤ 2 %',label:'wahrscheinlich benigne',action:'Bei bestätigter Kategorie: Kontrolle nach 6 Monaten',mri:'Eine MRT ist für die reguläre BI-RADS-3-Verlaufskontrolle nicht erforderlich.'},
-  '4A':{risk:'> 2 bis ≤ 10 %',label:'gering suspekt',action:'Biopsie empfohlen',mri:'Negative MRT: Bei ausgewählten reinen Mikroverkalkungen mit niedrigem Ausgangsrisiko kann individuell eine mammographische Kontrolle statt Biopsie diskutiert werden. Studien nennen 6–12 Monate; kein pauschaler Biopsieverzicht.'},
-  '4B':{risk:'> 10 bis ≤ 50 %',label:'mäßig suspekt',action:'Biopsie empfohlen',mri:'Negative MRT: individuelle Entscheidung unter Berücksichtigung des Ausgangsrisikos. Bei Biopsieverzicht ist Zurückhaltung geboten; in der Regel bleibt die Biopsie empfohlen.'},
+  '4A':{risk:'> 2 bis ≤ 10 %',label:'gering suspekt',action:'Biopsie empfohlen',mri:'Biopsieindikation bleibt bei bestätigter mammographischer BI-RADS-Kategorie 4 oder 5 bestehen; eine negative MRT hebt sie nicht automatisch auf.'},
+  '4B':{risk:'> 10 bis ≤ 50 %',label:'mäßig suspekt',action:'Biopsie empfohlen',mri:'Biopsieindikation bleibt bei bestätigter mammographischer BI-RADS-Kategorie 4 oder 5 bestehen; eine negative MRT hebt sie nicht automatisch auf.'},
   '4C':{risk:'> 50 bis < 95 %',label:'stark suspekt',action:'Biopsie empfohlen',mri:'Negative MRT: histologische Abklärung weiterhin erforderlich.'},
   '5':{risk:'≥ 95 %',label:'hochgradig malignomverdächtig',action:'Histologische Sicherung erforderlich',mri:'Negative MRT: Biopsie erforderlich; der hochsuspekte Mammographiebefund bleibt maßgeblich.'},
 }
@@ -153,10 +154,10 @@ const DISTRIBUTION_CONTEXT={
 const REFERENCES=[
   {
     tag:L('Leitlinie & Lexikon','Guideline & lexicon','راهنما و واژه‌نامه'),
-    title:'ACR BI-RADS® v2025 Manual – Mammography',
-    citation:'Destounis SV, Friedewald SM, Grimm LJ, Poplack SP, Sung JS. American College of Radiology; 2025.',
+    title:'ACR BI-RADS® v2025 – Mammography Summary Form',
+    citation:'American College of Radiology; 2025. Official mammography summary form.',
     scope:L('Aktuelle standardisierte Terminologie, Befundstruktur, Kategorien und Managementempfehlungen.','Current standardized terminology, report structure, assessment categories, and management recommendations.','اصطلاحات استاندارد فعلی، ساختار گزارش، دسته‌بندی‌ها و توصیه‌های مدیریتی.'),
-    href:'https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/BI-RADS',
+    href:"https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
   },
   {
     tag:L('Übersicht','Review','مرور'),
@@ -202,8 +203,64 @@ const REFERENCES=[
   },
 ]
 function Section({id,title,children}){return <LessonSection id={id} title={title} icon={id} bodyClassName={`${styles.sectionBody} ${styles.templateSectionBody}`}>{children}</LessonSection>}
-function MorphologyImage({type,lang='de'}){const image=MORPHOLOGY_IMAGES[type];return <a className={caseStyles.morphologyIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a>}
-function DistributionImage({type,lang='de'}){const image=DISTRIBUTION_IMAGES[type];return <a className={caseStyles.distributionIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a>}
+const IMAGE_LABEL_EQUIVALENTS = {
+  "morphology": {
+    "round": {
+      "de": "Bildbeschriftung „Round (punctate)“: rund; punktförmig ist die ältere Bezeichnung sehr kleiner runder Partikel.",
+      "en": "Image label “Round (punctate)”: round; punctate is an older term for very small round particles.",
+      "fa": "برچسب تصویر «Round (punctate)»: گرد؛ نقطه‌ای اصطلاح قدیمی ذرات بسیار کوچک گرد است."
+    },
+    "amorph": {
+      "de": "Bildbeschriftung „Amorphous“: amorph.",
+      "en": "Image label “Amorphous”: amorphous.",
+      "fa": "برچسب تصویر «Amorphous»: آمورف."
+    },
+    "coarse": {
+      "de": "Bildbeschriftung „Coarse heterogeneous“: grob heterogen.",
+      "en": "Image label “Coarse heterogeneous”: coarse heterogeneous.",
+      "fa": "برچسب تصویر «Coarse heterogeneous»: درشت ناهمگون."
+    },
+    "pleomorphic": {
+      "de": "Bildbeschriftung „Fine pleomorphic“: fein pleomorph.",
+      "en": "Image label “Fine pleomorphic”: fine pleomorphic.",
+      "fa": "برچسب تصویر «Fine pleomorphic»: پلئومورفیک ظریف."
+    },
+    "linear": {
+      "de": "Bildbeschriftung „Fine linear (fine-linear or fine-linear branching)“: fein linear oder fein linear verzweigt.",
+      "en": "Image label “Fine linear (fine-linear or fine-linear branching)”: fine linear or fine linear branching.",
+      "fa": "برچسب تصویر «Fine linear (fine-linear or fine-linear branching)»: ظریف خطی یا ظریف خطی شاخه‌دار."
+    }
+  },
+  "distribution": {
+    "diffuse": {
+      "de": "Bildbeschriftung „Diffuse“: diffus.",
+      "en": "Image label “Diffuse”: diffuse.",
+      "fa": "برچسب تصویر «Diffuse»: منتشر."
+    },
+    "regional": {
+      "de": "Bildbeschriftung „Regional“: regional.",
+      "en": "Image label “Regional”: regional.",
+      "fa": "برچسب تصویر «Regional»: ناحیه‌ای."
+    },
+    "grouped": {
+      "de": "Bildbeschriftung „Grouped“: gruppiert.",
+      "en": "Image label “Grouped”: grouped.",
+      "fa": "برچسب تصویر «Grouped»: گروهی."
+    },
+    "linear": {
+      "de": "Bildbeschriftung „Linear“: linear.",
+      "en": "Image label “Linear”: linear.",
+      "fa": "برچسب تصویر «Linear»: خطی."
+    },
+    "segmental": {
+      "de": "Bildbeschriftung „Segmental“: segmental.",
+      "en": "Image label “Segmental”: segmental.",
+      "fa": "برچسب تصویر «Segmental»: سگمنتال."
+    }
+  }
+}
+function MorphologyImage({type,lang='de'}){const image=MORPHOLOGY_IMAGES[type];return <div><a className={caseStyles.morphologyIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a><p className={caseStyles.biradsCaption} dir={lang==='fa'?'rtl':'ltr'}>{pick(IMAGE_LABEL_EQUIVALENTS.morphology[type],lang)}</p></div>}
+function DistributionImage({type,lang='de'}){const image=DISTRIBUTION_IMAGES[type];return <div><a className={caseStyles.distributionIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a><p className={caseStyles.biradsCaption} dir={lang==='fa'?'rtl':'ltr'}>{pick(IMAGE_LABEL_EQUIVALENTS.distribution[type],lang)}</p></div>}
 function BenignCalcificationDiagram({type,label}){
   const backgroundId=`benign-${type}-background`
   const glowId=`benign-${type}-glow`
@@ -240,31 +297,32 @@ function KalkAssessment({lang}){
   const[morph,setMorph]=useState('amorph')
   const[dist,setDist]=useState('grouped')
   const resultCategory=CALC_MATRIX[morph][dist]
-  const result=CALC_META[resultCategory]
+
   const selectCell=(nextMorph,nextDist)=>{setMorph(nextMorph);setDist(nextDist)}
   return <div className={`${caseStyles.assessment} ${caseStyles.refinedAssessment}`}>
     <div className={caseStyles.assessmentIntro}>
       <span className={caseStyles.assessmentIcon}><SectionIcon id="kombination"/></span>
-      <div><small>{t("Interaktives Orientierungsmodell")}</small><h3>{t("BI-RADS")}<span>{t("(Kalzifikationen: Morphologie × Verteilung)")}</span></h3></div>
+      <div><small>{t("Historisches Forschungsmodell")}</small><h3>{t("BI-RADS")}<span>{t("(Kalzifikationen: Morphologie × Verteilung)")}</span></h3></div>
     </div>
     <div className={caseStyles.assessmentCalculator}>
       <div className={caseStyles.assessmentInputs}>
-        <label><span>{t("1 · Morphologie")}</span><select value={morph} onChange={event=>setMorph(event.target.value)}>{MORPH.map(item=><option key={item.key} value={item.key}>{pick(item.title,lang)}</option>)}</select></label>
+        <label><span>{t("1 · Morphologie")}</span><select value={morph} onChange={event=>setMorph(event.target.value)}>{MODEL_MORPH.map(item=><option key={item.key} value={item.key}>{pick(item.title,lang)}</option>)}</select></label>
         <span className={caseStyles.assessmentOperator}>×</span>
         <label><span>{t("2 · Verteilung")}</span><select value={dist} onChange={event=>setDist(event.target.value)}>{DISTRIBUTION.map(item=><option key={item.key} value={item.key}>{pick(item.title,lang)}</option>)}</select></label>
       </div>
       <div className={`${caseStyles.assessmentResult} ${caseStyles[CALC_CLASS[resultCategory]]}`} aria-live="polite">
-        <span>{t("Modellergebnis")}</span><strong>{t("BI-RADS")}{" "}{resultCategory}</strong><b>{t(result.label)}</b><small>{t("Risikorahmen der Kategorie:")}{" "}{t(result.risk)}</small><small>{resultCategory==='3'&&!(morph==='round'&&dist==='grouped')?t("Klinische Kategorie gesondert prüfen: Dieses Modellergebnis begründet keine Verlaufskontrolle."):t(result.action)}</small>
+        <span>{t("Historische Modellkategorie")}</span><strong>{resultCategory}</strong><small>{t("Klinisches Assessment gesondert: Dieser Modellwert berechnet kein individuelles Risiko und begründet weder Verlaufskontrolle noch Gewebeentnahme.")}</small>
       </div>
     </div>
     <div className={caseStyles.matrixHeading}><small>{t("Kategorien im Überblick")}</small></div>
     <div className={caseStyles.biradsMatrix}>
       <table>
         <thead><tr><th>{t("Morphologie ↓")}</th>{DISTRIBUTION.map(item=><th key={item.key} className={dist===item.key?caseStyles.axisActive:''}>{pick(item.title,lang)}</th>)}</tr></thead>
-        <tbody>{MORPH.map(item=><tr key={item.key}><th scope="row" className={morph===item.key?caseStyles.axisActive:''}>{pick(item.title,lang)}</th>{DISTRIBUTION.map(distribution=>{const value=CALC_MATRIX[item.key][distribution.key];const active=item.key===morph&&distribution.key===dist;return <td key={distribution.key} className={`${caseStyles[CALC_CLASS[value]]} ${active?caseStyles.cellActive:''}`}><button type="button" onClick={()=>selectCell(item.key,distribution.key)} aria-label={`${pick(item.title,lang)}, ${pick(distribution.title,lang)}: BI-RADS ${value}`} aria-pressed={active}><span className={caseStyles.matrixValue}>{value}</span></button></td>})}</tr>)}</tbody>
+        <tbody>{MODEL_MORPH.map(item=><tr key={item.key}><th scope="row" className={morph===item.key?caseStyles.axisActive:''}>{pick(item.title,lang)}</th>{DISTRIBUTION.map(distribution=>{const value=CALC_MATRIX[item.key][distribution.key];const active=item.key===morph&&distribution.key===dist;return <td key={distribution.key} className={`${caseStyles[CALC_CLASS[value]]} ${active?caseStyles.cellActive:''}`}><button type="button" onClick={()=>selectCell(item.key,distribution.key)} aria-label={`${pick(item.title,lang)}, ${pick(distribution.title,lang)}: BI-RADS ${value}`} aria-pressed={active}><span className={caseStyles.matrixValue}>{value}</span></button></td>})}</tr>)}</tbody>
       </table>
     </div>
-    <p className={caseStyles.biradsCaption}>{t("Matrix: vereinfachte Orientierung nach dem Scoring-Modell von Youk et al., Korean J Radiol. · Terminologie: ACR BI-RADS® Atlas, 5. Auflage. Das Studienmodell ersetzt keine klinische BI-RADS-Zuordnung; die Risikospannen sind keine individuelle Risikoberechnung.")}</p>
+    <p className={caseStyles.biradsCaption}>{t("Youk2019: retrospektives Modell aus 194 operativ entfernten, ursprünglich suspekten Läsionen; externe Prüfung an 100 weiteren exzidierten Läsionen. Der historische Prädiktor war punktförmig (punctate), nicht jede runde Verkalkung. Verlauf, Patientenmerkmale und Begleitbefunde fehlen als Eingaben. Modellkategorien ersetzen keine heutige klinische BI-RADS-Zuordnung und verordnen keine Kontrolle oder Biopsie.")}</p>
+    <p className={caseStyles.biradsCaption}>{t("Beispiel: Regionalem amorphem Kalk wird im historischen Modell die Modellkategorie 3 zugeordnet. Bei neuer benachbarter Architekturstörung muss diese gezielt abgeklärt und der Gesamtbefund neu bewertet werden. Das Modell kennt diesen Begleitbefund nicht; seine Modellkategorie 3 kann keine Sechsmonatskontrolle des Gesamtbefunds verordnen.")}</p>
     <div className={caseStyles.contextPanel}>
       <div className={caseStyles.contextPanelHead}><h4>{t("Modifikatoren")}</h4></div>
       <div className={caseStyles.contextFactorGrid}>{CALC_FACTORS.map((factor,index)=><article key={factor.key} className={caseStyles.contextFactor}><span className={caseStyles.factorIndex}>{String(index+1).padStart(2,'0')}</span><small>{t(factor.group)}</small><strong>{t(factor.title)}</strong><p style={{whiteSpace:'pre-line'}}>{t(factor.text)}</p></article>)}</div>
@@ -311,6 +369,7 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
   <Section {...GERMAN_SECTIONS[2]} title={t(GERMAN_SECTIONS[2].label.de)}>
     <p className={styles.lead}>{t("Die Morphologie beschreibt die Form der einzelnen Kalkpartikel.")}</p>
     <div className={caseStyles.morphologyArrow}><span>{t("benigne")}</span><b>{t("suspekt")}</b></div>
+    <p className={caseStyles.biradsCaption}>{t("Amorph und grob heterogen sind suspekte Deskriptoren ohne universelle feste Reihenfolge. Ihr beobachteter PPV hängt von Kohorte, Verteilung und Kontext ab; grob heterogen ist nicht typisch benigner grober Kalk.")}</p>
     <DescriptorExplorer items={MORPH} lang={lang} type="morphology"/>
     <article className={caseStyles.caseStudy}>
       <header className={caseStyles.caseHeader}><div><small>{t("RADIOPAEDIA-FALL")}</small><h3>{t("Grob heterogene Verkalkungen")}</h3></div></header>
@@ -321,7 +380,7 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
       <p className={caseStyles.caseDescription}><strong>{t("Morphologie und Lage:")}</strong>{" "}{t("Gruppierte, irreguläre und unterschiedlich große Verkalkungen, größer und dichter als amorphe Partikel, aber ohne typisch grobschollige Benignitätsmerkmale.")}</p>
       <p className={caseStyles.caseCredit}>{t("Bildbeispiel:")}{" "}<a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer">{t("Radiopaedia.org, Fall 67107 (Vollbild)")}</a>.</p>
     </article>
-    <RememberNote label={t("Merke")}><p>{t("Fein lineare/verzweigte Verkalkungen sind hochsuspekt und häufig mit DCIS assoziiert.")}</p><p>{t("Eine einzelne Gruppe runder/punktförmiger Verkalkungen ohne Voraufnahmen kann nach vollständiger diagnostischer Abklärung und ohne suspekte Zusatzmerkmale als BI-RADS 3 eingestuft werden; erste Kontrolle nach 6 Monaten. Das gilt nicht pauschal für amorphe Verkalkungen.")}</p></RememberNote>
+    <RememberNote label={t("Merke")}><p>{t("Fein lineare/verzweigte Verkalkungen sind hochsuspekt und häufig mit DCIS assoziiert.")}</p><p>{t("Eine einzelne Gruppe runder Verkalkungen (historisch auch punktförmig) ohne Voraufnahmen kann nach vollständiger diagnostischer Abklärung und ohne suspekte Zusatzmerkmale als BI-RADS 3 eingestuft werden; erste Kontrolle nach 6 Monaten. Das gilt nicht pauschal für amorphe Verkalkungen.")}</p></RememberNote>
     <p className={caseStyles.biradsCaption}>{t("Einordnung:")}{" "}<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5787219/" target="_blank" rel="noreferrer">{t("BI-RADS 3: Current and Future Use")}</a>.</p>
   </Section>
 
@@ -333,26 +392,13 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
   </Section>
 
   <Section {...GERMAN_SECTIONS[4]} title={t(GERMAN_SECTIONS[4].label.de)}>
-    <p className={styles.lead}>{t("Bei gleicher Morphologie kann eine größere Ausdehnung mit einem höheren Malignitätsrisiko einhergehen.")}</p>
-    <div className={caseStyles.extentChartCard}>
-      <p className={caseStyles.extentChartTitle}>{t("Positiv prädiktiver Wert nach Ausdehnung")}</p>
-      <div className={caseStyles.extentChart} role="img" aria-label={t("Balkendiagramm: Positiv prädiktiver Wert steigt von 0 % bei unter 5 mm Ausdehnung auf 66,7 % bei über 50 mm Ausdehnung")}>
-        <div className={caseStyles.extentAxis}><span>80 %</span><span>60 %</span><span>40 %</span><span>20 %</span><span>0 %</span></div>
-        <div className={caseStyles.extentBars}>
-          <div><b>0 %</b><i style={{height:'0%'}}></i><small>{t("<5 mm")}</small></div>
-          <div><b>13 %</b><i style={{height:'16%'}}></i><small>{t("5–10 mm")}</small></div>
-          <div><b>30,4 %</b><i style={{height:'38%'}}></i><small>{t("10–20 mm")}</small></div>
-          <div><b>47,8 %</b><i style={{height:'60%'}}></i><small>{t("20–50 mm")}</small></div>
-          <div><b>66,7 %</b><i style={{height:'83%'}}></i><small>{t(">50 mm")}</small></div>
-        </div>
-      </div>
-      <small className={caseStyles.biradsCaption}>{t("PPV in der untersuchten Biopsiekohorte, nach Gesamtausdehnung der Verkalkungen (mm).")}<br/><br/>{t("Metaxa, Healy & O’Keeffe, Br J Radiol. 2019;92:20190177.")}</small>
-    </div>
-    <RememberNote label={t("Merke")}><p>{t("Die Ausdehnung ist unabhängig von der Morphologie ein eigenständiger Risikofaktor und relevant für die Beurteilung einer möglichen DCIS-Ausdehnung sowie die Therapieplanung.")}</p></RememberNote>
+    <p className={styles.lead}>{t("Die Gesamtausdehnung beschreibt das gesamte Kalkareal, nicht den Durchmesser eines einzelnen Partikels. Sie gehört in den Befund und in die Planung einer möglichen Gewebeabklärung oder Behandlung.")}</p>
+    <p className={caseStyles.biradsCaption}>{t("Metaxa et al. untersuchten 241 biopsierte Befunde mit reinen Verkalkungen. Die beobachtete Assoziation ist kohortenabhängig und ersetzt weder die Morphologiebeurteilung noch ein klinisches Assessment.")}</p>
+    <RememberNote label={t("Merke")}><p>{t("In der untersuchten Biopsiekohorte war eine größere Gesamtausdehnung mit Malignität assoziiert. Daraus folgt kein hier belegter, von der Morphologie unabhängiger Effekt und keine individuelle Risikozahl. Die Ausdehnung in Millimetern dokumentieren; sie ist für Befundabgleich und Therapieplanung relevant.")}</p></RememberNote>
   </Section>
 
   <Section {...GERMAN_SECTIONS[5]} title={t(GERMAN_SECTIONS[5].label.de)}>
-    <p className={styles.lead}>{t("Nicht Morphologie oder Verteilung allein, sondern ihre Kombination bestimmt die klinische Risikoklasse. Dies ist der zentrale Schritt der Kalkdiagnostik.")}</p>
+    <p className={styles.lead}>{t("Morphologie und Verteilung werden zusammen mit Verlauf, Begleitbefunden und Patientenkontext bewertet. Das folgende historische Forschungsmodell illustriert zwei Deskriptoren; es legt keine klinische Kategorie oder Behandlung fest.")}</p>
     <KalkAssessment lang={lang}/>
     <div className={caseStyles.warningSigns}><header><SectionIcon id="warnung"/><div><small>{t("Gezielt beachten")}</small><h3>{t("Warnzeichen auf einen Blick")}</h3></div></header><ul><li><SectionIcon id="morphologie"/><div><b>{t("Suspekte Morphologie")}</b><p>{t("Fein pleomorph oder fein linear/verzweigt; deutliche Form- und Größenheterogenität.")}</p></div></li><li><SectionIcon id="verteilung"/><div><b>{t("Duktale Verteilung")}</b><p>{t("Lineare oder segmentale Anordnung suspekter Partikel.")}</p></div></li><li><SectionIcon id="ausdehnung"/><div><b>{t("Große Ausdehnung")}</b><p>{t("Ein ausgedehntes Kalkareal im Gesamtbefund berücksichtigen.")}</p></div></li><li><SectionIcon id="kontext"/><div><b>{t("Assoziierte Gewebeveränderung")}</b><p>{t("Begleitende Masse oder Architekturstörung.")}</p></div></li></ul></div>
     <div className={`${styles.rule} ${caseStyles.multiParagraph}`}><strong>{t("Stabilität ≠ sicher benign")}</strong><p>{t("DCIS kann langsam wachsen und über Jahre bildmorphologisch unverändert bleiben. Stabilität entkräftet eine suspekte Morphologie daher nicht.")}</p></div>
@@ -397,13 +443,13 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
       <p className={caseStyles.caseCredit}>{t("Bildbeispiel:")}{" "}<a href="https://radiopaedia.org/cases/52694/studies/58614?lang=us" target="_blank" rel="noreferrer">{t("Radiopaedia.org, Fall 52694")}</a>.</p>
     </article>
     <article className={`${caseStyles.caseStudy} ${caseStyles.exampleLayering}`}>
-      <header className={caseStyles.caseHeader}><div><small>{t("BEISPIELFALL")}</small><h3>{t("Layering: Teacup- oder Meniskuszeichen")}</h3></div></header>
+      <p className={caseStyles.biradsCaption} dir={lang==='fa'?'rtl':'ltr'}>{pick({"de":"Beschriftung des Schemas: Teetassenmodell → Mammographie. Links: Modell einer Teetasse in Aufsicht und Seitenansicht; von oben rund/unscharf, seitlich setzen sich Teeblätter am Boden als sichelförmige Schicht ab. Rechts: A · CC-Aufsicht, rund/amorph/unscharf; B · echte 90°-Seitaufnahme LM/ML, Sediment am Zystenboden mit Meniskus-/Teetassenzeichen. Die Zeichnung erläutert das Prinzip und ist kein Patientenbild.","en":"Schematic labels: teacup model → mammography. Left: a teacup model in top and side views; round/smudgy from above, while tea leaves settle at the bottom as a crescent-shaped layer from the side. Right: A · CC top view, round/amorphous/smudgy; B · true 90° LM/ML lateral view, sediment at the cyst floor with a meniscus/teacup sign. The drawing explains the principle and is not a patient image.","fa":"برچسب‌های شماتیک: مدل فنجان چای ← ماموگرافی. چپ: مدل فنجان از بالا و کنار؛ از بالا گرد/محو و از کنار برگ‌های چای در کف به‌صورت لایهٔ هلالی ته‌نشین می‌شوند. راست: A · نمای CC از بالا، گرد/آمورف/محو؛ B · نمای لترال واقعی ۹۰ درجه LM/ML، رسوب در کف کیست با علامت منیسک/فنجان. این ترسیم اصل را توضیح می‌دهد و تصویر بیمار نیست."},lang)}</p>
+      <header className={caseStyles.caseHeader}><div><small>{t("LEHRMODELL")}</small><h3>{t("Layering: Teacup- oder Meniskuszeichen")}</h3></div></header>
       <div className={caseStyles.caseGallery}>
-        <figure><a href="/mamma/mammographie/verkalkungen/layering/layering-schematic.svg" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/layering/layering-schematic.svg" alt={t("Schematische Erklärung des Layering- beziehungsweise Teacup-Zeichens")} width={1200} height={650}/></a><figcaption>{t("Schema: CC versus ML/MLO")}</figcaption></figure>
-        <figure><a href="https://www.ncbi.nlm.nih.gov/core/lw/2.0/html/tileshop_pmc/tileshop_pmc_inline.html?title=Click%20on%20image%20to%20zoom&p=PMC3&id=13266138_jksr-87-437-g006.jpg" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/layering/layering-original.png" alt={t("Originalabbildung mit amorphen oder runden Verkalkungen in CC und Meniskus- beziehungsweise Teacup-Zeichen in ML")} width={788} height={714}/></a><figcaption>{t("Originalabbildung · A: CC · B: ML/MLO")}</figcaption></figure>
+        <figure><a href="/mamma/mammographie/verkalkungen/layering/layering-schematic.svg" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/layering/layering-schematic.svg" alt={t("Schematische Erklärung des Layering- beziehungsweise Teacup-Zeichens")} width={1200} height={650}/></a><figcaption>{t("Schema: CC versus echte 90°-Seitaufnahme (LM/ML)")}</figcaption></figure>
       </div>
-      <p className={caseStyles.caseDescription}><strong>{t("Prinzip:")}</strong>{" "}{t("In der CC-Aufnahme erscheinen die Verkalkungen rundlich und unscharf. In der ML- oder MLO-Aufnahme lagern sie sich schwerkraftbedingt am Boden einer Zyste ab und bilden die typische sichelförmige Meniskus- beziehungsweise Teacup-Konfiguration. In der aktuellen BI-RADS-Terminologie wird dafür der beschreibende Begriff „Layering“ verwendet.")}</p>
-      <p className={caseStyles.caseCredit}>{t("Originalabbildung:")}{" "}<a href="https://www.ncbi.nlm.nih.gov/core/lw/2.0/html/tileshop_pmc/tileshop_pmc_inline.html?title=Click%20on%20image%20to%20zoom&p=PMC3&id=13266138_jksr-87-437-g006.jpg" target="_blank" rel="noreferrer">{t("J Korean Soc Radiol. 2025;87:437, Fig. 6")}</a>.</p>
+      <p className={caseStyles.caseDescription}><strong>{t("Prinzip:")}</strong>{" "}{t("In CC erscheinen die Sedimente oft rundlich und unscharf. Besonders in einer echten 90°-Seitaufnahme (LM/ML), gelegentlich auch in MLO, wird die schwerkraftabhängige halbmond-/teetassenartige Schichtung am Zystenboden sichtbar. Entscheidend ist der Formwechsel zwischen Projektionen. Der aktuelle Deskriptor lautet „Layering“ (historisch: Milk of Calcium).")}</p>
+      <p className={caseStyles.caseCredit}>{t("Quelle zum Layering-Prinzip:")}{" "}<a href="https://jksronline.org/search.php?code=3016JKSR&amp;id=10.3348/jksr.2026.0028&amp;vmode=FULL&amp;where=aview#F6" target="_blank" rel="noreferrer">{t("Kang BJ. J Korean Soc Radiol. 2026;87:437–459, Fig. 6. doi:10.3348/jksr.2026.0028.")}</a>.</p>
     </article>
     <article className={`${caseStyles.caseStudy} ${caseStyles.exampleCoarse}`}>
       <header className={caseStyles.caseHeader}><div><small>{t("RADIOPAEDIA-FALL")}</small><h3>{t("Grobschollige Verkalkungen")}</h3></div></header>
@@ -434,20 +480,20 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
       <div className={caseStyles.mriTableScroll}><table><caption>{t("Management bei negativer kontrastverstärkter MRT")}</caption><thead><tr><th scope="col">{t("BI-RADS")}</th><th scope="col">{t("Malignitätsrisiko vor MRT")}</th><th scope="col">{t("Einordnung")}</th></tr></thead><tbody>
         {['4A','4B','4C','5'].map(category=><tr key={category}><th scope="row"><span className={caseStyles[CALC_CLASS[category]]}>{category}</span></th><td data-label={t("Malignitätsrisiko vor MRT")}>{t(CALC_META[category].risk)}</td><td>{t("Biopsieindikation bleibt bei bestätigter mammographischer BI-RADS-Kategorie 4 oder 5 bestehen; eine negative MRT hebt sie nicht automatisch auf.")}</td></tr>)}
       </tbody></table></div>
-      <p className={caseStyles.biradsCaption}>{t("Die Metaanalyse untersuchte einen möglichen Biopsieverzicht in ausgewählten Fällen: bei reinem Mikrokalk ohne Begleitbefund bis zu einer Vortestwahrscheinlichkeit von 22 %. Sie begründet keine allgemeine 12-Monats-Kontrolle für BI-RADS 4A und keinen generellen Biopsieverzicht bei 4B. Entscheidung und gegebenenfalls angepasstes Vorgehen erfordern eine individuelle fachärztliche Bewertung.")}</p>
-      <p className={caseStyles.biradsCaption}>{t("Quellen:")}{" "}<a href="https://www.acr.org/-/media/ACR/Files/RADS/BI-RADS/Mammography-Reporting.pdf" target="_blank" rel="noreferrer">{t("ACR: Kategorien und Management")}</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/" target="_blank" rel="noreferrer">{t("Fueger et al., The Breast 2021 – Metaanalyse zur ergänzenden MRT")}</a>.</p>
+      <p className={caseStyles.biradsCaption}>{t("Fueger2021 modellierte bei reinem Mikrokalk ohne Begleitbefund eine mögliche Risikoreduktion nach negativer MRT. Die 22-%-Prätestschwelle ist ein Modellergebnis und keine Grenze zwischen 4A und 4B. Die Autoren schlugen für ausgewählte Fälle 6–12 Monate Überwachung vor; das ist kein prospektiv validiertes Biopsieersatz-Protokoll. Eine belastbare gepoolte Regel für 4A/4B/4C wurde nicht gezeigt. Bei bestätigter Kategorie 4/5 bleibt Gewebediagnostik Standard.")}</p>
+      <p className={caseStyles.biradsCaption}>{t("Quellen:")}{" "}<a href="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf" target="_blank" rel="noreferrer">{t("ACR: Kategorien und Management")}</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/" target="_blank" rel="noreferrer">{t("Fueger et al., The Breast 2021 – Metaanalyse zur ergänzenden MRT")}</a>.</p>
     </div>
   </Section>
 
   <Section {...GERMAN_SECTIONS[8]} title={t(GERMAN_SECTIONS[8].label.de)}>
     <TakeHomeList items={[
       {title:pick(L("Systematisch beurteilen","Assess systematically","ارزیابی سیستماتیک"),lang),detail:t("Vier Merkmale systematisch beurteilen: Partikelgröße, Morphologie, Verteilung und Gesamtausdehnung. Die Größe allein beweist weder Benignität noch Malignität.")},
-      {title:pick(L("Kalkdetails erkennen","Identify calcification details","تشخیص جزئیات کلسیفیکاسیون"),lang),detail:t("2D-Vergrößerungsaufnahmen zeigen die Kalkdetails; DBT ergänzt den räumlichen Kontext. Typisch benigne Formen wie Popcorn-, Rim-, sekretorische und Layering-Verkalkungen sicher erkennen.")},
+      {title:pick(L("Kalkdetails erkennen","Identify calcification details","تشخیص جزئیات کلسیفیکاسیون"),lang),detail:t("2D-Vergrößerungsaufnahmen zeigen die Kalkdetails; DBT ergänzt den räumlichen Kontext. Typisch benigne Muster wie Coarse (klassisch popcornartig), Rim, sekretorische Stäbchen und Layering sicher erkennen.")},
       {title:pick(L("Morphologie × Verteilung","Morphology × distribution","مورفولوژی × توزیع"),lang),detail:t("Morphologie und Verteilung gemeinsam bewerten: Fein pleomorpher oder fein linearer/verzweigter Kalk in linearer oder segmentaler Anordnung ist besonders suspekt.")},
       {title:pick(L("Stabilität","Stability","پایداری"),lang),detail:t("Auch langfristige Stabilität schließt DCIS bei suspekter Morphologie nicht aus.")},
       {title:pick(L("Duktaler Prozess","Ductal process","فرایند مجرایی"),lang),detail:t("Suspekter Mikrokalk kann DCIS oder ein invasives Karzinom mit intraduktaler Komponente begleiten. Das Bild beweist keine bestimmte Histologie.")},
       {title:pick(L("Ultraschall & MRT","Ultrasound & MRI","سونوگرافی و MRI"),lang),detail:t("Ultraschall hilft bei Korrelatsuche und Biopsieplanung; MRT ergänzt Gewebe- und Ausdehnungsbeurteilung. Eine negative MRT schließt DCIS nicht vollständig aus.")},
-      {title:pick(L("Individuelle Entscheidung","Individual decision","تصمیم‌گیری فردی"),lang),detail:t("Bei ausgewählten niedrig suspekten Fällen kann ein MRT-gestützter Biopsieverzicht individuell erwogen werden.")},
+      {title:pick(L("Individuelle Entscheidung","Individual decision","تصمیم‌گیری فردی"),lang),detail:t("Bei bestätigter mammographischer Kategorie 4 oder 5 bleibt Gewebediagnostik Standard. MRT-gestützter Biopsieverzicht ist eine begrenzte Forschungsfrage; negative MRT allein verordnet keine Herabstufung oder Verlaufskontrolle.")},
     ]}/>
   </Section>
 </>}
@@ -516,7 +562,7 @@ export default function Page(){
     sources={<LessonSources
       title={pick(L('Quellen','Sources','منابع'),lang)}
       items={references}
-      note={pick(L('Zuletzt fachlich geprüft: September 2026 · Die Literatur ergänzt die lokale klinische Leitlinie und ersetzt keine individuelle Befundentscheidung.','Last clinically reviewed: September 2026 · These references complement local clinical guidelines and do not replace individualized assessment.','آخرین بازبینی علمی: سپتامبر ۲۰۲۶ · این منابع مکمل راهنمای بالینی محلی هستند و جایگزین تصمیم‌گیری فردی نمی‌شوند.'),lang)}
+      note={pick(L('Redaktion und Quellen aktualisiert: 25. Oktober 2026 · Fachliche Freigabe durch Dr. Zia ausstehend.','Editorial and source update: 25 October 2026 · Clinical approval by Dr. Zia pending.','به‌روزرسانی تحریری و منابع: ۲۵ اکتبر ۲۰۲۶ · تأیید علمی Dr. Zia در انتظار است.'),lang)}
     />}
   >
     <LessonContent lang={lang}/>

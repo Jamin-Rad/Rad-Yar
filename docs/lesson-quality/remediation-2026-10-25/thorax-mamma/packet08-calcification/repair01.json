@@ -1,0 +1,125 @@
+{
+  "date": "2026-10-25",
+  "cycle": 1,
+  "status": "AUTHOR_REPAIR01_READY_INDEPENDENT_RETEST",
+  "findingScope": [
+    "Model category versus raw Youk score (no numerical raw-score claim introduced)",
+    "Neutral MRI4B competing statistic and conditional-probability feedback",
+    "German card03 grammar",
+    "Reproducible AUR physical23/24 anchor; actual medical text unchanged"
+  ],
+  "textFields": [
+    {
+      "path": "canonical.modifiers-not-score.question.de",
+      "currentBefore": "Textfall: Eine regionale amorphe Kalkverteilung erhält in einem historischen Morphologie-Verteilungsmodell den Wert 3. Zusätzlich zeigt sich eine neue benachbarte Architekturstörung. Welcher nächste Schritt ist am besten begründet?",
+      "after": "Textfall: Einer regionalen amorphen Kalkverteilung wird in einem historischen Morphologie-Verteilungsmodell die Modellkategorie 3 zugeordnet. Zusätzlich zeigt sich eine neue benachbarte Architekturstörung. Welcher nächste Schritt ist am besten begründet?"
+    },
+    {
+      "path": "canonical.modifiers-not-score.question.en",
+      "currentBefore": "Text vignette: Regional amorphous calcifications receive a value of 3 in a historical morphology-distribution model. A new adjacent architectural distortion is also present. Which next step is best justified?",
+      "after": "Text vignette: Regional amorphous calcifications are assigned model category 3 in a historical morphology-distribution model. A new adjacent architectural distortion is also present. Which next step is best justified?"
+    },
+    {
+      "path": "canonical.modifiers-not-score.question.fa",
+      "currentBefore": "سناریوی متنی: کلسیفیکاسیون آمورف ناحیه‌ای در مدل تاریخی مورفولوژی‌ـ‌توزیع مقدار ۳ می‌گیرد. دیستورشن معماری جدیدی نیز در مجاورت آن دیده می‌شود. کدام گام بعدی موجه‌تر است؟",
+      "after": "سناریوی متنی: کلسیفیکاسیون آمورف ناحیه‌ای در مدل تاریخی مورفولوژی‌ـ‌توزیع در دستهٔ مدل ۳ قرار می‌گیرد. دیستورشن معماری جدیدی نیز در مجاورت آن دیده می‌شود. کدام گام بعدی موجه‌تر است؟"
+    },
+    {
+      "path": "canonical.modifiers-not-score.explanation.de",
+      "currentBefore": "Das historische Youk-Modell wurde aus ausgewählten Exzisionskohorten entwickelt und enthält weder Zeitverlauf noch Patientenmerkmale oder die neue Architekturstörung. Sein Wert 3 kann deshalb keine Verlaufskontrolle dieses Gesamtbefunds verordnen. Zuerst die zusätzliche Veränderung diagnostisch klären; das klinische Assessment folgt dem Gesamtbefund.",
+      "after": "Das historische Youk-Modell wurde aus ausgewählten Exzisionskohorten entwickelt und enthält weder Zeitverlauf noch Patientenmerkmale oder die neue Architekturstörung. Seine Modellkategorie 3 kann deshalb keine Verlaufskontrolle dieses Gesamtbefunds verordnen. Zuerst die zusätzliche Veränderung diagnostisch klären; das klinische Assessment folgt dem Gesamtbefund."
+    },
+    {
+      "path": "canonical.modifiers-not-score.explanation.en",
+      "currentBefore": "The historical Youk model was developed in selected excision cohorts and contains neither temporal change, patient factors nor the new distortion. Its value of 3 cannot prescribe surveillance for this overall finding. First investigate the additional change; clinical assessment follows the complete findings.",
+      "after": "The historical Youk model was developed in selected excision cohorts and contains neither temporal change, patient factors nor the new distortion. Its model category 3 cannot prescribe surveillance for this overall finding. First investigate the additional change; clinical assessment follows the complete findings."
+    },
+    {
+      "path": "canonical.modifiers-not-score.explanation.fa",
+      "currentBefore": "مدل تاریخی Youk از کوهورت‌های منتخب جراحی ساخته شده و نه تغییرات زمانی، نه عوامل بیمار و نه دیستورشن جدید را در بر دارد. بنابراین مقدار ۳ آن نمی‌تواند پیگیری این مجموعهٔ یافته‌ها را تجویز کند. ابتدا تغییر همراه بررسی تشخیصی شود؛ ارزیابی بالینی بر کل یافته‌ها استوار است.",
+      "after": "مدل تاریخی Youk از کوهورت‌های منتخب جراحی ساخته شده و نه تغییرات زمانی، نه عوامل بیمار و نه دیستورشن جدید را در بر دارد. بنابراین دستهٔ مدل ۳ نمی‌تواند پیگیری این مجموعهٔ یافته‌ها را تجویز کند. ابتدا تغییر همراه بررسی تشخیصی شود؛ ارزیابی بالینی بر کل یافته‌ها استوار است."
+    },
+    {
+      "path": "canonical.modifiers-not-score.wrong.A.de",
+      "currentBefore": "Der Modellwert berücksichtigt die neue Gewebeveränderung nicht. Eine wahrscheinlich benigne Verlaufsempfehlung setzt eine abgeschlossene, passende diagnostische Gesamtbewertung voraus.",
+      "after": "Die Modellkategorie berücksichtigt die neue Gewebeveränderung nicht. Eine wahrscheinlich benigne Verlaufsempfehlung setzt eine abgeschlossene, passende diagnostische Gesamtbewertung voraus."
+    },
+    {
+      "path": "canonical.modifiers-not-score.wrong.A.en",
+      "currentBefore": "The model value does not account for the new tissue change. Probably benign surveillance requires a completed, appropriate overall diagnostic assessment.",
+      "after": "The model category does not account for the new tissue change. Probably benign surveillance requires a completed, appropriate overall diagnostic assessment."
+    },
+    {
+      "path": "canonical.modifiers-not-score.wrong.A.fa",
+      "currentBefore": "مقدار مدل تغییر بافتی جدید را لحاظ نمی‌کند. پیگیری یافتهٔ احتمالاً خوش‌خیم نیازمند ارزیابی تشخیصی کلی کامل و مناسب است.",
+      "after": "دستهٔ مدل تغییر بافتی جدید را لحاظ نمی‌کند. پیگیری یافتهٔ احتمالاً خوش‌خیم نیازمند ارزیابی تشخیصی کلی کامل و مناسب است."
+    },
+    {
+      "path": "canonical.mri-4b-risk.options.3.de",
+      "currentBefore": "Durchschnittliches Risiko aller BI-RADS 4-Befunde ohne Berücksichtigung der MRT-Testleistung",
+      "after": "In einer Vergleichsstudie beobachtete Falsch-negativ-Rate der MRT bei malignen Läsionen"
+    },
+    {
+      "path": "canonical.mri-4b-risk.options.3.en",
+      "currentBefore": "Average risk of all BI-RADS 4 findings without accounting for MRI test performance",
+      "after": "The MRI false-negative rate among malignant lesions in a comparator study"
+    },
+    {
+      "path": "canonical.mri-4b-risk.options.3.fa",
+      "currentBefore": "خطر متوسط همهٔ یافته‌های BI-RADS 4 بدون درنظرگرفتن عملکرد MRI",
+      "after": "نرخ منفی کاذب MRI در ضایعات بدخیم یک مطالعهٔ مقایسه‌ای"
+    },
+    {
+      "path": "canonical.mri-4b-risk.wrong.D.de",
+      "currentBefore": "Ein gemitteltes Kategorie 4-Risiko ignoriert sowohl die konkrete Ausgangssituation als auch die Information des Tests.",
+      "after": "Die Falsch-negativ-Rate bezieht sich auf maligne Läsionen. Sie ist nicht mit dem Malignitätsrisiko unter allen MRT-negativen Befunden gleichzusetzen."
+    },
+    {
+      "path": "canonical.mri-4b-risk.wrong.D.en",
+      "currentBefore": "An average category 4 risk ignores both the specific baseline situation and test information.",
+      "after": "The false-negative rate is conditional on lesions being malignant. It is not the malignancy risk among all MRI-negative findings."
+    },
+    {
+      "path": "canonical.mri-4b-risk.wrong.D.fa",
+      "currentBefore": "خطر متوسط دستهٔ ۴ هم وضعیت پایهٔ مشخص و هم اطلاعات آزمون را نادیده می‌گیرد.",
+      "after": "نرخ منفی کاذب مربوط به ضایعات بدخیم است. این نرخ با خطر بدخیمی در میان همهٔ یافته‌های MRI منفی یکسان نیست."
+    },
+    {
+      "path": "card.mammographie-mikrokalk-03.answer.de",
+      "currentBefore": "Typischerweise für ein involutierendes Fibroadenom.",
+      "after": "Ein involutierendes Fibroadenom."
+    },
+    {
+      "path": "lesson.workedExample.de",
+      "currentBefore": "Beispiel: Regionaler amorpher Kalk ergibt im historischen Modell 3. Bei neuer benachbarter Architekturstörung muss diese gezielt abgeklärt und der Gesamtbefund neu bewertet werden. Das Modell kennt diesen Begleitbefund nicht; sein Wert 3 kann keine Sechsmonatskontrolle des Gesamtbefunds verordnen.",
+      "after": "Beispiel: Regionalem amorphem Kalk wird im historischen Modell die Modellkategorie 3 zugeordnet. Bei neuer benachbarter Architekturstörung muss diese gezielt abgeklärt und der Gesamtbefund neu bewertet werden. Das Modell kennt diesen Begleitbefund nicht; seine Modellkategorie 3 kann keine Sechsmonatskontrolle des Gesamtbefunds verordnen."
+    },
+    {
+      "path": "lesson.workedExample.en",
+      "currentBefore": "Example: regional amorphous calcifications yield 3 in the historical model. New adjacent architectural distortion requires targeted investigation and reassessment of the whole finding. The model does not include this associated finding; its value of 3 cannot prescribe six-month surveillance for the overall finding.",
+      "after": "Example: Regional amorphous calcifications are assigned model category 3 in the historical model. A new adjacent architectural distortion requires targeted work-up and reassessment of the overall findings. The model has no input for that associated finding; its model category 3 cannot prescribe six-month surveillance of the whole finding."
+    },
+    {
+      "path": "lesson.workedExample.fa",
+      "currentBefore": "مثال: کلسیفیکاسیون آمورف ناحیه‌ای در مدل تاریخی مقدار ۳ می‌گیرد. دیستورشن معماری جدید در مجاورت آن نیازمند بررسی هدفمند و ارزیابی مجدد کل یافته‌هاست. مدل این یافتهٔ همراه را در بر ندارد؛ مقدار ۳ آن نمی‌تواند پیگیری شش‌ماههٔ مجموعهٔ یافته‌ها را تجویز کند.",
+      "after": "مثال: کلسیفیکاسیون آمورف ناحیه‌ای در مدل تاریخی در دستهٔ مدل ۳ قرار می‌گیرد. دیستورشن معماری جدید مجاور باید هدفمند بررسی و کل یافته‌ها دوباره ارزیابی شوند. مدل این یافتهٔ همراه را ورودی نمی‌گیرد؛ دستهٔ مدل ۳ نمی‌تواند پیگیری شش‌ماههٔ کل یافته را تجویز کند."
+    }
+  ],
+  "sourceClarification": {
+    "url": "https://www.aur.org/assets/Affinity_Groups/ACER/Educator-Resources/How-to-Page/How%20to%20Approach%20Breast%20Ultrasoundaa5a.pdf",
+    "physicalPages": [
+      23,
+      24
+    ],
+    "read": "Actual25-page PDF text at zero-index22/23; two calcification slides present. Screenshot response lacked inspectable pixels.",
+    "USCardChanged": false
+  },
+  "beforeCanonicalHash": "1171842069a5b12eb05a0cfce7705a5a5fa9ea70a150edc4c662f8df9be831ca",
+  "afterCanonicalHash": "d1846e6002d787ce159a39ddd4f06058970a7ad5540e3a366cebd16c21d48e1d",
+  "frozenFiles": [
+    "data/assessmentQuality/mammaCalcClinicalDraft.js",
+    "data/mammaMammographyCalcifications.js",
+    "app/mamma/bildgebung/mammographie/verkalkungen/page.js",
+    "app/mamma/bildgebung/mammographie/verkalkungen/translations.js"
+  ]
+}

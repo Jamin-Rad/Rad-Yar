@@ -13,9 +13,9 @@ export const BENIGN=[
 ]
 export const MORPH=[
   {key:'round',title:L('Rund','Round','گرد'),risk:L('niedrig','low','پایین'),text:L('Glatt konturiert; diffus typischerweise benign.','Smoothly marginated; diffuse distribution is typically benign.','حاشیه صاف؛ در توزیع منتشر معمولاً خوش‌خیم.')},
-  {key:'amorph',title:L('Amorph','Amorphous','آمورف'),risk:L('niedrig–moderat','low–moderate','پایین–متوسط'),text:L('Sehr klein und unscharf definiert; Verteilung besonders wichtig.','Very small and indistinctly defined; distribution is especially important.','بسیار کوچک و نامشخص؛ توزیع اهمیت ویژه دارد.')},
-  {key:'coarse',title:L('Grob heterogen','Coarse heterogeneous','درشت ناهمگون'),risk:L('moderat','moderate','متوسط'),text:L('Irregulär, größer als amorph, aber kleiner als grobschollig.','Irregular, larger than amorphous but smaller than coarse benign calcifications.','نامنظم، بزرگ‌تر از آمورف و کوچک‌تر از کلسیفیکاسیون درشت خوش‌خیم.')},
-  {key:'pleomorphic',title:L('Fein pleomorph','Fine pleomorphic','ظریف پلئومورفیک'),risk:L('moderat–hoch','moderate–high','متوسط–بالا'),text:L('Feine Partikel unterschiedlicher Form und Größe.','Fine particles with varying shapes and sizes.','ذرات ظریف با شکل و اندازه متفاوت.')},
+  {key:'amorph',title:L('Amorph','Amorphous','آمورف'),risk:L('Suspekter Deskriptor','Suspicious descriptor','اصطلاح مشکوک'),text:L('Sehr klein und unscharf definiert; Verteilung besonders wichtig.','Very small and indistinctly defined; distribution is especially important.','بسیار کوچک و نامشخص؛ توزیع اهمیت ویژه دارد.')},
+  {key:'coarse',title:L('Grob heterogen','Coarse heterogeneous','درشت ناهمگون'),risk:L('Suspekter Deskriptor','Suspicious descriptor','اصطلاح مشکوک'),text:L('Irregulär, größer als amorph, aber kleiner als grobschollig.','Irregular, larger than amorphous but smaller than coarse benign calcifications.','نامنظم، بزرگ‌تر از آمورف و کوچک‌تر از کلسیفیکاسیون درشت خوش‌خیم.')},
+  {key:'pleomorphic',title:L('Fein pleomorph','Fine pleomorphic','ظریف پلئومورفیک'),risk:L('Suspekter Deskriptor','Suspicious descriptor','اصطلاح مشکوک'),text:L('Feine Partikel unterschiedlicher Form und Größe.','Fine particles with varying shapes and sizes.','ذرات ظریف با شکل و اندازه متفاوت.')},
   {key:'linear',title:L('Fein linear / verzweigt','Fine linear / branching','ظریف خطی / شاخه‌دار'),risk:L('hoch','high','بالا'),text:L('Fein, irregulär und gangähnlich; höchste Suspektheit.','Fine, irregular and duct-like; highest suspicion.','ظریف، نامنظم و شبیه مجرا؛ بیشترین میزان شک.')},
 ]
 export const DISTRIBUTION=[

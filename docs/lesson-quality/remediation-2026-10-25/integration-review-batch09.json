@@ -1,0 +1,129 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/brain_original_pools_next",
+  "status": "PASS_BOUNDED_TECHNICAL_INTEGRATION09",
+  "scope": "Exact SAB spacing, accepted originalSAB4goals, seventh publisher module and accepted3ATVroutes; no clinical acceptance of unrelated working-tree objects.",
+  "sabSpacing": {
+    "exactDiff": "questions.de.0.options.1.text nach24 -> nach 24",
+    "allOtherQuestionCardLessonTopicPayloadsUnchanged": true,
+    "routeUnchanged": true,
+    "actual26GlobalObjectsEqual": true,
+    "dataHash": "b22fa0ea60b76e1080a4bb1738852b457a0f7299738fdbf938729671499a4e57",
+    "questionsHashes": {
+      "de": "0fa150609748afbcf03b824e3df1aaf1408c4261d0d876f46f282f370e9e6b0c",
+      "en": "a7a90ed30fb5deb969801b1b966b94a98684302b6191490f61a8da3918e6c8fa",
+      "fa": "50d16b2e80089faeefec0e24b85af746e883d39f6629ad89c26f32e75577c394"
+    },
+    "cardsHash": "5b8d14b83845aacf7ceaf03ac9a5f63dfde7b23a7392c2b7e39e4914a4d7d887",
+    "lessonHash": "f7381375ce38ee7f4ce5d1882306979eefc38dcdee759c0c9bed191bd76bf18e"
+  },
+  "originalCoverage": {
+    "routes": 1,
+    "goals": 4,
+    "exactAcceptedManifestMatch": true
+  },
+  "publisher": {
+    "modules": 7,
+    "atvLiverNewQuestions": 0,
+    "atvLiverNewCards": 0,
+    "supplementalQuestionsPerLanguage": 88,
+    "supplementalCards": 88,
+    "routeMaps": 73,
+    "explicitGoalQuestionRefs": 399,
+    "reconstructedSnapshotDeepEqual": true,
+    "allowlistFiltersOriginalCoverage": true,
+    "newSupplementaryLiRadsOrSabIds": false,
+    "duplicateRouteGuard": {
+      "status": "PASS",
+      "source": "if(routeCoverage.length!==wantedRoutes.size || new Set(routeCoverage.map(r=>r.route)).size!==wantedRoutes.size)throw Error('Reviewed route coverage missing or duplicated')",
+      "sensitivity": "Actual length+unique-size expression checked. Complete2route set accepted;duplicate3row set andmissing1row set rejected."
+    }
+  },
+  "maintainedTests": {
+    "execution": "In-memory esbuild harness, write:false; no app build/server. Direct native Node initially unsupported extensionless directory imports; no source/config workaround applied.",
+    "results": [
+      "test-atv-liver-reviewed:94payloads+actualinline PASS",
+      "test-reviewed-assessment-packets:reviewedIDs/payloads/refs PASS",
+      "test-reviewed-assessment-route-goals:399reachable refs/counts/locales PASS"
+    ]
+  },
+  "hashes": {
+    "data/sab.js": "b22fa0ea60b76e1080a4bb1738852b457a0f7299738fdbf938729671499a4e57",
+    "app/gehirn/vaskulaer/subarachnoidalblutung/SubarachnoidLesson.jsx": "bd59f8ff081032d011f47cdbd95cbeefb35e0c5a17f9cef4690745e8914eb3df",
+    "data/assessmentQuality/originalPoolCoverage.json": "2c716d8eff77d437f7889052c833d38bb467ac0d3f494c783bc613233815a824",
+    "data/assessmentQuality/publishedBank.json": "9e50d8a2506b8adcb9e86b224d8a0b602c13299efb82d6d0095923806f5432d6",
+    "data/assessmentQuality/reviewedPackets.json": "75d6d4064ba1b7c0b18f0cecb6fffba0cea3531cb7e3f91ac113e24e61296549",
+    "scripts/publish-reviewed-assessment-packets.mjs": "eab54ec797fcdf8ed75ac01ba5d3186456f61aa357d7f1125a88f0eff5c3b99c",
+    "scripts/test-atv-liver-reviewed.mjs": "cdfbcf17656d87df066735db9492383a3e3654ff13eb08ba22f1308ac55d2b0c"
+  },
+  "limits": [
+    "No Git/index984 or unrelated985workingobjects audit; no implicit acceptance of unreviewed bronchiolitis.",
+    "No browser/media/Dr.Zia/publication approval."
+  ],
+  "additionalFigure2PixelInspection": {
+    "date": "2026-10-25",
+    "reviewer": "/root/brain_original_pools_next",
+    "status": "PASS_ACTUAL_IMAGE_VIEWED",
+    "source": "https://icu.smhs.gwu.edu/sites/g/files/zaskib1161/files/2025-01/2023_aha_sah_guidelines.pdf",
+    "physicalPage": 10,
+    "printedPage": "e323",
+    "figure": "Figure2",
+    "files": {
+      "tmp/assessment-quality/sab-aha2023-original.pdf": "c823452a0b7958a6546a8e2fa6d56ce981b8404add40911747f9c1181cdd7bab",
+      "tmp/assessment-quality/sab-aha2023-figure-10.png": "34c9b89d2293428bd55972950855689396f7f6869de70906b290b8c2ca1f0f7b"
+    },
+    "observed": "Actual image visibly shows >=6hours OR new neurological deficit -> noncontrast headCT -> SAH Dx NO -> LumbarPuncture Class1. Left branch <6hours AND no new neurological deficit -> CT -> noSAH -> work-up at physician discretion. Supports accepted repaired pathway.",
+    "historicalNote": "Later additional actual pixel reading. Earlier unavailable-screenshot records remain accurate for their time; this entry closes the Figure2pixel limitation prospectively. No full57page or allpatientmedia approval."
+  },
+  "additionalOriginalAdmissions": {
+    "date": "2026-10-25",
+    "status": "PASS_BOUNDED_TECHNICAL_ADMISSION",
+    "maps": [
+      {
+        "route": "/mamma/bildgebung/mammographie/verkalkungen",
+        "topicId": "mammographie-mikrokalk",
+        "goals": 4,
+        "questionConcepts": 18,
+        "cards": 22,
+        "title": {
+          "de": "Mammographie: Verkalkungen",
+          "en": "Mammography: Calcifications",
+          "fa": "ماموگرافی: کلسیفیکاسیون‌ها"
+        },
+        "deck": "/flashcards/mammographie-mikrokalk",
+        "exactAcceptedGoalPayload": true
+      },
+      {
+        "route": "/thorax/bronchiolitis",
+        "topicId": "bronchiolitis",
+        "goals": 3,
+        "questionConcepts": 3,
+        "cards": 3,
+        "title": {
+          "de": "Bronchiolitis",
+          "en": "Bronchiolitis",
+          "fa": "برونشیولیت"
+        },
+        "deck": "/flashcards/bronchiolitis",
+        "exactAcceptedGoalPayload": true
+      }
+    ],
+    "snapshot": {
+      "supplementalQuestionsPerLanguage": 88,
+      "supplementalCards": 88,
+      "routeMaps": 75,
+      "explicitGoalQuestionRefs": 420,
+      "noNewSupplementaryIds": true
+    },
+    "acceptedSourceHashesMatch": true,
+    "calcAll54Questions22CardPayloadsMatchAcceptedAfter": true,
+    "bronchiolitisAllLocaleIdsAndCardsResolve": true,
+    "maintainedTests": "All3read-only maintainedtests PASS via in-memorywrite:false harness;399->420refs verified.",
+    "currentHashes": {
+      "data/assessmentQuality/originalPoolCoverage.json": "802eb9dc9f6148e3023c474cd6f8e4d6c70e6ea72c03db9fa98f2e7981e45eb7",
+      "data/assessmentQuality/publishedBank.json": "dec5a96c02a2d99fb9962b1734f73ffd3409124da0fd893fecb9d68491419c22",
+      "data/assessmentQuality/reviewedPackets.json": "d9ed4ccaf21595a6f772e64d8252170ee1c3d6a7a1342e34254b0172e43d99b2"
+    },
+    "limits": "Admission/actualpayload technicalclosure only; full content acceptance belongs to independent reviews cited by each route. No build/browser/Git performed."
+  }
+}

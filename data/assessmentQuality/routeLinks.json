@@ -544,6 +544,30 @@
       "cardTopic": "pankreatitis",
       "subject": "abdomen"
     },
+    "/abdomen/leber/haemangiom": {
+      "topicIds": [
+        "haemangiom"
+      ],
+      "questionCount": 8,
+      "cardTopic": "haemangiom",
+      "subject": "abdomen"
+    },
+    "/abdomen/leber/hcc": {
+      "topicIds": [
+        "hcc"
+      ],
+      "questionCount": 10,
+      "cardTopic": "hcc",
+      "subject": "abdomen"
+    },
+    "/abdomen/leber/li-rads": {
+      "topicIds": [
+        "li-rads"
+      ],
+      "questionCount": 5,
+      "cardTopic": "li-rads",
+      "subject": "abdomen"
+    },
     "/mamma/bildgebung/mrt/basics": {
       "topicIds": [
         "mamma-mrt-basics"
@@ -559,6 +583,30 @@
       "questionCount": 10,
       "cardTopic": "mammographie-grundlagen",
       "subject": "mamma"
+    },
+    "/gehirn/vaskulaer/subarachnoidalblutung": {
+      "topicIds": [
+        "subarachnoidalblutung"
+      ],
+      "questionCount": 6,
+      "cardTopic": "subarachnoidalblutung",
+      "subject": "gehirn"
+    },
+    "/mamma/bildgebung/mammographie/verkalkungen": {
+      "topicIds": [
+        "mammographie-mikrokalk"
+      ],
+      "questionCount": 18,
+      "cardTopic": "mammographie-mikrokalk",
+      "subject": "mamma"
+    },
+    "/thorax/bronchiolitis": {
+      "topicIds": [
+        "bronchiolitis"
+      ],
+      "questionCount": 3,
+      "cardTopic": "bronchiolitis",
+      "subject": "thorax"
     }
   },
   "counts": {
@@ -712,7 +760,7 @@
     "atelektase": 1,
     "lch-lunge": 2,
     "mukoviszidose": 2,
-    "bronchiolitis": 2,
+    "bronchiolitis": 3,
     "hypersensitivitaetspneumonitis": 2,
     "pneumonie-muster": 1,
     "bakterielle-pneumonie": 1,
@@ -842,7 +890,7 @@
     "ulkuserkrankung": 3,
     "duodenaldivertikel": 2,
     "fibrolamellaeres-karzinom": 2,
-    "li-rads": 2,
+    "li-rads": 5,
     "fornixruptur": 2,
     "pylorusstenose": 3,
     "pmc-kolitis": 2,

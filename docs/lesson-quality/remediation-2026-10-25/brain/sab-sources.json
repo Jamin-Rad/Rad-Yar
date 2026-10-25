@@ -1,0 +1,76 @@
+{
+  "dateReviewed": "2026-10-25",
+  "sources": [
+    {
+      "id": "PDF15-17",
+      "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf",
+      "physicalPages": [
+        15,
+        16,
+        17
+      ],
+      "printedPages": [
+        14,
+        15,
+        16
+      ],
+      "read": "All3actualPNGpages visually seen this coauthor turn, including originalFisher I–IV table, CTdistribution/FLAIR/CTA/LP, complications/therapy.",
+      "evidence": "tmp/assessment-quality/brain-next-pdf/sab-{15,16,17}.png",
+      "conflicts": [
+        "OriginalFisher I–IV not Modified0–4",
+        "Blanket24hCT sensitivity/edema excludesSAB/FLAIR highestsensitivity not adopted over current qualified CT/LP pathway",
+        "Venousperimesencephalic cause not proven from pattern",
+        "Rigid24–48h securing and nimodipine as mere vasospasm prophylaxis superseded by guidelineprefer24hfromonset/DCIfunctionaloutcomes"
+      ],
+      "limits": "No fullPDF/mediareuse/patientcase approval."
+    },
+    {
+      "id": "Hoh2023",
+      "url": "https://doi.org/10.1161/STR.0000000000000436",
+      "actualReadURL": "https://emergencymed.org.il/wp-content/uploads/2023/06/2023-Guideline-for-the-Management-of-Patients-With-Aneurysmal-Subarachnoid-Hemorrhage-A-Guideline-From-the-American-Heart-AssociationAmerican-Stroke-Association.pdf",
+      "read": "Fresh original diagnostic recommendations and supportive text physical9–11/e322–324; DCI definition/monitoring physical25/e338; management26–28; timing physical14/e327 andtop10. No full57page claim.",
+      "supports": [
+        "q1 CT<6h/highquality/expert/no newdeficit; >6h/newdeficit CTthenLP and atypicalpresentationlimits",
+        "q4 perimesencephalic CTAalone vsDSA equipoise distinct fromhighaneurysmconcern negativeCTA→DSA",
+        "q5 clinicalDCI sustainednewdeficit afterothercauses excluded, notimmediatepostocclusion, often4–14days; CTAproximalspasmabsence not sufficient to ruleout",
+        "cards4–8 diagnostic/complications/warningheadache scope",
+        "prompt/prefer24hsecuring fromonset, earlyenteralnimodipine DCI/functionalbenefit; no prophylactichypervolaemia/augmentation"
+      ],
+      "limits": "No new dosage/BPtarget, no new image-case claims, no recertification of every retained epidemiological/protocol sentence."
+    },
+    {
+      "id": "Frontera2006",
+      "url": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B",
+      "actualReadURL": "https://cmp-manual.wbs.cz/skaly/prediction_of_symptomatic_vasospasm_after_subarachnoid_hemorrhage_-_the_modified_fisher_scale.pdf",
+      "read": "Actual original7pagePDF abstract, MethodsCTdefinitions/Table1/excerpts/outcome definition and results freshly read as text. Methods specify qualitative thin/thick; no specified1mmboundary. Table1includes noSAH+IVH→2. Screenshottool exposed citation only, not usablepixels; no primaryfigurepixelreview claimed.",
+      "supports": [
+        "q2/q3 andcards1–3 gradeassignment thin/thick+IVH",
+        "selected1355placebo-arm tirilazadcohorts; symptomaticvasospasm outcome, grades2/3 similarcrudeOR, notindividualprognosis"
+      ],
+      "limits": "No individualpercentages, no universallylineargradeprobability, no numericborderline1mm assessment; originalstudyoutcomedefinition not presented as modernDCI."
+    },
+    {
+      "id": "Claassen2001",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11546890/",
+      "doi": "https://doi.org/10.1161/hs0901.095677",
+      "read": "Fresh complete primaryabstract:276patients, cisternalclot completelyfillingcistern/fissure andbilaterallateralventricularblood additiveDCIpredictors. Originalfullbody notclaimed.",
+      "supports": [
+        "historicalbasis distinct fromFrontera2006evaluation",
+        "bloodburdenplusIVH rationale"
+      ],
+      "limits": "Do not silently merge originalstudybilateralIVH predictor with every simplified latergrade rule; no newlyadopted clinicalthresholds."
+    },
+    {
+      "id": "vanDerJagt1999",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9921845/",
+      "doi": "https://doi.org/10.1212/WNL.52.1.34",
+      "read": "Fresh complete PubMed originalabstract plus publisherabstract:168consecutivepatients CTwithin72h, ACA/ACoAclue andlimitedoverallagreement; onlysingle/noaneurysm cohort.",
+      "supports": [
+        "q6 anteriorinterhemispheric clue togetherwith userPDFphysical16",
+        "CTdistributionguides completeCTAsearch, notproof of culpritaneurysm"
+      ],
+      "limits": "No fullpaywalledbody, no new predictionpercentages, no claimthat cohortvalidated multipleaneurysmculpritselection; caution especially multipleaneurysms retained."
+    }
+  ],
+  "scope": "Bounded original6MCQ/8card assessment and changed teaching/sourceclarity. Author-source verification, independentreview pending."
+}

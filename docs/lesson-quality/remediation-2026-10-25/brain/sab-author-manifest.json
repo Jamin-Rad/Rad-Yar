@@ -1,0 +1,145 @@
+{
+  "date": "2026-10-25",
+  "status": "COAUTHOR_COMPLETE_FULL_ORIGINAL_POOL_PEER_REVIEW_PENDING",
+  "route": "/gehirn/vaskulaer/subarachnoidalblutung",
+  "productionFiles": [
+    "data/sab.js",
+    "app/gehirn/vaskulaer/subarachnoidalblutung/SubarachnoidLesson.jsx"
+  ],
+  "sourceHashes": {
+    "data/sab.js": "d0592e8645e7b641c789497e9a5e314c7a2c7f138ff0827f3ab00f492c9a497e",
+    "app/gehirn/vaskulaer/subarachnoidalblutung/SubarachnoidLesson.jsx": "bd59f8ff081032d011f47cdbd95cbeefb35e0c5a17f9cef4690745e8914eb3df"
+  },
+  "scope": {
+    "originalQuestionsPerLanguage": 6,
+    "currentQuestionsPerLanguage": 6,
+    "localizedQuestionObjects": 18,
+    "originalCards": 8,
+    "currentCardTriads": 8,
+    "newItems": 0,
+    "allFieldsManuallyRead": [
+      "DE/EN/FA stems,all4choices,keys,correctfeedback,all3specificwrongfeedbacks",
+      "8card front/back/explanation/diagram/source triads",
+      "all current clinical lesson text DE/EN/FA read; fresh primary adjudication is limited to assessment/changed rule anchors"
+    ],
+    "pdfPhysicalPagesVisuallyRead": [
+      15,
+      16,
+      17
+    ]
+  },
+  "learningGoals": [
+    {
+      "id": "negative-ct",
+      "text": {
+        "de": "Nach negativem CT den weiteren Weg aus Zeitfenster, Neurostatus und CT-Qualität ableiten.",
+        "en": "Choose the negative-CT pathway using timing, neurological status and CT quality.",
+        "fa": "مسیر پس از CT منفی را بر پایهٔ زمان، وضعیت عصبی و کیفیت CT انتخاب کنید."
+      },
+      "questionIds": [
+        "sab-q1"
+      ],
+      "cardIds": [
+        "sab-fc-4",
+        "sab-fc-7",
+        "sab-fc-8"
+      ]
+    },
+    {
+      "id": "modified-fisher",
+      "text": {
+        "de": "Modified-Fisher-Grade aus Blutdicke und IVH zuordnen und von der Originalskala unterscheiden.",
+        "en": "Assign modified Fisher grades from blood thickness and IVH and distinguish the original scale.",
+        "fa": "درجات فیشر اصلاح‌شده را از ضخامت خون و IVH تعیین و از مقیاس اصلی تفکیک کنید."
+      },
+      "questionIds": [
+        "sab-q2",
+        "sab-q3"
+      ],
+      "cardIds": [
+        "sab-fc-1",
+        "sab-fc-2",
+        "sab-fc-3"
+      ]
+    },
+    {
+      "id": "vascular-source",
+      "text": {
+        "de": "Blutverteilung als Suchhinweis nutzen und die kontextabhängige CTA-/DSA-Abklärung begründen.",
+        "en": "Use blood distribution as a search clue and justify context-dependent CTA/DSA work-up.",
+        "fa": "توزیع خون را سرنخ جست‌وجو بدانید و بررسی CTA/DSA متناسب با زمینه را توضیح دهید."
+      },
+      "questionIds": [
+        "sab-q4",
+        "sab-q6"
+      ],
+      "cardIds": [
+        "sab-fc-5"
+      ]
+    },
+    {
+      "id": "dci-deterioration",
+      "text": {
+        "de": "Verzögerte klinische Verschlechterung auf DCI prüfen, ohne sie mit Vasospasmus gleichzusetzen.",
+        "en": "Evaluate delayed clinical deterioration for DCI without equating it with vasospasm.",
+        "fa": "بدترشدن بالینی تأخیری را از نظر DCI بررسی کنید، بدون همسان‌دانستن آن با وازواسپاسم."
+      },
+      "questionIds": [
+        "sab-q5"
+      ],
+      "cardIds": [
+        "sab-fc-6"
+      ]
+    }
+  ],
+  "clinicalRuleSources": [
+    "PDF15-17",
+    "Hoh2023",
+    "Frontera2006",
+    "Claassen2001",
+    "vanDerJagt1999"
+  ],
+  "perItemSource": {
+    "sab-q1": "https://doi.org/10.1161/STR.0000000000000436",
+    "sab-q2": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B",
+    "sab-q3": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B",
+    "sab-q4": "https://doi.org/10.1161/STR.0000000000000436",
+    "sab-q5": "https://doi.org/10.1161/STR.0000000000000436",
+    "sab-q6": "https://pubmed.ncbi.nlm.nih.gov/9921845/",
+    "sab-fc-1": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B",
+    "sab-fc-2": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B",
+    "sab-fc-3": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B",
+    "sab-fc-4": "https://doi.org/10.1161/STR.0000000000000436",
+    "sab-fc-5": "https://doi.org/10.1161/STR.0000000000000436",
+    "sab-fc-6": "https://doi.org/10.1161/STR.0000000000000436",
+    "sab-fc-7": "https://doi.org/10.1161/STR.0000000000000436",
+    "sab-fc-8": "https://doi.org/10.1161/STR.0000000000000436"
+  },
+  "tests": {
+    "actualGlobalObjectsDeepEqual": 26,
+    "specificWrongFeedbackFields": 54,
+    "originalIDsKeysPreserved": true,
+    "visibleGoals": 4,
+    "sourcecaseAndMediaUnchanged": true,
+    "SSR": "3/3 actualrouteDEENFA technicalrender; context/CSSfixtures, notbrowser/auth/visualpass"
+  },
+  "artifacts": {
+    "exactChanges": "sab-changes.json",
+    "sources": "sab-sources.json",
+    "before": "tmp/assessment-quality/sab-original-before.json",
+    "after": "tmp/assessment-quality/sab-author-runtime.json",
+    "runtimeTest": "tmp/assessment-quality/test-sab-author.mjs",
+    "SSR": "tmp/assessment-quality/sab-original-ssr.json"
+  },
+  "remaining": [
+    "Independent fullpool/source/translation review and boundedrepairretest",
+    "Actual browserselectedfeedback/language/mobile interaction verification by parent",
+    "Selective publish onlyafterindependentreview; no ownGit/build/server"
+  ],
+  "limits": [
+    "Coauthor, not independentreviewer",
+    "No wholelesson/PDF/media/contributor/retainedcase or Dr.Zia scientific release approval",
+    "Originalsourcecase/patientframe unchanged; not newly viewed/adjudicated",
+    "Fullcurrent scientificverification of every retained clinicalprose statement not claimed"
+  ]
+}

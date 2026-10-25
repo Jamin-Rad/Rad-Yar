@@ -1,0 +1,177 @@
+{
+  "dateReviewed": "2026-10-25",
+  "status": "AUTHOR_PRIMARY_SOURCE_SCOPE_RECORD_INDEPENDENT_VERIFICATION_PENDING",
+  "sources": [
+    {
+      "id": "PDF-ABD-08-10",
+      "url": null,
+      "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Abdomen.pdf",
+      "physicalPages": [
+        8,
+        9,
+        10
+      ],
+      "readScope": "Actual page PNGs tmp/abdomen-completion/page-08.png through page-10.png visually read, including MRI table and atypical pattern. Printed page one lower.",
+      "supports": [
+        "haemangioma nature/US/CT/T2/DWI/dynamics",
+        "large/atypical variants"
+      ],
+      "conflicts": [
+        "PDF unqualified US no-further-workup requires clinical/size context; existing EASL/ACG pilot qualification retained",
+        "PDF complete delayed homogeneous fill not required for all lesions; retained blood-pool/incomplete-fill caveat",
+        "PDF atypical umbrella mixes flash-filling/sclerosis/rare restriction; distinct variants retained",
+        "PDF often brighter than bile removed as unsupported frequency comparison; marked T2 brightness retained"
+      ],
+      "limits": "No complete PDF/media reuse or patient-study recertification."
+    },
+    {
+      "id": "PDF-ABD-19-23",
+      "url": null,
+      "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Abdomen.pdf",
+      "physicalPages": [
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "readScope": "All five actual page PNGs visually read, including HCC sequences and LI-RADS decision table. Printed page one lower.",
+      "supports": [
+        "HCC high-risk context/dynamic MRI/DWI/infiltrative reporting",
+        "LI-RADS population/major features/growth/management"
+      ],
+      "conflicts": [
+        "Physical page21 compact older 10–19mm rule is not the current v2018 washout exception; active page teaches official v2018, not obsolete PDF flow",
+        "Physical page23 older rigid TACE/SIRT rules not imported into new assessment decisions"
+      ],
+      "limits": "FLC subsection22 and detailed HCC therapy are outside these3 full assessment pools. Existing PDF19 biopsy-proven source example retained unchanged; no new image interpretation."
+    },
+    {
+      "id": "EASL2016",
+      "url": "https://doi.org/10.1016/j.jhep.2016.04.001",
+      "access": "https://easl.eu/wp-content/uploads/2016/10/EASL-CPG-on-Management-of-benign-liver-tumours.pdf",
+      "readScope": "Fresh original haemangioma pathology, ultrasound criteria, dynamic imaging and variant passages read. Not a claim of all guideline sections read.",
+      "supports": [
+        "haem01/02",
+        "peripheral nodular centripetal pattern",
+        "strong T2 and large-lesion heterogeneity",
+        "eligible typical <3cm ultrasound in healthy liver; liver disease/oncology require contrast"
+      ],
+      "limits": "EASL <3cm and ACG2024 <2cm kept explicitly versioned, not silently merged."
+    },
+    {
+      "id": "ACG2024",
+      "url": "https://doi.org/10.14309/ajg.0000000000002857",
+      "readScope": "Original guideline key concepts24a/b and25–28 actually read; only diagnosis/characterisation used.",
+      "supports": [
+        "haem02 wrongfeedback/card03 comparison",
+        "typical <2cm echogenic avascular well-defined lesion in normal liver without risk setting"
+      ],
+      "limits": "No new management/resection/biopsy algorithm adopted from an unread section."
+    },
+    {
+      "id": "ACR-v2018",
+      "url": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf",
+      "officialDirectory": "https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/LI-RADS",
+      "readScope": "Actual original Core via Dartmouth institutional mirror: Diagnostic Table/What is new/Getting Started/ancillary rules/technical phases/major-feature definitions/TIV/LR-M targetoid definitions and growth comparison rules. Current ACR directory confirms diagnostic CT/MRI v2018;2024 is surveillance/treatment response. Original ACR Core URL redirected to Sitecore login. Table content was read; no new figure asset adopted.",
+      "supports": [
+        "HCC01–04,06–07,09 and corresponding cards",
+        "LI-RADS all5 pairs and direct canonical inline",
+        "10–19mm APHE+washout or growth→LR5, capsule alone LR4",
+        "ancillary upgrade optional1,capLR4; contradictory benign/malign features noadjust",
+        "GDx washout PVP only; ECA/gadobenate PVP/DP",
+        "capsule PVP/DP/TP; LR-TIV enhancing soft tissue not HCC-specific",
+        "targetoid HBP morphology not HCC-specific"
+      ],
+      "limits": "Diagnostic classification only, not transplantation OPTN equivalence or detailed treatment-response/therapy recertification."
+    },
+    {
+      "id": "AASLD2023",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/",
+      "doi": "https://doi.org/10.1097/hep.0000000000000466",
+      "readScope": "Fresh original diagnosis/pathology/BCLC sections and recommendations17–26 read.",
+      "supports": [
+        "LI-RADS LR4 promptbiopsy when immediate diagnosis alters management versus contrastimaging within3months",
+        "HCC10/card10 liverfunction/decompensation/ECOG alongside imaging burden",
+        "LR-M/TIV limited HCC specificity"
+      ],
+      "limits": "No new therapy dose, biopsy complication rate or full current EASL2025 treatment policy."
+    },
+    {
+      "id": "Vossen2008",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18830105/",
+      "readScope": "Complete original abstract and original figure captions read; direct PMC fulltext CAPTCHAlimited, pixels not inspected.",
+      "supports": [
+        "haemDWI/ADC overlap and combined-pattern reasoning",
+        "classic,slow and flash-filling haemangioma patterns/bloodpool comparison"
+      ],
+      "limits": "No numeric ADC cutoff, absolute benignity claim or new patient figure use."
+    },
+    {
+      "id": "Jia2021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34041675/",
+      "doi": "https://doi.org/10.1007/s11604-021-01139-z",
+      "readScope": "Complete original abstract, publisher-indexed imaging-analysis methods and relevant sclerosis caption read.",
+      "supports": [
+        "separate sclerosed/sclerosing variants with less typical enhancement",
+        "ADC not automatically restricted in atypical lesions"
+      ],
+      "limits": "No frequency or ADC threshold generalised; no figure pixels/new media."
+    },
+    {
+      "id": "Takinoshita2022",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9668265/",
+      "doi": "https://doi.org/10.1259/bjrcr.20220029",
+      "readScope": "Indexed original case body, histopathological correlation, discussion, captions and learning points read.",
+      "supports": [
+        "rare true restricted-diffusion exception in sclerosing haemangioma",
+        "firstauthor correction from Tsuji to Takinoshita"
+      ],
+      "limits": "Source learningpoint lower-ADC generalisation conflicts with its own abstract/discussion; not copied. Only rare case exception retained; no unseen figure diagnosis."
+    },
+    {
+      "id": "Kitao2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20663969/",
+      "doi": "https://doi.org/10.1148/radiol.10092214",
+      "readScope": "Complete original purpose/methods/results/conclusion abstract read;40resectedHCC transport-expression/MRI correlation.",
+      "supports": [
+        "HCC05/card05/MRIrow transporter-dependent uptake",
+        "some HCC iso/hyperintense with preserved/increased uptake transporters"
+      ],
+      "limits": "No cohort proportion presented as universal frequency and no all-HCC absent-hepatocyte explanation."
+    },
+    {
+      "id": "Kneuertz2012",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3538368/",
+      "doi": "https://doi.org/10.1245/s10434-012-2336-0",
+      "readScope": "Indexed original Methods, imaging Results, relevant discussion and captions read. Direct PMC opening CAPTCHA; no patientpixels seen.",
+      "supports": [
+        "HCC08/card08 infiltrative morphology and variable enhancement/vascular invasion"
+      ],
+      "limits": "No historical IAT treatment policy/outcome rate imported."
+    }
+  ],
+  "claimMapping": {
+    "haemangiom": [
+      "PDF-ABD-08-10",
+      "EASL2016",
+      "ACG2024",
+      "Vossen2008",
+      "Jia2021",
+      "Takinoshita2022"
+    ],
+    "hcc": [
+      "PDF-ABD-19-23",
+      "ACR-v2018",
+      "AASLD2023",
+      "Kitao2010",
+      "Kneuertz2012"
+    ],
+    "liRads": [
+      "PDF-ABD-19-23",
+      "ACR-v2018",
+      "AASLD2023"
+    ]
+  },
+  "noGlobalApproval": "Scientific/source checks are bounded to changed/reviewed assessment rules. Retained full lesson prose, all media reuse and Dr.Zia approval are not globally certified."
+}

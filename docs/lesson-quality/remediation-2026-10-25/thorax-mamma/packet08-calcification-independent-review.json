@@ -1,0 +1,1194 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/design_inventory",
+  "role": "INDEPENDENT_READ_ONLY_REVIEWER",
+  "route": "/mamma/bildgebung/mammographie/verkalkungen",
+  "topicId": "mammographie-mikrokalk",
+  "status": "ACCEPT_BOUNDED_FULL_ASSESSMENT_POOL_AND_CHANGED_TEACHING_AFTER_REPAIR01_RETEST",
+  "scope": {
+    "questionConcepts": 18,
+    "localizedQuestionObjects": 54,
+    "optionsPerQuestion": 4,
+    "wrongFeedbackFieldsRead": 162,
+    "cardTriads": 22,
+    "languages": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "changedTeaching": "All19 added and28 removed literal translation triads plus nonliteral matrix/ref/review-date/chart-removal changes; all11 localized asset-label sets;4 final source comparisons matched actual files.",
+    "unchangedFullLesson": "Not a fresh complete reread/recertification of every unchanged clinical paragraph, PDF figure or retained imagecase."
+  },
+  "manualReading": {
+    "method": "Actual canonical question/card exports read field by field in DE/EN/FA, not shape/keyword validation. Initial independently read snapshot equals frozen pre-repair pool; only16 pool text leaves changed for Repair01 and all16 reread. Three additional worked-example teaching translations reread, all19 exact repair fields tested in actual sources.",
+    "questionLedger": [
+      {
+        "id": "mammographie-mikrokalk-de-size-alone",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-size-alone",
+          "en": "mammographie-mikrokalk-en-size-alone",
+          "fa": "mammographie-mikrokalk-fa-size-alone"
+        },
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-magnification",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-magnification",
+          "en": "mammographie-mikrokalk-en-magnification",
+          "fa": "mammographie-mikrokalk-fa-magnification"
+        },
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "NHS_ASSESS",
+          "ACR_TECH"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-popcorn",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-popcorn",
+          "en": "mammographie-mikrokalk-en-popcorn",
+          "fa": "mammographie-mikrokalk-fa-popcorn"
+        },
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-milk-calcium",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-milk-calcium",
+          "en": "mammographie-mikrokalk-en-milk-calcium",
+          "fa": "mammographie-mikrokalk-fa-milk-calcium"
+        },
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-rods-versus-linear",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-rods-versus-linear",
+          "en": "mammographie-mikrokalk-en-rods-versus-linear",
+          "fa": "mammographie-mikrokalk-fa-rods-versus-linear"
+        },
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-amorphous-distribution",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-amorphous-distribution",
+          "en": "mammographie-mikrokalk-en-amorphous-distribution",
+          "fa": "mammographie-mikrokalk-fa-amorphous-distribution"
+        },
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-pleomorphic-segmental",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-pleomorphic-segmental",
+          "en": "mammographie-mikrokalk-en-pleomorphic-segmental",
+          "fa": "mammographie-mikrokalk-fa-pleomorphic-segmental"
+        },
+        "goal": "calc08-distribution",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-highest-suspicion",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-highest-suspicion",
+          "en": "mammographie-mikrokalk-en-highest-suspicion",
+          "fa": "mammographie-mikrokalk-fa-highest-suspicion"
+        },
+        "goal": "calc08-distribution",
+        "sourceAnchors": [
+          "ACR2025",
+          "YOUK2019"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-evolution-context",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-evolution-context",
+          "en": "mammographie-mikrokalk-en-evolution-context",
+          "fa": "mammographie-mikrokalk-fa-evolution-context"
+        },
+        "goal": "calc08-evolution",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-no-correlate",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-no-correlate",
+          "en": "mammographie-mikrokalk-en-no-correlate",
+          "fa": "mammographie-mikrokalk-fa-no-correlate"
+        },
+        "goal": "calc08-management",
+        "sourceAnchors": [
+          "ACR2025",
+          "BENNANI2017",
+          "NHS_ASSESS"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-round-group-followup",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-round-group-followup",
+          "en": "mammographie-mikrokalk-en-round-group-followup",
+          "fa": "mammographie-mikrokalk-fa-round-group-followup"
+        },
+        "goal": "calc08-management",
+        "sourceAnchors": [
+          "ACR2025",
+          "BERG2020"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-stable-suspicious",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-stable-suspicious",
+          "en": "mammographie-mikrokalk-en-stable-suspicious",
+          "fa": "mammographie-mikrokalk-fa-stable-suspicious"
+        },
+        "goal": "calc08-evolution",
+        "sourceAnchors": [
+          "ACR2025",
+          "LEVTOAFF1994"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-regional-definition",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-regional-definition",
+          "en": "mammographie-mikrokalk-en-regional-definition",
+          "fa": "mammographie-mikrokalk-fa-regional-definition"
+        },
+        "goal": "calc08-distribution",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-segmental-apex",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-segmental-apex",
+          "en": "mammographie-mikrokalk-en-segmental-apex",
+          "fa": "mammographie-mikrokalk-fa-segmental-apex"
+        },
+        "goal": "calc08-distribution",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-modifiers-not-score",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-modifiers-not-score",
+          "en": "mammographie-mikrokalk-en-modifiers-not-score",
+          "fa": "mammographie-mikrokalk-fa-modifiers-not-score"
+        },
+        "goal": "calc08-evolution",
+        "sourceAnchors": [
+          "YOUK2019",
+          "NHS_ASSESS"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-mri-4a-selected",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-mri-4a-selected",
+          "en": "mammographie-mikrokalk-en-mri-4a-selected",
+          "fa": "mammographie-mikrokalk-fa-mri-4a-selected"
+        },
+        "goal": "calc08-management",
+        "sourceAnchors": [
+          "ACR2025",
+          "FUEGER2021"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-mri-4b-risk",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-mri-4b-risk",
+          "en": "mammographie-mikrokalk-en-mri-4b-risk",
+          "fa": "mammographie-mikrokalk-fa-mri-4b-risk"
+        },
+        "goal": "calc08-management",
+        "sourceAnchors": [
+          "ACR2025",
+          "FUEGER2021"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-de-coarse-heterogeneous-size",
+        "localizedIds": {
+          "de": "mammographie-mikrokalk-de-coarse-heterogeneous-size",
+          "en": "mammographie-mikrokalk-en-coarse-heterogeneous-size",
+          "fa": "mammographie-mikrokalk-fa-coarse-heterogeneous-size"
+        },
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "stem",
+          "all4options",
+          "correctKey",
+          "correctExplanation",
+          "all3individualWrongExplanations",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      }
+    ],
+    "cardLedger": [
+      {
+        "id": "mammographie-mikrokalk-01",
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-02",
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "NHS_ASSESS",
+          "ACR_TECH"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-03",
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-04",
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-05",
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-06",
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "ACR2025",
+          "YOUK2019",
+          "BENT2010"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-07",
+        "goal": "calc08-distribution",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-08",
+        "goal": "calc08-distribution",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-09",
+        "goal": "calc08-distribution",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-10",
+        "goal": "calc08-evolution",
+        "sourceAnchors": [
+          "ACR2025",
+          "EVOLUTION1999"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-11",
+        "goal": "calc08-management",
+        "sourceAnchors": [
+          "STOMPER1989",
+          "DERSHAW1989"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-12",
+        "goal": "calc08-management",
+        "sourceAnchors": [
+          "ACR2025",
+          "FUEGER2021",
+          "BENNANI2017"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-size",
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-dbt",
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "NHS_ASSESS",
+          "ACR_TECH"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-grouped",
+        "goal": "calc08-distribution",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-segmental",
+        "goal": "calc08-distribution",
+        "sourceAnchors": [
+          "ACR2025"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-round-3",
+        "goal": "calc08-management",
+        "sourceAnchors": [
+          "ACR2025",
+          "BERG2020"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-stability",
+        "goal": "calc08-evolution",
+        "sourceAnchors": [
+          "LEVTOAFF1994",
+          "ACR2025"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-modifiers",
+        "goal": "calc08-evolution",
+        "sourceAnchors": [
+          "YOUK2019"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-mri4a",
+        "goal": "calc08-management",
+        "sourceAnchors": [
+          "ACR2025",
+          "FUEGER2021",
+          "BENNANI2017"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-mri4b5",
+        "goal": "calc08-management",
+        "sourceAnchors": [
+          "ACR2025",
+          "FUEGER2021",
+          "BENNANI2017"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      },
+      {
+        "id": "mammographie-mikrokalk-usmacro",
+        "goal": "calc08-characterise",
+        "sourceAnchors": [
+          "AUR_US"
+        ],
+        "read": [
+          "front",
+          "answer",
+          "explanation",
+          "category",
+          "sourceMetadata"
+        ],
+        "languages": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "status": "ACCEPT_BOUNDED"
+      }
+    ]
+  },
+  "baselineFindings": [
+    {
+      "id": "CALC08-ASM-01",
+      "status": "CLOSED_BOUNDED_CONTENT_RETEST",
+      "evidence": "All18 concepts/54 localized objects manually read: four comparable options, keys, correct rationale and all162 wrong-feedback fields. Basic morphology recognition remains appropriate; management items now test clinical context. Residual small omission cue repaired and reread."
+    },
+    {
+      "id": "CALC08-ASM-02",
+      "status": "CLOSED_BOUNDED_CONTENT_RETEST",
+      "evidence": "Four observable goals mapped to all18 questions and22 cards. Text scenarios explicitly described as text; no invented diagnostic frame. This accepts the bounded bank, not comprehensive image-interpretation proficiency."
+    },
+    {
+      "id": "CALC08-SRC-01",
+      "status": "CLOSED_BOUNDED_CONTENT_RETEST",
+      "evidence": "Current lesson/bank triads preserve standard tissue diagnosis for confirmed category4/5; pooled negative-MRI research and6–12-month proposal not a validated all4A/B policy;22% model threshold not category boundary. Fresh primary scope read."
+    },
+    {
+      "id": "CALC08-SRC-02",
+      "status": "CLOSED_BOUNDED_CONTENT_RETEST",
+      "evidence": "No fixed amorphous→coarse heterogeneous universal risk slope; suspicious descriptors and cohort context retained. Bent/Youk support first-pair caveat."
+    },
+    {
+      "id": "CALC08-EDU-01",
+      "status": "CLOSED_BOUNDED_CONTENT_RETEST",
+      "evidence": "Historical selected-excision Youk model, punctate/current Round separation, missing clinical inputs, model-output versus action distinction and new-distortion counterexample explicitly taught.25cell outputs independently recomputed; actual browser interaction remains pending."
+    },
+    {
+      "id": "CALC08-SRC-03",
+      "status": "CLOSED_BOUNDED_CONTENT_RETEST",
+      "evidence": "Every actual question/card carries source metadata preserved in global exports and per-ID anchors. Relevant primary/official evidence independently checked with access scopes below; not every supplementary citation full-text reread."
+    },
+    {
+      "id": "CALC08-SRC-04",
+      "status": "CLOSED_BOUNDED_CONTENT_RETEST",
+      "evidence": "Unverified exact extent PPV plot removed; morphology-independent claim narrowed to selected-cohort association. Extent remains a reporting/planning dimension."
+    },
+    {
+      "id": "CALC08-REV-01",
+      "status": "CLOSED_BOUNDED_CONTENT_RETEST",
+      "evidence": "Actual changed DE/EN/FA footer is editorial/source update, with Dr.Zia scientific approval pending. No invented September2026 sign-off."
+    },
+    {
+      "id": "CALC08-LNG-01",
+      "status": "CLOSED_BOUNDED_CONTENT_RETEST",
+      "evidence": "Current Coarse/Round/Layering first, historical synonyms contextualized; all bank triads and changed teaching translation triads semantically compared."
+    },
+    {
+      "id": "CALC08-SRC-05",
+      "status": "CLOSED_BOUNDED_CONTENT_RETEST",
+      "evidence": "Kang correct2026 metadata; NC restriction recorded. Original rendering and deployable PNG removed; reference link/own schematic remain. Does not authorize other retained assets."
+    },
+    {
+      "id": "CALC08-LNG-02",
+      "status": "CLOSED_BOUNDED_CONTENT_RETEST",
+      "evidence": "All11 adjacent localized descriptor/schematic label sets manually read in DE/EN/FA and source present. English pixels not falsely claimed localized; RTL positioning/readability requires actual browser."
+    }
+  ],
+  "newFindings": [
+    {
+      "id": "CALC08-PEER-01",
+      "severity": "minor",
+      "issue": "Raw Youk score versus derived model category was ambiguous in the worked example and one question.",
+      "status": "CLOSED_ACTUAL_RETEST",
+      "evidence": "All DE/EN/FA now explicitly model category3; matrix raw regional-amorphous sum0.7166 maps to category3. Question, explanation, wrongA and visible worked example checked."
+    },
+    {
+      "id": "CALC08-PEER-02",
+      "severity": "minor",
+      "issue": "MRI risk item optionD announced its own omission instead of competing as a neutral statistical quantity.",
+      "status": "CLOSED_ACTUAL_RETEST",
+      "evidence": "Actual DE/EN/FA alternative now false-negative rate conditional on malignant lesions; specific feedback contrasts that denominator with malignancy risk among MRI-negative findings. CorrectA unchanged."
+    },
+    {
+      "id": "CALC08-PEER-03",
+      "severity": "minor",
+      "issue": "German fibroadenoma card answer had an incomplete grammatical construction.",
+      "status": "CLOSED_ACTUAL_RETEST",
+      "evidence": "Actual card03 answer Ein involutierendes Fibroadenom. EN/FA unchanged."
+    }
+  ],
+  "openContentFindings": [],
+  "sourceReading": [
+    {
+      "id": "ACR2025",
+      "url": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "actualPixels": [
+        "tmp/assessment-quality/acr-2025-summary-2.png",
+        "tmp/assessment-quality/acr-2025-summary-4.png"
+      ],
+      "read": "Both page images actually inspected: Coarse/large rod-like/Round/Rim/Layering, all4suspicious morphologies and5distributions; category3sixmonth versus4/5tissuediagnosis. This is summary, not fullpaidmanual.",
+      "boundedEvidence": "Currentlexicon as taught; coarsehetero generally0.5–1mm retained; Layering apparentprojectionshapechange esp90degreeLM/ML; category4tissuediagnosis."
+    },
+    {
+      "id": "Youk2019",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/",
+      "read": "Fresh originalMethods, allTables1–4, modelcoefficients/cutoffs, discussion andcomplete relevantlimitations read.",
+      "boundedEvidence": "Derivation194excisedlesions/183women andexternal100excised/100women; punctate notallcurrentRound. No priorcomparisons/patientpredictors; selectedretrospectiveexcisionpopulation. Amorphous/coarsehetero firstpair notsignificant, no universalfixedriskordering.",
+      "checkAfterFreeze": "Compare every25matrixcell to originalcoefficient/cutoffmodel; distinguishmodeloutput from clinicalassessment/action."
+    },
+    {
+      "id": "Bent2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20410428/",
+      "read": "Fresh completeprimaryabstract viaindexedPubMed.146biopsiedwomen.",
+      "boundedEvidence": "Amorphous andcoarseheterogeneous both20percentobservedcohortPPV, notuniversalriskcalibration."
+    },
+    {
+      "id": "Fueger2021",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/",
+      "read": "DirectPMC/publisherblockedcaptcha403; freshindexed ORIGINALabstract,eligibility/statistics, results,6–12monthdiscussion andlimitationsread; no bypass. Do notclaimdirectfullpage/figurepixelreview.",
+      "boundedEvidence": "13studies1414lesions; purecalcification subgroup modelpretest22percent→posttest<=2percent. No4A/B/Csubgroupestimates.6–12months discussedasfollowupproposal, oncologicalsafety/prospectiveevidence notestablished. Not categoryboundary orautomaticomissionrule."
+    },
+    {
+      "id": "Bennani2017",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0188679",
+      "read": "Fresh primarymethods/results/cohort andfalse-negativefindings,subsetmetrics/captions read.",
+      "boundedEvidence": "248retrospectivepatients; biopsy alwaysperformedafterMRI.4FNs included3DCIS and1invasive, acrossmammographic4A/B/C. Doesnotvalidate prospectivebiopsyomissionpolicy."
+    },
+    {
+      "id": "Kang2026",
+      "url": "https://jksronline.org/DOIx.php?id=10.3348/jksr.2026.0028",
+      "read": "Fresh publisherbibliographic/licenseandcalcificationlexicon/figure6captionread.",
+      "boundedEvidence": "Publishedonline2026-05-26,J KoreanSocRadiol87(3):437–459. Coarseincludesolderpopcorn/dystrophic; Layeringreplacesmilkofcalcium; currentRoundnotallhistoricalpunctate. Fig6A CC/BMLOortruelateralcaption.",
+      "licence": "CC-BY-NC4.0 explicitlynoncommercial. NoinferenceofcommercialreusepermissionfromRadiopaediaauthorization. Retainedfigure/licence/provenancelimit toberecorded separatelyfromboundedclinicalassessmentreview.",
+      "disposition": "Actual rendered original figure removed; root moved unused original PNG outside public. Public path absent independently checked. External ordinary reference and own schematic retained; no commercial reuse permission inferred."
+    },
+    {
+      "id": "Metaxa2019",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6849664/",
+      "read": "Fresh indexed original Methods/statistical analysis/Results/Tables1–2/Discussion/limitations read in addition to abstract. Exact extent Table3 not inspected.",
+      "boundedEvidence": "241 selected biopsied pure-calcification cases; chi-square association with extent, not demonstrated morphology-independent adjusted effect. Exact extent chart removed, so unavailable Table3 cells are not taught or accepted."
+    },
+    {
+      "id": "NHS_ASSESS",
+      "url": "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment",
+      "read": "Fresh official assessment guidance sections for calcification, additional views, distortion and biopsy actually read.",
+      "boundedEvidence": "Magnified CC/lateral characterization and extent, DBT not a routine replacement for calcification assessment, suspicious calcification sampling/specimen radiography; absence of a US correlate is not benign proof."
+    },
+    {
+      "id": "LEVTOAFF1994",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8208928/",
+      "read": "Fresh complete original abstract read.",
+      "boundedEvidence": "Malignant-series prior-image comparison: prolonged stability can occur and cannot exclude malignancy in indeterminate/suspicious calcification."
+    },
+    {
+      "id": "EVOLUTION1999",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10541387/",
+      "read": "Fresh complete Evans original abstract read.",
+      "boundedEvidence": "Earlier/subsequent DCIS patterns differ; supports chronological/context comparison without treating every increase as malignant."
+    },
+    {
+      "id": "BERG2020",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32427557/",
+      "read": "Fresh original NMD study abstract read; paid full methods not claimed.",
+      "boundedEvidence": "After completed assessment, BI-RADS3 initial six-month surveillance supported; not indiscriminate follow-up of suspicious calcification."
+    },
+    {
+      "id": "STOMPER1989",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2544922/",
+      "read": "Fresh original 100-case clinically occult DCIS abstract read.",
+      "boundedEvidence": "Calcified and noncalcified presentations; no universal diagnostic-only appearance or individual PPV inferred."
+    },
+    {
+      "id": "AUR_US",
+      "url": "https://www.aur.org/assets/Affinity_Groups/ACER/Educator-Resources/How-to-Page/How%20to%20Approach%20Breast%20Ultrasoundaa5a.pdf",
+      "read": "Independently read actual PDF text physical23/24, zero-index22/23, calcification slides. No inspectable screenshot pixels claimed.",
+      "boundedEvidence": "Small echogenic foci versus large dystrophic superficial echogenic surface with marked posterior shadowing. Official teaching resource, not diagnostic-performance original cohort."
+    },
+    {
+      "id": "ACR_TECH",
+      "url": "https://www.acr.org/-/media/ACR/Files/Practice-Parameters/dig-mamo.pdf",
+      "read": "Direct PDF unavailable to independent reviewer; source not falsely marked fully read.",
+      "boundedEvidence": "Targeted magnification supported independently by NHS; full ACR focal-spot technical parameter wording not separately recertified."
+    },
+    {
+      "id": "DERSHAW1989",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2536185/",
+      "read": "Additional bibliographic support not independently reopened; core DCIS appearance assertion independently anchored in Stomper1989.",
+      "boundedEvidence": "No source-completeness claim for every supplementary citation."
+    }
+  ],
+  "technicalVerification": {
+    "date": "2026-10-25",
+    "reviewer": "/root/design_inventory",
+    "status": "PASS_TECHNICAL_BOUNDED",
+    "questionObjects": 54,
+    "cards": 22,
+    "wrongFeedbackFields": 162,
+    "stableOriginalIdsAndKeys": true,
+    "globalCanonicalDeepEqual": true,
+    "authorAfterDeepEqual": true,
+    "allFourGoalIdsResolve": true,
+    "all18QuestionsAnd22CardsMapped": true,
+    "youkMatrixCellsMatchedIndependentCoefficients": 25,
+    "sourceHashes": {
+      "data/mammaMammographyCalcifications.js": "5131599c67e96b35fe8affc4c1d10f0b2c7c54c8a5c3a11238f964c7644ad2f3",
+      "data/mammaCalcificationReview.js": "494ed292485a6c69fc46fd6ab957c9fb6281dee72207b235131826c160d3928c",
+      "data/assessmentQuality/mammaCalcClinicalDraft.js": "d1846e6002d787ce159a39ddd4f06058970a7ad5540e3a366cebd16c21d48e1d",
+      "app/mamma/bildgebung/mammographie/verkalkungen/page.js": "f77d001c9ce8493a23a6586630eb043ac584b80fc2240f6f9ae9296640ccdb3b",
+      "app/mamma/bildgebung/mammographie/verkalkungen/content.js": "9b93f5ff45bab715ef66043f0540fc3222a316281f6f168e34fa2393417536e5",
+      "app/mamma/bildgebung/mammographie/verkalkungen/translations.js": "75ad6768ba3107263f0df45fca59c38b3fe1646d0e8a31921e0e467f594db1c6",
+      "public/mamma/mammographie/verkalkungen/layering/layering-schematic.svg": "c8fc830d7c2b916838f960429d8ec8524b0b7c3cbdd8b26d7b0a1f91efe92d92"
+    },
+    "publicKangOriginalAbsent": true,
+    "limits": "Structural/canonical execution only; substantive independent reading separately recorded. No browser, diagnostic-frame/media approval, release or Dr.Zia approval.",
+    "repair01ExactActualFieldsMatched": 19,
+    "finalTeachingFileSnapshotsMatched": 4,
+    "ssr": {
+      "passed": 3,
+      "total": 3,
+      "evidence": "tmp/assessment-quality/calc08-peer-ssr.json",
+      "limitation": "Actual page graph SSR in DE/EN/FA. Browser/session hooks and CSS names are fixtures; no source-content or shared lesson-shell fixture. Does not establish browser visual quality, authentication behavior, loaded media or client interaction."
+    },
+    "scripts": [
+      "tmp/assessment-quality/test-calc08-peer.mjs",
+      "tmp/assessment-quality/test-calc08-peer-ssr.mjs"
+    ]
+  },
+  "gates": {
+    "SRC": "PASS_BOUNDED_CHANGED_CLAIMS_WITH_EXPLICIT_SOURCE_ACCESS_LIMITS",
+    "ASM": "PASS_ALL18_QUESTION_CONCEPTS_AND22_CARD_TRIADS",
+    "LNG": "PASS_BANK_AND_CHANGED_TEACHING_TRIADS",
+    "EDU": "PASS_BOUNDED_GOAL_AND_DISTRACTOR_REVIEW",
+    "VIS": "BLOCKED_NOT_FULL_DIAGNOSTIC_FRAME_OR_MEDIA_PROVENANCE_REVIEW",
+    "UX": "BLOCKED_NO_ACTUAL_BROWSER_IN_THIS_PEER_REVIEW",
+    "doctorScientificApproval": "PENDING_DR_ZIA",
+    "release": "NOT_GRANTED_BY_THIS_REVIEW"
+  },
+  "limits": [
+    "Actual browser matrix selectors, keyboard behavior, assessment launch/back navigation, responsive/RTL and legibility require separate review. Three fixture-context SSR renders prove rendering only.",
+    "Contact sheets viewed for retained assets and ownSVG source reviewed; no complete frame-by-frame diagnosis/provenance/licence clearance of retained clinical cases.",
+    "ACR public summary pages174/176 actually inspected; paid complete manual not claimed. Fueger original indexed excerpts read after direct access restriction; no bypass or full figure-pixel claim.",
+    "No clinical performance calibration or psychometric validation; basic recognition items retained intentionally, no quantity-only question quota.",
+    "No production writes, sharedbank mutation, build, server, Git or browser actions by independent reviewer. Source hashes bind this acceptance; future substantive changes require retest."
+  ]
+}

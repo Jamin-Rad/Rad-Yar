@@ -1,0 +1,165 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_REPAIRS_INDEPENDENT_REVIEW_PENDING",
+  "changes": [
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.de.basics.items.0.text",
+      "currentBefore": "Vor allem Leberzirrhose, chronische Hepatitis B und weitere Hochrisikokonstellationen. LI-RADS ist nicht für jede zufällig entdeckte Leberläsion anwendbar.",
+      "after": "Diagnostisches LI-RADS gilt bei Erwachsenen mit Zirrhose, chronischer Hepatitis B oder aktuellem/früherem HCC. Ausnahmen sind kongenitale hepatische Fibrose und bestimmte vaskuläre Zirrhosen, etwa durch kardiale Stauung."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.en.basics.items.0.text",
+      "currentBefore": "Especially cirrhosis, chronic hepatitis B and other high-risk settings. LI-RADS does not apply to every incidental liver lesion.",
+      "after": "Diagnostic LI-RADS applies to adults with cirrhosis, chronic hepatitis B or current/prior HCC. Exceptions include congenital hepatic fibrosis and certain vascular causes of cirrhosis, such as cardiac congestion."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.fa.basics.items.0.text",
+      "currentBefore": "به‌ویژه سیروز، هپاتیت B مزمن و سایر شرایط پرخطر. LI-RADS برای هر ضایعه اتفاقی کبدی قابل استفاده نیست.",
+      "after": "LI-RADS تشخیصی برای بزرگسالان مبتلا به سیروز، هپاتیت B مزمن یا HCC فعلی/قبلی کاربرد دارد. فیبروز مادرزادی کبد و برخی علل عروقی سیروز، مانند احتقان قلبی، مستثنا هستند."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.de.basics.items.1.text",
+      "currentBefore": "Mit der Entdifferenzierung nimmt die arterielle Versorgung zu und die portalvenöse Versorgung ab. Daraus entstehen APHE und späteres Wash-out.",
+      "after": "Bei der Hepatokarzinogenese kann die arterielle Versorgung zu- und die portalvenöse Versorgung abnehmen. APHE und Wash-out sind häufige Folgen, aber nicht jedes HCC zeigt dieses Muster."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.en.basics.items.1.text",
+      "currentBefore": "As lesions dedifferentiate, arterial supply increases and portal supply decreases, producing APHE and later wash-out.",
+      "after": "During hepatocarcinogenesis, arterial supply may increase and portal venous supply decrease. APHE and washout are common consequences, but not every HCC shows this pattern."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.fa.basics.items.1.text",
+      "currentBefore": "با ددیفرانسیاسیون، خون‌رسانی شریانی افزایش و خون‌رسانی پورت کاهش می‌یابد و APHE و سپس واش‌اوت ایجاد می‌شود.",
+      "after": "در روند ایجاد HCC ممکن است خون‌رسانی شریانی افزایش و خون‌رسانی پورت کاهش یابد. APHE و واش‌اوت از پیامدهای شایع‌اند، اما هر HCC این الگو را نشان نمی‌دهد."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.de.basics.items.2.text",
+      "currentBefore": "Zahl, Größe, Gefäßinvasion, extrahepatische Ausbreitung und Leberfunktion bestimmen Staging und Therapie.",
+      "after": "Die Bildgebung berichtet Zahl, Größe, Gefäßinvasion und extrahepatische Ausbreitung. Klinisches Staging und Therapieplanung berücksichtigen zusätzlich Leberfunktion, Dekompensation und ECOG-Performance-Status."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.en.basics.items.2.text",
+      "currentBefore": "Number, size, vascular invasion, extrahepatic spread and liver function determine staging and treatment.",
+      "after": "Imaging reports number, size, vascular invasion and extrahepatic spread. Clinical staging and treatment planning additionally consider liver function, decompensation and ECOG performance status."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.fa.basics.items.2.text",
+      "currentBefore": "تعداد، اندازه، تهاجم عروقی، گسترش خارج کبدی و عملکرد کبد مرحله و درمان را تعیین می‌کنند.",
+      "after": "تصویربرداری تعداد، اندازه، تهاجم عروقی و انتشار خارج‌کبدی را گزارش می‌کند. مرحله‌بندی بالینی و برنامه‌ریزی درمان علاوه بر آن عملکرد کبد، دکمپنسیشن و وضعیت عملکردی ECOG را لحاظ می‌کنند."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.de.mri.lead",
+      "currentBefore": "Die MRT ergänzt die dynamischen Hauptmerkmale durch sensitive Zusatzzeichen und die hepatobiliäre Phase.",
+      "after": "Bei extrazellulärem Kontrastmittel ist nicht-peripheres Wash-out portalvenös oder spät beurteilbar, bei Gadoxetat nur portalvenös. Hypointensität erst in der Transitional- oder hepatobiliären Phase ersetzt dieses Major Feature nicht."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.en.mri.lead",
+      "currentBefore": "MRI complements dynamic major features with sensitive ancillary signs and the hepatobiliary phase.",
+      "after": "With extracellular agents, nonperipheral washout can be assessed in the portal venous or delayed phase; with gadoxetate, only in the portal venous phase. Hypointensity first appearing in the transitional or hepatobiliary phase does not replace this major feature."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.fa.mri.lead",
+      "currentBefore": "MRI ویژگی‌های دینامیک اصلی را با علائم کمکی حساس و فاز هپاتوبیلیاری تکمیل می‌کند.",
+      "after": "با مادهٔ حاجب خارج‌سلولی، واش‌اوت غیرمحیطی در فاز پورتال یا تأخیری قابل ارزیابی است؛ با گادوکسیتات فقط در فاز پورتال. کم‌سیگنالی که نخست در فاز انتقالی یا هپاتوبیلیاری ظاهر شود، جای این ویژگی اصلی را نمی‌گیرد."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.de.mri.rows.3.2",
+      "currentBefore": "fehlende funktionsfähige Hepatozyten",
+      "after": "häufig verminderte Aufnahme über Transportproteine; erhaltene/vermehrte Aufnahme kann iso- oder hyperintenses HCC ergeben"
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.en.mri.rows.3.2",
+      "currentBefore": "lack of functioning hepatocytes",
+      "after": "often reduced transporter-mediated uptake; preserved/increased uptake can produce iso- or hyperintense HCC"
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.fa.mri.rows.3.2",
+      "currentBefore": "نبود هپاتوسیت‌های عملکردی",
+      "after": "اغلب کاهش برداشت وابسته به پروتئین‌های ناقل؛ برداشت حفظ‌شده یا افزایش‌یافته می‌تواند HCC ایزواینتنس یا هایپراینتنس ایجاد کند"
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.de.mri.rows.4.1",
+      "currentBefore": "relevantes Schwellenwachstum im Verlauf",
+      "after": "v2018: Größenzunahme einer Raumforderung ≥50 % in ≤6 Monaten bei geeigneter CT/MRT-Vergleichbarkeit"
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.en.mri.rows.4.1",
+      "currentBefore": "relevant threshold growth on follow-up",
+      "after": "v2018: ≥50% size increase of a mass in ≤6 months with suitably comparable CT/MRI"
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.fa.mri.rows.4.1",
+      "currentBefore": "رشد آستانه‌ای در پیگیری",
+      "after": "نسخهٔ ۲۰۱۸: افزایش اندازهٔ توده ≥۵۰٪ طی ≤۶ ماه با قابلیت مقایسهٔ مناسب CT/MRI"
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.de.mri.cards.1.text",
+      "currentBefore": "Weichteilgewebe mit tumorähnlichem Enhancement innerhalb einer Vene spricht für makrovaskuläre Tumorinvasion und verändert Staging und Therapie wesentlich.",
+      "after": "Eindeutig anreicherndes Weichteilgewebe in einer Vene erfüllt das Kriterium für Tumor in vein. Venen und Ausdehnung berichten; LR-TIV ist nicht HCC-spezifisch. Expansion oder Tumornachbarschaft allein reichen nicht."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.en.mri.cards.1.text",
+      "currentBefore": "Enhancing soft tissue within a vein suggests macrovascular tumour invasion and substantially changes staging and treatment.",
+      "after": "Unequivocally enhancing soft tissue in a vein meets the tumour-in-vein criterion. Report veins and extent; LR-TIV is not HCC-specific. Expansion or tumour adjacency alone is insufficient."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.fa.mri.cards.1.text",
+      "currentBefore": "بافت نرم با تقویت پس از تزریق مشابه تومور درون ورید به نفع تهاجم ماکروواسکولار است و مرحله و درمان را تغییر می‌دهد.",
+      "after": "بافت نرم داخل ورید با جذب قطعی مادهٔ حاجب معیار تومور داخل ورید را برآورده می‌کند. وریدها و وسعت گزارش شوند؛ LR-TIV اختصاصی HCC نیست. اتساع یا مجاورت تومور به‌تنهایی کافی نیست."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.de.takehome.items.2.text",
+      "currentBefore": "DWI-Restriktion und Hypointensität in der hepatobiliären Phase unterstützen die Diagnose.",
+      "after": "DWI-Restriktion und hepatobiliäre Hypointensität sind unterstützend und nicht HCC-spezifisch; Ancillary Features allein erlauben kein LR-5."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.en.takehome.items.2.text",
+      "currentBefore": "Restricted diffusion and hepatobiliary phase hypointensity support the diagnosis.",
+      "after": "Restricted diffusion and hepatobiliary hypointensity are supportive and not HCC-specific; ancillary features alone cannot establish LR-5."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "path": "CONTENT.fa.takehome.items.2.text",
+      "currentBefore": "محدودیت انتشار و هیپواینتنسیتی فاز هپاتوبیلیاری تشخیص را تقویت می‌کنند.",
+      "after": "محدودیت انتشار و کم‌سیگنالی هپاتوبیلیاری حمایتی و غیراختصاصی برای HCC هستند؛ ویژگی‌های کمکی به‌تنهایی اجازهٔ LR-5 نمی‌دهند."
+    }
+  ],
+  "inline": {
+    "file": "app/abdomen/leber/hcc/page.js",
+    "topic": "hcc",
+    "questionIds": [
+      "hcc-de-03",
+      "hcc-en-03",
+      "hcc-fa-03"
+    ],
+    "source": "Exact proposed canonical original hcc03 after fields; no parallel quiz pool, root integration required before release."
+  },
+  "preserved": "All other CONTENT fields including source cases/media unchanged; final TakeHome stays final.",
+  "sourceLinksAdded": {
+    "file": "app/abdomen/leber/hcc/page.js",
+    "clinicalPurpose": "Direct traceability for the repaired major-feature/uptake/infiltrative rules; no new media or unviewed case claim."
+  }
+}

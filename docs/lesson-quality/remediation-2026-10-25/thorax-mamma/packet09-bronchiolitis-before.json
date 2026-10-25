@@ -1,0 +1,543 @@
+{
+  "questions": {
+    "de": [
+      {
+        "id": "bronchiolitis-de-pattern",
+        "fach": "thorax",
+        "tags": [
+          "bronchiolitis"
+        ],
+        "question": "Welche Kombination beschreibt Tree-in-bud am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Glatte interlobuläre Septen ohne Noduli"
+          },
+          {
+            "id": "B",
+            "text": "Kleine Noduli an kurzen verzweigten Linien"
+          },
+          {
+            "id": "C",
+            "text": "Einzelne dünnwandige luftgefüllte Räume"
+          },
+          {
+            "id": "D",
+            "text": "Ausschließlich pleuraständige Noduli"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Richtig: Kleine Noduli und verzweigte Linien ergeben das Tree-in-bud-Muster.",
+        "wrongExplanations": {
+          "A": "Glatte Septen bilden ein retikuläres Muster; die knospende Verzweigung fehlt.",
+          "C": "Luftgefüllte Räume sind keine verzweigten weichteildichten Noduli.",
+          "D": "Die rein pleurale Lage passt nicht zur typischen zentrilobulären Verteilung."
+        },
+        "source": "Thorax.pdf physical pp19–20,29; Fleischner2024 doi:10.1148/radiol.232558"
+      },
+      {
+        "id": "bronchiolitis-de-cause",
+        "fach": "thorax",
+        "tags": [
+          "bronchiolitis"
+        ],
+        "question": "Das CT zeigt ein Tree-in-bud-Muster. Welche Aussage ist gerechtfertigt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Der Erreger ist damit bestimmt."
+          },
+          {
+            "id": "B",
+            "text": "Tuberkulose ist damit ausgeschlossen."
+          },
+          {
+            "id": "C",
+            "text": "Ein bronchioläres Muster liegt vor; die Ursache braucht klinische Einordnung."
+          },
+          {
+            "id": "D",
+            "text": "Es handelt sich zwingend um eine Hypersensitivitätspneumonitis."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Richtig: Morphologie beschreibt den Befund, nicht automatisch seine Ursache.",
+        "wrongExplanations": {
+          "A": "Verschiedene Erreger und nichtinfektiöse Ursachen können ähnliche Muster erzeugen.",
+          "B": "Endobronchiale TB gehört gerade zu den möglichen Ursachen.",
+          "D": "HP ist eine mögliche Differenzialdiagnose zentrilobulärer Noduli, kein Automatismus bei Tree-in-bud."
+        },
+        "source": "Thorax.pdf physical pp19–20,29; Fleischner2024 doi:10.1148/radiol.232558"
+      }
+    ],
+    "en": [
+      {
+        "id": "bronchiolitis-en-pattern",
+        "fach": "thorax",
+        "tags": [
+          "bronchiolitis"
+        ],
+        "question": "Which combination best describes tree-in-bud?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Smooth interlobular septa without nodules"
+          },
+          {
+            "id": "B",
+            "text": "Small nodules connected to short branching lines"
+          },
+          {
+            "id": "C",
+            "text": "Isolated thin-walled air-filled spaces"
+          },
+          {
+            "id": "D",
+            "text": "Exclusively pleural-based nodules"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Correct: small nodules and branching lines form the tree-in-bud pattern.",
+        "wrongExplanations": {
+          "A": "Smooth septa form a reticular pattern; the budding branches are absent.",
+          "C": "Air-filled spaces are not branching soft-tissue nodules.",
+          "D": "An exclusively pleural location does not match the typical centrilobular distribution."
+        },
+        "source": "Thorax.pdf physical pp19–20,29; Fleischner2024 doi:10.1148/radiol.232558"
+      },
+      {
+        "id": "bronchiolitis-en-cause",
+        "fach": "thorax",
+        "tags": [
+          "bronchiolitis"
+        ],
+        "question": "CT shows a tree-in-bud pattern. Which statement is justified?",
+        "options": [
+          {
+            "id": "A",
+            "text": "The pathogen is established."
+          },
+          {
+            "id": "B",
+            "text": "Tuberculosis is excluded."
+          },
+          {
+            "id": "C",
+            "text": "A bronchiolar pattern is present; its cause requires clinical correlation."
+          },
+          {
+            "id": "D",
+            "text": "This must be hypersensitivity pneumonitis."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Correct: morphology describes the finding, not automatically its cause.",
+        "wrongExplanations": {
+          "A": "Different pathogens and noninfectious causes can produce similar patterns.",
+          "B": "Endobronchial TB is one of the possible causes.",
+          "D": "HP is a differential for centrilobular nodules, not an automatic diagnosis from tree-in-bud."
+        },
+        "source": "Thorax.pdf physical pp19–20,29; Fleischner2024 doi:10.1148/radiol.232558"
+      }
+    ],
+    "fa": [
+      {
+        "id": "bronchiolitis-fa-pattern",
+        "fach": "thorax",
+        "tags": [
+          "bronchiolitis"
+        ],
+        "question": "کدام ترکیب بهترین توصیف الگوی درخت در جوانه است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "سپتاهای بین‌لوبولی صاف بدون ندول"
+          },
+          {
+            "id": "B",
+            "text": "ندول‌های کوچک متصل به خطوط کوتاه شاخه‌دار"
+          },
+          {
+            "id": "C",
+            "text": "فضاهای منفرد پُر از هوا با دیوارهٔ نازک"
+          },
+          {
+            "id": "D",
+            "text": "ندول‌های منحصراً مجاور پلور"
+          }
+        ],
+        "correct": "B",
+        "explanation": "درست است: ندول‌های کوچک و خطوط شاخه‌دار، الگوی درخت در جوانه را ایجاد می‌کنند.",
+        "wrongExplanations": {
+          "A": "سپتاهای صاف الگوی رتیکولار می‌سازند؛ شاخه‌های جوانه‌مانند وجود ندارند.",
+          "C": "فضاهای پُر از هوا، ندول‌های با دانسیتهٔ بافت نرم و شاخه‌دار نیستند.",
+          "D": "محل صرفاً پلورال با توزیع تیپیک سنترلوبولار سازگار نیست."
+        },
+        "source": "Thorax.pdf physical pp19–20,29; Fleischner2024 doi:10.1148/radiol.232558"
+      },
+      {
+        "id": "bronchiolitis-fa-cause",
+        "fach": "thorax",
+        "tags": [
+          "bronchiolitis"
+        ],
+        "question": "CT الگوی درخت در جوانه نشان می‌دهد. کدام بیان موجه است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "عامل عفونی مشخص شده است."
+          },
+          {
+            "id": "B",
+            "text": "سل رد شده است."
+          },
+          {
+            "id": "C",
+            "text": "الگوی برونشیولار وجود دارد؛ علت نیازمند تطبیق بالینی است."
+          },
+          {
+            "id": "D",
+            "text": "این یافته الزاماً پنومونیت حساسیتی است."
+          }
+        ],
+        "correct": "C",
+        "explanation": "درست است: مورفولوژی یافته را توصیف می‌کند، نه لزوماً علت آن را.",
+        "wrongExplanations": {
+          "A": "عوامل عفونی مختلف و علل غیرعفونی می‌توانند الگوهای مشابه ایجاد کنند.",
+          "B": "سل اندوبرونشیال یکی از علل ممکن است.",
+          "D": "HP یکی از افتراق‌های ندول سنترلوبولار است و از الگوی درخت در جوانه به‌طور خودکار تشخیص داده نمی‌شود."
+        },
+        "source": "Thorax.pdf physical pp19–20,29; Fleischner2024 doi:10.1148/radiol.232558"
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "bronchiolitis-pattern",
+      "topicId": "bronchiolitis",
+      "category": {
+        "de": "Bronchiolitis",
+        "en": "Bronchiolitis",
+        "fa": "برونشیولیت"
+      },
+      "front": {
+        "de": "Welche Kombination beschreibt Tree-in-bud am besten?",
+        "en": "Which combination best describes tree-in-bud?",
+        "fa": "کدام ترکیب بهترین توصیف الگوی درخت در جوانه است؟"
+      },
+      "answer": {
+        "de": "Kleine Noduli an kurzen verzweigten Linien",
+        "en": "Small nodules connected to short branching lines",
+        "fa": "ندول‌های کوچک متصل به خطوط کوتاه شاخه‌دار"
+      },
+      "explanation": {
+        "de": "Richtig: Kleine Noduli und verzweigte Linien ergeben das Tree-in-bud-Muster.",
+        "en": "Correct: small nodules and branching lines form the tree-in-bud pattern.",
+        "fa": "درست است: ندول‌های کوچک و خطوط شاخه‌دار، الگوی درخت در جوانه را ایجاد می‌کنند."
+      },
+      "source": "Thorax.pdf physical pp19–20,29; Fleischner2024 doi:10.1148/radiol.232558"
+    },
+    {
+      "id": "bronchiolitis-cause",
+      "topicId": "bronchiolitis",
+      "category": {
+        "de": "Bronchiolitis",
+        "en": "Bronchiolitis",
+        "fa": "برونشیولیت"
+      },
+      "front": {
+        "de": "Das CT zeigt ein Tree-in-bud-Muster. Welche Aussage ist gerechtfertigt?",
+        "en": "CT shows a tree-in-bud pattern. Which statement is justified?",
+        "fa": "CT الگوی درخت در جوانه نشان می‌دهد. کدام بیان موجه است؟"
+      },
+      "answer": {
+        "de": "Ein bronchioläres Muster liegt vor; die Ursache braucht klinische Einordnung.",
+        "en": "A bronchiolar pattern is present; its cause requires clinical correlation.",
+        "fa": "الگوی برونشیولار وجود دارد؛ علت نیازمند تطبیق بالینی است."
+      },
+      "explanation": {
+        "de": "Richtig: Morphologie beschreibt den Befund, nicht automatisch seine Ursache.",
+        "en": "Correct: morphology describes the finding, not automatically its cause.",
+        "fa": "درست است: مورفولوژی یافته را توصیف می‌کند، نه لزوماً علت آن را."
+      },
+      "source": "Thorax.pdf physical pp19–20,29; Fleischner2024 doi:10.1148/radiol.232558"
+    }
+  ],
+  "lesson": {
+    "id": "bronchiolitis",
+    "path": "/thorax/bronchiolitis",
+    "title": {
+      "de": "Bronchiolitis",
+      "en": "Bronchiolitis",
+      "fa": "برونشیولیت"
+    },
+    "hero": "/educational/thorax-bronchiolitis/hero.png",
+    "heroAlt": {
+      "de": "Generierte Konzeptillustration entzündeter kleiner Atemwege mit Schleimpfropfen; keine diagnostische Aufnahme.",
+      "en": "Generated conceptual illustration of inflamed small airways with mucus plugs; not diagnostic imaging.",
+      "fa": "تصویر مفهومی تولیدشده از راه‌های هوایی کوچکِ ملتهب و پلاگ مخاطی؛ تصویر تشخیصی نیست."
+    },
+    "chapters": [
+      {
+        "id": "kleine-atemwege",
+        "icon": "airway",
+        "title": {
+          "de": "Die kleinen Atemwege sichtbar machen",
+          "en": "Recognize small-airway disease",
+          "fa": "تشخیص درگیری راه‌های هوایی کوچک"
+        },
+        "paragraphs": [
+          {
+            "de": "Bronchiolitis bezeichnet eine Entzündung der Bronchiolen. Normalerweise sind diese kleinen Atemwege im CT nicht einzeln sichtbar; verdickte Wände oder gefüllte Lumina können sie als zentrilobuläre Noduli und verzweigte Verdichtungen hervortreten lassen.",
+            "en": "Bronchiolitis means inflammation of the bronchioles. These small airways are normally not individually visible on CT; thickened walls or plugged lumina can make them visible as centrilobular nodules and branching opacities.",
+            "fa": "برونشیولیت یعنی التهاب برونشیول‌ها. این راه‌های هوایی کوچک معمولاً به‌صورت مجزا در CT دیده نمی‌شوند؛ ضخیم‌شدن دیواره یا پُرشدن مجرا می‌تواند آن‌ها را به‌شکل ندول‌های سنترلوبولار و کدورت‌های شاخه‌دار نمایان کند."
+          },
+          {
+            "de": "Zentrilobulär heißt: im Zentrum des sekundären Lobulus. Kleine Noduli halten typischerweise Abstand zur Pleura und zu den Fissuren. Erst die Verteilung, dann die Form beschreiben.",
+            "en": "Centrilobular means centred within the secondary pulmonary lobule. Small nodules typically spare the immediate pleural and fissural surfaces. Describe distribution before morphology.",
+            "fa": "سنترلوبولار یعنی در مرکز لوبول ثانویهٔ ریه. ندول‌های کوچک معمولاً سطح مجاور پلور و فیشورها را حفظ می‌کنند. ابتدا توزیع و سپس شکل را توصیف کنید."
+          }
+        ],
+        "image": {
+          "src": "/educational/thorax-bronchiolitis/pdf-case.jpg",
+          "width": 558,
+          "height": 459,
+          "rid": "24616",
+          "alt": {
+            "de": "Axiales CT im Lungenfenster mit verdickten Atemwegswänden, kleinen zentrilobulären Noduli und peripheren Verzweigungen.",
+            "en": "Axial lung-window CT with thickened airway walls, small centrilobular nodules and peripheral branching opacities.",
+            "fa": "CT محوری در پنجرهٔ ریه با ضخیم‌شدن دیوارهٔ راه‌های هوایی، ندول‌های کوچک سنترلوبولار و کدورت‌های شاخه‌دار محیطی."
+          },
+          "caption": {
+            "de": "Suchen Sie die kleinen Noduli und kurzen Verzweigungen neben den auffälligen Atemwegen. Der PDF-Fall zeigt ein bronchioläres Muster; aus diesem Schnitt allein lässt sich kein Erreger bestimmen.",
+            "en": "Find the small nodules and short branches beside the conspicuous airways. The PDF case illustrates a bronchiolar pattern; this slice alone cannot identify a pathogen.",
+            "fa": "ندول‌های کوچک و شاخه‌های کوتاه را کنار راه‌های هوایی برجسته پیدا کنید. این کیس PDF الگوی برونشیولار را نشان می‌دهد؛ از این برش به‌تنهایی نمی‌توان عامل عفونی را تعیین کرد."
+          }
+        }
+      },
+      {
+        "id": "muster-ursache",
+        "icon": "branch",
+        "title": {
+          "de": "Muster und Ursache trennen",
+          "en": "Separate pattern from cause",
+          "fa": "جداکردن الگو از علت"
+        },
+        "paragraphs": [
+          {
+            "de": "Tree-in-bud verbindet kleine Noduli mit kurzen, sich verzweigenden Linien. Das Bild erinnert an knospende Zweige. Häufig liegen gefüllte oder entzündete Bronchiolen zugrunde, etwa bei Schleim- oder Eiterimpaktion.",
+            "en": "Tree-in-bud connects small nodules with short branching lines, resembling budding twigs. Plugged or inflamed bronchioles often underlie the pattern, for example from mucus or pus impaction.",
+            "fa": "الگوی درخت در جوانه، ندول‌های کوچک را با خطوط کوتاه شاخه‌دار به هم متصل می‌کند و شبیه شاخه‌های جوانه‌زده است. اغلب برونشیول‌های پُرشده یا ملتهب، مثلاً به‌دلیل تجمع مخاط یا چرک، زمینهٔ این الگو هستند."
+          },
+          {
+            "de": "Nicht jede Erkrankung kleiner Atemwege bildet sichtbare Noduli. Air-Trapping kann ein indirekter Hinweis sein: Betroffene Lobuli werden in Exspiration nicht regelrecht dichter und kleiner. Eine Mosaikattenuierung auf einem einzelnen CT-Schnitt beweist das noch nicht.",
+            "en": "Not every small-airway disorder produces visible nodules. Air trapping can be an indirect clue: affected lobules fail to become appropriately denser and smaller on expiration. Mosaic attenuation on a single CT slice does not prove this.",
+            "fa": "همهٔ بیماری‌های راه‌های هوایی کوچک ندول قابل‌مشاهده ایجاد نمی‌کنند. حبس هوا می‌تواند سرنخ غیرمستقیم باشد: لوبول‌های درگیر در بازدم به‌طور طبیعی متراکم‌تر و کوچک‌تر نمی‌شوند. دانسیتهٔ موزائیک در یک برش CT به‌تنهایی این را ثابت نمی‌کند."
+          }
+        ],
+        "rows": [
+          [
+            {
+              "de": "Dichte verzweigte Noduli",
+              "en": "Dense branching nodules",
+              "fa": "ندول‌های متراکم شاخه‌دار"
+            },
+            {
+              "de": "Infektiöse Bronchiolitis und endobronchiale Ausbreitung mitdenken; dazu zählen TB und nichttuberkulöse Mykobakterien. Das Muster benennt keinen Erreger.",
+              "en": "Consider infectious bronchiolitis and endobronchial spread, including TB and nontuberculous mycobacteria. The pattern does not identify a pathogen.",
+              "fa": "برونشیولیت عفونی و انتشار اندوبرونشیال، از جمله سل و مایکوباکتری‌های غیرسلی، مطرح‌اند. الگو عامل عفونی را مشخص نمی‌کند."
+            }
+          ],
+          [
+            {
+              "de": "Unscharfe Milchglasnoduli",
+              "en": "Ill-defined ground-glass nodules",
+              "fa": "ندول‌های شیشه‌مات با حدود نامشخص"
+            },
+            {
+              "de": "Unter anderem bei Hypersensitivitätspneumonitis oder respiratorischer Bronchiolitis bei Rauchenden. Exposition und Begleitbefunde sind entscheidend.",
+              "en": "May occur in hypersensitivity pneumonitis or respiratory bronchiolitis in smokers, among other conditions. Exposure and associated findings matter.",
+              "fa": "از جمله در پنومونیت حساسیتی یا برونشیولیت تنفسی افراد سیگاری دیده می‌شوند. مواجهه و یافته‌های همراه اهمیت دارند."
+            }
+          ]
+        ],
+        "cave": {
+          "de": "Ein bronchioläres Muster ist keine ätiologische Diagnose. Auch Aspiration kann kleine Atemwege betreffen; Klinik, Verteilung, Verlauf und gegebenenfalls mikrobiologische Befunde müssen zusammenpassen.",
+          "en": "A bronchiolar pattern is not an etiologic diagnosis. Aspiration can also affect small airways; clinical context, distribution, evolution and microbiology when appropriate must fit together.",
+          "fa": "الگوی برونشیولار تشخیص علت نیست. آسپیراسیون هم می‌تواند راه‌های هوایی کوچک را درگیر کند؛ زمینهٔ بالینی، توزیع، سیر و در صورت نیاز یافته‌های میکروبیولوژی باید با هم سازگار باشند."
+        },
+        "checks": [
+          0,
+          1
+        ]
+      },
+      {
+        "id": "regeln",
+        "icon": "summary",
+        "title": {
+          "de": "Drei Regeln für die Bildbeurteilung",
+          "en": "Three rules for image interpretation",
+          "fa": "سه قاعده برای تفسیر تصویر"
+        },
+        "takeaways": [
+          {
+            "title": {
+              "de": "Lokalisation zuerst",
+              "en": "Location first",
+              "fa": "ابتدا محل"
+            },
+            "detail": {
+              "de": "Zentrilobuläre Noduli sprechen für eine Beziehung zu kleinen Atemwegen; die Pleura und Fissuren zum Vergleich heranziehen.",
+              "en": "Centrilobular nodules suggest a relationship to small airways; compare their position with the pleura and fissures.",
+              "fa": "ندول‌های سنترلوبولار ارتباط با راه‌های هوایی کوچک را مطرح می‌کنند؛ موقعیت آن‌ها را با پلور و فیشورها مقایسه کنید."
+            }
+          },
+          {
+            "title": {
+              "de": "Verzweigung erkennen",
+              "en": "Recognize branching",
+              "fa": "شاخه‌داربودن را بشناسید"
+            },
+            "detail": {
+              "de": "Tree-in-bud ist ein morphologischer Begriff für verknüpfte Noduli und verzweigte Linien.",
+              "en": "Tree-in-bud is a morphologic term for connected nodules and branching lines.",
+              "fa": "درخت در جوانه اصطلاحی مورفولوژیک برای ندول‌های متصل و خطوط شاخه‌دار است."
+            }
+          },
+          {
+            "title": {
+              "de": "Ursache im Kontext",
+              "en": "Cause requires context",
+              "fa": "علت به زمینه نیاز دارد"
+            },
+            "detail": {
+              "de": "Das CT-Muster gezielt mit Infektion, Exposition, Rauchen und Aspirationsrisiko abgleichen.",
+              "en": "Correlate the CT pattern with infection, exposure, smoking and aspiration risk.",
+              "fa": "الگوی CT را با عفونت، مواجهه، مصرف سیگار و خطر آسپیراسیون تطبیق دهید."
+            }
+          }
+        ]
+      }
+    ],
+    "scope": {
+      "de": "Thorax.pdf S. 19–20 und Themenüberschrift S. 29. Terminologie und diagnostische Grenzen sind mit dem Fleischner-Glossar ergänzt.",
+      "en": "Thorax.pdf pp. 19–20 and the topic heading on p. 29. Terminology and diagnostic limits are supplemented by the Fleischner glossary.",
+      "fa": "Thorax.pdf صفحات ۱۹–۲۰ و عنوان موضوع در صفحهٔ ۲۹؛ اصطلاحات و محدودیت‌های تشخیصی با واژه‌نامهٔ فلایشنر تکمیل شده‌اند."
+    },
+    "sources": [
+      {
+        "title": "Fleischner Society · Glossary of Terms for Thoracic Imaging (2024)",
+        "href": "https://doi.org/10.1148/radiol.232558",
+        "citation": "Bronchiole; Small Airways Disease; Tree-in-bud; Aspiration."
+      }
+    ],
+    "checks": [
+      {
+        "slug": "pattern",
+        "question": {
+          "de": "Welche Kombination beschreibt Tree-in-bud am besten?",
+          "en": "Which combination best describes tree-in-bud?",
+          "fa": "کدام ترکیب بهترین توصیف الگوی درخت در جوانه است؟"
+        },
+        "options": [
+          {
+            "de": "Glatte interlobuläre Septen ohne Noduli",
+            "en": "Smooth interlobular septa without nodules",
+            "fa": "سپتاهای بین‌لوبولی صاف بدون ندول"
+          },
+          {
+            "de": "Kleine Noduli an kurzen verzweigten Linien",
+            "en": "Small nodules connected to short branching lines",
+            "fa": "ندول‌های کوچک متصل به خطوط کوتاه شاخه‌دار"
+          },
+          {
+            "de": "Einzelne dünnwandige luftgefüllte Räume",
+            "en": "Isolated thin-walled air-filled spaces",
+            "fa": "فضاهای منفرد پُر از هوا با دیوارهٔ نازک"
+          },
+          {
+            "de": "Ausschließlich pleuraständige Noduli",
+            "en": "Exclusively pleural-based nodules",
+            "fa": "ندول‌های منحصراً مجاور پلور"
+          }
+        ],
+        "correct": 1,
+        "feedback": [
+          {
+            "de": "Glatte Septen bilden ein retikuläres Muster; die knospende Verzweigung fehlt.",
+            "en": "Smooth septa form a reticular pattern; the budding branches are absent.",
+            "fa": "سپتاهای صاف الگوی رتیکولار می‌سازند؛ شاخه‌های جوانه‌مانند وجود ندارند."
+          },
+          {
+            "de": "Richtig: Kleine Noduli und verzweigte Linien ergeben das Tree-in-bud-Muster.",
+            "en": "Correct: small nodules and branching lines form the tree-in-bud pattern.",
+            "fa": "درست است: ندول‌های کوچک و خطوط شاخه‌دار، الگوی درخت در جوانه را ایجاد می‌کنند."
+          },
+          {
+            "de": "Luftgefüllte Räume sind keine verzweigten weichteildichten Noduli.",
+            "en": "Air-filled spaces are not branching soft-tissue nodules.",
+            "fa": "فضاهای پُر از هوا، ندول‌های با دانسیتهٔ بافت نرم و شاخه‌دار نیستند."
+          },
+          {
+            "de": "Die rein pleurale Lage passt nicht zur typischen zentrilobulären Verteilung.",
+            "en": "An exclusively pleural location does not match the typical centrilobular distribution.",
+            "fa": "محل صرفاً پلورال با توزیع تیپیک سنترلوبولار سازگار نیست."
+          }
+        ]
+      },
+      {
+        "slug": "cause",
+        "question": {
+          "de": "Das CT zeigt ein Tree-in-bud-Muster. Welche Aussage ist gerechtfertigt?",
+          "en": "CT shows a tree-in-bud pattern. Which statement is justified?",
+          "fa": "CT الگوی درخت در جوانه نشان می‌دهد. کدام بیان موجه است؟"
+        },
+        "options": [
+          {
+            "de": "Der Erreger ist damit bestimmt.",
+            "en": "The pathogen is established.",
+            "fa": "عامل عفونی مشخص شده است."
+          },
+          {
+            "de": "Tuberkulose ist damit ausgeschlossen.",
+            "en": "Tuberculosis is excluded.",
+            "fa": "سل رد شده است."
+          },
+          {
+            "de": "Ein bronchioläres Muster liegt vor; die Ursache braucht klinische Einordnung.",
+            "en": "A bronchiolar pattern is present; its cause requires clinical correlation.",
+            "fa": "الگوی برونشیولار وجود دارد؛ علت نیازمند تطبیق بالینی است."
+          },
+          {
+            "de": "Es handelt sich zwingend um eine Hypersensitivitätspneumonitis.",
+            "en": "This must be hypersensitivity pneumonitis.",
+            "fa": "این یافته الزاماً پنومونیت حساسیتی است."
+          }
+        ],
+        "correct": 2,
+        "feedback": [
+          {
+            "de": "Verschiedene Erreger und nichtinfektiöse Ursachen können ähnliche Muster erzeugen.",
+            "en": "Different pathogens and noninfectious causes can produce similar patterns.",
+            "fa": "عوامل عفونی مختلف و علل غیرعفونی می‌توانند الگوهای مشابه ایجاد کنند."
+          },
+          {
+            "de": "Endobronchiale TB gehört gerade zu den möglichen Ursachen.",
+            "en": "Endobronchial TB is one of the possible causes.",
+            "fa": "سل اندوبرونشیال یکی از علل ممکن است."
+          },
+          {
+            "de": "Richtig: Morphologie beschreibt den Befund, nicht automatisch seine Ursache.",
+            "en": "Correct: morphology describes the finding, not automatically its cause.",
+            "fa": "درست است: مورفولوژی یافته را توصیف می‌کند، نه لزوماً علت آن را."
+          },
+          {
+            "de": "HP ist eine mögliche Differenzialdiagnose zentrilobulärer Noduli, kein Automatismus bei Tree-in-bud.",
+            "en": "HP is a differential for centrilobular nodules, not an automatic diagnosis from tree-in-bud.",
+            "fa": "HP یکی از افتراق‌های ندول سنترلوبولار است و از الگوی درخت در جوانه به‌طور خودکار تشخیص داده نمی‌شود."
+          }
+        ]
+      }
+    ]
+  }
+}

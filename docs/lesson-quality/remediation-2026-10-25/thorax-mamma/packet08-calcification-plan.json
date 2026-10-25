@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-25",
+  "status": "FROZEN_AUTHOR_READY_INDEPENDENT_REVIEW_PENDING",
+  "route": "/mamma/bildgebung/mammographie/verkalkungen",
+  "originalPool": {
+    "questionsPerLanguage": 18,
+    "cards": 22
+  },
+  "ownership": [
+    "data/mammaMammographyCalcifications.js",
+    "data/mammaCalcificationReview.js",
+    "bounded connected mammography calcification lesson text/inline parity"
+  ],
+  "draft": "Legacy filename now contains canonical18-question content actually consumed by both producers; no offline shadow pool",
+  "proposedGoals": [
+    {
+      "id": "characterise",
+      "purpose": "Characterise benign/suspicious particle morphology and choose appropriate targeted mammographic views."
+    },
+    {
+      "id": "distribution",
+      "purpose": "Describe regional/grouped/linear/segmental distribution and combine it with morphology without automatic research-matrix categorisation."
+    },
+    {
+      "id": "evolution",
+      "purpose": "Interpret real interval change and suspicious stability with prior technique and clinical context."
+    },
+    {
+      "id": "management",
+      "purpose": "Apply complete diagnostic-workup versus biopsy/follow-up pathways and distinguish negative MRI evidence from a general biopsy-omission rule."
+    }
+  ],
+  "observedProblems": [
+    "Several distractors are unrelated or explicitly absolute; correct multifactorial alternatives are conspicuously longer.",
+    "Some questions ask what the lesson/model says rather than a transferable clinical decision.",
+    "MRI4A/4B research versus routine clinical management needs primary evidence clarification and matching cards/lesson text.",
+    "Current official2025 term Layering should accompany traditional MilkofCalcium. Coarseheterogeneous0.5–1mm remains supported by actual2025summary."
+  ],
+  "sourcesReadSoFar": [
+    {
+      "url": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "read": "Actual4page2025officialsummary text; calcificationmorphology/distribution and assessmentmanagement."
+    }
+  ],
+  "pending": [
+    "Fresh independent fullpool/source/translation/teaching repair review.",
+    "Root current browser/build and central goal admission after independent acceptance.",
+    "Remaining retained-media provenance/fit audit; Dr.Zia scientific approval."
+  ],
+  "scopeLimits": "No new diagnostic media; embeddedKangNCfigure removed, normal external source retained. No wholelesson/scientific approval or publication from author runtime.",
+  "actualEvidence": "packet08-calcification/author-checkpoint.json"
+}

@@ -1150,6 +1150,97 @@ export const LESSON_TRANSLATIONS = {
   }
 }
 
+
+// Calcification08 reviewed semantic updates.
+Object.assign(LESSON_TRANSLATIONS, {
+  "In der untersuchten Biopsiekohorte war eine größere Gesamtausdehnung mit Malignität assoziiert. Daraus folgt kein hier belegter, von der Morphologie unabhängiger Effekt und keine individuelle Risikozahl. Die Ausdehnung in Millimetern dokumentieren; sie ist für Befundabgleich und Therapieplanung relevant.": {
+    "en": "Greater total extent was associated with malignancy in the studied biopsy cohort. This does not establish a morphology-independent effect or an individual probability here. Document extent in millimetres; it matters for correlation and treatment planning.",
+    "fa": "در کوهورت بیوپسی بررسی‌شده، وسعت کلی بیشتر با بدخیمی همراه بود. اینجا اثر مستقل از مورفولوژی یا درصد خطر فردی اثبات نمی‌شود. وسعت به میلی‌متر ثبت شود؛ برای تطبیق یافته‌ها و برنامه‌ریزی درمان مهم است."
+  },
+  "Die Gesamtausdehnung beschreibt das gesamte Kalkareal, nicht den Durchmesser eines einzelnen Partikels. Sie gehört in den Befund und in die Planung einer möglichen Gewebeabklärung oder Behandlung.": {
+    "en": "Total extent describes the entire calcification field, not the diameter of an individual particle. It belongs in the report and in planning possible tissue diagnosis or treatment.",
+    "fa": "وسعت کلی کل ناحیهٔ کلسیفیکاسیون را توصیف می‌کند، نه قطر یک ذره را. این اندازه در گزارش و برنامه‌ریزی تشخیص بافتی یا درمان احتمالی لحاظ می‌شود."
+  },
+  "Metaxa et al. untersuchten 241 biopsierte Befunde mit reinen Verkalkungen. Die beobachtete Assoziation ist kohortenabhängig und ersetzt weder die Morphologiebeurteilung noch ein klinisches Assessment.": {
+    "en": "Metaxa et al. studied 241 biopsied pure-calcification findings. The observed association is cohort-dependent and replaces neither morphological assessment nor clinical assessment.",
+    "fa": "Metaxa و همکاران ۲۴۱ یافتهٔ بیوپسی‌شده با کلسیفیکاسیون خالص را بررسی کردند. همراهی مشاهده‌شده به کوهورت وابسته است و جای ارزیابی مورفولوژی یا ارزیابی بالینی را نمی‌گیرد."
+  },
+  "Morphologie und Verteilung werden zusammen mit Verlauf, Begleitbefunden und Patientenkontext bewertet. Das folgende historische Forschungsmodell illustriert zwei Deskriptoren; es legt keine klinische Kategorie oder Behandlung fest.": {
+    "en": "Assess morphology and distribution together with evolution, associated findings and patient context. The historical research model below illustrates two descriptors; it does not assign a clinical category or treatment.",
+    "fa": "مورفولوژی و توزیع همراه روند، یافته‌های همراه و زمینهٔ بیمار ارزیابی می‌شوند. مدل پژوهشی تاریخی زیر دو توصیف را نشان می‌دهد؛ دستهٔ بالینی یا درمان را تعیین نمی‌کند."
+  },
+  "Historisches Forschungsmodell": {
+    "en": "Historical research model",
+    "fa": "مدل پژوهشی تاریخی"
+  },
+  "Youk2019: retrospektives Modell aus 194 operativ entfernten, ursprünglich suspekten Läsionen; externe Prüfung an 100 weiteren exzidierten Läsionen. Der historische Prädiktor war punktförmig (punctate), nicht jede runde Verkalkung. Verlauf, Patientenmerkmale und Begleitbefunde fehlen als Eingaben. Modellkategorien ersetzen keine heutige klinische BI-RADS-Zuordnung und verordnen keine Kontrolle oder Biopsie.": {
+    "en": "Youk2019: a retrospective model from 194 surgically excised, initially suspicious lesions, externally tested in 100 further excised lesions. The historical predictor was punctate, not every round calcification. Evolution, patient factors and associated findings are absent as inputs. Model categories neither replace current clinical BI-RADS assessment nor prescribe surveillance or biopsy.",
+    "fa": "Youk۲۰۱۹: مدل گذشته‌نگر از ۱۹۴ ضایعهٔ ابتدا مشکوک و برداشته‌شده با جراحی، با آزمون خارجی در ۱۰۰ ضایعهٔ جراحی‌شدهٔ دیگر. متغیر تاریخی نقطه‌ای (punctate) بود، نه هر کلسیفیکاسیون گرد. روند، عوامل بیمار و یافته‌های همراه در ورودی‌ها نیستند. دسته‌های مدل نه جای ارزیابی بالینی امروزی BI-RADS را می‌گیرند و نه پیگیری یا بیوپسی تجویز می‌کنند."
+  },
+  "Historische Modellkategorie": {
+    "en": "Historical model category",
+    "fa": "دستهٔ مدل تاریخی"
+  },
+  "Klinisches Assessment gesondert: Dieser Modellwert berechnet kein individuelles Risiko und begründet weder Verlaufskontrolle noch Gewebeentnahme.": {
+    "en": "Separate clinical assessment: this model value does not calculate individual risk and justifies neither surveillance nor tissue sampling.",
+    "fa": "ارزیابی بالینی جداگانه: این مقدار مدل خطر فردی را محاسبه نمی‌کند و نه پیگیری و نه نمونه‌برداری بافتی را توجیه نمی‌کند."
+  },
+  "Beispiel: Regionaler amorpher Kalk ergibt im historischen Modell 3. Bei neuer benachbarter Architekturstörung muss diese gezielt abgeklärt und der Gesamtbefund neu bewertet werden. Das Modell kennt diesen Begleitbefund nicht; sein Wert 3 kann keine Sechsmonatskontrolle des Gesamtbefunds verordnen.": {
+    "en": "Example: regional amorphous calcifications yield 3 in the historical model. New adjacent architectural distortion requires targeted investigation and reassessment of the whole finding. The model does not include this associated finding; its value of 3 cannot prescribe six-month surveillance for the overall finding.",
+    "fa": "مثال: کلسیفیکاسیون آمورف ناحیه‌ای در مدل تاریخی مقدار ۳ می‌گیرد. دیستورشن معماری جدید در مجاورت آن نیازمند بررسی هدفمند و ارزیابی مجدد کل یافته‌هاست. مدل این یافتهٔ همراه را در بر ندارد؛ مقدار ۳ آن نمی‌تواند پیگیری شش‌ماههٔ مجموعهٔ یافته‌ها را تجویز کند."
+  },
+  "Fueger2021 modellierte bei reinem Mikrokalk ohne Begleitbefund eine mögliche Risikoreduktion nach negativer MRT. Die 22-%-Prätestschwelle ist ein Modellergebnis und keine Grenze zwischen 4A und 4B. Die Autoren schlugen für ausgewählte Fälle 6–12 Monate Überwachung vor; das ist kein prospektiv validiertes Biopsieersatz-Protokoll. Eine belastbare gepoolte Regel für 4A/4B/4C wurde nicht gezeigt. Bei bestätigter Kategorie 4/5 bleibt Gewebediagnostik Standard.": {
+    "en": "Fueger2021 modelled possible risk reduction after negative MRI for pure microcalcifications without associated findings. The 22% pretest threshold is a model result, not a boundary between 4A and 4B. The authors proposed 6–12-month surveillance for selected cases; this is not a prospectively validated biopsy-replacement protocol. A robust pooled 4A/4B/4C rule was not established. Tissue diagnosis remains standard for confirmed category 4/5.",
+    "fa": "Fueger۲۰۲۱ کاهش احتمالی خطر پس از MRI منفی را برای میکروکلسیفیکاسیون خالص بدون یافتهٔ همراه مدل کرد. آستانهٔ پیش‌آزمون ۲۲٪ نتیجهٔ مدل است، نه مرز 4A و 4B. نویسندگان برای موارد منتخب پایش ۶ تا ۱۲ ماه را پیشنهاد کردند؛ این پروتکل آینده‌نگرِ اعتبارسنجی‌شدهٔ جایگزین بیوپسی نیست. قاعدهٔ تجمیعی معتبر برای 4A/4B/4C اثبات نشد. در دستهٔ تأییدشدهٔ 4/5، تشخیص بافتی استاندارد باقی می‌ماند."
+  },
+  "Bei bestätigter mammographischer Kategorie 4 oder 5 bleibt Gewebediagnostik Standard. MRT-gestützter Biopsieverzicht ist eine begrenzte Forschungsfrage; negative MRT allein verordnet keine Herabstufung oder Verlaufskontrolle.": {
+    "en": "Tissue diagnosis remains standard for confirmed mammographic category 4 or 5. MRI-supported biopsy avoidance is a limited research question; negative MRI alone prescribes neither downgrading nor surveillance.",
+    "fa": "در دستهٔ ماموگرافیک تأییدشدهٔ 4 یا 5، تشخیص بافتی استاندارد است. صرف‌نظر از بیوپسی با کمک MRI پرسش پژوهشی محدودی است؛ MRI منفی به‌تنهایی کاهش دسته یا پیگیری تجویز نمی‌کند."
+  },
+  "Kang BJ. J Korean Soc Radiol. 2026;87:437–459, Fig. 6. doi:10.3348/jksr.2026.0028. CC BY-NC 4.0.": {
+    "en": "Kang BJ. J Korean Soc Radiol. 2026;87:437–459, Fig. 6. doi:10.3348/jksr.2026.0028. CC BY-NC 4.0.",
+    "fa": "Kang BJ. J Korean Soc Radiol. 2026;87:437–459، شکل ۶. doi:10.3348/jksr.2026.0028. CC BY-NC 4.0."
+  },
+  "In CC erscheinen die Sedimente oft rundlich und unscharf. Besonders in einer echten 90°-Seitaufnahme (LM/ML), gelegentlich auch in MLO, wird die schwerkraftabhängige halbmond-/teetassenartige Schichtung am Zystenboden sichtbar. Entscheidend ist der Formwechsel zwischen Projektionen. Der aktuelle Deskriptor lautet „Layering“ (historisch: Milk of Calcium).": {
+    "en": "On CC, sediment often appears rounded and smudgy. Especially on a true 90° lateral view (LM/ML), and sometimes on MLO, gravity-dependent semilunar/teacup-like layering at the cyst floor becomes visible. Shape change between projections is key. The current descriptor is “layering” (historically: milk of calcium).",
+    "fa": "در CC رسوب اغلب گرد و محو است. به‌ویژه در نمای لترال واقعی ۹۰ درجه (LM/ML) و گاهی در MLO، لایه‌بندی هلالی/فنجانی وابسته به جاذبه در کف کیست دیده می‌شود. تغییر شکل میان نماها مهم است. اصطلاح کنونی «لایه‌بندی» است (اصطلاح قدیمی: شیر کلسیم)."
+  },
+  "Schema: CC versus echte 90°-Seitaufnahme (LM/ML)": {
+    "en": "Schematic: CC versus true 90° lateral view (LM/ML)",
+    "fa": "شماتیک: CC در مقایسه با لترال واقعی ۹۰ درجه (LM/ML)"
+  },
+  "Amorph und grob heterogen sind suspekte Deskriptoren ohne universelle feste Reihenfolge. Ihr beobachteter PPV hängt von Kohorte, Verteilung und Kontext ab; grob heterogen ist nicht typisch benigner grober Kalk.": {
+    "en": "Amorphous and coarse heterogeneous are suspicious descriptors without a universal fixed ordering. Observed PPV depends on cohort, distribution and context; coarse heterogeneous is not typically benign coarse calcification.",
+    "fa": "آمورف و درشت ناهمگون اصطلاح‌های مشکوک‌اند و ترتیب ثابت همگانی ندارند. ارزش اخباری مثبت مشاهده‌شده به کوهورت، توزیع و زمینه بستگی دارد؛ درشت ناهمگون همان کلسیفیکاسیون درشت تیپیک خوش‌خیم نیست."
+  }
+})
+
+Object.assign(LESSON_TRANSLATIONS, {
+  "LEHRMODELL": {
+    "en": "TEACHING MODEL",
+    "fa": "مدل آموزشی"
+  },
+  "Quelle zum Layering-Prinzip:": {
+    "en": "Source for the layering principle:",
+    "fa": "منبع اصل لایه‌بندی:"
+  },
+  "Eine einzelne Gruppe runder Verkalkungen (historisch auch punktförmig) ohne Voraufnahmen kann nach vollständiger diagnostischer Abklärung und ohne suspekte Zusatzmerkmale als BI-RADS 3 eingestuft werden; erste Kontrolle nach 6 Monaten. Das gilt nicht pauschal für amorphe Verkalkungen.": {
+    "en": "A solitary group of round calcifications (historically also termed punctate) without prior images may qualify for BI-RADS 3 after complete diagnostic work-up and with no additional suspicious features; first follow-up at 6 months. This does not routinely apply to amorphous calcifications.",
+    "fa": "یک گروه منفرد کلسیفیکاسیون گرد (با اصطلاح قدیمی نقطه‌ای نیز بیان‌شده) در نبود تصاویر قبلی، پس از بررسی تشخیصی کامل و بدون ویژگی همراه مشکوک می‌تواند BI-RADS 3 باشد؛ نخستین پیگیری پس از ۶ ماه است. این قاعده به‌طور کلی برای کلسیفیکاسیون آمورف صدق نمی‌کند."
+  },
+  "2D-Vergrößerungsaufnahmen zeigen die Kalkdetails; DBT ergänzt den räumlichen Kontext. Typisch benigne Muster wie Coarse (klassisch popcornartig), Rim, sekretorische Stäbchen und Layering sicher erkennen.": {
+    "en": "2D magnification views show calcification detail; DBT adds spatial context. Recognise typically benign patterns such as coarse (classically popcorn-like), rim, secretory rods and layering.",
+    "fa": "نماهای بزرگ‌نمایی دوبعدی جزئیات کلسیفیکاسیون را نشان می‌دهند؛ DBT زمینهٔ فضایی را تکمیل می‌کند. الگوهای تیپیک خوش‌خیم مانند درشت (کلاسیک پاپ‌کورنی)، حاشیه‌ای، میله‌های ترشحی و لایه‌بندی را بشناسید."
+  }
+})
+
+Object.assign(LESSON_TRANSLATIONS, {
+  "Beispiel: Regionalem amorphem Kalk wird im historischen Modell die Modellkategorie 3 zugeordnet. Bei neuer benachbarter Architekturstörung muss diese gezielt abgeklärt und der Gesamtbefund neu bewertet werden. Das Modell kennt diesen Begleitbefund nicht; seine Modellkategorie 3 kann keine Sechsmonatskontrolle des Gesamtbefunds verordnen.": {
+    "en": "Example: Regional amorphous calcifications are assigned model category 3 in the historical model. A new adjacent architectural distortion requires targeted work-up and reassessment of the overall findings. The model has no input for that associated finding; its model category 3 cannot prescribe six-month surveillance of the whole finding.",
+    "fa": "مثال: کلسیفیکاسیون آمورف ناحیه‌ای در مدل تاریخی در دستهٔ مدل ۳ قرار می‌گیرد. دیستورشن معماری جدید مجاور باید هدفمند بررسی و کل یافته‌ها دوباره ارزیابی شوند. مدل این یافتهٔ همراه را ورودی نمی‌گیرد؛ دستهٔ مدل ۳ نمی‌تواند پیگیری شش‌ماههٔ کل یافته را تجویز کند."
+  }
+})
+
 export function translateLesson(value, lang = 'de') {
   if (lang === 'de' || typeof value !== 'string') return value
   return LESSON_TRANSLATIONS[value.replace(/\s+/g, ' ').trim()]?.[lang] ?? value

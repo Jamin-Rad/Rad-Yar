@@ -1,0 +1,8 @@
+{
+  "issue": "ATV06-LNG-01",
+  "id": "hcc-02-aphe",
+  "path": "answer.de",
+  "before": "Nicht randförmige arterielle Hyperenhancement der Läsion gegenüber der Leber.",
+  "after": "Nicht-randförmiges arterielles Hyperenhancement der Läsion gegenüber der Leber.",
+  "scope": "Proposed After only repaired; currentBefore preserved for canonical guard. Actual canonical integration40objects after all Before checks."
+}

@@ -1,0 +1,289 @@
+{
+  "packet": "ATV06",
+  "reviewDate": "2026-10-25",
+  "reviewer": "/root/brain_original_pools_next",
+  "independentOfAuthor": true,
+  "workspace": "C:/Users/Drham/Documents/GitHub/Rad-Yar/.worktrees/gehirn-completion-main",
+  "role": "Independent read-only review. Production and shared banks untouched. Only independent reports and a read-only runtime checker written.",
+  "routes": [
+    "/abdomen/leber/haemangiom",
+    "/abdomen/leber/hcc",
+    "/abdomen/leber/li-rads"
+  ],
+  "decision": "ACCEPT_BOUNDED_CONTENT_AND_ACTUAL_HCC_SHARED_AFTER",
+  "summary": "Fresh actual global After closure PASS:40 integrated HCC objects equal accepted repaired After, other54 canonical/global objects unchanged, inline hcc03 equals actual shared canonical item in all3 languages. Exactly one German grammar field changed from reviewed overlay. No open content findings. Whole-route browser/media and Dr.Zia approval remain separate.",
+  "openFindings": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0
+  },
+  "artifactDecisions": {
+    "allOriginalPools": "Bounded clinical/educational acceptance: original20 question concepts and22 card IDs retained; three targeted LI-RADS gap pairs added in the existing canonical producer.",
+    "actualHaemangiomaAndLiRads": "PASS: 39 actual localized questions and15 actual cards equal the independently read payloads, including all newly added LI-RADS pairs.",
+    "proposedHcc": "PASS_ACTUAL_AFTER: all30localized questions and10card triads now equal accepted After with one reviewed German grammar repair.",
+    "teachingParity": "PASS for the bounded changes: all39 declared HCC/LI-RADS copy paths match actual current content exactly with no undeclared content-object delta; haemangioma actual chapters, inline check and copy read in all three languages.",
+    "goals": "PASS: actual routeCoverage matches blueprint content (blueprint intentionally omits status metadata). All13 observable goals resolve all23 question concepts and25 cards, including locale variants.",
+    "inlineConsumers": "PASS: source consumer contracts reviewed; inline hcc03 snapshot now equals actual shared canonical item in all3languages. Actual browser remains separate.",
+    "protectedOtherContent": "HCC_PLANNING, LIRADS_NEXT, LIRADS_CARD_TOPIC and LIRADS_TOPIC_GROUP equal supplied pre-author runtime artifact. Detailed retained therapy and full media are outside this bounded acceptance."
+  },
+  "gates": {
+    "SRC": {
+      "status": "PASS",
+      "scope": "Reviewed assessment rules and bounded teaching changes",
+      "evidence": "Relevant user PDF text and all8 actual page images were independently read, including the conflicting compact LI-RADS flow. Fresh original guideline/research readings below support the corrected rules and explicit qualifications.",
+      "evidenceBlockers": [
+        "Some direct PMC/full-PDF pages were CAPTCHA/403 limited. Original publisher-indexed passages, institutional original-PDF mirror and complete PubMed abstracts/captions were used as specified below; no claim to reading inaccessible full articles or image pixels."
+      ]
+    },
+    "EDU": {
+      "status": "PASS",
+      "evidence": "Four haemangioma, five HCC and four LI-RADS goals map to the whole reviewed pool. Homogeneous differential patterns replace former tautological/absolute distractors. Text cases supply their own findings. Three LI-RADS additions test category boundaries rather than inflate an arbitrary quota. No duplicate assessment bank or new chapter introduced.",
+      "limits": "No empirical item-discrimination study or whole-course instructional certification."
+    },
+    "VIS": {
+      "status": "BLOCKED",
+      "scope": "Whole-route media release only",
+      "evidence": "No new diagnostic image asset introduced by this packet. Actual user-PDF images inspected for coverage. Retained application galleries, individual sequences/frames, contributor permissions and diagram/browser rendering were not independently recertified.",
+      "evidenceBlockers": [
+        "No full live gallery/frame/rights review in this independent task."
+      ]
+    },
+    "LNG": {
+      "status": "PASS",
+      "evidence": "Original full DE/EN/FA review plus exact one-field German card repair retested. No other94object payload change."
+    },
+    "ASM": {
+      "status": "PASS",
+      "scope": "All94 reviewed actual assessment objects and bounded inline consumers",
+      "evidence": "Fresh actual imports verify all40HCC shared After and54unchanged canonical/global objects. HCC03 inline snapshot equals actual canonical bank in DE/EN/FA. Exact repaired payload recorded in packet06-independent-after.json."
+    },
+    "UX": {
+      "status": "BLOCKED",
+      "evidence": "Actual route/component/consumer source read, including quiz counts and canonical inline selection. No build, server, actual browser, auth or viewport test performed by this reviewer. Author SSR claims are not adopted as browser evidence.",
+      "evidenceBlockers": [
+        "Root actual-browser/access/RTL/feedback and build evidence remains separate."
+      ]
+    },
+    "REV": {
+      "status": "PASS",
+      "evidence": "Independent author-separated review, fresh minor repair retest and actual global After closure completed without production edits by reviewer."
+    }
+  },
+  "findings": [
+    {
+      "id": "ATV06-LNG-01",
+      "severity": "minor",
+      "gates": [
+        "LNG"
+      ],
+      "location": "shared-bank-patches-packet06.json -> hcc-02-aphe.after.answer.de",
+      "evidence": "Nicht randförmige arterielle Hyperenhancement der Läsion gegenüber der Leber.",
+      "problem": "Incorrect grammatical gender/adjective inflection in the German short answer. The APHE meaning remains clear and agrees with its explanation and other languages.",
+      "learnerImpact": "Low-impact avoidable language defect in a learning card; no incorrect clinical key.",
+      "requiredCorrection": "Replace only this answer with 'Nicht-randförmiges arterielles Hyperenhancement der Läsion gegenüber der Leber.' in the accepted proposed After, then carry that exact value into actual shared integration.",
+      "retest": "Compare exact repaired card field, preserve every other card/question payload and all IDs/keys; refresh affected overlay/proposal hashes. Actual global After closure remains a distinct later check.",
+      "status": "CLOSED by fresh exact minor repair and actual global After retest",
+      "retestResult": "PASS: exactly one answer.de field differs from accepted94object overlay; all other payloads and all keys/IDs unchanged. Actual global card equals repaired After."
+    }
+  ],
+  "runtimeEvidence": {
+    "file": "packet06-independent-runtime.json",
+    "checker": "tmp/assessment-quality/review-atv06.cjs",
+    "method": "Actual source modules bundled in memory with esbuild write:false, then exports compared by deep equality. Author validator not executed because it writes author evidence.",
+    "result": "PASS_INDEPENDENT_READONLY_GUARDS",
+    "counts": {
+      "localizedQuestions": 69,
+      "questionConcepts": 23,
+      "cardTriads": 25,
+      "overlayObjects": 94,
+      "wrongFeedbackFields": 207,
+      "retainedOriginalLocalizedKeys": 60,
+      "retainedOriginalCardIds": 22,
+      "actualCanonicalGlobalObjects": 54,
+      "sharedCurrentBeforeObjects": 40,
+      "goals": 13,
+      "declaredHccLiRadsTeachingDeltaPaths": 39
+    },
+    "questionHashes": {
+      "de": "12915409bd8b81009e8d75ff3be741f9e8c73eb849e5e78b8f9416eb0bd0055e",
+      "en": "1dbc0ae42c1cfd7298cfb7d2d1bfe6176d86c18567ae141ce069b91f25155656",
+      "fa": "67d8fc6dc5e6a5b1a1344eada2c29f4a20dbe19f6a2fd5fc211b7a6ddf8efab0"
+    },
+    "cardsHash": "c2003675d9184c6fecaa06521bd3185fd1cb3a60ddfeb069794abb907d237ccb",
+    "sharedProposalsHash": "92c476af51af6b26076597e408146da2286271e48d2de4f5dee9f9ba5f548156",
+    "allSevenFrozenSourceHashesMatchAuthorManifest": true,
+    "note": "Initial independent whole-routeCoverage assertion detected only expected AUTHOR_UNREVIEWED metadata absent in blueprint. Explicitly excluding that metadata gives exact blueprint content equality; no clinical mismatch was ignored. Before snapshots are supplied pre-author artifacts, not a separate historical Git verification."
+  },
+  "sourceCoverage": {
+    "userPdf": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Abdomen.pdf",
+    "pdfSha256": "a27901cb4a002b99dad3d2f1864585e3e1ca4377f7f19c852e6b4160308e2d0e",
+    "totalPages": 99,
+    "actualRead": [
+      {
+        "physical": [
+          8,
+          9,
+          10
+        ],
+        "printed": [
+          7,
+          8,
+          9
+        ],
+        "text": "Fresh pypdf extraction read",
+        "images": "All3 actual page PNGs read",
+        "topics": "Haemangioma vascular nature, ultrasound, classic dynamics, T2/DWI and variants",
+        "conflictsResolved": "Context-free ultrasound reassurance and universal complete fill qualified; atypical variants separated; unsupported brighter-than-bile frequency removed."
+      },
+      {
+        "physical": [
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "printed": [
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "text": "Fresh pypdf extraction read",
+        "images": "All5 actual page PNGs read, including LI-RADS decision table/compact flow",
+        "topics": "HCC risk and sequences, major features, LI-RADS and management context",
+        "conflictsResolved": "Older compact10–19mm flow differs from officialv2018 washout/growth exception. Packet uses official diagnosticv2018. Older rigid TACE/SIRT rules not introduced into assessed decisions."
+      }
+    ],
+    "imagePaths": "tmp/abdomen-completion/page-08.png through10 and19 through23",
+    "deferred": "Remaining91 user-PDF pages, FLC subsection and detailed retained HCC therapy are not certified by this bounded packet. No whole-PDF coverage claim."
+  },
+  "freshPrimaryReadings": [
+    {
+      "source": "ACR original CT/MRI LI-RADS v2018 Core",
+      "url": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/LI-RADS_Core.pdf",
+      "read": "Diagnostic table/footnote; getting started and eligibility; ancillary rules; technical phases; major features/growth; TIV and targetoid LR-M definitions. Parsed table/text actually read. Screenshot attempts did not deliver visible pixels, so no primary-figure pixel inspection claimed.",
+      "supports": "10–19mm table exception, contrast-specific washout, ancillary cap, TIV specificity and eligibility."
+    },
+    {
+      "source": "ACR current releases and application FAQ",
+      "url": "https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/LI-RADS",
+      "additionalUrl": "https://radssupport.acr.org/support/solutions/articles/11000079463-application",
+      "read": "Current directory distinguishes diagnosticCT/MRIv2018 from2024 surveillance/treatment-response releases. Actual application FAQ001–008 read, including vascular and pediatric exclusions."
+    },
+    {
+      "source": "EASL2016 original benign-liver-tumour guideline",
+      "url": "https://easl.eu/wp-content/uploads/2016/10/EASL-CPG-on-Management-of-benign-liver-tumours.pdf",
+      "doi": "https://doi.org/10.1016/j.jhep.2016.04.001",
+      "read": "Original indexed haemangioma pathology/imaging text and boxed recommendations read. Healthy-liver<3cm context, oncology/underlying-disease contrast requirement and classic dynamic profile checked. DirectPDF403 limitation recorded."
+    },
+    {
+      "source": "ACG2024 original focal-liver-lesion guideline",
+      "url": "https://doi.org/10.14309/ajg.0000000000002857",
+      "read": "Publisher-indexed original haemangioma section/key concepts24a/b–28 and relevant captions; diagnostic context and different<2cm rule checked. Version distinction is explicit in lesson/card, not merged."
+    },
+    {
+      "source": "Vossen2008 original study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18830105/",
+      "read": "Complete abstract and original figure captions. No figure pixels or numeric ADC cutoff adopted; ADC interpreted as part of combined morphology/dynamics."
+    },
+    {
+      "source": "Jia2021 original radiological study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34041675/",
+      "read": "Complete original abstract; sclerosed/sclerosing variant findings and ADC caveat checked. No universal low-ADC rule inferred."
+    },
+    {
+      "source": "Takinoshita2022 original case report",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36451903/",
+      "doi": "https://doi.org/10.1259/bjrcr.20220029",
+      "read": "Complete abstract and detailed original imaging/histology captions. Rare true-restriction exception and corrected first-author attribution supported. DirectPMC CAPTCHA; no unseen pixels or generalized restriction frequency adopted."
+    },
+    {
+      "source": "Kitao2010 original study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20663969/",
+      "read": "Complete purpose/methods/results/conclusion abstract. Transporter-related uptake and possible iso/hyperintense HCC verified; no universal cohort frequency inferred."
+    },
+    {
+      "source": "Kneuertz2012 original cohort",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3538368/",
+      "doi": "https://doi.org/10.1245/s10434-012-2336-0",
+      "read": "Indexed original methods, imaging results, relevant discussion and figure captions. Infiltrative boundaries/variable enhancement and vascular involvement checked; historical IAT policies not adopted. No figure pixels seen."
+    },
+    {
+      "source": "AASLD2023 original practice guidance",
+      "url": "https://doi.org/10.1097/hep.0000000000000466",
+      "read": "Original publisher-indexed diagnosis/LR4 recommendations and staging section read. Imaging-versus-biopsy decision tied to immediate management needs; BCLC includes liver dysfunction and ECOG with tumour burden. DirectPMC CAPTCHA; full therapy recertification not claimed."
+    }
+  ],
+  "translationSensitiveChecks": [
+    "<3cm EASL2016 versus<2cm ACG2024 kept versioned and conditional in DE/EN/FA.",
+    "Gadoxetate portal-venous-only washout versus extracellular portal/delayed distinction preserved.",
+    "≥50% within≤6months threshold growth and10–19mm category difference preserved.",
+    "Ancillary optional upgrade capped atLR4; TIV enhancing-soft-tissue requirement and non-HCC-specificity preserved.",
+    "Diffusion restriction versus T2 shine-through and supportive ADC/HBP rather than isolated proof preserved."
+  ],
+  "filesActuallyRead": [
+    "skills/radyar-lessons/SKILL.md",
+    "docs/lesson-quality/standard.md",
+    "docs/educational-page-design-principles.md",
+    "docs/lesson-quality/review-template.md",
+    "packet06-author-manifest.json",
+    "packet06-blueprint.json",
+    "packet06-sources.json",
+    "packet06-original-read-ledger.json",
+    "packet06-haemangioma-changes.json",
+    "packet06-hcc-lesson-changes.json",
+    "packet06-lirads-lesson-changes.json",
+    "packet06-lirads-changes.json",
+    "shared-bank-patches-packet06.json",
+    "tmp/assessment-quality/packet06-author-runtime.json",
+    "tmp/assessment-quality/atv06-original-pool.json",
+    "tmp/assessment-quality/hcc06-lesson-before.json",
+    "tmp/assessment-quality/lirads06-lesson-before.json",
+    "data/haemangiomaTraining.js",
+    "data/haemangiomaLesson.js",
+    "data/abdomenHccPlanning.js",
+    "data/assessmentQuality/atvLiver.js",
+    "data/questions.js relevant actual exports",
+    "data/flashcards.js relevant actual exports",
+    "app/abdomen/leber/haemangiom/LessonContent.jsx",
+    "app/abdomen/leber/hcc/page.js bounded content/consumer",
+    "app/abdomen/leber/li-rads/page.js bounded content/consumer",
+    "components/lesson-template/TopicAssessment.jsx"
+  ],
+  "browserEvidence": {
+    "status": "NOT_PERFORMED_BY_THIS_REVIEWER",
+    "languagesThemesViewports": [],
+    "authBypass": false,
+    "buildOrServerStarted": false
+  },
+  "scientificApprovalDrZia": "pending",
+  "publication": "Not performed or approved by this reviewer",
+  "requiredNextChecks": [
+    "Root actual build/browser/access evidence; retained media/rights scope and Dr.Zia scientific decision remain explicit.",
+    "Parent publisher-module/route-goal registration and actual generated goal closure remain separate if changed after this runtime snapshot."
+  ],
+  "actualAfterClosure": {
+    "file": "packet06-independent-after.json",
+    "status": "PASS_ACTUAL_AFTER_AND_EXACT_MINOR_REPAIR",
+    "sharedAfter": 40,
+    "otherCanonicalGlobalUnchanged": 54,
+    "onlyChangedFields": [
+      {
+        "path": "overlay.cards.11.answer.de",
+        "before": "Nicht randförmige arterielle Hyperenhancement der Läsion gegenüber der Leber.",
+        "after": "Nicht-randförmiges arterielles Hyperenhancement der Läsion gegenüber der Leber."
+      }
+    ],
+    "questionsHashes": {
+      "de": "12915409bd8b81009e8d75ff3be741f9e8c73eb849e5e78b8f9416eb0bd0055e",
+      "en": "1dbc0ae42c1cfd7298cfb7d2d1bfe6176d86c18567ae141ce069b91f25155656",
+      "fa": "67d8fc6dc5e6a5b1a1344eada2c29f4a20dbe19f6a2fd5fc211b7a6ddf8efab0"
+    },
+    "cardsHash": "928ac27b1ced4ff6ee2f63a3008f4defbfa5401ebb90c4c1160205f6e6824d76",
+    "sharedProposalsHash": "6d055e916962109e82f9a455a18a3d998849c5d248e00eeab653a6e225a7c924",
+    "allSevenFrozenSourceHashesUnchanged": true,
+    "limits": "No whole-route browser/media/Dr.Zia or publication approval. Publisher registration of seventh module and route goals is a separate parent action unless independently recorded later."
+  }
+}

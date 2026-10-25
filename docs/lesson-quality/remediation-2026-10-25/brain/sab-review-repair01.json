@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-25",
+  "issues": [
+    "SAB-SRC-01",
+    "SAB-ASM-02"
+  ],
+  "deltas": [
+    {
+      "path": "lesson.ct.stagesRows.0.2.de",
+      "before": "Bei akutem schwerem Kopfschmerz ohne neues neurologisches Defizit kann ein hochwertiges natives CT, befundet durch einen Facharzt für Neuroradiologie, eine aSAB innerhalb dieses Zeitfensters diagnostizieren oder ausschließen. Die AHA/ASA-Empfehlung nennt ausdrücklich <6 h. Genau 6 h sind durch diese CT-only-Empfehlung nicht abgedeckt und müssen im klinischen Kontext beurteilt werden.",
+      "after": "Bei akutem schwerem Kopfschmerz ohne neues Defizit ist ein hochwertiges, neuroradiologisch fachärztlich befundetes CT bei <6 h ein vertretbarer Ausschlussweg. Der Diagnosealgorithmus in Abbildung 2 der AHA/ASA-Leitlinie ordnet bereits ≥6 h dem weiteren Abklärungspfad mit LP nach negativem CT zu."
+    },
+    {
+      "path": "lesson.ct.stagesRows.0.2.en",
+      "before": "For acute severe headache without a new neurological deficit, a high-quality non-contrast CT interpreted by a board-certified neuroradiologist can diagnose or exclude aSAH within this time window. The AHA/ASA recommendation explicitly specifies <6 hours. Exactly 6 hours is not covered by this CT-only recommendation and requires assessment in clinical context.",
+      "after": "For acute severe headache without a new deficit, high-quality CT read by a board-certified neuroradiologist at <6 hours is a reasonable rule-out pathway. Figure 2 of the AHA/ASA guideline places patients at ≥6 hours in the further-work-up pathway with LP after negative CT."
+    },
+    {
+      "path": "lesson.ct.stagesRows.0.2.fa",
+      "before": "در سردرد حاد و شدید بدون نقص عصبی جدید، CT بدون کنتراست باکیفیت که توسط نورورادیولوژیست دارای بورد تخصصی تفسیر شود می‌تواند در این بازه زمانی aSAB را تشخیص دهد یا رد کند. توصیه AHA/ASA صراحتاً کمتر از ۶ ساعت را ذکر می‌کند. دقیقاً ۶ ساعت تحت پوشش این توصیه CT به‌تنهایی نیست و باید در زمینه بالینی ارزیابی شود.",
+      "after": "در سردرد حاد شدید بدون نقص جدید، CT باکیفیت با تفسیر نورورادیولوژیست دارای بورد در کمتر از ۶ ساعت مسیر قابل‌قبولی برای رد بیماری است. الگوریتم تشخیصی شکل ۲ راهنمای AHA/ASA، از ۶ ساعت به بعد را در مسیر بررسی بیشتر با LP پس از CT منفی قرار می‌دهد."
+    },
+    {
+      "path": "lesson.ct.stagesRows.1.0.de",
+      "before": "Mehr als 6 Stunden oder neues Defizit",
+      "after": "Ab 6 Stunden oder neues Defizit"
+    },
+    {
+      "path": "lesson.ct.stagesRows.1.0.en",
+      "before": "More than 6 hours or a new deficit",
+      "after": "At 6 hours or later, or a new deficit"
+    },
+    {
+      "path": "lesson.ct.stagesRows.1.0.fa",
+      "before": "بیش از ۶ ساعت یا نقص عصبی جدید",
+      "after": "از ۶ ساعت به بعد یا نقص عصبی جدید"
+    },
+    {
+      "path": "lesson.ct.stagesRows.1.2.de",
+      "before": "Bei Vorstellung mehr als 6 Stunden nach Beginn oder bei neuem neurologischem Defizit empfiehlt die AHA/ASA-Leitlinie nach negativem CT eine Liquorpunktion. Die Entscheidung gehört in den klinischen Kontext.",
+      "after": "Nach dem Diagnosealgorithmus der AHA/ASA 2023 (Abb. 2) folgt bei ≥6 h seit Beginn oder neuem neurologischem Defizit auf ein negatives CT eine LP zur weiteren Abklärung; klinische Voraussetzungen und lokale Durchführung beachten."
+    },
+    {
+      "path": "lesson.ct.stagesRows.1.2.en",
+      "before": "For presentation more than 6 hours after onset or with a new neurological deficit, the AHA/ASA guideline recommends lumbar puncture after a negative CT. Interpret the decision in clinical context.",
+      "after": "Under the AHA/ASA 2023 diagnostic algorithm (Figure 2), a negative CT at ≥6 hours after onset or with a new neurological deficit is followed by LP for further evaluation; consider clinical prerequisites and local procedures."
+    },
+    {
+      "path": "lesson.ct.stagesRows.1.2.fa",
+      "before": "در مراجعه بیش از ۶ ساعت پس از شروع یا وجود نقص عصبی جدید، راهنمای AHA/ASA پس از CT منفی پونکسیون کمری را توصیه می‌کند. تصمیم باید در زمینه بالینی تفسیر شود.",
+      "after": "طبق الگوریتم تشخیصی AHA/ASA 2023 (شکل ۲)، در۶ ساعت یا بیشتر از شروع یا در صورت نقص عصبی جدید، پس از CT منفی برای بررسی بیشتر LP انجام می‌شود؛ پیش‌شرط‌های بالینی و روش اجرای محلی لحاظ شوند."
+    },
+    {
+      "path": "lesson.ct.key.de",
+      "before": "Ein negatives CT schließt eine SAB nicht unter allen Bedingungen aus. Bei Vorstellung mehr als 6 Stunden nach Beginn oder bei neuem neurologischem Defizit empfiehlt die AHA/ASA-Leitlinie nach negativem CT eine Lumbalpunktion mit Liquoranalyse; lokale Präanalytik beachten.",
+      "after": "Ein negatives CT schließt eine SAB nicht unter allen Bedingungen aus. Bei Vorstellung 6 Stunden oder mehr nach Beginn oder bei neuem neurologischem Defizit empfiehlt die AHA/ASA-Leitlinie nach negativem CT eine Lumbalpunktion mit Liquoranalyse; lokale Präanalytik beachten."
+    },
+    {
+      "path": "lesson.ct.key.en",
+      "before": "A negative CT does not exclude SAH in every setting. For presentation more than 6 hours after onset or with a new neurological deficit, the AHA/ASA guideline recommends lumbar puncture with CSF analysis after a negative CT; follow local laboratory protocols.",
+      "after": "A negative CT does not exclude SAH in every setting. For presentation 6 hours or later after onset or with a new neurological deficit, the AHA/ASA guideline recommends lumbar puncture with CSF analysis after a negative CT; follow local laboratory protocols."
+    },
+    {
+      "path": "lesson.ct.key.fa",
+      "before": "CT منفی در همه شرایط SAB را رد نمی‌کند. در مراجعه بیش از ۶ ساعت پس از شروع یا وجود نقص عصبی جدید، راهنمای AHA/ASA پس از CT منفی پونکسیون کمری همراه با آنالیز CSF را توصیه می‌کند؛ پروتکل آزمایشگاه محلی باید رعایت شود.",
+      "after": "CT منفی در همه شرایط SAB را رد نمی‌کند. در مراجعه ۶ ساعت یا بیشتر پس از شروع یا وجود نقص عصبی جدید، راهنمای AHA/ASA پس از CT منفی پونکسیون کمری همراه با آنالیز CSF را توصیه می‌کند؛ پروتکل آزمایشگاه محلی باید رعایت شود."
+    },
+    {
+      "path": "cards.3.back.de",
+      "before": "Bei <6 h, ohne neues neurologisches Defizit und mit hochwertigem Nativ-CT, befundet durch einen Facharzt für Neuroradiologie, kann ein negativer CT-Befund vertretbar zum Ausschluss beitragen. Genau 6 h ist durch diese Empfehlung nicht abgedeckt. Bei >6 h oder neuem Defizit empfiehlt die Leitlinie nach negativem CT eine Liquoranalyse.",
+      "after": "Bei <6 h, ohne neues Defizit und mit hochwertigem, neuroradiologisch fachärztlich befundetem CT ist der CT-Ausschlussweg vertretbar. Ab 6 h oder bei neuem Defizit sieht der AHA/ASA-Diagnosealgorithmus (Abb. 2) nach negativem CT eine LP vor."
+    },
+    {
+      "path": "cards.3.back.en",
+      "before": "At <6 hours, with no new neurological deficit and a high-quality non-contrast CT interpreted by a board-certified neuroradiologist, a negative CT may reasonably contribute to exclusion. Exactly 6 hours is not covered by this recommendation. At >6 hours or with a new deficit, the guideline recommends CSF analysis after a negative CT.",
+      "after": "At <6 hours, with no new deficit and high-quality CT read by a board-certified neuroradiologist, CT-based exclusion is reasonable. At 6 hours or later, or with a new deficit, the AHA/ASA diagnostic algorithm (Figure 2) calls for LP after negative CT."
+    },
+    {
+      "path": "cards.3.back.fa",
+      "before": "در کمتر از ۶ ساعت، بدون نقص عصبی جدید و با CT بدون کنتراست باکیفیت که توسط نورورادیولوژیست دارای بورد تخصصی تفسیر شده باشد، CT منفی می‌تواند به‌طور قابل‌قبول در رد بیماری نقش داشته باشد. دقیقاً ۶ ساعت تحت پوشش این توصیه نیست. پس از بیش از ۶ ساعت یا در صورت نقص جدید، راهنما پس از CT منفی آنالیز CSF را توصیه می‌کند.",
+      "after": "در کمتر از ۶ ساعت، بدون نقص جدید و با CT باکیفیت و تفسیر نورورادیولوژیست دارای بورد، رد بیماری با CT قابل‌قبول است. از ۶ ساعت به بعد یا با نقص جدید، الگوریتم تشخیصی AHA/ASA (شکل ۲) پس از CT منفی LP را در نظر می‌گیرد."
+    },
+    {
+      "path": "q.0.explanation.de",
+      "before": "Die Empfehlung betrifft akuten schweren Kopfschmerz bei <6 Stunden, ohne neues Defizit und mit hochwertigem, neuroradiologisch fachärztlich befundetem CT. Dies ist kein allgemeiner Entlassungsautomatismus: atypische Präsentation, unzureichende Qualität oder fortbestehende Bedenken erfordern individuelle weitere Abklärung. Bei >6 Stunden oder neuem Defizit empfiehlt die Leitlinie nach negativem CT eine LP.",
+      "after": "Die Empfehlung betrifft akuten schweren Kopfschmerz bei <6 Stunden, ohne neues Defizit und mit hochwertigem, neuroradiologisch fachärztlich befundetem CT. Dies ist kein allgemeiner Entlassungsautomatismus: atypische Präsentation, unzureichende Qualität oder fortbestehende Bedenken erfordern individuelle weitere Abklärung. Nach dem Diagnosealgorithmus (Abb. 2) bei ≥6 Stunden oder neuem Defizit empfiehlt die Leitlinie nach negativem CT eine LP."
+    },
+    {
+      "path": "q.0.explanation.en",
+      "before": "The recommendation applies to acute severe headache at <6 hours, without a new deficit, with high-quality CT interpreted by a board-certified neuroradiologist. It is not an automatic discharge rule: atypical presentation, inadequate quality or persistent concern require individualized further evaluation. At >6 hours or with a new deficit, the guideline recommends LP after negative CT.",
+      "after": "The recommendation applies to acute severe headache at <6 hours, without a new deficit, with high-quality CT interpreted by a board-certified neuroradiologist. It is not an automatic discharge rule: atypical presentation, inadequate quality or persistent concern require individualized further evaluation. Under the diagnostic algorithm (Figure 2), at ≥6 hours or with a new deficit, the guideline recommends LP after negative CT."
+    },
+    {
+      "path": "q.0.explanation.fa",
+      "before": "توصیه مربوط به سردرد حاد شدید در کمتر از ۶ ساعت، بدون نقص جدید و CT باکیفیت تفسیرشده توسط نورورادیولوژیست دارای بورد است. این قاعده ترخیص خودکار نیست: تظاهر غیرمعمول، کیفیت ناکافی یا نگرانی پایدار به ارزیابی تکمیلی فردی نیاز دارد. در بیش از ۶ ساعت یا نقص جدید، راهنما پس از CT منفی LP را توصیه می‌کند.",
+      "after": "توصیه مربوط به سردرد حاد شدید در کمتر از ۶ ساعت، بدون نقص جدید و CT باکیفیت تفسیرشده توسط نورورادیولوژیست دارای بورد است. این قاعده ترخیص خودکار نیست: تظاهر غیرمعمول، کیفیت ناکافی یا نگرانی پایدار به ارزیابی تکمیلی فردی نیاز دارد. در ۶ ساعت یا بیشتر یا نقص جدید، راهنما پس از CT منفی LP را توصیه می‌کند."
+    },
+    {
+      "path": "q.1.question.de",
+      "before": "Textvignette: Das Nativ-CT zeigt etwa 2 mm dickes Zisternenblut und intraventrikuläres Blut. Welcher Modified-Fisher-Grad passt?",
+      "after": "Textvignette: Das Nativ-CT zeigt dickes Zisternenblut und intraventrikuläres Blut. Welcher Modified-Fisher-Grad passt?"
+    },
+    {
+      "path": "q.1.question.en",
+      "before": "Text vignette: Noncontrast CT shows approximately 2 mm-thick cisternal blood and intraventricular blood. Which modified Fisher grade fits?",
+      "after": "Text vignette: Noncontrast CT shows thick cisternal blood and intraventricular blood. Which modified Fisher grade fits?"
+    },
+    {
+      "path": "q.1.question.fa",
+      "before": "سناریوی متنی: CT بدون کنتراست خون سیسترنی با ضخامت حدود ۲ میلی‌متر و خون داخل‌بطنی نشان می‌دهد. کدام درجهٔ فیشر اصلاح‌شده مناسب است؟",
+      "after": "سناریوی متنی: CT بدون کنتراست خون سیسترنی ضخیم و خون داخل‌بطنی نشان می‌دهد. کدام درجهٔ فیشر اصلاح‌شده مناسب است؟"
+    },
+    {
+      "path": "q.4.question.fa",
+      "before": "سناریوی متنی: روز ۸پس از درمان aSAB، بیمار دچار همی‌پارزی جدید بیش از یک ساعت می‌شود. CT بدون کنتراست و آزمایش‌ها علت را توضیح نمی‌دهند و CTA وازواسپاسم واضح پروگزیمال ندارد. کدام ارزیابی مناسب‌تر است؟",
+      "after": "سناریوی متنی: روز ۸ پس از درمان aSAB، بیمار دچار همی‌پارزی جدید بیش از یک ساعت می‌شود. CT بدون کنتراست و آزمایش‌ها علت را توضیح نمی‌دهند و CTA وازواسپاسم واضح پروگزیمال ندارد. کدام ارزیابی مناسب‌تر است؟"
+    }
+  ],
+  "sourceQualification": "AHA2023 recommendationtable >6/<6 differs from Figure2 algorithm ≥6/<6. Follow algorithm for boundary. Figuretext freshindexed/parsed original; sourceFigurepixels unavailable to root/reviewer. Frontera2006 methods uses qualitative thin/thick; numeric2mm cue removed. No current scientific release claim.",
+  "laterSourceEvidence": {
+    "url": "https://icu.smhs.gwu.edu/sites/g/files/zaskib1161/files/2025-01/2023_aha_sah_guidelines.pdf",
+    "local": "tmp/assessment-quality/sab-aha2023-original.pdf",
+    "image": "tmp/assessment-quality/sab-aha2023-figure-10.png",
+    "actuallyViewedBy": "root after repair01: physical10/e323 actualFigure2 pixels",
+    "finding": "The rightbranch explicitly reads >=6hoursORnewneurologicaldeficit, noncontrastCT, negativeSAH, thenLP. This now visually confirms the earlier indexedFiguretext; no diagnostic source pixels altered or republished."
+  }
+}

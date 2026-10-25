@@ -1,0 +1,279 @@
+{
+  "packet": "SAB original full pool",
+  "reviewDate": "2026-10-25",
+  "reviewer": "/root/brain_original_pools_next",
+  "authors": [
+    "root",
+    "design coauthor"
+  ],
+  "independentOfAuthors": true,
+  "route": "/gehirn/vaskulaer/subarachnoidalblutung",
+  "workspace": "C:/Users/Drham/Documents/GitHub/Rad-Yar/.worktrees/gehirn-completion-main",
+  "role": "Independent read-only content, source, language and actual runtime review. No production/shared edits, Git, server or application build.",
+  "decision": "ACCEPT_BOUNDED_CONTENT_AFTER_INDEPENDENT_REPAIR01",
+  "summary": "Independent repair01 closure PASS. Exactly22declared field changes resolve the >=6hour Figure2 pathway and explicit qualitative thick-blood q2premise. All remaining assessment/lesson/topic payloads and the route are unchanged; all26actualglobal objects agree. Original6keys and8cardIDs retained. No open content findings. Browser/media and Dr.Zia scientific/publication decisions remain separate.",
+  "openFindings": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0
+  },
+  "findings": [
+    {
+      "id": "SAB-SRC-01",
+      "severity": "minor",
+      "gates": [
+        "SRC",
+        "ASM"
+      ],
+      "location": "data/sab.js -> SAB_LESSON.ct.stagesRows[0][2].de/en/fa and SAB_FLASHCARDS sab-fc-4.back.de/en/fa; associated later-CT flow wording",
+      "evidence": "The lesson/card state that exactly6hours is not covered by this recommendation and should be assessed in clinical context. The original AHA/ASA2023 recommendation table says >6hours versus <6hours; its Figure2 explicitly puts ≥6hours in the CT-then-LP-if-negative branch.",
+      "problem": "The literal distinction in the recommendation-table wording is real, but the lesson leaves the boundary as though the guideline supplied no workflow. The source's own flowchart resolves the boundary. The tested45minute key remains valid; this is a source-parity clarification for the surrounding pathway rather than a wrong answer.",
+      "learnerImpact": "A learner applying the stated timing rule at exactly6hours is left without the source's explicit next-step branch.",
+      "source": {
+        "doi": "https://doi.org/10.1161/STR.0000000000000436",
+        "actualReadURL": "https://emergencymed.org.il/wp-content/uploads/2023/06/2023-Guideline-for-the-Management-of-Patients-With-Aneurysmal-Subarachnoid-Hemorrhage-A-Guideline-From-the-American-Heart-AssociationAmerican-Stroke-Association.pdf",
+        "range": "Recommendation table physical9/e322; Figure2 physical10/e323; supporting text physical11/e324",
+        "diagramTextEvidence": "Fresh indexed original Figure2 text from official AHA PDF plus matching original guideline mirrors explicitly reads ≥6hours OR new neurological deficit -> noncontrast CT -> if negative LP.",
+        "officialIndexedURL": "https://www.ahajournals.org/doi/pdf/10.1161/STR.0000000000000436",
+        "pixelInspection": "UNAVAILABLE. Both reviewer and root screenshot calls returned only reference text, not visible image pixels. Reviewer local public-mirror urllib download failed DNS. Do not claim actual Figure2 image inspection."
+      },
+      "requiredCorrection": "Explain the recommendation-table/flowchart boundary difference in the source ledger, and teach the Figure2 pathway at ≥6hours consistently in the relevant lesson/card flow. Replace the statement that exactly6hours is merely unregulated. Keep the <6hour quality/no-new-deficit rule and original q1keyA. Align affected next-step wording in q1feedback, CT table/key and card4 as needed without unrelated revisions.",
+      "retest": "Fresh read of all repaired DE/EN/FA boundary strings, source-ledger explanation and actual canonical/global payload equality. Compare exact repair paths and preserve every other question/card/lesson value and all IDs/keys.",
+      "status": "CLOSED by fresh independent repair01 retest",
+      "retestResult": "PASS: exact22declared normalized Before/After paths, all other questions/cards/lesson/topic unchanged, originalIDs/keys stable, all26actualglobal objects equal canonical. Repaired triads freshly read and source-parity adequate."
+    },
+    {
+      "id": "SAB-ASM-02",
+      "severity": "minor",
+      "gates": [
+        "SRC",
+        "ASM"
+      ],
+      "location": "data/sab.js -> SAB_QUESTIONS: sab-q2.question in DE/EN/FA",
+      "evidence": "The vignette supplies 'approximately2mm-thick cisternal blood' plus IVH, while its feedback asserts that the supplied blood is qualitatively thick. Current lesson deliberately removes a numeric thin/thick cutoff. Frontera2006 Methods expressly say no explicit thin/thick criteria were applied.",
+      "problem": "The qualitative thick-blood premise needed by the selected primary scale is implied from an unreferenced millimetre mapping rather than supplied. The intended answerD/grade4 is clear, but this leftover numeric premise conflicts with the packet's source-specific qualitative teaching.",
+      "learnerImpact": "May suggest the original-Fisher millimetre rule was silently transferred into the modified scale after the lesson explicitly distinguishes the two.",
+      "source": {
+        "url": "https://cmp-manual.wbs.cz/skaly/prediction_of_symptomatic_vasospasm_after_subarachnoid_hemorrhage_-_the_modified_fisher_scale.pdf",
+        "doi": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B",
+        "range": "Physical2/printed22, Admission CT Risk Factors and Table1; actual parsed text read freshly",
+        "pixelInspection": "Web screenshot returned reference only; no primaryTable1 pixels claimed."
+      },
+      "requiredCorrection": "Use an explicit qualitative premise such as 'thick cisternal subarachnoid blood and intraventricular blood' in the q2stem triad. Remove the unnecessary2mm cue or subordinate it to a clearly supplied thick classification. Retain q2ID, four options, keyD and accepted grade4 explanation.",
+      "retest": "Fresh exact stem-triad comparison and modified-Fisher/IVH coherence. Confirm no ID/key/other-field drift.",
+      "status": "CLOSED by fresh independent repair01 retest",
+      "retestResult": "PASS: exact22declared normalized Before/After paths, all other questions/cards/lesson/topic unchanged, originalIDs/keys stable, all26actualglobal objects equal canonical. Repaired triads freshly read and source-parity adequate."
+    }
+  ],
+  "gates": {
+    "SRC": {
+      "status": "PASS",
+      "scope": "Bounded assessment and changed rules",
+      "evidence": "Original fresh source/PDF review plus repair01 explicit Figure2/table distinction and qualitative thick/IVH premise. Both minor source-parity findings closed.",
+      "evidenceBlockers": [
+        "FronteraTable1 primary image pixels not exposed by screenshot tool; actual parsed original table/Methods text read. Figure2pixels now independently viewed in lateradditionalreading. No wholePDF/primaryarticle/patientstudy approval."
+      ]
+    },
+    "EDU": {
+      "status": "PASS",
+      "evidence": "Four visible observable goals map all6original questions and8cards. Distractors are competing diagnostic pathways, grade pairings, vascular regions or explanations of deterioration. The pool tests CT rule-out context, scale morphology, vascular work-up and DCI recognition without inventing images or treatment automation. Original six keys retained; no quota additions."
+    },
+    "VIS": {
+      "status": "BLOCKED",
+      "scope": "Whole-route media release",
+      "evidence": "Actual userPDF three page images read. Original application case URL, image src, caption and alt strings are unchanged. Unchanged strings do not independently verify the displayed patient frame, full study, diagnostic suitability or contributor record.",
+      "evidenceBlockers": [
+        "No retained gallery/frame or schematic pixel review in this bounded review. No new diagnostic asset introduced."
+      ]
+    },
+    "LNG": {
+      "status": "PASS",
+      "scope": "Bounded clinical semantics; minor typography notes below",
+      "evidence": "All questions, choices, correct/wrong feedback and card fronts/back/explanations/diagram triads read. CT quality/new-deficit caveats, comparison of thin/thick with IVH, DCI duration, negations, uncertainty and intervention timing are semantically equivalent. No missing decisive translation found.",
+      "notes": [
+        "Low-impact spacing artifacts 'nach24 Stunden' in q1DEoptionB and 'روز ۸پس' in q5FAstem can be normalized during the same bounded repair. They do not change the tested meaning."
+      ]
+    },
+    "ASM": {
+      "status": "PASS",
+      "evidence": "Fresh exact22Before/After repair guard; all other scoped payloads unchanged.18localized questions+8cards deep-equal actual global exports,54wrong-feedback fields, originalIDs/keys preserved.15actual SelfCheck controlled-state SSR fixtures pass; real browser remains separate."
+    },
+    "UX": {
+      "status": "BLOCKED",
+      "evidence": "Actual SelfCheck stable-ID lookup and choice-specific feedback inspected. Actual function transformed in memory and SSR-rendered in15controlled states (DE/EN/FA×unanswered/four choices), verifying the selected option explanation. This is not actual browser clicking, viewport/RTL or authorized-session behavior.",
+      "evidenceBlockers": [
+        "No reviewer application build/server/browser performed; parent browser/build evidence remains separate."
+      ]
+    },
+    "REV": {
+      "status": "PASS",
+      "evidence": "Independent author-separated source/content review and fresh exactrepair/global/route retest, without production edits by reviewer."
+    }
+  },
+  "actualRuntimeEvidence": {
+    "file": "sab-independent-runtime.json",
+    "checker": "tmp/assessment-quality/review-sab.cjs",
+    "method": "Fresh actual data modules bundled in memory, write:false. Author validator was read but not executed because it overwrites author artifacts.",
+    "counts": {
+      "localizedQuestions": 18,
+      "cardTriads": 8,
+      "actualGlobalObjects": 26,
+      "specificWrongFeedbackFields": 54,
+      "declaredPathsVerified": 270,
+      "visibleGoals": 4,
+      "selfCheckSSRStateFixtures": 15
+    },
+    "keysPerLanguage": [
+      "A",
+      "D",
+      "B",
+      "B",
+      "C",
+      "B"
+    ],
+    "sourceHashes": {
+      "data/sab.js": "d0592e8645e7b641c789497e9a5e314c7a2c7f138ff0827f3ab00f492c9a497e",
+      "app/gehirn/vaskulaer/subarachnoidalblutung/SubarachnoidLesson.jsx": "bd59f8ff081032d011f47cdbd95cbeefb35e0c5a17f9cef4690745e8914eb3df"
+    },
+    "questionsHashes": {
+      "de": "032b2b9a82031fca38188ba745273a5d6f25cadefd3b3b7b9d11a2778ba9e822",
+      "en": "236c47fdd779ad2b2716abe7d874a1c3e4fb546bbb18d9fd52079d3e00f213e7",
+      "fa": "5f72c7e112b6c024a859ad7299b6d71b448bcb3858b3d8fc582f6c1eef4ad2e4"
+    },
+    "cardsHash": "fb0807bb9edef05f9f7d5ec94ff22c9a5e84e232da13c87eed9a0ed0707acf80",
+    "lessonHash": "97320fbbc1318f4e154b3258ca66c246d1e0e3bf8a8dbeeeda7cc61cde7a97c0",
+    "changesHash": "8a2718cee692654a752c1ecf6527cb6fa05436a50fb8b12b8ae0349cf5b74b89",
+    "snapshotLimit": "OriginalBefore contains lesson/questions/cards, not topic metadata. Exact270path reconstruction therefore compares those scoped payloads; current topic also matches coauthorAfter. No historical unchanged-topic claim derived from missing baseline metadata."
+  },
+  "sourceCoverage": {
+    "userPdf": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf",
+    "pagesTotal": 89,
+    "sha256": "f2a4d1b92f7c2bd95be20997d1ab4388b3bc18e8fbb5b438396b03f977275206",
+    "actuallyRead": [
+      {
+        "physical": 15,
+        "printed": 14,
+        "text": "Fresh pypdf extraction",
+        "image": "tmp/assessment-quality/brain-next-pdf/sab-15.png",
+        "topics": "Definition/aetiology, clinical Hunt-Hess and originalFisherI–IV table",
+        "disposition": "Modified0–4 explicitly distinguished from originalPDF scale; clinical severity acknowledged but detailed Hunt-Hess retrieval not added to this bounded radiological pool."
+      },
+      {
+        "physical": 16,
+        "printed": 15,
+        "text": "Fresh pypdf extraction",
+        "image": "tmp/assessment-quality/brain-next-pdf/sab-16.png",
+        "topics": "AcuteCT, distribution, CTA/DSA, MRI-FLAIR, LP",
+        "disposition": "Blanket24h sensitivity, edema-excludesSAH and universal best-FLAIR claims not adopted. Vascular distribution remains a clue, not source proof; perimesencephalic pattern does not establish venous cause."
+      },
+      {
+        "physical": 17,
+        "printed": 16,
+        "text": "Fresh pypdf extraction",
+        "image": "tmp/assessment-quality/brain-next-pdf/sab-17.png",
+        "topics": "Rebleeding, hydrocephalus, vasospasm/DCI, sodium, treatment",
+        "disposition": "Current securing/earlyenteralnimodipine and DCI distinction replace older rigid24–48h/vasospasm-prophylaxis framing. Detailed BPtargets/doses and full neurocritical protocols not introduced."
+      }
+    ],
+    "noFullCoverageClaim": "Other86userPDF pages and full retained case/study/media are outside this review."
+  },
+  "freshPrimaryReadings": [
+    {
+      "source": "Hoh2023 AHA/ASA original guideline",
+      "url": "https://doi.org/10.1161/STR.0000000000000436",
+      "actualReadURL": "https://emergencymed.org.il/wp-content/uploads/2023/06/2023-Guideline-for-the-Management-of-Patients-With-Aneurysmal-Subarachnoid-Hemorrhage-A-Guideline-From-the-American-Heart-AssociationAmerican-Stroke-Association.pdf",
+      "read": "Diagnosis table/supportive text physical9–11/e322–324; Figure2indexed diagram text; timing physical14/e327; DCI definition/monitoring physical25/e338; management physical26/e339; mechanisms physical8/e321 and relevant summary. Source supports quality/timing qualifications, context-specific DSA, distinct DCI, earlyenteralnimodipine and prompt securing. No full57page or visibleFigure2pixel claim."
+    },
+    {
+      "source": "Frontera2006 original scale study",
+      "url": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B",
+      "actualReadURL": "https://cmp-manual.wbs.cz/skaly/prediction_of_symptomatic_vasospasm_after_subarachnoid_hemorrhage_-_the_modified_fisher_scale.pdf",
+      "read": "Complete abstract; Methods/CT definitions, Table1 and outcome definition physical2/printed22; relevant results. Selected placebo-treated cohort, qualitative categories and no-SAH+IVH grade2 verified. Similar grade2/3 crude odds are not an individual prognosis. No primaryfigurepixels claimed."
+    },
+    {
+      "source": "Claassen2001 original study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11546890/",
+      "doi": "https://doi.org/10.1161/hs0901.095677",
+      "read": "Fresh complete primary abstract and indexed original publisher abstract. Blood filling a cistern/fissure and bilateral lateral-ventricular blood are additive predictors in its cohort. Historical basis kept distinct from laterFrontera coding; no new numerical cutoff adopted."
+    },
+    {
+      "source": "van der Jagt1999 original study",
+      "url": "https://doi.org/10.1212/WNL.52.1.34",
+      "originalAuthorThesisURL": "https://pure.eur.nl/files/46316979/060607_Jagt-M%20van%20der.pdf",
+      "read": "Author thesis chapter2.1 abstract and methods physical23–24/printed22–23 read freshly. Consecutive168patients with single/no aneurysm, ACA/ACoA localization and limited overall agreement verified. No claimed primary validation of multiple-aneurysm culprit selection; complete vascular evaluation caveat appropriate. No whole151page thesis claim."
+    }
+  ],
+  "filesRead": [
+    "skills/radyar-lessons/SKILL.md",
+    "docs/lesson-quality/standard.md",
+    "docs/educational-page-design-principles.md",
+    "docs/lesson-quality/review-template.md",
+    "brain/sab-author-manifest.json",
+    "brain/sab-changes.json",
+    "brain/sab-sources.json",
+    "data/sab.js actual lesson/questions/cards/topic",
+    "app/gehirn/vaskulaer/subarachnoidalblutung/SubarachnoidLesson.jsx",
+    "tmp/assessment-quality/sab-author-runtime.json",
+    "tmp/assessment-quality/sab-original-before.json",
+    "tmp/assessment-quality/sab-route-before.jsx",
+    "tmp/assessment-quality/test-sab-author.mjs read only",
+    "data/questions.js and data/flashcards.js relevant actual exports"
+  ],
+  "browserEvidence": {
+    "performedByReviewer": false,
+    "SSRFixturesAreBrowserEvidence": false,
+    "accessBypass": false
+  },
+  "scientificApprovalDrZia": "pending",
+  "publication": "No reviewer publication action/approval",
+  "next": "Parent actual browser/build and media scope evidence remain separate; Dr.Zia scientific decision pending.",
+  "repair01": {
+    "file": "sab-independent-repair01.json",
+    "status": "PASS_EXACT22_REPAIR_AND_ACTUAL_GLOBAL_RETEST",
+    "exactFields": 22,
+    "sourceHashes": {
+      "data/sab.js": "9b57c2d38fa9e2e3547642f24b53bbcaf01235f4daa0c53c3fcca0af466ffea6",
+      "app/gehirn/vaskulaer/subarachnoidalblutung/SubarachnoidLesson.jsx": "bd59f8ff081032d011f47cdbd95cbeefb35e0c5a17f9cef4690745e8914eb3df"
+    },
+    "questionsHashes": {
+      "de": "9305abf0b85ac4520b68c38fa452b3062f82096d262f344e7fe0f928b9a4c483",
+      "en": "a7a90ed30fb5deb969801b1b966b94a98684302b6191490f61a8da3918e6c8fa",
+      "fa": "50d16b2e80089faeefec0e24b85af746e883d39f6629ad89c26f32e75577c394"
+    },
+    "cardsHash": "5b8d14b83845aacf7ceaf03ac9a5f63dfde7b23a7392c2b7e39e4914a4d7d887",
+    "lessonHash": "f7381375ce38ee7f4ce5d1882306979eefc38dcdee759c0c9bed191bd76bf18e",
+    "routeUnchanged": true,
+    "allOtherPayloadUnchanged": true,
+    "sourceQualification": "Repair ledger explicitly distinguishes recommendation-table >6/<6 from Figure2 >=6/<6 and follows the latter for the boundary. Indexed/parsed source diagram text verified previously; no actual Figure2 pixels claimed.",
+    "minorTypography": "Both noted q1DE and q5FA spacing artifacts now corrected; exact one-field q1DE spacing closure recorded in integration-review-batch09.json."
+  },
+  "spacingClosure": {
+    "exactDiff": "questions.de.0.options.1.text nach24 -> nach 24",
+    "allOtherQuestionCardLessonTopicPayloadsUnchanged": true,
+    "routeUnchanged": true,
+    "actual26GlobalObjectsEqual": true,
+    "dataHash": "b22fa0ea60b76e1080a4bb1738852b457a0f7299738fdbf938729671499a4e57",
+    "questionsHashes": {
+      "de": "0fa150609748afbcf03b824e3df1aaf1408c4261d0d876f46f282f370e9e6b0c",
+      "en": "a7a90ed30fb5deb969801b1b966b94a98684302b6191490f61a8da3918e6c8fa",
+      "fa": "50d16b2e80089faeefec0e24b85af746e883d39f6629ad89c26f32e75577c394"
+    },
+    "cardsHash": "5b8d14b83845aacf7ceaf03ac9a5f63dfde7b23a7392c2b7e39e4914a4d7d887",
+    "lessonHash": "f7381375ce38ee7f4ce5d1882306979eefc38dcdee759c0c9bed191bd76bf18e"
+  },
+  "additionalFigure2PixelInspection": {
+    "date": "2026-10-25",
+    "reviewer": "/root/brain_original_pools_next",
+    "status": "PASS_ACTUAL_IMAGE_VIEWED",
+    "source": "https://icu.smhs.gwu.edu/sites/g/files/zaskib1161/files/2025-01/2023_aha_sah_guidelines.pdf",
+    "physicalPage": 10,
+    "printedPage": "e323",
+    "figure": "Figure2",
+    "files": {
+      "tmp/assessment-quality/sab-aha2023-original.pdf": "c823452a0b7958a6546a8e2fa6d56ce981b8404add40911747f9c1181cdd7bab",
+      "tmp/assessment-quality/sab-aha2023-figure-10.png": "34c9b89d2293428bd55972950855689396f7f6869de70906b290b8c2ca1f0f7b"
+    },
+    "observed": "Actual image visibly shows >=6hours OR new neurological deficit -> noncontrast headCT -> SAH Dx NO -> LumbarPuncture Class1. Left branch <6hours AND no new neurological deficit -> CT -> noSAH -> work-up at physician discretion. Supports accepted repaired pathway.",
+    "historicalNote": "Later additional actual pixel reading. Earlier unavailable-screenshot records remain accurate for their time; this entry closes the Figure2pixel limitation prospectively. No full57page or allpatientmedia approval."
+  }
+}

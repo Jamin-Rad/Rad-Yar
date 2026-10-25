@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/msk_original_pools_next",
+  "status": "INDEPENDENT_REPAIR01_BOUNDED_ACCEPTED",
+  "finding": "BRON09-LNG-01",
+  "exactField": "lesson.sources.1.citation",
+  "currentBefore": "Retrospective cohort; clinical and distribution clues, not pathogen proof.",
+  "after": "Chest. 2013;144(6):1883–1892. PMID23948769.",
+  "entireOtherLessonPayloadExact": true,
+  "all9GlobalQuestionsUnchanged": true,
+  "all3GlobalCardsUnchanged": true,
+  "coverageAndInlineChecksUnchanged": true,
+  "sharedComponentUnchanged": true,
+  "producerBeforeSha256": "4c0791b4d9368eb0b38bb63816690a3d1d090473a8f62cfaf55c59f63da9b8e4",
+  "producerAfterSha256": "c6de82bd7cbe23330b761c1820e99512b04a69557d9bee1835cd8ad8f61cdf12",
+  "questionHashes": {
+    "de": "f6f868555e646bbc467948f43eedaa52bebe07893bb39efa6a9cf7bf6cab9a72",
+    "en": "5e925f283a424bd8f88bc3b694eebe2e510214aaf99ba3852571bcdc059bb6ff",
+    "fa": "cbbd0e49da40181447baec775733d84bdaa0182b8d316bb7e96382bacc3472cf"
+  },
+  "cardsHash": "8c4ffcee60333d12fbc4b30f6875cb3fc23d38eee783579942f493d62d6a8d3b",
+  "rootRepairRecordRead": true,
+  "authorManifestLeftUnchanged": true,
+  "build": "not run",
+  "browser": "not run",
+  "scientificApproval": "Dr.Zia pending",
+  "wholeLessonAcceptance": "not asserted"
+}

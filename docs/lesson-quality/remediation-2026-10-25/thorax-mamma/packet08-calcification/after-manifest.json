@@ -1,0 +1,3188 @@
+{
+  "questions": {
+    "de": [
+      {
+        "id": "mammographie-mikrokalk-de-size-alone",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Eine neue Kalkgruppe enthält überwiegend submillimetrische Partikel. Welche Formbeschreibung ist trotz der kleinen Partikelgröße suspekt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Rund, glatt und in der Form gleichartig"
+          },
+          {
+            "id": "B",
+            "text": "Fein, irregulär und in Größe und Form unterschiedlich"
+          },
+          {
+            "id": "C",
+            "text": "Rund mit zentraler Aufhellung und gesicherter Hautlage"
+          },
+          {
+            "id": "D",
+            "text": "Halbmondförmig sedimentierend mit projektionsabhängigem Formwechsel"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Die irregulären, unterschiedlich geformten feinen Partikel passen zu fein pleomorpher, suspekter Morphologie. Geringe Größe allein beruhigt nicht; Verteilung, Vergleich und Gesamtbefund gehören zum Assessment.",
+        "wrongExplanations": {
+          "A": "Glatte runde Partikel besitzen nicht die beschriebene pleomorphe Form; die Gesamtbewertung bleibt dennoch kontextabhängig.",
+          "C": "Gesicherte oberflächliche Lage mit zentraler Aufhellung stützt typische Hautverkalkung.",
+          "D": "Der lageabhängige Formwechsel mit Sediment entspricht Layering und nicht fein pleomorpher Partikelform."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 1,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-magnification",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Im Screening wird eine neue feine Kalkgruppe erkannt; ihre Partikelform ist auf den Standardaufnahmen nicht sicher beurteilbar. Welche gezielte Ergänzung dient vorrangig der morphologischen Detailanalyse?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Gezielte Spotkompression ohne geometrische Vergrößerung"
+          },
+          {
+            "id": "B",
+            "text": "DBT-Schichten zur räumlichen Lokalisation und zum Gewebekontext"
+          },
+          {
+            "id": "C",
+            "text": "Gezielte mammographische Vergrößerungsaufnahmen des Kalkareals"
+          },
+          {
+            "id": "D",
+            "text": "Tangentialaufnahme zur Prüfung einer möglichen Hautlage"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Gezielte Vergrößerung unterstützt die Beurteilung von Form, Kontur und Anordnung. Ein kleiner Brennfleck begrenzt geometrische Unschärfe. Ultraschall oder MRT können ergänzende Fragen beantworten, ersetzen die Kalkdetailanalyse aber nicht.",
+        "wrongExplanations": {
+          "A": "Spotkompression reduziert Überlagerung, bietet aber nicht die gezielte geometrische Detailvergrößerung der Kalkpartikel.",
+          "B": "DBT ergänzt Lokalisation und Gewebekontext. Für die hier gefragte feine Partikelform bleiben gezielte Vergrößerungsaufnahmen wichtig.",
+          "D": "Eine Tangentialaufnahme beantwortet vor allem die Frage nach oberflächlicher Hautlage. Hier steht die feine Partikelmorphologie im Vordergrund."
+        },
+        "source": "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment",
+        "sources": [
+          "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment",
+          "https://www.acr.org/-/media/ACR/Files/Practice-Parameters/dig-mamo.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-popcorn",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Eine über Jahre bekannte umschriebene Brustmasse entwickelt zunehmend grobe, dichte, zusammenfließende popcornartige Verkalkungen. Welche Erklärung passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Involution eines Fibroadenoms"
+          },
+          {
+            "id": "B",
+            "text": "Sedimentation von Kalzium in kleinen Zysten"
+          },
+          {
+            "id": "C",
+            "text": "Verkalkung entlang paralleler Gefäßwände"
+          },
+          {
+            "id": "D",
+            "text": "Dünne irreguläre Verkalkung duktaler Gangausgüsse"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die aktuelle Kategorie „Coarse“ umfasst das klassische popcornartige, dichte und zusammenfließende Muster. In einer bekannten umschriebenen Masse passt es zur Involution eines Fibroadenoms. Die gesamte Konstellation zählt; Größe allein beweist keine Benignität.",
+        "wrongExplanations": {
+          "B": "Sediment erzeugt vor allem lageabhängiges Layering, nicht eine zunehmend grobe konfluierende Masseverkalkung.",
+          "C": "Gefäßkalk folgt einem linearen oder tubulären Gefäßverlauf und erklärt kein popcornartiges Muster innerhalb der Masse.",
+          "D": "Duktale Gangausgüsse sind dünn und irregulär; hier sind grobe zusammenfließende Partikel beschrieben."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-milk-calcium",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Eine Kalkgruppe wirkt in CC eher rundlich-unscharf; auf einer echten seitlichen Aufnahme entstehen scharf begrenzte halbmond-/teetassenartige Sedimente. Welche Erklärung passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Grobe sekretorische Stäbchenverkalkungen"
+          },
+          {
+            "id": "B",
+            "text": "Layering durch sedimentierenden Kalk in Zysten"
+          },
+          {
+            "id": "C",
+            "text": "Feine lineare duktale Verkalkungen"
+          },
+          {
+            "id": "D",
+            "text": "Parallele vaskuläre Wandverkalkungen"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Der projektionsabhängige Formwechsel mit sedimentierendem Layering ist charakteristisch. Im aktuellen BI-RADS-Lexikon heißt der Deskriptor „Layering“. Die Formänderung wird geprüft, nicht nur das Vorhandensein einer Gruppe.",
+        "wrongExplanations": {
+          "A": "Sekretorische Stäbchen sind glatt und linear, nicht lageabhängige Sedimentspiegel in Zysten.",
+          "C": "Feine duktale Formen sind dünn und irregulär; der beschriebene Formwechsel spricht für Sediment.",
+          "D": "Gefäßkalk folgt den Wänden eines Gefäßes; das Layering in der Seitaufnahme bildet hier Sediment ab."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-rods-versus-linear",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Eine Mammographie zeigt beidseits glatte, grobe stäbchenförmige Verkalkungen entlang retroareolärer Gänge. Welche morphologische Zuordnung passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Feine lineare/verzweigte suspekte Verkalkungen"
+          },
+          {
+            "id": "B",
+            "text": "Grobe stäbchenförmige sekretorische Verkalkungen"
+          },
+          {
+            "id": "C",
+            "text": "Vaskuläre Verkalkungen entlang paralleler Gefäßwände"
+          },
+          {
+            "id": "D",
+            "text": "Layering durch sedimentierenden Kalk in kleinen Zysten"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Das glatte grobe Stäbchenmuster passt zu large rod-like, typischerweise mit Duktusektasie verbunden. Dünne irreguläre fine-lineare Gangausgüsse sind ein anderer, suspekter Deskriptor.",
+        "wrongExplanations": {
+          "A": "Fine-lineare/verzweigte Formen sind dünn und irregulär; hier ist ein grobes glattes Muster beschrieben.",
+          "C": "Vaskulärer Kalk bildet parallele oder tubuläre Gefäßwände ab; die beschriebene Lage folgt den retroareolären Gängen.",
+          "D": "Layering wird durch projektionsabhängigen Formwechsel mit Sedimentation erkannt, der hier nicht beschrieben ist."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-amorphous-distribution",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Eine neue Kalkgruppe bleibt auch in gezielten Vergrößerungsaufnahmen so klein und verwaschen, dass keine spezifische Partikelform bestimmbar ist. Welcher BI-RADS-Morphologiedeskriptor passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Fein pleomorph"
+          },
+          {
+            "id": "B",
+            "text": "Grob heterogen"
+          },
+          {
+            "id": "C",
+            "text": "Amorph"
+          },
+          {
+            "id": "D",
+            "text": "Fein linear/verzweigt"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Amorph bezeichnet Partikel, die so klein oder formlos sind, dass keine genauere Form bestimmbar ist. Es ist ein suspekter Morphologiedeskriptor; die Gesamtbewertung verlangt zusätzlich Verteilung, Vergleich und Kontext.",
+        "wrongExplanations": {
+          "A": "Fein pleomorphe Partikel besitzen erkennbare unterschiedliche Formen; gerade das ist hier nicht bestimmbar.",
+          "B": "Grob heterogene Verkalkungen sind auffällige irreguläre Partikel mit bestimmbarer Kontur; die hier fehlende Form passt besser zu amorph.",
+          "D": "Für fein linear/verzweigt müssen dünne irreguläre lineare Formen erkennbar sein."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 1,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-pleomorphic-segmental",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Feine irreguläre Verkalkungen unterschiedlicher Form und Größe liegen in einem dreieckigen Gebiet mit Spitze zur Mamille. Welche kombinierte Beschreibung ist am präzisesten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Fein pleomorph, regional verteilt"
+          },
+          {
+            "id": "B",
+            "text": "Grob heterogen, segmental verteilt"
+          },
+          {
+            "id": "C",
+            "text": "Fein pleomorph, segmental verteilt"
+          },
+          {
+            "id": "D",
+            "text": "Amorph, diffus verteilt"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Die erkennbaren unterschiedlichen feinen Formen sind pleomorph; das zur Mamille gerichtete Dreieck entspricht segmentaler Gangorientierung. Morphologie und Verteilung werden getrennt benannt und gemeinsam bewertet.",
+        "wrongExplanations": {
+          "A": "Die Morphologie passt, aber regional beschreibt ein größeres Areal ohne erkennbare Gangorientierung. Hier ist die mamillenwärts gerichtete Dreiecksform angegeben.",
+          "B": "Die segmentale Verteilung passt. Die beschriebenen feinen variablen Partikelformen entsprechen jedoch fein pleomorph und nicht grob heterogen.",
+          "D": "Die Partikelformen sind erkennbar, also nicht amorph; die gerichtete Dreiecksverteilung ist nicht diffus."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-distribution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-highest-suspicion",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Bei vier neu diagnostisch abgeklärten Kalkbefunden unterscheiden sich Form und Verteilung. Welche Kombination ist das stärkste duktale Verdachtsmuster unter diesen Befunden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Fein linear/verzweigt, segmental"
+          },
+          {
+            "id": "B",
+            "text": "Fein pleomorph, gruppiert"
+          },
+          {
+            "id": "C",
+            "text": "Amorph, gruppiert"
+          },
+          {
+            "id": "D",
+            "text": "Grob heterogen, regional"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Dünne irreguläre verzweigte Partikel mit segmentaler Gangorientierung ergeben hier das stärkste duktale Verdachtsmuster. Auch die anderen aufgeführten Morphologien sind suspekt; aus dieser Rangfrage folgt weder eine Histologie noch eine feste individuelle Prozentzahl.",
+        "wrongExplanations": {
+          "B": "Fein pleomorph ist suspekt und abklärungsbedürftig. Die Kombination aus feinen verzweigten Gangausgüssen und segmentaler Orientierung ist hier dennoch stärker duktal verdächtig.",
+          "C": "Gruppierter amorpher Kalk ist nicht automatisch benign, zeigt aber keinen so klaren irregulären Gangausguss wie Option A.",
+          "D": "Grob heterogen ist ebenfalls ein suspekter Deskriptor. Die regionale Verteilung liefert hier jedoch nicht die segmentale Gangarchitektur mit feinen Verzweigungen."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-distribution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-evolution-context",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Voraufnahmen derselben Technik liegen vor. Welche Veränderung eines zuvor runden Kalkbefunds erhöht den Abklärungsbedarf am stärksten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Zunehmende grobe konfluierende Verkalkung in einer bekannten umschriebenen Fibroadenommasse"
+          },
+          {
+            "id": "B",
+            "text": "Zunahme irregulärer pleomorpher Partikel mit neu erkennbarer duktaler Anordnung"
+          },
+          {
+            "id": "C",
+            "text": "Nachweis sedimentierender Formen in einer ergänzten echten Seitaufnahme"
+          },
+          {
+            "id": "D",
+            "text": "Bessere Abgrenzbarkeit paralleler Gefäßwandverkalkungen ohne Änderung ihrer Verteilung"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Die Entwicklung irregulärer Partikel mit duktaler Architektur ist eine relevante morphologische Progression. Eine Zunahme allein kann auch bei benignem Umbau vorkommen; entscheidend ist, was sich verändert.",
+        "wrongExplanations": {
+          "A": "Grobe konfluierende Reifung eines bekannten Fibroadenoms passt zu Involution und ist eine andere Entwicklung als neu suspekte Partikelform.",
+          "C": "Nachgewiesenes lageabhängiges Sediment erklärt ein Layering-Muster; eine neue Projektion ist nicht gleich biologische Progression.",
+          "D": "Bessere Sichtbarkeit eines unveränderten typischen Gefäßmusters ist keine neue duktale Formveränderung."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-evolution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-no-correlate",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Neue segmentale fein pleomorphe Verkalkungen bleiben nach diagnostischen Mammographieaufnahmen suspekt. Es gibt kein Ultraschallkorrelat und kein MRT-Enhancement. Welches Vorgehen ist am besten begründet?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Mammographisch gezielte Gewebeentnahme des sichtbaren Kalkbefunds planen"
+          },
+          {
+            "id": "B",
+            "text": "MRT-gesteuerte Vakuumbiopsie der korrespondierenden Brustregion planen"
+          },
+          {
+            "id": "C",
+            "text": "Sonographisch gesteuerte Stanzbiopsie der topographisch zugeordneten Region planen"
+          },
+          {
+            "id": "D",
+            "text": "Wegen der negativen Zusatzverfahren zunächst sechsmonatige Bildkontrolle wählen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die suspekte mammographische Morphologie bleibt maßgeblich. Negative MRT kann Malignität nicht vollständig ausschließen; in der retrospektiven Originalkohorte gab es auch falsch negative Karzinome/DCIS. Die Entnahme muss auf den tatsächlich sichtbaren Befund zielen.",
+        "wrongExplanations": {
+          "B": "Ohne darstellbares MRT-Ziel lässt sich der mammographische Kalkbefund so nicht zuverlässig gezielt entnehmen.",
+          "C": "Eine bloß ungefähre Region ersetzt keine gesicherte sonographische Korrelation zum Kalkziel.",
+          "D": "Negative Zusatzverfahren machen aus einer persistierend suspekten Kalkmorphologie keine wahrscheinlich benigne Verlaufskonstellation."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0188679",
+          "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-management"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-round-group-followup",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Bei einer asymptomatischen Frau ohne Brustkrebsanamnese ist eine einzelne Gruppe runder Partikel erstmals sichtbar. Die vollständige diagnostische Abklärung einschließlich Vergrößerungsaufnahmen zeigt keine suspekten Merkmale; das Assessment lautet wahrscheinlich benign. Welche Empfehlung passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Rückkehr zum nächsten regulären Screeningintervall empfehlen"
+          },
+          {
+            "id": "B",
+            "text": "Kurzfristige mammographische Kontrolle nach sechs Monaten"
+          },
+          {
+            "id": "C",
+            "text": "MRT als Ersatz für die erste mammographische Verlaufskontrolle"
+          },
+          {
+            "id": "D",
+            "text": "Unmittelbare stereotaktische Gewebeentnahme empfehlen"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Für ein nach vollständiger Abklärung als wahrscheinlich benign bewertetes mammographisches Muster passt BI-RADS 3 mit erster Sechsmonatskontrolle. Das ist keine Regel für amorphe/suspekte Gruppen oder eine noch unvollständige Screeningabklärung.",
+        "wrongExplanations": {
+          "A": "Wahrscheinlich benign bedeutet nicht abschließend benign. Der kurzfristige Vergleich gehört zu dieser Beurteilung.",
+          "C": "Die festgelegte mammographische Verlaufskontrolle wird nicht durch eine negative MRT ersetzt.",
+          "D": "Erstmalige Sichtbarkeit allein ist nach der beschriebenen vollständigen, wahrscheinlich benignen Abklärung kein zwingender Biopsiegrund."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://doi.org/10.1148/radiol.2020192641"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-management"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-stable-suspicious",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Eine bisher nicht biopsierte Gruppe fein pleomorpher segmentaler Verkalkungen ist auf technisch vergleichbaren Bildern seit zwei Jahren stabil. Die aktuelle diagnostische Beurteilung bleibt suspekt. Was ist am besten begründet?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Auf Routinekontrolle umstellen, weil der zweijährige Vergleich abgeschlossen ist"
+          },
+          {
+            "id": "B",
+            "text": "Kontrastverstärkte MRT vor Festlegung der weiteren Maßnahmen veranlassen"
+          },
+          {
+            "id": "C",
+            "text": "Weitere mammographische Kontrolle nach sechs Monaten empfehlen"
+          },
+          {
+            "id": "D",
+            "text": "Die Gewebeabklärung wegen fortbestehender suspekter Morphologie empfehlen"
+          }
+        ],
+        "correct": "D",
+        "explanation": "Zweijährige Stabilität macht persistierend suspekte Verkalkungen nicht automatisch benign. Die Originalserie enthielt malignen Kalk, der über längere Zeit unverändert erschien; daraus wird hier keine individuelle Risikozahl abgeleitet.",
+        "wrongExplanations": {
+          "A": "Die Beendigung einer wahrscheinlich benignen Überwachung ist nicht auf einen fortbestehend suspekten, unbiopsierten Befund übertragbar.",
+          "B": "Negative MRT schließt insbesondere DCIS nicht vollständig aus und hebt den morphologischen Verdacht nicht automatisch auf.",
+          "C": "Weiterbeobachtung ersetzt bei diesem weiterhin suspekten Assessment nicht die empfohlene Gewebediagnostik."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://pubmed.ncbi.nlm.nih.gov/8208928/"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-evolution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-regional-definition",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Locker verstreute Verkalkungen in einem 3-cm-Areal ohne erkennbare duktale Orientierung: Welcher Verteilungsdeskriptor passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Regional"
+          },
+          {
+            "id": "B",
+            "text": "Gruppiert"
+          },
+          {
+            "id": "C",
+            "text": "Linear"
+          },
+          {
+            "id": "D",
+            "text": "Segmental"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Regional beschreibt ein größeres Areal über 2 cm ohne eindeutige Gangorientierung.",
+        "wrongExplanations": {
+          "B": "Gruppiert: mindestens fünf Partikel in 1 cm oder eine größere Zahl innerhalb von 2 cm.",
+          "C": "Linear setzt eine Anordnung entlang einer Linie voraus.",
+          "D": "Segmental folgt einem Gangsystem, typischerweise keilförmig zur Mamille."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 1,
+        "learningGoalIds": [
+          "calc08-distribution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-segmental-apex",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Auf den diagnostischen Aufnahmen folgen Verkalkungen einem verzweigten Gangsystem in einem dreieckigen Areal mit Spitze zur Mamille. Welcher Verteilungsdeskriptor gehört in den Befund?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Regional"
+          },
+          {
+            "id": "B",
+            "text": "Gruppiert"
+          },
+          {
+            "id": "C",
+            "text": "Segmental"
+          },
+          {
+            "id": "D",
+            "text": "Linear"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Das dreieckige Areal entlang eines Ganges mit seinen Ästen entspricht einer segmentalen Verteilung. Dies beschreibt die räumliche Anordnung; die Partikelmorphologie wird separat benannt.",
+        "wrongExplanations": {
+          "A": "Regional bezeichnet ein größeres Areal ohne die hier erkennbare duktale Orientierung.",
+          "B": "Gruppiert beschreibt die räumliche Häufung; das dargestellte Gangsystem mit seinen Ästen wird präziser als segmental beschrieben.",
+          "D": "Linear beschreibt eine Anordnung entlang einer Linie; die Äste und das dreieckige Areal sprechen hier für segmental."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 1,
+        "learningGoalIds": [
+          "calc08-distribution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-modifiers-not-score",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Einer regionalen amorphen Kalkverteilung wird in einem historischen Morphologie-Verteilungsmodell die Modellkategorie 3 zugeordnet. Zusätzlich zeigt sich eine neue benachbarte Architekturstörung. Welcher nächste Schritt ist am besten begründet?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Für den gesamten Befund eine Sechsmonatskontrolle nach dem Modellwert empfehlen"
+          },
+          {
+            "id": "B",
+            "text": "Die Architekturstörung gezielt abklären und Kalk sowie Begleitbefund gemeinsam neu bewerten"
+          },
+          {
+            "id": "C",
+            "text": "Vor dem Gesamtassessment eine negative MRT als Voraussetzung für Verlaufskontrolle anstreben"
+          },
+          {
+            "id": "D",
+            "text": "Die Modellkategorie anhand der größeren Gesamtausdehnung um eine Stufe erhöhen"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Das historische Youk-Modell wurde aus ausgewählten Exzisionskohorten entwickelt und enthält weder Zeitverlauf noch Patientenmerkmale oder die neue Architekturstörung. Seine Modellkategorie 3 kann deshalb keine Verlaufskontrolle dieses Gesamtbefunds verordnen. Zuerst die zusätzliche Veränderung diagnostisch klären; das klinische Assessment folgt dem Gesamtbefund.",
+        "wrongExplanations": {
+          "A": "Die Modellkategorie berücksichtigt die neue Gewebeveränderung nicht. Eine wahrscheinlich benigne Verlaufsempfehlung setzt eine abgeschlossene, passende diagnostische Gesamtbewertung voraus.",
+          "C": "Ein negatives Zusatzverfahren ersetzt weder die gezielte Abklärung der Architekturstörung noch ein klinisches Assessment aller Befunde.",
+          "D": "Für Ausdehnung oder Begleitbefunde gibt es in diesem Modell keine validierte Erhöhung um eine feste Kategorie. Beschreiben und klinisch gewichten, nicht rechnerisch addieren."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/",
+          "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment"
+        ],
+        "difficulty": 3,
+        "learningGoalIds": [
+          "calc08-evolution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-mri-4a-selected",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Reine Mikroverkalkungen werden nach diagnostischer Mammographie als BI-RADS 4A beurteilt. Eine zusätzlich durchgeführte MRT ist negativ. Es besteht kein Studienprotokoll zum Biopsieverzicht. Welche Empfehlung entspricht dem Standardmanagement?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Rückkehr zum Routine-Screening nach negativer MRT"
+          },
+          {
+            "id": "B",
+            "text": "BI-RADS 3 und zwölfmonatige Kontrolle ohne Gewebeabklärung"
+          },
+          {
+            "id": "C",
+            "text": "Sechsmonatige MRT-Kontrolle als Ersatz der mammographisch gezielten Abklärung"
+          },
+          {
+            "id": "D",
+            "text": "Gewebediagnostik des suspekten mammographischen Befunds empfehlen"
+          }
+        ],
+        "correct": "D",
+        "explanation": "Kategorie 4 führt im Standard zur Gewebediagnostik. Fueger 2021 diskutiert bei ausgewählten niedrigeren Prätestrisiken nach negativer MRT eine Forschungsstrategie mit Überwachung. Die vorgeschlagenen 6–12 Monate sind kein prospektiv validierter allgemeiner Ersatz für die Biopsie und keine automatische 4A-Regel.",
+        "wrongExplanations": {
+          "A": "Eine negative Zusatz-MRT macht das suspekte mammographische Assessment nicht zu einem abgeschlossenen benignen Befund.",
+          "B": "Die negative MRT allein begründet keine automatische Herabstufung auf 3 und kein festes zwölfmonatiges Intervall.",
+          "C": "Eine MRT-Kontrolle ersetzt hier nicht die empfohlene Gewebediagnostik des mammographischen Kalkziels."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-management"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-mri-4b-risk",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: Ein BI-RADS 4B-Kalkbefund zeigt in der MRT kein Enhancement. Für eine gemeinsame Fallbesprechung soll das verbleibende Malignitätsrisiko eingeordnet werden. Welche Information ist dafür am unmittelbarsten erforderlich?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Angemessenes Prätestrisiko und Testleistung in einer vergleichbaren Population"
+          },
+          {
+            "id": "B",
+            "text": "Negativer Vorhersagewert aus einer anders zusammengesetzten Screeningpopulation"
+          },
+          {
+            "id": "C",
+            "text": "Übernahme der oberen 4A-Risikogrenze als neues Risiko nach negativer MRT"
+          },
+          {
+            "id": "D",
+            "text": "In einer Vergleichsstudie beobachtete Falsch-negativ-Rate der MRT bei malignen Läsionen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "4B umfasst mehr als 10 bis einschließlich 50 Prozent Prätestrisiko; die Kategorie allein liefert kein individuelles Residualrisiko. Der negative Vorhersagewert hängt vom Prätestrisiko und der Testleistung ab. Die Meta-Analyse erlaubte keine belastbare 4A/4B/4C-Subgruppenregel; Standardmanagement bleibt Gewebediagnostik.",
+        "wrongExplanations": {
+          "B": "Der negative Vorhersagewert ist bei verändertem Prätestrisiko und Fallmix nicht unverändert übertragbar.",
+          "C": "Eine Kategoriengrenze ist kein durch die negative MRT berechnetes Nachtestrisiko.",
+          "D": "Die Falsch-negativ-Rate bezieht sich auf maligne Läsionen. Sie ist nicht mit dem Malignitätsrisiko unter allen MRT-negativen Befunden gleichzusetzen."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/"
+        ],
+        "difficulty": 3,
+        "learningGoalIds": [
+          "calc08-management"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-de-coarse-heterogeneous-size",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Textfall: In Vergrößerungsaufnahmen sind irreguläre, gut erkennbare Partikel meist zwischen 0,5 und 1 mm sichtbar. Sie sind größer als amorpher Kalk, aber ohne grobes konfluierendes Involutionsmuster. Welcher Morphologiedeskriptor passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Fein pleomorph"
+          },
+          {
+            "id": "B",
+            "text": "Amorph"
+          },
+          {
+            "id": "C",
+            "text": "Grob heterogen"
+          },
+          {
+            "id": "D",
+            "text": "Grob, typisch benigne konfluierend"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Die Kombination aus irregulärer, klar erkennbarer Partikelform und typischer Größe 0,5–1 mm passt zum aktuellen Deskriptor grob heterogen. Die Managemententscheidung erfordert zusätzlich Verteilung, Verlauf und Gesamtkontext.",
+        "wrongExplanations": {
+          "A": "Fein pleomorphe Partikel sind typischerweise kleiner und variieren in Form und Größe; die beschriebene Größen-Form-Kombination passt besser zu grob heterogen.",
+          "B": "Amorphe Partikel sind so klein oder unscharf, dass ihre Form nicht klar erkennbar ist; hier sind irreguläre Konturen unterscheidbar.",
+          "D": "Das typische grobe konfluierende Involutionsmuster fehlt ausdrücklich; bloße Größenzunahme beweist keine benigne Morphologie."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      }
+    ],
+    "en": [
+      {
+        "id": "mammographie-mikrokalk-en-size-alone",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: A new calcification group contains mainly submillimetric particles. Which shape description is suspicious despite the small particle size?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Round, smooth and similar in shape"
+          },
+          {
+            "id": "B",
+            "text": "Fine, irregular and variable in size and shape"
+          },
+          {
+            "id": "C",
+            "text": "Round with central lucency and confirmed skin location"
+          },
+          {
+            "id": "D",
+            "text": "Semilunar sediment with projection-dependent shape change"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Fine irregular particles with variable shapes fit suspicious fine pleomorphic morphology. Small size alone is not reassuring; include distribution, comparison and overall findings in assessment.",
+        "wrongExplanations": {
+          "A": "Smooth round particles lack the pleomorphic shape described; overall assessment still depends on context.",
+          "C": "Confirmed superficial location with central lucency supports typical skin calcification.",
+          "D": "Position-dependent shape change with sediment corresponds to layering rather than fine pleomorphic particle shape."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 1,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-magnification",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: Screening reveals a new fine calcification group whose particle shape is unclear on standard views. Which targeted addition primarily serves detailed morphological assessment?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Targeted spot compression without geometric magnification"
+          },
+          {
+            "id": "B",
+            "text": "DBT slices for spatial localisation and tissue context"
+          },
+          {
+            "id": "C",
+            "text": "Targeted mammographic magnification views of the calcification area"
+          },
+          {
+            "id": "D",
+            "text": "Tangential view to assess possible skin location"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Targeted magnification supports assessment of shape, margins and arrangement. A small focal spot limits geometric blur. Ultrasound or MRI may answer additional questions but do not replace calcification detail analysis.",
+        "wrongExplanations": {
+          "A": "Spot compression reduces overlap but does not provide targeted geometric magnification of calcification particles.",
+          "B": "DBT adds localisation and tissue context. Targeted magnification remains important for the fine particle shape asked about here.",
+          "D": "A tangential view primarily answers whether calcifications lie in the skin. Fine particle morphology is the main question here."
+        },
+        "source": "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment",
+        "sources": [
+          "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment",
+          "https://www.acr.org/-/media/ACR/Files/Practice-Parameters/dig-mamo.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-popcorn",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: A longstanding circumscribed breast mass develops increasingly coarse, dense, confluent popcorn-like calcifications. Which explanation fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Involution of a fibroadenoma"
+          },
+          {
+            "id": "B",
+            "text": "Sedimentation of calcium in small cysts"
+          },
+          {
+            "id": "C",
+            "text": "Calcification along parallel vessel walls"
+          },
+          {
+            "id": "D",
+            "text": "Thin irregular calcification of ductal casts"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The current “coarse” descriptor includes the classic popcorn-like, dense, confluent pattern. In a known circumscribed mass it fits fibroadenoma involution. Assessment uses the whole constellation; size alone does not establish benignity.",
+        "wrongExplanations": {
+          "B": "Sediment mainly produces position-dependent layering rather than increasingly coarse confluent calcification of a mass.",
+          "C": "Vascular calcium follows linear or tubular vessels rather than a popcorn pattern within a mass.",
+          "D": "Ductal casts are thin and irregular; the described particles are coarse and confluent."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-milk-calcium",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: A calcification group appears rounded and smudgy on CC, but sharply defined semilunar/teacup-like sediment appears on a true lateral view. Which explanation fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Large secretory rod-like calcifications"
+          },
+          {
+            "id": "B",
+            "text": "Layering from sedimented calcium in cysts"
+          },
+          {
+            "id": "C",
+            "text": "Fine linear ductal calcifications"
+          },
+          {
+            "id": "D",
+            "text": "Parallel vascular wall calcifications"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Projection-dependent shape change with sedimented layering is characteristic. The current BI-RADS descriptor is “layering”. Assess shape change rather than merely the presence of a group.",
+        "wrongExplanations": {
+          "A": "Secretory rods are smooth and linear rather than position-dependent sediment levels in cysts.",
+          "C": "Fine ductal forms are thin and irregular; the described shape change favours sediment.",
+          "D": "Vascular calcium follows vessel walls; layering on the lateral view here represents sediment."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-rods-versus-linear",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: Mammography shows bilateral smooth, large rod-like calcifications along retroareolar ducts. Which morphological classification fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Suspicious fine linear/branching calcifications"
+          },
+          {
+            "id": "B",
+            "text": "Large rod-like secretory calcifications"
+          },
+          {
+            "id": "C",
+            "text": "Vascular calcifications along parallel vessel walls"
+          },
+          {
+            "id": "D",
+            "text": "Layering from sedimented calcium in small cysts"
+          }
+        ],
+        "correct": "B",
+        "explanation": "The smooth large-rod pattern fits large rod-like calcifications, typically associated with duct ectasia. Thin irregular fine-linear ductal casts are a different, suspicious descriptor.",
+        "wrongExplanations": {
+          "A": "Fine linear/branching forms are thin and irregular; the pattern described here is large and smooth.",
+          "C": "Vascular calcium outlines parallel or tubular vessel walls; the stated location follows retroareolar ducts.",
+          "D": "Layering is recognised by projection-dependent shape change with sedimentation, which is not described here."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-amorphous-distribution",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: A new calcification group remains so small and hazy on targeted magnification that no specific particle shape can be determined. Which BI-RADS morphology descriptor fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Fine pleomorphic"
+          },
+          {
+            "id": "B",
+            "text": "Coarse heterogeneous"
+          },
+          {
+            "id": "C",
+            "text": "Amorphous"
+          },
+          {
+            "id": "D",
+            "text": "Fine linear/branching"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Amorphous describes particles too small or formless for a more specific shape. It is a suspicious morphology descriptor; overall assessment also requires distribution, comparison and context.",
+        "wrongExplanations": {
+          "A": "Fine pleomorphic particles have discernible variable shapes, which cannot be determined here.",
+          "B": "Coarse heterogeneous calcifications are conspicuous irregular particles with discernible contours; the indeterminate shape here better fits amorphous.",
+          "D": "Fine linear/branching requires recognisable thin irregular linear forms."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 1,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-pleomorphic-segmental",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: Fine irregular calcifications of varying shapes and sizes occupy a triangular region with its apex towards the nipple. Which combined description is most precise?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Fine pleomorphic, regional distribution"
+          },
+          {
+            "id": "B",
+            "text": "Coarse heterogeneous, segmental distribution"
+          },
+          {
+            "id": "C",
+            "text": "Fine pleomorphic, segmental distribution"
+          },
+          {
+            "id": "D",
+            "text": "Amorphous, diffuse distribution"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Discernible variable fine shapes are pleomorphic; the nipple-directed triangle corresponds to segmental ductal orientation. Name morphology and distribution separately and assess them together.",
+        "wrongExplanations": {
+          "A": "The morphology fits, but regional describes a larger area without ductal orientation. A nipple-directed triangle is specified here.",
+          "B": "Segmental distribution fits, but the fine variable particle shapes described are fine pleomorphic rather than coarse heterogeneous.",
+          "D": "Particle shapes are discernible, hence not amorphous; the directed triangular distribution is not diffuse."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-distribution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-highest-suspicion",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: Four newly investigated calcification findings differ in morphology and distribution. Which combination is the strongest ductal suspicion pattern among these findings?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Fine linear/branching, segmental"
+          },
+          {
+            "id": "B",
+            "text": "Fine pleomorphic, grouped"
+          },
+          {
+            "id": "C",
+            "text": "Amorphous, grouped"
+          },
+          {
+            "id": "D",
+            "text": "Coarse heterogeneous, regional"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Thin irregular branching particles with segmental ductal orientation form the strongest ductal suspicion pattern here. The other listed morphologies are also suspicious; this comparison establishes neither histology nor a fixed individual probability.",
+        "wrongExplanations": {
+          "B": "Fine pleomorphic is suspicious and needs work-up. Fine branching ductal casts with segmental orientation nevertheless create the stronger ductal suspicion pattern here.",
+          "C": "Grouped amorphous calcifications are not automatically benign, but do not show the same clear irregular duct-cast morphology as option A.",
+          "D": "Coarse heterogeneous is also a suspicious descriptor, but regional distribution here lacks the segmental ductal architecture with fine branching."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-distribution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-evolution-context",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: Prior images acquired with the same technique are available. Which change in a previously round calcification finding most increases the need for further assessment?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Increasing coarse confluent calcification in a known circumscribed fibroadenoma mass"
+          },
+          {
+            "id": "B",
+            "text": "Increasing irregular pleomorphic particles with newly apparent ductal arrangement"
+          },
+          {
+            "id": "C",
+            "text": "Demonstration of sedimenting shapes on an additional true lateral view"
+          },
+          {
+            "id": "D",
+            "text": "Clearer depiction of parallel vascular wall calcifications without changed distribution"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Development of irregular particles with ductal architecture is relevant morphological progression. Increase alone can also occur during benign evolution; the nature of the change matters.",
+        "wrongExplanations": {
+          "A": "Coarse confluent maturation of a known fibroadenoma fits involution rather than newly suspicious particle morphology.",
+          "C": "Demonstrated position-dependent sediment explains layering; an additional projection is not biological progression.",
+          "D": "Clearer visibility of an unchanged typical vascular pattern is not a new ductal morphological change."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-evolution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-no-correlate",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: New segmental fine pleomorphic calcifications remain suspicious after diagnostic mammographic views. There is no ultrasound correlate or MRI enhancement. Which approach is best justified?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Plan tissue sampling targeting the mammographically visible calcifications"
+          },
+          {
+            "id": "B",
+            "text": "Plan MRI-guided vacuum biopsy of the corresponding breast region"
+          },
+          {
+            "id": "C",
+            "text": "Plan ultrasound-guided core biopsy of the topographically corresponding region"
+          },
+          {
+            "id": "D",
+            "text": "Choose initial six-month imaging surveillance because adjunct imaging is negative"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Suspicious mammographic morphology remains decisive. Negative MRI cannot completely exclude malignancy; the original retrospective cohort included false-negative cancers/DCIS. Sampling must target the actually visible finding.",
+        "wrongExplanations": {
+          "B": "Without a visible MRI target, this does not reliably target the mammographic calcification finding.",
+          "C": "An approximate region does not replace confirmed sonographic correlation with the calcification target.",
+          "D": "Negative adjunct imaging does not turn persistently suspicious calcification morphology into a probably benign surveillance finding."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0188679",
+          "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-management"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-round-group-followup",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: In an asymptomatic woman without a personal breast cancer history, a solitary group of round particles is first seen. Complete diagnostic work-up including magnification shows no suspicious features; the assessment is probably benign. Which recommendation fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Recommend return to the next routine screening interval"
+          },
+          {
+            "id": "B",
+            "text": "Short-interval mammographic follow-up at six months"
+          },
+          {
+            "id": "C",
+            "text": "MRI instead of the initial mammographic follow-up"
+          },
+          {
+            "id": "D",
+            "text": "Recommend immediate stereotactic tissue sampling"
+          }
+        ],
+        "correct": "B",
+        "explanation": "A mammographic finding assessed as probably benign after complete work-up fits BI-RADS 3 with initial six-month follow-up. This is not a rule for amorphous/suspicious groups or incomplete screening work-up.",
+        "wrongExplanations": {
+          "A": "Probably benign does not mean definitively benign; short-interval comparison belongs to this assessment.",
+          "C": "The planned mammographic surveillance is not replaced by negative MRI.",
+          "D": "First visibility alone does not mandate biopsy after the complete probably benign work-up described."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://doi.org/10.1148/radiol.2020192641"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-management"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-stable-suspicious",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: An unbiopsied group of fine pleomorphic segmental calcifications has been stable for two years on technically comparable images. Current diagnostic assessment remains suspicious. What is best justified?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Return to routine screening because two-year comparison is complete"
+          },
+          {
+            "id": "B",
+            "text": "Arrange contrast-enhanced MRI before deciding further management"
+          },
+          {
+            "id": "C",
+            "text": "Recommend further mammographic follow-up in six months"
+          },
+          {
+            "id": "D",
+            "text": "Recommend tissue diagnosis because suspicious morphology persists"
+          }
+        ],
+        "correct": "D",
+        "explanation": "Two-year stability does not automatically make persistently suspicious calcifications benign. The original series included malignant calcifications unchanged for extended periods; no individual probability is inferred here.",
+        "wrongExplanations": {
+          "A": "Completion of probably benign surveillance cannot be transferred to a persistently suspicious unbiopsied finding.",
+          "B": "Negative MRI does not completely exclude DCIS and does not automatically negate morphological suspicion.",
+          "C": "Continued surveillance does not replace recommended tissue diagnosis for this persistently suspicious assessment."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://pubmed.ncbi.nlm.nih.gov/8208928/"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-evolution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-regional-definition",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: Loosely scattered calcifications over a 3-cm area without recognisable ductal orientation: which distribution descriptor fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Regional"
+          },
+          {
+            "id": "B",
+            "text": "Grouped"
+          },
+          {
+            "id": "C",
+            "text": "Linear"
+          },
+          {
+            "id": "D",
+            "text": "Segmental"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Regional describes a larger area exceeding 2 cm without a clear ductal orientation.",
+        "wrongExplanations": {
+          "B": "Grouped: at least five particles in 1 cm or a larger number within 2 cm.",
+          "C": "Linear requires an arrangement along a line.",
+          "D": "Segmental follows a ductal system, typically wedge-shaped towards the nipple."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 1,
+        "learningGoalIds": [
+          "calc08-distribution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-segmental-apex",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: On diagnostic views, calcifications follow a branching ductal system in a triangular area with its apex towards the nipple. Which distribution descriptor belongs in the report?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Regional"
+          },
+          {
+            "id": "B",
+            "text": "Grouped"
+          },
+          {
+            "id": "C",
+            "text": "Segmental"
+          },
+          {
+            "id": "D",
+            "text": "Linear"
+          }
+        ],
+        "correct": "C",
+        "explanation": "A triangular area following a duct and its branches corresponds to segmental distribution. This describes spatial arrangement; particle morphology is reported separately.",
+        "wrongExplanations": {
+          "A": "Regional describes a larger area without the ductal orientation demonstrated here.",
+          "B": "Grouped describes spatial clustering; the duct and its branches shown here are more precisely described as segmental.",
+          "D": "Linear describes arrangement along a line; the branches and triangular area favour segmental here."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 1,
+        "learningGoalIds": [
+          "calc08-distribution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-modifiers-not-score",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: Regional amorphous calcifications are assigned model category 3 in a historical morphology-distribution model. A new adjacent architectural distortion is also present. Which next step is best justified?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Recommend six-month surveillance for the entire finding based on the model value"
+          },
+          {
+            "id": "B",
+            "text": "Investigate the distortion and reassess calcifications and associated findings together"
+          },
+          {
+            "id": "C",
+            "text": "Seek a negative MRI as the prerequisite for surveillance before overall assessment"
+          },
+          {
+            "id": "D",
+            "text": "Raise the model category by one level based on the greater total extent"
+          }
+        ],
+        "correct": "B",
+        "explanation": "The historical Youk model was developed in selected excision cohorts and contains neither temporal change, patient factors nor the new distortion. Its model category 3 cannot prescribe surveillance for this overall finding. First investigate the additional change; clinical assessment follows the complete findings.",
+        "wrongExplanations": {
+          "A": "The model category does not account for the new tissue change. Probably benign surveillance requires a completed, appropriate overall diagnostic assessment.",
+          "C": "A negative adjunct examination replaces neither targeted investigation of distortion nor clinical assessment of all findings.",
+          "D": "This model has no validated fixed-category increment for extent or associated findings. Describe and weigh them clinically rather than adding categories arithmetically."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/",
+          "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment"
+        ],
+        "difficulty": 3,
+        "learningGoalIds": [
+          "calc08-evolution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-mri-4a-selected",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: Pure microcalcifications are assessed as BI-RADS 4A after diagnostic mammography. Additional MRI is negative. There is no study protocol for biopsy avoidance. Which recommendation follows standard management?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Return to routine screening after negative MRI"
+          },
+          {
+            "id": "B",
+            "text": "BI-RADS 3 with twelve-month follow-up without tissue diagnosis"
+          },
+          {
+            "id": "C",
+            "text": "Six-month MRI follow-up instead of mammographically targeted work-up"
+          },
+          {
+            "id": "D",
+            "text": "Recommend tissue diagnosis of the suspicious mammographic finding"
+          }
+        ],
+        "correct": "D",
+        "explanation": "Category 4 calls for tissue diagnosis in standard management. Fueger 2021 discusses a research strategy of surveillance after negative MRI at selected lower pretest risks. The proposed 6–12 months are not a prospectively validated general replacement for biopsy or an automatic 4A rule.",
+        "wrongExplanations": {
+          "A": "Negative adjunct MRI does not convert the suspicious mammographic assessment into a completed benign work-up.",
+          "B": "Negative MRI alone does not justify automatic downgrading to 3 or a fixed twelve-month interval.",
+          "C": "MRI follow-up does not replace recommended tissue diagnosis of the mammographic calcification target here."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-management"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-mri-4b-risk",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: A BI-RADS 4B calcification finding shows no MRI enhancement. Residual malignancy risk is to be assessed at a multidisciplinary discussion. Which information is most directly needed?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Appropriate pretest risk and test performance in a comparable population"
+          },
+          {
+            "id": "B",
+            "text": "Negative predictive value from a screening population with a different case mix"
+          },
+          {
+            "id": "C",
+            "text": "Using the upper 4A risk boundary as the new risk after negative MRI"
+          },
+          {
+            "id": "D",
+            "text": "The MRI false-negative rate among malignant lesions in a comparator study"
+          }
+        ],
+        "correct": "A",
+        "explanation": "4B spans greater than 10 up to 50 percent pretest risk; the category alone does not give individual residual risk. Negative predictive value depends on pretest risk and test performance. The meta-analysis did not establish a robust 4A/4B/4C subgroup rule; standard management remains tissue diagnosis.",
+        "wrongExplanations": {
+          "B": "Negative predictive value cannot be transferred unchanged across different pretest risks and case mixes.",
+          "C": "A category boundary is not a post-test risk calculated from negative MRI.",
+          "D": "The false-negative rate is conditional on lesions being malignant. It is not the malignancy risk among all MRI-negative findings."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/"
+        ],
+        "difficulty": 3,
+        "learningGoalIds": [
+          "calc08-management"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-en-coarse-heterogeneous-size",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "Text vignette: Magnification views show irregular, distinguishable particles mostly between 0.5 and 1 mm. They are larger than amorphous calcifications but lack a coarse confluent involution pattern. Which morphology descriptor fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Fine pleomorphic"
+          },
+          {
+            "id": "B",
+            "text": "Amorphous"
+          },
+          {
+            "id": "C",
+            "text": "Coarse heterogeneous"
+          },
+          {
+            "id": "D",
+            "text": "Coarse, typically benign confluent"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Irregular distinguishable particles typically 0.5–1 mm fit the current coarse heterogeneous descriptor. Management additionally requires distribution, evolution and the full context.",
+        "wrongExplanations": {
+          "A": "Fine pleomorphic particles are typically smaller and vary in shape and size; the described combination better fits coarse heterogeneous.",
+          "B": "Amorphous particles are too small or hazy for clear shape characterization; irregular contours are distinguishable here.",
+          "D": "The typical coarse confluent involution pattern is explicitly absent; larger size alone does not establish benign morphology."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      }
+    ],
+    "fa": [
+      {
+        "id": "mammographie-mikrokalk-fa-size-alone",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: گروه جدید کلسیفیکاسیون عمدتاً ذرات زیرمیلی‌متری دارد. کدام توصیف شکل، با وجود اندازهٔ کوچک ذرات، مشکوک است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "گرد، صاف و هم‌شکل"
+          },
+          {
+            "id": "B",
+            "text": "ظریف، نامنظم و متفاوت از نظر اندازه و شکل"
+          },
+          {
+            "id": "C",
+            "text": "گرد با شفافیت مرکزی و محل پوستی تأییدشده"
+          },
+          {
+            "id": "D",
+            "text": "رسوب هلالی با تغییر شکل وابسته به نما"
+          }
+        ],
+        "correct": "B",
+        "explanation": "ذرات ظریف و نامنظم با شکل‌های متفاوت با مورفولوژی مشکوک پلئومورفیک ظریف تطابق دارند. اندازهٔ کوچک به‌تنهایی اطمینان‌بخش نیست؛ توزیع، مقایسه و یافته‌های کلی نیز در ارزیابی لحاظ شوند.",
+        "wrongExplanations": {
+          "A": "ذرات گرد و صاف شکل پلئومورفیک توصیف‌شده را ندارند؛ بااین‌حال ارزیابی کلی وابسته به زمینه است.",
+          "C": "محل سطحی تأییدشده با شفافیت مرکزی از کلسیفیکاسیون پوستی تیپیک حمایت می‌کند.",
+          "D": "تغییر شکل وابسته به وضعیت همراه رسوب با لایه‌بندی تطابق دارد، نه شکل پلئومورفیک ظریف ذرات."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 1,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-magnification",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: در غربالگری گروه جدیدی از کلسیفیکاسیون ظریف دیده شده که شکل ذرات آن در نماهای استاندارد روشن نیست. کدام بررسی هدفمند عمدتاً برای تحلیل جزئیات مورفولوژیک مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "فشردگی موضعی هدفمند بدون بزرگ‌نمایی هندسی"
+          },
+          {
+            "id": "B",
+            "text": "برش‌های DBT برای تعیین محل فضایی و زمینهٔ بافتی"
+          },
+          {
+            "id": "C",
+            "text": "نماهای بزرگ‌نمایی ماموگرافیک هدفمند از ناحیهٔ کلسیفیکاسیون"
+          },
+          {
+            "id": "D",
+            "text": "نمای تانژانسی برای بررسی محل پوستی احتمالی"
+          }
+        ],
+        "correct": "C",
+        "explanation": "بزرگ‌نمایی هدفمند به ارزیابی شکل، حاشیه و آرایش کمک می‌کند. کانون کوچک تاری هندسی را محدود می‌کند. سونوگرافی یا MRI ممکن است به پرسش‌های تکمیلی پاسخ دهند ولی جای تحلیل جزئیات کلسیفیکاسیون را نمی‌گیرند.",
+        "wrongExplanations": {
+          "A": "فشردگی موضعی هم‌پوشانی را کم می‌کند ولی بزرگ‌نمایی هندسی هدفمند جزئیات ذرات کلسیفیکاسیون را فراهم نمی‌کند.",
+          "B": "DBT محل و زمینهٔ بافتی را تکمیل می‌کند. برای شکل ظریف ذرات که اینجا مطرح است، نمای بزرگ‌نمایی هدفمند همچنان اهمیت دارد.",
+          "D": "نمای تانژانسی عمدتاً به محل پوستی کلسیفیکاسیون پاسخ می‌دهد. اینجا پرسش اصلی مورفولوژی ظریف ذرات است."
+        },
+        "source": "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment",
+        "sources": [
+          "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment",
+          "https://www.acr.org/-/media/ACR/Files/Practice-Parameters/dig-mamo.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-popcorn",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: تودهٔ پستانی با حدود مشخص و شناخته‌شده از سال‌ها قبل، به‌تدریج کلسیفیکاسیون درشت، متراکم و به‌هم‌پیوستهٔ پاپ‌کورنی پیدا می‌کند. کدام توضیح مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پسرفت فیبروآدنوم"
+          },
+          {
+            "id": "B",
+            "text": "رسوب کلسیم در کیست‌های کوچک"
+          },
+          {
+            "id": "C",
+            "text": "کلسیفیکاسیون در امتداد دیواره‌های موازی عروق"
+          },
+          {
+            "id": "D",
+            "text": "کلسیفیکاسیون ظریف و نامنظم قالب‌های مجرایی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "اصطلاح کنونی «درشت» الگوی کلاسیک پاپ‌کورنی، متراکم و به‌هم‌پیوسته را در بر می‌گیرد. در تودهٔ شناخته‌شده با حدود مشخص با پسرفت فیبروآدنوم تطابق دارد. کل مجموعه مهم است؛ اندازه به‌تنهایی خوش‌خیمی را ثابت نمی‌کند.",
+        "wrongExplanations": {
+          "B": "رسوب بیشتر لایه‌بندی وابسته به وضعیت ایجاد می‌کند، نه کلسیفیکاسیون درشت و پیوستهٔ پیشرونده در توده.",
+          "C": "کلسیفیکاسیون عروقی مسیر خطی یا لوله‌ای عروق را دنبال می‌کند، نه الگوی پاپ‌کورنی داخل توده.",
+          "D": "قالب‌های مجرایی ظریف و نامنظم‌اند؛ ذرات اینجا درشت و به‌هم‌پیوسته توصیف شده‌اند."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-milk-calcium",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: گروه کلسیفیکاسیون در نمای CC گرد و محو است، اما در نمای لترال واقعی رسوبات واضح هلالی/فنجانی دیده می‌شوند. کدام توضیح مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "کلسیفیکاسیون‌های درشت ترشحی میله‌ای"
+          },
+          {
+            "id": "B",
+            "text": "لایه‌بندی ناشی از رسوب کلسیم در کیست‌ها"
+          },
+          {
+            "id": "C",
+            "text": "کلسیفیکاسیون ظریف خطی مجرایی"
+          },
+          {
+            "id": "D",
+            "text": "کلسیفیکاسیون موازی دیوارهٔ عروق"
+          }
+        ],
+        "correct": "B",
+        "explanation": "تغییر شکل وابسته به نما همراه رسوب لایه‌ای شاخص است. اصطلاح توصیفی کنونی BI-RADS «لایه‌بندی» است. تغییر شکل بررسی می‌شود، نه صرفاً وجود گروه.",
+        "wrongExplanations": {
+          "A": "میله‌های ترشحی صاف و خطی‌اند، نه سطوح رسوب وابسته به وضعیت در کیست‌ها.",
+          "C": "اشکال ظریف مجرایی نازک و نامنظم‌اند؛ تغییر شکل توصیف‌شده از رسوب حمایت می‌کند.",
+          "D": "کلسیفیکاسیون عروقی دیوارهٔ رگ را دنبال می‌کند؛ لایه‌بندی در نمای لترال اینجا رسوب را نشان می‌دهد."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-rods-versus-linear",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: ماموگرافی کلسیفیکاسیون‌های دوطرفهٔ صاف، درشت و میله‌ای در امتداد مجاری پشت آرئول نشان می‌دهد. کدام طبقه‌بندی مورفولوژیک مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "کلسیفیکاسیون مشکوک ظریف خطی/شاخه‌دار"
+          },
+          {
+            "id": "B",
+            "text": "کلسیفیکاسیون درشت ترشحی میله‌ای"
+          },
+          {
+            "id": "C",
+            "text": "کلسیفیکاسیون عروقی در امتداد دیواره‌های موازی رگ"
+          },
+          {
+            "id": "D",
+            "text": "لایه‌بندی ناشی از رسوب کلسیم در کیست‌های کوچک"
+          }
+        ],
+        "correct": "B",
+        "explanation": "الگوی صاف و میله‌ای درشت با کلسیفیکاسیون large rod-like تطابق دارد که معمولاً با اتساع مجاری همراه است. قالب‌های مجرایی ظریف و نامنظم خطی، اصطلاح توصیفی متفاوت و مشکوکی هستند.",
+        "wrongExplanations": {
+          "A": "اشکال ظریف خطی/شاخه‌دار نازک و نامنظم‌اند؛ الگوی اینجا درشت و صاف توصیف شده است.",
+          "C": "کلسیفیکاسیون عروقی دیواره‌های موازی یا لوله‌ای رگ را مشخص می‌کند؛ محل اینجا مجاری پشت آرئول را دنبال می‌کند.",
+          "D": "لایه‌بندی با تغییر شکل وابسته به نما و رسوب شناخته می‌شود که اینجا توصیف نشده است."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-amorphous-distribution",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: گروه جدید کلسیفیکاسیون در نماهای بزرگ‌نمایی هدفمند نیز آن‌قدر کوچک و محو است که شکل مشخص ذرات تعیین نمی‌شود. کدام اصطلاح مورفولوژیک BI-RADS مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پلئومورفیک ظریف"
+          },
+          {
+            "id": "B",
+            "text": "درشت ناهمگون"
+          },
+          {
+            "id": "C",
+            "text": "آمورف"
+          },
+          {
+            "id": "D",
+            "text": "ظریف خطی/شاخه‌دار"
+          }
+        ],
+        "correct": "C",
+        "explanation": "آمورف ذراتی را توصیف می‌کند که برای تعیین شکل مشخص‌تر، بیش از حد کوچک یا بی‌شکل‌اند. اصطلاح مورفولوژیک مشکوک است؛ ارزیابی کلی به توزیع، مقایسه و زمینه نیز نیاز دارد.",
+        "wrongExplanations": {
+          "A": "ذرات پلئومورفیک ظریف شکل‌های متفاوت قابل‌تشخیص دارند که اینجا تعیین نمی‌شوند.",
+          "B": "کلسیفیکاسیون درشت ناهمگون ذرات نامنظم و واضح با حاشیهٔ قابل‌تشخیص است؛ شکل نامشخص اینجا بیشتر با آمورف تطابق دارد.",
+          "D": "برای توصیف ظریف خطی/شاخه‌دار باید اشکال خطی نازک و نامنظم قابل‌شناسایی باشند."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 1,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-pleomorphic-segmental",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: کلسیفیکاسیون‌های ظریف و نامنظم با شکل‌ها و اندازه‌های متفاوت در ناحیه‌ای مثلثی با رأس به‌سوی نوک پستان قرار دارند. کدام توصیف ترکیبی دقیق‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پلئومورفیک ظریف با توزیع ناحیه‌ای"
+          },
+          {
+            "id": "B",
+            "text": "درشت ناهمگون با توزیع سگمنتال"
+          },
+          {
+            "id": "C",
+            "text": "پلئومورفیک ظریف با توزیع سگمنتال"
+          },
+          {
+            "id": "D",
+            "text": "آمورف با توزیع منتشر"
+          }
+        ],
+        "correct": "C",
+        "explanation": "اشکال ظریف و متفاوت قابل‌تشخیص، پلئومورفیک‌اند؛ مثلث رو به نوک پستان با جهت‌گیری سگمنتال مجرایی تطابق دارد. مورفولوژی و توزیع جداگانه نام‌گذاری و با هم ارزیابی می‌شوند.",
+        "wrongExplanations": {
+          "A": "مورفولوژی مطابق است، ولی ناحیه‌ای محدودهٔ بزرگ‌تر بدون جهت‌گیری مجرایی را توصیف می‌کند. اینجا شکل مثلثی رو به نوک پستان ذکر شده است.",
+          "B": "توزیع سگمنتال مطابق است؛ ولی اشکال ظریف و متغیر ذرات، پلئومورفیک ظریف‌اند نه درشت ناهمگون.",
+          "D": "شکل ذرات قابل‌تشخیص است، پس آمورف نیست؛ توزیع مثلثی جهت‌دار نیز منتشر نیست."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-distribution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-highest-suspicion",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: چهار یافتهٔ جدید کلسیفیکاسیون پس از بررسی تشخیصی، از نظر مورفولوژی و توزیع متفاوت‌اند. کدام ترکیب در میان این یافته‌ها قوی‌ترین الگوی مشکوک مجرایی است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ظریف خطی/شاخه‌دار، سگمنتال"
+          },
+          {
+            "id": "B",
+            "text": "پلئومورفیک ظریف، گروهی"
+          },
+          {
+            "id": "C",
+            "text": "آمورف، گروهی"
+          },
+          {
+            "id": "D",
+            "text": "درشت ناهمگون، ناحیه‌ای"
+          }
+        ],
+        "correct": "A",
+        "explanation": "ذرات ظریف و نامنظم شاخه‌دار با جهت‌گیری سگمنتال مجرایی اینجا قوی‌ترین الگوی مشکوک مجرایی را می‌سازند. مورفولوژی‌های دیگر فهرست‌شده نیز مشکوک‌اند؛ این مقایسه نه بافت‌شناسی و نه درصد ثابت فردی را تعیین می‌کند.",
+        "wrongExplanations": {
+          "B": "پلئومورفیک ظریف مشکوک و نیازمند بررسی است؛ بااین‌حال قالب‌های ظریف شاخه‌دار مجرایی با جهت‌گیری سگمنتال اینجا الگوی مشکوک مجرایی قوی‌تری می‌سازند.",
+          "C": "کلسیفیکاسیون آمورف گروهی خودبه‌خود خوش‌خیم نیست، ولی مورفولوژی واضح قالب مجرایی نامنظم گزینهٔ A را نشان نمی‌دهد.",
+          "D": "درشت ناهمگون نیز اصطلاح مشکوکی است، ولی توزیع ناحیه‌ای اینجا معماری سگمنتال مجرایی با شاخه‌های ظریف را ندارد."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-distribution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-evolution-context",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: تصاویر قبلی با تکنیک یکسان موجودند. کدام تغییر در یافتهٔ کلسیفیکاسیون قبلاً گرد، بیش از همه نیاز به بررسی بیشتر را افزایش می‌دهد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "افزایش کلسیفیکاسیون درشت و پیوسته در تودهٔ فیبروآدنوم شناخته‌شده با حدود مشخص"
+          },
+          {
+            "id": "B",
+            "text": "افزایش ذرات نامنظم پلئومورفیک با آرایش مجرایی تازه‌قابل‌تشخیص"
+          },
+          {
+            "id": "C",
+            "text": "نمایان‌شدن اشکال رسوبی در نمای لترال واقعی تکمیلی"
+          },
+          {
+            "id": "D",
+            "text": "وضوح بیشتر کلسیفیکاسیون موازی دیوارهٔ عروق بدون تغییر توزیع"
+          }
+        ],
+        "correct": "B",
+        "explanation": "ایجاد ذرات نامنظم با معماری مجرایی پیشرفت مورفولوژیک مهمی است. افزایش به‌تنهایی ممکن است در تغییرات خوش‌خیم هم رخ دهد؛ ماهیت تغییر اهمیت دارد.",
+        "wrongExplanations": {
+          "A": "بلوغ درشت و پیوستهٔ فیبروآدنوم شناخته‌شده با پسرفت تطابق دارد، نه مورفولوژی تازه‌مشکوک ذرات.",
+          "C": "رسوب وابسته به وضعیت الگوی لایه‌بندی را توضیح می‌دهد؛ نمای اضافه به‌معنای پیشرفت زیستی نیست.",
+          "D": "وضوح بیشتر الگوی عروقی تیپیکِ بدون تغییر، تغییر مورفولوژیک مجرایی جدید نیست."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-evolution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-no-correlate",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: کلسیفیکاسیون‌های جدید پلئومورفیک ظریف و سگمنتال پس از نماهای تشخیصی ماموگرافی همچنان مشکوک‌اند. تطابق سونوگرافیک یا افزایش سیگنال پس از تزریق در MRI وجود ندارد. کدام اقدام موجه‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "نمونه‌برداری بافتی هدفمند از کلسیفیکاسیون قابل‌مشاهدهٔ ماموگرافیک برنامه‌ریزی شود"
+          },
+          {
+            "id": "B",
+            "text": "بیوپسی وکیوم تحت هدایت MRI از ناحیهٔ متناظر پستان برنامه‌ریزی شود"
+          },
+          {
+            "id": "C",
+            "text": "بیوپسی سوزنی تحت هدایت سونوگرافی از ناحیهٔ منطبق از نظر محل برنامه‌ریزی شود"
+          },
+          {
+            "id": "D",
+            "text": "به‌دلیل منفی‌بودن روش‌های تکمیلی ابتدا پیگیری تصویربرداری شش‌ماهه انتخاب شود"
+          }
+        ],
+        "correct": "A",
+        "explanation": "مورفولوژی مشکوک ماموگرافیک همچنان تعیین‌کننده است. MRI منفی بدخیمی را کاملاً رد نمی‌کند؛ در کوهورت اصلی گذشته‌نگر، کارسینوم/DCIS منفی کاذب نیز وجود داشت. نمونه‌برداری باید یافتهٔ واقعاً قابل‌مشاهده را هدف بگیرد.",
+        "wrongExplanations": {
+          "B": "بدون هدف قابل‌مشاهده در MRI، این روش کلسیفیکاسیون ماموگرافیک را با اطمینان هدف نمی‌گیرد.",
+          "C": "محدودهٔ تقریبی جای تطابق سونوگرافیک تأییدشده با هدف کلسیفیکاسیون را نمی‌گیرد.",
+          "D": "روش تکمیلی منفی، مورفولوژی همچنان مشکوک کلسیفیکاسیون را به یافتهٔ احتمالاً خوش‌خیم مناسب پیگیری تبدیل نمی‌کند."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0188679",
+          "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-management"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-round-group-followup",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: در زن بدون علامت و فاقد سابقهٔ سرطان پستان، یک گروه منفرد ذرات گرد برای نخستین بار دیده می‌شود. بررسی تشخیصی کامل شامل بزرگ‌نمایی، ویژگی مشکوکی ندارد و ارزیابی نهایی احتمالاً خوش‌خیم است. کدام توصیه مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "بازگشت به نوبت بعدی غربالگری معمول توصیه شود"
+          },
+          {
+            "id": "B",
+            "text": "پیگیری کوتاه‌مدت ماموگرافیک پس از شش ماه"
+          },
+          {
+            "id": "C",
+            "text": "MRI به‌جای نخستین پیگیری ماموگرافیک"
+          },
+          {
+            "id": "D",
+            "text": "نمونه‌برداری فوری بافتی با هدایت استریوتاکتیک توصیه شود"
+          }
+        ],
+        "correct": "B",
+        "explanation": "یافتهٔ ماموگرافیک که پس از بررسی کامل احتمالاً خوش‌خیم ارزیابی شده، با BI-RADS 3 و نخستین پیگیری شش‌ماهه تطابق دارد. این قاعده برای گروه آمورف/مشکوک یا بررسی ناقص غربالگری نیست.",
+        "wrongExplanations": {
+          "A": "احتمالاً خوش‌خیم به‌معنای خوش‌خیم قطعی نیست؛ مقایسهٔ کوتاه‌مدت بخشی از این ارزیابی است.",
+          "C": "پیگیری ماموگرافیک تعیین‌شده با MRI منفی جایگزین نمی‌شود.",
+          "D": "نخستین مشاهده به‌تنهایی پس از بررسی کامل و احتمالاً خوش‌خیمِ توصیف‌شده الزام بیوپسی ایجاد نمی‌کند."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://doi.org/10.1148/radiol.2020192641"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-management"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-stable-suspicious",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: گروه بیوپسی‌نشدهٔ کلسیفیکاسیون پلئومورفیک ظریف و سگمنتال در تصاویر فنی قابل‌مقایسه دو سال ثابت بوده است. ارزیابی تشخیصی فعلی همچنان مشکوک است. کدام اقدام موجه‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "به پیگیری معمول بازگردید، چون مقایسهٔ دوساله کامل شده است"
+          },
+          {
+            "id": "B",
+            "text": "پیش از تعیین اقدام بعدی، MRI با تزریق درخواست شود"
+          },
+          {
+            "id": "C",
+            "text": "پیگیری مجدد ماموگرافیک پس از شش ماه توصیه شود"
+          },
+          {
+            "id": "D",
+            "text": "به‌دلیل تداوم مورفولوژی مشکوک، تشخیص بافتی توصیه شود"
+          }
+        ],
+        "correct": "D",
+        "explanation": "ثبات دوساله کلسیفیکاسیون همچنان مشکوک را خودکار خوش‌خیم نمی‌کند. مجموعهٔ اصلی شامل کلسیفیکاسیون بدخیم با ظاهر ثابت در مدت طولانی بود؛ اینجا درصد خطر فردی از آن استخراج نمی‌شود.",
+        "wrongExplanations": {
+          "A": "پایان پایش یافتهٔ احتمالاً خوش‌خیم قابل‌تعمیم به یافتهٔ همچنان مشکوک و بیوپسی‌نشده نیست.",
+          "B": "MRI منفی، به‌ویژه DCIS را کاملاً رد نمی‌کند و ظن مورفولوژیک را خودکار از بین نمی‌برد.",
+          "C": "ادامهٔ مشاهده در این ارزیابی همچنان مشکوک جای تشخیص بافتی توصیه‌شده را نمی‌گیرد."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://pubmed.ncbi.nlm.nih.gov/8208928/"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-evolution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-regional-definition",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: کلسیفیکاسیون‌های پراکنده در ناحیه‌ای ۳ سانتی‌متری بدون جهت‌گیری مشخص داکتال: کدام توصیف توزیع مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ناحیه‌ای"
+          },
+          {
+            "id": "B",
+            "text": "گروهی"
+          },
+          {
+            "id": "C",
+            "text": "خطی"
+          },
+          {
+            "id": "D",
+            "text": "سگمنتال"
+          }
+        ],
+        "correct": "A",
+        "explanation": "ناحیه‌ای به محدوده بزرگ‌تر از ۲ سانتی‌متر بدون جهت‌گیری مشخص مجرایی گفته می‌شود.",
+        "wrongExplanations": {
+          "B": "گروهی: حداقل پنج ذره در ۱ سانتی‌متر یا تعداد بیشتر در محدوده ۲ سانتی‌متر.",
+          "C": "خطی به آرایش در امتداد یک خط نیاز دارد.",
+          "D": "سگمنتال از سیستم مجاری پیروی می‌کند و معمولاً گوه‌ای با رأس رو به نوک پستان است."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 1,
+        "learningGoalIds": [
+          "calc08-distribution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-segmental-apex",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: در نماهای تشخیصی، کلسیفیکاسیون‌ها از سیستم مجرایی شاخه‌دار در ناحیه‌ای مثلثی با رأس رو به نوک پستان پیروی می‌کنند. کدام توصیف توزیع در گزارش مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ناحیه‌ای"
+          },
+          {
+            "id": "B",
+            "text": "گروهی"
+          },
+          {
+            "id": "C",
+            "text": "سگمنتال"
+          },
+          {
+            "id": "D",
+            "text": "خطی"
+          }
+        ],
+        "correct": "C",
+        "explanation": "ناحیهٔ مثلثی در امتداد مجرا و شاخه‌های آن با توزیع سگمنتال تطابق دارد. این اصطلاح آرایش فضایی را توصیف می‌کند؛ مورفولوژی ذرات جداگانه ذکر می‌شود.",
+        "wrongExplanations": {
+          "A": "ناحیه‌ای محدوده‌ای بزرگ‌تر بدون جهت‌گیری مجراییِ مشخص در این سناریو است.",
+          "B": "گروهی تجمع فضایی را توصیف می‌کند؛ مجرا و شاخه‌های توصیف‌شده با سگمنتال دقیق‌تر بیان می‌شوند.",
+          "D": "خطی آرایش در امتداد یک خط است؛ شاخه‌ها و محدودهٔ مثلثی در اینجا به نفع سگمنتال‌اند."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 1,
+        "learningGoalIds": [
+          "calc08-distribution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-modifiers-not-score",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: کلسیفیکاسیون آمورف ناحیه‌ای در مدل تاریخی مورفولوژی‌ـ‌توزیع در دستهٔ مدل ۳ قرار می‌گیرد. دیستورشن معماری جدیدی نیز در مجاورت آن دیده می‌شود. کدام گام بعدی موجه‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "بر اساس مقدار مدل، پیگیری شش‌ماهه برای کل یافته توصیه شود"
+          },
+          {
+            "id": "B",
+            "text": "دیستورشن هدفمند بررسی و کلسیفیکاسیون و یافتهٔ همراه با هم دوباره ارزیابی شوند"
+          },
+          {
+            "id": "C",
+            "text": "پیش از ارزیابی کلی، MRI منفی به‌عنوان شرط پیگیری دنبال شود"
+          },
+          {
+            "id": "D",
+            "text": "بر پایهٔ وسعت کلی بیشتر، دستهٔ مدل یک مرحله افزایش یابد"
+          }
+        ],
+        "correct": "B",
+        "explanation": "مدل تاریخی Youk از کوهورت‌های منتخب جراحی ساخته شده و نه تغییرات زمانی، نه عوامل بیمار و نه دیستورشن جدید را در بر دارد. بنابراین دستهٔ مدل ۳ نمی‌تواند پیگیری این مجموعهٔ یافته‌ها را تجویز کند. ابتدا تغییر همراه بررسی تشخیصی شود؛ ارزیابی بالینی بر کل یافته‌ها استوار است.",
+        "wrongExplanations": {
+          "A": "دستهٔ مدل تغییر بافتی جدید را لحاظ نمی‌کند. پیگیری یافتهٔ احتمالاً خوش‌خیم نیازمند ارزیابی تشخیصی کلی کامل و مناسب است.",
+          "C": "بررسی تکمیلی منفی جای بررسی هدفمند دیستورشن یا ارزیابی بالینی همهٔ یافته‌ها را نمی‌گیرد.",
+          "D": "در این مدل افزایش ثابت و اعتبارسنجی‌شدهٔ دسته برای وسعت یا یافتهٔ همراه وجود ندارد. این عوامل توصیف و بالینی وزن‌دهی شوند، نه اینکه دسته‌ها به‌صورت حسابی جمع شوند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/",
+          "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment"
+        ],
+        "difficulty": 3,
+        "learningGoalIds": [
+          "calc08-evolution"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-mri-4a-selected",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: میکروکلسیفیکاسیون خالص پس از ماموگرافی تشخیصی BI-RADS 4A ارزیابی می‌شود. MRI تکمیلی منفی است و پروتکل پژوهشی برای حذف بیوپسی وجود ندارد. کدام توصیه مطابق مدیریت استاندارد است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "بازگشت به غربالگری معمول پس از MRI منفی"
+          },
+          {
+            "id": "B",
+            "text": "BI-RADS 3 و پیگیری دوازده‌ماهه بدون تشخیص بافتی"
+          },
+          {
+            "id": "C",
+            "text": "پیگیری MRI شش‌ماهه به‌جای بررسی هدفمند ماموگرافیک"
+          },
+          {
+            "id": "D",
+            "text": "تشخیص بافتی یافتهٔ مشکوک ماموگرافیک توصیه شود"
+          }
+        ],
+        "correct": "D",
+        "explanation": "مدیریت استاندارد دستهٔ ۴ تشخیص بافتی است. Fueger 2021 راهبرد پژوهشی پایش پس از MRI منفی را در خطرهای پیش‌آزمون پایین‌ترِ منتخب مطرح می‌کند. فاصلهٔ پیشنهادی ۶ تا ۱۲ ماه جایگزین عمومیِ اعتبارسنجی‌شدهٔ آینده‌نگر برای بیوپسی یا قاعدهٔ خودکار 4A نیست.",
+        "wrongExplanations": {
+          "A": "MRI تکمیلی منفی، ارزیابی مشکوک ماموگرافیک را به بررسی پایان‌یافتهٔ خوش‌خیم تبدیل نمی‌کند.",
+          "B": "MRI منفی به‌تنهایی کاهش خودکار به دستهٔ ۳ یا فاصلهٔ ثابت دوازده‌ماهه را توجیه نمی‌کند.",
+          "C": "پیگیری MRI در اینجا جای تشخیص بافتی توصیه‌شدهٔ هدف کلسیفیکاسیون ماموگرافیک را نمی‌گیرد."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-management"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-mri-4b-risk",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: یافتهٔ کلسیفیکاسیون BI-RADS 4B در MRI جذب مادهٔ حاجب ندارد. برای جلسهٔ چندتخصصی باید خطر باقی‌ماندهٔ بدخیمی ارزیابی شود. کدام اطلاعات مستقیماً لازم‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "خطر پیش‌آزمون مناسب و عملکرد آزمون در جمعیت قابل‌مقایسه"
+          },
+          {
+            "id": "B",
+            "text": "ارزش اخباری منفی در جمعیت غربالگری با ترکیب متفاوت موارد"
+          },
+          {
+            "id": "C",
+            "text": "درنظرگرفتن سقف خطر 4A به‌عنوان خطر جدید پس از MRI منفی"
+          },
+          {
+            "id": "D",
+            "text": "نرخ منفی کاذب MRI در ضایعات بدخیم یک مطالعهٔ مقایسه‌ای"
+          }
+        ],
+        "correct": "A",
+        "explanation": "4B خطر پیش‌آزمون بیش از ۱۰ تا حداکثر ۵۰ درصد را شامل می‌شود؛ دسته به‌تنهایی خطر باقی‌ماندهٔ فردی نمی‌دهد. ارزش اخباری منفی به خطر پیش‌آزمون و عملکرد آزمون بستگی دارد. فراتحلیل قاعدهٔ معتبر زیرگروه‌های 4A/4B/4C را ثابت نکرد؛ مدیریت استاندارد همچنان تشخیص بافتی است.",
+        "wrongExplanations": {
+          "B": "ارزش اخباری منفی در خطرهای پیش‌آزمون و ترکیب موارد متفاوت بدون تغییر قابل‌تعمیم نیست.",
+          "C": "مرز دسته، خطر پس‌آزمون محاسبه‌شده از MRI منفی نیست.",
+          "D": "نرخ منفی کاذب مربوط به ضایعات بدخیم است. این نرخ با خطر بدخیمی در میان همهٔ یافته‌های MRI منفی یکسان نیست."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/"
+        ],
+        "difficulty": 3,
+        "learningGoalIds": [
+          "calc08-management"
+        ]
+      },
+      {
+        "id": "mammographie-mikrokalk-fa-coarse-heterogeneous-size",
+        "tags": [
+          "mammographie-mikrokalk",
+          "mamma",
+          "mammographie",
+          "verkalkungen",
+          "bi-rads"
+        ],
+        "fach": "mamma",
+        "question": "سناریوی متنی: نماهای بزرگ‌نمایی ذرات نامنظم و قابل‌تفکیک عمدتاً بین ۰٫۵ تا ۱ میلی‌متر را نشان می‌دهند. از کلسیفیکاسیون آمورف بزرگ‌ترند، اما الگوی درشت و پیوستهٔ پسرفت ندارند. کدام توصیف مورفولوژیک مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پلئومورفیک ظریف"
+          },
+          {
+            "id": "B",
+            "text": "آمورف"
+          },
+          {
+            "id": "C",
+            "text": "درشت ناهمگون"
+          },
+          {
+            "id": "D",
+            "text": "درشت، پیوسته و تیپیک خوش‌خیم"
+          }
+        ],
+        "correct": "C",
+        "explanation": "ترکیب شکل نامنظم و قابل‌تفکیک با اندازهٔ معمول ۰٫۵ تا ۱ میلی‌متر با توصیف فعلی درشت ناهمگون تطابق دارد. تصمیم مدیریت علاوه بر آن به توزیع، روند و زمینهٔ کلی نیاز دارد.",
+        "wrongExplanations": {
+          "A": "ذرات پلئومورفیک ظریف معمولاً کوچک‌ترند و شکل و اندازهٔ متغیر دارند؛ ترکیب توصیف‌شده بیشتر با درشت ناهمگون تطابق دارد.",
+          "B": "ذرات آمورف آن‌قدر کوچک یا محوند که شکلشان مشخص نیست؛ در اینجا حاشیه‌های نامنظم قابل‌تفکیک‌اند.",
+          "D": "الگوی تیپیک درشت و پیوستهٔ پسرفت صراحتاً وجود ندارد؛ اندازهٔ بزرگ‌تر به‌تنهایی مورفولوژی خوش‌خیم را ثابت نمی‌کند."
+        },
+        "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "sources": [
+          "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+        ],
+        "difficulty": 2,
+        "learningGoalIds": [
+          "calc08-characterise"
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "mammographie-mikrokalk-01",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Grundprinzip",
+        "en": "Core principle",
+        "fa": "اصل پایه"
+      },
+      "front": {
+        "de": "Welche vier Merkmale werden zunächst systematisch beurteilt?",
+        "en": "Which four features are initially assessed systematically?",
+        "fa": "کدام چهار ویژگی ابتدا به‌صورت نظام‌مند ارزیابی می‌شوند؟"
+      },
+      "answer": {
+        "de": "Partikelgröße, Morphologie, Verteilung und Gesamtausdehnung.",
+        "en": "Particle size, morphology, distribution and total extent.",
+        "fa": "اندازه ذرات، مورفولوژی، توزیع و وسعت کل."
+      },
+      "explanation": {
+        "de": "Verlauf, Begleitbefunde und Risikokontext ergänzen die Gesamtbeurteilung; kein Merkmal allein ist eine Diagnose.",
+        "en": "Evolution, associated findings and risk context complete the assessment; no single feature is a diagnosis.",
+        "fa": "روند، یافته‌های همراه و زمینه خطر ارزیابی را تکمیل می‌کنند؛ هیچ ویژگی منفردی تشخیص نیست."
+      },
+      "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "learningGoalIds": [
+        "calc08-characterise"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-02",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Technik",
+        "en": "Technique",
+        "fa": "تکنیک"
+      },
+      "front": {
+        "de": "Wozu dienen Magnifikationsaufnahmen?",
+        "en": "What are magnification views used for?",
+        "fa": "نمای بزرگ‌نمایی چه کاربردی دارد؟"
+      },
+      "answer": {
+        "de": "Zur präziseren Beurteilung von Form, Zahl und räumlicher Anordnung feiner Partikel.",
+        "en": "More precise assessment of the shape, number and spatial arrangement of fine particles.",
+        "fa": "ارزیابی دقیق‌تر شکل، تعداد و آرایش فضایی ذرات ظریف."
+      },
+      "explanation": {
+        "de": "Sie charakterisieren Kalk, ersetzen aber weder Vergleich noch Assessment.",
+        "en": "They characterise calcium but replace neither comparison nor assessment.",
+        "fa": "این نما کلسیفیکاسیون را مشخص می‌کند، اما جایگزین مقایسه و ارزیابی نیست."
+      },
+      "source": "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment",
+      "sources": [
+        "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment",
+        "https://www.acr.org/-/media/ACR/Files/Practice-Parameters/dig-mamo.pdf"
+      ],
+      "learningGoalIds": [
+        "calc08-characterise"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-03",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Benigne Form",
+        "en": "Benign form",
+        "fa": "فرم خوش‌خیم"
+      },
+      "front": {
+        "de": "Welche Ursache passt zu grobem konfluierendem Kalk (Coarse, klassisch popcornartig) in einer bekannten umschriebenen Masse?",
+        "en": "Which cause fits coarse confluent calcification (classically popcorn-like) in a known circumscribed mass?",
+        "fa": "کدام علت با کلسیفیکاسیون درشت و به‌هم‌پیوسته (Coarse، کلاسیک پاپ‌کورنی) در تودهٔ شناخته‌شده با حدود مشخص تطابق دارد؟"
+      },
+      "answer": {
+        "de": "Ein involutierendes Fibroadenom.",
+        "en": "An involuting fibroadenoma.",
+        "fa": "فیبروآدنوم در حال پسرفت."
+      },
+      "explanation": {
+        "de": "„Coarse“ ist der aktuelle Deskriptor. Das klassische dichte popcornartige Muster in einer bekannten umschriebenen Masse spricht für Involution; grob heterogener suspekter Kalk ist ein anderer Deskriptor.",
+        "en": "“Coarse” is the current descriptor. The classic dense popcorn-like pattern in a known circumscribed mass favours involution; suspicious coarse heterogeneous calcification is a different descriptor.",
+        "fa": "«درشت» اصطلاح کنونی است. الگوی کلاسیک متراکم پاپ‌کورنی در تودهٔ شناخته‌شده با حدود مشخص به نفع پسرفت است؛ کلسیفیکاسیون مشکوک درشت ناهمگون اصطلاح دیگری است."
+      },
+      "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "learningGoalIds": [
+        "calc08-characterise"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-04",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Benigne Form",
+        "en": "Benign form",
+        "fa": "فرم خوش‌خیم"
+      },
+      "front": {
+        "de": "Was ist eine Rim Calcification?",
+        "en": "What is a rim calcification?",
+        "fa": "کلسیفیکاسیون حلقوی چیست؟"
+      },
+      "answer": {
+        "de": "Eine dünne randständige Verkalkung, häufig um eine Ölzyste nach Fettnekrose.",
+        "en": "A thin peripheral calcification, often around an oil cyst after fat necrosis.",
+        "fa": "کلسیفیکاسیون نازک محیطی، اغلب پیرامون کیست روغنی پس از نکروز چربی."
+      },
+      "explanation": {
+        "de": "Der fetthaltige Inhalt und der glatte Ring stützen die benigne Einordnung.",
+        "en": "Fat-containing centre and a smooth rim support benignity.",
+        "fa": "مرکز حاوی چربی و حلقه صاف به نفع خوش‌خیمی است."
+      },
+      "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "learningGoalIds": [
+        "calc08-characterise"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-05",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Benigne Form",
+        "en": "Benign form",
+        "fa": "فرم خوش‌خیم"
+      },
+      "front": {
+        "de": "Wie erkennt man Layering (historisch: Milk of Calcium)?",
+        "en": "How is layering (historically: milk of calcium) recognised?",
+        "fa": "لایه‌بندی (اصطلاح قدیمی: شیر کلسیم) چگونه شناخته می‌شود؟"
+      },
+      "answer": {
+        "de": "Durch lageabhängiges Sediment mit halbmond- oder teetassenförmigem Bild in der echten seitlichen Projektion.",
+        "en": "By position-dependent sediment forming crescent or teacup shapes on a true lateral view.",
+        "fa": "با رسوب وابسته به وضعیت و شکل هلالی یا فنجانی در نمای لترال واقعی."
+      },
+      "explanation": {
+        "de": "Der Formwechsel zwischen Projektionen ist diagnostisch wertvoll.",
+        "en": "The change in shape between projections is diagnostically useful.",
+        "fa": "تغییر شکل بین نماها ارزش تشخیصی دارد."
+      },
+      "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "learningGoalIds": [
+        "calc08-characterise"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-06",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Morphologie",
+        "en": "Morphology",
+        "fa": "مورفولوژی"
+      },
+      "front": {
+        "de": "Welche Kalkmorphologien sind suspekt, und welche Rangordnung ist zu vermeiden?",
+        "en": "Which calcification morphologies are suspicious, and which ranking should be avoided?",
+        "fa": "کدام مورفولوژی‌های کلسیفیکاسیون مشکوک‌اند و از کدام رتبه‌بندی باید پرهیز کرد؟"
+      },
+      "answer": {
+        "de": "Amorph, grob heterogen, fein pleomorph und fein linear/verzweigt sind suspekte Deskriptoren. Amorph und grob heterogen besitzen keine universelle feste Risikoreihenfolge.",
+        "en": "Amorphous, coarse heterogeneous, fine pleomorphic and fine linear/branching are suspicious descriptors. Amorphous and coarse heterogeneous have no universal fixed risk order.",
+        "fa": "آمورف، درشت ناهمگون، پلئومورفیک ظریف و ظریف خطی/شاخه‌دار توصیف‌های مشکوک‌اند. آمورف و درشت ناهمگون ترتیب ثابت و همگانی خطر ندارند."
+      },
+      "explanation": {
+        "de": "Fine-lineare/verzweigte Formen tragen typischerweise einen höheren Verdacht. Für die anderen Muster variieren Kohortenwerte mit Verteilung und Auswahl; Youk fand keinen signifikanten Unterschied zwischen amorph und grob heterogen. Grob heterogen nicht mit typisch benignem grobem Kalk verwechseln.",
+        "en": "Fine linear/branching forms typically carry higher suspicion. Cohort estimates for other patterns vary with distribution and selection; Youk found no significant difference between amorphous and coarse heterogeneous. Do not confuse coarse heterogeneous with typically benign coarse calcifications.",
+        "fa": "اشکال ظریف خطی/شاخه‌دار معمولاً شک بیشتری دارند. برآوردهای کوهورت برای الگوهای دیگر با توزیع و انتخاب موارد تغییر می‌کنند؛ Youk تفاوت معناداری میان آمورف و درشت ناهمگون نیافت. درشت ناهمگون با کلسیفیکاسیون درشت تیپیک خوش‌خیم اشتباه نشود."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/",
+      "sources": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/",
+        "https://pubmed.ncbi.nlm.nih.gov/20410428/"
+      ],
+      "learningGoalIds": [
+        "calc08-characterise"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-07",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Verteilung",
+        "en": "Distribution",
+        "fa": "توزیع"
+      },
+      "front": {
+        "de": "Welche Verteilungskategorien werden beschrieben?",
+        "en": "Which distribution categories are described?",
+        "fa": "کدام دسته‌های توزیع توصیف می‌شوند؟"
+      },
+      "answer": {
+        "de": "Diffus, regional, gruppiert, linear und segmental.",
+        "en": "Diffuse, regional, grouped, linear and segmental.",
+        "fa": "منتشر، ناحیه‌ای، گروهی، خطی و سگمنتال."
+      },
+      "explanation": {
+        "de": "Die Verteilung beschreibt die Geographie des Prozesses, nicht die Form einzelner Partikel.",
+        "en": "Distribution describes process geography, not individual particle shape.",
+        "fa": "توزیع جغرافیای فرایند را بیان می‌کند، نه شکل ذره منفرد را."
+      },
+      "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "learningGoalIds": [
+        "calc08-distribution"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-08",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Duktales Muster",
+        "en": "Ductal pattern",
+        "fa": "الگوی داکتال"
+      },
+      "front": {
+        "de": "Warum sind lineare und segmentale Verteilungen wichtig?",
+        "en": "Why are linear and segmental distributions important?",
+        "fa": "چرا توزیع خطی و سگمنتال مهم است؟"
+      },
+      "answer": {
+        "de": "Sie können den Verlauf eines Ganges beziehungsweise eines Gangsystems abbilden.",
+        "en": "They may map the course of a duct or ductal system.",
+        "fa": "می‌تواند مسیر یک مجرا یا سیستم مجاری را نشان دهد."
+      },
+      "explanation": {
+        "de": "Gemeinsam mit suspekter Morphologie entsteht ein stärkeres duktales Verdachtsmuster.",
+        "en": "Together with suspicious morphology they create a stronger ductal pattern.",
+        "fa": "همراه با مورفولوژی مشکوک، الگوی داکتال قوی‌تری ایجاد می‌کند."
+      },
+      "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "learningGoalIds": [
+        "calc08-distribution"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-09",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Kombination",
+        "en": "Combination",
+        "fa": "ترکیب"
+      },
+      "front": {
+        "de": "Welche Kombination ist besonders hochsuspekt?",
+        "en": "Which combination is particularly highly suspicious?",
+        "fa": "کدام ترکیب بسیار مشکوک است؟"
+      },
+      "answer": {
+        "de": "Fine-linear branching Morphologie mit segmentaler Verteilung.",
+        "en": "Fine linear branching morphology with segmental distribution.",
+        "fa": "مورفولوژی خطی ظریف شاخه‌دار با توزیع سگمنتال."
+      },
+      "explanation": {
+        "de": "Partikelform und räumliche Architektur sprechen gemeinsam für irreguläre Gangausgüsse.",
+        "en": "Particle form and spatial architecture together suggest irregular ductal casts.",
+        "fa": "شکل ذرات و معماری فضایی با هم به نفع قالب‌های نامنظم داکتال‌اند."
+      },
+      "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "learningGoalIds": [
+        "calc08-distribution"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-10",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Verlauf",
+        "en": "Evolution",
+        "fa": "روند"
+      },
+      "front": {
+        "de": "Welche Verlaufsänderungen sind relevant?",
+        "en": "Which interval changes matter?",
+        "fa": "کدام تغییرات زمانی اهمیت دارند؟"
+      },
+      "answer": {
+        "de": "Neuauftreten, Zunahme der Zahl, Ausdehnung oder morphologischen Heterogenität.",
+        "en": "New development, increasing number, extent or morphologic heterogeneity.",
+        "fa": "ایجاد تازه، افزایش تعداد، وسعت یا ناهمگونی مورفولوژیک."
+      },
+      "explanation": {
+        "de": "Technisch vergleichbare Voraufnahmen verwenden. Echte Veränderung kann auch bei benignem Umbau vorkommen; entscheidend sind Art der Veränderung und Gesamtbefund.",
+        "en": "Use technically comparable prior images. True change can also occur during benign evolution; the nature of change and overall findings matter.",
+        "fa": "از تصاویر قبلی با تکنیک قابل‌مقایسه استفاده شود. تغییر واقعی ممکن است در تحولات خوش‌خیم هم رخ دهد؛ نوع تغییر و کل یافته‌ها اهمیت دارد."
+      },
+      "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "learningGoalIds": [
+        "calc08-evolution"
+      ],
+      "sources": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pubmed.ncbi.nlm.nih.gov/10541387/"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-11",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "DCIS",
+        "en": "DCIS",
+        "fa": "DCIS"
+      },
+      "front": {
+        "de": "Welche Rolle spielen Verkalkungen beim DCIS?",
+        "en": "What is the role of calcifications in DCIS?",
+        "fa": "نقش کلسیفیکاسیون در DCIS چیست؟"
+      },
+      "answer": {
+        "de": "Sie können die einzige mammographische Manifestation sein und die duktale Ausdehnung sichtbar machen.",
+        "en": "They may be the only mammographic manifestation and may depict ductal extent.",
+        "fa": "می‌تواند تنها تظاهر ماموگرافیک باشد و وسعت داکتال را نشان دهد."
+      },
+      "explanation": {
+        "de": "Nicht jedes DCIS verkalkt, und nicht jede Verkalkung ist DCIS.",
+        "en": "Not every DCIS calcifies, and not every calcification is DCIS.",
+        "fa": "هر DCIS کلسیفیه نمی‌شود و هر کلسیفیکاسیون DCIS نیست."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/2544922/",
+      "learningGoalIds": [
+        "calc08-management"
+      ],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2544922/",
+        "https://pubmed.ncbi.nlm.nih.gov/2536185/"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-12",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Modalitäten",
+        "en": "Modalities",
+        "fa": "مدالیته‌ها"
+      },
+      "front": {
+        "de": "Entwarnt ein fehlendes Ultraschallkorrelat oder MRT-Enhancement?",
+        "en": "Does absent ultrasound correlation or MRI enhancement reassure?",
+        "fa": "آیا نبود همبستگی سونوگرافی یا تقویت پس از تزریق در MRI اطمینان‌بخش است؟"
+      },
+      "answer": {
+        "de": "Nein. Eine suspekte Mammographiemorphologie bleibt maßgeblich.",
+        "en": "No. Suspicious mammographic morphology remains decisive.",
+        "fa": "خیر. مورفولوژی مشکوک ماموگرافی همچنان تعیین‌کننده است."
+      },
+      "explanation": {
+        "de": "Ein Ultraschallkorrelat hilft beim Biopsiezugang. Eine negative MRT kann das Risiko beeinflussen, hebt eine suspekte Mammographiemorphologie aber nicht automatisch auf.",
+        "en": "An ultrasound correlate helps choose the biopsy route. Negative MRI may influence risk but does not automatically negate suspicious mammographic morphology.",
+        "fa": "تطابق سونوگرافیک به انتخاب مسیر بیوپسی کمک می‌کند. MRI منفی ممکن است بر خطر اثر بگذارد، اما مورفولوژی مشکوک ماموگرافی را خودکار منتفی نمی‌کند."
+      },
+      "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "sources": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0188679"
+      ],
+      "learningGoalIds": [
+        "calc08-management"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-size",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Größe",
+        "en": "Size",
+        "fa": "اندازه"
+      },
+      "front": {
+        "de": "Sind Mikroverkalkungen unter 0,5 mm automatisch maligne?",
+        "en": "Are microcalcifications below 0.5 mm automatically malignant?",
+        "fa": "آیا میکروکلسیفیکاسیون‌های کوچک‌تر از ۰٫۵ میلی‌متر خودبه‌خود بدخیم‌اند؟"
+      },
+      "answer": {
+        "de": "Nein. Malignitätsassoziierte Partikel sind häufig sehr klein; auch benigner Kalk kann klein sein.",
+        "en": "No. Malignancy-associated particles are often very small, but benign calcium can also be small.",
+        "fa": "خیر. ذرات همراه بدخیمی اغلب بسیار کوچک‌اند، اما کلسیم خوش‌خیم نیز می‌تواند کوچک باشد."
+      },
+      "explanation": {
+        "de": "Morphologie und Verteilung sind entscheidend; Größe allein ist kein Trennkriterium.",
+        "en": "Morphology and distribution are essential; size alone is not a discriminator.",
+        "fa": "مورفولوژی و توزیع تعیین‌کننده‌اند؛ اندازه به‌تنهایی معیار افتراق نیست."
+      },
+      "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "learningGoalIds": [
+        "calc08-characterise"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-dbt",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Technik",
+        "en": "Technique",
+        "fa": "تکنیک"
+      },
+      "front": {
+        "de": "Ersetzt DBT die gezielte Kalkvergrößerung?",
+        "en": "Does DBT replace targeted calcification magnification?",
+        "fa": "آیا DBT جایگزین بزرگ‌نمایی هدفمند کلسیفیکاسیون است؟"
+      },
+      "answer": {
+        "de": "Nein. DBT ergänzt Lokalisation und Gewebekontext; 2D-Vergrößerungsaufnahmen zeigen die feinen Kalkdetails.",
+        "en": "No. DBT adds localisation and tissue context; 2D magnification shows fine calcification detail.",
+        "fa": "خیر. DBT محل و زمینه بافتی را تکمیل می‌کند؛ بزرگ‌نمایی دوبعدی جزئیات ظریف کلسیفیکاسیون را نشان می‌دهد."
+      },
+      "explanation": {
+        "de": "Die Verfahren ergänzen sich. Ein kleiner Brennfleck begrenzt bei Vergrößerung die geometrische Unschärfe.",
+        "en": "The techniques complement each other. A small focal spot limits geometric blur during magnification.",
+        "fa": "این روش‌ها مکمل هم‌اند. کانون کوچک، تاری هندسی هنگام بزرگ‌نمایی را محدود می‌کند."
+      },
+      "source": "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment",
+      "sources": [
+        "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment",
+        "https://www.acr.org/-/media/ACR/Files/Practice-Parameters/dig-mamo.pdf"
+      ],
+      "learningGoalIds": [
+        "calc08-characterise"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-grouped",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Verteilung",
+        "en": "Distribution",
+        "fa": "توزیع"
+      },
+      "front": {
+        "de": "Wie unterscheiden sich gruppierte und regionale Verkalkungen?",
+        "en": "How do grouped and regional calcifications differ?",
+        "fa": "کلسیفیکاسیون‌های گروهی و ناحیه‌ای چه تفاوتی دارند؟"
+      },
+      "answer": {
+        "de": "Gruppiert: mindestens fünf Partikel in 1 cm oder mehr Partikel innerhalb von 2 cm. Regional: locker verstreut in einem Areal über 2 cm ohne duktale Orientierung.",
+        "en": "Grouped: at least five particles in 1 cm or more particles within 2 cm. Regional: loosely scattered over an area larger than 2 cm without ductal orientation.",
+        "fa": "گروهی: حداقل پنج ذره در ۱ سانتی‌متر یا تعداد بیشتر در محدوده ۲ سانتی‌متر. ناحیه‌ای: پراکنده در ناحیه بیش از ۲ سانتی‌متر بدون جهت‌گیری داکتال."
+      },
+      "explanation": {
+        "de": "Die Verteilung muss immer mit der Morphologie kombiniert werden.",
+        "en": "Always combine distribution with morphology.",
+        "fa": "توزیع را همواره با مورفولوژی ترکیب کنید."
+      },
+      "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "learningGoalIds": [
+        "calc08-distribution"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-segmental",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Verteilung",
+        "en": "Distribution",
+        "fa": "توزیع"
+      },
+      "front": {
+        "de": "Wohin zeigt die Spitze einer segmentalen Verteilung?",
+        "en": "Where does the apex of a segmental distribution point?",
+        "fa": "رأس توزیع سگمنتال به کدام سمت است؟"
+      },
+      "answer": {
+        "de": "Zur Mamille; das dreieckige beziehungsweise keilförmige Muster folgt einem Gang und seinen Verzweigungen.",
+        "en": "Towards the nipple; the triangular or wedge-shaped pattern follows a duct and its branches.",
+        "fa": "به‌سوی نوک پستان؛ الگوی مثلثی یا گوه‌ای از مجرا و شاخه‌های آن پیروی می‌کند."
+      },
+      "explanation": {
+        "de": "Ein duktales Muster beweist allein keine bestimmte Histologie.",
+        "en": "A ductal pattern alone does not prove a specific histology.",
+        "fa": "الگوی داکتال به‌تنهایی بافت‌شناسی مشخصی را اثبات نمی‌کند."
+      },
+      "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "learningGoalIds": [
+        "calc08-distribution"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-round-3",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "BI-RADS 3",
+        "en": "BI-RADS 3",
+        "fa": "BI-RADS 3"
+      },
+      "front": {
+        "de": "Wann kommt eine einzelne runde Gruppe (historisch auch punktförmig) für BI-RADS 3 infrage?",
+        "en": "When may a solitary round group (historically also termed punctate) qualify for BI-RADS 3?",
+        "fa": "چه زمانی یک گروه منفرد گرد (با اصطلاح قدیمی نقطه‌ای نیز بیان‌شده) می‌تواند BI-RADS 3 باشد؟"
+      },
+      "answer": {
+        "de": "Nach vollständiger diagnostischer Abklärung ohne suspekte Merkmale, auch wenn keine Voraufnahmen vorliegen. Erste Kontrolle nach 6 Monaten.",
+        "en": "After complete diagnostic work-up without suspicious features, including when prior images are unavailable. First follow-up at 6 months.",
+        "fa": "پس از بررسی تشخیصی کامل و نبود ویژگی مشکوک، از جمله در نبود تصاویر قبلی. نخستین پیگیری پس از ۶ ماه است."
+      },
+      "explanation": {
+        "de": "Fehlende Voraufnahmen allein genügen nicht. Die Regel gilt nicht pauschal für amorphen Kalk.",
+        "en": "Lack of prior images alone is insufficient. The rule does not routinely apply to amorphous calcium.",
+        "fa": "نبود تصاویر قبلی به‌تنهایی کافی نیست. این قاعده به‌طور کلی برای کلسیم آمورف صدق نمی‌کند."
+      },
+      "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "sources": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pubmed.ncbi.nlm.nih.gov/32427557/"
+      ],
+      "learningGoalIds": [
+        "calc08-management"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-stability",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Verlauf",
+        "en": "Evolution",
+        "fa": "روند"
+      },
+      "front": {
+        "de": "Beweist langjährige Stabilität die Benignität suspekter Verkalkungen?",
+        "en": "Does long-term stability prove suspicious calcifications are benign?",
+        "fa": "آیا پایداری طولانی‌مدت، خوش‌خیمی کلسیفیکاسیون مشکوک را اثبات می‌کند؟"
+      },
+      "answer": {
+        "de": "Nein. DCIS kann langsam wachsen oder lange bildmorphologisch unverändert bleiben.",
+        "en": "No. DCIS may grow slowly or remain unchanged on imaging for a long time.",
+        "fa": "خیر. DCIS ممکن است آهسته رشد کند یا مدت طولانی در تصویربرداری بدون تغییر بماند."
+      },
+      "explanation": {
+        "de": "Stabilität ist ein Modifikator, aber keine Entwarnung bei suspekter Morphologie.",
+        "en": "Stability is a modifier, not reassurance when morphology is suspicious.",
+        "fa": "پایداری عامل تعدیل‌کننده است، نه نشانه رفع خطر در مورفولوژی مشکوک."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/8208928/",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8208928/",
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "learningGoalIds": [
+        "calc08-evolution"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-modifiers",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Modifikatoren",
+        "en": "Modifiers",
+        "fa": "عوامل تعدیل‌کننده"
+      },
+      "front": {
+        "de": "Welche vier Zusatzaspekte gehören zur Gesamtbeurteilung?",
+        "en": "Which four additional aspects belong in the overall assessment?",
+        "fa": "کدام چهار جنبه تکمیلی در ارزیابی کلی لحاظ می‌شوند؟"
+      },
+      "answer": {
+        "de": "Verlauf, Gesamtausdehnung, Begleitbefunde sowie Alter und persönliche Anamnese.",
+        "en": "Evolution, total extent, associated findings, and age/personal history.",
+        "fa": "روند، وسعت کل، یافته‌های همراه و سن/سابقه شخصی."
+      },
+      "explanation": {
+        "de": "Keine festen Plus-/Minus-Kategorien. Der Matrixwert ist ein Studienmodell, keine individuelle Risikoberechnung.",
+        "en": "No fixed category increments or decrements. The matrix is a research model, not an individual risk calculation.",
+        "fa": "بدون افزایش یا کاهش ثابت دسته‌ها. ماتریس مدل پژوهشی است، نه محاسبه خطر فردی."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/",
+      "learningGoalIds": [
+        "calc08-evolution"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-mri4a",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Negative MRT",
+        "en": "Negative MRI",
+        "fa": "MRI منفی"
+      },
+      "front": {
+        "de": "Darf bei BI-RADS 4A nach negativer MRT generell auf Biopsie verzichtet werden?",
+        "en": "Can biopsy routinely be omitted in BI-RADS 4A after negative MRI?",
+        "fa": "آیا در BI-RADS 4A پس از MRI منفی می‌توان به‌طور کلی از بیوپسی صرف‌نظر کرد؟"
+      },
+      "answer": {
+        "de": "Nein. Bei bestätigter mammographischer Kategorie 4A bleibt Gewebediagnostik das Standardmanagement. Eine negative MRT allein rechtfertigt keine automatische Herabstufung.",
+        "en": "No. Tissue diagnosis remains standard management for confirmed mammographic category 4A. Negative MRI alone does not justify automatic downgrading.",
+        "fa": "خیر. در دستهٔ ماموگرافیک تأییدشدهٔ 4A، تشخیص بافتی مدیریت استاندارد باقی می‌ماند. MRI منفی به‌تنهایی کاهش خودکار دسته را توجیه نمی‌کند."
+      },
+      "explanation": {
+        "de": "Fueger 2021 diskutiert bei ausgewähltem niedrigem Ausgangsrisiko eine Überwachungsstrategie; 6–12 Monate sind ein Vorschlag der Autoren, kein prospektiv validierter Biopsieersatz. Die Metaanalyse liefert keine allgemeine 4A/4B/4C-Regel. DCIS kann trotz negativer MRT vorliegen.",
+        "en": "Fueger 2021 discusses surveillance at selected low baseline risk; 6–12 months is an author proposal, not a prospectively validated replacement for biopsy. The meta-analysis provides no general 4A/4B/4C rule. DCIS may be present despite negative MRI.",
+        "fa": "Fueger ۲۰۲۱ در خطر اولیهٔ پایینِ منتخب راهبرد پایش را مطرح می‌کند؛ ۶ تا ۱۲ ماه پیشنهاد نویسندگان است، نه جایگزین آینده‌نگرِ اعتبارسنجی‌شده برای بیوپسی. فراتحلیل قاعدهٔ عمومی 4A/4B/4C ارائه نمی‌دهد. با وجود MRI منفی، DCIS ممکن است وجود داشته باشد."
+      },
+      "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "sources": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0188679"
+      ],
+      "learningGoalIds": [
+        "calc08-management"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-mri4b5",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Negative MRT",
+        "en": "Negative MRI",
+        "fa": "MRI منفی"
+      },
+      "front": {
+        "de": "Wie werden BI-RADS 4B, 4C und 5 bei negativer MRT eingeordnet?",
+        "en": "How are BI-RADS 4B, 4C and 5 managed after negative MRI?",
+        "fa": "BI-RADS 4B، 4C و 5 پس از MRI منفی چگونه مدیریت می‌شوند؟"
+      },
+      "answer": {
+        "de": "Bei bestätigter mammographischer Kategorie 4B, 4C oder 5 bleibt Gewebediagnostik das Standardmanagement, auch nach negativer MRT.",
+        "en": "Tissue diagnosis remains standard management for confirmed mammographic category 4B, 4C or 5, including after negative MRI.",
+        "fa": "در دستهٔ ماموگرافیک تأییدشدهٔ 4B، 4C یا 5، تشخیص بافتی حتی پس از MRI منفی مدیریت استاندارد باقی می‌ماند."
+      },
+      "explanation": {
+        "de": "Kategorien sind keine individuellen Restrisiken nach MRT. Dafür wären ein geeignetes Prätestrisiko und Testdaten einer vergleichbaren Population nötig. Eine modellierte 22-%-Schwelle aus MRT-Forschung ist keine Grenze zwischen den Kategorien und keine validierte allgemeine Biopsieverzichtsregel.",
+        "en": "Categories are not individual residual risks after MRI. Estimation would require an appropriate pretest risk and test data from a comparable population. A modelled 22% threshold from MRI research is neither a category boundary nor a validated general biopsy-omission rule.",
+        "fa": "دسته‌ها خطر باقی‌ماندهٔ فردی پس از MRI نیستند. برآورد آن به خطر پیش‌آزمون مناسب و دادهٔ آزمون در جمعیت قابل‌مقایسه نیاز دارد. آستانهٔ مدل‌شدهٔ ۲۲٪ در پژوهش MRI نه مرز دسته‌ها و نه قاعدهٔ عمومی اعتبارسنجی‌شده برای حذف بیوپسی است."
+      },
+      "source": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "sources": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0188679"
+      ],
+      "learningGoalIds": [
+        "calc08-management"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-usmacro",
+      "topicId": "mammographie-mikrokalk",
+      "category": {
+        "de": "Ultraschall",
+        "en": "Ultrasound",
+        "fa": "سونوگرافی"
+      },
+      "front": {
+        "de": "Wie erscheinen Makroverkalkungen im Ultraschall?",
+        "en": "How do macrocalcifications appear on ultrasound?",
+        "fa": "ماکروکلسیفیکاسیون‌ها در سونوگرافی چگونه دیده می‌شوند؟"
+      },
+      "answer": {
+        "de": "Echogen, häufig mit dorsalem Schallschatten; beispielsweise in Fibroadenomen, verkalkten Ölzysten oder Fettnekrose.",
+        "en": "Echogenic, often with posterior acoustic shadowing; for example in fibroadenomas, calcified oil cysts or fat necrosis.",
+        "fa": "اکوژن، اغلب با سایه صوتی خلفی؛ برای مثال در فیبروآدنوم، کیست روغنی کلسیفیه یا نکروز چربی."
+      },
+      "explanation": {
+        "de": "Mikrokalk kann als feine echogene Foci sichtbar sein, muss sonographisch aber nicht nachweisbar sein.",
+        "en": "Microcalcifications may appear as fine echogenic foci but need not be detectable on ultrasound.",
+        "fa": "میکروکلسیفیکاسیون ممکن است به شکل کانون اکوژن ظریف دیده شود، اما الزاماً در سونوگرافی قابل تشخیص نیست."
+      },
+      "source": "https://www.aur.org/assets/Affinity_Groups/ACER/Educator-Resources/How-to-Page/How%20to%20Approach%20Breast%20Ultrasoundaa5a.pdf",
+      "learningGoalIds": [
+        "calc08-characterise"
+      ]
+    }
+  ],
+  "sourceHashes": {
+    "data/mammaMammographyCalcifications.js": {
+      "sha256": "5131599c67e96b35fe8affc4c1d10f0b2c7c54c8a5c3a11238f964c7644ad2f3",
+      "beforeSha256": "ce0a302855f30ebec39ed3808469faf85d277b02ee4321b22246ce4d9133d90e"
+    },
+    "data/mammaCalcificationReview.js": {
+      "sha256": "494ed292485a6c69fc46fd6ab957c9fb6281dee72207b235131826c160d3928c",
+      "beforeSha256": "c8bf39658fd2eafda0a334543a2b7eb70648c740e7822096c1a98210de42f10d"
+    },
+    "data/assessmentQuality/mammaCalcClinicalDraft.js": {
+      "sha256": "d1846e6002d787ce159a39ddd4f06058970a7ad5540e3a366cebd16c21d48e1d",
+      "beforeSha256": "690e6d0439aaf1b5ad4674cabb9e06a142a4056020dda95422e8f4b0e33cb56e"
+    },
+    "app/mamma/bildgebung/mammographie/verkalkungen/page.js": {
+      "sha256": "f77d001c9ce8493a23a6586630eb043ac584b80fc2240f6f9ae9296640ccdb3b",
+      "beforeSha256": "e448960e8bd184066c26601a5066986693f4b0ae3607c23564fe5ccd28b87ba9"
+    },
+    "app/mamma/bildgebung/mammographie/verkalkungen/content.js": {
+      "sha256": "9b93f5ff45bab715ef66043f0540fc3222a316281f6f168e34fa2393417536e5",
+      "beforeSha256": "b5552f26ca3b4fef5df22f3a6da6e86cadad9bde54d33307e00842c98196f795"
+    },
+    "app/mamma/bildgebung/mammographie/verkalkungen/translations.js": {
+      "sha256": "75ad6768ba3107263f0df45fca59c38b3fe1646d0e8a31921e0e467f594db1c6",
+      "beforeSha256": "8830707f3a8adfe602f3eba2e6a0381346f22e663d5190ff2e456889ea940bfb"
+    },
+    "public/mamma/mammographie/verkalkungen/layering/layering-schematic.svg": {
+      "sha256": "c8fc830d7c2b916838f960429d8ec8524b0b7c3cbdd8b26d7b0a1f91efe92d92",
+      "beforeSha256": "be470bec23469329e9b9ce436c645683547678358f31399a4a1e2b9d6d4bf30b"
+    }
+  },
+  "goals": {
+    "calc08-characterise": [
+      "size-alone",
+      "magnification",
+      "popcorn",
+      "milk-calcium",
+      "rods-versus-linear",
+      "amorphous-distribution",
+      "coarse-heterogeneous-size"
+    ],
+    "calc08-distribution": [
+      "pleomorphic-segmental",
+      "highest-suspicion",
+      "regional-definition",
+      "segmental-apex"
+    ],
+    "calc08-evolution": [
+      "evolution-context",
+      "stable-suspicious",
+      "modifiers-not-score"
+    ],
+    "calc08-management": [
+      "no-correlate",
+      "round-group-followup",
+      "mri-4a-selected",
+      "mri-4b-risk"
+    ]
+  },
+  "route": "app/mamma/bildgebung/mammographie/verkalkungen/"
+}

@@ -1,0 +1,827 @@
+{
+  "date": "2026-10-25",
+  "route": "/mamma/bildgebung/mammographie/verkalkungen",
+  "topicId": "mammographie-mikrokalk",
+  "sourceLedger": "source-ledger.md",
+  "sourceCatalog": {
+    "ACR2025": [
+      "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+    ],
+    "NHS_ASSESS": [
+      "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment"
+    ],
+    "ACR_TECH": [
+      "https://www.acr.org/-/media/ACR/Files/Practice-Parameters/dig-mamo.pdf"
+    ],
+    "YOUK2019": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/"
+    ],
+    "BENT2010": [
+      "https://pubmed.ncbi.nlm.nih.gov/20410428/"
+    ],
+    "FUEGER2021": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/"
+    ],
+    "BENNANI2017": [
+      "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0188679"
+    ],
+    "LEVTOAFF1994": [
+      "https://pubmed.ncbi.nlm.nih.gov/8208928/"
+    ],
+    "BERG2020": [
+      "https://doi.org/10.1148/radiol.2020192641",
+      "https://pubmed.ncbi.nlm.nih.gov/32427557/"
+    ],
+    "AUR_US": [
+      "https://www.aur.org/assets/Affinity_Groups/ACER/Educator-Resources/How-to-Page/How%20to%20Approach%20Breast%20Ultrasoundaa5a.pdf"
+    ],
+    "STOMPER1989": [
+      "https://pubmed.ncbi.nlm.nih.gov/2544922/"
+    ],
+    "DERSHAW1989": [
+      "https://pubmed.ncbi.nlm.nih.gov/2536185/"
+    ],
+    "EVOLUTION1999": [
+      "https://pubmed.ncbi.nlm.nih.gov/10541387/"
+    ]
+  },
+  "questions": [
+    {
+      "id": "mammographie-mikrokalk-de-size-alone",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-size-alone",
+        "en": "mammographie-mikrokalk-en-size-alone",
+        "fa": "mammographie-mikrokalk-fa-size-alone"
+      },
+      "correct": "B",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-magnification",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-magnification",
+        "en": "mammographie-mikrokalk-en-magnification",
+        "fa": "mammographie-mikrokalk-fa-magnification"
+      },
+      "correct": "C",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment",
+        "https://www.acr.org/-/media/ACR/Files/Practice-Parameters/dig-mamo.pdf"
+      ],
+      "sourceAnchors": [
+        "NHS_ASSESS",
+        "ACR_TECH"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-popcorn",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-popcorn",
+        "en": "mammographie-mikrokalk-en-popcorn",
+        "fa": "mammographie-mikrokalk-fa-popcorn"
+      },
+      "correct": "A",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-milk-calcium",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-milk-calcium",
+        "en": "mammographie-mikrokalk-en-milk-calcium",
+        "fa": "mammographie-mikrokalk-fa-milk-calcium"
+      },
+      "correct": "B",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-rods-versus-linear",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-rods-versus-linear",
+        "en": "mammographie-mikrokalk-en-rods-versus-linear",
+        "fa": "mammographie-mikrokalk-fa-rods-versus-linear"
+      },
+      "correct": "B",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-amorphous-distribution",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-amorphous-distribution",
+        "en": "mammographie-mikrokalk-en-amorphous-distribution",
+        "fa": "mammographie-mikrokalk-fa-amorphous-distribution"
+      },
+      "correct": "C",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-pleomorphic-segmental",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-pleomorphic-segmental",
+        "en": "mammographie-mikrokalk-en-pleomorphic-segmental",
+        "fa": "mammographie-mikrokalk-fa-pleomorphic-segmental"
+      },
+      "correct": "C",
+      "goal": "calc08-distribution",
+      "lessonSections": [
+        "Verteilung",
+        "Risikoeinschätzung und BI-RADS"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-highest-suspicion",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-highest-suspicion",
+        "en": "mammographie-mikrokalk-en-highest-suspicion",
+        "fa": "mammographie-mikrokalk-fa-highest-suspicion"
+      },
+      "correct": "A",
+      "goal": "calc08-distribution",
+      "lessonSections": [
+        "Verteilung",
+        "Risikoeinschätzung und BI-RADS"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/"
+      ],
+      "sourceAnchors": [
+        "ACR2025",
+        "YOUK2019"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-evolution-context",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-evolution-context",
+        "en": "mammographie-mikrokalk-en-evolution-context",
+        "fa": "mammographie-mikrokalk-fa-evolution-context"
+      },
+      "correct": "B",
+      "goal": "calc08-evolution",
+      "lessonSections": [
+        "Risikoeinschätzung und BI-RADS",
+        "Ausdehnung"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-no-correlate",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-no-correlate",
+        "en": "mammographie-mikrokalk-en-no-correlate",
+        "fa": "mammographie-mikrokalk-fa-no-correlate"
+      },
+      "correct": "A",
+      "goal": "calc08-management",
+      "lessonSections": [
+        "Morphologie",
+        "Ultraschall & MRT bei Verkalkungen",
+        "Take Home Message"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0188679",
+        "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment"
+      ],
+      "sourceAnchors": [
+        "ACR2025",
+        "BENNANI2017",
+        "NHS_ASSESS"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-round-group-followup",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-round-group-followup",
+        "en": "mammographie-mikrokalk-en-round-group-followup",
+        "fa": "mammographie-mikrokalk-fa-round-group-followup"
+      },
+      "correct": "B",
+      "goal": "calc08-management",
+      "lessonSections": [
+        "Morphologie",
+        "Ultraschall & MRT bei Verkalkungen",
+        "Take Home Message"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://doi.org/10.1148/radiol.2020192641"
+      ],
+      "sourceAnchors": [
+        "ACR2025",
+        "BERG2020"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-stable-suspicious",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-stable-suspicious",
+        "en": "mammographie-mikrokalk-en-stable-suspicious",
+        "fa": "mammographie-mikrokalk-fa-stable-suspicious"
+      },
+      "correct": "D",
+      "goal": "calc08-evolution",
+      "lessonSections": [
+        "Risikoeinschätzung und BI-RADS",
+        "Ausdehnung"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pubmed.ncbi.nlm.nih.gov/8208928/"
+      ],
+      "sourceAnchors": [
+        "ACR2025",
+        "LEVTOAFF1994"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-regional-definition",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-regional-definition",
+        "en": "mammographie-mikrokalk-en-regional-definition",
+        "fa": "mammographie-mikrokalk-fa-regional-definition"
+      },
+      "correct": "A",
+      "goal": "calc08-distribution",
+      "lessonSections": [
+        "Verteilung",
+        "Risikoeinschätzung und BI-RADS"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-segmental-apex",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-segmental-apex",
+        "en": "mammographie-mikrokalk-en-segmental-apex",
+        "fa": "mammographie-mikrokalk-fa-segmental-apex"
+      },
+      "correct": "C",
+      "goal": "calc08-distribution",
+      "lessonSections": [
+        "Verteilung",
+        "Risikoeinschätzung und BI-RADS"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-modifiers-not-score",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-modifiers-not-score",
+        "en": "mammographie-mikrokalk-en-modifiers-not-score",
+        "fa": "mammographie-mikrokalk-fa-modifiers-not-score"
+      },
+      "correct": "B",
+      "goal": "calc08-evolution",
+      "lessonSections": [
+        "Risikoeinschätzung und BI-RADS",
+        "Ausdehnung"
+      ],
+      "actualSourceUrls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/",
+        "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment"
+      ],
+      "sourceAnchors": [
+        "YOUK2019",
+        "NHS_ASSESS"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-mri-4a-selected",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-mri-4a-selected",
+        "en": "mammographie-mikrokalk-en-mri-4a-selected",
+        "fa": "mammographie-mikrokalk-fa-mri-4a-selected"
+      },
+      "correct": "D",
+      "goal": "calc08-management",
+      "lessonSections": [
+        "Morphologie",
+        "Ultraschall & MRT bei Verkalkungen",
+        "Take Home Message"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/"
+      ],
+      "sourceAnchors": [
+        "ACR2025",
+        "FUEGER2021"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-mri-4b-risk",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-mri-4b-risk",
+        "en": "mammographie-mikrokalk-en-mri-4b-risk",
+        "fa": "mammographie-mikrokalk-fa-mri-4b-risk"
+      },
+      "correct": "A",
+      "goal": "calc08-management",
+      "lessonSections": [
+        "Morphologie",
+        "Ultraschall & MRT bei Verkalkungen",
+        "Take Home Message"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/"
+      ],
+      "sourceAnchors": [
+        "ACR2025",
+        "FUEGER2021"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    },
+    {
+      "id": "mammographie-mikrokalk-de-coarse-heterogeneous-size",
+      "localizedIds": {
+        "de": "mammographie-mikrokalk-de-coarse-heterogeneous-size",
+        "en": "mammographie-mikrokalk-en-coarse-heterogeneous-size",
+        "fa": "mammographie-mikrokalk-fa-coarse-heterogeneous-size"
+      },
+      "correct": "C",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ],
+      "scenarioType": "explicit text vignette; no claimed diagnostic frame"
+    }
+  ],
+  "cards": [
+    {
+      "id": "mammographie-mikrokalk-01",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-02",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment",
+        "https://www.acr.org/-/media/ACR/Files/Practice-Parameters/dig-mamo.pdf"
+      ],
+      "sourceAnchors": [
+        "NHS_ASSESS",
+        "ACR_TECH"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-03",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-04",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-05",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-06",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/",
+        "https://pubmed.ncbi.nlm.nih.gov/20410428/"
+      ],
+      "sourceAnchors": [
+        "ACR2025",
+        "YOUK2019",
+        "BENT2010"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-07",
+      "goal": "calc08-distribution",
+      "lessonSections": [
+        "Verteilung",
+        "Risikoeinschätzung und BI-RADS"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-08",
+      "goal": "calc08-distribution",
+      "lessonSections": [
+        "Verteilung",
+        "Risikoeinschätzung und BI-RADS"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-09",
+      "goal": "calc08-distribution",
+      "lessonSections": [
+        "Verteilung",
+        "Risikoeinschätzung und BI-RADS"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-10",
+      "goal": "calc08-evolution",
+      "lessonSections": [
+        "Risikoeinschätzung und BI-RADS",
+        "Ausdehnung"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pubmed.ncbi.nlm.nih.gov/10541387/"
+      ],
+      "sourceAnchors": [
+        "ACR2025",
+        "EVOLUTION1999"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-11",
+      "goal": "calc08-management",
+      "lessonSections": [
+        "Morphologie",
+        "Ultraschall & MRT bei Verkalkungen",
+        "Take Home Message"
+      ],
+      "actualSourceUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/2544922/",
+        "https://pubmed.ncbi.nlm.nih.gov/2536185/"
+      ],
+      "sourceAnchors": [
+        "STOMPER1989",
+        "DERSHAW1989"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-12",
+      "goal": "calc08-management",
+      "lessonSections": [
+        "Morphologie",
+        "Ultraschall & MRT bei Verkalkungen",
+        "Take Home Message"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0188679"
+      ],
+      "sourceAnchors": [
+        "ACR2025",
+        "FUEGER2021",
+        "BENNANI2017"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-size",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-dbt",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://www.gov.uk/government/publications/breast-screening-clinical-guidelines-for-screening-management/clinical-guidance-for-breast-cancer-screening-assessment",
+        "https://www.acr.org/-/media/ACR/Files/Practice-Parameters/dig-mamo.pdf"
+      ],
+      "sourceAnchors": [
+        "NHS_ASSESS",
+        "ACR_TECH"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-grouped",
+      "goal": "calc08-distribution",
+      "lessonSections": [
+        "Verteilung",
+        "Risikoeinschätzung und BI-RADS"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-segmental",
+      "goal": "calc08-distribution",
+      "lessonSections": [
+        "Verteilung",
+        "Risikoeinschätzung und BI-RADS"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "ACR2025"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-round-3",
+      "goal": "calc08-management",
+      "lessonSections": [
+        "Morphologie",
+        "Ultraschall & MRT bei Verkalkungen",
+        "Take Home Message"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pubmed.ncbi.nlm.nih.gov/32427557/"
+      ],
+      "sourceAnchors": [
+        "ACR2025",
+        "BERG2020"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-stability",
+      "goal": "calc08-evolution",
+      "lessonSections": [
+        "Risikoeinschätzung und BI-RADS",
+        "Ausdehnung"
+      ],
+      "actualSourceUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/8208928/",
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf"
+      ],
+      "sourceAnchors": [
+        "LEVTOAFF1994",
+        "ACR2025"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-modifiers",
+      "goal": "calc08-evolution",
+      "lessonSections": [
+        "Risikoeinschätzung und BI-RADS",
+        "Ausdehnung"
+      ],
+      "actualSourceUrls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/"
+      ],
+      "sourceAnchors": [
+        "YOUK2019"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-mri4a",
+      "goal": "calc08-management",
+      "lessonSections": [
+        "Morphologie",
+        "Ultraschall & MRT bei Verkalkungen",
+        "Take Home Message"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0188679"
+      ],
+      "sourceAnchors": [
+        "ACR2025",
+        "FUEGER2021",
+        "BENNANI2017"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-mri4b5",
+      "goal": "calc08-management",
+      "lessonSections": [
+        "Morphologie",
+        "Ultraschall & MRT bei Verkalkungen",
+        "Take Home Message"
+      ],
+      "actualSourceUrls": [
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0188679"
+      ],
+      "sourceAnchors": [
+        "ACR2025",
+        "FUEGER2021",
+        "BENNANI2017"
+      ]
+    },
+    {
+      "id": "mammographie-mikrokalk-usmacro",
+      "goal": "calc08-characterise",
+      "lessonSections": [
+        "Größe",
+        "Morphologie",
+        "Typisch benigne Verkalkungen",
+        "Ultraschall & MRT bei Verkalkungen"
+      ],
+      "actualSourceUrls": [
+        "https://www.aur.org/assets/Affinity_Groups/ACER/Educator-Resources/How-to-Page/How%20to%20Approach%20Breast%20Ultrasoundaa5a.pdf"
+      ],
+      "sourceAnchors": [
+        "AUR_US"
+      ]
+    }
+  ],
+  "metadataState": "Actual globally imported canonical object metadata, not a shadow overlay",
+  "centralAdmission": "proposal-only; Root after independent acceptance"
+}

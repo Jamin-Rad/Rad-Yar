@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-25",
+  "status": "FROZEN_AUTHOR_READY_INDEPENDENT_REVIEW_PENDING",
+  "route": "/mamma/bildgebung/mammographie/verkalkungen",
+  "originalPool": {
+    "questionsPerLanguage": 18,
+    "cards": 22
+  },
+  "finalPool": {
+    "questionsPerLanguage": 18,
+    "cards": 22
+  },
+  "canonicalConfiguration": "data/assessmentQuality/mammaCalcClinicalDraft.js exports MAMMA_CALCIFICATION_CLINICAL_CONTENT; both original producers consume disjoint subsets; no offline shadow pool",
+  "productionFiles": [
+    "data/mammaMammographyCalcifications.js",
+    "data/mammaCalcificationReview.js",
+    "data/assessmentQuality/mammaCalcClinicalDraft.js",
+    "app/mamma/bildgebung/mammographie/verkalkungen/page.js",
+    "app/mamma/bildgebung/mammographie/verkalkungen/content.js",
+    "app/mamma/bildgebung/mammographie/verkalkungen/translations.js",
+    "public/mamma/mammographie/verkalkungen/layering/layering-schematic.svg"
+  ],
+  "runtime": "author-runtime.json",
+  "sourceHashes": {
+    "data/mammaMammographyCalcifications.js": {
+      "sha256": "5131599c67e96b35fe8affc4c1d10f0b2c7c54c8a5c3a11238f964c7644ad2f3",
+      "beforeSha256": "ce0a302855f30ebec39ed3808469faf85d277b02ee4321b22246ce4d9133d90e"
+    },
+    "data/mammaCalcificationReview.js": {
+      "sha256": "494ed292485a6c69fc46fd6ab957c9fb6281dee72207b235131826c160d3928c",
+      "beforeSha256": "c8bf39658fd2eafda0a334543a2b7eb70648c740e7822096c1a98210de42f10d"
+    },
+    "data/assessmentQuality/mammaCalcClinicalDraft.js": {
+      "sha256": "d1846e6002d787ce159a39ddd4f06058970a7ad5540e3a366cebd16c21d48e1d",
+      "beforeSha256": "690e6d0439aaf1b5ad4674cabb9e06a142a4056020dda95422e8f4b0e33cb56e"
+    },
+    "app/mamma/bildgebung/mammographie/verkalkungen/page.js": {
+      "sha256": "f77d001c9ce8493a23a6586630eb043ac584b80fc2240f6f9ae9296640ccdb3b",
+      "beforeSha256": "e448960e8bd184066c26601a5066986693f4b0ae3607c23564fe5ccd28b87ba9"
+    },
+    "app/mamma/bildgebung/mammographie/verkalkungen/content.js": {
+      "sha256": "9b93f5ff45bab715ef66043f0540fc3222a316281f6f168e34fa2393417536e5",
+      "beforeSha256": "b5552f26ca3b4fef5df22f3a6da6e86cadad9bde54d33307e00842c98196f795"
+    },
+    "app/mamma/bildgebung/mammographie/verkalkungen/translations.js": {
+      "sha256": "75ad6768ba3107263f0df45fca59c38b3fe1646d0e8a31921e0e467f594db1c6",
+      "beforeSha256": "8830707f3a8adfe602f3eba2e6a0381346f22e663d5190ff2e456889ea940bfb"
+    },
+    "public/mamma/mammographie/verkalkungen/layering/layering-schematic.svg": {
+      "sha256": "c8fc830d7c2b916838f960429d8ec8524b0b7c3cbdd8b26d7b0a1f91efe92d92",
+      "beforeSha256": "be470bec23469329e9b9ce436c645683547678358f31399a4a1e2b9d6d4bf30b"
+    }
+  },
+  "globalQuestionHashes": {
+    "de": "fdad6da96c7154bf843578cdfa56e30385c86455fec9c86db2362e3295ff6f3a",
+    "en": "f85f4ac3e511a2bb8d85635ecb6328af47ea6fe20d49a8afd34f7fddd8ea4397",
+    "fa": "c6c99904de75cd4778db2fc4745ffc5d48cd9320b94664bc304fb875b1211ac4"
+  },
+  "globalCardHash": "ff30ff3566f1f97aac03e6733fe241bed362c0731b56b34fe37e7e882ed3c92a",
+  "assessmentChangedTextFields": 756,
+  "teachingChangeEntries": 54,
+  "translationLiteralCalls": {
+    "unique": 132,
+    "germanFallbacks": {
+      "en": [],
+      "fa": []
+    }
+  },
+  "goals": {
+    "count": 4,
+    "allQuestionIdsMapped": 18,
+    "allCardIdsMapped": 22,
+    "centralAdmission": "not applied; proposal only"
+  },
+  "media": {
+    "kangEmbedded": false,
+    "externalSourceRetained": true,
+    "nativeModel": true,
+    "syntheticDiagnosticImage": false
+  },
+  "sharedFileWrites": false,
+  "build": "not run by author",
+  "server": "not run by author",
+  "browser": "not run by author; Root owns",
+  "git": "no mutation/publication",
+  "independentReview": "Root assigning fresh reviewer",
+  "scientificApproval": "Dr.Zia pending",
+  "wholeLessonAcceptance": "not claimed"
+}

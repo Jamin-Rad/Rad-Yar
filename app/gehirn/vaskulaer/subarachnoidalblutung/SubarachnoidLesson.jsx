@@ -53,7 +53,7 @@ function Callout({ label, children, warning = false }) {
 
 function SelfCheck({ lang }) {
   const [selected, setSelected] = useState(null)
-  const question = SAB_QUESTIONS(lang)[0]
+  const question = SAB_QUESTIONS(lang).find(item => item.id === 'sab-q1')
   const labels = lang === 'fa'
     ? { title: 'خودآزمایی: CT منفی', correct: 'درست است. ', retry: 'به زمان، معاینه عصبی و کیفیت CT توجه کنید.' }
     : lang === 'en'
@@ -63,7 +63,7 @@ function SelfCheck({ lang }) {
     <h3 id="sab-check-title">{labels.title}</h3>
     <p>{question.question}</p>
     <div className={styles.options}>{question.options.map((option, index) => <button key={option.id} type="button" aria-pressed={selected === index} onClick={() => setSelected(index)}>{option.text}</button>)}</div>
-    {selected !== null ? <p className={styles.feedback} role="status">{selected === question.options.findIndex(option => option.id === question.correct) ? labels.correct + question.explanation : labels.retry}</p> : null}
+    {selected !== null ? <p className={styles.feedback} role="status">{selected === question.options.findIndex(option => option.id === question.correct) ? labels.correct + question.explanation : question.wrongExplanations[question.options[selected].id]}</p> : null}
   </section>
 }
 
@@ -95,11 +95,13 @@ export default function SubarachnoidLesson() {
       : 'Axiales natives CT mit hyperattenuierendem Blut in basalen Zisternen und Sylvischen Fissuren.'
   const sources = [
     { href: 'https://doi.org/10.1161/STR.0000000000000436', title: 'Hoh BL et al. 2023 AHA/ASA Guideline for the Management of Patients With Aneurysmal Subarachnoid Hemorrhage.', citation: 'Stroke. 2023;54:e314–e370. doi:10.1161/STR.0000000000000436.', scope: lang === 'fa' ? 'منبع راهنما برای مسیر CT/LP، بررسی عروقی و عوارض aSAB.' : lang === 'en' ? 'Guideline source for CT/LP pathways, vascular evaluation and aSAH complications.' : 'Leitlinienquelle für CT-/LP-Pfad, Gefäßdiagnostik und aSAB-Komplikationen.' },
-    { href: 'https://pubmed.ncbi.nlm.nih.gov/11546890/', title: 'Claassen J et al. Effect of cisternal and ventricular blood on risk of delayed cerebral ischemia after subarachnoid hemorrhage.', citation: 'Stroke. 2001;32:2012–2020. PMID: 11546890.', scope: lang === 'fa' ? 'منبع تعریف مقیاس فیشر اصلاح‌شده؛ درصدهای فردی در این درس ارائه نمی‌شوند.' : lang === 'en' ? 'Source for Modified Fisher criteria; individual probabilities are not given in this lesson.' : 'Quelle der Modified-Fisher-Kriterien; individuelle Prozentwahrscheinlichkeiten werden hier nicht angegeben.' },
+    { href: 'https://pubmed.ncbi.nlm.nih.gov/11546890/', title: 'Claassen J et al. Effect of cisternal and ventricular blood on risk of delayed cerebral ischemia after subarachnoid hemorrhage.', citation: 'Stroke. 2001;32:2012–2020. PMID: 11546890.', scope: lang === 'fa' ? 'مبنای مقیاس اصلاح‌شدهٔ بعدی؛ Frontera 2006 رده‌بندی ۰–۴ این درس را بررسی می‌کند. پیش‌بینی درصدی فردی ارائه نمی‌شود.' : lang === 'en' ? 'Basis for the later modified scale; Frontera 2006 evaluates the 0–4 classification taught here. No individual percentage predictions.' : 'Grundlage der späteren modifizierten Skala; Frontera 2006 prüft die hier gelehrte 0–4-Einteilung. Keine individuellen Prozentwahrscheinlichkeiten.' },
+    { href: 'https://doi.org/10.1227/01.NEU.0000218821.34014.1B', title: 'Frontera JA et al. Prediction of symptomatic vasospasm after subarachnoid hemorrhage: the modified Fisher scale.', citation: 'Neurosurgery. 2006;59:21–27.', scope: lang === 'fa' ? 'تعریف درجات و بررسی وازواسپاسم علامت‌دار در جمعیت‌های منتخب؛ نه احتمال فردی.' : lang === 'en' ? 'Grade definitions and symptomatic-vasospasm evaluation in selected cohorts; not individual probabilities.' : 'Graddefinitionen und symptomatischer Vasospasmus in ausgewählten Kohorten; keine individuellen Wahrscheinlichkeiten.' },
+    { href: 'https://pubmed.ncbi.nlm.nih.gov/9921845/', title: 'van der Jagt M et al. Validity of prediction of the site of ruptured intracranial aneurysms with CT.', citation: 'Neurology. 1999;52:34–39.', scope: lang === 'fa' ? 'مطالعهٔ اصلی: سرنخ توزیع خون برای ACA/ACoA با محدودیت موضع‌یابی.' : lang === 'en' ? 'Original study: ACA/ACoA blood-distribution clue with localisation limitations.' : 'Originalstudie: Blutverteilung als ACA-/ACoA-Suchhinweis mit begrenzter Lokalisation.' },
   ]
   const route = '/gehirn/vaskulaer/subarachnoidalblutung'
   const actions = {
-    mcq: { label: SAB_LESSON.actionMcq, href: localizePath(`/ueben/quiz?fach=gehirn&n=15&themen=subarachnoidalblutung&from=${encodeURIComponent(route)}`) },
+    mcq: { label: SAB_LESSON.actionMcq, href: localizePath(`/ueben/quiz?fach=gehirn&n=${SAB_QUESTIONS(lang).length}&themen=subarachnoidalblutung&from=${encodeURIComponent(route)}`) },
     flashcards: { label: value(SAB_LESSON.actionFlash, lang), href: localizePath(`/flashcards/subarachnoidalblutung?from=${encodeURIComponent(route)}`) },
   }
   return <><InProgressBanner lang={lang} /><StandardLessonShell lessonId="subarachnoidalblutung" lang={lang} title={value(SAB_LESSON.title, lang)} author={SAB_LESSON.sourceLabel}
@@ -112,6 +114,7 @@ export default function SubarachnoidLesson() {
     <div className={styles.content} lang={lang} dir={rtl ? 'rtl' : 'ltr'}>
       <LessonSection id="klinik" title={value(SAB_LESSON.klinik.title, lang)} icon="clinical">
         <p className={styles.lead}>{value(SAB_LESSON.klinik.lead, lang)}</p>
+        <div className={styles.card}><h3>{lang === 'fa' ? 'هدف‌های یادگیری' : lang === 'en' ? 'Learning goals' : 'Lernziele'}</h3><ul>{SAB_LESSON.goals.map((goal, index) => <li key={index}>{value(goal, lang)}</li>)}</ul></div>
         <Cards items={SAB_LESSON.klinik.definitionItems} lang={lang} />
         <DataTable headers={SAB_LESSON.klinik.aetiologyHeaders} rows={SAB_LESSON.klinik.aetiologyRows} lang={lang} />
         <Callout warning label={value(SAB_LESSON.caveLabel, lang)}>{value(SAB_LESSON.klinik.cave, lang)}</Callout>

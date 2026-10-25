@@ -1,0 +1,386 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/integration_review_next",
+  "route": "/mamma/bildgebung/mammographie/verkalkungen",
+  "worktree": "C:/Users/Drham/Documents/GitHub/Rad-Yar/.worktrees/gehirn-completion-main",
+  "scope": "Independent baseline audit of entire ORIGINAL production18-question pool and22-card pool, all DE/EN/FA, connected lesson content/translations, inline research matrix and sampled media. The partial offline mammaCalcClinicalDraft.js is not production, not finished and not reviewed as an implementation.",
+  "decisions": {
+    "bounded_content_acceptance": "REVISE",
+    "bounded_integration_acceptance": "PASS",
+    "overall_lesson_acceptance": "REVISE",
+    "editorial_qa": "REVISE",
+    "scientific_review": "pending",
+    "browser_qa": "BLOCKED",
+    "publication": "not_requested",
+    "openCritical": 0,
+    "openMajor": 8,
+    "openMinor": 3
+  },
+  "runtime": {
+    "questionProducer": "data/mammaMammographyCalcifications.js imports and appends mammaCalcificationReview.js; data/questions.js imports/spreads all3 locales. Actual getQuestions exact-deep-equality check passed18/locale.",
+    "flashcardProducer": "Same producer appends10 review cards to12 original cards; data/flashcards.js getCardsByTopic exact-deep-equality passed22 shared IDs.",
+    "shell": "Route directly imports StandardLessonShell and InteractiveTeachingGroups; content.js supplies MORPH/DISTRIBUTION/GERMAN_SECTIONS, translations.js normalizes and translates German strings with source-language fallback.",
+    "hero": "StandardLessonShell → LessonHero → LESSON_DESIGN_HEROES[pathname]; actual hero remains /mamma/mammographie/verkalkungen/verkalkungen-hero-v4.png.",
+    "actions": "Quiz samples n10 from the18-item mammographie-mikrokalk topic; flashcards target that exact topic. A sample size10 is not itself a defect.",
+    "draftConsumerCheck": "rg found mammaCalcClinicalDraft only in its own module, not imported into app/data production consumers.",
+    "scopeVersion": "Current checked-out working files only. No claimed live-site equivalence."
+  },
+  "runtimeSha256": {
+    "data/mammaMammographyCalcifications.js": "ce0a302855f30ebec39ed3808469faf85d277b02ee4321b22246ce4d9133d90e",
+    "data/mammaCalcificationReview.js": "c8bf39658fd2eafda0a334543a2b7eb70648c740e7822096c1a98210de42f10d",
+    "app/mamma/bildgebung/mammographie/verkalkungen/page.js": "e448960e8bd184066c26601a5066986693f4b0ae3607c23564fe5ccd28b87ba9",
+    "app/mamma/bildgebung/mammographie/verkalkungen/content.js": "b5552f26ca3b4fef5df22f3a6da6e86cadad9bde54d33307e00842c98196f795",
+    "app/mamma/bildgebung/mammographie/verkalkungen/translations.js": "8830707f3a8adfe602f3eba2e6a0381346f22e663d5190ff2e456889ea940bfb"
+  },
+  "filesRead": [
+    "data/mammaMammographyCalcifications.js",
+    "data/mammaCalcificationReview.js",
+    "app/mamma/bildgebung/mammographie/verkalkungen/page.js",
+    "app/mamma/bildgebung/mammographie/verkalkungen/content.js",
+    "app/mamma/bildgebung/mammographie/verkalkungen/translations.js",
+    "data/questions.js (imports, spread and getQuestions consumer)",
+    "data/flashcards.js (imports/spread and getCardsByTopic consumer)",
+    "components/lesson-template/StandardLessonShell.jsx (actual route shell)",
+    "components/LessonHero.jsx",
+    "data/lessonDesignHeroes.js (route mapping)",
+    "public/mamma/mammographie/verkalkungen/layering/layering-schematic.svg",
+    "packet08-calcification-plan.json (scope only; unfinished draft not accepted)"
+  ],
+  "gates": {
+    "SRC": {
+      "status": "REVISE",
+      "evidence": "Fresh ACR2025 official summary, Youk original model, Bent2010, original MRI cohort and Fueger discussion read. Source findings below remain.",
+      "evidenceBlockers": [
+        "Official ACR PDF text accessed and screenshot requests issued; page pixels were not returned as inspectable images in this tool wrapper. Terminal download failed DNS. PDF image verification remains incomplete.",
+        "Metaxa exact extent-table bins/percentages need direct original-table confirmation; association and selected biopsy cohort verified."
+      ]
+    },
+    "EDU": {
+      "status": "REVISE",
+      "evidence": "Nine chapter titles fit the subject: fundamentals, size, morphology, distribution, extent, risk model, benign forms, US/MRI, take-home. No boilerplate Befund & Selbsttest chapter. Main issues are decision transfer and research-model teaching boundaries."
+    },
+    "VIS": {
+      "status": "BLOCKED",
+      "evidence": "Viewed29 PNGs in3 contact sheets including actual hero,10 taxonomy strips, case frames and layering image. Inspected SVG source. Case67107 description/contributor independently located. No proven clinical frame mismatch asserted.",
+      "evidenceBlockers": [
+        "No complete media/provenance ledger located for taxonomy strips, schematic, hero and all retained case assets; cannot certify original-vs-derived status, rights or exact source-frame identity.",
+        "No current browser size/zoom/readability/crop evidence."
+      ]
+    },
+    "LNG": {
+      "status": "REVISE",
+      "evidence": "All18 question triads, correct answers and all wrong rationales; all22 card triads read. No material clinical reversal between languages identified. Automated169 literal t() calls found no untranslated German teaching prose in EN/FA; unchanged strings were identifiers, numbers or citations. Image-text terminology issues remain.",
+      "evidenceBlockers": [
+        "RTL and rendered mathematical range ordering require current browser evidence."
+      ]
+    },
+    "ASM": {
+      "status": "REVISE",
+      "evidence": "18Q/locale,22cards; all54Q have3 wrong rationales, exact global runtime producers verified; substantive discrimination/source/alignment defects remain."
+    },
+    "UX": {
+      "status": "BLOCKED",
+      "evidence": "No current browser run supplied or performed. Historical lesson-design browser JSON is not acceptance of this content version.",
+      "evidenceBlockers": [
+        "DE/EN/FA desktop/mobile themes, keyboard, select/matrix interaction, aria-live, topic retrieval from rendered actions, image zoom, source links and progress must be tested."
+      ]
+    },
+    "REV": {
+      "status": "REVISE",
+      "evidence": "Independent baseline review; no author artifacts changed. Clinical-review date unverified; no repairs accepted yet.",
+      "evidenceBlockers": [
+        "Dr.Zia scientific approval pending; no current release/build/browser acceptance inferred."
+      ]
+    }
+  },
+  "findings": [
+    {
+      "id": "CALC08-ASM-01",
+      "severity": "major",
+      "gates": [
+        "ASM",
+        "EDU"
+      ],
+      "location": "Question keys size-alone, magnification, rods-versus-linear, amorphous-distribution, no-correlate, round-group-followup, stable-suspicious, modifiers-not-score, mri-4a-selected, mri-4b-risk; DE/EN/FA",
+      "evidence": "Many alternatives are unrelated or absolute: magnification competes with measuring breast density or detecting enhancement; rods-versus-linear with visible only on MRI; size-alone with smaller means certainly malignant; mri-4a-selected with a negative MRI upgrading to category5. The correct options repeatedly carry the longest integrated qualification. These patterns occur throughout both producer modules.",
+      "learnerImpact": "Learners can score well through test-taking cues without distinguishing plausible diagnostic or management errors. Complete feedback does not repair low discrimination.",
+      "requiredCorrection": "Rewrite the full18-item pool around meaningful diagnostic decisions, balancing option specificity and length. Use plausible competing descriptors, genuinely confusable distributions, work-up adequacy, temporal comparison, and realistic management errors. Retain stable IDs; do not impose a question quota. Independently reread every alternative and all162 localized wrong-answer explanations.",
+      "kind": "demonstrated_defect",
+      "status": "REVISE",
+      "retestEvidence": "Not repaired or retested in this baseline review."
+    },
+    {
+      "id": "CALC08-ASM-02",
+      "severity": "major",
+      "gates": [
+        "ASM",
+        "EDU"
+      ],
+      "location": "mammaCalcificationReview.js: modifiers-not-score, mri-4a-selected; linked lesson and all18/22 records",
+      "evidence": "modifiers-not-score asks how the interactive model handles modifiers; mri-4a-selected asks which statement matches this lesson. They assess recall of this page rather than a patient-facing decision. All18 questions are text-only; none connects the retained morphology/case frames to an assessed observation. Four goals exist only in the unfinished plan, not an admitted reviewed mapping.",
+      "learnerImpact": "The pool covers topic vocabulary but gives weak evidence of transfer from observation to characterization, work-up and consequence.",
+      "requiredCorrection": "Convert page/model-recall stems to clinically bounded scenarios and map retained IDs to explicit reviewable goals. Include visual discrimination where justified by verified frames; do not fabricate images or require extra chapters. Ensure prior-comparison and management decisions have taught support before assessment.",
+      "kind": "demonstrated_defect",
+      "status": "REVISE",
+      "retestEvidence": "Not repaired or retested in this baseline review."
+    },
+    {
+      "id": "CALC08-SRC-01",
+      "severity": "major",
+      "gates": [
+        "SRC",
+        "ASM",
+        "EDU"
+      ],
+      "location": "mammaCalcificationReview.js cards mammographie-mikrokalk-mri4a and -mri4b5; questions mri-4a-selected/mri-4b-risk; page.js TakeHomeList last item",
+      "evidence": "The lesson correctly says confirmed mammographic category4/5 retains a biopsy indication, and question4A explicitly says biopsy is standard. Card4B instead leads with individual decision/usually biopsy. The4A card says studies discuss6–12 months without identifying this as a discussion proposal rather than a validated surveillance protocol. The closing takeaway mentions selected MRI-supported biopsy avoidance without restating the research boundary.",
+      "learnerImpact": "Flashcard retrieval can teach category4B surveillance as a routine alternative and make a research interval look like established management, despite the more careful lesson table.",
+      "requiredCorrection": "State category4 tissue diagnosis consistently first in lesson, questions and cards. Preserve the fact that selected MRI research explores avoidance, but explicitly identify the proposed/modelled nature, study selection and limitations. Do not derive residual risk from category alone or present22% as an established category4A/4B treatment boundary. Source6–12 months to Fueger discussion and make clear it was not prospectively validated as an omission schedule.",
+      "kind": "demonstrated_defect",
+      "status": "REVISE",
+      "retestEvidence": "Not repaired or retested in this baseline review."
+    },
+    {
+      "id": "CALC08-SRC-02",
+      "severity": "major",
+      "gates": [
+        "SRC",
+        "EDU",
+        "ASM"
+      ],
+      "location": "mammaMammographyCalcifications.js card mammographie-mikrokalk-06; content.js MORPH risk labels",
+      "evidence": "Card06 teaches an unqualified ordered arrow amorphous → coarse heterogeneous → fine pleomorphic → fine linear/branching. Linked taxonomy reinforces low–moderate versus moderate for the first pair. Primary cohorts do not support a universal strict first-pair ordering: Bent2010 reports equal risks; Youk2019 reports a reversed derivation ordering and no significant first-pair difference.",
+      "learnerImpact": "Learners may substitute a memorized linear ranking for morphology plus distribution and context.",
+      "requiredCorrection": "Teach all suspicious descriptors without a deterministic amorphous-versus-coarse ranking. Explain context/cohort dependence, retain the higher concern of fine linear/branching patterns, and preserve the distinction between coarse benign and coarse heterogeneous.",
+      "kind": "demonstrated_defect",
+      "status": "REVISE",
+      "retestEvidence": "Not repaired or retested in this baseline review."
+    },
+    {
+      "id": "CALC08-EDU-01",
+      "severity": "major",
+      "gates": [
+        "EDU",
+        "SRC"
+      ],
+      "location": "page.js CALC_MATRIX, MORPH round input and KalkAssessment; content.js MORPH",
+      "evidence": "All25 cells reproduce the historical Youk coefficient/cutoff model, rather than an ACR automatic morphology×distribution table. Existing caption explicitly calls it a study model and category3 output has a clinical-check warning; these safeguards are acknowledged. Missing at the decision point are selected excision-cohort limits and the original predictor scope: Youk used punctate, whereas the input is generalized to round. Prominent result still combines a BI-RADS number, standard risk range and action.",
+      "learnerImpact": "The interface can overgeneralize a historical research result to every round calcification and make cohort-model output feel like a clinical classification.",
+      "requiredCorrection": "Keep historical model and current clinical assessment visibly distinct. Identify the limited original punctate predictor, selected population, and absent temporal/patient inputs. Use an explicit worked example showing why model3 cannot prescribe surveillance and why model-derived categories do not replace clinical assessment. A different presentation is acceptable; no automatic cell recategorization is requested.",
+      "kind": "demonstrated_defect",
+      "status": "REVISE",
+      "retestEvidence": "Not repaired or retested in this baseline review."
+    },
+    {
+      "id": "CALC08-SRC-03",
+      "severity": "major",
+      "gates": [
+        "SRC",
+        "ASM"
+      ],
+      "location": "All54 localized questions and22 card records; mammaMammographyCalcifications.js export mapping; mammaCalcificationReview.js header references",
+      "evidence": "Actual runtime question keys contain id/tags/fach/question/options/correct/explanation/wrongExplanations only. Neither producer supplies per-item source references or a complete reviewed source-to-item ledger; header comments and the lesson bibliography cannot identify which study supports a particular management qualifier.",
+      "learnerImpact": "Scientific review cannot reliably trace claims, distinguish current lexicon from older research, or retest a source-dependent change.",
+      "requiredCorrection": "Provide exact source references for every retained question/card in the repository-supported schema or an explicit complete per-ID ledger. Record current ACR versus historical research roles, source locations and study limitations. Confirm the global producer preserves any runtime metadata expected by consumers.",
+      "kind": "demonstrated_defect",
+      "status": "REVISE",
+      "retestEvidence": "Not repaired or retested in this baseline review."
+    },
+    {
+      "id": "CALC08-SRC-04",
+      "severity": "major",
+      "gates": [
+        "SRC",
+        "EDU"
+      ],
+      "location": "page.js Ausdehnung RememberNote: unabhängig von der Morphologie ein eigenständiger Risikofaktor",
+      "evidence": "The lesson correctly labels its extent percentages as a biopsy-cohort PPV. It then asserts morphology-independent risk. The cited Metaxa2019 observational comparison supports an association of increasing extent with malignancy; the accessed primary text does not establish this statement by a reported morphology-adjusted analysis.",
+      "learnerImpact": "A cohort association is taught as an independent predictive effect, encouraging causal or patient-specific interpretation of the chart.",
+      "requiredCorrection": "Either narrow the wording to the demonstrated cohort association or cite and explain an appropriate adjusted primary analysis. Preserve the distinction between total extent, particle size and treatment-planning relevance. Verify chart values and bins directly against the original table before acceptance.",
+      "kind": "unsupported_strength_of_claim",
+      "status": "REVISE",
+      "retestEvidence": "Not repaired or retested in this baseline review."
+    },
+    {
+      "id": "CALC08-REV-01",
+      "severity": "major",
+      "gates": [
+        "REV",
+        "SRC"
+      ],
+      "location": "page.js LessonSources note in DE/EN/FA",
+      "evidence": "Footer states last clinically reviewed September2026. No dated Dr.Zia clinical sign-off record was supplied for this baseline; route author label and historical browser logs cannot establish it. This is an unverified claim, not proof the date is false.",
+      "learnerImpact": "Learners and reviewers may infer scientific approval from an unsupported status statement.",
+      "requiredCorrection": "Attach the actual dated clinical-review record for this content version or replace the claim with a verifiable neutral editorial/source-update date. Keep Dr.Zia approval separate from AI/editorial review.",
+      "kind": "verification_need",
+      "status": "REVISE",
+      "retestEvidence": "Not repaired or retested in this baseline review."
+    },
+    {
+      "id": "CALC08-LNG-01",
+      "severity": "minor",
+      "gates": [
+        "LNG",
+        "ASM"
+      ],
+      "location": "mammographie-mikrokalk-milk-calcium question; cards -03,-05,-round-3; baseline naming across DE/EN/FA",
+      "evidence": "The lesson visibly teaches current Layering; the bank asks only Milk of Calcium. Popcorn and punctate occur as if current standalone descriptors without consistently relating them to current coarse/round terminology. These older terms remain useful recognition synonyms and their concepts are not scientifically wrong.",
+      "learnerImpact": "Learners may know the older label but fail to connect it with the currently taught reporting vocabulary.",
+      "requiredCorrection": "Use current descriptors first and retain historical terms as explicit synonyms where helpful, with semantic parity in all3 languages; do not delete familiar recognition vocabulary.",
+      "kind": "demonstrated_defect",
+      "status": "REVISE",
+      "retestEvidence": "Not repaired or retested in this baseline review."
+    },
+    {
+      "id": "CALC08-SRC-05",
+      "severity": "minor",
+      "gates": [
+        "SRC"
+      ],
+      "location": "page.js layering original figure credit and its translations",
+      "evidence": "Visible citation says J Korean Soc Radiol.2025;87:437,Fig6. The linked primary article PMC13266138 is Kang2026;87:437–459, doi10.3348/jksr.2026.0028.",
+      "learnerImpact": "Incorrect bibliography weakens source retrieval and provenance verification.",
+      "requiredCorrection": "Correct bibliographic year/details in all displayed variants and record exact figure license and attribution.",
+      "kind": "demonstrated_defect",
+      "status": "REVISE",
+      "retestEvidence": "Not repaired or retested in this baseline review."
+    },
+    {
+      "id": "CALC08-LNG-02",
+      "severity": "minor",
+      "gates": [
+        "LNG",
+        "VIS"
+      ],
+      "location": "public/mamma/mammographie/verkalkungen/layering/layering-schematic.svg; morphology/*.png; distribution/*.png",
+      "evidence": "Shared schematic contains English explanatory text such as Top view/Side view and Model:teacup; morphology/distribution strips contain English labels in all language modes. Alt text and surrounding lesson translations are localized.",
+      "learnerImpact": "FA/DE readers must interpret instructional image text in English; localized alt text alone is incomplete instructional parity.",
+      "requiredCorrection": "Localize instructional labels or provide equivalent adjacent accessible localized annotation covering every teaching label. Verify Persian direction and reading order in the actual rendered lesson.",
+      "kind": "demonstrated_defect",
+      "status": "REVISE",
+      "retestEvidence": "Not repaired or retested in this baseline review."
+    }
+  ],
+  "sourceLedger": [
+    {
+      "id": "ACR2025",
+      "url": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "read": "Fresh official4-page PDF text, especially physical2 and4. Image inspection incomplete as recorded.",
+      "evidence": "Current Layering and Round terms; coarse heterogeneous0.5–1mm retained; grouped/regional/segmental definitions; category3 short-interval6-month follow-up and category4/5 tissue diagnosis. This is a summary, not access to the entire paid manual."
+    },
+    {
+      "id": "YOUK2019",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/",
+      "doi": "10.3348/kjr.2019.0262",
+      "read": "Full primary methods/results/tables1–4/discussion fresh.",
+      "evidence": "Retrospective derivation194 excised lesions/183women and external100 excised lesions/100women; originally suspicious lesions. Matrix exactly follows reported coefficients/cutoffs. Punctate predictor was generalized to round in lesson. Selected excision population, no prior-image chronology/patient predictors. First-pair strict risk order unsupported."
+    },
+    {
+      "id": "BENT2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20410428/",
+      "doi": "10.2214/AJR.09.3423",
+      "read": "Fresh primary abstract.",
+      "evidence": "146 biopsied women; amorphous and coarse heterogeneous both20% observed PPV. Cohort estimates are not universal category calibration."
+    },
+    {
+      "id": "FUEGER2021",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/",
+      "doi": "10.1016/j.breast.2021.02.002",
+      "read": "Fresh indexed original methods, Fig6, discussion and limitations; direct page hit returned reCAPTCHA, no bypass.",
+      "evidence": "13 diagnostic studies/1414lesions;22% boundary is modelled for pure calcifications, not a category assignment. Authors discuss6–12-month surveillance but call for prospective evidence;4A/B/C subgroup pooling unavailable. No universal4A12-month or4B omission rule demonstrated."
+    },
+    {
+      "id": "BENNANI2017_COHORT",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0188679",
+      "read": "Primary full methods/results/discussion fresh.",
+      "evidence": "Retrospective248 cases with histopathologic reference; all underwent biopsy. Subgroup NPVs do not establish a validated omission protocol; false negatives included DCIS in4A/4B and invasive cancer in4C."
+    },
+    {
+      "id": "BALTZER2018",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29122667/",
+      "doi": "10.1016/j.mri.2017.10.012",
+      "read": "Primary abstract fresh.",
+      "evidence": "Retrospective152 selected MRI cases from858 biopsied patients; potential biopsy reduction, including two missed DCIS. Supports research possibility and residual uncertainty."
+    },
+    {
+      "id": "BENNANI2017_META",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27788035/",
+      "doi": "10.1148/radiol.2016161106",
+      "read": "Primary meta-analysis abstract fresh.",
+      "evidence": "Diagnostic performance research; does not establish a universal category-specific no-biopsy follow-up schedule."
+    },
+    {
+      "id": "METAXA2019",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6849664/",
+      "doi": "10.1259/bjr.20190177",
+      "read": "Fresh indexed primary methods/results/discussion; direct page captcha. Exact extent table not fully accessible.",
+      "evidence": "241 biopsied pure-calcification cases. Increasing extent associated with malignancy; lesson chart already names biopsy-cohort PPV. Independence from morphology not verified by accessed analysis."
+    },
+    {
+      "id": "KANG2026_FIG6",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13266138/",
+      "doi": "10.3348/jksr.2026.0028",
+      "read": "Fresh primary article metadata/lexicon update, local figure image viewed.",
+      "evidence": "Figure source published2026, not2025; supports current Layering naming. Exact figure license/provenance still to document."
+    },
+    {
+      "id": "R67107",
+      "url": "https://radiopaedia.org/cases/67107",
+      "read": "Fresh indexed case description; direct request returned402. Local frames visually viewed.",
+      "evidence": "Jorge A.Chaib Neto; grouped coarse heterogeneous calcifications, right upper lateral breast; source rID/study76445 links in lesson. Historical case4B discussion is distinct from the Youk model4A cell."
+    }
+  ],
+  "pdfCoverage": {
+    "status": "NOT_APPLICABLE",
+    "reason": "No user-supplied Mamma PDF was claimed; lesson predates the six-PDF batch. This review does not fabricate Mamma source-page coverage."
+  },
+  "coverage": {
+    "questionKeysAllRead": [
+      "size-alone",
+      "magnification",
+      "popcorn",
+      "milk-calcium",
+      "rods-versus-linear",
+      "amorphous-distribution",
+      "pleomorphic-segmental",
+      "highest-suspicion",
+      "evolution-context",
+      "no-correlate",
+      "round-group-followup",
+      "stable-suspicious",
+      "regional-definition",
+      "segmental-apex",
+      "modifiers-not-score",
+      "mri-4a-selected",
+      "mri-4b-risk",
+      "coarse-heterogeneous-size"
+    ],
+    "cardIdsAllRead": "mammographie-mikrokalk-01 through-12; -size,-dbt,-grouped,-segmental,-round-3,-stability,-modifiers,-mri4a,-mri4b5,-usmacro",
+    "strengths": [
+      "All linked pools present with stable topic identity, complete3-language fields and individualized wrong-answer text.",
+      "Round-group6-month follow-up has explicit completed-work-up/no-suspicious-features qualifiers.",
+      "Negative US/MRI does not automatically cancel suspicious mammographic findings.",
+      "Coarse heterogeneous0.5–1mm is supported by actual official2025 summary; no threshold correction requested.",
+      "Current matrix already labelled research model; no claim that safeguards are absent."
+    ],
+    "reviewGoalGrouping": "Characterization/technique; distribution; evolution/context; diagnostic consequence. These are reviewer grouping labels, not a newly admitted runtime mapping.",
+    "repairsMustBeSubstantive": "Retain coverage and IDs but repair decision quality across the whole pool. No increase in count required."
+  },
+  "mediaLedger": {
+    "reviewEvidence": "tmp/review-calcification-baseline/assets-0.png,assets-1.png,assets-2.png (contact sheets generated only for inspection; production images untouched)",
+    "viewed": "29PNG assets including10 descriptor strips, hero/background, retained mammographic frames and layering-original; SVG source inspected.",
+    "unresolved": "Complete source/contributor/license/frame ledger and browser-readable fit; no release/media PASS inferred."
+  },
+  "browserEvidence": {
+    "status": "BLOCKED",
+    "environment": "No dev server/build/browser launched by reviewer as requested.",
+    "historicalOnly": "docs/lesson-quality/lesson-design-browser-verification.json contains old route hero observations, not a current acceptance test."
+  },
+  "retestPlan": [
+    "Re-read final full18Q/22cards DE/EN/FA and all alternatives/rationales, not only changed MRI items.",
+    "Verify exact runtime ID preservation, pool counts, per-ID source/goal mapping and lesson-teaching support.",
+    "Check every matrix/standard-management distinction and source-qualified MRI text; recheck current ACR thresholds.",
+    "Independently verify corrected media ledger and exact original frames, then root current browser/build evidence.",
+    "Keep scientific approval and deployment separate from editorial acceptance."
+  ]
+}

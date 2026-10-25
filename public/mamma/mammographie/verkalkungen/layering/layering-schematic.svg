@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
   <title id="title">Layering: teacup model and mammography</title>
-  <desc id="desc">Schematic explanation of round calcifications on CC and crescentic sedimentation on MLO.</desc>
+  <desc id="desc">Schematic explanation of round calcifications on CC and crescentic sedimentation on a true 90-degree LM/ML lateral view.</desc>
   <rect width="1280" height="720" rx="28" fill="#071d3a"/>
   <text x="54" y="64" fill="#e73368" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="3">LAYERING</text>
   <text x="54" y="102" fill="#fff" font-family="Georgia,serif" font-size="31" font-weight="700">Teacup model → Mammography</text>
@@ -27,7 +27,7 @@
   <g fill="#ffb347"><circle cx="850" cy="300" r="6"/><circle cx="890" cy="278" r="6"/><circle cx="940" cy="270" r="6"/><circle cx="992" cy="279" r="6"/><circle cx="1040" cy="304" r="6"/><circle cx="1060" cy="331" r="6"/><circle cx="1010" cy="350" r="6"/><circle cx="960" cy="358" r="6"/><circle cx="900" cy="348" r="6"/></g>
   <text x="730" y="370" fill="#dbe7f1" font-family="Arial,sans-serif" font-size="17">round, amorphous or smudgy</text>
   <rect x="700" y="435" width="520" height="190" rx="14" fill="#0e2b4c" stroke="#5a7695" stroke-width="2"/>
-  <text x="730" y="472" fill="#a7d9f2" font-family="Arial,sans-serif" font-size="19" font-weight="700">B · MLO view (side view)</text>
+  <text x="730" y="472" fill="#a7d9f2" font-family="Arial,sans-serif" font-size="19" font-weight="700">B · LM/ML view (true lateral)</text>
   <ellipse cx="960" cy="540" rx="135" ry="55" fill="#c7d6e4" fill-opacity=".12" stroke="#b6ccdf" stroke-width="3"/>
   <path d="M835 566 Q960 620 1085 566" fill="none" stroke="#ffb347" stroke-width="14"/>
   <path d="M860 552 Q960 594 1060 552" fill="none" stroke="#fff0b0" stroke-width="4" stroke-dasharray="8 9"/>

@@ -1,0 +1,1472 @@
+{
+  "date": "2026-10-25",
+  "status": "COAUTHORED_SOURCE_REPAIRS_PEER_REVIEW_PENDING",
+  "originalBefore": "tmp/assessment-quality/sab-original-before.json",
+  "rootInitialQuestionWork": "tmp/assessment-quality/revise-sab-original.mjs alreadyrun; coauthor finished current6Q/8cards + bounded teaching, not independent review",
+  "changes": [
+    {
+      "path": "questions.de.0.question",
+      "currentBefore": "Ein 48-jähriger Patient mit normalem Neurostatus klagt über plötzlich einsetzenden Vernichtungskopfschmerz. Ein modernes, qualitativ hochwertiges Nativ-CT wird 45 Minuten nach Beginn durch einen Facharzt für Neuroradiologie als negativ beurteilt. Welche Aussage ist richtig?",
+      "after": "Textvignette: Ein 48-jähriger Patient hat seit 45 Minuten einen plötzlich maximalen Kopfschmerz ohne neues neurologisches Defizit. Ein hochwertiges Nativ-CT wird neuroradiologisch fachärztlich als negativ beurteilt. Welcher diagnostische Weg ist nach AHA/ASA 2023 vertretbar?"
+    },
+    {
+      "path": "questions.de.0.options.0.text",
+      "currentBefore": "Unter diesen Bedingungen kann das CT als Ausschlussweg vertretbar sein; Bildqualität und klinischer Kontext müssen stimmen",
+      "after": "Den negativen CT-Befund unter diesen definierten Bedingungen zum Ausschluss einer aSAB verwenden"
+    },
+    {
+      "path": "questions.de.0.options.1.text",
+      "currentBefore": "Unabhängig von Zeitpunkt und CT-Qualität ist immer eine Lumbalpunktion vorgeschrieben",
+      "after": "Vor einem Ausschluss routinemäßig eine zweite Nativ-CT-Untersuchung nach24 Stunden verlangen"
+    },
+    {
+      "path": "questions.de.0.options.2.text",
+      "currentBefore": "Eine negative CTA würde jede Form der SAB sicher ausschließen",
+      "after": "Den negativen CT-Befund erst nach einer zusätzlichen unauffälligen FLAIR-MRT werten"
+    },
+    {
+      "path": "questions.de.0.options.3.text",
+      "currentBefore": "Der Patient kann ohne Prüfung von Bildqualität oder klinischem Risiko entlassen werden",
+      "after": "Für den Ausschluss zunächst eine DSA anstelle der CT-basierten Beurteilung durchführen"
+    },
+    {
+      "path": "questions.de.0.explanation",
+      "currentBefore": "Die AHA/ASA-Leitlinie hält bei Beginn <6 Stunden, ohne neues neurologisches Defizit und mit hochwertigem Nativ-CT, befundet durch einen Facharzt für Neuroradiologie, den CT-Ausschlussweg für vertretbar. Genau 6 Stunden sind von dieser CT-only-Empfehlung nicht abgedeckt und müssen klinisch beurteilt werden. Bei Vorstellung >6 Stunden oder bei neuem Defizit empfiehlt die Leitlinie nach negativem CT eine Liquorpunktion. Bei unzureichender Qualität oder anhaltend hohem Verdacht ist weitere Abklärung erforderlich.",
+      "after": "Die Empfehlung betrifft akuten schweren Kopfschmerz bei <6 Stunden, ohne neues Defizit und mit hochwertigem, neuroradiologisch fachärztlich befundetem CT. Dies ist kein allgemeiner Entlassungsautomatismus: atypische Präsentation, unzureichende Qualität oder fortbestehende Bedenken erfordern individuelle weitere Abklärung. Bei >6 Stunden oder neuem Defizit empfiehlt die Leitlinie nach negativem CT eine LP."
+    },
+    {
+      "path": "questions.de.0.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Das Aufschieben der Ausschlussentscheidung bis zu einem Routine-Wiederholungs-CT ist für die beschriebenen Früh-CT-Bedingungen nicht der empfohlene diagnostische Weg.",
+        "C": "Die Leitlinie verlangt für diesen definierten CT-Ausschlussweg keine zusätzliche FLAIR-MRT; ein negatives FLAIR ist kein universeller Ersatz der zeitabhängigen Diagnostik.",
+        "D": "DSA untersucht die Gefäßanatomie und mögliche Blutungsquelle. Sie ersetzt hier nicht den empfohlenen CT-basierten Weg zur Beurteilung, ob eine aSAB vorliegt."
+      }
+    },
+    {
+      "path": "questions.de.0.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1161/STR.0000000000000436"
+    },
+    {
+      "path": "questions.de.0.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.de.1.question",
+      "currentBefore": "Das initiale CT zeigt eine dicke Blutansammlung (≥1 mm) in den basalen Zisternen sowie Blut in beiden Seitenventrikeln. Welchem Grad der Modifizierten Fisher-Skala entspricht dieser Befund?",
+      "after": "Textvignette: Das Nativ-CT zeigt etwa 2 mm dickes Zisternenblut und intraventrikuläres Blut. Welcher Modified-Fisher-Grad passt?"
+    },
+    {
+      "path": "questions.de.1.options.0.text",
+      "currentBefore": "Grad 1 – dünnes Blut, kein IVH",
+      "after": "Grad 1"
+    },
+    {
+      "path": "questions.de.1.options.1.text",
+      "currentBefore": "Grad 2 – dünnes Blut + IVH",
+      "after": "Grad 2"
+    },
+    {
+      "path": "questions.de.1.options.2.text",
+      "currentBefore": "Grad 3 – dickes Blut, kein IVH",
+      "after": "Grad 3"
+    },
+    {
+      "path": "questions.de.1.options.3.text",
+      "currentBefore": "Grad 4 – dickes Blut + IVH",
+      "after": "Grad 4"
+    },
+    {
+      "path": "questions.de.1.explanation",
+      "currentBefore": "Grad 4 der Modifizierten Fisher-Skala: dickes Zisternenblut (≥1 mm) UND IVH. Die Skala ordnet die Blutlast ein und ersetzt keine klinische Überwachung.",
+      "after": "Dickes subarachnoidales Blut mit IVH entspricht Modified-Fisher-Grad 4. Dies ist die modifizierte Skala 0–4; die ursprüngliche Fisher-Skala I–IV ist anders aufgebaut."
+    },
+    {
+      "path": "questions.de.1.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Grad 1 bedeutet dünnes Blut ohne IVH; beide Merkmale passen hier nicht.",
+        "B": "Grad 2 enthält IVH, aber dünnes statt des beschriebenen dicken Zisternenblutes.",
+        "C": "Grad 3 enthält dickes Blut, jedoch kein IVH; das Ventrikelblut führt hier zu Grad 4."
+      }
+    },
+    {
+      "path": "questions.de.1.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B"
+    },
+    {
+      "path": "questions.de.1.difficulty",
+      "currentBefore": null,
+      "after": 1
+    },
+    {
+      "path": "questions.de.2.question",
+      "currentBefore": "Wie unterscheiden sich Modified-Fisher-Grad 2 (dünnes Blut + IVH) und Grad 3 (dickes Blut, kein IVH) anatomisch?",
+      "after": "Textvignette: Fall X zeigt dünnes Zisternenblut mit IVH, Fall Y dickes Zisternenblut ohne IVH. Wie lautet die Zuordnung in der Modified-Fisher-Skala?"
+    },
+    {
+      "path": "questions.de.2.options.0.text",
+      "currentBefore": "Grad 2 hat deutlich niedrigeres Risiko als Grad 3",
+      "after": "X: Grad 1; Y: Grad 3"
+    },
+    {
+      "path": "questions.de.2.options.1.text",
+      "currentBefore": "Die Skala stuft beide Muster als relevante Risikomerkmale ein; sie liefert keine individuelle Prozentwahrscheinlichkeit.",
+      "after": "X: Grad 2; Y: Grad 3"
+    },
+    {
+      "path": "questions.de.2.options.2.text",
+      "currentBefore": "Grad 2 hat etwa doppelt so hohes Risiko wie Grad 3",
+      "after": "X: Grad 3; Y: Grad 2"
+    },
+    {
+      "path": "questions.de.2.options.3.text",
+      "currentBefore": "Grad 3 hat unabhängig von IVH immer das höchste Risiko aller Grade",
+      "after": "X: Grad 2; Y: Grad 4"
+    },
+    {
+      "path": "questions.de.2.explanation",
+      "currentBefore": "Grad 2 kombiniert dünnes Zisternenblut mit IVH; Grad 3 zeigt dickes Zisternenblut ohne IVH. Die Skala kombiniert beide Merkmale, um die Risikoeinordnung zu unterstützen; sie liefert keine patientenspezifische Ereignisrate.",
+      "after": "Grad 2 kombiniert dünnes Blut mit IVH; Grad 3 dickes Blut ohne IVH. Die Kategorien sind keine individuellen Prozentprognosen; in Frontera 2006 hatten Grad 2 und 3 ähnliche rohe Odds Ratios für symptomatischen Vasospasmus."
+    },
+    {
+      "path": "questions.de.2.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Bei X ist IVH vorhanden; deshalb passt Grad 1 ohne IVH nicht. Y ist richtig als Grad 3 eingeordnet.",
+        "C": "Die Kombinationen wurden vertauscht: dünn + IVH ist Grad 2, dick ohne IVH ist Grad 3.",
+        "D": "Y hat kein IVH; Grad 4 verlangt zusätzlich zum dicken Blut auch Ventrikelblut."
+      }
+    },
+    {
+      "path": "questions.de.2.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B"
+    },
+    {
+      "path": "questions.de.2.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.de.3.question",
+      "currentBefore": "Eine 62-jährige Patientin erleidet eine SAB. Das CT zeigt eine klassisch perimesenzephale Blutung. Die CTA ist negativ. Was ist die richtige Einschätzung?",
+      "after": "Textvignette: Bei spontaner SAB wird nach vollständiger Bildprüfung ein klassisch perimesenzephales Muster beschrieben; eine hochwertige CTA ist negativ. Welche Aussage zur weiteren Gefäßabklärung entspricht AHA/ASA 2023?"
+    },
+    {
+      "path": "questions.de.3.options.0.text",
+      "currentBefore": "DSA zwingend erforderlich – CTA reicht nie aus",
+      "after": "Den DSA-Pfad diffuser aneurysmaverdächtiger SAB auf dieses Muster übertragen"
+    },
+    {
+      "path": "questions.de.3.options.1.text",
+      "currentBefore": "Der Befund bleibt kontextabhängig; die Wahl zwischen CTA allein und DSA ist für diese Verteilung nicht abschließend geklärt.",
+      "after": "CTA allein versus zusätzliche DSA als nicht abschließend geklärt behandeln und den Kontext einbeziehen"
+    },
+    {
+      "path": "questions.de.3.options.2.text",
+      "currentBefore": "Sofortige neurochirurgische Intervention erforderlich",
+      "after": "CTA allein als ausreichend belegten Abschluss der Gefäßsuche bevorzugen"
+    },
+    {
+      "path": "questions.de.3.options.3.text",
+      "currentBefore": "Intensiviertes Vasospasmusmonitoring ab Tag 4 notwendig",
+      "after": "Eine TOF-MRA als bevorzugte zweite Stufe vor der DSA einsetzen"
+    },
+    {
+      "path": "questions.de.3.explanation",
+      "currentBefore": "Ein typisches perimesenzephales Muster kann mit einer nichtaneurysmatischen Ursache und günstigerem Verlauf vereinbar sein. Das Muster plus negative CTA klärt die Quelle jedoch nicht in jedem Fall abschließend; die AHA/ASA beschreibt die Wahl CTA allein versus DSA als ungeklärt.",
+      "after": "Die Leitlinie nennt CTA allein versus DSA bei klassisch perimesenzephaler Blutverteilung als Wissenslücke. Bei diffuser SAB mit hoher aneurysmatischer Wahrscheinlichkeit ist DSA trotz negativer oder unklarer CTA angezeigt. Ein typisches Muster beweist keine venöse Quelle."
+    },
+    {
+      "path": "questions.de.3.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Die hohe Aneurysmawahrscheinlichkeit einer diffusen SAB begründet einen anderen Pfad. Für klassisch perimesenzephale Verteilung beschreibt AHA/ASA 2023 gerade die offene CTA-versus-DSA-Frage.",
+        "C": "CTA allein ist eine diskutierte Strategie, aber die Leitlinie bezeichnet ihre ausreichende Absicherung gegenüber zusätzlicher DSA für dieses Muster als Wissenslücke.",
+        "D": "Die Leitlinie legt keine bevorzugte TOF-MRA-Zwischenstufe fest. Die hier benannte Unsicherheit betrifft CTA allein gegenüber zusätzlicher Katheter-DSA."
+      }
+    },
+    {
+      "path": "questions.de.3.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1161/STR.0000000000000436"
+    },
+    {
+      "path": "questions.de.3.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.de.4.question",
+      "currentBefore": "In welchem Zeitfenster nach aneurysmatischer SAB ist das Risiko eines zerebralen Vasospasmus am höchsten?",
+      "after": "Textvignette: Am 8. Tag nach behandelter aSAB entwickelt eine Patientin eine über eine Stunde anhaltende neue Hemiparese. Nativ-CT und Labor erklären sie nicht; auf CTA ist kein ausgeprägter proximaler Vasospasmus erkennbar. Welche Einschätzung passt am besten?"
+    },
+    {
+      "path": "questions.de.4.options.0.text",
+      "currentBefore": "0–24 Stunden nach SAB",
+      "after": "Fehlende proximale Verengung macht eine DCI als Erklärung ausreichend unwahrscheinlich"
+    },
+    {
+      "path": "questions.de.4.options.1.text",
+      "currentBefore": "Tag 1–3 nach SAB",
+      "after": "Der Zeitpunkt passt eher zu einer unmittelbaren prozeduralen Komplikation als zu einer verzögerten Ischämie"
+    },
+    {
+      "path": "questions.de.4.options.2.text",
+      "currentBefore": "Tag 4–14 nach SAB",
+      "after": "DCI bleibt abklärungsbedürftig; klinische Ischämie und großgefäßiger Vasospasmus sind nicht gleichbedeutend"
+    },
+    {
+      "path": "questions.de.4.options.3.text",
+      "currentBefore": "Tag 15–21 nach SAB",
+      "after": "Die Konstellation eher als verzögerten Hydrozephalus denn als DCI einordnen"
+    },
+    {
+      "path": "questions.de.4.explanation",
+      "currentBefore": "Das Risiko für DCI und Vasospasmus besteht im Verlauf der ersten zwei Wochen, ist aber nicht auf einen festen Tagesbereich begrenzt. DCI kann auch ohne nachweisbaren großgefäßigen Vasospasmus auftreten.",
+      "after": "Eine neue anhaltende fokale Verschlechterung im typischen DCI-Zeitraum verlangt dringliche Abklärung und Ausschluss anderer Ursachen. Kein ausgeprägter proximaler Vasospasmus auf CTA schließt DCI nicht aus. CTA/CTP und weitere Überwachung unterstützen die klinische Beurteilung; die Vignette beweist die Diagnose nicht allein."
+    },
+    {
+      "path": "questions.de.4.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "DCI beruht nicht ausschließlich auf sichtbarem proximalem Großgefäßspasmus; ein negatives solches Zeichen beendet die Abklärung nicht.",
+        "B": "Die Neuverschlechterung am 8. Tag ist verzögert; eine unmittelbar prozedurale Schädigung ist damit nicht die am besten gestützte zeitliche Zuordnung.",
+        "D": "Hydrozephalus bleibt eine wichtige Differenzialdiagnose, aber die Vignette nennt keinen erklärenden CT-Befund. Ohne entsprechenden Ventrikel-/Liquorbefund ist dieser Vorrang gegenüber DCI nicht begründet."
+      }
+    },
+    {
+      "path": "questions.de.4.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1161/STR.0000000000000436"
+    },
+    {
+      "path": "questions.de.4.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.de.5.question",
+      "currentBefore": "Welches Aneurysma ist bei der aneurysmatischen SAB am häufigsten für die Blutung verantwortlich?",
+      "after": "Textvignette: Das Nativ-CT zeigt spontane SAB mit deutlichem Schwerpunkt im vorderen Interhemisphärenspalt. Welcher Gefäßbereich verdient bei der vollständigen CTA-Auswertung besonders gezielte Aufmerksamkeit?"
+    },
+    {
+      "path": "questions.de.5.options.0.text",
+      "currentBefore": "A. cerebri media (MCA) Bifurkation",
+      "after": "MCA-Bifurkation"
+    },
+    {
+      "path": "questions.de.5.options.1.text",
+      "currentBefore": "A. communicans anterior (AKoA)",
+      "after": "A. communicans anterior/angrenzender ACA-Komplex"
+    },
+    {
+      "path": "questions.de.5.options.2.text",
+      "currentBefore": "A. communicans posterior (PCom)",
+      "after": "Basilarisspitze"
+    },
+    {
+      "path": "questions.de.5.options.3.text",
+      "currentBefore": "A. cerebelli posterior inferior (PICA)",
+      "after": "PICA-Ursprung"
+    },
+    {
+      "path": "questions.de.5.explanation",
+      "currentBefore": "Die Aneurysmasuche richtet sich nach der Blutverteilung: zum Beispiel interhemisphärische Blutung mit Blick auf die A. communicans anterior, einseitige Fossa-Sylvii-Blutung mit Blick auf die A. cerebri media und Blut an der hinteren Schädelbasis mit Blick auf die hintere Zirkulation. Das sind Suchhinweise, keine Beweise.",
+      "after": "Ein anterior-interhemisphärischer Schwerpunkt ist ein Suchhinweis auf ACA/ACoA. Die Originalstudie zeigt begrenzte Gesamtübereinstimmung und keine sichere Quellenbestimmung allein aus dem CT. Die vollständige Gefäßsuche bleibt erforderlich, besonders bei mehreren Aneurysmen."
+    },
+    {
+      "path": "questions.de.5.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Ein sylvischer Schwerpunkt würde den Blick stärker zur MCA lenken; die hier betonte vordere Interhemisphärenregion spricht eher für ACA/ACoA-Suche.",
+        "C": "Posterior-basale Blutverteilung kann die hintere Zirkulation betonen; sie ist nicht der beschriebene vordere Schwerpunkt.",
+        "D": "Der PICA-Ursprung gehört zur hinteren Zirkulation und ist kein bevorzugter lokalisierender Hinweis des anterior-interhemisphärischen Musters."
+      }
+    },
+    {
+      "path": "questions.de.5.source",
+      "currentBefore": null,
+      "after": "https://pubmed.ncbi.nlm.nih.gov/9921845/"
+    },
+    {
+      "path": "questions.de.5.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.0.question",
+      "currentBefore": "A 48-year-old patient with a normal neurological examination reports a thunderclap headache. A modern high-quality non-contrast CT performed 45 minutes after onset is interpreted as negative by a board-certified neuroradiologist. Which statement is correct?",
+      "after": "Text vignette: A 48-year-old patient has had a sudden maximal headache for 45 minutes without a new neurological deficit. A high-quality noncontrast CT is read as negative by a board-certified neuroradiologist. Which diagnostic pathway is reasonable under AHA/ASA 2023?"
+    },
+    {
+      "path": "questions.en.0.options.0.text",
+      "currentBefore": "Under these conditions, CT may be a reasonable rule-out pathway, provided image quality and clinical context are appropriate",
+      "after": "Use the negative CT to exclude aSAH under these defined conditions"
+    },
+    {
+      "path": "questions.en.0.options.1.text",
+      "currentBefore": "Lumbar puncture is mandatory regardless of timing and CT quality",
+      "after": "Require a routine second noncontrast CT at 24 hours before exclusion"
+    },
+    {
+      "path": "questions.en.0.options.2.text",
+      "currentBefore": "A negative CTA would reliably exclude every form of SAH",
+      "after": "Accept the negative CT only after additional normal FLAIR MRI"
+    },
+    {
+      "path": "questions.en.0.options.3.text",
+      "currentBefore": "The patient can be discharged without checking image quality or clinical risk",
+      "after": "Perform DSA first instead of CT-based assessment to exclude haemorrhage"
+    },
+    {
+      "path": "questions.en.0.explanation",
+      "currentBefore": "The AHA/ASA guideline considers a high-quality non-contrast CT interpreted by a board-certified neuroradiologist a reasonable rule-out pathway when onset was <6 hours earlier and there is no new neurological deficit. Exactly 6 hours is not covered by this CT-only recommendation and requires clinical assessment. For presentation >6 hours or with a new deficit, the guideline recommends lumbar puncture after a negative CT. Inadequate image quality or persistent high suspicion requires further evaluation.",
+      "after": "The recommendation applies to acute severe headache at <6 hours, without a new deficit, with high-quality CT interpreted by a board-certified neuroradiologist. It is not an automatic discharge rule: atypical presentation, inadequate quality or persistent concern require individualized further evaluation. At >6 hours or with a new deficit, the guideline recommends LP after negative CT."
+    },
+    {
+      "path": "questions.en.0.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Delaying exclusion until routine repeat CT is not the recommended diagnostic pathway under the early-CT conditions described.",
+        "C": "The guideline does not require additional FLAIR MRI for this defined CT rule-out pathway; negative FLAIR is not a universal substitute for timing-dependent work-up.",
+        "D": "DSA evaluates vascular anatomy and a possible bleeding source. It does not replace the recommended CT-based pathway for determining whether aSAH is present here."
+      }
+    },
+    {
+      "path": "questions.en.0.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1161/STR.0000000000000436"
+    },
+    {
+      "path": "questions.en.0.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.1.question",
+      "currentBefore": "The initial CT shows a thick blood collection (≥1 mm) in the basal cisterns with blood in both lateral ventricles. Which Modified Fisher Grade corresponds to this finding?",
+      "after": "Text vignette: Noncontrast CT shows approximately 2 mm-thick cisternal blood and intraventricular blood. Which modified Fisher grade fits?"
+    },
+    {
+      "path": "questions.en.1.options.0.text",
+      "currentBefore": "Grade 1 – thin blood, no IVH",
+      "after": "Grade 1"
+    },
+    {
+      "path": "questions.en.1.options.1.text",
+      "currentBefore": "Grade 2 – thin blood + IVH",
+      "after": "Grade 2"
+    },
+    {
+      "path": "questions.en.1.options.2.text",
+      "currentBefore": "Grade 3 – thick blood, no IVH",
+      "after": "Grade 3"
+    },
+    {
+      "path": "questions.en.1.options.3.text",
+      "currentBefore": "Grade 4 – thick blood + IVH",
+      "after": "Grade 4"
+    },
+    {
+      "path": "questions.en.1.explanation",
+      "currentBefore": "Modified Fisher Grade 4: thick cisternal blood (≥1 mm) AND IVH. The scale classifies blood burden and does not replace clinical monitoring.",
+      "after": "Thick subarachnoid blood with IVH corresponds to modified Fisher grade 4. This is the modified 0–4 scale; the original Fisher I–IV scale is structured differently."
+    },
+    {
+      "path": "questions.en.1.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Grade 1 means thin blood without IVH; neither feature fits here.",
+        "B": "Grade 2 includes IVH but thin rather than the thick cisternal blood described.",
+        "C": "Grade 3 includes thick blood but no IVH; ventricular blood makes this grade 4."
+      }
+    },
+    {
+      "path": "questions.en.1.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B"
+    },
+    {
+      "path": "questions.en.1.difficulty",
+      "currentBefore": null,
+      "after": 1
+    },
+    {
+      "path": "questions.en.2.question",
+      "currentBefore": "How do Modified Fisher Grades 2 (thin blood + IVH) and 3 (thick blood, no IVH) differ anatomically?",
+      "after": "Text vignette: Case X shows thin cisternal blood with IVH; case Y shows thick cisternal blood without IVH. How are they classified on the modified Fisher scale?"
+    },
+    {
+      "path": "questions.en.2.options.0.text",
+      "currentBefore": "Grade 2 has a markedly lower risk than Grade 3",
+      "after": "X: grade 1; Y: grade 3"
+    },
+    {
+      "path": "questions.en.2.options.1.text",
+      "currentBefore": "The scale treats both patterns as relevant risk markers; it does not provide an individual percentage probability.",
+      "after": "X: grade 2; Y: grade 3"
+    },
+    {
+      "path": "questions.en.2.options.2.text",
+      "currentBefore": "Grade 2 has about twice the risk of Grade 3",
+      "after": "X: grade 3; Y: grade 2"
+    },
+    {
+      "path": "questions.en.2.options.3.text",
+      "currentBefore": "Grade 3 always has the highest risk of all grades regardless of IVH",
+      "after": "X: grade 2; Y: grade 4"
+    },
+    {
+      "path": "questions.en.2.explanation",
+      "currentBefore": "Grade 2 combines thin cisternal blood with IVH; Grade 3 has thick cisternal blood without IVH. The scale combines both features to support risk stratification; it does not provide a patient-specific event rate.",
+      "after": "Grade 2 combines thin blood with IVH; grade 3 combines thick blood without IVH. Categories are not individual percentage predictions; grades 2 and 3 had similar crude odds ratios for symptomatic vasospasm in Frontera 2006."
+    },
+    {
+      "path": "questions.en.2.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "X has IVH, so grade 1 without IVH does not fit. Y is correctly classified as grade 3.",
+        "C": "The combinations are reversed: thin blood with IVH is grade 2; thick blood without IVH is grade 3.",
+        "D": "Y has no IVH; grade 4 requires ventricular blood as well as thick blood."
+      }
+    },
+    {
+      "path": "questions.en.2.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B"
+    },
+    {
+      "path": "questions.en.2.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.3.question",
+      "currentBefore": "A 62-year-old woman suffers SAH. CT shows a classic perimesencephalic blood pattern. CTA is negative. What is the correct assessment?",
+      "after": "Text vignette: After full image review, spontaneous SAH has a classic perimesencephalic pattern; high-quality CTA is negative. Which statement about further vascular work-up matches AHA/ASA 2023?"
+    },
+    {
+      "path": "questions.en.3.options.0.text",
+      "currentBefore": "DSA mandatory — CTA is never sufficient",
+      "after": "Apply the DSA pathway for diffuse aneurysm-suspicious SAH to this pattern"
+    },
+    {
+      "path": "questions.en.3.options.1.text",
+      "currentBefore": "Interpretation remains context-dependent; the choice between CTA alone and DSA is not settled for this pattern.",
+      "after": "Treat CTA alone versus additional DSA as unresolved and consider the context"
+    },
+    {
+      "path": "questions.en.3.options.2.text",
+      "currentBefore": "Immediate neurosurgical intervention required",
+      "after": "Prefer CTA alone as a sufficiently established endpoint of vascular investigation"
+    },
+    {
+      "path": "questions.en.3.options.3.text",
+      "currentBefore": "Intensive vasospasm monitoring from day 4 required",
+      "after": "Use TOF MRA as the preferred second step before DSA"
+    },
+    {
+      "path": "questions.en.3.explanation",
+      "currentBefore": "A typical perimesencephalic pattern may be consistent with a non-aneurysmal source and a more favourable course. The pattern plus a negative CTA does not settle the source in every case; AHA/ASA describes the choice of CTA alone versus DSA as unresolved.",
+      "after": "The guideline identifies CTA alone versus DSA for classic perimesencephalic blood distribution as a knowledge gap. With diffuse SAH and high concern for an aneurysm, DSA is indicated despite negative or inconclusive CTA. A typical pattern does not prove a venous source."
+    },
+    {
+      "path": "questions.en.3.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "High aneurysm concern in diffuse SAH supports a different pathway. For classic perimesencephalic distribution, AHA/ASA 2023 explicitly identifies the CTA-versus-DSA question as unresolved.",
+        "C": "CTA alone is a debated strategy, but the guideline identifies its sufficiency compared with additional DSA for this pattern as an evidence gap.",
+        "D": "The guideline does not establish a preferred intermediate TOF MRA step. The stated uncertainty concerns CTA alone versus additional catheter DSA."
+      }
+    },
+    {
+      "path": "questions.en.3.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1161/STR.0000000000000436"
+    },
+    {
+      "path": "questions.en.3.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.4.question",
+      "currentBefore": "In which time window after aneurysmal SAH is the risk of cerebral vasospasm highest?",
+      "after": "Text vignette: On day 8 after treated aSAH, a patient develops new hemiparesis lasting over an hour. Noncontrast CT and laboratory findings do not explain it; CTA shows no marked proximal vasospasm. Which assessment fits best?"
+    },
+    {
+      "path": "questions.en.4.options.0.text",
+      "currentBefore": "0–24 hours after SAH",
+      "after": "Absent proximal narrowing makes DCI sufficiently unlikely as the explanation"
+    },
+    {
+      "path": "questions.en.4.options.1.text",
+      "currentBefore": "Day 1–3 after SAH",
+      "after": "The timing fits an immediate procedural complication better than delayed ischaemia"
+    },
+    {
+      "path": "questions.en.4.options.2.text",
+      "currentBefore": "Day 4–14 after SAH",
+      "after": "DCI still requires evaluation; clinical ischaemia and large-vessel vasospasm are not synonymous"
+    },
+    {
+      "path": "questions.en.4.options.3.text",
+      "currentBefore": "Day 15–21 after SAH",
+      "after": "Favour delayed hydrocephalus over DCI as the explanation"
+    },
+    {
+      "path": "questions.en.4.explanation",
+      "currentBefore": "Risk of DCI and vasospasm extends through the first two weeks, but is not limited to a fixed day range. DCI can occur without demonstrable large-vessel vasospasm.",
+      "after": "New sustained focal deterioration in the usual DCI period requires urgent evaluation and exclusion of other causes. Absence of marked proximal vasospasm on CTA does not exclude DCI. CTA/CTP and further monitoring support clinical assessment; the vignette alone does not prove the diagnosis."
+    },
+    {
+      "path": "questions.en.4.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "DCI is not explained solely by visible proximal large-vessel spasm; absence of that finding does not end evaluation.",
+        "B": "New deterioration on day 8 is delayed; immediate procedural injury is not the best-supported temporal attribution.",
+        "D": "Hydrocephalus remains an important differential, but the vignette provides no explanatory CT finding. Without corresponding ventricular/CSF findings, prioritising it over DCI is unsupported."
+      }
+    },
+    {
+      "path": "questions.en.4.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1161/STR.0000000000000436"
+    },
+    {
+      "path": "questions.en.4.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.5.question",
+      "currentBefore": "Which aneurysm is most commonly responsible for haemorrhage in aneurysmal SAH?",
+      "after": "Text vignette: Noncontrast CT shows spontaneous SAH predominantly in the anterior interhemispheric fissure. Which vascular region warrants particular attention during complete CTA review?"
+    },
+    {
+      "path": "questions.en.5.options.0.text",
+      "currentBefore": "Middle cerebral artery (MCA) bifurcation",
+      "after": "MCA bifurcation"
+    },
+    {
+      "path": "questions.en.5.options.1.text",
+      "currentBefore": "Anterior communicating artery (ACoA)",
+      "after": "Anterior communicating artery/adjacent ACA complex"
+    },
+    {
+      "path": "questions.en.5.options.2.text",
+      "currentBefore": "Posterior communicating artery (PCom)",
+      "after": "Basilar tip"
+    },
+    {
+      "path": "questions.en.5.options.3.text",
+      "currentBefore": "Posterior inferior cerebellar artery (PICA)",
+      "after": "PICA origin"
+    },
+    {
+      "path": "questions.en.5.explanation",
+      "currentBefore": "Use the blood distribution to guide aneurysm search: for example, interhemispheric blood prompts review of the anterior communicating artery, unilateral Sylvian blood prompts review of the middle cerebral artery, and posterior basal blood prompts review of the posterior circulation. These are search clues, not proof.",
+      "after": "An anterior interhemispheric predominance is a search clue for ACA/ACoA. The original study shows limited overall agreement and no definitive source assignment from CT alone. Complete vascular evaluation remains necessary, especially with multiple aneurysms."
+    },
+    {
+      "path": "questions.en.5.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Sylvian predominance would focus attention more on MCA; the anterior interhemispheric region highlighted here favours ACA/ACoA review.",
+        "C": "Posterior basal blood can highlight the posterior circulation; that is not the anterior predominance described.",
+        "D": "PICA origin belongs to the posterior circulation and is not the preferential localizing clue of this anterior interhemispheric pattern."
+      }
+    },
+    {
+      "path": "questions.en.5.source",
+      "currentBefore": null,
+      "after": "https://pubmed.ncbi.nlm.nih.gov/9921845/"
+    },
+    {
+      "path": "questions.en.5.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.0.question",
+      "currentBefore": "بیمار ۴۸ ساله با معاینه عصبی طبیعی دچار سردرد ناگهانی و بسیار شدید شده است. CT بدون کنتراست مدرن و باکیفیت، ۴۵ دقیقه پس از شروع توسط نورورادیولوژیست دارای بورد تخصصی منفی گزارش می‌شود. کدام عبارت درست است؟",
+      "after": "سناریوی متنی: بیمار ۴۸ ساله از ۴۵ دقیقه قبل سردرد ناگهانی با حداکثر شدت و بدون نقص عصبی جدید دارد. CT بدون کنتراست باکیفیت توسط نورورادیولوژیست دارای بورد منفی گزارش شده است. طبق AHA/ASA 2023 کدام مسیر تشخیصی قابل‌قبول است؟"
+    },
+    {
+      "path": "questions.fa.0.options.0.text",
+      "currentBefore": "در این شرایط CT می‌تواند یک مسیر قابل‌قبول برای رد SAB باشد، به شرط مناسب بودن کیفیت تصویر و زمینه بالینی",
+      "after": "استفاده از CT منفی برای رد aSAB در همین شرایط تعریف‌شده"
+    },
+    {
+      "path": "questions.fa.0.options.1.text",
+      "currentBefore": "صرف‌نظر از زمان و کیفیت CT، پونکسیون لومبار همیشه الزامی است",
+      "after": "الزام CT بدون کنتراست دوم پس از ۲۴ ساعت به‌صورت روتین پیش از رد بیماری"
+    },
+    {
+      "path": "questions.fa.0.options.2.text",
+      "currentBefore": "CTA منفی همه انواع SAB را با قطعیت رد می‌کند",
+      "after": "پذیرش CT منفی فقط پس از MRI-FLAIR طبیعی تکمیلی"
+    },
+    {
+      "path": "questions.fa.0.options.3.text",
+      "currentBefore": "بیمار را می‌توان بدون بررسی کیفیت تصویر یا خطر بالینی ترخیص کرد",
+      "after": "انجام DSA پیش از رد خونریزی به‌جای ارزیابی مبتنی بر CT"
+    },
+    {
+      "path": "questions.fa.0.explanation",
+      "currentBefore": "راهنمای AHA/ASA، در صورت شروع علائم کمتر از ۶ ساعت قبل، نبود نقص عصبی جدید و انجام CT بدون کنتراست باکیفیت که توسط نورورادیولوژیست دارای بورد تخصصی تفسیر شده باشد، مسیر رد با CT را قابل‌قبول می‌داند. دقیقاً ۶ ساعت تحت پوشش این توصیه CT به‌تنهایی نیست و نیاز به ارزیابی بالینی دارد. در مراجعه بیش از ۶ ساعت یا وجود نقص جدید، راهنما پس از CT منفی پونکسیون کمری را توصیه می‌کند. کیفیت ناکافی یا شک بالینی پایدار نیازمند بررسی بیشتر است.",
+      "after": "توصیه مربوط به سردرد حاد شدید در کمتر از ۶ ساعت، بدون نقص جدید و CT باکیفیت تفسیرشده توسط نورورادیولوژیست دارای بورد است. این قاعده ترخیص خودکار نیست: تظاهر غیرمعمول، کیفیت ناکافی یا نگرانی پایدار به ارزیابی تکمیلی فردی نیاز دارد. در بیش از ۶ ساعت یا نقص جدید، راهنما پس از CT منفی LP را توصیه می‌کند."
+    },
+    {
+      "path": "questions.fa.0.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "به‌تعویق‌انداختن تصمیم رد بیماری تا CT تکراری روتین، مسیر توصیه‌شده در شرایط CT زودهنگام توصیف‌شده نیست.",
+        "C": "راهنما در این مسیر تعریف‌شدهٔ رد با CT، MRI-FLAIR تکمیلی را الزامی نمی‌داند؛ FLAIR منفی جایگزین عمومی بررسی وابسته به زمان نیست.",
+        "D": "DSA آناتومی عروق و منشأ احتمالی خونریزی را بررسی می‌کند و در اینجا جای مسیر توصیه‌شدهٔ مبتنی بر CT برای تعیین وجود aSAB را نمی‌گیرد."
+      }
+    },
+    {
+      "path": "questions.fa.0.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1161/STR.0000000000000436"
+    },
+    {
+      "path": "questions.fa.0.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.1.question",
+      "currentBefore": "CT اولیه تجمع خون ضخیم (≥۱ mm) در سیسترن‌های قاعده‌ای و خون در هر دو بطن جانبی نشان می‌دهد. این یافته کدام درجه مقیاس فیشر اصلاح‌شده را نشان می‌دهد؟",
+      "after": "سناریوی متنی: CT بدون کنتراست خون سیسترنی با ضخامت حدود ۲ میلی‌متر و خون داخل‌بطنی نشان می‌دهد. کدام درجهٔ فیشر اصلاح‌شده مناسب است؟"
+    },
+    {
+      "path": "questions.fa.1.options.0.text",
+      "currentBefore": "درجه ۱ – خون نازک، بدون IVH",
+      "after": "درجه ۱"
+    },
+    {
+      "path": "questions.fa.1.options.1.text",
+      "currentBefore": "درجه ۲ – خون نازک + IVH",
+      "after": "درجه ۲"
+    },
+    {
+      "path": "questions.fa.1.options.2.text",
+      "currentBefore": "درجه ۳ – خون ضخیم، بدون IVH",
+      "after": "درجه ۳"
+    },
+    {
+      "path": "questions.fa.1.options.3.text",
+      "currentBefore": "درجه ۴ – خون ضخیم + IVH",
+      "after": "درجه ۴"
+    },
+    {
+      "path": "questions.fa.1.explanation",
+      "currentBefore": "درجه ۴ فیشر اصلاح‌شده: خون ضخیم سیسترنی (≥۱ mm) و IVH. این مقیاس میزان خون را طبقه‌بندی می‌کند و جایگزین پایش بالینی نیست.",
+      "after": "خون ضخیم زیرعنکبوتیه همراه IVH با درجه ۴ فیشر اصلاح‌شده تطابق دارد. این مقیاس اصلاح‌شدهٔ۰–۴ است؛ مقیاس اصلی فیشر I–IV ساختار متفاوتی دارد."
+    },
+    {
+      "path": "questions.fa.1.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "درجه ۱ خون نازک بدون IVH است؛ هیچ‌یک از دو ویژگی با این سناریو تطابق ندارد.",
+        "B": "درجه ۲ شامل IVH است، اما خون سیسترنی نازک دارد، نه خون ضخیم توصیف‌شده.",
+        "C": "درجه ۳ خون ضخیم بدون IVH دارد؛ وجود خون بطنی این مورد را درجه ۴ می‌کند."
+      }
+    },
+    {
+      "path": "questions.fa.1.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B"
+    },
+    {
+      "path": "questions.fa.1.difficulty",
+      "currentBefore": null,
+      "after": 1
+    },
+    {
+      "path": "questions.fa.2.question",
+      "currentBefore": "درجه ۲ فیشر اصلاح‌شده (خون نازک + IVH) و درجه ۳ (خون ضخیم، بدون IVH) چه تفاوتی دارند؟",
+      "after": "سناریوی متنی: مورد X خون سیسترنی نازک همراه IVH و مورد Y خون سیسترنی ضخیم بدون IVH دارد. در مقیاس فیشر اصلاح‌شده چگونه طبقه‌بندی می‌شوند؟"
+    },
+    {
+      "path": "questions.fa.2.options.0.text",
+      "currentBefore": "درجه ۲ خطر بسیار کمتری از درجه ۳ دارد",
+      "after": "X: درجه ۱؛ Y: درجه ۳"
+    },
+    {
+      "path": "questions.fa.2.options.1.text",
+      "currentBefore": "مقیاس هر دو الگو را نشانگر خطر می‌داند؛ احتمال درصدی فردی ارائه نمی‌کند.",
+      "after": "X: درجه ۲؛ Y: درجه ۳"
+    },
+    {
+      "path": "questions.fa.2.options.2.text",
+      "currentBefore": "درجه ۲ تقریباً دو برابر درجه ۳ خطر دارد",
+      "after": "X: درجه ۳؛ Y: درجه ۲"
+    },
+    {
+      "path": "questions.fa.2.options.3.text",
+      "currentBefore": "درجه ۳ صرف‌نظر از IVH همیشه بیشترین خطر را در میان همه درجات دارد",
+      "after": "X: درجه ۲؛ Y: درجه ۴"
+    },
+    {
+      "path": "questions.fa.2.explanation",
+      "currentBefore": "درجهٔ ۲ خون نازک سیسترنی همراه IVH دارد؛ درجهٔ ۳ خون ضخیم سیسترنی بدون IVH. مقیاس این دو ویژگی را برای رده‌بندی خطر ترکیب می‌کند و میزان رخداد فردی بیمار را پیش‌بینی نمی‌کند.",
+      "after": "درجه ۲ خون نازک همراه IVH و درجه ۳ خون ضخیم بدون IVH است. دسته‌ها پیش‌بینی درصدی فردی نیستند؛ در Frontera 2006 درجات ۲ و ۳ نسبت شانس خام مشابهی برای وازواسپاسم علامت‌دار داشتند."
+    },
+    {
+      "path": "questions.fa.2.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "در X، IVH وجود دارد؛ پس درجه ۱ِ بدون IVH مناسب نیست. طبقه‌بندی Y به درجه ۳ درست است.",
+        "C": "ترکیب‌ها جابه‌جا شده‌اند: نازک+IVH درجه ۲ و ضخیم بدون IVH درجه ۳ است.",
+        "D": "Y فاقد IVH است؛ درجه ۴ علاوه بر خون ضخیم به خون داخل‌بطنی نیاز دارد."
+      }
+    },
+    {
+      "path": "questions.fa.2.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B"
+    },
+    {
+      "path": "questions.fa.2.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.3.question",
+      "currentBefore": "خانم ۶۲ ساله‌ای دچار SAB می‌شود. CT الگوی خونریزی کلاسیک پری‌مزنسفالیک نشان می‌دهد. CTA منفی است. ارزیابی صحیح چیست؟",
+      "after": "سناریوی متنی: پس از بررسی کامل تصاویر، خونریزی خودبه‌خودی زیرعنکبوتیه الگوی کلاسیک پری‌مزنسفالیک دارد؛ CTA باکیفیت منفی است. کدام عبارت دربارهٔ بررسی عروقی بیشتر با AHA/ASA 2023 مطابقت دارد؟"
+    },
+    {
+      "path": "questions.fa.3.options.0.text",
+      "currentBefore": "DSA اجباری است — CTA هرگز کافی نیست",
+      "after": "اعمال مسیر DSA خونریزی منتشر مشکوک به آنوریسم برای این الگو"
+    },
+    {
+      "path": "questions.fa.3.options.1.text",
+      "currentBefore": "تفسیر وابسته به زمینه است؛ انتخاب CTA تنها یا DSA برای این الگو هنوز قطعی نشده است.",
+      "after": "درنظرگرفتن CTA تنها در برابر DSA اضافی به‌عنوان موضوع حل‌نشده با لحاظ زمینه"
+    },
+    {
+      "path": "questions.fa.3.options.2.text",
+      "currentBefore": "مداخله جراحی اعصاب فوری لازم است",
+      "after": "ترجیح CTA تنها به‌عنوان پایان دارای پشتوانهٔ کافی برای بررسی عروقی"
+    },
+    {
+      "path": "questions.fa.3.options.3.text",
+      "currentBefore": "مانیتورینگ فشرده وازواسپاسم از روز ۴ لازم است",
+      "after": "به‌کارگیری TOF-MRA به‌عنوان مرحلهٔ دوم ترجیحی پیش از DSA"
+    },
+    {
+      "path": "questions.fa.3.explanation",
+      "currentBefore": "الگوی تیپیک پری‌مزنسفالیک می‌تواند با علت غیرآنوریسمی و سیر مطلوب‌تر سازگار باشد. با این حال، الگو به‌همراه CTA منفی در همهٔ موارد منشأ را قطعی نمی‌کند؛ AHA/ASA انتخاب CTA تنها در برابر DSA را حل‌نشده می‌داند.",
+      "after": "راهنما CTA تنها در برابر DSA در الگوی کلاسیک پری‌مزنسفالیک را خلأ شواهد می‌داند. در خونریزی منتشر و نگرانی بالای آنوریسم، با وجود CTA منفی یا نامشخص DSA اندیکاسیون دارد. الگوی تیپیک منشأ وریدی را ثابت نمی‌کند."
+    },
+    {
+      "path": "questions.fa.3.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "احتمال بالای آنوریسم در خونریزی منتشر مسیر متفاوتی را توجیه می‌کند. برای توزیع کلاسیک پری‌مزنسفالیک، AHA/ASA 2023 صریحاً پرسش CTA در برابر DSA را حل‌نشده می‌داند.",
+        "C": "CTA تنها راهبردی مورد بحث است، اما راهنما کفایت آن در برابر DSA اضافی برای این الگو را خلأ شواهد می‌داند.",
+        "D": "راهنما مرحلهٔ میانی ترجیحی TOF-MRA تعیین نمی‌کند. عدم قطعیت ذکرشده مربوط به CTA تنها در برابر DSA کاتتری اضافی است."
+      }
+    },
+    {
+      "path": "questions.fa.3.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1161/STR.0000000000000436"
+    },
+    {
+      "path": "questions.fa.3.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.4.question",
+      "currentBefore": "در کدام پنجره زمانی پس از SAB آنوریسمی خطر وازواسپاسم مغزی بیشترین است؟",
+      "after": "سناریوی متنی: روز ۸پس از درمان aSAB، بیمار دچار همی‌پارزی جدید بیش از یک ساعت می‌شود. CT بدون کنتراست و آزمایش‌ها علت را توضیح نمی‌دهند و CTA وازواسپاسم واضح پروگزیمال ندارد. کدام ارزیابی مناسب‌تر است؟"
+    },
+    {
+      "path": "questions.fa.4.options.0.text",
+      "currentBefore": "۰-۲۴ ساعت پس از SAB",
+      "after": "نبود تنگی پروگزیمال احتمال DCI را به‌اندازهٔ کافی کم می‌کند"
+    },
+    {
+      "path": "questions.fa.4.options.1.text",
+      "currentBefore": "روز ۱-۳ پس از SAB",
+      "after": "زمان‌بندی بیشتر با عارضهٔ بلافاصله پس از مداخله تطابق دارد تا ایسکمی تأخیری"
+    },
+    {
+      "path": "questions.fa.4.options.2.text",
+      "currentBefore": "روز ۴-۱۴ پس از SAB",
+      "after": "DCI همچنان نیازمند بررسی است؛ ایسکمی بالینی و وازواسپاسم عروق بزرگ هم‌معنا نیستند"
+    },
+    {
+      "path": "questions.fa.4.options.3.text",
+      "currentBefore": "روز ۱۵-۲۱ پس از SAB",
+      "after": "ترجیح هیدروسفالی تأخیری بر DCI برای توضیح این وضعیت"
+    },
+    {
+      "path": "questions.fa.4.explanation",
+      "currentBefore": "خطر DCI و وازواسپاسم طی دو هفتهٔ نخست مطرح است، اما به بازهٔ روزی ثابتی محدود نیست. DCI می‌تواند بدون وازواسپاسم قابل‌مشاهده در عروق بزرگ هم رخ دهد.",
+      "after": "بدترشدن کانونی جدید و پایدار در دورهٔ معمول DCI به بررسی فوری و کنارگذاشتن علل دیگر نیاز دارد. نبود وازواسپاسم واضح پروگزیمال در CTA، DCI را رد نمی‌کند. CTA/CTP و پایش بیشتر ارزیابی بالینی را تکمیل می‌کنند؛ سناریو به‌تنهایی تشخیص را ثابت نمی‌کند."
+    },
+    {
+      "path": "questions.fa.4.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "DCI فقط ناشی از اسپاسم قابل‌مشاهدهٔ عروق بزرگ پروگزیمال نیست؛ نبود این یافته بررسی را خاتمه نمی‌دهد.",
+        "B": "بدترشدن جدید در روز ۸ تأخیری است؛ آسیب بلافاصله پس از مداخله مناسب‌ترین تطابق زمانی نیست.",
+        "D": "هیدروسفالی همچنان افتراق مهمی است، اما سناریو یافتهٔ توضیح‌دهنده‌ای در CT ارائه نمی‌کند. بدون یافتهٔ متناظر بطنی/CSF، اولویت‌دادن آن بر DCI پشتوانه ندارد."
+      }
+    },
+    {
+      "path": "questions.fa.4.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1161/STR.0000000000000436"
+    },
+    {
+      "path": "questions.fa.4.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.5.question",
+      "currentBefore": "کدام آنوریسم بیشترین مسئولیت خونریزی را در SAB آنوریسمی دارد؟",
+      "after": "سناریوی متنی: CT بدون کنتراست خونریزی خودبه‌خودی زیرعنکبوتیه با تمرکز واضح در شکاف بین‌نیمکره‌ای قدامی نشان می‌دهد. هنگام بررسی کامل CTA به کدام ناحیهٔ عروقی باید توجه ویژه کرد؟"
+    },
+    {
+      "path": "questions.fa.5.options.0.text",
+      "currentBefore": "انشعاب شریان مغزی میانی (MCA)",
+      "after": "انشعاب MCA"
+    },
+    {
+      "path": "questions.fa.5.options.1.text",
+      "currentBefore": "شریان ارتباطی قدامی (ACoA)",
+      "after": "شریان ارتباطی قدامی/مجموعهٔ ACA مجاور"
+    },
+    {
+      "path": "questions.fa.5.options.2.text",
+      "currentBefore": "شریان ارتباطی خلفی (PCom)",
+      "after": "نوک بازیلار"
+    },
+    {
+      "path": "questions.fa.5.options.3.text",
+      "currentBefore": "شریان مخچه‌ای خلفی-تحتانی (PICA)",
+      "after": "منشأ PICA"
+    },
+    {
+      "path": "questions.fa.5.explanation",
+      "currentBefore": "توزیع خون مسیر جست‌وجوی آنوریسم را هدایت می‌کند: برای مثال، خون بین‌نیمکره‌ای توجه به شریان ارتباطی قدامی، خون یک‌طرفه در شکاف سیلویوس توجه به شریان مغزی میانی و خون در قاعدهٔ خلفی توجه به گردش خون خلفی را برمی‌انگیزد. این‌ها سرنخ هستند، نه اثبات.",
+      "after": "تمرکز بین‌نیمکره‌ای قدامی سرنخ جست‌وجوی ACA/ACoA است. مطالعهٔ اصلی توافق کلی محدود و نبود تعیین قطعی منشأ فقط با CT را نشان می‌دهد. بررسی کامل عروقی، به‌ویژه در آنوریسم‌های متعدد، همچنان لازم است."
+    },
+    {
+      "path": "questions.fa.5.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "تمرکز سیلوین توجه را بیشتر به MCA جلب می‌کند؛ ناحیهٔ بین‌نیمکره‌ای قدامی توصیف‌شده بیشتر جست‌وجوی ACA/ACoA را مطرح می‌کند.",
+        "C": "توزیع خون در قاعدهٔ خلفی می‌تواند گردش خلفی را مطرح کند؛ این همان تمرکز قدامی توصیف‌شده نیست.",
+        "D": "منشأ PICA در گردش خلفی است و سرنخ موضع‌یابی ترجیحی این الگوی بین‌نیمکره‌ای قدامی نیست."
+      }
+    },
+    {
+      "path": "questions.fa.5.source",
+      "currentBefore": null,
+      "after": "https://pubmed.ncbi.nlm.nih.gov/9921845/"
+    },
+    {
+      "path": "questions.fa.5.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "cards.0.back.de",
+      "currentBefore": "1. Blutdicke (dünn < 1 mm / dick ≥ 1 mm)  2. IVH (ja / nein)",
+      "after": "Dünnes oder dickes Subarachnoidalblut und IVH vorhanden oder nicht."
+    },
+    {
+      "path": "cards.0.back.en",
+      "currentBefore": "1. Blood thickness (thin < 1 mm / thick ≥ 1 mm)  2. IVH (yes / no)",
+      "after": "Thin or thick subarachnoid blood and presence or absence of IVH."
+    },
+    {
+      "path": "cards.0.back.fa",
+      "currentBefore": "۱. ضخامت خون (نازک < ۱mm / ضخیم ≥ ۱mm)  ۲. IVH (بله / خیر)",
+      "after": "خون زیرعنکبوتیهٔ نازک یا ضخیم و وجود یا نبود IVH."
+    },
+    {
+      "path": "cards.0.explanation.de",
+      "currentBefore": "Aus diesen zwei Parametern ergibt sich Grad 0–4. Höhere Grade beschreiben eine größere Blutlast; das individuelle Risiko hängt zusätzlich vom klinischen Verlauf ab.",
+      "after": "Diese Kombination ergibt Grade 0–4. Grad 2 und 3 unterscheiden sich morphologisch; die Zahlen sind keine lineare Blutvolumenmessung oder individuellen Prozentprognosen."
+    },
+    {
+      "path": "cards.0.explanation.en",
+      "currentBefore": "These two parameters determine grades 0–4. Higher grades describe greater blood burden; individual risk also depends on the clinical course.",
+      "after": "This combination determines grades 0–4. Grades 2 and 3 differ morphologically; the numbers are not a linear blood-volume measurement or individual percentage predictions."
+    },
+    {
+      "path": "cards.0.explanation.fa",
+      "currentBefore": "این دو پارامتر درجات ۰ تا ۴ را تعیین می‌کنند. درجات بالاتر نشان‌دهنده بار خونی بیشترند؛ خطر فردی به سیر بالینی نیز وابسته است.",
+      "after": "این ترکیب درجات ۰–۴ را تعیین می‌کند. درجات ۲ و ۳ از نظر مورفولوژی متفاوت‌اند؛ اعداد اندازه‌گیری خطی حجم خون یا پیش‌بینی درصدی فردی نیستند."
+    },
+    {
+      "path": "cards.0.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B"
+    },
+    {
+      "path": "cards.1.back.de",
+      "currentBefore": "Dickes Zisternenblut (≥1 mm) + IVH",
+      "after": "Dickes Subarachnoidalblut mit IVH."
+    },
+    {
+      "path": "cards.1.back.en",
+      "currentBefore": "Thick cisternal blood (≥1 mm) + IVH",
+      "after": "Thick subarachnoid blood with IVH."
+    },
+    {
+      "path": "cards.1.back.fa",
+      "currentBefore": "خون ضخیم سیسترنی (≥۱ mm) + IVH",
+      "after": "خون زیرعنکبوتیهٔ ضخیم همراه IVH."
+    },
+    {
+      "path": "cards.1.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B"
+    },
+    {
+      "path": "cards.2.front.de",
+      "currentBefore": "Wie unterscheiden sich Modified-Fisher-Grad 2 (dünnes Blut + IVH) und Grad 3 (dickes Blut, kein IVH)?",
+      "after": "Wie lauten die morphologischen Kriterien für Modified-Fisher-Grad 2 und 3?"
+    },
+    {
+      "path": "cards.2.front.en",
+      "currentBefore": "How do Modified Fisher Grade 2 (thin blood + IVH) and Grade 3 (thick blood, no IVH) differ?",
+      "after": "What are the morphological criteria for modified Fisher grades 2 and 3?"
+    },
+    {
+      "path": "cards.2.front.fa",
+      "currentBefore": "درجه ۲ فیشر اصلاح‌شده (خون نازک + IVH) و درجه ۳ (خون ضخیم، بدون IVH) چه تفاوتی دارند؟",
+      "after": "معیارهای مورفولوژیک درجات ۲ و ۳ فیشر اصلاح‌شده چیست؟"
+    },
+    {
+      "path": "cards.2.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/01.NEU.0000218821.34014.1B"
+    },
+    {
+      "path": "cards.3.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1161/STR.0000000000000436"
+    },
+    {
+      "path": "cards.4.back.de",
+      "currentBefore": "Typisches perimesenzephales Blutmuster; CTA-vs.-DSA-Strategie ist nicht abschließend geklärt.",
+      "after": "Blut konzentriert um das Mittelhirn; die Strategie CTA allein versus zusätzliche DSA ist nicht abschließend geklärt."
+    },
+    {
+      "path": "cards.4.back.en",
+      "currentBefore": "Typical perimesencephalic blood pattern; the CTA-versus-DSA strategy is not settled.",
+      "after": "Blood centred around the midbrain; CTA alone versus additional DSA remains unresolved."
+    },
+    {
+      "path": "cards.4.back.fa",
+      "currentBefore": "الگوی خونریزی پری‌مزنسفالیک تیپیک؛ راهبرد CTA در برابر DSA هنوز قطعی نیست.",
+      "after": "خون متمرکز پیرامون مغز میانی؛ راهبرد CTA تنها در برابر DSA اضافی هنوز قطعی نیست."
+    },
+    {
+      "path": "cards.4.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1161/STR.0000000000000436"
+    },
+    {
+      "path": "cards.5.front.de",
+      "currentBefore": "Die zwei gefährlichsten SAB-Komplikationen und ihr Zeitpunkt?",
+      "after": "Wie unterscheiden sich frühes Reblutungsrisiko und DCI zeitlich und begrifflich?"
+    },
+    {
+      "path": "cards.5.front.en",
+      "currentBefore": "The two most dangerous SAH complications and their timing?",
+      "after": "How do early rebleeding risk and DCI differ in timing and meaning?"
+    },
+    {
+      "path": "cards.5.front.fa",
+      "currentBefore": "دو عارضه خطرناک SAB و زمان آن‌ها؟",
+      "after": "خطر خونریزی مجدد زودرس و DCI از نظر زمان و مفهوم چه تفاوتی دارند؟"
+    },
+    {
+      "path": "cards.5.back.de",
+      "currentBefore": "Rezidivblutung (Tag 0–1) und Vasospasmus/DCI (Tag 4–14).",
+      "after": "Reblutung ist früh besonders kritisch; DCI meist Tag 4–14. DCI ist nicht mit angiographischem Vasospasmus gleichzusetzen."
+    },
+    {
+      "path": "cards.5.back.en",
+      "currentBefore": "Rebleeding (day 0–1) and vasospasm/DCI (day 4–14).",
+      "after": "Rebleeding is particularly critical early; DCI mostly occurs on days 4–14. DCI is not synonymous with angiographic vasospasm."
+    },
+    {
+      "path": "cards.5.back.fa",
+      "currentBefore": "خونریزی مجدد (روز ۰–۱) و وازواسپاسم/DCI (روز ۴–۱۴).",
+      "after": "خونریزی مجدد در مرحلهٔ زودرس اهمیت ویژه دارد؛ DCI بیشتر روزهای ۴–۱۴ رخ می‌دهد. DCI معادل وازواسپاسم آنژیوگرافیک نیست."
+    },
+    {
+      "path": "cards.5.explanation.de",
+      "currentBefore": "Frühe Rezidivblutung ist eine akute Gefahr. Bei aSAB soll das rupturierte Aneurysma durch ein erfahrenes Team zügig, möglichst innerhalb von 24 Stunden, gesichert werden. DCI und Vasospasmus treten typischerweise später auf; Nimodipin wird früh enteral gegeben.",
+      "after": "Zeitfenster sind Orientierung, keine Ausschlussgrenzen. Neue Verschlechterung dringlich nach anderen Ursachen abklären. Das rupturierte Aneurysma möglichst innerhalb von 24 Stunden nach Beginn sichern; frühes enterales Nimodipin vermindert DCI und verbessert funktionelle Ergebnisse."
+    },
+    {
+      "path": "cards.5.explanation.en",
+      "currentBefore": "Early rebleeding is an acute danger. In aSAH, an experienced team should secure the ruptured aneurysm promptly, preferably within 24 hours. DCI and vasospasm typically occur later; nimodipine is started early by the enteral route.",
+      "after": "Time windows guide attention, not exclusion. Urgently assess other causes of new deterioration. Secure the ruptured aneurysm preferably within 24 hours of onset; early enteral nimodipine reduces DCI and improves functional outcomes."
+    },
+    {
+      "path": "cards.5.explanation.fa",
+      "currentBefore": "خونریزی مجدد زودرس یک خطر حاد است. در aSAB، تیم باتجربه باید آنوریسم پاره‌شده را سریع و ترجیحاً ظرف ۲۴ ساعت ایمن‌سازی کند. DCI و وازواسپاسم معمولاً دیرتر رخ می‌دهند؛ نیمودیپین زودهنگام از راه انتروال شروع می‌شود.",
+      "after": "بازه‌های زمانی راهنما هستند، نه مرز رد بیماری. علل دیگر بدترشدن جدید فوری بررسی شوند. آنوریسم پاره‌شده ترجیحاً ظرف ۲۴ ساعت از شروع ایمن‌سازی شود؛ نیمودیپین انتروال زودهنگام DCI را کاهش می‌دهد و پیامد عملکردی را بهتر می‌کند."
+    },
+    {
+      "path": "cards.5.diagram.de",
+      "currentBefore": "Tag 0–1: Rezidivblutung → Tag 4–14: Vasospasmus/DCI",
+      "after": "Früh: Reblutung beachten; später: DCI überwachen → bei Verschlechterung Ursachen prüfen"
+    },
+    {
+      "path": "cards.5.diagram.en",
+      "currentBefore": "Day 0–1: Rebleeding → Day 4–14: Vasospasm/DCI",
+      "after": "Early: watch for rebleeding; later: monitor for DCI → investigate deterioration"
+    },
+    {
+      "path": "cards.5.diagram.fa",
+      "currentBefore": "روز ۰–۱: خونریزی مجدد → روز ۴–۱۴: وازواسپاسم/DCI",
+      "after": "زودرس: توجه به خونریزی مجدد؛ دیرتر: پایش DCI ← بررسی علت بدترشدن"
+    },
+    {
+      "path": "cards.5.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1161/STR.0000000000000436"
+    },
+    {
+      "path": "cards.6.front.de",
+      "currentBefore": "Was ist der „Vernichtungskopfschmerz\" und warum ist er ein Notfall?",
+      "after": "Was ist ein Vernichtungskopfschmerz und warum ist er ein Notfall?"
+    },
+    {
+      "path": "cards.6.front.fa",
+      "currentBefore": "«سردرد ضربه رعد» چیست و چرا اورژانس است؟",
+      "after": "«سردرد رعدآسا» چیست و چرا اورژانس است؟"
+    },
+    {
+      "path": "cards.6.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1161/STR.0000000000000436"
+    },
+    {
+      "path": "cards.7.front.de",
+      "currentBefore": "Was ist der „Sentinel Headache\" und welche Gefahr birgt er?",
+      "after": "Was ist ein Sentinel-Kopfschmerz und welche Bedeutung hat er?"
+    },
+    {
+      "path": "cards.7.diagram.de",
+      "currentBefore": "Possible leak/change → warning headache → urgent assessment; rebleed is not inevitable",
+      "after": "Mögliche vorausgehende Blutung/Veränderung → Warnkopfschmerz → dringliche Abklärung; Reblutung nicht zwangsläufig"
+    },
+    {
+      "path": "cards.7.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1161/STR.0000000000000436"
+    },
+    {
+      "path": "lesson.klinik.definitionItems.0.title.fa",
+      "currentBefore": "سردرد ضربه رعد",
+      "after": "سردرد رعدآسا"
+    },
+    {
+      "path": "lesson.fisher.lead.de",
+      "currentBefore": "Die Modifizierte Fisher-Skala (Claassen et al., 2001) klassifiziert die Blutlast im initialen CT anhand von zwei Merkmalen: Blutdicke in den Zisternen und Vorhandensein einer intraventrikulären Blutung (IVH). Sie ersetzt keine patientenspezifische Risikobeurteilung.",
+      "after": "Die Modifizierte Fisher-Skala ordnet CT-Blutlast anhand von dünnem/dickem Subarachnoidalblut und IVH ein. Claassen 2001 lieferte die Grundlage; Frontera 2006 prüfte die 0–4-Skala für symptomatischen Vasospasmus. Die PDF-Tabelle zeigt dagegen die ursprüngliche Fisher-Skala I–IV."
+    },
+    {
+      "path": "lesson.fisher.lead.en",
+      "currentBefore": "The Modified Fisher Scale (Claassen et al., 2001) classifies blood burden on the initial CT using two features: cisternal blood thickness and the presence of intraventricular haemorrhage (IVH). It does not replace patient-specific risk assessment.",
+      "after": "The modified Fisher scale classifies CT blood burden using thin/thick subarachnoid blood and IVH. Claassen 2001 provided the basis; Frontera 2006 evaluated the 0–4 scale for symptomatic vasospasm. The PDF table instead shows the original Fisher I–IV scale."
+    },
+    {
+      "path": "lesson.fisher.lead.fa",
+      "currentBefore": "مقیاس فیشر اصلاح‌شده (Claassen و همکاران، ۲۰۰۱) بار خون را در CT اولیه بر اساس دو ویژگی طبقه‌بندی می‌کند: ضخامت خون سیسترنی و وجود خونریزی داخل‌بطنی (IVH). این مقیاس جایگزین ارزیابی خطر فردی بیمار نیست.",
+      "after": "مقیاس فیشر اصلاح‌شده بار خون CT را بر پایهٔ خون زیرعنکبوتیهٔ نازک/ضخیم و IVH طبقه‌بندی می‌کند. Claassen 2001 مبنا را فراهم کرد؛ Frontera 2006 مقیاس ۰–۴ را برای وازواسپاسم علامت‌دار بررسی کرد. جدول PDF در مقابل، مقیاس اصلی فیشر I–IV را نشان می‌دهد."
+    },
+    {
+      "path": "lesson.fisher.tableHeaders.3.de",
+      "currentBefore": "Risikoeinordnung",
+      "after": "Einordnung"
+    },
+    {
+      "path": "lesson.fisher.tableHeaders.3.en",
+      "currentBefore": "Risk category",
+      "after": "Interpretation"
+    },
+    {
+      "path": "lesson.fisher.tableHeaders.3.fa",
+      "currentBefore": "رده خطر",
+      "after": "تفسیر"
+    },
+    {
+      "path": "lesson.fisher.tableRows.0.1.de",
+      "currentBefore": "Kein SAB",
+      "after": "Kein sichtbares SAB-Blut"
+    },
+    {
+      "path": "lesson.fisher.tableRows.0.1.en",
+      "currentBefore": "No SAH",
+      "after": "No visible SAH blood"
+    },
+    {
+      "path": "lesson.fisher.tableRows.0.1.fa",
+      "currentBefore": "بدون SAB",
+      "after": "بدون خون زیرعنکبوتیهٔ قابل مشاهده"
+    },
+    {
+      "path": "lesson.fisher.tableRows.1.1.de",
+      "currentBefore": "Dünn (<1 mm)",
+      "after": "Dünn"
+    },
+    {
+      "path": "lesson.fisher.tableRows.1.1.en",
+      "currentBefore": "Thin (<1 mm)",
+      "after": "Thin"
+    },
+    {
+      "path": "lesson.fisher.tableRows.1.1.fa",
+      "currentBefore": "نازک (<۱ mm)",
+      "after": "نازک"
+    },
+    {
+      "path": "lesson.fisher.tableRows.2.1.de",
+      "currentBefore": "Dünn (<1 mm)",
+      "after": "Dünn"
+    },
+    {
+      "path": "lesson.fisher.tableRows.2.1.en",
+      "currentBefore": "Thin (<1 mm)",
+      "after": "Thin"
+    },
+    {
+      "path": "lesson.fisher.tableRows.2.1.fa",
+      "currentBefore": "نازک (<۱ mm)",
+      "after": "نازک"
+    },
+    {
+      "path": "lesson.fisher.tableRows.2.4.de",
+      "currentBefore": "Dünne Blutschicht + Blut in ≥1 Seitenventrikel",
+      "after": "Dünnes Subarachnoidalblut mit IVH"
+    },
+    {
+      "path": "lesson.fisher.tableRows.2.4.en",
+      "currentBefore": "Thin blood + blood in ≥1 lateral ventricle",
+      "after": "Thin subarachnoid blood with IVH"
+    },
+    {
+      "path": "lesson.fisher.tableRows.2.4.fa",
+      "currentBefore": "لایه نازک خون + خون در ≥۱ بطن جانبی",
+      "after": "خون زیرعنکبوتیهٔ نازک همراه IVH"
+    },
+    {
+      "path": "lesson.fisher.tableRows.3.1.de",
+      "currentBefore": "Dick (≥1 mm)",
+      "after": "Dick"
+    },
+    {
+      "path": "lesson.fisher.tableRows.3.1.en",
+      "currentBefore": "Thick (≥1 mm)",
+      "after": "Thick"
+    },
+    {
+      "path": "lesson.fisher.tableRows.3.1.fa",
+      "currentBefore": "ضخیم (≥۱ mm)",
+      "after": "ضخیم"
+    },
+    {
+      "path": "lesson.fisher.tableRows.4.1.de",
+      "currentBefore": "Dick (≥1 mm)",
+      "after": "Dick"
+    },
+    {
+      "path": "lesson.fisher.tableRows.4.1.en",
+      "currentBefore": "Thick (≥1 mm)",
+      "after": "Thick"
+    },
+    {
+      "path": "lesson.fisher.tableRows.4.1.fa",
+      "currentBefore": "ضخیم (≥۱ mm)",
+      "after": "ضخیم"
+    },
+    {
+      "path": "lesson.fisher.tableRows.4.4.de",
+      "currentBefore": "Dicke Blutansammlung + Blut in ≥1 Seitenventrikel",
+      "after": "Dickes Subarachnoidalblut mit IVH"
+    },
+    {
+      "path": "lesson.fisher.tableRows.4.4.en",
+      "currentBefore": "Thick blood + blood in ≥1 lateral ventricle",
+      "after": "Thick subarachnoid blood with IVH"
+    },
+    {
+      "path": "lesson.fisher.tableRows.4.4.fa",
+      "currentBefore": "تجمع خون ضخیم + خون در ≥۱ بطن جانبی",
+      "after": "خون زیرعنکبوتیهٔ ضخیم همراه IVH"
+    },
+    {
+      "path": "lesson.fisher.comparisonItems.0.text.de",
+      "currentBefore": "Grad 3 enthält dickes Zisternenblut und wird in der Originalskala als höchste Risikokategorie eingestuft. Die Skala erfasst IVH nicht getrennt.",
+      "after": "Die PDF zeigt die ursprünglichen Grade I–IV. Ihre Zahlen sind nicht mit Modified-Fisher 0–4 austauschbar; die ursprüngliche Skala bildet Blutdicke und IVH nicht als dieselbe getrennte Kombination ab."
+    },
+    {
+      "path": "lesson.fisher.comparisonItems.0.text.en",
+      "currentBefore": "Grade 3 contains thick cisternal blood and is the highest risk category in the original scale. The scale does not score IVH separately.",
+      "after": "The PDF shows the original grades I–IV. Their numbers are not interchangeable with modified Fisher 0–4; the original scale does not encode blood thickness and IVH using the same separate combination."
+    },
+    {
+      "path": "lesson.fisher.comparisonItems.0.text.fa",
+      "currentBefore": "درجهٔ ۳ شامل خون ضخیم سیسترنی است و در مقیاس اصلی بالاترین ردهٔ خطر محسوب می‌شود. این مقیاس IVH را جداگانه امتیازدهی نمی‌کند.",
+      "after": "PDF درجات اصلی I–IV را نشان می‌دهد. اعداد آن با فیشر اصلاح‌شدهٔ ۰–۴ قابل جایگزینی نیستند؛ مقیاس اصلی ضخامت خون و IVH را با همین ترکیب جداگانه ثبت نمی‌کند."
+    },
+    {
+      "path": "lesson.fisher.comparisonItems.1.title.de",
+      "currentBefore": "Modifizierte Fisher-Skala (2001)",
+      "after": "Modifiziert: Grundlage 2001, Prüfung 2006"
+    },
+    {
+      "path": "lesson.fisher.comparisonItems.1.title.en",
+      "currentBefore": "Modified Fisher Scale (2001)",
+      "after": "Modified: basis 2001, evaluation 2006"
+    },
+    {
+      "path": "lesson.fisher.comparisonItems.1.title.fa",
+      "currentBefore": "مقیاس فیشر اصلاح‌شده (۲۰۰۱)",
+      "after": "اصلاح‌شده: مبنا ۲۰۰۱، بررسی ۲۰۰۶"
+    },
+    {
+      "path": "lesson.fisher.comparisonItems.1.text.de",
+      "currentBefore": "Grad 0–4. Zeichnet Blutdicke UND IVH separat auf – feinere Risikoabstufung. IVH wird als eigenständiger Risikofaktor für Vasospasmus erkannt und bewertet.",
+      "after": "Die 0–4-Skala kombiniert Blutdicke und IVH. Frontera 2006 untersuchte symptomatischen Vasospasmus in ausgewählten Studienkohorten; Grad 2 und 3 hatten ähnliche rohe Odds Ratios, keine festen individuellen Prozentwerte."
+    },
+    {
+      "path": "lesson.fisher.comparisonItems.1.text.en",
+      "currentBefore": "Grades 0–4. Records blood thickness AND IVH separately — finer risk stratification. IVH is recognised and scored as an independent risk factor for vasospasm.",
+      "after": "The 0–4 scale combines blood thickness and IVH. Frontera 2006 studied symptomatic vasospasm in selected trial cohorts; grades 2 and 3 had similar crude odds ratios, not fixed individual percentage risks."
+    },
+    {
+      "path": "lesson.fisher.comparisonItems.1.text.fa",
+      "currentBefore": "درجات ۰-۴. ضخامت خون و IVH را جداگانه ثبت می‌کند — طبقه‌بندی ریسک دقیق‌تر. IVH به عنوان عامل خطر مستقل برای وازواسپاسم شناخته شده است.",
+      "after": "مقیاس ۰–۴ ضخامت خون و IVH را ترکیب می‌کند. Frontera 2006 وازواسپاسم علامت‌دار را در جمعیت‌های منتخب کارآزمایی بررسی کرد؛ درجات ۲ و ۳ نسبت شانس خام مشابه داشتند، نه درصد خطر ثابت فردی."
+    },
+    {
+      "path": "lesson.fisher.cave.de",
+      "currentBefore": "Die Skala erfasst CT-Blutdicke und IVH als gemeinsame Risikomerkmale. Ihre Kategorien sind keine patientenspezifischen Wahrscheinlichkeiten und müssen zusammen mit Klinik und Verlauf interpretiert werden.",
+      "after": "Frontera 2006 ordnet auch IVH ohne sichtbares Subarachnoidalblut Grad 2 zu. Die Kategorien sind keine individuellen Wahrscheinlichkeiten. Die qualitative modifizierte Einteilung und die Kriterien der Original-Fisher-Skala nicht vermischen; Klinik und Verlauf bleiben maßgeblich."
+    },
+    {
+      "path": "lesson.fisher.cave.en",
+      "currentBefore": "The scale combines CT blood thickness and IVH as risk markers. Its categories are not patient-specific probabilities and must be interpreted with the clinical picture and course.",
+      "after": "Frontera 2006 also assigns IVH without visible subarachnoid blood to grade 2. Categories are not individual probabilities. Do not mix the qualitative modified classification with the original Fisher criteria; clinical findings and course remain essential."
+    },
+    {
+      "path": "lesson.fisher.cave.fa",
+      "currentBefore": "این مقیاس ضخامت خون در CT و IVH را به‌عنوان نشانگرهای خطر ترکیب می‌کند. رده‌های آن احتمال فردی بیمار نیستند و باید همراه وضعیت و سیر بالینی تفسیر شوند.",
+      "after": "Frontera 2006، IVH بدون خون زیرعنکبوتیهٔ قابل مشاهده را نیز درجهٔ ۲ طبقه‌بندی می‌کند. رده‌ها احتمال فردی نیستند. طبقه‌بندی کیفی اصلاح‌شده با معیارهای اصلی فیشر مخلوط نشود؛ وضعیت و سیر بالینی همچنان تعیین‌کننده‌اند."
+    },
+    {
+      "path": "lesson.fisher.key.de",
+      "currentBefore": "Zwei Parameter: Blutdicke (<1 mm vs. ≥1 mm) und IVH (vorhanden oder nicht). Grad 4 kombiniert dickes Zisternenblut und IVH; die Skala dient der Risikoeinordnung, nicht als individuelle Vorhersage.",
+      "after": "Dünnes oder dickes Blut plus IVH ja/nein ergeben Modified-Fisher 0–4. Grad 4 kombiniert dickes Blut und IVH. Dies ist eine Risikoeinordnung, keine individuelle Prognose oder harte Millimeter-Grenzfallentscheidung."
+    },
+    {
+      "path": "lesson.fisher.key.en",
+      "currentBefore": "Two parameters: blood thickness (<1 mm vs ≥1 mm) and IVH (present or absent). Grade 4 combines thick cisternal blood with IVH; the scale supports risk stratification, not individual prediction.",
+      "after": "Thin or thick blood plus presence/absence of IVH determines modified Fisher 0–4. Grade 4 combines thick blood and IVH. This supports risk stratification, not an individual prognosis or a borderline millimetre decision."
+    },
+    {
+      "path": "lesson.fisher.key.fa",
+      "currentBefore": "دو پارامتر: ضخامت خون (<۱ در برابر ≥۱ میلی‌متر) و وجود یا عدم IVH. درجهٔ ۴ خون ضخیم سیسترنی را با IVH ترکیب می‌کند؛ مقیاس برای رده‌بندی خطر است، نه پیش‌بینی فردی.",
+      "after": "خون نازک یا ضخیم همراه وجود/نبود IVH درجات ۰–۴ فیشر اصلاح‌شده را تعیین می‌کند. درجهٔ ۴ ترکیب خون ضخیم و IVH است. این رده‌بندی خطر است، نه پیش‌بینی فردی یا تصمیم‌گیری در مرز میلی‌متری."
+    },
+    {
+      "path": "lesson.gefaesse.imagingItems.0.text.de",
+      "currentBefore": "CTA dient der raschen Suche nach einem vaskulären Blutungsherd. Kleine oder schwer darstellbare Läsionen können übersehen werden; die Blutverteilung beeinflusst die weitere Gefäßdiagnostik.",
+      "after": "CTA sucht rasch nach der vaskulären Blutungsquelle; kleine Läsionen können übersehen werden. Vorderes interhemisphärisches Blut lenkt die Suche besonders auf ACA/ACoA, beweist den Ursprung aber nicht. Die vollständige Gefäßauswertung bleibt nötig."
+    },
+    {
+      "path": "lesson.gefaesse.imagingItems.0.text.en",
+      "currentBefore": "CTA provides rapid evaluation for a vascular bleeding source. Small or difficult-to-visualise lesions may be missed; the haemorrhage distribution informs further vascular imaging.",
+      "after": "CTA rapidly evaluates the vascular bleeding source; small lesions may be missed. Anterior interhemispheric blood particularly directs attention to ACA/ACoA but does not prove the source. Complete vascular review remains necessary."
+    },
+    {
+      "path": "lesson.gefaesse.imagingItems.0.text.fa",
+      "currentBefore": "CTA برای جست‌وجوی سریع منشأ عروقی خونریزی به‌کار می‌رود. ضایعات کوچک یا دشوار برای مشاهده ممکن است دیده نشوند؛ توزیع خونریزی در انتخاب بررسی عروقی بعدی مؤثر است.",
+      "after": "CTA منشأ عروقی خونریزی را سریع بررسی می‌کند؛ ضایعات کوچک ممکن است دیده نشوند. خون بین‌نیمکره‌ای قدامی توجه را به‌ویژه به ACA/ACoA جلب می‌کند، اما منشأ را ثابت نمی‌کند. بررسی کامل عروق همچنان لازم است."
+    },
+    {
+      "path": "lesson.komplikationen.compItems.0.text.de",
+      "currentBefore": "Das Reblutungsrisiko ist früh besonders relevant. Eine neue Blutung oder Zunahme des Blutvolumens in der Kontrollbildgebung muss dringend kommuniziert werden. Bei rupturiertem Aneurysma wird die zügige Abklärung und Behandlung durch ein erfahrenes Team empfohlen, vorzugsweise innerhalb von 24 Stunden.",
+      "after": "Das Reblutungsrisiko ist früh besonders relevant. Eine neue Blutung oder Zunahme des Blutvolumens in der Kontrollbildgebung muss dringend kommuniziert werden. Bei rupturiertem Aneurysma wird die zügige Abklärung und Behandlung durch ein erfahrenes Team empfohlen, vorzugsweise innerhalb von 24 Stunden nach Blutungsbeginn."
+    },
+    {
+      "path": "lesson.komplikationen.compItems.0.text.en",
+      "currentBefore": "Rebleeding is an important early risk. New haemorrhage or increased blood volume on follow-up imaging requires urgent communication. For a ruptured aneurysm, prompt evaluation and treatment by an experienced team is recommended, preferably within 24 hours.",
+      "after": "Rebleeding is an important early risk. New haemorrhage or increased blood volume on follow-up imaging requires urgent communication. For a ruptured aneurysm, prompt evaluation and treatment by an experienced team is recommended, preferably within 24 hours of onset."
+    },
+    {
+      "path": "lesson.komplikationen.compItems.0.text.fa",
+      "currentBefore": "خونریزی مجدد در ساعات اولیه اهمیت ویژه دارد. خونریزی جدید یا افزایش حجم خون در تصویربرداری پیگیری باید فوری گزارش شود. برای آنوریسم پاره‌شده، بررسی و درمان سریع توسط تیم باتجربه، ترجیحاً در ۲۴ ساعت، توصیه می‌شود.",
+      "after": "خونریزی مجدد در ساعات اولیه اهمیت ویژه دارد. خونریزی جدید یا افزایش حجم خون در تصویربرداری پیگیری باید فوری گزارش شود. برای آنوریسم پاره‌شده، بررسی و درمان سریع توسط تیم باتجربه، ترجیحاً ظرف ۲۴ ساعت از شروع خونریزی، توصیه می‌شود."
+    },
+    {
+      "path": "lesson.komplikationen.compItems.1.title.de",
+      "currentBefore": "Zerebraler Vasospasmus / DCI (spät)",
+      "after": "Vasospasmus und DCI unterscheiden"
+    },
+    {
+      "path": "lesson.komplikationen.compItems.1.title.en",
+      "currentBefore": "Cerebral vasospasm / DCI (late)",
+      "after": "Distinguish vasospasm from DCI"
+    },
+    {
+      "path": "lesson.komplikationen.compItems.1.title.fa",
+      "currentBefore": "وازواسپاسم مغزی / DCI (دیررس)",
+      "after": "وازواسپاسم و DCI را تفکیک کنید"
+    },
+    {
+      "path": "lesson.komplikationen.compItems.1.text.de",
+      "currentBefore": "Vasospasmus tritt häufig im Verlauf der ersten zwei Wochen auf, ist aber nicht mit verzögerter zerebraler Ischämie (DCI) gleichzusetzen. Frühe enterale Nimodipin-Gabe verbessert nach der AHA/ASA-Leitlinie die funktionellen Ergebnisse. Prophylaktische Hypervolämie oder hämodynamische Augmentation wird nicht empfohlen.",
+      "after": "DCI tritt meist an Tag 4–14 auf. Neue fokale Defizite oder ein GCS-Abfall um ≥2 Punkte über mindestens 1 Stunde nach Ausschluss anderer Ursachen sind verdächtig; die Störung darf nicht unmittelbar nach Aneurysmaausschaltung bestehen. Kein ausgeprägter proximaler CTA-Spasmus schließt DCI nicht aus. Frühes enterales Nimodipin dient der DCI-Prävention und besseren funktionellen Ergebnissen."
+    },
+    {
+      "path": "lesson.komplikationen.compItems.1.text.en",
+      "currentBefore": "Vasospasm often occurs during the first two weeks, but it is not synonymous with delayed cerebral ischaemia (DCI). The AHA/ASA guideline recommends early enteral nimodipine to improve functional outcomes. Prophylactic hypervolaemia or haemodynamic augmentation is not recommended.",
+      "after": "DCI occurs mostly on days 4–14. New focal deficits or a ≥2-point GCS fall lasting at least 1 hour after excluding other causes are concerning; the deterioration must not be present immediately after aneurysm occlusion. Absence of marked proximal CTA spasm does not exclude DCI. Early enteral nimodipine reduces DCI risk and improves functional outcomes."
+    },
+    {
+      "path": "lesson.komplikationen.compItems.1.text.fa",
+      "currentBefore": "وازواسپاسم اغلب طی دو هفتهٔ نخست رخ می‌دهد، اما با ایسکمی مغزی تأخیری (DCI) یکسان نیست. راهنمای AHA/ASA نیمودیپین خوراکی زودهنگام را برای بهبود پیامد عملکردی توصیه می‌کند. افزایش پیشگیرانه حجم یا تقویت همودینامیک توصیه نمی‌شود.",
+      "after": "DCI بیشتر در روزهای ۴–۱۴ رخ می‌دهد. نقص کانونی جدید یا افت ≥۲ امتیاز GCS به‌مدت حداقل ۱ ساعت پس از کنارگذاشتن علل دیگر مطرح‌کننده است؛ بدترشدن نباید بلافاصله پس از انسداد آنوریسم وجود داشته باشد. نبود اسپاسم واضح پروگزیمال در CTA، DCI را رد نمی‌کند. نیمودیپین انتروال زودهنگام برای پیشگیری از DCI و بهبود پیامد عملکردی است."
+    },
+    {
+      "path": "lesson.komplikationen.cave.de",
+      "currentBefore": "Elektrolytstörungen können den klinischen Verlauf komplizieren. Ihre Beurteilung und Behandlung richtet sich nach dem Gesamtzustand und lokalen neurointensivmedizinischen Protokollen.",
+      "after": "Elektrolytstörungen können den Verlauf komplizieren; Beurteilung und Behandlung richten sich nach Gesamtzustand und neurointensivmedizinischem Protokoll. Prophylaktische Hypervolämie oder hämodynamische Augmentation wird nicht empfohlen."
+    },
+    {
+      "path": "lesson.komplikationen.cave.en",
+      "currentBefore": "Electrolyte disturbances may complicate the clinical course. Their assessment and treatment depend on the overall condition and local neurocritical-care protocols.",
+      "after": "Electrolyte disorders may complicate the course; assess and treat according to the overall condition and neurocritical-care protocol. Prophylactic hypervolaemia or haemodynamic augmentation is not recommended."
+    },
+    {
+      "path": "lesson.komplikationen.cave.fa",
+      "currentBefore": "اختلالات الکترولیتی می‌توانند سیر بالینی را پیچیده کنند. ارزیابی و درمان آن‌ها به وضعیت کلی بیمار و پروتکل‌های مراقبت ویژه عصبی محلی بستگی دارد.",
+      "after": "اختلالات الکترولیتی می‌توانند سیر را پیچیده کنند؛ ارزیابی و درمان بر پایهٔ وضعیت کلی و پروتکل مراقبت ویژهٔ عصبی انجام می‌شود. افزایش پیشگیرانهٔ حجم یا تقویت همودینامیک توصیه نمی‌شود."
+    },
+    {
+      "path": "lesson.komplikationen.key.de",
+      "currentBefore": "Die zwei größten Komplikationen: Rezidivblutung (früh, Tag 0–1) und Vasospasmus/DCI (spät, Tag 4–14). Zeitliche Abgrenzung ist entscheidend für Therapieplanung.",
+      "after": "Reblutung ist früh besonders kritisch; DCI tritt meist später auf und ist nicht gleich Vasospasmus. Bei jeder neuen Verschlechterung auch Hydrozephalus, Reblutung, Anfälle und metabolische Ursachen prüfen; starre Tagesgrenzen ersetzen keine Abklärung."
+    },
+    {
+      "path": "lesson.komplikationen.key.en",
+      "currentBefore": "The two biggest complications: rebleeding (early, day 0–1) and vasospasm/DCI (late, day 4–14). Temporal distinction is crucial for treatment planning.",
+      "after": "Rebleeding is particularly critical early; DCI usually occurs later and is not synonymous with vasospasm. With any new deterioration, also assess hydrocephalus, rebleeding, seizures and metabolic causes; fixed day cutoffs do not replace evaluation."
+    },
+    {
+      "path": "lesson.komplikationen.key.fa",
+      "currentBefore": "دو عارضه اصلی: خونریزی مجدد (زود، روز ۰-۱) و وازواسپاسم/DCI (دیررس، روز ۴-۱۴). تمایز زمانی برای برنامه‌ریزی درمان حیاتی است.",
+      "after": "خونریزی مجدد در مرحلهٔ زودرس اهمیت ویژه دارد؛ DCI معمولاً دیرتر رخ می‌دهد و معادل وازواسپاسم نیست. در هر بدترشدن جدید، هیدروسفالی، خونریزی مجدد، تشنج و علل متابولیک نیز بررسی شوند؛ مرز روزهای ثابت جای بررسی را نمی‌گیرد."
+    },
+    {
+      "path": "lesson.takehome.items.0.title.fa",
+      "currentBefore": "سردرد ضربه رعد = CT فوری",
+      "after": "سردرد رعدآسا = CT فوری"
+    },
+    {
+      "path": "lesson.takehome.items.2.text.de",
+      "currentBefore": "Blutdicke (<1 mm vs. ≥1 mm) + IVH (ja/nein) → Grad 0–4. Grad 4 = dick + IVH und höchste Kategorie der Skala; die Skala ersetzt keine klinische Überwachung.",
+      "after": "Modified Fisher: dünnes/dickes Blut + IVH ja/nein → Grad 0–4. Die Originalskala I–IV ist anders aufgebaut. Grad 4 ist dick+IVH; kein Ersatz für klinische Überwachung."
+    },
+    {
+      "path": "lesson.takehome.items.2.text.en",
+      "currentBefore": "Blood thickness (<1 mm vs. ≥1 mm) + IVH (yes/no) → grades 0–4. Grade 4 = thick blood + IVH and the scale’s highest category; the scale does not replace clinical monitoring.",
+      "after": "Modified Fisher: thin/thick blood + IVH present/absent → grades 0–4. The original I–IV scale is structured differently. Grade 4 is thick+IVH; clinical monitoring remains necessary."
+    },
+    {
+      "path": "lesson.takehome.items.2.text.fa",
+      "currentBefore": "ضخامت خون (<۱ mm در مقابل ≥۱ mm) + IVH (بله/خیر) → درجه ۰ تا ۴. درجه ۴ = خون ضخیم + IVH و بالاترین دستهٔ این مقیاس است؛ مقیاس جایگزین پایش بالینی نمی‌شود.",
+      "after": "فیشر اصلاح‌شده: خون نازک/ضخیم + وجود/نبود IVH ← درجات ۰–۴. مقیاس اصلی I–IV ساختار متفاوتی دارد. درجهٔ ۴ خون ضخیم+IVH است؛ پایش بالینی همچنان لازم است."
+    },
+    {
+      "path": "lesson.takehome.items.4.text.de",
+      "currentBefore": "Rezidivblutung Tag 0–1, Vasospasmus/DCI Tag 4–14, Hydrozephalus jederzeit, Hyponatriämie durch SIADH/CSW. Alle erfordern aktives Monitoring.",
+      "after": "Reblutung früh besonders relevant; DCI meist Tag 4–14, aber nicht gleich Vasospasmus. Neue Verschlechterung erfordert die Suche auch nach Hydrozephalus, Anfällen und Elektrolytstörungen."
+    },
+    {
+      "path": "lesson.takehome.items.4.text.en",
+      "currentBefore": "Rebleed day 0–1, vasospasm/DCI day 4–14, hydrocephalus any time, hyponatraemia from SIADH/CSW. All require active monitoring.",
+      "after": "Rebleeding is especially relevant early; DCI occurs mostly on days 4–14 but is not synonymous with vasospasm. New deterioration also requires evaluation for hydrocephalus, seizures and electrolyte disorders."
+    },
+    {
+      "path": "lesson.takehome.items.4.text.fa",
+      "currentBefore": "خونریزی مجدد در روزهای ۰ تا ۱، وازواسپاسم/ایسکمی تأخیری مغز در روزهای ۴ تا ۱۴، هیدروسفالی در هر زمان و هیپوناترمی ناشی از SIADH یا دفع نمک مغزی (CSW). همه به پایش فعال نیاز دارند.",
+      "after": "خونریزی مجدد در مرحلهٔ زودرس اهمیت ویژه دارد؛ DCI بیشتر در روزهای ۴–۱۴ رخ می‌دهد، اما معادل وازواسپاسم نیست. در بدترشدن جدید، هیدروسفالی، تشنج و اختلالات الکترولیتی نیز باید بررسی شوند."
+    },
+    {
+      "path": "lesson.goals",
+      "currentBefore": null,
+      "after": [
+        {
+          "de": "Nach negativem CT den weiteren Weg aus Zeitfenster, Neurostatus und CT-Qualität ableiten.",
+          "en": "Choose the negative-CT pathway using timing, neurological status and CT quality.",
+          "fa": "مسیر پس از CT منفی را بر پایهٔ زمان، وضعیت عصبی و کیفیت CT انتخاب کنید."
+        },
+        {
+          "de": "Modified-Fisher-Grade aus Blutdicke und IVH zuordnen und von der Originalskala unterscheiden.",
+          "en": "Assign modified Fisher grades from blood thickness and IVH and distinguish the original scale.",
+          "fa": "درجات فیشر اصلاح‌شده را از ضخامت خون و IVH تعیین و از مقیاس اصلی تفکیک کنید."
+        },
+        {
+          "de": "Blutverteilung als Suchhinweis nutzen und die kontextabhängige CTA-/DSA-Abklärung begründen.",
+          "en": "Use blood distribution as a search clue and justify context-dependent CTA/DSA work-up.",
+          "fa": "توزیع خون را سرنخ جست‌وجو بدانید و بررسی CTA/DSA متناسب با زمینه را توضیح دهید."
+        },
+        {
+          "de": "Verzögerte klinische Verschlechterung auf DCI prüfen, ohne sie mit Vasospasmus gleichzusetzen.",
+          "en": "Evaluate delayed clinical deterioration for DCI without equating it with vasospasm.",
+          "fa": "بدترشدن بالینی تأخیری را از نظر DCI بررسی کنید، بدون همسان‌دانستن آن با وازواسپاسم."
+        }
+      ]
+    }
+  ],
+  "routeChanges": {
+    "file": "app/gehirn/vaskulaer/subarachnoidalblutung/SubarachnoidLesson.jsx",
+    "before": "tmp/assessment-quality/sab-route-before.jsx",
+    "afterFile": "actual source",
+    "deltas": [
+      "stable question sab-q1 selected byID instead of position",
+      "selected wrong-option explanation instead of generic retry",
+      "visible4learninggoals in existing firstchapter",
+      "quiz count derived from actual6question producer rather thanstale15",
+      "Frontera2006 original +van derJagt1999 references; Claassen2001 basis versus2006evaluation distinction"
+    ],
+    "clinicalMedia": "Case URLs/image/alt/captions unchanged after lineending normalisation; no patientframe reinterpretation"
+  },
+  "specificityNotes": [
+    "Q4 choices now competing vascular-workup policies, not venous-proof/FLAIR stand-ins",
+    "Q5 D is competing hydrocephalus interpretation, not explicit confirmed-without-assessment giveaway",
+    "6stableoriginalkeys A,D,B,B,C,B; no quota items",
+    "No arbitrary1mm borderline transferred into modified score; qualitative thin/thick from Frontera2006 and separated originalPDF table",
+    "Frontera Table1 isolatedIVH mappedto2 explicitly noted",
+    "Existing prophylactic hypervolaemia/augmentation warning preserved in existing cave rather than lost during DCI clarification"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-25",
+  "author": "root",
+  "finding": "Kang2026 original Figure6 is CC-BY-NC4.0, independently read by author/reviewer; separate from explicit user Radiopaedia/PDF reuse authorization.",
+  "action": "The author removed the rendered figure. Root also moved the existing unreferenced original PNG out of public into ignored local audit storage, to prevent continued static distribution in future deployments.",
+  "removedPublicPath": "public/mamma/mammographie/verkalkungen/layering/layering-original.png",
+  "retainedLocalEvidence": "tmp/assessment-quality/calc08-kang-nc-original-reference.png",
+  "preserved": "External article reference and own explicitly labelled teaching SVG remain. Diagnostic pixels were not edited or generated. Source asset remains recoverable from Git/local evidence.",
+  "scope": "Concrete static-file repair, not blanket license clearance of retained galleries. Independent final content/browser review remains separate."
+}

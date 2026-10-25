@@ -290,6 +290,12 @@
     "/abdomen/pankreas/pankreaskarzinom",
     "/abdomen/leber/psc-mrcp",
     "/abdomen/pankreas/zystische-tumoren",
-    "/abdomen/pankreas/pankreatitis"
+    "/abdomen/pankreas/pankreatitis",
+    "/abdomen/leber/haemangiom",
+    "/abdomen/leber/hcc",
+    "/abdomen/leber/li-rads",
+    "/gehirn/vaskulaer/subarachnoidalblutung",
+    "/mamma/bildgebung/mammographie/verkalkungen",
+    "/thorax/bronchiolitis"
   ]
 }

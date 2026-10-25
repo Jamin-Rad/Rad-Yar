@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/design_inventory",
+  "role": "INDEPENDENT_READ_ONLY_REVIEWER",
+  "status": "SOURCE_PREPARATION_ONLY_AUTHOR_FREEZE_PENDING_NO_POOL_ACCEPTANCE",
+  "baseline": "packet08-calcification-baseline-review.json",
+  "sourceReading": [
+    {
+      "id": "ACR2025",
+      "url": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "actualPixels": [
+        "tmp/assessment-quality/acr-2025-summary-2.png",
+        "tmp/assessment-quality/acr-2025-summary-4.png"
+      ],
+      "read": "Both page images actually inspected: Coarse/large rod-like/Round/Rim/Layering, all4suspicious morphologies and5distributions; category3sixmonth versus4/5tissuediagnosis. This is summary, not fullpaidmanual.",
+      "boundedEvidence": "Currentlexicon as taught; coarsehetero generally0.5–1mm retained; Layering apparentprojectionshapechange esp90degreeLM/ML; category4tissuediagnosis."
+    },
+    {
+      "id": "Youk2019",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923207/",
+      "read": "Fresh originalMethods, allTables1–4, modelcoefficients/cutoffs, discussion andcomplete relevantlimitations read.",
+      "boundedEvidence": "Derivation194excisedlesions/183women andexternal100excised/100women; punctate notallcurrentRound. No priorcomparisons/patientpredictors; selectedretrospectiveexcisionpopulation. Amorphous/coarsehetero firstpair notsignificant, no universalfixedriskordering.",
+      "checkAfterFreeze": "Compare every25matrixcell to originalcoefficient/cutoffmodel; distinguishmodeloutput from clinicalassessment/action."
+    },
+    {
+      "id": "Bent2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20410428/",
+      "read": "Fresh completeprimaryabstract viaindexedPubMed.146biopsiedwomen.",
+      "boundedEvidence": "Amorphous andcoarseheterogeneous both20percentobservedcohortPPV, notuniversalriskcalibration."
+    },
+    {
+      "id": "Fueger2021",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/",
+      "read": "DirectPMC/publisherblockedcaptcha403; freshindexed ORIGINALabstract,eligibility/statistics, results,6–12monthdiscussion andlimitationsread; no bypass. Do notclaimdirectfullpage/figurepixelreview.",
+      "boundedEvidence": "13studies1414lesions; purecalcification subgroup modelpretest22percent→posttest<=2percent. No4A/B/Csubgroupestimates.6–12months discussedasfollowupproposal, oncologicalsafety/prospectiveevidence notestablished. Not categoryboundary orautomaticomissionrule."
+    },
+    {
+      "id": "Bennani2017",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0188679",
+      "read": "Fresh primarymethods/results/cohort andfalse-negativefindings,subsetmetrics/captions read.",
+      "boundedEvidence": "248retrospectivepatients; biopsy alwaysperformedafterMRI.4FNs included3DCIS and1invasive, acrossmammographic4A/B/C. Doesnotvalidate prospectivebiopsyomissionpolicy."
+    },
+    {
+      "id": "Kang2026",
+      "url": "https://jksronline.org/DOIx.php?id=10.3348/jksr.2026.0028",
+      "read": "Fresh publisherbibliographic/licenseandcalcificationlexicon/figure6captionread.",
+      "boundedEvidence": "Publishedonline2026-05-26,J KoreanSocRadiol87(3):437–459. Coarseincludesolderpopcorn/dystrophic; Layeringreplacesmilkofcalcium; currentRoundnotallhistoricalpunctate. Fig6A CC/BMLOortruelateralcaption.",
+      "licence": "CC-BY-NC4.0 explicitlynoncommercial. NoinferenceofcommercialreusepermissionfromRadiopaediaauthorization. Retainedfigure/licence/provenancelimit toberecorded separatelyfromboundedclinicalassessmentreview."
+    },
+    {
+      "id": "Metaxa2019",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6849664/",
+      "read": "Fresh indexedoriginalabstract/discussion/limitations; exactextenttableNOTseen.",
+      "boundedEvidence": "241biopsiedcases; cannotacceptpreciseextentchartbins/percentagesorindependencefrommorphology withoutactualtable/adjustedanalysis. Authorplanremovalofunverifiedchart canclose narrowclaim ifactualfinalsourceconfirmed."
+    }
+  ],
+  "pending": [
+    "Authorfreezehandoff",
+    "Readall54currentlocalizedquestionobjects/alloptions/keys/all162wrongfeedbacks and22cardtriads againstactualfrozenproduction",
+    "Allchangedteaching/matrix/refs/localizedlabels and11baselinefindingretest",
+    "Freshactualglobalruntime/sourcehashverification",
+    "Actualbrowser/RTL/media/licence/publishingnotinferredfromthisprep"
+  ]
+}

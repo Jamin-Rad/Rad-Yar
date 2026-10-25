@@ -1,0 +1,7 @@
+{
+  "id": "sab-q1",
+  "field": "options[1].de",
+  "before": "Nativ-CT-Untersuchung nach24 Stunden",
+  "after": "Nativ-CT-Untersuchung nach 24 Stunden",
+  "scope": "One typographic spacing correction; no semantic or key change."
+}

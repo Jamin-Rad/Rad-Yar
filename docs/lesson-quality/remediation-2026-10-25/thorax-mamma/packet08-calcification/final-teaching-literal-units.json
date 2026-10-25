@@ -1,0 +1,909 @@
+{
+  "date": "2026-10-25",
+  "note": "Exact final source set comparison. Removed/additions are not invented paired translations. Historical54-entry edit log contains intermediate states; final actual source values below take precedence.",
+  "literalCalls": {
+    "before": 141,
+    "after": 132
+  },
+  "removedLiteralUnits": [
+    {
+      "de": "Interaktives Orientierungsmodell",
+      "en": "Interactive orientation model",
+      "fa": "مدل تعاملی راهنما"
+    },
+    {
+      "de": "Modellergebnis",
+      "en": "Model result",
+      "fa": "نتیجه مدل"
+    },
+    {
+      "de": "Risikorahmen der Kategorie:",
+      "en": "Category risk range:",
+      "fa": "بازه خطر این دسته:"
+    },
+    {
+      "de": "Klinische Kategorie gesondert prüfen: Dieses Modellergebnis begründet keine Verlaufskontrolle.",
+      "en": "Review the clinical category separately: this model result does not justify surveillance.",
+      "fa": "دسته بالینی را جداگانه بررسی کنید؛ این نتیجه مدل، پیگیری را توجیه نمی‌کند."
+    },
+    {
+      "de": "Matrix: vereinfachte Orientierung nach dem Scoring-Modell von Youk et al., Korean J Radiol. · Terminologie: ACR BI-RADS® Atlas, 5. Auflage. Das Studienmodell ersetzt keine klinische BI-RADS-Zuordnung; die Risikospannen sind keine individuelle Risikoberechnung.",
+      "en": "Matrix: simplified orientation based on the scoring model by Youk et al., Korean J Radiol. · Terminology: ACR BI-RADS® Atlas, 5th edition. This research model does not replace clinical BI-RADS assessment; the ranges do not calculate an individual patient's risk.",
+      "fa": "ماتریس: راهنمای ساده‌شده بر اساس مدل امتیازدهی Youk و همکاران، Korean J Radiol. · اصطلاحات: اطلس ACR BI-RADS®، ویرایش پنجم. این مدل پژوهشی جایگزین ارزیابی بالینی BI-RADS نیست؛ بازه‌ها محاسبه خطر فردی بیمار نیستند."
+    },
+    {
+      "de": "Eine einzelne Gruppe runder/punktförmiger Verkalkungen ohne Voraufnahmen kann nach vollständiger diagnostischer Abklärung und ohne suspekte Zusatzmerkmale als BI-RADS 3 eingestuft werden; erste Kontrolle nach 6 Monaten. Das gilt nicht pauschal für amorphe Verkalkungen.",
+      "en": "A solitary group of round/punctate calcifications without prior images may be assessed as BI-RADS 3 after a complete diagnostic work-up and in the absence of suspicious additional features; the first follow-up is at 6 months. This does not apply routinely to amorphous calcifications.",
+      "fa": "یک گروه منفرد از کلسیفیکاسیون‌های گرد/نقطه‌ای بدون تصاویر قبلی، پس از بررسی تشخیصی کامل و در نبود ویژگی مشکوک همراه، می‌تواند BI-RADS 3 ارزیابی شود؛ اولین پیگیری پس از ۶ ماه است. این قاعده به‌طور کلی برای کلسیفیکاسیون‌های آمورف صدق نمی‌کند."
+    },
+    {
+      "de": "Bei gleicher Morphologie kann eine größere Ausdehnung mit einem höheren Malignitätsrisiko einhergehen.",
+      "en": "With the same morphology, greater extent may be associated with a higher malignancy risk.",
+      "fa": "در مورفولوژی مشابه، وسعت بیشتر ممکن است با خطر بالاتر بدخیمی همراه باشد."
+    },
+    {
+      "de": "Positiv prädiktiver Wert nach Ausdehnung",
+      "en": "Positive predictive value by extent",
+      "fa": "ارزش اخباری مثبت بر حسب وسعت"
+    },
+    {
+      "de": "Balkendiagramm: Positiv prädiktiver Wert steigt von 0 % bei unter 5 mm Ausdehnung auf 66,7 % bei über 50 mm Ausdehnung",
+      "en": "Bar chart: positive predictive value rises from 0% for extent below 5 mm to 66.7% for extent above 50 mm",
+      "fa": "نمودار میله‌ای: ارزش اخباری مثبت از صفر درصد برای وسعت کمتر از ۵ میلی‌متر به ۶۶٫۷ درصد برای وسعت بیش از ۵۰ میلی‌متر افزایش می‌یابد."
+    },
+    {
+      "de": "<5 mm",
+      "en": "<5 mm",
+      "fa": "<5 mm"
+    },
+    {
+      "de": "5–10 mm",
+      "en": "5–10 mm",
+      "fa": "5–10 mm"
+    },
+    {
+      "de": "10–20 mm",
+      "en": "10–20 mm",
+      "fa": "10–20 mm"
+    },
+    {
+      "de": "20–50 mm",
+      "en": "20–50 mm",
+      "fa": "20–50 mm"
+    },
+    {
+      "de": ">50 mm",
+      "en": ">50 mm",
+      "fa": ">50 mm"
+    },
+    {
+      "de": "PPV in der untersuchten Biopsiekohorte, nach Gesamtausdehnung der Verkalkungen (mm).",
+      "en": "PPV in the studied biopsy cohort, by total calcification extent (mm).",
+      "fa": "ارزش اخباری مثبت در گروه نمونه‌برداری‌شده مطالعه، بر حسب وسعت کل کلسیفیکاسیون‌ها (میلی‌متر)."
+    },
+    {
+      "de": "Metaxa, Healy & O’Keeffe, Br J Radiol. 2019;92:20190177.",
+      "en": "Metaxa, Healy & O’Keeffe, Br J Radiol. 2019;92:20190177.",
+      "fa": "Metaxa, Healy & O’Keeffe, Br J Radiol. 2019;92:20190177."
+    },
+    {
+      "de": "Die Ausdehnung ist unabhängig von der Morphologie ein eigenständiger Risikofaktor und relevant für die Beurteilung einer möglichen DCIS-Ausdehnung sowie die Therapieplanung.",
+      "en": "Extent is an independent risk factor alongside morphology and is relevant for assessing possible DCIS extent and treatment planning.",
+      "fa": "وسعت، در کنار مورفولوژی، عامل خطر مستقلی است و در ارزیابی وسعت احتمالی DCIS و برنامه‌ریزی درمان اهمیت دارد."
+    },
+    {
+      "de": "Nicht Morphologie oder Verteilung allein, sondern ihre Kombination bestimmt die klinische Risikoklasse. Dies ist der zentrale Schritt der Kalkdiagnostik.",
+      "en": "The combination of morphology and distribution, rather than either feature alone, determines the clinical risk category. This is central to calcification assessment.",
+      "fa": "ترکیب مورفولوژی و توزیع، نه هر یک به‌تنهایی، دسته خطر بالینی را تعیین می‌کند. این مرحله، محور ارزیابی کلسیفیکاسیون است."
+    },
+    {
+      "de": "BEISPIELFALL",
+      "en": "EXAMPLE CASE",
+      "fa": "نمونه مورد"
+    },
+    {
+      "de": "Schema: CC versus ML/MLO",
+      "en": "Diagram: CC versus ML/MLO",
+      "fa": "طرح: CC در مقایسه با ML/MLO"
+    },
+    {
+      "de": "Originalabbildung mit amorphen oder runden Verkalkungen in CC und Meniskus- beziehungsweise Teacup-Zeichen in ML",
+      "en": "Original image with amorphous or round calcifications on CC and a meniscus or teacup sign on ML",
+      "fa": "تصویر اصلی با کلسیفیکاسیون‌های آمورف یا گرد در CC و علامت منیسک یا فنجان در ML"
+    },
+    {
+      "de": "Originalabbildung · A: CC · B: ML/MLO",
+      "en": "Original image · A: CC · B: ML/MLO",
+      "fa": "تصویر اصلی · A: CC · B: ML/MLO"
+    },
+    {
+      "de": "In der CC-Aufnahme erscheinen die Verkalkungen rundlich und unscharf. In der ML- oder MLO-Aufnahme lagern sie sich schwerkraftbedingt am Boden einer Zyste ab und bilden die typische sichelförmige Meniskus- beziehungsweise Teacup-Konfiguration. In der aktuellen BI-RADS-Terminologie wird dafür der beschreibende Begriff „Layering“ verwendet.",
+      "en": "On the CC view, calcifications appear rounded and indistinct. On the ML or MLO view, gravity causes them to settle at the bottom of a cyst, producing the characteristic crescent-shaped meniscus or teacup configuration. Current BI-RADS terminology uses the descriptive term “layering”.",
+      "fa": "در نمای CC، کلسیفیکاسیون‌ها گرد و نامشخص دیده می‌شوند. در نمای ML یا MLO، بر اثر جاذبه در کف کیست رسوب می‌کنند و شکل هلالی تیپیک منیسک یا فنجان را ایجاد می‌کنند. در اصطلاحات کنونی BI-RADS، واژه توصیفی «لایه‌لایه‌شدن» به کار می‌رود."
+    },
+    {
+      "de": "Originalabbildung:",
+      "en": "Original image:",
+      "fa": "تصویر اصلی:"
+    },
+    {
+      "de": "J Korean Soc Radiol. 2025;87:437, Fig. 6",
+      "en": "J Korean Soc Radiol. 2025;87:437, Fig. 6",
+      "fa": "J Korean Soc Radiol. 2025;87:437, Fig. 6"
+    },
+    {
+      "de": "Die Metaanalyse untersuchte einen möglichen Biopsieverzicht in ausgewählten Fällen: bei reinem Mikrokalk ohne Begleitbefund bis zu einer Vortestwahrscheinlichkeit von 22 %. Sie begründet keine allgemeine 12-Monats-Kontrolle für BI-RADS 4A und keinen generellen Biopsieverzicht bei 4B. Entscheidung und gegebenenfalls angepasstes Vorgehen erfordern eine individuelle fachärztliche Bewertung.",
+      "en": "The meta-analysis explored possible biopsy avoidance in selected cases: pure microcalcifications without associated findings and a pre-test probability up to 22%. It does not establish a general 12-month follow-up rule for BI-RADS 4A or routine biopsy avoidance for 4B. Decisions and any tailored approach require individual specialist assessment.",
+      "fa": "این متاآنالیز امکان صرف‌نظر از بیوپسی را در موارد منتخب بررسی کرد: میکروکلسیفیکاسیون بدون یافتهٔ همراه و احتمال پیش‌آزمون حداکثر ۲۲٪. این پژوهش قاعدهٔ عمومی پیگیری ۱۲ماهه برای BI-RADS 4A یا صرف‌نظر کلی از بیوپسی در 4B را اثبات نمی‌کند. تصمیم و هر تغییر احتمالی در رویکرد نیازمند ارزیابی فردی متخصص است."
+    },
+    {
+      "de": "2D-Vergrößerungsaufnahmen zeigen die Kalkdetails; DBT ergänzt den räumlichen Kontext. Typisch benigne Formen wie Popcorn-, Rim-, sekretorische und Layering-Verkalkungen sicher erkennen.",
+      "en": "2D magnification views show calcification detail; DBT adds spatial context. Recognise typically benign patterns such as popcorn, rim, secretory and layering calcifications.",
+      "fa": "نماهای بزرگ‌نمایی دوبعدی جزئیات کلسیفیکاسیون را نشان می‌دهند؛ DBT زمینه فضایی را اضافه می‌کند. الگوهای تیپیک خوش‌خیم مانند پاپ‌کورنی، حاشیه‌ای، ترشحی و لایه‌لایه‌شدن را بشناسید."
+    },
+    {
+      "de": "Bei ausgewählten niedrig suspekten Fällen kann ein MRT-gestützter Biopsieverzicht individuell erwogen werden.",
+      "en": "In selected low-suspicion cases, MRI-supported biopsy avoidance may be considered individually.",
+      "fa": "در موارد منتخب با شک پایین، می‌توان صرف‌نظر از بیوپسی با اتکا به MRI را به‌صورت فردی در نظر گرفت."
+    }
+  ],
+  "addedLiteralUnits": [
+    {
+      "de": "Historisches Forschungsmodell",
+      "en": "Historical research model",
+      "fa": "مدل پژوهشی تاریخی"
+    },
+    {
+      "de": "Historische Modellkategorie",
+      "en": "Historical model category",
+      "fa": "دستهٔ مدل تاریخی"
+    },
+    {
+      "de": "Klinisches Assessment gesondert: Dieser Modellwert berechnet kein individuelles Risiko und begründet weder Verlaufskontrolle noch Gewebeentnahme.",
+      "en": "Separate clinical assessment: this model value does not calculate individual risk and justifies neither surveillance nor tissue sampling.",
+      "fa": "ارزیابی بالینی جداگانه: این مقدار مدل خطر فردی را محاسبه نمی‌کند و نه پیگیری و نه نمونه‌برداری بافتی را توجیه نمی‌کند."
+    },
+    {
+      "de": "Youk2019: retrospektives Modell aus 194 operativ entfernten, ursprünglich suspekten Läsionen; externe Prüfung an 100 weiteren exzidierten Läsionen. Der historische Prädiktor war punktförmig (punctate), nicht jede runde Verkalkung. Verlauf, Patientenmerkmale und Begleitbefunde fehlen als Eingaben. Modellkategorien ersetzen keine heutige klinische BI-RADS-Zuordnung und verordnen keine Kontrolle oder Biopsie.",
+      "en": "Youk2019: a retrospective model from 194 surgically excised, initially suspicious lesions, externally tested in 100 further excised lesions. The historical predictor was punctate, not every round calcification. Evolution, patient factors and associated findings are absent as inputs. Model categories neither replace current clinical BI-RADS assessment nor prescribe surveillance or biopsy.",
+      "fa": "Youk۲۰۱۹: مدل گذشته‌نگر از ۱۹۴ ضایعهٔ ابتدا مشکوک و برداشته‌شده با جراحی، با آزمون خارجی در ۱۰۰ ضایعهٔ جراحی‌شدهٔ دیگر. متغیر تاریخی نقطه‌ای (punctate) بود، نه هر کلسیفیکاسیون گرد. روند، عوامل بیمار و یافته‌های همراه در ورودی‌ها نیستند. دسته‌های مدل نه جای ارزیابی بالینی امروزی BI-RADS را می‌گیرند و نه پیگیری یا بیوپسی تجویز می‌کنند."
+    },
+    {
+      "de": "Beispiel: Regionalem amorphem Kalk wird im historischen Modell die Modellkategorie 3 zugeordnet. Bei neuer benachbarter Architekturstörung muss diese gezielt abgeklärt und der Gesamtbefund neu bewertet werden. Das Modell kennt diesen Begleitbefund nicht; seine Modellkategorie 3 kann keine Sechsmonatskontrolle des Gesamtbefunds verordnen.",
+      "en": "Example: Regional amorphous calcifications are assigned model category 3 in the historical model. A new adjacent architectural distortion requires targeted work-up and reassessment of the overall findings. The model has no input for that associated finding; its model category 3 cannot prescribe six-month surveillance of the whole finding.",
+      "fa": "مثال: کلسیفیکاسیون آمورف ناحیه‌ای در مدل تاریخی در دستهٔ مدل ۳ قرار می‌گیرد. دیستورشن معماری جدید مجاور باید هدفمند بررسی و کل یافته‌ها دوباره ارزیابی شوند. مدل این یافتهٔ همراه را ورودی نمی‌گیرد؛ دستهٔ مدل ۳ نمی‌تواند پیگیری شش‌ماههٔ کل یافته را تجویز کند."
+    },
+    {
+      "de": "Amorph und grob heterogen sind suspekte Deskriptoren ohne universelle feste Reihenfolge. Ihr beobachteter PPV hängt von Kohorte, Verteilung und Kontext ab; grob heterogen ist nicht typisch benigner grober Kalk.",
+      "en": "Amorphous and coarse heterogeneous are suspicious descriptors without a universal fixed ordering. Observed PPV depends on cohort, distribution and context; coarse heterogeneous is not typically benign coarse calcification.",
+      "fa": "آمورف و درشت ناهمگون اصطلاح‌های مشکوک‌اند و ترتیب ثابت همگانی ندارند. ارزش اخباری مثبت مشاهده‌شده به کوهورت، توزیع و زمینه بستگی دارد؛ درشت ناهمگون همان کلسیفیکاسیون درشت تیپیک خوش‌خیم نیست."
+    },
+    {
+      "de": "Eine einzelne Gruppe runder Verkalkungen (historisch auch punktförmig) ohne Voraufnahmen kann nach vollständiger diagnostischer Abklärung und ohne suspekte Zusatzmerkmale als BI-RADS 3 eingestuft werden; erste Kontrolle nach 6 Monaten. Das gilt nicht pauschal für amorphe Verkalkungen.",
+      "en": "A solitary group of round calcifications (historically also termed punctate) without prior images may qualify for BI-RADS 3 after complete diagnostic work-up and with no additional suspicious features; first follow-up at 6 months. This does not routinely apply to amorphous calcifications.",
+      "fa": "یک گروه منفرد کلسیفیکاسیون گرد (با اصطلاح قدیمی نقطه‌ای نیز بیان‌شده) در نبود تصاویر قبلی، پس از بررسی تشخیصی کامل و بدون ویژگی همراه مشکوک می‌تواند BI-RADS 3 باشد؛ نخستین پیگیری پس از ۶ ماه است. این قاعده به‌طور کلی برای کلسیفیکاسیون آمورف صدق نمی‌کند."
+    },
+    {
+      "de": "Die Gesamtausdehnung beschreibt das gesamte Kalkareal, nicht den Durchmesser eines einzelnen Partikels. Sie gehört in den Befund und in die Planung einer möglichen Gewebeabklärung oder Behandlung.",
+      "en": "Total extent describes the entire calcification field, not the diameter of an individual particle. It belongs in the report and in planning possible tissue diagnosis or treatment.",
+      "fa": "وسعت کلی کل ناحیهٔ کلسیفیکاسیون را توصیف می‌کند، نه قطر یک ذره را. این اندازه در گزارش و برنامه‌ریزی تشخیص بافتی یا درمان احتمالی لحاظ می‌شود."
+    },
+    {
+      "de": "Metaxa et al. untersuchten 241 biopsierte Befunde mit reinen Verkalkungen. Die beobachtete Assoziation ist kohortenabhängig und ersetzt weder die Morphologiebeurteilung noch ein klinisches Assessment.",
+      "en": "Metaxa et al. studied 241 biopsied pure-calcification findings. The observed association is cohort-dependent and replaces neither morphological assessment nor clinical assessment.",
+      "fa": "Metaxa و همکاران ۲۴۱ یافتهٔ بیوپسی‌شده با کلسیفیکاسیون خالص را بررسی کردند. همراهی مشاهده‌شده به کوهورت وابسته است و جای ارزیابی مورفولوژی یا ارزیابی بالینی را نمی‌گیرد."
+    },
+    {
+      "de": "In der untersuchten Biopsiekohorte war eine größere Gesamtausdehnung mit Malignität assoziiert. Daraus folgt kein hier belegter, von der Morphologie unabhängiger Effekt und keine individuelle Risikozahl. Die Ausdehnung in Millimetern dokumentieren; sie ist für Befundabgleich und Therapieplanung relevant.",
+      "en": "Greater total extent was associated with malignancy in the studied biopsy cohort. This does not establish a morphology-independent effect or an individual probability here. Document extent in millimetres; it matters for correlation and treatment planning.",
+      "fa": "در کوهورت بیوپسی بررسی‌شده، وسعت کلی بیشتر با بدخیمی همراه بود. اینجا اثر مستقل از مورفولوژی یا درصد خطر فردی اثبات نمی‌شود. وسعت به میلی‌متر ثبت شود؛ برای تطبیق یافته‌ها و برنامه‌ریزی درمان مهم است."
+    },
+    {
+      "de": "Morphologie und Verteilung werden zusammen mit Verlauf, Begleitbefunden und Patientenkontext bewertet. Das folgende historische Forschungsmodell illustriert zwei Deskriptoren; es legt keine klinische Kategorie oder Behandlung fest.",
+      "en": "Assess morphology and distribution together with evolution, associated findings and patient context. The historical research model below illustrates two descriptors; it does not assign a clinical category or treatment.",
+      "fa": "مورفولوژی و توزیع همراه روند، یافته‌های همراه و زمینهٔ بیمار ارزیابی می‌شوند. مدل پژوهشی تاریخی زیر دو توصیف را نشان می‌دهد؛ دستهٔ بالینی یا درمان را تعیین نمی‌کند."
+    },
+    {
+      "de": "LEHRMODELL",
+      "en": "TEACHING MODEL",
+      "fa": "مدل آموزشی"
+    },
+    {
+      "de": "Schema: CC versus echte 90°-Seitaufnahme (LM/ML)",
+      "en": "Schematic: CC versus true 90° lateral view (LM/ML)",
+      "fa": "شماتیک: CC در مقایسه با لترال واقعی ۹۰ درجه (LM/ML)"
+    },
+    {
+      "de": "In CC erscheinen die Sedimente oft rundlich und unscharf. Besonders in einer echten 90°-Seitaufnahme (LM/ML), gelegentlich auch in MLO, wird die schwerkraftabhängige halbmond-/teetassenartige Schichtung am Zystenboden sichtbar. Entscheidend ist der Formwechsel zwischen Projektionen. Der aktuelle Deskriptor lautet „Layering“ (historisch: Milk of Calcium).",
+      "en": "On CC, sediment often appears rounded and smudgy. Especially on a true 90° lateral view (LM/ML), and sometimes on MLO, gravity-dependent semilunar/teacup-like layering at the cyst floor becomes visible. Shape change between projections is key. The current descriptor is “layering” (historically: milk of calcium).",
+      "fa": "در CC رسوب اغلب گرد و محو است. به‌ویژه در نمای لترال واقعی ۹۰ درجه (LM/ML) و گاهی در MLO، لایه‌بندی هلالی/فنجانی وابسته به جاذبه در کف کیست دیده می‌شود. تغییر شکل میان نماها مهم است. اصطلاح کنونی «لایه‌بندی» است (اصطلاح قدیمی: شیر کلسیم)."
+    },
+    {
+      "de": "Quelle zum Layering-Prinzip:",
+      "en": "Source for the layering principle:",
+      "fa": "منبع اصل لایه‌بندی:"
+    },
+    {
+      "de": "Kang BJ. J Korean Soc Radiol. 2026;87:437–459, Fig. 6. doi:10.3348/jksr.2026.0028.",
+      "en": "Kang BJ. J Korean Soc Radiol. 2026;87:437–459, Fig. 6. doi:10.3348/jksr.2026.0028.",
+      "fa": "Kang BJ. J Korean Soc Radiol. 2026;87:437–459, Fig. 6. doi:10.3348/jksr.2026.0028."
+    },
+    {
+      "de": "Fueger2021 modellierte bei reinem Mikrokalk ohne Begleitbefund eine mögliche Risikoreduktion nach negativer MRT. Die 22-%-Prätestschwelle ist ein Modellergebnis und keine Grenze zwischen 4A und 4B. Die Autoren schlugen für ausgewählte Fälle 6–12 Monate Überwachung vor; das ist kein prospektiv validiertes Biopsieersatz-Protokoll. Eine belastbare gepoolte Regel für 4A/4B/4C wurde nicht gezeigt. Bei bestätigter Kategorie 4/5 bleibt Gewebediagnostik Standard.",
+      "en": "Fueger2021 modelled possible risk reduction after negative MRI for pure microcalcifications without associated findings. The 22% pretest threshold is a model result, not a boundary between 4A and 4B. The authors proposed 6–12-month surveillance for selected cases; this is not a prospectively validated biopsy-replacement protocol. A robust pooled 4A/4B/4C rule was not established. Tissue diagnosis remains standard for confirmed category 4/5.",
+      "fa": "Fueger۲۰۲۱ کاهش احتمالی خطر پس از MRI منفی را برای میکروکلسیفیکاسیون خالص بدون یافتهٔ همراه مدل کرد. آستانهٔ پیش‌آزمون ۲۲٪ نتیجهٔ مدل است، نه مرز 4A و 4B. نویسندگان برای موارد منتخب پایش ۶ تا ۱۲ ماه را پیشنهاد کردند؛ این پروتکل آینده‌نگرِ اعتبارسنجی‌شدهٔ جایگزین بیوپسی نیست. قاعدهٔ تجمیعی معتبر برای 4A/4B/4C اثبات نشد. در دستهٔ تأییدشدهٔ 4/5، تشخیص بافتی استاندارد باقی می‌ماند."
+    },
+    {
+      "de": "2D-Vergrößerungsaufnahmen zeigen die Kalkdetails; DBT ergänzt den räumlichen Kontext. Typisch benigne Muster wie Coarse (klassisch popcornartig), Rim, sekretorische Stäbchen und Layering sicher erkennen.",
+      "en": "2D magnification views show calcification detail; DBT adds spatial context. Recognise typically benign patterns such as coarse (classically popcorn-like), rim, secretory rods and layering.",
+      "fa": "نماهای بزرگ‌نمایی دوبعدی جزئیات کلسیفیکاسیون را نشان می‌دهند؛ DBT زمینهٔ فضایی را تکمیل می‌کند. الگوهای تیپیک خوش‌خیم مانند درشت (کلاسیک پاپ‌کورنی)، حاشیه‌ای، میله‌های ترشحی و لایه‌بندی را بشناسید."
+    },
+    {
+      "de": "Bei bestätigter mammographischer Kategorie 4 oder 5 bleibt Gewebediagnostik Standard. MRT-gestützter Biopsieverzicht ist eine begrenzte Forschungsfrage; negative MRT allein verordnet keine Herabstufung oder Verlaufskontrolle.",
+      "en": "Tissue diagnosis remains standard for confirmed mammographic category 4 or 5. MRI-supported biopsy avoidance is a limited research question; negative MRI alone prescribes neither downgrading nor surveillance.",
+      "fa": "در دستهٔ ماموگرافیک تأییدشدهٔ 4 یا 5، تشخیص بافتی استاندارد است. صرف‌نظر از بیوپسی با کمک MRI پرسش پژوهشی محدودی است؛ MRI منفی به‌تنهایی کاهش دسته یا پیگیری تجویز نمی‌کند."
+    }
+  ],
+  "currentLiteralUnits": [
+    {
+      "de": "Historisches Forschungsmodell",
+      "en": "Historical research model",
+      "fa": "مدل پژوهشی تاریخی"
+    },
+    {
+      "de": "BI-RADS",
+      "en": "BI-RADS",
+      "fa": "BI-RADS"
+    },
+    {
+      "de": "(Kalzifikationen: Morphologie × Verteilung)",
+      "en": "(Calcifications: morphology × distribution)",
+      "fa": "(کلسیفیکاسیون‌ها: مورفولوژی × توزیع)"
+    },
+    {
+      "de": "1 · Morphologie",
+      "en": "1 · Morphology",
+      "fa": "۱ · مورفولوژی"
+    },
+    {
+      "de": "2 · Verteilung",
+      "en": "2 · Distribution",
+      "fa": "۲ · توزیع"
+    },
+    {
+      "de": "Historische Modellkategorie",
+      "en": "Historical model category",
+      "fa": "دستهٔ مدل تاریخی"
+    },
+    {
+      "de": "Klinisches Assessment gesondert: Dieser Modellwert berechnet kein individuelles Risiko und begründet weder Verlaufskontrolle noch Gewebeentnahme.",
+      "en": "Separate clinical assessment: this model value does not calculate individual risk and justifies neither surveillance nor tissue sampling.",
+      "fa": "ارزیابی بالینی جداگانه: این مقدار مدل خطر فردی را محاسبه نمی‌کند و نه پیگیری و نه نمونه‌برداری بافتی را توجیه نمی‌کند."
+    },
+    {
+      "de": "Kategorien im Überblick",
+      "en": "Categories at a glance",
+      "fa": "مرور دسته‌ها"
+    },
+    {
+      "de": "Morphologie ↓",
+      "en": "Morphology ↓",
+      "fa": "مورفولوژی ↓"
+    },
+    {
+      "de": "Youk2019: retrospektives Modell aus 194 operativ entfernten, ursprünglich suspekten Läsionen; externe Prüfung an 100 weiteren exzidierten Läsionen. Der historische Prädiktor war punktförmig (punctate), nicht jede runde Verkalkung. Verlauf, Patientenmerkmale und Begleitbefunde fehlen als Eingaben. Modellkategorien ersetzen keine heutige klinische BI-RADS-Zuordnung und verordnen keine Kontrolle oder Biopsie.",
+      "en": "Youk2019: a retrospective model from 194 surgically excised, initially suspicious lesions, externally tested in 100 further excised lesions. The historical predictor was punctate, not every round calcification. Evolution, patient factors and associated findings are absent as inputs. Model categories neither replace current clinical BI-RADS assessment nor prescribe surveillance or biopsy.",
+      "fa": "Youk۲۰۱۹: مدل گذشته‌نگر از ۱۹۴ ضایعهٔ ابتدا مشکوک و برداشته‌شده با جراحی، با آزمون خارجی در ۱۰۰ ضایعهٔ جراحی‌شدهٔ دیگر. متغیر تاریخی نقطه‌ای (punctate) بود، نه هر کلسیفیکاسیون گرد. روند، عوامل بیمار و یافته‌های همراه در ورودی‌ها نیستند. دسته‌های مدل نه جای ارزیابی بالینی امروزی BI-RADS را می‌گیرند و نه پیگیری یا بیوپسی تجویز می‌کنند."
+    },
+    {
+      "de": "Beispiel: Regionalem amorphem Kalk wird im historischen Modell die Modellkategorie 3 zugeordnet. Bei neuer benachbarter Architekturstörung muss diese gezielt abgeklärt und der Gesamtbefund neu bewertet werden. Das Modell kennt diesen Begleitbefund nicht; seine Modellkategorie 3 kann keine Sechsmonatskontrolle des Gesamtbefunds verordnen.",
+      "en": "Example: Regional amorphous calcifications are assigned model category 3 in the historical model. A new adjacent architectural distortion requires targeted work-up and reassessment of the overall findings. The model has no input for that associated finding; its model category 3 cannot prescribe six-month surveillance of the whole finding.",
+      "fa": "مثال: کلسیفیکاسیون آمورف ناحیه‌ای در مدل تاریخی در دستهٔ مدل ۳ قرار می‌گیرد. دیستورشن معماری جدید مجاور باید هدفمند بررسی و کل یافته‌ها دوباره ارزیابی شوند. مدل این یافتهٔ همراه را ورودی نمی‌گیرد؛ دستهٔ مدل ۳ نمی‌تواند پیگیری شش‌ماههٔ کل یافته را تجویز کند."
+    },
+    {
+      "de": "Modifikatoren",
+      "en": "Modifiers",
+      "fa": "عوامل تعدیل‌کننده"
+    },
+    {
+      "de": "Zusätzlich mitbeurteilen – keine festen Plus-/Minus-Stufen und kein additiver BI-RADS-Score.",
+      "en": "Consider in addition – no fixed category increments or decrements and no additive BI-RADS score.",
+      "fa": "در ارزیابی کلی لحاظ شوند؛ بدون افزایش یا کاهش ثابت دسته و بدون امتیاز جمع‌شونده BI-RADS."
+    },
+    {
+      "de": "Makroverkalkungen (> 2 mm) beziehungsweise typisch grobschollige Verkalkungen (irregulär geformt, jedoch mit glatter Begrenzung) sind in der Regel benign.",
+      "en": "Macrocalcifications (> 2 mm), or typically coarse calcifications (irregular in shape but with smooth margins), are generally benign.",
+      "fa": "ماکروکلسیفیکاسیون‌ها (بزرگ‌تر از ۲ میلی‌متر) یا کلسیفیکاسیون‌های تیپیک درشت با شکل نامنظم اما حاشیه صاف، معمولاً خوش‌خیم‌اند."
+    },
+    {
+      "de": "Malignitätsassoziierte Mikroverkalkungen sind häufig kleiner als 0,5 mm, insbesondere fein pleomorphe und fein lineare Formen. Kleine Partikel kommen jedoch auch bei benignen Befunden vor: Die Größe allein trennt nicht sicher zwischen benign und malign.",
+      "en": "Malignancy-associated microcalcifications are often smaller than 0.5 mm, especially fine pleomorphic and fine linear forms. Small particles also occur in benign findings: size alone cannot reliably distinguish benign from malignant calcifications.",
+      "fa": "میکروکلسیفیکاسیون‌های همراه بدخیمی، به‌ویژه انواع پلئومورفیک ظریف و خطی ظریف، اغلب کوچک‌تر از ۰٫۵ میلی‌مترند. ذرات کوچک در یافته‌های خوش‌خیم نیز دیده می‌شوند؛ اندازه به‌تنهایی افتراق مطمئنی بین خوش‌خیمی و بدخیمی ایجاد نمی‌کند."
+    },
+    {
+      "de": "RADIOPAEDIA-FALL",
+      "en": "RADIOPAEDIA CASE",
+      "fa": "مورد RADIOPAEDIA"
+    },
+    {
+      "de": "Grobschollige Verkalkungen",
+      "en": "Coarse calcifications",
+      "fa": "کلسیفیکاسیون‌های درشت"
+    },
+    {
+      "de": "CC-Mammographie rechts mit grobscholligen Verkalkungen",
+      "en": "Right CC mammogram with coarse calcifications",
+      "fa": "ماموگرافی CC راست با کلسیفیکاسیون‌های درشت"
+    },
+    {
+      "de": "CC rechts",
+      "en": "Right CC",
+      "fa": "CC راست"
+    },
+    {
+      "de": "MLO-Mammographie rechts mit grobscholligen Verkalkungen",
+      "en": "Right MLO mammogram with coarse calcifications",
+      "fa": "ماموگرافی MLO راست با کلسیفیکاسیون‌های درشت"
+    },
+    {
+      "de": "MLO rechts",
+      "en": "Right MLO",
+      "fa": "MLO راست"
+    },
+    {
+      "de": "Größe und Morphologie:",
+      "en": "Size and morphology:",
+      "fa": "اندازه و مورفولوژی:"
+    },
+    {
+      "de": "Mehrere große, grobe und glatt begrenzte Verkalkungen in der rechten Brust.",
+      "en": "Several large, coarse, smoothly marginated calcifications in the right breast.",
+      "fa": "چند کلسیفیکاسیون بزرگ و درشت با حاشیه صاف در پستان راست."
+    },
+    {
+      "de": "Bildbeispiel:",
+      "en": "Image example:",
+      "fa": "نمونه تصویر:"
+    },
+    {
+      "de": "Radiopaedia.org, Fall 86372 (Vollbild)",
+      "en": "Radiopaedia.org, case 86372 (full image)",
+      "fa": "Radiopaedia.org، مورد 86372 (تصویر کامل)"
+    },
+    {
+      "de": "Merke",
+      "en": "Remember",
+      "fa": "نکته"
+    },
+    {
+      "de": "Größe allein beweist keine Benignität – Morphologie und Verteilung entscheiden über das tatsächliche Risiko.",
+      "en": "Size alone does not prove benignity – morphology and distribution determine the actual risk.",
+      "fa": "اندازه به‌تنهایی خوش‌خیمی را اثبات نمی‌کند؛ مورفولوژی و توزیع در تعیین خطر واقعی اهمیت دارند."
+    },
+    {
+      "de": "Die Morphologie beschreibt die Form der einzelnen Kalkpartikel.",
+      "en": "Morphology describes the shape of individual calcium particles.",
+      "fa": "مورفولوژی، شکل هر ذره کلسیفیکاسیون را توصیف می‌کند."
+    },
+    {
+      "de": "benigne",
+      "en": "benign",
+      "fa": "خوش‌خیم"
+    },
+    {
+      "de": "suspekt",
+      "en": "suspicious",
+      "fa": "مشکوک"
+    },
+    {
+      "de": "Amorph und grob heterogen sind suspekte Deskriptoren ohne universelle feste Reihenfolge. Ihr beobachteter PPV hängt von Kohorte, Verteilung und Kontext ab; grob heterogen ist nicht typisch benigner grober Kalk.",
+      "en": "Amorphous and coarse heterogeneous are suspicious descriptors without a universal fixed ordering. Observed PPV depends on cohort, distribution and context; coarse heterogeneous is not typically benign coarse calcification.",
+      "fa": "آمورف و درشت ناهمگون اصطلاح‌های مشکوک‌اند و ترتیب ثابت همگانی ندارند. ارزش اخباری مثبت مشاهده‌شده به کوهورت، توزیع و زمینه بستگی دارد؛ درشت ناهمگون همان کلسیفیکاسیون درشت تیپیک خوش‌خیم نیست."
+    },
+    {
+      "de": "Grob heterogene Verkalkungen",
+      "en": "Coarse heterogeneous calcifications",
+      "fa": "کلسیفیکاسیون‌های درشت ناهمگون"
+    },
+    {
+      "de": "Vergrößerungsaufnahme der rechten Brust mit grob heterogenen Verkalkungen",
+      "en": "Right breast magnification view with coarse heterogeneous calcifications",
+      "fa": "نمای بزرگ‌نمایی پستان راست با کلسیفیکاسیون‌های درشت ناهمگون"
+    },
+    {
+      "de": "Vergrößerungsaufnahme",
+      "en": "Magnification view",
+      "fa": "نمای بزرگ‌نمایی"
+    },
+    {
+      "de": "Detailaufnahme grob heterogener Verkalkungen",
+      "en": "Detail view of coarse heterogeneous calcifications",
+      "fa": "نمای جزئیات کلسیفیکاسیون‌های درشت ناهمگون"
+    },
+    {
+      "de": "Detailaufnahme",
+      "en": "Detail view",
+      "fa": "نمای جزئیات"
+    },
+    {
+      "de": "Morphologie und Lage:",
+      "en": "Morphology and location:",
+      "fa": "مورفولوژی و محل:"
+    },
+    {
+      "de": "Gruppierte, irreguläre und unterschiedlich große Verkalkungen, größer und dichter als amorphe Partikel, aber ohne typisch grobschollige Benignitätsmerkmale.",
+      "en": "Grouped, irregular calcifications of varying sizes, larger and denser than amorphous particles but lacking typically coarse benign features.",
+      "fa": "کلسیفیکاسیون‌های گروهی و نامنظم با اندازه‌های متفاوت؛ بزرگ‌تر و متراکم‌تر از ذرات آمورف، اما فاقد ویژگی‌های تیپیک کلسیفیکاسیون درشت خوش‌خیم."
+    },
+    {
+      "de": "Radiopaedia.org, Fall 67107 (Vollbild)",
+      "en": "Radiopaedia.org, case 67107 (full image)",
+      "fa": "Radiopaedia.org، مورد 67107 (تصویر کامل)"
+    },
+    {
+      "de": "Fein lineare/verzweigte Verkalkungen sind hochsuspekt und häufig mit DCIS assoziiert.",
+      "en": "Fine linear/branching calcifications are highly suspicious and frequently associated with DCIS.",
+      "fa": "کلسیفیکاسیون‌های خطی ظریف/شاخه‌دار بسیار مشکوک‌اند و اغلب با DCIS همراه‌اند."
+    },
+    {
+      "de": "Eine einzelne Gruppe runder Verkalkungen (historisch auch punktförmig) ohne Voraufnahmen kann nach vollständiger diagnostischer Abklärung und ohne suspekte Zusatzmerkmale als BI-RADS 3 eingestuft werden; erste Kontrolle nach 6 Monaten. Das gilt nicht pauschal für amorphe Verkalkungen.",
+      "en": "A solitary group of round calcifications (historically also termed punctate) without prior images may qualify for BI-RADS 3 after complete diagnostic work-up and with no additional suspicious features; first follow-up at 6 months. This does not routinely apply to amorphous calcifications.",
+      "fa": "یک گروه منفرد کلسیفیکاسیون گرد (با اصطلاح قدیمی نقطه‌ای نیز بیان‌شده) در نبود تصاویر قبلی، پس از بررسی تشخیصی کامل و بدون ویژگی همراه مشکوک می‌تواند BI-RADS 3 باشد؛ نخستین پیگیری پس از ۶ ماه است. این قاعده به‌طور کلی برای کلسیفیکاسیون آمورف صدق نمی‌کند."
+    },
+    {
+      "de": "Einordnung:",
+      "en": "Context:",
+      "fa": "برای تفسیر:"
+    },
+    {
+      "de": "BI-RADS 3: Current and Future Use",
+      "en": "BI-RADS 3: Current and Future Use",
+      "fa": "BI-RADS 3: Current and Future Use"
+    },
+    {
+      "de": "Neben der Morphologie muss immer beschrieben werden, wie sich die Verkalkungen innerhalb der Brust verteilen.",
+      "en": "In addition to morphology, always describe how calcifications are distributed within the breast.",
+      "fa": "علاوه بر مورفولوژی، همواره نحوه توزیع کلسیفیکاسیون‌ها در پستان را توصیف کنید."
+    },
+    {
+      "de": "Duktales Muster, keine sichere Histologie:",
+      "en": "Ductal pattern, not definitive histology:",
+      "fa": "الگوی داکتال، نه تشخیص قطعی بافت‌شناختی:"
+    },
+    {
+      "de": "Suspekte Mikroverkalkungen in linearer oder segmentaler Verteilung sind häufig mit DCIS assoziiert. Auch ein invasives Karzinom mit intraduktaler Komponente ist möglich.",
+      "en": "Suspicious microcalcifications in a linear or segmental distribution are frequently associated with DCIS. An invasive carcinoma with an intraductal component is also possible.",
+      "fa": "میکروکلسیفیکاسیون‌های مشکوک با توزیع خطی یا سگمنتال اغلب با DCIS همراه‌اند. کارسینوم مهاجم همراه با جزء داخل‌مجرایی نیز ممکن است."
+    },
+    {
+      "de": "Linear ist nicht automatisch maligne:",
+      "en": "Linear does not automatically mean malignant:",
+      "fa": "خطی بودن لزوماً به معنی بدخیمی نیست:"
+    },
+    {
+      "de": "Grobe, glatte Stäbchen können sekretorisch bedingt sein, etwa bei Duktektasie/Plasmazellmastitis. Feine, irreguläre lineare oder verzweigte Partikel sind dagegen suspekt.",
+      "en": "Coarse, smooth rods may be secretory, for example with duct ectasia/plasma cell mastitis. Fine, irregular linear or branching particles, in contrast, are suspicious.",
+      "fa": "ذرات درشت، صاف و میله‌ای ممکن است ترشحی باشند؛ برای مثال در اکتازی مجاری/ماستیت پلاسماسل. در مقابل، ذرات ظریف و نامنظم خطی یا شاخه‌دار مشکوک‌اند."
+    },
+    {
+      "de": "Die Gesamtausdehnung beschreibt das gesamte Kalkareal, nicht den Durchmesser eines einzelnen Partikels. Sie gehört in den Befund und in die Planung einer möglichen Gewebeabklärung oder Behandlung.",
+      "en": "Total extent describes the entire calcification field, not the diameter of an individual particle. It belongs in the report and in planning possible tissue diagnosis or treatment.",
+      "fa": "وسعت کلی کل ناحیهٔ کلسیفیکاسیون را توصیف می‌کند، نه قطر یک ذره را. این اندازه در گزارش و برنامه‌ریزی تشخیص بافتی یا درمان احتمالی لحاظ می‌شود."
+    },
+    {
+      "de": "Metaxa et al. untersuchten 241 biopsierte Befunde mit reinen Verkalkungen. Die beobachtete Assoziation ist kohortenabhängig und ersetzt weder die Morphologiebeurteilung noch ein klinisches Assessment.",
+      "en": "Metaxa et al. studied 241 biopsied pure-calcification findings. The observed association is cohort-dependent and replaces neither morphological assessment nor clinical assessment.",
+      "fa": "Metaxa و همکاران ۲۴۱ یافتهٔ بیوپسی‌شده با کلسیفیکاسیون خالص را بررسی کردند. همراهی مشاهده‌شده به کوهورت وابسته است و جای ارزیابی مورفولوژی یا ارزیابی بالینی را نمی‌گیرد."
+    },
+    {
+      "de": "In der untersuchten Biopsiekohorte war eine größere Gesamtausdehnung mit Malignität assoziiert. Daraus folgt kein hier belegter, von der Morphologie unabhängiger Effekt und keine individuelle Risikozahl. Die Ausdehnung in Millimetern dokumentieren; sie ist für Befundabgleich und Therapieplanung relevant.",
+      "en": "Greater total extent was associated with malignancy in the studied biopsy cohort. This does not establish a morphology-independent effect or an individual probability here. Document extent in millimetres; it matters for correlation and treatment planning.",
+      "fa": "در کوهورت بیوپسی بررسی‌شده، وسعت کلی بیشتر با بدخیمی همراه بود. اینجا اثر مستقل از مورفولوژی یا درصد خطر فردی اثبات نمی‌شود. وسعت به میلی‌متر ثبت شود؛ برای تطبیق یافته‌ها و برنامه‌ریزی درمان مهم است."
+    },
+    {
+      "de": "Morphologie und Verteilung werden zusammen mit Verlauf, Begleitbefunden und Patientenkontext bewertet. Das folgende historische Forschungsmodell illustriert zwei Deskriptoren; es legt keine klinische Kategorie oder Behandlung fest.",
+      "en": "Assess morphology and distribution together with evolution, associated findings and patient context. The historical research model below illustrates two descriptors; it does not assign a clinical category or treatment.",
+      "fa": "مورفولوژی و توزیع همراه روند، یافته‌های همراه و زمینهٔ بیمار ارزیابی می‌شوند. مدل پژوهشی تاریخی زیر دو توصیف را نشان می‌دهد؛ دستهٔ بالینی یا درمان را تعیین نمی‌کند."
+    },
+    {
+      "de": "Gezielt beachten",
+      "en": "Look specifically for",
+      "fa": "به‌طور هدفمند توجه کنید"
+    },
+    {
+      "de": "Warnzeichen auf einen Blick",
+      "en": "Warning signs at a glance",
+      "fa": "مرور علائم هشدار"
+    },
+    {
+      "de": "Suspekte Morphologie",
+      "en": "Suspicious morphology",
+      "fa": "مورفولوژی مشکوک"
+    },
+    {
+      "de": "Fein pleomorph oder fein linear/verzweigt; deutliche Form- und Größenheterogenität.",
+      "en": "Fine pleomorphic or fine linear/branching; marked variation in shape and size.",
+      "fa": "پلئومورفیک ظریف یا خطی ظریف/شاخه‌دار؛ تفاوت بارز در شکل و اندازه."
+    },
+    {
+      "de": "Duktale Verteilung",
+      "en": "Ductal distribution",
+      "fa": "توزیع داکتال"
+    },
+    {
+      "de": "Lineare oder segmentale Anordnung suspekter Partikel.",
+      "en": "Linear or segmental arrangement of suspicious particles.",
+      "fa": "آرایش خطی یا سگمنتال ذرات مشکوک."
+    },
+    {
+      "de": "Große Ausdehnung",
+      "en": "Large extent",
+      "fa": "وسعت زیاد"
+    },
+    {
+      "de": "Ein ausgedehntes Kalkareal im Gesamtbefund berücksichtigen.",
+      "en": "Consider an extensive calcification area in the overall assessment.",
+      "fa": "وسعت زیاد ناحیه کلسیفیکاسیون را در ارزیابی کلی لحاظ کنید."
+    },
+    {
+      "de": "Assoziierte Gewebeveränderung",
+      "en": "Associated tissue change",
+      "fa": "تغییر بافتی همراه"
+    },
+    {
+      "de": "Begleitende Masse oder Architekturstörung.",
+      "en": "An associated mass or architectural distortion.",
+      "fa": "توده یا دیستورشن معماری همراه."
+    },
+    {
+      "de": "Stabilität ≠ sicher benign",
+      "en": "Stability ≠ certain benignity",
+      "fa": "پایداری ≠ خوش‌خیمی قطعی"
+    },
+    {
+      "de": "DCIS kann langsam wachsen und über Jahre bildmorphologisch unverändert bleiben. Stabilität entkräftet eine suspekte Morphologie daher nicht.",
+      "en": "DCIS may grow slowly and remain unchanged on imaging for years. Stability therefore does not negate suspicious morphology.",
+      "fa": "DCIS ممکن است آهسته رشد کند و سال‌ها در تصویربرداری بدون تغییر بماند. بنابراین پایداری، مورفولوژی مشکوک را منتفی نمی‌کند."
+    },
+    {
+      "de": "Zum natürlichen Verlauf:",
+      "en": "On natural history:",
+      "fa": "درباره سیر طبیعی:"
+    },
+    {
+      "de": "Ductal Carcinoma In Situ of the Breast",
+      "en": "Ductal Carcinoma In Situ of the Breast",
+      "fa": "Ductal Carcinoma In Situ of the Breast"
+    },
+    {
+      "de": "Hautverkalkungen",
+      "en": "Skin calcifications",
+      "fa": "کلسیفیکاسیون‌های پوستی"
+    },
+    {
+      "de": "MLO-Mammographie der rechten Brust mit Hautverkalkungen",
+      "en": "Right MLO mammogram with skin calcifications",
+      "fa": "ماموگرافی MLO راست با کلسیفیکاسیون‌های پوستی"
+    },
+    {
+      "de": "Rechts MLO",
+      "en": "Right MLO",
+      "fa": "MLO راست"
+    },
+    {
+      "de": "Vergrößerung gruppierter Hautverkalkungen der rechten Brust",
+      "en": "Magnified grouped skin calcifications in the right breast",
+      "fa": "بزرگ‌نمایی کلسیفیکاسیون‌های پوستی گروهی پستان راست"
+    },
+    {
+      "de": "CC-Mammographie der rechten Brust mit posteromedialen Hautverkalkungen",
+      "en": "Right CC mammogram with posteromedial skin calcifications",
+      "fa": "ماموگرافی CC راست با کلسیفیکاسیون‌های پوستی خلفی‌داخلی"
+    },
+    {
+      "de": "Rechts CC",
+      "en": "Right CC",
+      "fa": "CC راست"
+    },
+    {
+      "de": "Mehrere rundliche, teils zentral aufgehellte Verkalkungen liegen dicht gruppiert und oberflächlich in der posteromedialen Haut nahe der Inframammärfalte.",
+      "en": "Several round calcifications, some with central lucency, are tightly grouped and superficial in the posteromedial skin near the inframammary fold.",
+      "fa": "چند کلسیفیکاسیون گرد، برخی با مرکز شفاف، به‌صورت فشرده و سطحی در پوست خلفی‌داخلی نزدیک چین زیر پستان قرار دارند."
+    },
+    {
+      "de": "Case courtesy of Ammar Ashraf,",
+      "en": "Case courtesy of Ammar Ashraf,",
+      "fa": "مورد با سپاس از Ammar Ashraf،"
+    },
+    {
+      "de": "Radiopaedia.org, rID: 159211 (Vollbild)",
+      "en": "Radiopaedia.org, rID: 159211 (full image)",
+      "fa": "Radiopaedia.org، rID: 159211 (تصویر کامل)"
+    },
+    {
+      "de": "Vaskuläre Verkalkungen",
+      "en": "Vascular calcifications",
+      "fa": "کلسیفیکاسیون‌های عروقی"
+    },
+    {
+      "de": "MLO-Mammographie mit vaskulären Verkalkungen",
+      "en": "MLO mammogram with vascular calcifications",
+      "fa": "ماموگرافی MLO با کلسیفیکاسیون‌های عروقی"
+    },
+    {
+      "de": "MLO-Aufnahme",
+      "en": "MLO view",
+      "fa": "نمای MLO"
+    },
+    {
+      "de": "Zweite MLO-Aufnahme mit vaskulären Verkalkungen",
+      "en": "Second MLO view with vascular calcifications",
+      "fa": "نمای دوم MLO با کلسیفیکاسیون‌های عروقی"
+    },
+    {
+      "de": "Feine, dicht aneinanderliegende lineare Verkalkungen zeichnen den Verlauf mehrerer Gefäße in der Brust ab.",
+      "en": "Fine, closely spaced linear calcifications outline the course of several breast vessels.",
+      "fa": "کلسیفیکاسیون‌های خطی ظریف و نزدیک به هم، مسیر چند رگ پستان را ترسیم می‌کنند."
+    },
+    {
+      "de": "Case courtesy of Ayla Al Kabbani,",
+      "en": "Case courtesy of Ayla Al Kabbani,",
+      "fa": "مورد با سپاس از Ayla Al Kabbani،"
+    },
+    {
+      "de": "Radiopaedia.org, rID: 72331 (Vollbild)",
+      "en": "Radiopaedia.org, rID: 72331 (full image)",
+      "fa": "Radiopaedia.org، rID: 72331 (تصویر کامل)"
+    },
+    {
+      "de": "Wichtiger vaskulärer Hinweis",
+      "en": "Important vascular note",
+      "fa": "نکته مهم عروقی"
+    },
+    {
+      "de": "Vaskuläre Verkalkungen sind ein relevanter Marker für ein erhöhtes Risiko kardiovaskulärer Erkrankungen. Daher sollte eine klinische kardiovaskuläre Risikoevaluation erfolgen.",
+      "en": "Vascular calcifications are a relevant marker of increased cardiovascular risk. Clinical cardiovascular risk assessment should therefore be performed.",
+      "fa": "کلسیفیکاسیون‌های عروقی نشانگر مهم افزایش خطر بیماری‌های قلبی‌عروقی هستند؛ بنابراین ارزیابی بالینی خطر قلبی‌عروقی باید انجام شود."
+    },
+    {
+      "de": "Rim calcification",
+      "en": "Rim calcification",
+      "fa": "کلسیفیکاسیون حاشیه‌ای"
+    },
+    {
+      "de": "Mammographie mit dünner randständiger Rim-Kalzifikation",
+      "en": "Mammogram with thin peripheral rim calcification",
+      "fa": "ماموگرافی با کلسیفیکاسیون حاشیه‌ای نازک"
+    },
+    {
+      "de": "Rechts RMLO",
+      "en": "Right RMLO",
+      "fa": "RMLO راست"
+    },
+    {
+      "de": "CC-Mammographie mit Rim-Kalzifikation",
+      "en": "CC mammogram with rim calcification",
+      "fa": "ماموگرافی CC با کلسیفیکاسیون حاشیه‌ای"
+    },
+    {
+      "de": "Rechts RCC",
+      "en": "Right RCC",
+      "fa": "RCC راست"
+    },
+    {
+      "de": "Detailaufnahme der Rim-Kalzifikation",
+      "en": "Detail view of rim calcification",
+      "fa": "نمای جزئیات کلسیفیکاسیون حاشیه‌ای"
+    },
+    {
+      "de": "Dünne, glatte, randständige Verkalkung entlang einer rundlichen Läsion – typisch für eine verkalkte Ölzyste beziehungsweise Fettnekrose.",
+      "en": "Thin, smooth peripheral calcification along a rounded lesion – typical of a calcified oil cyst or fat necrosis.",
+      "fa": "کلسیفیکاسیون نازک و صاف در حاشیه ضایعه‌ای گرد؛ تیپیک کیست روغنی کلسیفیه یا نکروز چربی."
+    },
+    {
+      "de": "Radiopaedia.org, Fall 52694",
+      "en": "Radiopaedia.org, case 52694",
+      "fa": "Radiopaedia.org، مورد 52694"
+    },
+    {
+      "de": "LEHRMODELL",
+      "en": "TEACHING MODEL",
+      "fa": "مدل آموزشی"
+    },
+    {
+      "de": "Layering: Teacup- oder Meniskuszeichen",
+      "en": "Layering: teacup or meniscus sign",
+      "fa": "لایه‌لایه‌شدن: علامت فنجان یا منیسک"
+    },
+    {
+      "de": "Schematische Erklärung des Layering- beziehungsweise Teacup-Zeichens",
+      "en": "Diagram explaining the layering or teacup sign",
+      "fa": "طرح توضیحی علامت لایه‌لایه‌شدن یا فنجان"
+    },
+    {
+      "de": "Schema: CC versus echte 90°-Seitaufnahme (LM/ML)",
+      "en": "Schematic: CC versus true 90° lateral view (LM/ML)",
+      "fa": "شماتیک: CC در مقایسه با لترال واقعی ۹۰ درجه (LM/ML)"
+    },
+    {
+      "de": "Prinzip:",
+      "en": "Principle:",
+      "fa": "اصل:"
+    },
+    {
+      "de": "In CC erscheinen die Sedimente oft rundlich und unscharf. Besonders in einer echten 90°-Seitaufnahme (LM/ML), gelegentlich auch in MLO, wird die schwerkraftabhängige halbmond-/teetassenartige Schichtung am Zystenboden sichtbar. Entscheidend ist der Formwechsel zwischen Projektionen. Der aktuelle Deskriptor lautet „Layering“ (historisch: Milk of Calcium).",
+      "en": "On CC, sediment often appears rounded and smudgy. Especially on a true 90° lateral view (LM/ML), and sometimes on MLO, gravity-dependent semilunar/teacup-like layering at the cyst floor becomes visible. Shape change between projections is key. The current descriptor is “layering” (historically: milk of calcium).",
+      "fa": "در CC رسوب اغلب گرد و محو است. به‌ویژه در نمای لترال واقعی ۹۰ درجه (LM/ML) و گاهی در MLO، لایه‌بندی هلالی/فنجانی وابسته به جاذبه در کف کیست دیده می‌شود. تغییر شکل میان نماها مهم است. اصطلاح کنونی «لایه‌بندی» است (اصطلاح قدیمی: شیر کلسیم)."
+    },
+    {
+      "de": "Quelle zum Layering-Prinzip:",
+      "en": "Source for the layering principle:",
+      "fa": "منبع اصل لایه‌بندی:"
+    },
+    {
+      "de": "Kang BJ. J Korean Soc Radiol. 2026;87:437–459, Fig. 6. doi:10.3348/jksr.2026.0028.",
+      "en": "Kang BJ. J Korean Soc Radiol. 2026;87:437–459, Fig. 6. doi:10.3348/jksr.2026.0028.",
+      "fa": "Kang BJ. J Korean Soc Radiol. 2026;87:437–459, Fig. 6. doi:10.3348/jksr.2026.0028."
+    },
+    {
+      "de": "MLO-Mammographie mit grobscholliger Verkalkung",
+      "en": "MLO mammogram with coarse calcification",
+      "fa": "ماموگرافی MLO با کلسیفیکاسیون درشت"
+    },
+    {
+      "de": "Links MLO",
+      "en": "Left MLO",
+      "fa": "MLO چپ"
+    },
+    {
+      "de": "CC-Mammographie mit grobscholliger Verkalkung",
+      "en": "CC mammogram with coarse calcification",
+      "fa": "ماموگرافی CC با کلسیفیکاسیون درشت"
+    },
+    {
+      "de": "Links CC",
+      "en": "Left CC",
+      "fa": "CC چپ"
+    },
+    {
+      "de": "Grobe, unregelmäßig-lobulierte Verkalkung mit teils randständiger Aufhellung in einer umschriebenen Läsion der linken Brust.",
+      "en": "Coarse, irregularly lobulated calcification with partial peripheral lucency in a circumscribed left breast lesion.",
+      "fa": "کلسیفیکاسیون درشت با لوبولاسیون نامنظم و شفافیت نسبی حاشیه‌ای در ضایعه‌ای با حدود مشخص در پستان چپ."
+    },
+    {
+      "de": "Case courtesy of Subash Thapa,",
+      "en": "Case courtesy of Subash Thapa,",
+      "fa": "مورد با سپاس از Subash Thapa،"
+    },
+    {
+      "de": "Radiopaedia.org, rID: 57400 (Vollbild)",
+      "en": "Radiopaedia.org, rID: 57400 (full image)",
+      "fa": "Radiopaedia.org، rID: 57400 (تصویر کامل)"
+    },
+    {
+      "de": "Large rod-like Verkalkungen",
+      "en": "Large rod-like calcifications",
+      "fa": "کلسیفیکاسیون‌های میله‌ای درشت"
+    },
+    {
+      "de": "MLO-Aufnahme rechts mit Large-rod-like-Verkalkungen",
+      "en": "Right MLO view with large rod-like calcifications",
+      "fa": "نمای MLO راست با کلسیفیکاسیون‌های میله‌ای درشت"
+    },
+    {
+      "de": "CC-Aufnahme rechts mit Large-rod-like-Verkalkungen",
+      "en": "Right CC view with large rod-like calcifications",
+      "fa": "نمای CC راست با کلسیفیکاسیون‌های میله‌ای درشت"
+    },
+    {
+      "de": "Grobe, längliche Verkalkungen mit glatten, gut definierten Konturen verlaufen innerhalb eines Milchganges.",
+      "en": "Coarse, elongated calcifications with smooth, well-defined margins run within a milk duct.",
+      "fa": "کلسیفیکاسیون‌های درشت و کشیده با حاشیه صاف و مشخص درون مجرای شیری امتداد دارند."
+    },
+    {
+      "de": "Case courtesy of Edgar Lorente,",
+      "en": "Case courtesy of Edgar Lorente,",
+      "fa": "مورد با سپاس از Edgar Lorente،"
+    },
+    {
+      "de": "Radiopaedia.org, rID: 86379",
+      "en": "Radiopaedia.org, rID: 86379",
+      "fa": "Radiopaedia.org, rID: 86379"
+    },
+    {
+      "de": "Die Mammographie beurteilt den Kalk. Ultraschall und MRT ergänzen die Beurteilung des umgebenden Gewebes und helfen bei der weiteren Abklärung.",
+      "en": "Mammography assesses the calcifications. Ultrasound and MRI add information about the surrounding tissue and help guide further work-up.",
+      "fa": "ماموگرافی کلسیفیکاسیون را ارزیابی می‌کند. سونوگرافی و MRI اطلاعاتی درباره بافت اطراف می‌افزایند و به بررسی تکمیلی کمک می‌کنند."
+    },
+    {
+      "de": "Ein unauffälliger Ultraschall oder eine negative MRT hebt eine mammographisch begründete Biopsieindikation nicht automatisch auf.",
+      "en": "Normal ultrasound or a negative MRI does not automatically cancel a mammographically justified biopsy indication.",
+      "fa": "سونوگرافی طبیعی یا MRI منفی، اندیکاسیون بیوپسی مبتنی بر ماموگرافی را به‌طور خودکار لغو نمی‌کند."
+    },
+    {
+      "de": "Mammographische Kategorie bleibt maßgeblich",
+      "en": "The mammographic category remains decisive",
+      "fa": "دسته ماموگرافیک همچنان تعیین‌کننده است"
+    },
+    {
+      "de": "Negative MRT bei mammographischen Kalzifikationen: Was bedeutet das für die Biopsie?",
+      "en": "Negative MRI with mammographic calcifications: what does it mean for biopsy?",
+      "fa": "MRI منفی در کلسیفیکاسیون‌های ماموگرافیک: چه اثری بر تصمیم بیوپسی دارد؟"
+    },
+    {
+      "de": "Management bei negativer kontrastverstärkter MRT",
+      "en": "Management after negative contrast-enhanced MRI",
+      "fa": "اقدام پس از MRI منفی با تزریق"
+    },
+    {
+      "de": "Malignitätsrisiko vor MRT",
+      "en": "Malignancy risk before MRI",
+      "fa": "خطر بدخیمی پیش از MRI"
+    },
+    {
+      "de": "Einordnung",
+      "en": "Interpretation",
+      "fa": "تفسیر"
+    },
+    {
+      "de": "Biopsieindikation bleibt bei bestätigter mammographischer BI-RADS-Kategorie 4 oder 5 bestehen; eine negative MRT hebt sie nicht automatisch auf.",
+      "en": "Biopsy remains indicated for a confirmed mammographic BI-RADS category 4 or 5 finding; a negative MRI does not automatically cancel that indication.",
+      "fa": "در یافتهٔ تأییدشدهٔ ماموگرافیک BI-RADS 4 یا 5، اندیکاسیون بیوپسی باقی است؛ MRI منفی آن را به‌طور خودکار لغو نمی‌کند."
+    },
+    {
+      "de": "Fueger2021 modellierte bei reinem Mikrokalk ohne Begleitbefund eine mögliche Risikoreduktion nach negativer MRT. Die 22-%-Prätestschwelle ist ein Modellergebnis und keine Grenze zwischen 4A und 4B. Die Autoren schlugen für ausgewählte Fälle 6–12 Monate Überwachung vor; das ist kein prospektiv validiertes Biopsieersatz-Protokoll. Eine belastbare gepoolte Regel für 4A/4B/4C wurde nicht gezeigt. Bei bestätigter Kategorie 4/5 bleibt Gewebediagnostik Standard.",
+      "en": "Fueger2021 modelled possible risk reduction after negative MRI for pure microcalcifications without associated findings. The 22% pretest threshold is a model result, not a boundary between 4A and 4B. The authors proposed 6–12-month surveillance for selected cases; this is not a prospectively validated biopsy-replacement protocol. A robust pooled 4A/4B/4C rule was not established. Tissue diagnosis remains standard for confirmed category 4/5.",
+      "fa": "Fueger۲۰۲۱ کاهش احتمالی خطر پس از MRI منفی را برای میکروکلسیفیکاسیون خالص بدون یافتهٔ همراه مدل کرد. آستانهٔ پیش‌آزمون ۲۲٪ نتیجهٔ مدل است، نه مرز 4A و 4B. نویسندگان برای موارد منتخب پایش ۶ تا ۱۲ ماه را پیشنهاد کردند؛ این پروتکل آینده‌نگرِ اعتبارسنجی‌شدهٔ جایگزین بیوپسی نیست. قاعدهٔ تجمیعی معتبر برای 4A/4B/4C اثبات نشد. در دستهٔ تأییدشدهٔ 4/5، تشخیص بافتی استاندارد باقی می‌ماند."
+    },
+    {
+      "de": "Quellen:",
+      "en": "Sources:",
+      "fa": "منابع:"
+    },
+    {
+      "de": "ACR: Kategorien und Management",
+      "en": "ACR: categories and management",
+      "fa": "ACR: دسته‌ها و اقدام"
+    },
+    {
+      "de": "Fueger et al., The Breast 2021 – Metaanalyse zur ergänzenden MRT",
+      "en": "Fueger et al., The Breast 2021 – meta-analysis of supplementary MRI",
+      "fa": "Fueger و همکاران، The Breast 2021؛ متاآنالیز MRI تکمیلی"
+    },
+    {
+      "de": "Vier Merkmale systematisch beurteilen: Partikelgröße, Morphologie, Verteilung und Gesamtausdehnung. Die Größe allein beweist weder Benignität noch Malignität.",
+      "en": "Assess four features systematically: particle size, morphology, distribution and total extent. Size alone proves neither benignity nor malignancy.",
+      "fa": "چهار ویژگی را نظام‌مند بررسی کنید: اندازه ذرات، مورفولوژی، توزیع و وسعت کل. اندازه به‌تنهایی نه خوش‌خیمی و نه بدخیمی را اثبات می‌کند."
+    },
+    {
+      "de": "2D-Vergrößerungsaufnahmen zeigen die Kalkdetails; DBT ergänzt den räumlichen Kontext. Typisch benigne Muster wie Coarse (klassisch popcornartig), Rim, sekretorische Stäbchen und Layering sicher erkennen.",
+      "en": "2D magnification views show calcification detail; DBT adds spatial context. Recognise typically benign patterns such as coarse (classically popcorn-like), rim, secretory rods and layering.",
+      "fa": "نماهای بزرگ‌نمایی دوبعدی جزئیات کلسیفیکاسیون را نشان می‌دهند؛ DBT زمینهٔ فضایی را تکمیل می‌کند. الگوهای تیپیک خوش‌خیم مانند درشت (کلاسیک پاپ‌کورنی)، حاشیه‌ای، میله‌های ترشحی و لایه‌بندی را بشناسید."
+    },
+    {
+      "de": "Morphologie und Verteilung gemeinsam bewerten: Fein pleomorpher oder fein linearer/verzweigter Kalk in linearer oder segmentaler Anordnung ist besonders suspekt.",
+      "en": "Assess morphology and distribution together: fine pleomorphic or fine linear/branching calcifications in a linear or segmental arrangement are particularly suspicious.",
+      "fa": "مورفولوژی و توزیع را با هم ارزیابی کنید؛ کلسیفیکاسیون پلئومورفیک ظریف یا خطی ظریف/شاخه‌دار با آرایش خطی یا سگمنتال به‌ویژه مشکوک است."
+    },
+    {
+      "de": "Auch langfristige Stabilität schließt DCIS bei suspekter Morphologie nicht aus.",
+      "en": "Even long-term stability does not exclude DCIS when morphology is suspicious.",
+      "fa": "حتی پایداری طولانی‌مدت در صورت وجود مورفولوژی مشکوک، DCIS را رد نمی‌کند."
+    },
+    {
+      "de": "Suspekter Mikrokalk kann DCIS oder ein invasives Karzinom mit intraduktaler Komponente begleiten. Das Bild beweist keine bestimmte Histologie.",
+      "en": "Suspicious microcalcifications may accompany DCIS or an invasive carcinoma with an intraductal component. Imaging does not prove a particular histology.",
+      "fa": "میکروکلسیفیکاسیون مشکوک می‌تواند همراه DCIS یا کارسینوم مهاجم با جزء داخل‌مجرایی باشد. تصویر، بافت‌شناسی مشخصی را اثبات نمی‌کند."
+    },
+    {
+      "de": "Ultraschall hilft bei Korrelatsuche und Biopsieplanung; MRT ergänzt Gewebe- und Ausdehnungsbeurteilung. Eine negative MRT schließt DCIS nicht vollständig aus.",
+      "en": "Ultrasound helps find a correlate and plan biopsy; MRI adds tissue and extent assessment. Negative MRI does not completely exclude DCIS.",
+      "fa": "سونوگرافی به یافتن تطابق و برنامه‌ریزی بیوپسی کمک می‌کند؛ MRI ارزیابی بافت و وسعت را تکمیل می‌کند. MRI منفی، DCIS را به‌طور کامل رد نمی‌کند."
+    },
+    {
+      "de": "Bei bestätigter mammographischer Kategorie 4 oder 5 bleibt Gewebediagnostik Standard. MRT-gestützter Biopsieverzicht ist eine begrenzte Forschungsfrage; negative MRT allein verordnet keine Herabstufung oder Verlaufskontrolle.",
+      "en": "Tissue diagnosis remains standard for confirmed mammographic category 4 or 5. MRI-supported biopsy avoidance is a limited research question; negative MRI alone prescribes neither downgrading nor surveillance.",
+      "fa": "در دستهٔ ماموگرافیک تأییدشدهٔ 4 یا 5، تشخیص بافتی استاندارد است. صرف‌نظر از بیوپسی با کمک MRI پرسش پژوهشی محدودی است؛ MRI منفی به‌تنهایی کاهش دسته یا پیگیری تجویز نمی‌کند."
+    }
+  ]
+}

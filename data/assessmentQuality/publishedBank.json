@@ -15925,6 +15925,231 @@
       "status": "AUTHOR_FULL_ORIGINAL_POOL_SHARED_PROPOSALS_UNAPPLIED_REVIEW_PENDING"
     },
     {
+      "route": "/abdomen/leber/haemangiom",
+      "topicId": "haemangiom",
+      "learningGoals": [
+        {
+          "id": "nature-ultrasound",
+          "text": {
+            "de": "Vaskuläre Natur und kontextgebundene sonographische Diagnosekriterien unterscheiden.",
+            "en": "Distinguish vascular nature and context-dependent ultrasound diagnostic criteria.",
+            "fa": "ماهیت عروقی و معیارهای تشخیص سونوگرافیک وابسته به زمینه را تفکیک کنید."
+          },
+          "questionIds": [
+            "haemangiom-de-01",
+            "haemangiom-de-02"
+          ],
+          "cardIds": [
+            "haemangiom-01-definition",
+            "haemangiom-02-epidemiologie",
+            "haemangiom-03-sono-klassisch"
+          ]
+        },
+        {
+          "id": "dynamic-pattern",
+          "text": {
+            "de": "Periphere diskontinuierliche Knoten, zentripetale Füllung und Blutpoolvergleich über die Phasen erkennen.",
+            "en": "Recognise peripheral discontinuous nodules, centripetal fill-in and phase-matched blood-pool behaviour.",
+            "fa": "ندول‌های محیطی ناپیوسته، پرشدن مرکزگرا و رفتار مشابه مخزن خون در همان فاز را بشناسید."
+          },
+          "questionIds": [
+            "haemangiom-de-03",
+            "haemangiom-de-04",
+            "haemangiom-de-07"
+          ],
+          "cardIds": [
+            "haemangiom-04-ct-muster",
+            "haemangiom-05-iris",
+            "haemangiom-08-t1c-dynamik"
+          ]
+        },
+        {
+          "id": "mri-diffusion",
+          "text": {
+            "de": "T2-Helligkeit und DWI/ADC als kombinierten Hinweis statt isolierten Gutartigkeitsbeweis interpretieren.",
+            "en": "Interpret T2 brightness and DWI/ADC together rather than as isolated proof of benignity.",
+            "fa": "روشنایی T2 و DWI/ADC را ترکیبی تفسیر کنید، نه شاهد منفرد خوش‌خیمی."
+          },
+          "questionIds": [
+            "haemangiom-de-05",
+            "haemangiom-de-06"
+          ],
+          "cardIds": [
+            "haemangiom-06-t2",
+            "haemangiom-07-dwi-adc"
+          ]
+        },
+        {
+          "id": "variant-limits",
+          "text": {
+            "de": "Flash-filling und Sklerosierung unterscheiden und unklare Läsionen weiter charakterisieren.",
+            "en": "Distinguish flash-filling from sclerosis and further characterise indeterminate lesions.",
+            "fa": "پرشدن سریع را از اسکلروز افتراق دهید و ضایعات نامعین را بیشتر بررسی کنید."
+          },
+          "questionIds": [
+            "haemangiom-de-08"
+          ],
+          "cardIds": [
+            "haemangiom-09-gross",
+            "haemangiom-10-atypisch-definition"
+          ]
+        }
+      ],
+      "status": "AUTHOR_UNREVIEWED"
+    },
+    {
+      "route": "/abdomen/leber/hcc",
+      "topicId": "hcc",
+      "learningGoals": [
+        {
+          "id": "risk-context",
+          "text": {
+            "de": "Den geeigneten Kontext für die nichtinvasive HCC-Bilddiagnose prüfen.",
+            "en": "Check the appropriate context for noninvasive HCC imaging diagnosis.",
+            "fa": "زمینهٔ مناسب تشخیص غیرتهاجمی HCC با تصویربرداری را بررسی کنید."
+          },
+          "questionIds": [
+            "hcc-de-01"
+          ],
+          "cardIds": [
+            "hcc-01-risk"
+          ]
+        },
+        {
+          "id": "major-features",
+          "text": {
+            "de": "APHE, Wash-out und Kapsel mit korrekter Phasen-/Kontrastmittelzuordnung von typischen Mimics unterscheiden.",
+            "en": "Distinguish APHE, washout and capsule from typical mimics using appropriate phases and contrast agents.",
+            "fa": "APHE، واش‌اوت و کپسول را با لحاظ فاز و مادهٔ حاجب مناسب از تقلیدکننده‌های تیپیک افتراق دهید."
+          },
+          "questionIds": [
+            "hcc-de-02",
+            "hcc-de-03",
+            "hcc-de-04",
+            "hcc-de-09"
+          ],
+          "cardIds": [
+            "hcc-02-aphe",
+            "hcc-03-washout",
+            "hcc-04-capsule",
+            "hcc-09-dd-fnh"
+          ]
+        },
+        {
+          "id": "ancillary-mri",
+          "text": {
+            "de": "Hepatobiliäres Signal und Diffusion als unterstützende, nicht allein beweisende Merkmale einordnen.",
+            "en": "Classify hepatobiliary signal and diffusion as supportive rather than independently diagnostic features.",
+            "fa": "سیگنال هپاتوبیلیاری و دیفیوژن را ویژگی حمایتی بدانید، نه تشخیص مستقل."
+          },
+          "questionIds": [
+            "hcc-de-05",
+            "hcc-de-06"
+          ],
+          "cardIds": [
+            "hcc-05-hbp",
+            "hcc-06-dwi"
+          ]
+        },
+        {
+          "id": "invasion-infiltrative",
+          "text": {
+            "de": "Tumorgewebe in Venen und infiltrative Muster erkennen, ohne jede Tumorinvasion automatisch HCC zu nennen.",
+            "en": "Recognise tumour in vein and infiltrative patterns without automatically labelling every vascular tumour invasion HCC.",
+            "fa": "تومور داخل ورید و الگوی نفوذی را بشناسید، بدون آنکه هر تهاجم عروقی توموری را خودبه‌خود HCC بنامید."
+          },
+          "questionIds": [
+            "hcc-de-07",
+            "hcc-de-08"
+          ],
+          "cardIds": [
+            "hcc-07-tumour-vein",
+            "hcc-08-infiltrative"
+          ]
+        },
+        {
+          "id": "reporting-stage",
+          "text": {
+            "de": "Tumorlast, Gefäßinvasion und Ausbreitung als Bildgebungsanteil des klinischen Stagings strukturiert berichten.",
+            "en": "Report tumour burden, vascular invasion and spread as the imaging contribution to clinical staging.",
+            "fa": "بار تومور، تهاجم عروقی و انتشار را به‌عنوان سهم تصویربرداری در مرحله‌بندی بالینی ساختاریافته گزارش کنید."
+          },
+          "questionIds": [
+            "hcc-de-10"
+          ],
+          "cardIds": [
+            "hcc-10-reporting"
+          ]
+        }
+      ],
+      "status": "AUTHOR_UNREVIEWED"
+    },
+    {
+      "route": "/abdomen/leber/li-rads",
+      "topicId": "li-rads",
+      "learningGoals": [
+        {
+          "id": "eligibility",
+          "text": {
+            "de": "LI-RADS-Zielgruppe und technische Eignung vor der Kategorie prüfen.",
+            "en": "Check LI-RADS population and technical eligibility before categorisation.",
+            "fa": "پیش از تعیین رده، گروه هدف و کفایت فنی LI-RADS را بررسی کنید."
+          },
+          "questionIds": [
+            "li-rads-de-eligible"
+          ],
+          "cardIds": [
+            "li-rads-eligible"
+          ]
+        },
+        {
+          "id": "major-rule",
+          "text": {
+            "de": "Die LR-5-Regel bei 10–19 mm mit den v2018-Major-Features korrekt anwenden.",
+            "en": "Apply the v2018 LR-5 rule for 10–19 mm observations using major features.",
+            "fa": "قاعدهٔ LR-5 در اندازهٔ ۱۰ تا ۱۹ میلی‌متر را با ویژگی‌های اصلی نسخهٔ ۲۰۱۸ درست به‌کار برید."
+          },
+          "questionIds": [
+            "aq-atv-li-rads-de-major-rule"
+          ],
+          "cardIds": [
+            "aq-atv-li-rads-major-rule"
+          ]
+        },
+        {
+          "id": "specificity-boundaries",
+          "text": {
+            "de": "Grenzen von Ancillary Features und der HCC-Spezifität von LR-TIV benennen.",
+            "en": "State the limits of ancillary features and the HCC specificity of LR-TIV.",
+            "fa": "محدودیت ویژگی‌های کمکی و اختصاصیت LR-TIV برای HCC را بیان کنید."
+          },
+          "questionIds": [
+            "aq-atv-li-rads-de-ancillary-limit",
+            "aq-atv-li-rads-de-tiv-specificity"
+          ],
+          "cardIds": [
+            "aq-atv-li-rads-ancillary-limit",
+            "aq-atv-li-rads-tiv-specificity"
+          ]
+        },
+        {
+          "id": "lr4-next-step",
+          "text": {
+            "de": "Bei LR-4 Bildkontrolle und Biopsie anhand der konkreten klinischen Entscheidung abwägen.",
+            "en": "Weigh follow-up imaging against biopsy in LR-4 according to the clinical decision needed.",
+            "fa": "در LR-4 پیگیری تصویربرداری و بیوپسی را بر پایهٔ تصمیم بالینی موردنیاز بسنجید."
+          },
+          "questionIds": [
+            "li-rads-de-lr4"
+          ],
+          "cardIds": [
+            "li-rads-lr4"
+          ]
+        }
+      ],
+      "status": "AUTHOR_UNREVIEWED"
+    },
+    {
       "route": "/mamma/bildgebung/mrt/basics",
       "topicId": "mamma-mrt-basics",
       "status": "authored_pending_independent_review",
@@ -16087,6 +16312,308 @@
           ]
         }
       ]
+    },
+    {
+      "route": "/gehirn/vaskulaer/subarachnoidalblutung",
+      "topicId": "subarachnoidalblutung",
+      "learningGoals": [
+        {
+          "id": "negative-ct",
+          "text": {
+            "de": "Nach negativem CT den weiteren Weg aus Zeitfenster, Neurostatus und CT-Qualität ableiten.",
+            "en": "Choose the negative-CT pathway using timing, neurological status and CT quality.",
+            "fa": "مسیر پس از CT منفی را بر پایهٔ زمان، وضعیت عصبی و کیفیت CT انتخاب کنید."
+          },
+          "questionIds": [
+            "sab-q1"
+          ],
+          "cardIds": [
+            "sab-fc-4",
+            "sab-fc-7",
+            "sab-fc-8"
+          ]
+        },
+        {
+          "id": "modified-fisher",
+          "text": {
+            "de": "Modified-Fisher-Grade aus Blutdicke und IVH zuordnen und von der Originalskala unterscheiden.",
+            "en": "Assign modified Fisher grades from blood thickness and IVH and distinguish the original scale.",
+            "fa": "درجات فیشر اصلاح‌شده را از ضخامت خون و IVH تعیین و از مقیاس اصلی تفکیک کنید."
+          },
+          "questionIds": [
+            "sab-q2",
+            "sab-q3"
+          ],
+          "cardIds": [
+            "sab-fc-1",
+            "sab-fc-2",
+            "sab-fc-3"
+          ]
+        },
+        {
+          "id": "vascular-source",
+          "text": {
+            "de": "Blutverteilung als Suchhinweis nutzen und die kontextabhängige CTA-/DSA-Abklärung begründen.",
+            "en": "Use blood distribution as a search clue and justify context-dependent CTA/DSA work-up.",
+            "fa": "توزیع خون را سرنخ جست‌وجو بدانید و بررسی CTA/DSA متناسب با زمینه را توضیح دهید."
+          },
+          "questionIds": [
+            "sab-q4",
+            "sab-q6"
+          ],
+          "cardIds": [
+            "sab-fc-5"
+          ]
+        },
+        {
+          "id": "dci-deterioration",
+          "text": {
+            "de": "Verzögerte klinische Verschlechterung auf DCI prüfen, ohne sie mit Vasospasmus gleichzusetzen.",
+            "en": "Evaluate delayed clinical deterioration for DCI without equating it with vasospasm.",
+            "fa": "بدترشدن بالینی تأخیری را از نظر DCI بررسی کنید، بدون همسان‌دانستن آن با وازواسپاسم."
+          },
+          "questionIds": [
+            "sab-q5"
+          ],
+          "cardIds": [
+            "sab-fc-6"
+          ]
+        }
+      ],
+      "status": "BOUNDED_FULL_ORIGINAL_POOL_CONTENT_ACCEPTED",
+      "review": "brain/review-sab.json; clinical release separate"
+    },
+    {
+      "route": "/mamma/bildgebung/mammographie/verkalkungen",
+      "topicId": "mammographie-mikrokalk",
+      "status": "BOUNDED_FULL_ORIGINAL_POOL_CONTENT_ACCEPTED",
+      "learningGoals": [
+        {
+          "id": "calc08-characterise",
+          "text": {
+            "de": "Gezielte Detailaufnahmen wählen und typisch benigne sowie suspekte Partikelmorphologie beschreiben, ohne Größe allein als Diagnose zu verwenden.",
+            "en": "Choose targeted detail views and describe typically benign and suspicious particle morphology without treating size alone as diagnostic.",
+            "fa": "نماهای هدفمند جزئیات را انتخاب کنید و مورفولوژی تیپیک خوش‌خیم و مشکوک ذرات را بدون تشخیصی دانستن اندازهٔ منفرد توصیف کنید."
+          },
+          "questionIds": [
+            "mammographie-mikrokalk-de-size-alone",
+            "mammographie-mikrokalk-de-magnification",
+            "mammographie-mikrokalk-de-popcorn",
+            "mammographie-mikrokalk-de-milk-calcium",
+            "mammographie-mikrokalk-de-rods-versus-linear",
+            "mammographie-mikrokalk-de-amorphous-distribution",
+            "mammographie-mikrokalk-de-coarse-heterogeneous-size"
+          ],
+          "questionIdsByLanguage": {
+            "de": [
+              "mammographie-mikrokalk-de-size-alone",
+              "mammographie-mikrokalk-de-magnification",
+              "mammographie-mikrokalk-de-popcorn",
+              "mammographie-mikrokalk-de-milk-calcium",
+              "mammographie-mikrokalk-de-rods-versus-linear",
+              "mammographie-mikrokalk-de-amorphous-distribution",
+              "mammographie-mikrokalk-de-coarse-heterogeneous-size"
+            ],
+            "en": [
+              "mammographie-mikrokalk-en-size-alone",
+              "mammographie-mikrokalk-en-magnification",
+              "mammographie-mikrokalk-en-popcorn",
+              "mammographie-mikrokalk-en-milk-calcium",
+              "mammographie-mikrokalk-en-rods-versus-linear",
+              "mammographie-mikrokalk-en-amorphous-distribution",
+              "mammographie-mikrokalk-en-coarse-heterogeneous-size"
+            ],
+            "fa": [
+              "mammographie-mikrokalk-fa-size-alone",
+              "mammographie-mikrokalk-fa-magnification",
+              "mammographie-mikrokalk-fa-popcorn",
+              "mammographie-mikrokalk-fa-milk-calcium",
+              "mammographie-mikrokalk-fa-rods-versus-linear",
+              "mammographie-mikrokalk-fa-amorphous-distribution",
+              "mammographie-mikrokalk-fa-coarse-heterogeneous-size"
+            ]
+          },
+          "cardIds": [
+            "mammographie-mikrokalk-01",
+            "mammographie-mikrokalk-02",
+            "mammographie-mikrokalk-03",
+            "mammographie-mikrokalk-04",
+            "mammographie-mikrokalk-05",
+            "mammographie-mikrokalk-06",
+            "mammographie-mikrokalk-size",
+            "mammographie-mikrokalk-dbt",
+            "mammographie-mikrokalk-usmacro"
+          ]
+        },
+        {
+          "id": "calc08-distribution",
+          "text": {
+            "de": "Verteilungen unterscheiden und Morphologie und räumliche Architektur zusammen beschreiben, ohne eine historische Matrix als klinische Kategorie zu übernehmen.",
+            "en": "Distinguish distributions and describe morphology together with spatial architecture without adopting a historical matrix as the clinical category.",
+            "fa": "توزیع‌ها را تفکیک کنید و مورفولوژی و معماری فضایی را با هم توصیف کنید، بدون اینکه ماتریس تاریخی را دستهٔ بالینی بدانید."
+          },
+          "questionIds": [
+            "mammographie-mikrokalk-de-pleomorphic-segmental",
+            "mammographie-mikrokalk-de-highest-suspicion",
+            "mammographie-mikrokalk-de-regional-definition",
+            "mammographie-mikrokalk-de-segmental-apex"
+          ],
+          "questionIdsByLanguage": {
+            "de": [
+              "mammographie-mikrokalk-de-pleomorphic-segmental",
+              "mammographie-mikrokalk-de-highest-suspicion",
+              "mammographie-mikrokalk-de-regional-definition",
+              "mammographie-mikrokalk-de-segmental-apex"
+            ],
+            "en": [
+              "mammographie-mikrokalk-en-pleomorphic-segmental",
+              "mammographie-mikrokalk-en-highest-suspicion",
+              "mammographie-mikrokalk-en-regional-definition",
+              "mammographie-mikrokalk-en-segmental-apex"
+            ],
+            "fa": [
+              "mammographie-mikrokalk-fa-pleomorphic-segmental",
+              "mammographie-mikrokalk-fa-highest-suspicion",
+              "mammographie-mikrokalk-fa-regional-definition",
+              "mammographie-mikrokalk-fa-segmental-apex"
+            ]
+          },
+          "cardIds": [
+            "mammographie-mikrokalk-07",
+            "mammographie-mikrokalk-08",
+            "mammographie-mikrokalk-09",
+            "mammographie-mikrokalk-grouped",
+            "mammographie-mikrokalk-segmental"
+          ]
+        },
+        {
+          "id": "calc08-evolution",
+          "text": {
+            "de": "Technisch vergleichbare Voraufnahmen und Begleitbefunde einbeziehen; persistierend suspekte Morphologie trotz Stabilität abklären.",
+            "en": "Integrate technically comparable prior images and associated findings; investigate persistent suspicious morphology despite stability.",
+            "fa": "تصاویر قبلی با تکنیک قابل‌مقایسه و یافته‌های همراه را لحاظ کنید؛ مورفولوژی همچنان مشکوک را با وجود ثبات بررسی کنید."
+          },
+          "questionIds": [
+            "mammographie-mikrokalk-de-evolution-context",
+            "mammographie-mikrokalk-de-stable-suspicious",
+            "mammographie-mikrokalk-de-modifiers-not-score"
+          ],
+          "questionIdsByLanguage": {
+            "de": [
+              "mammographie-mikrokalk-de-evolution-context",
+              "mammographie-mikrokalk-de-stable-suspicious",
+              "mammographie-mikrokalk-de-modifiers-not-score"
+            ],
+            "en": [
+              "mammographie-mikrokalk-en-evolution-context",
+              "mammographie-mikrokalk-en-stable-suspicious",
+              "mammographie-mikrokalk-en-modifiers-not-score"
+            ],
+            "fa": [
+              "mammographie-mikrokalk-fa-evolution-context",
+              "mammographie-mikrokalk-fa-stable-suspicious",
+              "mammographie-mikrokalk-fa-modifiers-not-score"
+            ]
+          },
+          "cardIds": [
+            "mammographie-mikrokalk-10",
+            "mammographie-mikrokalk-stability",
+            "mammographie-mikrokalk-modifiers"
+          ]
+        },
+        {
+          "id": "calc08-management",
+          "text": {
+            "de": "Vollständig abgeklärte wahrscheinlich benigne Muster von biopsiebedürftigen Befunden unterscheiden und die Grenzen negativer Zusatz-MRT einordnen.",
+            "en": "Distinguish completely assessed probably benign patterns from findings requiring biopsy and interpret the limits of negative adjunct MRI.",
+            "fa": "الگوهای احتمالاً خوش‌خیم با بررسی کامل را از یافته‌های نیازمند بیوپسی تفکیک کنید و محدودیت MRI تکمیلی منفی را بسنجید."
+          },
+          "questionIds": [
+            "mammographie-mikrokalk-de-no-correlate",
+            "mammographie-mikrokalk-de-round-group-followup",
+            "mammographie-mikrokalk-de-mri-4a-selected",
+            "mammographie-mikrokalk-de-mri-4b-risk"
+          ],
+          "questionIdsByLanguage": {
+            "de": [
+              "mammographie-mikrokalk-de-no-correlate",
+              "mammographie-mikrokalk-de-round-group-followup",
+              "mammographie-mikrokalk-de-mri-4a-selected",
+              "mammographie-mikrokalk-de-mri-4b-risk"
+            ],
+            "en": [
+              "mammographie-mikrokalk-en-no-correlate",
+              "mammographie-mikrokalk-en-round-group-followup",
+              "mammographie-mikrokalk-en-mri-4a-selected",
+              "mammographie-mikrokalk-en-mri-4b-risk"
+            ],
+            "fa": [
+              "mammographie-mikrokalk-fa-no-correlate",
+              "mammographie-mikrokalk-fa-round-group-followup",
+              "mammographie-mikrokalk-fa-mri-4a-selected",
+              "mammographie-mikrokalk-fa-mri-4b-risk"
+            ]
+          },
+          "cardIds": [
+            "mammographie-mikrokalk-11",
+            "mammographie-mikrokalk-12",
+            "mammographie-mikrokalk-round-3",
+            "mammographie-mikrokalk-mri4a",
+            "mammographie-mikrokalk-mri4b5"
+          ]
+        }
+      ],
+      "review": "thorax-mamma/packet08-calcification-independent-review.json; whole media/browser/scientific release separate"
+    },
+    {
+      "route": "/thorax/bronchiolitis",
+      "topicId": "bronchiolitis",
+      "learningGoals": [
+        {
+          "id": "pattern",
+          "text": {
+            "de": "Ein beschriebenes Tree-in-bud-Muster von anderen nodulären Verteilungen unterscheiden.",
+            "en": "Distinguish described tree-in-bud from other nodular distributions.",
+            "fa": "الگوی توصیف‌شدهٔ درخت در جوانه را از سایر توزیع‌های ندولی جدا کنید."
+          },
+          "questionIds": [
+            "bronchiolitis-de-pattern"
+          ],
+          "cardIds": [
+            "bronchiolitis-pattern"
+          ]
+        },
+        {
+          "id": "cause",
+          "text": {
+            "de": "Klinische Aspirationshinweise bei Tree-in-bud einordnen, ohne einen Erreger oder eine Ursache als bewiesen anzusehen.",
+            "en": "Interpret aspiration clues with tree-in-bud without treating a pathogen or cause as proven.",
+            "fa": "سرنخ‌های آسپیراسیون در درخت در جوانه را بدون اثبات‌دانستن عامل عفونی یا علت تفسیر کنید."
+          },
+          "questionIds": [
+            "bronchiolitis-de-cause"
+          ],
+          "cardIds": [
+            "bronchiolitis-cause"
+          ]
+        },
+        {
+          "id": "expiratory-air-trapping",
+          "text": {
+            "de": "Zur Prüfung von Air-Trapping die Atemphase und die erwartete Dichte-/Volumenänderung benennen.",
+            "en": "State the respiratory phase and expected attenuation/volume change for assessing air trapping.",
+            "fa": "فاز تنفسی و تغییر دانسیته/حجم موردانتظار برای بررسی حبس هوا را بیان کنید."
+          },
+          "questionIds": [
+            "bronchiolitis-de-expiratory-air-trapping"
+          ],
+          "cardIds": [
+            "bronchiolitis-expiratory-air-trapping"
+          ]
+        }
+      ],
+      "status": "BOUNDED_FULL_ORIGINAL_POOL_CONTENT_ACCEPTED",
+      "review": "thorax-mamma/review-packet09-bronchiolitis.json; whole media/browser/scientific release separate"
     }
   ]
 }

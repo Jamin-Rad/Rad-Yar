@@ -1,0 +1,17 @@
+# SAB original pool revision — author checkpoint in progress
+
+Author root, 2026-10-25. Existing route `/gehirn/vaskulaer/subarachnoidalblutung`; actual consumer `SubarachnoidLesson.jsx`, canonical `data/sab.js`,6 originalMCQ and8cards in DE/EN/FA. No count quota or added image.
+
+Goals: choose a time/quality/neurostatus-dependent negative-CT pathway; apply Modified Fisher anatomy rather than a fabricated individual probability; distinguish diffuse aneurysmal concern from unresolved classic perimesencephalic CTA/DSA strategy; interpret evolving complications and blood-distribution search clues.
+
+Fresh source reading: user Gehirn.pdf physical15–17/printed14–16 text and all3 rendered page images. PDF teaches ORIGINAL Fisher I–IV, not Modified Fisher0–4. Preserve this distinction explicitly. Its blanket24-hour sensitivity, edema-excludes-SAH, highest-sensitivityFLAIR and automatic-negativeCTA-DSA assertions must not override contemporary source qualifications. Treatment24–48h and nimodipine-as-vasospasm-prevention are superseded by AHA/ASA2023 prompt/preferably24h and functional-outcome/DCI framing. Existing prior edits already repair many of these; inspect current actual text before alleging defects.
+
+Primary source Hoh2023 DOI10.1161/STR.0000000000000436 actual guideline from originalPDF public mirror emergencymed.org.il (publisher direct403). Diagnostic recommendations and supportive text physical9–11/e322–324 read: <6h highquality neuroradiology/no newdeficit vs >6h/newdeficit CTthenLP; atypical presentation limits; diffuseSAH/highaneurysmconcern negativeCTA DSA; perimesencephalic equipoise. Physical25/e338 DCI synopsis/monitoring read: clinical deterioration after other causes excluded, mostlydays4–14; arterial narrowing and DCI are associated rather than synonymous. Additional affected treatment ranges require reading before authoring.
+
+Frontera2006 DOI10.1227/01.NEU.0000218821.34014.1B actual original7pagePDF via cmp-manual.wbs.cz mirror: abstract and definitions/table read, symptomaticvasospasm outcome in selected tirilazad placebo cohorts, grades2/3 crudeOR similar, not individual-risk calculator. Avoid borderline1mm question; use clearlythin/thick patterns. Claassen2001 existing citation describes earlier basis; do not misattribute2006validation to2001.
+
+Blood-distribution source supplement: van der Jagt1999 DOI10.1212/WNL.52.1.34 PMID9921845 original abstract read viaPubMed search andpublisher:168consecutivepatients, distribution offers ACA/ACoA clues with imperfectagreement; not proof or universal most-common-location ranking. No fullpaywalledbody claim.
+
+Observed author targets: q3 asks anatomy but offered no anatomical answer; q6 population-ranking stem with localization rationale; q1/4 absurd/absolute distractors; all6 lack option-specific feedback. Correct keys stable A,D,B,B,C,B; IDs stable. q2 retain application with clearlythick2mm rather than exactboundary; q5 contextual delayeddeterioration rather than rigidtiming-only recall. Eightcards retain retrievalcoverage, correct temporal conflation and GermanEnglish diagram leak. Mirror all affected teaching in3languages with exactdelta ledger. SelfCheck consumes firstactualquestion: use its selected-choice rationale rather than generic retry. Existing media untouched; no diagnosis-from-unverifiedframe claim.
+
+Independent reviewer will reread all6Q/8cards/changedteaching/currentactualsources. Author status does not constitute independent acceptance, fullmedia/browser validation or Dr.Zia scientific release.

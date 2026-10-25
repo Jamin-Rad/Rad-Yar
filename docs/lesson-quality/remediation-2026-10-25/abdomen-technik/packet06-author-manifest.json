@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_FULL_PACKET_OVERLAY_READY_INDEPENDENT_REVIEW_REQUIRED",
+  "routes": [
+    "/abdomen/leber/haemangiom",
+    "/abdomen/leber/hcc",
+    "/abdomen/leber/li-rads"
+  ],
+  "originalScope": {
+    "questionConcepts": 20,
+    "localizedQuestionObjects": 60,
+    "cardTriads": 22,
+    "allManuallyReadTriads": true
+  },
+  "currentScope": {
+    "questionConceptsPerLanguage": 23,
+    "localizedQuestionObjects": 69,
+    "cardTriads": 25,
+    "newGapPairs": 3
+  },
+  "tests": {
+    "sharedOriginalCurrentBeforeDeepEqual": 40,
+    "actualCanonicalGlobalObjectsDeepEqual": 54,
+    "overlayObjects": 94,
+    "specificWrongFeedbackFields": 207,
+    "originalCorrectKeysRetained": true,
+    "learningGoalsResolved": 13,
+    "otherHccPlanningAndNextStepsDeepEqual": true,
+    "undeclaredLessonCopyChanges": 0,
+    "SSR": "9/9 technical actual page/component render; browser/session fixtures, not visual/auth acceptance"
+  },
+  "ownProductionFiles": [
+    "data/haemangiomaTraining.js",
+    "data/haemangiomaLesson.js",
+    "app/abdomen/leber/haemangiom/LessonContent.jsx",
+    "app/abdomen/leber/hcc/page.js",
+    "data/abdomenHccPlanning.js",
+    "app/abdomen/leber/li-rads/page.js",
+    "data/assessmentQuality/atvLiver.js"
+  ],
+  "sourceHashes": {
+    "data/haemangiomaTraining.js": "d9d12ee79f802bd321a374ca126555c27eba2a11a9031b5ada81bf3d450916af",
+    "data/haemangiomaLesson.js": "d33379fc199be56f6bcf87f8ced572df20c8ad4563360a51cf57bb2e1a56ae13",
+    "app/abdomen/leber/haemangiom/LessonContent.jsx": "23426dcf1dece2cf6fa3980569dc5e97177d29685ce34502255ab88ec8388adc",
+    "app/abdomen/leber/hcc/page.js": "29e30718c7a578213e83df258a09b34c27b724f549964faee949e3189cba2803",
+    "data/abdomenHccPlanning.js": "376543b1d0a516cdfa97fed94a516aab7e2bddedaa4aaa6aa264eca2c33f93b4",
+    "app/abdomen/leber/li-rads/page.js": "d26df2b26129debd4973463786c40df613acaaad08a65187ae3182a4cfabbab5",
+    "data/assessmentQuality/atvLiver.js": "5f7c685265d77256e57ca5a7756a0c48e30edf73c082b2dfce9bbeb700d1c5a2"
+  },
+  "sharedProposals": "shared-bank-patches-packet06.json",
+  "explicitIntegration": "30HCCquestion-locales+10HCCcardtriads are only proposals. Global HCC still equals currentBefore; author overlay is not actual GlobalAfter. Inline hcc03 exact after-snapshot requires Root canonical integration before release. NewLI-RADS3pairs in original canonical producer, no supplementary override.",
+  "gates": {
+    "SRC": "AUTHOR_BOUNDED_PRIMARY_VERIFICATION_REVIEW_PENDING",
+    "EDU": "AUTHOR_FULL_ORIGINAL_POOL_REVISED_REVIEW_PENDING",
+    "ASM": "AUTHOR_CANONICAL_AND_OVERLAY_CHECKS_PASS_PEER_PENDING",
+    "LNG": "AUTHOR_ALL3LOCALE_FIELDSETS_READ_PEER_PENDING",
+    "UX": "NOT_ACTUAL_BROWSER_CHECKED"
+  },
+  "limits": [
+    "No independent clinical acceptance or Dr.Zia scientific approval",
+    "No wholePDF/media/fullpatientstudy/contributor reapproval",
+    "Existing detailed HCC treatment decisions outside changed assessment scope not fully recertified",
+    "Actual browser/RTL/feedback interactions and publication remain parent checks"
+  ]
+}

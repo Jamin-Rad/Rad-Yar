@@ -1,0 +1,71 @@
+{
+  "baseline": "../packet08-calcification-baseline-review.json",
+  "dispositions": [
+    {
+      "id": "CALC08-ASM-01",
+      "status": "AUTHOR_REPAIR_READY_FOR_INDEPENDENT_RETEST",
+      "repair": "All18 retained-ID/key questions now use comparative clinically related alternatives and three localized individual wrong rationales; final author read removed remaining obvious omission wording in selected options.",
+      "remaining": "Independent discrimination review pending."
+    },
+    {
+      "id": "CALC08-ASM-02",
+      "status": "AUTHOR_REPAIR_READY_FOR_INDEPENDENT_RETEST",
+      "repair": "Four observable goals map all18 questions and22 cards. Clinical text scenarios replace page/model-output recall; the historical-model question applies a new associated distortion. No image quota or unverified diagnostic frame added.",
+      "remaining": "Goals central admission and actual browser launch pending; visual-recognition coverage remains bounded."
+    },
+    {
+      "id": "CALC08-SRC-01",
+      "status": "AUTHOR_REPAIR_READY_FOR_INDEPENDENT_RETEST",
+      "repair": "Question/card/lesson MRI4A/B/C/5 messages agree: confirmed4/5 standard tissue diagnosis;6–12-month surveillance is an author research proposal;22% is a pretest modelling result; no general pooled subcategory management rule asserted.",
+      "remaining": "Independent science re-read of primary scope pending."
+    },
+    {
+      "id": "CALC08-SRC-02",
+      "status": "AUTHOR_REPAIR_READY_FOR_INDEPENDENT_RETEST",
+      "repair": "Fixed amorphous→coarse heterogeneous risk ladder removed; same suspicious-descriptor label and cohort caveat, repaired card06.",
+      "remaining": "Independent review pending."
+    },
+    {
+      "id": "CALC08-EDU-01",
+      "status": "AUTHOR_REPAIR_READY_FOR_INDEPENDENT_RETEST",
+      "repair": "Historical model labelled at selector/result/caption; punctate predictor distinguished from current Round; selected194/100 excision populations and absent inputs explicit; no risk/action shortcut; worked clinical counterexample added.25 raw cells unchanged.",
+      "remaining": "Real browser matrix/keyboard/readability test pending."
+    },
+    {
+      "id": "CALC08-SRC-03",
+      "status": "AUTHOR_REPAIR_READY_FOR_INDEPENDENT_RETEST",
+      "repair": "All18 questions and22 cards carry actual source metadata plus per-ID anchors and4goal mapping; actual global consumers tested.",
+      "remaining": "Source ledger distinguishes original abstracts, official documents, secondary teaching support and unavailable full tables."
+    },
+    {
+      "id": "CALC08-SRC-04",
+      "status": "AUTHOR_REPAIR_READY_FOR_INDEPENDENT_RETEST",
+      "repair": "Unsupported morphology-independent extent claim narrowed to a cohort association; precise PPV chart removed because original cell table not obtained. Extent retained for description/planning.",
+      "remaining": "Exact historical PPV values are not taught or claimed verified."
+    },
+    {
+      "id": "CALC08-REV-01",
+      "status": "AUTHOR_REPAIR_READY_FOR_INDEPENDENT_RETEST",
+      "repair": "Unverified September2026 clinical-review date replaced in DE/EN/FA with source/editorial update25October2026 and Dr.Zia scientific approval pending.",
+      "remaining": "No clinical approval or publication implied."
+    },
+    {
+      "id": "CALC08-LNG-01",
+      "status": "AUTHOR_REPAIR_READY_FOR_INDEPENDENT_RETEST",
+      "repair": "Current Coarse/Round/Layering terms precede explicitly historical synonyms in affected bank and visible retrieval teaching.",
+      "remaining": "Independent semantic review and browser RTL pending."
+    },
+    {
+      "id": "CALC08-SRC-05",
+      "status": "AUTHOR_REPAIR_READY_FOR_INDEPENDENT_RETEST",
+      "repair": "Correct2026;87:437–459 doi citation. PublisherCCBYNC4.0 read; no separate commercial permission found. Embedded image removed, normal external source retained; existing native model clearly identified.",
+      "remaining": "No blanket image-rights clearance. LegacyPNG remains unused."
+    },
+    {
+      "id": "CALC08-LNG-02",
+      "status": "AUTHOR_REPAIR_READY_FOR_INDEPENDENT_RETEST",
+      "repair": "Adjacent accessible DE/EN/FA equivalents cover every label in5morphology+5distribution strips and native layering schematic; corrected true90°LM/ML label.",
+      "remaining": "Rendered Persian direction, spacing, zoom and readability pending Root/browser."
+    }
+  ]
+}
