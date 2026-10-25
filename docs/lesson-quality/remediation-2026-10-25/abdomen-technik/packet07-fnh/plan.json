@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-25",
+  "route": "/abdomen/leber/fnh",
+  "author": "/root/design_inventory",
+  "status": "PLAN_BEFORE_PRODUCTION_EDITS",
+  "scope": {
+    "originalQuestionsPerLanguage": 10,
+    "originalCardTriads": 12,
+    "newQuotaItems": false,
+    "productionOwnership": [
+      "app/abdomen/leber/fnh/page.js"
+    ],
+    "sharedProposalOnly": [
+      "data/questions.js",
+      "data/flashcards.js"
+    ]
+  },
+  "sources": {
+    "pdf": {
+      "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Abdomen.pdf",
+      "physicalPages": [
+        14,
+        15
+      ],
+      "printedPages": [
+        13,
+        14
+      ],
+      "actualTextRead": [
+        "tmp/abdomen-completion/p014.txt",
+        "tmp/abdomen-completion/p015.txt"
+      ],
+      "actualImagesInspected": [
+        "tmp/abdomen-completion/page-14.png",
+        "tmp/abdomen-completion/page-15.png"
+      ],
+      "coverage": "Definition, demographic context, B-mode/Doppler, CT/MRI native and dynamic pattern, central scar, atypical appearances. Preserve existing4-image montage and its known phase-label limitations."
+    },
+    "primaryRead": [
+      "ACG2024 actual original indexed FNH/imaging/management recommendations",
+      "EASL2016 original indexed pathology/imaging/management text and recommendation box",
+      "Bieze2012 PMID22733890 full primary abstract, prospective52patients lesions>2cm",
+      "Kim2023 PMID35920706 original indexed systematic-review objective; detailed results to read before HBP exception wording"
+    ]
+  },
+  "knownFindings": [
+    "OriginalQ04 duplicates hemangioma distractors A/D; several other distractors off-domain or explicit absolute cues. No original specific wrong-answer rationales.",
+    "SourcePDF scar70%/atypical20% are source-bound figures, not universal MRI visibility or requirement; keep essential scar nonobligatory and size/modality context, avoid universal prevalence question.",
+    "Second-most-common must specify benign solid liver tumour denominator, not all benign liver lesions.",
+    "Scar delayed enhancement must distinguish extracellular dynamic phase from hepatobiliary uptake of lesion.",
+    "Existing inline incorrect feedback repeats whole answer; add selected-option explanation."
+  ],
+  "learningGoals": [
+    {
+      "id": "fnh07-context",
+      "text": {
+        "de": "FNH als benigne regenerative Läsion einordnen und die Aussagekraft von Demografie und Sonographie begrenzen.",
+        "en": "Recognise FNH as a benign regenerative lesion and limit inferences from demographics and ultrasound.",
+        "fa": "FNH را ضایعه‌ای خوش‌خیم و رژنراتیو بدانید و استنباط از جمعیت‌شناسی و سونوگرافی را محدود کنید."
+      },
+      "questionSuffixes": [
+        "01",
+        "02",
+        "03"
+      ],
+      "cardIds": [
+        "fnh-01-definition",
+        "fnh-02-epidemiologie",
+        "fnh-03-sono",
+        "fnh-04-doppler"
+      ]
+    },
+    {
+      "id": "fnh07-dynamic",
+      "text": {
+        "de": "Das typische arterielle und spätere Muster von Angleichung, peripher-nodulärer Auffüllung und echtem Wash-out unterscheiden.",
+        "en": "Distinguish typical arterial and later equalisation from peripheral nodular fill-in and true washout.",
+        "fa": "الگوی شریانی و تطابق بعدی را از پرشدگی ندولار محیطی و واش‌اوت واقعی تفکیک کنید."
+      },
+      "questionSuffixes": [
+        "04",
+        "05"
+      ],
+      "cardIds": [
+        "fnh-05-ct",
+        "fnh-06-washout"
+      ]
+    },
+    {
+      "id": "fnh07-mri",
+      "text": {
+        "de": "Natives Signal, zentrale Narbe und hepatobiliäre Aufnahme zusammen bewerten, einschließlich fehlender Narbe und HCA-Überlappung.",
+        "en": "Integrate native signal, central scar and hepatobiliary uptake, including absent scars and HCA overlap.",
+        "fa": "سیگنال پایه، اسکار مرکزی و جذب هپاتوبیلیاری را با توجه به اسکار غایب و همپوشانی با HCA یکجا بسنجید."
+      },
+      "questionSuffixes": [
+        "06",
+        "07",
+        "08"
+      ],
+      "cardIds": [
+        "fnh-07-t1t2",
+        "fnh-08-narbe",
+        "fnh-09-narbe-haeufigkeit",
+        "fnh-11-dd-hcc"
+      ]
+    },
+    {
+      "id": "fnh07-management",
+      "text": {
+        "de": "Sicher typische asymptomatische FNH von unklaren atypischen Befunden trennen und gezielte weitere Einordnung statt automatischer Resektion wählen.",
+        "en": "Separate confidently typical asymptomatic FNH from indeterminate atypical findings and choose targeted evaluation rather than automatic resection.",
+        "fa": "FNH بی‌علامت و با تشخیص تیپیک مطمئن را از یافتهٔ آتیپیک نامشخص جدا کنید و بررسی هدفمند را به‌جای رزکسیون خودکار برگزینید."
+      },
+      "questionSuffixes": [
+        "09",
+        "10"
+      ],
+      "cardIds": [
+        "fnh-10-atypisch",
+        "fnh-12-reporting"
+      ]
+    }
+  ],
+  "chapterPlan": "Preserve existing6chapters/design. Add concise visible four goals in basics, strengthen context/contrast-agent and atypical decision caveats in their existing chapters, keep final TakeHome. No new chapter or media.",
+  "visualPlan": "Existing source montage and schematic retained exactly; no new image case or diagnostic scan invented. Browser and complete media provenance are separate gates.",
+  "independentReview": "Pending separate parent-assigned reviewer; no selfacceptance/build/release."
+}

@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_SINGLE_FIELD_REPAIR_READY_INDEPENDENT_RETEST",
+  "finding": "MSK13-LNG-JOINT-FA",
+  "file": "data/frakturbeschreibung.js",
+  "path": "FRAKTUR_FLASHCARDS[id=frakturbeschreibung-11-joint].explanation.fa",
+  "currentBefore": "این پارامترها تطابق مفصل، خطر آرتروز و برنامه جراحی را تعیین می‌کنند. در پیچیدگی اغلب CT لازم است.",
+  "after": "این پارامترها تطابق مفصل را توصیف می‌کنند و بر خطر آرتروز و برنامه‌ریزی جراحی اثر می‌گذارند. در پیچیدگی اغلب CT لازم است.",
+  "beforeSha256": "a935f44fcd2f80d20c743f6b70bedbe86a341692c6eb6d05900b9c5271aa58b9",
+  "afterSha256": "467c5a70541f1b46eeca7d89a4ed7a6833e0f6c3c669a8ee44f74c727e5e287a",
+  "productionTextFieldsChanged": 1,
+  "scope": "Exact FA qualifier only; CT remainder unchanged. No other MSK13 production edit.",
+  "independentReview": "design_inventory targeted reread requested"
+}

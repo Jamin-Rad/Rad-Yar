@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-25",
+  "author": "/root/brain_original_pools_next",
+  "status": "AUTHOR_READ_ALL_CURRENT_FIELDSETS_PEER_REPAIR_RETEST_PENDING",
+  "actualSource": "data/kavernom.js and direct actual route",
+  "beforeSnapshot": "tmp/assessment-quality/kavernom-original-before.json",
+  "afterSnapshot": "tmp/assessment-quality/kavernom-author-runtime.json",
+  "allOriginalsRead": {
+    "questionConcepts": 12,
+    "questionLocaleObjects": 36,
+    "cardTriads": 15,
+    "languageFields": [
+      "stems",
+      "fourchoices",
+      "key",
+      "correctfeedback",
+      "threewrongfeedbacks",
+      "cardfront/answer/explanation/category",
+      "changedteaching/goals/captions/alt"
+    ],
+    "beforeExistingWipPreserved": true
+  },
+  "sourcePagesActuallyRead": {
+    "file": "Gehirn.pdf",
+    "physical": [
+      31,
+      32
+    ],
+    "printed": [
+      30,
+      31
+    ],
+    "text": true,
+    "newPageRendersActuallyViewed": true,
+    "figurePanels": 9,
+    "wholePdfClaim": false
+  },
+  "translationAnchors": [
+    {
+      "concept": "Susceptibility / blooming",
+      "de": "Suszeptibilität / Blooming",
+      "en": "susceptibility / blooming",
+      "fa": "حساسیت مغناطیسی / سوسپتیبیلیتی / بلومینگ",
+      "sensitive": "MRIsusceptibility distinct from diagnostic sensitivity; three exactFAphrases improved inRepair01."
+    },
+    {
+      "concept": "Symptomatic hemorrhage",
+      "de": "Symptomatische intra- oder extraläsionale Blutung",
+      "en": "Symptomatic intralesional or extralesional haemorrhage",
+      "fa": "خونریزی علامت‌دار داخل یا خارج ضایعه",
+      "sensitive": "Acute/subacute attributable symptoms plus recentbleeding evidence; not standaloneMRIchange."
+    },
+    {
+      "concept": "DVA drainage",
+      "de": "Funktionelle Sammelvenendrainage",
+      "en": "Functional collector drainage",
+      "fa": "تخلیهٔ عملکردی ورید جمع‌کننده",
+      "sensitive": "Preserve normalbrain drainage; thrombosis distinctfromadjacentCMbloodproducts."
+    },
+    {
+      "concept": "Family context",
+      "de": "Multifokal ohne gemeinsameDVA/Strahlenanamnese",
+      "en": "Multifocal without sharedDVA/radiation history",
+      "fa": "چندکانونی بدون DVA مشترک یا سابقهٔ پرتودرمانی",
+      "sensitive": "Suspicion/counselling rather than inheritance proof."
+    }
+  ],
+  "media": {
+    "entireCasePayloadExact": true,
+    "teachingImagePayloadExact": true,
+    "caseGalleryZoomAccessSourceBlocksExact": true,
+    "currentFreezeHashes": [
+      {
+        "file": "public/kavernom/teaching/t1.jpeg",
+        "sha256": "0575469e9d00e5568b61c1f2aa864fa2806ac3078e5ea6f9706138e626e8734c"
+      },
+      {
+        "file": "public/kavernom/teaching/flair.jpeg",
+        "sha256": "5268ed255d6fbba598f5ce60e4379ab7ba6bcac3bce621f461bd852401da99a5"
+      },
+      {
+        "file": "public/kavernom/teaching/t2.jpeg",
+        "sha256": "d64d07744eee04f353b7a7626c7c8097ed74c0bddfe05e0165a9ca318668f81a"
+      },
+      {
+        "file": "public/kavernom/teaching/dwi.jpeg",
+        "sha256": "67bf53945c6f9ce2f9f3da4747d0952505c628c8bf1339d88ea5f585a3e2ea45"
+      },
+      {
+        "file": "public/kavernom/teaching/swi.jpeg",
+        "sha256": "3f76767965a9b2c96f0ae88bad5c762a15c6c341ad2c3c6289c4c73a95c3bcad"
+      },
+      {
+        "file": "public/kavernom/case-32602/flair.jpeg",
+        "sha256": "7767825dccc70776da171cd37a1bb46f4c207fea1227e87eae4094762b24d9d2"
+      },
+      {
+        "file": "public/kavernom/case-32602/dwi.jpeg",
+        "sha256": "c2330597dfe03c2d8357120e96576ed763a5135d1d7d4d4c248e8631be15f1ef"
+      },
+      {
+        "file": "public/kavernom/case-32602/t2.jpeg",
+        "sha256": "eec19347824c73e9be5468d213a6a38ded4d2ffadd78d817a10ae590a0e20873"
+      },
+      {
+        "file": "public/kavernom/case-32602/t1-postcontrast.jpeg",
+        "sha256": "9edc8ea17394b891ac71a76be25a5ef7543e08f93d94a90cc01dc08854275657"
+      }
+    ],
+    "limits": "No newbinaryassetwrites; no historicpre-editbinaryhashclaim or completeexternalstudy/rights/browserapproval."
+  },
+  "beforeSourceHashes": {
+    "tmp/assessment-quality/kavernom-original-before.js": "7fbc2f903423c692eb96e7f75268959c502c25f5f849ca5a1706d9c974fb1181",
+    "tmp/assessment-quality/kavernom-route-before.jsx": "efec8399cfdd8b4e16bb84c7b9856a797e1e9459e34e96a9f4a6e8583f54f2fa"
+  },
+  "afterSourceHashes": {
+    "data/kavernom.js": "ca24ec8b44420b69198860818b3b6d281811e602f1fa3400b8de82b6df2c7665",
+    "app/gehirn/vaskulaer/kavernom/page.js": "7bc2d99552d92c22a17dcce60289b9624efdb38fc5d079589d8620e4a063b230"
+  },
+  "checks": {
+    "actualGlobalObjects": 51,
+    "specificWrongFeedbackFields": 108,
+    "originalIdsKeysUnchanged": true,
+    "questionConcepts": 12,
+    "cardTriads": 15,
+    "newItems": 0,
+    "goals": 5,
+    "goalQuestionUnion": 12,
+    "goalCardUnion": 15,
+    "all51CanonicalGlobalObjectsDeepEqual": true,
+    "allExistingCaseAndMediaPayloadsUnchanged": true,
+    "caseGalleryZoomAccessSourceBlocksUnchanged": true,
+    "routeJsxSyntax": "PASS",
+    "exactDeltaPaths": 545,
+    "teachingDeltaPaths": 80
+  },
+  "repair01": "packet20-kavernom-review-repair01.json",
+  "limits": [
+    "Author self-review only; separate independent review and freshRepair01retest remain required.",
+    "No builds/servers/browser/Git/sharedsource mutations; no Dr.Zia approval."
+  ]
+}

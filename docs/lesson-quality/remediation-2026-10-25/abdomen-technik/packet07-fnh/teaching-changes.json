@@ -1,0 +1,450 @@
+{
+  "date": "2026-10-25",
+  "sourceFile": "app/abdomen/leber/fnh/page.js",
+  "fields": [
+    {
+      "path": "de.heroCards.0.label",
+      "currentBefore": "benigne Leberläsion",
+      "after": "benigner solider Lebertumor"
+    },
+    {
+      "path": "de.basics.items.0.text",
+      "currentBefore": "Benigne, regenerative Raumforderung der Leber ohne Therapiebedarf.",
+      "after": "Benigne regenerative Hyperplasie als lokale Reaktion auf veränderte arterielle Versorgung."
+    },
+    {
+      "path": "de.basics.items.1.text",
+      "currentBefore": "Nach dem Hämangiom die zweithäufigste gutartige Leberläsion, am ehesten bei jungen bis mittelalten Erwachsenen mit deutlicher Prädominanz bei Frauen.",
+      "after": "Nach dem Hämangiom der zweithäufigste gutartige solide Lebertumor; bevorzugt bei jungen bis mittelalten Frauen. Demografie allein unterscheidet FNH und HCA nicht."
+    },
+    {
+      "path": "de.basics.key",
+      "currentBefore": "Die FNH ist meist ein Zufallsbefund. Entscheidend sind die kräftige homogene arterielle Kontrastmittelaufnahme ohne Wash-out und – wenn vorhanden – die zentrale Narbe.",
+      "after": "Die FNH ist häufig ein Zufallsbefund. Das kombinierte native und dynamische Muster zählt; eine zentrale Narbe unterstützt die Diagnose, ist aber nicht erforderlich."
+    },
+    {
+      "path": "de.basics.learningGoals",
+      "after": [
+        "FNH als benigne regenerative Läsion einordnen und die Aussagekraft von Demografie und Sonographie begrenzen.",
+        "Das typische arterielle und spätere Muster von Angleichung, peripher-nodulärer Auffüllung und echtem Wash-out unterscheiden.",
+        "Natives Signal, zentrale Narbe und hepatobiliäre Aufnahme zusammen bewerten, einschließlich fehlender Narbe und HCA-Überlappung.",
+        "Sicher typische asymptomatische FNH von unklaren atypischen Befunden trennen und gezielte weitere Einordnung statt automatischer Resektion wählen."
+      ]
+    },
+    {
+      "path": "de.basics.goalsLabel",
+      "after": "Nach dieser Lektion"
+    },
+    {
+      "path": "de.mri.check.question",
+      "currentBefore": "Welche Kombination passt am besten zu einer typischen FNH?",
+      "after": "Welches früharterielle CT-Muster ist für eine typische FNH am ehesten zu erwarten?"
+    },
+    {
+      "path": "de.mri.check.options.0",
+      "currentBefore": "Homogene arterielle Aufnahme ohne Wash-out; eine zentrale Narbe kann vorhanden sein.",
+      "after": "Diskontinuierliche periphere Kontrastknoten"
+    },
+    {
+      "path": "de.mri.check.options.1",
+      "currentBefore": "Diskontinuierliche periphere Kontrastknoten mit zentripetaler Auffüllung.",
+      "after": "Kräftige, weitgehend homogene Anreicherung des Läsionsgewebes"
+    },
+    {
+      "path": "de.mri.check.options.2",
+      "currentBefore": "Arterielle Aufnahme mit anschließendem Wash-out; die hepatobiliäre Phase ist typischerweise hypointens.",
+      "after": "Ringförmige Randanreicherung um ein nicht anreicherndes Zentrum"
+    },
+    {
+      "path": "de.mri.check.options.3",
+      "after": "Keine messbare Anreicherung der gesamten Läsion"
+    },
+    {
+      "path": "de.mri.check.answer",
+      "currentBefore": 0,
+      "after": 1
+    },
+    {
+      "path": "de.mri.check.explanation",
+      "currentBefore": "Das erste Muster passt zur typischen FNH. Die beiden anderen Optionen erinnern eher an Hämangiom beziehungsweise hepatozelluläres Adenom; Einzelmerkmale ersetzen nicht die Gesamtbeurteilung.",
+      "after": "Typische FNH zeigt eine rasche kräftige arterielle Anreicherung; eine zentrale Narbe kann davon ausgespart sein. Die Einordnung benötigt auch spätere Phasen und natives Signal."
+    },
+    {
+      "path": "de.mri.check.wrongExplanations",
+      "after": [
+        "Diskontinuierliche periphere Knoten mit späterer zentripetaler Auffüllung passen eher zum klassischen Hämangiommuster.",
+        "",
+        "Eine ringförmige Randanreicherung ist ein anderes Muster als die arterielle Anreicherung des FNH-Gewebes und erfordert eine andere Differenzialdiagnose.",
+        "Fehlende Anreicherung passt nicht zur typischen hypervaskulären FNH. Die solide oder flüssige Natur und weitere Sequenzen sind zu prüfen."
+      ]
+    },
+    {
+      "path": "de.mri.tableRows.5.2",
+      "currentBefore": "in ca. 70 % der Fälle",
+      "after": "charakteristisch, aber nicht obligat; besonders in kleinen Läsionen nicht erkennbar"
+    },
+    {
+      "path": "de.mri.tableRows.6.2",
+      "currentBefore": "charakteristisch, aber nicht obligat",
+      "after": "bei extrazellulärem Kontrastmittel; von hepatobiliärer Aufnahme des Läsionsgewebes unterscheiden"
+    },
+    {
+      "path": "de.mri.lightBulbText",
+      "currentBefore": "Die zentrale Narbe ist charakteristisch für die FNH (ca. 70 % der Fälle), aber nicht obligat. Sie erscheint hyperintens in T2 und hypointens in T1 und nimmt in der Spätphase verzögert Kontrastmittel auf.",
+      "after": "Eine erkennbare zentrale Narbe ist meist T2-hyperintens und T1-hypointens und reichert extrazelluläres Kontrastmittel verzögert an. Sie kann fehlen oder nicht erkennbar sein, besonders bei kleinen FNH."
+    },
+    {
+      "path": "de.mri.dwiText",
+      "currentBefore": "Die hepatobiliäre Phase kann FNH und hepatozelluläres Adenom besser unterscheiden. Das Signalverhalten ist ein Baustein der Gesamtbeurteilung und kein isolierter Beweis.",
+      "after": "Die hepatobiliäre Phase unterstützt die FNH/HCA-Abgrenzung. Auch bestimmte HCA-Subtypen können iso-/hyperintens sein; HBP-Helligkeit allein beweist FNH nicht. Bei vermuteter FNH empfiehlt ACG zur HCA-Abgrenzung eine multiphasische MRT mit hepatobiliär-spezifischem Kontrastmittel."
+    },
+    {
+      "path": "de.atypical.lead",
+      "currentBefore": "Etwa 20 % der FNH zeigen ein atypisches Erscheinungsbild, das die Abgrenzung zu anderen Lebertumoren erschweren kann.",
+      "after": "Abweichungen vom typischen Gesamtmuster erschweren die Abgrenzung zu HCA und anderen Leberläsionen. Eine fehlende Narbe allein ist kein Malignitätsbeweis."
+    },
+    {
+      "path": "de.atypical.tableRows.0.1",
+      "currentBefore": "bei etwa 70 % sichtbar",
+      "after": "charakteristisch, nicht obligat"
+    },
+    {
+      "path": "de.atypical.tableRows.3.1",
+      "currentBefore": "verzögerte KM-Aufnahme der Narbe",
+      "after": "verzögerte Anreicherung mit extrazellulärem Kontrastmittel"
+    },
+    {
+      "path": "de.atypical.tableRows.4.1",
+      "currentBefore": "kein intraläsionales Fett",
+      "after": "typischerweise kein Fett; Ausnahmen möglich"
+    },
+    {
+      "path": "de.atypical.cave",
+      "currentBefore": "Bei fehlender zentraler Narbe, heterogenem Erscheinungsbild, Pseudokapsel oder intraläsionalem Fett ist die Abgrenzung zu anderen Lebertumoren (z. B. Adenom, HCC) erschwert.",
+      "after": "Bleibt die Zuordnung nach technisch ausreichender, geeigneter Bildgebung unklar, folgt die spezialisierte MDT-Einordnung; gegebenenfalls wird eine gezielte Biopsie erwogen. Heterogenität, Fett oder fehlende Narbe allein sind keine automatische Resektionsindikation."
+    },
+    {
+      "path": "de.atypical.key",
+      "currentBefore": "Atypische FNH (ca. 20 %) kann ohne zentrale Narbe auftreten oder ein heterogenes Erscheinungsbild, eine Pseudokapsel, fehlende Narbenanreicherung oder intraläsionales Fett zeigen.",
+      "after": "Sicher typische asymptomatische FNH: keine Behandlung oder Routinekontrolle. EASL nennt vaskuläre Lebererkrankungen als Ausnahme. Unklare atypische Befunde und relevante Symptome getrennt spezialisiert beurteilen."
+    },
+    {
+      "path": "de.takehome.items.0.text",
+      "currentBefore": "Benigne, regenerative Raumforderung der Leber, meist asymptomatisch, ohne Therapiebedarf.",
+      "after": "Benigne regenerative Läsion; Alter und Geschlecht allein sichern die Diagnose nicht."
+    },
+    {
+      "path": "de.takehome.items.2.text",
+      "currentBefore": "Charakteristisch in ca. 70 % der Fälle, hyperintens in T2, hypointens in T1, mit verzögerter KM-Aufnahme – aber nicht obligat.",
+      "after": "Wenn erkennbar meist T2-hell, T1-dunkel und extrazellulär verzögert anreichernd; nicht obligat. Hepatobiliäre Aufnahme des FNH-Gewebes ist ein anderer Befund."
+    },
+    {
+      "path": "de.takehome.items.3.title",
+      "currentBefore": "Atypische FNH",
+      "after": "Sicherheit entscheidet über das Vorgehen"
+    },
+    {
+      "path": "de.takehome.items.3.text",
+      "currentBefore": "In ca. 20 % ohne zentrale Narbe, heterogen, mit Pseudokapsel oder intraläsionalem Fett – erschwert die Differenzierung.",
+      "after": "Sicher typisch und asymptomatisch: keine Routinekontrolle (vaskuläre Lebererkrankung ausnehmen). Bleibt die Bildgebung atypisch oder unklar, MDT und gegebenenfalls Biopsie statt automatischer Resektion."
+    },
+    {
+      "path": "en.heroCards.0.label",
+      "currentBefore": "benign liver lesion",
+      "after": "benign solid liver tumour"
+    },
+    {
+      "path": "en.basics.items.0.text",
+      "currentBefore": "Benign, regenerative liver lesion that does not require treatment.",
+      "after": "Benign regenerative hyperplasia as a local response to altered arterial supply."
+    },
+    {
+      "path": "en.basics.items.1.text",
+      "currentBefore": "Second most common benign liver lesion after haemangioma, most often in young to middle-aged adults with a clear female predominance.",
+      "after": "The second most common benign solid liver tumour after haemangioma; predominantly in young to middle-aged women. Demographics alone do not distinguish FNH from HCA."
+    },
+    {
+      "path": "en.basics.key",
+      "currentBefore": "FNH is usually an incidental finding. The key features are strong, homogeneous arterial enhancement without wash-out and, if present, a central scar.",
+      "after": "FNH is often incidental. Combined native and dynamic features matter; a central scar supports diagnosis but is not required."
+    },
+    {
+      "path": "en.basics.learningGoals",
+      "after": [
+        "Recognise FNH as a benign regenerative lesion and limit inferences from demographics and ultrasound.",
+        "Distinguish typical arterial and later equalisation from peripheral nodular fill-in and true washout.",
+        "Integrate native signal, central scar and hepatobiliary uptake, including absent scars and HCA overlap.",
+        "Separate confidently typical asymptomatic FNH from indeterminate atypical findings and choose targeted evaluation rather than automatic resection."
+      ]
+    },
+    {
+      "path": "en.basics.goalsLabel",
+      "after": "After this lesson"
+    },
+    {
+      "path": "en.mri.check.question",
+      "currentBefore": "Which combination best fits typical FNH?",
+      "after": "Which early arterial CT pattern is most expected in typical FNH?"
+    },
+    {
+      "path": "en.mri.check.options.0",
+      "currentBefore": "Homogeneous arterial enhancement without wash-out; a central scar may be present.",
+      "after": "Discontinuous peripheral enhancing nodules"
+    },
+    {
+      "path": "en.mri.check.options.1",
+      "currentBefore": "Discontinuous peripheral enhancing nodules with centripetal fill-in.",
+      "after": "Avid, largely homogeneous enhancement of the lesion tissue"
+    },
+    {
+      "path": "en.mri.check.options.2",
+      "currentBefore": "Arterial enhancement followed by wash-out; the hepatobiliary phase is typically hypointense.",
+      "after": "Rim enhancement around a nonenhancing centre"
+    },
+    {
+      "path": "en.mri.check.options.3",
+      "after": "No measurable enhancement throughout the lesion"
+    },
+    {
+      "path": "en.mri.check.answer",
+      "currentBefore": 0,
+      "after": 1
+    },
+    {
+      "path": "en.mri.check.explanation",
+      "currentBefore": "The first pattern fits typical FNH. The other options are more suggestive of haemangioma and hepatocellular adenoma; individual signs do not replace the overall assessment.",
+      "after": "Typical FNH enhances rapidly and avidly in the arterial phase; a central scar may remain unenhanced. Interpretation also requires later phases and native signal."
+    },
+    {
+      "path": "en.mri.check.wrongExplanations",
+      "after": [
+        "Discontinuous peripheral nodules followed by centripetal fill-in favour the classic haemangioma pattern.",
+        "",
+        "Rim enhancement differs from arterial enhancement of FNH tissue and requires a different differential diagnosis.",
+        "Absent enhancement does not fit typical hypervascular FNH. Solid versus fluid nature and other sequences need assessment."
+      ]
+    },
+    {
+      "path": "en.mri.tableRows.5.2",
+      "currentBefore": "in about 70% of cases",
+      "after": "characteristic but not obligatory; may not be visible especially in small lesions"
+    },
+    {
+      "path": "en.mri.tableRows.6.2",
+      "currentBefore": "characteristic but not obligatory",
+      "after": "with extracellular contrast; distinguish from hepatobiliary uptake of lesion tissue"
+    },
+    {
+      "path": "en.mri.lightBulbText",
+      "currentBefore": "The central scar is characteristic of FNH (about 70% of cases) but not obligatory. It appears hyperintense on T2 and hypointense on T1, with delayed enhancement.",
+      "after": "A visible central scar is usually T2 hyperintense and T1 hypointense and shows delayed enhancement with extracellular contrast. It may be absent or not visible, particularly in small FNH."
+    },
+    {
+      "path": "en.mri.dwiText",
+      "currentBefore": "The hepatobiliary phase can help distinguish FNH from hepatocellular adenoma. Signal behaviour is one part of the overall assessment, not proof in isolation.",
+      "after": "The hepatobiliary phase supports FNH/HCA differentiation. Certain HCA subtypes can also be iso-/hyperintense; HBP brightness alone does not prove FNH. When FNH is suspected, ACG recommends multiphase MRI with hepatobiliary-specific contrast to distinguish it from HCA."
+    },
+    {
+      "path": "en.atypical.lead",
+      "currentBefore": "About 20% of FNH lesions show an atypical appearance that can make differentiation from other liver tumours difficult.",
+      "after": "Departures from the typical combined pattern make distinction from HCA and other liver lesions more difficult. An absent scar alone does not prove malignancy."
+    },
+    {
+      "path": "en.atypical.tableRows.0.1",
+      "currentBefore": "visible in about 70%",
+      "after": "characteristic, not obligatory"
+    },
+    {
+      "path": "en.atypical.tableRows.3.1",
+      "currentBefore": "delayed enhancement of the scar",
+      "after": "delayed enhancement with extracellular contrast"
+    },
+    {
+      "path": "en.atypical.tableRows.4.1",
+      "currentBefore": "no intralesional fat",
+      "after": "usually no fat; exceptions occur"
+    },
+    {
+      "path": "en.atypical.cave",
+      "currentBefore": "Without a central scar, with a heterogeneous appearance, a pseudocapsule, or intralesional fat, differentiation from other liver tumours (e.g. adenoma, HCC) is more difficult.",
+      "after": "If classification remains uncertain after technically adequate, appropriate imaging, obtain specialist MDT review; targeted biopsy may be considered. Heterogeneity, fat or an absent scar alone do not automatically indicate resection."
+    },
+    {
+      "path": "en.atypical.key",
+      "currentBefore": "Atypical FNH (~20%) may occur without a central scar or show a heterogeneous appearance, pseudocapsule, absent scar enhancement, or intralesional fat.",
+      "after": "Confidently typical asymptomatic FNH: no treatment or routine follow-up. EASL identifies vascular liver disease as an exception. Indeterminate atypical findings and relevant symptoms need separate specialist assessment."
+    },
+    {
+      "path": "en.takehome.items.0.text",
+      "currentBefore": "Benign, regenerative liver lesion, usually asymptomatic, without need for treatment.",
+      "after": "Benign regenerative lesion; age and sex alone do not establish the diagnosis."
+    },
+    {
+      "path": "en.takehome.items.2.text",
+      "currentBefore": "Characteristic in about 70% of cases, hyperintense on T2, hypointense on T1, with delayed enhancement – but not obligatory.",
+      "after": "When visible, usually T2 bright, T1 dark and delayed-enhancing with extracellular contrast; not obligatory. Hepatobiliary uptake of FNH tissue is a different finding."
+    },
+    {
+      "path": "en.takehome.items.3.title",
+      "currentBefore": "Atypical FNH",
+      "after": "Diagnostic certainty guides management"
+    },
+    {
+      "path": "en.takehome.items.3.text",
+      "currentBefore": "In about 20% without a central scar, heterogeneous, with pseudocapsule or intralesional fat – makes differentiation more difficult.",
+      "after": "Confidently typical and asymptomatic: no routine follow-up (except underlying vascular liver disease). If imaging remains atypical or uncertain, MDT review and possible biopsy rather than automatic resection."
+    },
+    {
+      "path": "fa.heroCards.0.label",
+      "currentBefore": "ضایعه خوش‌خیم کبد",
+      "after": "تومور جامد خوش‌خیم کبد"
+    },
+    {
+      "path": "fa.basics.items.0.text",
+      "currentBefore": "ضایعه خوش‌خیم و رژنراتیو کبد که نیاز به درمان ندارد.",
+      "after": "هیپرپلازی رژنراتیو خوش‌خیم به‌عنوان پاسخ موضعی به خون‌رسانی شریانی تغییریافته."
+    },
+    {
+      "path": "fa.basics.items.1.text",
+      "currentBefore": "بعد از همانژیوم، دومین ضایعه خوش‌خیم شایع کبد؛ بیشتر در بالغین جوان تا میانسال با غلبه واضح در زنان.",
+      "after": "پس از همانژیوم، دومین تومور جامد خوش‌خیم شایع کبد؛ بیشتر در زنان جوان تا میانسال. جمعیت‌شناسی به‌تنهایی FNH را از HCA جدا نمی‌کند."
+    },
+    {
+      "path": "fa.basics.key",
+      "currentBefore": "FNH معمولاً یافته‌ای اتفاقی است. نکتهٔ کلیدی، تقویت شریانی قوی و هموژن بدون واش‌اوت و در صورت وجود، اسکار مرکزی است.",
+      "after": "FNH اغلب اتفاقی کشف می‌شود. مجموعهٔ ویژگی‌های پایه و دینامیک اهمیت دارد؛ اسکار مرکزی از تشخیص حمایت می‌کند، اما الزامی نیست."
+    },
+    {
+      "path": "fa.basics.learningGoals",
+      "after": [
+        "FNH را ضایعه‌ای خوش‌خیم و رژنراتیو بدانید و استنباط از جمعیت‌شناسی و سونوگرافی را محدود کنید.",
+        "الگوی شریانی و تطابق بعدی را از پرشدگی ندولار محیطی و واش‌اوت واقعی تفکیک کنید.",
+        "سیگنال پایه، اسکار مرکزی و جذب هپاتوبیلیاری را با توجه به اسکار غایب و همپوشانی با HCA یکجا بسنجید.",
+        "FNH بی‌علامت و با تشخیص تیپیک مطمئن را از یافتهٔ آتیپیک نامشخص جدا کنید و بررسی هدفمند را به‌جای رزکسیون خودکار برگزینید."
+      ]
+    },
+    {
+      "path": "fa.basics.goalsLabel",
+      "after": "پس از این درس"
+    },
+    {
+      "path": "fa.mri.check.question",
+      "currentBefore": "کدام ترکیب بیش از همه با FNH تیپیک سازگار است؟",
+      "after": "کدام الگوی CT شریانی زودرس بیشتر برای FNH تیپیک انتظار می‌رود؟"
+    },
+    {
+      "path": "fa.mri.check.options.0",
+      "currentBefore": "تقویت شریانی هموژن بدون واش‌اوت؛ ممکن است اسکار مرکزی وجود داشته باشد.",
+      "after": "ندول‌های محیطی ناپیوسته با جذب مادهٔ حاجب"
+    },
+    {
+      "path": "fa.mri.check.options.1",
+      "currentBefore": "ندول‌های محیطی ناپیوسته با پرشدگی مرکزگرا.",
+      "after": "جذب واضح و عمدتاً همگن مادهٔ حاجب در بافت ضایعه"
+    },
+    {
+      "path": "fa.mri.check.options.2",
+      "currentBefore": "تقویت شریانی و سپس واش‌اوت؛ فاز هپاتوبیلیاری معمولاً کم‌سیگنال است.",
+      "after": "جذب حلقوی حاشیه‌ای پیرامون مرکز فاقد جذب"
+    },
+    {
+      "path": "fa.mri.check.options.3",
+      "after": "نبود جذب قابل‌اندازه‌گیری در سراسر ضایعه"
+    },
+    {
+      "path": "fa.mri.check.answer",
+      "currentBefore": 0,
+      "after": 1
+    },
+    {
+      "path": "fa.mri.check.explanation",
+      "currentBefore": "الگوی نخست با FNH تیپیک سازگار است. دو گزینه دیگر بیشتر به همانژیوم و آدنوم هپاتوسلولار می‌خورند؛ یک نشانهٔ منفرد جایگزین ارزیابی کلی نیست.",
+      "after": "FNH تیپیک در فاز شریانی سریع و واضح مادهٔ حاجب می‌گیرد؛ اسکار مرکزی ممکن است در این فاز جذب نداشته باشد. تفسیر به فازهای بعدی و سیگنال پایه نیز نیاز دارد."
+    },
+    {
+      "path": "fa.mri.check.wrongExplanations",
+      "after": [
+        "ندول‌های محیطی ناپیوسته با پرشدگی مرکزگرای بعدی بیشتر با الگوی کلاسیک همانژیوم سازگارند.",
+        "",
+        "جذب حلقوی حاشیه‌ای با جذب شریانی بافت FNH متفاوت است و افتراق دیگری می‌طلبد.",
+        "نبود جذب با FNH تیپیک پرعروق سازگار نیست؛ ماهیت جامد یا مایع و سایر توالی‌ها باید بررسی شوند."
+      ]
+    },
+    {
+      "path": "fa.mri.tableRows.5.2",
+      "currentBefore": "حدود ۷۰٪ موارد",
+      "after": "مشخصهٔ ضایعه، اما الزامی نیست؛ به‌ویژه در ضایعات کوچک ممکن است دیده نشود"
+    },
+    {
+      "path": "fa.mri.tableRows.6.2",
+      "currentBefore": "تیپیک ولی غیرضروری",
+      "after": "با مادهٔ حاجب خارج‌سلولی؛ با جذب هپاتوبیلیاری بافت ضایعه متفاوت است"
+    },
+    {
+      "path": "fa.mri.lightBulbText",
+      "currentBefore": "اسکار مرکزی برای FNH تیپیک است (حدود ۷۰٪ موارد) اما الزامی نیست. در T2 هایپراینتنس و در T1 هیپواینتنس است و در فاز تأخیری تقویت تأخیری دارد.",
+      "after": "اسکار مرکزی قابل‌مشاهده معمولاً در T2 هایپرسیگنال و در T1 هیپوسیگنال است و مادهٔ حاجب خارج‌سلولی را با تأخیر جذب می‌کند. اسکار ممکن است وجود نداشته باشد یا دیده نشود، به‌ویژه در FNH کوچک."
+    },
+    {
+      "path": "fa.mri.dwiText",
+      "currentBefore": "فاز هپاتوبیلیاری می‌تواند به افتراق FNH از آدنوم هپاتوسلولار کمک کند. رفتار سیگنال بخشی از ارزیابی کلی است و به‌تنهایی اثبات‌کننده نیست.",
+      "after": "فاز هپاتوبیلیاری به افتراق FNH از HCA کمک می‌کند. برخی زیرگروه‌های HCA نیز می‌توانند ایزو/هایپرسیگنال باشند؛ روشن‌بودن HBP به‌تنهایی FNH را ثابت نمی‌کند. هنگام شک به FNH، راهنمای ACG برای افتراق از HCA انجام MRI چندفازی با مادهٔ حاجب اختصاصی هپاتوبیلیاری را توصیه می‌کند."
+    },
+    {
+      "path": "fa.atypical.lead",
+      "currentBefore": "حدود ۲۰٪ از موارد FNH ظاهر آتیپیک دارند که می‌تواند افتراق از سایر تومورهای کبدی را دشوار کند.",
+      "after": "انحراف از مجموعهٔ الگوی تیپیک، افتراق از HCA و سایر ضایعات کبدی را دشوار می‌کند. نبود اسکار به‌تنهایی بدخیمی را ثابت نمی‌کند."
+    },
+    {
+      "path": "fa.atypical.tableRows.0.1",
+      "currentBefore": "در حدود ۷۰٪ قابل مشاهده است",
+      "after": "مشخصهٔ ضایعه، نه الزامی"
+    },
+    {
+      "path": "fa.atypical.tableRows.3.1",
+      "currentBefore": "تقویت تأخیری اسکار",
+      "after": "جذب تأخیری با مادهٔ حاجب خارج‌سلولی"
+    },
+    {
+      "path": "fa.atypical.tableRows.4.1",
+      "currentBefore": "بدون چربی داخل ضایعه",
+      "after": "معمولاً بدون چربی؛ استثناها ممکن‌اند"
+    },
+    {
+      "path": "fa.atypical.cave",
+      "currentBefore": "در صورت نبود اسکار مرکزی، ظاهر هتروژن، پسودوکپسول یا چربی داخل ضایعه، افتراق از سایر تومورهای کبدی (مثل آدنوم، HCC) دشوارتر می‌شود.",
+      "after": "اگر پس از تصویربرداری مناسب با کیفیت کافی تعیین ماهیت نامشخص بماند، ارزیابی در تیم تخصصی انجام می‌شود و ممکن است بیوپسی هدفمند مطرح شود. ناهمگنی، چربی یا نبود اسکار به‌تنهایی اندیکاسیون خودکار رزکسیون نیستند."
+    },
+    {
+      "path": "fa.atypical.key",
+      "currentBefore": "FNH آتیپیک (~۲۰٪) ممکن است بدون اسکار مرکزی باشد یا ظاهر هتروژن، پسودوکپسول، فقدان تقویت اسکار یا چربی داخل ضایعه نشان دهد.",
+      "after": "FNH بی‌علامت و تیپیک با تشخیص مطمئن: بدون درمان یا پیگیری روتین. EASL بیماری عروقی کبد را استثنا می‌داند. یافته‌های آتیپیک نامشخص و علائم مرتبط نیازمند ارزیابی تخصصی جداگانه‌اند."
+    },
+    {
+      "path": "fa.takehome.items.0.text",
+      "currentBefore": "ضایعه خوش‌خیم و رژنراتیو کبد، معمولاً بدون علامت، بدون نیاز به درمان.",
+      "after": "ضایعهٔ رژنراتیو خوش‌خیم؛ سن و جنس به‌تنهایی تشخیص را قطعی نمی‌کنند."
+    },
+    {
+      "path": "fa.takehome.items.2.text",
+      "currentBefore": "تیپیک در حدود ۷۰٪ موارد، هایپراینتنس در T2، هیپواینتنس در T1، با تقویت تأخیری – ولی الزامی نیست.",
+      "after": "در صورت مشاهده معمولاً در T2 روشن و T1 تیره، با جذب تأخیری خارج‌سلولی؛ الزامی نیست. جذب هپاتوبیلیاری بافت FNH یافتهٔ دیگری است."
+    },
+    {
+      "path": "fa.takehome.items.3.title",
+      "currentBefore": "FNH آتیپیک",
+      "after": "اطمینان تشخیصی راهنمای مدیریت است"
+    },
+    {
+      "path": "fa.takehome.items.3.text",
+      "currentBefore": "در حدود ۲۰٪ بدون اسکار مرکزی، هتروژن، با پسودوکپسول یا چربی داخل ضایعه – افتراق را دشوارتر می‌کند.",
+      "after": "تیپیک، بی‌علامت و با تشخیص مطمئن: بدون پیگیری روتین، با استثنای بیماری زمینه‌ای عروقی کبد. در تصویربرداری آتیپیک یا نامشخص، ارزیابی تیمی و احتمال بیوپسی به‌جای رزکسیون خودکار."
+    }
+  ],
+  "codeChanges": [
+    "Visible four learning goals in existing basics chapter",
+    "Selected wrong-option feedback in existing inlinecheck",
+    "Supplementary Kim2023 original review reference link"
+  ],
+  "media": "Original source-mri-p14.jpg, caption/alt and all other media unchanged"
+}

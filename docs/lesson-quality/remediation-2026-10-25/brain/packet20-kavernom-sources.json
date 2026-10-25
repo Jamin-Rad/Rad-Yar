@@ -1,0 +1,73 @@
+{
+  "dateReviewed": "2026-10-25",
+  "role": "Author source ledger, independent review pending",
+  "sources": [
+    {
+      "id": "PDF31-32",
+      "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf",
+      "filePages": 89,
+      "sha256": "f2a4d1b92f7c2bd95be20997d1ab4388b3bc18e8fbb5b438396b03f977275206",
+      "physicalPages": [31,32],
+      "printedPages": [30,31],
+      "actualRead": "Both complete relevant pages freshly extracted with pypdf, newly rendered with Poppler and actual page images viewed. Includes9MRI panels and labels/rIDs32602/9773. No unreadable relevant area.",
+      "renders": ["tmp/assessment-quality/brain-next-pdf/kavernom-31.png", "tmp/assessment-quality/brain-next-pdf/kavernom-32.png"],
+      "limits": "No full89page coverage, full patient-study or media/contributor reapproval."
+    },
+    {
+      "id": "Akers2025",
+      "url": "https://doi.org/10.1227/neu.0000000000003459",
+      "actualReadURL": "https://www.alliancetocure.org/wp-content/uploads/2025/05/CCM-Diagnosis-Care-Guidelines-2025.pdf",
+      "publication": "Published online2025-05-21; print2026-01, Neurosurgery98(1):3-22. Treat as2025update, not a different2026guideline.",
+      "actualReadRanges": "Original20page PDF: pp2–4 epidemiology/natural history/genetics; pp5–7 diagnosis/MRI/overlap/diagnostic criteria and Tables1–3; p8DVA/asymptomatic/first-seizure sections; p11Table4 relevant intracranial recommendations. Parsed original text actually read; no newly adopted figure asset.",
+      "supports": "TypicalMRI,SWI preference, differential/context, genetics, symptom-linked bleeding and qualified management; not full spinal/pediatric/drug policy.",
+      "sourceBoundaries": "DVA surgical discussion acknowledges uncertain controlled evidence; no universal evidence-grade guarantee about every surgical scenario. First attributable seizure without hemorrhage supports initial antiseizure medication with individual surgical discussion."
+    },
+    {
+      "id": "ElKoussy2012",
+      "url": "https://doi.org/10.3174/ajnr.A2893",
+      "actualReadURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8050458/",
+      "actualReadRanges": "Original abstract and relevant Methods/imaging Results/Discussion:27patients33BCTs, enhancing SWI-low lesions, conventional minimal signal, no mass effect, brush-like enhancement; histology discussion notes interspersed normal tissue.",
+      "supports": "Q11positive differential pattern and existing teaching comparison; no individual patient image asserted or new figure used.",
+      "limits": "No biopsy assumed for the hypothetical text vignette and no cohort frequency generalized. Intervening tissue alone is not used as an exclusive diagnosis."
+    },
+    {
+      "id": "Nikoubashman2015",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7964862/",
+      "doi": "https://doi.org/10.3174/ajnr.A4427",
+      "actualReadRanges": "Original research Table1reproducing ZabramskiMRI classification, typeIV discussion and diagnostic limitations. Article identity/author/date verified. No numeric pediatric hemorrhage-rate teaching adopted.",
+      "supports": "Q04/typesI–IV morphological description and limitations of dot-like lesions.",
+      "limits": "Original1994complete article not read or claimed. The2015paper is primary research but itsTable1 explicitly reproduces the original classification."
+    },
+    {
+      "id": "Horne2016",
+      "url": "https://doi.org/10.1016/S1474-4422(15)00303-8",
+      "actualReadURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4710581/",
+      "actualReadRanges": "Complete original Summary/Methods/Findings/Interpretation and relevant indexed Results/Discussion:1620adults,7cohorts; presentation and location risk framework.",
+      "supports": "Q08/card09/clinical risk teaching; no individual percentage or universal annual risk adopted.",
+      "limits": "No all-age/spinal extrapolation, no new treatment threshold."
+    },
+    {
+      "id": "Yi2013",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24024078/",
+      "doi": "https://doi.org/10.5469/neuroint.2013.8.2.120",
+      "actualReadRanges": "Complete original case-report abstract: thrombosed DVA collector, hemorrhagic venous infarction, serial vascular/parenchymal evolution.",
+      "supports": "DVA complication caveat inQ06/card10/association, avoiding a categorical never-bleeds claim.",
+      "limits": "Case-level exception only, no frequency estimate, treatment recommendation or unviewed figure diagnosis."
+    }
+  ],
+  "coverageLedger": [
+    {"point":"Vascular spaces/lowflow and blood-product pattern","pdf":"31/printed30","location":"grundlagen,Q01/Q03,cards01/02/04","status":"IMPORTED_WITH_PRIMARY_CONTEXT","source":"PDF31;Akers2025pp2,5–7"},
+    {"point":"Epidemiology and solitary/multiple forms","pdf":"31/printed30","location":"heroCards0,grundlagen.items3,Q05,card07","status":"QUALIFIED","note":"Autopsy~0.5% distinguished from incidentalMRI~0.16%; multiple single-DVA clusters and radiation context prevent simple multiplicity=familial inference.","source":"Akers2025pp2–5/7"},
+    {"point":"Symptoms/localization/bleeding risk","pdf":"31/printed30","location":"klinik,Q08/Q09,cards08/09","status":"QUALIFIED","note":"No universal1%/year. Symptomatic hemorrhage may be intra- or extralesional; isolatedMRIchange not enough.","source":"Akers2025p3;Horne2016"},
+    {"point":"T1/T2/classic pattern/acute obscuration","pdf":"31/printed30","location":"mrt,Q01/Q04,cards02/05","status":"IMPORTED_WITH_CAVEAT","source":"Akers2025pp5–6;Nikoubashman2015Table1"},
+    {"point":"SWI sensitivity and DWI","pdf":"31–32/printed30–31","location":"mrt,Q02/Q10,cards03/06","status":"QUALIFIED","note":"ModernSWI more sensitive than traditionalGRE; susceptibility alone nonspecific. PDFDWIunremarkable not taught as an absolute.","source":"Akers2025pp5–7/Table2"},
+    {"point":"Enhancement and tumour differential","pdf":"31/printed30","location":"mrt,differenzial,card14,Q01wrongC","status":"QUALIFIED","note":"Enhancement alone not tumor proof; growing solid tissue/dense enhancement prompts reassessment; recentCMbleed may have edema.","source":"Akers2025pp5–7"},
+    {"point":"Angiographic occultness","pdf":"32/printed31","location":"grundlagen,mrt,Q03,card04","status":"IMPORTED_WITH_WORKUP_CAVEAT","note":"RoutineDSAconfirmation not recommended;AVMdifferential is a separate indication.","source":"Akers2025Table3"},
+    {"point":"Kavernom/DVA association and preservation","pdf":"32/printed31","location":"assoziation,Q06/Q07,cards10/11/15,takehome","status":"QUALIFIED","note":"Functional drainage preservation; collector thrombosis is a separate mechanism, so no categoricalDVA-never-bleeds rule.","source":"Akers2025p8;Yi2013"},
+    {"point":"Treatment decisions","pdf":"32/printed31","location":"management,Q09/Q12,cards12/13","status":"QUALIFIED","note":"No automaticOPfor accessible location or anybleed. Initial attributable first-seizure/nohemorrhage approach clarified within existing chapter; no quota item.","source":"Akers2025p8/Table4"},
+    {"point":"Teleangiectasia contrast and oldQ11ambiguity","pdf":"31histologycontrast;not newPDFimage diagnosis","location":"Q11+canonicalinline,differenzial,card01","status":"SUPPLEMENTAL_PRIMARY_DIFFERENTIAL","note":"Specific positive pontineMRIpattern replaces nonexclusive intervening-parenchyma-only stem; sameID/keyA.","source":"ElKoussy2012"},
+    {"point":"Zabramski types","pdf":"Supplementary toPDF31–32","location":"zabramski,Q04,cards05/06","status":"SUPPLEMENTAL_MORPHOLOGICAL_CLASSIFICATION","note":"TypeIV is descriptive susceptibility morphology, not proof of everyfocusCM/familialdisease; no individual rate derived.","source":"Nikoubashman2015Table1;Akers2025diagnosticcriteria"}
+  ],
+  "mediaPlanOutcome": "No new assets. All9image paths/labels/alt payloads and entire existing case remain exact; actual userPDFpanels seen, complete external study/browser/contributor approval not claimed.",
+  "clinicalRelease": "Dr.Zia pending; author verification is not independent scientific approval."
+}

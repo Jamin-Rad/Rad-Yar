@@ -13088,11 +13088,11 @@
       "topicId": "frakturbeschreibung",
       "learningGoals": [
         {
-          "id": "report",
+          "id": "msk13-report-displacement",
           "text": {
-            "de": "Seite, Segment und Dislokation mit distalem Referenzfragment präzise berichten.",
-            "en": "Report side, segment and displacement using the distal reference fragment.",
-            "fa": "سمت، سگمان و جابه‌جایی را با مرجع قطعهٔ دیستال دقیق گزارش کنید."
+            "de": "Anatomischen Ort und quantitative Stellung des distalen Fragments berichten; Translation, Apex-Winkel und Längenänderung unterscheiden.",
+            "en": "Report anatomy and quantitative distal-fragment position; distinguish translation, apex angle and length change.",
+            "fa": "محل آناتومیک و وضعیت کمی قطعهٔ دیستال را گزارش کنید؛ انتقال، زاویهٔ رأس و تغییر طول را جدا کنید."
           },
           "questionIds": [
             "frakturbeschreibung-de-01",
@@ -13102,16 +13102,19 @@
           ],
           "cardIds": [
             "frakturbeschreibung-01-system",
+            "frakturbeschreibung-02-location",
             "frakturbeschreibung-03-distal",
+            "frakturbeschreibung-04-translation",
+            "frakturbeschreibung-05-angulation",
             "frakturbeschreibung-15-report"
           ]
         },
         {
-          "id": "morphology",
+          "id": "msk13-load-morphology",
           "text": {
-            "de": "Morphologie und Knochenqualität mit Mechanismus und pathologischer Fraktur verknüpfen.",
-            "en": "Relate morphology and bone quality to mechanism and pathological fracture.",
-            "fa": "مورفولوژی و کیفیت استخوان را با مکانیسم و شکستگی پاتولوژیک مرتبط کنید."
+            "de": "Linien- und Fragmentmuster sowie Belastung und Knochenqualität unterscheiden, ohne Mechanismus, Stabilität oder Läsionsursache allein daraus zu beweisen.",
+            "en": "Distinguish line/fragment patterns, loading and bone quality without treating them alone as proof of mechanism, stability or lesion cause.",
+            "fa": "الگوهای خط و قطعه، بارگذاری و کیفیت استخوان را تفکیک کنید، بدون آنکه به‌تنهایی مکانیسم، پایداری یا علت ضایعه را اثبات‌شده بدانید."
           },
           "questionIds": [
             "frakturbeschreibung-de-03",
@@ -13124,31 +13127,48 @@
             "frakturbeschreibung-06-stress",
             "frakturbeschreibung-07-pathologic",
             "frakturbeschreibung-08-spiral",
-            "frakturbeschreibung-09-segmental"
+            "frakturbeschreibung-09-segmental",
+            "frakturbeschreibung-10-avulsion"
+          ],
+          "derivedAliasIds": [
+            "stressfrakturen-basics"
           ]
         },
         {
-          "id": "safety-imaging",
+          "id": "msk13-joint-soft-tissue",
           "text": {
-            "de": "Gelenkbeteiligung und offene Verletzung adressieren und Zusatzbildgebung begründen.",
-            "en": "Address joint involvement and open injury and justify additional imaging.",
-            "fa": "درگیری مفصل و آسیب باز را ارزیابی و تصویربرداری تکمیلی را توجیه کنید."
+            "de": "Gelenkstufe und Frakturspalt getrennt messen und den Verdacht einer offenen Verletzung zur klinischen Abklärung kommunizieren.",
+            "en": "Measure articular step and fracture gap separately and communicate suspected open injury for clinical assessment.",
+            "fa": "پلهٔ مفصلی و فاصلهٔ شکستگی را جدا اندازه بگیرید و شک به آسیب باز را برای ارزیابی بالینی اطلاع دهید."
           },
           "questionIds": [
             "frakturbeschreibung-de-07",
-            "frakturbeschreibung-de-08",
+            "frakturbeschreibung-de-08"
+          ],
+          "cardIds": [
+            "frakturbeschreibung-11-joint",
+            "frakturbeschreibung-12-open"
+          ]
+        },
+        {
+          "id": "msk13-targeted-imaging",
+          "text": {
+            "de": "CT zur knöchernen Gelenkfragmentdarstellung und geeignete MRT zur okkulten Stressverletzung begründen; Ödem von spezifischem Frakturnachweis unterscheiden.",
+            "en": "Justify CT for bony articular fragment mapping and appropriate MRI for occult stress injury; distinguish oedema from specific fracture proof.",
+            "fa": "CT را برای نقشهٔ قطعات استخوانی مفصل و MRI مناسب را برای آسیب استرسی مخفی توجیه کنید؛ ادم را از اثبات اختصاصی شکستگی جدا کنید."
+          },
+          "questionIds": [
             "frakturbeschreibung-de-10",
             "frakturbeschreibung-de-11"
           ],
           "cardIds": [
-            "frakturbeschreibung-11-joint",
-            "frakturbeschreibung-12-open",
             "frakturbeschreibung-13-ct",
             "frakturbeschreibung-14-mri"
           ]
         }
       ],
-      "status": "AUTHOR_PACKET_1_REVIEW_PENDING"
+      "status": "BOUNDED_FULL_ORIGINAL_POOL_CONTENT_ACCEPTED",
+      "review": "msk-spine/packet13/review-packet13.json; actual browser/scientific release separate"
     },
     {
       "route": "/msk/trauma/unterarmschaftfrakturen",
@@ -16614,6 +16634,242 @@
       ],
       "status": "BOUNDED_FULL_ORIGINAL_POOL_CONTENT_ACCEPTED",
       "review": "thorax-mamma/review-packet09-bronchiolitis.json; whole media/browser/scientific release separate"
+    },
+    {
+      "route": "/abdomen/leber/fnh",
+      "topicId": "fnh",
+      "status": "BOUNDED_FULL_ORIGINAL_POOL_CONTENT_ACCEPTED",
+      "learningGoals": [
+        {
+          "id": "fnh07-context",
+          "text": {
+            "de": "FNH als benigne regenerative Läsion einordnen und die Aussagekraft von Demografie und Sonographie begrenzen.",
+            "en": "Recognise FNH as a benign regenerative lesion and limit inferences from demographics and ultrasound.",
+            "fa": "FNH را ضایعه‌ای خوش‌خیم و رژنراتیو بدانید و استنباط از جمعیت‌شناسی و سونوگرافی را محدود کنید."
+          },
+          "questionIds": [
+            "fnh-de-01",
+            "fnh-de-02",
+            "fnh-de-03"
+          ],
+          "questionIdsByLanguage": {
+            "de": [
+              "fnh-de-01",
+              "fnh-de-02",
+              "fnh-de-03"
+            ],
+            "en": [
+              "fnh-en-01",
+              "fnh-en-02",
+              "fnh-en-03"
+            ],
+            "fa": [
+              "fnh-fa-01",
+              "fnh-fa-02",
+              "fnh-fa-03"
+            ]
+          },
+          "cardIds": [
+            "fnh-01-definition",
+            "fnh-02-epidemiologie",
+            "fnh-03-sono",
+            "fnh-04-doppler"
+          ]
+        },
+        {
+          "id": "fnh07-dynamic",
+          "text": {
+            "de": "Das typische arterielle und spätere Muster von Angleichung, peripher-nodulärer Auffüllung und echtem Wash-out unterscheiden.",
+            "en": "Distinguish typical arterial and later equalisation from peripheral nodular fill-in and true washout.",
+            "fa": "الگوی شریانی و تطابق بعدی را از پرشدگی ندولار محیطی و واش‌اوت واقعی تفکیک کنید."
+          },
+          "questionIds": [
+            "fnh-de-04",
+            "fnh-de-05"
+          ],
+          "questionIdsByLanguage": {
+            "de": [
+              "fnh-de-04",
+              "fnh-de-05"
+            ],
+            "en": [
+              "fnh-en-04",
+              "fnh-en-05"
+            ],
+            "fa": [
+              "fnh-fa-04",
+              "fnh-fa-05"
+            ]
+          },
+          "cardIds": [
+            "fnh-05-ct",
+            "fnh-06-washout"
+          ]
+        },
+        {
+          "id": "fnh07-mri",
+          "text": {
+            "de": "Natives Signal, zentrale Narbe und hepatobiliäre Aufnahme zusammen bewerten, einschließlich fehlender Narbe und HCA-Überlappung.",
+            "en": "Integrate native signal, central scar and hepatobiliary uptake, including absent scars and HCA overlap.",
+            "fa": "سیگنال پایه، اسکار مرکزی و جذب هپاتوبیلیاری را با توجه به اسکار غایب و همپوشانی با HCA یکجا بسنجید."
+          },
+          "questionIds": [
+            "fnh-de-06",
+            "fnh-de-07",
+            "fnh-de-08"
+          ],
+          "questionIdsByLanguage": {
+            "de": [
+              "fnh-de-06",
+              "fnh-de-07",
+              "fnh-de-08"
+            ],
+            "en": [
+              "fnh-en-06",
+              "fnh-en-07",
+              "fnh-en-08"
+            ],
+            "fa": [
+              "fnh-fa-06",
+              "fnh-fa-07",
+              "fnh-fa-08"
+            ]
+          },
+          "cardIds": [
+            "fnh-07-t1t2",
+            "fnh-08-narbe",
+            "fnh-09-narbe-haeufigkeit",
+            "fnh-11-dd-hcc"
+          ]
+        },
+        {
+          "id": "fnh07-management",
+          "text": {
+            "de": "Sicher typische asymptomatische FNH von unklaren atypischen Befunden trennen und gezielte weitere Einordnung statt automatischer Resektion wählen.",
+            "en": "Separate confidently typical asymptomatic FNH from indeterminate atypical findings and choose targeted evaluation rather than automatic resection.",
+            "fa": "FNH بی‌علامت و با تشخیص تیپیک مطمئن را از یافتهٔ آتیپیک نامشخص جدا کنید و بررسی هدفمند را به‌جای رزکسیون خودکار برگزینید."
+          },
+          "questionIds": [
+            "fnh-de-09",
+            "fnh-de-10"
+          ],
+          "questionIdsByLanguage": {
+            "de": [
+              "fnh-de-09",
+              "fnh-de-10"
+            ],
+            "en": [
+              "fnh-en-09",
+              "fnh-en-10"
+            ],
+            "fa": [
+              "fnh-fa-09",
+              "fnh-fa-10"
+            ]
+          },
+          "cardIds": [
+            "fnh-10-atypisch",
+            "fnh-12-reporting"
+          ]
+        }
+      ],
+      "review": "abdomen-technik/review-packet07-fnh.json; browser/scientific release separate"
+    },
+    {
+      "route": "/gehirn/vaskulaer/kavernom",
+      "topicId": "kavernom",
+      "learningGoals": [
+        {
+          "id": "mri-pattern-limits",
+          "text": {
+            "de": "Typisches MRT-Muster, Suszeptibilitätsdiagnostik und Grenzen gegenüber Mimics erklären.",
+            "en": "Explain the typical MRI pattern, susceptibility imaging and limits against mimics.",
+            "fa": "الگوی تیپیک MRI، تصویربرداری حساسیت‌پذیری و محدودیت‌ها در برابر تقلیدکننده‌ها را توضیح دهید."
+          },
+          "questionIds": [
+            "kavernom-de-01",
+            "kavernom-de-02",
+            "kavernom-de-03",
+            "kavernom-de-04",
+            "kavernom-de-10",
+            "kavernom-de-11"
+          ],
+          "cardIds": [
+            "kavernom-01-definition",
+            "kavernom-02-popcorn",
+            "kavernom-03-swi",
+            "kavernom-04-dsa",
+            "kavernom-05-z2",
+            "kavernom-06-z4",
+            "kavernom-14-dd"
+          ]
+        },
+        {
+          "id": "familial-context",
+          "text": {
+            "de": "Multiple Kavernome im DVA-, Strahlen- und Familienkontext einordnen.",
+            "en": "Interpret multiple cavernomas using DVA, radiation and family context.",
+            "fa": "کاورنوم‌های متعدد را با زمینهٔ DVA، پرتودرمانی و خانوادگی تفسیر کنید."
+          },
+          "questionIds": [
+            "kavernom-de-05"
+          ],
+          "cardIds": [
+            "kavernom-07-familiaer"
+          ]
+        },
+        {
+          "id": "dva-drainage",
+          "text": {
+            "de": "Blutungsquelle und funktionelle DVA-Drainage unterscheiden und deren Erhalt planen.",
+            "en": "Distinguish the bleeding source from functional DVA drainage and plan its preservation.",
+            "fa": "منشأ خونریزی را از تخلیهٔ عملکردی DVA تفکیک و حفظ آن را در برنامه لحاظ کنید."
+          },
+          "questionIds": [
+            "kavernom-de-06",
+            "kavernom-de-07"
+          ],
+          "cardIds": [
+            "kavernom-10-dva",
+            "kavernom-11-dva-erhalt"
+          ]
+        },
+        {
+          "id": "clinical-risk",
+          "text": {
+            "de": "Klinische Symptome und Blutungsrisiko von isolierten MRT-Signaländerungen trennen.",
+            "en": "Distinguish clinical symptoms and haemorrhage risk from isolated MRI signal changes.",
+            "fa": "علائم بالینی و خطر خونریزی را از تغییرات منفرد سیگنال MRI جدا کنید."
+          },
+          "questionIds": [
+            "kavernom-de-08",
+            "kavernom-de-09"
+          ],
+          "cardIds": [
+            "kavernom-08-epilepsie",
+            "kavernom-09-risiko"
+          ]
+        },
+        {
+          "id": "report-management",
+          "text": {
+            "de": "Strukturiert berichten und kontextabhängige Behandlungsabwägung statt Automatismus begründen.",
+            "en": "Report systematically and justify context-dependent treatment assessment rather than an automatic intervention.",
+            "fa": "گزارش ساختاریافته و ارزیابی درمان وابسته به زمینه را به‌جای مداخلهٔ خودکار توجیه کنید."
+          },
+          "questionIds": [
+            "kavernom-de-09",
+            "kavernom-de-12"
+          ],
+          "cardIds": [
+            "kavernom-12-konservativ",
+            "kavernom-13-op",
+            "kavernom-15-befund"
+          ]
+        }
+      ],
+      "status": "BOUNDED_FULL_ORIGINAL_POOL_CONTENT_ACCEPTED",
+      "review": "brain/review-packet20-kavernom.json; actual browser/scientific release separate"
     }
   ]
 }

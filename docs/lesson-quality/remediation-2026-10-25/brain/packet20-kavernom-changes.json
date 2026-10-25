@@ -1,0 +1,3024 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_READY_INDEPENDENT_REVIEW_PENDING",
+  "before": "tmp/assessment-quality/kavernom-original-before.json",
+  "after": "tmp/assessment-quality/kavernom-author-runtime.json",
+  "changes": [
+    {
+      "path": "questions.de.0.question",
+      "currentBefore": "Welches MRT-Muster ist für ein Kavernom am typischsten?",
+      "after": "Welches kombinierte MRT-Muster spricht am stärksten für ein typisches Kavernom?"
+    },
+    {
+      "path": "questions.de.0.options.0.text",
+      "currentBefore": "Retikulärer Popcorn-Kern mit komplettem Hämosiderinsaum",
+      "after": "Retikulärer Mischsignalkern mit umlaufendem Hämosiderinsaum und Suszeptibilitätsverlust"
+    },
+    {
+      "path": "questions.de.0.options.1.text",
+      "currentBefore": "Homogene T2-Hyperintensität ohne Suszeptibilität",
+      "after": "Homogen flüssigkeitsheller T2-Herd ohne entsprechenden Suszeptibilitätsverlust"
+    },
+    {
+      "path": "questions.de.0.options.2.text",
+      "currentBefore": "Solide KM-Aufnahme mit hohem rCBV",
+      "after": "Solider kontrastierender Gewebeanteil mit progredienter Raumforderung"
+    },
+    {
+      "path": "questions.de.0.options.3.text",
+      "currentBefore": "Arterieller Nidus mit Flow-Voids",
+      "after": "Gefäßknäuel aus Flow-Voids mit arteriellen Zuflüssen und früher venöser Drainage"
+    },
+    {
+      "path": "questions.de.0.explanation",
+      "currentBefore": "Blutprodukte verschiedenen Alters erzeugen den Popcorn-Kern; peripher liegt ein Hämosiderinsaum.",
+      "after": "Der typische retikuläre Kern enthält Blutprodukte verschiedenen Alters und wird von einem dunklen Hämosiderinsaum umgeben. Akutes Blut kann dieses Muster verdecken; einzelne Suszeptibilitätsfoci sind weniger spezifisch."
+    },
+    {
+      "path": "questions.de.0.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Ein homogen flüssigkeitsähnlicher Herd ohne Blutproduktmuster entspricht nicht dem beschriebenen klassischen Kavernomkern. T2-Helligkeit allein genügt nicht.",
+        "C": "Ein wachsender solider Anteil verlangt die Abklärung eines Tumormimics. Enhancement allein beweist jedoch keinen Tumor, da auch Kavernome anreichern können.",
+        "D": "Feeder, Gefäßnidus und frühe venöse Drainage sprechen für eine arteriovenöse Shuntläsion, nicht für das klassische Low-flow-Kavernommuster."
+      }
+    },
+    {
+      "path": "questions.de.0.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.de.0.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.de.1.question",
+      "currentBefore": "Welche Sequenz ist für kleine multiple Kavernome am sensitivsten?",
+      "after": "Bei Verdacht auf multiple kleine Kavernome: Welche zusätzliche MRT-Sequenz erfasst kleine Suszeptibilitätsläsionen am empfindlichsten?"
+    },
+    {
+      "path": "questions.de.1.options.0.text",
+      "currentBefore": "SWI/T2*",
+      "after": "Hochauflösende SWI oder vergleichbare moderne Suszeptibilitätssequenz"
+    },
+    {
+      "path": "questions.de.1.options.1.text",
+      "currentBefore": "T1 C+",
+      "after": "Konventionelle zweidimensionale T2*-GRE"
+    },
+    {
+      "path": "questions.de.1.options.2.text",
+      "currentBefore": "DWI",
+      "after": "Kontrastverstärkte T1-Sequenz"
+    },
+    {
+      "path": "questions.de.1.options.3.text",
+      "currentBefore": "MR-Angiografie",
+      "after": "Diffusionsgewichtete Bildgebung mit ADC"
+    },
+    {
+      "path": "questions.de.1.explanation",
+      "currentBefore": "Suszeptibilitätssequenzen zeigen starkes Blooming und detektieren Zabramski-Typ-IV-Läsionen.",
+      "after": "SWI beziehungsweise vergleichbare moderne Sequenzen sind für kleine Läsionen empfindlicher als konventionelle T2*-GRE. Kleine dunkle Foci bleiben kontextabhängig: auch Mikroblutungen oder Verkalkungen können Suszeptibilität erzeugen."
+    },
+    {
+      "path": "questions.de.1.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "T2*-GRE ist hilfreich, wird bei der Detektion kleiner Läsionen aber von modernen SWI-ähnlichen Sequenzen übertroffen. Beide sind nicht mit der anatomischen Größe gleichzusetzen.",
+        "C": "T1 nach Kontrast hilft etwa bei DVA-Darstellung oder Tumordifferenzialdiagnose, ersetzt aber nicht die Suszeptibilitätssequenz zur Suche nach kleinen Blutproduktfoci.",
+        "D": "DWI/ADC ergänzt die Prüfung auf Infarkt und andere Mimics. Sie ist nicht die empfindlichste Sequenz zur Erfassung kleiner Hämosiderinfoci."
+      }
+    },
+    {
+      "path": "questions.de.1.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.de.1.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.de.2.question",
+      "currentBefore": "Welche Aussage zur DSA ist korrekt?",
+      "after": "Textvignette: Die MRT zeigt ein typisches Kavernommuster ohne Hinweis auf einen arteriovenösen Shunt. Eine vorliegende DSA ist negativ. Wie ist dies einzuordnen?"
+    },
+    {
+      "path": "questions.de.2.options.0.text",
+      "currentBefore": "Kavernome sind meist angiographisch okkult.",
+      "after": "Mit einem angiographisch okkulten Low-flow-Kavernom vereinbar; die MRT bleibt maßgeblich"
+    },
+    {
+      "path": "questions.de.2.options.1.text",
+      "currentBefore": "DSA zeigt regelhaft einen kompakten Nidus.",
+      "after": "Die negative DSA macht die MRT-Diagnose eines Kavernoms unwahrscheinlich"
+    },
+    {
+      "path": "questions.de.2.options.2.text",
+      "currentBefore": "Eine negative DSA schließt Kavernom aus.",
+      "after": "Eine CTA zur Darstellung des erwarteten arteriellen Feeders ist der nächste Routinetest"
+    },
+    {
+      "path": "questions.de.2.options.3.text",
+      "currentBefore": "DSA ist sensitiver als SWI.",
+      "after": "Zur Kavernombestätigung ist eine erneute selektivere DSA vorzuziehen"
+    },
+    {
+      "path": "questions.de.2.explanation",
+      "currentBefore": "Der sehr langsame Fluss macht Kavernome angiographisch okkult.",
+      "after": "Kavernome zeigen üblicherweise keinen angiographisch nachweisbaren arteriovenösen Hochfluss-Shunt. Eine negative DSA widerspricht dem typischen MRT-Muster daher nicht. Katheterangiographie ist vor allem bei einer AVM-Differenzialdiagnose zu erwägen."
+    },
+    {
+      "path": "questions.de.2.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Die angiographische Okkultheit ist beim Kavernom zu erwarten. Die negative Untersuchung kann das typische Blutproduktmuster in der MRT nicht widerlegen.",
+        "C": "Ein arterieller Feeder gehört zur Shuntarchitektur einer AVM und wird für ein typisches Kavernom nicht vorausgesetzt. CTA ist hier kein routinemäßiger Bestätigungstest.",
+        "D": "Ohne AVM- oder Shuntverdacht bietet eine wiederholte DSA keinen bevorzugten Weg zur Kavernombestätigung. Die morphologische MRT ist das empfohlene Verfahren."
+      }
+    },
+    {
+      "path": "questions.de.2.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.de.2.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.de.3.question",
+      "currentBefore": "Welcher Zabramski-Typ entspricht dem klassischen Popcorn-Muster?",
+      "after": "Textvignette: T1 und T2 zeigen einen retikulären Mischsignalkern aus Blutprodukten verschiedener Stadien, umgeben von einem dunklen Saum. Welcher Zabramski-Typ passt am besten?"
+    },
+    {
+      "path": "questions.de.3.explanation",
+      "currentBefore": "Typ II enthält retikuläre Blutprodukte verschiedenen Alters mit Hämosiderinsaum.",
+      "after": "Typ II bezeichnet das retikuläre Mischsignal mit peripherem Hämosiderinsaum. Dies ist eine morphologische Einordnung und keine individuelle Blutungsprognose."
+    },
+    {
+      "path": "questions.de.3.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Typ I wird von subakutem Blut mit T1-hyperintensem Kern geprägt; der beschriebene retikuläre Mischsignalkern passt besser zu Typ II.",
+        "C": "Typ III zeigt vorwiegend chronische Blutprodukte und niedriges T2-Signal. Der typische retikuläre Kern verschiedener Blutalter ist hier Typ II.",
+        "D": "Typ IV beschreibt punktförmige Suszeptibilitätsfoci, die auf konventionellem T1/T2 kaum erkennbar sind, nicht einen deutlich retikulären Kern."
+      }
+    },
+    {
+      "path": "questions.de.3.source",
+      "currentBefore": null,
+      "after": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7964862/"
+    },
+    {
+      "path": "questions.de.3.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.de.4.question",
+      "currentBefore": "Was spricht am stärksten für eine familiäre Form?",
+      "after": "Welche Konstellation gibt den stärksten Anlass, eine familiäre CCM-Erkrankung genetisch abzuklären?"
+    },
+    {
+      "path": "questions.de.4.options.0.text",
+      "currentBefore": "Multiple Kavernome ohne assoziierte DVA",
+      "after": "Mehrere typische Kavernome in getrennten Regionen, ohne zugehörige DVA und ohne vorausgegangene Hirnbestrahlung"
+    },
+    {
+      "path": "questions.de.4.options.1.text",
+      "currentBefore": "Ein solitäres Kavernom neben einer DVA",
+      "after": "Mehrere benachbarte Kavernome im Drainagegebiet einer einzigen DVA"
+    },
+    {
+      "path": "questions.de.4.options.2.text",
+      "currentBefore": "Ein einzelnes posttraumatisches Mikroblutungssignal",
+      "after": "Neu aufgetretene multiple Suszeptibilitätsläsionen nach einer Hirnbestrahlung"
+    },
+    {
+      "path": "questions.de.4.options.3.text",
+      "currentBefore": "Ein isoliertes pontines Flow-void",
+      "after": "Ein solitäres typisches Kavernom neben einer DVA ohne betroffene Angehörige"
+    },
+    {
+      "path": "questions.de.4.explanation",
+      "currentBefore": "Multiple Läsionen, besonders ohne DVA, sind typisch für familiäre CCM-Erkrankung.",
+      "after": "Multifokale typische Kavernome ohne gemeinsame DVA und ohne Strahlenanamnese begründen den Verdacht auf eine familiäre Form. Familienanamnese und genetische Beratung helfen bei der Einordnung; Multiplikität allein beweist keinen erblichen Defekt."
+    },
+    {
+      "path": "questions.de.4.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Ein Cluster um eine gemeinsame DVA kann zur sporadischen Form gehören und zählt nicht wie räumlich getrennte multifokale Kavernome.",
+        "C": "Nach Bestrahlung können erworbene Kavernome beziehungsweise andere Blutproduktfoci auftreten. Diese Vorgeschichte ist eine wichtige alternative Erklärung.",
+        "D": "Ein einzelnes Kavernom mit DVA ist häufig sporadisch. Ohne weitere klinische oder familiäre Hinweise ist der familiäre Verdacht geringer als in A."
+      }
+    },
+    {
+      "path": "questions.de.4.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.de.4.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.de.5.question",
+      "currentBefore": "Bei Kavernom + DVA: Welche Struktur verursacht typischerweise die Blutung?",
+      "after": "Textvignette: Neben einer DVA liegt eine typische retikuläre Läsion mit Hämosiderinsaum und neuen Blutprodukten. Die Sammelvene ist durchgängig; ein Stauungsödem wird nicht beschrieben. Welche Einordnung ist am besten gestützt?"
+    },
+    {
+      "path": "questions.de.5.options.0.text",
+      "currentBefore": "Das Kavernom",
+      "after": "Blutprodukte aus dem assoziierten Kavernom"
+    },
+    {
+      "path": "questions.de.5.options.1.text",
+      "currentBefore": "Die DVA-Sammelvene",
+      "after": "Stauungsblutung durch Thrombose der DVA-Sammelvene"
+    },
+    {
+      "path": "questions.de.5.options.2.text",
+      "currentBefore": "Die normale kortikale Vene",
+      "after": "Hämorrhagischer venöser Infarkt des gesamten Drainagegebiets"
+    },
+    {
+      "path": "questions.de.5.options.3.text",
+      "currentBefore": "Der Sinus durae matris",
+      "after": "Blutung aus einer arteriovenösen Hochflussmalformation"
+    },
+    {
+      "path": "questions.de.5.explanation",
+      "currentBefore": "Die DVA ist notwendige Drainage; Blutung und Hämosiderin stammen meist vom Kavernom.",
+      "after": "Das beschriebene Blutproduktmuster ist dem Kavernom zuzuordnen. Eine begleitende DVA ist nicht automatisch die Blutungsquelle. Ihre Drainage muss dennoch beurteilt werden, da seltene venöse Komplikationen einen anderen Mechanismus darstellen."
+    },
+    {
+      "path": "questions.de.5.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Eine Sammelvenenthrombose müsste durch passende Gefäß- und Stauungsbefunde gestützt sein. Hier ist die Vene durchgängig und das Blutproduktmuster liegt in der Kavernomläsion.",
+        "C": "Ein venöser Infarkt verlangt passende Parenchym- und Abflussbefunde. Sie sind in der Vignette nicht beschrieben; eine DVA-Assoziation allein genügt dafür nicht.",
+        "D": "Für eine Hochflussmalformation wären Shuntarchitektur beziehungsweise Feeder-Nidus-Frühvenen-Merkmale nötig. Der beschriebene retikuläre Blutproduktkern stützt stattdessen ein Kavernom."
+      }
+    },
+    {
+      "path": "questions.de.5.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.de.5.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.de.6.question",
+      "currentBefore": "Was ist bei Resektion eines Kavernoms mit DVA zwingend?",
+      "after": "Vor einer möglichen Kavernomresektion zeigt die MRT eine benachbarte DVA, die normales Parenchym drainiert. Welcher Plan berücksichtigt diese Funktion am besten?"
+    },
+    {
+      "path": "questions.de.6.options.0.text",
+      "currentBefore": "Erhalt der DVA-Sammelvene",
+      "after": "Kavernomzugang planen und funktionelle DVA-/Sammelvenendrainage erhalten"
+    },
+    {
+      "path": "questions.de.6.options.1.text",
+      "currentBefore": "Koagulation aller Medullarvenen",
+      "after": "Die an das Kavernom angrenzende Sammelvene gemeinsam mit der Läsion entfernen"
+    },
+    {
+      "path": "questions.de.6.options.2.text",
+      "currentBefore": "Embolisation der DVA vor Operation",
+      "after": "Die DVA statt des Kavernoms als primäres Resektionsziel festlegen"
+    },
+    {
+      "path": "questions.de.6.options.3.text",
+      "currentBefore": "Resektion der gesamten venösen Architektur",
+      "after": "Die Sammelvene wie eine AVM-Abflussvene in die Shuntbehandlung einbeziehen"
+    },
+    {
+      "path": "questions.de.6.explanation",
+      "currentBefore": "Die DVA drainiert normales Parenchym; ihre Verletzung kann venösen Infarkt verursachen.",
+      "after": "Die funktionelle venöse Drainage muss in die Planung einbezogen und möglichst unverletzt erhalten werden. Ihre Schädigung kann Stauung, Ödem oder venösen Infarkt verursachen. Dies begründet keine automatische Kavernom-OP; Indikation und Zugang bleiben individuell."
+    },
+    {
+      "path": "questions.de.6.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Die Sammelvene ist nicht bloß ein Bestandteil der Kavernommasse. Ihr gemeinsames Entfernen kann die Drainage normalen Hirngewebes gefährden.",
+        "C": "Die funktionelle DVA ist kein austauschbares Behandlungsziel. Ob das Kavernom behandelt wird, hängt von seinem klinischen Kontext ab.",
+        "D": "Eine DVA ohne Shunt hat eine andere Funktion als der Abfluss einer AVM. Die gemeinsame Bezeichnung als Vene erlaubt keine Übertragung des AVM-Konzepts."
+      }
+    },
+    {
+      "path": "questions.de.6.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.de.6.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.de.7.question",
+      "currentBefore": "Welcher Faktor erhöht das zukünftige Blutungsrisiko am deutlichsten?",
+      "after": "Bei ansonsten vergleichbarer Lokalisation: Welche Vorgeschichte ist am stärksten mit einem höheren zukünftigen Kavernomblutungsrisiko verbunden?"
+    },
+    {
+      "path": "questions.de.7.options.0.text",
+      "currentBefore": "Vorangegangene symptomatische Blutung",
+      "after": "Vorangegangene symptomatische intrakranielle Blutung durch das Kavernom"
+    },
+    {
+      "path": "questions.de.7.options.1.text",
+      "currentBefore": "Fehlendes Enhancement",
+      "after": "Zufallsbefund ohne vorausgegangene Blutung oder fokales Defizit"
+    },
+    {
+      "path": "questions.de.7.options.2.text",
+      "currentBefore": "Supratentorielle oberflächliche Lage ohne Symptome",
+      "after": "Anfallspräsentation ohne dokumentierte Blutung oder fokales Defizit"
+    },
+    {
+      "path": "questions.de.7.options.3.text",
+      "currentBefore": "Negative DSA",
+      "after": "Nicht zuordenbarer Kopfschmerz ohne dokumentierte Blutung oder fokales Defizit"
+    },
+    {
+      "path": "questions.de.7.explanation",
+      "currentBefore": "Vorblutung und Hirnstammlage sind die wichtigsten klinischen Risikofaktoren.",
+      "after": "Vorstellung mit symptomatischer Blutung oder neuem fokalem Defizit und Hirnstammlage sind wichtige Risikoprädiktoren. Die Frage vergleicht die Vorgeschichte bei ähnlicher Lage; daraus folgt keine feste individuelle Jahresrate oder automatische Operationsindikation."
+    },
+    {
+      "path": "questions.de.7.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Inzidentelle Läsionen ohne Blutungs-/Defizitpräsentation gehören im Mittel zu einer anderen Risikogruppe. Das bedeutet nicht, dass spätere Symptome ignoriert werden dürfen.",
+        "C": "Ein Anfall ist klinisch relevant, entspricht aber ohne Blutungs-/Defizitnachweis nicht dem hier gesuchten stärkeren Blutungsrisikoprädiktor. Epilepsie und Blutung getrennt beurteilen.",
+        "D": "Ein nicht zuordenbarer Kopfschmerz ist kein Beleg für eine frühere symptomatische Kavernomblutung. Dafür sind klinische Zuordnung und geeigneter Blutungsnachweis erforderlich."
+      }
+    },
+    {
+      "path": "questions.de.7.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1016/S1474-4422(15)00303-8"
+    },
+    {
+      "path": "questions.de.7.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.de.8.question",
+      "currentBefore": "Welches Symptom ist bei supratentoriellen Kavernomen besonders häufig?",
+      "after": "Textvignette: Nach einem ersten fokalen Anfall ist eine Patientin neurologisch stabil. Die MRT zeigt ein zur Anfallssemiologie passendes kortikales Kavernom ohne frische Blutung. Sie hat bisher keine Anfallsmedikation erhalten. Welches initiale Vorgehen ist am besten gestützt?"
+    },
+    {
+      "path": "questions.de.8.options.0.text",
+      "currentBefore": "Epileptischer Anfall",
+      "after": "Klinisch/epileptologisch zuordnen und eine Anfallsmedikation beginnen; chirurgische Optionen individuell abwägen"
+    },
+    {
+      "path": "questions.de.8.options.1.text",
+      "currentBefore": "Hydrozephalus",
+      "after": "Eine elektive Resektion als bevorzugte alleinige Erstmaßnahme vor einer medikamentösen Beurteilung planen"
+    },
+    {
+      "path": "questions.de.8.options.2.text",
+      "currentBefore": "Endokrine Insuffizienz",
+      "after": "Primär eine stereotaktische Bestrahlung zur Anfallskontrolle favorisieren"
+    },
+    {
+      "path": "questions.de.8.options.3.text",
+      "currentBefore": "Trigeminusneuralgie",
+      "after": "Anfallsbehandlung bis zum bildgebenden Nachweis einer neuen Blutung zurückstellen"
+    },
+    {
+      "path": "questions.de.8.explanation",
+      "currentBefore": "Kortikale Hämosiderinablagerung kann epileptogen wirken.",
+      "after": "Bei einem ersten dem Kavernom zugeordneten Anfall ohne Blutung empfiehlt der Konsensus zunächst eine konservative Anfallsbehandlung mit Medikamenten. Chirurgie kann individuell sinnvoll sein, etwa bei Medikamentenunverträglichkeit oder fortbestehenden Anfällen; sie ist keine automatische Folge des MRT-Nachweises."
+    },
+    {
+      "path": "questions.de.8.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Resektion kann nach individueller Abwägung besprochen werden. Sie ersetzt hier aber nicht die empfohlene initiale Anfallsbehandlung; Verträglichkeit, Patientenwunsch und Operationsrisiko gehören in die Entscheidung.",
+        "C": "Bestrahlung ist hier keine bevorzugte initiale Anfallstherapie. Bei einer späteren interventionellen Abwägung sind epileptogene Läsion, Zugänglichkeit und Nutzen-Risiko-Profil entscheidend.",
+        "D": "Kavernomassoziierte Anfälle können ohne nachweisbare neue Blutung auftreten. Fehlende frische Blutung ist daher kein Grund, die klinisch erforderliche Anfallsbehandlung aufzuschieben."
+      }
+    },
+    {
+      "path": "questions.de.8.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.de.8.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.de.9.question",
+      "currentBefore": "Welche Aussage zu SWI-Blooming ist korrekt?",
+      "after": "Textvignette: Ein Kavernom wirkt auf SWI deutlich größer als auf der vergleichbaren konventionellen T2-Sequenz. Welche Größeninterpretation ist am besten?"
+    },
+    {
+      "path": "questions.de.9.options.0.text",
+      "currentBefore": "Es überschätzt die anatomische Größe der Läsion.",
+      "after": "Blooming kann die Ausdehnung vergrößern; anatomische Größe mit geeigneten konventionellen Sequenzen und gleichem Vorprotokoll vergleichen"
+    },
+    {
+      "path": "questions.de.9.options.1.text",
+      "currentBefore": "Es beweist einen arteriellen Hochfluss.",
+      "after": "Die äußere SWI-Grenze als anatomischen Durchmesser für die Operationsplanung übernehmen"
+    },
+    {
+      "path": "questions.de.9.options.2.text",
+      "currentBefore": "Es fehlt bei chronischen Kavernomen.",
+      "after": "Die Sequenzdifferenz als Beleg einer zwischenzeitlichen Größenzunahme werten"
+    },
+    {
+      "path": "questions.de.9.options.3.text",
+      "currentBefore": "Es ist spezifisch für Tumorblutung.",
+      "after": "Aus der größeren SWI-Ausdehnung eine frische symptomatische Blutung ableiten"
+    },
+    {
+      "path": "questions.de.9.explanation",
+      "currentBefore": "Suszeptibilitätsartefakte reichen über die tatsächliche Hämosiderinablagerung hinaus.",
+      "after": "Suszeptibilität erzeugt eine größere scheinbare Signalverlustzone. Sequenz- und Protokollunterschiede müssen vor einer Wachstumsbehauptung geprüft werden; eine symptomatische Blutung verlangt klinische und passende Blutungsbefunde."
+    },
+    {
+      "path": "questions.de.9.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Die Blooming-Grenze kann über die anatomische Läsion hinausreichen. Sie sollte nicht ungeprüft als operativer Durchmesser übernommen werden.",
+        "C": "Unterschiedliche Sequenzen derselben Untersuchung liefern keinen Verlauf. Echtes Wachstum erfordert geeignete vergleichbare Untersuchungen.",
+        "D": "Größere Suszeptibilität allein definiert keine symptomatische Blutung. Neue zuordenbare Symptome und Nachweis frischer intra- oder extraläsionaler Blutung sind gemeinsam zu beurteilen."
+      }
+    },
+    {
+      "path": "questions.de.9.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.de.9.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.de.10.question",
+      "currentBefore": "Welche Läsion ist histologisch durch Hirnparenchym zwischen erweiterten Gefäßen gekennzeichnet?",
+      "after": "Textvignette: Eine kleine pontine Läsion ist auf T2 kaum auffällig, zeigt zart pinselartige Kontrastaufnahme und entsprechenden SWI-Signalverlust, ohne Masseneffekt oder retikulären Popcornkern. Welche Gefäßläsion passt am besten?"
+    },
+    {
+      "path": "questions.de.10.options.1.text",
+      "currentBefore": "Kavernom",
+      "after": "Klassisches Kavernom Typ II"
+    },
+    {
+      "path": "questions.de.10.options.2.text",
+      "currentBefore": "AVM-Nidus",
+      "after": "Arteriovenöser AVM-Nidus"
+    },
+    {
+      "path": "questions.de.10.options.3.text",
+      "currentBefore": "DVA",
+      "after": "Isolierte DVA"
+    },
+    {
+      "path": "questions.de.10.explanation",
+      "currentBefore": "Beim Kavernom fehlt intervenierendes Parenchym; bei Teleangiektasie ist es vorhanden.",
+      "after": "Die Kombination aus diskretem konventionellem Signal, zarter pinselartiger Anreicherung und Suszeptibilität ohne Masseneffekt stützt eine kapilläre Teleangiektasie. Normales Parenchym zwischen erweiterten Kapillaren ist ihr histologisches Korrelat, aber das Merkmal „intervenierendes Hirngewebe“ allein trennt nicht alle Gefäßmalformationen."
+    },
+    {
+      "path": "questions.de.10.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Für das klassische Typ-II-Kavernom fehlt der retikuläre Blutproduktkern mit Saum. Suszeptibilitätsverlust allein unterscheidet Kavernom und Teleangiektasie nicht.",
+        "C": "Ein AVM-Nidus würde eine andere Gefäßarchitektur mit Shuntmerkmalen erwarten lassen. Die geschilderte diskrete pinselartige Läsion liefert diese nicht.",
+        "D": "Eine DVA wird durch konvergierende Markvenen und eine Sammelvene charakterisiert. Das ist ein anderes Muster als die beschriebene kapilläre pinselartige Läsion."
+      }
+    },
+    {
+      "path": "questions.de.10.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.3174/ajnr.A2893"
+    },
+    {
+      "path": "questions.de.10.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.de.11.question",
+      "currentBefore": "Welche Befundformulierung ist bei typischem Kavernom mit DVA am besten?",
+      "after": "Textvignette: Retikulärer T2-Mischsignalkern mit Hämosiderinsaum, eine benachbarte DVA und keine beschriebenen Shuntgefäße. Welche Befundschlussfolgerung ist am besten gestützt?"
+    },
+    {
+      "path": "questions.de.11.options.0.text",
+      "currentBefore": "MRT-typisches Kavernom mit assoziierter DVA; bei Intervention venöse Drainage erhalten.",
+      "after": "MRT-typisches Kavernom mit assoziierter DVA; venöse Drainage bei möglicher Intervention berücksichtigen"
+    },
+    {
+      "path": "questions.de.11.options.1.text",
+      "currentBefore": "Hochfluss-AVM; dringliche Embolisation empfohlen.",
+      "after": "Isolierte DVA; die retikuläre Nachbarläsion als Teil der Sammelvene werten"
+    },
+    {
+      "path": "questions.de.11.options.2.text",
+      "currentBefore": "Hämorrhagischer Tumor bis zum Beweis des Gegenteils.",
+      "after": "Hämorrhagischer Tumor als bevorzugte Diagnose wegen des Hämosiderinsaums"
+    },
+    {
+      "path": "questions.de.11.options.3.text",
+      "currentBefore": "DVA als wahrscheinliche Blutungsquelle resezieren.",
+      "after": "Arteriovenöse Malformation mit DVA als Shuntabfluss"
+    },
+    {
+      "path": "questions.de.11.explanation",
+      "currentBefore": "Die Diagnose und DVA-Assoziation müssen genannt werden; die DVA ist zu erhalten.",
+      "after": "Das kombinierte MRT-Muster stützt ein Kavernom mit DVA. Lokalisation, anatomische Größe, Blutungs-/Ödemzeichen, Läsionszahl und DVA berichten. Der Befund allein legt weder Operationsbedarf noch eine frische symptomatische Blutung fest."
+    },
+    {
+      "path": "questions.de.11.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Die retikuläre Läsion mit Hämosiderinsaum ist nicht einfach eine konvergierende Vene. Kavernom und funktionelle venöse Drainage sollten getrennt benannt werden.",
+        "C": "Ein Hämosiderinsaum kann bei Blutprodukten vorkommen und beweist keinen Tumor. Für die bevorzugte Tumordiagnose fehlen hier passende solide oder progrediente Befunde.",
+        "D": "Eine DVA-Assoziation allein ist kein arteriovenöser Shunt. Die Vignette liefert weder Feeder-Nidus-Architektur noch frühe venöse Füllung."
+      }
+    },
+    {
+      "path": "questions.de.11.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.de.11.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.0.question",
+      "currentBefore": "Which MRI pattern is most typical of a cavernoma?",
+      "after": "Which combined MRI pattern most strongly supports a typical cavernoma?"
+    },
+    {
+      "path": "questions.en.0.options.0.text",
+      "currentBefore": "Reticulated popcorn core with a complete haemosiderin rim",
+      "after": "Reticulated mixed-signal core with a surrounding haemosiderin rim and susceptibility signal loss"
+    },
+    {
+      "path": "questions.en.0.options.1.text",
+      "currentBefore": "Homogeneous T2 hyperintensity without susceptibility",
+      "after": "Homogeneously fluid-bright T2 lesion without corresponding susceptibility signal loss"
+    },
+    {
+      "path": "questions.en.0.options.2.text",
+      "currentBefore": "Solid enhancement with high rCBV",
+      "after": "Solid enhancing tissue component with progressive mass-like growth"
+    },
+    {
+      "path": "questions.en.0.options.3.text",
+      "currentBefore": "Arterial nidus with flow voids",
+      "after": "Tangle of flow voids with arterial feeders and early venous drainage"
+    },
+    {
+      "path": "questions.en.0.explanation",
+      "currentBefore": "Blood products of different ages create the popcorn core with a peripheral haemosiderin rim.",
+      "after": "The typical reticulated core contains blood products of different ages and is surrounded by a dark haemosiderin rim. Acute blood may obscure this pattern; isolated susceptibility foci are less specific."
+    },
+    {
+      "path": "questions.en.0.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "A homogeneous fluid-like lesion without a blood-product pattern does not match the classic cavernoma core. T2 brightness alone is insufficient.",
+        "C": "A growing solid component requires evaluation for a tumour mimic. Enhancement alone does not prove tumour because cavernomas can also enhance.",
+        "D": "Feeders, a vascular nidus and early venous drainage support an arteriovenous shunt lesion rather than the classic low-flow cavernoma pattern."
+      }
+    },
+    {
+      "path": "questions.en.0.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.en.0.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.1.question",
+      "currentBefore": "Which sequence is most sensitive for small multiple cavernomas?",
+      "after": "When multiple small cavernomas are suspected, which additional MRI sequence is most sensitive for small susceptibility lesions?"
+    },
+    {
+      "path": "questions.en.1.options.0.text",
+      "currentBefore": "SWI/T2*",
+      "after": "High-resolution SWI or a comparable modern susceptibility-sensitive sequence"
+    },
+    {
+      "path": "questions.en.1.options.1.text",
+      "currentBefore": "T1 C+",
+      "after": "Conventional two-dimensional T2*-weighted GRE"
+    },
+    {
+      "path": "questions.en.1.options.2.text",
+      "currentBefore": "DWI",
+      "after": "Contrast-enhanced T1-weighted imaging"
+    },
+    {
+      "path": "questions.en.1.options.3.text",
+      "currentBefore": "MR-Angiografie",
+      "after": "Diffusion-weighted imaging with ADC"
+    },
+    {
+      "path": "questions.en.1.explanation",
+      "currentBefore": "Susceptibility sequences show marked blooming and detect Zabramski type IV lesions.",
+      "after": "SWI and comparable modern sequences are more sensitive for small lesions than conventional T2*-weighted GRE. Tiny dark foci require context: microbleeds and calcifications may also produce susceptibility."
+    },
+    {
+      "path": "questions.en.1.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "T2*-weighted GRE is useful but modern SWI-like sequences detect small lesions more sensitively. Neither blooming extent directly measures anatomical size.",
+        "C": "Postcontrast T1 helps depict a DVA or assess a tumour differential but does not replace susceptibility imaging for small blood-product foci.",
+        "D": "DWI/ADC helps assess infarction and other mimics. It is not the most sensitive sequence for small haemosiderin foci."
+      }
+    },
+    {
+      "path": "questions.en.1.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.en.1.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.2.question",
+      "currentBefore": "Which statement about DSA is correct?",
+      "after": "Text vignette: MRI shows a typical cavernoma pattern without evidence of arteriovenous shunting. An available DSA is negative. How should this be interpreted?"
+    },
+    {
+      "path": "questions.en.2.options.0.text",
+      "currentBefore": "Cavernomas are usually angiographically occult.",
+      "after": "Compatible with an angiographically occult low-flow cavernoma; MRI remains decisive"
+    },
+    {
+      "path": "questions.en.2.options.1.text",
+      "currentBefore": "DSA routinely shows a compact nidus.",
+      "after": "Negative DSA makes the MRI diagnosis of cavernoma unlikely"
+    },
+    {
+      "path": "questions.en.2.options.2.text",
+      "currentBefore": "A negative DSA excludes cavernoma.",
+      "after": "CTA to depict the expected arterial feeder is the next routine test"
+    },
+    {
+      "path": "questions.en.2.options.3.text",
+      "currentBefore": "DSA is more sensitive than SWI.",
+      "after": "Repeat more selective DSA is preferable to confirm the cavernoma"
+    },
+    {
+      "path": "questions.en.2.explanation",
+      "currentBefore": "Very slow flow makes cavernomas angiographically occult.",
+      "after": "Cavernomas usually lack an angiographically demonstrable high-flow arteriovenous shunt. Negative DSA therefore does not contradict typical MRI. Catheter angiography is mainly considered when an AVM is a differential diagnosis."
+    },
+    {
+      "path": "questions.en.2.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Angiographic occultness is expected in cavernoma. A negative study does not refute the characteristic MRI blood-product pattern.",
+        "C": "An arterial feeder belongs to AVM shunt architecture and is not required in typical cavernoma. CTA is not a routine confirmation test here.",
+        "D": "Without suspicion of AVM or shunting, repeat DSA is not the preferred route to confirm cavernoma. Morphological MRI is the recommended modality."
+      }
+    },
+    {
+      "path": "questions.en.2.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.en.2.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.3.question",
+      "currentBefore": "Which Zabramski type corresponds to the classic popcorn pattern?",
+      "after": "Text vignette: T1 and T2 show a reticulated mixed-signal core of blood products of different ages, surrounded by a dark rim. Which Zabramski type fits best?"
+    },
+    {
+      "path": "questions.en.3.options.0.text",
+      "currentBefore": "Typ II",
+      "after": "Type II"
+    },
+    {
+      "path": "questions.en.3.options.1.text",
+      "currentBefore": "Typ I",
+      "after": "Type I"
+    },
+    {
+      "path": "questions.en.3.options.2.text",
+      "currentBefore": "Typ III",
+      "after": "Type III"
+    },
+    {
+      "path": "questions.en.3.options.3.text",
+      "currentBefore": "Typ IV",
+      "after": "Type IV"
+    },
+    {
+      "path": "questions.en.3.explanation",
+      "currentBefore": "Type II contains reticulated blood products of different ages with a haemosiderin rim.",
+      "after": "Type II describes the reticulated mixed-signal pattern with a peripheral haemosiderin rim. This is a morphological category, not an individual haemorrhage prediction."
+    },
+    {
+      "path": "questions.en.3.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Type I is dominated by subacute blood with a T1-hyperintense core; the reticulated mixed core described fits type II better.",
+        "C": "Type III predominantly shows chronic blood products and low T2 signal. The reticulated core of different blood ages here is type II.",
+        "D": "Type IV describes punctate susceptibility foci barely seen on conventional T1/T2, not a conspicuous reticulated core."
+      }
+    },
+    {
+      "path": "questions.en.3.source",
+      "currentBefore": null,
+      "after": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7964862/"
+    },
+    {
+      "path": "questions.en.3.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.4.question",
+      "currentBefore": "What most strongly suggests familial disease?",
+      "after": "Which combination most strongly warrants genetic evaluation for familial CCM disease?"
+    },
+    {
+      "path": "questions.en.4.options.0.text",
+      "currentBefore": "Multiple cavernomas without an associated DVA",
+      "after": "Multiple typical cavernomas in separate regions, without an associated DVA or prior brain irradiation"
+    },
+    {
+      "path": "questions.en.4.options.1.text",
+      "currentBefore": "A solitary cavernoma next to a DVA",
+      "after": "Several adjacent cavernomas in the drainage territory of a single DVA"
+    },
+    {
+      "path": "questions.en.4.options.2.text",
+      "currentBefore": "A single post-traumatic microbleed",
+      "after": "New multiple susceptibility lesions following brain irradiation"
+    },
+    {
+      "path": "questions.en.4.options.3.text",
+      "currentBefore": "An isolated pontine flow void",
+      "after": "A solitary typical cavernoma next to a DVA without affected relatives"
+    },
+    {
+      "path": "questions.en.4.explanation",
+      "currentBefore": "Multiple lesions, especially without a DVA, are typical of familial CCM disease.",
+      "after": "Multifocal typical cavernomas without a shared DVA or radiation history raise suspicion of familial disease. Family history and genetic counselling help establish the context; multiplicity alone does not prove an inherited defect."
+    },
+    {
+      "path": "questions.en.4.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "A cluster around one shared DVA may represent sporadic disease and is not equivalent to noncontiguous multifocal cavernomas.",
+        "C": "Acquired cavernomas or other blood-product foci may occur after irradiation. This history provides an important alternative explanation.",
+        "D": "A single cavernoma with a DVA is often sporadic. Without additional clinical or family clues, familial suspicion is lower than in A."
+      }
+    },
+    {
+      "path": "questions.en.4.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.en.4.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.5.question",
+      "currentBefore": "With cavernoma + DVA, which structure typically causes haemorrhage?",
+      "after": "Text vignette: Beside a DVA is a typical reticulated lesion with a haemosiderin rim and new blood products. The collector is patent and no congestive oedema is described. Which interpretation is best supported?"
+    },
+    {
+      "path": "questions.en.5.options.0.text",
+      "currentBefore": "The cavernoma",
+      "after": "Blood products from the associated cavernoma"
+    },
+    {
+      "path": "questions.en.5.options.1.text",
+      "currentBefore": "The DVA collector vein",
+      "after": "Congestive haemorrhage from thrombosis of the DVA collector"
+    },
+    {
+      "path": "questions.en.5.options.2.text",
+      "currentBefore": "The normal cortical vein",
+      "after": "Haemorrhagic venous infarction of the drainage territory"
+    },
+    {
+      "path": "questions.en.5.options.3.text",
+      "currentBefore": "The dural sinus",
+      "after": "Haemorrhage from a high-flow arteriovenous malformation"
+    },
+    {
+      "path": "questions.en.5.explanation",
+      "currentBefore": "The DVA is necessary drainage; haemorrhage and haemosiderin usually arise from the cavernoma.",
+      "after": "The described blood-product pattern is attributable to the cavernoma. An accompanying DVA is not automatically the bleeding source. Its drainage still requires assessment because uncommon venous complications represent a different mechanism."
+    },
+    {
+      "path": "questions.en.5.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Collector thrombosis would require supporting vascular and congestion findings. Here the vein is patent and the blood-product pattern is in the cavernoma.",
+        "C": "Venous infarction requires compatible parenchymal and outflow findings, which are not described. DVA association alone is insufficient.",
+        "D": "A high-flow malformation would require shunt architecture or feeder–nidus–early-vein findings. The reticulated blood-product core instead supports cavernoma."
+      }
+    },
+    {
+      "path": "questions.en.5.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.en.5.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.6.question",
+      "currentBefore": "What is mandatory when resecting a cavernoma associated with a DVA?",
+      "after": "Before possible cavernoma resection, MRI shows an adjacent DVA draining normal parenchyma. Which plan best respects this function?"
+    },
+    {
+      "path": "questions.en.6.options.0.text",
+      "currentBefore": "Preservation of the DVA collector vein",
+      "after": "Plan access to the cavernoma while preserving functional DVA/collector drainage"
+    },
+    {
+      "path": "questions.en.6.options.1.text",
+      "currentBefore": "Coagulation of all medullary veins",
+      "after": "Remove the collector adjacent to the cavernoma together with the lesion"
+    },
+    {
+      "path": "questions.en.6.options.2.text",
+      "currentBefore": "Preoperative DVA embolisation",
+      "after": "Designate the DVA rather than the cavernoma as the primary resection target"
+    },
+    {
+      "path": "questions.en.6.options.3.text",
+      "currentBefore": "Resection of the entire venous architecture",
+      "after": "Treat the collector as an AVM draining vein within a shunt-treatment plan"
+    },
+    {
+      "path": "questions.en.6.explanation",
+      "currentBefore": "The DVA drains normal brain; injury may cause venous infarction.",
+      "after": "Functional venous drainage must be incorporated into planning and preserved without injury whenever possible. Damage may cause congestion, oedema or venous infarction. This does not mandate cavernoma surgery; indication and access remain individual."
+    },
+    {
+      "path": "questions.en.6.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "The collector is not simply part of the cavernoma mass. Removing it with the lesion can endanger drainage of normal brain.",
+        "C": "The functional DVA is not an interchangeable treatment target. Whether the cavernoma is treated depends on its clinical context.",
+        "D": "A DVA without shunting has a different role from AVM outflow. Calling both structures veins does not justify applying the AVM treatment model."
+      }
+    },
+    {
+      "path": "questions.en.6.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.en.6.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.7.question",
+      "currentBefore": "Which factor most clearly increases future haemorrhage risk?",
+      "after": "With otherwise comparable location, which presentation history is most strongly associated with higher future cavernoma haemorrhage risk?"
+    },
+    {
+      "path": "questions.en.7.options.0.text",
+      "currentBefore": "Previous symptomatic haemorrhage",
+      "after": "Previous symptomatic intracranial haemorrhage from the cavernoma"
+    },
+    {
+      "path": "questions.en.7.options.1.text",
+      "currentBefore": "Absent enhancement",
+      "after": "Incidental finding without previous haemorrhage or focal deficit"
+    },
+    {
+      "path": "questions.en.7.options.2.text",
+      "currentBefore": "Asymptomatic superficial supratentorial location",
+      "after": "Seizure presentation without documented haemorrhage or focal deficit"
+    },
+    {
+      "path": "questions.en.7.options.3.text",
+      "currentBefore": "Negative DSA",
+      "after": "Unattributed headache without documented haemorrhage or focal deficit"
+    },
+    {
+      "path": "questions.en.7.explanation",
+      "currentBefore": "Prior haemorrhage and brainstem location are key clinical risk factors.",
+      "after": "Presentation with symptomatic haemorrhage or a new focal deficit and brainstem location are important risk predictors. This question compares presentation history at similar locations; it does not establish a fixed individual annual rate or an automatic indication for surgery."
+    },
+    {
+      "path": "questions.en.7.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Incidental lesions without haemorrhage/deficit presentation belong on average to a different risk group. This does not mean later symptoms may be ignored.",
+        "C": "A seizure is clinically important but without haemorrhage/deficit evidence is not the stronger bleeding-risk predictor asked for. Assess epilepsy and haemorrhage separately.",
+        "D": "An unattributed headache does not establish previous symptomatic cavernoma haemorrhage. Clinical attribution and appropriate evidence of bleeding are required."
+      }
+    },
+    {
+      "path": "questions.en.7.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1016/S1474-4422(15)00303-8"
+    },
+    {
+      "path": "questions.en.7.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.8.question",
+      "currentBefore": "Which symptom is particularly common in supratentorial cavernomas?",
+      "after": "Text vignette: After a first focal seizure a patient is neurologically stable. MRI shows a cortical cavernoma concordant with seizure semiology, without recent bleeding. She has not received antiseizure medication. Which initial approach is best supported?"
+    },
+    {
+      "path": "questions.en.8.options.0.text",
+      "currentBefore": "Epileptic seizure",
+      "after": "Establish clinical/epilepsy correlation and start antiseizure medication; assess surgical options individually"
+    },
+    {
+      "path": "questions.en.8.options.1.text",
+      "currentBefore": "Hydrocephalus",
+      "after": "Plan elective resection as the preferred sole first step before assessing medication"
+    },
+    {
+      "path": "questions.en.8.options.2.text",
+      "currentBefore": "Endocrine insufficiency",
+      "after": "Prefer primary stereotactic radiosurgery for seizure control"
+    },
+    {
+      "path": "questions.en.8.options.3.text",
+      "currentBefore": "Trigeminal neuralgia",
+      "after": "Defer seizure treatment until imaging demonstrates a new haemorrhage"
+    },
+    {
+      "path": "questions.en.8.explanation",
+      "currentBefore": "Cortical haemosiderin deposition may be epileptogenic.",
+      "after": "For a first seizure attributed to a cavernoma without haemorrhage, the consensus recommends an initial conservative approach with antiseizure medication. Surgery may be appropriate individually, for example with medication intolerance or persistent seizures; MRI detection does not automatically mandate it."
+    },
+    {
+      "path": "questions.en.8.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Resection may be discussed after individual assessment. It does not replace the recommended initial seizure treatment here; tolerability, patient preference and operative risk matter.",
+        "C": "Radiosurgery is not the preferred initial seizure treatment here. Any later intervention assessment depends on the epileptogenic lesion, accessibility and risk–benefit profile.",
+        "D": "Cavernoma-associated seizures can occur without a demonstrable new haemorrhage. Absence of recent bleeding is not a reason to postpone clinically indicated seizure treatment."
+      }
+    },
+    {
+      "path": "questions.en.8.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.en.8.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.9.question",
+      "currentBefore": "Which statement about SWI blooming is correct?",
+      "after": "Text vignette: A cavernoma appears substantially larger on SWI than on comparable conventional T2 imaging. Which size interpretation is best?"
+    },
+    {
+      "path": "questions.en.9.options.0.text",
+      "currentBefore": "It overestimates the anatomical lesion size.",
+      "after": "Blooming may enlarge the apparent extent; compare anatomical size on appropriate conventional sequences and matched prior protocols"
+    },
+    {
+      "path": "questions.en.9.options.1.text",
+      "currentBefore": "It proves arterial high flow.",
+      "after": "Use the outer SWI boundary as the anatomical diameter for surgical planning"
+    },
+    {
+      "path": "questions.en.9.options.2.text",
+      "currentBefore": "It is absent in chronic cavernomas.",
+      "after": "Interpret the difference between sequences as evidence of interval growth"
+    },
+    {
+      "path": "questions.en.9.options.3.text",
+      "currentBefore": "It is specific for tumour haemorrhage.",
+      "after": "Infer a new symptomatic haemorrhage from the greater SWI extent"
+    },
+    {
+      "path": "questions.en.9.explanation",
+      "currentBefore": "Susceptibility artefact extends beyond the true deposit.",
+      "after": "Susceptibility creates a larger apparent zone of signal loss. Check sequence and protocol differences before claiming growth; symptomatic haemorrhage requires clinical findings and appropriate bleeding evidence."
+    },
+    {
+      "path": "questions.en.9.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "The blooming boundary may extend beyond the anatomical lesion. It should not be adopted uncritically as the operative diameter.",
+        "C": "Different sequences from the same examination do not establish an interval change. True growth requires suitably comparable examinations.",
+        "D": "Greater susceptibility alone does not define symptomatic haemorrhage. Assess new attributable symptoms together with evidence of recent intralesional or extralesional bleeding."
+      }
+    },
+    {
+      "path": "questions.en.9.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.en.9.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.10.question",
+      "currentBefore": "Which lesion has intervening brain parenchyma between dilated vessels histologically?",
+      "after": "Text vignette: A small pontine lesion is barely conspicuous on T2 and shows faint brush-like enhancement with corresponding SWI signal loss, without mass effect or a reticulated popcorn core. Which vascular lesion fits best?"
+    },
+    {
+      "path": "questions.en.10.options.1.text",
+      "currentBefore": "Cavernoma",
+      "after": "Classic type II cavernoma"
+    },
+    {
+      "path": "questions.en.10.options.2.text",
+      "currentBefore": "AVM nidus",
+      "after": "Arteriovenous AVM nidus"
+    },
+    {
+      "path": "questions.en.10.options.3.text",
+      "currentBefore": "DVA",
+      "after": "Isolated DVA"
+    },
+    {
+      "path": "questions.en.10.explanation",
+      "currentBefore": "Cavernomas lack intervening parenchyma; capillary telangiectasia contains it.",
+      "after": "The combination of subtle conventional signal, faint brush-like enhancement and susceptibility without mass effect supports capillary telangiectasia. Normal tissue between dilated capillaries is its histological correlate, but intervening brain tissue alone does not distinguish every vascular malformation."
+    },
+    {
+      "path": "questions.en.10.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "The reticulated blood-product core and rim of a classic type II cavernoma are absent. Susceptibility loss alone does not separate cavernoma from telangiectasia.",
+        "C": "An AVM nidus would suggest different vascular architecture with shunt features, which the subtle brush-like lesion described does not provide.",
+        "D": "A DVA is characterized by converging medullary veins and a collector, a different pattern from the capillary brush-like lesion described."
+      }
+    },
+    {
+      "path": "questions.en.10.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.3174/ajnr.A2893"
+    },
+    {
+      "path": "questions.en.10.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.en.11.question",
+      "currentBefore": "Which report conclusion is best for a typical cavernoma with DVA?",
+      "after": "Text vignette: A reticulated mixed-signal T2 core with a haemosiderin rim and adjacent DVA is described, without shunt vessels. Which report conclusion is best supported?"
+    },
+    {
+      "path": "questions.en.11.options.0.text",
+      "currentBefore": "MRI-typical cavernoma with associated DVA; preserve venous drainage if intervention is performed.",
+      "after": "MRI-typical cavernoma with associated DVA; account for venous drainage if intervention is considered"
+    },
+    {
+      "path": "questions.en.11.options.1.text",
+      "currentBefore": "High-flow AVM; urgent embolisation recommended.",
+      "after": "Isolated DVA; interpret the reticulated adjacent lesion as part of the collector"
+    },
+    {
+      "path": "questions.en.11.options.2.text",
+      "currentBefore": "Haemorrhagic tumour until proven otherwise.",
+      "after": "Prefer haemorrhagic tumour because of the haemosiderin rim"
+    },
+    {
+      "path": "questions.en.11.options.3.text",
+      "currentBefore": "Resect the DVA as the likely bleeding source.",
+      "after": "Arteriovenous malformation with the DVA as shunt outflow"
+    },
+    {
+      "path": "questions.en.11.explanation",
+      "currentBefore": "State the diagnosis and DVA association; the DVA must be preserved.",
+      "after": "The combined MRI pattern supports cavernoma with a DVA. Report location, anatomical size, haemorrhage/oedema findings, lesion burden and DVA. Imaging alone establishes neither a need for surgery nor a new symptomatic haemorrhage."
+    },
+    {
+      "path": "questions.en.11.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "The reticulated lesion with a haemosiderin rim is not simply a converging vein. Name the cavernoma and functional venous drainage separately.",
+        "C": "A haemosiderin rim reflects blood products and does not prove tumour. Supporting solid or progressive findings for a preferred tumour diagnosis are absent here.",
+        "D": "DVA association alone is not an arteriovenous shunt. The vignette provides neither feeder–nidus architecture nor early venous filling."
+      }
+    },
+    {
+      "path": "questions.en.11.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.en.11.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.0.question",
+      "currentBefore": "کدام الگوی MRI برای کاورنوم تیپیک‌تر است؟",
+      "after": "کدام مجموعهٔ یافته‌های MRI بیشتر به نفع کاورنوم تیپیک است؟"
+    },
+    {
+      "path": "questions.fa.0.options.0.text",
+      "currentBefore": "هسته رتیکولار پاپ‌کورنی با حاشیه کامل هموسیدرین",
+      "after": "هستهٔ رتیکولار با سیگنال مختلط، حاشیهٔ هموسیدرین پیرامونی و افت سیگنال حساسیت‌پذیری"
+    },
+    {
+      "path": "questions.fa.0.options.1.text",
+      "currentBefore": "T2 همگن بالا بدون حساسیت",
+      "after": "ضایعهٔ همگن با سیگنال شبیه مایع در T2، بدون افت سیگنال متناظر حساسیت‌پذیری"
+    },
+    {
+      "path": "questions.fa.0.options.2.text",
+      "currentBefore": "افزایش جامد با rCBV بالا",
+      "after": "جزء بافتی جامد دارای جذب حاجب همراه با رشد فضاگیر پیشرونده"
+    },
+    {
+      "path": "questions.fa.0.options.3.text",
+      "currentBefore": "نیدوس شریانی با Flow void",
+      "after": "کلاف عروقی با فلووید، تغذیه‌کننده‌های شریانی و تخلیهٔ زودرس وریدی"
+    },
+    {
+      "path": "questions.fa.0.explanation",
+      "currentBefore": "محصولات خون با سنین مختلف هسته پاپ‌کورنی و حاشیه هموسیدرین ایجاد می‌کنند.",
+      "after": "هستهٔ رتیکولار تیپیک محصولات خون با سنین متفاوت دارد و با حاشیهٔ تیرهٔ هموسیدرین احاطه می‌شود. خون حاد ممکن است الگو را بپوشاند؛ کانون منفرد حساسیت‌پذیری اختصاصیت کمتری دارد."
+    },
+    {
+      "path": "questions.fa.0.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "ضایعهٔ همگن شبیه مایع بدون الگوی محصولات خون، هستهٔ کلاسیک کاورنوم نیست. روشنی T2 به‌تنهایی کافی نیست.",
+        "C": "جزء جامد در حال رشد بررسی تقلیدکنندهٔ توموری را ایجاب می‌کند. جذب حاجب به‌تنهایی تومور را ثابت نمی‌کند، زیرا کاورنوم نیز می‌تواند جذب داشته باشد.",
+        "D": "تغذیه‌کننده، نیدوس عروقی و تخلیهٔ زودرس وریدی به نفع ضایعهٔ شانت شریانی‌وریدی‌اند، نه الگوی کلاسیک کاورنوم کم‌جریان."
+      }
+    },
+    {
+      "path": "questions.fa.0.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.fa.0.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.1.question",
+      "currentBefore": "کدام سکانس برای کاورنوم‌های کوچک متعدد حساس‌تر است؟",
+      "after": "در شک به کاورنوم‌های کوچک متعدد، کدام سکانس تکمیلی MRI کانون‌های کوچک با اثر سوسپتیبیلیتی را حساس‌تر نشان می‌دهد؟"
+    },
+    {
+      "path": "questions.fa.1.options.0.text",
+      "currentBefore": "SWI/T2*",
+      "after": "SWI با تفکیک بالا یا سکانس مدرن مشابه حساس به سوسپتیبیلیتی"
+    },
+    {
+      "path": "questions.fa.1.options.1.text",
+      "currentBefore": "T1 C+",
+      "after": "T2*-GRE دوبعدی معمول"
+    },
+    {
+      "path": "questions.fa.1.options.2.text",
+      "currentBefore": "DWI",
+      "after": "سکانس T1 پس از تزریق حاجب"
+    },
+    {
+      "path": "questions.fa.1.options.3.text",
+      "currentBefore": "MR-Angiografie",
+      "after": "تصویربرداری انتشار با ADC"
+    },
+    {
+      "path": "questions.fa.1.explanation",
+      "currentBefore": "سکانس‌های حساسیت آرتیفکت شکوفه‌ای (blooming) واضح و ضایعات نوع IV را نشان می‌دهند.",
+      "after": "SWI و سکانس‌های مدرن مشابه برای ضایعات کوچک از T2*-GRE معمول حساس‌ترند. کانون‌های تیرهٔ کوچک به زمینه نیاز دارند؛ میکروخونریزی و کلسیفیکاسیون نیز می‌توانند اثر حساسیت‌پذیری ایجاد کنند."
+    },
+    {
+      "path": "questions.fa.1.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "T2*-GRE مفید است، اما SWI و سکانس‌های مشابه ضایعات کوچک را حساس‌تر نشان می‌دهند. وسعت بلومینگ در هیچ‌یک معادل اندازهٔ آناتومیک نیست.",
+        "C": "T1 پس از حاجب برای نمایش DVA یا افتراق تومور کمک‌کننده است، اما جای سکانس حساسیت‌پذیری برای یافتن کانون‌های کوچک محصولات خون را نمی‌گیرد.",
+        "D": "DWI/ADC بررسی انفارکت و تقلیدکننده‌ها را تکمیل می‌کند و حساس‌ترین سکانس برای کانون‌های کوچک هموسیدرین نیست."
+      }
+    },
+    {
+      "path": "questions.fa.1.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.fa.1.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.2.question",
+      "currentBefore": "کدام عبارت درباره DSA صحیح است؟",
+      "after": "سناریوی متنی: MRI الگوی تیپیک کاورنوم بدون نشانهٔ شانت شریانی‌وریدی دارد و DSA موجود منفی است. بهترین تفسیر چیست؟"
+    },
+    {
+      "path": "questions.fa.2.options.0.text",
+      "currentBefore": "کاورنوم‌ها معمولاً در آنژیوگرافی مخفی‌اند.",
+      "after": "با کاورنوم کم‌جریان پنهان در آنژیوگرافی سازگار است؛ MRI همچنان مبنای ارزیابی است"
+    },
+    {
+      "path": "questions.fa.2.options.1.text",
+      "currentBefore": "DSA معمولاً نیدوس فشرده نشان می‌دهد.",
+      "after": "DSA منفی تشخیص کاورنوم بر پایهٔ MRI را نامحتمل می‌کند"
+    },
+    {
+      "path": "questions.fa.2.options.2.text",
+      "currentBefore": "DSA منفی کاورنوم را رد می‌کند.",
+      "after": "CTA برای نمایش تغذیه‌کنندهٔ شریانی موردانتظار، آزمون روتین بعدی است"
+    },
+    {
+      "path": "questions.fa.2.options.3.text",
+      "currentBefore": "DSA از SWI حساس‌تر است.",
+      "after": "برای تأیید کاورنوم، DSA انتخابی‌تر تکراری ترجیح دارد"
+    },
+    {
+      "path": "questions.fa.2.explanation",
+      "currentBefore": "جریان بسیار آهسته باعث مخفی بودن در آنژیوگرافی می‌شود.",
+      "after": "کاورنوم معمولاً شانت شریانی‌وریدی پرجریان قابل‌نمایش در آنژیوگرافی ندارد؛ پس DSA منفی با MRI تیپیک تعارض ندارد. آنژیوگرافی کاتتری بیشتر هنگام مطرح‌بودن AVM در افتراق در نظر گرفته می‌شود."
+    },
+    {
+      "path": "questions.fa.2.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "پنهان‌بودن در آنژیوگرافی در کاورنوم انتظار می‌رود؛ بررسی منفی الگوی مشخصهٔ محصولات خون در MRI را رد نمی‌کند.",
+        "C": "تغذیه‌کنندهٔ شریانی جزء معماری شانت AVM است و برای کاورنوم تیپیک انتظار نمی‌رود. CTA در اینجا آزمون تأییدی روتین نیست.",
+        "D": "بدون شک به AVM یا شانت، DSA تکراری مسیر ترجیحی تأیید کاورنوم نیست؛ MRI مورفولوژیک روش توصیه‌شده است."
+      }
+    },
+    {
+      "path": "questions.fa.2.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.fa.2.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.3.question",
+      "currentBefore": "کدام نوع Zabramski الگوی پاپ‌کورنی کلاسیک است؟",
+      "after": "سناریوی متنی: در T1 و T2 هستهٔ رتیکولار با سیگنال مختلط ناشی از محصولات خون در مراحل مختلف و حاشیهٔ تیره دیده می‌شود. کدام نوع زابرامسکی مناسب‌تر است؟"
+    },
+    {
+      "path": "questions.fa.3.options.0.text",
+      "currentBefore": "Typ II",
+      "after": "نوع II"
+    },
+    {
+      "path": "questions.fa.3.options.1.text",
+      "currentBefore": "Typ I",
+      "after": "نوع I"
+    },
+    {
+      "path": "questions.fa.3.options.2.text",
+      "currentBefore": "Typ III",
+      "after": "نوع III"
+    },
+    {
+      "path": "questions.fa.3.options.3.text",
+      "currentBefore": "Typ IV",
+      "after": "نوع IV"
+    },
+    {
+      "path": "questions.fa.3.explanation",
+      "currentBefore": "نوع II محصولات خون رتیکولار با سنین مختلف و حاشیه هموسیدرین دارد.",
+      "after": "نوع II الگوی رتیکولار سیگنال مختلط با حاشیهٔ محیطی هموسیدرین را توصیف می‌کند. این رده‌بندی مورفولوژیک است، نه پیش‌بینی فردی خونریزی."
+    },
+    {
+      "path": "questions.fa.3.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "نوع I با خون تحت‌حاد و هستهٔ پرسیگنال T1 مشخص می‌شود؛ هستهٔ مختلط رتیکولار توصیف‌شده بیشتر با نوع II تطابق دارد.",
+        "C": "نوع III بیشتر محصولات خون مزمن و سیگنال پایین T2 دارد. هستهٔ رتیکولار با خون در سنین مختلف در اینجا نوع II است.",
+        "D": "نوع IV کانون‌های نقطه‌ای حساسیت‌پذیری را توصیف می‌کند که در T1/T2 معمول به‌سختی دیده می‌شوند، نه هستهٔ رتیکولار واضح."
+      }
+    },
+    {
+      "path": "questions.fa.3.source",
+      "currentBefore": null,
+      "after": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7964862/"
+    },
+    {
+      "path": "questions.fa.3.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.4.question",
+      "currentBefore": "چه چیزی بیشتر به نفع فرم خانوادگی است؟",
+      "after": "کدام مجموعهٔ یافته‌ها بیشتر بررسی ژنتیکی بیماری خانوادگی CCM را توجیه می‌کند؟"
+    },
+    {
+      "path": "questions.fa.4.options.0.text",
+      "currentBefore": "کاورنوم متعدد بدون DVA همراه",
+      "after": "کاورنوم‌های تیپیک متعدد در نواحی جداگانه، بدون DVA همراه یا سابقهٔ پرتودرمانی مغز"
+    },
+    {
+      "path": "questions.fa.4.options.1.text",
+      "currentBefore": "کاورنوم منفرد کنار DVA",
+      "after": "چند کاورنوم مجاور در قلمرو تخلیهٔ یک DVA"
+    },
+    {
+      "path": "questions.fa.4.options.2.text",
+      "currentBefore": "یک میکروخونریزی پس از تروما",
+      "after": "ضایعات حساسیت‌پذیری متعدد جدید پس از پرتودرمانی مغز"
+    },
+    {
+      "path": "questions.fa.4.options.3.text",
+      "currentBefore": "Flow void منفرد پونز",
+      "after": "کاورنوم تیپیک منفرد کنار DVA، بدون بستگان مبتلا"
+    },
+    {
+      "path": "questions.fa.4.explanation",
+      "currentBefore": "ضایعات متعدد، به‌ویژه بدون DVA، برای بیماری خانوادگی تیپیک‌اند.",
+      "after": "کاورنوم‌های تیپیک چندکانونی بدون DVA مشترک یا سابقهٔ پرتودرمانی شک به فرم خانوادگی را ایجاد می‌کنند. سابقهٔ خانوادگی و مشاورهٔ ژنتیک به ارزیابی کمک می‌کنند؛ تعدد به‌تنهایی نقص ارثی را ثابت نمی‌کند."
+    },
+    {
+      "path": "questions.fa.4.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "خوشهٔ ضایعات پیرامون یک DVA مشترک ممکن است اسپورادیک باشد و معادل کاورنوم‌های چندکانونی جدا از هم نیست.",
+        "C": "پس از پرتودرمانی ممکن است کاورنوم اکتسابی یا کانون‌های دیگر محصولات خون ایجاد شوند؛ این سابقه توضیح جایگزین مهمی است.",
+        "D": "کاورنوم منفرد همراه DVA اغلب اسپورادیک است. بدون سرنخ بالینی یا خانوادگی دیگر، شک به فرم خانوادگی از گزینهٔ A کمتر است."
+      }
+    },
+    {
+      "path": "questions.fa.4.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.fa.4.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.5.question",
+      "currentBefore": "در کاورنوم + DVA کدام ساختار معمولاً خونریزی می‌کند؟",
+      "after": "سناریوی متنی: کنار DVA ضایعهٔ رتیکولار تیپیک با حاشیهٔ هموسیدرین و محصولات خون جدید دیده می‌شود. ورید جمع‌کننده باز است و ادم احتقانی توصیف نشده است. کدام تفسیر پشتوانهٔ بیشتری دارد؟"
+    },
+    {
+      "path": "questions.fa.5.options.0.text",
+      "currentBefore": "کاورنوم",
+      "after": "محصولات خون ناشی از کاورنوم همراه"
+    },
+    {
+      "path": "questions.fa.5.options.1.text",
+      "currentBefore": "ورید جمع‌کننده DVA",
+      "after": "خونریزی احتقانی ناشی از ترومبوز ورید جمع‌کنندهٔ DVA"
+    },
+    {
+      "path": "questions.fa.5.options.2.text",
+      "currentBefore": "ورید کورتیکال طبیعی",
+      "after": "انفارکت وریدی هموراژیک قلمرو تخلیه"
+    },
+    {
+      "path": "questions.fa.5.options.3.text",
+      "currentBefore": "سینوس دورال",
+      "after": "خونریزی ناشی از ناهنجاری شریانی‌وریدی پرجریان"
+    },
+    {
+      "path": "questions.fa.5.explanation",
+      "currentBefore": "DVA مسیر تخلیه ضروری است و خونریزی معمولاً از کاورنوم است.",
+      "after": "الگوی محصولات خون توصیف‌شده به کاورنوم مربوط است. DVA همراه به‌خودی‌خود منشأ خونریزی نیست. بااین‌حال تخلیهٔ آن باید ارزیابی شود، زیرا عوارض نادر وریدی سازوکار متفاوتی دارند."
+    },
+    {
+      "path": "questions.fa.5.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "ترومبوز ورید جمع‌کننده به یافته‌های عروقی و احتقانی سازگار نیاز دارد؛ اینجا ورید باز است و الگوی محصولات خون در ضایعهٔ کاورنومی قرار دارد.",
+        "C": "انفارکت وریدی به یافته‌های سازگار پارانشیم و خروج خون نیاز دارد که در سناریو ذکر نشده‌اند؛ همراهی DVA به‌تنهایی کافی نیست.",
+        "D": "ناهنجاری پرجریان به معماری شانت یا یافته‌های تغذیه‌کننده–نیدوس–ورید زودرس نیاز دارد. هستهٔ رتیکولار محصولات خون در اینجا به نفع کاورنوم است."
+      }
+    },
+    {
+      "path": "questions.fa.5.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.fa.5.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.6.question",
+      "currentBefore": "در رزکسیون کاورنوم همراه DVA چه چیزی الزامی است؟",
+      "after": "پیش از رزکسیون احتمالی کاورنوم، MRI یک DVA مجاور با تخلیهٔ پارانشیم طبیعی نشان می‌دهد. کدام برنامه این عملکرد را بهتر لحاظ می‌کند؟"
+    },
+    {
+      "path": "questions.fa.6.options.0.text",
+      "currentBefore": "حفظ ورید جمع‌کننده DVA",
+      "after": "برنامه‌ریزی مسیر دسترسی به کاورنوم با حفظ تخلیهٔ عملکردی DVA و ورید جمع‌کننده"
+    },
+    {
+      "path": "questions.fa.6.options.1.text",
+      "currentBefore": "کوآگولاسیون همه وریدهای مدولاری",
+      "after": "برداشتن ورید جمع‌کنندهٔ مجاور همراه با ضایعه"
+    },
+    {
+      "path": "questions.fa.6.options.2.text",
+      "currentBefore": "آمبولیزاسیون DVA قبل جراحی",
+      "after": "تعیین DVA به‌جای کاورنوم به‌عنوان هدف اصلی رزکسیون"
+    },
+    {
+      "path": "questions.fa.6.options.3.text",
+      "currentBefore": "رزکسیون کامل معماری وریدی",
+      "after": "واردکردن ورید جمع‌کننده مانند ورید تخلیه‌کنندهٔ AVM در برنامهٔ درمان شانت"
+    },
+    {
+      "path": "questions.fa.6.explanation",
+      "currentBefore": "DVA بافت طبیعی را تخلیه می‌کند و آسیب آن می‌تواند انفارکت وریدی ایجاد کند.",
+      "after": "تخلیهٔ وریدی عملکردی باید در برنامه‌ریزی لحاظ و تا حد امکان بدون آسیب حفظ شود. آسیب می‌تواند احتقان، ادم یا انفارکت وریدی ایجاد کند. این موضوع جراحی خودکار کاورنوم را ایجاب نمی‌کند؛ اندیکاسیون و دسترسی فردی ارزیابی می‌شوند."
+    },
+    {
+      "path": "questions.fa.6.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "ورید جمع‌کننده صرفاً بخشی از تودهٔ کاورنوم نیست؛ برداشتن آن همراه ضایعه می‌تواند تخلیهٔ بافت طبیعی مغز را به خطر اندازد.",
+        "C": "DVA عملکردی هدف درمانی قابل‌جایگزین نیست؛ درمان کاورنوم به زمینهٔ بالینی آن بستگی دارد.",
+        "D": "DVA بدون شانت نقشی متفاوت از خروج وریدی AVM دارد. وریدبودن هر دو ساختار، تعمیم الگوی درمان AVM را توجیه نمی‌کند."
+      }
+    },
+    {
+      "path": "questions.fa.6.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.fa.6.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.7.question",
+      "currentBefore": "کدام عامل خطر خونریزی آینده را بیشتر افزایش می‌دهد؟",
+      "after": "با محل ضایعهٔ قابل‌مقایسه، کدام سابقه بیشتر با خطر بالاتر خونریزی آیندهٔ کاورنوم ارتباط دارد؟"
+    },
+    {
+      "path": "questions.fa.7.options.0.text",
+      "currentBefore": "خونریزی علامت‌دار قبلی",
+      "after": "خونریزی داخل‌جمجمه‌ای علامت‌دار قبلی ناشی از کاورنوم"
+    },
+    {
+      "path": "questions.fa.7.options.1.text",
+      "currentBefore": "عدم افزایش کنتراست",
+      "after": "کشف اتفاقی بدون خونریزی قبلی یا نقص کانونی"
+    },
+    {
+      "path": "questions.fa.7.options.2.text",
+      "currentBefore": "محل سطحی سوپراتنتوریال بدون علامت",
+      "after": "تظاهر با تشنج بدون خونریزی ثبت‌شده یا نقص کانونی"
+    },
+    {
+      "path": "questions.fa.7.options.3.text",
+      "currentBefore": "DSA منفی",
+      "after": "سردرد غیرقابل‌انتساب بدون خونریزی ثبت‌شده یا نقص کانونی"
+    },
+    {
+      "path": "questions.fa.7.explanation",
+      "currentBefore": "خونریزی قبلی و محل ساقه مغز عوامل مهم خطرند.",
+      "after": "تظاهر با خونریزی علامت‌دار یا نقص کانونی جدید و محل ساقهٔ مغز پیش‌بینی‌کننده‌های مهم خطرند. سؤال سابقه را در محل مشابه مقایسه می‌کند؛ از آن نرخ سالانهٔ ثابت فردی یا اندیکاسیون خودکار جراحی نتیجه نمی‌شود."
+    },
+    {
+      "path": "questions.fa.7.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "ضایعات اتفاقی بدون تظاهر خونریزی یا نقص، به‌طور متوسط در گروه خطر متفاوتی‌اند؛ این به معنای نادیده‌گرفتن علائم بعدی نیست.",
+        "C": "تشنج از نظر بالینی مهم است، اما بدون شواهد خونریزی یا نقص، پیش‌بینی‌کنندهٔ قوی‌تر خطر خونریزیِ موردنظر نیست؛ صرع و خونریزی جدا ارزیابی شوند.",
+        "D": "سردرد غیرقابل‌انتساب، خونریزی علامت‌دار قبلی کاورنوم را ثابت نمی‌کند؛ انتساب بالینی و شواهد مناسب خونریزی لازم است."
+      }
+    },
+    {
+      "path": "questions.fa.7.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1016/S1474-4422(15)00303-8"
+    },
+    {
+      "path": "questions.fa.7.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.8.question",
+      "currentBefore": "کدام علامت در کاورنوم سوپراتنتوریال شایع‌تر است؟",
+      "after": "سناریوی متنی: بیمار پس از نخستین تشنج کانونی از نظر عصبی پایدار است. MRI کاورنوم کورتیکال سازگار با تظاهرات تشنج، بدون خونریزی تازه نشان می‌دهد. تاکنون داروی ضدتشنج نگرفته است. کدام رویکرد اولیه پشتوانهٔ بیشتری دارد؟"
+    },
+    {
+      "path": "questions.fa.8.options.0.text",
+      "currentBefore": "تشنج",
+      "after": "تطبیق بالینی و ارزیابی صرع و شروع داروی ضدتشنج؛ سنجش فردی گزینه‌های جراحی"
+    },
+    {
+      "path": "questions.fa.8.options.1.text",
+      "currentBefore": "هیدروسفالی",
+      "after": "برنامه‌ریزی رزکسیون انتخابی به‌عنوان اقدام اولیهٔ تنها و ترجیحی، پیش از ارزیابی دارویی"
+    },
+    {
+      "path": "questions.fa.8.options.2.text",
+      "currentBefore": "نارسایی اندوکرین",
+      "after": "ترجیح پرتودرمانی استریوتاکتیک به‌عنوان درمان اولیهٔ کنترل تشنج"
+    },
+    {
+      "path": "questions.fa.8.options.3.text",
+      "currentBefore": "نورالژی تری‌ژمینال",
+      "after": "به‌تعویق‌انداختن درمان تشنج تا اثبات خونریزی جدید در تصویربرداری"
+    },
+    {
+      "path": "questions.fa.8.explanation",
+      "currentBefore": "رسوب هموسیدرین کورتیکال می‌تواند صرع‌زا باشد.",
+      "after": "در نخستین تشنج منتسب به کاورنوم بدون خونریزی، کنسانسوس رویکرد اولیهٔ محافظه‌کارانه با داروی ضدتشنج را توصیه می‌کند. جراحی ممکن است به‌صورت فردی، مثلاً در عدم تحمل دارو یا ادامهٔ تشنج، مناسب باشد؛ کشف در MRI به‌طور خودکار آن را الزامی نمی‌کند."
+    },
+    {
+      "path": "questions.fa.8.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "رزکسیون می‌تواند پس از ارزیابی فردی مطرح شود، اما در اینجا جای درمان اولیهٔ توصیه‌شدهٔ تشنج را نمی‌گیرد؛ تحمل دارو، ترجیح بیمار و خطر جراحی مهم‌اند.",
+        "C": "پرتودرمانی در اینجا درمان اولیهٔ ترجیحی تشنج نیست. ارزیابی مداخلهٔ بعدی به ضایعهٔ صرع‌زا، دسترسی و نسبت سود و خطر بستگی دارد.",
+        "D": "تشنج مرتبط با کاورنوم می‌تواند بدون خونریزی جدید قابل‌اثبات رخ دهد. نبود خونریزی تازه دلیلی برای تعویق درمان تشنجِ لازم از نظر بالینی نیست."
+      }
+    },
+    {
+      "path": "questions.fa.8.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.fa.8.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.9.question",
+      "currentBefore": "کدام عبارت درباره آرتیفکت شکوفه‌ای در SWI صحیح است؟",
+      "after": "سناریوی متنی: کاورنوم در SWI از T2 معمولِ قابل‌مقایسه بزرگ‌تر به نظر می‌رسد. بهترین تفسیر اندازه چیست؟"
+    },
+    {
+      "path": "questions.fa.9.options.0.text",
+      "currentBefore": "اندازه آناتومیک ضایعه را بیش‌برآورد می‌کند.",
+      "after": "بلومینگ می‌تواند وسعت ظاهری را افزایش دهد؛ اندازهٔ آناتومیک با سکانس معمول مناسب و پروتکل قبلی همسان مقایسه شود"
+    },
+    {
+      "path": "questions.fa.9.options.1.text",
+      "currentBefore": "جریان شریانی بالا را ثابت می‌کند.",
+      "after": "مرز بیرونی SWI به‌عنوان قطر آناتومیک برای برنامه‌ریزی جراحی پذیرفته شود"
+    },
+    {
+      "path": "questions.fa.9.options.2.text",
+      "currentBefore": "در کاورنوم مزمن وجود ندارد.",
+      "after": "تفاوت سکانس‌ها به‌عنوان شواهد رشد در فاصلهٔ زمانی تلقی شود"
+    },
+    {
+      "path": "questions.fa.9.options.3.text",
+      "currentBefore": "برای خونریزی توموری اختصاصی است.",
+      "after": "از وسعت بیشتر در SWI خونریزی علامت‌دار جدید نتیجه‌گیری شود"
+    },
+    {
+      "path": "questions.fa.9.explanation",
+      "currentBefore": "آرتیفکت حساسیت فراتر از رسوب واقعی گسترش می‌یابد.",
+      "after": "حساسیت‌پذیری ناحیهٔ ظاهری افت سیگنال را بزرگ‌تر می‌کند. پیش از ادعای رشد، تفاوت سکانس و پروتکل بررسی شود؛ خونریزی علامت‌دار به یافته‌های بالینی و شواهد مناسب خونریزی نیاز دارد."
+    },
+    {
+      "path": "questions.fa.9.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "مرز بلومینگ ممکن است فراتر از ضایعهٔ آناتومیک باشد و نباید بدون بررسی به‌عنوان قطر جراحی پذیرفته شود.",
+        "C": "سکانس‌های متفاوت یک بررسی، تغییر در فاصلهٔ زمانی را ثابت نمی‌کنند؛ رشد واقعی به بررسی‌های قابل‌مقایسه نیاز دارد.",
+        "D": "حساسیت‌پذیری بیشتر به‌تنهایی خونریزی علامت‌دار را تعریف نمی‌کند. علائم جدید قابل‌انتساب همراه با شواهد خونریزی تازهٔ داخل یا خارج ضایعه ارزیابی شوند."
+      }
+    },
+    {
+      "path": "questions.fa.9.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.fa.9.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.10.question",
+      "currentBefore": "کدام ضایعه با بافت مغزی بین عروق گشاد مشخص می‌شود؟",
+      "after": "سناریوی متنی: ضایعهٔ کوچک پونتین در T2 به‌سختی مشخص است و جذب ظریف برس‌مانند همراه با افت سیگنال متناظر SWI دارد؛ اثر فشاری و هستهٔ رتیکولار پاپ‌کورنی ندارد. کدام ضایعهٔ عروقی مناسب‌تر است؟"
+    },
+    {
+      "path": "questions.fa.10.options.1.text",
+      "currentBefore": "کاورنوم",
+      "after": "کاورنوم کلاسیک نوع II"
+    },
+    {
+      "path": "questions.fa.10.options.2.text",
+      "currentBefore": "نیدوس AVM",
+      "after": "نیدوس شریانی‌وریدی AVM"
+    },
+    {
+      "path": "questions.fa.10.options.3.text",
+      "currentBefore": "DVA",
+      "after": "DVA منفرد"
+    },
+    {
+      "path": "questions.fa.10.explanation",
+      "currentBefore": "در کاورنوم پارانشیم بینابینی وجود ندارد ولی در تلانژکتازی وجود دارد.",
+      "after": "ترکیب تغییر اندک سیگنال معمول، جذب ظریف برس‌مانند و اثر حساسیت‌پذیری بدون اثر فشاری، تلانژکتازی مویرگی را تقویت می‌کند. بافت طبیعی میان مویرگ‌های گشاد همتای بافت‌شناختی آن است، اما وجود بافت مغزی بینابینی به‌تنهایی همهٔ ناهنجاری‌های عروقی را از هم جدا نمی‌کند."
+    },
+    {
+      "path": "questions.fa.10.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "هستهٔ رتیکولار محصولات خون و حاشیهٔ کاورنوم کلاسیک نوع II وجود ندارد. افت سیگنال حساسیت‌پذیری به‌تنهایی کاورنوم را از تلانژکتازی جدا نمی‌کند.",
+        "C": "در نیدوس AVM معماری عروقی متفاوت با نشانه‌های شانت انتظار می‌رود؛ ضایعهٔ ظریف برس‌مانند توصیف‌شده این ویژگی‌ها را ندارد.",
+        "D": "DVA با وریدهای مدولاری همگرا و ورید جمع‌کننده مشخص می‌شود؛ این الگو با ضایعهٔ مویرگی برس‌مانند توصیف‌شده متفاوت است."
+      }
+    },
+    {
+      "path": "questions.fa.10.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.3174/ajnr.A2893"
+    },
+    {
+      "path": "questions.fa.10.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "questions.fa.11.question",
+      "currentBefore": "بهترین جمع‌بندی گزارش برای کاورنوم تیپیک همراه DVA چیست؟",
+      "after": "سناریوی متنی: هستهٔ رتیکولار با سیگنال مختلط T2 و حاشیهٔ هموسیدرین همراه DVA مجاور، بدون عروق شانت توصیف می‌شود. کدام جمع‌بندی گزارش پشتوانهٔ بیشتری دارد؟"
+    },
+    {
+      "path": "questions.fa.11.options.0.text",
+      "currentBefore": "کاورنوم تیپیک MRI همراه DVA؛ در مداخله مسیر وریدی حفظ شود.",
+      "after": "کاورنوم تیپیک در MRI همراه DVA؛ در صورت بررسی مداخله، تخلیهٔ وریدی لحاظ شود"
+    },
+    {
+      "path": "questions.fa.11.options.1.text",
+      "currentBefore": "AVM پرجریان؛ آمبولیزاسیون فوری توصیه می‌شود.",
+      "after": "DVA منفرد؛ ضایعهٔ رتیکولار مجاور بخشی از ورید جمع‌کننده تلقی شود"
+    },
+    {
+      "path": "questions.fa.11.options.2.text",
+      "currentBefore": "تومور هموراژیک تا اثبات خلاف.",
+      "after": "ترجیح تومور هموراژیک به‌علت حاشیهٔ هموسیدرین"
+    },
+    {
+      "path": "questions.fa.11.options.3.text",
+      "currentBefore": "DVA به‌عنوان منبع خونریزی رزکت شود.",
+      "after": "ناهنجاری شریانی‌وریدی با DVA به‌عنوان خروج شانت"
+    },
+    {
+      "path": "questions.fa.11.explanation",
+      "currentBefore": "تشخیص و همراهی DVA ذکر و DVA حفظ شود.",
+      "after": "مجموعهٔ الگوی MRI به نفع کاورنوم همراه DVA است. محل، اندازهٔ آناتومیک، شواهد خونریزی یا ادم، تعداد ضایعات و DVA گزارش شوند. تصویر به‌تنهایی ضرورت جراحی یا خونریزی علامت‌دار جدید را تعیین نمی‌کند."
+    },
+    {
+      "path": "questions.fa.11.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "ضایعهٔ رتیکولار با حاشیهٔ هموسیدرین صرفاً ورید همگرا نیست؛ کاورنوم و تخلیهٔ وریدی عملکردی جداگانه نام‌گذاری شوند.",
+        "C": "حاشیهٔ هموسیدرین بازتاب محصولات خون است و تومور را ثابت نمی‌کند. یافته‌های جامد یا پیشروندهٔ لازم برای ترجیح تومور در اینجا وجود ندارند.",
+        "D": "همراهی DVA به‌تنهایی شانت شریانی‌وریدی نیست. سناریو نه معماری تغذیه‌کننده–نیدوس و نه پرشدن زودرس وریدی ارائه می‌کند."
+      }
+    },
+    {
+      "path": "questions.fa.11.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "questions.fa.11.difficulty",
+      "currentBefore": null,
+      "after": 2
+    },
+    {
+      "path": "cards.0.front.de",
+      "currentBefore": "Histologische Definition des Kavernoms?",
+      "after": "Welche Gefäßarchitektur kennzeichnet ein Kavernom histologisch?"
+    },
+    {
+      "path": "cards.0.front.en",
+      "currentBefore": "Histological definition of a cavernoma?",
+      "after": "Which vascular architecture characterises a cavernoma histologically?"
+    },
+    {
+      "path": "cards.0.front.fa",
+      "currentBefore": "تعریف بافت‌شناسی کاورنوم؟",
+      "after": "کدام معماری عروقی از نظر بافت‌شناسی مشخصهٔ کاورنوم است؟"
+    },
+    {
+      "path": "cards.0.answer.de",
+      "currentBefore": "Dünnwandige sinusoidale Gefäßräume ohne dazwischenliegendes Hirnparenchym.",
+      "after": "Dicht gepackte dünnwandige Gefäßräume ohne dazwischenliegendes Hirnparenchym."
+    },
+    {
+      "path": "cards.0.answer.en",
+      "currentBefore": "Thin-walled sinusoidal vascular spaces without intervening brain tissue.",
+      "after": "Closely packed thin-walled vascular spaces without intervening brain tissue."
+    },
+    {
+      "path": "cards.0.answer.fa",
+      "currentBefore": "فضاهای عروقی سینوزوئیدی نازک‌دیواره بدون پارانشیم بینابینی.",
+      "after": "فضاهای عروقی نازک‌دیواره و فشرده، بدون پارانشیم مغزی بینابینی."
+    },
+    {
+      "path": "cards.0.explanation.de",
+      "currentBefore": "Unterschied zur kapillären Teleangiektasie.",
+      "after": "Die Histologie erklärt den Low-flow-Charakter. Eine kapilläre Teleangiektasie enthält zwischen erweiterten Kapillaren normales Hirngewebe; das MRT-Gesamtmuster bleibt für die bildgebende Abgrenzung entscheidend."
+    },
+    {
+      "path": "cards.0.explanation.en",
+      "currentBefore": "Distinguishes it from capillary telangiectasia.",
+      "after": "The histology explains the low-flow character. Capillary telangiectasia contains normal brain between dilated capillaries; the overall MRI pattern remains decisive for imaging differentiation."
+    },
+    {
+      "path": "cards.0.explanation.fa",
+      "currentBefore": "تفاوت با تلانژکتازی مویرگی.",
+      "after": "بافت‌شناسی، ماهیت کم‌جریان را توضیح می‌دهد. تلانژکتازی مویرگی میان مویرگ‌های گشاد بافت طبیعی مغز دارد؛ الگوی کلی MRI برای افتراق تصویری تعیین‌کننده می‌ماند."
+    },
+    {
+      "path": "cards.0.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "cards.1.category",
+      "currentBefore": "MRT",
+      "after": {
+        "de": "MRT",
+        "en": "MRI",
+        "fa": "ام‌آر‌آی"
+      }
+    },
+    {
+      "path": "cards.1.front.de",
+      "currentBefore": "Klassisches T2-Zeichen?",
+      "after": "Welches kombinierte T2-Muster ist für ein klassisches Kavernom typisch?"
+    },
+    {
+      "path": "cards.1.front.en",
+      "currentBefore": "Classic T2 sign?",
+      "after": "Which combined T2 pattern is typical of a classic cavernoma?"
+    },
+    {
+      "path": "cards.1.front.fa",
+      "currentBefore": "علامت کلاسیک T2؟",
+      "after": "کدام مجموعهٔ الگوی T2 برای کاورنوم کلاسیک تیپیک است؟"
+    },
+    {
+      "path": "cards.1.answer.de",
+      "currentBefore": "Popcorn-/Maulbeer-Kern mit dunklem Hämosiderinsaum.",
+      "after": "Retikulärer Popcorn-/Maulbeerkern mit dunklem Hämosiderinsaum."
+    },
+    {
+      "path": "cards.1.answer.en",
+      "currentBefore": "Popcorn/mulberry core with a dark haemosiderin rim.",
+      "after": "Reticulated popcorn/mulberry core with a dark haemosiderin rim."
+    },
+    {
+      "path": "cards.1.answer.fa",
+      "currentBefore": "هسته پاپ‌کورنی/توتی با حاشیه تیره هموسیدرین.",
+      "after": "هستهٔ رتیکولار پاپ‌کورنی یا توتی با حاشیهٔ تیرهٔ هموسیدرین."
+    },
+    {
+      "path": "cards.1.explanation.de",
+      "currentBefore": "Blutprodukte verschiedenen Alters erzeugen das Mischsignal.",
+      "after": "Blutprodukte verschiedenen Alters erzeugen das Mischsignal. Akute Blutung kann das klassische Muster verdecken; dann kann eine geeignete Verlaufs-MRT die zugrunde liegende Läsion klären."
+    },
+    {
+      "path": "cards.1.explanation.en",
+      "currentBefore": "Blood products of different ages produce mixed signal.",
+      "after": "Blood products of different ages create mixed signal. Acute bleeding can obscure the classic pattern; suitable follow-up MRI may then clarify the underlying lesion."
+    },
+    {
+      "path": "cards.1.explanation.fa",
+      "currentBefore": "محصولات خون با سنین مختلف سیگنال مختلط ایجاد می‌کنند.",
+      "after": "محصولات خون با سنین متفاوت، سیگنال مختلط ایجاد می‌کنند. خونریزی حاد ممکن است الگوی کلاسیک را بپوشاند؛ MRI پیگیری مناسب می‌تواند ضایعهٔ زمینه‌ای را روشن کند."
+    },
+    {
+      "path": "cards.1.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "cards.2.front.de",
+      "currentBefore": "Sensitivste Sequenz?",
+      "after": "Welche Sequenz hilft besonders bei kleinen oder multiplen Kavernomverdachtsläsionen?"
+    },
+    {
+      "path": "cards.2.front.en",
+      "currentBefore": "Most sensitive sequence?",
+      "after": "Which sequence is especially useful for small or multiple suspected cavernoma lesions?"
+    },
+    {
+      "path": "cards.2.front.fa",
+      "currentBefore": "حساس‌ترین سکانس؟",
+      "after": "کدام سکانس برای ضایعات کوچک یا متعدد مشکوک به کاورنوم مفیدتر است؟"
+    },
+    {
+      "path": "cards.2.answer",
+      "currentBefore": "SWI/T2*.",
+      "after": {
+        "de": "SWI oder eine vergleichbare moderne Suszeptibilitätssequenz.",
+        "en": "SWI or a comparable modern susceptibility-sensitive sequence.",
+        "fa": "SWI یا سکانس مدرن مشابه حساس به سوسپتیبیلیتی."
+      }
+    },
+    {
+      "path": "cards.2.explanation.de",
+      "currentBefore": "Blooming zeigt kleine und multiple Läsionen, überschätzt aber die Größe.",
+      "after": "Sie ist empfindlicher als konventionelle T2*-GRE. Blooming vergrößert die scheinbare Ausdehnung; ein einzelner dunkler Fokus kann auch eine Mikroblutung oder Verkalkung darstellen."
+    },
+    {
+      "path": "cards.2.explanation.en",
+      "currentBefore": "Blooming detects small and multiple lesions but overestimates size.",
+      "after": "It is more sensitive than conventional T2*-weighted GRE. Blooming enlarges apparent extent; an isolated dark focus may also be a microbleed or calcification."
+    },
+    {
+      "path": "cards.2.explanation.fa",
+      "currentBefore": "آرتیفکت شکوفه‌ای (blooming) ضایعات کوچک و متعدد را نشان می‌دهد ولی اندازه را بیش‌برآورد می‌کند.",
+      "after": "از T2*-GRE معمول حساس‌تر است. بلومینگ وسعت ظاهری را بیشتر می‌کند؛ کانون تیرهٔ منفرد ممکن است میکروخونریزی یا کلسیفیکاسیون نیز باشد."
+    },
+    {
+      "path": "cards.2.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "cards.3.front.de",
+      "currentBefore": "DSA-Befund?",
+      "after": "Welche Rolle hat DSA bei einem MRT-typischen Kavernom?"
+    },
+    {
+      "path": "cards.3.front.en",
+      "currentBefore": "DSA finding?",
+      "after": "What is the role of DSA in an MRI-typical cavernoma?"
+    },
+    {
+      "path": "cards.3.front.fa",
+      "currentBefore": "یافته DSA؟",
+      "after": "DSA در کاورنوم تیپیک MRI چه نقشی دارد؟"
+    },
+    {
+      "path": "cards.3.answer.de",
+      "currentBefore": "Meist angiographisch okkult.",
+      "after": "Meist angiographisch okkult; Katheterangiographie nicht als routinemäßiger Bestätigungstest."
+    },
+    {
+      "path": "cards.3.answer.en",
+      "currentBefore": "Usually angiographically occult.",
+      "after": "Usually angiographically occult; catheter angiography is not a routine confirmation test."
+    },
+    {
+      "path": "cards.3.answer.fa",
+      "currentBefore": "معمولاً از نظر آنژیوگرافی مخفی.",
+      "after": "معمولاً در آنژیوگرافی پنهان است؛ آنژیوگرافی کاتتری آزمون تأییدی روتین نیست."
+    },
+    {
+      "path": "cards.3.explanation.de",
+      "currentBefore": "Negative DSA schließt Kavernom nicht aus.",
+      "after": "Eine negative DSA widerlegt die MRT-Diagnose nicht. Bei Verdacht auf eine AVM beziehungsweise einen Shunt kann Gefäßdiagnostik zur Differenzierung nötig sein."
+    },
+    {
+      "path": "cards.3.explanation.en",
+      "currentBefore": "Negative DSA does not exclude cavernoma.",
+      "after": "Negative DSA does not refute the MRI diagnosis. If an AVM or shunt is suspected, vascular imaging may be needed for differentiation."
+    },
+    {
+      "path": "cards.3.explanation.fa",
+      "currentBefore": "DSA منفی کاورنوم را رد نمی‌کند.",
+      "after": "DSA منفی تشخیص MRI را رد نمی‌کند. در شک به AVM یا شانت، بررسی عروقی ممکن است برای افتراق لازم باشد."
+    },
+    {
+      "path": "cards.3.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "cards.4.front.de",
+      "currentBefore": "Welcher Typ ist das klassische Popcorn-Kavernom?",
+      "after": "Welcher Zabramski-Typ entspricht dem retikulären klassischen Popcornmuster?"
+    },
+    {
+      "path": "cards.4.front.en",
+      "currentBefore": "Which type is the classic popcorn cavernoma?",
+      "after": "Which Zabramski type corresponds to the classic reticulated popcorn pattern?"
+    },
+    {
+      "path": "cards.4.front.fa",
+      "currentBefore": "کدام نوع پاپ‌کورنی کلاسیک است؟",
+      "after": "کدام نوع زابرامسکی با الگوی کلاسیک رتیکولار پاپ‌کورنی تطابق دارد؟"
+    },
+    {
+      "path": "cards.4.answer",
+      "currentBefore": "Typ II.",
+      "after": {
+        "de": "Typ II.",
+        "en": "Type II.",
+        "fa": "نوع II."
+      }
+    },
+    {
+      "path": "cards.4.explanation.de",
+      "currentBefore": "Retikuläres Mischsignal mit Hämosiderinsaum.",
+      "after": "Mischsignalkern auf T1/T2 mit dunklem T2-Saum. Die Typisierung beschreibt die Morphologie; sie ersetzt keine klinische Blutungsrisikobeurteilung."
+    },
+    {
+      "path": "cards.4.explanation.en",
+      "currentBefore": "Reticulated mixed signal with haemosiderin rim.",
+      "after": "Mixed-signal T1/T2 core with a dark T2 rim. Typing describes morphology and does not replace clinical haemorrhage-risk assessment."
+    },
+    {
+      "path": "cards.4.explanation.fa",
+      "currentBefore": "سیگنال مختلط رتیکولار با حاشیه هموسیدرین.",
+      "after": "هستهٔ مختلط T1/T2 با حاشیهٔ تیرهٔ T2. نوع‌بندی مورفولوژی را توصیف می‌کند و جای ارزیابی بالینی خطر خونریزی را نمی‌گیرد."
+    },
+    {
+      "path": "cards.4.source",
+      "currentBefore": null,
+      "after": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7964862/"
+    },
+    {
+      "path": "cards.5.front.de",
+      "currentBefore": "Zabramski Typ IV?",
+      "after": "Wie sieht das Zabramski-IV-Muster aus, und wo liegt seine diagnostische Grenze?"
+    },
+    {
+      "path": "cards.5.front.en",
+      "currentBefore": "Zabramski type IV?",
+      "after": "What does the Zabramski IV pattern look like, and what is its diagnostic limit?"
+    },
+    {
+      "path": "cards.5.front.fa",
+      "currentBefore": "Zabramski نوع IV؟",
+      "after": "الگوی زابرامسکی IV چگونه است و محدودیت تشخیصی آن چیست؟"
+    },
+    {
+      "path": "cards.5.answer.de",
+      "currentBefore": "Nur punktförmig in GRE/SWI sichtbare Mikro-Kavernome.",
+      "after": "Punktförmige Suszeptibilitätsfoci, auf konventionellem T1/T2 kaum oder nicht sichtbar."
+    },
+    {
+      "path": "cards.5.answer.en",
+      "currentBefore": "Microcavernomas visible only as punctate GRE/SWI foci.",
+      "after": "Punctate susceptibility foci, barely or not visible on conventional T1/T2."
+    },
+    {
+      "path": "cards.5.answer.fa",
+      "currentBefore": "میکروکاورنوم‌های نقطه‌ای فقط در GRE/SWI.",
+      "after": "کانون‌های نقطه‌ای حساسیت‌پذیری که در T1/T2 معمول به‌سختی دیده می‌شوند یا دیده نمی‌شوند."
+    },
+    {
+      "path": "cards.5.explanation.de",
+      "currentBefore": "Typisch bei familiären multiplen Läsionen.",
+      "after": "Ein solcher Fokus allein beweist kein histologisch gesichertes Mikrokavernom. Typische größere Kavernome, Familien-/Genkontext und andere Ursachen von Suszeptibilität mitbewerten."
+    },
+    {
+      "path": "cards.5.explanation.en",
+      "currentBefore": "Typical in familial multiple disease.",
+      "after": "Such a focus alone does not prove a histologically established microcavernoma. Consider typical larger cavernomas, family/genetic context and other causes of susceptibility."
+    },
+    {
+      "path": "cards.5.explanation.fa",
+      "currentBefore": "تیپیک در بیماری خانوادگی متعدد.",
+      "after": "چنین کانونی به‌تنهایی میکروکاورنوم با تأیید بافت‌شناسی را ثابت نمی‌کند. کاورنوم‌های بزرگ‌تر تیپیک، زمینهٔ خانوادگی یا ژنتیکی و علل دیگر حساسیت‌پذیری لحاظ شوند."
+    },
+    {
+      "path": "cards.5.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "cards.6.front.de",
+      "currentBefore": "Wann familiäre Form vermuten?",
+      "after": "Welche Mehrfachläsionskonstellation spricht für die Abklärung einer familiären CCM-Erkrankung?"
+    },
+    {
+      "path": "cards.6.front.en",
+      "currentBefore": "When suspect familial disease?",
+      "after": "Which multiple-lesion pattern supports evaluation for familial CCM disease?"
+    },
+    {
+      "path": "cards.6.front.fa",
+      "currentBefore": "چه زمانی فرم خانوادگی؟",
+      "after": "کدام الگوی ضایعات متعدد بررسی بیماری خانوادگی CCM را مطرح می‌کند؟"
+    },
+    {
+      "path": "cards.6.answer.de",
+      "currentBefore": "Multiple Kavernome, besonders ohne DVA und mit positiver Familienanamnese.",
+      "after": "Mehrere typische, räumlich getrennte Kavernome ohne gemeinsame DVA oder Strahlenanamnese; Familienanamnese erheben."
+    },
+    {
+      "path": "cards.6.answer.en",
+      "currentBefore": "Multiple cavernomas, especially without DVA and with positive family history.",
+      "after": "Multiple typical noncontiguous cavernomas without a shared DVA or radiation history; obtain family history."
+    },
+    {
+      "path": "cards.6.answer.fa",
+      "currentBefore": "کاورنوم متعدد، به‌ویژه بدون DVA و با سابقه خانوادگی مثبت.",
+      "after": "کاورنوم‌های تیپیک متعدد و جدا از هم بدون DVA مشترک یا سابقهٔ پرتودرمانی؛ سابقهٔ خانوادگی گرفته شود."
+    },
+    {
+      "path": "cards.6.explanation.de",
+      "currentBefore": "Sporadische Formen sind meist solitär.",
+      "after": "Ein Cluster um eine einzelne DVA kann sporadisch sein. Genetische Beratung/Testung kann den Verdacht klären; auch eine negative MRT schließt bei bekannter familiärer Mutation eine Trägerschaft nicht aus."
+    },
+    {
+      "path": "cards.6.explanation.en",
+      "currentBefore": "Sporadic forms are usually solitary.",
+      "after": "A cluster around a single DVA may be sporadic. Genetic counselling/testing can clarify suspicion; negative MRI does not exclude carriage of a known familial mutation."
+    },
+    {
+      "path": "cards.6.explanation.fa",
+      "currentBefore": "فرم اسپورادیک اغلب منفرد است.",
+      "after": "خوشهٔ ضایعات پیرامون یک DVA ممکن است اسپورادیک باشد. مشاوره یا آزمایش ژنتیک به روشن‌شدن شک کمک می‌کند؛ MRI منفی نیز حامل‌بودن جهش خانوادگی شناخته‌شده را رد نمی‌کند."
+    },
+    {
+      "path": "cards.6.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "cards.7.front.de",
+      "currentBefore": "Häufigstes Symptom supratentoriell?",
+      "after": "Welcher klinische Zusammenhang ist bei kortikalen supratentoriellen Kavernomen wichtig?"
+    },
+    {
+      "path": "cards.7.front.en",
+      "currentBefore": "Most common supratentorial symptom?",
+      "after": "Which clinical association matters in cortical supratentorial cavernomas?"
+    },
+    {
+      "path": "cards.7.front.fa",
+      "currentBefore": "شایع‌ترین علامت سوپراتنتوریال؟",
+      "after": "کدام ارتباط بالینی در کاورنوم‌های کورتیکال سوپراتنتوریال مهم است؟"
+    },
+    {
+      "path": "cards.7.answer.de",
+      "currentBefore": "Epileptischer Anfall.",
+      "after": "Fokale epileptische Anfälle; Läsion und Anfallsereignis klinisch zuordnen."
+    },
+    {
+      "path": "cards.7.answer.en",
+      "currentBefore": "Epileptic seizure.",
+      "after": "Focal epileptic seizures; correlate the lesion and seizure event clinically."
+    },
+    {
+      "path": "cards.7.answer.fa",
+      "currentBefore": "تشنج.",
+      "after": "تشنج کانونی؛ ضایعه و رویداد تشنجی از نظر بالینی تطبیق داده شوند."
+    },
+    {
+      "path": "cards.7.explanation.de",
+      "currentBefore": "Kortikale Hämosiderinablagerung wirkt epileptogen.",
+      "after": "Blutprodukte, Gliosen und perilesionale Reizung können epileptogen sein. Der alleinige MRT-Nachweis beweist weder Anfallsursache noch eine frische symptomatische Blutung."
+    },
+    {
+      "path": "cards.7.explanation.en",
+      "currentBefore": "Cortical haemosiderin is epileptogenic.",
+      "after": "Blood products, gliosis and perilesional irritation may be epileptogenic. MRI detection alone proves neither seizure causation nor a new symptomatic haemorrhage."
+    },
+    {
+      "path": "cards.7.explanation.fa",
+      "currentBefore": "هموسیدرین کورتیکال صرع‌زا است.",
+      "after": "محصولات خون، گلیوز و تحریک پیرامون ضایعه می‌توانند صرع‌زا باشند. کشف در MRI به‌تنهایی نه علت تشنج و نه خونریزی علامت‌دار جدید را ثابت می‌کند."
+    },
+    {
+      "path": "cards.7.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "cards.8.front.de",
+      "currentBefore": "Wichtigste Blutungsrisikofaktoren?",
+      "after": "Welche Angaben prägen die individuelle Blutungsrisikoeinschätzung?"
+    },
+    {
+      "path": "cards.8.front.en",
+      "currentBefore": "Key haemorrhage risk factors?",
+      "after": "Which factors shape individual haemorrhage-risk assessment?"
+    },
+    {
+      "path": "cards.8.front.fa",
+      "currentBefore": "عوامل مهم خطر خونریزی؟",
+      "after": "کدام اطلاعات در ارزیابی فردی خطر خونریزی مهم‌اند؟"
+    },
+    {
+      "path": "cards.8.answer.de",
+      "currentBefore": "Vorangegangene Blutung und Hirnstammlage.",
+      "after": "Blutungs-/Defizitpräsentation und Hirnstammlage, zusammen mit klinischem Verlauf und Befund."
+    },
+    {
+      "path": "cards.8.answer.en",
+      "currentBefore": "Prior haemorrhage and brainstem location.",
+      "after": "Haemorrhage/deficit presentation and brainstem location, together with clinical course and imaging."
+    },
+    {
+      "path": "cards.8.answer.fa",
+      "currentBefore": "خونریزی قبلی و محل ساقه مغز.",
+      "after": "تظاهر با خونریزی یا نقص کانونی و محل ساقهٔ مغز، همراه سیر بالینی و یافته‌ها."
+    },
+    {
+      "path": "cards.8.explanation.de",
+      "currentBefore": "Das Grundrisiko asymptomatischer Läsionen ist niedrig.",
+      "after": "Inzidentelle asymptomatische Läsionen haben ein anderes Risikoprofil als bereits symptomatisch geblutete. Eine pauschale Jahresrate oder eine isolierte SWI-Signaländerung ersetzt diese Einordnung nicht."
+    },
+    {
+      "path": "cards.8.explanation.en",
+      "currentBefore": "Baseline risk of asymptomatic lesions is low.",
+      "after": "Incidental asymptomatic lesions have a different risk profile from lesions with prior symptomatic bleeding. A universal annual rate or isolated SWI signal change does not replace this assessment."
+    },
+    {
+      "path": "cards.8.explanation.fa",
+      "currentBefore": "خطر پایه ضایعات بدون علامت کم است.",
+      "after": "ضایعات اتفاقی بدون علامت با ضایعات دارای خونریزی علامت‌دار قبلی پروفایل خطر متفاوتی دارند. نرخ سالانهٔ همگانی یا تغییر منفرد سیگنال SWI جای این ارزیابی را نمی‌گیرد."
+    },
+    {
+      "path": "cards.8.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1016/S1474-4422(15)00303-8"
+    },
+    {
+      "path": "cards.9.front.de",
+      "currentBefore": "Kavernom + DVA: Wer blutet?",
+      "after": "Kavernom und DVA nebeneinander: Wie ordnen Sie Blutprodukte zu?"
+    },
+    {
+      "path": "cards.9.front.en",
+      "currentBefore": "Cavernoma + DVA: which bleeds?",
+      "after": "With adjacent cavernoma and DVA, how should blood products be attributed?"
+    },
+    {
+      "path": "cards.9.front.fa",
+      "currentBefore": "کاورنوم + DVA: کدام خونریزی می‌کند؟",
+      "after": "در کاورنوم و DVA مجاور، محصولات خون چگونه نسبت داده می‌شوند؟"
+    },
+    {
+      "path": "cards.9.answer.de",
+      "currentBefore": "Meist das Kavernom, nicht die DVA.",
+      "after": "Häufig zum Kavernom; Verteilung und venöse Drainage konkret prüfen."
+    },
+    {
+      "path": "cards.9.answer.en",
+      "currentBefore": "Usually the cavernoma, not the DVA.",
+      "after": "Often to the cavernoma; assess their distribution and venous drainage specifically."
+    },
+    {
+      "path": "cards.9.answer.fa",
+      "currentBefore": "معمولاً کاورنوم، نه DVA.",
+      "after": "اغلب به کاورنوم؛ توزیع خون و تخلیهٔ وریدی به‌طور مشخص بررسی شوند."
+    },
+    {
+      "path": "cards.9.explanation.de",
+      "currentBefore": "Die DVA ist funktionelle Drainage.",
+      "after": "Eine funktionelle DVA ist nicht automatisch die Blutungsquelle. Thrombose oder Abflussstörung wären eigenständige venöse Komplikationen und verlangen passende Befunde."
+    },
+    {
+      "path": "cards.9.explanation.en",
+      "currentBefore": "The DVA is functional drainage.",
+      "after": "A functional DVA is not automatically the bleeding source. Thrombosis or outflow disturbance would be distinct venous complications requiring supporting findings."
+    },
+    {
+      "path": "cards.9.explanation.fa",
+      "currentBefore": "DVA مسیر تخلیه عملکردی است.",
+      "after": "DVA عملکردی به‌خودی‌خود منشأ خونریزی نیست. ترومبوز یا اختلال خروج، عوارض وریدی جداگانه‌اند و به یافته‌های سازگار نیاز دارند."
+    },
+    {
+      "path": "cards.9.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "cards.10.front.de",
+      "currentBefore": "Wichtigste OP-Regel bei DVA?",
+      "after": "Welche DVA-Information ist für eine mögliche Kavernomoperation wesentlich?"
+    },
+    {
+      "path": "cards.10.front.en",
+      "currentBefore": "Key surgical rule with a DVA?",
+      "after": "Which DVA information is essential when cavernoma surgery is considered?"
+    },
+    {
+      "path": "cards.10.front.fa",
+      "currentBefore": "مهم‌ترین قاعده جراحی در DVA؟",
+      "after": "کدام اطلاعات DVA در بررسی جراحی احتمالی کاورنوم ضروری است؟"
+    },
+    {
+      "path": "cards.10.answer.de",
+      "currentBefore": "Sammelvene und DVA erhalten.",
+      "after": "Verlauf der Sammelvene und funktionelle Drainage normalen Hirngewebes; venösen Erhalt planen."
+    },
+    {
+      "path": "cards.10.answer.en",
+      "currentBefore": "Preserve the collector and DVA.",
+      "after": "Collector course and functional drainage of normal brain; plan venous preservation."
+    },
+    {
+      "path": "cards.10.answer.fa",
+      "currentBefore": "ورید جمع‌کننده و DVA حفظ شوند.",
+      "after": "مسیر ورید جمع‌کننده و تخلیهٔ عملکردی بافت طبیعی مغز؛ برنامه‌ریزی برای حفظ ورید."
+    },
+    {
+      "path": "cards.10.explanation.de",
+      "currentBefore": "Verletzung kann venösen Infarkt auslösen.",
+      "after": "Verletzung oder Unterbindung kann Stauung, Ödem und venösen Infarkt verursachen. Das Kavernom und seine Operationsindikation sind von der DVA-Drainagefunktion zu unterscheiden."
+    },
+    {
+      "path": "cards.10.explanation.en",
+      "currentBefore": "Injury may cause venous infarction.",
+      "after": "Injury or occlusion may cause congestion, oedema and venous infarction. Distinguish the cavernoma and its surgical indication from the DVA drainage function."
+    },
+    {
+      "path": "cards.10.explanation.fa",
+      "currentBefore": "آسیب می‌تواند انفارکت وریدی ایجاد کند.",
+      "after": "آسیب یا انسداد می‌تواند احتقان، ادم و انفارکت وریدی ایجاد کند. کاورنوم و اندیکاسیون جراحی آن باید از عملکرد تخلیه‌ای DVA تفکیک شوند."
+    },
+    {
+      "path": "cards.10.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "cards.11.front.de",
+      "currentBefore": "Asymptomatisches Kavernom?",
+      "after": "Wie wird ein asymptomatisches stabiles Kavernom grundsätzlich eingeordnet?"
+    },
+    {
+      "path": "cards.11.front.en",
+      "currentBefore": "Asymptomatic cavernoma?",
+      "after": "How is an asymptomatic stable cavernoma generally managed?"
+    },
+    {
+      "path": "cards.11.front.fa",
+      "currentBefore": "کاورنوم بدون علامت؟",
+      "after": "کاورنوم پایدار بدون علامت به‌طور کلی چگونه مدیریت می‌شود؟"
+    },
+    {
+      "path": "cards.11.answer.de",
+      "currentBefore": "Meist konservatives Vorgehen.",
+      "after": "Häufig klinische Beobachtung; Lage, Symptome und individuelle Risiken bestimmen das Vorgehen."
+    },
+    {
+      "path": "cards.11.answer.en",
+      "currentBefore": "Usually conservative management.",
+      "after": "Often clinical observation; location, symptoms and individual risks determine management."
+    },
+    {
+      "path": "cards.11.answer.fa",
+      "currentBefore": "اغلب مدیریت محافظه‌کارانه.",
+      "after": "اغلب پیگیری بالینی؛ محل، علائم و خطرات فردی مسیر مدیریت را تعیین می‌کنند."
+    },
+    {
+      "path": "cards.11.explanation.de",
+      "currentBefore": "Lage und individuelle Risiken berücksichtigen.",
+      "after": "Bei asymptomatischen stabilen tiefen, eloquenten oder Hirnstammläsionen wird prophylaktische Resektion nicht empfohlen. Neue Symptome erfordern erneute Beurteilung; ein universelles MRT-Kontrollintervall ist nicht festgelegt."
+    },
+    {
+      "path": "cards.11.explanation.en",
+      "currentBefore": "Consider location and individual risk.",
+      "after": "Prophylactic resection is not recommended for asymptomatic stable deep, eloquent or brainstem lesions. New symptoms require reassessment; a universal MRI surveillance interval is not established."
+    },
+    {
+      "path": "cards.11.explanation.fa",
+      "currentBefore": "محل و خطر فردی لحاظ شود.",
+      "after": "در ضایعات پایدار بدون علامتِ عمقی، الوکنت یا ساقهٔ مغز، رزکسیون پیشگیرانه توصیه نمی‌شود. علائم جدید به ارزیابی مجدد نیاز دارند؛ فاصلهٔ همگانی ثابتی برای MRI پیگیری تعیین نشده است."
+    },
+    {
+      "path": "cards.11.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "cards.12.front.de",
+      "currentBefore": "Typische Resektionsindikationen?",
+      "after": "Wann kann die Abwägung einer Kavernomresektion sinnvoll sein?"
+    },
+    {
+      "path": "cards.12.front.en",
+      "currentBefore": "Typical indications for resection?",
+      "after": "When may consideration of cavernoma resection be appropriate?"
+    },
+    {
+      "path": "cards.12.front.fa",
+      "currentBefore": "اندیکاسیون‌های تیپیک رزکسیون؟",
+      "after": "چه زمانی بررسی رزکسیون کاورنوم می‌تواند مناسب باشد؟"
+    },
+    {
+      "path": "cards.12.answer.de",
+      "currentBefore": "Symptomatische Blutung, therapierefraktäre Epilepsie, progrediente Defizite, gut erreichbare Lage.",
+      "after": "Bei zuordenbaren Symptomen, Blutung oder epileptogenen Läsionen unter Berücksichtigung von Zugänglichkeit und Operationsrisiko."
+    },
+    {
+      "path": "cards.12.answer.en",
+      "currentBefore": "Symptomatic haemorrhage, drug-resistant epilepsy, progressive deficits, accessible location.",
+      "after": "With attributable symptoms, haemorrhage or epileptogenic lesions, considering accessibility and surgical risk."
+    },
+    {
+      "path": "cards.12.answer.fa",
+      "currentBefore": "خونریزی علامت‌دار، صرع مقاوم، نقص پیشرونده، محل قابل دسترس.",
+      "after": "در علائم قابل‌انتساب، خونریزی یا ضایعات صرع‌زا با توجه به دسترسی و خطر جراحی."
+    },
+    {
+      "path": "cards.12.explanation.de",
+      "currentBefore": "Bei Hirnstamm sorgfältige Nutzen-Risiko-Abwägung.",
+      "after": "Gute Erreichbarkeit allein ist keine allgemeine OP-Pflicht. Besonders bei Hirnstamm-/eloquenter Lage sind Vorgeschichte, Schweregrad und individuelle Nutzen-Risiko-Abwägung entscheidend; keine automatische Resektion nach jeder Blutung."
+    },
+    {
+      "path": "cards.12.explanation.en",
+      "currentBefore": "Careful risk-benefit assessment in brainstem lesions.",
+      "after": "Accessibility alone does not mandate surgery. Especially for brainstem/eloquent lesions, history, severity and individual risk–benefit assessment matter; not every bleed automatically leads to resection."
+    },
+    {
+      "path": "cards.12.explanation.fa",
+      "currentBefore": "در ساقه مغز سنجش دقیق سود و خطر.",
+      "after": "دسترسی مناسب به‌تنهایی الزام جراحی نیست. به‌ویژه در ساقهٔ مغز یا ناحیهٔ الوکنت، سابقه، شدت و سنجش فردی سود و خطر مهم‌اند؛ هر خونریزی به رزکسیون خودکار منجر نمی‌شود."
+    },
+    {
+      "path": "cards.12.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "cards.13.front.de",
+      "currentBefore": "Kavernom vs. hämorrhagischer Tumor?",
+      "after": "Welche Befunde verlangen beim Kavernomverdacht eine erneute Tumor-Differenzialdiagnose?"
+    },
+    {
+      "path": "cards.13.front.en",
+      "currentBefore": "Cavernoma vs haemorrhagic tumour?",
+      "after": "Which findings warrant reconsidering tumour in a suspected cavernoma?"
+    },
+    {
+      "path": "cards.13.front.fa",
+      "currentBefore": "کاورنوم در برابر تومور هموراژیک؟",
+      "after": "کدام یافته‌ها در شک به کاورنوم بازنگری افتراق تومور را لازم می‌کنند؟"
+    },
+    {
+      "path": "cards.13.answer.de",
+      "currentBefore": "Kavernom: kompletter Saum, Popcorn-Kern, wenig Enhancement; Tumor: solider Anteil, Ödem, Wachstum.",
+      "after": "Progredienter solider Anteil und ausgeprägte solide Anreicherung im Gesamtbefund."
+    },
+    {
+      "path": "cards.13.answer.en",
+      "currentBefore": "Cavernoma: complete rim, popcorn core, little enhancement; tumour: solid component, oedema, growth.",
+      "after": "A progressive solid component and prominent solid enhancement in the overall pattern."
+    },
+    {
+      "path": "cards.13.answer.fa",
+      "currentBefore": "کاورنوم: حاشیه کامل، هسته پاپ‌کورنی، کنتراست کم؛ تومور: جزء جامد، ادم، رشد.",
+      "after": "جزء جامد پیشرونده و جذب واضح جامد در مجموعهٔ یافته‌ها."
+    },
+    {
+      "path": "cards.13.explanation.de",
+      "currentBefore": "Verlauf und Perfusion können helfen.",
+      "after": "Enhancement allein beweist keinen Tumor; auch Kavernome können anreichern. Akute Blutung kann das Muster verdecken, und Ödem kann eine frische Kavernomblutung begleiten. Geeigneter Verlauf und klinischer Kontext helfen bei Unsicherheit."
+    },
+    {
+      "path": "cards.13.explanation.en",
+      "currentBefore": "Follow-up and perfusion may help.",
+      "after": "Enhancement alone does not prove tumour; cavernomas can enhance. Acute blood can obscure the pattern and oedema may accompany recent cavernoma bleeding. Appropriate follow-up and clinical context help resolve uncertainty."
+    },
+    {
+      "path": "cards.13.explanation.fa",
+      "currentBefore": "پیگیری و پرفیوژن کمک می‌کند.",
+      "after": "جذب حاجب به‌تنهایی تومور را ثابت نمی‌کند؛ کاورنوم نیز می‌تواند جذب داشته باشد. خون حاد ممکن است الگو را بپوشاند و ادم می‌تواند همراه خونریزی تازهٔ کاورنوم باشد. پیگیری مناسب و زمینهٔ بالینی در ابهام کمک‌کننده‌اند."
+    },
+    {
+      "path": "cards.13.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "cards.14.front.de",
+      "currentBefore": "Was gehört in den Befund?",
+      "after": "Welche Angaben gehören in einen strukturierten Kavernombefund?"
+    },
+    {
+      "path": "cards.14.front.en",
+      "currentBefore": "What belongs in the report?",
+      "after": "What belongs in a structured cavernoma report?"
+    },
+    {
+      "path": "cards.14.front.fa",
+      "currentBefore": "چه مواردی در گزارش؟",
+      "after": "چه اطلاعاتی در گزارش ساختاریافتهٔ کاورنوم لازم است؟"
+    },
+    {
+      "path": "cards.14.answer.de",
+      "currentBefore": "Lokalisation, Größe ohne Blooming-Übermaß, Blutungszeichen, DVA, Multiplikität und Masseneffekt.",
+      "after": "Lage, anatomische Größe, Blutungs-/Ödemzeichen, Masseneffekt, typische Läsionszahl und DVA."
+    },
+    {
+      "path": "cards.14.answer.en",
+      "currentBefore": "Location, size without blooming overestimation, haemorrhage, DVA, multiplicity and mass effect.",
+      "after": "Location, anatomical size, haemorrhage/oedema findings, mass effect, typical lesion burden and DVA."
+    },
+    {
+      "path": "cards.14.answer.fa",
+      "currentBefore": "محل، اندازه بدون بیش‌برآورد آرتیفکت شکوفه‌ای (blooming)، خونریزی، DVA، تعدد و اثر فشاری.",
+      "after": "محل، اندازهٔ آناتومیک، نشانه‌های خونریزی یا ادم، اثر فشاری، تعداد ضایعات تیپیک و DVA."
+    },
+    {
+      "path": "cards.14.explanation.de",
+      "currentBefore": "Bei DVA venösen Erhalt erwähnen.",
+      "after": "Größe nicht aus dem maximalen Blooming ableiten. Bei multiplen kleinen Foci diagnostische Sicherheit und Untersuchungstechnik berücksichtigen; bei DVA deren venösen Verlauf für eine mögliche Intervention benennen."
+    },
+    {
+      "path": "cards.14.explanation.en",
+      "currentBefore": "Mention venous preservation with a DVA.",
+      "after": "Do not derive size from maximal blooming. With multiple tiny foci, consider diagnostic confidence and technique; describe DVA venous course if intervention may be considered."
+    },
+    {
+      "path": "cards.14.explanation.fa",
+      "currentBefore": "در DVA حفظ مسیر وریدی ذکر شود.",
+      "after": "اندازه از بیشترین وسعت بلومینگ استخراج نشود. در کانون‌های کوچک متعدد، اطمینان تشخیصی و تکنیک بررسی لحاظ شوند؛ در صورت بررسی مداخله، مسیر وریدی DVA توصیف شود."
+    },
+    {
+      "path": "cards.14.source",
+      "currentBefore": null,
+      "after": "https://doi.org/10.1227/neu.0000000000003459"
+    },
+    {
+      "path": "lesson.heroCards.0.label.de",
+      "currentBefore": "Prävalenz",
+      "after": "Autopsie-Prävalenz"
+    },
+    {
+      "path": "lesson.heroCards.0.label.en",
+      "currentBefore": "Prevalence",
+      "after": "Autopsy prevalence"
+    },
+    {
+      "path": "lesson.heroCards.0.label.fa",
+      "currentBefore": "شیوع",
+      "after": "شیوع در اتوپسی"
+    },
+    {
+      "path": "lesson.heroCards.0.text.de",
+      "currentBefore": "sporadisch oder familiär",
+      "after": "MRT-Zufallsnachweis etwa 0,16%; unterschiedliche Erhebungsmethoden"
+    },
+    {
+      "path": "lesson.heroCards.0.text.en",
+      "currentBefore": "sporadic or familial",
+      "after": "Incidental MRI detection about 0.16%; different ascertainment methods"
+    },
+    {
+      "path": "lesson.heroCards.0.text.fa",
+      "currentBefore": "اسپورادیک یا خانوادگی",
+      "after": "کشف اتفاقی در MRI حدود ۰٫۱۶٪؛ روش‌های برآورد متفاوت‌اند"
+    },
+    {
+      "path": "lesson.sections.8.label.de",
+      "currentBefore": "TAKE HOME MESSAGE",
+      "after": "Take Home Message"
+    },
+    {
+      "path": "lesson.sections.8.label.en",
+      "currentBefore": "TAKE HOME MESSAGE",
+      "after": "Take Home Message"
+    },
+    {
+      "path": "lesson.sections.8.label.fa",
+      "currentBefore": "TAKE HOME MESSAGE",
+      "after": "پیام نهایی"
+    },
+    {
+      "path": "lesson.grundlagen.items.3.text.de",
+      "currentBefore": "Sporadische Kavernome sind meist solitär; multiple Läsionen sprechen für eine familiäre Form, besonders ohne DVA.",
+      "after": "Sporadische Kavernome sind oft solitär oder um eine DVA gruppiert. Räumlich getrennte multiple typische Läsionen ohne gemeinsame DVA oder Strahlenanamnese geben Anlass zur familiären/genetischen Abklärung."
+    },
+    {
+      "path": "lesson.grundlagen.items.3.text.en",
+      "currentBefore": "Sporadic cavernomas are usually solitary; multiple lesions suggest familial disease, especially without a DVA.",
+      "after": "Sporadic cavernomas are often solitary or clustered around a DVA. Noncontiguous multiple typical lesions without a shared DVA or radiation history warrant familial/genetic evaluation."
+    },
+    {
+      "path": "lesson.grundlagen.items.3.text.fa",
+      "currentBefore": "کاورنوم اسپورادیک اغلب منفرد است؛ ضایعات متعدد به نفع فرم خانوادگی، به‌ویژه بدون DVA.",
+      "after": "کاورنوم اسپورادیک اغلب منفرد یا خوشه‌ای پیرامون یک DVA است. ضایعات تیپیک متعدد و جدا از هم بدون DVA مشترک یا سابقهٔ پرتودرمانی، بررسی خانوادگی یا ژنتیکی را مطرح می‌کنند."
+    },
+    {
+      "path": "lesson.klinik.rows.2.2.de",
+      "currentBefore": "Neue Symptome und extraläsionales Blut entscheidend",
+      "after": "Neue zuordenbare Symptome mit Nachweis frischer intra- oder extraläsionaler Blutung gemeinsam bewerten"
+    },
+    {
+      "path": "lesson.klinik.rows.2.2.en",
+      "currentBefore": "New symptoms and extralesional blood are key",
+      "after": "Assess new attributable symptoms together with evidence of recent intralesional or extralesional bleeding"
+    },
+    {
+      "path": "lesson.klinik.rows.2.2.fa",
+      "currentBefore": "علائم جدید و خون خارج ضایعه مهم است",
+      "after": "علائم جدید قابل‌انتساب همراه با شواهد خونریزی تازهٔ داخل یا خارج ضایعه ارزیابی شوند"
+    },
+    {
+      "path": "lesson.klinik.cave.de",
+      "currentBefore": "Eine Signaländerung innerhalb des Kavernoms allein ist nicht automatisch eine klinisch relevante neue Blutung.",
+      "after": "Eine isolierte Signaländerung oder verändertes Blooming definiert keine symptomatische Blutung. Entscheidend sind neue zuordenbare Symptome und geeignete Befunde frischer intra- oder extraläsionaler Blutung."
+    },
+    {
+      "path": "lesson.klinik.cave.en",
+      "currentBefore": "A signal change within a cavernoma alone is not automatically a clinically relevant new haemorrhage.",
+      "after": "An isolated signal change or altered blooming does not define symptomatic haemorrhage. New attributable symptoms and appropriate evidence of recent intralesional or extralesional bleeding must be assessed together."
+    },
+    {
+      "path": "lesson.klinik.cave.fa",
+      "currentBefore": "تغییر سیگنال داخل کاورنوم به‌تنهایی الزاماً خونریزی جدید بالینی نیست.",
+      "after": "تغییر منفرد سیگنال یا بلومینگ، خونریزی علامت‌دار را تعریف نمی‌کند. علائم جدید قابل‌انتساب و شواهد مناسب خونریزی تازهٔ داخل یا خارج ضایعه باید با هم ارزیابی شوند."
+    },
+    {
+      "path": "lesson.mrt.rows.2.1.de",
+      "currentBefore": "Kein, geringes oder variables Enhancement",
+      "after": "Keine, geringe oder variable Kontrastaufnahme möglich"
+    },
+    {
+      "path": "lesson.mrt.rows.2.1.en",
+      "currentBefore": "None, mild or variable enhancement",
+      "after": "Absent, mild or variable enhancement is possible"
+    },
+    {
+      "path": "lesson.mrt.rows.2.1.fa",
+      "currentBefore": "بدون، کم یا متغیر افزایش کنتراست",
+      "after": "نبود جذب، جذب خفیف یا جذب متغیر حاجب ممکن است"
+    },
+    {
+      "path": "lesson.mrt.rows.2.2.de",
+      "currentBefore": "Starkes solides Enhancement spricht für Alternative",
+      "after": "Enhancement allein beweist keinen Tumor; ausgeprägter solider Anteil oder Wachstum erfordern erneute Differenzialdiagnose"
+    },
+    {
+      "path": "lesson.mrt.rows.2.2.en",
+      "currentBefore": "Strong solid enhancement suggests an alternative",
+      "after": "Enhancement alone does not prove tumour; prominent solid tissue or growth requires reconsideration of the differential"
+    },
+    {
+      "path": "lesson.mrt.rows.2.2.fa",
+      "currentBefore": "افزایش شدید جامد به نفع تشخیص دیگر",
+      "after": "جذب حاجب به‌تنهایی تومور را ثابت نمی‌کند؛ جزء جامد واضح یا رشد، بازنگری افتراق را لازم می‌کند"
+    },
+    {
+      "path": "lesson.mrt.rows.3.1.de",
+      "currentBefore": "Ausgeprägtes Blooming; sensitivste Sequenz für kleine und multiple Kavernome",
+      "after": "SWI-ähnliche moderne Sequenzen sind empfindlicher als konventionelle T2*-GRE für kleine Läsionen"
+    },
+    {
+      "path": "lesson.mrt.rows.3.1.en",
+      "currentBefore": "Marked blooming; most sensitive sequence for small and multiple cavernomas",
+      "after": "Modern SWI-like sequences are more sensitive than conventional T2*-weighted GRE for small lesions"
+    },
+    {
+      "path": "lesson.mrt.rows.3.1.fa",
+      "currentBefore": "آرتیفکت شکوفه‌ای (blooming) واضح؛ حساس‌ترین سکانس برای ضایعات کوچک و متعدد",
+      "after": "سکانس‌های مدرن مشابه SWI برای ضایعات کوچک از T2*-GRE معمول حساس‌ترند"
+    },
+    {
+      "path": "lesson.mrt.rows.3.2.de",
+      "currentBefore": "Blooming überschätzt die wahre Läsionsgröße",
+      "after": "Blooming vergrößert die scheinbare Ausdehnung; einzelne Foci sind nicht automatisch Kavernome"
+    },
+    {
+      "path": "lesson.mrt.rows.3.2.en",
+      "currentBefore": "Blooming overestimates true lesion size",
+      "after": "Blooming enlarges apparent extent; isolated foci are not automatically cavernomas"
+    },
+    {
+      "path": "lesson.mrt.rows.3.2.fa",
+      "currentBefore": "آرتیفکت شکوفه‌ای (blooming) اندازه واقعی را بیش‌برآورد می‌کند",
+      "after": "بلومینگ وسعت ظاهری را بیشتر می‌کند؛ کانون‌های منفرد الزاماً کاورنوم نیستند"
+    },
+    {
+      "path": "lesson.mrt.rows.5.2.de",
+      "currentBefore": "Eine negative DSA schließt Kavernom nicht aus",
+      "after": "Negative DSA schließt Kavernom nicht aus; Katheterangiographie vor allem bei AVM-/Shuntverdacht"
+    },
+    {
+      "path": "lesson.mrt.rows.5.2.en",
+      "currentBefore": "A negative DSA does not exclude cavernoma",
+      "after": "Negative DSA does not exclude cavernoma; catheter angiography mainly when AVM/shunting is suspected"
+    },
+    {
+      "path": "lesson.mrt.rows.5.2.fa",
+      "currentBefore": "DSA منفی کاورنوم را رد نمی‌کند",
+      "after": "DSA منفی کاورنوم را رد نمی‌کند؛ آنژیوگرافی کاتتری بیشتر در شک به AVM یا شانت"
+    },
+    {
+      "path": "lesson.zabramski.rows.0.1.de",
+      "currentBefore": "T1-hyperintenter Kern, häufig T2-hyper-/hypointens",
+      "after": "T1-hyperintenser Kern, T2 je nach Blutstadium hyper- oder hypointens mit dunklem Saum"
+    },
+    {
+      "path": "lesson.zabramski.rows.0.1.en",
+      "currentBefore": "T1-hyperintense core, often mixed on T2",
+      "after": "T1-hyperintense core; T2 hyperintense or hypointense according to blood stage, with a dark rim"
+    },
+    {
+      "path": "lesson.zabramski.rows.0.1.fa",
+      "currentBefore": "هسته T1 بالا، اغلب مختلط در T2",
+      "after": "هستهٔ پرسیگنال T1؛ در T2 بر حسب مرحلهٔ خون پرسیگنال یا کم‌سیگنال با حاشیهٔ تیره"
+    },
+    {
+      "path": "lesson.zabramski.rows.2.1.de",
+      "currentBefore": "Homogen hypo- bis isointens mit Hämosiderinsaum und Blooming",
+      "after": "T1 iso-/hypointens, T2 hypointens; Suszeptibilität vergrößert den scheinbaren Saum"
+    },
+    {
+      "path": "lesson.zabramski.rows.2.1.en",
+      "currentBefore": "Homogeneous hypo-/isointense lesion with rim and blooming",
+      "after": "T1 iso-/hypointense and T2 hypointense; susceptibility enlarges the apparent rim"
+    },
+    {
+      "path": "lesson.zabramski.rows.2.1.fa",
+      "currentBefore": "ضایعه همگن کم/ایزوسیگنال با حاشیه و آرتیفکت شکوفه‌ای (blooming)",
+      "after": "T1 هم‌سیگنال یا کم‌سیگنال و T2 کم‌سیگنال؛ حساسیت‌پذیری حاشیهٔ ظاهری را بزرگ‌تر می‌کند"
+    },
+    {
+      "path": "lesson.zabramski.rows.3.1.de",
+      "currentBefore": "Nur punktförmig in GRE/SWI sichtbar",
+      "after": "Punktförmige Suszeptibilitätsfoci; konventionelles T1/T2 kaum oder nicht auffällig"
+    },
+    {
+      "path": "lesson.zabramski.rows.3.1.en",
+      "currentBefore": "Visible only as punctate foci on GRE/SWI",
+      "after": "Punctate susceptibility foci; conventional T1/T2 barely or not conspicuous"
+    },
+    {
+      "path": "lesson.zabramski.rows.3.1.fa",
+      "currentBefore": "فقط به صورت کانون نقطه‌ای در GRE/SWI",
+      "after": "کانون‌های نقطه‌ای حساسیت‌پذیری؛ در T1/T2 معمول به‌سختی مشخص یا نامشخص"
+    },
+    {
+      "path": "lesson.zabramski.rows.3.2.de",
+      "currentBefore": "Kleine familiäre Läsionen / Mikro-Kavernome",
+      "after": "Morphologisches Muster; Mikroblutungen und andere Ursachen im klinischen/familiären Kontext abgrenzen"
+    },
+    {
+      "path": "lesson.zabramski.rows.3.2.en",
+      "currentBefore": "Small familial lesions / microcavernomas",
+      "after": "Morphological pattern; distinguish microbleeds and other causes using clinical/familial context"
+    },
+    {
+      "path": "lesson.zabramski.rows.3.2.fa",
+      "currentBefore": "ضایعات کوچک خانوادگی / میکروکاورنوم",
+      "after": "الگوی مورفولوژیک؛ میکروخونریزی و علل دیگر با زمینهٔ بالینی یا خانوادگی افتراق داده شوند"
+    },
+    {
+      "path": "lesson.assoziation.items.0.text.de",
+      "currentBefore": "Bei der Kombination ist meist das Kavernom für Blutung oder Hämosiderin verantwortlich.",
+      "after": "Blutprodukte sind in dieser Kombination häufig dem Kavernom zuzuordnen. Die DVA-Drainage konkret prüfen; eine venöse Thrombose oder Abflussstörung wäre ein eigener Komplikationsmechanismus."
+    },
+    {
+      "path": "lesson.assoziation.items.0.text.en",
+      "currentBefore": "In the combination, the cavernoma is usually responsible for haemorrhage or haemosiderin.",
+      "after": "Blood products in this combination are often attributable to the cavernoma. Assess DVA drainage specifically; venous thrombosis or outflow disturbance would represent a separate complication mechanism."
+    },
+    {
+      "path": "lesson.assoziation.items.0.text.fa",
+      "currentBefore": "در این ترکیب معمولاً کاورنوم مسئول خونریزی یا هموسیدرین است.",
+      "after": "محصولات خون در این ترکیب اغلب به کاورنوم مربوط‌اند. تخلیهٔ DVA مشخصاً بررسی شود؛ ترومبوز وریدی یا اختلال خروج، سازوکار عارضه‌ای جداگانه است."
+    },
+    {
+      "path": "lesson.assoziation.items.2.text.de",
+      "currentBefore": "Auch bei Kavernomresektion darf die Sammelvene nicht geopfert werden.",
+      "after": "Die funktionelle venöse Drainage normalen Hirngewebes muss in die Operationsplanung einbezogen und möglichst unverletzt erhalten werden."
+    },
+    {
+      "path": "lesson.assoziation.items.2.text.en",
+      "currentBefore": "Even during cavernoma resection, the collector vein must not be sacrificed.",
+      "after": "Functional venous drainage of normal brain must be incorporated into surgical planning and preserved without injury whenever possible."
+    },
+    {
+      "path": "lesson.assoziation.items.2.text.fa",
+      "currentBefore": "حتی در رزکسیون کاورنوم، ورید جمع‌کننده نباید قربانی شود.",
+      "after": "تخلیهٔ وریدی عملکردی بافت طبیعی مغز باید در برنامه‌ریزی جراحی لحاظ و تا حد امکان بدون آسیب حفظ شود."
+    },
+    {
+      "path": "lesson.differenzial.rows.0.1.de",
+      "currentBefore": "Ödem, noduläres solides Enhancement, oft multiple Läsionen ohne kompletten Saum",
+      "after": "Solider kontrastierender Anteil, Wachstum und Ödem können die Tumorfrage aufwerfen; auch frische Kavernomblutung kann Ödem verursachen"
+    },
+    {
+      "path": "lesson.differenzial.rows.0.1.en",
+      "currentBefore": "Oedema, nodular solid enhancement, often multiple lesions without a complete rim",
+      "after": "Solid enhancing tissue, growth and oedema may raise concern for tumour; recent cavernoma bleeding can also cause oedema"
+    },
+    {
+      "path": "lesson.differenzial.rows.0.1.fa",
+      "currentBefore": "ادم، افزایش ندولار جامد، اغلب ضایعات متعدد بدون حاشیه کامل",
+      "after": "جزء جامد دارای جذب، رشد و ادم می‌توانند تومور را مطرح کنند؛ خونریزی تازهٔ کاورنوم نیز ممکن است ادم ایجاد کند"
+    },
+    {
+      "path": "lesson.differenzial.rows.4.1.de",
+      "currentBefore": "Meist punktförmig ohne retikulären Popcorn-Kern",
+      "after": "Punktförmige Suszeptibilität ohne typischen Kern ist unspezifisch; Blutdruck-/CAA-/Trauma-/Strahlen- und familiären Kontext einbeziehen"
+    },
+    {
+      "path": "lesson.differenzial.rows.4.1.en",
+      "currentBefore": "Usually punctate without a reticulated popcorn core",
+      "after": "Punctate susceptibility without a typical core is nonspecific; consider hypertension, CAA, trauma, radiation and family context"
+    },
+    {
+      "path": "lesson.differenzial.rows.4.1.fa",
+      "currentBefore": "معمولاً نقطه‌ای بدون هسته رتیکولار پاپ‌کورنی",
+      "after": "حساسیت‌پذیری نقطه‌ای بدون هستهٔ تیپیک غیراختصاصی است؛ زمینهٔ فشارخون، CAA، تروما، پرتودرمانی و خانوادگی لحاظ شود"
+    },
+    {
+      "path": "lesson.management.items.0.text.de",
+      "currentBefore": "Bei asymptomatischen oder tief gelegenen Kavernomen häufig Beobachtung und klinische Verlaufskontrolle.",
+      "after": "Asymptomatische stabile Läsionen werden häufig klinisch beobachtet. Bei tiefer, eloquenter oder Hirnstammlage wird prophylaktische Resektion nicht empfohlen; neue Symptome erfordern erneute Bildgebung und Beurteilung."
+    },
+    {
+      "path": "lesson.management.items.0.text.en",
+      "currentBefore": "Observation and clinical follow-up are common for asymptomatic or deep lesions.",
+      "after": "Asymptomatic stable lesions are often observed clinically. Prophylactic resection is not recommended for deep, eloquent or brainstem lesions; new symptoms require repeat imaging and assessment."
+    },
+    {
+      "path": "lesson.management.items.0.text.fa",
+      "currentBefore": "در ضایعات بدون علامت یا عمقی اغلب مشاهده و پیگیری بالینی.",
+      "after": "ضایعات پایدار بدون علامت اغلب از نظر بالینی پیگیری می‌شوند. در محل عمقی، الوکنت یا ساقهٔ مغز رزکسیون پیشگیرانه توصیه نمی‌شود؛ علائم جدید به تصویربرداری و ارزیابی مجدد نیاز دارند."
+    },
+    {
+      "path": "lesson.management.items.2.title.de",
+      "currentBefore": "Therapierefraktäre Epilepsie",
+      "after": "Anfälle und Epilepsie"
+    },
+    {
+      "path": "lesson.management.items.2.title.en",
+      "currentBefore": "Drug-resistant epilepsy",
+      "after": "Seizures and epilepsy"
+    },
+    {
+      "path": "lesson.management.items.2.title.fa",
+      "currentBefore": "صرع مقاوم",
+      "after": "تشنج و صرع"
+    },
+    {
+      "path": "lesson.management.items.2.text.de",
+      "currentBefore": "Oberflächliches epileptogenes Kavernom kann eine gute Resektionsindikation sein.",
+      "after": "Bei erstem zuordenbarem Anfall ohne Blutung zunächst Anfallsmedikation sowie klinische und epileptologische Abklärung. Resektion individuell besprechen, besonders bei fortbestehenden Anfällen oder Medikamentenunverträglichkeit; Zugänglichkeit und Operationsrisiko einbeziehen."
+    },
+    {
+      "path": "lesson.management.items.2.text.en",
+      "currentBefore": "A superficial epileptogenic cavernoma may be a strong indication for resection.",
+      "after": "For a first attributable seizure without haemorrhage, begin antiseizure medication and clinical/epilepsy assessment. Discuss resection individually, particularly with persistent seizures or medication intolerance; include accessibility and operative risk."
+    },
+    {
+      "path": "lesson.management.items.2.text.fa",
+      "currentBefore": "کاورنوم سطحی صرع‌زا می‌تواند اندیکاسیون خوب رزکسیون باشد.",
+      "after": "در نخستین تشنج قابل‌انتساب بدون خونریزی، ابتدا داروی ضدتشنج و ارزیابی بالینی یا صرع انجام شود. رزکسیون به‌صورت فردی، به‌ویژه در ادامهٔ تشنج یا عدم تحمل دارو، با لحاظ دسترسی و خطر جراحی مطرح شود."
+    },
+    {
+      "path": "lesson.takehome.title",
+      "currentBefore": "TAKE HOME MESSAGE",
+      "after": {
+        "de": "Take Home Message",
+        "en": "Take Home Message",
+        "fa": "پیام نهایی"
+      }
+    },
+    {
+      "path": "lesson.takehome.lead.de",
+      "currentBefore": "Die sechs prüfungsentscheidenden Punkte.",
+      "after": "MRT-Muster und klinischen Kontext gemeinsam beurteilen."
+    },
+    {
+      "path": "lesson.takehome.lead.en",
+      "currentBefore": "Six exam-critical points.",
+      "after": "Assess MRI pattern together with clinical context."
+    },
+    {
+      "path": "lesson.takehome.lead.fa",
+      "currentBefore": "شش نکته کلیدی آزمون.",
+      "after": "الگوی MRI و زمینهٔ بالینی با هم ارزیابی شوند."
+    },
+    {
+      "path": "lesson.takehome.items.3.text.de",
+      "currentBefore": "Besonders bei fehlender DVA und positiver Familienanamnese.",
+      "after": "Räumlich getrennte typische Läsionen ohne gemeinsame DVA oder Strahlenanamnese geben Anlass zur familiären Abklärung; Multiplikität allein beweist keine Vererbung."
+    },
+    {
+      "path": "lesson.takehome.items.3.text.en",
+      "currentBefore": "Especially without a DVA and with positive family history.",
+      "after": "Noncontiguous typical lesions without a shared DVA or radiation history warrant familial evaluation; multiplicity alone does not prove inheritance."
+    },
+    {
+      "path": "lesson.takehome.items.3.text.fa",
+      "currentBefore": "به‌ویژه بدون DVA و با سابقه خانوادگی مثبت.",
+      "after": "ضایعات تیپیک جدا از هم بدون DVA مشترک یا سابقهٔ پرتودرمانی بررسی خانوادگی را مطرح می‌کنند؛ تعدد به‌تنهایی ارثی‌بودن را ثابت نمی‌کند."
+    },
+    {
+      "path": "lesson.takehome.items.4.title.de",
+      "currentBefore": "Kavernom blutet, nicht DVA",
+      "after": "Blutungsquelle und DVA trennen"
+    },
+    {
+      "path": "lesson.takehome.items.4.title.en",
+      "currentBefore": "Cavernoma bleeds, not the DVA",
+      "after": "Distinguish bleeding source from DVA"
+    },
+    {
+      "path": "lesson.takehome.items.4.title.fa",
+      "currentBefore": "کاورنوم خونریزی می‌کند، نه DVA",
+      "after": "منشأ خونریزی از DVA تفکیک شود"
+    },
+    {
+      "path": "lesson.takehome.items.4.text.de",
+      "currentBefore": "Bei der Kombination Blutungsquelle richtig zuordnen.",
+      "after": "Blutprodukte häufig dem Kavernom zuordnen, die venöse Drainage aber eigenständig auf Komplikationen prüfen."
+    },
+    {
+      "path": "lesson.takehome.items.4.text.en",
+      "currentBefore": "Attribute the bleeding source correctly in combined lesions.",
+      "after": "Blood products are often attributable to the cavernoma, but assess venous drainage separately for complications."
+    },
+    {
+      "path": "lesson.takehome.items.4.text.fa",
+      "currentBefore": "در ضایعات ترکیبی منبع خونریزی درست تعیین شود.",
+      "after": "محصولات خون اغلب به کاورنوم مربوط‌اند، اما تخلیهٔ وریدی از نظر عوارض جداگانه بررسی شود."
+    },
+    {
+      "path": "lesson.goals",
+      "currentBefore": null,
+      "after": [
+        {
+          "de": "Typisches MRT-Muster, Suszeptibilitätsdiagnostik und Grenzen gegenüber Mimics erklären.",
+          "en": "Explain the typical MRI pattern, susceptibility imaging and limits against mimics.",
+          "fa": "الگوی تیپیک MRI، تصویربرداری حساسیت‌پذیری و محدودیت‌ها در برابر تقلیدکننده‌ها را توضیح دهید."
+        },
+        {
+          "de": "Multiple Kavernome im DVA-, Strahlen- und Familienkontext einordnen.",
+          "en": "Interpret multiple cavernomas using DVA, radiation and family context.",
+          "fa": "کاورنوم‌های متعدد را با زمینهٔ DVA، پرتودرمانی و خانوادگی تفسیر کنید."
+        },
+        {
+          "de": "Blutungsquelle und funktionelle DVA-Drainage unterscheiden und deren Erhalt planen.",
+          "en": "Distinguish the bleeding source from functional DVA drainage and plan its preservation.",
+          "fa": "منشأ خونریزی را از تخلیهٔ عملکردی DVA تفکیک و حفظ آن را در برنامه لحاظ کنید."
+        },
+        {
+          "de": "Klinische Symptome und Blutungsrisiko von isolierten MRT-Signaländerungen trennen.",
+          "en": "Distinguish clinical symptoms and haemorrhage risk from isolated MRI signal changes.",
+          "fa": "علائم بالینی و خطر خونریزی را از تغییرات منفرد سیگنال MRI جدا کنید."
+        },
+        {
+          "de": "Strukturiert berichten und kontextabhängige Behandlungsabwägung statt Automatismus begründen.",
+          "en": "Report systematically and justify context-dependent treatment assessment rather than an automatic intervention.",
+          "fa": "گزارش ساختاریافته و ارزیابی درمان وابسته به زمینه را به‌جای مداخلهٔ خودکار توجیه کنید."
+        }
+      ]
+    },
+    {
+      "path": "coverage",
+      "currentBefore": null,
+      "after": {
+        "route": "/gehirn/vaskulaer/kavernom",
+        "topicId": "kavernom",
+        "learningGoals": [
+          {
+            "id": "mri-pattern-limits",
+            "text": {
+              "de": "Typisches MRT-Muster, Suszeptibilitätsdiagnostik und Grenzen gegenüber Mimics erklären.",
+              "en": "Explain the typical MRI pattern, susceptibility imaging and limits against mimics.",
+              "fa": "الگوی تیپیک MRI، تصویربرداری حساسیت‌پذیری و محدودیت‌ها در برابر تقلیدکننده‌ها را توضیح دهید."
+            },
+            "questionIds": [
+              "kavernom-de-01",
+              "kavernom-de-02",
+              "kavernom-de-03",
+              "kavernom-de-04",
+              "kavernom-de-10",
+              "kavernom-de-11"
+            ],
+            "cardIds": [
+              "kavernom-01-definition",
+              "kavernom-02-popcorn",
+              "kavernom-03-swi",
+              "kavernom-04-dsa",
+              "kavernom-05-z2",
+              "kavernom-06-z4",
+              "kavernom-14-dd"
+            ]
+          },
+          {
+            "id": "familial-context",
+            "text": {
+              "de": "Multiple Kavernome im DVA-, Strahlen- und Familienkontext einordnen.",
+              "en": "Interpret multiple cavernomas using DVA, radiation and family context.",
+              "fa": "کاورنوم‌های متعدد را با زمینهٔ DVA، پرتودرمانی و خانوادگی تفسیر کنید."
+            },
+            "questionIds": [
+              "kavernom-de-05"
+            ],
+            "cardIds": [
+              "kavernom-07-familiaer"
+            ]
+          },
+          {
+            "id": "dva-drainage",
+            "text": {
+              "de": "Blutungsquelle und funktionelle DVA-Drainage unterscheiden und deren Erhalt planen.",
+              "en": "Distinguish the bleeding source from functional DVA drainage and plan its preservation.",
+              "fa": "منشأ خونریزی را از تخلیهٔ عملکردی DVA تفکیک و حفظ آن را در برنامه لحاظ کنید."
+            },
+            "questionIds": [
+              "kavernom-de-06",
+              "kavernom-de-07"
+            ],
+            "cardIds": [
+              "kavernom-10-dva",
+              "kavernom-11-dva-erhalt"
+            ]
+          },
+          {
+            "id": "clinical-risk",
+            "text": {
+              "de": "Klinische Symptome und Blutungsrisiko von isolierten MRT-Signaländerungen trennen.",
+              "en": "Distinguish clinical symptoms and haemorrhage risk from isolated MRI signal changes.",
+              "fa": "علائم بالینی و خطر خونریزی را از تغییرات منفرد سیگنال MRI جدا کنید."
+            },
+            "questionIds": [
+              "kavernom-de-08",
+              "kavernom-de-09"
+            ],
+            "cardIds": [
+              "kavernom-08-epilepsie",
+              "kavernom-09-risiko"
+            ]
+          },
+          {
+            "id": "report-management",
+            "text": {
+              "de": "Strukturiert berichten und kontextabhängige Behandlungsabwägung statt Automatismus begründen.",
+              "en": "Report systematically and justify context-dependent treatment assessment rather than an automatic intervention.",
+              "fa": "گزارش ساختاریافته و ارزیابی درمان وابسته به زمینه را به‌جای مداخلهٔ خودکار توجیه کنید."
+            },
+            "questionIds": [
+              "kavernom-de-09",
+              "kavernom-de-12"
+            ],
+            "cardIds": [
+              "kavernom-12-konservativ",
+              "kavernom-13-op",
+              "kavernom-15-befund"
+            ]
+          }
+        ],
+        "status": "AUTHOR_FULL_ORIGINAL_POOL_REVIEW_PENDING"
+      }
+    }
+  ],
+  "routeChanges": {
+    "file": "app/gehirn/vaskulaer/kavernom/page.js",
+    "before": "tmp/assessment-quality/kavernom-route-before.jsx",
+    "changes": [
+      "Canonical KAVERNOM_QUESTIONS and maintained TopicAssessment import",
+      "Five visible existing-first-chapter learning goals",
+      "Canonical originalQ11 inline decision in existing differential chapter",
+      "Translated source heading and five freshly read primary references in footer"
+    ],
+    "unchanged": "Existing chapter IDs/sequence,case/gallery/zoom/access sourceblocks,all9assetpaths/labels/alts,entirecasepayload,quiz12andcarddeck,LegacyLessonMigration preserved."
+  }
+}

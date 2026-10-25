@@ -607,6 +607,22 @@
       "questionCount": 3,
       "cardTopic": "bronchiolitis",
       "subject": "thorax"
+    },
+    "/abdomen/leber/fnh": {
+      "topicIds": [
+        "fnh"
+      ],
+      "questionCount": 10,
+      "cardTopic": "fnh",
+      "subject": "abdomen"
+    },
+    "/gehirn/vaskulaer/kavernom": {
+      "topicIds": [
+        "kavernom"
+      ],
+      "questionCount": 12,
+      "cardTopic": "kavernom",
+      "subject": "gehirn"
     }
   },
   "counts": {

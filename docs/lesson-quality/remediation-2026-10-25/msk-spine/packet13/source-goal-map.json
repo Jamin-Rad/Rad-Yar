@@ -1,0 +1,527 @@
+{
+  "date": "2026-10-25",
+  "route": "/msk/trauma/frakturbeschreibung",
+  "goals": [
+    {
+      "id": "msk13-report-displacement",
+      "text": {
+        "de": "Anatomischen Ort und quantitative Stellung des distalen Fragments berichten; Translation, Apex-Winkel und Längenänderung unterscheiden.",
+        "en": "Report anatomy and quantitative distal-fragment position; distinguish translation, apex angle and length change.",
+        "fa": "محل آناتومیک و وضعیت کمی قطعهٔ دیستال را گزارش کنید؛ انتقال، زاویهٔ رأس و تغییر طول را جدا کنید."
+      },
+      "questionIds": [
+        "frakturbeschreibung-de-01",
+        "frakturbeschreibung-de-02",
+        "frakturbeschreibung-de-09",
+        "aq-msk-frakturbeschreibung-de-report-distal-reference"
+      ],
+      "cardIds": [
+        "frakturbeschreibung-01-system",
+        "frakturbeschreibung-02-location",
+        "frakturbeschreibung-03-distal",
+        "frakturbeschreibung-04-translation",
+        "frakturbeschreibung-05-angulation",
+        "frakturbeschreibung-15-report"
+      ]
+    },
+    {
+      "id": "msk13-load-morphology",
+      "text": {
+        "de": "Linien- und Fragmentmuster sowie Belastung und Knochenqualität unterscheiden, ohne Mechanismus, Stabilität oder Läsionsursache allein daraus zu beweisen.",
+        "en": "Distinguish line/fragment patterns, loading and bone quality without treating them alone as proof of mechanism, stability or lesion cause.",
+        "fa": "الگوهای خط و قطعه، بارگذاری و کیفیت استخوان را تفکیک کنید، بدون آنکه به‌تنهایی مکانیسم، پایداری یا علت ضایعه را اثبات‌شده بدانید."
+      },
+      "questionIds": [
+        "frakturbeschreibung-de-03",
+        "frakturbeschreibung-de-04",
+        "frakturbeschreibung-de-05",
+        "frakturbeschreibung-de-06",
+        "frakturbeschreibung-de-12"
+      ],
+      "cardIds": [
+        "frakturbeschreibung-06-stress",
+        "frakturbeschreibung-07-pathologic",
+        "frakturbeschreibung-08-spiral",
+        "frakturbeschreibung-09-segmental",
+        "frakturbeschreibung-10-avulsion"
+      ],
+      "derivedAliasIds": [
+        "stressfrakturen-basics"
+      ]
+    },
+    {
+      "id": "msk13-joint-soft-tissue",
+      "text": {
+        "de": "Gelenkstufe und Frakturspalt getrennt messen und den Verdacht einer offenen Verletzung zur klinischen Abklärung kommunizieren.",
+        "en": "Measure articular step and fracture gap separately and communicate suspected open injury for clinical assessment.",
+        "fa": "پلهٔ مفصلی و فاصلهٔ شکستگی را جدا اندازه بگیرید و شک به آسیب باز را برای ارزیابی بالینی اطلاع دهید."
+      },
+      "questionIds": [
+        "frakturbeschreibung-de-07",
+        "frakturbeschreibung-de-08"
+      ],
+      "cardIds": [
+        "frakturbeschreibung-11-joint",
+        "frakturbeschreibung-12-open"
+      ]
+    },
+    {
+      "id": "msk13-targeted-imaging",
+      "text": {
+        "de": "CT zur knöchernen Gelenkfragmentdarstellung und geeignete MRT zur okkulten Stressverletzung begründen; Ödem von spezifischem Frakturnachweis unterscheiden.",
+        "en": "Justify CT for bony articular fragment mapping and appropriate MRI for occult stress injury; distinguish oedema from specific fracture proof.",
+        "fa": "CT را برای نقشهٔ قطعات استخوانی مفصل و MRI مناسب را برای آسیب استرسی مخفی توجیه کنید؛ ادم را از اثبات اختصاصی شکستگی جدا کنید."
+      },
+      "questionIds": [
+        "frakturbeschreibung-de-10",
+        "frakturbeschreibung-de-11"
+      ],
+      "cardIds": [
+        "frakturbeschreibung-13-ct",
+        "frakturbeschreibung-14-mri"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "frakturbeschreibung-de-01",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-01",
+        "en": "frakturbeschreibung-en-01",
+        "fa": "frakturbeschreibung-fa-01"
+      },
+      "correct": "A",
+      "goal": "msk13-report-displacement",
+      "source": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html",
+      "sources": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html"
+      ],
+      "sourceRefs": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frakturbeschreibung-de-02",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-02",
+        "en": "frakturbeschreibung-en-02",
+        "fa": "frakturbeschreibung-fa-02"
+      },
+      "correct": "B",
+      "goal": "msk13-report-displacement",
+      "source": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html",
+      "sources": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "frakturbeschreibung-de-03",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-03",
+        "en": "frakturbeschreibung-en-03",
+        "fa": "frakturbeschreibung-fa-03"
+      },
+      "correct": "C",
+      "goal": "msk13-load-morphology",
+      "source": "MSK.pdf · physical pp.2–4 (printed pp.1–3)",
+      "sources": [
+        "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+      ],
+      "sourceRefs": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frakturbeschreibung-de-04",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-04",
+        "en": "frakturbeschreibung-en-04",
+        "fa": "frakturbeschreibung-fa-04"
+      },
+      "correct": "D",
+      "goal": "msk13-load-morphology",
+      "source": "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/tibial-shaft/intact-segmental/orif-compression-plating",
+      "sources": [
+        "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/tibial-shaft/intact-segmental/orif-compression-plating"
+      ],
+      "sourceRefs": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frakturbeschreibung-de-05",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-05",
+        "en": "frakturbeschreibung-en-05",
+        "fa": "frakturbeschreibung-fa-05"
+      },
+      "correct": "A",
+      "goal": "msk13-load-morphology",
+      "source": "https://acsearch.acr.org/docs/69435/narrative/",
+      "sources": [
+        "https://acsearch.acr.org/docs/69435/narrative/"
+      ],
+      "sourceRefs": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frakturbeschreibung-de-06",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-06",
+        "en": "frakturbeschreibung-en-06",
+        "fa": "frakturbeschreibung-fa-06"
+      },
+      "correct": "B",
+      "goal": "msk13-load-morphology",
+      "source": "https://acsearch.acr.org/docs/69435/narrative/",
+      "sources": [
+        "https://acsearch.acr.org/docs/69435/narrative/"
+      ],
+      "sourceRefs": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frakturbeschreibung-de-07",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-07",
+        "en": "frakturbeschreibung-en-07",
+        "fa": "frakturbeschreibung-fa-07"
+      },
+      "correct": "C",
+      "goal": "msk13-joint-soft-tissue",
+      "source": "https://www.icmr.gov.in/icmrobject/uploads/STWs/1726645314_9_open_fracture.pdf",
+      "sources": [
+        "https://www.icmr.gov.in/icmrobject/uploads/STWs/1726645314_9_open_fracture.pdf"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "frakturbeschreibung-de-08",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-08",
+        "en": "frakturbeschreibung-en-08",
+        "fa": "frakturbeschreibung-fa-08"
+      },
+      "correct": "D",
+      "goal": "msk13-joint-soft-tissue",
+      "source": "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/",
+      "sources": [
+        "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9038308/"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "frakturbeschreibung-de-09",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-09",
+        "en": "frakturbeschreibung-en-09",
+        "fa": "frakturbeschreibung-fa-09"
+      },
+      "correct": "A",
+      "goal": "msk13-report-displacement",
+      "source": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html",
+      "sources": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "frakturbeschreibung-de-10",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-10",
+        "en": "frakturbeschreibung-en-10",
+        "fa": "frakturbeschreibung-fa-10"
+      },
+      "correct": "B",
+      "goal": "msk13-targeted-imaging",
+      "source": "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/",
+      "sources": [
+        "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "frakturbeschreibung-de-11",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-11",
+        "en": "frakturbeschreibung-en-11",
+        "fa": "frakturbeschreibung-fa-11"
+      },
+      "correct": "C",
+      "goal": "msk13-targeted-imaging",
+      "source": "https://acsearch.acr.org/docs/69435/narrative/",
+      "sources": [
+        "https://acsearch.acr.org/docs/69435/narrative/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4367232/"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "frakturbeschreibung-de-12",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-12",
+        "en": "frakturbeschreibung-en-12",
+        "fa": "frakturbeschreibung-fa-12"
+      },
+      "correct": "D",
+      "goal": "msk13-load-morphology",
+      "source": "MSK.pdf · physical pp.2–4 (printed pp.1–3)",
+      "sources": [
+        "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+      ],
+      "sourceRefs": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "frakturbeschreibung-01-system",
+      "topicId": "frakturbeschreibung",
+      "goal": "msk13-report-displacement",
+      "source": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html",
+      "sources": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "frakturbeschreibung-02-location",
+      "topicId": "frakturbeschreibung",
+      "goal": "msk13-report-displacement",
+      "source": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html",
+      "sources": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "frakturbeschreibung-03-distal",
+      "topicId": "frakturbeschreibung",
+      "goal": "msk13-report-displacement",
+      "source": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html",
+      "sources": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "frakturbeschreibung-04-translation",
+      "topicId": "frakturbeschreibung",
+      "goal": "msk13-report-displacement",
+      "source": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html",
+      "sources": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "frakturbeschreibung-05-angulation",
+      "topicId": "frakturbeschreibung",
+      "goal": "msk13-report-displacement",
+      "source": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html",
+      "sources": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "frakturbeschreibung-06-stress",
+      "topicId": "frakturbeschreibung",
+      "goal": "msk13-load-morphology",
+      "source": "https://acsearch.acr.org/docs/69435/narrative/",
+      "sources": [
+        "https://acsearch.acr.org/docs/69435/narrative/"
+      ],
+      "sourceRefs": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frakturbeschreibung-07-pathologic",
+      "topicId": "frakturbeschreibung",
+      "goal": "msk13-load-morphology",
+      "source": "MSK.pdf · physical pp.2–4 (printed pp.1–3)",
+      "sources": [
+        "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+      ],
+      "sourceRefs": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frakturbeschreibung-08-spiral",
+      "topicId": "frakturbeschreibung",
+      "goal": "msk13-load-morphology",
+      "source": "MSK.pdf · physical pp.2–4 (printed pp.1–3)",
+      "sources": [
+        "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+      ],
+      "sourceRefs": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frakturbeschreibung-09-segmental",
+      "topicId": "frakturbeschreibung",
+      "goal": "msk13-load-morphology",
+      "source": "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/tibial-shaft/intact-segmental/orif-compression-plating",
+      "sources": [
+        "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/tibial-shaft/intact-segmental/orif-compression-plating"
+      ],
+      "sourceRefs": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frakturbeschreibung-10-avulsion",
+      "topicId": "frakturbeschreibung",
+      "goal": "msk13-load-morphology",
+      "source": "MSK.pdf · physical pp.2–4 (printed pp.1–3)",
+      "sources": [
+        "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+      ],
+      "sourceRefs": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frakturbeschreibung-11-joint",
+      "topicId": "frakturbeschreibung",
+      "goal": "msk13-joint-soft-tissue",
+      "source": "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/",
+      "sources": [
+        "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9038308/"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "frakturbeschreibung-12-open",
+      "topicId": "frakturbeschreibung",
+      "goal": "msk13-joint-soft-tissue",
+      "source": "https://www.icmr.gov.in/icmrobject/uploads/STWs/1726645314_9_open_fracture.pdf",
+      "sources": [
+        "https://www.icmr.gov.in/icmrobject/uploads/STWs/1726645314_9_open_fracture.pdf"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "frakturbeschreibung-13-ct",
+      "topicId": "frakturbeschreibung",
+      "goal": "msk13-targeted-imaging",
+      "source": "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/",
+      "sources": [
+        "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "frakturbeschreibung-14-mri",
+      "topicId": "frakturbeschreibung",
+      "goal": "msk13-targeted-imaging",
+      "source": "https://acsearch.acr.org/docs/69435/narrative/",
+      "sources": [
+        "https://acsearch.acr.org/docs/69435/narrative/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4367232/"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "frakturbeschreibung-15-report",
+      "topicId": "frakturbeschreibung",
+      "goal": "msk13-report-displacement",
+      "source": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html",
+      "sources": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ],
+      "sourceRefs": []
+    },
+    {
+      "id": "stressfrakturen-basics",
+      "topicId": "stressfrakturen",
+      "goal": "msk13-load-morphology",
+      "source": "https://acsearch.acr.org/docs/69435/narrative/",
+      "sources": [
+        "https://acsearch.acr.org/docs/69435/narrative/"
+      ],
+      "sourceRefs": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    }
+  ],
+  "acceptedSupplement": {
+    "id": "aq-msk-frakturbeschreibung-de-report-distal-reference",
+    "status": "unchanged and consistency-read in DE/EN/FA",
+    "role": "Existing additional application question; not newly authored or counted among original12"
+  }
+}

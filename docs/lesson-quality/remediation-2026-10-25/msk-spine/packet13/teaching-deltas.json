@@ -1,0 +1,34 @@
+{
+  "changes": [
+    {
+      "path": "FRAKTUR_LESSON.gelenk.items.0.text.de",
+      "currentBefore": "Gelenkfläche benennen; Stufe und Spalt in Millimetern messen.",
+      "after": "Gelenkfläche benennen. Stufe ist der Höhenversatz der Gelenkfläche, Spalt der Abstand zwischen den Fragmenten; beides getrennt in Millimetern messen."
+    },
+    {
+      "path": "FRAKTUR_LESSON.gelenk.items.0.text.en",
+      "currentBefore": "Name the joint surface; measure step and gap in millimetres.",
+      "after": "Name the joint surface. Step is articular height offset and gap is separation between fragments; measure each separately in millimetres."
+    },
+    {
+      "path": "FRAKTUR_LESSON.gelenk.items.0.text.fa",
+      "currentBefore": "سطح مفصل را نام برده و پله و فاصله را به میلی‌متر اندازه بگیرید.",
+      "after": "سطح مفصل را نام ببرید. پله اختلاف ارتفاع سطح مفصلی و فاصله، جدایی قطعات است؛ هرکدام جداگانه به میلی‌متر اندازه‌گیری شوند."
+    },
+    {
+      "path": "FRAKTUR_LESSON.bildgebung.cave.de",
+      "currentBefore": "Bei klinisch hohem Frakturverdacht beendet ein negatives Röntgen die Diagnostik nicht automatisch.",
+      "after": "Bei klinisch hohem Frakturverdacht beendet ein negatives Röntgen die Diagnostik nicht automatisch. MRT-Knochenmarködem allein ist kein spezifischer Frakturnachweis; Frakturlinie, Muster und klinischen Kontext gemeinsam beurteilen."
+    },
+    {
+      "path": "FRAKTUR_LESSON.bildgebung.cave.en",
+      "currentBefore": "Negative radiographs do not automatically end the work-up when clinical suspicion is high.",
+      "after": "Negative radiographs do not automatically end work-up when suspicion is high. MRI marrow oedema alone is not specific proof of fracture; assess any fracture line, pattern and clinical context together."
+    },
+    {
+      "path": "FRAKTUR_LESSON.bildgebung.cave.fa",
+      "currentBefore": "در شک بالینی بالا، رادیوگرافی منفی بررسی را پایان نمی‌دهد.",
+      "after": "در شک بالینی بالا، رادیوگرافی منفی بررسی را خودکار پایان نمی‌دهد. ادم مغز استخوان در MRI به‌تنهایی اثبات اختصاصی شکستگی نیست؛ خط شکستگی در صورت وجود، الگو و زمینهٔ بالینی با هم ارزیابی شوند."
+    }
+  ]
+}

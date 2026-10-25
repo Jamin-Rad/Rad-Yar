@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-25",
+  "applied": false,
+  "after": {
+    "route": "/abdomen/leber/fnh",
+    "topicId": "fnh",
+    "status": "author_frozen_pending_independent_review",
+    "learningGoals": [
+      {
+        "id": "fnh07-context",
+        "text": {
+          "de": "FNH als benigne regenerative Läsion einordnen und die Aussagekraft von Demografie und Sonographie begrenzen.",
+          "en": "Recognise FNH as a benign regenerative lesion and limit inferences from demographics and ultrasound.",
+          "fa": "FNH را ضایعه‌ای خوش‌خیم و رژنراتیو بدانید و استنباط از جمعیت‌شناسی و سونوگرافی را محدود کنید."
+        },
+        "questionIds": [
+          "fnh-de-01",
+          "fnh-de-02",
+          "fnh-de-03"
+        ],
+        "questionIdsByLanguage": {
+          "de": [
+            "fnh-de-01",
+            "fnh-de-02",
+            "fnh-de-03"
+          ],
+          "en": [
+            "fnh-en-01",
+            "fnh-en-02",
+            "fnh-en-03"
+          ],
+          "fa": [
+            "fnh-fa-01",
+            "fnh-fa-02",
+            "fnh-fa-03"
+          ]
+        },
+        "cardIds": [
+          "fnh-01-definition",
+          "fnh-02-epidemiologie",
+          "fnh-03-sono",
+          "fnh-04-doppler"
+        ]
+      },
+      {
+        "id": "fnh07-dynamic",
+        "text": {
+          "de": "Das typische arterielle und spätere Muster von Angleichung, peripher-nodulärer Auffüllung und echtem Wash-out unterscheiden.",
+          "en": "Distinguish typical arterial and later equalisation from peripheral nodular fill-in and true washout.",
+          "fa": "الگوی شریانی و تطابق بعدی را از پرشدگی ندولار محیطی و واش‌اوت واقعی تفکیک کنید."
+        },
+        "questionIds": [
+          "fnh-de-04",
+          "fnh-de-05"
+        ],
+        "questionIdsByLanguage": {
+          "de": [
+            "fnh-de-04",
+            "fnh-de-05"
+          ],
+          "en": [
+            "fnh-en-04",
+            "fnh-en-05"
+          ],
+          "fa": [
+            "fnh-fa-04",
+            "fnh-fa-05"
+          ]
+        },
+        "cardIds": [
+          "fnh-05-ct",
+          "fnh-06-washout"
+        ]
+      },
+      {
+        "id": "fnh07-mri",
+        "text": {
+          "de": "Natives Signal, zentrale Narbe und hepatobiliäre Aufnahme zusammen bewerten, einschließlich fehlender Narbe und HCA-Überlappung.",
+          "en": "Integrate native signal, central scar and hepatobiliary uptake, including absent scars and HCA overlap.",
+          "fa": "سیگنال پایه، اسکار مرکزی و جذب هپاتوبیلیاری را با توجه به اسکار غایب و همپوشانی با HCA یکجا بسنجید."
+        },
+        "questionIds": [
+          "fnh-de-06",
+          "fnh-de-07",
+          "fnh-de-08"
+        ],
+        "questionIdsByLanguage": {
+          "de": [
+            "fnh-de-06",
+            "fnh-de-07",
+            "fnh-de-08"
+          ],
+          "en": [
+            "fnh-en-06",
+            "fnh-en-07",
+            "fnh-en-08"
+          ],
+          "fa": [
+            "fnh-fa-06",
+            "fnh-fa-07",
+            "fnh-fa-08"
+          ]
+        },
+        "cardIds": [
+          "fnh-07-t1t2",
+          "fnh-08-narbe",
+          "fnh-09-narbe-haeufigkeit",
+          "fnh-11-dd-hcc"
+        ]
+      },
+      {
+        "id": "fnh07-management",
+        "text": {
+          "de": "Sicher typische asymptomatische FNH von unklaren atypischen Befunden trennen und gezielte weitere Einordnung statt automatischer Resektion wählen.",
+          "en": "Separate confidently typical asymptomatic FNH from indeterminate atypical findings and choose targeted evaluation rather than automatic resection.",
+          "fa": "FNH بی‌علامت و با تشخیص تیپیک مطمئن را از یافتهٔ آتیپیک نامشخص جدا کنید و بررسی هدفمند را به‌جای رزکسیون خودکار برگزینید."
+        },
+        "questionIds": [
+          "fnh-de-09",
+          "fnh-de-10"
+        ],
+        "questionIdsByLanguage": {
+          "de": [
+            "fnh-de-09",
+            "fnh-de-10"
+          ],
+          "en": [
+            "fnh-en-09",
+            "fnh-en-10"
+          ],
+          "fa": [
+            "fnh-fa-09",
+            "fnh-fa-10"
+          ]
+        },
+        "cardIds": [
+          "fnh-10-atypisch",
+          "fnh-12-reporting"
+        ]
+      }
+    ]
+  }
+}

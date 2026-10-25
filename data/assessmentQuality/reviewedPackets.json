@@ -296,6 +296,8 @@
     "/abdomen/leber/li-rads",
     "/gehirn/vaskulaer/subarachnoidalblutung",
     "/mamma/bildgebung/mammographie/verkalkungen",
-    "/thorax/bronchiolitis"
+    "/thorax/bronchiolitis",
+    "/abdomen/leber/fnh",
+    "/gehirn/vaskulaer/kavernom"
   ]
 }

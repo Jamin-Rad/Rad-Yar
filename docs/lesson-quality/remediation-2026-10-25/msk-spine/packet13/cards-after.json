@@ -1,0 +1,522 @@
+[
+  {
+    "id": "frakturbeschreibung-01-system",
+    "topicId": "frakturbeschreibung",
+    "category": {
+      "de": "Systematik",
+      "en": "System",
+      "fa": "سیستم"
+    },
+    "front": {
+      "de": "Welche sechs Schritte bilden die kompakte Kernbeschreibung, und was ergänzt sie?",
+      "en": "Which six steps make up the concise core description, and what supplements it?",
+      "fa": "شش مرحله اصلی در توصیف فشرده کدام‌اند و چه مواردی آن را تکمیل می‌کنند؟"
+    },
+    "answer": {
+      "de": "Knochen/Seite, Segment, Morphologie, Dislokation, Gelenk und Weichteile.",
+      "en": "Bone/side, segment, morphology, displacement, joint and soft tissues.",
+      "fa": "استخوان/سمت، سگمان، مورفولوژی، جابه‌جایی، مفصل و بافت نرم."
+    },
+    "explanation": {
+      "de": "Diese sechs Kernschritte strukturieren den Befund. Knochenqualität und Begleitverletzungen sind zusätzliche Prüfpunkte.",
+      "en": "These six core steps structure the report. Bone quality and associated injuries are additional checks.",
+      "fa": "این شش مرحله اصلی گزارش را ساختار می‌دهند. کیفیت استخوان و آسیب‌های همراه موارد تکمیلی برای بررسی‌اند."
+    },
+    "learningGoalIds": [
+      "msk13-report-displacement"
+    ],
+    "source": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html",
+    "sources": [
+      "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html"
+    ],
+    "sourceRefs": []
+  },
+  {
+    "id": "frakturbeschreibung-02-location",
+    "topicId": "frakturbeschreibung",
+    "category": {
+      "de": "Lokalisation",
+      "en": "Location",
+      "fa": "محل"
+    },
+    "front": {
+      "de": "Wie wird die Lokalisation einer Fraktur vollständig angegeben?",
+      "en": "How is fracture location described completely?",
+      "fa": "محل شکستگی چگونه کامل توصیف می‌شود؟"
+    },
+    "answer": {
+      "de": "Knochen, Seite und Segment beziehungsweise Gelenkregion.",
+      "en": "Bone, side and segment or joint region.",
+      "fa": "استخوان، سمت و سگمان یا ناحیه مفصلی."
+    },
+    "explanation": {
+      "de": "„Tibiafraktur“ allein ist unzureichend. Proximal/metaphysär, Schaftdrittel oder distal sowie eine mögliche Gelenkbeteiligung müssen genannt werden.",
+      "en": "“Tibial fracture” alone is insufficient. State proximal/metaphyseal, shaft third or distal location and any joint involvement.",
+      "fa": "«شکستگی تیبیا» کافی نیست؛ پروگزیمال/متافیز، یک‌سوم شفت یا دیستال و درگیری مفصل باید ذکر شود."
+    },
+    "learningGoalIds": [
+      "msk13-report-displacement"
+    ],
+    "source": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html",
+    "sources": [
+      "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html"
+    ],
+    "sourceRefs": []
+  },
+  {
+    "id": "frakturbeschreibung-03-distal",
+    "topicId": "frakturbeschreibung",
+    "category": {
+      "de": "Dislokation",
+      "en": "Displacement",
+      "fa": "جابه‌جایی"
+    },
+    "front": {
+      "de": "Nach welcher Konvention wird die Richtung einer Frakturdislokation beschrieben?",
+      "en": "What convention is used to name fracture displacement direction?",
+      "fa": "جهت جابه‌جایی شکستگی طبق چه قراردادی توصیف می‌شود؟"
+    },
+    "answer": {
+      "de": "Distales Fragment relativ zum proximalen Fragment.",
+      "en": "Distal fragment relative to the proximal fragment.",
+      "fa": "قطعه دیستال نسبت به قطعه پروگزیمال."
+    },
+    "explanation": {
+      "de": "Bei Translation wird das distale relativ zum proximalen Fragment beschrieben. Für Angulation die verwendete Konvention ausdrücklich benennen: distale Neigung oder Apex-Richtung.",
+      "en": "Translation describes the distal relative to the proximal fragment. For angulation, explicitly state the convention: distal-fragment tilt or apex direction.",
+      "fa": "در انتقال، قطعهٔ دیستال نسبت به پروگزیمال توصیف می‌شود. در زاویه، قرارداد را صریح ذکر کنید: تمایل قطعهٔ دیستال یا جهت رأس."
+    },
+    "learningGoalIds": [
+      "msk13-report-displacement"
+    ],
+    "source": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html",
+    "sources": [
+      "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+    ],
+    "sourceRefs": []
+  },
+  {
+    "id": "frakturbeschreibung-04-translation",
+    "topicId": "frakturbeschreibung",
+    "category": {
+      "de": "Dislokation",
+      "en": "Displacement",
+      "fa": "جابه‌جایی"
+    },
+    "front": {
+      "de": "Wie sollte die Translation einer Fraktur im Befund quantifiziert werden?",
+      "en": "How should fracture translation be quantified in a report?",
+      "fa": "جابه‌جایی انتقالی شکستگی در گزارش چگونه کمی‌سازی می‌شود؟"
+    },
+    "answer": {
+      "de": "Richtung plus Millimeter oder Anteil der Schaftbreite.",
+      "en": "Direction plus millimetres or fraction of shaft width.",
+      "fa": "جهت همراه میلی‌متر یا نسبت عرض شفت."
+    },
+    "explanation": {
+      "de": "Beispielsweise „distales Fragment um eine halbe Schaftbreite nach dorsal“. Nur „disloziert“ liefert keine ausreichende Information.",
+      "en": "For example, “distal fragment displaced dorsally by half a shaft width.” “Displaced” alone is insufficient.",
+      "fa": "مثلاً «قطعه دیستال به اندازه نصف عرض شفت به دورسال». واژه جابه‌جا به‌تنهایی کافی نیست."
+    },
+    "learningGoalIds": [
+      "msk13-report-displacement"
+    ],
+    "source": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html",
+    "sources": [
+      "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+    ],
+    "sourceRefs": []
+  },
+  {
+    "id": "frakturbeschreibung-05-angulation",
+    "topicId": "frakturbeschreibung",
+    "category": {
+      "de": "Dislokation",
+      "en": "Displacement",
+      "fa": "جابه‌جایی"
+    },
+    "front": {
+      "de": "Wie wird die Angulation einer Fraktur eindeutig beschrieben?",
+      "en": "How is fracture angulation described unambiguously?",
+      "fa": "زاویه شکستگی چگونه بدون ابهام توصیف می‌شود؟"
+    },
+    "answer": {
+      "de": "Gradzahl und Apex-Richtung oder Richtung des distalen Fragments.",
+      "en": "Angle and apex direction or distal-fragment direction.",
+      "fa": "درجه و جهت رأس یا جهت قطعه دیستال."
+    },
+    "explanation": {
+      "de": "Die Apex-Konvention vermeidet Missverständnisse: „15° Apex-volar“ bedeutet, dass die Spitze nach volar zeigt und das distale Fragment entsprechend entgegengesetzt geneigt ist.",
+      "en": "The apex convention avoids ambiguity: “15° apex-volar” means the apex points volarly and the distal fragment tilts oppositely.",
+      "fa": "قرارداد رأس ابهام را کم می‌کند: «۱۵ درجه رأس ولار» یعنی رأس به ولار و قطعه دیستال در جهت مقابل متمایل است."
+    },
+    "learningGoalIds": [
+      "msk13-report-displacement"
+    ],
+    "source": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html",
+    "sources": [
+      "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+    ],
+    "sourceRefs": []
+  },
+  {
+    "id": "frakturbeschreibung-06-stress",
+    "topicId": "frakturbeschreibung",
+    "category": {
+      "de": "Mechanismus",
+      "en": "Mechanism",
+      "fa": "مکانیسم"
+    },
+    "front": {
+      "de": "Was unterscheidet eine Ermüdungsfraktur von einer Insuffizienzfraktur?",
+      "en": "What distinguishes a fatigue fracture from an insufficiency fracture?",
+      "fa": "تفاوت شکستگی خستگی و ناکفایتی چیست؟"
+    },
+    "answer": {
+      "de": "Überlastung normalen Knochens versus normale Last auf geschwächtem Knochen.",
+      "en": "Overload of normal bone versus normal load on weakened bone.",
+      "fa": "اضافه‌بار استخوان طبیعی در برابر بار طبیعی بر استخوان ضعیف."
+    },
+    "explanation": {
+      "de": "Beide können initial radiografisch okkult sein. ACR verwendet Stressfraktur als Oberbegriff für beide; Belastungsanamnese und Knochenqualität unterscheiden die Untergruppen.",
+      "en": "Both may initially be radiographically occult. ACR uses stress fracture as an umbrella for both; loading history and bone quality distinguish the subtypes.",
+      "fa": "هر دو ممکن است ابتدا در رادیوگرافی مخفی باشند. ACR شکستگی استرسی را عنوان کلی هر دو می‌داند؛ شرح بارگذاری و کیفیت استخوان زیرگروه‌ها را جدا می‌کنند."
+    },
+    "learningGoalIds": [
+      "msk13-load-morphology"
+    ],
+    "source": "https://acsearch.acr.org/docs/69435/narrative/",
+    "sources": [
+      "https://acsearch.acr.org/docs/69435/narrative/"
+    ],
+    "sourceRefs": [
+      {
+        "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+        "physicalPages": [
+          2
+        ]
+      }
+    ]
+  },
+  {
+    "id": "frakturbeschreibung-07-pathologic",
+    "topicId": "frakturbeschreibung",
+    "category": {
+      "de": "Mechanismus",
+      "en": "Mechanism",
+      "fa": "مکانیسم"
+    },
+    "front": {
+      "de": "Wann spricht man von einer pathologischen Fraktur?",
+      "en": "When is a fracture considered pathological?",
+      "fa": "چه زمانی شکستگی پاتولوژیک نامیده می‌شود؟"
+    },
+    "answer": {
+      "de": "Wenn sie durch eine fokale knochenzerstörende Läsion verläuft.",
+      "en": "When it passes through a focal bone-destructive lesion.",
+      "fa": "وقتی از میان ضایعه تخریب‌کننده موضعی استخوان عبور کند."
+    },
+    "explanation": {
+      "de": "Hier ist die fokal-pathologische Verwendung gemeint: etwa Metastase, Myelom, Knochenzyste oder Osteomyelitis. Die Läsion selbst beschreiben; das Frakturmuster beweist ihre Ursache nicht.",
+      "en": "This uses the focal pathological-fracture meaning: for example metastasis, myeloma, bone cyst or osteomyelitis. Describe the lesion itself; fracture morphology does not prove its cause.",
+      "fa": "اینجا کاربرد پاتولوژیک کانونی منظور است؛ مانند متاستاز، میلوما، کیست استخوان یا استئومیلیت. خود ضایعه را توصیف کنید؛ مورفولوژی شکستگی علت آن را اثبات نمی‌کند."
+    },
+    "learningGoalIds": [
+      "msk13-load-morphology"
+    ],
+    "source": "MSK.pdf · physical pp.2–4 (printed pp.1–3)",
+    "sources": [
+      "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+    ],
+    "sourceRefs": [
+      {
+        "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+        "physicalPages": [
+          2
+        ]
+      }
+    ]
+  },
+  {
+    "id": "frakturbeschreibung-08-spiral",
+    "topicId": "frakturbeschreibung",
+    "category": {
+      "de": "Morphologie",
+      "en": "Morphology",
+      "fa": "مورفولوژی"
+    },
+    "front": {
+      "de": "Welcher Mechanismus verursacht typischerweise eine Spiralfraktur?",
+      "en": "What mechanism typically causes a spiral fracture?",
+      "fa": "کدام مکانیسم معمولاً شکستگی مارپیچی ایجاد می‌کند؟"
+    },
+    "answer": {
+      "de": "Torsion beziehungsweise Rotation.",
+      "en": "Torsion or rotation.",
+      "fa": "پیچش یا چرخش."
+    },
+    "explanation": {
+      "de": "Die Frakturlinie windet sich durch die Rotationskraft um den Knochenschaft. Der Mechanismus kann auf weitere Verletzungen entlang der Rotationskette hinweisen.",
+      "en": "Rotational force makes the line wind around the shaft. The mechanism may suggest additional injuries along the rotational chain.",
+      "fa": "نیروی چرخشی خط شکستگی را دور شفت می‌پیچاند و می‌تواند به آسیب‌های دیگر در زنجیره چرخشی اشاره کند."
+    },
+    "learningGoalIds": [
+      "msk13-load-morphology"
+    ],
+    "source": "MSK.pdf · physical pp.2–4 (printed pp.1–3)",
+    "sources": [
+      "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+    ],
+    "sourceRefs": [
+      {
+        "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+        "physicalPages": [
+          3,
+          4
+        ]
+      }
+    ]
+  },
+  {
+    "id": "frakturbeschreibung-09-segmental",
+    "topicId": "frakturbeschreibung",
+    "category": {
+      "de": "Morphologie",
+      "en": "Morphology",
+      "fa": "مورفولوژی"
+    },
+    "front": {
+      "de": "Was ist eine Stück- oder Segmentfraktur?",
+      "en": "What is a segmental fracture?",
+      "fa": "شکستگی سگمنتال چیست؟"
+    },
+    "answer": {
+      "de": "Zwei Frakturlinien isolieren ein Zwischenfragment.",
+      "en": "Two fracture lines isolate an intermediate segment.",
+      "fa": "دو خط شکستگی یک قطعه میانی را جدا می‌کنند."
+    },
+    "explanation": {
+      "de": "Das isolierte Fragment kann durchblutungsgefährdet sein; Weichteile und Gesamtverletzung gezielt beurteilen.",
+      "en": "The isolated segment may have compromised blood supply; assess the soft tissues and full injury pattern.",
+      "fa": "قطعه جداشده ممکن است از نظر خون‌رسانی در خطر باشد؛ بافت نرم و کل الگوی آسیب را هدفمند بررسی کنید."
+    },
+    "learningGoalIds": [
+      "msk13-load-morphology"
+    ],
+    "source": "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/tibial-shaft/intact-segmental/orif-compression-plating",
+    "sources": [
+      "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/tibial-shaft/intact-segmental/orif-compression-plating"
+    ],
+    "sourceRefs": [
+      {
+        "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+        "physicalPages": [
+          3,
+          4
+        ]
+      }
+    ]
+  },
+  {
+    "id": "frakturbeschreibung-10-avulsion",
+    "topicId": "frakturbeschreibung",
+    "category": {
+      "de": "Morphologie",
+      "en": "Morphology",
+      "fa": "مورفولوژی"
+    },
+    "front": {
+      "de": "Was beschreibt eine Avulsionsfraktur?",
+      "en": "What is an avulsion fracture?",
+      "fa": "شکستگی کندگی چیست؟"
+    },
+    "answer": {
+      "de": "Knöcherner Ausriss am Ansatz einer Sehne oder eines Bandes.",
+      "en": "Bone fragment pulled from a tendon or ligament attachment.",
+      "fa": "کنده‌شدن قطعه استخوانی از محل اتصال تاندون یا رباط."
+    },
+    "explanation": {
+      "de": "Die Fragmentlage zeigt häufig die Zugrichtung. Wichtig ist, die zugehörige Sehne oder das Band und eine mögliche Funktionsstörung mitzubeurteilen.",
+      "en": "Fragment location often indicates traction direction. Assess the associated tendon or ligament and possible functional impairment.",
+      "fa": "محل قطعه اغلب جهت کشش را نشان می‌دهد. تاندون یا رباط مربوط و اختلال عملکرد نیز باید بررسی شود."
+    },
+    "learningGoalIds": [
+      "msk13-load-morphology"
+    ],
+    "source": "MSK.pdf · physical pp.2–4 (printed pp.1–3)",
+    "sources": [
+      "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+    ],
+    "sourceRefs": [
+      {
+        "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+        "physicalPages": [
+          3,
+          4
+        ]
+      }
+    ]
+  },
+  {
+    "id": "frakturbeschreibung-11-joint",
+    "topicId": "frakturbeschreibung",
+    "category": {
+      "de": "Gelenk",
+      "en": "Joint",
+      "fa": "مفصل"
+    },
+    "front": {
+      "de": "Welche Angaben sind bei einer intraartikulären Fraktur besonders wichtig?",
+      "en": "Which details are especially important in an intra-articular fracture?",
+      "fa": "در شکستگی داخل مفصل چه مواردی مهم است؟"
+    },
+    "answer": {
+      "de": "Gelenkfläche, Stufe, Spalt und Subluxation/Luxation.",
+      "en": "Joint surface, step, gap and subluxation/dislocation.",
+      "fa": "سطح مفصل، پله، فاصله و ساب‌لوکساسیون/دررفتگی."
+    },
+    "explanation": {
+      "de": "Diese Parameter bestimmen die Gelenkkongruenz und beeinflussen Arthroserisiko und Operationsplanung. CT ist bei komplexer Überlagerung häufig erforderlich.",
+      "en": "These parameters determine congruity and affect arthritis risk and surgical planning. CT is often required for complex overlap.",
+      "fa": "این پارامترها تطابق مفصل را توصیف می‌کنند و بر خطر آرتروز و برنامه‌ریزی جراحی اثر می‌گذارند. در پیچیدگی اغلب CT لازم است."
+    },
+    "learningGoalIds": [
+      "msk13-joint-soft-tissue"
+    ],
+    "source": "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/",
+    "sources": [
+      "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC9038308/"
+    ],
+    "sourceRefs": []
+  },
+  {
+    "id": "frakturbeschreibung-12-open",
+    "topicId": "frakturbeschreibung",
+    "category": {
+      "de": "Weichteile",
+      "en": "Soft tissues",
+      "fa": "بافت نرم"
+    },
+    "front": {
+      "de": "Kann eine offene Fraktur allein radiologisch sicher diagnostiziert oder ausgeschlossen werden?",
+      "en": "Can an open fracture be definitively diagnosed or excluded by imaging alone?",
+      "fa": "آیا شکستگی باز فقط با تصویربرداری قطعی تشخیص یا رد می‌شود؟"
+    },
+    "answer": {
+      "de": "Nein, sie ist klinisch definiert.",
+      "en": "No, it is clinically defined.",
+      "fa": "خیر، تعریف بالینی دارد."
+    },
+    "explanation": {
+      "de": "Gas oder ein Fremdkörper können den Verdacht stärken, fehlen aber möglicherweise. Bei Verdacht muss der Befund sofort klinisch kommuniziert werden.",
+      "en": "Gas or foreign body may support suspicion but can be absent. Suspicion must be communicated immediately.",
+      "fa": "گاز یا جسم خارجی می‌تواند شک را تقویت کند اما ممکن است وجود نداشته باشد. شک باید فوراً اطلاع داده شود."
+    },
+    "learningGoalIds": [
+      "msk13-joint-soft-tissue"
+    ],
+    "source": "https://www.icmr.gov.in/icmrobject/uploads/STWs/1726645314_9_open_fracture.pdf",
+    "sources": [
+      "https://www.icmr.gov.in/icmrobject/uploads/STWs/1726645314_9_open_fracture.pdf"
+    ],
+    "sourceRefs": []
+  },
+  {
+    "id": "frakturbeschreibung-13-ct",
+    "topicId": "frakturbeschreibung",
+    "category": {
+      "de": "Bildgebung",
+      "en": "Imaging",
+      "fa": "تصویربرداری"
+    },
+    "front": {
+      "de": "Wann ist CT bei einer Fraktur besonders hilfreich?",
+      "en": "When is CT particularly useful for a fracture?",
+      "fa": "چه زمانی CT در شکستگی به‌ویژه مفید است؟"
+    },
+    "answer": {
+      "de": "Bei komplexer oder intraartikulärer Fraktur und zur OP-Planung.",
+      "en": "For complex or intra-articular fracture and surgical planning.",
+      "fa": "در شکستگی پیچیده یا داخل مفصل و برنامه جراحی."
+    },
+    "explanation": {
+      "de": "CT zeigt Fragmente, Gelenkstufe, Impression und Rotationsstellung ohne projektionsbedingte Überlagerung. Es ergänzt, aber ersetzt nicht immer die initialen Röntgenaufnahmen.",
+      "en": "CT shows fragments, articular step, depression and rotation without projectional overlap. It complements but does not always replace initial radiographs.",
+      "fa": "CT قطعات، پله مفصلی، فرورفتگی و چرخش را بدون همپوشانی نشان می‌دهد و مکمل رادیوگرافی اولیه است."
+    },
+    "learningGoalIds": [
+      "msk13-targeted-imaging"
+    ],
+    "source": "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/",
+    "sources": [
+      "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/"
+    ],
+    "sourceRefs": []
+  },
+  {
+    "id": "frakturbeschreibung-14-mri",
+    "topicId": "frakturbeschreibung",
+    "category": {
+      "de": "Bildgebung",
+      "en": "Imaging",
+      "fa": "تصویربرداری"
+    },
+    "front": {
+      "de": "Wann ist MRT bei klinischem Frakturverdacht trotz negativem Röntgen sinnvoll?",
+      "en": "When is MRI useful when fracture is clinically suspected despite negative radiographs?",
+      "fa": "چه زمانی با شک بالینی شکستگی و رادیوگرافی منفی MRI مفید است؟"
+    },
+    "answer": {
+      "de": "Bei Verdacht auf okkulte, Stress- oder Insuffizienzfraktur.",
+      "en": "For suspected occult, stress or insufficiency fracture.",
+      "fa": "در شک به شکستگی مخفی، استرس یا ناکفایتی."
+    },
+    "explanation": {
+      "de": "MRT zeigt Knochenmarkreaktion und gegebenenfalls eine Frakturlinie sowie Begleitverletzungen. Knochenmarködem allein beweist keine Fraktur; Muster und klinischer Kontext sind erforderlich.",
+      "en": "MRI shows marrow reaction, a fracture line when present and associated injuries. Marrow oedema alone does not prove fracture; pattern and clinical context are required.",
+      "fa": "MRI واکنش مغز استخوان، خط شکستگی در صورت وجود و آسیب‌های همراه را نشان می‌دهد. ادم مغز استخوان به‌تنهایی شکستگی را ثابت نمی‌کند؛ الگو و زمینهٔ بالینی لازم‌اند."
+    },
+    "learningGoalIds": [
+      "msk13-targeted-imaging"
+    ],
+    "source": "https://acsearch.acr.org/docs/69435/narrative/",
+    "sources": [
+      "https://acsearch.acr.org/docs/69435/narrative/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC4367232/"
+    ],
+    "sourceRefs": []
+  },
+  {
+    "id": "frakturbeschreibung-15-report",
+    "topicId": "frakturbeschreibung",
+    "category": {
+      "de": "Befundung",
+      "en": "Reporting",
+      "fa": "گزارش"
+    },
+    "front": {
+      "de": "Welche Formulierung ist besser als „dislozierte Fraktur“?",
+      "en": "What wording is better than “displaced fracture”?",
+      "fa": "چه عبارتی بهتر از «شکستگی جابه‌جا» است؟"
+    },
+    "answer": {
+      "de": "Richtung und Ausmaß von Translation, Winkel und Längenänderung.",
+      "en": "Direction and magnitude of translation, angle and length change.",
+      "fa": "جهت و مقدار جابه‌جایی انتقالی، زاویه و تغییر طول."
+    },
+    "explanation": {
+      "de": "Eine quantitative Beschreibung ist reproduzierbar und für Reposition sowie Verlaufskontrolle nutzbar, beispielsweise „½ Schaftbreite dorsal, 15° Apex-volar, 6 mm Verkürzung“.",
+      "en": "Quantitative wording is reproducible and useful for reduction and follow-up, e.g. “half a shaft width dorsal, 15° apex-volar, 6 mm shortening.”",
+      "fa": "توصیف کمی قابل تکرار و برای جااندازی و پیگیری مفید است؛ مثلاً نصف عرض شفت دورسال، ۱۵ درجه رأس ولار، ۶ میلی‌متر کوتاهی."
+    },
+    "learningGoalIds": [
+      "msk13-report-displacement"
+    ],
+    "source": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html",
+    "sources": [
+      "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+    ],
+    "sourceRefs": []
+  }
+]

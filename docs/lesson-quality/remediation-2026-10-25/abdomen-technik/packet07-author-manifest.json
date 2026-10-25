@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-25",
+  "packet": "ATV07",
+  "route": "/abdomen/leber/fnh",
+  "status": "AUTHOR_FROZEN_READY_FOR_INDEPENDENT_FULL_POOL_REVIEW",
+  "author": "/root/design_inventory",
+  "productionFiles": [
+    "app/abdomen/leber/fnh/page.js"
+  ],
+  "sharedFilesProposalOnly": [
+    "data/questions.js",
+    "data/flashcards.js"
+  ],
+  "sharedProposals": {
+    "file": "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet07-fnh/shared-proposals.json",
+    "questionObjects": 30,
+    "cardTriads": 12,
+    "allCurrentBeforeActualDeepEqual": 42,
+    "applied": false,
+    "afterFile": "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet07-fnh/author-after.json"
+  },
+  "scope": {
+    "originalQuestionConcepts": 10,
+    "originalLocalizedQuestions": 30,
+    "originalCardTriads": 12,
+    "finalQuestionConcepts": 10,
+    "finalLocalizedQuestions": 30,
+    "finalCardTriads": 12,
+    "newQuestions": 0,
+    "newCards": 0,
+    "allIdsAndKeysPreserved": true,
+    "individualWrongFeedbackFields": 90,
+    "visibleLearningGoals": 4,
+    "goalCoverage": "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet07-fnh/coverage-proposal.json"
+  },
+  "sourceEvidence": "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet07-fnh/sources.json",
+  "originalReadLedger": "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet07-fnh/original-read.json",
+  "exactTeachingChanges": {
+    "file": "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet07-fnh/teaching-changes.json",
+    "literalFields": 84,
+    "extraCodeChanges": [
+      "Visible four learning goals in existing basics chapter",
+      "Selected wrong-option feedback in existing inlinecheck",
+      "Supplementary Kim2023 original review reference link"
+    ]
+  },
+  "originalBeforeSnapshot": "tmp/assessment-quality/fnh07-original-before.json",
+  "originalRouteSnapshot": "tmp/assessment-quality/fnh07-route-before.js",
+  "tests": {
+    "runtime": "tmp/assessment-quality/fnh07-author-runtime.json",
+    "script": "tmp/assessment-quality/test-fnh07-author.mjs",
+    "SSR": "tmp/assessment-quality/fnh07-author-ssr.json",
+    "SSRScript": "tmp/assessment-quality/test-fnh07-author-ssr.mjs",
+    "actualSSR": 3,
+    "overlayOnly": true
+  },
+  "productionHash": "9aeefa53ab0c5ab5e1c1a4cee88176b874c086ce5cff30db67a2e8f07cfe44eb",
+  "originalProductionHash": "0a6459109dc6b5854e3f2ab04fb67438f660cc062b345bedd24b20eb822fe3a7",
+  "media": "Retained paths, exact PDFmontagealt/caption and geometry unchanged; textual duplicate card diagrams removed, no media deleted.",
+  "openGates": [
+    "Independent full question/card/source/changed-language review",
+    "Root canonical integration then actualGlobalAfter42/42",
+    "Actual browser desktop/mobile languages, selected feedback, quiz/card launch/back and loadedmedia",
+    "Full image rights/provenance and Dr.Zia scientific approval not implied"
+  ],
+  "noWrites": [
+    "Accepted ATV05/06 and Calc sources",
+    "Common production banks",
+    "Git/build/server/browser"
+  ],
+  "reviewRepair": "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet07-fnh/review-repairs01.json"
+}

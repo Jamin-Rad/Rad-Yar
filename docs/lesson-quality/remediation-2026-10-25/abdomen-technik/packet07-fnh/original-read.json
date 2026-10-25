@@ -1,0 +1,468 @@
+{
+  "date": "2026-10-25",
+  "scope": "All original30localizedQ/12cardtriads actually read before rewriting; all authored output fields manually compared acrossDE/EN/FA. No shape-only scientific PASS.",
+  "questions": [
+    {
+      "idByLanguage": {
+        "de": "fnh-de-01",
+        "en": "fnh-en-01",
+        "fa": "fnh-fa-01"
+      },
+      "readFields": [
+        "stem",
+        "all4options",
+        "key",
+        "explanation"
+      ],
+      "originalWrongFeedback": "Absent",
+      "correctPreserved": "A",
+      "revision": "Replaces off-domain abscess/cyst distractors with regenerative versus clonal/fat/diffuse-remodelling mechanisms.",
+      "goal": "fnh07-context",
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "https://doi.org/10.14309/ajg.0000000000002857"
+      ],
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "idByLanguage": {
+        "de": "fnh-de-02",
+        "en": "fnh-en-02",
+        "fa": "fnh-fa-02"
+      },
+      "readFields": [
+        "stem",
+        "all4options",
+        "key",
+        "explanation"
+      ],
+      "originalWrongFeedback": "Absent",
+      "correctPreserved": "B",
+      "revision": "Repurposes epidemiology ID to self-contained indeterminate FNH/HCA examination choice; epidemiology retrieval remains card02.",
+      "goal": "fnh07-context",
+      "sourceUrls": [
+        "https://doi.org/10.14309/ajg.0000000000002857",
+        "https://pubmed.ncbi.nlm.nih.gov/22733890/"
+      ],
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "idByLanguage": {
+        "de": "fnh-de-03",
+        "en": "fnh-en-03",
+        "fa": "fnh-fa-03"
+      },
+      "readFields": [
+        "stem",
+        "all4options",
+        "key",
+        "explanation"
+      ],
+      "originalWrongFeedback": "Absent",
+      "correctPreserved": "A",
+      "revision": "Four vascular architectures; central radial clue qualified as supportive notproof.",
+      "goal": "fnh07-context",
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ],
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "idByLanguage": {
+        "de": "fnh-de-04",
+        "en": "fnh-en-04",
+        "fa": "fnh-fa-04"
+      },
+      "readFields": [
+        "stem",
+        "all4options",
+        "key",
+        "explanation"
+      ],
+      "originalWrongFeedback": "Absent",
+      "correctPreserved": "B",
+      "revision": "Removes duplicated hemangioma choices; four distinct enhancement patterns.",
+      "goal": "fnh07-dynamic",
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ],
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "idByLanguage": {
+        "de": "fnh-de-05",
+        "en": "fnh-en-05",
+        "fa": "fnh-fa-05"
+      },
+      "readFields": [
+        "stem",
+        "all4options",
+        "key",
+        "explanation"
+      ],
+      "originalWrongFeedback": "Absent",
+      "correctPreserved": "B",
+      "revision": "Four later enhancement trajectories; CT phase context avoids confusing HBP pseudowashout with extracellular washout.",
+      "goal": "fnh07-dynamic",
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ],
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "idByLanguage": {
+        "de": "fnh-de-06",
+        "en": "fnh-en-06",
+        "fa": "fnh-fa-06"
+      },
+      "readFields": [
+        "stem",
+        "all4options",
+        "key",
+        "explanation"
+      ],
+      "originalWrongFeedback": "Absent",
+      "correctPreserved": "B",
+      "revision": "Parallel native MRI tissue-signal choices, not a restricted-diffusion shortcut.",
+      "goal": "fnh07-mri",
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ],
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "idByLanguage": {
+        "de": "fnh-de-07",
+        "en": "fnh-en-07",
+        "fa": "fnh-fa-07"
+      },
+      "readFields": [
+        "stem",
+        "all4options",
+        "key",
+        "explanation"
+      ],
+      "originalWrongFeedback": "Absent",
+      "correctPreserved": "A",
+      "revision": "Extracellular-agent scar pattern; separates scar from HBP tissue uptake and avoids universal70%.",
+      "goal": "fnh07-mri",
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ],
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "idByLanguage": {
+        "de": "fnh-de-08",
+        "en": "fnh-en-08",
+        "fa": "fnh-fa-08"
+      },
+      "readFields": [
+        "stem",
+        "all4options",
+        "key",
+        "explanation"
+      ],
+      "originalWrongFeedback": "Absent",
+      "correctPreserved": "A",
+      "revision": "Four comparable paired HBP signal patterns; explanation retains HCA exceptions.",
+      "goal": "fnh07-mri",
+      "sourceUrls": [
+        "https://doi.org/10.14309/ajg.0000000000002857",
+        "https://pubmed.ncbi.nlm.nih.gov/22733890/",
+        "https://pubmed.ncbi.nlm.nih.gov/35920706/"
+      ],
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "idByLanguage": {
+        "de": "fnh-de-09",
+        "en": "fnh-en-09",
+        "fa": "fnh-fa-09"
+      },
+      "readFields": [
+        "stem",
+        "all4options",
+        "key",
+        "explanation"
+      ],
+      "originalWrongFeedback": "Absent",
+      "correctPreserved": "A",
+      "revision": "Two technically adequate complementary studies remain indeterminate; competing next-step strategies with individual limitations.",
+      "goal": "fnh07-management",
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "https://doi.org/10.14309/ajg.0000000000002857"
+      ],
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "idByLanguage": {
+        "de": "fnh-de-10",
+        "en": "fnh-en-10",
+        "fa": "fnh-fa-10"
+      },
+      "readFields": [
+        "stem",
+        "all4options",
+        "key",
+        "explanation"
+      ],
+      "originalWrongFeedback": "Absent",
+      "correctPreserved": "A",
+      "revision": "Four imaging surveillance schedules; confident typical asymptomatic diagnosis and vascular disease exception explicit.",
+      "goal": "fnh07-management",
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "https://doi.org/10.14309/ajg.0000000000002857"
+      ],
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    }
+  ],
+  "cards": [
+    {
+      "id": "fnh-01-definition",
+      "readFields": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "originalDiagram"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ],
+      "changes": "Per-ID sources attached. Focused retrieval/qualification changes as exact Before/After. Redundant textual arrow-diagram removed; no clinical figure removed.",
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "fnh-02-epidemiologie",
+      "readFields": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "originalDiagram"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.14309/ajg.0000000000002857"
+      ],
+      "changes": "Per-ID sources attached. Focused retrieval/qualification changes as exact Before/After. Redundant textual arrow-diagram removed; no clinical figure removed.",
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "fnh-03-sono",
+      "readFields": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "originalDiagram"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ],
+      "changes": "Per-ID sources attached. Focused retrieval/qualification changes as exact Before/After. Redundant textual arrow-diagram removed; no clinical figure removed.",
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "fnh-04-doppler",
+      "readFields": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "originalDiagram"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ],
+      "changes": "Per-ID sources attached. Focused retrieval/qualification changes as exact Before/After. Redundant textual arrow-diagram removed; no clinical figure removed.",
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "fnh-05-ct",
+      "readFields": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "originalDiagram"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ],
+      "changes": "Per-ID sources attached. Focused retrieval/qualification changes as exact Before/After. Redundant textual arrow-diagram removed; no clinical figure removed.",
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "fnh-06-washout",
+      "readFields": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "originalDiagram"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ],
+      "changes": "Per-ID sources attached. Focused retrieval/qualification changes as exact Before/After. Redundant textual arrow-diagram removed; no clinical figure removed.",
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "fnh-07-t1t2",
+      "readFields": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "originalDiagram"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ],
+      "changes": "Per-ID sources attached. Focused retrieval/qualification changes as exact Before/After. Redundant textual arrow-diagram removed; no clinical figure removed.",
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "fnh-08-narbe",
+      "readFields": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "originalDiagram"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ],
+      "changes": "Per-ID sources attached. Focused retrieval/qualification changes as exact Before/After. Redundant textual arrow-diagram removed; no clinical figure removed.",
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "fnh-09-narbe-haeufigkeit",
+      "readFields": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "originalDiagram"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ],
+      "changes": "Per-ID sources attached. Focused retrieval/qualification changes as exact Before/After. Redundant textual arrow-diagram removed; no clinical figure removed.",
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "fnh-10-atypisch",
+      "readFields": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "originalDiagram"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "https://doi.org/10.14309/ajg.0000000000002857"
+      ],
+      "changes": "Per-ID sources attached. Focused retrieval/qualification changes as exact Before/After. Redundant textual arrow-diagram removed; no clinical figure removed.",
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "fnh-11-dd-hcc",
+      "readFields": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "originalDiagram"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.14309/ajg.0000000000002857",
+        "https://pubmed.ncbi.nlm.nih.gov/22733890/",
+        "https://pubmed.ncbi.nlm.nih.gov/35920706/"
+      ],
+      "changes": "Per-ID sources attached. Focused retrieval/qualification changes as exact Before/After. Redundant textual arrow-diagram removed; no clinical figure removed.",
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "fnh-12-reporting",
+      "readFields": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "originalDiagram"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "https://doi.org/10.14309/ajg.0000000000002857"
+      ],
+      "changes": "Per-ID sources attached. Focused retrieval/qualification changes as exact Before/After. Redundant textual arrow-diagram removed; no clinical figure removed.",
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW"
+    }
+  ]
+}

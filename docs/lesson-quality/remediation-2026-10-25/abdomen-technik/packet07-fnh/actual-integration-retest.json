@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-25",
+  "status": "PASS_ACTUAL_CANONICAL_INTEGRATION",
+  "actualGlobalAfterObjects": 42,
+  "questions": 30,
+  "cardTriads": 12,
+  "sourceHash": "9aeefa53ab0c5ab5e1c1a4cee88176b874c086ce5cff30db67a2e8f07cfe44eb",
+  "routeUnchangedSinceAcceptedRepair01": true,
+  "originalMediaPathsAndPDFCaptionAltUnchanged": true,
+  "scope": "Read-only technical retest of root canonical integration; independent substantive review performed separately by root. No frozen author report overwritten, no browser/release/medical approval inferred."
+}

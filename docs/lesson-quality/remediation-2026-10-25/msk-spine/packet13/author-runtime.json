@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_RUNTIME_PASS_INDEPENDENT_REVIEW_PENDING",
+  "questionCounts": {
+    "de": {
+      "canonical": 12,
+      "actualTopicIncludingUnchangedSupplement": 13,
+      "wrongFeedbackFields": 36
+    },
+    "en": {
+      "canonical": 12,
+      "actualTopicIncludingUnchangedSupplement": 13,
+      "wrongFeedbackFields": 36
+    },
+    "fa": {
+      "canonical": 12,
+      "actualTopicIncludingUnchangedSupplement": 13,
+      "wrongFeedbackFields": 36
+    }
+  },
+  "questionHashes": {
+    "de": "db3f30958bfe06286218b72a9e48c056e99b256780028de38ec41c007c1aeace",
+    "en": "528ceb09df37edb3cd9c0b3d30a6787693f54e20e5f0db8568317c1389baf462",
+    "fa": "02d0f3bcb4c707ae39fdfc21663a54fcc6554f2a221b5659dfc62c073a35328f"
+  },
+  "sourceHashes": {
+    "data/frakturbeschreibung.js": {
+      "before": "19bf0471f266332bdddbe071c74af323f663d724dedf5f0d1300dee14d3224c7",
+      "after": "467c5a70541f1b46eeca7d89a4ed7a6833e0f6c3c669a8ee44f74c727e5e287a"
+    },
+    "app/msk/trauma/frakturbeschreibung/page.js": {
+      "before": "7bb16441fc8b317ec01a6710d01ff5f4f022fbdfd6aea278360c0785a3ff9fad",
+      "after": "7bb16441fc8b317ec01a6710d01ff5f4f022fbdfd6aea278360c0785a3ff9fad"
+    }
+  },
+  "goals": {
+    "msk13-report-displacement": {
+      "questionIds": [
+        "frakturbeschreibung-de-01",
+        "frakturbeschreibung-de-02",
+        "frakturbeschreibung-de-09"
+      ],
+      "cardIds": [
+        "frakturbeschreibung-01-system",
+        "frakturbeschreibung-02-location",
+        "frakturbeschreibung-03-distal",
+        "frakturbeschreibung-04-translation",
+        "frakturbeschreibung-05-angulation",
+        "frakturbeschreibung-15-report"
+      ]
+    },
+    "msk13-load-morphology": {
+      "questionIds": [
+        "frakturbeschreibung-de-03",
+        "frakturbeschreibung-de-04",
+        "frakturbeschreibung-de-05",
+        "frakturbeschreibung-de-06",
+        "frakturbeschreibung-de-12"
+      ],
+      "cardIds": [
+        "frakturbeschreibung-06-stress",
+        "frakturbeschreibung-07-pathologic",
+        "frakturbeschreibung-08-spiral",
+        "frakturbeschreibung-09-segmental",
+        "frakturbeschreibung-10-avulsion"
+      ],
+      "derivedAliasIds": [
+        "stressfrakturen-basics"
+      ]
+    },
+    "msk13-joint-soft-tissue": {
+      "questionIds": [
+        "frakturbeschreibung-de-07",
+        "frakturbeschreibung-de-08"
+      ],
+      "cardIds": [
+        "frakturbeschreibung-11-joint",
+        "frakturbeschreibung-12-open"
+      ]
+    },
+    "msk13-targeted-imaging": {
+      "questionIds": [
+        "frakturbeschreibung-de-10",
+        "frakturbeschreibung-de-11"
+      ],
+      "cardIds": [
+        "frakturbeschreibung-13-ct",
+        "frakturbeschreibung-14-mri"
+      ]
+    }
+  },
+  "canonicalCards": 15,
+  "derivedStressAliases": 1,
+  "cardHash": "78d8e1e720351658c24d32968ef9ccd1ca1a3d9de037a72c954b5413a7505aa6",
+  "stressAliasHash": "cda0c436af342fb9b1b3e51d82446e04c7a1b9cf7f348c42e1db6975cbf89df1",
+  "individualWrongFeedbackFields": 108,
+  "exactTeachingDeltaFields": 6,
+  "assessmentDeltaEntries": 474,
+  "acceptedSupplementUnchanged": true,
+  "routeAndMediaUnchanged": true,
+  "syntaxFiles": 2,
+  "build": "not run",
+  "browser": "not run; Root owns",
+  "git": "no mutation",
+  "independentReview": false
+}

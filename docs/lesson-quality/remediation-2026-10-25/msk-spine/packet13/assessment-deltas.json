@@ -1,0 +1,2911 @@
+{
+  "changes": [
+    {
+      "path": "questions.de.0.question",
+      "currentBefore": "Welche sechs Kernschritte gehören in die kompakte Frakturbeschreibung?",
+      "after": "Textfall: Beschrieben ist eine nicht dislozierte Querfraktur im mittleren Drittel der rechten Ulna. Welche Befundzeile gibt diese Angaben korrekt wieder?"
+    },
+    {
+      "path": "questions.de.0.options.0.text",
+      "currentBefore": "Knochen/Seite – Segment – Morphologie – Dislokation – Gelenk/Weichteile",
+      "after": "Nicht dislozierte Querfraktur des mittleren rechten Ulnaschafts."
+    },
+    {
+      "path": "questions.de.0.options.1.text",
+      "currentBefore": "Therapie – Alter – Schmerz – Morphologie",
+      "after": "Nicht dislozierte Querfraktur des distalen rechten Ulnaschafts."
+    },
+    {
+      "path": "questions.de.0.options.2.text",
+      "currentBefore": "Nur Frakturlinie und Diagnose",
+      "after": "Nicht dislozierte Querfraktur des mittleren linken Ulnaschafts."
+    },
+    {
+      "path": "questions.de.0.options.3.text",
+      "currentBefore": "Weichteile – Therapie – Labor – Seite",
+      "after": "Nicht dislozierte Spiralfraktur des mittleren rechten Ulnaschafts."
+    },
+    {
+      "path": "questions.de.0.explanation",
+      "currentBefore": "Das sind sechs Kernschritte. Knochenqualität und Begleitverletzungen zusätzlich aktiv beurteilen.",
+      "after": "Knochen, Seite, Segment und Morphologie müssen mit den beschriebenen Befunden übereinstimmen. Dislokation, Gelenke, Weichteile und Knochenqualität ergänzen die vollständige Beurteilung."
+    },
+    {
+      "path": "questions.de.0.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Distal verändert das vorgegebene mittlere Schaftdrittel.",
+        "C": "Links kehrt die angegebene rechte Seite um.",
+        "D": "Eine Spiralfraktur windet sich um den Schaft; beschrieben ist eine Querfraktur."
+      }
+    },
+    {
+      "path": "questions.de.0.source",
+      "currentBefore": null,
+      "after": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html"
+    },
+    {
+      "path": "questions.de.0.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html"
+      ]
+    },
+    {
+      "path": "questions.de.0.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.de.0.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-report-displacement"
+      ]
+    },
+    {
+      "path": "questions.de.1.question",
+      "currentBefore": "Nach welchem Fragment wird die Dislokationsrichtung einer Fraktur benannt?",
+      "after": "Textfall: Bei einer Unterarmschaftfraktur liegt das distale Fragment um eine halbe Schaftbreite dorsal des proximalen Fragments. Welche Translationsangabe ist nach der üblichen Konvention korrekt?"
+    },
+    {
+      "path": "questions.de.1.options.0.text",
+      "currentBefore": "Proximales Fragment relativ zum distalen",
+      "after": "Distales Fragment um eine halbe Schaftbreite nach volar."
+    },
+    {
+      "path": "questions.de.1.options.1.text",
+      "currentBefore": "Distales Fragment relativ zum proximalen",
+      "after": "Distales Fragment um eine halbe Schaftbreite nach dorsal."
+    },
+    {
+      "path": "questions.de.1.options.2.text",
+      "currentBefore": "Größtes Fragment",
+      "after": "Proximales Fragment um eine halbe Schaftbreite nach dorsal."
+    },
+    {
+      "path": "questions.de.1.options.3.text",
+      "currentBefore": "Kleinster Keil",
+      "after": "Distales Fragment um eine halbe Schaftbreite verkürzt."
+    },
+    {
+      "path": "questions.de.1.explanation",
+      "currentBefore": "Die Konvention beschreibt die Stellung des distalen Fragments gegenüber dem proximalen.",
+      "after": "Translation beschreibt die Verschiebung des distalen relativ zum proximalen Fragment. Richtung und Ausmaß bleiben getrennt von Angulation und Längenänderung."
+    },
+    {
+      "path": "questions.de.1.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Volar kehrt die vorgegebene dorsale Richtung um.",
+        "C": "Das Bezugsfragment wird vertauscht; relativ zum distalen läge das proximale hier volar.",
+        "D": "Eine seitliche Verschiebung um Schaftbreiten ist keine gemessene Verkürzung entlang der Längsachse."
+      }
+    },
+    {
+      "path": "questions.de.1.source",
+      "currentBefore": null,
+      "after": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+    },
+    {
+      "path": "questions.de.1.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ]
+    },
+    {
+      "path": "questions.de.1.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.de.1.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-report-displacement"
+      ]
+    },
+    {
+      "path": "questions.de.2.question",
+      "currentBefore": "Welche Frakturmorphologie spricht am ehesten für einen Torsionsmechanismus?",
+      "after": "Textfall: Eine zusammenhängende Frakturlinie windet sich um den Knochenschaft. Welcher Morphologiebegriff passt am besten?"
+    },
+    {
+      "path": "questions.de.2.options.1.text",
+      "currentBefore": "Impressionsfraktur",
+      "after": "Schrägfraktur mit geradlinig schrägem Verlauf"
+    },
+    {
+      "path": "questions.de.2.options.3.text",
+      "currentBefore": "Kompressionsfraktur",
+      "after": "Segmentfraktur mit zwei getrennten Frakturebenen"
+    },
+    {
+      "path": "questions.de.2.explanation",
+      "currentBefore": "Bei Rotation windet sich die Frakturlinie typischerweise spiralig um den Schaft.",
+      "after": "Eine um den Schaft gewundene Linie ist spiralig und kann zu Torsion passen. Die Morphologie allein beweist weder den Unfallablauf noch die Stabilität."
+    },
+    {
+      "path": "questions.de.2.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Bei einer Querfraktur verläuft die Linie annähernd rechtwinklig zur Schaftachse.",
+        "B": "Eine einfache schräge Linie windet sich nicht wie die beschriebene Linie um den Schaft.",
+        "D": "Segmental verlangt einen zwischen getrennten Frakturebenen isolierten Schaftabschnitt."
+      }
+    },
+    {
+      "path": "questions.de.2.source",
+      "currentBefore": null,
+      "after": "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+    },
+    {
+      "path": "questions.de.2.sources",
+      "currentBefore": null,
+      "after": [
+        "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+      ]
+    },
+    {
+      "path": "questions.de.2.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.de.2.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "questions.de.3.question",
+      "currentBefore": "Was kennzeichnet eine Stück- oder Segmentfraktur?",
+      "after": "Textfall: Zwei vollständige, voneinander getrennte Schaftfrakturen begrenzen ein größeres zirkumferenzielles Zwischenfragment. Wie wird dieses Muster beschrieben?"
+    },
+    {
+      "path": "questions.de.3.options.0.text",
+      "currentBefore": "Nur eine feine inkomplette Linie",
+      "after": "Schrägfraktur mit seitlichem Biegungskeil"
+    },
+    {
+      "path": "questions.de.3.options.1.text",
+      "currentBefore": "Eindrücken einer Gelenkfläche",
+      "after": "Impaktionsfraktur mit verkeilten Bruchenden"
+    },
+    {
+      "path": "questions.de.3.options.2.text",
+      "currentBefore": "Knöcherner Sehnenausriss",
+      "after": "Avulsionsfraktur eines Ansatzfragments"
+    },
+    {
+      "path": "questions.de.3.options.3.text",
+      "currentBefore": "Zwei getrennte Frakturlinien isolieren ein Zwischenfragment.",
+      "after": "Stück- beziehungsweise Segmentfraktur"
+    },
+    {
+      "path": "questions.de.3.explanation",
+      "currentBefore": "Das freie Zwischenfragment kann besonders durchblutungsgefährdet sein.",
+      "after": "Zwei getrennte Frakturebenen isolieren ein Schaftsegment. Dessen Weichteilansätze und Blutversorgung verdienen besondere Beachtung; die Form allein zeigt nicht, wie gut es perfundiert ist."
+    },
+    {
+      "path": "questions.de.3.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Ein Biegungskeil ist ein zusätzliches keilförmiges Fragment, kein ringsum abgegrenztes Schaftsegment zwischen zwei Ebenen.",
+        "B": "Impaktion bezeichnet ineinandergetriebene Bruchenden, nicht das hier isolierte Zwischenstück.",
+        "C": "Eine Avulsion betrifft ein unter Zug abgelöstes Sehnen- oder Bandansatzfragment."
+      }
+    },
+    {
+      "path": "questions.de.3.source",
+      "currentBefore": null,
+      "after": "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/tibial-shaft/intact-segmental/orif-compression-plating"
+    },
+    {
+      "path": "questions.de.3.sources",
+      "currentBefore": null,
+      "after": [
+        "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/tibial-shaft/intact-segmental/orif-compression-plating"
+      ]
+    },
+    {
+      "path": "questions.de.3.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.de.3.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "questions.de.4.question",
+      "currentBefore": "Was ist eine Insuffizienzfraktur?",
+      "after": "Textfall: Bei ausgeprägter Osteoporose entsteht unter gewöhnlicher Alltagsbelastung eine Fraktur; eine fokale Knochenläsion ist nicht beschrieben. Welcher Belastungstyp passt am besten?"
+    },
+    {
+      "path": "questions.de.4.options.0.text",
+      "currentBefore": "Normale Belastung auf geschwächtem Knochen",
+      "after": "Insuffizienzfraktur"
+    },
+    {
+      "path": "questions.de.4.options.1.text",
+      "currentBefore": "Überlastung von normalem Knochen",
+      "after": "Ermüdungsfraktur normalen Knochens"
+    },
+    {
+      "path": "questions.de.4.options.2.text",
+      "currentBefore": "Fraktur ausschließlich durch Tumor",
+      "after": "Fraktur durch eine fokal destruktive Läsion"
+    },
+    {
+      "path": "questions.de.4.options.3.text",
+      "currentBefore": "Direkte Hochrasanzverletzung",
+      "after": "Akute Fraktur nach direkter Hochenergieeinwirkung"
+    },
+    {
+      "path": "questions.de.4.explanation",
+      "currentBefore": "Osteoporose und andere strukturelle Schwächen senken die Belastbarkeit des Knochens.",
+      "after": "Normale Last auf geschwächtem Knochen entspricht einer Insuffizienzfraktur. ACR verwendet Stressfraktur als Oberbegriff für Ermüdungs- und Insuffizienzfrakturen; Belastung und Knochenqualität präzisieren die Untergruppe."
+    },
+    {
+      "path": "questions.de.4.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Ermüdung meint wiederholte Überlastung eines grundsätzlich normalen Knochens; hier ist die Knochenqualität geschwächt.",
+        "C": "Dafür müsste eine fokale Läsion als zusätzlicher Befund beschrieben werden; Osteoporose allein ist keine solche Läsion.",
+        "D": "Eine direkte Hochenergieeinwirkung ist im Fall nicht angegeben; beschrieben ist gewöhnliche Belastung."
+      }
+    },
+    {
+      "path": "questions.de.4.source",
+      "currentBefore": null,
+      "after": "https://acsearch.acr.org/docs/69435/narrative/"
+    },
+    {
+      "path": "questions.de.4.sources",
+      "currentBefore": null,
+      "after": [
+        "https://acsearch.acr.org/docs/69435/narrative/"
+      ]
+    },
+    {
+      "path": "questions.de.4.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.de.4.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "questions.de.5.question",
+      "currentBefore": "Was ist eine Stress- beziehungsweise Ermüdungsfraktur?",
+      "after": "Textfall: Nach deutlicher Steigerung des Lauftrainings entwickelt eine Person mit zuvor normalem Knochen eine belastungsabhängige Fraktur. Welcher Begriff beschreibt diesen Belastungstyp am präzisesten?"
+    },
+    {
+      "path": "questions.de.5.options.0.text",
+      "currentBefore": "Normale Belastung eines osteoporotischen Knochens",
+      "after": "Insuffizienzfraktur geschwächten Knochens"
+    },
+    {
+      "path": "questions.de.5.options.1.text",
+      "currentBefore": "Rezidivierende Überlastung eines normalen Knochens",
+      "after": "Ermüdungsfraktur durch repetitive Überlastung"
+    },
+    {
+      "path": "questions.de.5.options.2.text",
+      "currentBefore": "Fraktur durch Metastase",
+      "after": "Pathologische Fraktur durch eine fokale Läsion"
+    },
+    {
+      "path": "questions.de.5.options.3.text",
+      "currentBefore": "Knöcherner Bandausriss",
+      "after": "Avulsionsfraktur durch akuten Ansatzabriss"
+    },
+    {
+      "path": "questions.de.5.explanation",
+      "currentBefore": "Die wiederholte Belastung übersteigt die Reparaturkapazität des normalen Knochens.",
+      "after": "Repetitive Überlastung normalen Knochens ist eine Ermüdungsfraktur. Stressfraktur ist in ACR-Terminologie der breitere Oberbegriff; er allein trennt Ermüdung und Insuffizienz nicht."
+    },
+    {
+      "path": "questions.de.5.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Insuffizienz setzt eine verringerte Belastbarkeit des Knochens voraus; der Fall nennt normalen Knochen und gesteigerte Last.",
+        "C": "Eine fokal destruktive Läsion ist ein anderer erklärungsbedürftiger Befund und hier nicht beschrieben.",
+        "D": "Ein akuter Zug mit abgelöstem Ansatzfragment ist ein anderes Verletzungsmuster als die repetitive Überlastung."
+      }
+    },
+    {
+      "path": "questions.de.5.source",
+      "currentBefore": null,
+      "after": "https://acsearch.acr.org/docs/69435/narrative/"
+    },
+    {
+      "path": "questions.de.5.sources",
+      "currentBefore": null,
+      "after": [
+        "https://acsearch.acr.org/docs/69435/narrative/"
+      ]
+    },
+    {
+      "path": "questions.de.5.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.de.5.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "questions.de.6.question",
+      "currentBefore": "Welche Aussage zur offenen Fraktur ist korrekt?",
+      "after": "Textfall: Neben einer Tibiafraktur besteht eine kleine Hautwunde. Im Röntgen ist kein Weichteilgas sichtbar. Welcher nächste Schritt ist für die Einordnung der Offenheit am besten begründet?"
+    },
+    {
+      "path": "questions.de.6.options.0.text",
+      "currentBefore": "Sie wird allein durch CT diagnostiziert.",
+      "after": "Den geschlossenen Frakturstatus anhand des fehlenden Gases dokumentieren."
+    },
+    {
+      "path": "questions.de.6.options.1.text",
+      "currentBefore": "Ohne Gas ist sie ausgeschlossen.",
+      "after": "Zunächst eine CT zum Gasnachweis vor der Wundbeurteilung anfordern."
+    },
+    {
+      "path": "questions.de.6.options.2.text",
+      "currentBefore": "Sie ist klinisch definiert; Gas kann nur ein Hinweis sein.",
+      "after": "Den Verdacht unmittelbar kommunizieren und die Wunde klinisch beurteilen lassen."
+    },
+    {
+      "path": "questions.de.6.options.3.text",
+      "currentBefore": "Sie benötigt keine dringliche Kommunikation.",
+      "after": "Die Offenheit bei der nächsten radiologischen Verlaufskontrolle einordnen."
+    },
+    {
+      "path": "questions.de.6.explanation",
+      "currentBefore": "Die Kommunikation zwischen Fraktur und Außenwelt ist klinisch festzustellen.",
+      "after": "Eine offene Fraktur hat eine Verbindung zwischen Fraktur beziehungsweise Hämatom und Außenwelt. Diese wird klinisch beurteilt; fehlendes Gas schließt sie nicht aus. Der Verdacht darf die dringliche klinische Abklärung nicht verzögern."
+    },
+    {
+      "path": "questions.de.6.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Gas kann fehlen; seine Abwesenheit ersetzt keine Beurteilung der Wundverbindung.",
+        "B": "Eine CT-Gassuche ist keine Voraussetzung, bevor der konkrete Wundverdacht klinisch abgeklärt wird.",
+        "D": "Eine spätere Bildkontrolle beantwortet die jetzt dringliche klinische Frage nicht rechtzeitig."
+      }
+    },
+    {
+      "path": "questions.de.6.source",
+      "currentBefore": null,
+      "after": "https://www.icmr.gov.in/icmrobject/uploads/STWs/1726645314_9_open_fracture.pdf"
+    },
+    {
+      "path": "questions.de.6.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.icmr.gov.in/icmrobject/uploads/STWs/1726645314_9_open_fracture.pdf"
+      ]
+    },
+    {
+      "path": "questions.de.6.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.de.6.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-joint-soft-tissue"
+      ]
+    },
+    {
+      "path": "questions.de.7.question",
+      "currentBefore": "Welche Angabe ist bei einer intraartikulären Fraktur besonders wichtig?",
+      "after": "Textfall: An einer intraartikulären Fraktur liegen benachbarte Gelenkfragmente 4 mm auseinander; ihre Gelenkflächen unterscheiden sich in der Höhe um 2 mm. Welche Messangabe passt?"
+    },
+    {
+      "path": "questions.de.7.options.0.text",
+      "currentBefore": "Nur Weichteilschwellung",
+      "after": "Gelenkstufe 4 mm und Frakturspalt an der Gelenkfläche 2 mm."
+    },
+    {
+      "path": "questions.de.7.options.1.text",
+      "currentBefore": "Nur Frakturlänge",
+      "after": "Verkürzung 4 mm und Gelenkstufe 2 mm."
+    },
+    {
+      "path": "questions.de.7.options.2.text",
+      "currentBefore": "Dichte des Knochenmarks",
+      "after": "Frakturspalt an der Gelenkfläche 4 mm und Gelenkstufe 4 mm."
+    },
+    {
+      "path": "questions.de.7.options.3.text",
+      "currentBefore": "Gelenkstufe und Fragmentdiastase in Millimetern",
+      "after": "Frakturspalt an der Gelenkfläche 4 mm und Gelenkstufe 2 mm."
+    },
+    {
+      "path": "questions.de.7.explanation",
+      "currentBefore": "Stufe und Spalt beeinflussen Kongruenz, Arthroserisiko und OP-Planung.",
+      "after": "Spalt beschreibt den Abstand zwischen Fragmenten an der Gelenkfläche; Stufe den Höhenversatz der Gelenkfläche. Beide getrennt in Millimetern berichten. Daraus folgt ohne Gelenk-, Patienten- und Verletzungskontext keine pauschale OP-Schwelle."
+    },
+    {
+      "path": "questions.de.7.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Die Werte werden vertauscht: 4 mm ist die Trennung, 2 mm der Höhenversatz.",
+        "B": "Der lokale Gelenkspalt ist keine gemessene Verkürzung des Knochens entlang seiner Längsachse.",
+        "C": "Der Höhenversatz beträgt laut Fall 2 mm; 4 mm bezeichnet den Abstand der Fragmente."
+      }
+    },
+    {
+      "path": "questions.de.7.source",
+      "currentBefore": null,
+      "after": "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/"
+    },
+    {
+      "path": "questions.de.7.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9038308/"
+      ]
+    },
+    {
+      "path": "questions.de.7.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.de.7.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-joint-soft-tissue"
+      ]
+    },
+    {
+      "path": "questions.de.8.question",
+      "currentBefore": "Welche Beschreibung einer Dislokation ist vollständig?",
+      "after": "Textfall: Ein distales Unterarmfragment ist um eine halbe Schaftbreite nach dorsal versetzt und um 15° dorsal geneigt; die Frakturenden überreiten sich um 6 mm. Welche Beschreibung verwendet die Apex-Konvention korrekt?"
+    },
+    {
+      "path": "questions.de.8.options.0.text",
+      "currentBefore": "Distales Fragment ½ Schaftbreite dorsal, 15° Apex-volar, 6 mm verkürzt",
+      "after": "½ Schaftbreite dorsal, 15° Apex-volar, 6 mm Verkürzung."
+    },
+    {
+      "path": "questions.de.8.options.1.text",
+      "currentBefore": "Deutlich disloziert",
+      "after": "½ Schaftbreite dorsal, 15° Apex-dorsal, 6 mm Verkürzung."
+    },
+    {
+      "path": "questions.de.8.options.2.text",
+      "currentBefore": "Etwas verschoben",
+      "after": "½ Schaftbreite volar, 15° Apex-volar, 6 mm Verkürzung."
+    },
+    {
+      "path": "questions.de.8.options.3.text",
+      "currentBefore": "Instabil aussehend",
+      "after": "½ Schaftbreite dorsal, 15° Apex-volar, 6 mm Diastase."
+    },
+    {
+      "path": "questions.de.8.explanation",
+      "currentBefore": "Richtung und Ausmaß von Translation, Angulation und Länge werden quantifiziert.",
+      "after": "Dorsale Neigung des distalen Fragments entspricht einem volaren Apex. Überreiten verkürzt; Translation und Angulation beschreiben unterschiedliche Größen."
+    },
+    {
+      "path": "questions.de.8.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Apex und Neigung des distalen Fragments zeigen hier in entgegengesetzte Richtungen.",
+        "C": "Die vorgegebene Translation ist dorsal; volar kehrt sie um.",
+        "D": "Überreitende Enden bedeuten Verkürzung; Diastase meint Auseinanderweichen."
+      }
+    },
+    {
+      "path": "questions.de.8.source",
+      "currentBefore": null,
+      "after": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+    },
+    {
+      "path": "questions.de.8.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ]
+    },
+    {
+      "path": "questions.de.8.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.de.8.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-report-displacement"
+      ]
+    },
+    {
+      "path": "questions.de.9.question",
+      "currentBefore": "Welche Modalität ist für komplexe intraartikuläre Fragmentmorphologie am besten geeignet?",
+      "after": "Textfall: Röntgenaufnahmen zeigen eine komplexe Tibiaplateaufraktur. Für die Planung sollen knöcherne Fragmente und die eingedrückte Gelenkfläche räumlich abgegrenzt werden. Welche Untersuchung beantwortet diese Frage am direktesten?"
+    },
+    {
+      "path": "questions.de.9.options.0.text",
+      "currentBefore": "Röntgen nur in einer Ebene",
+      "after": "MRT zur Analyse von Menisken und Bändern"
+    },
+    {
+      "path": "questions.de.9.options.1.text",
+      "currentBefore": "CT",
+      "after": "Dünnschicht-CT mit multiplanaren Rekonstruktionen"
+    },
+    {
+      "path": "questions.de.9.options.2.text",
+      "currentBefore": "MRT ohne T1",
+      "after": "Gezielte ergänzende Röntgen-Schrägaufnahmen"
+    },
+    {
+      "path": "questions.de.9.options.3.text",
+      "currentBefore": "Sonografie allein",
+      "after": "Gezielte Sonografie der gelenknahen Weichteile"
+    },
+    {
+      "path": "questions.de.9.explanation",
+      "currentBefore": "CT zeigt Gelenkfläche, Fragmente, Stufe und Spalt überlagerungsfrei.",
+      "after": "CT stellt knöcherne Fragmentbeziehungen und die Gelenkfläche ohne Projektionsüberlagerung dar. MRT kann zusätzliche Weichteilfragen beantworten; die Wahl richtet sich nach der offenen Frage."
+    },
+    {
+      "path": "questions.de.9.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "MRT ist für Menisken und Bänder nützlich; hier steht die genaue knöcherne Fragmentkarte im Vordergrund.",
+        "C": "Zusatzprojektionen können ergänzen, lösen die komplexe räumliche Überlagerung aber weniger vollständig als CT auf.",
+        "D": "Sonografie kann oberflächennahe Weichteile prüfen, bildet die komplexe knöcherne Gelenkfragmentierung aber nicht vollständig ab."
+      }
+    },
+    {
+      "path": "questions.de.9.source",
+      "currentBefore": null,
+      "after": "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/"
+    },
+    {
+      "path": "questions.de.9.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/"
+      ]
+    },
+    {
+      "path": "questions.de.9.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.de.9.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-targeted-imaging"
+      ]
+    },
+    {
+      "path": "questions.de.10.question",
+      "currentBefore": "Wann sollte trotz negativem Röntgen eine MRT oder andere Zusatzdiagnostik erwogen werden?",
+      "after": "Textfall: Bei einer erwachsenen Läuferin besteht trotz negativer Röntgenaufnahmen weiter hoher Verdacht auf eine Stressfraktur. Eine zeitnahe Klärung ist erforderlich; eine MRT-Kontraindikation besteht nicht. Welche Untersuchung ist nach ACR am besten geeignet?"
+    },
+    {
+      "path": "questions.de.10.options.0.text",
+      "currentBefore": "Nie",
+      "after": "CT der betroffenen Region ohne Kontrastmittel"
+    },
+    {
+      "path": "questions.de.10.options.1.text",
+      "currentBefore": "Nur bei sichtbarer Luxation",
+      "after": "Röntgenkontrolle der betroffenen Region nach 10–14 Tagen"
+    },
+    {
+      "path": "questions.de.10.options.2.text",
+      "currentBefore": "Bei anhaltend hohem klinischem Frakturverdacht",
+      "after": "MRT der betroffenen Region ohne Kontrastmittel"
+    },
+    {
+      "path": "questions.de.10.options.3.text",
+      "currentBefore": "Nur nach sechs Monaten",
+      "after": "Sonografie der schmerzhaften Region"
+    },
+    {
+      "path": "questions.de.10.explanation",
+      "currentBefore": "Okkulte, Stress- und Insuffizienzfrakturen können initial radiografisch unsichtbar sein.",
+      "after": "ACR bewertet MRT ohne Kontrastmittel nach negativen oder unklaren Röntgenaufnahmen bei vermuteter Stressfraktur als üblicherweise geeignet. MRT zeigt Knochenmarkreaktion und gegebenenfalls eine Frakturlinie; Ödem allein ist kein spezifischer Frakturnachweis."
+    },
+    {
+      "path": "questions.de.10.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "CT kann je nach Fragestellung eine Alternative sein; für die zeitnahe Erfassung einer okkulten Stressverletzung ist hier MRT bevorzugt.",
+        "B": "Eine Verlaufskontrolle kann in passenden Situationen sinnvoll sein, klärt den hier zeitnah benötigten Befund jedoch später.",
+        "D": "Sonografie ersetzt die Knochenmarkbeurteilung nicht und ist in dieser ACR-Konstellation üblicherweise nicht geeignet."
+      }
+    },
+    {
+      "path": "questions.de.10.source",
+      "currentBefore": null,
+      "after": "https://acsearch.acr.org/docs/69435/narrative/"
+    },
+    {
+      "path": "questions.de.10.sources",
+      "currentBefore": null,
+      "after": [
+        "https://acsearch.acr.org/docs/69435/narrative/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4367232/"
+      ]
+    },
+    {
+      "path": "questions.de.10.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.de.10.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-targeted-imaging"
+      ]
+    },
+    {
+      "path": "questions.de.11.question",
+      "currentBefore": "Welcher Befund sollte an eine pathologische Fraktur denken lassen?",
+      "after": "Textfall: Eine Fraktur verläuft nach geringer Gewalteinwirkung durch eine umschriebene osteolytische Knochenläsion. Welche Einordnung sollte der Befund hervorheben?"
+    },
+    {
+      "path": "questions.de.11.options.0.text",
+      "currentBefore": "Spiralfraktur nach Sportunfall",
+      "after": "Insuffizienzfraktur bei diffuser Osteoporose"
+    },
+    {
+      "path": "questions.de.11.options.1.text",
+      "currentBefore": "Querfraktur nach Verkehrsunfall",
+      "after": "Ermüdungsfraktur durch repetitive Last auf normalem Knochen"
+    },
+    {
+      "path": "questions.de.11.options.2.text",
+      "currentBefore": "Avulsion bei Sprint",
+      "after": "Avulsionsfraktur am Sehnen- oder Bandansatz"
+    },
+    {
+      "path": "questions.de.11.options.3.text",
+      "currentBefore": "Fraktur durch eine fokale osteolytische Läsion nach geringer Gewalt",
+      "after": "Fokal-pathologische Fraktur bei noch ungeklärter Läsionsart"
+    },
+    {
+      "path": "questions.de.11.explanation",
+      "currentBefore": "Lokale Knochenzerstörung und inadäquater Mechanismus sprechen für eine zugrunde liegende Läsion.",
+      "after": "Die fokale Läsion muss zusätzlich zur Fraktur beschrieben und abgeklärt werden. Osteolyse allein beweist weder Metastase noch eine andere bestimmte Ursache; die PDF verwendet dafür den fokal-pathologischen Begriff."
+    },
+    {
+      "path": "questions.de.11.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Diffuse Osteoporose erklärt die beschriebene umschriebene Osteolyse nicht hinreichend.",
+        "B": "Der Knochen ist am Frakturort durch eine fokale Läsion verändert; es handelt sich nicht um den beschriebenen normalen Ermüdungsknochen.",
+        "C": "Ein ausgerissenes Ansatzfragment ist nicht das beschriebene Muster einer Fraktur durch eine osteolytische Läsion."
+      }
+    },
+    {
+      "path": "questions.de.11.source",
+      "currentBefore": null,
+      "after": "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+    },
+    {
+      "path": "questions.de.11.sources",
+      "currentBefore": null,
+      "after": [
+        "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+      ]
+    },
+    {
+      "path": "questions.de.11.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.de.11.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "questions.en.0.question",
+      "currentBefore": "Which six core steps make up the concise fracture description?",
+      "after": "Text vignette: A nondisplaced transverse fracture is described in the middle third of the right ulna. Which report line preserves these findings?"
+    },
+    {
+      "path": "questions.en.0.options.0.text",
+      "currentBefore": "Bone/side – segment – morphology – displacement – joint/soft tissues",
+      "after": "Nondisplaced transverse fracture of the middle right ulnar shaft."
+    },
+    {
+      "path": "questions.en.0.options.1.text",
+      "currentBefore": "Treatment – age – pain – morphology",
+      "after": "Nondisplaced transverse fracture of the distal right ulnar shaft."
+    },
+    {
+      "path": "questions.en.0.options.2.text",
+      "currentBefore": "Fracture line and diagnosis only",
+      "after": "Nondisplaced transverse fracture of the middle left ulnar shaft."
+    },
+    {
+      "path": "questions.en.0.options.3.text",
+      "currentBefore": "Soft tissues – treatment – laboratory – side",
+      "after": "Nondisplaced spiral fracture of the middle right ulnar shaft."
+    },
+    {
+      "path": "questions.en.0.explanation",
+      "currentBefore": "These are six core steps. Also actively assess bone quality and associated injuries.",
+      "after": "Bone, side, segment and morphology must match the findings described. Displacement, joints, soft tissues and bone quality complete the assessment."
+    },
+    {
+      "path": "questions.en.0.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Distal changes the specified middle shaft third.",
+        "C": "Left reverses the stated right side.",
+        "D": "A spiral line winds around the shaft; a transverse fracture is described."
+      }
+    },
+    {
+      "path": "questions.en.0.source",
+      "currentBefore": null,
+      "after": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html"
+    },
+    {
+      "path": "questions.en.0.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html"
+      ]
+    },
+    {
+      "path": "questions.en.0.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.en.0.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-report-displacement"
+      ]
+    },
+    {
+      "path": "questions.en.1.question",
+      "currentBefore": "Which fragment determines the named direction of fracture displacement?",
+      "after": "Text vignette: In a forearm shaft fracture, the distal fragment lies half a shaft width dorsal to the proximal fragment. Which translation statement follows the usual convention?"
+    },
+    {
+      "path": "questions.en.1.options.0.text",
+      "currentBefore": "Proximal relative to distal",
+      "after": "Distal fragment displaced volarly by half a shaft width."
+    },
+    {
+      "path": "questions.en.1.options.1.text",
+      "currentBefore": "Distal fragment relative to proximal",
+      "after": "Distal fragment displaced dorsally by half a shaft width."
+    },
+    {
+      "path": "questions.en.1.options.2.text",
+      "currentBefore": "Largest fragment",
+      "after": "Proximal fragment displaced dorsally by half a shaft width."
+    },
+    {
+      "path": "questions.en.1.options.3.text",
+      "currentBefore": "Smallest wedge",
+      "after": "Distal fragment shortened by half a shaft width."
+    },
+    {
+      "path": "questions.en.1.explanation",
+      "currentBefore": "Convention describes the distal fragment relative to the proximal fragment.",
+      "after": "Translation describes the distal fragment relative to the proximal fragment. Direction and amount are distinct from angulation and length change."
+    },
+    {
+      "path": "questions.en.1.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Volar reverses the specified dorsal direction.",
+        "C": "This swaps the reference fragment; relative to the distal fragment, the proximal one would lie volarly.",
+        "D": "A transverse shift measured in shaft widths is not measured shortening along the long axis."
+      }
+    },
+    {
+      "path": "questions.en.1.source",
+      "currentBefore": null,
+      "after": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+    },
+    {
+      "path": "questions.en.1.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ]
+    },
+    {
+      "path": "questions.en.1.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.en.1.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-report-displacement"
+      ]
+    },
+    {
+      "path": "questions.en.2.question",
+      "currentBefore": "Which fracture morphology most strongly suggests torsion?",
+      "after": "Text vignette: A continuous fracture line winds around the bone shaft. Which morphology term fits best?"
+    },
+    {
+      "path": "questions.en.2.options.1.text",
+      "currentBefore": "Depression fracture",
+      "after": "Oblique fracture with a straight oblique course"
+    },
+    {
+      "path": "questions.en.2.options.3.text",
+      "currentBefore": "Compression fracture",
+      "after": "Segmental fracture with two separate fracture levels"
+    },
+    {
+      "path": "questions.en.2.explanation",
+      "currentBefore": "Rotation typically creates a line winding around the shaft.",
+      "after": "A line winding around the shaft is spiral and may fit torsion. Morphology alone proves neither the injury mechanism nor stability."
+    },
+    {
+      "path": "questions.en.2.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "A transverse line runs approximately perpendicular to the shaft axis.",
+        "B": "A simple oblique line does not wind around the shaft as described.",
+        "D": "Segmental requires a shaft segment isolated between separate fracture levels."
+      }
+    },
+    {
+      "path": "questions.en.2.source",
+      "currentBefore": null,
+      "after": "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+    },
+    {
+      "path": "questions.en.2.sources",
+      "currentBefore": null,
+      "after": [
+        "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+      ]
+    },
+    {
+      "path": "questions.en.2.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.en.2.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "questions.en.3.question",
+      "currentBefore": "What defines a segmental fracture?",
+      "after": "Text vignette: Two complete, separate shaft fractures enclose a sizeable circumferential intermediate segment. How is this pattern described?"
+    },
+    {
+      "path": "questions.en.3.options.0.text",
+      "currentBefore": "One fine incomplete line only",
+      "after": "Oblique fracture with a lateral bending wedge"
+    },
+    {
+      "path": "questions.en.3.options.1.text",
+      "currentBefore": "Depression of a joint surface",
+      "after": "Impacted fracture with interlocked fracture ends"
+    },
+    {
+      "path": "questions.en.3.options.2.text",
+      "currentBefore": "Bony tendon avulsion",
+      "after": "Avulsion of an attachment fragment"
+    },
+    {
+      "path": "questions.en.3.options.3.text",
+      "currentBefore": "Two separate fracture lines isolate an intermediate segment.",
+      "after": "Segmental fracture"
+    },
+    {
+      "path": "questions.en.3.explanation",
+      "currentBefore": "The isolated intermediate segment may have compromised blood supply.",
+      "after": "Two separate fracture levels isolate a shaft segment. Its soft-tissue attachments and blood supply need attention; morphology alone does not show how well it is perfused."
+    },
+    {
+      "path": "questions.en.3.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "A bending wedge is an additional wedge-shaped fragment, not a circumferential shaft segment between two levels.",
+        "B": "Impaction means fracture ends driven into one another, not the isolated intermediate segment here.",
+        "C": "Avulsion concerns a tendon or ligament attachment fragment pulled off by traction."
+      }
+    },
+    {
+      "path": "questions.en.3.source",
+      "currentBefore": null,
+      "after": "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/tibial-shaft/intact-segmental/orif-compression-plating"
+    },
+    {
+      "path": "questions.en.3.sources",
+      "currentBefore": null,
+      "after": [
+        "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/tibial-shaft/intact-segmental/orif-compression-plating"
+      ]
+    },
+    {
+      "path": "questions.en.3.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.en.3.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "questions.en.4.question",
+      "currentBefore": "What is an insufficiency fracture?",
+      "after": "Text vignette: With marked osteoporosis, a fracture occurs during ordinary daily loading; no focal bone lesion is described. Which loading-related type fits best?"
+    },
+    {
+      "path": "questions.en.4.options.0.text",
+      "currentBefore": "Normal stress on weakened bone",
+      "after": "Insufficiency fracture"
+    },
+    {
+      "path": "questions.en.4.options.1.text",
+      "currentBefore": "Overload of normal bone",
+      "after": "Fatigue fracture of normal bone"
+    },
+    {
+      "path": "questions.en.4.options.2.text",
+      "currentBefore": "Fracture caused only by tumour",
+      "after": "Fracture through a focal destructive lesion"
+    },
+    {
+      "path": "questions.en.4.options.3.text",
+      "currentBefore": "Direct high-velocity injury",
+      "after": "Acute fracture after direct high-energy impact"
+    },
+    {
+      "path": "questions.en.4.explanation",
+      "currentBefore": "Osteoporosis and other structural weakness reduce bone strength.",
+      "after": "Normal loading of weakened bone fits an insufficiency fracture. ACR uses stress fracture as an umbrella for fatigue and insufficiency; loading and bone quality specify the subtype."
+    },
+    {
+      "path": "questions.en.4.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "Fatigue means repeated overload of otherwise normal bone; bone quality is weakened here.",
+        "C": "A focal lesion would need to be described; osteoporosis alone is not such a lesion.",
+        "D": "Direct high-energy impact is not stated; the case describes ordinary loading."
+      }
+    },
+    {
+      "path": "questions.en.4.source",
+      "currentBefore": null,
+      "after": "https://acsearch.acr.org/docs/69435/narrative/"
+    },
+    {
+      "path": "questions.en.4.sources",
+      "currentBefore": null,
+      "after": [
+        "https://acsearch.acr.org/docs/69435/narrative/"
+      ]
+    },
+    {
+      "path": "questions.en.4.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.en.4.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "questions.en.5.question",
+      "currentBefore": "What is a fatigue fracture?",
+      "after": "Text vignette: After a substantial increase in running training, a person with previously normal bone develops a load-related fracture. Which term most precisely describes this loading-related type?"
+    },
+    {
+      "path": "questions.en.5.options.0.text",
+      "currentBefore": "Normal stress on osteoporotic bone",
+      "after": "Insufficiency fracture of weakened bone"
+    },
+    {
+      "path": "questions.en.5.options.1.text",
+      "currentBefore": "Repetitive overload of normal bone",
+      "after": "Fatigue fracture from repetitive overload"
+    },
+    {
+      "path": "questions.en.5.options.2.text",
+      "currentBefore": "Fracture through metastasis",
+      "after": "Pathological fracture through a focal lesion"
+    },
+    {
+      "path": "questions.en.5.options.3.text",
+      "currentBefore": "Bony ligament avulsion",
+      "after": "Avulsion fracture from an acute attachment injury"
+    },
+    {
+      "path": "questions.en.5.explanation",
+      "currentBefore": "Repeated loading exceeds the repair capacity of normal bone.",
+      "after": "Repetitive overload of normal bone is a fatigue fracture. In ACR terminology stress fracture is the broader umbrella and does not by itself distinguish fatigue from insufficiency."
+    },
+    {
+      "path": "questions.en.5.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Insufficiency requires reduced bone strength; the case specifies normal bone and increased loading.",
+        "C": "A focal destructive lesion is a different finding requiring explanation and is not described here.",
+        "D": "Acute traction with an avulsed attachment fragment is a different pattern from repetitive overload."
+      }
+    },
+    {
+      "path": "questions.en.5.source",
+      "currentBefore": null,
+      "after": "https://acsearch.acr.org/docs/69435/narrative/"
+    },
+    {
+      "path": "questions.en.5.sources",
+      "currentBefore": null,
+      "after": [
+        "https://acsearch.acr.org/docs/69435/narrative/"
+      ]
+    },
+    {
+      "path": "questions.en.5.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.en.5.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "questions.en.6.question",
+      "currentBefore": "Which statement about an open fracture is correct?",
+      "after": "Text vignette: A small skin wound lies near a tibial fracture. No soft-tissue gas is visible on radiographs. Which next step best establishes whether the injury is open?"
+    },
+    {
+      "path": "questions.en.6.options.0.text",
+      "currentBefore": "It is diagnosed by CT alone.",
+      "after": "Document a closed fracture based on absent gas."
+    },
+    {
+      "path": "questions.en.6.options.1.text",
+      "currentBefore": "It is excluded if no gas is present.",
+      "after": "Request CT for gas detection before assessing the wound."
+    },
+    {
+      "path": "questions.en.6.options.2.text",
+      "currentBefore": "It is clinically defined; gas is only a clue.",
+      "after": "Communicate suspicion immediately and arrange clinical wound assessment."
+    },
+    {
+      "path": "questions.en.6.options.3.text",
+      "currentBefore": "It requires no urgent communication.",
+      "after": "Determine openness at the next radiographic follow-up."
+    },
+    {
+      "path": "questions.en.6.explanation",
+      "currentBefore": "Communication between fracture and external environment is a clinical diagnosis.",
+      "after": "An open fracture communicates between the fracture or its haematoma and the external environment. This is assessed clinically; absent gas does not exclude it. Suspected openness requires prompt clinical evaluation."
+    },
+    {
+      "path": "questions.en.6.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Gas may be absent; its absence does not replace assessment of wound communication.",
+        "B": "CT gas detection is not a prerequisite for assessing the actual wound suspicion clinically.",
+        "D": "Later imaging does not answer the urgent current clinical question in time."
+      }
+    },
+    {
+      "path": "questions.en.6.source",
+      "currentBefore": null,
+      "after": "https://www.icmr.gov.in/icmrobject/uploads/STWs/1726645314_9_open_fracture.pdf"
+    },
+    {
+      "path": "questions.en.6.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.icmr.gov.in/icmrobject/uploads/STWs/1726645314_9_open_fracture.pdf"
+      ]
+    },
+    {
+      "path": "questions.en.6.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.en.6.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-joint-soft-tissue"
+      ]
+    },
+    {
+      "path": "questions.en.7.question",
+      "currentBefore": "Which measurement is particularly important in an intra-articular fracture?",
+      "after": "Text vignette: Adjacent articular fracture fragments are separated by 4 mm; their articular surfaces differ in height by 2 mm. Which measurement statement fits?"
+    },
+    {
+      "path": "questions.en.7.options.0.text",
+      "currentBefore": "Soft-tissue swelling only",
+      "after": "Articular step 4 mm and fracture gap 2 mm."
+    },
+    {
+      "path": "questions.en.7.options.1.text",
+      "currentBefore": "Fracture-line length only",
+      "after": "Shortening 4 mm and articular step 2 mm."
+    },
+    {
+      "path": "questions.en.7.options.2.text",
+      "currentBefore": "Marrow density",
+      "after": "Fracture gap 4 mm and articular step 4 mm."
+    },
+    {
+      "path": "questions.en.7.options.3.text",
+      "currentBefore": "Articular step and fragment gap in millimetres",
+      "after": "Fracture gap 4 mm and articular step 2 mm."
+    },
+    {
+      "path": "questions.en.7.explanation",
+      "currentBefore": "Step and gap affect congruity, arthritis risk and surgical planning.",
+      "after": "Gap is separation between fragments at the articular surface; step is the surface height offset. Report each in millimetres. These values alone do not establish a universal surgical threshold without joint, patient and injury context."
+    },
+    {
+      "path": "questions.en.7.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "The values are reversed: 4 mm is separation and 2 mm the height offset.",
+        "B": "A local articular fracture gap is not measured shortening along the bone axis.",
+        "C": "The case gives a height offset of 2 mm; 4 mm is fragment separation."
+      }
+    },
+    {
+      "path": "questions.en.7.source",
+      "currentBefore": null,
+      "after": "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/"
+    },
+    {
+      "path": "questions.en.7.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9038308/"
+      ]
+    },
+    {
+      "path": "questions.en.7.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.en.7.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-joint-soft-tissue"
+      ]
+    },
+    {
+      "path": "questions.en.8.question",
+      "currentBefore": "Which displacement description is complete?",
+      "after": "Text vignette: A distal forearm fragment is displaced half a shaft width dorsally and tilted 15° dorsally; the fracture ends overlap by 6 mm. Which description correctly uses the apex convention?"
+    },
+    {
+      "path": "questions.en.8.options.0.text",
+      "currentBefore": "Distal fragment half a shaft width dorsal, 15° apex-volar, 6 mm shortened",
+      "after": "Half a shaft width dorsal, 15° apex-volar, 6 mm shortening."
+    },
+    {
+      "path": "questions.en.8.options.1.text",
+      "currentBefore": "Markedly displaced",
+      "after": "Half a shaft width dorsal, 15° apex-dorsal, 6 mm shortening."
+    },
+    {
+      "path": "questions.en.8.options.2.text",
+      "currentBefore": "Slightly shifted",
+      "after": "Half a shaft width volar, 15° apex-volar, 6 mm shortening."
+    },
+    {
+      "path": "questions.en.8.options.3.text",
+      "currentBefore": "Looks unstable",
+      "after": "Half a shaft width dorsal, 15° apex-volar, 6 mm distraction."
+    },
+    {
+      "path": "questions.en.8.explanation",
+      "currentBefore": "Direction and magnitude of translation, angulation and length are quantified.",
+      "after": "Dorsal tilt of the distal fragment corresponds to a volar apex. Overlap shortens the bone; translation and angulation are different measurements."
+    },
+    {
+      "path": "questions.en.8.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "The apex and distal-fragment tilt point in opposite directions here.",
+        "C": "The specified translation is dorsal; volar reverses it.",
+        "D": "Overlapping ends mean shortening; distraction means separation."
+      }
+    },
+    {
+      "path": "questions.en.8.source",
+      "currentBefore": null,
+      "after": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+    },
+    {
+      "path": "questions.en.8.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ]
+    },
+    {
+      "path": "questions.en.8.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.en.8.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-report-displacement"
+      ]
+    },
+    {
+      "path": "questions.en.9.question",
+      "currentBefore": "Which modality best depicts complex intra-articular fragment morphology?",
+      "after": "Text vignette: Radiographs show a complex tibial plateau fracture. Planning requires spatial mapping of bony fragments and the depressed articular surface. Which examination most directly answers this question?"
+    },
+    {
+      "path": "questions.en.9.options.0.text",
+      "currentBefore": "Single-view radiograph only",
+      "after": "MRI to analyse menisci and ligaments"
+    },
+    {
+      "path": "questions.en.9.options.1.text",
+      "currentBefore": "CT",
+      "after": "Thin-section CT with multiplanar reconstructions"
+    },
+    {
+      "path": "questions.en.9.options.2.text",
+      "currentBefore": "MRI without T1 imaging",
+      "after": "Targeted additional oblique radiographs"
+    },
+    {
+      "path": "questions.en.9.options.3.text",
+      "currentBefore": "Ultrasound alone",
+      "after": "Targeted ultrasound of periarticular soft tissues"
+    },
+    {
+      "path": "questions.en.9.explanation",
+      "currentBefore": "CT displays joint surface, fragments, step and gap without superimposition.",
+      "after": "CT depicts bony fragment relationships and the articular surface without projectional overlap. MRI may answer additional soft-tissue questions; selection follows the remaining question."
+    },
+    {
+      "path": "questions.en.9.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "MRI is useful for menisci and ligaments; the specific priority here is bony fragment mapping.",
+        "C": "Additional projections may help but resolve complex spatial overlap less completely than CT.",
+        "D": "Ultrasound can assess superficial soft tissues but does not fully map complex bony articular fragmentation."
+      }
+    },
+    {
+      "path": "questions.en.9.source",
+      "currentBefore": null,
+      "after": "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/"
+    },
+    {
+      "path": "questions.en.9.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/"
+      ]
+    },
+    {
+      "path": "questions.en.9.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.en.9.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-targeted-imaging"
+      ]
+    },
+    {
+      "path": "questions.en.10.question",
+      "currentBefore": "When should MRI or additional imaging be considered despite negative radiographs?",
+      "after": "Text vignette: An adult runner has persistent high suspicion of a stress fracture despite negative radiographs. Prompt clarification is needed and there is no MRI contraindication. Which examination is most appropriate under ACR criteria?"
+    },
+    {
+      "path": "questions.en.10.options.0.text",
+      "currentBefore": "Never",
+      "after": "Noncontrast CT of the affected region"
+    },
+    {
+      "path": "questions.en.10.options.1.text",
+      "currentBefore": "Only with visible dislocation",
+      "after": "Repeat radiographs of the affected region in 10–14 days"
+    },
+    {
+      "path": "questions.en.10.options.2.text",
+      "currentBefore": "When clinical fracture suspicion remains high",
+      "after": "Noncontrast MRI of the affected region"
+    },
+    {
+      "path": "questions.en.10.options.3.text",
+      "currentBefore": "Only after six months",
+      "after": "Ultrasound of the painful region"
+    },
+    {
+      "path": "questions.en.10.explanation",
+      "currentBefore": "Occult, stress and insufficiency fractures may initially be radiographically invisible.",
+      "after": "ACR rates noncontrast MRI usually appropriate for suspected stress fracture after negative or indeterminate radiographs. MRI shows marrow reaction and sometimes a fracture line; oedema alone is not specific proof of fracture."
+    },
+    {
+      "path": "questions.en.10.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "CT may be an alternative for selected questions; MRI is preferred here for prompt assessment of an occult stress injury.",
+        "B": "Repeat radiographs can be appropriate in selected circumstances but provide later clarification than required here.",
+        "D": "Ultrasound does not replace marrow assessment and is usually not appropriate in this ACR scenario."
+      }
+    },
+    {
+      "path": "questions.en.10.source",
+      "currentBefore": null,
+      "after": "https://acsearch.acr.org/docs/69435/narrative/"
+    },
+    {
+      "path": "questions.en.10.sources",
+      "currentBefore": null,
+      "after": [
+        "https://acsearch.acr.org/docs/69435/narrative/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4367232/"
+      ]
+    },
+    {
+      "path": "questions.en.10.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.en.10.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-targeted-imaging"
+      ]
+    },
+    {
+      "path": "questions.en.11.question",
+      "currentBefore": "Which finding should suggest a pathological fracture?",
+      "after": "Text vignette: After minor trauma, a fracture passes through a circumscribed osteolytic bone lesion. Which interpretation should the report highlight?"
+    },
+    {
+      "path": "questions.en.11.options.0.text",
+      "currentBefore": "Spiral fracture after sports injury",
+      "after": "Insufficiency fracture from diffuse osteoporosis"
+    },
+    {
+      "path": "questions.en.11.options.1.text",
+      "currentBefore": "Transverse fracture after road accident",
+      "after": "Fatigue fracture from repetitive loading of normal bone"
+    },
+    {
+      "path": "questions.en.11.options.2.text",
+      "currentBefore": "Avulsion during sprinting",
+      "after": "Avulsion fracture at a tendon or ligament attachment"
+    },
+    {
+      "path": "questions.en.11.options.3.text",
+      "currentBefore": "Fracture through a focal lytic lesion after minor trauma",
+      "after": "Focal pathological fracture with undetermined lesion aetiology"
+    },
+    {
+      "path": "questions.en.11.explanation",
+      "currentBefore": "Focal bone destruction and an inadequate mechanism suggest an underlying lesion.",
+      "after": "The focal lesion must be reported and investigated in addition to the fracture. Osteolysis alone proves neither metastasis nor another specific cause; the PDF uses the focal pathological-fracture term."
+    },
+    {
+      "path": "questions.en.11.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "Diffuse osteoporosis does not adequately explain the circumscribed osteolysis described.",
+        "B": "Bone at the fracture site is altered by a focal lesion, rather than the normal bone of the fatigue scenario.",
+        "C": "An avulsed attachment fragment is not the pattern of fracture through an osteolytic lesion described here."
+      }
+    },
+    {
+      "path": "questions.en.11.source",
+      "currentBefore": null,
+      "after": "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+    },
+    {
+      "path": "questions.en.11.sources",
+      "currentBefore": null,
+      "after": [
+        "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+      ]
+    },
+    {
+      "path": "questions.en.11.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.en.11.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "questions.fa.0.question",
+      "currentBefore": "کدام شش مرحله اصلی، توصیف فشرده شکستگی را تشکیل می‌دهند؟",
+      "after": "سناریوی متنی: شکستگی عرضی بدون جابه‌جایی در یک‌سوم میانی اولنای راست توصیف شده است. کدام عبارت گزارش این یافته‌ها را درست حفظ می‌کند؟"
+    },
+    {
+      "path": "questions.fa.0.options.0.text",
+      "currentBefore": "استخوان/سمت – سگمان – مورفولوژی – جابه‌جایی – مفصل/بافت نرم",
+      "after": "شکستگی عرضی بدون جابه‌جایی تنهٔ میانی اولنای راست."
+    },
+    {
+      "path": "questions.fa.0.options.1.text",
+      "currentBefore": "درمان – سن – درد – مورفولوژی",
+      "after": "شکستگی عرضی بدون جابه‌جایی تنهٔ دیستال اولنای راست."
+    },
+    {
+      "path": "questions.fa.0.options.2.text",
+      "currentBefore": "فقط خط شکستگی و تشخیص",
+      "after": "شکستگی عرضی بدون جابه‌جایی تنهٔ میانی اولنای چپ."
+    },
+    {
+      "path": "questions.fa.0.options.3.text",
+      "currentBefore": "بافت نرم – درمان – آزمایش – سمت",
+      "after": "شکستگی مارپیچی بدون جابه‌جایی تنهٔ میانی اولنای راست."
+    },
+    {
+      "path": "questions.fa.0.explanation",
+      "currentBefore": "این‌ها شش مرحله اصلی هستند. کیفیت استخوان و آسیب‌های همراه را نیز فعالانه ارزیابی کنید.",
+      "after": "استخوان، سمت، سگمان و مورفولوژی باید با یافته‌های توصیف‌شده مطابقت داشته باشند. جابه‌جایی، مفاصل، بافت نرم و کیفیت استخوان ارزیابی را کامل می‌کنند."
+    },
+    {
+      "path": "questions.fa.0.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "دیستال، یک‌سوم میانیِ تعیین‌شده را تغییر می‌دهد.",
+        "C": "چپ، سمت راستِ ذکرشده را معکوس می‌کند.",
+        "D": "خط مارپیچی دور شفت می‌پیچد؛ در اینجا شکستگی عرضی توصیف شده است."
+      }
+    },
+    {
+      "path": "questions.fa.0.source",
+      "currentBefore": null,
+      "after": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html"
+    },
+    {
+      "path": "questions.fa.0.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html"
+      ]
+    },
+    {
+      "path": "questions.fa.0.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.fa.0.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-report-displacement"
+      ]
+    },
+    {
+      "path": "questions.fa.1.question",
+      "currentBefore": "جهت جابه‌جایی شکستگی بر اساس کدام قطعه نام‌گذاری می‌شود؟",
+      "after": "سناریوی متنی: در شکستگی شفت ساعد، قطعهٔ دیستال به‌اندازهٔ نصف عرض شفت در دورسال قطعهٔ پروگزیمال قرار دارد. کدام توصیف انتقال با قرارداد معمول سازگار است؟"
+    },
+    {
+      "path": "questions.fa.1.options.0.text",
+      "currentBefore": "قطعه پروگزیمال نسبت به دیستال",
+      "after": "قطعهٔ دیستال به‌اندازهٔ نصف عرض شفت به ولار جابه‌جا شده است."
+    },
+    {
+      "path": "questions.fa.1.options.1.text",
+      "currentBefore": "قطعه دیستال نسبت به پروگزیمال",
+      "after": "قطعهٔ دیستال به‌اندازهٔ نصف عرض شفت به دورسال جابه‌جا شده است."
+    },
+    {
+      "path": "questions.fa.1.options.2.text",
+      "currentBefore": "بزرگ‌ترین قطعه",
+      "after": "قطعهٔ پروگزیمال به‌اندازهٔ نصف عرض شفت به دورسال جابه‌جا شده است."
+    },
+    {
+      "path": "questions.fa.1.options.3.text",
+      "currentBefore": "کوچک‌ترین گوه",
+      "after": "قطعهٔ دیستال به‌اندازهٔ نصف عرض شفت کوتاه شده است."
+    },
+    {
+      "path": "questions.fa.1.explanation",
+      "currentBefore": "طبق قرارداد، وضعیت قطعه دیستال نسبت به پروگزیمال توصیف می‌شود.",
+      "after": "انتقال، جابه‌جایی قطعهٔ دیستال نسبت به پروگزیمال را توصیف می‌کند. جهت و مقدار آن از زاویه و تغییر طول جدا هستند."
+    },
+    {
+      "path": "questions.fa.1.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "ولار، جهت دورسالِ تعیین‌شده را معکوس می‌کند.",
+        "C": "قطعهٔ مرجع عوض شده است؛ نسبت به قطعهٔ دیستال، قطعهٔ پروگزیمال در اینجا ولار قرار می‌گیرد.",
+        "D": "جابجایی عرضی بر حسب عرض شفت، کوتاهی اندازه‌گیری‌شده در امتداد محور طولی نیست."
+      }
+    },
+    {
+      "path": "questions.fa.1.source",
+      "currentBefore": null,
+      "after": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+    },
+    {
+      "path": "questions.fa.1.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ]
+    },
+    {
+      "path": "questions.fa.1.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.fa.1.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-report-displacement"
+      ]
+    },
+    {
+      "path": "questions.fa.2.question",
+      "currentBefore": "کدام مورفولوژی بیشتر به نفع مکانیسم پیچشی است؟",
+      "after": "سناریوی متنی: یک خط شکستگی پیوسته دور شفت استخوان می‌پیچد. کدام اصطلاح مورفولوژیک مناسب‌تر است؟"
+    },
+    {
+      "path": "questions.fa.2.options.1.text",
+      "currentBefore": "شکستگی فرورفتگی",
+      "after": "شکستگی مایل با مسیر مستقیم و مایل"
+    },
+    {
+      "path": "questions.fa.2.options.3.text",
+      "currentBefore": "شکستگی فشاری",
+      "after": "شکستگی سگمنتال با دو سطح جداگانهٔ شکستگی"
+    },
+    {
+      "path": "questions.fa.2.explanation",
+      "currentBefore": "چرخش معمولاً خطی مارپیچی دور شفت ایجاد می‌کند.",
+      "after": "خطی که دور شفت می‌پیچد مارپیچی است و می‌تواند با پیچش سازگار باشد. مورفولوژی به‌تنهایی نه روند حادثه و نه پایداری را اثبات می‌کند."
+    },
+    {
+      "path": "questions.fa.2.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "خط عرضی تقریباً عمود بر محور شفت است.",
+        "B": "خط مایل ساده مانند خط توصیف‌شده دور شفت نمی‌پیچد.",
+        "D": "سگمنتال مستلزم بخش شفت جداشده میان سطوح مجزای شکستگی است."
+      }
+    },
+    {
+      "path": "questions.fa.2.source",
+      "currentBefore": null,
+      "after": "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+    },
+    {
+      "path": "questions.fa.2.sources",
+      "currentBefore": null,
+      "after": [
+        "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+      ]
+    },
+    {
+      "path": "questions.fa.2.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.fa.2.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "questions.fa.3.question",
+      "currentBefore": "شکستگی سگمنتال با چه چیزی تعریف می‌شود؟",
+      "after": "سناریوی متنی: دو شکستگی کامل و جداگانهٔ شفت، قطعهٔ میانی بزرگی را در تمام محیط استخوان جدا کرده‌اند. این الگو چگونه توصیف می‌شود؟"
+    },
+    {
+      "path": "questions.fa.3.options.0.text",
+      "currentBefore": "فقط یک خط ظریف ناکامل",
+      "after": "شکستگی مایل با گوهٔ خمشی جانبی"
+    },
+    {
+      "path": "questions.fa.3.options.1.text",
+      "currentBefore": "فرورفتگی سطح مفصل",
+      "after": "شکستگی درهم‌رفته با انتهای درهم‌گیرشده"
+    },
+    {
+      "path": "questions.fa.3.options.2.text",
+      "currentBefore": "کندگی استخوانی تاندون",
+      "after": "کندگی قطعهٔ محل اتصال"
+    },
+    {
+      "path": "questions.fa.3.options.3.text",
+      "currentBefore": "دو خط جدا یک قطعه میانی را جدا می‌کنند.",
+      "after": "شکستگی سگمنتال"
+    },
+    {
+      "path": "questions.fa.3.explanation",
+      "currentBefore": "قطعه میانی جداشده ممکن است از نظر خون‌رسانی در خطر باشد.",
+      "after": "دو سطح جداگانهٔ شکستگی، بخشی از شفت را جدا می‌کنند. اتصال‌های بافت نرم و خون‌رسانی آن اهمیت ویژه دارند؛ شکل به‌تنهایی میزان خون‌رسانی را نشان نمی‌دهد."
+    },
+    {
+      "path": "questions.fa.3.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "گوهٔ خمشی قطعهٔ اضافی گوه‌ای است، نه بخش کامل شفت میان دو سطح.",
+        "B": "درهم‌رفتگی یعنی فرو رفتن انتهای شکستگی در یکدیگر، نه قطعهٔ میانی جداشدهٔ این سناریو.",
+        "C": "کندگی مربوط به قطعهٔ اتصال تاندون یا رباط است که با کشش جدا می‌شود."
+      }
+    },
+    {
+      "path": "questions.fa.3.source",
+      "currentBefore": null,
+      "after": "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/tibial-shaft/intact-segmental/orif-compression-plating"
+    },
+    {
+      "path": "questions.fa.3.sources",
+      "currentBefore": null,
+      "after": [
+        "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/tibial-shaft/intact-segmental/orif-compression-plating"
+      ]
+    },
+    {
+      "path": "questions.fa.3.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.fa.3.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "questions.fa.4.question",
+      "currentBefore": "شکستگی ناکفایتی چیست؟",
+      "after": "سناریوی متنی: در پوکی استخوان شدید، شکستگی هنگام بارگذاری معمول روزمره رخ می‌دهد؛ ضایعهٔ کانونی استخوان توصیف نشده است. کدام نوع مرتبط با بار مناسب‌تر است؟"
+    },
+    {
+      "path": "questions.fa.4.options.0.text",
+      "currentBefore": "فشار طبیعی بر استخوان ضعیف",
+      "after": "شکستگی ناکفایتی"
+    },
+    {
+      "path": "questions.fa.4.options.1.text",
+      "currentBefore": "اضافه‌بار بر استخوان طبیعی",
+      "after": "شکستگی خستگی استخوان طبیعی"
+    },
+    {
+      "path": "questions.fa.4.options.2.text",
+      "currentBefore": "شکستگی فقط به علت تومور",
+      "after": "شکستگی از میان ضایعهٔ تخریبی کانونی"
+    },
+    {
+      "path": "questions.fa.4.options.3.text",
+      "currentBefore": "آسیب مستقیم پرسرعت",
+      "after": "شکستگی حاد پس از ضربهٔ مستقیم پرانرژی"
+    },
+    {
+      "path": "questions.fa.4.explanation",
+      "currentBefore": "پوکی استخوان و ضعف ساختاری مقاومت استخوان را کاهش می‌دهند.",
+      "after": "بار طبیعی بر استخوان ضعیف با شکستگی ناکفایتی سازگار است. ACR شکستگی استرسی را عنوان کلی خستگی و ناکفایتی می‌داند؛ بار و کیفیت استخوان زیرگروه را مشخص می‌کنند."
+    },
+    {
+      "path": "questions.fa.4.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "خستگی به اضافه‌بار تکراری استخوان اساساً طبیعی اشاره دارد؛ در اینجا کیفیت استخوان ضعیف است.",
+        "C": "برای این توصیف باید ضایعهٔ کانونی ذکر شود؛ پوکی استخوان به‌تنهایی چنین ضایعه‌ای نیست.",
+        "D": "ضربهٔ مستقیم پرانرژی ذکر نشده؛ سناریو بار معمول را توصیف می‌کند."
+      }
+    },
+    {
+      "path": "questions.fa.4.source",
+      "currentBefore": null,
+      "after": "https://acsearch.acr.org/docs/69435/narrative/"
+    },
+    {
+      "path": "questions.fa.4.sources",
+      "currentBefore": null,
+      "after": [
+        "https://acsearch.acr.org/docs/69435/narrative/"
+      ]
+    },
+    {
+      "path": "questions.fa.4.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.fa.4.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "questions.fa.5.question",
+      "currentBefore": "شکستگی خستگی چیست؟",
+      "after": "سناریوی متنی: پس از افزایش چشمگیر تمرین دویدن، فردی با استخوان قبلاً طبیعی دچار شکستگی مرتبط با بار می‌شود. کدام اصطلاح این نوع را دقیق‌تر توصیف می‌کند؟"
+    },
+    {
+      "path": "questions.fa.5.options.0.text",
+      "currentBefore": "فشار طبیعی بر استخوان پوک",
+      "after": "شکستگی ناکفایتی استخوان ضعیف"
+    },
+    {
+      "path": "questions.fa.5.options.1.text",
+      "currentBefore": "اضافه‌بار تکراری استخوان طبیعی",
+      "after": "شکستگی خستگی بر اثر اضافه‌بار تکراری"
+    },
+    {
+      "path": "questions.fa.5.options.2.text",
+      "currentBefore": "شکستگی از میان متاستاز",
+      "after": "شکستگی پاتولوژیک از میان ضایعهٔ کانونی"
+    },
+    {
+      "path": "questions.fa.5.options.3.text",
+      "currentBefore": "کندگی استخوانی رباط",
+      "after": "شکستگی کندگی بر اثر آسیب حاد محل اتصال"
+    },
+    {
+      "path": "questions.fa.5.explanation",
+      "currentBefore": "بار تکراری از ظرفیت ترمیم استخوان طبیعی فراتر می‌رود.",
+      "after": "اضافه‌بار تکراری استخوان طبیعی شکستگی خستگی است. در اصطلاح ACR، شکستگی استرسی عنوان کلی‌تر است و به‌تنهایی خستگی را از ناکفایتی جدا نمی‌کند."
+    },
+    {
+      "path": "questions.fa.5.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "ناکفایتی مستلزم کاهش تحمل استخوان است؛ سناریو استخوان طبیعی و افزایش بار را ذکر می‌کند.",
+        "C": "ضایعهٔ تخریبی کانونی یافتهٔ دیگری است که نیاز به توضیح دارد و اینجا ذکر نشده است.",
+        "D": "کشش حاد با قطعهٔ کنده‌شدهٔ محل اتصال، الگویی متفاوت از اضافه‌بار تکراری است."
+      }
+    },
+    {
+      "path": "questions.fa.5.source",
+      "currentBefore": null,
+      "after": "https://acsearch.acr.org/docs/69435/narrative/"
+    },
+    {
+      "path": "questions.fa.5.sources",
+      "currentBefore": null,
+      "after": [
+        "https://acsearch.acr.org/docs/69435/narrative/"
+      ]
+    },
+    {
+      "path": "questions.fa.5.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.fa.5.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "questions.fa.6.question",
+      "currentBefore": "کدام عبارت درباره شکستگی باز صحیح است؟",
+      "after": "سناریوی متنی: زخم پوستی کوچکی نزدیک شکستگی تیبیا وجود دارد. گاز بافت نرم در رادیوگرافی دیده نمی‌شود. کدام اقدام بعدی برای تعیین بازبودن آسیب موجه‌تر است؟"
+    },
+    {
+      "path": "questions.fa.6.options.0.text",
+      "currentBefore": "فقط با CT تشخیص داده می‌شود.",
+      "after": "شکستگی را بر اساس نبود گاز، بسته ثبت کنید."
+    },
+    {
+      "path": "questions.fa.6.options.1.text",
+      "currentBefore": "بدون گاز رد می‌شود.",
+      "after": "پیش از ارزیابی زخم، CT برای یافتن گاز درخواست کنید."
+    },
+    {
+      "path": "questions.fa.6.options.2.text",
+      "currentBefore": "تعریف بالینی دارد؛ گاز فقط یک نشانه است.",
+      "after": "شک را فوراً اطلاع دهید و ارزیابی بالینی زخم را پیگیری کنید."
+    },
+    {
+      "path": "questions.fa.6.options.3.text",
+      "currentBefore": "نیاز به اطلاع فوری ندارد.",
+      "after": "بازبودن را در نوبت بعدی پیگیری رادیوگرافیک تعیین کنید."
+    },
+    {
+      "path": "questions.fa.6.explanation",
+      "currentBefore": "ارتباط شکستگی با محیط بیرون تشخیص بالینی است.",
+      "after": "در شکستگی باز، شکستگی یا هماتوم آن با محیط بیرون ارتباط دارد. این موضوع بالینی ارزیابی می‌شود؛ نبود گاز آن را رد نمی‌کند. شک به بازبودن نیازمند ارزیابی فوری بالینی است."
+    },
+    {
+      "path": "questions.fa.6.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "گاز ممکن است وجود نداشته باشد؛ نبود آن جای ارزیابی ارتباط زخم را نمی‌گیرد.",
+        "B": "جست‌وجوی گاز با CT شرط ارزیابی بالینی شک مشخص به ارتباط زخم نیست.",
+        "D": "پیگیری تصویری بعدی به پرسش فوری فعلی در زمان مناسب پاسخ نمی‌دهد."
+      }
+    },
+    {
+      "path": "questions.fa.6.source",
+      "currentBefore": null,
+      "after": "https://www.icmr.gov.in/icmrobject/uploads/STWs/1726645314_9_open_fracture.pdf"
+    },
+    {
+      "path": "questions.fa.6.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.icmr.gov.in/icmrobject/uploads/STWs/1726645314_9_open_fracture.pdf"
+      ]
+    },
+    {
+      "path": "questions.fa.6.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.fa.6.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-joint-soft-tissue"
+      ]
+    },
+    {
+      "path": "questions.fa.7.question",
+      "currentBefore": "در شکستگی داخل مفصل کدام اندازه‌گیری مهم است؟",
+      "after": "سناریوی متنی: قطعات مجاور شکستگی داخل مفصل ۴ میلی‌متر از هم فاصله دارند؛ سطح مفصلی آن‌ها ۲ میلی‌متر اختلاف ارتفاع دارد. کدام توصیف اندازه‌گیری مناسب است؟"
+    },
+    {
+      "path": "questions.fa.7.options.0.text",
+      "currentBefore": "فقط تورم بافت نرم",
+      "after": "پلهٔ مفصلی ۴ و فاصلهٔ شکستگی ۲ میلی‌متر."
+    },
+    {
+      "path": "questions.fa.7.options.1.text",
+      "currentBefore": "فقط طول خط شکستگی",
+      "after": "کوتاهی ۴ و پلهٔ مفصلی ۲ میلی‌متر."
+    },
+    {
+      "path": "questions.fa.7.options.2.text",
+      "currentBefore": "دانسیته مغز استخوان",
+      "after": "فاصلهٔ شکستگی ۴ و پلهٔ مفصلی ۴ میلی‌متر."
+    },
+    {
+      "path": "questions.fa.7.options.3.text",
+      "currentBefore": "پله مفصلی و فاصله قطعات به میلی‌متر",
+      "after": "فاصلهٔ شکستگی ۴ و پلهٔ مفصلی ۲ میلی‌متر."
+    },
+    {
+      "path": "questions.fa.7.explanation",
+      "currentBefore": "پله و فاصله بر تطابق، خطر آرتروز و برنامه جراحی اثر دارند.",
+      "after": "فاصله، جدایی قطعات در سطح مفصل و پله، اختلاف ارتفاع سطح مفصلی است. هرکدام جداگانه به میلی‌متر گزارش شوند. بدون زمینهٔ مفصل، بیمار و آسیب، این اعداد آستانهٔ عمومی جراحی تعیین نمی‌کنند."
+    },
+    {
+      "path": "questions.fa.7.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "اعداد جابه‌جا شده‌اند: ۴ میلی‌متر فاصله و ۲ میلی‌متر اختلاف ارتفاع است.",
+        "B": "فاصلهٔ موضعی شکستگی مفصلی، کوتاهی اندازه‌گیری‌شده در محور طولی استخوان نیست.",
+        "C": "اختلاف ارتفاع در سناریو ۲ میلی‌متر است؛ ۴ میلی‌متر فاصلهٔ قطعات است."
+      }
+    },
+    {
+      "path": "questions.fa.7.source",
+      "currentBefore": null,
+      "after": "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/"
+    },
+    {
+      "path": "questions.fa.7.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9038308/"
+      ]
+    },
+    {
+      "path": "questions.fa.7.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.fa.7.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-joint-soft-tissue"
+      ]
+    },
+    {
+      "path": "questions.fa.8.question",
+      "currentBefore": "کدام توصیف جابه‌جایی کامل است؟",
+      "after": "سناریوی متنی: قطعهٔ دیستال ساعد به‌اندازهٔ نصف عرض شفت به دورسال جابه‌جا و ۱۵ درجه به دورسال متمایل است؛ انتهای شکستگی ۶ میلی‌متر همپوشانی دارند. کدام توصیف قرارداد رأس را درست به‌کار می‌برد؟"
+    },
+    {
+      "path": "questions.fa.8.options.0.text",
+      "currentBefore": "قطعه دیستال نصف عرض شفت دورسال، زاویه ۱۵ درجه رأس ولار، ۶ میلی‌متر کوتاه",
+      "after": "نصف عرض شفت دورسال، ۱۵ درجه رأس ولار، ۶ میلی‌متر کوتاهی."
+    },
+    {
+      "path": "questions.fa.8.options.1.text",
+      "currentBefore": "به‌شدت جابه‌جا",
+      "after": "نصف عرض شفت دورسال، ۱۵ درجه رأس دورسال، ۶ میلی‌متر کوتاهی."
+    },
+    {
+      "path": "questions.fa.8.options.2.text",
+      "currentBefore": "کمی جابه‌جا",
+      "after": "نصف عرض شفت ولار، ۱۵ درجه رأس ولار، ۶ میلی‌متر کوتاهی."
+    },
+    {
+      "path": "questions.fa.8.options.3.text",
+      "currentBefore": "ظاهراً ناپایدار",
+      "after": "نصف عرض شفت دورسال، ۱۵ درجه رأس ولار، ۶ میلی‌متر دیاستاز."
+    },
+    {
+      "path": "questions.fa.8.explanation",
+      "currentBefore": "جهت و مقدار جابه‌جایی انتقالی، زاویه و طول کمی‌سازی شده‌اند.",
+      "after": "تمایل دورسال قطعهٔ دیستال با رأس ولار متناظر است. همپوشانی موجب کوتاهی می‌شود؛ انتقال و زاویه دو اندازهٔ متفاوت‌اند."
+    },
+    {
+      "path": "questions.fa.8.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "B": "در اینجا رأس و تمایل قطعهٔ دیستال در جهت‌های مخالف‌اند.",
+        "C": "انتقال تعیین‌شده دورسال است؛ ولار آن را معکوس می‌کند.",
+        "D": "همپوشانی انتهاها به‌معنای کوتاهی است؛ دیاستاز به جدایی اشاره دارد."
+      }
+    },
+    {
+      "path": "questions.fa.8.source",
+      "currentBefore": null,
+      "after": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+    },
+    {
+      "path": "questions.fa.8.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ]
+    },
+    {
+      "path": "questions.fa.8.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.fa.8.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-report-displacement"
+      ]
+    },
+    {
+      "path": "questions.fa.9.question",
+      "currentBefore": "کدام مودالیتی برای مورفولوژی پیچیده قطعات داخل مفصل بهتر است؟",
+      "after": "سناریوی متنی: رادیوگرافی شکستگی پیچیدهٔ پلاتوی تیبیا را نشان می‌دهد. برای برنامه‌ریزی باید قطعات استخوانی و سطح مفصلی فرورفته از نظر فضایی مشخص شوند. کدام بررسی مستقیم‌تر پاسخ می‌دهد؟"
+    },
+    {
+      "path": "questions.fa.9.options.0.text",
+      "currentBefore": "رادیوگرافی فقط یک نما",
+      "after": "MRI برای بررسی منیسک‌ها و رباط‌ها"
+    },
+    {
+      "path": "questions.fa.9.options.1.text",
+      "currentBefore": "CT",
+      "after": "CT با برش نازک و بازسازی‌های چندصفحه‌ای"
+    },
+    {
+      "path": "questions.fa.9.options.2.text",
+      "currentBefore": "MRI بدون تصویربرداری T1",
+      "after": "نماهای مایل هدفمند تکمیلی رادیوگرافی"
+    },
+    {
+      "path": "questions.fa.9.options.3.text",
+      "currentBefore": "فقط سونوگرافی",
+      "after": "سونوگرافی هدفمند بافت نرم اطراف مفصل"
+    },
+    {
+      "path": "questions.fa.9.explanation",
+      "currentBefore": "CT سطح مفصل، قطعات، پله و فاصله را بدون همپوشانی نشان می‌دهد.",
+      "after": "CT روابط قطعات استخوانی و سطح مفصل را بدون همپوشانی نما نشان می‌دهد. MRI می‌تواند به پرسش‌های تکمیلی بافت نرم پاسخ دهد؛ انتخاب تابع پرسش باقی‌مانده است."
+    },
+    {
+      "path": "questions.fa.9.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "MRI برای منیسک و رباط مفید است؛ اولویت مشخص اینجا نقشهٔ قطعات استخوانی است.",
+        "C": "نماهای تکمیلی کمک می‌کنند، اما همپوشانی پیچیدهٔ فضایی را به‌اندازهٔ CT برطرف نمی‌کنند.",
+        "D": "سونوگرافی بافت نرم سطحی را بررسی می‌کند، اما نقشهٔ کامل قطعات پیچیدهٔ استخوانی مفصل را نمی‌دهد."
+      }
+    },
+    {
+      "path": "questions.fa.9.source",
+      "currentBefore": null,
+      "after": "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/"
+    },
+    {
+      "path": "questions.fa.9.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/"
+      ]
+    },
+    {
+      "path": "questions.fa.9.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.fa.9.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-targeted-imaging"
+      ]
+    },
+    {
+      "path": "questions.fa.10.question",
+      "currentBefore": "چه زمانی با وجود رادیوگرافی منفی MRI یا بررسی بیشتر مطرح است؟",
+      "after": "سناریوی متنی: در دوندهٔ بزرگسال، با وجود رادیوگرافی منفی، شک زیاد به شکستگی استرسی باقی است. روشن‌شدن سریع وضعیت لازم است و منع MRI وجود ندارد. طبق ACR کدام بررسی مناسب‌تر است؟"
+    },
+    {
+      "path": "questions.fa.10.options.0.text",
+      "currentBefore": "هرگز",
+      "after": "CT ناحیهٔ درگیر بدون مادهٔ حاجب"
+    },
+    {
+      "path": "questions.fa.10.options.1.text",
+      "currentBefore": "فقط در دررفتگی واضح",
+      "after": "رادیوگرافی مجدد ناحیهٔ درگیر پس از ۱۰ تا ۱۴ روز"
+    },
+    {
+      "path": "questions.fa.10.options.2.text",
+      "currentBefore": "در شک بالینی بالای پایدار",
+      "after": "MRI ناحیهٔ درگیر بدون مادهٔ حاجب"
+    },
+    {
+      "path": "questions.fa.10.options.3.text",
+      "currentBefore": "فقط پس از شش ماه",
+      "after": "سونوگرافی ناحیهٔ دردناک"
+    },
+    {
+      "path": "questions.fa.10.explanation",
+      "currentBefore": "شکستگی مخفی، استرس و ناکفایتی ممکن است ابتدا در رادیوگرافی دیده نشوند.",
+      "after": "ACR پس از رادیوگرافی منفی یا نامشخص در شک به شکستگی استرسی، MRI بدون مادهٔ حاجب را معمولاً مناسب می‌داند. MRI واکنش مغز استخوان و در صورت وجود خط شکستگی را نشان می‌دهد؛ ادم به‌تنهایی اثبات اختصاصی شکستگی نیست."
+    },
+    {
+      "path": "questions.fa.10.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "CT برای برخی پرسش‌ها می‌تواند جایگزین باشد؛ برای بررسی سریع آسیب استرسی مخفی در اینجا MRI ترجیح دارد.",
+        "B": "رادیوگرافی پیگیری در شرایط مناسب مفید است، اما دیرتر از زمان لازم در این سناریو پاسخ می‌دهد.",
+        "D": "سونوگرافی جای ارزیابی مغز استخوان را نمی‌گیرد و در این وضعیت ACR معمولاً مناسب نیست."
+      }
+    },
+    {
+      "path": "questions.fa.10.source",
+      "currentBefore": null,
+      "after": "https://acsearch.acr.org/docs/69435/narrative/"
+    },
+    {
+      "path": "questions.fa.10.sources",
+      "currentBefore": null,
+      "after": [
+        "https://acsearch.acr.org/docs/69435/narrative/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4367232/"
+      ]
+    },
+    {
+      "path": "questions.fa.10.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "questions.fa.10.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-targeted-imaging"
+      ]
+    },
+    {
+      "path": "questions.fa.11.question",
+      "currentBefore": "کدام یافته باید شک به شکستگی پاتولوژیک ایجاد کند؟",
+      "after": "سناریوی متنی: پس از ترومای خفیف، شکستگی از میان ضایعهٔ لیتیک محدود استخوان عبور می‌کند. گزارش کدام تفسیر را باید برجسته کند؟"
+    },
+    {
+      "path": "questions.fa.11.options.0.text",
+      "currentBefore": "شکستگی مارپیچی پس از ورزش",
+      "after": "شکستگی ناکفایتی ناشی از پوکی استخوان منتشر"
+    },
+    {
+      "path": "questions.fa.11.options.1.text",
+      "currentBefore": "شکستگی عرضی پس از تصادف",
+      "after": "شکستگی خستگی بر اثر بار تکراری بر استخوان طبیعی"
+    },
+    {
+      "path": "questions.fa.11.options.2.text",
+      "currentBefore": "کندگی هنگام دویدن",
+      "after": "شکستگی کندگی در محل اتصال تاندون یا رباط"
+    },
+    {
+      "path": "questions.fa.11.options.3.text",
+      "currentBefore": "شکستگی از میان ضایعه لیتیک پس از ترومای خفیف",
+      "after": "شکستگی پاتولوژیک کانونی با نوع ضایعهٔ هنوز نامشخص"
+    },
+    {
+      "path": "questions.fa.11.explanation",
+      "currentBefore": "تخریب موضعی استخوان و مکانیسم ناکافی به نفع ضایعه زمینه‌ای است.",
+      "after": "ضایعهٔ کانونی باید علاوه بر شکستگی گزارش و بررسی شود. استئولیز به‌تنهایی نه متاستاز و نه علت مشخص دیگری را اثبات می‌کند؛ PDF اصطلاح پاتولوژیک کانونی را برای این وضعیت به‌کار می‌برد."
+    },
+    {
+      "path": "questions.fa.11.wrongExplanations",
+      "currentBefore": null,
+      "after": {
+        "A": "پوکی استخوان منتشر، استئولیز محدود توصیف‌شده را به‌خوبی توضیح نمی‌دهد.",
+        "B": "استخوان محل شکستگی با ضایعهٔ کانونی تغییر کرده و استخوان طبیعیِ سناریوی خستگی نیست.",
+        "C": "قطعهٔ کنده‌شدهٔ محل اتصال، الگوی توصیف‌شدهٔ شکستگی از میان ضایعهٔ لیتیک نیست."
+      }
+    },
+    {
+      "path": "questions.fa.11.source",
+      "currentBefore": null,
+      "after": "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+    },
+    {
+      "path": "questions.fa.11.sources",
+      "currentBefore": null,
+      "after": [
+        "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+      ]
+    },
+    {
+      "path": "questions.fa.11.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "path": "questions.fa.11.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "cards.0.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-report-displacement"
+      ]
+    },
+    {
+      "path": "cards.0.source",
+      "currentBefore": null,
+      "after": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html"
+    },
+    {
+      "path": "cards.0.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html"
+      ]
+    },
+    {
+      "path": "cards.0.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "cards.1.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-report-displacement"
+      ]
+    },
+    {
+      "path": "cards.1.source",
+      "currentBefore": null,
+      "after": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html"
+    },
+    {
+      "path": "cards.1.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html"
+      ]
+    },
+    {
+      "path": "cards.1.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "cards.2.explanation.de",
+      "currentBefore": "Damit bleibt die Beschreibung unabhängig von der Projektion eindeutig. Translation, Angulation, Länge und Rotation werden auf dasselbe Bezugsfragment bezogen.",
+      "after": "Bei Translation wird das distale relativ zum proximalen Fragment beschrieben. Für Angulation die verwendete Konvention ausdrücklich benennen: distale Neigung oder Apex-Richtung."
+    },
+    {
+      "path": "cards.2.explanation.en",
+      "currentBefore": "This keeps wording unambiguous across projections. Translation, angulation, length and rotation use the same reference fragment.",
+      "after": "Translation describes the distal relative to the proximal fragment. For angulation, explicitly state the convention: distal-fragment tilt or apex direction."
+    },
+    {
+      "path": "cards.2.explanation.fa",
+      "currentBefore": "این قرارداد توصیف را در نماهای مختلف یکسان می‌کند. جابه‌جایی انتقالی، زاویه، طول و چرخش با همان قطعه مرجع بیان می‌شوند.",
+      "after": "در انتقال، قطعهٔ دیستال نسبت به پروگزیمال توصیف می‌شود. در زاویه، قرارداد را صریح ذکر کنید: تمایل قطعهٔ دیستال یا جهت رأس."
+    },
+    {
+      "path": "cards.2.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-report-displacement"
+      ]
+    },
+    {
+      "path": "cards.2.source",
+      "currentBefore": null,
+      "after": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+    },
+    {
+      "path": "cards.2.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ]
+    },
+    {
+      "path": "cards.2.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "cards.3.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-report-displacement"
+      ]
+    },
+    {
+      "path": "cards.3.source",
+      "currentBefore": null,
+      "after": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+    },
+    {
+      "path": "cards.3.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ]
+    },
+    {
+      "path": "cards.3.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "cards.4.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-report-displacement"
+      ]
+    },
+    {
+      "path": "cards.4.source",
+      "currentBefore": null,
+      "after": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+    },
+    {
+      "path": "cards.4.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ]
+    },
+    {
+      "path": "cards.4.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "cards.5.front.de",
+      "currentBefore": "Was unterscheidet eine Stressfraktur von einer Insuffizienzfraktur?",
+      "after": "Was unterscheidet eine Ermüdungsfraktur von einer Insuffizienzfraktur?"
+    },
+    {
+      "path": "cards.5.front.fa",
+      "currentBefore": "تفاوت شکستگی استرس و ناکفایتی چیست؟",
+      "after": "تفاوت شکستگی خستگی و ناکفایتی چیست؟"
+    },
+    {
+      "path": "cards.5.explanation.de",
+      "currentBefore": "Beide können im Röntgen initial okkult sein. Die Unterscheidung basiert auf Knochenqualität und Belastungsanamnese und beeinflusst die Ursachensuche.",
+      "after": "Beide können initial radiografisch okkult sein. ACR verwendet Stressfraktur als Oberbegriff für beide; Belastungsanamnese und Knochenqualität unterscheiden die Untergruppen."
+    },
+    {
+      "path": "cards.5.explanation.en",
+      "currentBefore": "Both may initially be occult on radiographs. Distinction relies on bone quality and loading history and guides the search for cause.",
+      "after": "Both may initially be radiographically occult. ACR uses stress fracture as an umbrella for both; loading history and bone quality distinguish the subtypes."
+    },
+    {
+      "path": "cards.5.explanation.fa",
+      "currentBefore": "هر دو ممکن است ابتدا در رادیوگرافی مخفی باشند. افتراق بر کیفیت استخوان و شرح بارگذاری استوار است و جستجوی علت را هدایت می‌کند.",
+      "after": "هر دو ممکن است ابتدا در رادیوگرافی مخفی باشند. ACR شکستگی استرسی را عنوان کلی هر دو می‌داند؛ شرح بارگذاری و کیفیت استخوان زیرگروه‌ها را جدا می‌کنند."
+    },
+    {
+      "path": "cards.5.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "cards.5.source",
+      "currentBefore": null,
+      "after": "https://acsearch.acr.org/docs/69435/narrative/"
+    },
+    {
+      "path": "cards.5.sources",
+      "currentBefore": null,
+      "after": [
+        "https://acsearch.acr.org/docs/69435/narrative/"
+      ]
+    },
+    {
+      "path": "cards.5.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "path": "cards.6.explanation.de",
+      "currentBefore": "Typische Ursachen sind Metastase, Myelom, Knochenzyste oder Osteomyelitis. Die zugrunde liegende Läsion muss im Befund beschrieben werden, nicht nur die Fraktur.",
+      "after": "Hier ist die fokal-pathologische Verwendung gemeint: etwa Metastase, Myelom, Knochenzyste oder Osteomyelitis. Die Läsion selbst beschreiben; das Frakturmuster beweist ihre Ursache nicht."
+    },
+    {
+      "path": "cards.6.explanation.en",
+      "currentBefore": "Typical causes include metastasis, myeloma, bone cyst or osteomyelitis. Report the underlying lesion, not only the fracture.",
+      "after": "This uses the focal pathological-fracture meaning: for example metastasis, myeloma, bone cyst or osteomyelitis. Describe the lesion itself; fracture morphology does not prove its cause."
+    },
+    {
+      "path": "cards.6.explanation.fa",
+      "currentBefore": "علل تیپیک شامل متاستاز، میلوما، کیست استخوان و استئومیلیت است. ضایعه زمینه‌ای نیز باید گزارش شود.",
+      "after": "اینجا کاربرد پاتولوژیک کانونی منظور است؛ مانند متاستاز، میلوما، کیست استخوان یا استئومیلیت. خود ضایعه را توصیف کنید؛ مورفولوژی شکستگی علت آن را اثبات نمی‌کند."
+    },
+    {
+      "path": "cards.6.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "cards.6.source",
+      "currentBefore": null,
+      "after": "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+    },
+    {
+      "path": "cards.6.sources",
+      "currentBefore": null,
+      "after": [
+        "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+      ]
+    },
+    {
+      "path": "cards.6.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "path": "cards.7.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "cards.7.source",
+      "currentBefore": null,
+      "after": "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+    },
+    {
+      "path": "cards.7.sources",
+      "currentBefore": null,
+      "after": [
+        "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+      ]
+    },
+    {
+      "path": "cards.7.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "path": "cards.8.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "cards.8.source",
+      "currentBefore": null,
+      "after": "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/tibial-shaft/intact-segmental/orif-compression-plating"
+    },
+    {
+      "path": "cards.8.sources",
+      "currentBefore": null,
+      "after": [
+        "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/tibial-shaft/intact-segmental/orif-compression-plating"
+      ]
+    },
+    {
+      "path": "cards.8.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "path": "cards.9.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "cards.9.source",
+      "currentBefore": null,
+      "after": "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+    },
+    {
+      "path": "cards.9.sources",
+      "currentBefore": null,
+      "after": [
+        "MSK.pdf · physical pp.2–4 (printed pp.1–3)"
+      ]
+    },
+    {
+      "path": "cards.9.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "path": "cards.10.explanation.fa",
+      "currentBefore": "این پارامترها تطابق مفصل، خطر آرتروز و برنامه جراحی را تعیین می‌کنند. در پیچیدگی اغلب CT لازم است.",
+      "after": "این پارامترها تطابق مفصل را توصیف می‌کنند و بر خطر آرتروز و برنامه‌ریزی جراحی اثر می‌گذارند. در پیچیدگی اغلب CT لازم است."
+    },
+    {
+      "path": "cards.10.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-joint-soft-tissue"
+      ]
+    },
+    {
+      "path": "cards.10.source",
+      "currentBefore": null,
+      "after": "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/"
+    },
+    {
+      "path": "cards.10.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9038308/"
+      ]
+    },
+    {
+      "path": "cards.10.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "cards.11.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-joint-soft-tissue"
+      ]
+    },
+    {
+      "path": "cards.11.source",
+      "currentBefore": null,
+      "after": "https://www.icmr.gov.in/icmrobject/uploads/STWs/1726645314_9_open_fracture.pdf"
+    },
+    {
+      "path": "cards.11.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.icmr.gov.in/icmrobject/uploads/STWs/1726645314_9_open_fracture.pdf"
+      ]
+    },
+    {
+      "path": "cards.11.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "cards.12.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-targeted-imaging"
+      ]
+    },
+    {
+      "path": "cards.12.source",
+      "currentBefore": null,
+      "after": "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/"
+    },
+    {
+      "path": "cards.12.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/"
+      ]
+    },
+    {
+      "path": "cards.12.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "cards.13.explanation.de",
+      "currentBefore": "MRT erkennt Knochenmarködem früh und zeigt zusätzlich Band-, Sehnen- und Knorpelverletzungen. Dadurch kann sie eine radiografisch noch unsichtbare Fraktur bestätigen.",
+      "after": "MRT zeigt Knochenmarkreaktion und gegebenenfalls eine Frakturlinie sowie Begleitverletzungen. Knochenmarködem allein beweist keine Fraktur; Muster und klinischer Kontext sind erforderlich."
+    },
+    {
+      "path": "cards.13.explanation.en",
+      "currentBefore": "MRI detects early marrow oedema and associated ligament, tendon and cartilage injuries, confirming fractures not yet visible radiographically.",
+      "after": "MRI shows marrow reaction, a fracture line when present and associated injuries. Marrow oedema alone does not prove fracture; pattern and clinical context are required."
+    },
+    {
+      "path": "cards.13.explanation.fa",
+      "currentBefore": "MRI ادم مغز استخوان و آسیب رباط، تاندون و غضروف را زود نشان داده و شکستگی نامشهود را تأیید می‌کند.",
+      "after": "MRI واکنش مغز استخوان، خط شکستگی در صورت وجود و آسیب‌های همراه را نشان می‌دهد. ادم مغز استخوان به‌تنهایی شکستگی را ثابت نمی‌کند؛ الگو و زمینهٔ بالینی لازم‌اند."
+    },
+    {
+      "path": "cards.13.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-targeted-imaging"
+      ]
+    },
+    {
+      "path": "cards.13.source",
+      "currentBefore": null,
+      "after": "https://acsearch.acr.org/docs/69435/narrative/"
+    },
+    {
+      "path": "cards.13.sources",
+      "currentBefore": null,
+      "after": [
+        "https://acsearch.acr.org/docs/69435/narrative/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4367232/"
+      ]
+    },
+    {
+      "path": "cards.13.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "cards.14.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-report-displacement"
+      ]
+    },
+    {
+      "path": "cards.14.source",
+      "currentBefore": null,
+      "after": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+    },
+    {
+      "path": "cards.14.sources",
+      "currentBefore": null,
+      "after": [
+        "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html"
+      ]
+    },
+    {
+      "path": "cards.14.sourceRefs",
+      "currentBefore": null,
+      "after": []
+    },
+    {
+      "path": "stressAlias.0.front.de",
+      "currentBefore": "Was unterscheidet eine Stressfraktur von einer Insuffizienzfraktur?",
+      "after": "Was unterscheidet eine Ermüdungsfraktur von einer Insuffizienzfraktur?"
+    },
+    {
+      "path": "stressAlias.0.front.fa",
+      "currentBefore": "تفاوت شکستگی استرس و ناکفایتی چیست؟",
+      "after": "تفاوت شکستگی خستگی و ناکفایتی چیست؟"
+    },
+    {
+      "path": "stressAlias.0.explanation.de",
+      "currentBefore": "Beide können im Röntgen initial okkult sein. Die Unterscheidung basiert auf Knochenqualität und Belastungsanamnese und beeinflusst die Ursachensuche.",
+      "after": "Beide können initial radiografisch okkult sein. ACR verwendet Stressfraktur als Oberbegriff für beide; Belastungsanamnese und Knochenqualität unterscheiden die Untergruppen."
+    },
+    {
+      "path": "stressAlias.0.explanation.en",
+      "currentBefore": "Both may initially be occult on radiographs. Distinction relies on bone quality and loading history and guides the search for cause.",
+      "after": "Both may initially be radiographically occult. ACR uses stress fracture as an umbrella for both; loading history and bone quality distinguish the subtypes."
+    },
+    {
+      "path": "stressAlias.0.explanation.fa",
+      "currentBefore": "هر دو ممکن است ابتدا در رادیوگرافی مخفی باشند. افتراق بر کیفیت استخوان و شرح بارگذاری استوار است و جستجوی علت را هدایت می‌کند.",
+      "after": "هر دو ممکن است ابتدا در رادیوگرافی مخفی باشند. ACR شکستگی استرسی را عنوان کلی هر دو می‌داند؛ شرح بارگذاری و کیفیت استخوان زیرگروه‌ها را جدا می‌کنند."
+    },
+    {
+      "path": "stressAlias.0.learningGoalIds",
+      "currentBefore": null,
+      "after": [
+        "msk13-load-morphology"
+      ]
+    },
+    {
+      "path": "stressAlias.0.source",
+      "currentBefore": null,
+      "after": "https://acsearch.acr.org/docs/69435/narrative/"
+    },
+    {
+      "path": "stressAlias.0.sources",
+      "currentBefore": null,
+      "after": [
+        "https://acsearch.acr.org/docs/69435/narrative/"
+      ]
+    },
+    {
+      "path": "stressAlias.0.sourceRefs",
+      "currentBefore": null,
+      "after": [
+        {
+          "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+          "physicalPages": [
+            2
+          ]
+        }
+      ]
+    }
+  ]
+}

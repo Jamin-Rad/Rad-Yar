@@ -1,0 +1,1660 @@
+{
+  "questions": {
+    "de": [
+      {
+        "id": "fnh-de-01",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welche Entstehung passt zur fokalen nodulären Hyperplasie (FNH)?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Lokale regenerative Hepatozytenhyperplasie bei veränderter arterieller Versorgung"
+          },
+          {
+            "id": "B",
+            "text": "Klonale hepatozelluläre Neoplasie wie beim hepatozellulären Adenom"
+          },
+          {
+            "id": "C",
+            "text": "Fokale Fettablagerung ohne umschriebene Gewebehyperplasie"
+          },
+          {
+            "id": "D",
+            "text": "Diffus verteilte regenerative Knoten mit Umbau der gesamten Leber"
+          }
+        ],
+        "correct": "A",
+        "explanation": "FNH gilt als benigne hyperplastische Reaktion auf eine lokale Gefäßanomalie. Sie ist von einer hepatozellulären Neoplasie und von diffusem regenerativem Leberumbau zu unterscheiden.",
+        "wrongExplanations": {
+          "B": "Diese Entstehung beschreibt das HCA-Konzept; FNH ist eine regenerative Hyperplasie.",
+          "C": "Fokale Steatose ist eine Fettverteilungsstörung. Fett kann eine FNH begleiten, erklärt aber nicht ihre regenerative Architektur.",
+          "D": "Ein diffuser nodulärer Umbau ist nicht die lokale, umschriebene FNH. Die zugrunde liegende Leber bleibt im Kontext wichtig."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001",
+          "https://doi.org/10.14309/ajg.0000000000002857"
+        ],
+        "learningGoalIds": [
+          "fnh07-context"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-de-02",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Eine 29-jährige asymptomatische Frau ohne bekannte Leber- oder Tumorerkrankung hat eine 3-cm-Läsion, die im B-Bild nahezu isoechogen und nicht sicher charakterisierbar ist. FNH und HCA kommen infrage. Welche Untersuchung ist zur weiteren Unterscheidung am besten geeignet?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Native MRT mit T1/T2-Sequenzen"
+          },
+          {
+            "id": "B",
+            "text": "Multiphasische MRT mit hepatobiliär-spezifischem Kontrastmittel"
+          },
+          {
+            "id": "C",
+            "text": "CT mit einer früharteriellen Kontrastmittelphase"
+          },
+          {
+            "id": "D",
+            "text": "Erneute B-Bild-Sonographie mit Farbdoppler"
+          }
+        ],
+        "correct": "B",
+        "explanation": "ACG 2024 empfiehlt bei vermuteter FNH zur HCA-Abgrenzung eine multiphasische MRT mit hepatobiliär-spezifischem Kontrastmittel. Alter und Geschlecht passen zu beiden Läsionen und ersetzen die Charakterisierung nicht.",
+        "wrongExplanations": {
+          "A": "Native Signale helfen, können bei FNH und HCA aber überlappen. Dynamik und hepatobiliäre Phase liefern hier zusätzliche Information.",
+          "C": "Eine arterielle Einzelphase zeigt Hypervaskularität, aber weder das spätere Verhalten noch die hepatobiliäre Aufnahme.",
+          "D": "Doppler kann ein zentrales Gefäßmuster zeigen; bei dieser unklaren soliden Läsion ersetzt das nicht die vollständige Kontrastmittelcharakterisierung."
+        },
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "sources": [
+          "https://doi.org/10.14309/ajg.0000000000002857",
+          "https://pubmed.ncbi.nlm.nih.gov/22733890/"
+        ],
+        "learningGoalIds": [
+          "fnh07-context"
+        ],
+        "difficulty": "application"
+      },
+      {
+        "id": "fnh-de-03",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welches Gefäßmuster unterstützt im Farbdoppler die Diagnose einer FNH?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Zentrale Arterie mit radiär in die Läsion ziehenden Ästen"
+          },
+          {
+            "id": "B",
+            "text": "Überwiegend peripher verlaufende, korbartige Gefäße"
+          },
+          {
+            "id": "C",
+            "text": "Periphere Hyperämie um ein avaskuläres Zentrum"
+          },
+          {
+            "id": "D",
+            "text": "Direkte Verbindung einer zuführenden Arterie mit einer erweiterten drainierenden Vene"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die zentrale Arterie mit radiären Ästen entspricht dem Spoke-wheel-Muster. Es unterstützt FNH, ist aber kein alleiniger Diagnosebeweis.",
+        "wrongExplanations": {
+          "B": "Eine periphere Gefäßanordnung entspricht nicht der beschriebenen zentral-radiären Architektur der typischen FNH.",
+          "C": "Ein avaskuläres Zentrum mit hyperämischem Saum beschreibt nicht das zentrale arterielle Versorgungsmuster der FNH.",
+          "D": "Die direkte arterio-venöse Verbindung spricht für ein Shuntmuster statt für radiäre Äste innerhalb einer FNH."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001"
+        ],
+        "learningGoalIds": [
+          "fnh07-context"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-de-04",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welches früharterielle CT-Muster ist für eine typische FNH am ehesten zu erwarten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Diskontinuierliche periphere Kontrastknoten"
+          },
+          {
+            "id": "B",
+            "text": "Kräftige, weitgehend homogene Anreicherung des Läsionsgewebes"
+          },
+          {
+            "id": "C",
+            "text": "Ringförmige Randanreicherung um ein nicht anreicherndes Zentrum"
+          },
+          {
+            "id": "D",
+            "text": "Keine messbare Anreicherung der gesamten Läsion"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Typische FNH zeigt eine rasche kräftige arterielle Anreicherung; eine zentrale Narbe kann davon ausgespart sein. Die Einordnung benötigt auch spätere Phasen und natives Signal.",
+        "wrongExplanations": {
+          "A": "Diskontinuierliche periphere Knoten mit späterer zentripetaler Auffüllung passen eher zum klassischen Hämangiommuster.",
+          "C": "Eine ringförmige Randanreicherung ist ein anderes Muster als die arterielle Anreicherung des FNH-Gewebes und erfordert eine andere Differenzialdiagnose.",
+          "D": "Fehlende Anreicherung passt nicht zur typischen hypervaskulären FNH. Die solide oder flüssige Natur und weitere Sequenzen sind zu prüfen."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001"
+        ],
+        "learningGoalIds": [
+          "fnh07-dynamic"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-de-05",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Eine Läsion zeigt ein typisches FNH-Muster. Welches Verhalten des Läsionsgewebes passt dazu in portalvenöser und später CT-Phase?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Zunehmende relative Hypodensität gegenüber der Leber nach arterieller Hyperdensität"
+          },
+          {
+            "id": "B",
+            "text": "Angleichung an das Leberparenchym ohne typisches Wash-out"
+          },
+          {
+            "id": "C",
+            "text": "Fortschreitende peripher-noduläre Auffüllung bis zur Läsionsmitte"
+          },
+          {
+            "id": "D",
+            "text": "Zunehmende Anreicherung fibrotischer Anteile einer initial randbetonten Läsion"
+          }
+        ],
+        "correct": "B",
+        "explanation": "FNH-Gewebe wird typischerweise dem umgebenden Parenchym ähnlich. Eine zentrale Narbe kann separat verzögert anreichern. Fehlendes Wash-out allein schließt andere Läsionen nicht aus.",
+        "wrongExplanations": {
+          "A": "Dies beschreibt ein Wash-out-Muster, nicht die typische Angleichung der FNH. Risikokontext und vollständige Charakterisierung sind nötig.",
+          "C": "Peripher-noduläre zentripetale Auffüllung ist das klassische Hämangiommuster.",
+          "D": "Progressive fibrotische Anreicherung nach initialem Randmuster unterscheidet sich von der typischen früh homogenen FNH-Anreicherung mit späterer Angleichung."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001"
+        ],
+        "learningGoalIds": [
+          "fnh07-dynamic"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-de-06",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welche native MRT-Kombination des Läsionsgewebes passt am ehesten zur typischen FNH, jeweils relativ zur Leber?",
+        "options": [
+          {
+            "id": "A",
+            "text": "T1 deutlich hypointens und T2 flüssigkeitsähnlich stark hyperintens"
+          },
+          {
+            "id": "B",
+            "text": "T1 iso- bis leicht hypointens und T2 iso- bis leicht hyperintens"
+          },
+          {
+            "id": "C",
+            "text": "T1 hyperintens mit deutlichem Signalabfall in Opposed-Phase"
+          },
+          {
+            "id": "D",
+            "text": "T1 hyperintens ohne Signalabfall in der Fettsättigung"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Typische FNH unterscheidet sich nativ oft nur gering von der Leber. Diese Signalähnlichkeit ist ein Baustein und keine eigenständige Diagnose.",
+        "wrongExplanations": {
+          "A": "Ein stark flüssigkeitsähnliches T2-Signal ist nicht das typische Signal des FNH-Gewebes; etwa Zyste oder Hämangiom sind anhand des Gesamtmusters abzugrenzen.",
+          "C": "Opposed-Phase-Signalabfall weist auf intrazelluläres Fett hin. Das ist ein wichtiger DD-Hinweis, nicht das typische native FNH-Muster.",
+          "D": "Nicht fettsupprimierbares T1-Hypersignal kann etwa Blutabbauprodukte anzeigen. Das ist nicht die typische Signalähnlichkeit der FNH zur Leber."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001"
+        ],
+        "learningGoalIds": [
+          "fnh07-mri"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-de-07",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Eine FNH hat eine erkennbare zentrale Narbe. Welche Kombination passt bei MRT mit extrazellulärem Kontrastmittel typischerweise zur Narbe?",
+        "options": [
+          {
+            "id": "A",
+            "text": "T1 hypointens, T2 hyperintens, verzögerte Anreicherung"
+          },
+          {
+            "id": "B",
+            "text": "T1 hypointens, T2 hypointens, geringe verzögerte Anreicherung"
+          },
+          {
+            "id": "C",
+            "text": "T1 hyperintens, T2 hyperintens, kräftige frühe Anreicherung"
+          },
+          {
+            "id": "D",
+            "text": "T1 hyperintens, T2 hypointens, fehlende verzögerte Anreicherung"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die erkennbare zentrale Narbe ist typischerweise T2-hell und reichert extrazelluläres Kontrastmittel verzögert an. Das ist von der hepatobiliären Aufnahme des übrigen FNH-Gewebes zu unterscheiden; eine Narbe ist nicht obligat.",
+        "wrongExplanations": {
+          "B": "Eine T2-dunkle zentrale Komponente entspricht nicht dem typischen FNH-Narbenmuster; andere fibrotische Läsionen bleiben differenzialdiagnostisch relevant.",
+          "C": "Das früh kräftig anreichernde Gewebe darf nicht mit der typischerweise erst verzögert anreichernden Narbe gleichgesetzt werden.",
+          "D": "Diese Kombination aus T1-Hypersignal, T2-Hyposignal und fehlender Spätaufnahme passt nicht zum beschriebenen typischen Narbenmuster."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001"
+        ],
+        "learningGoalIds": [
+          "fnh07-mri"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-de-08",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welche gepaarte Aussage beschreibt das häufige hepatobiliäre Signal von FNH und HCA am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "FNH meist iso-/hyperintens; HCA häufiger hypointens"
+          },
+          {
+            "id": "B",
+            "text": "FNH meist hypointens; HCA häufiger iso-/hyperintens"
+          },
+          {
+            "id": "C",
+            "text": "FNH und HCA überwiegend hypointens"
+          },
+          {
+            "id": "D",
+            "text": "FNH und HCA überwiegend stark hyperintens"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Dieses häufige Muster unterstützt die Unterscheidung, beweist sie aber nicht. Insbesondere bestimmte HCA-Subtypen können hepatobiliär iso-/hyperintens sein; die gesamte multiphasische Untersuchung bleibt maßgeblich.",
+        "wrongExplanations": {
+          "B": "Dies vertauscht die häufigen Muster. FNH zeigt oft hepatobiliäre Aufnahme, viele HCA nicht.",
+          "C": "Die häufige hepatobiliäre Aufnahme der FNH geht in dieser Zuordnung verloren.",
+          "D": "Einige HCA nehmen hepatobiliäres Kontrastmittel auf, aber deutliche Hyperintensität ist nicht das überwiegende Muster aller HCA."
+        },
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "sources": [
+          "https://doi.org/10.14309/ajg.0000000000002857",
+          "https://pubmed.ncbi.nlm.nih.gov/22733890/",
+          "https://pubmed.ncbi.nlm.nih.gov/35920706/"
+        ],
+        "learningGoalIds": [
+          "fnh07-mri"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-de-09",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Eine asymptomatische 32-jährige Frau hat eine 2,8-cm-Leberläsion. Technisch ausreichende multiphasische MRT einschließlich hepatobiliärer Phase und ergänzende CEUS bleiben wegen heterogener Aufnahme und intraläsionalem Fett uneindeutig zwischen FNH und HCA. Welcher nächste Schritt ist am besten begründet?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Spezialisierte MDT-Einordnung und bei fortbestehender Unklarheit gezielte Biopsie erwägen"
+          },
+          {
+            "id": "B",
+            "text": "Unverändertes MRT-Protokoll nach sechs Monaten wiederholen"
+          },
+          {
+            "id": "C",
+            "text": "Zusätzliche CT mit arterieller und portalvenöser Phase durchführen"
+          },
+          {
+            "id": "D",
+            "text": "Primäre Resektion zur histologischen Klärung planen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Bleibt die Diagnose nach geeigneter komplementärer Bildgebung unklar, empfiehlt EASL die spezialisierte Einordnung; eine Biopsie kann nach MDT-Abwägung sinnvoll sein. Atypie allein rechtfertigt weder eine sichere FNH-Etikettierung noch eine automatische Resektion.",
+        "wrongExplanations": {
+          "B": "Ein Verlauf kann später sinnvoll sein, beantwortet aber zunächst nicht die nach zwei Verfahren fortbestehende diagnostische und managementrelevante Unsicherheit.",
+          "C": "Eine weitere dynamische Untersuchung wiederholt hier bereits technisch ausreichend erhobene Information. Die nächste Strategie sollte das MDT gezielt an der offenen Frage ausrichten.",
+          "D": "Resektion ist bei unklarer kleiner Läsion nicht der automatische erste Schritt. Zunächst sollen Bildgebung und mögliche Gewebegewinnung spezialisiert abgewogen werden."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001",
+          "https://doi.org/10.14309/ajg.0000000000002857"
+        ],
+        "learningGoalIds": [
+          "fnh07-management"
+        ],
+        "difficulty": "application"
+      },
+      {
+        "id": "fnh-de-10",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Eine asymptomatische Patientin ohne vaskuläre Lebererkrankung hat eine nach vollständiger Bildgebung sicher typische FNH. Welche läsionsbezogene Nachsorge passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Keine routinemäßige bildgebende Verlaufskontrolle der FNH"
+          },
+          {
+            "id": "B",
+            "text": "MRT alle sechs Monate für zwei Jahre, dann jährlich"
+          },
+          {
+            "id": "C",
+            "text": "Jährliche MRT-Kontrolle für fünf Jahre"
+          },
+          {
+            "id": "D",
+            "text": "Sonographische Kontrolle alle sechs Monate"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Für sicher typische asymptomatische FNH ist keine routinemäßige Läsionskontrolle nötig. EASL nennt die zugrunde liegende vaskuläre Lebererkrankung als Ausnahme; neue klinische Fragen werden unabhängig davon beurteilt.",
+        "wrongExplanations": {
+          "B": "Dieses engmaschige Schema gehört in andere Läsionskontexte, etwa HCA, nicht zur sicher typischen FNH.",
+          "C": "Eine feste fünfjährige MRT-Serie bringt für die hier sicher diagnostizierte FNH keinen leitliniengemäß erforderlichen Zusatznutzen.",
+          "D": "Ein halbjährliches Ultraschallschema ist keine FNH-Nachsorgeempfehlung. Eine separate Indikation wie HCC-Surveillance wäre unabhängig zu prüfen."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001",
+          "https://doi.org/10.14309/ajg.0000000000002857"
+        ],
+        "learningGoalIds": [
+          "fnh07-management"
+        ],
+        "difficulty": "interpretation"
+      }
+    ],
+    "en": [
+      {
+        "id": "fnh-en-01",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which pathogenesis fits focal nodular hyperplasia (FNH)?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Local regenerative hepatocyte hyperplasia associated with altered arterial supply"
+          },
+          {
+            "id": "B",
+            "text": "Clonal hepatocellular neoplasia as in hepatocellular adenoma"
+          },
+          {
+            "id": "C",
+            "text": "Focal fat deposition without localised tissue hyperplasia"
+          },
+          {
+            "id": "D",
+            "text": "Diffuse regenerative nodules with remodelling of the entire liver"
+          }
+        ],
+        "correct": "A",
+        "explanation": "FNH is regarded as a benign hyperplastic response to a local vascular abnormality. It differs from hepatocellular neoplasia and diffuse regenerative liver remodelling.",
+        "wrongExplanations": {
+          "B": "That mechanism describes the HCA concept; FNH is regenerative hyperplasia.",
+          "C": "Focal steatosis is a fat-distribution alteration. Fat can accompany FNH but does not explain its regenerative architecture.",
+          "D": "Diffuse nodular remodelling is different from localised FNH. The background liver remains relevant to interpretation."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001",
+          "https://doi.org/10.14309/ajg.0000000000002857"
+        ],
+        "learningGoalIds": [
+          "fnh07-context"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-en-02",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "An asymptomatic 29-year-old woman without known liver disease or malignancy has a nearly isoechoic 3-cm lesion that cannot be characterised confidently on B-mode ultrasound. FNH and HCA are possibilities. Which examination best supports further differentiation?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Noncontrast MRI with T1/T2 sequences"
+          },
+          {
+            "id": "B",
+            "text": "Multiphase MRI with hepatobiliary-specific contrast"
+          },
+          {
+            "id": "C",
+            "text": "CT with a single early arterial postcontrast phase"
+          },
+          {
+            "id": "D",
+            "text": "Repeat B-mode ultrasound with colour Doppler"
+          }
+        ],
+        "correct": "B",
+        "explanation": "ACG 2024 recommends multiphase MRI with hepatobiliary-specific contrast when FNH is suspected and distinction from HCA is needed. Age and sex fit both lesions and do not replace characterisation.",
+        "wrongExplanations": {
+          "A": "Native signals help but can overlap in FNH and HCA. Dynamic and hepatobiliary phases add information here.",
+          "C": "A single arterial phase shows hypervascularity but not later behaviour or hepatobiliary uptake.",
+          "D": "Doppler may show a central vascular pattern; in this indeterminate solid lesion it does not replace full contrast characterisation."
+        },
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "sources": [
+          "https://doi.org/10.14309/ajg.0000000000002857",
+          "https://pubmed.ncbi.nlm.nih.gov/22733890/"
+        ],
+        "learningGoalIds": [
+          "fnh07-context"
+        ],
+        "difficulty": "application"
+      },
+      {
+        "id": "fnh-en-03",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which colour Doppler vascular pattern supports FNH?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Central artery with branches radiating into the lesion"
+          },
+          {
+            "id": "B",
+            "text": "Predominantly peripheral basket-like vessels"
+          },
+          {
+            "id": "C",
+            "text": "Peripheral hyperaemia surrounding an avascular centre"
+          },
+          {
+            "id": "D",
+            "text": "Direct connection of a feeding artery to an enlarged draining vein"
+          }
+        ],
+        "correct": "A",
+        "explanation": "A central artery with radiating branches produces the spoke-wheel pattern. It supports FNH but does not establish the diagnosis alone.",
+        "wrongExplanations": {
+          "B": "A peripheral arrangement differs from the central radial architecture of typical FNH.",
+          "C": "An avascular centre with a hyperaemic rim does not describe the central arterial supply of FNH.",
+          "D": "A direct arterial–venous connection is a shunt pattern rather than radial branches within FNH."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001"
+        ],
+        "learningGoalIds": [
+          "fnh07-context"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-en-04",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which early arterial CT pattern is most expected in typical FNH?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Discontinuous peripheral enhancing nodules"
+          },
+          {
+            "id": "B",
+            "text": "Avid, largely homogeneous enhancement of the lesion tissue"
+          },
+          {
+            "id": "C",
+            "text": "Rim enhancement around a nonenhancing centre"
+          },
+          {
+            "id": "D",
+            "text": "No measurable enhancement throughout the lesion"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Typical FNH enhances rapidly and avidly in the arterial phase; a central scar may remain unenhanced. Interpretation also requires later phases and native signal.",
+        "wrongExplanations": {
+          "A": "Discontinuous peripheral nodules followed by centripetal fill-in favour the classic haemangioma pattern.",
+          "C": "Rim enhancement differs from arterial enhancement of FNH tissue and requires a different differential diagnosis.",
+          "D": "Absent enhancement does not fit typical hypervascular FNH. Solid versus fluid nature and other sequences need assessment."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001"
+        ],
+        "learningGoalIds": [
+          "fnh07-dynamic"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-en-05",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "A lesion has a typical FNH pattern. Which behaviour of lesion tissue fits in portal venous and delayed CT phases?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Increasing relative hypoattenuation to the liver after arterial hyperattenuation"
+          },
+          {
+            "id": "B",
+            "text": "Equalisation to liver parenchyma without typical washout"
+          },
+          {
+            "id": "C",
+            "text": "Progressive peripheral nodular fill-in toward the lesion centre"
+          },
+          {
+            "id": "D",
+            "text": "Progressively increasing enhancement of fibrotic components in an initially rim-dominant lesion"
+          }
+        ],
+        "correct": "B",
+        "explanation": "FNH tissue typically becomes similar to surrounding liver. A central scar may enhance separately on delay. Absence of washout alone does not exclude other lesions.",
+        "wrongExplanations": {
+          "A": "This describes washout rather than typical FNH equalisation. Risk context and complete characterisation are needed.",
+          "C": "Peripheral nodular centripetal fill-in is the classic haemangioma pattern.",
+          "D": "Progressive fibrotic enhancement after an initial rim pattern differs from typical early homogeneous FNH enhancement followed by equalisation."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001"
+        ],
+        "learningGoalIds": [
+          "fnh07-dynamic"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-en-06",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which noncontrast MRI combination of lesion tissue best fits typical FNH, relative to liver?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Marked T1 hypointensity and fluid-like marked T2 hyperintensity"
+          },
+          {
+            "id": "B",
+            "text": "T1 iso- to mildly hypointense and T2 iso- to mildly hyperintense"
+          },
+          {
+            "id": "C",
+            "text": "T1 hyperintensity with marked opposed-phase signal loss"
+          },
+          {
+            "id": "D",
+            "text": "T1 hyperintensity persisting with fat suppression"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Typical FNH often differs only subtly from liver before contrast. This signal similarity is one component, not a stand-alone diagnosis.",
+        "wrongExplanations": {
+          "A": "Fluid-like marked T2 signal is not typical FNH tissue signal; entities such as cyst or haemangioma require distinction using the full pattern.",
+          "C": "Opposed-phase signal loss indicates intracellular fat. It is an important differential clue, not the typical native FNH pattern.",
+          "D": "T1 hyperintensity that does not suppress with fat suppression may reflect blood products, among other causes. It is not typical FNH–liver signal similarity."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001"
+        ],
+        "learningGoalIds": [
+          "fnh07-mri"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-en-07",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "An FNH has a visible central scar. Which combination typically fits the scar on MRI with extracellular contrast?",
+        "options": [
+          {
+            "id": "A",
+            "text": "T1 hypointense, T2 hyperintense, delayed enhancement"
+          },
+          {
+            "id": "B",
+            "text": "T1 hypointense, T2 hypointense, little delayed enhancement"
+          },
+          {
+            "id": "C",
+            "text": "T1 hyperintense, T2 hyperintense, avid early enhancement"
+          },
+          {
+            "id": "D",
+            "text": "T1 hyperintense, T2 hypointense, absent delayed enhancement"
+          }
+        ],
+        "correct": "A",
+        "explanation": "A visible central scar is typically T2 bright and shows delayed enhancement with extracellular contrast. This differs from hepatobiliary uptake of the remaining FNH tissue; a scar is not obligatory.",
+        "wrongExplanations": {
+          "B": "A T2-dark central component does not match the typical FNH scar; other fibrotic lesions remain relevant to the differential.",
+          "C": "Early avidly enhancing tissue should not be equated with the typically delayed-enhancing scar.",
+          "D": "This combination of T1 hyperintensity, T2 hypointensity and absent delayed uptake does not fit the typical scar pattern."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001"
+        ],
+        "learningGoalIds": [
+          "fnh07-mri"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-en-08",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which paired statement best describes the common hepatobiliary-phase signals of FNH and HCA?",
+        "options": [
+          {
+            "id": "A",
+            "text": "FNH usually iso-/hyperintense; HCA more often hypointense"
+          },
+          {
+            "id": "B",
+            "text": "FNH usually hypointense; HCA more often iso-/hyperintense"
+          },
+          {
+            "id": "C",
+            "text": "FNH and HCA predominantly hypointense"
+          },
+          {
+            "id": "D",
+            "text": "FNH and HCA predominantly markedly hyperintense"
+          }
+        ],
+        "correct": "A",
+        "explanation": "This common pattern supports differentiation but does not prove it. Certain HCA subtypes can be hepatobiliary iso-/hyperintense; the complete multiphase examination remains decisive.",
+        "wrongExplanations": {
+          "B": "This reverses the common patterns. FNH often shows hepatobiliary uptake, while many HCAs do not.",
+          "C": "This assignment misses the frequent hepatobiliary uptake of FNH.",
+          "D": "Some HCAs take up hepatobiliary contrast, but marked hyperintensity is not the predominant pattern across all HCAs."
+        },
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "sources": [
+          "https://doi.org/10.14309/ajg.0000000000002857",
+          "https://pubmed.ncbi.nlm.nih.gov/22733890/",
+          "https://pubmed.ncbi.nlm.nih.gov/35920706/"
+        ],
+        "learningGoalIds": [
+          "fnh07-mri"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-en-09",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "An asymptomatic 32-year-old woman has a 2.8-cm liver lesion. Technically adequate multiphase MRI including the hepatobiliary phase and complementary CEUS remain indeterminate between FNH and HCA because of heterogeneous enhancement and intralesional fat. Which next step is best justified?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Specialist MDT review and consideration of targeted biopsy if uncertainty persists"
+          },
+          {
+            "id": "B",
+            "text": "Repeat the same MRI protocol after six months"
+          },
+          {
+            "id": "C",
+            "text": "Add CT with arterial and portal venous phases"
+          },
+          {
+            "id": "D",
+            "text": "Plan primary resection for histological clarification"
+          }
+        ],
+        "correct": "A",
+        "explanation": "When diagnosis remains uncertain after appropriate complementary imaging, EASL recommends specialist assessment; biopsy may be appropriate after MDT consideration. Atypia alone justifies neither a confident FNH label nor automatic resection.",
+        "wrongExplanations": {
+          "B": "Surveillance may later be appropriate, but it does not first resolve the management-relevant uncertainty persisting after two examinations.",
+          "C": "Another dynamic examination repeats information already obtained adequately here. The MDT should target the next strategy to the unresolved question.",
+          "D": "Resection is not automatically the first step for a small indeterminate lesion. Imaging and possible tissue sampling should first be assessed by specialists."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001",
+          "https://doi.org/10.14309/ajg.0000000000002857"
+        ],
+        "learningGoalIds": [
+          "fnh07-management"
+        ],
+        "difficulty": "application"
+      },
+      {
+        "id": "fnh-en-10",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "An asymptomatic patient without vascular liver disease has confidently typical FNH after complete imaging assessment. Which lesion-specific follow-up is most appropriate?",
+        "options": [
+          {
+            "id": "A",
+            "text": "No routine imaging follow-up of the FNH"
+          },
+          {
+            "id": "B",
+            "text": "MRI every six months for two years, then annually"
+          },
+          {
+            "id": "C",
+            "text": "Annual MRI follow-up for five years"
+          },
+          {
+            "id": "D",
+            "text": "Ultrasound follow-up every six months"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Confidently typical asymptomatic FNH does not need routine lesion surveillance. EASL identifies underlying vascular liver disease as an exception; new clinical concerns are assessed separately.",
+        "wrongExplanations": {
+          "B": "This close surveillance schedule belongs to other lesion settings, such as HCA, rather than confidently typical FNH.",
+          "C": "A fixed five-year MRI series provides no guideline-required added benefit for the confidently diagnosed FNH in this case.",
+          "D": "A six-month ultrasound schedule is not an FNH follow-up recommendation. A separate indication such as HCC surveillance would be assessed independently."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001",
+          "https://doi.org/10.14309/ajg.0000000000002857"
+        ],
+        "learningGoalIds": [
+          "fnh07-management"
+        ],
+        "difficulty": "interpretation"
+      }
+    ],
+    "fa": [
+      {
+        "id": "fnh-fa-01",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "کدام سازوکار پیدایش با هیپرپلازی ندولار فوکال (FNH) سازگار است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "هیپرپلازی رژنراتیو موضعی هپاتوسیت‌ها در ارتباط با خون‌رسانی شریانی تغییریافته"
+          },
+          {
+            "id": "B",
+            "text": "نئوپلازی کلونال هپاتوسلولار مانند آدنوم هپاتوسلولار"
+          },
+          {
+            "id": "C",
+            "text": "رسوب کانونی چربی بدون هیپرپلازی موضعی بافت"
+          },
+          {
+            "id": "D",
+            "text": "ندول‌های رژنراتیو منتشر همراه با بازآرایی سراسر کبد"
+          }
+        ],
+        "correct": "A",
+        "explanation": "FNH پاسخ هیپرپلاستیک خوش‌خیم به ناهنجاری عروقی موضعی دانسته می‌شود؛ با نئوپلازی هپاتوسلولار و بازآرایی رژنراتیو منتشر کبد متفاوت است.",
+        "wrongExplanations": {
+          "B": "این سازوکار مفهوم HCA را توصیف می‌کند؛ FNH هیپرپلازی رژنراتیو است.",
+          "C": "استئاتوز کانونی تغییر توزیع چربی است. چربی ممکن است همراه FNH باشد، اما معماری رژنراتیو آن را توضیح نمی‌دهد.",
+          "D": "بازآرایی ندولار منتشر با FNH موضعی متفاوت است. زمینهٔ کبد در تفسیر همچنان اهمیت دارد."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001",
+          "https://doi.org/10.14309/ajg.0000000000002857"
+        ],
+        "learningGoalIds": [
+          "fnh07-context"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-fa-02",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "زن ۲۹ سالهٔ بی‌علامت بدون بیماری شناخته‌شدهٔ کبدی یا بدخیمی، ضایعهٔ ۳ سانتی‌متری تقریباً ایزواکو دارد که در سونوگرافی B-mode به‌طور مطمئن تعیین ماهیت نمی‌شود. FNH و HCA مطرح‌اند. کدام بررسی برای افتراق بعدی مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "MRI بدون مادهٔ حاجب با توالی‌های T1/T2"
+          },
+          {
+            "id": "B",
+            "text": "MRI چندفازی با مادهٔ حاجب اختصاصی هپاتوبیلیاری"
+          },
+          {
+            "id": "C",
+            "text": "CT با یک فاز شریانی زودرس پس از تزریق"
+          },
+          {
+            "id": "D",
+            "text": "تکرار سونوگرافی B-mode همراه با داپلر رنگی"
+          }
+        ],
+        "correct": "B",
+        "explanation": "ACG 2024 برای افتراق FNH مشکوک از HCA، MRI چندفازی با مادهٔ حاجب اختصاصی هپاتوبیلیاری را توصیه می‌کند. سن و جنس با هر دو ضایعه سازگارند و جای تعیین ماهیت را نمی‌گیرند.",
+        "wrongExplanations": {
+          "A": "سیگنال‌های پایه کمک‌کننده‌اند، اما در FNH و HCA همپوشانی دارند. فازهای دینامیک و هپاتوبیلیاری اطلاعات تکمیلی می‌دهند.",
+          "C": "یک فاز شریانی پرعروقی را نشان می‌دهد، اما رفتار بعدی و جذب هپاتوبیلیاری را ارزیابی نمی‌کند.",
+          "D": "داپلر ممکن است الگوی عروقی مرکزی را نشان دهد؛ در این ضایعهٔ جامد نامشخص جای تعیین ماهیت کامل با مادهٔ حاجب را نمی‌گیرد."
+        },
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "sources": [
+          "https://doi.org/10.14309/ajg.0000000000002857",
+          "https://pubmed.ncbi.nlm.nih.gov/22733890/"
+        ],
+        "learningGoalIds": [
+          "fnh07-context"
+        ],
+        "difficulty": "application"
+      },
+      {
+        "id": "fnh-fa-03",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "کدام الگوی عروقی در داپلر رنگی از تشخیص FNH حمایت می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "شریان مرکزی با شاخه‌هایی که به‌صورت شعاعی وارد ضایعه می‌شوند"
+          },
+          {
+            "id": "B",
+            "text": "عروق عمدتاً محیطی با آرایش سبدی"
+          },
+          {
+            "id": "C",
+            "text": "پرخونی محیطی پیرامون مرکز بدون جریان"
+          },
+          {
+            "id": "D",
+            "text": "ارتباط مستقیم شریان تغذیه‌کننده با ورید تخلیه‌کنندهٔ گشاد"
+          }
+        ],
+        "correct": "A",
+        "explanation": "شریان مرکزی با شاخه‌های شعاعی الگوی spoke-wheel را ایجاد می‌کند. این الگو از FNH حمایت می‌کند، اما به‌تنهایی اثبات‌کننده نیست.",
+        "wrongExplanations": {
+          "B": "آرایش محیطی با معماری مرکزی‌ـ‌شعاعی FNH تیپیک تفاوت دارد.",
+          "C": "مرکز بدون جریان با حاشیهٔ پرخون، الگوی خون‌رسانی شریانی مرکزی FNH را توصیف نمی‌کند.",
+          "D": "ارتباط مستقیم شریانی‌ـ‌وریدی الگوی شانت است، نه شاخه‌های شعاعی داخل FNH."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001"
+        ],
+        "learningGoalIds": [
+          "fnh07-context"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-fa-04",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "کدام الگوی CT شریانی زودرس بیشتر برای FNH تیپیک انتظار می‌رود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ندول‌های محیطی ناپیوسته با جذب مادهٔ حاجب"
+          },
+          {
+            "id": "B",
+            "text": "جذب واضح و عمدتاً همگن مادهٔ حاجب در بافت ضایعه"
+          },
+          {
+            "id": "C",
+            "text": "جذب حلقوی حاشیه‌ای پیرامون مرکز فاقد جذب"
+          },
+          {
+            "id": "D",
+            "text": "نبود جذب قابل‌اندازه‌گیری در سراسر ضایعه"
+          }
+        ],
+        "correct": "B",
+        "explanation": "FNH تیپیک در فاز شریانی سریع و واضح مادهٔ حاجب می‌گیرد؛ اسکار مرکزی ممکن است در این فاز جذب نداشته باشد. تفسیر به فازهای بعدی و سیگنال پایه نیز نیاز دارد.",
+        "wrongExplanations": {
+          "A": "ندول‌های محیطی ناپیوسته با پرشدگی مرکزگرای بعدی بیشتر با الگوی کلاسیک همانژیوم سازگارند.",
+          "C": "جذب حلقوی حاشیه‌ای با جذب شریانی بافت FNH متفاوت است و افتراق دیگری می‌طلبد.",
+          "D": "نبود جذب با FNH تیپیک پرعروق سازگار نیست؛ ماهیت جامد یا مایع و سایر توالی‌ها باید بررسی شوند."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001"
+        ],
+        "learningGoalIds": [
+          "fnh07-dynamic"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-fa-05",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "ضایعه‌ای الگوی تیپیک FNH دارد. کدام رفتار بافت ضایعه در فاز پورتال و تأخیری CT با آن سازگار است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "کاهش نسبی افزایندهٔ دانسیته نسبت به کبد پس از هایپردنسیتهٔ شریانی"
+          },
+          {
+            "id": "B",
+            "text": "تطابق با پارانشیم کبد بدون واش‌اوت تیپیک"
+          },
+          {
+            "id": "C",
+            "text": "پرشدگی ندولار محیطی پیشرونده به‌سوی مرکز ضایعه"
+          },
+          {
+            "id": "D",
+            "text": "افزایش پیشروندهٔ جذب در بخش‌های فیبروتیک ضایعه‌ای با جذب اولیهٔ حاشیه‌ای"
+          }
+        ],
+        "correct": "B",
+        "explanation": "بافت FNH معمولاً شبیه پارانشیم اطراف می‌شود. اسکار مرکزی ممکن است جداگانه با تأخیر جذب کند. نبود واش‌اوت به‌تنهایی سایر ضایعات را رد نمی‌کند.",
+        "wrongExplanations": {
+          "A": "این توصیف واش‌اوت است، نه تطابق تیپیک FNH. زمینهٔ خطر و تعیین ماهیت کامل لازم‌اند.",
+          "C": "پرشدگی ندولار محیطی و مرکزگرا الگوی کلاسیک همانژیوم است.",
+          "D": "جذب فیبروتیک پیشرونده پس از الگوی اولیهٔ حاشیه‌ای با جذب زودرس همگن FNH و تطابق بعدی آن تفاوت دارد."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001"
+        ],
+        "learningGoalIds": [
+          "fnh07-dynamic"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-fa-06",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "کدام ترکیب MRI پایهٔ بافت ضایعه، نسبت به کبد، بیشتر با FNH تیپیک سازگار است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "هیپوسیگنال واضح T1 و هایپرسیگنال شدید T2 شبیه مایع"
+          },
+          {
+            "id": "B",
+            "text": "T1 ایزو تا کمی هیپوسیگنال و T2 ایزو تا کمی هایپرسیگنال"
+          },
+          {
+            "id": "C",
+            "text": "هایپرسیگنال T1 با افت سیگنال واضح در opposed-phase"
+          },
+          {
+            "id": "D",
+            "text": "هایپرسیگنال T1 که با سرکوب چربی باقی می‌ماند"
+          }
+        ],
+        "correct": "B",
+        "explanation": "FNH تیپیک در تصاویر پایه اغلب تفاوت اندکی با کبد دارد. این شباهت سیگنال یکی از اجزای ارزیابی است، نه تشخیص مستقل.",
+        "wrongExplanations": {
+          "A": "سیگنال بسیار روشن T2 شبیه مایع، سیگنال تیپیک بافت FNH نیست؛ افتراق کیست یا همانژیوم به الگوی کامل نیاز دارد.",
+          "C": "افت سیگنال در opposed-phase نشان‌دهندهٔ چربی داخل‌سلولی است؛ سرنخ افتراقی مهمی است، نه الگوی پایهٔ تیپیک FNH.",
+          "D": "هایپرسیگنال T1 که با سرکوب چربی کاهش نمی‌یابد ممکن است از جمله ناشی از فرآورده‌های خون باشد؛ این الگو شباهت سیگنال تیپیک FNH به کبد نیست."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001"
+        ],
+        "learningGoalIds": [
+          "fnh07-mri"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-fa-07",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "در FNH اسکار مرکزی قابل‌مشاهده‌ای وجود دارد. کدام ترکیب در MRI با مادهٔ حاجب خارج‌سلولی معمولاً با اسکار سازگار است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "هیپوسیگنال T1، هایپرسیگنال T2 و جذب تأخیری"
+          },
+          {
+            "id": "B",
+            "text": "هیپوسیگنال T1 و T2 با جذب تأخیری اندک"
+          },
+          {
+            "id": "C",
+            "text": "هایپرسیگنال T1 و T2 با جذب زودرس واضح"
+          },
+          {
+            "id": "D",
+            "text": "هایپرسیگنال T1، هیپوسیگنال T2 و نبود جذب تأخیری"
+          }
+        ],
+        "correct": "A",
+        "explanation": "اسکار مرکزی قابل‌مشاهده معمولاً در T2 روشن است و مادهٔ حاجب خارج‌سلولی را با تأخیر جذب می‌کند. این با جذب هپاتوبیلیاری سایر بافت FNH متفاوت است؛ وجود اسکار الزامی نیست.",
+        "wrongExplanations": {
+          "B": "بخش مرکزی تیره در T2 با اسکار تیپیک FNH سازگار نیست؛ سایر ضایعات فیبروتیک در افتراق مطرح می‌مانند.",
+          "C": "بافت دارای جذب زودرس واضح نباید با اسکاری که معمولاً با تأخیر جذب می‌کند یکسان دانسته شود.",
+          "D": "این ترکیب هایپرسیگنال T1، هیپوسیگنال T2 و نبود جذب تأخیری با الگوی تیپیک اسکار سازگار نیست."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001"
+        ],
+        "learningGoalIds": [
+          "fnh07-mri"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-fa-08",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "کدام عبارت جفت‌شده سیگنال شایع FNH و HCA در فاز هپاتوبیلیاری را بهتر توصیف می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "FNH معمولاً ایزو/هایپرسیگنال؛ HCA بیشتر هیپوسیگنال"
+          },
+          {
+            "id": "B",
+            "text": "FNH معمولاً هیپوسیگنال؛ HCA بیشتر ایزو/هایپرسیگنال"
+          },
+          {
+            "id": "C",
+            "text": "FNH و HCA عمدتاً هیپوسیگنال"
+          },
+          {
+            "id": "D",
+            "text": "FNH و HCA عمدتاً به‌شدت هایپرسیگنال"
+          }
+        ],
+        "correct": "A",
+        "explanation": "این الگوی شایع به افتراق کمک می‌کند، اما آن را اثبات نمی‌کند. برخی زیرگروه‌های HCA نیز می‌توانند در فاز هپاتوبیلیاری ایزو/هایپرسیگنال باشند؛ بررسی کامل چندفازی تعیین‌کننده می‌ماند.",
+        "wrongExplanations": {
+          "B": "این گزینه الگوهای شایع را جابه‌جا می‌کند؛ FNH اغلب جذب هپاتوبیلیاری دارد و بسیاری از HCAها ندارند.",
+          "C": "این دسته‌بندی جذب شایع هپاتوبیلیاری در FNH را نادیده می‌گیرد.",
+          "D": "برخی HCAها مادهٔ حاجب هپاتوبیلیاری می‌گیرند، اما هایپرسیگنال شدید الگوی غالب در مجموع HCAها نیست."
+        },
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "sources": [
+          "https://doi.org/10.14309/ajg.0000000000002857",
+          "https://pubmed.ncbi.nlm.nih.gov/22733890/",
+          "https://pubmed.ncbi.nlm.nih.gov/35920706/"
+        ],
+        "learningGoalIds": [
+          "fnh07-mri"
+        ],
+        "difficulty": "interpretation"
+      },
+      {
+        "id": "fnh-fa-09",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "زن ۳۲ سالهٔ بی‌علامت ضایعهٔ کبدی ۲٫۸ سانتی‌متری دارد. MRI چندفازی با کیفیت کافی شامل فاز هپاتوبیلیاری و CEUS تکمیلی، به‌علت جذب ناهمگن و چربی داخل ضایعه هنوز بین FNH و HCA قطعی نیستند. کدام گام بعدی موجه‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ارزیابی در تیم تخصصی و در صورت تداوم ابهام، بررسی امکان بیوپسی هدفمند"
+          },
+          {
+            "id": "B",
+            "text": "تکرار همان پروتکل MRI پس از شش ماه"
+          },
+          {
+            "id": "C",
+            "text": "انجام CT تکمیلی با فازهای شریانی و پورتال"
+          },
+          {
+            "id": "D",
+            "text": "برنامه‌ریزی رزکسیون اولیه برای تعیین تشخیص بافت‌شناختی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "وقتی تشخیص پس از تصویربرداری مناسب و مکمل نامشخص می‌ماند، EASL ارزیابی تخصصی را توصیه می‌کند؛ بیوپسی پس از سنجش در تیم می‌تواند مناسب باشد. آتیپی به‌تنهایی نه برچسب قطعی FNH و نه رزکسیون خودکار را توجیه می‌کند.",
+        "wrongExplanations": {
+          "B": "پیگیری ممکن است بعداً مناسب باشد، اما ابتدا ابهام مؤثر بر مدیریت را که پس از دو بررسی باقی مانده برطرف نمی‌کند.",
+          "C": "بررسی دینامیک دیگر در اینجا اطلاعاتی را تکرار می‌کند که با کیفیت کافی به‌دست آمده‌اند. تیم باید راهبرد بعدی را بر پرسش حل‌نشده متمرکز کند.",
+          "D": "رزکسیون برای ضایعهٔ کوچک نامشخص به‌طور خودکار نخستین گام نیست. ابتدا تصویربرداری و نمونه‌گیری احتمالی باید به‌طور تخصصی سنجیده شوند."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001",
+          "https://doi.org/10.14309/ajg.0000000000002857"
+        ],
+        "learningGoalIds": [
+          "fnh07-management"
+        ],
+        "difficulty": "application"
+      },
+      {
+        "id": "fnh-fa-10",
+        "tags": [
+          "fnh",
+          "leber",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "بیمار بی‌علامت و بدون بیماری عروقی کبد، پس از بررسی تصویربرداری کامل FNH تیپیک با تشخیص مطمئن دارد. کدام پیگیری اختصاصی ضایعه مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "عدم نیاز به پیگیری تصویربرداری روتین FNH"
+          },
+          {
+            "id": "B",
+            "text": "MRI هر شش ماه برای دو سال و سپس سالانه"
+          },
+          {
+            "id": "C",
+            "text": "پیگیری سالانه با MRI به‌مدت پنج سال"
+          },
+          {
+            "id": "D",
+            "text": "پیگیری سونوگرافیک هر شش ماه"
+          }
+        ],
+        "correct": "A",
+        "explanation": "FNH بی‌علامت و تیپیک با تشخیص مطمئن به پایش روتین ضایعه نیاز ندارد. EASL بیماری زمینه‌ای عروقی کبد را استثنا می‌داند؛ پرسش‌های بالینی جدید جداگانه ارزیابی می‌شوند.",
+        "wrongExplanations": {
+          "B": "این برنامهٔ پایش نزدیک به زمینهٔ ضایعات دیگری مانند HCA مربوط است، نه FNH تیپیک با تشخیص مطمئن.",
+          "C": "سری ثابت پنج‌سالهٔ MRI برای FNH با تشخیص مطمئن در این سناریو، سود تکمیلی موردنیاز طبق راهنما ندارد.",
+          "D": "برنامهٔ سونوگرافی شش‌ماهه توصیهٔ پیگیری FNH نیست. اندیکاسیون مستقلی مانند پایش HCC باید جداگانه بررسی شود."
+        },
+        "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "sources": [
+          "https://doi.org/10.1016/j.jhep.2016.04.001",
+          "https://doi.org/10.14309/ajg.0000000000002857"
+        ],
+        "learningGoalIds": [
+          "fnh07-management"
+        ],
+        "difficulty": "interpretation"
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "fnh-01-definition",
+      "topicId": "fnh",
+      "category": {
+        "de": "Grundlagen",
+        "en": "Basics",
+        "fa": "مبانی"
+      },
+      "front": {
+        "de": "Was ist die FNH pathologisch?",
+        "en": "What is FNH pathologically?",
+        "fa": "FNH از نظر پاتولوژی چیست؟"
+      },
+      "answer": {
+        "de": "Benigne, regenerative Raumforderung der Leber.",
+        "en": "Benign, regenerative liver lesion.",
+        "fa": "ضایعه خوش‌خیم و رژنراتیو کبد."
+      },
+      "explanation": {
+        "de": "FNH gilt als lokale regenerative Reaktion auf eine veränderte arterielle Versorgung, nicht als echte Neoplasie. Die Konsequenz hängt davon ab, ob die Diagnose bildgebend sicher ist.",
+        "en": "FNH is regarded as a local regenerative response to altered arterial supply rather than a true neoplasm. Management depends on whether imaging establishes the diagnosis confidently.",
+        "fa": "FNH واکنش رژنراتیو موضعی به خون‌رسانی شریانی تغییریافته دانسته می‌شود، نه نئوپلازی واقعی. مدیریت به اطمینان تشخیص تصویربرداری بستگی دارد."
+      },
+      "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+      "sources": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ]
+    },
+    {
+      "id": "fnh-02-epidemiologie",
+      "topicId": "fnh",
+      "category": {
+        "de": "Grundlagen",
+        "en": "Basics",
+        "fa": "مبانی"
+      },
+      "front": {
+        "de": "Welcher gutartige solide Lebertumor folgt in der Häufigkeit auf das Hämangiom?",
+        "en": "Which benign solid liver tumour is second in frequency after haemangioma?",
+        "fa": "کدام تومور جامد خوش‌خیم کبد پس از همانژیوم از نظر شیوع در رتبهٔ دوم است؟"
+      },
+      "answer": {
+        "de": "Die FNH.",
+        "en": "FNH.",
+        "fa": "FNH."
+      },
+      "explanation": {
+        "de": "FNH wird bevorzugt bei jungen bis mittelalten Frauen entdeckt. Das ist ein epidemiologischer Hinweis; Demografie allein trennt FNH nicht sicher von HCA.",
+        "en": "FNH is predominantly detected in young to middle-aged women. This is an epidemiological clue; demographics alone do not distinguish FNH confidently from HCA.",
+        "fa": "FNH بیشتر در زنان جوان تا میانسال کشف می‌شود. این سرنخ اپیدمیولوژیک است؛ جمعیت‌شناسی به‌تنهایی FNH را به‌طور مطمئن از HCA جدا نمی‌کند."
+      },
+      "source": "https://doi.org/10.14309/ajg.0000000000002857",
+      "sources": [
+        "https://doi.org/10.14309/ajg.0000000000002857"
+      ]
+    },
+    {
+      "id": "fnh-03-sono",
+      "topicId": "fnh",
+      "category": {
+        "de": "Sonographie",
+        "en": "Ultrasound",
+        "fa": "سونوگرافی"
+      },
+      "front": {
+        "de": "Wie stellt sich eine FNH in der Sonographie meist dar?",
+        "en": "How does FNH typically appear on ultrasound?",
+        "fa": "FNH معمولاً در سونوگرافی چگونه دیده می‌شود؟"
+      },
+      "answer": {
+        "de": "Glatt begrenzt, rund, iso- bis leicht hypoechogen.",
+        "en": "Well-defined, round, iso- to mildly hypoechoic.",
+        "fa": "خوش‌حد، گرد، ایزو تا کمی هیپواکوژن."
+      },
+      "explanation": {
+        "de": "Die FNH ist sonographisch oft nur subtil von der übrigen Leber abgrenzbar, da sie ähnliches Gewebe wie das normale Leberparenchym enthält.",
+        "en": "FNH is often only subtly different from the surrounding liver on ultrasound because it consists of tissue similar to normal liver parenchyma.",
+        "fa": "FNH اغلب فقط به‌طور خفیف از بافت کبد در سونوگرافی قابل افتراق است، چون از بافتی شبیه پارانشیم نرمال کبد تشکیل شده است."
+      },
+      "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+      "sources": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ]
+    },
+    {
+      "id": "fnh-04-doppler",
+      "topicId": "fnh",
+      "category": {
+        "de": "Sonographie",
+        "en": "Ultrasound",
+        "fa": "سونوگرافی"
+      },
+      "front": {
+        "de": "Welches Doppler-Muster ist typisch für eine FNH?",
+        "en": "Which Doppler pattern is typical for FNH?",
+        "fa": "کدام الگوی داپلر برای FNH تیپیک است؟"
+      },
+      "answer": {
+        "de": "Spoke-wheel-Muster: ein zentrales Gefäß mit radiären Ästen.",
+        "en": "Spoke-wheel pattern: central vessel with radiating branches.",
+        "fa": "الگوی spoke-wheel: یک رگ مرکزی با شاخه‌های شعاعی."
+      },
+      "explanation": {
+        "de": "Die zentrale Versorgungsarterie und radiäre Äste erzeugen dieses Muster. Es unterstützt FNH, ersetzt aber nicht die vollständige Charakterisierung einer unklaren soliden Läsion.",
+        "en": "The central feeding artery and radial branches produce this pattern. It supports FNH but does not replace complete characterisation of an indeterminate solid lesion.",
+        "fa": "شریان تغذیه‌کنندهٔ مرکزی و شاخه‌های شعاعی این الگو را می‌سازند. الگو از FNH حمایت می‌کند، اما جای تعیین ماهیت کامل ضایعهٔ جامد نامشخص را نمی‌گیرد."
+      },
+      "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+      "sources": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ]
+    },
+    {
+      "id": "fnh-05-ct",
+      "topicId": "fnh",
+      "category": {
+        "de": "CT",
+        "en": "CT",
+        "fa": "CT"
+      },
+      "front": {
+        "de": "Wie verhält sich die FNH früharteriell in der CT?",
+        "en": "How does FNH behave in the early arterial phase on CT?",
+        "fa": "رفتار FNH در فاز شریانی زودرس CT چگونه است؟"
+      },
+      "answer": {
+        "de": "Kräftige, homogene Kontrastmittelaufnahme.",
+        "en": "Strong, homogeneous enhancement.",
+        "fa": "جذب واضح و همگن مادهٔ حاجب."
+      },
+      "explanation": {
+        "de": "Im Vergleich zum klassischen Hämangiommuster zeigt typische FNH eine rasche, homogene arterielle Anreicherung statt diskontinuierlicher peripherer Kontrastknoten mit späterer zentripetaler Auffüllung.",
+        "en": "Compared with the classic haemangioma pattern, typical FNH shows rapid, homogeneous arterial enhancement rather than discontinuous peripheral nodules with later centripetal fill-in.",
+        "fa": "برخلاف الگوی کلاسیک همانژیوم، FNH تیپیک جذب شریانی سریع و همگن دارد؛ نه ندول‌های محیطی ناپیوسته با پرشدگی مرکزگرای بعدی."
+      },
+      "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+      "sources": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ]
+    },
+    {
+      "id": "fnh-06-washout",
+      "topicId": "fnh",
+      "category": {
+        "de": "CT",
+        "en": "CT",
+        "fa": "CT"
+      },
+      "front": {
+        "de": "Welches spätere Kontrastmittelverhalten passt zur typischen FNH in CT bzw. dynamischer MRT?",
+        "en": "Which later contrast behaviour fits typical FNH on CT or dynamic MRI?",
+        "fa": "کدام رفتار مادهٔ حاجب در فازهای بعدی CT یا MRI دینامیک با FNH تیپیک سازگار است؟"
+      },
+      "answer": {
+        "de": "Typischerweise Angleichung an das Leberparenchym ohne typisches Wash-out.",
+        "en": "Typically equalisation to liver parenchyma without typical washout.",
+        "fa": "معمولاً تطابق با پارانشیم کبد بدون واش‌اوت تیپیک."
+      },
+      "explanation": {
+        "de": "Das Muster passt zur typischen FNH, schließt ein HCC aber nicht allein aus. Risikokontext und vollständige Phasenbeurteilung bleiben wichtig.",
+        "en": "The pattern fits typical FNH but does not alone exclude HCC. Risk context and full-phase assessment remain important.",
+        "fa": "این الگو با FNH تیپیک سازگار است، اما به‌تنهایی HCC را رد نمی‌کند. زمینهٔ خطر و ارزیابی کامل فازها همچنان مهم‌اند."
+      },
+      "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+      "sources": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ]
+    },
+    {
+      "id": "fnh-07-t1t2",
+      "topicId": "fnh",
+      "category": {
+        "de": "MRT",
+        "en": "MRI",
+        "fa": "MRI"
+      },
+      "front": {
+        "de": "Wie ist das T1/T2-Signal der FNH zum Leberparenchym?",
+        "en": "What is the T1/T2 signal of FNH relative to the liver parenchyma?",
+        "fa": "سیگنال T1/T2 FNH نسبت به پارانشیم کبد چگونه است؟"
+      },
+      "answer": {
+        "de": "Iso- bis leicht hypointens in T1, iso- bis leicht hyperintens in T2.",
+        "en": "Iso- to mildly hypointense on T1, iso- to mildly hyperintense on T2.",
+        "fa": "ایزو تا کمی هیپواینتنس در T1، ایزو تا کمی هایپراینتنس در T2."
+      },
+      "explanation": {
+        "de": "Da die FNH aus ähnlichem Gewebe wie das umgebende Leberparenchym besteht, ist sie nativ oft nur diskret abgrenzbar.",
+        "en": "Because FNH consists of tissue similar to the surrounding liver parenchyma, it is often only subtly visible on non-contrast images.",
+        "fa": "چون FNH از بافتی شبیه پارانشیم اطراف تشکیل شده، اغلب در تصاویر بدون کنتراست فقط به‌طور خفیف قابل مشاهده است."
+      },
+      "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+      "sources": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ]
+    },
+    {
+      "id": "fnh-08-narbe",
+      "topicId": "fnh",
+      "category": {
+        "de": "MRT",
+        "en": "MRI",
+        "fa": "MRI"
+      },
+      "front": {
+        "de": "Wie verhält sich eine erkennbare zentrale FNH-Narbe in MRT mit extrazellulärem Kontrastmittel?",
+        "en": "How does a visible FNH central scar behave on MRI with extracellular contrast?",
+        "fa": "اسکار مرکزی قابل‌مشاهدهٔ FNH در MRI با مادهٔ حاجب خارج‌سلولی چگونه رفتار می‌کند؟"
+      },
+      "answer": {
+        "de": "Hyperintens in T2, hypointens in T1, mit verzögerter KM-Aufnahme.",
+        "en": "Hyperintense on T2, hypointense on T1, with delayed enhancement.",
+        "fa": "هایپراینتنس در T2، هیپواینتنس در T1، با تقویت تأخیری."
+      },
+      "explanation": {
+        "de": "Die Narbe ist charakteristisch, aber nicht obligat. Ihre verzögerte extrazelluläre Anreicherung ist von der hepatobiliären Aufnahme des übrigen Läsionsgewebes zu unterscheiden.",
+        "en": "The scar is characteristic but not obligatory. Its delayed extracellular enhancement differs from hepatobiliary uptake of the remaining lesion tissue.",
+        "fa": "اسکار مشخصهٔ ضایعه است، اما الزامی نیست. جذب تأخیری خارج‌سلولی اسکار با جذب هپاتوبیلیاری سایر بافت ضایعه متفاوت است."
+      },
+      "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+      "sources": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ]
+    },
+    {
+      "id": "fnh-09-narbe-haeufigkeit",
+      "topicId": "fnh",
+      "category": {
+        "de": "MRT",
+        "en": "MRI",
+        "fa": "MRI"
+      },
+      "front": {
+        "de": "Ist die zentrale Narbe bei jeder FNH vorhanden?",
+        "en": "Is the central scar present in every FNH?",
+        "fa": "آیا اسکار مرکزی در همه موارد FNH وجود دارد؟"
+      },
+      "answer": {
+        "de": "Nein. Eine Narbe kann fehlen oder nicht erkennbar sein, besonders bei kleinen FNH.",
+        "en": "No. A scar may be absent or not visible, particularly in small FNH.",
+        "fa": "خیر. اسکار ممکن است وجود نداشته باشد یا دیده نشود، به‌ویژه در FNH کوچک."
+      },
+      "explanation": {
+        "de": "Die Diagnose beruht auf der Kombination aus nativem Signal, Dynamik und gegebenenfalls hepatobiliärer Phase. Eine fehlende Narbe allein beweist weder HCA noch Malignität.",
+        "en": "Diagnosis relies on combined native signal, dynamic behaviour and, when used, the hepatobiliary phase. An absent scar alone proves neither HCA nor malignancy.",
+        "fa": "تشخیص بر ترکیب سیگنال پایه، رفتار دینامیک و در صورت استفاده، فاز هپاتوبیلیاری استوار است. نبود اسکار به‌تنهایی نه HCA و نه بدخیمی را ثابت می‌کند."
+      },
+      "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+      "sources": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ]
+    },
+    {
+      "id": "fnh-10-atypisch",
+      "topicId": "fnh",
+      "category": {
+        "de": "Differentialdiagnose",
+        "en": "Differential diagnosis",
+        "fa": "تشخیص افتراقی"
+      },
+      "front": {
+        "de": "Welche Abweichungen können die bildgebende Zuordnung einer FNH erschweren?",
+        "en": "Which departures from the usual pattern can make imaging classification of FNH difficult?",
+        "fa": "کدام انحراف‌ها از الگوی معمول می‌توانند تعیین ماهیت تصویری FNH را دشوار کنند؟"
+      },
+      "answer": {
+        "de": "Fehlende zentrale Narbe, heterogenes Bild, Pseudokapsel oder intraläsionales Fett.",
+        "en": "Absent central scar, heterogeneous appearance, pseudocapsule, or intralesional fat.",
+        "fa": "نبود اسکار مرکزی، ظاهر هتروژن، پسودوکپسول یا چربی داخل ضایعه."
+      },
+      "explanation": {
+        "de": "Keines dieser Merkmale beweist allein FNH oder Malignität. Bleibt die Zuordnung nach geeigneter Bildgebung unklar, sind spezialisierte MDT-Einordnung und gegebenenfalls Biopsie zu erwägen.",
+        "en": "None of these findings alone proves FNH or malignancy. If appropriate imaging remains indeterminate, specialist MDT review and possible biopsy should be considered.",
+        "fa": "هیچ‌یک از این یافته‌ها به‌تنهایی FNH یا بدخیمی را ثابت نمی‌کند. اگر پس از تصویربرداری مناسب تعیین ماهیت نامشخص بماند، ارزیابی در تیم تخصصی و احتمال بیوپسی مطرح است."
+      },
+      "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+      "sources": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "https://doi.org/10.14309/ajg.0000000000002857"
+      ]
+    },
+    {
+      "id": "fnh-11-dd-hcc",
+      "topicId": "fnh",
+      "category": {
+        "de": "Differentialdiagnose",
+        "en": "Differential diagnosis",
+        "fa": "تشخیص افتراقی"
+      },
+      "front": {
+        "de": "Welches Signal in der hepatobiliären MRT-Phase passt eher zu FNH als zu einem hepatozellulären Adenom?",
+        "en": "Which hepatobiliary-phase signal favours FNH over hepatocellular adenoma?",
+        "fa": "کدام سیگنال در فاز هپاتوبیلیاری MRI بیشتر به نفع FNH نسبت به آدنوم هپاتوسلولار است؟"
+      },
+      "answer": {
+        "de": "FNH ist meist iso- bis hyperintens; viele Adenome sind in der hepatobiliären Phase hypointens.",
+        "en": "FNH is usually iso- to hyperintense; many adenomas are hypointense on the hepatobiliary phase.",
+        "fa": "FNH معمولاً ایزو تا هایپرسیگنال است؛ بسیاری از آدنوم‌ها در فاز هپاتوبیلیاری هیپوسیگنال‌اند."
+      },
+      "explanation": {
+        "de": "Auch bestimmte HCA-Subtypen, insbesondere β-Catenin-aktivierte HCA, können hepatobiliär iso-/hyperintens sein. Daher native Signale und Dynamik mitbeurteilen; ein heller HBP-Befund allein sichert FNH nicht.",
+        "en": "Certain HCA subtypes, especially β-catenin-activated HCA, can also be hepatobiliary iso-/hyperintense. Integrate native signals and dynamic behaviour; HBP brightness alone does not establish FNH.",
+        "fa": "برخی زیرگروه‌های HCA، به‌ویژه HCA با فعال‌شدن β-کاتنین، نیز ممکن است در فاز هپاتوبیلیاری ایزو/هایپرسیگنال باشند. سیگنال‌های پایه و رفتار دینامیک را هم بسنجید؛ روشن‌بودن HBP به‌تنهایی FNH را قطعی نمی‌کند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/35920706/",
+      "sources": [
+        "https://doi.org/10.14309/ajg.0000000000002857",
+        "https://pubmed.ncbi.nlm.nih.gov/22733890/",
+        "https://pubmed.ncbi.nlm.nih.gov/35920706/"
+      ]
+    },
+    {
+      "id": "fnh-12-reporting",
+      "topicId": "fnh",
+      "category": {
+        "de": "Behandlung und Nachsorge",
+        "en": "Management and follow-up",
+        "fa": "درمان و پیگیری"
+      },
+      "front": {
+        "de": "Welche Behandlung und Verlaufskontrolle braucht eine sicher typische asymptomatische FNH?",
+        "en": "What treatment and imaging follow-up does confidently typical asymptomatic FNH need?",
+        "fa": "FNH بی‌علامت و تیپیک با تشخیص مطمئن به چه درمان و پیگیری تصویربرداری نیاز دارد؟"
+      },
+      "answer": {
+        "de": "Bei typischer, sicher diagnostizierter FNH sind Behandlung und routinemäßige Verlaufskontrolle nicht erforderlich; bei vaskulärer Lebererkrankung gelten Ausnahmen.",
+        "en": "Typical, confidently diagnosed FNH needs no treatment or routine follow-up; underlying vascular liver disease is an exception.",
+        "fa": "در FNH تیپیک با تشخیص مطمئن، درمان و پیگیری روتین لازم نیست؛ بیماری زمینه‌ای عروقی کبد استثناست."
+      },
+      "explanation": {
+        "de": "Die EASL-Leitlinie empfiehlt bei typischer FNH keine Therapie und keine routinemäßige Verlaufskontrolle, außer bei zugrunde liegender vaskulärer Lebererkrankung. Bei atypischer Bildgebung oder Symptomen soll ein benign-liver-tumour-MDT die Befunde einordnen; ein pauschales Kontrollintervall lässt sich daraus nicht ableiten.",
+        "en": "EASL recommends no treatment or routine follow-up for typical FNH, except with underlying vascular liver disease. Atypical imaging or symptoms should be reviewed by a benign liver tumour MDT; this does not establish a blanket follow-up interval.",
+        "fa": "راهنمای EASL برای FNH تیپیک، درمان یا پیگیری روتین را توصیه نمی‌کند، مگر در بیماری زمینه‌ای عروقی کبد. در تصویربرداری آتیپیک یا وجود علائم، ارزیابی در تیم تخصصی تومورهای خوش‌خیم کبد مطرح است؛ این توصیه یک فاصلهٔ پیگیری همگانی تعیین نمی‌کند."
+      },
+      "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+      "sources": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "https://doi.org/10.14309/ajg.0000000000002857"
+      ]
+    }
+  ]
+}

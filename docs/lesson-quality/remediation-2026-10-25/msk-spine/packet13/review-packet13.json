@@ -1,0 +1,791 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/design_inventory",
+  "role": "INDEPENDENT_READ_ONLY_REVIEWER",
+  "author": "/root/msk_original_pools_next",
+  "route": "/msk/trauma/frakturbeschreibung",
+  "status": "ACCEPT_FULL_ORIGINAL_ASSESSMENT_POOL_AFTER_INDEPENDENT_REPAIR01_RETEST",
+  "scope": {
+    "originalQuestions": 12,
+    "localizedOriginalQuestionObjects": 36,
+    "individualWrongFeedbackFields": 108,
+    "originalCardTriads": 15,
+    "derivedStressAliasTriads": 1,
+    "unchangedPreviouslyAcceptedSupplementLocaleObjects": 3,
+    "actualGlobalTopicQuestionsPerLanguage": 13,
+    "languages": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "directTeachingChangedFields": 6,
+    "assessmentDeltaRecordsCurrent": 474,
+    "deltaCountNote": "Initial authorhandoff473; one additional FAqualificationrepair produces474 current records. All474 original→final records independently exactmatched, absentproperty normalized to authornull."
+  },
+  "method": "Actual final frozen12question triads read stem/all4options/key/explanation/all3wrongrationales/source fields in DE/EN/FA; all15cards andstressalias read front/answer/explanation/category/source and compared semantically. Accepted supplement read in3languages and exactunchanged. All6changedteachingfields read triad-wise. This is substantive review plus separate execution evidence, not authorpass adoption.",
+  "questionLedger": [
+    {
+      "id": "frakturbeschreibung-de-01",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-01",
+        "en": "frakturbeschreibung-en-01",
+        "fa": "frakturbeschreibung-fa-01"
+      },
+      "goal": "msk13-report-displacement",
+      "readFields": [
+        "stem",
+        "all4options",
+        "correctKey",
+        "correctExplanation",
+        "all3individualWrongFeedbacks",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "assessment": "Preserves right/middle/ulna/transverse and nondisplaced wording; foundational report fidelity, no unseen image claim.",
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-de-02",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-02",
+        "en": "frakturbeschreibung-en-02",
+        "fa": "frakturbeschreibung-fa-02"
+      },
+      "goal": "msk13-report-displacement",
+      "readFields": [
+        "stem",
+        "all4options",
+        "correctKey",
+        "correctExplanation",
+        "all3individualWrongFeedbacks",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "assessment": "Correct distal-versus-proximal reference; translation, shortening and angle remain distinct.",
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-de-03",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-03",
+        "en": "frakturbeschreibung-en-03",
+        "fa": "frakturbeschreibung-fa-03"
+      },
+      "goal": "msk13-load-morphology",
+      "readFields": [
+        "stem",
+        "all4options",
+        "correctKey",
+        "correctExplanation",
+        "all3individualWrongFeedbacks",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "assessment": "Spiral recognition from winding line; mechanism/stability not treated as proven.",
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-de-04",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-04",
+        "en": "frakturbeschreibung-en-04",
+        "fa": "frakturbeschreibung-fa-04"
+      },
+      "goal": "msk13-load-morphology",
+      "readFields": [
+        "stem",
+        "all4options",
+        "correctKey",
+        "correctExplanation",
+        "all3individualWrongFeedbacks",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "assessment": "Isolated circumferential segment between two levels; vascularity risk qualified, not diagnosed from shape.",
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-de-05",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-05",
+        "en": "frakturbeschreibung-en-05",
+        "fa": "frakturbeschreibung-fa-05"
+      },
+      "goal": "msk13-load-morphology",
+      "readFields": [
+        "stem",
+        "all4options",
+        "correctKey",
+        "correctExplanation",
+        "all3individualWrongFeedbacks",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "assessment": "Osteoporosis plus ordinary load supports insufficiency; focal destruction and repetitive normal-bone overload distinguished.",
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-de-06",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-06",
+        "en": "frakturbeschreibung-en-06",
+        "fa": "frakturbeschreibung-fa-06"
+      },
+      "goal": "msk13-load-morphology",
+      "readFields": [
+        "stem",
+        "all4options",
+        "correctKey",
+        "correctExplanation",
+        "all3individualWrongFeedbacks",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "assessment": "Normal-bone repetitive overload supports fatigue; currentACRstress umbrella explicitly distinguished fromPDFwordusage.",
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-de-07",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-07",
+        "en": "frakturbeschreibung-en-07",
+        "fa": "frakturbeschreibung-fa-07"
+      },
+      "goal": "msk13-joint-soft-tissue",
+      "readFields": [
+        "stem",
+        "all4options",
+        "correctKey",
+        "correctExplanation",
+        "all3individualWrongFeedbacks",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "assessment": "Clinical wound communication and prompt referral; absent gas does not close the diagnosis.",
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-de-08",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-08",
+        "en": "frakturbeschreibung-en-08",
+        "fa": "frakturbeschreibung-fa-08"
+      },
+      "goal": "msk13-joint-soft-tissue",
+      "readFields": [
+        "stem",
+        "all4options",
+        "correctKey",
+        "correctExplanation",
+        "all3individualWrongFeedbacks",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "assessment": "4mmgap versus2mmstep kept distinct; no universal surgery threshold.",
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-de-09",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-09",
+        "en": "frakturbeschreibung-en-09",
+        "fa": "frakturbeschreibung-fa-09"
+      },
+      "goal": "msk13-report-displacement",
+      "readFields": [
+        "stem",
+        "all4options",
+        "correctKey",
+        "correctExplanation",
+        "all3individualWrongFeedbacks",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "assessment": "Dorsal distal tilt versus volar apex, halfshafttranslation and6mmshortening correctly separated in all3languages.",
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-de-10",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-10",
+        "en": "frakturbeschreibung-en-10",
+        "fa": "frakturbeschreibung-fa-10"
+      },
+      "goal": "msk13-targeted-imaging",
+      "readFields": [
+        "stem",
+        "all4options",
+        "correctKey",
+        "correctExplanation",
+        "all3individualWrongFeedbacks",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "assessment": "CT answers complex osseous plateau-fragment mapping, competing modalities have specific roles.",
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-de-11",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-11",
+        "en": "frakturbeschreibung-en-11",
+        "fa": "frakturbeschreibung-fa-11"
+      },
+      "goal": "msk13-targeted-imaging",
+      "readFields": [
+        "stem",
+        "all4options",
+        "correctKey",
+        "correctExplanation",
+        "all3individualWrongFeedbacks",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "assessment": "Negative films plus persistent high stress-injury suspicion with prompt need: noncontrastMRI; CT/repeatfilms not declared universally wrong.",
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-de-12",
+      "localizedIds": {
+        "de": "frakturbeschreibung-de-12",
+        "en": "frakturbeschreibung-en-12",
+        "fa": "frakturbeschreibung-fa-12"
+      },
+      "goal": "msk13-load-morphology",
+      "readFields": [
+        "stem",
+        "all4options",
+        "correctKey",
+        "correctExplanation",
+        "all3individualWrongFeedbacks",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "assessment": "Focal osteolytic lesion reported without asserting metastasis; PDFfocal-pathological scope explicit.",
+      "status": "ACCEPT_BOUNDED"
+    }
+  ],
+  "cardLedger": [
+    {
+      "id": "frakturbeschreibung-01-system",
+      "goal": "msk13-report-displacement",
+      "fieldsRead": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-02-location",
+      "goal": "msk13-report-displacement",
+      "fieldsRead": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-03-distal",
+      "goal": "msk13-report-displacement",
+      "fieldsRead": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-04-translation",
+      "goal": "msk13-report-displacement",
+      "fieldsRead": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-05-angulation",
+      "goal": "msk13-report-displacement",
+      "fieldsRead": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-06-stress",
+      "goal": "msk13-load-morphology",
+      "fieldsRead": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-07-pathologic",
+      "goal": "msk13-load-morphology",
+      "fieldsRead": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-08-spiral",
+      "goal": "msk13-load-morphology",
+      "fieldsRead": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-09-segmental",
+      "goal": "msk13-load-morphology",
+      "fieldsRead": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-10-avulsion",
+      "goal": "msk13-load-morphology",
+      "fieldsRead": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-11-joint",
+      "goal": "msk13-joint-soft-tissue",
+      "fieldsRead": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-12-open",
+      "goal": "msk13-joint-soft-tissue",
+      "fieldsRead": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-13-ct",
+      "goal": "msk13-targeted-imaging",
+      "fieldsRead": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-14-mri",
+      "goal": "msk13-targeted-imaging",
+      "fieldsRead": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "status": "ACCEPT_BOUNDED"
+    },
+    {
+      "id": "frakturbeschreibung-15-report",
+      "goal": "msk13-report-displacement",
+      "fieldsRead": [
+        "front",
+        "answer",
+        "explanation",
+        "category",
+        "sourceMetadata"
+      ],
+      "languages": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "status": "ACCEPT_BOUNDED"
+    }
+  ],
+  "derivedAlias": {
+    "id": "stressfrakturen-basics",
+    "status": "ACCEPT_BOUNDED",
+    "evidence": "Same focused fatigue-versus-insufficiency content as card06, exactactualexport and sharedbank checked; did not count as16independent fracture-descriptioncard."
+  },
+  "learningGoals": [
+    {
+      "id": "msk13-report-displacement",
+      "questionIds": [
+        "frakturbeschreibung-de-01",
+        "frakturbeschreibung-de-02",
+        "frakturbeschreibung-de-09",
+        "aq-msk-frakturbeschreibung-de-report-distal-reference"
+      ],
+      "cardIds": [
+        "frakturbeschreibung-01-system",
+        "frakturbeschreibung-02-location",
+        "frakturbeschreibung-03-distal",
+        "frakturbeschreibung-04-translation",
+        "frakturbeschreibung-05-angulation",
+        "frakturbeschreibung-15-report"
+      ],
+      "derivedAliasIds": [],
+      "status": "COVERED_BY_EXISTING_REVISED_POOL",
+      "limit": "No question-count quota or psychometric validity claimed."
+    },
+    {
+      "id": "msk13-load-morphology",
+      "questionIds": [
+        "frakturbeschreibung-de-03",
+        "frakturbeschreibung-de-04",
+        "frakturbeschreibung-de-05",
+        "frakturbeschreibung-de-06",
+        "frakturbeschreibung-de-12"
+      ],
+      "cardIds": [
+        "frakturbeschreibung-06-stress",
+        "frakturbeschreibung-07-pathologic",
+        "frakturbeschreibung-08-spiral",
+        "frakturbeschreibung-09-segmental",
+        "frakturbeschreibung-10-avulsion"
+      ],
+      "derivedAliasIds": [
+        "stressfrakturen-basics"
+      ],
+      "status": "COVERED_BY_EXISTING_REVISED_POOL",
+      "limit": "No question-count quota or psychometric validity claimed."
+    },
+    {
+      "id": "msk13-joint-soft-tissue",
+      "questionIds": [
+        "frakturbeschreibung-de-07",
+        "frakturbeschreibung-de-08"
+      ],
+      "cardIds": [
+        "frakturbeschreibung-11-joint",
+        "frakturbeschreibung-12-open"
+      ],
+      "derivedAliasIds": [],
+      "status": "COVERED_BY_EXISTING_REVISED_POOL",
+      "limit": "No question-count quota or psychometric validity claimed."
+    },
+    {
+      "id": "msk13-targeted-imaging",
+      "questionIds": [
+        "frakturbeschreibung-de-10",
+        "frakturbeschreibung-de-11"
+      ],
+      "cardIds": [
+        "frakturbeschreibung-13-ct",
+        "frakturbeschreibung-14-mri"
+      ],
+      "derivedAliasIds": [],
+      "status": "COVERED_BY_EXISTING_REVISED_POOL",
+      "limit": "No question-count quota or psychometric validity claimed."
+    }
+  ],
+  "findings": [
+    {
+      "id": "MSK13-LNG-JOINT-FA",
+      "severity": "minor",
+      "file": "data/frakturbeschreibung.js",
+      "item": "frakturbeschreibung-11-joint.explanation.fa",
+      "observed": "FA originally made articularmeasurements determine arthritisrisk/operativeplan; DE/EN only state influence.",
+      "impact": "Overstates causal certainty and reduces triad fidelity.",
+      "requestedCorrection": "Describe congruity and influence on risk/planning.",
+      "status": "CLOSED_ACTUAL_REPAIR01_RETEST",
+      "actualAfter": "این پارامترها تطابق مفصل را توصیف می‌کنند و بر خطر آرتروز و برنامه‌ریزی جراحی اثر می‌گذارند. در پیچیدگی اغلب CT لازم است.",
+      "evidence": "Current sourceexport/globalcard/updatedmanifest actualdeepEqual. Onlyoneproductionleaf changed inrepair01; allotherquestion/cardvaluesandroutehash stable."
+    }
+  ],
+  "openFindings": [],
+  "sourceEvidence": [
+    {
+      "id": "USER_MSK_PDF",
+      "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+      "physicalPages": [
+        2,
+        3,
+        4
+      ],
+      "printedPages": [
+        1,
+        2,
+        3
+      ],
+      "actualText": "Fresh pypdf extraction oftheoriginalPDF read; physical4 hasnoextracted labels, so pixelsused.",
+      "actualPixels": [
+        "tmp/assessment-quality/msk-next-pdf/fracture-002.png",
+        "tmp/assessment-quality/msk-next-pdf/fracture-003.png",
+        "tmp/assessment-quality/msk-next-pdf/fracture-004.png"
+      ],
+      "boundedEvidence": "Mechanism/load/quality; focalpathologicaltaxonomy; transverse/oblique/spiral/segmental/wedge andavulsion; twelveillustrations. Originalstress-as-fatigue wording and>6fragmentdefinition are sourcebound, not silently converted to universalcurrentcriteria.",
+      "limits": "Not all138pages, fullimage-rights orcompleteunchangedlessonrecertification."
+    },
+    {
+      "id": "NORTHWESTERN_ANATOMY",
+      "url": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/index.html",
+      "read": "Actual originalprofessionaltext fresh: bone/part/third/segments/landmarks.",
+      "use": "Anatomical report fidelity, not a newlyvalidatedsix-itemclinicalscore."
+    },
+    {
+      "id": "NORTHWESTERN_POSITION",
+      "url": "https://www.ortho-teaching.feinberg.northwestern.edu/XRreading/general/angulationdisplacementdislocation.html",
+      "read": "Actual originalprofessional full relevanttext fresh including distalreference andoppositeapexconvention.",
+      "use": "Translation/tilt/apex, quantitativeposition andretainedsupplement consistency."
+    },
+    {
+      "id": "AO_SEGMENTAL",
+      "url": "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/tibial-shaft/intact-segmental/orif-compression-plating",
+      "read": "Actual originalprinciples fresh, especially twofracturelevels andprotection ofintermediate soft-tissueattachments/bloodsupply.",
+      "use": "Qualifiedvascular-riskstatement; no newoperativealgorithmorimplantclaim."
+    },
+    {
+      "id": "ICMR_OPEN",
+      "url": "https://www.icmr.gov.in/icmrobject/uploads/STWs/1726645314_9_open_fracture.pdf",
+      "read": "Actual originalgovernmental workflowtext fresh, clinicalexamination anddefinition at104–110.",
+      "use": "Communicationwithfracture/haematoma/externalenvironment; clinicalassessment/urgentcommunication. Drug/timingregimens notimported."
+    },
+    {
+      "id": "AAOS_TIBIA",
+      "url": "https://www.orthoinfo.org/en/diseases--conditions/fractures-of-the-proximal-tibia-shinbone/",
+      "read": "Actual professional patienteducation examination/imaging/treatmentcontextsections fresh.",
+      "use": "CT forfragmentdetail;MRIadditionalsofttissue/occultquestions; contextualmanagement. Not universalCT/operationthreshold."
+    },
+    {
+      "id": "ACR_STRESS_2024",
+      "url": "https://acsearch.acr.org/docs/69435/narrative/",
+      "alternate": "https://acsearch.acr.org/list/TopicNarrativePdf?topicId=93",
+      "read": "Directnarrative403; freshofficialindexedoriginalintroduction and2024Variant2/4 tables read. No bypass/fullguidelinepixelsclaim.",
+      "use": "Stressfatigue/insufficiencyumbrella;negativefilmnextnoncontrastMRI;CT/repeat10–14dayfilms possiblealternatives, USusuallynotappropriate. No2017variantnumber conflation."
+    },
+    {
+      "id": "GHAFOOR",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9038308/",
+      "read": "Actual originalmethods/radiographicmeasurement/Table1/articularcongruityparagraphs freshlyread.",
+      "use": "Separatearticularstep/gapmeasurements; selected166distalradiusseries, no wristcutoffgeneralized toalljoints."
+    },
+    {
+      "id": "NATTIV",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4367232/",
+      "read": "Actual originalprospectiveimagingmethods andTable1 freshread.",
+      "use": "Bone-stressgradeswithoutlineversuswithline;marrowreactionnotinterchangeablewithspecificfractureproof. No returntoplayestimateornewfigureinterpretation."
+    }
+  ],
+  "technicalEvidence": {
+    "date": "2026-10-25",
+    "reviewer": "/root/design_inventory",
+    "status": "PASS_BOUNDED_TECHNICAL",
+    "originalQuestionObjects": 36,
+    "individualWrongFeedbackFields": 108,
+    "canonicalCardTriads": 15,
+    "stressAlias": 1,
+    "actualGlobalQuestionCountPerLanguage": 13,
+    "acceptedSupplementUnchangedLocaleObjects": 3,
+    "actualGlobalCanonicalDeepEqual": 52,
+    "originalIdsAndKeysStable": true,
+    "sourceHashes": {
+      "data/frakturbeschreibung.js": {
+        "before": "19bf0471f266332bdddbe071c74af323f663d724dedf5f0d1300dee14d3224c7",
+        "after": "467c5a70541f1b46eeca7d89a4ed7a6833e0f6c3c669a8ee44f74c727e5e287a"
+      },
+      "app/msk/trauma/frakturbeschreibung/page.js": {
+        "before": "7bb16441fc8b317ec01a6710d01ff5f4f022fbdfd6aea278360c0785a3ff9fad",
+        "after": "7bb16441fc8b317ec01a6710d01ff5f4f022fbdfd6aea278360c0785a3ff9fad"
+      }
+    },
+    "routeFullSourceUnchanged": true,
+    "sixTeachingDeltasActual": true,
+    "fourGoalsResolve": true,
+    "repair01ActualValueMatched": true,
+    "assessmentDeltaCount": 474,
+    "limits": "Execution/import/shape evidence; substantive independent reading/source evidence separate. No browser/media licence/doctor/release approval.",
+    "exactRecordedAssessmentDeltasMatched": 474,
+    "deltaMissingValues": "Authornull means absent property, independently normalized only for this comparison.",
+    "ssr": {
+      "passed": 3,
+      "total": 3,
+      "artifact": "tmp/assessment-quality/msk13-peer-ssr.json",
+      "limits": "Actual page graph SSR in DE/EN/FA. Browser/session hooks and CSS names are fixtures; no source-content or shared lesson-shell fixture. Does not establish browser visual quality, authentication behavior, loaded media or client interaction."
+    },
+    "script": "tmp/assessment-quality/test-msk13-peer.mjs"
+  },
+  "gates": {
+    "SRC": "PASS_BOUNDED_CURRENT_ASSESSMENT_AND6TEACHINGFIELDS",
+    "ASM": "PASS_FULL12ORIGINALQUESTION_CONCEPTS_15CARDTRIADS_ANDDERIVEDALIAS",
+    "LNG": "PASS_FULLCURRENTASSESSMENTTRIADS_AND6TEACHINGFIELDS_AFTERREPAIR01",
+    "EDU": "PASS_FOURGOALS_PLAUSIBLECOMPARATIVECHOICES_BASICRETRIEVALAPPROPRIATE",
+    "VIS": "BOUNDED_PDF2–4PIXELS_READ_NO_FULLRETAINEDMEDIACLEARANCE",
+    "UX": "BLOCKED_NO_ACTUAL_BROWSER_BY_THISREVIEWER",
+    "REV": "INDEPENDENT_CONTENT_REVIEW_COMPLETE_DRZIAPENDING"
+  },
+  "limits": [
+    "No inventeddiagnosticimagecases; allnewvignettes areexplicittext.",
+    "ThreeSSRusesession/CSSfixtures: no actualauth/loadedmedia/RTL/keyboard/navigationproof. Parentownsbuild/browser.",
+    "SourcePDFandprofessional/primaryscope above doesnotconstitutewholelesson/full138page/scientificphysicianrelease.",
+    "No productionedits/sharedbankmutation/build/server/Git/browser by independentreviewer. Acceptancehash-bound toactualaftervalues; laterchangesneedretet."
+  ]
+}

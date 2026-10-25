@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-25",
+  "author": "/root/brain_original_pools_next",
+  "independentReviewer": "/root",
+  "route": "/gehirn/vaskulaer/kavernom",
+  "status": "BOUNDED_FULL_ORIGINAL_POOL_ACCEPTED_WITH_RECORDED_DESKTOP_BROWSER",
+  "readScope": "All36original and36revised localized questions, all15original/revised cardtriads and all80marked teaching changes read independently. KeysA stable; runtime choice shuffle is separate. Twelve concepts cover5explicit goals; no arbitrary quota expansion. Independent actual51canonical/global payload and108individualfeedback checks pass. Read does not certify unchanged whole lesson/case/gallery.",
+  "sourcesActuallyRead": [
+    {
+      "source": "UserGehirn.pdf physical31/32 printed30/31",
+      "evidence": "Both actual full page images independently viewed; alltext and9panels/labels considered. No new patient study interpretation or source frame created."
+    },
+    {
+      "url": "https://www.alliancetocure.org/ccm-clinical-care-guidelines-publish/",
+      "scope": "Actual original20page2025guideline parsed text: epidemiology/hemorrhage definition/genetic context, MRI/differential/criteria/Table2–3, DVA/first-seizure sections and relevant intracranial Table4. No fullspinal/pediatricreview or newfigurepixel claim."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22194370/",
+      "scope": "Fresh complete original abstract and indexed original imaging/methods text;27patients/33BCT retrospective. Specific subtle pontine enhancing susceptibility pattern supportsQ11; intervening tissue alone is not exclusive."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7964862/",
+      "scope": "Fresh indexed original Table1reproducing Zabramski and relevant diagnostic/hemorrhage definition discussion. No pediatric annual rates generalized; original1994fulltext not claimed."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4710581/",
+      "scope": "Fresh indexed original complete Summary/Methods/Findings/Interpretation and baseline predictor methods; directPMCcaptcha/publisher403 not bypassed.1620people aged>=16,7cohorts. Qualitativepresentation/location framework only, no individual annualrate."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24024078/",
+      "scope": "Fresh complete original case-report abstract: thrombosed DVA collector with hemorrhagic venous infarction. Exception mechanism only, no frequency or treatment extrapolation."
+    }
+  ],
+  "findings": [
+    {
+      "id": "KAV20-LNG01",
+      "severity": "minor",
+      "where": "kavernom-02-popcorn.category",
+      "observed": "Single MRT string appeared in all locales.",
+      "impact": "German imaging modality label in English/Farsi cards.",
+      "required": "MRT/MRI/ام‌آر‌آی categorytriad, ID unchanged.",
+      "retest": "Actual canonical corrected category and global counterpart match; maintainedtest passes.",
+      "status": "CLOSED"
+    },
+    {
+      "id": "KAV20-LNG02",
+      "severity": "minor",
+      "where": "FAquestion02 stem/optionA, card03answer",
+      "observed": "Repeated حساسیت‌پذیری حساس‌تر / حساس به حساسیت‌پذیری made the question needlessly awkward.",
+      "impact": "Obscures the intended susceptibility detection task.",
+      "required": "Natural precise Persian phrasing with سوسپتیبیلیتی; key/meaning unchanged.",
+      "retest": "All3exact repaired strings freshly read and match current payloads; all other fields unchanged per bounded repair record.",
+      "status": "CLOSED"
+    }
+  ],
+  "gates": {
+    "SRC": "PASS_BOUNDED_ASSESSMENT_AND_CHANGED_TEACHING",
+    "EDU": "PASS_BOUNDED",
+    "LNG": "PASS_ALL_ASSESSMENT_TRIADS_AFTER_REPAIR",
+    "ASM": "PASS_ACTUAL51_AND108FEEDBACK",
+    "VIS": "NOT_APPLICABLE_NO_NEW_MEDIA_OR_FRAME_DIAGNOSIS",
+    "UX": "PASS_BOUNDED_DESKTOP_SCENARIOS_SEE_RELEASE10",
+    "REV": "PASS_INDEPENDENT_REPAIR_RETEST"
+  },
+  "technicalTest": "scripts/test-kavernom-reviewed.mjs",
+  "sourceAfterHash": "ca24ec8b44420b69198860818b3b6d281811e602f1fa3400b8de82b6df2c7665",
+  "limits": [
+    "Editorial difficulty judgment; empirical item performance unavailable.",
+    "No whole89pagePDF, allretainedlesson statements, fullRadiopaedia study or media rights recertification.",
+    "Final browser/mobile/theme/actualdeployment separately recorded.",
+    "Dr.Zia scientific release approval pending."
+  ],
+  "publication": "not_yet",
+  "browserEvidence": "../release-batch10.json actual scenarios and limitations",
+  "remaining": [
+    "Deployment/liveverification",
+    "Fullmobile/theme/media andphysicianrelease separate"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-25",
+  "status": "FROZEN_AUTHOR_READY_INDEPENDENT_REVIEW_PENDING",
+  "route": "/msk/trauma/frakturbeschreibung",
+  "original": {
+    "questionsPerLanguage": 12,
+    "descriptionCards": 15,
+    "derivedStressAliases": 1,
+    "acceptedSupplementPerLanguage": 1
+  },
+  "final": {
+    "questionsPerLanguage": 12,
+    "descriptionCards": 15,
+    "derivedStressAliases": 1,
+    "actualGlobalTopicPerLanguage": 13
+  },
+  "actualRuntime": "author-runtime.json",
+  "sourceHashes": {
+    "data/frakturbeschreibung.js": {
+      "before": "19bf0471f266332bdddbe071c74af323f663d724dedf5f0d1300dee14d3224c7",
+      "after": "467c5a70541f1b46eeca7d89a4ed7a6833e0f6c3c669a8ee44f74c727e5e287a"
+    },
+    "app/msk/trauma/frakturbeschreibung/page.js": {
+      "before": "7bb16441fc8b317ec01a6710d01ff5f4f022fbdfd6aea278360c0785a3ff9fad",
+      "after": "7bb16441fc8b317ec01a6710d01ff5f4f022fbdfd6aea278360c0785a3ff9fad"
+    }
+  },
+  "globalCanonicalQuestionHashes": {
+    "de": "db3f30958bfe06286218b72a9e48c056e99b256780028de38ec41c007c1aeace",
+    "en": "528ceb09df37edb3cd9c0b3d30a6787693f54e20e5f0db8568317c1389baf462",
+    "fa": "02d0f3bcb4c707ae39fdfc21663a54fcc6554f2a221b5659dfc62c073a35328f"
+  },
+  "cardHash": "78d8e1e720351658c24d32968ef9ccd1ca1a3d9de037a72c954b5413a7505aa6",
+  "derivedAliasHash": "cda0c436af342fb9b1b3e51d82446e04c7a1b9cf7f348c42e1db6975cbf89df1",
+  "individualWrongFeedbackFields": 108,
+  "assessmentDeltaEntries": 474,
+  "teachingDeltaFields": 6,
+  "goals": 4,
+  "sourceGoalMap": "source-goal-map.json",
+  "centralAdmission": "proposal-only",
+  "sharedWrites": false,
+  "build": "not run",
+  "server": "not run",
+  "browser": "not run",
+  "git": "no mutation",
+  "independentReview": "Root to assign fresh different reviewer",
+  "scientificApproval": "Dr.Zia pending",
+  "wholeLessonAcceptance": "not claimed"
+}

@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root",
+  "findings": [
+    "FNH07-LNG01",
+    "FNH07-ASM02",
+    "FNH07-LNG03"
+  ],
+  "status": "AUTHOR_REPAIR01_READY_FOR_INDEPENDENT_RETEST",
+  "changes": [
+    {
+      "id": "fnh-en-07",
+      "path": "explanation",
+      "currentBefore": "A visible central scar is typically T2 bright and enhances extracellular contrast on delay. This differs from hepatobiliary uptake of the remaining FNH tissue; a scar is not obligatory.",
+      "after": "A visible central scar is typically T2 bright and shows delayed enhancement with extracellular contrast. This differs from hepatobiliary uptake of the remaining FNH tissue; a scar is not obligatory."
+    },
+    {
+      "id": "fnh-05-ct",
+      "path": "explanation.de",
+      "currentBefore": "Im Gegensatz zum Hämangiom zeigt die FNH eine rasche, homogene arterielle Anreicherung, ohne periphere noduläre Aufnahme oder zentripetale Auffüllung.",
+      "after": "Im Vergleich zum klassischen Hämangiommuster zeigt typische FNH eine rasche, homogene arterielle Anreicherung statt diskontinuierlicher peripherer Kontrastknoten mit späterer zentripetaler Auffüllung."
+    },
+    {
+      "id": "fnh-05-ct",
+      "path": "explanation.en",
+      "currentBefore": "Unlike haemangioma, FNH shows rapid, homogeneous arterial enhancement without peripheral nodular enhancement or centripetal fill-in.",
+      "after": "Compared with the classic haemangioma pattern, typical FNH shows rapid, homogeneous arterial enhancement rather than discontinuous peripheral nodules with later centripetal fill-in."
+    },
+    {
+      "id": "fnh-12-reporting",
+      "path": "category.de",
+      "currentBefore": "Befundung",
+      "after": "Behandlung und Nachsorge"
+    },
+    {
+      "id": "fnh-12-reporting",
+      "path": "category.en",
+      "currentBefore": "Reporting",
+      "after": "Management and follow-up"
+    },
+    {
+      "id": "fnh-12-reporting",
+      "path": "category.fa",
+      "currentBefore": "گزارش‌نویسی",
+      "after": "درمان و پیگیری"
+    },
+    {
+      "id": "lesson",
+      "path": "en.mri.lightBulbText",
+      "currentBefore": "A visible central scar is usually T2 hyperintense and T1 hypointense and enhances extracellular contrast on delay. It may be absent or not visible, particularly in small FNH.",
+      "after": "A visible central scar is usually T2 hyperintense and T1 hypointense and shows delayed enhancement with extracellular contrast. It may be absent or not visible, particularly in small FNH."
+    }
+  ],
+  "originalSharedBeforeUntouched": true
+}

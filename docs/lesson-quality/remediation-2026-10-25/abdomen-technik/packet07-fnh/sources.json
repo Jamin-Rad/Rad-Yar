@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-25",
+  "readBy": "/root/design_inventory",
+  "pdf": {
+    "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Abdomen.pdf",
+    "physicalPages": [
+      14,
+      15
+    ],
+    "printedPages": [
+      13,
+      14
+    ],
+    "actualTextRead": [
+      "tmp/abdomen-completion/p014.txt",
+      "tmp/abdomen-completion/p015.txt"
+    ],
+    "actualImagesInspected": [
+      "tmp/abdomen-completion/page-14.png",
+      "tmp/abdomen-completion/page-15.png"
+    ],
+    "coverage": "Definition, demographic context, B-mode/Doppler, CT/MRI native and dynamic pattern, central scar, atypical appearances. Preserve existing4-image montage and its known phase-label limitations."
+  },
+  "conflictsAndQualifications": [
+    {
+      "claim": "Scar≈70% and atypicalFNH≈20%",
+      "suppliedPDF": "Physical15/printed14 states these teaching percentages.",
+      "disposition": "No claim that those figures are a universal observed MRI visibility rate. Current bank and direct affected teaching use characteristic/not obligatory and small-lesion visibility context; preserved PDF numeric content in this ledger, not silently represented as a newly verified population estimate.",
+      "anchors": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001",
+        "https://pubmed.ncbi.nlm.nih.gov/35920706/"
+      ]
+    },
+    {
+      "claim": "Second-most-common benign lesion",
+      "suppliedPDF": "Physical14 uses benign liver lesion broadly.",
+      "disposition": "Clarified denominator to benign SOLID liver tumour, avoiding cyst-inclusive ranking. Demographics retained as prior context rather than a diagnostic shortcut.",
+      "anchors": [
+        "https://doi.org/10.14309/ajg.0000000000002857"
+      ]
+    },
+    {
+      "claim": "Delayed scar enhancement",
+      "disposition": "Qualified to extracellular contrast dynamic phase, separate from hepatobiliary uptake of lesion tissue.",
+      "anchors": [
+        "https://doi.org/10.1016/j.jhep.2016.04.001"
+      ]
+    }
+  ],
+  "primaryAndGuidelineRead": [
+    {
+      "id": "ACG2024",
+      "url": "https://doi.org/10.14309/ajg.0000000000002857",
+      "type": "Original professional guideline",
+      "read": "Fresh original publisher/indexed full FNH section, lesion-characterisation recommendations/key concepts and management read. No copied figures.",
+      "anchor": "Recommendation9: suspectedFNH multiphase hepatobiliary MRI vsHCA; key concepts19–23 and confident diagnosis follow-up. General indeterminate lesion recommendation is not misrepresented as HBP-for-all."
+    },
+    {
+      "id": "EASL2016",
+      "url": "https://doi.org/10.1016/j.jhep.2016.04.001",
+      "originalURL": "https://www.journal-of-hepatology.eu/article/S0168-8278(16)30101-5/fulltext",
+      "officialPDF": "https://easl.eu/wp-content/uploads/2016/10/EASL-CPG-on-Management-of-benign-liver-tumours.pdf",
+      "type": "Original professional guideline",
+      "read": "Fresh indexed original complete relevant FNH pathology/imaging/management text, Fig2 explanatory caption, recommendation box and Fig3 management caption. Direct publisher open403; no bypass; no independent guidelinefigure-pixel assertion.",
+      "anchor": "Combination of features, centralradialvessels, MRI native/dynamic and extracellular scar, smallFNH missing scar; confidence-based management and underlying vascular-disease exception."
+    },
+    {
+      "id": "BIEZE2012",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22733890/",
+      "doi": "10.2214/AJR.11.7750",
+      "type": "Prospective original imaging study",
+      "read": "Entire actual PubMed abstract methods/results/conclusion read freshly.",
+      "scope": "52patients/24HCA/28FNH; lesions>2cm; histological reference; blinded native/dynamic plus additionalHBP. Selected diagnostic cohort, no universal performance guarantee or new sensitivity percentage taught."
+    },
+    {
+      "id": "KIM2023",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35920706/",
+      "fulltext": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11759479/",
+      "doi": "10.2214/AJR.22.27989",
+      "type": "Original systematic review/meta-analysis",
+      "read": "Fresh indexed original EvidenceAcquisition/EvidenceSynthesis, relevant Results/Discussion/Table5 and limitations read after directPMC captcha. No bypass or fullfigurepixel claim.",
+      "scope": "HCA HBP uptake varies bysubtype; HBP iso/hyper alone maymislead. No numerical pooled risk/diagnostic certainty transferred into current questions/cards."
+    }
+  ],
+  "unverifiedAndLimits": [
+    "Original source montage retained with exact original phase labels; no new diagnosis, sequence timing, image case or frame interpretation invented.",
+    "Retained Radiopaedia background links are not used as a substitute for primary verification; no new Radiopaedia images downloaded.",
+    "No new actual-source PDF creation/edit, browser, media-rights recertification or physician approval."
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "date": "2026-10-25",
-  "status": "READY_FOR_MAIN_BOUNDED_VERIFICATION",
+  "status": "PUSHED_MAIN_AND_BOUNDED_LIVE_VERIFIED",
   "previousMain": "17a2a7fe17c3c130f6293bc41800ad479e8787ec",
   "scope": "Ninth bounded release during ongoing234-route remediation. Six full original assessment pools; overall task remains unfinished.",
   "acceptedPools": {
@@ -9,15 +9,50 @@
     "calcifications": "All18originalQ/22cards;162wrongfeedback fields, IDs/keys retained. Elevenbaseline and3newminorfindings closed after19textrepairretest. Current2025terminology, selectedhistoricalmodel versus clinical assessment, negativeMRI research limitations and standardtissuediagnosis distinguished.25historicalcells verified unchanged;11assetlabelsets localized. Unsupportedpreciseextentchart and undemonstratedclinicalreviewdate removed.4goals. EmbeddedNCfigure removed; root also removed unusedstaticPNG frompublic, retainingrecoverablelocalauditevidence and externalcitation/ownteachingSVG.",
     "bronchiolitis": "Original2Q/2cards fully read;1positiveairtrapping goal pair ->3Q/3cards,27wrongfeedback languagefields. Plausiblepattern and clinicalaspiration alternatives, cards no longer copiedMCQstems,3inlinechecks and3visiblegoals. Exactneutralbibliographiccitationrepair accepted. Sharedsmallairway renderer retains existingHP2checks/noBronchiolitisgoalblock. No inventedimagecase."
   },
-  "reviews": ["abdomen-technik/review-packet06.json","abdomen-technik/packet06-independent-after.json","brain/review-sab.json","brain/sab-independent-repair01.json","thorax-mamma/packet08-calcification-independent-review.json","thorax-mamma/review-packet09-bronchiolitis.json","thorax-mamma/packet09-bronchiolitis-independent-repair01.json","integration-review-batch09.json"],
-  "runtime": {"questionsPerLanguage":985,"casesPerLanguage":18,"supplementQuestionsPerLanguage":88,"supplementCards":88,"explicitRouteMappings":75,"explicitGoalQuestionReferences":420},
+  "reviews": [
+    "abdomen-technik/review-packet06.json",
+    "abdomen-technik/packet06-independent-after.json",
+    "brain/review-sab.json",
+    "brain/sab-independent-repair01.json",
+    "thorax-mamma/packet08-calcification-independent-review.json",
+    "thorax-mamma/review-packet09-bronchiolitis.json",
+    "thorax-mamma/packet09-bronchiolitis-independent-repair01.json",
+    "integration-review-batch09.json"
+  ],
+  "runtime": {
+    "questionsPerLanguage": 985,
+    "casesPerLanguage": 18,
+    "supplementQuestionsPerLanguage": 88,
+    "supplementCards": 88,
+    "explicitRouteMappings": 75,
+    "explicitGoalQuestionReferences": 420
+  },
   "technicalEvidence": {
     "index": "Actual selected-index985MCQ/18cases per language pass schema/options/key/individualfeedback audit. LaterFNH/Cavernoma/MSK13 authorwork excluded.",
     "build": "Productionbuild15PASS after all selected production repairs, precedingbuild14PASS. Existing unrelated CSSwarning. Localworkingbuild mayincludeother separateWIP; exactMain deployment is a separate check.",
     "ssr": "702/702actualroute/localegraph renderPASS, remediation-all-routes-ssr13.log. Fixtures do not prove authentication/fullmedia/clinicalrelease.",
     "focused": "Maintained94actual liverpayload/inlinephase testPASS. Reviewedpacket/420goal/action/sessionrevision testsPASS; all985actual question counterparts resolveDEENFA. NeworiginalPoolCoverage is allowlistfiltered; no duplicateNewsuppIDs. Independently rebuilt88/88/75snapshot equalsactual, duplicate-route guard sensitivityPASS.",
     "browser": "Authenticatedbuild15: HCCEN10Qlink andrealgadoxetatephaseinlinecheck; selectedtransitionalphaseB getsindividualfeedback, visiblecurrentphase/transporterteaching. SABDE6Qlink/4visiblegoals and>=6htable; inlineFLAIRwrongchoice getsactualspecificrationale andsamechoice translatedFA. CalcEN18Qlink, actualhistoricalmodeldisclosure/excisioncohort/associateddistortionexample; regionalamorphouscell changesmodelcategory3, retainedFAtranslation; Return-key selectsfinebranchingsegmentalmodel5 withlocalizedcaveat. Actual18QFAquiz and localizedBack. BronchiolitisDE3Qlink/3goals/3actualinlinechecks andexpiratoryteaching. Nograding/readmarking; HCCexisting1/6readstate was not changed.",
-    "screenshots": ["tmp/assessment-quality/batch09-local-sab-fa.png","tmp/assessment-quality/batch09-local-calc-fa.png"]
+    "screenshots": [
+      "tmp/assessment-quality/batch09-local-sab-fa.png",
+      "tmp/assessment-quality/batch09-local-calc-fa.png"
+    ]
   },
-  "limits": ["Bounded full assessment/changed-teaching acceptance does not certify all retained original lesson/PDF/gallery content.","Difficulty is editorial; empirical item-performance data are unavailable.","No exhaustive live234-route/mobile/all-theme equivalence claim.","Scientific release approval remains with Dr.Zia."]
+  "limits": [
+    "Bounded full assessment/changed-teaching acceptance does not certify all retained original lesson/PDF/gallery content.",
+    "Difficulty is editorial; empirical item-performance data are unavailable.",
+    "No exhaustive live234-route/mobile/all-theme equivalence claim.",
+    "Scientific release approval remains with Dr.Zia."
+  ],
+  "mainCommit": "d9548fc8d01f9648ccaf05fe567aa8e355ff334f",
+  "deployment": {
+    "status": "Ready",
+    "url": "https://vercel.com/jamins-projects-e299c1d5/rad-yar/GBJF6kfQBxGV6sLELtt5CS64r2gL",
+    "sourceCommit": "d9548fc8d01f9648ccaf05fe567aa8e355ff334f"
+  },
+  "liveEvidence": {
+    "url": "https://www.rad-yar.com/mamma/bildgebung/mammographie/verkalkungen?lang=en#kombination",
+    "observed": "AuthenticatedBen actualEN18Qhref, historicalmodel disclosure,194excision/100external cohort and associatedarchitecturaldistortionexample matchlocal. This is boundedliveverification, not all234route/mobile/media equivalence.",
+    "screenshot": "tmp/assessment-quality/batch09-live-calc-en.png"
+  }
 }

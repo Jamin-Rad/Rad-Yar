@@ -8,7 +8,8 @@ import InProgressBanner from '@/components/InProgressBanner'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
-import { KAVERNOM_LESSON } from '@/data/kavernom'
+import { KAVERNOM_LESSON, KAVERNOM_QUESTIONS } from '@/data/kavernom'
+import TopicAssessment from '@/components/lesson-template/TopicAssessment'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
 
 const L = (value, lang) => value?.[lang] || value?.de || value
@@ -278,6 +279,7 @@ export default function KavernomPage() {
 
         <div className={styles.main}>
           <Section id="grundlagen" title={c(KAVERNOM_LESSON.grundlagen.title)} lead={c(KAVERNOM_LESSON.grundlagen.lead)} migrationChapter>
+            <div className={styles.infoCard}><h3>{c({ de:'Lernziele', en:'Learning goals', fa:'هدف‌های یادگیری' })}</h3><ul>{KAVERNOM_LESSON.goals.map((goal,index)=><li key={index}>{c(goal)}</li>)}</ul></div>
             <Cards items={KAVERNOM_LESSON.grundlagen.items} lang={lang} />
             <Callout label={c(KAVERNOM_LESSON.keyLabel)}>{c(KAVERNOM_LESSON.grundlagen.key)}</Callout>
           </Section>
@@ -296,7 +298,7 @@ export default function KavernomPage() {
                   {KAVERNOM_LESSON.mrt.teachingImages.map(image => (
                     <figure key={image.src} style={{ margin: 0, minWidth: 0 }}>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img className={styles.caseImageAsset} src={image.src} alt={`${image.label} Kavernom`} />
+                      <img className={styles.caseImageAsset} src={image.src} alt={`${image.label} ${c({ de: 'Kavernom', en: 'cavernoma', fa: 'کاورنوم' })}`} />
                       <figcaption style={{ padding: '8px 10px', textAlign: 'center', fontWeight: 900 }}>{image.label}</figcaption>
                     </figure>
                   ))}
@@ -316,6 +318,7 @@ export default function KavernomPage() {
 
           <Section id="differenzial" title={c(KAVERNOM_LESSON.differenzial.title)} lead={c(KAVERNOM_LESSON.differenzial.lead)} migrationChapter>
             <Table headers={KAVERNOM_LESSON.differenzial.headers.map(c)} rows={rows(KAVERNOM_LESSON.differenzial.rows)} />
+            <TopicAssessment question={(KAVERNOM_QUESTIONS[lang] || KAVERNOM_QUESTIONS.de).find(question=>question.id.endsWith('-11'))} topic="kavernom" lang={lang} fach="gehirn" returnTo="/gehirn/vaskulaer/kavernom#differenzial" />
           </Section>
 
           <Section id="fall" title={c(KAVERNOM_LESSON.fall.title)} lead={c(KAVERNOM_LESSON.fall.lead)} migrationChapter>
@@ -360,6 +363,18 @@ export default function KavernomPage() {
           </div>
         </div>
       </div>
+
+      <footer className={styles.infoCard}>
+        <h2>{c({ de:'Quellen und Vertiefung', en:'Sources and further reading', fa:'منابع و مطالعهٔ بیشتر' })}</h2>
+        <p>{c({ de:'Dr. Zia: Gehirn.pdf, PDF-Seiten 31–32.', en:'Dr. Zia: Gehirn.pdf, PDF pages 31–32.', fa:'دکتر ضیا: Gehirn.pdf، صفحات PDF ۳۱–۳۲.' })}</p>
+        <ul>
+          <li><a href="https://doi.org/10.1227/neu.0000000000003459" target="_blank" rel="noreferrer">Akers et al. — CCM consensus update (2025 online)</a></li>
+          <li><a href="https://doi.org/10.1016/S1474-4422(15)00303-8" target="_blank" rel="noreferrer">Horne et al. — Untreated clinical course (2016)</a></li>
+          <li><a href="https://doi.org/10.3174/ajnr.A2893" target="_blank" rel="noreferrer">El-Koussy et al. — Capillary telangiectasia and SWI (2012)</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7964862/" target="_blank" rel="noreferrer">Nikoubashman et al. — MRI appearance and Zabramski patterns (2015)</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/24024078/" target="_blank" rel="noreferrer">Yi et al. — Thrombosed DVA and venous infarction (2013)</a></li>
+        </ul>
+      </footer>
 
       {zoomedImage && (
         <div className={styles.strokeImageModal} role="dialog" aria-modal="true" aria-label={c(zoomedImage.alt)} onClick={() => setZoomed(null)}>

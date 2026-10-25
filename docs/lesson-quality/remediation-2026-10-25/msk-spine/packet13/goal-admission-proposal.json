@@ -1,0 +1,159 @@
+{
+  "date": "2026-10-25",
+  "applied": false,
+  "target": "data/assessmentQuality/mskSpine.js routeCoverage /msk/trauma/frakturbeschreibung; Root maintained reviewed snapshot workflow",
+  "currentBefore": {
+    "route": "/msk/trauma/frakturbeschreibung",
+    "topicId": "frakturbeschreibung",
+    "learningGoals": [
+      {
+        "id": "report",
+        "text": {
+          "de": "Seite, Segment und Dislokation mit distalem Referenzfragment präzise berichten.",
+          "en": "Report side, segment and displacement using the distal reference fragment.",
+          "fa": "سمت، سگمان و جابه‌جایی را با مرجع قطعهٔ دیستال دقیق گزارش کنید."
+        },
+        "questionIds": [
+          "frakturbeschreibung-de-01",
+          "frakturbeschreibung-de-02",
+          "frakturbeschreibung-de-09",
+          "aq-msk-frakturbeschreibung-de-report-distal-reference"
+        ],
+        "cardIds": [
+          "frakturbeschreibung-01-system",
+          "frakturbeschreibung-03-distal",
+          "frakturbeschreibung-15-report"
+        ]
+      },
+      {
+        "id": "morphology",
+        "text": {
+          "de": "Morphologie und Knochenqualität mit Mechanismus und pathologischer Fraktur verknüpfen.",
+          "en": "Relate morphology and bone quality to mechanism and pathological fracture.",
+          "fa": "مورفولوژی و کیفیت استخوان را با مکانیسم و شکستگی پاتولوژیک مرتبط کنید."
+        },
+        "questionIds": [
+          "frakturbeschreibung-de-03",
+          "frakturbeschreibung-de-04",
+          "frakturbeschreibung-de-05",
+          "frakturbeschreibung-de-06",
+          "frakturbeschreibung-de-12"
+        ],
+        "cardIds": [
+          "frakturbeschreibung-06-stress",
+          "frakturbeschreibung-07-pathologic",
+          "frakturbeschreibung-08-spiral",
+          "frakturbeschreibung-09-segmental"
+        ]
+      },
+      {
+        "id": "safety-imaging",
+        "text": {
+          "de": "Gelenkbeteiligung und offene Verletzung adressieren und Zusatzbildgebung begründen.",
+          "en": "Address joint involvement and open injury and justify additional imaging.",
+          "fa": "درگیری مفصل و آسیب باز را ارزیابی و تصویربرداری تکمیلی را توجیه کنید."
+        },
+        "questionIds": [
+          "frakturbeschreibung-de-07",
+          "frakturbeschreibung-de-08",
+          "frakturbeschreibung-de-10",
+          "frakturbeschreibung-de-11"
+        ],
+        "cardIds": [
+          "frakturbeschreibung-11-joint",
+          "frakturbeschreibung-12-open",
+          "frakturbeschreibung-13-ct",
+          "frakturbeschreibung-14-mri"
+        ]
+      }
+    ],
+    "status": "AUTHOR_PACKET_1_REVIEW_PENDING"
+  },
+  "after": {
+    "route": "/msk/trauma/frakturbeschreibung",
+    "topicId": "frakturbeschreibung",
+    "learningGoals": [
+      {
+        "id": "msk13-report-displacement",
+        "text": {
+          "de": "Anatomischen Ort und quantitative Stellung des distalen Fragments berichten; Translation, Apex-Winkel und Längenänderung unterscheiden.",
+          "en": "Report anatomy and quantitative distal-fragment position; distinguish translation, apex angle and length change.",
+          "fa": "محل آناتومیک و وضعیت کمی قطعهٔ دیستال را گزارش کنید؛ انتقال، زاویهٔ رأس و تغییر طول را جدا کنید."
+        },
+        "questionIds": [
+          "frakturbeschreibung-de-01",
+          "frakturbeschreibung-de-02",
+          "frakturbeschreibung-de-09",
+          "aq-msk-frakturbeschreibung-de-report-distal-reference"
+        ],
+        "cardIds": [
+          "frakturbeschreibung-01-system",
+          "frakturbeschreibung-02-location",
+          "frakturbeschreibung-03-distal",
+          "frakturbeschreibung-04-translation",
+          "frakturbeschreibung-05-angulation",
+          "frakturbeschreibung-15-report"
+        ]
+      },
+      {
+        "id": "msk13-load-morphology",
+        "text": {
+          "de": "Linien- und Fragmentmuster sowie Belastung und Knochenqualität unterscheiden, ohne Mechanismus, Stabilität oder Läsionsursache allein daraus zu beweisen.",
+          "en": "Distinguish line/fragment patterns, loading and bone quality without treating them alone as proof of mechanism, stability or lesion cause.",
+          "fa": "الگوهای خط و قطعه، بارگذاری و کیفیت استخوان را تفکیک کنید، بدون آنکه به‌تنهایی مکانیسم، پایداری یا علت ضایعه را اثبات‌شده بدانید."
+        },
+        "questionIds": [
+          "frakturbeschreibung-de-03",
+          "frakturbeschreibung-de-04",
+          "frakturbeschreibung-de-05",
+          "frakturbeschreibung-de-06",
+          "frakturbeschreibung-de-12"
+        ],
+        "cardIds": [
+          "frakturbeschreibung-06-stress",
+          "frakturbeschreibung-07-pathologic",
+          "frakturbeschreibung-08-spiral",
+          "frakturbeschreibung-09-segmental",
+          "frakturbeschreibung-10-avulsion"
+        ],
+        "derivedAliasIds": [
+          "stressfrakturen-basics"
+        ]
+      },
+      {
+        "id": "msk13-joint-soft-tissue",
+        "text": {
+          "de": "Gelenkstufe und Frakturspalt getrennt messen und den Verdacht einer offenen Verletzung zur klinischen Abklärung kommunizieren.",
+          "en": "Measure articular step and fracture gap separately and communicate suspected open injury for clinical assessment.",
+          "fa": "پلهٔ مفصلی و فاصلهٔ شکستگی را جدا اندازه بگیرید و شک به آسیب باز را برای ارزیابی بالینی اطلاع دهید."
+        },
+        "questionIds": [
+          "frakturbeschreibung-de-07",
+          "frakturbeschreibung-de-08"
+        ],
+        "cardIds": [
+          "frakturbeschreibung-11-joint",
+          "frakturbeschreibung-12-open"
+        ]
+      },
+      {
+        "id": "msk13-targeted-imaging",
+        "text": {
+          "de": "CT zur knöchernen Gelenkfragmentdarstellung und geeignete MRT zur okkulten Stressverletzung begründen; Ödem von spezifischem Frakturnachweis unterscheiden.",
+          "en": "Justify CT for bony articular fragment mapping and appropriate MRI for occult stress injury; distinguish oedema from specific fracture proof.",
+          "fa": "CT را برای نقشهٔ قطعات استخوانی مفصل و MRI مناسب را برای آسیب استرسی مخفی توجیه کنید؛ ادم را از اثبات اختصاصی شکستگی جدا کنید."
+        },
+        "questionIds": [
+          "frakturbeschreibung-de-10",
+          "frakturbeschreibung-de-11"
+        ],
+        "cardIds": [
+          "frakturbeschreibung-13-ct",
+          "frakturbeschreibung-14-mri"
+        ]
+      }
+    ],
+    "status": "AUTHOR_FULL_ORIGINAL_POOL_REVIEW_PENDING"
+  },
+  "note": "Preserve the accepted aq-msk report-distal-reference question. No new question/card supplement is required; canonical12Q/15cards plus derived stress alias already flow into globals. derivedAliasIds documents cross-deck effect, not a new card quota. Root changes status/admission only after independent acceptance."
+}

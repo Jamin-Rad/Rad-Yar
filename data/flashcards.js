@@ -2549,353 +2549,345 @@ const LEGACY_FLASHCARDS = [
     }
   },
   {
-    "id": "fnh-01-definition",
-    "topicId": "fnh",
-    "category": {
-      "de": "Grundlagen",
-      "en": "Basics",
-      "fa": "مبانی"
-    },
-    "front": {
-      "de": "Was ist die FNH pathologisch?",
-      "en": "What is FNH pathologically?",
-      "fa": "FNH از نظر پاتولوژی چیست؟"
-    },
-    "answer": {
-      "de": "Benigne, regenerative Raumforderung der Leber.",
-      "en": "Benign, regenerative liver lesion.",
-      "fa": "ضایعه خوش‌خیم و رژنراتیو کبد."
-    },
-    "explanation": {
-      "de": "Die FNH entsteht durch eine lokale hyperplastische Reaktion des Leberparenchyms auf eine vorbestehende Gefäßanomalie. Sie ist kein echter Tumor und erfordert in der Regel keine Therapie.",
-      "en": "FNH arises from a local hyperplastic response of the liver parenchyma to a pre-existing vascular anomaly. It is not a true tumour and generally does not require treatment.",
-      "fa": "FNH از یک پاسخ هیپرپلاستیک موضعی پارانشیم کبد به یک ناهنجاری عروقی زمینه‌ای ایجاد می‌شود. تومور واقعی نیست و معمولاً نیاز به درمان ندارد."
-    },
-    "diagram": {
-      "de": "Regenerative Hyperplasie → benigne → meist keine Therapie",
-      "en": "Regenerative hyperplasia → benign → usually no treatment",
-      "fa": "هیپرپلازی رژنراتیو → خوش‌خیم → معمولاً بدون درمان"
-    }
+  "id": "fnh-01-definition",
+  "topicId": "fnh",
+  "category": {
+    "de": "Grundlagen",
+    "en": "Basics",
+    "fa": "مبانی"
   },
+  "front": {
+    "de": "Was ist die FNH pathologisch?",
+    "en": "What is FNH pathologically?",
+    "fa": "FNH از نظر پاتولوژی چیست؟"
+  },
+  "answer": {
+    "de": "Benigne, regenerative Raumforderung der Leber.",
+    "en": "Benign, regenerative liver lesion.",
+    "fa": "ضایعه خوش‌خیم و رژنراتیو کبد."
+  },
+  "explanation": {
+    "de": "FNH gilt als lokale regenerative Reaktion auf eine veränderte arterielle Versorgung, nicht als echte Neoplasie. Die Konsequenz hängt davon ab, ob die Diagnose bildgebend sicher ist.",
+    "en": "FNH is regarded as a local regenerative response to altered arterial supply rather than a true neoplasm. Management depends on whether imaging establishes the diagnosis confidently.",
+    "fa": "FNH واکنش رژنراتیو موضعی به خون‌رسانی شریانی تغییریافته دانسته می‌شود، نه نئوپلازی واقعی. مدیریت به اطمینان تشخیص تصویربرداری بستگی دارد."
+  },
+  "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+  "sources": [
+    "https://doi.org/10.1016/j.jhep.2016.04.001"
+  ]
+},
   {
-    "id": "fnh-02-epidemiologie",
-    "topicId": "fnh",
-    "category": {
-      "de": "Grundlagen",
-      "en": "Basics",
-      "fa": "مبانی"
-    },
-    "front": {
-      "de": "Welche Lebertumor-Läsion ist nach dem Hämangiom die zweithäufigste benigne?",
-      "en": "Which benign liver lesion is the second most common after haemangioma?",
-      "fa": "بعد از همانژیوم، دومین ضایعه خوش‌خیم شایع کبد کدام است؟"
-    },
-    "answer": {
-      "de": "Die FNH.",
-      "en": "FNH.",
-      "fa": "FNH."
-    },
-    "explanation": {
-      "de": "Die FNH betrifft bevorzugt junge bis mittelalte Frauen und wird häufig als Zufallsbefund entdeckt.",
-      "en": "FNH predominantly affects young to middle-aged women and is often found incidentally.",
-      "fa": "FNH بیشتر در زنان جوان تا میانسال دیده می‌شود و اغلب به‌صورت اتفاقی کشف می‌شود."
-    },
-    "diagram": {
-      "de": "2.-häufigste benigne Leberläsion → v.a. junge Frauen",
-      "en": "2nd most common benign liver lesion → mainly young women",
-      "fa": "دومین ضایعه خوش‌خیم شایع کبد → بیشتر زنان جوان"
-    }
+  "id": "fnh-02-epidemiologie",
+  "topicId": "fnh",
+  "category": {
+    "de": "Grundlagen",
+    "en": "Basics",
+    "fa": "مبانی"
   },
+  "front": {
+    "de": "Welcher gutartige solide Lebertumor folgt in der Häufigkeit auf das Hämangiom?",
+    "en": "Which benign solid liver tumour is second in frequency after haemangioma?",
+    "fa": "کدام تومور جامد خوش‌خیم کبد پس از همانژیوم از نظر شیوع در رتبهٔ دوم است؟"
+  },
+  "answer": {
+    "de": "Die FNH.",
+    "en": "FNH.",
+    "fa": "FNH."
+  },
+  "explanation": {
+    "de": "FNH wird bevorzugt bei jungen bis mittelalten Frauen entdeckt. Das ist ein epidemiologischer Hinweis; Demografie allein trennt FNH nicht sicher von HCA.",
+    "en": "FNH is predominantly detected in young to middle-aged women. This is an epidemiological clue; demographics alone do not distinguish FNH confidently from HCA.",
+    "fa": "FNH بیشتر در زنان جوان تا میانسال کشف می‌شود. این سرنخ اپیدمیولوژیک است؛ جمعیت‌شناسی به‌تنهایی FNH را به‌طور مطمئن از HCA جدا نمی‌کند."
+  },
+  "source": "https://doi.org/10.14309/ajg.0000000000002857",
+  "sources": [
+    "https://doi.org/10.14309/ajg.0000000000002857"
+  ]
+},
   {
-    "id": "fnh-03-sono",
-    "topicId": "fnh",
-    "category": {
-      "de": "Sonographie",
-      "en": "Ultrasound",
-      "fa": "سونوگرافی"
-    },
-    "front": {
-      "de": "Wie stellt sich eine FNH in der Sonographie meist dar?",
-      "en": "How does FNH typically appear on ultrasound?",
-      "fa": "FNH معمولاً در سونوگرافی چگونه دیده می‌شود؟"
-    },
-    "answer": {
-      "de": "Glatt begrenzt, rund, iso- bis leicht hypoechogen.",
-      "en": "Well-defined, round, iso- to mildly hypoechoic.",
-      "fa": "خوش‌حد، گرد، ایزو تا کمی هیپواکوژن."
-    },
-    "explanation": {
-      "de": "Die FNH ist sonographisch oft nur subtil von der übrigen Leber abgrenzbar, da sie ähnliches Gewebe wie das normale Leberparenchym enthält.",
-      "en": "FNH is often only subtly different from the surrounding liver on ultrasound because it consists of tissue similar to normal liver parenchyma.",
-      "fa": "FNH اغلب فقط به‌طور خفیف از بافت کبد در سونوگرافی قابل افتراق است، چون از بافتی شبیه پارانشیم نرمال کبد تشکیل شده است."
-    },
-    "diagram": {
-      "de": "Sono: glatt, rund, iso-/leicht hypoechogen → oft schwer abgrenzbar",
-      "en": "US: well-defined, round, iso-/mildly hypoechoic → often hard to delineate",
-      "fa": "سونو: خوش‌حد، گرد، ایزو/کمی هیپواکوژن → اغلب افتراق دشوار"
-    }
+  "id": "fnh-03-sono",
+  "topicId": "fnh",
+  "category": {
+    "de": "Sonographie",
+    "en": "Ultrasound",
+    "fa": "سونوگرافی"
   },
+  "front": {
+    "de": "Wie stellt sich eine FNH in der Sonographie meist dar?",
+    "en": "How does FNH typically appear on ultrasound?",
+    "fa": "FNH معمولاً در سونوگرافی چگونه دیده می‌شود؟"
+  },
+  "answer": {
+    "de": "Glatt begrenzt, rund, iso- bis leicht hypoechogen.",
+    "en": "Well-defined, round, iso- to mildly hypoechoic.",
+    "fa": "خوش‌حد، گرد، ایزو تا کمی هیپواکوژن."
+  },
+  "explanation": {
+    "de": "Die FNH ist sonographisch oft nur subtil von der übrigen Leber abgrenzbar, da sie ähnliches Gewebe wie das normale Leberparenchym enthält.",
+    "en": "FNH is often only subtly different from the surrounding liver on ultrasound because it consists of tissue similar to normal liver parenchyma.",
+    "fa": "FNH اغلب فقط به‌طور خفیف از بافت کبد در سونوگرافی قابل افتراق است، چون از بافتی شبیه پارانشیم نرمال کبد تشکیل شده است."
+  },
+  "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+  "sources": [
+    "https://doi.org/10.1016/j.jhep.2016.04.001"
+  ]
+},
   {
-    "id": "fnh-04-doppler",
-    "topicId": "fnh",
-    "category": {
-      "de": "Sonographie",
-      "en": "Ultrasound",
-      "fa": "سونوگرافی"
-    },
-    "front": {
-      "de": "Welches Doppler-Muster ist typisch für eine FNH?",
-      "en": "Which Doppler pattern is typical for FNH?",
-      "fa": "کدام الگوی داپلر برای FNH تیپیک است؟"
-    },
-    "answer": {
-      "de": "Spoke-wheel-Muster: ein zentrales Gefäß mit radiären Ästen.",
-      "en": "Spoke-wheel pattern: central vessel with radiating branches.",
-      "fa": "الگوی spoke-wheel: یک رگ مرکزی با شاخه‌های شعاعی."
-    },
-    "explanation": {
-      "de": "Dieses Muster entsteht durch die zentrale Versorgungsarterie der FNH, von der radiäre Gefäßäste in die Läsion ausstrahlen.",
-      "en": "This pattern results from the central feeding artery of FNH, from which radiating vessels extend into the lesion.",
-      "fa": "این الگو به دلیل شریان تغذیه‌کننده مرکزی FNH است که شاخه‌های عروقی رادیال از آن به داخل ضایعه می‌روند."
-    },
-    "diagram": {
-      "de": "Zentrales Gefäß → radiäre Äste = Spoke-wheel",
-      "en": "Central vessel → radiating branches = spoke-wheel",
-      "fa": "عروق مرکزی → شاخه‌های رادیال = spoke-wheel"
-    }
+  "id": "fnh-04-doppler",
+  "topicId": "fnh",
+  "category": {
+    "de": "Sonographie",
+    "en": "Ultrasound",
+    "fa": "سونوگرافی"
   },
+  "front": {
+    "de": "Welches Doppler-Muster ist typisch für eine FNH?",
+    "en": "Which Doppler pattern is typical for FNH?",
+    "fa": "کدام الگوی داپلر برای FNH تیپیک است؟"
+  },
+  "answer": {
+    "de": "Spoke-wheel-Muster: ein zentrales Gefäß mit radiären Ästen.",
+    "en": "Spoke-wheel pattern: central vessel with radiating branches.",
+    "fa": "الگوی spoke-wheel: یک رگ مرکزی با شاخه‌های شعاعی."
+  },
+  "explanation": {
+    "de": "Die zentrale Versorgungsarterie und radiäre Äste erzeugen dieses Muster. Es unterstützt FNH, ersetzt aber nicht die vollständige Charakterisierung einer unklaren soliden Läsion.",
+    "en": "The central feeding artery and radial branches produce this pattern. It supports FNH but does not replace complete characterisation of an indeterminate solid lesion.",
+    "fa": "شریان تغذیه‌کنندهٔ مرکزی و شاخه‌های شعاعی این الگو را می‌سازند. الگو از FNH حمایت می‌کند، اما جای تعیین ماهیت کامل ضایعهٔ جامد نامشخص را نمی‌گیرد."
+  },
+  "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+  "sources": [
+    "https://doi.org/10.1016/j.jhep.2016.04.001"
+  ]
+},
   {
-    "id": "fnh-05-ct",
-    "topicId": "fnh",
-    "category": {
-      "de": "CT",
-      "en": "CT",
-      "fa": "CT"
-    },
-    "front": {
-      "de": "Wie verhält sich die FNH früharteriell in der CT?",
-      "en": "How does FNH behave in the early arterial phase on CT?",
-      "fa": "رفتار FNH در فاز شریانی زودرس CT چگونه است؟"
-    },
-    "answer": {
-      "de": "Kräftige, homogene Kontrastmittelaufnahme.",
-      "en": "Strong, homogeneous enhancement.",
-      "fa": "تقویت پس از تزریق قوی و هموژن."
-    },
-    "explanation": {
-      "de": "Im Gegensatz zum Hämangiom zeigt die FNH eine rasche, homogene arterielle Anreicherung, ohne periphere noduläre Aufnahme oder zentripetale Auffüllung.",
-      "en": "Unlike haemangioma, FNH shows rapid, homogeneous arterial enhancement without peripheral nodular enhancement or centripetal fill-in.",
-      "fa": "برخلاف همانژیوم، FNH تقویت شریانی سریع و هموژن دارد، بدون تقویت پس از تزریق ندولار محیطی یا پرشدگی مرکزگرا."
-    },
-    "diagram": {
-      "de": "Früharteriell: homogen kräftig → kein peripher-nodulär",
-      "en": "Early arterial: homogeneous strong → not peripheral-nodular",
-      "fa": "شریانی زودرس: هموژن قوی → نه ندولار محیطی"
-    }
+  "id": "fnh-05-ct",
+  "topicId": "fnh",
+  "category": {
+    "de": "CT",
+    "en": "CT",
+    "fa": "CT"
   },
+  "front": {
+    "de": "Wie verhält sich die FNH früharteriell in der CT?",
+    "en": "How does FNH behave in the early arterial phase on CT?",
+    "fa": "رفتار FNH در فاز شریانی زودرس CT چگونه است؟"
+  },
+  "answer": {
+    "de": "Kräftige, homogene Kontrastmittelaufnahme.",
+    "en": "Strong, homogeneous enhancement.",
+    "fa": "جذب واضح و همگن مادهٔ حاجب."
+  },
+  "explanation": {
+    "de": "Im Vergleich zum klassischen Hämangiommuster zeigt typische FNH eine rasche, homogene arterielle Anreicherung statt diskontinuierlicher peripherer Kontrastknoten mit späterer zentripetaler Auffüllung.",
+    "en": "Compared with the classic haemangioma pattern, typical FNH shows rapid, homogeneous arterial enhancement rather than discontinuous peripheral nodules with later centripetal fill-in.",
+    "fa": "برخلاف الگوی کلاسیک همانژیوم، FNH تیپیک جذب شریانی سریع و همگن دارد؛ نه ندول‌های محیطی ناپیوسته با پرشدگی مرکزگرای بعدی."
+  },
+  "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+  "sources": [
+    "https://doi.org/10.1016/j.jhep.2016.04.001"
+  ]
+},
   {
-    "id": "fnh-06-washout",
-    "topicId": "fnh",
-    "category": {
-      "de": "CT",
-      "en": "CT",
-      "fa": "CT"
-    },
-    "front": {
-      "de": "Was passiert mit der FNH in der portalvenösen/Spätphase?",
-      "en": "What happens to FNH in the portal venous/delayed phase?",
-      "fa": "در فاز پورتال/تأخیری چه اتفاقی برای FNH می‌افتد؟"
-    },
-    "answer": {
-      "de": "Sie gleicht sich dem Leberparenchym an, kein Wash-out.",
-      "en": "It equalises with the liver parenchyma, no wash-out.",
-      "fa": "با پارانشیم کبد تطابق می‌یابد، بدون واش‌اوت."
-    },
-    "explanation": {
-      "de": "Das Muster passt zur typischen FNH, schließt ein HCC aber nicht allein aus. Risikokontext und vollständige Phasenbeurteilung bleiben wichtig.",
-      "en": "The pattern fits typical FNH but does not alone exclude HCC. Risk context and full-phase assessment remain important.",
-      "fa": "این الگو با FNH تیپیک سازگار است، اما به‌تنهایی HCC را رد نمی‌کند. زمینهٔ خطر و ارزیابی کامل فازها همچنان مهم‌اند."
-    },
-    "diagram": {
-      "de": "Homogen arteriell → Angleichung ohne typisches Wash-out → passt im Kontext zur FNH; kein HCC-Ausschluss",
-      "en": "Homogeneous arterial → equalisation without typical wash-out → supports FNH in context; does not exclude HCC",
-      "fa": "تقویت شریانی هموژن → تطابق بدون واش‌اوت تیپیک → در زمینهٔ مناسب به نفع FNH است؛ HCC را رد نمی‌کند"
-    }
+  "id": "fnh-06-washout",
+  "topicId": "fnh",
+  "category": {
+    "de": "CT",
+    "en": "CT",
+    "fa": "CT"
   },
+  "front": {
+    "de": "Welches spätere Kontrastmittelverhalten passt zur typischen FNH in CT bzw. dynamischer MRT?",
+    "en": "Which later contrast behaviour fits typical FNH on CT or dynamic MRI?",
+    "fa": "کدام رفتار مادهٔ حاجب در فازهای بعدی CT یا MRI دینامیک با FNH تیپیک سازگار است؟"
+  },
+  "answer": {
+    "de": "Typischerweise Angleichung an das Leberparenchym ohne typisches Wash-out.",
+    "en": "Typically equalisation to liver parenchyma without typical washout.",
+    "fa": "معمولاً تطابق با پارانشیم کبد بدون واش‌اوت تیپیک."
+  },
+  "explanation": {
+    "de": "Das Muster passt zur typischen FNH, schließt ein HCC aber nicht allein aus. Risikokontext und vollständige Phasenbeurteilung bleiben wichtig.",
+    "en": "The pattern fits typical FNH but does not alone exclude HCC. Risk context and full-phase assessment remain important.",
+    "fa": "این الگو با FNH تیپیک سازگار است، اما به‌تنهایی HCC را رد نمی‌کند. زمینهٔ خطر و ارزیابی کامل فازها همچنان مهم‌اند."
+  },
+  "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+  "sources": [
+    "https://doi.org/10.1016/j.jhep.2016.04.001"
+  ]
+},
   {
-    "id": "fnh-07-t1t2",
-    "topicId": "fnh",
-    "category": {
-      "de": "MRT",
-      "en": "MRI",
-      "fa": "MRI"
-    },
-    "front": {
-      "de": "Wie ist das T1/T2-Signal der FNH zum Leberparenchym?",
-      "en": "What is the T1/T2 signal of FNH relative to the liver parenchyma?",
-      "fa": "سیگنال T1/T2 FNH نسبت به پارانشیم کبد چگونه است؟"
-    },
-    "answer": {
-      "de": "Iso- bis leicht hypointens in T1, iso- bis leicht hyperintens in T2.",
-      "en": "Iso- to mildly hypointense on T1, iso- to mildly hyperintense on T2.",
-      "fa": "ایزو تا کمی هیپواینتنس در T1، ایزو تا کمی هایپراینتنس در T2."
-    },
-    "explanation": {
-      "de": "Da die FNH aus ähnlichem Gewebe wie das umgebende Leberparenchym besteht, ist sie nativ oft nur diskret abgrenzbar.",
-      "en": "Because FNH consists of tissue similar to the surrounding liver parenchyma, it is often only subtly visible on non-contrast images.",
-      "fa": "چون FNH از بافتی شبیه پارانشیم اطراف تشکیل شده، اغلب در تصاویر بدون کنتراست فقط به‌طور خفیف قابل مشاهده است."
-    },
-    "diagram": {
-      "de": "T1: iso/leicht hypo · T2: iso/leicht hyper → diskret",
-      "en": "T1: iso/mildly hypo · T2: iso/mildly hyper → subtle",
-      "fa": "T1: ایزو/کمی هیپو · T2: ایزو/کمی هایپر → خفیف"
-    }
+  "id": "fnh-07-t1t2",
+  "topicId": "fnh",
+  "category": {
+    "de": "MRT",
+    "en": "MRI",
+    "fa": "MRI"
   },
+  "front": {
+    "de": "Wie ist das T1/T2-Signal der FNH zum Leberparenchym?",
+    "en": "What is the T1/T2 signal of FNH relative to the liver parenchyma?",
+    "fa": "سیگنال T1/T2 FNH نسبت به پارانشیم کبد چگونه است؟"
+  },
+  "answer": {
+    "de": "Iso- bis leicht hypointens in T1, iso- bis leicht hyperintens in T2.",
+    "en": "Iso- to mildly hypointense on T1, iso- to mildly hyperintense on T2.",
+    "fa": "ایزو تا کمی هیپواینتنس در T1، ایزو تا کمی هایپراینتنس در T2."
+  },
+  "explanation": {
+    "de": "Da die FNH aus ähnlichem Gewebe wie das umgebende Leberparenchym besteht, ist sie nativ oft nur diskret abgrenzbar.",
+    "en": "Because FNH consists of tissue similar to the surrounding liver parenchyma, it is often only subtly visible on non-contrast images.",
+    "fa": "چون FNH از بافتی شبیه پارانشیم اطراف تشکیل شده، اغلب در تصاویر بدون کنتراست فقط به‌طور خفیف قابل مشاهده است."
+  },
+  "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+  "sources": [
+    "https://doi.org/10.1016/j.jhep.2016.04.001"
+  ]
+},
   {
-    "id": "fnh-08-narbe",
-    "topicId": "fnh",
-    "category": {
-      "de": "MRT",
-      "en": "MRI",
-      "fa": "MRI"
-    },
-    "front": {
-      "de": "Wie sieht die zentrale Narbe der FNH in T1 und T2 aus?",
-      "en": "What does the central scar of FNH look like on T1 and T2?",
-      "fa": "اسکار مرکزی FNH در T1 و T2 چگونه به نظر می‌رسد؟"
-    },
-    "answer": {
-      "de": "Hyperintens in T2, hypointens in T1, mit verzögerter KM-Aufnahme.",
-      "en": "Hyperintense on T2, hypointense on T1, with delayed enhancement.",
-      "fa": "هایپراینتنس در T2، هیپواینتنس در T1، با تقویت تأخیری."
-    },
-    "explanation": {
-      "de": "Die zentrale Narbe besteht aus fibrösem Gewebe mit Gefäßen und Gallengängen und ist charakteristisch für ca. 70% der FNH-Fälle.",
-      "en": "The central scar consists of fibrous tissue with vessels and bile ducts and is characteristic of about 70% of FNH cases.",
-      "fa": "اسکار مرکزی از بافت فیبروز همراه با عروق و مجاری صفراوی تشکیل شده و در حدود ۷۰٪ موارد FNH تیپیک است."
-    },
-    "diagram": {
-      "de": "Narbe: T2 hyper, T1 hypo, KM-Aufnahme spät (~70%)",
-      "en": "Scar: T2 hyper, T1 hypo, delayed enhancement (~70%)",
-      "fa": "اسکار: T2 هایپر، T1 هیپو، تقویت تأخیری (~۷۰٪)"
-    }
+  "id": "fnh-08-narbe",
+  "topicId": "fnh",
+  "category": {
+    "de": "MRT",
+    "en": "MRI",
+    "fa": "MRI"
   },
+  "front": {
+    "de": "Wie verhält sich eine erkennbare zentrale FNH-Narbe in MRT mit extrazellulärem Kontrastmittel?",
+    "en": "How does a visible FNH central scar behave on MRI with extracellular contrast?",
+    "fa": "اسکار مرکزی قابل‌مشاهدهٔ FNH در MRI با مادهٔ حاجب خارج‌سلولی چگونه رفتار می‌کند؟"
+  },
+  "answer": {
+    "de": "Hyperintens in T2, hypointens in T1, mit verzögerter KM-Aufnahme.",
+    "en": "Hyperintense on T2, hypointense on T1, with delayed enhancement.",
+    "fa": "هایپراینتنس در T2، هیپواینتنس در T1، با تقویت تأخیری."
+  },
+  "explanation": {
+    "de": "Die Narbe ist charakteristisch, aber nicht obligat. Ihre verzögerte extrazelluläre Anreicherung ist von der hepatobiliären Aufnahme des übrigen Läsionsgewebes zu unterscheiden.",
+    "en": "The scar is characteristic but not obligatory. Its delayed extracellular enhancement differs from hepatobiliary uptake of the remaining lesion tissue.",
+    "fa": "اسکار مشخصهٔ ضایعه است، اما الزامی نیست. جذب تأخیری خارج‌سلولی اسکار با جذب هپاتوبیلیاری سایر بافت ضایعه متفاوت است."
+  },
+  "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+  "sources": [
+    "https://doi.org/10.1016/j.jhep.2016.04.001"
+  ]
+},
   {
-    "id": "fnh-09-narbe-haeufigkeit",
-    "topicId": "fnh",
-    "category": {
-      "de": "MRT",
-      "en": "MRI",
-      "fa": "MRI"
-    },
-    "front": {
-      "de": "Ist die zentrale Narbe bei jeder FNH vorhanden?",
-      "en": "Is the central scar present in every FNH?",
-      "fa": "آیا اسکار مرکزی در همه موارد FNH وجود دارد؟"
-    },
-    "answer": {
-      "de": "Nein, charakteristisch aber nicht obligat (ca. 70%).",
-      "en": "No, characteristic but not obligatory (about 70%).",
-      "fa": "نه، تیپیک است ولی الزامی نیست (حدود ۷۰٪)."
-    },
-    "explanation": {
-      "de": "Etwa 30% der FNH zeigen keine zentrale Narbe, was die Diagnose erschweren kann, besonders bei kleinen Läsionen.",
-      "en": "About 30% of FNH lesions show no central scar, which can make the diagnosis more difficult, especially for small lesions.",
-      "fa": "حدود ۳۰٪ از FNH اسکار مرکزی ندارند، که می‌تواند تشخیص را به‌خصوص در ضایعات کوچک دشوارتر کند."
-    },
-    "diagram": {
-      "de": "Zentrale Narbe ≈ 70% → nicht obligat",
-      "en": "Central scar ≈ 70% → not obligatory",
-      "fa": "اسکار مرکزی ≈ ۷۰٪ → الزامی نیست"
-    }
+  "id": "fnh-09-narbe-haeufigkeit",
+  "topicId": "fnh",
+  "category": {
+    "de": "MRT",
+    "en": "MRI",
+    "fa": "MRI"
   },
+  "front": {
+    "de": "Ist die zentrale Narbe bei jeder FNH vorhanden?",
+    "en": "Is the central scar present in every FNH?",
+    "fa": "آیا اسکار مرکزی در همه موارد FNH وجود دارد؟"
+  },
+  "answer": {
+    "de": "Nein. Eine Narbe kann fehlen oder nicht erkennbar sein, besonders bei kleinen FNH.",
+    "en": "No. A scar may be absent or not visible, particularly in small FNH.",
+    "fa": "خیر. اسکار ممکن است وجود نداشته باشد یا دیده نشود، به‌ویژه در FNH کوچک."
+  },
+  "explanation": {
+    "de": "Die Diagnose beruht auf der Kombination aus nativem Signal, Dynamik und gegebenenfalls hepatobiliärer Phase. Eine fehlende Narbe allein beweist weder HCA noch Malignität.",
+    "en": "Diagnosis relies on combined native signal, dynamic behaviour and, when used, the hepatobiliary phase. An absent scar alone proves neither HCA nor malignancy.",
+    "fa": "تشخیص بر ترکیب سیگنال پایه، رفتار دینامیک و در صورت استفاده، فاز هپاتوبیلیاری استوار است. نبود اسکار به‌تنهایی نه HCA و نه بدخیمی را ثابت می‌کند."
+  },
+  "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+  "sources": [
+    "https://doi.org/10.1016/j.jhep.2016.04.001"
+  ]
+},
   {
-    "id": "fnh-10-atypisch",
-    "topicId": "fnh",
-    "category": {
-      "de": "Differentialdiagnose",
-      "en": "Differential diagnosis",
-      "fa": "تشخیص افتراقی"
-    },
-    "front": {
-      "de": "Welche Merkmale kennzeichnen eine atypische FNH (ca. 20%)?",
-      "en": "Which features characterise atypical FNH (about 20%)?",
-      "fa": "کدام ویژگی‌ها FNH آتیپیک (حدود ۲۰٪) را مشخص می‌کنند؟"
-    },
-    "answer": {
-      "de": "Fehlende zentrale Narbe, heterogenes Bild, Pseudokapsel oder intraläsionales Fett.",
-      "en": "Absent central scar, heterogeneous appearance, pseudocapsule, or intralesional fat.",
-      "fa": "نبود اسکار مرکزی، ظاهر هتروژن، پسودوکپسول یا چربی داخل ضایعه."
-    },
-    "explanation": {
-      "de": "Diese Merkmale erschweren die Abgrenzung zu anderen Lebertumoren wie Adenom oder HCC und können eine weitere Abklärung erforderlich machen.",
-      "en": "These features make differentiation from other liver tumours such as adenoma or HCC more difficult and may require further work-up.",
-      "fa": "این ویژگی‌ها افتراق از سایر تومورهای کبدی مانند آدنوم یا HCC را دشوارتر می‌کنند و ممکن است بررسی بیشتر لازم باشد."
-    },
-    "diagram": {
-      "de": "Atypisch (~20%): keine Narbe + heterogen + Pseudokapsel/Fett",
-      "en": "Atypical (~20%): no scar + heterogeneous + pseudocapsule/fat",
-      "fa": "آتیپیک (~۲۰٪): بدون اسکار + هتروژن + پسودوکپسول/چربی"
-    }
+  "id": "fnh-10-atypisch",
+  "topicId": "fnh",
+  "category": {
+    "de": "Differentialdiagnose",
+    "en": "Differential diagnosis",
+    "fa": "تشخیص افتراقی"
   },
+  "front": {
+    "de": "Welche Abweichungen können die bildgebende Zuordnung einer FNH erschweren?",
+    "en": "Which departures from the usual pattern can make imaging classification of FNH difficult?",
+    "fa": "کدام انحراف‌ها از الگوی معمول می‌توانند تعیین ماهیت تصویری FNH را دشوار کنند؟"
+  },
+  "answer": {
+    "de": "Fehlende zentrale Narbe, heterogenes Bild, Pseudokapsel oder intraläsionales Fett.",
+    "en": "Absent central scar, heterogeneous appearance, pseudocapsule, or intralesional fat.",
+    "fa": "نبود اسکار مرکزی، ظاهر هتروژن، پسودوکپسول یا چربی داخل ضایعه."
+  },
+  "explanation": {
+    "de": "Keines dieser Merkmale beweist allein FNH oder Malignität. Bleibt die Zuordnung nach geeigneter Bildgebung unklar, sind spezialisierte MDT-Einordnung und gegebenenfalls Biopsie zu erwägen.",
+    "en": "None of these findings alone proves FNH or malignancy. If appropriate imaging remains indeterminate, specialist MDT review and possible biopsy should be considered.",
+    "fa": "هیچ‌یک از این یافته‌ها به‌تنهایی FNH یا بدخیمی را ثابت نمی‌کند. اگر پس از تصویربرداری مناسب تعیین ماهیت نامشخص بماند، ارزیابی در تیم تخصصی و احتمال بیوپسی مطرح است."
+  },
+  "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+  "sources": [
+    "https://doi.org/10.1016/j.jhep.2016.04.001",
+    "https://doi.org/10.14309/ajg.0000000000002857"
+  ]
+},
   {
-    "id": "fnh-11-dd-hcc",
-    "topicId": "fnh",
-    "category": {
-      "de": "Differentialdiagnose",
-      "en": "Differential diagnosis",
-      "fa": "تشخیص افتراقی"
-    },
-    "front": {
-      "de": "Welches Signal in der hepatobiliären MRT-Phase passt eher zu FNH als zu einem hepatozellulären Adenom?",
-      "en": "Which hepatobiliary-phase signal favours FNH over hepatocellular adenoma?",
-      "fa": "کدام سیگنال در فاز هپاتوبیلیاری MRI بیشتر به نفع FNH نسبت به آدنوم هپاتوسلولار است؟"
-    },
-    "answer": {
-      "de": "FNH ist meist iso- bis hyperintens; viele Adenome sind in der hepatobiliären Phase hypointens.",
-      "en": "FNH is usually iso- to hyperintense; many adenomas are hypointense on the hepatobiliary phase.",
-      "fa": "FNH معمولاً ایزو تا هایپرسیگنال است؛ بسیاری از آدنوم‌ها در فاز هپاتوبیلیاری هیپوسیگنال‌اند."
-    },
-    "explanation": {
-      "de": "Die hepatobiliäre Phase unterstützt die Abgrenzung, ist wegen Subtypen und Ausnahmen aber kein Einzelbeweis. Ergänzende Quelle: ACG 2024.",
-      "en": "The hepatobiliary phase supports differentiation but is not definitive because subtypes and exceptions exist. Supplementary source: ACG 2024.",
-      "fa": "فاز هپاتوبیلیاری به افتراق کمک می‌کند، اما به‌دلیل زیرگروه‌ها و استثناها به‌تنهایی قطعی نیست. منبع تکمیلی: ACG 2024."
-    },
-    "diagram": {
-      "de": "Hepatobiliäre Phase: FNH meist iso-/hyperintens, Adenom häufig hypointens",
-      "en": "Hepatobiliary phase: FNH usually iso-/hyperintense; adenoma often hypointense",
-      "fa": "فاز هپاتوبیلیاری: FNH معمولاً ایزو/هایپرسیگنال؛ آدنوم اغلب هیپوسیگنال"
-    }
+  "id": "fnh-11-dd-hcc",
+  "topicId": "fnh",
+  "category": {
+    "de": "Differentialdiagnose",
+    "en": "Differential diagnosis",
+    "fa": "تشخیص افتراقی"
   },
+  "front": {
+    "de": "Welches Signal in der hepatobiliären MRT-Phase passt eher zu FNH als zu einem hepatozellulären Adenom?",
+    "en": "Which hepatobiliary-phase signal favours FNH over hepatocellular adenoma?",
+    "fa": "کدام سیگنال در فاز هپاتوبیلیاری MRI بیشتر به نفع FNH نسبت به آدنوم هپاتوسلولار است؟"
+  },
+  "answer": {
+    "de": "FNH ist meist iso- bis hyperintens; viele Adenome sind in der hepatobiliären Phase hypointens.",
+    "en": "FNH is usually iso- to hyperintense; many adenomas are hypointense on the hepatobiliary phase.",
+    "fa": "FNH معمولاً ایزو تا هایپرسیگنال است؛ بسیاری از آدنوم‌ها در فاز هپاتوبیلیاری هیپوسیگنال‌اند."
+  },
+  "explanation": {
+    "de": "Auch bestimmte HCA-Subtypen, insbesondere β-Catenin-aktivierte HCA, können hepatobiliär iso-/hyperintens sein. Daher native Signale und Dynamik mitbeurteilen; ein heller HBP-Befund allein sichert FNH nicht.",
+    "en": "Certain HCA subtypes, especially β-catenin-activated HCA, can also be hepatobiliary iso-/hyperintense. Integrate native signals and dynamic behaviour; HBP brightness alone does not establish FNH.",
+    "fa": "برخی زیرگروه‌های HCA، به‌ویژه HCA با فعال‌شدن β-کاتنین، نیز ممکن است در فاز هپاتوبیلیاری ایزو/هایپرسیگنال باشند. سیگنال‌های پایه و رفتار دینامیک را هم بسنجید؛ روشن‌بودن HBP به‌تنهایی FNH را قطعی نمی‌کند."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/35920706/",
+  "sources": [
+    "https://doi.org/10.14309/ajg.0000000000002857",
+    "https://pubmed.ncbi.nlm.nih.gov/22733890/",
+    "https://pubmed.ncbi.nlm.nih.gov/35920706/"
+  ]
+},
   {
-    "id": "fnh-12-reporting",
-    "topicId": "fnh",
-    "category": {
-      "de": "Befundung",
-      "en": "Reporting",
-      "fa": "گزارش‌نویسی"
-    },
-    "front": {
-      "de": "Welche Versorgung braucht eine typische, sicher diagnostizierte FNH?",
-      "en": "What follow-up does typical, confidently diagnosed FNH need?",
-      "fa": "FNH تیپیک با تشخیص مطمئن به چه پیگیری‌ای نیاز دارد؟"
-    },
-    "answer": {
-      "de": "Bei typischer, sicher diagnostizierter FNH sind Behandlung und routinemäßige Verlaufskontrolle nicht erforderlich; bei vaskulärer Lebererkrankung gelten Ausnahmen.",
-      "en": "Typical, confidently diagnosed FNH needs no treatment or routine follow-up; underlying vascular liver disease is an exception.",
-      "fa": "در FNH تیپیک با تشخیص مطمئن، درمان و پیگیری روتین لازم نیست؛ بیماری زمینه‌ای عروقی کبد استثناست."
-    },
-    "explanation": {
-      "de": "Die EASL-Leitlinie empfiehlt bei typischer FNH keine Therapie und keine routinemäßige Verlaufskontrolle, außer bei zugrunde liegender vaskulärer Lebererkrankung. Bei atypischer Bildgebung oder Symptomen soll ein benign-liver-tumour-MDT die Befunde einordnen; ein pauschales Kontrollintervall lässt sich daraus nicht ableiten.",
-      "en": "EASL recommends no treatment or routine follow-up for typical FNH, except with underlying vascular liver disease. Atypical imaging or symptoms should be reviewed by a benign liver tumour MDT; this does not establish a blanket follow-up interval.",
-      "fa": "راهنمای EASL برای FNH تیپیک، درمان یا پیگیری روتین را توصیه نمی‌کند، مگر در بیماری زمینه‌ای عروقی کبد. در تصویربرداری آتیپیک یا وجود علائم، ارزیابی در تیم تخصصی تومورهای خوش‌خیم کبد مطرح است؛ این توصیه یک فاصلهٔ پیگیری همگانی تعیین نمی‌کند."
-    },
-    "diagram": {
-      "de": "typisch + sicher diagnostiziert → keine Therapie/Regelkontrolle\natypisch oder symptomatisch → spezialisierte Einordnung",
-      "en": "typical + confidently diagnosed → no treatment/routine follow-up\natypical or symptomatic → specialist review",
-      "fa": "تیپیک با تشخیص مطمئن → بدون درمان/پیگیری روتین\nآتیپیک یا علامت‌دار → ارزیابی تخصصی"
-    }
+  "id": "fnh-12-reporting",
+  "topicId": "fnh",
+  "category": {
+    "de": "Behandlung und Nachsorge",
+    "en": "Management and follow-up",
+    "fa": "درمان و پیگیری"
   },
+  "front": {
+    "de": "Welche Behandlung und Verlaufskontrolle braucht eine sicher typische asymptomatische FNH?",
+    "en": "What treatment and imaging follow-up does confidently typical asymptomatic FNH need?",
+    "fa": "FNH بی‌علامت و تیپیک با تشخیص مطمئن به چه درمان و پیگیری تصویربرداری نیاز دارد؟"
+  },
+  "answer": {
+    "de": "Bei typischer, sicher diagnostizierter FNH sind Behandlung und routinemäßige Verlaufskontrolle nicht erforderlich; bei vaskulärer Lebererkrankung gelten Ausnahmen.",
+    "en": "Typical, confidently diagnosed FNH needs no treatment or routine follow-up; underlying vascular liver disease is an exception.",
+    "fa": "در FNH تیپیک با تشخیص مطمئن، درمان و پیگیری روتین لازم نیست؛ بیماری زمینه‌ای عروقی کبد استثناست."
+  },
+  "explanation": {
+    "de": "Die EASL-Leitlinie empfiehlt bei typischer FNH keine Therapie und keine routinemäßige Verlaufskontrolle, außer bei zugrunde liegender vaskulärer Lebererkrankung. Bei atypischer Bildgebung oder Symptomen soll ein benign-liver-tumour-MDT die Befunde einordnen; ein pauschales Kontrollintervall lässt sich daraus nicht ableiten.",
+    "en": "EASL recommends no treatment or routine follow-up for typical FNH, except with underlying vascular liver disease. Atypical imaging or symptoms should be reviewed by a benign liver tumour MDT; this does not establish a blanket follow-up interval.",
+    "fa": "راهنمای EASL برای FNH تیپیک، درمان یا پیگیری روتین را توصیه نمی‌کند، مگر در بیماری زمینه‌ای عروقی کبد. در تصویربرداری آتیپیک یا وجود علائم، ارزیابی در تیم تخصصی تومورهای خوش‌خیم کبد مطرح است؛ این توصیه یک فاصلهٔ پیگیری همگانی تعیین نمی‌کند."
+  },
+  "source": "https://doi.org/10.1016/j.jhep.2016.04.001",
+  "sources": [
+    "https://doi.org/10.1016/j.jhep.2016.04.001",
+    "https://doi.org/10.14309/ajg.0000000000002857"
+  ]
+},
   {
   "id": "leberadenom-01-definition",
   "topicId": "leberadenom",

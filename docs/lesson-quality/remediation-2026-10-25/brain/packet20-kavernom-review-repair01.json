@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-25",
+  "author": "/root/brain_original_pools_next",
+  "status": "AUTHOR_EXACT_REPAIR_APPLIED_FRESH_INDEPENDENT_RETEST_REQUIRED",
+  "issues": [
+    "KAV20-LNG01",
+    "KAV20-LNG02"
+  ],
+  "deltas": [
+    {
+      "issue": "KAV20-LNG01",
+      "path": "cards.1.category",
+      "before": "MRT",
+      "after": {
+        "de": "MRT",
+        "en": "MRI",
+        "fa": "ام‌آر‌آی"
+      }
+    },
+    {
+      "issue": "KAV20-LNG02",
+      "path": "questions.fa.1.question",
+      "before": "در شک به کاورنوم‌های کوچک متعدد، کدام سکانس تکمیلی MRI برای کانون‌های کوچک حساسیت‌پذیری حساس‌تر است؟",
+      "after": "در شک به کاورنوم‌های کوچک متعدد، کدام سکانس تکمیلی MRI کانون‌های کوچک با اثر سوسپتیبیلیتی را حساس‌تر نشان می‌دهد؟"
+    },
+    {
+      "issue": "KAV20-LNG02",
+      "path": "questions.fa.1.options.0.text",
+      "before": "SWI با تفکیک بالا یا سکانس مدرن مشابه حساس به حساسیت‌پذیری",
+      "after": "SWI با تفکیک بالا یا سکانس مدرن مشابه حساس به سوسپتیبیلیتی"
+    },
+    {
+      "issue": "KAV20-LNG02",
+      "path": "cards.2.answer.fa",
+      "before": "SWI یا سکانس مدرن مشابه حساس به حساسیت‌پذیری.",
+      "after": "SWI یا سکانس مدرن مشابه حساس به سوسپتیبیلیتی."
+    }
+  ],
+  "tests": {
+    "exactRuntimeChangedFields": 4,
+    "allOtherQuestionsCardsLessonTopicCoverageUnchanged": true,
+    "allIdsKeysUnchanged": true,
+    "routeUnchanged": true
+  },
+  "sourceBeforeHash": "979adbb4859849f6c50aee419bee29825ec197906f26760b0301c4f721d307cb",
+  "sourceAfterHash": "ca24ec8b44420b69198860818b3b6d281811e602f1fa3400b8de82b6df2c7665",
+  "routeHash": "7bc2d99552d92c22a17dcce60289b9624efdb38fc5d079589d8620e4a063b230",
+  "sourceMeaning": "Locale/category and natural Persian susceptibility wording only; no clinical/key/source change."
+}

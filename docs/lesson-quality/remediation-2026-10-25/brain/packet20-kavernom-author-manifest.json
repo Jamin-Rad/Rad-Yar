@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-25",
+  "author": "/root/brain_original_pools_next",
+  "status": "AUTHOR_FULL_ORIGINAL_POOL_FROZEN_PEER_REVIEW_REQUIRED",
+  "route": "/gehirn/vaskulaer/kavernom",
+  "productionFiles": [
+    "data/kavernom.js",
+    "app/gehirn/vaskulaer/kavernom/page.js"
+  ],
+  "sourceHashes": {
+    "data/kavernom.js": "ca24ec8b44420b69198860818b3b6d281811e602f1fa3400b8de82b6df2c7665",
+    "app/gehirn/vaskulaer/kavernom/page.js": "7bc2d99552d92c22a17dcce60289b9624efdb38fc5d079589d8620e4a063b230"
+  },
+  "scope": {
+    "originalQuestionsPerLanguage": 12,
+    "currentQuestionsPerLanguage": 12,
+    "localizedQuestionObjects": 36,
+    "originalCards": 15,
+    "currentCardTriads": 15,
+    "newItems": 0,
+    "allOriginalKeys": "A; retained stable because no clinical key error remains",
+    "allDEENFAFieldsetsManuallyRead": true
+  },
+  "learningGoals": [
+    {
+      "id": "mri-pattern-limits",
+      "text": {
+        "de": "Typisches MRT-Muster, Suszeptibilitätsdiagnostik und Grenzen gegenüber Mimics erklären.",
+        "en": "Explain the typical MRI pattern, susceptibility imaging and limits against mimics.",
+        "fa": "الگوی تیپیک MRI، تصویربرداری حساسیت‌پذیری و محدودیت‌ها در برابر تقلیدکننده‌ها را توضیح دهید."
+      },
+      "questionIds": [
+        "kavernom-de-01",
+        "kavernom-de-02",
+        "kavernom-de-03",
+        "kavernom-de-04",
+        "kavernom-de-10",
+        "kavernom-de-11"
+      ],
+      "cardIds": [
+        "kavernom-01-definition",
+        "kavernom-02-popcorn",
+        "kavernom-03-swi",
+        "kavernom-04-dsa",
+        "kavernom-05-z2",
+        "kavernom-06-z4",
+        "kavernom-14-dd"
+      ]
+    },
+    {
+      "id": "familial-context",
+      "text": {
+        "de": "Multiple Kavernome im DVA-, Strahlen- und Familienkontext einordnen.",
+        "en": "Interpret multiple cavernomas using DVA, radiation and family context.",
+        "fa": "کاورنوم‌های متعدد را با زمینهٔ DVA، پرتودرمانی و خانوادگی تفسیر کنید."
+      },
+      "questionIds": [
+        "kavernom-de-05"
+      ],
+      "cardIds": [
+        "kavernom-07-familiaer"
+      ]
+    },
+    {
+      "id": "dva-drainage",
+      "text": {
+        "de": "Blutungsquelle und funktionelle DVA-Drainage unterscheiden und deren Erhalt planen.",
+        "en": "Distinguish the bleeding source from functional DVA drainage and plan its preservation.",
+        "fa": "منشأ خونریزی را از تخلیهٔ عملکردی DVA تفکیک و حفظ آن را در برنامه لحاظ کنید."
+      },
+      "questionIds": [
+        "kavernom-de-06",
+        "kavernom-de-07"
+      ],
+      "cardIds": [
+        "kavernom-10-dva",
+        "kavernom-11-dva-erhalt"
+      ]
+    },
+    {
+      "id": "clinical-risk",
+      "text": {
+        "de": "Klinische Symptome und Blutungsrisiko von isolierten MRT-Signaländerungen trennen.",
+        "en": "Distinguish clinical symptoms and haemorrhage risk from isolated MRI signal changes.",
+        "fa": "علائم بالینی و خطر خونریزی را از تغییرات منفرد سیگنال MRI جدا کنید."
+      },
+      "questionIds": [
+        "kavernom-de-08",
+        "kavernom-de-09"
+      ],
+      "cardIds": [
+        "kavernom-08-epilepsie",
+        "kavernom-09-risiko"
+      ]
+    },
+    {
+      "id": "report-management",
+      "text": {
+        "de": "Strukturiert berichten und kontextabhängige Behandlungsabwägung statt Automatismus begründen.",
+        "en": "Report systematically and justify context-dependent treatment assessment rather than an automatic intervention.",
+        "fa": "گزارش ساختاریافته و ارزیابی درمان وابسته به زمینه را به‌جای مداخلهٔ خودکار توجیه کنید."
+      },
+      "questionIds": [
+        "kavernom-de-09",
+        "kavernom-de-12"
+      ],
+      "cardIds": [
+        "kavernom-12-konservativ",
+        "kavernom-13-op",
+        "kavernom-15-befund"
+      ]
+    }
+  ],
+  "tests": {
+    "actualGlobalObjects": 51,
+    "specificWrongFeedbackFields": 108,
+    "originalIdsKeysUnchanged": true,
+    "questionConcepts": 12,
+    "cardTriads": 15,
+    "newItems": 0,
+    "goals": 5,
+    "goalQuestionUnion": 12,
+    "goalCardUnion": 15,
+    "all51CanonicalGlobalObjectsDeepEqual": true,
+    "allExistingCaseAndMediaPayloadsUnchanged": true,
+    "caseGalleryZoomAccessSourceBlocksUnchanged": true,
+    "routeJsxSyntax": "PASS",
+    "exactDeltaPaths": 545,
+    "teachingDeltaPaths": 80
+  },
+  "sources": "packet20-kavernom-sources.json",
+  "changes": "packet20-kavernom-changes.json",
+  "runtime": "tmp/assessment-quality/kavernom-author-runtime.json",
+  "plan": "packet20-kavernom-plan.md",
+  "sourceCoverage": "Actual userPDF31–32/printed30–31 text and bothpageimages freshly read; no wholePDF/media approval.",
+  "sharedIntegration": "No sharedsourcefiles edited or proposal needed for native bank records: originalcanonicalproducer already imported by centralquestions/flashcards. Goalcoverage export is proposal-only, Root admission after review. No newsupplementalIDs/cards.",
+  "clinicalFocus": [
+    "Q11nonexclusivehistologyambiguity resolved bypositiveMRIpattern; stablekeyA",
+    "SWIvsGRE,TypeIVsusceptibilityspecificity andDVA/radiation/familialcontext",
+    "Symptomaticintra/extralesionalbleeding distinct fromisolatedsignalchange",
+    "No enhancement-alone tumor diagnosis or automaticOP",
+    "OriginalQ09upgraded tofirst-attributable-seizure initialmanagement decision; noquotaaddition"
+  ],
+  "gates": {
+    "SRC": "AUTHOR_BOUNDED_SOURCE_VERIFIED_PEER_PENDING",
+    "EDU": "AUTHOR_FULL_ORIGINAL_POOL_REVISED_PEER_PENDING",
+    "LNG": "AUTHOR_ALLDEENFAREAD_PEER_PENDING",
+    "ASM": "AUTHOR_ACTUAL51GLOBALS_AND108FEEDBACK_PASS_PEER_PENDING",
+    "VIS": "EXISTINGMEDIAUNCHANGED_NOT_FULLFRAME_RIGHTS_APPROVAL",
+    "UX": "NOAUTHORBUILD_SERVER_BROWSER"
+  },
+  "limits": [
+    "This is author self-check, not independent clinical acceptance.",
+    "No complete89pagePDF,wholelesionstudy/media/contributor orDr.Ziaapproval.",
+    "Not every retained epidemiological/clinicalstatement newly adjudicated beyond markedsourceanchors.",
+    "Root owns actualbuild/browser/auth/RTL andpublication; no Git/build/server/browser bythisauthor."
+  ],
+  "repair01": {
+    "file": "packet20-kavernom-review-repair01.json",
+    "issues": [
+      "KAV20-LNG01",
+      "KAV20-LNG02"
+    ],
+    "exactRuntimeFields": 4,
+    "status": "AUTHOR_APPLIED_INDEPENDENT_FRESH_RETEST_PENDING"
+  },
+  "handoff": "packet20-kavernom-handoff.md"
+}

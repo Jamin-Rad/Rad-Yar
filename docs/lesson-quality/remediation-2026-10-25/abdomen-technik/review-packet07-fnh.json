@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root",
+  "author": "/root/design_inventory",
+  "route": "/abdomen/leber/fnh",
+  "status": "BOUNDED_FULL_ORIGINAL_POOL_ACCEPTED_WITH_RECORDED_DESKTOP_BROWSER",
+  "scope": "Independent read of all30proposed localized questions and12cardtriads,84teaching deltas. Supplied Abdomen physical14–15 text and both images inspected independently. Fresh EASL2016/ACG2024 relevant original indexed sections, Bieze2012 entire original abstract and Kim2023 original indexed synthesis/discussion/limitations. No new source figure copied. Author42shared Before objects remain unapplied at this review.",
+  "sources": [
+    "https://doi.org/10.1016/j.jhep.2016.04.001",
+    "https://doi.org/10.14309/ajg.0000000000002857",
+    "https://pubmed.ncbi.nlm.nih.gov/22733890/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC11759479/"
+  ],
+  "sourceReadLimits": "EASL/ACG publisher direct access unavailable; original indexed relevant text read, not guideline figure pixels. Bieze selected52patients/lesions>2cm is no universal sensitivity guarantee. Kim subtype uptake and retrospective/case selection limitations support qualitative exception only. No numerical meta-analysis estimate introduced.",
+  "gates": {
+    "SRC": "PASS_BOUNDED_CHANGED_CLAIMS",
+    "EDU": "PASS_BOUNDED_ASSESSMENT",
+    "VIS": "NOT_APPLICABLE_NO_NEW_MEDIA_INTERPRETATION",
+    "LNG": "PASS_BOUNDED_THREE_LANGUAGES",
+    "ASM": "PASS_ACTUAL_CANONICAL42_PAYLOADS",
+    "UX": "PASS_BOUNDED_DESKTOP_SCENARIOS_SEE_RELEASE10",
+    "REV": "PASS_REPAIR_RETEST_PENDING"
+  },
+  "findings": [
+    {
+      "id": "FNH07-LNG01",
+      "severity": "minor",
+      "where": [
+        "fnh-en-07.explanation",
+        "en.mri.lightBulbText"
+      ],
+      "observed": "enhances extracellular contrast on delay reverses the idiomatic subject/object of enhancement.",
+      "impact": "Awkward English obscures contrast timing and tissue enhancement.",
+      "required": "Use shows delayed enhancement with extracellular contrast while preserving scar/HBP distinction.",
+      "status": "CLOSED_INDEPENDENT_EXACT_REPAIR_RETEST"
+    },
+    {
+      "id": "FNH07-ASM02",
+      "severity": "minor",
+      "where": [
+        "fnh-05-ct.explanation.de",
+        "fnh-05-ct.explanation.en"
+      ],
+      "observed": "Unqualified Im Gegensatz zum Hämangiom/Unlike haemangioma is broader than the correct FA comparison with the classic haemangioma pattern.",
+      "impact": "Could imply homogeneous arterial enhancement excludes rapidly filling haemangioma.",
+      "required": "Qualify typical FNH versus classic peripheral nodular haemangioma pattern consistently across languages.",
+      "status": "CLOSED_INDEPENDENT_EXACT_REPAIR_RETEST"
+    },
+    {
+      "id": "FNH07-LNG03",
+      "severity": "minor",
+      "where": [
+        "fnh-12-reporting.category.de",
+        "fnh-12-reporting.category.en",
+        "fnh-12-reporting.category.fa"
+      ],
+      "observed": "Card now asks treatment/follow-up but remains categorized Befundung/Reporting/گزارش‌نویسی.",
+      "impact": "Misleading assessment naming.",
+      "required": "Rename category to management/follow-up in all3languages; retain stable cardID.",
+      "status": "CLOSED_INDEPENDENT_EXACT_REPAIR_RETEST"
+    }
+  ],
+  "assessmentJudgment": "Ten distinct concepts cover4stated goal groups; application scenarios02/09/10 complement pattern interpretation. One keyed best response per stem, plausible within-domain alternatives and90specific wrong explanations. No arbitrary count expansion required. Difficulty is editorial, no empirical item analysis. Native signal/HBP alone not diagnostic; scar not obligatory; management confidence/vascular disease exception retained.",
+  "remaining": [
+    "Deployment/liveverification",
+    "Fullmobile/theme/media andphysicianrelease separate"
+  ],
+  "physicianApproval": "pending",
+  "publication": "not_yet",
+  "repairRetest": {
+    "fields": 7,
+    "scope": "All7actual proposed/route repairs read independently; author wording accepted. Actual global42objects deepEqual finalAfter;90individual feedback fields and3inline canonical matches pass maintained test-fnh-reviewed.mjs. OriginalBefore42guards verified before root AST integration."
+  },
+  "browserEvidence": "../release-batch10.json actual scenarios and limitations"
+}
