@@ -1,0 +1,572 @@
+[
+  {
+    "kind": "question",
+    "lang": "de",
+    "id": "sehnenpathologien-hand-de-01",
+    "file": "data/wristExtensorAssessments.js",
+    "before": {
+      "id": "sehnenpathologien-hand-de-01",
+      "fach": "msk",
+      "tags": [
+        "sehnenpathologien-hand"
+      ],
+      "question": "Welche Sehne verläuft im sechsten Strecksehnenfach am Ulnastyloid?",
+      "options": [
+        {
+          "id": "A",
+          "text": "ECU · M. extensor carpi ulnaris"
+        },
+        {
+          "id": "B",
+          "text": "EPL · M. extensor pollicis longus"
+        },
+        {
+          "id": "C",
+          "text": "ECRL und ECRB"
+        },
+        {
+          "id": "D",
+          "text": "EDC und EIP"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Fach VI enthält die ECU-Sehne in einer eigenen Rinne am Ulnastyloid; das entspricht der Zuordnung in MSK.pdf p.41."
+    },
+    "after": {
+      "id": "sehnenpathologien-hand-de-01",
+      "fach": "msk",
+      "tags": [
+        "sehnenpathologien-hand"
+      ],
+      "question": "Textfall: Sie verfolgen eine einzelne Strecksehne in der dorsoulnaren Rinne der distalen Ulna nahe dem Ulnastyloid. Welche Sehne und welches reguläre Fach passen?",
+      "options": [
+        {
+          "id": "A",
+          "text": "ECU im Fach VI"
+        },
+        {
+          "id": "B",
+          "text": "EPL im Fach III"
+        },
+        {
+          "id": "C",
+          "text": "ECRL und ECRB im Fach II"
+        },
+        {
+          "id": "D",
+          "text": "EDC und EIP im Fach IV"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Die ECU-Sehne verläuft im sechsten dorsalen Fach an der distalen Ulna. Den knöchernen Landmarken und dem Sehnenverlauf folgen; eine einzelne axiale Lagebeziehung nicht mit einer Pathologiediagnose verwechseln.",
+      "wrongExplanations": {
+        "B": "EPL verläuft am Lister-Tuberkulum des Radius im Fach III, nicht in der ulnaren ECU-Rinne.",
+        "C": "ECRL und ECRB liegen gemeinsam radial des Lister-Tuberkulums im Fach II.",
+        "D": "EDC und EIP liegen im größeren zentralen Fach IV und nicht in der beschriebenen dorsoulnaren Einzelrinne."
+      },
+      "source": "MSK.pdf, physical page 41 (printed40); actual page and labels freshly visually read2026-10-25"
+    }
+  },
+  {
+    "kind": "question",
+    "lang": "de",
+    "id": "sehnenpathologien-hand-de-02",
+    "file": "data/wristExtensorAssessments.js",
+    "before": {
+      "id": "sehnenpathologien-hand-de-02",
+      "fach": "msk",
+      "tags": [
+        "sehnenpathologien-hand"
+      ],
+      "question": "Welche Gelenkverbindung ist in der Abbildung als „distales Handgelenk (Art. mediocarpalis)“ bezeichnet?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Mediokarpalgelenk zwischen den beiden Handwurzelreihen"
+        },
+        {
+          "id": "B",
+          "text": "Radiokarpalgelenk zwischen Radius und proximaler Handwurzelreihe"
+        },
+        {
+          "id": "C",
+          "text": "Daumensattelgelenk"
+        },
+        {
+          "id": "D",
+          "text": "Intermetakarpalgelenke"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Die Quelle bezeichnet die Verbindung zwischen proximaler und distaler Handwurzelreihe als distales Handgelenk bzw. Art. mediocarpalis (MSK.pdf, S.40)."
+    },
+    "after": {
+      "id": "sehnenpathologien-hand-de-02",
+      "fach": "msk",
+      "tags": [
+        "sehnenpathologien-hand"
+      ],
+      "question": "Bei der Orientierung der Handwurzel verfolgen Sie eine Gelenklinie zwischen proximaler und distaler Handwurzelreihe. Welches Gelenk ist gemeint?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Mediokarpalgelenk zwischen den beiden Handwurzelreihen"
+        },
+        {
+          "id": "B",
+          "text": "Radiokarpalgelenk zwischen Radius und proximaler Handwurzelreihe"
+        },
+        {
+          "id": "C",
+          "text": "Daumensattelgelenk zwischen Trapezium und Metakarpale I"
+        },
+        {
+          "id": "D",
+          "text": "Intermetakarpalgelenke zwischen benachbarten Metakarpalbasen"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Die beschriebene Verbindung ist das Mediokarpalgelenk. In der deutschen Quellenabbildung wird es auch „distales Handgelenk“ genannt; zur eindeutigen Befundbeschreibung die anatomische Gelenkbezeichnung verwenden.",
+      "wrongExplanations": {
+        "B": "Das Radiokarpalgelenk liegt proximal der proximalen Handwurzelreihe, nicht zwischen beiden Reihen.",
+        "C": "Das Daumensattelgelenk verbindet Trapezium und Metakarpale I; es trennt nicht die beiden Handwurzelreihen.",
+        "D": "Intermetakarpalgelenke verbinden benachbarte Mittelhandbasen distal der Handwurzel, nicht die beiden Handwurzelreihen."
+      },
+      "source": "MSK.pdf, physical page 40 (printed39); actual page and labels freshly visually read2026-10-25"
+    }
+  },
+  {
+    "kind": "question",
+    "lang": "en",
+    "id": "sehnenpathologien-hand-en-01",
+    "file": "data/wristExtensorAssessments.js",
+    "before": {
+      "id": "sehnenpathologien-hand-en-01",
+      "fach": "msk",
+      "tags": [
+        "sehnenpathologien-hand"
+      ],
+      "question": "Which tendon runs in the sixth extensor compartment at the ulnar styloid?",
+      "options": [
+        {
+          "id": "A",
+          "text": "ECU · extensor carpi ulnaris"
+        },
+        {
+          "id": "B",
+          "text": "EPL · extensor pollicis longus"
+        },
+        {
+          "id": "C",
+          "text": "ECRL and ECRB"
+        },
+        {
+          "id": "D",
+          "text": "EDC and EIP"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Compartment VI contains the ECU tendon in its own groove at the ulnar styloid, matching MSK.pdf p.41."
+    },
+    "after": {
+      "id": "sehnenpathologien-hand-en-01",
+      "fach": "msk",
+      "tags": [
+        "sehnenpathologien-hand"
+      ],
+      "question": "Text vignette: you trace a single extensor tendon in the dorsoulnar groove of the distal ulna near the ulnar styloid. Which tendon and usual compartment fit?",
+      "options": [
+        {
+          "id": "A",
+          "text": "ECU in compartment VI"
+        },
+        {
+          "id": "B",
+          "text": "EPL in compartment III"
+        },
+        {
+          "id": "C",
+          "text": "ECRL and ECRB in compartment II"
+        },
+        {
+          "id": "D",
+          "text": "EDC and EIP in compartment IV"
+        }
+      ],
+      "correct": "A",
+      "explanation": "ECU runs in the sixth dorsal compartment at the distal ulna. Follow the bony landmarks and tendon course; one axial anatomical relationship is not a pathology diagnosis.",
+      "wrongExplanations": {
+        "B": "EPL passes around the radial Lister tubercle in compartment III, not in the ulnar ECU groove.",
+        "C": "ECRL and ECRB share compartment II radial to Lister tubercle.",
+        "D": "EDC and EIP occupy the larger central compartment IV rather than the described dorsoulnar single-tendon groove."
+      },
+      "source": "MSK.pdf, physical page 41 (printed40); actual page and labels freshly visually read2026-10-25"
+    }
+  },
+  {
+    "kind": "question",
+    "lang": "en",
+    "id": "sehnenpathologien-hand-en-02",
+    "file": "data/wristExtensorAssessments.js",
+    "before": {
+      "id": "sehnenpathologien-hand-en-02",
+      "fach": "msk",
+      "tags": [
+        "sehnenpathologien-hand"
+      ],
+      "question": "Which joint is labelled “distal wrist (Art. mediocarpalis)” in the figure?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The midcarpal joint between the two carpal rows"
+        },
+        {
+          "id": "B",
+          "text": "The radiocarpal joint between radius and proximal carpal row"
+        },
+        {
+          "id": "C",
+          "text": "The thumb carpometacarpal joint"
+        },
+        {
+          "id": "D",
+          "text": "The intermetacarpal joints"
+        }
+      ],
+      "correct": "A",
+      "explanation": "The source labels the articulation between the proximal and distal carpal rows as the distal wrist or Art. mediocarpalis (MSK.pdf, p.40)."
+    },
+    "after": {
+      "id": "sehnenpathologien-hand-en-02",
+      "fach": "msk",
+      "tags": [
+        "sehnenpathologien-hand"
+      ],
+      "question": "While orienting the carpus, you trace a joint line between the proximal and distal carpal rows. Which joint is this?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Midcarpal joint between the two carpal rows"
+        },
+        {
+          "id": "B",
+          "text": "Radiocarpal joint between radius and proximal carpal row"
+        },
+        {
+          "id": "C",
+          "text": "Thumb carpometacarpal joint between trapezium and first metacarpal"
+        },
+        {
+          "id": "D",
+          "text": "Intermetacarpal joints between neighbouring metacarpal bases"
+        }
+      ],
+      "correct": "A",
+      "explanation": "The described articulation is the midcarpal joint. The German source figure also calls it the “distal wrist”; use the anatomical joint name for an unambiguous report.",
+      "wrongExplanations": {
+        "B": "The radiocarpal joint lies proximal to the proximal carpal row, not between the two rows.",
+        "C": "The thumb carpometacarpal joint connects trapezium and first metacarpal; it does not separate the two carpal rows.",
+        "D": "Intermetacarpal joints connect adjacent metacarpal bases distal to the carpus, not the two carpal rows."
+      },
+      "source": "MSK.pdf, physical page 40 (printed39); actual page and labels freshly visually read2026-10-25"
+    }
+  },
+  {
+    "kind": "question",
+    "lang": "fa",
+    "id": "sehnenpathologien-hand-fa-01",
+    "file": "data/wristExtensorAssessments.js",
+    "before": {
+      "id": "sehnenpathologien-hand-fa-01",
+      "fach": "msk",
+      "tags": [
+        "sehnenpathologien-hand"
+      ],
+      "question": "کدام تاندون در کمپارتمان ششم اکستانسور در سطح استایلوئید اولنا قرار دارد؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "ECU · extensor carpi ulnaris"
+        },
+        {
+          "id": "B",
+          "text": "EPL · extensor pollicis longus"
+        },
+        {
+          "id": "C",
+          "text": "ECRL و ECRB"
+        },
+        {
+          "id": "D",
+          "text": "EDC و EIP"
+        }
+      ],
+      "correct": "A",
+      "explanation": "کمپارتمان VI تاندون ECU را در شیار اختصاصی روی استایلوئید اولنا دربر می‌گیرد؛ مطابق صفحهٔ ۴۱ MSK.pdf."
+    },
+    "after": {
+      "id": "sehnenpathologien-hand-fa-01",
+      "fach": "msk",
+      "tags": [
+        "sehnenpathologien-hand"
+      ],
+      "question": "سناریوی متنی: یک تاندون اکستانسور را در شیار پشتی‌اولنار انتهای اولنا نزدیک استایلوئید اولنا دنبال می‌کنید. کدام تاندون و کمپارتمان معمول مناسب است؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "ECU در کمپارتمان VI"
+        },
+        {
+          "id": "B",
+          "text": "EPL در کمپارتمان III"
+        },
+        {
+          "id": "C",
+          "text": "ECRL و ECRB در کمپارتمان II"
+        },
+        {
+          "id": "D",
+          "text": "EDC و EIP در کمپارتمان IV"
+        }
+      ],
+      "correct": "A",
+      "explanation": "ECU در کمپارتمان ششم پشتی در سطح انتهای اولنا عبور می‌کند. لندمارک استخوانی و مسیر تاندون دنبال شوند؛ یک رابطهٔ آناتومیک محوری را نباید تشخیص پاتولوژی دانست.",
+      "wrongExplanations": {
+        "B": "EPL در کمپارتمان III کنار تکمهٔ لیستر رادیوس عبور می‌کند، نه در شیار اولنار ECU.",
+        "C": "ECRL و ECRB در کمپارتمان II و در سمت رادیال تکمهٔ لیستر با هم قرار دارند.",
+        "D": "EDC و EIP در کمپارتمان مرکزی و بزرگ‌تر IV قرار دارند، نه در شیار پشتی‌اولنار تک‌تاندونی توصیف‌شده."
+      },
+      "source": "MSK.pdf, physical page 41 (printed40); actual page and labels freshly visually read2026-10-25"
+    }
+  },
+  {
+    "kind": "question",
+    "lang": "fa",
+    "id": "sehnenpathologien-hand-fa-02",
+    "file": "data/wristExtensorAssessments.js",
+    "before": {
+      "id": "sehnenpathologien-hand-fa-02",
+      "fach": "msk",
+      "tags": [
+        "sehnenpathologien-hand"
+      ],
+      "question": "در شکل، کدام مفصل با عنوان «مفصل دیستال مچ دست (Art. mediocarpalis)» مشخص شده است؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "مفصل میدکارپی بین دو ردیف استخوان‌های کارپ"
+        },
+        {
+          "id": "B",
+          "text": "مفصل رادیوکارپی بین رادیوس و ردیف پروگزیمال کارپ"
+        },
+        {
+          "id": "C",
+          "text": "مفصل کارپومتاکارپی شست"
+        },
+        {
+          "id": "D",
+          "text": "مفاصل بین‌متاکارپی"
+        }
+      ],
+      "correct": "A",
+      "explanation": "منبع، مفصل بین ردیف پروگزیمال و دیستال کارپ را «مچ دیستال» یا Art. mediocarpalis نامیده است (MSK.pdf، صفحهٔ ۴۰)."
+    },
+    "after": {
+      "id": "sehnenpathologien-hand-fa-02",
+      "fach": "msk",
+      "tags": [
+        "sehnenpathologien-hand"
+      ],
+      "question": "هنگام جهت‌یابی کارپ، خط مفصلی بین ردیف پروگزیمال و دیستال استخوان‌های کارپ را دنبال می‌کنید. کدام مفصل است؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "مفصل میدکارپی بین دو ردیف استخوان‌های کارپ"
+        },
+        {
+          "id": "B",
+          "text": "مفصل رادیوکارپی بین رادیوس و ردیف پروگزیمال کارپ"
+        },
+        {
+          "id": "C",
+          "text": "مفصل کارپومتاکارپی شست بین تراپزیوم و متاکارپ اول"
+        },
+        {
+          "id": "D",
+          "text": "مفاصل بین‌متاکارپی بین قاعده‌های متاکارپ مجاور"
+        }
+      ],
+      "correct": "A",
+      "explanation": "اتصال توصیف‌شده مفصل میدکارپی است. در شکل آلمانی منبع، «مچ دیستال» نیز نامیده می‌شود؛ برای گزارش بدون ابهام از نام آناتومیک مفصل استفاده کنید.",
+      "wrongExplanations": {
+        "B": "مفصل رادیوکارپی در سمت پروگزیمال ردیف پروگزیمال کارپ است، نه بین دو ردیف.",
+        "C": "مفصل کارپومتاکارپی شست تراپزیوم را به متاکارپ اول متصل می‌کند و دو ردیف کارپ را از هم جدا نمی‌کند.",
+        "D": "مفاصل بین‌متاکارپی قاعده‌های متاکارپ مجاور را در دیستال کارپ متصل می‌کنند، نه دو ردیف کارپ را."
+      },
+      "source": "MSK.pdf, physical page 40 (printed39); actual page and labels freshly visually read2026-10-25"
+    }
+  },
+  {
+    "kind": "card",
+    "id": "wrist-carpal-midcarpal",
+    "file": "data/wristExtensorAssessments.js",
+    "before": {
+      "id": "wrist-carpal-midcarpal",
+      "topicId": "sehnenpathologien-hand",
+      "category": {
+        "de": "Handwurzelanatomie",
+        "en": "Carpal anatomy",
+        "fa": "آناتومی کارپ"
+      },
+      "front": {
+        "de": "Was bezeichnet die Beschriftung „distales Handgelenk (Art. mediocarpalis)“?",
+        "en": "What does the label “distal wrist (Art. mediocarpalis)” identify?",
+        "fa": "برچسب «مچ دیستال (Art. mediocarpalis)» به کدام مفصل اشاره می‌کند؟"
+      },
+      "answer": {
+        "de": "Das Mediokarpalgelenk zwischen proximaler und distaler Handwurzelreihe.",
+        "en": "The midcarpal joint between the proximal and distal carpal rows.",
+        "fa": "مفصل میدکارپی بین ردیف پروگزیمال و دیستال استخوان‌های کارپ."
+      },
+      "explanation": {
+        "de": "So bezeichnet es die beschriftete dorsale Übersicht in MSK.pdf, S.40.",
+        "en": "That is how the labelled dorsal overview in MSK.pdf, p.40 identifies it.",
+        "fa": "نمای پشتی برچسب‌گذاری‌شده در MSK.pdf، صفحهٔ ۴۰ این مفصل را چنین مشخص می‌کند."
+      }
+    },
+    "after": {
+      "id": "wrist-carpal-midcarpal",
+      "topicId": "sehnenpathologien-hand",
+      "category": {
+        "de": "Handwurzelanatomie",
+        "en": "Carpal anatomy",
+        "fa": "آناتومی کارپ"
+      },
+      "front": {
+        "de": "Welche Gelenklinie trennt die proximale von der distalen Handwurzelreihe?",
+        "en": "Which joint line separates the proximal and distal carpal rows?",
+        "fa": "کدام خط مفصلی ردیف پروگزیمال را از ردیف دیستال کارپ جدا می‌کند؟"
+      },
+      "answer": {
+        "de": "Das Mediokarpalgelenk zwischen proximaler und distaler Handwurzelreihe.",
+        "en": "The midcarpal joint between the proximal and distal carpal rows.",
+        "fa": "مفصل میدکارپی بین ردیف پروگزیمال و دیستال استخوان‌های کارپ."
+      },
+      "explanation": {
+        "de": "Das Mediokarpalgelenk liegt zwischen beiden Reihen; das Radiokarpalgelenk liegt weiter proximal zwischen Radius und proximaler Reihe.",
+        "en": "The midcarpal joint lies between the rows; the radiocarpal joint is farther proximally between radius and proximal row.",
+        "fa": "مفصل میدکارپی بین دو ردیف قرار دارد؛ مفصل رادیوکارپی در سمت پروگزیمال‌تر، بین رادیوس و ردیف پروگزیمال است."
+      },
+      "source": "MSK.pdf, physical pages40–41 (printed39–40); actual pages and labels freshly visually read2026-10-25"
+    }
+  },
+  {
+    "kind": "card",
+    "id": "wrist-extensor-compartment-1",
+    "file": "data/wristExtensorAssessments.js",
+    "before": {
+      "id": "wrist-extensor-compartment-1",
+      "topicId": "sehnenpathologien-hand",
+      "category": {
+        "de": "Anatomie",
+        "en": "Anatomy",
+        "fa": "آناتومی"
+      },
+      "front": {
+        "de": "Welche Sehnen liegen im ersten Strecksehnenfach?",
+        "en": "Which tendons lie in the first extensor compartment?",
+        "fa": "کدام تاندون‌ها در کمپارتمان اول اکستانسور قرار دارند؟"
+      },
+      "answer": {
+        "de": "APL und EPB.",
+        "en": "APL and EPB.",
+        "fa": "APL و EPB."
+      },
+      "explanation": {
+        "de": "Das erste Fach liegt am radialen Processus styloideus.",
+        "en": "The first compartment lies at the radial styloid.",
+        "fa": "کمپارتمان اول در سطح استایلوئید رادیوس قرار دارد."
+      }
+    },
+    "after": {
+      "id": "wrist-extensor-compartment-1",
+      "topicId": "sehnenpathologien-hand",
+      "category": {
+        "de": "Anatomie",
+        "en": "Anatomy",
+        "fa": "آناتومی"
+      },
+      "front": {
+        "de": "Welche Sehnen liegen im ersten Strecksehnenfach?",
+        "en": "Which tendons lie in the first extensor compartment?",
+        "fa": "کدام تاندون‌ها در کمپارتمان اول اکستانسور قرار دارند؟"
+      },
+      "answer": {
+        "de": "APL und EPB.",
+        "en": "APL and EPB.",
+        "fa": "APL و EPB."
+      },
+      "explanation": {
+        "de": "Das erste Fach liegt am radialen Processus styloideus.",
+        "en": "The first compartment lies at the radial styloid.",
+        "fa": "کمپارتمان اول در سطح استایلوئید رادیوس قرار دارد."
+      },
+      "source": "MSK.pdf, physical pages40–41 (printed39–40); actual pages and labels freshly visually read2026-10-25"
+    }
+  },
+  {
+    "kind": "card",
+    "id": "wrist-extensor-compartment-6",
+    "file": "data/wristExtensorAssessments.js",
+    "before": {
+      "id": "wrist-extensor-compartment-6",
+      "topicId": "sehnenpathologien-hand",
+      "category": {
+        "de": "Anatomie",
+        "en": "Anatomy",
+        "fa": "آناتومی"
+      },
+      "front": {
+        "de": "Welche Sehne verläuft im sechsten Strecksehnenfach?",
+        "en": "Which tendon runs in the sixth extensor compartment?",
+        "fa": "کدام تاندون در کمپارتمان ششم اکستانسور قرار دارد؟"
+      },
+      "answer": {
+        "de": "ECU in einer eigenen Rinne am Ulnastyloid.",
+        "en": "ECU in a separate groove at the ulnar styloid.",
+        "fa": "ECU در شیار اختصاصی روی استایلوئید اولنا."
+      },
+      "explanation": {
+        "de": "Die sechs Kompartimente werden von radial nach ulnar zugeordnet.",
+        "en": "The six compartments are mapped from radial to ulnar.",
+        "fa": "شش کمپارتمان از سمت رادیال به اولنار شماره‌گذاری می‌شوند."
+      }
+    },
+    "after": {
+      "id": "wrist-extensor-compartment-6",
+      "topicId": "sehnenpathologien-hand",
+      "category": {
+        "de": "Anatomie",
+        "en": "Anatomy",
+        "fa": "آناتومی"
+      },
+      "front": {
+        "de": "Welche Sehne verläuft im sechsten Strecksehnenfach?",
+        "en": "Which tendon runs in the sixth extensor compartment?",
+        "fa": "کدام تاندون در کمپارتمان ششم اکستانسور قرار دارد؟"
+      },
+      "answer": {
+        "de": "ECU in einer eigenen Rinne am Ulnastyloid.",
+        "en": "ECU in a separate groove at the ulnar styloid.",
+        "fa": "ECU در شیار اختصاصی روی استایلوئید اولنا."
+      },
+      "explanation": {
+        "de": "Die sechs Kompartimente werden von radial nach ulnar zugeordnet.",
+        "en": "The six compartments are mapped from radial to ulnar.",
+        "fa": "شش کمپارتمان از سمت رادیال به اولنار شماره‌گذاری می‌شوند."
+      },
+      "source": "MSK.pdf, physical pages40–41 (printed39–40); actual pages and labels freshly visually read2026-10-25"
+    }
+  }
+]

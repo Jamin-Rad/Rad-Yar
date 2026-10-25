@@ -1,0 +1,2074 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_FULL_ORIGINAL_ASSESSMENT_POOL_REVIEW_READY",
+  "route": "/gehirn/vaskulaer/intrazerebrale-blutung",
+  "files": [
+    "data/icb.js"
+  ],
+  "scope": "All15original MCQ triads and12card triads,4goal map; bounded directly related teaching parity. No supplemental duplicate bank or new question quota.",
+  "questions": {
+    "de": [
+      {
+        "id": "icb-q01",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Welche Morphologie spricht bei einem kleinen Suszeptibilitätsherd am ehesten für eine zerebrale Mikroblutung?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Rundlicher homogener Signalverlust mit Blooming, ohne flüssigkeitsähnliche Höhle"
+          },
+          {
+            "id": "B",
+            "text": "Rundliche Höhle mit Liquorsignal auf T1/T2 und FLAIR"
+          },
+          {
+            "id": "C",
+            "text": "Tubulärer Signalverlust mit Gefäßkontinuität auf benachbarten Schichten"
+          },
+          {
+            "id": "D",
+            "text": "Punktförmige dichte Verkalkung im korrespondierenden Nativ-CT"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Mikroblutungen erscheinen als rundliche oder ovale Suszeptibilitätsherde mit Blooming. Die scheinbare Größe hängt von Sequenz und Feldstärke ab; eine starre Millimetergrenze genügt nicht. Gefäße, Kalk und andere Mimics mitbeurteilen.",
+        "wrongExplanations": {
+          "B": "Eine liquorisointense Höhle passt eher zu Lakune oder perivaskulärem Raum; sie ist nicht die typische reine Mikroblutungsmorphologie.",
+          "C": "Die Fortsetzung über mehrere Schichten spricht für ein Gefäß als wichtigen Mikroblutungs-Mimic.",
+          "D": "Kalk kann auf suszeptibilitätssensitiven Bildern ebenfalls dunkel sein; das korrespondierende CT hilft bei der Unterscheidung."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3714437/"
+      },
+      {
+        "id": "icb-q02",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Bei langjähriger Hypertonie finden sich eine spontane thalamische Blutung, tiefe Mikroblutungen und weitere Marklagerveränderungen. Welche Grunderkrankung passt am ehesten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Hypertensive Arteriolopathie der tiefen Perforatoren"
+          },
+          {
+            "id": "B",
+            "text": "Überwiegend kortikal-leptomeningeale Amyloidangiopathie"
+          },
+          {
+            "id": "C",
+            "text": "Ruptur einer kortikalen arteriovenösen Malformation"
+          },
+          {
+            "id": "D",
+            "text": "Kortikale Venenthrombose mit hämorrhagischem Infarkt"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die tiefe Verteilung zusammen mit Hypertonie und weiteren Mikroangiopathiezeichen stützt eine Perforator-Arteriolopathie. Das ist eine Musterzuordnung, kein Ausschluss aller strukturellen Ursachen. Häufigkeitsprozente oder eine Blutungslokalisation allein ersetzen die Gesamtbeurteilung nicht.",
+        "wrongExplanations": {
+          "B": "CAA ist eher mit streng lobären Blutungen und kortikaler superfizieller Siderose assoziiert; tiefe Marker passen hier stärker zur Perforator-Arteriolopathie.",
+          "C": "Eine AVM wird anhand ihrer Angioarchitektur geprüft; die verteilten tiefen Mikroangiopathiezeichen sprechen hier für einen anderen führenden Mechanismus.",
+          "D": "Eine kortikale Venenthrombose erfordert passende venöse Befunde und Infarktverteilung; das gegebene tiefe Muster ist dafür nicht typisch."
+        },
+        "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+      },
+      {
+        "id": "icb-q03",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Bei akutem fokalem Defizit zeigt das Nativ-CT einen umschriebenen intraparenchymalen Herd. Welcher Dichtebereich passt typischerweise zu frischem hyperdensem Blut?",
+        "options": [
+          {
+            "id": "A",
+            "text": "0–10 HU"
+          },
+          {
+            "id": "B",
+            "text": "20–35 HU"
+          },
+          {
+            "id": "C",
+            "text": "50–80 HU"
+          },
+          {
+            "id": "D",
+            "text": "Über 120 HU"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Die PDF nennt 50–80 HU als typisches Beispiel. Akutes Blut ist häufig hyperdens, die tatsächliche Dichte hängt jedoch unter anderem von Konzentration, Hämatokrit und Technik ab. Der Bereich ist keine universelle Diagnose- oder Datierungsgrenze.",
+        "wrongExplanations": {
+          "A": "Dieser Bereich liegt eher nahe Wasser/Liquor und entspricht nicht dem gefragten hyperdensen Blutbeispiel.",
+          "B": "Dies kann sich Hirnparenchym annähern; das gefragte frische Blutbeispiel ist dichter. Isodensität schließt Blut unter anderen Umständen nicht aus.",
+          "D": "So hohe Dichte kann etwa bei Kalk oder Kontrastmittel auftreten; sie ist nicht der in der PDF genannte typische Bereich. Dichte allein bleibt unspezifisch."
+        },
+        "source": "https://pubs.rsna.org/doi/10.1148/123.2.335"
+      },
+      {
+        "id": "icb-q04",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Ein akutes Hämatom zeigt im nativen CT umschriebene relativ hypodense Bereiche innerhalb des hyperdensen Blutes. Welche Interpretation passt zum Swirl Sign?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Kontrastmittelpool als direkter CTA-Extravasationsnachweis"
+          },
+          {
+            "id": "B",
+            "text": "Dichteheterogenität mit möglichem unverklottetem Blutanteil"
+          },
+          {
+            "id": "C",
+            "text": "Gleichmäßiger peripherer Resorptionssaum als typisches subakutes Muster"
+          },
+          {
+            "id": "D",
+            "text": "Extrahämatomales vasogenes Ödem in der benachbarten weißen Substanz"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Swirl beschreibt Dichteheterogenität im akuten Hämatom, nicht extrahämatomales Ödem oder einen CTA-Kontrastpool. Unverklottetes Blut ist eine mögliche Erklärung; das Zeichen unterstützt die Expansionsrisikoeinschätzung, beweist aber keine laufende Extravasation.",
+        "wrongExplanations": {
+          "A": "Der Fall beschreibt ein Nativ-CT ohne Kontrastmittelpool. Ein Spot Sign wird auf CTA und im Vergleich mit dem Nativbild beurteilt.",
+          "C": "Ein peripherer Resorptionssaum im subakuten Verlauf kann ein Mimic sein; er ist nicht dieselbe akute intrahämatomale Heterogenität.",
+          "D": "Das beschriebene Zeichen liegt innerhalb des Hämatoms; perifokales Ödem liegt außerhalb und wird getrennt beurteilt."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3517489/; https://pmc.ncbi.nlm.nih.gov/articles/PMC7410590/"
+      },
+      {
+        "id": "icb-q05",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "In einem akuten Hämatom liegt auf CTA ein kleiner Kontrastmittelpool, der im Nativ-CT fehlt und keine erkennbare Verbindung zu einem Gefäß hat. Welche Einordnung passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Intrahämatomale Verkalkung"
+          },
+          {
+            "id": "B",
+            "text": "CTA-Spot-Sign als fokaler Extravasationshinweis"
+          },
+          {
+            "id": "C",
+            "text": "Natives Swirl Sign"
+          },
+          {
+            "id": "D",
+            "text": "Durch das Hämatom ziehendes kontrastiertes Gefäß"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Ein neu sichtbarer fokaler Kontrastpool ohne Gefäßkontinuität passt zum Spot Sign. Es ist mit erhöhtem Expansionsrisiko assoziiert; Ausprägung und Vorhersage hängen unter anderem vom Aufnahmezeitpunkt ab. Ein positives Zeichen garantiert keine Expansion.",
+        "wrongExplanations": {
+          "A": "Kalk sollte bereits im korrespondierenden Nativbild sichtbar sein; der Fall beschreibt eine erst nach Kontrastmittelgabe auftretende Verdichtung.",
+          "C": "Swirl ist ein Nativ-CT-Heterogenitätszeichen und kein neu auftretender Kontrastmittelpool.",
+          "D": "Die Kontinuität über benachbarte Schichten und eine Verbindung zum Gefäßbaum sprechen für ein Gefäß-Mimic; diese fehlen im Fall."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/17322083/"
+      },
+      {
+        "id": "icb-q06",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Ein bekanntes intraparenchymales Hämatom ist in der Verlaufskontrolle kleiner und weniger dicht als im initialen CT. Welche Einordnung ist am ehesten angemessen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Ein neuer arterieller Infarkt ist die führende Erklärung"
+          },
+          {
+            "id": "B",
+            "text": "Die Veränderung passt zu Hämatomorganisation und Resorption"
+          },
+          {
+            "id": "C",
+            "text": "Die geringere Dichte spricht vorrangig für einen neu entstandenen Abszess"
+          },
+          {
+            "id": "D",
+            "text": "Sekundäre Blutung in einer zugrunde liegenden Neoplasie als führende Erklärung"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Größen- und Dichteabnahme sind mit der Entwicklung eines bekannten Hämatoms vereinbar. Dichte und zeitlicher Verlauf variieren; daraus darf kein exaktes Blutungsalter oder Ausschluss einer zugrunde liegenden Läsion abgeleitet werden.",
+        "wrongExplanations": {
+          "A": "Ein neuer arterieller Infarkt erfordert passende neue territoriale Befunde; die bekannte, schrumpfende Blutung erklärt die Veränderung besser.",
+          "C": "Eine zunehmende infektiöse Läsion braucht zusätzliche klinische und bildgebende Hinweise. Die beschriebene Rückbildung allein stützt sie nicht.",
+          "D": "Ein Tumor kann hinter einer Blutung verborgen sein, wird aber durch den Dichteabfall nicht bewiesen. Verlauf und gegebenenfalls kontrastverstärkte MRT klären die Ursache."
+        },
+        "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407; https://pubs.rsna.org/doi/10.1148/123.2.335"
+      },
+      {
+        "id": "icb-q07",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Bei nachgewiesener sehr frischer Hirnblutung ist der Herd auf T2 noch hell. Welche zusätzliche Sequenzgruppe hilft besonders, Blutprodukte über ihre Suszeptibilität zu erfassen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Konventionelle native T1-Spin-Echo-Sequenzen"
+          },
+          {
+            "id": "B",
+            "text": "T2*-GRE beziehungsweise SWI"
+          },
+          {
+            "id": "C",
+            "text": "Konventionelle FLAIR-Sequenzen"
+          },
+          {
+            "id": "D",
+            "text": "Postkontrast-T1 zur Beurteilung der Schrankenstörung"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Suszeptibilitätssensitive GRE-/SWI-Aufnahmen ergänzen die Beurteilung von Blutprodukten. Ein T2-heller Herd schließt sehr frisches Blut nicht aus; das Signal hängt unter anderem von Blutprodukten, Feldstärke und Sequenz ab.",
+        "wrongExplanations": {
+          "A": "T1 gehört zur Gesamtauswertung, nutzt aber nicht die hier gesuchte T2*-Suszeptibilitätsempfindlichkeit.",
+          "C": "FLAIR hilft bei Parenchym- und Liquorraumbefunden; sie ersetzt keine gezielte suszeptibilitätssensitive Aufnahme.",
+          "D": "Kontrastmittelaufnahme beantwortet eine andere Frage. Sie ist nicht das primäre gesuchte Merkmal zur Darstellung der Blutsuszeptibilität."
+        },
+        "source": "https://doi.org/10.1001/jama.292.15.1823; https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+      },
+      {
+        "id": "icb-q08",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Ein bekanntes intraparenchymales Hämatom ist nativ T1-isointens bis hypointens und T2-hypointens. Welcher dominante Blutproduktzustand passt im vereinfachten MRT-Modell am ehesten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Überwiegend Oxyhämoglobin"
+          },
+          {
+            "id": "B",
+            "text": "Überwiegend intrazelluläres Desoxyhämoglobin"
+          },
+          {
+            "id": "C",
+            "text": "Überwiegend extrazelluläres verdünntes Methämoglobin"
+          },
+          {
+            "id": "D",
+            "text": "Überwiegend intrazelluläres Methämoglobin"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Desoxyhämoglobin passt im vereinfachten Modell zu relativ niedrigem T2-Signal ohne ausgeprägte native T1-Aufhellung. Das Modell beschreibt typische relative Signale, keine verlässliche Uhr zur minutengenauen Datierung.",
+        "wrongExplanations": {
+          "A": "Oxyhämoglobin kann im sehr frischen Hämatom ein hohes T2-Signal zeigen; es erklärt das beschriebene T2-dunkle Muster weniger gut.",
+          "C": "Verdünntes extrazelluläres Methämoglobin kann in T1 und T2 hell sein; dies passt nicht zum beschriebenen Muster.",
+          "D": "Intrazelluläres Methämoglobin geht typischerweise mit nativer T1-Aufhellung einher; diese fehlt hier."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/4034983/"
+      },
+      {
+        "id": "icb-q09",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Ein bekanntes Hämatom ist nativ auf T1 hell und auf T2 noch dunkel. Welche Blutproduktkonstellation passt am ehesten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Überwiegend Oxyhämoglobin"
+          },
+          {
+            "id": "B",
+            "text": "Überwiegend intrazelluläres Methämoglobin"
+          },
+          {
+            "id": "C",
+            "text": "Überwiegend Desoxyhämoglobin"
+          },
+          {
+            "id": "D",
+            "text": "Überwiegend verdünntes extrazelluläres Methämoglobin"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Intrazelluläres Methämoglobin verkürzt T1, während das T2-Signal noch niedrig sein kann. Konzentration, Kompartimentierung und Sequenz beeinflussen das Signal; daraus folgt kein fester Tagesgrenzwert.",
+        "wrongExplanations": {
+          "A": "Oxyhämoglobin erklärt die ausgeprägte native T1-Aufhellung weniger gut.",
+          "C": "Desoxyhämoglobin passt zu niedrigem T2, aber nicht so gut zur beschriebenen ausgeprägten T1-Aufhellung.",
+          "D": "Bei verdünntem extrazellulärem Methämoglobin wird eher auch ein hohes T2-Signal erwartet."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/3257117/"
+      },
+      {
+        "id": "icb-q10",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Ein in Voraufnahmen gesichertes Hämatom zeigt jetzt ein helles Signal sowohl im nativen T1 als auch im T2. Welche Blutproduktkonstellation kann dieses Muster erklären?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Überwiegend intrazelluläres Desoxyhämoglobin"
+          },
+          {
+            "id": "B",
+            "text": "Verdünntes extrazelluläres Methämoglobin"
+          },
+          {
+            "id": "C",
+            "text": "Überwiegend intrazelluläres Methämoglobin"
+          },
+          {
+            "id": "D",
+            "text": "Überwiegend Hämosiderinablagerung"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Verdünntes freies Methämoglobin kann T1 und T2 aufhellen. Das Signal hängt auch von Konzentration und Sequenz ab; T1/T2-hell ist außerhalb eines gesicherten Blutungskontexts nicht spezifisch für Blut.",
+        "wrongExplanations": {
+          "A": "Desoxyhämoglobin passt im vereinfachten Modell eher zu niedrigem T2-Signal.",
+          "C": "Intrazelluläres Methämoglobin kann T1 aufhellen, während T2 typischerweise noch niedrig ist.",
+          "D": "Hämosiderin bewirkt vor allem Signalverlust und Blooming auf suszeptibilitätssensitiven Aufnahmen, nicht dieses T1/T2-helle Muster."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/3257117/"
+      },
+      {
+        "id": "icb-q11",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Eine frühere kleine Blutung ist im CT nicht mehr sicher erkennbar. Welche MRT-Sequenzgruppe hilft bei der Suche nach verbliebenen Hämosiderinablagerungen besonders?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Native T1-Spin-Echo-Aufnahmen"
+          },
+          {
+            "id": "B",
+            "text": "Konventionelle T2-Spin-Echo-Aufnahmen"
+          },
+          {
+            "id": "C",
+            "text": "T2*-GRE beziehungsweise SWI"
+          },
+          {
+            "id": "D",
+            "text": "Postkontrast-T1-Aufnahmen"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Hämosiderin erzeugt Suszeptibilitätseffekte mit Signalverlust und Blooming, die GRE/SWI gut erfassen können. Ein dunkler Fokus ist dennoch nicht automatisch eine Mikroblutung; Mimics und Verteilung sind mitzuprüfen.",
+        "wrongExplanations": {
+          "A": "T1 kann Resthöhle und Begleitbefunde zeigen, ist aber nicht gezielt für den hier gesuchten Suszeptibilitätseffekt ausgelegt.",
+          "B": "Konventionelle T2 kann die Beurteilung ergänzen; GRE/SWI nutzt den gesuchten T2*-Effekt gezielter.",
+          "D": "Postkontrast-T1 beurteilt insbesondere Kontrastmittelaufnahme; diese ist nicht das gesuchte Merkmal von Hämosiderin."
+        },
+        "source": "https://doi.org/10.1001/jama.292.15.1823; https://pmc.ncbi.nlm.nih.gov/articles/PMC3714437/"
+      },
+      {
+        "id": "icb-q12",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Bei einer lobären Blutung fallen disproportionales Ödem und verdächtiges angrenzendes Gewebe auf. Die initiale CTA zeigt keine makrovaskuläre Ursache. Welche weitere Untersuchung hilft am direktesten, eine zugrunde liegende Gewebeläsion abzuklären?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Katheterangiographie zur Suche nach einem kleinen arteriovenösen Shunt"
+          },
+          {
+            "id": "B",
+            "text": "MRT mit nativer und kontrastverstärkter Gewebecharakterisierung"
+          },
+          {
+            "id": "C",
+            "text": "CT-Venographie zur Suche nach einer venösen Abflussstörung"
+          },
+          {
+            "id": "D",
+            "text": "Erneutes Nativ-CT zur Kontrolle von Größe und Dichte des Hämatoms"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Nach negativer CTA kann MRT eine nichtmakrovaskuläre Ursache wie Tumor oder Kavernom weiter klären. Native und postkontrast-T1 müssen zusammen beurteilt werden, da Blut selbst T1-hell sein kann. Verdecktes Restgewebe kann nach Blutresorption eine erneute Kontrolle erfordern; Ödem allein beweist keinen Tumor.",
+        "wrongExplanations": {
+          "A": "DSA kann bei verbleibendem Verdacht einen kleinen Gefäßshunt klären, charakterisiert das hier verdächtige Gewebe aber weniger direkt als MRT.",
+          "C": "Venographie ist bei Verdacht auf venöse Ursache wichtig. Die konkrete Frage nach einer zugrunde liegenden Gewebeläsion wird durch MRT direkter beantwortet.",
+          "D": "Ein Verlaufs-CT beurteilt Expansion und Resorption. Zur Charakterisierung verdächtigen Restgewebes liefert MRT hier gezieltere Information."
+        },
+        "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+      },
+      {
+        "id": "icb-q13",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Bei älterer Person mit spontaner Hirnblutung wird CAA erwogen. Welche zusätzliche Blutungsverteilung stützt diese Möglichkeit stärker als eine tiefe hypertensive Arteriolopathie?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Mikroblutungen überwiegend in Basalganglien und Thalami"
+          },
+          {
+            "id": "B",
+            "text": "Streng lobäre Mikroblutungen mit kortikaler superfizieller Siderose"
+          },
+          {
+            "id": "C",
+            "text": "Mikroblutungen überwiegend im Pons und tiefen Kleinhirn"
+          },
+          {
+            "id": "D",
+            "text": "Gemischte lobäre und tiefe Mikroblutungen mit thalamischer Blutung"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Eine streng lobäre Verteilung und kortikale superfizielle Siderose passen zu CAA. Die diagnostische Kategorie erfordert den vollständigen klinischen und bildgebenden Kriterienrahmen sowie den Ausschluss anderer Ursachen; das Muster allein ist kein histologischer Beweis.",
+        "wrongExplanations": {
+          "A": "Tiefe Mikroblutungen lenken stärker auf die Erkrankung tiefer Perforatoren und passen weniger zu einem streng lobären CAA-Muster.",
+          "C": "Diese tiefe infratentorielle Betonung stützt eher eine Arteriolopathie tiefer Gefäße als das gesuchte lobäre Muster.",
+          "D": "Ein gemischtes Muster kann mehrere Pathologien widerspiegeln. Es ist nicht das hier gesuchte streng lobäre Muster; tiefe Blutungen begrenzen die Boston-MRT-Kategorie."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9389452/"
+      },
+      {
+        "id": "icb-q14",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Ein bekanntes Hämatom ist im Verlauf kleiner geworden und zeigt jetzt eine glatte randständige Kontrastmittelaufnahme. Was ist die angemessenste Einordnung?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Das Muster spricht vorrangig für eine neu entstandene Metastase"
+          },
+          {
+            "id": "B",
+            "text": "Die randständige Aufnahme ist vorrangig als Abszesskapsel zu werten"
+          },
+          {
+            "id": "C",
+            "text": "Organisatorische Randanreicherung ist möglich; die zugrunde liegende Ursache bleibt im Kontext zu prüfen"
+          },
+          {
+            "id": "D",
+            "text": "Der neue Kontrastmittelsaum weist vorrangig auf erneute akute Einblutung hin"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Ein organisierendes Hämatom kann randständig Kontrastmittel aufnehmen. Die Rückbildung stützt diese Möglichkeit, ersetzt aber nicht die Ursachensuche. Noduläres Restgewebe, atypischer Verlauf oder klinische Warnzeichen erfordern gezielte weitere Abklärung.",
+        "wrongExplanations": {
+          "A": "Eine Metastase kann bluten, wird aber durch glatte Randanreicherung eines schrumpfenden Hämatoms nicht bewiesen. Verdächtiges Restgewebe ist gesondert zu suchen.",
+          "B": "Ein Abszess erfordert zusätzliche passende Hinweise wie Klinik und Diffusionsbefund. Ringförmige Aufnahme allein trennt diese Ursachen nicht.",
+          "D": "Erneute Blutung wird anhand neuer Blutanteile, Größenveränderung und Gesamtkontext beurteilt; Kontrastmittelaufnahme allein ist kein Nachweis."
+        },
+        "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+      },
+      {
+        "id": "icb-q15",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Eine 29-jährige Person ohne Hypertonie hat im soeben durchgeführten Nativ-CT eine spontane lobäre Blutung. CTA ist unmittelbar verfügbar. Welche Strategie priorisiert die rasche nichtinvasive Abklärung einer makrovaskulären Ursache im Anschluss an das CT?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Direkte Katheterangiographie als erster Schritt der Gefäßabklärung"
+          },
+          {
+            "id": "B",
+            "text": "Intrakranielle CTA, je nach Verdacht ergänzt durch venöse Darstellung"
+          },
+          {
+            "id": "C",
+            "text": "Wechsel zur MRT mit MRA vor der verfügbaren CT-Angiographie"
+          },
+          {
+            "id": "D",
+            "text": "Gefäßdarstellung erst nach Rückbildung des Hämatoms planen"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Bei junger Person mit lobärer spontaner Blutung ist eine gezielte frühe Gefäßabklärung angezeigt. CTA mit erwogener Venographie adressiert makrovaskuläre bzw. venöse Ursachen; weitere MRT/MRA oder DSA richten sich nach Befund und verbleibendem Verdacht. Eine negative CTA schließt nicht jede Ursache aus.",
+        "wrongExplanations": {
+          "A": "DSA kann bei verdächtigem Befund oder verbleibender hoher Wahrscheinlichkeit nötig sein. Sie ist invasiv und nicht die hier gesuchte rasche nichtinvasive initiale Strategie.",
+          "C": "MRT/MRA kann ergänzen oder kontextabhängig eine Alternative sein. Bei unmittelbar verfügbarer CTA direkt nach dem CT priorisiert dieser Wechsel nicht den beschriebenen schnellen CT-Workflow.",
+          "D": "Spätere Bildgebung kann eine verdeckte Ursache klären, ersetzt aber nicht die frühe Gefäßabklärung dieser jungen Person mit lobärer Blutung."
+        },
+        "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407; https://www.bmj.com/content/351/bmj.h5762"
+      }
+    ],
+    "en": [
+      {
+        "id": "icb-q01",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Which morphology most strongly supports a cerebral microbleed when assessing a small susceptibility focus?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Rounded homogeneous signal loss with blooming and no fluid-like cavity"
+          },
+          {
+            "id": "B",
+            "text": "A rounded cavity following CSF signal on T1/T2 and FLAIR"
+          },
+          {
+            "id": "C",
+            "text": "Tubular signal loss continuous with a vessel on adjacent slices"
+          },
+          {
+            "id": "D",
+            "text": "A punctate dense calcification on the corresponding unenhanced CT"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Microbleeds appear as rounded or ovoid susceptibility foci with blooming. Apparent size depends on sequence and field strength; a rigid millimetre threshold is insufficient. Assess vessels, calcium and other mimics.",
+        "wrongExplanations": {
+          "B": "A CSF-like cavity favours a lacune or perivascular space rather than the typical isolated microbleed morphology.",
+          "C": "Continuity across slices favours a vessel, an important microbleed mimic.",
+          "D": "Calcium may also be dark on susceptibility-sensitive imaging; corresponding CT helps distinguish it."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3714437/"
+      },
+      {
+        "id": "icb-q02",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Longstanding hypertension is accompanied by spontaneous thalamic haemorrhage, deep microbleeds and additional white-matter changes. Which underlying disease fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Hypertensive arteriolopathy of deep perforators"
+          },
+          {
+            "id": "B",
+            "text": "Predominantly cortical/leptomeningeal amyloid angiopathy"
+          },
+          {
+            "id": "C",
+            "text": "Rupture of a cortical arteriovenous malformation"
+          },
+          {
+            "id": "D",
+            "text": "Cortical venous thrombosis with haemorrhagic infarction"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Deep distribution with hypertension and other small-vessel disease markers supports perforator arteriolopathy. This is a pattern interpretation, not exclusion of every structural cause. A frequency estimate or location alone cannot replace the overall assessment.",
+        "wrongExplanations": {
+          "B": "CAA is more associated with strictly lobar haemorrhage and cortical superficial siderosis; the deep markers here favour perforator arteriolopathy.",
+          "C": "Assess an AVM by its angioarchitecture; distributed deep small-vessel markers support a different leading mechanism here.",
+          "D": "Cortical venous thrombosis requires compatible venous findings and infarct distribution; the stated deep pattern is not typical."
+        },
+        "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+      },
+      {
+        "id": "icb-q03",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Unenhanced CT in an acute focal deficit shows a discrete intraparenchymal lesion. Which attenuation range is typical of fresh hyperattenuating blood?",
+        "options": [
+          {
+            "id": "A",
+            "text": "0–10 HU"
+          },
+          {
+            "id": "B",
+            "text": "20–35 HU"
+          },
+          {
+            "id": "C",
+            "text": "50–80 HU"
+          },
+          {
+            "id": "D",
+            "text": "Above 120 HU"
+          }
+        ],
+        "correct": "C",
+        "explanation": "The PDF gives 50–80 HU as a typical example. Acute blood is often hyperattenuating, but actual attenuation depends on concentration, haematocrit and technique. The range is not a universal diagnostic or age-dating threshold.",
+        "wrongExplanations": {
+          "A": "This range is closer to water/CSF rather than the hyperattenuating blood example asked for.",
+          "B": "This can approach brain attenuation; the acute blood example is denser. Isoattenuation does not exclude blood in other settings.",
+          "D": "Such high attenuation may occur with calcium or contrast, but is not the typical range quoted by the PDF. Attenuation alone remains nonspecific."
+        },
+        "source": "https://pubs.rsna.org/doi/10.1148/123.2.335"
+      },
+      {
+        "id": "icb-q04",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "On unenhanced CT, an acute haematoma contains focal relatively hypoattenuating regions within hyperattenuating blood. Which interpretation fits the swirl sign?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A contrast pool directly demonstrating CTA extravasation"
+          },
+          {
+            "id": "B",
+            "text": "Attenuation heterogeneity with a possible unclotted blood component"
+          },
+          {
+            "id": "C",
+            "text": "A uniform peripheral resorption rim as a typical subacute pattern"
+          },
+          {
+            "id": "D",
+            "text": "Vasogenic oedema outside the haematoma in adjacent white matter"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Swirl denotes attenuation heterogeneity within an acute haematoma, not surrounding oedema or a CTA contrast pool. Unclotted blood is one possible explanation; it supports expansion-risk assessment but does not prove ongoing extravasation.",
+        "wrongExplanations": {
+          "A": "The case describes unenhanced CT without a contrast pool. A spot sign is assessed on CTA with the unenhanced study.",
+          "C": "A peripheral subacute resorption rim can mimic swirl, but is not the same acute intrahaematoma heterogeneity.",
+          "D": "The stated sign lies within the haematoma; perilesional oedema lies outside and is assessed separately."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3517489/; https://pmc.ncbi.nlm.nih.gov/articles/PMC7410590/"
+      },
+      {
+        "id": "icb-q05",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "CTA shows a small contrast pool within an acute haematoma, absent on unenhanced CT and without an identifiable vessel connection. Which interpretation fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Intrahaematoma calcification"
+          },
+          {
+            "id": "B",
+            "text": "CTA spot sign indicating focal extravasation"
+          },
+          {
+            "id": "C",
+            "text": "Unenhanced-CT swirl sign"
+          },
+          {
+            "id": "D",
+            "text": "An enhancing vessel traversing the haematoma"
+          }
+        ],
+        "correct": "B",
+        "explanation": "A new focal contrast pool without vessel continuity fits a spot sign. It is associated with increased expansion risk; appearance and prediction depend partly on acquisition timing. A positive sign does not guarantee expansion.",
+        "wrongExplanations": {
+          "A": "Calcium should be visible on the corresponding unenhanced scan; the vignette describes attenuation appearing after contrast administration.",
+          "C": "Swirl is an unenhanced-CT heterogeneity sign rather than a newly appearing contrast pool.",
+          "D": "Continuity across slices and connection to the vascular tree favour a vessel mimic; these are absent in the vignette."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/17322083/"
+      },
+      {
+        "id": "icb-q06",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "A known intraparenchymal haematoma is smaller and less attenuating on follow-up than on initial CT. Which interpretation is most appropriate?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A new arterial infarct is the leading explanation"
+          },
+          {
+            "id": "B",
+            "text": "The change fits haematoma organisation and resorption"
+          },
+          {
+            "id": "C",
+            "text": "Lower attenuation primarily favours a newly developed abscess"
+          },
+          {
+            "id": "D",
+            "text": "Secondary haemorrhage into an underlying neoplasm as the leading explanation"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Reduction in size and attenuation is compatible with evolution of a known haematoma. Attenuation and timing vary; neither an exact age nor exclusion of an underlying lesion follows from this alone.",
+        "wrongExplanations": {
+          "A": "A new arterial infarct calls for new compatible territorial findings; the known shrinking haemorrhage better explains the change.",
+          "C": "An evolving infectious lesion requires additional clinical and imaging evidence. The described regression alone does not support it.",
+          "D": "A tumour can be concealed by haemorrhage but is not established by attenuation decrease. Follow-up and, where appropriate, contrast-enhanced MRI help establish the cause."
+        },
+        "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407; https://pubs.rsna.org/doi/10.1148/123.2.335"
+      },
+      {
+        "id": "icb-q07",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "In a confirmed very recent cerebral haemorrhage, the lesion remains bright on T2. Which additional sequence group particularly helps identify blood products through susceptibility?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Conventional unenhanced T1 spin-echo sequences"
+          },
+          {
+            "id": "B",
+            "text": "T2*-GRE or SWI"
+          },
+          {
+            "id": "C",
+            "text": "Conventional FLAIR sequences"
+          },
+          {
+            "id": "D",
+            "text": "Postcontrast T1 for assessing blood–brain barrier disruption"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Susceptibility-sensitive GRE/SWI complements assessment of blood products. T2 hyperintensity does not exclude very recent blood; signal depends on blood products, field strength and sequence, among other factors.",
+        "wrongExplanations": {
+          "A": "T1 contributes to overall interpretation but does not provide the T2* susceptibility sensitivity being sought.",
+          "C": "FLAIR helps assess parenchymal and CSF-space findings but does not replace targeted susceptibility-sensitive imaging.",
+          "D": "Contrast enhancement addresses a different question; it is not the primary feature sought for demonstrating blood susceptibility."
+        },
+        "source": "https://doi.org/10.1001/jama.292.15.1823; https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+      },
+      {
+        "id": "icb-q08",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "A known intraparenchymal haematoma is iso- to hypointense on unenhanced T1 and hypointense on T2. Which predominant blood-product state best fits the simplified MRI model?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Predominantly oxyhaemoglobin"
+          },
+          {
+            "id": "B",
+            "text": "Predominantly intracellular deoxyhaemoglobin"
+          },
+          {
+            "id": "C",
+            "text": "Predominantly extracellular dilute methaemoglobin"
+          },
+          {
+            "id": "D",
+            "text": "Predominantly intracellular methaemoglobin"
+          }
+        ],
+        "correct": "B",
+        "explanation": "In the simplified model, deoxyhaemoglobin fits relatively low T2 signal without marked unenhanced T1 hyperintensity. This describes typical relative signals rather than a reliable clock for exact dating.",
+        "wrongExplanations": {
+          "A": "Oxyhaemoglobin can show high T2 signal in very recent haematoma and less well explains the stated T2-dark pattern.",
+          "C": "Dilute extracellular methaemoglobin may be bright on both T1 and T2, unlike the stated pattern.",
+          "D": "Intracellular methaemoglobin typically produces unenhanced T1 hyperintensity, which is absent here."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/4034983/"
+      },
+      {
+        "id": "icb-q09",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "A known haematoma is bright on unenhanced T1 but remains dark on T2. Which blood-product state fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Predominantly oxyhaemoglobin"
+          },
+          {
+            "id": "B",
+            "text": "Predominantly intracellular methaemoglobin"
+          },
+          {
+            "id": "C",
+            "text": "Predominantly deoxyhaemoglobin"
+          },
+          {
+            "id": "D",
+            "text": "Predominantly dilute extracellular methaemoglobin"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Intracellular methaemoglobin shortens T1 while T2 signal can remain low. Concentration, compartmentalisation and sequence affect signal; this does not establish a fixed day threshold.",
+        "wrongExplanations": {
+          "A": "Oxyhaemoglobin less well explains marked unenhanced T1 hyperintensity.",
+          "C": "Deoxyhaemoglobin fits low T2 but less well explains the marked T1 hyperintensity described.",
+          "D": "Dilute extracellular methaemoglobin more often also produces high T2 signal."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/3257117/"
+      },
+      {
+        "id": "icb-q10",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "A haematoma established on prior imaging is now bright on both unenhanced T1 and T2. Which blood-product state can explain this pattern?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Predominantly intracellular deoxyhaemoglobin"
+          },
+          {
+            "id": "B",
+            "text": "Dilute extracellular methaemoglobin"
+          },
+          {
+            "id": "C",
+            "text": "Predominantly intracellular methaemoglobin"
+          },
+          {
+            "id": "D",
+            "text": "Predominantly haemosiderin deposition"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Dilute free methaemoglobin can produce T1 and T2 hyperintensity. Signal also depends on concentration and sequence; T1/T2 brightness is not specific for blood outside an established haemorrhage context.",
+        "wrongExplanations": {
+          "A": "In the simplified model, deoxyhaemoglobin more closely fits low T2 signal.",
+          "C": "Intracellular methaemoglobin may brighten T1 while T2 typically remains low.",
+          "D": "Haemosiderin mainly produces signal loss and blooming on susceptibility-sensitive imaging rather than this T1/T2-bright pattern."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/3257117/"
+      },
+      {
+        "id": "icb-q11",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "A previous small haemorrhage is no longer confidently visible on CT. Which MRI sequence group particularly helps identify residual haemosiderin deposits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Unenhanced T1 spin-echo imaging"
+          },
+          {
+            "id": "B",
+            "text": "Conventional T2 spin-echo imaging"
+          },
+          {
+            "id": "C",
+            "text": "T2*-GRE or SWI"
+          },
+          {
+            "id": "D",
+            "text": "Postcontrast T1 imaging"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Haemosiderin produces susceptibility-related signal loss and blooming that GRE/SWI can depict well. A dark focus is not automatically a microbleed; assess mimics and distribution.",
+        "wrongExplanations": {
+          "A": "T1 may depict a residual cavity and associated findings but is not targeted to the susceptibility effect sought here.",
+          "B": "Conventional T2 can complement assessment; GRE/SWI more directly exploits the T2* effect being sought.",
+          "D": "Postcontrast T1 primarily assesses enhancement, which is not the haemosiderin feature sought here."
+        },
+        "source": "https://doi.org/10.1001/jama.292.15.1823; https://pmc.ncbi.nlm.nih.gov/articles/PMC3714437/"
+      },
+      {
+        "id": "icb-q12",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Lobar haemorrhage is accompanied by disproportionate oedema and suspicious adjacent tissue. Initial CTA shows no macrovascular cause. Which further study most directly evaluates an underlying tissue lesion?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Catheter angiography to search for a small arteriovenous shunt"
+          },
+          {
+            "id": "B",
+            "text": "MRI with unenhanced and contrast-enhanced tissue characterisation"
+          },
+          {
+            "id": "C",
+            "text": "CT venography to search for venous outflow obstruction"
+          },
+          {
+            "id": "D",
+            "text": "Repeat unenhanced CT to assess haematoma size and attenuation"
+          }
+        ],
+        "correct": "B",
+        "explanation": "After negative CTA, MRI can further evaluate a nonmacrovascular cause such as tumour or cavernoma. Unenhanced and postcontrast T1 must be assessed together because blood itself may be T1-bright. Concealed tissue may require repeat assessment after blood resorption; oedema alone does not establish tumour.",
+        "wrongExplanations": {
+          "A": "DSA can investigate a small vascular shunt when suspicion persists but characterises the suspicious tissue less directly than MRI.",
+          "C": "Venography is important when a venous cause is suspected. MRI more directly addresses the specific question of an underlying tissue lesion.",
+          "D": "Follow-up CT evaluates expansion and resorption. MRI provides more targeted information for characterising suspicious residual tissue here."
+        },
+        "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+      },
+      {
+        "id": "icb-q13",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "CAA is considered in an older person with spontaneous cerebral haemorrhage. Which additional haemorrhagic distribution supports it more than deep hypertensive arteriolopathy?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Microbleeds predominantly in basal ganglia and thalami"
+          },
+          {
+            "id": "B",
+            "text": "Strictly lobar microbleeds with cortical superficial siderosis"
+          },
+          {
+            "id": "C",
+            "text": "Microbleeds predominantly in the pons and deep cerebellum"
+          },
+          {
+            "id": "D",
+            "text": "Mixed lobar and deep microbleeds with thalamic haemorrhage"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Strictly lobar distribution and cortical superficial siderosis fit CAA. The diagnostic category requires the complete clinical/imaging criteria framework and exclusion of alternative causes; the pattern alone is not histological proof.",
+        "wrongExplanations": {
+          "A": "Deep microbleeds more strongly suggest deep perforator disease and fit a strictly lobar CAA pattern less well.",
+          "C": "This deep infratentorial predominance favours deep-vessel arteriolopathy rather than the lobar pattern sought.",
+          "D": "A mixed pattern can reflect multiple pathologies. It is not the strictly lobar pattern sought; deep haemorrhages limit the Boston MRI category."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9389452/"
+      },
+      {
+        "id": "icb-q14",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "A known haematoma has become smaller on follow-up and now shows smooth peripheral enhancement. What is the most appropriate interpretation?",
+        "options": [
+          {
+            "id": "A",
+            "text": "The pattern primarily indicates a newly developed metastasis"
+          },
+          {
+            "id": "B",
+            "text": "Peripheral enhancement should primarily be interpreted as an abscess capsule"
+          },
+          {
+            "id": "C",
+            "text": "Organisational rim enhancement is possible; assess the underlying cause in context"
+          },
+          {
+            "id": "D",
+            "text": "The new enhancing rim primarily indicates recurrent acute bleeding"
+          }
+        ],
+        "correct": "C",
+        "explanation": "An organising haematoma can enhance peripherally. Regression supports this possibility but does not replace aetiologic evaluation. Residual nodular tissue, atypical evolution or clinical warning signs warrant targeted investigation.",
+        "wrongExplanations": {
+          "A": "A metastasis can bleed but is not established by smooth enhancement of a shrinking haematoma. Search separately for suspicious residual tissue.",
+          "B": "Abscess requires additional compatible findings such as clinical context and diffusion imaging. Ring enhancement alone does not separate these causes.",
+          "D": "Rebleeding is assessed using new blood components, size change and overall context; enhancement alone does not establish it."
+        },
+        "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+      },
+      {
+        "id": "icb-q15",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "A 29-year-old without hypertension has spontaneous lobar haemorrhage on the just-completed unenhanced CT. CTA is immediately available. Which strategy prioritises rapid noninvasive evaluation of a macrovascular cause directly after CT?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Direct catheter angiography as the first vascular investigation"
+          },
+          {
+            "id": "B",
+            "text": "Intracranial CTA, supplemented by venous imaging when indicated"
+          },
+          {
+            "id": "C",
+            "text": "Transfer to MRI with MRA before the available CT angiogram"
+          },
+          {
+            "id": "D",
+            "text": "Plan vascular imaging after haematoma regression"
+          }
+        ],
+        "correct": "B",
+        "explanation": "In a young person with spontaneous lobar haemorrhage, targeted early vascular investigation is indicated. CTA with consideration of venography addresses macrovascular or venous causes; further MRI/MRA or DSA depends on findings and residual suspicion. Negative CTA does not exclude every cause.",
+        "wrongExplanations": {
+          "A": "DSA may be needed for suspicious findings or persistent high probability. It is invasive rather than the rapid noninvasive initial strategy sought here.",
+          "C": "MRI/MRA can complement evaluation or be an alternative in context. With CTA immediately available after CT, this transfer does not prioritise the rapid CT workflow specified.",
+          "D": "Later imaging may reveal a concealed cause but does not replace early vascular investigation in this young person with lobar haemorrhage."
+        },
+        "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407; https://www.bmj.com/content/351/bmj.h5762"
+      }
+    ],
+    "fa": [
+      {
+        "id": "icb-q01",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "در بررسی کانون کوچک سوسپتیبیلیتی، کدام مورفولوژی بیشتر از میکروخونریزی مغزی حمایت می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "افت سیگنال گرد و همگن همراه با blooming، بدون حفرهٔ شبیه مایع"
+          },
+          {
+            "id": "B",
+            "text": "حفرهٔ گرد با سیگنال مایع مغزی‌نخاعی در T1/T2 و FLAIR"
+          },
+          {
+            "id": "C",
+            "text": "افت سیگنال لوله‌ای با تداوم عروقی در برش‌های مجاور"
+          },
+          {
+            "id": "D",
+            "text": "کلسیفیکاسیون متراکم نقطه‌ای در CT متناظرِ بدون تزریق"
+          }
+        ],
+        "correct": "A",
+        "explanation": "میکروخونریزی‌ها به‌شکل کانون‌های گرد یا بیضوی سوسپتیبیلیتی همراه blooming دیده می‌شوند. اندازهٔ ظاهری به سکانس و قدرت میدان وابسته است؛ مرز ثابت میلی‌متری کافی نیست. عروق، کلسیم و سایر تقلیدکننده‌ها نیز بررسی شوند.",
+        "wrongExplanations": {
+          "B": "حفرهٔ هم‌سیگنال با مایع بیشتر به نفع لاکون یا فضای دورعروقی است، نه مورفولوژی تیپیکِ میکروخونریزی منفرد.",
+          "C": "تداوم در چند برش بیشتر به نفع رگ است که از تقلیدکننده‌های مهم میکروخونریزی است.",
+          "D": "کلسیم نیز می‌تواند در تصاویر حساس به سوسپتیبیلیتی تیره باشد؛ CT متناظر در افتراق کمک می‌کند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3714437/"
+      },
+      {
+        "id": "icb-q02",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "در زمینهٔ پرفشاری خون طولانی‌مدت، خونریزی خودبه‌خودی تالاموس، میکروخونریزی‌های عمقی و تغییرات مادهٔ سفید دیده می‌شوند. کدام بیماری زمینه‌ای مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "آرتریولوپاتی ناشی از پرفشاری خون در عروق پرفوراتور عمقی"
+          },
+          {
+            "id": "B",
+            "text": "آنژیوپاتی آمیلوئید عمدتاً قشری و لپتومننژیال"
+          },
+          {
+            "id": "C",
+            "text": "پارگی مالفورماسیون شریانی‌وریدی قشری"
+          },
+          {
+            "id": "D",
+            "text": "ترومبوز ورید قشری همراه انفارکت خونریزی‌دهنده"
+          }
+        ],
+        "correct": "A",
+        "explanation": "توزیع عمقی همراه پرفشاری خون و سایر نشانه‌های بیماری عروق کوچک از آرتریولوپاتی پرفوراتورها حمایت می‌کند. این تفسیر الگوست و همهٔ علل ساختاری را رد نمی‌کند. درصد فراوانی یا محل خونریزی به‌تنهایی جای ارزیابی کلی را نمی‌گیرد.",
+        "wrongExplanations": {
+          "B": "CAA بیشتر با خونریزی صرفاً لوبار و سیدروز سطحی قشر همراه است؛ نشانه‌های عمقی اینجا بیشتر به نفع آرتریولوپاتی پرفوراتورها هستند.",
+          "C": "AVM با معماری عروقی آن بررسی می‌شود؛ نشانه‌های منتشر بیماری عروق کوچک عمقی اینجا از مکانیسم غالب دیگری حمایت می‌کنند.",
+          "D": "ترومبوز ورید قشری به یافته‌های وریدی و توزیع انفارکت سازگار نیاز دارد؛ الگوی عمقی ذکرشده برای آن تیپیک نیست."
+        },
+        "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+      },
+      {
+        "id": "icb-q03",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "در نقص عصبی کانونی حاد، CT بدون تزریق ضایعهٔ موضعی داخل پارانشیم نشان می‌دهد. کدام محدودهٔ دانسیته با خون تازهٔ پرچگال سازگارتر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "۰ تا ۱۰ HU"
+          },
+          {
+            "id": "B",
+            "text": "۲۰ تا ۳۵ HU"
+          },
+          {
+            "id": "C",
+            "text": "۵۰ تا ۸۰ HU"
+          },
+          {
+            "id": "D",
+            "text": "بیش از ۱۲۰ HU"
+          }
+        ],
+        "correct": "C",
+        "explanation": "PDF محدودهٔ ۵۰ تا ۸۰ HU را مثال تیپیک می‌داند. خون حاد اغلب پرچگال است، ولی دانسیتهٔ واقعی از جمله به غلظت، هماتوکریت و تکنیک بستگی دارد. این محدوده مرز همگانی تشخیص یا تعیین زمان نیست.",
+        "wrongExplanations": {
+          "A": "این محدوده بیشتر نزدیک آب یا مایع مغزی‌نخاعی است و با مثال خون پرچگال مورد سؤال تطابق ندارد.",
+          "B": "این محدوده می‌تواند به دانسیتهٔ پارانشیم نزدیک باشد؛ مثال خون تازه پرچگال‌تر است. هم‌دانسیته‌بودن در شرایط دیگر خون را رد نمی‌کند.",
+          "D": "دانسیتهٔ بسیار بالا ممکن است در کلسیم یا مادهٔ حاجب دیده شود، ولی محدودهٔ تیپیک ذکرشده در PDF نیست. دانسیته به‌تنهایی همچنان غیراختصاصی است."
+        },
+        "source": "https://pubs.rsna.org/doi/10.1148/123.2.335"
+      },
+      {
+        "id": "icb-q04",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "در CT بدون تزریق، هماتوم حاد نواحی کم‌دانسیتهٔ موضعی درون خون پرچگال دارد. کدام تفسیر با Swirl sign سازگار است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "تجمع مادهٔ حاجب به‌عنوان نشانهٔ مستقیم خروج آن در CTA"
+          },
+          {
+            "id": "B",
+            "text": "ناهمگنی دانسیته با احتمال بخشی از خونِ لخته‌نشده"
+          },
+          {
+            "id": "C",
+            "text": "حاشیهٔ کم‌دانسیته ناشی از بازجذب تدریجی هماتوم زیرحاد"
+          },
+          {
+            "id": "D",
+            "text": "ادم وازوژنیک خارج هماتوم در مادهٔ سفید مجاور"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Swirl ناهمگنی دانسیته درون هماتوم حاد را توصیف می‌کند، نه ادم اطراف یا تجمع مادهٔ حاجب در CTA. خون لخته‌نشده یک توضیح ممکن است؛ علامت در ارزیابی خطر گسترش کمک می‌کند، اما خروج فعال خون را ثابت نمی‌کند.",
+        "wrongExplanations": {
+          "A": "سناریو CT بدون تزریق را توصیف می‌کند، نه تجمع مادهٔ حاجب. Spot sign در CTA و با مقایسه با تصویر بدون تزریق ارزیابی می‌شود.",
+          "C": "حاشیهٔ کم‌دانسیته ناشی از بازجذب تدریجی هماتوم زیرحاد با ناحیهٔ کم‌دانسیته درون خونِ پرچگال متفاوت است و نباید خودبه‌خود Swirl sign تلقی شود.",
+          "D": "علامت ذکرشده درون هماتوم است؛ ادم اطراف خارج آن قرار دارد و جداگانه بررسی می‌شود."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3517489/; https://pmc.ncbi.nlm.nih.gov/articles/PMC7410590/"
+      },
+      {
+        "id": "icb-q05",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "CTA تجمع کوچک مادهٔ حاجب را درون هماتوم حاد نشان می‌دهد که در CT بدون تزریق وجود ندارد و ارتباط عروقی مشخصی ندارد. کدام تفسیر مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "کلسیفیکاسیون داخل هماتوم"
+          },
+          {
+            "id": "B",
+            "text": "Spot sign در CTA به‌عنوان سرنخ خروج کانونی مادهٔ حاجب"
+          },
+          {
+            "id": "C",
+            "text": "Swirl sign در CT بدون تزریق"
+          },
+          {
+            "id": "D",
+            "text": "رگ حاوی مادهٔ حاجب که از هماتوم عبور می‌کند"
+          }
+        ],
+        "correct": "B",
+        "explanation": "تجمع کانونی جدید مادهٔ حاجب بدون تداوم عروقی با Spot sign سازگار است. این علامت با افزایش خطر گسترش همراه است؛ نما و ارزش پیش‌بینی تا حدی به زمان تصویربرداری بستگی دارند. مثبت‌بودن علامت گسترش را قطعی نمی‌کند.",
+        "wrongExplanations": {
+          "A": "کلسیم باید در تصویر متناظر بدون تزریق دیده شود؛ سناریو افزایش دانسیته‌ای را توصیف می‌کند که پس از تزریق پدیدار شده است.",
+          "C": "Swirl نشانهٔ ناهمگنی در CT بدون تزریق است، نه تجمع جدید مادهٔ حاجب.",
+          "D": "تداوم در برش‌های مجاور و اتصال به درخت عروقی بیشتر به نفع رگِ تقلیدکننده است؛ این موارد در سناریو وجود ندارند."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/17322083/"
+      },
+      {
+        "id": "icb-q06",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "هماتوم شناخته‌شدهٔ داخل پارانشیم در CT پیگیری نسبت به بررسی اولیه کوچک‌تر و کم‌دانسیته‌تر شده است. کدام تفسیر مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "انفارکت شریانی جدید توضیح اصلی است"
+          },
+          {
+            "id": "B",
+            "text": "تغییر با سازمان‌یافتگی و جذب هماتوم سازگار است"
+          },
+          {
+            "id": "C",
+            "text": "کاهش دانسیته بیشتر به نفع آبسهٔ تازه ایجادشده است"
+          },
+          {
+            "id": "D",
+            "text": "خونریزی ثانویه در نئوپلاسم زمینه‌ای به‌عنوان توضیح اصلی"
+          }
+        ],
+        "correct": "B",
+        "explanation": "کاهش اندازه و دانسیته با سیر هماتوم شناخته‌شده سازگار است. دانسیته و زمان‌بندی متغیرند؛ از این یافته به‌تنهایی نه سن دقیق خونریزی و نه رد ضایعهٔ زمینه‌ای نتیجه می‌شود.",
+        "wrongExplanations": {
+          "A": "انفارکت شریانی جدید به یافته‌های تازهٔ متناسب با قلمرو شریانی نیاز دارد؛ خونریزی شناخته‌شدهٔ در حال کوچک‌شدن این تغییر را بهتر توضیح می‌دهد.",
+          "C": "ضایعهٔ عفونی رو به رشد به شواهد بالینی و تصویری بیشتری نیاز دارد؛ پسرفت توصیف‌شده به‌تنهایی از آن حمایت نمی‌کند.",
+          "D": "تومور ممکن است پشت خونریزی پنهان باشد، اما با افت دانسیته اثبات نمی‌شود. پیگیری و در صورت لزوم MRI با تزریق به تعیین علت کمک می‌کنند."
+        },
+        "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407; https://pubs.rsna.org/doi/10.1148/123.2.335"
+      },
+      {
+        "id": "icb-q07",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "در خونریزی مغزی بسیار تازهٔ تأییدشده، ضایعه در T2 هنوز روشن است. کدام گروه سکانس به‌ویژه با استفاده از سوسپتیبیلیتی به آشکارسازی فرآورده‌های خون کمک می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "سکانس‌های متعارف T1 اسپین‌اکو بدون تزریق"
+          },
+          {
+            "id": "B",
+            "text": "T2*-GRE یا SWI"
+          },
+          {
+            "id": "C",
+            "text": "سکانس‌های متعارف FLAIR"
+          },
+          {
+            "id": "D",
+            "text": "T1 پس از تزریق برای ارزیابی اختلال سد خونی‌مغزی"
+          }
+        ],
+        "correct": "B",
+        "explanation": "GRE/SWI حساس به سوسپتیبیلیتی مکمل بررسی فرآورده‌های خون است. روشن‌بودن در T2 خون بسیار تازه را رد نمی‌کند؛ سیگنال از جمله به فرآورده‌های خون، قدرت میدان و سکانس وابسته است.",
+        "wrongExplanations": {
+          "A": "T1 در تفسیر کلی نقش دارد، اما حساسیت T2* به سوسپتیبیلیتیِ مورد پرسش را فراهم نمی‌کند.",
+          "C": "FLAIR برای بررسی پارانشیم و فضاهای مایع کمک‌کننده است، اما جایگزین تصویربرداری هدفمند حساس به سوسپتیبیلیتی نیست.",
+          "D": "جذب مادهٔ حاجب پرسش دیگری را پاسخ می‌دهد؛ ویژگی اصلی مورد نظر برای نمایش سوسپتیبیلیتی خون نیست."
+        },
+        "source": "https://doi.org/10.1001/jama.292.15.1823; https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+      },
+      {
+        "id": "icb-q08",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "هماتوم شناخته‌شدهٔ داخل پارانشیم در T1 بدون تزریق هم‌سیگنال تا کم‌سیگنال و در T2 کم‌سیگنال است. در مدل ساده‌شدهٔ MRI، کدام حالت غالب فرآوردهٔ خون مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "عمدتاً اکسی‌هموگلوبین"
+          },
+          {
+            "id": "B",
+            "text": "عمدتاً دئوکسی‌هموگلوبین داخل‌سلولی"
+          },
+          {
+            "id": "C",
+            "text": "عمدتاً مت‌هموگلوبین رقیق‌شدهٔ خارج‌سلولی"
+          },
+          {
+            "id": "D",
+            "text": "عمدتاً مت‌هموگلوبین داخل‌سلولی"
+          }
+        ],
+        "correct": "B",
+        "explanation": "در مدل ساده‌شده، دئوکسی‌هموگلوبین با سیگنال نسبتاً پایین T2 بدون روشن‌شدن واضح در T1 بدون تزریق سازگار است. این مدل سیگنال‌های نسبی تیپیک را توصیف می‌کند و ساعت قابل‌اعتماد برای تعیین زمان دقیق نیست.",
+        "wrongExplanations": {
+          "A": "اکسی‌هموگلوبین در هماتوم بسیار تازه می‌تواند در T2 روشن باشد و الگوی T2 تیرهٔ ذکرشده را کمتر توضیح می‌دهد.",
+          "C": "مت‌هموگلوبین رقیق‌شدهٔ خارج‌سلولی ممکن است در T1 و T2 روشن باشد و با الگوی ذکرشده مطابقت ندارد.",
+          "D": "مت‌هموگلوبین داخل‌سلولی معمولاً موجب روشن‌شدن در T1 بدون تزریق می‌شود که اینجا وجود ندارد."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/4034983/"
+      },
+      {
+        "id": "icb-q09",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "هماتوم شناخته‌شده در T1 بدون تزریق روشن است ولی در T2 هنوز تیره است. کدام حالت فرآوردهٔ خون مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "عمدتاً اکسی‌هموگلوبین"
+          },
+          {
+            "id": "B",
+            "text": "عمدتاً مت‌هموگلوبین داخل‌سلولی"
+          },
+          {
+            "id": "C",
+            "text": "عمدتاً دئوکسی‌هموگلوبین"
+          },
+          {
+            "id": "D",
+            "text": "عمدتاً مت‌هموگلوبین رقیق‌شدهٔ خارج‌سلولی"
+          }
+        ],
+        "correct": "B",
+        "explanation": "مت‌هموگلوبین داخل‌سلولی T1 را کوتاه می‌کند، در حالی که سیگنال T2 می‌تواند پایین بماند. غلظت، محل داخل یا خارج سلول و سکانس بر سیگنال اثر می‌گذارند؛ مرز زمانی ثابت بر حسب روز نتیجه نمی‌شود.",
+        "wrongExplanations": {
+          "A": "اکسی‌هموگلوبین روشن‌شدن واضح در T1 بدون تزریق را کمتر توضیح می‌دهد.",
+          "C": "دئوکسی‌هموگلوبین با T2 پایین سازگار است، اما روشن‌شدن واضح T1 را کمتر توضیح می‌دهد.",
+          "D": "در مت‌هموگلوبین رقیق‌شدهٔ خارج‌سلولی، سیگنال بالای T2 نیز بیشتر انتظار می‌رود."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/3257117/"
+      },
+      {
+        "id": "icb-q10",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "هماتوم تأییدشده در تصاویر قبلی اکنون در T1 بدون تزریق و T2 هر دو روشن است. کدام حالت فرآوردهٔ خون می‌تواند این الگو را توضیح دهد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "عمدتاً دئوکسی‌هموگلوبین داخل‌سلولی"
+          },
+          {
+            "id": "B",
+            "text": "مت‌هموگلوبین رقیق‌شدهٔ خارج‌سلولی"
+          },
+          {
+            "id": "C",
+            "text": "عمدتاً مت‌هموگلوبین داخل‌سلولی"
+          },
+          {
+            "id": "D",
+            "text": "عمدتاً رسوب هموسیدرین"
+          }
+        ],
+        "correct": "B",
+        "explanation": "مت‌هموگلوبین آزاد و رقیق‌شده می‌تواند در T1 و T2 روشن باشد. سیگنال به غلظت و سکانس نیز وابسته است؛ روشن‌بودن در T1/T2 خارج از زمینهٔ خونریزی تأییدشده اختصاصی خون نیست.",
+        "wrongExplanations": {
+          "A": "در مدل ساده‌شده، دئوکسی‌هموگلوبین بیشتر با سیگنال پایین T2 سازگار است.",
+          "C": "مت‌هموگلوبین داخل‌سلولی ممکن است T1 را روشن کند، در حالی که T2 معمولاً هنوز پایین است.",
+          "D": "هموسیدرین عمدتاً در تصاویر حساس به سوسپتیبیلیتی افت سیگنال و blooming ایجاد می‌کند، نه این الگوی روشن T1/T2."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/3257117/"
+      },
+      {
+        "id": "icb-q11",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "خونریزی کوچک قبلی دیگر در CT با اطمینان دیده نمی‌شود. کدام گروه سکانس MRI به‌ویژه برای یافتن رسوب هموسیدرین باقی‌مانده کمک‌کننده است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "تصاویر T1 اسپین‌اکو بدون تزریق"
+          },
+          {
+            "id": "B",
+            "text": "تصاویر متعارف T2 اسپین‌اکو"
+          },
+          {
+            "id": "C",
+            "text": "T2*-GRE یا SWI"
+          },
+          {
+            "id": "D",
+            "text": "تصاویر T1 پس از تزریق"
+          }
+        ],
+        "correct": "C",
+        "explanation": "هموسیدرین افت سیگنال و blooming ناشی از سوسپتیبیلیتی ایجاد می‌کند که GRE/SWI می‌تواند به‌خوبی آشکار کند. کانون تیره خودبه‌خود میکروخونریزی نیست؛ تقلیدکننده‌ها و توزیع نیز بررسی شوند.",
+        "wrongExplanations": {
+          "A": "T1 ممکن است حفرهٔ باقی‌مانده و یافته‌های همراه را نشان دهد، اما برای اثر سوسپتیبیلیتی مورد پرسش هدف‌گذاری نشده است.",
+          "B": "T2 متعارف مکمل بررسی است؛ GRE/SWI اثر T2* مورد نظر را هدفمندتر به کار می‌گیرد.",
+          "D": "T1 پس از تزریق عمدتاً جذب مادهٔ حاجب را ارزیابی می‌کند که ویژگی مورد نظر هموسیدرین نیست."
+        },
+        "source": "https://doi.org/10.1001/jama.292.15.1823; https://pmc.ncbi.nlm.nih.gov/articles/PMC3714437/"
+      },
+      {
+        "id": "icb-q12",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "خونریزی لوبار با ادم نامتناسب و بافت مشکوک مجاور همراه است. CTA اولیه علت ماکروواسکولار نشان نمی‌دهد. کدام بررسی بعدی مستقیم‌تر به ارزیابی ضایعهٔ بافتی زمینه‌ای کمک می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "آنژیوگرافی کاتتری برای جست‌وجوی شانت کوچک شریانی‌وریدی"
+          },
+          {
+            "id": "B",
+            "text": "MRI برای بررسی ویژگی‌های بافت پیش و پس از تزریق مادهٔ حاجب"
+          },
+          {
+            "id": "C",
+            "text": "CT ونوگرافی برای جست‌وجوی اختلال تخلیهٔ وریدی"
+          },
+          {
+            "id": "D",
+            "text": "تکرار CT بدون تزریق برای کنترل اندازه و دانسیتهٔ هماتوم"
+          }
+        ],
+        "correct": "B",
+        "explanation": "پس از CTA منفی، MRI می‌تواند علت غیرماکروواسکولار مانند تومور یا کاورنوم را بیشتر بررسی کند. T1 پیش و پس از تزریق باید با هم ارزیابی شوند، زیرا خود خون ممکن است در T1 روشن باشد. بافت پنهان‌شده ممکن است پس از بازجذب خون به کنترل مجدد نیاز داشته باشد؛ ادم به‌تنهایی تومور را اثبات نمی‌کند.",
+        "wrongExplanations": {
+          "A": "DSA در شک باقی‌مانده می‌تواند شانت عروقی کوچک را بررسی کند، اما بافت مشکوک اینجا را به‌اندازهٔ MRI مستقیم توصیف نمی‌کند.",
+          "C": "ونوگرافی در شک به علت وریدی مهم است. MRI پرسش مشخص دربارهٔ ضایعهٔ بافتی زمینه‌ای را مستقیم‌تر پاسخ می‌دهد.",
+          "D": "CT پیگیری گسترش و بازجذب را ارزیابی می‌کند. MRI برای بررسی ویژگی‌های بافت مشکوک باقی‌مانده در اینجا اطلاعات هدفمندتری می‌دهد."
+        },
+        "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+      },
+      {
+        "id": "icb-q13",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "در فرد سالمند دارای خونریزی خودبه‌خودی مغزی، CAA مطرح است. کدام توزیع خونریزی همراه بیشتر از آن در مقایسه با آرتریولوپاتی عمقی ناشی از پرفشاری خون حمایت می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "میکروخونریزی‌ها عمدتاً در عقده‌های قاعده‌ای و تالاموس‌ها"
+          },
+          {
+            "id": "B",
+            "text": "میکروخونریزی‌های کاملاً لوبار همراه سیدروز سطحی قشری"
+          },
+          {
+            "id": "C",
+            "text": "میکروخونریزی‌ها عمدتاً در پونس و بخش عمقی مخچه"
+          },
+          {
+            "id": "D",
+            "text": "میکروخونریزی‌های مختلط لوبار و عمقی همراه خونریزی تالاموس"
+          }
+        ],
+        "correct": "B",
+        "explanation": "توزیع کاملاً لوبار و سیدروز سطحی قشری با CAA سازگارند. تعیین ردهٔ تشخیصی به چارچوب کامل معیارهای بالینی و تصویری و رد علل دیگر نیاز دارد؛ خود الگو اثبات بافت‌شناختی نیست.",
+        "wrongExplanations": {
+          "A": "میکروخونریزی‌های عمقی بیشتر بیماری پرفوراتورهای عمقی را مطرح می‌کنند و کمتر با الگوی کاملاً لوبار CAA سازگارند.",
+          "C": "غلبهٔ عمقی زیرچادری بیشتر به نفع آرتریولوپاتی عروق عمقی است تا الگوی لوبار مورد نظر.",
+          "D": "الگوی مختلط ممکن است بازتاب چند آسیب‌شناسی باشد. الگوی کاملاً لوبار مورد نظر نیست؛ خونریزی‌های عمقی طبقه‌بندی MRI بر اساس بوستون را محدود می‌کنند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9389452/"
+      },
+      {
+        "id": "icb-q14",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "هماتوم شناخته‌شده در پیگیری کوچک‌تر شده و اکنون جذب صاف مادهٔ حاجب در حاشیه دارد. مناسب‌ترین تفسیر چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "الگو در درجهٔ اول متاستاز تازه ایجادشده را مطرح می‌کند"
+          },
+          {
+            "id": "B",
+            "text": "جذب حاشیه‌ای در درجهٔ اول کپسول آبسه محسوب می‌شود"
+          },
+          {
+            "id": "C",
+            "text": "جذب حاشیه‌ای در جریان سازمان‌یافتگی ممکن است؛ علت زمینه‌ای همچنان با توجه به شرایط بررسی می‌شود"
+          },
+          {
+            "id": "D",
+            "text": "حاشیهٔ جدیدِ جاذب مادهٔ حاجب در درجهٔ اول خونریزی حاد مجدد را نشان می‌دهد"
+          }
+        ],
+        "correct": "C",
+        "explanation": "هماتوم در حال سازمان‌یافتگی می‌تواند در حاشیه مادهٔ حاجب جذب کند. پسرفت از این احتمال حمایت می‌کند، اما جای بررسی علت را نمی‌گیرد. بافت ندولار باقی‌مانده، سیر غیرمعمول یا علائم هشدار بالینی به بررسی هدفمند بیشتر نیاز دارند.",
+        "wrongExplanations": {
+          "A": "متاستاز ممکن است خونریزی کند، اما جذب صاف حاشیهٔ هماتومِ در حال کوچک‌شدن آن را اثبات نمی‌کند. بافت مشکوک باقی‌مانده جداگانه جست‌وجو شود.",
+          "B": "آبسه به شواهد سازگار بیشتری مانند زمینهٔ بالینی و یافتهٔ انتشار نیاز دارد. جذب حلقوی مادهٔ حاجب به‌تنهایی این علت‌ها را جدا نمی‌کند.",
+          "D": "خونریزی مجدد با اجزای جدید خون، تغییر اندازه و زمینهٔ کلی ارزیابی می‌شود؛ جذب مادهٔ حاجب به‌تنهایی آن را اثبات نمی‌کند."
+        },
+        "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+      },
+      {
+        "id": "icb-q15",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "در فرد ۲۹ سالهٔ بدون پرفشاری خون، CT بدون تزریق که اکنون انجام شده خونریزی خودبه‌خودی لوبار نشان می‌دهد. CTA بی‌درنگ در دسترس است. کدام راهبرد بررسی سریع و غیرتهاجمی علت ماکروواسکولار را بلافاصله پس از CT در اولویت می‌گذارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "آنژیوگرافی مستقیم کاتتری به‌عنوان نخستین بررسی عروقی"
+          },
+          {
+            "id": "B",
+            "text": "CTA داخل‌جمجمه‌ای، همراه بررسی وریدی متناسب با شک بالینی"
+          },
+          {
+            "id": "C",
+            "text": "انتقال به MRI همراه MRA پیش از CT آنژیوگرافیِ در دسترس"
+          },
+          {
+            "id": "D",
+            "text": "برنامه‌ریزی بررسی عروقی پس از پسرفت هماتوم"
+          }
+        ],
+        "correct": "B",
+        "explanation": "در فرد جوان دارای خونریزی خودبه‌خودی لوبار، بررسی هدفمند و زودهنگام عروق لازم است. CTA با درنظرگرفتن ونوگرافی علل ماکروواسکولار یا وریدی را بررسی می‌کند؛ MRI/MRA یا DSA بیشتر به یافته‌ها و شک باقی‌مانده بستگی دارد. CTA منفی همهٔ علت‌ها را رد نمی‌کند.",
+        "wrongExplanations": {
+          "A": "DSA در یافتهٔ مشکوک یا احتمال بالای باقی‌مانده ممکن است لازم باشد. این روش تهاجمی است و راهبرد اولیهٔ سریع و غیرتهاجمی مورد نظر نیست.",
+          "C": "MRI/MRA می‌تواند مکمل یا متناسب با زمینه جایگزین باشد. وقتی CTA بلافاصله پس از CT در دسترس است، این انتقال روند سریع CT مطرح‌شده را در اولویت نمی‌گذارد.",
+          "D": "تصویربرداری دیرتر ممکن است علت پنهان را آشکار کند، اما جای بررسی زودهنگام عروق در این فرد جوان با خونریزی لوبار را نمی‌گیرد."
+        },
+        "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407; https://www.bmj.com/content/351/bmj.h5762"
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "icb-fc-01",
+      "topicId": "intrazerebrale-blutung",
+      "front": {
+        "de": "Hyperakute ICB · Was leisten T2, CT und blutsensitive MRT-Sequenzen?",
+        "en": "Hyperacute ICH · What can T2, CT and blood-sensitive MRI sequences show?",
+        "fa": "خونریزی داخل مغزی فوق‌حاد · نقش T2، CT و سکانس‌های حساس به خون در MRI چیست؟"
+      },
+      "back": {
+        "de": "T2 kann überwiegend hell sein und schließt Blut nicht aus.\nCT: schnelle Akutdiagnostik.\nGRE/T2* oder SWI: auch hyperakute Blutung erkennbar.",
+        "en": "T2 may be predominantly bright and does not exclude blood.\nCT: rapid acute assessment.\nGRE/T2* or SWI: can also detect hyperacute haemorrhage.",
+        "fa": "T2 ممکن است عمدتاً روشن باشد و خونریزی را رد نمی‌کند.\nCT: ارزیابی سریع در مرحلهٔ حاد.\nGRE/T2* یا SWI: امکان تشخیص خونریزی فوق‌حاد نیز وجود دارد."
+      },
+      "explanation": {
+        "de": "Signal und Suszeptibilität hängen von Sequenz, Blutprodukten und deren räumlicher Verteilung ab. Das vereinfachte Oxy-Hb-Modell rechtfertigt weder einen Blutungsausschluss auf T2 noch die pauschale Aussage, MRT sei hyperakut weniger sensitiv als CT. Beide Verfahren können eine akute ICB erkennen; Verfügbarkeit und klinische Situation bestimmen die Erstuntersuchung.",
+        "en": "Signal and susceptibility depend on the sequence, blood products and their spatial distribution. The simplified oxyHb model justifies neither excluding haemorrhage on T2 nor claiming that MRI is invariably less sensitive than CT in the hyperacute stage. Both can detect acute ICH; availability and the clinical situation determine the initial study.",
+        "fa": "سیگنال و حساسیت مغناطیسی به سکانس، محصولات خونی و توزیع فضایی آن‌ها بستگی دارند. مدل ساده‌شدهٔ اکسی‌هموگلوبین نه رد خونریزی بر اساس T2 را توجیه می‌کند و نه این ادعای کلی را که MRI در مرحلهٔ فوق‌حاد همیشه از CT کم‌حساس‌تر است. هر دو روش می‌توانند خونریزی حاد را تشخیص دهند؛ دسترسی و وضعیت بالینی تعیین‌کنندهٔ بررسی اولیه‌اند."
+      },
+      "diagram": {
+        "de": "T2 hell ≠ Blutung ausgeschlossen → CT / GRE / SWI im Kontext beurteilen",
+        "en": "Bright T2 ≠ haemorrhage excluded → assess CT / GRE / SWI in context",
+        "fa": "T2 روشن ≠ رد خونریزی ← CT / GRE / SWI را در زمینهٔ بالینی ارزیابی کنید"
+      },
+      "tag": "icb-mrt",
+      "source": "https://doi.org/10.1001/jama.292.15.1823; https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+    },
+    {
+      "id": "icb-fc-02",
+      "topicId": "intrazerebrale-blutung",
+      "front": {
+        "de": "Deoxy-Hb (akut) · T1 und T2?",
+        "en": "DeoxyHb (acute) · T1 and T2?",
+        "fa": "Deoxy-Hb (حاد) · T1 و T2؟"
+      },
+      "back": {
+        "de": "T1 meist iso-/hypointens; T2 hypointens; blutsensitive Sequenzen zeigen Suszeptibilität.",
+        "en": "T1 usually iso/hypointense; T2 hypointense; blood-sensitive sequences show susceptibility.",
+        "fa": "T1 معمولاً ایزو یا کم‌سیگنال؛ T2 کم‌سیگنال؛ سکانس‌های حساس به خون، اثر حساسیت مغناطیسی را نشان می‌دهند."
+      },
+      "explanation": {
+        "de": "Intrazelluläres Deoxy-Hb passt zum akuten Muster mit T1 iso-/hypointens und T2 hypointens. Met-Hb führt typischerweise zu T1-Hochsignal. Signal hängt von Blutprodukt, Konzentration, Kompartimentierung und Sequenz ab; daraus lässt sich kein exakter Blutungszeitpunkt ableiten.",
+        "en": "Intracellular deoxyHb fits the acute pattern of T1 iso/hypointensity and T2 hypointensity. MetHb typically produces T1 hyperintensity. Signal depends on blood product, concentration, compartmentalisation, and sequence; it does not establish an exact haemorrhage time.",
+        "fa": "دئوکسی‌هموگلوبین داخل‌سلولی با الگوی حادِ سیگنال ایزو یا پایین در T1 و پایین در T2 سازگار است. مت‌هموگلوبین معمولاً سیگنال بالای T1 ایجاد می‌کند. سیگنال به محصول خونی، غلظت، بخش‌بندی سلولی و سکانس وابسته است؛ زمان دقیق خونریزی از آن تعیین نمی‌شود."
+      },
+      "diagram": {
+        "de": "Deoxy-Hb intrazellulär → typischerweise T1 iso/niedrig, T2 niedrig",
+        "en": "Intracellular deoxyHb → typically T1 iso/low, T2 low",
+        "fa": "دئوکسی‌هموگلوبین داخل‌سلولی ← معمولاً T1 ایزو یا پایین، T2 پایین"
+      },
+      "tag": "icb-mrt",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/3257117/; https://pubmed.ncbi.nlm.nih.gov/4034983/"
+    },
+    {
+      "id": "icb-fc-03",
+      "topicId": "intrazerebrale-blutung",
+      "front": {
+        "de": "Met-Hb intrazellulär (früh subakut) · T1 und T2?",
+        "en": "MetHb intracellular (early subacute) · T1 and T2?",
+        "fa": "Met-Hb داخل سلولی (زیرحاد اولیه) · T1 و T2؟"
+      },
+      "back": {
+        "de": "Früh subakut: typischerweise T1 hell und T2 dunkel bei intrazellulärem Met-Hb.",
+        "en": "Early subacute: typically bright T1 and dark T2 with intracellular metHb.",
+        "fa": "زیرحاد اولیه: معمولاً T1 روشن و T2 تیره با مت‌هموگلوبین داخل‌سلولی."
+      },
+      "explanation": {
+        "de": "Die Kombination hilft bei der relativen Stadieneinordnung. Der Kontrast hängt unter anderem von Hämoglobinzustand, Konzentration und Kompartimentierung ab.",
+        "en": "This combination supports relative staging. Contrast depends in part on haemoglobin state, concentration, and compartmentalisation.",
+        "fa": "این ترکیب به مرحله‌بندی نسبی کمک می‌کند. کنتراست از جمله به وضعیت هموگلوبین، غلظت و بخش‌بندی سلولی وابسته است."
+      },
+      "diagram": {
+        "de": "Met-Hb intrazellulär → typischerweise T1 hoch, T2 niedrig",
+        "en": "Intracellular metHb → typically high T1, low T2",
+        "fa": "مت‌هموگلوبین داخل‌سلولی ← معمولاً T1 بالا، T2 پایین"
+      },
+      "tag": "icb-mrt",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/3257117/; https://pubmed.ncbi.nlm.nih.gov/4034983/"
+    },
+    {
+      "id": "icb-fc-04",
+      "topicId": "intrazerebrale-blutung",
+      "front": {
+        "de": "Wann kann Methämoglobin im Hämatom auf T1 und T2 hell sein, und welche Grenze hat dieses Muster?",
+        "en": "When can methaemoglobin in a haematoma be bright on both T1 and T2, and what limits this pattern?",
+        "fa": "چه زمانی مت‌هموگلوبین هماتوم می‌تواند در T1 و T2 روشن باشد و محدودیت این الگو چیست؟"
+      },
+      "back": {
+        "de": "Verdünntes extrazelluläres Methämoglobin kann T1 und T2 aufhellen. Das Muster ist nicht blutspezifisch: unter anderem Fett und melaninreiche Läsionen können überlappen. Kontext, Fettsättigung, blutsensitive Sequenzen und Verlauf ergänzen die Beurteilung.",
+        "en": "Dilute extracellular methaemoglobin can brighten T1 and T2. The pattern is not blood-specific: fat and melanin-rich lesions can overlap, among other mimics. Context, fat suppression, blood-sensitive sequences and follow-up complement interpretation.",
+        "fa": "مت‌هموگلوبین رقیق‌شدهٔ خارج‌سلولی می‌تواند T1 و T2 را روشن کند. الگو اختصاصی خون نیست؛ از جمله چربی و ضایعات غنی از ملانین ممکن است هم‌پوشانی داشته باشند. زمینه، سرکوب چربی، سکانس‌های حساس به خون و پیگیری مکمل تفسیرند."
+      },
+      "explanation": {
+        "de": "Das beobachtete Signal hängt nicht nur von intra- oder extrazellulärer Lage ab, sondern auch von Konzentration und Aufnahmeparametern. Ein vereinfachtes Blutproduktmodell ersetzt nicht die Auswertung mehrerer Sequenzen.",
+        "en": "Observed signal depends not only on intracellular or extracellular location but also on concentration and acquisition parameters. A simplified blood-product model does not replace multisequence interpretation.",
+        "fa": "سیگنال مشاهده‌شده علاوه بر محل داخل یا خارج سلول، به غلظت و پارامترهای تصویربرداری وابسته است. مدل ساده‌شدهٔ فرآورده‌های خون جای تفسیر چندسکانسی را نمی‌گیرد."
+      },
+      "diagram": {
+        "de": "Bekannter Blutungskontext + T1/T2 hell → extrazelluläres verdünntes Met-Hb möglich; Mimics und Verlauf prüfen",
+        "en": "Established haemorrhage context + bright T1/T2 → dilute extracellular metHb possible; assess mimics and evolution",
+        "fa": "زمینهٔ خونریزی تأییدشده + T1/T2 روشن ← مت‌هموگلوبین رقیق خارج‌سلولی ممکن است؛ تقلیدکننده‌ها و سیر بررسی شوند"
+      },
+      "tag": "icb-mrt",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/3257117/"
+    },
+    {
+      "id": "icb-fc-05",
+      "topicId": "intrazerebrale-blutung",
+      "front": {
+        "de": "Hämosiderin (chronisch) · Welche Sequenz ist entscheidend?",
+        "en": "Haemosiderin (chronic) · Which sequence is essential?",
+        "fa": "هموسیدرین (مزمن) · کدام سکانس ضروری است؟"
+      },
+      "back": {
+        "de": "SWI / T2*: ausgeprägter Suszeptibilitätseffekt\nT1/T2: je nach Stadium variabel\nCT und MRT: komplementär",
+        "en": "SWI / T2*: marked susceptibility effect\nT1/T2: vary by stage\nCT and MRI: complementary",
+        "fa": "SWI / T2*: اثر برجستهٔ susceptibility\nT1/T2: بسته به مرحله متغیر\nCT و MRI: مکمل"
+      },
+      "explanation": {
+        "de": "Hämosiderin verursacht Blooming auf SWI/T2*. Kleine alte Blutprodukte werden mit susceptibility-sensitiven MRT-Sequenzen besonders gut erfasst. CT und MRT bleiben komplementär; keine einzelne Sequenz ersetzt die klinische Einordnung.",
+        "en": "Haemosiderin causes blooming on SWI/T2*. Small old blood products are particularly well depicted with susceptibility-sensitive MRI sequences. CT and MRI remain complementary; no single sequence replaces clinical context.",
+        "fa": "هموسیدرین روی SWI/T2* باعث blooming می‌شود. محصولات خونی کوچک و قدیمی با سکانس‌های حساس به susceptibility در MRI بهتر دیده می‌شوند. CT و MRI مکمل‌اند و هیچ سکانسی جای زمینهٔ بالینی را نمی‌گیرد."
+      },
+      "diagram": {
+        "de": "Blutabbau → Hämosiderin → Suszeptibilitätseffekt auf SWI/T2*\nCT und MRT: komplementäre Information",
+        "en": "Blood breakdown → haemosiderin → susceptibility effect on SWI/T2*\nCT and MRI: complementary information",
+        "fa": "تجزیهٔ خون ← هموسیدرین ← اثر سوسپتیبیلیتی در SWI/T2*\nCT و MRI: اطلاعات مکمل"
+      },
+      "tag": "icb-mrt",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3714437/"
+    },
+    {
+      "id": "icb-fc-06",
+      "topicId": "intrazerebrale-blutung",
+      "front": {
+        "de": "Swirl Sign · Was, Wo, Bedeutung?",
+        "en": "Swirl Sign · What, where, significance?",
+        "fa": "علامت چرخش (Swirl sign) · چیست، کجا، اهمیت؟"
+      },
+      "back": {
+        "de": "Was: Hypodense Areale im hyperdensen Hämatom\nWo: Natives CCT\nBedeutung: möglicher unverklotteter Anteil; mit Expansion assoziiert, kein Beweis aktiver Blutung",
+        "en": "What: Hypoattenuating areas in a hyperattenuating haematoma\nWhere: NCCT\nSignificance: possible unclotted component; associated with expansion, not proof of active bleeding",
+        "fa": "چیست: نواحی کم‌دانسیته در هماتوم پرچگال\nکجا: CT بدون کنتراست\nاهمیت: احتمال وجود جزء لخته‌نشده؛ مرتبط با گسترش، نه اثبات خونریزی فعال"
+      },
+      "explanation": {
+        "de": "Hypodense Areale innerhalb des Hämatoms können einen nicht koagulierten Anteil darstellen. Der Heterogenitätsbefund kann mit Expansion assoziiert sein, belegt aber keine laufende Blutung und erlaubt keine sichere Individualprognose.",
+        "en": "Hypoattenuating areas within the haematoma may represent an unclotted component. This heterogeneity sign may be associated with expansion, but it does not establish ongoing bleeding or provide a certain individual prognosis.",
+        "fa": "نواحی کم‌دانسیته درون هماتوم ممکن است بخشی لخته‌نشده باشند. این ناهمگنی می‌تواند با گسترش ارتباط داشته باشد، اما خونریزی جاری را ثابت نمی‌کند و پیش‌آگهی قطعی فردی نمی‌دهد."
+      },
+      "tag": "icb-ct",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3517489/; https://pmc.ncbi.nlm.nih.gov/articles/PMC7410590/"
+    },
+    {
+      "id": "icb-fc-07",
+      "topicId": "intrazerebrale-blutung",
+      "front": {
+        "de": "Spot Sign · Was, Wo, Bedeutung?",
+        "en": "Spot Sign · What, where, significance?",
+        "fa": "علامت اسپات (Spot sign) · چیست، کجا، اهمیت؟"
+      },
+      "back": {
+        "de": "Was: fokaler Kontrastmittelpool im/am Hämatom\nWo: CTA (nicht im nativen CT)\nBedeutung: mit erhöhtem Expansionsrisiko assoziiert; keine sichere Prognose",
+        "en": "What: focal contrast pooling within/at the haematoma\nWhere: CTA (not NCCT)\nSignificance: associated with increased expansion risk; not a certain prognosis",
+        "fa": "چیست: تجمع کانونی ماده حاجب درون/حاشیهٔ هماتوم\nکجا: CTA (نه CT بدون کنتراست)\nاهمیت: مرتبط با افزایش خطر گسترش؛ پیش‌بینی قطعی نیست"
+      },
+      "explanation": {
+        "de": "Das Spot Sign ist ein fokaler Kontrastmittelpool innerhalb oder am Rand des Hämatoms in der CTA. Ein positives Zeichen ist mit einem erhöhten Risiko für Hämatomexpansion assoziiert. Vorhersagewerte variieren unter anderem mit Zeitpunkt und Protokoll; daraus folgt keine sichere individuelle Prognose. CTA-Bildgebung richtet sich nach klinischem Kontext und lokalem Protokoll.",
+        "en": "The Spot Sign is a focal pool of contrast within or at the margin of the haematoma on CTA. A positive sign is associated with increased risk of haematoma expansion. Predictive values vary in part with timing and protocol, so it does not provide a certain individual prognosis. CTA imaging depends on the clinical context and local protocol.",
+        "fa": "Spot sign تجمع کانونی ماده حاجب درون یا حاشیهٔ هماتوم در CTA است. مثبت‌بودن آن با افزایش خطر گسترش هماتوم ارتباط دارد. ارزش پیش‌بینی تا حدی با زمان و پروتکل تغییر می‌کند و پیش‌آگهی قطعی فردی نمی‌دهد. انجام CTA به زمینهٔ بالینی و پروتکل مرکز بستگی دارد."
+      },
+      "tag": "icb-ct",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/17322083/"
+    },
+    {
+      "id": "icb-fc-08",
+      "topicId": "intrazerebrale-blutung",
+      "front": {
+        "de": "CT-Dichte ICB: Akut, Subakut, Chronisch?",
+        "en": "CT attenuation in ICH: acute, subacute, chronic?",
+        "fa": "دانسیتهٔ خونریزی داخل مغزی در CT: حاد، زیرحاد و مزمن؟"
+      },
+      "back": {
+        "de": "Akut: Blut häufig hyperdens\nResorption: Dichte kann variabel abnehmen und zeitweise isodens werden\nSpäter: häufig hypodense Residualveränderung\n⚠ Verlauf und Zeitpunkt sind variabel; HU nicht als lineare Uhr verwenden.",
+        "en": "Acute: blood is often hyperattenuating\nResorption: attenuation may decrease variably and become temporarily isoattenuating\nLater: often a hypoattenuating residual change\n⚠ Course and timing vary; do not use HU as a linear clock.",
+        "fa": "حاد: خون اغلب هایپردنس است\nجذب: دانسیته ممکن است متغیر کاهش یابد و موقتاً ایزودنس شود\nسپس: اغلب باقی‌ماندهٔ هیپودنس\n⚠ سیر و زمان متغیرند؛ HU را ساعت خطی تلقی نکنید."
+      },
+      "explanation": {
+        "de": "Frisches Blut ist häufig hyperdens. Während der Resorption kann die Dichte sinken und sich zeitweise der des Hirnparenchyms annähern; der Rest kann dadurch schwerer abgrenzbar sein. Zeitpunkt und Ausmaß variieren; Masseneffekt und Verlauf helfen bei der Einordnung.",
+        "en": "Fresh blood is often hyperattenuating. During resorption, attenuation may decrease and temporarily approach that of brain parenchyma, making the residual haemorrhage harder to delineate. Timing and extent vary; mass effect and interval change help with interpretation.",
+        "fa": "خون تازه اغلب هایپردنس است. طی جذب، دانسیته ممکن است کاهش یابد و موقتاً به دانسیتهٔ پارانشیم نزدیک شود؛ در این حالت باقیماندهٔ خونریزی دشوارتر دیده می‌شود. زمان و میزان تغییر متغیر است؛ اثر توده‌ای و تغییرات پیگیری به ارزیابی کمک می‌کنند."
+      },
+      "diagram": {
+        "de": "Akut: oft hyperdens → Resorption: variabel abnehmend / zeitweise isodens → später häufig hypodens",
+        "en": "Acute: often hyperattenuating → resorption: variable decrease / temporarily isoattenuating → later often hypoattenuating",
+        "fa": "حاد: اغلب هایپردنس → جذب: کاهش متغیر / گاهی ایزودنس → سپس اغلب هیپودنس"
+      },
+      "tag": "icb-ct",
+      "source": "https://pubs.rsna.org/doi/10.1148/123.2.335; https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+    },
+    {
+      "id": "icb-fc-09",
+      "topicId": "intrazerebrale-blutung",
+      "front": {
+        "de": "CAA vs. Hypertensive ICB · Lokalisation?",
+        "en": "CAA vs. hypertensive ICH · location?",
+        "fa": "CAA در برابر خونریزی داخل مغزی ناشی از پرفشاری خون · محل؟"
+      },
+      "back": {
+        "de": "Tiefe Blutungen und Mikroblutungen in Basalganglien, Thalamus oder Hirnstamm stützen eine tiefe Perforatorarteriopathie. Streng lobäre Blutungsherde und kortikale superfizielle Siderose stützen CAA. Verteilung allein genügt nicht zur ätiologischen Sicherung.",
+        "en": "Deep haemorrhages and microbleeds in basal ganglia, thalamus or brainstem support deep perforator arteriolopathy. Strictly lobar haemorrhagic lesions and cortical superficial siderosis support CAA. Distribution alone does not establish the cause.",
+        "fa": "خونریزی و میکروخونریزی عمقی در عقده‌های قاعده‌ای، تالاموس یا ساقهٔ مغز از آرتریولوپاتی پرفوراتورهای عمقی حمایت می‌کنند. کانون‌های خونریزی کاملاً لوبار و سیدروز سطحی قشری از CAA حمایت می‌کنند. توزیع به‌تنهایی علت را اثبات نمی‌کند."
+      },
+      "explanation": {
+        "de": "Muster werden mit Alter, klinischer Präsentation und Ausschluss anderer Ursachen kombiniert. Ein gemischtes tief-lobäres Muster ist nicht gleichbedeutend mit einem streng lobären Boston-Muster.",
+        "en": "Combine the pattern with age, clinical presentation and exclusion of other causes. A mixed deep–lobar pattern is not equivalent to a strictly lobar Boston pattern.",
+        "fa": "الگو با سن، تظاهر بالینی و رد علل دیگر ترکیب می‌شود. الگوی مختلط عمقی-لوبار معادل الگوی کاملاً لوبار بوستون نیست."
+      },
+      "diagram": {
+        "de": "Tiefe Perforatorarteriopathie → tiefe Blutungsherde | CAA-Verdacht → streng lobäre Herde / kortikale Siderose; Gesamtkriterien prüfen",
+        "en": "Deep perforator arteriolopathy → deep haemorrhagic lesions | suspected CAA → strictly lobar lesions / cortical siderosis; assess full criteria",
+        "fa": "آرتریولوپاتی پرفوراتور عمقی ← کانون خونریزی عمقی | شک به CAA ← کانون کاملاً لوبار / سیدروز قشری؛ معیارهای کامل بررسی شوند"
+      },
+      "tag": "icb-aetiology",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9389452/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+    },
+    {
+      "id": "icb-fc-10",
+      "topicId": "intrazerebrale-blutung",
+      "front": {
+        "de": "Wie ist randständige Kontrastmittelaufnahme eines rückläufigen Hämatoms einzuordnen?",
+        "en": "How should peripheral enhancement of a regressing haematoma be interpreted?",
+        "fa": "جذب مادهٔ حاجب در حاشیهٔ هماتومِ در حال پسرفت چگونه تفسیر می‌شود؟"
+      },
+      "back": {
+        "de": "Ein organisierendes Hämatom kann randständig Kontrastmittel aufnehmen. Die Rückbildung stützt diese Möglichkeit, ersetzt aber nicht die Ursachensuche. Noduläres Restgewebe, atypischer Verlauf oder klinische Warnzeichen erfordern gezielte weitere Abklärung.",
+        "en": "An organising haematoma can enhance peripherally. Regression supports this possibility but does not replace aetiologic evaluation. Residual nodular tissue, atypical evolution or clinical warning signs warrant targeted investigation.",
+        "fa": "هماتوم در حال سازمان‌یافتگی می‌تواند در حاشیه مادهٔ حاجب جذب کند. پسرفت از این احتمال حمایت می‌کند، اما جای بررسی علت را نمی‌گیرد. بافت ندولار باقی‌مانده، سیر غیرمعمول یا علائم هشدار بالینی به بررسی هدفمند بیشتر نیاز دارند."
+      },
+      "explanation": {
+        "de": "Randaufnahme ist unspezifisch. Voraufnahmen, DWI/ADC und die Suche nach solidem oder nodulärem Restgewebe helfen bei der Abgrenzung; ein negativer erster Befund kann eine spätere Kontrolle nicht immer ersetzen.",
+        "en": "Peripheral enhancement is nonspecific. Prior studies, DWI/ADC and a search for residual solid or nodular tissue help differentiate causes; an initially negative study does not always replace later follow-up.",
+        "fa": "جذب حاشیه‌ای مادهٔ حاجب غیراختصاصی است. تصاویر قبلی، DWI/ADC و جست‌وجوی بافت جامد یا ندولار باقی‌مانده به افتراق کمک می‌کنند؛ بررسی اولیهٔ منفی همیشه جای کنترل بعدی را نمی‌گیرد."
+      },
+      "diagram": {
+        "de": "Randständige Kontrastmittelaufnahme → Verlauf, Diffusion und zugrunde liegende Läsion prüfen",
+        "en": "Peripheral enhancement → assess evolution, diffusion and an underlying lesion",
+        "fa": "جذب حاشیه‌ای مادهٔ حاجب ← بررسی سیر، انتشار و ضایعهٔ زمینه‌ای"
+      },
+      "tag": "icb-ct",
+      "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+    },
+    {
+      "id": "icb-fc-11",
+      "topicId": "intrazerebrale-blutung",
+      "front": {
+        "de": "Welche Ursachensuche kann durch unverhältnismäßiges Ödem oder atypische Blutungslage ausgelöst werden?",
+        "en": "What aetiologic investigation can be prompted by disproportionate oedema or atypical haemorrhage location?",
+        "fa": "ادم نامتناسب یا محل غیرمعمول خونریزی چه بررسی علتی را می‌تواند مطرح کند؟"
+      },
+      "back": {
+        "de": "Sekundäre Ursachen wie Tumor, Gefäßmalformation oder hämorrhagischer Infarkt erwägen; kein Einzelzeichen beweist sie. Gefäßdarstellung und gegebenenfalls kontrastverstärkte MRT werden anhand von Alter, Lage und klinischem Verdacht ausgewählt.",
+        "en": "Consider secondary causes such as tumour, vascular malformation or haemorrhagic infarction; no single sign establishes one. Select vascular imaging and, where appropriate, contrast-enhanced MRI according to age, location and clinical suspicion.",
+        "fa": "علل ثانویه مانند تومور، مالفورماسیون عروقی یا انفارکت خونریزی‌دهنده مطرح شوند؛ هیچ نشانهٔ منفردی آن‌ها را اثبات نمی‌کند. بررسی عروقی و در صورت لزوم MRI با تزریق بر پایهٔ سن، محل و شک بالینی انتخاب می‌شوند."
+      },
+      "explanation": {
+        "de": "Bei junger Person mit lobärer spontaner Blutung ist eine gezielte frühe Gefäßabklärung angezeigt. CTA mit erwogener Venographie adressiert makrovaskuläre bzw. venöse Ursachen; weitere MRT/MRA oder DSA richten sich nach Befund und verbleibendem Verdacht. Eine negative CTA schließt nicht jede Ursache aus.",
+        "en": "In a young person with spontaneous lobar haemorrhage, targeted early vascular investigation is indicated. CTA with consideration of venography addresses macrovascular or venous causes; further MRI/MRA or DSA depends on findings and residual suspicion. Negative CTA does not exclude every cause.",
+        "fa": "در فرد جوان دارای خونریزی خودبه‌خودی لوبار، بررسی هدفمند و زودهنگام عروق لازم است. CTA با درنظرگرفتن ونوگرافی علل ماکروواسکولار یا وریدی را بررسی می‌کند؛ MRI/MRA یا DSA بیشتر به یافته‌ها و شک باقی‌مانده بستگی دارد. CTA منفی همهٔ علت‌ها را رد نمی‌کند."
+      },
+      "diagram": {
+        "de": "Atypische Konstellation → gezielte Ursachensuche: CTA/CTV und/oder MRT/MRA; DSA bei passendem verbleibendem Verdacht",
+        "en": "Atypical constellation → targeted aetiologic work-up: CTA/CTV and/or MRI/MRA; DSA for appropriate residual suspicion",
+        "fa": "مجموعهٔ یافته‌های غیرمعمول ← بررسی هدفمند علت: CTA/CTV و/یا MRI/MRA؛ DSA در شک باقی‌ماندهٔ متناسب"
+      },
+      "tag": "icb-aetiology",
+      "source": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407; https://www.bmj.com/content/351/bmj.h5762"
+    },
+    {
+      "id": "icb-fc-12",
+      "topicId": "intrazerebrale-blutung",
+      "front": {
+        "de": "Wie kombiniert man CT und MRT zur Beurteilung einer Hirnblutung, statt aus einer einzelnen Sequenz ein genaues Alter abzuleiten?",
+        "en": "How are CT and MRI combined to assess cerebral haemorrhage rather than assigning an exact age from a single sequence?",
+        "fa": "برای ارزیابی خونریزی مغزی، CT و MRI چگونه ترکیب می‌شوند تا سن دقیق از یک سکانس منفرد نتیجه‌گیری نشود؟"
+      },
+      "back": {
+        "de": "Akut: rasche CT oder geeignete zeitnah verfügbare MRT. T1/T2 gemeinsam mit GRE/SWI, Voraufnahmen und Klinik auswerten. Blutproduktmuster sind typische relative Signale, keine feste Tagesuhr; GRE/SWI kann alte kleine Blutungsreste sichtbar machen.",
+        "en": "Acutely: rapid CT or suitable promptly available MRI. Interpret T1/T2 together with GRE/SWI, prior imaging and clinical context. Blood-product patterns are typical relative signals, not a fixed day-by-day clock; GRE/SWI can reveal old small haemorrhagic residues.",
+        "fa": "در مرحلهٔ حاد: CT سریع یا MRI مناسب و در دسترس بدون تأخیر. T1/T2 همراه GRE/SWI، تصاویر قبلی و زمینهٔ بالینی تفسیر شوند. الگوهای فرآوردهٔ خون سیگنال‌های نسبی تیپیک‌اند، نه ساعت ثابت روزانه؛ GRE/SWI می‌تواند بقایای کوچک خونریزی قدیمی را آشکار کند."
+      },
+      "explanation": {
+        "de": "Sequenz, Feldstärke, Konzentration und räumliche Blutverteilung verändern die Darstellung. Kein pauschaler Vorteil einer Methode für jede Phase und keine lebenslange Sichtbarkeit jedes Restes werden vorausgesetzt.",
+        "en": "Sequence, field strength, concentration and spatial distribution of blood affect appearance. Neither a universal modality advantage for every phase nor lifelong visibility of every residue is assumed.",
+        "fa": "سکانس، قدرت میدان، غلظت و توزیع فضایی خون بر نما اثر می‌گذارند. برتری همیشگی یک روش در تمام مراحل یا قابل‌مشاهده‌بودن مادام‌العمر هر باقی‌مانده فرض نمی‌شود."
+      },
+      "diagram": {
+        "de": "Blutung beurteilen = Klinik + Verlauf + CT/MRT-Muster; Signale sind keine starre Uhr",
+        "en": "Assess haemorrhage = clinical context + evolution + CT/MRI pattern; signals are not a rigid clock",
+        "fa": "ارزیابی خونریزی = زمینهٔ بالینی + سیر + الگوی CT/MRI؛ سیگنال ساعت ثابت نیست"
+      },
+      "tag": "icb-mrt",
+      "source": "https://doi.org/10.1001/jama.292.15.1823; https://www.ahajournals.org/doi/10.1161/STR.0000000000000407; https://pubmed.ncbi.nlm.nih.gov/3257117/"
+    }
+  ],
+  "learningGoals": [
+    {
+      "id": "icb-etiology",
+      "text": {
+        "de": "Blutungs- und Mikroblutungsverteilung zur Ursachensuche nutzen, ohne das Muster als alleinigen Beweis zu behandeln.",
+        "en": "Use haemorrhage and microbleed distribution to guide aetiologic investigation without treating the pattern as proof.",
+        "fa": "از توزیع خونریزی و میکروخونریزی برای بررسی علت استفاده کنید، بدون اینکه الگو اثبات مستقل تلقی شود."
+      },
+      "questionIds": [
+        "icb-q01",
+        "icb-q02",
+        "icb-q13"
+      ],
+      "cardIds": [
+        "icb-fc-05",
+        "icb-fc-09"
+      ]
+    },
+    {
+      "id": "icb-ct",
+      "text": {
+        "de": "CT-Verlauf sowie Swirl und Spot unterscheiden und deren prognostische Grenzen benennen.",
+        "en": "Distinguish CT evolution, swirl and spot signs and state their prognostic limits.",
+        "fa": "سیر CT و علامت‌های Swirl و Spot را از هم جدا کنید و محدودیت پیش‌آگهی آن‌ها را بیان کنید."
+      },
+      "questionIds": [
+        "icb-q03",
+        "icb-q04",
+        "icb-q05",
+        "icb-q06"
+      ],
+      "cardIds": [
+        "icb-fc-06",
+        "icb-fc-07",
+        "icb-fc-08"
+      ]
+    },
+    {
+      "id": "icb-mri",
+      "text": {
+        "de": "Typische Blutprodukt-Signale und geeignete Sequenzen einordnen, ohne starre Datierung.",
+        "en": "Interpret typical blood-product signals and suitable sequences without rigid dating.",
+        "fa": "سیگنال‌های تیپیک فرآوردهٔ خون و سکانس مناسب را بدون تعیین زمان ثابت تفسیر کنید."
+      },
+      "questionIds": [
+        "icb-q07",
+        "icb-q08",
+        "icb-q09",
+        "icb-q10",
+        "icb-q11"
+      ],
+      "cardIds": [
+        "icb-fc-01",
+        "icb-fc-02",
+        "icb-fc-03",
+        "icb-fc-04",
+        "icb-fc-12"
+      ]
+    },
+    {
+      "id": "icb-secondary",
+      "text": {
+        "de": "Bei atypischen Befunden eine kontextgerechte vaskuläre oder kontrastverstärkte Abklärung auswählen.",
+        "en": "Select context-appropriate vascular or contrast-enhanced investigation for atypical findings.",
+        "fa": "در یافته‌های غیرمعمول، بررسی عروقی یا با تزریق متناسب با زمینه را انتخاب کنید."
+      },
+      "questionIds": [
+        "icb-q12",
+        "icb-q14",
+        "icb-q15"
+      ],
+      "cardIds": [
+        "icb-fc-10",
+        "icb-fc-11"
+      ]
+    }
+  ],
+  "sourceEvidence": [
+    {
+      "source": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf",
+      "pages": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "read": "Actual rendered pages visually read including etiologic frequencies, CT signs, blood-product signal tables/graph and 1.5T source flowchart. Fixed source percentages, linear HU/day dating and lifelong visibility are not adopted as universal clinical rules.",
+      "renders": [
+        "tmp/brain-icb-p-18.png",
+        "tmp/brain-icb-p-19.png",
+        "tmp/brain-icb-p-20.png",
+        "tmp/brain-icb-p-21.png"
+      ]
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3714437/",
+      "type": "Original STRIVE2013 consensus",
+      "read": "Actual microbleed definitions and mimics: sequence/field-dependent apparent size, no absolute size cutoff; vessel/calcium/cavity alternatives."
+    },
+    {
+      "url": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407",
+      "type": "Official AHA/ASA2022 guideline",
+      "read": "Actual sections2.1/4.1/4.2 and diagnostic recommendations via indexed official PDF text: rapid CT or MRI, expansion signs, selected CTA/CTV/MRI/DSA and occult secondary causes. No new treatment protocol or dosing taught."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/4034983/",
+      "type": "Gomori1985 original20-haematoma MRI study",
+      "read": "Complete original abstract; relative signal model, no fixed day clock."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3257117/",
+      "type": "Gomori1988 original variable appearance of subacute intracranial haematomas",
+      "read": "Complete original abstract, five cases plus concentration/compartment observations: dilute free metHb T1/T2 bright, overlap with fat/melanotic lesions. No universal T2 or fixed timing claim."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7410590/",
+      "type": "Ng2018 original212-case follow-up CT study",
+      "read": "Actual original abstract, swirl definition, methods, hematoma-growth results and discussion; directly supports expansion association, unlike Selariu outcome study. No numerical effect-size or individual expansion guarantee taught."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17322083/",
+      "type": "Wada2007 prospective CTA spot study",
+      "read": "Complete original39-patient abstract; association with expansion, not guaranteed individual expansion."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3517489/",
+      "type": "Selariu2012 original203-patient swirl study",
+      "read": "Complete original abstract and Fig1 caption exclusions; heterogeneous NCCT appearance not proof of ongoing bleeding. No actual diagnostic frame reused or newly interpreted."
+    },
+    {
+      "url": "https://doi.org/10.1001/jama.292.15.1823",
+      "type": "Kidwell2004 original MRI/CT comparison",
+      "read": "Actual published paper abstract via original published-version PDF; selected200 patients, no blanket sensitivity guarantee extrapolated."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/847198/",
+      "type": "Norman1977 original CT blood in-vitro study",
+      "read": "Complete original abstract: haemoconcentration affects attenuation. Specific50–80HU remains expressly a teaching-PDF example, not a universal primary-study cutoff."
+    },
+    {
+      "url": "https://www.bmj.com/content/351/bmj.h5762",
+      "type": "Original DIAGRAM2015 prospective cohort",
+      "read": "Actual original methods/results summary; CTA initial approach and complementary MRI/selectedDSA, cohort timing not adopted as mandated schedule."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9389452/",
+      "type": "Original Boston2.0 diagnostic criteria study",
+      "read": "Actual methods/discussion and diagnostic-framework content. New questions/card use strictly lobar vs deep morphology only, not unverified numeric Boston criterion reproduction."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11673170/",
+      "type": "Original Hartmann2001 ring-lesion diffusion cohort",
+      "read": "Complete original abstract previously read for accepted abscess packet; restricted diffusion not pathognomonic, tumour exceptions."
+    }
+  ],
+  "changes": [
+    "Replace unclinical/absolute/heterogeneous distractors with radiological morphology, blood-product or aetiologic choices; preserve all original IDs and keys.",
+    "Provide individual wrong feedback in all3languages.",
+    "Remove unsourced etiologic percentages from teaching table and location percentages from card09; correct anticoagulation location/volume claim.",
+    "Remove rigid microbleed size criterion and inconsistent universal CT-first/MRI-not-replacement claims; retain rapid acute imaging.",
+    "Qualify free metHb bright-bright by concentration; remove no-compartmentalisation/lifelong-residue card assertions.",
+    "Qualify edema/rim-enhancement/secondary aetiology and abscess diffusion claims; consistent explicit postcontrast terminology in FA."
+  ],
+  "checks": {
+    "questionLocaleObjects": 45,
+    "cardTriads": 12,
+    "allOriginalKeysPreserved": true,
+    "allQuestionAndCardIDsMapped": true,
+    "individualWrongFeedback": true,
+    "authorSchema": "PASS",
+    "clinicalReview": "PENDING"
+  },
+  "limitations": [
+    "Retained learning-case diagnostic frames, their dimensional/etiologic labels and legacy attribution were not newly independently adjudicated; no image-dependent question introduced.",
+    "Original PDF1.5T flowchart retained with existing source/time-window qualification; no general image or whole-lesson clinical acceptance.",
+    "No browser/production release claim; root handles shared publication after independent review."
+  ],
+  "sha256": "a93210412c10a81b761f15896850513ea508d8f95e377667d13e4af3abdc3891"
+}

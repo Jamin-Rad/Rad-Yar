@@ -90,28 +90,66 @@ export const WRIST_EXTENSOR_COMPARTMENTS_LESSON = {
         [L('Fach', 'Compartment', 'کمپارتمان'), L('Sehnen', 'Tendons', 'تاندون‌ها'), L('Orientierungsmerkmal', 'Landmark', 'نشانهٔ جهت‌یابی')],
         [L('I · lateral', 'I · lateral', 'I · لترال'), L('APL · abductor pollicis longus; EPB · extensor pollicis brevis', 'APL · abductor pollicis longus; EPB · extensor pollicis brevis', 'APL · abductor pollicis longus؛ EPB · extensor pollicis brevis'), L('Direkt am radialen Processus styloideus.', 'At the radial styloid.', 'در مجاورت زائدهٔ استایلوئید رادیوس.')],
         [L('II · radial', 'II · radial', 'II · رادیال'), L('ECRL · extensor carpi radialis longus; ECRB · extensor carpi radialis brevis', 'ECRL · extensor carpi radialis longus; ECRB · extensor carpi radialis brevis', 'ECRL · extensor carpi radialis longus؛ ECRB · extensor carpi radialis brevis'), L('Durch das Lister-Tuberkulum von Fach III getrennt.', 'Separated from compartment III by Lister tubercle.', 'به‌وسیلهٔ تکمهٔ لیستر از کمپارتمان III جدا می‌شود.')],
-        [L('III · dorsal interosseous', 'III · dorsal interosseous', 'III · بین‌استخوانی پشتی'), L('EPL · extensor pollicis longus', 'EPL · extensor pollicis longus', 'EPL · extensor pollicis longus'), L('EPL schwenkt um das Lister-Tuberkulum nach radial.', 'EPL turns around Lister tubercle toward the radial side.', 'EPL به دور تکمهٔ لیستر به سمت رادیال می‌چرخد.')],
+        [L("III · am Lister-Tuberkulum", "III · at Lister tubercle", "III · کنار تکمهٔ لیستر"), L('EPL · extensor pollicis longus', 'EPL · extensor pollicis longus', 'EPL · extensor pollicis longus'), L('EPL schwenkt um das Lister-Tuberkulum nach radial.', 'EPL turns around Lister tubercle toward the radial side.', 'EPL به دور تکمهٔ لیستر به سمت رادیال می‌چرخد.')],
         [L('IV · central', 'IV · central', 'IV · مرکزی'), L('EDC · extensor digitorum; EIP · extensor indicis', 'EDC · extensor digitorum; EIP · extensor indicis', 'EDC · extensor digitorum؛ EIP · extensor indicis'), L('Größtes Fach.', 'Largest compartment.', 'بزرگ‌ترین کمپارتمان.')],
-        [L('V · ulnar-radial', 'V · ulnar-radial', 'V · اولنار-رادیال'), L('EDM · extensor digiti minimi', 'EDM · extensor digiti minimi', 'EDM · extensor digiti minimi'), L('Über dem distalen Radioulnargelenk.', 'Over the distal radioulnar joint.', 'روی مفصل رادیواولنار دیستال.')],
+        [L("V · dorsoulnar", "V · dorsoulnar", "V · پشتی‌اولنار"), L('EDM · extensor digiti minimi', 'EDM · extensor digiti minimi', 'EDM · extensor digiti minimi'), L('Über dem distalen Radioulnargelenk.', 'Over the distal radioulnar joint.', 'روی مفصل رادیواولنار دیستال.')],
         [L('VI · ulnar', 'VI · ulnar', 'VI · اولنار'), L('ECU · extensor carpi ulnaris', 'ECU · extensor carpi ulnaris', 'ECU · extensor carpi ulnaris'), L('Eigene Rinne am Ulnastyloid.', 'Separate groove at the ulnar styloid.', 'شیار اختصاصی در زائدهٔ استایلوئید اولنا.')],
       ],
       note: L(
-        'Die Reihenfolge auf dem Bild verankern: Fach I radial, Fach VI ulnar. Die Bezeichnungen “lateral”, “radial”, “central” und “ulnar” folgen hier der Quelltabelle.',
-        'Anchor the sequence on the image: compartment I is radial and VI is ulnar. “Lateral,” “radial,” “central,” and “ulnar” follow the source table terminology.',
-        'ترتیب را در تصویر تثبیت کنید: کمپارتمان I در سمت رادیال و VI در سمت اولنار است. اصطلاحات «لترال»، «رادیال»، «مرکزی» و «اولنار» مطابق جدول منبع‌اند.'
+        "Die Fächer von radial nach ulnar anhand von Nummer, Sehneninhalt und Knochenlandmarken zuordnen: Fach I radial, Fach VI ulnar.",
+        "Map the compartments from radial to ulnar using their number, tendons and bony landmarks: I is radial and VI ulnar.",
+        "کمپارتمان‌ها را از رادیال به اولنار با شماره، تاندون‌ها و لندمارک‌های استخوانی تطبیق دهید: I رادیال و VI اولنار است."
       ),
-      task: L('Welcher Sehnenkomplex liegt im Fach VI am Ulnastyloid?', 'Which tendon lies in compartment VI at the ulnar styloid?', 'کدام تاندون در کمپارتمان VI در سطح استایلوئید اولنا قرار دارد؟'),
+      task: {
+  "de": "Textfall: Sie verfolgen eine einzelne Strecksehne in der dorsoulnaren Rinne der distalen Ulna nahe dem Ulnastyloid. Welche Sehne und welches reguläre Fach passen?",
+  "en": "Text vignette: you trace a single extensor tendon in the dorsoulnar groove of the distal ulna near the ulnar styloid. Which tendon and usual compartment fit?",
+  "fa": "سناریوی متنی: یک تاندون اکستانسور را در شیار پشتی‌اولنار انتهای اولنا نزدیک استایلوئید اولنا دنبال می‌کنید. کدام تاندون و کمپارتمان معمول مناسب است؟"
+},
       options: [
-        L('ECU · M. extensor carpi ulnaris', 'ECU · extensor carpi ulnaris', 'ECU · extensor carpi ulnaris'),
-        L('EPL · M. extensor pollicis longus', 'EPL · extensor pollicis longus', 'EPL · extensor pollicis longus'),
-        L('ECRL und ECRB', 'ECRL and ECRB', 'ECRL و ECRB'),
-      ],
+  {
+    "de": "ECU im Fach VI",
+    "en": "ECU in compartment VI",
+    "fa": "ECU در کمپارتمان VI"
+  },
+  {
+    "de": "EPL im Fach III",
+    "en": "EPL in compartment III",
+    "fa": "EPL در کمپارتمان III"
+  },
+  {
+    "de": "ECRL und ECRB im Fach II",
+    "en": "ECRL and ECRB in compartment II",
+    "fa": "ECRL و ECRB در کمپارتمان II"
+  },
+  {
+    "de": "EDC und EIP im Fach IV",
+    "en": "EDC and EIP in compartment IV",
+    "fa": "EDC و EIP در کمپارتمان IV"
+  }
+],
       answer: 0,
       feedback: [
-        L('Richtig. Fach VI enthält die ECU-Sehne in einer eigenen Rinne am Ulnastyloid.', 'Correct. Compartment VI contains the ECU tendon in its own groove at the ulnar styloid.', 'درست است. کمپارتمان VI تاندون ECU را در شیار اختصاصی روی استایلوئید اولنا دربر می‌گیرد.'),
-        L('Fach III enthält die EPL-Sehne, die am Lister-Tuberkulum um den Radius zieht.', 'Compartment III contains EPL, which turns around the radius at Lister tubercle.', 'کمپارتمان III تاندون EPL را دربر می‌گیرد که در سطح تکمهٔ لیستر به دور رادیوس می‌چرخد.'),
-        L('ECRL und ECRB verlaufen gemeinsam im Fach II.', 'ECRL and ECRB run together in compartment II.', 'ECRL و ECRB با هم در کمپارتمان II قرار دارند.'),
-      ],
+  {
+    "de": "Die ECU-Sehne verläuft im sechsten dorsalen Fach an der distalen Ulna. Den knöchernen Landmarken und dem Sehnenverlauf folgen; eine einzelne axiale Lagebeziehung nicht mit einer Pathologiediagnose verwechseln.",
+    "en": "ECU runs in the sixth dorsal compartment at the distal ulna. Follow the bony landmarks and tendon course; one axial anatomical relationship is not a pathology diagnosis.",
+    "fa": "ECU در کمپارتمان ششم پشتی در سطح انتهای اولنا عبور می‌کند. لندمارک استخوانی و مسیر تاندون دنبال شوند؛ یک رابطهٔ آناتومیک محوری را نباید تشخیص پاتولوژی دانست."
+  },
+  {
+    "de": "EPL verläuft am Lister-Tuberkulum des Radius im Fach III, nicht in der ulnaren ECU-Rinne.",
+    "en": "EPL passes around the radial Lister tubercle in compartment III, not in the ulnar ECU groove.",
+    "fa": "EPL در کمپارتمان III کنار تکمهٔ لیستر رادیوس عبور می‌کند، نه در شیار اولنار ECU."
+  },
+  {
+    "de": "ECRL und ECRB liegen gemeinsam radial des Lister-Tuberkulums im Fach II.",
+    "en": "ECRL and ECRB share compartment II radial to Lister tubercle.",
+    "fa": "ECRL و ECRB در کمپارتمان II و در سمت رادیال تکمهٔ لیستر با هم قرار دارند."
+  },
+  {
+    "de": "EDC und EIP liegen im größeren zentralen Fach IV und nicht in der beschriebenen dorsoulnaren Einzelrinne.",
+    "en": "EDC and EIP occupy the larger central compartment IV rather than the described dorsoulnar single-tendon groove.",
+    "fa": "EDC و EIP در کمپارتمان مرکزی و بزرگ‌تر IV قرار دارند، نه در شیار پشتی‌اولنار تک‌تاندونی توصیف‌شده."
+  }
+],
       source: L('MSK.pdf, PDF-S. 41 / Druck-S. 40.', 'MSK.pdf, PDF p. 41 / printed p. 40.', 'MSK.pdf، صفحهٔ PDF ۴۱ / چاپی ۴۰.'),
     },
   ],

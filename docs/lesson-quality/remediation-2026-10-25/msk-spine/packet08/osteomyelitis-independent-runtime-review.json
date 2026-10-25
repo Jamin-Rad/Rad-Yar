@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "actualDraftRecords": 12,
+  "questionLocaleObjects": 9,
+  "cardTriads": 3,
+  "inlineSelectedFeedbackComparisons": 12,
+  "actualLessonMirror": "deepEqual",
+  "coverageGoals": 3,
+  "publication": "Supplemental draft remains outside published runtime until parent admission; no global inclusion claimed."
+}

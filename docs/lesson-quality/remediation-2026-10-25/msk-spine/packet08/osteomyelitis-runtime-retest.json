@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "originalCanonicalPool": {
+    "questions": 0,
+    "cards": 0
+  },
+  "newAuthorObjects": "12/12",
+  "questionLocaleObjects": 9,
+  "cardTriads": 3,
+  "inlineFeedbackLocaleFields": "12/12",
+  "topics": "1/1",
+  "coverageGoals": 3,
+  "SSR": "3/3 actual route graph",
+  "limits": "All assessment objects offline, pending independent review/root admission. No Next build/browser/release inference."
+}

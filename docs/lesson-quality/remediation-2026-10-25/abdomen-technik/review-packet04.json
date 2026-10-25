@@ -1,0 +1,520 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/atv04_independent_review",
+  "author": "/root/design_inventory",
+  "role": "Independent read-only reviewer; only this report and separate tmp SSR evidence written",
+  "worktree": "C:\\Users\\Drham\\Documents\\GitHub\\Rad-Yar\\.worktrees\\gehirn-completion-main",
+  "gitHead": "d4e0c1903870352e81e3cbce8a58fc6547b66147",
+  "scope": "Bounded assessment-content acceptance: all original pool IDs plus targeted gaps for five routes, 20 MCQs per language / 20 card triads, 3–4 mapped goals per route, and directly affected teaching/check parity. This is not a whole-lesson, full-PDF, media, browser, scientific-signoff or publication acceptance.",
+  "decisions": {
+    "bounded_pool_acceptance": "PASS",
+    "overall_lesson_acceptance": "BLOCKED",
+    "editorial_qa": "PASS",
+    "editorial_qa_scope": "Only bounded assessment content and directly affected teaching parity",
+    "scientific_review": "pending",
+    "browser_qa": "BLOCKED",
+    "publication": "not_requested",
+    "openCritical": 0,
+    "openMajor": 0,
+    "openMinor": 0
+  },
+  "gates": {
+    "SRC": {
+      "status": "PASS",
+      "evidence": "Fresh primary-source reading supports the tested claims; declared retained anatomy source pp.93–94 inspected as text and page images. Relevant HAML pp.12–13 and HCA pp.16–18 also seen. HAML PDF overclaims are explicitly qualified against comparative originals. Clinical thresholds already present in HCA teaching checked against ACG2024. No full-PDF coverage claimed.",
+      "evidenceBlockers": []
+    },
+    "EDU": {
+      "status": "PASS",
+      "evidence": "All 60 actual localised question objects and 20 card triads read in full, including every individual distractor rationale. Options support a single best answer and cover the mapped decisions without adding low-value quotas. Ulkus separate reconstruction/negative-CT/perforation goals, HAML four interpretation/reporting goals, lower-GI three decisions, hernia anatomy/imaging/urgent complication, HCA four goal clusters. No new default Befund & Selbsttest chapter inserted; existing topic-specific titles serve the tested goals. Whole-page structural redesign is outside this packet.",
+      "evidenceBlockers": []
+    },
+    "VIS": {
+      "status": "NOT_APPLICABLE",
+      "evidence": "No new diagnostic frames, image-based questions or new media assets in this bounded assessment packet. Text vignettes do not claim observation of a patient image. Page-source images were read for provenance/context, without granting retained route media a new quality/rights acceptance.",
+      "evidenceBlockers": [
+        "Full retained lesson case/frame/hero fit and rights audit remains outside this bounded packet."
+      ]
+    },
+    "LNG": {
+      "status": "PASS",
+      "evidence": "DE/EN/FA stems, four alternatives, keys, correct explanations, all three false-answer explanations and every card category/front/answer/explanation compared by semantic unit. Negation, diagnostic certainty, noncirrhotic context, phase distinctions, urgent assessment, CTA limitations and HCA exceptions retained. No material omission or key mismatch found. Textual language acceptance only.",
+      "evidenceBlockers": [
+        "Actual browser RTL/bidi, keyboard and screen-reader behavior not assessed here; tracked under UX."
+      ]
+    },
+    "ASM": {
+      "status": "PASS",
+      "evidence": "Independent in-memory producer compilation reproduced manifest exactly (60 question objects, 20 card triads). All option IDs/keys/three wrong-feedback keys valid, locale key parity exact. Independently checked 29 currentBefore values against fresh canonical global exports; all exact and none of the 29 after values applied. Fifteen repair after-objects matched actual full pool. Duodenal whole lesson, all six localised questions and both cards independently deepEqual to git HEAD.",
+      "evidenceBlockers": [
+        "Central admission of 24 proposed question locale objects + five proposed card triads and six new question triads/two new cards is still a later root-owned step; post-admission registry counts and links need retest."
+      ]
+    },
+    "UX": {
+      "status": "BLOCKED",
+      "evidence": "Independently reran actual five-route component graph SSR for all three languages:15/15 passed. Context/browser hooks and CSS names were fixtures; authored route/shell/content were real. This establishes server rendering only.",
+      "evidenceBlockers": [
+        "No real browser screenshots/interaction matrix supplied or performed in this bounded review. Desktop/mobile/themes/RTL/focus/console/loaded assets and authenticated behavior remain unverified."
+      ]
+    },
+    "REV": {
+      "status": "PASS",
+      "evidence": "Reviewer read actual current artifacts and primary sources independently, did not adopt prior reviewer/author pass. Requested only a source-attribution correction; author changed production, reviewer read the actual six after-lines and independently reran SSR afterward. No production content writes, commit or push by reviewer.",
+      "evidenceBlockers": []
+    }
+  },
+  "actualDataPaths": [
+    {
+      "route": "/abdomen/gi/ulkuserkrankung",
+      "entry": "app/abdomen/gi/ulkuserkrankung/page.js",
+      "teaching": "data/abdomenGiCompletion.js -> ABDOMEN_GI_LESSONS[0]",
+      "shell": "GastroDuodenalLesson.jsx -> StandardLessonShell",
+      "inline": "lesson.checks (same Ulkus source as canonical exported questions)",
+      "registries": "data/questions.js consumes ABDOMEN_GI_QUESTIONS; data/flashcards.js consumes ABDOMEN_GI_CARDS",
+      "pending": "new ulcer-mpr question/card not centrally admitted"
+    },
+    {
+      "route": "/abdomen/leber/angiomyolipom",
+      "entry": "app/abdomen/leber/angiomyolipom/page.js",
+      "teaching": "local C[lang], goals from atvHepaticAmlCoverage",
+      "shell": "LessonReferenceShell -> StandardLessonShell",
+      "inline": "unchanged abdomenThoraxAssessmentDrafts[abdomen-hepatic-aml] via LessonReferenceShell; clinically consistent washout-overlap concept, not a claim of revised four-option canonical parity",
+      "registries": "data/hepaticAngiomyolipomaLearning.js -> questions.js and flashcards.js"
+    },
+    {
+      "route": "/abdomen/gi/untere-gi-blutung",
+      "entry": "app/abdomen/gi/untere-gi-blutung/page.js",
+      "teaching": "local C[lang], coverage/goals from atvLowerGiBleeding",
+      "shell": "LessonReferenceShell -> StandardLessonShell",
+      "inline": "actual lowergi-territory row converted to check, including all three wrong-feedback values",
+      "registries": "shared old question remains canonical; lowerGIBleedingFlashcards.js active; proposed question and new rows pending"
+    },
+    {
+      "route": "/abdomen/hernien/inguinal-femoral",
+      "entry": "app/abdomen/hernien/inguinal-femoral/page.jsx",
+      "teaching": "data/inguinalFemoralHerniaLesson.js",
+      "shell": "StandardLessonShell",
+      "inline": "lesson.check with two individual false-answer explanations; pre-existing three-option embedded anatomy check outside four-option bank schema",
+      "registries": "shared inguinalhernie/femoralhernie originals, combined inguinal-femoral-hernia tag added to lesson quiz link; own flashcards active",
+      "pending": "All three aliases must survive root admission; two new question triads not yet canonical"
+    },
+    {
+      "route": "/abdomen/leber/adenom",
+      "entry": "app/abdomen/leber/adenom/page.js",
+      "teaching": "local C[lang], goals from atvHca",
+      "shell": "LessonReferenceShell -> StandardLessonShell",
+      "inline": "dynamic-pattern stem/options/key/correct and individual wrong-feedback mirror proposed hepatic-adenoma-dynamic-ct objects",
+      "registries": "shared current originals remain in global questions/cards until root-owned admission"
+    }
+  ],
+  "sourceReading": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25015399/",
+      "read": "Full original abstract: endoscopy-correlated CT study, occult ulcers, MPR improves detection. Supports MPR and negative-CT limits; no diagnostic-performance threshold transferred."
+    },
+    {
+      "url": "https://doi.org/10.1186/s13017-019-0283-9",
+      "read": "Actual publisher perforation diagnosis and bleeding/endoscopy sections. Supports urgent perforation communication, absent free air not sufficient exclusion, diagnostic/therapeutic endoscopy."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27248975/",
+      "read": "Full original abstract recovered from exact-title primary indexed result after direct access returned sparse/blocked page. Dynamic overlap, fat in both, draining veins/intratumoral vessels/capsule probabilities verified. No full-paper or image inspection claimed."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25231411/",
+      "read": "Full original abstract via exact primary search: lipid-poor HAML/HCC dynamic overlap and HBP clues are probabilistic in small cohort."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2712904/",
+      "read": "Primary original text/results/discussion returned by exact-title search. Yang authorship and ten-patient series, variable enhancement/early washout in two TSC patients verified. Historical blanket benign/no-resection advice not adopted."
+    },
+    {
+      "url": "https://www.elsevier.es/en-revista-annals-hepatology-16-pdf-download-S1665268119304351",
+      "read": "Publisher original PDF title/author line and abstract/methods: Wei first, Ding last; six HAML and33 noncirrhotic HCC. PubMed author-order discrepancy resolved in favor of publisher. PDF screenshot endpoint errored; text itself accessible, no image claim depends on it."
+    },
+    {
+      "url": "https://doi.org/10.1016/j.gie.2026.06.046",
+      "read": "Fresh official ScienceDirect primary Table1 recommendation text: ongoing hemodynamic instability CT±angiography, stable colonoscopy after preparation, upper-source exclusion unless directly imaged lower source."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9808013/",
+      "read": "Original case4/Table1/Fig3 caption text: caecal/ileocolic/SMA anatomical anchor. No image reused/accepted and no norepinephrine protocol inferred."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22084211/",
+      "read": "Original abstract: active extravasation distinguished from noncontrast hyperattenuating intraluminal contents."
+    },
+    {
+      "url": "https://www.esge.com/assets/downloads/pdfs/guidelines/2021_a_1496_8969.pdf",
+      "read": "Original sections6.1–6.2 (physical pages11–12) on CTA/angiography/embolisation, preservation of bowel perfusion and ischemia risk; evidence does not convert technical hemostasis into clinical cure."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31530489/",
+      "read": "Original abstract, rectal arterial territories and recurrent bleeding after incomplete territorial angiography; no universal procedural mandate derived."
+    },
+    {
+      "url": "https://doi.org/10.1007/s10029-017-1668-x",
+      "read": "Actual publisher diagnostic-modality chapter, CE+US, MRI/CT after nondiagnosticUS, adductor alternatives favor MRI; clinically evident hernia often needs no imaging."
+    },
+    {
+      "url": "https://link.springer.com/article/10.1186/s13017-017-0149-y",
+      "read": "Original WSES timing and reduced-wall-enhancement paragraph; suspected strangulation requires urgent surgical care; no single-sign necrosis proof."
+    },
+    {
+      "url": "https://pubs.rsna.org/doi/abs/10.1148/rg.312105129?journalCode=radiographics",
+      "read": "Original abstract/anatomic text and figure captions: direct medial, indirect lateral/deep ring; femoral medial to common femoral vein. Actual figures not newly accepted."
+    },
+    {
+      "url": "https://doi.org/10.14309/ajg.0000000000002857",
+      "read": "Fresh official publisher-indexed original body, HCA imaging/diagnosis, HBP exceptions, risks, key concepts7–9, multiphasic workup and MDT/biopsy uncertainty. Also checked already-present HCA clinical thresholds (<5/≥5cm,6–12mo,6monthly2years then annual,men/βcatenin,pregnancy>6.5cm) against the actual guideline; not added to assessment as new unsourced thresholds."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18688875/",
+      "read": "Original abstract: chemical-shift steatosis and variable HCA subtype profiles. Test teaches tissue composition, not definitive molecular subtype."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/?page=20",
+      "read": "Original AASLD guidance target-risk population text/Table1 returned through primary indexed page. ChronicHBV/cirrhosis risk context supports HAML/HCC differential; no numeric risk transferred."
+    },
+    {
+      "url": "https://radssupport.acr.org/support/solutions/articles/11000079469-imaging-features",
+      "read": "Official ACR FAQ084: gadoxetate transitional-phase hypointensity lacks specificity; later relative hypointensity not automatically portal-venous washout."
+    }
+  ],
+  "pdfEvidence": {
+    "original": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Abdomen.pdf",
+    "originalExists": true,
+    "actualTextAndPageImages": [
+      12,
+      13,
+      16,
+      17,
+      18,
+      93,
+      94
+    ],
+    "localPageImages": "tmp/abdomen-completion/page-{n}.png",
+    "scope": "Selected source-page verification only. Other retained media, lower-GI full pathway pages and whole-PDF mapping not recertified."
+  },
+  "findings": [
+    {
+      "id": "ATV04-SRC-01",
+      "severity": "minor",
+      "location": "app/abdomen/leber/angiomyolipom/page.js: SOURCE_LINKS.de/en/fa and C.de/en/fa.evidence",
+      "observed": "Ding et al. label followed PubMed author order; publisher original PDF lists HongtaoWei first and HuiguoDing last.",
+      "learnerImpact": "Incorrect first-author attribution impairs precise source tracing; study identity and6/33 clinical facts unaffected.",
+      "requiredCorrection": "Use Wei et al. in six displayed attribution lines and retain explicit source-record discrepancy in ledger.",
+      "retest": "All six actual lines read after author repair; Wei present, Ding absent in displayed attribution; clinical6/33 unchanged. Actual graph SSR15/15 after repair.",
+      "status": "PASS"
+    }
+  ],
+  "repairRetests": [
+    {
+      "ids": [
+        "ulkuserkrankung-negative-ct-{de,en,fa}",
+        "ulkuserkrankung-perforation-{de,en,fa}"
+      ],
+      "result": "PASS",
+      "evidence": "Actual canonical export equals all six repair.after objects, each wrong alternative has distinct clinically relevant rationale; late override now skips only ulcerChecks. Entire accepted Duodenal block unchanged vs gitHEAD."
+    },
+    {
+      "ids": [
+        "hepatisches-angiomyolipom-washout-{de,en,fa}"
+      ],
+      "result": "PASS",
+      "evidence": "Actual three after objects use four parallel diagnostic-weighting alternatives, keyD. No answer restates the presented sequence as a tautology. Clinical overlap independently verified in Lee2016."
+    },
+    {
+      "ids": [
+        "hepatic-adenoma-caveat-{de,en,fa}-01"
+      ],
+      "result": "PASS",
+      "evidence": "Proposed-after values neutrally compare MDT/tissue evaluation, HBP,CEUS and follow-up. A is best strategy for persistently indeterminate adequate MRI. Adjunct imaging alternatives qualified, not made falsely impossible. Still proposal-only."
+    },
+    {
+      "ids": [
+        "aq-atv-lowergi-territory-{de,en,fa}"
+      ],
+      "result": "PASS",
+      "evidence": "Actual three after objects use direct caecal/ileocolic/SMA primary anchor; correctC. No vasoactive protocol/dose/safety inference."
+    }
+  ],
+  "terminology": [
+    {
+      "concept": "limited negative test",
+      "de": "schließt nicht sicher aus",
+      "en": "does not reliably exclude",
+      "fa": "با اطمینان رد نمی‌کند",
+      "result": "PASS"
+    },
+    {
+      "concept": "supportive not diagnostic",
+      "de": "unterstützt / kein Einzelbeweis",
+      "en": "supports / not standalone proof",
+      "fa": "حمایت می‌کند / به‌تنهایی ثابت نمی‌کند",
+      "result": "PASS"
+    },
+    {
+      "concept": "strangulation urgency",
+      "de": "dringliche chirurgische Beurteilung",
+      "en": "urgent surgical assessment",
+      "fa": "ارزیابی فوری جراحی",
+      "result": "PASS"
+    },
+    {
+      "concept": "phase limitation",
+      "de": "spätere Minderintensität ≠ portalvenöses Wash-out",
+      "en": "later hypointensity ≠ portal venous washout",
+      "fa": "کم‌سیگنالی دیرتر ≠ wash-out پورتوونوس",
+      "result": "PASS"
+    }
+  ],
+  "runtimeEvidence": {
+    "independentCheck": "In-memory esbuild compilation (write:false) of actual producers/global registries, node assert.deepEqual; no author pass accepted as independent evidence",
+    "manifestParity": "PASS",
+    "questions": 60,
+    "cardTriads": 20,
+    "sharedCurrentBeforeExact": 29,
+    "sharedProposedAfterApplied": 0,
+    "repairAfterExact": 15,
+    "duodenalVsGitHead": "PASS: full lesson,6questions,2cards",
+    "actualSSR": "tmp/assessment-quality/reviewer-atv04-ssr.json",
+    "actualSSRResult": "15/15 PASS",
+    "browserEvidence": "None supplied/performed",
+    "productionSite": "Not inspected; no equivalence to live site claimed",
+    "newCentralAdmissionActual": {
+      "questions": {
+        "de": [
+          {
+            "id": "aq-atv-ulcer-mpr-de",
+            "canonicalPresent": false
+          },
+          {
+            "id": "aq-atv-lowergi-modality-de",
+            "canonicalPresent": false
+          },
+          {
+            "id": "aq-atv-lowergi-territory-de",
+            "canonicalPresent": false
+          },
+          {
+            "id": "aq-atv-hernia-occult-imaging-de",
+            "canonicalPresent": false
+          },
+          {
+            "id": "aq-atv-hernia-perfusion-concern-de",
+            "canonicalPresent": false
+          },
+          {
+            "id": "aq-atv-hca-risk-context-de",
+            "canonicalPresent": false
+          }
+        ],
+        "en": [
+          {
+            "id": "aq-atv-ulcer-mpr-en",
+            "canonicalPresent": false
+          },
+          {
+            "id": "aq-atv-lowergi-modality-en",
+            "canonicalPresent": false
+          },
+          {
+            "id": "aq-atv-lowergi-territory-en",
+            "canonicalPresent": false
+          },
+          {
+            "id": "aq-atv-hernia-occult-imaging-en",
+            "canonicalPresent": false
+          },
+          {
+            "id": "aq-atv-hernia-perfusion-concern-en",
+            "canonicalPresent": false
+          },
+          {
+            "id": "aq-atv-hca-risk-context-en",
+            "canonicalPresent": false
+          }
+        ],
+        "fa": [
+          {
+            "id": "aq-atv-ulcer-mpr-fa",
+            "canonicalPresent": false
+          },
+          {
+            "id": "aq-atv-lowergi-modality-fa",
+            "canonicalPresent": false
+          },
+          {
+            "id": "aq-atv-lowergi-territory-fa",
+            "canonicalPresent": false
+          },
+          {
+            "id": "aq-atv-hernia-occult-imaging-fa",
+            "canonicalPresent": false
+          },
+          {
+            "id": "aq-atv-hernia-perfusion-concern-fa",
+            "canonicalPresent": false
+          },
+          {
+            "id": "aq-atv-hca-risk-context-fa",
+            "canonicalPresent": false
+          }
+        ]
+      },
+      "cards": [
+        {
+          "id": "aq-atv-ulcer-mpr",
+          "canonicalPresent": false
+        },
+        {
+          "id": "aq-atv-lowergi-modality",
+          "canonicalPresent": false
+        }
+      ]
+    }
+  },
+  "readLedger": {
+    "questions": {
+      "de": [
+        "aq-atv-ulcer-mpr-de",
+        "aq-atv-lowergi-modality-de",
+        "aq-atv-lowergi-territory-de",
+        "aq-atv-hernia-occult-imaging-de",
+        "aq-atv-hernia-perfusion-concern-de",
+        "aq-atv-hca-risk-context-de",
+        "ulkuserkrankung-negative-ct-de",
+        "ulkuserkrankung-perforation-de",
+        "hepatisches-angiomyolipom-fat-de",
+        "hepatisches-angiomyolipom-washout-de",
+        "hepatisches-angiomyolipom-hcc-de",
+        "hepatisches-angiomyolipom-report-de",
+        "abdomen-lower-gi-bleeding-de-01",
+        "abdomen-inguinal-hernia-landmarks-de-01",
+        "abdomen-femoral-hernia-landmarks-de-01",
+        "hepatic-adenoma-hbp-de-01",
+        "hepatic-adenoma-opposed-phase-de-01",
+        "hepatic-adenoma-dynamic-ct-de-01",
+        "hepatic-adenoma-caveat-de-01",
+        "abdomen-focal-liver-de-01"
+      ],
+      "en": [
+        "aq-atv-ulcer-mpr-en",
+        "aq-atv-lowergi-modality-en",
+        "aq-atv-lowergi-territory-en",
+        "aq-atv-hernia-occult-imaging-en",
+        "aq-atv-hernia-perfusion-concern-en",
+        "aq-atv-hca-risk-context-en",
+        "ulkuserkrankung-negative-ct-en",
+        "ulkuserkrankung-perforation-en",
+        "hepatisches-angiomyolipom-fat-en",
+        "hepatisches-angiomyolipom-washout-en",
+        "hepatisches-angiomyolipom-hcc-en",
+        "hepatisches-angiomyolipom-report-en",
+        "abdomen-lower-gi-bleeding-en-01",
+        "abdomen-inguinal-hernia-landmarks-en-01",
+        "abdomen-femoral-hernia-landmarks-en-01",
+        "hepatic-adenoma-hbp-en-01",
+        "hepatic-adenoma-opposed-phase-en-01",
+        "hepatic-adenoma-dynamic-ct-en-01",
+        "hepatic-adenoma-caveat-en-01",
+        "abdomen-focal-liver-en-01"
+      ],
+      "fa": [
+        "aq-atv-ulcer-mpr-fa",
+        "aq-atv-lowergi-modality-fa",
+        "aq-atv-lowergi-territory-fa",
+        "aq-atv-hernia-occult-imaging-fa",
+        "aq-atv-hernia-perfusion-concern-fa",
+        "aq-atv-hca-risk-context-fa",
+        "ulkuserkrankung-negative-ct-fa",
+        "ulkuserkrankung-perforation-fa",
+        "hepatisches-angiomyolipom-fat-fa",
+        "hepatisches-angiomyolipom-washout-fa",
+        "hepatisches-angiomyolipom-hcc-fa",
+        "hepatisches-angiomyolipom-report-fa",
+        "abdomen-lower-gi-bleeding-fa-01",
+        "abdomen-inguinal-hernia-landmarks-fa-01",
+        "abdomen-femoral-hernia-landmarks-fa-01",
+        "hepatic-adenoma-hbp-fa-01",
+        "hepatic-adenoma-opposed-phase-fa-01",
+        "hepatic-adenoma-dynamic-ct-fa-01",
+        "hepatic-adenoma-caveat-fa-01",
+        "abdomen-focal-liver-fa-01"
+      ]
+    },
+    "cards": [
+      "aq-atv-ulcer-mpr",
+      "aq-atv-lowergi-modality",
+      "ulkuserkrankung-negative-ct",
+      "ulkuserkrankung-perforation",
+      "hepatisches-angiomyolipom-fat",
+      "hepatisches-angiomyolipom-washout",
+      "hepatisches-angiomyolipom-hcc",
+      "hepatisches-angiomyolipom-report",
+      "untere-gi-blutung-01-cta-negative",
+      "untere-gi-blutung-02-mesenteric-territory",
+      "untere-gi-blutung-03-completion-check",
+      "inguinal-hernia-direct-indirect",
+      "inguinal-hernia-imaging",
+      "femoral-hernia-landmarks",
+      "femoral-hernia-ct-complications",
+      "leberadenom-01-definition",
+      "leberadenom-02-risk",
+      "leberadenom-03-mri-fat",
+      "leberadenom-04-hepatobiliary",
+      "leberadenom-05-dynamic"
+    ],
+    "allQuestionFields": "Every stem, four options, key, correct explanation, each individual wrong explanation, source",
+    "allCardFields": "Every locale category,front,answer,explanation,source; retained diagrams text also read",
+    "productionFilesInspected": [
+      "data/abdomenGiCompletion.js",
+      "data/assessmentQuality/atvUpperGiLiverEarly.js",
+      "data/assessmentQuality/atvHepaticAmlCoverage.js",
+      "data/assessmentQuality/atvLowerGiBleeding.js",
+      "data/assessmentQuality/atvHernia.js",
+      "data/assessmentQuality/atvHca.js",
+      "data/hepaticAngiomyolipomaLearning.js",
+      "data/lowerGIBleedingFlashcards.js",
+      "data/inguinalFemoralHerniaFlashcards.js",
+      "data/inguinalFemoralHerniaLesson.js",
+      "app/abdomen/leber/angiomyolipom/page.js",
+      "app/abdomen/leber/adenom/page.js",
+      "app/abdomen/gi/untere-gi-blutung/page.js",
+      "app/abdomen/hernien/inguinal-femoral/page.jsx"
+    ],
+    "supplementalFiles": [
+      "data/questions.js",
+      "data/flashcards.js",
+      "data/assessmentQuality/index.js",
+      "components/LessonReferenceShell.jsx",
+      "app/abdomen/gi/ulkuserkrankung/GastroDuodenalLesson.jsx",
+      "lib/lessonCheckFeedback.js",
+      "data/abdomenThoraxAssessmentDrafts.js",
+      "data/assessmentQuality/routeLinks.json",
+      "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/shared-bank-patches-packet04-draft.json",
+      "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet04-review-repairs.json",
+      "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet04-attribution-review-repair.json"
+    ]
+  },
+  "reviewedHashes": {
+    "data/abdomenGiCompletion.js": "2339ca418c1e0ac185dca99dcf6cb4e12ee77482297446aa87df6ff5aed42b4b",
+    "data/assessmentQuality/atvUpperGiLiverEarly.js": "2c36abc528605b0eacb8e7be4606951a636dbf330e62751227f85794b267d15a",
+    "data/assessmentQuality/atvHepaticAmlCoverage.js": "549d38a71f2660d2865f924330cf23947e1577e97b3aa5a981298df425eb98ad",
+    "data/assessmentQuality/atvLowerGiBleeding.js": "4cfd0b96395d7d5234157ab832aab87235b76ae9d2f78cd3f0319a454e85d904",
+    "data/assessmentQuality/atvHernia.js": "e4f64af08344c96e57e62cdae637df7cf268d3bf26bc4418605927ac2bf2611f",
+    "data/assessmentQuality/atvHca.js": "19cda0bac984637dade14068d0fe19d2f874fa677b8d8098403b5b352875aee1",
+    "data/hepaticAngiomyolipomaLearning.js": "faebdab4ce7bf1eaff0c02d2cade814807f656408b5c26bf31d92c6269d45509",
+    "data/lowerGIBleedingFlashcards.js": "07bc0582b4614e8e1597479753b0eac4d88c3187dcdad447b264a9783b8a8b99",
+    "data/inguinalFemoralHerniaFlashcards.js": "b7533465f0d25990879106a3c2722840ec1d0a59770da09236540a6e4d1accad",
+    "data/inguinalFemoralHerniaLesson.js": "96f051e6c4d12f80290434ad085cc75891b950a9f9efe759c0d718342c5e8565",
+    "app/abdomen/leber/angiomyolipom/page.js": "11119b4cf92344fc6f38840f8eb0df8261499462cef583d6a104c5ed5dead63c",
+    "app/abdomen/leber/adenom/page.js": "fde283636e700c3b71a5882fd1b71068571a54b05f0e26b2ee15a437f4f996d6",
+    "app/abdomen/gi/untere-gi-blutung/page.js": "c8835a89373f043295020fe38d799e7ff8a67a8a3e01b4d60df10a9ef382f29d",
+    "app/abdomen/hernien/inguinal-femoral/page.jsx": "5a80a7cec7fe8e51b517fd102c028dedcd6c2ad5d52593b618e2901106397339",
+    "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/shared-bank-patches-packet04-draft.json": "7e4829ebe3e502af032f4596a63d11cb8f55517ff3a52cdfc87eab5d5902cdc8",
+    "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet04-author-manifest.json": "42f9ec4c429d90194d25210a5ddeae0d77a79be4e0488025727cf0aaecf0449f"
+  },
+  "rootHandoff": "Bounded after-values and own assessment producers are accepted for root-owned central admission. Recheck before-values at mutation time, retain existing IDs/aliases, then rerun global counts/locale/linked route checks. No inference of Dr.Zia scientific approval or publication from this PASS."
+}

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "aq-msk-osteomyelitis-periosteal-limit",
+    "category": {
+      "de": "Befundinterpretation",
+      "en": "Report interpretation",
+      "fa": "تفسیر گزارش"
+    },
+    "front": {
+      "de": "Was darf aus einer lamellären Periostreaktion nicht allein abgeleitet werden?",
+      "en": "What cannot be inferred from a lamellated periosteal response alone?",
+      "fa": "از واکنش پریوست لایه‌لایه، چه چیزی را نمی‌توان به‌تنهایی نتیجه گرفت؟"
+    },
+    "answer": {
+      "de": "Weder eine bestimmte Histologie noch ein Erreger; Infektion und Neoplasie bleiben im Kontext zu prüfen.",
+      "en": "Neither a specific histology nor a pathogen; consider infection and neoplasia in context.",
+      "fa": "نه بافت‌شناسی مشخص و نه عامل عفونی؛ عفونت و نئوپلازی باید در زمینه بررسی شوند."
+    },
+    "explanation": {
+      "de": "Das Reaktionsmuster beschreibt den Knochenumbau, nicht dessen Ursache. Die Quelle nennt Ewing-Sarkom und Osteomyelitis als Beispiele, ohne Exklusivität.",
+      "en": "The response pattern describes bone remodelling, not its cause. The source lists Ewing sarcoma and osteomyelitis as nonexclusive examples.",
+      "fa": "الگوی واکنش، بازسازی استخوان را توصیف می‌کند نه علت آن را. منبع یوئینگ و استئومیلیت را به‌عنوان نمونه‌های غیرانحصاری ذکر می‌کند."
+    },
+    "source": "MSK.pdf, PDF-S.73 / Druck-S.72.",
+    "topicId": "osteomyelitis"
+  },
+  {
+    "id": "aq-msk-osteomyelitis-brodie-variability",
+    "category": {
+      "de": "Brodie-Abszess",
+      "en": "Brodie abscess",
+      "fa": "آبسهٔ برودی"
+    },
+    "front": {
+      "de": "Schließt eine fehlende Periostreaktion einen Brodie-Abszess aus?",
+      "en": "Does absent periosteal response exclude a Brodie abscess?",
+      "fa": "آیا نبود واکنش پریوست آبسهٔ برودی را رد می‌کند؟"
+    },
+    "answer": {
+      "de": "Nein. Die radiologische Morphologie ist variabel; übrige Bildgebung, Klinik und Verlauf müssen zusammen bewertet werden.",
+      "en": "No. Radiographic appearances vary; integrate other imaging findings, clinical context and course.",
+      "fa": "خیر. ظاهر رادیولوژیک متغیر است؛ سایر یافته‌های تصویری، بالین و سیر باید با هم ارزیابی شوند."
+    },
+    "explanation": {
+      "de": "Die ursprüngliche 25-Fall-Serie enthielt auch Läsionen ohne Periostreaktion. Sie liefert kein Ausschlusskriterium aus diesem einzelnen Zeichen.",
+      "en": "The original 25-case series included lesions without periosteal response. It does not provide an exclusion rule from this one sign.",
+      "fa": "مجموعهٔ اصلی ۲۵ موردی شامل ضایعات بدون واکنش پریوست نیز بود؛ از این نشانهٔ منفرد قاعدهٔ رد به دست نمی‌آید."
+    },
+    "source": "https://pubmed.ncbi.nlm.nih.gov/451190/",
+    "topicId": "osteomyelitis"
+  },
+  {
+    "id": "aq-msk-osteomyelitis-paediatric-imaging",
+    "category": {
+      "de": "Pädiatrische AHO",
+      "en": "Paediatric AHO",
+      "fa": "AHO کودکان"
+    },
+    "front": {
+      "de": "Welche Bildgebungsfolge empfiehlt PIDS/IDSA2021 bei vermuteter pädiatrischer AHO, wenn weitere Bildgebung nötig ist?",
+      "en": "What imaging sequence does PIDS/IDSA2021 recommend for suspected paediatric AHO when further imaging is needed?",
+      "fa": "اگر در AHO احتمالی کودکان تصویربرداری بیشتر لازم باشد، PIDS/IDSA۲۰۲۱ چه توالی‌ای توصیه می‌کند؟"
+    },
+    "answer": {
+      "de": "Zunächst Röntgen; bei weiterem Bildgebungsbedarf MRT gegenüber CT, Szintigrafie oder Sonografie bevorzugen.",
+      "en": "Initial radiographs; if more imaging is needed, prefer MRI over CT, scintigraphy or ultrasound.",
+      "fa": "ابتدا رادیوگرافی؛ اگر بررسی بیشتر لازم باشد، MRI بر CT، اسکن استخوان یا سونوگرافی ترجیح دارد."
+    },
+    "explanation": {
+      "de": "Initiale Röntgenbilder können trotz Infektion wenig auffällig sein. Die zusätzliche MRT-Empfehlung ist konditional bei sehr unsicherer Evidenz und ist hier keine universelle Regel für Erwachsene oder jede Osteomyelitisform.",
+      "en": "Initial radiographs may be inconspicuous despite infection. The additional MRI recommendation is conditional with very low-certainty evidence and is not a universal rule for adults or all forms of osteomyelitis.",
+      "fa": "رادیوگرافی اولیه ممکن است با وجود عفونت چندان غیرطبیعی نباشد. توصیهٔ MRI تکمیلی مشروط با قطعیت بسیار پایین شواهد است و قاعدهٔ همگانی برای بزرگسالان یا همهٔ انواع استئومیلیت نیست."
+    },
+    "source": "https://www.idsociety.org/practice-guideline/bone-and-joint-infections---osteomyelitis/",
+    "topicId": "osteomyelitis"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "pdf-periosteum",
+    "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+    "pages": [
+      {
+        "physical": 73,
+        "printed": 72
+      },
+      {
+        "physical": 74,
+        "printed": 73
+      },
+      {
+        "physical": 78,
+        "printed": 77
+      }
+    ],
+    "read": "Fresh readable fullpage render images actually viewed2026-10-25. Physical73 explicitly lamellated pattern classic but not exclusive Ewing/osteomyelitis; physical74 solid response healingfracture/slowchronicinfection; physical78 differential calls Brodie subacute and central avascular with reactive sclerosis. No sourceimage is claimed to show a confirmed infection.",
+    "evidence": [
+      "tmp/msk-inventory/osteomyelitis-remediation-073.png",
+      "tmp/msk-inventory/osteomyelitis-remediation-074.png",
+      "tmp/msk-inventory/osteomyelitis-remediation-078.png"
+    ],
+    "supports": [
+      "periosteal-report question/card",
+      "Original lesson scope and nonexclusive periosteal interpretation"
+    ]
+  },
+  {
+    "id": "brodie-original",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/451190/",
+    "doi": "10.1148/132.1.15",
+    "read": "Fresh complete original abstract from PubMed indexed and RSNA publisher:25-case radiological spectrum with periosteal response only in part of cohort; supports variability/absence not excluding. No unavailable fullarticle claim; no cohortpercentage taught.",
+    "supports": [
+      "brodie-variability question/card",
+      "Existing lesson qualifier mirror"
+    ]
+  },
+  {
+    "id": "pids-idsa2021",
+    "url": "https://www.idsociety.org/practice-guideline/bone-and-joint-infections---osteomyelitis/",
+    "doi": "10.1093/jpids/piab027",
+    "read": "Fresh actual official guideline recommendationsII.1/II.2 and comments: initialradiographs despite poor early sensitivity; MRI suggested when further imagingneeded, conditional verylow certainty; uncomplicatedcases mayneednone; US mayhelpadjacentjoint/softtissue. Originalcurrentguideline portal accessed, not indirectreview.",
+    "supports": [
+      "paediatric-next-imaging question/card",
+      "Age/scope and recommendation-strength limitations"
+    ]
+  }
+]

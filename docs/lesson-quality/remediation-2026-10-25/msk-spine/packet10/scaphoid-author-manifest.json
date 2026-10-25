@@ -1,0 +1,639 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_FULL_ORIGINAL_POOL_PLUS_TWO_GOAL_GAPS_REVIEW_READY",
+  "route": "/msk/trauma/skaphoidfraktur",
+  "topicId": "skaphoidfraktur",
+  "counts": {
+    "originalQuestionTriads": 2,
+    "originalCardTriads": 2,
+    "newQuestionTriads": 2,
+    "newCardTriads": 2,
+    "totalQuestionTriads": 4,
+    "totalCardTriads": 4
+  },
+  "files": [
+    "data/scaphoidAssessments.js",
+    "data/skaphoidfraktur.js",
+    "scripts/test-scaphoidfraktur-ssr.mjs"
+  ],
+  "coverage": {
+    "route": "/msk/trauma/skaphoidfraktur",
+    "topicId": "skaphoidfraktur",
+    "learningGoals": [
+      {
+        "id": "acute-pattern-risk",
+        "text": {
+          "de": "B4-Frakturluxation zuordnen und das proximale Ischämierisiko von bewiesener Nekrose unterscheiden.",
+          "en": "Assign B4 fracture-dislocation and distinguish proximal ischemia risk from proven necrosis.",
+          "fa": "شکستگی-دررفتگی B4 را تعیین و خطر ایسکمی پروگزیمال را از نکروز اثبات‌شده جدا کنید."
+        },
+        "questionIds": [
+          "scaphoid-herbert-b4",
+          "scaphoid-proximal-risk"
+        ],
+        "cardIds": [
+          "scaphoid-fc-b4",
+          "scaphoid-fc-proximal-risk"
+        ]
+      },
+      {
+        "id": "nonunion-arthritis",
+        "text": {
+          "de": "SNAC im Kontext einer Skaphoidpseudarthrose erkennen, ohne aus einer Einzelprojektion voll zu stagen.",
+          "en": "Recognize SNAC in the context of scaphoid nonunion without fully staging a single projection.",
+          "fa": "SNAC را در زمینهٔ عدم جوش‌خوردن اسکافوئید بشناسید، بدون مرحله‌بندی کامل از یک نمای منفرد."
+        },
+        "questionIds": [
+          "scaphoid-snac-pattern"
+        ],
+        "cardIds": [
+          "scaphoid-fc-snac"
+        ]
+      },
+      {
+        "id": "variant-context",
+        "text": {
+          "de": "Pseudarthrose und bipartite Variante mit angemessener Unsicherheit differenzieren.",
+          "en": "Differentiate nonunion and bipartite variant with appropriate uncertainty.",
+          "fa": "عدم جوش‌خوردن و واریانت دوپاره را با عدم قطعیت مناسب تفکیک کنید."
+        },
+        "questionIds": [
+          "scaphoid-variant-context"
+        ],
+        "cardIds": [
+          "scaphoid-fc-variant-context"
+        ]
+      }
+    ],
+    "chapterPlan": [
+      {
+        "title": "Zuerst Frakturlinie und Stabilität einordnen",
+        "purpose": "Morphology and blood-supply risk; retain existing title."
+      },
+      {
+        "title": "Von der Pseudarthrose zum SNAC-Muster",
+        "purpose": "Recognize nonunion-associated degeneration; retain existing title."
+      },
+      {
+        "title": "Pseudarthrose und Normvariante unterscheiden",
+        "purpose": "Differential and limits; retain existing title."
+      }
+    ],
+    "mediaPlan": "No new media. Existing source drawings/radiographs retained with captions and uncertainty. Whole-route media/hero is outside this assessment packet.",
+    "status": "AUTHOR_FULL_ORIGINAL_POOL_PLUS_TWO_GOAL_GAPS_REVIEW_PENDING"
+  },
+  "sources": {
+    "pdf": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25.",
+    "ao": "AO Surgery Reference, Herbert classification, https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/further-reading/classifications-for-fractures-of-carpal-bones",
+    "vascular": "AO Surgery Reference, proximal-pole vascularity, https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/scaphoid-proximal-pole/definition",
+    "snac": "Vender et al.1987, original symptomatic nonunion cohort, abstract: https://pubmed.ncbi.nlm.nih.gov/3611645/",
+    "variant": "Doman/Marcus1990 congenital bipartite scaphoid primary longitudinal case: https://pubmed.ncbi.nlm.nih.gov/2269775/; Richards et al.1987 bipartite scaphoid with arthritis: https://pubmed.ncbi.nlm.nih.gov/3607646/"
+  },
+  "originalQuestions": {
+    "de": [
+      {
+        "id": "scaphoid-herbert-b4",
+        "fach": "msk",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "question": "Textfall: Eine Skaphoidfraktur geht mit perilunärer Karpalluxation einher. Welche Herbert-Untergruppe erfasst diese Kombination?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A1: Tuberkelfraktur"
+          },
+          {
+            "id": "B",
+            "text": "B2: vollständige Taillenfraktur"
+          },
+          {
+            "id": "C",
+            "text": "B4: transskaphoidale perilunäre Frakturluxation"
+          },
+          {
+            "id": "D",
+            "text": "B3: Fraktur des proximalen Pols"
+          }
+        ],
+        "correct": "C",
+        "explanation": "B4 bezeichnet die transskaphoidale perilunäre Frakturluxation. Die Klassifikation ergänzt die morphologische Beschreibung, ersetzt aber nicht die vollständige Beurteilung der Karpalstellung.",
+        "wrongExplanations": {
+          "A": "A1 betrifft den Tuberkel. Die beschriebene begleitende Karpalluxation wird damit nicht erfasst.",
+          "B": "B2 beschreibt die vollständige Taillenfraktur. Die Kombination mit perilunärer Luxation gehört zu B4.",
+          "D": "B3 lokalisiert die Fraktur am proximalen Pol. B4 bezeichnet das beschriebene Luxationsmuster."
+        },
+        "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. AO Surgery Reference, Herbert classification, https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/further-reading/classifications-for-fractures-of-carpal-bones",
+        "difficulty": 2
+      },
+      {
+        "id": "scaphoid-snac-pattern",
+        "fach": "msk",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "question": "Textfall: Bei bekannter chronischer Skaphoidpseudarthrose zeigt sich Arthrose am Radiusstyloid und distalen Skaphoidfragment mit mediokarpaler Beteiligung. Das Radiolunargelenk ist erhalten. Welche Einordnung passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "SNAC-Arthrosemuster bei Skaphoidpseudarthrose"
+          },
+          {
+            "id": "B",
+            "text": "SLAC allein durch primäre SL-Bandinsuffizienz ohne Skaphoidpseudarthrose"
+          },
+          {
+            "id": "C",
+            "text": "Isolierte primäre Radiolunararthrose"
+          },
+          {
+            "id": "D",
+            "text": "Isolierte STT-Arthrose ohne radiokarpale oder mediokarpale Beteiligung"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die bekannte Skaphoidpseudarthrose und das radiale/mediokarpale Arthrosemuster passen zu SNAC. Ein einzelnes Bild erlaubt keine vollständige Stadieneinteilung; die Entwicklung ist nicht bei jeder Pseudarthrose gleich.",
+        "wrongExplanations": {
+          "B": "SLAC und SNAC können ähnliche Arthroseverteilungen haben. Hier ist aber eine Skaphoidpseudarthrose ausdrücklich vorgegeben; „ohne Pseudarthrose“ widerspricht dem Fall.",
+          "C": "Das Radiolunargelenk ist im Fall erhalten; die Arthrose liegt radial und mediokarpal.",
+          "D": "Der Fall beschreibt radiokarpale und mediokarpale Beteiligung und nicht nur das Skaphotrapeziotrapezoidalgelenk."
+        },
+        "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. Vender et al.1987, original symptomatic nonunion cohort, abstract: https://pubmed.ncbi.nlm.nih.gov/3611645/",
+        "difficulty": 2
+      },
+      {
+        "id": "scaphoid-proximal-risk",
+        "fach": "msk",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "question": "Eine Fraktur trennt den proximalen Skaphoidpol ab. Welche Aussage zur Gefährdung dieses Fragments ist richtig?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Der distale Gefäßeintritt mit retrogradem intraossärem Fluss erhöht das Ischämie-/Nekroserisiko; die Lage allein beweist keine Nekrose"
+          },
+          {
+            "id": "B",
+            "text": "Der proximale Pol wird überwiegend direkt proximal versorgt und ist daher vor Ischämie geschützt"
+          },
+          {
+            "id": "C",
+            "text": "Eine B3-Lokalisation ist bereits der sichere Nachweis einer Osteonekrose"
+          },
+          {
+            "id": "D",
+            "text": "Retrograder Blutfluss begünstigt nur Arthrose, nicht die Heilung oder Vitalität des Fragments"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Der proximale Pol hängt wesentlich von distal eintretenden Gefäßen und retrogradem intraossärem Blutfluss ab. Eine Fraktur kann diese Versorgung beeinträchtigen und Ischämie, Osteonekrose oder Heilungsstörung begünstigen. Risiko und nachgewiesene Nekrose sind zu trennen.",
+        "wrongExplanations": {
+          "B": "Die entscheidende Versorgung des proximalen Pols erfolgt retrograd aus distal eintretenden Gefäßen.",
+          "C": "Die Lokalisation erhöht das Risiko, ist aber kein alleiniger Vitalitäts- oder Nekrosenachweis.",
+          "D": "Die Gefäßversorgung ist für Vitalität und Heilung relevant; sie ist keine Erklärung allein für Arthrose."
+        },
+        "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. AO Surgery Reference, proximal-pole vascularity, https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/scaphoid-proximal-pole/definition",
+        "difficulty": 2
+      },
+      {
+        "id": "scaphoid-variant-context",
+        "fach": "msk",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "question": "Textfall: Das Skaphoid erscheint zweigeteilt mit glatten kortizierten Rändern. Eine frühere Verletzung ist nicht erinnerlich. Welche Befundaussage ist am angemessensten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Sichere Pseudarthrose allein aufgrund der Zweiteilung"
+          },
+          {
+            "id": "B",
+            "text": "Bipartite Variante erwägen; Vorgeschichte, Voraufnahmen und Morphologie gemeinsam beurteilen"
+          },
+          {
+            "id": "C",
+            "text": "Eine frühere Fraktur ist durch die fehlende Traumaerinnerung sicher ausgeschlossen"
+          },
+          {
+            "id": "D",
+            "text": "Arthrose würde eine bipartite Variante unter allen Umständen ausschließen"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Glatte kortizierte Ränder und fehlende Traumaerinnerung lassen eine Variante erwägen, beweisen sie aber nicht. Kontext und frühere Bilder mitbeurteilen; fehlende Traumaerinnerung schließt eine alte Fraktur nicht aus. Auch bei echter Bipartition ist Arthrose beschrieben.",
+        "wrongExplanations": {
+          "A": "Zweiteilung allein unterscheidet eine alte Fraktur nicht zuverlässig von einer seltenen bipartiten Variante.",
+          "C": "Die Anamnese ist ein Hinweis, kein sicherer Ausschlusstest für eine frühere Fraktur.",
+          "D": "Primäre Fallberichte dokumentieren Arthrose auch bei kongenital bipartitem Skaphoid; sie ist kein absoluter Ausschluss."
+        },
+        "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. Doman/Marcus1990 congenital bipartite scaphoid primary longitudinal case: https://pubmed.ncbi.nlm.nih.gov/2269775/; Richards et al.1987 bipartite scaphoid with arthritis: https://pubmed.ncbi.nlm.nih.gov/3607646/",
+        "difficulty": 2
+      }
+    ],
+    "en": [
+      {
+        "id": "scaphoid-herbert-b4",
+        "fach": "msk",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "question": "Text vignette: a scaphoid fracture is accompanied by perilunate carpal dislocation. Which Herbert subtype captures this combination?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A1: tubercle fracture"
+          },
+          {
+            "id": "B",
+            "text": "B2: complete waist fracture"
+          },
+          {
+            "id": "C",
+            "text": "B4: trans-scaphoid perilunate fracture-dislocation"
+          },
+          {
+            "id": "D",
+            "text": "B3: proximal-pole fracture"
+          }
+        ],
+        "correct": "C",
+        "explanation": "B4 describes a trans-scaphoid perilunate fracture-dislocation. The classification supplements the morphology description but does not replace full assessment of carpal alignment.",
+        "wrongExplanations": {
+          "A": "A1 concerns the tubercle and does not capture the associated carpal dislocation described.",
+          "B": "B2 describes a complete waist fracture. The combination with perilunate dislocation belongs to B4.",
+          "D": "B3 localizes the fracture to the proximal pole. B4 describes the stated fracture-dislocation pattern."
+        },
+        "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. AO Surgery Reference, Herbert classification, https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/further-reading/classifications-for-fractures-of-carpal-bones",
+        "difficulty": 2
+      },
+      {
+        "id": "scaphoid-snac-pattern",
+        "fach": "msk",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "question": "Text vignette: known chronic scaphoid nonunion is accompanied by arthritis at the radial styloid and distal scaphoid fragment with midcarpal involvement. The radiolunate joint is preserved. Which interpretation fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "SNAC arthritis pattern associated with scaphoid nonunion"
+          },
+          {
+            "id": "B",
+            "text": "SLAC solely from primary SL-ligament insufficiency without scaphoid nonunion"
+          },
+          {
+            "id": "C",
+            "text": "Isolated primary radiolunate arthritis"
+          },
+          {
+            "id": "D",
+            "text": "Isolated STT arthritis without radiocarpal or midcarpal involvement"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Known scaphoid nonunion with radial/midcarpal arthritis fits SNAC. A single image does not allow full staging; progression is not identical in every nonunion.",
+        "wrongExplanations": {
+          "B": "SLAC and SNAC may have similar arthritis distributions. Here scaphoid nonunion is explicitly given; “without nonunion” contradicts the case.",
+          "C": "The radiolunate joint is preserved in the case; arthritis is radial and midcarpal.",
+          "D": "The case describes radiocarpal and midcarpal involvement, not only the scaphotrapeziotrapezoid joint."
+        },
+        "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. Vender et al.1987, original symptomatic nonunion cohort, abstract: https://pubmed.ncbi.nlm.nih.gov/3611645/",
+        "difficulty": 2
+      },
+      {
+        "id": "scaphoid-proximal-risk",
+        "fach": "msk",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "question": "A fracture separates the proximal scaphoid pole. Which statement about risk to this fragment is correct?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Distal vessel entry with retrograde intraosseous flow increases ischemia/osteonecrosis risk; location alone does not prove necrosis"
+          },
+          {
+            "id": "B",
+            "text": "The proximal pole is supplied predominantly directly from proximally and is therefore protected from ischemia"
+          },
+          {
+            "id": "C",
+            "text": "A B3 location already establishes osteonecrosis"
+          },
+          {
+            "id": "D",
+            "text": "Retrograde flow affects only arthritis, not fragment healing or viability"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The proximal pole relies substantially on distally entering vessels and retrograde intraosseous flow. Fracture can disrupt supply and predispose to ischemia, osteonecrosis or impaired healing. Risk must be distinguished from demonstrated necrosis.",
+        "wrongExplanations": {
+          "B": "The important proximal-pole supply flows retrogradely from distally entering vessels.",
+          "C": "Location raises risk but alone establishes neither viability nor necrosis.",
+          "D": "Blood supply matters for viability and healing; its significance is not limited to arthritis."
+        },
+        "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. AO Surgery Reference, proximal-pole vascularity, https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/scaphoid-proximal-pole/definition",
+        "difficulty": 2
+      },
+      {
+        "id": "scaphoid-variant-context",
+        "fach": "msk",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "question": "Text vignette: the scaphoid appears bipartite with smooth corticated margins. No previous injury is recalled. Which report statement is most appropriate?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Definite nonunion based solely on the two-part appearance"
+          },
+          {
+            "id": "B",
+            "text": "Consider a bipartite variant; assess history, prior images and morphology together"
+          },
+          {
+            "id": "C",
+            "text": "Lack of recalled trauma definitively excludes an old fracture"
+          },
+          {
+            "id": "D",
+            "text": "Arthritis would exclude a bipartite variant in all circumstances"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Smooth corticated margins and no recalled trauma support considering a variant but do not prove it. Assess context and prior images; absent trauma recall does not exclude an old fracture. Arthritis has also been reported in true bipartition.",
+        "wrongExplanations": {
+          "A": "A two-part appearance alone does not reliably distinguish old fracture from a rare bipartite variant.",
+          "C": "History is a clue, not a definitive exclusion test for an old fracture.",
+          "D": "Primary cases document arthritis in congenital bipartite scaphoid as well; it is not an absolute exclusion."
+        },
+        "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. Doman/Marcus1990 congenital bipartite scaphoid primary longitudinal case: https://pubmed.ncbi.nlm.nih.gov/2269775/; Richards et al.1987 bipartite scaphoid with arthritis: https://pubmed.ncbi.nlm.nih.gov/3607646/",
+        "difficulty": 2
+      }
+    ],
+    "fa": [
+      {
+        "id": "scaphoid-herbert-b4",
+        "fach": "msk",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "question": "سناریوی متنی: شکستگی اسکافوئید همراه دررفتگی پری‌لونیت کارپ است. کدام زیرگروه هربرت این ترکیب را توصیف می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "A1: شکستگی تکمه"
+          },
+          {
+            "id": "B",
+            "text": "B2: شکستگی کامل کمرگاه اسکافوئید"
+          },
+          {
+            "id": "C",
+            "text": "B4: شکستگی-دررفتگی پری‌لونیت ترانس‌اسکافوئید"
+          },
+          {
+            "id": "D",
+            "text": "B3: شکستگی قطب پروگزیمال"
+          }
+        ],
+        "correct": "C",
+        "explanation": "B4 به شکستگی-دررفتگی پری‌لونار ترانس‌اسکافوئید اشاره دارد. طبقه‌بندی مکمل توصیف مورفولوژی است و جای ارزیابی کامل راستای کارپ را نمی‌گیرد.",
+        "wrongExplanations": {
+          "A": "A1 تکمه را درگیر می‌کند و دررفتگی همراه کارپِ توصیف‌شده را بیان نمی‌کند.",
+          "B": "B2 شکستگی کامل کمرگاه را توصیف می‌کند؛ ترکیب با دررفتگی پری‌لونیت مربوط به B4 است.",
+          "D": "B3 شکستگی را در قطب پروگزیمال موضع‌یابی می‌کند؛ B4 الگوی شکستگی-دررفتگی توصیف‌شده است."
+        },
+        "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. AO Surgery Reference, Herbert classification, https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/further-reading/classifications-for-fractures-of-carpal-bones",
+        "difficulty": 2
+      },
+      {
+        "id": "scaphoid-snac-pattern",
+        "fach": "msk",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "question": "سناریوی متنی: در عدم جوش‌خوردن مزمنِ شناخته‌شدهٔ اسکافوئید، آرتروز میان استایلوئید رادیوس و قطعهٔ دیستال اسکافوئید همراه درگیری میدکارپال دیده می‌شود. مفصل رادیولونات حفظ شده است. کدام تفسیر مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "الگوی آرتروز SNAC همراه عدم جوش‌خوردن اسکافوئید"
+          },
+          {
+            "id": "B",
+            "text": "SLAC صرفاً بر اثر نارسایی اولیهٔ رباط SL بدون عدم جوش‌خوردن اسکافوئید"
+          },
+          {
+            "id": "C",
+            "text": "آرتروز اولیهٔ منفرد رادیولونات"
+          },
+          {
+            "id": "D",
+            "text": "آرتروز منفرد STT بدون درگیری رادیوکارپال یا میدکارپال"
+          }
+        ],
+        "correct": "A",
+        "explanation": "عدم جوش‌خوردن شناخته‌شدهٔ اسکافوئید همراه آرتروز رادیال/میدکارپال با SNAC سازگار است. یک تصویر برای مرحله‌بندی کامل کافی نیست؛ سیر در همهٔ موارد عدم جوش‌خوردن یکسان نیست.",
+        "wrongExplanations": {
+          "B": "SLAC و SNAC می‌توانند توزیع مشابه آرتروز داشته باشند؛ اینجا عدم جوش‌خوردن اسکافوئید صراحتاً بیان شده و «بدون عدم جوش‌خوردن» با سناریو تناقض دارد.",
+          "C": "مفصل رادیولونات در سناریو حفظ شده؛ آرتروز رادیال و میدکارپال است.",
+          "D": "سناریو درگیری رادیوکارپال و میدکارپال را توصیف می‌کند، نه فقط مفصل اسکافوتراپزیوتراپزوئید."
+        },
+        "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. Vender et al.1987, original symptomatic nonunion cohort, abstract: https://pubmed.ncbi.nlm.nih.gov/3611645/",
+        "difficulty": 2
+      },
+      {
+        "id": "scaphoid-proximal-risk",
+        "fach": "msk",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "question": "شکستگی قطب پروگزیمال اسکافوئید را جدا کرده است. کدام عبارت دربارهٔ خطر این قطعه درست است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ورود دیستال عروق با جریان داخل‌استخوانی رتروگراد، خطر ایسکمی/استئونکروز را افزایش می‌دهد؛ محل به‌تنهایی نکروز را اثبات نمی‌کند"
+          },
+          {
+            "id": "B",
+            "text": "قطب پروگزیمال عمدتاً مستقیماً از پروگزیمال خون می‌گیرد و بنابراین از ایسکمی محفوظ است"
+          },
+          {
+            "id": "C",
+            "text": "محل B3 به‌خودی‌خود استئونکروز را قطعی می‌کند"
+          },
+          {
+            "id": "D",
+            "text": "جریان رتروگراد فقط بر آرتروز اثر دارد، نه جوش‌خوردن یا زنده‌مانی قطعه"
+          }
+        ],
+        "correct": "A",
+        "explanation": "قطب پروگزیمال تا حد زیادی به عروق ورودی دیستال و جریان داخل‌استخوانی رتروگراد وابسته است. شکستگی می‌تواند خون‌رسانی را مختل و زمینهٔ ایسکمی، استئونکروز یا اختلال جوش‌خوردن را فراهم کند. خطر را از نکروز اثبات‌شده جدا کنید.",
+        "wrongExplanations": {
+          "B": "خون‌رسانی مهم قطب پروگزیمال به‌صورت رتروگراد از عروق ورودی دیستال است.",
+          "C": "محل خطر را افزایش می‌دهد، اما به‌تنهایی زنده‌مانی یا نکروز را اثبات نمی‌کند.",
+          "D": "خون‌رسانی برای زنده‌مانی و جوش‌خوردن مهم است؛ اهمیت آن به آرتروز محدود نمی‌شود."
+        },
+        "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. AO Surgery Reference, proximal-pole vascularity, https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/scaphoid-proximal-pole/definition",
+        "difficulty": 2
+      },
+      {
+        "id": "scaphoid-variant-context",
+        "fach": "msk",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "question": "سناریوی متنی: اسکافوئید دوپاره با حاشیه‌های صاف و کورتیکه دیده می‌شود. آسیب قبلی به یاد آورده نمی‌شود. کدام عبارت گزارش مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "عدم جوش‌خوردن قطعی فقط به دلیل ظاهر دوپاره"
+          },
+          {
+            "id": "B",
+            "text": "واریانت دوپاره را مطرح کنید؛ سابقه، تصاویر قبلی و مورفولوژی را با هم بسنجید"
+          },
+          {
+            "id": "C",
+            "text": "به یاد نیاوردن تروما، شکستگی قدیمی را قطعاً رد می‌کند"
+          },
+          {
+            "id": "D",
+            "text": "وجود آرتروز در همهٔ شرایط واریانت دوپاره را رد می‌کند"
+          }
+        ],
+        "correct": "B",
+        "explanation": "حاشیه‌های صاف و کورتیکه و به یاد نیاوردن تروما، مطرح‌کردن واریانت را توجیه می‌کنند، اما آن را اثبات نمی‌کنند. زمینه و تصاویر قبلی را بررسی کنید؛ نبود یادآوری تروما شکستگی قدیمی را رد نمی‌کند. آرتروز در دوپارگی واقعی هم گزارش شده است.",
+        "wrongExplanations": {
+          "A": "ظاهر دوپاره به‌تنهایی شکستگی قدیمی را به‌طور قابل‌اعتماد از واریانت نادر دوپاره تفکیک نمی‌کند.",
+          "C": "شرح‌حال یک سرنخ است، نه آزمون قطعی رد شکستگی قدیمی.",
+          "D": "گزارش‌های موردی اولیه آرتروز را در اسکافوئید دوپارهٔ مادرزادی هم ثبت کرده‌اند؛ پس معیار رد مطلق نیست."
+        },
+        "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. Doman/Marcus1990 congenital bipartite scaphoid primary longitudinal case: https://pubmed.ncbi.nlm.nih.gov/2269775/; Richards et al.1987 bipartite scaphoid with arthritis: https://pubmed.ncbi.nlm.nih.gov/3607646/",
+        "difficulty": 2
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "scaphoid-fc-b4",
+      "topicId": "skaphoidfraktur",
+      "category": {
+        "de": "Klassifikation",
+        "en": "Classification",
+        "fa": "طبقه‌بندی"
+      },
+      "front": {
+        "de": "Welcher Herbert-Typ steht für eine transskaphoidale perilunäre Frakturluxation?",
+        "en": "Which Herbert type describes a trans-scaphoid perilunate fracture-dislocation?",
+        "fa": "کدام نوع هربرت نشان‌دهندهٔ شکستگی-دررفتگی پری‌لونار ترانس‌اسکافوئید است؟"
+      },
+      "answer": {
+        "de": "B4.",
+        "en": "B4.",
+        "fa": "B4."
+      },
+      "explanation": {
+        "de": "Die vollständige Karpalstellung und Begleitverletzungen zusätzlich beschreiben.",
+        "en": "Also describe complete carpal alignment and associated injuries.",
+        "fa": "راستای کامل کارپ و آسیب‌های همراه را نیز توصیف کنید."
+      },
+      "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. AO Surgery Reference, Herbert classification, https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/further-reading/classifications-for-fractures-of-carpal-bones"
+    },
+    {
+      "id": "scaphoid-fc-snac",
+      "topicId": "skaphoidfraktur",
+      "category": {
+        "de": "Chronische Verletzung",
+        "en": "Chronic injury",
+        "fa": "آسیب مزمن"
+      },
+      "front": {
+        "de": "Welches degenerative Muster kann bei chronischer Skaphoidpseudarthrose entstehen?",
+        "en": "Which degenerative pattern can develop with chronic scaphoid nonunion?",
+        "fa": "در عدم جوش‌خوردن مزمن اسکافوئید چه الگوی دژنراتیوی ممکن است ایجاد شود؟"
+      },
+      "answer": {
+        "de": "SNAC-Arthrose, oft radial beginnend und fortschreitend.",
+        "en": "SNAC arthritis, often starting radially and progressing.",
+        "fa": "آرتروز SNAC که اغلب از سمت رادیال آغاز می‌شود و پیشرفت می‌کند."
+      },
+      "explanation": {
+        "de": "Eine einzelne Röntgenprojektion reicht nicht für eine vollständige Stadieneinteilung.",
+        "en": "A single radiographic projection is insufficient for full staging.",
+        "fa": "یک نمای رادیوگرافی برای مرحله‌بندی کامل کافی نیست."
+      },
+      "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. Vender et al.1987, original symptomatic nonunion cohort, abstract: https://pubmed.ncbi.nlm.nih.gov/3611645/"
+    },
+    {
+      "id": "scaphoid-fc-proximal-risk",
+      "topicId": "skaphoidfraktur",
+      "category": {
+        "de": "Vitalität",
+        "en": "Viability",
+        "fa": "زنده‌مانی"
+      },
+      "front": {
+        "de": "Warum ist der proximale Skaphoidpol gefährdet, und was beweist die Lokalisation nicht?",
+        "en": "Why is the proximal scaphoid pole at risk, and what does location not prove?",
+        "fa": "چرا قطب پروگزیمال اسکافوئید در خطر است و محل چه چیزی را اثبات نمی‌کند؟"
+      },
+      "answer": {
+        "de": "Distaler Gefäßeintritt und retrograder intraossärer Fluss machen ihn vulnerabel; B3 allein beweist keine Osteonekrose.",
+        "en": "Distal vessel entry and retrograde intraosseous flow make it vulnerable; B3 alone does not prove osteonecrosis.",
+        "fa": "ورود دیستال عروق و جریان داخل‌استخوانی رتروگراد آن را آسیب‌پذیر می‌کنند؛ B3 به‌تنهایی استئونکروز را اثبات نمی‌کند."
+      },
+      "explanation": {
+        "de": "Der proximale Pol hängt wesentlich von distal eintretenden Gefäßen und retrogradem intraossärem Blutfluss ab. Eine Fraktur kann diese Versorgung beeinträchtigen und Ischämie, Osteonekrose oder Heilungsstörung begünstigen. Risiko und nachgewiesene Nekrose sind zu trennen.",
+        "en": "The proximal pole relies substantially on distally entering vessels and retrograde intraosseous flow. Fracture can disrupt supply and predispose to ischemia, osteonecrosis or impaired healing. Risk must be distinguished from demonstrated necrosis.",
+        "fa": "قطب پروگزیمال تا حد زیادی به عروق ورودی دیستال و جریان داخل‌استخوانی رتروگراد وابسته است. شکستگی می‌تواند خون‌رسانی را مختل و زمینهٔ ایسکمی، استئونکروز یا اختلال جوش‌خوردن را فراهم کند. خطر را از نکروز اثبات‌شده جدا کنید."
+      },
+      "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. AO Surgery Reference, proximal-pole vascularity, https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/scaphoid-proximal-pole/definition"
+    },
+    {
+      "id": "scaphoid-fc-variant-context",
+      "topicId": "skaphoidfraktur",
+      "category": {
+        "de": "Differenzialdiagnose",
+        "en": "Differential diagnosis",
+        "fa": "تشخیص افتراقی"
+      },
+      "front": {
+        "de": "Wie vermeiden Sie die Verwechslung einer Skaphoidpseudarthrose mit einer bipartiten Variante?",
+        "en": "How do you avoid confusing scaphoid nonunion with a bipartite variant?",
+        "fa": "چگونه از اشتباه عدم جوش‌خوردن اسکافوئید با واریانت دوپاره جلوگیری می‌کنید؟"
+      },
+      "answer": {
+        "de": "Ränder, Frakturverlauf, Vorgeschichte und Voraufnahmen gemeinsam beurteilen; kein Einzelzeichen entscheidet sicher.",
+        "en": "Assess margins, fracture configuration, history and prior images together; no single sign settles the diagnosis.",
+        "fa": "حاشیه‌ها، مسیر شکستگی، سابقه و تصاویر قبلی را با هم بسنجید؛ هیچ نشانهٔ منفردی تشخیص را قطعی نمی‌کند."
+      },
+      "explanation": {
+        "de": "Glatte kortizierte Ränder und fehlende Traumaerinnerung lassen eine Variante erwägen, beweisen sie aber nicht. Kontext und frühere Bilder mitbeurteilen; fehlende Traumaerinnerung schließt eine alte Fraktur nicht aus. Auch bei echter Bipartition ist Arthrose beschrieben.",
+        "en": "Smooth corticated margins and no recalled trauma support considering a variant but do not prove it. Assess context and prior images; absent trauma recall does not exclude an old fracture. Arthritis has also been reported in true bipartition.",
+        "fa": "حاشیه‌های صاف و کورتیکه و به یاد نیاوردن تروما، مطرح‌کردن واریانت را توجیه می‌کنند، اما آن را اثبات نمی‌کنند. زمینه و تصاویر قبلی را بررسی کنید؛ نبود یادآوری تروما شکستگی قدیمی را رد نمی‌کند. آرتروز در دوپارگی واقعی هم گزارش شده است."
+      },
+      "source": "MSK.pdf physical19–20/printed18–19; actual file C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf; text and fresh110dpi page images read2026-10-25. Doman/Marcus1990 congenital bipartite scaphoid primary longitudinal case: https://pubmed.ncbi.nlm.nih.gov/2269775/; Richards et al.1987 bipartite scaphoid with arthritis: https://pubmed.ncbi.nlm.nih.gov/3607646/"
+    }
+  ],
+  "limits": {
+    "browser": "Root only",
+    "build": "Root only",
+    "scientificReview": "Dr.Zia pending",
+    "independentReview": "pending",
+    "media": "Retained source images; full case contributor/study verification outside packet"
+  },
+  "technical": {
+    "status": "PASS",
+    "questionObjects": 12,
+    "cardTriads": 4,
+    "specificWrongFeedbackObjects": 36,
+    "originalIdsAndKeysPreserved": true,
+    "scope": "Dedicated producer; no build/browser/globalbank claim",
+    "ssrFixture": "Updated expected4Q/4cards and connected wrong-feedback assertion; execution assigned to Root"
+  },
+  "sourceEvidence": "scaphoid-evidence.md"
+}

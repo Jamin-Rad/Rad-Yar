@@ -5,10 +5,218 @@ const item = (source, question, options, answer, rationale) => ({ source, questi
 
 export const abdomenThoraxAssessmentDrafts = {
   'thorax-lung-segmental-anatomy': item('Thorax.pdf physical p.7 (printed p.6); Siddharthan et al., J Appl Clin Med Phys. 2025; doi:10.1002/acm2.70193; Pulmonary vascular anatomy & anatomical variants. 2018. PMC6039811', L('Welche Strukturen verlaufen überwiegend intrasegmental und helfen, ein bronchopulmonales Segment zuzuordnen?', 'Which structures run mainly within a bronchopulmonary segment and help localise it?', 'کدام ساختارها عمدتاً درون یک سگمان برونکوپولمونری قرار دارند و به تعیین محل آن کمک می‌کنند؟'), [L('Segmentbronchus und begleitende Pulmonalarterie', 'Segmental bronchus and accompanying pulmonary artery', 'برونش سگمنتال و شریان ریوی همراه'), L('Pulmonalvenen und Lymphbahnen', 'Pulmonary veins and lymphatics', 'وریدهای ریوی و مسیرهای لنفاوی'), L('Interlobuläre Septen und Pleura', 'Interlobular septa and pleura', 'سپتاهای بین‌لوبولی و پلور')], 0, L('Bronchien und begleitende Arterien verlaufen überwiegend intrasegmental; Pulmonalvenen markieren häufig intersegmentale Ebenen. Für die Zuordnung Bronchus und Gefäß über mehrere Schichten verfolgen, nicht eine unsichtbare Segmentgrenze annehmen.', 'Bronchi and accompanying arteries run mainly within segments; pulmonary veins often mark intersegmental planes. Trace the bronchus and vessel across slices rather than assuming an invisible segment boundary.', 'برونش‌ها و شریان‌های همراه عمدتاً درون سگمان‌اند و وریدهای ریوی اغلب صفحات بین‌سگمنتال را نشان می‌دهند. برای تعیین محل، برونش و رگ را در چند برش دنبال کنید و مرز نامرئی سگمان را فرض نکنید.')),
-  'hepatic-adenoma-hbp': item('Abdomen.pdf pp. 17–18; ACG Clinical Guideline: Focal Liver Lesions (2024)', L('Welches HBP-Muster unterstützt im passenden Kontext ein HCA gegenüber einer typischen FNH?', 'Which HBP pattern supports HCA over typical FNH in the appropriate context?', 'در زمینه مناسب، کدام الگوی HBP از HCA در برابر FNH تیپیک حمایت می‌کند؟'), [L('HCA meist hypointens, FNH meist iso- bis hyperintens; Ausnahmen beachten', 'HCA usually hypointense, FNH usually iso- to hyperintense; consider exceptions', 'HCA معمولاً کم‌سیگنال و FNH معمولاً ایزو تا پرسیگنال است؛ استثناها را در نظر بگیرید'), L('Beide Läsionen sind immer hypointens', 'Both lesions are always hypointense', 'هر دو ضایعه همیشه کم‌سیگنال‌اند'), L('HCA ist immer hyperintens und FNH immer hypointens', 'HCA is always hyperintense and FNH always hypointense', 'HCA همیشه پرسیگنال و FNH همیشه کم‌سیگنال است')], 0, L('Die meisten Adenome bleiben in der HBP hypointens, während FNH typischerweise iso- bis hyperintens ist. Untertypen und atypische Muster verhindern eine absolute Regel.', 'Most adenomas remain hypointense on HBP, while FNH is typically iso- to hyperintense. Subtypes and atypical patterns prevent an absolute rule.', 'بیشتر آدنوم‌ها در HBP کم‌سیگنال می‌مانند، درحالی‌که FNH معمولاً ایزو تا پرسیگنال است. زیرگروه‌ها و الگوهای آتیپیک مانع از یک قاعده مطلق می‌شوند.')),
-  'hepatic-adenoma-opposed-phase': item('Abdomen.pdf p.17; ACG Clinical Guideline: Focal Liver Lesions (2024)', L('Was bedeutet ein Signalabfall in der T1-Out-of-phase-Aufnahme einer Leberläsion am ehesten?', 'What does signal loss on T1 out-of-phase imaging of a liver lesion most likely indicate?', 'افت سیگنال در تصویر T1 out-of-phase ضایعه کبدی بیشتر نشان‌دهنده چیست؟'), [L('Möglicher intrazellulärer Fettanteil; kein alleiniger Beweis für HCA oder einen Subtyp', 'Possible intracellular fat; not proof of HCA or a specific subtype on its own', 'احتمال وجود چربی داخل‌سلولی؛ نه اثبات مستقل HCA یا یک زیرگروه خاص'), L('Sicherer Nachweis einer FNH', 'Definitive proof of FNH', 'اثبات قطعی FNH'), L('Sicherer Ausschluss eines malignen Tumors', 'Definitive exclusion of malignancy', 'رد قطعی بدخیمی')], 0, L('Ein Signalabfall in der Out-of-phase-Aufnahme spricht für mikroskopisches beziehungsweise intrazelluläres Fett, ist aber keine eigenständige Diagnose und legt keinen Subtyp sicher fest.', 'Out-of-phase signal loss supports microscopic/intracellular fat but is not a stand-alone diagnosis or subtype label.', 'افت out-of-phase از وجود چربی میکروسکوپیک/داخل‌سلولی حمایت می‌کند، اما به‌تنهایی تشخیص یا تعیین زیرگروه نیست.')),
-  'hepatic-adenoma-dynamic-ct': item('Abdomen.pdf pp.16–17; ACG Clinical Guideline: Focal Liver Lesions (2024)', L('Welches dynamische Kontrastmuster passt häufig zu einem hepatozellulären Adenom?', 'Which dynamic enhancement pattern is common in hepatocellular adenoma?', 'کدام الگوی تقویت دینامیک اغلب با آدنوم هپاتوسلولار سازگار است؟'), [L('Arterielle Hyperanreicherung mit späterer Angleichung an das Leberparenchym', 'Arterial hyperenhancement with later equalisation to the liver parenchyma', 'تقویت شریانی واضح همراه با هم‌سطح‌شدن بعدی با پارانشیم کبد'), L('Diskontinuierliche periphere Knoten mit zentripetaler Auffüllung', 'Discontinuous peripheral nodules with centripetal fill-in', 'ندول‌های محیطی ناپیوسته با پرشدن مرکزگرا'), L('Fehlende arterielle Aufnahme beweist HCA', 'Absent arterial enhancement proves HCA', 'نبود تقویت شریانی HCA را ثابت می‌کند')], 0, L('HCA zeigt häufig eine kräftige arterielle Anreicherung und kann sich in späteren Phasen dem Leberparenchym angleichen. Das Muster ist nicht spezifisch und muss mit Morphologie und klinischem Kontext beurteilt werden.', 'HCA commonly enhances avidly in the arterial phase and may become similar to liver on later phases. The pattern is not specific and is interpreted with morphology and context.', 'HCA اغلب در فاز شریانی تقویت واضح دارد و در فازهای بعدی ممکن است با کبد هم‌سطح شود. این الگو اختصاصی نیست و باید با مورفولوژی و زمینه تفسیر شود.')),
-  'hepatic-adenoma-caveat': item('Abdomen.pdf pp.17–18; ACG Clinical Guideline: Focal Liver Lesions (2024)', L('Welche Aussage zur bildgebenden Subtypisierung eines HCA ist am besten?', 'Which statement about imaging-based HCA subtyping is most accurate?', 'کدام عبارت درباره تعیین زیرگروه HCA با تصویربرداری دقیق‌تر است؟'), [L('MRT kann Subtypen nahelegen, aber die Abgrenzung zu HCC ist nicht in jedem Fall sicher', 'MRI may suggest subtypes, but distinction from HCC is not reliable in every case', 'MRI ممکن است زیرگروه‌ها را مطرح کند، اما افتراق از HCC در همه موارد قطعی نیست'), L('HBP-Signal beweist immer den molekularen Subtyp', 'HBP signal always proves the molecular subtype', 'سیگنال HBP همیشه زیرگروه مولکولی را ثابت می‌کند'), L('Einzelne arterielle Hyperanreicherung schließt HCC aus', 'Arterial hyperenhancement alone excludes HCC', 'تقویت شریانی منفرد HCC را رد می‌کند')], 0, L('Die MRT unterstützt die Charakterisierung und kann einen Subtyp nahelegen; atypische Läsionen und β-Catenin-aktivierte HCA können sich jedoch mit HCC überschneiden. Klinischen Kontext und bei Bedarf eine weitere interdisziplinäre Beurteilung einbeziehen.', 'MRI assists characterisation and may suggest subtype, but atypical lesions and β-catenin-activated HCA can overlap with HCC. Use the clinical context and further multidisciplinary assessment when indicated.', 'MRI به مشخصه‌یابی و طرح زیرگروه کمک می‌کند، اما ضایعات آتیپیک و HCA فعال‌شده با β-catenin ممکن است با HCC همپوشانی داشته باشند. در صورت لزوم زمینه بالینی و ارزیابی چندرشته‌ای تکمیلی را در نظر بگیرید.')),
+  'hepatic-adenoma-hbp': {
+  "question": {
+    "de": "Welche häufige Kombination in der hepatobiliären Phase unterstützt im passenden Kontext HCA gegenüber typischer FNH?",
+    "en": "Which common hepatobiliary-phase combination supports HCA versus typical FNH in the appropriate context?",
+    "fa": "کدام ترکیب شایع در فاز هپاتوبیلیاری، در زمینهٔ مناسب از HCA در برابر FNH تیپیک حمایت می‌کند؟"
+  },
+  "options": [
+    {
+      "de": "HCA hypointens; FNH iso- bis hyperintens",
+      "en": "HCA hypointense; FNH iso- to hyperintense",
+      "fa": "HCA کم‌سیگنال؛ FNH ایزو تا پرسیگنال"
+    },
+    {
+      "de": "HCA iso- bis hyperintens; FNH hypointens",
+      "en": "HCA iso- to hyperintense; FNH hypointense",
+      "fa": "HCA ایزو تا پرسیگنال؛ FNH کم‌سیگنال"
+    },
+    {
+      "de": "HCA und FNH beide hypointens",
+      "en": "Both HCA and FNH hypointense",
+      "fa": "HCA و FNH هر دو کم‌سیگنال"
+    },
+    {
+      "de": "HCA und FNH beide iso- bis hyperintens",
+      "en": "Both HCA and FNH iso- to hyperintense",
+      "fa": "HCA و FNH هر دو ایزو تا پرسیگنال"
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Die meisten HCA sind in der HBP hypointens, typische FNH häufig iso- bis hyperintens. Atypische inflammatorische oder β-Catenin-mutierte HCA können Kontrastmittel zurückhalten und ebenfalls iso-/hyperintens sein. Deshalb HBP mit dynamischen Phasen, Morphologie und Kontext kombinieren.",
+    "en": "Most HCAs are hypointense on HBP, whereas typical FNH is often iso- to hyperintense. Atypical inflammatory or beta-catenin-mutated HCAs can retain contrast and also appear iso/hyperintense. Combine HBP with dynamic phases, morphology and context.",
+    "fa": "بیشتر HCAها در HBP کم‌سیگنال‌اند، در حالی که FNH تیپیک اغلب ایزو تا پرسیگنال است. HCA التهابی آتیپیک یا دارای جهش بتاکاتنین می‌تواند مادهٔ حاجب را نگه دارد و ایزو یا پرسیگنال نیز باشد. بنابراین HBP با فازهای دینامیک، مورفولوژی و زمینه ترکیب شود."
+  },
+  "source": "https://doi.org/10.14309/ajg.0000000000002857",
+  "wrongExplanations": {
+    "B": {
+      "de": "Dies kehrt die häufige Richtung um. HBP-hyperintense HCA sind eine wichtige Ausnahme und dürfen nicht als typische Gegenregel dienen.",
+      "en": "This reverses the common direction. HBP-hyperintense HCAs are an important exception rather than the usual opposite rule.",
+      "fa": "این گزینه جهت شایع را معکوس می‌کند. HCA پرسیگنال در HBP استثنای مهمی است، نه قاعدهٔ معمولِ معکوس."
+    },
+    "C": {
+      "de": "Beidseitige Hypointensität liefert nicht die gefragte typische Unterscheidung; FNH hält hepatobiliäres Kontrastmittel häufig zurück. Atypische Fälle bleiben möglich.",
+      "en": "Hypointensity in both does not provide the typical distinction asked for; FNH commonly retains hepatobiliary contrast. Atypical cases remain possible.",
+      "fa": "کم‌سیگنالی هر دو، افتراق تیپیک مورد سؤال را فراهم نمی‌کند؛ FNH اغلب مادهٔ حاجب هپاتوبیلیاری را نگه می‌دارد. موارد آتیپیک همچنان ممکن‌اند."
+    },
+    "D": {
+      "de": "Iso-/Hyperintensität kann bei beiden vorkommen, etwa bei bestimmten HCA-Subtypen. Sie ist aber nicht das häufige HCA-Muster und beweist keine gemeinsame Diagnose.",
+      "en": "Iso/hyperintensity can occur in both, including some HCA subtypes. It is not the common HCA pattern and does not establish a shared diagnosis.",
+      "fa": "ایزو یا پرسیگنالی در هر دو، از جمله برخی زیرگروه‌های HCA، ممکن است. اما الگوی شایع HCA نیست و تشخیص مشترک را قطعی نمی‌کند."
+    }
+  }
+},
+  'hepatic-adenoma-opposed-phase': {
+  "question": {
+    "de": "Eine Leberläsion verliert gegenüber der In-phase-Aufnahme homogen Signal auf der passenden Opposed-phase-Aufnahme. Welche Gewebekomponente wird dadurch am ehesten angezeigt?",
+    "en": "A liver lesion shows homogeneous signal loss on the appropriate opposed-phase image compared with in-phase imaging. Which tissue component does this most strongly indicate?",
+    "fa": "ضایعهٔ کبدی در تصویر مناسب opposed-phase نسبت به in-phase افت سیگنال همگن دارد. این یافته بیشتر نشان‌دهندهٔ کدام جزء بافتی است؟"
+  },
+  "options": [
+    {
+      "de": "Mikroskopisch gemischtes Fett und Wasser",
+      "en": "Microscopically mixed fat and water",
+      "fa": "اختلاط میکروسکوپی چربی و آب"
+    },
+    {
+      "de": "Hämosiderinbedingte Suszeptibilität",
+      "en": "Haemosiderin-related susceptibility",
+      "fa": "سوسپتیبیلیتی ناشی از هموسیدرین"
+    },
+    {
+      "de": "Met-Hb in einem subakuten Blutungsanteil",
+      "en": "MetHb in a subacute haemorrhagic component",
+      "fa": "مت‌هموگلوبین در جزء خونریزی زیرحاد"
+    },
+    {
+      "de": "Wasserreiches Ödem ohne Fettanteil",
+      "en": "Water-rich oedema without fat",
+      "fa": "ادم پرآب بدون چربی"
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Chemical-shift-Signalabfall passt zu mikroskopischem Fett im wasserhaltigen Gewebe. Bei HCA kann dies die Charakterisierung unterstützen, legt aber weder HCA noch einen molekularen Subtyp allein fest. Blut kann natives T1 ebenfalls aufhellen, ohne dieses Fett-Wasser-Muster zu beweisen.",
+    "en": "Chemical-shift signal loss supports microscopic fat in water-containing tissue. In HCA this can aid characterisation but establishes neither HCA nor a molecular subtype alone. Blood can also cause unenhanced T1 hyperintensity without establishing this fat-water pattern.",
+    "fa": "افت سیگنال chemical shift از چربی میکروسکوپی در بافت حاوی آب حمایت می‌کند. در HCA می‌تواند به بررسی ویژگی‌ها کمک کند، اما به‌تنهایی HCA یا زیرگروه مولکولی را قطعی نمی‌کند. خون نیز می‌تواند در T1 بدون تزریق پرسیگنال باشد، بدون اینکه این الگوی چربی و آب را ثابت کند."
+  },
+  "source": "https://doi.org/10.14309/ajg.0000000000002857",
+  "wrongExplanations": {
+    "B": {
+      "de": "Eisenbedingter Signalverlust wird anhand echozeitabhängiger Suszeptibilität beziehungsweise T2*-Verhalten beurteilt; er ist nicht gleichbedeutend mit dem hier beschriebenen Chemical-shift-Fettmuster.",
+      "en": "Iron-related signal loss is assessed through echo-time-dependent susceptibility/T2* behaviour; it is not equivalent to the chemical-shift fat pattern described here.",
+      "fa": "افت سیگنال ناشی از آهن با سوسپتیبیلیتی وابسته به زمان اکو یا رفتار T2* ارزیابی می‌شود؛ معادل الگوی چربی chemical shift توصیف‌شده نیست."
+    },
+    "C": {
+      "de": "Met-Hb kann natives T1 aufhellen. Daraus folgt jedoch kein typischer Signalabfall durch Fett-Wasser-Auslöschung auf Opposed-phase-Bildern.",
+      "en": "MetHb can cause unenhanced T1 hyperintensity but does not thereby produce the typical opposed-phase fat-water cancellation pattern.",
+      "fa": "مت‌هموگلوبین می‌تواند T1 بدون تزریق را روشن کند، اما این امر به‌خودی‌خود الگوی تیپیک حذف سیگنال چربی و آب در opposed-phase را ایجاد نمی‌کند."
+    },
+    "D": {
+      "de": "Reines wasserreiches Gewebe erzeugt nicht den typischen Fett-Wasser-Auslöschungseffekt. Ödem wird im Gesamtmuster, besonders auf flüssigkeitssensitiven Sequenzen, beurteilt.",
+      "en": "Pure water-rich tissue does not generate the typical fat-water cancellation effect. Assess oedema in the overall pattern, particularly on fluid-sensitive sequences.",
+      "fa": "بافت صرفاً پرآب اثر تیپیک حذف سیگنال چربی و آب را ایجاد نمی‌کند. ادم در الگوی کلی و به‌ویژه سکانس‌های حساس به مایع بررسی می‌شود."
+    }
+  }
+},
+  'hepatic-adenoma-dynamic-ct': {
+  "question": {
+    "de": "Welches dynamische Muster ist bei einem HCA mit extrazellulärem Kontrastmittel häufig?",
+    "en": "Which dynamic pattern is common in HCA with an extracellular contrast agent?",
+    "fa": "کدام الگوی دینامیک در HCA با مادهٔ حاجب خارج‌سلولی شایع است؟"
+  },
+  "options": [
+    {
+      "de": "Arterielle Hyperanreicherung mit späterer Angleichung an die Leber",
+      "en": "Arterial hyperenhancement with later equalisation to liver",
+      "fa": "جذب بیشتر شریانی با هم‌سطح‌شدن بعدی با کبد"
+    },
+    {
+      "de": "Periphere diskontinuierliche Knoten mit zentripetaler Auffüllung",
+      "en": "Discontinuous peripheral nodules with centripetal fill-in",
+      "fa": "ندول‌های محیطی ناپیوسته با پرشدن مرکزگرا"
+    },
+    {
+      "de": "Progressiv zunehmende späte Kontrastmittelaufnahme bei geringer früher Aufnahme",
+      "en": "Progressively increasing delayed enhancement with little early enhancement",
+      "fa": "افزایش تدریجی جذب تأخیری با جذب اندک در فاز اولیه"
+    },
+    {
+      "de": "Flüssigkeitsdichte Läsion ohne messbare interne Kontrastmittelaufnahme",
+      "en": "Fluid-attenuation lesion without measurable internal enhancement",
+      "fa": "ضایعه با دانسیتهٔ مایع بدون جذب قابل‌اندازه‌گیری داخلی"
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "HCA zeigt häufig arterielle Hyperanreicherung und spätere Angleichung. Das Muster ist nicht spezifisch und kann je nach Subtyp, Blutung und Fett variieren. Ein Einzelmuster trennt HCA und HCC nicht zuverlässig; weitere Sequenzen und klinischen Kontext einbeziehen.",
+    "en": "HCA commonly shows arterial hyperenhancement followed by equalisation. The pattern is nonspecific and can vary with subtype, haemorrhage and fat. One pattern does not reliably distinguish HCA from HCC; integrate further sequences and clinical context.",
+    "fa": "HCA اغلب جذب بیشتر شریانی و سپس هم‌سطح‌شدن نشان می‌دهد. این الگو غیراختصاصی است و با زیرگروه، خونریزی و چربی تغییر می‌کند. یک الگو HCA را به‌طور قابل‌اتکا از HCC جدا نمی‌کند؛ سکانس‌های دیگر و زمینهٔ بالینی نیز لحاظ شوند."
+  },
+  "source": "https://doi.org/10.14309/ajg.0000000000002857",
+  "wrongExplanations": {
+    "B": {
+      "de": "Dieses peripher-noduläre zentripetale Muster passt eher zu einem typischen Hämangiom als zum gefragten häufigen HCA-Muster.",
+      "en": "This peripheral nodular centripetal pattern favours typical haemangioma rather than the common HCA pattern asked for.",
+      "fa": "این الگوی ندولی محیطی و مرکزگرا بیشتر با همانژیوم تیپیک سازگار است تا الگوی شایع HCA مورد سؤال."
+    },
+    "C": {
+      "de": "Dieses verzögerte progressive Muster kann bei fibrosereichem Gewebe vorkommen. Es beschreibt nicht die gefragte häufige frühe Hypervaskularität mit späterer Angleichung.",
+      "en": "This progressive delayed pattern can occur in fibrous tissue. It does not describe the common early hypervascularity followed by equalisation asked for.",
+      "fa": "این الگوی تدریجی تأخیری می‌تواند در بافت غنی از فیبروز دیده شود. توصیف‌کنندهٔ پرعروقی اولیهٔ شایع همراه هم‌سطح‌شدن بعدی مورد سؤال نیست."
+    },
+    "D": {
+      "de": "Flüssigkeitsdichte ohne internes Enhancement passt zu zystischem Inhalt, nicht zum gefragten häufigen Muster eines soliden HCA.",
+      "en": "Fluid attenuation without internal enhancement fits cystic contents rather than the common solid-HCA pattern asked for.",
+      "fa": "دانسیتهٔ مایع بدون جذب داخلی با محتوای کیستیک سازگار است، نه الگوی شایع HCA توپر مورد سؤال."
+    }
+  }
+},
+  'hepatic-adenoma-caveat': {
+  "question": {
+    "de": "Eine technisch ausreichende multiphasische MRT lässt eine atypische hepatozelluläre Läsion zwischen HCA und HCC unklar. Welche weitere Strategie passt am ehesten zu dieser diagnostischen Unsicherheit?",
+    "en": "Technically adequate multiphasic MRI leaves an atypical hepatocellular lesion indeterminate between HCA and HCC. Which further strategy best addresses this diagnostic uncertainty?",
+    "fa": "MRI چندفازی با کیفیت فنی کافی، ضایعهٔ هپاتوسلولار آتیپیک را بین HCA و HCC نامشخص باقی می‌گذارد. کدام راهبرد بعدی مناسب‌تر به این عدم قطعیت تشخیصی می‌پردازد؟"
+  },
+  "options": [
+    {
+      "de": "Interdisziplinäre Leberkonferenz und je nach Fragestellung gezielte Gewebeabklärung erwägen",
+      "en": "Multidisciplinary liver review and consideration of targeted tissue diagnosis according to the question",
+      "fa": "بررسی در تیم چندتخصصی کبد و درنظرگرفتن بررسی هدفمند بافت بر پایهٔ پرسش بالینی"
+    },
+    {
+      "de": "Eine ergänzende hepatobiliäre Kontrastphase durchführen",
+      "en": "Acquire an additional hepatobiliary contrast phase",
+      "fa": "انجام فاز تکمیلی با مادهٔ حاجب هپاتوبیلیاری"
+    },
+    {
+      "de": "CEUS zur zusätzlichen Beurteilung der Kontrastdynamik ergänzen",
+      "en": "Add CEUS to further assess enhancement dynamics",
+      "fa": "افزودن CEUS برای ارزیابی تکمیلی دینامیک مادهٔ حاجب"
+    },
+    {
+      "de": "Eine kurzfristige MRT-Verlaufskontrolle ohne vorherige Fallkonferenz planen",
+      "en": "Plan short-interval MRI follow-up before case conference",
+      "fa": "برنامه‌ریزی MRI پیگیری کوتاه‌مدت پیش از بررسی در تیم"
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "MRT kann insbesondere HNF-1α- und inflammatorische HCA nahelegen; bestimmte Subtypen und HCC können bildgebend überlappen. Bei unklarer atypischer Läsion interdisziplinär diskutieren und gezielte Biopsie erwägen. Weder eine zusätzliche Einzelphase noch CEUS beweisen zuverlässig den molekularen Subtyp.",
+    "en": "MRI can suggest particularly HNF1A and inflammatory HCA, but some subtypes and HCC overlap on imaging. Discuss an indeterminate atypical lesion multidisciplinary and consider targeted biopsy. Neither an additional single phase nor CEUS reliably establishes molecular subtype.",
+    "fa": "MRI به‌ویژه می‌تواند HCA وابسته به HNF1A و نوع التهابی را مطرح کند، اما برخی زیرگروه‌ها و HCC در تصویربرداری هم‌پوشانی دارند. ضایعهٔ آتیپیک نامشخص در تیم چندتخصصی بررسی و بیوپسی هدفمند در نظر گرفته شود. نه یک فاز تکمیلی منفرد و نه CEUS، زیرگروه مولکولی را به‌طور قابل‌اتکا قطعی نمی‌کند."
+  },
+  "source": "https://doi.org/10.14309/ajg.0000000000002857",
+  "wrongExplanations": {
+    "B": {
+      "de": "HBP kann ergänzen, wenn sie fehlt. Sie löst jedoch nicht zuverlässig die HCA/HCC-Unsicherheit oder molekulare Subtypisierung; bei bereits ausreichender atypischer Untersuchung ist die gezielte interdisziplinäre Entscheidung vorrangig.",
+      "en": "HBP can complement a study when absent. It does not reliably resolve HCA/HCC uncertainty or molecular subtyping; with an already adequate atypical study, targeted multidisciplinary decision-making takes priority.",
+      "fa": "HBP در صورت انجام‌نشدن می‌تواند بررسی را تکمیل کند. اما عدم قطعیت HCA/HCC یا تعیین زیرگروه مولکولی را به‌طور قابل‌اتکا حل نمی‌کند؛ در بررسی کافی ولی آتیپیک، تصمیم‌گیری هدفمند چندتخصصی اولویت دارد."
+    },
+    "C": {
+      "de": "CEUS kann die Charakterisierung ergänzen, subtypisiert HCA aber nicht zuverlässig. Die schon ausreichende MRT mit verbliebener HCA/HCC-Unsicherheit verlangt zunächst eine abgestimmte diagnostische Strategie.",
+      "en": "CEUS may complement characterisation but does not reliably subtype HCA. An already adequate MRI with persistent HCA/HCC uncertainty first warrants a coordinated diagnostic strategy.",
+      "fa": "CEUS می‌تواند بررسی ویژگی‌ها را تکمیل کند، اما زیرگروه HCA را به‌طور قابل‌اتکا تعیین نمی‌کند. MRI کافی با عدم قطعیت باقی‌مانده HCA/HCC، ابتدا به راهبرد تشخیصی هماهنگ نیاز دارد."
+    },
+    "D": {
+      "de": "Verlauf kann je nach interdisziplinärer Einschätzung sinnvoll sein. Ihn vorab als Standardweg festzulegen, klärt die atypische potenziell maligne Läsion nicht angemessen; Bedarf und Art der Gewebeabklärung zuerst diskutieren.",
+      "en": "Follow-up may be appropriate after multidisciplinary assessment. Assigning it beforehand as the default does not adequately address an atypical potentially malignant lesion; first discuss the need and method of tissue evaluation.",
+      "fa": "پیگیری پس از ارزیابی چندتخصصی می‌تواند مناسب باشد. تعیین پیشاپیش آن به‌عنوان مسیر پیش‌فرض، ضایعهٔ آتیپیک با احتمال بدخیمی را کافی بررسی نمی‌کند؛ ابتدا نیاز و روش بررسی بافت مطرح شود."
+    }
+  }
+},
   ...Object.fromEntries(ADRENAL_QUESTION_DRAFTS.map(draft => [draft.id, item(draft.source, draft.question, draft.options, draft.answer, draft.rationale)])),
   'abdomen-renal-anatomy': item('Abdomen.pdf, physical pp.44–45 / printed pp.43–44; Kamo et al., Jpn J Radiol. 2021;39:407–413, doi:10.1007/s11604-020-01080-7; Eisner et al., J Urol. 2009;182:165–168, doi:10.1016/j.juro.2009.02.131', L('Welche radiologische Einordnung der klassisch beschriebenen Überkreuzung des Ureters mit den Iliakalgefäßen ist korrekt?', 'Which radiological interpretation of the classically described ureteric crossing of the iliac vessels is correct?', 'کدام تفسیر تصویربرداری از محل کلاسیک عبور حالب از عروق ایلیاک درست است؟'), [L('Anatomische Landmarke, aber nicht als häufige Steinimpaktionsstelle belegt.', 'Anatomical landmark, but not established as a common stone-impaction site.', 'یک نشانه آناتومیک است، اما محل شایع گیرکردن سنگ بودن آن ثابت نشده است.'), L('Einer der zwei häufigsten Steinimpaktionsorte.', 'One of the two most common stone-impaction sites.', 'یکی از دو محل شایع گیرکردن سنگ.'), L('Die Lage des Steins beweist unabhängig von den übrigen Zeichen eine Obstruktion.', 'The stone location proves obstruction regardless of other findings.', 'محل سنگ، مستقل از سایر یافته‌ها، انسداد را ثابت می‌کند.')], 0, L('Die Iliakalgefäßkreuzung ist eine klassische anatomische Landmarke. Kamo et al. unterscheiden sie vom nahegelegenen Übergang am oberen Ureter, an dem sich die Beweglichkeit verändert; die CT-Kohorte von Eisner et al. fand 1,1 % der Steine direkt an der Iliakalgefäßkreuzung. Eine Obstruktion wird aus dem Gesamtbefund beurteilt.', 'The iliac-vessel crossing is a classic anatomical landmark. Kamo et al. distinguish it from the nearby upper-ureter transition where mobility changes; the CT cohort by Eisner et al. found 1.1% of stones directly at the iliac crossing. Obstruction is assessed from the complete imaging context.', 'تقاطع عروق ایلیاک نشانه آناتومیک کلاسیک است. Kamo و همکاران آن را از گذار نزدیک در بخش فوقانی حالب که تغییر تحرک رخ می‌دهد جدا می‌کنند؛ در کوهورت CT مقاله Eisner و همکاران، ۱٫۱٪ سنگ‌ها دقیقاً در تقاطع ایلیاک بودند. انسداد باید بر اساس کل یافته‌ها ارزیابی شود.')),
   'abdomen-liver-metastases': item('Abdomen.pdf pp.24–25 (printed pp.23–24)', L('Ein einzelner Leberherd zeigt geringe arterielle Anreicherung und bleibt portalvenös deutlich hypodens. Welche Einordnung passt am besten?', 'A solitary liver lesion shows little arterial enhancement and remains clearly hypoattenuating in the portal venous phase. Which interpretation fits best?', 'یک ضایعهٔ منفرد کبدی تقویت شریانی کمی دارد و در فاز پورت آشکارا کم‌دانسیته می‌ماند. کدام تفسیر مناسب‌تر است؟'), [L('Hypovaskuläres Muster; solitäres Auftreten schließt Metastase nicht aus', 'Hypovascular pattern; solitary presentation does not exclude metastasis', 'الگوی کم‌عروق؛ منفرد بودن، متاستاز را رد نمی‌کند'), L('Hypervaskuläres Muster, da die Läsion portalvenös hypodens ist', 'Hypervascular pattern because the lesion is hypoattenuating portal venously', 'الگوی پرعروق، چون ضایعه در فاز پورت کم‌دانسیته است'), L('Der Primärtumor ist damit sicher kolorektal', 'The primary tumour is therefore certainly colorectal', 'بنابراین منشأ اولیه قطعاً کولورکتال است')], 0, L('Das passt zum im PDF beschriebenen hypovaskulären Muster. Ein einzelner Herd schließt Metastase ausdrücklich nicht aus; die Enhancement-Dynamik identifiziert den Primärtumor nicht allein.', 'This fits the hypovascular pattern described in the PDF. A solitary lesion explicitly does not exclude metastasis; enhancement dynamics alone do not identify the primary tumour.', 'این یافته با الگوی کم‌عروق شرح‌داده‌شده در PDF سازگار است. منفرد بودن ضایعه متاستاز را رد نمی‌کند و رفتار جذب ماده حاجب به‌تنهایی منشأ اولیه را مشخص نمی‌کند.')),
@@ -273,7 +481,59 @@ export const abdomenThoraxAssessmentDrafts = {
     }
   }
 },
-  'abdomen-focal-liver': item('Abdomen.pdf pp. 5, 14–27; ACG 2024', L('Wie sollte Enhancement einer fokalen Leberläsion beurteilt werden?', 'How should enhancement of a focal liver lesion be assessed?', 'جذب ماده حاجب در ضایعه کانونی کبد چگونه باید ارزیابی شود؟'), [L('Über mehrere Phasen und im Kontext der Leber', 'Across phases and in the context of the liver', 'در چند فاز و در زمینه وضعیت کبد'), L('Nur anhand einer Einzelphase', 'From one phase only', 'فقط بر اساس یک فاز'), L('Nur nach maximalem Durchmesser', 'By maximum diameter only', 'فقط بر اساس بیشترین قطر')], 0, L('Muster über Phasen und Hintergrund sind gemeinsam zu interpretieren.', 'Enhancement across phases and background liver must be interpreted together.', 'الگو در فازهای مختلف و وضعیت زمینه‌ای کبد باید با هم تفسیر شوند.')),
+  'abdomen-focal-liver': {
+  "question": {
+    "de": "Eine solide fokale Leberläsion wurde zufällig in einer einzelnen portalvenösen CT-Phase entdeckt und bleibt unklar. Welche Bildgebung ergänzt ihre Kontrastmittelcharakterisierung am gezieltesten?",
+    "en": "A solid focal liver lesion is incidentally detected on a single portal venous CT phase and remains indeterminate. Which imaging most directly complements enhancement characterisation?",
+    "fa": "ضایعهٔ توپر کانونی کبد به‌طور اتفاقی در تنها فاز پورتوونوس CT دیده شده و نامشخص مانده است. کدام تصویربرداری برای تکمیل بررسی رفتار مادهٔ حاجب مناسب‌تر است؟"
+  },
+  "options": [
+    {
+      "de": "Dedizierte multiphasische Leber-MRT oder -CT einschließlich arterieller und späterer Phasen",
+      "en": "Dedicated multiphasic liver MRI or CT including arterial and later phases",
+      "fa": "MRI یا CT اختصاصی چندفازی کبد شامل فاز شریانی و فازهای بعدی"
+    },
+    {
+      "de": "Erneute portalvenöse CT zur isolierten Bestätigung der gemessenen Dichte",
+      "en": "Repeat portal venous CT to confirm the measured attenuation in isolation",
+      "fa": "تکرار CT پورتوونوس برای تأیید جداگانهٔ دانسیتهٔ اندازه‌گیری‌شده"
+    },
+    {
+      "de": "Natives CT zur Einordnung anhand der absoluten Dichte ohne Kontrastdynamik",
+      "en": "Unenhanced CT to classify by absolute attenuation without enhancement dynamics",
+      "fa": "CT بدون تزریق برای دسته‌بندی بر پایهٔ دانسیتهٔ مطلق بدون بررسی دینامیک مادهٔ حاجب"
+    },
+    {
+      "de": "MRT mit T2 und DWI zur Zuordnung ohne dynamische Kontrastphasen",
+      "en": "MRI with T2 and DWI for classification without dynamic contrast phases",
+      "fa": "MRI با T2 و DWI برای دسته‌بندی بدون فازهای دینامیک مادهٔ حاجب"
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Bei unklarer fokaler Leberläsion empfiehlt ACG eine multiphasische kontrastverstärkte MRT oder CT. Arterielle und spätere Phasen zusammen mit nativen Bildern, Morphologie und Leberkontext beurteilen. Keine einzelne Dichte, Diffusions- oder Kontrastphase ersetzt das Gesamtmuster.",
+    "en": "For an indeterminate focal liver lesion, ACG recommends multiphasic contrast-enhanced MRI or CT. Assess arterial and later phases together with unenhanced imaging, morphology and liver context. One attenuation value, diffusion image or contrast phase does not replace the overall pattern.",
+    "fa": "برای ضایعهٔ کانونی نامشخص کبد، ACG انجام MRI یا CT چندفازی با تزریق را توصیه می‌کند. فاز شریانی و فازهای بعدی همراه تصاویر پیش از تزریق، مورفولوژی و زمینهٔ کبد بررسی شوند. یک مقدار دانسیته، تصویر انتشار یا فاز مادهٔ حاجب جای الگوی کلی را نمی‌گیرد."
+  },
+  "source": "https://doi.org/10.14309/ajg.0000000000002857",
+  "wrongExplanations": {
+    "B": {
+      "de": "Eine weitere identische Einzelphase prüft die Reproduzierbarkeit, liefert aber die fehlende arterielle und spätere Kontrastdynamik nicht.",
+      "en": "Another identical single phase tests reproducibility but does not supply the missing arterial and later enhancement dynamics.",
+      "fa": "یک فاز منفرد مشابه، تکرارپذیری را می‌سنجد، اما دینامیک شریانی و فازهای بعدیِ موجودنبوده را فراهم نمی‌کند."
+    },
+    "C": {
+      "de": "Natives CT kann Fett, Blut oder Kalk ergänzend beurteilen. Die konkrete Frage nach dem Kontrastverhalten verlangt jedoch ein multiphasisches Protokoll.",
+      "en": "Unenhanced CT can complement assessment of fat, blood or calcium. The specific enhancement question nevertheless requires a multiphasic protocol.",
+      "fa": "CT بدون تزریق می‌تواند بررسی چربی، خون یا کلسیم را تکمیل کند. اما پرسش مشخص دربارهٔ رفتار مادهٔ حاجب به پروتکل چندفازی نیاز دارد."
+    },
+    "D": {
+      "de": "T2 und DWI sind nützliche Zusatzinformationen. Ohne dynamische Phasen wird die hier fehlende Kontrastmittelcharakterisierung jedoch nicht ergänzt.",
+      "en": "T2 and DWI provide useful additional information. Without dynamic phases, they do not supply the missing enhancement characterisation here.",
+      "fa": "T2 و DWI اطلاعات تکمیلی مفیدی‌اند. اما بدون فازهای دینامیک، بررسی رفتار مادهٔ حاجبِ موجودنبوده را تکمیل نمی‌کنند."
+    }
+  }
+},
   'abdomen-hepatic-steatosis': item('Abdomen.pdf pp. 26–27; EASL–EASD–EASO MASLD guideline 2024; EASL non-invasive test guideline 2021; Vilgrain et al., Radiology 2016; doi:10.1148/radiol.2015142576', L('Bei diffuser Steatose zeigt sich nahe der Fissura ligamenti teretis ein fokales Areal ohne Verdrängung; Gefäße verlaufen hindurch. Welche Einordnung ist am besten?', 'In diffuse steatosis, a focal area near the fissura ligamenti teretis shows no displacement and vessels traverse it. What is the best interpretation?', 'در استئاتوز منتشر، ناحیه‌ای کانونی نزدیک شیار رباط گرد بدون جابه‌جایی دیده می‌شود و عروق از آن عبور می‌کنند. بهترین تفسیر چیست؟'), [L('Eine fokale Aussparung ist plausibel; Lage und Gefäßverlauf sind Hinweise, bei Unsicherheit weiter charakterisieren.', 'Focal sparing is plausible; location and vessel course are clues, and further characterisation is appropriate if uncertain.', 'ناحیه حفظ‌شده کانونی محتمل است؛ محل و مسیر عروق سرنخ‌اند و در صورت تردید باید بررسی تکمیلی انجام شود.'), L('Ein HCC ist damit sicher ausgeschlossen.', 'HCC is definitively excluded.', 'با این یافته HCC قطعاً رد می‌شود.'), L('Das Fehlen einer Verdrängung beweist eine fokale Aussparung.', 'Absence of displacement proves focal sparing.', 'نبود جابه‌جایی، ناحیه حفظ‌شده کانونی را ثابت می‌کند.')], 0, L('Typische Lage, fehlender Masseneffekt und Gefäße ohne Verdrängung unterstützen eine Fettverteilungsvariante, beweisen sie aber nicht. Unsichere Läsionen müssen im Gesamtkontext charakterisiert werden. Konventionelle Fettbildgebung bestimmt kein Fibrosestadium.', 'Typical location, no mass effect and vessels without displacement support a fat-distribution variant but do not prove it. Characterise an uncertain lesion in the full clinical and imaging context. Conventional fat imaging does not stage fibrosis.', 'محل تیپیک، نبود اثر فشاری و عبور عروق بدون جابه‌جایی از یک واریانت توزیع چربی حمایت می‌کنند اما آن را ثابت نمی‌کنند. ضایعه نامطمئن باید در زمینه کامل بالینی و تصویربرداری مشخصه‌یابی شود. تصویربرداری متعارف چربی، مرحله فیبروز را تعیین نمی‌کند.')),
   'abdomen-renal-masses': item('Abdomen.pdf pp. 48–51 (printed pp. 47–50); EAU RCC Diagnostic Evaluation', L('Eine solide Nierenmasse enthält auf nativer CT makroskopisches Fett und keine widersprechenden Merkmale. Welche Einordnung ist am besten?', 'A solid renal mass contains macroscopic fat on unenhanced CT and no discordant features. Which interpretation is best?', 'توده جامد کلیه در CT بدون تزریق چربی ماکروسکوپیک دارد و ویژگی ناسازگاری دیده نمی‌شود. بهترین تفسیر چیست؟'), [L('Das Muster stützt ein klassisches AML; Verkalkung und Gesamtkontext trotzdem prüfen.', 'The pattern supports classic AML; still assess calcification and the full context.', 'الگو از AML کلاسیک حمایت می‌کند؛ بااین‌حال کلسیفیکاسیون و زمینه کامل را بررسی کنید.'), L('RCC ist durch Fett immer ausgeschlossen.', 'Fat always excludes RCC.', 'وجود چربی همیشه RCC را رد می‌کند.'), L('Es handelt sich damit um ein fettarmes AML.', 'This therefore represents fat-poor AML.', 'بنابراین این مورد AML کم‌چربی است.'), L('Die Läsion ist automatisch ein Onkozytom.', 'The lesion is automatically an oncocytoma.', 'ضایعه به‌طور خودکار انکوسیتوم است.')], 0, L('Makroskopisches Fett ist ein typischer AML-Hinweis, aber ein einzelnes Zeichen ersetzt nicht die Prüfung der Morphologie. Verkalkung sollte RCC in der Differenzialdiagnose halten.', 'Macroscopic fat is a characteristic AML clue, but one sign does not replace review of morphology. Calcification should keep RCC in the differential.', 'چربی ماکروسکوپیک سرنخی تیپیک برای AML است، اما یک علامت جایگزین ارزیابی مورفولوژی نمی‌شود. کلسیفیکاسیون باید RCC را در افتراق نگه دارد.')),
   'abdomen-renal-cyst-bosniak-nodule': item('Abdomen.pdf p.46 (unversioned source table); Silverman et al. Bosniak Classification v2019, Radiology 2019;292:475–488. DOI 10.1148/radiol.2019182646', L('Eine zystische Nierenmasse zeigt einen kontrastmittelaufnehmenden Nodulus mit stumpfen Winkeln und 4 mm Vorsprung, senkrecht zur Wand gemessen. Welche Bosniak-v2019-Kategorie passt?', 'A cystic renal mass has an enhancing nodule with obtuse margins and a 4-mm protrusion measured perpendicular to the wall. Which Bosniak v2019 category fits?', 'در تودهٔ کیستیک کلیه، ندول تقویت‌شونده‌ای با زاویهٔ منفرجه و برجستگی ۴ میلی‌متری، اندازه‌گیری‌شده عمود بر دیواره، دیده می‌شود. کدام طبقهٔ Bosniak v2019 مناسب است؟'), [L('Bosniak IV', 'Bosniak IV', 'Bosniak IV'), L('Bosniak III', 'Bosniak III', 'Bosniak III'), L('Bosniak IIF', 'Bosniak IIF', 'Bosniak IIF')], 0, L('Bosniak v2019 definiert mindestens einen kontrastmittelaufnehmenden Nodulus als Kategorie IV: mit spitzen Winkeln in jeder Größe oder mit stumpfen Winkeln ab 4 mm, gemessen senkrecht zur Wand oder zum Septum. Die Kategorie ist eine bildgebende Risikoeinordnung, kein histologischer Befund.', 'Bosniak v2019 defines at least one enhancing nodule as category IV: acute margins at any size or obtuse margins of at least 4 mm, measured perpendicular to the wall or septum. The category is imaging-based risk stratification, not a histological diagnosis.', 'در Bosniak v2019 وجود دست‌کم یک ندول تقویت‌شونده معیار طبقهٔ IV است: با زاویهٔ تیز در هر اندازه، یا با زاویهٔ منفرجه و اندازهٔ دست‌کم ۴ میلی‌متر که عمود بر دیواره یا سپتا اندازه‌گیری می‌شود. این طبقه‌بندی برآورد تصویری خطر است، نه تشخیص بافت‌شناسی.')),
@@ -302,8 +562,112 @@ export const abdomenThoraxAssessmentDrafts = {
   'abdomen-pdac-isoattenuating': item('Abdomen.pdf p.36; SAR/APA pancreas reporting consensus', L('Was ist bei einer isoattenuierenden Pankreasläsion wichtig?', 'What is important when a pancreatic lesion is isoattenuating?', 'در ضایعهٔ هم‌دانسیتهٔ پانکراس به چه نکته‌ای باید توجه کرد؟'), [L('Indirekte Zeichen wie Gangabbruch, Aufstau oder distale Atrophie gezielt suchen', 'Look for indirect signs such as duct cut-off, upstream dilatation or distal atrophy', 'به‌دنبال نشانه‌های غیرمستقیم مانند قطع مجرا، اتساع بالادست یا آتروفی دیستال باشید'), L('PDAC ist ausgeschlossen, wenn keine deutliche Masse abgrenzbar ist', 'PDAC is excluded if no definite mass can be delineated', 'اگر تودهٔ واضح دیده نشود، PDAC رد می‌شود'), L('Nur die native CT-Phase erneut beurteilen', 'Reassess only the unenhanced CT phase', 'فقط فاز بدون تزریق CT را دوباره ارزیابی کنید')], 0, L('Ein Teil der PDAC kann isoattenuierend sein. Sekundäre Gangzeichen und Parenchymveränderungen können die Läsion indirekt sichtbar machen.', 'Some PDACs may be isoattenuating. Secondary ductal and parenchymal signs may reveal the lesion indirectly.', 'برخی PDACها ممکن است هم‌دانسیته باشند. نشانه‌های ثانویهٔ مجرا و پارانشیم می‌توانند ضایعه را به‌طور غیرمستقیم آشکار کنند.')),
   'abdomen-pdac-double-duct': item('Abdomen.pdf p.36; SAR/APA pancreas reporting consensus', L('Wie ist das Double-Duct-Zeichen einzuordnen?', 'How should the double-duct sign be interpreted?', 'علامت دو مجرا چگونه باید تفسیر شود؟'), [L('Es lokalisiert einen Prozess im Pankreaskopf, ist aber nicht spezifisch für PDAC', 'It localises a process to the pancreatic head but is not specific for PDAC', 'فرایندی در سر پانکراس را موضع‌یابی می‌کند، اما اختصاصی PDAC نیست'), L('Es beweist unabhängig vom Kontext ein PDAC', 'It proves PDAC regardless of context', 'صرف‌نظر از زمینه، PDAC را ثابت می‌کند'), L('Es schließt einen periampullären Prozess aus', 'It excludes a periampullary process', 'فرایند پری‌آمپولاری را رد می‌کند')], 0, L('Die gleichzeitige Erweiterung von Ductus choledochus und Pankreasgang ist ein Lokalisationshinweis; die Ursache bleibt differenzialdiagnostisch offen.', 'Concurrent dilatation of the common bile duct and pancreatic duct is a localising clue; the cause remains a differential diagnosis.', 'اتساع هم‌زمان مجرای صفراوی مشترک و مجرای پانکراس سرنخی برای موضع‌یابی است؛ علت همچنان نیازمند تشخیص افتراقی است.')),
   'abdomen-pdac-vessel-contact': item('Abdomen.pdf p.36; SAR/APA pancreas reporting consensus', L('Was sollte bei Gefäßkontakt eines PDAC beschrieben werden?', 'What should be described when PDAC contacts a vessel?', 'در تماس PDAC با رگ چه مواردی باید توصیف شوند؟'), [L('Betroffenes Gefäß, Kontaktumfang und -länge sowie Konturveränderung, Stenose oder Verschluss', 'The vessel, extent and length of contact, and contour change, narrowing or occlusion', 'رگ درگیر، میزان و طول تماس، و تغییر شکل جدار، تنگی یا انسداد'), L('Nur ein einzelner Kontaktwinkel als vollständige Resektabilitätsentscheidung', 'A single contact angle as the complete resectability decision', 'فقط یک زاویهٔ تماس به‌عنوان تصمیم کامل دربارهٔ قابلیت برداشت'), L('Gefäßkontakt ignorieren, wenn kein Double-Duct-Zeichen vorliegt', 'Ignore vessel contact if the double-duct sign is absent', 'در نبود علامت دو مجرا، تماس عروقی را نادیده بگیرید')], 0, L('Die Lektion empfiehlt eine getrennte, strukturierte Gefäßbeschreibung. Ein Kontaktwinkel allein ersetzt keine vollständige Resektabilitätsbeurteilung.', 'The lesson recommends structured, vessel-by-vessel description. Contact angle alone does not replace a complete resectability assessment.', 'درس، توصیف ساختاریافته و جداگانهٔ هر رگ را توصیه می‌کند. زاویهٔ تماس به‌تنهایی جایگزین ارزیابی کامل قابلیت برداشت نیست.')),
-  'abdomen-inguinal-hernia-landmarks': item('Abdomen.pdf p.93, printed p.92', L('Eine Leistenhernie verläuft lateral der inferioren epigastrischen Gefäße durch den tiefen Leistenring. Welche Form passt?', 'A groin hernia passes lateral to the inferior epigastric vessels through the deep inguinal ring. Which type fits?', 'فتق کشالهٔ ران از لترال عروق اپی‌گاستریک تحتانی و از حلقهٔ عمقی عبور می‌کند. کدام نوع با این توصیف سازگار است؟'), [L('Indirekte Inguinalhernie', 'Indirect inguinal hernia', 'فتق اینگوینال غیرمستقیم'), L('Direkte Inguinalhernie medial der Gefäße', 'Direct inguinal hernia medial to the vessels', 'فتق اینگوینال مستقیم در مدیال عروق'), L('Femoralhernie unterhalb des Leistenbandes', 'Femoral hernia below the inguinal ligament', 'فتق فمورال در پایین رباط اینگوینال')], 0, L('Die indirekte Form tritt lateral der inferioren epigastrischen Gefäße durch den tiefen Leistenring ein. Die direkte Form liegt medial der Gefäße; eine Femoralhernie tritt unterhalb des Leistenbandes aus.', 'An indirect hernia enters lateral to the inferior epigastric vessels through the deep ring. A direct hernia lies medial to the vessels; a femoral hernia emerges below the inguinal ligament.', 'فتق غیرمستقیم از لترال عروق اپی‌گاستریک تحتانی و از حلقهٔ عمقی وارد می‌شود. نوع مستقیم مدیال عروق است و فتق فمورال از پایین رباط اینگوینال خارج می‌شود.')),
-  'abdomen-femoral-hernia-landmarks': item('Abdomen.pdf p.93, printed p.92', L('Ein Bruchsack liegt unterhalb des Leistenbandes und medial der Vena femoralis. Welche Zuordnung passt?', 'A hernia sac lies below the inguinal ligament and medial to the femoral vein. Which classification fits?', 'ساک فتق در پایین رباط اینگوینال و مدیال ورید فمورال قرار دارد. کدام دسته‌بندی مناسب است؟'), [L('Femoralhernie', 'Femoral hernia', 'فتق فمورال'), L('Indirekte Inguinalhernie lateral der epigastrischen Gefäße', 'Indirect inguinal hernia lateral to the epigastric vessels', 'فتق اینگوینال غیرمستقیم در لترال عروق اپی‌گاستریک'), L('Direkte Inguinalhernie durch das Hesselbach-Dreieck', 'Direct inguinal hernia through Hesselbach’s triangle', 'فتق اینگوینال مستقیم از مثلث هسل‌باخ')], 0, L('Die Kombination aus Lage unterhalb des Leistenbandes und medial der Femoralvene spricht für eine Femoralhernie.', 'The combination of a position below the inguinal ligament and medial to the femoral vein supports a femoral hernia.', 'ترکیب قرارگیری در پایین رباط اینگوینال و مدیال ورید فمورال به نفع فتق فمورال است.')),
+  'abdomen-inguinal-hernia-landmarks': {
+  "question": {
+    "de": "Eine Leistenhernie verläuft lateral der inferioren epigastrischen Gefäße durch den tiefen Leistenring. Welche Form passt?",
+    "en": "A groin hernia passes lateral to the inferior epigastric vessels through the deep inguinal ring. Which type fits?",
+    "fa": "فتق کشالهٔ ران از لترال عروق اپی‌گاستریک تحتانی و از حلقهٔ عمقی عبور می‌کند. کدام نوع با این توصیف سازگار است؟"
+  },
+  "options": [
+    {
+      "de": "Indirekte Inguinalhernie",
+      "en": "Indirect inguinal hernia",
+      "fa": "فتق اینگوینال غیرمستقیم"
+    },
+    {
+      "de": "Direkte Inguinalhernie",
+      "en": "Direct inguinal hernia",
+      "fa": "فتق اینگوینال مستقیم"
+    },
+    {
+      "de": "Femoralhernie",
+      "en": "Femoral hernia",
+      "fa": "فتق فمورال"
+    },
+    {
+      "de": "Kombinierte direkte und indirekte Inguinalhernie",
+      "en": "Combined direct and indirect inguinal hernia",
+      "fa": "فتق اینگوینال ترکیبی مستقیم و غیرمستقیم"
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Die indirekte Form tritt lateral der inferioren epigastrischen Gefäße durch den tiefen Leistenring ein. Die direkte Form liegt medial der Gefäße; eine Femoralhernie tritt unterhalb des Leistenbandes aus.",
+    "en": "An indirect hernia enters lateral to the inferior epigastric vessels through the deep ring. A direct hernia lies medial to the vessels; a femoral hernia emerges below the inguinal ligament.",
+    "fa": "فتق غیرمستقیم از لترال عروق اپی‌گاستریک تحتانی و از حلقهٔ عمقی وارد می‌شود. نوع مستقیم مدیال عروق است و فتق فمورال از پایین رباط اینگوینال خارج می‌شود."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/21415178/",
+  "wrongExplanations": {
+    "B": {
+      "de": "Die direkte Form liegt medial der epigastrischen Gefäße und tritt nicht durch den tiefen Ring ein.",
+      "en": "The direct type lies medial to the epigastric vessels and does not enter through the deep ring.",
+      "fa": "نوع مستقیم در مدیال عروق اپی‌گاستریک است و از حلقهٔ عمقی وارد نمی‌شود."
+    },
+    "C": {
+      "de": "Der femorale Weg verläuft unterhalb des Leistenbandes, typischerweise medial der Femoralvene, nicht durch den tiefen Leistenring.",
+      "en": "The femoral route runs below the inguinal ligament, typically medial to the femoral vein, rather than through the deep inguinal ring.",
+      "fa": "مسیر فمورال پایین رباط اینگوینال و معمولاً مدیال ورید فمورال است، نه از حلقهٔ عمقی اینگوینال."
+    },
+    "D": {
+      "de": "Für die kombinierte Form müssten sowohl ein medialer direkter als auch ein lateraler indirekter Bruchweg nachgewiesen sein. Beschrieben ist der laterale Weg durch den tiefen Ring.",
+      "en": "A combined type requires both a medial direct and a lateral indirect defect. The stated finding describes the lateral route through the deep ring.",
+      "fa": "نوع ترکیبی به وجود مسیر مستقیم مدیال و غیرمستقیم لترال نیاز دارد. توصیف سؤال مسیر لترال از حلقهٔ عمقی را بیان می‌کند."
+    }
+  }
+},
+  'abdomen-femoral-hernia-landmarks': {
+  "question": {
+    "de": "Ein Bruchsack liegt unterhalb des Leistenbandes und medial der Vena femoralis. Welche Zuordnung passt?",
+    "en": "A hernia sac lies below the inguinal ligament and medial to the femoral vein. Which classification fits?",
+    "fa": "ساک فتق در پایین رباط اینگوینال و مدیال ورید فمورال قرار دارد. کدام دسته‌بندی مناسب است؟"
+  },
+  "options": [
+    {
+      "de": "Femoralhernie",
+      "en": "Femoral hernia",
+      "fa": "فتق فمورال"
+    },
+    {
+      "de": "Indirekte Inguinalhernie",
+      "en": "Indirect inguinal hernia",
+      "fa": "فتق اینگوینال غیرمستقیم"
+    },
+    {
+      "de": "Direkte Inguinalhernie",
+      "en": "Direct inguinal hernia",
+      "fa": "فتق اینگوینال مستقیم"
+    },
+    {
+      "de": "Kombinierte direkte und indirekte Inguinalhernie",
+      "en": "Combined direct and indirect inguinal hernia",
+      "fa": "فتق اینگوینال ترکیبی مستقیم و غیرمستقیم"
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Die Kombination aus Lage unterhalb des Leistenbandes und medial der Femoralvene spricht für eine Femoralhernie.",
+    "en": "The combination of a position below the inguinal ligament and medial to the femoral vein supports a femoral hernia.",
+    "fa": "ترکیب قرارگیری در پایین رباط اینگوینال و مدیال ورید فمورال به نفع فتق فمورال است."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/21415178/",
+  "wrongExplanations": {
+    "B": {
+      "de": "Die indirekte Inguinalhernie tritt oberhalb des Leistenbandes lateral der epigastrischen Gefäße durch den tiefen Ring ein.",
+      "en": "An indirect inguinal hernia enters through the deep ring above the inguinal ligament lateral to the epigastric vessels.",
+      "fa": "فتق اینگوینال غیرمستقیم بالای رباط اینگوینال و لترال عروق اپی‌گاستریک از حلقهٔ عمقی وارد می‌شود."
+    },
+    "C": {
+      "de": "Die direkte Inguinalhernie liegt oberhalb des Leistenbandes medial der epigastrischen Gefäße.",
+      "en": "A direct inguinal hernia lies above the inguinal ligament medial to the epigastric vessels.",
+      "fa": "فتق اینگوینال مستقیم بالای رباط اینگوینال و مدیال عروق اپی‌گاستریک است."
+    },
+    "D": {
+      "de": "Eine kombinierte Inguinalhernie umfasst direkte und indirekte Defekte oberhalb des Leistenbandes; die genannten femoralen Landmarken sprechen dagegen.",
+      "en": "A combined inguinal hernia comprises direct and indirect defects above the inguinal ligament; the stated femoral landmarks do not fit.",
+      "fa": "فتق اینگوینال ترکیبی شامل نقص مستقیم و غیرمستقیم بالای رباط اینگوینال است؛ نشانه‌های فمورال ذکرشده با آن سازگار نیستند."
+    }
+  }
+},
   'abdomen-cystic-liver-lesions': item('Abdomen.pdf pp. 5–7; ACG 2024; WHO 2025', L('Welches Muster passt zum MRT-Beispiel einer Echinokokkenzyste?', 'Which pattern matches the MRI example of an echinococcal cyst?', 'کدام الگو با نمونهٔ MRI کیست اکینوکوکی مطابقت دارد؟'), [L('T2-helle Tochterzysten und Septen; nach Kontrastmittel können Wand und Septen, nicht aber der Inhalt anreichern', 'T2-bright daughter cysts and septa; after contrast, the wall and septa may enhance but the contents do not', 'کیست‌های دختر و سپتا در T2 پرسیگنال‌اند؛ پس از تزریق دیواره و سپتا ممکن است جذب داشته باشند، اما محتوا نه'), L('Einzelne glatte Zyste mit homogener Flüssigkeit und ohne Septen', 'A single smooth cyst with homogeneous fluid and no septa', 'یک کیست منفرد با مایع همگن و بدون سپتا'), L('Diskontinuierliche periphere Kontrastknoten mit zentripetaler Auffüllung', 'Discontinuous peripheral enhancing nodules with centripetal fill-in', 'ندول‌های محیطی ناپیوسته با پرشدن به‌سمت مرکز')], 0, L('Das PDF-Beispiel zeigt Tochterzysten im T2w-FS; im T1w post KM FS kontrastieren Wand/Septen mit dem nicht anreichernden Inhalt. Das Muster unterstützt die morphologische Einordnung, beweist allein aber keine Ätiologie.', 'The PDF example shows daughter cysts on T2w-FS; on post-contrast T1w-FS the wall/septa enhance against non-enhancing contents. This supports morphological assessment but does not prove aetiology by itself.', 'نمونهٔ PDF کیست‌های دختر را در T2w-FS نشان می‌دهد؛ در T1w پس از تزریق، دیواره/سپتا در برابر محتوای بدون جذب دیده می‌شوند. این الگو به ارزیابی مورفولوژی کمک می‌کند اما به‌تنهایی علت را ثابت نمی‌کند.')),
   'abdomen-appendizitis': {
   "source": "https://doi.org/10.1186/s13017-020-00306-3; https://acsearch.acr.org/list/TopicNarrativePdf?topicId=21",
@@ -353,7 +717,59 @@ export const abdomenThoraxAssessmentDrafts = {
     }
   }
 },
-  'abdomen-lower-gi-bleeding': item('Abdomen.pdf pp. 86–87; ESGE 2021; ACG 2023; ACR', L('Was erklärt, dass trotz negativer CTA eine klinisch relevante Blutung möglich bleibt?', 'What explains why clinically important bleeding can remain possible despite a negative CTA?', 'چه چیزی توضیح می‌دهد که با وجود CTA منفی، خون‌ریزی مهم از نظر بالینی همچنان ممکن است؟'), [L('Eine intermittierende Blutung kann während der Untersuchung pausieren; den Verdacht im klinischen Kontext weiter einordnen.', 'Intermittent bleeding may pause during the examination; continue to assess the suspicion in the clinical context.', 'خون‌ریزی متناوب ممکن است هنگام انجام بررسی متوقف شود؛ شک بالینی را در زمینهٔ بالینی ارزیابی کنید.'), L('Hyperdenses Material in der nativen Phase belegt für sich eine aktive Extravasation.', 'Hyperdense material on the unenhanced phase alone proves active extravasation.', 'مادهٔ پرچگال در فاز بدون تزریق به‌تنهایی نشت فعال را ثابت می‌کند.'), L('Bei klinischem Verdacht genügt die Portalphase allein zur abschließenden CTA-Beurteilung.', 'With clinical suspicion, the portal-venous phase alone is sufficient for a definitive CTA assessment.', 'در صورت شک بالینی، فاز پورتال به‌تنهایی برای ارزیابی قطعی CTA کافی است.')], 0, L('CTA bildet den Untersuchungszeitpunkt ab: Bei intermittierender Blutung kann die Extravasation gerade pausieren. Native, arterielle und portalvenöse Phase sowie klinischer Kontext gemeinsam einordnen.', 'CTA reflects the examination time: with intermittent bleeding, extravasation may have paused. Interpret the unenhanced, arterial and portal-venous phases together with the clinical context.', 'CTA وضعیت زمان بررسی را نشان می‌دهد: در خون‌ریزی متناوب ممکن است نشت همان زمان متوقف شده باشد. فازهای بدون تزریق، شریانی و پورتال را همراه با زمینهٔ بالینی ارزیابی کنید.')),
+  'abdomen-lower-gi-bleeding': {
+  "question": {
+    "de": "Bei Hämatochezie zeigt eine technisch geeignete Mehrphasen-CTA einen umschriebenen hyperdensen Fokus im Kolonlumen. Er ist bereits nativ vorhanden und bleibt arteriell und portalvenös in Dichte und Form gleich. Welche Befundformulierung passt am besten?",
+    "en": "In a patient with haematochezia, technically adequate multiphase CTA shows a focal hyperattenuating area in the colonic lumen. It is already present before contrast and remains unchanged in attenuation and shape on arterial and portal venous images. Which report wording fits best?",
+    "fa": "در بیمار دچار هماتوشزی، CTA چندفازی با تکنیک مناسب کانونی پردانسیته در لومن کولون نشان می‌دهد. کانون از پیش در فاز بدون تزریق وجود دارد و در فازهای شریانی و پورتوونوس از نظر دانسیته و شکل تغییر نمی‌کند. کدام عبارت گزارش مناسب‌تر است؟"
+  },
+  "options": [
+    {
+      "de": "Präexistentes hyperdenses Lumenmaterial; an diesem Fokus kein Nachweis aktiver Extravasation.",
+      "en": "Pre-existing hyperattenuating luminal material; no active extravasation demonstrated at this focus.",
+      "fa": "محتوای پردانسیتهٔ از پیش موجود در لومن؛ در این کانون نشت فعال نشان داده نشده است."
+    },
+    {
+      "de": "Arterielle Extravasation mit fortgesetzter Anreicherung im Darmlumen.",
+      "en": "Arterial extravasation with progressive luminal accumulation.",
+      "fa": "نشت شریانی همراه تجمع پیشرونده در لومن روده."
+    },
+    {
+      "de": "Verzögert einsetzende Extravasation mit portalvenöser Kontrastmittelansammlung.",
+      "en": "Delayed-onset extravasation with portal venous contrast pooling.",
+      "fa": "نشت با شروع تأخیری همراه تجمع مادهٔ حاجب در فاز پورتوونوس."
+    },
+    {
+      "de": "Kontrastierte Schleimhautgefäße als Erklärung der neu entstandenen Hyperdensität.",
+      "en": "Enhanced mucosal vessels explaining newly developed hyperattenuation.",
+      "fa": "عروق مخاطی تقویت‌شده به‌عنوان علت پردانسیته‌شدن تازه."
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Für aktive Extravasation ist neu hinzukommendes intraluminales Kontrastmittel entscheidend. Ein schon nativ vorhandener unveränderter Fokus belegt diese Aktivität nicht. Blut beziehungsweise anderer hyperdenser Inhalt kann präexistieren; eine negative CTA schließt eine intermittierende klinische Blutung nicht aus.",
+    "en": "Active extravasation requires newly appearing intraluminal contrast. A focus already present before contrast and unchanged does not demonstrate that activity. Blood or other hyperattenuating contents may pre-exist; negative CTA does not exclude intermittent clinical bleeding.",
+    "fa": "در نشت فعال، اضافه‌شدن مادهٔ حاجب جدید به لومن تعیین‌کننده است. کانونی که از فاز بدون تزریق موجود و بدون تغییر است، این فعالیت را نشان نمی‌دهد. خون یا محتوای پردانسیتهٔ دیگر می‌تواند از پیش وجود داشته باشد؛ CTA منفی خون‌ریزی بالینی متناوب را رد نمی‌کند."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/22084211/",
+  "wrongExplanations": {
+    "B": {
+      "de": "Neu auftretende beziehungsweise zunehmende Kontrastmittelansammlung wird nicht beschrieben; der Fokus ist schon nativ unverändert vorhanden.",
+      "en": "No new or increasing contrast accumulation is described; the focus is already present and unchanged before contrast.",
+      "fa": "تجمع تازه یا فزایندهٔ مادهٔ حاجب توصیف نشده؛ کانون از فاز بدون تزریق وجود داشته و بدون تغییر است."
+    },
+    "C": {
+      "de": "Eine verzögerte Extravasation würde im Phasenvergleich neu auftreten oder sich verändern; hier bleibt der präexistente Fokus unverändert.",
+      "en": "Delayed extravasation would appear or evolve across phases; the pre-existing focus here remains unchanged.",
+      "fa": "نشت تأخیری در مقایسهٔ فازها تازه ظاهر می‌شود یا تغییر می‌کند؛ کانون از پیش موجود در اینجا بدون تغییر است."
+    },
+    "D": {
+      "de": "Die Hyperdensität ist nicht neu und liegt als Fokus im Lumen vor. Neu kontrastierte Mukosagefäße erklären diesen nativen Befund nicht.",
+      "en": "Hyperattenuation is not new and is a luminal focus. Newly enhanced mucosal vessels do not explain this unenhanced finding.",
+      "fa": "پردانسیته‌بودن تازه ایجاد نشده و کانون در لومن قرار دارد. عروق مخاطی که تازه تقویت شده‌اند، این یافتهٔ فاز بدون تزریق را توضیح نمی‌دهند."
+    }
+  }
+},
   'abdomen-kolorektales-karzinom': {
   "question": {
     "de": "Im MRT liegt der Primärtumor 2 mm von der MRF entfernt. Ein unregelmäßiger tumorverdächtiger Knoten liegt 0,8 mm entfernt; ein glatt berandeter Knoten liegt 0,6 mm entfernt. Wie ist die MRF nach ESGAR 2026 zu beurteilen?",

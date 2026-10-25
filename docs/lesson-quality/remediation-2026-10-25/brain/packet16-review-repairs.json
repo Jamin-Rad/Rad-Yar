@@ -1,0 +1,59 @@
+{
+  "status": "AUTHOR_NARROW_LNG_REPAIR_READY",
+  "finding": "FAventral ambiguous abdomen without anatomical anchor",
+  "fields": [
+    "HMA_QUESTION_SEEDS[9].explanation.fa",
+    "HMA_FLASH_SEEDS[8].explanation.fa"
+  ],
+  "beforeFragment": "خونریزی بزرگ شکمی یا وسیع",
+  "afterFragment": "خونریزی بزرگ ونترال (قدامی) پونس یا خونریزی وسیع",
+  "count": 2,
+  "keysUnchanged": true,
+  "teachingParity": {
+    "before": {
+      "imageAlt": {
+        "de": "CCT-Beispiel: Hypertensive Kleinhirnblutung vs. Metastase",
+        "en": "CCT example: hypertensive cerebellar haemorrhage vs. metastasis",
+        "fa": "مثال CCT: خونریزی مخچه‌ای فشار خون بالا در مقابل متاستاز"
+      },
+      "imageCaptionA": {
+        "de": "A – Hypertensive Blutung: irregulär, medial, geringes Ödem",
+        "en": "A – Hypertensive haemorrhage: irregular, medial, little oedema",
+        "fa": "A – خونریزی فشار خون: نامنظم، مدیال، ادم کم"
+      },
+      "imageCaptionB": {
+        "de": "B – Metastase: rund, peripher, ausgeprägtes Ödem",
+        "en": "B – Metastasis: round, peripheral, prominent oedema",
+        "fa": "B – متاستاز: گرد، محیطی، ادم شدید"
+      },
+      "mechanism": {
+        "de": "Perivaskuläre Demyelinisierung",
+        "en": "Perivascular demyelination",
+        "fa": "دمیلینیزاسیون پریواسکولار"
+      }
+    },
+    "after": {
+      "imageAlt": {
+        "de": "Zwei CT-Bilder aus Gehirn.pdf als Lehrvergleich unterschiedlicher Form, Lage und Ödemausprägung.",
+        "en": "Two CT images from Gehirn.pdf comparing shape, location and extent of oedema for teaching.",
+        "fa": "دو تصویر CT از Gehirn.pdf برای مقایسهٔ آموزشی شکل، محل و میزان ادم."
+      },
+      "imageCaptionA": {
+        "de": "A – PDF-Zuordnung: hypertensive Blutung, irregulär und medial mit wenig Ödem. Die gezeigte Morphologie allein beweist die Ursache nicht.",
+        "en": "A — PDF attribution: hypertensive haemorrhage, irregular and medial with little oedema. The depicted morphology alone does not establish the cause.",
+        "fa": "A — نسبت‌دادن در PDF: خونریزی ناشی از پرفشاری خون، نامنظم و مدیال با ادم کم. مورفولوژی نشان‌داده‌شده به‌تنهایی علت را اثبات نمی‌کند."
+      },
+      "imageCaptionB": {
+        "de": "B – PDF-Zuordnung: Metastase, rund und peripher mit ausgeprägtem Ödem. Dies ist die Quellenzuordnung, keine aus Form und Ödem allein gesicherte Histologie.",
+        "en": "B — PDF attribution: metastasis, rounded and peripheral with prominent oedema. This is the source attribution, not histology established from shape and oedema alone.",
+        "fa": "B — نسبت‌دادن در PDF: متاستاز، گرد و محیطی با ادم زیاد. این نسبت‌دادن منبع است، نه بافت‌شناسی اثبات‌شده صرفاً از شکل و ادم."
+      },
+      "mechanism": {
+        "de": "Perivaskuläre Demyelinisierung",
+        "en": "Perivascular demyelination",
+        "fa": "دمیلینیزاسیون پریواسکولار"
+      }
+    },
+    "scope": "Source attribution and nonproof qualification only; retained source crop unchanged."
+  }
+}

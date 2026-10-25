@@ -1,0 +1,70 @@
+{
+  "file": "data/assessmentQuality/mskSpine.js",
+  "before": null,
+  "after": {
+    "route": "/msk/trauma/skaphoidfraktur",
+    "topicId": "skaphoidfraktur",
+    "learningGoals": [
+      {
+        "id": "acute-pattern-risk",
+        "text": {
+          "de": "B4-Frakturluxation zuordnen und das proximale Ischämierisiko von bewiesener Nekrose unterscheiden.",
+          "en": "Assign B4 fracture-dislocation and distinguish proximal ischemia risk from proven necrosis.",
+          "fa": "شکستگی-دررفتگی B4 را تعیین و خطر ایسکمی پروگزیمال را از نکروز اثبات‌شده جدا کنید."
+        },
+        "questionIds": [
+          "scaphoid-herbert-b4",
+          "scaphoid-proximal-risk"
+        ],
+        "cardIds": [
+          "scaphoid-fc-b4",
+          "scaphoid-fc-proximal-risk"
+        ]
+      },
+      {
+        "id": "nonunion-arthritis",
+        "text": {
+          "de": "SNAC im Kontext einer Skaphoidpseudarthrose erkennen, ohne aus einer Einzelprojektion voll zu stagen.",
+          "en": "Recognize SNAC in the context of scaphoid nonunion without fully staging a single projection.",
+          "fa": "SNAC را در زمینهٔ عدم جوش‌خوردن اسکافوئید بشناسید، بدون مرحله‌بندی کامل از یک نمای منفرد."
+        },
+        "questionIds": [
+          "scaphoid-snac-pattern"
+        ],
+        "cardIds": [
+          "scaphoid-fc-snac"
+        ]
+      },
+      {
+        "id": "variant-context",
+        "text": {
+          "de": "Pseudarthrose und bipartite Variante mit angemessener Unsicherheit differenzieren.",
+          "en": "Differentiate nonunion and bipartite variant with appropriate uncertainty.",
+          "fa": "عدم جوش‌خوردن و واریانت دوپاره را با عدم قطعیت مناسب تفکیک کنید."
+        },
+        "questionIds": [
+          "scaphoid-variant-context"
+        ],
+        "cardIds": [
+          "scaphoid-fc-variant-context"
+        ]
+      }
+    ],
+    "chapterPlan": [
+      {
+        "title": "Zuerst Frakturlinie und Stabilität einordnen",
+        "purpose": "Morphology and blood-supply risk; retain existing title."
+      },
+      {
+        "title": "Von der Pseudarthrose zum SNAC-Muster",
+        "purpose": "Recognize nonunion-associated degeneration; retain existing title."
+      },
+      {
+        "title": "Pseudarthrose und Normvariante unterscheiden",
+        "purpose": "Differential and limits; retain existing title."
+      }
+    ],
+    "mediaPlan": "No new media. Existing source drawings/radiographs retained with captions and uncertainty. Whole-route media/hero is outside this assessment packet.",
+    "status": "AUTHOR_FULL_ORIGINAL_POOL_PLUS_TWO_GOAL_GAPS_REVIEW_PENDING"
+  }
+}

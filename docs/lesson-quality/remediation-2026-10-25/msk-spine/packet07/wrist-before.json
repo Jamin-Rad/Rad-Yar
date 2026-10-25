@@ -1,0 +1,252 @@
+{
+  "questions": {
+    "de": [
+      {
+        "id": "sehnenpathologien-hand-de-01",
+        "fach": "msk",
+        "tags": [
+          "sehnenpathologien-hand"
+        ],
+        "question": "Welche Sehne verläuft im sechsten Strecksehnenfach am Ulnastyloid?",
+        "options": [
+          {
+            "id": "A",
+            "text": "ECU · M. extensor carpi ulnaris"
+          },
+          {
+            "id": "B",
+            "text": "EPL · M. extensor pollicis longus"
+          },
+          {
+            "id": "C",
+            "text": "ECRL und ECRB"
+          },
+          {
+            "id": "D",
+            "text": "EDC und EIP"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Fach VI enthält die ECU-Sehne in einer eigenen Rinne am Ulnastyloid; das entspricht der Zuordnung in MSK.pdf p.41."
+      },
+      {
+        "id": "sehnenpathologien-hand-de-02",
+        "fach": "msk",
+        "tags": [
+          "sehnenpathologien-hand"
+        ],
+        "question": "Welche Gelenkverbindung ist in der Abbildung als „distales Handgelenk (Art. mediocarpalis)“ bezeichnet?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Mediokarpalgelenk zwischen den beiden Handwurzelreihen"
+          },
+          {
+            "id": "B",
+            "text": "Radiokarpalgelenk zwischen Radius und proximaler Handwurzelreihe"
+          },
+          {
+            "id": "C",
+            "text": "Daumensattelgelenk"
+          },
+          {
+            "id": "D",
+            "text": "Intermetakarpalgelenke"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die Quelle bezeichnet die Verbindung zwischen proximaler und distaler Handwurzelreihe als distales Handgelenk bzw. Art. mediocarpalis (MSK.pdf, S.40)."
+      }
+    ],
+    "en": [
+      {
+        "id": "sehnenpathologien-hand-en-01",
+        "fach": "msk",
+        "tags": [
+          "sehnenpathologien-hand"
+        ],
+        "question": "Which tendon runs in the sixth extensor compartment at the ulnar styloid?",
+        "options": [
+          {
+            "id": "A",
+            "text": "ECU · extensor carpi ulnaris"
+          },
+          {
+            "id": "B",
+            "text": "EPL · extensor pollicis longus"
+          },
+          {
+            "id": "C",
+            "text": "ECRL and ECRB"
+          },
+          {
+            "id": "D",
+            "text": "EDC and EIP"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Compartment VI contains the ECU tendon in its own groove at the ulnar styloid, matching MSK.pdf p.41."
+      },
+      {
+        "id": "sehnenpathologien-hand-en-02",
+        "fach": "msk",
+        "tags": [
+          "sehnenpathologien-hand"
+        ],
+        "question": "Which joint is labelled “distal wrist (Art. mediocarpalis)” in the figure?",
+        "options": [
+          {
+            "id": "A",
+            "text": "The midcarpal joint between the two carpal rows"
+          },
+          {
+            "id": "B",
+            "text": "The radiocarpal joint between radius and proximal carpal row"
+          },
+          {
+            "id": "C",
+            "text": "The thumb carpometacarpal joint"
+          },
+          {
+            "id": "D",
+            "text": "The intermetacarpal joints"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The source labels the articulation between the proximal and distal carpal rows as the distal wrist or Art. mediocarpalis (MSK.pdf, p.40)."
+      }
+    ],
+    "fa": [
+      {
+        "id": "sehnenpathologien-hand-fa-01",
+        "fach": "msk",
+        "tags": [
+          "sehnenpathologien-hand"
+        ],
+        "question": "کدام تاندون در کمپارتمان ششم اکستانسور در سطح استایلوئید اولنا قرار دارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ECU · extensor carpi ulnaris"
+          },
+          {
+            "id": "B",
+            "text": "EPL · extensor pollicis longus"
+          },
+          {
+            "id": "C",
+            "text": "ECRL و ECRB"
+          },
+          {
+            "id": "D",
+            "text": "EDC و EIP"
+          }
+        ],
+        "correct": "A",
+        "explanation": "کمپارتمان VI تاندون ECU را در شیار اختصاصی روی استایلوئید اولنا دربر می‌گیرد؛ مطابق صفحهٔ ۴۱ MSK.pdf."
+      },
+      {
+        "id": "sehnenpathologien-hand-fa-02",
+        "fach": "msk",
+        "tags": [
+          "sehnenpathologien-hand"
+        ],
+        "question": "در شکل، کدام مفصل با عنوان «مفصل دیستال مچ دست (Art. mediocarpalis)» مشخص شده است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "مفصل میدکارپی بین دو ردیف استخوان‌های کارپ"
+          },
+          {
+            "id": "B",
+            "text": "مفصل رادیوکارپی بین رادیوس و ردیف پروگزیمال کارپ"
+          },
+          {
+            "id": "C",
+            "text": "مفصل کارپومتاکارپی شست"
+          },
+          {
+            "id": "D",
+            "text": "مفاصل بین‌متاکارپی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "منبع، مفصل بین ردیف پروگزیمال و دیستال کارپ را «مچ دیستال» یا Art. mediocarpalis نامیده است (MSK.pdf، صفحهٔ ۴۰)."
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "wrist-carpal-midcarpal",
+      "topicId": "sehnenpathologien-hand",
+      "category": {
+        "de": "Handwurzelanatomie",
+        "en": "Carpal anatomy",
+        "fa": "آناتومی کارپ"
+      },
+      "front": {
+        "de": "Was bezeichnet die Beschriftung „distales Handgelenk (Art. mediocarpalis)“?",
+        "en": "What does the label “distal wrist (Art. mediocarpalis)” identify?",
+        "fa": "برچسب «مچ دیستال (Art. mediocarpalis)» به کدام مفصل اشاره می‌کند؟"
+      },
+      "answer": {
+        "de": "Das Mediokarpalgelenk zwischen proximaler und distaler Handwurzelreihe.",
+        "en": "The midcarpal joint between the proximal and distal carpal rows.",
+        "fa": "مفصل میدکارپی بین ردیف پروگزیمال و دیستال استخوان‌های کارپ."
+      },
+      "explanation": {
+        "de": "So bezeichnet es die beschriftete dorsale Übersicht in MSK.pdf, S.40.",
+        "en": "That is how the labelled dorsal overview in MSK.pdf, p.40 identifies it.",
+        "fa": "نمای پشتی برچسب‌گذاری‌شده در MSK.pdf، صفحهٔ ۴۰ این مفصل را چنین مشخص می‌کند."
+      }
+    },
+    {
+      "id": "wrist-extensor-compartment-1",
+      "topicId": "sehnenpathologien-hand",
+      "category": {
+        "de": "Anatomie",
+        "en": "Anatomy",
+        "fa": "آناتومی"
+      },
+      "front": {
+        "de": "Welche Sehnen liegen im ersten Strecksehnenfach?",
+        "en": "Which tendons lie in the first extensor compartment?",
+        "fa": "کدام تاندون‌ها در کمپارتمان اول اکستانسور قرار دارند؟"
+      },
+      "answer": {
+        "de": "APL und EPB.",
+        "en": "APL and EPB.",
+        "fa": "APL و EPB."
+      },
+      "explanation": {
+        "de": "Das erste Fach liegt am radialen Processus styloideus.",
+        "en": "The first compartment lies at the radial styloid.",
+        "fa": "کمپارتمان اول در سطح استایلوئید رادیوس قرار دارد."
+      }
+    },
+    {
+      "id": "wrist-extensor-compartment-6",
+      "topicId": "sehnenpathologien-hand",
+      "category": {
+        "de": "Anatomie",
+        "en": "Anatomy",
+        "fa": "آناتومی"
+      },
+      "front": {
+        "de": "Welche Sehne verläuft im sechsten Strecksehnenfach?",
+        "en": "Which tendon runs in the sixth extensor compartment?",
+        "fa": "کدام تاندون در کمپارتمان ششم اکستانسور قرار دارد؟"
+      },
+      "answer": {
+        "de": "ECU in einer eigenen Rinne am Ulnastyloid.",
+        "en": "ECU in a separate groove at the ulnar styloid.",
+        "fa": "ECU در شیار اختصاصی روی استایلوئید اولنا."
+      },
+      "explanation": {
+        "de": "Die sechs Kompartimente werden von radial nach ulnar zugeordnet.",
+        "en": "The six compartments are mapped from radial to ulnar.",
+        "fa": "شش کمپارتمان از سمت رادیال به اولنار شماره‌گذاری می‌شوند."
+      }
+    }
+  ]
+}

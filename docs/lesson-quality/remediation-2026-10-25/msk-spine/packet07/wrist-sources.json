@@ -1,0 +1,39 @@
+[
+  {
+    "id": "pdf-wrist40",
+    "source": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+    "physicalPage": 40,
+    "printedPage": 39,
+    "evidence": "tmp/msk-inventory/wrist-remediation-040.png",
+    "read": "Actual readable rendered fullpage inspected; dorsal carpal-bone labels and coloured midcarpal/radiocarpal/intercarpal/CMC/intermetacarpal lines compared with text.",
+    "supports": [
+      "Original midcarpal question/card",
+      "Retained carpal selfcheck"
+    ]
+  },
+  {
+    "id": "pdf-wrist41",
+    "source": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+    "physicalPage": 41,
+    "printedPage": 40,
+    "evidence": "tmp/msk-inventory/wrist-remediation-041.png",
+    "read": "Actual fullpage table I–VI and tendon/landmark columns plus annotated MRI and legend inspected. Source table correctly EPL III; lower legend nonstandard dorsal-interosseous name is not reproduced as a compartment label. Current retained public MRI crop excludes that lower legend.",
+    "supports": [
+      "Original ECU question/card",
+      "APL/EPB card",
+      "Six-compartment table and landmark note",
+      "Lister-course question/card"
+    ],
+    "sourceConflict": "Lower source-image caption III dorsal-interosseous and V ulnar-radial are anatomically misleading descriptive labels; replaced ONLY current lesson table added labels with landmark/dorsoulnar labels, tendon identity unchanged."
+  },
+  {
+    "id": "epl-primary2024",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11775041/",
+    "title": "Course of the extensor pollicis longus tendon considering the different functional positions of the wrist and the first ray—an anatomical study",
+    "published": "2024-08-05 online",
+    "read": "Fresh original indexed abstract, anatomy, specimens/dissection/measurements and results.20upperextremities/10Thiel cadavers. EPL anchored thirdcompartment aroundLister and more mobile distal; course crossesECRL/ECRB. No numerical angle/performance/treatment extrapolation added.",
+    "supports": [
+      "Lister-course identification and posture-dependent distal course caveat"
+    ]
+  }
+]

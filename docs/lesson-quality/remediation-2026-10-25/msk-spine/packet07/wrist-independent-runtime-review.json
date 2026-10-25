@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "originalCanonicalRecords": 9,
+  "supplementalDraftRecords": 4,
+  "inlineFeedbackComparisons": 12,
+  "deQuervainExportsUnchangedVersusCurrentReleaseIndex": 3,
+  "actualLessonMirror": "deepEqual"
+}

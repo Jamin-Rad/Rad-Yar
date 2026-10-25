@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-25",
+  "status": "PASS",
+  "scope": "Fresh actual topic and global canonical exports, snapshot parity, original ID retention, four-option selected feedback in all3languages",
+  "counts": {
+    "questions": 36,
+    "cards": 15,
+    "inline": 12
+  },
+  "limitations": "Technical identity checks do not constitute source/translation/browser approval."
+}

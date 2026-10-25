@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "brain_remediation",
+  "author": "remove_lesson_notice",
+  "status": "ACCEPT_BOUNDED_FULL_ORIGINAL_ASSESSMENT_POOL_WITH_TARGETED_GAP",
+  "route": "/msk/hand/strecksehnenfaecher",
+  "scope": {
+    "questions": 3,
+    "cards": 4,
+    "languages": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "read": "All three question triads including every option, key, correct and individual wrong feedback; all four card triads; actual III/V labels, landmark note and ECU inline after-values; unchanged first carpal inline considered in narrow task context.",
+    "notAccepted": [
+      "WholeMSKPDF/wholelessonclinicalrelease",
+      "Retained diagnostic MRI new independent interpretation",
+      "Rendered browser/layout/accessibility/theme release",
+      "Publication or clinician scientific approval"
+    ]
+  },
+  "findings": [],
+  "pedagogicAssessment": "This is a basic anatomical orientation lesson. Three goals map to a carpal-joint identification task, a tendon/ulnar landmark task and an EPL/Lister course task. Homogeneous real tendon/compartment alternatives are plausible; cards provide focused retrieval. No artificial quota or pathology diagnosis from normal anatomy is introduced.",
+  "translationAssessment": "Actual DE/EN/FA pairs preserve anatomical identity, radial/ulnar direction, proximal/distal relations, keys and feedback polarity. Minor stylistic literalness is understandable and does not change the task; no required translation correction found.",
+  "sourcesRead": [
+    {
+      "source": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+      "physicalPages": [
+        40,
+        41
+      ],
+      "printedPages": [
+        39,
+        40
+      ],
+      "evidence": [
+        "tmp/msk-inventory/wrist-remediation-040.png",
+        "tmp/msk-inventory/wrist-remediation-041.png"
+      ],
+      "read": "Both actual readable full-page renders visually inspected independently: dorsal carpal joint lines/labels; six-compartment table, axial source annotations and lower misleading legend. Midcarpal relation, tendon identities, Lister direction and correction of III/V lesson labels consistent. This does not independently validate an entire retained diagnostic MRI study."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11775041/",
+      "type": "Original20-upper-extremity/10Thiel-cadaver anatomical study",
+      "read": "Fresh actual abstract, introduction, anatomy, specimens/dissection/measurement methods, results and discussion. EPL anchored in third compartment around Lister; distal course crosses ECRL/ECRB and varies with functional position. No angle, diagnostic performance or treatment-rate extrapolation adopted."
+    }
+  ],
+  "runtime": {
+    "status": "PASS",
+    "originalCanonicalRecords": 9,
+    "supplementalDraftRecords": 4,
+    "inlineFeedbackComparisons": 12,
+    "deQuervainExportsUnchangedVersusCurrentReleaseIndex": 3,
+    "actualLessonMirror": "deepEqual"
+  },
+  "runtimeNotes": [
+    "Fresh canonical global bundle deepEqual9original objects; author module/supplemental actual drafts deepEqual4additional locale/card objects.",
+    "Twelve actual ECU selected feedback comparisons exact. Current lesson object equals author after mirror; actual page Decision selects section.feedback[answer].",
+    "All three DE_QUERVAIN exports in the same producer independently deepEqual actual git-index sources of Release04; Wrist07 did not mutate accepted DeQ payloads.",
+    "New targeted AQ object remains draft until root admission; no assumption from unpublished global absence."
+  ],
+  "gates": {
+    "SRC": "PASS_BOUNDED_SOURCE_TEXT_AND_RENDER_READ",
+    "EDU": "PASS_BOUNDED_ORIENTATION_TASKS",
+    "LNG": "PASS_BOUNDED_TRIADS",
+    "ASM": "PASS_ACTUAL_POOL_AND_INLINE",
+    "VIS": "NOT_NEWLY_ADJUDICATED",
+    "UX": "NOT_REVIEWED",
+    "REV": "PASS_INDEPENDENT_READ_ONLY"
+  },
+  "hashes": {
+    "data/wristExtensorAssessments.js": "2bf1742615317477f3490580c452a4709516dd69c32de957f4ec192d8f0f6f66",
+    "data/wristExtensorCompartments.js": "e6afae4b6e0d895613254ce4acf73484b6a4d1021a4d22f30a3e2b61c9cc0fce",
+    "app/msk/hand/strecksehnenfaecher/page.jsx": "e6abba0d731d3deccaaaa777a640eae2929799ff5e7483d5441c94c9f8eb5bb9"
+  },
+  "followup": {
+    "scope": "Optional difficulty forwarding only",
+    "status": "PASS",
+    "actualListerLocales": 3,
+    "difficulty": 1,
+    "otherFields": "deepEqual independently accepted payload after stripping only optional difficulty field",
+    "note": "Other records lack the optional source field and therefore retain previous shape; factory condition read. No new semantic review acceptance implied."
+  }
+}

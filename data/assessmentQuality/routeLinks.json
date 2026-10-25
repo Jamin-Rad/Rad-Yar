@@ -207,9 +207,10 @@
     },
     "/msk/knie/patella-streckapparat": {
       "topicIds": [
-        "patella-streckapparat"
+        "patella-streckapparat",
+        "patellafraktur-trauma"
       ],
-      "questionCount": 2,
+      "questionCount": 3,
       "cardTopic": "patella-streckapparat",
       "subject": "msk"
     },
@@ -269,6 +270,22 @@
       "cardTopic": "de-quervain",
       "subject": "msk"
     },
+    "/msk/hand/strecksehnenfaecher": {
+      "topicIds": [
+        "sehnenpathologien-hand"
+      ],
+      "questionCount": 3,
+      "cardTopic": "sehnenpathologien-hand",
+      "subject": "msk"
+    },
+    "/msk/infektionen/osteomyelitis": {
+      "topicIds": [
+        "osteomyelitis"
+      ],
+      "questionCount": 3,
+      "cardTopic": "osteomyelitis",
+      "subject": "msk"
+    },
     "/technik/interventionelle-radiologie": {
       "topicIds": [
         "aq-atv-intervention"
@@ -287,17 +304,22 @@
     },
     "/technik/kontrastmittel/roentgen": {
       "topicIds": [
-        "km-jod-typen"
+        "km-jod-typen",
+        "km-jod-reaktionen",
+        "km-gastrointestinal",
+        "km-schilddruese"
       ],
-      "questionCount": 3,
+      "questionCount": 12,
       "cardTopic": "km-jod-typen",
       "subject": "technik"
     },
     "/technik/kontrastmittel/mrt": {
       "topicIds": [
-        "km-gadolinium"
+        "km-gadolinium",
+        "km-gadolinium-retention-nsf",
+        "km-buscopan"
       ],
-      "questionCount": 3,
+      "questionCount": 8,
       "cardTopic": "km-gadolinium",
       "subject": "technik"
     },
@@ -375,9 +397,10 @@
     },
     "/abdomen/gi/kolitis-patterns": {
       "topicIds": [
-        "pmc-kolitis"
+        "pmc-kolitis",
+        "colitis-ulcerosa"
       ],
-      "questionCount": 2,
+      "questionCount": 4,
       "cardTopic": "pmc-kolitis",
       "subject": "abdomen"
     },
@@ -391,9 +414,11 @@
     },
     "/abdomen/gi/ileus-volvulus": {
       "topicIds": [
-        "ileus-duenndarm"
+        "ileus-duenndarm",
+        "volvulus",
+        "intussusception"
       ],
-      "questionCount": 5,
+      "questionCount": 8,
       "cardTopic": "ileus-duenndarm",
       "subject": "abdomen"
     },
@@ -436,6 +461,48 @@
       "questionCount": 3,
       "cardTopic": "aortenbogen",
       "subject": "thorax"
+    },
+    "/abdomen/gi/ulkuserkrankung": {
+      "topicIds": [
+        "ulkuserkrankung"
+      ],
+      "questionCount": 3,
+      "cardTopic": "ulkuserkrankung",
+      "subject": "abdomen"
+    },
+    "/abdomen/leber/angiomyolipom": {
+      "topicIds": [
+        "hepatisches-angiomyolipom"
+      ],
+      "questionCount": 4,
+      "cardTopic": "hepatisches-angiomyolipom",
+      "subject": "abdomen"
+    },
+    "/abdomen/gi/untere-gi-blutung": {
+      "topicIds": [
+        "untere-gi-blutung"
+      ],
+      "questionCount": 3,
+      "cardTopic": "untere-gi-blutung",
+      "subject": "abdomen"
+    },
+    "/abdomen/hernien/inguinal-femoral": {
+      "topicIds": [
+        "inguinal-femoral-hernia",
+        "inguinalhernie",
+        "femoralhernie"
+      ],
+      "questionCount": 4,
+      "cardTopic": "inguinal-femoral-hernia",
+      "subject": "abdomen"
+    },
+    "/abdomen/leber/adenom": {
+      "topicIds": [
+        "leberadenom"
+      ],
+      "questionCount": 6,
+      "cardTopic": "leberadenom",
+      "subject": "abdomen"
     },
     "/mamma/bildgebung/mrt/basics": {
       "topicIds": [
@@ -521,7 +588,7 @@
     "radiuskoepfchenfraktur": 13,
     "unterarmschaftfrakturen": 12,
     "distale-radiusfraktur": 12,
-    "skaphoidfraktur": 2,
+    "skaphoidfraktur": 4,
     "bandverletzungen-daumen": 2,
     "kreuzbaender": 8,
     "knieligamente": 8,
@@ -646,7 +713,7 @@
     "roentgenstrahlung-spektrum": 1,
     "roentgen-wechselwirkung-materie": 2,
     "roentgen-bildentstehung-detektor": 2,
-    "leberadenom": 5,
+    "leberadenom": 6,
     "niere-anatomie": 1,
     "lebermetastasen": 2,
     "ileus-duenndarm": 5,
@@ -673,7 +740,7 @@
     "pdac": 3,
     "inguinalhernie": 1,
     "femoralhernie": 1,
-    "untere-gi-blutung": 1,
+    "untere-gi-blutung": 3,
     "kolorektales-karzinom": 4,
     "nephroblastom-wilms": 1,
     "mesenteriale-ischaemie": 3,
@@ -683,7 +750,7 @@
     "morbus-bechterew-ws": 2,
     "morbus-scheuermann": 1,
     "osteochondrosis-intervertebralis": 1,
-    "sehnenpathologien-hand": 2,
+    "sehnenpathologien-hand": 3,
     "de-quervain": 2,
     "proximale-humerusfraktur": 2,
     "metakarpale-frakturen": 1,
@@ -732,7 +799,7 @@
     "glenohumerale-arthrose": 2,
     "arterien-obere-extremitaet": 2,
     "leberzirrhose": 2,
-    "ulkuserkrankung": 2,
+    "ulkuserkrankung": 3,
     "duodenaldivertikel": 2,
     "fibrolamellaeres-karzinom": 2,
     "li-rads": 2,
@@ -762,6 +829,8 @@
     "avn-huefte": 1,
     "melorheostose": 1,
     "aq-parkinson": 3,
-    "aq-demenzmuster": 3
+    "aq-demenzmuster": 3,
+    "inguinal-femoral-hernia": 2,
+    "osteomyelitis": 3
   }
 }

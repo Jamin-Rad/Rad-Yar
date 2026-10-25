@@ -1,0 +1,272 @@
+{
+  "date": "2026-10-25",
+  "scope": "Q07 uncalibrated proof cue removed;Q09three homogeneous alveolar-content/tissue alternatives and specific wrongfeedback; no other clinical/source/key changes",
+  "patches": [
+    {
+      "key": "hrct-architekturmuster-07",
+      "before": {
+        "question": {
+          "de": "Bei gesicherter Small-Airways-Erkrankung zeigt die CT lobuläres exspiratorisches Air Trapping. In denselben Arealen sind die Gefäße kleiner. Welche Erklärung passt am besten zu dieser Kombination?",
+          "en": "In established small-airway disease, CT shows lobular expiratory air trapping with smaller vessels in the same regions. Which explanation best fits the combination?",
+          "fa": "در بیماری شناخته‌شدهٔ راه هوایی کوچک، CT حبس هوای لوبولی در بازدم و عروق کوچک‌تر در همان نواحی نشان می‌دهد. کدام توضیح بیشتر با این ترکیب سازگار است؟"
+        },
+        "options": [
+          {
+            "de": "Verminderte regionale Perfusion bei unzureichender Ventilation",
+            "en": "Reduced regional perfusion associated with impaired ventilation",
+            "fa": "کاهش خون‌رسانی ناحیه‌ای همراه تهویهٔ ناکافی"
+          },
+          {
+            "de": "Organisierte Emboli als nachgewiesene Ursache der Gefäßverkleinerung",
+            "en": "Organised emboli as a demonstrated cause of vessel narrowing",
+            "fa": "آمبولی‌های سازمان‌یافته به‌عنوان علت اثبات‌شدهٔ کوچک‌شدن عروق"
+          },
+          {
+            "de": "Ein Verschluss der abführenden Pulmonalvenen",
+            "en": "Occlusion of draining pulmonary veins",
+            "fa": "انسداد وریدهای ریوی تخلیه‌کننده"
+          },
+          {
+            "de": "Kardiale Stauung mit regionaler Gefäßfüllung",
+            "en": "Cardiac congestion with regional vascular engorgement",
+            "fa": "احتقان قلبی با پرشدگی ناحیه‌ای عروق"
+          }
+        ],
+        "correct": 0,
+        "difficulty": 2,
+        "source": "https://doi.org/10.1148/radiol.232558",
+        "explanation": {
+          "de": "Small-Airways-bedingte Minderbelüftung kann mit verminderter Perfusion und kleineren Gefäßen einhergehen. Daher beweist kleines Gefäßkaliber allein keine primär okklusive Gefäßerkrankung.",
+          "en": "Small-airway-related underventilation can accompany reduced perfusion and smaller vessels. Small vessel calibre alone therefore does not prove primary occlusive vascular disease.",
+          "fa": "تهویهٔ ناکافی ناشی از راه هوایی کوچک می‌تواند با کاهش خون‌رسانی و کوچک‌شدن عروق همراه باشد. بنابراین قطر کم عروق به‌تنهایی بیماری انسدادی اولیهٔ عروقی را اثبات نمی‌کند."
+        },
+        "wrong": [
+          null,
+          {
+            "de": "Ein Embolus ist nicht direkt beschrieben. Kleine Gefäße können sekundär zur Minderbelüftung auftreten.",
+            "en": "No embolus is directly described. Small vessels can occur secondary to underventilation.",
+            "fa": "آمبولی مستقیماً توصیف نشده است. عروق کوچک می‌توانند ثانویه به تهویهٔ ناکافی باشند."
+          },
+          {
+            "de": "Direkte venöse Verschlussbefunde oder passende Stauungszeichen fehlen; die Luftretention passt zur bekannten Atemwegserkrankung.",
+            "en": "Direct venous occlusion or corresponding congestion is not described; air retention fits the established airway disease.",
+            "fa": "انسداد مستقیم وریدی یا نشانه‌های احتقان مرتبط توصیف نشده‌اند؛ احتباس هوا با بیماری راه هوایی شناخته‌شده سازگار است."
+          },
+          {
+            "de": "Stauung erklärt nicht die lobulär verminderte exspiratorische Entleerung; eine Gefäßfüllung ist nicht der beschriebene Befund.",
+            "en": "Congestion does not explain reduced lobular expiratory emptying; vascular engorgement is not the finding described.",
+            "fa": "احتقان تخلیهٔ کمتر لوبول‌ها در بازدم را توضیح نمی‌دهد؛ پرشدگی عروق یافتهٔ توصیف‌شده نیست."
+          }
+        ],
+        "front": {
+          "de": "Sind kleine Gefäße in dunklen Mosaikarealen spezifisch für Gefäßverschluss?",
+          "en": "Are small vessels in dark mosaic regions specific for vascular occlusion?",
+          "fa": "آیا عروق کوچک در نواحی تیرهٔ موزائیک برای انسداد عروقی اختصاصی‌اند؟"
+        },
+        "answer": {
+          "de": "Nein. Auch eine Small-Airways-bedingte Minderbelüftung kann regional Perfusion und Gefäßkaliber reduzieren; Exspiration und direkte Gefäßbefunde mitbeurteilen.",
+          "en": "No. Small-airway-related underventilation can also reduce regional perfusion and vessel calibre; assess expiration and direct vascular findings.",
+          "fa": "خیر. تهویهٔ ناکافی ناشی از راه هوایی کوچک هم می‌تواند خون‌رسانی و قطر عروق را در ناحیه کاهش دهد؛ بازدم و یافته‌های مستقیم عروقی نیز بررسی شوند."
+        }
+      },
+      "after": {
+        "question": {
+          "de": "Bei gesicherter Small-Airways-Erkrankung zeigt die CT lobuläres exspiratorisches Air Trapping. In denselben Arealen sind die Gefäße kleiner. Welche Erklärung passt am besten zu dieser Kombination?",
+          "en": "In established small-airway disease, CT shows lobular expiratory air trapping with smaller vessels in the same regions. Which explanation best fits the combination?",
+          "fa": "در بیماری شناخته‌شدهٔ راه هوایی کوچک، CT حبس هوای لوبولی در بازدم و عروق کوچک‌تر در همان نواحی نشان می‌دهد. کدام توضیح بیشتر با این ترکیب سازگار است؟"
+        },
+        "options": [
+          {
+            "de": "Verminderte regionale Perfusion bei unzureichender Ventilation",
+            "en": "Reduced regional perfusion associated with impaired ventilation",
+            "fa": "کاهش خون‌رسانی ناحیه‌ای همراه تهویهٔ ناکافی"
+          },
+          {
+            "de": "Regionale Perfusionsminderung durch organisierte Emboli",
+            "en": "Regional hypoperfusion caused by organised emboli",
+            "fa": "کاهش خون‌رسانی ناحیه‌ای ناشی از آمبولی‌های سازمان‌یافته"
+          },
+          {
+            "de": "Ein Verschluss der abführenden Pulmonalvenen",
+            "en": "Occlusion of draining pulmonary veins",
+            "fa": "انسداد وریدهای ریوی تخلیه‌کننده"
+          },
+          {
+            "de": "Kardiale Stauung mit regionaler Gefäßfüllung",
+            "en": "Cardiac congestion with regional vascular engorgement",
+            "fa": "احتقان قلبی با پرشدگی ناحیه‌ای عروق"
+          }
+        ],
+        "correct": 0,
+        "difficulty": 2,
+        "source": "https://doi.org/10.1148/radiol.232558",
+        "explanation": {
+          "de": "Small-Airways-bedingte Minderbelüftung kann mit verminderter Perfusion und kleineren Gefäßen einhergehen. Daher beweist kleines Gefäßkaliber allein keine primär okklusive Gefäßerkrankung.",
+          "en": "Small-airway-related underventilation can accompany reduced perfusion and smaller vessels. Small vessel calibre alone therefore does not prove primary occlusive vascular disease.",
+          "fa": "تهویهٔ ناکافی ناشی از راه هوایی کوچک می‌تواند با کاهش خون‌رسانی و کوچک‌شدن عروق همراه باشد. بنابراین قطر کم عروق به‌تنهایی بیماری انسدادی اولیهٔ عروقی را اثبات نمی‌کند."
+        },
+        "wrong": [
+          null,
+          {
+            "de": "Ein Embolus ist nicht direkt beschrieben. Kleine Gefäße können sekundär zur Minderbelüftung auftreten.",
+            "en": "No embolus is directly described. Small vessels can occur secondary to underventilation.",
+            "fa": "آمبولی مستقیماً توصیف نشده است. عروق کوچک می‌توانند ثانویه به تهویهٔ ناکافی باشند."
+          },
+          {
+            "de": "Direkte venöse Verschlussbefunde oder passende Stauungszeichen fehlen; die Luftretention passt zur bekannten Atemwegserkrankung.",
+            "en": "Direct venous occlusion or corresponding congestion is not described; air retention fits the established airway disease.",
+            "fa": "انسداد مستقیم وریدی یا نشانه‌های احتقان مرتبط توصیف نشده‌اند؛ احتباس هوا با بیماری راه هوایی شناخته‌شده سازگار است."
+          },
+          {
+            "de": "Stauung erklärt nicht die lobulär verminderte exspiratorische Entleerung; eine Gefäßfüllung ist nicht der beschriebene Befund.",
+            "en": "Congestion does not explain reduced lobular expiratory emptying; vascular engorgement is not the finding described.",
+            "fa": "احتقان تخلیهٔ کمتر لوبول‌ها در بازدم را توضیح نمی‌دهد؛ پرشدگی عروق یافتهٔ توصیف‌شده نیست."
+          }
+        ],
+        "front": {
+          "de": "Sind kleine Gefäße in dunklen Mosaikarealen spezifisch für Gefäßverschluss?",
+          "en": "Are small vessels in dark mosaic regions specific for vascular occlusion?",
+          "fa": "آیا عروق کوچک در نواحی تیرهٔ موزائیک برای انسداد عروقی اختصاصی‌اند؟"
+        },
+        "answer": {
+          "de": "Nein. Auch eine Small-Airways-bedingte Minderbelüftung kann regional Perfusion und Gefäßkaliber reduzieren; Exspiration und direkte Gefäßbefunde mitbeurteilen.",
+          "en": "No. Small-airway-related underventilation can also reduce regional perfusion and vessel calibre; assess expiration and direct vascular findings.",
+          "fa": "خیر. تهویهٔ ناکافی ناشی از راه هوایی کوچک هم می‌تواند خون‌رسانی و قطر عروق را در ناحیه کاهش دهد؛ بازدم و یافته‌های مستقیم عروقی نیز بررسی شوند."
+        }
+      }
+    },
+    {
+      "key": "hrct-architekturmuster-09",
+      "before": {
+        "question": {
+          "de": "Bei histologisch gesicherter pulmonaler Alveolarproteinose zeigt die CT geografisches Crazy Paving. Welcher pathologische Baustein kann die Milchglaskomponente erklären?",
+          "en": "In histologically established pulmonary alveolar proteinosis, CT shows geographic crazy paving. Which pathological component can explain the ground glass?",
+          "fa": "در پروتئینوز آلوئولی ریویِ تأییدشده با بافت‌شناسی، CT کریزی‌پیونگ جغرافیایی نشان می‌دهد. کدام جزء آسیب‌شناختی می‌تواند شیشه‌مات را توضیح دهد؟"
+        },
+        "options": [
+          {
+            "de": "Protein-/lipidreiches Material in den Alveolen",
+            "en": "Protein-/lipid-rich material within alveoli",
+            "fa": "مادهٔ غنی از پروتئین/چربی در آلوئول‌ها"
+          },
+          {
+            "de": "Organisierter Thrombus im Lumen größerer Pulmonalarterien",
+            "en": "Organised thrombus within larger pulmonary arteries",
+            "fa": "ترومبوز سازمان‌یافته در لومن شریان‌های بزرگ‌تر ریوی"
+          },
+          {
+            "de": "Destruktion der Alveolarwände mit emphysematösen Lufträumen",
+            "en": "Alveolar-wall destruction with emphysematous airspaces",
+            "fa": "تخریب دیوارهٔ آلوئول با فضاهای هوایی آمفیزماتیک"
+          },
+          {
+            "de": "Ein fokaler zentraler Bronchusverschluss mit lobärem Volumenverlust",
+            "en": "Focal central bronchial obstruction with lobar volume loss",
+            "fa": "انسداد موضعی برونش مرکزی با کاهش حجم لوب"
+          }
+        ],
+        "correct": 0,
+        "difficulty": 1,
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3259383/",
+        "explanation": {
+          "de": "In der publizierten radiologisch-pathologischen PAP-Korrelation lagen proteinreiche PAS-positive Ablagerungen in den Alveolen vor. Alveoläre Füllung erklärt Milchglas; Crazy Paving allein würde die PAP-Diagnose nicht sichern.",
+          "en": "The published radiological-pathological PAP correlation showed protein-rich PAS-positive material within alveoli. Alveolar filling explains ground glass; crazy paving alone would not establish PAP.",
+          "fa": "در تطبیق رادیولوژی-آسیب‌شناسی منتشرشدهٔ PAP، مادهٔ غنی از پروتئین و PAS مثبت در آلوئول‌ها وجود داشت. پرشدگی آلوئولی شیشه‌مات را توضیح می‌دهد؛ کریزی‌پیونگ به‌تنهایی تشخیص PAP را ثابت نمی‌کند."
+        },
+        "wrong": [
+          null,
+          {
+            "de": "Ein organisierter arterieller Thrombus ist kein typischer alveolärer Füllungsbaustein der gesicherten PAP.",
+            "en": "Organised arterial thrombus is not the alveolar filling component of established PAP.",
+            "fa": "ترومبوز سازمان‌یافتهٔ شریانی جزء پرکنندهٔ آلوئول در PAP تأییدشده نیست."
+          },
+          {
+            "de": "Emphysematöse Destruktion führt zu vermindertem Gewebeanteil, nicht zur beschriebenen alveolären Füllung der PAP.",
+            "en": "Emphysematous destruction reduces tissue content rather than producing the alveolar filling described in PAP.",
+            "fa": "تخریب آمفیزماتیک بافت را کاهش می‌دهد، نه اینکه پرشدگی آلوئولی توصیف‌شدهٔ PAP را ایجاد کند."
+          },
+          {
+            "de": "Lobärer Kollaps würde Volumenverlust erwarten lassen und erklärt nicht das geografische PAP-Füllungsmuster.",
+            "en": "Lobar collapse would be associated with volume loss and does not explain the geographic PAP filling pattern.",
+            "fa": "کلاپس لوب با کاهش حجم همراه است و الگوی جغرافیایی پرشدگی PAP را توضیح نمی‌دهد."
+          }
+        ],
+        "front": {
+          "de": "Warum ist PAP eine klassische, aber keine beweisende Crazy-Paving-Assoziation?",
+          "en": "Why is PAP a classic but nondefinitive crazy-paving association?",
+          "fa": "چرا PAP ارتباط کلاسیک، اما غیرقطعی با کریزی‌پیونگ دارد؟"
+        },
+        "answer": {
+          "de": "Alveoläres Material kann Milchglas und die überlagerte lineare Zeichnung erzeugen; viele andere alveoläre/interstitielle Prozesse können ein ähnliches Muster bilden.",
+          "en": "Alveolar material can produce ground glass with superimposed lines, but many other alveolar/interstitial processes can produce a similar pattern.",
+          "fa": "مادهٔ داخل آلوئول می‌تواند شیشه‌مات و خطوط روی آن ایجاد کند، اما بسیاری از فرایندهای آلوئولی/بینابینی دیگر هم می‌توانند الگوی مشابه بسازند."
+        }
+      },
+      "after": {
+        "question": {
+          "de": "Bei histologisch gesicherter pulmonaler Alveolarproteinose zeigt die CT geografisches Crazy Paving. Welcher pathologische Baustein kann die Milchglaskomponente erklären?",
+          "en": "In histologically established pulmonary alveolar proteinosis, CT shows geographic crazy paving. Which pathological component can explain the ground glass?",
+          "fa": "در پروتئینوز آلوئولی ریویِ تأییدشده با بافت‌شناسی، CT کریزی‌پیونگ جغرافیایی نشان می‌دهد. کدام جزء آسیب‌شناختی می‌تواند شیشه‌مات را توضیح دهد؟"
+        },
+        "options": [
+          {
+            "de": "Protein-/lipidreiches Material in den Alveolen",
+            "en": "Protein-/lipid-rich material within alveoli",
+            "fa": "مادهٔ غنی از پروتئین/چربی در آلوئول‌ها"
+          },
+          {
+            "de": "Erythrozytenreiches Material in den Alveolen",
+            "en": "Erythrocyte-rich material within alveoli",
+            "fa": "مادهٔ غنی از گلبول قرمز در آلوئول‌ها"
+          },
+          {
+            "de": "Neutrophilenreiches Exsudat in den Alveolen",
+            "en": "Neutrophil-rich exudate within alveoli",
+            "fa": "اگزودای غنی از نوتروفیل در آلوئول‌ها"
+          },
+          {
+            "de": "Hyaline Membranen mit alveolärem Exsudat",
+            "en": "Hyaline membranes with alveolar exudate",
+            "fa": "غشاهای هیالین همراه اگزودای آلوئولی"
+          }
+        ],
+        "correct": 0,
+        "difficulty": 1,
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3259383/",
+        "explanation": {
+          "de": "In der publizierten radiologisch-pathologischen PAP-Korrelation lagen proteinreiche PAS-positive Ablagerungen in den Alveolen vor. Alveoläre Füllung erklärt Milchglas; Crazy Paving allein würde die PAP-Diagnose nicht sichern.",
+          "en": "The published radiological-pathological PAP correlation showed protein-rich PAS-positive material within alveoli. Alveolar filling explains ground glass; crazy paving alone would not establish PAP.",
+          "fa": "در تطبیق رادیولوژی-آسیب‌شناسی منتشرشدهٔ PAP، مادهٔ غنی از پروتئین و PAS مثبت در آلوئول‌ها وجود داشت. پرشدگی آلوئولی شیشه‌مات را توضیح می‌دهد؛ کریزی‌پیونگ به‌تنهایی تشخیص PAP را ثابت نمی‌کند."
+        },
+        "wrong": [
+          null,
+          {
+            "de": "Erythrozytenreiche Füllung würde eine alveoläre Blutung erklären. Der typische Materialbaustein der hier gesicherten PAP ist dagegen protein-/lipidreich.",
+            "en": "Erythrocyte-rich filling would explain alveolar haemorrhage. The typical material in the established PAP described here is instead protein-/lipid-rich.",
+            "fa": "پرشدگی غنی از گلبول قرمز خونریزی آلوئولی را توضیح می‌دهد. در مقابل، مادهٔ تیپیک PAP تأییدشدهٔ اینجا غنی از پروتئین/چربی است."
+          },
+          {
+            "de": "Eine neutrophilenreiche Füllung passt zu einem eitrig-entzündlichen Prozess; die typische PAP-Ablagerung besteht nicht primär aus dieser Zellansammlung.",
+            "en": "Neutrophil-rich filling fits a suppurative inflammatory process; typical PAP deposition does not primarily consist of this cellular accumulation.",
+            "fa": "پرشدگی غنی از نوتروفیل با فرایند التهابی چرکی سازگار است؛ رسوب تیپیک PAP عمدتاً از این تجمع سلولی تشکیل نمی‌شود."
+          },
+          {
+            "de": "Hyaline Membranen mit Exsudat passen zum diffusen Alveolarschaden. Sie sind nicht der typische Materialbaustein der hier gesicherten PAP.",
+            "en": "Hyaline membranes with exudate fit diffuse alveolar damage. They are not the typical material component of the established PAP described here.",
+            "fa": "غشاهای هیالین همراه اگزودا با آسیب منتشر آلوئولی سازگارند. آن‌ها جزء مادی تیپیک PAP تأییدشدهٔ اینجا نیستند."
+          }
+        ],
+        "front": {
+          "de": "Warum ist PAP eine klassische, aber keine beweisende Crazy-Paving-Assoziation?",
+          "en": "Why is PAP a classic but nondefinitive crazy-paving association?",
+          "fa": "چرا PAP ارتباط کلاسیک، اما غیرقطعی با کریزی‌پیونگ دارد؟"
+        },
+        "answer": {
+          "de": "Alveoläres Material kann Milchglas und die überlagerte lineare Zeichnung erzeugen; viele andere alveoläre/interstitielle Prozesse können ein ähnliches Muster bilden.",
+          "en": "Alveolar material can produce ground glass with superimposed lines, but many other alveolar/interstitial processes can produce a similar pattern.",
+          "fa": "مادهٔ داخل آلوئول می‌تواند شیشه‌مات و خطوط روی آن ایجاد کند، اما بسیاری از فرایندهای آلوئولی/بینابینی دیگر هم می‌توانند الگوی مشابه بسازند."
+        }
+      }
+    }
+  ]
+}

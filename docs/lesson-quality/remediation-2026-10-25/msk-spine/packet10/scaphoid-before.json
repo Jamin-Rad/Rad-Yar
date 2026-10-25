@@ -1,0 +1,541 @@
+{
+  "questions": {
+    "de": [
+      {
+        "id": "scaphoid-herbert-b4",
+        "question": "Welche Herbert-Untergruppe bezeichnet eine Skaphoidfraktur mit perilunärer Luxation?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A1: Tuberkelfraktur"
+          },
+          {
+            "id": "B",
+            "text": "B2: vollständige Taillenfraktur"
+          },
+          {
+            "id": "C",
+            "text": "B4: transskaphoidale perilunäre Frakturluxation"
+          },
+          {
+            "id": "D",
+            "text": "B3: Fraktur des proximalen Pols"
+          }
+        ],
+        "correct": "C",
+        "explanation": "B4 bezeichnet die transskaphoidale perilunäre Frakturluxation. Die Klassifikation ergänzt die morphologische Beschreibung, ersetzt aber nicht die vollständige Beurteilung der Karpalstellung.",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "fach": "msk"
+      },
+      {
+        "id": "scaphoid-snac-pattern",
+        "question": "Welches Muster kann sich bei chronischer Skaphoidpseudarthrose entwickeln?",
+        "options": [
+          {
+            "id": "A",
+            "text": "SNAC-Arthrosemuster mit radial beginnender Beteiligung"
+          },
+          {
+            "id": "B",
+            "text": "Eine sichere Lunatumluxation"
+          },
+          {
+            "id": "C",
+            "text": "Eine isolierte DRUG-Instabilität"
+          },
+          {
+            "id": "D",
+            "text": "Ein normales Röntgenbild in allen Projektionen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Chronische Skaphoidpseudarthrose kann ein SNAC-Muster mit radial beginnender und fortschreitender Arthrose zeigen. Eine einzelne Projektion reicht nicht zur vollständigen Stadieneinteilung.",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "fach": "msk"
+      }
+    ],
+    "en": [
+      {
+        "id": "scaphoid-herbert-b4",
+        "question": "Which Herbert subtype describes a scaphoid fracture with perilunate dislocation?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A1: tubercle fracture"
+          },
+          {
+            "id": "B",
+            "text": "B2: complete waist fracture"
+          },
+          {
+            "id": "C",
+            "text": "B4: trans-scaphoid perilunate fracture-dislocation"
+          },
+          {
+            "id": "D",
+            "text": "B3: proximal-pole fracture"
+          }
+        ],
+        "correct": "C",
+        "explanation": "B4 describes a trans-scaphoid perilunate fracture-dislocation. The classification supplements the morphology description but does not replace full assessment of carpal alignment.",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "fach": "msk"
+      },
+      {
+        "id": "scaphoid-snac-pattern",
+        "question": "Which pattern can develop with chronic scaphoid nonunion?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A SNAC arthritis pattern beginning radially"
+          },
+          {
+            "id": "B",
+            "text": "Definite lunate dislocation"
+          },
+          {
+            "id": "C",
+            "text": "Isolated DRUJ instability"
+          },
+          {
+            "id": "D",
+            "text": "A normal radiograph in every projection"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Chronic scaphoid nonunion can show a SNAC pattern with radially starting, progressive arthritis. One projection is not sufficient for full staging.",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "fach": "msk"
+      }
+    ],
+    "fa": [
+      {
+        "id": "scaphoid-herbert-b4",
+        "question": "کدام زیرگروه هربرت شکستگی اسکافوئید همراه با دررفتگی پری‌لونار را توصیف می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "A1: شکستگی تکمه"
+          },
+          {
+            "id": "B",
+            "text": "B2: شکستگی کامل ناحیهٔ waist"
+          },
+          {
+            "id": "C",
+            "text": "B4: شکستگی-دررفتگی پری‌لونار ترانس‌اسکافوئید"
+          },
+          {
+            "id": "D",
+            "text": "B3: شکستگی قطب پروگزیمال"
+          }
+        ],
+        "correct": "C",
+        "explanation": "B4 به شکستگی-دررفتگی پری‌لونار ترانس‌اسکافوئید اشاره دارد. طبقه‌بندی مکمل توصیف مورفولوژی است و جای ارزیابی کامل راستای کارپ را نمی‌گیرد.",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "fach": "msk"
+      },
+      {
+        "id": "scaphoid-snac-pattern",
+        "question": "در عدم جوش‌خوردن مزمن اسکافوئید چه الگویی ممکن است ایجاد شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "الگوی آرتروز SNAC با شروع در سمت رادیال"
+          },
+          {
+            "id": "B",
+            "text": "دررفتگی قطعی لونیت"
+          },
+          {
+            "id": "C",
+            "text": "ناپایداری منفرد DRUJ"
+          },
+          {
+            "id": "D",
+            "text": "رادیوگرافی طبیعی در تمام نماها"
+          }
+        ],
+        "correct": "A",
+        "explanation": "عدم جوش‌خوردن مزمن اسکافوئید ممکن است الگوی SNAC با آرتروزِ آغازشونده از سمت رادیال و پیشرونده ایجاد کند؛ یک نما برای مرحله‌بندی کامل کافی نیست.",
+        "tags": [
+          "skaphoidfraktur"
+        ],
+        "fach": "msk"
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "scaphoid-fc-b4",
+      "topicId": "skaphoidfraktur",
+      "category": {
+        "de": "Klassifikation",
+        "en": "Classification",
+        "fa": "طبقه‌بندی"
+      },
+      "front": {
+        "de": "Welcher Herbert-Typ steht für eine transskaphoidale perilunäre Frakturluxation?",
+        "en": "Which Herbert type describes a trans-scaphoid perilunate fracture-dislocation?",
+        "fa": "کدام نوع هربرت نشان‌دهندهٔ شکستگی-دررفتگی پری‌لونار ترانس‌اسکافوئید است؟"
+      },
+      "answer": {
+        "de": "B4.",
+        "en": "B4.",
+        "fa": "B4."
+      },
+      "explanation": {
+        "de": "Die vollständige Karpalstellung und Begleitverletzungen zusätzlich beschreiben.",
+        "en": "Also describe complete carpal alignment and associated injuries.",
+        "fa": "راستای کامل کارپ و آسیب‌های همراه را نیز توصیف کنید."
+      }
+    },
+    {
+      "id": "scaphoid-fc-snac",
+      "topicId": "skaphoidfraktur",
+      "category": {
+        "de": "Chronische Verletzung",
+        "en": "Chronic injury",
+        "fa": "آسیب مزمن"
+      },
+      "front": {
+        "de": "Welches degenerative Muster kann bei chronischer Skaphoidpseudarthrose entstehen?",
+        "en": "Which degenerative pattern can develop with chronic scaphoid nonunion?",
+        "fa": "در عدم جوش‌خوردن مزمن اسکافوئید چه الگوی دژنراتیوی ممکن است ایجاد شود؟"
+      },
+      "answer": {
+        "de": "SNAC-Arthrose, oft radial beginnend und fortschreitend.",
+        "en": "SNAC arthritis, often starting radially and progressing.",
+        "fa": "آرتروز SNAC که اغلب از سمت رادیال آغاز می‌شود و پیشرفت می‌کند."
+      },
+      "explanation": {
+        "de": "Eine einzelne Röntgenprojektion reicht nicht für eine vollständige Stadieneinteilung.",
+        "en": "A single radiographic projection is insufficient for full staging.",
+        "fa": "یک نمای رادیوگرافی برای مرحله‌بندی کامل کافی نیست."
+      }
+    }
+  ],
+  "lesson": {
+    "id": "skaphoidfraktur",
+    "title": {
+      "de": "Skaphoidfraktur und SNAC-Muster",
+      "en": "Scaphoid fracture and the SNAC pattern",
+      "fa": "شکستگی اسکافوئید و الگوی SNAC"
+    },
+    "hero": "/msk/scaphoid/scaphoid-fracture-schematic.svg",
+    "heroAlt": {
+      "de": "Lehrschematische Darstellung des Skaphoids mit Fraktur im mittleren Drittel und konzeptionellem Übergang von Pseudarthrose zu Handgelenksarthrose",
+      "en": "Educational schematic of the scaphoid with a waist fracture and a conceptual progression from nonunion to wrist arthritis",
+      "fa": "شماتیک آموزشی اسکافوئید با شکستگی در ناحیه میانی و روند مفهومی از عدم جوش‌خوردن تا آرتروز مچ"
+    },
+    "scope": {
+      "de": "Diese Lektion verbindet zwei bildgebende Fragestellungen: die Einordnung akuter Skaphoidfrakturen und das Erkennen des späten degenerativen SNAC-Musters bei Pseudarthrose. Die Klassifikation beschreibt die Morphologie und ersetzt weder die klinische Beurteilung noch eine Therapieentscheidung.",
+      "en": "This lesson connects two imaging tasks: classifying acute scaphoid fracture patterns and recognizing the late degenerative pattern associated with nonunion (SNAC). Classification describes morphology; by itself it does not replace clinical assessment or treatment decisions.",
+      "fa": "این درس دو هدف تصویربرداری را به هم پیوند می‌دهد: طبقه‌بندی الگوی شکستگی حاد اسکافوئید و شناخت الگوی دژنراتیو دیررس همراه با عدم جوش‌خوردن (SNAC). طبقه‌بندی مورفولوژی را توصیف می‌کند و به‌تنهایی جای ارزیابی بالینی یا تصمیم درمانی نیست."
+    },
+    "sections": [
+      {
+        "id": "klassifikation",
+        "icon": "⌘",
+        "title": {
+          "de": "Zuerst Frakturlinie und Stabilität einordnen",
+          "en": "Start with fracture line and stability",
+          "fa": "ابتدا خط شکستگی و پایداری را مشخص کنید"
+        },
+        "lead": {
+          "de": "In der Herbert-Klassifikation bezeichnet Typ A eine akute stabile und Typ B eine akute instabile Fraktur. Beschreiben Sie im Bild die Frakturlokalisation, die Vollständigkeit und eine mögliche begleitende Karpaldislokation.",
+          "en": "In the Herbert classification, type A refers to an acute stable fracture and type B to an acute unstable fracture. On imaging, describe the fracture location, whether it is complete, and whether there is an associated carpal dislocation.",
+          "fa": "در طبقه‌بندی هربرت، نوع A به شکستگی حاد پایدار و نوع B به شکستگی حاد ناپایدار اشاره دارد. در تصویر، محل خط شکستگی، کامل‌بودن آن و همراهی با دررفتگی کارپ را توصیف کنید."
+        },
+        "paragraphs": [
+          {
+            "de": "Die Muster A1 und A2 gehören zu Gruppe A: A1 ist eine Fraktur des Skaphoidtuberkels, A2 eine inkomplette, nicht dislozierte Fraktur der Taille. Gruppe B umfasst vollständige oder instabile Muster: B1 distal schräg, B2 vollständige Taillenfraktur, B3 Fraktur des proximalen Pols und B4 Fraktur mit Dislokation.",
+            "en": "Patterns A1 and A2 are in group A: A1 is a scaphoid tubercle fracture; A2 is an incomplete, nondisplaced waist fracture. Group B covers complete or unstable patterns: B1 distal oblique, B2 complete waist fracture, B3 proximal-pole fracture, and B4 fracture with dislocation.",
+            "fa": "الگوهای A1 و A2 در گروه A هستند: A1 شکستگی تکمهٔ اسکافوئید و A2 شکستگی ناکامل و بدون جابه‌جایی در ناحیهٔ waist است. گروه B الگوهای کامل یا ناپایدار را شامل می‌شود: B1 مایل دیستال، B2 شکستگی کامل waist، B3 شکستگی قطب پروگزیمال و B4 شکستگی همراه با دررفتگی است."
+          },
+          {
+            "de": "Einige spätere Fassungen ergänzen B5 für eine mehrfragmentäre Fraktur; dieses Muster ist in der Abbildung der Quellseite nicht dargestellt. In der klassischen Klassifikation steht C für verzögerte Heilung und D für eine etablierte Pseudarthrose. Diese Buchstaben sind von den akuten Untertypen A und B zu unterscheiden.",
+            "en": "Some later versions add B5 for a comminuted fracture; this subtype is not shown on the source-page figure. In the classic classification, C refers to delayed union and D to established nonunion. Do not confuse these letters with the acute A and B subtypes.",
+            "fa": "در برخی نسخه‌های تکمیلی، B5 برای شکستگی چندقطعه‌ای افزوده شده است؛ این زیرگروه در شکل صفحهٔ منبع نیست. در طبقه‌بندی کلاسیک، C به جوش‌خوردن با تأخیر و D به عدم جوش‌خوردن تثبیت‌شده اشاره دارد. این حروف را با زیرگروه‌های A و B شکستگی حاد اشتباه نگیرید."
+          },
+          {
+            "de": "Die Gefäße treten überwiegend distal ein; der proximale Pol ist daher stärker auf den retrograden intraossären Blutfluss angewiesen. Eine B3-Fraktur am proximalen Pol ist anfälliger für Ischämie und Osteonekrose. Die Frakturlokalisation erhöht das Risiko, beweist aber keine Osteonekrose.",
+            "en": "Most vessels enter distally, so the proximal pole relies more on retrograde intraosseous blood flow. A B3 proximal-pole fracture is more vulnerable to ischemia and osteonecrosis. Fracture location raises concern but does not by itself establish osteonecrosis.",
+            "fa": "بیشتر عروق از بخش دیستال وارد می‌شوند؛ بنابراین قطب پروگزیمال بیشتر به جریان خون داخل‌استخوانی رتروگراد وابسته است. شکستگی B3 در قطب پروگزیمال نسبت به ایسکمی و استئونکروز آسیب‌پذیرتر است. محل شکستگی خطر را افزایش می‌دهد، اما به‌تنهایی استئونکروز را ثابت نمی‌کند."
+          }
+        ],
+        "image": "/msk/scaphoid/source-herbert-classification-p19.jpg",
+        "imageLabelTranslations": [
+          {
+            "de": "Typ A (stabile Frakturen): A1 Fraktur des Tuberkulums; A2 undislozierte Querfraktur im mittleren oder distalen Drittel.",
+            "en": "Type A (stable fractures): A1 tubercle fracture; A2 nondisplaced transverse fracture in the middle or distal third.",
+            "fa": "نوع A (شکستگی‌های پایدار): A1 شکستگی تکمه؛ A2 شکستگی عرضی بدون جابه‌جایی در یک‌سوم میانی یا دیستال."
+          },
+          {
+            "de": "Typ B (instabile Frakturen): B1 Schrägfraktur; B2 dislozierte oder klaffende Fraktur; B3 Fraktur des proximalen Drittels; B4 transskaphoidale perilunäre Luxationsfraktur.",
+            "en": "Type B (unstable fractures): B1 oblique fracture; B2 displaced or gaping fracture; B3 proximal-third fracture; B4 trans-scaphoid perilunate fracture-dislocation.",
+            "fa": "نوع B (شکستگی‌های ناپایدار): B1 شکستگی مایل؛ B2 شکستگی جابه‌جا یا دارای فاصله؛ B3 شکستگی یک‌سوم پروگزیمال؛ B4 شکستگی-دررفتگی پری‌لونار ترانس‌اسکافوئید."
+          },
+          {
+            "de": "Die Abbildung gibt den Wortlaut der PDF wieder („disloziert oder klaffend“). Die AO-Referenz definiert B2 als vollständige Taillenfraktur. Das sind verwandte Beschreibungen, aber keine austauschbaren Formulierungen; im Lektionstext wird deshalb die AO-Definition verwendet.",
+            "en": "The figure preserves the PDF wording (“displaced or gaping”). AO defines B2 as a complete waist fracture. These descriptions are related but not interchangeable; the lesson text therefore uses the AO definition.",
+            "fa": "شکل عبارت PDF («جابه‌جا یا دارای فاصله») را حفظ می‌کند. AO، B2 را شکستگی کامل ناحیهٔ waist تعریف می‌کند. این توصیف‌ها به هم مربوط‌اند، اما معادلِ قابل‌جایگزینی نیستند؛ بنابراین متن درس از تعریف AO استفاده می‌کند."
+          }
+        ],
+        "imageAlt": {
+          "de": "Herbert-Klassifikationsschema aus MSK.pdf, Seite 19, mit den Mustern A1, A2, B1, B2, B3 und B4",
+          "en": "Herbert classification figure from MSK.pdf p.19 showing patterns A1, A2, B1, B2, B3 and B4",
+          "fa": "شکل طبقه‌بندی هربرت در MSK.pdf صفحهٔ ۱۹ با الگوهای A1، A2، B1، B2، B3 و B4"
+        },
+        "imageCaption": {
+          "de": "Ausschnitt aus der Lehrabbildung des PDF; dargestellt ist ein Klassifikationsschema, keine diagnostische Röntgenaufnahme. Die Untertypen im Text wurden mit der AO-Referenz abgeglichen.",
+          "en": "Crop from the PDF teaching figure; this is a classification drawing, not a diagnostic radiograph. The subtype wording in the lesson is aligned with the AO reference.",
+          "fa": "برشی از شکل آموزشی PDF؛ این تصویر طرح طبقه‌بندی است، نه رادیوگرافی تشخیصی. تعریف زیرگروه‌ها در متن با مرجع AO هماهنگ شده است."
+        },
+        "task": {
+          "de": "Selbstprüfung: Eine Skaphoidfraktur tritt zusammen mit einer perilunären Karpalluxation auf. Welcher Herbert-Untertyp passt?",
+          "en": "Self-check: A scaphoid fracture occurs with a perilunate carpal dislocation. Which Herbert subtype fits?",
+          "fa": "خودآزمایی: شکستگی اسکافوئید همراه با دررفتگی پری‌لونار کارپ دیده می‌شود. کدام زیرگروه هربرت مناسب است؟"
+        },
+        "options": [
+          {
+            "de": "A1",
+            "en": "A1",
+            "fa": "A1"
+          },
+          {
+            "de": "B2",
+            "en": "B2",
+            "fa": "B2"
+          },
+          {
+            "de": "B4",
+            "en": "B4",
+            "fa": "B4"
+          },
+          {
+            "de": "B3",
+            "en": "B3",
+            "fa": "B3"
+          }
+        ],
+        "answer": 2,
+        "feedback": [
+          {
+            "de": "A1 bezeichnet die Fraktur des Skaphoidtuberkels.",
+            "en": "A1 denotes a scaphoid tubercle fracture.",
+            "fa": "A1 به شکستگی تکمهٔ اسکافوئید اشاره دارد."
+          },
+          {
+            "de": "B2 ist die vollständige Fraktur im Skaphoid-waist; eine Begleitluxation gehört zu B4.",
+            "en": "B2 is a complete scaphoid-waist fracture; an associated dislocation is classified as B4.",
+            "fa": "B2 شکستگی کامل ناحیهٔ waist اسکافوئید است؛ دررفتگی همراه در گروه B4 قرار می‌گیرد."
+          },
+          {
+            "de": "Richtig: B4 ist die Skaphoidfraktur mit karpaler Luxation, typischerweise transskaphoidal-perilunär.",
+            "en": "Correct: B4 is a scaphoid fracture with carpal dislocation, typically trans-scaphoid perilunate.",
+            "fa": "درست است: B4 شکستگی اسکافوئید همراه با دررفتگی کارپ، معمولاً از نوع ترانس‌اسکافوئیدال-پری‌لونار است."
+          },
+          {
+            "de": "B3 bezeichnet die Fraktur des proximalen Pols.",
+            "en": "B3 denotes a proximal-pole fracture.",
+            "fa": "B3 به شکستگی قطب پروگزیمال اشاره دارد."
+          }
+        ],
+        "note": {
+          "de": "Ordnen Sie nach Frakturmorphologie und Begleitverletzung zu. Ein Untertyp allein ersetzt nicht die vollständige Beurteilung des Handgelenks.",
+          "en": "Classify by fracture morphology and associated injury. A subtype alone does not replace full assessment of the wrist.",
+          "fa": "بر پایهٔ مورفولوژی شکستگی و آسیب همراه طبقه‌بندی کنید. یک زیرگروه به‌تنهایی جای ارزیابی کامل مچ را نمی‌گیرد."
+        }
+      },
+      {
+        "id": "pseudarthrose-snac",
+        "icon": "⌁",
+        "title": {
+          "de": "Von der Pseudarthrose zum SNAC-Muster",
+          "en": "From nonunion to the SNAC pattern",
+          "fa": "از عدم جوش‌خوردن تا الگوی SNAC"
+        },
+        "lead": {
+          "de": "SNAC steht für „scaphoid nonunion advanced collapse“ und bezeichnet ein Muster fortschreitender Arthrose, das sich nach einer chronischen Skaphoidpseudarthrose entwickeln kann. Ausmaß und Verlauf sind nicht bei jeder Pseudarthrose gleich.",
+          "en": "SNAC means scaphoid nonunion advanced collapse: a pattern of progressive arthritis that can develop after chronic scaphoid nonunion. It does not occur to the same extent or at the same rate in every nonunion.",
+          "fa": "SNAC مخفف scaphoid nonunion advanced collapse است: الگویی از آرتروز پیشرونده که ممکن است پس از عدم جوش‌خوردن مزمن اسکافوئید ایجاد شود. شدت و سرعت این روند در همهٔ موارد عدم جوش‌خوردن یکسان نیست."
+        },
+        "paragraphs": [
+          {
+            "de": "Im Röntgenbild zunächst auf eine chronische Unterbrechung des Skaphoids und anschließend auf die Verteilung der umgebenden Arthrose achten. Das klassische Muster beginnt zwischen Radiusstyloid und distalem Skaphoidpol; danach können das Radioskaphoidalgelenk und das Mediokarpalgelenk, besonders das Kapitolunargelenk, betroffen sein.",
+            "en": "On radiographs, first look for chronic discontinuity of the scaphoid, then assess the distribution of adjacent arthritis. The classic pattern begins at the radial styloid–distal scaphoid articulation, then extends to the radioscaphoid and midcarpal joints, particularly the capitolunate joint.",
+            "fa": "در رادیوگرافی ابتدا به ناپیوستگی مزمن اسکافوئید و سپس به توزیع آرتروز اطراف آن توجه کنید. الگوی کلاسیک از مفصل زائدهٔ نیزه‌ای رادیوس با قطعهٔ دیستال اسکافوئید آغاز می‌شود؛ سپس به مفصل رادیواسکافوئید و مفصل میدکارپال، به‌ویژه کاپیتولونات، گسترش می‌یابد."
+          },
+          {
+            "de": "Die folgende Abbildung ist im PDF als SNAC-Handgelenk bezeichnet. Sie dient zur Orientierung am Gesamtmuster; aus einer einzelnen Projektion lassen sich weder alle Stadien noch sämtliche betroffenen Gelenkflächen sicher bestimmen.",
+            "en": "The next-page image is labelled as a SNAC wrist in the PDF. Use it to recognize the overall pattern; a single projection cannot establish every stage or every involved articular surface with certainty.",
+            "fa": "تصویر صفحهٔ بعد در PDF به‌عنوان مچ SNAC معرفی شده است. آن را برای تطبیق الگوی کلی ببینید؛ از یک نمای منفرد نمی‌توان همهٔ مراحل یا تمام سطوح مفصلی را با قطعیت تعیین کرد."
+          }
+        ],
+        "rows": [
+          [
+            {
+              "de": "Beginn",
+              "en": "Early pattern",
+              "fa": "شروع"
+            },
+            {
+              "de": "Radiusstyloid ↔ distaler Skaphoidpol",
+              "en": "Radial styloid ↔ distal scaphoid fragment",
+              "fa": "زائدهٔ نیزه‌ای رادیوس ↔ قطعهٔ دیستال اسکافوئید"
+            }
+          ],
+          [
+            {
+              "de": "Ausbreitung",
+              "en": "Extension",
+              "fa": "گسترش"
+            },
+            {
+              "de": "Radioskaphoidal-, danach Mediokarpal-/Kapitolunargelenk",
+              "en": "Radioscaphoid joint, then the midcarpal/capitolunate joint",
+              "fa": "مفصل رادیواسکافوئید و سپس مفصل میدکارپال/کاپیتولونات"
+            }
+          ]
+        ],
+        "image": "/msk/scaphoid/source-snac-radiograph-p20.jpg",
+        "imageAlt": {
+          "de": "Röntgenaufnahme des Handgelenks, im MSK.pdf auf Seite 20 als SNAC bezeichnet",
+          "en": "Wrist radiograph labelled as SNAC in MSK.pdf p.20",
+          "fa": "رادیوگرافی مچ که در MSK.pdf صفحهٔ ۲۰ به‌عنوان SNAC معرفی شده است"
+        },
+        "imageCaption": {
+          "de": "Quelle: MSK.pdf, physische Seite 20 (Druckseite 19). Die Bezeichnung stammt aus dem PDF; eine einzelne Projektion reicht nicht für eine vollständige Stadieneinteilung.",
+          "en": "Source: MSK.pdf, physical p.20 (printed p.19). The label comes from the supplied PDF; a single projection is insufficient for full staging.",
+          "fa": "منبع: MSK.pdf، صفحهٔ PDF ۲۰ (صفحهٔ چاپی ۱۹). نام‌گذاری از خود PDF است؛ یک نما برای مرحله‌بندی کامل کافی نیست."
+        }
+      },
+      {
+        "id": "abgrenzung",
+        "icon": "◎",
+        "title": {
+          "de": "Pseudarthrose und Normvariante unterscheiden",
+          "en": "Do not confuse nonunion with a normal variant",
+          "fa": "عدم جوش‌خوردن را با واریانت طبیعی اشتباه نگیرید"
+        },
+        "lead": {
+          "de": "Die Quellseite stellt ein bipartites Skaphoid einer Pseudarthrose gegenüber. Der Vergleich der Ränder und der klinische Kontext helfen, nicht jede Skaphoidspalte als alte Fraktur einzuordnen.",
+          "en": "The source page places a bipartite scaphoid example beside a pseudarthrosis. Comparing the margins and clinical context helps avoid treating every scaphoid cleft as an old fracture.",
+          "fa": "صفحهٔ منبع نمونه‌ای از اسکافوئید دوپاره را کنار شبه‌آرتروز قرار می‌دهد. مقایسهٔ حاشیه‌ها و زمینهٔ بالینی کمک می‌کند هر شکاف اسکافوئید را شکستگی قدیمی تلقی نکنیم."
+        },
+        "paragraphs": [
+          {
+            "de": "Im Quellbeispiel wird die Pseudarthrose mit sklerosierten Rändern und knöchernem Umbau beschrieben; das bipartite Skaphoid gilt dort als Normvariante. Der Bildeindruck allein ist nicht immer eindeutig. Anamnese, Lokalisation, Beschaffenheit der Ränder und degenerative Zeichen gemeinsam beurteilen.",
+            "en": "In the source example, pseudarthrosis is described with sclerotic margins and bony remodelling; a bipartite scaphoid is presented as a normal variant. Appearance alone may not settle every case; interpret trauma history, location and margin character alongside degenerative change.",
+            "fa": "در نمونهٔ منبع، شبه‌آرتروز با حاشیه‌های اسکلروتیک و بازسازی استخوانی توصیف شده و اسکافوئید دوپاره به‌عنوان واریانت طبیعی آمده است. ظاهر به‌تنهایی همیشه کافی نیست؛ سابقهٔ تروما، محل و ویژگی حاشیه‌ها و شواهد آرتروز را با هم در نظر بگیرید."
+          }
+        ],
+        "image": "/msk/scaphoid/source-pseudarthrosis-vs-bipartitum-p19.jpg",
+        "imageLabelTranslations": [
+          {
+            "de": "Skaphoidpseudarthrose = fehlende knöcherne Heilung des Skaphoids.",
+            "en": "Skaphoidpseudarthrose = scaphoid nonunion.",
+            "fa": "Skaphoidpseudarthrose یعنی عدم جوش‌خوردن اسکافوئید."
+          },
+          {
+            "de": "Os scaphoideum bipartitum = bipartites Os scaphoideum, eine Variante mit zwei Anteilen.",
+            "en": "Os scaphoideum bipartitum = bipartite scaphoid, a two-part variant.",
+            "fa": "Os scaphoideum bipartitum = اسکافوئید دوپاره، یک واریانت دو‌بخشی."
+          }
+        ],
+        "imageAlt": {
+          "de": "Zwei Röntgenaufnahmen auf PDF-Seite 19 zum Vergleich von Skaphoidpseudarthrose und bipartitem Skaphoid",
+          "en": "Paired radiographs comparing scaphoid pseudarthrosis and a bipartite scaphoid on PDF p.19",
+          "fa": "دو رادیوگرافی مقایسه‌ای شبه‌آرتروز اسکافوئید و اسکافوئید دوپاره در صفحهٔ ۱۹ PDF"
+        },
+        "imageCaption": {
+          "de": "Ausschnitt aus den Vergleichsaufnahmen in MSK.pdf, physische Seite 19; die Beschriftungen der Quelle wurden beibehalten.",
+          "en": "Crop from the paired images in MSK.pdf, physical p.19; the source labels are retained.",
+          "fa": "برش از تصاویر مقایسه‌ای MSK.pdf، صفحهٔ PDF ۱۹؛ برچسب‌های منبع حفظ شده‌اند."
+        }
+      }
+    ],
+    "summary": [
+      {
+        "de": "A: akut und stabil; B: akut und instabil. Ort, Vollständigkeit und Begleitluxation gezielt beschreiben.",
+        "en": "A: acute and stable; B: acute and unstable. Describe location, completeness and any associated dislocation.",
+        "fa": "A: حاد و پایدار؛ B: حاد و ناپایدار. محل، کامل‌بودن و دررفتگی همراه را مشخص کنید."
+      },
+      {
+        "de": "Chronische Skaphoidpseudarthrose kann ein SNAC-Arthrosemuster mit radial beginnender und zur Mittelhandwurzel fortschreitender Beteiligung zeigen.",
+        "en": "Chronic scaphoid nonunion can develop a SNAC arthritis pattern that starts radially and extends into the midcarpal joint.",
+        "fa": "عدم جوش‌خوردن مزمن اسکافوئید ممکن است الگوی آرتروز SNAC ایجاد کند که از سمت رادیال آغاز و به مفصل میدکارپال گسترش می‌یابد."
+      },
+      {
+        "de": "Ein einzelnes Röntgenbild erlaubt keine vollständige SNAC-Stadieneinteilung; eine bipartite Scaphoidform kann eine Pseudarthrose imitieren.",
+        "en": "One radiograph cannot fully stage SNAC; a bipartite scaphoid can mimic nonunion.",
+        "fa": "یک رادیوگرافی برای مرحله‌بندی کامل SNAC کافی نیست؛ اسکافوئید دوپاره می‌تواند شبه‌آرتروز را تقلید کند."
+      }
+    ],
+    "references": [
+      {
+        "title": {
+          "de": "AO Surgery Reference: Herbert-Klassifikation der Karpalknochenfrakturen",
+          "en": "AO Surgery Reference: Herbert classification of carpal bone fractures",
+          "fa": "مرجع AO Surgery Reference: طبقه‌بندی هربرت شکستگی استخوان‌های کارپ"
+        },
+        "href": "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/further-reading/classifications-for-fractures-of-carpal-bones",
+        "citation": {
+          "de": "Definitionen der akuten Untertypen A1–B5; online geprüft am 20.10.2026.",
+          "en": "Definitions of acute subtypes A1–B5; checked online on 20 Oct 2026.",
+          "fa": "تعریف زیرگروه‌های حاد A1 تا B5؛ بررسی آنلاین در ۲۰ اکتبر ۲۰۲۶."
+        }
+      },
+      {
+        "title": {
+          "de": "Herbert TJ, Fisher WE. Management of the fractured scaphoid using a new bone screw. 1984.",
+          "en": "Herbert TJ, Fisher WE. Management of the fractured scaphoid using a new bone screw. 1984.",
+          "fa": "مقالهٔ Herbert و Fisher دربارهٔ شکستگی اسکافوئید، ۱۹۸۴"
+        },
+        "href": "https://pubmed.ncbi.nlm.nih.gov/6693468/",
+        "citation": {
+          "de": "Originalarbeit zur Klassifikation, PubMed PMID 6693468.",
+          "en": "Original classification paper, PubMed PMID 6693468.",
+          "fa": "مقالهٔ اصلی طبقه‌بندی، شناسهٔ PubMed: 6693468."
+        }
+      },
+      {
+        "title": {
+          "de": "Vender MI et al. Degenerative change in symptomatic scaphoid nonunion. 1987.",
+          "en": "Vender MI et al. Degenerative change in symptomatic scaphoid nonunion. 1987.",
+          "fa": "مقالهٔ Vender و همکاران دربارهٔ تغییرات دژنراتیو در عدم جوش‌خوردن علامت‌دار اسکافوئید، ۱۹۸۷"
+        },
+        "href": "https://pubmed.ncbi.nlm.nih.gov/3611645/",
+        "citation": {
+          "de": "Retrospektive radiographische Untersuchung von 64 symptomatischen Nonunions; PubMed PMID 3611645.",
+          "en": "Retrospective radiographic study of 64 symptomatic nonunions; PubMed PMID 3611645.",
+          "fa": "مطالعهٔ گذشته‌نگر رادیوگرافیک روی ۶۴ مورد عدم جوش‌خوردن علامت‌دار؛ شناسهٔ PubMed: 3611645."
+        }
+      },
+      {
+        "title": {
+          "de": "AO Surgery Reference: Proximal pole fracture and vascularity",
+          "en": "AO Surgery Reference: Proximal pole fracture and vascularity",
+          "fa": "مرجع AO Surgery Reference: شکستگی قطب پروگزیمال و خون‌رسانی"
+        },
+        "href": "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/scaphoid-proximal-pole/definition",
+        "citation": {
+          "de": "Proximal-pole fractures rely mainly on distal-to-proximal intraosseous blood flow and are prone to ischemia, osteonecrosis, delayed union and nonunion.",
+          "en": "Proximal-pole fractures rely mainly on distal-to-proximal intraosseous blood flow and are prone to ischemia, osteonecrosis, delayed union and nonunion.",
+          "fa": "شکستگی‌های قطب پروگزیمال عمدتاً به جریان خون داخل‌استخوانی از دیستال به پروگزیمال وابسته‌اند و در معرض ایسکمی، استئونکروز، تأخیر جوش‌خوردن و عدم جوش‌خوردن هستند."
+        }
+      }
+    ]
+  }
+}

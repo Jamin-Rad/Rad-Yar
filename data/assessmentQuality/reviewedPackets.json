@@ -31,7 +31,13 @@
     "msk-spine/packet05/review-ak.json",
     "msk-spine/packet06/review-de-quervain.json",
     "thorax-mamma/review-packet05-mammography-basics.json",
-    "integration-review-locale-topic-identities.json"
+    "integration-review-locale-topic-identities.json",
+    "abdomen-technik/review-packet04.json",
+    "msk-spine/packet07/review-wrist.json",
+    "msk-spine/packet08/review-osteomyelitis.json",
+    "brain/review-packet15-icb.json",
+    "brain/review-packet16-hma.json",
+    "thorax-mamma/review-packet06-hrct-architecture.json"
   ],
   "questionIds": [
     "aq-brain-aq-balkenagenesie-de-direct-assessment",
@@ -109,7 +115,17 @@
     "aq-brain-aq-demenzmuster-de-mta-components",
     "aq-brain-aq-demenzmuster-de-dlb-biomarker",
     "aq-brain-aq-demenzmuster-de-ftd-pattern",
-    "aq-msk-de-quervain-de-provocation-study-limit"
+    "aq-msk-de-quervain-de-provocation-study-limit",
+    "aq-atv-ulcer-mpr-de",
+    "aq-atv-lowergi-modality-de",
+    "aq-atv-lowergi-territory-de",
+    "aq-atv-hernia-occult-imaging-de",
+    "aq-atv-hernia-perfusion-concern-de",
+    "aq-atv-hca-risk-context-de",
+    "aq-msk-sehnenpathologien-hand-de-lister-course",
+    "aq-msk-osteomyelitis-de-periosteal-report",
+    "aq-msk-osteomyelitis-de-brodie-variability",
+    "aq-msk-osteomyelitis-de-paediatric-next-imaging"
   ],
   "cardIds": [
     "aq-brain-aq-balkenagenesie-direct-assessment",
@@ -193,7 +209,13 @@
     "aq-atv-pylorus-indeterminate-retrieval",
     "aq-brain-aq-demenzmuster-mta-components",
     "aq-brain-aq-demenzmuster-dlb-biomarker",
-    "aq-brain-aq-demenzmuster-ftd-pattern"
+    "aq-brain-aq-demenzmuster-ftd-pattern",
+    "aq-atv-ulcer-mpr",
+    "aq-atv-lowergi-modality",
+    "aq-msk-wrist-lister-course",
+    "aq-msk-osteomyelitis-periosteal-limit",
+    "aq-msk-osteomyelitis-brodie-variability",
+    "aq-msk-osteomyelitis-paediatric-imaging"
   ],
   "routes": [
     "/gehirn/anatomie/balkenagenesie",
@@ -252,6 +274,13 @@
     "/abdomen/gi/ileus-volvulus",
     "/gehirn/neurodegeneration/demenzmuster",
     "/msk/hand/de-quervain",
-    "/mamma/bildgebung/mammographie/grundlagen"
+    "/mamma/bildgebung/mammographie/grundlagen",
+    "/abdomen/gi/ulkuserkrankung",
+    "/abdomen/leber/angiomyolipom",
+    "/abdomen/gi/untere-gi-blutung",
+    "/abdomen/hernien/inguinal-femoral",
+    "/abdomen/leber/adenom",
+    "/msk/hand/strecksehnenfaecher",
+    "/msk/infektionen/osteomyelitis"
   ]
 }

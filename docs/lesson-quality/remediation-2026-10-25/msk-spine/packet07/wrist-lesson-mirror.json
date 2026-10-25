@@ -1,0 +1,809 @@
+{
+  "before": {
+    "id": "sehnenpathologien-hand",
+    "title": {
+      "de": "Handgelenk: Knochen und Strecksehnenfächer",
+      "en": "Wrist: carpal bones and extensor compartments",
+      "fa": "مچ دست: استخوان‌های کارپ و کمپارتمان‌های اکستانسور"
+    },
+    "hero": "/educational/wrist-extensor-compartments/hero.svg",
+    "heroAlt": {
+      "de": "Nichtdiagnostisches Orientierungsschema der sechs dorsalen Strecksehnenfächer am Handgelenk mit Radius, Ulna und Sehnengruppen.",
+      "en": "Non-diagnostic orientation schematic of the six dorsal wrist extensor compartments, with radius, ulna and tendon groups.",
+      "fa": "شماتیک جهت‌یابی غیرتشخیصی از شش کمپارتمان اکستانسور پشتی مچ دست، همراه با رادیوس، اولنا و گروه‌های تاندونی."
+    },
+    "scope": {
+      "de": "Diese Orientierungseinheit deckt die dorsale Handwurzelanatomie auf MSK.pdf, PDF-S. 40 (Druck-S. 39), und die Strecksehnenfächer auf PDF-S. 41 (Druck-S. 40) ab. Die Originalabbildungen dienen der anatomischen Orientierung, nicht der Pathologiediagnostik.",
+      "en": "This orientation lesson covers dorsal carpal anatomy from MSK.pdf, PDF p. 40 (printed p. 39), and the extensor compartments from PDF p. 41 (printed p. 40). The original figures support anatomic orientation, not pathology diagnosis.",
+      "fa": "این درس جهت‌یابی، آناتومی پشتی کارپ را از صفحهٔ ۴۰ PDF (چاپی ۳۹) و کمپارتمان‌های اکستانسور را از صفحهٔ ۴۱ PDF (چاپی ۴۰) در MSK.pdf پوشش می‌دهد. شکل‌های اصلی برای جهت‌یابی آناتومیک‌اند، نه تشخیص پاتولوژی."
+    },
+    "sections": [
+      {
+        "id": "carpal-orientation",
+        "icon": "axial-orientation",
+        "title": {
+          "de": "Welche Knochen und Gelenklinien sehe ich dorsal?",
+          "en": "Which bones and joint lines do I see dorsally?",
+          "fa": "در نمای پشتی چه استخوان‌ها و خطوط مفصلی می‌بینم؟"
+        },
+        "lead": {
+          "de": "Orientieren Sie die Handwurzel von distal nach proximal: Metakarpalia, distale Handwurzelreihe, proximale Handwurzelreihe und schließlich Radius und Ulna. Folgen Sie anschließend den farbigen Gelenklinien in der Abbildung.",
+          "en": "Orient the carpus from distal to proximal: metacarpals, distal carpal row, proximal carpal row, then radius and ulna. Next, trace the coloured joint lines in the figure.",
+          "fa": "کارپ را از دیستال به پروگزیمال جهت‌یابی کنید: متاکارپ‌ها، ردیف دیستال استخوان‌های کارپ، ردیف پروگزیمال و سپس رادیوس و اولنا. بعد خطوط مفصلی رنگی شکل را دنبال کنید."
+        },
+        "image": "/msk/hand/carpal-joint-lines-pdf-p40.png",
+        "imageAlt": {
+          "de": "Schematische dorsale Ansicht der Handwurzel aus MSK.pdf: beschriftete Handwurzelknochen und farbige Linien für Intermetakarpal-, Karpometakarpal-, Interkarpal-, Mediokarpal- und Radiokarpalgelenke sowie das Daumensattelgelenk.",
+          "en": "Schematic dorsal view of the carpus from MSK.pdf: labelled carpal bones and coloured lines for intermetacarpal, carpometacarpal, intercarpal, midcarpal and radiocarpal joints, plus the thumb carpometacarpal joint.",
+          "fa": "نمای شماتیک پشتی کارپ از MSK.pdf: استخوان‌های کارپ برچسب‌گذاری شده‌اند و خطوط رنگی مفاصل بین‌متاکارپی، کارپومتاکارپی، بین‌کارپی، میدکارپی و رادیوکارپی و نیز مفصل کارپومتاکارپی شست را نشان می‌دهند."
+        },
+        "imageCaption": {
+          "de": "MSK.pdf, PDF-S. 40 (Druck-S. 39), dorsale Ansicht. Farbige Linien markieren Gelenkspalten; sie sind keine MRT-Ebenen.",
+          "en": "MSK.pdf, PDF p. 40 (printed p. 39), dorsal view. Coloured lines mark joint spaces; they are not MRI planes.",
+          "fa": "MSK.pdf، صفحهٔ ۴۰ PDF (چاپی ۳۹)، نمای پشتی. خطوط رنگی فواصل مفصلی را مشخص می‌کنند و صفحه‌های MRI نیستند."
+        },
+        "imageKeyTitle": {
+          "de": "Begriffe aus der Abbildung",
+          "en": "Labels in the source figure",
+          "fa": "برچسب‌های شکل منبع"
+        },
+        "imageKey": [
+          {
+            "source": "Intermetakarpalgelenke",
+            "label": {
+              "de": "Intermetakarpalgelenke",
+              "en": "Intermetacarpal joints",
+              "fa": "مفاصل بین‌متاکارپی"
+            }
+          },
+          {
+            "source": "Karpometakarpalgelenke II–V",
+            "label": {
+              "de": "Karpometakarpalgelenke II–V",
+              "en": "Carpometacarpal joints II–V",
+              "fa": "مفاصل کارپومتاکارپی II تا V"
+            }
+          },
+          {
+            "source": "Daumensattelgelenk",
+            "label": {
+              "de": "Daumensattelgelenk",
+              "en": "Thumb carpometacarpal joint",
+              "fa": "مفصل کارپومتاکارپی شست"
+            }
+          },
+          {
+            "source": "Interkarpalgelenke",
+            "label": {
+              "de": "Interkarpalgelenke",
+              "en": "Intercarpal joints",
+              "fa": "مفاصل بین‌کارپی"
+            }
+          },
+          {
+            "source": "distales Handgelenk · Art. mediocarpalis",
+            "label": {
+              "de": "distales Handgelenk · Art. mediocarpalis",
+              "en": "Midcarpal joint",
+              "fa": "مفصل میدکارپی"
+            }
+          },
+          {
+            "source": "proximales Handgelenk · Art. radiocarpalis",
+            "label": {
+              "de": "proximales Handgelenk · Art. radiocarpalis",
+              "en": "Radiocarpal joint",
+              "fa": "مفصل رادیوکارپی"
+            }
+          }
+        ],
+        "task": {
+          "de": "Welche Knochenreihe liegt unmittelbar proximal der Metakarpalia?",
+          "en": "Which carpal row lies immediately proximal to the metacarpals?",
+          "fa": "کدام ردیف استخوان‌های کارپ بلافاصله در سمت پروگزیمال متاکارپ‌ها قرار دارد؟"
+        },
+        "options": [
+          {
+            "de": "Die distale Handwurzelreihe",
+            "en": "The distal carpal row",
+            "fa": "ردیف دیستال استخوان‌های کارپ"
+          },
+          {
+            "de": "Die proximale Handwurzelreihe",
+            "en": "The proximal carpal row",
+            "fa": "ردیف پروگزیمال استخوان‌های کارپ"
+          },
+          {
+            "de": "Radius und Ulna",
+            "en": "The radius and ulna",
+            "fa": "رادیوس و اولنا"
+          }
+        ],
+        "answer": 0,
+        "feedback": [
+          {
+            "de": "Richtig. Trapezium, Trapezoideum, Capitatum und Hamatum bilden die distale Handwurzelreihe.",
+            "en": "Correct. Trapezium, trapezoid, capitate and hamate form the distal carpal row.",
+            "fa": "درست است. تراپزیوم، تراپزوئید، کاپیتیت و هامیت ردیف دیستال کارپ را تشکیل می‌دهند."
+          },
+          {
+            "de": "Die proximale Reihe liegt weiter proximal; in der dargestellten dorsalen Ansicht sind Scaphoideum, Lunatum und Triquetrum beschriftet.",
+            "en": "The proximal row lies farther proximally; scaphoid, lunate and triquetrum are labelled in this dorsal view.",
+            "fa": "ردیف پروگزیمال در بالاتر قرار دارد؛ در نمای پشتی تصویر، اسکافوئید، لونیت و تری‌کوئتروم برچسب‌گذاری شده‌اند."
+          },
+          {
+            "de": "Radius und Ulna liegen proximal des Radiokarpalgelenks, nicht direkt neben den Metakarpalia.",
+            "en": "The radius and ulna lie proximal to the radiocarpal joint, not directly next to the metacarpals.",
+            "fa": "رادیوس و اولنا در سمت پروگزیمال مفصل رادیوکارپی قرار دارند و مستقیماً کنار متاکارپ‌ها نیستند."
+          }
+        ],
+        "source": {
+          "de": "MSK.pdf, PDF-S. 40 / Druck-S. 39.",
+          "en": "MSK.pdf, PDF p. 40 / printed p. 39.",
+          "fa": "MSK.pdf، صفحهٔ PDF ۴۰ / چاپی ۳۹."
+        }
+      },
+      {
+        "id": "axial-orientation",
+        "icon": "orientation",
+        "title": {
+          "de": "Wo liegen die Fächer im axialen Bild?",
+          "en": "Where are the compartments on an axial image?",
+          "fa": "کمپارتمان‌ها در تصویر محوری کجا قرار دارند؟"
+        },
+        "lead": {
+          "de": "Beginnen Sie mit Radius und Ulna. Der radiale Processus styloideus lokalisiert Fach I; das Lister-Tuberkulum trennt Fach II von III und lenkt die EPL-Sehne um den Radius. Lesen Sie die römischen Zahlen im Bild gemeinsam mit der Tabelle.",
+          "en": "Start with the radius and ulna. The radial styloid localizes compartment I; Lister tubercle separates II from III and redirects the EPL tendon around the radius. Read the Roman numerals in the image together with the table.",
+          "fa": "ابتدا رادیوس و اولنا را مشخص کنید. زائدهٔ استایلوئید رادیوس کمپارتمان I را مکان‌یابی می‌کند؛ تکمهٔ لیستر کمپارتمان‌های II و III را جدا می‌کند و مسیر EPL را به دور رادیوس تغییر می‌دهد. اعداد رومی تصویر را همراه جدول بخوانید."
+        },
+        "image": "/msk/hand/extensor-compartments-pdf-p41-axial-mri.png",
+        "imageAlt": {
+          "de": "Axiales MRT des Handgelenks mit Markierungen der Fächer I–VI und den Sehnenkürzeln APL, EPB, ECRL, ECRB, EPL, EDC, EIP, EDM und ECU um Radius und Ulna.",
+          "en": "Labelled axial wrist MRI: compartments I–VI and tendons APL, EPB, ECRL, ECRB, EPL, EDC, EIP, EDM and ECU are marked around the radius and ulna.",
+          "fa": "برش MRI محوریِ برچسب‌گذاری‌شده از مچ دست: کمپارتمان‌های I تا VI و تاندون‌های APL، EPB، ECRL، ECRB، EPL، EDC، EIP، EDM و ECU پیرامون رادیوس و اولنا مشخص شده‌اند."
+        },
+        "imageCaption": {
+          "de": "MSK.pdf, PDF-S. 41 (Druck-S. 40), axiale MRT zur Orientierung der Sehnenfächer. Dies ist eine anatomische Übersicht, kein pathologischer Fall.",
+          "en": "MSK.pdf, PDF p.41 (printed p.40), axial MRI for compartment orientation. This is an anatomic map, not a pathology case.",
+          "fa": "MSK.pdf، صفحهٔ PDF ۴۱ (چاپی ۴۰)، MRI محوری برای جهت‌یابی کمپارتمان‌ها. این تصویر نقشهٔ آناتومیک است، نه کیس پاتولوژیک."
+        },
+        "source": {
+          "de": "MSK.pdf, PDF-S. 41 / Druck-S. 40.",
+          "en": "MSK.pdf, PDF p. 41 / printed p. 40.",
+          "fa": "MSK.pdf، صفحهٔ PDF ۴۱ / چاپی ۴۰."
+        }
+      },
+      {
+        "id": "tendon-map",
+        "icon": "map",
+        "title": {
+          "de": "Welche Sehnen verlaufen durch die sechs Fächer?",
+          "en": "Which tendons pass through the six compartments?",
+          "fa": "کدام تاندون‌ها از شش کمپارتمان عبور می‌کنند؟"
+        },
+        "lead": {
+          "de": "Ordnen Sie jede Sehnengruppe ihrer Nummer zu. Die Lagebeziehungen dienen als Orientierung; sie ersetzen keine vollständige Beurteilung weiterer Strukturen.",
+          "en": "Match each tendon group to its number. The spatial relationships are orientation landmarks; they do not replace assessment of other structures.",
+          "fa": "هر گروه تاندونی را با شمارهٔ کمپارتمان متناظر کنید. روابط مکانی نشانه‌های جهت‌یابی‌اند و جای ارزیابی سایر ساختارها را نمی‌گیرند."
+        },
+        "rows": [
+          [
+            {
+              "de": "Fach",
+              "en": "Compartment",
+              "fa": "کمپارتمان"
+            },
+            {
+              "de": "Sehnen",
+              "en": "Tendons",
+              "fa": "تاندون‌ها"
+            },
+            {
+              "de": "Orientierungsmerkmal",
+              "en": "Landmark",
+              "fa": "نشانهٔ جهت‌یابی"
+            }
+          ],
+          [
+            {
+              "de": "I · lateral",
+              "en": "I · lateral",
+              "fa": "I · لترال"
+            },
+            {
+              "de": "APL · abductor pollicis longus; EPB · extensor pollicis brevis",
+              "en": "APL · abductor pollicis longus; EPB · extensor pollicis brevis",
+              "fa": "APL · abductor pollicis longus؛ EPB · extensor pollicis brevis"
+            },
+            {
+              "de": "Direkt am radialen Processus styloideus.",
+              "en": "At the radial styloid.",
+              "fa": "در مجاورت زائدهٔ استایلوئید رادیوس."
+            }
+          ],
+          [
+            {
+              "de": "II · radial",
+              "en": "II · radial",
+              "fa": "II · رادیال"
+            },
+            {
+              "de": "ECRL · extensor carpi radialis longus; ECRB · extensor carpi radialis brevis",
+              "en": "ECRL · extensor carpi radialis longus; ECRB · extensor carpi radialis brevis",
+              "fa": "ECRL · extensor carpi radialis longus؛ ECRB · extensor carpi radialis brevis"
+            },
+            {
+              "de": "Durch das Lister-Tuberkulum von Fach III getrennt.",
+              "en": "Separated from compartment III by Lister tubercle.",
+              "fa": "به‌وسیلهٔ تکمهٔ لیستر از کمپارتمان III جدا می‌شود."
+            }
+          ],
+          [
+            {
+              "de": "III · dorsal interosseous",
+              "en": "III · dorsal interosseous",
+              "fa": "III · بین‌استخوانی پشتی"
+            },
+            {
+              "de": "EPL · extensor pollicis longus",
+              "en": "EPL · extensor pollicis longus",
+              "fa": "EPL · extensor pollicis longus"
+            },
+            {
+              "de": "EPL schwenkt um das Lister-Tuberkulum nach radial.",
+              "en": "EPL turns around Lister tubercle toward the radial side.",
+              "fa": "EPL به دور تکمهٔ لیستر به سمت رادیال می‌چرخد."
+            }
+          ],
+          [
+            {
+              "de": "IV · central",
+              "en": "IV · central",
+              "fa": "IV · مرکزی"
+            },
+            {
+              "de": "EDC · extensor digitorum; EIP · extensor indicis",
+              "en": "EDC · extensor digitorum; EIP · extensor indicis",
+              "fa": "EDC · extensor digitorum؛ EIP · extensor indicis"
+            },
+            {
+              "de": "Größtes Fach.",
+              "en": "Largest compartment.",
+              "fa": "بزرگ‌ترین کمپارتمان."
+            }
+          ],
+          [
+            {
+              "de": "V · ulnar-radial",
+              "en": "V · ulnar-radial",
+              "fa": "V · اولنار-رادیال"
+            },
+            {
+              "de": "EDM · extensor digiti minimi",
+              "en": "EDM · extensor digiti minimi",
+              "fa": "EDM · extensor digiti minimi"
+            },
+            {
+              "de": "Über dem distalen Radioulnargelenk.",
+              "en": "Over the distal radioulnar joint.",
+              "fa": "روی مفصل رادیواولنار دیستال."
+            }
+          ],
+          [
+            {
+              "de": "VI · ulnar",
+              "en": "VI · ulnar",
+              "fa": "VI · اولنار"
+            },
+            {
+              "de": "ECU · extensor carpi ulnaris",
+              "en": "ECU · extensor carpi ulnaris",
+              "fa": "ECU · extensor carpi ulnaris"
+            },
+            {
+              "de": "Eigene Rinne am Ulnastyloid.",
+              "en": "Separate groove at the ulnar styloid.",
+              "fa": "شیار اختصاصی در زائدهٔ استایلوئید اولنا."
+            }
+          ]
+        ],
+        "note": {
+          "de": "Die Reihenfolge auf dem Bild verankern: Fach I radial, Fach VI ulnar. Die Bezeichnungen “lateral”, “radial”, “central” und “ulnar” folgen hier der Quelltabelle.",
+          "en": "Anchor the sequence on the image: compartment I is radial and VI is ulnar. “Lateral,” “radial,” “central,” and “ulnar” follow the source table terminology.",
+          "fa": "ترتیب را در تصویر تثبیت کنید: کمپارتمان I در سمت رادیال و VI در سمت اولنار است. اصطلاحات «لترال»، «رادیال»، «مرکزی» و «اولنار» مطابق جدول منبع‌اند."
+        },
+        "task": {
+          "de": "Welcher Sehnenkomplex liegt im Fach VI am Ulnastyloid?",
+          "en": "Which tendon lies in compartment VI at the ulnar styloid?",
+          "fa": "کدام تاندون در کمپارتمان VI در سطح استایلوئید اولنا قرار دارد؟"
+        },
+        "options": [
+          {
+            "de": "ECU · M. extensor carpi ulnaris",
+            "en": "ECU · extensor carpi ulnaris",
+            "fa": "ECU · extensor carpi ulnaris"
+          },
+          {
+            "de": "EPL · M. extensor pollicis longus",
+            "en": "EPL · extensor pollicis longus",
+            "fa": "EPL · extensor pollicis longus"
+          },
+          {
+            "de": "ECRL und ECRB",
+            "en": "ECRL and ECRB",
+            "fa": "ECRL و ECRB"
+          }
+        ],
+        "answer": 0,
+        "feedback": [
+          {
+            "de": "Richtig. Fach VI enthält die ECU-Sehne in einer eigenen Rinne am Ulnastyloid.",
+            "en": "Correct. Compartment VI contains the ECU tendon in its own groove at the ulnar styloid.",
+            "fa": "درست است. کمپارتمان VI تاندون ECU را در شیار اختصاصی روی استایلوئید اولنا دربر می‌گیرد."
+          },
+          {
+            "de": "Fach III enthält die EPL-Sehne, die am Lister-Tuberkulum um den Radius zieht.",
+            "en": "Compartment III contains EPL, which turns around the radius at Lister tubercle.",
+            "fa": "کمپارتمان III تاندون EPL را دربر می‌گیرد که در سطح تکمهٔ لیستر به دور رادیوس می‌چرخد."
+          },
+          {
+            "de": "ECRL und ECRB verlaufen gemeinsam im Fach II.",
+            "en": "ECRL and ECRB run together in compartment II.",
+            "fa": "ECRL و ECRB با هم در کمپارتمان II قرار دارند."
+          }
+        ],
+        "source": {
+          "de": "MSK.pdf, PDF-S. 41 / Druck-S. 40.",
+          "en": "MSK.pdf, PDF p. 41 / printed p. 40.",
+          "fa": "MSK.pdf، صفحهٔ PDF ۴۱ / چاپی ۴۰."
+        }
+      }
+    ],
+    "summary": [
+      {
+        "de": "Von distal nach proximal: Metakarpalia, distale Handwurzelreihe, proximale Handwurzelreihe, Radius und Ulna; anschließend die Gelenklinien verfolgen.",
+        "en": "From distal to proximal: metacarpals, distal carpal row, proximal carpal row, radius and ulna; then trace the joint lines.",
+        "fa": "از دیستال به پروگزیمال: متاکارپ‌ها، ردیف دیستال کارپ، ردیف پروگزیمال کارپ، رادیوس و اولنا؛ سپس خطوط مفصلی را دنبال کنید."
+      },
+      {
+        "de": "Fach I liegt radial am Processus styloideus radii und enthält APL und EPB.",
+        "en": "Compartment I lies radially at the radial styloid and contains APL and EPB.",
+        "fa": "کمپارتمان I در سمت رادیال، کنار استایلوئید رادیوس قرار دارد و APL و EPB را دربر می‌گیرد."
+      },
+      {
+        "de": "Lister-Tuberkulum trennt Fach II und III; EPL schwenkt dort um den Radius.",
+        "en": "Lister tubercle separates compartments II and III; EPL turns around the radius there.",
+        "fa": "تکمهٔ لیستر کمپارتمان‌های II و III را جدا می‌کند؛ EPL در همان‌جا به دور رادیوس می‌چرخد."
+      },
+      {
+        "de": "Fach IV enthält EDC/EIP; Fach V enthält EDM; Fach VI enthält ECU.",
+        "en": "Compartment IV contains EDC/EIP; V contains EDM; VI contains ECU.",
+        "fa": "کمپارتمان IV شامل EDC/EIP، کمپارتمان V شامل EDM و کمپارتمان VI شامل ECU است."
+      },
+      {
+        "de": "Im axialen Bild zuerst Radius, Ulna und römische Kompartmentnummern orientieren.",
+        "en": "On axial imaging, orient the radius, ulna and Roman compartment numbers first.",
+        "fa": "در تصویر محوری ابتدا رادیوس، اولنا و شماره‌های رومی کمپارتمان‌ها را پیدا کنید."
+      }
+    ],
+    "references": [
+      {
+        "url": null,
+        "label": {
+          "de": "MSK.pdf, PDF-S. 40–41 (Druck-S. 39–40); Text, Labels und Abbildungen visuell geprüft.",
+          "en": "MSK.pdf, PDF pp. 40–41 (printed pp. 39–40); text, labels and figures visually inspected.",
+          "fa": "MSK.pdf، صفحات ۴۰ تا ۴۱ (چاپی ۳۹ تا ۴۰)؛ متن، برچسب‌ها و شکل‌ها به‌صورت دیداری بررسی شدند."
+        }
+      }
+    ]
+  },
+  "after": {
+    "id": "sehnenpathologien-hand",
+    "title": {
+      "de": "Handgelenk: Knochen und Strecksehnenfächer",
+      "en": "Wrist: carpal bones and extensor compartments",
+      "fa": "مچ دست: استخوان‌های کارپ و کمپارتمان‌های اکستانسور"
+    },
+    "hero": "/educational/wrist-extensor-compartments/hero.svg",
+    "heroAlt": {
+      "de": "Nichtdiagnostisches Orientierungsschema der sechs dorsalen Strecksehnenfächer am Handgelenk mit Radius, Ulna und Sehnengruppen.",
+      "en": "Non-diagnostic orientation schematic of the six dorsal wrist extensor compartments, with radius, ulna and tendon groups.",
+      "fa": "شماتیک جهت‌یابی غیرتشخیصی از شش کمپارتمان اکستانسور پشتی مچ دست، همراه با رادیوس، اولنا و گروه‌های تاندونی."
+    },
+    "scope": {
+      "de": "Diese Orientierungseinheit deckt die dorsale Handwurzelanatomie auf MSK.pdf, PDF-S. 40 (Druck-S. 39), und die Strecksehnenfächer auf PDF-S. 41 (Druck-S. 40) ab. Die Originalabbildungen dienen der anatomischen Orientierung, nicht der Pathologiediagnostik.",
+      "en": "This orientation lesson covers dorsal carpal anatomy from MSK.pdf, PDF p. 40 (printed p. 39), and the extensor compartments from PDF p. 41 (printed p. 40). The original figures support anatomic orientation, not pathology diagnosis.",
+      "fa": "این درس جهت‌یابی، آناتومی پشتی کارپ را از صفحهٔ ۴۰ PDF (چاپی ۳۹) و کمپارتمان‌های اکستانسور را از صفحهٔ ۴۱ PDF (چاپی ۴۰) در MSK.pdf پوشش می‌دهد. شکل‌های اصلی برای جهت‌یابی آناتومیک‌اند، نه تشخیص پاتولوژی."
+    },
+    "sections": [
+      {
+        "id": "carpal-orientation",
+        "icon": "axial-orientation",
+        "title": {
+          "de": "Welche Knochen und Gelenklinien sehe ich dorsal?",
+          "en": "Which bones and joint lines do I see dorsally?",
+          "fa": "در نمای پشتی چه استخوان‌ها و خطوط مفصلی می‌بینم؟"
+        },
+        "lead": {
+          "de": "Orientieren Sie die Handwurzel von distal nach proximal: Metakarpalia, distale Handwurzelreihe, proximale Handwurzelreihe und schließlich Radius und Ulna. Folgen Sie anschließend den farbigen Gelenklinien in der Abbildung.",
+          "en": "Orient the carpus from distal to proximal: metacarpals, distal carpal row, proximal carpal row, then radius and ulna. Next, trace the coloured joint lines in the figure.",
+          "fa": "کارپ را از دیستال به پروگزیمال جهت‌یابی کنید: متاکارپ‌ها، ردیف دیستال استخوان‌های کارپ، ردیف پروگزیمال و سپس رادیوس و اولنا. بعد خطوط مفصلی رنگی شکل را دنبال کنید."
+        },
+        "image": "/msk/hand/carpal-joint-lines-pdf-p40.png",
+        "imageAlt": {
+          "de": "Schematische dorsale Ansicht der Handwurzel aus MSK.pdf: beschriftete Handwurzelknochen und farbige Linien für Intermetakarpal-, Karpometakarpal-, Interkarpal-, Mediokarpal- und Radiokarpalgelenke sowie das Daumensattelgelenk.",
+          "en": "Schematic dorsal view of the carpus from MSK.pdf: labelled carpal bones and coloured lines for intermetacarpal, carpometacarpal, intercarpal, midcarpal and radiocarpal joints, plus the thumb carpometacarpal joint.",
+          "fa": "نمای شماتیک پشتی کارپ از MSK.pdf: استخوان‌های کارپ برچسب‌گذاری شده‌اند و خطوط رنگی مفاصل بین‌متاکارپی، کارپومتاکارپی، بین‌کارپی، میدکارپی و رادیوکارپی و نیز مفصل کارپومتاکارپی شست را نشان می‌دهند."
+        },
+        "imageCaption": {
+          "de": "MSK.pdf, PDF-S. 40 (Druck-S. 39), dorsale Ansicht. Farbige Linien markieren Gelenkspalten; sie sind keine MRT-Ebenen.",
+          "en": "MSK.pdf, PDF p. 40 (printed p. 39), dorsal view. Coloured lines mark joint spaces; they are not MRI planes.",
+          "fa": "MSK.pdf، صفحهٔ ۴۰ PDF (چاپی ۳۹)، نمای پشتی. خطوط رنگی فواصل مفصلی را مشخص می‌کنند و صفحه‌های MRI نیستند."
+        },
+        "imageKeyTitle": {
+          "de": "Begriffe aus der Abbildung",
+          "en": "Labels in the source figure",
+          "fa": "برچسب‌های شکل منبع"
+        },
+        "imageKey": [
+          {
+            "source": "Intermetakarpalgelenke",
+            "label": {
+              "de": "Intermetakarpalgelenke",
+              "en": "Intermetacarpal joints",
+              "fa": "مفاصل بین‌متاکارپی"
+            }
+          },
+          {
+            "source": "Karpometakarpalgelenke II–V",
+            "label": {
+              "de": "Karpometakarpalgelenke II–V",
+              "en": "Carpometacarpal joints II–V",
+              "fa": "مفاصل کارپومتاکارپی II تا V"
+            }
+          },
+          {
+            "source": "Daumensattelgelenk",
+            "label": {
+              "de": "Daumensattelgelenk",
+              "en": "Thumb carpometacarpal joint",
+              "fa": "مفصل کارپومتاکارپی شست"
+            }
+          },
+          {
+            "source": "Interkarpalgelenke",
+            "label": {
+              "de": "Interkarpalgelenke",
+              "en": "Intercarpal joints",
+              "fa": "مفاصل بین‌کارپی"
+            }
+          },
+          {
+            "source": "distales Handgelenk · Art. mediocarpalis",
+            "label": {
+              "de": "distales Handgelenk · Art. mediocarpalis",
+              "en": "Midcarpal joint",
+              "fa": "مفصل میدکارپی"
+            }
+          },
+          {
+            "source": "proximales Handgelenk · Art. radiocarpalis",
+            "label": {
+              "de": "proximales Handgelenk · Art. radiocarpalis",
+              "en": "Radiocarpal joint",
+              "fa": "مفصل رادیوکارپی"
+            }
+          }
+        ],
+        "task": {
+          "de": "Welche Knochenreihe liegt unmittelbar proximal der Metakarpalia?",
+          "en": "Which carpal row lies immediately proximal to the metacarpals?",
+          "fa": "کدام ردیف استخوان‌های کارپ بلافاصله در سمت پروگزیمال متاکارپ‌ها قرار دارد؟"
+        },
+        "options": [
+          {
+            "de": "Die distale Handwurzelreihe",
+            "en": "The distal carpal row",
+            "fa": "ردیف دیستال استخوان‌های کارپ"
+          },
+          {
+            "de": "Die proximale Handwurzelreihe",
+            "en": "The proximal carpal row",
+            "fa": "ردیف پروگزیمال استخوان‌های کارپ"
+          },
+          {
+            "de": "Radius und Ulna",
+            "en": "The radius and ulna",
+            "fa": "رادیوس و اولنا"
+          }
+        ],
+        "answer": 0,
+        "feedback": [
+          {
+            "de": "Richtig. Trapezium, Trapezoideum, Capitatum und Hamatum bilden die distale Handwurzelreihe.",
+            "en": "Correct. Trapezium, trapezoid, capitate and hamate form the distal carpal row.",
+            "fa": "درست است. تراپزیوم، تراپزوئید، کاپیتیت و هامیت ردیف دیستال کارپ را تشکیل می‌دهند."
+          },
+          {
+            "de": "Die proximale Reihe liegt weiter proximal; in der dargestellten dorsalen Ansicht sind Scaphoideum, Lunatum und Triquetrum beschriftet.",
+            "en": "The proximal row lies farther proximally; scaphoid, lunate and triquetrum are labelled in this dorsal view.",
+            "fa": "ردیف پروگزیمال در بالاتر قرار دارد؛ در نمای پشتی تصویر، اسکافوئید، لونیت و تری‌کوئتروم برچسب‌گذاری شده‌اند."
+          },
+          {
+            "de": "Radius und Ulna liegen proximal des Radiokarpalgelenks, nicht direkt neben den Metakarpalia.",
+            "en": "The radius and ulna lie proximal to the radiocarpal joint, not directly next to the metacarpals.",
+            "fa": "رادیوس و اولنا در سمت پروگزیمال مفصل رادیوکارپی قرار دارند و مستقیماً کنار متاکارپ‌ها نیستند."
+          }
+        ],
+        "source": {
+          "de": "MSK.pdf, PDF-S. 40 / Druck-S. 39.",
+          "en": "MSK.pdf, PDF p. 40 / printed p. 39.",
+          "fa": "MSK.pdf، صفحهٔ PDF ۴۰ / چاپی ۳۹."
+        }
+      },
+      {
+        "id": "axial-orientation",
+        "icon": "orientation",
+        "title": {
+          "de": "Wo liegen die Fächer im axialen Bild?",
+          "en": "Where are the compartments on an axial image?",
+          "fa": "کمپارتمان‌ها در تصویر محوری کجا قرار دارند؟"
+        },
+        "lead": {
+          "de": "Beginnen Sie mit Radius und Ulna. Der radiale Processus styloideus lokalisiert Fach I; das Lister-Tuberkulum trennt Fach II von III und lenkt die EPL-Sehne um den Radius. Lesen Sie die römischen Zahlen im Bild gemeinsam mit der Tabelle.",
+          "en": "Start with the radius and ulna. The radial styloid localizes compartment I; Lister tubercle separates II from III and redirects the EPL tendon around the radius. Read the Roman numerals in the image together with the table.",
+          "fa": "ابتدا رادیوس و اولنا را مشخص کنید. زائدهٔ استایلوئید رادیوس کمپارتمان I را مکان‌یابی می‌کند؛ تکمهٔ لیستر کمپارتمان‌های II و III را جدا می‌کند و مسیر EPL را به دور رادیوس تغییر می‌دهد. اعداد رومی تصویر را همراه جدول بخوانید."
+        },
+        "image": "/msk/hand/extensor-compartments-pdf-p41-axial-mri.png",
+        "imageAlt": {
+          "de": "Axiales MRT des Handgelenks mit Markierungen der Fächer I–VI und den Sehnenkürzeln APL, EPB, ECRL, ECRB, EPL, EDC, EIP, EDM und ECU um Radius und Ulna.",
+          "en": "Labelled axial wrist MRI: compartments I–VI and tendons APL, EPB, ECRL, ECRB, EPL, EDC, EIP, EDM and ECU are marked around the radius and ulna.",
+          "fa": "برش MRI محوریِ برچسب‌گذاری‌شده از مچ دست: کمپارتمان‌های I تا VI و تاندون‌های APL، EPB، ECRL، ECRB، EPL، EDC، EIP، EDM و ECU پیرامون رادیوس و اولنا مشخص شده‌اند."
+        },
+        "imageCaption": {
+          "de": "MSK.pdf, PDF-S. 41 (Druck-S. 40), axiale MRT zur Orientierung der Sehnenfächer. Dies ist eine anatomische Übersicht, kein pathologischer Fall.",
+          "en": "MSK.pdf, PDF p.41 (printed p.40), axial MRI for compartment orientation. This is an anatomic map, not a pathology case.",
+          "fa": "MSK.pdf، صفحهٔ PDF ۴۱ (چاپی ۴۰)، MRI محوری برای جهت‌یابی کمپارتمان‌ها. این تصویر نقشهٔ آناتومیک است، نه کیس پاتولوژیک."
+        },
+        "source": {
+          "de": "MSK.pdf, PDF-S. 41 / Druck-S. 40.",
+          "en": "MSK.pdf, PDF p. 41 / printed p. 40.",
+          "fa": "MSK.pdf، صفحهٔ PDF ۴۱ / چاپی ۴۰."
+        }
+      },
+      {
+        "id": "tendon-map",
+        "icon": "map",
+        "title": {
+          "de": "Welche Sehnen verlaufen durch die sechs Fächer?",
+          "en": "Which tendons pass through the six compartments?",
+          "fa": "کدام تاندون‌ها از شش کمپارتمان عبور می‌کنند؟"
+        },
+        "lead": {
+          "de": "Ordnen Sie jede Sehnengruppe ihrer Nummer zu. Die Lagebeziehungen dienen als Orientierung; sie ersetzen keine vollständige Beurteilung weiterer Strukturen.",
+          "en": "Match each tendon group to its number. The spatial relationships are orientation landmarks; they do not replace assessment of other structures.",
+          "fa": "هر گروه تاندونی را با شمارهٔ کمپارتمان متناظر کنید. روابط مکانی نشانه‌های جهت‌یابی‌اند و جای ارزیابی سایر ساختارها را نمی‌گیرند."
+        },
+        "rows": [
+          [
+            {
+              "de": "Fach",
+              "en": "Compartment",
+              "fa": "کمپارتمان"
+            },
+            {
+              "de": "Sehnen",
+              "en": "Tendons",
+              "fa": "تاندون‌ها"
+            },
+            {
+              "de": "Orientierungsmerkmal",
+              "en": "Landmark",
+              "fa": "نشانهٔ جهت‌یابی"
+            }
+          ],
+          [
+            {
+              "de": "I · lateral",
+              "en": "I · lateral",
+              "fa": "I · لترال"
+            },
+            {
+              "de": "APL · abductor pollicis longus; EPB · extensor pollicis brevis",
+              "en": "APL · abductor pollicis longus; EPB · extensor pollicis brevis",
+              "fa": "APL · abductor pollicis longus؛ EPB · extensor pollicis brevis"
+            },
+            {
+              "de": "Direkt am radialen Processus styloideus.",
+              "en": "At the radial styloid.",
+              "fa": "در مجاورت زائدهٔ استایلوئید رادیوس."
+            }
+          ],
+          [
+            {
+              "de": "II · radial",
+              "en": "II · radial",
+              "fa": "II · رادیال"
+            },
+            {
+              "de": "ECRL · extensor carpi radialis longus; ECRB · extensor carpi radialis brevis",
+              "en": "ECRL · extensor carpi radialis longus; ECRB · extensor carpi radialis brevis",
+              "fa": "ECRL · extensor carpi radialis longus؛ ECRB · extensor carpi radialis brevis"
+            },
+            {
+              "de": "Durch das Lister-Tuberkulum von Fach III getrennt.",
+              "en": "Separated from compartment III by Lister tubercle.",
+              "fa": "به‌وسیلهٔ تکمهٔ لیستر از کمپارتمان III جدا می‌شود."
+            }
+          ],
+          [
+            {
+              "de": "III · am Lister-Tuberkulum",
+              "en": "III · at Lister tubercle",
+              "fa": "III · کنار تکمهٔ لیستر"
+            },
+            {
+              "de": "EPL · extensor pollicis longus",
+              "en": "EPL · extensor pollicis longus",
+              "fa": "EPL · extensor pollicis longus"
+            },
+            {
+              "de": "EPL schwenkt um das Lister-Tuberkulum nach radial.",
+              "en": "EPL turns around Lister tubercle toward the radial side.",
+              "fa": "EPL به دور تکمهٔ لیستر به سمت رادیال می‌چرخد."
+            }
+          ],
+          [
+            {
+              "de": "IV · central",
+              "en": "IV · central",
+              "fa": "IV · مرکزی"
+            },
+            {
+              "de": "EDC · extensor digitorum; EIP · extensor indicis",
+              "en": "EDC · extensor digitorum; EIP · extensor indicis",
+              "fa": "EDC · extensor digitorum؛ EIP · extensor indicis"
+            },
+            {
+              "de": "Größtes Fach.",
+              "en": "Largest compartment.",
+              "fa": "بزرگ‌ترین کمپارتمان."
+            }
+          ],
+          [
+            {
+              "de": "V · dorsoulnar",
+              "en": "V · dorsoulnar",
+              "fa": "V · پشتی‌اولنار"
+            },
+            {
+              "de": "EDM · extensor digiti minimi",
+              "en": "EDM · extensor digiti minimi",
+              "fa": "EDM · extensor digiti minimi"
+            },
+            {
+              "de": "Über dem distalen Radioulnargelenk.",
+              "en": "Over the distal radioulnar joint.",
+              "fa": "روی مفصل رادیواولنار دیستال."
+            }
+          ],
+          [
+            {
+              "de": "VI · ulnar",
+              "en": "VI · ulnar",
+              "fa": "VI · اولنار"
+            },
+            {
+              "de": "ECU · extensor carpi ulnaris",
+              "en": "ECU · extensor carpi ulnaris",
+              "fa": "ECU · extensor carpi ulnaris"
+            },
+            {
+              "de": "Eigene Rinne am Ulnastyloid.",
+              "en": "Separate groove at the ulnar styloid.",
+              "fa": "شیار اختصاصی در زائدهٔ استایلوئید اولنا."
+            }
+          ]
+        ],
+        "note": {
+          "de": "Die Fächer von radial nach ulnar anhand von Nummer, Sehneninhalt und Knochenlandmarken zuordnen: Fach I radial, Fach VI ulnar.",
+          "en": "Map the compartments from radial to ulnar using their number, tendons and bony landmarks: I is radial and VI ulnar.",
+          "fa": "کمپارتمان‌ها را از رادیال به اولنار با شماره، تاندون‌ها و لندمارک‌های استخوانی تطبیق دهید: I رادیال و VI اولنار است."
+        },
+        "task": {
+          "de": "Textfall: Sie verfolgen eine einzelne Strecksehne in der dorsoulnaren Rinne der distalen Ulna nahe dem Ulnastyloid. Welche Sehne und welches reguläre Fach passen?",
+          "en": "Text vignette: you trace a single extensor tendon in the dorsoulnar groove of the distal ulna near the ulnar styloid. Which tendon and usual compartment fit?",
+          "fa": "سناریوی متنی: یک تاندون اکستانسور را در شیار پشتی‌اولنار انتهای اولنا نزدیک استایلوئید اولنا دنبال می‌کنید. کدام تاندون و کمپارتمان معمول مناسب است؟"
+        },
+        "options": [
+          {
+            "de": "ECU im Fach VI",
+            "en": "ECU in compartment VI",
+            "fa": "ECU در کمپارتمان VI"
+          },
+          {
+            "de": "EPL im Fach III",
+            "en": "EPL in compartment III",
+            "fa": "EPL در کمپارتمان III"
+          },
+          {
+            "de": "ECRL und ECRB im Fach II",
+            "en": "ECRL and ECRB in compartment II",
+            "fa": "ECRL و ECRB در کمپارتمان II"
+          },
+          {
+            "de": "EDC und EIP im Fach IV",
+            "en": "EDC and EIP in compartment IV",
+            "fa": "EDC و EIP در کمپارتمان IV"
+          }
+        ],
+        "answer": 0,
+        "feedback": [
+          {
+            "de": "Die ECU-Sehne verläuft im sechsten dorsalen Fach an der distalen Ulna. Den knöchernen Landmarken und dem Sehnenverlauf folgen; eine einzelne axiale Lagebeziehung nicht mit einer Pathologiediagnose verwechseln.",
+            "en": "ECU runs in the sixth dorsal compartment at the distal ulna. Follow the bony landmarks and tendon course; one axial anatomical relationship is not a pathology diagnosis.",
+            "fa": "ECU در کمپارتمان ششم پشتی در سطح انتهای اولنا عبور می‌کند. لندمارک استخوانی و مسیر تاندون دنبال شوند؛ یک رابطهٔ آناتومیک محوری را نباید تشخیص پاتولوژی دانست."
+          },
+          {
+            "de": "EPL verläuft am Lister-Tuberkulum des Radius im Fach III, nicht in der ulnaren ECU-Rinne.",
+            "en": "EPL passes around the radial Lister tubercle in compartment III, not in the ulnar ECU groove.",
+            "fa": "EPL در کمپارتمان III کنار تکمهٔ لیستر رادیوس عبور می‌کند، نه در شیار اولنار ECU."
+          },
+          {
+            "de": "ECRL und ECRB liegen gemeinsam radial des Lister-Tuberkulums im Fach II.",
+            "en": "ECRL and ECRB share compartment II radial to Lister tubercle.",
+            "fa": "ECRL و ECRB در کمپارتمان II و در سمت رادیال تکمهٔ لیستر با هم قرار دارند."
+          },
+          {
+            "de": "EDC und EIP liegen im größeren zentralen Fach IV und nicht in der beschriebenen dorsoulnaren Einzelrinne.",
+            "en": "EDC and EIP occupy the larger central compartment IV rather than the described dorsoulnar single-tendon groove.",
+            "fa": "EDC و EIP در کمپارتمان مرکزی و بزرگ‌تر IV قرار دارند، نه در شیار پشتی‌اولنار تک‌تاندونی توصیف‌شده."
+          }
+        ],
+        "source": {
+          "de": "MSK.pdf, PDF-S. 41 / Druck-S. 40.",
+          "en": "MSK.pdf, PDF p. 41 / printed p. 40.",
+          "fa": "MSK.pdf، صفحهٔ PDF ۴۱ / چاپی ۴۰."
+        }
+      }
+    ],
+    "summary": [
+      {
+        "de": "Von distal nach proximal: Metakarpalia, distale Handwurzelreihe, proximale Handwurzelreihe, Radius und Ulna; anschließend die Gelenklinien verfolgen.",
+        "en": "From distal to proximal: metacarpals, distal carpal row, proximal carpal row, radius and ulna; then trace the joint lines.",
+        "fa": "از دیستال به پروگزیمال: متاکارپ‌ها، ردیف دیستال کارپ، ردیف پروگزیمال کارپ، رادیوس و اولنا؛ سپس خطوط مفصلی را دنبال کنید."
+      },
+      {
+        "de": "Fach I liegt radial am Processus styloideus radii und enthält APL und EPB.",
+        "en": "Compartment I lies radially at the radial styloid and contains APL and EPB.",
+        "fa": "کمپارتمان I در سمت رادیال، کنار استایلوئید رادیوس قرار دارد و APL و EPB را دربر می‌گیرد."
+      },
+      {
+        "de": "Lister-Tuberkulum trennt Fach II und III; EPL schwenkt dort um den Radius.",
+        "en": "Lister tubercle separates compartments II and III; EPL turns around the radius there.",
+        "fa": "تکمهٔ لیستر کمپارتمان‌های II و III را جدا می‌کند؛ EPL در همان‌جا به دور رادیوس می‌چرخد."
+      },
+      {
+        "de": "Fach IV enthält EDC/EIP; Fach V enthält EDM; Fach VI enthält ECU.",
+        "en": "Compartment IV contains EDC/EIP; V contains EDM; VI contains ECU.",
+        "fa": "کمپارتمان IV شامل EDC/EIP، کمپارتمان V شامل EDM و کمپارتمان VI شامل ECU است."
+      },
+      {
+        "de": "Im axialen Bild zuerst Radius, Ulna und römische Kompartmentnummern orientieren.",
+        "en": "On axial imaging, orient the radius, ulna and Roman compartment numbers first.",
+        "fa": "در تصویر محوری ابتدا رادیوس، اولنا و شماره‌های رومی کمپارتمان‌ها را پیدا کنید."
+      }
+    ],
+    "references": [
+      {
+        "url": null,
+        "label": {
+          "de": "MSK.pdf, PDF-S. 40–41 (Druck-S. 39–40); Text, Labels und Abbildungen visuell geprüft.",
+          "en": "MSK.pdf, PDF pp. 40–41 (printed pp. 39–40); text, labels and figures visually inspected.",
+          "fa": "MSK.pdf، صفحات ۴۰ تا ۴۱ (چاپی ۳۹ تا ۴۰)؛ متن، برچسب‌ها و شکل‌ها به‌صورت دیداری بررسی شدند."
+        }
+      }
+    ]
+  },
+  "changes": "III/V map labels, landmark note, ECU inline stem/options/all4 feedback mirrored; IDs, images, first carpal inline preserved"
+}

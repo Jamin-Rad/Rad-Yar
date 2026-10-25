@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/providers/LanguageProvider'
 import LessonReferenceShell from '@/components/LessonReferenceShell'
+import { lowerGiRows, lowerGiCoverage } from '@/data/assessmentQuality/atvLowerGiBleeding'
 import styles from '../divertikulitis/page.module.css'
 
 const C = {
@@ -31,9 +32,6 @@ const C = {
     ],
     surgery: 'Eine Operation bleibt laut PDF seltenen, nicht kontrollierbaren Blutungen vorbehalten; die aktuelle Entscheidung gehört in den interdisziplinären Behandlungspfad.',
     source: 'Quellabdeckung: Abdomen.pdf, physische S. 86–87 (gedruckt S. 85–86); p. 86 Bildfolge geprüft, p. 87 Ablaufseite geprüft. Primärleitlinien: ESGE 2021, DOI 10.1055/a-1496-8969; ACR 2021, DOI 10.1016/j.jacr.2021.02.018; ACG 2023, PMID 36735555; ASGE 2026, DOI 10.1016/j.gie.2026.06.046. Die rektale Gefäßvariante wird begrenzt erläutert; Park et al., JVIR 2020, PMID 31530489, ist eine kleine retrospektive RAE-Kohorte, keine allgemeine Handlungsregel.',
-    checkQuestion: 'CTA zeigt aktive Extravasation im rechten Kolon; die Blutung hält an. Welche Aussage zur nächsten radiologischen Stufe ist am besten?',
-    checkOptions: ['Katheterangiographie mit selektiver Darstellung des passenden Gefäßterritoriums kann im klinischen Pfad folgen; eine Embolisation setzt eine geeignete Lokalisation voraus.', 'Eine positive CTA reicht auch ohne angiographisch lokalisierbaren Ast für eine empirische Embolisation.', 'Eine negative Katheterangiographie macht die zuvor lokalisierte CTA-Extravasation für die weitere Einordnung bedeutungslos.', 'Bei einer Blutung im rechten Kolon wird zunächst die A. mesenterica inferior selektiv dargestellt.'],
-    checkExplanation: 'CTA lokalisiert die aktive Blutung; bei passender Situation kann die Katheterangiographie diagnostisch und therapeutisch anschließen. Blutung kann intermittieren, und die Gefäßwahl richtet sich nach dem betroffenen Territorium. Embolisation ist nicht automatisch bei jedem positiven CTA-Befund angezeigt.',
     finalSummary: ['CTA: neue Extravasation in den Phasen vergleichen und exakt lokalisieren.', 'Ein negativer CTA- oder Angiographiebefund schließt eine intermittierende Blutung nicht sicher aus.', 'Bei positiver CTA kann je nach anhaltender Blutung und klinischem Kontext eine selektive Katheterangiographie mit möglicher Embolisation folgen.', 'Kontrollangiographie und Darmperfusion gemeinsam im Blick behalten.'],
   },
   en: {
@@ -62,9 +60,6 @@ const C = {
     ],
     surgery: 'The PDF reserves surgery for rare, uncontrollable bleeding; the current decision belongs to the multidisciplinary care pathway.',
     source: 'Coverage: Abdomen.pdf, physical pp. 86–87 (printed pp. 85–86); p. 86 image sequence and p. 87 pathway visually reviewed. Primary guidelines: ESGE 2021, DOI 10.1055/a-1496-8969; ACR 2021, DOI 10.1016/j.jacr.2021.02.018; ACG 2023, PMID 36735555; ASGE 2026, DOI 10.1016/j.gie.2026.06.046. Rectal artery variation is qualified; Park et al., JVIR 2020, PMID 31530489, is a small retrospective RAE cohort, not a universal action rule.',
-    checkQuestion: 'CTA shows active extravasation in the right colon and bleeding continues. Which statement about the next radiological step is best?',
-    checkOptions: ['Catheter angiography with selective imaging of the matching vascular territory may follow in the clinical pathway; embolisation requires suitable localisation.', 'A positive CTA is sufficient for empirical embolisation even without an angiographically localised branch.', 'A negative catheter angiogram makes the previously localised CTA extravasation irrelevant to further assessment.', 'For bleeding in the right colon, the inferior mesenteric artery is selected first.'],
-    checkExplanation: 'CTA localises active bleeding; catheter angiography may follow as a diagnostic and therapeutic step when appropriate. Bleeding can be intermittent, and vessel selection follows the affected territory. Embolisation is not automatic after every positive CTA.',
     finalSummary: ['CTA: compare phases for new extravasation and report its location precisely.', 'A negative CTA or angiogram does not reliably exclude intermittent bleeding.', 'After positive CTA, selective catheter angiography with possible embolisation may follow, depending on ongoing bleeding and clinical context.', 'Assess completion angiography and bowel perfusion together.'],
   },
   fa: {
@@ -93,9 +88,6 @@ const C = {
     ],
     surgery: 'PDF جراحی را به خون‌ریزی‌های نادر و مهارنشدنی محدود می‌کند؛ تصمیم فعلی باید در مسیر درمان تیمی گرفته شود.',
     source: 'پوشش منبع: Abdomen.pdf، صفحات فیزیکی ۸۶–۸۷ (شمارهٔ چاپی ۸۵–۸۶)؛ توالی تصویر p.86 و مسیر p.87 دیداری بررسی شدند. راهنماهای اولیه: ESGE 2021، DOI 10.1055/a-1496-8969؛ ACR 2021، DOI 10.1016/j.jacr.2021.02.018؛ ACG 2023، PMID 36735555؛ ASGE 2026، DOI 10.1016/j.gie.2026.06.046. تنوع عروق رکتوم توضیح داده شده؛ مقالهٔ Park و همکاران در JVIR 2020، PMID 31530489، کوهورت کوچک گذشته‌نگر RAE است، نه قاعدهٔ اقدام همگانی.',
-    checkQuestion: 'CTA نشت فعال در کولون راست را نشان می‌دهد و خون‌ریزی ادامه دارد. کدام عبارت دربارهٔ مرحلهٔ رادیولوژیک بعدی مناسب‌تر است؟',
-    checkOptions: ['در مسیر بالینی ممکن است آنژیوگرافی کاتتری با تصویربرداری انتخابی قلمرو عروقی مرتبط انجام شود؛ آمبولیزاسیون به مکان‌یابی مناسب نیاز دارد.', 'CTA مثبت برای آمبولیزاسیون تجربی کافی است، حتی اگر شاخهٔ خون‌ریزی‌دهنده در آنژیوگرافی مکان‌یابی نشود.', 'آنژیوگرافی کاتتری منفی، نشت موضع‌یابی‌شده در CTA را برای ارزیابی بعدی بی‌اهمیت می‌کند.', 'برای خون‌ریزی کولون راست ابتدا شریان مزانتریک تحتانی انتخاب می‌شود.'],
-    checkExplanation: 'CTA خون‌ریزی فعال را مکان‌یابی می‌کند؛ در شرایط مناسب، آنژیوگرافی کاتتری می‌تواند مرحلهٔ تشخیصی و درمانی بعدی باشد. خون‌ریزی ممکن است متناوب باشد و انتخاب عروق به قلمرو درگیر وابسته است. پس از هر CTA مثبت، آمبولیزاسیون خودکار نیست.',
     finalSummary: ['در CTA فازها را برای نشت تازه مقایسه و محل را دقیق گزارش کنید.', 'CTA یا آنژیوگرافی منفی، خون‌ریزی متناوب را با اطمینان رد نمی‌کند.', 'پس از CTA مثبت، با توجه به تداوم خون‌ریزی و زمینهٔ بالینی ممکن است آنژیوگرافی انتخابی با امکان آمبولیزاسیون انجام شود.', 'آنژیوگرافی پایانی و خون‌رسانی روده را با هم در نظر بگیرید.'],
   },
 }
@@ -103,11 +95,13 @@ const C = {
 export default function LowerGIBleedingPage() {
   const { lang } = useLanguage()
   const c = C[lang] || C.de
-  const check = { question: c.checkQuestion, options: c.checkOptions, answer: 0, explanation: c.checkExplanation }
+  const item = lowerGiRows.find(row => row.key === 'lowergi-territory')
+  const text = value => value[lang] || value.de
+  const check = { question: text(item.question), options: item.options.map(text), answer: 'ABCD'.indexOf(item.correct), explanation: text(item.explanation), wrongFeedback: Object.fromEntries(item.wrong.flatMap((value, index) => value ? [[index, text(value)]] : [])) }
   const lessonPath = '/abdomen/gi/untere-gi-blutung'
   const lessonReturn = lang === 'de' ? lessonPath : `${lessonPath}?lang=${lang}`
   const withLang = href => lang === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${lang}`
-  return <LessonReferenceShell lessonId="abdomen-lower-gi-bleeding" lang={lang} title={c.title} diagram="gi-bleed" copy={c} check={check} summary={c.finalSummary} mainLandmark quizHref={withLang(`/ueben/quiz?fach=abdomen&n=1&themen=untere-gi-blutung&from=${encodeURIComponent(lessonReturn)}`)} flashcardsHref={withLang(`/flashcards/untere-gi-blutung?from=${encodeURIComponent(lessonReturn)}`)}>
+  return <LessonReferenceShell lessonId="abdomen-lower-gi-bleeding" lang={lang} title={c.title} diagram="gi-bleed" copy={c} goals={lowerGiCoverage.learningGoals.map(goal => goal.text)} check={check} summary={c.finalSummary} mainLandmark quizHref={withLang(`/ueben/quiz?fach=abdomen&n=3&themen=untere-gi-blutung&from=${encodeURIComponent(lessonReturn)}`)} flashcardsHref={withLang(`/flashcards/untere-gi-blutung?from=${encodeURIComponent(lessonReturn)}`)}>
     <div className={styles.page} lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
       <div className={styles.main} style={{ maxWidth: 1080, margin: '2rem auto', padding: '0 1rem' }}>
         <section className={styles.section}><p className={styles.lead}>{c.intro}</p><h2>{c.phasesTitle}</h2><div className={styles.cardsGrid}>{c.phases.map(([title, text]) => <article className={styles.infoCard} key={title}><h3>{title}</h3><p>{text}</p></article>)}</div></section>

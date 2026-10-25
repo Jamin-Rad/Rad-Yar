@@ -1,0 +1,1941 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_PROPOSALS_IN_PROGRESS_NOT_APPLIED",
+  "patches": [
+    {
+      "id": "abdomen-lower-gi-bleeding-de-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "currentBefore": {
+        "id": "abdomen-lower-gi-bleeding-de-01",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "fach": "abdomen",
+        "question": "Was erklärt, dass trotz negativer CTA eine klinisch relevante Blutung möglich bleibt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Eine intermittierende Blutung kann während der Untersuchung pausieren; den Verdacht im klinischen Kontext weiter einordnen."
+          },
+          {
+            "id": "B",
+            "text": "Hyperdenses Material in der nativen Phase belegt für sich eine aktive Extravasation."
+          },
+          {
+            "id": "C",
+            "text": "Bei klinischem Verdacht genügt die Portalphase allein zur abschließenden CTA-Beurteilung."
+          },
+          {
+            "id": "D",
+            "text": "Nach negativer CTA ist eine intermittierende Blutungsquelle ausgeschlossen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "CTA bildet den Untersuchungszeitpunkt ab: Bei intermittierender Blutung kann die Extravasation gerade pausieren. Native, arterielle und portalvenöse Phase sowie klinischer Kontext gemeinsam einordnen.",
+        "source": "Abdomen.pdf pp. 86–87; ESGE 2021; ACG 2023; ACR"
+      },
+      "after": {
+        "id": "abdomen-lower-gi-bleeding-de-01",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "fach": "abdomen",
+        "question": "Bei Hämatochezie zeigt eine technisch geeignete Mehrphasen-CTA einen umschriebenen hyperdensen Fokus im Kolonlumen. Er ist bereits nativ vorhanden und bleibt arteriell und portalvenös in Dichte und Form gleich. Welche Befundformulierung passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Präexistentes hyperdenses Lumenmaterial; an diesem Fokus kein Nachweis aktiver Extravasation."
+          },
+          {
+            "id": "B",
+            "text": "Arterielle Extravasation mit fortgesetzter Anreicherung im Darmlumen."
+          },
+          {
+            "id": "C",
+            "text": "Verzögert einsetzende Extravasation mit portalvenöser Kontrastmittelansammlung."
+          },
+          {
+            "id": "D",
+            "text": "Kontrastierte Schleimhautgefäße als Erklärung der neu entstandenen Hyperdensität."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Für aktive Extravasation ist neu hinzukommendes intraluminales Kontrastmittel entscheidend. Ein schon nativ vorhandener unveränderter Fokus belegt diese Aktivität nicht. Blut beziehungsweise anderer hyperdenser Inhalt kann präexistieren; eine negative CTA schließt eine intermittierende klinische Blutung nicht aus.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/22084211/",
+        "wrongExplanations": {
+          "B": "Neu auftretende beziehungsweise zunehmende Kontrastmittelansammlung wird nicht beschrieben; der Fokus ist schon nativ unverändert vorhanden.",
+          "C": "Eine verzögerte Extravasation würde im Phasenvergleich neu auftreten oder sich verändern; hier bleibt der präexistente Fokus unverändert.",
+          "D": "Die Hyperdensität ist nicht neu und liegt als Fokus im Lumen vor. Neu kontrastierte Mukosagefäße erklären diesen nativen Befund nicht."
+        }
+      },
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js"
+    },
+    {
+      "id": "abdomen-lower-gi-bleeding-en-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "currentBefore": {
+        "id": "abdomen-lower-gi-bleeding-en-01",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "fach": "abdomen",
+        "question": "What explains why clinically important bleeding can remain possible despite a negative CTA?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Intermittent bleeding may pause during the examination; continue to assess the suspicion in the clinical context."
+          },
+          {
+            "id": "B",
+            "text": "Hyperdense material on the unenhanced phase alone proves active extravasation."
+          },
+          {
+            "id": "C",
+            "text": "With clinical suspicion, the portal-venous phase alone is sufficient for a definitive CTA assessment."
+          },
+          {
+            "id": "D",
+            "text": "After negative CTA, an intermittent bleeding source is excluded"
+          }
+        ],
+        "correct": "A",
+        "explanation": "CTA reflects the examination time: with intermittent bleeding, extravasation may have paused. Interpret the unenhanced, arterial and portal-venous phases together with the clinical context.",
+        "source": "Abdomen.pdf pp. 86–87; ESGE 2021; ACG 2023; ACR"
+      },
+      "after": {
+        "id": "abdomen-lower-gi-bleeding-en-01",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "fach": "abdomen",
+        "question": "In a patient with haematochezia, technically adequate multiphase CTA shows a focal hyperattenuating area in the colonic lumen. It is already present before contrast and remains unchanged in attenuation and shape on arterial and portal venous images. Which report wording fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Pre-existing hyperattenuating luminal material; no active extravasation demonstrated at this focus."
+          },
+          {
+            "id": "B",
+            "text": "Arterial extravasation with progressive luminal accumulation."
+          },
+          {
+            "id": "C",
+            "text": "Delayed-onset extravasation with portal venous contrast pooling."
+          },
+          {
+            "id": "D",
+            "text": "Enhanced mucosal vessels explaining newly developed hyperattenuation."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Active extravasation requires newly appearing intraluminal contrast. A focus already present before contrast and unchanged does not demonstrate that activity. Blood or other hyperattenuating contents may pre-exist; negative CTA does not exclude intermittent clinical bleeding.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/22084211/",
+        "wrongExplanations": {
+          "B": "No new or increasing contrast accumulation is described; the focus is already present and unchanged before contrast.",
+          "C": "Delayed extravasation would appear or evolve across phases; the pre-existing focus here remains unchanged.",
+          "D": "Hyperattenuation is not new and is a luminal focus. Newly enhanced mucosal vessels do not explain this unenhanced finding."
+        }
+      },
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js"
+    },
+    {
+      "id": "abdomen-lower-gi-bleeding-fa-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "currentBefore": {
+        "id": "abdomen-lower-gi-bleeding-fa-01",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "fach": "abdomen",
+        "question": "چه چیزی توضیح می‌دهد که با وجود CTA منفی، خون‌ریزی مهم از نظر بالینی همچنان ممکن است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "خون‌ریزی متناوب ممکن است هنگام انجام بررسی متوقف شود؛ شک بالینی را در زمینهٔ بالینی ارزیابی کنید."
+          },
+          {
+            "id": "B",
+            "text": "مادهٔ پرچگال در فاز بدون تزریق به‌تنهایی نشت فعال را ثابت می‌کند."
+          },
+          {
+            "id": "C",
+            "text": "در صورت شک بالینی، فاز پورتال به‌تنهایی برای ارزیابی قطعی CTA کافی است."
+          },
+          {
+            "id": "D",
+            "text": "پس از CTA منفی، منبع خون‌ریزی متناوب رد می‌شود"
+          }
+        ],
+        "correct": "A",
+        "explanation": "CTA وضعیت زمان بررسی را نشان می‌دهد: در خون‌ریزی متناوب ممکن است نشت همان زمان متوقف شده باشد. فازهای بدون تزریق، شریانی و پورتال را همراه با زمینهٔ بالینی ارزیابی کنید.",
+        "source": "Abdomen.pdf pp. 86–87; ESGE 2021; ACG 2023; ACR"
+      },
+      "after": {
+        "id": "abdomen-lower-gi-bleeding-fa-01",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "fach": "abdomen",
+        "question": "در بیمار دچار هماتوشزی، CTA چندفازی با تکنیک مناسب کانونی پردانسیته در لومن کولون نشان می‌دهد. کانون از پیش در فاز بدون تزریق وجود دارد و در فازهای شریانی و پورتوونوس از نظر دانسیته و شکل تغییر نمی‌کند. کدام عبارت گزارش مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "محتوای پردانسیتهٔ از پیش موجود در لومن؛ در این کانون نشت فعال نشان داده نشده است."
+          },
+          {
+            "id": "B",
+            "text": "نشت شریانی همراه تجمع پیشرونده در لومن روده."
+          },
+          {
+            "id": "C",
+            "text": "نشت با شروع تأخیری همراه تجمع مادهٔ حاجب در فاز پورتوونوس."
+          },
+          {
+            "id": "D",
+            "text": "عروق مخاطی تقویت‌شده به‌عنوان علت پردانسیته‌شدن تازه."
+          }
+        ],
+        "correct": "A",
+        "explanation": "در نشت فعال، اضافه‌شدن مادهٔ حاجب جدید به لومن تعیین‌کننده است. کانونی که از فاز بدون تزریق موجود و بدون تغییر است، این فعالیت را نشان نمی‌دهد. خون یا محتوای پردانسیتهٔ دیگر می‌تواند از پیش وجود داشته باشد؛ CTA منفی خون‌ریزی بالینی متناوب را رد نمی‌کند.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/22084211/",
+        "wrongExplanations": {
+          "B": "تجمع تازه یا فزایندهٔ مادهٔ حاجب توصیف نشده؛ کانون از فاز بدون تزریق وجود داشته و بدون تغییر است.",
+          "C": "نشت تأخیری در مقایسهٔ فازها تازه ظاهر می‌شود یا تغییر می‌کند؛ کانون از پیش موجود در اینجا بدون تغییر است.",
+          "D": "پردانسیته‌بودن تازه ایجاد نشده و کانون در لومن قرار دارد. عروق مخاطی که تازه تقویت شده‌اند، این یافتهٔ فاز بدون تزریق را توضیح نمی‌دهند."
+        }
+      },
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js"
+    },
+    {
+      "id": "abdomen-inguinal-hernia-landmarks-de-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "abdomen-inguinal-hernia-landmarks-de-01",
+        "tags": [
+          "inguinalhernie"
+        ],
+        "fach": "abdomen",
+        "question": "Eine Leistenhernie verläuft lateral der inferioren epigastrischen Gefäße durch den tiefen Leistenring. Welche Form passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Indirekte Inguinalhernie"
+          },
+          {
+            "id": "B",
+            "text": "Direkte Inguinalhernie medial der Gefäße"
+          },
+          {
+            "id": "C",
+            "text": "Femoralhernie unterhalb des Leistenbandes"
+          },
+          {
+            "id": "D",
+            "text": "Femoralhernie lateral der Vena femoralis"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die indirekte Form tritt lateral der inferioren epigastrischen Gefäße durch den tiefen Leistenring ein. Die direkte Form liegt medial der Gefäße; eine Femoralhernie tritt unterhalb des Leistenbandes aus.",
+        "source": "Abdomen.pdf p.93, printed p.92"
+      },
+      "after": {
+        "id": "abdomen-inguinal-hernia-landmarks-de-01",
+        "tags": [
+          "inguinalhernie"
+        ],
+        "fach": "abdomen",
+        "question": "Eine Leistenhernie verläuft lateral der inferioren epigastrischen Gefäße durch den tiefen Leistenring. Welche Form passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Indirekte Inguinalhernie"
+          },
+          {
+            "id": "B",
+            "text": "Direkte Inguinalhernie"
+          },
+          {
+            "id": "C",
+            "text": "Femoralhernie"
+          },
+          {
+            "id": "D",
+            "text": "Kombinierte direkte und indirekte Inguinalhernie"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die indirekte Form tritt lateral der inferioren epigastrischen Gefäße durch den tiefen Leistenring ein. Die direkte Form liegt medial der Gefäße; eine Femoralhernie tritt unterhalb des Leistenbandes aus.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/21415178/",
+        "wrongExplanations": {
+          "B": "Die direkte Form liegt medial der epigastrischen Gefäße und tritt nicht durch den tiefen Ring ein.",
+          "C": "Der femorale Weg verläuft unterhalb des Leistenbandes, typischerweise medial der Femoralvene, nicht durch den tiefen Leistenring.",
+          "D": "Für die kombinierte Form müssten sowohl ein medialer direkter als auch ein lateraler indirekter Bruchweg nachgewiesen sein. Beschrieben ist der laterale Weg durch den tiefen Ring."
+        }
+      },
+      "reason": "Replace duplicated falsely attached femoral alternatives with four distinct hernia concepts; specific anatomy feedback. Preserve A and original tags."
+    },
+    {
+      "id": "abdomen-femoral-hernia-landmarks-de-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "abdomen-femoral-hernia-landmarks-de-01",
+        "tags": [
+          "femoralhernie"
+        ],
+        "fach": "abdomen",
+        "question": "Ein Bruchsack liegt unterhalb des Leistenbandes und medial der Vena femoralis. Welche Zuordnung passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Femoralhernie"
+          },
+          {
+            "id": "B",
+            "text": "Indirekte Inguinalhernie lateral der epigastrischen Gefäße"
+          },
+          {
+            "id": "C",
+            "text": "Direkte Inguinalhernie durch das Hesselbach-Dreieck"
+          },
+          {
+            "id": "D",
+            "text": "Femoralhernie oberhalb des Leistenbandes"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die Kombination aus Lage unterhalb des Leistenbandes und medial der Femoralvene spricht für eine Femoralhernie.",
+        "source": "Abdomen.pdf p.93, printed p.92"
+      },
+      "after": {
+        "id": "abdomen-femoral-hernia-landmarks-de-01",
+        "tags": [
+          "femoralhernie"
+        ],
+        "fach": "abdomen",
+        "question": "Ein Bruchsack liegt unterhalb des Leistenbandes und medial der Vena femoralis. Welche Zuordnung passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Femoralhernie"
+          },
+          {
+            "id": "B",
+            "text": "Indirekte Inguinalhernie"
+          },
+          {
+            "id": "C",
+            "text": "Direkte Inguinalhernie"
+          },
+          {
+            "id": "D",
+            "text": "Kombinierte direkte und indirekte Inguinalhernie"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die Kombination aus Lage unterhalb des Leistenbandes und medial der Femoralvene spricht für eine Femoralhernie.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/21415178/",
+        "wrongExplanations": {
+          "B": "Die indirekte Inguinalhernie tritt oberhalb des Leistenbandes lateral der epigastrischen Gefäße durch den tiefen Ring ein.",
+          "C": "Die direkte Inguinalhernie liegt oberhalb des Leistenbandes medial der epigastrischen Gefäße.",
+          "D": "Eine kombinierte Inguinalhernie umfasst direkte und indirekte Defekte oberhalb des Leistenbandes; die genannten femoralen Landmarken sprechen dagegen."
+        }
+      },
+      "reason": "Replace duplicated falsely attached femoral alternatives with four distinct hernia concepts; specific anatomy feedback. Preserve A and original tags."
+    },
+    {
+      "id": "abdomen-inguinal-hernia-landmarks-en-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "abdomen-inguinal-hernia-landmarks-en-01",
+        "tags": [
+          "inguinalhernie"
+        ],
+        "fach": "abdomen",
+        "question": "A groin hernia passes lateral to the inferior epigastric vessels through the deep inguinal ring. Which type fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Indirect inguinal hernia"
+          },
+          {
+            "id": "B",
+            "text": "Direct inguinal hernia medial to the vessels"
+          },
+          {
+            "id": "C",
+            "text": "Femoral hernia below the inguinal ligament"
+          },
+          {
+            "id": "D",
+            "text": "Femoral hernia lateral to the femoral vein"
+          }
+        ],
+        "correct": "A",
+        "explanation": "An indirect hernia enters lateral to the inferior epigastric vessels through the deep ring. A direct hernia lies medial to the vessels; a femoral hernia emerges below the inguinal ligament.",
+        "source": "Abdomen.pdf p.93, printed p.92"
+      },
+      "after": {
+        "id": "abdomen-inguinal-hernia-landmarks-en-01",
+        "tags": [
+          "inguinalhernie"
+        ],
+        "fach": "abdomen",
+        "question": "A groin hernia passes lateral to the inferior epigastric vessels through the deep inguinal ring. Which type fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Indirect inguinal hernia"
+          },
+          {
+            "id": "B",
+            "text": "Direct inguinal hernia"
+          },
+          {
+            "id": "C",
+            "text": "Femoral hernia"
+          },
+          {
+            "id": "D",
+            "text": "Combined direct and indirect inguinal hernia"
+          }
+        ],
+        "correct": "A",
+        "explanation": "An indirect hernia enters lateral to the inferior epigastric vessels through the deep ring. A direct hernia lies medial to the vessels; a femoral hernia emerges below the inguinal ligament.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/21415178/",
+        "wrongExplanations": {
+          "B": "The direct type lies medial to the epigastric vessels and does not enter through the deep ring.",
+          "C": "The femoral route runs below the inguinal ligament, typically medial to the femoral vein, rather than through the deep inguinal ring.",
+          "D": "A combined type requires both a medial direct and a lateral indirect defect. The stated finding describes the lateral route through the deep ring."
+        }
+      },
+      "reason": "Replace duplicated falsely attached femoral alternatives with four distinct hernia concepts; specific anatomy feedback. Preserve A and original tags."
+    },
+    {
+      "id": "abdomen-femoral-hernia-landmarks-en-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "abdomen-femoral-hernia-landmarks-en-01",
+        "tags": [
+          "femoralhernie"
+        ],
+        "fach": "abdomen",
+        "question": "A hernia sac lies below the inguinal ligament and medial to the femoral vein. Which classification fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Femoral hernia"
+          },
+          {
+            "id": "B",
+            "text": "Indirect inguinal hernia lateral to the epigastric vessels"
+          },
+          {
+            "id": "C",
+            "text": "Direct inguinal hernia through Hesselbach’s triangle"
+          },
+          {
+            "id": "D",
+            "text": "Femoral hernia above the inguinal ligament"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The combination of a position below the inguinal ligament and medial to the femoral vein supports a femoral hernia.",
+        "source": "Abdomen.pdf p.93, printed p.92"
+      },
+      "after": {
+        "id": "abdomen-femoral-hernia-landmarks-en-01",
+        "tags": [
+          "femoralhernie"
+        ],
+        "fach": "abdomen",
+        "question": "A hernia sac lies below the inguinal ligament and medial to the femoral vein. Which classification fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Femoral hernia"
+          },
+          {
+            "id": "B",
+            "text": "Indirect inguinal hernia"
+          },
+          {
+            "id": "C",
+            "text": "Direct inguinal hernia"
+          },
+          {
+            "id": "D",
+            "text": "Combined direct and indirect inguinal hernia"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The combination of a position below the inguinal ligament and medial to the femoral vein supports a femoral hernia.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/21415178/",
+        "wrongExplanations": {
+          "B": "An indirect inguinal hernia enters through the deep ring above the inguinal ligament lateral to the epigastric vessels.",
+          "C": "A direct inguinal hernia lies above the inguinal ligament medial to the epigastric vessels.",
+          "D": "A combined inguinal hernia comprises direct and indirect defects above the inguinal ligament; the stated femoral landmarks do not fit."
+        }
+      },
+      "reason": "Replace duplicated falsely attached femoral alternatives with four distinct hernia concepts; specific anatomy feedback. Preserve A and original tags."
+    },
+    {
+      "id": "abdomen-inguinal-hernia-landmarks-fa-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "abdomen-inguinal-hernia-landmarks-fa-01",
+        "tags": [
+          "inguinalhernie"
+        ],
+        "fach": "abdomen",
+        "question": "فتق کشالهٔ ران از لترال عروق اپی‌گاستریک تحتانی و از حلقهٔ عمقی عبور می‌کند. کدام نوع با این توصیف سازگار است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "فتق اینگوینال غیرمستقیم"
+          },
+          {
+            "id": "B",
+            "text": "فتق اینگوینال مستقیم در مدیال عروق"
+          },
+          {
+            "id": "C",
+            "text": "فتق فمورال در پایین رباط اینگوینال"
+          },
+          {
+            "id": "D",
+            "text": "فتق فمورال در لترال ورید فمورال"
+          }
+        ],
+        "correct": "A",
+        "explanation": "فتق غیرمستقیم از لترال عروق اپی‌گاستریک تحتانی و از حلقهٔ عمقی وارد می‌شود. نوع مستقیم مدیال عروق است و فتق فمورال از پایین رباط اینگوینال خارج می‌شود.",
+        "source": "Abdomen.pdf p.93, printed p.92"
+      },
+      "after": {
+        "id": "abdomen-inguinal-hernia-landmarks-fa-01",
+        "tags": [
+          "inguinalhernie"
+        ],
+        "fach": "abdomen",
+        "question": "فتق کشالهٔ ران از لترال عروق اپی‌گاستریک تحتانی و از حلقهٔ عمقی عبور می‌کند. کدام نوع با این توصیف سازگار است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "فتق اینگوینال غیرمستقیم"
+          },
+          {
+            "id": "B",
+            "text": "فتق اینگوینال مستقیم"
+          },
+          {
+            "id": "C",
+            "text": "فتق فمورال"
+          },
+          {
+            "id": "D",
+            "text": "فتق اینگوینال ترکیبی مستقیم و غیرمستقیم"
+          }
+        ],
+        "correct": "A",
+        "explanation": "فتق غیرمستقیم از لترال عروق اپی‌گاستریک تحتانی و از حلقهٔ عمقی وارد می‌شود. نوع مستقیم مدیال عروق است و فتق فمورال از پایین رباط اینگوینال خارج می‌شود.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/21415178/",
+        "wrongExplanations": {
+          "B": "نوع مستقیم در مدیال عروق اپی‌گاستریک است و از حلقهٔ عمقی وارد نمی‌شود.",
+          "C": "مسیر فمورال پایین رباط اینگوینال و معمولاً مدیال ورید فمورال است، نه از حلقهٔ عمقی اینگوینال.",
+          "D": "نوع ترکیبی به وجود مسیر مستقیم مدیال و غیرمستقیم لترال نیاز دارد. توصیف سؤال مسیر لترال از حلقهٔ عمقی را بیان می‌کند."
+        }
+      },
+      "reason": "Replace duplicated falsely attached femoral alternatives with four distinct hernia concepts; specific anatomy feedback. Preserve A and original tags."
+    },
+    {
+      "id": "abdomen-femoral-hernia-landmarks-fa-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "abdomen-femoral-hernia-landmarks-fa-01",
+        "tags": [
+          "femoralhernie"
+        ],
+        "fach": "abdomen",
+        "question": "ساک فتق در پایین رباط اینگوینال و مدیال ورید فمورال قرار دارد. کدام دسته‌بندی مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "فتق فمورال"
+          },
+          {
+            "id": "B",
+            "text": "فتق اینگوینال غیرمستقیم در لترال عروق اپی‌گاستریک"
+          },
+          {
+            "id": "C",
+            "text": "فتق اینگوینال مستقیم از مثلث هسل‌باخ"
+          },
+          {
+            "id": "D",
+            "text": "فتق فمورال در بالای رباط اینگوینال"
+          }
+        ],
+        "correct": "A",
+        "explanation": "ترکیب قرارگیری در پایین رباط اینگوینال و مدیال ورید فمورال به نفع فتق فمورال است.",
+        "source": "Abdomen.pdf p.93, printed p.92"
+      },
+      "after": {
+        "id": "abdomen-femoral-hernia-landmarks-fa-01",
+        "tags": [
+          "femoralhernie"
+        ],
+        "fach": "abdomen",
+        "question": "ساک فتق در پایین رباط اینگوینال و مدیال ورید فمورال قرار دارد. کدام دسته‌بندی مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "فتق فمورال"
+          },
+          {
+            "id": "B",
+            "text": "فتق اینگوینال غیرمستقیم"
+          },
+          {
+            "id": "C",
+            "text": "فتق اینگوینال مستقیم"
+          },
+          {
+            "id": "D",
+            "text": "فتق اینگوینال ترکیبی مستقیم و غیرمستقیم"
+          }
+        ],
+        "correct": "A",
+        "explanation": "ترکیب قرارگیری در پایین رباط اینگوینال و مدیال ورید فمورال به نفع فتق فمورال است.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/21415178/",
+        "wrongExplanations": {
+          "B": "فتق اینگوینال غیرمستقیم بالای رباط اینگوینال و لترال عروق اپی‌گاستریک از حلقهٔ عمقی وارد می‌شود.",
+          "C": "فتق اینگوینال مستقیم بالای رباط اینگوینال و مدیال عروق اپی‌گاستریک است.",
+          "D": "فتق اینگوینال ترکیبی شامل نقص مستقیم و غیرمستقیم بالای رباط اینگوینال است؛ نشانه‌های فمورال ذکرشده با آن سازگار نیستند."
+        }
+      },
+      "reason": "Replace duplicated falsely attached femoral alternatives with four distinct hernia concepts; specific anatomy feedback. Preserve A and original tags."
+    },
+    {
+      "id": "hepatic-adenoma-hbp-de-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "hepatic-adenoma-hbp-de-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Welches HBP-Muster unterstützt im passenden Kontext ein HCA gegenüber einer typischen FNH?",
+        "options": [
+          {
+            "id": "A",
+            "text": "HCA meist hypointens, FNH meist iso- bis hyperintens; Ausnahmen beachten"
+          },
+          {
+            "id": "B",
+            "text": "Beide Läsionen sind immer hypointens"
+          },
+          {
+            "id": "C",
+            "text": "HCA ist immer hyperintens und FNH immer hypointens"
+          },
+          {
+            "id": "D",
+            "text": "HCA ist typischerweise HBP-hyperintens, FNH dagegen hypointens"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die meisten Adenome bleiben in der HBP hypointens, während FNH typischerweise iso- bis hyperintens ist. Untertypen und atypische Muster verhindern eine absolute Regel.",
+        "source": "Abdomen.pdf pp. 17–18; ACG Clinical Guideline: Focal Liver Lesions (2024)"
+      },
+      "after": {
+        "id": "hepatic-adenoma-hbp-de-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Welche häufige Kombination in der hepatobiliären Phase unterstützt im passenden Kontext HCA gegenüber typischer FNH?",
+        "options": [
+          {
+            "id": "A",
+            "text": "HCA hypointens; FNH iso- bis hyperintens"
+          },
+          {
+            "id": "B",
+            "text": "HCA iso- bis hyperintens; FNH hypointens"
+          },
+          {
+            "id": "C",
+            "text": "HCA und FNH beide hypointens"
+          },
+          {
+            "id": "D",
+            "text": "HCA und FNH beide iso- bis hyperintens"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die meisten HCA sind in der HBP hypointens, typische FNH häufig iso- bis hyperintens. Atypische inflammatorische oder β-Catenin-mutierte HCA können Kontrastmittel zurückhalten und ebenfalls iso-/hyperintens sein. Deshalb HBP mit dynamischen Phasen, Morphologie und Kontext kombinieren.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "Dies kehrt die häufige Richtung um. HBP-hyperintense HCA sind eine wichtige Ausnahme und dürfen nicht als typische Gegenregel dienen.",
+          "C": "Beidseitige Hypointensität liefert nicht die gefragte typische Unterscheidung; FNH hält hepatobiliäres Kontrastmittel häufig zurück. Atypische Fälle bleiben möglich.",
+          "D": "Iso-/Hyperintensität kann bei beiden vorkommen, etwa bei bestimmten HCA-Subtypen. Sie ist aber nicht das häufige HCA-Muster und beweist keine gemeinsame Diagnose."
+        }
+      },
+      "reason": "ATV04 full original HCA pool review: remove absolute/redundant alternatives; preserve ID/key/tags and source-qualify interpretation."
+    },
+    {
+      "id": "hepatic-adenoma-hbp-en-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "hepatic-adenoma-hbp-en-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Which HBP pattern supports HCA over typical FNH in the appropriate context?",
+        "options": [
+          {
+            "id": "A",
+            "text": "HCA usually hypointense, FNH usually iso- to hyperintense; consider exceptions"
+          },
+          {
+            "id": "B",
+            "text": "Both lesions are always hypointense"
+          },
+          {
+            "id": "C",
+            "text": "HCA is always hyperintense and FNH always hypointense"
+          },
+          {
+            "id": "D",
+            "text": "HCA is typically HBP hyperintense, whereas FNH is hypointense"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Most adenomas remain hypointense on HBP, while FNH is typically iso- to hyperintense. Subtypes and atypical patterns prevent an absolute rule.",
+        "source": "Abdomen.pdf pp. 17–18; ACG Clinical Guideline: Focal Liver Lesions (2024)"
+      },
+      "after": {
+        "id": "hepatic-adenoma-hbp-en-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Which common hepatobiliary-phase combination supports HCA versus typical FNH in the appropriate context?",
+        "options": [
+          {
+            "id": "A",
+            "text": "HCA hypointense; FNH iso- to hyperintense"
+          },
+          {
+            "id": "B",
+            "text": "HCA iso- to hyperintense; FNH hypointense"
+          },
+          {
+            "id": "C",
+            "text": "Both HCA and FNH hypointense"
+          },
+          {
+            "id": "D",
+            "text": "Both HCA and FNH iso- to hyperintense"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Most HCAs are hypointense on HBP, whereas typical FNH is often iso- to hyperintense. Atypical inflammatory or beta-catenin-mutated HCAs can retain contrast and also appear iso/hyperintense. Combine HBP with dynamic phases, morphology and context.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "This reverses the common direction. HBP-hyperintense HCAs are an important exception rather than the usual opposite rule.",
+          "C": "Hypointensity in both does not provide the typical distinction asked for; FNH commonly retains hepatobiliary contrast. Atypical cases remain possible.",
+          "D": "Iso/hyperintensity can occur in both, including some HCA subtypes. It is not the common HCA pattern and does not establish a shared diagnosis."
+        }
+      },
+      "reason": "ATV04 full original HCA pool review: remove absolute/redundant alternatives; preserve ID/key/tags and source-qualify interpretation."
+    },
+    {
+      "id": "hepatic-adenoma-hbp-fa-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "hepatic-adenoma-hbp-fa-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "در زمینه مناسب، کدام الگوی HBP از HCA در برابر FNH تیپیک حمایت می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "HCA معمولاً کم‌سیگنال و FNH معمولاً ایزو تا پرسیگنال است؛ استثناها را در نظر بگیرید"
+          },
+          {
+            "id": "B",
+            "text": "هر دو ضایعه همیشه کم‌سیگنال‌اند"
+          },
+          {
+            "id": "C",
+            "text": "HCA همیشه پرسیگنال و FNH همیشه کم‌سیگنال است"
+          },
+          {
+            "id": "D",
+            "text": "HCA معمولاً در HBP پرسیگنال و FNH کم‌سیگنال است"
+          }
+        ],
+        "correct": "A",
+        "explanation": "بیشتر آدنوم‌ها در HBP کم‌سیگنال می‌مانند، درحالی‌که FNH معمولاً ایزو تا پرسیگنال است. زیرگروه‌ها و الگوهای آتیپیک مانع از یک قاعده مطلق می‌شوند.",
+        "source": "Abdomen.pdf pp. 17–18; ACG Clinical Guideline: Focal Liver Lesions (2024)"
+      },
+      "after": {
+        "id": "hepatic-adenoma-hbp-fa-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "کدام ترکیب شایع در فاز هپاتوبیلیاری، در زمینهٔ مناسب از HCA در برابر FNH تیپیک حمایت می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "HCA کم‌سیگنال؛ FNH ایزو تا پرسیگنال"
+          },
+          {
+            "id": "B",
+            "text": "HCA ایزو تا پرسیگنال؛ FNH کم‌سیگنال"
+          },
+          {
+            "id": "C",
+            "text": "HCA و FNH هر دو کم‌سیگنال"
+          },
+          {
+            "id": "D",
+            "text": "HCA و FNH هر دو ایزو تا پرسیگنال"
+          }
+        ],
+        "correct": "A",
+        "explanation": "بیشتر HCAها در HBP کم‌سیگنال‌اند، در حالی که FNH تیپیک اغلب ایزو تا پرسیگنال است. HCA التهابی آتیپیک یا دارای جهش بتاکاتنین می‌تواند مادهٔ حاجب را نگه دارد و ایزو یا پرسیگنال نیز باشد. بنابراین HBP با فازهای دینامیک، مورفولوژی و زمینه ترکیب شود.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "این گزینه جهت شایع را معکوس می‌کند. HCA پرسیگنال در HBP استثنای مهمی است، نه قاعدهٔ معمولِ معکوس.",
+          "C": "کم‌سیگنالی هر دو، افتراق تیپیک مورد سؤال را فراهم نمی‌کند؛ FNH اغلب مادهٔ حاجب هپاتوبیلیاری را نگه می‌دارد. موارد آتیپیک همچنان ممکن‌اند.",
+          "D": "ایزو یا پرسیگنالی در هر دو، از جمله برخی زیرگروه‌های HCA، ممکن است. اما الگوی شایع HCA نیست و تشخیص مشترک را قطعی نمی‌کند."
+        }
+      },
+      "reason": "ATV04 full original HCA pool review: remove absolute/redundant alternatives; preserve ID/key/tags and source-qualify interpretation."
+    },
+    {
+      "id": "hepatic-adenoma-opposed-phase-de-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "hepatic-adenoma-opposed-phase-de-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Was bedeutet ein Signalabfall in der T1-Out-of-phase-Aufnahme einer Leberläsion am ehesten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Möglicher intrazellulärer Fettanteil; kein alleiniger Beweis für HCA oder einen Subtyp"
+          },
+          {
+            "id": "B",
+            "text": "Sicherer Nachweis einer FNH"
+          },
+          {
+            "id": "C",
+            "text": "Sicherer Ausschluss eines malignen Tumors"
+          },
+          {
+            "id": "D",
+            "text": "Ein Signalabfall beweist spezifisch den inflammatorischen HCA-Subtyp"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Ein Signalabfall in der Out-of-phase-Aufnahme spricht für mikroskopisches beziehungsweise intrazelluläres Fett, ist aber keine eigenständige Diagnose und legt keinen Subtyp sicher fest.",
+        "source": "Abdomen.pdf p.17; ACG Clinical Guideline: Focal Liver Lesions (2024)"
+      },
+      "after": {
+        "id": "hepatic-adenoma-opposed-phase-de-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Eine Leberläsion verliert gegenüber der In-phase-Aufnahme homogen Signal auf der passenden Opposed-phase-Aufnahme. Welche Gewebekomponente wird dadurch am ehesten angezeigt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Mikroskopisch gemischtes Fett und Wasser"
+          },
+          {
+            "id": "B",
+            "text": "Hämosiderinbedingte Suszeptibilität"
+          },
+          {
+            "id": "C",
+            "text": "Met-Hb in einem subakuten Blutungsanteil"
+          },
+          {
+            "id": "D",
+            "text": "Wasserreiches Ödem ohne Fettanteil"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Chemical-shift-Signalabfall passt zu mikroskopischem Fett im wasserhaltigen Gewebe. Bei HCA kann dies die Charakterisierung unterstützen, legt aber weder HCA noch einen molekularen Subtyp allein fest. Blut kann natives T1 ebenfalls aufhellen, ohne dieses Fett-Wasser-Muster zu beweisen.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "Eisenbedingter Signalverlust wird anhand echozeitabhängiger Suszeptibilität beziehungsweise T2*-Verhalten beurteilt; er ist nicht gleichbedeutend mit dem hier beschriebenen Chemical-shift-Fettmuster.",
+          "C": "Met-Hb kann natives T1 aufhellen. Daraus folgt jedoch kein typischer Signalabfall durch Fett-Wasser-Auslöschung auf Opposed-phase-Bildern.",
+          "D": "Reines wasserreiches Gewebe erzeugt nicht den typischen Fett-Wasser-Auslöschungseffekt. Ödem wird im Gesamtmuster, besonders auf flüssigkeitssensitiven Sequenzen, beurteilt."
+        }
+      },
+      "reason": "ATV04 full original HCA pool review: remove absolute/redundant alternatives; preserve ID/key/tags and source-qualify interpretation."
+    },
+    {
+      "id": "hepatic-adenoma-opposed-phase-en-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "hepatic-adenoma-opposed-phase-en-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "What does signal loss on T1 out-of-phase imaging of a liver lesion most likely indicate?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Possible intracellular fat; not proof of HCA or a specific subtype on its own"
+          },
+          {
+            "id": "B",
+            "text": "Definitive proof of FNH"
+          },
+          {
+            "id": "C",
+            "text": "Definitive exclusion of malignancy"
+          },
+          {
+            "id": "D",
+            "text": "Signal loss specifically proves the inflammatory HCA subtype"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Out-of-phase signal loss supports microscopic/intracellular fat but is not a stand-alone diagnosis or subtype label.",
+        "source": "Abdomen.pdf p.17; ACG Clinical Guideline: Focal Liver Lesions (2024)"
+      },
+      "after": {
+        "id": "hepatic-adenoma-opposed-phase-en-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "A liver lesion shows homogeneous signal loss on the appropriate opposed-phase image compared with in-phase imaging. Which tissue component does this most strongly indicate?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Microscopically mixed fat and water"
+          },
+          {
+            "id": "B",
+            "text": "Haemosiderin-related susceptibility"
+          },
+          {
+            "id": "C",
+            "text": "MetHb in a subacute haemorrhagic component"
+          },
+          {
+            "id": "D",
+            "text": "Water-rich oedema without fat"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Chemical-shift signal loss supports microscopic fat in water-containing tissue. In HCA this can aid characterisation but establishes neither HCA nor a molecular subtype alone. Blood can also cause unenhanced T1 hyperintensity without establishing this fat-water pattern.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "Iron-related signal loss is assessed through echo-time-dependent susceptibility/T2* behaviour; it is not equivalent to the chemical-shift fat pattern described here.",
+          "C": "MetHb can cause unenhanced T1 hyperintensity but does not thereby produce the typical opposed-phase fat-water cancellation pattern.",
+          "D": "Pure water-rich tissue does not generate the typical fat-water cancellation effect. Assess oedema in the overall pattern, particularly on fluid-sensitive sequences."
+        }
+      },
+      "reason": "ATV04 full original HCA pool review: remove absolute/redundant alternatives; preserve ID/key/tags and source-qualify interpretation."
+    },
+    {
+      "id": "hepatic-adenoma-opposed-phase-fa-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "hepatic-adenoma-opposed-phase-fa-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "افت سیگنال در تصویر T1 out-of-phase ضایعه کبدی بیشتر نشان‌دهنده چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "احتمال وجود چربی داخل‌سلولی؛ نه اثبات مستقل HCA یا یک زیرگروه خاص"
+          },
+          {
+            "id": "B",
+            "text": "اثبات قطعی FNH"
+          },
+          {
+            "id": "C",
+            "text": "رد قطعی بدخیمی"
+          },
+          {
+            "id": "D",
+            "text": "افت سیگنال به‌طور اختصاصی زیرگروه التهابی HCA را ثابت می‌کند"
+          }
+        ],
+        "correct": "A",
+        "explanation": "افت out-of-phase از وجود چربی میکروسکوپیک/داخل‌سلولی حمایت می‌کند، اما به‌تنهایی تشخیص یا تعیین زیرگروه نیست.",
+        "source": "Abdomen.pdf p.17; ACG Clinical Guideline: Focal Liver Lesions (2024)"
+      },
+      "after": {
+        "id": "hepatic-adenoma-opposed-phase-fa-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "ضایعهٔ کبدی در تصویر مناسب opposed-phase نسبت به in-phase افت سیگنال همگن دارد. این یافته بیشتر نشان‌دهندهٔ کدام جزء بافتی است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "اختلاط میکروسکوپی چربی و آب"
+          },
+          {
+            "id": "B",
+            "text": "سوسپتیبیلیتی ناشی از هموسیدرین"
+          },
+          {
+            "id": "C",
+            "text": "مت‌هموگلوبین در جزء خونریزی زیرحاد"
+          },
+          {
+            "id": "D",
+            "text": "ادم پرآب بدون چربی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "افت سیگنال chemical shift از چربی میکروسکوپی در بافت حاوی آب حمایت می‌کند. در HCA می‌تواند به بررسی ویژگی‌ها کمک کند، اما به‌تنهایی HCA یا زیرگروه مولکولی را قطعی نمی‌کند. خون نیز می‌تواند در T1 بدون تزریق پرسیگنال باشد، بدون اینکه این الگوی چربی و آب را ثابت کند.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "افت سیگنال ناشی از آهن با سوسپتیبیلیتی وابسته به زمان اکو یا رفتار T2* ارزیابی می‌شود؛ معادل الگوی چربی chemical shift توصیف‌شده نیست.",
+          "C": "مت‌هموگلوبین می‌تواند T1 بدون تزریق را روشن کند، اما این امر به‌خودی‌خود الگوی تیپیک حذف سیگنال چربی و آب در opposed-phase را ایجاد نمی‌کند.",
+          "D": "بافت صرفاً پرآب اثر تیپیک حذف سیگنال چربی و آب را ایجاد نمی‌کند. ادم در الگوی کلی و به‌ویژه سکانس‌های حساس به مایع بررسی می‌شود."
+        }
+      },
+      "reason": "ATV04 full original HCA pool review: remove absolute/redundant alternatives; preserve ID/key/tags and source-qualify interpretation."
+    },
+    {
+      "id": "hepatic-adenoma-dynamic-ct-de-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "hepatic-adenoma-dynamic-ct-de-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Welches dynamische Kontrastmuster passt häufig zu einem hepatozellulären Adenom?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Arterielle Hyperanreicherung mit späterer Angleichung an das Leberparenchym"
+          },
+          {
+            "id": "B",
+            "text": "Diskontinuierliche periphere Knoten mit zentripetaler Auffüllung"
+          },
+          {
+            "id": "C",
+            "text": "Fehlende arterielle Aufnahme beweist HCA"
+          },
+          {
+            "id": "D",
+            "text": "Ein portalvenöses Hypoenhancement ist spezifisch für HCA"
+          }
+        ],
+        "correct": "A",
+        "explanation": "HCA zeigt häufig eine kräftige arterielle Anreicherung und kann sich in späteren Phasen dem Leberparenchym angleichen. Das Muster ist nicht spezifisch und muss mit Morphologie und klinischem Kontext beurteilt werden.",
+        "source": "Abdomen.pdf pp.16–17; ACG Clinical Guideline: Focal Liver Lesions (2024)"
+      },
+      "after": {
+        "id": "hepatic-adenoma-dynamic-ct-de-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Welches dynamische Muster ist bei einem HCA mit extrazellulärem Kontrastmittel häufig?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Arterielle Hyperanreicherung mit späterer Angleichung an die Leber"
+          },
+          {
+            "id": "B",
+            "text": "Periphere diskontinuierliche Knoten mit zentripetaler Auffüllung"
+          },
+          {
+            "id": "C",
+            "text": "Progressiv zunehmende späte Kontrastmittelaufnahme bei geringer früher Aufnahme"
+          },
+          {
+            "id": "D",
+            "text": "Flüssigkeitsdichte Läsion ohne messbare interne Kontrastmittelaufnahme"
+          }
+        ],
+        "correct": "A",
+        "explanation": "HCA zeigt häufig arterielle Hyperanreicherung und spätere Angleichung. Das Muster ist nicht spezifisch und kann je nach Subtyp, Blutung und Fett variieren. Ein Einzelmuster trennt HCA und HCC nicht zuverlässig; weitere Sequenzen und klinischen Kontext einbeziehen.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "Dieses peripher-noduläre zentripetale Muster passt eher zu einem typischen Hämangiom als zum gefragten häufigen HCA-Muster.",
+          "C": "Dieses verzögerte progressive Muster kann bei fibrosereichem Gewebe vorkommen. Es beschreibt nicht die gefragte häufige frühe Hypervaskularität mit späterer Angleichung.",
+          "D": "Flüssigkeitsdichte ohne internes Enhancement passt zu zystischem Inhalt, nicht zum gefragten häufigen Muster eines soliden HCA."
+        }
+      },
+      "reason": "ATV04 full original HCA pool review: remove absolute/redundant alternatives; preserve ID/key/tags and source-qualify interpretation."
+    },
+    {
+      "id": "hepatic-adenoma-dynamic-ct-en-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "hepatic-adenoma-dynamic-ct-en-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Which dynamic enhancement pattern is common in hepatocellular adenoma?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Arterial hyperenhancement with later equalisation to the liver parenchyma"
+          },
+          {
+            "id": "B",
+            "text": "Discontinuous peripheral nodules with centripetal fill-in"
+          },
+          {
+            "id": "C",
+            "text": "Absent arterial enhancement proves HCA"
+          },
+          {
+            "id": "D",
+            "text": "Portal venous hypoenhancement is specific for HCA"
+          }
+        ],
+        "correct": "A",
+        "explanation": "HCA commonly enhances avidly in the arterial phase and may become similar to liver on later phases. The pattern is not specific and is interpreted with morphology and context.",
+        "source": "Abdomen.pdf pp.16–17; ACG Clinical Guideline: Focal Liver Lesions (2024)"
+      },
+      "after": {
+        "id": "hepatic-adenoma-dynamic-ct-en-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Which dynamic pattern is common in HCA with an extracellular contrast agent?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Arterial hyperenhancement with later equalisation to liver"
+          },
+          {
+            "id": "B",
+            "text": "Discontinuous peripheral nodules with centripetal fill-in"
+          },
+          {
+            "id": "C",
+            "text": "Progressively increasing delayed enhancement with little early enhancement"
+          },
+          {
+            "id": "D",
+            "text": "Fluid-attenuation lesion without measurable internal enhancement"
+          }
+        ],
+        "correct": "A",
+        "explanation": "HCA commonly shows arterial hyperenhancement followed by equalisation. The pattern is nonspecific and can vary with subtype, haemorrhage and fat. One pattern does not reliably distinguish HCA from HCC; integrate further sequences and clinical context.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "This peripheral nodular centripetal pattern favours typical haemangioma rather than the common HCA pattern asked for.",
+          "C": "This progressive delayed pattern can occur in fibrous tissue. It does not describe the common early hypervascularity followed by equalisation asked for.",
+          "D": "Fluid attenuation without internal enhancement fits cystic contents rather than the common solid-HCA pattern asked for."
+        }
+      },
+      "reason": "ATV04 full original HCA pool review: remove absolute/redundant alternatives; preserve ID/key/tags and source-qualify interpretation."
+    },
+    {
+      "id": "hepatic-adenoma-dynamic-ct-fa-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "hepatic-adenoma-dynamic-ct-fa-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "کدام الگوی تقویت دینامیک اغلب با آدنوم هپاتوسلولار سازگار است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "تقویت شریانی واضح همراه با هم‌سطح‌شدن بعدی با پارانشیم کبد"
+          },
+          {
+            "id": "B",
+            "text": "ندول‌های محیطی ناپیوسته با پرشدن مرکزگرا"
+          },
+          {
+            "id": "C",
+            "text": "نبود تقویت شریانی HCA را ثابت می‌کند"
+          },
+          {
+            "id": "D",
+            "text": "کم‌تقویتی در فاز پورتال برای HCA اختصاصی است"
+          }
+        ],
+        "correct": "A",
+        "explanation": "HCA اغلب در فاز شریانی تقویت واضح دارد و در فازهای بعدی ممکن است با کبد هم‌سطح شود. این الگو اختصاصی نیست و باید با مورفولوژی و زمینه تفسیر شود.",
+        "source": "Abdomen.pdf pp.16–17; ACG Clinical Guideline: Focal Liver Lesions (2024)"
+      },
+      "after": {
+        "id": "hepatic-adenoma-dynamic-ct-fa-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "کدام الگوی دینامیک در HCA با مادهٔ حاجب خارج‌سلولی شایع است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "جذب بیشتر شریانی با هم‌سطح‌شدن بعدی با کبد"
+          },
+          {
+            "id": "B",
+            "text": "ندول‌های محیطی ناپیوسته با پرشدن مرکزگرا"
+          },
+          {
+            "id": "C",
+            "text": "افزایش تدریجی جذب تأخیری با جذب اندک در فاز اولیه"
+          },
+          {
+            "id": "D",
+            "text": "ضایعه با دانسیتهٔ مایع بدون جذب قابل‌اندازه‌گیری داخلی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "HCA اغلب جذب بیشتر شریانی و سپس هم‌سطح‌شدن نشان می‌دهد. این الگو غیراختصاصی است و با زیرگروه، خونریزی و چربی تغییر می‌کند. یک الگو HCA را به‌طور قابل‌اتکا از HCC جدا نمی‌کند؛ سکانس‌های دیگر و زمینهٔ بالینی نیز لحاظ شوند.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "این الگوی ندولی محیطی و مرکزگرا بیشتر با همانژیوم تیپیک سازگار است تا الگوی شایع HCA مورد سؤال.",
+          "C": "این الگوی تدریجی تأخیری می‌تواند در بافت غنی از فیبروز دیده شود. توصیف‌کنندهٔ پرعروقی اولیهٔ شایع همراه هم‌سطح‌شدن بعدی مورد سؤال نیست.",
+          "D": "دانسیتهٔ مایع بدون جذب داخلی با محتوای کیستیک سازگار است، نه الگوی شایع HCA توپر مورد سؤال."
+        }
+      },
+      "reason": "ATV04 full original HCA pool review: remove absolute/redundant alternatives; preserve ID/key/tags and source-qualify interpretation."
+    },
+    {
+      "id": "hepatic-adenoma-caveat-de-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "hepatic-adenoma-caveat-de-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Welche Aussage zur bildgebenden Subtypisierung eines HCA ist am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "MRT kann Subtypen nahelegen, aber die Abgrenzung zu HCC ist nicht in jedem Fall sicher"
+          },
+          {
+            "id": "B",
+            "text": "HBP-Signal beweist immer den molekularen Subtyp"
+          },
+          {
+            "id": "C",
+            "text": "Einzelne arterielle Hyperanreicherung schließt HCC aus"
+          },
+          {
+            "id": "D",
+            "text": "Die MRT kann HCA und HCC in jedem Fall sicher unterscheiden"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die MRT unterstützt die Charakterisierung und kann einen Subtyp nahelegen; atypische Läsionen und β-Catenin-aktivierte HCA können sich jedoch mit HCC überschneiden. Klinischen Kontext und bei Bedarf eine weitere interdisziplinäre Beurteilung einbeziehen.",
+        "source": "Abdomen.pdf pp.17–18; ACG Clinical Guideline: Focal Liver Lesions (2024)"
+      },
+      "after": {
+        "id": "hepatic-adenoma-caveat-de-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Eine technisch ausreichende multiphasische MRT lässt eine atypische hepatozelluläre Läsion zwischen HCA und HCC unklar. Welche weitere Strategie passt am ehesten zu dieser diagnostischen Unsicherheit?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Interdisziplinäre Leberkonferenz und je nach Fragestellung gezielte Gewebeabklärung erwägen"
+          },
+          {
+            "id": "B",
+            "text": "Eine ergänzende hepatobiliäre Kontrastphase durchführen"
+          },
+          {
+            "id": "C",
+            "text": "CEUS zur zusätzlichen Beurteilung der Kontrastdynamik ergänzen"
+          },
+          {
+            "id": "D",
+            "text": "Eine kurzfristige MRT-Verlaufskontrolle ohne vorherige Fallkonferenz planen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MRT kann insbesondere HNF-1α- und inflammatorische HCA nahelegen; bestimmte Subtypen und HCC können bildgebend überlappen. Bei unklarer atypischer Läsion interdisziplinär diskutieren und gezielte Biopsie erwägen. Weder eine zusätzliche Einzelphase noch CEUS beweisen zuverlässig den molekularen Subtyp.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "HBP kann ergänzen, wenn sie fehlt. Sie löst jedoch nicht zuverlässig die HCA/HCC-Unsicherheit oder molekulare Subtypisierung; bei bereits ausreichender atypischer Untersuchung ist die gezielte interdisziplinäre Entscheidung vorrangig.",
+          "C": "CEUS kann die Charakterisierung ergänzen, subtypisiert HCA aber nicht zuverlässig. Die schon ausreichende MRT mit verbliebener HCA/HCC-Unsicherheit verlangt zunächst eine abgestimmte diagnostische Strategie.",
+          "D": "Verlauf kann je nach interdisziplinärer Einschätzung sinnvoll sein. Ihn vorab als Standardweg festzulegen, klärt die atypische potenziell maligne Läsion nicht angemessen; Bedarf und Art der Gewebeabklärung zuerst diskutieren."
+        }
+      },
+      "reason": "ATV04 clinical workflow instead of global cautious-key/threeabsolute alternatives; preserve both focal-liver tags and keyA."
+    },
+    {
+      "id": "hepatic-adenoma-caveat-en-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "hepatic-adenoma-caveat-en-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Which statement about imaging-based HCA subtyping is most accurate?",
+        "options": [
+          {
+            "id": "A",
+            "text": "MRI may suggest subtypes, but distinction from HCC is not reliable in every case"
+          },
+          {
+            "id": "B",
+            "text": "HBP signal always proves the molecular subtype"
+          },
+          {
+            "id": "C",
+            "text": "Arterial hyperenhancement alone excludes HCC"
+          },
+          {
+            "id": "D",
+            "text": "MRI can reliably distinguish HCA from HCC in every case"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MRI assists characterisation and may suggest subtype, but atypical lesions and β-catenin-activated HCA can overlap with HCC. Use the clinical context and further multidisciplinary assessment when indicated.",
+        "source": "Abdomen.pdf pp.17–18; ACG Clinical Guideline: Focal Liver Lesions (2024)"
+      },
+      "after": {
+        "id": "hepatic-adenoma-caveat-en-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Technically adequate multiphasic MRI leaves an atypical hepatocellular lesion indeterminate between HCA and HCC. Which further strategy best addresses this diagnostic uncertainty?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Multidisciplinary liver review and consideration of targeted tissue diagnosis according to the question"
+          },
+          {
+            "id": "B",
+            "text": "Acquire an additional hepatobiliary contrast phase"
+          },
+          {
+            "id": "C",
+            "text": "Add CEUS to further assess enhancement dynamics"
+          },
+          {
+            "id": "D",
+            "text": "Plan short-interval MRI follow-up before case conference"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MRI can suggest particularly HNF1A and inflammatory HCA, but some subtypes and HCC overlap on imaging. Discuss an indeterminate atypical lesion multidisciplinary and consider targeted biopsy. Neither an additional single phase nor CEUS reliably establishes molecular subtype.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "HBP can complement a study when absent. It does not reliably resolve HCA/HCC uncertainty or molecular subtyping; with an already adequate atypical study, targeted multidisciplinary decision-making takes priority.",
+          "C": "CEUS may complement characterisation but does not reliably subtype HCA. An already adequate MRI with persistent HCA/HCC uncertainty first warrants a coordinated diagnostic strategy.",
+          "D": "Follow-up may be appropriate after multidisciplinary assessment. Assigning it beforehand as the default does not adequately address an atypical potentially malignant lesion; first discuss the need and method of tissue evaluation."
+        }
+      },
+      "reason": "ATV04 clinical workflow instead of global cautious-key/threeabsolute alternatives; preserve both focal-liver tags and keyA."
+    },
+    {
+      "id": "hepatic-adenoma-caveat-fa-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "hepatic-adenoma-caveat-fa-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "کدام عبارت درباره تعیین زیرگروه HCA با تصویربرداری دقیق‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "MRI ممکن است زیرگروه‌ها را مطرح کند، اما افتراق از HCC در همه موارد قطعی نیست"
+          },
+          {
+            "id": "B",
+            "text": "سیگنال HBP همیشه زیرگروه مولکولی را ثابت می‌کند"
+          },
+          {
+            "id": "C",
+            "text": "تقویت شریانی منفرد HCC را رد می‌کند"
+          },
+          {
+            "id": "D",
+            "text": "MRI در همه موارد می‌تواند HCA را با اطمینان از HCC افتراق دهد"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MRI به مشخصه‌یابی و طرح زیرگروه کمک می‌کند، اما ضایعات آتیپیک و HCA فعال‌شده با β-catenin ممکن است با HCC همپوشانی داشته باشند. در صورت لزوم زمینه بالینی و ارزیابی چندرشته‌ای تکمیلی را در نظر بگیرید.",
+        "source": "Abdomen.pdf pp.17–18; ACG Clinical Guideline: Focal Liver Lesions (2024)"
+      },
+      "after": {
+        "id": "hepatic-adenoma-caveat-fa-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "MRI چندفازی با کیفیت فنی کافی، ضایعهٔ هپاتوسلولار آتیپیک را بین HCA و HCC نامشخص باقی می‌گذارد. کدام راهبرد بعدی مناسب‌تر به این عدم قطعیت تشخیصی می‌پردازد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "بررسی در تیم چندتخصصی کبد و درنظرگرفتن بررسی هدفمند بافت بر پایهٔ پرسش بالینی"
+          },
+          {
+            "id": "B",
+            "text": "انجام فاز تکمیلی با مادهٔ حاجب هپاتوبیلیاری"
+          },
+          {
+            "id": "C",
+            "text": "افزودن CEUS برای ارزیابی تکمیلی دینامیک مادهٔ حاجب"
+          },
+          {
+            "id": "D",
+            "text": "برنامه‌ریزی MRI پیگیری کوتاه‌مدت پیش از بررسی در تیم"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MRI به‌ویژه می‌تواند HCA وابسته به HNF1A و نوع التهابی را مطرح کند، اما برخی زیرگروه‌ها و HCC در تصویربرداری هم‌پوشانی دارند. ضایعهٔ آتیپیک نامشخص در تیم چندتخصصی بررسی و بیوپسی هدفمند در نظر گرفته شود. نه یک فاز تکمیلی منفرد و نه CEUS، زیرگروه مولکولی را به‌طور قابل‌اتکا قطعی نمی‌کند.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "HBP در صورت انجام‌نشدن می‌تواند بررسی را تکمیل کند. اما عدم قطعیت HCA/HCC یا تعیین زیرگروه مولکولی را به‌طور قابل‌اتکا حل نمی‌کند؛ در بررسی کافی ولی آتیپیک، تصمیم‌گیری هدفمند چندتخصصی اولویت دارد.",
+          "C": "CEUS می‌تواند بررسی ویژگی‌ها را تکمیل کند، اما زیرگروه HCA را به‌طور قابل‌اتکا تعیین نمی‌کند. MRI کافی با عدم قطعیت باقی‌مانده HCA/HCC، ابتدا به راهبرد تشخیصی هماهنگ نیاز دارد.",
+          "D": "پیگیری پس از ارزیابی چندتخصصی می‌تواند مناسب باشد. تعیین پیشاپیش آن به‌عنوان مسیر پیش‌فرض، ضایعهٔ آتیپیک با احتمال بدخیمی را کافی بررسی نمی‌کند؛ ابتدا نیاز و روش بررسی بافت مطرح شود."
+        }
+      },
+      "reason": "ATV04 clinical workflow instead of global cautious-key/threeabsolute alternatives; preserve both focal-liver tags and keyA."
+    },
+    {
+      "id": "abdomen-focal-liver-de-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "abdomen-focal-liver-de-01",
+        "tags": [
+          "leberadenom",
+          "lebermetastasen"
+        ],
+        "fach": "abdomen",
+        "question": "Wie sollte Enhancement einer fokalen Leberläsion beurteilt werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Über mehrere Phasen und im Kontext der Leber"
+          },
+          {
+            "id": "B",
+            "text": "Nur anhand einer Einzelphase"
+          },
+          {
+            "id": "C",
+            "text": "Nur nach maximalem Durchmesser"
+          },
+          {
+            "id": "D",
+            "text": "Die Läsion nur anhand des nativen CT beurteilen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Muster über Phasen und Hintergrund sind gemeinsam zu interpretieren.",
+        "source": "Abdomen.pdf pp. 5, 14–27; ACG 2024"
+      },
+      "after": {
+        "id": "abdomen-focal-liver-de-01",
+        "tags": [
+          "leberadenom",
+          "lebermetastasen"
+        ],
+        "fach": "abdomen",
+        "question": "Eine solide fokale Leberläsion wurde zufällig in einer einzelnen portalvenösen CT-Phase entdeckt und bleibt unklar. Welche Bildgebung ergänzt ihre Kontrastmittelcharakterisierung am gezieltesten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Dedizierte multiphasische Leber-MRT oder -CT einschließlich arterieller und späterer Phasen"
+          },
+          {
+            "id": "B",
+            "text": "Erneute portalvenöse CT zur isolierten Bestätigung der gemessenen Dichte"
+          },
+          {
+            "id": "C",
+            "text": "Natives CT zur Einordnung anhand der absoluten Dichte ohne Kontrastdynamik"
+          },
+          {
+            "id": "D",
+            "text": "MRT mit T2 und DWI zur Zuordnung ohne dynamische Kontrastphasen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Bei unklarer fokaler Leberläsion empfiehlt ACG eine multiphasische kontrastverstärkte MRT oder CT. Arterielle und spätere Phasen zusammen mit nativen Bildern, Morphologie und Leberkontext beurteilen. Keine einzelne Dichte, Diffusions- oder Kontrastphase ersetzt das Gesamtmuster.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "Eine weitere identische Einzelphase prüft die Reproduzierbarkeit, liefert aber die fehlende arterielle und spätere Kontrastdynamik nicht.",
+          "C": "Natives CT kann Fett, Blut oder Kalk ergänzend beurteilen. Die konkrete Frage nach dem Kontrastverhalten verlangt jedoch ein multiphasisches Protokoll.",
+          "D": "T2 und DWI sind nützliche Zusatzinformationen. Ohne dynamische Phasen wird die hier fehlende Kontrastmittelcharakterisierung jedoch nicht ergänzt."
+        }
+      },
+      "reason": "ATV04 clinical workflow instead of global cautious-key/threeabsolute alternatives; preserve both focal-liver tags and keyA."
+    },
+    {
+      "id": "abdomen-focal-liver-en-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "abdomen-focal-liver-en-01",
+        "tags": [
+          "leberadenom",
+          "lebermetastasen"
+        ],
+        "fach": "abdomen",
+        "question": "How should enhancement of a focal liver lesion be assessed?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Across phases and in the context of the liver"
+          },
+          {
+            "id": "B",
+            "text": "From one phase only"
+          },
+          {
+            "id": "C",
+            "text": "By maximum diameter only"
+          },
+          {
+            "id": "D",
+            "text": "Assess the lesion from unenhanced CT alone"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Enhancement across phases and background liver must be interpreted together.",
+        "source": "Abdomen.pdf pp. 5, 14–27; ACG 2024"
+      },
+      "after": {
+        "id": "abdomen-focal-liver-en-01",
+        "tags": [
+          "leberadenom",
+          "lebermetastasen"
+        ],
+        "fach": "abdomen",
+        "question": "A solid focal liver lesion is incidentally detected on a single portal venous CT phase and remains indeterminate. Which imaging most directly complements enhancement characterisation?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Dedicated multiphasic liver MRI or CT including arterial and later phases"
+          },
+          {
+            "id": "B",
+            "text": "Repeat portal venous CT to confirm the measured attenuation in isolation"
+          },
+          {
+            "id": "C",
+            "text": "Unenhanced CT to classify by absolute attenuation without enhancement dynamics"
+          },
+          {
+            "id": "D",
+            "text": "MRI with T2 and DWI for classification without dynamic contrast phases"
+          }
+        ],
+        "correct": "A",
+        "explanation": "For an indeterminate focal liver lesion, ACG recommends multiphasic contrast-enhanced MRI or CT. Assess arterial and later phases together with unenhanced imaging, morphology and liver context. One attenuation value, diffusion image or contrast phase does not replace the overall pattern.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "Another identical single phase tests reproducibility but does not supply the missing arterial and later enhancement dynamics.",
+          "C": "Unenhanced CT can complement assessment of fat, blood or calcium. The specific enhancement question nevertheless requires a multiphasic protocol.",
+          "D": "T2 and DWI provide useful additional information. Without dynamic phases, they do not supply the missing enhancement characterisation here."
+        }
+      },
+      "reason": "ATV04 clinical workflow instead of global cautious-key/threeabsolute alternatives; preserve both focal-liver tags and keyA."
+    },
+    {
+      "id": "abdomen-focal-liver-fa-01",
+      "sourceFile": "data/abdomenThoraxAssessmentDrafts.js",
+      "registrationFile": "data/abdomenThoraxRegisteredQuestions.js",
+      "currentBefore": {
+        "id": "abdomen-focal-liver-fa-01",
+        "tags": [
+          "leberadenom",
+          "lebermetastasen"
+        ],
+        "fach": "abdomen",
+        "question": "جذب ماده حاجب در ضایعه کانونی کبد چگونه باید ارزیابی شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "در چند فاز و در زمینه وضعیت کبد"
+          },
+          {
+            "id": "B",
+            "text": "فقط بر اساس یک فاز"
+          },
+          {
+            "id": "C",
+            "text": "فقط بر اساس بیشترین قطر"
+          },
+          {
+            "id": "D",
+            "text": "ارزیابی ضایعه فقط بر اساس CT بدون تزریق"
+          }
+        ],
+        "correct": "A",
+        "explanation": "الگو در فازهای مختلف و وضعیت زمینه‌ای کبد باید با هم تفسیر شوند.",
+        "source": "Abdomen.pdf pp. 5, 14–27; ACG 2024"
+      },
+      "after": {
+        "id": "abdomen-focal-liver-fa-01",
+        "tags": [
+          "leberadenom",
+          "lebermetastasen"
+        ],
+        "fach": "abdomen",
+        "question": "ضایعهٔ توپر کانونی کبد به‌طور اتفاقی در تنها فاز پورتوونوس CT دیده شده و نامشخص مانده است. کدام تصویربرداری برای تکمیل بررسی رفتار مادهٔ حاجب مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "MRI یا CT اختصاصی چندفازی کبد شامل فاز شریانی و فازهای بعدی"
+          },
+          {
+            "id": "B",
+            "text": "تکرار CT پورتوونوس برای تأیید جداگانهٔ دانسیتهٔ اندازه‌گیری‌شده"
+          },
+          {
+            "id": "C",
+            "text": "CT بدون تزریق برای دسته‌بندی بر پایهٔ دانسیتهٔ مطلق بدون بررسی دینامیک مادهٔ حاجب"
+          },
+          {
+            "id": "D",
+            "text": "MRI با T2 و DWI برای دسته‌بندی بدون فازهای دینامیک مادهٔ حاجب"
+          }
+        ],
+        "correct": "A",
+        "explanation": "برای ضایعهٔ کانونی نامشخص کبد، ACG انجام MRI یا CT چندفازی با تزریق را توصیه می‌کند. فاز شریانی و فازهای بعدی همراه تصاویر پیش از تزریق، مورفولوژی و زمینهٔ کبد بررسی شوند. یک مقدار دانسیته، تصویر انتشار یا فاز مادهٔ حاجب جای الگوی کلی را نمی‌گیرد.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "یک فاز منفرد مشابه، تکرارپذیری را می‌سنجد، اما دینامیک شریانی و فازهای بعدیِ موجودنبوده را فراهم نمی‌کند.",
+          "C": "CT بدون تزریق می‌تواند بررسی چربی، خون یا کلسیم را تکمیل کند. اما پرسش مشخص دربارهٔ رفتار مادهٔ حاجب به پروتکل چندفازی نیاز دارد.",
+          "D": "T2 و DWI اطلاعات تکمیلی مفیدی‌اند. اما بدون فازهای دینامیک، بررسی رفتار مادهٔ حاجبِ موجودنبوده را تکمیل نمی‌کنند."
+        }
+      },
+      "reason": "ATV04 clinical workflow instead of global cautious-key/threeabsolute alternatives; preserve both focal-liver tags and keyA."
+    },
+    {
+      "id": "leberadenom-01-definition",
+      "kind": "card",
+      "sourceFile": "data/flashcards.js",
+      "currentBefore": {
+        "id": "leberadenom-01-definition",
+        "topicId": "leberadenom",
+        "category": {
+          "de": "Grundlagen",
+          "en": "Basics",
+          "fa": "مبانی"
+        },
+        "front": {
+          "de": "Was ist ein hepatozelluläres Adenom?",
+          "en": "What is a hepatocellular adenoma?",
+          "fa": "آدنوم هپاتوسلولار چیست؟"
+        },
+        "answer": {
+          "de": "Ein seltener gutartiger epithelialer Lebertumor.",
+          "en": "An uncommon benign epithelial liver tumour.",
+          "fa": "تومور اپی‌تلیالی خوش‌خیم و نادر کبد."
+        },
+        "explanation": {
+          "de": "Trotz benignen Grundcharakters sind Blutung und bei bestimmten Subtypen maligne Transformation relevante Komplikationen.",
+          "en": "Despite its benign baseline classification, haemorrhage and malignant transformation in some subtypes are relevant complications.",
+          "fa": "با وجود ماهیت پایه خوش‌خیم، خون‌ریزی و در برخی زیرگروه‌ها تبدیل بدخیم از عوارض مهم‌اند."
+        }
+      },
+      "after": {
+        "id": "leberadenom-01-definition",
+        "topicId": "leberadenom",
+        "category": {
+          "de": "Grundlagen",
+          "en": "Basics",
+          "fa": "مبانی"
+        },
+        "front": {
+          "de": "Was ist ein hepatozelluläres Adenom?",
+          "en": "What is a hepatocellular adenoma?",
+          "fa": "آدنوم هپاتوسلولار چیست؟"
+        },
+        "answer": {
+          "de": "Ein seltener gutartiger epithelialer Lebertumor.",
+          "en": "An uncommon benign epithelial liver tumour.",
+          "fa": "تومور اپی‌تلیالی خوش‌خیم و نادر کبد."
+        },
+        "explanation": {
+          "de": "Trotz benignen Grundcharakters sind Blutung und bei bestimmten Subtypen maligne Transformation relevante Komplikationen.",
+          "en": "Despite its benign baseline classification, haemorrhage and malignant transformation in some subtypes are relevant complications.",
+          "fa": "با وجود ماهیت پایه خوش‌خیم، خون‌ریزی و در برخی زیرگروه‌ها تبدیل بدخیم از عوارض مهم‌اند."
+        },
+        "source": "https://doi.org/10.14309/ajg.0000000000002857"
+      },
+      "reason": "All5 existing retrieval card triads manually read; retain useful focused content and add explicit current guideline source."
+    },
+    {
+      "id": "leberadenom-02-risk",
+      "kind": "card",
+      "sourceFile": "data/flashcards.js",
+      "currentBefore": {
+        "id": "leberadenom-02-risk",
+        "topicId": "leberadenom",
+        "category": {
+          "de": "Klinischer Kontext",
+          "en": "Clinical context",
+          "fa": "زمینه بالینی"
+        },
+        "front": {
+          "de": "Welche Risikofaktoren sollten bei HCA aktiv erfragt werden?",
+          "en": "Which risk factors should be actively elicited in HCA?",
+          "fa": "در HCA درباره کدام عوامل خطر باید فعالانه پرس‌وجو کرد؟"
+        },
+        "answer": {
+          "de": "Exogene Hormone und anabole Steroide sowie metabolische Faktoren und Glykogenspeicherkrankheiten.",
+          "en": "Exogenous hormones and anabolic steroids, as well as metabolic factors and glycogen-storage disease.",
+          "fa": "هورمون‌های خارجی و استروئیدهای آنابولیک، و نیز عوامل متابولیک و بیماری ذخیره گلیکوژن."
+        },
+        "explanation": {
+          "de": "Die Anamnese unterstützt die klinische Einordnung, ersetzt aber keine Bildmusteranalyse.",
+          "en": "History supports clinical assessment but does not replace imaging-pattern analysis.",
+          "fa": "شرح حال به ارزیابی بالینی کمک می‌کند، اما جای تحلیل الگوی تصویربرداری را نمی‌گیرد."
+        }
+      },
+      "after": {
+        "id": "leberadenom-02-risk",
+        "topicId": "leberadenom",
+        "category": {
+          "de": "Klinischer Kontext",
+          "en": "Clinical context",
+          "fa": "زمینه بالینی"
+        },
+        "front": {
+          "de": "Welche Risikofaktoren sollten bei HCA aktiv erfragt werden?",
+          "en": "Which risk factors should be actively elicited in HCA?",
+          "fa": "در HCA درباره کدام عوامل خطر باید فعالانه پرس‌وجو کرد؟"
+        },
+        "answer": {
+          "de": "Exogene Hormone und anabole Steroide sowie metabolische Faktoren und Glykogenspeicherkrankheiten.",
+          "en": "Exogenous hormones and anabolic steroids, as well as metabolic factors and glycogen-storage disease.",
+          "fa": "هورمون‌های خارجی و استروئیدهای آنابولیک، و نیز عوامل متابولیک و بیماری ذخیره گلیکوژن."
+        },
+        "explanation": {
+          "de": "Die Anamnese unterstützt die klinische Einordnung, ersetzt aber keine Bildmusteranalyse.",
+          "en": "History supports clinical assessment but does not replace imaging-pattern analysis.",
+          "fa": "شرح حال به ارزیابی بالینی کمک می‌کند، اما جای تحلیل الگوی تصویربرداری را نمی‌گیرد."
+        },
+        "source": "https://doi.org/10.14309/ajg.0000000000002857"
+      },
+      "reason": "All5 existing retrieval card triads manually read; retain useful focused content and add explicit current guideline source."
+    },
+    {
+      "id": "leberadenom-03-mri-fat",
+      "kind": "card",
+      "sourceFile": "data/flashcards.js",
+      "currentBefore": {
+        "id": "leberadenom-03-mri-fat",
+        "topicId": "leberadenom",
+        "category": {
+          "de": "MRT",
+          "en": "MRI",
+          "fa": "MRI"
+        },
+        "front": {
+          "de": "Wofür spricht ein Signalabfall in T1 Out-of-phase?",
+          "en": "What does signal loss on T1 out-of-phase support?",
+          "fa": "افت سیگنال در T1 out-of-phase از چه چیزی حمایت می‌کند؟"
+        },
+        "answer": {
+          "de": "Für einen möglichen intrazellulären Fettanteil.",
+          "en": "A possible intracellular fat component.",
+          "fa": "احتمال وجود جزء چربی داخل‌سلولی."
+        },
+        "explanation": {
+          "de": "Das Merkmal allein beweist weder ein HCA noch einen bestimmten Subtyp.",
+          "en": "This feature alone proves neither HCA nor a specific subtype.",
+          "fa": "این یافته به‌تنهایی نه HCA و نه زیرگروه مشخصی را ثابت می‌کند."
+        }
+      },
+      "after": {
+        "id": "leberadenom-03-mri-fat",
+        "topicId": "leberadenom",
+        "category": {
+          "de": "MRT",
+          "en": "MRI",
+          "fa": "MRI"
+        },
+        "front": {
+          "de": "Wofür spricht ein Signalabfall in T1 Out-of-phase?",
+          "en": "What does signal loss on T1 out-of-phase support?",
+          "fa": "افت سیگنال در T1 out-of-phase از چه چیزی حمایت می‌کند؟"
+        },
+        "answer": {
+          "de": "Für einen möglichen intrazellulären Fettanteil.",
+          "en": "A possible intracellular fat component.",
+          "fa": "احتمال وجود جزء چربی داخل‌سلولی."
+        },
+        "explanation": {
+          "de": "Das Merkmal allein beweist weder ein HCA noch einen bestimmten Subtyp.",
+          "en": "This feature alone proves neither HCA nor a specific subtype.",
+          "fa": "این یافته به‌تنهایی نه HCA و نه زیرگروه مشخصی را ثابت می‌کند."
+        },
+        "source": "https://doi.org/10.14309/ajg.0000000000002857"
+      },
+      "reason": "All5 existing retrieval card triads manually read; retain useful focused content and add explicit current guideline source."
+    },
+    {
+      "id": "leberadenom-04-hepatobiliary",
+      "kind": "card",
+      "sourceFile": "data/flashcards.js",
+      "currentBefore": {
+        "id": "leberadenom-04-hepatobiliary",
+        "topicId": "leberadenom",
+        "category": {
+          "de": "Differenzialdiagnose",
+          "en": "Differential diagnosis",
+          "fa": "تشخیص افتراقی"
+        },
+        "front": {
+          "de": "Wie verhalten sich HCA und FNH meist in der hepatobiliären Phase?",
+          "en": "How do HCA and FNH usually behave on the hepatobiliary phase?",
+          "fa": "HCA و FNH معمولاً در فاز هپاتوبیلیاری چه رفتاری دارند؟"
+        },
+        "answer": {
+          "de": "HCA meist hypointens, FNH meist iso- bis hyperintens.",
+          "en": "HCA is usually hypointense; FNH is usually iso- to hyperintense.",
+          "fa": "HCA معمولاً کم‌سیگنال و FNH معمولاً ایزو تا پرسیگنال است."
+        },
+        "explanation": {
+          "de": "Subtyp-Ausnahmen und atypische Muster sind möglich; das Gesamtbild bleibt entscheidend.",
+          "en": "Subtype exceptions and atypical patterns occur; the overall pattern remains essential.",
+          "fa": "استثناهای زیرگروهی و الگوهای آتیپیک ممکن‌اند؛ الگوی کلی همچنان تعیین‌کننده است."
+        }
+      },
+      "after": {
+        "id": "leberadenom-04-hepatobiliary",
+        "topicId": "leberadenom",
+        "category": {
+          "de": "Differenzialdiagnose",
+          "en": "Differential diagnosis",
+          "fa": "تشخیص افتراقی"
+        },
+        "front": {
+          "de": "Wie verhalten sich HCA und FNH meist in der hepatobiliären Phase?",
+          "en": "How do HCA and FNH usually behave on the hepatobiliary phase?",
+          "fa": "HCA و FNH معمولاً در فاز هپاتوبیلیاری چه رفتاری دارند؟"
+        },
+        "answer": {
+          "de": "HCA meist hypointens, FNH meist iso- bis hyperintens.",
+          "en": "HCA is usually hypointense; FNH is usually iso- to hyperintense.",
+          "fa": "HCA معمولاً کم‌سیگنال و FNH معمولاً ایزو تا پرسیگنال است."
+        },
+        "explanation": {
+          "de": "Subtyp-Ausnahmen und atypische Muster sind möglich; das Gesamtbild bleibt entscheidend.",
+          "en": "Subtype exceptions and atypical patterns occur; the overall pattern remains essential.",
+          "fa": "استثناهای زیرگروهی و الگوهای آتیپیک ممکن‌اند؛ الگوی کلی همچنان تعیین‌کننده است."
+        },
+        "source": "https://doi.org/10.14309/ajg.0000000000002857"
+      },
+      "reason": "All5 existing retrieval card triads manually read; retain useful focused content and add explicit current guideline source."
+    },
+    {
+      "id": "leberadenom-05-dynamic",
+      "kind": "card",
+      "sourceFile": "data/flashcards.js",
+      "currentBefore": {
+        "id": "leberadenom-05-dynamic",
+        "topicId": "leberadenom",
+        "category": {
+          "de": "CT und dynamische MRT",
+          "en": "CT and dynamic MRI",
+          "fa": "CT و MRI دینامیک"
+        },
+        "front": {
+          "de": "Welches dynamische Kontrastmuster ist bei HCA häufig?",
+          "en": "Which dynamic enhancement pattern is common in HCA?",
+          "fa": "کدام الگوی تقویت دینامیک در HCA شایع است؟"
+        },
+        "answer": {
+          "de": "Arterielle Hyperanreicherung mit späterer Angleichung an das Leberparenchym.",
+          "en": "Arterial hyperenhancement with later equalisation to the liver parenchyma.",
+          "fa": "تقویت شریانی واضح با هم‌سطح‌شدن بعدی با پارانشیم کبد."
+        },
+        "explanation": {
+          "de": "Das Muster ist nicht spezifisch und darf nicht als Einzelbeweis verwendet werden.",
+          "en": "The pattern is not specific and should not be used as stand-alone proof.",
+          "fa": "این الگو اختصاصی نیست و نباید به‌تنهایی مبنای اثبات قرار گیرد."
+        }
+      },
+      "after": {
+        "id": "leberadenom-05-dynamic",
+        "topicId": "leberadenom",
+        "category": {
+          "de": "CT und dynamische MRT",
+          "en": "CT and dynamic MRI",
+          "fa": "CT و MRI دینامیک"
+        },
+        "front": {
+          "de": "Welches dynamische Kontrastmuster ist bei HCA häufig?",
+          "en": "Which dynamic enhancement pattern is common in HCA?",
+          "fa": "کدام الگوی تقویت دینامیک در HCA شایع است؟"
+        },
+        "answer": {
+          "de": "Arterielle Hyperanreicherung mit späterer Angleichung an das Leberparenchym.",
+          "en": "Arterial hyperenhancement with later equalisation to the liver parenchyma.",
+          "fa": "تقویت شریانی واضح با هم‌سطح‌شدن بعدی با پارانشیم کبد."
+        },
+        "explanation": {
+          "de": "Das Muster ist nicht spezifisch und darf nicht als Einzelbeweis verwendet werden.",
+          "en": "The pattern is not specific and should not be used as stand-alone proof.",
+          "fa": "این الگو اختصاصی نیست و نباید به‌تنهایی مبنای اثبات قرار گیرد."
+        },
+        "source": "https://doi.org/10.14309/ajg.0000000000002857"
+      },
+      "reason": "All5 existing retrieval card triads manually read; retain useful focused content and add explicit current guideline source."
+    }
+  ],
+  "sourceEvidence": "Original2011 prospective47patientfullabstract read: activeextravasation distinguishedfromhyperattenuatingunenhancedluminalcontents; no quotedaccuracyorimageclaim. Phasecomparison supported original2007studyabstract17171511 and existing lesson."
+}

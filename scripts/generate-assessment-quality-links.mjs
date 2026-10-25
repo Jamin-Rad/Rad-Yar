@@ -29,9 +29,19 @@ async function loadBanks() {
 const {QUESTION_BANK,FLASHCARDS,qualityCoverage}=await loadBanks()
 const counts=Object.fromEntries([...new Set(QUESTION_BANK.de.flatMap(q=>q.tags))].map(id=>[id,QUESTION_BANK.de.filter(q=>q.tags.includes(id)).length]))
 const cards=Object.fromEntries([...new Set(FLASHCARDS.map(c=>c.topicId))].map(id=>[id,FLASHCARDS.filter(c=>c.topicId===id).length]))
+const questionsById=new Map(QUESTION_BANK.de.map(question=>[question.id,question]))
 const routes={}
 for(const r of qualityCoverage){
- const topicIds=[...new Set([...(routes[r.route]?.topicIds||[]),r.topicId])]
+ const topicIds=[...new Set([...(routes[r.route]?.topicIds||[]),r.topicId,...(r.topicIds||[])])]
+ // Explicit goal IDs may belong to a legacy subtopic of the same lesson.
+ // Resolve only unambiguous single-tag aliases; never expand broad multi-tag groups.
+ for(const goal of r.learningGoals)for(const id of goal.questionIds){
+  const question=questionsById.get(id)
+  if(!question)throw Error(`${r.route}: missing goal question ${id}`)
+  if(question.tags.some(tag=>topicIds.includes(tag)))continue
+  if(question.tags.length!==1)throw Error(`${r.route}: supply explicit topicIds for multi-tag goal ${id}`)
+  topicIds.push(question.tags[0])
+ }
  const questionCount=QUESTION_BANK.de.filter(q=>q.tags.some(id=>topicIds.includes(id))).length
  const cardTopic=topicIds.find(id=>cards[id]>0)
  const subject=QUESTION_BANK.de.find(q=>q.tags.some(id=>topicIds.includes(id)))?.fach

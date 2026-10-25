@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-25",
+  "status": "REVIEWED_READY_FOR_MAIN_AFTER_FINAL_INDEX_CHECK",
+  "previousMain": "d4e0c1903870352e81e3cbce8a58fc6547b66147",
+  "scope": "Fifth bounded release in ongoing234-route remediation; twelve topics. Course-wide work remains incomplete.",
+  "acceptedPools": {
+    "abdomenATV04": "Five complete original pools: Ulkus, lowerGIbleeding, inguinal/femoralhernia, HCA and hepaticAML.20MCQ/20card triads:14original+6targetednewQ and18original+2newcards.24localized originalQobjects and5originalcards integrated at canonical seeds;29/29 exact global after-values independently verified.",
+    "wristExtensors": "2original+1targetednewQ,3original+1newcard; compartment/landmark goals and selected-option feedback DEENFA. Prior DeQuervain exports preserved.",
+    "osteomyelitis": "3newQ/3cards for three narrow source-supported goals; periosteal differential, Brodie variability and paediatric acute haematogenous osteomyelitis imaging. No full adult infection curriculum claim.",
+    "icb": "All15originalQ/12cards, four goals and bounded teaching parity independently read DEENFA.",
+    "hypertensiveMicroangiopathy": "All12originalQ/12cards, four goals and directly related teaching deltas independently read; no deterministic aetiology, CT microaneurysm proof or universal pontine prognosis.",
+    "hrctArchitecture": "All12originalQ/15cards; calibrated pattern versus diagnosis, PAP/edema/vascular alternatives, three goals and12localized inline-feedback values independently verified. Shared HRCT self-check now resolves selected-option rationale.",
+    "distalRadius": "All12originalQ/15cards, four goals; contextual post-reduction criteria and non-diagnostic associated signs.51/51 global/after objects independently exact.",
+    "scaphoid": "2originalQ/2cards plus two targeted goal gaps ->4Q/4cards. Proximal vascular risk is distinguished from proven necrosis; SNAC and bipartite variant caveats retained. All36wrong-feedback objects and39bounded teaching delta entries independently read."
+  },
+  "runtime": {"questionsPerLanguage":972,"casesPerLanguage":18,"supplementQuestionsPerLanguage":86,"supplementCards":88,"explicitRouteMappings":64},
+  "sharedFix": "Route counts/default quiz selections include only explicit reviewed learning-goal singleton legacy subtopics; multi-tag ambiguity throws rather than adding a broad course tag.342goal references reachable DEENFA. Combined inguinal/femoral quiz topic receives matching localized metadata. Supplemental publisher consumes fifth explicitly allowlisted ATV04module.",
+  "technicalEvidence": {
+    "indexAudit": "Actual staged sources:972MCQ and18cases per language pass options/key/specific wrong-feedback transfer audit. Registry generated using --staged.",
+    "build": "Production build08 PASS; existing unrelated CSS start/flex-start warning retained. Local build includes separate author WIP, while explicit Git index scope excludes pending dAVF/PNET/ATV05/HRCTdensity.",
+    "SSR": "702/702 actual lesson-route/locale graph renders PASS, remediation-all-routes-ssr07.log. Source rendering fixtures are not HTTP/authentication/media or scientific validation.",
+    "focusedChecks": "Reviewed payload/goal parity; locale-looking topic identity; changed-session invalidation; assessment actions; selected-option feedback; distal-radius PDF alignment; scaphoid actual hero/shell/content harness PASS.",
+    "browser": "Authenticated production build08: actual Hernia quiz exposes all4questions across original and new topic tags. New clinical MRI/soft-tissue vignette displayed EN and FA with corresponding alternatives, samequestion retained on language change; Back returns to FA lesson and localized card link. No answer grading or read marking.",
+    "screenshot": "tmp/assessment-quality/batch05-local-hernia-fa.png"
+  },
+  "limits": ["No global lesson/retained-media/whole-PDF clinical release inferred.","Question difficulty remains editorial; no empirical psychometric calibration.","Individual learner-facing browser checks are bounded; no exhaustive live234-route or mobile equivalence claim.","Dr.Zia scientific release approval remains separate."]
+}

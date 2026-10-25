@@ -40,7 +40,7 @@ function SelfCheck({ lang }) {
     <h3>{pick(question.title, lang)}</h3>
     <p>{pick(question.prompt, lang)}</p>
     <fieldset><legend>{pick(L('Eine Antwort auswählen', 'Choose one answer', 'یک پاسخ را انتخاب کنید'), lang)}</legend>{question.options.map((option, index) => <label key={index}><input type="radio" name="msk-osteomyelitis-case" checked={answer === index} onChange={() => setAnswer(index)} /><span>{pick(option, lang)}</span></label>)}</fieldset>
-    {answer !== null ? <p className={styles.feedback} role="status"><strong>{pick(correct ? L('Richtig. ', 'Correct. ', 'درست است. ') : L('Noch einmal prüfen. ', 'Review this once more. ', 'دوباره بررسی کنید. '), lang)}</strong>{pick(correct ? question.feedbackCorrect : question.feedbackIncorrect, lang)}</p> : null}
+    {answer !== null ? <p className={styles.feedback} role="status"><strong>{pick(correct ? L('Richtig. ', 'Correct. ', 'درست است. ') : L('Noch einmal prüfen. ', 'Review this once more. ', 'دوباره بررسی کنید. '), lang)}</strong>{pick(question.feedbackByOption?.[answer] ?? (correct ? question.feedbackCorrect : question.feedbackIncorrect), lang)}</p> : null}
   </div>
 }
 

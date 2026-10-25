@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "originalActualGlobalAfter": "9/9",
+  "authorPoolObjects": "13/13",
+  "questionTriads": 3,
+  "cardTriads": 4,
+  "inlineFeedbackFields": "12/12",
+  "acceptedDeQExports": "all deepEqual independently accepted packet06 actual export",
+  "limits": "New AQ question/card remain offline pending independent admission; no Next build/browser/release inference."
+}

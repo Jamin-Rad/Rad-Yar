@@ -8,6 +8,8 @@ import { DOMParser } from '@xmldom/xmldom'
 import { SKAPHOIDFRAKTUR_LESSON as lesson } from '../data/skaphoidfraktur.js'
 import { QUESTION_BANK, MCQ_TOPIC_GROUPS } from '../data/questions.js'
 import { FLASHCARD_TOPICS, getCardsByTopic } from '../data/flashcards.js'
+import { LESSON_DESIGN_HEROES } from '../data/lessonDesignHeroes.js'
+import { lessonAssessmentActions } from '../lib/lessonAssessmentLinks.js'
 
 const route = 'app/msk/trauma/skaphoidfraktur/page.jsx'
 assert.equal(lesson.id, 'skaphoidfraktur')
@@ -50,10 +52,15 @@ function compile(path, replacements) {
   return module.exports
 }
 const Link = ({ href, children, ...props }) => React.createElement('a', { href, ...props }, children)
-const Hero = compile('components/LessonHero.jsx', { 'next/image': ({ fill, priority, ...props }) => React.createElement('img', props), './LessonHero.module.css': styles }).default
+const pathname = '/msk/trauma/skaphoidfraktur'
+const navigation = { usePathname: () => pathname }
+const Hero = compile('components/LessonHero.jsx', { 'next/image': ({ fill, priority, ...props }) => React.createElement('img', props), 'next/navigation': navigation, '@/data/lessonDesignHeroes': { LESSON_DESIGN_HEROES }, './LessonHero.module.css': styles }).default
 let lang = 'de'
 const shell = compile('components/lesson-template/StandardLessonShell.jsx', {
   'next/link': Link,
+  'next/navigation': navigation,
+  '@/lib/lessonAssessmentLinks': { lessonAssessmentActions },
+  '@/providers/LanguageProvider': { useLanguage: () => ({ lang }) },
   '@/components/LessonHero': Hero,
   '@/lib/lessonHashNavigation': { observeLessonHash: () => () => {} },
   '@/hooks/usePersistedSectionProgress': { usePersistedSectionProgress: () => React.useState(() => new Set()) },
@@ -72,7 +79,11 @@ for (const locale of ['de', 'en', 'fa']) {
   lang = locale
   const html = renderToStaticMarkup(React.createElement(Page))
   assert.ok(html.includes(`lang="${locale}"`) && html.includes(`dir="${locale === 'fa' ? 'rtl' : 'ltr'}"`), `${locale}: language/direction`)
-  assert.ok(html.includes(escape(lesson.title[locale])) && html.includes(escape(lesson.heroAlt[locale])))
+  assert.ok(html.includes(escape(lesson.title[locale])))
+  const hero = LESSON_DESIGN_HEROES[pathname] || lesson.hero
+  assert.ok(html.includes(hero), `${locale}: actual maintained hero source`)
+  const heroAlt = hero === lesson.hero ? lesson.heroAlt[locale] : locale === 'fa' ? `تصویر مفهومی ${lesson.title[locale]}` : locale === 'en' ? `Concept illustration: ${lesson.title[locale]}` : `Schematische Illustration: ${lesson.title[locale]}`
+  assert.ok(html.includes(escape(heroAlt)), `${locale}: actual hero alt text`)
   assert.ok(html.includes(escape(lesson.scope[locale])), `${locale}: rendered localized source scope`)
   for (const section of lesson.sections) {
     assert.ok(html.includes(`id="${section.id}"`) && html.includes(escape(section.title[locale])))
@@ -98,13 +109,14 @@ const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
 assert.match(curriculum, /\{ id: 'skaphoidfraktur',[^\n]*link: '\/msk\/trauma\/skaphoidfraktur',[^\n]*inProgress: true/)
 for (const locale of ['de', 'en', 'fa']) {
   const questions = QUESTION_BANK[locale].filter(item => item.tags?.includes('skaphoidfraktur'))
-  assert.equal(questions.length, 2, `${locale}: exact-topic quiz questions are registered`)
+  assert.equal(questions.length, 4, `${locale}: original questions and two source-essential goal gaps are registered`)
   assert.ok(questions.every(item => item.options.length === 4 && item.options.every(option => option.text)), `${locale}: four localized options`)
   assert.ok(questions.every(item => item.explanation), `${locale}: answer explanations`)
+  assert.ok(questions.every(item => item.options.filter(option => option.id !== item.correct).every(option => item.wrongExplanations?.[option.id])), `${locale}: specific feedback remains connected after registration`)
 }
 assert.ok(MCQ_TOPIC_GROUPS.some(group => group.topics.some(topic => topic.id === 'skaphoidfraktur')), 'quiz topic selector registers the exact curriculum ID')
 assert.ok(FLASHCARD_TOPICS.some(topic => topic.id === 'skaphoidfraktur'), 'flashcard topic is registered')
 const cards = getCardsByTopic('skaphoidfraktur')
-assert.equal(cards.length, 2, 'exact-topic flashcard deck is registered')
+assert.equal(cards.length, 4, 'original flashcards and vascularity/differential goal gaps are registered')
 for (const card of cards) for (const field of ['front', 'answer', 'explanation']) for (const locale of ['de', 'en', 'fa']) assert.ok(card[field][locale], `${card.id} ${field} ${locale}`)
 console.log('Scaphoid fracture/SNAC lesson: SSR and content parity PASS for DE/EN/FA, RTL, source figures, conceptual SVG, retrieval check, and references.')

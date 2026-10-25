@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "questionObjects": 12,
+  "cardTriads": 4,
+  "specificWrongFeedbackObjects": 36,
+  "originalIdsAndKeysPreserved": true,
+  "scope": "Dedicated producer; no build/browser/globalbank claim"
+}

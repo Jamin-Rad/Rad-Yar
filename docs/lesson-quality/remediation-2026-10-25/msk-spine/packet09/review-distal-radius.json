@@ -1,0 +1,174 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/design_inventory",
+  "author": "/root/msk_original_pools_next",
+  "status": "ACCEPT_BOUNDED_FULL_ORIGINAL_ASSESSMENT_POOL_AFTER_INDEPENDENT_RETEST",
+  "scope": {
+    "route": "/msk/trauma/distale-radiusfraktur",
+    "productionSource": "data/distale-radiusfraktur.js",
+    "originalQuestionsPerLanguage": 12,
+    "localizedQuestionObjects": 36,
+    "originalCardTriads": 15,
+    "locales": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "readFields": [
+      "question",
+      "all options",
+      "correct key",
+      "explanation",
+      "each wrong explanation",
+      "card front/answer/explanation",
+      "changed lesson leaf strings"
+    ],
+    "learningGoals": 4,
+    "coverageProposalNotAutomaticallyPublished": true
+  },
+  "manualReadLedger": {
+    "questions": [
+      "colles",
+      "smith",
+      "barton",
+      "fernandez-iii",
+      "fernandez-ii",
+      "chauffeur",
+      "step",
+      "tilt",
+      "sl",
+      "lunate",
+      "ct",
+      "urgent"
+    ],
+    "cards": [
+      "drf-fc-01",
+      "drf-fc-02",
+      "drf-fc-03",
+      "drf-fc-04",
+      "drf-fc-05",
+      "drf-fc-06",
+      "drf-fc-07",
+      "drf-fc-08",
+      "drf-fc-09",
+      "drf-fc-10",
+      "drf-fc-11",
+      "drf-fc-12",
+      "drf-fc-13",
+      "drf-fc-14",
+      "drf-fc-15"
+    ],
+    "allThreeLanguagesRead": true,
+    "changedLessonMirrorsRead": true,
+    "physicalPdfPagesVisuallyRead": [
+      17,
+      18
+    ],
+    "pdfRenderPaths": [
+      "tmp/msk-inventory/distal-radius-remediation-017.png",
+      "tmp/msk-inventory/distal-radius-remediation-018.png"
+    ]
+  },
+  "findings": [
+    {
+      "id": "DR09-EDU01",
+      "status": "CLOSED_AFTER_ACTUAL_RETEST",
+      "item": "step",
+      "finding": "Three obviously categorical distractors against the sole qualified answer.",
+      "repair": "Parallel criteria compare threshold, reduction timing and population; key C preserved and specific feedback read in all three languages."
+    },
+    {
+      "id": "DR09-EDU02",
+      "status": "CLOSED_AFTER_ACTUAL_RETEST",
+      "item": "ct",
+      "finding": "Explicitly incomplete radiograph/ultrasound choices cued the CT answer.",
+      "repair": "Targeted oblique views and targeted tendon/soft-tissue ultrasound are competing modalities with specific bony-planning limitations."
+    },
+    {
+      "id": "DR09-SRC01",
+      "status": "CLOSED_AFTER_ACTUAL_RETEST",
+      "item": "chauffeur/question/card06/lesson",
+      "finding": "Universal avulsion definition exceeded the morphology-based name; AO also describes shear/compression.",
+      "repair": "Universal definition now intra-articular radial styloid fracture. PDF avulsion wording explicitly attributed; actual PDF18 and AO original assessment read."
+    },
+    {
+      "id": "DR09-SCOPE01",
+      "status": "CLOSED_AFTER_ACTUAL_RETEST",
+      "item": "card11/lesson",
+      "finding": "Generic perilunate label taught only dorsal displacement.",
+      "repair": "Dorsal perilunate qualification explicit in all three languages."
+    },
+    {
+      "id": "DR09-LNG01",
+      "status": "CLOSED_AFTER_ACTUAL_RETEST",
+      "item": "DE tilt/card07/card08",
+      "finding": "Missing spaces before reference angles.",
+      "repair": "Actual 11/22 degree strings read."
+    },
+    {
+      "id": "DR09-SRC02",
+      "status": "CLOSED_AFTER_ACTUAL_RETEST",
+      "item": "SL source/card10",
+      "finding": "Contralateral-assessment provenance needed a directly retrievable primary anchor.",
+      "repair": "Lans2018 added to actual question/card source and evidence ledger; primary abstract/methods reviewed. No treatment-rate claim."
+    }
+  ],
+  "primaryEvidence": [
+    {
+      "url": "https://www.aaos.org/globalassets/quality-and-practice-resources/distal-radius/distal-radius-fractures-10-13-2020.pdf",
+      "read": "Nongeriatric and geriatric fixation recommendations; postreduction >2 mm articular displacement/step, population and outcome scope."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9196973/",
+      "read": "Guideline author summary, indications and functional-demand/age context."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9035062/",
+      "read": "Guideline application case history/discussion and functional demand; not a newly invented lesson case."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9038308/",
+      "read": "Original cohort abstract, methods, Table1, measurement paragraphs including volar tilt geometry and projection caveat. Figure4 caption read; figure pixels not reviewed."
+    },
+    {
+      "url": "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/distal-forearm/partial-articular-fracture-of-the-radius-involving-the-volar-rim/orif-palmar-plate",
+      "read": "Original assessment text: CT for complex rim fragments, carpal alignment and associated injury. No operative protocol newly adopted."
+    },
+    {
+      "url": "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/distal-forearm/partial-articular-sagittal-multifragmentary-radial-fracture-involving-scaphoid-fossa/orif-radial-column-plate",
+      "read": "Original indexed fracture-assessment paragraph: shear/compression radial styloid mechanisms."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4641076/",
+      "read": "Jones2015 abstract, methods and discussion; radiographic measurement location and projection quality."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5806195/",
+      "read": "Lans2018 original abstract/methods/discussion indexed text; bilateral SL widening supports contralateral comparison, not automatic ligament-tear inference."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28123252/",
+      "read": "Original case abstract only; median nerve compression with volar lunate dislocation. Full operative report not claimed."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7861191/",
+      "read": "Original two acute cases and discussion; progressive median symptoms and urgent assessment, classic alignment descriptions. Figure pixels not reviewed."
+    }
+  ],
+  "verification": {
+    "runtime": "distal-radius-independent-runtime.json",
+    "canonicalGlobalAndReviewedAfterObjects": 51,
+    "stableOriginalIdsAndKeys": true,
+    "allFourGoalMappingsResolve": true,
+    "focusedSourceTest": "node scripts/test-distale-radius-msk-p17-p18.mjs PASS",
+    "script": "tmp/assessment-quality/test-distal09-independent.mjs",
+    "productionSourceSha256": "f1f1df067289924185e37014a74ec4d70e43325a6b67f9f359762e3890f57e52"
+  },
+  "limits": [
+    "Bounded assessment-pool and specified lesson-mirror review; not a complete current scientific recertification of every lesson paragraph.",
+    "Actual browser/RTL interaction and final publication checks remain with Root; no independent browser pass claimed.",
+    "Retained image case88989 contributor/full-study verification remains pending; PDF page inspection does not grant media/release approval.",
+    "No new diagnostic image interpretation, no full-figure review of cited papers, and no medical-user sign-off inferred from tests."
+  ],
+  "openAssessmentFindings": []
+}

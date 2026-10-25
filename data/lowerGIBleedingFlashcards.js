@@ -26,7 +26,7 @@ const cards = [
     category: L('Gefäßterritorium', 'Vascular territory', 'قلمرو عروقی'),
     front: L('Welche Mesenterialarterie passt zum rechten gegenüber dem linken Kolon?', 'Which mesenteric artery corresponds to the right versus left colon?', 'کدام شریان مزانتریک با کولون راست در برابر کولون چپ متناظر است؟'),
     answer: L('A. mesenterica superior: Dünndarm/rechtes Kolon. A. mesenterica inferior: linkes Kolon; die obere Rektumversorgung läuft über die A. rectalis superior aus der IMA.', 'Superior mesenteric artery: small bowel/right colon. Inferior mesenteric artery: left colon; the superior rectum is supplied via the superior rectal artery from the IMA.', 'شریان مزانتریک فوقانی: رودهٔ باریک/کولون راست. شریان مزانتریک تحتانی: کولون چپ؛ خون‌رسانی قسمت فوقانی رکتوم از راه شریان رکتال فوقانی و IMA است.'),
-    explanation: L('Weitere Rektumäste können aus dem Stromgebiet der A. iliaca interna kommen; die PDF-Zuordnung ist vereinfacht und darf nicht als IMA-Alleinversorgung des gesamten Rektums gelesen werden.', 'Additional rectal branches may arise from the internal iliac territory; the PDF mapping is simplified and should not be read as IMA-only supply to the entire rectum.', 'شاخه‌های دیگری از رکتوم ممکن است از قلمرو ایلیاک داخلی منشأ بگیرند؛ تطبیق PDF ساده‌شده است و نباید به معنای خون‌رسانی کل رکتوم فقط از IMA تلقی شود.'),
+    explanation: {"de":"Weitere Rektumäste können aus dem Stromgebiet der A. iliaca interna kommen. Die Zuordnung der A. rectalis superior zur IMA ist deshalb keine Alleinversorgung des gesamten Rektums.","en":"Additional rectal branches can arise from the internal iliac territory. The superior rectal artery arising from the IMA therefore does not mean that the entire rectum is supplied solely by the IMA.","fa":"شاخه‌های دیگر رکتوم می‌توانند از قلمرو ایلیاک داخلی منشأ بگیرند. بنابراین منشأ شریان رکتال فوقانی از IMA به معنای خون‌رسانی تمام رکتوم فقط از IMA نیست."},
     diagram: L('SMA → Dünndarm / rechtes Kolon · IMA → linkes Kolon / A. rectalis superior', 'SMA → small bowel / right colon · IMA → left colon / superior rectal artery', 'SMA: رودهٔ باریک / کولون راست؛ IMA: کولون چپ / شریان رکتال فوقانی'),
   },
   {
@@ -34,7 +34,7 @@ const cards = [
     category: L('Embolisation', 'Embolisation', 'آمبولیزاسیون'),
     front: L('Was prüft die Kontrollangiographie nach selektiver Embolisation?', 'What does completion angiography assess after selective embolisation?', 'آنژیوگرافی پایانی پس از آمبولیزاسیون انتخابی چه چیزی را ارزیابی می‌کند؟'),
     answer: L('Ob noch eine Kontrastmittelextravasation sichtbar ist; zugleich muss die Darmperfusion im Blick bleiben.', 'Whether contrast extravasation remains visible; bowel perfusion must also be considered.', 'آیا هنوز نشت مادهٔ حاجب دیده می‌شود؛ هم‌زمان باید خون‌رسانی روده نیز در نظر گرفته شود.'),
-    explanation: L('Das PDF nennt die Dokumentation einer Blutstillung ohne weitere Extravasation. Die ergänzende Sicherheitsabwägung berücksichtigt das Ischämierisiko.', 'The PDF specifies documenting haemostasis with no further extravasation. The additional safety consideration is the risk of ischaemia.', 'PDF ثبت هموستاز بدون نشت بیشتر را مطرح می‌کند؛ ملاحظهٔ ایمنی تکمیلی، خطر ایسکمی است.'),
+    explanation: {"de":"Die unmittelbare angiographische Blutungskontrolle und die Schonung der Darmversorgung gehören zusammen. Ein fehlender Kontrastmittelaustritt ersetzt weder die weitere klinische Überwachung noch die Beachtung einer möglichen Ischämie.","en":"Immediate angiographic bleeding control and preservation of bowel perfusion must be considered together. Absence of extravasation replaces neither clinical monitoring nor attention to possible ischaemia.","fa":"کنترل فوری خون‌ریزی در آنژیوگرافی و حفظ خون‌رسانی روده باید هم‌زمان در نظر گرفته شوند. نبود نشت مادهٔ حاجب جای پایش بالینی یا توجه به ایسکمی احتمالی را نمی‌گیرد."},
     diagram: L('keine weitere Extravasation · Darmperfusion beachten', 'no further extravasation · consider bowel perfusion', 'نبود نشت بیشتر · توجه به خون‌رسانی روده'),
   },
 ]
@@ -43,5 +43,5 @@ export const LOWER_GI_BLEEDING_FLASHCARDS = cards.map((card, index) => ({
   ...card,
   id: `untere-gi-blutung-${String(index + 1).padStart(2, '0')}-${card.id}`,
   topicId: 'untere-gi-blutung',
-  source: 'Abdomen.pdf, physical pp. 86–87 (printed pp. 85–86); ESGE 2021; ACR 2021 update',
+  source: index === 1 ? 'https://pubmed.ncbi.nlm.nih.gov/31530489/' : 'https://doi.org/10.1055/a-1496-8969',
 }))

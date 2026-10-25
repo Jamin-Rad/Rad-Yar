@@ -1,0 +1,83 @@
+{
+  "route": "/msk/trauma/distale-radiusfraktur",
+  "topicId": "distale-radiusfraktur",
+  "learningGoals": [
+    {
+      "id": "morphology",
+      "text": {
+        "de": "Frakturmuster aus Richtung, Gelenkrand und Karpusbeziehung zuordnen.",
+        "en": "Assign fracture patterns from direction, articular rim and carpal relationship.",
+        "fa": "الگوهای شکستگی را از جهت، لبهٔ مفصل و رابطهٔ کارپ تعیین کنید."
+      },
+      "questionIds": [
+        "distaleradius-de-colles",
+        "distaleradius-de-smith",
+        "distaleradius-de-barton",
+        "distaleradius-de-fernandez-ii",
+        "distaleradius-de-fernandez-iii",
+        "distaleradius-de-chauffeur"
+      ],
+      "cardIds": [
+        "drf-fc-01",
+        "drf-fc-02",
+        "drf-fc-03",
+        "drf-fc-04",
+        "drf-fc-05",
+        "drf-fc-06"
+      ]
+    },
+    {
+      "id": "measure-context",
+      "text": {
+        "de": "Messgeometrie, Repositionsverlust und das kontextgebundene >2-mm-Kriterium erklären.",
+        "en": "Explain measurement geometry, loss of reduction and the contextual >2 mm criterion.",
+        "fa": "هندسهٔ اندازه‌گیری، از دست رفتن جااندازی و معیار وابسته به زمینهٔ بیش از ۲ میلی‌متر را توضیح دهید."
+      },
+      "questionIds": [
+        "distaleradius-de-step",
+        "distaleradius-de-tilt"
+      ],
+      "cardIds": [
+        "drf-fc-07",
+        "drf-fc-08",
+        "drf-fc-09",
+        "drf-fc-12"
+      ]
+    },
+    {
+      "id": "carpus",
+      "text": {
+        "de": "SL-Befunde, Lunatumluxation und dorsale perilunäre Luxation unterscheiden.",
+        "en": "Distinguish SL findings, lunate dislocation and dorsal perilunate dislocation.",
+        "fa": "یافته‌های SL، دررفتگی لونیت و دررفتگی پری‌لونیت دورسال را تفکیک کنید."
+      },
+      "questionIds": [
+        "distaleradius-de-sl",
+        "distaleradius-de-lunate"
+      ],
+      "cardIds": [
+        "drf-fc-10",
+        "drf-fc-11"
+      ]
+    },
+    {
+      "id": "report-escalate",
+      "text": {
+        "de": "CT für knöcherne Fragmentkartierung wählen und zeitkritische Luxation mit Medianusbeschwerden eskalieren.",
+        "en": "Select CT for bony fragment mapping and escalate time-critical dislocation with median-nerve symptoms.",
+        "fa": "CT را برای نقشه‌برداری قطعات استخوانی انتخاب و دررفتگی زمان‌حساس با علائم مدیان را فوری ارجاع دهید."
+      },
+      "questionIds": [
+        "distaleradius-de-ct",
+        "distaleradius-de-urgent"
+      ],
+      "cardIds": [
+        "drf-fc-13",
+        "drf-fc-14",
+        "drf-fc-15"
+      ]
+    }
+  ],
+  "chapterPlan": "No new chapters or title changes. Existing chapters retained: Systematische Röntgendiagnostik (measure); Klassische Frakturmuster (differentiate); Fernandez-Klassifikation (mechanism); Sonderformen & Instabilitätszeichen (fragment risks); Karpale & ligamentäre Begleitverletzungen (alignment); Strukturiertes Befundschema (apply reporting); Therapieprinzipien (context and escalation); Take-home Message (compress). Media: no new assets; text vignettes explicitly labelled; source case remains a nondiagnostic assessment prompt with unverified contributor/study metadata.",
+  "scope": "Full original12 question triads and15 card triads; bounded lesson mirrors only; not whole-route scientific/browser approval."
+}

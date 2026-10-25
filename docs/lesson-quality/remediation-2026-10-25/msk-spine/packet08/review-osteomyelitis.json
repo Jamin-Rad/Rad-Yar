@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "brain_remediation",
+  "author": "remove_lesson_notice",
+  "status": "ACCEPT_BOUNDED_NEW_ASSESSMENT_POOL_AFTER_RETEST",
+  "route": "/msk/infektionen/osteomyelitis",
+  "scope": {
+    "questionTriads": 3,
+    "cardTriads": 3,
+    "languages": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "learningGoals": 3,
+    "read": "Every actual question stem/option/key/correct/wrong-feedback triad; every card front/answer/explanation; bounded Brodie note and full periosteal inline counterpart. Not a complete infection curriculum."
+  },
+  "findings": [
+    {
+      "id": "OST08-LNG-01",
+      "severity": "minor",
+      "location": "periosteal-report wrong feedbackC DE",
+      "observed": "Only German introduced interrupted lamellae not specified by the stem or other languages.",
+      "required": "Remove the added interrupted qualifier.",
+      "status": "CLOSED",
+      "retest": "Actual current record and inline now say Mehrere Periostlamellen, with unchanged meaning/key in EN/FA. Independently compared all12selected inline feedback fields."
+    },
+    {
+      "id": "OST08-LNG-02",
+      "severity": "minor",
+      "location": "chapters1.note.en",
+      "observed": "Missing word separator their25-case.",
+      "required": "Insert space.",
+      "status": "CLOSED",
+      "retest": "Fresh actual lesson mirror and imported producer read; their 25-case series present."
+    }
+  ],
+  "scientificAssessment": "Lamellated periosteal response is nonspecific; absent periosteal response does not exclude Brodie; conditional further MRI recommendation remains explicitly paediatric AHO and not a universal adult rule. No key/polarity defect or unsafe treatment instruction found within this bounded text pool.",
+  "pedagogicAssessment": "One report-limit item, one morphology-variability item and one clinically contextual further-imaging decision cover the three declared goals. Alternatives are relevant interpretations/modalities with individual feedback; no arbitrary quota gap identified. Empirical difficulty is not established.",
+  "sourcesFreshlyRead": [
+    {
+      "source": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+      "physicalPages": [
+        73,
+        74,
+        78
+      ],
+      "printedPages": [
+        72,
+        73,
+        77
+      ],
+      "evidence": [
+        "tmp/msk-inventory/osteomyelitis-remediation-073.png",
+        "tmp/msk-inventory/osteomyelitis-remediation-074.png",
+        "tmp/msk-inventory/osteomyelitis-remediation-078.png"
+      ],
+      "read": "All three actual full-page renders visually inspected: lamellated Ewing/infection nonexclusive wording; solid slow reaction; Brodie differential/reactive sclerosis. No depicted source lesion newly diagnosed as infection."
+    },
+    {
+      "url": "https://pubs.rsna.org/doi/10.1148/132.1.15",
+      "read": "Complete actual original25-case Brodie abstract on primary publisher; subset had periosteal response and morphology variable. No inaccessible full-paper or exact-population prevalence extrapolation claimed."
+    },
+    {
+      "url": "https://www.idsociety.org/practice-guideline/bone-and-joint-infections---osteomyelitis/",
+      "read": "Actual CURRENT official PIDS/IDSA2021 recommendationsII.1–2 and comments; initial radiographs, conditional very-low-certainty MRI preference when more imaging needed, uncomplicated exceptions and adjacent-joint/soft-tissue US role. Guideline focus1month–under18years read; no treatment extension accepted."
+    }
+  ],
+  "runtime": {
+    "status": "PASS",
+    "actualDraftRecords": 12,
+    "questionLocaleObjects": 9,
+    "cardTriads": 3,
+    "inlineSelectedFeedbackComparisons": 12,
+    "actualLessonMirror": "deepEqual",
+    "coverageGoals": 3,
+    "publication": "Supplemental draft remains outside published runtime until parent admission; no global inclusion claimed."
+  },
+  "gates": {
+    "SRC": "PASS_BOUNDED_PRIMARY_AND_PDF_READ",
+    "EDU": "PASS_BOUNDED_GOALS",
+    "LNG": "PASS_AFTER_NARROW_RETEST",
+    "ASM": "PASS_ACTUAL_DRAFT_AND_INLINE",
+    "VIS": "NO_NEW_DIAGNOSTIC_MEDIA_ADJUDICATION",
+    "UX": "NOT_REVIEWED",
+    "REV": "PASS_INDEPENDENT_READ_ONLY"
+  },
+  "limits": [
+    "No whole lesson, complete PDF or diagnostic-image acceptance.",
+    "No browser, Main/deployment or clinician scientific sign-off.",
+    "Draft producer parity does not claim publication of pending supplemental content."
+  ],
+  "hashes": {
+    "data/mskOsteomyelitisLesson.js": "48ed3ce19ebf900df1084a9ca78c6ee8d24f0feaf49ecfcc637251f8df735b44",
+    "app/msk/infektionen/osteomyelitis/page.jsx": "b3ee82e3770b18ae7d4eeef19455fd5709e7ef2d4fd7bc77904cf401219c2e01"
+  }
+}

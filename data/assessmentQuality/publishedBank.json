@@ -2646,6 +2646,359 @@
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103758/"
         ]
+      },
+      {
+        "id": "aq-atv-ulcer-mpr-de",
+        "fach": "abdomen",
+        "tags": [
+          "ulkuserkrankung"
+        ],
+        "question": "Auf einer axialen kontrastverstärkten CT-Schicht ist am Antrum eine mögliche fokale Schleimhautunterbrechung unklar. Welche zusätzliche Rekonstruktion hilft am ehesten, einen Ulkuskrater und seine Beziehung zur Magenwand zu beurteilen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Dünne multiplanare Weichteilrekonstruktionen entlang und quer zur betroffenen Wand."
+          },
+          {
+            "id": "B",
+            "text": "Dicke MIP-Rekonstruktionen entlang der perigastrischen Arterien."
+          },
+          {
+            "id": "C",
+            "text": "Dicke MinIP-Rekonstruktionen zur Darstellung des gasgefüllten Magenlumens."
+          },
+          {
+            "id": "D",
+            "text": "Dickere axiale Mittelwertrekonstruktionen über die gesamte Magenwand."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Gezielte multiplanare Rekonstruktionen erlauben, den verdächtigen Schleimhautdefekt in mehreren Ebenen mit der Wand zu verfolgen. In der endoskopisch korrelierten Originalstudie verbesserte die MPR-Durchsicht die Ulkuserkennung. Eine unauffällige CT schließt ein Schleimhautulkus dennoch nicht aus.",
+        "wrongExplanations": {
+          "B": "Eine Gefäß-MIP betont kontrastierte Gefäße und kann kleine Wanddefekte durch Überlagerung verdecken. Für die konkrete Frage braucht es Weichteil-MPR.",
+          "C": "MinIP betont niedrig dichte Lumeninhalte, statt den kontrastierten Schleimhautrand und einen kleinen Defekt in der Wand zu verfolgen. Dafür sind gezielte Weichteil-MPR geeigneter.",
+          "D": "Dickere Mittelwertschichten können einen kleinen Defekt durch Partialvolumen verdecken. Dünne, gezielte MPR sind zur Klärung geeigneter."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/25015399/"
+      },
+      {
+        "id": "aq-atv-lowergi-modality-de",
+        "fach": "abdomen",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "question": "Eine akute untere GI-Blutung ist klinisch wahrscheinlich. Trotz begonnener Kreislaufstabilisierung bleibt die Patientin kreislaufinstabil und blutet weiter; eine Darmvorbereitung ist nicht tolerierbar. Welche bildgebende Lokalisationsstrategie passt nach ASGE 2026 am ehesten in den dringlichen interdisziplinären Pfad?",
+        "options": [
+          {
+            "id": "A",
+            "text": "MR-Enterographie mit enteraler Distension."
+          },
+          {
+            "id": "B",
+            "text": "Kontrastverstärkte CT/CTA zur Lokalisation mit gegebenenfalls anschließender Angiographie."
+          },
+          {
+            "id": "C",
+            "text": "CT-Kolonographie nach vollständiger Vorbereitung."
+          },
+          {
+            "id": "D",
+            "text": "Kapselendoskopie zur primären Blutungsortung."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Bei anhaltender Instabilität bevorzugt ASGE 2026 kontrastverstärkte CT ± Angiographie im dringlichen Pfad. Die Kreislaufstabilisierung läuft parallel weiter; bei hämodynamisch stabilen Patienten ist nach Vorbereitung eine Koloskopie eine andere Erstoption. Hämatochezie kann auch eine obere Quelle haben: bei initialer Instabilität ist diese auszuschließen, sofern keine direkte Bildgebung eine untere Quelle belegt.",
+        "wrongExplanations": {
+          "A": "MR-Enterographie braucht eine andere Vorbereitung und beantwortet die dringliche aktive Blutungslokalisation hier nicht als bevorzugte Erststrategie.",
+          "C": "Eine vollständige Vorbereitung ist gerade nicht tolerierbar; CT-Kolonographie dient nicht dem hier benötigten dringlichen aktiven Blutungsnachweis.",
+          "D": "Kapselverfahren können in anderen Konstellationen hilfreich sein, sind aber bei anhaltender Instabilität nicht die bevorzugte dringliche CT-/Angiographie-Strategie."
+        },
+        "source": "https://doi.org/10.1016/j.gie.2026.06.046"
+      },
+      {
+        "id": "aq-atv-lowergi-territory-de",
+        "fach": "abdomen",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "question": "Eine CTA lokalisiert eine fortgesetzte aktive Blutung im Zökum. Nach interdisziplinärer Entscheidung soll eine Katheterangiographie erfolgen. Welches arterielle Hauptterritorium ist für die gezielte Suche zunächst am ehesten passend?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A. mesenterica inferior"
+          },
+          {
+            "id": "B",
+            "text": "Truncus coeliacus"
+          },
+          {
+            "id": "C",
+            "text": "A. mesenterica superior"
+          },
+          {
+            "id": "D",
+            "text": "A. iliaca interna"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Das Zökum liegt im Versorgungsgebiet der SMA, meist über ileokolische Äste. CTA-Lokalisation und individuelle Gefäßanatomie führen die selektive Suche; ein positiver CTA-Befund ersetzt nicht die gezielte angiographische Beurteilung vor einer möglichen Embolisation.",
+        "wrongExplanations": {
+          "A": "Die IMA versorgt vor allem das linke Kolon und über die A. rectalis superior den oberen Rektumanteil, nicht typischerweise das Zökum.",
+          "B": "Der Truncus coeliacus gehört zur Vorderdarmversorgung; die zökale Blutung ist primär im SMA-Territorium zu suchen.",
+          "D": "Die A. iliaca interna kann zur Rektumversorgung beitragen. Sie ist nicht das typische Hauptterritorium einer zökalen Blutung."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9808013/"
+      },
+      {
+        "id": "aq-atv-hernia-occult-imaging-de",
+        "fach": "abdomen",
+        "tags": [
+          "inguinal-femoral-hernia"
+        ],
+        "question": "Belastungsabhängiger Leistenschmerz und Hernienverdacht bestehen trotz nichtdiagnostischer Sonographie weiter. Klinisch gibt es keine akuten Obstruktionszeichen; auch eine Adduktorensehnen-Erkrankung wird erwogen. Welche Untersuchung kann beide Fragestellungen am gezieltesten ergänzen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Dynamische MRT der Leistenregion mit geeigneter Weichteilbeurteilung"
+          },
+          {
+            "id": "B",
+            "text": "Herniographie zur Darstellung eines möglichen Bruchsacks"
+          },
+          {
+            "id": "C",
+            "text": "CT der Leistenregion zur anatomischen Hernienzuordnung"
+          },
+          {
+            "id": "D",
+            "text": "Erneute dynamische Sonographie mit Fokus auf den tiefen Leistenring"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Bei fortbestehendem Verdacht nach unklarem Ultraschall kommt weitere dynamische Bildgebung infrage. MRT kann zusätzlich Adduktorensehnen und andere muskuloskelettale Schmerzursachen beurteilen. Die Wahl hängt auch von Verfügbarkeit und Kontraindikationen ab; nicht jede klinisch klare Hernie benötigt MRT.",
+        "wrongExplanations": {
+          "B": "Herniographie kann einen Bruchsack nachweisen, beurteilt aber die erwogene Sehnenerkrankung nicht wie MRT.",
+          "C": "CT kann nach unklarem Ultraschall helfen, etwa wenn MRT nicht möglich ist. Für die zusätzlich vermutete Adduktorensehnen-Erkrankung ist MRT hier gezielter.",
+          "D": "Eine erneute gezielte Sonographie kann je nach Qualität der Erstuntersuchung sinnvoll sein. Der beschränkte Fokus auf den tiefen Ring beantwortet die zweite Fragestellung nach einer Sehnenerkrankung jedoch nicht so umfassend."
+        },
+        "source": "https://doi.org/10.1007/s10029-017-1668-x"
+      },
+      {
+        "id": "aq-atv-hernia-perfusion-concern-de",
+        "fach": "abdomen",
+        "tags": [
+          "inguinal-femoral-hernia"
+        ],
+        "question": "Eine schmerzhafte nicht reponible Femoralhernie enthält im kontrastverstärkten CT eine obstruierte Darmschlinge mit deutlich reduziertem Wand-Enhancement und angrenzendem Ödem. Welche Befundmitteilung ist am passendsten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Obstruktion mit Verdacht auf Strangulation; dringliche chirurgische Beurteilung veranlassen"
+          },
+          {
+            "id": "B",
+            "text": "Obstruktion bei erhaltener Darmperfusion; operative Planung im regulären Verlauf"
+          },
+          {
+            "id": "C",
+            "text": "Entzündliche Wandreaktion als primäres Problem; zunächst Verlauf unter medikamentöser Behandlung"
+          },
+          {
+            "id": "D",
+            "text": "Abgeklungene Einklemmung mit postobstruktiven Veränderungen; ambulante Verlaufskontrolle"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Reduziertes Wand-Enhancement in dieser schmerzhaften irreponiblen und obstruktiven Konstellation begründet einen dringlichen Strangulationsverdacht. Befund direkt kommunizieren und chirurgisch beurteilen lassen. Ein Einzelzeichen beweist weder Histologie noch irreversible Nekrose.",
+        "wrongExplanations": {
+          "B": "Die deutlich reduzierte Wandaufnahme passt nicht zur behaupteten erhaltenen Perfusion. Zusammen mit Irreponibilität und Obstruktion ist die Abklärung dringlich.",
+          "C": "Wandödem kann unspezifisch sein, erklärt aber die gesamte obstruktive Hernienkonstellation mit reduziertem Enhancement nicht ausreichend. Ein medikamentöser Verlaufspfad verzögert die nötige chirurgische Beurteilung.",
+          "D": "Weiter bestehende Irreponibilität und Obstruktion sprechen gegen eine abgeklungene Einklemmung; die Perfusionswarnzeichen benötigen dringliche Beurteilung."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5545868/"
+      },
+      {
+        "id": "aq-atv-hca-risk-context-de",
+        "fach": "abdomen",
+        "tags": [
+          "leberadenom"
+        ],
+        "question": "Die Bildgebung lässt ein HCA erwägen. Welche zusätzliche Anamnese stützt diesen Verdacht besonders, ohne die Läsionsdiagnose allein festzulegen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Langjährige Einnahme exogener Sexualhormone und metabolisches Syndrom"
+          },
+          {
+            "id": "B",
+            "text": "Chronische Virushepatitis mit Zirrhose"
+          },
+          {
+            "id": "C",
+            "text": "Bekanntes kolorektales Karzinom mit weiterer Fernmetastasierung"
+          },
+          {
+            "id": "D",
+            "text": "Primär sklerosierende Cholangitis mit progredienter Gallenwegsstenose"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Exogene Hormone, anabole Steroide, Adipositas/metabolische Faktoren und Glykogenspeicherkrankheiten gehören zur HCA-Risikoanamnese. Sie unterstützen die Einordnung, ersetzen aber nicht die multiphasische Bildgebung. Zirrhose oder bekannte Malignität verändern die Differenzialdiagnose.",
+        "wrongExplanations": {
+          "B": "Dieser Kontext erhöht besonders die Aufmerksamkeit für HCC. Er ist nicht die typische HCA-Risikokonstellation der Frage; die Läsion muss im entsprechenden Leberkontext beurteilt werden.",
+          "C": "Eine bekannte metastasierende Tumorerkrankung lenkt die Abklärung zunächst auf sekundäre Leberläsionen. Sie ist kein spezifischer HCA-Risikofaktor.",
+          "D": "Diese Anamnese lenkt den Verdacht auf eine relevante biliäre Erkrankung einschließlich möglicher Malignität; sie ist keine typische HCA-Risikokonstellation."
+        },
+        "source": "https://doi.org/10.14309/ajg.0000000000002857"
+      },
+      {
+        "id": "aq-msk-sehnenpathologien-hand-de-lister-course",
+        "fach": "msk",
+        "tags": [
+          "sehnenpathologien-hand"
+        ],
+        "difficulty": 1,
+        "question": "Textfall zur typischen Anatomie: Eine Sehne läuft an der ulnaren Seite des Lister-Tuberkulums und schwenkt distal davon nach radial zum Daumen. Welche Zuordnung passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "ECRL/ECRB im zweiten Fach"
+          },
+          {
+            "id": "B",
+            "text": "APL/EPB im ersten Fach"
+          },
+          {
+            "id": "C",
+            "text": "EPL im dritten Fach"
+          },
+          {
+            "id": "D",
+            "text": "EDC/EIP im vierten Fach"
+          }
+        ],
+        "correct": "C",
+        "explanation": "EPL wird am Lister-Tuberkulum im dritten Fach umgelenkt und zieht anschließend zum Daumen. ECRL/ECRB liegen im zweiten Fach radial des Tuberkulums. Verlauf und Landmarke gemeinsam zur Zuordnung verwenden; die Frage beschreibt die typische Anatomie.",
+        "wrongExplanations": {
+          "A": "ECRL/ECRB sind dem zweiten Fach radial des Lister-Tuberkulums zugeordnet, nicht dem beschriebenen dritten Fach mit Daumenverlauf.",
+          "B": "APL/EPB gehören zum ersten Fach am Radiusstyloid. Die beschriebene Umlenkung um Lister betrifft EPL.",
+          "D": "EDC/EIP verlaufen gemeinsam im größeren vierten Fach; sie erklären keine einzelne im Fach III um Lister ziehende Daumensehne."
+        },
+        "sources": [
+          "MSK.pdf physical41/printed40; actual table and page freshly rendered/read2026-10-25",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11775041/"
+        ]
+      },
+      {
+        "id": "aq-msk-osteomyelitis-de-periosteal-report",
+        "fach": "msk",
+        "tags": [
+          "osteomyelitis"
+        ],
+        "difficulty": 1,
+        "question": "Textfall: Bei einem Jugendlichen zeigt eine osteolytische Knochenläsion eine mehrschichtige Periostreaktion. Klinik und Labor liegen noch nicht vor. Welche Befundbeurteilung berücksichtigt die Aussagegrenze des Musters am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Aggressiv wirkende Läsion; das Schichtmuster legt vorrangig eine neoplastische Ursache gegenüber Infektion nahe."
+          },
+          {
+            "id": "B",
+            "text": "Aggressiv wirkende Läsion; infektiöse und neoplastische Ursachen sind mit Klinik und weiteren Befunden abzugleichen."
+          },
+          {
+            "id": "C",
+            "text": "Langsam verlaufende Läsion; die mehreren Periostschichten sprechen eher für einen nichtaggressiven Verlauf."
+          },
+          {
+            "id": "D",
+            "text": "Traumatische Knochenreaktion; das Schichtmuster spricht vorrangig für eine organisierte Frakturheilung."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Eine lamelläre Periostreaktion beschreibt die Knochenantwort und ist nicht tumorspezifisch. Sowohl Ewing-Sarkom als auch Osteomyelitis gehören in die Differentialdiagnose; aus dem Muster allein folgen weder Histologie noch Erreger.",
+        "wrongExplanations": {
+          "A": "Das Muster allein begründet keine Priorisierung von Neoplasie gegenüber Infektion; die fehlenden Kontextdaten sind relevant.",
+          "C": "Mehrere Periostlamellen sind nicht mit einer einzigen glatten soliden Periostreaktion gleichzusetzen.",
+          "D": "Eine Fraktur oder ein entsprechender Heilungsverlauf ist nicht beschrieben. Aus Lamellierung allein lässt sich die traumatische Ursache nicht ableiten."
+        },
+        "sources": [
+          "MSK.pdf physical73/printed72; actual rendered page read2026-10-25"
+        ]
+      },
+      {
+        "id": "aq-msk-osteomyelitis-de-brodie-variability",
+        "fach": "msk",
+        "tags": [
+          "osteomyelitis"
+        ],
+        "difficulty": 1,
+        "question": "Ein Brodie-Abszess wird differentialdiagnostisch erwogen. Die Röntgenaufnahme zeigt keine Periostreaktion. Welche Interpretation dieser fehlenden Reaktion ist angemessen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Die Infektionshypothese sollte zugunsten einer nichtinfektiösen Läsion zurückgestellt werden."
+          },
+          {
+            "id": "B",
+            "text": "Die Läsion sollte ohne Periostreaktion als akut statt subakut oder chronisch eingeordnet werden."
+          },
+          {
+            "id": "C",
+            "text": "Das Fehlen passt zur variablen Morphologie; die übrigen klinischen und bildgebenden Befunde bleiben entscheidend."
+          },
+          {
+            "id": "D",
+            "text": "Die fehlende Reaktion spricht eher für einen abgeheilten als einen fortbestehenden infektiösen Herd."
+          }
+        ],
+        "correct": "C",
+        "explanation": "In der ursprünglichen Serie von 25 Brodie-Abszessen zeigte nur ein Teil eine Periostreaktion. Ihr Fehlen ist daher kein Ausschlusskriterium. Die Serie belegt die Variabilität, nicht eine diagnostische Entscheidungsregel aus einem Einzelzeichen.",
+        "wrongExplanations": {
+          "A": "Die Originalserie enthält Brodie-Abszesse ohne Periostreaktion; dieses fehlende Zeichen trägt die vorgeschlagene Umgewichtung allein nicht.",
+          "B": "Der zeitliche Verlauf wird nicht allein aus dem Vorhandensein oder Fehlen einer Periostreaktion bestimmt.",
+          "D": "Aus einer fehlenden Periostreaktion lässt sich die aktuelle Aktivität des möglichen Herdes nicht zuverlässig ableiten. Die übrigen Befunde und der Verlauf bleiben nötig."
+        },
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/451190/"
+        ]
+      },
+      {
+        "id": "aq-msk-osteomyelitis-de-paediatric-next-imaging",
+        "fach": "msk",
+        "tags": [
+          "osteomyelitis"
+        ],
+        "difficulty": 2,
+        "question": "Bei einem 9-jährigen Kind besteht weiter Verdacht auf akute hämatogene Osteomyelitis. Initiale Röntgenaufnahmen klären den Befund nicht; weitere Bildgebung zur Diagnose und Ausdehnung ist erforderlich. Welche Modalität wird nach PIDS/IDSA 2021 bevorzugt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "MRT der betroffenen Region"
+          },
+          {
+            "id": "B",
+            "text": "CT der betroffenen Region"
+          },
+          {
+            "id": "C",
+            "text": "Knochenszintigrafie"
+          },
+          {
+            "id": "D",
+            "text": "Sonografie der betroffenen Region"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Wenn bei pädiatrischer akuter hämatogener Osteomyelitis weitere Bildgebung nötig ist, bevorzugt die Leitlinie MRT gegenüber CT, Szintigrafie oder Sonografie. Die Empfehlung ist konditional bei sehr niedriger Evidenzsicherheit; nicht jedes unkomplizierte Kind braucht zusätzliche MRT.",
+        "wrongExplanations": {
+          "B": "Die Leitlinie bevorzugt für den beschriebenen weiteren Bildgebungsbedarf MRT gegenüber CT. Daraus folgt kein Verbot klinisch begründeter CT in anderen Situationen.",
+          "C": "MRT wird für diese Fragestellung gegenüber Knochenszintigrafie bevorzugt; die Empfehlung gilt hier für pädiatrische AHO.",
+          "D": "Sonografie kann etwa einen angrenzenden Gelenkerguss oder eine Weichteilausbreitung ergänzend beurteilen; sie ersetzt die bevorzugte MRT-Beurteilung der Knocheninfektion hier nicht."
+        },
+        "sources": [
+          "https://www.idsociety.org/practice-guideline/bone-and-joint-infections---osteomyelitis/"
+        ]
       }
     ],
     "en": [
@@ -5292,6 +5645,359 @@
         },
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103758/"
+        ]
+      },
+      {
+        "id": "aq-atv-ulcer-mpr-en",
+        "fach": "abdomen",
+        "tags": [
+          "ulkuserkrankung"
+        ],
+        "question": "A possible focal mucosal interruption at the antrum is unclear on one axial contrast-enhanced CT slice. Which additional reconstruction best helps assess an ulcer crater and its relationship to the gastric wall?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Thin multiplanar soft-tissue reconstructions along and across the affected wall."
+          },
+          {
+            "id": "B",
+            "text": "Thick MIP reconstructions along the perigastric arteries."
+          },
+          {
+            "id": "C",
+            "text": "Thick MinIP reconstructions to display the gas-filled gastric lumen."
+          },
+          {
+            "id": "D",
+            "text": "Thicker axial average-intensity reconstructions through the gastric wall."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Targeted multiplanar reconstructions allow the suspected mucosal defect to be followed in relation to the wall in several planes. MPR review improved ulcer detection in the original endoscopy-correlated study. A negative CT nevertheless does not exclude a mucosal ulcer.",
+        "wrongExplanations": {
+          "B": "Vascular MIP emphasises enhanced vessels and can obscure small wall defects through superimposition. This question requires soft-tissue MPR.",
+          "C": "MinIP emphasises low-attenuation luminal contents rather than following the enhanced mucosal edge and a small wall defect. Targeted soft-tissue MPR are more suitable for that task.",
+          "D": "Thicker average-intensity slices can obscure a small defect by partial volume. Thin targeted MPR are more suitable for clarification."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/25015399/"
+      },
+      {
+        "id": "aq-atv-lowergi-modality-en",
+        "fach": "abdomen",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "question": "Acute lower GI bleeding is clinically likely. Despite initial resuscitation, the patient remains haemodynamically unstable with ongoing bleeding and cannot tolerate bowel preparation. Under ASGE 2026, which imaging localisation strategy best fits urgent multidisciplinary care?",
+        "options": [
+          {
+            "id": "A",
+            "text": "MR enterography with enteric distension."
+          },
+          {
+            "id": "B",
+            "text": "Contrast-enhanced CT/CTA for localisation, with angiography when indicated."
+          },
+          {
+            "id": "C",
+            "text": "CT colonography after full preparation."
+          },
+          {
+            "id": "D",
+            "text": "Capsule endoscopy for primary localisation."
+          }
+        ],
+        "correct": "B",
+        "explanation": "ASGE 2026 favours contrast CT ± angiography in ongoing instability within urgent care. Resuscitation and clinical stabilisation continue in parallel; colonoscopy after preparation is another initial option in stable patients. Haematochezia may also arise from an upper source: with initial instability this requires exclusion unless direct imaging establishes a lower source.",
+        "wrongExplanations": {
+          "A": "MR enterography requires a different preparation and is not the preferred initial strategy for urgent active bleeding localisation here.",
+          "C": "Full preparation is not currently tolerated; CT colonography does not serve the urgent active bleeding assessment required here.",
+          "D": "Capsule procedures may help in other settings, but ongoing instability calls for the urgent CT/angiography strategy rather than capsule localisation."
+        },
+        "source": "https://doi.org/10.1016/j.gie.2026.06.046"
+      },
+      {
+        "id": "aq-atv-lowergi-territory-en",
+        "fach": "abdomen",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "question": "CTA localises ongoing active bleeding to the caecum. Catheter angiography is planned after multidisciplinary assessment. Which main arterial territory best fits the initial targeted search?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Inferior mesenteric artery"
+          },
+          {
+            "id": "B",
+            "text": "Coeliac trunk"
+          },
+          {
+            "id": "C",
+            "text": "Superior mesenteric artery"
+          },
+          {
+            "id": "D",
+            "text": "Internal iliac artery"
+          }
+        ],
+        "correct": "C",
+        "explanation": "The caecum is in the SMA territory, usually via ileocolic branches. CTA localisation and individual vascular anatomy guide selective assessment; positive CTA does not replace targeted angiographic evaluation before possible embolisation.",
+        "wrongExplanations": {
+          "A": "The IMA primarily supplies the left colon and upper rectum via the superior rectal artery, rather than the caecum.",
+          "B": "The coeliac trunk supplies foregut structures; caecal bleeding is primarily sought in the SMA territory.",
+          "D": "The internal iliac artery can contribute to rectal supply. It is not the usual main territory of caecal bleeding."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9808013/"
+      },
+      {
+        "id": "aq-atv-hernia-occult-imaging-en",
+        "fach": "abdomen",
+        "tags": [
+          "inguinal-femoral-hernia"
+        ],
+        "question": "Exertional groin pain and suspicion of hernia persist after nondiagnostic ultrasound. There are no acute obstruction signs; adductor tendon disease is also considered. Which study can most directly complement evaluation of both possibilities?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Dynamic groin MRI with appropriate soft-tissue assessment"
+          },
+          {
+            "id": "B",
+            "text": "Herniography to demonstrate a possible hernia sac"
+          },
+          {
+            "id": "C",
+            "text": "Groin CT for anatomical hernia classification"
+          },
+          {
+            "id": "D",
+            "text": "Repeat dynamic ultrasound focused on the deep inguinal ring"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Persistent suspicion after inconclusive ultrasound can warrant further dynamic imaging. MRI additionally evaluates adductor tendons and other musculoskeletal pain sources. Choice also depends on availability and contraindications; not every clinically evident hernia requires MRI.",
+        "wrongExplanations": {
+          "B": "Herniography can demonstrate a hernia sac but does not assess the suspected tendon disease as MRI does.",
+          "C": "CT can help after inconclusive ultrasound, for example when MRI is unavailable. MRI is more targeted for the additional suspected adductor tendon disorder here.",
+          "D": "Repeat targeted ultrasound may be useful depending on the initial study quality. A restricted focus on the deep ring does not address the second question of tendon disease as comprehensively."
+        },
+        "source": "https://doi.org/10.1007/s10029-017-1668-x"
+      },
+      {
+        "id": "aq-atv-hernia-perfusion-concern-en",
+        "fach": "abdomen",
+        "tags": [
+          "inguinal-femoral-hernia"
+        ],
+        "question": "A painful irreducible femoral hernia contains an obstructed bowel loop with markedly reduced wall enhancement and adjacent oedema on contrast-enhanced CT. Which report communication is most appropriate?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Obstruction with concern for strangulation; arrange urgent surgical assessment"
+          },
+          {
+            "id": "B",
+            "text": "Obstruction with preserved bowel perfusion; routine operative planning"
+          },
+          {
+            "id": "C",
+            "text": "Inflammatory wall reaction as the primary problem; initially follow under medical treatment"
+          },
+          {
+            "id": "D",
+            "text": "Resolved entrapment with postobstructive changes; outpatient follow-up"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Reduced wall enhancement in this painful irreducible obstructive context warrants urgent concern for strangulation. Communicate directly and obtain surgical assessment. An isolated sign establishes neither histology nor irreversible necrosis.",
+        "wrongExplanations": {
+          "B": "Markedly reduced wall enhancement does not fit the proposed preserved perfusion. With irreducibility and obstruction, evaluation is urgent.",
+          "C": "Wall oedema can be nonspecific but does not adequately explain the full obstructed hernia context with reduced enhancement. An initial medical follow-up pathway delays necessary surgical assessment.",
+          "D": "Persistent irreducibility and obstruction argue against resolved entrapment; perfusion warning signs require urgent assessment."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5545868/"
+      },
+      {
+        "id": "aq-atv-hca-risk-context-en",
+        "fach": "abdomen",
+        "tags": [
+          "leberadenom"
+        ],
+        "question": "Imaging raises the possibility of HCA. Which additional history particularly supports this possibility without establishing the lesion diagnosis alone?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Long-term exogenous sex-hormone use and metabolic syndrome"
+          },
+          {
+            "id": "B",
+            "text": "Chronic viral hepatitis with cirrhosis"
+          },
+          {
+            "id": "C",
+            "text": "Known colorectal carcinoma with other distant metastases"
+          },
+          {
+            "id": "D",
+            "text": "Primary sclerosing cholangitis with progressive bile-duct stricture"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Exogenous hormones, anabolic steroids, obesity/metabolic factors and glycogen-storage disease belong in the HCA risk history. They support assessment but do not replace multiphasic imaging. Cirrhosis or known malignancy changes the differential diagnosis.",
+        "wrongExplanations": {
+          "B": "This context particularly raises concern for HCC. It is not the typical HCA risk combination asked for; assess the lesion in the appropriate liver context.",
+          "C": "Known metastatic malignancy directs evaluation towards secondary liver lesions. It is not a specific HCA risk factor.",
+          "D": "This history directs concern towards relevant biliary disease including possible malignancy; it is not a typical HCA risk context."
+        },
+        "source": "https://doi.org/10.14309/ajg.0000000000002857"
+      },
+      {
+        "id": "aq-msk-sehnenpathologien-hand-en-lister-course",
+        "fach": "msk",
+        "tags": [
+          "sehnenpathologien-hand"
+        ],
+        "difficulty": 1,
+        "question": "Text vignette of typical anatomy: a tendon runs on the ulnar side of Lister tubercle and turns radially toward the thumb beyond it. Which identification fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "ECRL/ECRB in compartment II"
+          },
+          {
+            "id": "B",
+            "text": "APL/EPB in compartment I"
+          },
+          {
+            "id": "C",
+            "text": "EPL in compartment III"
+          },
+          {
+            "id": "D",
+            "text": "EDC/EIP in compartment IV"
+          }
+        ],
+        "correct": "C",
+        "explanation": "EPL is redirected at Lister tubercle in the third compartment before running toward the thumb. ECRL/ECRB occupy the second compartment radial to the tubercle. Use tendon course and landmark together; this vignette describes typical anatomy.",
+        "wrongExplanations": {
+          "A": "ECRL/ECRB belong to the second compartment radial to Lister tubercle rather than the described third compartment and thumb course.",
+          "B": "APL/EPB occupy the first compartment at the radial styloid. The described turn around Lister tubercle concerns EPL.",
+          "D": "EDC/EIP share the larger fourth compartment; they do not explain a single thumb tendon turning around Lister in compartment III."
+        },
+        "sources": [
+          "MSK.pdf physical41/printed40; actual table and page freshly rendered/read2026-10-25",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11775041/"
+        ]
+      },
+      {
+        "id": "aq-msk-osteomyelitis-en-periosteal-report",
+        "fach": "msk",
+        "tags": [
+          "osteomyelitis"
+        ],
+        "difficulty": 1,
+        "question": "Text vignette: an adolescent has an osteolytic bone lesion with a multilamellar periosteal response. Clinical and laboratory information is not yet available. Which report best respects the limits of this pattern?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Aggressive-appearing lesion; the layered pattern primarily favours neoplasia over infection."
+          },
+          {
+            "id": "B",
+            "text": "Aggressive-appearing lesion; correlate infectious and neoplastic possibilities with clinical and additional findings."
+          },
+          {
+            "id": "C",
+            "text": "Slowly evolving lesion; multiple periosteal layers favour a nonaggressive course."
+          },
+          {
+            "id": "D",
+            "text": "Traumatic bone response; the layered pattern primarily favours organised fracture healing."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Lamellated periosteal response describes the bone reaction and is not tumour-specific. Both Ewing sarcoma and osteomyelitis belong in the differential; the pattern alone establishes neither histology nor pathogen.",
+        "wrongExplanations": {
+          "A": "The pattern alone does not justify prioritising neoplasia over infection; missing context matters.",
+          "C": "Multiple lamellae are not equivalent to a single smooth solid periosteal response.",
+          "D": "No fracture or corresponding healing course is described. Lamellation alone does not establish traumatic origin."
+        },
+        "sources": [
+          "MSK.pdf physical73/printed72; actual rendered page read2026-10-25"
+        ]
+      },
+      {
+        "id": "aq-msk-osteomyelitis-en-brodie-variability",
+        "fach": "msk",
+        "tags": [
+          "osteomyelitis"
+        ],
+        "difficulty": 1,
+        "question": "Brodie abscess is being considered in the differential. Radiographs show no periosteal response. How should this absent response be interpreted?",
+        "options": [
+          {
+            "id": "A",
+            "text": "The infection hypothesis should be deprioritised in favour of a noninfectious lesion."
+          },
+          {
+            "id": "B",
+            "text": "Without periosteal response, classify the lesion as acute rather than subacute or chronic."
+          },
+          {
+            "id": "C",
+            "text": "Absence fits the variable appearances; the remaining clinical and imaging findings still determine interpretation."
+          },
+          {
+            "id": "D",
+            "text": "Absent response favours a healed rather than an ongoing infectious focus."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Only some lesions had periosteal response in the original series of 25 Brodie abscesses. Its absence therefore does not exclude the diagnosis. The series supports variability, not a diagnostic decision rule from one sign.",
+        "wrongExplanations": {
+          "A": "The original series includes Brodie abscesses without periosteal response; this absent sign alone does not support the proposed reprioritisation.",
+          "B": "Temporal course is not determined solely by whether periosteal response is present.",
+          "D": "Absent periosteal response does not reliably determine the current activity of the possible focus. Other findings and clinical course remain necessary."
+        },
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/451190/"
+        ]
+      },
+      {
+        "id": "aq-msk-osteomyelitis-en-paediatric-next-imaging",
+        "fach": "msk",
+        "tags": [
+          "osteomyelitis"
+        ],
+        "difficulty": 2,
+        "question": "A 9-year-old child remains suspected of acute haematogenous osteomyelitis. Initial radiographs are inconclusive; additional imaging is required for diagnosis and extent. Which modality is preferred by PIDS/IDSA 2021?",
+        "options": [
+          {
+            "id": "A",
+            "text": "MRI of the affected region"
+          },
+          {
+            "id": "B",
+            "text": "CT of the affected region"
+          },
+          {
+            "id": "C",
+            "text": "Bone scintigraphy"
+          },
+          {
+            "id": "D",
+            "text": "Ultrasound of the affected region"
+          }
+        ],
+        "correct": "A",
+        "explanation": "When further imaging is needed in paediatric acute haematogenous osteomyelitis, the guideline favours MRI over CT, scintigraphy or ultrasound. This is conditional with very low-certainty evidence; not every uncomplicated child requires additional MRI.",
+        "wrongExplanations": {
+          "B": "For this additional imaging requirement, the guideline favours MRI over CT. This is not a ban on clinically justified CT in other settings.",
+          "C": "MRI is preferred over bone scintigraphy for this question; the recommendation here concerns paediatric AHO.",
+          "D": "Ultrasound may complement assessment of adjacent joint effusion or soft-tissue spread; it does not replace the preferred MRI assessment of bone infection here."
+        },
+        "sources": [
+          "https://www.idsociety.org/practice-guideline/bone-and-joint-infections---osteomyelitis/"
         ]
       }
     ],
@@ -7940,6 +8646,359 @@
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103758/"
         ]
+      },
+      {
+        "id": "aq-atv-ulcer-mpr-fa",
+        "fach": "abdomen",
+        "tags": [
+          "ulkuserkrankung"
+        ],
+        "question": "در یک برش محوری CT با تزریق، احتمال قطع موضعی مخاط آنتروم مبهم است. کدام بازسازی تکمیلی برای بررسی حفرهٔ اولسر و ارتباط آن با دیوارهٔ معده مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "بازسازی‌های نازک چندصفحه‌ای بافت نرم، در امتداد دیوارهٔ درگیر و عمود بر آن."
+          },
+          {
+            "id": "B",
+            "text": "بازسازی‌های MIP ضخیم در امتداد شریان‌های اطراف معده."
+          },
+          {
+            "id": "C",
+            "text": "بازسازی‌های MinIP ضخیم برای نمایش لومن پر از گاز معده."
+          },
+          {
+            "id": "D",
+            "text": "بازسازی‌های محوری ضخیم‌تر با میانگین‌گیری شدت، از دیوارهٔ معده."
+          }
+        ],
+        "correct": "A",
+        "explanation": "بازسازی‌های هدفمند چندصفحه‌ای، دنبال‌کردن نقص مشکوک مخاط را نسبت به دیواره در چند صفحه ممکن می‌کنند. در مطالعهٔ اصلی با تطبیق آندوسکوپی، مرور MPR تشخیص اولسر را بهبود داد. با این حال CT منفی، اولسر مخاطی را رد نمی‌کند.",
+        "wrongExplanations": {
+          "B": "MIP عروقی، عروق تقویت‌شده را برجسته می‌کند و هم‌پوشانی می‌تواند نقص کوچک دیواره را بپوشاند. برای این پرسش، MPR بافت نرم لازم است.",
+          "C": "MinIP محتویات کم‌دانسیتهٔ لومن را برجسته می‌کند، نه دنبال‌کردن حاشیهٔ مخاط تقویت‌شده و نقص کوچک دیواره را. MPR هدفمند بافت نرم برای این کار مناسب‌تر است.",
+          "D": "برش‌های ضخیم‌تر با میانگین‌گیری می‌توانند نقص کوچک را به علت حجم جزئی بپوشانند. MPR نازک و هدفمند برای روشن‌کردن یافته مناسب‌تر است."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/25015399/"
+      },
+      {
+        "id": "aq-atv-lowergi-modality-fa",
+        "fach": "abdomen",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "question": "خون‌ریزی حاد تحتانی گوارش از نظر بالینی محتمل است. با وجود شروع احیای همودینامیک، بیمار همچنان ناپایدار و خون‌ریزی ادامه‌دار است و آماده‌سازی روده را تحمل نمی‌کند. طبق ASGE ۲۰۲۶، کدام راهبرد تصویربرداری برای مکان‌یابی در مسیر فوری بین‌رشته‌ای مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "MR انتروگرافی با اتساع انتریک."
+          },
+          {
+            "id": "B",
+            "text": "CT/CTA با تزریق برای مکان‌یابی، همراه آنژیوگرافی در صورت اندیکاسیون."
+          },
+          {
+            "id": "C",
+            "text": "CT کولونوگرافی پس از آماده‌سازی کامل."
+          },
+          {
+            "id": "D",
+            "text": "کپسول آندوسکوپی برای مکان‌یابی اولیه."
+          }
+        ],
+        "correct": "B",
+        "explanation": "ASGE ۲۰۲۶ در ناپایداری ادامه‌دار، CT با تزریق ± آنژیوگرافی را در مسیر فوری ترجیح می‌دهد. احیای همودینامیک و پایدارسازی بالینی هم‌زمان ادامه می‌یابند؛ در بیمار پایدار، کولونوسکوپی پس از آماده‌سازی گزینهٔ اولیهٔ دیگری است. هماتوشزی می‌تواند منشأ فوقانی نیز داشته باشد؛ در ناپایداری اولیه باید این منشأ بررسی و رد شود، مگر اینکه تصویربرداری مستقیم منشأ تحتانی را نشان داده باشد.",
+        "wrongExplanations": {
+          "A": "MR انتروگرافی به آماده‌سازی دیگری نیاز دارد و راهبرد اولیهٔ ترجیحی برای مکان‌یابی فوری خون‌ریزی فعال در این وضعیت نیست.",
+          "C": "آماده‌سازی کامل در حال حاضر تحمل نمی‌شود؛ CT کولونوگرافی برای ارزیابی فوری خون‌ریزی فعالِ مورد نیاز در اینجا نیست.",
+          "D": "روش کپسولی ممکن است در شرایط دیگر مفید باشد، اما ناپایداری ادامه‌دار به راهبرد فوری CT/آنژیوگرافی نیاز دارد، نه مکان‌یابی با کپسول."
+        },
+        "source": "https://doi.org/10.1016/j.gie.2026.06.046"
+      },
+      {
+        "id": "aq-atv-lowergi-territory-fa",
+        "fach": "abdomen",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "question": "CTA خون‌ریزی فعال ادامه‌دار را در سکوم مکان‌یابی می‌کند. پس از ارزیابی بین‌رشته‌ای، آنژیوگرافی کاتتری برنامه‌ریزی می‌شود. کدام قلمرو شریانی اصلی برای جست‌وجوی هدفمند اولیه مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "شریان مزانتریک تحتانی"
+          },
+          {
+            "id": "B",
+            "text": "تنهٔ سلیاک"
+          },
+          {
+            "id": "C",
+            "text": "شریان مزانتریک فوقانی"
+          },
+          {
+            "id": "D",
+            "text": "شریان ایلیاک داخلی"
+          }
+        ],
+        "correct": "C",
+        "explanation": "سکوم در قلمرو SMA، معمولاً از راه شاخه‌های ایلئوکولیک، قرار دارد. مکان‌یابی CTA و آناتومی عروقی فرد، بررسی انتخابی را هدایت می‌کنند؛ CTA مثبت جای ارزیابی هدفمند آنژیوگرافیک پیش از آمبولیزاسیون احتمالی را نمی‌گیرد.",
+        "wrongExplanations": {
+          "A": "IMA عمدتاً کولون چپ و از راه شریان رکتال فوقانی بخش فوقانی رکتوم را خون‌رسانی می‌کند، نه به‌طور معمول سکوم را.",
+          "B": "تنهٔ سلیاک به خون‌رسانی پیش‌روده مربوط است؛ خون‌ریزی سکوم ابتدا در قلمرو SMA جست‌وجو می‌شود.",
+          "D": "شریان ایلیاک داخلی می‌تواند در خون‌رسانی رکتوم نقش داشته باشد؛ قلمرو اصلی معمول برای خون‌ریزی سکوم نیست."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9808013/"
+      },
+      {
+        "id": "aq-atv-hernia-occult-imaging-fa",
+        "fach": "abdomen",
+        "tags": [
+          "inguinal-femoral-hernia"
+        ],
+        "question": "درد کشالهٔ ران با فعالیت و شک به فتق پس از سونوگرافی غیردیاگنوستیک ادامه دارند. نشانهٔ انسداد حاد وجود ندارد و بیماری تاندون اداکتور نیز مطرح است. کدام بررسی برای تکمیل ارزیابی هر دو احتمال مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "MRI دینامیک کشالهٔ ران همراه ارزیابی مناسب بافت نرم"
+          },
+          {
+            "id": "B",
+            "text": "هرنیوگرافی برای نمایش ساک احتمالی فتق"
+          },
+          {
+            "id": "C",
+            "text": "CT کشالهٔ ران برای تعیین نوع آناتومیک فتق"
+          },
+          {
+            "id": "D",
+            "text": "تکرار سونوگرافی دینامیک با تمرکز بر حلقهٔ عمقی اینگوینال"
+          }
+        ],
+        "correct": "A",
+        "explanation": "در شک پایدار پس از سونوگرافی نامشخص، تصویربرداری دینامیک تکمیلی می‌تواند لازم باشد. MRI همچنین تاندون‌های اداکتور و دیگر علل اسکلتی‌عضلانی درد را بررسی می‌کند. انتخاب به دسترسی و موارد منع نیز بستگی دارد؛ هر فتق واضح بالینی به MRI نیاز ندارد.",
+        "wrongExplanations": {
+          "B": "هرنیوگرافی می‌تواند ساک فتق را نشان دهد، اما بیماری احتمالی تاندون را مانند MRI بررسی نمی‌کند.",
+          "C": "CT پس از سونوگرافی نامشخص می‌تواند کمک کند، برای مثال وقتی MRI ممکن نیست. در اینجا MRI برای بیماری احتمالی تاندون اداکتور هدفمندتر است.",
+          "D": "تکرار سونوگرافی هدفمند بسته به کیفیت بررسی اول می‌تواند مفید باشد. اما تمرکز محدود بر حلقهٔ عمقی، پرسش دوم دربارهٔ بیماری تاندون را به همان گستردگی پاسخ نمی‌دهد."
+        },
+        "source": "https://doi.org/10.1007/s10029-017-1668-x"
+      },
+      {
+        "id": "aq-atv-hernia-perfusion-concern-fa",
+        "fach": "abdomen",
+        "tags": [
+          "inguinal-femoral-hernia"
+        ],
+        "question": "در فتق فمورال دردناک و جا نیفتادنی، CT با تزریق حلقهٔ رودهٔ مسدود با کاهش واضح جذب مادهٔ حاجب در دیواره و ادم مجاور نشان می‌دهد. کدام اطلاع‌رسانی یافته مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "انسداد با شک به استرانگولاسیون؛ ارزیابی فوری جراحی انجام شود"
+          },
+          {
+            "id": "B",
+            "text": "انسداد با خون‌رسانی حفظ‌شدهٔ روده؛ برنامه‌ریزی جراحی در روند معمول"
+          },
+          {
+            "id": "C",
+            "text": "واکنش التهابی دیواره به‌عنوان مشکل اصلی؛ ابتدا پیگیری تحت درمان دارویی"
+          },
+          {
+            "id": "D",
+            "text": "رفع گیر افتادن با تغییرات پس از انسداد؛ پیگیری سرپایی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "کاهش جذب مادهٔ حاجب در دیواره در این وضعیت دردناک، جا نیفتادنی و انسدادی، شک فوری به استرانگولاسیون را مطرح می‌کند. یافته مستقیم اطلاع داده و ارزیابی جراحی انجام شود. یک نشانهٔ منفرد، هیستولوژی یا نکروز برگشت‌ناپذیر را قطعی نمی‌کند.",
+        "wrongExplanations": {
+          "B": "کاهش واضح جذب دیواره با خون‌رسانی حفظ‌شدهٔ ادعاشده سازگار نیست. همراه جا نیفتادن و انسداد، ارزیابی فوری است.",
+          "C": "ادم دیواره می‌تواند غیراختصاصی باشد، اما تمام وضعیت فتق انسدادی با کاهش جذب را کافی توضیح نمی‌دهد. مسیر پیگیری اولیه با درمان دارویی، ارزیابی لازم جراحی را به تأخیر می‌اندازد.",
+          "D": "ادامهٔ جا نیفتادن و انسداد با رفع گیر افتادن سازگار نیست؛ نشانه‌های هشدار خون‌رسانی به ارزیابی فوری نیاز دارند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5545868/"
+      },
+      {
+        "id": "aq-atv-hca-risk-context-fa",
+        "fach": "abdomen",
+        "tags": [
+          "leberadenom"
+        ],
+        "question": "تصویربرداری احتمال HCA را مطرح می‌کند. کدام شرح حال تکمیلی بیشتر از این احتمال حمایت می‌کند، بدون اینکه به‌تنهایی تشخیص ضایعه را قطعی کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "مصرف طولانی هورمون‌های جنسی خارجی و سندرم متابولیک"
+          },
+          {
+            "id": "B",
+            "text": "هپاتیت ویروسی مزمن همراه سیروز"
+          },
+          {
+            "id": "C",
+            "text": "کارسینوم شناخته‌شدهٔ کولورکتال همراه متاستازهای دوردست دیگر"
+          },
+          {
+            "id": "D",
+            "text": "کلانژیت اسکلروزان اولیه با تنگی پیشروندهٔ مجرای صفراوی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "هورمون‌های خارجی، استروئیدهای آنابولیک، چاقی و عوامل متابولیک و بیماری ذخیرهٔ گلیکوژن از موارد شرح حال خطر HCA هستند. آن‌ها به ارزیابی کمک می‌کنند، اما جای تصویربرداری چندفازی را نمی‌گیرند. سیروز یا بدخیمی شناخته‌شده، تشخیص افتراقی را تغییر می‌دهد.",
+        "wrongExplanations": {
+          "B": "این زمینه به‌ویژه توجه را به HCC جلب می‌کند. ترکیب خطر تیپیک HCA مورد سؤال نیست؛ ضایعه باید در زمینهٔ مناسب کبد بررسی شود.",
+          "C": "بدخیمی متاستاتیک شناخته‌شده، بررسی را به سمت ضایعات ثانویهٔ کبد هدایت می‌کند. عامل خطر اختصاصی HCA نیست.",
+          "D": "این شرح حال، توجه را به بیماری مهم صفراوی از جمله احتمال بدخیمی جلب می‌کند؛ زمینهٔ خطر تیپیک HCA نیست."
+        },
+        "source": "https://doi.org/10.14309/ajg.0000000000002857"
+      },
+      {
+        "id": "aq-msk-sehnenpathologien-hand-fa-lister-course",
+        "fach": "msk",
+        "tags": [
+          "sehnenpathologien-hand"
+        ],
+        "difficulty": 1,
+        "question": "سناریوی متنی دربارهٔ آناتومی معمول: تاندونی در سمت اولنار تکمهٔ لیستر می‌گذرد و در دیستال آن به سمت رادیال و شست می‌چرخد. کدام شناسایی مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ECRL/ECRB در کمپارتمان II"
+          },
+          {
+            "id": "B",
+            "text": "APL/EPB در کمپارتمان I"
+          },
+          {
+            "id": "C",
+            "text": "EPL در کمپارتمان III"
+          },
+          {
+            "id": "D",
+            "text": "EDC/EIP در کمپارتمان IV"
+          }
+        ],
+        "correct": "C",
+        "explanation": "EPL در کمپارتمان سوم کنار تکمهٔ لیستر تغییر جهت می‌دهد و سپس به شست می‌رود. ECRL/ECRB در کمپارتمان دوم و سمت رادیال تکمه قرار دارند. مسیر و لندمارک را با هم برای شناسایی به‌کار ببرید؛ سناریو آناتومی معمول را توصیف می‌کند.",
+        "wrongExplanations": {
+          "A": "ECRL/ECRB مربوط به کمپارتمان دوم و سمت رادیال تکمهٔ لیسترند، نه کمپارتمان سوم و مسیر توصیف‌شده به شست.",
+          "B": "APL/EPB در کمپارتمان اول کنار استایلوئید رادیوس قرار دارند؛ پیچیدن توصیف‌شده دور تکمهٔ لیستر مربوط به EPL است.",
+          "D": "EDC/EIP با هم در کمپارتمان چهارم بزرگ‌تر قرار دارند؛ آن‌ها تاندون منفرد شست را که در کمپارتمان III دور لیستر می‌چرخد توضیح نمی‌دهند."
+        },
+        "sources": [
+          "MSK.pdf physical41/printed40; actual table and page freshly rendered/read2026-10-25",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11775041/"
+        ]
+      },
+      {
+        "id": "aq-msk-osteomyelitis-fa-periosteal-report",
+        "fach": "msk",
+        "tags": [
+          "osteomyelitis"
+        ],
+        "difficulty": 1,
+        "question": "سناریوی متنی: نوجوانی ضایعهٔ استئولیتیک استخوان با واکنش پریوست چندلایه دارد. اطلاعات بالینی و آزمایشگاهی هنوز در دسترس نیست. کدام ارزیابی گزارش، محدودیت این الگو را بهتر رعایت می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ضایعه با ظاهر تهاجمی؛ الگوی لایه‌لایه در درجهٔ اول نئوپلازی را بر عفونت ترجیح می‌دهد."
+          },
+          {
+            "id": "B",
+            "text": "ضایعه با ظاهر تهاجمی؛ علل عفونی و نئوپلاستیک باید با بالین و یافته‌های تکمیلی تطبیق داده شوند."
+          },
+          {
+            "id": "C",
+            "text": "ضایعهٔ آهسته‌سیر؛ لایه‌های متعدد پریوست بیشتر به نفع روند غیرتهاجمی‌اند."
+          },
+          {
+            "id": "D",
+            "text": "واکنش تروماتیک استخوان؛ الگوی لایه‌لایه در درجهٔ اول به نفع ترمیم سازمان‌یافتهٔ شکستگی است."
+          }
+        ],
+        "correct": "B",
+        "explanation": "واکنش پریوست لایه‌لایه پاسخ استخوان را توصیف می‌کند و اختصاصی تومور نیست. سارکوم یوئینگ و استئومیلیت هر دو در افتراق قرار دارند؛ الگو به‌تنهایی نه بافت‌شناسی و نه عامل عفونی را تعیین می‌کند.",
+        "wrongExplanations": {
+          "A": "الگو به‌تنهایی ترجیح نئوپلازی بر عفونت را توجیه نمی‌کند؛ اطلاعات زمینه‌ای هنوز در دسترس نیست و اهمیت دارد.",
+          "C": "لایه‌های متعدد با واکنش پریوست جامد و صافِ منفرد یکسان نیستند.",
+          "D": "شکستگی یا سیر ترمیمی متناظر توصیف نشده است؛ لایه‌لایه‌بودن به‌تنهایی منشأ تروماتیک را تعیین نمی‌کند."
+        },
+        "sources": [
+          "MSK.pdf physical73/printed72; actual rendered page read2026-10-25"
+        ]
+      },
+      {
+        "id": "aq-msk-osteomyelitis-fa-brodie-variability",
+        "fach": "msk",
+        "tags": [
+          "osteomyelitis"
+        ],
+        "difficulty": 1,
+        "question": "آبسهٔ برودی در تشخیص افتراقی مطرح است. رادیوگرافی واکنش پریوست نشان نمی‌دهد. تفسیر مناسبِ نبود این واکنش چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "فرض عفونت باید به نفع ضایعهٔ غیرعفونی در اولویت پایین‌تر قرار گیرد."
+          },
+          {
+            "id": "B",
+            "text": "بدون واکنش پریوست، ضایعه باید حاد و نه تحت‌حاد یا مزمن دسته‌بندی شود."
+          },
+          {
+            "id": "C",
+            "text": "نبود آن با ظاهر متغیر سازگار است؛ سایر یافته‌های بالینی و تصویری همچنان برای تفسیر تعیین‌کننده‌اند."
+          },
+          {
+            "id": "D",
+            "text": "نبود واکنش بیشتر به نفع کانون عفونی بهبودیافته است تا کانونی که همچنان وجود دارد."
+          }
+        ],
+        "correct": "C",
+        "explanation": "در مجموعهٔ اصلی ۲۵ آبسهٔ برودی، فقط بخشی واکنش پریوست داشتند؛ بنابراین نبود آن معیار رد نیست. این مجموعه تنوع ظاهر را نشان می‌دهد، نه قاعدهٔ تصمیم‌گیری تشخیصی از یک نشانه.",
+        "wrongExplanations": {
+          "A": "مجموعهٔ اصلی شامل آبسه‌های برودی بدون واکنش پریوست است؛ این نشانهٔ غایب به‌تنهایی تغییر اولویت پیشنهادی را پشتیبانی نمی‌کند.",
+          "B": "سیر زمانی صرفاً از وجود یا نبود واکنش پریوست تعیین نمی‌شود.",
+          "D": "نبود واکنش پریوست، فعالیت فعلی کانون احتمالی را با اطمینان تعیین نمی‌کند؛ سایر یافته‌ها و سیر بالینی همچنان لازم‌اند."
+        },
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/451190/"
+        ]
+      },
+      {
+        "id": "aq-msk-osteomyelitis-fa-paediatric-next-imaging",
+        "fach": "msk",
+        "tags": [
+          "osteomyelitis"
+        ],
+        "difficulty": 2,
+        "question": "در کودک ۹ ساله هنوز شک به استئومیلیت حاد هماتوژن وجود دارد. رادیوگرافی اولیه نتیجه را روشن نکرده و برای تشخیص و تعیین وسعت تصویربرداری بیشتر لازم است. طبق PIDS/IDSA ۲۰۲۱ کدام روش ترجیح داده می‌شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "MRI ناحیهٔ درگیر"
+          },
+          {
+            "id": "B",
+            "text": "CT ناحیهٔ درگیر"
+          },
+          {
+            "id": "C",
+            "text": "اسکن استخوان"
+          },
+          {
+            "id": "D",
+            "text": "سونوگرافی ناحیهٔ درگیر"
+          }
+        ],
+        "correct": "A",
+        "explanation": "اگر در استئومیلیت حاد هماتوژن کودکان تصویربرداری بیشتر لازم باشد، راهنما MRI را بر CT، اسکن استخوان یا سونوگرافی ترجیح می‌دهد. توصیه مشروط با قطعیت بسیار پایین شواهد است؛ همهٔ کودکان با بیماری بدون عارضه به MRI تکمیلی نیاز ندارند.",
+        "wrongExplanations": {
+          "B": "برای نیاز تکمیلی توصیف‌شده، راهنما MRI را بر CT ترجیح می‌دهد؛ این به معنای ممنوعیت CT با اندیکاسیون بالینی در موقعیت‌های دیگر نیست.",
+          "C": "برای این پرسش MRI بر اسکن استخوان ترجیح دارد؛ این توصیه در اینجا مربوط به AHO کودکان است.",
+          "D": "سونوگرافی می‌تواند ارزیابی افیوژن مفصل مجاور یا انتشار بافت نرم را تکمیل کند؛ اما اینجا جای ارزیابی ترجیحی MRI عفونت استخوان را نمی‌گیرد."
+        },
+        "sources": [
+          "https://www.idsociety.org/practice-guideline/bone-and-joint-infections---osteomyelitis/"
+        ]
       }
     ]
   },
@@ -10118,6 +11177,156 @@
         "fa": ""
       },
       "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3170532/"
+    },
+    {
+      "id": "aq-atv-ulcer-mpr",
+      "topicId": "ulkuserkrankung",
+      "category": {
+        "de": "Bildgebung und Einordnung",
+        "en": "Imaging and interpretation",
+        "fa": "تصویربرداری و تفسیر"
+      },
+      "front": {
+        "de": "Wie ergänzt du die axiale CT-Durchsicht bei einem möglichen gastroduodenalen Ulkuskrater?",
+        "en": "How do you supplement axial CT review for a possible gastroduodenal ulcer crater?",
+        "fa": "در احتمال حفرهٔ اولسر معده یا دوازدهه، مرور محوری CT را چگونه تکمیل می‌کنید؟"
+      },
+      "answer": {
+        "de": "Mit dünnen, gezielten Weichteil-MPR entlang und quer zur verdächtigen Wand; auf fokalen Schleimhautdefekt und begleitende Wand-/Umgebungsreaktion achten.",
+        "en": "With thin targeted soft-tissue MPR along and across the suspicious wall; assess a focal mucosal defect and associated mural/perigastric reaction.",
+        "fa": "با MPR نازک و هدفمند بافت نرم در امتداد دیوارهٔ مشکوک و عمود بر آن؛ نقص موضعی مخاط و واکنش همراه دیواره یا اطراف را بررسی کنید."
+      },
+      "explanation": {
+        "de": "Gezielte multiplanare Rekonstruktionen erlauben, den verdächtigen Schleimhautdefekt in mehreren Ebenen mit der Wand zu verfolgen. In der endoskopisch korrelierten Originalstudie verbesserte die MPR-Durchsicht die Ulkuserkennung. Eine unauffällige CT schließt ein Schleimhautulkus dennoch nicht aus.",
+        "en": "Targeted multiplanar reconstructions allow the suspected mucosal defect to be followed in relation to the wall in several planes. MPR review improved ulcer detection in the original endoscopy-correlated study. A negative CT nevertheless does not exclude a mucosal ulcer.",
+        "fa": "بازسازی‌های هدفمند چندصفحه‌ای، دنبال‌کردن نقص مشکوک مخاط را نسبت به دیواره در چند صفحه ممکن می‌کنند. در مطالعهٔ اصلی با تطبیق آندوسکوپی، مرور MPR تشخیص اولسر را بهبود داد. با این حال CT منفی، اولسر مخاطی را رد نمی‌کند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/25015399/"
+    },
+    {
+      "id": "aq-atv-lowergi-modality",
+      "topicId": "untere-gi-blutung",
+      "category": {
+        "de": "Bildgebung und Einordnung",
+        "en": "Imaging and interpretation",
+        "fa": "تصویربرداری و تفسیر"
+      },
+      "front": {
+        "de": "Wie beeinflusst anhaltende Kreislaufinstabilität die Erstlokalisation einer akuten unteren GI-Blutung nach ASGE 2026?",
+        "en": "How does ongoing haemodynamic instability affect initial localisation of acute lower GI bleeding under ASGE 2026?",
+        "fa": "طبق ASGE ۲۰۲۶، ناپایداری همودینامیک ادامه‌دار چه اثری بر مکان‌یابی اولیهٔ خون‌ریزی حاد تحتانی گوارش دارد؟"
+      },
+      "answer": {
+        "de": "Unter fortlaufender Kreislaufstabilisierung dringlicher kontrastverstärkter CT-/CTA-Pfad ± Angiographie; Koloskopie bei ausreichender Stabilität und Vorbereitung. Eine obere Blutungsquelle bei initial instabiler Hämatochezie mitbedenken.",
+        "en": "Continue resuscitation and use urgent contrast CT/CTA ± angiography; colonoscopy requires adequate stability and preparation. Consider an upper source in initially unstable haematochezia.",
+        "fa": "احیای همودینامیک را ادامه دهید و از مسیر فوری CT/CTA با تزریق ± آنژیوگرافی استفاده کنید؛ کولونوسکوپی به پایداری و آماده‌سازی کافی نیاز دارد. در هماتوشزی با ناپایداری اولیه، منشأ فوقانی را نیز در نظر بگیرید."
+      },
+      "explanation": {
+        "de": "Bei anhaltender Instabilität bevorzugt ASGE 2026 kontrastverstärkte CT ± Angiographie im dringlichen Pfad. Die Kreislaufstabilisierung läuft parallel weiter; bei hämodynamisch stabilen Patienten ist nach Vorbereitung eine Koloskopie eine andere Erstoption. Hämatochezie kann auch eine obere Quelle haben: bei initialer Instabilität ist diese auszuschließen, sofern keine direkte Bildgebung eine untere Quelle belegt.",
+        "en": "ASGE 2026 favours contrast CT ± angiography in ongoing instability within urgent care. Resuscitation and clinical stabilisation continue in parallel; colonoscopy after preparation is another initial option in stable patients. Haematochezia may also arise from an upper source: with initial instability this requires exclusion unless direct imaging establishes a lower source.",
+        "fa": "ASGE ۲۰۲۶ در ناپایداری ادامه‌دار، CT با تزریق ± آنژیوگرافی را در مسیر فوری ترجیح می‌دهد. احیای همودینامیک و پایدارسازی بالینی هم‌زمان ادامه می‌یابند؛ در بیمار پایدار، کولونوسکوپی پس از آماده‌سازی گزینهٔ اولیهٔ دیگری است. هماتوشزی می‌تواند منشأ فوقانی نیز داشته باشد؛ در ناپایداری اولیه باید این منشأ بررسی و رد شود، مگر اینکه تصویربرداری مستقیم منشأ تحتانی را نشان داده باشد."
+      },
+      "source": "https://doi.org/10.1016/j.gie.2026.06.046"
+    },
+    {
+      "id": "aq-msk-wrist-lister-course",
+      "topicId": "sehnenpathologien-hand",
+      "category": {
+        "de": "Landmarken",
+        "en": "Landmarks",
+        "fa": "لندمارک‌ها"
+      },
+      "front": {
+        "de": "Wie hilft das Lister-Tuberkulum bei der Unterscheidung von Strecksehnenfach II und III?",
+        "en": "How does Lister tubercle help distinguish extensor compartments II and III?",
+        "fa": "تکمهٔ لیستر چگونه به تفکیک کمپارتمان‌های اکستانسور II و III کمک می‌کند؟"
+      },
+      "answer": {
+        "de": "II enthält ECRL/ECRB radial des Tuberkulums; III enthält EPL, der um Lister nach radial zum Daumen zieht.",
+        "en": "II contains ECRL/ECRB radial to the tubercle; III contains EPL, which turns around Lister toward the thumb.",
+        "fa": "II شامل ECRL/ECRB در سمت رادیال تکمه است؛ III شامل EPL است که دور لیستر به سمت رادیال و شست می‌رود."
+      },
+      "explanation": {
+        "de": "Das Lister-Tuberkulum mit dem Verlauf der EPL-Sehne verknüpfen. Distal des dritten Fachs kann ihre Lage mit der Handgelenk- und Daumenstellung variieren.",
+        "en": "Link Lister tubercle to the EPL course. Beyond the third compartment its position may vary with wrist and thumb posture.",
+        "fa": "تکمهٔ لیستر را با مسیر EPL مرتبط کنید. در دیستال کمپارتمان سوم، موقعیت آن می‌تواند با وضعیت مچ و شست تغییر کند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11775041/"
+    },
+    {
+      "id": "aq-msk-osteomyelitis-periosteal-limit",
+      "category": {
+        "de": "Befundinterpretation",
+        "en": "Report interpretation",
+        "fa": "تفسیر گزارش"
+      },
+      "front": {
+        "de": "Was darf aus einer lamellären Periostreaktion nicht allein abgeleitet werden?",
+        "en": "What cannot be inferred from a lamellated periosteal response alone?",
+        "fa": "از واکنش پریوست لایه‌لایه، چه چیزی را نمی‌توان به‌تنهایی نتیجه گرفت؟"
+      },
+      "answer": {
+        "de": "Weder eine bestimmte Histologie noch ein Erreger; Infektion und Neoplasie bleiben im Kontext zu prüfen.",
+        "en": "Neither a specific histology nor a pathogen; consider infection and neoplasia in context.",
+        "fa": "نه بافت‌شناسی مشخص و نه عامل عفونی؛ عفونت و نئوپلازی باید در زمینه بررسی شوند."
+      },
+      "explanation": {
+        "de": "Das Reaktionsmuster beschreibt den Knochenumbau, nicht dessen Ursache. Die Quelle nennt Ewing-Sarkom und Osteomyelitis als Beispiele, ohne Exklusivität.",
+        "en": "The response pattern describes bone remodelling, not its cause. The source lists Ewing sarcoma and osteomyelitis as nonexclusive examples.",
+        "fa": "الگوی واکنش، بازسازی استخوان را توصیف می‌کند نه علت آن را. منبع یوئینگ و استئومیلیت را به‌عنوان نمونه‌های غیرانحصاری ذکر می‌کند."
+      },
+      "source": "MSK.pdf, PDF-S.73 / Druck-S.72.",
+      "topicId": "osteomyelitis"
+    },
+    {
+      "id": "aq-msk-osteomyelitis-brodie-variability",
+      "category": {
+        "de": "Brodie-Abszess",
+        "en": "Brodie abscess",
+        "fa": "آبسهٔ برودی"
+      },
+      "front": {
+        "de": "Schließt eine fehlende Periostreaktion einen Brodie-Abszess aus?",
+        "en": "Does absent periosteal response exclude a Brodie abscess?",
+        "fa": "آیا نبود واکنش پریوست آبسهٔ برودی را رد می‌کند؟"
+      },
+      "answer": {
+        "de": "Nein. Die radiologische Morphologie ist variabel; übrige Bildgebung, Klinik und Verlauf müssen zusammen bewertet werden.",
+        "en": "No. Radiographic appearances vary; integrate other imaging findings, clinical context and course.",
+        "fa": "خیر. ظاهر رادیولوژیک متغیر است؛ سایر یافته‌های تصویری، بالین و سیر باید با هم ارزیابی شوند."
+      },
+      "explanation": {
+        "de": "Die ursprüngliche 25-Fall-Serie enthielt auch Läsionen ohne Periostreaktion. Sie liefert kein Ausschlusskriterium aus diesem einzelnen Zeichen.",
+        "en": "The original 25-case series included lesions without periosteal response. It does not provide an exclusion rule from this one sign.",
+        "fa": "مجموعهٔ اصلی ۲۵ موردی شامل ضایعات بدون واکنش پریوست نیز بود؛ از این نشانهٔ منفرد قاعدهٔ رد به دست نمی‌آید."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/451190/",
+      "topicId": "osteomyelitis"
+    },
+    {
+      "id": "aq-msk-osteomyelitis-paediatric-imaging",
+      "category": {
+        "de": "Pädiatrische AHO",
+        "en": "Paediatric AHO",
+        "fa": "AHO کودکان"
+      },
+      "front": {
+        "de": "Welche Bildgebungsfolge empfiehlt PIDS/IDSA2021 bei vermuteter pädiatrischer AHO, wenn weitere Bildgebung nötig ist?",
+        "en": "What imaging sequence does PIDS/IDSA2021 recommend for suspected paediatric AHO when further imaging is needed?",
+        "fa": "اگر در AHO احتمالی کودکان تصویربرداری بیشتر لازم باشد، PIDS/IDSA۲۰۲۱ چه توالی‌ای توصیه می‌کند؟"
+      },
+      "answer": {
+        "de": "Zunächst Röntgen; bei weiterem Bildgebungsbedarf MRT gegenüber CT, Szintigrafie oder Sonografie bevorzugen.",
+        "en": "Initial radiographs; if more imaging is needed, prefer MRI over CT, scintigraphy or ultrasound.",
+        "fa": "ابتدا رادیوگرافی؛ اگر بررسی بیشتر لازم باشد، MRI بر CT، اسکن استخوان یا سونوگرافی ترجیح دارد."
+      },
+      "explanation": {
+        "de": "Initiale Röntgenbilder können trotz Infektion wenig auffällig sein. Die zusätzliche MRT-Empfehlung ist konditional bei sehr unsicherer Evidenz und ist hier keine universelle Regel für Erwachsene oder jede Osteomyelitisform.",
+        "en": "Initial radiographs may be inconspicuous despite infection. The additional MRI recommendation is conditional with very low-certainty evidence and is not a universal rule for adults or all forms of osteomyelitis.",
+        "fa": "رادیوگرافی اولیه ممکن است با وجود عفونت چندان غیرطبیعی نباشد. توصیهٔ MRI تکمیلی مشروط با قطعیت بسیار پایین شواهد است و قاعدهٔ همگانی برای بزرگسالان یا همهٔ انواع استئومیلیت نیست."
+      },
+      "source": "https://www.idsociety.org/practice-guideline/bone-and-joint-infections---osteomyelitis/",
+      "topicId": "osteomyelitis"
     }
   ],
   "topics": [
@@ -10392,6 +11601,21 @@
       "href": "/flashcards/melorheostose"
     },
     {
+      "id": "osteomyelitis",
+      "title": {
+        "de": "Osteomyelitis: Differentialhinweise",
+        "en": "Osteomyelitis: differential clues",
+        "fa": "استئومیلیت: سرنخ‌های افتراقی"
+      },
+      "subject": "msk",
+      "description": {
+        "de": "Periostmuster · Brodie-Variabilität · begrenzte pädiatrische Bildgebungsempfehlung",
+        "en": "Periosteal pattern · Brodie variability · scoped paediatric imaging recommendation",
+        "fa": "الگوی پریوست · تنوع برودی · توصیهٔ محدود تصویربرداری کودکان"
+      },
+      "href": "/flashcards/osteomyelitis"
+    },
+    {
       "id": "aq-atv-intervention",
       "subject": "technik",
       "title": {
@@ -10480,6 +11704,15 @@
         "fa": "پرسش‌های بالینی و مرور فعال."
       },
       "href": "/flashcards/aortenbogen"
+    },
+    {
+      "id": "inguinal-femoral-hernia",
+      "subject": "abdomen",
+      "title": {
+        "de": "Leisten- und Schenkelhernie",
+        "en": "Inguinal and femoral hernias",
+        "fa": "فتق اینگوینال و فمورال"
+      }
     }
   ],
   "routeCoverage": [
@@ -12581,6 +13814,105 @@
       ]
     },
     {
+      "route": "/msk/hand/strecksehnenfaecher",
+      "topicId": "sehnenpathologien-hand",
+      "status": "AUTHOR_FULL_ORIGINAL_POOL_REVIEW_READY",
+      "learningGoals": [
+        {
+          "id": "carpal-joints",
+          "text": {
+            "de": "Mediokarpal-, Radiokarpal- und distale Gelenklinien anatomisch zuordnen.",
+            "en": "Localise midcarpal, radiocarpal and distal joint lines anatomically.",
+            "fa": "خطوط مفصلی میدکارپی، رادیوکارپی و دیستال را از نظر آناتومیک مکان‌یابی کنید."
+          },
+          "questionIds": [
+            "sehnenpathologien-hand-de-02"
+          ],
+          "cardIds": [
+            "wrist-carpal-midcarpal"
+          ]
+        },
+        {
+          "id": "compartment-map",
+          "text": {
+            "de": "Die radialen und ulnaren Strecksehnenfächer anhand ihrer Sehnen und Knochenlandmarken identifizieren.",
+            "en": "Identify radial and ulnar extensor compartments using their tendons and bony landmarks.",
+            "fa": "کمپارتمان‌های اکستانسور رادیال و اولنار را با تاندون‌ها و لندمارک‌های استخوانی شناسایی کنید."
+          },
+          "questionIds": [
+            "sehnenpathologien-hand-de-01"
+          ],
+          "cardIds": [
+            "wrist-extensor-compartment-1",
+            "wrist-extensor-compartment-6"
+          ]
+        },
+        {
+          "id": "lister",
+          "text": {
+            "de": "Am Lister-Tuberkulum das zweite Fach von der EPL-Umlenkung im dritten Fach unterscheiden.",
+            "en": "At Lister tubercle distinguish the second compartment from EPL turning in the third.",
+            "fa": "کنار تکمهٔ لیستر، کمپارتمان دوم را از تغییر جهت EPL در کمپارتمان سوم تفکیک کنید."
+          },
+          "questionIds": [
+            "aq-msk-sehnenpathologien-hand-de-lister-course"
+          ],
+          "cardIds": [
+            "aq-msk-wrist-lister-course"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/msk/infektionen/osteomyelitis",
+      "topicId": "osteomyelitis",
+      "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW",
+      "learningGoals": [
+        {
+          "id": "periosteal-report",
+          "text": {
+            "de": "Eine lamelläre Periostreaktion als unspezifische Knochenantwort differenzialdiagnostisch berichten.",
+            "en": "Report lamellated periosteal response as a nonspecific bone reaction in the differential.",
+            "fa": "واکنش پریوست لایه‌لایه را به‌عنوان پاسخ غیراختصاصی استخوان در افتراق گزارش کنید."
+          },
+          "questionIds": [
+            "aq-msk-osteomyelitis-de-periosteal-report"
+          ],
+          "cardIds": [
+            "aq-msk-osteomyelitis-periosteal-limit"
+          ]
+        },
+        {
+          "id": "brodie-variability",
+          "text": {
+            "de": "Das Fehlen einer Periostreaktion ohne unbegründeten Ausschluss eines Brodie-Abszesses einordnen.",
+            "en": "Interpret absent periosteal response without unjustifiably excluding Brodie abscess.",
+            "fa": "نبود واکنش پریوست را بدون رد ناموجه آبسهٔ برودی تفسیر کنید."
+          },
+          "questionIds": [
+            "aq-msk-osteomyelitis-de-brodie-variability"
+          ],
+          "cardIds": [
+            "aq-msk-osteomyelitis-brodie-variability"
+          ]
+        },
+        {
+          "id": "paediatric-imaging",
+          "text": {
+            "de": "Bei weiterem Bildgebungsbedarf im pädiatrischen AHO-Kontext MRT auswählen und den Geltungsbereich der Empfehlung benennen.",
+            "en": "Select MRI when further imaging is needed in paediatric AHO and state the scope of that recommendation.",
+            "fa": "در AHO کودکان و در صورت نیاز به تصویربرداری بیشتر، MRI را انتخاب و دامنهٔ توصیه را مشخص کنید."
+          },
+          "questionIds": [
+            "aq-msk-osteomyelitis-de-paediatric-next-imaging"
+          ],
+          "cardIds": [
+            "aq-msk-osteomyelitis-paediatric-imaging"
+          ]
+        }
+      ]
+    },
+    {
       "route": "/technik/interventionelle-radiologie",
       "topicId": "aq-atv-intervention",
       "learningGoals": [
@@ -13798,6 +15130,286 @@
           ],
           "cardIds": [
             "aq-thorax-aortenbogen-aberrant-branch"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/gi/ulkuserkrankung",
+      "topicId": "ulkuserkrankung",
+      "status": "AUTHOR_READY_INDEPENDENT_REVIEW_PENDING",
+      "learningGoals": [
+        {
+          "id": "detection",
+          "text": {
+            "de": "Einen möglichen Ulkuskrater gezielt in multiplanaren CT-Rekonstruktionen überprüfen.",
+            "en": "Review a possible ulcer crater using targeted multiplanar CT reconstructions.",
+            "fa": "حفرهٔ مشکوک اولسر را با بازسازی‌های هدفمند چندصفحه‌ای CT بررسی کنید."
+          },
+          "questionIds": [
+            "aq-atv-ulcer-mpr-de"
+          ],
+          "cardIds": [
+            "aq-atv-ulcer-mpr"
+          ]
+        },
+        {
+          "id": "limits",
+          "text": {
+            "de": "Bei Ulkus-/Blutungsverdacht die Grenzen einer negativen CT und die Rolle der Endoskopie erklären.",
+            "en": "Explain the limits of negative CT and the role of endoscopy when ulcer/bleeding is suspected.",
+            "fa": "در شک به اولسر یا خون‌ریزی، محدودیت CT منفی و نقش آندوسکوپی را توضیح دهید."
+          },
+          "questionIds": [
+            "ulkuserkrankung-negative-ct-de"
+          ],
+          "cardIds": [
+            "ulkuserkrankung-negative-ct"
+          ]
+        },
+        {
+          "id": "perforation",
+          "text": {
+            "de": "Einen Wanddefekt mit extraluminalem Gas als dringlichen Perforationsverdacht kommunizieren.",
+            "en": "Communicate a wall defect with extraluminal gas as urgent concern for perforation.",
+            "fa": "نقص دیواره همراه گاز خارج لومن را به‌عنوان شک فوری به پرفوراسیون منتقل کنید."
+          },
+          "questionIds": [
+            "ulkuserkrankung-perforation-de"
+          ],
+          "cardIds": [
+            "ulkuserkrankung-perforation"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/leber/angiomyolipom",
+      "topicId": "hepatisches-angiomyolipom",
+      "status": "AUTHOR_ORIGINAL_POOL_REVIEW_PENDING",
+      "learningGoals": [
+        {
+          "id": "fat",
+          "text": {
+            "de": "Fett als Gewebekomponente erkennen, ohne daraus allein die Tumorart abzuleiten.",
+            "en": "Identify fat as a tissue component without deriving tumour type from it alone.",
+            "fa": "چربی را به‌عنوان جزء بافتی بشناسید، بدون استنتاج نوع تومور فقط از آن."
+          },
+          "questionIds": [
+            "hepatisches-angiomyolipom-fat-de"
+          ],
+          "cardIds": [
+            "hepatisches-angiomyolipom-fat"
+          ]
+        },
+        {
+          "id": "washout",
+          "text": {
+            "de": "Überlappende dynamische MRT-Muster von HAML und HCC phasengerecht beschreiben.",
+            "en": "Describe overlapping dynamic MRI patterns of HAML and HCC with correct phase context.",
+            "fa": "الگوهای دینامیک هم‌پوشان HAML و HCC را با توجه درست به فاز توصیف کنید."
+          },
+          "questionIds": [
+            "hepatisches-angiomyolipom-washout-de"
+          ],
+          "cardIds": [
+            "hepatisches-angiomyolipom-washout"
+          ]
+        },
+        {
+          "id": "hcc",
+          "text": {
+            "de": "Unterstützende Gefäßmerkmale von diagnostischen Beweisen unterscheiden.",
+            "en": "Distinguish supportive vascular features from diagnostic proof.",
+            "fa": "ویژگی‌های عروقی حمایتی را از اثبات تشخیص تفکیک کنید."
+          },
+          "questionIds": [
+            "hepatisches-angiomyolipom-hcc-de"
+          ],
+          "cardIds": [
+            "hepatisches-angiomyolipom-hcc"
+          ]
+        },
+        {
+          "id": "report",
+          "text": {
+            "de": "Den HCC-Risikokontext und relevante Vorbefunde in die strukturierte Einordnung einbeziehen.",
+            "en": "Include HCC risk context and relevant prior findings in structured interpretation.",
+            "fa": "زمینهٔ خطر HCC و یافته‌های پیشین مرتبط را در تفسیر ساختاریافته لحاظ کنید."
+          },
+          "questionIds": [
+            "hepatisches-angiomyolipom-report-de"
+          ],
+          "cardIds": [
+            "hepatisches-angiomyolipom-report"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/gi/untere-gi-blutung",
+      "topicId": "untere-gi-blutung",
+      "status": "AUTHOR_POOL_REVISED_REVIEW_PENDING",
+      "learningGoals": [
+        {
+          "id": "phases-limits",
+          "text": {
+            "de": "Präexistentes hyperdenses Lumenmaterial von aktiver Extravasation unterscheiden und Grenzen einer negativen CTA erklären.",
+            "en": "Distinguish pre-existing hyperattenuating luminal material from active extravasation and explain negative CTA limits.",
+            "fa": "محتوای پردانسیتهٔ از پیش موجود در لومن را از نشت فعال تفکیک و محدودیت CTA منفی را توضیح دهید."
+          },
+          "questionIds": [
+            "abdomen-lower-gi-bleeding-de-01"
+          ],
+          "cardIds": [
+            "untere-gi-blutung-01-cta-negative"
+          ]
+        },
+        {
+          "id": "clinical-path",
+          "text": {
+            "de": "Die dringliche Lokalisationsstrategie an Stabilität und fortgesetzte Blutung anpassen.",
+            "en": "Adapt urgent localisation to haemodynamic stability and ongoing bleeding.",
+            "fa": "مکان‌یابی فوری را با پایداری همودینامیک و ادامهٔ خون‌ریزی تطبیق دهید."
+          },
+          "questionIds": [
+            "aq-atv-lowergi-modality-de"
+          ],
+          "cardIds": [
+            "aq-atv-lowergi-modality"
+          ]
+        },
+        {
+          "id": "interventional-localisation",
+          "text": {
+            "de": "Das zur Blutungsstelle passende arterielle Territorium zuordnen und die Grenzen der angiographischen Abschlusskontrolle benennen.",
+            "en": "Match the arterial territory to the bleeding site and state the limits of completion angiography.",
+            "fa": "قلمرو شریانی را با محل خون‌ریزی تطبیق دهید و محدودیت آنژیوگرافی پایانی را بیان کنید."
+          },
+          "questionIds": [
+            "aq-atv-lowergi-territory-de"
+          ],
+          "cardIds": [
+            "untere-gi-blutung-02-mesenteric-territory",
+            "untere-gi-blutung-03-completion-check"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/hernien/inguinal-femoral",
+      "topicId": "inguinal-femoral-hernia",
+      "status": "AUTHOR_FULL_ORIGINAL_POOL_PLUS_TARGETED_GAPS_REVIEW_PENDING",
+      "learningGoals": [
+        {
+          "id": "anatomy",
+          "text": {
+            "de": "Bruchwege anhand von Leistenband, epigastrischen Gefäßen und Femoralvene unterscheiden.",
+            "en": "Differentiate hernia routes using the inguinal ligament, epigastric vessels and femoral vein.",
+            "fa": "مسیرهای فتق را بر پایهٔ رباط اینگوینال، عروق اپی‌گاستریک و ورید فمورال افتراق دهید."
+          },
+          "questionIds": [
+            "abdomen-inguinal-hernia-landmarks-de-01",
+            "abdomen-femoral-hernia-landmarks-de-01"
+          ],
+          "cardIds": [
+            "inguinal-hernia-direct-indirect",
+            "femoral-hernia-landmarks"
+          ]
+        },
+        {
+          "id": "imaging-selection",
+          "text": {
+            "de": "Bei klinisch unklarem oder okkultem Befund passende ergänzende Bildgebung wählen.",
+            "en": "Select complementary imaging for clinically uncertain or occult findings.",
+            "fa": "در یافتهٔ نامشخص یا مخفی بالینی، تصویربرداری تکمیلی مناسب انتخاب کنید."
+          },
+          "questionIds": [
+            "aq-atv-hernia-occult-imaging-de"
+          ],
+          "cardIds": [
+            "inguinal-hernia-imaging"
+          ]
+        },
+        {
+          "id": "urgent-complication",
+          "text": {
+            "de": "Perfusionswarnzeichen in obstruierter Hernie erkennen und dringlich kommunizieren.",
+            "en": "Recognise and urgently communicate perfusion warning signs in an obstructed hernia.",
+            "fa": "نشانه‌های هشدار خون‌رسانی در فتق مسدود را بشناسید و فوراً اطلاع دهید."
+          },
+          "questionIds": [
+            "aq-atv-hernia-perfusion-concern-de"
+          ],
+          "cardIds": [
+            "femoral-hernia-ct-complications"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/leber/adenom",
+      "topicId": "leberadenom",
+      "status": "AUTHOR_FULL_ORIGINAL_POOL_PLUS_ONE_MAPPED_GAP_REVIEW_PENDING",
+      "learningGoals": [
+        {
+          "id": "clinical-context",
+          "text": {
+            "de": "HCA-Risikoanamnese und relevante Komplikationsmöglichkeiten benennen.",
+            "en": "State HCA risk history and clinically relevant potential complications.",
+            "fa": "شرح حال خطر HCA و عوارض احتمالی مهم بالینی را بیان کنید."
+          },
+          "questionIds": [
+            "aq-atv-hca-risk-context-de"
+          ],
+          "cardIds": [
+            "leberadenom-01-definition",
+            "leberadenom-02-risk"
+          ]
+        },
+        {
+          "id": "mri-phenotype",
+          "text": {
+            "de": "Chemical shift und HBP-Muster unter Beachtung von Ausnahmen einordnen.",
+            "en": "Interpret chemical-shift and HBP patterns with their exceptions.",
+            "fa": "الگوهای chemical shift و HBP را با توجه به استثناها تفسیر کنید."
+          },
+          "questionIds": [
+            "hepatic-adenoma-hbp-de-01",
+            "hepatic-adenoma-opposed-phase-de-01"
+          ],
+          "cardIds": [
+            "leberadenom-03-mri-fat",
+            "leberadenom-04-hepatobiliary"
+          ]
+        },
+        {
+          "id": "dynamic-assessment",
+          "text": {
+            "de": "Ein HCA-verdächtiges Enhancementmuster anhand geeigneter multiphasischer Bildgebung beurteilen.",
+            "en": "Assess an HCA-suggestive enhancement pattern using appropriate multiphasic imaging.",
+            "fa": "الگوی جذب مطرح‌کنندهٔ HCA را با تصویربرداری چندفازی مناسب بررسی کنید."
+          },
+          "questionIds": [
+            "hepatic-adenoma-dynamic-ct-de-01",
+            "abdomen-focal-liver-de-01"
+          ],
+          "cardIds": [
+            "leberadenom-05-dynamic"
+          ]
+        },
+        {
+          "id": "limits-and-workup",
+          "text": {
+            "de": "Bei unklarer HCA/HCC-Abgrenzung die Grenzen der Bildgebung erkennen und weitere Abklärung anstoßen.",
+            "en": "Recognise imaging limits in indeterminate HCA/HCC differentiation and initiate further workup.",
+            "fa": "در افتراق نامشخص HCA از HCC، محدودیت تصویربرداری را بشناسید و بررسی تکمیلی را آغاز کنید."
+          },
+          "questionIds": [
+            "hepatic-adenoma-caveat-de-01"
+          ],
+          "cardIds": [
+            "leberadenom-04-hepatobiliary"
           ]
         }
       ]

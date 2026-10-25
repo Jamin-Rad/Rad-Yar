@@ -35,7 +35,7 @@ for (const lang of langs) {
   assert.equal(topic.muster.imageLegend.length, 3, `${lang}: embedded figure labels have a localized legend`)
   for (const item of topic.muster.imageLegend) assert.ok(item.title[lang] && item.text[lang], `${lang}: figure legend item is translated`)
   const chauffeur = topic.sonderformen.items.find(item => /Chauffeur/i.test(`${item.title.de} ${item.title.en}`))
-  assert.match(chauffeur.text[lang], /bony avulsion|knöcherne Avulsion|آولسیون استخوانی/i)
+  assert.match(chauffeur.text[lang], /PDF/i, 'PDF avulsion wording is explicitly source-attributed')
   const slText = topic.begleitverletzungen.items[0].text[lang]
   assert.match(slText, /rough guide|grobe Orientierung|راهنمای تقریبی/i)
   assert.match(slText, /opposite wrist|Gegenseite|مچ مقابل/i)
@@ -64,7 +64,7 @@ for (const lang of langs) {
   assert.match(answer(fernandezQ), /II|Barton|بارتون/i)
   assert.match(fernandezQ.explanation, /shear|Scher|برشی/i)
   const chauffeurQ = q('chauffeur', lang)
-  assert.match(answer(chauffeurQ), /bony avulsion|knöcherne Avulsion|آولسیون استخوانی/i)
+  assert.match(answer(chauffeurQ), /radial styloid|styloideus radii|استایلوئید رادیوس/i)
   assert.match(chauffeurQ.explanation, /PDF|Avulsion|آولسیون/i)
   const slQ = q('sl', lang)
   assert.match(answer(slQ), /roughly|grob|حدوداً/i)
@@ -81,7 +81,7 @@ for (const id of ['drf-fc-01', 'drf-fc-02', 'drf-fc-03', 'drf-fc-04', 'drf-fc-06
 }
 for (const lang of langs) {
   assert.match(cards['drf-fc-04'].explanation[lang], /stability assessment|Stabilitätsbeurteilung|ارزیابی پایداری/i)
-  assert.match(cards['drf-fc-06'].answer[lang], /bony avulsion|knöcherne Avulsion|آولسیون استخوانی/i)
+  assert.match(cards['drf-fc-06'].answer[lang], /radial styloid|styloideus radii|استایلوئید رادیوس/i)
   assert.match(cards['drf-fc-10'].answer[lang], /rough|grob|تقریبی/i)
   assert.match(cards['drf-fc-10'].explanation[lang], /not a universal cutoff|kein universeller Grenzwert|نه حد قطعی همگانی/i)
 }

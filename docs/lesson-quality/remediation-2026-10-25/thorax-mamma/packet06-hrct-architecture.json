@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_FULL_ORIGINAL_ASSESSMENT_POOL_REVIEW_READY",
+  "route": "/thorax/hrct/architekturmuster",
+  "counts": {"originalQuestionTriads":12,"originalCardTriads":15,"newQuestions":0,"newCards":0,"inlineCheckOptionLocaleValues":12},
+  "files": ["data/hrctArchitectureCases.js","data/hrctClinicalRevisions.js","data/hrct-muster.js","components/HrctPatternLesson.jsx"],
+  "actualExport": "tmp/assessment-quality/hrct-architecture-actual.json",
+  "originalMain04Export": "tmp/assessment-quality/hrct-architecture-before.json",
+  "goals": [
+    {"id":"fibrotic-architecture","text":{"de":"Honeycombing und persistierende Traktionsbronchiektasen im Fibrosekontext erkennen und UIP-Muster von einer ätiologischen Diagnose trennen.","en":"Recognise honeycombing and persistent traction bronchiectasis in fibrotic context and distinguish UIP pattern from aetiological diagnosis.","fa":"هانی‌کومبینگ و برونشکتازی کششی پایدار را در زمینهٔ فیبروز بشناسید و الگوی UIP را از تشخیص علت جدا کنید."},"questions":["01","02","11","12"],"cards":["01","02","11","12","13"]},
+    {"id":"mosaic-workflow","text":{"de":"Mosaikattenuation anhand von Exspiration, Gefäßkaliber und klinischen Begleitbefunden einordnen, ohne aus kleinen Gefäßen allein einen Verschluss abzuleiten.","en":"Interpret mosaic attenuation using expiration, vessel calibre and clinical findings without inferring occlusion from small vessels alone.","fa":"موزائیک را با بازدم، قطر عروق و یافته‌های بالینی تفسیر کنید، بدون نتیجه‌گیری انسداد صرفاً از عروق کوچک."},"questions":["03","04","05","06","07"],"cards":["03","04","05","06","07","14"]},
+    {"id":"crazy-paving-context","text":{"de":"Crazy Paving beschreiben, die klassische PAP-Assoziation erklären und andere Ursachen im konkreten klinischen Kontext gewichten.","en":"Describe crazy paving, explain its classic PAP association and weigh other causes in clinical context.","fa":"کریزی‌پیونگ را توصیف کنید، ارتباط کلاسیک آن با PAP را توضیح دهید و سایر علت‌ها را در زمینهٔ بالینی بسنجید."},"questions":["08","09","10"],"cards":["08","09","10","15"]}
+  ],
+  "idMapping": "Questions=hrct-architekturmuster-de-NN; cards=hrct-architekturmuster-fc-NN. All12/15original IDs retained. Canonical keys balanced3perletter; option-specific feedback follows permutations, with content-version invalidation for changed triads.",
+  "changes": "Twelve self-contained clinical/technical replacement records, corresponding12cards plus all3existing take-homecards read. Fibrotic context and one-layerhoneycomb qualification retained. Crazy-paving definition no longer mandates exclusivelysmooth lines; PAP mechanism explained before testing. Four-option inline case is exactly canonical05. HRCT consumer now uses maintained selected-option feedback resolver rather than correct-only generic explanation for wrong picks.",
+  "sourcesRead": [
+    {"url":"https://doi.org/10.1148/radiol.232558","scope":"Actual2024 official glossary: honeycombing/architecture and one-layer qualification; airtrapping requires suitableexpiration with lessdensityincrease/lessvolumedecrease; mosaicvascular/airway overlap; reactive dilatation versus chronic traction. No numerical risk threshold or treatment inferred."},
+    {"url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC9851481/","scope":"Actual2022 official ATS/ERS/JRS/ALAT Table3 and UIP secondary-cause discussion/figures: basal-subpleuralpattern, cause not synonymous withIPF. No biopsy/therapy algorithm transferred."},
+    {"url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC3259383/","scope":"Original98-patient retrospectivecrazy-paving database/methods and selected radiological-pathologicalcases, especiallyPAPpatient1 and cardiacoedemapatient10, plus discussion of nonspecific alveolar/interstitialcomponents. No cohortfrequency/diagnosticaccuracy generalisation; vignette not a copiedcase or image diagnosis."}
+  ],
+  "authorChecks": "check-architecture-full.mjs PASS:actual12Q/15cards and12localized inline-feedback values exact to canonical objects. Independent review, productionbuild and browser still pending.",
+  "limits": "No new diagnosticimage or PDFsourcecoverage recertification. Existingmedia and original lesson source notes retained. No wholelesson/physicianrelease or empiricaldifficulty-validation claim. Not onMain."
+}

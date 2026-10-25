@@ -8,10 +8,58 @@ const option = (id, text) => ({ id, text })
 // The hepatic AML and PSC/PBC drafts remain scoped to their lessons because the
 // available curriculum IDs would otherwise mislabel their questions.
 const registrations = [
-  { key: 'hepatic-adenoma-hbp', fach: 'abdomen', tags: ['leberadenom'], extra: { de: 'HCA ist typischerweise HBP-hyperintens, FNH dagegen hypointens', en: 'HCA is typically HBP hyperintense, whereas FNH is hypointense', fa: 'HCA معمولاً در HBP پرسیگنال و FNH کم‌سیگنال است' } },
-  { key: 'hepatic-adenoma-opposed-phase', fach: 'abdomen', tags: ['leberadenom'], extra: { de: 'Ein Signalabfall beweist spezifisch den inflammatorischen HCA-Subtyp', en: 'Signal loss specifically proves the inflammatory HCA subtype', fa: 'افت سیگنال به‌طور اختصاصی زیرگروه التهابی HCA را ثابت می‌کند' } },
-  { key: 'hepatic-adenoma-dynamic-ct', fach: 'abdomen', tags: ['leberadenom'], extra: { de: 'Ein portalvenöses Hypoenhancement ist spezifisch für HCA', en: 'Portal venous hypoenhancement is specific for HCA', fa: 'کم‌تقویتی در فاز پورتال برای HCA اختصاصی است' } },
-  { key: 'hepatic-adenoma-caveat', fach: 'abdomen', tags: ['leberadenom'], extra: { de: 'Die MRT kann HCA und HCC in jedem Fall sicher unterscheiden', en: 'MRI can reliably distinguish HCA from HCC in every case', fa: 'MRI در همه موارد می‌تواند HCA را با اطمینان از HCC افتراق دهد' } },
+  {
+  "key": "hepatic-adenoma-hbp",
+  "fach": "abdomen",
+  "tags": [
+    "leberadenom"
+  ],
+  "extra": {
+    "de": "HCA und FNH beide iso- bis hyperintens",
+    "en": "Both HCA and FNH iso- to hyperintense",
+    "fa": "HCA و FNH هر دو ایزو تا پرسیگنال"
+  },
+  "optionCount": 3
+},
+  {
+  "key": "hepatic-adenoma-opposed-phase",
+  "fach": "abdomen",
+  "tags": [
+    "leberadenom"
+  ],
+  "extra": {
+    "de": "Wasserreiches Ödem ohne Fettanteil",
+    "en": "Water-rich oedema without fat",
+    "fa": "ادم پرآب بدون چربی"
+  },
+  "optionCount": 3
+},
+  {
+  "key": "hepatic-adenoma-dynamic-ct",
+  "fach": "abdomen",
+  "tags": [
+    "leberadenom"
+  ],
+  "extra": {
+    "de": "Flüssigkeitsdichte Läsion ohne messbare interne Kontrastmittelaufnahme",
+    "en": "Fluid-attenuation lesion without measurable internal enhancement",
+    "fa": "ضایعه با دانسیتهٔ مایع بدون جذب قابل‌اندازه‌گیری داخلی"
+  },
+  "optionCount": 3
+},
+  {
+  "key": "hepatic-adenoma-caveat",
+  "fach": "abdomen",
+  "tags": [
+    "leberadenom"
+  ],
+  "extra": {
+    "de": "Eine kurzfristige MRT-Verlaufskontrolle ohne vorherige Fallkonferenz planen",
+    "en": "Plan short-interval MRI follow-up before case conference",
+    "fa": "برنامه‌ریزی MRI پیگیری کوتاه‌مدت پیش از بررسی در تیم"
+  },
+  "optionCount": 3
+},
   { key: 'abdomen-renal-anatomy', fach: 'abdomen', tags: ['niere-anatomie'], extra: { de: 'Die anatomische Engstelle verursacht auch ohne Konkrement stets einen Harnstau', en: 'The anatomical narrowing always causes urinary stasis, even without a calculus', fa: 'این تنگی آناتومیک حتی بدون سنگ همیشه باعث احتباس ادرار می‌شود' } },
   { key: 'abdomen-liver-metastases', fach: 'abdomen', tags: ['lebermetastasen'], extra: { de: 'Ohne Leberzirrhose sind Lebermetastasen ausgeschlossen', en: 'Liver metastases are excluded without cirrhosis', fa: 'بدون سیروز کبدی، متاستاز کبدی رد می‌شود' } },
   {
@@ -67,7 +115,20 @@ const registrations = [
   "optionCount": 3
 },
   {"key":"abdomen-pancreatic-cysts","fach":"abdomen","tags":["ipmn"],"extra":{"de":"Kommunikation spricht gegen beide Diagnosen, weil beide typischerweise vom Gang getrennt sind.","en":"Communication argues against both because both are typically separate from the duct.","fa":"ارتباط به زیان هر دو تشخیص است، چون هر دو معمولاً از مجرا جدا هستند."}},
-  { key: 'abdomen-focal-liver', fach: 'abdomen', tags: ['leberadenom', 'lebermetastasen'], extra: { de: 'Die Läsion nur anhand des nativen CT beurteilen', en: 'Assess the lesion from unenhanced CT alone', fa: 'ارزیابی ضایعه فقط بر اساس CT بدون تزریق' } },
+  {
+  "key": "abdomen-focal-liver",
+  "fach": "abdomen",
+  "tags": [
+    "leberadenom",
+    "lebermetastasen"
+  ],
+  "extra": {
+    "de": "MRT mit T2 und DWI zur Zuordnung ohne dynamische Kontrastphasen",
+    "en": "MRI with T2 and DWI for classification without dynamic contrast phases",
+    "fa": "MRI با T2 و DWI برای دسته‌بندی بدون فازهای دینامیک مادهٔ حاجب"
+  },
+  "optionCount": 3
+},
   { key: 'abdomen-hepatic-steatosis', fach: 'abdomen', tags: ['hepatische-steatose'], extra: { de: 'Die typische Lage allein beweist die Diagnose und macht weitere Charakterisierung unnötig', en: 'Typical location alone proves the diagnosis and makes further characterisation unnecessary', fa: 'محل تیپیک به‌تنهایی تشخیص را ثابت می‌کند و بررسی تکمیلی را غیرضروری می‌سازد' } },
   { key: 'abdomen-renal-masses', fach: 'abdomen', tags: ['angiomyolipom'], optionCount: 3, extra: { de: 'Die Läsion ist damit sicher ein RCC', en: 'The lesion is therefore definitively RCC', fa: 'بنابراین ضایعه قطعاً RCC است' } },
   { key: 'abdomen-renal-cyst-bosniak-nodule', fach: 'abdomen', tags: ['nierenzysten'], extra: { de: 'Bosniak II allein wegen eines einzelnen dünnen anreichernden Septums', en: 'Bosniak II solely because of one thin enhancing septum', fa: 'فقط به‌دلیل یک سپتای نازک تقویت‌شونده، Bosniak II' } },
@@ -89,9 +150,45 @@ const registrations = [
   { key: 'abdomen-pdac-isoattenuating', fach: 'abdomen', tags: ['pdac'], extra: { de: 'Fehlende sichtbare Masse schließt PDAC aus', en: 'Absence of a visible mass excludes PDAC', fa: 'نبود تودهٔ قابل رؤیت PDAC را رد می‌کند' } },
   { key: 'abdomen-pdac-double-duct', fach: 'abdomen', tags: ['pdac'], extra: { de: 'Es beweist spezifisch ein PDAC und schließt andere Ursachen aus', en: 'It specifically proves PDAC and excludes other causes', fa: 'به‌طور اختصاصی PDAC را ثابت و علل دیگر را رد می‌کند' } },
   { key: 'abdomen-pdac-vessel-contact', fach: 'abdomen', tags: ['pdac'], extra: { de: 'Nur den Winkel messen und daraus allein die Resektabilität festlegen', en: 'Measure only the angle and determine resectability from that alone', fa: 'فقط زاویه را اندازه بگیرید و قابلیت برداشت را صرفاً بر آن اساس تعیین کنید' } },
-  { key: 'abdomen-inguinal-hernia-landmarks', fach: 'abdomen', tags: ['inguinalhernie'], extra: { de: 'Femoralhernie lateral der Vena femoralis', en: 'Femoral hernia lateral to the femoral vein', fa: 'فتق فمورال در لترال ورید فمورال' } },
-  { key: 'abdomen-femoral-hernia-landmarks', fach: 'abdomen', tags: ['femoralhernie'], extra: { de: 'Femoralhernie oberhalb des Leistenbandes', en: 'Femoral hernia above the inguinal ligament', fa: 'فتق فمورال در بالای رباط اینگوینال' } },
-  { key: 'abdomen-lower-gi-bleeding', fach: 'abdomen', tags: ['untere-gi-blutung'], extra: { de: 'Nach negativer CTA ist eine intermittierende Blutungsquelle ausgeschlossen', en: 'After negative CTA, an intermittent bleeding source is excluded', fa: 'پس از CTA منفی، منبع خون‌ریزی متناوب رد می‌شود' } },
+  {
+  "key": "abdomen-inguinal-hernia-landmarks",
+  "fach": "abdomen",
+  "tags": [
+    "inguinalhernie"
+  ],
+  "extra": {
+    "de": "Kombinierte direkte und indirekte Inguinalhernie",
+    "en": "Combined direct and indirect inguinal hernia",
+    "fa": "فتق اینگوینال ترکیبی مستقیم و غیرمستقیم"
+  },
+  "optionCount": 3
+},
+  {
+  "key": "abdomen-femoral-hernia-landmarks",
+  "fach": "abdomen",
+  "tags": [
+    "femoralhernie"
+  ],
+  "extra": {
+    "de": "Kombinierte direkte und indirekte Inguinalhernie",
+    "en": "Combined direct and indirect inguinal hernia",
+    "fa": "فتق اینگوینال ترکیبی مستقیم و غیرمستقیم"
+  },
+  "optionCount": 3
+},
+  {
+  "key": "abdomen-lower-gi-bleeding",
+  "fach": "abdomen",
+  "tags": [
+    "untere-gi-blutung"
+  ],
+  "extra": {
+    "de": "Kontrastierte Schleimhautgefäße als Erklärung der neu entstandenen Hyperdensität.",
+    "en": "Enhanced mucosal vessels explaining newly developed hyperattenuation.",
+    "fa": "عروق مخاطی تقویت‌شده به‌عنوان علت پردانسیته‌شدن تازه."
+  },
+  "optionCount": 3
+},
   {
   "key": "abdomen-kolorektales-karzinom",
   "fach": "abdomen",

@@ -1,0 +1,140 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/remove_lesson_notice",
+  "author": "/root/brain_remediation",
+  "route": "/gehirn/vaskulaer/hypertensive-mikroangiopathie",
+  "status": "ACCEPT_BOUNDED_FULL_ASSESSMENT_POOL_AFTER_REPAIRS",
+  "scope": {
+    "questionTriadsRead": 12,
+    "cardTriadsRead": 12,
+    "languages": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "questionFields": "All stems, four options, correct keys, explanations and all specific incorrect feedback actually read.",
+    "cardFields": "All fronts/answers/explanations/source fields actually read. No diagnostic scan is invented or needed for these self-contained text questions.",
+    "lessonParity": "All initial145 author teaching-delta after-fields including4observablegoals actually read, then10caption/alt/typo repair fields read.155actual current delta-path after-values independently exact. Adjacent current CT image captions/alt and blood-pressure/reversal text inspected directly, exposing and closing caption contradiction.",
+    "actualPdfPages": [
+      {
+        "physical": 25,
+        "printed": 24,
+        "evidence": "tmp/brain-hma-p-25.png"
+      },
+      {
+        "physical": 26,
+        "printed": 25,
+        "evidence": "tmp/brain-hma-p-26.png"
+      }
+    ]
+  },
+  "runtime": "packet16-hma-independent-runtime.json",
+  "findings": [
+    {
+      "id": "HMA16-LNG-01",
+      "severity": "minor",
+      "where": "hma-fa-hma-10 explanation; hma-09-pons-klinik explanation.fa",
+      "observed": "Ventral pontine haemorrhage was expressed as خونریزی بزرگ شکمی without an anatomical anchor, reading as abdominal haemorrhage.",
+      "required": "Anchor ventral/anterior explicitly to pons without changing prognosis/degree of certainty.",
+      "status": "CLOSED",
+      "retest": "Actual2FAfields now contain خونریزی بزرگ ونترال (قدامی) پونس یا خونریزی وسیع; all DE/EN/IDs/keys unchanged."
+    },
+    {
+      "id": "HMA16-SRC-02",
+      "severity": "major",
+      "where": "HMA_LESSON.cct.imageAlt/imageCaptionA/imageCaptionB",
+      "observed": "Retained captions directly labelled irregular medial little-oedema blood as hypertensive and round peripheral oedematous lesion as metastasis, contradicting new non-specificity teaching. ActualPDF26 uses this source attribution but does not establish independent clinical/histology confirmation.",
+      "required": "Retain teaching image and source classification while explicitly distinguishing PDF attribution from proof based on morphology.",
+      "status": "CLOSED",
+      "retest": "Nine actual localized caption/alt fields manually read and exact to repair ledger; neutral comparison alt, explicit PDF attribution and nonproof qualification retained in all3languages. Image asset unchanged."
+    },
+    {
+      "id": "HMA16-LNG-03",
+      "severity": "minor",
+      "where": "HMA_LESSON.pathophysio.rows[3][0].en",
+      "observed": "Perivascullar misspelling.",
+      "required": "Perivascular.",
+      "status": "CLOSED",
+      "retest": "Actual EN value Perivascular demyelination; DE/FA unchanged."
+    }
+  ],
+  "educationalAssessment": "Four goals map actual12Q/12cards with recognition, MRI-pattern interpretation and urgent management decisions. No arbitrary item-count expansion required. Clinically relevant modality/interpretation and reversal alternatives use specific incorrect feedback. Basic descriptor/sequence questions remain beginner recognition; no empirical difficulty/discrimination validation is claimed. Runtime key uniformity is not considered a fault because consumers shuffle answer order.",
+  "sourcesFreshlyRead": [
+    {
+      "url": "https://www.hu.usp.br/wp-content/uploads/sites/501/2017/05/MR-signal-abnormalities-at-1.5-T-in-Alzheimers-dementia-and-normal-aging..pdf",
+      "original": "Fazekas1987 DOI10.2214/ajr.149.2.351",
+      "read": "Actual original PDF abstract and p352 methods: separate PVH/DWMH0–3 definitions. No full6-page article-reading claim."
+    },
+    {
+      "url": "https://www.hu.usp.br/wp-content/uploads/sites/501/2017/05/Neuroimaging-standards-for-research-into-small-vessel-disease-and-its-contribution-to-ageing-and-neurodegeneration.pdf",
+      "original": "STRIVE2013 DOI10.1016/S1474-4422(13)70124-8",
+      "read": "Fresh indexed original definition/glossary and MRI acquisition paragraphs: recent subcortical infarct axialabout20mm, lacune3–15mm/CSF-like cavity, not all recent infarcts cavitate; DWI/ADC reference with false-negative caveat. DirectPMC challenge access noted."
+    },
+    {
+      "url": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407",
+      "original": "AHA/ASA2022 primary guideline +officialclinicalupdates",
+      "read": "Fresh original small-vessel mechanism/imaging approach, MRI for underlyingmass, VKA4factorPCC+IVvitaminK, INRrebound, cerebellar≥15mL/clinicalcompression and mortality-vs-function distinction. Officialprimary BP/ICP/statin-antithrombotic recommendation text also read. No inaccessible wholemanual claim or dose protocol taught."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12098356",
+      "original": "ESO/EANS2025 DOI10.1177/23969873251340815",
+      "read": "Fresh indexed original abstract and recommendations/discussion: cerebellar>15mL suggestion/weak evidence and survival vs functional uncertainty. DirectPMC challenge not claimed overcome."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17322083/",
+      "original": "Wada2007 original39patient prospective study",
+      "read": "Fresh complete indexed originalabstract: contrastfoci associated expansion, no guaranteed individual outcome. Timing variation additionally supported fresh original dynamicCTA case PMC3473752 and originalcohort PMC7676581."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7974614/",
+      "original": "Wessels2004 original29case cohort",
+      "read": "Fresh actual original abstract/methods/results/discussion: admissionconsciousness, size and ventral/dorsalextent. Small dorsal bettercourse, no blanketfutility claim."
+    },
+    {
+      "url": "https://jamanetwork.com/journals/jamaneurology/article-abstract/576333",
+      "original": "Fisher1978 DOI10.1001/archneur.1978.00500270008002",
+      "read": "Fresh complete originalthreepathologycase abstract confirms weakness/ataxia samebody side opposite pontinelesion; original100registryseries PMC1073426 abstract additionallyread for variablelocalization/notalwayshypertensive."
+    },
+    {
+      "url": "https://www.nejm.org/doi/10.1056/NEJMoa2313040",
+      "original": "ANNEXA-I2024 randomisedtrial",
+      "read": "Fresh original abstract plus actual results/thromboticevents/death paragraphs: better expansioncontrol, more thrombosis/ischemicstroke, no demonstrated30day death/function benefit. Cohortpercentages not generalised."
+    },
+    {
+      "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/ondexxya",
+      "original": "Current officialEMA authorisation",
+      "read": "Fresh official productoverview/indication: adultapixaban/rivaroxaban life-threatening/uncontrolledbleeding, riskqualification; not allXainhibitors."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/847198/",
+      "original": "Norman1977 original bloodCTexperiment",
+      "read": "Fresh complete originalabstract: haemoconcentration-related attenuation; no universalHUthreshold."
+    },
+    {
+      "url": "https://www.thelancet.com/article/S1474442222002083/pdf",
+      "original": "Boston2.0 originalMRI-neuropathology study",
+      "read": "Fresh primary criteria panel: strictlylobar hemorrhagicmarkers/cSS interpretedwithincriteria and competingcauses, notone-to-one pattern."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12680281/",
+      "original": "2025 cavernoma consensus DOI10.1227/neu.0000000000003459",
+      "read": "Fresh original imaging/differential text: popcorn/haemosiderin, recentbleeding/edema, overlaps and follow-upMRI."
+    }
+  ],
+  "gates": {
+    "SRC": "PASS_BOUNDED_ASSESSMENT_AND_NARROW_LESSON_CLAIMS",
+    "EDU": "PASS_BOUNDED",
+    "LNG": "PASS_BOUNDED_AFTER_REPAIRS",
+    "ASM": "PASS_BOUNDED_48_ACTUAL_GLOBAL_OBJECTS",
+    "VIS": "SOURCE_PAGES_ONLY_NOT_GLOBAL_VISUAL_PASS",
+    "UX": "NOT_REVIEWED_BROWSER",
+    "REV": "PASS_INDEPENDENT_READ_ONLY"
+  },
+  "limits": [
+    "No wholeGehirnPDF/sourcecoverage approval.",
+    "Actual source-page visualread supports attribution/caption comparison, not independent confirmation of patient diagnoses/histology or a fresh wholemedia/frame review.",
+    "No renderedbrowser/mobile/theme/access/payment/releaseapproval.",
+    "Clinical assessment is bounded source-supported review, not physician scientific or release signoff.",
+    "145originaldeltaafterfields plus10repairfields read; not a claim every unrelated unchanged lesson word was newly independently reread."
+  ]
+}

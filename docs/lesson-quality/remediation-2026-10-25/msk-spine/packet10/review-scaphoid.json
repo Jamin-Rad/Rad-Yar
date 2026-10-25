@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/brain_original_pools_next",
+  "author": "Separate MSK author, packet10",
+  "route": "/msk/trauma/skaphoidfraktur",
+  "status": "ACCEPT_BOUNDED_FULL_ASSESSMENT_POOL_AND_TEACHING_DELTA",
+  "scope": {
+    "questionTriadsActuallyRead": 4,
+    "actualLocalizedQuestionObjects": 12,
+    "questionFieldsRead": "All stems, four options, correct keys, explanations, all36 localized specific wrong-option feedback objects, source and difficulty fields read in actual producer; independent dynamic producer import matches entire submitted after-snapshot exactly.",
+    "cardTriadsActuallyRead": 4,
+    "cardFieldsRead": "All category/front/answer/explanation/source fields in DE/EN/FA, not merely existence checks.",
+    "teachingDeltaActuallyRead": "All39 before/after delta entries from submitted before.lesson to current actual imported lesson read. Nine localized prose/table fields plus reference additions/reordering/translation. Two added reference entries count as objects in39, not as only one localized field. Adjacent existing classification, vascularity, inline B4 feedback, captions and source qualifications also read; no claim every unchanged whole-route word/media independently recertified.",
+    "plansRead": ["scaphoid-author-manifest.json", "scaphoid-author-runtime.json", "scaphoid-blueprint.json", "scaphoid-evidence.md", "scaphoid-shared-proposal.json"],
+    "sourcePdf": {
+      "path": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+      "totalPhysicalPages": 138,
+      "freshTextReadPhysical": [19, 20],
+      "printed": [18, 19],
+      "actualPageImagesSeen": ["tmp/assessment-quality/msk-next-pdf/scaphoid-019.png", "tmp/assessment-quality/msk-next-pdf/scaphoid-020.png"],
+      "limits": "Full page images actually seen, alongside fresh pypdf extraction from the original PDF. Source clinical labels/rIDs are source attribution, not independent case/histology/complete-study verification. No whole138pagePDF claim."
+    }
+  },
+  "findings": [],
+  "openCritical": 0,
+  "openMajor": 0,
+  "educationalAssessment": {
+    "learningGoals": "Three explicit goal groups map exact4Q/4card IDs. New proximal-risk and variant-context pairs close two substantive goals already in source/lesson; original2Q/2card IDs and original correct letters preserved. No arbitrary count expansion required.",
+    "alternatives": "B4 options are comparable fracture classifications; SNAC options are competing wrist-arthritis interpretations ruled out by supplied nonunion/joint distribution. Proximal-risk and variant items intentionally test clinically important directionality and certainty errors. Specific feedback explains why each is rejected. These are beginner retrieval/interpretation items; no empirical difficulty/discrimination or advanced clinical reasoning validation claimed.",
+    "sourceParity": "B4 matches supplied PDF and official AO. Vascularity is a risk mechanism rather than automatic osteonecrosis. SNAC wording allows preserved radius-proximal-fragment/radiolunate articulations and avoids uniform full-radioscaphoid progression. PDF's no-arthritis variant clue is explicitly qualified by a primary case with arthritis; no silent absolute adopted. Existing A2/B2 PDF/AO wording difference remains visible and qualified.",
+    "translationParity": "DE/EN/FA preserve B2/B3/B4, distal-to-proximal direction, risk versus proof, may versus certainty, no recalled trauma versus exclusion, missing bony bridging, arthritis distribution and individual feedback. No clinically material language omission or negation/number reversal found. FA runtime rendering remains untested."
+  },
+  "primarySourcesFreshlyRead": [
+    {
+      "url": "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/further-reading/classifications-for-fractures-of-carpal-bones",
+      "type": "Official AO Surgery Reference classification",
+      "read": "Actual Herbert classification section: A1/A2, B1–B5, C and D. B2 complete waist, B3 proximal pole, B4 fracture-dislocation. No automatic treatment instruction added from the classification label."
+    },
+    {
+      "url": "https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/carpal-bones/scaphoid-proximal-pole/definition",
+      "type": "Official AO Surgery Reference proximal-pole definition",
+      "read": "Actual definition/imaging/pitfall/vascularity paragraphs. Main dorsal distal vascular entry, retrograde proximal supply and ischemia/osteonecrosis/delayed-union/nonunion vulnerability. Supports risk mechanism, not certain necrosis from B3 alone."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3611645/",
+      "type": "Vender et al.1987 original64patient radiographic cohort",
+      "read": "Complete original abstract: symptomatic untreated nonunions; radial/midcarpal degeneration and radius-proximal scaphoid/radiolunate preservation. Historical article uses SLAC terminology for nonunion-associated pattern; packet labels it SNAC in the supplied-PDF/current teaching context. Cohort percentages/timepoints not generalized or taught as individual certainty. Fullarticle not read."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2269775/",
+      "type": "Doman/Marcus1990 original longitudinal congenital bipartite case",
+      "read": "Complete original abstract: bilateral congenital bipartition followed from early ossification to skeletal maturity; MRI helpful for distinguishing traumatic nonunion. Packet does not infer that one MRI/sign always establishes the diagnosis."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3607646/",
+      "type": "Richards/Ledbetter/Transfeldt1987 original bilateral bipartite case with osteoarthritis",
+      "read": "Complete indexed original abstract (direct open supplied only HHS footer): no trauma history, symmetric bipartition and distal-ossicle/radial-styloid degeneration with preserved proximal articulation. Directly supports that arthritis is not an absolute exclusion of congenital bipartition. Fullarticle not read."
+    }
+  ],
+  "runtimeChecks": {
+    "snapshotMatchesEntireActualProducerAndLesson": true,
+    "questionCounts": {"de": 4, "en": 4, "fa": 4},
+    "cardCount": 4,
+    "fourDistinctOptionsAndValidKeys": true,
+    "allSpecificWrongFeedbackConnected": true,
+    "allQuestionAndCardSourcesPresent": true,
+    "originalTwoQuestionIdsAndKeysAndTwoCardIdsPreserved": true,
+    "testScriptRead": "scripts/test-scaphoidfraktur-ssr.mjs inspected: expected question/card counts raised to4 and each registered wrong-feedback path checked. Existing actual classification/source/language checks retained. Script was NOT executed in this independent review because global imports/SSR/build are root-owned.",
+    "registryTraceRead": "Actual dedicated producer imports in data/questions.js and data/flashcards.js, actual lesson import and inline Decision in app/msk/trauma/skaphoidfraktur/page.jsx read. No shared-bank mutation by reviewer.",
+    "warning": "Producer import emits existing MODULE_TYPELESS_PACKAGE_JSON warning; no runtime import failure."
+  },
+  "exactRuntimeHashes": [
+    {"path":"data/scaphoidAssessments.js","sha256":"03131e5006983b1508d58a9c9f7d8e4e2e2dae63be93e5882e5ab14db2dcb628"},
+    {"path":"data/skaphoidfraktur.js","sha256":"7e5d0395cd351ee096d6c537d4d43ced48f0cc18e75d2459d8bc7e092c1d60b6"},
+    {"path":"scripts/test-scaphoidfraktur-ssr.mjs","sha256":"122eaccd14aceacccbe80aa99e42e5c4e9b48eb41926d14a8fd54ae6015fe751"},
+    {"path":"app/msk/trauma/skaphoidfraktur/page.jsx","sha256":"680c07f7bc499c8563f05bcda6439b957cf5413a308e7c32d4bdb50a06ac0dd3"},
+    {"path":"docs/lesson-quality/remediation-2026-10-25/msk-spine/packet10/scaphoid-after.json","sha256":"c327fb30258dc3be534202637e414776da0468b37fd4b640c0643e17502a8936"},
+    {"path":"docs/lesson-quality/remediation-2026-10-25/msk-spine/packet10/scaphoid-blueprint.json","sha256":"8b42356db43f65c6b24d04c7d9db9699bfd36e7ee0c7e94e19f691b6574bfae2"},
+    {"path":"docs/lesson-quality/remediation-2026-10-25/msk-spine/packet10/scaphoid-evidence.md","sha256":"4631d0c4b94c102f19750a169ae4c5d450345a120891906839fa4b613b8b6827"},
+    {"path":"docs/lesson-quality/remediation-2026-10-25/msk-spine/packet10/scaphoid-shared-proposal.json","sha256":"c013ecff66b6c408f9d7e25149745f6c3424640952d634872b9bb11e2271a58a"}
+  ],
+  "gates": {
+    "SRC": {"status":"PASS","scope":"Four-question/four-card bank and listed narrow teaching claims, PDF19–20 and exact primary reading ranges."},
+    "EDU": {"status":"PASS","scope":"Bounded assessment goal coverage, item relevance and short teaching corrections."},
+    "LNG": {"status":"PASS","scope":"Bounded DE/EN/FA semantic text review; no rendered RTL claim."},
+    "ASM": {"status":"PASS","scope":"Actual dedicated runtime producer12localizedQ/4trilingualcards and lesson-delta consistency; root global retrieval/SSR checks still separate."},
+    "VIS": {"status":"BLOCKED","scope":"Whole-route media gate not accepted. Source pages were actually viewed; no new asset; complete external contributor/study/frame/hero review remains outside this packet."},
+    "UX": {"status":"BLOCKED","scope":"No browser/mobile/theme/RTL/inline-radio interaction/access evidence independently tested in this review."},
+    "REV": {"status":"PASS","scope":"Separate read-only reviewer read actual artifacts and primary sources afresh. No repair cycle needed for bounded acceptance."}
+  },
+  "wholeRouteAcceptance": "NOT_GRANTED; VIS/UX remain blocked for a whole-route claim.",
+  "scientificReviewDrZia": "pending",
+  "publication": "No publication action by reviewer; root owns authorized integration and release actions.",
+  "reviewerMutations": "Only this independent report was written. No author artifact, shared registry, route, script, source PDF, auth gate, git state, build or server was changed."
+}

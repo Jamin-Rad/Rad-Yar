@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "remove_lesson_notice (independent of root HRCT author)",
+  "status": "ACCEPT_BOUNDED_FULL_ASSESSMENT_POOL_AFTER_REPAIRS",
+  "route": "/thorax/hrct/architekturmuster",
+  "readScope": {
+    "questionTriads": 12,
+    "localizedQuestions": 36,
+    "cardTriads": 15,
+    "questionFields": "All actual stems, four options, keys, explanation, every wrong-option explanation, difficulty and source manually read in DE/EN/FA.",
+    "cardFields": "All fronts, answers and explanations manually read DE/EN/FA, including three retained Take-Home cards.",
+    "lesson": "Three goal triads/ID groups; actual definition, hero text, three section leads/cards, caveat, Take-Home triads, self-check and localized captions/alt read for assessment/teaching parity. Existing diagnostic images not reinterpreted or recertified.",
+    "consumer": "Canonical revision spread, question producer and saved-card replacement inspected; HrctPatternLesson selected option uses maintained lessonCheckFeedback resolver."
+  },
+  "findings": [
+    {
+      "id": "HRCT06-EDU-01",
+      "severity": "minor",
+      "file": "data/hrctArchitectureCases.js",
+      "key": "hrct-architekturmuster-07.options.B",
+      "observed": "Distractor asserted demonstrated organised emboli absent from the vignette, introducing an unnecessary proof cue.",
+      "requiredCorrection": "Use a similarly calibrated competing vascular mechanism.",
+      "status": "CLOSED",
+      "retest": "Actual DE/EN/FA option now neutrally states regional hypoperfusion caused by organised emboli; key C and specific feedback preserved."
+    },
+    {
+      "id": "HRCT06-EDU-02",
+      "severity": "major",
+      "file": "data/hrctArchitectureCases.js",
+      "key": "hrct-architekturmuster-09.options.B/C/D",
+      "observed": "Only the correct answer described alveolar filling; wrong answers described large-artery thrombus, emphysematous destruction or central bronchial obstruction.",
+      "requiredCorrection": "Compare plausible alveolar contents/tissue processes with specific feedback.",
+      "status": "CLOSED",
+      "retest": "Actual DE/EN/FA alternatives now erythrocyte-rich filling, neutrophil-rich exudate and hyaline membranes/exudate; PAP protein/lipid material remains correct A. Full translated feedback manually read. DeWever patient1 and histological DAD paragraph support the distinction."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://pubs.rsna.org/doi/10.1148/radiol.232558",
+      "read": "Actual original 2024 glossary honeycombing, bronchiectasis/traction chronicity, air trapping and mosaic entries. Supports fibrotic context, qualified single-layer honeycombing and overlap of vascular/airway perfusion effects."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9851481/",
+      "read": "Fresh indexed primary full Table3 distribution/features plus UIP secondary-cause discussion and Figures1–6. Official direct PMC access intermittent challenge; indexed original text was readable. UIP pattern does not alone identify IPF."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3259383/",
+      "read": "Actual original 98-case methods/results; patient1 PAP radiological-pathological correlation, patient10 cardiac oedema, DAD histological paragraph and discussion of nonspecific linear/ground-glass components. No frequencies or diagnostic performance extrapolated."
+    }
+  ],
+  "runtime": {
+    "report": "packet06-architecture-independent-runtime.json",
+    "actualGlobalQuestionObjects": 36,
+    "actualGlobalCardObjects": 15,
+    "selectedOptionLocaleValues": 12,
+    "status": "PASS",
+    "originalIds": "Retained and compared exactly to Main04 before snapshot",
+    "snapshotParity": "Fresh bundled canonical topic and global exports match actual snapshot."
+  },
+  "coverage": {
+    "goals": 3,
+    "questionIdsCovered": 12,
+    "cardIdsCovered": 15,
+    "status": "PASS",
+    "difficulty": "Editorial basic/applied labels only; no empirical calibration claimed."
+  },
+  "gates": {
+    "SRC": "PASS within stated assessment source scope",
+    "EDU": "PASS after bounded repairs",
+    "LNG": "PASS for all read assessment triads and stated teaching text",
+    "ASM": "PASS for actual full pool and inline parity",
+    "VIS": "NOT_APPLICABLE to this text assessment review; no diagnostic-media approval",
+    "UX": "Source consumer/helper parity checked; live browser not independently retested",
+    "REV": "Independent bounded review complete"
+  },
+  "limitations": [
+    "No full Thorax PDF remap or diagnostic-media provenance/frame verification.",
+    "No fresh browser interaction, layout or release certification by this reviewer.",
+    "Not a whole-lesson clinical approval or physician sign-off; root owns production checks and publication."
+  ]
+}

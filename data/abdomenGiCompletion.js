@@ -10,18 +10,135 @@ const perforationCase = { title: 'Vasin et al. (2024), surgically confirmed dive
 const scope = L('Abdomen.pdf, S. 66: Themenüberschrift. Die Bilddiagnostik wird durch die unten genannten Publikationen ergänzt.', 'Abdomen.pdf, p. 66 supplies the topic heading. Imaging teaching is supplemented by the publications below.', 'صفحهٔ ۶۶ فایل Abdomen.pdf عنوان موضوع را دارد. آموزش تصویربرداری با مقالات زیر تکمیل شده است.')
 const q = (slug, prompt, options, answer, explanation, retry) => ({ slug, prompt, options, answer, explanation, retry })
 const ulcerChecks = [
-  q('negative-ct', L('Anhaltende epigastrische Beschwerden, aber kein Ulkuskrater im CT: Welche Aussage stimmt?', 'Persistent epigastric symptoms but no ulcer crater on CT: which statement is correct?', 'علائم مداوم اپی‌گاستر وجود دارد، اما دهانهٔ زخم در CT دیده نمی‌شود. کدام عبارت درست است؟'), [
-    L('Ein peptisches Ulkus ist ausgeschlossen.', 'Peptic ulcer is excluded.', 'زخم پپتیک رد می‌شود.'),
-    L('Ein oberflächliches Ulkus kann im CT unsichtbar bleiben.', 'A superficial ulcer may remain invisible on CT.', 'زخم سطحی ممکن است در CT دیده نشود.'),
-    L('Die normale CT ersetzt eine indizierte Endoskopie.', 'Normal CT replaces an indicated endoscopy.', 'CT طبیعی جایگزین اندوسکوپیِ موردنیاز است.'),
-    L('Wandödem ohne sichtbaren Krater beweist eine reine Gastritis ohne Ulkus.', 'Wall oedema without a visible crater proves gastritis without an ulcer.', 'ادم دیواره بدون دهانهٔ قابل‌مشاهده، گاستریت بدون زخم را اثبات می‌کند.')
-  ], 1, L('CT erkennt nicht jedes Schleimhautulkus. Bei fortbestehendem Verdacht bleibt die endoskopische Abklärung relevant.', 'CT does not detect every mucosal ulcer. Persistent suspicion still warrants appropriate endoscopic assessment.', 'CT همهٔ زخم‌های مخاطی را نشان نمی‌دهد. در صورت تداوم شک بالینی، ارزیابی مناسب با اندوسکوپی همچنان اهمیت دارد.'), L('Ein negativer CT-Befund hat keine sichere Ausschlusswirkung für oberflächliche Ulzera; CT und Endoskopie beantworten unterschiedliche Fragen.', 'Negative CT cannot reliably exclude superficial ulcers; CT and endoscopy answer different questions.', 'CT منفی نمی‌تواند زخم‌های سطحی را با اطمینان رد کند؛ CT و اندوسکوپی به پرسش‌های متفاوتی پاسخ می‌دهند.')),
-  q('perforation', L('Akuter Oberbauchschmerz, fokaler gastroduodenaler Wanddefekt und angrenzende extraluminale Gasbläschen: Was ist vorrangig?', 'Acute upper abdominal pain, focal gastroduodenal wall defect and adjacent extraluminal gas: what is the priority?', 'درد حاد بالای شکم، نقص موضعی دیوارهٔ معده یا دوازدهه و حباب‌های گاز خارج لومن در مجاورت آن: اولویت چیست؟'), [
-    L('Perforationsverdacht unverzüglich kommunizieren.', 'Communicate suspected perforation immediately.', 'شک به پرفوراسیون را فوراً اطلاع دهید.'),
-    L('Als unkompliziertes Ulkus einordnen.', 'Classify as an uncomplicated ulcer.', 'آن را زخم بدون عارضه تلقی کنید.'),
-    L('Nur eine elektive Verlaufskontrolle empfehlen.', 'Recommend only elective follow-up.', 'فقط پیگیری الکتیو توصیه کنید.'),
-    L('Perforation erst bei großer freier Luftmenge erwägen.', 'Consider perforation only when there is a large volume of free air.', 'فقط در صورت وجود حجم زیادی هوای آزاد، پرفوراسیون را مطرح کنید.')
-  ], 0, L('Die Konstellation spricht für eine mögliche Perforation. Sie erfordert eine dringliche klinisch-chirurgische Beurteilung.', 'This combination suggests possible perforation and requires urgent clinical and surgical assessment.', 'این مجموعه یافته‌ها مطرح‌کنندهٔ پرفوراسیون احتمالی است و به ارزیابی فوری بالینی و جراحی نیاز دارد.'), L('Extraluminales Gas am Wanddefekt ist ein Komplikationszeichen. Eine routinemäßige Verlaufskontrolle darf die Akutbeurteilung nicht ersetzen.', 'Extraluminal gas at a wall defect is a complication sign. Routine follow-up must not replace acute assessment.', 'گاز خارج لومن در محل نقص دیواره، نشانهٔ عارضه است. پیگیری معمول نباید جای ارزیابی حاد را بگیرد.'))
+  {
+    "slug": "negative-ct",
+    "source": "https://doi.org/10.1186/s13017-019-0283-9",
+    "cardSource": "https://pubmed.ncbi.nlm.nih.gov/25015399/",
+    "prompt": {
+      "de": "Ein kreislaufstabiler Erwachsener hat Meläna und epigastrische Beschwerden bei Ulkusverdacht. Die CT zeigt keinen Krater. Welche Untersuchung ist zur gezielten Schleimhaut- und Blutungsquellenabklärung am sinnvollsten?",
+      "en": "A haemodynamically stable adult has melaena and epigastric symptoms with suspected peptic ulcer. CT shows no crater. Which examination is most appropriate for targeted mucosal and bleeding-source assessment?",
+      "fa": "بزرگسال با وضعیت همودینامیک پایدار، ملنا و علائم اپی‌گاستر با شک به زخم پپتیک دارد. CT دهانهٔ زخم نشان نمی‌دهد. برای ارزیابی هدفمند مخاط و منشأ خونریزی کدام بررسی مناسب‌تر است؟"
+    },
+    "options": [
+      {
+        "de": "Erneute routinemäßige CT des Oberbauchs.",
+        "en": "Repeat routine upper-abdominal CT.",
+        "fa": "تکرار CT معمول قسمت فوقانی شکم."
+      },
+      {
+        "de": "Ösophagogastroduodenoskopie.",
+        "en": "Oesophagogastroduodenoscopy.",
+        "fa": "اندوسکوپی مری، معده و دوازدهه."
+      },
+      {
+        "de": "Kontrastmittelpassage des oberen Gastrointestinaltrakts.",
+        "en": "Upper gastrointestinal contrast study.",
+        "fa": "بررسی عبور مادهٔ حاجب در دستگاه گوارش فوقانی."
+      },
+      {
+        "de": "Sonografie zur Beurteilung der Magenwanddicke.",
+        "en": "Ultrasound focused on gastric wall thickness.",
+        "fa": "سونوگرافی با تمرکز بر ضخامت دیوارهٔ معده."
+      }
+    ],
+    "answer": 1,
+    "explanation": {
+      "de": "Ein fehlender CT-Krater schließt ein Schleimhautulkus nicht aus. Bei Verdacht auf eine obere gastrointestinale Blutungsquelle erlaubt die Endoskopie direkte Schleimhautbeurteilung und gegebenenfalls Blutstillung.",
+      "en": "Absence of a CT crater does not exclude a mucosal ulcer. With suspected upper gastrointestinal bleeding, endoscopy permits direct mucosal assessment and haemostasis when needed.",
+      "fa": "نبود دهانهٔ زخم در CT، زخم مخاطی را رد نمی‌کند. در شک به منشأ خونریزی گوارشی فوقانی، اندوسکوپی ارزیابی مستقیم مخاط و در صورت نیاز هموستاز را ممکن می‌کند."
+    },
+    "wrongFeedback": {
+      "0": {
+        "de": "Eine weitere Routine-CT behebt die begrenzte Schleimhautempfindlichkeit nicht zuverlässig und ermöglicht keine endoskopische Blutstillung.",
+        "en": "Another routine CT does not reliably overcome limited mucosal sensitivity and cannot provide endoscopic haemostasis.",
+        "fa": "CT معمول دیگر محدودیت حساسیت مخاطی را به‌طور قابل‌اعتماد برطرف نمی‌کند و هموستاز اندوسکوپیک نیز ممکن نیست."
+      },
+      "2": {
+        "de": "Eine Kontrastpassage bietet keine direkte endoskopische Schleimhautbeurteilung oder Behandlung der vermuteten Blutungsquelle.",
+        "en": "A contrast study does not provide direct endoscopic mucosal assessment or treatment of the suspected bleeding source.",
+        "fa": "بررسی عبور مادهٔ حاجب، ارزیابی مستقیم اندوسکوپیک مخاط یا درمان منشأ خونریزی مشکوک را فراهم نمی‌کند."
+      },
+      "3": {
+        "de": "Wanddicke ist unspezifisch; Sonografie ersetzt hier die direkte Schleimhaut- und Blutungsquellenabklärung nicht.",
+        "en": "Wall thickness is nonspecific; ultrasound does not replace direct mucosal and bleeding-source assessment here.",
+        "fa": "ضخامت دیواره غیراختصاصی است؛ سونوگرافی اینجا جای ارزیابی مستقیم مخاط و منشأ خونریزی را نمی‌گیرد."
+      }
+    },
+    "cardExplanation": {
+      "de": "In der endoskopisch kontrollierten Originalstudie blieben zahlreiche Ulzera in der CT unsichtbar. Die Endoskopie beurteilt die Schleimhaut direkt; CT und Endoskopie beantworten unterschiedliche Fragen.",
+      "en": "In the original endoscopy-correlated study, many ulcers remained occult on CT. Endoscopy assesses mucosa directly; CT and endoscopy answer different questions.",
+      "fa": "در مطالعهٔ اصلی با تطبیق اندوسکوپیک، بسیاری از زخم‌ها در CT دیده نشدند. اندوسکوپی مخاط را مستقیم بررسی می‌کند؛ CT و اندوسکوپی به پرسش‌های متفاوت پاسخ می‌دهند."
+    },
+    "retry": {
+      "de": "Ein fehlender CT-Krater schließt ein Schleimhautulkus nicht aus. Bei Verdacht auf eine obere gastrointestinale Blutungsquelle erlaubt die Endoskopie direkte Schleimhautbeurteilung und gegebenenfalls Blutstillung.",
+      "en": "Absence of a CT crater does not exclude a mucosal ulcer. With suspected upper gastrointestinal bleeding, endoscopy permits direct mucosal assessment and haemostasis when needed.",
+      "fa": "نبود دهانهٔ زخم در CT، زخم مخاطی را رد نمی‌کند. در شک به منشأ خونریزی گوارشی فوقانی، اندوسکوپی ارزیابی مستقیم مخاط و در صورت نیاز هموستاز را ممکن می‌کند."
+    }
+  },
+  {
+    "slug": "perforation",
+    "source": "https://doi.org/10.1186/s13017-019-0283-9",
+    "prompt": {
+      "de": "Akuter Oberbauchschmerz: Die CT zeigt einen fokalen gastroduodenalen Wanddefekt mit angrenzenden extraluminalen Gasbläschen. Welche Komplikation muss vorrangig erwogen und kommuniziert werden?",
+      "en": "Acute upper abdominal pain: CT shows a focal gastroduodenal wall defect with adjacent extraluminal gas bubbles. Which complication should be considered and communicated first?",
+      "fa": "درد حاد بالای شکم: CT نقص موضعی دیوارهٔ معده یا دوازدهه همراه حباب‌های گاز خارج لومن در مجاورت آن نشان می‌دهد. کدام عارضه باید در اولویت مطرح و اعلام شود؟"
+    },
+    "options": [
+      {
+        "de": "Gastroduodenale Perforation.",
+        "en": "Gastroduodenal perforation.",
+        "fa": "پرفوراسیون معده یا دوازدهه."
+      },
+      {
+        "de": "Gastritis mit submukösem Wandödem.",
+        "en": "Gastritis with submucosal oedema.",
+        "fa": "گاستریت همراه ادم زیرمخاطی."
+      },
+      {
+        "de": "Gasgefülltes Duodenaldivertikel mit erhaltener Wand.",
+        "en": "A gas-filled duodenal diverticulum with an intact wall.",
+        "fa": "دیورتیکول دوازدههٔ حاوی گاز با دیوارهٔ سالم."
+      },
+      {
+        "de": "Narbiges pyloroduodenales Passagehindernis.",
+        "en": "Scar-related pyloroduodenal outlet obstruction.",
+        "fa": "انسداد خروجی پیلور یا دوازدهه به علت اسکار."
+      }
+    ],
+    "answer": 0,
+    "explanation": {
+      "de": "Wanddefekt und benachbartes extraluminales Gas begründen einen dringlichen Perforationsverdacht. Klinisch-chirurgisch kommunizieren; eine große freie Luftmenge ist dafür keine notwendige Voraussetzung.",
+      "en": "A wall defect with adjacent extraluminal gas raises urgent concern for perforation. Communicate for clinical and surgical assessment; a large volume of free air is not required.",
+      "fa": "نقص دیواره همراه گاز خارج لومن مجاور، شک فوری به پرفوراسیون ایجاد می‌کند. برای ارزیابی بالینی و جراحی اطلاع دهید؛ وجود حجم زیادی هوای آزاد شرط لازم نیست."
+    },
+    "wrongFeedback": {
+      "1": {
+        "de": "Ödem kann die Wand verdicken, erklärt aber einen Defekt mit extraluminalem Gas nicht ausreichend.",
+        "en": "Oedema can thicken the wall but does not adequately explain a defect with extraluminal gas.",
+        "fa": "ادم می‌تواند دیواره را ضخیم کند، اما نقص همراه گاز خارج لومن را به‌خوبی توضیح نمی‌دهد."
+      },
+      "2": {
+        "de": "Intradivertikuläres Gas liegt innerhalb einer luminal verbundenen Tasche; hier ist Gas außerhalb einer defekten Wand beschrieben.",
+        "en": "Intradiverticular gas lies inside a luminally connected pouch; gas outside a disrupted wall is described here.",
+        "fa": "گاز داخل دیورتیکول در کیسهٔ مرتبط با لومن قرار دارد؛ اینجا گاز خارج دیوارهٔ گسسته توصیف شده است."
+      },
+      "3": {
+        "de": "Eine narbige Engstelle kann den Magen aufweiten, erklärt aber nicht den beschriebenen Wanddurchbruch mit extraluminalem Gas.",
+        "en": "A scar-related narrowing can distend the stomach but does not explain the described wall breach with extraluminal gas.",
+        "fa": "تنگی اسکاری می‌تواند معده را متسع کند، اما گسست دیواره همراه گاز خارج لومن را توضیح نمی‌دهد."
+      }
+    },
+    "cardExplanation": {
+      "de": "Die Größe der freien Luftmenge ist kein verlässliches Ausschlusskriterium. Bei passendem Wanddefekt, Leckage oder fortbestehendem klinischem Verdacht gezielt weiter abklären und die Dringlichkeit kommunizieren.",
+      "en": "The volume of free air is not a reliable exclusion criterion. With a matching wall defect, leakage or persistent clinical suspicion, pursue targeted assessment and communicate urgency.",
+      "fa": "حجم هوای آزاد معیار قابل‌اعتماد برای رد نیست. در نقص دیوارهٔ سازگار، نشت یا شک بالینی ماندگار، بررسی هدفمند را ادامه دهید و فوریت را اعلام کنید."
+    },
+    "retry": {
+      "de": "Wanddefekt und benachbartes extraluminales Gas begründen einen dringlichen Perforationsverdacht. Klinisch-chirurgisch kommunizieren; eine große freie Luftmenge ist dafür keine notwendige Voraussetzung.",
+      "en": "A wall defect with adjacent extraluminal gas raises urgent concern for perforation. Communicate for clinical and surgical assessment; a large volume of free air is not required.",
+      "fa": "نقص دیواره همراه گاز خارج لومن مجاور، شک فوری به پرفوراسیون ایجاد می‌کند. برای ارزیابی بالینی و جراحی اطلاع دهید؛ وجود حجم زیادی هوای آزاد شرط لازم نیست."
+    }
+  }
 ]
 const diverticulumChecks = [
   q('communication', L('Eine flüssigkeitsreiche Struktur liegt zwischen Pankreaskopf und D2. Welcher zusätzliche Befund stützt ein Divertikel?', 'A fluid-rich structure lies between the pancreatic head and D2. Which additional finding supports a diverticulum?', 'ساختاری پر از مایع بین سر پانکراس و D2 دیده می‌شود. کدام یافتهٔ اضافی به نفع دیورتیکول است؟'), [
@@ -87,7 +204,7 @@ const fourthFeedback = [
  L('Die Nähe zum Pankreaskopf allein trennt Divertikel und Pankreaszyste nicht; die Verbindung zum Darm hilft.', 'Proximity to the pancreatic head alone does not distinguish diverticulum from pancreatic cyst; bowel connection helps.', 'نزدیکی به سر پانکراس به‌تنهایی دیورتیکول را از کیست پانکراس جدا نمی‌کند؛ ارتباط با روده کمک‌کننده است.'),
  L('Ein Gas-Flüssigkeitsspiegel beschreibt den Inhalt und schließt Entzündung nicht aus. Wand und Umgebung zusätzlich beurteilen.', 'An air-fluid level describes contents and does not exclude inflammation. Assess the wall and surrounding tissues too.', 'سطح هوا–مایع فقط محتویات را توصیف می‌کند و التهاب را رد نمی‌کند. دیواره و بافت اطراف را نیز بررسی کنید.')
 ]
-ABDOMEN_GI_LESSONS.flatMap(lesson => lesson.checks).forEach((check, index) => { check.wrongFeedback = { 3: fourthFeedback[index] } })
+ABDOMEN_GI_LESSONS.flatMap(lesson => lesson.checks).forEach((check, index) => { if (!ulcerChecks.includes(check)) check.wrongFeedback = { 3: fourthFeedback[index] } })
 // Revised text-only differential vignettes: no claim about an uninspected case frame.
 diverticulumChecks[0].options=[L('Homogen hohes T2-Signal.','Homogeneous high T2 signal.','سیگنال بالای همگن در T2.'),L('Fehlendes Binnen-Enhancement.','Absent internal enhancement.','نبود تقویت داخلی.'),L('Nachweisbare Verbindung zum Duodenallumen.','Demonstrable connection to the duodenal lumen.','ارتباط قابل‌مشاهده با لومن دوازدهه.'),L('Lage zwischen D2 und Pankreaskopf.','Location between D2 and the pancreatic head.','قرارگیری بین D2 و سر پانکراس.')]
 diverticulumChecks[1].prompt=L('Textfall: CT zeigt eine dünnwandige Gas-Flüssigkeits-Tasche mit sichtbarer Verbindung zu D2, ohne Umgebungsentzündung, extraluminale Luft oder Gallenstau. Welche Einordnung passt am besten?','Text vignette: CT shows a thin-walled gas-fluid pouch visibly connected to D2, without surrounding inflammation, extraluminal air or biliary dilatation. Which interpretation fits best?','سناریوی متنی: CT کیسه‌ای با دیوارهٔ نازک و حاوی گاز و مایع با ارتباط قابل‌مشاهده با D2 نشان می‌دهد، بدون التهاب اطراف، هوای خارج لومن یا اتساع صفراوی. کدام تفسیر مناسب‌تر است؟')
@@ -116,6 +233,6 @@ const cardAnswers = [
   [L('Verbindung zum Duodenallumen, Gas oder enterischer Inhalt, passende Voraufnahmen und wechselnde Füllung. Flüssigkeitssignal allein reicht nicht.', 'Duodenal luminal connection, gas or enteric contents, matching prior images and changing filling. Fluid signal alone is insufficient.', 'ارتباط با لومن دوازدهه، گاز یا محتویات روده‌ای، تصاویر قبلی سازگار و تغییر پُرشدگی. سیگنال مایع به‌تنهایی کافی نیست.'), L('Die Tasche kommuniziert mit dem Darm und darf Gas enthalten. Extraluminale Luft, Wanddefekt und entzündliche Veränderungen getrennt auf Komplikationen prüfen.', 'The pouch communicates with bowel and may contain gas. Assess extraluminal air, wall defect and inflammatory changes separately for complications.', 'کیسه با روده ارتباط دارد و می‌تواند حاوی گاز باشد. هوای خارج لومن، نقص دیواره و تغییرات التهابی را جداگانه از نظر عارضه بررسی کنید.')]
 ]
 diverticulumChecks[1].cardExplanation=L('Eine luminal verbundene duodenale Tasche kann Gas und Flüssigkeit als Darminhalt enthalten. Intradivertikulären Inhalt von extraluminaler Leckage und Umgebungsentzündung unterscheiden. Ein Lemmel-Syndrom setzt eine entsprechende biliäre Obstruktion voraus; die Tasche allein reicht nicht.','A luminally connected duodenal pouch may contain gas and fluid as bowel contents. Distinguish intradiverticular contents from extraluminal leakage and surrounding inflammation. Lemmel syndrome requires corresponding biliary obstruction; the pouch alone is insufficient.','کیسهٔ دوازدهه‌ایِ مرتبط با لومن می‌تواند گاز و مایعِ محتویات روده داشته باشد. محتوای داخل دیورتیکول را از نشت خارج لومن و التهاب اطراف تفکیک کنید. سندرم لمل به انسداد صفراوی متناظر نیاز دارد؛ وجود کیسه به‌تنهایی کافی نیست.')
-export const ABDOMEN_GI_CARDS = ABDOMEN_GI_LESSONS.flatMap((lesson, n) => lesson.checks.map((c, i) => ({ id: `${lesson.id}-${c.slug}`, topicId: lesson.id, category: lesson.title, front: cardPrompts[n][i], answer: cardAnswers[n][i], explanation: c.cardExplanation || c.explanation, source: c.source || lesson.sources.map(s => s.href).join('; ') })))
+export const ABDOMEN_GI_CARDS = ABDOMEN_GI_LESSONS.flatMap((lesson, n) => lesson.checks.map((c, i) => ({ id: `${lesson.id}-${c.slug}`, topicId: lesson.id, category: lesson.title, front: cardPrompts[n][i], answer: cardAnswers[n][i], explanation: c.cardExplanation || c.explanation, source: c.cardSource || c.source || lesson.sources.map(s => s.href).join('; ') })))
 export const ABDOMEN_GI_CARD_TOPICS = ABDOMEN_GI_LESSONS.map(lesson => ({ id: lesson.id, href: `/flashcards/${lesson.id}`, title: lesson.title, description: lesson.title, icon: '◉', color: '#477e85' }))
 export const ABDOMEN_GI_TOPIC_GROUPS = ABDOMEN_GI_LESSONS.map(lesson => ({ fachId: 'abdomen', kapitelId: 'abdomen-gi-trakt', title: lesson.title, topics: [{ id: lesson.id, title: lesson.title }] }))

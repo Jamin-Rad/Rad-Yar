@@ -27,7 +27,7 @@ export const MSK_OSTEOMYELITIS_LESSON = {
         [L('PDF-Hinweis','PDF clue','سرنخ PDF'), L('In der Osteoidosteom-Differentialdiagnose nennt das PDF einen zentral avaskulären Bereich mit reaktiver Sklerose (gedruckte S. 77). Es ist kein abgebildeter oder bestätigter Infektionsfall.','In its osteoid osteoma differential, the PDF notes a central avascular area with reactive sclerosis (printed p. 77). It is not an illustrated or confirmed infection case.','PDF در افتراق استئوئید استئوما از ناحیه مرکزی بدون عروق و اسکلروز واکنشی یاد می‌کند (صفحه چاپی ۷۷). این یک کیس تصویری یا تأییدشده عفونت نیست.')],
         [L('Einordnung','Interpretation','تفسیر'), L('Chronische/subakute Infektion ist eine wichtige Differentialdiagnose, aber die Bildgebung allein beweist sie nicht.','Chronic/subacute infection is an important differential, but imaging alone does not prove it.','عفونت مزمن/تحت‌حاد تشخیص افتراقی مهمی است، اما تصویربرداری به‌تنهایی آن را ثابت نمی‌کند.')],
       ],
-      note: L('Miller et al. beschreiben eine variable Bildgebung in ihrer Serie von 25 Fällen; eine einzige Morphologie sollte daher nicht als Ausschluss- oder Bestätigungskriterium dienen.','Miller et al. describe variable appearances in their 25-case series; no single morphology should be used as a rule-in or rule-out criterion.','Miller و همکاران در مجموعه ۲۵ موردی خود ظاهر متغیر را گزارش می‌کنند؛ بنابراین یک مورفولوژی منفرد نباید معیار اثبات یا رد باشد.'),
+      note: L("Miller et al. beschreiben variable Bildgebung in ihrer Serie von 25 Fällen; auch eine Periostreaktion war nicht in jedem Fall vorhanden. Eine einzige Morphologie sollte daher nicht als Ausschluss- oder Bestätigungskriterium dienen.","Miller et al. describe variable appearances in their 25-case series; periosteal response was not present in every case. No single morphology should therefore serve as a rule-in or rule-out criterion.","Miller و همکاران در مجموعهٔ ۲۵ موردی خود ظاهر متغیر را گزارش می‌کنند؛ واکنش پریوست نیز در همهٔ موارد وجود نداشت. بنابراین یک مورفولوژی منفرد نباید معیار اثبات یا رد باشد."),
     },
     {
       id: 'scope', icon: '↗', title: L('Was klärt die Bildgebung – und was nicht?', 'What imaging can and cannot settle', 'تصویربرداری چه چیزی را روشن می‌کند و چه چیزی را نه؟'), source: L('PIDS/IDSA 2021 guideline, recommendation II', 'PIDS/IDSA 2021 guideline, recommendation II', 'توصیه دوم راهنمای PIDS/IDSA سال ۲۰۲۱'),
@@ -64,12 +64,71 @@ export const MSK_OSTEOMYELITIS_LESSON = {
     { label: L('Miller, Murphy & Gilula. Brodie abscess: reappraisal (Radiology, 1979)', 'Miller, Murphy & Gilula. Brodie abscess: reappraisal (Radiology, 1979)', 'Miller، Murphy و Gilula. بازنگری آبسه برودی (Radiology، ۱۹۷۹)'), url: 'https://pubmed.ncbi.nlm.nih.gov/451190/' },
   ],
   case: {
-    title: L('Selbstprüfung: spezifisch oder differentialdiagnostisch?', 'Self-check: specific or differential?', 'خودآزمایی: اختصاصی یا افتراقی؟'),
-    prompt: L('Eine Läsion zeigt eine mehrschichtige Periostreaktion. Welche Schlussfolgerung ist am besten?', 'A lesion has a multilamellar periosteal response. Which conclusion is best?', 'ضایعه واکنش پریوست چندلایه دارد. بهترین نتیجه‌گیری چیست؟'),
-    options: [L('Das Muster kann bei aggressiver Läsion auftreten; Infektion und Neoplasie bleiben im Kontext zu prüfen.','This can occur with an aggressive lesion; infection and neoplasia remain in the differential.','این الگو ممکن است در ضایعه تهاجمی دیده شود؛ عفونت و نئوپلازی باید در زمینه بالینی بررسی شوند.'), L('Die Bildgebung beweist ein Ewing-Sarkom.','Imaging proves Ewing sarcoma.','تصویربرداری وجود سارکوم یوئینگ را ثابت می‌کند.')],
-    answerIndex: 0,
-    feedbackCorrect: L('Richtig. Die PDF nennt sowohl Ewing-Sarkom als auch Osteomyelitis; die Periostreaktion ist nicht spezifisch. (MSK.pdf, gedruckte S. 72.)','Correct. The PDF lists both Ewing sarcoma and osteomyelitis; the periosteal response is not specific. (MSK.pdf, printed p. 72.)','درست است. PDF هم سارکوم یوئینگ و هم استئومیلیت را ذکر می‌کند؛ واکنش پریوست اختصاصی نیست. (MSK.pdf، صفحه چاپی ۷۲.)'),
-    feedbackIncorrect: L('Nicht ganz. Das Muster ist nicht tumorspezifisch; die PDF nennt auch Osteomyelitis als Kontext. (MSK.pdf, gedruckte S. 72.)','Not quite. The pattern is not tumour-specific; the PDF also lists osteomyelitis as a context. (MSK.pdf, printed p. 72.)','نه کاملاً. این الگو اختصاصی تومور نیست؛ PDF استئومیلیت را نیز به‌عنوان زمینه ذکر می‌کند. (MSK.pdf، صفحه چاپی ۷۲.)'),
+  "title": {
+    "de": "Selbstprüfung: spezifisch oder differentialdiagnostisch?",
+    "en": "Self-check: specific or differential?",
+    "fa": "خودآزمایی: اختصاصی یا افتراقی؟"
   },
+  "prompt": {
+    "de": "Textfall: Bei einem Jugendlichen zeigt eine osteolytische Knochenläsion eine mehrschichtige Periostreaktion. Klinik und Labor liegen noch nicht vor. Welche Befundbeurteilung berücksichtigt die Aussagegrenze des Musters am besten?",
+    "en": "Text vignette: an adolescent has an osteolytic bone lesion with a multilamellar periosteal response. Clinical and laboratory information is not yet available. Which report best respects the limits of this pattern?",
+    "fa": "سناریوی متنی: نوجوانی ضایعهٔ استئولیتیک استخوان با واکنش پریوست چندلایه دارد. اطلاعات بالینی و آزمایشگاهی هنوز در دسترس نیست. کدام ارزیابی گزارش، محدودیت این الگو را بهتر رعایت می‌کند؟"
+  },
+  "options": [
+    {
+      "de": "Aggressiv wirkende Läsion; das Schichtmuster legt vorrangig eine neoplastische Ursache gegenüber Infektion nahe.",
+      "en": "Aggressive-appearing lesion; the layered pattern primarily favours neoplasia over infection.",
+      "fa": "ضایعه با ظاهر تهاجمی؛ الگوی لایه‌لایه در درجهٔ اول نئوپلازی را بر عفونت ترجیح می‌دهد."
+    },
+    {
+      "de": "Aggressiv wirkende Läsion; infektiöse und neoplastische Ursachen sind mit Klinik und weiteren Befunden abzugleichen.",
+      "en": "Aggressive-appearing lesion; correlate infectious and neoplastic possibilities with clinical and additional findings.",
+      "fa": "ضایعه با ظاهر تهاجمی؛ علل عفونی و نئوپلاستیک باید با بالین و یافته‌های تکمیلی تطبیق داده شوند."
+    },
+    {
+      "de": "Langsam verlaufende Läsion; die mehreren Periostschichten sprechen eher für einen nichtaggressiven Verlauf.",
+      "en": "Slowly evolving lesion; multiple periosteal layers favour a nonaggressive course.",
+      "fa": "ضایعهٔ آهسته‌سیر؛ لایه‌های متعدد پریوست بیشتر به نفع روند غیرتهاجمی‌اند."
+    },
+    {
+      "de": "Traumatische Knochenreaktion; das Schichtmuster spricht vorrangig für eine organisierte Frakturheilung.",
+      "en": "Traumatic bone response; the layered pattern primarily favours organised fracture healing.",
+      "fa": "واکنش تروماتیک استخوان؛ الگوی لایه‌لایه در درجهٔ اول به نفع ترمیم سازمان‌یافتهٔ شکستگی است."
+    }
+  ],
+  "answerIndex": 1,
+  "feedbackCorrect": {
+    "de": "Eine lamelläre Periostreaktion beschreibt die Knochenantwort und ist nicht tumorspezifisch. Sowohl Ewing-Sarkom als auch Osteomyelitis gehören in die Differentialdiagnose; aus dem Muster allein folgen weder Histologie noch Erreger.",
+    "en": "Lamellated periosteal response describes the bone reaction and is not tumour-specific. Both Ewing sarcoma and osteomyelitis belong in the differential; the pattern alone establishes neither histology nor pathogen.",
+    "fa": "واکنش پریوست لایه‌لایه پاسخ استخوان را توصیف می‌کند و اختصاصی تومور نیست. سارکوم یوئینگ و استئومیلیت هر دو در افتراق قرار دارند؛ الگو به‌تنهایی نه بافت‌شناسی و نه عامل عفونی را تعیین می‌کند."
+  },
+  "feedbackIncorrect": {
+    "de": "Prüfen Sie, welche Information allein aus dem Periostmuster folgt und welche zusätzliche Befunde benötigt.",
+    "en": "Review what the periosteal pattern alone supports and what needs additional findings.",
+    "fa": "بررسی کنید الگوی پریوست به‌تنهایی چه چیزی را پشتیبانی می‌کند و کدام نتیجه به یافته‌های تکمیلی نیاز دارد."
+  },
+  "feedbackByOption": [
+    {
+      "de": "Das Muster allein begründet keine Priorisierung von Neoplasie gegenüber Infektion; die fehlenden Kontextdaten sind relevant.",
+      "en": "The pattern alone does not justify prioritising neoplasia over infection; missing context matters.",
+      "fa": "الگو به‌تنهایی ترجیح نئوپلازی بر عفونت را توجیه نمی‌کند؛ اطلاعات زمینه‌ای هنوز در دسترس نیست و اهمیت دارد."
+    },
+    {
+      "de": "Eine lamelläre Periostreaktion beschreibt die Knochenantwort und ist nicht tumorspezifisch. Sowohl Ewing-Sarkom als auch Osteomyelitis gehören in die Differentialdiagnose; aus dem Muster allein folgen weder Histologie noch Erreger.",
+      "en": "Lamellated periosteal response describes the bone reaction and is not tumour-specific. Both Ewing sarcoma and osteomyelitis belong in the differential; the pattern alone establishes neither histology nor pathogen.",
+      "fa": "واکنش پریوست لایه‌لایه پاسخ استخوان را توصیف می‌کند و اختصاصی تومور نیست. سارکوم یوئینگ و استئومیلیت هر دو در افتراق قرار دارند؛ الگو به‌تنهایی نه بافت‌شناسی و نه عامل عفونی را تعیین می‌کند."
+    },
+    {
+      "de": "Mehrere Periostlamellen sind nicht mit einer einzigen glatten soliden Periostreaktion gleichzusetzen.",
+      "en": "Multiple lamellae are not equivalent to a single smooth solid periosteal response.",
+      "fa": "لایه‌های متعدد با واکنش پریوست جامد و صافِ منفرد یکسان نیستند."
+    },
+    {
+      "de": "Eine Fraktur oder ein entsprechender Heilungsverlauf ist nicht beschrieben. Aus Lamellierung allein lässt sich die traumatische Ursache nicht ableiten.",
+      "en": "No fracture or corresponding healing course is described. Lamellation alone does not establish traumatic origin.",
+      "fa": "شکستگی یا سیر ترمیمی متناظر توصیف نشده است؛ لایه‌لایه‌بودن به‌تنهایی منشأ تروماتیک را تعیین نمی‌کند."
+    }
+  ]
+},
   notice: L('Begrenzter Entwurf: Die physische PDF-Seite 72 ist nur ein Trenner „Infektion“. Die auf S. 73, 74 und 76 angesehenen Bilder sind für allgemeine Tumor-/Periostzeichen beschriftet; ein infektiologischer Lehrfall konnte unabhängig nicht identifiziert und verifiziert werden. Verwendet werden konkrete Differentialhinweise der gedruckten S. 72–77 sowie eine pädiatrische Leitlinienempfehlung. Septische Arthritis, vollständige Infektionsdiagnostik und Erwachsenenprotokolle sind nicht abgedeckt. Die Hero-Grafik ist eine eigens gezeichnete schematische Illustration.', 'Narrow draft: physical PDF page 72 is only an “Infection” divider. The inspected images on pp. 73, 74 and 76 are labelled for general tumour/periosteal signs; no infection teaching case could be independently identified and verified. This lesson uses differential clues from printed pp. 72–77 and a paediatric guideline recommendation. It does not cover septic arthritis, a complete infection work-up or adult protocols. The hero is a purpose-drawn schematic.', 'پیش‌نویس محدود: صفحه فیزیکی ۷۲ PDF فقط جداکننده «عفونت» است. تصاویر بررسی‌شده در صفحات ۷۳، ۷۴ و ۷۶ برای نشانه‌های عمومی تومور/پریوست برچسب‌گذاری شده‌اند؛ کیس آموزشی عفونت به‌طور مستقل شناسایی و تأیید نشده است. درس از سرنخ‌های افتراقی صفحات چاپی ۷۲ تا ۷۷ و توصیه راهنمای کودکان استفاده می‌کند. آرتریت سپتیک، ارزیابی کامل عفونت و پروتکل بزرگسالان پوشش داده نمی‌شوند. تصویر هدر شماتیک آموزشی اختصاصی است.'),
 }

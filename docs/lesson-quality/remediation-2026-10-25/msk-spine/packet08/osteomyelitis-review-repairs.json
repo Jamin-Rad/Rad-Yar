@@ -1,0 +1,6 @@
+{
+  "before": "Mehrere unterbrochen aufgebaute Schichten sind nicht mit einer einzigen glatten soliden Periostreaktion gleichzusetzen.",
+  "after": "Mehrere Periostlamellen sind nicht mit einer einzigen glatten soliden Periostreaktion gleichzusetzen.",
+  "lang": "de",
+  "scope": "Remove unsupported extra interrupted descriptor; no key/ID/clinical threshold change; mirrored canonical inline feedback"
+}

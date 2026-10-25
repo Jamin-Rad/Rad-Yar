@@ -7,6 +7,7 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import TopicAssessment from '@/components/lesson-template/TopicAssessment'
 import { ATELECTASIS_QUESTIONS } from '@/data/thoraxAtelectasisAssessment'
+import { lessonCheckFeedback } from '@/lib/lessonCheckFeedback'
 import styles from '@/app/abdomen/gi/divertikulitis/page.module.css'
 import localStyles from './HrctPatternLesson.module.css'
 
@@ -105,7 +106,7 @@ export default function HrctPatternLesson({ lesson }) {
     </LessonSection>)}
     {lesson.selfCheck ? <LessonSection id="self-check"><div className={localStyles.selfCheck}>
       <p>{c(lesson.selfCheck.question)}</p><fieldset><legend>{copy.answer}</legend>{lesson.selfCheck.options.map((option, index) => <label key={index} className={picked === index ? localStyles.selected : ''}><input type="radio" name="hrct-self-check" checked={picked === index} onChange={() => setPicked(index)} />{c(option)}</label>)}</fieldset>
-      {picked !== null && <div className={`${localStyles.feedback} ${picked === lesson.selfCheck.answer ? localStyles.correct : localStyles.incorrect}`} role="status"><strong>{picked === lesson.selfCheck.answer ? copy.correct : copy.incorrect}</strong> {c(lesson.selfCheck.explanation)}</div>}
+      {picked !== null && <div className={`${localStyles.feedback} ${picked === lesson.selfCheck.answer ? localStyles.correct : localStyles.incorrect}`} role="status"><strong>{picked === lesson.selfCheck.answer ? copy.correct : copy.incorrect}</strong> {c(lessonCheckFeedback(lesson.selfCheck, picked))}</div>}
     </div></LessonSection> : null}
     <LessonSection id="takehome"><TakeHomeList items={lesson.takehome.map(item => ({ title: c(item), detail: '' }))} /></LessonSection>
   </StandardLessonShell>

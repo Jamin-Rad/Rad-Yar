@@ -1,0 +1,49 @@
+{
+  "route": "/msk/infektionen/osteomyelitis",
+  "topicId": "osteomyelitis",
+  "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW",
+  "learningGoals": [
+    {
+      "id": "periosteal-report",
+      "text": {
+        "de": "Eine lamelläre Periostreaktion als unspezifische Knochenantwort differenzialdiagnostisch berichten.",
+        "en": "Report lamellated periosteal response as a nonspecific bone reaction in the differential.",
+        "fa": "واکنش پریوست لایه‌لایه را به‌عنوان پاسخ غیراختصاصی استخوان در افتراق گزارش کنید."
+      },
+      "questionIds": [
+        "aq-msk-osteomyelitis-de-periosteal-report"
+      ],
+      "cardIds": [
+        "aq-msk-osteomyelitis-periosteal-limit"
+      ]
+    },
+    {
+      "id": "brodie-variability",
+      "text": {
+        "de": "Das Fehlen einer Periostreaktion ohne unbegründeten Ausschluss eines Brodie-Abszesses einordnen.",
+        "en": "Interpret absent periosteal response without unjustifiably excluding Brodie abscess.",
+        "fa": "نبود واکنش پریوست را بدون رد ناموجه آبسهٔ برودی تفسیر کنید."
+      },
+      "questionIds": [
+        "aq-msk-osteomyelitis-de-brodie-variability"
+      ],
+      "cardIds": [
+        "aq-msk-osteomyelitis-brodie-variability"
+      ]
+    },
+    {
+      "id": "paediatric-imaging",
+      "text": {
+        "de": "Bei weiterem Bildgebungsbedarf im pädiatrischen AHO-Kontext MRT auswählen und den Geltungsbereich der Empfehlung benennen.",
+        "en": "Select MRI when further imaging is needed in paediatric AHO and state the scope of that recommendation.",
+        "fa": "در AHO کودکان و در صورت نیاز به تصویربرداری بیشتر، MRI را انتخاب و دامنهٔ توصیه را مشخص کنید."
+      },
+      "questionIds": [
+        "aq-msk-osteomyelitis-de-paediatric-next-imaging"
+      ],
+      "cardIds": [
+        "aq-msk-osteomyelitis-paediatric-imaging"
+      ]
+    }
+  ]
+}

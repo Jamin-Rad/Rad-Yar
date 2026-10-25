@@ -1,0 +1,662 @@
+[
+  {
+    "id": "colles",
+    "q": {
+      "de": "Textfall: Die distale Radiusfraktur ist extraartikulär. Das distale Fragment ist dorsal gekippt und verkürzt; der Karpus bleibt an der distalen Gelenkfläche ausgerichtet. Welche Musterzuordnung passt?",
+      "en": "Text vignette: the distal radius fracture is extra-articular. The distal fragment is dorsally tilted and shortened; the carpus remains aligned with the distal articular surface. Which pattern fits?",
+      "fa": "سناریوی متنی: شکستگی دیستال رادیوس خارج‌مفصلی است. قطعهٔ دیستال تیلت دورسال و کوتاهی دارد؛ کارپ با سطح مفصلی دیستال هم‌راستا می‌ماند. کدام الگو مناسب است؟"
+    },
+    "o": [
+      {
+        "de": "Colles-Muster: extraartikuläre Biegungsfraktur mit dorsaler Fehlstellung",
+        "en": "Colles pattern: extra-articular bending fracture with dorsal malalignment",
+        "fa": "الگوی کولس: شکستگی خمشی خارج‌مفصلی با بدراستایی دورسال"
+      },
+      {
+        "de": "Volares Barton-Muster: Gelenkrandfraktur mit radiokarpaler Subluxation",
+        "en": "Volar Barton pattern: articular rim fracture with radiocarpal subluxation",
+        "fa": "الگوی بارتون ولار: شکستگی لبهٔ مفصل با ساب‌لوکساسیون رادیوکارپال"
+      },
+      {
+        "de": "Chauffeur-Muster: isolierte intraartikuläre Radiusstyloidfraktur",
+        "en": "Chauffeur pattern: isolated intra-articular radial styloid fracture",
+        "fa": "الگوی شوفر: شکستگی منفرد داخل‌مفصلی استایلوئید رادیوس"
+      },
+      {
+        "de": "Die-Punch-Muster: zentrale Impression der Fossa lunata",
+        "en": "Die-punch pattern: central depression of the lunate fossa",
+        "fa": "الگوی Die-Punch: فرورفتگی مرکزی فوسای لونیت"
+      }
+    ],
+    "c": 0,
+    "e": {
+      "de": "Colles ist typischerweise extraartikulär und dorsal anguliert/disloziert. Die Gelenkbeteiligung und vollständige Fehlstellung müssen dennoch separat beschrieben werden.",
+      "en": "Colles is typically extra-articular with dorsal angulation/displacement. Articular involvement and complete malalignment must still be described separately.",
+      "fa": "کولس معمولاً خارج‌مفصلی با زاویه‌داری/جابجایی دورسال است؛ درگیری مفصل و بدراستایی کامل باید جداگانه توصیف شوند."
+    },
+    "wrong": {
+      "B": {
+        "de": "Eine Barton-Fraktur erfordert die Gelenkrandbeteiligung und eine Mitverlagerung des Karpus; beides ist hier nicht beschrieben.",
+        "en": "Barton requires articular rim involvement and displacement of the carpus with that fragment; neither is described here.",
+        "fa": "بارتون به درگیری لبهٔ مفصل و جابجایی کارپ همراه قطعه نیاز دارد؛ هیچ‌کدام اینجا توصیف نشده‌اند."
+      },
+      "C": {
+        "de": "Der Fall beschreibt nicht nur einen Styloidfortsatz, sondern ein extraartikuläres distales Hauptfragment.",
+        "en": "The case describes an extra-articular distal main fragment rather than an isolated styloid fragment.",
+        "fa": "این مورد قطعهٔ اصلی دیستالِ خارج‌مفصلی را توصیف می‌کند، نه قطعهٔ منفرد استایلوئید."
+      },
+      "D": {
+        "de": "Eine zentrale Gelenkflächenimpression ist nicht beschrieben; die Fehlstellung betrifft das extraartikuläre Hauptfragment.",
+        "en": "No central articular depression is described; malalignment concerns the extra-articular main fragment.",
+        "fa": "فرورفتگی مرکزی سطح مفصل توصیف نشده؛ بدراستایی مربوط به قطعهٔ اصلی خارج‌مفصلی است."
+      }
+    },
+    "difficulty": 2,
+    "source": "MSK.pdf, physical pp.17–18 (printed16–17); page images and extracted text read2026-10-25."
+  },
+  {
+    "id": "smith",
+    "q": {
+      "de": "Textfall: Eine extraartikuläre distale Radiusfraktur zeigt palmare Angulation des distalen Fragments. Die radiokarpale Gelenkfläche bleibt kongruent; eine Gelenkrandabscherung ist nicht beschrieben. Welches Muster passt?",
+      "en": "Text vignette: an extra-articular distal radius fracture has volar angulation of the distal fragment. The radiocarpal surface remains congruent and no articular rim shearing is described. Which pattern fits?",
+      "fa": "سناریوی متنی: شکستگی خارج‌مفصلی دیستال رادیوس، زاویه‌داری ولار قطعهٔ دیستال دارد. سطح مفصلی رادیوکارپال همخوان است و برش لبهٔ مفصل توصیف نشده. کدام الگو مناسب است؟"
+    },
+    "o": [
+      {
+        "de": "Smith-Muster",
+        "en": "Smith pattern",
+        "fa": "الگوی اسمیت"
+      },
+      {
+        "de": "Volares Barton-Muster",
+        "en": "Volar Barton pattern",
+        "fa": "الگوی بارتون ولار"
+      },
+      {
+        "de": "Klassisches Colles-Muster",
+        "en": "Classic Colles pattern",
+        "fa": "الگوی کولس کلاسیک"
+      },
+      {
+        "de": "Chauffeur-Muster",
+        "en": "Chauffeur pattern",
+        "fa": "الگوی شوفر"
+      }
+    ],
+    "c": 0,
+    "e": {
+      "de": "Smith ist die reverse-Colles-Konfiguration mit palmarer Angulation/Dislokation des distalen Fragments und meist extraartikulärem Verlauf.",
+      "en": "Smith is the reverse-Colles configuration with volar angulation/displacement of the distal fragment and usually an extra-articular fracture.",
+      "fa": "اسمیت پیکربندی کولس معکوس با زاویه‌داری/جابجایی ولار قطعه دیستال و معمولاً مسیر خارج‌مفصلی است."
+    },
+    "wrong": {
+      "B": {
+        "de": "Volare Angulation allein macht keine volare Barton-Fraktur: Gelenkrandabscherung mit radiokarpaler Subluxation fehlt.",
+        "en": "Volar angulation alone is not volar Barton: articular rim shear with radiocarpal subluxation is absent.",
+        "fa": "زاویه‌داری ولار به‌تنهایی بارتون ولار نیست؛ برش لبهٔ مفصل همراه ساب‌لوکساسیون رادیوکارپال وجود ندارد."
+      },
+      "C": {
+        "de": "Beim klassischen Colles-Muster kippt das distale Fragment dorsal; hier ist es palmar gekippt.",
+        "en": "Classic Colles has dorsal tilt of the distal fragment; the fragment here tilts volarly.",
+        "fa": "در کولس کلاسیک قطعهٔ دیستال تیلت دورسال دارد؛ قطعهٔ اینجا به ولار کج شده است."
+      },
+      "D": {
+        "de": "Chauffeur bezeichnet die Radiusstyloidfraktur, nicht diese extraartikuläre Hauptfragmentfehlstellung.",
+        "en": "Chauffeur denotes a radial styloid fracture rather than this extra-articular main-fragment malalignment.",
+        "fa": "شوفر شکستگی استایلوئید رادیوس را می‌نامد، نه این بدراستایی قطعهٔ اصلی خارج‌مفصلی."
+      }
+    },
+    "difficulty": 2,
+    "source": "MSK.pdf, physical pp.17–18 (printed16–17); page images and extracted text read2026-10-25."
+  },
+  {
+    "id": "barton",
+    "q": {
+      "de": "Welches Merkmal definiert eine Barton-Fraktur?",
+      "en": "Which feature defines a Barton fracture?",
+      "fa": "کدام ویژگی شکستگی بارتون را تعریف می‌کند؟"
+    },
+    "o": [
+      {
+        "de": "Extraartikuläre metaphysäre Biegungsfraktur",
+        "en": "Extra-articular metaphyseal bending fracture",
+        "fa": "شکستگی خمشی متافیزی خارج‌مفصلی"
+      },
+      {
+        "de": "Intraartikuläre Randfraktur mit Subluxation/Luxation des Karpus zusammen mit dem Fragment",
+        "en": "Intra-articular rim fracture with carpal subluxation/dislocation together with the fragment",
+        "fa": "شکستگی لبه داخل‌مفصلی با ساب‌لوکساسیون/لوکساسیون کارپ همراه قطعه"
+      },
+      {
+        "de": "Zentrale Impression ohne Karpusverlagerung",
+        "en": "Central depression without carpal displacement",
+        "fa": "فرورفتگی مرکزی بدون جابجایی کارپ"
+      },
+      {
+        "de": "Isolierte intraartikuläre Radiusstyloidfraktur ohne radiokarpale Subluxation",
+        "en": "Isolated intra-articular radial styloid fracture without radiocarpal subluxation",
+        "fa": "شکستگی منفرد داخل‌مفصلی استایلوئید رادیوس بدون ساب‌لوکساسیون رادیوکارپال"
+      }
+    ],
+    "c": 1,
+    "e": {
+      "de": "Barton ist eine dorsale oder palmare intraartikuläre Randfraktur. Der Karpus folgt dem Randfragment und ist radiokarpal subluxiert oder luxiert.",
+      "en": "Barton is a dorsal or volar intra-articular rim fracture. The carpus follows the rim fragment and is radiocarpally subluxed or dislocated.",
+      "fa": "بارتون شکستگی لبه دورسال یا ولار داخل‌مفصلی است و کارپ همراه قطعه لبه ساب‌لوکس یا لوکس می‌شود."
+    },
+    "wrong": {
+      "A": {
+        "de": "Die extraartikuläre Biegungsfraktur beschreibt eher Colles/Smith und enthält keine abgescherte Gelenklippe mit mitfolgendem Karpus.",
+        "en": "An extra-articular bending fracture fits Colles/Smith rather than a sheared articular rim with the carpus following it.",
+        "fa": "شکستگی خمشی خارج‌مفصلی بیشتر کولس/اسمیت است، نه لبهٔ مفصلی بریده‌شده که کارپ همراه آن حرکت کند."
+      },
+      "C": {
+        "de": "Die zentrale Impression entspricht einem Die-Punch-Muster; entscheidend für Barton ist die radiokarpale Randfraktur-Subluxation.",
+        "en": "Central depression corresponds to die-punch; Barton is defined by articular rim fracture with radiocarpal subluxation.",
+        "fa": "فرورفتگی مرکزی معادل Die-Punch است؛ بارتون با شکستگی لبهٔ مفصل و ساب‌لوکساسیون رادیوکارپال تعریف می‌شود."
+      },
+      "D": {
+        "de": "Eine isolierte Radiusstyloidfraktur ohne radiokarpale Mitverlagerung ist nicht das definierende Barton-Muster.",
+        "en": "An isolated styloid fracture without radiocarpal displacement is not the defining Barton pattern.",
+        "fa": "شکستگی منفرد استایلوئید بدون جابجایی رادیوکارپال، الگوی تعریف‌کنندهٔ بارتون نیست."
+      }
+    },
+    "difficulty": 1,
+    "source": "MSK.pdf, physical pp.17–18 (printed16–17); page images and extracted text read2026-10-25."
+  },
+  {
+    "id": "fernandez-iii",
+    "q": {
+      "de": "Welche Verletzung entspricht Fernandez Typ III?",
+      "en": "Which injury corresponds to Fernandez Type III?",
+      "fa": "کدام آسیب با فرناندز نوع III مطابقت دارد؟"
+    },
+    "o": [
+      {
+        "de": "Biegungsfraktur",
+        "en": "Bending fracture",
+        "fa": "شکستگی خمشی"
+      },
+      {
+        "de": "Scherfraktur",
+        "en": "Shear fracture",
+        "fa": "شکستگی برشی"
+      },
+      {
+        "de": "Kompressionsfraktur mit Die-Punch-Impression",
+        "en": "Compression fracture with die-punch depression",
+        "fa": "شکستگی فشاری با فرورفتگی Die-Punch"
+      },
+      {
+        "de": "Avulsionsfraktur",
+        "en": "Avulsion fracture",
+        "fa": "شکستگی آولسیون"
+      }
+    ],
+    "c": 2,
+    "e": {
+      "de": "Fernandez III beruht auf axialer Kompression. Das Lunatum stanzt die Fossa lunata ein und erzeugt eine zentrale intraartikuläre Impression.",
+      "en": "Fernandez III is caused by axial compression. The lunate impacts the lunate fossa, producing a central intra-articular depression.",
+      "fa": "فرناندز III ناشی از فشار محوری است؛ لونیت فوسای لونیت را فرو می‌برد و فرورفتگی مرکزی داخل‌مفصلی ایجاد می‌کند."
+    },
+    "wrong": {
+      "A": {
+        "de": "Biegung der Metaphyse entspricht Typ I, nicht der zentralen Gelenkflächenkompression.",
+        "en": "Metaphyseal bending corresponds to Type I, not central articular compression.",
+        "fa": "خمش متافیز نوع I است، نه فشار مرکزی سطح مفصل."
+      },
+      "B": {
+        "de": "Scherung der Gelenklippe entspricht Typ II beziehungsweise Barton.",
+        "en": "Shearing of the articular rim corresponds to Type II or Barton.",
+        "fa": "برش لبهٔ مفصل نوع II یا بارتون است."
+      },
+      "D": {
+        "de": "Avulsion beziehungsweise radiokarpale Luxationsfraktur gehört zu Typ IV; Typ III beschreibt Kompression.",
+        "en": "Avulsion or radiocarpal fracture-dislocation belongs to Type IV; Type III describes compression.",
+        "fa": "آولسیون یا شکستگی-دررفتگی رادیوکارپال مربوط به نوع IV است؛ نوع III فشار را توصیف می‌کند."
+      }
+    },
+    "difficulty": 1,
+    "source": "MSK.pdf, physical pp.17–18 (printed16–17); page images and extracted text read2026-10-25."
+  },
+  {
+    "id": "fernandez-ii",
+    "q": {
+      "de": "Eine palmare Randfraktur luxiert zusammen mit dem Karpus. Welcher Fernandez-Typ ist dies?",
+      "en": "A volar rim fragment dislocates together with the carpus. Which Fernandez type is this?",
+      "fa": "قطعه لبه ولار همراه با کارپ لوکس می‌شود. کدام نوع فرناندز است؟"
+    },
+    "o": [
+      {
+        "de": "I: metaphysäre Biegung",
+        "en": "I: metaphyseal bending",
+        "fa": "I: خمش متافیز"
+      },
+      {
+        "de": "II: Scherung der Gelenklippe",
+        "en": "II: articular rim shear",
+        "fa": "II: برش لبهٔ مفصل"
+      },
+      {
+        "de": "III: zentrale Gelenkflächenkompression",
+        "en": "III: central articular compression",
+        "fa": "III: فشار مرکزی سطح مفصل"
+      },
+      {
+        "de": "IV: radiokarpale Avulsionsverletzung",
+        "en": "IV: radiocarpal avulsion injury",
+        "fa": "IV: آسیب آولسیون رادیوکارپال"
+      }
+    ],
+    "c": 1,
+    "e": {
+      "de": "Fernandez II ist eine Scherverletzung der Gelenkfläche und entspricht dem dorsalen oder volaren Barton-Muster.",
+      "en": "Fernandez II is an articular shear injury corresponding to a dorsal or volar Barton pattern.",
+      "fa": "فرناندز II آسیب برشی سطح مفصل و معادل الگوی بارتون دورسال یا ولار است."
+    },
+    "wrong": {
+      "A": {
+        "de": "Typ I beschreibt eine metaphysäre Biegungsfraktur. Hier wird die Gelenklippe zusammen mit dem Karpus abgeschert.",
+        "en": "Type I describes metaphyseal bending. Here the articular rim is sheared off with the carpus.",
+        "fa": "نوع I خمش متافیز را توصیف می‌کند؛ اینجا لبهٔ مفصل همراه کارپ بریده شده است."
+      },
+      "C": {
+        "de": "Typ III entspricht der zentralen Impression durch Kompression, nicht der beschriebenen Randabscherung.",
+        "en": "Type III is central compression depression, not the described rim shear.",
+        "fa": "نوع III فرورفتگی مرکزی بر اثر فشار است، نه برش لبهٔ توصیف‌شده."
+      },
+      "D": {
+        "de": "Typ IV ist eine radiokarpale Luxationsfraktur mit Avulsionskomponente. Das beschriebene Barton-Scherfragment entspricht Typ II.",
+        "en": "Type IV is a radiocarpal fracture-dislocation with an avulsion component. The described Barton shear fragment corresponds to Type II.",
+        "fa": "نوع IV شکستگی-دررفتگی رادیوکارپال با مؤلفهٔ آولسیون است؛ قطعهٔ برشی بارتونِ توصیف‌شده مربوط به نوع II است."
+      }
+    },
+    "difficulty": 2,
+    "source": "MSK.pdf, physical pp.17–18 (printed16–17); page images and extracted text read2026-10-25."
+  },
+  {
+    "id": "chauffeur",
+    "q": {
+      "de": "Was ist eine Chauffeur-Fraktur?",
+      "en": "What is a chauffeur fracture?",
+      "fa": "شکستگی شوفر چیست؟"
+    },
+    "o": [
+      {
+        "de": "Intraartikuläre Fraktur des Processus styloideus radii",
+        "en": "Intra-articular radial styloid fracture",
+        "fa": "شکستگی داخل‌مفصلی استایلوئید رادیوس"
+      },
+      {
+        "de": "Fraktur des Processus styloideus ulnae",
+        "en": "Fracture of the ulnar styloid",
+        "fa": "شکستگی استیلوئید اولنا"
+      },
+      {
+        "de": "Dorsale Randfraktur",
+        "en": "Dorsal rim fracture",
+        "fa": "شکستگی لبه دورسال"
+      },
+      {
+        "de": "Zentrale Impression der Fossa lunata des Radius",
+        "en": "Central depression of the radial lunate fossa",
+        "fa": "فرورفتگی مرکزی فوسای لونیتِ رادیوس"
+      }
+    ],
+    "c": 0,
+    "e": {
+      "de": "Die PDF beschreibt die Chauffeur-Fraktur als intraartikuläre knöcherne Avulsion des Radiusstyloids. SL-Band und karpale Ausrichtung auf Begleitverletzungen mitprüfen.",
+      "en": "The PDF describes a chauffeur fracture as an intra-articular bony avulsion of the radial styloid. Also assess the SL ligament and carpal alignment for associated injury.",
+      "fa": "در PDF، شکستگی شوفر به‌صورت آولسیون استخوانی داخل‌مفصلی استیلوئید رادیوس توصیف شده است. رباط SL و هم‌راستایی کارپ را نیز از نظر آسیب همراه بررسی کنید."
+    },
+    "wrong": {
+      "B": {
+        "de": "Der ulnare Styloidfortsatz gehört zur Ulna; Chauffeur betrifft den radialen Styloidfortsatz.",
+        "en": "The ulnar styloid belongs to the ulna; chauffeur involves the radial styloid.",
+        "fa": "استایلوئید اولنار متعلق به اولناست؛ شوفر استایلوئید رادیوس را درگیر می‌کند."
+      },
+      "C": {
+        "de": "Eine dorsale Gelenkrandfraktur kann ein Barton-Muster bilden; sie ist nicht gleichbedeutend mit einer Radiusstyloidfraktur.",
+        "en": "A dorsal articular rim fracture can form a Barton pattern; it is not synonymous with a radial styloid fracture.",
+        "fa": "شکستگی لبهٔ دورسال مفصل می‌تواند الگوی بارتون باشد؛ معادل شکستگی استایلوئید رادیوس نیست."
+      },
+      "D": {
+        "de": "Die Impression der Fossa lunata ist ein Die-Punch-Muster. Chauffeur betrifft das Radiusstyloid.",
+        "en": "Lunate fossa depression is a die-punch pattern. Chauffeur involves the radial styloid.",
+        "fa": "فرورفتگی فوسای لونیت الگوی Die-Punch است؛ شوفر استایلوئید رادیوس را درگیر می‌کند."
+      }
+    },
+    "difficulty": 1,
+    "source": "MSK.pdf, physical pp.17–18 (printed16–17); page images and extracted text read2026-10-25. AO radial-column fracture mechanisms (shear or compression): https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/distal-forearm/partial-articular-sagittal-multifragmentary-radial-fracture-involving-scaphoid-fossa/orif-radial-column-plate"
+  },
+  {
+    "id": "step",
+    "q": {
+      "de": "Textfall: Bei einer funktionell aktiven 48-jährigen Person bleibt nach Reposition eine intraartikuläre Stufe von 3 mm. Welche Einordnung entspricht der AAOS/ASSH-Leitlinie 2020?",
+      "en": "Text vignette: a functionally active 48-year-old has a residual 3 mm intra-articular step after reduction. Which interpretation matches the 2020 AAOS/ASSH guideline?",
+      "fa": "سناریوی متنی: در فرد فعال ۴۸ساله، پس از جااندازی پلهٔ داخل‌مفصلی ۳ میلی‌متری باقی مانده است. کدام تفسیر با راهنمای AAOS/ASSH۲۰۲۰ مطابقت دارد؟"
+    },
+    "o": [
+      {
+        "de": "Bei nichtgeriatrischen Patienten: postreduktionelle Gelenkstufe >5 mm als Kriterium für eine Fixationsabwägung",
+        "en": "In nongeriatric patients: postreduction articular step >5 mm as a criterion for considering fixation",
+        "fa": "در بیماران غیرسالمند: پلهٔ مفصلی بیش از ۵ میلی‌متر پس از جااندازی به‌عنوان معیار بررسی تثبیت جراحی"
+      },
+      {
+        "de": "Bei nichtgeriatrischen Patienten: präreduktionelle Gelenkstufe >2 mm als maßgebliches Kriterium dieser Leitlinienempfehlung",
+        "en": "In nongeriatric patients: prereduction articular step >2 mm as the relevant criterion for this guideline recommendation",
+        "fa": "در بیماران غیرسالمند: پلهٔ مفصلی بیش از ۲ میلی‌متر پیش از جااندازی به‌عنوان معیار مربوط به این توصیهٔ راهنما"
+      },
+      {
+        "de": "Bei nichtgeriatrischen Patienten: postreduktionelle Gelenkstufe >2 mm als Kriterium für eine individuelle Fixationsabwägung",
+        "en": "In nongeriatric patients: postreduction articular step >2 mm as a criterion for individualized consideration of fixation",
+        "fa": "در بیماران غیرسالمند: پلهٔ مفصلی بیش از ۲ میلی‌متر پس از جااندازی به‌عنوان معیار بررسی فردی تثبیت جراحی"
+      },
+      {
+        "de": "Bei geriatrischen Patienten: postreduktionelle Gelenkstufe >2 mm als Beleg eines langfristigen patientenberichteten Vorteils der Operation",
+        "en": "In geriatric patients: postreduction articular step >2 mm as evidence of a long-term patient-reported advantage of surgery",
+        "fa": "در بیماران سالمند: پلهٔ مفصلی بیش از ۲ میلی‌متر پس از جااندازی به‌عنوان شاهد مزیت درازمدت جراحی در پیامدهای گزارش‌شده توسط بیمار"
+      }
+    ],
+    "c": 2,
+    "e": {
+      "de": "Für nichtgeriatrische Patienten (in Studien meist <65 Jahre) unterstützt die Leitlinie eine Fixation bei postreduktioneller Gelenkverschiebung/Stufe >2 mm. Die Entscheidung berücksichtigt Funktion, Ziele, Risiken und weitere Fehlstellung. Alter ist ein Näherungswert für funktionellen Anspruch; die Grenze ist keine universelle OP-Anordnung.",
+      "en": "For nongeriatric patients (usually <65 in studies), the guideline supports fixation for postreduction articular displacement/step >2 mm. Decisions consider function, goals, risks and other malalignment. Age is a proxy for functional demand; the threshold is not a universal surgical order.",
+      "fa": "برای بیماران غیرسالمند (در مطالعات معمولاً زیر ۶۵سال)، راهنما از تثبیت جراحی در جابجایی/پلهٔ مفصلی بیش از ۲ میلی‌متر پس از جااندازی حمایت می‌کند. تصمیم، عملکرد، اهداف، خطرها و سایر بدراستایی‌ها را در نظر می‌گیرد. سن جانشینی تقریبی برای نیاز عملکردی است؛ این مرز دستور همگانی جراحی نیست."
+    },
+    "wrong": {
+      "A": {
+        "de": "Die Empfehlung nennt >2 mm nach Reposition bei nichtgeriatrischen Patienten. Die verbleibenden 3 mm überschreiten dieses Kriterium bereits.",
+        "en": "The recommendation uses >2 mm after reduction in nongeriatric patients. The residual 3 mm already exceeds that criterion.",
+        "fa": "توصیه برای بیماران غیرسالمند بیش از ۲ میلی‌متر پس از جااندازی را ذکر می‌کند؛ ۳ میلی‌متر باقی‌مانده از آن فراتر است."
+      },
+      "B": {
+        "de": "Der Messzeitpunkt ist entscheidend: Diese Empfehlung bezieht sich auf die verbleibende Stufe nach Reposition, nicht auf die initiale Stufe davor.",
+        "en": "Timing matters: this recommendation concerns the residual step after reduction, not the initial step before reduction.",
+        "fa": "زمان اندازه‌گیری مهم است؛ این توصیه مربوط به پلهٔ باقی‌مانده پس از جااندازی است، نه پلهٔ اولیهٔ پیش از آن."
+      },
+      "D": {
+        "de": "Die Aussage über verbessertes Langzeitergebnis bei dieser Schwelle gehört zur nichtgeriatrischen Population. Bei geriatrischen Patienten zeigt die Leitlinie keinen langfristigen Vorteil für patientenberichtete Ergebnisse; Funktion und Ziele bleiben individuell abzuwägen.",
+        "en": "The evidence of improved outcomes at this threshold concerns nongeriatric patients. In geriatric patients the guideline shows no long-term patient-reported advantage; function and goals still require individual consideration.",
+        "fa": "شواهد بهبود پیامدها در این مرز مربوط به بیماران غیرسالمند است. در بیماران سالمند راهنما مزیت درازمدت در پیامدهای گزارش‌شده توسط بیمار نشان نمی‌دهد؛ عملکرد و اهداف همچنان باید فردی سنجیده شوند."
+      }
+    },
+    "difficulty": 2,
+    "source": "AAOS/ASSH 2020, Indications for Fixation, non-geriatric and geriatric patients; https://www.aaos.org/globalassets/quality-and-practice-resources/distal-radius/distal-radius-fractures-10-13-2020.pdf; functional-demand context: https://pmc.ncbi.nlm.nih.gov/articles/PMC9196973/"
+  },
+  {
+    "id": "tilt",
+    "q": {
+      "de": "Wie wird der volare Tilt des distalen Radius gemessen?",
+      "en": "How is distal radial volar tilt measured?",
+      "fa": "تیلت ولار دیستال رادیوس چگونه اندازه‌گیری می‌شود؟"
+    },
+    "o": [
+      {
+        "de": "Im echten Seitenbild: Gelenkflächenlinie zur Senkrechten auf die Radiuslängsachse",
+        "en": "On a true lateral view: articular surface line against the perpendicular to the radial shaft axis",
+        "fa": "در لترال واقعی: خط سطح مفصل نسبت به خط عمود بر محور طولی رادیوس"
+      },
+      {
+        "de": "Im PA-Bild: Radiusstyloid zur ulnaren Gelenkflächenecke",
+        "en": "On the PA view: radial styloid to the ulnar articular corner",
+        "fa": "در نمای PA: استایلوئید رادیوس تا گوشهٔ اولنار سطح مفصل"
+      },
+      {
+        "de": "Im PA-Bild: Längendifferenz zwischen distaler Ulna und Radius",
+        "en": "On the PA view: length difference between distal ulna and radius",
+        "fa": "در نمای PA: اختلاف طول انتهای اولنا و رادیوس"
+      },
+      {
+        "de": "Im Seitenbild: Winkel zwischen Skaphoid- und Lunatumachse",
+        "en": "On the lateral view: angle between scaphoid and lunate axes",
+        "fa": "در نمای لترال: زاویهٔ محور اسکافوئید و لونیت"
+      }
+    ],
+    "c": 0,
+    "e": {
+      "de": "Im echten Seitenbild wird die dorsale mit der palmaren Gelenkflächenkante verbunden und zur Senkrechten auf die Radiuslängsachse gemessen. Typischer Referenzwert ist etwa 11° volar, mit physiologischer Streuung; Schrägprojektion verfälscht die Messung.",
+      "en": "On a true lateral view, join the dorsal and volar articular rims and measure against the perpendicular to the radial shaft axis. A typical reference is about 11° volar with physiological variation; obliquity distorts measurement.",
+      "fa": "در لترال واقعی، لبه‌های دورسال و ولار سطح مفصل را به هم وصل کرده و نسبت به خط عمود بر محور طولی رادیوس اندازه می‌گیرند. مقدار مرجع تیپیک حدود ۱۱درجه ولار با تنوع طبیعی است؛ نمای مایل اندازه‌گیری را مخدوش می‌کند."
+    },
+    "wrong": {
+      "B": {
+        "de": "Diese Landmarken dienen der Radialinklination im PA-Bild, nicht dem sagittalen Tilt.",
+        "en": "Those landmarks measure radial inclination on PA, not sagittal tilt.",
+        "fa": "این نشانه‌ها شیب رادیال را در PA می‌سنجند، نه تیلت ساژیتال."
+      },
+      "C": {
+        "de": "Diese Längendifferenz beschreibt die Ulnavarianz, keinen Winkel des Radius.",
+        "en": "That length difference describes ulnar variance, not a radial angle.",
+        "fa": "این اختلاف طول واریانس اولنار را توصیف می‌کند، نه زاویهٔ رادیوس."
+      },
+      "D": {
+        "de": "Dies ist der skapholunäre Winkel zur Karpusbeurteilung. Volarer Tilt beschreibt die Radiusgelenkfläche.",
+        "en": "That is the scapholunate angle for carpal assessment. Volar tilt describes the radial articular surface.",
+        "fa": "این زاویهٔ اسکافولونات برای بررسی کارپ است؛ تیلت ولار سطح مفصلی رادیوس را توصیف می‌کند."
+      }
+    },
+    "difficulty": 2,
+    "source": "Ghafoor et al.2021/2022, Table1 and Fig4, https://pmc.ncbi.nlm.nih.gov/articles/PMC9038308/"
+  },
+  {
+    "id": "sl",
+    "q": {
+      "de": "Welcher Befund spricht am ehesten für eine skapholunäre Dissoziation?",
+      "en": "Which finding most strongly suggests scapholunate dissociation?",
+      "fa": "کدام یافته بیشتر به نفع دیسوسیشن اسکافولونات است؟"
+    },
+    "o": [
+      {
+        "de": "SL-Intervall grob > 3 mm, im Seitenvergleich beurteilt",
+        "en": "SL interval roughly >3 mm, assessed against the opposite wrist",
+        "fa": "فاصله SL حدوداً بیش از ۳ میلی‌متر با ارزیابی در مقایسه با مچ مقابل"
+      },
+      {
+        "de": "Verbreitertes DRUG mit Ulnakopfsubluxation",
+        "en": "Widened DRUJ with ulnar-head subluxation",
+        "fa": "گشادشدگی DRUJ همراه ساب‌لوکساسیون سر اولنا"
+      },
+      {
+        "de": "Isolierte zentrale Impression der Fossa lunata",
+        "en": "Isolated central depression of the lunate fossa",
+        "fa": "فرورفتگی مرکزی منفرد فوسای لونیت"
+      },
+      {
+        "de": "Radiusverkürzung mit positiver Ulnavarianz bei unauffälligem SL-Intervall",
+        "en": "Radial shortening with positive ulnar variance and an unremarkable SL interval",
+        "fa": "کوتاهی رادیوس با واریانس اولنار مثبت و فاصلهٔ SL بدون تغییر"
+      }
+    ],
+    "c": 0,
+    "e": {
+      "de": "Mehr als etwa 3 mm ist ein grober Orientierungswert, kein universeller Grenzwert: Messort, Projektion und Vergleich mit der Gegenseite sind wichtig. Gilula-Bögen und ein mögliches Skaphoid-Ringzeichen ergänzen die Beurteilung.",
+      "en": "More than about 3 mm is a rough guide, not a universal cutoff: measurement location, projection and comparison with the opposite wrist matter. Gilula arcs and a possible scaphoid ring sign add context.",
+      "fa": "بیش از حدود ۳ میلی‌متر یک راهنمای تقریبی است، نه حد قطعی همگانی؛ محل اندازه‌گیری، نما و مقایسه با سمت مقابل اهمیت دارند. قوس‌های گیلولا و احتمال علامت حلقه اسکافوئید نیز به ارزیابی کمک می‌کنند."
+    },
+    "wrong": {
+      "B": {
+        "de": "Das lenkt den Verdacht auf eine DRUG-Verletzung; es lokalisiert keine skapholunäre Bandverletzung.",
+        "en": "That raises concern for DRUJ injury; it does not localize scapholunate ligament injury.",
+        "fa": "این یافته شک به آسیب DRUJ را مطرح می‌کند؛ آسیب رباط اسکافولونات را موضع‌یابی نمی‌کند."
+      },
+      "C": {
+        "de": "Die-Punch betrifft die Radiusgelenkfläche, nicht primär das Intervall zwischen Skaphoid und Lunatum.",
+        "en": "Die-punch concerns the radial articular surface, not primarily the scaphoid–lunate interval.",
+        "fa": "Die-Punch سطح مفصلی رادیوس را درگیر می‌کند، نه در درجهٔ اول فاصلهٔ اسکافوئید–لونیت."
+      },
+      "D": {
+        "de": "Positive Ulnavarianz kann durch Radiusverkürzung entstehen. Ohne SL-Befund belegt sie keine skapholunäre Dissoziation.",
+        "en": "Positive ulnar variance can result from radial shortening. Without an SL finding it does not establish scapholunate dissociation.",
+        "fa": "واریانس اولنار مثبت می‌تواند از کوتاهی رادیوس ناشی شود؛ بدون یافتهٔ SL دیسوسیشن اسکافولونات را اثبات نمی‌کند."
+      }
+    },
+    "difficulty": 1,
+    "source": "MSK.pdf, physical pp.17–18 (printed16–17); page images and extracted text read2026-10-25. Jones et al.2015, radiographic methods, https://pmc.ncbi.nlm.nih.gov/articles/PMC4641076/; Projection quality considered; direct contralateral-assessment evidence: Lans et al.2018, https://pubmed.ncbi.nlm.nih.gov/29456778/ (bilateral widening occurs; no treatment rate used)."
+  },
+  {
+    "id": "lunate",
+    "q": {
+      "de": "Textfall: Im echten Seitenbild ist das Lunatum nach palmar aus der Radiuspfanne gekippt. Welche Einordnung passt am besten?",
+      "en": "Text vignette: on a true lateral view, the lunate has tilted volarly out of the radial fossa. Which interpretation fits best?",
+      "fa": "سناریوی متنی: در لترال واقعی، لونیت به سمت ولار از فوسای رادیوس چرخیده است. کدام تفسیر مناسب‌تر است؟"
+    },
+    "o": [
+      {
+        "de": "Lunatumluxation mit Spilled-teacup-Konfiguration",
+        "en": "Lunate dislocation with a spilled-teacup configuration",
+        "fa": "دررفتگی لونیت با پیکربندی فنجان واژگون"
+      },
+      {
+        "de": "Dorsale perilunäre Luxation bei erhaltener radiolunärer Beziehung",
+        "en": "Dorsal perilunate dislocation with preserved radiolunate alignment",
+        "fa": "دررفتگی پری‌لونیت دورسال با رابطهٔ رادیولونات حفظ‌شده"
+      },
+      {
+        "de": "Isolierte SL-Diastase bei erhaltener radiolunärer Beziehung",
+        "en": "Isolated SL diastasis with preserved radiolunate alignment",
+        "fa": "دیاستاز منفرد SL با رابطهٔ رادیولونات حفظ‌شده"
+      },
+      {
+        "de": "Die-Punch-Fraktur ohne Lunatumluxation",
+        "en": "Die-punch fracture without lunate dislocation",
+        "fa": "شکستگی Die-Punch بدون دررفتگی لونیت"
+      }
+    ],
+    "c": 0,
+    "e": {
+      "de": "Bei Lunatumluxation kippt das Lunatum palmar und erscheint im Seitenbild wie eine verschüttete Teetasse. Im PA-Bild kann es dreieckig als piece-of-pie erscheinen.",
+      "en": "In lunate dislocation the lunate tilts volarly, resembling a spilled teacup on lateral imaging. On PA it may appear triangular as a piece of pie.",
+      "fa": "در لوکساسیون لونیت، لونیت به ولار می‌چرخد و در لترال شبیه فنجان واژگون است؛ در PA ممکن است مثلثی دیده شود."
+    },
+    "wrong": {
+      "B": {
+        "de": "Bei der dorsalen perilunären Luxation bleibt das Lunatum zum Radius ausgerichtet, während das Kapitatum dorsal disloziert. Hier ist das Lunatum selbst aus der Pfanne gekippt.",
+        "en": "In dorsal perilunate dislocation the lunate remains aligned with the radius while the capitate dislocates dorsally. Here the lunate itself has tipped out of the fossa.",
+        "fa": "در دررفتگی پری‌لونیت دورسال، لونیت با رادیوس هم‌راستا می‌ماند و کاپیتیت به دورسال جابجا می‌شود؛ اینجا خود لونیت از فوسا چرخیده است."
+      },
+      "C": {
+        "de": "Eine isolierte SL-Diastase erklärt nicht die beschriebene Luxation des Lunatums aus der Radiuspfanne.",
+        "en": "Isolated SL diastasis does not explain the described lunate dislocation out of the radial fossa.",
+        "fa": "دیاستاز منفرد SL دررفتگی توصیف‌شدهٔ لونیت از فوسای رادیوس را توضیح نمی‌دهد."
+      },
+      "D": {
+        "de": "Die-Punch ist eine Impression der Radiusgelenkfläche durch das Lunatum, keine palmare Luxation des Lunatums.",
+        "en": "Die-punch is depression of the radial articular surface by the lunate, not volar lunate dislocation.",
+        "fa": "Die-Punch فرورفتگی سطح مفصلی رادیوس توسط لونیت است، نه دررفتگی ولار لونیت."
+      }
+    },
+    "difficulty": 2,
+    "source": "MSK.pdf, physical pp.17–18 (printed16–17); page images and extracted text read2026-10-25. Primary case with operative confirmation: https://pmc.ncbi.nlm.nih.gov/articles/PMC5221394/; acute cases: https://pmc.ncbi.nlm.nih.gov/articles/PMC7861191/"
+  },
+  {
+    "id": "ct",
+    "q": {
+      "de": "Textfall: Im Röntgen besteht eine intraartikuläre Mehrfragmentfraktur; Ausmaß der Fossa-lunata-Impression und Beteiligung der Incisura ulnaris sind unklar. Welcher nächste Bildgebungsschritt beantwortet diese knöcherne Planungsfrage am besten?",
+      "en": "Text vignette: radiographs show an intra-articular multifragmentary fracture; the extent of lunate-fossa depression and sigmoid-notch involvement is unclear. Which next imaging step best answers this bony planning question?",
+      "fa": "سناریوی متنی: رادیوگرافی شکستگی چندقطعه‌ای داخل‌مفصلی را نشان می‌دهد؛ وسعت فرورفتگی فوسای لونیت و درگیری ناچ سیگموئید نامشخص است. کدام تصویربرداری بعدی این پرسش استخوانیِ برنامه‌ریزی را بهتر پاسخ می‌دهد؟"
+    },
+    "o": [
+      {
+        "de": "MRT primär zur Beurteilung des TFCC",
+        "en": "MRI primarily to assess the TFCC",
+        "fa": "MRI در درجهٔ اول برای ارزیابی TFCC"
+      },
+      {
+        "de": "CT mit multiplanaren Rekonstruktionen zur Fragment- und Gelenkflächenkartierung",
+        "en": "CT with multiplanar reconstructions to map fragments and articular surfaces",
+        "fa": "CT با بازسازی چندصفحه‌ای برای نقشه‌برداری قطعات و سطوح مفصلی"
+      },
+      {
+        "de": "Gezielte Schrägaufnahmen zur ergänzenden Projektionsdiagnostik",
+        "en": "Targeted oblique radiographs for additional projectional assessment",
+        "fa": "رادیوگرافی‌های مایل هدفمند برای ارزیابی تکمیلی در نماهای مختلف"
+      },
+      {
+        "de": "Gezielte Sonographie zur Beurteilung der Sehnen und umgebenden Weichteile",
+        "en": "Targeted ultrasound to assess tendons and surrounding soft tissues",
+        "fa": "سونوگرافی هدفمند برای ارزیابی تاندون‌ها و بافت نرم اطراف"
+      }
+    ],
+    "c": 1,
+    "e": {
+      "de": "CT zeigt Gelenkflächenfragmente, Impressionen und die sigmoid notch wesentlich besser und ist für komplexe intraartikuläre Frakturen und OP-Planung besonders wertvoll.",
+      "en": "CT depicts articular fragments, depressions and the sigmoid notch much better and is valuable for complex intra-articular fractures and surgical planning.",
+      "fa": "CT قطعات سطح مفصل، فرورفتگی‌ها و ناچ سیگموئید را بهتر نشان می‌دهد و برای شکستگی پیچیده داخل‌مفصلی و برنامه‌ریزی جراحی ارزشمند است."
+    },
+    "wrong": {
+      "A": {
+        "de": "MRT kann Weichteilfragen klären. Hier steht aber die komplexe knöcherne Gelenkflächengeometrie für die Planung im Vordergrund.",
+        "en": "MRI can address soft-tissue questions. Here the priority is complex bony articular geometry for planning.",
+        "fa": "MRI می‌تواند پرسش‌های بافت نرم را پاسخ دهد؛ اینجا اولویت هندسهٔ پیچیدهٔ استخوانیِ سطح مفصل برای برنامه‌ریزی است."
+      },
+      "C": {
+        "de": "Schrägaufnahmen können ergänzen. Für die beschriebene komplexe Gelenkflächenimpression und Incisura-ulnaris-Beteiligung liefert CT die benötigte räumliche Fragmentkartierung.",
+        "en": "Oblique views can add information. For the complex articular depression and sigmoid-notch involvement described, CT provides the spatial fragment mapping needed.",
+        "fa": "نماهای مایل می‌توانند اطلاعات تکمیلی بدهند؛ برای فرورفتگی پیچیدهٔ مفصلی و درگیری ناچ سیگموئیدِ توصیف‌شده، CT نقشه‌برداری فضایی قطعات را فراهم می‌کند."
+      },
+      "D": {
+        "de": "Sonographie ist für oberflächliche Sehnen-/Weichteilfragen hilfreich. Die Planungsfrage betrifft hier jedoch die komplexe knöcherne Gelenkflächengeometrie.",
+        "en": "Ultrasound helps with superficial tendon and soft-tissue questions. The planning question here concerns complex bony articular geometry.",
+        "fa": "سونوگرافی برای بررسی تاندون‌های سطحی و بافت نرم مفید است؛ پرسش برنامه‌ریزی اینجا دربارهٔ هندسهٔ پیچیدهٔ استخوانی سطح مفصل است."
+      }
+    },
+    "difficulty": 2,
+    "source": "AO Surgery Reference, fracture assessment of volar rim, https://surgeryreference.aofoundation.org/orthopedic-trauma/adult-trauma/distal-forearm/partial-articular-fracture-of-the-radius-involving-the-volar-rim/orif-palmar-plate; Ghafoor et al., CT-based approach selection: https://pmc.ncbi.nlm.nih.gov/articles/PMC9038308/"
+  },
+  {
+    "id": "urgent",
+    "q": {
+      "de": "Welcher Begleitbefund verlangt bei distaler Radiusfraktur eine sofortige handchirurgische/traumatologische Eskalation?",
+      "en": "Which associated finding in distal radius fracture requires immediate hand-surgical/trauma escalation?",
+      "fa": "کدام یافتهٔ همراه در شکستگی دیستال رادیوس به ارجاع فوری به جراحی دست/تروما نیاز دارد؟"
+    },
+    "o": [
+      {
+        "de": "Nicht dislozierte Radiusstyloidfraktur bei kongruentem Karpus und unauffälliger Neurovaskularität",
+        "en": "Undisplaced radial styloid fracture with congruent carpus and normal neurovascular findings",
+        "fa": "شکستگی بدون جابجایی استایلوئید رادیوس با کارپ همخوان و وضعیت عصبی‌عروقی طبیعی"
+      },
+      {
+        "de": "Lunatumluxation mit zunehmender Taubheit in Daumen, Zeige- und Mittelfinger",
+        "en": "Lunate dislocation with increasing numbness in thumb, index and middle fingers",
+        "fa": "دررفتگی لونیت با بی‌حسی فزایندهٔ شست، اشاره و میانی"
+      },
+      {
+        "de": "Nicht dislozierte Ulnastyloidspitzenfraktur bei kongruentem DRUG ohne neurologische Beschwerden",
+        "en": "Undisplaced ulnar styloid tip fracture with congruent DRUJ and no neurological symptoms",
+        "fa": "شکستگی بدون جابجایی نوک استایلوئید اولنا با DRUJ همخوان و بدون علائم عصبی"
+      },
+      {
+        "de": "Geringe Radiusverkürzung bei erhaltener Reposition und unverändert normaler Neurovaskularität",
+        "en": "Mild radial shortening with maintained reduction and persistently normal neurovascular findings",
+        "fa": "کوتاهی خفیف رادیوس با جااندازی حفظ‌شده و وضعیت عصبی‌عروقی همچنان طبیعی"
+      }
+    ],
+    "c": 1,
+    "e": {
+      "de": "Lunatumluxation mit progredienten Medianusbeschwerden ist zeitkritisch und kann eine akute Nervenkompression anzeigen. Befund sofort kommunizieren und dringliche fachchirurgische Behandlung veranlassen; eine Routinekontrolle reicht nicht.",
+      "en": "Lunate dislocation with progressive median-nerve symptoms is time-critical and may indicate acute nerve compression. Communicate immediately and arrange urgent specialist treatment; routine follow-up is insufficient.",
+      "fa": "دررفتگی لونیت با علائم پیشروندهٔ عصب مدیان زمان‌حساس است و می‌تواند نشان‌دهندهٔ فشار حاد عصب باشد. یافته را فوراً اطلاع دهید و درمان فوری تخصصی را ترتیب دهید؛ پیگیری معمول کافی نیست."
+    },
+    "wrong": {
+      "A": {
+        "de": "Auch diese Fraktur braucht Versorgung. Ohne Luxation oder neurovaskuläre Auffälligkeit enthält sie aber nicht das hier beschriebene zeitkritische Warnzeichen.",
+        "en": "This fracture also needs care, but without dislocation or neurovascular abnormality it lacks the time-critical warning described here.",
+        "fa": "این شکستگی هم به درمان نیاز دارد، اما بدون دررفتگی یا اختلال عصبی‌عروقی، علامت هشدار زمان‌حساسِ اینجا را ندارد."
+      },
+      "C": {
+        "de": "Eine nicht dislozierte Styloidspitzenfraktur bei kongruentem DRUG ohne Nervenbeschwerden ist nicht gleichzusetzen mit Luxation und progredienter Medianuskompression.",
+        "en": "An undisplaced styloid tip fracture with congruent DRUJ and no nerve symptoms is not equivalent to dislocation with progressive median compression.",
+        "fa": "شکستگی بدون جابجایی نوک استایلوئید با DRUJ همخوان و بدون علائم عصبی معادل دررفتگی همراه فشار پیشروندهٔ مدیان نیست."
+      },
+      "D": {
+        "de": "Verkürzung muss dokumentiert und im Behandlungskontext bewertet werden. Bei normaler Neurovaskularität begründet sie allein keine akute Medianuskompressionswarnung.",
+        "en": "Shortening should be documented and considered in treatment planning. With normal neurovascular findings it alone does not signal acute median compression.",
+        "fa": "کوتاهی باید ثبت و در زمینهٔ درمان ارزیابی شود؛ با وضعیت عصبی‌عروقی طبیعی به‌تنهایی نشانهٔ هشدار فشار حاد مدیان نیست."
+      }
+    },
+    "difficulty": 2,
+    "source": "Primary case with operative confirmation: https://pmc.ncbi.nlm.nih.gov/articles/PMC5221394/; acute cases: https://pmc.ncbi.nlm.nih.gov/articles/PMC7861191/"
+  }
+]

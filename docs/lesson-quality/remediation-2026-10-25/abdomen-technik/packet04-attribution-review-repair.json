@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_BOUNDED_ATTRIBUTION_REPAIR_RETEST_PENDING",
+  "finding": "ATV04-SRC-01",
+  "changes": [
+    {
+      "file": "app/abdomen/leber/angiomyolipom/page.js",
+      "line": 9,
+      "before": "de: ['Yang et al. · dynamische CT-Studie ↗', 'Ding et al. · histopathologisch korrelierte CT/MRT-Studie ↗', 'Fettarmes HAML versus HCC in der gadoxetischen MRT · kleine Kohorte ↗', 'HAML versus HCC in der gadoxetischen MRT · kleine Kohorte ↗'],",
+      "after": "de: ['Yang et al. · dynamische CT-Studie ↗', 'Wei et al. · histopathologisch korrelierte CT/MRT-Studie ↗', 'Fettarmes HAML versus HCC in der gadoxetischen MRT · kleine Kohorte ↗', 'HAML versus HCC in der gadoxetischen MRT · kleine Kohorte ↗'],"
+    },
+    {
+      "file": "app/abdomen/leber/angiomyolipom/page.js",
+      "line": 10,
+      "before": "en: ['Yang et al. · dynamic CT study ↗', 'Ding et al. · pathology-correlated CT/MRI study ↗', 'Lipid-poor HAML versus HCC on gadoxetic MRI · small cohort ↗', 'HAML versus HCC on gadoxetic MRI · small cohort ↗'],",
+      "after": "en: ['Yang et al. · dynamic CT study ↗', 'Wei et al. · pathology-correlated CT/MRI study ↗', 'Lipid-poor HAML versus HCC on gadoxetic MRI · small cohort ↗', 'HAML versus HCC on gadoxetic MRI · small cohort ↗'],"
+    },
+    {
+      "file": "app/abdomen/leber/angiomyolipom/page.js",
+      "line": 11,
+      "before": "fa: ['Yang و همکاران · مطالعه CT دینامیک ↗', 'Ding و همکاران · مطالعه CT/MRI با تطبیق آسیب‌شناسی ↗', 'HAML کم‌چربی در برابر HCC در MRI با گادوکسیتیک اسید · گروه کوچک ↗', 'HAML در برابر HCC در MRI با گادوکسیتیک اسید · گروه کوچک ↗'],",
+      "after": "fa: ['Yang و همکاران · مطالعه CT دینامیک ↗', 'Wei و همکاران · مطالعه CT/MRI با تطبیق آسیب‌شناسی ↗', 'HAML کم‌چربی در برابر HCC در MRI با گادوکسیتیک اسید · گروه کوچک ↗', 'HAML در برابر HCC در MRI با گادوکسیتیک اسید · گروه کوچک ↗'],"
+    },
+    {
+      "file": "app/abdomen/leber/angiomyolipom/page.js",
+      "line": 26,
+      "before": "evidence: 'Primärstudien: Yang et al., 2009 (10 Patienten); Ding et al., 2017 (6 histopathologisch bestätigte HAML und 33 HCC); gadoxetische MRT-Vergleiche umfassten ebenfalls kleine Kohorten. Die retrospektiven Fallzahlen begrenzen die Verallgemeinerbarkeit.',",
+      "after": "evidence: 'Primärstudien: Yang et al., 2009 (10 Patienten); Wei et al., 2017 (6 histopathologisch bestätigte HAML und 33 HCC); gadoxetische MRT-Vergleiche umfassten ebenfalls kleine Kohorten. Die retrospektiven Fallzahlen begrenzen die Verallgemeinerbarkeit.',"
+    },
+    {
+      "file": "app/abdomen/leber/angiomyolipom/page.js",
+      "line": 42,
+      "before": "evidence: 'Primary studies: Yang et al., 2009 (10 patients); Ding et al., 2017 (6 histopathologically confirmed HAML and 33 HCC); gadoxetic MRI comparisons also used small cohorts. The retrospective sample sizes limit generalizability.',",
+      "after": "evidence: 'Primary studies: Yang et al., 2009 (10 patients); Wei et al., 2017 (6 histopathologically confirmed HAML and 33 HCC); gadoxetic MRI comparisons also used small cohorts. The retrospective sample sizes limit generalizability.',"
+    },
+    {
+      "file": "app/abdomen/leber/angiomyolipom/page.js",
+      "line": 58,
+      "before": "evidence: 'مطالعات اولیه: Yang و همکاران، ۲۰۰۹ (۱۰ بیمار)؛ Ding و همکاران، ۲۰۱۷ (۶ مورد HAML با تأیید آسیب‌شناسی و ۳۳ مورد HCC)؛ مقایسه‌های MRI با گادوکسیتیک اسید نیز از گروه‌های کوچک استفاده کرده‌اند. گذشته‌نگر و کوچک بودن نمونه‌ها تعمیم‌پذیری را محدود می‌کند.',",
+      "after": "evidence: 'مطالعات اولیه: Yang و همکاران، ۲۰۰۹ (۱۰ بیمار)؛ Wei و همکاران، ۲۰۱۷ (۶ مورد HAML با تأیید آسیب‌شناسی و ۳۳ مورد HCC)؛ مقایسه‌های MRI با گادوکسیتیک اسید نیز از گروه‌های کوچک استفاده کرده‌اند. گذشته‌نگر و کوچک بودن نمونه‌ها تعمیم‌پذیری را محدود می‌کند.',"
+    }
+  ],
+  "source": "https://www.elsevier.es/en-revista-annals-hepatology-16-pdf-download-S1665268119304351",
+  "read": "ActualpublisheroriginalPDFpage1authorline independentlyread:HongtaoWei first,HuiguoDing last; DOI10.5604/01.3001.0010.2769. Primaryabstract6HAML/33noncirrhoticHCC unchanged. PubMed28809731has conflictingauthororder; publisherPDFpreferred.",
+  "clinicalMutation": false
+}

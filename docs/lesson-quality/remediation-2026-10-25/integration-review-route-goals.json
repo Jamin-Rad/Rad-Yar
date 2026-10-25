@@ -1,0 +1,161 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/integration_review_next",
+  "worktree": "C:/Users/Drham/Documents/GitHub/Rad-Yar/.worktrees/gehirn-completion-main",
+  "baseline": "d4e0c1903870352e81e3cbce8a58fc6547b66147",
+  "scope": "Independent bounded technical review of route goal alias derivation, reviewed packet publication and added ATV04 topic metadata; no lesson clinical, browser or publication acceptance.",
+  "filesRead": [
+    "scripts/generate-assessment-quality-links.mjs",
+    "scripts/publish-reviewed-assessment-packets.mjs",
+    "scripts/test-reviewed-assessment-route-goals.mjs",
+    "lib/lessonAssessmentLinks.js",
+    "lib/assessmentIdentity.js",
+    "data/questions.js",
+    "data/flashcards.js",
+    "data/assessmentQuality/index.js",
+    "data/assessmentQuality/reviewedPackets.json",
+    "data/assessmentQuality/publishedBank.json",
+    "data/assessmentQuality/routeLinks.json",
+    "data/assessmentQuality/atvUpperGiLiverEarly.js",
+    "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/review-packet04.json",
+    "scripts/test-scaphoidfraktur-ssr.mjs",
+    "components/LessonHero.jsx",
+    "components/lesson-template/StandardLessonShell.jsx"
+  ],
+  "decisions": {
+    "bounded_technical_acceptance": "PASS",
+    "overall_lesson_acceptance": "BLOCKED",
+    "editorial_qa": "PASS",
+    "scientific_review": "pending",
+    "browser_qa": "BLOCKED",
+    "publication": "not_requested",
+    "openCritical": 0,
+    "openMajor": 0,
+    "openMinor": 0
+  },
+  "gates": {
+    "SRC": {
+      "status": "NOT_APPLICABLE",
+      "evidence": "No clinical claims added by the reviewed scripts; ATV04 scientific content acceptance is separate in its independent packet review."
+    },
+    "EDU": {
+      "status": "NOT_APPLICABLE",
+      "evidence": "No teaching chapters authored by this change."
+    },
+    "VIS": {
+      "status": "NOT_APPLICABLE",
+      "evidence": "No media added or changed."
+    },
+    "LNG": {
+      "status": "PASS",
+      "evidence": "All 64 current route union counts agree independently across actual DE/EN/FA banks. New inguinal-femoral-hernia topic metadata supplies DE/EN/FA titles matching the existing combined flashcard topic. URL locale assertions pass for every mapped route."
+    },
+    "ASM": {
+      "status": "PASS",
+      "evidence": "Fresh independent in-memory bank audit: 86 published questions per language, 88 cards, 64 route maps; every published localized object deepEquals the allowlisted ID selected from the five producer modules. Current working banks contain 972 questions per language. New aliases derive only from explicit goal question IDs with an otherwise-unmapped singleton tag; multi-tag goals without an already selected tag throw rather than introduce broad tags. Existing r.topicIds remains explicitly authored. Counts use union filtering, avoiding double counting."
+    },
+    "UX": {
+      "status": "BLOCKED",
+      "evidence": "No real browser in this bounded review; generated hrefs and counts tested as data only.",
+      "evidenceBlockers": [
+        "Root-owned build/browser/locale-navigation checks remain required."
+      ]
+    },
+    "REV": {
+      "status": "PASS",
+      "evidence": "Read actual working scripts and baseline diff via authorized read-only git diff; independently ran focused test and a separate in-memory producer/snapshot audit. No production or assessment artifact edited."
+    }
+  },
+  "observedAliases": [
+    {
+      "route": "/msk/knie/patella-streckapparat",
+      "added": [
+        "patellafraktur-trauma"
+      ],
+      "questionCount": 3
+    },
+    {
+      "route": "/abdomen/gi/kolitis-patterns",
+      "added": [
+        "colitis-ulcerosa"
+      ],
+      "questionCount": 4
+    },
+    {
+      "route": "/abdomen/gi/ileus-volvulus",
+      "added": [
+        "volvulus",
+        "intussusception"
+      ],
+      "questionCount": 8
+    },
+    {
+      "route": "/abdomen/hernien/inguinal-femoral",
+      "added": [
+        "inguinalhernie",
+        "femoralhernie"
+      ],
+      "questionCount": 4
+    }
+  ],
+  "publisher": {
+    "modules": [
+      "brain",
+      "mskSpine",
+      "abdomenTechnik",
+      "thoraxMamma",
+      "atvUpperGiLiverEarly"
+    ],
+    "selection": "Explicit reviewed questionIds and cardIds; question identity canonicalized for all languages. Importing the fifth module does not publish all its later authoring items.",
+    "atv04SupplementalQuestionIds": [
+      "aq-atv-ulcer-mpr-de",
+      "aq-atv-lowergi-modality-de",
+      "aq-atv-lowergi-territory-de",
+      "aq-atv-hernia-occult-imaging-de",
+      "aq-atv-hernia-perfusion-concern-de",
+      "aq-atv-hca-risk-context-de"
+    ],
+    "routeMaps": 64,
+    "questionsPerLanguage": 86,
+    "cards": 88
+  },
+  "tests": [
+    {
+      "command": "node --import tsx scripts/test-reviewed-assessment-route-goals.mjs",
+      "result": "PASS",
+      "observed": "All 342 explicit goal-question references reachable; available counts and DE/EN/FA URL topics/lang/n agree."
+    },
+    {
+      "command": "Independent esbuild write:false in-memory bank and five-producer selection audit",
+      "result": "PASS",
+      "observed": "Published objects deepEqual the reviewed allowlist selections in every language; every route pool count also matches each language."
+    },
+    {
+      "command": "node scripts/test-reviewed-assessment-route-goals.mjs",
+      "result": "BLOCKED",
+      "observed": "Existing extensionless directory import data/questions.js -> ./assessmentQuality prevents native Node ESM invocation. Repository tsx invocation succeeds; no script defect inferred."
+    }
+  ],
+  "findings": [],
+  "limitations": [
+    "Working tree and generated snapshot checked; staged snapshot not independently loaded in this review.",
+    "Current alias audit is exhaustive for the 64 admitted routes; no general proof of future authoring tag semantics is claimed.",
+    "No build/server/browser/git mutation performed; root owns release verification.",
+    "PASS is bounded technical/editorial acceptance, not Dr. Zia scientific approval and not publication."
+  ],
+  "followupTestHarnessReview": {
+    "status": "PASS",
+    "scope": "Read-only review of actual scaphoid SSR test diff against d4e0c190; test-only fixture and assertions, not a new clinical or browser acceptance.",
+    "evidence": "Imports actual LESSON_DESIGN_HEROES and lessonAssessmentActions; fixtures now supply usePathname and useLanguage dependencies consumed by actual Hero/Shell. Test expects maintained actual hero URL and locale-specific conceptual alt rather than the superseded authored SVG alt. Existing source-image, paragraphs, translated labels, references, inline-check and registry checks remain. Pool counts now 4 questions/4 cards per accepted current producer and specific wrong-feedback presence is additionally asserted.",
+    "retest": {
+      "command": "node --import tsx scripts/test-scaphoidfraktur-ssr.mjs",
+      "result": "PASS",
+      "observed": "Actual route, LessonHero and StandardLessonShell SSR pass for DE/EN/FA with fixture hooks/CSS/Image/Link. This does not run browser layout or interactions."
+    },
+    "findings": [],
+    "limits": [
+      "Native node invocation still hits the existing ESM directory-import restriction; tsx is the valid repository runner.",
+      "Passing SSR does not satisfy desktop/mobile/theme/keyboard/RTL browser gates."
+    ]
+  }
+}

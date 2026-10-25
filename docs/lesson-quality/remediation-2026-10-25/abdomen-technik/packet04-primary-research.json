@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-25",
+  "status": "ATV04_PRIMARY_SOURCE_RESEARCH_NOT_LESSON_ACCEPTANCE",
+  "sources": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28809731/",
+      "read": "OriginalPubMed28809731abstract read:6histologyHAML/33noncirrhoticHCC, fat-poorhypervascularHAML/HCCoverlap. PubMedlistsDingfirst; publisheroriginalPDFtitlepagereadlaterindependentlyandcorrectsvisiblecitationtoWei2017. No comparative rates taught."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25231411/",
+      "read": "Full original Kim2015 abstract:12low-HCC-riskHAML/27HCC, dynamicpatternoverlap, HBPdifferencesprobabilistic in small retrospectivecohort. No standaloneHBPdiagnosis or newthreshold."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27248975/",
+      "read": "Full original Lee2016 abstract:18pathologicHAML/36noncirrhoticHCC, fatinboth, enhancingpatternoverlap, vessels/drainingvein/capsulepotentialcluesnotproof; no statisticalcutoffs transferred."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2712904/",
+      "read": "Previously full actual original body read: BinYang2009 NOTWang; variable fat/vascular/smoothmuscle and enhancement, earlywashoutinTSCsubset. Outdated blanketbenign/nonresection management not adopted."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31530489/",
+      "read": "Full original Park2020 34patient retrospective rectalarterialembolization abstract reread: superiorrectal commonfocus plus internaliliac territorialassessment; no generalmandatoryproceduralalgorithm/new outcome rates."
+    },
+    {
+      "url": "https://www.esge.com/assets/downloads/pdfs/guidelines/2021_a_1496_8969.pdf",
+      "read": "Actual originalESGE2021 section6.1/6.2, CTAongoingunstableLGIbleed, embolizationclinicalscope and superselectivity/ischemiarisk; no timing/dose/rate added."
+    },
+    {
+      "url": "https://www.giejournal.org/article/S0016-5107%2826%2906857-4/fulltext",
+      "read": "Actual primaryASGE2026 recommendationstable+proximal-source exclusion+colonoscopyvsCT passage; stableafterresuscitationvsongoinginstability scope, no transfusionnumericclaim adopted."
+    },
+    {
+      "url": "https://doi.org/10.14309/ajg.0000000000002857",
+      "read": "Fresh actual official publisher indexed original ACG2024 focal lesion workup, HCA imaging/diagnosis/clinical-subtype keyconcept9, HBP exceptions, tissue/MDT uncertainty and clinical risks; no new treatment thresholds. Direct DOI open error, indexed original body read."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18688875/",
+      "read": "Laumonier2008 complete original abstract and indexed original MRI methods/results: chemical-shift diffuse steatosis signal loss; HNF1A and inflammatory profiles; small beta-catenin subgroup limits. No source diagnostic performance percentages taught."
+    },
+    {
+      "url": "https://doi.org/10.1007/s10029-017-1668-x",
+      "read": "Fresh original diagnostic-modality chapter: clinically evident hernia often no imaging; CE+US, dynamicMRI/CT after nondiagnosticUS, MRI for accompanying adductor tendon alternatives."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5545868/",
+      "read": "Fresh indexed original WSES2017 reduced-wall-enhancement paragraph; urgent suspected strangulation pathway, not histologic proof/no performance numbers."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21415178/",
+      "read": "Original anatomic teaching abstract: direct/indirect relations to inferior epigastric vessels, femoral medial to common femoral vein; no actual figure reading claimed."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17646443/",
+      "read": "Suzuki2007 full original abstract (46femoral/215groin cohorts), CT femoral-vsinguinal differences; no new diagnostic percentages or image-case claims introduced."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9808013/",
+      "read": "Werner2022 original Table1case4 and Figure3caption actually read: cecalbleeding,ileocolicartery,selectiveSMA. Anatomy anchor only. NoNEprovocation/dose/safety/recommendation adopted and nofigureclaimedviewed/reused. Replaces primary link on lowergi-territory; Charbonnet remains general angiographic-workflow provenance only."
+    },
+    {
+      "url": "https://www.elsevier.es/en-revista-annals-hepatology-16-pdf-download-S1665268119304351",
+      "read": "ActualpublisheroriginalPDFtitlepageauthorline+abstract/methods read:Wei first/Dinglast,6HAML33noncirrhoticHCC. Visibleauthorattributioncorrected; no newclinicalclaim."
+    }
+  ],
+  "limits": [
+    "Primary research evidence collected for bounded authoring, not independent acceptance.",
+    "No unseen images/case-based visual claims.",
+    "HAML Yang attribution still awaits actual source mutation in ATV04."
+  ]
+}

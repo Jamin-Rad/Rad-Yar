@@ -818,9 +818,246 @@ const records=[
     "sources": [
       "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103758/"
     ]
+  },
+  {
+    "key": "lister-course",
+    "topicId": "sehnenpathologien-hand",
+    "fach": "msk",
+    "question": {
+      "de": "Textfall zur typischen Anatomie: Eine Sehne läuft an der ulnaren Seite des Lister-Tuberkulums und schwenkt distal davon nach radial zum Daumen. Welche Zuordnung passt?",
+      "en": "Text vignette of typical anatomy: a tendon runs on the ulnar side of Lister tubercle and turns radially toward the thumb beyond it. Which identification fits?",
+      "fa": "سناریوی متنی دربارهٔ آناتومی معمول: تاندونی در سمت اولنار تکمهٔ لیستر می‌گذرد و در دیستال آن به سمت رادیال و شست می‌چرخد. کدام شناسایی مناسب است؟"
+    },
+    "options": [
+      {
+        "de": "ECRL/ECRB im zweiten Fach",
+        "en": "ECRL/ECRB in compartment II",
+        "fa": "ECRL/ECRB در کمپارتمان II"
+      },
+      {
+        "de": "APL/EPB im ersten Fach",
+        "en": "APL/EPB in compartment I",
+        "fa": "APL/EPB در کمپارتمان I"
+      },
+      {
+        "de": "EPL im dritten Fach",
+        "en": "EPL in compartment III",
+        "fa": "EPL در کمپارتمان III"
+      },
+      {
+        "de": "EDC/EIP im vierten Fach",
+        "en": "EDC/EIP in compartment IV",
+        "fa": "EDC/EIP در کمپارتمان IV"
+      }
+    ],
+    "correct": "C",
+    "explanation": {
+      "de": "EPL wird am Lister-Tuberkulum im dritten Fach umgelenkt und zieht anschließend zum Daumen. ECRL/ECRB liegen im zweiten Fach radial des Tuberkulums. Verlauf und Landmarke gemeinsam zur Zuordnung verwenden; die Frage beschreibt die typische Anatomie.",
+      "en": "EPL is redirected at Lister tubercle in the third compartment before running toward the thumb. ECRL/ECRB occupy the second compartment radial to the tubercle. Use tendon course and landmark together; this vignette describes typical anatomy.",
+      "fa": "EPL در کمپارتمان سوم کنار تکمهٔ لیستر تغییر جهت می‌دهد و سپس به شست می‌رود. ECRL/ECRB در کمپارتمان دوم و سمت رادیال تکمه قرار دارند. مسیر و لندمارک را با هم برای شناسایی به‌کار ببرید؛ سناریو آناتومی معمول را توصیف می‌کند."
+    },
+    "wrongExplanations": {
+      "A": {
+        "de": "ECRL/ECRB sind dem zweiten Fach radial des Lister-Tuberkulums zugeordnet, nicht dem beschriebenen dritten Fach mit Daumenverlauf.",
+        "en": "ECRL/ECRB belong to the second compartment radial to Lister tubercle rather than the described third compartment and thumb course.",
+        "fa": "ECRL/ECRB مربوط به کمپارتمان دوم و سمت رادیال تکمهٔ لیسترند، نه کمپارتمان سوم و مسیر توصیف‌شده به شست."
+      },
+      "B": {
+        "de": "APL/EPB gehören zum ersten Fach am Radiusstyloid. Die beschriebene Umlenkung um Lister betrifft EPL.",
+        "en": "APL/EPB occupy the first compartment at the radial styloid. The described turn around Lister tubercle concerns EPL.",
+        "fa": "APL/EPB در کمپارتمان اول کنار استایلوئید رادیوس قرار دارند؛ پیچیدن توصیف‌شده دور تکمهٔ لیستر مربوط به EPL است."
+      },
+      "D": {
+        "de": "EDC/EIP verlaufen gemeinsam im größeren vierten Fach; sie erklären keine einzelne im Fach III um Lister ziehende Daumensehne.",
+        "en": "EDC/EIP share the larger fourth compartment; they do not explain a single thumb tendon turning around Lister in compartment III.",
+        "fa": "EDC/EIP با هم در کمپارتمان چهارم بزرگ‌تر قرار دارند؛ آن‌ها تاندون منفرد شست را که در کمپارتمان III دور لیستر می‌چرخد توضیح نمی‌دهند."
+      }
+    },
+    "sources": [
+      "MSK.pdf physical41/printed40; actual table and page freshly rendered/read2026-10-25",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC11775041/"
+    ],
+    "difficulty": 1
+  },
+  {
+    "key": "periosteal-report",
+    "question": {
+      "de": "Textfall: Bei einem Jugendlichen zeigt eine osteolytische Knochenläsion eine mehrschichtige Periostreaktion. Klinik und Labor liegen noch nicht vor. Welche Befundbeurteilung berücksichtigt die Aussagegrenze des Musters am besten?",
+      "en": "Text vignette: an adolescent has an osteolytic bone lesion with a multilamellar periosteal response. Clinical and laboratory information is not yet available. Which report best respects the limits of this pattern?",
+      "fa": "سناریوی متنی: نوجوانی ضایعهٔ استئولیتیک استخوان با واکنش پریوست چندلایه دارد. اطلاعات بالینی و آزمایشگاهی هنوز در دسترس نیست. کدام ارزیابی گزارش، محدودیت این الگو را بهتر رعایت می‌کند؟"
+    },
+    "options": [
+      {
+        "de": "Aggressiv wirkende Läsion; das Schichtmuster legt vorrangig eine neoplastische Ursache gegenüber Infektion nahe.",
+        "en": "Aggressive-appearing lesion; the layered pattern primarily favours neoplasia over infection.",
+        "fa": "ضایعه با ظاهر تهاجمی؛ الگوی لایه‌لایه در درجهٔ اول نئوپلازی را بر عفونت ترجیح می‌دهد."
+      },
+      {
+        "de": "Aggressiv wirkende Läsion; infektiöse und neoplastische Ursachen sind mit Klinik und weiteren Befunden abzugleichen.",
+        "en": "Aggressive-appearing lesion; correlate infectious and neoplastic possibilities with clinical and additional findings.",
+        "fa": "ضایعه با ظاهر تهاجمی؛ علل عفونی و نئوپلاستیک باید با بالین و یافته‌های تکمیلی تطبیق داده شوند."
+      },
+      {
+        "de": "Langsam verlaufende Läsion; die mehreren Periostschichten sprechen eher für einen nichtaggressiven Verlauf.",
+        "en": "Slowly evolving lesion; multiple periosteal layers favour a nonaggressive course.",
+        "fa": "ضایعهٔ آهسته‌سیر؛ لایه‌های متعدد پریوست بیشتر به نفع روند غیرتهاجمی‌اند."
+      },
+      {
+        "de": "Traumatische Knochenreaktion; das Schichtmuster spricht vorrangig für eine organisierte Frakturheilung.",
+        "en": "Traumatic bone response; the layered pattern primarily favours organised fracture healing.",
+        "fa": "واکنش تروماتیک استخوان؛ الگوی لایه‌لایه در درجهٔ اول به نفع ترمیم سازمان‌یافتهٔ شکستگی است."
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "de": "Eine lamelläre Periostreaktion beschreibt die Knochenantwort und ist nicht tumorspezifisch. Sowohl Ewing-Sarkom als auch Osteomyelitis gehören in die Differentialdiagnose; aus dem Muster allein folgen weder Histologie noch Erreger.",
+      "en": "Lamellated periosteal response describes the bone reaction and is not tumour-specific. Both Ewing sarcoma and osteomyelitis belong in the differential; the pattern alone establishes neither histology nor pathogen.",
+      "fa": "واکنش پریوست لایه‌لایه پاسخ استخوان را توصیف می‌کند و اختصاصی تومور نیست. سارکوم یوئینگ و استئومیلیت هر دو در افتراق قرار دارند؛ الگو به‌تنهایی نه بافت‌شناسی و نه عامل عفونی را تعیین می‌کند."
+    },
+    "wrongExplanations": {
+      "A": {
+        "de": "Das Muster allein begründet keine Priorisierung von Neoplasie gegenüber Infektion; die fehlenden Kontextdaten sind relevant.",
+        "en": "The pattern alone does not justify prioritising neoplasia over infection; missing context matters.",
+        "fa": "الگو به‌تنهایی ترجیح نئوپلازی بر عفونت را توجیه نمی‌کند؛ اطلاعات زمینه‌ای هنوز در دسترس نیست و اهمیت دارد."
+      },
+      "C": {
+        "de": "Mehrere Periostlamellen sind nicht mit einer einzigen glatten soliden Periostreaktion gleichzusetzen.",
+        "en": "Multiple lamellae are not equivalent to a single smooth solid periosteal response.",
+        "fa": "لایه‌های متعدد با واکنش پریوست جامد و صافِ منفرد یکسان نیستند."
+      },
+      "D": {
+        "de": "Eine Fraktur oder ein entsprechender Heilungsverlauf ist nicht beschrieben. Aus Lamellierung allein lässt sich die traumatische Ursache nicht ableiten.",
+        "en": "No fracture or corresponding healing course is described. Lamellation alone does not establish traumatic origin.",
+        "fa": "شکستگی یا سیر ترمیمی متناظر توصیف نشده است؛ لایه‌لایه‌بودن به‌تنهایی منشأ تروماتیک را تعیین نمی‌کند."
+      }
+    },
+    "sources": [
+      "MSK.pdf physical73/printed72; actual rendered page read2026-10-25"
+    ],
+    "topicId": "osteomyelitis",
+    "fach": "msk",
+    "difficulty": 1
+  },
+  {
+    "key": "brodie-variability",
+    "question": {
+      "de": "Ein Brodie-Abszess wird differentialdiagnostisch erwogen. Die Röntgenaufnahme zeigt keine Periostreaktion. Welche Interpretation dieser fehlenden Reaktion ist angemessen?",
+      "en": "Brodie abscess is being considered in the differential. Radiographs show no periosteal response. How should this absent response be interpreted?",
+      "fa": "آبسهٔ برودی در تشخیص افتراقی مطرح است. رادیوگرافی واکنش پریوست نشان نمی‌دهد. تفسیر مناسبِ نبود این واکنش چیست؟"
+    },
+    "options": [
+      {
+        "de": "Die Infektionshypothese sollte zugunsten einer nichtinfektiösen Läsion zurückgestellt werden.",
+        "en": "The infection hypothesis should be deprioritised in favour of a noninfectious lesion.",
+        "fa": "فرض عفونت باید به نفع ضایعهٔ غیرعفونی در اولویت پایین‌تر قرار گیرد."
+      },
+      {
+        "de": "Die Läsion sollte ohne Periostreaktion als akut statt subakut oder chronisch eingeordnet werden.",
+        "en": "Without periosteal response, classify the lesion as acute rather than subacute or chronic.",
+        "fa": "بدون واکنش پریوست، ضایعه باید حاد و نه تحت‌حاد یا مزمن دسته‌بندی شود."
+      },
+      {
+        "de": "Das Fehlen passt zur variablen Morphologie; die übrigen klinischen und bildgebenden Befunde bleiben entscheidend.",
+        "en": "Absence fits the variable appearances; the remaining clinical and imaging findings still determine interpretation.",
+        "fa": "نبود آن با ظاهر متغیر سازگار است؛ سایر یافته‌های بالینی و تصویری همچنان برای تفسیر تعیین‌کننده‌اند."
+      },
+      {
+        "de": "Die fehlende Reaktion spricht eher für einen abgeheilten als einen fortbestehenden infektiösen Herd.",
+        "en": "Absent response favours a healed rather than an ongoing infectious focus.",
+        "fa": "نبود واکنش بیشتر به نفع کانون عفونی بهبودیافته است تا کانونی که همچنان وجود دارد."
+      }
+    ],
+    "correct": "C",
+    "explanation": {
+      "de": "In der ursprünglichen Serie von 25 Brodie-Abszessen zeigte nur ein Teil eine Periostreaktion. Ihr Fehlen ist daher kein Ausschlusskriterium. Die Serie belegt die Variabilität, nicht eine diagnostische Entscheidungsregel aus einem Einzelzeichen.",
+      "en": "Only some lesions had periosteal response in the original series of 25 Brodie abscesses. Its absence therefore does not exclude the diagnosis. The series supports variability, not a diagnostic decision rule from one sign.",
+      "fa": "در مجموعهٔ اصلی ۲۵ آبسهٔ برودی، فقط بخشی واکنش پریوست داشتند؛ بنابراین نبود آن معیار رد نیست. این مجموعه تنوع ظاهر را نشان می‌دهد، نه قاعدهٔ تصمیم‌گیری تشخیصی از یک نشانه."
+    },
+    "wrongExplanations": {
+      "A": {
+        "de": "Die Originalserie enthält Brodie-Abszesse ohne Periostreaktion; dieses fehlende Zeichen trägt die vorgeschlagene Umgewichtung allein nicht.",
+        "en": "The original series includes Brodie abscesses without periosteal response; this absent sign alone does not support the proposed reprioritisation.",
+        "fa": "مجموعهٔ اصلی شامل آبسه‌های برودی بدون واکنش پریوست است؛ این نشانهٔ غایب به‌تنهایی تغییر اولویت پیشنهادی را پشتیبانی نمی‌کند."
+      },
+      "B": {
+        "de": "Der zeitliche Verlauf wird nicht allein aus dem Vorhandensein oder Fehlen einer Periostreaktion bestimmt.",
+        "en": "Temporal course is not determined solely by whether periosteal response is present.",
+        "fa": "سیر زمانی صرفاً از وجود یا نبود واکنش پریوست تعیین نمی‌شود."
+      },
+      "D": {
+        "de": "Aus einer fehlenden Periostreaktion lässt sich die aktuelle Aktivität des möglichen Herdes nicht zuverlässig ableiten. Die übrigen Befunde und der Verlauf bleiben nötig.",
+        "en": "Absent periosteal response does not reliably determine the current activity of the possible focus. Other findings and clinical course remain necessary.",
+        "fa": "نبود واکنش پریوست، فعالیت فعلی کانون احتمالی را با اطمینان تعیین نمی‌کند؛ سایر یافته‌ها و سیر بالینی همچنان لازم‌اند."
+      }
+    },
+    "sources": [
+      "https://pubmed.ncbi.nlm.nih.gov/451190/"
+    ],
+    "topicId": "osteomyelitis",
+    "fach": "msk",
+    "difficulty": 1
+  },
+  {
+    "key": "paediatric-next-imaging",
+    "question": {
+      "de": "Bei einem 9-jährigen Kind besteht weiter Verdacht auf akute hämatogene Osteomyelitis. Initiale Röntgenaufnahmen klären den Befund nicht; weitere Bildgebung zur Diagnose und Ausdehnung ist erforderlich. Welche Modalität wird nach PIDS/IDSA 2021 bevorzugt?",
+      "en": "A 9-year-old child remains suspected of acute haematogenous osteomyelitis. Initial radiographs are inconclusive; additional imaging is required for diagnosis and extent. Which modality is preferred by PIDS/IDSA 2021?",
+      "fa": "در کودک ۹ ساله هنوز شک به استئومیلیت حاد هماتوژن وجود دارد. رادیوگرافی اولیه نتیجه را روشن نکرده و برای تشخیص و تعیین وسعت تصویربرداری بیشتر لازم است. طبق PIDS/IDSA ۲۰۲۱ کدام روش ترجیح داده می‌شود؟"
+    },
+    "options": [
+      {
+        "de": "MRT der betroffenen Region",
+        "en": "MRI of the affected region",
+        "fa": "MRI ناحیهٔ درگیر"
+      },
+      {
+        "de": "CT der betroffenen Region",
+        "en": "CT of the affected region",
+        "fa": "CT ناحیهٔ درگیر"
+      },
+      {
+        "de": "Knochenszintigrafie",
+        "en": "Bone scintigraphy",
+        "fa": "اسکن استخوان"
+      },
+      {
+        "de": "Sonografie der betroffenen Region",
+        "en": "Ultrasound of the affected region",
+        "fa": "سونوگرافی ناحیهٔ درگیر"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "de": "Wenn bei pädiatrischer akuter hämatogener Osteomyelitis weitere Bildgebung nötig ist, bevorzugt die Leitlinie MRT gegenüber CT, Szintigrafie oder Sonografie. Die Empfehlung ist konditional bei sehr niedriger Evidenzsicherheit; nicht jedes unkomplizierte Kind braucht zusätzliche MRT.",
+      "en": "When further imaging is needed in paediatric acute haematogenous osteomyelitis, the guideline favours MRI over CT, scintigraphy or ultrasound. This is conditional with very low-certainty evidence; not every uncomplicated child requires additional MRI.",
+      "fa": "اگر در استئومیلیت حاد هماتوژن کودکان تصویربرداری بیشتر لازم باشد، راهنما MRI را بر CT، اسکن استخوان یا سونوگرافی ترجیح می‌دهد. توصیه مشروط با قطعیت بسیار پایین شواهد است؛ همهٔ کودکان با بیماری بدون عارضه به MRI تکمیلی نیاز ندارند."
+    },
+    "wrongExplanations": {
+      "B": {
+        "de": "Die Leitlinie bevorzugt für den beschriebenen weiteren Bildgebungsbedarf MRT gegenüber CT. Daraus folgt kein Verbot klinisch begründeter CT in anderen Situationen.",
+        "en": "For this additional imaging requirement, the guideline favours MRI over CT. This is not a ban on clinically justified CT in other settings.",
+        "fa": "برای نیاز تکمیلی توصیف‌شده، راهنما MRI را بر CT ترجیح می‌دهد؛ این به معنای ممنوعیت CT با اندیکاسیون بالینی در موقعیت‌های دیگر نیست."
+      },
+      "C": {
+        "de": "MRT wird für diese Fragestellung gegenüber Knochenszintigrafie bevorzugt; die Empfehlung gilt hier für pädiatrische AHO.",
+        "en": "MRI is preferred over bone scintigraphy for this question; the recommendation here concerns paediatric AHO.",
+        "fa": "برای این پرسش MRI بر اسکن استخوان ترجیح دارد؛ این توصیه در اینجا مربوط به AHO کودکان است."
+      },
+      "D": {
+        "de": "Sonografie kann etwa einen angrenzenden Gelenkerguss oder eine Weichteilausbreitung ergänzend beurteilen; sie ersetzt die bevorzugte MRT-Beurteilung der Knocheninfektion hier nicht.",
+        "en": "Ultrasound may complement assessment of adjacent joint effusion or soft-tissue spread; it does not replace the preferred MRI assessment of bone infection here.",
+        "fa": "سونوگرافی می‌تواند ارزیابی افیوژن مفصل مجاور یا انتشار بافت نرم را تکمیل کند؛ اما اینجا جای ارزیابی ترجیحی MRI عفونت استخوان را نمی‌گیرد."
+      }
+    },
+    "sources": [
+      "https://www.idsociety.org/practice-guideline/bone-and-joint-infections---osteomyelitis/"
+    ],
+    "topicId": "osteomyelitis",
+    "fach": "msk",
+    "difficulty": 2
   }
 ]
-export const newQuestions=(lang='de')=>records.map(item=>({id: 'aq-msk-'+item.topicId+'-'+lang+'-'+item.key,fach:item.fach||'msk',tags:[item.topicId],question:pick(item.question,lang),options:item.options.map((text,i)=>({id:'ABCD'[i],text:pick(text,lang)})),correct:item.correct,explanation:pick(item.explanation,lang),wrongExplanations:Object.fromEntries(Object.entries(item.wrongExplanations).map(([key,value])=>[key,pick(value,lang)])),...(item.image?{image:Object.fromEntries(Object.entries(item.image).map(([key,value])=>[key,pick(value,lang)]))}:{}),sources:item.sources||[]}))
+export const newQuestions=(lang='de')=>records.map(item=>({id: 'aq-msk-'+item.topicId+'-'+lang+'-'+item.key,fach:item.fach||'msk',tags:[item.topicId],...(item.difficulty?{difficulty:item.difficulty}:{}),question:pick(item.question,lang),options:item.options.map((text,i)=>({id:'ABCD'[i],text:pick(text,lang)})),correct:item.correct,explanation:pick(item.explanation,lang),wrongExplanations:Object.fromEntries(Object.entries(item.wrongExplanations).map(([key,value])=>[key,pick(value,lang)])),...(item.image?{image:Object.fromEntries(Object.entries(item.image).map(([key,value])=>[key,pick(value,lang)]))}:{}),sources:item.sources||[]}))
 export const newCards=[
   {
     "id": "aq-msk-perthes-early-mri",
@@ -1361,6 +1598,106 @@ export const newCards=[
       "fa": "نام‌گذاری به‌تنهایی جای توصیف مورفولوژیک را نمی‌گیرد. نبود علامت خط دوگانه، استئونکروز را رد نمی‌کند و الگوی انفارکت نیز عفونت افزوده را رد نمی‌کند."
     },
     "source": "https://pubmed.ncbi.nlm.nih.gov/8508844/; https://pubmed.ncbi.nlm.nih.gov/10745133/"
+  },
+  {
+    "id": "aq-msk-wrist-lister-course",
+    "topicId": "sehnenpathologien-hand",
+    "category": {
+      "de": "Landmarken",
+      "en": "Landmarks",
+      "fa": "لندمارک‌ها"
+    },
+    "front": {
+      "de": "Wie hilft das Lister-Tuberkulum bei der Unterscheidung von Strecksehnenfach II und III?",
+      "en": "How does Lister tubercle help distinguish extensor compartments II and III?",
+      "fa": "تکمهٔ لیستر چگونه به تفکیک کمپارتمان‌های اکستانسور II و III کمک می‌کند؟"
+    },
+    "answer": {
+      "de": "II enthält ECRL/ECRB radial des Tuberkulums; III enthält EPL, der um Lister nach radial zum Daumen zieht.",
+      "en": "II contains ECRL/ECRB radial to the tubercle; III contains EPL, which turns around Lister toward the thumb.",
+      "fa": "II شامل ECRL/ECRB در سمت رادیال تکمه است؛ III شامل EPL است که دور لیستر به سمت رادیال و شست می‌رود."
+    },
+    "explanation": {
+      "de": "Das Lister-Tuberkulum mit dem Verlauf der EPL-Sehne verknüpfen. Distal des dritten Fachs kann ihre Lage mit der Handgelenk- und Daumenstellung variieren.",
+      "en": "Link Lister tubercle to the EPL course. Beyond the third compartment its position may vary with wrist and thumb posture.",
+      "fa": "تکمهٔ لیستر را با مسیر EPL مرتبط کنید. در دیستال کمپارتمان سوم، موقعیت آن می‌تواند با وضعیت مچ و شست تغییر کند."
+    },
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11775041/"
+  },
+  {
+    "id": "aq-msk-osteomyelitis-periosteal-limit",
+    "category": {
+      "de": "Befundinterpretation",
+      "en": "Report interpretation",
+      "fa": "تفسیر گزارش"
+    },
+    "front": {
+      "de": "Was darf aus einer lamellären Periostreaktion nicht allein abgeleitet werden?",
+      "en": "What cannot be inferred from a lamellated periosteal response alone?",
+      "fa": "از واکنش پریوست لایه‌لایه، چه چیزی را نمی‌توان به‌تنهایی نتیجه گرفت؟"
+    },
+    "answer": {
+      "de": "Weder eine bestimmte Histologie noch ein Erreger; Infektion und Neoplasie bleiben im Kontext zu prüfen.",
+      "en": "Neither a specific histology nor a pathogen; consider infection and neoplasia in context.",
+      "fa": "نه بافت‌شناسی مشخص و نه عامل عفونی؛ عفونت و نئوپلازی باید در زمینه بررسی شوند."
+    },
+    "explanation": {
+      "de": "Das Reaktionsmuster beschreibt den Knochenumbau, nicht dessen Ursache. Die Quelle nennt Ewing-Sarkom und Osteomyelitis als Beispiele, ohne Exklusivität.",
+      "en": "The response pattern describes bone remodelling, not its cause. The source lists Ewing sarcoma and osteomyelitis as nonexclusive examples.",
+      "fa": "الگوی واکنش، بازسازی استخوان را توصیف می‌کند نه علت آن را. منبع یوئینگ و استئومیلیت را به‌عنوان نمونه‌های غیرانحصاری ذکر می‌کند."
+    },
+    "source": "MSK.pdf, PDF-S.73 / Druck-S.72.",
+    "topicId": "osteomyelitis"
+  },
+  {
+    "id": "aq-msk-osteomyelitis-brodie-variability",
+    "category": {
+      "de": "Brodie-Abszess",
+      "en": "Brodie abscess",
+      "fa": "آبسهٔ برودی"
+    },
+    "front": {
+      "de": "Schließt eine fehlende Periostreaktion einen Brodie-Abszess aus?",
+      "en": "Does absent periosteal response exclude a Brodie abscess?",
+      "fa": "آیا نبود واکنش پریوست آبسهٔ برودی را رد می‌کند؟"
+    },
+    "answer": {
+      "de": "Nein. Die radiologische Morphologie ist variabel; übrige Bildgebung, Klinik und Verlauf müssen zusammen bewertet werden.",
+      "en": "No. Radiographic appearances vary; integrate other imaging findings, clinical context and course.",
+      "fa": "خیر. ظاهر رادیولوژیک متغیر است؛ سایر یافته‌های تصویری، بالین و سیر باید با هم ارزیابی شوند."
+    },
+    "explanation": {
+      "de": "Die ursprüngliche 25-Fall-Serie enthielt auch Läsionen ohne Periostreaktion. Sie liefert kein Ausschlusskriterium aus diesem einzelnen Zeichen.",
+      "en": "The original 25-case series included lesions without periosteal response. It does not provide an exclusion rule from this one sign.",
+      "fa": "مجموعهٔ اصلی ۲۵ موردی شامل ضایعات بدون واکنش پریوست نیز بود؛ از این نشانهٔ منفرد قاعدهٔ رد به دست نمی‌آید."
+    },
+    "source": "https://pubmed.ncbi.nlm.nih.gov/451190/",
+    "topicId": "osteomyelitis"
+  },
+  {
+    "id": "aq-msk-osteomyelitis-paediatric-imaging",
+    "category": {
+      "de": "Pädiatrische AHO",
+      "en": "Paediatric AHO",
+      "fa": "AHO کودکان"
+    },
+    "front": {
+      "de": "Welche Bildgebungsfolge empfiehlt PIDS/IDSA2021 bei vermuteter pädiatrischer AHO, wenn weitere Bildgebung nötig ist?",
+      "en": "What imaging sequence does PIDS/IDSA2021 recommend for suspected paediatric AHO when further imaging is needed?",
+      "fa": "اگر در AHO احتمالی کودکان تصویربرداری بیشتر لازم باشد، PIDS/IDSA۲۰۲۱ چه توالی‌ای توصیه می‌کند؟"
+    },
+    "answer": {
+      "de": "Zunächst Röntgen; bei weiterem Bildgebungsbedarf MRT gegenüber CT, Szintigrafie oder Sonografie bevorzugen.",
+      "en": "Initial radiographs; if more imaging is needed, prefer MRI over CT, scintigraphy or ultrasound.",
+      "fa": "ابتدا رادیوگرافی؛ اگر بررسی بیشتر لازم باشد، MRI بر CT، اسکن استخوان یا سونوگرافی ترجیح دارد."
+    },
+    "explanation": {
+      "de": "Initiale Röntgenbilder können trotz Infektion wenig auffällig sein. Die zusätzliche MRT-Empfehlung ist konditional bei sehr unsicherer Evidenz und ist hier keine universelle Regel für Erwachsene oder jede Osteomyelitisform.",
+      "en": "Initial radiographs may be inconspicuous despite infection. The additional MRI recommendation is conditional with very low-certainty evidence and is not a universal rule for adults or all forms of osteomyelitis.",
+      "fa": "رادیوگرافی اولیه ممکن است با وجود عفونت چندان غیرطبیعی نباشد. توصیهٔ MRI تکمیلی مشروط با قطعیت بسیار پایین شواهد است و قاعدهٔ همگانی برای بزرگسالان یا همهٔ انواع استئومیلیت نیست."
+    },
+    "source": "https://www.idsociety.org/practice-guideline/bone-and-joint-infections---osteomyelitis/",
+    "topicId": "osteomyelitis"
   }
 ]
 export const topics=[
@@ -1453,6 +1790,21 @@ export const topics=[
       "fa": "هیپراستوز قشری · MRI تکمیلی · محدودیت تفسیر"
     },
     "href": "/flashcards/melorheostose"
+  },
+  {
+    "id": "osteomyelitis",
+    "title": {
+      "de": "Osteomyelitis: Differentialhinweise",
+      "en": "Osteomyelitis: differential clues",
+      "fa": "استئومیلیت: سرنخ‌های افتراقی"
+    },
+    "subject": "msk",
+    "description": {
+      "de": "Periostmuster · Brodie-Variabilität · begrenzte pädiatrische Bildgebungsempfehlung",
+      "en": "Periosteal pattern · Brodie variability · scoped paediatric imaging recommendation",
+      "fa": "الگوی پریوست · تنوع برودی · توصیهٔ محدود تصویربرداری کودکان"
+    },
+    "href": "/flashcards/osteomyelitis"
   }
 ]
 export const routeCoverage=[
@@ -2688,6 +3040,105 @@ export const routeCoverage=[
         ],
         "cardIds": [
           "de-quervain-provocation"
+        ]
+      }
+    ]
+  },
+  {
+    "route": "/msk/hand/strecksehnenfaecher",
+    "topicId": "sehnenpathologien-hand",
+    "status": "AUTHOR_FULL_ORIGINAL_POOL_REVIEW_READY",
+    "learningGoals": [
+      {
+        "id": "carpal-joints",
+        "text": {
+          "de": "Mediokarpal-, Radiokarpal- und distale Gelenklinien anatomisch zuordnen.",
+          "en": "Localise midcarpal, radiocarpal and distal joint lines anatomically.",
+          "fa": "خطوط مفصلی میدکارپی، رادیوکارپی و دیستال را از نظر آناتومیک مکان‌یابی کنید."
+        },
+        "questionIds": [
+          "sehnenpathologien-hand-de-02"
+        ],
+        "cardIds": [
+          "wrist-carpal-midcarpal"
+        ]
+      },
+      {
+        "id": "compartment-map",
+        "text": {
+          "de": "Die radialen und ulnaren Strecksehnenfächer anhand ihrer Sehnen und Knochenlandmarken identifizieren.",
+          "en": "Identify radial and ulnar extensor compartments using their tendons and bony landmarks.",
+          "fa": "کمپارتمان‌های اکستانسور رادیال و اولنار را با تاندون‌ها و لندمارک‌های استخوانی شناسایی کنید."
+        },
+        "questionIds": [
+          "sehnenpathologien-hand-de-01"
+        ],
+        "cardIds": [
+          "wrist-extensor-compartment-1",
+          "wrist-extensor-compartment-6"
+        ]
+      },
+      {
+        "id": "lister",
+        "text": {
+          "de": "Am Lister-Tuberkulum das zweite Fach von der EPL-Umlenkung im dritten Fach unterscheiden.",
+          "en": "At Lister tubercle distinguish the second compartment from EPL turning in the third.",
+          "fa": "کنار تکمهٔ لیستر، کمپارتمان دوم را از تغییر جهت EPL در کمپارتمان سوم تفکیک کنید."
+        },
+        "questionIds": [
+          "aq-msk-sehnenpathologien-hand-de-lister-course"
+        ],
+        "cardIds": [
+          "aq-msk-wrist-lister-course"
+        ]
+      }
+    ]
+  },
+  {
+    "route": "/msk/infektionen/osteomyelitis",
+    "topicId": "osteomyelitis",
+    "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW",
+    "learningGoals": [
+      {
+        "id": "periosteal-report",
+        "text": {
+          "de": "Eine lamelläre Periostreaktion als unspezifische Knochenantwort differenzialdiagnostisch berichten.",
+          "en": "Report lamellated periosteal response as a nonspecific bone reaction in the differential.",
+          "fa": "واکنش پریوست لایه‌لایه را به‌عنوان پاسخ غیراختصاصی استخوان در افتراق گزارش کنید."
+        },
+        "questionIds": [
+          "aq-msk-osteomyelitis-de-periosteal-report"
+        ],
+        "cardIds": [
+          "aq-msk-osteomyelitis-periosteal-limit"
+        ]
+      },
+      {
+        "id": "brodie-variability",
+        "text": {
+          "de": "Das Fehlen einer Periostreaktion ohne unbegründeten Ausschluss eines Brodie-Abszesses einordnen.",
+          "en": "Interpret absent periosteal response without unjustifiably excluding Brodie abscess.",
+          "fa": "نبود واکنش پریوست را بدون رد ناموجه آبسهٔ برودی تفسیر کنید."
+        },
+        "questionIds": [
+          "aq-msk-osteomyelitis-de-brodie-variability"
+        ],
+        "cardIds": [
+          "aq-msk-osteomyelitis-brodie-variability"
+        ]
+      },
+      {
+        "id": "paediatric-imaging",
+        "text": {
+          "de": "Bei weiterem Bildgebungsbedarf im pädiatrischen AHO-Kontext MRT auswählen und den Geltungsbereich der Empfehlung benennen.",
+          "en": "Select MRI when further imaging is needed in paediatric AHO and state the scope of that recommendation.",
+          "fa": "در AHO کودکان و در صورت نیاز به تصویربرداری بیشتر، MRI را انتخاب و دامنهٔ توصیه را مشخص کنید."
+        },
+        "questionIds": [
+          "aq-msk-osteomyelitis-de-paediatric-next-imaging"
+        ],
+        "cardIds": [
+          "aq-msk-osteomyelitis-paediatric-imaging"
         ]
       }
     ]

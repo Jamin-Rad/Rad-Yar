@@ -152,7 +152,7 @@ export const HRCT_LESSONS = {
     title: L('HRCT: Architekturmuster', 'HRCT: Architectural Patterns', 'HRCT: الگوهای معماری'),
     definition: L('Honeycombing, Mosaikmuster und Crazy Paving anhand ihrer Bausteine und Verteilung sicher unterscheiden.', 'Distinguish honeycombing, mosaic attenuation and crazy paving by their components and distribution.', 'هانی‌کومبینگ، موزائیک و کریزی‌پیونگ را بر اساس اجزا و توزیع تفکیک کنید.'),
     heroCards: [
-      { value: L('Honeycombing', 'Honeycombing', 'هانی‌کومبینگ'), label: L('Endstadium', 'end-stage fibrosis', 'فیبروز انتهایی'), text: L('subpleural, geschichtet', 'subpleural, stacked', 'ساب‌پلورال، لایه‌ای') },
+      { value: L('Honeycombing', 'Honeycombing', 'هانی‌کومبینگ'), label: L('Fibrosezeichen', 'fibrotic sign', 'نشانهٔ فیبروز'), text: L('subpleurale Zysten und Architekturverlust', 'subpleural cysts and architectural loss', 'کیست‌های ساب‌پلورال و تخریب معماری') },
       { value: L('Mosaik', 'Mosaic', 'موزائیک'), label: L('3 Mechanismen', '3 mechanisms', '۳ مکانیسم'), text: L('Lunge, Atemweg, Gefäß', 'lung, airway, vessel', 'ریه، راه هوایی، عروق') },
       { value: L('Crazy Paving', 'Crazy paving', 'کریزی‌پیونگ'), label: L('GGO + Septen', 'GGO + septa', 'GGO + سپتا'), text: L('nicht spezifisch', 'nonspecific', 'غیراختصاصی') },
     ],
@@ -181,9 +181,9 @@ export const HRCT_LESSONS = {
       },
       {
         id: 'crazypaving', icon: '🧱', title: L('Crazy Paving', 'Crazy Paving', 'کریزی‌پیونگ'),
-        lead: L('Crazy Paving ist die Überlagerung von Milchglas und glatter inter- sowie intralobulärer Septenverdickung.', 'Crazy paving combines GGO with smooth interlobular and intralobular septal thickening.', 'کریزی‌پیونگ ترکیب شیشه‌مات با ضخیم‌شدگی صاف سپتاهای بین‌لوبولی و داخل‌لوبولی است.'),
+        lead: L('Crazy Paving beschreibt Milchglas mit darüberliegenden interlobulären Septen und/oder intralobulären Linien. Die Linien sind nicht in jedem Fall ausschließlich glatt.', 'Crazy paving describes ground glass with superimposed interlobular septa and/or intralobular lines. The lines need not always be exclusively smooth.', 'کریزی‌پیونگ شیشه‌مات همراه سپتاهای بین‌لوبولی و/یا خطوط داخل‌لوبولی روی آن را توصیف می‌کند. خطوط در همهٔ موارد الزاماً فقط صاف نیستند.'),
         cards: [
-          { title: L('Klassische Assoziation', 'Classic association', 'ارتباط کلاسیک'), text: L('Pulmonale Alveolarproteinose, häufig geografisch begrenzt.', 'Pulmonary alveolar proteinosis, often with geographic margins.', 'پروتئینوز آلوئولی ریه، اغلب با حدود جغرافیایی.') },
+          { title: L('Klassische Assoziation', 'Classic association', 'ارتباط کلاسیک'), text: L('Pulmonale Alveolarproteinose, häufig geografisch begrenzt. Protein-/lipidreiches Material in den Alveolen kann Milchglas und eine überlagerte lineare Zeichnung erzeugen; das CT-Muster allein sichert die Diagnose nicht.', 'Pulmonary alveolar proteinosis, often with geographic margins. Protein-/lipid-rich material within alveoli can produce ground glass with superimposed lines; the CT pattern alone does not establish the diagnosis.', 'پروتئینوز آلوئولی ریه، اغلب با حدود جغرافیایی. مادهٔ غنی از پروتئین/چربی داخل آلوئول می‌تواند شیشه‌مات و خطوط روی آن ایجاد کند؛ خود الگوی CT تشخیص را ثابت نمی‌کند.') },
           { title: L('Wichtige DD', 'Important differentials', 'افتراق‌های مهم'), text: L('Infektion einschließlich PJP/viral, Ödem, Hämorrhagie, ARDS und Adenokarzinom.', 'Infection including PJP/viral, oedema, haemorrhage, ARDS and adenocarcinoma.', 'عفونت از جمله PJP/ویروسی، ادم، خونریزی، ARDS و آدنوکارسینوم.') },
         ],
         images: [{ ...img('/hrct/architekturmuster/image27.jpeg', 'Erkenne die Kombination aus Milchglas und glatten Septen.', 'Identify the combination of ground-glass opacity and smooth septal thickening.', 'ترکیب شیشه‌مات و ضخیم‌شدگی صاف سپتا را شناسایی کنید.', 63668, { source: 'Thorax.pdf', page: 23, printedPage: 22, radiopaediaId: 63668, match: 'Local CT asset visually matches the crazy-paving panel on physical p.23; local asset derivation and case frame/contributor are not independently recorded.' }), alt: L('CT mit Crazy-Paving-Muster', 'CT showing a crazy-paving pattern', 'CT با الگوی کریزی‌پیونگ') }],
@@ -195,16 +195,7 @@ export const HRCT_LESSONS = {
       L('Beim Mosaikmuster Gefäßkaliber vergleichen und Exspirations-CT nutzen.', 'In mosaic attenuation compare vessel calibre and use expiratory CT.', 'در موزائیک قطر عروق را مقایسه و از CT بازدمی استفاده کنید.'),
       L('Crazy Paving = Milchglas + Septenverdickung; die Ursache bleibt kontextabhängig.', 'Crazy paving = GGO plus septal thickening; the cause remains context-dependent.', 'کریزی‌پیونگ = شیشه‌مات + ضخیم‌شدگی سپتا؛ علت وابسته به زمینه است.'),
     ],
-    selfCheck: {
-      question: L('Welche Befundkombination spricht im Mosaikmuster eher für eine vaskuläre als für eine Small-Airways-Ursache?', 'In mosaic attenuation, which combination favors a vascular over a small-airway cause?', 'در دانسیته موزائیک، کدام مجموعه یافته بیشتر به نفع علت عروقی در برابر علت راه هوایی کوچک است؟'),
-      options: [
-        L('Kleinere Gefäße in den hypodensen Arealen ohne überzeugendes Air Trapping in Exspiration', 'Smaller vessels in low-attenuation regions without convincing expiratory air trapping', 'عروق کوچک‌تر در نواحی کم‌دانسیته، بدون شواهد قانع‌کنندهٔ به‌دام‌افتادگی هوا در بازدم'),
-        L('Persistierende Minderattenuation mit Air Trapping in Exspiration', 'Persistent low attenuation with expiratory air trapping', 'افزایش دانسیته و کاهش حجم کمتر از حد طبیعی در بازدم همراه به‌دام‌افتادگی هوا در بازدم'),
-        L('Dichtere Areale mit fleckigem Milchglas und ähnlichem Gefäßkaliber', 'Denser regions with patchy ground-glass opacity and similar vessel calibre', 'نواحی متراکم‌تر با شیشه‌مات لکه‌ای و قطر عروق مشابه'),
-      ],
-      answer: 0,
-      explanation: L('Kleineres Gefäßkaliber stützt eine vaskuläre Ursache, während Air Trapping in Exspiration eher für eine Small-Airways-Erkrankung spricht. Hypoventilation kann die Gefäße ebenfalls verkleinert erscheinen lassen; die Kombination unterstützt, beweist aber keine Ursache.', 'Smaller vessel calibre supports a vascular cause, whereas expiratory air trapping favors small-airway disease. Hypoventilation can also make vessels appear smaller; the combination supports but does not prove a cause.', 'قطر کمتر عروق از علت عروقی حمایت می‌کند، درحالی‌که Air Trapping در بازدم بیشتر به نفع بیماری راه هوایی کوچک است. کم‌تهویگی هم می‌تواند عروق را کوچک‌تر نشان دهد؛ این مجموعه فقط حمایت‌کننده است و علت را ثابت نمی‌کند.'),
-    },
+    selfCheck: {question:HRCT_CLINICAL_REVISIONS['hrct-architekturmuster-05'].question,options:HRCT_CLINICAL_REVISIONS['hrct-architekturmuster-05'].options,answer:HRCT_CLINICAL_REVISIONS['hrct-architekturmuster-05'].correct,explanation:HRCT_CLINICAL_REVISIONS['hrct-architekturmuster-05'].explanation,wrongFeedback:HRCT_CLINICAL_REVISIONS['hrct-architekturmuster-05'].wrong},
   },
   'hrct-dichteminderung': {
     id: 'hrct-dichteminderung', slug: 'dichteminderung',
@@ -642,3 +633,6 @@ HRCT_LESSONS['hrct-dichteminderung'].clinicalReferences = [
     "url": "https://pubmed.ncbi.nlm.nih.gov/17273583/"
   }
 ]
+
+HRCT_LESSONS['hrct-architekturmuster'].clinicalReferences = [{title:L('Fleischner Society: Thorax-Begriffe (2024)','Fleischner Society: thoracic terminology (2024)','انجمن فلایشنر: اصطلاحات قفسهٔ سینه (۲۰۲۴)'),url:'https://doi.org/10.1148/radiol.232558'},{title:L('De Wever: Crazy Paving und radiologisch-pathologische Korrelation (2011)','De Wever: crazy paving and radiological-pathological correlation (2011)','دو وِوِر: کریزی‌پیونگ و تطبیق رادیولوژی-آسیب‌شناسی (۲۰۱۱)'),url:'https://pmc.ncbi.nlm.nih.gov/articles/PMC3259383/'}]
+HRCT_LESSONS['hrct-architekturmuster'].clinicalReferences.push({title:L('ATS/ERS/JRS/ALAT: UIP-Muster (2022)','ATS/ERS/JRS/ALAT: UIP pattern (2022)','ATS/ERS/JRS/ALAT: الگوی UIP (۲۰۲۲)'),url:'https://pmc.ncbi.nlm.nih.gov/articles/PMC9851481/'})

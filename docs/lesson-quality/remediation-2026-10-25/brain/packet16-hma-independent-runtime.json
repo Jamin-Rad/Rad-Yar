@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "actualProducerManifestObjects": "48/48",
+  "actualGlobalConsumerObjects": "48/48",
+  "teachingFields": 155,
+  "goals": 4,
+  "requiredRepairs": "2FAexplanations+9caption/altlocale fields+1ENtypo actual exact",
+  "limits": "Actual export/source parity only; semantic and fresh primary-source review recorded separately. No browser/release approval."
+}

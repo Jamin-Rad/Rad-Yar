@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "date": "2026-10-25",
+  "canonicalGlobalAndReviewedAfterObjects": 51,
+  "localizedQuestions": 36,
+  "cardTriads": 15,
+  "keysStable": true,
+  "goalReferences": 4,
+  "changedSinceIndependentReadSnapshot": [
+    "distaleradius-de-chauffeur",
+    "distaleradius-de-step",
+    "distaleradius-de-tilt",
+    "distaleradius-de-sl",
+    "distaleradius-de-ct",
+    "distaleradius-en-chauffeur",
+    "distaleradius-en-step",
+    "distaleradius-en-sl",
+    "distaleradius-en-ct",
+    "distaleradius-fa-chauffeur",
+    "distaleradius-fa-step",
+    "distaleradius-fa-sl",
+    "distaleradius-fa-ct",
+    "drf-fc-06",
+    "drf-fc-07",
+    "drf-fc-08",
+    "drf-fc-10",
+    "drf-fc-11"
+  ],
+  "lessonMatchesAfter": true
+}

@@ -1,119 +1,552 @@
-const L = (de, en, fa) => ({ de, en, fa })
-
-const items = [
-  {
-    id: 'hepatisches-angiomyolipom-fat',
-    question: L(
-      'Eine Leberläsion zeigt kaum sichtbares Fett. Welche Aussage zum hepatischen Angiomyolipom (HAML) passt am besten?',
-      'A liver lesion contains little visible fat. Which statement about hepatic angiomyolipoma (HAML) is most accurate?',
-      'در یک ضایعه کبدی چربی قابل مشاهده بسیار کم است. کدام عبارت درباره آنژیومیولیپوم کبدی (HAML) دقیق‌تر است؟'
-    ),
-    options: [
-      L('HAML ist damit ausgeschlossen.', 'This excludes HAML.', 'با این یافته HAML رد می‌شود.'),
-      L('Fett kann spärlich oder nicht sichtbar sein; HCC kann ebenfalls Fett enthalten.', 'Fat may be sparse or not visible; HCC can also contain fat.', 'چربی ممکن است کم یا نامشهود باشد؛ HCC نیز می‌تواند چربی داشته باشد.'),
-      L('Jede Läsion mit Fett ist sicher HAML.', 'Any lesion containing fat is definitely HAML.', 'هر ضایعه دارای چربی قطعاً HAML است.'),
-      L('Ein einzelner negativer HU-Wert beweist HAML.', 'A single negative HU value proves HAML.', 'یک مقدار HU منفی به‌تنهایی HAML را ثابت می‌کند.'),
-    ], correct: 'B',
-    explanation: L(
-      'Der Fettanteil kann klein sein oder fehlen, und auch HCC kann Fett enthalten. Fett ist ein Hinweis, aber kein alleiniger Beweis.',
-      'The fat component may be small or absent, and HCC can also contain fat. Fat is a clue, not proof on its own.',
-      'مقدار چربی می‌تواند کم یا غایب باشد و HCC نیز ممکن است چربی داشته باشد. چربی سرنخ است، نه اثبات قطعی.'
-    ),
-  },
-  {
-    id: 'hepatisches-angiomyolipom-washout',
-    question: L(
-      'Welche Aussage unterscheidet die PDF-Angaben zu Wash-out korrekt von der externen Wang-Serie?',
-      'Which statement correctly distinguishes the PDF discussion of wash-out from the external Wang series?',
-      'کدام عبارت بحث wash-out در PDF را به‌درستی از سری مستقل Wang تفکیک می‌کند؟'
-    ),
-    options: [
-      L('Wash-out schließt HAML aus.', 'Wash-out excludes HAML.', 'wash-out، HAML را رد می‌کند.'),
-      L('Fehlendes Wash-out bestätigt HAML.', 'Absence of wash-out confirms HAML.', 'نبود wash-out، HAML را تأیید می‌کند.'),
-      L('Die PDF selbst berichtet frühes Wash-out in zwei AML-Fällen mit TSC.', 'The PDF itself reports early wash-out in two AML cases with TSC.', 'خود PDF در دو مورد AML همراه TSC، wash-out زودرس گزارش می‌کند.'),
-      L('Die PDF beschreibt kein typisches Wash-out; die separate Wang-Serie berichtet frühes Wash-out in zwei TSC-Fällen. Das Muster ist variabel.', 'The PDF describes no typical wash-out; the separate Wang series reports early wash-out in two TSC cases. The pattern is variable.', 'PDF، wash-out تیپیک را توصیف نمی‌کند؛ سری مستقل Wang در دو مورد TSC، wash-out زودرس گزارش کرده است. الگو متغیر است.'),
-    ], correct: 'D',
-    explanation: L(
-      'Die PDF-Seite 12 beschreibt kein typisches Wash-out und eine späte Angleichung; Seite 13 nennt fehlendes Wash-out als Unterschied zu HCC. Die separate Wang-Serie berichtet frühes Wash-out in zwei TSC-Fällen. Diese Angaben stammen aus unterschiedlichen Quellen und zeigen variable Muster.',
-      'PDF page 12 describes no typical wash-out and late equalisation; page 13 lists absent wash-out as a difference from HCC. The separate Wang series reports early wash-out in two TSC cases. These are findings from different sources and show variable patterns.',
-      'صفحه ۱۲ PDF نبود wash-out تیپیک و هم‌سطح‌شدن تأخیری را شرح می‌دهد؛ صفحه ۱۳ نبود wash-out را تفاوت با HCC می‌داند. سری جداگانه Wang در دو مورد TSC، wash-out زودرس گزارش کرده است. این یافته‌ها از منابع متفاوت‌اند و تنوع الگوها را نشان می‌دهند.'
-    ),
-  },
-  {
-    id: 'hepatisches-angiomyolipom-hcc',
-    question: L(
-      'Welche Aussage zur Differenzialdiagnose HAML versus HCC ist am besten begründet?',
-      'Which statement about the HAML versus HCC differential is best supported?',
-      'کدام عبارت درباره افتراق HAML از HCC مستندتر است؟'
-    ),
-    options: [
-      L('HCC enthält nie Fett.', 'HCC never contains fat.', 'HCC هرگز چربی ندارد.'),
-      L('Arterielle Hypervaskularität allein beweist HAML.', 'Arterial hypervascularity alone proves HAML.', 'پرعروقی شریانی به‌تنهایی HAML را ثابت می‌کند.'),
-      L('HCC kann Fett enthalten und HAML imitieren; Kontext, Kapsel, Gefäßmuster und Voraufnahmen gemeinsam beurteilen.', 'HCC can contain fat and mimic HAML; assess context, capsule, vascular pattern and prior studies together.', 'HCC می‌تواند چربی داشته باشد و HAML را تقلید کند؛ زمینه، کپسول، الگوی عروقی و تصاویر قبلی را با هم بسنجید.'),
-      L('Ein früher drainierender Venenast schließt HCC sicher aus.', 'An early draining vein branch definitively excludes HCC.', 'ورید تخلیه‌کننده زودرس HCC را قطعاً رد می‌کند.'),
-    ], correct: 'C',
-    explanation: L(
-      'HCC kann makroskopisches oder mikroskopisches Fett enthalten. Die Merkmale und der klinische HCC-Risikokontext müssen gemeinsam gewertet werden; einzelne Zeichen sind nicht beweisend.',
-      'HCC can contain macroscopic or microscopic fat. Imaging features and the clinical HCC risk context must be assessed together; no single sign is definitive.',
-      'HCC می‌تواند چربی ماکروسکوپیک یا میکروسکوپیک داشته باشد. یافته‌های تصویری و زمینه خطر بالینی HCC باید با هم ارزیابی شوند؛ هیچ علامت منفردی قطعی نیست.'
-    ),
-  },
-  {
-    id: 'hepatisches-angiomyolipom-report',
-    question: L(
-      'Welche Angaben gehören zur strukturierten Beschreibung einer überlappenden Leberläsion mit HAML-Verdacht?',
-      'Which details belong in a structured description of an overlapping liver lesion suspicious for HAML?',
-      'برای توصیف ساختاریافته ضایعه کبدی همپوشان با شک به HAML، کدام موارد باید ثبت شوند؟'
-    ),
-    options: [
-      L('Nur der vermutete Tumorname.', 'Only the suspected tumour name.', 'فقط نام تومور احتمالی.'),
-      L('Segment, Größe/Zahl, Fettmuster, Gefäß- und Phasenmuster, Hintergrundleber/Risikokontext sowie Unsicherheit.', 'Segment, size/count, fat pattern, vascular and phase pattern, background liver/risk context, and uncertainty.', 'سگمان، اندازه/تعداد، الگوی چربی، الگوی عروقی و فازها، پارانشیم زمینه/زمینه خطر و عدم قطعیت.'),
-      L('Nur ein HU-Wert und die arterielle Phase.', 'Only one HU value and the arterial phase.', 'فقط یک مقدار HU و فاز شریانی.'),
-      L('Eine definitive Diagnose ohne Angabe der Voraufnahmen.', 'A definitive diagnosis without mentioning prior studies.', 'تشخیص قطعی بدون اشاره به تصاویر قبلی.'),
-    ], correct: 'B',
-    explanation: L(
-      'Die Lektion empfiehlt Segment, Größe und Zahl, Fett, Gefäßmuster und Phasen, Hintergrundleber/HCC-Risiko und Voraufnahmen; bei Überlappung soll Unsicherheit benannt werden.',
-      'The lesson calls for segment, size and count, fat, vascular pattern and phases, background liver/HCC risk and prior studies; uncertainty should be stated when findings overlap.',
-      'درس ثبت سگمان، اندازه و تعداد، چربی، الگوی عروقی و فازها، پارانشیم زمینه/خطر HCC و تصاویر قبلی را توصیه می‌کند؛ در یافته‌های همپوشان باید عدم قطعیت بیان شود.'
-    ),
-  },
-]
-
-export const HEPATIC_ANGIOMYOLIPOMA_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [
-  lang,
-  items.map((item, index) => ({
-    id: `${item.id}-${lang}`,
-    topicId: 'hepatisches-angiomyolipom',
-    tags: ['hepatisches-angiomyolipom'],
-    fach: 'abdomen',
-    question: item.question[lang],
-    options: item.options.map((option, optionIndex) => ({ id: String.fromCharCode(65 + optionIndex), text: option[lang] })),
-    correct: item.correct,
-    explanation: item.explanation[lang],
-    source: index === 1
-      ? `Abdomen.pdf, pp. 12–13; Wang et al., 2009 (PMC2712904); hepatic AML lesson /abdomen/leber/angiomyolipom; question ${index + 1}`
-      : `Abdomen.pdf, pp. 12–13; hepatic AML lesson /abdomen/leber/angiomyolipom; question ${index + 1}`,
-  }))
-]))
-
-export const HEPATIC_ANGIOMYOLIPOMA_FLASHCARD_TOPIC = {
-  id: 'hepatisches-angiomyolipom', area: 'Abdomen', chapter: 'Leber', icon: 'CT', iconImage: '/fach/abdomen.png', color: '#0f766e', href: '/flashcards/hepatisches-angiomyolipom',
-  title: L('Hepatisches Angiomyolipom', 'Hepatic angiomyolipoma', 'آنژیومیولیپوم کبدی'),
-  subtitle: L('Fett · Enhancement-Variabilität · HCC-DD · strukturierter Befund', 'Fat · variable enhancement · HCC differential · structured report', 'چربی · تغییرپذیری جذب · افتراق HCC · گزارش ساختاریافته'),
+// Canonical original HAML assessment pool; IDs and correct keys preserved.
+export const HEPATIC_ANGIOMYOLIPOMA_QUESTIONS={
+  "de": [
+    {
+      "id": "hepatisches-angiomyolipom-fat-de",
+      "topicId": "hepatisches-angiomyolipom",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fach": "abdomen",
+      "question": "Eine hypervaskuläre Leberläsion enthält nativ klar negative Dichteanteile. Welche Gewebekomponente ist damit am ehesten nachgewiesen, ohne die Tumorart bereits festzulegen?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Frische Einblutung"
+        },
+        {
+          "id": "B",
+          "text": "Makroskopisches Fett"
+        },
+        {
+          "id": "C",
+          "text": "Verkalkung"
+        },
+        {
+          "id": "D",
+          "text": "Proteinreiche Flüssigkeit"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Klar negative Dichteanteile sprechen für makroskopisches Fett. Fett kann in HAML, aber auch in HCC vorkommen; in fettarmem HAML kann es kaum erkennbar sein. Die Komponente hilft bei der Beschreibung, ist kein alleiniger Tumornachweis.",
+      "wrongExplanations": {
+        "A": "Frisches Blut ist nativ typischerweise hyperdens und erklärt die klar negativen Dichteanteile nicht.",
+        "C": "Kalzium ist hochdicht und nicht die Erklärung für klar negative Dichteanteile.",
+        "D": "Proteinreiche Flüssigkeit kann dichter als einfaches Wasser sein; klar negative Werte sprechen hier eher für Fett."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+    },
+    {
+      "id": "hepatisches-angiomyolipom-washout-de",
+      "topicId": "hepatisches-angiomyolipom",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fach": "abdomen",
+      "question": "Eine solide Leberläsion in nichtzirrhotischer Leber zeigt in der gadoxetischen MRT arterielle Hypervaskularität und spätere relative Hypointensität. HAML und HCC werden erwogen. Welche diagnostische Gewichtung dieses dynamischen Musters ist am treffendsten?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Das Muster gewichtet HCC höher als HAML."
+        },
+        {
+          "id": "B",
+          "text": "Das Muster gewichtet HAML höher als HCC."
+        },
+        {
+          "id": "C",
+          "text": "Das Muster gewichtet FNH höher als beide Diagnosen."
+        },
+        {
+          "id": "D",
+          "text": "Das Muster lässt HAML und HCC als Differenzialdiagnosen bestehen."
+        }
+      ],
+      "correct": "D",
+      "explanation": "HAML und HCC können in gadoxetischer MRT ähnliche dynamische Profile zeigen. Spätere Minderintensität trennt sie nicht zuverlässig; Phasen, Fett, Gefäße, Kapsel und klinischen Kontext gemeinsam einordnen. Eine spätere Hypointensität ist außerdem nicht automatisch gleichbedeutend mit echtem portalvenösem Wash-out.",
+      "wrongExplanations": {
+        "A": "In der Originalvergleichsstudie überlappten arterielle Hypervaskularität und spätere Hypointensität bei HAML und HCC. Dieses Profil allein priorisiert HCC nicht zuverlässig; Fett, Gefäße, Kapsel und klinischen Kontext ergänzen.",
+        "B": "Auch HCC kann dieses Profil zeigen. Die umgekehrte Bevorzugung von HAML aus der Dynamik allein ist daher ebenfalls nicht ausreichend begründet.",
+        "C": "Eine typische FNH ist in der HBP häufig iso- bis hyperintens. Das genannte unspezifische Profil begründet keine vorrangige FNH-Diagnose; atypische Muster müssen im Gesamtbefund beurteilt werden."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+    },
+    {
+      "id": "hepatisches-angiomyolipom-hcc-de",
+      "topicId": "hepatisches-angiomyolipom",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fach": "abdomen",
+      "question": "Bei einer hypervaskulären Läsion in nichtzirrhotischer Leber werden HAML und HCC erwogen. Welche zusätzliche Merkmalskombination kann HAML unterstützen, ohne es allein zu beweisen?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Tumorkapsel und portalvenöses Wash-out."
+        },
+        {
+          "id": "B",
+          "text": "Hepatobiliäre Hypointensität und fehlende intratumorale Gefäße."
+        },
+        {
+          "id": "C",
+          "text": "Frühe drainierende Vene und prominente intratumorale Gefäße."
+        },
+        {
+          "id": "D",
+          "text": "Arterielle Hypervaskularität und späterer Signalabfall."
+        }
+      ],
+      "correct": "C",
+      "explanation": "In einer kleinen retrospektiven Vergleichskohorte waren frühe drainierende Venen und intratumorale Gefäße bei HAML häufiger. Sie sind unterstützende Hinweise, keine obligaten oder beweisenden Zeichen; auch HCC kann überlappende Befunde zeigen.",
+      "wrongExplanations": {
+        "A": "Eine Kapsel war in der Vergleichskohorte häufiger bei HCC; Wash-out kann zudem bei beiden vorkommen.",
+        "B": "Hepatobiliäre Hypointensität überschneidet sich. Fehlende sichtbare Gefäße ist nicht die unterstützende Gefäßkombination der Studie.",
+        "D": "Dieses dynamische Grundmuster kann sowohl bei HAML als auch bei HCC auftreten und ist deshalb kein gezielter Trennhinweis."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+    },
+    {
+      "id": "hepatisches-angiomyolipom-report-de",
+      "topicId": "hepatisches-angiomyolipom",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fach": "abdomen",
+      "question": "Eine fetthaltige hypervaskuläre Leberläsion lässt HAML und HCC zu. Welche zusätzliche Anamnese gewichtet in dieser Differenzialdiagnose insbesondere das HCC-Risiko?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Langjährige orale Kontrazeption ohne bekannte chronische Lebererkrankung."
+        },
+        {
+          "id": "B",
+          "text": "Chronische Hepatitis B mit bekannter Leberzirrhose."
+        },
+        {
+          "id": "C",
+          "text": "Tuberöse Sklerose mit bekannten renalen Angiomyolipomen."
+        },
+        {
+          "id": "D",
+          "text": "Metabolische Leberverfettung ohne bekannte fortgeschrittene Fibrose."
+        }
+      ],
+      "correct": "B",
+      "explanation": "Chronische virale Hepatitis und Zirrhose sind wichtiger HCC-Risikokontext und beeinflussen die Einordnung einer überlappenden Läsion. Sie legen die Histologie nicht allein fest. Fett oder Hypervaskularität dürfen in dieser Situation nicht zur vorschnellen benignen HAML-Zuordnung führen.",
+      "wrongExplanations": {
+        "A": "Orale Kontrazeption ist vor allem im Adenomkontext relevant, ersetzt aber den hier gefragten viralen/zirrhotischen HCC-Risikokontext nicht.",
+        "C": "TSC mit renalen AML unterstützt einen AML-Kontext, nicht speziell den HCC-Risikokontext. Die Leberläsion muss trotzdem eigenständig eingeordnet werden.",
+        "D": "Metabolische Lebererkrankung ist klinisch relevant, begründet ohne bekannte fortgeschrittene Fibrose aber nicht denselben hier beschriebenen Risikokontext wie chronische HBV-Hepatitis mit Zirrhose."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/"
+    }
+  ],
+  "en": [
+    {
+      "id": "hepatisches-angiomyolipom-fat-en",
+      "topicId": "hepatisches-angiomyolipom",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fach": "abdomen",
+      "question": "A hypervascular liver lesion contains clearly negative-attenuation areas on unenhanced CT. Which tissue component is most strongly supported without already determining the tumour type?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Recent haemorrhage"
+        },
+        {
+          "id": "B",
+          "text": "Macroscopic fat"
+        },
+        {
+          "id": "C",
+          "text": "Calcification"
+        },
+        {
+          "id": "D",
+          "text": "Protein-rich fluid"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Clearly negative attenuation supports macroscopic fat. Fat may occur in HAML and HCC, and may be barely visible in lipid-poor HAML. This component informs description but does not identify the tumour by itself.",
+      "wrongExplanations": {
+        "A": "Recent blood is typically hyperattenuating on unenhanced CT and does not explain clearly negative attenuation.",
+        "C": "Calcium is highly attenuating, rather than an explanation for clearly negative attenuation.",
+        "D": "Protein-rich fluid can be denser than simple water; clearly negative values here favour fat."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+    },
+    {
+      "id": "hepatisches-angiomyolipom-washout-en",
+      "topicId": "hepatisches-angiomyolipom",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fach": "abdomen",
+      "question": "A solid lesion in noncirrhotic liver shows arterial hypervascularity and later relative hypointensity on gadoxetic MRI. HAML and HCC are considered. Which diagnostic weighting of this dynamic pattern is most appropriate?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The pattern favours HCC over HAML."
+        },
+        {
+          "id": "B",
+          "text": "The pattern favours HAML over HCC."
+        },
+        {
+          "id": "C",
+          "text": "The pattern favours FNH over either diagnosis."
+        },
+        {
+          "id": "D",
+          "text": "The pattern retains both HAML and HCC in the differential diagnosis."
+        }
+      ],
+      "correct": "D",
+      "explanation": "HAML and HCC may show similar dynamic profiles on gadoxetic MRI. Later relative hypointensity does not reliably separate them; interpret phases, fat, vessels, capsule and clinical context together. Later hypointensity is also not automatically equivalent to true portal venous washout.",
+      "wrongExplanations": {
+        "A": "In the original comparative study, arterial hypervascularity and later hypointensity overlapped in HAML and HCC. This profile alone does not reliably prioritise HCC; integrate fat, vessels, capsule and clinical context.",
+        "B": "HCC can also show this profile. Conversely favouring HAML on dynamics alone is therefore also insufficiently justified.",
+        "C": "Typical FNH is often iso- to hyperintense on HBP. The stated nonspecific profile does not justify prioritising FNH; assess atypical patterns in the overall study."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+    },
+    {
+      "id": "hepatisches-angiomyolipom-hcc-en",
+      "topicId": "hepatisches-angiomyolipom",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fach": "abdomen",
+      "question": "HAML and HCC are considered for a hypervascular lesion in a noncirrhotic liver. Which additional feature combination can support HAML without proving it by itself?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Tumour capsule and portal venous washout."
+        },
+        {
+          "id": "B",
+          "text": "Hepatobiliary hypointensity and absent intratumoral vessels."
+        },
+        {
+          "id": "C",
+          "text": "An early draining vein and prominent intratumoral vessels."
+        },
+        {
+          "id": "D",
+          "text": "Arterial hypervascularity and later signal reduction."
+        }
+      ],
+      "correct": "C",
+      "explanation": "Early draining veins and intratumoral vessels were more frequent in HAML in a small retrospective comparison. They are supportive rather than obligatory or definitive findings; HCC may still overlap.",
+      "wrongExplanations": {
+        "A": "A capsule was more frequent in HCC in the comparison, and washout can occur in both.",
+        "B": "Hepatobiliary hypointensity overlaps. Absence of visible vessels is not the supportive vascular combination identified in the study.",
+        "D": "This basic dynamic pattern may occur in both HAML and HCC and is therefore not a targeted differentiating clue."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+    },
+    {
+      "id": "hepatisches-angiomyolipom-report-en",
+      "topicId": "hepatisches-angiomyolipom",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fach": "abdomen",
+      "question": "A fat-containing hypervascular liver lesion allows HAML and HCC in the differential. Which additional history particularly increases the weight of HCC risk in this differential?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Long-term oral contraception without known chronic liver disease."
+        },
+        {
+          "id": "B",
+          "text": "Chronic hepatitis B with known liver cirrhosis."
+        },
+        {
+          "id": "C",
+          "text": "Tuberous sclerosis with known renal angiomyolipomas."
+        },
+        {
+          "id": "D",
+          "text": "Metabolic hepatic steatosis without known advanced fibrosis."
+        }
+      ],
+      "correct": "B",
+      "explanation": "Chronic viral hepatitis and cirrhosis provide important HCC risk context and affect interpretation of an overlapping lesion. They do not determine histology alone. Fat or hypervascularity should not prompt premature benign HAML classification in this setting.",
+      "wrongExplanations": {
+        "A": "Oral contraception is particularly relevant to adenoma context, rather than the viral/cirrhotic HCC risk context asked for here.",
+        "C": "TSC with renal AML supports an AML context rather than specifically HCC risk. The liver lesion still needs its own assessment.",
+        "D": "Metabolic liver disease is clinically relevant, but without known advanced fibrosis it does not provide the same stated risk context as chronic HBV hepatitis with cirrhosis."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/"
+    }
+  ],
+  "fa": [
+    {
+      "id": "hepatisches-angiomyolipom-fat-fa",
+      "topicId": "hepatisches-angiomyolipom",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fach": "abdomen",
+      "question": "ضایعه‌ای پرعروق در کبد، در CT بدون تزریق بخش‌هایی با دانسیتهٔ آشکارا منفی دارد. کدام جزء بافتی بیشتر مطرح است، بدون آنکه نوع تومور از قبل تعیین شود؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "خون‌ریزی تازه"
+        },
+        {
+          "id": "B",
+          "text": "چربی ماکروسکوپیک"
+        },
+        {
+          "id": "C",
+          "text": "کلسیفیکاسیون"
+        },
+        {
+          "id": "D",
+          "text": "مایع غنی از پروتئین"
+        }
+      ],
+      "correct": "B",
+      "explanation": "دانسیتهٔ آشکارا منفی به نفع چربی ماکروسکوپیک است. چربی ممکن است هم در HAML و هم در HCC وجود داشته باشد و در HAML کم‌چربی به‌سختی دیده شود. این جزء به توصیف کمک می‌کند، اما به‌تنهایی نوع تومور را مشخص نمی‌کند.",
+      "wrongExplanations": {
+        "A": "خون تازه در CT بدون تزریق معمولاً پردانسیته است و دانسیتهٔ آشکارا منفی را توضیح نمی‌دهد.",
+        "C": "کلسیم پردانسیته است و دانسیتهٔ آشکارا منفی را توضیح نمی‌دهد.",
+        "D": "مایع غنی از پروتئین می‌تواند از آب ساده پردانسیته‌تر باشد؛ مقادیر آشکارا منفی در اینجا بیشتر به نفع چربی‌اند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+    },
+    {
+      "id": "hepatisches-angiomyolipom-washout-fa",
+      "topicId": "hepatisches-angiomyolipom",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fach": "abdomen",
+      "question": "ضایعهٔ توپر در کبد غیرسیروتیک در MRI با گادوکسیتیک، پرعروقی شریانی و کم‌سیگنالی نسبی در فازهای بعدی دارد. HAML و HCC مطرح‌اند. کدام وزن‌دهی تشخیصی به این الگوی دینامیک مناسب‌تر است؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "این الگو HCC را بر HAML ترجیح می‌دهد."
+        },
+        {
+          "id": "B",
+          "text": "این الگو HAML را بر HCC ترجیح می‌دهد."
+        },
+        {
+          "id": "C",
+          "text": "این الگو FNH را بر هر دو تشخیص ترجیح می‌دهد."
+        },
+        {
+          "id": "D",
+          "text": "این الگو هر دو HAML و HCC را در تشخیص افتراقی نگه می‌دارد."
+        }
+      ],
+      "correct": "D",
+      "explanation": "HAML و HCC ممکن است در MRI با گادوکسیتیک اسید الگوهای دینامیک مشابهی داشته باشند. کاهش نسبی شدت سیگنال در مراحل بعد آن‌ها را با اطمینان تفکیک نمی‌کند؛ فازها، چربی، عروق، کپسول و زمینهٔ بالینی را با هم تفسیر کنید. هیپواینتنسیتیِ دیرتر نیز خودبه‌خود معادل wash-out واقعی پورتوونوس نیست.",
+      "wrongExplanations": {
+        "A": "در مطالعهٔ مقایسه‌ای اصلی، پرعروقی شریانی و کم‌سیگنالی بعدی در HAML و HCC هم‌پوشانی داشتند. این پروفایل به‌تنهایی HCC را به‌طور قابل‌اتکا در اولویت قرار نمی‌دهد؛ چربی، عروق، کپسول و زمینهٔ بالینی نیز لحاظ شوند.",
+        "B": "HCC نیز می‌تواند این پروفایل را داشته باشد. بنابراین ترجیح معکوس HAML صرفاً بر پایهٔ دینامیک نیز توجیه کافی ندارد.",
+        "C": "FNH تیپیک در HBP اغلب ایزو تا پرسیگنال است. پروفایل غیراختصاصی ذکرشده، اولویت‌دادن به FNH را توجیه نمی‌کند؛ الگوهای آتیپیک باید در بررسی کلی تفسیر شوند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+    },
+    {
+      "id": "hepatisches-angiomyolipom-hcc-fa",
+      "topicId": "hepatisches-angiomyolipom",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fach": "abdomen",
+      "question": "برای ضایعه‌ای پرعروق در کبد غیرسیروتیک، HAML و HCC مطرح‌اند. کدام ترکیب ویژگی‌ها می‌تواند از HAML حمایت کند، بدون آنکه به‌تنهایی آن را ثابت کند؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "کپسول تومور و wash-out پورتوونوس."
+        },
+        {
+          "id": "B",
+          "text": "هیپواینتنسیتی هپاتوبیلیاری و نبود عروق داخل تومور."
+        },
+        {
+          "id": "C",
+          "text": "ورید تخلیه‌کنندهٔ زودرس و عروق برجستهٔ داخل تومور."
+        },
+        {
+          "id": "D",
+          "text": "پرعروقی شریانی و کاهش سیگنال در مراحل بعد."
+        }
+      ],
+      "correct": "C",
+      "explanation": "در یک مقایسهٔ گذشته‌نگر کوچک، ورید تخلیه‌کنندهٔ زودرس و عروق داخل تومور در HAML شایع‌تر بودند. این‌ها سرنخ حمایتی‌اند، نه نشانه‌های الزامی یا قطعی؛ HCC همچنان می‌تواند یافته‌های هم‌پوشان داشته باشد.",
+      "wrongExplanations": {
+        "A": "در مطالعهٔ مقایسه‌ای، کپسول در HCC شایع‌تر بود؛ wash-out نیز می‌تواند در هر دو دیده شود.",
+        "B": "هیپواینتنسیتی هپاتوبیلیاری هم‌پوشانی دارد. نبود عروق قابل مشاهده، ترکیب عروقی حمایتیِ شناسایی‌شده در مطالعه نیست.",
+        "D": "این الگوی پایهٔ دینامیک می‌تواند هم در HAML و هم در HCC رخ دهد و سرنخ افتراقی هدفمندی نیست."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+    },
+    {
+      "id": "hepatisches-angiomyolipom-report-fa",
+      "topicId": "hepatisches-angiomyolipom",
+      "tags": [
+        "hepatisches-angiomyolipom"
+      ],
+      "fach": "abdomen",
+      "question": "ضایعهٔ پرعروق و حاوی چربی کبد، افتراق HAML و HCC را مطرح می‌کند. کدام سابقهٔ تکمیلی در این افتراق به‌ویژه وزن خطر HCC را بیشتر می‌کند؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "مصرف طولانی قرص ضدبارداری بدون بیماری مزمن شناخته‌شدهٔ کبد."
+        },
+        {
+          "id": "B",
+          "text": "هپاتیت B مزمن همراه سیروز شناخته‌شدهٔ کبد."
+        },
+        {
+          "id": "C",
+          "text": "توبروس اسکلروزیس همراه آنژیومیولیپوم‌های شناخته‌شدهٔ کلیه."
+        },
+        {
+          "id": "D",
+          "text": "استئاتوز متابولیک کبد بدون فیبروز پیشرفتهٔ شناخته‌شده."
+        }
+      ],
+      "correct": "B",
+      "explanation": "هپاتیت ویروسی مزمن و سیروز، زمینهٔ خطر مهم HCC هستند و بر تفسیر ضایعهٔ هم‌پوشان اثر می‌گذارند؛ اما به‌تنهایی بافت‌شناسی را تعیین نمی‌کنند. در این وضعیت، چربی یا پرعروقی نباید به نسبت‌دادن شتاب‌زدهٔ ضایعه به HAML خوش‌خیم بینجامد.",
+      "wrongExplanations": {
+        "A": "قرص ضدبارداری بیشتر در زمینهٔ آدنوم مطرح است، نه زمینهٔ خطر ویروسی یا سیروتیک HCC که اینجا پرسیده شده است.",
+        "C": "TSC همراه AML کلیه از زمینهٔ AML حمایت می‌کند، نه به‌طور ویژه از خطر HCC. ضایعهٔ کبد همچنان به ارزیابی مستقل نیاز دارد.",
+        "D": "بیماری متابولیک کبد از نظر بالینی مهم است، اما بدون فیبروز پیشرفتهٔ شناخته‌شده، همان زمینهٔ خطرِ هپاتیت B مزمن همراه سیروز را ایجاد نمی‌کند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/"
+    }
+  ]
 }
 
-export const HEPATIC_ANGIOMYOLIPOMA_FLASHCARDS = [
-  ['fat', L('Beweist sichtbares Fett HAML?', 'Does visible fat prove HAML?', 'آیا چربی قابل مشاهده HAML را ثابت می‌کند؟'), L('Nein. Fett kann spärlich oder nicht sichtbar sein; auch HCC kann Fett enthalten.', 'No. Fat may be sparse or absent; HCC can also contain fat.', 'خیر. چربی ممکن است کم یا غایب باشد؛ HCC نیز می‌تواند چربی داشته باشد.')],
-  ['washout', L('Wie unterscheiden sich PDF S. 12–13 und die externe Wang-Serie beim Wash-out?', 'How do PDF pp. 12–13 and the external Wang series differ on wash-out?', 'PDF صفحات ۱۲–۱۳ و سری مستقل Wang درباره wash-out چه تفاوتی دارند؟'), L('Die PDF beschreibt kein typisches Wash-out; Wang et al. berichten frühes Wash-out in zwei TSC-Fällen. Die Muster sind variabel.', 'The PDF describes no typical wash-out; Wang et al. report early wash-out in two TSC cases. Patterns are variable.', 'PDF نبود wash-out تیپیک را توصیف می‌کند؛ Wang و همکاران در دو مورد TSC، wash-out زودرس گزارش کرده‌اند. الگوها متغیرند.')],
-  ['hcc', L('Warum bleibt HCC eine wichtige Differenzialdiagnose?', 'Why does HCC remain an important differential?', 'چرا HCC همچنان یک تشخیص افتراقی مهم است؟'), L('HCC kann Fett enthalten und HAML imitieren; deshalb Gefäßmuster und klinischen Risikokontext zusammen beurteilen.', 'HCC can contain fat and mimic HAML; assess vascular pattern and clinical risk context together.', 'HCC می‌تواند چربی داشته باشد و HAML را تقلید کند؛ بنابراین الگوی عروقی و زمینه خطر بالینی را با هم ارزیابی کنید.')],
-  ['report', L('Welche Kernpunkte nennt der strukturierte HAML-Befund?', 'Which core items belong in a structured HAML report?', 'گزارش ساختاریافته HAML شامل چه نکات اصلی است؟'), L('Segment, Größe/Zahl, Fett, Gefäßmuster und Phasen, Hintergrundleber/Risikokontext, Voraufnahmen und benannte Unsicherheit.', 'Segment, size/count, fat, vascular pattern and phases, background liver/risk context, prior studies and stated uncertainty.', 'سگمان، اندازه/تعداد، چربی، الگوی عروقی و فازها، پارانشیم زمینه/زمینه خطر، تصاویر قبلی و بیان عدم قطعیت.')],
-].map(([id, front, answer]) => ({
-  id: `hepatisches-angiomyolipom-${id}`,
-  topicId: 'hepatisches-angiomyolipom',
-  category: L('Hepatisches AML', 'Hepatic AML', 'AML کبدی'),
-  front,
-  answer,
-  explanation: id === 'washout'
-    ? L('PDF S. 12–13: kein typisches Wash-out. Die separate Wang-Serie (2009) beschreibt frühes Wash-out in zwei TSC-Fällen.', 'PDF pp. 12–13: no typical wash-out. The separate Wang series (2009) describes early wash-out in two TSC cases.', 'PDF صفحات ۱۲–۱۳: نبود wash-out تیپیک. سری جداگانه Wang (۲۰۰۹) در دو مورد TSC، wash-out زودرس را شرح می‌دهد.')
-    : L('Quelle: Abdomen.pdf, S. 12–13; bestehende dreisprachige HAML-Lektion.', 'Source: Abdomen.pdf, pp. 12–13; existing three-language HAML lesson.', 'منبع: Abdomen.pdf، صفحات ۱۲–۱۳؛ درس سه‌زبانه موجود HAML.'),
-}))
+export const HEPATIC_ANGIOMYOLIPOMA_FLASHCARD_TOPIC={
+  "id": "hepatisches-angiomyolipom",
+  "area": "Abdomen",
+  "chapter": "Leber",
+  "icon": "CT",
+  "iconImage": "/fach/abdomen.png",
+  "color": "#0f766e",
+  "href": "/flashcards/hepatisches-angiomyolipom",
+  "title": {
+    "de": "Hepatisches Angiomyolipom",
+    "en": "Hepatic angiomyolipoma",
+    "fa": "آنژیومیولیپوم کبدی"
+  },
+  "subtitle": {
+    "de": "Fett · Enhancement-Variabilität · HCC-DD · strukturierter Befund",
+    "en": "Fat · variable enhancement · HCC differential · structured report",
+    "fa": "چربی · تغییرپذیری جذب · افتراق HCC · گزارش ساختاریافته"
+  }
+}
+
+export const HEPATIC_ANGIOMYOLIPOMA_FLASHCARDS=[
+  {
+    "id": "hepatisches-angiomyolipom-fat",
+    "topicId": "hepatisches-angiomyolipom",
+    "category": {
+      "de": "Hepatisches AML",
+      "en": "Hepatic AML",
+      "fa": "AML کبدی"
+    },
+    "front": {
+      "de": "Beweist sichtbares Fett HAML?",
+      "en": "Does visible fat prove HAML?",
+      "fa": "آیا چربی قابل مشاهده HAML را ثابت می‌کند؟"
+    },
+    "answer": {
+      "de": "Nein. HAML und HCC können Fett enthalten; in fettarmem HAML kann Fett kaum sichtbar sein. Fett als Komponente beschreiben, nicht als alleinige Tumordiagnose.",
+      "en": "No. Both HAML and HCC may contain fat, and fat may be barely visible in lipid-poor HAML. Describe fat as a component rather than a stand-alone tumour diagnosis.",
+      "fa": "خیر. هم HAML و هم HCC ممکن است چربی داشته باشند و در HAML کم‌چربی، چربی به‌سختی دیده شود. چربی را به‌عنوان جزء ضایعه توصیف کنید، نه تشخیص مستقل تومور."
+    },
+    "explanation": {
+      "de": "Klar negative Dichteanteile sprechen für makroskopisches Fett. Fett kann in HAML, aber auch in HCC vorkommen; in fettarmem HAML kann es kaum erkennbar sein. Die Komponente hilft bei der Beschreibung, ist kein alleiniger Tumornachweis.",
+      "en": "Clearly negative attenuation supports macroscopic fat. Fat may occur in HAML and HCC, and may be barely visible in lipid-poor HAML. This component informs description but does not identify the tumour by itself.",
+      "fa": "دانسیتهٔ آشکارا منفی به نفع چربی ماکروسکوپیک است. چربی ممکن است هم در HAML و هم در HCC وجود داشته باشد و در HAML کم‌چربی به‌سختی دیده شود. این جزء به توصیف کمک می‌کند، اما به‌تنهایی نوع تومور را مشخص نمی‌کند."
+    },
+    "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+  },
+  {
+    "id": "hepatisches-angiomyolipom-washout",
+    "topicId": "hepatisches-angiomyolipom",
+    "category": {
+      "de": "Hepatisches AML",
+      "en": "Hepatic AML",
+      "fa": "AML کبدی"
+    },
+    "front": {
+      "de": "Wie unterscheiden dynamische Kontrastmittelphasen HAML von HCC, und wo liegt die Grenze?",
+      "en": "How do dynamic contrast phases distinguish HAML from HCC, and what is the limitation?",
+      "fa": "فازهای دینامیک مادهٔ حاجب چگونه در افتراق HAML از HCC کمک می‌کنند و محدودیت چیست؟"
+    },
+    "answer": {
+      "de": "Arterielle Hypervaskularität und spätere Minderintensität können bei beiden vorkommen. Einzelne Phasen trennen sie nicht sicher; Gefäße, Fett, Kapsel und Risikokontext zusammen beurteilen.",
+      "en": "Arterial hypervascularity and later hypointensity may occur in both. Individual phases do not reliably separate them; assess vessels, fat, capsule and risk context together.",
+      "fa": "پرعروقی شریانی و شدت سیگنال کمتر در مراحل بعد می‌توانند در هر دو دیده شوند. تک‌فازها آن‌ها را با اطمینان تفکیک نمی‌کنند؛ عروق، چربی، کپسول و زمینهٔ خطر را با هم بسنجید."
+    },
+    "explanation": {
+      "de": "HAML und HCC können in gadoxetischer MRT ähnliche dynamische Profile zeigen. Spätere Minderintensität trennt sie nicht zuverlässig; Phasen, Fett, Gefäße, Kapsel und klinischen Kontext gemeinsam einordnen. Eine spätere Hypointensität ist außerdem nicht automatisch gleichbedeutend mit echtem portalvenösem Wash-out.",
+      "en": "HAML and HCC may show similar dynamic profiles on gadoxetic MRI. Later relative hypointensity does not reliably separate them; interpret phases, fat, vessels, capsule and clinical context together. Later hypointensity is also not automatically equivalent to true portal venous washout.",
+      "fa": "HAML و HCC ممکن است در MRI با گادوکسیتیک اسید الگوهای دینامیک مشابهی داشته باشند. کاهش نسبی شدت سیگنال در مراحل بعد آن‌ها را با اطمینان تفکیک نمی‌کند؛ فازها، چربی، عروق، کپسول و زمینهٔ بالینی را با هم تفسیر کنید. هیپواینتنسیتیِ دیرتر نیز خودبه‌خود معادل wash-out واقعی پورتوونوس نیست."
+    },
+    "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+  },
+  {
+    "id": "hepatisches-angiomyolipom-hcc",
+    "topicId": "hepatisches-angiomyolipom",
+    "category": {
+      "de": "Hepatisches AML",
+      "en": "Hepatic AML",
+      "fa": "AML کبدی"
+    },
+    "front": {
+      "de": "Welche Gefäßmerkmale können HAML gegenüber HCC unterstützen, und wie sicher sind sie?",
+      "en": "Which vascular features can support HAML over HCC, and how definitive are they?",
+      "fa": "کدام ویژگی‌های عروقی می‌توانند در برابر HCC از HAML حمایت کنند و تا چه حد قطعی‌اند؟"
+    },
+    "answer": {
+      "de": "Eine frühe drainierende Vene und prominente intratumorale Gefäße können HAML unterstützen. Es sind keine obligaten oder allein beweisenden Zeichen; HCC bleibt bei Überlappung in der Differenzialdiagnose.",
+      "en": "An early draining vein and prominent intratumoral vessels can support HAML. They are neither obligatory nor definitive alone; HCC remains in the differential when features overlap.",
+      "fa": "ورید تخلیه‌کنندهٔ زودرس و عروق برجستهٔ داخل تومور می‌توانند از HAML حمایت کنند. این‌ها الزامی یا به‌تنهایی قطعی نیستند؛ در هم‌پوشانی یافته‌ها، HCC در افتراق باقی می‌ماند."
+    },
+    "explanation": {
+      "de": "Fett und dynamische Anreicherung können sich bei HAML und HCC überschneiden. Frühe drainierende Venen oder intratumorale Gefäße können HAML unterstützen, legen die Diagnose aber nicht allein fest.",
+      "en": "Fat and dynamic enhancement may overlap between HAML and HCC. Early draining veins or intratumoral vessels can support HAML but do not determine the diagnosis by themselves.",
+      "fa": "چربی و تقویت دینامیک در HAML و HCC می‌توانند هم‌پوشانی داشته باشند. ورید تخلیه‌کنندهٔ زودرس یا عروق داخل تومور ممکن است از HAML حمایت کنند، اما به‌تنهایی تشخیص را تعیین نمی‌کنند."
+    },
+    "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+  },
+  {
+    "id": "hepatisches-angiomyolipom-report",
+    "topicId": "hepatisches-angiomyolipom",
+    "category": {
+      "de": "Hepatisches AML",
+      "en": "Hepatic AML",
+      "fa": "AML کبدی"
+    },
+    "front": {
+      "de": "Welche Kernpunkte nennt der strukturierte HAML-Befund?",
+      "en": "Which core items belong in a structured HAML report?",
+      "fa": "گزارش ساختاریافته HAML شامل چه نکات اصلی است؟"
+    },
+    "answer": {
+      "de": "Segment, Größe/Zahl, Fett, Gefäßmuster und Phasen, Hintergrundleber/Risikokontext, Voraufnahmen und benannte Unsicherheit.",
+      "en": "Segment, size/count, fat, vascular pattern and phases, background liver/risk context, prior studies and stated uncertainty.",
+      "fa": "سگمان، اندازه/تعداد، چربی، الگوی عروقی و فازها، پارانشیم زمینه/زمینه خطر، تصاویر قبلی و بیان عدم قطعیت."
+    },
+    "explanation": {
+      "de": "Chronische virale Hepatitis und Zirrhose sind wichtiger HCC-Risikokontext und beeinflussen die Einordnung einer überlappenden Läsion. Sie legen die Histologie nicht allein fest. Fett oder Hypervaskularität dürfen in dieser Situation nicht zur vorschnellen benignen HAML-Zuordnung führen.",
+      "en": "Chronic viral hepatitis and cirrhosis provide important HCC risk context and affect interpretation of an overlapping lesion. They do not determine histology alone. Fat or hypervascularity should not prompt premature benign HAML classification in this setting.",
+      "fa": "هپاتیت ویروسی مزمن و سیروز، زمینهٔ خطر مهم HCC هستند و بر تفسیر ضایعهٔ هم‌پوشان اثر می‌گذارند؛ اما به‌تنهایی بافت‌شناسی را تعیین نمی‌کنند. در این وضعیت، چربی یا پرعروقی نباید به نسبت‌دادن شتاب‌زدهٔ ضایعه به HAML خوش‌خیم بینجامد."
+    },
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10663390/"
+  }
+]

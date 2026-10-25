@@ -1,6 +1,6 @@
 {
   "date": "2026-10-25",
-  "status": "REVIEWED_BATCH_READY_FOR_MAIN",
+  "status": "PUSHED_MAIN_AND_BOUNDED_LIVE_VERIFIED",
   "previousMain": "06cbcaf1092d479e02fba0d81a7096d1972259e7",
   "scope": "Fourth bounded release during ongoing234-route remediation. Ten topics; course-wide work remains incomplete.",
   "acceptedPools": {
@@ -37,7 +37,8 @@
     "integration": "Reviewed payload/goal exactness,960locale counterparts, content-version invalidation, language-preserving returns/custom links and option-specific inline feedback PASS.",
     "browser": "Actual authenticated production build07: FA mammography BI-RADS meanings/category6 care wording; all3inline decisions traversed, specific wrong feedback FA/EN with choice/step preserved on language switch. Final FA alternatives/font/RTL/feedback visually inspected. DeQuervain EN lesson exposes quiz2/card links with lang/from. No read marking or learning-card grading.",
     "screenshot": "tmp/assessment-quality/batch04-mammography-fa-case3.png",
-    "checkoutLimit": "Local build/SSR include unrelated author WIP. Only independently reviewed selected index sources enter commit. Exact deployment build/status and bounded live view checked separately."
+    "checkoutLimit": "Local build/SSR include unrelated author WIP. Only independently reviewed selected index sources enter commit. Exact deployment build/status and bounded live view checked separately.",
+    "liveScreenshot": "tmp/assessment-quality/batch04-live-dequervain-fa-new-question.png"
   },
   "exclusions": [
     "ICB15 and Wrist07 accepted after source freeze, reserved for next release",
@@ -45,5 +46,11 @@
     "No whole-lesson PDF/media recertification or Dr. Zia clinical release approval inferred",
     "No empirical difficulty/discrimination validation or all-route browser claim"
   ],
-  "publication": "Pending commit and deployed verification"
+  "publication": {
+    "commit": "d4e0c1903870352e81e3cbce8a58fc6547b66147",
+    "branch": "main",
+    "vercel": "success",
+    "deployment": "https://vercel.com/jamins-projects-e299c1d5/rad-yar/2yprNzuqgMZM4K5PqiB5kq6vLv2d",
+    "live": "Actual normal-account DeQuervain EN quiz opens with2questions; new asymptomatic-study-limit question displayed EN, switched toactualFA counterpart without grading, actualreturntoFA lesson executed with matchinglang/from links. No all-route live/scientific approval."
+  }
 }

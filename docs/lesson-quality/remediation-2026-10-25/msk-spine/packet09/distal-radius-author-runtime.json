@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "questionObjects": 36,
+  "trilingualCards": 15,
+  "originalIdsAndCorrectLettersPreserved": true,
+  "optionSpecificWrongFeedbackObjects": 108,
+  "checkedObjects": 51,
+  "technicalScope": "Direct dedicated producer; existing page-source check separate; no build/browser/globalbank claim",
+  "afterReviewFixes": true,
+  "snapshotMatchesCurrentProducer": true
+}

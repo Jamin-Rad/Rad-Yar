@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/design_inventory",
+  "author": "/root/brain_remediation",
+  "status": "ACCEPT_BOUNDED_FULL_ORIGINAL_ASSESSMENT_POOL_AFTER_INDEPENDENT_RETEST",
+  "route": "/gehirn/vaskulaer/intrazerebrale-blutung",
+  "scope": {
+    "questions": "All15 original MCQs, complete stems/options/keys/correct and individual wrong explanations in DE/EN/FA (45 localized objects), manually read.",
+    "cards": "All12 original card triads, fronts/backs/explanations and present diagrams, manually read.",
+    "lesson": "Changed clinical lesson leaf values against HEAD read in all3languages; directly related teaching parity only.",
+    "pdf": "Physical Gehirn.pdf18–21 rendered pages visually read; no blanket endorsement of retained fixed-time graphs/scans.",
+    "goals": "Four explicit goals resolve to every original question/card; qualitative morphology, sequence interpretation and secondary-workup coverage checked."
+  },
+  "findings": [
+    {
+      "id": "ICB15-EDU-01",
+      "item": "icb-q12",
+      "before": "Only cautious general interpretation competed against three specific diagnoses.",
+      "resolution": "Actual full triads now ask targeted tissue-lesion investigation after negative CTA; four competing imaging strategies and specific limitations.",
+      "status": "CLOSED_AFTER_ACTUAL_RETEST"
+    },
+    {
+      "id": "ICB15-EDU-02",
+      "item": "icb-q15",
+      "before": "Three alone-cued alternatives included extracranial duplex in intracranial workup.",
+      "resolution": "Actual triads now compare intracranial strategies in explicit immediately available acute CT workflow; keyB retained.",
+      "status": "CLOSED_AFTER_ACTUAL_RETEST"
+    },
+    {
+      "id": "ICB15-SRC-03",
+      "item": "icb-q04 / icb-fc-06",
+      "before": "Selariu2012 supplied definition/outcome association, not direct serial-volume expansion validation.",
+      "resolution": "Ng2018 original212-patient serial-CT study added; independently read actual methods, expansion results and selection-bias limitations. Association remains qualified, no individual guarantee/effect-size threshold.",
+      "status": "CLOSED_AFTER_ACTUAL_RETEST"
+    },
+    {
+      "id": "ICB15-LNG-04",
+      "item": "icb-q04 FA C/feedback; q03 EN; fc06 FA; fc08 FA",
+      "before": "Resorption/uptake ambiguity, missing whitespace, unnatural unclotted-component phrase, literal mass-effect mistranslation.",
+      "resolution": "Actual localized fields checked: explicit بازجذب, gives 50–80, احتمال وجود جزء لخته‌نشده, اثر توده‌ای.",
+      "status": "CLOSED_AFTER_ACTUAL_RETEST"
+    }
+  ],
+  "sourceEvidence": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3714437/",
+      "read": "STRIVE2013 indexed original microbleed/lacune definitions, sequence-dependent apparent size and mimics."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/847198/",
+      "read": "Norman1977 original complete in-vitro abstract: concentration/haemoconcentration dependence. Does not establish universal50–80HU threshold; that range is explicitly PDF example."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3517489/",
+      "read": "Selariu2012 actual definition/methods and subacute peripheral-resorption mimic; clinical-outcome scope separated from expansion."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7410590/",
+      "read": "Ng2018 original methods, serial-volume results and discussion/selection bias,212 included cases; supports association not individual certainty."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17322083/",
+      "read": "Wada2007 original abstract methods and outcomes through indexed original abstract/reprint; no claim publisher fulltext read. Spot association is imperfect, not guaranteed expansion."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/4034983/",
+      "read": "Gomori1985 complete original20-haematoma1.5T abstract; typical evolution/field dependence, no rigid time-clock endorsed."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3257117/",
+      "read": "Gomori1988 complete original5-case abstract; intracellular versus undiluted/dilute extracellular metHb and mimics."
+    },
+    {
+      "url": "https://doi.org/10.1161/STR.0000000000000407",
+      "read": "AHA2022 official indexed recommendation passages for rapidCT/MRI, selected acuteCTA±venography, MRI/MRA after negativeCTA, selectedDSA; bounded diagnostic sections, not whole guideline."
+    },
+    {
+      "url": "https://doi.org/10.1001/jama.292.15.1823",
+      "read": "Kidwell2004 original abstract results and indexed publisher hyperacute example caption; acute detection comparison and old microbleed sensitivity, not all-phase MRI superiority."
+    },
+    {
+      "url": "https://www.bmj.com/content/351/bmj.h5762",
+      "read": "DIAGRAM2015 original indexed abstract, diagnostic procedures and results; complementaryCTA/MRI/selectedDSA, no universal followup interval introduced."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9389452/",
+      "read": "Boston2.0 original indexed findings and Table2 criteria: age/context, strictly lobar lesions/cSS, absence of deep haemorrhagic lesions and other causes. Direct open CAPTCHA; indexed original text read instead."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11673170/",
+      "read": "Hartmann2001 complete original17-patient abstract and figure captions: restricted diffusion characteristic but not pathognomonic; tumour exceptions. Intralesional-haemorrhage cases excluded, no hematoma-specific performance claim inferred."
+    }
+  ],
+  "verification": {
+    "script": "tmp/assessment-quality/test-icb15-independent.mjs",
+    "result": "PASS",
+    "actualCanonicalToGlobal": "45/45 question objects and12/12 card triads deepEqual",
+    "actualCanonicalToAuthorManifest": "57/57 serialized objects equal; undefined optional card.diagram omitted only for JSON-manifest comparison",
+    "goalReferences": "4/4 maps resolve",
+    "originalIdsAndKeys": "Preserved; no new duplicate pool.",
+    "sourceMutationByReviewer": false
+  },
+  "limits": [
+    "Not a whole lesson, whole PDF or retained figure scientific recertification.",
+    "No independent browser/production-build/release approval; parent controls those.",
+    "No patient-specific management recommendation inferred from textual educational vignettes.",
+    "Unchanged practice cases outside15MCQ/12card pool not accepted by this report."
+  ]
+}

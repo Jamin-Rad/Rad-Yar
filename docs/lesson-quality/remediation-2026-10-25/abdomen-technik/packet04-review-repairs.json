@@ -1,0 +1,1100 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_BOUNDED_REPAIRS_ACTUAL_PEER_RETEST_PENDING",
+  "changes": [
+    {
+      "id": "ulkuserkrankung-negative-ct-de",
+      "before": {
+        "id": "ulkuserkrankung-negative-ct-de",
+        "fach": "abdomen",
+        "tags": [
+          "ulkuserkrankung"
+        ],
+        "question": "Ein kreislaufstabiler Erwachsener hat Meläna und epigastrische Beschwerden bei Ulkusverdacht. Die CT zeigt keinen Krater. Welche Untersuchung ist zur gezielten Schleimhaut- und Blutungsquellenabklärung am sinnvollsten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Erneute routinemäßige CT des Oberbauchs."
+          },
+          {
+            "id": "B",
+            "text": "Ösophagogastroduodenoskopie."
+          },
+          {
+            "id": "C",
+            "text": "Kontrastmittelpassage des oberen Gastrointestinaltrakts."
+          },
+          {
+            "id": "D",
+            "text": "Sonografie zur Beurteilung der Magenwanddicke."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Ein fehlender CT-Krater schließt ein Schleimhautulkus nicht aus. Bei Verdacht auf eine obere gastrointestinale Blutungsquelle erlaubt die Endoskopie direkte Schleimhautbeurteilung und gegebenenfalls Blutstillung.",
+        "wrongExplanations": {
+          "A": "Ein fehlender CT-Krater schließt ein Schleimhautulkus nicht aus. Bei Verdacht auf eine obere gastrointestinale Blutungsquelle erlaubt die Endoskopie direkte Schleimhautbeurteilung und gegebenenfalls Blutstillung.",
+          "C": "Ein fehlender CT-Krater schließt ein Schleimhautulkus nicht aus. Bei Verdacht auf eine obere gastrointestinale Blutungsquelle erlaubt die Endoskopie direkte Schleimhautbeurteilung und gegebenenfalls Blutstillung.",
+          "D": "Wandödem ist unspezifisch und schließt ein Ulkus nicht aus."
+        },
+        "source": "https://doi.org/10.1186/s13017-019-0283-9"
+      },
+      "after": {
+        "id": "ulkuserkrankung-negative-ct-de",
+        "fach": "abdomen",
+        "tags": [
+          "ulkuserkrankung"
+        ],
+        "question": "Ein kreislaufstabiler Erwachsener hat Meläna und epigastrische Beschwerden bei Ulkusverdacht. Die CT zeigt keinen Krater. Welche Untersuchung ist zur gezielten Schleimhaut- und Blutungsquellenabklärung am sinnvollsten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Erneute routinemäßige CT des Oberbauchs."
+          },
+          {
+            "id": "B",
+            "text": "Ösophagogastroduodenoskopie."
+          },
+          {
+            "id": "C",
+            "text": "Kontrastmittelpassage des oberen Gastrointestinaltrakts."
+          },
+          {
+            "id": "D",
+            "text": "Sonografie zur Beurteilung der Magenwanddicke."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Ein fehlender CT-Krater schließt ein Schleimhautulkus nicht aus. Bei Verdacht auf eine obere gastrointestinale Blutungsquelle erlaubt die Endoskopie direkte Schleimhautbeurteilung und gegebenenfalls Blutstillung.",
+        "wrongExplanations": {
+          "A": "Eine weitere Routine-CT behebt die begrenzte Schleimhautempfindlichkeit nicht zuverlässig und ermöglicht keine endoskopische Blutstillung.",
+          "C": "Eine Kontrastpassage bietet keine direkte endoskopische Schleimhautbeurteilung oder Behandlung der vermuteten Blutungsquelle.",
+          "D": "Wanddicke ist unspezifisch; Sonografie ersetzt hier die direkte Schleimhaut- und Blutungsquellenabklärung nicht."
+        },
+        "source": "https://doi.org/10.1186/s13017-019-0283-9"
+      }
+    },
+    {
+      "id": "ulkuserkrankung-perforation-de",
+      "before": {
+        "id": "ulkuserkrankung-perforation-de",
+        "fach": "abdomen",
+        "tags": [
+          "ulkuserkrankung"
+        ],
+        "question": "Akuter Oberbauchschmerz: Die CT zeigt einen fokalen gastroduodenalen Wanddefekt mit angrenzenden extraluminalen Gasbläschen. Welche Komplikation muss vorrangig erwogen und kommuniziert werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Gastroduodenale Perforation."
+          },
+          {
+            "id": "B",
+            "text": "Gastritis mit submukösem Wandödem."
+          },
+          {
+            "id": "C",
+            "text": "Gasgefülltes Duodenaldivertikel mit erhaltener Wand."
+          },
+          {
+            "id": "D",
+            "text": "Narbiges pyloroduodenales Passagehindernis."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Wanddefekt und benachbartes extraluminales Gas begründen einen dringlichen Perforationsverdacht. Klinisch-chirurgisch kommunizieren; eine große freie Luftmenge ist dafür keine notwendige Voraussetzung.",
+        "wrongExplanations": {
+          "B": "Wanddefekt und benachbartes extraluminales Gas begründen einen dringlichen Perforationsverdacht. Klinisch-chirurgisch kommunizieren; eine große freie Luftmenge ist dafür keine notwendige Voraussetzung.",
+          "C": "Wanddefekt und benachbartes extraluminales Gas begründen einen dringlichen Perforationsverdacht. Klinisch-chirurgisch kommunizieren; eine große freie Luftmenge ist dafür keine notwendige Voraussetzung.",
+          "D": "Auch kleine extraluminale Gasbläschen neben einem Wanddefekt können eine Perforation anzeigen."
+        },
+        "source": "https://doi.org/10.1186/s13017-019-0283-9"
+      },
+      "after": {
+        "id": "ulkuserkrankung-perforation-de",
+        "fach": "abdomen",
+        "tags": [
+          "ulkuserkrankung"
+        ],
+        "question": "Akuter Oberbauchschmerz: Die CT zeigt einen fokalen gastroduodenalen Wanddefekt mit angrenzenden extraluminalen Gasbläschen. Welche Komplikation muss vorrangig erwogen und kommuniziert werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Gastroduodenale Perforation."
+          },
+          {
+            "id": "B",
+            "text": "Gastritis mit submukösem Wandödem."
+          },
+          {
+            "id": "C",
+            "text": "Gasgefülltes Duodenaldivertikel mit erhaltener Wand."
+          },
+          {
+            "id": "D",
+            "text": "Narbiges pyloroduodenales Passagehindernis."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Wanddefekt und benachbartes extraluminales Gas begründen einen dringlichen Perforationsverdacht. Klinisch-chirurgisch kommunizieren; eine große freie Luftmenge ist dafür keine notwendige Voraussetzung.",
+        "wrongExplanations": {
+          "B": "Ödem kann die Wand verdicken, erklärt aber einen Defekt mit extraluminalem Gas nicht ausreichend.",
+          "C": "Intradivertikuläres Gas liegt innerhalb einer luminal verbundenen Tasche; hier ist Gas außerhalb einer defekten Wand beschrieben.",
+          "D": "Eine narbige Engstelle kann den Magen aufweiten, erklärt aber nicht den beschriebenen Wanddurchbruch mit extraluminalem Gas."
+        },
+        "source": "https://doi.org/10.1186/s13017-019-0283-9"
+      }
+    },
+    {
+      "id": "ulkuserkrankung-negative-ct-en",
+      "before": {
+        "id": "ulkuserkrankung-negative-ct-en",
+        "fach": "abdomen",
+        "tags": [
+          "ulkuserkrankung"
+        ],
+        "question": "A haemodynamically stable adult has melaena and epigastric symptoms with suspected peptic ulcer. CT shows no crater. Which examination is most appropriate for targeted mucosal and bleeding-source assessment?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Repeat routine upper-abdominal CT."
+          },
+          {
+            "id": "B",
+            "text": "Oesophagogastroduodenoscopy."
+          },
+          {
+            "id": "C",
+            "text": "Upper gastrointestinal contrast study."
+          },
+          {
+            "id": "D",
+            "text": "Ultrasound focused on gastric wall thickness."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Absence of a CT crater does not exclude a mucosal ulcer. With suspected upper gastrointestinal bleeding, endoscopy permits direct mucosal assessment and haemostasis when needed.",
+        "wrongExplanations": {
+          "A": "Absence of a CT crater does not exclude a mucosal ulcer. With suspected upper gastrointestinal bleeding, endoscopy permits direct mucosal assessment and haemostasis when needed.",
+          "C": "Absence of a CT crater does not exclude a mucosal ulcer. With suspected upper gastrointestinal bleeding, endoscopy permits direct mucosal assessment and haemostasis when needed.",
+          "D": "Mural oedema is nonspecific and does not exclude an ulcer."
+        },
+        "source": "https://doi.org/10.1186/s13017-019-0283-9"
+      },
+      "after": {
+        "id": "ulkuserkrankung-negative-ct-en",
+        "fach": "abdomen",
+        "tags": [
+          "ulkuserkrankung"
+        ],
+        "question": "A haemodynamically stable adult has melaena and epigastric symptoms with suspected peptic ulcer. CT shows no crater. Which examination is most appropriate for targeted mucosal and bleeding-source assessment?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Repeat routine upper-abdominal CT."
+          },
+          {
+            "id": "B",
+            "text": "Oesophagogastroduodenoscopy."
+          },
+          {
+            "id": "C",
+            "text": "Upper gastrointestinal contrast study."
+          },
+          {
+            "id": "D",
+            "text": "Ultrasound focused on gastric wall thickness."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Absence of a CT crater does not exclude a mucosal ulcer. With suspected upper gastrointestinal bleeding, endoscopy permits direct mucosal assessment and haemostasis when needed.",
+        "wrongExplanations": {
+          "A": "Another routine CT does not reliably overcome limited mucosal sensitivity and cannot provide endoscopic haemostasis.",
+          "C": "A contrast study does not provide direct endoscopic mucosal assessment or treatment of the suspected bleeding source.",
+          "D": "Wall thickness is nonspecific; ultrasound does not replace direct mucosal and bleeding-source assessment here."
+        },
+        "source": "https://doi.org/10.1186/s13017-019-0283-9"
+      }
+    },
+    {
+      "id": "ulkuserkrankung-perforation-en",
+      "before": {
+        "id": "ulkuserkrankung-perforation-en",
+        "fach": "abdomen",
+        "tags": [
+          "ulkuserkrankung"
+        ],
+        "question": "Acute upper abdominal pain: CT shows a focal gastroduodenal wall defect with adjacent extraluminal gas bubbles. Which complication should be considered and communicated first?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Gastroduodenal perforation."
+          },
+          {
+            "id": "B",
+            "text": "Gastritis with submucosal oedema."
+          },
+          {
+            "id": "C",
+            "text": "A gas-filled duodenal diverticulum with an intact wall."
+          },
+          {
+            "id": "D",
+            "text": "Scar-related pyloroduodenal outlet obstruction."
+          }
+        ],
+        "correct": "A",
+        "explanation": "A wall defect with adjacent extraluminal gas raises urgent concern for perforation. Communicate for clinical and surgical assessment; a large volume of free air is not required.",
+        "wrongExplanations": {
+          "B": "A wall defect with adjacent extraluminal gas raises urgent concern for perforation. Communicate for clinical and surgical assessment; a large volume of free air is not required.",
+          "C": "A wall defect with adjacent extraluminal gas raises urgent concern for perforation. Communicate for clinical and surgical assessment; a large volume of free air is not required.",
+          "D": "Even small extraluminal gas bubbles beside a wall defect may indicate perforation."
+        },
+        "source": "https://doi.org/10.1186/s13017-019-0283-9"
+      },
+      "after": {
+        "id": "ulkuserkrankung-perforation-en",
+        "fach": "abdomen",
+        "tags": [
+          "ulkuserkrankung"
+        ],
+        "question": "Acute upper abdominal pain: CT shows a focal gastroduodenal wall defect with adjacent extraluminal gas bubbles. Which complication should be considered and communicated first?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Gastroduodenal perforation."
+          },
+          {
+            "id": "B",
+            "text": "Gastritis with submucosal oedema."
+          },
+          {
+            "id": "C",
+            "text": "A gas-filled duodenal diverticulum with an intact wall."
+          },
+          {
+            "id": "D",
+            "text": "Scar-related pyloroduodenal outlet obstruction."
+          }
+        ],
+        "correct": "A",
+        "explanation": "A wall defect with adjacent extraluminal gas raises urgent concern for perforation. Communicate for clinical and surgical assessment; a large volume of free air is not required.",
+        "wrongExplanations": {
+          "B": "Oedema can thicken the wall but does not adequately explain a defect with extraluminal gas.",
+          "C": "Intradiverticular gas lies inside a luminally connected pouch; gas outside a disrupted wall is described here.",
+          "D": "A scar-related narrowing can distend the stomach but does not explain the described wall breach with extraluminal gas."
+        },
+        "source": "https://doi.org/10.1186/s13017-019-0283-9"
+      }
+    },
+    {
+      "id": "ulkuserkrankung-negative-ct-fa",
+      "before": {
+        "id": "ulkuserkrankung-negative-ct-fa",
+        "fach": "abdomen",
+        "tags": [
+          "ulkuserkrankung"
+        ],
+        "question": "بزرگسال با وضعیت همودینامیک پایدار، ملنا و علائم اپی‌گاستر با شک به زخم پپتیک دارد. CT دهانهٔ زخم نشان نمی‌دهد. برای ارزیابی هدفمند مخاط و منشأ خونریزی کدام بررسی مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "تکرار CT معمول قسمت فوقانی شکم."
+          },
+          {
+            "id": "B",
+            "text": "اندوسکوپی مری، معده و دوازدهه."
+          },
+          {
+            "id": "C",
+            "text": "بررسی عبور مادهٔ حاجب در دستگاه گوارش فوقانی."
+          },
+          {
+            "id": "D",
+            "text": "سونوگرافی با تمرکز بر ضخامت دیوارهٔ معده."
+          }
+        ],
+        "correct": "B",
+        "explanation": "نبود دهانهٔ زخم در CT، زخم مخاطی را رد نمی‌کند. در شک به منشأ خونریزی گوارشی فوقانی، اندوسکوپی ارزیابی مستقیم مخاط و در صورت نیاز هموستاز را ممکن می‌کند.",
+        "wrongExplanations": {
+          "A": "نبود دهانهٔ زخم در CT، زخم مخاطی را رد نمی‌کند. در شک به منشأ خونریزی گوارشی فوقانی، اندوسکوپی ارزیابی مستقیم مخاط و در صورت نیاز هموستاز را ممکن می‌کند.",
+          "C": "نبود دهانهٔ زخم در CT، زخم مخاطی را رد نمی‌کند. در شک به منشأ خونریزی گوارشی فوقانی، اندوسکوپی ارزیابی مستقیم مخاط و در صورت نیاز هموستاز را ممکن می‌کند.",
+          "D": "ادم دیواره غیراختصاصی است و زخم را رد نمی‌کند."
+        },
+        "source": "https://doi.org/10.1186/s13017-019-0283-9"
+      },
+      "after": {
+        "id": "ulkuserkrankung-negative-ct-fa",
+        "fach": "abdomen",
+        "tags": [
+          "ulkuserkrankung"
+        ],
+        "question": "بزرگسال با وضعیت همودینامیک پایدار، ملنا و علائم اپی‌گاستر با شک به زخم پپتیک دارد. CT دهانهٔ زخم نشان نمی‌دهد. برای ارزیابی هدفمند مخاط و منشأ خونریزی کدام بررسی مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "تکرار CT معمول قسمت فوقانی شکم."
+          },
+          {
+            "id": "B",
+            "text": "اندوسکوپی مری، معده و دوازدهه."
+          },
+          {
+            "id": "C",
+            "text": "بررسی عبور مادهٔ حاجب در دستگاه گوارش فوقانی."
+          },
+          {
+            "id": "D",
+            "text": "سونوگرافی با تمرکز بر ضخامت دیوارهٔ معده."
+          }
+        ],
+        "correct": "B",
+        "explanation": "نبود دهانهٔ زخم در CT، زخم مخاطی را رد نمی‌کند. در شک به منشأ خونریزی گوارشی فوقانی، اندوسکوپی ارزیابی مستقیم مخاط و در صورت نیاز هموستاز را ممکن می‌کند.",
+        "wrongExplanations": {
+          "A": "CT معمول دیگر محدودیت حساسیت مخاطی را به‌طور قابل‌اعتماد برطرف نمی‌کند و هموستاز اندوسکوپیک نیز ممکن نیست.",
+          "C": "بررسی عبور مادهٔ حاجب، ارزیابی مستقیم اندوسکوپیک مخاط یا درمان منشأ خونریزی مشکوک را فراهم نمی‌کند.",
+          "D": "ضخامت دیواره غیراختصاصی است؛ سونوگرافی اینجا جای ارزیابی مستقیم مخاط و منشأ خونریزی را نمی‌گیرد."
+        },
+        "source": "https://doi.org/10.1186/s13017-019-0283-9"
+      }
+    },
+    {
+      "id": "ulkuserkrankung-perforation-fa",
+      "before": {
+        "id": "ulkuserkrankung-perforation-fa",
+        "fach": "abdomen",
+        "tags": [
+          "ulkuserkrankung"
+        ],
+        "question": "درد حاد بالای شکم: CT نقص موضعی دیوارهٔ معده یا دوازدهه همراه حباب‌های گاز خارج لومن در مجاورت آن نشان می‌دهد. کدام عارضه باید در اولویت مطرح و اعلام شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پرفوراسیون معده یا دوازدهه."
+          },
+          {
+            "id": "B",
+            "text": "گاستریت همراه ادم زیرمخاطی."
+          },
+          {
+            "id": "C",
+            "text": "دیورتیکول دوازدههٔ حاوی گاز با دیوارهٔ سالم."
+          },
+          {
+            "id": "D",
+            "text": "انسداد خروجی پیلور یا دوازدهه به علت اسکار."
+          }
+        ],
+        "correct": "A",
+        "explanation": "نقص دیواره همراه گاز خارج لومن مجاور، شک فوری به پرفوراسیون ایجاد می‌کند. برای ارزیابی بالینی و جراحی اطلاع دهید؛ وجود حجم زیادی هوای آزاد شرط لازم نیست.",
+        "wrongExplanations": {
+          "B": "نقص دیواره همراه گاز خارج لومن مجاور، شک فوری به پرفوراسیون ایجاد می‌کند. برای ارزیابی بالینی و جراحی اطلاع دهید؛ وجود حجم زیادی هوای آزاد شرط لازم نیست.",
+          "C": "نقص دیواره همراه گاز خارج لومن مجاور، شک فوری به پرفوراسیون ایجاد می‌کند. برای ارزیابی بالینی و جراحی اطلاع دهید؛ وجود حجم زیادی هوای آزاد شرط لازم نیست.",
+          "D": "حتی حباب‌های کوچک گاز خارج لومن کنار نقص دیواره می‌توانند نشانهٔ پرفوراسیون باشند."
+        },
+        "source": "https://doi.org/10.1186/s13017-019-0283-9"
+      },
+      "after": {
+        "id": "ulkuserkrankung-perforation-fa",
+        "fach": "abdomen",
+        "tags": [
+          "ulkuserkrankung"
+        ],
+        "question": "درد حاد بالای شکم: CT نقص موضعی دیوارهٔ معده یا دوازدهه همراه حباب‌های گاز خارج لومن در مجاورت آن نشان می‌دهد. کدام عارضه باید در اولویت مطرح و اعلام شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پرفوراسیون معده یا دوازدهه."
+          },
+          {
+            "id": "B",
+            "text": "گاستریت همراه ادم زیرمخاطی."
+          },
+          {
+            "id": "C",
+            "text": "دیورتیکول دوازدههٔ حاوی گاز با دیوارهٔ سالم."
+          },
+          {
+            "id": "D",
+            "text": "انسداد خروجی پیلور یا دوازدهه به علت اسکار."
+          }
+        ],
+        "correct": "A",
+        "explanation": "نقص دیواره همراه گاز خارج لومن مجاور، شک فوری به پرفوراسیون ایجاد می‌کند. برای ارزیابی بالینی و جراحی اطلاع دهید؛ وجود حجم زیادی هوای آزاد شرط لازم نیست.",
+        "wrongExplanations": {
+          "B": "ادم می‌تواند دیواره را ضخیم کند، اما نقص همراه گاز خارج لومن را به‌خوبی توضیح نمی‌دهد.",
+          "C": "گاز داخل دیورتیکول در کیسهٔ مرتبط با لومن قرار دارد؛ اینجا گاز خارج دیوارهٔ گسسته توصیف شده است.",
+          "D": "تنگی اسکاری می‌تواند معده را متسع کند، اما گسست دیواره همراه گاز خارج لومن را توضیح نمی‌دهد."
+        },
+        "source": "https://doi.org/10.1186/s13017-019-0283-9"
+      }
+    },
+    {
+      "id": "hepatisches-angiomyolipom-washout-de",
+      "before": {
+        "id": "hepatisches-angiomyolipom-washout-de",
+        "topicId": "hepatisches-angiomyolipom",
+        "tags": [
+          "hepatisches-angiomyolipom"
+        ],
+        "fach": "abdomen",
+        "question": "Eine nichtzirrhotische Leber enthält eine solide Läsion mit arterieller Hypervaskularität und relativer Hypointensität in späteren gadoxetischen MRT-Phasen. Welche Musterbeschreibung passt zur Differenzialdiagnose HAML/HCC?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Peripher-noduläre Auffüllung mit fortschreitender Zentripetalität."
+          },
+          {
+            "id": "B",
+            "text": "Persistierende Angleichung an den Blutpool über alle späteren Phasen."
+          },
+          {
+            "id": "C",
+            "text": "Nichtanreichernder flüssigkeitsgleicher Hohlraum."
+          },
+          {
+            "id": "D",
+            "text": "Hypervaskuläres Muster mit späterer Minderintensität und diagnostischer Überlappung."
+          }
+        ],
+        "correct": "D",
+        "explanation": "HAML und HCC können in gadoxetischer MRT ähnliche dynamische Profile zeigen. Spätere Minderintensität trennt sie nicht zuverlässig; Phasen, Fett, Gefäße, Kapsel und klinischen Kontext gemeinsam einordnen. Eine spätere Hypointensität ist außerdem nicht automatisch gleichbedeutend mit echtem portalvenösem Wash-out.",
+        "wrongExplanations": {
+          "A": "Eine peripher-noduläre zentripetale Auffüllung ist nicht das beschriebene arterielle/spätere Muster.",
+          "B": "Die Läsion wird später relativ hypointens beschrieben, nicht als durchgehend blutpoolgleich.",
+          "C": "Eine solide arteriell hypervaskuläre Läsion ist kein nichtanreichernder Flüssigkeitsraum."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+      },
+      "after": {
+        "id": "hepatisches-angiomyolipom-washout-de",
+        "topicId": "hepatisches-angiomyolipom",
+        "tags": [
+          "hepatisches-angiomyolipom"
+        ],
+        "fach": "abdomen",
+        "question": "Eine solide Leberläsion in nichtzirrhotischer Leber zeigt in der gadoxetischen MRT arterielle Hypervaskularität und spätere relative Hypointensität. HAML und HCC werden erwogen. Welche diagnostische Gewichtung dieses dynamischen Musters ist am treffendsten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Das Muster gewichtet HCC höher als HAML."
+          },
+          {
+            "id": "B",
+            "text": "Das Muster gewichtet HAML höher als HCC."
+          },
+          {
+            "id": "C",
+            "text": "Das Muster gewichtet FNH höher als beide Diagnosen."
+          },
+          {
+            "id": "D",
+            "text": "Das Muster lässt HAML und HCC als Differenzialdiagnosen bestehen."
+          }
+        ],
+        "correct": "D",
+        "explanation": "HAML und HCC können in gadoxetischer MRT ähnliche dynamische Profile zeigen. Spätere Minderintensität trennt sie nicht zuverlässig; Phasen, Fett, Gefäße, Kapsel und klinischen Kontext gemeinsam einordnen. Eine spätere Hypointensität ist außerdem nicht automatisch gleichbedeutend mit echtem portalvenösem Wash-out.",
+        "wrongExplanations": {
+          "A": "In der Originalvergleichsstudie überlappten arterielle Hypervaskularität und spätere Hypointensität bei HAML und HCC. Dieses Profil allein priorisiert HCC nicht zuverlässig; Fett, Gefäße, Kapsel und klinischen Kontext ergänzen.",
+          "B": "Auch HCC kann dieses Profil zeigen. Die umgekehrte Bevorzugung von HAML aus der Dynamik allein ist daher ebenfalls nicht ausreichend begründet.",
+          "C": "Eine typische FNH ist in der HBP häufig iso- bis hyperintens. Das genannte unspezifische Profil begründet keine vorrangige FNH-Diagnose; atypische Muster müssen im Gesamtbefund beurteilt werden."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+      }
+    },
+    {
+      "id": "hepatisches-angiomyolipom-washout-en",
+      "before": {
+        "id": "hepatisches-angiomyolipom-washout-en",
+        "topicId": "hepatisches-angiomyolipom",
+        "tags": [
+          "hepatisches-angiomyolipom"
+        ],
+        "fach": "abdomen",
+        "question": "A noncirrhotic liver contains a solid lesion with arterial hypervascularity and relative hypointensity on later gadoxetic MRI phases. Which pattern description fits the HAML/HCC differential?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Peripheral nodular filling with progressive centripetal enhancement."
+          },
+          {
+            "id": "B",
+            "text": "Persistent matching of the blood pool throughout later phases."
+          },
+          {
+            "id": "C",
+            "text": "A nonenhancing fluid-equivalent cavity."
+          },
+          {
+            "id": "D",
+            "text": "A hypervascular pattern with later relative hypointensity and diagnostic overlap."
+          }
+        ],
+        "correct": "D",
+        "explanation": "HAML and HCC may show similar dynamic profiles on gadoxetic MRI. Later relative hypointensity does not reliably separate them; interpret phases, fat, vessels, capsule and clinical context together. Later hypointensity is also not automatically equivalent to true portal venous washout.",
+        "wrongExplanations": {
+          "A": "Peripheral nodular centripetal filling is not the described arterial/later pattern.",
+          "B": "The lesion is described as relatively hypointense later, rather than persistently blood-pool matching.",
+          "C": "A solid arterially hypervascular lesion is not a nonenhancing fluid cavity."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+      },
+      "after": {
+        "id": "hepatisches-angiomyolipom-washout-en",
+        "topicId": "hepatisches-angiomyolipom",
+        "tags": [
+          "hepatisches-angiomyolipom"
+        ],
+        "fach": "abdomen",
+        "question": "A solid lesion in noncirrhotic liver shows arterial hypervascularity and later relative hypointensity on gadoxetic MRI. HAML and HCC are considered. Which diagnostic weighting of this dynamic pattern is most appropriate?",
+        "options": [
+          {
+            "id": "A",
+            "text": "The pattern favours HCC over HAML."
+          },
+          {
+            "id": "B",
+            "text": "The pattern favours HAML over HCC."
+          },
+          {
+            "id": "C",
+            "text": "The pattern favours FNH over either diagnosis."
+          },
+          {
+            "id": "D",
+            "text": "The pattern retains both HAML and HCC in the differential diagnosis."
+          }
+        ],
+        "correct": "D",
+        "explanation": "HAML and HCC may show similar dynamic profiles on gadoxetic MRI. Later relative hypointensity does not reliably separate them; interpret phases, fat, vessels, capsule and clinical context together. Later hypointensity is also not automatically equivalent to true portal venous washout.",
+        "wrongExplanations": {
+          "A": "In the original comparative study, arterial hypervascularity and later hypointensity overlapped in HAML and HCC. This profile alone does not reliably prioritise HCC; integrate fat, vessels, capsule and clinical context.",
+          "B": "HCC can also show this profile. Conversely favouring HAML on dynamics alone is therefore also insufficiently justified.",
+          "C": "Typical FNH is often iso- to hyperintense on HBP. The stated nonspecific profile does not justify prioritising FNH; assess atypical patterns in the overall study."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+      }
+    },
+    {
+      "id": "hepatisches-angiomyolipom-washout-fa",
+      "before": {
+        "id": "hepatisches-angiomyolipom-washout-fa",
+        "topicId": "hepatisches-angiomyolipom",
+        "tags": [
+          "hepatisches-angiomyolipom"
+        ],
+        "fach": "abdomen",
+        "question": "در کبد غیرسیروتیک، ضایعه‌ای جامد با پرعروقی شریانی و هیپواینتنسیتی نسبی در فازهای بعدی MRI با گادوکسیتیک اسید وجود دارد. کدام توصیف الگو با افتراق HAML/HCC سازگار است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پرشدن ندولار محیطی با پیشرفت تقویت به مرکز."
+          },
+          {
+            "id": "B",
+            "text": "هم‌سطح‌ماندن پایدار با حوضچهٔ خون در تمام فازهای بعدی."
+          },
+          {
+            "id": "C",
+            "text": "حفره‌ای با مشخصات مایع و بدون جذب مادهٔ حاجب."
+          },
+          {
+            "id": "D",
+            "text": "الگوی پرعروق با شدت سیگنال نسبی کمتر در مراحل بعد و هم‌پوشانی تشخیصی."
+          }
+        ],
+        "correct": "D",
+        "explanation": "HAML و HCC ممکن است در MRI با گادوکسیتیک اسید الگوهای دینامیک مشابهی داشته باشند. کاهش نسبی شدت سیگنال در مراحل بعد آن‌ها را با اطمینان تفکیک نمی‌کند؛ فازها، چربی، عروق، کپسول و زمینهٔ بالینی را با هم تفسیر کنید. هیپواینتنسیتیِ دیرتر نیز خودبه‌خود معادل wash-out واقعی پورتوونوس نیست.",
+        "wrongExplanations": {
+          "A": "پرشدن ندولار محیطی به سمت مرکز، الگوی شریانی و فاز بعدیِ توصیف‌شده نیست.",
+          "B": "ضایعه در مراحل بعد نسبتاً هیپواینتنس توصیف شده، نه هم‌سطحِ پایدار با حوضچهٔ خون.",
+          "C": "ضایعهٔ جامدِ پرعروق در فاز شریانی، حفرهٔ مایع بدون جذب نیست."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+      },
+      "after": {
+        "id": "hepatisches-angiomyolipom-washout-fa",
+        "topicId": "hepatisches-angiomyolipom",
+        "tags": [
+          "hepatisches-angiomyolipom"
+        ],
+        "fach": "abdomen",
+        "question": "ضایعهٔ توپر در کبد غیرسیروتیک در MRI با گادوکسیتیک، پرعروقی شریانی و کم‌سیگنالی نسبی در فازهای بعدی دارد. HAML و HCC مطرح‌اند. کدام وزن‌دهی تشخیصی به این الگوی دینامیک مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "این الگو HCC را بر HAML ترجیح می‌دهد."
+          },
+          {
+            "id": "B",
+            "text": "این الگو HAML را بر HCC ترجیح می‌دهد."
+          },
+          {
+            "id": "C",
+            "text": "این الگو FNH را بر هر دو تشخیص ترجیح می‌دهد."
+          },
+          {
+            "id": "D",
+            "text": "این الگو هر دو HAML و HCC را در تشخیص افتراقی نگه می‌دارد."
+          }
+        ],
+        "correct": "D",
+        "explanation": "HAML و HCC ممکن است در MRI با گادوکسیتیک اسید الگوهای دینامیک مشابهی داشته باشند. کاهش نسبی شدت سیگنال در مراحل بعد آن‌ها را با اطمینان تفکیک نمی‌کند؛ فازها، چربی، عروق، کپسول و زمینهٔ بالینی را با هم تفسیر کنید. هیپواینتنسیتیِ دیرتر نیز خودبه‌خود معادل wash-out واقعی پورتوونوس نیست.",
+        "wrongExplanations": {
+          "A": "در مطالعهٔ مقایسه‌ای اصلی، پرعروقی شریانی و کم‌سیگنالی بعدی در HAML و HCC هم‌پوشانی داشتند. این پروفایل به‌تنهایی HCC را به‌طور قابل‌اتکا در اولویت قرار نمی‌دهد؛ چربی، عروق، کپسول و زمینهٔ بالینی نیز لحاظ شوند.",
+          "B": "HCC نیز می‌تواند این پروفایل را داشته باشد. بنابراین ترجیح معکوس HAML صرفاً بر پایهٔ دینامیک نیز توجیه کافی ندارد.",
+          "C": "FNH تیپیک در HBP اغلب ایزو تا پرسیگنال است. پروفایل غیراختصاصی ذکرشده، اولویت‌دادن به FNH را توجیه نمی‌کند؛ الگوهای آتیپیک باید در بررسی کلی تفسیر شوند."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/27248975/"
+      }
+    },
+    {
+      "id": "hepatic-adenoma-caveat-de-01",
+      "kind": "PROPOSED_AFTER_REVIEW_DELTA_NOT_GLOBAL",
+      "before": {
+        "id": "hepatic-adenoma-caveat-de-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Eine technisch ausreichende multiphasische MRT lässt eine atypische hepatozelluläre Läsion zwischen HCA und HCC unklar. Welche weitere Strategie passt am ehesten zu dieser diagnostischen Unsicherheit?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Interdisziplinäre Leberkonferenz und je nach Fragestellung gezielte Gewebeabklärung erwägen"
+          },
+          {
+            "id": "B",
+            "text": "Eine zusätzliche hepatobiliäre Phase zur abschließenden molekularen Subtypisierung planen"
+          },
+          {
+            "id": "C",
+            "text": "CEUS zur definitiven Zuordnung des β-Catenin-Status einsetzen"
+          },
+          {
+            "id": "D",
+            "text": "Aufgrund arterieller Hypervaskularität eine reine HCA-Verlaufskontrolle festlegen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MRT kann insbesondere HNF-1α- und inflammatorische HCA nahelegen; bestimmte Subtypen und HCC können bildgebend überlappen. Bei unklarer atypischer Läsion interdisziplinär diskutieren und gezielte Biopsie erwägen. Weder eine zusätzliche Einzelphase noch CEUS beweisen zuverlässig den molekularen Subtyp.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "HBP kann die Charakterisierung ergänzen, erlaubt aber keine zuverlässige abschließende molekulare Subtypisierung aller HCA. Die bleibende HCA/HCC-Unsicherheit muss als solche behandelt werden.",
+          "C": "CEUS kann die Läsionscharakterisierung unterstützen, ist aber zur sicheren molekularen HCA-Subtypisierung nicht ausreichend.",
+          "D": "Arterielle Hypervaskularität kommt auch bei HCC vor. Eine spezifische HCA-Verlaufsschiene vor Klärung der atypischen Läsion wäre deshalb nicht ausreichend begründet."
+        }
+      },
+      "after": {
+        "id": "hepatic-adenoma-caveat-de-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Eine technisch ausreichende multiphasische MRT lässt eine atypische hepatozelluläre Läsion zwischen HCA und HCC unklar. Welche weitere Strategie passt am ehesten zu dieser diagnostischen Unsicherheit?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Interdisziplinäre Leberkonferenz und je nach Fragestellung gezielte Gewebeabklärung erwägen"
+          },
+          {
+            "id": "B",
+            "text": "Eine ergänzende hepatobiliäre Kontrastphase durchführen"
+          },
+          {
+            "id": "C",
+            "text": "CEUS zur zusätzlichen Beurteilung der Kontrastdynamik ergänzen"
+          },
+          {
+            "id": "D",
+            "text": "Eine kurzfristige MRT-Verlaufskontrolle ohne vorherige Fallkonferenz planen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MRT kann insbesondere HNF-1α- und inflammatorische HCA nahelegen; bestimmte Subtypen und HCC können bildgebend überlappen. Bei unklarer atypischer Läsion interdisziplinär diskutieren und gezielte Biopsie erwägen. Weder eine zusätzliche Einzelphase noch CEUS beweisen zuverlässig den molekularen Subtyp.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "HBP kann ergänzen, wenn sie fehlt. Sie löst jedoch nicht zuverlässig die HCA/HCC-Unsicherheit oder molekulare Subtypisierung; bei bereits ausreichender atypischer Untersuchung ist die gezielte interdisziplinäre Entscheidung vorrangig.",
+          "C": "CEUS kann die Charakterisierung ergänzen, subtypisiert HCA aber nicht zuverlässig. Die schon ausreichende MRT mit verbliebener HCA/HCC-Unsicherheit verlangt zunächst eine abgestimmte diagnostische Strategie.",
+          "D": "Verlauf kann je nach interdisziplinärer Einschätzung sinnvoll sein. Ihn vorab als Standardweg festzulegen, klärt die atypische potenziell maligne Läsion nicht angemessen; Bedarf und Art der Gewebeabklärung zuerst diskutieren."
+        }
+      },
+      "currentOriginalBeforeUnchanged": true
+    },
+    {
+      "id": "hepatic-adenoma-caveat-en-01",
+      "kind": "PROPOSED_AFTER_REVIEW_DELTA_NOT_GLOBAL",
+      "before": {
+        "id": "hepatic-adenoma-caveat-en-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Technically adequate multiphasic MRI leaves an atypical hepatocellular lesion indeterminate between HCA and HCC. Which further strategy best addresses this diagnostic uncertainty?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Multidisciplinary liver review and consideration of targeted tissue diagnosis according to the question"
+          },
+          {
+            "id": "B",
+            "text": "Plan an additional hepatobiliary phase for definitive molecular subtyping"
+          },
+          {
+            "id": "C",
+            "text": "Use CEUS for definitive beta-catenin status assignment"
+          },
+          {
+            "id": "D",
+            "text": "Assign HCA surveillance on the basis of arterial hypervascularity"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MRI can suggest particularly HNF1A and inflammatory HCA, but some subtypes and HCC overlap on imaging. Discuss an indeterminate atypical lesion multidisciplinary and consider targeted biopsy. Neither an additional single phase nor CEUS reliably establishes molecular subtype.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "HBP can complement characterisation but cannot reliably provide definitive molecular subtyping of every HCA. Remaining HCA/HCC uncertainty must be addressed as such.",
+          "C": "CEUS can aid lesion characterisation but is insufficient for definitive molecular HCA subtyping.",
+          "D": "Arterial hypervascularity also occurs in HCC. Assigning HCA-specific surveillance before resolving the atypical lesion is therefore insufficiently justified."
+        }
+      },
+      "after": {
+        "id": "hepatic-adenoma-caveat-en-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "Technically adequate multiphasic MRI leaves an atypical hepatocellular lesion indeterminate between HCA and HCC. Which further strategy best addresses this diagnostic uncertainty?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Multidisciplinary liver review and consideration of targeted tissue diagnosis according to the question"
+          },
+          {
+            "id": "B",
+            "text": "Acquire an additional hepatobiliary contrast phase"
+          },
+          {
+            "id": "C",
+            "text": "Add CEUS to further assess enhancement dynamics"
+          },
+          {
+            "id": "D",
+            "text": "Plan short-interval MRI follow-up before case conference"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MRI can suggest particularly HNF1A and inflammatory HCA, but some subtypes and HCC overlap on imaging. Discuss an indeterminate atypical lesion multidisciplinary and consider targeted biopsy. Neither an additional single phase nor CEUS reliably establishes molecular subtype.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "HBP can complement a study when absent. It does not reliably resolve HCA/HCC uncertainty or molecular subtyping; with an already adequate atypical study, targeted multidisciplinary decision-making takes priority.",
+          "C": "CEUS may complement characterisation but does not reliably subtype HCA. An already adequate MRI with persistent HCA/HCC uncertainty first warrants a coordinated diagnostic strategy.",
+          "D": "Follow-up may be appropriate after multidisciplinary assessment. Assigning it beforehand as the default does not adequately address an atypical potentially malignant lesion; first discuss the need and method of tissue evaluation."
+        }
+      },
+      "currentOriginalBeforeUnchanged": true
+    },
+    {
+      "id": "hepatic-adenoma-caveat-fa-01",
+      "kind": "PROPOSED_AFTER_REVIEW_DELTA_NOT_GLOBAL",
+      "before": {
+        "id": "hepatic-adenoma-caveat-fa-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "MRI چندفازی با کیفیت فنی کافی، ضایعهٔ هپاتوسلولار آتیپیک را بین HCA و HCC نامشخص باقی می‌گذارد. کدام راهبرد بعدی مناسب‌تر به این عدم قطعیت تشخیصی می‌پردازد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "بررسی در تیم چندتخصصی کبد و درنظرگرفتن بررسی هدفمند بافت بر پایهٔ پرسش بالینی"
+          },
+          {
+            "id": "B",
+            "text": "برنامه‌ریزی فاز هپاتوبیلیاری تکمیلی برای تعیین قطعی زیرگروه مولکولی"
+          },
+          {
+            "id": "C",
+            "text": "استفاده از CEUS برای تعیین قطعی وضعیت بتاکاتنین"
+          },
+          {
+            "id": "D",
+            "text": "تعیین پیگیری مختص HCA بر پایهٔ پرعروقی شریانی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MRI به‌ویژه می‌تواند HCA وابسته به HNF1A و نوع التهابی را مطرح کند، اما برخی زیرگروه‌ها و HCC در تصویربرداری هم‌پوشانی دارند. ضایعهٔ آتیپیک نامشخص در تیم چندتخصصی بررسی و بیوپسی هدفمند در نظر گرفته شود. نه یک فاز تکمیلی منفرد و نه CEUS، زیرگروه مولکولی را به‌طور قابل‌اتکا قطعی نمی‌کند.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "HBP می‌تواند بررسی ویژگی‌ها را تکمیل کند، اما تعیین قطعی زیرگروه مولکولی همهٔ HCAها را به‌طور قابل‌اتکا ممکن نمی‌کند. عدم قطعیت باقی‌مانده بین HCA و HCC باید جداگانه بررسی شود.",
+          "C": "CEUS می‌تواند به بررسی ویژگی‌های ضایعه کمک کند، اما برای تعیین قطعی زیرگروه مولکولی HCA کافی نیست.",
+          "D": "پرعروقی شریانی در HCC نیز دیده می‌شود. بنابراین تعیین پیگیری اختصاصی HCA پیش از روشن‌شدن ضایعهٔ آتیپیک توجیه کافی ندارد."
+        }
+      },
+      "after": {
+        "id": "hepatic-adenoma-caveat-fa-01",
+        "tags": [
+          "leberadenom"
+        ],
+        "fach": "abdomen",
+        "question": "MRI چندفازی با کیفیت فنی کافی، ضایعهٔ هپاتوسلولار آتیپیک را بین HCA و HCC نامشخص باقی می‌گذارد. کدام راهبرد بعدی مناسب‌تر به این عدم قطعیت تشخیصی می‌پردازد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "بررسی در تیم چندتخصصی کبد و درنظرگرفتن بررسی هدفمند بافت بر پایهٔ پرسش بالینی"
+          },
+          {
+            "id": "B",
+            "text": "انجام فاز تکمیلی با مادهٔ حاجب هپاتوبیلیاری"
+          },
+          {
+            "id": "C",
+            "text": "افزودن CEUS برای ارزیابی تکمیلی دینامیک مادهٔ حاجب"
+          },
+          {
+            "id": "D",
+            "text": "برنامه‌ریزی MRI پیگیری کوتاه‌مدت پیش از بررسی در تیم"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MRI به‌ویژه می‌تواند HCA وابسته به HNF1A و نوع التهابی را مطرح کند، اما برخی زیرگروه‌ها و HCC در تصویربرداری هم‌پوشانی دارند. ضایعهٔ آتیپیک نامشخص در تیم چندتخصصی بررسی و بیوپسی هدفمند در نظر گرفته شود. نه یک فاز تکمیلی منفرد و نه CEUS، زیرگروه مولکولی را به‌طور قابل‌اتکا قطعی نمی‌کند.",
+        "source": "https://doi.org/10.14309/ajg.0000000000002857",
+        "wrongExplanations": {
+          "B": "HBP در صورت انجام‌نشدن می‌تواند بررسی را تکمیل کند. اما عدم قطعیت HCA/HCC یا تعیین زیرگروه مولکولی را به‌طور قابل‌اتکا حل نمی‌کند؛ در بررسی کافی ولی آتیپیک، تصمیم‌گیری هدفمند چندتخصصی اولویت دارد.",
+          "C": "CEUS می‌تواند بررسی ویژگی‌ها را تکمیل کند، اما زیرگروه HCA را به‌طور قابل‌اتکا تعیین نمی‌کند. MRI کافی با عدم قطعیت باقی‌مانده HCA/HCC، ابتدا به راهبرد تشخیصی هماهنگ نیاز دارد.",
+          "D": "پیگیری پس از ارزیابی چندتخصصی می‌تواند مناسب باشد. تعیین پیشاپیش آن به‌عنوان مسیر پیش‌فرض، ضایعهٔ آتیپیک با احتمال بدخیمی را کافی بررسی نمی‌کند؛ ابتدا نیاز و روش بررسی بافت مطرح شود."
+        }
+      },
+      "currentOriginalBeforeUnchanged": true
+    },
+    {
+      "id": "aq-atv-lowergi-territory-de",
+      "before": {
+        "id": "aq-atv-lowergi-territory-de",
+        "fach": "abdomen",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "question": "Eine CTA lokalisiert eine fortgesetzte aktive Blutung im Zökum. Nach interdisziplinärer Entscheidung soll eine Katheterangiographie erfolgen. Welches arterielle Hauptterritorium ist für die gezielte Suche zunächst am ehesten passend?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A. mesenterica inferior"
+          },
+          {
+            "id": "B",
+            "text": "Truncus coeliacus"
+          },
+          {
+            "id": "C",
+            "text": "A. mesenterica superior"
+          },
+          {
+            "id": "D",
+            "text": "A. iliaca interna"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Das Zökum liegt im Versorgungsgebiet der SMA, meist über ileokolische Äste. CTA-Lokalisation und individuelle Gefäßanatomie führen die selektive Suche; ein positiver CTA-Befund ersetzt nicht die gezielte angiographische Beurteilung vor einer möglichen Embolisation.",
+        "wrongExplanations": {
+          "A": "Die IMA versorgt vor allem das linke Kolon und über die A. rectalis superior den oberen Rektumanteil, nicht typischerweise das Zökum.",
+          "B": "Der Truncus coeliacus gehört zur Vorderdarmversorgung; die zökale Blutung ist primär im SMA-Territorium zu suchen.",
+          "D": "Die A. iliaca interna kann zur Rektumversorgung beitragen. Sie ist nicht das typische Hauptterritorium einer zökalen Blutung."
+        },
+        "source": "https://access.archive-ouverte.unige.ch/access/metadata/9e4e04c4-074e-4b07-b983-a81a3d3a945e/download"
+      },
+      "after": {
+        "id": "aq-atv-lowergi-territory-de",
+        "fach": "abdomen",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "question": "Eine CTA lokalisiert eine fortgesetzte aktive Blutung im Zökum. Nach interdisziplinärer Entscheidung soll eine Katheterangiographie erfolgen. Welches arterielle Hauptterritorium ist für die gezielte Suche zunächst am ehesten passend?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A. mesenterica inferior"
+          },
+          {
+            "id": "B",
+            "text": "Truncus coeliacus"
+          },
+          {
+            "id": "C",
+            "text": "A. mesenterica superior"
+          },
+          {
+            "id": "D",
+            "text": "A. iliaca interna"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Das Zökum liegt im Versorgungsgebiet der SMA, meist über ileokolische Äste. CTA-Lokalisation und individuelle Gefäßanatomie führen die selektive Suche; ein positiver CTA-Befund ersetzt nicht die gezielte angiographische Beurteilung vor einer möglichen Embolisation.",
+        "wrongExplanations": {
+          "A": "Die IMA versorgt vor allem das linke Kolon und über die A. rectalis superior den oberen Rektumanteil, nicht typischerweise das Zökum.",
+          "B": "Der Truncus coeliacus gehört zur Vorderdarmversorgung; die zökale Blutung ist primär im SMA-Territorium zu suchen.",
+          "D": "Die A. iliaca interna kann zur Rektumversorgung beitragen. Sie ist nicht das typische Hauptterritorium einer zökalen Blutung."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9808013/"
+      },
+      "reason": "Directcaecal/ileocolic/SMAprimarysourceonly"
+    },
+    {
+      "id": "aq-atv-lowergi-territory-en",
+      "before": {
+        "id": "aq-atv-lowergi-territory-en",
+        "fach": "abdomen",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "question": "CTA localises ongoing active bleeding to the caecum. Catheter angiography is planned after multidisciplinary assessment. Which main arterial territory best fits the initial targeted search?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Inferior mesenteric artery"
+          },
+          {
+            "id": "B",
+            "text": "Coeliac trunk"
+          },
+          {
+            "id": "C",
+            "text": "Superior mesenteric artery"
+          },
+          {
+            "id": "D",
+            "text": "Internal iliac artery"
+          }
+        ],
+        "correct": "C",
+        "explanation": "The caecum is in the SMA territory, usually via ileocolic branches. CTA localisation and individual vascular anatomy guide selective assessment; positive CTA does not replace targeted angiographic evaluation before possible embolisation.",
+        "wrongExplanations": {
+          "A": "The IMA primarily supplies the left colon and upper rectum via the superior rectal artery, rather than the caecum.",
+          "B": "The coeliac trunk supplies foregut structures; caecal bleeding is primarily sought in the SMA territory.",
+          "D": "The internal iliac artery can contribute to rectal supply. It is not the usual main territory of caecal bleeding."
+        },
+        "source": "https://access.archive-ouverte.unige.ch/access/metadata/9e4e04c4-074e-4b07-b983-a81a3d3a945e/download"
+      },
+      "after": {
+        "id": "aq-atv-lowergi-territory-en",
+        "fach": "abdomen",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "question": "CTA localises ongoing active bleeding to the caecum. Catheter angiography is planned after multidisciplinary assessment. Which main arterial territory best fits the initial targeted search?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Inferior mesenteric artery"
+          },
+          {
+            "id": "B",
+            "text": "Coeliac trunk"
+          },
+          {
+            "id": "C",
+            "text": "Superior mesenteric artery"
+          },
+          {
+            "id": "D",
+            "text": "Internal iliac artery"
+          }
+        ],
+        "correct": "C",
+        "explanation": "The caecum is in the SMA territory, usually via ileocolic branches. CTA localisation and individual vascular anatomy guide selective assessment; positive CTA does not replace targeted angiographic evaluation before possible embolisation.",
+        "wrongExplanations": {
+          "A": "The IMA primarily supplies the left colon and upper rectum via the superior rectal artery, rather than the caecum.",
+          "B": "The coeliac trunk supplies foregut structures; caecal bleeding is primarily sought in the SMA territory.",
+          "D": "The internal iliac artery can contribute to rectal supply. It is not the usual main territory of caecal bleeding."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9808013/"
+      },
+      "reason": "Directcaecal/ileocolic/SMAprimarysourceonly"
+    },
+    {
+      "id": "aq-atv-lowergi-territory-fa",
+      "before": {
+        "id": "aq-atv-lowergi-territory-fa",
+        "fach": "abdomen",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "question": "CTA خون‌ریزی فعال ادامه‌دار را در سکوم مکان‌یابی می‌کند. پس از ارزیابی بین‌رشته‌ای، آنژیوگرافی کاتتری برنامه‌ریزی می‌شود. کدام قلمرو شریانی اصلی برای جست‌وجوی هدفمند اولیه مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "شریان مزانتریک تحتانی"
+          },
+          {
+            "id": "B",
+            "text": "تنهٔ سلیاک"
+          },
+          {
+            "id": "C",
+            "text": "شریان مزانتریک فوقانی"
+          },
+          {
+            "id": "D",
+            "text": "شریان ایلیاک داخلی"
+          }
+        ],
+        "correct": "C",
+        "explanation": "سکوم در قلمرو SMA، معمولاً از راه شاخه‌های ایلئوکولیک، قرار دارد. مکان‌یابی CTA و آناتومی عروقی فرد، بررسی انتخابی را هدایت می‌کنند؛ CTA مثبت جای ارزیابی هدفمند آنژیوگرافیک پیش از آمبولیزاسیون احتمالی را نمی‌گیرد.",
+        "wrongExplanations": {
+          "A": "IMA عمدتاً کولون چپ و از راه شریان رکتال فوقانی بخش فوقانی رکتوم را خون‌رسانی می‌کند، نه به‌طور معمول سکوم را.",
+          "B": "تنهٔ سلیاک به خون‌رسانی پیش‌روده مربوط است؛ خون‌ریزی سکوم ابتدا در قلمرو SMA جست‌وجو می‌شود.",
+          "D": "شریان ایلیاک داخلی می‌تواند در خون‌رسانی رکتوم نقش داشته باشد؛ قلمرو اصلی معمول برای خون‌ریزی سکوم نیست."
+        },
+        "source": "https://access.archive-ouverte.unige.ch/access/metadata/9e4e04c4-074e-4b07-b983-a81a3d3a945e/download"
+      },
+      "after": {
+        "id": "aq-atv-lowergi-territory-fa",
+        "fach": "abdomen",
+        "tags": [
+          "untere-gi-blutung"
+        ],
+        "question": "CTA خون‌ریزی فعال ادامه‌دار را در سکوم مکان‌یابی می‌کند. پس از ارزیابی بین‌رشته‌ای، آنژیوگرافی کاتتری برنامه‌ریزی می‌شود. کدام قلمرو شریانی اصلی برای جست‌وجوی هدفمند اولیه مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "شریان مزانتریک تحتانی"
+          },
+          {
+            "id": "B",
+            "text": "تنهٔ سلیاک"
+          },
+          {
+            "id": "C",
+            "text": "شریان مزانتریک فوقانی"
+          },
+          {
+            "id": "D",
+            "text": "شریان ایلیاک داخلی"
+          }
+        ],
+        "correct": "C",
+        "explanation": "سکوم در قلمرو SMA، معمولاً از راه شاخه‌های ایلئوکولیک، قرار دارد. مکان‌یابی CTA و آناتومی عروقی فرد، بررسی انتخابی را هدایت می‌کنند؛ CTA مثبت جای ارزیابی هدفمند آنژیوگرافیک پیش از آمبولیزاسیون احتمالی را نمی‌گیرد.",
+        "wrongExplanations": {
+          "A": "IMA عمدتاً کولون چپ و از راه شریان رکتال فوقانی بخش فوقانی رکتوم را خون‌رسانی می‌کند، نه به‌طور معمول سکوم را.",
+          "B": "تنهٔ سلیاک به خون‌رسانی پیش‌روده مربوط است؛ خون‌ریزی سکوم ابتدا در قلمرو SMA جست‌وجو می‌شود.",
+          "D": "شریان ایلیاک داخلی می‌تواند در خون‌رسانی رکتوم نقش داشته باشد؛ قلمرو اصلی معمول برای خون‌ریزی سکوم نیست."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9808013/"
+      },
+      "reason": "Directcaecal/ileocolic/SMAprimarysourceonly"
+    }
+  ],
+  "rootCause": "Later fourthFeedback assignment replaced complete Ulkus wrongFeedback objects. Skip only Ulkus; original Duodenal assignment unchanged.",
+  "hcaScope": "Three proposed-after question objects only, original currentBefore remains untouched; root has not integrated these Shared values.",
+  "hamlScope": "Four parallel DD-weighting statements; D no longer paraphrases stem. No new modality/treatment algorithm inferred from Lee2016.",
+  "checks": {
+    "changes": 15,
+    "fullProposedPool": "20Q/locale+20cards mapped4-or3goals",
+    "actualSSR": "15/15",
+    "duodenal": "Completeoldlesson+6Qlocales+2cardsdeepEqual",
+    "sharedBefore": "29/29"
+  },
+  "limits": [
+    "Independent review/retest pending",
+    "No new release/browser/PDF/media approval"
+  ]
+}

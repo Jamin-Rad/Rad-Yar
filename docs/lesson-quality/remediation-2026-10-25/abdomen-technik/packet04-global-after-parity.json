@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-25",
+  "status": "PASS_ACTUAL_CANONICAL_GLOBAL_AFTER",
+  "count": 29,
+  "questionLocaleObjects": 24,
+  "cardTriads": 5,
+  "script": "tmp/assessment-quality/test-atv04-shared-before.mjs",
+  "note": "Root integrated24 localized questions at8 original draftseeds/registrations and5literalHCAcards. Fresh actual canonicalglobal values compared exactly to independentlyreviewed29afterobjects; no paralleloverride."
+}

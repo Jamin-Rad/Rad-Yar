@@ -1,0 +1,6 @@
+{
+  "file": "app/msk/hand/strecksehnenfaecher/page.jsx",
+  "before": "    actions={{\r\n      mcq: { href: '/ueben/quiz?fach=msk&n=1&themen=sehnenpathologien-hand', label: pick(L('Prüfungsfragen', 'Quiz questions', 'پرسش‌های آزمون'), lang) },\r\n      flashcards: { href: '/flashcards/sehnenpathologien-hand', label: pick(L('Lernkarten', 'Flashcards', 'فلش‌کارت‌ها'), lang) },\r\n    }}\r",
+  "after": "    actions={lessonAssessmentActions('/msk/hand/strecksehnenfaecher', lang, {\n      mcq: { href: '/ueben/quiz?fach=msk&n=3&themen=sehnenpathologien-hand', label: pick(L('Prüfungsfragen', 'Quiz questions', 'پرسش‌های آزمون'), lang) },\n      flashcards: { href: '/flashcards/sehnenpathologien-hand', label: pick(L('Lernkarten', 'Flashcards', 'فلش‌کارت‌ها'), lang) },\n    })}",
+  "reason": "Use existing locale/return-path/count-aware canonical lessonAssessmentActions; no access-gate change. Offline new item not published until independent admission."
+}

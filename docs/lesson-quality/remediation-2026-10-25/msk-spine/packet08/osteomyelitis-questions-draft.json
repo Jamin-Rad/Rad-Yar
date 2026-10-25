@@ -1,0 +1,179 @@
+[
+  {
+    "key": "periosteal-report",
+    "question": {
+      "de": "Textfall: Bei einem Jugendlichen zeigt eine osteolytische Knochenläsion eine mehrschichtige Periostreaktion. Klinik und Labor liegen noch nicht vor. Welche Befundbeurteilung berücksichtigt die Aussagegrenze des Musters am besten?",
+      "en": "Text vignette: an adolescent has an osteolytic bone lesion with a multilamellar periosteal response. Clinical and laboratory information is not yet available. Which report best respects the limits of this pattern?",
+      "fa": "سناریوی متنی: نوجوانی ضایعهٔ استئولیتیک استخوان با واکنش پریوست چندلایه دارد. اطلاعات بالینی و آزمایشگاهی هنوز در دسترس نیست. کدام ارزیابی گزارش، محدودیت این الگو را بهتر رعایت می‌کند؟"
+    },
+    "options": [
+      {
+        "de": "Aggressiv wirkende Läsion; das Schichtmuster legt vorrangig eine neoplastische Ursache gegenüber Infektion nahe.",
+        "en": "Aggressive-appearing lesion; the layered pattern primarily favours neoplasia over infection.",
+        "fa": "ضایعه با ظاهر تهاجمی؛ الگوی لایه‌لایه در درجهٔ اول نئوپلازی را بر عفونت ترجیح می‌دهد."
+      },
+      {
+        "de": "Aggressiv wirkende Läsion; infektiöse und neoplastische Ursachen sind mit Klinik und weiteren Befunden abzugleichen.",
+        "en": "Aggressive-appearing lesion; correlate infectious and neoplastic possibilities with clinical and additional findings.",
+        "fa": "ضایعه با ظاهر تهاجمی؛ علل عفونی و نئوپلاستیک باید با بالین و یافته‌های تکمیلی تطبیق داده شوند."
+      },
+      {
+        "de": "Langsam verlaufende Läsion; die mehreren Periostschichten sprechen eher für einen nichtaggressiven Verlauf.",
+        "en": "Slowly evolving lesion; multiple periosteal layers favour a nonaggressive course.",
+        "fa": "ضایعهٔ آهسته‌سیر؛ لایه‌های متعدد پریوست بیشتر به نفع روند غیرتهاجمی‌اند."
+      },
+      {
+        "de": "Traumatische Knochenreaktion; das Schichtmuster spricht vorrangig für eine organisierte Frakturheilung.",
+        "en": "Traumatic bone response; the layered pattern primarily favours organised fracture healing.",
+        "fa": "واکنش تروماتیک استخوان؛ الگوی لایه‌لایه در درجهٔ اول به نفع ترمیم سازمان‌یافتهٔ شکستگی است."
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "de": "Eine lamelläre Periostreaktion beschreibt die Knochenantwort und ist nicht tumorspezifisch. Sowohl Ewing-Sarkom als auch Osteomyelitis gehören in die Differentialdiagnose; aus dem Muster allein folgen weder Histologie noch Erreger.",
+      "en": "Lamellated periosteal response describes the bone reaction and is not tumour-specific. Both Ewing sarcoma and osteomyelitis belong in the differential; the pattern alone establishes neither histology nor pathogen.",
+      "fa": "واکنش پریوست لایه‌لایه پاسخ استخوان را توصیف می‌کند و اختصاصی تومور نیست. سارکوم یوئینگ و استئومیلیت هر دو در افتراق قرار دارند؛ الگو به‌تنهایی نه بافت‌شناسی و نه عامل عفونی را تعیین می‌کند."
+    },
+    "wrongExplanations": {
+      "A": {
+        "de": "Das Muster allein begründet keine Priorisierung von Neoplasie gegenüber Infektion; die fehlenden Kontextdaten sind relevant.",
+        "en": "The pattern alone does not justify prioritising neoplasia over infection; missing context matters.",
+        "fa": "الگو به‌تنهایی ترجیح نئوپلازی بر عفونت را توجیه نمی‌کند؛ اطلاعات زمینه‌ای هنوز در دسترس نیست و اهمیت دارد."
+      },
+      "C": {
+        "de": "Mehrere Periostlamellen sind nicht mit einer einzigen glatten soliden Periostreaktion gleichzusetzen.",
+        "en": "Multiple lamellae are not equivalent to a single smooth solid periosteal response.",
+        "fa": "لایه‌های متعدد با واکنش پریوست جامد و صافِ منفرد یکسان نیستند."
+      },
+      "D": {
+        "de": "Eine Fraktur oder ein entsprechender Heilungsverlauf ist nicht beschrieben. Aus Lamellierung allein lässt sich die traumatische Ursache nicht ableiten.",
+        "en": "No fracture or corresponding healing course is described. Lamellation alone does not establish traumatic origin.",
+        "fa": "شکستگی یا سیر ترمیمی متناظر توصیف نشده است؛ لایه‌لایه‌بودن به‌تنهایی منشأ تروماتیک را تعیین نمی‌کند."
+      }
+    },
+    "sources": [
+      "MSK.pdf physical73/printed72; actual rendered page read2026-10-25"
+    ],
+    "topicId": "osteomyelitis",
+    "fach": "msk",
+    "difficulty": 1
+  },
+  {
+    "key": "brodie-variability",
+    "question": {
+      "de": "Ein Brodie-Abszess wird differentialdiagnostisch erwogen. Die Röntgenaufnahme zeigt keine Periostreaktion. Welche Interpretation dieser fehlenden Reaktion ist angemessen?",
+      "en": "Brodie abscess is being considered in the differential. Radiographs show no periosteal response. How should this absent response be interpreted?",
+      "fa": "آبسهٔ برودی در تشخیص افتراقی مطرح است. رادیوگرافی واکنش پریوست نشان نمی‌دهد. تفسیر مناسبِ نبود این واکنش چیست؟"
+    },
+    "options": [
+      {
+        "de": "Die Infektionshypothese sollte zugunsten einer nichtinfektiösen Läsion zurückgestellt werden.",
+        "en": "The infection hypothesis should be deprioritised in favour of a noninfectious lesion.",
+        "fa": "فرض عفونت باید به نفع ضایعهٔ غیرعفونی در اولویت پایین‌تر قرار گیرد."
+      },
+      {
+        "de": "Die Läsion sollte ohne Periostreaktion als akut statt subakut oder chronisch eingeordnet werden.",
+        "en": "Without periosteal response, classify the lesion as acute rather than subacute or chronic.",
+        "fa": "بدون واکنش پریوست، ضایعه باید حاد و نه تحت‌حاد یا مزمن دسته‌بندی شود."
+      },
+      {
+        "de": "Das Fehlen passt zur variablen Morphologie; die übrigen klinischen und bildgebenden Befunde bleiben entscheidend.",
+        "en": "Absence fits the variable appearances; the remaining clinical and imaging findings still determine interpretation.",
+        "fa": "نبود آن با ظاهر متغیر سازگار است؛ سایر یافته‌های بالینی و تصویری همچنان برای تفسیر تعیین‌کننده‌اند."
+      },
+      {
+        "de": "Die fehlende Reaktion spricht eher für einen abgeheilten als einen fortbestehenden infektiösen Herd.",
+        "en": "Absent response favours a healed rather than an ongoing infectious focus.",
+        "fa": "نبود واکنش بیشتر به نفع کانون عفونی بهبودیافته است تا کانونی که همچنان وجود دارد."
+      }
+    ],
+    "correct": "C",
+    "explanation": {
+      "de": "In der ursprünglichen Serie von 25 Brodie-Abszessen zeigte nur ein Teil eine Periostreaktion. Ihr Fehlen ist daher kein Ausschlusskriterium. Die Serie belegt die Variabilität, nicht eine diagnostische Entscheidungsregel aus einem Einzelzeichen.",
+      "en": "Only some lesions had periosteal response in the original series of 25 Brodie abscesses. Its absence therefore does not exclude the diagnosis. The series supports variability, not a diagnostic decision rule from one sign.",
+      "fa": "در مجموعهٔ اصلی ۲۵ آبسهٔ برودی، فقط بخشی واکنش پریوست داشتند؛ بنابراین نبود آن معیار رد نیست. این مجموعه تنوع ظاهر را نشان می‌دهد، نه قاعدهٔ تصمیم‌گیری تشخیصی از یک نشانه."
+    },
+    "wrongExplanations": {
+      "A": {
+        "de": "Die Originalserie enthält Brodie-Abszesse ohne Periostreaktion; dieses fehlende Zeichen trägt die vorgeschlagene Umgewichtung allein nicht.",
+        "en": "The original series includes Brodie abscesses without periosteal response; this absent sign alone does not support the proposed reprioritisation.",
+        "fa": "مجموعهٔ اصلی شامل آبسه‌های برودی بدون واکنش پریوست است؛ این نشانهٔ غایب به‌تنهایی تغییر اولویت پیشنهادی را پشتیبانی نمی‌کند."
+      },
+      "B": {
+        "de": "Der zeitliche Verlauf wird nicht allein aus dem Vorhandensein oder Fehlen einer Periostreaktion bestimmt.",
+        "en": "Temporal course is not determined solely by whether periosteal response is present.",
+        "fa": "سیر زمانی صرفاً از وجود یا نبود واکنش پریوست تعیین نمی‌شود."
+      },
+      "D": {
+        "de": "Aus einer fehlenden Periostreaktion lässt sich die aktuelle Aktivität des möglichen Herdes nicht zuverlässig ableiten. Die übrigen Befunde und der Verlauf bleiben nötig.",
+        "en": "Absent periosteal response does not reliably determine the current activity of the possible focus. Other findings and clinical course remain necessary.",
+        "fa": "نبود واکنش پریوست، فعالیت فعلی کانون احتمالی را با اطمینان تعیین نمی‌کند؛ سایر یافته‌ها و سیر بالینی همچنان لازم‌اند."
+      }
+    },
+    "sources": [
+      "https://pubmed.ncbi.nlm.nih.gov/451190/"
+    ],
+    "topicId": "osteomyelitis",
+    "fach": "msk",
+    "difficulty": 1
+  },
+  {
+    "key": "paediatric-next-imaging",
+    "question": {
+      "de": "Bei einem 9-jährigen Kind besteht weiter Verdacht auf akute hämatogene Osteomyelitis. Initiale Röntgenaufnahmen klären den Befund nicht; weitere Bildgebung zur Diagnose und Ausdehnung ist erforderlich. Welche Modalität wird nach PIDS/IDSA 2021 bevorzugt?",
+      "en": "A 9-year-old child remains suspected of acute haematogenous osteomyelitis. Initial radiographs are inconclusive; additional imaging is required for diagnosis and extent. Which modality is preferred by PIDS/IDSA 2021?",
+      "fa": "در کودک ۹ ساله هنوز شک به استئومیلیت حاد هماتوژن وجود دارد. رادیوگرافی اولیه نتیجه را روشن نکرده و برای تشخیص و تعیین وسعت تصویربرداری بیشتر لازم است. طبق PIDS/IDSA ۲۰۲۱ کدام روش ترجیح داده می‌شود؟"
+    },
+    "options": [
+      {
+        "de": "MRT der betroffenen Region",
+        "en": "MRI of the affected region",
+        "fa": "MRI ناحیهٔ درگیر"
+      },
+      {
+        "de": "CT der betroffenen Region",
+        "en": "CT of the affected region",
+        "fa": "CT ناحیهٔ درگیر"
+      },
+      {
+        "de": "Knochenszintigrafie",
+        "en": "Bone scintigraphy",
+        "fa": "اسکن استخوان"
+      },
+      {
+        "de": "Sonografie der betroffenen Region",
+        "en": "Ultrasound of the affected region",
+        "fa": "سونوگرافی ناحیهٔ درگیر"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "de": "Wenn bei pädiatrischer akuter hämatogener Osteomyelitis weitere Bildgebung nötig ist, bevorzugt die Leitlinie MRT gegenüber CT, Szintigrafie oder Sonografie. Die Empfehlung ist konditional bei sehr niedriger Evidenzsicherheit; nicht jedes unkomplizierte Kind braucht zusätzliche MRT.",
+      "en": "When further imaging is needed in paediatric acute haematogenous osteomyelitis, the guideline favours MRI over CT, scintigraphy or ultrasound. This is conditional with very low-certainty evidence; not every uncomplicated child requires additional MRI.",
+      "fa": "اگر در استئومیلیت حاد هماتوژن کودکان تصویربرداری بیشتر لازم باشد، راهنما MRI را بر CT، اسکن استخوان یا سونوگرافی ترجیح می‌دهد. توصیه مشروط با قطعیت بسیار پایین شواهد است؛ همهٔ کودکان با بیماری بدون عارضه به MRI تکمیلی نیاز ندارند."
+    },
+    "wrongExplanations": {
+      "B": {
+        "de": "Die Leitlinie bevorzugt für den beschriebenen weiteren Bildgebungsbedarf MRT gegenüber CT. Daraus folgt kein Verbot klinisch begründeter CT in anderen Situationen.",
+        "en": "For this additional imaging requirement, the guideline favours MRI over CT. This is not a ban on clinically justified CT in other settings.",
+        "fa": "برای نیاز تکمیلی توصیف‌شده، راهنما MRI را بر CT ترجیح می‌دهد؛ این به معنای ممنوعیت CT با اندیکاسیون بالینی در موقعیت‌های دیگر نیست."
+      },
+      "C": {
+        "de": "MRT wird für diese Fragestellung gegenüber Knochenszintigrafie bevorzugt; die Empfehlung gilt hier für pädiatrische AHO.",
+        "en": "MRI is preferred over bone scintigraphy for this question; the recommendation here concerns paediatric AHO.",
+        "fa": "برای این پرسش MRI بر اسکن استخوان ترجیح دارد؛ این توصیه در اینجا مربوط به AHO کودکان است."
+      },
+      "D": {
+        "de": "Sonografie kann etwa einen angrenzenden Gelenkerguss oder eine Weichteilausbreitung ergänzend beurteilen; sie ersetzt die bevorzugte MRT-Beurteilung der Knocheninfektion hier nicht.",
+        "en": "Ultrasound may complement assessment of adjacent joint effusion or soft-tissue spread; it does not replace the preferred MRI assessment of bone infection here.",
+        "fa": "سونوگرافی می‌تواند ارزیابی افیوژن مفصل مجاور یا انتشار بافت نرم را تکمیل کند؛ اما اینجا جای ارزیابی ترجیحی MRI عفونت استخوان را نمی‌گیرد."
+      }
+    },
+    "sources": [
+      "https://www.idsociety.org/practice-guideline/bone-and-joint-infections---osteomyelitis/"
+    ],
+    "topicId": "osteomyelitis",
+    "fach": "msk",
+    "difficulty": 2
+  }
+]

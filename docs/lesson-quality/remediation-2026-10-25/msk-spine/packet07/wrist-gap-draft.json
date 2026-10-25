@@ -1,0 +1,136 @@
+{
+  "record": {
+    "key": "lister-course",
+    "topicId": "sehnenpathologien-hand",
+    "fach": "msk",
+    "question": {
+      "de": "Textfall zur typischen Anatomie: Eine Sehne verläuft im dritten dorsalen Fach an der ulnaren Seite des Lister-Tuberkulums und schwenkt distal davon nach radial zum Daumen. Welche Zuordnung passt?",
+      "en": "Text vignette of typical anatomy: a tendon runs in the third dorsal compartment on the ulnar side of Lister tubercle and turns radially toward the thumb beyond it. Which identification fits?",
+      "fa": "سناریوی متنی دربارهٔ آناتومی معمول: تاندونی در کمپارتمان سوم پشتی در سمت اولنار تکمهٔ لیستر می‌گذرد و در دیستال آن به سمت رادیال و شست می‌چرخد. کدام شناسایی مناسب است؟"
+    },
+    "options": [
+      {
+        "de": "ECRL/ECRB im zweiten Fach",
+        "en": "ECRL/ECRB in compartment II",
+        "fa": "ECRL/ECRB در کمپارتمان II"
+      },
+      {
+        "de": "APL/EPB im ersten Fach",
+        "en": "APL/EPB in compartment I",
+        "fa": "APL/EPB در کمپارتمان I"
+      },
+      {
+        "de": "EPL im dritten Fach",
+        "en": "EPL in compartment III",
+        "fa": "EPL در کمپارتمان III"
+      },
+      {
+        "de": "EDC/EIP im vierten Fach",
+        "en": "EDC/EIP in compartment IV",
+        "fa": "EDC/EIP در کمپارتمان IV"
+      }
+    ],
+    "correct": "C",
+    "explanation": {
+      "de": "EPL wird am Lister-Tuberkulum im dritten Fach umgelenkt und zieht anschließend zum Daumen. ECRL/ECRB liegen im zweiten Fach radial des Tuberkulums. Verlauf und Landmarke gemeinsam zur Zuordnung verwenden; die Frage beschreibt die typische Anatomie.",
+      "en": "EPL is redirected at Lister tubercle in the third compartment before running toward the thumb. ECRL/ECRB occupy the second compartment radial to the tubercle. Use tendon course and landmark together; this vignette describes typical anatomy.",
+      "fa": "EPL در کمپارتمان سوم کنار تکمهٔ لیستر تغییر جهت می‌دهد و سپس به شست می‌رود. ECRL/ECRB در کمپارتمان دوم و سمت رادیال تکمه قرار دارند. مسیر و لندمارک را با هم برای شناسایی به‌کار ببرید؛ سناریو آناتومی معمول را توصیف می‌کند."
+    },
+    "wrongExplanations": {
+      "A": {
+        "de": "ECRL/ECRB sind dem zweiten Fach radial des Lister-Tuberkulums zugeordnet, nicht dem beschriebenen dritten Fach mit Daumenverlauf.",
+        "en": "ECRL/ECRB belong to the second compartment radial to Lister tubercle rather than the described third compartment and thumb course.",
+        "fa": "ECRL/ECRB مربوط به کمپارتمان دوم و سمت رادیال تکمهٔ لیسترند، نه کمپارتمان سوم و مسیر توصیف‌شده به شست."
+      },
+      "B": {
+        "de": "APL/EPB gehören zum ersten Fach am Radiusstyloid. Die beschriebene Umlenkung um Lister betrifft EPL.",
+        "en": "APL/EPB occupy the first compartment at the radial styloid. The described turn around Lister tubercle concerns EPL.",
+        "fa": "APL/EPB در کمپارتمان اول کنار استایلوئید رادیوس قرار دارند؛ پیچیدن توصیف‌شده دور تکمهٔ لیستر مربوط به EPL است."
+      },
+      "D": {
+        "de": "EDC/EIP verlaufen gemeinsam im größeren vierten Fach; sie erklären keine einzelne im Fach III um Lister ziehende Daumensehne.",
+        "en": "EDC/EIP share the larger fourth compartment; they do not explain a single thumb tendon turning around Lister in compartment III.",
+        "fa": "EDC/EIP با هم در کمپارتمان چهارم بزرگ‌تر قرار دارند؛ آن‌ها تاندون منفرد شست را که در کمپارتمان III دور لیستر می‌چرخد توضیح نمی‌دهند."
+      }
+    },
+    "sources": [
+      "MSK.pdf physical41/printed40; actual table and page freshly rendered/read2026-10-25",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC11775041/"
+    ]
+  },
+  "card": {
+    "id": "aq-msk-wrist-lister-course",
+    "topicId": "sehnenpathologien-hand",
+    "category": {
+      "de": "Landmarken",
+      "en": "Landmarks",
+      "fa": "لندمارک‌ها"
+    },
+    "front": {
+      "de": "Wie hilft das Lister-Tuberkulum bei der Unterscheidung von Strecksehnenfach II und III?",
+      "en": "How does Lister tubercle help distinguish extensor compartments II and III?",
+      "fa": "تکمهٔ لیستر چگونه به تفکیک کمپارتمان‌های اکستانسور II و III کمک می‌کند؟"
+    },
+    "answer": {
+      "de": "II enthält ECRL/ECRB radial des Tuberkulums; III enthält EPL, der um Lister nach radial zum Daumen zieht.",
+      "en": "II contains ECRL/ECRB radial to the tubercle; III contains EPL, which turns around Lister toward the thumb.",
+      "fa": "II شامل ECRL/ECRB در سمت رادیال تکمه است؛ III شامل EPL است که دور لیستر به سمت رادیال و شست می‌رود."
+    },
+    "explanation": {
+      "de": "Die knöcherne Landmarke mit dem Sehnenverlauf verknüpfen. Gemeint ist ein Strecksehnenfach; die im ursprünglichen Übersichtsbild ergänzte Bezeichnung „dorsal interosseous“ ist dafür keine übliche Fachbezeichnung.",
+      "en": "Link the bony landmark to the tendon course. This is an extensor tendon compartment; the source overview’s added “dorsal interosseous” label is not the usual name for it.",
+      "fa": "لندمارک استخوانی را با مسیر تاندون مرتبط کنید. منظور یک کمپارتمان تاندون اکستانسور است؛ عنوان افزودهٔ «dorsal interosseous» در نمای اصلی منبع، نام معمول این کمپارتمان نیست."
+    },
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11775041/"
+  },
+  "coverage": {
+    "route": "/msk/hand/strecksehnenfaecher",
+    "topicId": "sehnenpathologien-hand",
+    "status": "DRAFT_ONLY_PRODUCTION_FROZEN",
+    "learningGoals": [
+      {
+        "id": "carpal-joints",
+        "text": {
+          "de": "Mediokarpal-, Radiokarpal- und distale Gelenklinien anatomisch zuordnen.",
+          "en": "Localise midcarpal, radiocarpal and distal joint lines anatomically.",
+          "fa": "خطوط مفصلی میدکارپی، رادیوکارپی و دیستال را از نظر آناتومیک مکان‌یابی کنید."
+        },
+        "questionIds": [
+          "sehnenpathologien-hand-de-02"
+        ],
+        "cardIds": [
+          "wrist-carpal-midcarpal"
+        ]
+      },
+      {
+        "id": "compartment-map",
+        "text": {
+          "de": "Die radialen und ulnaren Strecksehnenfächer anhand ihrer Sehnen und Knochenlandmarken identifizieren.",
+          "en": "Identify radial and ulnar extensor compartments using their tendons and bony landmarks.",
+          "fa": "کمپارتمان‌های اکستانسور رادیال و اولنار را با تاندون‌ها و لندمارک‌های استخوانی شناسایی کنید."
+        },
+        "questionIds": [
+          "sehnenpathologien-hand-de-01"
+        ],
+        "cardIds": [
+          "wrist-extensor-compartment-1",
+          "wrist-extensor-compartment-6"
+        ]
+      },
+      {
+        "id": "lister",
+        "text": {
+          "de": "Am Lister-Tuberkulum das zweite Fach von der EPL-Umlenkung im dritten Fach unterscheiden.",
+          "en": "At Lister tubercle distinguish the second compartment from EPL turning in the third.",
+          "fa": "کنار تکمهٔ لیستر، کمپارتمان دوم را از تغییر جهت EPL در کمپارتمان سوم تفکیک کنید."
+        },
+        "questionIds": [
+          "aq-msk-sehnenpathologien-hand-de-lister-course"
+        ],
+        "cardIds": [
+          "aq-msk-wrist-lister-course"
+        ]
+      }
+    ]
+  }
+}

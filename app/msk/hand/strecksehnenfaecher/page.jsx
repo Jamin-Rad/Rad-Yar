@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { lessonAssessmentActions } from '@/lib/lessonAssessmentLinks'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -69,10 +70,10 @@ export default function WristExtensorCompartmentsPage() {
     sections={sections}
     labels={Object.fromEntries(Object.entries(LABELS).map(([key, value]) => [key, pick(value, lang)]))}
     renderIcon={id => <Icon id={id} />}
-    actions={{
-      mcq: { href: '/ueben/quiz?fach=msk&n=1&themen=sehnenpathologien-hand', label: pick(L('Prüfungsfragen', 'Quiz questions', 'پرسش‌های آزمون'), lang) },
+    actions={lessonAssessmentActions('/msk/hand/strecksehnenfaecher', lang, {
+      mcq: { href: '/ueben/quiz?fach=msk&n=3&themen=sehnenpathologien-hand', label: pick(L('Prüfungsfragen', 'Quiz questions', 'پرسش‌های آزمون'), lang) },
       flashcards: { href: '/flashcards/sehnenpathologien-hand', label: pick(L('Lernkarten', 'Flashcards', 'فلش‌کارت‌ها'), lang) },
-    }}
+    })}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', heroImage: lesson.hero, heroImageOpacity: 1, accent: '#65c9be', accentStrong: '#176c68', accentSoft: '#d8f2ed', secondary: '#9fb4c0', secondaryStrong: '#476273', heroBase: '#182d3a' }}
     heroImageAlt={pick(lesson.heroAlt, lang)} className={styles.page}
     sources={<LessonSources title={t('sources')} items={sources} note={pick(lesson.scope, lang)} />}>
