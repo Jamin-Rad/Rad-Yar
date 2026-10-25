@@ -7,9 +7,10 @@ import * as mskSpine from '../data/assessmentQuality/mskSpine.js'
 import * as abdomenTechnik from '../data/assessmentQuality/abdomenTechnik.js'
 import * as thoraxMamma from '../data/assessmentQuality/thoraxMamma.js'
 import * as upperGiLiver from '../data/assessmentQuality/atvUpperGiLiverEarly.js'
+import * as pancreatic from '../data/assessmentQuality/atvPancreatic.js'
 import {routeCoverage as mammaCoverage} from '../data/assessmentQuality/mammaCoverage.js'
 const reviewed=JSON.parse(fs.readFileSync('data/assessmentQuality/reviewedPackets.json','utf8'))
-const packets=[brain,mskSpine,abdomenTechnik,thoraxMamma,upperGiLiver]
+const packets=[brain,mskSpine,abdomenTechnik,thoraxMamma,upperGiLiver,pancreatic]
 function select(items,ids,label,identity=item=>item.id){
   const byId=new Map()
   for(const item of items){const key=identity(item);if(byId.has(key))throw Error(`Duplicate ${label}: ${key}`);byId.set(key,item)}

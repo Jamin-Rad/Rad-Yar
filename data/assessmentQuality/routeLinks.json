@@ -504,6 +504,46 @@
       "cardTopic": "leberadenom",
       "subject": "abdomen"
     },
+    "/abdomen/pankreas/neuroendokrine-tumoren": {
+      "topicIds": [
+        "pnet"
+      ],
+      "questionCount": 4,
+      "cardTopic": "pnet",
+      "subject": "abdomen"
+    },
+    "/abdomen/pankreas/pankreaskarzinom": {
+      "topicIds": [
+        "pdac"
+      ],
+      "questionCount": 3,
+      "cardTopic": "pdac",
+      "subject": "abdomen"
+    },
+    "/abdomen/leber/psc-mrcp": {
+      "topicIds": [
+        "psc-pbc"
+      ],
+      "questionCount": 3,
+      "cardTopic": "psc-pbc",
+      "subject": "abdomen"
+    },
+    "/abdomen/pankreas/zystische-tumoren": {
+      "topicIds": [
+        "ipmn"
+      ],
+      "questionCount": 3,
+      "cardTopic": "abdomen-pancreatic-cysts",
+      "subject": "abdomen"
+    },
+    "/abdomen/pankreas/pankreatitis": {
+      "topicIds": [
+        "pankreatitis"
+      ],
+      "questionCount": 10,
+      "cardTopic": "pankreatitis",
+      "subject": "abdomen"
+    },
     "/mamma/bildgebung/mrt/basics": {
       "topicIds": [
         "mamma-mrt-basics"
@@ -718,7 +758,7 @@
     "lebermetastasen": 2,
     "ileus-duenndarm": 5,
     "intussusception": 1,
-    "ipmn": 1,
+    "ipmn": 3,
     "hepatische-steatose": 1,
     "angiomyolipom": 2,
     "nierenzysten": 1,
@@ -783,7 +823,7 @@
     "volvulus": 2,
     "pnet": 4,
     "hepatisches-angiomyolipom": 4,
-    "psc-pbc": 1,
+    "psc-pbc": 3,
     "leber-mrt-protokoll": 1,
     "osteochondrosis-dissecans": 2,
     "schulterinstabilitaet": 2,

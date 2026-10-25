@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_SCOPED_PRIMARY_EVIDENCE_READY_INDEPENDENT_REVIEW_PENDING",
+  "sources": [
+    {
+      "url": "https://doi.org/10.1136/gutjnl-2012-302779",
+      "read": "Original revisedAtlanta2012 actualindexed text: diagnostic2of3, necrotising pancreatic/peripancreatic categories,Box1,Figure3caption, firstweekAPFC/ANC ambiguity, fluid/solidcontent, pseudocyst/WON maturation,clinicalseverity>48h. Nofigurepixelsread/reuseclaim."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8938398/",
+      "read": "OriginalJapanese2020AIPguideline published2022 actualCQI7/I9/I13: diffuse/focalpancreas,capsule-likerim/delayedenhancement,comprehensivediagnosis; diagnosticsteroidtrial atspecializedhospital afternegativecancerworkup. No assertion thatrimuniversallyspecific copied."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21412117/",
+      "read": "OriginalICDC2011fullabstract:5cardinalfeatures,steroidresponseoptional; originalabstractdoesnotitselfcontainfullnegativecancercaveat, whichisverifiedinJapaneseconsensusabove."
+    },
+    {
+      "url": "https://doi.org/10.14309/ajg.0000000000002645",
+      "read": "ACG2024 actualoriginalindexed recommendationsTable2,etiologysection,gallstones/alcoholvariability,US+repeatUS,unexplainedetiologyMRI/EUS,ERCPindications/limits. No numerictherapy/doseintroduced."
+    },
+    {
+      "url": "https://doi.org/10.1177/2050640616684695",
+      "read": "HaPanEU2017 actualoriginalimagingStatements2-1/2-3 andcalcificationparagraph: MRI/CT/EUS role,normalMRIcannotexcludemildCP,MRCPcalibrechanges/fillingdefects. No generic3mmrule adopted."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11568327/",
+      "read": "Ichikawa2001 originalcompleteabstract freshindexedPubMed/RSNA:11inflammatorymasses/43carcinomas, nonobstructed/narrowedductpenetrating sign; imperfectdiscrimination. No diagnosticpercentages transferred."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2296641/",
+      "read": "Balthazar1990 fulloriginal88caseabstract: originalmorphologicalCTscore/necrosis; observedcohortmortality notgeneralindividualrisk. Exact30percentinclusivityNOTsettledbyabstract, nochangeonthatbasis."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3473517/",
+      "read": "Spencer2010 originalmethods/results/Table1/captions actuallyread: confirmed3+suspectedstablecases, lesionmatchesspleenallphases,scintigraphysplenicconfirmatory,Octreoscanfalsepositivecaveat; noNETrate/cutoff/figureclaimadopted."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7029300/",
+      "read": "NANETS2020 originalindexed abstractandfunctionalPNETrecommendation read; clinicalsyndromes/biochemicallyconfirmedstatus,localizedsmalltumorcontext. Imagingsectionstillneedsdirecttargetedread; doNOTclaimwholeguidelineread."
+    },
+    {
+      "url": "https://doi.org/10.1002/hep.32771",
+      "read": "Actual official original AASLD2022 PDF p1/Table1 and diagnostic/imaging/guidance sections read: multifocal strictures, secondary-cause exclusion, first high-quality MRCP and repeat technical/uncertain study, no purely diagnostic ERCP, small-duct pathway after normal high-quality study. Relevant stricture Table1/main text explicitly common bile duct or hepatic ducts with signs/symptoms obstructive cholestasis and/or bacterial cholangitis. Intro common-hepatic wording differs; item follows Table1/main text. No therapeutic/stent/dose/timing protocol adopted.",
+      "officialFullText": "https://www.aasld.org/sites/default/files/2023-01/Hepatology%20-%202022%20-%20Bowlus%20-%20AASLD%20practice%20guidance%20on%20primary%20sclerosing%20cholangitis%20and%20cholangiocarcinoma.pdf"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24355035/",
+      "read": "Original SAR/APA2014 consensus actual PDF text read: imaging-protocol/problem-solving section, morphologic Table3, arterial Table4 and venous Table5, structured reporting and adjacent patent venous segments. Captions text read, not figure pixels. The 2014 resectability categories are not adopted as current policy; no contact-angle-only operability rule.",
+      "fullText": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/Reporting_Panc_Ductal_Adeno.pdf"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23991643/",
+      "read": "OriginalWorhunsky2014 indexedabstractbackground/methods/results: commonhyperenhancingPNET anddocumentedisohypoPNET inresectedwell-differentiatedcohort. No survival/cutoffvaluestransferred."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26321494/",
+      "read": "Hyodo2015 completeoriginal61tumor/58patientabstractread: hyper andiso/hypoareas, cysticcomponents/size/pathologicgrade associations; noWHO2010G3=NECuniversalrule/numericsadopted."
+    },
+    {
+      "url": "https://doi.org/10.1111/jne.13318",
+      "read": "ActualofficialENETS2023functioningsyndromeguidelinecompleteabstractread: clinicalsyndromewithbiochemicalinappropriatehormonelevels. No treatment/testduration/dosethresholds introduced."
+    },
+    {
+      "url": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Abdomen.pdf#page=38",
+      "read": "ActualphysicalPDF38render tmp/abdomen-completion/page-38.png visuallyread. Generalinsulinoma90%statementexists; noidentifiablecitedsmallstudyonthepage. Existingwrongphysical39/smallstudyclaimremovedfromQ/card/boundedlessonmirror; sourcefigureunchanged/notrecertified."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12202711/",
+      "read": "Prokesch2002 original complete abstract,53-patient cohort with six isoattenuating tumors: secondary duct interruption/upstream atrophy/contour abnormalities. No frequency transported to individual diagnosis."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24705640/",
+      "read": "Cohen2014 original complete abstract, EUS cohort without jaundice or CT/MRI mass; pancreatic/ampullary neoplasms and benign ductal dilatation/chronic pancreatitis/stones. Used for nonexclusive differential, not new management or follow-up frequency."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19522024/",
+      "read": "Original pathologically correlated 164-cyst CT cohort complete abstract, microcystic morphology and central scar associated with SCA; no diagnostic certainty/accuracy transferred. Figure captions text seen but no pixels reviewed. Actual author list checked: Shah first author, Sahani last; displayed citation Shah2009."
+    },
+    {
+      "url": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Abdomen.pdf#page=36",
+      "read": "Actual physical p36 rendered image visually read: hypo/iso CT and indirect ductal/parenchymal signs, vascular description. Old angle-only stage/operability claims not adopted."
+    },
+    {
+      "url": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Abdomen.pdf#page=37",
+      "read": "Actual physical p37 rendered image visually read: native T1 low, delayed enhancement relative to normal pancreas, variable T2, MRCP ductal sign. Retained patient figures not recertified or used as a new assessment image."
+    },
+    {
+      "url": "https://doi.org/10.1002/jhbp.913",
+      "read": "Original Japanese2020 IgG4-SC consensus published2021 actual abstract/diagnostic criteria/other-organ-involvement table and cancer-exclusion steroid caveat read. Used only for IgG4-related biliary/pancreatic differential, no steroid therapy added."
+    },
+    {
+      "url": "https://doi.org/10.1016/j.pan.2023.12.009",
+      "fullText": "https://www.ahpba.org/wp-content/uploads/2025/02/Kyoto-IPMN-Guidelines-2024.pdf",
+      "read": "Original2024 Kyoto Table2/differential and sections5.2–5.4 read from indexed original text: BD-IPMN and pseudocyst communication, serous micro/macrocysts, HRS ≥5mm enhancing nodule/solid component/MPD≥10/jaundice/suspicious cytology; WF <5mm nodule, cyst≥30, MPD≥5<10; individual surgery decision considers condition/comorbidity/life expectancy/preferences. No follow-up schedule or diagnostic scan claims introduced."
+    },
+    {
+      "url": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Abdomen.pdf#page=40",
+      "read": "Physicalp40 printed39 actualPNG visually read: pseudocyst epithelial-lining distinction, history/morphology hints and lobulated macrocystic serous differential. No unseen figure study validation."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/",
+      "read": "Actual indexed original WSES2019 imaging statements/discussion for severe first CT72–96h, urgent diagnostic exceptions, biliary US/MRCP/EUS, infected-necrosis gas clue; primary Table3 reproduction explicitly <30/30–50/>50 bands and morphological CTSI grading read. Retained same score bands with explicit named version; removed unversioned fixed mortality as individual prediction. No antibiotic, ERCP dose or intervention schedule introduced."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC490004/",
+      "read": "Criddle2004 original complete experimental abstract and introductory/model-result passage read: nonoxidative fatty acid ethyl esters cause sustained abnormal calcium signals and acinar injury in experimental preparations; minimal direct ethanol effect in measured calcium endpoint. Explicitly model evidence, not standalone human aetiologic proof; no experimental concentration transported."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3291674/",
+      "read": "Original2012 case complete narrative read: strong internal enhancement in pseudocyst, suspected GDA pseudoaneurysm confirmed at angiography. Used for contained arterial focus/bleeding concern; no generalized treatment/stent protocol or unseen patient figure claim."
+    },
+    {
+      "url": "https://www.cghjournal.org/article/S1542-3565(25)00586-5/fulltext",
+      "read": "Actual indexed2025 expert primary management statement radiographic-diagnosis subsection read: focal central disruption with viable upstream pancreas and MRCP/secretin depiction; used for anatomy only. No universal2cm/1cm threshold or intervention recommendation introduced."
+    },
+    {
+      "url": "https://doi.org/10.1016/j.pan.2025.04.020",
+      "fullText": "https://pure.amsterdamumc.nl/ws/portalfiles/portal/157076480/International-association-of-pancreatology-revised-guidelines-on-acute-pancreatitis-2025.pdf",
+      "read": "Actual original2025 IAP Q28–29 text read: biliary assessment MRCP/EUS and no automatic urgent ERCP solely for biliary AP without cholangitis. Q94–96 indexed text seen; no new drainage/stent/timing protocol adopted."
+    }
+  ]
+}

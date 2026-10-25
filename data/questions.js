@@ -901,239 +901,665 @@ const DIVERTICULITIS_QUESTIONS = Object.fromEntries(
 
 const PANCREATITIS_QUESTION_CONTENT = [
   {
-    id: 'biliary-cause',
-    question: {
-      de: 'Was ist der typische Mechanismus einer biliären akuten Pankreatitis?',
-      en: 'What is the typical mechanism of biliary acute pancreatitis?',
-      fa: 'مکانیسم تیپیک پانکراتیت حاد صفراوی چیست؟',
-    },
-    options: [
-      { id: 'A', text: { de: 'Obstruktion der Papilla duodeni major mit Druckanstieg oder Galle-Reflux im Pankreasgang', en: 'Obstruction of the major papilla with ductal pressure rise or bile reflux into the pancreatic duct', fa: 'انسداد پاپیلای اصلی با افزایش فشار مجرا یا رفلاکس صفرا به مجرای پانکراس' } },
-      { id: 'B', text: { de: 'Primäre arterielle Embolie der A. lienalis', en: 'Primary arterial embolism of the splenic artery', fa: 'آمبولی اولیه شریان طحالی' } },
-      { id: 'C', text: { de: 'Isolierte Obstruktion des Ductus cysticus ohne Pankreasgangbeteiligung', en: 'Isolated cystic duct obstruction without pancreatic duct involvement', fa: 'انسداد منفرد مجرای سیستیک بدون درگیری مجرای پانکراس' } },
-      { id: 'D', text: { de: 'Hämatogene Aussaat in das Pankreasparenchym', en: 'Haematogenous seeding of the pancreatic parenchyma', fa: 'انتشار هماتوژن به پارانشیم پانکراس' } },
-    ],
-    correct: 'A',
-    explanation: {
-      de: 'Choledocholithiasis oder Mikrolithiasis kann die Papille verlegen. Druckanstieg oder Reflux begünstigen die vorzeitige Enzymaktivierung.',
-      en: 'Choledocholithiasis or microlithiasis may obstruct the papilla. Increased pressure or reflux promotes premature enzyme activation.',
-      fa: 'سنگ کلدوک یا میکرولیتیازیس می‌تواند پاپیلا را مسدود کند. افزایش فشار یا رفلاکس باعث فعال شدن زودرس آنزیم‌ها می‌شود.',
-    },
-  },
-  {
-    id: 'alcohol',
-    question: {
-      de: 'Welche Aussage zur alkoholtoxischen Pankreatitis ist richtig?',
-      en: 'Which statement about alcohol-related pancreatitis is correct?',
-      fa: 'کدام عبارت درباره پانکراتیت ناشی از الکل درست است؟',
-    },
-    options: [
-      { id: 'A', text: { de: 'Ethanol wirkt direkt toxisch auf Azinuszellen und erhöht die Sekretviskosität.', en: 'Ethanol directly injures acinar cells and increases secretion viscosity.', fa: 'اتانول به سلول‌های آسینار آسیب مستقیم می‌زند و ویسکوزیته ترشحات را افزایش می‌دهد.' } },
-      { id: 'B', text: { de: 'Sie entsteht ausschließlich nach ERCP.', en: 'It occurs only after ERCP.', fa: 'فقط پس از ERCP رخ می‌دهد.' } },
-      { id: 'C', text: { de: 'Sie ist immer eine Autoimmunreaktion.', en: 'It is always an autoimmune reaction.', fa: 'همیشه یک واکنش خودایمنی است.' } },
-      { id: 'D', text: { de: 'Protein-Plugs spielen dabei keine Rolle.', en: 'Protein plugs have no role.', fa: 'پلاگ‌های پروتئینی هیچ نقشی ندارند.' } },
-    ],
-    correct: 'A',
-    explanation: {
-      de: 'Alkohol kann Azinuszellen direkt schädigen und zähere Sekrete mit Protein-Plugs fördern.',
-      en: 'Alcohol can directly damage acinar cells and promote viscous secretions with protein plugs.',
-      fa: 'الکل می‌تواند سلول‌های آسینار را مستقیماً آسیب بزند و ترشحات غلیظ با پلاگ پروتئینی ایجاد کند.',
-    },
-  },
-  {
-    id: 'necrosis-timing',
-    question: {"de": "Bei schwerer akuter Pankreatitis ohne dringliche frühere Indikation: Wann empfiehlt WSES die erste kontrastverstärkte CT-Beurteilung?", "en": "In severe acute pancreatitis without an urgent earlier indication, when does WSES recommend initial contrast-enhanced CT assessment?", "fa": "در پانکراتیت حاد شدید بدون اندیکاسیون فوری برای تصویربرداری زودتر، WSES چه زمانی را برای ارزیابی اولیه با CT کنتراست‌دار توصیه می‌کند؟"},
-    options: [{"id": "A", "text": {"de": "Routinemäßig innerhalb der ersten 24 Stunden.", "en": "Routinely within the first 24 hours.", "fa": "به‌طور روتین در ۲۴ ساعت اول."}}, {"id": "B", "text": {"de": "Idealerweise 72–96 Stunden ab Symptombeginn.", "en": "Ideally 72–96 hours from symptom onset.", "fa": "ترجیحاً ۷۲–۹۶ ساعت پس از شروع علائم."}}, {"id": "C", "text": {"de": "Routinemäßig bis nach vier Wochen warten.", "en": "Routinely wait until after four weeks.", "fa": "به‌طور روتین تا پس از چهار هفته صبر کنید."}}, {"id": "D", "text": {"de": "Stets am selben festen Termin, auch bei akuter Verschlechterung.", "en": "Always at the same fixed interval, even during acute deterioration.", "fa": "همیشه در زمان ثابت، حتی هنگام بدتر شدن حاد وضعیت."}}],
-    correct:'B',
-    explanation:{"de": "Frühe CT kann Nekrose unterschätzen. Das Zeitfenster gilt für die erste Beurteilung schwerer Erkrankung; diagnostische Unsicherheit oder dringliche Komplikationen können frühere Bildgebung erfordern.", "en": "Early CT can underestimate necrosis. This interval concerns initial assessment of severe disease; diagnostic uncertainty or urgent complications can require earlier imaging.", "fa": "CT زودهنگام ممکن است نکروز را کمتر نشان دهد. این بازه برای ارزیابی اولیهٔ بیماری شدید است؛ ابهام تشخیصی یا عوارض فوری ممکن است تصویربرداری زودتر را ضروری کند."},
-    source:'https://doi.org/10.1186/s13017-019-0247-0',
-  },
-  {
-    id: 'atlanta-morphology',
-    question: {
-      de: 'Welche Bildgebungskonstellation passt zur interstitiell-ödematösen Pankreatitis?',
-      en: 'Which imaging pattern fits interstitial oedematous pancreatitis?',
-      fa: 'کدام الگوی تصویربرداری با پانکراتیت ادماتوی بینابینی سازگار است؟',
-    },
-    options: [
-      { id: 'A', text: { de: 'Diffuse Schwellung mit homogener Kontrastmittelaufnahme', en: 'Diffuse swelling with homogeneous enhancement', fa: 'تورم منتشر با تقویت همگن پس از تزریق' } },
-      { id: 'B', text: { de: 'Kompletter Enhancement-Ausfall des gesamten Pankreas', en: 'Complete lack of enhancement of the entire pancreas', fa: 'فقدان تقویت کامل تمام پانکراس' } },
-      { id: 'C', text: { de: 'Solide hypervaskuläre Raumforderung im Pankreaskopf', en: 'Solid hypervascular mass in the pancreatic head', fa: 'توده جامد هایپرووسکولار در سر پانکراس' } },
-      { id: 'D', text: { de: 'Ausschließlich intraduktale Verkalkungen ohne Ödem', en: 'Only intraductal calcifications without oedema', fa: 'فقط کلسیفیکاسیون داخل مجرا بدون ادم' } },
-    ],
-    correct: 'A',
-    explanation: {
-      de: 'Die ödematöse Form zeigt Schwellung, homogene Anreicherung und peripankreatisches Fett-Stranding, aber keine Nekrose.',
-      en: 'The oedematous form shows swelling, homogeneous enhancement and peripancreatic fat stranding, without necrosis.',
-      fa: 'نوع ادماتوی با تورم، تقویت پس از تزریق همگن و stranding چربی اطراف پانکراس دیده می‌شود، بدون نکروز.',
-    },
-  },
-  {
-    id: 'collections',
-    question: {
-      de: 'Welche Zuordnung nach Atlanta ist korrekt?',
-      en: 'Which Atlanta collection assignment is correct?',
-      fa: 'کدام نام‌گذاری تجمعات بر اساس آتلانتا درست است؟',
-    },
-    options: [
-      { id: 'A', text: { de: 'Ödematöse Pankreatitis <4 Wochen: APFC ohne Kapsel', en: 'Oedematous pancreatitis <4 weeks: APFC without a capsule', fa: 'پانکراتیت ادماتوی کمتر از ۴ هفته: APFC بدون کپسول' } },
-      { id: 'B', text: { de: 'Nekrotisierende Pankreatitis <4 Wochen: Pseudozyste', en: 'Necrotising pancreatitis <4 weeks: pseudocyst', fa: 'پانکراتیت نکروزان کمتر از ۴ هفته: پسودوسیست' } },
-      { id: 'C', text: { de: 'Ödematöse Pankreatitis >4 Wochen: ANC', en: 'Oedematous pancreatitis >4 weeks: ANC', fa: 'پانکراتیت ادماتوی بیش از ۴ هفته: ANC' } },
-      { id: 'D', text: { de: 'Nekrotisierende Pankreatitis >4 Wochen: APFC', en: 'Necrotising pancreatitis >4 weeks: APFC', fa: 'پانکراتیت نکروزان بیش از ۴ هفته: APFC' } },
-    ],
-    correct: 'A',
-    explanation: {
-      de: 'APFC ist eine frühe, nicht gekapselte Flüssigkeitskollektion bei ödematöser Pankreatitis.',
-      en: 'APFC is an early non-encapsulated fluid collection in oedematous pancreatitis.',
-      fa: 'APFC تجمع مایع زودرس و بدون کپسول در پانکراتیت ادماتوی است.',
-    },
-  },
-  {
-    id: 'walled-off-necrosis',
-    question: {
-      de: 'Was beschreibt Walled-Off Necrosis (WON)?',
-      en: 'What does walled-off necrosis (WON) describe?',
-      fa: 'نکروز محصور (WON) چه چیزی را توصیف می‌کند؟',
-    },
-    options: [
-      { id: 'A', text: { de: 'Organisierte Kapsel um Nekroseareal nach meist >4 Wochen', en: 'An organised capsule around necrotic material, usually after >4 weeks', fa: 'کپسول سازمان‌یافته اطراف نکروز، معمولاً پس از بیش از ۴ هفته' } },
-      { id: 'B', text: { de: 'Rein flüssige Kapsel ohne nekrotisches Material nach ödematöser Pankreatitis', en: 'A purely fluid capsule without necrotic material after oedematous pancreatitis', fa: 'کپسول کاملاً مایع بدون مواد نکروتیک پس از پانکراتیت ادماتوی' } },
-      { id: 'C', text: { de: 'Normales Pankreas ohne Stranding', en: 'Normal pancreas without stranding', fa: 'پانکراس طبیعی بدون stranding' } },
-      { id: 'D', text: { de: 'Ein isolierter Gallenstein', en: 'An isolated gallstone', fa: 'یک سنگ صفراوی منفرد' } },
-    ],
-    correct: 'A',
-    explanation: {
-      de: 'WON ist die organisierte, abgekapselte Spätform einer nekrotisierenden Pankreatitis.',
-      en: 'WON is the organised encapsulated late form of necrotising pancreatitis.',
-      fa: 'WON شکل دیررس، سازمان‌یافته و کپسول‌دار پانکراتیت نکروزان است.',
-    },
-  },
-  {
-  "id": "ctsi-severe",
+  "id": "biliary-cause",
   "question": {
-    "de": "Eine akute Pankreatitis hat einen CTSI von 8. Angaben zur Organfunktion fehlen. Welche Aussage ist zulässig?",
-    "en": "Acute pancreatitis has a CTSI of 8; organ-function data are unavailable. Which conclusion is justified?",
-    "fa": "در پانکراتیت حاد، CTSI برابر ۸ است و اطلاعات عملکرد اندام‌ها در دست نیست. کدام نتیجه مجاز است؟"
-  },
-  "explanation": {
-    "de": "CTSI 7–10 beschreibt einen hohen morphologischen CT-Score. Schwere akute Pankreatitis nach revidierter Atlanta-Klassifikation erfordert persistierendes Organversagen über 48 Stunden; ein CTSI ersetzt diese klinische Einordnung nicht.",
-    "en": "CTSI 7–10 is a high morphological CT score. Severe acute pancreatitis under revised Atlanta requires persistent organ failure for more than 48 hours; CTSI does not replace that clinical classification.",
-    "fa": "CTSI از ۷ تا ۱۰ امتیاز مورفولوژیک بالای CT است. پانکراتیت حاد شدید طبق آتلانتای بازنگری‌شده به نارسایی پایدار اندام بیش از ۴۸ ساعت نیاز دارد؛ CTSI جای این طبقه‌بندی بالینی را نمی‌گیرد."
+    "de": "Welche Steinlokalisation kann bei einer biliären akuten Pankreatitis den gemeinsamen distalen Abfluss von Gallen- und Pankreassekret unmittelbar beeinträchtigen?",
+    "en": "Which stone location can directly obstruct the shared distal outflow of bile and pancreatic secretions in acute biliary pancreatitis?",
+    "fa": "در پانکراتیت حاد صفراوی، سنگ در کدام محل می‌تواند مستقیماً خروجی مشترک دیستال صفرا و ترشحات پانکراس را مختل کند؟"
   },
   "options": [
     {
       "id": "A",
       "text": {
-        "de": "Damit ist eine klinisch milde Pankreatitis nach Atlanta belegt.",
-        "en": "This establishes clinically mild pancreatitis under Atlanta.",
-        "fa": "این یافته پانکراتیت خفیف بالینی طبق آتلانتا را ثابت می‌کند."
+        "de": "Papillen-/Ampullenregion",
+        "en": "Papillary/ampullary region",
+        "fa": "ناحیهٔ پاپیلا/آمپولا"
       }
     },
     {
       "id": "B",
       "text": {
-        "de": "Damit ist eine klinisch mittelschwere Pankreatitis nach Atlanta belegt.",
-        "en": "This establishes clinically moderately severe pancreatitis under Atlanta.",
-        "fa": "این یافته پانکراتیت متوسط بالینی طبق آتلانتا را ثابت می‌کند."
+        "de": "Isolierter Ductus cysticus",
+        "en": "Isolated cystic duct",
+        "fa": "مجرای سیستیک به‌تنهایی"
       }
     },
     {
       "id": "C",
       "text": {
-        "de": "Der morphologische CT-Schweregrad ist hoch; der klinische Atlanta-Schweregrad braucht Angaben zu Organversagen und Verlauf.",
-        "en": "CT morphological severity is high; clinical Atlanta severity requires organ-failure and time-course data.",
-        "fa": "شدت مورفولوژیک CT بالاست؛ شدت بالینی آتلانتا به اطلاعات نارسایی اندام و سیر زمانی نیاز دارد."
+        "de": "Isolierter linker Ductus hepaticus",
+        "en": "Isolated left hepatic duct",
+        "fa": "مجرای کبدی چپ به‌تنهایی"
       }
     },
     {
       "id": "D",
       "text": {
-        "de": "Damit ist eine infizierte Nekrose belegt.",
-        "en": "This establishes infected necrosis.",
-        "fa": "این یافته نکروز عفونی را ثابت می‌کند."
+        "de": "Isolierter rechter intrahepatischer Segmentgang",
+        "en": "An isolated right intrahepatic segmental duct",
+        "fa": "مجرای سگمنتال داخل‌کبدی راست به‌تنهایی"
+      }
+    }
+  ],
+  "correct": "A",
+  "explanation": {
+    "de": "Ein distaler Gallengangsstein an der Papille kann den pankreatischen Abfluss beeinträchtigen. Deshalb nach Choledocholithiasis suchen; bei unklarem Steinstatus können MRCP oder EUS weiterhelfen. Eine biliäre Ursache bedeutet nicht automatisch eine dringliche ERCP ohne Cholangitis.",
+    "en": "A distal bile duct stone at the papilla can impair pancreatic drainage. Investigate choledocholithiasis; MRCP or EUS can help if stone status is uncertain. A biliary cause does not automatically mean urgent ERCP without cholangitis.",
+    "fa": "سنگ انتهای مجرای صفراوی در پاپیلا می‌تواند تخلیهٔ پانکراس را مختل کند. کلدوکولیتیاز بررسی شود؛ اگر وجود سنگ نامشخص باشد، MRCP یا EUS کمک می‌کند. علت صفراوی بدون کلانژیت خودبه‌خود به معنی ERCP فوری نیست."
+  },
+  "wrongExplanations": {
+    "B": {
+      "de": "Der Ductus cysticus drainiert die Gallenblase. Seine isolierte Obstruktion verlegt nicht direkt den pankreatischen Abfluss an der Papille.",
+      "en": "The cystic duct drains the gallbladder. Its isolated obstruction does not directly block pancreatic drainage at the papilla.",
+      "fa": "مجرای سیستیک کیسهٔ صفرا را تخلیه می‌کند؛ انسداد منفرد آن مستقیماً خروجی پانکراس در پاپیلا را نمی‌بندد."
+    },
+    "C": {
+      "de": "Ein linker Lebergangsstein betrifft einen proximalen biliären Abschnitt, nicht den gemeinsamen distalen Auslass mit dem Pankreasgang.",
+      "en": "A left hepatic duct stone affects a proximal biliary segment, not the shared distal outlet with the pancreatic duct.",
+      "fa": "سنگ مجرای کبدی چپ بخش پروگزیمال صفراوی را درگیر می‌کند، نه خروجی مشترک دیستال با مجرای پانکراس."
+    },
+    "D": {
+      "de": "Ein isolierter intrahepatischer Segmentgang liegt ebenfalls stromaufwärts im Gallensystem; der pankreatische Auslass wird dadurch nicht unmittelbar blockiert.",
+      "en": "An isolated intrahepatic segmental duct is upstream in the biliary system and does not directly block the pancreatic outlet.",
+      "fa": "مجرای سگمنتال منفرد داخل‌کبدی نیز در بالادست دستگاه صفراوی است و خروجی پانکراس را مستقیماً مسدود نمی‌کند."
+    }
+  },
+  "source": "https://doi.org/10.1016/j.pan.2025.04.020"
+},
+  {
+  "id": "alcohol",
+  "question": {
+    "de": "Welcher Mechanismus wird durch Azinuszell-Experimente zur alkoholassoziierten Pankreasschädigung gestützt?",
+    "en": "Which mechanism is supported by acinar-cell experiments on alcohol-associated pancreatic injury?",
+    "fa": "کدام مکانیسم با آزمایش‌های سلول آسینار دربارهٔ آسیب پانکراس مرتبط با الکل پشتیبانی می‌شود؟"
+  },
+  "options": [
+    {
+      "id": "A",
+      "text": {
+        "de": "Nichtoxidative Alkoholmetaboliten können anhaltend gestörte intrazelluläre Kalziumsignale und Azinuszellschädigung auslösen.",
+        "en": "Nonoxidative alcohol metabolites can produce sustained abnormal intracellular calcium signals and acinar-cell injury.",
+        "fa": "متابولیت‌های غیر اکسیداتیو الکل می‌توانند اختلال پایدار پیام‌رسانی کلسیم داخل‌سلولی و آسیب سلول آسینار ایجاد کنند."
+      }
+    },
+    {
+      "id": "B",
+      "text": {
+        "de": "Eine IgG4-assoziierte lymphoplasmazelluläre Entzündung mit typischer Organbeteiligung.",
+        "en": "IgG4-related lymphoplasmacytic inflammation with characteristic organ involvement.",
+        "fa": "التهاب لنفوپلاسموسیتی مرتبط با IgG4 با درگیری مشخصهٔ اندام‌ها."
+      }
+    },
+    {
+      "id": "C",
+      "text": {
+        "de": "Mechanische Verlegung der Papillenregion durch einen Gallengangsstein.",
+        "en": "Mechanical obstruction of the papillary region by a bile duct stone.",
+        "fa": "انسداد مکانیکی ناحیهٔ پاپیلا به‌وسیلهٔ سنگ مجرای صفراوی."
+      }
+    },
+    {
+      "id": "D",
+      "text": {
+        "de": "Ischämische Parenchymschädigung durch primäre arterielle Minderperfusion.",
+        "en": "Ischaemic parenchymal injury from primary arterial hypoperfusion.",
+        "fa": "آسیب ایسکمیک پارانشیم بر اثر کاهش اولیهٔ خون‌رسانی شریانی."
+      }
+    }
+  ],
+  "correct": "A",
+  "explanation": {
+    "de": "Die experimentelle Arbeit zeigt Azinuszellschädigung durch bestimmte nichtoxidative Fettsäureethylester und gestörte Kalziumsignale. Das ist ein mechanistischer Modellbefund, kein alleiniger klinischer Beweis einer alkoholischen Ätiologie und keine Aussage, dass jeder Alkoholkonsum Pankreatitis verursacht.",
+    "en": "The experimental work demonstrates acinar injury from certain nonoxidative fatty acid ethyl esters and disturbed calcium signalling. This is mechanistic model evidence, not standalone clinical proof of an alcoholic aetiology or a claim that every alcohol exposure causes pancreatitis.",
+    "fa": "پژوهش آزمایشگاهی آسیب آسینار ناشی از برخی اتیل‌استرهای اسید چرب حاصل از مسیر غیر اکسیداتیو و اختلال پیام‌رسانی کلسیم را نشان می‌دهد. این شاهد یک مدل مکانیستی است، نه اثبات بالینی مستقلِ علت الکلی و نه ادعای ایجاد پانکراتیت با هر مصرف الکل."
+  },
+  "wrongExplanations": {
+    "B": {
+      "de": "Das beschreibt einen immunvermittelten Zusammenhang, nicht den hier untersuchten nichtoxidativen Alkoholmetabolismus in Azinuszellen.",
+      "en": "This describes an immune-mediated process, not the nonoxidative alcohol metabolism studied in acinar cells here.",
+      "fa": "این توصیف فرایند ایمنی‌واسطه است، نه متابولیسم غیر اکسیداتیو الکل در سلول آسینار که اینجا بررسی شده است."
+    },
+    "C": {
+      "de": "Das ist ein biliär-obstruktiver Mechanismus. Er erklärt nicht das experimentelle Alkoholmetaboliten-Signal.",
+      "en": "This is a biliary obstructive mechanism and does not explain the experimental alcohol-metabolite signal.",
+      "fa": "این مکانیسم انسدادی صفراوی است و یافتهٔ آزمایشگاهی مربوط به متابولیت الکل را توضیح نمی‌دهد."
+    },
+    "D": {
+      "de": "Eine primäre arterielle Perfusionsstörung ist ein anderer Schädigungsweg. Die Studie prüft hier metabolitenvermittelte Azinuszellschädigung.",
+      "en": "Primary arterial hypoperfusion is a different injury pathway. This study examines metabolite-mediated acinar injury.",
+      "fa": "کاهش اولیهٔ پرفیوژن شریانی مسیر آسیب دیگری است؛ این مطالعه آسیب آسینار با واسطهٔ متابولیت را بررسی می‌کند."
+    }
+  },
+  "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC490004/"
+},
+  {
+  "id": "necrosis-timing",
+  "question": {
+    "de": "Bei schwerer akuter Pankreatitis ohne dringliche frühere Indikation: Wann empfiehlt WSES2019 die erste kontrastverstärkte CT-Beurteilung idealerweise?",
+    "en": "In severe acute pancreatitis without an urgent earlier indication, when does WSES2019 ideally recommend the first contrast-enhanced CT assessment?",
+    "fa": "در پانکراتیت حاد شدید، بدون اندیکاسیون فوری برای بررسی زودتر، WSES۲۰۱۹ چه زمانی را برای نخستین ارزیابی CT با مادهٔ حاجب ایده‌آل می‌داند؟"
+  },
+  "options": [
+    {
+      "id": "A",
+      "text": {
+        "de": "Innerhalb der ersten 24 Stunden nach Symptombeginn",
+        "en": "Within the first 24 hours after symptom onset",
+        "fa": "در ۲۴ ساعت نخست پس از شروع علائم"
+      }
+    },
+    {
+      "id": "B",
+      "text": {
+        "de": "72–96 Stunden nach Symptombeginn",
+        "en": "72–96 hours after symptom onset",
+        "fa": "۷۲ تا ۹۶ ساعت پس از شروع علائم"
+      }
+    },
+    {
+      "id": "C",
+      "text": {
+        "de": "7–10 Tage nach Symptombeginn",
+        "en": "7–10 days after symptom onset",
+        "fa": "۷ تا ۱۰ روز پس از شروع علائم"
+      }
+    },
+    {
+      "id": "D",
+      "text": {
+        "de": "Nach Ausbildung einer Kapsel, gewöhnlich nach etwa vier Wochen",
+        "en": "After encapsulation, usually after about four weeks",
+        "fa": "پس از تشکیل کپسول، معمولاً حدود چهار هفته بعد"
+      }
+    }
+  ],
+  "correct": "B",
+  "explanation": {
+    "de": "Dieses benannte WSES-Zeitfenster gilt für die erste Beurteilung schwerer Erkrankung. Frühe CT kann Nekrose unterschätzen; diagnostische Unsicherheit oder dringliche Komplikationen können frühere Bildgebung erfordern. Es ist kein Routinetermin für jede leichte Pankreatitis.",
+    "en": "This named WSES window concerns the first assessment of severe disease. Early CT may underestimate necrosis; diagnostic uncertainty or urgent complications can require earlier imaging. It is not a routine schedule for every mild pancreatitis.",
+    "fa": "این بازهٔ مشخص WSES مربوط به نخستین ارزیابی بیماری شدید است. CT زودرس ممکن است نکروز را کمتر نشان دهد؛ تردید تشخیصی یا عوارض فوری می‌توانند تصویربرداری زودتر را لازم کنند. این برنامهٔ روتین برای هر پانکراتیت خفیف نیست."
+  },
+  "wrongExplanations": {
+    "A": {
+      "de": "Für die nicht dringliche Nekrosebeurteilung ist dies zu früh; die Nekrose kann noch nicht vollständig demarkiert sein.",
+      "en": "This is early for nonurgent necrosis assessment; necrosis may not yet be fully demarcated.",
+      "fa": "برای ارزیابی غیرفوری نکروز زود است؛ نکروز ممکن است هنوز کاملاً مشخص نشده باشد."
+    },
+    "C": {
+      "de": "Die genannte Erstbeurteilung schwerer Pankreatitis wird nicht routinemäßig bis zu diesem späteren Zeitpunkt hinausgeschoben.",
+      "en": "The specified initial assessment of severe pancreatitis is not routinely deferred to this later interval.",
+      "fa": "نخستین ارزیابی مشخص‌شدهٔ پانکراتیت شدید به‌طور روتین تا این بازهٔ دیرتر عقب انداخته نمی‌شود."
+    },
+    "D": {
+      "de": "Kapselbildung betrifft die spätere Kollektionsterminologie und ausgewählte Interventionsplanung, nicht den Zeitpunkt der ersten CT-Beurteilung schwerer Erkrankung.",
+      "en": "Encapsulation concerns later collection terminology and selected intervention planning, not the first CT assessment of severe disease.",
+      "fa": "تشکیل کپسول مربوط به اصطلاحات تجمعات دیررس و برنامه‌ریزی برخی مداخلات است، نه زمان نخستین ارزیابی CT بیماری شدید."
+    }
+  },
+  "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/"
+},
+  {
+  "id": "atlanta-morphology",
+  "question": {
+    "de": "Welche CT-Konstellation passt zur interstitiell-ödematösen und nicht zur nekrotisierenden Pankreatitis?",
+    "en": "Which CT pattern fits interstitial oedematous rather than necrotising pancreatitis?",
+    "fa": "کدام الگوی CT با پانکراتیت ادماتوی بینابینی و نه پانکراتیت نکروزان سازگار است؟"
+  },
+  "options": [
+    {
+      "id": "A",
+      "text": {
+        "de": "Geschwollene, homogen kontrastierte Drüse mit Fettgewebsreaktion, ohne erkennbare pankreatische oder peripankreatische Nekrose",
+        "en": "An enlarged homogeneously enhancing gland with fat stranding but no visible pancreatic or peripancreatic necrosis",
+        "fa": "غدهٔ متورم با جذب همگن مادهٔ حاجب و واکنش چربی، بدون نکروز قابل مشاهدهٔ پانکراس یا اطراف آن"
+      }
+    },
+    {
+      "id": "B",
+      "text": {
+        "de": "Fokaler Enhancement-Ausfall im Parenchym mit angrenzender Flüssigkeit",
+        "en": "Focal nonenhancing parenchyma with adjacent fluid",
+        "fa": "ناحیهٔ کانونی پارانشیم بدون جذب مادهٔ حاجب همراه مایع مجاور"
+      }
+    },
+    {
+      "id": "C",
+      "text": {
+        "de": "Kontrastierte Drüse mit heterogenem peripankreatischem nekrotischem Material",
+        "en": "An enhancing gland with heterogeneous peripancreatic necrotic material",
+        "fa": "غدهٔ دارای جذب مادهٔ حاجب همراه محتوای نکروتیک ناهمگن اطراف پانکراس"
+      }
+    },
+    {
+      "id": "D",
+      "text": {
+        "de": "Nicht kontrastiertes Parenchym zusammen mit peripankreatischem nekrotischem Material",
+        "en": "Nonenhancing parenchyma together with peripancreatic necrotic material",
+        "fa": "پارانشیم فاقد جذب مادهٔ حاجب همراه محتوای نکروتیک اطراف پانکراس"
+      }
+    }
+  ],
+  "correct": "A",
+  "explanation": {
+    "de": "Interstitielle Pankreatitis zeigt erhaltene Parenchymanreicherung ohne erkennbare Nekrose. Nekrose kann aber isoliert peripankreatisch auftreten, obwohl die Drüse kontrastiert. Frühe CT kann das spätere Ausmaß unterschätzen.",
+    "en": "Interstitial pancreatitis retains parenchymal enhancement without visible necrosis. Necrosis may, however, be isolated to peripancreatic tissues despite an enhancing gland. Early CT may underestimate its eventual extent.",
+    "fa": "در پانکراتیت بینابینی جذب مادهٔ حاجب در پارانشیم حفظ می‌شود و نکروز قابل مشاهده نیست. با این حال نکروز می‌تواند فقط در بافت اطراف پانکراس وجود داشته باشد، حتی اگر غده جذب داشته باشد. CT زودرس ممکن است وسعت نهایی را کمتر نشان دهد."
+  },
+  "wrongExplanations": {
+    "B": {
+      "de": "Fokaler fehlender Parenchymkontrast kann pankreatische Nekrose anzeigen; das ist nicht das gesuchte rein interstitielle Muster.",
+      "en": "Focal absent parenchymal enhancement can indicate pancreatic necrosis, rather than the purely interstitial pattern sought.",
+      "fa": "نبود کانونی جذب در پارانشیم می‌تواند نشان‌دهندهٔ نکروز پانکراس باشد، نه الگوی صرفاً بینابینی مورد سؤال."
+    },
+    "C": {
+      "de": "Erhaltene Drüsenanreicherung schließt eine isolierte peripankreatische Nekrose nicht aus. Der nichtflüssige nekrotische Inhalt unterscheidet sie von reinem Stranding oder einfacher Flüssigkeit.",
+      "en": "Preserved gland enhancement does not exclude isolated peripancreatic necrosis. Nonliquid necrotic contents distinguish it from simple stranding or fluid.",
+      "fa": "حفظ جذب غده نکروز منفرد اطراف پانکراس را رد نمی‌کند. محتوای نکروتیک غیرمایع آن را از واکنش سادهٔ چربی یا مایع ساده متمایز می‌کند."
+    },
+    "D": {
+      "de": "Hier sind pankreatische und peripankreatische Nekrose kombiniert beschrieben.",
+      "en": "This describes combined pancreatic and peripancreatic necrosis.",
+      "fa": "این گزینه نکروز هم‌زمان پانکراس و اطراف آن را توصیف می‌کند."
+    }
+  },
+  "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+},
+  {
+  "id": "collections",
+  "question": {
+    "de": "Textfall: Zehn Tage nach Beginn einer interstitiell-ödematösen Pankreatitis zeigt sich eine homogene peripankreatische Flüssigkeitsansammlung ohne abgrenzbare Wand und ohne Nekrose. Welche Atlanta-Bezeichnung passt?",
+    "en": "Text vignette: ten days after onset of interstitial oedematous pancreatitis, a homogeneous peripancreatic fluid collection has no definable wall or necrosis. Which Atlanta term fits?",
+    "fa": "سناریوی متنی: ده روز پس از شروع پانکراتیت ادماتوی بینابینی، تجمع مایع همگن اطراف پانکراس بدون دیوارهٔ مشخص و بدون نکروز دیده می‌شود. کدام اصطلاح آتلانتا مناسب است؟"
+  },
+  "options": [
+    {
+      "id": "A",
+      "text": {
+        "de": "Akute peripankreatische Flüssigkeitskollektion (APFC)",
+        "en": "Acute peripancreatic fluid collection (APFC)",
+        "fa": "تجمع حاد مایع اطراف پانکراس (APFC)"
+      }
+    },
+    {
+      "id": "B",
+      "text": {
+        "de": "Pankreas-Pseudozyste",
+        "en": "Pancreatic pseudocyst",
+        "fa": "پسودوسیست پانکراس"
+      }
+    },
+    {
+      "id": "C",
+      "text": {
+        "de": "Akute nekrotische Kollektion (ANC)",
+        "en": "Acute necrotic collection (ANC)",
+        "fa": "تجمع حاد نکروتیک (ANC)"
+      }
+    },
+    {
+      "id": "D",
+      "text": {
+        "de": "Abgekapselte Nekrose (WON)",
+        "en": "Walled-off necrosis (WON)",
+        "fa": "نکروز محصورشده (WON)"
+      }
+    }
+  ],
+  "correct": "A",
+  "explanation": {
+    "de": "APFC bezeichnet eine frühe reine Flüssigkeitsansammlung ohne definierte Wand bei interstitiell-ödematöser Pankreatitis. Zeit allein reicht nicht: Auch Inhalt und zugrunde liegende Pankreatitisform müssen passen.",
+    "en": "APFC is an early pure fluid collection without a defined wall in interstitial oedematous pancreatitis. Time alone is insufficient: contents and the underlying pancreatitis type must also fit.",
+    "fa": "APFC تجمع زودرس مایع خالص بدون دیوارهٔ مشخص در پانکراتیت ادماتوی بینابینی است. زمان به‌تنهایی کافی نیست؛ محتوا و نوع پانکراتیت زمینه‌ای نیز باید مطابقت داشته باشند."
+  },
+  "wrongExplanations": {
+    "B": {
+      "de": "Eine Pseudozyste besitzt eine ausgebildete Wand und entsteht gewöhnlich nach mehr als vier Wochen; diese frühe wandlose Ansammlung erfüllt das nicht.",
+      "en": "A pseudocyst has a developed wall and usually forms after more than four weeks; this early wall-less collection does not meet that description.",
+      "fa": "پسودوسیست دیوارهٔ تشکیل‌شده دارد و معمولاً بعد از بیش از چهار هفته پدید می‌آید؛ این تجمع زودرس بدون دیواره با آن تطابق ندارد."
+    },
+    "C": {
+      "de": "ANC gehört zur nekrotisierenden Pankreatitis und enthält nekrotisches Material. Im Fall ist keine Nekrose beschrieben.",
+      "en": "ANC occurs in necrotising pancreatitis and contains necrotic material. No necrosis is described in this case.",
+      "fa": "ANC در پانکراتیت نکروزان رخ می‌دهد و محتوای نکروتیک دارد. در این سناریو نکروزی توصیف نشده است."
+    },
+    "D": {
+      "de": "WON ist eine reife abgekapselte nekrotische Kollektion, typischerweise nach etwa vier Wochen; weder Inhalt noch Wand dieses Falls passen.",
+      "en": "WON is a mature encapsulated necrotic collection, typically after about four weeks; neither contents nor wall in this case fit.",
+      "fa": "WON تجمع نکروتیک بالغ و محصورشده است، معمولاً پس از حدود چهار هفته؛ محتوا و دیوارهٔ این سناریو با آن تطابق ندارند."
+    }
+  },
+  "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+},
+  {
+  "id": "walled-off-necrosis",
+  "question": {
+    "de": "Textfall: Sechs Wochen nach nekrotisierender Pankreatitis zeigt eine Kollektion eine gut ausgebildete Wand und heterogene flüssige sowie nichtflüssige nekrotische Anteile. Welche Bezeichnung passt am besten?",
+    "en": "Text vignette: six weeks after necrotising pancreatitis, a collection has a well-formed wall and heterogeneous fluid and nonliquid necrotic components. Which term fits best?",
+    "fa": "سناریوی متنی: شش هفته پس از پانکراتیت نکروزان، تجمعی با دیوارهٔ کامل و اجزای ناهمگن مایع و نکروتیک غیرمایع وجود دارد. کدام اصطلاح مناسب‌تر است؟"
+  },
+  "options": [
+    {
+      "id": "A",
+      "text": {
+        "de": "Abgekapselte Nekrose (WON)",
+        "en": "Walled-off necrosis (WON)",
+        "fa": "نکروز محصورشده (WON)"
+      }
+    },
+    {
+      "id": "B",
+      "text": {
+        "de": "Pankreas-Pseudozyste",
+        "en": "Pancreatic pseudocyst",
+        "fa": "پسودوسیست پانکراس"
+      }
+    },
+    {
+      "id": "C",
+      "text": {
+        "de": "Akute peripankreatische Flüssigkeitskollektion (APFC)",
+        "en": "Acute peripancreatic fluid collection (APFC)",
+        "fa": "تجمع حاد مایع اطراف پانکراس (APFC)"
+      }
+    },
+    {
+      "id": "D",
+      "text": {
+        "de": "Akute nekrotische Kollektion (ANC)",
+        "en": "Acute necrotic collection (ANC)",
+        "fa": "تجمع حاد نکروتیک (ANC)"
+      }
+    }
+  ],
+  "correct": "A",
+  "explanation": {
+    "de": "Die Kombination aus reifer Kapsel und nekrotischem Inhalt nach nekrotisierender Pankreatitis entspricht WON. Die Kapsel allein trennt WON nicht von Pseudozyste; entscheidend ist auch der Inhalt.",
+    "en": "A mature capsule plus necrotic contents after necrotising pancreatitis corresponds to WON. A capsule alone does not distinguish WON from a pseudocyst; contents also matter.",
+    "fa": "ترکیب کپسول بالغ و محتوای نکروتیک پس از پانکراتیت نکروزان با WON مطابقت دارد. کپسول به‌تنهایی WON را از پسودوسیست جدا نمی‌کند؛ محتوا نیز تعیین‌کننده است."
+  },
+  "wrongExplanations": {
+    "B": {
+      "de": "Eine Pseudozyste enthält im Wesentlichen Flüssigkeit ohne feste nekrotische Komponenten. Die beschriebenen nichtflüssigen Nekrosen sprechen für WON.",
+      "en": "A pseudocyst contains essentially fluid without solid necrotic components. The nonliquid necrosis described favours WON.",
+      "fa": "پسودوسیست عمدتاً مایع و فاقد اجزای نکروتیک جامد است. نکروز غیرمایعِ توصیف‌شده به نفع WON است."
+    },
+    "C": {
+      "de": "APFC ist eine frühe wandlose Flüssigkeitsansammlung bei interstitieller Pankreatitis, nicht diese reife nekrotische Kollektion.",
+      "en": "APFC is an early wall-less fluid collection in interstitial pancreatitis, not this mature necrotic collection.",
+      "fa": "APFC تجمع مایع زودرس و بدون دیواره در پانکراتیت بینابینی است، نه این تجمع نکروتیک بالغ."
+    },
+    "D": {
+      "de": "ANC bezeichnet die frühe nekrotische Kollektion ohne ausgereifte Wand; die jetzt vollständig abgekapselte Form wird WON genannt.",
+      "en": "ANC is the early necrotic collection without a mature wall; the now fully encapsulated form is called WON.",
+      "fa": "ANC تجمع نکروتیک زودرس بدون دیوارهٔ بالغ است؛ شکل اکنون کاملاً محصورشده WON نام دارد."
+    }
+  },
+  "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+},
+  {
+  "id": "ctsi-severe",
+  "question": {
+    "de": "Textfall: CTSI 8 bei akuter Pankreatitis. Welche zusätzliche Information ist für die Einstufung als klinisch schwere Pankreatitis nach revidierter Atlanta-Klassifikation entscheidend?",
+    "en": "Text vignette: acute pancreatitis has a CTSI of 8. Which additional information determines classification as clinically severe pancreatitis under revised Atlanta?",
+    "fa": "سناریوی متنی: CTSI در پانکراتیت حاد ۸ است. کدام اطلاعات تکمیلی برای طبقه‌بندی پانکراتیت از نظر بالینی شدید در آتلانتای بازنگری‌شده تعیین‌کننده است؟"
+  },
+  "options": [
+    {
+      "id": "A",
+      "text": {
+        "de": "Prozentualer Anteil der Parenchymnekrose",
+        "en": "Percentage of parenchymal necrosis",
+        "fa": "درصد نکروز پارانشیم"
+      }
+    },
+    {
+      "id": "B",
+      "text": {
+        "de": "Anzahl und Ausdehnung peripankreatischer Kollektionen",
+        "en": "Number and extent of peripancreatic collections",
+        "fa": "تعداد و وسعت تجمعات اطراف پانکراس"
+      }
+    },
+    {
+      "id": "C",
+      "text": {
+        "de": "Persistierendes Organversagen über mehr als 48 Stunden",
+        "en": "Persistent organ failure for more than 48 hours",
+        "fa": "نارسایی پایدار عضو به مدت بیش از ۴۸ ساعت"
+      }
+    },
+    {
+      "id": "D",
+      "text": {
+        "de": "Höhe des CRP-Werts am dritten Krankheitstag",
+        "en": "CRP concentration on the third day of illness",
+        "fa": "میزان CRP در روز سوم بیماری"
       }
     }
   ],
   "correct": "C",
+  "explanation": {
+    "de": "Ein hoher CTSI beschreibt die CT-Morphologie. Klinisch schwere akute Pankreatitis nach revidiertem Atlanta ist durch persistierendes Organversagen >48 Stunden definiert. Morphologische Komplikationen und Entzündungsmarker sind wichtig, ersetzen diese klinische Definition aber nicht.",
+    "en": "A high CTSI describes CT morphology. Revised Atlanta defines clinically severe acute pancreatitis by persistent organ failure >48 hours. Morphological complications and inflammatory markers matter but do not replace that clinical definition.",
+    "fa": "CTSI بالا مورفولوژی CT را توصیف می‌کند. آتلانتای بازنگری‌شده پانکراتیت حاد از نظر بالینی شدید را با نارسایی پایدار عضو بیش از ۴۸ ساعت تعریف می‌کند. عوارض مورفولوژیک و نشانگرهای التهاب مهم‌اند، اما جای این تعریف بالینی را نمی‌گیرند."
+  },
   "wrongExplanations": {
     "A": {
-      "de": "Milde Atlanta-Pankreatitis verlangt kein Organversagen und keine lokalen oder systemischen Komplikationen; der Score allein belegt dies nicht.",
-      "en": "Mild Atlanta pancreatitis requires no organ failure and no local or systemic complications; the score alone cannot establish that.",
-      "fa": "آتلانتای خفیف به نبود نارسایی اندام و عوارض موضعی یا سیستمیک نیاز دارد؛ امتیاز به‌تنهایی آن را ثابت نمی‌کند."
+      "de": "Der Nekroseanteil beeinflusst den morphologischen CTSI. Er ist nicht allein die klinische Atlanta-Definition schwerer Erkrankung.",
+      "en": "Necrosis extent contributes to morphological CTSI, not by itself to the clinical Atlanta definition of severe disease.",
+      "fa": "وسعت نکروز در CTSI مورفولوژیک نقش دارد؛ به‌تنهایی تعریف بالینی بیماری شدید در آتلانتا نیست."
     },
     "B": {
-      "de": "Mittelschwere Atlanta-Pankreatitis wird klinisch über vorübergehendes Organversagen und/oder Komplikationen ohne persistierendes Organversagen definiert.",
-      "en": "Moderately severe Atlanta pancreatitis is defined by transient organ failure and/or complications without persistent organ failure.",
-      "fa": "آتلانتای متوسط با نارسایی گذرای اندام و/یا عارضه بدون نارسایی پایدار تعریف می‌شود."
+      "de": "Kollektionen sind lokale Komplikationen. Ohne persistierendes Organversagen belegen sie keine klinisch schwere Atlanta-Pankreatitis.",
+      "en": "Collections are local complications. Without persistent organ failure they do not establish clinically severe Atlanta pancreatitis.",
+      "fa": "تجمعات عوارض موضعی‌اند و بدون نارسایی پایدار عضو، پانکراتیت از نظر بالینی شدید آتلانتا را اثبات نمی‌کنند."
     },
     "D": {
-      "de": "CTSI misst keine Infektion; klinische und gegebenenfalls mikrobiologische Befunde sind getrennt zu bewerten.",
-      "en": "CTSI does not measure infection; clinical and, where indicated, microbiological findings require separate assessment.",
-      "fa": "CTSI عفونت را نمی‌سنجد؛ یافته‌های بالینی و در صورت لزوم میکروبیولوژیک باید جداگانه ارزیابی شوند."
+      "de": "CRP kann bei der Risikoeinschätzung helfen. Ein Laborwert ersetzt aber nicht die gefragte Organfunktions- und Verlaufsdefinition.",
+      "en": "CRP can inform risk assessment but does not replace the organ-function and duration definition asked here.",
+      "fa": "CRP می‌تواند به ارزیابی خطر کمک کند، اما جای تعریف مبتنی بر عملکرد عضو و مدت آن را نمی‌گیرد."
     }
   },
-  "source": "https://gut.bmj.com/content/62/1/102"
+  "source": "https://doi.org/10.1136/gutjnl-2012-302779"
 },
   {
-    id: 'pseudoaneurysm',
-    question: {
-      de: 'Welcher Befund spricht bei akuter Pankreatitis für ein Pseudoaneurysma?',
-      en: 'Which finding suggests a pseudoaneurysm in acute pancreatitis?',
-      fa: 'کدام یافته در پانکراتیت حاد به نفع پسودوآنوریسم است؟',
-    },
-    options: [
-      { id: 'A', text: { de: 'Rundliche, scharf begrenzte arterielle Struktur in oder nahe einer Kollektion', en: 'Round sharply marginated arterial structure in or near a collection', fa: 'ساختار گرد و واضح شریانی داخل یا نزدیک تجمع' } },
-      { id: 'B', text: { de: 'Rein zystische Läsion ohne Enhancement', en: 'Purely cystic lesion without enhancement', fa: 'ضایعه کاملاً کیستیک بدون تقویت پس از تزریق' } },
-      { id: 'C', text: { de: 'Nicht kontrastierende Nekroseanteile im Pankreasparenchym', en: 'Non-enhancing necrotic pancreatic parenchyma', fa: 'بخش‌های نکروتیک بدون افزایش کنتراست در پارانشیم پانکراس' } },
-      { id: 'D', text: { de: 'Thrombose der V. lienalis ohne fokale arterielle Kontrastierung', en: 'Splenic vein thrombosis without focal arterial enhancement', fa: 'ترومبوز ورید طحالی بدون افزایش کنتراست شریانی کانونی' } },
-    ],
-    correct: 'A',
-    explanation: {
-      de: 'Pseudoaneurysmata entstehen durch Arrosion der Gefäßwand durch Pankreasenzyme, häufig an der A. lienalis.',
-      en: 'Pseudoaneurysms result from enzymatic arterial wall erosion, commonly involving the splenic artery.',
-      fa: 'پسودوآنوریسم بر اثر خوردگی دیواره عروق توسط آنزیم‌های پانکراس ایجاد می‌شود و اغلب شریان طحالی را درگیر می‌کند.',
-    },
+  "id": "pseudoaneurysm",
+  "question": {
+    "de": "Textfall: Bei Pankreatitis zeigt die arterielle Kontrastphase einen rundlichen, scharf begrenzten Fokus in einer Kollektion mit deutlicher arterieller Anreicherung und erkennbarem Anschluss an einen Arterienast. Welche Komplikation ist am ehesten gemeint?",
+    "en": "Text vignette: in pancreatitis, the arterial phase shows a rounded, sharply defined focus within a collection, with marked arterial enhancement and visible continuity with an arterial branch. Which complication is most likely?",
+    "fa": "سناریوی متنی: در پانکراتیت، فاز شریانی کانونی گرد و واضح درون یک تجمع نشان می‌دهد که جذب شریانی واضح مادهٔ حاجب و ارتباط قابل مشاهده با شاخهٔ شریانی دارد. کدام عارضه محتمل‌تر است؟"
   },
+  "options": [
+    {
+      "id": "A",
+      "text": {
+        "de": "Arterielles Pseudoaneurysma",
+        "en": "Arterial pseudoaneurysm",
+        "fa": "پسودوآنوریسم شریانی"
+      }
+    },
+    {
+      "id": "B",
+      "text": {
+        "de": "Rein flüssige Pseudozyste",
+        "en": "A pure fluid pseudocyst",
+        "fa": "پسودوسیست حاوی مایع خالص"
+      }
+    },
+    {
+      "id": "C",
+      "text": {
+        "de": "Nicht perfundierte Parenchymnekrose",
+        "en": "Nonperfused parenchymal necrosis",
+        "fa": "نکروز پارانشیم بدون پرفیوژن"
+      }
+    },
+    {
+      "id": "D",
+      "text": {
+        "de": "Milzvenenthrombose",
+        "en": "Splenic vein thrombosis",
+        "fa": "ترومبوز ورید طحالی"
+      }
+    }
+  ],
+  "correct": "A",
+  "explanation": {
+    "de": "Arterielle Anreicherung innerhalb einer Kollektion mit Anschluss an einen Arterienast ist verdächtig auf ein Pseudoaneurysma. Es kann eine Blutungsquelle sein und verlangt zeitnahe fachübergreifende Gefäßabklärung.",
+    "en": "Arterial enhancement within a collection with continuity to an arterial branch raises concern for a pseudoaneurysm. It may be a bleeding source and warrants timely multidisciplinary vascular evaluation.",
+    "fa": "جذب شریانی مادهٔ حاجب درون تجمع همراه ارتباط با شاخهٔ شریانی به پسودوآنوریسم مشکوک است. این ضایعه می‌تواند منبع خونریزی باشد و بررسی عروقی به‌موقع و چندتخصصی می‌خواهد."
+  },
+  "wrongExplanations": {
+    "B": {
+      "de": "Reine Flüssigkeit zeigt keine kräftige innere arterielle Anreicherung mit arterieller Verbindung. Eine Zyste kann das Pseudoaneurysma aber umgeben.",
+      "en": "Pure fluid does not show strong internal arterial enhancement with arterial continuity. A cyst may, however, surround a pseudoaneurysm.",
+      "fa": "مایع خالص جذب شریانی شدید داخلی همراه اتصال شریانی ندارد؛ البته کیست می‌تواند پسودوآنوریسم را احاطه کند."
+    },
+    "C": {
+      "de": "Nicht perfundierte Nekrose nimmt gerade kein Kontrastmittel wie die Arterie auf; sie erklärt den beschriebenen arteriellen Fokus nicht.",
+      "en": "Nonperfused necrosis does not enhance like an artery and does not explain the arterial focus described.",
+      "fa": "نکروز بدون پرفیوژن مانند شریان مادهٔ حاجب جذب نمی‌کند و کانون شریانی توصیف‌شده را توضیح نمی‌دهد."
+    },
+    "D": {
+      "de": "Eine Venenthrombose ist ein venöser Füllungsdefekt, nicht ein kontrastgefüllter Fokus mit arterieller Verbindung.",
+      "en": "Venous thrombosis is a venous filling defect, not a contrast-filled focus continuous with an artery.",
+      "fa": "ترومبوز وریدی نقص پرشدگی ورید است، نه کانون پُرشده از مادهٔ حاجب با اتصال شریانی."
+    }
+  },
+  "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3291674/"
+},
   {
-    id: 'infected-necrosis',
-    question: {
-      de: 'Welcher CT-Befund spricht bei nekrotisierender Pankreatitis am stärksten für eine infizierte Nekrose?',
-      en: 'Which CT finding most strongly suggests infected necrosis in necrotising pancreatitis?',
-      fa: 'در پانکراتیت نکروزان، کدام یافته CT بیش از همه به نفع نکروز عفونی است؟',
-    },
-    options: [
-      { id: 'A', text: { de: 'Gasblasen im Nekroseareal ohne vorausgegangene Intervention oder enterische Fistel', en: 'Gas bubbles within necrosis without prior intervention or an enteric fistula', fa: 'حباب‌های گاز داخل نکروز بدون مداخله قبلی یا فیستول گوارشی' } },
-      { id: 'B', text: { de: 'Eine neu entstandene, vollständig flüssige Pseudozyste', en: 'A newly developed, completely fluid pseudocyst', fa: 'پسودوسیست جدید با محتوای کاملاً مایع' } },
-      { id: 'C', text: { de: 'Diffuse peripankreatische Fettgewebsimbibierung ohne Nekrose', en: 'Diffuse peripancreatic fat stranding without necrosis', fa: 'استرندینگ منتشر چربی اطراف پانکراس بدون نکروز' } },
-      { id: 'D', text: { de: 'Homogene Kontrastierung des gesamten Pankreas', en: 'Homogeneous enhancement of the entire pancreas', fa: 'افزایش کنتراست همگن کل پانکراس' } },
-    ],
-    correct: 'A',
-    explanation: {
-      de: 'Gas in einer Nekrose ist ohne vorausgegangene Intervention oder enterische Fistel hochspezifisch für eine Infektion. Nach Drainage, Operation oder bei Fistel muss Gas anders bewertet werden.',
-      en: 'Gas within necrosis is highly specific for infection when there has been no prior intervention or enteric fistula. Gas after drainage, surgery or fistulisation requires a different interpretation.',
-      fa: 'گاز داخل نکروز، در نبود مداخله قبلی یا فیستول گوارشی، برای عفونت بسیار اختصاصی است. پس از درناژ، جراحی یا ایجاد فیستول باید گاز را متفاوت تفسیر کرد.',
-    },
+  "id": "infected-necrosis",
+  "question": {
+    "de": "Welche CT-Beobachtung erhöht bei bekannter nekrotisierender Pankreatitis den Verdacht auf infizierte Nekrose am stärksten, wenn weder Intervention noch enterische Fistel vorliegen?",
+    "en": "Which CT observation most strongly raises concern for infected necrosis in known necrotising pancreatitis when there has been no intervention or enteric fistula?",
+    "fa": "در پانکراتیت نکروزان شناخته‌شده و در نبود مداخله یا فیستول روده‌ای، کدام مشاهدهٔ CT بیش از بقیه شک به نکروز عفونی را افزایش می‌دهد؟"
   },
+  "options": [
+    {
+      "id": "A",
+      "text": {
+        "de": "Gasblasen innerhalb der nekrotischen Kollektion",
+        "en": "Gas bubbles within the necrotic collection",
+        "fa": "حباب گاز درون تجمع نکروتیک"
+      }
+    },
+    {
+      "id": "B",
+      "text": {
+        "de": "Heterogener nekrotischer Inhalt ohne Gas",
+        "en": "Heterogeneous necrotic contents without gas",
+        "fa": "محتوای نکروتیک ناهمگن بدون گاز"
+      }
+    },
+    {
+      "id": "C",
+      "text": {
+        "de": "Eine kontrastmittelaufnehmende Kapsel ohne Gas",
+        "en": "An enhancing capsule without gas",
+        "fa": "کپسول دارای جذب مادهٔ حاجب بدون گاز"
+      }
+    },
+    {
+      "id": "D",
+      "text": {
+        "de": "Peripankreatisches Fett-Stranding ohne Gas",
+        "en": "Peripancreatic fat stranding without gas",
+        "fa": "واکنش چربی اطراف پانکراس بدون گاز"
+      }
+    }
+  ],
+  "correct": "A",
+  "explanation": {
+    "de": "Gas in Nekrose ist im genannten Kontext ein starker Infektionshinweis, aber nicht bei jeder infizierten Nekrose vorhanden. Fehlendes Gas schließt eine Infektion nicht aus. Klinik, Verlauf und mögliche alternative Gasursachen bleiben wichtig.",
+    "en": "Gas in necrosis is a strong infection clue in this context but is absent in many infected necroses. Lack of gas does not exclude infection. Clinical status, evolution and alternative causes of gas remain important.",
+    "fa": "گاز در نکروز در این زمینه سرنخ قوی عفونت است، اما در بسیاری از نکروزهای عفونی وجود ندارد. نبود گاز عفونت را رد نمی‌کند. وضعیت بالینی، سیر و علل جایگزین گاز همچنان مهم‌اند."
+  },
+  "wrongExplanations": {
+    "B": {
+      "de": "Heterogenität gehört zum nekrotischen Inhalt und beweist dessen Infektion nicht. Infektion kann dennoch auch ohne Gas bestehen.",
+      "en": "Heterogeneity describes necrotic contents and does not establish infection. Infection may nevertheless occur without gas.",
+      "fa": "ناهمگنی ویژگی محتوای نکروتیک است و عفونت آن را ثابت نمی‌کند؛ با این حال عفونت می‌تواند بدون گاز نیز وجود داشته باشد."
+    },
+    "C": {
+      "de": "Eine aufnehmende Kapsel zeigt Organisation/Reifung der Kollektion. Sie ist kein alleiniger Infektionsnachweis.",
+      "en": "An enhancing capsule indicates organisation/maturation of the collection, not infection by itself.",
+      "fa": "کپسول دارای جذب نشانهٔ سازمان‌یافتن/بلوغ تجمع است، نه اثبات مستقل عفونت."
+    },
+    "D": {
+      "de": "Fett-Stranding ist eine unspezifische Entzündungsreaktion und weniger spezifisch für infizierte Nekrose als das hier gefragte Gaszeichen.",
+      "en": "Fat stranding is a nonspecific inflammatory reaction and less specific for infected necrosis than the gas finding asked here.",
+      "fa": "واکنش چربی پاسخ التهابی غیراختصاصی است و نسبت به علامت گازِ مورد سؤال اختصاصیت کمتری برای نکروز عفونی دارد."
+    }
+  },
+  "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/"
+},
   {
-    id: 'carcinoma-dd',
-    question: {
-      de: 'Welcher Befund spricht eher für Pankreaskarzinom als für chronische Pankreatitis?',
-      en: 'Which finding favours pancreatic carcinoma over chronic pancreatitis?',
-      fa: 'کدام یافته بیشتر به نفع کارسینوم پانکراس نسبت به پانکراتیت مزمن است؟',
-    },
-    options: [
-      { id: 'A', text: { de: 'Abrupter Gangabbruch mit konsekutiver Schwanzatrophie', en: 'Abrupt duct cut-off with upstream tail atrophy', fa: 'قطع ناگهانی مجرا همراه آتروفی دم پانکراس' } },
-      { id: 'B', text: { de: 'Duct-penetrating-sign', en: 'Duct-penetrating sign', fa: 'علامت duct-penetrating' } },
-      { id: 'C', text: { de: 'Intraduktale und parenchymale Verkalkungen', en: 'Intraductal and parenchymal calcifications', fa: 'کلسیفیکاسیون داخل مجرا و پارانشیم' } },
-      { id: 'D', text: { de: 'Perlschnurartig wechselnde Gangweiten', en: 'Chain-of-lakes ductal irregularity', fa: 'نامنظمی زنجیره‌ای مجرا' } },
-    ],
-    correct: 'A',
-    explanation: {
-      de: 'Abrupter Gangabbruch, Schwanzatrophie, fehlende Verkalkungen in der Masse und Gefäßinfiltration sprechen für Karzinom.',
-      en: 'Abrupt duct cut-off, tail atrophy, absent calcifications within the mass and vascular infiltration favour carcinoma.',
-      fa: 'قطع ناگهانی مجرا، آتروفی دم، نبود کلسیفیکاسیون در توده و درگیری عروقی به نفع کارسینوم است.',
-    },
+  "id": "carcinoma-dd",
+  "question": {
+    "de": "Welche Befundkombination gewichtet ein Pankreaskarzinom gegenüber einer chronisch entzündlichen Raumforderung stärker?",
+    "en": "Which combination favours pancreatic carcinoma over a chronic inflammatory mass?",
+    "fa": "کدام ترکیب یافته‌ها احتمال سرطان پانکراس را نسبت به تودهٔ التهابی مزمن بیشتر می‌کند؟"
   },
+  "options": [
+    {
+      "id": "A",
+      "text": {
+        "de": "Abrupter Gangabbruch mit konsekutiver Schwanzatrophie",
+        "en": "Abrupt duct cut-off with upstream tail atrophy",
+        "fa": "قطع ناگهانی مجرا همراه آتروفی دم پانکراس"
+      }
+    },
+    {
+      "id": "B",
+      "text": {
+        "de": "Duct-penetrating-sign",
+        "en": "Duct-penetrating sign",
+        "fa": "علامت duct-penetrating"
+      }
+    },
+    {
+      "id": "C",
+      "text": {
+        "de": "Intraduktale und parenchymale Verkalkungen",
+        "en": "Intraductal and parenchymal calcifications",
+        "fa": "کلسیفیکاسیون داخل مجرا و پارانشیم"
+      }
+    },
+    {
+      "id": "D",
+      "text": {
+        "de": "Perlschnurartig wechselnde Gangweiten",
+        "en": "Chain-of-lakes ductal irregularity",
+        "fa": "نامنظمی زنجیره‌ای مجرا"
+      }
+    }
+  ],
+  "correct": "A",
+  "explanation": {
+    "de": "Ein abrupter fokaler Gangabbruch mit vorgeschalteter Parenchymatrophie ist verdächtig auf einen obstruierenden Tumor. Ein durch die Masse verlaufender, verengter Gang gewichtet eher Entzündung; kein Einzelzeichen schließt Karzinom sicher aus. Voraufnahmen und weitere Abklärung nach Gesamtkontext.",
+    "en": "Abrupt focal duct cut-off with upstream parenchymal atrophy raises concern for an obstructing tumour. A narrowed duct traversing the mass favours inflammation, but no single sign safely excludes carcinoma. Compare prior studies and investigate according to the overall context.",
+    "fa": "قطع ناگهانی و کانونی مجرا با آتروفی پارانشیم بالادست به تومور انسدادی مشکوک است. مجرای تنگی که از درون توده می‌گذرد بیشتر به نفع التهاب است، اما هیچ علامت منفردی سرطان را با اطمینان رد نمی‌کند. تصاویر قبلی و بررسی تکمیلی بر پایهٔ کل زمینه ارزیابی شوند."
+  },
+  "wrongExplanations": {
+    "B": {
+      "de": "Das Duct-penetrating-Zeichen gewichtet eine entzündliche Masse: Ein Gang bleibt durch die Läsion hindurch sichtbar, oft verengt. Es ist kein absoluter Ausschlussbeweis.",
+      "en": "The duct-penetrating sign favours an inflammatory mass: a duct remains visible traversing the lesion, often narrowed. It is not absolute exclusion evidence.",
+      "fa": "علامت عبور مجرا بیشتر به نفع تودهٔ التهابی است؛ مجرا از درون ضایعه قابل مشاهده می‌ماند و اغلب تنگ است. این شاهد قطعی برای رد سرطان نیست."
+    },
+    "C": {
+      "de": "Intraduktale und parenchymale Verkalkungen stützen chronische Pankreatitis. Ein zusätzliches Karzinom bei chronischer Pankreatitis bleibt möglich.",
+      "en": "Intraductal and parenchymal calcifications support chronic pancreatitis. A coexisting carcinoma remains possible.",
+      "fa": "کلسیفیکاسیون داخل‌مجرایی و پارانشیمی از پانکراتیت مزمن حمایت می‌کند؛ سرطان هم‌زمان همچنان ممکن است."
+    },
+    "D": {
+      "de": "Wechselnde Gangweiten mit Strikturen passen zur chronischen Gangveränderung; gesucht ist der fokale abrupte Abbruch mit vorgeschalteter Atrophie.",
+      "en": "Alternating duct calibre and strictures fit chronic ductal change; the question seeks abrupt focal cut-off with upstream atrophy.",
+      "fa": "قطر متناوب مجرا و تنگی‌ها با تغییرات مزمن مجرا سازگارند؛ سؤال قطع ناگهانی کانونی همراه آتروفی بالادست را هدف گرفته است."
+    }
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/11568327/"
+},
 ]
 
 const PANCREATITIS_QUESTIONS = Object.fromEntries(

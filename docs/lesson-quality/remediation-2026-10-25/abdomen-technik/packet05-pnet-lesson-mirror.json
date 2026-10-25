@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_PENDING_REVIEW",
+  "changes": [
+    {
+      "path": "de.lead",
+      "before": "Pankreatische neuroendokrine Neoplasien entstehen aus den endokrinen Zellen. Funktionelle und nichtfunktionelle Tumoren unterscheiden sich klinisch; der Bildbefund muss diese Frage nicht allein beantworten. Die hier gezeigten Beispiele betreffen vor allem hypervaskuläre Läsionen.",
+      "after": "Pankreatische neuroendokrine Neoplasien entstehen aus den endokrinen Zellen. Ein funktionelles Syndrom wird klinisch und biochemisch definiert; die Bildgebung allein bestimmt diesen Status nicht. Die hier gezeigten Beispiele betreffen vor allem hypervaskuläre Läsionen."
+    },
+    {
+      "path": "de.cave",
+      "before": "PDF S. 39 nennt eine kleine Studie, nach der 90 % der Insulinome benign und kleiner als 2 cm seien. Das ist keine allgemeine Regel für alle PanNETs und wird hier nicht zur Risikoklassifikation oder Therapieempfehlung verwendet.",
+      "after": "Insulinome und nichtfunktionelle PanNET sind unterschiedliche klinisch-biologische Gruppen. Angaben zur Benignität von Insulinomen sind keine allgemeine Risikoregel für kleine nichtfunktionelle PanNET. Grad, Wachstum, Bildbefund und Patientenkontext gehören zur individuellen Einordnung."
+    },
+    {
+      "path": "en.lead",
+      "before": "Pancreatic neuroendocrine neoplasms arise from endocrine cells. Functional and non-functional tumours differ clinically; imaging alone cannot answer that question. The examples here mainly concern hypervascular lesions.",
+      "after": "Pancreatic neuroendocrine neoplasms arise from endocrine cells. A functioning syndrome is defined clinically and biochemically; imaging alone does not establish this status. The examples here mainly concern hypervascular lesions."
+    },
+    {
+      "path": "en.cave",
+      "before": "PDF p. 39 cites a small study in which 90% of insulinomas were benign and under 2 cm. This is not a general rule for all PanNETs and is not used here for risk classification or treatment advice.",
+      "after": "Insulinomas and nonfunctioning PanNETs are different clinical/biological groups. Insulinoma benignity data are not a general risk rule for small nonfunctioning PanNETs. Grade, growth, imaging and patient context inform individual assessment."
+    },
+    {
+      "path": "fa.lead",
+      "before": "نئوپلاسم‌های نورواندوکرین پانکراس از سلول‌های اندوکرین منشأ می‌گیرند. تومورهای فانکشنال و غیرفانکشنال از نظر بالینی متفاوت‌اند؛ تصویر به‌تنهایی پاسخ‌گوی این پرسش نیست. مثال‌های این درس عمدتاً ضایعات پرعروق را نشان می‌دهند.",
+      "after": "نئوپلاسم‌های نورواندوکرین پانکراس از سلول‌های اندوکرین منشأ می‌گیرند. سندرم فانکشنال بر پایهٔ یافته‌های بالینی و بیوشیمیایی تعریف می‌شود؛ تصویربرداری به‌تنهایی این وضعیت را تعیین نمی‌کند. مثال‌های این درس عمدتاً ضایعات پرعروق را نشان می‌دهند."
+    },
+    {
+      "path": "fa.cave",
+      "before": "صفحه ۳۹ PDF به مطالعه کوچکی اشاره می‌کند که در آن ۹۰٪ انسولینوماها خوش‌خیم و کوچک‌تر از ۲ سانتی‌متر بوده‌اند. این قاعده‌ای عمومی برای همه PanNETها نیست و در این درس برای طبقه‌بندی خطر یا توصیه درمانی استفاده نمی‌شود.",
+      "after": "انسولینوما و PanNET غیرفانکشنال، گروه‌های بالینی و زیستی متفاوت‌اند. داده‌های خوش‌خیمی انسولینوما، قاعدهٔ عمومی خطر برای PanNET کوچک غیرفانکشنال نیستند. گرید، رشد، تصویربرداری و زمینهٔ بیمار در ارزیابی فردی لحاظ می‌شوند."
+    }
+  ],
+  "sources": [
+    "https://doi.org/10.1111/jne.13318",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC7029300/"
+  ],
+  "pdfEvidence": "PhysicalPDF38 actualpageviewed, no smallstudyidentified; remove erroneousspecifiedstudy/physical39claim, no newimageinterpretation."
+}

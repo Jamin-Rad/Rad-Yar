@@ -1,0 +1,554 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/msk_original_pools_next",
+  "author": "/root/design_inventory",
+  "authorIndependent": true,
+  "packet": "ATV05 pancreatic/PSC original pools",
+  "status": "BOUNDED_CONTENT_ACCEPTED_AFTER_COORDINATED_TEACHING_REPAIRS",
+  "overallWholeRouteAcceptance": false,
+  "scope": {
+    "routes": [
+      "/abdomen/pankreas/neuroendokrine-tumoren",
+      "/abdomen/pankreas/pankreaskarzinom",
+      "/abdomen/leber/psc-mrcp",
+      "/abdomen/pankreas/zystische-tumoren",
+      "/abdomen/pankreas/pankreatitis"
+    ],
+    "originalQuestionTriadsActuallyRead": 19,
+    "originalCardTriadsActuallyRead": 23,
+    "afterQuestionTriadsActuallyRead": 23,
+    "afterCardTriadsActuallyRead": 26,
+    "localizedAfterQuestions": 69,
+    "specificWrongFeedbackFields": 207,
+    "sharedProposalRecordsActuallyCompared": 54,
+    "pancreatitisTeachingUnitsIndividuallyRead": 63,
+    "repairTeachingUnitsIndividuallyRead": 6,
+    "languages": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "limits": "Acceptance concerns the full original assessment pools, proposed After overlay, directly affected teaching mirrors and recorded teaching deltas. It does not establish full original lesson/media recertification, actual canonical After integration, browser behavior, scientific sign-off or publication."
+  },
+  "filesActuallyRead": [
+    "data/pnetLearning.js",
+    "data/pdacFlashcards.js",
+    "data/pscMrcpLearning.js",
+    "data/abdomenPancreaticCystFlashcards.js",
+    "data/assessmentQuality/atvPancreatic.js",
+    "data/assessmentQuality/atvCysticPancreas.js",
+    "app/abdomen/pankreas/neuroendokrine-tumoren/page.js",
+    "app/abdomen/pankreas/pankreaskarzinom/page.js",
+    "app/abdomen/pankreas/pankreatitis/page.js",
+    "app/abdomen/pankreas/zystische-tumoren/page.js",
+    "app/abdomen/leber/psc-mrcp/page.js",
+    "data/abdomenThoraxAssessmentDrafts.js targeted PDAC inline producer",
+    "data/abdomenThoraxRegisteredQuestions.js producer/registration shape",
+    "data/questions.js and data/flashcards.js actual import graphs",
+    "components/LessonReferenceShell.jsx",
+    "lib/lessonCheckFeedback.js",
+    "components/lesson-template/LegacyLessonMigration.jsx",
+    "components/lesson-template/AbdomenContextAdditions.jsx kind=psc",
+    "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet05-author-manifest.json",
+    "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet05-original-read-ledger.json",
+    "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet05-primary-research.json",
+    "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/shared-bank-patches-packet05-draft.json",
+    "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet05-pancreatitis-blueprint.json",
+    "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet05-pancreatitis-lesson-changes.json",
+    "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet05-pnet-lesson-mirror.json",
+    "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet05-cyst-lesson-changes.json",
+    "docs/lesson-quality/remediation-2026-10-25/abdomen-technik/packet05-review-repairs.json",
+    "tmp/assessment-quality/atv05-original-pool.json",
+    "tmp/assessment-quality/atv-packet05-ssr.json"
+  ],
+  "gates": {
+    "SRC": {
+      "status": "PASS",
+      "scope": "Bounded assessment/teaching claims",
+      "evidence": "Actual supplied PDF physical28–42 images and extracted text read, source conflicts below explicitly adjudicated with fresh primary consensus/study text. Source supplementation remains traceable; no newly asserted source study or diagnostic image."
+    },
+    "EDU": {
+      "status": "PASS",
+      "scope": "Assessment learning-goal and revised teaching-mirror scope",
+      "evidence": "Three-to-five purposeful goal groups per route resolve to real IDs. Questions use relevant patterns, competing anatomical/collection/clinical findings and contextual evidence limits; no quota expansion. Two demonstrated teaching gaps closed in six exact localized fields.",
+      "wholeRouteLimits": "Existing PNET/Pancreatitis LegacyLessonMigration routes contain no embedded self-check; migration does not synthesize one. Their external banks are reviewed here, but this pre-existing whole-route structural requirement is not accepted by this bounded bank review."
+    },
+    "VIS": {
+      "status": "NOT_APPLICABLE",
+      "reason": "No new diagnostic media or revised patient-image interpretation in this assessment packet. PDF page images were inspected for coverage/figure-table context; this is not retained-case diagnostic/media-rights recertification.",
+      "wholeRouteLimits": "Retained heroes, source crops, cases/study/frame/provenance and all visual-recognition requirements remain outside bounded acceptance."
+    },
+    "LNG": {
+      "status": "PASS",
+      "scope": "Semantic DE/EN/FA parity of original/After assessment units and scoped teaching changes",
+      "evidence": "All original and After triads read; numbers, >=/< boundaries, nonexclusive findings, negative malignancy workup, normal-vs-inadequate study, clinical relevance and vascular qualifiers align. Persian original long occlusion wording replaced by narrowed traversing duct.",
+      "blocker": "Actual RTL/browser rendering not tested by reviewer."
+    },
+    "ASM": {
+      "status": "PASS",
+      "scope": "Proposed content and producer data, before canonical integration",
+      "evidence": "54 current Before records exact;69 localized questions and26 card triads equal the independently constructed proposed overlay, original19Q IDs/keys and23cardIDs preserved;207 specific wrong feedback fields and allgoalIDs checked.",
+      "integrationBlockers": [
+        "54 shared repairs are deliberately unapplied. Global After is not yet tested.",
+        "Six cyst supplemental localized questions require central admission.",
+        "PDAC inline must receive the correctly reconstructed canonical triadic draft during Root integration; expected field mapping recorded below."
+      ]
+    },
+    "UX": {
+      "status": "BLOCKED",
+      "reason": "Reviewer was not authorized to build/start server; no fresh actual browser matrix/interactions/RTL/media loading. Author supplied15/15 SSR fixture records inspected as author evidence only.",
+      "independentTechnical": "Data import graphs/overlay and exact source path checks performed; no Next build/SSR/browser claimed."
+    },
+    "REV": {
+      "status": "PASS",
+      "evidence": "Reviewer did not author ATV05, freshly read original and proposed pools, PDF and primary evidence; supported findings sent to Root, author repaired separately, reviewer reread all six After units and verified exact scope guard."
+    }
+  },
+  "issues": [
+    {
+      "id": "ATV05-EDU-01",
+      "severity": "major",
+      "gates": [
+        "EDU",
+        "ASM"
+      ],
+      "location": "app/abdomen/leber/psc-mrcp/page.js C.de/en/fa.cards[2][1]; aq-atv-psc-pbc-*-quality-next",
+      "observed": "The new next-step goal/item/card taught repeat-quality versus high-quality normal small-duct consideration, while the direct lesson previously only listed quality documentation.",
+      "learnerImpact": "The assessed diagnostic distinction was absent from the lesson teaching path.",
+      "requiredCorrection": "Briefly teach repeat high-quality MRCP when technically inadequate without urgent intervention need, and separately consider biopsy for persistent suspicion despite a high-quality normal MRCP; retain conditional clinical context.",
+      "source": "AASLD2022 original imaging p5 and guidance statements1–3 p7",
+      "status": "CLOSED_AFTER_INDEPENDENT_REPAIR_RETEST",
+      "retest": "All three actual After fields individually read; high-quality normal versus inadequate exam and consider-biopsy qualifier preserved in DE/EN/FA. Exact actual path equality PASS."
+    },
+    {
+      "id": "ATV05-EDU-02",
+      "severity": "major",
+      "gates": [
+        "EDU",
+        "ASM"
+      ],
+      "location": "app/abdomen/pankreas/pankreaskarzinom/page.js C.de/en/fa.cards[2][1]; abdomen-pdac-vessel-contact-*-01 and pdac-vessel-reporting",
+      "observed": "The revised question/card specifically requires patent proximal/distal venous connection segments for reconstruction, but the lesson previously stopped at vessel/contact/contour/occlusion description.",
+      "learnerImpact": "The new assessment-specific reporting task had no direct teaching mirror.",
+      "requiredCorrection": "Add a concise source-backed anatomical description of narrowing/occlusion location/length and patent adjacent proximal/distal segments; retain that this alone does not determine resectability.",
+      "source": "SAR/APA2014 original venous assessment text, Table1 proximal/distal vessels, Figure9/10 captions and Table5; historical operability policy not adopted.",
+      "status": "CLOSED_AFTER_INDEPENDENT_REPAIR_RETEST",
+      "retest": "All three actual After fields individually read; venous location/length and open adjacent segments match the assessment in DE/EN/FA, without angle-only surgery rule. Exact actual path equality PASS."
+    }
+  ],
+  "integrationRequirements": [
+    {
+      "id": "ATV05-INT-01",
+      "status": "ROOT_PENDING_CANONICAL_INTEGRATION_NOT_AUTHOR_CONTENT_ERROR",
+      "location": "data/abdomenThoraxAssessmentDrafts.js abdomen-pdac-isoattenuating; app/abdomen/pankreas/pankreaskarzinom/page.js checkDraft consumer",
+      "observed": "Current inline consumes the original three-option triadic draft and checkDraft.rationale. Shared proposal names this producer but supplies localized bank After objects. Applying only QUESTION_BANK objects does not itself change the inline producer.",
+      "mappingRequired": "Reconstruct one canonical triadic draft from the three accepted abdomen-pdac-isoattenuating-<lang>-01 After objects: question=L, options=4 L objects in stable A–D order, answer=0 from correct A, rationale=L from explanation; wrongFeedback[0..3] as localized specific feedback with correct rationale at0. Preserve route explanation=checkDraft.rationale or adapt coherently. Register bank from this canonical shape without duplicated fourth option.",
+      "retestRequired": "Root must inspect actual post-integration inline in DE/EN/FA: four accepted option texts, keyA/index0, correct feedback and each of three wrong feedback units; actual GlobalAfter69Q/26cards must match the accepted overlay hashes."
+    }
+  ],
+  "sourceCoverage": [
+    {
+      "source": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Abdomen.pdf",
+      "sha256": "a27901cb4a002b99dad3d2f1864585e3e1ca4377f7f19c852e6b4160308e2d0e",
+      "totalPages": 99,
+      "physicalPagesActuallyRead": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ],
+      "printedPages": "physical minus1",
+      "textEvidence": "Fresh actual bundled pypdf extraction tmp/assessment-quality/atv05-independent-pdf-text.json; matching extracted text read for all15pages.",
+      "imageEvidence": "tmp/abdomen-completion/page-28.png through page-42.png all15 actual page images viewed independently in this review.",
+      "dispositions": [
+        "28–29 PSC pattern/quality/clinical background; no mandatory cancer progression asserted.",
+        "30 title-only Tumoren, no extra tumor lesson inferred.",
+        "31–34 pancreatitis: fixed population percentages, absolute reliable-time/necrosis wording, gas pathognomonic, MRCP contrast leak, universal3mm and unqualified steroid test explicitly limited/corrected against primary sources.",
+        "35 oldTNM not adopted;36–37 CT/MRI secondary signs and vascular reporting assessed; patient cases not recertified.",
+        "38–39 PanNET CT/MRI and splenic mimic; physical38 contains generic90% insulinoma statement, no identified small-study citation. Old small-study bookkeeping removed.",
+        "40–42 cyst morphology and risk: communication nonexclusive, enhancing nodule5mm boundary preserved; absolute OP wording replaced by individualized Kyoto context."
+      ],
+      "unreadPages": "Other84 pages outside this bounded topic review."
+    },
+    {
+      "source": "https://doi.org/10.1136/gutjnl-2012-302779",
+      "read": "Fresh original indexed full text/Box1/Box3, pancreatic-vs-isolated-peripancreatic necrosis, early evolution, APFC/pseudocyst/ANC/WON definitions, >48h persistent organ failure. Original text, not secondary review, supports revised wording.",
+      "locations": [
+        "pancreatitis morphology/collections/CTSI questions/cards",
+        "63 teaching changes"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/",
+      "alternate": "https://api.repository.cam.ac.uk/server/api/core/bitstreams/6ec8b344-cef8-479c-8834-327d64849bc1/content",
+      "read": "Fresh original WSES2019 imaging statements and indexed gas-infection discussion; original Table3 reproduced bands <30,30–50,>50 and grade A–E explicitly read through original PDF text. Direct PMC opens sometimes captcha; original indexed text/repository PDF supplied evidence.",
+      "locations": [
+        "72–96h named severe-AP firstCT",
+        "gas caveat",
+        "namedWSESCTSI"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8938398/",
+      "read": "Fresh indexed original Japanese2020/2022 CQ-I6/CTMRI findings, CQ-I14 negative malignancy workup/response-not-exclusion and CQIII differential/table. Sausage/focal/rim/delayed pattern and specialist cancer-workup caveat supported. No steroid dose/regimen taught.",
+      "locations": [
+        "AIPcard",
+        "ddteaching"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC490004/",
+      "read": "Original Criddle2004 abstract/introduction/methods/results read fresh: isolated mouse acinar experimental calcium injury from nonoxidative fatty-acid ethyl esters; scope kept explicitly experimental rather than standalone human aetiology proof.",
+      "locations": [
+        "alcoholQ",
+        "basicsitems1"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://doi.org/10.14309/ajg.0000000000002645",
+      "alternate": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13221274",
+      "read": "Fresh original ACG2024 Table2 etiology recommendations: US/repeat if inconclusive and idiopathic AP repeatUS/MRI/EUS. No population percentages/dose protocol adopted.",
+      "locations": [
+        "causescard"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://doi.org/10.1177/2050640616684695",
+      "alternate": "https://www.europeanpancreaticclub.org/media/resources/Guidelines_HaPanEU_chronic_pancreatitis.pdf",
+      "read": "Fresh original HaPanEU imaging statements2-1/2-2/2-3 and MRCP calibre/stricturing/filling defect discussion; normalMRCP does not exclude mildCP.",
+      "locations": [
+        "chroniccard/lead/ductpattern"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://pubmed.ncbi.nlm.nih.gov/11568327/",
+      "read": "Fresh complete original Ichikawa2001 indexed abstract11inflammatory masses/43carcinomas; traversing nonobstructed duct supports inflammation with imperfect discrimination. No accuracy percentages or absolute exclusion transferred.",
+      "locations": [
+        "carcinomaDDQ/card",
+        "ddrow0"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://pubs.rsna.org/doi/10.1148/radiology.174.2.2296641",
+      "read": "Fresh original Balthazar1990 journal abstract,88patients and morphological CTSI formulation; old cohort mortality not used as individual predicted outcome. Exact cutoffs verified against namedWSES original Table3, not abstract alone.",
+      "locations": [
+        "CTSIcard/teaching"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3473517/",
+      "read": "Fresh original Spencer2010 abstract/methods/results/discussion, lesion spleen matching over CT/MRI phases and correlative confirmation; no older NET frequency or Octreoscan sensitivity adopted.",
+      "locations": [
+        "splenulusQ/card"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://pubmed.ncbi.nlm.nih.gov/23991643/",
+      "read": "Fresh complete original Worhunsky2014 indexed abstract and enhancement figure captions: common arterial hyperenhancement with documented iso/hypo cases in resected well-differentiated cohort; no numerical survival rule transferred.",
+      "locations": [
+        "pnet01/card"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://pubmed.ncbi.nlm.nih.gov/26321494/",
+      "read": "Fresh complete original Hyodo2015 indexed abstract61tumors/58patients, enhancement heterogeneity/size/cystic components and grade associations. No WHO2010G3=NEC universal inference.",
+      "locations": [
+        "PanNET enhancement caveat"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://doi.org/10.1111/jne.13318",
+      "read": "Fresh original ENETS2023 functioning-syndrome abstract via authors institutional indexed publication and originalPDFfirstpage: clinical syndrome plus inappropriately elevated hormone biochemistry. Receptor staining/uptake does not establish clinical function.",
+      "locations": [
+        "pnet03/card",
+        "lead"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/7029300/",
+      "read": "Fresh indexed original NANETS2020 NF-PNET evaluation/recommendation passage: patientcomorbidity,growth,imaging,grade,wishes considered. No universal size/benignity/treatment rule transferred and no claim whole guideline read.",
+      "locations": [
+        "pnet04/card",
+        "cave"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://pubmed.ncbi.nlm.nih.gov/12202711/",
+      "read": "Fresh complete original Prokesch2002 indexed abstract53patients/sixisoattenuating tumors; interrupted duct/upstream atrophy/mass effect, no prevalence teaching transferred.",
+      "locations": [
+        "PDACisoQ/card"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://pubmed.ncbi.nlm.nih.gov/24705640/",
+      "read": "Fresh complete original Cohen2014 indexed abstract: retrospective EUS cohort without jaundice or CT/MRI mass, pancreatic/ampullary neoplasms and benign CP/stones/ductdilatation. Nonexclusive differential only, no followup protocol adopted.",
+      "locations": [
+        "doubleductQ/card"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://doi.org/10.1148/radiol.13131184",
+      "fullText": "https://geiselmed.dartmouth.edu/radiology/wp-content/uploads/sites/47/2019/04/Reporting_Panc_Ductal_Adeno.pdf",
+      "read": "Fresh original SAR/APA2014 consensus text,Table5 venous evaluation,proximal/distal suitable vessel inTable1/Figure9–10captions and morphology/MRIproblem-solving discussion. Anatomical reporting adopted; historical resectability categories not certified as current policy.",
+      "locations": [
+        "venousQ/card",
+        "repairedlessonmirror"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://doi.org/10.1002/hep.32771",
+      "officialFullText": "https://www.aasld.org/sites/default/files/2023-01/Hepatology%20-%202022%20-%20Bowlus%20-%20AASLD%20practice%20guidance%20on%20primary%20sclerosing%20cholangitis%20and%20cholangiocarcinoma.pdf",
+      "read": "Fresh actual official originalPDF imagingp5,Table1p2,relevantstricture maintextp6 andguidance1–3p7. Suboptimalrepeat vs normalhigh-qualitysmall-ductbiopsyconsideration and non-diagnosticERCP restriction directly verified. Intro sayscommonhepatic whileTable1/maintextcommonbile; items explicitlyfollowTable1/maintext.",
+      "locations": [
+        "PSCthreeQ/threecards",
+        "sixrepairfieldsPSC"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://pubmed.ncbi.nlm.nih.gov/19522024/",
+      "read": "Fresh complete original Shah2009 abstract164pathology-correlated cysts plus captions; microcystic appearance/central scar, atypical macrocystic mimic. No figurepixels/new patientcase acceptance.",
+      "locations": [
+        "serousQ/card/paragraph"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://doi.org/10.1016/j.pan.2023.12.009",
+      "fullText": "https://www.ahpba.org/wp-content/uploads/2025/02/Kyoto-IPMN-Guidelines-2024.pdf",
+      "read": "Fresh actual originalKyoto2024Table2 and5.1–5.4: BDIPMN/pseudocystcommunication,serousmicro/macrocystic,HRSenhancingnodule>=5/MPD>=10,WF<5/cyst>=30/MPD>=5<10,individualcomorbidity/lifeexpectancy/preferences. No managementschedule or automatedsurgery added.",
+      "locations": [
+        "cystthreeQ/threecards",
+        "riskinline"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3291674/",
+      "read": "Fresh original DeRango2012 whole case narrative and caption text: enhancingfocus withinpseudocyst GDApseudoaneurysm confirmed atangiography. No rates,stentselection/treatmentprotocolorpatientfigureclaims transferred.",
+      "locations": [
+        "pseudoaneurysmQ/card/mirror"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://www.cghjournal.org/article/S1542-3565(25)00586-5/fulltext",
+      "read": "Fresh original2025USPancreaticDiseaseStudyGroup definition/radiographicdiagnosis passage:partialdisruptionvscompleteconnectionlosswithviableupstream,secretinMRCPfluidoutside duct; fluidegressalonecannotdistinguishleakfromDPD. CardappropriatelysayspossibleDPDS,notdefinitivesyndromefromMRCPalone.",
+      "locations": [
+        "ductdisruptioncard/lesson"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "source": "https://doi.org/10.1016/j.pan.2025.04.020",
+      "read": "Fresh original indexed IAP2025Table1/Q28–29 andQ93foranatomicalMRCPcontext; no earlyERCPsolelybiliaryAPwithoutcholangitis,MRCP/EUSforuncertainstone. No intervention/stent/dose timing protocol adopted.",
+      "locations": [
+        "biliaryQ/card"
+      ],
+      "status": "SUPPORTED"
+    }
+  ],
+  "teachingDeltaReview": {
+    "pancreatitisRecorded": 63,
+    "all63IndividuallyRead": true,
+    "all63ActualAfterPathsEqual": true,
+    "pnetSixLeadCaveUnitsRead": true,
+    "cystAddedParagraphAndActualRiskInlineRead": true,
+    "PSCAndPDACSixRepairUnitsRead": true,
+    "allSixActualAfterPathsEqual": true,
+    "exactScopeGuard": "11 files frozen except exact6 coordinated teaching strings"
+  },
+  "technical": {
+    "status": "PASS_PROPOSAL_OVERLAY_ONLY",
+    "sharedBeforeExact": 54,
+    "actualAfterGloballyIntegrated": false,
+    "locales": {
+      "de": {
+        "objects": 23,
+        "proposalOverlaySha256": "fdb122a9db0a66ff7f855a2db8d6caebaaaa0f9747a81ea9dcfd8df48bd45475",
+        "manifestEqual": true,
+        "originalKeysStable": true
+      },
+      "en": {
+        "objects": 23,
+        "proposalOverlaySha256": "8ed22d93adcaf5c94e1967c248b0ff7fbf4b20f351c1a5434af6b7911f49ff05",
+        "manifestEqual": true,
+        "originalKeysStable": true
+      },
+      "fa": {
+        "objects": 23,
+        "proposalOverlaySha256": "ccd08d08c6faa89c7f87f6422dae17c49f177ca2b29ba50865163fba037721f6",
+        "manifestEqual": true,
+        "originalKeysStable": true
+      }
+    },
+    "files": {
+      "data/pnetLearning.js": "1b0d1876b1712acaf7cac027bf1ac7c747d428376c1ba2721a46e02fd764a270",
+      "data/pdacFlashcards.js": "d8a4fac5661410103e1d14ed377bbd0189ca7dbd2607b2b686c3fd4af3e921ab",
+      "data/pscMrcpLearning.js": "b3bda59518eff3575e6994f765482d0ebf5f3df134b2128404fe5f4c5845ec23",
+      "data/abdomenPancreaticCystFlashcards.js": "effa28d5564a9e9525caf4e26f25bb2c84012627005221b2aed9baa794dabd92",
+      "data/assessmentQuality/atvPancreatic.js": "829fc9576eefc7a357c711696235390b782c4e4f4adaefb9aef8b020fcb59a71",
+      "data/assessmentQuality/atvCysticPancreas.js": "1434be96c9f3e038c6c15338ac9437c20bf000f2933c29a623ea5f5d1414eba6",
+      "app/abdomen/pankreas/neuroendokrine-tumoren/page.js": "a4bcd633e54394dab1ba2e8e90df730f30f5f8eeedf62466ad33181021bf99a8",
+      "app/abdomen/pankreas/pankreaskarzinom/page.js": "61a24b708058027a4df8b895c8ce9c0494c124c740595a99d17ea0878b1baaa3",
+      "app/abdomen/pankreas/pankreatitis/page.js": "af594b66d6582e7a63b8880c0f64db924f9920ba7b266bfb78ee38c53df4d68f",
+      "app/abdomen/pankreas/zystische-tumoren/page.js": "1bf1acb7232ed9f43cd9f54d1bdae66bfb546189d40f7d30c6f152fa19208136",
+      "app/abdomen/leber/psc-mrcp/page.js": "957206929320cf4e960067a1271f20956a8b09295a213d1f14f8944385fdfab3"
+    },
+    "cards": {
+      "triads": 26,
+      "proposalOverlaySha256": "10c69902b4f9a5916174ed398d6b1c0dcebedbdad0e556e65e53cde9184336f2",
+      "manifestEqual": true
+    },
+    "pancreatitisTeachingPathsExact": 63,
+    "repairAfterPathsExact": 6,
+    "preRepairFiles": {
+      "data/pnetLearning.js": "1b0d1876b1712acaf7cac027bf1ac7c747d428376c1ba2721a46e02fd764a270",
+      "data/pdacFlashcards.js": "d8a4fac5661410103e1d14ed377bbd0189ca7dbd2607b2b686c3fd4af3e921ab",
+      "data/pscMrcpLearning.js": "b3bda59518eff3575e6994f765482d0ebf5f3df134b2128404fe5f4c5845ec23",
+      "data/abdomenPancreaticCystFlashcards.js": "effa28d5564a9e9525caf4e26f25bb2c84012627005221b2aed9baa794dabd92",
+      "data/assessmentQuality/atvPancreatic.js": "829fc9576eefc7a357c711696235390b782c4e4f4adaefb9aef8b020fcb59a71",
+      "data/assessmentQuality/atvCysticPancreas.js": "1434be96c9f3e038c6c15338ac9437c20bf000f2933c29a623ea5f5d1414eba6",
+      "app/abdomen/pankreas/neuroendokrine-tumoren/page.js": "a4bcd633e54394dab1ba2e8e90df730f30f5f8eeedf62466ad33181021bf99a8",
+      "app/abdomen/pankreas/pankreaskarzinom/page.js": "fd6d0cc57c8c07c241687a3e171e2eba702e55176c66c341c9cb87f312c4fc5a",
+      "app/abdomen/pankreas/pankreatitis/page.js": "af594b66d6582e7a63b8880c0f64db924f9920ba7b266bfb78ee38c53df4d68f",
+      "app/abdomen/pankreas/zystische-tumoren/page.js": "1bf1acb7232ed9f43cd9f54d1bdae66bfb546189d40f7d30c6f152fa19208136",
+      "app/abdomen/leber/psc-mrcp/page.js": "35881898e732a216df272a1c685dac0a0661c0e25a25e6dbc32bd60b2b080533"
+    },
+    "scopeGuard": "11 files frozen except exact6 coordinated teaching strings"
+  },
+  "goalGroups": [
+    {
+      "route": "/abdomen/pankreas/neuroendokrine-tumoren",
+      "goalCount": 4,
+      "questionIds": [
+        "pnet-de-01",
+        "pnet-de-02",
+        "pnet-de-03",
+        "pnet-de-04"
+      ],
+      "cardIds": [
+        "pnet-arterial-pattern",
+        "pnet-splenic-mimic",
+        "pnet-functional-status",
+        "pnet-insulinoma-caveat"
+      ]
+    },
+    {
+      "route": "/abdomen/pankreas/pankreaskarzinom",
+      "goalCount": 3,
+      "questionIds": [
+        "abdomen-pdac-isoattenuating-de-01",
+        "abdomen-pdac-double-duct-de-01",
+        "abdomen-pdac-vessel-contact-de-01"
+      ],
+      "cardIds": [
+        "pdac-isoattenuating",
+        "pdac-mri",
+        "pdac-double-duct",
+        "pdac-vessel-reporting"
+      ]
+    },
+    {
+      "route": "/abdomen/leber/psc-mrcp",
+      "goalCount": 3,
+      "questionIds": [
+        "psc-pbc-mrcp-beading-de",
+        "aq-atv-psc-pbc-de-quality-next",
+        "aq-atv-psc-pbc-de-relevant-stricture"
+      ],
+      "cardIds": [
+        "psc-pbc-mrcp-beading",
+        "aq-atv-psc-pbc-quality-next",
+        "aq-atv-psc-pbc-relevant-stricture"
+      ]
+    },
+    {
+      "route": "/abdomen/pankreas/zystische-tumoren",
+      "goalCount": 3,
+      "questionIds": [
+        "abdomen-pancreatic-cysts-de-01",
+        "aq-atv-ipmn-de-serous-pattern",
+        "aq-atv-ipmn-de-nodule-risk"
+      ],
+      "cardIds": [
+        "abdomen-pancreatic-cysts-pseudocyst-context-clues",
+        "abdomen-pancreatic-cysts-serous-macrocystic-contour",
+        "aq-atv-ipmn-nodule-risk"
+      ]
+    },
+    {
+      "route": "/abdomen/pankreas/pankreatitis",
+      "goalCount": 5,
+      "questionIds": [
+        "pankreatitis-de-biliary-cause",
+        "pankreatitis-de-alcohol",
+        "pankreatitis-de-necrosis-timing",
+        "pankreatitis-de-atlanta-morphology",
+        "pankreatitis-de-collections",
+        "pankreatitis-de-walled-off-necrosis",
+        "pankreatitis-de-ctsi-severe",
+        "pankreatitis-de-pseudoaneurysm",
+        "pankreatitis-de-infected-necrosis",
+        "pankreatitis-de-carcinoma-dd"
+      ],
+      "cardIds": [
+        "pankreatitis-causes",
+        "pankreatitis-biliary-mechanism",
+        "pankreatitis-necrosis-timing",
+        "pankreatitis-atlanta-morphology",
+        "pankreatitis-collections",
+        "pankreatitis-ctsi",
+        "pankreatitis-pseudoaneurysm",
+        "pankreatitis-infected-necrosis",
+        "pankreatitis-duct-disruption",
+        "pankreatitis-chronic-triad",
+        "pankreatitis-carcinoma-dd",
+        "pankreatitis-autoimmune"
+      ]
+    }
+  ],
+  "browserEvidence": {
+    "status": "BLOCKED_NOT_RUN_BY_REVIEWER",
+    "authorEvidence": "tmp/assessment-quality/atv-packet05-ssr.json reports15/15withbrowser/session/CSSfixtures; inspected, not independent browser validation.",
+    "required": "Root actual post-integration inline/global retest and browser/access/RTL interaction matrix. No bypass."
+  },
+  "decision": {
+    "boundedContent": "ACCEPTED_AFTER_SIX_FIELD_REPAIR",
+    "openCritical": 0,
+    "openMajorInReviewedContent": 0,
+    "closedMajor": 2,
+    "pendingCanonicalIntegration": true,
+    "pendingBrowserQA": true,
+    "scientificReview": "pending Dr.Zia",
+    "publication": "No reviewer Git/build/server/publication action; Root controls release",
+    "next": "Integrate accepted shared54records and cystsupplement with correctcanonicaldraftshape; independentlyverifyactualGlobalAfterandPDACinline feedback againstaccepted overlay. Whole-routeclinical/media/browser/structuralapprovalisnotimplied."
+  }
+}

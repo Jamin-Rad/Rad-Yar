@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_BOUNDED_REPAIRS_APPLIED_INDEPENDENT_RETEST_PENDING",
+  "findings": [
+    "PSC quality-next assessed repeat-quality and small-duct pathway not directly taught",
+    "PDAC venous planning assessed patent proximal/distal segments not directly taught"
+  ],
+  "changes": [
+    {
+      "topic": "psc",
+      "file": "app/abdomen/leber/psc-mrcp/page.js",
+      "path": "C.de.cards[2][1]",
+      "locale": "de",
+      "currentBefore": "3D-MRCP mit dünnen Schichten und axialen T1-/T2-Sequenzen beurteilen. Bewegungsartefakte, unvollständige Darstellung peripherer Gänge und technische Limitationen ausdrücklich nennen.",
+      "after": "3D-MRCP mit dünnen Schichten und axialen T1-/T2-Sequenzen; Artefakte und unvollständige Gangdarstellung benennen. Bei technisch unzureichender MRCP ohne akuten Interventionsbedarf eine hochwertige Untersuchung wiederholen. Bei anhaltendem PSC-Verdacht trotz normaler hochwertiger MRCP eine Leberbiopsie zur Abklärung von Small-duct-PSC erwägen."
+    },
+    {
+      "topic": "psc",
+      "file": "app/abdomen/leber/psc-mrcp/page.js",
+      "path": "C.en.cards[2][1]",
+      "locale": "en",
+      "currentBefore": "Assess 3D MRCP with thin sections and axial T1/T2 sequences. Explicitly report motion artefact, incomplete visualisation of peripheral ducts and technical limitations.",
+      "after": "Assess thin-section 3D MRCP and axial T1/T2 sequences; state artefacts and incomplete duct visualisation. If MRCP is technically inadequate without an acute intervention indication, repeat a high-quality examination. If PSC remains suspected despite a normal high-quality MRCP, consider liver biopsy to evaluate small-duct PSC."
+    },
+    {
+      "topic": "psc",
+      "file": "app/abdomen/leber/psc-mrcp/page.js",
+      "path": "C.fa.cards[2][1]",
+      "locale": "fa",
+      "currentBefore": "MRCP سه‌بعدی با برش نازک و توالی‌های محوری T1/T2 را ارزیابی کنید. آرتیفکت حرکتی، نمایش ناکامل مجاری محیطی و محدودیت فنی را صریحاً گزارش کنید.",
+      "after": "MRCP سه‌بعدی با برش نازک و سکانس‌های محوری T1/T2 بررسی و آرتیفکت و نمایش ناکامل مجاری ذکر شوند. اگر MRCP از نظر فنی ناکافی است و نیاز حاد به مداخله وجود ندارد، بررسی باکیفیت تکرار شود. اگر با وجود MRCP طبیعی و باکیفیت شک به PSC باقی است، بیوپسی کبد برای بررسی PSC مجاری کوچک در نظر گرفته شود."
+    },
+    {
+      "topic": "pdac",
+      "file": "app/abdomen/pankreas/pankreaskarzinom/page.js",
+      "path": "C.de.cards[2][1]",
+      "locale": "de",
+      "currentBefore": "Arterielle und venöse Kontakte getrennt beschreiben: Gefäß, Kontaktwinkel und -länge, Konturunregelmäßigkeit, Stenose, Verschluss, Thrombus und Kollateralen. Tumor-Kontaktwinkel allein ist keine vollständige Resektabilitätsentscheidung.",
+      "after": "Arterien und Venen getrennt beschreiben: Gefäß, Kontaktwinkel und -länge, Kontur, Stenose/Verschluss, Thrombus und Kollateralen. Für die venöse Rekonstruktionsplanung zusätzlich Lage/Länge der Engstelle und offene Anschlusssegmente proximal und distal angeben. Diese Angaben allein entscheiden die Resektabilität nicht."
+    },
+    {
+      "topic": "pdac",
+      "file": "app/abdomen/pankreas/pankreaskarzinom/page.js",
+      "path": "C.en.cards[2][1]",
+      "locale": "en",
+      "currentBefore": "Describe arterial and venous contact separately: vessel, contact angle and length, contour irregularity, narrowing, occlusion, thrombus and collaterals. Contact angle alone is not a complete resectability decision.",
+      "after": "Describe arteries and veins separately: vessel, contact angle and length, contour, narrowing/occlusion, thrombus and collaterals. For venous reconstruction planning, also state the location/length of narrowing and patent adjacent segments above and below it. These findings alone do not determine resectability."
+    },
+    {
+      "topic": "pdac",
+      "file": "app/abdomen/pankreas/pankreaskarzinom/page.js",
+      "path": "C.fa.cards[2][1]",
+      "locale": "fa",
+      "currentBefore": "تماس شریانی و وریدی را جداگانه توصیف کنید: رگ، زاویه و طول تماس، نامنظمی جدار، تنگی، انسداد، ترومبوز و کولترال‌ها. زاویه تماس به‌تنهایی تصمیم کامل درباره قابلیت برداشت نیست.",
+      "after": "شریان‌ها و وریدها را جداگانه توصیف کنید: رگ، زاویه و طول تماس، جدار، تنگی/انسداد، ترومبوز و کولترال‌ها. برای برنامه‌ریزی بازسازی وریدی، محل/طول تنگی و قطعات باز مجاور در پروگزیمال و دیستال نیز ذکر شوند. این یافته‌ها به‌تنهایی قابلیت برداشت را تعیین نمی‌کنند."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://doi.org/10.1002/hep.32771",
+      "read": "Fresh original AASLD2022 guidance statements1–3 and diagnostic algorithm text read; repeat high-quality MRI/MRCP for inadequate/equivocal examination, consider biopsy after a normal high-quality study with persistent suspected small-duct PSC. No new biopsy-for-all or ERCP mandate."
+    },
+    {
+      "url": "https://doi.org/10.1148/radiol.13131184",
+      "read": "Fresh original SAR/APA2014 Table1 venous proximal/distal suitable vessel and structured vascular-report text read; anatomical reconstruction details only, not old2014 category policy."
+    }
+  ],
+  "poolOrSharedProposalChanges": false,
+  "filesFrozenAgain": true
+}

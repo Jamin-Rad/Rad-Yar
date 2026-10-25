@@ -12,20 +12,80 @@ export const PANCREATIC_CYST_FLASHCARD_TOPIC = {
   subtitle: L('Wand und Form gezielt unterscheiden', 'Distinguish wall and morphology', 'دیواره و شکل را هدفمند افتراق دهید'),
 }
 
-export const PANCREATIC_CYST_FLASHCARDS = [{
-  id: `${topicId}-pseudocyst-context-clues`,
-  topicId,
-  category: L('Grundlagen und Differenzialdiagnose', 'Fundamentals and differential', 'مبانی و تشخیص افتراقی'),
-  front: L('Welche anamnestischen Hinweise nennt Abdomen.pdf für eine Pankreas-Pseudozyste?', 'Which history clues does Abdomen.pdf give for a pancreatic pseudocyst?', 'Abdomen.pdf برای پسودوسیست پانکراس چه سرنخ‌هایی از شرح‌حال ذکر می‌کند؟'),
-  answer: L('Eine bekannte Pankreatitis oder ein Bauchtrauma. Die Seite nennt zusätzlich eine unilokuläre Läsion oder mehrere kleine Zysten als bildgebende Hinweise; Verkalkungen und Parenchymatrophie können für chronische Entzündung sprechen.', 'A history of pancreatitis or abdominal trauma. The page also names a unilocular lesion or several small cysts as imaging clues; calcifications and parenchymal atrophy may suggest chronic inflammation.', 'سابقهٔ پانکراتیت یا تروما به شکم. صفحه همچنین ضایعهٔ تک‌حفره‌ای یا چند کیست کوچک را سرنخ تصویربرداری می‌داند؛ کلسیفیکاسیون و آتروفی پارانشیم ممکن است به نفع التهاب مزمن باشند.'),
-  explanation: L('Diese Hinweise stützen den Verdacht, beweisen eine Pseudozyste aber nicht; Anamnese, Morphologie und Gangbezug müssen zusammen beurteilt werden. Quelle: Abdomen.pdf p.40 (printed p.39).', 'These clues support suspicion but do not prove a pseudocyst; history, morphology and duct communication must be assessed together. Source: Abdomen.pdf p.40 (printed p.39).', 'این سرنخ‌ها شک را تقویت می‌کنند اما پسودوسیست را ثابت نمی‌کنند؛ شرح‌حال، مورفولوژی و ارتباط با مجرا باید با هم ارزیابی شوند. منبع: Abdomen.pdf صفحهٔ ۴۰ (چاپی ۳۹).'),
-  source: 'Abdomen.pdf p.40 (printed p.39)',
-}, {
-  id: `${topicId}-serous-macrocystic-contour`,
-  topicId,
-  category: L('Bildgebende Differenzialdiagnose', 'Imaging differential', 'تشخیص افتراقی تصویربرداری'),
-  front: L('Welchen bildgebenden Hinweis nennt Abdomen.pdf für ein makrozystisches seröses Zystadenom?', 'Which imaging clue does Abdomen.pdf give for a macrocystic serous cystadenoma?', 'Abdomen.pdf برای سیستادنوم سروزی ماکروکیستیک به چه سرنخ تصویربرداری اشاره می‌کند؟'),
-  answer: L('Eine lobulierte Kontur im Pankreaskopf. Das ist der begrenzte morphologische Hinweis auf der Seite; allein daraus folgt keine vollständige Charakterisierung.', 'A lobulated contour in the pancreatic head. This is the page’s limited morphologic clue; it does not provide a complete characterization by itself.', 'حاشیهٔ لوبوله در سر پانکراس. این تنها سرنخ مورفولوژیک محدود در صفحه است و به‌تنهایی مشخصه‌یابی کامل را فراهم نمی‌کند.'),
-  explanation: L('Quelle: Abdomen.pdf p.40 (printed p.39), Abschnitt „Wichtige Differenzialdiagnose“. Die Seite zeigt hierfür kein separates Serous-Cystadenoma-Bild; deshalb bleibt die Karte beim Textbefund.', 'Source: Abdomen.pdf p.40 (printed p.39), “Important differential diagnosis.” The page has no separate serous-cystadenoma image, so the card stays with the written finding.', 'منبع: Abdomen.pdf صفحهٔ ۴۰ (چاپی ۳۹)، بخش «تشخیص افتراقی مهم». برای این مورد تصویر جداگانه‌ای از سیستادنوم سروزی وجود ندارد؛ بنابراین کارت به یافتهٔ متنی محدود می‌ماند.'),
-  source: 'Abdomen.pdf p.40 (printed p.39)',
-}]
+export const PANCREATIC_CYST_FLASHCARDS = [
+  {
+    "id": "abdomen-pancreatic-cysts-pseudocyst-context-clues",
+    "topicId": "abdomen-pancreatic-cysts",
+    "category": {
+      "de": "Grundlagen und Differenzialdiagnose",
+      "en": "Fundamentals and differential",
+      "fa": "مبانی و تشخیص افتراقی"
+    },
+    "front": {
+      "de": "Welche Kombination unterstützt eine postentzündliche Pankreas-Pseudozyste, und welche Grenze hat die Gangkommunikation?",
+      "en": "Which combination supports a post-inflammatory pancreatic pseudocyst, and what is the limitation of duct communication?",
+      "fa": "چه ترکیبی از پسودوسیست پانکراس پس از التهاب حمایت می‌کند و محدودیت ارتباط مجرایی چیست؟"
+    },
+    "answer": {
+      "de": "Passender Pankreatitisverlauf mit abgekapselter Flüssigkeit ohne erkennbaren nichtflüssigen Inhalt; Gangkommunikation kann bei Pseudozyste und IPMN vorkommen.",
+      "en": "A compatible pancreatitis course with encapsulated fluid without visible nonliquid contents; communication may occur in both pseudocyst and IPMN.",
+      "fa": "سیر متناسب پانکراتیت همراه مایع کپسول‌دار بدون محتوای غیرمایع قابل مشاهده؛ ارتباط مجرایی در پسودوسیست و IPMN هر دو ممکن است."
+    },
+    "explanation": {
+      "de": "Nach akuter Pankreatitis bildet sich eine Pseudozyste gewöhnlich erst nach mehr als vier Wochen aus. Nekrotischer Inhalt lenkt zur nekrotischen Sammlung/WON. Eine Pankreatitisanamnese beweist keine Pseudozyste, denn auch IPMN kann Pankreatitis auslösen. Gesamte Morphologie und Verlauf beurteilen.",
+      "en": "After acute pancreatitis a pseudocyst usually develops after more than four weeks. Necrotic contents point toward a necrotic collection/WON. A history of pancreatitis is not proof of a pseudocyst because IPMN may also cause pancreatitis. Assess the whole morphology and evolution.",
+      "fa": "پس از پانکراتیت حاد، پسودوسیست معمولاً بعد از بیش از چهار هفته تشکیل می‌شود. محتوای نکروتیک تجمع نکروتیک/WON را مطرح می‌کند. سابقهٔ پانکراتیت پسودوسیست را ثابت نمی‌کند، زیرا IPMN نیز می‌تواند پانکراتیت ایجاد کند. کل مورفولوژی و سیر بررسی شوند."
+    },
+    "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+  },
+  {
+    "id": "abdomen-pancreatic-cysts-serous-macrocystic-contour",
+    "topicId": "abdomen-pancreatic-cysts",
+    "category": {
+      "de": "Bildgebende Differenzialdiagnose",
+      "en": "Imaging differential",
+      "fa": "تشخیص افتراقی تصویربرداری"
+    },
+    "front": {
+      "de": "Warum reicht eine lobulierte makrozystische Pankreasläsion allein nicht für die Diagnose eines serösen Zystadenoms?",
+      "en": "Why is a lobulated macrocystic pancreatic lesion alone insufficient to diagnose a serous cystadenoma?",
+      "fa": "چرا ضایعهٔ ماکروکیستیک لوبولهٔ پانکراس به‌تنهایی برای تشخیص سیستادنوم سروزی کافی نیست؟"
+    },
+    "answer": {
+      "de": "Makrozystische seröse Läsionen überlappen morphologisch mit anderen Zysten. Mikrozystische Binnenstruktur und eine zentrale Narbe können die seröse Differenzialdiagnose zusätzlich stützen.",
+      "en": "Macrocystic serous lesions overlap morphologically with other cysts. Microcystic internal architecture and a central scar may additionally support the serous differential.",
+      "fa": "ضایعات سروزی ماکروکیستیک از نظر مورفولوژی با کیست‌های دیگر همپوشانی دارند. ساختار داخلی میکروکیستیک و اسکار مرکزی می‌توانند بیشتر از افتراق سروزی حمایت کنند."
+    },
+    "explanation": {
+      "de": "Kontur und Lage liefern Hinweise, aber keine sichere Gewebediagnose. Auch Gangbezug, Septen, Wandknoten und klinischen Kontext erfassen; atypische makrozystische Formen können mit muzinösen Läsionen verwechselt werden.",
+      "en": "Contour and location provide clues, not a secure tissue diagnosis. Also assess duct relationship, septa, mural nodules and clinical context; atypical macrocystic forms can mimic mucinous lesions.",
+      "fa": "حاشیه و محل سرنخ‌اند، نه تشخیص بافتی قطعی. ارتباط مجرایی، سپتا، ندول دیواره‌ای و زمینهٔ بالینی نیز ارزیابی شوند؛ شکل‌های ماکروکیستیک آتیپیک می‌توانند ضایعات موسینوس را تقلید کنند."
+    },
+    "source": "https://pubmed.ncbi.nlm.nih.gov/19522024/"
+  },
+  {
+    "id": "aq-atv-ipmn-nodule-risk",
+    "topicId": "abdomen-pancreatic-cysts",
+    "category": {
+      "de": "Risikoeinordnung",
+      "en": "Risk classification",
+      "fa": "طبقه‌بندی خطر"
+    },
+    "front": {
+      "de": "Wie unterscheiden die Kyoto-Kriterien2024 einen kontrastmittelaufnehmenden IPMN-Wandknoten von 3 mm und von 6 mm?",
+      "en": "How do the Kyoto2024 criteria classify an enhancing IPMN mural nodule of 3 mm versus 6 mm?",
+      "fa": "معیارهای کیوتو۲۰۲۴ ندول دیواره‌ای IPMN با جذب مادهٔ حاجب به اندازهٔ ۳ میلی‌متر و ۶ میلی‌متر را چگونه طبقه‌بندی می‌کنند؟"
+    },
+    "answer": {
+      "de": "3 mm: worrisome feature (<5 mm). 6 mm: high-risk stigma (≥5 mm).",
+      "en": "3 mm: worrisome feature (<5 mm). 6 mm: high-risk stigma (≥5 mm).",
+      "fa": "۳ میلی‌متر: ویژگی نگران‌کننده (کمتر از ۵). ۶ میلی‌متر: نشانهٔ پرخطر (۵ میلی‌متر یا بیشتر)."
+    },
+    "explanation": {
+      "de": "Die Kriterien beziehen sich auf einen kontrastmittelaufnehmenden Knoten. Auch solide Komponenten und weitere klinische/Gangmerkmale berücksichtigen. Risikokategorien sind keine histologische Krebsdiagnose und ersetzen nicht die individuelle interdisziplinäre Entscheidung.",
+      "en": "These criteria concern an enhancing nodule. Also consider solid components and other clinical/ductal features. Risk categories are not a histological cancer diagnosis and do not replace individual multidisciplinary decisions.",
+      "fa": "این معیارها مربوط به ندول دارای جذب مادهٔ حاجب‌اند. جزء جامد و سایر ویژگی‌های بالینی/مجرایی نیز در نظر گرفته شوند. دستهٔ خطر تشخیص بافت‌شناختی سرطان نیست و جای تصمیم فردی چندتخصصی را نمی‌گیرد."
+    },
+    "source": "https://doi.org/10.1016/j.pan.2023.12.009"
+  }
+]

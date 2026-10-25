@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-25",
+  "route": "/gehirn/vaskulaer/moya-moya",
+  "questionTriads": 13,
+  "actualLocalizedQuestionObjects": 39,
+  "cardTriads": 14,
+  "wrongFeedbackTriads": 39,
+  "wrongLocalizedObjects": 117,
+  "questionAndCardIdsAndOriginalKeysPreserved": true,
+  "learningGoals": 5,
+  "teachingDeltaEntries": 135,
+  "files": [
+    {
+      "path": "data/moyamoya.js",
+      "sha256": "5a2c9fb388013a654b60086951e3164ba48e7eead289b49551b107c81406752a"
+    },
+    {
+      "path": "app/gehirn/vaskulaer/moya-moya/page.js",
+      "sha256": "484d8c42b89e84122448d5b830476fa9c39d05bc5c7c9de5fde32287ac567fef"
+    }
+  ],
+  "checks": [
+    "Actualproducer dynamically imported;13Q perlocale, exact originalIDs/keys, four distinctoptions, validkeys, allsource/incorrectfeedback fields",
+    "14originalcardIDs and allDEENFAfront/answer/explanation/source fields",
+    "Inline3originalregisteredquestionIDs present; noheaderdescription; sourcefooter wired",
+    "No arbitraryitem expansion"
+  ],
+  "notTested": [
+    "globalbankimport/retrieval/SSR/build",
+    "browser/RTL/inlineclicks/themes/access",
+    "wholecasemedia/sourceframes/rights approval",
+    "DrZiascientificapproval"
+  ]
+}

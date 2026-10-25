@@ -1,0 +1,302 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/msk_original_pools_next",
+  "authorIndependent": true,
+  "route": "/gehirn/vaskulaer/moya-moya",
+  "packet": "Moyamoya18",
+  "status": "BOUNDED_ACCEPTED_AFTER_REPAIR01",
+  "boundedAcceptance": "Full assessment pool and recorded135 teaching deltas accepted within independent source/editorial scope; browser/media/scientific/publication checks remain separate.",
+  "scope": "Full13 original MCQ triads/14 card triads in current canonical and actual global banks, all135 recorded runtime teaching deltas0–134 individually read, directly related route/inline wiring. Not whole-route publication, browser or media acceptance.",
+  "filesActuallyRead": [
+    "skills/radyar-lessons/SKILL.md",
+    "docs/lesson-quality/standard.md",
+    "docs/educational-page-design-principles.md",
+    "docs/lesson-quality/review-template.md",
+    "data/moyamoya.js",
+    "app/gehirn/vaskulaer/moya-moya/page.js",
+    "components/lesson-template/TopicAssessment.jsx",
+    "docs/lesson-quality/remediation-2026-10-25/brain/packet18-moyamoya-plan.md",
+    "docs/lesson-quality/remediation-2026-10-25/brain/packet18-moyamoya-sources.json",
+    "docs/lesson-quality/remediation-2026-10-25/brain/packet18-moyamoya-runtime.json",
+    "docs/lesson-quality/remediation-2026-10-25/brain/packet18-moyamoya-teaching-delta.json",
+    "docs/lesson-quality/remediation-2026-10-25/brain/packet18-moyamoya-handoff.md",
+    "tmp/assessment-quality/moyamoya18-before.js",
+    "data/questions.js and data/flashcards.js actual import graphs"
+  ],
+  "gates": {
+    "SRC": {
+      "status": "PASS",
+      "scope": "Bounded clinical supplement and title-only PDF page",
+      "evidence": "Fresh actual PDF24 image and extraction; primary criteria/guideline/study readings below. No PDF clinical-coverage claim."
+    },
+    "EDU": {
+      "status": "PASS",
+      "evidence": "Four repaired item triads now have plausible same-domain alternatives and discriminating clinical/acquisition context; all100 repair text units read."
+    },
+    "VIS": {
+      "status": "NOT_APPLICABLE",
+      "reason": "No new diagnostic media or revised existing-case interpretation in bounded assessment packet; all assessment vignettes text-only.",
+      "wholeRouteBlockers": "Retained cases/frames/rights/hero not freshly accepted here."
+    },
+    "LNG": {
+      "status": "PASS",
+      "evidence": "All13 question and14 card DE/EN/FA semantic units plus135 teaching deltas read; no demonstrated material negation/threshold/diagnosis mismatch. Repair01 all100 fields and FA card front freshly read, no material mismatch.",
+      "minorIssueIds": [],
+      "blocker": "Actual Persian RTL rendering not tested."
+    },
+    "ASM": {
+      "status": "PASS",
+      "evidence": "53/53 actual-global/canonical objects exact, stable13 original IDs/keys/sources;100 repair Before/After fields exact and135 original teaching paths remain equal."
+    },
+    "UX": {
+      "status": "BLOCKED",
+      "evidence": "Static route wiring of3inlineIDs and lang keys verified; no actual browser interactions, viewport/theme/access evidence in this review.",
+      "blocker": "Root browser QA required; no access bypass or claimed failure from source alone."
+    },
+    "REV": {
+      "status": "PASS",
+      "evidence": "Independent original full review followed by fresh repair01 re-review; original issues closed."
+    }
+  },
+  "issues": [
+    {
+      "id": "MY18-EDU-01",
+      "severity": "major",
+      "gates": [
+        "EDU",
+        "ASM"
+      ],
+      "location": "data/moyamoya.js / seed IDs ivysign, goldstandard, hypervent, perfusion, DE/EN/FA; two also rendered inline",
+      "observed": [
+        "ivysign: keyed supportive interpretation opposed to direct proof of new SAH, standalone active infection evidence and definite adequate reserve; repeated certainty markers distinguish alternatives without an imaging comparison.",
+        "goldstandard: every incorrect option explicitly proposes an examination alone as definitive or as a replacement (NCCT, resting ASL, extracranial duplex). DSA is the only option not advertising an incomplete workup.",
+        "hypervent: incorrect options include breathing mechanically reopening ICA stenosis and transient symptoms proving a nonvascular mechanism. These are implausible mechanisms rather than plausible errors about CO2/reactivity.",
+        "perfusion: all three incorrect options assert unconditional exhausted CVR, immediate determination of a fixed bypass technique or exclusion of collaterals. Only the keyed option contains reasonable measurement/context interpretation."
+      ],
+      "learnerImpact": "Several items reward spotting absolute or self-disqualifying wording instead of applying the targeted vascular, sequence or haemodynamic distinction. This falls short of the requested plausible distractors despite correct explanations and valid keys.",
+      "requiredCorrection": "Within these stable IDs/keys, write four parallel plausible same-domain interpretations or next examinations. For example compare the actual noninvasive diagnostic criteria/angiographic differential, nearby sulcal-signal hypotheses with discriminating context, CO2/transit/reactivity mechanisms, or concrete alternative haemodynamic interpretations. Remove overt absurdity and unilateral certainty/unnecessary alone framing. Update all affected DE/EN/FA option-specific feedback and inline consumers automatically through the same seeds; no quota expansion or new treatment rule needed.",
+      "retestEvidence": "Fresh read of all revised option/feedback triads and affected lesson/inline parity, plus new canonical/global hashes and53-object equality. Current answer keys are not demonstrated clinically incorrect.",
+      "status": "CLOSED_AFTER_INDEPENDENT_REPAIR01_RETEST",
+      "retestObserved": "All100 After fields individually read; four parallel same-domain alternative sets now require stated serial-course, unilateral diagnostic criteria, measured CO2/BP/saturation or two-delay resting ASL context. Specific localized feedback preserves uncertainty and excludes unsupported certainty."
+    },
+    {
+      "id": "MY18-LNG-01",
+      "severity": "minor",
+      "gates": [
+        "LNG"
+      ],
+      "location": "data/moyamoya.js / MOYAMOYA_FLASHCARDS[id=moyamoya-02-vessel].front.fa",
+      "observed": "کدام بخش از عروق در Moya-Moya اولاً درگیر می‌شود؟ uses اولاً (firstly) awkwardly for primarily.",
+      "learnerImpact": "Low-impact Persian phrasing obscures the intended main anatomical site.",
+      "requiredCorrection": "Use natural Persian expressing the principal affected vascular segment, e.g. بخش عروقیِ اصلیِ درگیر; retain terminal intracranial ICA answer.",
+      "retestEvidence": "Read revised FA prompt against DE/EN anatomical intent; no clinical key change.",
+      "status": "CLOSED_AFTER_INDEPENDENT_REPAIR01_RETEST",
+      "retestObserved": "Revised Persian principal-site prompt read and matched to DE/EN; anatomical answer unchanged."
+    }
+  ],
+  "sourceCoverage": [
+    {
+      "source": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf",
+      "sha256": "f2a4d1b92f7c2bd95be20997d1ab4388b3bc18e8fbb5b438396b03f977275206",
+      "physicalPage": 24,
+      "printedPage": 23,
+      "evidence": "Actual image tmp/assessment-quality/brain-next-pdf/moyamoya-24.png viewed; title-only body. Independent bundled pypdf extraction performed; no substantive clinical table/case transfer.",
+      "disposition": "Title accounted; all clinical supplement remains explicitly labelled. Other88pages outside review."
+    },
+    {
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/9357455/",
+      "reading": "Original2021criteria Table2 and MRI/MRA/differential discussion through indexed original full text; unilateral disease, terminalICA, MRI all3criteria/1.5T/bilateral heavyT2outerdiameter, hyperthyroidism exclusion-list revision.",
+      "supportedLocations": [
+        "grundlagen",
+        "dsa.criteria",
+        "Qname/vessel/goldstandard/association/bilateral",
+        "relatedcards"
+      ],
+      "status": "SUPPORTED_BOUNDED"
+    },
+    {
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10069176/",
+      "reading": "Original ESO2023 abstract/introduction and Table1 PICO1/3/4/5/6/8/9. Assessed age/presentation, associated disease, antiplatelet uncertainty, procedure choice/expert consensus, trigger avoidance and follow-up.",
+      "supportedLocations": [
+        "clinicalpresentation",
+        "therapy",
+        "direct/EDAScards",
+        "cavecard",
+        "ASLreservecontext"
+      ],
+      "status": "SUPPORTED_BOUNDED"
+    },
+    {
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7657767/",
+      "reading": "Original Maeda/Tsuchida case full indexed findings/discussion/conclusion; nativeFLAIR distinct from postcontrastT1enhancement, proposed slowflow mechanism with uncertain exactFLAIRsignalorigin.",
+      "supportedLocations": [
+        "Qivysign/sequence",
+        "mriRows",
+        "ivycard"
+      ],
+      "status": "SUPPORTED_BOUNDED"
+    },
+    {
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7960228/",
+      "reading": "Original Hara2017 abstract/methods/results and transit-time discussion/conclusion:18patients, differentPLDs, measured bias; no CVR measurement inferred from restingCBF.",
+      "supportedLocations": [
+        "perfusionQ/card",
+        "mriRows",
+        "takehomeperfusion"
+      ],
+      "status": "SUPPORTED_BOUNDED"
+    },
+    {
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7425301/",
+      "reading": "Original2019 58-child cohort abstract, hemispheric methods and clinical-correlation results/discussion; Suzuki insufficient as standalone clinical/wholeperfusion severity scale.",
+      "supportedLocations": [
+        "Qsuzuki1",
+        "suzukitable/key/card"
+      ],
+      "status": "SUPPORTED_BOUNDED"
+    },
+    {
+      "source": "https://pubmed.ncbi.nlm.nih.gov/9660374/",
+      "reading": "Original indexed PET abstract including methods/results/conclusion; regional posthyperventilatory steal under haemodynamic stress, not uniform constriction of every affected bed.",
+      "supportedLocations": [
+        "hyperventQ/card",
+        "klinik.key"
+      ],
+      "status": "SUPPORTED_BOUNDED"
+    },
+    {
+      "source": "https://pubs.rsna.org/doi/10.1148/radiology.208.2.9680570",
+      "reading": "Fresh original Singer/Atlas/Drayer1998 indexed journal abstract,62 patients including inflammatory/neoplastic meningitis and six acuteSAH; FLAIR signal overlap supports actual alternatives without transferring accuracy or superiority claims.",
+      "status": "SUPPORTED_BOUNDED"
+    }
+  ],
+  "teachingDeltaReview": {
+    "recordedEntries": 135,
+    "allIndividuallyRead": true,
+    "readIndexRanges": [
+      [
+        0,
+        44
+      ],
+      [
+        45,
+        65
+      ],
+      [
+        66,
+        89
+      ],
+      [
+        90,
+        114
+      ],
+      [
+        115,
+        134
+      ]
+    ],
+    "runtimePathEquality": true,
+    "deletedClinicalColumnAndRowsChecked": true,
+    "addedObjectivesAndReferenceArraysRead": true,
+    "fullArticleOrWholeLessonScientificApproval": false
+  },
+  "mediaLedger": {
+    "newAssets": false,
+    "textVignettes": true,
+    "PDFPageImageActuallyViewed": true,
+    "retainedDiagnosticCases": "Not freshly reinterpreted or scientifically/media-rights approved in this bounded review."
+  },
+  "terminologyParity": {
+    "status": "No material mismatch observed",
+    "sensitiveUnits": [
+      "terminal intracranial vs cervical ICA",
+      "unilateral disease vs syndromeassociation",
+      "1.5Tesla/all3MRIcriteria/bilateralouterdiameter",
+      "nativeFLAIR vs postcontrast enhancement",
+      "ASLarrival-delay vs restingCBF vs stimulatedCVR",
+      "Suzukianatomy vs clinical severity",
+      "may cause/is associated vs definite source",
+      "directanastomosis vs delayedindirectcollaterals"
+    ]
+  },
+  "technical": {
+    "date": "2026-10-25",
+    "route": "/gehirn/vaskulaer/moya-moya",
+    "files": [
+      {
+        "path": "data/moyamoya.js",
+        "sha256": "20618e9f95016bb78368dc61fe78cf94206b57cf04e1c4dea828d5d5ee66ad96"
+      },
+      {
+        "path": "app/gehirn/vaskulaer/moya-moya/page.js",
+        "sha256": "484d8c42b89e84122448d5b830476fa9c39d05bc5c7c9de5fde32287ac567fef"
+      }
+    ],
+    "locales": {
+      "de": {
+        "objects": 13,
+        "canonicalSha256": "80c5fe976927cc20411773c6f2d49a06a40cca74b113195cacbee07a35e48b46",
+        "actualGlobalSha256": "80c5fe976927cc20411773c6f2d49a06a40cca74b113195cacbee07a35e48b46",
+        "equal": true
+      },
+      "en": {
+        "objects": 13,
+        "canonicalSha256": "2655b612639fed5f69fb897e42f063ef3aea027b580f63b427009fd5c3312874",
+        "actualGlobalSha256": "2655b612639fed5f69fb897e42f063ef3aea027b580f63b427009fd5c3312874",
+        "equal": true
+      },
+      "fa": {
+        "objects": 13,
+        "canonicalSha256": "e83a9b47160b189e49a24744c872d11d3629690233b663d899fc7101c17b895f",
+        "actualGlobalSha256": "e83a9b47160b189e49a24744c872d11d3629690233b663d899fc7101c17b895f",
+        "equal": true
+      }
+    },
+    "deltas": 135,
+    "cards": {
+      "triads": 14,
+      "canonicalSha256": "9bf4ae0872adb89954494e0a7aca84a73510493c0a6e648e24773473d95dfe02",
+      "actualGlobalSha256": "9bf4ae0872adb89954494e0a7aca84a73510493c0a6e648e24773473d95dfe02",
+      "equal": true
+    },
+    "status": "PASS"
+  },
+  "originalIdsAndKeysIndependentlyComparedToBefore": true,
+  "routeChecks": {
+    "inlineIds": [
+      "moyamoya-${lang}-perfusion",
+      "moyamoya-${lang}-goldstandard",
+      "moyamoya-${lang}-edas"
+    ],
+    "localeKeyReset": "Statickeycontainslang",
+    "headerDescriptionRemoved": true,
+    "sourceFooterWired": true,
+    "authModified": false
+  },
+  "browserEvidence": {
+    "status": "BLOCKED_NOT_RUN",
+    "dimensions": [],
+    "themes": [],
+    "interactionTests": [],
+    "reason": "Parent scope prohibited server/build; no supplied actual browser evidence establishing this changed inline matrix. Static review is not browser approval."
+  },
+  "decision": {
+    "boundedEditorialAssessment": "ACCEPTED_AFTER_REPAIR01",
+    "openCritical": 0,
+    "openMajor": 0,
+    "openMinor": 0,
+    "sourceClinicalKeyErrorDemonstrated": false,
+    "scientificReview": "pending Dr.Zia",
+    "publication": "No reviewer publication action; Root controls release",
+    "next": "Root browser/integration evidence and Dr.Zia scientific approval remain separate; no new author repair required."
+  },
+  "repair01": {
+    "all100AfterUnitsIndividuallyRead": true,
+    "all100BeforeAfterExact": true,
+    "unchangedLessonDeepEqual": true,
+    "unchangedOriginalIdsKeysSources": true,
+    "sourceSha256": "20618e9f95016bb78368dc61fe78cf94206b57cf04e1c4dea828d5d5ee66ad96",
+    "freshPrimary": "Singer1998 original abstract and Maeda1999 original discussion freshly read; hypotheses retain clinical uncertainty.",
+    "sourcePathsUnchanged": true
+  }
+}

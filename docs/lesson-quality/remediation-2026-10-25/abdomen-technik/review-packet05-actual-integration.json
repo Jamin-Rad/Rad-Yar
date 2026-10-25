@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/msk_original_pools_next",
+  "independent": true,
+  "status": "PASS_ACTUAL_GLOBAL_AFTER_AND_INLINE_DATAFLOW",
+  "globalProposalAfterRecords": 54,
+  "triadicDrafts": 4,
+  "localizedOptionRationales": 48,
+  "allManifestQuestionsAndCards": 95,
+  "files": {
+    "data/questions.js": "5d5de8d7a327c4e5bf51cf7a0bb444bfc397375dc61891e05fe35964d6777ddb",
+    "data/flashcards.js": "2159dadd86123ac36544ff44497a7af48e1a1e1831a4bb03e498d0d33b5c9527",
+    "data/abdomenThoraxAssessmentDrafts.js": "00ffcc729c02d3befc6cceb304b29d0cc247efac7e5cda9c6c9f4c0daec2fb3a",
+    "data/abdomenThoraxRegisteredQuestions.js": "431be83186ed335bdec45750d40784a2a2a4651d84e6ed7a612a86fe0eb06f5f",
+    "app/abdomen/pankreas/pankreaskarzinom/page.js": "61a24b708058027a4df8b895c8ce9c0494c124c740595a99d17ea0878b1baaa3",
+    "lib/lessonCheckFeedback.js": "afb32b23e2c888d4c9130c0c7b6c59e951801cbd98747042943e1c4b57d3e714"
+  },
+  "globalQuestions": {
+    "de": {
+      "count": 23,
+      "sha256": "fdb122a9db0a66ff7f855a2db8d6caebaaaa0f9747a81ea9dcfd8df48bd45475"
+    },
+    "en": {
+      "count": 23,
+      "sha256": "8ed22d93adcaf5c94e1967c248b0ff7fbf4b20f351c1a5434af6b7911f49ff05"
+    },
+    "fa": {
+      "count": 23,
+      "sha256": "ccd08d08c6faa89c7f87f6422dae17c49f177ca2b29ba50865163fba037721f6"
+    }
+  },
+  "cards": {
+    "count": 26,
+    "sha256": "10c69902b4f9a5916174ed398d6b1c0dcebedbdad0e556e65e53cde9184336f2"
+  },
+  "dataflow": "Actual private pancreatitis original seeds feed existing prefix factories once; card factory forwards source and conditionally diagram. Four canonical draft seeds expose four translated options, numeric answer and rationale with numeric wrongFeedback and letter-keyed wrongExplanations. Registration takes original first3 options plus aligned extraD; PDAC route sets explanation=draft.rationale; lessonCheckFeedback returns correct rationale or selected specific feedback.",
+  "limit": "Actual import-graph and inline dataflow verification only; no independent browser interaction, build, server, Git action, complete route/media acceptance or Dr.Zia scientific sign-off."
+}

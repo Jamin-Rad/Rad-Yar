@@ -1,23 +1,47 @@
 {
-  "date":"2026-10-25",
-  "status":"REVIEWED_READY_FOR_MAIN_AFTER_FINAL_INDEX_CHECK",
-  "previousMain":"1d9fadfe",
-  "scope":"Sixth bounded release during ongoing234-route remediation. Three complete assessment pools; course-wide task remains unfinished.",
-  "acceptedPools":{
-    "dAVF":"All12originalMCQ/14cardtriads DEENFA and56bounded teachingdeltaentries independently read. Borden/Cognard/CVD distinctions, imagingclue versus DSAproof and treatmentgeneralisation repaired. OriginalIDs retained;108specificwrongfeedback languageunits.",
-    "kneeLigaments":"All8originalQ/8cards including unchanged sharedAQcard;3targeted source-supported questions for mucoidACL, gradeII/III and PCL MRIlimits ->11Q/8cards.99specificwrongfeedback languageunits. Exact explicitgoalcoverage integrated after before-value guard. Stale quizn8 fixed ton11; actualDEENFAroute selections and focusedSegond runtimeanatomy test independently retested.",
-    "hrctIncreasedDensity":"All12originalQ/15cardtriads DEENFA retainedIDs;108specificwrongfeedback languageunits,4goal groups, basic/application mix. Three formerly redundant cards now targetedretrieval. Independent reviewer required concise teaching for PE-associated opacity versus necrosis and comparable nodulemeasurement; six localized teachingunits added within existingchapters and freshly accepted."
+  "date": "2026-10-25",
+  "status": "PUSHED_MAIN_AND_BOUNDED_LIVE_VERIFIED",
+  "previousMain": "1d9fadfe",
+  "scope": "Sixth bounded release during ongoing234-route remediation. Three complete assessment pools; course-wide task remains unfinished.",
+  "acceptedPools": {
+    "dAVF": "All12originalMCQ/14cardtriads DEENFA and56bounded teachingdeltaentries independently read. Borden/Cognard/CVD distinctions, imagingclue versus DSAproof and treatmentgeneralisation repaired. OriginalIDs retained;108specificwrongfeedback languageunits.",
+    "kneeLigaments": "All8originalQ/8cards including unchanged sharedAQcard;3targeted source-supported questions for mucoidACL, gradeII/III and PCL MRIlimits ->11Q/8cards.99specificwrongfeedback languageunits. Exact explicitgoalcoverage integrated after before-value guard. Stale quizn8 fixed ton11; actualDEENFAroute selections and focusedSegond runtimeanatomy test independently retested.",
+    "hrctIncreasedDensity": "All12originalQ/15cardtriads DEENFA retainedIDs;108specificwrongfeedback languageunits,4goal groups, basic/application mix. Three formerly redundant cards now targetedretrieval. Independent reviewer required concise teaching for PE-associated opacity versus necrosis and comparable nodulemeasurement; six localized teachingunits added within existingchapters and freshly accepted."
   },
-  "reviews":["brain/review-packet17-davf.json","msk-spine/packet11/review-knee.json","thorax-mamma/review-packet07-hrct-density.json"],
-  "runtime":{"questionsPerLanguage":975,"casesPerLanguage":18,"supplementQuestionsPerLanguage":86,"supplementCards":88,"explicitRouteMappings":64,"explicitGoalQuestionReferences":345},
-  "technicalEvidence":{
-    "index":"Actual staged-source975MCQ/18cases per language pass existing options/key/individualfeedback auditor. Only explicit reviewed files staged; pendingMoyamoya, ATV05 and offlineMammaCalc draft excluded.",
-    "productionBuild":"Build10PASS after final six HRCTteachingunits; existing unrelated CSSwarning retained. Working build includes separate authorWIP, so deployment/status check remains separate.",
-    "sourceSSR":"702/702 actual lesson-route/locale graph rendersPASS, remediation-all-routes-ssr08.log. Fixtures do not prove HTTP/authentication/fullmedia/scientific release.",
-    "focused":"dAVF35–36, knee57–66, actual knee-biceps3localeSSR, density12Q/15card exactruntime, changedsessioninvalidation, actual977workingENFAcounterpart identity and reviewedgoal/action checksPASS. Staged975excludes2unreviewedPSCcanonicalquestions.",
-    "browser":"Actual authenticated build10: HRCTFAexistingggo chapter displays new PE/edema/hemorrhage/necrosis qualifier; actual12question quiz and realistic rounded-atelectasis alternatives FA then EN, samequestion retained and language-correctBack. KneeENactualhref n11; dAVFENactualhref n12 andlocalizedcardlinks. No answergrading orreadmarking.",
-    "screenshot":"tmp/assessment-quality/batch06-local-hrct-fa.png",
-    "finalHrctSourceSha256":"d6995983ffef6cbc6f776d0b6542ace6ab426b018965274b9e289a6d09bdccf9"
+  "reviews": [
+    "brain/review-packet17-davf.json",
+    "msk-spine/packet11/review-knee.json",
+    "thorax-mamma/review-packet07-hrct-density.json"
+  ],
+  "runtime": {
+    "questionsPerLanguage": 975,
+    "casesPerLanguage": 18,
+    "supplementQuestionsPerLanguage": 86,
+    "supplementCards": 88,
+    "explicitRouteMappings": 64,
+    "explicitGoalQuestionReferences": 345
   },
-  "limits":["Bounded assessment/editorial review does not grant whole-lesson, retained-image or full-PDF scientific acceptance.","Difficulty remains editorial, without empirical psychometrics.","No exhaustive live234-route, mobile or all-theme equivalence claim.","Dr.Zia clinical release approval remains separate."]
+  "technicalEvidence": {
+    "index": "Actual staged-source975MCQ/18cases per language pass existing options/key/individualfeedback auditor. Only explicit reviewed files staged; pendingMoyamoya, ATV05 and offlineMammaCalc draft excluded.",
+    "productionBuild": "Build10PASS after final six HRCTteachingunits; existing unrelated CSSwarning retained. Working build includes separate authorWIP, so deployment/status check remains separate.",
+    "sourceSSR": "702/702 actual lesson-route/locale graph rendersPASS, remediation-all-routes-ssr08.log. Fixtures do not prove HTTP/authentication/fullmedia/scientific release.",
+    "focused": "dAVF35–36, knee57–66, actual knee-biceps3localeSSR, density12Q/15card exactruntime, changedsessioninvalidation, actual977workingENFAcounterpart identity and reviewedgoal/action checksPASS. Staged975excludes2unreviewedPSCcanonicalquestions.",
+    "browser": "Actual authenticated build10: HRCTFAexistingggo chapter displays new PE/edema/hemorrhage/necrosis qualifier; actual12question quiz and realistic rounded-atelectasis alternatives FA then EN, samequestion retained and language-correctBack. KneeENactualhref n11; dAVFENactualhref n12 andlocalizedcardlinks. No answergrading orreadmarking.",
+    "screenshot": "tmp/assessment-quality/batch06-local-hrct-fa.png",
+    "finalHrctSourceSha256": "d6995983ffef6cbc6f776d0b6542ace6ab426b018965274b9e289a6d09bdccf9",
+    "live": "Actual productionHRCTroutenewvisibleprimaryrefs and newEnglishPEterritory/oedema/haemorrhage/necrosisparagraph inexistingggochapter confirmed afterdeployment. NormalBenaccount, noreadmarking/answergrading. Boundedliveonly.",
+    "liveScreenshot": "tmp/assessment-quality/batch06-live-hrct-en.png"
+  },
+  "limits": [
+    "Bounded assessment/editorial review does not grant whole-lesson, retained-image or full-PDF scientific acceptance.",
+    "Difficulty remains editorial, without empirical psychometrics.",
+    "No exhaustive live234-route, mobile or all-theme equivalence claim.",
+    "Dr.Zia clinical release approval remains separate."
+  ],
+  "mainCommit": "b6680aac8de3b6572ac2582d3c457cd8618decf7",
+  "deployment": {
+    "state": "Ready",
+    "url": "https://vercel.com/jamins-projects-e299c1d5/rad-yar/75RNDGPJQhURUpi1YAgSxRZTx53J",
+    "evidence": "AuthenticatedVercelUI exactcommit/main/Production/Ready. No automaticdeployment/statusappeared afterMainpush; createdProductiondeployment explicitly fromexactreviewedcommit, no settingsmodified."
+  }
 }

@@ -1,0 +1,750 @@
+[
+  {
+    "path": "MOYAMOYA_LESSON.sections[7].label.de",
+    "before": "Take home message",
+    "after": "Take Home Message"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.sections[7].label.en",
+    "before": "Take-home message",
+    "after": "Take Home Message"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.sections[7].label.fa",
+    "before": "نکات کلیدی",
+    "after": "پیام نهایی"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.heroCards[0].value.de",
+    "before": "Bimodal",
+    "after": "Variabel"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.heroCards[0].value.en",
+    "before": "Bimodal",
+    "after": "Variable"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.heroCards[0].value.fa",
+    "before": "دوقله‌ای",
+    "after": "متغیر"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.heroCards[0].text.de",
+    "before": "Kinder 5–10 J. → Ischämie · Erwachsene 35–45 J. → Ischämie + Blutung",
+    "after": "Kinder überwiegend ischämisch; Erwachsene ischämisch oder hämorrhagisch. Altersverteilungen sind keine Ausschlussgrenzen."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.heroCards[0].text.en",
+    "before": "Children 5–10 yrs → ischaemia · Adults 35–45 yrs → ischaemia + haemorrhage",
+    "after": "Children predominantly ischaemic; adults ischaemic or haemorrhagic. Age distributions are not exclusion boundaries."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.heroCards[0].text.fa",
+    "before": "کودکان ۵–۱۰ سال → ایسکمی · بزرگسالان ۳۵–۴۵ سال → ایسکمی + خونریزی",
+    "after": "کودکان عمدتاً ایسکمیک؛ بزرگسالان ایسکمیک یا هموراژیک. توزیع سنی مرز رد بیماری نیست."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.grundlagen.items[0].text.de",
+    "before": "Moya-Moya-Krankheit wird diagnostiziert, wenn die Gefäßkriterien erfüllt und assoziierte Ursachen ausgeschlossen sind; sie kann ein- oder beidseitig sein. Bei einer bekannten Grunderkrankung (z. B. Down-Syndrom, NF1) spricht man von Moya-Moya-Syndrom.",
+    "after": "Moyamoya-Krankheit kann bei erfüllten Gefäßkriterien und Ausschluss anderer Ursachen ein- oder beidseitig sein. Beim entsprechenden Muster mit z. B. NF1, Down-Syndrom oder nach Kopfbestrahlung spricht man von Moyamoya-Syndrom. Die 2021-Kriterien führen Hyperthyreose nicht mehr als Syndromursache; Atherosklerose muss differenziert werden."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.grundlagen.items[0].text.en",
+    "before": "Moyamoya disease is diagnosed when vascular criteria are met and associated causes are excluded; it may be unilateral or bilateral. Similar vasculopathy with a known underlying condition (e.g. Down syndrome or NF1) is termed moyamoya syndrome.",
+    "after": "Moyamoya disease may be unilateral or bilateral when vascular criteria are met and other causes excluded. The corresponding pattern with conditions such as NF1, Down syndrome or prior cranial irradiation is termed moyamoya syndrome. The 2021 criteria no longer list hyperthyroidism as a syndrome cause; atherosclerosis requires differentiation."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.grundlagen.items[0].text.fa",
+    "before": "بیماری مویامویا زمانی تشخیص داده می‌شود که معیارهای عروقی وجود داشته و علل همراه رد شده باشند؛ درگیری می‌تواند یک‌طرفه یا دوطرفه باشد. واسکولوپاتی مشابه همراه با بیماری زمینه‌ای شناخته‌شده، مانند سندرم داون یا NF1، «سندرم مویامویا» نام دارد.",
+    "after": "بیماری مویامویا با احراز معیارهای عروقی و رد علل دیگر می‌تواند یک‌طرفه یا دوطرفه باشد. الگوی متناظر همراه با بیماری‌هایی مانند NF1، سندرم داون یا پرتودرمانی قبلی سر، سندرم مویامویا نام دارد. معیارهای ۲۰۲۱ دیگر پرکاری تیروئید را علت سندرم نمی‌دانند؛ آترواسکلروز باید تفکیک شود."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.grundlagen.items[1].text.de",
+    "before": "Häufiger in Ostasien (Japan ≈ 0,5–1/100.000/J.). Frauen etwas häufiger betroffen (1,8:1). RNF213-Genmutation als wichtigster genetischer Risikofaktor.",
+    "after": "Moyamoya tritt weltweit auf und ist in Ostasien häufiger. Genetische Suszeptibilität, unter anderem RNF213, ist populationsabhängig; eine Variante allein beweist die Erkrankung nicht."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.grundlagen.items[1].text.en",
+    "before": "More prevalent in East Asia (Japan ≈ 0.5–1/100,000/yr). Slightly more common in women (1.8:1). RNF213 gene mutation is the most important genetic risk factor.",
+    "after": "Moyamoya occurs worldwide and is more frequent in East Asia. Genetic susceptibility, including RNF213, varies by population; a variant alone does not establish the disease."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.grundlagen.items[1].text.fa",
+    "before": "شایع‌تر در آسیای شرقی (ژاپن ≈ ۰.۵–۱/۱۰۰٬۰۰۰/سال). کمی شایع‌تر در زنان (۱.۸:۱). موتاسیون ژن RNF213 مهم‌ترین فاکتور ریسک ژنتیک است.",
+    "after": "مویامویا در سراسر جهان رخ می‌دهد و در شرق آسیا شایع‌تر است. استعداد ژنتیکی، از جمله RNF213، به جمعیت وابسته است؛ یک واریانت به‌تنهایی بیماری را اثبات نمی‌کند."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.grundlagen.items[2].text.de",
+    "before": "Fibröse Intimaproliferation ohne Entzündung, Atherosklerose oder Thrombose. Kein aktiver entzündlicher Prozess – deshalb keine immunsuppressive Therapie.",
+    "after": "Intimaverdickung und Verengung der terminalen Gefäße gehören zum Krankheitsbild. Atherosklerotische und entzündliche Arteriopathien müssen differenziert werden; eine Therapie der Grunderkrankung beim Syndrom wird gesondert beurteilt."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.grundlagen.items[2].text.en",
+    "before": "Fibrous intimal proliferation without inflammation, atherosclerosis or thrombosis. No active inflammatory process — hence no immunosuppressive therapy.",
+    "after": "Intimal thickening and narrowing of terminal vessels are part of the disease pattern. Atherosclerotic and inflammatory arteriopathies require differentiation; treatment of an underlying disorder in syndrome is assessed separately."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.grundlagen.items[2].text.fa",
+    "before": "پرولیفراسیون فیبروز اینتیما بدون التهاب، آترواسکلروز یا ترومبوز. فرآیند التهابی فعال وجود ندارد — به همین دلیل درمان ایمونوساپرسیو جایی ندارد.",
+    "after": "ضخیم‌شدن اینتیما و تنگی عروق انتهایی بخشی از الگوی بیماری‌اند. آرتریوپاتی‌های آترواسکلروتیک و التهابی باید تفکیک شوند؛ درمان بیماری زمینه‌ای در سندرم جداگانه ارزیابی می‌شود."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.pathophysio.lead.de",
+    "before": "Die progressive Okklusion der ICA zwingt das Gehirn zu immer ausgeprägteren Kollateralnetzwerken. Diese lentikulostriatären und leptomeningealen Gefäße sind fragil und rupturanfällig.",
+    "after": "Steno-Okklusion und Kollateralbildung können die Durchblutung unterschiedlich beeinflussen. Kollateralen kompensieren Flussverlust; fragile Gefäße oder assoziierte Aneurysmen können zugleich Blutungsquellen sein."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.pathophysio.lead.en",
+    "before": "Progressive ICA occlusion forces the brain to develop increasingly prominent collateral networks. These lenticulostriate and leptomeningeal vessels are fragile and prone to rupture.",
+    "after": "Steno-occlusion and collateral formation can affect perfusion in different ways. Collaterals compensate for lost flow; fragile vessels or associated aneurysms can also be sources of haemorrhage."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.pathophysio.lead.fa",
+    "before": "انسداد پیشرونده ICA مغز را وادار به توسعه شبکه‌های کولاترال فزاینده می‌کند. این عروق لنتیکولواستریات و لپتومننژیال شکننده و مستعد پارگی هستند.",
+    "after": "تنگی‌انسداد و تشکیل کولاترال می‌توانند پرفیوژن را به شکل‌های متفاوت تحت تأثیر قرار دهند. کولاترال‌ها کاهش جریان را جبران می‌کنند؛ عروق شکننده یا آنوریسم‌های همراه نیز می‌توانند منشأ خونریزی باشند."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.pathophysio.rows[3][1].de",
+    "before": "Fragile Kollateralen rupturieren (v. a. Erwachsene)",
+    "after": "Fragile Kollateralen oder assoziierte Aneurysmen können rupturieren"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.pathophysio.rows[3][1].en",
+    "before": "Fragile collaterals rupture (especially adults)",
+    "after": "Fragile collaterals or associated aneurysms may rupture"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.pathophysio.rows[3][1].fa",
+    "before": "پارگی کولاترال‌های شکننده (به‌خصوص بزرگسالان)",
+    "after": "کولاترال‌های شکننده یا آنوریسم‌های همراه ممکن است پاره شوند"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.lead.de",
+    "before": "Kinder leiden fast ausschließlich an ischämischen Ereignissen; Erwachsene tragen zusätzlich ein relevantes Blutungsrisiko durch fragile Kollateralen.",
+    "after": "Kinder überwiegend ischämisch; Erwachsene ischämisch oder hämorrhagisch. Altersverteilungen sind keine Ausschlussgrenzen."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.lead.en",
+    "before": "Children suffer almost exclusively from ischaemic events; adults also carry a significant haemorrhage risk from fragile collaterals.",
+    "after": "Children predominantly ischaemic; adults ischaemic or haemorrhagic. Age distributions are not exclusion boundaries."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.lead.fa",
+    "before": "کودکان تقریباً فقط دچار رویدادهای ایسکمیک می‌شوند؛ بزرگسالان علاوه بر آن ریسک خونریزی قابل توجهی دارند.",
+    "after": "کودکان عمدتاً ایسکمیک؛ بزرگسالان ایسکمیک یا هموراژیک. توزیع سنی مرز رد بیماری نیست."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.headers[1].de",
+    "before": "Kinder (5–10 J.)",
+    "after": "Kinder"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.headers[1].en",
+    "before": "Children (5–10 yrs)",
+    "after": "Children"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.headers[1].fa",
+    "before": "کودکان (۵–۱۰ سال)",
+    "after": "کودکان"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.headers[2].de",
+    "before": "Erwachsene (35–45 J.)",
+    "after": "Erwachsene"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.headers[2].en",
+    "before": "Adults (35–45 yrs)",
+    "after": "Adults"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.headers[2].fa",
+    "before": "بزرگسالان (۳۵–۴۵ سال)",
+    "after": "بزرگسالان"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.associationsItems[0].text.de",
+    "before": "Häufigste genetische Assoziation; frühes Gefäßscreening empfohlen.",
+    "after": "Anerkannte assoziierte Erkrankung. Gefäßabklärung nach klinischer Situation; hieraus folgt keine pauschale Screeninganweisung."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.associationsItems[0].text.en",
+    "before": "Most common genetic association; early vascular screening recommended.",
+    "after": "Recognized associated condition. Vascular assessment depends on the clinical situation; this does not imply a blanket screening instruction."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.associationsItems[0].text.fa",
+    "before": "شایع‌ترین اسوسیاسیون ژنتیک؛ غربالگری عروقی زودهنگام توصیه می‌شود.",
+    "after": "بیماری همراه شناخته‌شده. بررسی عروقی به وضعیت بالینی وابسته است؛ از این امر دستور غربالگری همگانی نتیجه نمی‌شود."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.associationsItems[2].text.de",
+    "before": "Vasookklusive Krisen → Moya-Moya-ähnliche Stenosierung.",
+    "after": "Kann mit einer Moyamoya-Angiopathie assoziiert sein; Grunderkrankung und zerebrale Gefäßsituation gemeinsam beurteilen."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.associationsItems[2].text.en",
+    "before": "Vasoocclusive crises → Moyamoya-like stenosis.",
+    "after": "May be associated with moyamoya angiopathy; assess the underlying disorder and cerebral vascular status together."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.associationsItems[2].text.fa",
+    "before": "بحران‌های واسواکلوزیو → تنگی شبیه Moya-Moya.",
+    "after": "می‌تواند با آنژیوپاتی مویامویا همراه باشد؛ بیماری زمینه‌ای و وضعیت عروق مغزی را با هم ارزیابی کنید."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.key.de",
+    "before": "Hyperventilation (Weinen, Blasinstrument, Flöte, sportliche Belastung) → CO₂-Abfall → zerebrale Vasokonstriktion → TIA. Bei Kindern mit Moya-Moya ist das der häufigste akute Auslöser.",
+    "after": "CO₂-Abfall verändert die zerebrale Durchblutung; eingeschränkte Reserve und komplexe regionale Reaktionen können Ischämien auslösen."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.key.en",
+    "before": "Hyperventilation (crying, wind instrument, flute, exercise) → CO₂ drop → cerebral vasoconstriction → TIA. In children with moyamoya this is the most common acute trigger.",
+    "after": "A CO₂ fall alters cerebral blood flow; impaired reserve and complex regional responses can trigger ischaemia."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.klinik.key.fa",
+    "before": "هایپرونتیلاسیون (گریه، ساز بادی، فلوت، ورزش) → کاهش CO₂ → وازوکونستریکشن مغزی → TIA. در کودکان مبتلا به Moya-Moya این شایع‌ترین محرک حاد است.",
+    "after": "کاهش CO₂ جریان خون مغزی را تغییر می‌دهد؛ ذخیرهٔ مختل و پاسخ‌های منطقه‌ای پیچیده می‌توانند ایسکمی ایجاد کنند."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.lead.de",
+    "before": "MRT mit Gadolinium ist die primäre Modalität für Diagnose und Verlaufskontrolle. Die native CCT dient dem raschen Blutungsausschluss.",
+    "after": "Native CCT beurteilt im akuten Kontext insbesondere Blutung. MRT mit DWI/FLAIR und Gefäßbildgebung charakterisiert Hirnschäden und Gefäßmuster; Gadolinium ist keine Voraussetzung jeder Moyamoya-MRT."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.lead.en",
+    "before": "Gadolinium-enhanced MRI is the primary modality for diagnosis and follow-up. NCCT serves for rapid haemorrhage exclusion.",
+    "after": "NCCT particularly evaluates haemorrhage in acute settings. MRI with DWI/FLAIR and vascular imaging characterizes brain injury and the vascular pattern; gadolinium is not required for every moyamoya MRI."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.lead.fa",
+    "before": "MRI با گادولینیوم روش اصلی برای تشخیص و پیگیری است. NCCT برای رد سریع خونریزی به کار می‌رود.",
+    "after": "NCCT در وضعیت حاد به‌ویژه خونریزی را بررسی می‌کند. MRI با DWI/FLAIR و تصویربرداری عروقی آسیب مغزی و الگوی عروقی را مشخص می‌کند؛ گادولینیوم پیش‌شرط هر MRI مویامویا نیست."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[0][0].de",
+    "before": "T2 / FLAIR (nativ)",
+    "after": "T2 (nativ)"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[0][0].en",
+    "before": "T2 / FLAIR (non-enhanced)",
+    "after": "T2 (non-enhanced)"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[0][0].fa",
+    "before": "T2 / FLAIR (بدون کنتراست)",
+    "after": "T2 (بدون تزریق)"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[1][0].de",
+    "before": "FLAIR + Gadolinium → Ivy Sign",
+    "after": "Natives FLAIR / kontrastverstärkte Aufnahmen"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[1][0].en",
+    "before": "FLAIR + gadolinium → ivy sign",
+    "after": "Non-enhanced FLAIR / postcontrast imaging"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[1][0].fa",
+    "before": "FLAIR + گادولینیوم → علامت پیچک (Ivy sign)",
+    "after": "FLAIR بدون تزریق / تصاویر پس از تزریق"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[1][1].de",
+    "before": "Lineare/gyriforme leptomeningeale KM-Aufnahme entlang der Sulci – wie Efeu am Hirn",
+    "after": "Natives FLAIR: sulkales Hochsignal. Nach Kontrastmittel: leptomeningeale Aufnahme. Verwandte, aber unterschiedliche Befunde."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[1][1].en",
+    "before": "Linear/gyriform leptomeningeal enhancement along sulci – like ivy on the brain",
+    "after": "Non-enhanced FLAIR: sulcal hyperintensity. After contrast: leptomeningeal enhancement. Related but different findings."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[1][1].fa",
+    "before": "تقویت لپتومننژیال خطی/ژیریفرم در امتداد شیارهای مغزی – مثل پیچک روی مغز",
+    "after": "FLAIR بدون تزریق: پرسیگنالی شیارها. پس از تزریق: enhancement لپتومننژیال. یافته‌های مرتبط ولی متفاوت."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[1][2].de",
+    "before": "Pathognomonisch für Moya-Moya; Zeichen aktiver langsamer leptomeningealer Kollateralversorgung",
+    "after": "Unterstützender, unspezifischer Hinweis; Gefäßkriterien und Differenzialdiagnose bleiben nötig"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[1][2].en",
+    "before": "Pathognomonic for moyamoya; sign of active slow leptomeningeal collateral supply",
+    "after": "Supportive, nonspecific clue; vascular criteria and differential diagnosis remain necessary"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[1][2].fa",
+    "before": "پاتوگنومونیک Moya-Moya؛ نشانه کولاترال لپتومننژیال فعال با جریان کند",
+    "after": "سرنخ حمایتی و غیراختصاصی؛ معیارهای عروقی و تشخیص افتراقی همچنان لازم‌اند"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[3][0].de",
+    "before": "MR-Perfusion / ASL",
+    "after": "Perfusionsbildgebung, z. B. ASL"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[3][0].en",
+    "before": "MR perfusion / ASL",
+    "after": "Perfusion imaging, e.g. ASL"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[3][0].fa",
+    "before": "پرفیوژن MRI / ASL",
+    "after": "تصویربرداری پرفیوژن، مانند ASL"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[3][1].de",
+    "before": "Reduzierter CBF und eingeschränkte cerebrale Vasoreserve (CVR) in betroffenen Territorien",
+    "after": "CBF und Transitzeit protokollabhängig; CVR erfordert eine geeignete Reaktivitätsuntersuchung"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[3][1].en",
+    "before": "Reduced CBF and impaired cerebrovascular reserve (CVR) in affected territories",
+    "after": "CBF and transit time depend on protocol; CVR requires an appropriate reactivity assessment"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[3][1].fa",
+    "before": "کاهش CBF و اختلال reserve عروق مغزی (CVR) در قلمرو درگیر",
+    "after": "CBF و زمان ترانزیت به پروتکل وابسته‌اند؛ CVR به بررسی واکنش‌پذیری مناسب نیاز دارد"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[3][2].de",
+    "before": "Präoperative Hämodynamik-Evaluierung; entscheidend für Timing der OP",
+    "after": "Ergänzt Klinik und Anatomie; keine alleinige Entscheidung über OP-Technik oder Timing"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[3][2].en",
+    "before": "Preoperative haemodynamic evaluation; crucial for surgical timing",
+    "after": "Complements clinical findings and anatomy; does not alone determine surgical technique or timing"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.bildgebung.mriRows[3][2].fa",
+    "before": "ارزیابی همودینامیک قبل از عمل؛ حیاتی برای زمان‌بندی جراحی",
+    "after": "مکمل یافته‌های بالینی و آناتومی؛ به‌تنهایی تکنیک یا زمان جراحی را تعیین نمی‌کند"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.modesRows[1][2].de",
+    "before": "Gute räumliche Auflösung; Strahlung + KM; keine Hämodynamik",
+    "after": "Gute räumliche Auflösung; Strahlung und Kontrastmittel, keine alleinige Vasoreservemessung"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.modesRows[1][2].en",
+    "before": "Good spatial resolution; radiation + contrast; no haemodynamics",
+    "after": "Good spatial resolution; radiation and contrast, not a standalone reserve measurement"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.modesRows[1][2].fa",
+    "before": "رزولوشن فضایی خوب؛ اشعه + کنتراست؛ بدون اطلاعات همودینامیک",
+    "after": "تفکیک مکانی مناسب؛ اشعه و مادهٔ حاجب، نه اندازه‌گیری مستقل ذخیرهٔ عروقی"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.modesRows[2][2].de",
+    "before": "Vollständigste Information; invasiv; Komplikationsrisiko ~0,5 %",
+    "after": "Dynamische Angioarchitektur; invasiv, Nutzen und Risiken individuell abwägen"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.modesRows[2][2].en",
+    "before": "Most complete information; invasive; complication risk ~0.5%",
+    "after": "Dynamic angioarchitecture; invasive, weigh benefits and risks individually"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.modesRows[2][2].fa",
+    "before": "کامل‌ترین اطلاعات؛ تهاجمی؛ ریسک عارضه ~۰.۵٪",
+    "after": "آنژیوآناتومی دینامیک؛ تهاجمی، سود و خطر فردی سنجیده شوند"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiHeaders[2]",
+    "before": {
+      "de": "Klinische Phase",
+      "en": "Clinical phase",
+      "fa": "فاز بالینی"
+    }
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[0][1].de",
+    "before": "Nur Stenose der ICA-Bifurkation; keine Kollateralen",
+    "after": "Karotisgabelverengung; noch kein ausgeprägtes basales Netz"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[0][1].en",
+    "before": "Stenosis of ICA bifurcation only; no collaterals",
+    "after": "Carotid-fork narrowing; no prominent basal network yet"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[0][1].fa",
+    "before": "تنها تنگی بیفورکاسیون ICA؛ بدون کولاترال",
+    "after": "تنگی دوشاخهٔ کاروتید؛ هنوز شبکهٔ قاعده‌ای برجسته وجود ندارد"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[0][2]",
+    "before": {
+      "de": "Frühphase; oft asymptomatisch",
+      "en": "Early phase; often asymptomatic",
+      "fa": "مرحله اولیه؛ اغلب بدون علامت"
+    }
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[1][1].de",
+    "before": "Beginn der Moya-Moya-Kollateralen; Dilatation aller Hauptarterien",
+    "after": "Beginnende basale Moyamoya-Gefäße"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[1][1].en",
+    "before": "Onset of Moya-Moya collaterals; dilation of all major arteries",
+    "after": "Emergence of basal moyamoya vessels"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[1][1].fa",
+    "before": "شروع کولاترال‌های Moya-Moya؛ دیلاتاسیون همه شریان‌های اصلی",
+    "after": "شروع عروق قاعده‌ای مویامویا"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[1][2]",
+    "before": {
+      "de": "Kompensationsphase",
+      "en": "Compensation phase",
+      "fa": "فاز جبران"
+    }
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[2][1].de",
+    "before": "Intensivierung der Moya-Moya-Gefäße; MCA beginnt zu verschwinden",
+    "after": "Intensivierung des basalen Kollateralnetzes bei fortschreitender Steno-Okklusion"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[2][1].en",
+    "before": "Intensification of Moya-Moya vessels; MCA begins to disappear",
+    "after": "Intensification of basal collaterals with progressive steno-occlusion"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[2][1].fa",
+    "before": "تقویت عروق Moya-Moya؛ شروع ناپدید شدن MCA",
+    "after": "تقویت کولاترال‌های قاعده‌ای همراه تنگی‌انسداد پیشرونده"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[2][2]",
+    "before": {
+      "de": "Zunehmende Ischämiegefahr",
+      "en": "Increasing ischaemia risk",
+      "fa": "افزایش خطر ایسکمی"
+    }
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[3][1].de",
+    "before": "Abnahme der Moya-Moya-Gefäße; Einbeziehung der PCA",
+    "after": "Rückgang basaler Gefäße; zunehmende alternative Kollateralwege"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[3][1].en",
+    "before": "Diminution of Moya-Moya vessels; involvement of PCA",
+    "after": "Diminishing basal vessels; increasing alternative collateral routes"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[3][1].fa",
+    "before": "کاهش عروق Moya-Moya؛ درگیری PCA",
+    "after": "کاهش عروق قاعده‌ای؛ افزایش مسیرهای کولاترال جایگزین"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[3][2]",
+    "before": {
+      "de": "Oft klinisch kritisch",
+      "en": "Often clinically critical",
+      "fa": "اغلب از نظر بالینی بحرانی"
+    }
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[4][1].de",
+    "before": "Weitere Reduktion; externe Karotiskollateralen nehmen zu",
+    "after": "Weitere Reduktion basaler Gefäße und stärkere alternative Versorgung"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[4][1].en",
+    "before": "Further reduction; external carotid collaterals increase",
+    "after": "Further reduction of basal vessels and greater alternative supply"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[4][1].fa",
+    "before": "کاهش بیشتر؛ افزایش کولاترال‌های کاروتید خارجی",
+    "after": "کاهش بیشتر عروق قاعده‌ای و تقویت خون‌رسانی جایگزین"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[4][2]",
+    "before": {
+      "de": "Kritische Perfusion",
+      "en": "Critical perfusion",
+      "fa": "پرفیوژن بحرانی"
+    }
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[5][1].de",
+    "before": "Alle Moya-Moya-Gefäße verschwunden; Versorgung nur noch aus extrakraniellen Kollateralen",
+    "after": "Verschwinden des basalen Moyamoya-Netzes; Versorgung über alternative Kollateralwege"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[5][1].en",
+    "before": "All Moya-Moya vessels gone; supply only from extracranial collaterals",
+    "after": "Disappearance of basal moyamoya network; supply via alternative collateral routes"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[5][1].fa",
+    "before": "همه عروق Moya-Moya ناپدید؛ تغذیه فقط از کولاترال‌های خارج‌جمجمه",
+    "after": "ناپدیدشدن شبکهٔ قاعده‌ای مویامویا؛ خون‌رسانی از مسیرهای کولاترال جایگزین"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.suzukiRows[5][2]",
+    "before": {
+      "de": "Terminale Phase",
+      "en": "Terminal phase",
+      "fa": "فاز نهایی"
+    }
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.key.de",
+    "before": "Die Suzuki-Klassifikation gilt für jede Seite separat. Bilateral kann unterschiedlicher Grad vorliegen. Nur die DSA erlaubt eine zuverlässige Graduierung.",
+    "after": "Suzuki beschreibt angiographische Stadien pro Hemisphäre; beide Seiten können verschieden sein. Das Stadium ist kein alleiniger Maßstab für Symptome, Vasoreserve oder OP-Indikation. DSA-Morphologie, Hirnschäden und Hämodynamik gemeinsam beurteilen."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.key.en",
+    "before": "The Suzuki classification is applied per side separately. Bilaterally, different grades can be present. Only DSA allows reliable grading.",
+    "after": "Suzuki describes angiographic stages per hemisphere; the two sides may differ. Stage alone does not measure symptoms, reserve or surgical indication. Assess DSA morphology, brain injury and haemodynamics together."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.key.fa",
+    "before": "کلاسیفیکاسیون سوزوکی برای هر سمت جداگانه اعمال می‌شود. در حالت دوطرفه ممکن است درجات متفاوتی وجود داشته باشد. فقط DSA درجه‌بندی قابل اعتماد را امکان‌پذیر می‌کند.",
+    "after": "سوزوکی مراحل آنژیوگرافیک هر نیمکره را توصیف می‌کند؛ دو سمت می‌توانند متفاوت باشند. مرحله به‌تنهایی معیار علائم، ذخیرهٔ عروقی یا اندیکاسیون جراحی نیست. مورفولوژی DSA، آسیب مغزی و همودینامیک را با هم بررسی کنید."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.dsa.criteria",
+    "after": {
+      "de": "Für die MRT/TOF-MRA-Diagnose nach 2021 bei mindestens 1,5 Tesla müssen alle drei Bildkriterien erfüllt sein: terminale ICA-Steno-Okklusion, beidseitige Verringerung des äußeren Durchmessers von terminaler ICA und horizontaler MCA im stark T2-gewichteten MRT sowie abnorme Gefäßnetze basal/periventrikulär. Frühe Stadien können unvollständige MRT-Kriterien zeigen; DSA und Ausschluss anderer Ursachen bleiben dann entscheidend.",
+      "en": "MRI/TOF-MRA diagnosis under 2021 at a field strength of at least 1.5 Tesla requires all three imaging criteria: terminal ICA steno-occlusion, bilateral reduction of outer diameter of terminal ICA and horizontal MCA on heavily T2-weighted MRI, and abnormal basal/periventricular vascular networks. Early stages may not meet all MRI criteria; DSA and exclusion of other causes then remain decisive.",
+      "fa": "تشخیص با MRI/TOF-MRA طبق ۲۰۲۱ با میدان حداقل ۱٫۵ تسلا به احراز هر سه معیار تصویری نیاز دارد: تنگی‌انسداد ICA انتهایی، کاهش دوطرفهٔ قطر خارجی ICA انتهایی و MCA افقی در MRI با وزن‌دهی شدید T2 و شبکه‌های عروقی غیرطبیعی قاعده‌ای/اطراف بطنی. مراحل اولیه ممکن است همهٔ معیارهای MRI را نداشته باشند؛ در این صورت DSA و رد علل دیگر همچنان تعیین‌کننده‌اند."
+    }
+  },
+  {
+    "path": "MOYAMOYA_LESSON.therapie.lead.de",
+    "before": "Ziel ist die zerebrale Revaskularisation. Medikamente allein sind keine kausale Therapie, aber adjuvant sinnvoll.",
+    "after": "Die Revaskularisationsentscheidung berücksichtigt Symptome, Hirnschäden, Hämodynamik und Gefäßanatomie im spezialisierten Zentrum. Medikamente beseitigen die steno-okklusive Arteriopathie nicht; Nutzen und Risiken werden individuell beurteilt."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.therapie.lead.en",
+    "before": "The goal is cerebral revascularisation. Medication alone is not curative but is useful adjunctively.",
+    "after": "Revascularization decisions consider symptoms, brain injury, haemodynamics and vascular anatomy in a specialist center. Medication does not reverse the steno-occlusive arteriopathy; benefits and risks are assessed individually."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.therapie.lead.fa",
+    "before": "هدف ریواسکولاریزاسیون مغزی است. داروها به تنهایی علّی نیستند، اما به صورت adjuvant مفیدند.",
+    "after": "تصمیم بازعروق‌رسانی در مرکز تخصصی با توجه به علائم، آسیب مغزی، همودینامیک و آناتومی عروق گرفته می‌شود. داروها آرتریوپاتی تنگی‌انسدادی را برطرف نمی‌کنند؛ سود و خطر فردی ارزیابی می‌شوند."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.therapie.items[0].text.de",
+    "before": "Anastomose der A. temporalis superficialis (STA) mit einem kortikalen MCA-Ast. Sofortige Verbesserung der Perfusion. Goldstandard bei Erwachsenen.",
+    "after": "Eine direkte Anastomose stellt unmittelbar eine zusätzliche Flussverbindung her; daraus folgt kein garantierter klinischer Nutzen ohne Risiko. Indirekte Verfahren benötigen Kollateralentwicklung. Die Wahl erfolgt im erfahrenen Zentrum nach individueller Klinik, Hämodynamik und Anatomie."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.therapie.items[0].text.en",
+    "before": "Anastomosis of the superficial temporal artery (STA) with a cortical MCA branch. Immediate perfusion improvement. Gold standard in adults.",
+    "after": "A direct anastomosis immediately creates an additional flow connection; this does not guarantee clinical benefit without risk. Indirect procedures require collateral development. Selection is individualized by clinical findings, haemodynamics and anatomy in an experienced center."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.therapie.items[0].text.fa",
+    "before": "آناستوموز شریان تمپورال سطحی (STA) با شاخه‌ای از MCA. بهبود فوری پرفیوژن. استاندارد طلایی در بزرگسالان.",
+    "after": "آناستوموز مستقیم فوراً مسیر جریان اضافی ایجاد می‌کند؛ این به معنی سود بالینی تضمین‌شده و بدون خطر نیست. روش‌های غیرمستقیم به رشد کولاترال نیاز دارند. انتخاب در مرکز باتجربه بر پایهٔ وضعیت بالینی، همودینامیک و آناتومی فردی انجام می‌شود."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.therapie.items[2].text.de",
+    "before": "Kombination aus direktem und indirektem Bypass. Bei ausgeprägtem Befund oder Grad III–IV bevorzugt, um maximale Revaskularisation zu erreichen.",
+    "after": "Kombiniert direkte Anastomose und indirekte Kollateralentwicklung. Direkte/kombinierte Verfahren werden in geeigneten Situationen favorisiert; Suzuki III–IV allein legt keine Methode fest. Evidenz, Technik und individuelle Gefäße sind zu berücksichtigen."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.therapie.items[2].text.en",
+    "before": "Combination of direct and indirect bypass. Preferred in advanced disease or Suzuki grade III–IV for maximum revascularisation.",
+    "after": "Combines direct anastomosis with indirect collateral development. Direct/combined procedures are favored in suitable settings; Suzuki III–IV alone does not determine the method. Consider evidence, technical feasibility and individual vessels."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.therapie.items[2].text.fa",
+    "before": "ترکیب بای‌پس مستقیم و غیرمستقیم. در بیماری پیشرفته یا درجه III–IV سوزوکی برای حداکثر ریواسکولاریزاسیون ترجیح داده می‌شود.",
+    "after": "آناستوموز مستقیم را با رشد غیرمستقیم کولاترال ترکیب می‌کند. روش‌های مستقیم/ترکیبی در وضعیت‌های مناسب ترجیح داده می‌شوند؛ سوزوکی III–IV به‌تنهایی روش را تعیین نمی‌کند. شواهد، امکان فنی و عروق فردی باید در نظر گرفته شوند."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.therapie.items[3].text.de",
+    "before": "ASS (Antiplatelet-Therapie) zur Schlaganfallprophylaxe. Nimodipin adjuvant. Strikte Vermeidung von Hyperventilation und Dehydratation.",
+    "after": "Bei nicht hämorrhagischer Angiopathie kann eine langfristige Thrombozytenhemmung nach individueller Abwägung erwogen werden (ESO-Expertenkonsens, begrenzte Evidenz). Dies ist keine automatische Verordnung bei jeder Präsentation; Hypotonie und Dehydratation vermeiden."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.therapie.items[3].text.en",
+    "before": "Aspirin (antiplatelet) for stroke prophylaxis. Nimodipine adjuvant. Strict avoidance of hyperventilation and dehydration.",
+    "after": "In non-haemorrhagic angiopathy, long-term antiplatelet therapy may be considered after individual assessment (ESO expert consensus, limited evidence). This is not an automatic prescription for every presentation; avoid hypotension and dehydration."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.therapie.items[3].text.fa",
+    "before": "آسپرین (آنتی‌پلاکت) برای پروفیلاکسی سکته. نیمودیپین به صورت adjuvant. اجتناب قاطعانه از هایپرونتیلاسیون و دهیدراتاسیون.",
+    "after": "در آنژیوپاتی غیرهموراژیک، مهار طولانی‌مدت پلاکت پس از ارزیابی فردی می‌تواند مطرح شود (اجماع متخصصان ESO، شواهد محدود). این تجویز خودکار برای همهٔ تظاهرات نیست؛ از افت فشار خون و کم‌آبی پرهیز شود."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.therapie.cave.de",
+    "before": "Hyperventilation perioperativ strikt vermeiden: CO₂-Abfall → zerebrale Vasokonstriktion → intraoperativer Schlaganfall. Auch Dehydratation erhöht das Infarktrisiko.",
+    "after": "Die ESO-Leitlinie nennt diese Trigger in der Wartezeit auf Revaskularisation. Perioperative Ziele und Überwachung legt das spezialisierte Team fest; dies ist kein eigenständiges Narkoseprotokoll."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.therapie.cave.en",
+    "before": "Strictly avoid perioperative hyperventilation: CO₂ drop → cerebral vasoconstriction → intraoperative stroke. Dehydration also raises infarct risk.",
+    "after": "ESO lists these triggers while awaiting revascularization. The specialist team determines perioperative targets and monitoring; this is not a standalone anaesthetic protocol."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.therapie.cave.fa",
+    "before": "هایپرونتیلاسیون پری‌اوپراتیو را قاطعانه اجتناب کنید: کاهش CO₂ → وازوکونستریکشن مغزی → سکته داخل عمل. دهیدراتاسیون نیز ریسک انفارکت را افزایش می‌دهد.",
+    "after": "ESO این محرک‌ها را در انتظار بازعروق‌رسانی ذکر می‌کند. اهداف و پایش پیرامون عمل را تیم تخصصی تعیین می‌کند؛ این یک پروتکل مستقل بیهوشی نیست."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.takehome.title.de",
+    "before": "Take home message",
+    "after": "Take Home Message"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.takehome.title.en",
+    "before": "Take-home message",
+    "after": "Take Home Message"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.takehome.title.fa",
+    "before": "نکات کلیدی",
+    "after": "پیام نهایی"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.takehome.items[0].text.de",
+    "before": "T2 Flow Voids in Basalganglien + Ivy Sign auf Gd-FLAIR = klassisches MRT-Bild von Moya-Moya. Beide Zeichen aktiv suchen.",
+    "after": "Terminale ICA-Steno-Okklusion und abnorme Kollateralen gemeinsam beurteilen. Flow-voids und Ivy-Zeichen sind Hinweise, keine alleinigen Diagnosenachweise; natives FLAIR ist kein Enhancement."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.takehome.items[0].text.en",
+    "before": "T2 flow voids in basal ganglia + ivy sign on Gd-FLAIR = classic MRI picture of moyamoya. Actively search for both signs.",
+    "after": "Assess terminal ICA steno-occlusion together with abnormal collaterals. Flow voids and the ivy sign are clues, not standalone proof; non-enhanced FLAIR is not enhancement."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.takehome.items[0].text.fa",
+    "before": "فقدان سیگنال جریان (flow void) در T2 در بازال گانگلیا + علامت پیچک (Ivy sign) در Gd-FLAIR = تصویر کلاسیک MRI در Moya-Moya. هر دو علامت را فعالانه جستجو کنید.",
+    "after": "تنگی‌انسداد ICA انتهایی و کولاترال‌های غیرطبیعی را با هم بررسی کنید. flow void و علامت پیچک سرنخ‌اند، نه اثبات مستقل تشخیص؛ FLAIR بدون تزریق enhancement نیست."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.takehome.items[1].title.de",
+    "before": "Bimodal – 2 Risikogruppen",
+    "after": "Präsentation individuell beurteilen"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.takehome.items[1].title.en",
+    "before": "Bimodal – 2 risk groups",
+    "after": "Assess presentation individually"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.takehome.items[1].title.fa",
+    "before": "دوقله‌ای – ۲ گروه ریسک",
+    "after": "تظاهر را فردی ارزیابی کنید"
+  },
+  {
+    "path": "MOYAMOYA_LESSON.takehome.items[1].text.de",
+    "before": "Kinder → Ischämie (Hyperventilations-Trigger!). Erwachsene → auch intrakranielle Blutung (Basalganglien, IVH).",
+    "after": "Kinder überwiegend ischämisch; Erwachsene ischämisch oder hämorrhagisch. Altersverteilungen sind keine Ausschlussgrenzen."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.takehome.items[1].text.en",
+    "before": "Children → ischaemia (hyperventilation trigger!). Adults → also intracranial haemorrhage (basal ganglia, IVH).",
+    "after": "Children predominantly ischaemic; adults ischaemic or haemorrhagic. Age distributions are not exclusion boundaries."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.takehome.items[1].text.fa",
+    "before": "کودکان → ایسکمی (محرک هایپرونتیلاسیون!). بزرگسالان → همچنین خونریزی داخل‌جمجمه (بازال گانگلیا، IVH).",
+    "after": "کودکان عمدتاً ایسکمیک؛ بزرگسالان ایسکمیک یا هموراژیک. توزیع سنی مرز رد بیماری نیست."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.takehome.items[3].text.de",
+    "before": "MR-Perfusion (ASL) oder CT-Perfusion zeigt die Gefährdungszone und entscheidet über Timing und Technik der chirurgischen Revaskularisation.",
+    "after": "Lange arterielle Transitzeiten können ASL-CBF beeinflussen; Protokoll und Ankunftszeit müssen berücksichtigt werden. CVR beschreibt die Reaktion auf einen geeigneten Stimulus, etwa in einer spezialisierten Acetazolamid-Untersuchung, und ist nicht mit Ruhe-CBF gleichzusetzen. Hämodynamik ergänzt Symptome und Anatomie, entscheidet aber nicht allein über OP-Technik oder Timing."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.takehome.items[3].text.en",
+    "before": "MR perfusion (ASL) or CT perfusion shows the at-risk zone and guides timing and technique of surgical revascularisation.",
+    "after": "Long arterial transit times can affect ASL CBF; protocol and arrival time must be considered. CVR describes the response to an appropriate stimulus, for example during specialist acetazolamide testing, and is not equivalent to resting CBF. Haemodynamics complements symptoms and anatomy but does not alone determine surgical technique or timing."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.takehome.items[3].text.fa",
+    "before": "پرفیوژن MRI (ASL) یا CT پرفیوژن منطقه در خطر را نشان می‌دهد و زمان‌بندی و تکنیک ریواسکولاریزاسیون جراحی را هدایت می‌کند.",
+    "after": "زمان ترانزیت شریانی طولانی می‌تواند بر CBF در ASL اثر بگذارد؛ پروتکل و زمان رسیدن باید در نظر گرفته شوند. CVR پاسخ به محرک مناسب، مثلاً در بررسی تخصصی استازولامید، را توصیف می‌کند و معادل CBF استراحت نیست. همودینامیک مکمل علائم و آناتومی است، اما به‌تنهایی تکنیک یا زمان جراحی را تعیین نمی‌کند."
+  },
+  {
+    "path": "MOYAMOYA_LESSON.pdfSourcePages",
+    "after": [
+      24
+    ]
+  },
+  {
+    "path": "MOYAMOYA_LESSON.sourceScope",
+    "after": {
+      "de": "Gehirn.pdf-Seite24 enthält nur den Titel. Die klinischen Inhalte dieser Lektion sind ergänzend und auf die unten genannten Fachquellen gestützt.",
+      "en": "Gehirn.pdf page24 contains only the title. The clinical content in this lesson is supplemental and supported by the specialist sources below.",
+      "fa": "صفحهٔ ۲۴ Gehirn.pdf فقط عنوان را دارد. محتوای بالینی این درس تکمیلی و متکی بر منابع تخصصی زیر است."
+    }
+  },
+  {
+    "path": "MOYAMOYA_LESSON.learningObjectives",
+    "after": [
+      {
+        "de": "Terminale ICA-Steno-Okklusion und Kollateralen einordnen; Krankheit, Syndrom und Mimics differenzieren.",
+        "en": "Interpret terminal ICA steno-occlusion and collaterals; differentiate disease, syndrome and mimics.",
+        "fa": "تنگی‌انسداد ICA انتهایی و کولاترال‌ها را تفسیر و بیماری، سندرم و تقلیدکننده‌ها را تفکیک کنید."
+      },
+      {
+        "de": "Ivy-Zeichen, Flow-voids und parenchymale Schäden als Hinweise mit Grenzen interpretieren.",
+        "en": "Interpret the ivy sign, flow voids and parenchymal injury as findings with limitations.",
+        "fa": "علامت پیچک، flow voidها و آسیب پارانشیمی را با توجه به محدودیت‌هایشان تفسیر کنید."
+      },
+      {
+        "de": "DSA-Indikationen und Suzuki-Muster von klinischer Schwere und Vasoreserve trennen.",
+        "en": "Separate DSA indications and Suzuki patterns from clinical severity and reserve.",
+        "fa": "اندیکاسیون‌های DSA و الگوهای سوزوکی را از شدت بالینی و ذخیرهٔ عروقی جدا کنید."
+      },
+      {
+        "de": "Hypokapnie und Perfusionsreserve in der individuellen Gefährdungsbeurteilung berücksichtigen.",
+        "en": "Consider hypocapnia and perfusion reserve in individualized risk assessment.",
+        "fa": "هیپوکاپنی و ذخیرهٔ پرفیوژن را در ارزیابی خطر فردی در نظر بگیرید."
+      },
+      {
+        "de": "Direkte und indirekte Revaskularisation unterscheiden und die Verfahrenswahl individualisieren.",
+        "en": "Distinguish direct and indirect revascularization and individualize procedure selection.",
+        "fa": "بازعروق‌رسانی مستقیم و غیرمستقیم را تفکیک و انتخاب روش را فردمحور کنید."
+      }
+    ]
+  },
+  {
+    "path": "MOYAMOYA_LESSON.references",
+    "after": [
+      {
+        "label": "Kuroda et al. (2022)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9357455/"
+      },
+      {
+        "label": "Bersano et al. (2023)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10069176/"
+      },
+      {
+        "label": "Maeda & Tsuchida (1999)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7657767/"
+      },
+      {
+        "label": "Hara et al. (2017)",
+        "url": "https://doi.org/10.3174/ajnr.A5068"
+      },
+      {
+        "label": "Clinical status and evolution in moyamoya (2019)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7425301/"
+      }
+    ]
+  }
+]

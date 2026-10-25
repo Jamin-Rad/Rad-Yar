@@ -1,0 +1,89 @@
+{
+  "route": "/abdomen/pankreas/pankreatitis",
+  "topicId": "pankreatitis",
+  "learningGoals": [
+    {
+      "id": "etiology-timing",
+      "text": {
+        "de": "Biliäre Abflussstörung und Alkoholmechanismus einordnen sowie das benannte CT-Zeitfenster mit dringlichen Ausnahmen begründen.",
+        "en": "Interpret biliary obstruction and alcohol mechanisms and justify the specified CT window and urgent exceptions.",
+        "fa": "اختلال تخلیهٔ صفراوی و مکانیسم الکل را تفسیر کنید و بازهٔ مشخص CT و استثناهای فوری را توضیح دهید."
+      },
+      "questionIds": [
+        "pankreatitis-de-biliary-cause",
+        "pankreatitis-de-alcohol",
+        "pankreatitis-de-necrosis-timing"
+      ],
+      "cardIds": [
+        "pankreatitis-causes",
+        "pankreatitis-biliary-mechanism",
+        "pankreatitis-necrosis-timing"
+      ]
+    },
+    {
+      "id": "morphology-collections",
+      "text": {
+        "de": "Interstitielle und nekrotisierende Formen sowie APFC/Pseudozyste/ANC/WON aus Inhalt, Wand, Zeit und Kontext unterscheiden.",
+        "en": "Distinguish interstitial and necrotising forms and APFC/pseudocyst/ANC/WON from contents, wall, time and context.",
+        "fa": "انواع بینابینی و نکروزان و نیز APFC/پسودوسیست/ANC/WON را بر پایهٔ محتوا، دیواره، زمان و زمینه افتراق دهید."
+      },
+      "questionIds": [
+        "pankreatitis-de-atlanta-morphology",
+        "pankreatitis-de-collections",
+        "pankreatitis-de-walled-off-necrosis"
+      ],
+      "cardIds": [
+        "pankreatitis-atlanta-morphology",
+        "pankreatitis-collections"
+      ]
+    },
+    {
+      "id": "ctsi-clinical",
+      "text": {
+        "de": "Den morphologischen CTSI von klinischer Atlanta-Schwere anhand Organversagen und Dauer trennen.",
+        "en": "Separate morphological CTSI from clinical Atlanta severity using organ failure and duration.",
+        "fa": "CTSI مورفولوژیک را با توجه به نارسایی عضو و مدت آن از شدت بالینی آتلانتا جدا کنید."
+      },
+      "questionIds": [
+        "pankreatitis-de-ctsi-severe"
+      ],
+      "cardIds": [
+        "pankreatitis-ctsi"
+      ]
+    },
+    {
+      "id": "complications",
+      "text": {
+        "de": "Arterielle Komplikationen und Infektionshinweise erkennen und bei Gangunterbrechung den vitalen vorgeschalteten Pankreasanteil berücksichtigen.",
+        "en": "Recognise arterial complications and infection clues and consider viable upstream pancreas in duct disruption.",
+        "fa": "عوارض شریانی و سرنخ‌های عفونت را بشناسید و در قطع مجرا بخش زندهٔ بالادست پانکراس را در نظر بگیرید."
+      },
+      "questionIds": [
+        "pankreatitis-de-pseudoaneurysm",
+        "pankreatitis-de-infected-necrosis"
+      ],
+      "cardIds": [
+        "pankreatitis-pseudoaneurysm",
+        "pankreatitis-infected-necrosis",
+        "pankreatitis-duct-disruption"
+      ]
+    },
+    {
+      "id": "chronic-mass-differential",
+      "text": {
+        "de": "Chronische Gang-/Parenchymzeichen und tumorverdächtige Muster gewichten; bei möglicher Autoimmunpankreatitis die notwendige Tumorabklärung vor Steroidprobe benennen.",
+        "en": "Weigh chronic ductal/parenchymal and tumour-suspicious patterns; name the required malignancy evaluation before a steroid trial in possible autoimmune pancreatitis.",
+        "fa": "الگوهای مزمن مجرا/پارانشیم و الگوهای مشکوک به تومور را بسنجید؛ در احتمال پانکراتیت خودایمنی، بررسی لازم بدخیمی پیش از آزمون استروئید را بیان کنید."
+      },
+      "questionIds": [
+        "pankreatitis-de-carcinoma-dd"
+      ],
+      "cardIds": [
+        "pankreatitis-chronic-triad",
+        "pankreatitis-carcinoma-dd",
+        "pankreatitis-autoimmune"
+      ]
+    }
+  ],
+  "coverageLimit": "Question/card evidence combined; DPDS and AIP are focused retrieval cards rather than newly fabricated case quizzes. No fixed item quota."
+}

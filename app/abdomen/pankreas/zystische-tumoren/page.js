@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
+import {newQuestions as cystQuestions} from '@/data/assessmentQuality/atvCysticPancreas'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import LessonReferenceShell from '@/components/LessonReferenceShell'
@@ -90,38 +91,27 @@ export default function PancreaticCystsPage() {
   const returnTo = lang === 'de' ? '/abdomen/pankreas/zystische-tumoren#first-look' : `/abdomen/pankreas/zystische-tumoren?lang=${lang}#first-look`
   const from = encodeURIComponent(returnTo)
   const language = lang === 'de' ? '' : `&lang=${lang}`
-  const quizHref = `/ueben/quiz?fach=abdomen&n=1&themen=ipmn&from=${from}${language}`
+  const quizHref = `/ueben/quiz?fach=abdomen&n=3&themen=ipmn&from=${from}${language}`
   const flashcardsHref = `/flashcards/abdomen-pancreatic-cysts?from=${from}${language}`
   const shellLabels = {
-    de: { selfCheck: 'Wandstruktur vergleichen', summary: 'Befund knapp strukturieren' },
-    en: { selfCheck: 'Compare cyst walls', summary: 'Structure the report briefly' },
-    fa: { selfCheck: 'دیوارهٔ کیست‌ها را مقایسه کنید', summary: 'گزارش را کوتاه ساختاربندی کنید' },
+    de: { selfCheck: 'Risikomerkmale einordnen', summary: 'Befund knapp strukturieren' },
+    en: { selfCheck: 'Classify risk features', summary: 'Structure the report briefly' },
+    fa: { selfCheck: 'ویژگی‌های خطر را طبقه‌بندی کنید', summary: 'گزارش را کوتاه ساختاربندی کنید' },
   }
+  const checks = Object.fromEntries(['de','en','fa'].map(l=>[l,cystQuestions(l).find(q=>q.id.endsWith('-nodule-risk'))]))
   const selfCheck = {
-    question: {
-      de: 'Woran unterscheidet sich die Wand einer Pseudozyste von der einer echten Zyste?',
-      en: 'How does a pseudocyst wall differ from the wall of a true cyst?',
-      fa: 'دیوارهٔ پسودوسیست چه تفاوتی با دیوارهٔ کیست واقعی دارد؟',
-    },
-    options: [
-      { de: 'Der Pseudozyste fehlt eine epitheliale Auskleidung; die Wand besteht aus Bindegewebe/Narbe.', en: 'A pseudocyst lacks an epithelial lining; its wall consists of connective tissue/scar.', fa: 'پسودوسیست پوشش اپی‌تلیالی ندارد و دیواره‌اش از بافت همبند/اسکار تشکیل شده است.' },
-      { de: 'Eine Pseudozyste hat immer eine dicke epitheliale Auskleidung.', en: 'A pseudocyst always has a thick epithelial lining.', fa: 'پسودوسیست همیشه پوشش اپی‌تلیالی ضخیم دارد.' },
-      { de: 'Die Wandbeschaffenheit lässt sich grundsätzlich nicht unterscheiden.', en: 'The wall types cannot be distinguished in principle.', fa: 'اصولاً نمی‌توان نوع دیواره‌ها را از هم افتراق داد.' },
-    ],
+    question: Object.fromEntries(['de','en','fa'].map(l=>[l,checks[l].question])),
+    options: [0,1,2,3].map(i=>Object.fromEntries(['de','en','fa'].map(l=>[l,checks[l].options[i].text]))),
     answer: 0,
-    explanation: {
-      de: 'Die PDF beschreibt eine echte Zyste als epithelial ausgekleidet und eine Pseudozyste als nicht epithelial ausgekleidet. Das allgemeine Wandmerkmal allein klassifiziert keine pankreatische Neoplasie.',
-      en: 'The PDF describes a true cyst as epithelial-lined and a pseudocyst as lacking an epithelial lining. This general wall feature alone does not classify a pancreatic neoplasm.',
-      fa: 'PDF کیست واقعی را دارای پوشش اپی‌تلیالی و پسودوسیست را فاقد آن توصیف می‌کند. این ویژگی عمومی دیواره به‌تنهایی نئوپلاسم پانکراس را طبقه‌بندی نمی‌کند.',
-    },
-    diagramCaption: { de: 'Schematische Lernhilfe; keine Patientendarstellung.', en: 'Teaching schematic; not patient imaging.', fa: 'نمای شماتیک آموزشی؛ تصویر بیمار نیست.' },
+    explanation: Object.fromEntries(['de','en','fa'].map(l=>[l,checks[l].explanation])),
+    wrongFeedback: [0,1,2,3].map(i=>Object.fromEntries(['de','en','fa'].map(l=>[l,checks[l].wrongExplanations['ABCD'[i]] || checks[l].explanation])))
   }
-  return <LessonReferenceShell lessonId="abdomen-pancreatic-cysts" lang={lang} title={copy.title} diagram="cystic-pancreas" copy={{ ...copy, labels: shellLabels }} check={selfCheck} quizHref={quizHref} flashcardsHref={flashcardsHref}><main className={styles.page} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+  return <LessonReferenceShell lessonId="abdomen-pancreatic-cysts" lang={lang} title={copy.title} diagram="cystic-pancreas" copy={{ ...copy, labels: shellLabels }} check={selfCheck} goals={[{"de":"Gangkommunikation gemeinsam mit Entzündungsverlauf und flüssigem oder nekrotischem Inhalt einordnen.","en":"Interpret duct communication together with the inflammatory course and fluid versus necrotic contents.","fa":"ارتباط مجرایی را همراه سیر التهاب و محتوای مایع یا نکروتیک تفسیر کنید."},{"de":"Seröse mikrozystische Hinweise erkennen und die begrenzte Aussage makrozystischer Kontur benennen.","en":"Recognise serous microcystic clues and state the limitations of macrocystic contour.","fa":"نشانه‌های میکروکیستیک سروزی را بشناسید و محدودیت حاشیهٔ ماکروکیستیک را بیان کنید."},{"de":"Enhancierende Wandknoten nach Kyoto2024 als HRS oder WF klassifizieren, ohne eine Krebsdiagnose oder automatische Operation abzuleiten.","en":"Classify enhancing mural nodules as Kyoto2024 HRS or WF without inferring a cancer diagnosis or automatic surgery.","fa":"ندول دیواره‌ای دارای جذب مادهٔ حاجب را طبق کیوتو۲۰۲۴ به HRS یا WF طبقه‌بندی کنید، بدون استنباط سرطان یا جراحی خودکار."}]} quizHref={quizHref} flashcardsHref={flashcardsHref}><main className={styles.page} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
 
     <div className={styles.layout}><aside className={styles.sidebar}><div className={styles.sideTitle}>{copy.toc}</div>{copy.sections.map(section => <a className={styles.sideItem} href={`#${section.id}`} key={section.id}><span>{section.icon}</span><strong>{section.label}</strong></a>)}</aside>
       <div className={styles.main}>
         <section id={ids[0]} className={styles.section}><h2>{copy.firstTitle}</h2><p className={styles.lead}>{copy.lead}</p><div className={styles.tableWrap}><table className={styles.table}><tbody>{copy.first.map(([a,b])=><tr key={a}><th>{a}</th><td>{b}</td></tr>)}</tbody></table></div><figure className={styles.pancreaticMriFigure}><img src="/educational/pancreatic-cysts/mri-mrcp-pdf-p41.jpg" alt={copy.imageAlt} width="2305" height="925" loading="lazy"/><figcaption>{copy.imageCaption}</figcaption></figure></section>
-        <section id={ids[1]} className={styles.section}><h2>{copy.pseudoTitle}</h2><p>{copy.pseudo}</p><div className={styles.callout}><strong>⚠</strong><p>{copy.pseudoCave}</p></div></section>
+        <section id={ids[1]} className={styles.section}><h2>{copy.pseudoTitle}</h2><p>{copy.pseudo}</p><div className={styles.callout}><strong>⚠</strong><p>{copy.pseudoCave}</p><p>{{"de":"Seröse Differenzialdiagnose: Mikrozystische, schwammartige Binnenstruktur und eine zentrale Narbe können eine seröse zystische Neoplasie stützen. Makrozystische seröse Formen überlappen mit muzinösen Läsionen; Kontur oder Lage allein sind kein sicherer Gewebenachweis.","en":"Serous differential: microcystic sponge-like architecture and a central scar can support a serous cystic neoplasm. Macrocystic serous forms overlap with mucinous lesions; contour or location alone is not secure tissue evidence.","fa":"افتراق سروزی: ساختار داخلی میکروکیستیک و اسفنج‌مانند و اسکار مرکزی می‌توانند از نئوپلاسم کیستیک سروزی حمایت کنند. شکل‌های سروزی ماکروکیستیک با ضایعات موسینوس همپوشانی دارند؛ حاشیه یا محل به‌تنهایی شاهد بافتی مطمئن نیست."}[lang]}</p><p><a href="https://pubmed.ncbi.nlm.nih.gov/19522024/" target="_blank" rel="noreferrer">Shah et al. 2009 ↗</a></p></div></section>
         <section id={ids[2]} className={styles.section}><h2>{copy.ipmnTitle}</h2><div className={styles.tableWrap}><table className={styles.table}><tbody>{copy.ipmn.map(([a,b])=><tr key={a}><th>{a}</th><td>{b}</td></tr>)}</tbody></table></div></section>
         <section id={ids[3]} className={styles.section}><h2>{copy.riskTitle}</h2><p>{copy.risk}</p><h3>{copy.hTitle}</h3><div className={styles.tableWrap}><table className={styles.table}><tbody>{copy.hRows.map(([a,b])=><tr key={a}><th>{a}</th><td>{b}</td></tr>)}</tbody></table></div></section>
         <section id={ids[4]} className={styles.section}><h2>{copy.reportTitle}</h2><ol>{copy.report.map(row=><li key={row}>{row}</li>)}</ol><small>{copy.source}</small><p><a href="https://doi.org/10.1016/j.pan.2023.12.009" target="_blank" rel="noreferrer">Kyoto IPMN guidelines 2024</a></p></section>

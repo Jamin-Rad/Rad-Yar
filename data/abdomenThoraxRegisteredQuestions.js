@@ -114,7 +114,19 @@ const registrations = [
   },
   "optionCount": 3
 },
-  {"key":"abdomen-pancreatic-cysts","fach":"abdomen","tags":["ipmn"],"extra":{"de":"Kommunikation spricht gegen beide Diagnosen, weil beide typischerweise vom Gang getrennt sind.","en":"Communication argues against both because both are typically separate from the duct.","fa":"ارتباط به زیان هر دو تشخیص است، چون هر دو معمولاً از مجرا جدا هستند."}},
+  {
+  "key": "abdomen-pancreatic-cysts",
+  "fach": "abdomen",
+  "tags": [
+    "ipmn"
+  ],
+  "extra": {
+    "de": "Lobulierte mikrozystische Läsion mit zentraler sternförmiger Narbe",
+    "en": "A lobulated microcystic lesion with a central stellate scar",
+    "fa": "ضایعهٔ میکروکیستیک لوبوله با اسکار ستاره‌ای مرکزی"
+  },
+  "optionCount": 3
+},
   {
   "key": "abdomen-focal-liver",
   "fach": "abdomen",
@@ -147,9 +159,45 @@ const registrations = [
   { key: 'thorax-lung-segmental-anatomy', fach: 'thorax', tags: ['lungenanatomie'], extra: { de: 'Pulmonalvenen und Lymphbahnen verlaufen überwiegend im Segmentzentrum', en: 'Pulmonary veins and lymphatics run mainly through the segment centre', fa: 'وریدهای ریوی و مسیرهای لنفاوی عمدتاً در مرکز سگمان قرار دارند' } },
   { key: 'abdomen-cystic-liver-lesions', fach: 'abdomen', tags: ['leberzyste'], extra: { de: 'Der Zysteninhalt reichert nach Kontrastmittel stärker an als Wand und Septen', en: 'The cyst contents enhance more than the wall and septa after contrast', fa: 'محتوای کیست پس از تزریق بیش از دیواره و سپتا جذب دارد' } },
   {"key":"abdomen-appendizitis","fach":"abdomen","tags":["appendizitis"],"extra":{"de":"Bei jeder Nichtvisualisierung unabhängig von Population und klinischem Risiko sofort eine CT anfordern.","en":"Request immediate CT for every non-visualised appendix regardless of population and clinical risk.","fa":"برای هر آپاندیس دیده‌نشده، مستقل از جمعیت و خطر بالینی فوراً CT درخواست کنید."}},
-  { key: 'abdomen-pdac-isoattenuating', fach: 'abdomen', tags: ['pdac'], extra: { de: 'Fehlende sichtbare Masse schließt PDAC aus', en: 'Absence of a visible mass excludes PDAC', fa: 'نبود تودهٔ قابل رؤیت PDAC را رد می‌کند' } },
-  { key: 'abdomen-pdac-double-duct', fach: 'abdomen', tags: ['pdac'], extra: { de: 'Es beweist spezifisch ein PDAC und schließt andere Ursachen aus', en: 'It specifically proves PDAC and excludes other causes', fa: 'به‌طور اختصاصی PDAC را ثابت و علل دیگر را رد می‌کند' } },
-  { key: 'abdomen-pdac-vessel-contact', fach: 'abdomen', tags: ['pdac'], extra: { de: 'Nur den Winkel messen und daraus allein die Resektabilität festlegen', en: 'Measure only the angle and determine resectability from that alone', fa: 'فقط زاویه را اندازه بگیرید و قابلیت برداشت را صرفاً بر آن اساس تعیین کنید' } },
+  {
+  "key": "abdomen-pdac-isoattenuating",
+  "fach": "abdomen",
+  "tags": [
+    "pdac"
+  ],
+  "extra": {
+    "de": "Umschriebene Mikrozystengruppe mit zentraler Narbe und verlagertem, durchgängigem Hauptgang",
+    "en": "A circumscribed microcystic cluster with a central scar and a displaced but patent main duct",
+    "fa": "خوشهٔ محدود میکروکیست‌ها با اسکار مرکزی و مجرای اصلی جابجاشده اما باز"
+  },
+  "optionCount": 3
+},
+  {
+  "key": "abdomen-pdac-double-duct",
+  "fach": "abdomen",
+  "tags": [
+    "pdac"
+  ],
+  "extra": {
+    "de": "Diffuse intrahepatische Cholangitis als gemeinsame Erklärung der beiden Gangdilatationen",
+    "en": "Diffuse intrahepatic cholangitis as the common explanation for both dilated ducts",
+    "fa": "کلانژیت منتشر داخل‌کبدی به‌عنوان توضیح مشترک اتساع هر دو مجرا"
+  },
+  "optionCount": 3
+},
+  {
+  "key": "abdomen-pdac-vessel-contact",
+  "fach": "abdomen",
+  "tags": [
+    "pdac"
+  ],
+  "extra": {
+    "de": "Zahl und Größe suspekter Leberherde, Aszites und peritoneale Knoten",
+    "en": "Number and size of suspicious liver lesions, ascites and peritoneal nodules",
+    "fa": "تعداد و اندازهٔ ضایعات مشکوک کبد، آسیت و ندول‌های صفاقی"
+  },
+  "optionCount": 3
+},
   {
   "key": "abdomen-inguinal-hernia-landmarks",
   "fach": "abdomen",
@@ -266,7 +314,7 @@ export const ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS = [
     { id: 'leberadenom', title: { de: 'Leberadenom', en: 'Hepatic adenoma', fa: 'آدنوم کبدی' } }, { id: 'lebermetastasen', title: { de: 'Lebermetastasen', en: 'Liver metastases', fa: 'متاستازهای کبدی' } }, { id: 'leberzyste', title: { de: 'Zystische Leberläsionen', en: 'Cystic Liver Lesions', fa: 'ضایعات کیستیک کبد' } }, { id: 'hepatische-steatose', title: { de: 'Hepatische Steatose', en: 'Hepatic steatosis', fa: 'استئاتوز کبدی' } },
   ] },
   { fachId: 'abdomen', kapitelId: 'abdomen-pankreas', title: { de: 'Zystische Pankreasläsionen', en: 'Cystic pancreatic lesions', fa: 'ضایعات کیستیک پانکراس' }, topics: [
-    { id: 'ipmn', title: { de: 'IPMN', en: 'IPMN', fa: 'IPMN' } },
+    { id: 'ipmn', title: { de: 'Zystische Pankreasläsionen (inkl. IPMN)', en: 'Cystic pancreatic lesions (including IPMN)', fa: 'ضایعات کیستیک پانکراس (از جمله IPMN)' } },
   ] },
   { fachId: 'abdomen', kapitelId: 'abdomen-niere', title: { de: 'Nierenläsionen', en: 'Renal lesions', fa: 'ضایعات کلیه' }, topics: [
     { id: 'niere-anatomie', title: { de: 'Nieren & Harnwege', en: 'Kidneys & urinary tract', fa: 'کلیه‌ها و مجاری ادراری' } }, { id: 'nierenzysten', title: { de: 'Nierenzysten', en: 'Renal cysts', fa: 'کیست‌های کلیوی' } },

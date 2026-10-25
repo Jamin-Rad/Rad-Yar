@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_RUNTIME_PASS_NOT_INDEPENDENT_ACCEPTANCE",
+  "pscCanonicalGlobalAndManifestObjects": 12,
+  "pdacCanonicalGlobalAndChangeCards": 4,
+  "pscGoals": 3,
+  "pdacGoals": 3,
+  "sharedPdacQuestionAfterNotApplied": true,
+  "productionSources": [
+    "data/pscMrcpLearning.js",
+    "data/pdacFlashcards.js",
+    "data/assessmentQuality/atvPancreatic.js",
+    "app/abdomen/leber/psc-mrcp/page.js",
+    "app/abdomen/pankreas/pankreaskarzinom/page.js"
+  ]
+}

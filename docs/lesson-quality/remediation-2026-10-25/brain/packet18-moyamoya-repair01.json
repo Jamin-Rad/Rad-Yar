@@ -1,0 +1,576 @@
+{
+  "date": "2026-10-25",
+  "issueIds": [
+    "MY18-EDU-01",
+    "MY18-LNG-01"
+  ],
+  "status": "AUTHOR_REPAIRED_PENDING_FRESH_INDEPENDENT_RETEST",
+  "scope": "Exactly4questionsemanticblocks plus1FAcardfront. All13questionIDs/keys/sources, acceptedlesson135deltas, route and other13cards unchanged.",
+  "sourceFile": {
+    "path": "data/moyamoya.js",
+    "beforeSha256": "5a2c9fb388013a654b60086951e3164ba48e7eead289b49551b107c81406752a",
+    "afterSha256": "20618e9f95016bb78368dc61fe78cf94206b57cf04e1c4dea828d5d5ee66ad96"
+  },
+  "unchangedEvidence": {
+    "lessonSha256": "d1ad35a26ea5e6e7151443e04ecceeaba68d269d121cd0a410e6dd4d18ab5474",
+    "originalTeachingDeltaFileSha256": "fbe4f51a005cc5c32819a18736919e8782cc79b2e1e0a0d38f5a1577056c274a",
+    "routeSha256": "484d8c42b89e84122448d5b830476fa9c39d05bc5c7c9de5fde32287ac567fef"
+  },
+  "runtime": {
+    "questionTriads": 13,
+    "cardTriads": 14,
+    "originalIdsKeysSourcesUnchanged": true,
+    "lessonDeepEqual": true,
+    "unaffectedQuestionsDeepEqual": true,
+    "unaffectedCardFieldsDeepEqual": true,
+    "actualGlobalEquality": "PENDING_INDEPENDENT_RETEST; no global import/build by author",
+    "locales": {
+      "de": {
+        "objects": 13,
+        "canonicalSha256": "80c5fe976927cc20411773c6f2d49a06a40cca74b113195cacbee07a35e48b46"
+      },
+      "en": {
+        "objects": 13,
+        "canonicalSha256": "2655b612639fed5f69fb897e42f063ef3aea027b580f63b427009fd5c3312874"
+      },
+      "fa": {
+        "objects": 13,
+        "canonicalSha256": "e83a9b47160b189e49a24744c872d11d3629690233b663d899fc7101c17b895f"
+      }
+    },
+    "cardsCanonicalSha256": "9bf4ae0872adb89954494e0a7aca84a73510493c0a6e648e24773473d95dfe02"
+  },
+  "repairs": [
+    {
+      "id": "MY18-EDU-01",
+      "changedIds": [
+        "ivysign",
+        "goldstandard",
+        "hypervent",
+        "perfusion"
+      ],
+      "description": "Ivy: fourrealmeningealsignalhypotheses with serial/clinicalcontext; DSA: fourintracranialvascular examinations; hypervent: fourphysiologicoxygenation/pressure/CO2mechanisms with measuredcontext; ASL: fourparallelperfusion/reactivity/arrival interpretations with twoPLDrestingcontext. AllspecificDEENFAfeedbackupdated; no newclinicalkey or treatmentrule."
+    },
+    {
+      "id": "MY18-LNG-01",
+      "changedId": "moyamoya-02-vessel",
+      "description": "NaturalFAprincipalvascularsegmentprompt; DE/EN/back/source untouched."
+    }
+  ],
+  "freshSupportingReading": {
+    "additionalPrimaryReference": "Singer et al.1998 original blinded62patientstudy abstract: https://pubs.rsna.org/doi/10.1148/radiology.208.2.9680570 . Read only for true sulcal/meningeal signal differential, without transferring accuracy figures or modality ranking.",
+    "ivy": "OriginalMaeda1999discussion/indexedoriginalPDF freshly reread: meningitis/meningealcarcinomatosis actualdifferentials; mechanismproposed, FLAIRsourceuncertain. Additional originalSinger1998 blinded62patientFLAIRstudyabstract read for inflammatory/neoplasticmeningitis andSAH signaloverlap; no accuracypercentages/generalmodalitysuperioritytaught.",
+    "criteria": "Accepted2021unilateral/atherosclerosisDSApath retained; modalityalternatives are usefuladjuncts but do not change the specifieddiagnosticpath.",
+    "hypervent": "AcceptedNariai1998PET/ESO2023mechanism retained; authoredcontext documents fallingCO2withstableBP/saturation rather than asserting everyepisodecause.",
+    "perfusion": "AcceptedHara2017ASL/PET findings support short/longdelaybias; noacquisitionthreshold/protocolrecommendationadded."
+  },
+  "deltaEntries": 100,
+  "delta": [
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].question.de",
+      "before": "Bei bekannter Moyamoya-Angiopathie finden sich lineare sulkale Hyperintensitäten im nativen FLAIR. Welche Einordnung ist am besten?",
+      "after": "Textfall: Bei bekannter Moyamoya-Angiopathie bestehen über mehrere Untersuchungen unveränderte feine sulkale FLAIR-Hyperintensitäten mit oberflächlich-gefäßförmigem Enhancement auf T1 nach Kontrastmittel. Es bestehen kein neuer Kopfschmerz, Fieber oder Meningismus und keine bekannte Tumorerkrankung. Welche Erklärung passt am besten zu diesem Verlauf?"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].question.en",
+      "before": "In known moyamoya angiopathy, non-enhanced FLAIR shows linear sulcal hyperintensities. Which interpretation is best?",
+      "after": "Text vignette: known moyamoya angiopathy is accompanied by fine sulcal FLAIR hyperintensities unchanged on serial examinations, with superficial vessel-like enhancement on postcontrast T1. There is no new headache, fever or meningism and no known malignancy. Which explanation best fits this course?"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].question.fa",
+      "before": "در آنژیوپاتی مویامویای شناخته‌شده، FLAIR بدون تزریق پرسیگنالی‌های خطی شیارها را نشان می‌دهد. کدام تفسیر بهتر است؟",
+      "after": "سناریوی متنی: در آنژیوپاتی مویامویای شناخته‌شده، پرسیگنالی‌های ظریف شیارها در FLAIR در چند بررسی بدون تغییر مانده‌اند و در T1 پس از تزریق افزایش سیگنال سطحی با شکل عروقی دیده می‌شود. سردرد جدید، تب یا مننژیسم وجود ندارد و بیماری بدخیم شناخته‌شده‌ای در سابقه نیست. کدام توضیح با این سیر سازگارتر است؟"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].options[0].de",
+      "before": "Ivy-Zeichen als unterstützender Hinweis auf veränderten langsamen leptomeningealen Fluss",
+      "after": "Langsamer Fluss im erweiterten pialen Kollateralnetz (Ivy-Zeichen)"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].options[0].en",
+      "before": "Ivy sign as a supportive clue to altered slow leptomeningeal flow",
+      "after": "Slow flow in an engorged pial collateral network (ivy sign)"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].options[0].fa",
+      "before": "علامت پیچک به‌عنوان سرنخ حمایتی جریان آهسته و تغییر‌یافتهٔ لپتومننژیال",
+      "after": "جریان آهسته در شبکهٔ کولاترال پیال متسع (علامت پیچک)"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].options[1].de",
+      "before": "Direkter Beweis einer neu aufgetretenen Subarachnoidalblutung",
+      "after": "Blutprodukte im Subarachnoidalraum bei einer frischen sulkalen Blutung"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].options[1].en",
+      "before": "Direct proof of a new subarachnoid haemorrhage",
+      "after": "Blood products in the subarachnoid space from a recent sulcal haemorrhage"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].options[1].fa",
+      "before": "اثبات مستقیم خونریزی زیرعنکبوتیهٔ جدید",
+      "after": "محصولات خونی در فضای زیرعنکبوتیه ناشی از خونریزی تازهٔ شیارها"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].options[2].de",
+      "before": "Alleiniger Nachweis aktiver leptomeningealer Infektion",
+      "after": "Entzündliche leptomeningeale Veränderungen bei Meningitis"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].options[2].en",
+      "before": "Standalone evidence of active leptomeningeal infection",
+      "after": "Inflammatory leptomeningeal changes in meningitis"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].options[2].fa",
+      "before": "اثبات مستقل عفونت فعال لپتومننژیال",
+      "after": "تغییرات التهابی لپتومننژیال در مننژیت"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].options[3].de",
+      "before": "Sicherer Nachweis einer ausreichenden Perfusionsreserve",
+      "after": "Neoplastische leptomeningeale Infiltration"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].options[3].en",
+      "before": "Definite evidence of sufficient perfusion reserve",
+      "after": "Neoplastic leptomeningeal infiltration"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].options[3].fa",
+      "before": "اثبات قطعی ذخیرهٔ پرفیوژن کافی",
+      "after": "ارتشاح نئوپلاستیک لپتومننژیال"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].explanation.de",
+      "before": "Sulkales FLAIR-Hochsignal kann zum Ivy-Zeichen passen. Es ist nicht pathognomonisch, kein alleiniger Blutungs-/Infektionsnachweis und keine quantitative Reservemessung. Bei akuten Beschwerden müssen andere Ursachen des sulkalen Signals gezielt abgeklärt werden.",
+      "after": "Das stabile, oberflächlich-gefäßförmige Muster passt bei bekannter Moyamoya-Angiopathie am besten zum Ivy-Zeichen. Langsamer pialer Kollateralfluss gilt als möglicher Mechanismus; der genaue Ursprung des FLAIR-Signals ist nicht vollständig geklärt. Blutung, Entzündung und Tumorinfiltration sind echte Differenzialdiagnosen, werden durch die vorgegebene Konstellation aber weniger gestützt. Das Zeichen bleibt unterstützend; bei neuem klinischem Verdacht ist erneut gezielt abzuklären."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].explanation.en",
+      "before": "Sulcal FLAIR hyperintensity can fit the ivy sign. It is not pathognomonic, does not independently establish haemorrhage or infection, and is not a quantitative reserve measurement. Acute symptoms require targeted assessment of other causes of sulcal signal.",
+      "after": "In known moyamoya angiopathy, the stable superficial vessel-like pattern best fits the ivy sign. Slow pial collateral flow is a proposed mechanism; the precise origin of FLAIR signal is not fully established. Haemorrhage, inflammation and neoplastic infiltration are real differential diagnoses but are less supported by the stated constellation. The sign remains supportive; new clinical suspicion requires renewed targeted assessment."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].explanation.fa",
+      "before": "پرسیگنالی شیارها در FLAIR می‌تواند با علامت پیچک سازگار باشد. این یافته پاتوگنومونیک نیست، به‌تنهایی خونریزی یا عفونت را اثبات نمی‌کند و اندازه‌گیری کمی ذخیره نیست. در علائم حاد، علل دیگر سیگنال شیارها باید هدفمند بررسی شوند.",
+      "after": "در آنژیوپاتی مویامویای شناخته‌شده، الگوی پایدارِ سطحی با شکل عروقی بیشتر با علامت پیچک سازگار است. جریان آهستهٔ کولاترال پیال سازوکار پیشنهادی است؛ منشأ دقیق سیگنال FLAIR کاملاً روشن نیست. خونریزی، التهاب و ارتشاح نئوپلاستیک افتراق‌های واقعی‌اند، اما ترکیب داده‌شده کمتر از آن‌ها حمایت می‌کند. این علامت همچنان حمایتی است؛ در صورت شک بالینی جدید باید بررسی هدفمند تکرار شود."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].wrongExplanations.B.de",
+      "before": "FLAIR-Sulkensignal allein unterscheidet Kollateralfluss nicht sicher von Blutung.",
+      "after": "Eine frische Blutung erklärt den über mehrere Untersuchungen unveränderten Verlauf ohne neue Beschwerden weniger gut. FLAIR-Hochsignal allein kann eine Blutung weder beweisen noch sicher ausschließen."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].wrongExplanations.B.en",
+      "before": "Sulcal FLAIR signal alone cannot reliably distinguish collateral flow from haemorrhage.",
+      "after": "A recent haemorrhage fits the unchanged serial course without new symptoms less well. FLAIR hyperintensity alone neither establishes nor reliably excludes haemorrhage."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].wrongExplanations.B.fa",
+      "before": "سیگنال شیارها در FLAIR به‌تنهایی جریان کولاترال را با اطمینان از خونریزی جدا نمی‌کند.",
+      "after": "خونریزی تازه با سیر بدون تغییر در بررسی‌های متوالی و نبود علائم جدید کمتر سازگار است. پرسیگنالی FLAIR به‌تنهایی نه خونریزی را اثبات می‌کند و نه آن را با اطمینان رد می‌کند."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].wrongExplanations.C.de",
+      "before": "Ein Signalbefund allein beweist keine Infektion; der klinische und weitere bildgebende Kontext ist nötig.",
+      "after": "Meningitis kann ein solches Signal und Enhancement verursachen. Der stabile gefäßförmige Verlauf ohne infektiösen Kontext stützt hier jedoch eher ein Kollateralflussmuster; fehlendes Fieber allein wäre kein Ausschlusstest."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].wrongExplanations.C.en",
+      "before": "A signal finding alone does not establish infection; clinical and further imaging context is required.",
+      "after": "Meningitis can cause such signal and enhancement. Here the stable vessel-like course without an infectious context favors a collateral-flow pattern; absence of fever alone would not exclude meningitis."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].wrongExplanations.C.fa",
+      "before": "یک یافتهٔ سیگنالی به‌تنهایی عفونت را اثبات نمی‌کند؛ زمینهٔ بالینی و تصویربرداری بیشتر لازم است.",
+      "after": "مننژیت می‌تواند چنین سیگنال و افزایش سیگنالی ایجاد کند. در اینجا سیر پایدار با شکل عروقی و نبود زمینهٔ عفونی بیشتر از الگوی جریان کولاترال حمایت می‌کند؛ نبود تب به‌تنهایی مننژیت را رد نمی‌کند."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].wrongExplanations.D.de",
+      "before": "Ein Ivy-Zeichen misst die Vasoreserve nicht quantitativ.",
+      "after": "Leptomeningeale Tumorinfiltration ist eine relevante Alternative. Im vorgegebenen stabilen Verlauf ohne bekannte Tumorerkrankung erklärt das bekannte Kollateralgefäßmuster den Befund besser; eine Tumorinfiltration ist damit nicht grundsätzlich ausgeschlossen."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].wrongExplanations.D.en",
+      "before": "The ivy sign does not measure cerebrovascular reserve quantitatively.",
+      "after": "Leptomeningeal tumour infiltration is a relevant alternative. In the stated stable course without known malignancy, the established collateral vascular pattern explains the finding better; tumour infiltration is not categorically excluded."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=ivysign].wrongExplanations.D.fa",
+      "before": "علامت پیچک ذخیرهٔ عروق مغزی را به‌طور کمی اندازه نمی‌گیرد.",
+      "after": "ارتشاح توموری لپتومننژیال افتراق مهمی است. در سیر پایدار داده‌شده و بدون بدخیمی شناخته‌شده، الگوی عروقی کولاترال شناخته‌شده توضیح بهتری است؛ ارتشاح توموری به‌طور مطلق رد نمی‌شود."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].options[0].de",
+      "before": "DSA zur angiographischen Differenzierung und Kollateralbeurteilung",
+      "after": "Zerebrale Katheterangiographie (DSA)"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].options[0].en",
+      "before": "DSA for angiographic differentiation and collateral assessment",
+      "after": "Cerebral catheter angiography (DSA)"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].options[0].fa",
+      "before": "DSA برای افتراق آنژیوگرافیک و بررسی کولاترال‌ها",
+      "after": "آنژیوگرافی کاتتری مغز (DSA)"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].options[1].de",
+      "before": "Native CCT allein zur endgültigen Gefäßklassifikation",
+      "after": "Hochauflösendes Gefäßwand-MRT mit stark T2-gewichteter Außendurchmessermessung"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].options[1].en",
+      "before": "NCCT alone for definitive vascular classification",
+      "after": "High-resolution vessel-wall MRI with heavily T2-weighted outer-diameter assessment"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].options[1].fa",
+      "before": "NCCT به‌تنهایی برای طبقه‌بندی نهایی عروقی",
+      "after": "MRI دیوارهٔ عروق با تفکیک بالا و ارزیابی قطر خارجی در توالی با وزن‌دهی شدید T2"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].options[2].de",
+      "before": "Ruhe-ASL allein als Ersatz der Gefäßdiagnostik",
+      "after": "Zeitaufgelöste kontrastverstärkte MRA"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].options[2].en",
+      "before": "Resting ASL alone as a substitute for vascular assessment",
+      "after": "Time-resolved contrast-enhanced MRA"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].options[2].fa",
+      "before": "ASL در استراحت به‌تنهایی به‌جای بررسی عروق",
+      "after": "MRA با مادهٔ حاجب و تفکیک زمانی"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].options[3].de",
+      "before": "Duplex der extrakraniellen Karotiden allein",
+      "after": "Intrakranielle CT-Angiographie"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].options[3].en",
+      "before": "Extracranial carotid duplex alone",
+      "after": "Intracranial CT angiography"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].options[3].fa",
+      "before": "داپلر کاروتیدهای خارج جمجمه‌ای به‌تنهایی",
+      "after": "CT آنژیوگرافی داخل جمجمه‌ای"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].wrongExplanations.B.de",
+      "before": "Native CCT kann Blutung zeigen, aber die erforderliche Angioarchitektur nicht ersetzen.",
+      "after": "Die Beurteilung des äußeren Gefäßdurchmessers kann Moyamoya von Atherosklerose abgrenzen helfen und gehört zu den MRT-Kriterien. Bei der hier unklaren einseitigen Läsion verlangen die 2021-Kriterien dennoch zerebrale Angiographie."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].wrongExplanations.B.en",
+      "before": "NCCT can show haemorrhage but cannot replace the required angioarchitecture assessment.",
+      "after": "Assessment of outer vessel diameter can help distinguish moyamoya from atherosclerosis and forms part of the MRI criteria. For the inconclusive unilateral lesion described here, the 2021 criteria nevertheless call for cerebral angiography."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].wrongExplanations.B.fa",
+      "before": "NCCT می‌تواند خونریزی را نشان دهد، اما جای ارزیابی آنژیوآناتومی لازم را نمی‌گیرد.",
+      "after": "ارزیابی قطر خارجی رگ می‌تواند به افتراق مویامویا از آترواسکلروز کمک کند و بخشی از معیارهای MRI است. با این حال، برای ضایعهٔ یک‌طرفهٔ مبهمِ توصیف‌شده، معیارهای ۲۰۲۱ آنژیوگرافی مغزی را لازم می‌دانند."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].wrongExplanations.C.de",
+      "before": "Ruhe-ASL beurteilt Perfusion, nicht allein die Ursache der Stenose.",
+      "after": "Eine zeitaufgelöste MRA kann Gefäß- und Flussinformationen ergänzen. Die gefragte angiographische Abgrenzung bei einseitigem, möglicherweise atherosklerotischem Befund wird nach den 2021-Kriterien mit DSA vorgenommen."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].wrongExplanations.C.en",
+      "before": "Resting ASL evaluates perfusion, not the cause of stenosis by itself.",
+      "after": "Time-resolved MRA can add vascular and flow information. Under the 2021 criteria, the angiographic differentiation asked for in unilateral, possibly atherosclerotic disease is performed with DSA."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].wrongExplanations.C.fa",
+      "before": "ASL در استراحت پرفیوژن را بررسی می‌کند، نه علت تنگی را به‌تنهایی.",
+      "after": "MRA با تفکیک زمانی می‌تواند اطلاعات عروقی و جریان را تکمیل کند. طبق معیارهای ۲۰۲۱، افتراق آنژیوگرافیک مورد پرسش در ضایعهٔ یک‌طرفه با احتمال آترواسکلروز با DSA انجام می‌شود."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].wrongExplanations.D.de",
+      "before": "Extrakranieller Duplex allein charakterisiert terminale intrakranielle Gefäße und basale Kollateralen nicht ausreichend.",
+      "after": "CTA kann Stenose und Gefäßanatomie darstellen. Für die im Fall noch offene Einordnung einer einseitigen terminalen ICA-Läsion nennen die 2021-Kriterien die zerebrale Angiographie; die Antwort ist deshalb DSA."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].wrongExplanations.D.en",
+      "before": "Extracranial duplex alone does not adequately characterize terminal intracranial vessels and basal collaterals.",
+      "after": "CTA can depict stenosis and vascular anatomy. For the unresolved classification of a unilateral terminal ICA lesion in this case, the 2021 criteria specify cerebral angiography; the answer is therefore DSA."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=goldstandard].wrongExplanations.D.fa",
+      "before": "داپلر خارج جمجمه‌ای به‌تنهایی عروق انتهایی داخل جمجمه و کولاترال‌های قاعده‌ای را به‌قدر کافی مشخص نمی‌کند.",
+      "after": "CTA می‌تواند تنگی و آناتومی عروق را نشان دهد. برای طبقه‌بندیِ هنوز نامشخصِ ضایعهٔ یک‌طرفهٔ ICA انتهایی در این سناریو، معیارهای ۲۰۲۱ آنژیوگرافی مغزی را مشخص می‌کنند؛ بنابراین پاسخ DSA است."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].question.de",
+      "before": "Ein Kind mit hämodynamisch beeinträchtigter Moyamoya-Angiopathie hat nach intensivem Weinen vorübergehende fokale Defizite. Welcher Mechanismus ist plausibel?",
+      "after": "Textfall: Ein Kind mit hämodynamisch beeinträchtigter Moyamoya-Angiopathie hat nach intensivem Weinen vorübergehende fokale Defizite. Während der Episode fällt das gemessene CO₂ ab; Blutdruck und Sauerstoffsättigung bleiben gegenüber dem Ausgangswert stabil. Welcher hämodynamische Mechanismus wird dadurch am ehesten gestützt?"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].question.en",
+      "before": "A child with haemodynamically impaired moyamoya angiopathy has transient focal deficits after intense crying. Which mechanism is plausible?",
+      "after": "Text vignette: a child with haemodynamically impaired moyamoya angiopathy has transient focal deficits after intense crying. Measured CO₂ falls during the episode; blood pressure and oxygen saturation remain stable relative to baseline. Which haemodynamic mechanism is most supported?"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].question.fa",
+      "before": "کودکی با آنژیوپاتی مویامویا و اختلال همودینامیک پس از گریهٔ شدید دچار نقایص کانونی گذرا می‌شود. کدام سازوکار محتمل است؟",
+      "after": "سناریوی متنی: کودکی با آنژیوپاتی مویامویا و اختلال همودینامیک پس از گریهٔ شدید دچار نقایص کانونی گذرا می‌شود. CO₂ اندازه‌گیری‌شده هنگام حمله کاهش می‌یابد؛ فشار خون و اشباع اکسیژن نسبت به مقدار پایه پایدار می‌مانند. کدام سازوکار همودینامیک بیشتر حمایت می‌شود؟"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].options[0].de",
+      "before": "Hyperventilationsbedingte Hypokapnie und veränderte Vasoreaktivität können die Perfusion weiter beeinträchtigen",
+      "after": "Hypokapniebedingte Flussänderung bei eingeschränkter zerebraler Vasoreaktivität"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].options[0].en",
+      "before": "Hyperventilation-related hypocapnia and altered vascular reactivity can further impair perfusion",
+      "after": "Hypocapnia-related flow alteration with impaired cerebral vascular reactivity"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].options[0].fa",
+      "before": "هیپوکاپنی ناشی از هایپرونتیلاسیون و واکنش‌پذیری عروقی تغییریافته می‌توانند پرفیوژن را بیشتر مختل کنند",
+      "after": "تغییر جریان ناشی از هیپوکاپنی در زمینهٔ واکنش‌پذیری مختل عروق مغزی"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].options[1].de",
+      "before": "Ein CO₂-Anstieg durch Hyperventilation verbessert die Reserve vollständig",
+      "after": "Hyperkapniebedingter vasodilatatorischer Stimulus mit regionalem Steal"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].options[1].en",
+      "before": "A CO₂ rise from hyperventilation fully restores reserve",
+      "after": "Hypercapnia-related vasodilatory stimulus with regional steal"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].options[1].fa",
+      "before": "افزایش CO₂ ناشی از هایپرونتیلاسیون ذخیره را کاملاً بازمی‌گرداند",
+      "after": "محرک گشادکنندهٔ عروقی ناشی از هیپرکاپنی همراه با steal منطقه‌ای"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].options[2].de",
+      "before": "Die Hyperventilation eröffnet die terminale ICA-Stenose mechanisch",
+      "after": "Abnahme des zerebralen Perfusionsdrucks durch systemische Hypotonie"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].options[2].en",
+      "before": "Hyperventilation mechanically reopens terminal ICA stenosis",
+      "after": "Reduced cerebral perfusion pressure due to systemic hypotension"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].options[2].fa",
+      "before": "هایپرونتیلاسیون تنگی ICA انتهایی را به‌طور مکانیکی باز می‌کند",
+      "after": "کاهش فشار پرفیوژن مغزی ناشی از افت فشار خون سیستمیک"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].options[3].de",
+      "before": "Vorübergehende Symptome beweisen, dass kein vaskulärer Mechanismus vorliegt",
+      "after": "Verminderte Sauerstoffzufuhr durch arterielle Hypoxämie"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].options[3].en",
+      "before": "Transient symptoms prove that no vascular mechanism is present",
+      "after": "Reduced oxygen delivery due to arterial hypoxaemia"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].options[3].fa",
+      "before": "گذرا بودن علائم ثابت می‌کند که سازوکار عروقی وجود ندارد",
+      "after": "کاهش اکسیژن‌رسانی ناشی از هیپوکسمی شریانی"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].wrongExplanations.B.de",
+      "before": "Hyperventilation senkt gewöhnlich CO₂; daraus folgt keine Normalisierung der Reserve.",
+      "after": "Hyperkapnie kann ein vasodilatatorischer Stimulus sein; im Textfall wurde aber ein CO₂-Abfall gemessen. Die Daten sprechen daher zunächst für eine hypocapniebezogene Störung."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].wrongExplanations.B.en",
+      "before": "Hyperventilation generally lowers CO₂; it does not thereby normalize reserve.",
+      "after": "Hypercapnia can provide a vasodilatory stimulus, but this vignette documents a CO₂ fall. The data therefore initially support a hypocapnia-related disturbance."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].wrongExplanations.B.fa",
+      "before": "هایپرونتیلاسیون معمولاً CO₂ را کم می‌کند؛ از این رو ذخیره طبیعی نمی‌شود.",
+      "after": "هیپرکاپنی می‌تواند محرک گشادکنندهٔ عروقی باشد، اما در این سناریو کاهش CO₂ ثبت شده است. بنابراین داده‌ها ابتدا از اختلال مرتبط با هیپوکاپنی حمایت می‌کنند."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].wrongExplanations.C.de",
+      "before": "Ein Atemmanöver beseitigt die strukturelle ICA-Stenose nicht mechanisch.",
+      "after": "Systemische Hypotonie kann die Perfusion bei Moyamoya gefährden. Der Blutdruck blieb hier jedoch auf dem Ausgangsniveau; der dokumentierte CO₂-Abfall passt besser zur gefragten Episode."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].wrongExplanations.C.en",
+      "before": "A breathing manoeuvre does not mechanically remove structural ICA stenosis.",
+      "after": "Systemic hypotension can threaten perfusion in moyamoya. Here blood pressure remained at baseline, while the documented CO₂ fall better matches the episode."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].wrongExplanations.C.fa",
+      "before": "مانور تنفسی تنگی ساختاری ICA را به‌طور مکانیکی برطرف نمی‌کند.",
+      "after": "افت فشار خون سیستمیک می‌تواند پرفیوژن را در مویامویا به خطر اندازد. در اینجا فشار خون در حد پایه مانده است و کاهش ثبت‌شدهٔ CO₂ با حمله سازگاری بیشتری دارد."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].wrongExplanations.D.de",
+      "before": "Auch hämodynamische TIA sind vorübergehend; Transienz schließt vaskuläre Ursachen nicht aus.",
+      "after": "Hypoxämie ist ein anderer möglicher Mechanismus verminderter Sauerstoffversorgung. Eine Entsättigung ist im Textfall nicht dokumentiert; bei stabiler Sättigung wird die CO₂-abhängige Flussreaktion stärker gestützt."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].wrongExplanations.D.en",
+      "before": "Haemodynamic TIAs are also transient; transience does not exclude vascular causes.",
+      "after": "Hypoxaemia is another possible mechanism of reduced oxygen delivery. No desaturation is documented here; stable saturation makes the CO₂-dependent flow response more supported."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=hypervent].wrongExplanations.D.fa",
+      "before": "TIA همودینامیک نیز گذراست؛ گذرا بودن علل عروقی را رد نمی‌کند.",
+      "after": "هیپوکسمی سازوکار ممکن دیگری برای کاهش اکسیژن‌رسانی است. در این سناریو افت اشباع ثبت نشده است؛ با اشباع پایدار، پاسخ جریان وابسته به CO₂ بیشتر حمایت می‌شود."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].question.de",
+      "before": "Bei Moyamoya zeigt eine Ruhe-ASL-Messung einen niedrigen scheinbaren CBF. Welche Aussage ist korrekt?",
+      "after": "Textfall: Bei Moyamoya ist der scheinbare CBF in einer Ruhe-ASL-Aufnahme mit kurzer Post-Labeling-Verzögerung niedrig. Bei längerer Verzögerung steigt der Wert im gleichen Gebiet; ein vasodilatatorischer Stimulus wurde nicht gegeben. Welche Interpretation passt am besten?"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].question.en",
+      "before": "In moyamoya, a resting ASL acquisition shows low apparent CBF. Which statement is correct?",
+      "after": "Text vignette: in moyamoya, apparent CBF is low on resting ASL with a short postlabeling delay. At a longer delay the value increases in the same region; no vasodilatory stimulus was given. Which interpretation fits best?"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].question.fa",
+      "before": "در مویامویا، یک اندازه‌گیری ASL در استراحت CBF ظاهری پایین نشان می‌دهد. کدام عبارت درست است؟",
+      "after": "سناریوی متنی: در مویامویا، CBF ظاهری در ASL استراحت با تأخیر کوتاه پس از نشاندارسازی پایین است. با تأخیر طولانی‌تر، مقدار در همان ناحیه افزایش می‌یابد؛ محرک گشادکنندهٔ عروقی داده نشده است. کدام تفسیر سازگارتر است؟"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].options[0].de",
+      "before": "Transitverzögerung und Messmethode prüfen; eine Ruhemessung allein quantifiziert keine Vasoreserve",
+      "after": "Verzögerte Ankunft des markierten Blutes beeinflusst den ASL-CBF; die Reserve wurde damit nicht gemessen"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].options[0].en",
+      "before": "Assess transit delay and acquisition method; a resting measurement alone does not quantify cerebrovascular reserve",
+      "after": "Delayed arrival of labelled blood affects ASL CBF; reserve has not been measured by this comparison"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].options[0].fa",
+      "before": "تأخیر ترانزیت و روش اندازه‌گیری را بررسی کنید؛ اندازه‌گیری استراحت به‌تنهایی ذخیرهٔ عروق مغزی را کمی نمی‌کند",
+      "after": "رسیدن دیرهنگام خون نشاندار بر CBF در ASL اثر می‌گذارد؛ ذخیره با این مقایسه اندازه‌گیری نشده است"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].options[1].de",
+      "before": "Damit ist eine erschöpfte CVR unabhängig vom Protokoll bewiesen",
+      "after": "Verminderte vasodilatatorische CBF-Antwort im Rahmen einer Reserveprüfung"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].options[1].en",
+      "before": "This proves exhausted CVR regardless of protocol",
+      "after": "Reduced vasodilatory CBF response during reserve testing"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].options[1].fa",
+      "before": "این یافته مستقل از پروتکل، CVR تمام‌شده را اثبات می‌کند",
+      "after": "پاسخ گشادکنندهٔ عروقی CBF کاهش‌یافته در بررسی ذخیره"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].options[2].de",
+      "before": "Daraus folgt unmittelbar eine festgelegte Bypass-Technik",
+      "after": "Verminderter Ruhe-Gewebeblutfluss bei regelrechter arterieller Ankunftszeit"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].options[2].en",
+      "before": "This immediately determines a specific bypass technique",
+      "after": "Reduced resting tissue blood flow with normal arterial arrival time"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].options[2].fa",
+      "before": "از این یافته فوراً یک تکنیک مشخص بای‌پس نتیجه می‌شود",
+      "after": "جریان خون بافتی پایین در استراحت همراه زمان طبیعی رسیدن شریانی"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].options[3].de",
+      "before": "Niedriger ASL-CBF schließt eine Kollateralversorgung aus",
+      "after": "Erhöhter Ruhe-Gewebeblutfluss mit beschleunigter Ankunft des markierten Blutes"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].options[3].en",
+      "before": "Low ASL CBF excludes collateral supply",
+      "after": "Increased resting tissue blood flow with accelerated arrival of labelled blood"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].options[3].fa",
+      "before": "CBF پایین در ASL خون‌رسانی کولاترال را رد می‌کند",
+      "after": "جریان خون بافتی بالا در استراحت همراه رسیدن سریع‌تر خون نشاندار"
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].explanation.de",
+      "before": "Lange arterielle Transitzeiten können ASL-CBF beeinflussen; Protokoll und Ankunftszeit müssen berücksichtigt werden. CVR beschreibt die Reaktion auf einen geeigneten Stimulus, etwa in einer spezialisierten Acetazolamid-Untersuchung, und ist nicht mit Ruhe-CBF gleichzusetzen. Hämodynamik ergänzt Symptome und Anatomie, entscheidet aber nicht allein über OP-Technik oder Timing.",
+      "after": "Der protokollabhängige Anstieg bei längerer Post-Labeling-Verzögerung macht einen Transitzeiteffekt plausibel. Daraus folgt weder ein vollständig normaler tatsächlicher Gewebeblutfluss noch eine gemessene CVR. Auch längere Verzögerungen können methodische Verzerrungen zeigen. Reserve beschreibt die Antwort auf einen geeigneten Stimulus; Hämodynamik wird gemeinsam mit Klinik und Anatomie eingeordnet."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].explanation.en",
+      "before": "Long arterial transit times can affect ASL CBF; protocol and arrival time must be considered. CVR describes the response to an appropriate stimulus, for example during specialist acetazolamide testing, and is not equivalent to resting CBF. Haemodynamics complements symptoms and anatomy but does not alone determine surgical technique or timing.",
+      "after": "The protocol-dependent increase at a longer postlabeling delay makes a transit-time effect plausible. It establishes neither fully normal true tissue flow nor measured CVR. Longer delays can also show methodological bias. Reserve describes the response to an appropriate stimulus; haemodynamics is interpreted together with clinical findings and anatomy."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].explanation.fa",
+      "before": "زمان ترانزیت شریانی طولانی می‌تواند بر CBF در ASL اثر بگذارد؛ پروتکل و زمان رسیدن باید در نظر گرفته شوند. CVR پاسخ به محرک مناسب، مثلاً در بررسی تخصصی استازولامید، را توصیف می‌کند و معادل CBF استراحت نیست. همودینامیک مکمل علائم و آناتومی است، اما به‌تنهایی تکنیک یا زمان جراحی را تعیین نمی‌کند.",
+      "after": "افزایش وابسته به پروتکل در تأخیر طولانی‌تر پس از نشاندارسازی، اثر زمان ترانزیت را محتمل می‌کند. از آن نه جریان واقعی کاملاً طبیعی بافت و نه CVR اندازه‌گیری‌شده نتیجه می‌شود. تأخیرهای طولانی‌تر نیز می‌توانند سوگیری روش‌شناختی داشته باشند. ذخیره پاسخ به محرک مناسب را توصیف می‌کند؛ همودینامیک همراه با یافته‌های بالینی و آناتومی تفسیر می‌شود."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].wrongExplanations.B.de",
+      "before": "Resting-CBF und Reserve sind verschiedene Messgrößen; Transitverzögerung kann den ASL-Wert verfälschen.",
+      "after": "Das wäre die Interpretation einer Reaktivitätsuntersuchung. Hier wurden zwei Ruhe-Aufnahmen mit verschiedenen Verzögerungen verglichen, ohne vasodilatatorischen Stimulus."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].wrongExplanations.B.en",
+      "before": "Resting CBF and reserve are different measurements; transit delay can bias ASL values.",
+      "after": "This would interpret a reactivity assessment. Here two resting acquisitions at different delays were compared without a vasodilatory stimulus."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].wrongExplanations.B.fa",
+      "before": "CBF استراحت و ذخیره دو کمیت متفاوت‌اند؛ تأخیر ترانزیت می‌تواند مقدار ASL را منحرف کند.",
+      "after": "این تفسیر مربوط به بررسی واکنش‌پذیری است. در اینجا دو تصویر استراحت با تأخیرهای متفاوت و بدون محرک گشادکنندهٔ عروقی مقایسه شده‌اند."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].wrongExplanations.C.de",
+      "before": "Die Verfahrenswahl braucht Klinik, Anatomie, Hämodynamik und neurovaskuläre Expertise.",
+      "after": "Eine echte Ruhe-Hypoperfusion kann zusätzlich bestehen. Die deutliche Abhängigkeit von der Wartezeit stützt jedoch einen Ankunftszeiteffekt und erlaubt keine Zuordnung zu regelrechter Transitzeit."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].wrongExplanations.C.en",
+      "before": "Procedure selection requires clinical findings, anatomy, haemodynamics and neurovascular expertise.",
+      "after": "True resting hypoperfusion can coexist. However, the clear dependence on delay supports an arrival-time effect and does not justify assuming normal transit time."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].wrongExplanations.C.fa",
+      "before": "انتخاب روش به یافته‌های بالینی، آناتومی، همودینامیک و تجربهٔ نوروعروقی نیاز دارد.",
+      "after": "هیپوپرفیوژن واقعی در استراحت می‌تواند هم‌زمان وجود داشته باشد. با این حال وابستگی واضح به تأخیر از اثر زمان رسیدن حمایت می‌کند و فرض زمان ترانزیت طبیعی را توجیه نمی‌کند."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].wrongExplanations.D.de",
+      "before": "Gerade lange Kollateralwege können die Ankunft des markierten Blutes verzögern.",
+      "after": "Ein Wertanstieg erst bei längerer Verzögerung passt eher zu später Ankunft als zu beschleunigtem Zufluss. Ein höherer ASL-Wert beweist wegen möglicher Messverzerrung keine erhöhte tatsächliche Gewebeperfusion."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].wrongExplanations.D.en",
+      "before": "Long collateral pathways can themselves delay arrival of labelled blood.",
+      "after": "An increase emerging at a longer delay fits late arrival better than accelerated inflow. Because measurement bias is possible, a higher ASL value does not establish increased true tissue perfusion."
+    },
+    {
+      "path": "MOYAMOYA_QUESTION_SEEDS[id=perfusion].wrongExplanations.D.fa",
+      "before": "خود مسیرهای طولانی کولاترال می‌توانند رسیدن خون نشاندار را به تأخیر اندازند.",
+      "after": "افزایشی که در تأخیر طولانی‌تر ظاهر می‌شود بیشتر با رسیدن دیرهنگام سازگار است تا ورود سریع‌تر. به دلیل امکان سوگیری اندازه‌گیری، مقدار بالاتر ASL افزایش پرفیوژن واقعی بافت را اثبات نمی‌کند."
+    },
+    {
+      "path": "MOYAMOYA_FLASHCARDS[id=moyamoya-02-vessel].front.fa",
+      "before": "کدام بخش از عروق در Moya-Moya اولاً درگیر می‌شود؟",
+      "after": "بخش عروقیِ اصلیِ درگیر در مویامویا کدام است؟"
+    }
+  ],
+  "notTested": [
+    "Globalcanonical53objectequality and freshindependentreview pending",
+    "Browser/RTL/theme/access/inlineclicks",
+    "ScientificapprovalDrZia",
+    "NoGit/build/server/publicationaction"
+  ]
+}

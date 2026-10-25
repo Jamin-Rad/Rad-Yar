@@ -434,52 +434,75 @@ export const abdomenThoraxAssessmentDrafts = {
   }
 },
   'abdomen-pancreatic-cysts': {
-  "source": "https://doi.org/10.1016/j.pan.2023.12.009",
   "question": {
-    "de": "Eine Pankreaszyste kommuniziert mit dem Pankreasgang. Welche Bedeutung hat dieser Befund für die Abgrenzung von IPMN und Pseudozyste?",
-    "en": "A pancreatic cyst communicates with the pancreatic duct. What does this finding contribute to distinguishing IPMN from a pseudocyst?",
-    "fa": "یک کیست پانکراس با مجرای پانکراس ارتباط دارد. این یافته برای افتراق IPMN از پسودوسیست چه ارزشی دارد؟"
+    "de": "Eine Gangkommunikation kann sowohl bei IPMN als auch bei Pseudozysten vorkommen. Welche zusätzliche Textkonstellation unterstützt eine postentzündliche Pseudozyste am stärksten?",
+    "en": "Duct communication may occur with both IPMN and pseudocysts. Which additional text-based constellation most strongly supports a post-inflammatory pseudocyst?",
+    "fa": "ارتباط با مجرا هم در IPMN و هم در پسودوسیست ممکن است دیده شود. کدام ترکیب متنی اضافی بیش از بقیه از پسودوسیست پس از التهاب حمایت می‌کند؟"
   },
   "options": [
     {
-      "de": "Kommunikation ist bei beiden möglich; Morphologie und Pankreatitis-/Traumaanamnese gemeinsam beurteilen.",
-      "en": "Communication can occur in both; assess morphology together with pancreatitis/trauma history.",
-      "fa": "ارتباط در هر دو ممکن است؛ مورفولوژی را همراه با سابقهٔ پانکراتیت یا تروما بررسی کنید."
+      "de": "Sechs Wochen nach dokumentierter akuter Pankreatitis: abgekapselte, homogene Flüssigkeitsansammlung ohne erkennbaren nichtflüssigen Inhalt",
+      "en": "Six weeks after documented acute pancreatitis: an encapsulated homogeneous fluid collection without visible nonliquid contents",
+      "fa": "شش هفته پس از پانکراتیت حاد مستند: تجمع مایع همگن و کپسول‌دار بدون محتوای غیرمایع قابل مشاهده"
     },
     {
-      "de": "Kommunikation ordnet die Zyste der IPMN zu und schließt eine Pseudozyste aus.",
-      "en": "Communication assigns the cyst to IPMN and excludes a pseudocyst.",
-      "fa": "ارتباط، کیست را IPMN طبقه‌بندی و پسودوسیست را رد می‌کند."
+      "de": "Mehrere traubenförmige Seitenastzysten ohne entzündliche Vorgeschichte und mit sonst unauffälligem Pankreasparenchym",
+      "en": "Multiple grape-like branch-duct cysts without an inflammatory history and with otherwise unremarkable pancreatic parenchyma",
+      "fa": "چند کیست شاخه‌ای خوشه‌انگوری بدون سابقهٔ التهاب، با پارانشیم پانکراس در باقی بخش‌ها طبیعی"
     },
     {
-      "de": "Kommunikation ordnet die Zyste einer Pseudozyste zu und schließt IPMN aus.",
-      "en": "Communication assigns the cyst to a pseudocyst and excludes IPMN.",
-      "fa": "ارتباط، کیست را پسودوسیست طبقه‌بندی و IPMN را رد می‌کند."
+      "de": "Solitäre makrozystische Läsion in Körper/Schwanz bei einer Frau ohne entzündliche Vorgeschichte",
+      "en": "A solitary macrocystic body/tail lesion in a woman without an inflammatory history",
+      "fa": "ضایعهٔ ماکروکیستیک منفرد تنه/دم در خانم بدون سابقهٔ التهاب"
+    },
+    {
+      "de": "Lobulierte mikrozystische Läsion mit zentraler sternförmiger Narbe",
+      "en": "A lobulated microcystic lesion with a central stellate scar",
+      "fa": "ضایعهٔ میکروکیستیک لوبوله با اسکار ستاره‌ای مرکزی"
     }
   ],
   "answer": 0,
   "rationale": {
-    "de": "Kyoto2024 beschreibt die Gangkommunikation bei BD-IPMN und als häufig bei Pseudozysten. Bei Pankreatitis oder Trauma muss deshalb eine Pseudozyste abgegrenzt werden. Kommunikation allein ist kein exklusives Unterscheidungsmerkmal; Zystenmorphologie, Gangveränderungen und Anamnese zusammenführen.",
-    "en": "Kyoto2024 describes duct communication in BD-IPMN and as common in pseudocysts. A pseudocyst must therefore be considered with pancreatitis or trauma. Communication alone is not an exclusive discriminator; integrate cyst morphology, duct changes and history.",
-    "fa": "Kyoto۲۰۲۴ ارتباط مجرایی را در BD-IPMN و به‌صورت شایع در پسودوسیست توصیف می‌کند. بنابراین در سابقهٔ پانکراتیت یا تروما باید پسودوسیست را نیز افتراق داد. ارتباط به‌تنهایی ویژگی افتراقی انحصاری نیست؛ مورفولوژی کیست، تغییرات مجرا و شرح‌حال را با هم جمع‌بندی کنید."
+    "de": "Zeitlicher Entzündungsbezug und eine reife, flüssigkeitsgefüllte Sammlung ohne erkennbaren nekrotischen Inhalt stützen die Pseudozyste. Gangkommunikation ist nicht exklusiv: IPMN kann ebenfalls mit dem Gang kommunizieren und eine Pankreatitis verursachen. Anamnese, gesamtes Bild und Verlauf gemeinsam beurteilen.",
+    "en": "The temporal inflammatory context and a mature fluid-filled collection without visible necrotic contents support a pseudocyst. Duct communication is not exclusive: IPMN can also communicate and cause pancreatitis. Integrate history, the whole examination and evolution.",
+    "fa": "ارتباط زمانی با التهاب و تجمع مایع بالغ بدون محتوای نکروتیک قابل مشاهده از پسودوسیست حمایت می‌کنند. ارتباط مجرایی اختصاصی نیست؛ IPMN هم می‌تواند با مجرا مرتبط باشد و پانکراتیت ایجاد کند. شرح‌حال، کل بررسی و سیر زمانی با هم ارزیابی شوند."
   },
+  "source": "https://doi.org/10.1016/j.pan.2023.12.009",
   "wrongExplanations": {
     "B": {
-      "de": "Pseudozysten können ebenfalls mit dem Pankreasgang kommunizieren.",
-      "en": "Pseudocysts may also communicate with the pancreatic duct.",
-      "fa": "پسودوسیست‌ها نیز می‌توانند با مجرای پانکراس ارتباط داشته باشند."
+      "de": "Dieses Muster gewichtet eine BD-IPMN stärker. Die Gangverbindung allein trennt sie nicht von einer Pseudozyste; hier fehlt der beschriebene postentzündliche Verlauf.",
+      "en": "This pattern favours BD-IPMN. Communication alone does not distinguish it from a pseudocyst; the post-inflammatory evolution described in the key is absent.",
+      "fa": "این الگو بیشتر به نفع BD-IPMN است. ارتباط مجرایی به‌تنهایی آن را از پسودوسیست جدا نمی‌کند؛ سیر پس از التهابِ توصیف‌شده در پاسخ درست اینجا وجود ندارد."
     },
     "C": {
-      "de": "Gangkommunikation ist ein Merkmal der BD-IPMN; sie schließt IPMN daher nicht aus.",
-      "en": "Duct communication is a feature of BD-IPMN, so it does not exclude IPMN.",
-      "fa": "ارتباط مجرایی ویژگی BD-IPMN است؛ بنابراین IPMN را رد نمی‌کند."
+      "de": "Lage, unifokale Makrozystik und klinischer Kontext gehören unter anderem zur MCN-Differenzialdiagnose. Sie liefern keinen vergleichbar direkten zeitlichen Entzündungsbezug.",
+      "en": "Location, a solitary macrocystic structure and clinical context raise alternatives including MCN. They do not supply the same direct temporal inflammatory association.",
+      "fa": "محل، ساختار ماکروکیستیک منفرد و زمینهٔ بالینی از جمله MCN را در افتراق مطرح می‌کنند و همان ارتباط زمانی مستقیم با التهاب را فراهم نمی‌کنند."
     },
     "D": {
-      "de": "Die behauptete Trennung trifft für BD-IPMN und kommunizierende Pseudozysten nicht zu.",
-      "en": "The claimed separation does not apply to BD-IPMN or communicating pseudocysts.",
-      "fa": "جدایی ادعاشده دربارهٔ BD-IPMN یا پسودوسیست‌های مرتبط با مجرا درست نیست."
+      "de": "Mikrozysten mit zentraler Narbe gewichten eine seröse zystische Neoplasie stärker; dieses Muster ist nicht die beschriebene reife postentzündliche Flüssigkeitssammlung.",
+      "en": "Microcysts with a central scar favour a serous cystic neoplasm; this differs from the mature post-inflammatory fluid collection described.",
+      "fa": "میکروکیست‌ها با اسکار مرکزی بیشتر به نفع نئوپلاسم کیستیک سروزی‌اند و با تجمع مایع بالغ پس از التهابِ توصیف‌شده تفاوت دارند."
     }
-  }
+  },
+  "wrongFeedback": [
+    null,
+    {
+      "de": "Dieses Muster gewichtet eine BD-IPMN stärker. Die Gangverbindung allein trennt sie nicht von einer Pseudozyste; hier fehlt der beschriebene postentzündliche Verlauf.",
+      "en": "This pattern favours BD-IPMN. Communication alone does not distinguish it from a pseudocyst; the post-inflammatory evolution described in the key is absent.",
+      "fa": "این الگو بیشتر به نفع BD-IPMN است. ارتباط مجرایی به‌تنهایی آن را از پسودوسیست جدا نمی‌کند؛ سیر پس از التهابِ توصیف‌شده در پاسخ درست اینجا وجود ندارد."
+    },
+    {
+      "de": "Lage, unifokale Makrozystik und klinischer Kontext gehören unter anderem zur MCN-Differenzialdiagnose. Sie liefern keinen vergleichbar direkten zeitlichen Entzündungsbezug.",
+      "en": "Location, a solitary macrocystic structure and clinical context raise alternatives including MCN. They do not supply the same direct temporal inflammatory association.",
+      "fa": "محل، ساختار ماکروکیستیک منفرد و زمینهٔ بالینی از جمله MCN را در افتراق مطرح می‌کنند و همان ارتباط زمانی مستقیم با التهاب را فراهم نمی‌کنند."
+    },
+    {
+      "de": "Mikrozysten mit zentraler Narbe gewichten eine seröse zystische Neoplasie stärker; dieses Muster ist nicht die beschriebene reife postentzündliche Flüssigkeitssammlung.",
+      "en": "Microcysts with a central scar favour a serous cystic neoplasm; this differs from the mature post-inflammatory fluid collection described.",
+      "fa": "میکروکیست‌ها با اسکار مرکزی بیشتر به نفع نئوپلاسم کیستیک سروزی‌اند و با تجمع مایع بالغ پس از التهابِ توصیف‌شده تفاوت دارند."
+    }
+  ]
 },
   'abdomen-focal-liver': {
   "question": {
@@ -559,9 +582,219 @@ export const abdomenThoraxAssessmentDrafts = {
   'thorax-heart-size': item('Thorax.pdf physical pp. 27–28; ACR Appropriateness Criteria (AP/portable projection distortion)', L('Eine mobile a.p.-Aufnahme zeigt eine breitere Herzsilhouette als eine p.a.-Aufnahme. Welche Einordnung ist am treffendsten?', 'A portable AP view shows a wider cardiac silhouette than a PA view. What is the best interpretation?', 'در نمای پرتابل AP سایه قلب از نمای PA پهن‌تر است. بهترین تفسیر چیست؟'), [L('Auf AP ist das Herz weiter vom Detektor entfernt und kann geometrisch vergrößert erscheinen; Projektion und Position berücksichtigen.', 'On AP, the heart is farther from the detector and may appear geometrically magnified; consider projection and positioning.', 'در AP قلب از دتکتور دورتر است و ممکن است از نظر هندسی بزرگ‌تر دیده شود؛ پروجکشن و وضعیت بیمار را در نظر بگیرید.'), L('Eine breitere Silhouette beweist unabhängig von der Projektion eine Kardiomegalie.', 'A wider silhouette proves cardiomegaly regardless of projection.', 'سایه پهن‌تر صرف‌نظر از پروجکشن، کاردیومگالی را ثابت می‌کند.'), L('Eine p.a.-Aufnahme vergrößert die Herzsilhouette typischerweise stärker als a.p.', 'A PA view typically magnifies the cardiac silhouette more than AP.', 'نمای PA معمولاً سایه قلب را بیشتر از AP بزرگ‌نمایی می‌کند.')], 0, L('Bei a.p.-Projektion ist das Herz weiter vom Detektor entfernt; die geometrische Vergrößerung kann die Herzsilhouette breiter wirken lassen. Mit einer standardisierten p.a.-Aufnahme ist sie nicht direkt gleichzusetzen.', 'With AP projection the heart is farther from the detector; geometric magnification can make the silhouette appear wider. It should not be compared directly with a standard PA image.', 'در پروجکشن AP قلب از دتکتور دورتر است؛ بزرگ‌نمایی هندسی می‌تواند سایه را پهن‌تر نشان دهد. آن را نباید مستقیماً با تصویر استاندارد PA مقایسه کرد.')),
   'abdomen-hepatic-aml': item('Abdomen.pdf pp. 12–13; cited CT/MRI case series', L('Warum darf Wash-out nicht als starres AML-Kriterium verwendet werden?', 'Why should washout not be used as a rigid AML criterion?', 'چرا wash-out نباید معیار ثابت AML باشد؟'), [L('Enhancement kann variieren und mit HCC überlappen', 'Enhancement can vary and overlap with HCC', 'الگوی جذب می‌تواند متغیر باشد و با HCC همپوشانی کند'), L('AML zeigt immer Wash-out', 'AML always shows washout', 'AML همیشه wash-out دارد'), L('Wash-out beweist immer AML', 'Washout always proves AML', 'wash-out همیشه AML را ثابت می‌کند')], 0, L('Der PDF-Widerspruch und die variable Literatur werden in der Lektion ausdrücklich offengehalten.', 'The PDF contradiction and variable literature are explicitly kept open in the lesson.', 'تناقض PDF و تفاوت‌های گزارش‌شده در منابع در درس صریحاً باز نگه داشته شده‌اند.')),
   'abdomen-psc-mrcp': item('Abdomen.pdf pp. 28–29; AASLD 2022; IPSCSG 2021', L('Welches Gangmuster passt zu PSC?', 'Which duct pattern is consistent with PSC?', 'کدام الگوی مجاری با PSC سازگار است؟'), [L('Multifokale Strikturen mit wechselndem Kaliber', 'Multifocal strictures with alternating calibre', 'تنگی‌های چندکانونی با تغییر متناوب قطر'), L('Ein einzelner glatter Gang', 'One smooth single duct', 'یک مجرای منفرد و صاف'), L('Nur eine Wandverdickung der Gallenblase', 'Gallbladder wall thickening alone', 'فقط ضخیم‌شدن دیواره کیسه صفرا')], 0, L('MRCP zeigt Morphologie; klinische Relevanz wird nicht allein daraus abgeleitet.', 'MRCP shows morphology; clinical significance is not inferred from imaging alone.', 'MRCP مورفولوژی را نشان می‌دهد؛ اهمیت بالینی فقط از تصویر نتیجه‌گیری نمی‌شود.')),
-  'abdomen-pdac-isoattenuating': item('Abdomen.pdf p.36; SAR/APA pancreas reporting consensus', L('Was ist bei einer isoattenuierenden Pankreasläsion wichtig?', 'What is important when a pancreatic lesion is isoattenuating?', 'در ضایعهٔ هم‌دانسیتهٔ پانکراس به چه نکته‌ای باید توجه کرد؟'), [L('Indirekte Zeichen wie Gangabbruch, Aufstau oder distale Atrophie gezielt suchen', 'Look for indirect signs such as duct cut-off, upstream dilatation or distal atrophy', 'به‌دنبال نشانه‌های غیرمستقیم مانند قطع مجرا، اتساع بالادست یا آتروفی دیستال باشید'), L('PDAC ist ausgeschlossen, wenn keine deutliche Masse abgrenzbar ist', 'PDAC is excluded if no definite mass can be delineated', 'اگر تودهٔ واضح دیده نشود، PDAC رد می‌شود'), L('Nur die native CT-Phase erneut beurteilen', 'Reassess only the unenhanced CT phase', 'فقط فاز بدون تزریق CT را دوباره ارزیابی کنید')], 0, L('Ein Teil der PDAC kann isoattenuierend sein. Sekundäre Gangzeichen und Parenchymveränderungen können die Läsion indirekt sichtbar machen.', 'Some PDACs may be isoattenuating. Secondary ductal and parenchymal signs may reveal the lesion indirectly.', 'برخی PDACها ممکن است هم‌دانسیته باشند. نشانه‌های ثانویهٔ مجرا و پارانشیم می‌توانند ضایعه را به‌طور غیرمستقیم آشکار کنند.')),
-  'abdomen-pdac-double-duct': item('Abdomen.pdf p.36; SAR/APA pancreas reporting consensus', L('Wie ist das Double-Duct-Zeichen einzuordnen?', 'How should the double-duct sign be interpreted?', 'علامت دو مجرا چگونه باید تفسیر شود؟'), [L('Es lokalisiert einen Prozess im Pankreaskopf, ist aber nicht spezifisch für PDAC', 'It localises a process to the pancreatic head but is not specific for PDAC', 'فرایندی در سر پانکراس را موضع‌یابی می‌کند، اما اختصاصی PDAC نیست'), L('Es beweist unabhängig vom Kontext ein PDAC', 'It proves PDAC regardless of context', 'صرف‌نظر از زمینه، PDAC را ثابت می‌کند'), L('Es schließt einen periampullären Prozess aus', 'It excludes a periampullary process', 'فرایند پری‌آمپولاری را رد می‌کند')], 0, L('Die gleichzeitige Erweiterung von Ductus choledochus und Pankreasgang ist ein Lokalisationshinweis; die Ursache bleibt differenzialdiagnostisch offen.', 'Concurrent dilatation of the common bile duct and pancreatic duct is a localising clue; the cause remains a differential diagnosis.', 'اتساع هم‌زمان مجرای صفراوی مشترک و مجرای پانکراس سرنخی برای موضع‌یابی است؛ علت همچنان نیازمند تشخیص افتراقی است.')),
-  'abdomen-pdac-vessel-contact': item('Abdomen.pdf p.36; SAR/APA pancreas reporting consensus', L('Was sollte bei Gefäßkontakt eines PDAC beschrieben werden?', 'What should be described when PDAC contacts a vessel?', 'در تماس PDAC با رگ چه مواردی باید توصیف شوند؟'), [L('Betroffenes Gefäß, Kontaktumfang und -länge sowie Konturveränderung, Stenose oder Verschluss', 'The vessel, extent and length of contact, and contour change, narrowing or occlusion', 'رگ درگیر، میزان و طول تماس، و تغییر شکل جدار، تنگی یا انسداد'), L('Nur ein einzelner Kontaktwinkel als vollständige Resektabilitätsentscheidung', 'A single contact angle as the complete resectability decision', 'فقط یک زاویهٔ تماس به‌عنوان تصمیم کامل دربارهٔ قابلیت برداشت'), L('Gefäßkontakt ignorieren, wenn kein Double-Duct-Zeichen vorliegt', 'Ignore vessel contact if the double-duct sign is absent', 'در نبود علامت دو مجرا، تماس عروقی را نادیده بگیرید')], 0, L('Die Lektion empfiehlt eine getrennte, strukturierte Gefäßbeschreibung. Ein Kontaktwinkel allein ersetzt keine vollständige Resektabilitätsbeurteilung.', 'The lesson recommends structured, vessel-by-vessel description. Contact angle alone does not replace a complete resectability assessment.', 'درس، توصیف ساختاریافته و جداگانهٔ هر رگ را توصیه می‌کند. زاویهٔ تماس به‌تنهایی جایگزین ارزیابی کامل قابلیت برداشت نیست.')),
+  'abdomen-pdac-isoattenuating': {
+  "question": {
+    "de": "Textfall: Bei Gewichtsverlust zeigt die Mehrphasen-CT keine klar hypodense Pankreasmasse. Welche zusätzliche Befundkombination stützt den Verdacht auf ein isoattenuierendes PDAC am stärksten?",
+    "en": "Text vignette: multiphase CT in a patient with weight loss shows no clearly hypoattenuating pancreatic mass. Which additional combination most strongly supports concern for an isoattenuating PDAC?",
+    "fa": "سناریوی متنی: در بیمار دچار کاهش وزن، CT چندفازی تودهٔ واضح کم‌دانسیته در پانکراس نشان نمی‌دهد. کدام ترکیب اضافی بیش از بقیه شک به PDAC هم‌دانسیته را تقویت می‌کند؟"
+  },
+  "options": [
+    {
+      "de": "Abrupter fokaler Pankreasgangabbruch mit vorgeschalteter Gangdilatation und Atrophie des vorgeschalteten Parenchyms",
+      "en": "Abrupt focal pancreatic duct cut-off with upstream duct dilatation and upstream parenchymal atrophy",
+      "fa": "قطع ناگهانی و کانونی مجرای پانکراس همراه اتساع مجرا و آتروفی پارانشیم در بالادست"
+    },
+    {
+      "de": "Diffuse Parenchymverkalkungen mit mehreren intraduktalen Konkrementen und wechselnder Gangweite",
+      "en": "Diffuse parenchymal calcifications with multiple intraductal calculi and irregular duct calibre",
+      "fa": "کلسیفیکاسیون منتشر پارانشیم همراه چند سنگ داخل‌مجرایی و تغییر نامنظم قطر مجرا"
+    },
+    {
+      "de": "Diffuse Drüsenschwellung mit homogenem Enhancement und entzündlicher peripankreatischer Flüssigkeit",
+      "en": "Diffuse gland enlargement with homogeneous enhancement and inflammatory peripancreatic fluid",
+      "fa": "تورم منتشر غده با جذب همگن مادهٔ حاجب و مایع التهابی اطراف پانکراس"
+    },
+    {
+      "de": "Umschriebene Mikrozystengruppe mit zentraler Narbe und verlagertem, durchgängigem Hauptgang",
+      "en": "A circumscribed microcystic cluster with a central scar and a displaced but patent main duct",
+      "fa": "خوشهٔ محدود میکروکیست‌ها با اسکار مرکزی و مجرای اصلی جابجاشده اما باز"
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Ein fokaler Gangabbruch mit vorgeschalteten Gang- und Parenchymveränderungen kann ein isoattenuierendes PDAC indirekt anzeigen. Die Konstellation verlangt gezielte Abklärung, ist aber kein histologischer Beweis.",
+    "en": "Focal duct cut-off with upstream ductal and parenchymal changes can indirectly reveal an isoattenuating PDAC. This warrants targeted evaluation but is not histological proof.",
+    "fa": "قطع کانونی مجرا با تغییرات مجرایی و پارانشیمی بالادست می‌تواند PDAC هم‌دانسیته را به‌طور غیرمستقیم آشکار کند. این الگو نیازمند بررسی هدفمند است، اما اثبات بافت‌شناختی نیست."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/12202711/",
+  "wrongExplanations": {
+    "B": {
+      "de": "Verkalkungen und intraduktale Steine gewichten eine chronische Pankreatitis stärker. Ein zusätzliches Karzinom wäre damit nicht ausgeschlossen; gesucht ist hier die stärkste fokal-obstruktive Warnkonstellation.",
+      "en": "Calcifications and intraductal stones favour chronic pancreatitis. They do not exclude a coexisting carcinoma; the question asks for the strongest focal obstructive warning pattern.",
+      "fa": "کلسیفیکاسیون و سنگ داخل مجرا بیشتر به نفع پانکراتیت مزمن‌اند. وجود هم‌زمان سرطان را رد نمی‌کنند؛ پرسش دربارهٔ قوی‌ترین الگوی هشداردهندهٔ انسداد کانونی است."
+    },
+    "C": {
+      "de": "Dieses diffuse entzündliche Muster gewichtet eine interstitiell-ödematöse Pankreatitis stärker als die gesuchte fokale Gangobstruktion mit vorgeschalteter Atrophie.",
+      "en": "This diffuse inflammatory pattern favours interstitial oedematous pancreatitis over the focal duct obstruction with upstream atrophy being sought.",
+      "fa": "این الگوی التهابی منتشر بیشتر به نفع پانکراتیت ادماتوی بینابینی است تا انسداد کانونی مجرا همراه آتروفی بالادست که پرسش هدف گرفته است."
+    },
+    "D": {
+      "de": "Mikrozysten und zentrale Narbe gewichten eine seröse zystische Läsion. Ein verdrängter, offener Gang ist nicht der gesuchte abrupte Gangabbruch.",
+      "en": "Microcysts and a central scar favour a serous cystic lesion. A displaced patent duct differs from the abrupt cut-off being sought.",
+      "fa": "میکروکیست‌ها و اسکار مرکزی بیشتر به نفع ضایعهٔ کیستیک سروزی‌اند. جابجایی مجرای باز با قطع ناگهانی مورد سؤال تفاوت دارد."
+    }
+  },
+  "wrongFeedback": [
+    null,
+    {
+      "de": "Verkalkungen und intraduktale Steine gewichten eine chronische Pankreatitis stärker. Ein zusätzliches Karzinom wäre damit nicht ausgeschlossen; gesucht ist hier die stärkste fokal-obstruktive Warnkonstellation.",
+      "en": "Calcifications and intraductal stones favour chronic pancreatitis. They do not exclude a coexisting carcinoma; the question asks for the strongest focal obstructive warning pattern.",
+      "fa": "کلسیفیکاسیون و سنگ داخل مجرا بیشتر به نفع پانکراتیت مزمن‌اند. وجود هم‌زمان سرطان را رد نمی‌کنند؛ پرسش دربارهٔ قوی‌ترین الگوی هشداردهندهٔ انسداد کانونی است."
+    },
+    {
+      "de": "Dieses diffuse entzündliche Muster gewichtet eine interstitiell-ödematöse Pankreatitis stärker als die gesuchte fokale Gangobstruktion mit vorgeschalteter Atrophie.",
+      "en": "This diffuse inflammatory pattern favours interstitial oedematous pancreatitis over the focal duct obstruction with upstream atrophy being sought.",
+      "fa": "این الگوی التهابی منتشر بیشتر به نفع پانکراتیت ادماتوی بینابینی است تا انسداد کانونی مجرا همراه آتروفی بالادست که پرسش هدف گرفته است."
+    },
+    {
+      "de": "Mikrozysten und zentrale Narbe gewichten eine seröse zystische Läsion. Ein verdrängter, offener Gang ist nicht der gesuchte abrupte Gangabbruch.",
+      "en": "Microcysts and a central scar favour a serous cystic lesion. A displaced patent duct differs from the abrupt cut-off being sought.",
+      "fa": "میکروکیست‌ها و اسکار مرکزی بیشتر به نفع ضایعهٔ کیستیک سروزی‌اند. جابجایی مجرای باز با قطع ناگهانی مورد سؤال تفاوت دارد."
+    }
+  ]
+},
+  'abdomen-pdac-double-duct': {
+  "question": {
+    "de": "Textfall: Ductus choledochus und Pankreashauptgang sind bis zur Pankreaskopf-/Papillenregion erweitert. Eine sichere Ursache ist noch nicht sichtbar. Welche vorläufige Befundbewertung ist am besten begründet?",
+    "en": "Text vignette: the common bile duct and main pancreatic duct are dilated down to the pancreatic-head/papillary region. A definite cause is not yet visible. Which provisional interpretation is best supported?",
+    "fa": "سناریوی متنی: مجرای صفراوی مشترک و مجرای اصلی پانکراس تا ناحیهٔ سر پانکراس/پاپیلا گشادند. علت قطعی هنوز دیده نمی‌شود. کدام برداشت اولیه پشتوانهٔ بهتری دارد؟"
+  },
+  "options": [
+    {
+      "de": "Distaler periampullärer oder pankreaskopfnaher Abflusshinderungsprozess; neoplastische und benigne Ursachen weiter abklären",
+      "en": "A distal periampullary or pancreatic-head outflow obstruction; investigate both neoplastic and benign causes",
+      "fa": "فرایند انسدادی دیستال در ناحیهٔ پری‌آمپولاری یا سر پانکراس؛ علل نئوپلاستیک و خوش‌خیم بیشتر بررسی شوند"
+    },
+    {
+      "de": "Isolierte Hilusobstruktion als gemeinsame Erklärung der beiden Gangdilatationen",
+      "en": "An isolated hilar obstruction as the common explanation for both dilated ducts",
+      "fa": "انسداد منفرد ناف کبد به‌عنوان توضیح مشترک اتساع هر دو مجرا"
+    },
+    {
+      "de": "Isolierte Pankreasschwanzobstruktion als gemeinsame Erklärung der beiden Gangdilatationen",
+      "en": "An isolated pancreatic-tail obstruction as the common explanation for both dilated ducts",
+      "fa": "انسداد منفرد دم پانکراس به‌عنوان توضیح مشترک اتساع هر دو مجرا"
+    },
+    {
+      "de": "Diffuse intrahepatische Cholangitis als gemeinsame Erklärung der beiden Gangdilatationen",
+      "en": "Diffuse intrahepatic cholangitis as the common explanation for both dilated ducts",
+      "fa": "کلانژیت منتشر داخل‌کبدی به‌عنوان توضیح مشترک اتساع هر دو مجرا"
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Die gemeinsame distale Abflussregion erklärt das Double-Duct-Zeichen. Es ist kein PDAC-spezifischer Gewebebefund: Unter anderem kommen pankreatische oder ampulläre Neoplasien, chronische Pankreatitis und Steine infrage. Klinischer Kontext und weitere gezielte Abklärung bestimmen die Ursache.",
+    "en": "The shared distal outflow region explains the double-duct sign. It is not PDAC-specific tissue evidence: pancreatic or ampullary neoplasms, chronic pancreatitis and stones are among the possibilities. Clinical context and targeted evaluation determine the cause.",
+    "fa": "ناحیهٔ مشترک خروجی دیستال، علامت دو مجرا را توضیح می‌دهد. این علامت شاهد بافتی اختصاصی PDAC نیست؛ از جمله نئوپلاسم پانکراس یا آمپولا، پانکراتیت مزمن و سنگ مطرح‌اند. زمینهٔ بالینی و بررسی هدفمند علت را روشن می‌کنند."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/24705640/",
+  "wrongExplanations": {
+    "B": {
+      "de": "Eine isolierte Hilusobstruktion erklärt primär die proximalen Gallenwege, nicht zugleich die Erweiterung des Pankreasgangs bis zur gemeinsamen distalen Region.",
+      "en": "An isolated hilar obstruction primarily explains proximal biliary dilatation, not concurrent pancreatic duct dilatation to their shared distal region.",
+      "fa": "انسداد منفرد ناف کبد عمدتاً اتساع صفراوی پروگزیمال را توضیح می‌دهد، نه اتساع هم‌زمان مجرای پانکراس تا ناحیهٔ خروجی مشترک دیستال."
+    },
+    "C": {
+      "de": "Eine isolierte Schwanzobstruktion betrifft den Pankreasgang stromaufwärts; sie erklärt nicht gleichzeitig den bis zum Kopf-/Papillenbereich erweiterten Choledochus.",
+      "en": "An isolated tail obstruction affects the upstream pancreatic duct; it does not also explain common bile duct dilatation down to the head/papillary region.",
+      "fa": "انسداد منفرد دم، مجرای پانکراس را در بالادست درگیر می‌کند؛ اتساع هم‌زمان کلدوک تا ناحیهٔ سر/پاپیلا را توضیح نمی‌دهد."
+    },
+    "D": {
+      "de": "Eine intrahepatische Erkrankung erklärt keine gemeinsame distale Abflussbehinderung beider Gänge. Das Muster verlangt eine Beurteilung der Kopf-/Papillenregion.",
+      "en": "An intrahepatic process does not explain a shared distal outflow obstruction of both ducts. This pattern calls for assessment of the head/papillary region.",
+      "fa": "فرایند داخل‌کبدی انسداد خروجی مشترک دیستال هر دو مجرا را توضیح نمی‌دهد. این الگو نیازمند ارزیابی ناحیهٔ سر/پاپیلاست."
+    }
+  },
+  "wrongFeedback": [
+    null,
+    {
+      "de": "Eine isolierte Hilusobstruktion erklärt primär die proximalen Gallenwege, nicht zugleich die Erweiterung des Pankreasgangs bis zur gemeinsamen distalen Region.",
+      "en": "An isolated hilar obstruction primarily explains proximal biliary dilatation, not concurrent pancreatic duct dilatation to their shared distal region.",
+      "fa": "انسداد منفرد ناف کبد عمدتاً اتساع صفراوی پروگزیمال را توضیح می‌دهد، نه اتساع هم‌زمان مجرای پانکراس تا ناحیهٔ خروجی مشترک دیستال."
+    },
+    {
+      "de": "Eine isolierte Schwanzobstruktion betrifft den Pankreasgang stromaufwärts; sie erklärt nicht gleichzeitig den bis zum Kopf-/Papillenbereich erweiterten Choledochus.",
+      "en": "An isolated tail obstruction affects the upstream pancreatic duct; it does not also explain common bile duct dilatation down to the head/papillary region.",
+      "fa": "انسداد منفرد دم، مجرای پانکراس را در بالادست درگیر می‌کند؛ اتساع هم‌زمان کلدوک تا ناحیهٔ سر/پاپیلا را توضیح نمی‌دهد."
+    },
+    {
+      "de": "Eine intrahepatische Erkrankung erklärt keine gemeinsame distale Abflussbehinderung beider Gänge. Das Muster verlangt eine Beurteilung der Kopf-/Papillenregion.",
+      "en": "An intrahepatic process does not explain a shared distal outflow obstruction of both ducts. This pattern calls for assessment of the head/papillary region.",
+      "fa": "فرایند داخل‌کبدی انسداد خروجی مشترک دیستال هر دو مجرا را توضیح نمی‌دهد. این الگو نیازمند ارزیابی ناحیهٔ سر/پاپیلاست."
+    }
+  ]
+},
+  'abdomen-pdac-vessel-contact': {
+  "question": {
+    "de": "Textfall: Bei einem unbehandelten PDAC besteht Kontakt zur V. mesenterica superior. Für die interdisziplinäre Planung soll insbesondere eine mögliche venöse Rekonstruktion beurteilt werden. Welche ergänzenden Angaben adressieren diese Frage am unmittelbarsten?",
+    "en": "Text vignette: an untreated PDAC contacts the superior mesenteric vein. Multidisciplinary planning specifically needs to assess possible venous reconstruction. Which additional details address that question most directly?",
+    "fa": "سناریوی متنی: PDAC درمان‌نشده با ورید مزانتریک فوقانی تماس دارد. برای برنامه‌ریزی چندتخصصی باید به‌ویژه امکان بازسازی وریدی ارزیابی شود. کدام اطلاعات تکمیلی مستقیماً به این پرسش پاسخ می‌دهند؟"
+  },
+  "options": [
+    {
+      "de": "Ort und Länge einer Stenose/eines Verschlusses, Durchgängigkeit proximal und distal, Thrombus und Kollateralen",
+      "en": "Location and length of narrowing/occlusion, patency above and below it, thrombus and collaterals",
+      "fa": "محل و طول تنگی/انسداد، بازبودن بخش‌های پروگزیمال و دیستال، ترومبوز و کولترال‌ها"
+    },
+    {
+      "de": "Arterieller Ursprung, Verlauf einer akzessorischen Leberarterie und Kontakt zum Truncus coeliacus",
+      "en": "Arterial origins, the course of an accessory hepatic artery and contact with the coeliac axis",
+      "fa": "منشأ شریان‌ها، مسیر شریان کبدی فرعی و تماس با تنهٔ سلیاک"
+    },
+    {
+      "de": "Maximaler Tumordurchmesser, Längsausdehnung des Gangabbruchs und Pankreasgangweite",
+      "en": "Maximum tumour diameter, length of duct cut-off and pancreatic duct calibre",
+      "fa": "بیشترین قطر تومور، طول قطع مجرا و قطر مجرای پانکراس"
+    },
+    {
+      "de": "Zahl und Größe suspekter Leberherde, Aszites und peritoneale Knoten",
+      "en": "Number and size of suspicious liver lesions, ascites and peritoneal nodules",
+      "fa": "تعداد و اندازهٔ ضایعات مشکوک کبد، آسیت و ندول‌های صفاقی"
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Für die lokale venöse Rekonstruktionsplanung sind betroffener Abschnitt, Ausdehnung und Qualität der anschließenden Gefäßsegmente wesentlich. Kontaktumfang, Kontur und Kollateralen werden strukturiert dokumentiert. Arterien und Metastasen bleiben Teil der Gesamtbeurteilung; diese einzelne Beschreibung entscheidet die Resektabilität nicht allein.",
+    "en": "Local venous reconstruction planning depends on the involved segment, extent and condition of the adjacent vessel segments. Document contact extent, contour and collaterals systematically. Arteries and metastases remain part of overall assessment; this description alone does not determine resectability.",
+    "fa": "برای برنامه‌ریزی بازسازی وریدی موضعی، قطعهٔ درگیر، وسعت درگیری و وضعیت قطعات مجاور رگ اهمیت دارند. میزان تماس، شکل جدار و کولترال‌ها ساختاریافته ثبت شوند. شریان‌ها و متاستازها همچنان بخشی از ارزیابی کلی‌اند؛ این توصیف به‌تنهایی قابلیت برداشت را تعیین نمی‌کند."
+  },
+  "source": "https://doi.org/10.1148/radiol.13131184",
+  "wrongExplanations": {
+    "B": {
+      "de": "Arterielle Varianten und Tumorkontakt beeinflussen die Operationsplanung, beschreiben aber nicht die für eine venöse Rekonstruktion benötigten Zu- und Abflusssegmente.",
+      "en": "Arterial variants and tumour contact affect surgical planning but do not describe the inflow and outflow segments needed for venous reconstruction.",
+      "fa": "واریانت‌های شریانی و تماس تومور بر برنامه‌ریزی جراحی اثر دارند، اما قطعات ورودی و خروجی لازم برای بازسازی وریدی را توصیف نمی‌کنند."
+    },
+    "C": {
+      "de": "Tumor- und Gangmaße gehören zum morphologischen Befund. Sie ersetzen nicht die Beschreibung des betroffenen venösen Abschnitts und der anschließenden offenen Segmente.",
+      "en": "Tumour and duct measurements belong in the morphological report. They do not replace description of the involved vein and adjacent patent segments.",
+      "fa": "اندازه‌های تومور و مجرا بخشی از گزارش مورفولوژیک‌اند، اما جای توصیف قطعهٔ وریدی درگیر و قطعات باز مجاور را نمی‌گیرند."
+    },
+    "D": {
+      "de": "Fernmetastasen sind für die Gesamtplanung entscheidend. Die konkret gefragte lokale venöse Rekonstruktionsfrage erfordert zusätzlich die Gefäßsegmentbeschreibung.",
+      "en": "Distant metastases are crucial for overall planning. The specific local venous reconstruction question additionally requires vessel-segment description.",
+      "fa": "متاستاز دوردست برای برنامه‌ریزی کلی تعیین‌کننده است. پرسش مشخص بازسازی وریدی موضعی علاوه بر آن به توصیف قطعات رگ نیاز دارد."
+    }
+  },
+  "wrongFeedback": [
+    null,
+    {
+      "de": "Arterielle Varianten und Tumorkontakt beeinflussen die Operationsplanung, beschreiben aber nicht die für eine venöse Rekonstruktion benötigten Zu- und Abflusssegmente.",
+      "en": "Arterial variants and tumour contact affect surgical planning but do not describe the inflow and outflow segments needed for venous reconstruction.",
+      "fa": "واریانت‌های شریانی و تماس تومور بر برنامه‌ریزی جراحی اثر دارند، اما قطعات ورودی و خروجی لازم برای بازسازی وریدی را توصیف نمی‌کنند."
+    },
+    {
+      "de": "Tumor- und Gangmaße gehören zum morphologischen Befund. Sie ersetzen nicht die Beschreibung des betroffenen venösen Abschnitts und der anschließenden offenen Segmente.",
+      "en": "Tumour and duct measurements belong in the morphological report. They do not replace description of the involved vein and adjacent patent segments.",
+      "fa": "اندازه‌های تومور و مجرا بخشی از گزارش مورفولوژیک‌اند، اما جای توصیف قطعهٔ وریدی درگیر و قطعات باز مجاور را نمی‌گیرند."
+    },
+    {
+      "de": "Fernmetastasen sind für die Gesamtplanung entscheidend. Die konkret gefragte lokale venöse Rekonstruktionsfrage erfordert zusätzlich die Gefäßsegmentbeschreibung.",
+      "en": "Distant metastases are crucial for overall planning. The specific local venous reconstruction question additionally requires vessel-segment description.",
+      "fa": "متاستاز دوردست برای برنامه‌ریزی کلی تعیین‌کننده است. پرسش مشخص بازسازی وریدی موضعی علاوه بر آن به توصیف قطعات رگ نیاز دارد."
+    }
+  ]
+},
   'abdomen-inguinal-hernia-landmarks': {
   "question": {
     "de": "Eine Leistenhernie verläuft lateral der inferioren epigastrischen Gefäße durch den tiefen Leistenring. Welche Form passt?",

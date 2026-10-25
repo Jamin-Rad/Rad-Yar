@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-25",
+  "status": "READY_FOR_MAIN_BOUNDED_VERIFICATION",
+  "previousMain": "b6680aac8de3b6572ac2582d3c457cd8618decf7",
+  "scope": "Seventh bounded release during ongoing234-route remediation. Six complete assessment pools; overall task remains unfinished.",
+  "acceptedPools": {
+    "pancreaticAndPsc": "Five pools: pNET, PDAC, pancreatitis, cystic pancreatic lesions and PSC. All19 original question/23card triads read;4 targeted questions/3cards added for explicit learning gaps. Final23questions/26cards in DE/EN/FA. All95 actual approved payloads and48 localized inline-option rationales independently compared;54 exact shared-bank replacements integrated with before-value guards.",
+    "moyamoya": "All13 original MCQ/14card triads and135 teaching deltas independently read. Four weak item triads and one Farsi card front repaired in100 text fields, independently accepted. Original IDs and answer keys retained. PDF24 is title-only; clinical material explicitly sourced as supplementation."
+  },
+  "reviews": [
+    "abdomen-technik/review-packet05.json",
+    "abdomen-technik/review-packet05-actual-integration.json",
+    "integration-review-atv05.json",
+    "brain/review-packet18-moyamoya.json"
+  ],
+  "runtime": {
+    "questionsPerLanguage": 979,
+    "casesPerLanguage": 18,
+    "supplementQuestionsPerLanguage": 88,
+    "supplementCards": 88,
+    "explicitRouteMappings": 69,
+    "explicitGoalQuestionReferences": 368
+  },
+  "technicalEvidence": {
+    "stagedIndex": "Actual selected-source979MCQ/18cases per language passed schema/options/key/feedback audit; unreviewedAVM19, ATV06, Meniscus12 and offlineMammaCalc drafts excluded.",
+    "productionBuild": "Build11PASS; existing unrelated CSSwarning. Local working build may include separate author WIP; deployment remains a separate check.",
+    "sourceSSR": "702/702 actual route/locale graph rendersPASS, remediation-all-routes-ssr09.log; fixtures do not prove HTTP/authentication/fullmedia/scientific release.",
+    "focused": "Actual95 approved pancreatic/PSC payloads and48 inline rationales PASS; published packet, explicitgoal/action, content-version and inline-feedback tests PASS. Real JSON feedback comparison uses deep value equality; synthetic precedence tests retained.",
+    "browser": "Authenticated production build11: PDACFA actual four inline alternatives and selected-B-specific chronic-pancreatitis feedback. PSCEN actual3question quiz with clinically relevant-stricture vignette. CystDE explicit3question and dedicated3card deck links; practice card3 DE-to-FA retains card and returnhash, correct3mm/6mm response and expanded nonautomatic-cancer/nonautomatic-surgery caveat. MoyamoyaEN actual13question link, five goals and visible title-only-source disclosure. No grading/readmarking.",
+    "screenshot": "tmp/assessment-quality/batch07-local-pdac-fa.png"
+  },
+  "limits": [
+    "Bounded assessment/editorial acceptance does not certify all retained media or complete original lessons/PDFs.",
+    "Difficulty is editorial; empirical psychometrics have not been measured.",
+    "No exhaustive live234-route, mobile or all-theme equivalence claim.",
+    "Dr.Zia scientific release remains separate."
+  ]
+}

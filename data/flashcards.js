@@ -811,101 +811,293 @@ const DIVERTICULITIS_FLASHCARDS = DIVERTICULITIS_FLASHCARD_CONTENT.map(item => (
 
 const PANCREATITIS_FLASHCARD_CONTENT = [
   {
-    id: 'causes',
-    category: { de: 'Ätiologie', en: 'Aetiology', fa: 'اتیولوژی' },
-    front: { de: 'Was sind die häufigsten Ursachen der akuten Pankreatitis?', en: 'What are the most common causes of acute pancreatitis?', fa: 'شایع‌ترین علل پانکراتیت حاد چیست؟' },
-    answer: { de: 'Biliär ca. 40–50 %, alkoholtoxisch ca. 30–35 %. Seltener metabolisch, medikamentös, viral, autoimmun oder iatrogen.', en: 'Biliary disease about 40–50%, alcohol about 30–35%. Less often metabolic, drug-related, viral, autoimmune or iatrogenic.', fa: 'علت صفراوی حدود ۴۰–۵۰٪ و الکلی حدود ۳۰–۳۵٪ است. علل متابولیک، دارویی، ویروسی، خودایمنی و یاتروژنیک کمتر شایع‌اند.' },
-    explanation: { de: 'Choledocholithiasis/Mikrolithiasis und Alkoholabusus sind klinisch am wichtigsten; post-ERCP ist die wichtigste iatrogene Konstellation.', en: 'Choledocholithiasis/microlithiasis and alcohol misuse dominate clinically; post-ERCP is the key iatrogenic setting.', fa: 'سنگ کلدوک/میکرولیتیازیس و مصرف الکل از نظر بالینی مهم‌ترند؛ پس از ERCP مهم‌ترین زمینه یاتروژنیک است.' },
-    diagram: { de: 'biliär > Alkohol > metabolisch/medikamentös/viral/autoimmun/iatrogen', en: 'biliary > alcohol > metabolic/drugs/viral/autoimmune/iatrogenic', fa: 'صفراوی > الکل > متابولیک/دارویی/ویروسی/خودایمنی/یاتروژنیک' },
+  "id": "causes",
+  "category": {
+    "de": "Ätiologie",
+    "en": "Aetiology",
+    "fa": "اتیولوژی"
   },
+  "front": {
+    "de": "Was sind die häufigsten Ursachen der akuten Pankreatitis?",
+    "en": "What are the most common causes of acute pancreatitis?",
+    "fa": "شایع‌ترین علل پانکراتیت حاد چیست؟"
+  },
+  "answer": {
+    "de": "Gallensteine/Mikrolithiasis und Alkohol gehören zu den häufigsten Ursachen. Je nach Kontext auch metabolische, medikamentöse, autoimmune oder iatrogene Ursachen prüfen.",
+    "en": "Gallstones/microlithiasis and alcohol are among the most common causes. Assess metabolic, drug-related, autoimmune or iatrogenic causes according to context.",
+    "fa": "سنگ صفراوی یا میکرولیتیازیس و الکل از شایع‌ترین علل‌اند. بسته به زمینه، علل متابولیک، دارویی، خودایمنی یا یاتروژنیک نیز بررسی شوند."
+  },
+  "explanation": {
+    "de": "Häufigkeiten variieren zwischen Populationen; keine feste Prozentverteilung auf alle Patienten übertragen. ACG empfiehlt Sonographie zur biliären Ursachensuche und bei ungeklärter Ursache eine weiterführende Abklärung, etwa erneute Sonographie, MRT oder EUS.",
+    "en": "Frequencies vary between populations; do not apply a fixed percentage distribution to every patient. ACG recommends ultrasound to investigate a biliary cause and further assessment of unexplained disease, such as repeat ultrasound, MRI or EUS.",
+    "fa": "فراوانی‌ها بین جمعیت‌ها متفاوت‌اند؛ یک تقسیم‌بندی درصدی ثابت به همهٔ بیماران تعمیم داده نشود. ACG سونوگرافی را برای بررسی علت صفراوی و در علت نامشخص، ارزیابی بیشتر مانند تکرار سونوگرافی، MRI یا EUS توصیه می‌کند."
+  },
+  "source": "https://doi.org/10.14309/ajg.0000000000002645"
+},
   {
-    id: 'biliary-mechanism',
-    category: { de: 'Pathophysiologie', en: 'Pathophysiology', fa: 'پاتوفیزیولوژی' },
-    front: { de: 'Wie entsteht eine biliäre akute Pankreatitis?', en: 'How does biliary acute pancreatitis develop?', fa: 'پانکراتیت حاد صفراوی چگونه ایجاد می‌شود؟' },
-    answer: { de: 'Stein oder Mikrolithiasis obstruiert die Papilla duodeni major → Druckanstieg oder Galle-Reflux → vorzeitige Enzymaktivierung.', en: 'A stone or microlithiasis obstructs the major papilla → pressure rise or bile reflux → premature enzyme activation.', fa: 'سنگ یا میکرولیتیازیس پاپیلای اصلی را مسدود می‌کند → افزایش فشار یا رفلاکس صفرا → فعال‌شدن زودرس آنزیم‌ها.' },
-    explanation: { de: 'Das erklärt, warum Gallenwegserweiterung und Choledocholithiasis aktiv gesucht werden sollten.', en: 'This is why bile duct dilatation and choledocholithiasis should be actively sought.', fa: 'به همین دلیل باید اتساع مجاری صفراوی و سنگ کلدوک فعالانه جست‌وجو شود.' },
-    diagram: { de: 'Papilla blockiert → Pankreasgangdruck↑ → Enzymaktivierung', en: 'papilla blocked → duct pressure↑ → enzyme activation', fa: 'انسداد پاپیلا → فشار مجرا↑ → فعال شدن آنزیم' },
+  "id": "biliary-mechanism",
+  "category": {
+    "de": "Pathophysiologie",
+    "en": "Pathophysiology",
+    "fa": "پاتوفیزیولوژی"
   },
+  "front": {
+    "de": "Welche anatomische Abflussstörung ist für eine biliäre Pankreatitis relevant?",
+    "en": "Which anatomical outflow obstruction is relevant to biliary pancreatitis?",
+    "fa": "کدام اختلال آناتومیک خروجی در پانکراتیت صفراوی اهمیت دارد؟"
+  },
+  "answer": {
+    "de": "Ein Stein an der Papillen-/Ampullenregion kann den distalen pankreatischen Abfluss beeinträchtigen.",
+    "en": "A stone at the papillary/ampullary region can impair distal pancreatic drainage.",
+    "fa": "سنگ ناحیهٔ پاپیلا/آمپولا می‌تواند تخلیهٔ دیستال پانکراس را مختل کند."
+  },
+  "explanation": {
+    "de": "Choledocholithiasis und Gallenwegsobstruktion gezielt suchen. Bei unklarem Steinstatus können MRCP oder EUS helfen; eine biliäre Ursache allein ohne Cholangitis bedeutet keine automatische dringliche ERCP.",
+    "en": "Look for choledocholithiasis and biliary obstruction. MRCP or EUS can help when stone status is uncertain; a biliary cause alone without cholangitis does not automatically require urgent ERCP.",
+    "fa": "کلدوکولیتیاز و انسداد صفراوی هدفمند بررسی شوند. در نامشخص‌بودن وجود سنگ، MRCP یا EUS کمک می‌کند؛ علت صفراوی به‌تنهایی بدون کلانژیت خودبه‌خود ERCP فوری را لازم نمی‌کند."
+  },
+  "source": "https://doi.org/10.1016/j.pan.2025.04.020"
+},
   {
-    id: 'necrosis-timing',
-    category: { de: 'CT-Zeitpunkt', en: 'CT timing', fa: 'زمان CT' },
-    front: { de: 'Warum ist die Nekrosebeurteilung in der Frühphase schwierig?', en: 'Why is necrosis assessment difficult early on?', fa: 'چرا ارزیابی نکروز در فاز خیلی زود دشوار است؟' },
-    answer: {"de": "Frühe CT kann das Ausmaß der Nekrose unterschätzen; es gibt keinen Zeitpunkt mit garantierter Nachweisbarkeit.", "en": "Early CT can underestimate the extent of necrosis; no time point guarantees detection.", "fa": "CT زودهنگام ممکن است وسعت نکروز را کمتر نشان دهد؛ هیچ زمان ثابتی تشخیص را تضمین نمی‌کند."},
-    explanation: {"de": "Bei schwerer Pankreatitis erste kontrastverstärkte CT idealerweise 72–96 h ab Symptombeginn; bei diagnostischer Unsicherheit oder dringlichen Komplikationen früher.", "en": "In severe pancreatitis, initial contrast-enhanced CT is ideally obtained 72–96 h from symptom onset; earlier for diagnostic uncertainty or urgent complications.", "fa": "در پانکراتیت شدید، CT اولیهٔ کنتراست‌دار ترجیحاً ۷۲–۹۶ ساعت از شروع علائم؛ در ابهام تشخیصی یا عوارض فوری، زودتر."},
-    diagram: {"de": "Früh: Nekrose unterschätzbar\nZeitpunkt nach klinischer Frage wählen", "en": "Early: necrosis may be underestimated\nChoose timing according to the clinical question", "fa": "زودهنگام: احتمال کم‌برآورد نکروز\nزمان‌بندی بر اساس سؤال بالینی"},
+  "id": "necrosis-timing",
+  "category": {
+    "de": "CT-Zeitpunkt",
+    "en": "CT timing",
+    "fa": "زمان CT"
   },
+  "front": {
+    "de": "Warum ist die Nekrosebeurteilung in der Frühphase schwierig?",
+    "en": "Why is necrosis assessment difficult early on?",
+    "fa": "چرا ارزیابی نکروز در فاز خیلی زود دشوار است؟"
+  },
+  "answer": {
+    "de": "Frühe CT kann das Ausmaß der Nekrose unterschätzen; es gibt keinen Zeitpunkt mit garantierter Nachweisbarkeit.",
+    "en": "Early CT can underestimate the extent of necrosis; no time point guarantees detection.",
+    "fa": "CT زودهنگام ممکن است وسعت نکروز را کمتر نشان دهد؛ هیچ زمان ثابتی تشخیص را تضمین نمی‌کند."
+  },
+  "explanation": {
+    "de": "WSES2019 nennt bei schwerer Pankreatitis für die erste CT idealerweise 72–96 h ab Symptombeginn; diagnostische Unsicherheit oder dringliche Komplikationen können frühere Bildgebung erfordern. Kein pauschaler CT-Termin für jede leichte Pankreatitis.",
+    "en": "WSES2019 ideally places first CT in severe pancreatitis at 72–96 hours after symptom onset; diagnostic uncertainty or urgent complications can require earlier imaging. This is not a blanket CT schedule for every mild pancreatitis.",
+    "fa": "WSES۲۰۱۹ برای نخستین CT در پانکراتیت شدید بازهٔ ایده‌آل ۷۲ تا ۹۶ ساعت پس از شروع علائم را ذکر می‌کند؛ تردید تشخیصی یا عوارض فوری می‌توانند بررسی زودتر را لازم کنند. این زمان‌بندی همگانی CT برای هر پانکراتیت خفیف نیست."
+  },
+  "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/"
+},
   {
-    id: 'atlanta-morphology',
-    category: { de: 'Atlanta', en: 'Atlanta', fa: 'آتلانتا' },
-    front: { de: 'Wie unterscheidet Atlanta ödematöse und nekrotisierende Pankreatitis?', en: 'How does Atlanta distinguish oedematous from necrotising pancreatitis?', fa: 'آتلانتا چگونه پانکراتیت ادماتوی را از نکروزان جدا می‌کند؟' },
-    answer: { de: 'Ödematös: Schwellung mit homogener KM-Aufnahme. Nekrotisierend: fehlendes Enhancement in Parenchym und/oder Fettgewebe.', en: 'Oedematous: swelling with homogeneous enhancement. Necrotising: absent enhancement in parenchyma and/or fat.', fa: 'ادماتوی: تورم با تقویت همگن پس از تزریق. نکروزان: فقدان تقویت در پارانشیم و/یا چربی.' },
-    explanation: { de: 'Nekrose kann pankreatisch, peripankreatisch oder kombiniert auftreten.', en: 'Necrosis may be pancreatic, peripancreatic or combined.', fa: 'نکروز می‌تواند پانکراسی، اطراف پانکراس یا ترکیبی باشد.' },
-    diagram: { de: 'homogenes Enhancement → ödematös\nEnhancement-Ausfall → nekrotisierend', en: 'homogeneous enhancement → oedematous\nnon-enhancement → necrotising', fa: 'تقویت همگن → ادماتوی\nفقدان تقویت → نکروزان' },
+  "id": "atlanta-morphology",
+  "category": {
+    "de": "Atlanta",
+    "en": "Atlanta",
+    "fa": "آتلانتا"
   },
+  "front": {
+    "de": "Wie unterscheidet Atlanta ödematöse und nekrotisierende Pankreatitis?",
+    "en": "How does Atlanta distinguish oedematous from necrotising pancreatitis?",
+    "fa": "آتلانتا چگونه پانکراتیت ادماتوی را از نکروزان جدا می‌کند؟"
+  },
+  "answer": {
+    "de": "Interstitiell-ödematös: erhaltenes Parenchym-Enhancement ohne erkennbare Gewebenekrose. Nekrotisierend: pankreatische Nekrose und/oder peripankreatische Nekrose; bei isolierter peripankreatischer Nekrose kann das Pankreas selbst normal kontrastieren.",
+    "en": "Interstitial oedematous: preserved parenchymal enhancement without recognisable tissue necrosis. Necrotising: pancreatic and/or peripancreatic necrosis; pancreatic enhancement may remain normal with isolated peripancreatic necrosis.",
+    "fa": "ادماتوی بینابینی: جذب حفظ‌شدهٔ مادهٔ حاجب در پارانشیم، بدون نکروز بافتی قابل‌شناسایی. نکروزان: نکروز پانکراس و/یا اطراف پانکراس؛ در نکروز منفرد اطراف پانکراس، جذب خود پانکراس می‌تواند طبیعی بماند."
+  },
+  "explanation": {
+    "de": "Fehlendes Parenchym-Enhancement stützt pankreatische Nekrose. Peripankreatische Nekrose anhand der Kollektion und nichtflüssiger nekrotischer Anteile beurteilen, nicht als fehlendes Fett-Enhancement definieren. Frühe CT kann die Ausdehnung unterschätzen; Inhalt und Verlauf sind wichtig.",
+    "en": "Absent parenchymal enhancement supports pancreatic necrosis. Assess peripancreatic necrosis through collection morphology and nonliquid necrotic components, rather than defining it as absent fat enhancement. Early CT can underestimate extent; contents and evolution matter.",
+    "fa": "فقدان جذب مادهٔ حاجب در پارانشیم از نکروز پانکراس حمایت می‌کند. نکروز اطراف پانکراس با مورفولوژی تجمع و اجزای نکروتیک غیرمایع بررسی شود، نه با تعریف «فقدان جذب در چربی». CT زودهنگام می‌تواند وسعت را کمتر نشان دهد؛ محتوا و سیر اهمیت دارند."
+  },
+  "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+},
   {
-    id: 'collections',
-    category: { de: 'Kollektionen', en: 'Collections', fa: 'تجمعات' },
-    front: { de: 'Wie heißen die vier Atlanta-Kollektionen?', en: 'What are the four Atlanta collection terms?', fa: 'چهار اصطلاح تجمعات در آتلانتا چیست؟' },
-    answer: { de: 'APFC, Pseudozyste, ANC und WON.', en: 'APFC, pseudocyst, ANC and WON.', fa: 'APFC، پسودوسیست، ANC و WON.' },
-    explanation: { de: 'Ödematös: APFC <4 Wochen, Pseudozyste >4 Wochen. Nekrotisierend: ANC <4 Wochen, WON >4 Wochen.', en: 'Oedematous: APFC <4 weeks, pseudocyst >4 weeks. Necrotising: ANC <4 weeks, WON >4 weeks.', fa: 'ادماتوی: APFC کمتر از ۴ هفته، پسودوسیست بیش از ۴ هفته. نکروزان: ANC کمتر از ۴ هفته، WON بیش از ۴ هفته.' },
-    diagram: { de: 'ödematös: APFC → Pseudozyste\nnekrotisch: ANC → WON', en: 'oedematous: APFC → pseudocyst\nnecrotic: ANC → WON', fa: 'ادماتوی: APFC → پسودوسیست\nنکروزان: ANC → WON' },
+  "id": "collections",
+  "category": {
+    "de": "Kollektionen",
+    "en": "Collections",
+    "fa": "تجمعات"
   },
+  "front": {
+    "de": "Wie verbinden Sie Zeit, Inhalt und Wand mit den vier Atlanta-Kollektionen?",
+    "en": "How do time, contents and wall relate to the four Atlanta collection terms?",
+    "fa": "زمان، محتوا و دیواره چگونه با چهار اصطلاح تجمعات آتلانتا مرتبط‌اند؟"
+  },
+  "answer": {
+    "de": "Interstitiell: frühe wandlose reine Flüssigkeit = APFC, reife abgekapselte reine Flüssigkeit = Pseudozyste. Nekrotisierend: frühe nekrotische Kollektion = ANC, reife abgekapselte Nekrose = WON.",
+    "en": "Interstitial: early wall-less pure fluid = APFC; mature encapsulated pure fluid = pseudocyst. Necrotising: early necrotic collection = ANC; mature encapsulated necrosis = WON.",
+    "fa": "بینابینی: مایع خالص زودرس بدون دیواره = APFC؛ مایع خالص بالغ و کپسول‌دار = پسودوسیست. نکروزان: تجمع نکروتیک زودرس = ANC؛ نکروز بالغ و محصورشده = WON."
+  },
+  "explanation": {
+    "de": "Die Reifung erfolgt gewöhnlich über etwa vier Wochen, ist aber kein reines Kalenderkriterium. Nekrotischer Inhalt trennt ANC/WON von APFC/Pseudozyste. Nicht jede frühe Kollektion entwickelt eine persistierende reife Kollektion.",
+    "en": "Maturation usually takes about four weeks, but this is not a calendar criterion alone. Necrotic contents distinguish ANC/WON from APFC/pseudocyst. Not every early collection evolves into a persistent mature collection.",
+    "fa": "بلوغ معمولاً حدود چهار هفته طول می‌کشد، اما این صرفاً معیار تقویمی نیست. محتوای نکروتیک ANC/WON را از APFC/پسودوسیست جدا می‌کند. هر تجمع زودرس به تجمع بالغ پایدار تبدیل نمی‌شود."
+  },
+  "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+},
   {
-    id: 'ctsi',
-    category: { de: 'CTSI', en: 'CTSI', fa: 'CTSI' },
-    front: { de: 'Woraus besteht der CT-Schweregrad-Index nach Balthazar?', en: 'What makes up the Balthazar CT severity index?', fa: 'شاخص شدت CT بر اساس Balthazar از چه چیزهایی تشکیل می‌شود؟' },
-    answer: { de: 'Balthazar-Grad A–E plus Nekrose-Score; maximal 10 Punkte.', en: 'Balthazar grade A–E plus necrosis score; maximum 10 points.', fa: 'گرید Balthazar از A تا E به‌علاوه امتیاز نکروز؛ حداکثر ۱۰ امتیاز.' },
-    explanation: { de: 'Balthazar E gibt 4 Punkte; Nekrose >50 % gibt zusätzlich 6 Punkte.', en: 'Balthazar E gives 4 points; >50% necrosis adds 6 points.', fa: 'گرید E چهار امتیاز دارد؛ نکروز بیش از ۵۰٪ شش امتیاز اضافه می‌کند.' },
-    diagram: { de: 'CTSI = Balthazar + Nekrose\n0–3 mild · 4–6 moderat · 7–10 schwer', en: 'CTSI = Balthazar + necrosis\n0–3 mild · 4–6 moderate · 7–10 severe', fa: 'CTSI = Balthazar + نکروز\n۰–۳ خفیف · ۴–۶ متوسط · ۷–۱۰ شدید' },
+  "id": "ctsi",
+  "category": {
+    "de": "CTSI",
+    "en": "CTSI",
+    "fa": "CTSI"
   },
+  "front": {
+    "de": "Woraus besteht der CT-Schweregrad-Index nach Balthazar?",
+    "en": "What makes up the Balthazar CT severity index?",
+    "fa": "شاخص شدت CT بر اساس Balthazar از چه چیزهایی تشکیل می‌شود؟"
+  },
+  "answer": {
+    "de": "Balthazar-Grad A–E plus Nekrose-Score; maximal 10 Punkte.",
+    "en": "Balthazar grade A–E plus necrosis score; maximum 10 points.",
+    "fa": "گرید Balthazar از A تا E به‌علاوه امتیاز نکروز؛ حداکثر ۱۰ امتیاز."
+  },
+  "explanation": {
+    "de": "Der Original-CTSI addiert Balthazar-Grad und Nekroseausmaß. Er beschreibt morphologische CT-Befunde; die klinische Atlanta-Schwereklassifikation benötigt zusätzlich Organfunktion und Verlauf. Ein hoher CTSI allein belegt weder persistierendes Organversagen noch Infektion.",
+    "en": "The original CTSI adds Balthazar grade and necrosis extent. It describes CT morphology; clinical Atlanta severity additionally requires organ function and time course. A high CTSI alone establishes neither persistent organ failure nor infection.",
+    "fa": "CTSI اصلی، گرید بالتازار و وسعت نکروز را جمع می‌کند. مورفولوژی CT را توصیف می‌کند؛ شدت بالینی آتلانتا علاوه بر آن به عملکرد اندام‌ها و سیر زمانی نیاز دارد. CTSI بالا به‌تنهایی نه نارسایی پایدار اندام و نه عفونت را قطعی نمی‌کند."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/2296641/"
+},
   {
-    id: 'pseudoaneurysm',
-    category: { de: 'Komplikationen', en: 'Complications', fa: 'عوارض' },
-    front: { de: 'Wie erkennt man ein Pseudoaneurysma bei Pankreatitis?', en: 'How is a pseudoaneurysm recognised in pancreatitis?', fa: 'پسودوآنوریسم در پانکراتیت چگونه تشخیص داده می‌شود؟' },
-    answer: { de: 'Rundliche, scharf begrenzte arterielle Struktur in oder nahe einer Kollektion/Nekrose.', en: 'A round sharply defined arterial structure in or near a collection/necrosis.', fa: 'ساختار گرد و واضح شریانی داخل یا نزدیک تجمع/نکروز.' },
-    explanation: { de: 'Es entsteht durch enzymatische Arrosion der Gefäßwand; häufig ist die A. lienalis betroffen.', en: 'It results from enzymatic arterial wall erosion; the splenic artery is commonly involved.', fa: 'به علت خوردگی آنزیمی دیواره عروق ایجاد می‌شود؛ شریان طحالی شایعاً درگیر است.' },
-    diagram: { de: 'Nekrose/Kollektion + arterielle Rundstruktur → Pseudoaneurysma', en: 'collection/necrosis + arterial round focus → pseudoaneurysm', fa: 'تجمع/نکروز + کانون گرد شریانی → پسودوآنوریسم' },
+  "id": "pseudoaneurysm",
+  "category": {
+    "de": "Komplikationen",
+    "en": "Complications",
+    "fa": "عوارض"
   },
+  "front": {
+    "de": "Wie erkennt man ein Pseudoaneurysma bei Pankreatitis?",
+    "en": "How is a pseudoaneurysm recognised in pancreatitis?",
+    "fa": "پسودوآنوریسم در پانکراتیت چگونه تشخیص داده می‌شود؟"
+  },
+  "answer": {
+    "de": "Umschriebene arterielle Kontrastierung in/nahe einer Kollektion mit Anschluss an eine Arterie.",
+    "en": "Focal arterial enhancement within/near a collection with continuity to an artery.",
+    "fa": "جذب کانونی شریانی مادهٔ حاجب داخل/کنار تجمع همراه اتصال به شریان."
+  },
+  "explanation": {
+    "de": "Ein Pseudoaneurysma kann eine Blutungsquelle sein. Eine rein flüssige Kollektion oder nicht perfundierte Nekrose zeigt diese arterielle Anreicherung nicht. Zeitnahe fachübergreifende Gefäßabklärung ist erforderlich.",
+    "en": "A pseudoaneurysm may be a bleeding source. A pure fluid collection or nonperfused necrosis does not show this arterial enhancement. Timely multidisciplinary vascular evaluation is needed.",
+    "fa": "پسودوآنوریسم می‌تواند منبع خونریزی باشد. تجمع مایع خالص یا نکروز بدون پرفیوژن این جذب شریانی را نشان نمی‌دهد. بررسی عروقی به‌موقع و چندتخصصی لازم است."
+  },
+  "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3291674/"
+},
   {
-    id: 'infected-necrosis',
-    category: { de: 'Komplikationen', en: 'Complications', fa: 'عوارض' },
-    front: { de: 'Welches Zeichen spricht im CT für infizierte Nekrose?', en: 'Which CT sign indicates infected necrosis?', fa: 'کدام علامت CT به نفع نکروز عفونی است؟' },
-    answer: { de: 'Gas im Nekroseareal.', en: 'Gas within the necrotic area.', fa: 'گاز داخل ناحیه نکروز.' },
-    explanation: {"de": "Gas spricht im passenden Kontext stark für Infektion, ist aber kein absoluter Beweis; Eingriffe und enterische Fisteln berücksichtigen.", "en": "Gas strongly suggests infection in context but is not absolute proof; consider interventions and enteric fistulas.", "fa": "گاز در زمینهٔ مناسب قویاً به نفع عفونت است، اما اثبات قطعی نیست؛ مداخلات و فیستول‌های روده‌ای را در نظر بگیرید."},
-    diagram: {"de": "Nekrose + Gas → Infektion stark vermuten", "en": "Necrosis + gas → strongly suspect infection", "fa": "نکروز + گاز ← شک قوی به عفونت"},
+  "id": "infected-necrosis",
+  "category": {
+    "de": "Komplikationen",
+    "en": "Complications",
+    "fa": "عوارض"
   },
+  "front": {
+    "de": "Welches Zeichen spricht im CT für infizierte Nekrose?",
+    "en": "Which CT sign indicates infected necrosis?",
+    "fa": "کدام علامت CT به نفع نکروز عفونی است؟"
+  },
+  "answer": {
+    "de": "Gas im Nekroseareal ohne vorausgegangene Intervention oder enterische Fistel ist ein starker Hinweis.",
+    "en": "Gas in necrosis without prior intervention or an enteric fistula is a strong clue.",
+    "fa": "گاز در ناحیهٔ نکروز بدون مداخلهٔ قبلی یا فیستول روده‌ای سرنخ قوی است."
+  },
+  "explanation": {
+    "de": "Gas ist nicht bei jeder infizierten Nekrose vorhanden; fehlendes Gas schließt Infektion nicht aus. Eingriffe, Fisteln, Klinik und Verlauf gemeinsam bewerten.",
+    "en": "Gas is absent in many infected necroses; no gas does not exclude infection. Assess interventions, fistulas, clinical findings and evolution together.",
+    "fa": "گاز در بسیاری از نکروزهای عفونی وجود ندارد؛ نبود گاز عفونت را رد نمی‌کند. مداخلات، فیستول، یافته‌های بالینی و سیر با هم ارزیابی شوند."
+  },
+  "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/"
+},
   {
-    id: 'duct-disruption',
-    category: { de: 'Komplikationen', en: 'Complications', fa: 'عوارض' },
-    front: { de: 'Welcher MRCP-Befund spricht für eine Pankreasgangruptur mit möglichem Disconnected-Duct-Syndrom?', en: 'Which MRCP finding suggests pancreatic duct disruption with possible disconnected duct syndrome?', fa: 'کدام یافته در MRCP به نفع پارگی مجرای پانکراس با احتمال سندرم مجرای جداشده است؟' },
-    answer: {"de": "Fehlende Gangkontinuität; bei Disconnection bleibt ein vitaler vorgeschalteter Pankreasanteil vom ableitenden Gang getrennt.", "en": "Loss of duct continuity; in disconnection, viable upstream pancreas is separated from the draining duct.", "fa": "قطع پیوستگی مجرا؛ در قطع ارتباط کامل، بخش زندهٔ بالادست پانکراس از مجرای تخلیه‌کننده جدا می‌شود."},
-    explanation: {"de": "Standard-MRCP stellt Flüssigkeit T2-gewichtet dar. Sekretin-MRCP kann neu auftretende oder zunehmende Flüssigkeit außerhalb des Gangs zeigen; nicht als Kontrastmittelleck der Standard-MRCP bezeichnen.", "en": "Standard MRCP depicts fluid with T2 weighting. Secretin-enhanced MRCP can show new or increasing fluid outside the duct; do not call this a contrast leak on standard MRCP.", "fa": "MRCP معمول مایع را با وزن T2 نشان می‌دهد. MRCP با سکرتین ممکن است مایع تازه یا رو به افزایش خارج مجرا را نشان دهد؛ این یافته نشت مادهٔ حاجب در MRCP معمول نیست."},
-    diagram: {"de": "MRCP → Gangkontinuität\nSekretin-MRCP → möglicher Flüssigkeitsaustritt", "en": "MRCP → duct continuity\nSecretin MRCP → possible fluid leakage", "fa": "MRCP ← پیوستگی مجرا\nMRCP با سکرتین ← احتمال نشت مایع"},
+  "id": "duct-disruption",
+  "category": {
+    "de": "Komplikationen",
+    "en": "Complications",
+    "fa": "عوارض"
   },
+  "front": {
+    "de": "Welcher MRCP-Befund spricht für eine Pankreasgangruptur mit möglichem Disconnected-Duct-Syndrom?",
+    "en": "Which MRCP finding suggests pancreatic duct disruption with possible disconnected duct syndrome?",
+    "fa": "کدام یافته در MRCP به نفع پارگی مجرای پانکراس با احتمال سندرم مجرای جداشده است؟"
+  },
+  "answer": {
+    "de": "Fehlende Gangkontinuität; bei Disconnection bleibt ein vitaler vorgeschalteter Pankreasanteil vom ableitenden Gang getrennt.",
+    "en": "Loss of duct continuity; in disconnection, viable upstream pancreas is separated from the draining duct.",
+    "fa": "قطع پیوستگی مجرا؛ در قطع ارتباط کامل، بخش زندهٔ بالادست پانکراس از مجرای تخلیه‌کننده جدا می‌شود."
+  },
+  "explanation": {
+    "de": "Standard-MRCP stellt Flüssigkeit T2-gewichtet dar. Sekretin-MRCP kann neu auftretende oder zunehmende Flüssigkeit außerhalb des Gangs zeigen; nicht als Kontrastmittelleck der Standard-MRCP bezeichnen.",
+    "en": "Standard MRCP depicts fluid with T2 weighting. Secretin-enhanced MRCP can show new or increasing fluid outside the duct; do not call this a contrast leak on standard MRCP.",
+    "fa": "MRCP معمول مایع را با وزن T2 نشان می‌دهد. MRCP با سکرتین ممکن است مایع تازه یا رو به افزایش خارج مجرا را نشان دهد؛ این یافته نشت مادهٔ حاجب در MRCP معمول نیست."
+  },
+  "source": "https://www.cghjournal.org/article/S1542-3565(25)00586-5/fulltext"
+},
   {
-    id: 'chronic-triad',
-    category: { de: 'Chronisch', en: 'Chronic', fa: 'مزمن' },
-    front: { de: 'Wie lautet die klassische Trias der chronischen Pankreatitis?', en: 'What is the classic triad of chronic pancreatitis?', fa: 'تریاد کلاسیک پانکراتیت مزمن چیست؟' },
-    answer: { de: 'Pankreasverkalkungen, Parenchymatrophie und dilatierter unregelmäßiger Ductus pancreaticus.', en: 'Pancreatic calcifications, parenchymal atrophy and a dilated irregular pancreatic duct.', fa: 'کلسیفیکاسیون پانکراس، آتروفی پارانشیم و اتساع نامنظم مجرای پانکراس.' },
-    explanation: { de: 'Der Gang ist oft >3 mm weit und zeigt wechselnde Stenosen und Erweiterungen.', en: 'The duct is often >3 mm and shows alternating strictures and dilatations.', fa: 'مجرای پانکراس اغلب بیش از ۳ میلی‌متر است و تنگی و گشادشدگی متناوب دارد.' },
-    diagram: { de: 'Verkalkung + Atrophie + Perlschnur-Gang', en: 'calcification + atrophy + chain-of-lakes duct', fa: 'کلسیفیکاسیون + آتروفی + مجرای زنجیره‌ای' },
+  "id": "chronic-triad",
+  "category": {
+    "de": "Chronisch",
+    "en": "Chronic",
+    "fa": "مزمن"
   },
+  "front": {
+    "de": "Welche typische Kombination von Bildbefunden unterstützt chronische Pankreatitis?",
+    "en": "Which typical combination of imaging findings supports chronic pancreatitis?",
+    "fa": "کدام ترکیب تیپیک یافته‌های تصویربرداری از پانکراتیت مزمن حمایت می‌کند؟"
+  },
+  "answer": {
+    "de": "Pankreasverkalkungen, Parenchymatrophie und dilatierter unregelmäßiger Ductus pancreaticus.",
+    "en": "Pancreatic calcifications, parenchymal atrophy and a dilated irregular pancreatic duct.",
+    "fa": "کلسیفیکاسیون پانکراس، آتروفی پارانشیم و اتساع نامنظم مجرای پانکراس."
+  },
+  "explanation": {
+    "de": "Gangkaliberwechsel, Strikturen, Dilatationen und intraduktale Füllungsdefekte im Gesamtmuster beurteilen. Eine normale MRT/MRCP schließt milde chronische Pankreatitis nicht aus; keine einheitliche 3-mm-Grenze ersetzt die morphologische Beurteilung.",
+    "en": "Assess duct calibre changes, strictures, dilatations and intraductal filling defects in the overall pattern. Normal MRI/MRCP does not exclude mild chronic pancreatitis; one universal 3-mm threshold does not replace morphological assessment.",
+    "fa": "تغییر قطر مجرا، تنگی‌ها، اتساع‌ها و نقایص پُرشدگی داخل مجرا در الگوی کلی بررسی شوند. MRI یا MRCP طبیعی، پانکراتیت مزمن خفیف را رد نمی‌کند؛ مرز همگانی ۳ میلی‌متری جای ارزیابی مورفولوژیک را نمی‌گیرد."
+  },
+  "source": "https://doi.org/10.1177/2050640616684695"
+},
   {
-    id: 'carcinoma-dd',
-    category: { de: 'Differenzialdiagnose', en: 'Differential diagnosis', fa: 'تشخیص افتراقی' },
-    front: { de: 'Was spricht eher für Pankreaskarzinom als für chronische Pankreatitis?', en: 'What favours pancreatic carcinoma over chronic pancreatitis?', fa: 'چه چیزی بیشتر به نفع کارسینوم پانکراس نسبت به پانکراتیت مزمن است؟' },
-    answer: { de: 'Abrupter Gangabbruch, Schwanzatrophie, Gefäßinfiltration und keine Verkalkungen in der Masse.', en: 'Abrupt duct cut-off, tail atrophy, vascular infiltration and no calcifications within the mass.', fa: 'قطع ناگهانی مجرا، آتروفی دم، درگیری عروقی و نبود کلسیفیکاسیون داخل توده.' },
-    explanation: { de: 'Bei Pankreatitis spricht ein langer Gangverschluss und das Duct-penetrating-sign eher gegen Karzinom.', en: 'A long ductal narrowing and duct-penetrating sign favour pancreatitis over carcinoma.', fa: 'تنگی طولانی مجرا و علامت duct-penetrating بیشتر به نفع پانکراتیت است تا کارسینوم.' },
-    diagram: { de: 'Karzinom: abrupt + Atrophie\nPankreatitis: langer Gang + duct penetrating', en: 'carcinoma: abrupt + atrophy\npancreatitis: long duct + duct penetrating', fa: 'کارسینوم: قطع ناگهانی + آتروفی\nپانکراتیت: مجرای طولانی + duct penetrating' },
+  "id": "carcinoma-dd",
+  "category": {
+    "de": "Differenzialdiagnose",
+    "en": "Differential diagnosis",
+    "fa": "تشخیص افتراقی"
   },
+  "front": {
+    "de": "Was spricht eher für Pankreaskarzinom als für chronische Pankreatitis?",
+    "en": "What favours pancreatic carcinoma over chronic pancreatitis?",
+    "fa": "چه چیزی بیشتر به نفع کارسینوم پانکراس نسبت به پانکراتیت مزمن است؟"
+  },
+  "answer": {
+    "de": "Abrupter fokaler Gangabbruch mit vorgeschalteter Atrophie und verdächtigem Gefäßkontakt erhöht den Karzinomverdacht.",
+    "en": "Abrupt focal duct cut-off with upstream atrophy and suspicious vascular contact raises concern for carcinoma.",
+    "fa": "قطع ناگهانی کانونی مجرا با آتروفی بالادست و تماس عروقی مشکوک، شک به سرطان را افزایش می‌دهد."
+  },
+  "explanation": {
+    "de": "Ein glatt verengter, durch eine Raumforderung weiter verfolgbarer Hauptgang (Duct-penetrating-sign) unterstützt eine entzündliche Masse, ist aber kein absoluter Karzinomausschluss. Gangverlauf mit Parenchym, Gefäßen und klinischem Kontext kombinieren. Ein zusätzliches Karzinom bleibt auch bei verkalkter chronischer Pankreatitis möglich.",
+    "en": "A smoothly narrowed main duct that can be followed through a mass (duct-penetrating sign) supports an inflammatory mass but does not absolutely exclude carcinoma. Combine duct course with parenchymal, vascular and clinical findings. A coexisting carcinoma remains possible in calcific chronic pancreatitis.",
+    "fa": "مجرای اصلی با تنگی صاف که بتوان آن را درون توده دنبال کرد (علامت duct-penetrating)، از تودهٔ التهابی حمایت می‌کند، اما کارسینوم را به‌طور قطعی رد نمی‌کند. مسیر مجرا با یافته‌های پارانشیم، عروق و زمینهٔ بالینی ترکیب شود. سرطان هم‌زمان حتی در پانکراتیت مزمن کلسیفیه نیز ممکن است."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/11568327/"
+},
   {
-    id: 'autoimmune',
-    category: { de: 'Differenzialdiagnose', en: 'Differential diagnosis', fa: 'تشخیص افتراقی' },
-    front: { de: 'Welche Zeichen sprechen für Autoimmunpankreatitis Typ 1?', en: 'Which signs suggest type 1 autoimmune pancreatitis?', fa: 'کدام علائم به نفع پانکراتیت خودایمنی نوع ۱ است؟' },
-    answer: { de: 'Wurstförmige Konfiguration, Verlust der Lobulierung, hypodenser Halo und schnelle Steroidantwort.', en: 'Sausage-shaped pancreas, loss of lobulation, hypodense halo and rapid steroid response.', fa: 'ظاهر سوسیسی، از بین رفتن لوبولاسیون، halo هیپودنس و پاسخ سریع به استروئید.' },
-    explanation: { de: 'Der Steroid-Test ist ein diagnostisches Kriterium, darf aber nur im passenden klinischen Kontext erfolgen.', en: 'Steroid response is a diagnostic criterion but must be interpreted in the correct clinical setting.', fa: 'پاسخ به استروئید معیار تشخیصی است، اما باید در زمینه بالینی مناسب تفسیر شود.' },
-    diagram: { de: 'sausage pancreas + Halo + Steroidantwort → AIP', en: 'sausage pancreas + halo + steroid response → AIP', fa: 'پانکراس سوسیسی + halo + پاسخ استروئید → AIP' },
+  "id": "autoimmune",
+  "category": {
+    "de": "Differenzialdiagnose",
+    "en": "Differential diagnosis",
+    "fa": "تشخیص افتراقی"
   },
+  "front": {
+    "de": "Welche Zeichen sprechen für Autoimmunpankreatitis Typ 1?",
+    "en": "Which signs suggest type 1 autoimmune pancreatitis?",
+    "fa": "کدام علائم به نفع پانکراتیت خودایمنی نوع ۱ است؟"
+  },
+  "answer": {
+    "de": "Diffuse wurstförmige Vergrößerung mit Verlust der Lobulierung, kapselartiger Saum und charakteristische verzögerte Anreicherung können unterstützen; fokale Formen kommen vor.",
+    "en": "Diffuse sausage-shaped enlargement with loss of lobulation, a capsule-like rim and characteristic delayed enhancement may support the diagnosis; focal forms also occur.",
+    "fa": "بزرگ‌شدن منتشر سوسیسی با از بین رفتن لوبولاسیون، حاشیهٔ کپسول‌مانند و جذب تأخیری مشخص می‌توانند حمایت‌کننده باشند؛ نوع کانونی نیز وجود دارد."
+  },
+  "explanation": {
+    "de": "Bildgebung mit Serologie, weiterer Organbeteiligung und gegebenenfalls Histologie kombinieren. Eine diagnostische Steroidprobe ist kein unkritischer Ersttest: nur spezialärztlich nach negativer Malignomabklärung erwägen, damit ein Pankreaskarzinom nicht verzögert wird.",
+    "en": "Combine imaging with serology, other-organ involvement and histology where appropriate. A diagnostic steroid trial is not an uncritical first test: consider only under specialist care after negative malignancy workup to avoid delaying pancreatic-cancer diagnosis.",
+    "fa": "تصویربرداری با سرولوژی، درگیری سایر اندام‌ها و در صورت لزوم هیستولوژی ترکیب شود. آزمون تشخیصی استروئید، آزمایش اولیهٔ بی‌قید نیست: فقط زیر نظر متخصص و پس از بررسی منفی بدخیمی در نظر گرفته شود تا تشخیص سرطان پانکراس به تأخیر نیفتد."
+  },
+  "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8938398/"
+},
 ]
 
 const PANCREATITIS_FLASHCARDS = PANCREATITIS_FLASHCARD_CONTENT.map(item => ({
@@ -915,7 +1107,8 @@ const PANCREATITIS_FLASHCARDS = PANCREATITIS_FLASHCARD_CONTENT.map(item => ({
   front: item.front,
   answer: item.answer,
   explanation: item.explanation,
-  diagram: item.diagram,
+  ...(item.diagram ? { diagram: item.diagram } : {}),
+  ...(item.source ? { source: item.source } : {}),
 }))
 
 const MIDLINE_CAVA_FLASHCARD_CONTENT = [

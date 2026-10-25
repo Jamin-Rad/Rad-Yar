@@ -43,7 +43,8 @@ for(const r of qualityCoverage){
   topicIds.push(question.tags[0])
  }
  const questionCount=QUESTION_BANK.de.filter(q=>q.tags.some(id=>topicIds.includes(id))).length
- const cardTopic=topicIds.find(id=>cards[id]>0)
+ if(r.cardTopicId && !cards[r.cardTopicId])throw Error(`${r.route}: missing explicit card deck ${r.cardTopicId}`)
+ const cardTopic=r.cardTopicId || topicIds.find(id=>cards[id]>0)
  const subject=QUESTION_BANK.de.find(q=>q.tags.some(id=>topicIds.includes(id)))?.fach
  routes[r.route]={topicIds,questionCount,cardTopic,subject}
 }

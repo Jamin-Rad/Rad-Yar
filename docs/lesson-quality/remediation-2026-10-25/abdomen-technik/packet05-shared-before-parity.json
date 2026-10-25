@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-25",
+  "status": "PASS_CURRENT_GLOBAL_BEFORE",
+  "count": 54,
+  "questionLocaleObjects": 42,
+  "cardTriads": 12,
+  "script": "tmp/assessment-quality/test-atv05-shared-before.mjs",
+  "note": "Proposed after values are not integrated. Exact current originals compared before independent review; root must recheck before mutation."
+}

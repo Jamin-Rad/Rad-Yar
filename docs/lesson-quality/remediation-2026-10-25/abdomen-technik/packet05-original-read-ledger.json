@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-25",
+  "status": "FULL_ORIGINAL_TRIADS_READ_SOURCE_ADJUDICATION_AND_AUTHORING_PENDING",
+  "routes": [
+    "/abdomen/pankreas/neuroendokrine-tumoren",
+    "/abdomen/pankreas/pankreaskarzinom",
+    "/abdomen/pankreas/pankreatitis",
+    "/abdomen/pankreas/zystische-tumoren",
+    "/abdomen/leber/psc-mrcp"
+  ],
+  "snapshot": "tmp/assessment-quality/atv05-original-pool.json",
+  "read": {
+    "questionTriads": 19,
+    "cardTriads": 23,
+    "languages": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "method": "All stems/options/keys/correct and present wrong explanations; all card fronts/answers/explanations/diagrams read manually in six bounded question/card output chunks each. No scientific PASS inferred."
+  },
+  "actualExistingRepairs": [
+    "CTSI-vsAtlanta original MCQ already scientifically qualified in current active bank; pedagogic options still cue key by three definitive claims.",
+    "Pancreatic-cyst duct-communication original MCQ already nonexclusive and cleanKyoto source; full alternatives still need pedagogic improvement."
+  ],
+  "findings": [
+    {
+      "id": "ATV05-EDU-001",
+      "items": "PDAC3 andPNET1/2/4, alcohol, timing,WON,CTSI,IPMN",
+      "finding": "Repeated only/always/proves versus sole cautious/complete key, duplicate wrong options, off-domain choices or source-bookkeeping instead of clinical reasoning; rewrite actual canonical originals via owned files or shared proposals."
+    },
+    {
+      "id": "ATV05-CLIN-002",
+      "item": "pankreatitis-atlanta-morphology card answer/diagram",
+      "finding": "No enhancement in fat is used as definition of peripancreatic necrosis; normal pancreatic enhancement can coexist with peripancreatic necrosis. Need tissue-debris/ANC-WON morphology, not absent fat enhancement surrogate.",
+      "source": "https://doi.org/10.1136/gutjnl-2012-302779",
+      "read": "Fresh original Atlanta necrotising section,Box1,ANC/WON definitions,early diagnostic limits and Figure3caption (not figurepixels).",
+      "status": "SOURCE_CONFIRMED_REPAIR_PENDING"
+    },
+    {
+      "id": "ATV05-LNG-003",
+      "item": "pankreatitis-carcinoma-dd card explanation DE",
+      "finding": "DE langerGangverschluss vs EN longductalnarrowing/FA تنگیطولانی: occlusion conflicts with penetrating duct; use narrowing/stenosis.",
+      "status": "SEMANTIC_REPAIR_PENDING"
+    },
+    {
+      "id": "ATV05-CLIN-004",
+      "item": "pankreatitis-autoimmune card",
+      "finding": "Steroidresponse taught with vague correctcontext caveat; must verify primaryICDC exact negativecancerworkup/expert-only qualification before authoring.",
+      "status": "PRIMARY_ADJUDICATION_PENDING"
+    },
+    {
+      "id": "ATV05-EDU-005",
+      "items": "pancreaticcyst2cards,PSCcard,PNETinsulinoma study card/question",
+      "finding": "Source/PDF bookkeeping dominates retrieval; refocus self-contained clinical discriminator/evidence-limit with explicit actual study design ifretained. NounreadPDF claims introduced."
+    },
+    {
+      "id": "ATV05-SRC-006",
+      "item": "pancreatitis-causes/chronic-triad/collections cards",
+      "finding": "Unsourced aetiologypercentages and generic3mm duct threshold need version/context or remove unnecessary numerical claim; maturation depends morphology not time alone; no automaticAPFC→pseudocyst progression.",
+      "status": "SOURCE_RESEARCH_PENDING"
+    }
+  ],
+  "limits": [
+    "19Q/23cards read is not independent acceptance.",
+    "No production source writes yet forATV05.",
+    "ATV04 remains frozen for reviewer."
+  ]
+}

@@ -1,0 +1,3502 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_COMPLETE_PACKET05_READY_FOR_INDEPENDENT_REVIEW_NOT_RELEASED",
+  "scope": {
+    "routes": 5,
+    "originalQuestionConcepts": 19,
+    "originalCardTriads": 23,
+    "currentQuestionConcepts": 23,
+    "currentLocalizedQuestionObjects": 69,
+    "currentCardTriads": 26,
+    "newQuestionConcepts": 4,
+    "newCardTriads": 3,
+    "questionOptionFeedbackFields": 207,
+    "languages": [
+      "de",
+      "en",
+      "fa"
+    ]
+  },
+  "routeCoverage": [
+    {
+      "route": "/abdomen/pankreas/neuroendokrine-tumoren",
+      "topicId": "pnet",
+      "status": "AUTHOR_FULL_ORIGINAL_PNET_POOL_READY_PACKET05_REVIEW_PENDING",
+      "learningGoals": [
+        {
+          "id": "arterial-pattern",
+          "text": {
+            "de": "Häufige arterielle PanNET-Muster erkennen und atypisches Enhancement berücksichtigen.",
+            "en": "Recognise common arterial PanNET patterns while considering atypical enhancement.",
+            "fa": "الگوهای شریانی شایع PanNET را بشناسید و رفتار آتیپیک مادهٔ حاجب را در نظر بگیرید."
+          },
+          "questionIds": [
+            "pnet-de-01"
+          ],
+          "cardIds": [
+            "pnet-arterial-pattern"
+          ]
+        },
+        {
+          "id": "splenic-mimic",
+          "text": {
+            "de": "Ektopisches Milzgewebe durch Mehrphasen-/Sequenzvergleich als Pankreasschwanz-Mimic berücksichtigen.",
+            "en": "Consider ectopic splenic tissue as a pancreatic-tail mimic using multiphase/sequence comparison.",
+            "fa": "بافت طحال نابجا را با مقایسهٔ چندفازی و چندسکانسی به‌عنوان تقلیدکنندهٔ تودهٔ دم پانکراس در نظر بگیرید."
+          },
+          "questionIds": [
+            "pnet-de-02"
+          ],
+          "cardIds": [
+            "pnet-splenic-mimic"
+          ]
+        },
+        {
+          "id": "functionality",
+          "text": {
+            "de": "Ein funktionelles Hormonsyndrom klinisch-biochemisch statt anhand des Bildsignals einordnen.",
+            "en": "Classify a functioning hormonal syndrome clinically and biochemically rather than by imaging signal.",
+            "fa": "سندرم هورمونی فانکشنال را بر پایهٔ یافته‌های بالینی و بیوشیمیایی، نه سیگنال تصویر، ارزیابی کنید."
+          },
+          "questionIds": [
+            "pnet-de-03"
+          ],
+          "cardIds": [
+            "pnet-functional-status"
+          ]
+        },
+        {
+          "id": "risk-evidence",
+          "text": {
+            "de": "Insulinomdaten von der Risikoeinschätzung nichtfunktioneller PanNET trennen.",
+            "en": "Separate insulinoma data from risk estimation for nonfunctioning PanNETs.",
+            "fa": "داده‌های انسولینوما را از برآورد خطر PanNET غیرفانکشنال جدا کنید."
+          },
+          "questionIds": [
+            "pnet-de-04"
+          ],
+          "cardIds": [
+            "pnet-insulinoma-caveat"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/pankreas/pankreaskarzinom",
+      "topicId": "pdac",
+      "status": "AUTHOR_FULL_ORIGINAL_POOL_DRAFT_SHARED_PROPOSALS_UNAPPLIED_INDEPENDENT_REVIEW_PENDING",
+      "learningGoals": [
+        {
+          "id": "occult-obstruction",
+          "text": {
+            "de": "Bei möglichem isoattenuierendem PDAC sekundäre Gang-/Parenchymzeichen erkennen und unterstützende MRT-/MRCP-Zeichen benennen.",
+            "en": "Recognise secondary ductal/parenchymal signs of possible isoattenuating PDAC and name supportive MRI/MRCP findings.",
+            "fa": "نشانه‌های ثانویهٔ مجرا/پارانشیم در PDAC احتمالی هم‌دانسیته را بشناسید و یافته‌های حمایتی MRI/MRCP را نام ببرید."
+          },
+          "questionIds": [
+            "abdomen-pdac-isoattenuating-de-01"
+          ],
+          "cardIds": [
+            "pdac-isoattenuating",
+            "pdac-mri"
+          ]
+        },
+        {
+          "id": "double-duct-localisation",
+          "text": {
+            "de": "Das Double-Duct-Muster distal lokalisieren und neoplastische von benignen Ursachen als offene Differenzialdiagnose trennen.",
+            "en": "Localise the double-duct pattern distally and retain both neoplastic and benign causes in the differential.",
+            "fa": "الگوی دو مجرا را در ناحیهٔ دیستال موضع‌یابی کنید و علل نئوپلاستیک و خوش‌خیم را در تشخیص افتراقی باز نگه دارید."
+          },
+          "questionIds": [
+            "abdomen-pdac-double-duct-de-01"
+          ],
+          "cardIds": [
+            "pdac-double-duct"
+          ]
+        },
+        {
+          "id": "vessel-planning",
+          "text": {
+            "de": "Für die Gefäßplanung Kontakt, Kontur und venöse Anschlusssegmente strukturiert dokumentieren, ohne allein daraus die Resektabilität festzulegen.",
+            "en": "Document contact, contour and adjacent venous segments for vascular planning without determining resectability from these alone.",
+            "fa": "تماس، جدار و قطعات وریدی مجاور را برای برنامه‌ریزی عروقی ساختاریافته ثبت کنید، بدون آنکه تنها بر همان اساس قابلیت برداشت تعیین شود."
+          },
+          "questionIds": [
+            "abdomen-pdac-vessel-contact-de-01"
+          ],
+          "cardIds": [
+            "pdac-vessel-reporting"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/leber/psc-mrcp",
+      "topicId": "psc-pbc",
+      "status": "AUTHOR_FULL_ORIGINAL_POOL_REVISED_TWO_TARGETED_GOALS_ADDED_REVIEW_PENDING",
+      "learningGoals": [
+        {
+          "id": "duct-pattern",
+          "text": {
+            "de": "Das typische multifokale Perlschnurmuster von konkurrierenden Gangmustern unterscheiden.",
+            "en": "Distinguish multifocal beading from competing ductal patterns.",
+            "fa": "الگوی مهره‌مهرهٔ چندکانونی را از الگوهای رقیب مجاری افتراق دهید."
+          },
+          "questionIds": [
+            "psc-pbc-mrcp-beading-de"
+          ],
+          "cardIds": [
+            "psc-pbc-mrcp-beading"
+          ]
+        },
+        {
+          "id": "quality-strategy",
+          "text": {
+            "de": "Eine technisch unzureichende MRCP von einem hochwertigen Normalbefund trennen und den nächsten diagnostischen Schritt begründen.",
+            "en": "Distinguish inadequate MRCP from a high-quality normal examination and justify the next diagnostic step.",
+            "fa": "MRCP ناکافی را از بررسی طبیعی و باکیفیت تفکیک کنید و گام تشخیصی بعدی را توضیح دهید."
+          },
+          "questionIds": [
+            "aq-atv-psc-pbc-de-quality-next"
+          ],
+          "cardIds": [
+            "aq-atv-psc-pbc-quality-next"
+          ]
+        },
+        {
+          "id": "clinical-relevance",
+          "text": {
+            "de": "Morphologische Strikturschwere von klinischer Relevanz mit obstruktiver Cholestase oder Cholangitis unterscheiden.",
+            "en": "Distinguish morphological stricture severity from clinical relevance with obstructive cholestasis or cholangitis.",
+            "fa": "شدت مورفولوژیک تنگی را از اهمیت بالینی همراه کلستاز انسدادی یا کلانژیت تفکیک کنید."
+          },
+          "questionIds": [
+            "aq-atv-psc-pbc-de-relevant-stricture"
+          ],
+          "cardIds": [
+            "aq-atv-psc-pbc-relevant-stricture"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/pankreas/zystische-tumoren",
+      "topicId": "ipmn",
+      "cardTopicId": "abdomen-pancreatic-cysts",
+      "status": "AUTHOR_ORIGINAL_POOL_AND_TWO_GAP_QUESTIONS_READY_REVIEW_PENDING",
+      "learningGoals": [
+        {
+          "id": "post-inflammatory-context",
+          "text": {
+            "de": "Gangkommunikation gemeinsam mit Entzündungsverlauf und flüssigem oder nekrotischem Inhalt einordnen.",
+            "en": "Interpret duct communication together with the inflammatory course and fluid versus necrotic contents.",
+            "fa": "ارتباط مجرایی را همراه سیر التهاب و محتوای مایع یا نکروتیک تفسیر کنید."
+          },
+          "questionIds": [
+            "abdomen-pancreatic-cysts-de-01"
+          ],
+          "cardIds": [
+            "abdomen-pancreatic-cysts-pseudocyst-context-clues"
+          ]
+        },
+        {
+          "id": "serous-morphology",
+          "text": {
+            "de": "Seröse mikrozystische Hinweise erkennen und die begrenzte Aussage makrozystischer Kontur benennen.",
+            "en": "Recognise serous microcystic clues and state the limitations of macrocystic contour.",
+            "fa": "نشانه‌های میکروکیستیک سروزی را بشناسید و محدودیت حاشیهٔ ماکروکیستیک را بیان کنید."
+          },
+          "questionIds": [
+            "aq-atv-ipmn-de-serous-pattern"
+          ],
+          "cardIds": [
+            "abdomen-pancreatic-cysts-serous-macrocystic-contour"
+          ]
+        },
+        {
+          "id": "kyoto-risk",
+          "text": {
+            "de": "Enhancierende Wandknoten nach Kyoto2024 als HRS oder WF klassifizieren, ohne eine Krebsdiagnose oder automatische Operation abzuleiten.",
+            "en": "Classify enhancing mural nodules as Kyoto2024 HRS or WF without inferring a cancer diagnosis or automatic surgery.",
+            "fa": "ندول دیواره‌ای دارای جذب مادهٔ حاجب را طبق کیوتو۲۰۲۴ به HRS یا WF طبقه‌بندی کنید، بدون استنباط سرطان یا جراحی خودکار."
+          },
+          "questionIds": [
+            "aq-atv-ipmn-de-nodule-risk"
+          ],
+          "cardIds": [
+            "aq-atv-ipmn-nodule-risk"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/pankreas/pankreatitis",
+      "topicId": "pankreatitis",
+      "learningGoals": [
+        {
+          "id": "etiology-timing",
+          "text": {
+            "de": "Biliäre Abflussstörung und Alkoholmechanismus einordnen sowie das benannte CT-Zeitfenster mit dringlichen Ausnahmen begründen.",
+            "en": "Interpret biliary obstruction and alcohol mechanisms and justify the specified CT window and urgent exceptions.",
+            "fa": "اختلال تخلیهٔ صفراوی و مکانیسم الکل را تفسیر کنید و بازهٔ مشخص CT و استثناهای فوری را توضیح دهید."
+          },
+          "questionIds": [
+            "pankreatitis-de-biliary-cause",
+            "pankreatitis-de-alcohol",
+            "pankreatitis-de-necrosis-timing"
+          ],
+          "cardIds": [
+            "pankreatitis-causes",
+            "pankreatitis-biliary-mechanism",
+            "pankreatitis-necrosis-timing"
+          ]
+        },
+        {
+          "id": "morphology-collections",
+          "text": {
+            "de": "Interstitielle und nekrotisierende Formen sowie APFC/Pseudozyste/ANC/WON aus Inhalt, Wand, Zeit und Kontext unterscheiden.",
+            "en": "Distinguish interstitial and necrotising forms and APFC/pseudocyst/ANC/WON from contents, wall, time and context.",
+            "fa": "انواع بینابینی و نکروزان و نیز APFC/پسودوسیست/ANC/WON را بر پایهٔ محتوا، دیواره، زمان و زمینه افتراق دهید."
+          },
+          "questionIds": [
+            "pankreatitis-de-atlanta-morphology",
+            "pankreatitis-de-collections",
+            "pankreatitis-de-walled-off-necrosis"
+          ],
+          "cardIds": [
+            "pankreatitis-atlanta-morphology",
+            "pankreatitis-collections"
+          ]
+        },
+        {
+          "id": "ctsi-clinical",
+          "text": {
+            "de": "Den morphologischen CTSI von klinischer Atlanta-Schwere anhand Organversagen und Dauer trennen.",
+            "en": "Separate morphological CTSI from clinical Atlanta severity using organ failure and duration.",
+            "fa": "CTSI مورفولوژیک را با توجه به نارسایی عضو و مدت آن از شدت بالینی آتلانتا جدا کنید."
+          },
+          "questionIds": [
+            "pankreatitis-de-ctsi-severe"
+          ],
+          "cardIds": [
+            "pankreatitis-ctsi"
+          ]
+        },
+        {
+          "id": "complications",
+          "text": {
+            "de": "Arterielle Komplikationen und Infektionshinweise erkennen und bei Gangunterbrechung den vitalen vorgeschalteten Pankreasanteil berücksichtigen.",
+            "en": "Recognise arterial complications and infection clues and consider viable upstream pancreas in duct disruption.",
+            "fa": "عوارض شریانی و سرنخ‌های عفونت را بشناسید و در قطع مجرا بخش زندهٔ بالادست پانکراس را در نظر بگیرید."
+          },
+          "questionIds": [
+            "pankreatitis-de-pseudoaneurysm",
+            "pankreatitis-de-infected-necrosis"
+          ],
+          "cardIds": [
+            "pankreatitis-pseudoaneurysm",
+            "pankreatitis-infected-necrosis",
+            "pankreatitis-duct-disruption"
+          ]
+        },
+        {
+          "id": "chronic-mass-differential",
+          "text": {
+            "de": "Chronische Gang-/Parenchymzeichen und tumorverdächtige Muster gewichten; bei möglicher Autoimmunpankreatitis die notwendige Tumorabklärung vor Steroidprobe benennen.",
+            "en": "Weigh chronic ductal/parenchymal and tumour-suspicious patterns; name the required malignancy evaluation before a steroid trial in possible autoimmune pancreatitis.",
+            "fa": "الگوهای مزمن مجرا/پارانشیم و الگوهای مشکوک به تومور را بسنجید؛ در احتمال پانکراتیت خودایمنی، بررسی لازم بدخیمی پیش از آزمون استروئید را بیان کنید."
+          },
+          "questionIds": [
+            "pankreatitis-de-carcinoma-dd"
+          ],
+          "cardIds": [
+            "pankreatitis-chronic-triad",
+            "pankreatitis-carcinoma-dd",
+            "pankreatitis-autoimmune"
+          ]
+        }
+      ],
+      "coverageLimit": "Question/card evidence combined; DPDS and AIP are focused retrieval cards rather than newly fabricated case quizzes. No fixed item quota.",
+      "status": "AUTHOR_FULL_ORIGINAL_POOL_SHARED_PROPOSALS_UNAPPLIED_REVIEW_PENDING"
+    }
+  ],
+  "questions": {
+    "de": [
+      {
+        "id": "pnet-de-01",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "Welches CT-Muster ist für einen PanNET häufig, obwohl abweichende Enhancementmuster vorkommen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Umschriebener solider Herd mit deutlicher arterieller Hyperanreicherung zum Pankreas"
+          },
+          {
+            "id": "B",
+            "text": "Unscharfer hypovaskulärer Herd mit abruptem Hauptgangabbruch"
+          },
+          {
+            "id": "C",
+            "text": "Diffuse Drüsenschwellung mit entzündlichen Veränderungen des umgebenden Fetts"
+          },
+          {
+            "id": "D",
+            "text": "Cluster kleiner Zysten mit kontrastierenden Septen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Arterielle Hyperanreicherung ist ein häufiges PanNET-Muster, aber nicht obligat. Originalkohorten dokumentieren auch iso- und hypoenhancende PanNET. Größe, Morphologie, Gang- und Gefäßbezug sowie Metastasenbefund ergänzen die Einordnung; aus Enhancement allein folgt kein sicherer Tumorgrad.",
+        "wrongExplanations": {
+          "B": "Dieses Muster lenkt den Verdacht eher auf einen duktalen Tumor. Hypoenhancement kann jedoch auch bei PanNET vorkommen; die Frage sucht dessen häufiges Muster, keinen Ausschlusstest.",
+          "C": "Diffuse Schwellung und Fettreaktion sind eher ein entzündliches Muster als das häufige fokale solide PanNET-Muster. Klinik und weitere Befunde bleiben erforderlich.",
+          "D": "Ein mikrozystisch-septiertes Muster lenkt die Einordnung zunächst auf eine zystische Läsion. PanNET können zystische Anteile haben, dies ist aber nicht das gefragte häufige solide Muster."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/23991643/"
+      },
+      {
+        "id": "pnet-de-02",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "Textfall: Eine kleine hypervaskuläre Läsion im Pankreasschwanz entspricht in CT-Dichte, MRT-Signal und Enhancement über die verfügbaren Phasen der Milz. Welche wichtige Differenzialdiagnose passt besonders zu dieser Übereinstimmung?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Nichtfunktionelles PanNET"
+          },
+          {
+            "id": "B",
+            "text": "Intrapankreatischer Splenulus"
+          },
+          {
+            "id": "C",
+            "text": "Pankreasmetastase eines Nierenzellkarzinoms"
+          },
+          {
+            "id": "D",
+            "text": "Solid-pseudopapilläre Neoplasie"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Ektopisches Milzgewebe kann über native und dynamische CT-/MRT-Aufnahmen die Eigenschaften der Milz zeigen. Diese Übereinstimmung ist ein wichtiger Hinweis im Pankreasschwanz und sollte vor vorschneller Tumorzuordnung geprüft werden. Bei verbleibender Unsicherheit ist eine gezielte Bestätigung möglich; die Textkonstellation ersetzt keine individuelle Diagnostik.",
+        "wrongExplanations": {
+          "A": "PanNET kann hypervaskulär sein. Die zusätzliche Übereinstimmung mit Milzgewebe in mehreren Sequenzen und Phasen verlangt jedoch besonders die Berücksichtigung eines Splenulus; Hypervaskularität allein trennt beide nicht.",
+          "C": "Nierenzellkarzinommetastasen können hypervaskulär sein; Tumoranamnese und übrige Ausbreitung sind wichtig. Die beschriebene Milzgleichheit ist hier aber der gezielte Hinweis auf ektopisches Milzgewebe.",
+          "D": "Eine pankreatische Raumforderung kann diese weitere Differenzialdiagnose erfordern. Die konkrete Übereinstimmung mit der Milz begründet hier vorrangig die Prüfung auf einen Splenulus, nicht die Zuordnung einer Neoplasie."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3473517/"
+      },
+      {
+        "id": "pnet-de-03",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "Welcher Befundkomplex stützt am direktesten ein klinisch funktionelles Insulinom-Syndrom bei einem PanNET?",
+        "options": [
+          {
+            "id": "A",
+            "text": "SSTR-positive Läsion und unauffällige Glukosewerte"
+          },
+          {
+            "id": "B",
+            "text": "Insulin-positive Tumorfärbung ohne dokumentiertes Hypoglykämiesyndrom"
+          },
+          {
+            "id": "C",
+            "text": "Typische Hypoglykämiebeschwerden mit dokumentiert niedriger Glukose und unangemessen erhaltenem/erhöhtem Insulin"
+          },
+          {
+            "id": "D",
+            "text": "Arterielle Hyperanreicherung mit niedrigem T1- und hohem T2-Signal"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Ein NET-assoziiertes funktionelles Syndrom verbindet klinische Symptome mit dem biochemischen Nachweis einer unangemessenen Hormonkonzentration. Bildgebung lokalisiert und charakterisiert, ersetzt diese klinisch-biochemische Einordnung aber nicht. Die Bestätigung erfolgt im geeigneten endokrinologischen Untersuchungsrahmen.",
+        "wrongExplanations": {
+          "A": "SSTR-Uptake zeigt Rezeptorexpression und kann zur Lokalisation beitragen; er belegt kein klinisches Hormonexzess-Syndrom.",
+          "B": "Eine Hormonfärbung zeigt die Expression im Gewebe, belegt aber ohne passendes klinisch-biochemisches Syndrom keine Funktionalität.",
+          "D": "Diese Signale und das Enhancement beschreiben ein Bildmuster, nicht die systemische Wirkung einer Hormonsekretion."
+        },
+        "source": "https://doi.org/10.1111/jne.13318"
+      },
+      {
+        "id": "pnet-de-04",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "Eine Zusammenfassung beschreibt überwiegend gutartige Insulinome. Für eine nichtfunktionelle PanNET-Gruppe soll daraus eine Risikoeinschätzung abgeleitet werden. Welche Datengrundlage adressiert diese Übertragbarkeit am direktesten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Eine größere Zahl zusätzlicher Insulinome mit derselben Datenerhebung"
+          },
+          {
+            "id": "B",
+            "text": "Genauere Messungen des arteriellen Enhancements in der Insulinomgruppe"
+          },
+          {
+            "id": "C",
+            "text": "Eine längere Nachbeobachtung derselben Insulinomgruppe"
+          },
+          {
+            "id": "D",
+            "text": "Daten aus der nichtfunktionellen Zielgruppe mit Tumorgrad, Verlauf und klinischem Kontext"
+          }
+        ],
+        "correct": "D",
+        "explanation": "Insulinomdaten beschreiben eine andere klinisch-biologische Gruppe. Mehr oder längere Daten derselben Ausgangsgruppe lösen die Übertragbarkeit nicht allein. Für nichtfunktionelle PanNET sind eigene Daten sowie Grad, Wachstum, Bildbefund und Patientenkontext relevant; eine Größen- oder Benignitätsregel wird daraus nicht abgeleitet.",
+        "wrongExplanations": {
+          "A": "Mehr Insulinomfälle verbessern die Beschreibung der Ausgangsgruppe, beantworten aber den Unterschied zur nichtfunktionellen Zielgruppe nicht direkt.",
+          "B": "Genauere Bildmessungen können die Messqualität verbessern, ersetzen aber keine passende Zielpopulation für die Risikoeinschätzung.",
+          "C": "Längere Nachbeobachtung kann spätere Ereignisse bei Insulinomen erfassen. Die klinisch-biologische Differenz zur nichtfunktionellen Gruppe bleibt bestehen."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7029300/"
+      },
+      {
+        "id": "psc-pbc-mrcp-beading-de",
+        "topicId": "psc-pbc",
+        "tags": [
+          "psc-pbc"
+        ],
+        "fach": "abdomen",
+        "question": "Welche cholangiographische Befundkonstellation ist charakteristisch für eine großgangbetonte PSC?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Multifokale kurze Strikturen mit dazwischen normal weiten oder leicht dilatierten Gangabschnitten"
+          },
+          {
+            "id": "B",
+            "text": "Eine einzelne abrupte Hilusstenose mit gleichmäßiger proximaler Gangdilatation"
+          },
+          {
+            "id": "C",
+            "text": "Eine lange glatte distale Choledochusstenose mit diffuser Pankreasvergrößerung"
+          },
+          {
+            "id": "D",
+            "text": "Ein umspülter intraluminaler Füllungsdefekt im Choledochus mit vorgeschalteter Dilatation"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die wechselnden kurzen Engstellen und normal weiten oder leicht erweiterten Abschnitte ergeben das Perlschnurmuster. Für die PSC-Diagnose müssen sekundäre Ursachen einer sklerosierenden Cholangitis ausgeschlossen werden; die Morphologie allein bestimmt keine Ätiologie.",
+        "wrongExplanations": {
+          "B": "Eine isolierte Hilusobstruktion verlangt eine gezielte Ursachenabklärung, unter anderem auf eine neoplastische Striktur. Sie zeigt nicht das gefragte multifokale Wechselmuster.",
+          "C": "Diese Kombination lenkt die Differenzialdiagnose unter anderem zur IgG4-assoziierten Erkrankung. Sie ersetzt nicht die charakteristische multifokale PSC-Konstellation.",
+          "D": "Ein umspülter intraluminaler Defekt spricht zunächst für eine intraduktale Ursache wie einen Stein. Er ist nicht gleichbedeutend mit mehreren kurzen Wandstrikturen."
+        },
+        "source": "https://doi.org/10.1002/hep.32771"
+      },
+      {
+        "id": "aq-atv-psc-pbc-de-quality-next",
+        "topicId": "psc-pbc",
+        "tags": [
+          "psc-pbc"
+        ],
+        "fach": "abdomen",
+        "question": "Textfall: Bei stabilem PSC-Verdacht ist die erste MRCP durch Bewegungsartefakte nicht diagnostisch; periphere Gänge sind nicht beurteilbar. Es bestehen keine akuten Zeichen einer Cholangitis oder behandlungsbedürftigen Obstruktion. Welcher nächste Schritt klärt die noch unzureichende Gangdarstellung vorrangig?",
+        "options": [
+          {
+            "id": "A",
+            "text": "ERCP zur diagnostischen Cholangiographie und Bürstenzytologie"
+          },
+          {
+            "id": "B",
+            "text": "Erneute hochwertige MRT/MRCP in einem erfahrenen Zentrum"
+          },
+          {
+            "id": "C",
+            "text": "Leberbiopsie zur histologischen Suche nach Small-duct-PSC"
+          },
+          {
+            "id": "D",
+            "text": "Portalvenöse CT zur Erfassung von Lebermorphologie und Gangdilatation"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Zunächst muss die technische Limitation durch hochwertige MRT/MRCP behoben werden. ERCP wird nicht allein zur PSC-Diagnose eingesetzt. Eine Biopsie kann bei normaler hochwertiger MRCP und anhaltendem Verdacht auf Small-duct-PSC beziehungsweise ausgewählten unklaren Befunden infrage kommen.",
+        "wrongExplanations": {
+          "A": "ERCP kann bei Interventions- oder Gewebeabklärungsbedarf sinnvoll sein, ist hier aber kein Ersatz für die technisch unzureichende nichtinvasive Erstdiagnostik.",
+          "C": "Small-duct-PSC setzt die Beurteilung einer hochwertigen, unauffälligen Cholangiographie voraus. Eine durch Bewegung unlesbare MRCP ist nicht gleichbedeutend mit einem normalen Gangsystem.",
+          "D": "CT kann zusätzliche Leber- oder Obstruktionsbefunde zeigen, behebt aber die fehlende hochwertige cholangiographische Darstellung kleinerer Gangäste nicht."
+        },
+        "source": "https://doi.org/10.1002/hep.32771"
+      },
+      {
+        "id": "aq-atv-psc-pbc-de-relevant-stricture",
+        "topicId": "psc-pbc",
+        "tags": [
+          "psc-pbc"
+        ],
+        "fach": "abdomen",
+        "question": "Bei einer Choledochusstriktur in bekannter PSC: Welche Zusatzinformation begründet nach AASLD2022 die Bezeichnung „klinisch relevante Striktur“ am unmittelbarsten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Eine ausgeprägte prozentuale Lumeneinengung im MRCP ohne klinische Zusatzinformation"
+          },
+          {
+            "id": "B",
+            "text": "Eine längere Strikturstrecke im Vergleich zu anderen Gangabschnitten"
+          },
+          {
+            "id": "C",
+            "text": "Zeichen oder Symptome einer obstruktiven Cholestase und/oder bakteriellen Cholangitis"
+          },
+          {
+            "id": "D",
+            "text": "Eine regionale Leberatrophie bei unveränderten Cholestasewerten und fehlenden Symptomen"
+          }
+        ],
+        "correct": "C",
+        "explanation": "„Relevant“ verknüpft die Striktur mit Zeichen/Symptomen obstruktiver Cholestase oder bakterieller Cholangitis. Das ist nicht allein ein MRCP-Durchmessermaß. Die Ursachen- und Komplikationsabklärung bleibt erforderlich; die Bezeichnung ist kein Malignitätsnachweis.",
+        "wrongExplanations": {
+          "A": "Das ist eine morphologische Schwereangabe. Sie liefert ohne klinischen Bezug nicht die Definition einer relevanten Striktur.",
+          "B": "Die Länge gehört in den strukturierten Befund, ersetzt aber nicht den Zusammenhang mit obstruktiver Cholestase oder Cholangitis.",
+          "D": "Regionale Atrophie ist ein zusätzlicher morphologischer Befund. Für die Bezeichnung „relevant“ ist der definierte klinische Zusammenhang maßgeblich."
+        },
+        "source": "https://doi.org/10.1002/hep.32771"
+      },
+      {
+        "id": "abdomen-pdac-isoattenuating-de-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "Textfall: Bei Gewichtsverlust zeigt die Mehrphasen-CT keine klar hypodense Pankreasmasse. Welche zusätzliche Befundkombination stützt den Verdacht auf ein isoattenuierendes PDAC am stärksten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Abrupter fokaler Pankreasgangabbruch mit vorgeschalteter Gangdilatation und Atrophie des vorgeschalteten Parenchyms"
+          },
+          {
+            "id": "B",
+            "text": "Diffuse Parenchymverkalkungen mit mehreren intraduktalen Konkrementen und wechselnder Gangweite"
+          },
+          {
+            "id": "C",
+            "text": "Diffuse Drüsenschwellung mit homogenem Enhancement und entzündlicher peripankreatischer Flüssigkeit"
+          },
+          {
+            "id": "D",
+            "text": "Umschriebene Mikrozystengruppe mit zentraler Narbe und verlagertem, durchgängigem Hauptgang"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Ein fokaler Gangabbruch mit vorgeschalteten Gang- und Parenchymveränderungen kann ein isoattenuierendes PDAC indirekt anzeigen. Die Konstellation verlangt gezielte Abklärung, ist aber kein histologischer Beweis.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/12202711/",
+        "wrongExplanations": {
+          "B": "Verkalkungen und intraduktale Steine gewichten eine chronische Pankreatitis stärker. Ein zusätzliches Karzinom wäre damit nicht ausgeschlossen; gesucht ist hier die stärkste fokal-obstruktive Warnkonstellation.",
+          "C": "Dieses diffuse entzündliche Muster gewichtet eine interstitiell-ödematöse Pankreatitis stärker als die gesuchte fokale Gangobstruktion mit vorgeschalteter Atrophie.",
+          "D": "Mikrozysten und zentrale Narbe gewichten eine seröse zystische Läsion. Ein verdrängter, offener Gang ist nicht der gesuchte abrupte Gangabbruch."
+        }
+      },
+      {
+        "id": "abdomen-pdac-double-duct-de-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "Textfall: Ductus choledochus und Pankreashauptgang sind bis zur Pankreaskopf-/Papillenregion erweitert. Eine sichere Ursache ist noch nicht sichtbar. Welche vorläufige Befundbewertung ist am besten begründet?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Distaler periampullärer oder pankreaskopfnaher Abflusshinderungsprozess; neoplastische und benigne Ursachen weiter abklären"
+          },
+          {
+            "id": "B",
+            "text": "Isolierte Hilusobstruktion als gemeinsame Erklärung der beiden Gangdilatationen"
+          },
+          {
+            "id": "C",
+            "text": "Isolierte Pankreasschwanzobstruktion als gemeinsame Erklärung der beiden Gangdilatationen"
+          },
+          {
+            "id": "D",
+            "text": "Diffuse intrahepatische Cholangitis als gemeinsame Erklärung der beiden Gangdilatationen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die gemeinsame distale Abflussregion erklärt das Double-Duct-Zeichen. Es ist kein PDAC-spezifischer Gewebebefund: Unter anderem kommen pankreatische oder ampulläre Neoplasien, chronische Pankreatitis und Steine infrage. Klinischer Kontext und weitere gezielte Abklärung bestimmen die Ursache.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/24705640/",
+        "wrongExplanations": {
+          "B": "Eine isolierte Hilusobstruktion erklärt primär die proximalen Gallenwege, nicht zugleich die Erweiterung des Pankreasgangs bis zur gemeinsamen distalen Region.",
+          "C": "Eine isolierte Schwanzobstruktion betrifft den Pankreasgang stromaufwärts; sie erklärt nicht gleichzeitig den bis zum Kopf-/Papillenbereich erweiterten Choledochus.",
+          "D": "Eine intrahepatische Erkrankung erklärt keine gemeinsame distale Abflussbehinderung beider Gänge. Das Muster verlangt eine Beurteilung der Kopf-/Papillenregion."
+        }
+      },
+      {
+        "id": "abdomen-pdac-vessel-contact-de-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "Textfall: Bei einem unbehandelten PDAC besteht Kontakt zur V. mesenterica superior. Für die interdisziplinäre Planung soll insbesondere eine mögliche venöse Rekonstruktion beurteilt werden. Welche ergänzenden Angaben adressieren diese Frage am unmittelbarsten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Ort und Länge einer Stenose/eines Verschlusses, Durchgängigkeit proximal und distal, Thrombus und Kollateralen"
+          },
+          {
+            "id": "B",
+            "text": "Arterieller Ursprung, Verlauf einer akzessorischen Leberarterie und Kontakt zum Truncus coeliacus"
+          },
+          {
+            "id": "C",
+            "text": "Maximaler Tumordurchmesser, Längsausdehnung des Gangabbruchs und Pankreasgangweite"
+          },
+          {
+            "id": "D",
+            "text": "Zahl und Größe suspekter Leberherde, Aszites und peritoneale Knoten"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Für die lokale venöse Rekonstruktionsplanung sind betroffener Abschnitt, Ausdehnung und Qualität der anschließenden Gefäßsegmente wesentlich. Kontaktumfang, Kontur und Kollateralen werden strukturiert dokumentiert. Arterien und Metastasen bleiben Teil der Gesamtbeurteilung; diese einzelne Beschreibung entscheidet die Resektabilität nicht allein.",
+        "source": "https://doi.org/10.1148/radiol.13131184",
+        "wrongExplanations": {
+          "B": "Arterielle Varianten und Tumorkontakt beeinflussen die Operationsplanung, beschreiben aber nicht die für eine venöse Rekonstruktion benötigten Zu- und Abflusssegmente.",
+          "C": "Tumor- und Gangmaße gehören zum morphologischen Befund. Sie ersetzen nicht die Beschreibung des betroffenen venösen Abschnitts und der anschließenden offenen Segmente.",
+          "D": "Fernmetastasen sind für die Gesamtplanung entscheidend. Die konkret gefragte lokale venöse Rekonstruktionsfrage erfordert zusätzlich die Gefäßsegmentbeschreibung."
+        }
+      },
+      {
+        "id": "abdomen-pancreatic-cysts-de-01",
+        "tags": [
+          "ipmn"
+        ],
+        "fach": "abdomen",
+        "question": "Eine Gangkommunikation kann sowohl bei IPMN als auch bei Pseudozysten vorkommen. Welche zusätzliche Textkonstellation unterstützt eine postentzündliche Pseudozyste am stärksten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Sechs Wochen nach dokumentierter akuter Pankreatitis: abgekapselte, homogene Flüssigkeitsansammlung ohne erkennbaren nichtflüssigen Inhalt"
+          },
+          {
+            "id": "B",
+            "text": "Mehrere traubenförmige Seitenastzysten ohne entzündliche Vorgeschichte und mit sonst unauffälligem Pankreasparenchym"
+          },
+          {
+            "id": "C",
+            "text": "Solitäre makrozystische Läsion in Körper/Schwanz bei einer Frau ohne entzündliche Vorgeschichte"
+          },
+          {
+            "id": "D",
+            "text": "Lobulierte mikrozystische Läsion mit zentraler sternförmiger Narbe"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Zeitlicher Entzündungsbezug und eine reife, flüssigkeitsgefüllte Sammlung ohne erkennbaren nekrotischen Inhalt stützen die Pseudozyste. Gangkommunikation ist nicht exklusiv: IPMN kann ebenfalls mit dem Gang kommunizieren und eine Pankreatitis verursachen. Anamnese, gesamtes Bild und Verlauf gemeinsam beurteilen.",
+        "source": "https://doi.org/10.1016/j.pan.2023.12.009",
+        "wrongExplanations": {
+          "B": "Dieses Muster gewichtet eine BD-IPMN stärker. Die Gangverbindung allein trennt sie nicht von einer Pseudozyste; hier fehlt der beschriebene postentzündliche Verlauf.",
+          "C": "Lage, unifokale Makrozystik und klinischer Kontext gehören unter anderem zur MCN-Differenzialdiagnose. Sie liefern keinen vergleichbar direkten zeitlichen Entzündungsbezug.",
+          "D": "Mikrozysten mit zentraler Narbe gewichten eine seröse zystische Neoplasie stärker; dieses Muster ist nicht die beschriebene reife postentzündliche Flüssigkeitssammlung."
+        }
+      },
+      {
+        "id": "pankreatitis-de-biliary-cause",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welche Steinlokalisation kann bei einer biliären akuten Pankreatitis den gemeinsamen distalen Abfluss von Gallen- und Pankreassekret unmittelbar beeinträchtigen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Papillen-/Ampullenregion"
+          },
+          {
+            "id": "B",
+            "text": "Isolierter Ductus cysticus"
+          },
+          {
+            "id": "C",
+            "text": "Isolierter linker Ductus hepaticus"
+          },
+          {
+            "id": "D",
+            "text": "Isolierter rechter intrahepatischer Segmentgang"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Ein distaler Gallengangsstein an der Papille kann den pankreatischen Abfluss beeinträchtigen. Deshalb nach Choledocholithiasis suchen; bei unklarem Steinstatus können MRCP oder EUS weiterhelfen. Eine biliäre Ursache bedeutet nicht automatisch eine dringliche ERCP ohne Cholangitis.",
+        "wrongExplanations": {
+          "B": "Der Ductus cysticus drainiert die Gallenblase. Seine isolierte Obstruktion verlegt nicht direkt den pankreatischen Abfluss an der Papille.",
+          "C": "Ein linker Lebergangsstein betrifft einen proximalen biliären Abschnitt, nicht den gemeinsamen distalen Auslass mit dem Pankreasgang.",
+          "D": "Ein isolierter intrahepatischer Segmentgang liegt ebenfalls stromaufwärts im Gallensystem; der pankreatische Auslass wird dadurch nicht unmittelbar blockiert."
+        },
+        "source": "https://doi.org/10.1016/j.pan.2025.04.020"
+      },
+      {
+        "id": "pankreatitis-de-alcohol",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welcher Mechanismus wird durch Azinuszell-Experimente zur alkoholassoziierten Pankreasschädigung gestützt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Nichtoxidative Alkoholmetaboliten können anhaltend gestörte intrazelluläre Kalziumsignale und Azinuszellschädigung auslösen."
+          },
+          {
+            "id": "B",
+            "text": "Eine IgG4-assoziierte lymphoplasmazelluläre Entzündung mit typischer Organbeteiligung."
+          },
+          {
+            "id": "C",
+            "text": "Mechanische Verlegung der Papillenregion durch einen Gallengangsstein."
+          },
+          {
+            "id": "D",
+            "text": "Ischämische Parenchymschädigung durch primäre arterielle Minderperfusion."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die experimentelle Arbeit zeigt Azinuszellschädigung durch bestimmte nichtoxidative Fettsäureethylester und gestörte Kalziumsignale. Das ist ein mechanistischer Modellbefund, kein alleiniger klinischer Beweis einer alkoholischen Ätiologie und keine Aussage, dass jeder Alkoholkonsum Pankreatitis verursacht.",
+        "wrongExplanations": {
+          "B": "Das beschreibt einen immunvermittelten Zusammenhang, nicht den hier untersuchten nichtoxidativen Alkoholmetabolismus in Azinuszellen.",
+          "C": "Das ist ein biliär-obstruktiver Mechanismus. Er erklärt nicht das experimentelle Alkoholmetaboliten-Signal.",
+          "D": "Eine primäre arterielle Perfusionsstörung ist ein anderer Schädigungsweg. Die Studie prüft hier metabolitenvermittelte Azinuszellschädigung."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC490004/"
+      },
+      {
+        "id": "pankreatitis-de-necrosis-timing",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Bei schwerer akuter Pankreatitis ohne dringliche frühere Indikation: Wann empfiehlt WSES2019 die erste kontrastverstärkte CT-Beurteilung idealerweise?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Innerhalb der ersten 24 Stunden nach Symptombeginn"
+          },
+          {
+            "id": "B",
+            "text": "72–96 Stunden nach Symptombeginn"
+          },
+          {
+            "id": "C",
+            "text": "7–10 Tage nach Symptombeginn"
+          },
+          {
+            "id": "D",
+            "text": "Nach Ausbildung einer Kapsel, gewöhnlich nach etwa vier Wochen"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Dieses benannte WSES-Zeitfenster gilt für die erste Beurteilung schwerer Erkrankung. Frühe CT kann Nekrose unterschätzen; diagnostische Unsicherheit oder dringliche Komplikationen können frühere Bildgebung erfordern. Es ist kein Routinetermin für jede leichte Pankreatitis.",
+        "wrongExplanations": {
+          "A": "Für die nicht dringliche Nekrosebeurteilung ist dies zu früh; die Nekrose kann noch nicht vollständig demarkiert sein.",
+          "C": "Die genannte Erstbeurteilung schwerer Pankreatitis wird nicht routinemäßig bis zu diesem späteren Zeitpunkt hinausgeschoben.",
+          "D": "Kapselbildung betrifft die spätere Kollektionsterminologie und ausgewählte Interventionsplanung, nicht den Zeitpunkt der ersten CT-Beurteilung schwerer Erkrankung."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/"
+      },
+      {
+        "id": "pankreatitis-de-atlanta-morphology",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welche CT-Konstellation passt zur interstitiell-ödematösen und nicht zur nekrotisierenden Pankreatitis?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Geschwollene, homogen kontrastierte Drüse mit Fettgewebsreaktion, ohne erkennbare pankreatische oder peripankreatische Nekrose"
+          },
+          {
+            "id": "B",
+            "text": "Fokaler Enhancement-Ausfall im Parenchym mit angrenzender Flüssigkeit"
+          },
+          {
+            "id": "C",
+            "text": "Kontrastierte Drüse mit heterogenem peripankreatischem nekrotischem Material"
+          },
+          {
+            "id": "D",
+            "text": "Nicht kontrastiertes Parenchym zusammen mit peripankreatischem nekrotischem Material"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Interstitielle Pankreatitis zeigt erhaltene Parenchymanreicherung ohne erkennbare Nekrose. Nekrose kann aber isoliert peripankreatisch auftreten, obwohl die Drüse kontrastiert. Frühe CT kann das spätere Ausmaß unterschätzen.",
+        "wrongExplanations": {
+          "B": "Fokaler fehlender Parenchymkontrast kann pankreatische Nekrose anzeigen; das ist nicht das gesuchte rein interstitielle Muster.",
+          "C": "Erhaltene Drüsenanreicherung schließt eine isolierte peripankreatische Nekrose nicht aus. Der nichtflüssige nekrotische Inhalt unterscheidet sie von reinem Stranding oder einfacher Flüssigkeit.",
+          "D": "Hier sind pankreatische und peripankreatische Nekrose kombiniert beschrieben."
+        },
+        "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+      },
+      {
+        "id": "pankreatitis-de-collections",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Textfall: Zehn Tage nach Beginn einer interstitiell-ödematösen Pankreatitis zeigt sich eine homogene peripankreatische Flüssigkeitsansammlung ohne abgrenzbare Wand und ohne Nekrose. Welche Atlanta-Bezeichnung passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Akute peripankreatische Flüssigkeitskollektion (APFC)"
+          },
+          {
+            "id": "B",
+            "text": "Pankreas-Pseudozyste"
+          },
+          {
+            "id": "C",
+            "text": "Akute nekrotische Kollektion (ANC)"
+          },
+          {
+            "id": "D",
+            "text": "Abgekapselte Nekrose (WON)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "APFC bezeichnet eine frühe reine Flüssigkeitsansammlung ohne definierte Wand bei interstitiell-ödematöser Pankreatitis. Zeit allein reicht nicht: Auch Inhalt und zugrunde liegende Pankreatitisform müssen passen.",
+        "wrongExplanations": {
+          "B": "Eine Pseudozyste besitzt eine ausgebildete Wand und entsteht gewöhnlich nach mehr als vier Wochen; diese frühe wandlose Ansammlung erfüllt das nicht.",
+          "C": "ANC gehört zur nekrotisierenden Pankreatitis und enthält nekrotisches Material. Im Fall ist keine Nekrose beschrieben.",
+          "D": "WON ist eine reife abgekapselte nekrotische Kollektion, typischerweise nach etwa vier Wochen; weder Inhalt noch Wand dieses Falls passen."
+        },
+        "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+      },
+      {
+        "id": "pankreatitis-de-walled-off-necrosis",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Textfall: Sechs Wochen nach nekrotisierender Pankreatitis zeigt eine Kollektion eine gut ausgebildete Wand und heterogene flüssige sowie nichtflüssige nekrotische Anteile. Welche Bezeichnung passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Abgekapselte Nekrose (WON)"
+          },
+          {
+            "id": "B",
+            "text": "Pankreas-Pseudozyste"
+          },
+          {
+            "id": "C",
+            "text": "Akute peripankreatische Flüssigkeitskollektion (APFC)"
+          },
+          {
+            "id": "D",
+            "text": "Akute nekrotische Kollektion (ANC)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die Kombination aus reifer Kapsel und nekrotischem Inhalt nach nekrotisierender Pankreatitis entspricht WON. Die Kapsel allein trennt WON nicht von Pseudozyste; entscheidend ist auch der Inhalt.",
+        "wrongExplanations": {
+          "B": "Eine Pseudozyste enthält im Wesentlichen Flüssigkeit ohne feste nekrotische Komponenten. Die beschriebenen nichtflüssigen Nekrosen sprechen für WON.",
+          "C": "APFC ist eine frühe wandlose Flüssigkeitsansammlung bei interstitieller Pankreatitis, nicht diese reife nekrotische Kollektion.",
+          "D": "ANC bezeichnet die frühe nekrotische Kollektion ohne ausgereifte Wand; die jetzt vollständig abgekapselte Form wird WON genannt."
+        },
+        "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+      },
+      {
+        "id": "pankreatitis-de-ctsi-severe",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Textfall: CTSI 8 bei akuter Pankreatitis. Welche zusätzliche Information ist für die Einstufung als klinisch schwere Pankreatitis nach revidierter Atlanta-Klassifikation entscheidend?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Prozentualer Anteil der Parenchymnekrose"
+          },
+          {
+            "id": "B",
+            "text": "Anzahl und Ausdehnung peripankreatischer Kollektionen"
+          },
+          {
+            "id": "C",
+            "text": "Persistierendes Organversagen über mehr als 48 Stunden"
+          },
+          {
+            "id": "D",
+            "text": "Höhe des CRP-Werts am dritten Krankheitstag"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Ein hoher CTSI beschreibt die CT-Morphologie. Klinisch schwere akute Pankreatitis nach revidiertem Atlanta ist durch persistierendes Organversagen >48 Stunden definiert. Morphologische Komplikationen und Entzündungsmarker sind wichtig, ersetzen diese klinische Definition aber nicht.",
+        "wrongExplanations": {
+          "A": "Der Nekroseanteil beeinflusst den morphologischen CTSI. Er ist nicht allein die klinische Atlanta-Definition schwerer Erkrankung.",
+          "B": "Kollektionen sind lokale Komplikationen. Ohne persistierendes Organversagen belegen sie keine klinisch schwere Atlanta-Pankreatitis.",
+          "D": "CRP kann bei der Risikoeinschätzung helfen. Ein Laborwert ersetzt aber nicht die gefragte Organfunktions- und Verlaufsdefinition."
+        },
+        "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+      },
+      {
+        "id": "pankreatitis-de-pseudoaneurysm",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Textfall: Bei Pankreatitis zeigt die arterielle Kontrastphase einen rundlichen, scharf begrenzten Fokus in einer Kollektion mit deutlicher arterieller Anreicherung und erkennbarem Anschluss an einen Arterienast. Welche Komplikation ist am ehesten gemeint?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Arterielles Pseudoaneurysma"
+          },
+          {
+            "id": "B",
+            "text": "Rein flüssige Pseudozyste"
+          },
+          {
+            "id": "C",
+            "text": "Nicht perfundierte Parenchymnekrose"
+          },
+          {
+            "id": "D",
+            "text": "Milzvenenthrombose"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Arterielle Anreicherung innerhalb einer Kollektion mit Anschluss an einen Arterienast ist verdächtig auf ein Pseudoaneurysma. Es kann eine Blutungsquelle sein und verlangt zeitnahe fachübergreifende Gefäßabklärung.",
+        "wrongExplanations": {
+          "B": "Reine Flüssigkeit zeigt keine kräftige innere arterielle Anreicherung mit arterieller Verbindung. Eine Zyste kann das Pseudoaneurysma aber umgeben.",
+          "C": "Nicht perfundierte Nekrose nimmt gerade kein Kontrastmittel wie die Arterie auf; sie erklärt den beschriebenen arteriellen Fokus nicht.",
+          "D": "Eine Venenthrombose ist ein venöser Füllungsdefekt, nicht ein kontrastgefüllter Fokus mit arterieller Verbindung."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3291674/"
+      },
+      {
+        "id": "pankreatitis-de-infected-necrosis",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welche CT-Beobachtung erhöht bei bekannter nekrotisierender Pankreatitis den Verdacht auf infizierte Nekrose am stärksten, wenn weder Intervention noch enterische Fistel vorliegen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Gasblasen innerhalb der nekrotischen Kollektion"
+          },
+          {
+            "id": "B",
+            "text": "Heterogener nekrotischer Inhalt ohne Gas"
+          },
+          {
+            "id": "C",
+            "text": "Eine kontrastmittelaufnehmende Kapsel ohne Gas"
+          },
+          {
+            "id": "D",
+            "text": "Peripankreatisches Fett-Stranding ohne Gas"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Gas in Nekrose ist im genannten Kontext ein starker Infektionshinweis, aber nicht bei jeder infizierten Nekrose vorhanden. Fehlendes Gas schließt eine Infektion nicht aus. Klinik, Verlauf und mögliche alternative Gasursachen bleiben wichtig.",
+        "wrongExplanations": {
+          "B": "Heterogenität gehört zum nekrotischen Inhalt und beweist dessen Infektion nicht. Infektion kann dennoch auch ohne Gas bestehen.",
+          "C": "Eine aufnehmende Kapsel zeigt Organisation/Reifung der Kollektion. Sie ist kein alleiniger Infektionsnachweis.",
+          "D": "Fett-Stranding ist eine unspezifische Entzündungsreaktion und weniger spezifisch für infizierte Nekrose als das hier gefragte Gaszeichen."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/"
+      },
+      {
+        "id": "pankreatitis-de-carcinoma-dd",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welche Befundkombination gewichtet ein Pankreaskarzinom gegenüber einer chronisch entzündlichen Raumforderung stärker?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Abrupter Gangabbruch mit konsekutiver Schwanzatrophie"
+          },
+          {
+            "id": "B",
+            "text": "Duct-penetrating-sign"
+          },
+          {
+            "id": "C",
+            "text": "Intraduktale und parenchymale Verkalkungen"
+          },
+          {
+            "id": "D",
+            "text": "Perlschnurartig wechselnde Gangweiten"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Ein abrupter fokaler Gangabbruch mit vorgeschalteter Parenchymatrophie ist verdächtig auf einen obstruierenden Tumor. Ein durch die Masse verlaufender, verengter Gang gewichtet eher Entzündung; kein Einzelzeichen schließt Karzinom sicher aus. Voraufnahmen und weitere Abklärung nach Gesamtkontext.",
+        "wrongExplanations": {
+          "B": "Das Duct-penetrating-Zeichen gewichtet eine entzündliche Masse: Ein Gang bleibt durch die Läsion hindurch sichtbar, oft verengt. Es ist kein absoluter Ausschlussbeweis.",
+          "C": "Intraduktale und parenchymale Verkalkungen stützen chronische Pankreatitis. Ein zusätzliches Karzinom bei chronischer Pankreatitis bleibt möglich.",
+          "D": "Wechselnde Gangweiten mit Strikturen passen zur chronischen Gangveränderung; gesucht ist der fokale abrupte Abbruch mit vorgeschalteter Atrophie."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/11568327/"
+      },
+      {
+        "id": "aq-atv-ipmn-de-serous-pattern",
+        "fach": "abdomen",
+        "tags": [
+          "ipmn"
+        ],
+        "question": "Welche zystische Pankreasmorphologie stützt eine seröse zystische Neoplasie am stärksten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Solitäre makrozystische Läsion in Körper/Schwanz mit verdickter Wand"
+          },
+          {
+            "id": "B",
+            "text": "Schwammartige Gruppe sehr kleiner Zysten mit zentraler sternförmiger Narbe"
+          },
+          {
+            "id": "C",
+            "text": "Traubenförmige Seitenastzysten mit erkennbarer Kommunikation zum Hauptgang"
+          },
+          {
+            "id": "D",
+            "text": "Homogene abgekapselte Flüssigkeit ohne Debris im zeitlichen Verlauf nach Pankreatitis"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Mikrozystische Architektur und zentrale Narbe stützen eine seröse Läsion. Sie sind nicht in jeder serösen Läsion sichtbar; atypische makrozystische Formen können mit muzinösen Läsionen überlappen. Gesamte Untersuchung und Kontext bleiben wichtig.",
+        "wrongExplanations": {
+          "A": "Makrozystik und Wandverdickung sind nicht das gesuchte klassische seröse Muster; unter anderem bleibt eine muzinöse zystische Neoplasie differenzialdiagnostisch relevant.",
+          "C": "Traubenförmige, mit dem Gangsystem verbundene Seitenastzysten gewichten eine BD-IPMN. Gangkommunikation ist kein alleiniger histologischer Beweis.",
+          "D": "Reife reine Flüssigkeit nach Pankreatitis gewichtet eine Pseudozyste; das ist ein anderer klinisch-morphologischer Zusammenhang als die mikrozystische seröse Architektur."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/19522024/"
+      },
+      {
+        "id": "aq-atv-ipmn-de-nodule-risk",
+        "fach": "abdomen",
+        "tags": [
+          "ipmn"
+        ],
+        "question": "Bei vermuteter IPMN: Welcher der folgenden Einzelbefunde zählt nach Kyoto2024 als high-risk stigma und nicht nur als worrisome feature?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Kontrastmittelaufnehmender Wandknoten von 6 mm"
+          },
+          {
+            "id": "B",
+            "text": "Kontrastmittelaufnehmender Wandknoten von 3 mm"
+          },
+          {
+            "id": "C",
+            "text": "Zystendurchmesser von 35 mm ohne weitere genannte Merkmale"
+          },
+          {
+            "id": "D",
+            "text": "Hauptgangdurchmesser von 7 mm ohne weitere genannte Merkmale"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Ein kontrastmittelaufnehmender Wandknoten ≥5 mm ist ein high-risk stigma nach Kyoto2024. Die Kategorie begründet eine gezielte weiterführende und interdisziplinäre Bewertung; sie beweist kein invasives Karzinom und ist keine patientenunabhängige OP-Anordnung.",
+        "wrongExplanations": {
+          "B": "Ein aufnehmender Knoten <5 mm ist ein worrisome feature. Er bleibt abklärungsrelevant, erfüllt aber nicht die hier gefragte ≥5-mm-Hochrisikogrenze.",
+          "C": "Eine Zyste ≥30 mm zählt als worrisome feature. Die Größe von 35 mm allein ist in Kyoto2024 kein high-risk stigma.",
+          "D": "Ein Hauptgang ≥5 und <10 mm zählt als worrisome feature; die Hauptganggrenze für ein high-risk stigma liegt bei ≥10 mm."
+        },
+        "source": "https://doi.org/10.1016/j.pan.2023.12.009"
+      }
+    ],
+    "en": [
+      {
+        "id": "pnet-en-01",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "Which CT pattern is common in PanNET, although alternative enhancement patterns occur?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Circumscribed solid lesion with marked arterial hyperenhancement relative to pancreas"
+          },
+          {
+            "id": "B",
+            "text": "Ill-defined hypovascular lesion with abrupt main-duct cut-off"
+          },
+          {
+            "id": "C",
+            "text": "Diffuse gland enlargement with inflammatory changes in surrounding fat"
+          },
+          {
+            "id": "D",
+            "text": "Cluster of small cysts with enhancing septa"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Arterial hyperenhancement is a common but non-obligatory PanNET pattern. Original cohorts also document iso- and hypoenhancing PanNETs. Size, morphology, ductal/vascular relationships and metastases complement assessment; enhancement alone does not establish tumour grade.",
+        "wrongExplanations": {
+          "B": "This pattern raises greater concern for a ductal tumour. Hypoenhancement can nevertheless occur in PanNET; the question asks for its common pattern, not an exclusion test.",
+          "C": "Diffuse enlargement and fat reaction favour an inflammatory pattern over the common focal solid-PanNET pattern. Clinical and additional findings remain necessary.",
+          "D": "A microcystic septated pattern initially directs assessment towards a cystic lesion. PanNETs can contain cystic components, but this is not the common solid pattern asked for."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/23991643/"
+      },
+      {
+        "id": "pnet-en-02",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "Text vignette: A small hypervascular pancreatic-tail lesion matches the spleen in CT attenuation, MRI signal and enhancement across available phases. Which important differential diagnosis particularly fits this match?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Nonfunctioning PanNET"
+          },
+          {
+            "id": "B",
+            "text": "Intrapancreatic accessory spleen"
+          },
+          {
+            "id": "C",
+            "text": "Pancreatic metastasis from renal cell carcinoma"
+          },
+          {
+            "id": "D",
+            "text": "Solid pseudopapillary neoplasm"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Ectopic splenic tissue can match the spleen on unenhanced and dynamic CT/MRI. This is an important pancreatic-tail clue to check before prematurely assigning a tumour diagnosis. Targeted confirmation is possible if uncertainty remains; this text scenario does not replace individual evaluation.",
+        "wrongExplanations": {
+          "A": "PanNET can be hypervascular. The additional match to splenic tissue across sequences and phases particularly warrants consideration of accessory spleen; hypervascularity alone does not distinguish them.",
+          "C": "Renal-cell carcinoma metastases can be hypervascular; cancer history and other disease sites matter. The stated match to the spleen is the targeted clue to ectopic splenic tissue here.",
+          "D": "A pancreatic mass may warrant this additional differential diagnosis. Here, the specific match to spleen prioritises checking for accessory splenic tissue rather than assigning a neoplasm."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3473517/"
+      },
+      {
+        "id": "pnet-en-03",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "Which set of findings most directly supports a clinically functioning insulinoma syndrome in a patient with PanNET?",
+        "options": [
+          {
+            "id": "A",
+            "text": "SSTR-positive lesion with unremarkable glucose levels"
+          },
+          {
+            "id": "B",
+            "text": "Insulin-positive tumour staining without a documented hypoglycaemic syndrome"
+          },
+          {
+            "id": "C",
+            "text": "Typical hypoglycaemic symptoms with documented low glucose and inappropriately maintained/elevated insulin"
+          },
+          {
+            "id": "D",
+            "text": "Arterial hyperenhancement with low T1 and high T2 signal"
+          }
+        ],
+        "correct": "C",
+        "explanation": "A NET-associated functioning syndrome combines clinical symptoms with biochemical evidence of an inappropriate hormone concentration. Imaging localises and characterises but does not replace clinical/biochemical assessment. Confirmation requires an appropriate endocrine evaluation.",
+        "wrongExplanations": {
+          "A": "SSTR uptake demonstrates receptor expression and may aid localisation; it does not establish a clinical hormone-excess syndrome.",
+          "B": "Hormone staining demonstrates tissue expression but does not establish functioning status without a corresponding clinical/biochemical syndrome.",
+          "D": "These signals and enhancement describe an imaging pattern rather than the systemic effects of hormone secretion."
+        },
+        "source": "https://doi.org/10.1111/jne.13318"
+      },
+      {
+        "id": "pnet-en-04",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "A summary describes mostly benign insulinomas. Its findings are to inform risk estimation in a nonfunctioning PanNET group. Which evidence most directly addresses this transfer between populations?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A larger number of additional insulinomas with the same data collection"
+          },
+          {
+            "id": "B",
+            "text": "More precise arterial-enhancement measurements in the insulinoma group"
+          },
+          {
+            "id": "C",
+            "text": "Longer follow-up of the same insulinoma group"
+          },
+          {
+            "id": "D",
+            "text": "Data from the nonfunctioning target population including tumour grade, evolution and clinical context"
+          }
+        ],
+        "correct": "D",
+        "explanation": "Insulinoma data describe a different clinical/biological group. More data or longer follow-up in the same source group does not by itself resolve transferability. Nonfunctioning PanNET assessment requires target-population data and consideration of grade, growth, imaging and patient context; no size or benignity rule is inferred.",
+        "wrongExplanations": {
+          "A": "More insulinoma cases improve description of the source group but do not directly address its difference from the nonfunctioning target group.",
+          "B": "More precise imaging measurements can improve measurement quality but do not replace an appropriate target population for risk estimation.",
+          "C": "Longer follow-up may capture later events in insulinomas. The clinical/biological difference from the nonfunctioning group remains."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7029300/"
+      },
+      {
+        "id": "psc-pbc-mrcp-beading-en",
+        "topicId": "psc-pbc",
+        "tags": [
+          "psc-pbc"
+        ],
+        "fach": "abdomen",
+        "question": "Which cholangiographic pattern is characteristic of large-duct PSC?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Multiple short strictures with intervening normal-calibre or mildly dilated segments"
+          },
+          {
+            "id": "B",
+            "text": "A single abrupt hilar stricture with uniform proximal duct dilatation"
+          },
+          {
+            "id": "C",
+            "text": "A long smooth distal common bile duct stricture with diffuse pancreatic enlargement"
+          },
+          {
+            "id": "D",
+            "text": "A common bile duct intraluminal filling defect outlined by bile, with upstream dilatation"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Alternating short narrowings and normal or mildly dilated segments create beading. Diagnosing PSC requires exclusion of secondary causes of sclerosing cholangitis; morphology alone does not establish aetiology.",
+        "wrongExplanations": {
+          "B": "An isolated hilar obstruction needs targeted evaluation, including for a neoplastic stricture. It does not show the multifocal alternating pattern requested.",
+          "C": "This combination raises alternatives including IgG4-related disease. It differs from the characteristic multifocal PSC pattern.",
+          "D": "A bile-outlined intraluminal defect suggests an intraductal cause such as a stone. It is not equivalent to multiple short mural strictures."
+        },
+        "source": "https://doi.org/10.1002/hep.32771"
+      },
+      {
+        "id": "aq-atv-psc-pbc-en-quality-next",
+        "topicId": "psc-pbc",
+        "tags": [
+          "psc-pbc"
+        ],
+        "fach": "abdomen",
+        "question": "Text vignette: in a stable patient with suspected PSC, the first MRCP is nondiagnostic because of motion and peripheral ducts cannot be assessed. There are no acute signs of cholangitis or obstruction requiring treatment. Which next step primarily addresses the inadequate duct imaging?",
+        "options": [
+          {
+            "id": "A",
+            "text": "ERCP for diagnostic cholangiography and brush cytology"
+          },
+          {
+            "id": "B",
+            "text": "Repeat high-quality MRI/MRCP at an experienced centre"
+          },
+          {
+            "id": "C",
+            "text": "Liver biopsy to look histologically for small-duct PSC"
+          },
+          {
+            "id": "D",
+            "text": "Portal venous CT to assess liver morphology and duct dilatation"
+          }
+        ],
+        "correct": "B",
+        "explanation": "First address the technical limitation with high-quality MRI/MRCP. ERCP is not used solely to diagnose PSC. Biopsy may be considered with a normal high-quality MRCP and persistent concern for small-duct PSC or in selected equivocal cases.",
+        "wrongExplanations": {
+          "A": "ERCP can serve intervention or tissue sampling, but here it does not replace adequate noninvasive initial imaging.",
+          "C": "Assessing small-duct PSC requires a high-quality normal cholangiogram. An unreadable motion-degraded MRCP is not a normal duct examination.",
+          "D": "CT may show additional hepatic or obstructive findings but does not supply the missing high-quality cholangiographic assessment of smaller branches."
+        },
+        "source": "https://doi.org/10.1002/hep.32771"
+      },
+      {
+        "id": "aq-atv-psc-pbc-en-relevant-stricture",
+        "topicId": "psc-pbc",
+        "tags": [
+          "psc-pbc"
+        ],
+        "fach": "abdomen",
+        "question": "For a common bile duct stricture in known PSC, which additional information most directly supports the AASLD2022 term “relevant stricture”?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Marked percentage luminal narrowing on MRCP without additional clinical information"
+          },
+          {
+            "id": "B",
+            "text": "A longer stricture segment than in other duct portions"
+          },
+          {
+            "id": "C",
+            "text": "Signs or symptoms of obstructive cholestasis and/or bacterial cholangitis"
+          },
+          {
+            "id": "D",
+            "text": "Regional liver atrophy with unchanged cholestatic tests and no symptoms"
+          }
+        ],
+        "correct": "C",
+        "explanation": "“Relevant” links the stricture to signs/symptoms of obstructive cholestasis or bacterial cholangitis. It is not an MRCP diameter criterion alone. The cause and complications still need evaluation; the term does not establish malignancy.",
+        "wrongExplanations": {
+          "A": "This describes morphological severity. Without clinical correlation it does not define a relevant stricture.",
+          "B": "Length belongs in structured reporting but does not replace the association with obstructive cholestasis or cholangitis.",
+          "D": "Regional atrophy is an additional morphological finding. The defined clinical association determines the term “relevant”."
+        },
+        "source": "https://doi.org/10.1002/hep.32771"
+      },
+      {
+        "id": "abdomen-pdac-isoattenuating-en-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "Text vignette: multiphase CT in a patient with weight loss shows no clearly hypoattenuating pancreatic mass. Which additional combination most strongly supports concern for an isoattenuating PDAC?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Abrupt focal pancreatic duct cut-off with upstream duct dilatation and upstream parenchymal atrophy"
+          },
+          {
+            "id": "B",
+            "text": "Diffuse parenchymal calcifications with multiple intraductal calculi and irregular duct calibre"
+          },
+          {
+            "id": "C",
+            "text": "Diffuse gland enlargement with homogeneous enhancement and inflammatory peripancreatic fluid"
+          },
+          {
+            "id": "D",
+            "text": "A circumscribed microcystic cluster with a central scar and a displaced but patent main duct"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Focal duct cut-off with upstream ductal and parenchymal changes can indirectly reveal an isoattenuating PDAC. This warrants targeted evaluation but is not histological proof.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/12202711/",
+        "wrongExplanations": {
+          "B": "Calcifications and intraductal stones favour chronic pancreatitis. They do not exclude a coexisting carcinoma; the question asks for the strongest focal obstructive warning pattern.",
+          "C": "This diffuse inflammatory pattern favours interstitial oedematous pancreatitis over the focal duct obstruction with upstream atrophy being sought.",
+          "D": "Microcysts and a central scar favour a serous cystic lesion. A displaced patent duct differs from the abrupt cut-off being sought."
+        }
+      },
+      {
+        "id": "abdomen-pdac-double-duct-en-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "Text vignette: the common bile duct and main pancreatic duct are dilated down to the pancreatic-head/papillary region. A definite cause is not yet visible. Which provisional interpretation is best supported?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A distal periampullary or pancreatic-head outflow obstruction; investigate both neoplastic and benign causes"
+          },
+          {
+            "id": "B",
+            "text": "An isolated hilar obstruction as the common explanation for both dilated ducts"
+          },
+          {
+            "id": "C",
+            "text": "An isolated pancreatic-tail obstruction as the common explanation for both dilated ducts"
+          },
+          {
+            "id": "D",
+            "text": "Diffuse intrahepatic cholangitis as the common explanation for both dilated ducts"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The shared distal outflow region explains the double-duct sign. It is not PDAC-specific tissue evidence: pancreatic or ampullary neoplasms, chronic pancreatitis and stones are among the possibilities. Clinical context and targeted evaluation determine the cause.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/24705640/",
+        "wrongExplanations": {
+          "B": "An isolated hilar obstruction primarily explains proximal biliary dilatation, not concurrent pancreatic duct dilatation to their shared distal region.",
+          "C": "An isolated tail obstruction affects the upstream pancreatic duct; it does not also explain common bile duct dilatation down to the head/papillary region.",
+          "D": "An intrahepatic process does not explain a shared distal outflow obstruction of both ducts. This pattern calls for assessment of the head/papillary region."
+        }
+      },
+      {
+        "id": "abdomen-pdac-vessel-contact-en-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "Text vignette: an untreated PDAC contacts the superior mesenteric vein. Multidisciplinary planning specifically needs to assess possible venous reconstruction. Which additional details address that question most directly?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Location and length of narrowing/occlusion, patency above and below it, thrombus and collaterals"
+          },
+          {
+            "id": "B",
+            "text": "Arterial origins, the course of an accessory hepatic artery and contact with the coeliac axis"
+          },
+          {
+            "id": "C",
+            "text": "Maximum tumour diameter, length of duct cut-off and pancreatic duct calibre"
+          },
+          {
+            "id": "D",
+            "text": "Number and size of suspicious liver lesions, ascites and peritoneal nodules"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Local venous reconstruction planning depends on the involved segment, extent and condition of the adjacent vessel segments. Document contact extent, contour and collaterals systematically. Arteries and metastases remain part of overall assessment; this description alone does not determine resectability.",
+        "source": "https://doi.org/10.1148/radiol.13131184",
+        "wrongExplanations": {
+          "B": "Arterial variants and tumour contact affect surgical planning but do not describe the inflow and outflow segments needed for venous reconstruction.",
+          "C": "Tumour and duct measurements belong in the morphological report. They do not replace description of the involved vein and adjacent patent segments.",
+          "D": "Distant metastases are crucial for overall planning. The specific local venous reconstruction question additionally requires vessel-segment description."
+        }
+      },
+      {
+        "id": "abdomen-pancreatic-cysts-en-01",
+        "tags": [
+          "ipmn"
+        ],
+        "fach": "abdomen",
+        "question": "Duct communication may occur with both IPMN and pseudocysts. Which additional text-based constellation most strongly supports a post-inflammatory pseudocyst?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Six weeks after documented acute pancreatitis: an encapsulated homogeneous fluid collection without visible nonliquid contents"
+          },
+          {
+            "id": "B",
+            "text": "Multiple grape-like branch-duct cysts without an inflammatory history and with otherwise unremarkable pancreatic parenchyma"
+          },
+          {
+            "id": "C",
+            "text": "A solitary macrocystic body/tail lesion in a woman without an inflammatory history"
+          },
+          {
+            "id": "D",
+            "text": "A lobulated microcystic lesion with a central stellate scar"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The temporal inflammatory context and a mature fluid-filled collection without visible necrotic contents support a pseudocyst. Duct communication is not exclusive: IPMN can also communicate and cause pancreatitis. Integrate history, the whole examination and evolution.",
+        "source": "https://doi.org/10.1016/j.pan.2023.12.009",
+        "wrongExplanations": {
+          "B": "This pattern favours BD-IPMN. Communication alone does not distinguish it from a pseudocyst; the post-inflammatory evolution described in the key is absent.",
+          "C": "Location, a solitary macrocystic structure and clinical context raise alternatives including MCN. They do not supply the same direct temporal inflammatory association.",
+          "D": "Microcysts with a central scar favour a serous cystic neoplasm; this differs from the mature post-inflammatory fluid collection described."
+        }
+      },
+      {
+        "id": "pankreatitis-en-biliary-cause",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which stone location can directly obstruct the shared distal outflow of bile and pancreatic secretions in acute biliary pancreatitis?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Papillary/ampullary region"
+          },
+          {
+            "id": "B",
+            "text": "Isolated cystic duct"
+          },
+          {
+            "id": "C",
+            "text": "Isolated left hepatic duct"
+          },
+          {
+            "id": "D",
+            "text": "An isolated right intrahepatic segmental duct"
+          }
+        ],
+        "correct": "A",
+        "explanation": "A distal bile duct stone at the papilla can impair pancreatic drainage. Investigate choledocholithiasis; MRCP or EUS can help if stone status is uncertain. A biliary cause does not automatically mean urgent ERCP without cholangitis.",
+        "wrongExplanations": {
+          "B": "The cystic duct drains the gallbladder. Its isolated obstruction does not directly block pancreatic drainage at the papilla.",
+          "C": "A left hepatic duct stone affects a proximal biliary segment, not the shared distal outlet with the pancreatic duct.",
+          "D": "An isolated intrahepatic segmental duct is upstream in the biliary system and does not directly block the pancreatic outlet."
+        },
+        "source": "https://doi.org/10.1016/j.pan.2025.04.020"
+      },
+      {
+        "id": "pankreatitis-en-alcohol",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which mechanism is supported by acinar-cell experiments on alcohol-associated pancreatic injury?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Nonoxidative alcohol metabolites can produce sustained abnormal intracellular calcium signals and acinar-cell injury."
+          },
+          {
+            "id": "B",
+            "text": "IgG4-related lymphoplasmacytic inflammation with characteristic organ involvement."
+          },
+          {
+            "id": "C",
+            "text": "Mechanical obstruction of the papillary region by a bile duct stone."
+          },
+          {
+            "id": "D",
+            "text": "Ischaemic parenchymal injury from primary arterial hypoperfusion."
+          }
+        ],
+        "correct": "A",
+        "explanation": "The experimental work demonstrates acinar injury from certain nonoxidative fatty acid ethyl esters and disturbed calcium signalling. This is mechanistic model evidence, not standalone clinical proof of an alcoholic aetiology or a claim that every alcohol exposure causes pancreatitis.",
+        "wrongExplanations": {
+          "B": "This describes an immune-mediated process, not the nonoxidative alcohol metabolism studied in acinar cells here.",
+          "C": "This is a biliary obstructive mechanism and does not explain the experimental alcohol-metabolite signal.",
+          "D": "Primary arterial hypoperfusion is a different injury pathway. This study examines metabolite-mediated acinar injury."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC490004/"
+      },
+      {
+        "id": "pankreatitis-en-necrosis-timing",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "In severe acute pancreatitis without an urgent earlier indication, when does WSES2019 ideally recommend the first contrast-enhanced CT assessment?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Within the first 24 hours after symptom onset"
+          },
+          {
+            "id": "B",
+            "text": "72–96 hours after symptom onset"
+          },
+          {
+            "id": "C",
+            "text": "7–10 days after symptom onset"
+          },
+          {
+            "id": "D",
+            "text": "After encapsulation, usually after about four weeks"
+          }
+        ],
+        "correct": "B",
+        "explanation": "This named WSES window concerns the first assessment of severe disease. Early CT may underestimate necrosis; diagnostic uncertainty or urgent complications can require earlier imaging. It is not a routine schedule for every mild pancreatitis.",
+        "wrongExplanations": {
+          "A": "This is early for nonurgent necrosis assessment; necrosis may not yet be fully demarcated.",
+          "C": "The specified initial assessment of severe pancreatitis is not routinely deferred to this later interval.",
+          "D": "Encapsulation concerns later collection terminology and selected intervention planning, not the first CT assessment of severe disease."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/"
+      },
+      {
+        "id": "pankreatitis-en-atlanta-morphology",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which CT pattern fits interstitial oedematous rather than necrotising pancreatitis?",
+        "options": [
+          {
+            "id": "A",
+            "text": "An enlarged homogeneously enhancing gland with fat stranding but no visible pancreatic or peripancreatic necrosis"
+          },
+          {
+            "id": "B",
+            "text": "Focal nonenhancing parenchyma with adjacent fluid"
+          },
+          {
+            "id": "C",
+            "text": "An enhancing gland with heterogeneous peripancreatic necrotic material"
+          },
+          {
+            "id": "D",
+            "text": "Nonenhancing parenchyma together with peripancreatic necrotic material"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Interstitial pancreatitis retains parenchymal enhancement without visible necrosis. Necrosis may, however, be isolated to peripancreatic tissues despite an enhancing gland. Early CT may underestimate its eventual extent.",
+        "wrongExplanations": {
+          "B": "Focal absent parenchymal enhancement can indicate pancreatic necrosis, rather than the purely interstitial pattern sought.",
+          "C": "Preserved gland enhancement does not exclude isolated peripancreatic necrosis. Nonliquid necrotic contents distinguish it from simple stranding or fluid.",
+          "D": "This describes combined pancreatic and peripancreatic necrosis."
+        },
+        "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+      },
+      {
+        "id": "pankreatitis-en-collections",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Text vignette: ten days after onset of interstitial oedematous pancreatitis, a homogeneous peripancreatic fluid collection has no definable wall or necrosis. Which Atlanta term fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Acute peripancreatic fluid collection (APFC)"
+          },
+          {
+            "id": "B",
+            "text": "Pancreatic pseudocyst"
+          },
+          {
+            "id": "C",
+            "text": "Acute necrotic collection (ANC)"
+          },
+          {
+            "id": "D",
+            "text": "Walled-off necrosis (WON)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "APFC is an early pure fluid collection without a defined wall in interstitial oedematous pancreatitis. Time alone is insufficient: contents and the underlying pancreatitis type must also fit.",
+        "wrongExplanations": {
+          "B": "A pseudocyst has a developed wall and usually forms after more than four weeks; this early wall-less collection does not meet that description.",
+          "C": "ANC occurs in necrotising pancreatitis and contains necrotic material. No necrosis is described in this case.",
+          "D": "WON is a mature encapsulated necrotic collection, typically after about four weeks; neither contents nor wall in this case fit."
+        },
+        "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+      },
+      {
+        "id": "pankreatitis-en-walled-off-necrosis",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Text vignette: six weeks after necrotising pancreatitis, a collection has a well-formed wall and heterogeneous fluid and nonliquid necrotic components. Which term fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Walled-off necrosis (WON)"
+          },
+          {
+            "id": "B",
+            "text": "Pancreatic pseudocyst"
+          },
+          {
+            "id": "C",
+            "text": "Acute peripancreatic fluid collection (APFC)"
+          },
+          {
+            "id": "D",
+            "text": "Acute necrotic collection (ANC)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "A mature capsule plus necrotic contents after necrotising pancreatitis corresponds to WON. A capsule alone does not distinguish WON from a pseudocyst; contents also matter.",
+        "wrongExplanations": {
+          "B": "A pseudocyst contains essentially fluid without solid necrotic components. The nonliquid necrosis described favours WON.",
+          "C": "APFC is an early wall-less fluid collection in interstitial pancreatitis, not this mature necrotic collection.",
+          "D": "ANC is the early necrotic collection without a mature wall; the now fully encapsulated form is called WON."
+        },
+        "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+      },
+      {
+        "id": "pankreatitis-en-ctsi-severe",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Text vignette: acute pancreatitis has a CTSI of 8. Which additional information determines classification as clinically severe pancreatitis under revised Atlanta?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Percentage of parenchymal necrosis"
+          },
+          {
+            "id": "B",
+            "text": "Number and extent of peripancreatic collections"
+          },
+          {
+            "id": "C",
+            "text": "Persistent organ failure for more than 48 hours"
+          },
+          {
+            "id": "D",
+            "text": "CRP concentration on the third day of illness"
+          }
+        ],
+        "correct": "C",
+        "explanation": "A high CTSI describes CT morphology. Revised Atlanta defines clinically severe acute pancreatitis by persistent organ failure >48 hours. Morphological complications and inflammatory markers matter but do not replace that clinical definition.",
+        "wrongExplanations": {
+          "A": "Necrosis extent contributes to morphological CTSI, not by itself to the clinical Atlanta definition of severe disease.",
+          "B": "Collections are local complications. Without persistent organ failure they do not establish clinically severe Atlanta pancreatitis.",
+          "D": "CRP can inform risk assessment but does not replace the organ-function and duration definition asked here."
+        },
+        "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+      },
+      {
+        "id": "pankreatitis-en-pseudoaneurysm",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Text vignette: in pancreatitis, the arterial phase shows a rounded, sharply defined focus within a collection, with marked arterial enhancement and visible continuity with an arterial branch. Which complication is most likely?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Arterial pseudoaneurysm"
+          },
+          {
+            "id": "B",
+            "text": "A pure fluid pseudocyst"
+          },
+          {
+            "id": "C",
+            "text": "Nonperfused parenchymal necrosis"
+          },
+          {
+            "id": "D",
+            "text": "Splenic vein thrombosis"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Arterial enhancement within a collection with continuity to an arterial branch raises concern for a pseudoaneurysm. It may be a bleeding source and warrants timely multidisciplinary vascular evaluation.",
+        "wrongExplanations": {
+          "B": "Pure fluid does not show strong internal arterial enhancement with arterial continuity. A cyst may, however, surround a pseudoaneurysm.",
+          "C": "Nonperfused necrosis does not enhance like an artery and does not explain the arterial focus described.",
+          "D": "Venous thrombosis is a venous filling defect, not a contrast-filled focus continuous with an artery."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3291674/"
+      },
+      {
+        "id": "pankreatitis-en-infected-necrosis",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which CT observation most strongly raises concern for infected necrosis in known necrotising pancreatitis when there has been no intervention or enteric fistula?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Gas bubbles within the necrotic collection"
+          },
+          {
+            "id": "B",
+            "text": "Heterogeneous necrotic contents without gas"
+          },
+          {
+            "id": "C",
+            "text": "An enhancing capsule without gas"
+          },
+          {
+            "id": "D",
+            "text": "Peripancreatic fat stranding without gas"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Gas in necrosis is a strong infection clue in this context but is absent in many infected necroses. Lack of gas does not exclude infection. Clinical status, evolution and alternative causes of gas remain important.",
+        "wrongExplanations": {
+          "B": "Heterogeneity describes necrotic contents and does not establish infection. Infection may nevertheless occur without gas.",
+          "C": "An enhancing capsule indicates organisation/maturation of the collection, not infection by itself.",
+          "D": "Fat stranding is a nonspecific inflammatory reaction and less specific for infected necrosis than the gas finding asked here."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/"
+      },
+      {
+        "id": "pankreatitis-en-carcinoma-dd",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which combination favours pancreatic carcinoma over a chronic inflammatory mass?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Abrupt duct cut-off with upstream tail atrophy"
+          },
+          {
+            "id": "B",
+            "text": "Duct-penetrating sign"
+          },
+          {
+            "id": "C",
+            "text": "Intraductal and parenchymal calcifications"
+          },
+          {
+            "id": "D",
+            "text": "Chain-of-lakes ductal irregularity"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Abrupt focal duct cut-off with upstream parenchymal atrophy raises concern for an obstructing tumour. A narrowed duct traversing the mass favours inflammation, but no single sign safely excludes carcinoma. Compare prior studies and investigate according to the overall context.",
+        "wrongExplanations": {
+          "B": "The duct-penetrating sign favours an inflammatory mass: a duct remains visible traversing the lesion, often narrowed. It is not absolute exclusion evidence.",
+          "C": "Intraductal and parenchymal calcifications support chronic pancreatitis. A coexisting carcinoma remains possible.",
+          "D": "Alternating duct calibre and strictures fit chronic ductal change; the question seeks abrupt focal cut-off with upstream atrophy."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/11568327/"
+      },
+      {
+        "id": "aq-atv-ipmn-en-serous-pattern",
+        "fach": "abdomen",
+        "tags": [
+          "ipmn"
+        ],
+        "question": "Which pancreatic cyst morphology most strongly supports a serous cystic neoplasm?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A solitary macrocystic body/tail lesion with a thickened wall"
+          },
+          {
+            "id": "B",
+            "text": "A sponge-like cluster of very small cysts with a central stellate scar"
+          },
+          {
+            "id": "C",
+            "text": "Grape-like branch-duct cysts with visible main duct communication"
+          },
+          {
+            "id": "D",
+            "text": "Homogeneous encapsulated fluid without debris developing after pancreatitis"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Microcystic architecture and a central scar support a serous lesion. They are not visible in every serous lesion; atypical macrocystic forms can overlap with mucinous lesions. The full examination and context remain important.",
+        "wrongExplanations": {
+          "A": "Macrocysts and wall thickening are not the classic serous pattern requested; alternatives include a mucinous cystic neoplasm.",
+          "C": "Grape-like side-branch cysts connected to the duct system favour BD-IPMN. Communication alone is not histological proof.",
+          "D": "Mature pure fluid after pancreatitis favours a pseudocyst, a different clinical-morphological context from microcystic serous architecture."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/19522024/"
+      },
+      {
+        "id": "aq-atv-ipmn-en-nodule-risk",
+        "fach": "abdomen",
+        "tags": [
+          "ipmn"
+        ],
+        "question": "In suspected IPMN, which of these individual findings is a Kyoto2024 high-risk stigma rather than only a worrisome feature?",
+        "options": [
+          {
+            "id": "A",
+            "text": "An enhancing mural nodule measuring 6 mm"
+          },
+          {
+            "id": "B",
+            "text": "An enhancing mural nodule measuring 3 mm"
+          },
+          {
+            "id": "C",
+            "text": "A cyst diameter of 35 mm without other stated features"
+          },
+          {
+            "id": "D",
+            "text": "A main duct diameter of 7 mm without other stated features"
+          }
+        ],
+        "correct": "A",
+        "explanation": "An enhancing mural nodule ≥5 mm is a Kyoto2024 high-risk stigma. This calls for targeted further and multidisciplinary evaluation; it does not prove invasive carcinoma or mandate surgery regardless of the patient.",
+        "wrongExplanations": {
+          "B": "An enhancing nodule <5 mm is a worrisome feature. It still needs evaluation but does not meet the ≥5 mm high-risk threshold asked here.",
+          "C": "A cyst ≥30 mm is a worrisome feature. A 35 mm cyst alone is not a Kyoto2024 high-risk stigma.",
+          "D": "A main duct ≥5 and <10 mm is a worrisome feature; the main duct threshold for a high-risk stigma is ≥10 mm."
+        },
+        "source": "https://doi.org/10.1016/j.pan.2023.12.009"
+      }
+    ],
+    "fa": [
+      {
+        "id": "pnet-fa-01",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "کدام الگوی CT در PanNET شایع است، هرچند الگوهای متفاوت رفتار مادهٔ حاجب نیز دیده می‌شوند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "کانون توپر مشخص با جذب شریانی واضح بیشتر از پانکراس"
+          },
+          {
+            "id": "B",
+            "text": "کانون کم‌عروق با حاشیهٔ نامشخص همراه قطع ناگهانی مجرای اصلی"
+          },
+          {
+            "id": "C",
+            "text": "تورم منتشر غده با تغییرات التهابی چربی اطراف"
+          },
+          {
+            "id": "D",
+            "text": "خوشه‌ای از کیست‌های کوچک همراه سپتاهای دارای جذب مادهٔ حاجب"
+          }
+        ],
+        "correct": "A",
+        "explanation": "جذب بیشتر شریانی الگویی شایع ولی غیرالزامی در PanNET است. گروه‌های مطالعاتی اصلی، PanNET ایزو یا کم‌جذب را نیز ثبت کرده‌اند. اندازه، مورفولوژی، ارتباط مجرایی و عروقی و متاستازها ارزیابی را تکمیل می‌کنند؛ رفتار مادهٔ حاجب به‌تنهایی گرید تومور را قطعی نمی‌کند.",
+        "wrongExplanations": {
+          "B": "این الگو بیشتر شک به تومور داکتال را مطرح می‌کند. با این حال کم‌جذبی در PanNET نیز ممکن است؛ سؤال الگوی شایع را می‌پرسد، نه آزمون رد تشخیص.",
+          "C": "تورم منتشر و واکنش چربی بیشتر الگوی التهابی‌اند تا الگوی شایع کانون توپر PanNET. داده‌های بالینی و یافته‌های تکمیلی همچنان لازم‌اند.",
+          "D": "الگوی میکروکیستیک سپتادار، ابتدا ارزیابی را به سمت ضایعهٔ کیستیک هدایت می‌کند. PanNET می‌تواند اجزای کیستیک داشته باشد، اما این الگوی شایع توپرِ مورد سؤال نیست."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/23991643/"
+      },
+      {
+        "id": "pnet-fa-02",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "سناریوی متنی: ضایعهٔ کوچک پرعروق در دم پانکراس از نظر دانسیتهٔ CT، سیگنال MRI و رفتار مادهٔ حاجب در فازهای موجود با طحال تطابق دارد. کدام تشخیص افتراقی مهم به‌ویژه با این تطابق سازگار است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "PanNET غیرفانکشنال"
+          },
+          {
+            "id": "B",
+            "text": "طحال فرعی داخل پانکراس"
+          },
+          {
+            "id": "C",
+            "text": "متاستاز پانکراس از کارسینوم سلول کلیوی"
+          },
+          {
+            "id": "D",
+            "text": "نئوپلاسم توپر پسودوپاپیلاری"
+          }
+        ],
+        "correct": "B",
+        "explanation": "بافت طحال نابجا می‌تواند در تصاویر CT و MRI پیش از تزریق و دینامیک، ویژگی‌های طحال را نشان دهد. این تطابق در دم پانکراس سرنخ مهمی است و باید پیش از نام‌گذاری شتاب‌زدهٔ تومور بررسی شود. در عدم قطعیت باقی‌مانده، تأیید هدفمند ممکن است؛ این سناریوی متنی جای بررسی فردی را نمی‌گیرد.",
+        "wrongExplanations": {
+          "A": "PanNET می‌تواند پرعروق باشد. اما تطابق تکمیلی با بافت طحال در چند سکانس و فاز، به‌ویژه توجه به طحال فرعی را لازم می‌کند؛ پرعروقی به‌تنهایی این دو را جدا نمی‌کند.",
+          "C": "متاستاز کارسینوم سلول کلیوی می‌تواند پرعروق باشد؛ سابقهٔ سرطان و انتشار در نواحی دیگر مهم‌اند. اما تطابق ذکرشده با طحال، اینجا سرنخ هدفمند بافت طحال نابجاست.",
+          "D": "تودهٔ پانکراس ممکن است بررسی این تشخیص افتراقی را نیز لازم کند. اینجا تطابق مشخص با طحال، بررسی بافت طحال فرعی را در اولویت می‌گذارد، نه نام‌گذاری یک نئوپلاسم."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3473517/"
+      },
+      {
+        "id": "pnet-fa-03",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "کدام مجموعهٔ یافته‌ها مستقیم‌تر از سندرم بالینی انسولینومای فانکشنال در بیمار دارای PanNET حمایت می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ضایعهٔ SSTR مثبت همراه مقادیر طبیعی گلوکز"
+          },
+          {
+            "id": "B",
+            "text": "رنگ‌آمیزی مثبت انسولین در تومور بدون سندرم هیپوگلیسمی مستند"
+          },
+          {
+            "id": "C",
+            "text": "علائم تیپیک هیپوگلیسمی همراه گلوکز پایین مستند و انسولین نامتناسباً حفظ‌شده یا افزایش‌یافته"
+          },
+          {
+            "id": "D",
+            "text": "جذب بیشتر شریانی همراه سیگنال پایین T1 و بالای T2"
+          }
+        ],
+        "correct": "C",
+        "explanation": "سندرم فانکشنال مرتبط با NET، علائم بالینی را با شواهد بیوشیمیایی غلظت نامتناسب هورمون ترکیب می‌کند. تصویربرداری محل و ویژگی‌ها را بررسی می‌کند، اما جای ارزیابی بالینی و بیوشیمیایی را نمی‌گیرد. تأیید در چارچوب مناسب بررسی غدد انجام می‌شود.",
+        "wrongExplanations": {
+          "A": "جذب SSTR بیان گیرنده را نشان می‌دهد و می‌تواند به تعیین محل کمک کند؛ سندرم بالینی افزایش هورمون را قطعی نمی‌کند.",
+          "B": "رنگ‌آمیزی هورمون، بیان آن در بافت را نشان می‌دهد، اما بدون سندرم بالینی و بیوشیمیایی سازگار، فانکشنال‌بودن را قطعی نمی‌کند.",
+          "D": "این سیگنال‌ها و رفتار مادهٔ حاجب، الگوی تصویربرداری را توصیف می‌کنند، نه اثر سیستمیک ترشح هورمون را."
+        },
+        "source": "https://doi.org/10.1111/jne.13318"
+      },
+      {
+        "id": "pnet-fa-04",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "یک خلاصه، انسولینوماها را عمدتاً خوش‌خیم توصیف می‌کند و قرار است از آن برای برآورد خطر در گروه PanNET غیرفانکشنال استفاده شود. کدام داده مستقیم‌تر به قابلیت تعمیم بین این جمعیت‌ها می‌پردازد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "تعداد بیشتری انسولینوما با همان روش گردآوری داده"
+          },
+          {
+            "id": "B",
+            "text": "اندازه‌گیری دقیق‌تر جذب شریانی در گروه انسولینوما"
+          },
+          {
+            "id": "C",
+            "text": "پیگیری طولانی‌تر همان گروه انسولینوما"
+          },
+          {
+            "id": "D",
+            "text": "داده‌های جمعیت هدف غیرفانکشنال شامل گرید تومور، سیر و زمینهٔ بالینی"
+          }
+        ],
+        "correct": "D",
+        "explanation": "داده‌های انسولینوما، گروه بالینی و زیستی متفاوتی را توصیف می‌کنند. دادهٔ بیشتر یا پیگیری طولانی‌تر همان گروه مبدأ، به‌تنهایی قابلیت تعمیم را حل نمی‌کند. ارزیابی PanNET غیرفانکشنال به دادهٔ جمعیت هدف و توجه به گرید، رشد، تصویربرداری و زمینهٔ بیمار نیاز دارد؛ قاعده‌ای دربارهٔ اندازه یا خوش‌خیمی نتیجه‌گیری نمی‌شود.",
+        "wrongExplanations": {
+          "A": "موارد بیشتر انسولینوما، توصیف گروه مبدأ را بهتر می‌کند، اما تفاوت آن با جمعیت هدف غیرفانکشنال را مستقیم پاسخ نمی‌دهد.",
+          "B": "اندازه‌گیری تصویری دقیق‌تر می‌تواند کیفیت سنجش را بهتر کند، اما جای جمعیت هدف مناسب برای برآورد خطر را نمی‌گیرد.",
+          "C": "پیگیری طولانی‌تر ممکن است رخدادهای دیررس انسولینوما را نشان دهد. تفاوت بالینی و زیستی با گروه غیرفانکشنال همچنان باقی است."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7029300/"
+      },
+      {
+        "id": "psc-pbc-mrcp-beading-fa",
+        "topicId": "psc-pbc",
+        "tags": [
+          "psc-pbc"
+        ],
+        "fach": "abdomen",
+        "question": "کدام الگوی کلانژیوگرافی مشخصهٔ PSC با درگیری مجاری بزرگ است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "تنگی‌های کوتاه و چندکانونی با قطعات بینابینی با قطر طبیعی یا کمی گشاد"
+          },
+          {
+            "id": "B",
+            "text": "یک تنگی ناگهانی منفرد در ناف کبد با اتساع یکنواخت مجاری پروگزیمال"
+          },
+          {
+            "id": "C",
+            "text": "یک تنگی طولانی و صاف در کلدوک دیستال همراه بزرگ‌شدگی منتشر پانکراس"
+          },
+          {
+            "id": "D",
+            "text": "نقص پرشدگی داخل کلدوک که صفرا دور آن را گرفته است، همراه اتساع بالادست"
+          }
+        ],
+        "correct": "A",
+        "explanation": "تناوب تنگی‌های کوتاه و قطعات طبیعی یا کمی گشاد نمای مهره‌مهره ایجاد می‌کند. تشخیص PSC نیازمند کنارگذاشتن علل ثانویهٔ کلانژیت اسکلروزان است؛ مورفولوژی به‌تنهایی علت را تعیین نمی‌کند.",
+        "wrongExplanations": {
+          "B": "انسداد منفرد ناف کبد بررسی هدفمند علت، از جمله تنگی نئوپلاستیک، می‌خواهد و الگوی چندکانونی متناوب مورد سؤال را نشان نمی‌دهد.",
+          "C": "این ترکیب تشخیص‌های افتراقی، از جمله بیماری مرتبط با IgG4، را مطرح می‌کند و با الگوی مشخصهٔ چندکانونی PSC متفاوت است.",
+          "D": "نقص داخل‌لومنی محاط در صفرا ابتدا علت داخل‌مجرا، مانند سنگ، را مطرح می‌کند و معادل چند تنگی کوتاه دیواره‌ای نیست."
+        },
+        "source": "https://doi.org/10.1002/hep.32771"
+      },
+      {
+        "id": "aq-atv-psc-pbc-fa-quality-next",
+        "topicId": "psc-pbc",
+        "tags": [
+          "psc-pbc"
+        ],
+        "fach": "abdomen",
+        "question": "سناریوی متنی: در بیمار پایدار با شک به PSC، نخستین MRCP به‌علت حرکت تشخیصی نیست و مجاری محیطی قابل ارزیابی نیستند. نشانهٔ حاد کلانژیت یا انسداد نیازمند درمان وجود ندارد. کدام گام بعدی در درجهٔ اول نمایش ناکافی مجاری را برطرف می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ERCP برای کلانژیوگرافی تشخیصی و سیتولوژی برسی"
+          },
+          {
+            "id": "B",
+            "text": "تکرار MRI/MRCP باکیفیت در مرکز باتجربه"
+          },
+          {
+            "id": "C",
+            "text": "بیوپسی کبد برای جست‌وجوی بافت‌شناختی PSC مجاری کوچک"
+          },
+          {
+            "id": "D",
+            "text": "CT فاز ورید پورت برای بررسی مورفولوژی کبد و اتساع مجاری"
+          }
+        ],
+        "correct": "B",
+        "explanation": "ابتدا محدودیت فنی با MRI/MRCP باکیفیت برطرف شود. ERCP صرفاً برای تشخیص PSC انجام نمی‌شود. در MRCP طبیعی و باکیفیت همراه تداوم شک به PSC مجاری کوچک، یا برخی موارد نامشخص منتخب، بیوپسی می‌تواند مطرح باشد.",
+        "wrongExplanations": {
+          "A": "ERCP برای مداخله یا نمونه‌برداری کاربرد دارد، اما اینجا جای تکمیل تصویربرداری غیرتهاجمی اولیهٔ ناکافی را نمی‌گیرد.",
+          "C": "ارزیابی PSC مجاری کوچک به کلانژیوگرافی طبیعی و باکیفیت نیاز دارد. MRCP ناخوانا به‌علت حرکت معادل بررسی طبیعی مجاری نیست.",
+          "D": "CT می‌تواند یافته‌های کبدی یا انسدادی دیگری نشان دهد، اما ارزیابی کلانژیوگرافیک باکیفیتِ مفقودِ شاخه‌های کوچک‌تر را فراهم نمی‌کند."
+        },
+        "source": "https://doi.org/10.1002/hep.32771"
+      },
+      {
+        "id": "aq-atv-psc-pbc-fa-relevant-stricture",
+        "topicId": "psc-pbc",
+        "tags": [
+          "psc-pbc"
+        ],
+        "fach": "abdomen",
+        "question": "در تنگی کلدوک بیمار با PSC شناخته‌شده، کدام اطلاعات تکمیلی مستقیماً اصطلاح «تنگی بااهمیت بالینی» در AASLD۲۰۲۲ را پشتیبانی می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "کاهش شدید درصدی قطر لومن در MRCP بدون اطلاعات بالینی اضافی"
+          },
+          {
+            "id": "B",
+            "text": "طول بیشتر قطعهٔ تنگی نسبت به سایر بخش‌های مجرا"
+          },
+          {
+            "id": "C",
+            "text": "نشانه‌ها یا علائم کلستاز انسدادی و/یا کلانژیت باکتریایی"
+          },
+          {
+            "id": "D",
+            "text": "آتروفی منطقه‌ای کبد با آزمایش‌های کلستاز بدون تغییر و نبود علائم"
+          }
+        ],
+        "correct": "C",
+        "explanation": "«بااهمیت بالینی» تنگی را با نشانه‌ها/علائم کلستاز انسدادی یا کلانژیت باکتریایی مرتبط می‌کند و صرفاً معیار قطر در MRCP نیست. بررسی علت و عوارض همچنان لازم است؛ این اصطلاح بدخیمی را ثابت نمی‌کند.",
+        "wrongExplanations": {
+          "A": "این توصیف شدت مورفولوژیک است و بدون ارتباط بالینی، تعریف تنگی بااهمیت بالینی را فراهم نمی‌کند.",
+          "B": "طول باید در گزارش ساختاریافته ثبت شود، اما جای ارتباط با کلستاز انسدادی یا کلانژیت را نمی‌گیرد.",
+          "D": "آتروفی منطقه‌ای یافتهٔ مورفولوژیک تکمیلی است؛ برای اصطلاح «بااهمیت بالینی»، ارتباط بالینی تعریف‌شده ملاک است."
+        },
+        "source": "https://doi.org/10.1002/hep.32771"
+      },
+      {
+        "id": "abdomen-pdac-isoattenuating-fa-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "سناریوی متنی: در بیمار دچار کاهش وزن، CT چندفازی تودهٔ واضح کم‌دانسیته در پانکراس نشان نمی‌دهد. کدام ترکیب اضافی بیش از بقیه شک به PDAC هم‌دانسیته را تقویت می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "قطع ناگهانی و کانونی مجرای پانکراس همراه اتساع مجرا و آتروفی پارانشیم در بالادست"
+          },
+          {
+            "id": "B",
+            "text": "کلسیفیکاسیون منتشر پارانشیم همراه چند سنگ داخل‌مجرایی و تغییر نامنظم قطر مجرا"
+          },
+          {
+            "id": "C",
+            "text": "تورم منتشر غده با جذب همگن مادهٔ حاجب و مایع التهابی اطراف پانکراس"
+          },
+          {
+            "id": "D",
+            "text": "خوشهٔ محدود میکروکیست‌ها با اسکار مرکزی و مجرای اصلی جابجاشده اما باز"
+          }
+        ],
+        "correct": "A",
+        "explanation": "قطع کانونی مجرا با تغییرات مجرایی و پارانشیمی بالادست می‌تواند PDAC هم‌دانسیته را به‌طور غیرمستقیم آشکار کند. این الگو نیازمند بررسی هدفمند است، اما اثبات بافت‌شناختی نیست.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/12202711/",
+        "wrongExplanations": {
+          "B": "کلسیفیکاسیون و سنگ داخل مجرا بیشتر به نفع پانکراتیت مزمن‌اند. وجود هم‌زمان سرطان را رد نمی‌کنند؛ پرسش دربارهٔ قوی‌ترین الگوی هشداردهندهٔ انسداد کانونی است.",
+          "C": "این الگوی التهابی منتشر بیشتر به نفع پانکراتیت ادماتوی بینابینی است تا انسداد کانونی مجرا همراه آتروفی بالادست که پرسش هدف گرفته است.",
+          "D": "میکروکیست‌ها و اسکار مرکزی بیشتر به نفع ضایعهٔ کیستیک سروزی‌اند. جابجایی مجرای باز با قطع ناگهانی مورد سؤال تفاوت دارد."
+        }
+      },
+      {
+        "id": "abdomen-pdac-double-duct-fa-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "سناریوی متنی: مجرای صفراوی مشترک و مجرای اصلی پانکراس تا ناحیهٔ سر پانکراس/پاپیلا گشادند. علت قطعی هنوز دیده نمی‌شود. کدام برداشت اولیه پشتوانهٔ بهتری دارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "فرایند انسدادی دیستال در ناحیهٔ پری‌آمپولاری یا سر پانکراس؛ علل نئوپلاستیک و خوش‌خیم بیشتر بررسی شوند"
+          },
+          {
+            "id": "B",
+            "text": "انسداد منفرد ناف کبد به‌عنوان توضیح مشترک اتساع هر دو مجرا"
+          },
+          {
+            "id": "C",
+            "text": "انسداد منفرد دم پانکراس به‌عنوان توضیح مشترک اتساع هر دو مجرا"
+          },
+          {
+            "id": "D",
+            "text": "کلانژیت منتشر داخل‌کبدی به‌عنوان توضیح مشترک اتساع هر دو مجرا"
+          }
+        ],
+        "correct": "A",
+        "explanation": "ناحیهٔ مشترک خروجی دیستال، علامت دو مجرا را توضیح می‌دهد. این علامت شاهد بافتی اختصاصی PDAC نیست؛ از جمله نئوپلاسم پانکراس یا آمپولا، پانکراتیت مزمن و سنگ مطرح‌اند. زمینهٔ بالینی و بررسی هدفمند علت را روشن می‌کنند.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/24705640/",
+        "wrongExplanations": {
+          "B": "انسداد منفرد ناف کبد عمدتاً اتساع صفراوی پروگزیمال را توضیح می‌دهد، نه اتساع هم‌زمان مجرای پانکراس تا ناحیهٔ خروجی مشترک دیستال.",
+          "C": "انسداد منفرد دم، مجرای پانکراس را در بالادست درگیر می‌کند؛ اتساع هم‌زمان کلدوک تا ناحیهٔ سر/پاپیلا را توضیح نمی‌دهد.",
+          "D": "فرایند داخل‌کبدی انسداد خروجی مشترک دیستال هر دو مجرا را توضیح نمی‌دهد. این الگو نیازمند ارزیابی ناحیهٔ سر/پاپیلاست."
+        }
+      },
+      {
+        "id": "abdomen-pdac-vessel-contact-fa-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "سناریوی متنی: PDAC درمان‌نشده با ورید مزانتریک فوقانی تماس دارد. برای برنامه‌ریزی چندتخصصی باید به‌ویژه امکان بازسازی وریدی ارزیابی شود. کدام اطلاعات تکمیلی مستقیماً به این پرسش پاسخ می‌دهند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "محل و طول تنگی/انسداد، بازبودن بخش‌های پروگزیمال و دیستال، ترومبوز و کولترال‌ها"
+          },
+          {
+            "id": "B",
+            "text": "منشأ شریان‌ها، مسیر شریان کبدی فرعی و تماس با تنهٔ سلیاک"
+          },
+          {
+            "id": "C",
+            "text": "بیشترین قطر تومور، طول قطع مجرا و قطر مجرای پانکراس"
+          },
+          {
+            "id": "D",
+            "text": "تعداد و اندازهٔ ضایعات مشکوک کبد، آسیت و ندول‌های صفاقی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "برای برنامه‌ریزی بازسازی وریدی موضعی، قطعهٔ درگیر، وسعت درگیری و وضعیت قطعات مجاور رگ اهمیت دارند. میزان تماس، شکل جدار و کولترال‌ها ساختاریافته ثبت شوند. شریان‌ها و متاستازها همچنان بخشی از ارزیابی کلی‌اند؛ این توصیف به‌تنهایی قابلیت برداشت را تعیین نمی‌کند.",
+        "source": "https://doi.org/10.1148/radiol.13131184",
+        "wrongExplanations": {
+          "B": "واریانت‌های شریانی و تماس تومور بر برنامه‌ریزی جراحی اثر دارند، اما قطعات ورودی و خروجی لازم برای بازسازی وریدی را توصیف نمی‌کنند.",
+          "C": "اندازه‌های تومور و مجرا بخشی از گزارش مورفولوژیک‌اند، اما جای توصیف قطعهٔ وریدی درگیر و قطعات باز مجاور را نمی‌گیرند.",
+          "D": "متاستاز دوردست برای برنامه‌ریزی کلی تعیین‌کننده است. پرسش مشخص بازسازی وریدی موضعی علاوه بر آن به توصیف قطعات رگ نیاز دارد."
+        }
+      },
+      {
+        "id": "abdomen-pancreatic-cysts-fa-01",
+        "tags": [
+          "ipmn"
+        ],
+        "fach": "abdomen",
+        "question": "ارتباط با مجرا هم در IPMN و هم در پسودوسیست ممکن است دیده شود. کدام ترکیب متنی اضافی بیش از بقیه از پسودوسیست پس از التهاب حمایت می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "شش هفته پس از پانکراتیت حاد مستند: تجمع مایع همگن و کپسول‌دار بدون محتوای غیرمایع قابل مشاهده"
+          },
+          {
+            "id": "B",
+            "text": "چند کیست شاخه‌ای خوشه‌انگوری بدون سابقهٔ التهاب، با پارانشیم پانکراس در باقی بخش‌ها طبیعی"
+          },
+          {
+            "id": "C",
+            "text": "ضایعهٔ ماکروکیستیک منفرد تنه/دم در خانم بدون سابقهٔ التهاب"
+          },
+          {
+            "id": "D",
+            "text": "ضایعهٔ میکروکیستیک لوبوله با اسکار ستاره‌ای مرکزی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "ارتباط زمانی با التهاب و تجمع مایع بالغ بدون محتوای نکروتیک قابل مشاهده از پسودوسیست حمایت می‌کنند. ارتباط مجرایی اختصاصی نیست؛ IPMN هم می‌تواند با مجرا مرتبط باشد و پانکراتیت ایجاد کند. شرح‌حال، کل بررسی و سیر زمانی با هم ارزیابی شوند.",
+        "source": "https://doi.org/10.1016/j.pan.2023.12.009",
+        "wrongExplanations": {
+          "B": "این الگو بیشتر به نفع BD-IPMN است. ارتباط مجرایی به‌تنهایی آن را از پسودوسیست جدا نمی‌کند؛ سیر پس از التهابِ توصیف‌شده در پاسخ درست اینجا وجود ندارد.",
+          "C": "محل، ساختار ماکروکیستیک منفرد و زمینهٔ بالینی از جمله MCN را در افتراق مطرح می‌کنند و همان ارتباط زمانی مستقیم با التهاب را فراهم نمی‌کنند.",
+          "D": "میکروکیست‌ها با اسکار مرکزی بیشتر به نفع نئوپلاسم کیستیک سروزی‌اند و با تجمع مایع بالغ پس از التهابِ توصیف‌شده تفاوت دارند."
+        }
+      },
+      {
+        "id": "pankreatitis-fa-biliary-cause",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "در پانکراتیت حاد صفراوی، سنگ در کدام محل می‌تواند مستقیماً خروجی مشترک دیستال صفرا و ترشحات پانکراس را مختل کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ناحیهٔ پاپیلا/آمپولا"
+          },
+          {
+            "id": "B",
+            "text": "مجرای سیستیک به‌تنهایی"
+          },
+          {
+            "id": "C",
+            "text": "مجرای کبدی چپ به‌تنهایی"
+          },
+          {
+            "id": "D",
+            "text": "مجرای سگمنتال داخل‌کبدی راست به‌تنهایی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "سنگ انتهای مجرای صفراوی در پاپیلا می‌تواند تخلیهٔ پانکراس را مختل کند. کلدوکولیتیاز بررسی شود؛ اگر وجود سنگ نامشخص باشد، MRCP یا EUS کمک می‌کند. علت صفراوی بدون کلانژیت خودبه‌خود به معنی ERCP فوری نیست.",
+        "wrongExplanations": {
+          "B": "مجرای سیستیک کیسهٔ صفرا را تخلیه می‌کند؛ انسداد منفرد آن مستقیماً خروجی پانکراس در پاپیلا را نمی‌بندد.",
+          "C": "سنگ مجرای کبدی چپ بخش پروگزیمال صفراوی را درگیر می‌کند، نه خروجی مشترک دیستال با مجرای پانکراس.",
+          "D": "مجرای سگمنتال منفرد داخل‌کبدی نیز در بالادست دستگاه صفراوی است و خروجی پانکراس را مستقیماً مسدود نمی‌کند."
+        },
+        "source": "https://doi.org/10.1016/j.pan.2025.04.020"
+      },
+      {
+        "id": "pankreatitis-fa-alcohol",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "کدام مکانیسم با آزمایش‌های سلول آسینار دربارهٔ آسیب پانکراس مرتبط با الکل پشتیبانی می‌شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "متابولیت‌های غیر اکسیداتیو الکل می‌توانند اختلال پایدار پیام‌رسانی کلسیم داخل‌سلولی و آسیب سلول آسینار ایجاد کنند."
+          },
+          {
+            "id": "B",
+            "text": "التهاب لنفوپلاسموسیتی مرتبط با IgG4 با درگیری مشخصهٔ اندام‌ها."
+          },
+          {
+            "id": "C",
+            "text": "انسداد مکانیکی ناحیهٔ پاپیلا به‌وسیلهٔ سنگ مجرای صفراوی."
+          },
+          {
+            "id": "D",
+            "text": "آسیب ایسکمیک پارانشیم بر اثر کاهش اولیهٔ خون‌رسانی شریانی."
+          }
+        ],
+        "correct": "A",
+        "explanation": "پژوهش آزمایشگاهی آسیب آسینار ناشی از برخی اتیل‌استرهای اسید چرب حاصل از مسیر غیر اکسیداتیو و اختلال پیام‌رسانی کلسیم را نشان می‌دهد. این شاهد یک مدل مکانیستی است، نه اثبات بالینی مستقلِ علت الکلی و نه ادعای ایجاد پانکراتیت با هر مصرف الکل.",
+        "wrongExplanations": {
+          "B": "این توصیف فرایند ایمنی‌واسطه است، نه متابولیسم غیر اکسیداتیو الکل در سلول آسینار که اینجا بررسی شده است.",
+          "C": "این مکانیسم انسدادی صفراوی است و یافتهٔ آزمایشگاهی مربوط به متابولیت الکل را توضیح نمی‌دهد.",
+          "D": "کاهش اولیهٔ پرفیوژن شریانی مسیر آسیب دیگری است؛ این مطالعه آسیب آسینار با واسطهٔ متابولیت را بررسی می‌کند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC490004/"
+      },
+      {
+        "id": "pankreatitis-fa-necrosis-timing",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "در پانکراتیت حاد شدید، بدون اندیکاسیون فوری برای بررسی زودتر، WSES۲۰۱۹ چه زمانی را برای نخستین ارزیابی CT با مادهٔ حاجب ایده‌آل می‌داند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "در ۲۴ ساعت نخست پس از شروع علائم"
+          },
+          {
+            "id": "B",
+            "text": "۷۲ تا ۹۶ ساعت پس از شروع علائم"
+          },
+          {
+            "id": "C",
+            "text": "۷ تا ۱۰ روز پس از شروع علائم"
+          },
+          {
+            "id": "D",
+            "text": "پس از تشکیل کپسول، معمولاً حدود چهار هفته بعد"
+          }
+        ],
+        "correct": "B",
+        "explanation": "این بازهٔ مشخص WSES مربوط به نخستین ارزیابی بیماری شدید است. CT زودرس ممکن است نکروز را کمتر نشان دهد؛ تردید تشخیصی یا عوارض فوری می‌توانند تصویربرداری زودتر را لازم کنند. این برنامهٔ روتین برای هر پانکراتیت خفیف نیست.",
+        "wrongExplanations": {
+          "A": "برای ارزیابی غیرفوری نکروز زود است؛ نکروز ممکن است هنوز کاملاً مشخص نشده باشد.",
+          "C": "نخستین ارزیابی مشخص‌شدهٔ پانکراتیت شدید به‌طور روتین تا این بازهٔ دیرتر عقب انداخته نمی‌شود.",
+          "D": "تشکیل کپسول مربوط به اصطلاحات تجمعات دیررس و برنامه‌ریزی برخی مداخلات است، نه زمان نخستین ارزیابی CT بیماری شدید."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/"
+      },
+      {
+        "id": "pankreatitis-fa-atlanta-morphology",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "کدام الگوی CT با پانکراتیت ادماتوی بینابینی و نه پانکراتیت نکروزان سازگار است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "غدهٔ متورم با جذب همگن مادهٔ حاجب و واکنش چربی، بدون نکروز قابل مشاهدهٔ پانکراس یا اطراف آن"
+          },
+          {
+            "id": "B",
+            "text": "ناحیهٔ کانونی پارانشیم بدون جذب مادهٔ حاجب همراه مایع مجاور"
+          },
+          {
+            "id": "C",
+            "text": "غدهٔ دارای جذب مادهٔ حاجب همراه محتوای نکروتیک ناهمگن اطراف پانکراس"
+          },
+          {
+            "id": "D",
+            "text": "پارانشیم فاقد جذب مادهٔ حاجب همراه محتوای نکروتیک اطراف پانکراس"
+          }
+        ],
+        "correct": "A",
+        "explanation": "در پانکراتیت بینابینی جذب مادهٔ حاجب در پارانشیم حفظ می‌شود و نکروز قابل مشاهده نیست. با این حال نکروز می‌تواند فقط در بافت اطراف پانکراس وجود داشته باشد، حتی اگر غده جذب داشته باشد. CT زودرس ممکن است وسعت نهایی را کمتر نشان دهد.",
+        "wrongExplanations": {
+          "B": "نبود کانونی جذب در پارانشیم می‌تواند نشان‌دهندهٔ نکروز پانکراس باشد، نه الگوی صرفاً بینابینی مورد سؤال.",
+          "C": "حفظ جذب غده نکروز منفرد اطراف پانکراس را رد نمی‌کند. محتوای نکروتیک غیرمایع آن را از واکنش سادهٔ چربی یا مایع ساده متمایز می‌کند.",
+          "D": "این گزینه نکروز هم‌زمان پانکراس و اطراف آن را توصیف می‌کند."
+        },
+        "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+      },
+      {
+        "id": "pankreatitis-fa-collections",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "سناریوی متنی: ده روز پس از شروع پانکراتیت ادماتوی بینابینی، تجمع مایع همگن اطراف پانکراس بدون دیوارهٔ مشخص و بدون نکروز دیده می‌شود. کدام اصطلاح آتلانتا مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "تجمع حاد مایع اطراف پانکراس (APFC)"
+          },
+          {
+            "id": "B",
+            "text": "پسودوسیست پانکراس"
+          },
+          {
+            "id": "C",
+            "text": "تجمع حاد نکروتیک (ANC)"
+          },
+          {
+            "id": "D",
+            "text": "نکروز محصورشده (WON)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "APFC تجمع زودرس مایع خالص بدون دیوارهٔ مشخص در پانکراتیت ادماتوی بینابینی است. زمان به‌تنهایی کافی نیست؛ محتوا و نوع پانکراتیت زمینه‌ای نیز باید مطابقت داشته باشند.",
+        "wrongExplanations": {
+          "B": "پسودوسیست دیوارهٔ تشکیل‌شده دارد و معمولاً بعد از بیش از چهار هفته پدید می‌آید؛ این تجمع زودرس بدون دیواره با آن تطابق ندارد.",
+          "C": "ANC در پانکراتیت نکروزان رخ می‌دهد و محتوای نکروتیک دارد. در این سناریو نکروزی توصیف نشده است.",
+          "D": "WON تجمع نکروتیک بالغ و محصورشده است، معمولاً پس از حدود چهار هفته؛ محتوا و دیوارهٔ این سناریو با آن تطابق ندارند."
+        },
+        "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+      },
+      {
+        "id": "pankreatitis-fa-walled-off-necrosis",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "سناریوی متنی: شش هفته پس از پانکراتیت نکروزان، تجمعی با دیوارهٔ کامل و اجزای ناهمگن مایع و نکروتیک غیرمایع وجود دارد. کدام اصطلاح مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "نکروز محصورشده (WON)"
+          },
+          {
+            "id": "B",
+            "text": "پسودوسیست پانکراس"
+          },
+          {
+            "id": "C",
+            "text": "تجمع حاد مایع اطراف پانکراس (APFC)"
+          },
+          {
+            "id": "D",
+            "text": "تجمع حاد نکروتیک (ANC)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "ترکیب کپسول بالغ و محتوای نکروتیک پس از پانکراتیت نکروزان با WON مطابقت دارد. کپسول به‌تنهایی WON را از پسودوسیست جدا نمی‌کند؛ محتوا نیز تعیین‌کننده است.",
+        "wrongExplanations": {
+          "B": "پسودوسیست عمدتاً مایع و فاقد اجزای نکروتیک جامد است. نکروز غیرمایعِ توصیف‌شده به نفع WON است.",
+          "C": "APFC تجمع مایع زودرس و بدون دیواره در پانکراتیت بینابینی است، نه این تجمع نکروتیک بالغ.",
+          "D": "ANC تجمع نکروتیک زودرس بدون دیوارهٔ بالغ است؛ شکل اکنون کاملاً محصورشده WON نام دارد."
+        },
+        "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+      },
+      {
+        "id": "pankreatitis-fa-ctsi-severe",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "سناریوی متنی: CTSI در پانکراتیت حاد ۸ است. کدام اطلاعات تکمیلی برای طبقه‌بندی پانکراتیت از نظر بالینی شدید در آتلانتای بازنگری‌شده تعیین‌کننده است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "درصد نکروز پارانشیم"
+          },
+          {
+            "id": "B",
+            "text": "تعداد و وسعت تجمعات اطراف پانکراس"
+          },
+          {
+            "id": "C",
+            "text": "نارسایی پایدار عضو به مدت بیش از ۴۸ ساعت"
+          },
+          {
+            "id": "D",
+            "text": "میزان CRP در روز سوم بیماری"
+          }
+        ],
+        "correct": "C",
+        "explanation": "CTSI بالا مورفولوژی CT را توصیف می‌کند. آتلانتای بازنگری‌شده پانکراتیت حاد از نظر بالینی شدید را با نارسایی پایدار عضو بیش از ۴۸ ساعت تعریف می‌کند. عوارض مورفولوژیک و نشانگرهای التهاب مهم‌اند، اما جای این تعریف بالینی را نمی‌گیرند.",
+        "wrongExplanations": {
+          "A": "وسعت نکروز در CTSI مورفولوژیک نقش دارد؛ به‌تنهایی تعریف بالینی بیماری شدید در آتلانتا نیست.",
+          "B": "تجمعات عوارض موضعی‌اند و بدون نارسایی پایدار عضو، پانکراتیت از نظر بالینی شدید آتلانتا را اثبات نمی‌کنند.",
+          "D": "CRP می‌تواند به ارزیابی خطر کمک کند، اما جای تعریف مبتنی بر عملکرد عضو و مدت آن را نمی‌گیرد."
+        },
+        "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+      },
+      {
+        "id": "pankreatitis-fa-pseudoaneurysm",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "سناریوی متنی: در پانکراتیت، فاز شریانی کانونی گرد و واضح درون یک تجمع نشان می‌دهد که جذب شریانی واضح مادهٔ حاجب و ارتباط قابل مشاهده با شاخهٔ شریانی دارد. کدام عارضه محتمل‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پسودوآنوریسم شریانی"
+          },
+          {
+            "id": "B",
+            "text": "پسودوسیست حاوی مایع خالص"
+          },
+          {
+            "id": "C",
+            "text": "نکروز پارانشیم بدون پرفیوژن"
+          },
+          {
+            "id": "D",
+            "text": "ترومبوز ورید طحالی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "جذب شریانی مادهٔ حاجب درون تجمع همراه ارتباط با شاخهٔ شریانی به پسودوآنوریسم مشکوک است. این ضایعه می‌تواند منبع خونریزی باشد و بررسی عروقی به‌موقع و چندتخصصی می‌خواهد.",
+        "wrongExplanations": {
+          "B": "مایع خالص جذب شریانی شدید داخلی همراه اتصال شریانی ندارد؛ البته کیست می‌تواند پسودوآنوریسم را احاطه کند.",
+          "C": "نکروز بدون پرفیوژن مانند شریان مادهٔ حاجب جذب نمی‌کند و کانون شریانی توصیف‌شده را توضیح نمی‌دهد.",
+          "D": "ترومبوز وریدی نقص پرشدگی ورید است، نه کانون پُرشده از مادهٔ حاجب با اتصال شریانی."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3291674/"
+      },
+      {
+        "id": "pankreatitis-fa-infected-necrosis",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "در پانکراتیت نکروزان شناخته‌شده و در نبود مداخله یا فیستول روده‌ای، کدام مشاهدهٔ CT بیش از بقیه شک به نکروز عفونی را افزایش می‌دهد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "حباب گاز درون تجمع نکروتیک"
+          },
+          {
+            "id": "B",
+            "text": "محتوای نکروتیک ناهمگن بدون گاز"
+          },
+          {
+            "id": "C",
+            "text": "کپسول دارای جذب مادهٔ حاجب بدون گاز"
+          },
+          {
+            "id": "D",
+            "text": "واکنش چربی اطراف پانکراس بدون گاز"
+          }
+        ],
+        "correct": "A",
+        "explanation": "گاز در نکروز در این زمینه سرنخ قوی عفونت است، اما در بسیاری از نکروزهای عفونی وجود ندارد. نبود گاز عفونت را رد نمی‌کند. وضعیت بالینی، سیر و علل جایگزین گاز همچنان مهم‌اند.",
+        "wrongExplanations": {
+          "B": "ناهمگنی ویژگی محتوای نکروتیک است و عفونت آن را ثابت نمی‌کند؛ با این حال عفونت می‌تواند بدون گاز نیز وجود داشته باشد.",
+          "C": "کپسول دارای جذب نشانهٔ سازمان‌یافتن/بلوغ تجمع است، نه اثبات مستقل عفونت.",
+          "D": "واکنش چربی پاسخ التهابی غیراختصاصی است و نسبت به علامت گازِ مورد سؤال اختصاصیت کمتری برای نکروز عفونی دارد."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/"
+      },
+      {
+        "id": "pankreatitis-fa-carcinoma-dd",
+        "tags": [
+          "pankreatitis",
+          "akute-pankreatitis",
+          "chronische-pankreatitis",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "کدام ترکیب یافته‌ها احتمال سرطان پانکراس را نسبت به تودهٔ التهابی مزمن بیشتر می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "قطع ناگهانی مجرا همراه آتروفی دم پانکراس"
+          },
+          {
+            "id": "B",
+            "text": "علامت duct-penetrating"
+          },
+          {
+            "id": "C",
+            "text": "کلسیفیکاسیون داخل مجرا و پارانشیم"
+          },
+          {
+            "id": "D",
+            "text": "نامنظمی زنجیره‌ای مجرا"
+          }
+        ],
+        "correct": "A",
+        "explanation": "قطع ناگهانی و کانونی مجرا با آتروفی پارانشیم بالادست به تومور انسدادی مشکوک است. مجرای تنگی که از درون توده می‌گذرد بیشتر به نفع التهاب است، اما هیچ علامت منفردی سرطان را با اطمینان رد نمی‌کند. تصاویر قبلی و بررسی تکمیلی بر پایهٔ کل زمینه ارزیابی شوند.",
+        "wrongExplanations": {
+          "B": "علامت عبور مجرا بیشتر به نفع تودهٔ التهابی است؛ مجرا از درون ضایعه قابل مشاهده می‌ماند و اغلب تنگ است. این شاهد قطعی برای رد سرطان نیست.",
+          "C": "کلسیفیکاسیون داخل‌مجرایی و پارانشیمی از پانکراتیت مزمن حمایت می‌کند؛ سرطان هم‌زمان همچنان ممکن است.",
+          "D": "قطر متناوب مجرا و تنگی‌ها با تغییرات مزمن مجرا سازگارند؛ سؤال قطع ناگهانی کانونی همراه آتروفی بالادست را هدف گرفته است."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/11568327/"
+      },
+      {
+        "id": "aq-atv-ipmn-fa-serous-pattern",
+        "fach": "abdomen",
+        "tags": [
+          "ipmn"
+        ],
+        "question": "کدام مورفولوژی کیست پانکراس بیش از بقیه از نئوپلاسم کیستیک سروزی حمایت می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ضایعهٔ ماکروکیستیک منفرد تنه/دم با دیوارهٔ ضخیم"
+          },
+          {
+            "id": "B",
+            "text": "خوشهٔ اسفنج‌مانندِ کیست‌های بسیار کوچک با اسکار ستاره‌ای مرکزی"
+          },
+          {
+            "id": "C",
+            "text": "کیست‌های شاخه‌ای خوشه‌انگوری با ارتباط قابل مشاهده با مجرای اصلی"
+          },
+          {
+            "id": "D",
+            "text": "مایع همگن کپسول‌دار بدون دبری در سیر پس از پانکراتیت"
+          }
+        ],
+        "correct": "B",
+        "explanation": "ساختار میکروکیستیک و اسکار مرکزی از ضایعهٔ سروزی حمایت می‌کنند. این‌ها در همهٔ ضایعات سروزی دیده نمی‌شوند؛ شکل‌های ماکروکیستیک آتیپیک می‌توانند با ضایعات موسینوس همپوشانی داشته باشند. کل بررسی و زمینه همچنان اهمیت دارند.",
+        "wrongExplanations": {
+          "A": "ماکروکیست و ضخیم‌شدگی دیواره الگوی کلاسیک سروزی مورد سؤال نیستند؛ از جمله نئوپلاسم کیستیک موسینوس در افتراق باقی می‌ماند.",
+          "C": "کیست‌های شاخه‌ای خوشه‌انگوری مرتبط با سیستم مجرایی بیشتر به نفع BD-IPMN هستند. ارتباط به‌تنهایی اثبات بافت‌شناختی نیست.",
+          "D": "مایع خالص بالغ پس از پانکراتیت بیشتر به نفع پسودوسیست است و زمینهٔ بالینی-مورفولوژیک متفاوتی از ساختار سروزی میکروکیستیک دارد."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/19522024/"
+      },
+      {
+        "id": "aq-atv-ipmn-fa-nodule-risk",
+        "fach": "abdomen",
+        "tags": [
+          "ipmn"
+        ],
+        "question": "در IPMN احتمالی، کدام یافتهٔ منفرد زیر طبق کیوتو۲۰۲۴ نشانهٔ پرخطر است، نه صرفاً ویژگی نگران‌کننده؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ندول دیواره‌ای ۶ میلی‌متری با جذب مادهٔ حاجب"
+          },
+          {
+            "id": "B",
+            "text": "ندول دیواره‌ای ۳ میلی‌متری با جذب مادهٔ حاجب"
+          },
+          {
+            "id": "C",
+            "text": "قطر کیست ۳۵ میلی‌متر بدون ویژگی دیگری که ذکر شده باشد"
+          },
+          {
+            "id": "D",
+            "text": "قطر مجرای اصلی ۷ میلی‌متر بدون ویژگی دیگری که ذکر شده باشد"
+          }
+        ],
+        "correct": "A",
+        "explanation": "ندول دیواره‌ای دارای جذب مادهٔ حاجب با اندازهٔ ۵ میلی‌متر یا بیشتر نشانهٔ پرخطر در کیوتو۲۰۲۴ است. این دسته بررسی تکمیلی هدفمند و چندتخصصی می‌خواهد؛ سرطان تهاجمی را ثابت نمی‌کند و دستور جراحی مستقل از وضعیت بیمار نیست.",
+        "wrongExplanations": {
+          "B": "ندول دارای جذب کمتر از ۵ میلی‌متر ویژگی نگران‌کننده است و همچنان نیازمند بررسی است، اما به مرز پرخطرِ ۵ میلی‌متر یا بیشترِ مورد سؤال نمی‌رسد.",
+          "C": "کیست ۳۰ میلی‌متری یا بزرگ‌تر ویژگی نگران‌کننده است. اندازهٔ ۳۵ میلی‌متر به‌تنهایی نشانهٔ پرخطر در کیوتو۲۰۲۴ نیست.",
+          "D": "مجرای اصلی با قطر ۵ تا کمتر از ۱۰ میلی‌متر ویژگی نگران‌کننده است؛ مرز قطر مجرای اصلی برای نشانهٔ پرخطر ۱۰ میلی‌متر یا بیشتر است."
+        },
+        "source": "https://doi.org/10.1016/j.pan.2023.12.009"
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "pnet-arterial-pattern",
+      "topicId": "pnet",
+      "category": {
+        "de": "CT",
+        "en": "CT",
+        "fa": "CT"
+      },
+      "front": {
+        "de": "Was bedeutet arterielle Hyperanreicherung bei einem PanNET?",
+        "en": "What does arterial hyperenhancement mean in a PanNET?",
+        "fa": "تقویت شریانی در PanNET چه مفهومی دارد؟"
+      },
+      "answer": {
+        "de": "Sie ist häufig, aber nicht obligat oder allein beweisend.",
+        "en": "It is common, but neither obligatory nor diagnostic by itself.",
+        "fa": "شایع است، اما الزامی نیست و به‌تنهایی تشخیصی نیست."
+      },
+      "explanation": {
+        "de": "Größe, Differenzierung und Nekrose beeinflussen das Erscheinungsbild.",
+        "en": "Tumour size, differentiation and necrosis affect the appearance.",
+        "fa": "اندازه، تمایز و نکروز تومور بر ظاهر اثر می‌گذارند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/23991643/"
+    },
+    {
+      "id": "pnet-splenic-mimic",
+      "topicId": "pnet",
+      "category": {
+        "de": "Differenzialdiagnose",
+        "en": "Differential",
+        "fa": "تشخیص افتراقی"
+      },
+      "front": {
+        "de": "Wie prüfst du einen möglichen intrapankreatischen Splenulus?",
+        "en": "How do you assess a possible intrapancreatic accessory spleen?",
+        "fa": "طحال فرعی داخل پانکراس را چگونه بررسی می‌کنید؟"
+      },
+      "answer": {
+        "de": "Dichte und Enhancement der Läsion über alle verfügbaren Phasen mit der Milz vergleichen.",
+        "en": "Compare lesion attenuation and enhancement with the spleen across all available phases.",
+        "fa": "دانسیته و تقویت ضایعه را در همهٔ فازهای موجود با طحال مقایسه کنید."
+      },
+      "explanation": {
+        "de": "Übereinstimmung mit der Milz ist ein wichtiger Mimic-Hinweis, besonders im Pankreasschwanz.",
+        "en": "Matching the spleen is an important mimic clue, especially in the pancreatic tail.",
+        "fa": "تطابق با طحال سرنخی مهم برای افتراق است، به‌ویژه در دم پانکراس."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3473517/"
+    },
+    {
+      "id": "pnet-functional-status",
+      "topicId": "pnet",
+      "category": {
+        "de": "Klinische Korrelation",
+        "en": "Clinical correlation",
+        "fa": "تطبیق بالینی"
+      },
+      "front": {
+        "de": "Was definiert ein NET-assoziiertes funktionelles Hormonsyndrom?",
+        "en": "What defines a NET-associated functioning hormonal syndrome?",
+        "fa": "چه چیزی سندرم هورمونی فانکشنال مرتبط با NET را تعریف می‌کند؟"
+      },
+      "answer": {
+        "de": "Passendes klinisches Syndrom zusammen mit biochemisch unangemessener Hormonkonzentration.",
+        "en": "A compatible clinical syndrome together with a biochemically inappropriate hormone concentration.",
+        "fa": "سندرم بالینی سازگار همراه با غلظت بیوشیمیایی نامتناسب هورمون."
+      },
+      "explanation": {
+        "de": "Rezeptor-Uptake, Hormonfärbung und Enhancement allein belegen die klinische Hormonwirkung nicht. Bildgebung dient der Lokalisation und Ausbreitungsdiagnostik.",
+        "en": "Receptor uptake, hormone staining and enhancement alone do not establish clinical hormonal effects. Imaging supports localisation and staging.",
+        "fa": "جذب گیرنده‌ای، رنگ‌آمیزی هورمون و رفتار مادهٔ حاجب به‌تنهایی اثر بالینی هورمون را قطعی نمی‌کنند. تصویربرداری به تعیین محل و مرحله‌بندی کمک می‌کند."
+      },
+      "source": "https://doi.org/10.1111/jne.13318"
+    },
+    {
+      "id": "pnet-insulinoma-caveat",
+      "topicId": "pnet",
+      "category": {
+        "de": "Quellenkritik",
+        "en": "Source appraisal",
+        "fa": "ارزیابی منبع"
+      },
+      "front": {
+        "de": "Warum lässt sich das Insulinom-Risiko nicht pauschal auf nichtfunktionelle PanNET übertragen?",
+        "en": "Why can insulinoma risk not be transferred wholesale to nonfunctioning PanNETs?",
+        "fa": "چرا خطر انسولینوما را نمی‌توان به‌طور کلی به PanNET غیرفانکشنال تعمیم داد؟"
+      },
+      "answer": {
+        "de": "Es handelt sich um unterschiedliche klinisch-biologische Gruppen; für die Zielgruppe Grad, Wachstum, Bildbefund und Patientenkontext berücksichtigen.",
+        "en": "They are different clinical/biological groups; consider grade, growth, imaging and patient context in the target population.",
+        "fa": "این‌ها گروه‌های بالینی و زیستی متفاوت‌اند؛ گرید، رشد، تصویربرداری و زمینهٔ بیمار در جمعیت هدف لحاظ شوند."
+      },
+      "explanation": {
+        "de": "Eine Häufigkeitsangabe zu Insulinomen beweist weder die Benignität eines kleinen nichtfunktionellen PanNET noch eine allgemeine Therapieentscheidung.",
+        "en": "An insulinoma frequency statement establishes neither benignity of a small nonfunctioning PanNET nor a general treatment decision.",
+        "fa": "یک گزارهٔ فراوانی دربارهٔ انسولینوما، نه خوش‌خیمی PanNET کوچک غیرفانکشنال و نه تصمیم درمانی عمومی را قطعی می‌کند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7029300/"
+    },
+    {
+      "id": "pdac-isoattenuating",
+      "topicId": "pdac",
+      "category": {
+        "de": "CT-Muster",
+        "en": "CT pattern",
+        "fa": "الگوی CT"
+      },
+      "front": {
+        "de": "Was suchen Sie bei einer isoattenuierenden möglichen Pankreasläsion?",
+        "en": "What should you look for with a possible isoattenuating pancreatic lesion?",
+        "fa": "در ضایعهٔ احتمالی هم‌دانسیتهٔ پانکراس به‌دنبال چه می‌گردید؟"
+      },
+      "answer": {
+        "de": "Indirekte Zeichen wie Gangabbruch, prästenotische Gangdilatation oder distale Atrophie.",
+        "en": "Indirect signs such as duct cut-off, upstream dilatation or distal atrophy.",
+        "fa": "نشانه‌های غیرمستقیم مانند قطع مجرا، اتساع بالادست یا آتروفی دیستال."
+      },
+      "explanation": {
+        "de": "Auch ohne sichtbare hypoenhancierende Masse kann ein fokaler Gangabbruch mit vorgeschalteter Dilatation und Parenchymatrophie auf PDAC hinweisen. Die Zeichen sind abklärungsbedürftig, nicht histologisch beweisend.",
+        "en": "Even without a visible hypoenhancing mass, focal duct cut-off with upstream dilatation and parenchymal atrophy can raise concern for PDAC. These signs warrant evaluation rather than establish histology.",
+        "fa": "حتی بدون تودهٔ واضح با جذب کمتر مادهٔ حاجب، قطع کانونی مجرا با اتساع و آتروفی پارانشیم در بالادست می‌تواند شک به PDAC ایجاد کند. این نشانه‌ها نیازمند بررسی‌اند، نه اثبات‌کنندهٔ بافت‌شناسی."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/12202711/"
+    },
+    {
+      "id": "pdac-double-duct",
+      "topicId": "pdac",
+      "category": {
+        "de": "Sekundäre Zeichen",
+        "en": "Secondary signs",
+        "fa": "نشانه‌های ثانویه"
+      },
+      "front": {
+        "de": "Was zeigt das Double-Duct-Zeichen?",
+        "en": "What does the double-duct sign indicate?",
+        "fa": "علامت دو مجرا چه چیزی را نشان می‌دهد؟"
+      },
+      "answer": {
+        "de": "Gleichzeitige Erweiterung von Choledochus und Pankreasgang: Hinweis auf einen Prozess im Kopf-/Papillenbereich, kein PDAC-spezifischer Nachweis.",
+        "en": "Concurrent common bile duct and pancreatic duct dilatation: a clue to a process in the head/papillary region, not a PDAC-specific diagnosis.",
+        "fa": "اتساع هم‌زمان کلدوک و مجرای پانکراس: سرنخی برای فرایند ناحیهٔ سر/پاپیلا، نه تشخیص اختصاصی PDAC."
+      },
+      "explanation": {
+        "de": "Zu den Ursachen gehören pankreatische oder ampulläre Neoplasien, chronische Pankreatitis und Steine. Klinik und gezielte Abklärung entscheiden; das Gangmuster allein legt die Histologie nicht fest.",
+        "en": "Causes include pancreatic or ampullary neoplasms, chronic pancreatitis and stones. Clinical context and targeted evaluation are needed; the duct pattern alone does not establish histology.",
+        "fa": "علل شامل نئوپلاسم پانکراس یا آمپولا، پانکراتیت مزمن و سنگ‌اند. زمینهٔ بالینی و بررسی هدفمند لازم است؛ الگوی مجرا به‌تنهایی بافت‌شناسی را تعیین نمی‌کند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/24705640/"
+    },
+    {
+      "id": "pdac-vessel-reporting",
+      "topicId": "pdac",
+      "category": {
+        "de": "Gefäßkontakt",
+        "en": "Vessel contact",
+        "fa": "تماس عروقی"
+      },
+      "front": {
+        "de": "Welche Gefäßmerkmale sollten strukturiert beschrieben werden?",
+        "en": "Which vessel features should be described systematically?",
+        "fa": "کدام ویژگی‌های عروقی باید نظام‌مند توصیف شوند؟"
+      },
+      "answer": {
+        "de": "Gefäß, Kontaktumfang und -länge sowie Kontur, Stenose, Verschluss, Thrombus und Kollateralen.",
+        "en": "Vessel, extent and length of contact, contour, narrowing, occlusion, thrombus and collaterals.",
+        "fa": "رگ، میزان و طول تماس، جدار، تنگی، انسداد، ترومبوز و کولترال‌ها."
+      },
+      "explanation": {
+        "de": "Arterien und Venen getrennt beschreiben. Bei venösem Verschluss auch Lage/Länge und offene Gefäßsegmente proximal und distal dokumentieren; die Gesamtbeurteilung umfasst außerdem Metastasen und klinischen Kontext.",
+        "en": "Describe arteries and veins separately. With venous occlusion, also document location/length and patent vessel segments above and below it; overall assessment additionally includes metastases and clinical context.",
+        "fa": "شریان‌ها و وریدها را جداگانه توصیف کنید. در انسداد وریدی، محل/طول و قطعات باز پروگزیمال و دیستال نیز ثبت شوند؛ ارزیابی کلی متاستازها و زمینهٔ بالینی را هم در بر می‌گیرد."
+      },
+      "source": "https://doi.org/10.1148/radiol.13131184"
+    },
+    {
+      "id": "pdac-mri",
+      "topicId": "pdac",
+      "category": {
+        "de": "MRT/MRCP",
+        "en": "MRI/MRCP",
+        "fa": "MRI/MRCP"
+      },
+      "front": {
+        "de": "Welche MRT-Merkmale können PDAC gegenüber normalem Pankreas unterstützen?",
+        "en": "Which MRI findings may support PDAC relative to normal pancreas?",
+        "fa": "کدام یافته‌های MRI می‌توانند در مقایسه با پانکراس طبیعی به نفع PDAC باشند؟"
+      },
+      "answer": {
+        "de": "T1-Hypointensität und verzögerte oder geringere Anreicherung; T2 bleibt variabel.",
+        "en": "T1 hypointensity and delayed or lower enhancement; T2 remains variable.",
+        "fa": "کم‌سیگنالی T1 و جذب تأخیری یا کمتر مادهٔ حاجب؛ سیگنال T2 متغیر است."
+      },
+      "explanation": {
+        "de": "MRCP kann einen Gangabbruch oder eine vorgeschaltete Gangdilatation zeigen. Das Sequenzmuster wird mit CT, Gangzeichen und klinischem Kontext zusammen beurteilt; es ist kein alleiniger Histologienachweis.",
+        "en": "MRCP may show duct cut-off or upstream duct dilatation. Interpret the sequence pattern alongside CT, ductal findings and clinical context; it does not establish histology by itself.",
+        "fa": "MRCP می‌تواند قطع مجرا یا اتساع بالادست را نشان دهد. الگوی سکانس‌ها در کنار CT، یافته‌های مجرا و زمینهٔ بالینی تفسیر می‌شود و به‌تنهایی بافت‌شناسی را اثبات نمی‌کند."
+      },
+      "source": "Abdomen.pdf physical p.37 (printed36), actual page image read2026-10-25; MRI problem-solving role: https://doi.org/10.1148/radiol.13131184"
+    },
+    {
+      "id": "psc-pbc-mrcp-beading",
+      "topicId": "psc-pbc",
+      "category": {
+        "de": "MRCP-Muster",
+        "en": "MRCP pattern",
+        "fa": "الگوی MRCP"
+      },
+      "front": {
+        "de": "Welche Gangkonstellation erzeugt bei PSC den Perlschnur-Aspekt?",
+        "en": "Which duct configuration creates the beaded appearance in PSC?",
+        "fa": "چه ترکیبی از یافته‌های مجاری در PSC نمای مهره‌مهره ایجاد می‌کند؟"
+      },
+      "answer": {
+        "de": "Multifokale kurze Strikturen mit dazwischen normal weiten oder leicht dilatierten Gangabschnitten",
+        "en": "Multiple short strictures with intervening normal-calibre or mildly dilated segments",
+        "fa": "تنگی‌های کوتاه و چندکانونی با قطعات بینابینی با قطر طبیعی یا کمی گشاد"
+      },
+      "explanation": {
+        "de": "Die wechselnden kurzen Engstellen und normal weiten oder leicht erweiterten Abschnitte ergeben das Perlschnurmuster. Für die PSC-Diagnose müssen sekundäre Ursachen einer sklerosierenden Cholangitis ausgeschlossen werden; die Morphologie allein bestimmt keine Ätiologie.",
+        "en": "Alternating short narrowings and normal or mildly dilated segments create beading. Diagnosing PSC requires exclusion of secondary causes of sclerosing cholangitis; morphology alone does not establish aetiology.",
+        "fa": "تناوب تنگی‌های کوتاه و قطعات طبیعی یا کمی گشاد نمای مهره‌مهره ایجاد می‌کند. تشخیص PSC نیازمند کنارگذاشتن علل ثانویهٔ کلانژیت اسکلروزان است؛ مورفولوژی به‌تنهایی علت را تعیین نمی‌کند."
+      },
+      "source": "https://doi.org/10.1002/hep.32771"
+    },
+    {
+      "id": "aq-atv-psc-pbc-quality-next",
+      "topicId": "psc-pbc",
+      "category": {
+        "de": "Untersuchungsstrategie",
+        "en": "Examination strategy",
+        "fa": "راهبرد بررسی"
+      },
+      "front": {
+        "de": "Wie gehen Sie bei technisch unzureichender MRCP und stabilem PSC-Verdacht ohne akuten Interventionsbedarf vor?",
+        "en": "How do you approach technically inadequate MRCP in stable suspected PSC without an acute intervention indication?",
+        "fa": "در MRCP از نظر فنی ناکافی و شک پایدار به PSC بدون نیاز حاد به مداخله، چه می‌کنید؟"
+      },
+      "answer": {
+        "de": "Erneute hochwertige MRT/MRCP in einem erfahrenen Zentrum",
+        "en": "Repeat high-quality MRI/MRCP at an experienced centre",
+        "fa": "تکرار MRI/MRCP باکیفیت در مرکز باتجربه"
+      },
+      "explanation": {
+        "de": "Zunächst muss die technische Limitation durch hochwertige MRT/MRCP behoben werden. ERCP wird nicht allein zur PSC-Diagnose eingesetzt. Eine Biopsie kann bei normaler hochwertiger MRCP und anhaltendem Verdacht auf Small-duct-PSC beziehungsweise ausgewählten unklaren Befunden infrage kommen.",
+        "en": "First address the technical limitation with high-quality MRI/MRCP. ERCP is not used solely to diagnose PSC. Biopsy may be considered with a normal high-quality MRCP and persistent concern for small-duct PSC or in selected equivocal cases.",
+        "fa": "ابتدا محدودیت فنی با MRI/MRCP باکیفیت برطرف شود. ERCP صرفاً برای تشخیص PSC انجام نمی‌شود. در MRCP طبیعی و باکیفیت همراه تداوم شک به PSC مجاری کوچک، یا برخی موارد نامشخص منتخب، بیوپسی می‌تواند مطرح باشد."
+      },
+      "source": "https://doi.org/10.1002/hep.32771"
+    },
+    {
+      "id": "aq-atv-psc-pbc-relevant-stricture",
+      "topicId": "psc-pbc",
+      "category": {
+        "de": "Klinischer Kontext",
+        "en": "Clinical context",
+        "fa": "زمینهٔ بالینی"
+      },
+      "front": {
+        "de": "Wodurch wird eine Striktur des Choledochus oder der Lebergänge nach AASLD2022 klinisch „relevant“?",
+        "en": "What makes a common bile duct or hepatic duct stricture clinically “relevant” in AASLD2022 terminology?",
+        "fa": "در اصطلاح AASLD۲۰۲۲ چه چیزی تنگی کلدوک یا مجاری کبدی را از نظر بالینی «بااهمیت» می‌کند؟"
+      },
+      "answer": {
+        "de": "Zeichen oder Symptome einer obstruktiven Cholestase und/oder bakteriellen Cholangitis",
+        "en": "Signs or symptoms of obstructive cholestasis and/or bacterial cholangitis",
+        "fa": "نشانه‌ها یا علائم کلستاز انسدادی و/یا کلانژیت باکتریایی"
+      },
+      "explanation": {
+        "de": "„Relevant“ verknüpft die Striktur mit Zeichen/Symptomen obstruktiver Cholestase oder bakterieller Cholangitis. Das ist nicht allein ein MRCP-Durchmessermaß. Die Ursachen- und Komplikationsabklärung bleibt erforderlich; die Bezeichnung ist kein Malignitätsnachweis.",
+        "en": "“Relevant” links the stricture to signs/symptoms of obstructive cholestasis or bacterial cholangitis. It is not an MRCP diameter criterion alone. The cause and complications still need evaluation; the term does not establish malignancy.",
+        "fa": "«بااهمیت بالینی» تنگی را با نشانه‌ها/علائم کلستاز انسدادی یا کلانژیت باکتریایی مرتبط می‌کند و صرفاً معیار قطر در MRCP نیست. بررسی علت و عوارض همچنان لازم است؛ این اصطلاح بدخیمی را ثابت نمی‌کند."
+      },
+      "source": "https://doi.org/10.1002/hep.32771"
+    },
+    {
+      "id": "abdomen-pancreatic-cysts-pseudocyst-context-clues",
+      "topicId": "abdomen-pancreatic-cysts",
+      "category": {
+        "de": "Grundlagen und Differenzialdiagnose",
+        "en": "Fundamentals and differential",
+        "fa": "مبانی و تشخیص افتراقی"
+      },
+      "front": {
+        "de": "Welche Kombination unterstützt eine postentzündliche Pankreas-Pseudozyste, und welche Grenze hat die Gangkommunikation?",
+        "en": "Which combination supports a post-inflammatory pancreatic pseudocyst, and what is the limitation of duct communication?",
+        "fa": "چه ترکیبی از پسودوسیست پانکراس پس از التهاب حمایت می‌کند و محدودیت ارتباط مجرایی چیست؟"
+      },
+      "answer": {
+        "de": "Passender Pankreatitisverlauf mit abgekapselter Flüssigkeit ohne erkennbaren nichtflüssigen Inhalt; Gangkommunikation kann bei Pseudozyste und IPMN vorkommen.",
+        "en": "A compatible pancreatitis course with encapsulated fluid without visible nonliquid contents; communication may occur in both pseudocyst and IPMN.",
+        "fa": "سیر متناسب پانکراتیت همراه مایع کپسول‌دار بدون محتوای غیرمایع قابل مشاهده؛ ارتباط مجرایی در پسودوسیست و IPMN هر دو ممکن است."
+      },
+      "explanation": {
+        "de": "Nach akuter Pankreatitis bildet sich eine Pseudozyste gewöhnlich erst nach mehr als vier Wochen aus. Nekrotischer Inhalt lenkt zur nekrotischen Sammlung/WON. Eine Pankreatitisanamnese beweist keine Pseudozyste, denn auch IPMN kann Pankreatitis auslösen. Gesamte Morphologie und Verlauf beurteilen.",
+        "en": "After acute pancreatitis a pseudocyst usually develops after more than four weeks. Necrotic contents point toward a necrotic collection/WON. A history of pancreatitis is not proof of a pseudocyst because IPMN may also cause pancreatitis. Assess the whole morphology and evolution.",
+        "fa": "پس از پانکراتیت حاد، پسودوسیست معمولاً بعد از بیش از چهار هفته تشکیل می‌شود. محتوای نکروتیک تجمع نکروتیک/WON را مطرح می‌کند. سابقهٔ پانکراتیت پسودوسیست را ثابت نمی‌کند، زیرا IPMN نیز می‌تواند پانکراتیت ایجاد کند. کل مورفولوژی و سیر بررسی شوند."
+      },
+      "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+    },
+    {
+      "id": "abdomen-pancreatic-cysts-serous-macrocystic-contour",
+      "topicId": "abdomen-pancreatic-cysts",
+      "category": {
+        "de": "Bildgebende Differenzialdiagnose",
+        "en": "Imaging differential",
+        "fa": "تشخیص افتراقی تصویربرداری"
+      },
+      "front": {
+        "de": "Warum reicht eine lobulierte makrozystische Pankreasläsion allein nicht für die Diagnose eines serösen Zystadenoms?",
+        "en": "Why is a lobulated macrocystic pancreatic lesion alone insufficient to diagnose a serous cystadenoma?",
+        "fa": "چرا ضایعهٔ ماکروکیستیک لوبولهٔ پانکراس به‌تنهایی برای تشخیص سیستادنوم سروزی کافی نیست؟"
+      },
+      "answer": {
+        "de": "Makrozystische seröse Läsionen überlappen morphologisch mit anderen Zysten. Mikrozystische Binnenstruktur und eine zentrale Narbe können die seröse Differenzialdiagnose zusätzlich stützen.",
+        "en": "Macrocystic serous lesions overlap morphologically with other cysts. Microcystic internal architecture and a central scar may additionally support the serous differential.",
+        "fa": "ضایعات سروزی ماکروکیستیک از نظر مورفولوژی با کیست‌های دیگر همپوشانی دارند. ساختار داخلی میکروکیستیک و اسکار مرکزی می‌توانند بیشتر از افتراق سروزی حمایت کنند."
+      },
+      "explanation": {
+        "de": "Kontur und Lage liefern Hinweise, aber keine sichere Gewebediagnose. Auch Gangbezug, Septen, Wandknoten und klinischen Kontext erfassen; atypische makrozystische Formen können mit muzinösen Läsionen verwechselt werden.",
+        "en": "Contour and location provide clues, not a secure tissue diagnosis. Also assess duct relationship, septa, mural nodules and clinical context; atypical macrocystic forms can mimic mucinous lesions.",
+        "fa": "حاشیه و محل سرنخ‌اند، نه تشخیص بافتی قطعی. ارتباط مجرایی، سپتا، ندول دیواره‌ای و زمینهٔ بالینی نیز ارزیابی شوند؛ شکل‌های ماکروکیستیک آتیپیک می‌توانند ضایعات موسینوس را تقلید کنند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/19522024/"
+    },
+    {
+      "id": "aq-atv-ipmn-nodule-risk",
+      "topicId": "abdomen-pancreatic-cysts",
+      "category": {
+        "de": "Risikoeinordnung",
+        "en": "Risk classification",
+        "fa": "طبقه‌بندی خطر"
+      },
+      "front": {
+        "de": "Wie unterscheiden die Kyoto-Kriterien2024 einen kontrastmittelaufnehmenden IPMN-Wandknoten von 3 mm und von 6 mm?",
+        "en": "How do the Kyoto2024 criteria classify an enhancing IPMN mural nodule of 3 mm versus 6 mm?",
+        "fa": "معیارهای کیوتو۲۰۲۴ ندول دیواره‌ای IPMN با جذب مادهٔ حاجب به اندازهٔ ۳ میلی‌متر و ۶ میلی‌متر را چگونه طبقه‌بندی می‌کنند؟"
+      },
+      "answer": {
+        "de": "3 mm: worrisome feature (<5 mm). 6 mm: high-risk stigma (≥5 mm).",
+        "en": "3 mm: worrisome feature (<5 mm). 6 mm: high-risk stigma (≥5 mm).",
+        "fa": "۳ میلی‌متر: ویژگی نگران‌کننده (کمتر از ۵). ۶ میلی‌متر: نشانهٔ پرخطر (۵ میلی‌متر یا بیشتر)."
+      },
+      "explanation": {
+        "de": "Die Kriterien beziehen sich auf einen kontrastmittelaufnehmenden Knoten. Auch solide Komponenten und weitere klinische/Gangmerkmale berücksichtigen. Risikokategorien sind keine histologische Krebsdiagnose und ersetzen nicht die individuelle interdisziplinäre Entscheidung.",
+        "en": "These criteria concern an enhancing nodule. Also consider solid components and other clinical/ductal features. Risk categories are not a histological cancer diagnosis and do not replace individual multidisciplinary decisions.",
+        "fa": "این معیارها مربوط به ندول دارای جذب مادهٔ حاجب‌اند. جزء جامد و سایر ویژگی‌های بالینی/مجرایی نیز در نظر گرفته شوند. دستهٔ خطر تشخیص بافت‌شناختی سرطان نیست و جای تصمیم فردی چندتخصصی را نمی‌گیرد."
+      },
+      "source": "https://doi.org/10.1016/j.pan.2023.12.009"
+    },
+    {
+      "id": "pankreatitis-atlanta-morphology",
+      "topicId": "pankreatitis",
+      "category": {
+        "de": "Atlanta",
+        "en": "Atlanta",
+        "fa": "آتلانتا"
+      },
+      "front": {
+        "de": "Wie unterscheidet Atlanta ödematöse und nekrotisierende Pankreatitis?",
+        "en": "How does Atlanta distinguish oedematous from necrotising pancreatitis?",
+        "fa": "آتلانتا چگونه پانکراتیت ادماتوی را از نکروزان جدا می‌کند؟"
+      },
+      "answer": {
+        "de": "Interstitiell-ödematös: erhaltenes Parenchym-Enhancement ohne erkennbare Gewebenekrose. Nekrotisierend: pankreatische Nekrose und/oder peripankreatische Nekrose; bei isolierter peripankreatischer Nekrose kann das Pankreas selbst normal kontrastieren.",
+        "en": "Interstitial oedematous: preserved parenchymal enhancement without recognisable tissue necrosis. Necrotising: pancreatic and/or peripancreatic necrosis; pancreatic enhancement may remain normal with isolated peripancreatic necrosis.",
+        "fa": "ادماتوی بینابینی: جذب حفظ‌شدهٔ مادهٔ حاجب در پارانشیم، بدون نکروز بافتی قابل‌شناسایی. نکروزان: نکروز پانکراس و/یا اطراف پانکراس؛ در نکروز منفرد اطراف پانکراس، جذب خود پانکراس می‌تواند طبیعی بماند."
+      },
+      "explanation": {
+        "de": "Fehlendes Parenchym-Enhancement stützt pankreatische Nekrose. Peripankreatische Nekrose anhand der Kollektion und nichtflüssiger nekrotischer Anteile beurteilen, nicht als fehlendes Fett-Enhancement definieren. Frühe CT kann die Ausdehnung unterschätzen; Inhalt und Verlauf sind wichtig.",
+        "en": "Absent parenchymal enhancement supports pancreatic necrosis. Assess peripancreatic necrosis through collection morphology and nonliquid necrotic components, rather than defining it as absent fat enhancement. Early CT can underestimate extent; contents and evolution matter.",
+        "fa": "فقدان جذب مادهٔ حاجب در پارانشیم از نکروز پانکراس حمایت می‌کند. نکروز اطراف پانکراس با مورفولوژی تجمع و اجزای نکروتیک غیرمایع بررسی شود، نه با تعریف «فقدان جذب در چربی». CT زودهنگام می‌تواند وسعت را کمتر نشان دهد؛ محتوا و سیر اهمیت دارند."
+      },
+      "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+    },
+    {
+      "id": "pankreatitis-causes",
+      "topicId": "pankreatitis",
+      "category": {
+        "de": "Ätiologie",
+        "en": "Aetiology",
+        "fa": "اتیولوژی"
+      },
+      "front": {
+        "de": "Was sind die häufigsten Ursachen der akuten Pankreatitis?",
+        "en": "What are the most common causes of acute pancreatitis?",
+        "fa": "شایع‌ترین علل پانکراتیت حاد چیست؟"
+      },
+      "answer": {
+        "de": "Gallensteine/Mikrolithiasis und Alkohol gehören zu den häufigsten Ursachen. Je nach Kontext auch metabolische, medikamentöse, autoimmune oder iatrogene Ursachen prüfen.",
+        "en": "Gallstones/microlithiasis and alcohol are among the most common causes. Assess metabolic, drug-related, autoimmune or iatrogenic causes according to context.",
+        "fa": "سنگ صفراوی یا میکرولیتیازیس و الکل از شایع‌ترین علل‌اند. بسته به زمینه، علل متابولیک، دارویی، خودایمنی یا یاتروژنیک نیز بررسی شوند."
+      },
+      "explanation": {
+        "de": "Häufigkeiten variieren zwischen Populationen; keine feste Prozentverteilung auf alle Patienten übertragen. ACG empfiehlt Sonographie zur biliären Ursachensuche und bei ungeklärter Ursache eine weiterführende Abklärung, etwa erneute Sonographie, MRT oder EUS.",
+        "en": "Frequencies vary between populations; do not apply a fixed percentage distribution to every patient. ACG recommends ultrasound to investigate a biliary cause and further assessment of unexplained disease, such as repeat ultrasound, MRI or EUS.",
+        "fa": "فراوانی‌ها بین جمعیت‌ها متفاوت‌اند؛ یک تقسیم‌بندی درصدی ثابت به همهٔ بیماران تعمیم داده نشود. ACG سونوگرافی را برای بررسی علت صفراوی و در علت نامشخص، ارزیابی بیشتر مانند تکرار سونوگرافی، MRI یا EUS توصیه می‌کند."
+      },
+      "source": "https://doi.org/10.14309/ajg.0000000000002645"
+    },
+    {
+      "id": "pankreatitis-chronic-triad",
+      "topicId": "pankreatitis",
+      "category": {
+        "de": "Chronisch",
+        "en": "Chronic",
+        "fa": "مزمن"
+      },
+      "front": {
+        "de": "Welche typische Kombination von Bildbefunden unterstützt chronische Pankreatitis?",
+        "en": "Which typical combination of imaging findings supports chronic pancreatitis?",
+        "fa": "کدام ترکیب تیپیک یافته‌های تصویربرداری از پانکراتیت مزمن حمایت می‌کند؟"
+      },
+      "answer": {
+        "de": "Pankreasverkalkungen, Parenchymatrophie und dilatierter unregelmäßiger Ductus pancreaticus.",
+        "en": "Pancreatic calcifications, parenchymal atrophy and a dilated irregular pancreatic duct.",
+        "fa": "کلسیفیکاسیون پانکراس، آتروفی پارانشیم و اتساع نامنظم مجرای پانکراس."
+      },
+      "explanation": {
+        "de": "Gangkaliberwechsel, Strikturen, Dilatationen und intraduktale Füllungsdefekte im Gesamtmuster beurteilen. Eine normale MRT/MRCP schließt milde chronische Pankreatitis nicht aus; keine einheitliche 3-mm-Grenze ersetzt die morphologische Beurteilung.",
+        "en": "Assess duct calibre changes, strictures, dilatations and intraductal filling defects in the overall pattern. Normal MRI/MRCP does not exclude mild chronic pancreatitis; one universal 3-mm threshold does not replace morphological assessment.",
+        "fa": "تغییر قطر مجرا، تنگی‌ها، اتساع‌ها و نقایص پُرشدگی داخل مجرا در الگوی کلی بررسی شوند. MRI یا MRCP طبیعی، پانکراتیت مزمن خفیف را رد نمی‌کند؛ مرز همگانی ۳ میلی‌متری جای ارزیابی مورفولوژیک را نمی‌گیرد."
+      },
+      "source": "https://doi.org/10.1177/2050640616684695"
+    },
+    {
+      "id": "pankreatitis-carcinoma-dd",
+      "topicId": "pankreatitis",
+      "category": {
+        "de": "Differenzialdiagnose",
+        "en": "Differential diagnosis",
+        "fa": "تشخیص افتراقی"
+      },
+      "front": {
+        "de": "Was spricht eher für Pankreaskarzinom als für chronische Pankreatitis?",
+        "en": "What favours pancreatic carcinoma over chronic pancreatitis?",
+        "fa": "چه چیزی بیشتر به نفع کارسینوم پانکراس نسبت به پانکراتیت مزمن است؟"
+      },
+      "answer": {
+        "de": "Abrupter fokaler Gangabbruch mit vorgeschalteter Atrophie und verdächtigem Gefäßkontakt erhöht den Karzinomverdacht.",
+        "en": "Abrupt focal duct cut-off with upstream atrophy and suspicious vascular contact raises concern for carcinoma.",
+        "fa": "قطع ناگهانی کانونی مجرا با آتروفی بالادست و تماس عروقی مشکوک، شک به سرطان را افزایش می‌دهد."
+      },
+      "explanation": {
+        "de": "Ein glatt verengter, durch eine Raumforderung weiter verfolgbarer Hauptgang (Duct-penetrating-sign) unterstützt eine entzündliche Masse, ist aber kein absoluter Karzinomausschluss. Gangverlauf mit Parenchym, Gefäßen und klinischem Kontext kombinieren. Ein zusätzliches Karzinom bleibt auch bei verkalkter chronischer Pankreatitis möglich.",
+        "en": "A smoothly narrowed main duct that can be followed through a mass (duct-penetrating sign) supports an inflammatory mass but does not absolutely exclude carcinoma. Combine duct course with parenchymal, vascular and clinical findings. A coexisting carcinoma remains possible in calcific chronic pancreatitis.",
+        "fa": "مجرای اصلی با تنگی صاف که بتوان آن را درون توده دنبال کرد (علامت duct-penetrating)، از تودهٔ التهابی حمایت می‌کند، اما کارسینوم را به‌طور قطعی رد نمی‌کند. مسیر مجرا با یافته‌های پارانشیم، عروق و زمینهٔ بالینی ترکیب شود. سرطان هم‌زمان حتی در پانکراتیت مزمن کلسیفیه نیز ممکن است."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/11568327/"
+    },
+    {
+      "id": "pankreatitis-autoimmune",
+      "topicId": "pankreatitis",
+      "category": {
+        "de": "Differenzialdiagnose",
+        "en": "Differential diagnosis",
+        "fa": "تشخیص افتراقی"
+      },
+      "front": {
+        "de": "Welche Zeichen sprechen für Autoimmunpankreatitis Typ 1?",
+        "en": "Which signs suggest type 1 autoimmune pancreatitis?",
+        "fa": "کدام علائم به نفع پانکراتیت خودایمنی نوع ۱ است؟"
+      },
+      "answer": {
+        "de": "Diffuse wurstförmige Vergrößerung mit Verlust der Lobulierung, kapselartiger Saum und charakteristische verzögerte Anreicherung können unterstützen; fokale Formen kommen vor.",
+        "en": "Diffuse sausage-shaped enlargement with loss of lobulation, a capsule-like rim and characteristic delayed enhancement may support the diagnosis; focal forms also occur.",
+        "fa": "بزرگ‌شدن منتشر سوسیسی با از بین رفتن لوبولاسیون، حاشیهٔ کپسول‌مانند و جذب تأخیری مشخص می‌توانند حمایت‌کننده باشند؛ نوع کانونی نیز وجود دارد."
+      },
+      "explanation": {
+        "de": "Bildgebung mit Serologie, weiterer Organbeteiligung und gegebenenfalls Histologie kombinieren. Eine diagnostische Steroidprobe ist kein unkritischer Ersttest: nur spezialärztlich nach negativer Malignomabklärung erwägen, damit ein Pankreaskarzinom nicht verzögert wird.",
+        "en": "Combine imaging with serology, other-organ involvement and histology where appropriate. A diagnostic steroid trial is not an uncritical first test: consider only under specialist care after negative malignancy workup to avoid delaying pancreatic-cancer diagnosis.",
+        "fa": "تصویربرداری با سرولوژی، درگیری سایر اندام‌ها و در صورت لزوم هیستولوژی ترکیب شود. آزمون تشخیصی استروئید، آزمایش اولیهٔ بی‌قید نیست: فقط زیر نظر متخصص و پس از بررسی منفی بدخیمی در نظر گرفته شود تا تشخیص سرطان پانکراس به تأخیر نیفتد."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8938398/"
+    },
+    {
+      "id": "pankreatitis-ctsi",
+      "topicId": "pankreatitis",
+      "category": {
+        "de": "CTSI",
+        "en": "CTSI",
+        "fa": "CTSI"
+      },
+      "front": {
+        "de": "Woraus besteht der CT-Schweregrad-Index nach Balthazar?",
+        "en": "What makes up the Balthazar CT severity index?",
+        "fa": "شاخص شدت CT بر اساس Balthazar از چه چیزهایی تشکیل می‌شود؟"
+      },
+      "answer": {
+        "de": "Balthazar-Grad A–E plus Nekrose-Score; maximal 10 Punkte.",
+        "en": "Balthazar grade A–E plus necrosis score; maximum 10 points.",
+        "fa": "گرید Balthazar از A تا E به‌علاوه امتیاز نکروز؛ حداکثر ۱۰ امتیاز."
+      },
+      "explanation": {
+        "de": "Der Original-CTSI addiert Balthazar-Grad und Nekroseausmaß. Er beschreibt morphologische CT-Befunde; die klinische Atlanta-Schwereklassifikation benötigt zusätzlich Organfunktion und Verlauf. Ein hoher CTSI allein belegt weder persistierendes Organversagen noch Infektion.",
+        "en": "The original CTSI adds Balthazar grade and necrosis extent. It describes CT morphology; clinical Atlanta severity additionally requires organ function and time course. A high CTSI alone establishes neither persistent organ failure nor infection.",
+        "fa": "CTSI اصلی، گرید بالتازار و وسعت نکروز را جمع می‌کند. مورفولوژی CT را توصیف می‌کند؛ شدت بالینی آتلانتا علاوه بر آن به عملکرد اندام‌ها و سیر زمانی نیاز دارد. CTSI بالا به‌تنهایی نه نارسایی پایدار اندام و نه عفونت را قطعی نمی‌کند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/2296641/"
+    },
+    {
+      "id": "pankreatitis-biliary-mechanism",
+      "topicId": "pankreatitis",
+      "category": {
+        "de": "Pathophysiologie",
+        "en": "Pathophysiology",
+        "fa": "پاتوفیزیولوژی"
+      },
+      "front": {
+        "de": "Welche anatomische Abflussstörung ist für eine biliäre Pankreatitis relevant?",
+        "en": "Which anatomical outflow obstruction is relevant to biliary pancreatitis?",
+        "fa": "کدام اختلال آناتومیک خروجی در پانکراتیت صفراوی اهمیت دارد؟"
+      },
+      "answer": {
+        "de": "Ein Stein an der Papillen-/Ampullenregion kann den distalen pankreatischen Abfluss beeinträchtigen.",
+        "en": "A stone at the papillary/ampullary region can impair distal pancreatic drainage.",
+        "fa": "سنگ ناحیهٔ پاپیلا/آمپولا می‌تواند تخلیهٔ دیستال پانکراس را مختل کند."
+      },
+      "explanation": {
+        "de": "Choledocholithiasis und Gallenwegsobstruktion gezielt suchen. Bei unklarem Steinstatus können MRCP oder EUS helfen; eine biliäre Ursache allein ohne Cholangitis bedeutet keine automatische dringliche ERCP.",
+        "en": "Look for choledocholithiasis and biliary obstruction. MRCP or EUS can help when stone status is uncertain; a biliary cause alone without cholangitis does not automatically require urgent ERCP.",
+        "fa": "کلدوکولیتیاز و انسداد صفراوی هدفمند بررسی شوند. در نامشخص‌بودن وجود سنگ، MRCP یا EUS کمک می‌کند؛ علت صفراوی به‌تنهایی بدون کلانژیت خودبه‌خود ERCP فوری را لازم نمی‌کند."
+      },
+      "source": "https://doi.org/10.1016/j.pan.2025.04.020"
+    },
+    {
+      "id": "pankreatitis-necrosis-timing",
+      "topicId": "pankreatitis",
+      "category": {
+        "de": "CT-Zeitpunkt",
+        "en": "CT timing",
+        "fa": "زمان CT"
+      },
+      "front": {
+        "de": "Warum ist die Nekrosebeurteilung in der Frühphase schwierig?",
+        "en": "Why is necrosis assessment difficult early on?",
+        "fa": "چرا ارزیابی نکروز در فاز خیلی زود دشوار است؟"
+      },
+      "answer": {
+        "de": "Frühe CT kann das Ausmaß der Nekrose unterschätzen; es gibt keinen Zeitpunkt mit garantierter Nachweisbarkeit.",
+        "en": "Early CT can underestimate the extent of necrosis; no time point guarantees detection.",
+        "fa": "CT زودهنگام ممکن است وسعت نکروز را کمتر نشان دهد؛ هیچ زمان ثابتی تشخیص را تضمین نمی‌کند."
+      },
+      "explanation": {
+        "de": "WSES2019 nennt bei schwerer Pankreatitis für die erste CT idealerweise 72–96 h ab Symptombeginn; diagnostische Unsicherheit oder dringliche Komplikationen können frühere Bildgebung erfordern. Kein pauschaler CT-Termin für jede leichte Pankreatitis.",
+        "en": "WSES2019 ideally places first CT in severe pancreatitis at 72–96 hours after symptom onset; diagnostic uncertainty or urgent complications can require earlier imaging. This is not a blanket CT schedule for every mild pancreatitis.",
+        "fa": "WSES۲۰۱۹ برای نخستین CT در پانکراتیت شدید بازهٔ ایده‌آل ۷۲ تا ۹۶ ساعت پس از شروع علائم را ذکر می‌کند؛ تردید تشخیصی یا عوارض فوری می‌توانند بررسی زودتر را لازم کنند. این زمان‌بندی همگانی CT برای هر پانکراتیت خفیف نیست."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/"
+    },
+    {
+      "id": "pankreatitis-collections",
+      "topicId": "pankreatitis",
+      "category": {
+        "de": "Kollektionen",
+        "en": "Collections",
+        "fa": "تجمعات"
+      },
+      "front": {
+        "de": "Wie verbinden Sie Zeit, Inhalt und Wand mit den vier Atlanta-Kollektionen?",
+        "en": "How do time, contents and wall relate to the four Atlanta collection terms?",
+        "fa": "زمان، محتوا و دیواره چگونه با چهار اصطلاح تجمعات آتلانتا مرتبط‌اند؟"
+      },
+      "answer": {
+        "de": "Interstitiell: frühe wandlose reine Flüssigkeit = APFC, reife abgekapselte reine Flüssigkeit = Pseudozyste. Nekrotisierend: frühe nekrotische Kollektion = ANC, reife abgekapselte Nekrose = WON.",
+        "en": "Interstitial: early wall-less pure fluid = APFC; mature encapsulated pure fluid = pseudocyst. Necrotising: early necrotic collection = ANC; mature encapsulated necrosis = WON.",
+        "fa": "بینابینی: مایع خالص زودرس بدون دیواره = APFC؛ مایع خالص بالغ و کپسول‌دار = پسودوسیست. نکروزان: تجمع نکروتیک زودرس = ANC؛ نکروز بالغ و محصورشده = WON."
+      },
+      "explanation": {
+        "de": "Die Reifung erfolgt gewöhnlich über etwa vier Wochen, ist aber kein reines Kalenderkriterium. Nekrotischer Inhalt trennt ANC/WON von APFC/Pseudozyste. Nicht jede frühe Kollektion entwickelt eine persistierende reife Kollektion.",
+        "en": "Maturation usually takes about four weeks, but this is not a calendar criterion alone. Necrotic contents distinguish ANC/WON from APFC/pseudocyst. Not every early collection evolves into a persistent mature collection.",
+        "fa": "بلوغ معمولاً حدود چهار هفته طول می‌کشد، اما این صرفاً معیار تقویمی نیست. محتوای نکروتیک ANC/WON را از APFC/پسودوسیست جدا می‌کند. هر تجمع زودرس به تجمع بالغ پایدار تبدیل نمی‌شود."
+      },
+      "source": "https://doi.org/10.1136/gutjnl-2012-302779"
+    },
+    {
+      "id": "pankreatitis-pseudoaneurysm",
+      "topicId": "pankreatitis",
+      "category": {
+        "de": "Komplikationen",
+        "en": "Complications",
+        "fa": "عوارض"
+      },
+      "front": {
+        "de": "Wie erkennt man ein Pseudoaneurysma bei Pankreatitis?",
+        "en": "How is a pseudoaneurysm recognised in pancreatitis?",
+        "fa": "پسودوآنوریسم در پانکراتیت چگونه تشخیص داده می‌شود؟"
+      },
+      "answer": {
+        "de": "Umschriebene arterielle Kontrastierung in/nahe einer Kollektion mit Anschluss an eine Arterie.",
+        "en": "Focal arterial enhancement within/near a collection with continuity to an artery.",
+        "fa": "جذب کانونی شریانی مادهٔ حاجب داخل/کنار تجمع همراه اتصال به شریان."
+      },
+      "explanation": {
+        "de": "Ein Pseudoaneurysma kann eine Blutungsquelle sein. Eine rein flüssige Kollektion oder nicht perfundierte Nekrose zeigt diese arterielle Anreicherung nicht. Zeitnahe fachübergreifende Gefäßabklärung ist erforderlich.",
+        "en": "A pseudoaneurysm may be a bleeding source. A pure fluid collection or nonperfused necrosis does not show this arterial enhancement. Timely multidisciplinary vascular evaluation is needed.",
+        "fa": "پسودوآنوریسم می‌تواند منبع خونریزی باشد. تجمع مایع خالص یا نکروز بدون پرفیوژن این جذب شریانی را نشان نمی‌دهد. بررسی عروقی به‌موقع و چندتخصصی لازم است."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3291674/"
+    },
+    {
+      "id": "pankreatitis-infected-necrosis",
+      "topicId": "pankreatitis",
+      "category": {
+        "de": "Komplikationen",
+        "en": "Complications",
+        "fa": "عوارض"
+      },
+      "front": {
+        "de": "Welches Zeichen spricht im CT für infizierte Nekrose?",
+        "en": "Which CT sign indicates infected necrosis?",
+        "fa": "کدام علامت CT به نفع نکروز عفونی است؟"
+      },
+      "answer": {
+        "de": "Gas im Nekroseareal ohne vorausgegangene Intervention oder enterische Fistel ist ein starker Hinweis.",
+        "en": "Gas in necrosis without prior intervention or an enteric fistula is a strong clue.",
+        "fa": "گاز در ناحیهٔ نکروز بدون مداخلهٔ قبلی یا فیستول روده‌ای سرنخ قوی است."
+      },
+      "explanation": {
+        "de": "Gas ist nicht bei jeder infizierten Nekrose vorhanden; fehlendes Gas schließt Infektion nicht aus. Eingriffe, Fisteln, Klinik und Verlauf gemeinsam bewerten.",
+        "en": "Gas is absent in many infected necroses; no gas does not exclude infection. Assess interventions, fistulas, clinical findings and evolution together.",
+        "fa": "گاز در بسیاری از نکروزهای عفونی وجود ندارد؛ نبود گاز عفونت را رد نمی‌کند. مداخلات، فیستول، یافته‌های بالینی و سیر با هم ارزیابی شوند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/"
+    },
+    {
+      "id": "pankreatitis-duct-disruption",
+      "topicId": "pankreatitis",
+      "category": {
+        "de": "Komplikationen",
+        "en": "Complications",
+        "fa": "عوارض"
+      },
+      "front": {
+        "de": "Welcher MRCP-Befund spricht für eine Pankreasgangruptur mit möglichem Disconnected-Duct-Syndrom?",
+        "en": "Which MRCP finding suggests pancreatic duct disruption with possible disconnected duct syndrome?",
+        "fa": "کدام یافته در MRCP به نفع پارگی مجرای پانکراس با احتمال سندرم مجرای جداشده است؟"
+      },
+      "answer": {
+        "de": "Fehlende Gangkontinuität; bei Disconnection bleibt ein vitaler vorgeschalteter Pankreasanteil vom ableitenden Gang getrennt.",
+        "en": "Loss of duct continuity; in disconnection, viable upstream pancreas is separated from the draining duct.",
+        "fa": "قطع پیوستگی مجرا؛ در قطع ارتباط کامل، بخش زندهٔ بالادست پانکراس از مجرای تخلیه‌کننده جدا می‌شود."
+      },
+      "explanation": {
+        "de": "Standard-MRCP stellt Flüssigkeit T2-gewichtet dar. Sekretin-MRCP kann neu auftretende oder zunehmende Flüssigkeit außerhalb des Gangs zeigen; nicht als Kontrastmittelleck der Standard-MRCP bezeichnen.",
+        "en": "Standard MRCP depicts fluid with T2 weighting. Secretin-enhanced MRCP can show new or increasing fluid outside the duct; do not call this a contrast leak on standard MRCP.",
+        "fa": "MRCP معمول مایع را با وزن T2 نشان می‌دهد. MRCP با سکرتین ممکن است مایع تازه یا رو به افزایش خارج مجرا را نشان دهد؛ این یافته نشت مادهٔ حاجب در MRCP معمول نیست."
+      },
+      "source": "https://www.cghjournal.org/article/S1542-3565(25)00586-5/fulltext"
+    }
+  ],
+  "sharedOriginalRepairs": {
+    "proposalFile": "shared-bank-patches-packet05-draft.json",
+    "records": 54,
+    "localizedQuestionRecords": 42,
+    "cardRecords": 12,
+    "currentBeforeFreshGlobalDeepEqual": true,
+    "canonicalAfterNotApplied": true
+  },
+  "ownProductionFiles": [
+    "data/pnetLearning.js",
+    "data/pdacFlashcards.js",
+    "data/pscMrcpLearning.js",
+    "data/abdomenPancreaticCystFlashcards.js",
+    "data/assessmentQuality/atvPancreatic.js",
+    "data/assessmentQuality/atvCysticPancreas.js",
+    "app/abdomen/pankreas/neuroendokrine-tumoren/page.js",
+    "app/abdomen/pankreas/pankreaskarzinom/page.js",
+    "app/abdomen/pankreas/pankreatitis/page.js",
+    "app/abdomen/pankreas/zystische-tumoren/page.js",
+    "app/abdomen/leber/psc-mrcp/page.js"
+  ],
+  "sourceHashes": {
+    "data/pnetLearning.js": "1b0d1876b1712acaf7cac027bf1ac7c747d428376c1ba2721a46e02fd764a270",
+    "data/pdacFlashcards.js": "d8a4fac5661410103e1d14ed377bbd0189ca7dbd2607b2b686c3fd4af3e921ab",
+    "data/pscMrcpLearning.js": "b3bda59518eff3575e6994f765482d0ebf5f3df134b2128404fe5f4c5845ec23",
+    "data/abdomenPancreaticCystFlashcards.js": "effa28d5564a9e9525caf4e26f25bb2c84012627005221b2aed9baa794dabd92",
+    "data/assessmentQuality/atvPancreatic.js": "829fc9576eefc7a357c711696235390b782c4e4f4adaefb9aef8b020fcb59a71",
+    "data/assessmentQuality/atvCysticPancreas.js": "1434be96c9f3e038c6c15338ac9437c20bf000f2933c29a623ea5f5d1414eba6",
+    "app/abdomen/pankreas/neuroendokrine-tumoren/page.js": "a4bcd633e54394dab1ba2e8e90df730f30f5f8eeedf62466ad33181021bf99a8",
+    "app/abdomen/pankreas/pankreaskarzinom/page.js": "61a24b708058027a4df8b895c8ce9c0494c124c740595a99d17ea0878b1baaa3",
+    "app/abdomen/pankreas/pankreatitis/page.js": "af594b66d6582e7a63b8880c0f64db924f9920ba7b266bfb78ee38c53df4d68f",
+    "app/abdomen/pankreas/zystische-tumoren/page.js": "1bf1acb7232ed9f43cd9f54d1bdae66bfb546189d40f7d30c6f152fa19208136",
+    "app/abdomen/leber/psc-mrcp/page.js": "957206929320cf4e960067a1271f20956a8b09295a213d1f14f8944385fdfab3"
+  },
+  "newQuestionsAdmission": {
+    "cysticSupplementIds": [
+      "aq-atv-ipmn-de-serous-pattern",
+      "aq-atv-ipmn-de-nodule-risk",
+      "aq-atv-ipmn-en-serous-pattern",
+      "aq-atv-ipmn-en-nodule-risk",
+      "aq-atv-ipmn-fa-serous-pattern",
+      "aq-atv-ipmn-fa-nodule-risk"
+    ],
+    "pscCanonicalNewIds": [
+      "aq-atv-psc-pbc-de-quality-next",
+      "aq-atv-psc-pbc-de-relevant-stricture",
+      "aq-atv-psc-pbc-en-quality-next",
+      "aq-atv-psc-pbc-en-relevant-stricture",
+      "aq-atv-psc-pbc-fa-quality-next",
+      "aq-atv-psc-pbc-fa-relevant-stricture"
+    ],
+    "newCardIds": [
+      "aq-atv-ipmn-nodule-risk",
+      "aq-atv-psc-pbc-quality-next",
+      "aq-atv-psc-pbc-relevant-stricture"
+    ]
+  },
+  "evidence": {
+    "originalReadLedger": "packet05-original-read-ledger.json",
+    "sourceReadScopes": "packet05-primary-research.json",
+    "freshBeforeParity": "packet05-shared-before-parity.json",
+    "actualSSR": "tmp/assessment-quality/atv-packet05-ssr.json",
+    "authorRuntimeScript": "tmp/assessment-quality/test-atv05-full-pool.mjs"
+  },
+  "limits": [
+    "Self-review/author checks only; independent full-pool review required.",
+    "Author overlay is an explicit test fixture; original54 shared repairs remain unapplied, with no shadow runtime override.",
+    "New cyst supplement is not centrally admitted and must be wired only after acceptance.",
+    "Actual browser/RTL/navigation and final canonical GlobalAfter remain parent release checks.",
+    "Not full original PDF/media/case provenance recertification, not Dr.Zia approval, not release approval."
+  ],
+  "reviewRepairs": "packet05-review-repairs.json",
+  "reviewRepairStatus": "SIX_LESSON_LOCALE_FIELDS_ACTUALLY_APPLIED_PENDING_INDEPENDENT_RETEST"
+}

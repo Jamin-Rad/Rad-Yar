@@ -1,0 +1,162 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/integration_review_next",
+  "worktree": "C:/Users/Drham/Documents/GitHub/Rad-Yar/.worktrees/gehirn-completion-main",
+  "base": "b6680aac",
+  "scope": "Independent bounded technical review of ATV05 canonical54-record integration, four inline draft option-feedback producers, sixth publisher module, explicit cardTopicId generator/test, and registered ipmn topic title. No reassessment of accepted full clinical pool; no build/server/browser or publication approval.",
+  "decision": {
+    "boundedTechnical": "PASS",
+    "overallLesson": "BLOCKED",
+    "scientificReview": "pending",
+    "publication": "not_requested"
+  },
+  "gates": {
+    "SRC": {
+      "status": "NOT_APPLICABLE",
+      "reason": "Technical integration only; primary-source content acceptance belongs to independent abdomen-technik/review-packet05.json."
+    },
+    "EDU": {
+      "status": "NOT_APPLICABLE",
+      "reason": "No new teaching design adjudicated. Reviewed clinical learning changes were accepted separately."
+    },
+    "VIS": {
+      "status": "NOT_APPLICABLE",
+      "reason": "No new visual/frame added by the reviewed technical changes; conditional diagram omission preserves intentional removal."
+    },
+    "LNG": {
+      "status": "PASS",
+      "scope": "Registered ipmn topic now accurately names broader cystic pancreatic lesions including IPMN in all3 languages; technical parity of42 localized question records and12 card triads exact."
+    },
+    "ASM": {
+      "status": "PASS",
+      "evidence": "54 canonical reviewedAfter records exact;48 localized inline option/feedback values exact; declared deck exists and generator rejects missing explicit deck; all368 reviewed goal-question references reachable in DE/EN/FA at retest."
+    },
+    "UX": {
+      "status": "BLOCKED",
+      "evidence": "No actual browser evidence inspected in this technical audit. Root owns current rendered route/quiz/flashcard checks."
+    },
+    "REV": {
+      "status": "PASS",
+      "scope": "Independent read-only technical review; accepted clinical review read as scope evidence, actual production independently compared."
+    }
+  },
+  "findings": [],
+  "checks": [
+    {
+      "name": "Canonical original integration",
+      "result": "PASS",
+      "evidence": "Reimplemented comparisons in memory against every shared-bank-patches-packet05-draft.json After;42 localized questions (14 seeds×3) and12 private card triads match actual QUESTION_BANK/FLASHCARDS exactly. No shadow overlay asserted."
+    },
+    {
+      "name": "Inline draft synchronization",
+      "result": "PASS",
+      "evidence": "For3 PDAC drafts plus pancreatic-cyst draft, each has4 options and integer correct index; all3 stems, keys, options and48 selected-option feedback values match actual global original questions. Actual PDAC page passes check with explanation=draft.rationale to LessonReferenceShell; lessonCheckFeedback resolves wrongFeedback/options."
+    },
+    {
+      "name": "Factory retention",
+      "result": "PASS",
+      "evidence": "Registered question factory forwards draft.source and localized wrongExplanations; scoped canonical seeds retain sources through data/questions.js. Pancreatitis card factory includes source and diagram only if present, preserving the accepted removal of oversimplified diagrams."
+    },
+    {
+      "name": "Publisher isolation",
+      "result": "PASS",
+      "evidence": "Sixth module atvPancreatic added to packets. Existing select() still rejects missing/duplicate IDs and selects only reviewed.questionIds/cardIds; routeCoverage filters explicit reviewed.routes. No implicit publication of all authored items."
+    },
+    {
+      "name": "Explicit card deck",
+      "result": "PASS",
+      "evidence": "Cyst coverage declares abdomen-pancreatic-cysts while question tag stays ipmn. Actual deck exists. Generator uses explicit ID before inferred alias and throws if nonexistent. Independent memory success/missing branches verified; new test checks mapped deck and actual action pathname for DE/EN/FA."
+    },
+    {
+      "name": "Route goal harness",
+      "result": "PASS",
+      "command": "node --import tsx scripts/test-reviewed-assessment-route-goals.mjs",
+      "evidence": "All368 explicit goal-question references reachable across current69 reviewed route maps; union counts and locale actions correct."
+    },
+    {
+      "name": "Maintained full approved-manifest regression",
+      "result": "PASS",
+      "command": "node --import tsx scripts/test-atv-pancreatic-reviewed.mjs",
+      "evidence": "Independently read test: it compares approved manifest payloads, not a second producer derivation, and does not write files. Actual execution95/95 payloads and48 option rationales PASS."
+    },
+    {
+      "name": "Lesson-check-feedback harness repair",
+      "result": "PASS",
+      "command": "node --import tsx scripts/test-lesson-check-feedback.mjs",
+      "evidence": "Read-only diff vsb6680aac confirms only the real canonical-payload assertion changes strict reference equality to deep structural equality, with matching explanatory comment. Fixture precedence, legacy correct-fallback and unanswered/null checks remain unchanged. Actual test independently PASS. Numeric wrongFeedback copies and letter-keyed rationale objects may differ by allocation while retaining identical localized payload. No production resolver change."
+    }
+  ],
+  "admissionObservation": {
+    "state": "Final frozen admission independently retested after publication generation.",
+    "supplementalQuestionsPerLanguage": 2,
+    "cardAdditions": 0,
+    "newRoutes": 5,
+    "actualSnapshotQuestionCount": 88,
+    "actualSnapshotCardCount": 88,
+    "actualSnapshotRouteCount": 69,
+    "canonicalSupplementalIds": [
+      "aq-atv-ipmn-de-serous-pattern",
+      "aq-atv-ipmn-de-nodule-risk"
+    ],
+    "evidence": "All2×3 supplemental IDs found in current publishedBank, both canonical IDs in reviewed allowlist; all5 routes in reviewedPackets/publishedBank/routeLinks. PSC new questions already canonical and not double-published.",
+    "globalQuestionsPerLanguage": {
+      "de": 979,
+      "en": 979,
+      "fa": 979
+    }
+  },
+  "routeSelection": [
+    {
+      "route": "/abdomen/pankreas/neuroendokrine-tumoren",
+      "topic": "pnet",
+      "questions": 4,
+      "deck": "pnet"
+    },
+    {
+      "route": "/abdomen/pankreas/pankreaskarzinom",
+      "topic": "pdac",
+      "questions": 3,
+      "deck": "pdac"
+    },
+    {
+      "route": "/abdomen/leber/psc-mrcp",
+      "topic": "psc-pbc",
+      "questions": 3,
+      "deck": "psc-pbc"
+    },
+    {
+      "route": "/abdomen/pankreas/zystische-tumoren",
+      "topic": "ipmn",
+      "questions": 3,
+      "deck": "abdomen-pancreatic-cysts"
+    },
+    {
+      "route": "/abdomen/pankreas/pankreatitis",
+      "topic": "pankreatitis",
+      "questions": 10,
+      "deck": "pankreatitis"
+    }
+  ],
+  "sha256": {
+    "scripts/publish-reviewed-assessment-packets.mjs": "7464e7986d7663c3d27dde139c995d0216dc1383147604586dd3efda329b810d",
+    "scripts/generate-assessment-quality-links.mjs": "8d5f9bba6eb14e016eeccb4540e5a2b4ec0aa56843f364594f52ab6e2b25c4af",
+    "scripts/test-reviewed-assessment-route-goals.mjs": "02531695881f18b5bfefb9fb84c3f11c584b9790c1d4a8c886746ec8d7bb14fa",
+    "data/assessmentQuality/atvPancreatic.js": "829fc9576eefc7a357c711696235390b782c4e4f4adaefb9aef8b020fcb59a71",
+    "data/abdomenThoraxRegisteredQuestions.js": "431be83186ed335bdec45750d40784a2a2a4651d84e6ed7a612a86fe0eb06f5f",
+    "data/abdomenThoraxAssessmentDrafts.js": "00ffcc729c02d3befc6cceb304b29d0cc247efac7e5cda9c6c9f4c0daec2fb3a",
+    "data/questions.js": "5d5de8d7a327c4e5bf51cf7a0bb444bfc397375dc61891e05fe35964d6777ddb",
+    "data/flashcards.js": "2159dadd86123ac36544ff44497a7af48e1a1e1831a4bb03e498d0d33b5c9527",
+    "app/abdomen/pankreas/pankreaskarzinom/page.js": "61a24b708058027a4df8b895c8ce9c0494c124c740595a99d17ea0878b1baaa3",
+    "data/assessmentQuality/reviewedPackets.json": "4b4f455b953f3c7b5628f5511ed9410711a0eb8e3bf5e4479b0911d3b0269a39",
+    "data/assessmentQuality/publishedBank.json": "d3af943db402f48249ef815dc08fc952b923e895301cda217015796759f92bca",
+    "data/assessmentQuality/routeLinks.json": "8c79e71f840608e4405cd124ea7ab344f538e62c40ccdd29ff82cf189c8f0ae3",
+    "scripts/test-atv-pancreatic-reviewed.mjs": "68cce56ab097caf44a0bc81a76a7ff6f02bd0911b413eabc8334a8abc2037544",
+    "scripts/test-lesson-check-feedback.mjs": "1f9961e5490c66d0526c6c667c22addcafcaa2a998432813e0961ee28b175735"
+  },
+  "limitations": [
+    "Current checked-out state only, not a live-site claim.",
+    "Did not rerun author test-atv05-global-after.mjs because it writes another author evidence file; equivalent checks independently executed without artifact mutation.",
+    "No publisher/generator executed by reviewer, because those mutate publication snapshots. Actual code and generated current outputs read and retested.",
+    "Technical PASS is separate from clinical acceptance, whole lesson/media review, browser/build, Dr.Zia approval and release."
+  ]
+}

@@ -1,0 +1,539 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_PARTIAL_POOL_REPAIR_PENDING_REMAINING01_02_AND_LESSON_PARITY",
+  "changes": [
+    {
+      "id": "pnet-de-03",
+      "before": {
+        "id": "pnet-de-03",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "Wie lässt sich der funktionelle Status eines vermuteten PanNET beurteilen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Aus der T1-Signalintensität."
+          },
+          {
+            "id": "B",
+            "text": "Aus der arteriellen Hyperanreicherung."
+          },
+          {
+            "id": "C",
+            "text": "Durch klinische und laborchemische Korrelation; nicht allein aus der Bildgebung."
+          },
+          {
+            "id": "D",
+            "text": "Aus der Lokalisation im Pankreaskopf."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Funktionell oder nichtfunktionell ist eine klinisch-laborchemische Einordnung; das Bild allein beantwortet sie nicht.",
+        "wrongExplanations": {
+          "A": "T1-Signal bestimmt keinen funktionellen Status.",
+          "B": "Hypervaskularität ist kein Beleg für Funktionalität.",
+          "D": "Die Lokalisation legt Funktionalität nicht fest."
+        },
+        "source": "Abdomen.pdf, S. 38; ENETS 2023"
+      },
+      "after": {
+        "id": "pnet-de-03",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "Welcher Befundkomplex stützt am direktesten ein klinisch funktionelles Insulinom-Syndrom bei einem PanNET?",
+        "options": [
+          {
+            "id": "A",
+            "text": "SSTR-positive Läsion und unauffällige Glukosewerte"
+          },
+          {
+            "id": "B",
+            "text": "Insulin-positive Tumorfärbung ohne dokumentiertes Hypoglykämiesyndrom"
+          },
+          {
+            "id": "C",
+            "text": "Typische Hypoglykämiebeschwerden mit dokumentiert niedriger Glukose und unangemessen erhaltenem/erhöhtem Insulin"
+          },
+          {
+            "id": "D",
+            "text": "Arterielle Hyperanreicherung mit niedrigem T1- und hohem T2-Signal"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Ein NET-assoziiertes funktionelles Syndrom verbindet klinische Symptome mit dem biochemischen Nachweis einer unangemessenen Hormonkonzentration. Bildgebung lokalisiert und charakterisiert, ersetzt diese klinisch-biochemische Einordnung aber nicht. Die Bestätigung erfolgt im geeigneten endokrinologischen Untersuchungsrahmen.",
+        "wrongExplanations": {
+          "A": "SSTR-Uptake zeigt Rezeptorexpression und kann zur Lokalisation beitragen; er belegt kein klinisches Hormonexzess-Syndrom.",
+          "B": "Eine Hormonfärbung zeigt die Expression im Gewebe, belegt aber ohne passendes klinisch-biochemisches Syndrom keine Funktionalität.",
+          "D": "Diese Signale und das Enhancement beschreiben ein Bildmuster, nicht die systemische Wirkung einer Hormonsekretion."
+        },
+        "source": "https://doi.org/10.1111/jne.13318"
+      }
+    },
+    {
+      "id": "pnet-en-03",
+      "before": {
+        "id": "pnet-en-03",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "How should the functional status of a suspected PanNET be assessed?",
+        "options": [
+          {
+            "id": "A",
+            "text": "From native T1 signal."
+          },
+          {
+            "id": "B",
+            "text": "From arterial hyperenhancement."
+          },
+          {
+            "id": "C",
+            "text": "By clinical and laboratory correlation, not imaging alone."
+          },
+          {
+            "id": "D",
+            "text": "From its location in the pancreatic head."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Functional status is a clinical and laboratory classification; imaging alone cannot answer it.",
+        "wrongExplanations": {
+          "A": "T1 signal does not establish functional status.",
+          "B": "Hypervascularity does not prove functionality.",
+          "D": "Location does not determine functionality."
+        },
+        "source": "Abdomen.pdf, p. 38; ENETS 2023"
+      },
+      "after": {
+        "id": "pnet-en-03",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "Which set of findings most directly supports a clinically functioning insulinoma syndrome in a patient with PanNET?",
+        "options": [
+          {
+            "id": "A",
+            "text": "SSTR-positive lesion with unremarkable glucose levels"
+          },
+          {
+            "id": "B",
+            "text": "Insulin-positive tumour staining without a documented hypoglycaemic syndrome"
+          },
+          {
+            "id": "C",
+            "text": "Typical hypoglycaemic symptoms with documented low glucose and inappropriately maintained/elevated insulin"
+          },
+          {
+            "id": "D",
+            "text": "Arterial hyperenhancement with low T1 and high T2 signal"
+          }
+        ],
+        "correct": "C",
+        "explanation": "A NET-associated functioning syndrome combines clinical symptoms with biochemical evidence of an inappropriate hormone concentration. Imaging localises and characterises but does not replace clinical/biochemical assessment. Confirmation requires an appropriate endocrine evaluation.",
+        "wrongExplanations": {
+          "A": "SSTR uptake demonstrates receptor expression and may aid localisation; it does not establish a clinical hormone-excess syndrome.",
+          "B": "Hormone staining demonstrates tissue expression but does not establish functioning status without a corresponding clinical/biochemical syndrome.",
+          "D": "These signals and enhancement describe an imaging pattern rather than the systemic effects of hormone secretion."
+        },
+        "source": "https://doi.org/10.1111/jne.13318"
+      }
+    },
+    {
+      "id": "pnet-fa-03",
+      "before": {
+        "id": "pnet-fa-03",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "وضعیت فانکشنال PanNET مشکوک چگونه ارزیابی می‌شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "از سیگنال T1 بدون کنتراست."
+          },
+          {
+            "id": "B",
+            "text": "از تقویت شریانی."
+          },
+          {
+            "id": "C",
+            "text": "با تطبیق بالینی و آزمایشگاهی، نه فقط تصویربرداری."
+          },
+          {
+            "id": "D",
+            "text": "از محل قرارگیری در سر پانکراس."
+          }
+        ],
+        "correct": "C",
+        "explanation": "فانکشنال‌بودن یک ارزیابی بالینی و آزمایشگاهی است و تصویر به‌تنهایی پاسخ نمی‌دهد.",
+        "wrongExplanations": {
+          "A": "سیگنال T1 وضعیت فانکشنال را مشخص نمی‌کند.",
+          "B": "پرعروق‌بودن فانکشنال‌بودن را ثابت نمی‌کند.",
+          "D": "محل ضایعه وضعیت فانکشنال را تعیین نمی‌کند."
+        },
+        "source": "Abdomen.pdf، صفحهٔ ۳۸؛ ENETS 2023"
+      },
+      "after": {
+        "id": "pnet-fa-03",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "کدام مجموعهٔ یافته‌ها مستقیم‌تر از سندرم بالینی انسولینومای فانکشنال در بیمار دارای PanNET حمایت می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ضایعهٔ SSTR مثبت همراه مقادیر طبیعی گلوکز"
+          },
+          {
+            "id": "B",
+            "text": "رنگ‌آمیزی مثبت انسولین در تومور بدون سندرم هیپوگلیسمی مستند"
+          },
+          {
+            "id": "C",
+            "text": "علائم تیپیک هیپوگلیسمی همراه گلوکز پایین مستند و انسولین نامتناسباً حفظ‌شده یا افزایش‌یافته"
+          },
+          {
+            "id": "D",
+            "text": "جذب بیشتر شریانی همراه سیگنال پایین T1 و بالای T2"
+          }
+        ],
+        "correct": "C",
+        "explanation": "سندرم فانکشنال مرتبط با NET، علائم بالینی را با شواهد بیوشیمیایی غلظت نامتناسب هورمون ترکیب می‌کند. تصویربرداری محل و ویژگی‌ها را بررسی می‌کند، اما جای ارزیابی بالینی و بیوشیمیایی را نمی‌گیرد. تأیید در چارچوب مناسب بررسی غدد انجام می‌شود.",
+        "wrongExplanations": {
+          "A": "جذب SSTR بیان گیرنده را نشان می‌دهد و می‌تواند به تعیین محل کمک کند؛ سندرم بالینی افزایش هورمون را قطعی نمی‌کند.",
+          "B": "رنگ‌آمیزی هورمون، بیان آن در بافت را نشان می‌دهد، اما بدون سندرم بالینی و بیوشیمیایی سازگار، فانکشنال‌بودن را قطعی نمی‌کند.",
+          "D": "این سیگنال‌ها و رفتار مادهٔ حاجب، الگوی تصویربرداری را توصیف می‌کنند، نه اثر سیستمیک ترشح هورمون را."
+        },
+        "source": "https://doi.org/10.1111/jne.13318"
+      }
+    },
+    {
+      "id": "pnet-de-04",
+      "before": {
+        "id": "pnet-de-04",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "Die PDF nennt eine kleine Studie zu Insulinomen. Wie ist deren Aussage zu verwenden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Als allgemeine Größenregel für alle PanNETs."
+          },
+          {
+            "id": "B",
+            "text": "Als Grundlage für eine Therapieempfehlung."
+          },
+          {
+            "id": "C",
+            "text": "Als Beweis, dass kleine PanNETs immer benign sind."
+          },
+          {
+            "id": "D",
+            "text": "Nur als begrenzte Angabe zu Insulinomen; nicht auf alle PanNETs übertragen."
+          }
+        ],
+        "correct": "D",
+        "explanation": "Die kleine Studie bezieht sich auf Insulinome und ist keine allgemeine Regel zur Risikoeinstufung oder Therapie aller PanNETs.",
+        "wrongExplanations": {
+          "A": "Die Quelle erlaubt keine Verallgemeinerung auf alle PanNETs.",
+          "B": "Aus dieser kleinen Studie wird hier keine Therapieempfehlung abgeleitet.",
+          "C": "Eine solche absolute Schlussfolgerung wird nicht gestützt."
+        },
+        "source": "Abdomen.pdf, S. 38"
+      },
+      "after": {
+        "id": "pnet-de-04",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "Eine Zusammenfassung beschreibt überwiegend gutartige Insulinome. Für eine nichtfunktionelle PanNET-Gruppe soll daraus eine Risikoeinschätzung abgeleitet werden. Welche Datengrundlage adressiert diese Übertragbarkeit am direktesten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Eine größere Zahl zusätzlicher Insulinome mit derselben Datenerhebung"
+          },
+          {
+            "id": "B",
+            "text": "Genauere Messungen des arteriellen Enhancements in der Insulinomgruppe"
+          },
+          {
+            "id": "C",
+            "text": "Eine längere Nachbeobachtung derselben Insulinomgruppe"
+          },
+          {
+            "id": "D",
+            "text": "Daten aus der nichtfunktionellen Zielgruppe mit Tumorgrad, Verlauf und klinischem Kontext"
+          }
+        ],
+        "correct": "D",
+        "explanation": "Insulinomdaten beschreiben eine andere klinisch-biologische Gruppe. Mehr oder längere Daten derselben Ausgangsgruppe lösen die Übertragbarkeit nicht allein. Für nichtfunktionelle PanNET sind eigene Daten sowie Grad, Wachstum, Bildbefund und Patientenkontext relevant; eine Größen- oder Benignitätsregel wird daraus nicht abgeleitet.",
+        "wrongExplanations": {
+          "A": "Mehr Insulinomfälle verbessern die Beschreibung der Ausgangsgruppe, beantworten aber den Unterschied zur nichtfunktionellen Zielgruppe nicht direkt.",
+          "B": "Genauere Bildmessungen können die Messqualität verbessern, ersetzen aber keine passende Zielpopulation für die Risikoeinschätzung.",
+          "C": "Längere Nachbeobachtung kann spätere Ereignisse bei Insulinomen erfassen. Die klinisch-biologische Differenz zur nichtfunktionellen Gruppe bleibt bestehen."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7029300/"
+      }
+    },
+    {
+      "id": "pnet-en-04",
+      "before": {
+        "id": "pnet-en-04",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "The PDF cites a small insulinoma study. How should its finding be used?",
+        "options": [
+          {
+            "id": "A",
+            "text": "As a general size rule for all PanNETs."
+          },
+          {
+            "id": "B",
+            "text": "As a basis for treatment advice."
+          },
+          {
+            "id": "C",
+            "text": "As proof that small PanNETs are always benign."
+          },
+          {
+            "id": "D",
+            "text": "As a limited finding about insulinomas, not generalised to all PanNETs."
+          }
+        ],
+        "correct": "D",
+        "explanation": "The small study concerns insulinomas and is not a general rule for risk classification or treatment of all PanNETs.",
+        "wrongExplanations": {
+          "A": "The source does not support generalising to all PanNETs.",
+          "B": "No treatment advice is derived here from that small study.",
+          "C": "It does not support that absolute conclusion."
+        },
+        "source": "Abdomen.pdf, p. 38"
+      },
+      "after": {
+        "id": "pnet-en-04",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "A summary describes mostly benign insulinomas. Its findings are to inform risk estimation in a nonfunctioning PanNET group. Which evidence most directly addresses this transfer between populations?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A larger number of additional insulinomas with the same data collection"
+          },
+          {
+            "id": "B",
+            "text": "More precise arterial-enhancement measurements in the insulinoma group"
+          },
+          {
+            "id": "C",
+            "text": "Longer follow-up of the same insulinoma group"
+          },
+          {
+            "id": "D",
+            "text": "Data from the nonfunctioning target population including tumour grade, evolution and clinical context"
+          }
+        ],
+        "correct": "D",
+        "explanation": "Insulinoma data describe a different clinical/biological group. More data or longer follow-up in the same source group does not by itself resolve transferability. Nonfunctioning PanNET assessment requires target-population data and consideration of grade, growth, imaging and patient context; no size or benignity rule is inferred.",
+        "wrongExplanations": {
+          "A": "More insulinoma cases improve description of the source group but do not directly address its difference from the nonfunctioning target group.",
+          "B": "More precise imaging measurements can improve measurement quality but do not replace an appropriate target population for risk estimation.",
+          "C": "Longer follow-up may capture later events in insulinomas. The clinical/biological difference from the nonfunctioning group remains."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7029300/"
+      }
+    },
+    {
+      "id": "pnet-fa-04",
+      "before": {
+        "id": "pnet-fa-04",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "PDF به مطالعهٔ کوچکی دربارهٔ انسولینوما اشاره می‌کند. یافتهٔ آن چگونه باید به‌کار رود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "به‌عنوان قاعدهٔ اندازه برای همهٔ PanNETها."
+          },
+          {
+            "id": "B",
+            "text": "به‌عنوان مبنای توصیهٔ درمانی."
+          },
+          {
+            "id": "C",
+            "text": "به‌عنوان اثبات خوش‌خیم‌بودن همیشگی PanNETهای کوچک."
+          },
+          {
+            "id": "D",
+            "text": "به‌عنوان یافته‌ای محدود دربارهٔ انسولینوما، نه قابل تعمیم به همهٔ PanNETها."
+          }
+        ],
+        "correct": "D",
+        "explanation": "مطالعهٔ کوچک دربارهٔ انسولینوماست و قاعده‌ای عمومی برای طبقه‌بندی خطر یا درمان همهٔ PanNETها نیست.",
+        "wrongExplanations": {
+          "A": "منبع از تعمیم به همهٔ PanNETها پشتیبانی نمی‌کند.",
+          "B": "در اینجا از آن مطالعهٔ کوچک توصیهٔ درمانی گرفته نمی‌شود.",
+          "C": "چنین نتیجه‌گیری مطلقی پشتیبانی نشده است."
+        },
+        "source": "Abdomen.pdf، صفحهٔ ۳۸"
+      },
+      "after": {
+        "id": "pnet-fa-04",
+        "tags": [
+          "pnet"
+        ],
+        "fach": "abdomen",
+        "question": "یک خلاصه، انسولینوماها را عمدتاً خوش‌خیم توصیف می‌کند و قرار است از آن برای برآورد خطر در گروه PanNET غیرفانکشنال استفاده شود. کدام داده مستقیم‌تر به قابلیت تعمیم بین این جمعیت‌ها می‌پردازد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "تعداد بیشتری انسولینوما با همان روش گردآوری داده"
+          },
+          {
+            "id": "B",
+            "text": "اندازه‌گیری دقیق‌تر جذب شریانی در گروه انسولینوما"
+          },
+          {
+            "id": "C",
+            "text": "پیگیری طولانی‌تر همان گروه انسولینوما"
+          },
+          {
+            "id": "D",
+            "text": "داده‌های جمعیت هدف غیرفانکشنال شامل گرید تومور، سیر و زمینهٔ بالینی"
+          }
+        ],
+        "correct": "D",
+        "explanation": "داده‌های انسولینوما، گروه بالینی و زیستی متفاوتی را توصیف می‌کنند. دادهٔ بیشتر یا پیگیری طولانی‌تر همان گروه مبدأ، به‌تنهایی قابلیت تعمیم را حل نمی‌کند. ارزیابی PanNET غیرفانکشنال به دادهٔ جمعیت هدف و توجه به گرید، رشد، تصویربرداری و زمینهٔ بیمار نیاز دارد؛ قاعده‌ای دربارهٔ اندازه یا خوش‌خیمی نتیجه‌گیری نمی‌شود.",
+        "wrongExplanations": {
+          "A": "موارد بیشتر انسولینوما، توصیف گروه مبدأ را بهتر می‌کند، اما تفاوت آن با جمعیت هدف غیرفانکشنال را مستقیم پاسخ نمی‌دهد.",
+          "B": "اندازه‌گیری تصویری دقیق‌تر می‌تواند کیفیت سنجش را بهتر کند، اما جای جمعیت هدف مناسب برای برآورد خطر را نمی‌گیرد.",
+          "C": "پیگیری طولانی‌تر ممکن است رخدادهای دیررس انسولینوما را نشان دهد. تفاوت بالینی و زیستی با گروه غیرفانکشنال همچنان باقی است."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7029300/"
+      }
+    },
+    {
+      "id": "pnet-functional-status",
+      "before": {
+        "id": "pnet-functional-status",
+        "topicId": "pnet",
+        "category": {
+          "de": "Klinische Korrelation",
+          "en": "Clinical correlation",
+          "fa": "تطبیق بالینی"
+        },
+        "front": {
+          "de": "Kann Bildgebung allein den funktionellen Status bestimmen?",
+          "en": "Can imaging alone determine functional status?",
+          "fa": "آیا تصویربرداری به‌تنهایی وضعیت فانکشنال را تعیین می‌کند؟"
+        },
+        "answer": {
+          "de": "Nein. Klinik und Labor müssen korreliert werden.",
+          "en": "No. Correlate with clinical and laboratory data.",
+          "fa": "خیر. باید یافته‌های بالینی و آزمایشگاهی را تطبیق داد."
+        },
+        "explanation": {
+          "de": "Enhancement und Signal beantworten die klinische Funktionsfrage nicht allein.",
+          "en": "Enhancement and signal do not by themselves answer the clinical functional question.",
+          "fa": "تقویت و سیگنال به‌تنهایی به پرسش عملکرد بالینی پاسخ نمی‌دهند."
+        },
+        "source": "Abdomen.pdf, p. 38; ENETS 2023"
+      },
+      "after": {
+        "id": "pnet-functional-status",
+        "topicId": "pnet",
+        "category": {
+          "de": "Klinische Korrelation",
+          "en": "Clinical correlation",
+          "fa": "تطبیق بالینی"
+        },
+        "front": {
+          "de": "Was definiert ein NET-assoziiertes funktionelles Hormonsyndrom?",
+          "en": "What defines a NET-associated functioning hormonal syndrome?",
+          "fa": "چه چیزی سندرم هورمونی فانکشنال مرتبط با NET را تعریف می‌کند؟"
+        },
+        "answer": {
+          "de": "Passendes klinisches Syndrom zusammen mit biochemisch unangemessener Hormonkonzentration.",
+          "en": "A compatible clinical syndrome together with a biochemically inappropriate hormone concentration.",
+          "fa": "سندرم بالینی سازگار همراه با غلظت بیوشیمیایی نامتناسب هورمون."
+        },
+        "explanation": {
+          "de": "Rezeptor-Uptake, Hormonfärbung und Enhancement allein belegen die klinische Hormonwirkung nicht. Bildgebung dient der Lokalisation und Ausbreitungsdiagnostik.",
+          "en": "Receptor uptake, hormone staining and enhancement alone do not establish clinical hormonal effects. Imaging supports localisation and staging.",
+          "fa": "جذب گیرنده‌ای، رنگ‌آمیزی هورمون و رفتار مادهٔ حاجب به‌تنهایی اثر بالینی هورمون را قطعی نمی‌کنند. تصویربرداری به تعیین محل و مرحله‌بندی کمک می‌کند."
+        },
+        "source": "https://doi.org/10.1111/jne.13318"
+      }
+    },
+    {
+      "id": "pnet-insulinoma-caveat",
+      "before": {
+        "id": "pnet-insulinoma-caveat",
+        "topicId": "pnet",
+        "category": {
+          "de": "Quellenkritik",
+          "en": "Source appraisal",
+          "fa": "ارزیابی منبع"
+        },
+        "front": {
+          "de": "Wie ist die kleine PDF-Studie zu Insulinomen einzuordnen?",
+          "en": "How should the small PDF study about insulinomas be interpreted?",
+          "fa": "مطالعهٔ کوچک PDF دربارهٔ انسولینوما چگونه باید تفسیر شود؟"
+        },
+        "answer": {
+          "de": "Als begrenzte Angabe zu Insulinomen, nicht als allgemeine PanNET-Regel.",
+          "en": "As a limited finding about insulinomas, not a general PanNET rule.",
+          "fa": "یافته‌ای محدود دربارهٔ انسولینوما، نه قاعده‌ای عمومی برای PanNET."
+        },
+        "explanation": {
+          "de": "Sie begründet hier weder eine allgemeine Risikoklassifikation noch eine Therapieempfehlung.",
+          "en": "It does not provide a general risk classification or treatment recommendation here.",
+          "fa": "این مطالعه در اینجا مبنای طبقه‌بندی عمومی خطر یا توصیهٔ درمانی نیست."
+        },
+        "source": "Abdomen.pdf, p. 38"
+      },
+      "after": {
+        "id": "pnet-insulinoma-caveat",
+        "topicId": "pnet",
+        "category": {
+          "de": "Quellenkritik",
+          "en": "Source appraisal",
+          "fa": "ارزیابی منبع"
+        },
+        "front": {
+          "de": "Warum lässt sich das Insulinom-Risiko nicht pauschal auf nichtfunktionelle PanNET übertragen?",
+          "en": "Why can insulinoma risk not be transferred wholesale to nonfunctioning PanNETs?",
+          "fa": "چرا خطر انسولینوما را نمی‌توان به‌طور کلی به PanNET غیرفانکشنال تعمیم داد؟"
+        },
+        "answer": {
+          "de": "Es handelt sich um unterschiedliche klinisch-biologische Gruppen; für die Zielgruppe Grad, Wachstum, Bildbefund und Patientenkontext berücksichtigen.",
+          "en": "They are different clinical/biological groups; consider grade, growth, imaging and patient context in the target population.",
+          "fa": "این‌ها گروه‌های بالینی و زیستی متفاوت‌اند؛ گرید، رشد، تصویربرداری و زمینهٔ بیمار در جمعیت هدف لحاظ شوند."
+        },
+        "explanation": {
+          "de": "Eine Häufigkeitsangabe zu Insulinomen beweist weder die Benignität eines kleinen nichtfunktionellen PanNET noch eine allgemeine Therapieentscheidung.",
+          "en": "An insulinoma frequency statement establishes neither benignity of a small nonfunctioning PanNET nor a general treatment decision.",
+          "fa": "یک گزارهٔ فراوانی دربارهٔ انسولینوما، نه خوش‌خیمی PanNET کوچک غیرفانکشنال و نه تصمیم درمانی عمومی را قطعی می‌کند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7029300/"
+      }
+    }
+  ],
+  "evidence": "PhysicalPDF38actuallyviewed:generic90percentinsulinomastatement,noidentifiedsmallstudy. ENETS2023functionalabstract+NANETS2020NFsmalltumorindividualizationactualprimarytextread. No numerictherapyrecommendation or newimagecase introduced."
+}

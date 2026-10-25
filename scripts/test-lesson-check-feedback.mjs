@@ -2,8 +2,8 @@ import assert from 'node:assert/strict'
 import {lessonCheckFeedback} from '../lib/lessonCheckFeedback.js'
 import {abdomenThoraxAssessmentDrafts} from '../data/abdomenThoraxAssessmentDrafts.js'
 
-// Two real canonical checks use letter-keyed wrong rationales. The inline
-// consumer must show the chosen alternative's rationale rather than the answer.
+// Canonical checks expose letter-keyed rationales; some also expose numeric
+// inline copies. Compare their localized payload, not object allocation identity.
 for(const id of ['abdomen-pancreatic-cysts','abdomen-appendizitis']){
  const source=abdomenThoraxAssessmentDrafts[id]
  const check={...source,explanation:source.rationale}
@@ -12,7 +12,7 @@ for(const id of ['abdomen-pancreatic-cysts','abdomen-appendizitis']){
   if(index===check.answer)continue
   const expected=source.wrongExplanations['ABCD'[index]]
   assert.ok(expected)
-  assert.equal(lessonCheckFeedback(check,index),expected)
+  assert.deepEqual(lessonCheckFeedback(check,index),expected)
   for(const lang of ['de','en','fa'])assert.ok(expected[lang]?.trim())
  }
 }

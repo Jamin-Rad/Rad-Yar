@@ -1,70 +1,420 @@
-const L = (de, en, fa) => ({ de, en, fa })
-
-const item = {
-  id: 'psc-pbc-mrcp-beading',
-  question: L(
-    'Welches MRCP-Muster passt zur im PDF beschriebenen primär sklerosierenden Cholangitis (PSC)?',
-    'Which MRCP pattern matches the primary sclerosing cholangitis (PSC) pattern described in the PDF?',
-    'کدام الگوی MRCP با الگوی کلانژیت اسکلروزان اولیه (PSC) توصیف‌شده در PDF سازگار است؟'
-  ),
-  options: [
-    L('Kurze multifokale Strikturen mit wechselnden normal kalibrierten oder dilatierten Gangabschnitten', 'Short multifocal strictures alternating with normal-calibre or dilated duct segments', 'تنگی‌های کوتاه و چندکانونی همراه با بخش‌های متناوبِ با قطر طبیعی یا گشادشده'),
-    L('Eine einzelne lange, glatt konturierte Stenose ohne weitere Gangveränderungen', 'One long, smoothly marginated stricture without other duct changes', 'یک تنگی منفرد و طولانی با حاشیه صاف، بدون تغییرات دیگر مجاری'),
-    L('Eine isolierte Wandverdickung der Gallenblase bei normal dargestellten Gallenwegen', 'Isolated gallbladder wall thickening with otherwise normal bile ducts', 'ضخیم‌شدگی منفرد دیواره کیسه صفرا با مجاری صفراوی طبیعی'),
-    L('Eine gleichmäßige Dilatation aller Gänge ohne Kaliberwechsel', 'Uniform dilatation of all ducts without calibre changes', 'اتساع یکنواخت همه مجاری بدون تغییر قطر'),
+// Canonical PSC producer; legacy psc-pbc IDs retain existing links.
+export const PSC_MRCP_QUESTIONS = {
+  "de": [
+    {
+      "id": "psc-pbc-mrcp-beading-de",
+      "topicId": "psc-pbc",
+      "tags": [
+        "psc-pbc"
+      ],
+      "fach": "abdomen",
+      "question": "Welche cholangiographische Befundkonstellation ist charakteristisch für eine großgangbetonte PSC?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Multifokale kurze Strikturen mit dazwischen normal weiten oder leicht dilatierten Gangabschnitten"
+        },
+        {
+          "id": "B",
+          "text": "Eine einzelne abrupte Hilusstenose mit gleichmäßiger proximaler Gangdilatation"
+        },
+        {
+          "id": "C",
+          "text": "Eine lange glatte distale Choledochusstenose mit diffuser Pankreasvergrößerung"
+        },
+        {
+          "id": "D",
+          "text": "Ein umspülter intraluminaler Füllungsdefekt im Choledochus mit vorgeschalteter Dilatation"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Die wechselnden kurzen Engstellen und normal weiten oder leicht erweiterten Abschnitte ergeben das Perlschnurmuster. Für die PSC-Diagnose müssen sekundäre Ursachen einer sklerosierenden Cholangitis ausgeschlossen werden; die Morphologie allein bestimmt keine Ätiologie.",
+      "wrongExplanations": {
+        "B": "Eine isolierte Hilusobstruktion verlangt eine gezielte Ursachenabklärung, unter anderem auf eine neoplastische Striktur. Sie zeigt nicht das gefragte multifokale Wechselmuster.",
+        "C": "Diese Kombination lenkt die Differenzialdiagnose unter anderem zur IgG4-assoziierten Erkrankung. Sie ersetzt nicht die charakteristische multifokale PSC-Konstellation.",
+        "D": "Ein umspülter intraluminaler Defekt spricht zunächst für eine intraduktale Ursache wie einen Stein. Er ist nicht gleichbedeutend mit mehreren kurzen Wandstrikturen."
+      },
+      "source": "https://doi.org/10.1002/hep.32771"
+    },
+    {
+      "id": "aq-atv-psc-pbc-de-quality-next",
+      "topicId": "psc-pbc",
+      "tags": [
+        "psc-pbc"
+      ],
+      "fach": "abdomen",
+      "question": "Textfall: Bei stabilem PSC-Verdacht ist die erste MRCP durch Bewegungsartefakte nicht diagnostisch; periphere Gänge sind nicht beurteilbar. Es bestehen keine akuten Zeichen einer Cholangitis oder behandlungsbedürftigen Obstruktion. Welcher nächste Schritt klärt die noch unzureichende Gangdarstellung vorrangig?",
+      "options": [
+        {
+          "id": "A",
+          "text": "ERCP zur diagnostischen Cholangiographie und Bürstenzytologie"
+        },
+        {
+          "id": "B",
+          "text": "Erneute hochwertige MRT/MRCP in einem erfahrenen Zentrum"
+        },
+        {
+          "id": "C",
+          "text": "Leberbiopsie zur histologischen Suche nach Small-duct-PSC"
+        },
+        {
+          "id": "D",
+          "text": "Portalvenöse CT zur Erfassung von Lebermorphologie und Gangdilatation"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Zunächst muss die technische Limitation durch hochwertige MRT/MRCP behoben werden. ERCP wird nicht allein zur PSC-Diagnose eingesetzt. Eine Biopsie kann bei normaler hochwertiger MRCP und anhaltendem Verdacht auf Small-duct-PSC beziehungsweise ausgewählten unklaren Befunden infrage kommen.",
+      "wrongExplanations": {
+        "A": "ERCP kann bei Interventions- oder Gewebeabklärungsbedarf sinnvoll sein, ist hier aber kein Ersatz für die technisch unzureichende nichtinvasive Erstdiagnostik.",
+        "C": "Small-duct-PSC setzt die Beurteilung einer hochwertigen, unauffälligen Cholangiographie voraus. Eine durch Bewegung unlesbare MRCP ist nicht gleichbedeutend mit einem normalen Gangsystem.",
+        "D": "CT kann zusätzliche Leber- oder Obstruktionsbefunde zeigen, behebt aber die fehlende hochwertige cholangiographische Darstellung kleinerer Gangäste nicht."
+      },
+      "source": "https://doi.org/10.1002/hep.32771"
+    },
+    {
+      "id": "aq-atv-psc-pbc-de-relevant-stricture",
+      "topicId": "psc-pbc",
+      "tags": [
+        "psc-pbc"
+      ],
+      "fach": "abdomen",
+      "question": "Bei einer Choledochusstriktur in bekannter PSC: Welche Zusatzinformation begründet nach AASLD2022 die Bezeichnung „klinisch relevante Striktur“ am unmittelbarsten?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Eine ausgeprägte prozentuale Lumeneinengung im MRCP ohne klinische Zusatzinformation"
+        },
+        {
+          "id": "B",
+          "text": "Eine längere Strikturstrecke im Vergleich zu anderen Gangabschnitten"
+        },
+        {
+          "id": "C",
+          "text": "Zeichen oder Symptome einer obstruktiven Cholestase und/oder bakteriellen Cholangitis"
+        },
+        {
+          "id": "D",
+          "text": "Eine regionale Leberatrophie bei unveränderten Cholestasewerten und fehlenden Symptomen"
+        }
+      ],
+      "correct": "C",
+      "explanation": "„Relevant“ verknüpft die Striktur mit Zeichen/Symptomen obstruktiver Cholestase oder bakterieller Cholangitis. Das ist nicht allein ein MRCP-Durchmessermaß. Die Ursachen- und Komplikationsabklärung bleibt erforderlich; die Bezeichnung ist kein Malignitätsnachweis.",
+      "wrongExplanations": {
+        "A": "Das ist eine morphologische Schwereangabe. Sie liefert ohne klinischen Bezug nicht die Definition einer relevanten Striktur.",
+        "B": "Die Länge gehört in den strukturierten Befund, ersetzt aber nicht den Zusammenhang mit obstruktiver Cholestase oder Cholangitis.",
+        "D": "Regionale Atrophie ist ein zusätzlicher morphologischer Befund. Für die Bezeichnung „relevant“ ist der definierte klinische Zusammenhang maßgeblich."
+      },
+      "source": "https://doi.org/10.1002/hep.32771"
+    }
   ],
-  correct: 'A',
-  explanation: L(
-    'Die kurzen multifokalen Engstellen wechseln mit normal kalibrierten oder dilatierten Gangabschnitten. Dieser Wechsel erzeugt den beschriebenen Perlschnur-Aspekt. Die Frage betrifft PSC/MRCP; PBC wird auf den PDF-Seiten nicht gelehrt.',
-    'Short multifocal narrowings alternate with normal-calibre or dilated duct segments. This variation creates the described beaded appearance. This question covers PSC/MRCP; PBC is not taught on the cited PDF pages.',
-    'تنگی‌های کوتاه و چندکانونی با بخش‌های طبیعی یا گشادشده مجرا تناوب دارند و نمای مهره‌مهره ایجاد می‌کنند. این پرسش درباره PSC/MRCP است؛ در صفحات یادشده PDF، PBC آموزش داده نشده است.'
-  ),
+  "en": [
+    {
+      "id": "psc-pbc-mrcp-beading-en",
+      "topicId": "psc-pbc",
+      "tags": [
+        "psc-pbc"
+      ],
+      "fach": "abdomen",
+      "question": "Which cholangiographic pattern is characteristic of large-duct PSC?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Multiple short strictures with intervening normal-calibre or mildly dilated segments"
+        },
+        {
+          "id": "B",
+          "text": "A single abrupt hilar stricture with uniform proximal duct dilatation"
+        },
+        {
+          "id": "C",
+          "text": "A long smooth distal common bile duct stricture with diffuse pancreatic enlargement"
+        },
+        {
+          "id": "D",
+          "text": "A common bile duct intraluminal filling defect outlined by bile, with upstream dilatation"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Alternating short narrowings and normal or mildly dilated segments create beading. Diagnosing PSC requires exclusion of secondary causes of sclerosing cholangitis; morphology alone does not establish aetiology.",
+      "wrongExplanations": {
+        "B": "An isolated hilar obstruction needs targeted evaluation, including for a neoplastic stricture. It does not show the multifocal alternating pattern requested.",
+        "C": "This combination raises alternatives including IgG4-related disease. It differs from the characteristic multifocal PSC pattern.",
+        "D": "A bile-outlined intraluminal defect suggests an intraductal cause such as a stone. It is not equivalent to multiple short mural strictures."
+      },
+      "source": "https://doi.org/10.1002/hep.32771"
+    },
+    {
+      "id": "aq-atv-psc-pbc-en-quality-next",
+      "topicId": "psc-pbc",
+      "tags": [
+        "psc-pbc"
+      ],
+      "fach": "abdomen",
+      "question": "Text vignette: in a stable patient with suspected PSC, the first MRCP is nondiagnostic because of motion and peripheral ducts cannot be assessed. There are no acute signs of cholangitis or obstruction requiring treatment. Which next step primarily addresses the inadequate duct imaging?",
+      "options": [
+        {
+          "id": "A",
+          "text": "ERCP for diagnostic cholangiography and brush cytology"
+        },
+        {
+          "id": "B",
+          "text": "Repeat high-quality MRI/MRCP at an experienced centre"
+        },
+        {
+          "id": "C",
+          "text": "Liver biopsy to look histologically for small-duct PSC"
+        },
+        {
+          "id": "D",
+          "text": "Portal venous CT to assess liver morphology and duct dilatation"
+        }
+      ],
+      "correct": "B",
+      "explanation": "First address the technical limitation with high-quality MRI/MRCP. ERCP is not used solely to diagnose PSC. Biopsy may be considered with a normal high-quality MRCP and persistent concern for small-duct PSC or in selected equivocal cases.",
+      "wrongExplanations": {
+        "A": "ERCP can serve intervention or tissue sampling, but here it does not replace adequate noninvasive initial imaging.",
+        "C": "Assessing small-duct PSC requires a high-quality normal cholangiogram. An unreadable motion-degraded MRCP is not a normal duct examination.",
+        "D": "CT may show additional hepatic or obstructive findings but does not supply the missing high-quality cholangiographic assessment of smaller branches."
+      },
+      "source": "https://doi.org/10.1002/hep.32771"
+    },
+    {
+      "id": "aq-atv-psc-pbc-en-relevant-stricture",
+      "topicId": "psc-pbc",
+      "tags": [
+        "psc-pbc"
+      ],
+      "fach": "abdomen",
+      "question": "For a common bile duct stricture in known PSC, which additional information most directly supports the AASLD2022 term “relevant stricture”?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Marked percentage luminal narrowing on MRCP without additional clinical information"
+        },
+        {
+          "id": "B",
+          "text": "A longer stricture segment than in other duct portions"
+        },
+        {
+          "id": "C",
+          "text": "Signs or symptoms of obstructive cholestasis and/or bacterial cholangitis"
+        },
+        {
+          "id": "D",
+          "text": "Regional liver atrophy with unchanged cholestatic tests and no symptoms"
+        }
+      ],
+      "correct": "C",
+      "explanation": "“Relevant” links the stricture to signs/symptoms of obstructive cholestasis or bacterial cholangitis. It is not an MRCP diameter criterion alone. The cause and complications still need evaluation; the term does not establish malignancy.",
+      "wrongExplanations": {
+        "A": "This describes morphological severity. Without clinical correlation it does not define a relevant stricture.",
+        "B": "Length belongs in structured reporting but does not replace the association with obstructive cholestasis or cholangitis.",
+        "D": "Regional atrophy is an additional morphological finding. The defined clinical association determines the term “relevant”."
+      },
+      "source": "https://doi.org/10.1002/hep.32771"
+    }
+  ],
+  "fa": [
+    {
+      "id": "psc-pbc-mrcp-beading-fa",
+      "topicId": "psc-pbc",
+      "tags": [
+        "psc-pbc"
+      ],
+      "fach": "abdomen",
+      "question": "کدام الگوی کلانژیوگرافی مشخصهٔ PSC با درگیری مجاری بزرگ است؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "تنگی‌های کوتاه و چندکانونی با قطعات بینابینی با قطر طبیعی یا کمی گشاد"
+        },
+        {
+          "id": "B",
+          "text": "یک تنگی ناگهانی منفرد در ناف کبد با اتساع یکنواخت مجاری پروگزیمال"
+        },
+        {
+          "id": "C",
+          "text": "یک تنگی طولانی و صاف در کلدوک دیستال همراه بزرگ‌شدگی منتشر پانکراس"
+        },
+        {
+          "id": "D",
+          "text": "نقص پرشدگی داخل کلدوک که صفرا دور آن را گرفته است، همراه اتساع بالادست"
+        }
+      ],
+      "correct": "A",
+      "explanation": "تناوب تنگی‌های کوتاه و قطعات طبیعی یا کمی گشاد نمای مهره‌مهره ایجاد می‌کند. تشخیص PSC نیازمند کنارگذاشتن علل ثانویهٔ کلانژیت اسکلروزان است؛ مورفولوژی به‌تنهایی علت را تعیین نمی‌کند.",
+      "wrongExplanations": {
+        "B": "انسداد منفرد ناف کبد بررسی هدفمند علت، از جمله تنگی نئوپلاستیک، می‌خواهد و الگوی چندکانونی متناوب مورد سؤال را نشان نمی‌دهد.",
+        "C": "این ترکیب تشخیص‌های افتراقی، از جمله بیماری مرتبط با IgG4، را مطرح می‌کند و با الگوی مشخصهٔ چندکانونی PSC متفاوت است.",
+        "D": "نقص داخل‌لومنی محاط در صفرا ابتدا علت داخل‌مجرا، مانند سنگ، را مطرح می‌کند و معادل چند تنگی کوتاه دیواره‌ای نیست."
+      },
+      "source": "https://doi.org/10.1002/hep.32771"
+    },
+    {
+      "id": "aq-atv-psc-pbc-fa-quality-next",
+      "topicId": "psc-pbc",
+      "tags": [
+        "psc-pbc"
+      ],
+      "fach": "abdomen",
+      "question": "سناریوی متنی: در بیمار پایدار با شک به PSC، نخستین MRCP به‌علت حرکت تشخیصی نیست و مجاری محیطی قابل ارزیابی نیستند. نشانهٔ حاد کلانژیت یا انسداد نیازمند درمان وجود ندارد. کدام گام بعدی در درجهٔ اول نمایش ناکافی مجاری را برطرف می‌کند؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "ERCP برای کلانژیوگرافی تشخیصی و سیتولوژی برسی"
+        },
+        {
+          "id": "B",
+          "text": "تکرار MRI/MRCP باکیفیت در مرکز باتجربه"
+        },
+        {
+          "id": "C",
+          "text": "بیوپسی کبد برای جست‌وجوی بافت‌شناختی PSC مجاری کوچک"
+        },
+        {
+          "id": "D",
+          "text": "CT فاز ورید پورت برای بررسی مورفولوژی کبد و اتساع مجاری"
+        }
+      ],
+      "correct": "B",
+      "explanation": "ابتدا محدودیت فنی با MRI/MRCP باکیفیت برطرف شود. ERCP صرفاً برای تشخیص PSC انجام نمی‌شود. در MRCP طبیعی و باکیفیت همراه تداوم شک به PSC مجاری کوچک، یا برخی موارد نامشخص منتخب، بیوپسی می‌تواند مطرح باشد.",
+      "wrongExplanations": {
+        "A": "ERCP برای مداخله یا نمونه‌برداری کاربرد دارد، اما اینجا جای تکمیل تصویربرداری غیرتهاجمی اولیهٔ ناکافی را نمی‌گیرد.",
+        "C": "ارزیابی PSC مجاری کوچک به کلانژیوگرافی طبیعی و باکیفیت نیاز دارد. MRCP ناخوانا به‌علت حرکت معادل بررسی طبیعی مجاری نیست.",
+        "D": "CT می‌تواند یافته‌های کبدی یا انسدادی دیگری نشان دهد، اما ارزیابی کلانژیوگرافیک باکیفیتِ مفقودِ شاخه‌های کوچک‌تر را فراهم نمی‌کند."
+      },
+      "source": "https://doi.org/10.1002/hep.32771"
+    },
+    {
+      "id": "aq-atv-psc-pbc-fa-relevant-stricture",
+      "topicId": "psc-pbc",
+      "tags": [
+        "psc-pbc"
+      ],
+      "fach": "abdomen",
+      "question": "در تنگی کلدوک بیمار با PSC شناخته‌شده، کدام اطلاعات تکمیلی مستقیماً اصطلاح «تنگی بااهمیت بالینی» در AASLD۲۰۲۲ را پشتیبانی می‌کند؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "کاهش شدید درصدی قطر لومن در MRCP بدون اطلاعات بالینی اضافی"
+        },
+        {
+          "id": "B",
+          "text": "طول بیشتر قطعهٔ تنگی نسبت به سایر بخش‌های مجرا"
+        },
+        {
+          "id": "C",
+          "text": "نشانه‌ها یا علائم کلستاز انسدادی و/یا کلانژیت باکتریایی"
+        },
+        {
+          "id": "D",
+          "text": "آتروفی منطقه‌ای کبد با آزمایش‌های کلستاز بدون تغییر و نبود علائم"
+        }
+      ],
+      "correct": "C",
+      "explanation": "«بااهمیت بالینی» تنگی را با نشانه‌ها/علائم کلستاز انسدادی یا کلانژیت باکتریایی مرتبط می‌کند و صرفاً معیار قطر در MRCP نیست. بررسی علت و عوارض همچنان لازم است؛ این اصطلاح بدخیمی را ثابت نمی‌کند.",
+      "wrongExplanations": {
+        "A": "این توصیف شدت مورفولوژیک است و بدون ارتباط بالینی، تعریف تنگی بااهمیت بالینی را فراهم نمی‌کند.",
+        "B": "طول باید در گزارش ساختاریافته ثبت شود، اما جای ارتباط با کلستاز انسدادی یا کلانژیت را نمی‌گیرد.",
+        "D": "آتروفی منطقه‌ای یافتهٔ مورفولوژیک تکمیلی است؛ برای اصطلاح «بااهمیت بالینی»، ارتباط بالینی تعریف‌شده ملاک است."
+      },
+      "source": "https://doi.org/10.1002/hep.32771"
+    }
+  ]
 }
-
-export const PSC_MRCP_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [
-  lang,
-  [{
-    id: `${item.id}-${lang}`,
-    topicId: 'psc-pbc',
-    tags: ['psc-pbc'],
-    fach: 'abdomen',
-    question: item.question[lang],
-    options: item.options.map((option, index) => ({ id: String.fromCharCode(65 + index), text: option[lang] })),
-    correct: item.correct,
-    explanation: item.explanation[lang],
-    source: 'Abdomen.pdf, PDF p. 29 (printed p. 28); PSC/MRCP lesson /abdomen/leber/psc-mrcp',
-  }],
-]))
-
 export const PSC_MRCP_FLASHCARD_TOPIC = {
-  id: 'psc-pbc',
-  area: 'Abdomen',
-  chapter: 'Gallenwege',
-  icon: 'MRCP',
-  iconImage: '/fach/abdomen.png',
-  color: '#0f766e',
-  href: '/flashcards/psc-pbc',
-  title: L('PSC im MRCP', 'PSC on MRCP', 'PSC در MRCP'),
-  subtitle: L('Perlschnur-Muster · Gangkaliber · Befundung', 'Beaded pattern · duct calibre · reporting', 'الگوی مهره‌مهره · قطر مجرا · گزارش'),
+  "id": "psc-pbc",
+  "area": "Abdomen",
+  "chapter": "Gallenwege",
+  "icon": "MRCP",
+  "iconImage": "/fach/abdomen.png",
+  "color": "#0f766e",
+  "href": "/flashcards/psc-pbc",
+  "title": {
+    "de": "PSC im MRCP",
+    "en": "PSC on MRCP",
+    "fa": "PSC در MRCP"
+  },
+  "subtitle": {
+    "de": "Perlschnur-Muster · Gangkaliber · Befundung",
+    "en": "Beaded pattern · duct calibre · reporting",
+    "fa": "الگوی مهره‌مهره · قطر مجرا · گزارش"
+  }
 }
-
-export const PSC_MRCP_FLASHCARDS = [{
-  id: 'psc-pbc-mrcp-beading',
-  topicId: 'psc-pbc',
-  category: L('MRCP-Muster', 'MRCP pattern', 'الگوی MRCP'),
-  front: L(
-    'Welche Gangkonstellation erzeugt bei PSC den Perlschnur-Aspekt?',
-    'Which duct configuration creates the beaded appearance in PSC?',
-    'چه ترکیبی از یافته‌های مجاری در PSC نمای مهره‌مهره ایجاد می‌کند؟'
-  ),
-  answer: L(
-    'Kurze multifokale Strikturen wechseln mit normal kalibrierten oder dilatierten Gangabschnitten. PBC wird in dieser Lektion nicht behandelt.',
-    'Short multifocal strictures alternate with normal-calibre or dilated duct segments. PBC is not covered in this lesson.',
-    'تنگی‌های کوتاه و چندکانونی با بخش‌های طبیعی یا گشادشده مجرا تناوب دارند. PBC در این درس بررسی نمی‌شود.'
-  ),
-  explanation: L(
-    'Quelle: Abdomen.pdf, PDF-S. 29 (gedruckte S. 28).',
-    'Source: Abdomen.pdf, PDF p. 29 (printed p. 28).',
-    'منبع: Abdomen.pdf، صفحهٔ ۲۹ فایل PDF (صفحهٔ چاپی ۲۸).'
-  ),
-}]
+export const PSC_MRCP_FLASHCARDS = [
+  {
+    "id": "psc-pbc-mrcp-beading",
+    "topicId": "psc-pbc",
+    "category": {
+      "de": "MRCP-Muster",
+      "en": "MRCP pattern",
+      "fa": "الگوی MRCP"
+    },
+    "front": {
+      "de": "Welche Gangkonstellation erzeugt bei PSC den Perlschnur-Aspekt?",
+      "en": "Which duct configuration creates the beaded appearance in PSC?",
+      "fa": "چه ترکیبی از یافته‌های مجاری در PSC نمای مهره‌مهره ایجاد می‌کند؟"
+    },
+    "answer": {
+      "de": "Multifokale kurze Strikturen mit dazwischen normal weiten oder leicht dilatierten Gangabschnitten",
+      "en": "Multiple short strictures with intervening normal-calibre or mildly dilated segments",
+      "fa": "تنگی‌های کوتاه و چندکانونی با قطعات بینابینی با قطر طبیعی یا کمی گشاد"
+    },
+    "explanation": {
+      "de": "Die wechselnden kurzen Engstellen und normal weiten oder leicht erweiterten Abschnitte ergeben das Perlschnurmuster. Für die PSC-Diagnose müssen sekundäre Ursachen einer sklerosierenden Cholangitis ausgeschlossen werden; die Morphologie allein bestimmt keine Ätiologie.",
+      "en": "Alternating short narrowings and normal or mildly dilated segments create beading. Diagnosing PSC requires exclusion of secondary causes of sclerosing cholangitis; morphology alone does not establish aetiology.",
+      "fa": "تناوب تنگی‌های کوتاه و قطعات طبیعی یا کمی گشاد نمای مهره‌مهره ایجاد می‌کند. تشخیص PSC نیازمند کنارگذاشتن علل ثانویهٔ کلانژیت اسکلروزان است؛ مورفولوژی به‌تنهایی علت را تعیین نمی‌کند."
+    },
+    "source": "https://doi.org/10.1002/hep.32771"
+  },
+  {
+    "id": "aq-atv-psc-pbc-quality-next",
+    "topicId": "psc-pbc",
+    "category": {
+      "de": "Untersuchungsstrategie",
+      "en": "Examination strategy",
+      "fa": "راهبرد بررسی"
+    },
+    "front": {
+      "de": "Wie gehen Sie bei technisch unzureichender MRCP und stabilem PSC-Verdacht ohne akuten Interventionsbedarf vor?",
+      "en": "How do you approach technically inadequate MRCP in stable suspected PSC without an acute intervention indication?",
+      "fa": "در MRCP از نظر فنی ناکافی و شک پایدار به PSC بدون نیاز حاد به مداخله، چه می‌کنید؟"
+    },
+    "answer": {
+      "de": "Erneute hochwertige MRT/MRCP in einem erfahrenen Zentrum",
+      "en": "Repeat high-quality MRI/MRCP at an experienced centre",
+      "fa": "تکرار MRI/MRCP باکیفیت در مرکز باتجربه"
+    },
+    "explanation": {
+      "de": "Zunächst muss die technische Limitation durch hochwertige MRT/MRCP behoben werden. ERCP wird nicht allein zur PSC-Diagnose eingesetzt. Eine Biopsie kann bei normaler hochwertiger MRCP und anhaltendem Verdacht auf Small-duct-PSC beziehungsweise ausgewählten unklaren Befunden infrage kommen.",
+      "en": "First address the technical limitation with high-quality MRI/MRCP. ERCP is not used solely to diagnose PSC. Biopsy may be considered with a normal high-quality MRCP and persistent concern for small-duct PSC or in selected equivocal cases.",
+      "fa": "ابتدا محدودیت فنی با MRI/MRCP باکیفیت برطرف شود. ERCP صرفاً برای تشخیص PSC انجام نمی‌شود. در MRCP طبیعی و باکیفیت همراه تداوم شک به PSC مجاری کوچک، یا برخی موارد نامشخص منتخب، بیوپسی می‌تواند مطرح باشد."
+    },
+    "source": "https://doi.org/10.1002/hep.32771"
+  },
+  {
+    "id": "aq-atv-psc-pbc-relevant-stricture",
+    "topicId": "psc-pbc",
+    "category": {
+      "de": "Klinischer Kontext",
+      "en": "Clinical context",
+      "fa": "زمینهٔ بالینی"
+    },
+    "front": {
+      "de": "Wodurch wird eine Striktur des Choledochus oder der Lebergänge nach AASLD2022 klinisch „relevant“?",
+      "en": "What makes a common bile duct or hepatic duct stricture clinically “relevant” in AASLD2022 terminology?",
+      "fa": "در اصطلاح AASLD۲۰۲۲ چه چیزی تنگی کلدوک یا مجاری کبدی را از نظر بالینی «بااهمیت» می‌کند؟"
+    },
+    "answer": {
+      "de": "Zeichen oder Symptome einer obstruktiven Cholestase und/oder bakteriellen Cholangitis",
+      "en": "Signs or symptoms of obstructive cholestasis and/or bacterial cholangitis",
+      "fa": "نشانه‌ها یا علائم کلستاز انسدادی و/یا کلانژیت باکتریایی"
+    },
+    "explanation": {
+      "de": "„Relevant“ verknüpft die Striktur mit Zeichen/Symptomen obstruktiver Cholestase oder bakterieller Cholangitis. Das ist nicht allein ein MRCP-Durchmessermaß. Die Ursachen- und Komplikationsabklärung bleibt erforderlich; die Bezeichnung ist kein Malignitätsnachweis.",
+      "en": "“Relevant” links the stricture to signs/symptoms of obstructive cholestasis or bacterial cholangitis. It is not an MRCP diameter criterion alone. The cause and complications still need evaluation; the term does not establish malignancy.",
+      "fa": "«بااهمیت بالینی» تنگی را با نشانه‌ها/علائم کلستاز انسدادی یا کلانژیت باکتریایی مرتبط می‌کند و صرفاً معیار قطر در MRCP نیست. بررسی علت و عوارض همچنان لازم است؛ این اصطلاح بدخیمی را ثابت نمی‌کند."
+    },
+    "source": "https://doi.org/10.1002/hep.32771"
+  }
+]

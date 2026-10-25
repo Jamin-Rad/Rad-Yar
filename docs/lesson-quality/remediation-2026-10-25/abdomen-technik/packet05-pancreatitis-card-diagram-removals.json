@@ -1,0 +1,110 @@
+[
+  {
+    "id": "pankreatitis-atlanta-morphology",
+    "removedDiagram": {
+      "de": "Ödematös: keine erkennbare Nekrose | Nekrotisierend: Pankreas und/oder peripankreatisches Gewebe; erhaltenes Parenchym-Enhancement schließt isolierte peripankreatische Nekrose nicht aus.",
+      "en": "Oedematous: no recognisable necrosis | Necrotising: pancreas and/or peripancreatic tissue; preserved pancreatic enhancement does not exclude isolated peripancreatic necrosis.",
+      "fa": "ادماتوی: بدون نکروز قابل‌شناسایی | نکروزان: پانکراس و/یا بافت اطراف آن؛ جذب حفظ‌شدهٔ پانکراس، نکروز منفرد اطراف پانکراس را رد نمی‌کند."
+    },
+    "reason": "Redundant generic text-chain panels; clinically meaningful content is covered by the revised focused answer/explanation. Retained lesson figures untouched."
+  },
+  {
+    "id": "pankreatitis-causes",
+    "removedDiagram": {
+      "de": "Häufig: biliär / Alkohol | Unklare Ursache: weitere kontextbezogene Abklärung",
+      "en": "Common: biliary / alcohol | Unexplained cause: further context-specific assessment",
+      "fa": "شایع: صفراوی / الکل | علت نامشخص: بررسی تکمیلی متناسب با زمینه"
+    },
+    "reason": "Redundant generic text-chain panels; clinically meaningful content is covered by the revised focused answer/explanation. Retained lesson figures untouched."
+  },
+  {
+    "id": "pankreatitis-chronic-triad",
+    "removedDiagram": {
+      "de": "Verkalkung + Atrophie + Perlschnur-Gang",
+      "en": "calcification + atrophy + chain-of-lakes duct",
+      "fa": "کلسیفیکاسیون + آتروفی + مجرای زنجیره‌ای"
+    },
+    "reason": "Redundant generic text-chain panels; clinically meaningful content is covered by the revised focused answer/explanation. Retained lesson figures untouched."
+  },
+  {
+    "id": "pankreatitis-carcinoma-dd",
+    "removedDiagram": {
+      "de": "Karzinom: abrupt + Atrophie\nPankreatitis: langer Gang + duct penetrating",
+      "en": "carcinoma: abrupt + atrophy\npancreatitis: long duct + duct penetrating",
+      "fa": "کارسینوم: قطع ناگهانی + آتروفی\nپانکراتیت: مجرای طولانی + duct penetrating"
+    },
+    "reason": "Redundant generic text-chain panels; clinically meaningful content is covered by the revised focused answer/explanation. Retained lesson figures untouched."
+  },
+  {
+    "id": "pankreatitis-autoimmune",
+    "removedDiagram": {
+      "de": "AIP-Muster → klinisch-serologisch korrelieren; vor diagnostischer Steroidprobe Malignität abklären",
+      "en": "AIP pattern → clinical/serological correlation; investigate malignancy before diagnostic steroid trial",
+      "fa": "الگوی AIP ← تطبیق بالینی و سرولوژیک؛ پیش از آزمون تشخیصی استروئید، بدخیمی بررسی شود"
+    },
+    "reason": "Redundant generic text-chain panels; clinically meaningful content is covered by the revised focused answer/explanation. Retained lesson figures untouched."
+  },
+  {
+    "id": "pankreatitis-ctsi",
+    "removedDiagram": {
+      "de": "Morphologischer CT-Score: Balthazar + Nekrose, 0–10 | Klinische Atlanta-Schwere getrennt beurteilen",
+      "en": "Morphological CT score: Balthazar + necrosis, 0–10 | Assess clinical Atlanta severity separately",
+      "fa": "امتیاز مورفولوژیک CT: بالتازار + نکروز، ۰ تا ۱۰ | شدت بالینی آتلانتا جداگانه ارزیابی شود"
+    },
+    "reason": "Redundant generic text-chain panels; clinically meaningful content is covered by the revised focused answer/explanation. Retained lesson figures untouched."
+  },
+  {
+    "id": "pankreatitis-biliary-mechanism",
+    "removedDiagram": {
+      "de": "Papilla blockiert → Pankreasgangdruck↑ → Enzymaktivierung",
+      "en": "papilla blocked → duct pressure↑ → enzyme activation",
+      "fa": "انسداد پاپیلا → فشار مجرا↑ → فعال شدن آنزیم"
+    },
+    "reason": "Redundant generic text-chain panels; clinically meaningful content is covered by the revised focused answer/explanation. Retained lesson figures untouched."
+  },
+  {
+    "id": "pankreatitis-necrosis-timing",
+    "removedDiagram": {
+      "de": "Früh: Nekrose unterschätzbar\nZeitpunkt nach klinischer Frage wählen",
+      "en": "Early: necrosis may be underestimated\nChoose timing according to the clinical question",
+      "fa": "زودهنگام: احتمال کم‌برآورد نکروز\nزمان‌بندی بر اساس سؤال بالینی"
+    },
+    "reason": "Redundant generic text-chain panels; clinically meaningful content is covered by the revised focused answer/explanation. Retained lesson figures untouched."
+  },
+  {
+    "id": "pankreatitis-collections",
+    "removedDiagram": {
+      "de": "ödematös: APFC → Pseudozyste\nnekrotisch: ANC → WON",
+      "en": "oedematous: APFC → pseudocyst\nnecrotic: ANC → WON",
+      "fa": "ادماتوی: APFC → پسودوسیست\nنکروزان: ANC → WON"
+    },
+    "reason": "Redundant generic text-chain panels; clinically meaningful content is covered by the revised focused answer/explanation. Retained lesson figures untouched."
+  },
+  {
+    "id": "pankreatitis-pseudoaneurysm",
+    "removedDiagram": {
+      "de": "Nekrose/Kollektion + arterielle Rundstruktur → Pseudoaneurysma",
+      "en": "collection/necrosis + arterial round focus → pseudoaneurysm",
+      "fa": "تجمع/نکروز + کانون گرد شریانی → پسودوآنوریسم"
+    },
+    "reason": "Redundant generic text-chain panels; clinically meaningful content is covered by the revised focused answer/explanation. Retained lesson figures untouched."
+  },
+  {
+    "id": "pankreatitis-infected-necrosis",
+    "removedDiagram": {
+      "de": "Nekrose + Gas → Infektion stark vermuten",
+      "en": "Necrosis + gas → strongly suspect infection",
+      "fa": "نکروز + گاز ← شک قوی به عفونت"
+    },
+    "reason": "Redundant generic text-chain panels; clinically meaningful content is covered by the revised focused answer/explanation. Retained lesson figures untouched."
+  },
+  {
+    "id": "pankreatitis-duct-disruption",
+    "removedDiagram": {
+      "de": "MRCP → Gangkontinuität\nSekretin-MRCP → möglicher Flüssigkeitsaustritt",
+      "en": "MRCP → duct continuity\nSecretin MRCP → possible fluid leakage",
+      "fa": "MRCP ← پیوستگی مجرا\nMRCP با سکرتین ← احتمال نشت مایع"
+    },
+    "reason": "Redundant generic text-chain panels; clinically meaningful content is covered by the revised focused answer/explanation. Retained lesson figures untouched."
+  }
+]

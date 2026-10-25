@@ -37,7 +37,9 @@
     "msk-spine/packet08/review-osteomyelitis.json",
     "brain/review-packet15-icb.json",
     "brain/review-packet16-hma.json",
-    "thorax-mamma/review-packet06-hrct-architecture.json"
+    "thorax-mamma/review-packet06-hrct-architecture.json",
+    "abdomen-technik/review-packet05.json",
+    "brain/review-packet18-moyamoya.json"
   ],
   "questionIds": [
     "aq-brain-aq-balkenagenesie-de-direct-assessment",
@@ -125,7 +127,9 @@
     "aq-msk-sehnenpathologien-hand-de-lister-course",
     "aq-msk-osteomyelitis-de-periosteal-report",
     "aq-msk-osteomyelitis-de-brodie-variability",
-    "aq-msk-osteomyelitis-de-paediatric-next-imaging"
+    "aq-msk-osteomyelitis-de-paediatric-next-imaging",
+    "aq-atv-ipmn-de-serous-pattern",
+    "aq-atv-ipmn-de-nodule-risk"
   ],
   "cardIds": [
     "aq-brain-aq-balkenagenesie-direct-assessment",
@@ -281,6 +285,11 @@
     "/abdomen/hernien/inguinal-femoral",
     "/abdomen/leber/adenom",
     "/msk/hand/strecksehnenfaecher",
-    "/msk/infektionen/osteomyelitis"
+    "/msk/infektionen/osteomyelitis",
+    "/abdomen/pankreas/neuroendokrine-tumoren",
+    "/abdomen/pankreas/pankreaskarzinom",
+    "/abdomen/leber/psc-mrcp",
+    "/abdomen/pankreas/zystische-tumoren",
+    "/abdomen/pankreas/pankreatitis"
   ]
 }

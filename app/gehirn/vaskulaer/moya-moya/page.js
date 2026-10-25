@@ -9,7 +9,8 @@ import InProgressBanner from '@/components/InProgressBanner'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
-import { MOYAMOYA_LESSON } from '@/data/moyamoya'
+import { MOYAMOYA_LESSON, MOYAMOYA_QUESTIONS } from '@/data/moyamoya'
+import TopicAssessment from '@/components/lesson-template/TopicAssessment'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
 
 const L = (value, lang) => value?.[lang] || value?.de || value
@@ -208,7 +209,6 @@ export default function MoyaMoyaPage() {
           <div className={styles.heroText}>
             <span className={styles.sourceBadge}>{MOYAMOYA_LESSON.sourceLabel}</span>
             <h1>{c(MOYAMOYA_LESSON.title)}</h1>
-            <p>{c(MOYAMOYA_LESSON.definition)}</p>
             <div className={styles.actions}>
               <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=gehirn&n=13&themen=moya-moya&from=${encodeURIComponent(withLang(path))}`)}>
                 🎯 MCQ
@@ -256,6 +256,7 @@ export default function MoyaMoyaPage() {
 
           {/* 1 – Grundlagen */}
           <Section id="grundlagen" title={c(MOYAMOYA_LESSON.grundlagen.title)} lead={c(MOYAMOYA_LESSON.grundlagen.lead)} migrationChapter>
+            <ul>{MOYAMOYA_LESSON.learningObjectives.map((goal, index) => <li key={index}>{c(goal)}</li>)}</ul>
             <Cards items={MOYAMOYA_LESSON.grundlagen.items} lang={lang} />
           </Section>
 
@@ -279,20 +280,24 @@ export default function MoyaMoyaPage() {
             <h3 style={{ marginTop: 22, marginBottom: 10, fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>MRT / MRI</h3>
             <Table headers={MOYAMOYA_LESSON.bildgebung.mriHeaders.map(c)} rows={rows(MOYAMOYA_LESSON.bildgebung.mriRows)} />
             <Callout label={c({ de: 'Ivy Sign', en: 'Ivy sign', fa: 'علامت پیچک (Ivy sign)' })}>{c(MOYAMOYA_LESSON.bildgebung.ivyKey)}</Callout>
+            <TopicAssessment key={`perfusion-${lang}`} question={MOYAMOYA_QUESTIONS[lang]?.find(q => q.id === `moyamoya-${lang}-perfusion`)} topic="moya-moya" lang={lang} fach="gehirn" returnTo={withLang(path)} />
           </Section>
 
           {/* 5 – MRA, CTA & DSA */}
           <Section id="dsa" title={c(MOYAMOYA_LESSON.dsa.title)} lead={c(MOYAMOYA_LESSON.dsa.lead)} migrationChapter>
+            <p>{c(MOYAMOYA_LESSON.dsa.criteria)}</p>
             <Table headers={MOYAMOYA_LESSON.dsa.modesHeaders.map(c)} rows={rows(MOYAMOYA_LESSON.dsa.modesRows)} />
             <h3 style={{ marginTop: 24, marginBottom: 10, fontSize: '0.95rem', color: 'var(--text)', fontWeight: 700 }}>{c(MOYAMOYA_LESSON.dsa.suzukiTitle)}</h3>
             <Table headers={MOYAMOYA_LESSON.dsa.suzukiHeaders.map(c)} rows={rows(MOYAMOYA_LESSON.dsa.suzukiRows)} />
             <Callout label={c(MOYAMOYA_LESSON.keyLabel)}>{c(MOYAMOYA_LESSON.dsa.key)}</Callout>
+            <TopicAssessment key={`dsa-${lang}`} question={MOYAMOYA_QUESTIONS[lang]?.find(q => q.id === `moyamoya-${lang}-goldstandard`)} topic="moya-moya" lang={lang} fach="gehirn" returnTo={withLang(path)} />
           </Section>
 
           {/* 6 – Therapie */}
           <Section id="therapie" title={c(MOYAMOYA_LESSON.therapie.title)} lead={c(MOYAMOYA_LESSON.therapie.lead)} migrationChapter>
             <Cards items={MOYAMOYA_LESSON.therapie.items} lang={lang} />
             <Callout cave label={c(MOYAMOYA_LESSON.caveLabel)}>{c(MOYAMOYA_LESSON.therapie.cave)}</Callout>
+            <TopicAssessment key={`edas-${lang}`} question={MOYAMOYA_QUESTIONS[lang]?.find(q => q.id === `moyamoya-${lang}-edas`)} topic="moya-moya" lang={lang} fach="gehirn" returnTo={withLang(path)} />
           </Section>
 
           {/* 7 – Fallbeispiele */}
@@ -335,6 +340,12 @@ export default function MoyaMoyaPage() {
               ))}
             </div>
           </Section>
+
+          <footer>
+            <h2>{c({ de: 'Quellen', en: 'Sources', fa: 'منابع' })}</h2>
+            <p>{c(MOYAMOYA_LESSON.sourceScope)}</p>
+            <ul>{MOYAMOYA_LESSON.references.map(reference => <li key={reference.url}><a href={reference.url} target="_blank" rel="noopener noreferrer">{reference.label}</a></li>)}</ul>
+          </footer>
 
           <div className={styles.readBarBottom}>
             <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy}  migrationReadControl/>

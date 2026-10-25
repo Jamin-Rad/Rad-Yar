@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_UNREVIEWED",
+  "sourceFile": "app/abdomen/pankreas/zystische-tumoren/page.js",
+  "changes": [
+    "Original three-option wall check with always/unknowable distractors replaced by canonical Kyoto four-option risk item and individualized feedback",
+    "Three goals derive from actual original plus two gap questions",
+    "Quiz n1→n3, existing topic/return links retained",
+    "Text-only serous microcystic/central-scar and macrocystic limitation paragraph with primary citation"
+  ],
+  "addedParagraph": {
+    "de": "Seröse Differenzialdiagnose: Mikrozystische, schwammartige Binnenstruktur und eine zentrale Narbe können eine seröse zystische Neoplasie stützen. Makrozystische seröse Formen überlappen mit muzinösen Läsionen; Kontur oder Lage allein sind kein sicherer Gewebenachweis.",
+    "en": "Serous differential: microcystic sponge-like architecture and a central scar can support a serous cystic neoplasm. Macrocystic serous forms overlap with mucinous lesions; contour or location alone is not secure tissue evidence.",
+    "fa": "افتراق سروزی: ساختار داخلی میکروکیستیک و اسفنج‌مانند و اسکار مرکزی می‌توانند از نئوپلاسم کیستیک سروزی حمایت کنند. شکل‌های سروزی ماکروکیستیک با ضایعات موسینوس همپوشانی دارند؛ حاشیه یا محل به‌تنهایی شاهد بافتی مطمئن نیست."
+  },
+  "oldInline": "  const selfCheck = {\r\n    question: {\r\n      de: 'Woran unterscheidet sich die Wand einer Pseudozyste von der einer echten Zyste?',\r\n      en: 'How does a pseudocyst wall differ from the wall of a true cyst?',\r\n      fa: 'دیوارهٔ پسودوسیست چه تفاوتی با دیوارهٔ کیست واقعی دارد؟',\r\n    },\r\n    options: [\r\n      { de: 'Der Pseudozyste fehlt eine epitheliale Auskleidung; die Wand besteht aus Bindegewebe/Narbe.', en: 'A pseudocyst lacks an epithelial lining; its wall consists of connective tissue/scar.', fa: 'پسودوسیست پوشش اپی‌تلیالی ندارد و دیواره‌اش از بافت همبند/اسکار تشکیل شده است.' },\r\n      { de: 'Eine Pseudozyste hat immer eine dicke epitheliale Auskleidung.', en: 'A pseudocyst always has a thick epithelial lining.', fa: 'پسودوسیست همیشه پوشش اپی‌تلیالی ضخیم دارد.' },\r\n      { de: 'Die Wandbeschaffenheit lässt sich grundsätzlich nicht unterscheiden.', en: 'The wall types cannot be distinguished in principle.', fa: 'اصولاً نمی‌توان نوع دیواره‌ها را از هم افتراق داد.' },\r\n    ],\r\n    answer: 0,\r\n    explanation: {\r\n      de: 'Die PDF beschreibt eine echte Zyste als epithelial ausgekleidet und eine Pseudozyste als nicht epithelial ausgekleidet. Das allgemeine Wandmerkmal allein klassifiziert keine pankreatische Neoplasie.',\r\n      en: 'The PDF describes a true cyst as epithelial-lined and a pseudocyst as lacking an epithelial lining. This general wall feature alone does not classify a pancreatic neoplasm.',\r\n      fa: 'PDF کیست واقعی را دارای پوشش اپی‌تلیالی و پسودوسیست را فاقد آن توصیف می‌کند. این ویژگی عمومی دیواره به‌تنهایی نئوپلاسم پانکراس را طبقه‌بندی نمی‌کند.',\r\n    },\r\n    diagramCaption: { de: 'Schematische Lernhilfe; keine Patientendarstellung.', en: 'Teaching schematic; not patient imaging.', fa: 'نمای شماتیک آموزشی؛ تصویر بیمار نیست.' },\r\n  }\r\n",
+  "learningGoals": [
+    {
+      "id": "post-inflammatory-context",
+      "text": {
+        "de": "Gangkommunikation gemeinsam mit Entzündungsverlauf und flüssigem oder nekrotischem Inhalt einordnen.",
+        "en": "Interpret duct communication together with the inflammatory course and fluid versus necrotic contents.",
+        "fa": "ارتباط مجرایی را همراه سیر التهاب و محتوای مایع یا نکروتیک تفسیر کنید."
+      },
+      "questionIds": [
+        "abdomen-pancreatic-cysts-de-01"
+      ],
+      "cardIds": [
+        "abdomen-pancreatic-cysts-pseudocyst-context-clues"
+      ]
+    },
+    {
+      "id": "serous-morphology",
+      "text": {
+        "de": "Seröse mikrozystische Hinweise erkennen und die begrenzte Aussage makrozystischer Kontur benennen.",
+        "en": "Recognise serous microcystic clues and state the limitations of macrocystic contour.",
+        "fa": "نشانه‌های میکروکیستیک سروزی را بشناسید و محدودیت حاشیهٔ ماکروکیستیک را بیان کنید."
+      },
+      "questionIds": [
+        "aq-atv-ipmn-de-serous-pattern"
+      ],
+      "cardIds": [
+        "abdomen-pancreatic-cysts-serous-macrocystic-contour"
+      ]
+    },
+    {
+      "id": "kyoto-risk",
+      "text": {
+        "de": "Enhancierende Wandknoten nach Kyoto2024 als HRS oder WF klassifizieren, ohne eine Krebsdiagnose oder automatische Operation abzuleiten.",
+        "en": "Classify enhancing mural nodules as Kyoto2024 HRS or WF without inferring a cancer diagnosis or automatic surgery.",
+        "fa": "ندول دیواره‌ای دارای جذب مادهٔ حاجب را طبق کیوتو۲۰۲۴ به HRS یا WF طبقه‌بندی کنید، بدون استنباط سرطان یا جراحی خودکار."
+      },
+      "questionIds": [
+        "aq-atv-ipmn-de-nodule-risk"
+      ],
+      "cardIds": [
+        "aq-atv-ipmn-nodule-risk"
+      ]
+    }
+  ]
+}

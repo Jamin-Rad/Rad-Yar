@@ -1,0 +1,385 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_FULL_ORIGINAL_ASSESSMENT_POOL_READY_SHARED_UNAPPLIED_REVIEW_PENDING",
+  "route": "/abdomen/pankreas/pankreaskarzinom",
+  "originalQuestionsPerLocale": 3,
+  "localizedQuestionProposals": 9,
+  "originalCardTriads": 4,
+  "noNewItems": true,
+  "learningGoals": [
+    {
+      "id": "occult-obstruction",
+      "text": {
+        "de": "Bei möglichem isoattenuierendem PDAC sekundäre Gang-/Parenchymzeichen erkennen und unterstützende MRT-/MRCP-Zeichen benennen.",
+        "en": "Recognise secondary ductal/parenchymal signs of possible isoattenuating PDAC and name supportive MRI/MRCP findings.",
+        "fa": "نشانه‌های ثانویهٔ مجرا/پارانشیم در PDAC احتمالی هم‌دانسیته را بشناسید و یافته‌های حمایتی MRI/MRCP را نام ببرید."
+      },
+      "questionIds": [
+        "abdomen-pdac-isoattenuating-de-01"
+      ],
+      "cardIds": [
+        "pdac-isoattenuating",
+        "pdac-mri"
+      ]
+    },
+    {
+      "id": "double-duct-localisation",
+      "text": {
+        "de": "Das Double-Duct-Muster distal lokalisieren und neoplastische von benignen Ursachen als offene Differenzialdiagnose trennen.",
+        "en": "Localise the double-duct pattern distally and retain both neoplastic and benign causes in the differential.",
+        "fa": "الگوی دو مجرا را در ناحیهٔ دیستال موضع‌یابی کنید و علل نئوپلاستیک و خوش‌خیم را در تشخیص افتراقی باز نگه دارید."
+      },
+      "questionIds": [
+        "abdomen-pdac-double-duct-de-01"
+      ],
+      "cardIds": [
+        "pdac-double-duct"
+      ]
+    },
+    {
+      "id": "vessel-planning",
+      "text": {
+        "de": "Für die Gefäßplanung Kontakt, Kontur und venöse Anschlusssegmente strukturiert dokumentieren, ohne allein daraus die Resektabilität festzulegen.",
+        "en": "Document contact, contour and adjacent venous segments for vascular planning without determining resectability from these alone.",
+        "fa": "تماس، جدار و قطعات وریدی مجاور را برای برنامه‌ریزی عروقی ساختاریافته ثبت کنید، بدون آنکه تنها بر همان اساس قابلیت برداشت تعیین شود."
+      },
+      "questionIds": [
+        "abdomen-pdac-vessel-contact-de-01"
+      ],
+      "cardIds": [
+        "pdac-vessel-reporting"
+      ]
+    }
+  ],
+  "productionOwnFiles": [
+    "data/pdacFlashcards.js",
+    "data/assessmentQuality/atvPancreatic.js",
+    "app/abdomen/pankreas/pankreaskarzinom/page.js"
+  ],
+  "sharedFilesUnchanged": [
+    "data/abdomenThoraxAssessmentDrafts.js",
+    "data/abdomenThoraxRegisteredQuestions.js"
+  ],
+  "proposalFile": "shared-bank-patches-packet05-draft.json",
+  "cardChangeFile": "packet05-pdac-card-changes.json",
+  "questions": {
+    "de": [
+      {
+        "id": "abdomen-pdac-isoattenuating-de-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "Textfall: Bei Gewichtsverlust zeigt die Mehrphasen-CT keine klar hypodense Pankreasmasse. Welche zusätzliche Befundkombination stützt den Verdacht auf ein isoattenuierendes PDAC am stärksten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Abrupter fokaler Pankreasgangabbruch mit vorgeschalteter Gangdilatation und Atrophie des vorgeschalteten Parenchyms"
+          },
+          {
+            "id": "B",
+            "text": "Diffuse Parenchymverkalkungen mit mehreren intraduktalen Konkrementen und wechselnder Gangweite"
+          },
+          {
+            "id": "C",
+            "text": "Diffuse Drüsenschwellung mit homogenem Enhancement und entzündlicher peripankreatischer Flüssigkeit"
+          },
+          {
+            "id": "D",
+            "text": "Umschriebene Mikrozystengruppe mit zentraler Narbe und verlagertem, durchgängigem Hauptgang"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Ein fokaler Gangabbruch mit vorgeschalteten Gang- und Parenchymveränderungen kann ein isoattenuierendes PDAC indirekt anzeigen. Die Konstellation verlangt gezielte Abklärung, ist aber kein histologischer Beweis.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/12202711/",
+        "wrongExplanations": {
+          "B": "Verkalkungen und intraduktale Steine gewichten eine chronische Pankreatitis stärker. Ein zusätzliches Karzinom wäre damit nicht ausgeschlossen; gesucht ist hier die stärkste fokal-obstruktive Warnkonstellation.",
+          "C": "Dieses diffuse entzündliche Muster gewichtet eine interstitiell-ödematöse Pankreatitis stärker als die gesuchte fokale Gangobstruktion mit vorgeschalteter Atrophie.",
+          "D": "Mikrozysten und zentrale Narbe gewichten eine seröse zystische Läsion. Ein verdrängter, offener Gang ist nicht der gesuchte abrupte Gangabbruch."
+        }
+      },
+      {
+        "id": "abdomen-pdac-double-duct-de-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "Textfall: Ductus choledochus und Pankreashauptgang sind bis zur Pankreaskopf-/Papillenregion erweitert. Eine sichere Ursache ist noch nicht sichtbar. Welche vorläufige Befundbewertung ist am besten begründet?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Distaler periampullärer oder pankreaskopfnaher Abflusshinderungsprozess; neoplastische und benigne Ursachen weiter abklären"
+          },
+          {
+            "id": "B",
+            "text": "Isolierte Hilusobstruktion als gemeinsame Erklärung der beiden Gangdilatationen"
+          },
+          {
+            "id": "C",
+            "text": "Isolierte Pankreasschwanzobstruktion als gemeinsame Erklärung der beiden Gangdilatationen"
+          },
+          {
+            "id": "D",
+            "text": "Diffuse intrahepatische Cholangitis als gemeinsame Erklärung der beiden Gangdilatationen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die gemeinsame distale Abflussregion erklärt das Double-Duct-Zeichen. Es ist kein PDAC-spezifischer Gewebebefund: Unter anderem kommen pankreatische oder ampulläre Neoplasien, chronische Pankreatitis und Steine infrage. Klinischer Kontext und weitere gezielte Abklärung bestimmen die Ursache.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/24705640/",
+        "wrongExplanations": {
+          "B": "Eine isolierte Hilusobstruktion erklärt primär die proximalen Gallenwege, nicht zugleich die Erweiterung des Pankreasgangs bis zur gemeinsamen distalen Region.",
+          "C": "Eine isolierte Schwanzobstruktion betrifft den Pankreasgang stromaufwärts; sie erklärt nicht gleichzeitig den bis zum Kopf-/Papillenbereich erweiterten Choledochus.",
+          "D": "Eine intrahepatische Erkrankung erklärt keine gemeinsame distale Abflussbehinderung beider Gänge. Das Muster verlangt eine Beurteilung der Kopf-/Papillenregion."
+        }
+      },
+      {
+        "id": "abdomen-pdac-vessel-contact-de-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "Textfall: Bei einem unbehandelten PDAC besteht Kontakt zur V. mesenterica superior. Für die interdisziplinäre Planung soll insbesondere eine mögliche venöse Rekonstruktion beurteilt werden. Welche ergänzenden Angaben adressieren diese Frage am unmittelbarsten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Ort und Länge einer Stenose/eines Verschlusses, Durchgängigkeit proximal und distal, Thrombus und Kollateralen"
+          },
+          {
+            "id": "B",
+            "text": "Arterieller Ursprung, Verlauf einer akzessorischen Leberarterie und Kontakt zum Truncus coeliacus"
+          },
+          {
+            "id": "C",
+            "text": "Maximaler Tumordurchmesser, Längsausdehnung des Gangabbruchs und Pankreasgangweite"
+          },
+          {
+            "id": "D",
+            "text": "Zahl und Größe suspekter Leberherde, Aszites und peritoneale Knoten"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Für die lokale venöse Rekonstruktionsplanung sind betroffener Abschnitt, Ausdehnung und Qualität der anschließenden Gefäßsegmente wesentlich. Kontaktumfang, Kontur und Kollateralen werden strukturiert dokumentiert. Arterien und Metastasen bleiben Teil der Gesamtbeurteilung; diese einzelne Beschreibung entscheidet die Resektabilität nicht allein.",
+        "source": "https://doi.org/10.1148/radiol.13131184",
+        "wrongExplanations": {
+          "B": "Arterielle Varianten und Tumorkontakt beeinflussen die Operationsplanung, beschreiben aber nicht die für eine venöse Rekonstruktion benötigten Zu- und Abflusssegmente.",
+          "C": "Tumor- und Gangmaße gehören zum morphologischen Befund. Sie ersetzen nicht die Beschreibung des betroffenen venösen Abschnitts und der anschließenden offenen Segmente.",
+          "D": "Fernmetastasen sind für die Gesamtplanung entscheidend. Die konkret gefragte lokale venöse Rekonstruktionsfrage erfordert zusätzlich die Gefäßsegmentbeschreibung."
+        }
+      }
+    ],
+    "en": [
+      {
+        "id": "abdomen-pdac-isoattenuating-en-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "Text vignette: multiphase CT in a patient with weight loss shows no clearly hypoattenuating pancreatic mass. Which additional combination most strongly supports concern for an isoattenuating PDAC?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Abrupt focal pancreatic duct cut-off with upstream duct dilatation and upstream parenchymal atrophy"
+          },
+          {
+            "id": "B",
+            "text": "Diffuse parenchymal calcifications with multiple intraductal calculi and irregular duct calibre"
+          },
+          {
+            "id": "C",
+            "text": "Diffuse gland enlargement with homogeneous enhancement and inflammatory peripancreatic fluid"
+          },
+          {
+            "id": "D",
+            "text": "A circumscribed microcystic cluster with a central scar and a displaced but patent main duct"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Focal duct cut-off with upstream ductal and parenchymal changes can indirectly reveal an isoattenuating PDAC. This warrants targeted evaluation but is not histological proof.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/12202711/",
+        "wrongExplanations": {
+          "B": "Calcifications and intraductal stones favour chronic pancreatitis. They do not exclude a coexisting carcinoma; the question asks for the strongest focal obstructive warning pattern.",
+          "C": "This diffuse inflammatory pattern favours interstitial oedematous pancreatitis over the focal duct obstruction with upstream atrophy being sought.",
+          "D": "Microcysts and a central scar favour a serous cystic lesion. A displaced patent duct differs from the abrupt cut-off being sought."
+        }
+      },
+      {
+        "id": "abdomen-pdac-double-duct-en-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "Text vignette: the common bile duct and main pancreatic duct are dilated down to the pancreatic-head/papillary region. A definite cause is not yet visible. Which provisional interpretation is best supported?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A distal periampullary or pancreatic-head outflow obstruction; investigate both neoplastic and benign causes"
+          },
+          {
+            "id": "B",
+            "text": "An isolated hilar obstruction as the common explanation for both dilated ducts"
+          },
+          {
+            "id": "C",
+            "text": "An isolated pancreatic-tail obstruction as the common explanation for both dilated ducts"
+          },
+          {
+            "id": "D",
+            "text": "Diffuse intrahepatic cholangitis as the common explanation for both dilated ducts"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The shared distal outflow region explains the double-duct sign. It is not PDAC-specific tissue evidence: pancreatic or ampullary neoplasms, chronic pancreatitis and stones are among the possibilities. Clinical context and targeted evaluation determine the cause.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/24705640/",
+        "wrongExplanations": {
+          "B": "An isolated hilar obstruction primarily explains proximal biliary dilatation, not concurrent pancreatic duct dilatation to their shared distal region.",
+          "C": "An isolated tail obstruction affects the upstream pancreatic duct; it does not also explain common bile duct dilatation down to the head/papillary region.",
+          "D": "An intrahepatic process does not explain a shared distal outflow obstruction of both ducts. This pattern calls for assessment of the head/papillary region."
+        }
+      },
+      {
+        "id": "abdomen-pdac-vessel-contact-en-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "Text vignette: an untreated PDAC contacts the superior mesenteric vein. Multidisciplinary planning specifically needs to assess possible venous reconstruction. Which additional details address that question most directly?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Location and length of narrowing/occlusion, patency above and below it, thrombus and collaterals"
+          },
+          {
+            "id": "B",
+            "text": "Arterial origins, the course of an accessory hepatic artery and contact with the coeliac axis"
+          },
+          {
+            "id": "C",
+            "text": "Maximum tumour diameter, length of duct cut-off and pancreatic duct calibre"
+          },
+          {
+            "id": "D",
+            "text": "Number and size of suspicious liver lesions, ascites and peritoneal nodules"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Local venous reconstruction planning depends on the involved segment, extent and condition of the adjacent vessel segments. Document contact extent, contour and collaterals systematically. Arteries and metastases remain part of overall assessment; this description alone does not determine resectability.",
+        "source": "https://doi.org/10.1148/radiol.13131184",
+        "wrongExplanations": {
+          "B": "Arterial variants and tumour contact affect surgical planning but do not describe the inflow and outflow segments needed for venous reconstruction.",
+          "C": "Tumour and duct measurements belong in the morphological report. They do not replace description of the involved vein and adjacent patent segments.",
+          "D": "Distant metastases are crucial for overall planning. The specific local venous reconstruction question additionally requires vessel-segment description."
+        }
+      }
+    ],
+    "fa": [
+      {
+        "id": "abdomen-pdac-isoattenuating-fa-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "سناریوی متنی: در بیمار دچار کاهش وزن، CT چندفازی تودهٔ واضح کم‌دانسیته در پانکراس نشان نمی‌دهد. کدام ترکیب اضافی بیش از بقیه شک به PDAC هم‌دانسیته را تقویت می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "قطع ناگهانی و کانونی مجرای پانکراس همراه اتساع مجرا و آتروفی پارانشیم در بالادست"
+          },
+          {
+            "id": "B",
+            "text": "کلسیفیکاسیون منتشر پارانشیم همراه چند سنگ داخل‌مجرایی و تغییر نامنظم قطر مجرا"
+          },
+          {
+            "id": "C",
+            "text": "تورم منتشر غده با جذب همگن مادهٔ حاجب و مایع التهابی اطراف پانکراس"
+          },
+          {
+            "id": "D",
+            "text": "خوشهٔ محدود میکروکیست‌ها با اسکار مرکزی و مجرای اصلی جابجاشده اما باز"
+          }
+        ],
+        "correct": "A",
+        "explanation": "قطع کانونی مجرا با تغییرات مجرایی و پارانشیمی بالادست می‌تواند PDAC هم‌دانسیته را به‌طور غیرمستقیم آشکار کند. این الگو نیازمند بررسی هدفمند است، اما اثبات بافت‌شناختی نیست.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/12202711/",
+        "wrongExplanations": {
+          "B": "کلسیفیکاسیون و سنگ داخل مجرا بیشتر به نفع پانکراتیت مزمن‌اند. وجود هم‌زمان سرطان را رد نمی‌کنند؛ پرسش دربارهٔ قوی‌ترین الگوی هشداردهندهٔ انسداد کانونی است.",
+          "C": "این الگوی التهابی منتشر بیشتر به نفع پانکراتیت ادماتوی بینابینی است تا انسداد کانونی مجرا همراه آتروفی بالادست که پرسش هدف گرفته است.",
+          "D": "میکروکیست‌ها و اسکار مرکزی بیشتر به نفع ضایعهٔ کیستیک سروزی‌اند. جابجایی مجرای باز با قطع ناگهانی مورد سؤال تفاوت دارد."
+        }
+      },
+      {
+        "id": "abdomen-pdac-double-duct-fa-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "سناریوی متنی: مجرای صفراوی مشترک و مجرای اصلی پانکراس تا ناحیهٔ سر پانکراس/پاپیلا گشادند. علت قطعی هنوز دیده نمی‌شود. کدام برداشت اولیه پشتوانهٔ بهتری دارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "فرایند انسدادی دیستال در ناحیهٔ پری‌آمپولاری یا سر پانکراس؛ علل نئوپلاستیک و خوش‌خیم بیشتر بررسی شوند"
+          },
+          {
+            "id": "B",
+            "text": "انسداد منفرد ناف کبد به‌عنوان توضیح مشترک اتساع هر دو مجرا"
+          },
+          {
+            "id": "C",
+            "text": "انسداد منفرد دم پانکراس به‌عنوان توضیح مشترک اتساع هر دو مجرا"
+          },
+          {
+            "id": "D",
+            "text": "کلانژیت منتشر داخل‌کبدی به‌عنوان توضیح مشترک اتساع هر دو مجرا"
+          }
+        ],
+        "correct": "A",
+        "explanation": "ناحیهٔ مشترک خروجی دیستال، علامت دو مجرا را توضیح می‌دهد. این علامت شاهد بافتی اختصاصی PDAC نیست؛ از جمله نئوپلاسم پانکراس یا آمپولا، پانکراتیت مزمن و سنگ مطرح‌اند. زمینهٔ بالینی و بررسی هدفمند علت را روشن می‌کنند.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/24705640/",
+        "wrongExplanations": {
+          "B": "انسداد منفرد ناف کبد عمدتاً اتساع صفراوی پروگزیمال را توضیح می‌دهد، نه اتساع هم‌زمان مجرای پانکراس تا ناحیهٔ خروجی مشترک دیستال.",
+          "C": "انسداد منفرد دم، مجرای پانکراس را در بالادست درگیر می‌کند؛ اتساع هم‌زمان کلدوک تا ناحیهٔ سر/پاپیلا را توضیح نمی‌دهد.",
+          "D": "فرایند داخل‌کبدی انسداد خروجی مشترک دیستال هر دو مجرا را توضیح نمی‌دهد. این الگو نیازمند ارزیابی ناحیهٔ سر/پاپیلاست."
+        }
+      },
+      {
+        "id": "abdomen-pdac-vessel-contact-fa-01",
+        "tags": [
+          "pdac"
+        ],
+        "fach": "abdomen",
+        "question": "سناریوی متنی: PDAC درمان‌نشده با ورید مزانتریک فوقانی تماس دارد. برای برنامه‌ریزی چندتخصصی باید به‌ویژه امکان بازسازی وریدی ارزیابی شود. کدام اطلاعات تکمیلی مستقیماً به این پرسش پاسخ می‌دهند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "محل و طول تنگی/انسداد، بازبودن بخش‌های پروگزیمال و دیستال، ترومبوز و کولترال‌ها"
+          },
+          {
+            "id": "B",
+            "text": "منشأ شریان‌ها، مسیر شریان کبدی فرعی و تماس با تنهٔ سلیاک"
+          },
+          {
+            "id": "C",
+            "text": "بیشترین قطر تومور، طول قطع مجرا و قطر مجرای پانکراس"
+          },
+          {
+            "id": "D",
+            "text": "تعداد و اندازهٔ ضایعات مشکوک کبد، آسیت و ندول‌های صفاقی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "برای برنامه‌ریزی بازسازی وریدی موضعی، قطعهٔ درگیر، وسعت درگیری و وضعیت قطعات مجاور رگ اهمیت دارند. میزان تماس، شکل جدار و کولترال‌ها ساختاریافته ثبت شوند. شریان‌ها و متاستازها همچنان بخشی از ارزیابی کلی‌اند؛ این توصیف به‌تنهایی قابلیت برداشت را تعیین نمی‌کند.",
+        "source": "https://doi.org/10.1148/radiol.13131184",
+        "wrongExplanations": {
+          "B": "واریانت‌های شریانی و تماس تومور بر برنامه‌ریزی جراحی اثر دارند، اما قطعات ورودی و خروجی لازم برای بازسازی وریدی را توصیف نمی‌کنند.",
+          "C": "اندازه‌های تومور و مجرا بخشی از گزارش مورفولوژیک‌اند، اما جای توصیف قطعهٔ وریدی درگیر و قطعات باز مجاور را نمی‌گیرند.",
+          "D": "متاستاز دوردست برای برنامه‌ریزی کلی تعیین‌کننده است. پرسش مشخص بازسازی وریدی موضعی علاوه بر آن به توصیف قطعات رگ نیاز دارد."
+        }
+      }
+    ]
+  },
+  "inlineConsumer": "Lesson continues to consume the original shared draft; root must integrate accepted seed and its specific wrong feedback before runtime parity may be claimed.",
+  "limits": [
+    "No actual global-after for unapplied shared originals",
+    "No new source-figure interpretation or image case",
+    "No independent acceptance or browser/release approval"
+  ]
+}
