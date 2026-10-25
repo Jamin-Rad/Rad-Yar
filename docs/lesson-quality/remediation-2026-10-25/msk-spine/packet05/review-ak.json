@@ -1,0 +1,104 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/design_inventory",
+  "author": "/root/remove_lesson_notice",
+  "status": "ACCEPT_BOUNDED_FULL_ORIGINAL_ASSESSMENT_POOL_AFTER_INDEPENDENT_RETEST",
+  "route": "/msk/trauma/ak-luxation",
+  "scope": {
+    "originalQuestionTriadsFullyRead": 12,
+    "originalCardTriadsFullyRead": 8,
+    "locales": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "learningGoals": 4,
+    "lessonMirrorTriadsRead": 6,
+    "lessonMirrorLocaleValues": 18,
+    "actualGlobalAfterObjectsExact": 44,
+    "noNewQuotaItems": true
+  },
+  "findings": [
+    {
+      "id": "AC05-EDU-01",
+      "severity": "minor",
+      "file": "data/ak-luxation.js ak-lux-tossy-1-*",
+      "observed": "Only keyed option described AC classification; distractors referred to fracture, arthrosis, rotatorcuff. Stem also supplied posterior/inferior clue.",
+      "required": "Comparable ACclassification concepts; remove stemdirection cue.",
+      "status": "CLOSED_ACTUAL_SOURCE_RETEST",
+      "retest": "All3 rewritten question triads read; alternatives are time, direction/severity, pain/function, existingAC/CCdistinction. KeyB retained; actualglobal matchescurrentproposal."
+    },
+    {
+      "id": "AC05-LNG-02",
+      "severity": "minor",
+      "file": "data/ak-luxation.js ak-lux-tossy-1-* explanation",
+      "observed": "Does not cover posterior/inferior/extreme elevation could imply oldclassification excludes them rather than lacks separate directionaltypes.",
+      "required": "Say oldclassification does not distinguish these as separateIV-VItypes, consistent with retainedcard7historicaloverlap.",
+      "status": "CLOSED_ACTUAL_SOURCE_RETEST",
+      "retest": "All3actual explanations read: no does-not-cover claim, separateIV-VI differentiation and clinicalcontext retained. Freshglobal44/44 and18mirroredlocalevalues exact."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3949839/",
+      "read": "Complete original Fukuda1986 12specimen abstract: ACposterior constraint, conoidsuperior/anterior contribution, load/displacementdependent combinedcontributions. No exclusivelyhorizontal/verticalclaim."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9397278/",
+      "read": "Complete originalLee1997 10shoulderabstract: directiondependentin-situforces; supports avoidingexclusivity."
+    },
+    {
+      "url": "https://www.sciencedirect.com/science/article/pii/S2666638320300190",
+      "read": "Directopen403; fresh precise titlequery returned actualprimary2020 introduction mechanism paragraph (DOI10.1016/j.jseint.2020.01.009,PMC7256880). Directsuperioracromionimpact, sequenceAC/CC/fascia; noincidencerates transferred."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12081960/",
+      "read": "Actual2025 original reliabilitycohort Table1 read via indexedprimaryfulltext: I normal,II0-25,III>25-100,IVposterocranial,V>100-300,VIinferior. No claim historicalRockwoodbookread; Table1alone doesnotdescribe fascia."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4652419/",
+      "read": "Actual2015 Gaooriginalcase-control Methods→Patients read in indexedprimarytext: TypeV cohortdefined withAC/CCanddeltotrapezoidfasciadisruption+100-300 interval increase. Supports retainedfascia descriptor, not radiographiccertainty/managementsuperiority."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8225517/",
+      "read": "ActualRosso2021 originalDelphimethods/results/discussion read: levelV, nonweightedAP/Zancaconsensus, clinicalhorizontalassessment, suspensorydeviceacute/biologicalgraftchronic. Differing immobilization protocols acknowledged; no universaloperationmandate."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32660317/",
+      "read": "FulloriginalNordin2021 abstract: prospective162/140included,5kgweighted/internalrotation, noimportantclassificationgain. Notuniversalproofagainstselectiveprotocol."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26194267/",
+      "read": "FulloriginalIbrahim2015 abstract59cases: weightedbilateralupgrades,toV; contrastswithNordin. Conflict retained, no numericalthreshold imported."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33439041/",
+      "read": "CompleteoriginalVerstift2021 cohortabstract:75nonoperativeI/II longtermgenerallygoodfunctiondespiteradiographicchanges. No guaranteefullsymptomfree."
+    },
+    {
+      "url": "https://journals.sagepub.com/doi/10.1177/23259671231190411",
+      "read": "ActualTauber2023 originalfullabstract+methods/inclusion/exclusion/treatmentgroups read: selectedacuteIII trial nofunctionaloperationsuperiority; hookplate/TightRope methods andremovalprotocol. No trialtiming/rates generalized."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35007749/",
+      "read": "Completeoriginal2022 randomizedIII/Vstudyabstract inclresults/conclusion read: nohookplatefunctionalbenefit inselectedstudy. Supports noautomaticoperationbygrade."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6055258/",
+      "read": "Original2018 26caseIV/V abstract+methods read: AC/CCsuturestabilisationexamples, no comparative superiority or population-wide indication inferred."
+    }
+  ],
+  "checks": {
+    "actualGlobalRuntime44Of44": true,
+    "mirroredLessonLocale18Of18": true,
+    "currentTossyRepair3Of3": true,
+    "goalCoverage": "All12originalMCQand8cardIDs mapped across4distinctgoals; sourceinterpretation, calculation, classification, managementhandoff; nofixedquota."
+  },
+  "limits": [
+    "Assessmentpool and6mirroredteachingtriads only; unchanged wholelesson/PDF/media not scientifically recertified.",
+    "No unseen-image diagnosticclaim; retainedRockwood/radiologyfigures not independently approved here.",
+    "No actualbrowser/access/RTL/physician or releaseapproval.",
+    "No empirical itemdifficultyvalidation; source-level clinicalandtranslationreview is bounded to actualreadcontent."
+  ],
+  "currentFileSha256": "2833ab19dabbbeef948b88643c546950ed81c5a4b2b90afdc289e52e39d9cb89"
+}

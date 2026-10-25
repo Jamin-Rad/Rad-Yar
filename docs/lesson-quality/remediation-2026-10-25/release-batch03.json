@@ -1,6 +1,6 @@
 {
   "date": "2026-10-25",
-  "status": "REVIEWED_BATCH_READY_FOR_MAIN",
+  "status": "PUSHED_MAIN_AND_BOUNDED_LIVE_VERIFIED",
   "previousMain": "9bab60371788bcef4e40b8e8854f6363022481ab",
   "scope": "Third bounded release during ongoing 234-route assessment remediation. The course-wide task remains incomplete.",
   "acceptedAssessmentPools": {
@@ -29,7 +29,8 @@
     "indexAudit": "Actual staged-source banks:948MCQ/18cases per language; key/options/feedback schema passes existing MCQ auditor. Registry generated with --staged.",
     "tests": "Reviewed payload/global bank/goal exactness, content-version invalidation, return navigation, custom lesson action links and selected-option inline feedback passed.",
     "browser": "Actual authenticated production build: NF1 EN lesson maps quiz4 and card topic; inline incorrect glioma option shows its specific rationale in EN and FA. FA screenshot visually inspected for legible font/RTL, four plausible choices and feedback. No grading/mark-as-read or access-gate changes.",
-    "screenshot": "tmp/assessment-quality/batch03-nf1-inline-fa.png"
+    "screenshot": "tmp/assessment-quality/batch03-nf1-inline-fa.png",
+    "liveScreenshot": "tmp/assessment-quality/batch03-live-nf1-card4-fa.png"
   },
   "exclusions": [
     "Demenz14, ATV03/04, AC-Luxation and other ongoing authoring remain outside the published snapshot or changed canonical release files",
@@ -37,5 +38,11 @@
     "Reticular HRCT draft remains offline and unpublished",
     "Not a full lesson media/PDF verification, all-route browser test or Dr. Zia clinical release approval"
   ],
-  "publication": "Pending commit and deployed verification"
+  "publication": {
+    "commit": "06cbcaf1092d479e02fba0d81a7096d1972259e7",
+    "branch": "main",
+    "vercel": "success",
+    "deployment": "https://vercel.com/jamins-projects-e299c1d5/rad-yar/7yxLmQFUqUNPXDP9KnxW8zD12WZb",
+    "live": "Actual normal-account NF1 FA lesson quiz4/card links; card topic4; free-practice mode card4 flip and expanded FA explanation verified; no grading or access-gate changes. Not a full all-route live check."
+  }
 }

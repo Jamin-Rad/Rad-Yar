@@ -1,0 +1,1191 @@
+{
+  "questions": {
+    "de": [
+      {
+        "id": "ak-lux-mech-1-de",
+        "question": "Welcher Mechanismus führt am häufigsten zur akromioklavikulären Luxation?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Sturz auf ausgestreckte Hand"
+          },
+          {
+            "id": "B",
+            "text": "Direkter Sturz auf die Schulterseite bei adduziertem Arm"
+          },
+          {
+            "id": "C",
+            "text": "Hyperabduktion des Arms"
+          },
+          {
+            "id": "D",
+            "text": "Rotationstrauma des Rumpfs"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Der häufigste Mechanismus ist der direkte Sturz auf die Schulterseite bei adduziertem Arm. Das Akromion wird inferiorisiert, während die Klavikula durch die Muskeln relativ fixiert bleibt → Bänderriss.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-band-1-de",
+        "question": "Welche Bänder sichern das AC-Gelenk primär gegen vertikale Instabilität?",
+        "options": [
+          {
+            "id": "A",
+            "text": "AC-Bänder (akromioklavikuläre Bänder)"
+          },
+          {
+            "id": "B",
+            "text": "CC-Bänder (Trapezoid + Konoid)"
+          },
+          {
+            "id": "C",
+            "text": "Glenohumerale Bänder"
+          },
+          {
+            "id": "D",
+            "text": "Korakohumerale Bänder"
+          }
+        ],
+        "correct": "B",
+        "explanation": "CC-Bänder tragen vor allem zur vertikalen, AC-Kapsel/Bänder zur horizontalen Stabilität bei. Typ III umfasst eine Ruptur beider Bandgruppen; die übrigen Rockwood-Typen unterscheiden sich zusätzlich nach Richtung und Ausmaß der Dislokation.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-rock-1-de",
+        "question": "Bei Rockwood Typ II liegt radiologisch vor:",
+        "options": [
+          {
+            "id": "A",
+            "text": "Normalbefund"
+          },
+          {
+            "id": "B",
+            "text": "Leichte Dehiszenz; CCD-Zunahme < 25 % gegenüber der unverletzten Seite"
+          },
+          {
+            "id": "C",
+            "text": "Deutlicher Hochstand; CCD-Zunahme 25–100 % gegenüber der unverletzten Seite"
+          },
+          {
+            "id": "D",
+            "text": "Posteriore Verlagerung der Klavikula"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Rockwood II = AC-Bänder rupturiert, CC-Bänder gezerrt/partiell verletzt; die CCD-Zunahme liegt üblicherweise unter 25 % gegenüber der unverletzten Seite. Typ I–II werden meist konservativ behandelt.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-rock-2-de",
+        "question": "Was unterscheidet Rockwood Typ V von Typ III?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Anteriore Dislokation der Klavikula"
+          },
+          {
+            "id": "B",
+            "text": "Posteriore Dislokation der Klavikula"
+          },
+          {
+            "id": "C",
+            "text": "Wie Typ III, zusätzlich deltotrapeziale Faszienablösung und CCD-Zunahme meist >100 % gegenüber der Gegenseite"
+          },
+          {
+            "id": "D",
+            "text": "Inferiore Luxation der Klavikula"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Typ V umfasst wie Typ III eine Verletzung der AC- und CC-Stabilisatoren, zusätzlich eine Ablösung der deltotrapezialen Faszie und meist eine CCD-Zunahme von etwa 100–300 % gegenüber der Gegenseite. Die Therapie wird fachärztlich beurteilt; Typ V allein ersetzt keine individuelle Indikationsstellung.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-rock-3-de",
+        "question": "Eine 28-jährige Patientin stürzt beim Radfahren auf die linke Schulter. Das AP-Röntgen wirkt normal. Die axiale Aufnahme zeigt, dass die Klavikula nach dorsal in den M. trapezius verlagert ist. Welcher Rockwood-Typ liegt vor?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Rockwood I"
+          },
+          {
+            "id": "B",
+            "text": "Rockwood III"
+          },
+          {
+            "id": "C",
+            "text": "Rockwood IV"
+          },
+          {
+            "id": "D",
+            "text": "Rockwood VI"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Rockwood Typ IV: posteriore Verlagerung in/durch den M. trapezius. Bei Verdacht axiale/axilläre Aufnahme ergänzen. Symptomatische Typ-IV-Verletzungen werden häufig operativ beurteilt/behandelt; diese allgemeine Regel ersetzt keine fachärztliche Beurteilung.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-ccd-1-de",
+        "question": "Nach Schultertrauma beträgt die CCD bei gleicher Aufnahmetechnik rechts 13 mm, links unverletzt 10 mm. Wie wird die relative Zunahme rechts korrekt angegeben?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Zunahme um 3 % gegenüber der unverletzten Seite."
+          },
+          {
+            "id": "B",
+            "text": "Zunahme um 30 % gegenüber der unverletzten Seite."
+          },
+          {
+            "id": "C",
+            "text": "Zunahme um 130 % gegenüber der unverletzten Seite."
+          },
+          {
+            "id": "D",
+            "text": "Zunahme um etwa 23 % gegenüber der unverletzten Seite."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Die Zunahme wird auf die unverletzte Seite bezogen: (13 − 10) / 10 × 100 = 30 %. Ein absoluter Wert von 13 mm reicht zur Klassifikation nicht; Verlagerungsrichtung und gesamte Morphologie mitbeurteilen.",
+        "wrongExplanations": {
+          "A": "3 mm ist die absolute Differenz; geteilt durch 10 mm ergibt sie 30 %, nicht 3 %.",
+          "C": "13 / 10 ergibt 130 % des Ausgangswerts; die Zunahme gegenüber diesem Ausgangswert beträgt 30 %.",
+          "D": "Etwa 23 % entsteht mit 13 mm im Nenner. Für den gefragten Seitenvergleich ist aber die unverletzte Seite mit 10 mm die Referenz."
+        },
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-therapie-1-de",
+        "question": "Welche Aussage zur Therapie der AC-Luxation ist RICHTIG?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Rockwood III wird immer operiert"
+          },
+          {
+            "id": "B",
+            "text": "Rockwood I und II werden üblicherweise konservativ behandelt"
+          },
+          {
+            "id": "C",
+            "text": "Rockwood IV wird primär konservativ behandelt"
+          },
+          {
+            "id": "D",
+            "text": "Typ VI tritt am häufigsten auf"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Typ I–II werden üblicherweise konservativ behandelt; symptomatische IV–VI werden häufig operativ beurteilt. Typ III bleibt umstritten und individuell. Typ VI ist selten. Therapieentscheidung nach klinischem Gesamtbild.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-tossy-1-de",
+        "question": "Welche Einschränkung hat die Tossy-Klassifikation gegenüber Rockwood?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Weil sie zu komplex ist"
+          },
+          {
+            "id": "B",
+            "text": "Weil sie nur 3 Typen unterscheidet und die posteriore/inferiore Dislokation nicht erfasst"
+          },
+          {
+            "id": "C",
+            "text": "Weil sie röntgenologisch nicht anwendbar ist"
+          },
+          {
+            "id": "D",
+            "text": "Weil sie keine klinischen Zeichen einbezieht"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Tossy I–III deckt posteriore/inferiore Dislokationen und extreme Hochstände nicht ab; Rockwood erweitert die Einteilung auf IV–VI. Rockwood ist verbreitet, die Klassifikation ersetzt jedoch keine klinische Beurteilung.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-belastung-1-de",
+        "question": "Wann kann eine Panorama-Belastungsaufnahme ergänzend erwogen werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Zum Nachweis von Rotatorenmanschettenrissen"
+          },
+          {
+            "id": "B",
+            "text": "Bei konkreter Zusatzfrage zur CCD-Seitendifferenz; der Klassifikationsnutzen ist begrenzt/uneinheitlich, keine Routineaufnahme."
+          },
+          {
+            "id": "C",
+            "text": "Zur Erkennung einer Clavicula-Fraktur"
+          },
+          {
+            "id": "D",
+            "text": "Als Ersatz für die axiale Aufnahme"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Die Evidenz ist widersprüchlich: Nordin et al. (online 2020/Ausgabe 2021, doi:10.1177/0284185120939270) fanden keinen signifikanten Klassifikationsgewinn; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) berichteten einen Nutzen bilateraler Belastungsaufnahmen. Daher nur bei konkreter Fragestellung/lokalem Protokoll erwägen, nicht routinemäßig; geeignete Standard-/Axialaufnahmen bleiben erforderlich.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-rock-vi-1-de",
+        "question": "Was ist charakteristisch für die Rockwood-Typ-VI-Luxation?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Superiore Dislokation der Klavikula"
+          },
+          {
+            "id": "B",
+            "text": "Anteriore Dislokation der Klavikula"
+          },
+          {
+            "id": "C",
+            "text": "Inferiore Dislokation der Klavikula unter Akromion oder Processus coracoideus"
+          },
+          {
+            "id": "D",
+            "text": "Fraktur der Klavikula"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Rockwood VI ist selten; die Klavikula ist inferior subakromial oder subkorakoidal verlagert. Diese Hochgradverletzung erfordert zeitnahe fachärztliche Beurteilung; konkrete Therapie nach Gesamtbefund und Patient.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-norm-1-de",
+        "question": "Welcher Befund ist bei Rockwood Typ I zu erwarten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Leichte Dehiszenz des AC-Gelenks"
+          },
+          {
+            "id": "B",
+            "text": "Normales Röntgenbild – klinische Diagnose"
+          },
+          {
+            "id": "C",
+            "text": "Hochstand > 100 % gegenüber der Gegenseite"
+          },
+          {
+            "id": "D",
+            "text": "Posteriore Verlagerung der Klavikula"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Typ I: leichte AC-Banddistorsion ohne radiologische Dislokation; Diagnose klinisch bei passenden Befunden. Üblicherweise konservative symptomorientierte Behandlung.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-op-1-de",
+        "question": "Welches Operationsverfahren wird bei AC-Luxation Typ IV–VI häufig eingesetzt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Schulterarthroskopie ohne Fixation"
+          },
+          {
+            "id": "B",
+            "text": "Tight-Rope-System (arthroskopisch) oder Hakenplatte"
+          },
+          {
+            "id": "C",
+            "text": "Klavikulaentfernung (Resektionsarthroplastik)"
+          },
+          {
+            "id": "D",
+            "text": "Gipsruhigstellung für 12 Wochen"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Suspensionssysteme (z. B. Tight-Rope) und Hakenplatten sind Beispiele operativer Stabilisierung. Technik und zusätzliche Bandrekonstruktion richten sich nach Verletzungsmuster und lokalem Vorgehen; eine spätere Entfernung der Hakenplatte hängt vom Implantat-/Behandlungsplan ab.",
+        "tags": [
+          "ak-luxation"
+        ]
+      }
+    ],
+    "en": [
+      {
+        "id": "ak-lux-mech-1-en",
+        "question": "Which mechanism most commonly causes acromioclavicular joint dislocation?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Fall on outstretched hand"
+          },
+          {
+            "id": "B",
+            "text": "Direct fall onto the shoulder with arm adducted"
+          },
+          {
+            "id": "C",
+            "text": "Hyperabduction of the arm"
+          },
+          {
+            "id": "D",
+            "text": "Rotational trunk injury"
+          }
+        ],
+        "correct": "B",
+        "explanation": "The most common mechanism is a direct fall onto the shoulder with the arm adducted. The acromion is driven inferiorly while the clavicle is relatively fixed by muscles → ligament failure.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-band-1-en",
+        "question": "Which ligaments primarily secure the AC joint against vertical instability?",
+        "options": [
+          {
+            "id": "A",
+            "text": "AC ligaments (acromioclavicular)"
+          },
+          {
+            "id": "B",
+            "text": "CC ligaments (trapezoid + conoid)"
+          },
+          {
+            "id": "C",
+            "text": "Glenohumeral ligaments"
+          },
+          {
+            "id": "D",
+            "text": "Coracohumeral ligaments"
+          }
+        ],
+        "correct": "B",
+        "explanation": "CC ligaments mainly contribute to vertical stability, while the AC capsule/ligaments contribute to horizontal stability. Type III includes rupture of both ligament groups; other Rockwood types are further distinguished by displacement direction and extent.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-rock-1-en",
+        "question": "In Rockwood Type II, the X-ray shows:",
+        "options": [
+          {
+            "id": "A",
+            "text": "Normal X-ray"
+          },
+          {
+            "id": "B",
+            "text": "Mild widening; CCD increase <25% versus the uninjured side"
+          },
+          {
+            "id": "C",
+            "text": "Marked elevation; CCD increase 25–100% versus the uninjured side"
+          },
+          {
+            "id": "D",
+            "text": "Posterior displacement of the clavicle"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Rockwood II = AC ligaments torn, CC ligaments sprained/partially injured; CCD increase is usually below 25% versus the uninjured side. Types I–II are usually managed conservatively.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-rock-2-en",
+        "question": "What distinguishes Rockwood Type V from Type III?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Anterior dislocation of the clavicle"
+          },
+          {
+            "id": "B",
+            "text": "Posterior dislocation of the clavicle"
+          },
+          {
+            "id": "C",
+            "text": "As Type III, plus deltotrapezial fascia detachment and usually >100% CCD increase versus the opposite side"
+          },
+          {
+            "id": "D",
+            "text": "Inferior dislocation of the clavicle"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Type V, like Type III, involves injury to the AC and CC stabilisers, with additional deltotrapezial fascia detachment and usually about 100–300% CCD increase versus the opposite side. Treatment requires specialist assessment; the Type V label does not replace individual indication setting.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-rock-3-en",
+        "question": "A 28-year-old woman falls onto her left shoulder while cycling. The AP X-ray looks normal. The axial view shows the clavicle displaced posteriorly into the trapezius muscle. Which Rockwood type is this?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Rockwood I"
+          },
+          {
+            "id": "B",
+            "text": "Rockwood III"
+          },
+          {
+            "id": "C",
+            "text": "Rockwood IV"
+          },
+          {
+            "id": "D",
+            "text": "Rockwood VI"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Rockwood Type IV: posterior displacement into/through trapezius. Add an axial/axillary view when suspected. Symptomatic Type IV injuries are commonly assessed/treated surgically; this general pattern does not replace specialist assessment.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-ccd-1-en",
+        "question": "After shoulder trauma, using the same radiographic technique, CCD measures 13 mm on the right and 10 mm on the uninjured left. How is the relative right-sided increase correctly reported?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A 3% increase relative to the uninjured side."
+          },
+          {
+            "id": "B",
+            "text": "A 30% increase relative to the uninjured side."
+          },
+          {
+            "id": "C",
+            "text": "A 130% increase relative to the uninjured side."
+          },
+          {
+            "id": "D",
+            "text": "An approximately 23% increase relative to the uninjured side."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Reference the increase to the uninjured side: (13 − 10) / 10 × 100 = 30%. An absolute value of 13 mm is insufficient for classification; assess displacement direction and overall morphology.",
+        "wrongExplanations": {
+          "A": "3 mm is the absolute difference; dividing by 10 mm gives 30%, not 3%.",
+          "C": "13 / 10 is 130% of the reference value; the increase above that reference is 30%.",
+          "D": "About 23% results from using 13 mm as denominator. For this comparison, the uninjured 10 mm side is the reference."
+        },
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-therapie-1-en",
+        "question": "Which statement about AC joint dislocation treatment is CORRECT?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Rockwood III is always treated surgically"
+          },
+          {
+            "id": "B",
+            "text": "Rockwood I and II are usually managed conservatively"
+          },
+          {
+            "id": "C",
+            "text": "Rockwood IV is primarily treated conservatively"
+          },
+          {
+            "id": "D",
+            "text": "Type VI is the most common type"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Types I–II are usually managed conservatively; symptomatic IV–VI are commonly assessed for surgery. Type III remains debated and individualised. Type VI is rare. Treatment decisions depend on the overall clinical picture.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-tossy-1-en",
+        "question": "What is a limitation of the Tossy classification compared with Rockwood?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Because it is too complex"
+          },
+          {
+            "id": "B",
+            "text": "Because it only distinguishes 3 types and does not capture posterior/inferior dislocation"
+          },
+          {
+            "id": "C",
+            "text": "Because it cannot be applied radiologically"
+          },
+          {
+            "id": "D",
+            "text": "Because it does not include clinical signs"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Tossy I–III does not cover posterior/inferior displacement or extreme elevation; Rockwood extends the classification to IV–VI. Rockwood is widely used, but classification does not replace clinical assessment.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-belastung-1-en",
+        "question": "When may a panoramic stress view be considered as an adjunct?",
+        "options": [
+          {
+            "id": "A",
+            "text": "To detect rotator cuff tears"
+          },
+          {
+            "id": "B",
+            "text": "For a specific unresolved question about side-to-side CCD difference; classification benefit is limited/inconsistent, not a routine view."
+          },
+          {
+            "id": "C",
+            "text": "To detect clavicle fracture"
+          },
+          {
+            "id": "D",
+            "text": "As a substitute for the axial view"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Evidence conflicts: Nordin et al. (online 2020/issue 2021, doi:10.1177/0284185120939270) found no significant classification gain; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) reported value from bilateral weighted views. Consider them only for a specific question/local protocol, not routinely; appropriate standard/axial views remain necessary.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-rock-vi-1-en",
+        "question": "What characterises a Rockwood Type VI dislocation?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Superior dislocation of the clavicle"
+          },
+          {
+            "id": "B",
+            "text": "Anterior dislocation of the clavicle"
+          },
+          {
+            "id": "C",
+            "text": "Inferior dislocation of the clavicle below the acromion or coracoid process"
+          },
+          {
+            "id": "D",
+            "text": "Fracture of the clavicle"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Rockwood VI is rare; the clavicle is displaced inferiorly into a subacromial or subcoracoid position. This high-grade injury warrants timely specialist assessment; treatment depends on the overall findings and patient.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-norm-1-en",
+        "question": "Which finding is expected in Rockwood Type I?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Mild AC joint widening"
+          },
+          {
+            "id": "B",
+            "text": "Normal X-ray – clinical diagnosis"
+          },
+          {
+            "id": "C",
+            "text": "Elevation >100% versus the opposite side"
+          },
+          {
+            "id": "D",
+            "text": "Posterior displacement of the clavicle"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Type I: mild AC-ligament sprain without radiographic displacement; diagnosis is clinical when findings fit. Usually managed conservatively according to symptoms.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-op-1-en",
+        "question": "Which surgical technique is commonly used for AC dislocation Types IV–VI?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Shoulder arthroscopy without fixation"
+          },
+          {
+            "id": "B",
+            "text": "Tight-rope system (arthroscopic) or hook plate"
+          },
+          {
+            "id": "C",
+            "text": "Clavicle resection arthroplasty"
+          },
+          {
+            "id": "D",
+            "text": "Plaster cast immobilisation for 12 weeks"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Suspensory devices (e.g. tight-rope) and hook plates are examples of operative stabilisation. Technique and additional ligament reconstruction depend on the injury pattern and local approach; later hook-plate removal depends on the implant/treatment plan.",
+        "tags": [
+          "ak-luxation"
+        ]
+      }
+    ],
+    "fa": [
+      {
+        "id": "ak-lux-mech-1-fa",
+        "question": "کدام مکانیسم بیشتر از همه منجر به لوکساسیون مفصل آکرومیوکلاویکولار می‌شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "افتادن روی دست کشیده"
+          },
+          {
+            "id": "B",
+            "text": "افتادن مستقیم روی طرف شانه با بازوی آدوکته"
+          },
+          {
+            "id": "C",
+            "text": "هیپرآبداکسیون بازو"
+          },
+          {
+            "id": "D",
+            "text": "تروما چرخشی تنه"
+          }
+        ],
+        "correct": "B",
+        "explanation": "شایع‌ترین مکانیسم افتادن مستقیم روی طرف شانه با بازوی آدوکته است. آکرومیون به سمت پایین رانده می‌شود در حالی که کلاویکول نسبتاً توسط عضلات ثابت است → پارگی رباط.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-band-1-fa",
+        "question": "کدام رباط‌ها به طور اولیه مفصل AC را در برابر ناپایداری عمودی ثابت می‌کنند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "رباط‌های AC (آکرومیوکلاویکولار)"
+          },
+          {
+            "id": "B",
+            "text": "رباط‌های CC (ترپزوئید + کونوئید)"
+          },
+          {
+            "id": "C",
+            "text": "رباط‌های گلنوهومرال"
+          },
+          {
+            "id": "D",
+            "text": "رباط‌های کوراکوهومرال"
+          }
+        ],
+        "correct": "B",
+        "explanation": "رباط‌های CC عمدتاً در پایداری عمودی و کپسول/رباط‌های AC در پایداری افقی نقش دارند. نوع III شامل پارگی هر دو گروه رباط است؛ انواع دیگر راک‌وود علاوه بر آن بر اساس جهت و میزان جابجایی متمایز می‌شوند.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-rock-1-fa",
+        "question": "در راک‌وود نوع II، رادیوگرافی نشان می‌دهد:",
+        "options": [
+          {
+            "id": "A",
+            "text": "رادیوگرافی طبیعی"
+          },
+          {
+            "id": "B",
+            "text": "اتساع خفیف؛ افزایش CCD کمتر از ۲۵٪ نسبت به سمت سالم"
+          },
+          {
+            "id": "C",
+            "text": "ارتفاع واضح؛ افزایش CCD به میزان ۲۵ تا ۱۰۰٪ نسبت به سمت سالم"
+          },
+          {
+            "id": "D",
+            "text": "جابجایی خلفی کلاویکول"
+          }
+        ],
+        "correct": "B",
+        "explanation": "راک‌وود II = پارگی رباط‌های AC و کشیدگی/آسیب جزئی رباط‌های CC؛ افزایش CCD معمولاً کمتر از ۲۵٪ نسبت به سمت سالم است. انواع I–II معمولاً محافظه‌کارانه درمان می‌شوند.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-rock-2-fa",
+        "question": "چه چیزی راک‌وود نوع V را از نوع III متمایز می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "جابجایی قدامی کلاویکول"
+          },
+          {
+            "id": "B",
+            "text": "جابجایی خلفی کلاویکول"
+          },
+          {
+            "id": "C",
+            "text": "مانند نوع III، به‌علاوه جداشدگی فاسیای دلتوتراپزیوس و معمولاً افزایش CCD بیش از ۱۰۰٪ نسبت به سمت مقابل"
+          },
+          {
+            "id": "D",
+            "text": "جابجایی تحتانی کلاویکول"
+          }
+        ],
+        "correct": "C",
+        "explanation": "نوع V مانند نوع III شامل آسیب تثبیت‌کننده‌های AC و CC است و علاوه بر آن فاسیای دلتوتراپزیوس جدا می‌شود و معمولاً CCD حدود ۱۰۰ تا ۳۰۰٪ نسبت به سمت مقابل افزایش می‌یابد. درمان باید توسط متخصص ارزیابی شود؛ برچسب نوع V جایگزین تعیین اندیکاسیون فردی نیست.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-rock-3-fa",
+        "question": "یک زن ۲۸ ساله هنگام دوچرخه‌سواری روی شانه چپ می‌افتد. رادیوگرافی AP طبیعی به نظر می‌رسد. نمای محوری نشان می‌دهد کلاویکول به صورت خلفی در عضله تراپزیوس جابجا شده. کدام نوع راک‌وود است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "راک‌وود I"
+          },
+          {
+            "id": "B",
+            "text": "راک‌وود III"
+          },
+          {
+            "id": "C",
+            "text": "راک‌وود IV"
+          },
+          {
+            "id": "D",
+            "text": "راک‌وود VI"
+          }
+        ],
+        "correct": "C",
+        "explanation": "راک‌وود نوع IV: جابجایی خلفی به داخل/از میان تراپزیوس. در صورت شک، نمای محوری/آگزیلاری اضافه کنید. آسیب‌های علامت‌دار نوع IV اغلب برای درمان جراحی ارزیابی می‌شوند؛ این الگوی کلی جایگزین ارزیابی تخصصی نیست.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-ccd-1-fa",
+        "question": "پس از ترومای شانه، با تکنیک یکسان، CCD در راست ۱۳ میلی‌متر و در چپِ سالم ۱۰ میلی‌متر است. افزایش نسبی سمت راست چگونه درست گزارش می‌شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "افزایش ۳٪ نسبت به سمت سالم."
+          },
+          {
+            "id": "B",
+            "text": "افزایش ۳۰٪ نسبت به سمت سالم."
+          },
+          {
+            "id": "C",
+            "text": "افزایش ۱۳۰٪ نسبت به سمت سالم."
+          },
+          {
+            "id": "D",
+            "text": "افزایش حدود ۲۳٪ نسبت به سمت سالم."
+          }
+        ],
+        "correct": "B",
+        "explanation": "افزایش نسبت به سمت سالم محاسبه می‌شود: (۱۳ − ۱۰) / ۱۰ × ۱۰۰ = ۳۰٪. مقدار مطلق ۱۳ میلی‌متر برای طبقه‌بندی کافی نیست؛ جهت جابه‌جایی و مورفولوژی کلی نیز ارزیابی شوند.",
+        "wrongExplanations": {
+          "A": "۳ میلی‌متر اختلاف مطلق است؛ تقسیم آن بر ۱۰ میلی‌متر، ۳۰٪ می‌دهد، نه ۳٪.",
+          "C": "۱۳ / ۱۰ برابر ۱۳۰٪ مقدار مرجع است؛ افزایش نسبت به آن مرجع ۳۰٪ است.",
+          "D": "حدود ۲۳٪ از قرار دادن ۱۳ میلی‌متر در مخرج حاصل می‌شود؛ در این مقایسه، سمت سالم با ۱۰ میلی‌متر مرجع است."
+        },
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-therapie-1-fa",
+        "question": "کدام گزینه درباره درمان لوکساسیون مفصل AC درست است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "راک‌وود III همیشه جراحی می‌شود"
+          },
+          {
+            "id": "B",
+            "text": "راک‌وود I و II معمولاً به‌صورت محافظه‌کارانه درمان می‌شوند"
+          },
+          {
+            "id": "C",
+            "text": "راک‌وود IV به صورت اولیه محافظه‌کارانه درمان می‌شود"
+          },
+          {
+            "id": "D",
+            "text": "نوع VI شایع‌ترین است"
+          }
+        ],
+        "correct": "B",
+        "explanation": "نوع I–II معمولاً محافظه‌کارانه درمان می‌شوند؛ انواع علامت‌دار IV–VI اغلب برای جراحی ارزیابی می‌شوند. نوع III همچنان مورد اختلاف و فردی‌سازی‌شده است. نوع VI نادر است. تصمیم درمانی بر اساس کل وضعیت بالینی گرفته می‌شود.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-tossy-1-fa",
+        "question": "محدودیت طبقه‌بندی توسی در مقایسه با راک‌وود چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "چون خیلی پیچیده است"
+          },
+          {
+            "id": "B",
+            "text": "چون فقط ۳ نوع را متمایز می‌کند و جابجایی خلفی/تحتانی را در نظر نمی‌گیرد"
+          },
+          {
+            "id": "C",
+            "text": "چون از نظر رادیولوژیک قابل استفاده نیست"
+          },
+          {
+            "id": "D",
+            "text": "چون علائم بالینی را در بر نمی‌گیرد"
+          }
+        ],
+        "correct": "B",
+        "explanation": "توسی I–III جابجایی خلفی/تحتانی یا ارتفاع شدید را پوشش نمی‌دهد؛ راک‌وود طبقه‌بندی را به IV–VI گسترش می‌دهد. راک‌وود رایج است، اما طبقه‌بندی جایگزین ارزیابی بالینی نیست.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-belastung-1-fa",
+        "question": "نمای پانورامیک استرس را چه زمانی می‌توان به‌صورت تکمیلی در نظر گرفت؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "برای تشخیص پارگی روتاتور کاف"
+          },
+          {
+            "id": "B",
+            "text": "برای پرسش مشخص و حل‌نشده درباره اختلاف CCD دو طرف؛ ارزش آن برای طبقه‌بندی محدود/متناقض است و نمای روتین نیست."
+          },
+          {
+            "id": "C",
+            "text": "برای تشخیص شکستگی کلاویکول"
+          },
+          {
+            "id": "D",
+            "text": "به عنوان جایگزین نمای محوری"
+          }
+        ],
+        "correct": "B",
+        "explanation": "شواهد متناقض‌اند: نوردین و همکاران (آنلاین ۲۰۲۰/شماره ۲۰۲۱، doi:10.1177/0284185120939270) بهبود معناداری در طبقه‌بندی نیافتند؛ ابراهیم و همکاران (۲۰۱۵، doi:10.1016/j.injury.2015.06.028) برای نماهای وزنه‌دار دوطرفه ارزش گزارش کردند. بنابراین فقط برای پرسش مشخص/پروتکل محلی و نه به‌صورت روتین در نظر بگیرید؛ نماهای استاندارد/محوری مناسب همچنان لازم‌اند.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-rock-vi-1-fa",
+        "question": "چه چیزی مشخصه لوکساسیون راک‌وود نوع VI است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "جابجایی فوقانی کلاویکول"
+          },
+          {
+            "id": "B",
+            "text": "جابجایی قدامی کلاویکول"
+          },
+          {
+            "id": "C",
+            "text": "جابجایی تحتانی کلاویکول زیر آکرومیون یا پروسه کوراکوئید"
+          },
+          {
+            "id": "D",
+            "text": "شکستگی کلاویکول"
+          }
+        ],
+        "correct": "C",
+        "explanation": "راک‌وود VI نادر است؛ کلاویکول به موقعیت تحتانی زیرآکرومیال یا زیرکوراکوئید جابجا می‌شود. این آسیب شدید نیازمند ارزیابی به‌موقع متخصص است؛ درمان بر اساس یافته‌های کلی و شرایط بیمار تعیین می‌شود.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-norm-1-fa",
+        "question": "کدام یافته در راک‌وود نوع I انتظار می‌رود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "اتساع خفیف مفصل AC"
+          },
+          {
+            "id": "B",
+            "text": "رادیوگرافی طبیعی – تشخیص بالینی"
+          },
+          {
+            "id": "C",
+            "text": "ارتفاع بیش از ۱۰۰٪ نسبت به سمت مقابل"
+          },
+          {
+            "id": "D",
+            "text": "جابجایی خلفی کلاویکول"
+          }
+        ],
+        "correct": "B",
+        "explanation": "نوع I: کشیدگی خفیف رباط AC بدون جابجایی رادیوگرافیک؛ در صورت تطابق یافته‌ها تشخیص بالینی است. معمولاً بر اساس علائم به‌صورت محافظه‌کارانه درمان می‌شود.",
+        "tags": [
+          "ak-luxation"
+        ]
+      },
+      {
+        "id": "ak-lux-op-1-fa",
+        "question": "کدام روش جراحی معمولاً برای لوکساسیون AC نوع IV–VI استفاده می‌شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "آرتروسکوپی شانه بدون تثبیت"
+          },
+          {
+            "id": "B",
+            "text": "سیستم تایت‌روپ (آرتروسکوپیک) یا صفحه قلاب‌دار"
+          },
+          {
+            "id": "C",
+            "text": "برداشتن کلاویکول (آرتروپلاستی رزکسیون)"
+          },
+          {
+            "id": "D",
+            "text": "تثبیت گچی برای ۱۲ هفته"
+          }
+        ],
+        "correct": "B",
+        "explanation": "سیستم‌های تعلیقی (مانند تایت‌روپ) و صفحات قلاب‌دار نمونه‌هایی از تثبیت جراحی هستند. روش و بازسازی اضافی رباط بر اساس الگوی آسیب و رویکرد محلی انتخاب می‌شود؛ خارج کردن بعدی صفحه قلاب‌دار به نوع ایمپلنت و برنامه درمان بستگی دارد.",
+        "tags": [
+          "ak-luxation"
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ak-lux-fc-1",
+      "category": {
+        "de": "Anatomie",
+        "en": "Anatomy",
+        "fa": "آناتومی"
+      },
+      "front": {
+        "de": "Welche zwei Bandgruppen stabilisieren das AC-Gelenk?",
+        "en": "Which two ligament groups stabilise the AC joint?",
+        "fa": "کدام دو گروه رباط مفصل AC را تثبیت می‌کنند؟"
+      },
+      "answer": {
+        "de": "1) AC-Kapsel/Bänder tragen zur horizontalen (AP), 2) CC-Bänder (Trapezoid + Konoid) zur vertikalen Stabilität bei. Typ III umfasst eine Ruptur beider Bandgruppen.",
+        "en": "1) AC capsule/ligaments contribute to horizontal (AP), and 2) CC ligaments (trapezoid + conoid) to vertical stability. Type III includes rupture of both ligament groups.",
+        "fa": "۱) کپسول/رباط‌های AC در پایداری افقی (AP) و ۲) رباط‌های CC (ترپزوئید و کونوئید) در پایداری عمودی نقش دارند. نوع III شامل پارگی هر دو گروه رباط است."
+      },
+      "explanation": {
+        "de": "AC = vor allem horizontal; CC = vor allem vertikal. Klassifikation anhand des gesamten Verletzungsmusters.",
+        "en": "AC = mainly horizontal; CC = mainly vertical. Classification uses the overall injury pattern.",
+        "fa": "AC = عمدتاً افقی؛ CC = عمدتاً عمودی. طبقه‌بندی بر اساس الگوی کلی آسیب است."
+      },
+      "topicId": "ak-luxation"
+    },
+    {
+      "id": "ak-lux-fc-2",
+      "category": {
+        "de": "Bildgebung",
+        "en": "Imaging",
+        "fa": "تصویربرداری"
+      },
+      "front": {
+        "de": "Wie hilft der CCD-Seitenvergleich; wann kann Zusatzbelastung erwogen werden?",
+        "en": "How does side-to-side CCD comparison help, and when might added load be considered?",
+        "fa": "مقایسه CCD دو طرف چه کمکی می‌کند و چه زمانی می‌توان بارگذاری افزوده را در نظر گرفت؟"
+      },
+      "answer": {
+        "de": "CCD im Seitenvergleich messen; 11–13 mm ist ein publizierter Orientierungsbereich mit individueller Varianz. Die Evidenz zur Zusatzbelastung ist widersprüchlich: Nordin et al. (online 2020/Ausgabe 2021, doi:10.1177/0284185120939270) fanden keinen signifikanten Gewinn; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) berichteten Nutzen. Die PDF-Angabe 10–15 kg pro Seite ist keine Routineempfehlung; andere Quellen nennen geringere Lasten.",
+        "en": "Measure CCD side to side; 11–13 mm is a published orienting range with individual variation. Evidence on weighted views conflicts: Nordin et al. (online 2020/issue 2021, doi:10.1177/0284185120939270) found no significant gain; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) reported value. The PDF’s 10–15 kg per-side load is not a routine recommendation; other sources describe lower loads.",
+        "fa": "CCD را در دو طرف اندازه‌گیری و مقایسه کنید؛ ۱۱ تا ۱۳ میلی‌متر محدوده‌ای راهنما در منابع منتشرشده است و تفاوت فردی دارد. شواهد نماهای وزنه‌دار متناقض است: نوردین و همکاران (آنلاین ۲۰۲۰/شماره ۲۰۲۱، doi:10.1177/0284185120939270) بهبود معناداری نیافتند؛ ابراهیم و همکاران (۲۰۱۵، doi:10.1016/j.injury.2015.06.028) ارزش آن را گزارش کردند. بار ۱۰ تا ۱۵ کیلوگرم در هر طرف که در PDF آمده توصیه روتین نیست؛ منابع دیگر بار کمتری ذکر می‌کنند."
+      },
+      "explanation": {
+        "de": "Seitenvergleich, keine starre Einzelgrenze; gewichtete Aufnahme nur gezielt.",
+        "en": "Compare sides, avoid rigid single cutoff; use weighted view selectively.",
+        "fa": "مقایسه دو طرف، نه مرز مطلق؛ نمای وزنه‌دار فقط به‌صورت انتخابی."
+      },
+      "topicId": "ak-luxation"
+    },
+    {
+      "id": "ak-lux-fc-3",
+      "category": {
+        "de": "Rockwood",
+        "en": "Rockwood",
+        "fa": "راک‌وود"
+      },
+      "front": {
+        "de": "Rockwood I–VI: Therapieprinzip?",
+        "en": "Rockwood I–VI: Treatment principle?",
+        "fa": "راک‌وود I–VI: اصل درمان؟"
+      },
+      "answer": {
+        "de": "I–II meist konservativ. III umstritten und individuell. Symptomatische IV–VI häufig operativ beurteilt; Befund, Begleitverletzungen und Patientenziele einbeziehen.",
+        "en": "I–II usually conservative. III debated and individualised. Symptomatic IV–VI commonly assessed for surgery; consider findings, associated injuries, and patient goals.",
+        "fa": "I–II معمولاً محافظه‌کارانه. III مورد اختلاف و فردی‌سازی‌شده. IV–VI علامت‌دار اغلب برای جراحی ارزیابی می‌شوند؛ یافته‌ها، آسیب‌های همراه و اهداف بیمار را لحاظ کنید."
+      },
+      "explanation": {
+        "de": "Therapieprinzipien sind Orientierung, keine automatische OP-Regel; Typ III bleibt die Grauzone.",
+        "en": "Treatment principles are guidance, not automatic surgery rules; Type III remains the grey zone.",
+        "fa": "اصول درمان راهنما هستند، نه قاعده خودکار جراحی؛ نوع III همچنان ناحیه خاکستری است."
+      },
+      "topicId": "ak-luxation"
+    },
+    {
+      "id": "ak-lux-fc-4",
+      "category": {
+        "de": "Rockwood",
+        "en": "Rockwood",
+        "fa": "راک‌وود"
+      },
+      "front": {
+        "de": "Rockwood Typ IV: Worin besteht die Besonderheit?",
+        "en": "Rockwood Type IV: What is the distinctive feature?",
+        "fa": "راک‌وود نوع IV: ویژگی خاص چیست؟"
+      },
+      "answer": {
+        "de": "Posteriore Verlagerung der Klavikula in/durch den M. trapezius. Bei Verdacht axiale/axilläre Projektion ergänzen; symptomatische Verletzungen häufig fachärztlich operativ beurteilen.",
+        "en": "Posterior displacement of the clavicle into/through trapezius. Add an axial/axillary projection when suspected; symptomatic injuries are commonly assessed for surgery by a specialist.",
+        "fa": "جابجایی خلفی کلاویکول به داخل/از میان تراپزیوس. در صورت شک نمای محوری/آگزیلاری اضافه کنید؛ آسیب‌های علامت‌دار اغلب توسط متخصص برای جراحی ارزیابی می‌شوند."
+      },
+      "explanation": {
+        "de": "Typ IV = posterior; bei Verdacht axial/axillär ergänzen.",
+        "en": "Type IV = posterior; add axial/axillary view when suspected.",
+        "fa": "نوع IV = خلفی؛ در صورت شک نمای محوری/آگزیلاری اضافه شود."
+      },
+      "topicId": "ak-luxation"
+    },
+    {
+      "id": "ak-lux-fc-5",
+      "category": {
+        "de": "Rockwood",
+        "en": "Rockwood",
+        "fa": "راک‌وود"
+      },
+      "front": {
+        "de": "Unterschied Rockwood III vs. V?",
+        "en": "Difference Rockwood III vs. V?",
+        "fa": "تفاوت راک‌وود III در مقابل V؟"
+      },
+      "answer": {
+        "de": "Typ III: AC- und CC-Bandverletzung mit CCD-Zunahme 25–100 % im Seitenvergleich. Typ V: zusätzliche Ablösung der deltotrapezialen Faszie und meist 100–300 % CCD-Zunahme.",
+        "en": "Type III: AC and CC ligament injury with 25–100% CCD increase side to side. Type V: additional deltotrapezial fascia detachment and usually 100–300% CCD increase.",
+        "fa": "نوع III: آسیب رباط‌های AC و CC با افزایش ۲۵ تا ۱۰۰٪ CCD در مقایسه دو طرف. نوع V: به‌علاوه جداشدگی فاسیای دلتوتراپزیوس و معمولاً افزایش ۱۰۰ تا ۳۰۰٪ CCD."
+      },
+      "explanation": {
+        "de": "V = stärkere vertikale Verschiebung plus deltotrapeziale Faszienablösung; Prozentwerte im Seitenvergleich.",
+        "en": "V = greater vertical displacement plus deltotrapezial fascia detachment; percentages refer to side-to-side comparison.",
+        "fa": "V = جابجایی عمودی بیشتر به‌علاوه جداشدگی فاسیای دلتوتراپزیوس؛ درصدها بر پایه مقایسه دو طرف هستند."
+      },
+      "topicId": "ak-luxation"
+    },
+    {
+      "id": "ak-lux-fc-6",
+      "category": {
+        "de": "Bildgebung",
+        "en": "Imaging",
+        "fa": "تصویربرداری"
+      },
+      "front": {
+        "de": "Wann ist ein normales AP-Röntgen trotzdem falsch-negativ für eine AC-Luxation?",
+        "en": "When is a normal AP X-ray still falsely negative for AC dislocation?",
+        "fa": "چه زمانی رادیوگرافی AP طبیعی برای لوکساسیون AC کاذب-منفی است؟"
+      },
+      "answer": {
+        "de": "Bei Verdacht auf Typ IV kann posteriore Verlagerung im AP übersehen werden; axial/axillär ergänzen. Typ I zeigt typischerweise keine radiologische Dislokation.",
+        "en": "If Type IV is suspected, posterior displacement may be missed on AP; add an axial/axillary view. Type I typically has no radiographic displacement.",
+        "fa": "در صورت شک به نوع IV، جابجایی خلفی ممکن است در AP دیده نشود؛ نمای محوری/آگزیلاری اضافه شود. نوع I معمولاً جابجایی رادیوگرافیک ندارد."
+      },
+      "explanation": {
+        "de": "Typ IV: Verdacht → axiale/axilläre Zusatzprojektion; Typ I: meist Normalbefund.",
+        "en": "Type IV: suspicion → add axial/axillary view; Type I: usually normal radiograph.",
+        "fa": "نوع IV: شک بالینی → نمای محوری/آگزیلاری افزوده؛ نوع I: معمولاً رادیوگرافی طبیعی."
+      },
+      "topicId": "ak-luxation"
+    },
+    {
+      "id": "ak-lux-fc-7",
+      "category": {
+        "de": "Anatomie",
+        "en": "Anatomy",
+        "fa": "آناتومی"
+      },
+      "front": {
+        "de": "Tossy vs. Rockwood: Was ergänzt Rockwood?",
+        "en": "Tossy vs. Rockwood: What does Rockwood add?",
+        "fa": "توسی در برابر راک‌وود: راک‌وود چه چیزی اضافه می‌کند؟"
+      },
+      "answer": {
+        "de": "Tossy I–III deckt posteriore/inferiore Dislokation und extreme Hochstände nicht ab; Rockwood ergänzt Typ IV–VI. Rockwood ist verbreitet, ersetzt aber keine klinische Beurteilung.",
+        "en": "Tossy I–III does not cover posterior/inferior displacement or extreme elevation; Rockwood adds Types IV–VI. Rockwood is widely used but does not replace clinical assessment.",
+        "fa": "توسی I–III جابجایی خلفی/تحتانی و ارتفاع شدید را پوشش نمی‌دهد؛ راک‌وود انواع IV–VI را اضافه می‌کند. راک‌وود رایج است اما جایگزین ارزیابی بالینی نیست."
+      },
+      "explanation": {
+        "de": "Tossy I–III entsprechen ungefähr Rockwood I–III; Rockwood ergänzt IV–VI.",
+        "en": "Tossy I–III roughly correspond to Rockwood I–III; Rockwood adds IV–VI.",
+        "fa": "توسی I–III تقریباً متناظر با راک‌وود I–III؛ راک‌وود IV–VI را اضافه می‌کند."
+      },
+      "topicId": "ak-luxation"
+    },
+    {
+      "id": "ak-lux-fc-8",
+      "category": {
+        "de": "Therapie",
+        "en": "Treatment",
+        "fa": "درمان"
+      },
+      "front": {
+        "de": "Welche OP-Verfahren werden bei Typ IV–VI eingesetzt?",
+        "en": "Which surgical procedures are used for Types IV–VI?",
+        "fa": "کدام روش‌های جراحی برای نوع IV–VI استفاده می‌شوند؟"
+      },
+      "answer": {
+        "de": "Suspensionssysteme (z. B. Tight-Rope) und Hakenplatten sind Beispiele operativer Stabilisierung. Technik und zusätzliche Bandrekonstruktion richten sich nach Verletzungsmuster und lokalem Vorgehen; eine spätere Entfernung der Hakenplatte hängt vom Implantat-/Behandlungsplan ab.",
+        "en": "Suspensory devices (e.g. tight-rope) and hook plates are examples of operative stabilisation. Technique and additional ligament reconstruction depend on the injury pattern and local approach; later hook-plate removal depends on the implant/treatment plan.",
+        "fa": "سیستم‌های تعلیقی (مانند تایت‌روپ) و صفحات قلاب‌دار نمونه‌هایی از تثبیت جراحی هستند. روش و بازسازی اضافی رباط بر اساس الگوی آسیب و رویکرد محلی انتخاب می‌شود؛ خارج کردن بعدی صفحه قلاب‌دار به نوع ایمپلنت و برنامه درمان بستگی دارد."
+      },
+      "explanation": {
+        "de": "Beispiele, keine abschließende Methodenliste; Eingriff und Implantatmanagement werden individuell festgelegt.",
+        "en": "Examples, not an exhaustive list; the operation and implant plan are individualised.",
+        "fa": "نمونه‌هایی از روش‌ها، نه فهرستی جامع؛ عمل و برنامه ایمپلنت به‌صورت فردی تعیین می‌شود."
+      },
+      "topicId": "ak-luxation"
+    }
+  ]
+}

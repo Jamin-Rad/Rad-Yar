@@ -21,7 +21,8 @@ const cards = [
   {
     front: L('Wofür stehen T1 bis T4 beim Rektumkarzinom anatomisch?', 'What anatomic extent do T1 to T4 represent in rectal cancer?', 'T1 تا T4 در سرطان رکتوم از نظر آناتومیک چه گسترشی را نشان می‌دهند؟'),
     answer: L('Tis: Mukosa; T1: Invasion der Submukosa; T2: Invasion der Muscularis propria; T3: durch die Muscularis propria ins perikolorektale Gewebe; T4a: durch das viszerale Peritoneum; T4b: Invasion/Adhärenz an Nachbarorganen.', 'Tis: mucosa; T1: invasion of submucosa; T2: invasion of muscularis propria; T3: through muscularis propria into pericolorectal tissue; T4a: through visceral peritoneum; T4b: invasion/adherence to adjacent organs.', 'Tis: مخاط؛ T1: نفوذ به زیرمخاط؛ T2: نفوذ به muscularis propria؛ T3: عبور از muscularis propria به بافت پری‌کولورکتال؛ T4a: عبور از صفاق احشایی؛ T4b: نفوذ/چسبندگی به اندام مجاور.'),
-    explanation: L('Die T-Kategorie beschreibt die anatomische Tiefenausdehnung. PDF-Untergruppen und numerische Grenzen müssen zur benannten TNM-Version passen.', 'The T category describes anatomic depth. PDF subgroups and numeric cut-offs must match the stated TNM version.', 'دسته T عمق گسترش آناتومیک را بیان می‌کند. زیرگروه‌ها و حدهای عددی PDF باید با نسخه مشخص TNM تطبیق داده شوند.'),
+    explanation: {"de":"Nach AJCC8 beschreibt T die anatomische Tiefenausdehnung: T2 bleibt in der Muscularis propria, T3 überschreitet sie ins perikolorektale Gewebe. Eine Serosainvasion (T4a) ist von der Invasion benachbarter Organe/Strukturen (T4b) zu unterscheiden; nicht alle Rektumabschnitte sind peritoneal bedeckt.","en":"Under AJCC8, T describes anatomical depth: T2 involves the muscularis propria, whereas T3 extends through it into pericolorectal tissue. Distinguish visceral peritoneal invasion (T4a) from invasion of adjacent organs/structures (T4b); not all rectal segments are peritonealised.","fa":"در AJCC8، دستهٔ T عمق آناتومیک گسترش را بیان می‌کند: T2 در muscularis propria است و T3 از آن به بافت پری‌کولورکتال عبور می‌کند. نفوذ به صفاق احشایی (T4a) را از نفوذ به اندام یا ساختار مجاور (T4b) تفکیک کنید؛ همهٔ قسمت‌های رکتوم پوشش صفاقی ندارند."},
+    source: 'https://www.cancer.gov/types/colorectal/hp/rectal-treatment-pdq',
   },
   {
     front: L('Wann gilt die mesorektale Faszie nach ESGAR 2026 als beteiligt?', 'When is the mesorectal fascia considered involved under ESGAR 2026?', 'طبق ESGAR 2026 چه زمانی فاسیای مزورکتال درگیر محسوب می‌شود؟'),
@@ -45,5 +46,5 @@ export const COLORECTAL_CANCER_FLASHCARDS = cards.map((card, index) => ({
   topicId: 'kolorektales-karzinom',
   category: L('Staging', 'Staging', 'مرحله‌بندی'),
   ...card,
-  source: 'Abdomen.pdf physical pp. 88–89; ESGAR 2026 primary-staging consensus',
+  source: card.source || 'Abdomen.pdf physical pp. 88–89; ESGAR 2026 primary-staging consensus',
 }))

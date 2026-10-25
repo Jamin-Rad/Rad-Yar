@@ -583,9 +583,9 @@ block('aq-demenzmuster','/gehirn/neurodegeneration/demenzmuster',L('Demenzmuster
       "fa": "الگوی آتروفی فرونتوتمپورال را در زمینهٔ بالینی مناسب بشناسید و محدودیت تشخیصی آن را بیان کنید."
     },
     "question": {
-      "de": "Eine Person entwickelt fortschreitend Enthemmung und verändertes Sozialverhalten. Welche MRT-Verteilung würde eine klinisch vermutete frontotemporale Degeneration am ehesten unterstützen?",
-      "en": "A person develops progressive disinhibition and altered social behaviour. Which MRI distribution would most strongly support the clinically suspected frontotemporal degeneration?",
-      "fa": "فردی به‌تدریج دچار مهارگسیختگی و تغییر رفتار اجتماعی می‌شود. کدام توزیع MRI بیشتر از دژنراسیون فرونتوتمپورالِ مطرح‌شده در بالین حمایت می‌کند؟"
+      "de": "Eine Person entwickelt fortschreitend Enthemmung und verändertes Sozialverhalten. Welche regionale Atrophieverteilung passt am ehesten zu diesem klinischen Syndrom?",
+      "en": "A person develops progressive disinhibition and altered social behaviour. Which regional atrophy distribution best fits this clinical syndrome?",
+      "fa": "فردی به‌تدریج دچار مهارگسیختگی و تغییر رفتار اجتماعی می‌شود. کدام توزیع ناحیه‌ای آتروفی بیشتر با این سندرم بالینی سازگار است؟"
     },
     "options": [
       {

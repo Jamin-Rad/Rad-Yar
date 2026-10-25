@@ -20,7 +20,7 @@ function Paragraphs({ text }) { return text.split(/\n\s*\n/).filter(Boolean).map
 function Check({ lang }) {
   const [answer, setAnswer] = useState(null)
   const t = lang === 'fa' ? 'خودآزمایی: الگوی غالب' : lang === 'en' ? 'Self-check: dominant pattern' : 'Selbstcheck: Verteilungsmuster'
-  return <section className={styles.quiz} aria-labelledby="dementia-self-check"><h3 id="dementia-self-check">{t}</h3><p>{value(C.assessment.question, lang)}</p><div className={styles.options}>{C.assessment.options.map((o, i) => <button key={i} type="button" aria-pressed={answer === i} onClick={() => setAnswer(i)}>{value(o, lang)}</button>)}</div>{answer !== null && <p role="status" className={styles.feedback}>{value(answer === C.assessment.correctIndex ? C.assessment.feedback : C.assessment.retry, lang)}</p>}</section>
+  return <section className={styles.quiz} aria-labelledby="dementia-self-check"><h3 id="dementia-self-check">{t}</h3><p>{value(C.assessment.question, lang)}</p><div className={styles.options}>{C.assessment.options.map((o, i) => <button key={i} type="button" aria-pressed={answer === i} onClick={() => setAnswer(i)}>{value(o, lang)}</button>)}</div>{answer !== null && <p role="status" className={styles.feedback}>{value(C.assessment.optionFeedback?.[answer] ?? (answer === C.assessment.correctIndex ? C.assessment.feedback : C.assessment.retry), lang)}</p>}</section>
 }
 function EvidenceFigure({ figure, lang }) { return <figure id={figure.id} className={styles.caseFigure}><img src={figure.src} alt={value(figure.alt, lang)} width={figure.width} height={figure.height}/><figcaption>{value(figure.caption, lang)}</figcaption></figure> }
 

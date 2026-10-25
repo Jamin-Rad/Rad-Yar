@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/design_inventory",
+  "author": "/root/brain_remediation",
+  "status": "ACCEPT_BOUNDED_NEW_ASSESSMENT_POOL_AFTER_INDEPENDENT_RETEST",
+  "scope": {
+    "route": "/gehirn/neurodegeneration/demenzmuster",
+    "questionTriadsFullyRead": 3,
+    "cardTriadsFullyRead": 3,
+    "locales": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "goalCount": 3,
+    "actualExportsComparedToManifest": true,
+    "inlineCanonicalComparisons": 12,
+    "pdfPagesVisuallyRead": [
+      72,
+      73,
+      74
+    ]
+  },
+  "findings": [
+    {
+      "id": "BR14-EDU-001",
+      "severity": "minor",
+      "status": "CLOSED_ACTUAL_SOURCE_RETEST",
+      "file": "data/assessmentQuality/brain.js aq-demenzmuster ftd-pattern + mirrored inline",
+      "observed": "Stem already names suspected frontotemporal degeneration, directly echoing frontal/anterior temporal correct option.",
+      "impact": "Disease-name-to-region cue bypasses clinical-pattern interpretation.",
+      "required": "Retain progressive disinhibition/social behaviour vignette; ask which regional atrophy distribution supports the clinical syndrome without naming frontotemporal target disease.",
+      "retest": "All3actual rewritten stems read, target-disease cue removed; inline matches. Other canonicalquestion fields unchanged and all3cards unchanged."
+    }
+  ],
+  "sourceEvidence": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8305846/",
+      "read": "Actual original2021 visual assessment methods: coronalT1 bilateral rating, hippocampal height/choroid fissure/temporal horn; age groups/reference variation and non-AD groups. No universal threshold or cohort statistics accepted."
+    },
+    {
+      "url": "https://doi.org/10.1212/WNL.0000000000004058",
+      "read": "Actual indexed primary2017 consensus sections: reduced basal-ganglia DAT indicative with differential clinical qualification; relative MTL preservation and occipital perfusion/metabolism supportive. DirectPMC captcha; relied on official original publisher indexed text, not secondary summaries."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3170532/",
+      "read": "Original2011 revised criteria and probable bvFTD sections: clinical criteria plus functional decline and frontal/anterior temporal imaging; definite FTLD histology/mutation distinct, early imaging may lack characteristic pattern."
+    },
+    {
+      "path": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf",
+      "pages": [
+        72,
+        73,
+        74
+      ],
+      "renders": [
+        "tmp/brain-demenz-p-72.png",
+        "tmp/brain-demenz-p-73.png",
+        "tmp/brain-demenz-p-74.png"
+      ],
+      "read": "Actual rendered whole pages visually inspected: MTA0-4 panel/source75-year gap, DLBstructural/DAT division, frontal/anterior temporal source morphology. Assessed source scope, not individual scan diagnoses/reuse certification."
+    }
+  ],
+  "pedagogicAssessment": "MTA anatomy retrieval, DLB diagnostic-framework distinction and clinically contextualized regional-pattern interpretation are distinct goals. Options comparable within each question; specific feedback separates competing interpretations. FTD stem cue closed by actual rewrite in all3languages. No empirical difficulty validation.",
+  "limits": [
+    "No whole unchanged lesson/PDF/scientific release approval.",
+    "No independent image diagnosis, retained scan sequence/age validation or image-reuse recertification.",
+    "No actual browser interaction acceptance; consumer source expression and runtime parity checked."
+  ],
+  "checks": {
+    "actualLocalizedQuestions": 9,
+    "cardTriads": 3,
+    "inlineCanonicalComparisons": 12,
+    "goalCount": 3,
+    "sourceConsumer": "Selected optionFeedback used by actual local Check component",
+    "status": "PASS_BOUNDED_SOURCE_AND_PEDAGOGIC_REVIEW"
+  },
+  "sha256": {
+    "data/assessmentQuality/brain.js": "29373cc92a1dfe1a95b841278fa1bb93a7aa4bb19f07764e2f201369ad850394",
+    "data/gehirnDemenzMusterLesson.js": "a5cb4ee7658cd6a03a06a6e79b0b708f2b880ab5a8c720265310b1b227781988",
+    "app/gehirn/neurodegeneration/demenzmuster/page.jsx": "ec746568d26a17c3e9e8fffba351c75e8e41f7c24a55629e315d0ff3e7cecdc9"
+  }
+}

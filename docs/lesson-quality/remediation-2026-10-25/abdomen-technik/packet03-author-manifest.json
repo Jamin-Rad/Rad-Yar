@@ -1,0 +1,3172 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_PROPOSED_POOL_TECHNICAL_CHECK_ONLY",
+  "counts": {
+    "routes": 5,
+    "questionsPerLanguage": 22,
+    "originalQuestionTriads": 14,
+    "newQuestionTriads": 8,
+    "originalCardTriads": 20,
+    "newCards": 3,
+    "cards": 23
+  },
+  "coverage": [
+    {
+      "route": "/abdomen/gi/mesenteriale-ischaemie",
+      "topicId": "mesenteriale-ischaemie",
+      "status": "AUTHOR_REPAIR_PENDING_SHARED_ORIGINAL",
+      "learningGoals": [
+        {
+          "id": "cta",
+          "text": {
+            "de": "Bei AMI-Verdacht die zeitkritische mehrphasige Dünnschicht-CTA einordnen.",
+            "en": "Identify time-critical thin-slice multiphase CTA for suspected AMI.",
+            "fa": "CTA چندفازی با برش نازک و زمان‌حساس را در شک به AMI بشناسید."
+          },
+          "questionIds": [
+            "abdomen-mesenteric-ischaemia-cta-protocol-de-01"
+          ],
+          "cardIds": [
+            "mesenteriale-ischaemie-cta-protocol"
+          ]
+        },
+        {
+          "id": "mechanism",
+          "text": {
+            "de": "NOMI trotz durchgängiger zentraler Gefäße im Schockkontext erwägen.",
+            "en": "Consider NOMI despite patent central vessels in shock.",
+            "fa": "در زمینهٔ شوک، با وجود بازبودن عروق مرکزی NOMI را مطرح کنید."
+          },
+          "questionIds": [
+            "aq-atv-mesenteric-nomi-de-application"
+          ],
+          "cardIds": [
+            "aq-atv-mesenteric-nomi-retrieval"
+          ]
+        },
+        {
+          "id": "severity",
+          "text": {
+            "de": "Schwere Ischämiezeichen dringlich melden und die Grenze der Viabilitätsaussage benennen.",
+            "en": "Urgently report severe ischaemic signs and state limits of viability assessment.",
+            "fa": "نشانه‌های شدید ایسکمی را فوری گزارش و محدودیت ارزیابی زنده‌مانی را بیان کنید."
+          },
+          "questionIds": [
+            "aq-atv-mesenteric-viability-de-application"
+          ],
+          "cardIds": [
+            "aq-atv-mesenteric-viability-retrieval"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/gi/pylorusstenose",
+      "topicId": "pylorusstenose",
+      "status": "AUTHOR_PACKET03_IN_PROGRESS",
+      "learningGoals": [
+        {
+          "id": "measure",
+          "text": {
+            "de": "Pylorusmuskeldicke anatomisch korrekt messen.",
+            "en": "Measure pyloric muscle thickness anatomically correctly.",
+            "fa": "ضخامت عضلهٔ پیلور را از نظر آناتومیک درست اندازه بگیرید."
+          },
+          "questionIds": [
+            "pylorusstenose-measurement-de"
+          ],
+          "cardIds": [
+            "pylorusstenose-measurement"
+          ]
+        },
+        {
+          "id": "dynamics",
+          "text": {
+            "de": "Dynamische Öffnung und Morphometrie bei Spasmus versus HPS gemeinsam gewichten.",
+            "en": "Integrate dynamic opening and morphometry for spasm versus HPS.",
+            "fa": "بازشدن پویا و مورفومتری را در افتراق اسپاسم از HPS با هم بسنجید."
+          },
+          "questionIds": [
+            "pylorusstenose-dynamic-de"
+          ],
+          "cardIds": [
+            "pylorusstenose-dynamic"
+          ]
+        },
+        {
+          "id": "indeterminate",
+          "text": {
+            "de": "Bei unklarer Untersuchung und anhaltendem Verdacht eine angemessene weitere Abklärung formulieren.",
+            "en": "State appropriate further assessment after an indeterminate study with persistent suspicion.",
+            "fa": "پس از بررسی نامعین و شک ماندگار، بررسی تکمیلی مناسب را بیان کنید."
+          },
+          "questionIds": [
+            "aq-atv-pylorus-indeterminate-de-application"
+          ],
+          "cardIds": [
+            "aq-atv-pylorus-indeterminate-retrieval"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/gi/kolitis-patterns",
+      "topicId": "pmc-kolitis",
+      "status": "AUTHOR_PACKET03_IN_PROGRESS",
+      "learningGoals": [
+        {
+          "id": "distribution",
+          "text": {
+            "de": "Segmentale Kolitis im klinischen Kontext einordnen, ohne eine Ätiologie aus der Verteilung zu beweisen.",
+            "en": "Interpret segmental colitis clinically without proving aetiology from distribution.",
+            "fa": "کولیت سگمنتال را با بالین تفسیر کنید، بدون اثبات علت از توزیع."
+          },
+          "questionIds": [
+            "pmc-kolitis-distribution-de"
+          ],
+          "cardIds": [
+            "pmc-kolitis-distribution"
+          ]
+        },
+        {
+          "id": "accordion",
+          "text": {
+            "de": "Accordion-Faltenmuster erklären und seine ätiologische Grenze nennen.",
+            "en": "Explain the accordion fold pattern and its aetiological limits.",
+            "fa": "الگوی چین‌های آکاردئونی و محدودیت آن در تعیین علت را توضیح دهید."
+          },
+          "questionIds": [
+            "pmc-kolitis-accordion-de"
+          ],
+          "cardIds": [
+            "pmc-kolitis-accordion"
+          ]
+        },
+        {
+          "id": "uc-pattern",
+          "text": {
+            "de": "Das typische unbehandelte CU-Muster von konkurrierenden Verteilungen unterscheiden.",
+            "en": "Distinguish typical untreated UC from competing distributions.",
+            "fa": "الگوی معمول CU درمان‌نشده را از توزیع‌های رقیب تفکیک کنید."
+          },
+          "questionIds": [
+            "colitis-ulcerosa-pattern-de"
+          ],
+          "cardIds": [
+            "colitis-ulcerosa-pattern"
+          ]
+        },
+        {
+          "id": "urgent",
+          "text": {
+            "de": "Nichtmechanische Dilatation mit systemischer Toxizität als dringlichen Komplikationsverdacht kommunizieren.",
+            "en": "Urgently communicate nonmechanical dilatation with systemic toxicity as a complication concern.",
+            "fa": "اتساع غیرمکانیکی همراه سمیت سیستمیک را به‌عنوان شک به عارضه، فوری اعلام کنید."
+          },
+          "questionIds": [
+            "colitis-ulcerosa-urgent-de"
+          ],
+          "cardIds": [
+            "colitis-ulcerosa-urgent"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/gi/kolorektales-karzinom",
+      "topicId": "kolorektales-karzinom",
+      "status": "AUTHOR_PACKET03_IN_PROGRESS",
+      "learningGoals": [
+        {
+          "id": "depth",
+          "text": {
+            "de": "Lokale MRT-Tiefenausdehnung nach benannter AJCC8-T-Definition einordnen.",
+            "en": "Classify local MRI depth using named AJCC8 T definitions.",
+            "fa": "گسترش عمقی MRI را با تعریف نام‌بردهٔ T در AJCC8 طبقه‌بندی کنید."
+          },
+          "questionIds": [
+            "aq-atv-rectal-t3-depth-de-application"
+          ],
+          "cardIds": [
+            "kolorektales-karzinom-01",
+            "kolorektales-karzinom-02"
+          ]
+        },
+        {
+          "id": "mrf",
+          "text": {
+            "de": "Primärtumor, EMVI und irreguläre Knoten an der MRF bewerten.",
+            "en": "Assess tumour, EMVI and irregular nodes at the MRF.",
+            "fa": "تومور، EMVI و غدد نامنظم را در ارتباط با MRF بسنجید."
+          },
+          "questionIds": [
+            "abdomen-kolorektales-karzinom-de-01"
+          ],
+          "cardIds": [
+            "kolorektales-karzinom-03"
+          ]
+        },
+        {
+          "id": "emvi",
+          "text": {
+            "de": "Das extramurale venöse Tumormuster von nichtvenösen Strukturen unterscheiden.",
+            "en": "Distinguish extramural venous tumour from nonvenous structures.",
+            "fa": "الگوی تومور وریدی خارج دیواره را از ساختارهای غیروَریدی تفکیک کنید."
+          },
+          "questionIds": [
+            "aq-atv-rectal-emvi-pattern-de-application"
+          ],
+          "cardIds": [
+            "kolorektales-karzinom-04"
+          ]
+        },
+        {
+          "id": "nodes",
+          "text": {
+            "de": "Laterale regionale Knoten patientenbezogen in cN einbeziehen.",
+            "en": "Include lateral regional nodes in patient-level cN assessment.",
+            "fa": "غدد ناحیه‌ای جانبی را در ارزیابی cN در سطح بیمار لحاظ کنید."
+          },
+          "questionIds": [
+            "aq-atv-rectal-lateral-node-de-application"
+          ],
+          "cardIds": [
+            "kolorektales-karzinom-05"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/gi/ileus-volvulus",
+      "topicId": "ileus-duenndarm",
+      "status": "AUTHOR_PACKET03_IN_PROGRESS",
+      "learningGoals": [
+        {
+          "id": "localise",
+          "text": {
+            "de": "Übergangszone, Closed loop und hernienbezogenen Durchtritt lokalisieren.",
+            "en": "Localise transition, closed loop and hernial passage.",
+            "fa": "نقطهٔ گذار، لوپ بسته و محل عبور فتق را مکان‌یابی کنید."
+          },
+          "questionIds": [
+            "abdomen-small-bowel-feces-de-01",
+            "abdomen-foramen-winslow-de-01",
+            "aq-atv-ileus-closed-loop-de-application"
+          ],
+          "cardIds": [
+            "ileus-duenndarm-01-small-bowel-feces-definition",
+            "ileus-duenndarm-02-small-bowel-feces-interpretation",
+            "ileus-duenndarm-04-foramen-winslow-location"
+          ]
+        },
+        {
+          "id": "volvulus",
+          "text": {
+            "de": "Sigmoid-/Zökumvolvulus anatomisch und anhand der Verdrehungszeichen unterscheiden.",
+            "en": "Distinguish sigmoid/caecal volvulus anatomically and by twisting signs.",
+            "fa": "ولولوس سیگموئید و سکوم را با آناتومی و نشانه‌های پیچش تفکیک کنید."
+          },
+          "questionIds": [
+            "volvulus-de-1",
+            "aq-atv-ileus-caecal-twist-de-application"
+          ],
+          "cardIds": [
+            "volvulus-pattern",
+            "volvulus-cecum",
+            "volvulus-ct"
+          ]
+        },
+        {
+          "id": "mechanisms",
+          "text": {
+            "de": "Rigler-Trias und pädiatrische Invagination mit passender Erstbildgebung einordnen.",
+            "en": "Interpret Rigler triad and childhood intussusception with suitable initial imaging.",
+            "fa": "تریاد ریگلر و انواژیناسیون کودکان را با تصویربرداری اولیهٔ مناسب ارزیابی کنید."
+          },
+          "questionIds": [
+            "abdomen-ileus-volvulus-de-01",
+            "abdomen-intussusception-initial-imaging-de-01"
+          ],
+          "cardIds": [
+            "intussusception-01-two-views"
+          ]
+        },
+        {
+          "id": "perfusion",
+          "text": {
+            "de": "Kombinierte Minderperfusions-/Strangulationszeichen dringlich kommunizieren.",
+            "en": "Urgently communicate combined hypoperfusion/strangulation signs.",
+            "fa": "نشانه‌های ترکیبی کم‌خون‌رسانی و اختناق را فوری اعلام کنید."
+          },
+          "questionIds": [
+            "abdomen-ileus-ischaemia-de-01"
+          ],
+          "cardIds": [
+            "ileus-duenndarm-03-closed-loop-ischaemia-signs"
+          ]
+        }
+      ]
+    }
+  ],
+  "questions": {
+    "de": [
+      {
+        "id": "abdomen-mesenteric-ischaemia-cta-protocol-de-01",
+        "tags": [
+          "mesenteriale-ischaemie"
+        ],
+        "fach": "abdomen",
+        "question": "Bei klinischem Verdacht auf akute mesenteriale Ischämie: welches CT-Akquisitionsprotokoll passt zur ESVS-Empfehlung 33 von 2025?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Dringliche arterielle und venöse CTA mit Schichten ≤1 mm; nativ optional ergänzen."
+          },
+          {
+            "id": "B",
+            "text": "Portalvenöse CT ohne arterielle Akquisition mit alleiniger 5-mm-Rekonstruktion."
+          },
+          {
+            "id": "C",
+            "text": "Arterielle Dünnschicht-CTA ohne venöse Akquisition."
+          },
+          {
+            "id": "D",
+            "text": "Native Dünnschicht-CT ohne kontrastverstärkte Akquisition."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Empfehlung 33 fordert bei Verdacht eine dringliche arterielle und venöse CTA mit dünnen Schichten; nativ kann ergänzt werden. Die Empfehlung gilt ausdrücklich unabhängig von der Nierenfunktion.",
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010",
+        "wrongExplanations": {
+          "B": "Ohne arterielle Phase fehlt die gezielte Beurteilung des arteriellen Verschlusses; allein 5-mm-Schichten entsprechen zudem nicht der Dünnschichtempfehlung.",
+          "C": "Eine arterielle Phase allein ergänzt die venöse Gefäß- und Darmbeurteilung nicht; Empfehlung33 fordert beide Phasen.",
+          "D": "Eine native Untersuchung zeigt keine kontrastverstärkte Gefäßdarstellung oder Wandperfusion und ersetzt die empfohlene CTA nicht."
+        }
+      },
+      {
+        "id": "aq-atv-mesenteric-nomi-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "mesenteriale-ischaemie"
+        ],
+        "question": "Ein Patient im Schock unter Vasopressoren hat in der CTA vermindertes Dünndarm-Enhancement. SMA und Mesenterialvenen sind durchgängig. Welche Arbeitsdiagnose muss insbesondere erwogen werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Embolischer proximaler SMA-Verschluss"
+          },
+          {
+            "id": "B",
+            "text": "Nichtokklusive mesenteriale Ischämie (NOMI)"
+          },
+          {
+            "id": "C",
+            "text": "Okklusive mesenteriale Venenthrombose"
+          },
+          {
+            "id": "D",
+            "text": "Reine reaktive Hyperämie mit gesteigertem Darmwand-Enhancement"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Eine offene SMA schließt Ischämie nicht aus. Bei Schock und passender Darmwandminderperfusion beschreibt ESVS NOMI als wichtige Verdachtsdiagnose; Vasokonstriktion und systemische Minderperfusion können ohne zentralen Gefäßverschluss auftreten. Den Verdacht dringend im klinischen Kontext kommunizieren.",
+        "wrongExplanations": {
+          "A": "Ein proximaler Verschluss ist mit der beschriebenen durchgängigen SMA nicht nachgewiesen.",
+          "C": "Die beschriebenen durchgängigen Venen zeigen keine okklusive Venenthrombose.",
+          "D": "Gesteigertes Enhancement ist nicht der beschriebene Befund; hier liegt eine Minderaufnahme bei Schock vor."
+        },
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+      },
+      {
+        "id": "aq-atv-mesenteric-viability-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "mesenteriale-ischaemie"
+        ],
+        "question": "CTA zeigt einen SMA-Verschluss, deutlich verminderte Darmwandaufnahme, Pneumatosis und portomesenteriales Gas. Welche Aussage zur Befundsicherheit ist angemessen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Passagestörung mit erhaltener Perfusion als führende Erklärung; konservative Verlaufskontrolle."
+          },
+          {
+            "id": "B",
+            "text": "Transmurale Nekrose der gesamten betroffenen Strecke als führende Beurteilung; Resektionsausmaß aus der CT ableiten."
+          },
+          {
+            "id": "C",
+            "text": "Akute mesenteriale Ischämie mit dringlichem Handlungsbedarf; Darmviabilität unverzüglich klinisch-chirurgisch beurteilen."
+          },
+          {
+            "id": "D",
+            "text": "Gedeckte Darmperforation als führende Erklärung; primär nach einem lokalen Leck suchen."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Der kombinierte Gefäß- und Darmbefund ist hochgradig bedenklich und muss dringlich kommuniziert werden. ESVS betont zugleich, dass auch Pneumatosis, venöses Gas und verminderte Aufnahme allein keine irreversible Darmschädigung beweisen. Viabilität und weiteres Vorgehen brauchen unverzügliche klinisch-chirurgisch-vaskuläre Beurteilung.",
+        "wrongExplanations": {
+          "A": "SMA-Verschluss und verminderte Wandaufnahme sprechen gegen erhaltene Perfusion. Eine reine konservative Verlaufskontrolle würde die dringliche Ischämiebeurteilung verzögern.",
+          "B": "Das Muster ist hochgradig bedenklich, definiert aber weder Irreversibilität noch das Resektionsausmaß zuverlässig allein. Dringliche interdisziplinäre Viabilitätsbeurteilung ist nötig.",
+          "D": "Portomesenteriales Gas ist venöses Gas und nicht der Nachweis eines lokalen Darmlecks. Der SMA-Verschluss mit Minderaufnahme priorisiert die Ischämie; zusätzliche Perforationszeichen wären gesondert zu beurteilen."
+        },
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+      },
+      {
+        "id": "pylorusstenose-measurement-de",
+        "fach": "abdomen",
+        "tags": [
+          "pylorusstenose"
+        ],
+        "question": "Was wird für die Pylorusmuskeldicke gemessen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Außenrand der Vorderwand bis Außenrand der Hinterwand einschließlich Lumen."
+          },
+          {
+            "id": "B",
+            "text": "Eine Wand einschließlich hypoechoischer Muskularis und echogener Mukosa."
+          },
+          {
+            "id": "C",
+            "text": "Eine einzelne Muskulariswand senkrecht zu ihren Grenzen, ohne Mukosa, Submukosa und Lumen."
+          },
+          {
+            "id": "D",
+            "text": "Die Längsausdehnung des Pyloruskanals als Wert für die Wanddicke."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Die Muskeldicke ist die Dicke einer einzelnen Muskulariswand, nicht der gesamte Pylorusdurchmesser und nicht die Kanallänge. Andere Wandschichten und das Lumen werden ausgeschlossen; schräges Messen kann die Dicke überschätzen.",
+        "wrongExplanations": {
+          "A": "Das ist ein Gesamtdurchmesser mit Lumen und zwei Wänden.",
+          "B": "Mukosa und andere Wandschichten gehören nicht zur isolierten Muskularismessung.",
+          "D": "Länge und Dicke sind unterschiedliche Messgrößen und müssen getrennt dokumentiert werden."
+        },
+        "source": "https://doi.org/10.13029/aps.2020.26.1.15"
+      },
+      {
+        "id": "pylorusstenose-dynamic-de",
+        "fach": "abdomen",
+        "tags": [
+          "pylorusstenose"
+        ],
+        "question": "Der Pylorus wirkt in einem Standbild verdickt, öffnet sich aber wiederholt mit Passage und wechselnder Form. Wie soll der Ultraschallbefund gewertet werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Die größte statische Messung als maßgebliche Bestätigung einer fixen Stenose verwenden."
+          },
+          {
+            "id": "B",
+            "text": "Dynamische Öffnung und Variabilität zusammen mit korrekt erhobenen Muskelmaßen und Klinik beurteilen."
+          },
+          {
+            "id": "C",
+            "text": "Die beobachtete Passage spricht für ein frühes HPS-Stadium mit bereits fixer Muskelhypertrophie."
+          },
+          {
+            "id": "D",
+            "text": "Die wiederholte Öffnung spricht für einen normalen Pylorus trotz der wechselnden Verdickung."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Pylorospasmus kann zeitweise dieselben Größen erreichen wie HPS. Wiederholte Öffnung und wechselnde Morphologie sind wichtige Hinweise, aber eine geringe Passage allein schließt HPS nicht aus. Morphometrie, Dynamik und Klinik gemeinsam beurteilen.",
+        "wrongExplanations": {
+          "A": "Eine Maximalmessung ignoriert die dokumentierte Variabilität; Spasmus kann einzelne hohe Werte erzeugen.",
+          "C": "Geringe Passage kann auch bei HPS vorkommen; sie belegt aber keine fixe Hypertrophie. Die dokumentierte Variabilität muss mit korrekt gemessener Muskulatur und Klinik gewertet werden.",
+          "D": "Öffnung allein unterscheidet einen normalen Pylorus nicht sicher von Spasmus oder HPS. Wechselnde Verdickung verlangt eine gemeinsame morphometrische und dynamische Beurteilung."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/9805307/"
+      },
+      {
+        "id": "aq-atv-pylorus-indeterminate-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "pylorusstenose"
+        ],
+        "question": "Ein kreislaufstabiler sechs Wochen alter Säugling erbricht weiterhin nichtgallig. Bei HPS-Verdacht war die erste Pylorussonografie technisch unzureichend und ergab grenzwertige Maße ohne verlässliche Dynamik. Welche gezielte Bildgebung ist unter diesen Optionen als nächstes sinnvoll?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Konventionelle Röntgenaufnahme des Abdomens."
+          },
+          {
+            "id": "B",
+            "text": "Kontrastmitteleinlauf zur Beurteilung des Kolons."
+          },
+          {
+            "id": "C",
+            "text": "Gezielte Wiederholungssonografie des Pylorus mit optimierter Technik und dynamischer Beobachtung."
+          },
+          {
+            "id": "D",
+            "text": "Nuklearmedizinische Untersuchung auf gastroösophagealen Reflux."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Technische Einschränkung und grenzwertige Maße ergeben keine sichere positive oder negative Diagnose. Bei fortbestehendem klinischem Verdacht unterstützt die Originalstudie eine erneute Sonografie oder alternative Abklärung; die konkrete Wahl richtet sich nach der klinischen Situation.",
+        "wrongExplanations": {
+          "A": "Ein Röntgenbild kann eine Magendilatation zeigen, klärt aber die grenzwertigen Muskelmaße und dynamische Pylorusöffnung nicht gezielt.",
+          "B": "Ein Kolonkontrasteinlauf untersucht nicht die hier unzureichend beurteilte Pylorusmuskulatur und -öffnung.",
+          "D": "Eine Refluxszintigrafie ersetzt keine verlässliche morphologische und dynamische Pylorusbeurteilung bei weiterbestehendem HPS-Verdacht."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/17958692/"
+      },
+      {
+        "id": "pmc-kolitis-distribution-de",
+        "fach": "abdomen",
+        "tags": [
+          "pmc-kolitis"
+        ],
+        "question": "Nach Antibiotikatherapie bestehen akute Diarrhö und eine segmentale Kolitis mit ausgeprägtem submukösem Ödem. Welche Arbeitsdiagnose sollte in diesem Kontext vorrangig gezielt geprüft werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Ischämische Kolitis als führende Erklärung des segmentalen Ödems."
+          },
+          {
+            "id": "B",
+            "text": "Erstmanifestation einer Colitis ulcerosa als führende Erklärung der akuten Diarrhö."
+          },
+          {
+            "id": "C",
+            "text": "C.-difficile-assoziierte Kolitis als infektiöse Arbeitsdiagnose nach Antibiotikatherapie."
+          },
+          {
+            "id": "D",
+            "text": "Crohn-Kolitis als führende Erklärung der segmentalen Entzündungsverteilung."
+          }
+        ],
+        "correct": "C",
+        "explanation": "PMC kann pancolisch oder segmental auftreten. Wandverdickung und submuköses Ödem sind nicht ätiologiespezifisch; Antibiotikaanamnese und gezielte C.-difficile-Diagnostik gehören zur Einordnung.",
+        "wrongExplanations": {
+          "A": "Ischämische Kolitis bleibt eine Differenzialdiagnose. Segmentales Ödem allein priorisiert sie aber nicht gegenüber der durch Antibiotikaanamnese und akute Diarrhö nahegelegten infektiösen Abklärung.",
+          "B": "Akute Diarrhö und Ödem sind nicht CU-spezifisch. Im beschriebenen Antibiotikakontext muss eine C.-difficile-Infektion vor vorschneller Zuordnung zu neuer IBD gezielt geprüft werden.",
+          "D": "Segmentaler Befall passt zu mehreren Ursachen, darunter auch C.-difficile-Kolitis. Er macht Crohn ohne weitere typische Befunde nicht zur führenden Erklärung dieses akuten Antibiotikakontexts."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/2052723/"
+      },
+      {
+        "id": "pmc-kolitis-accordion-de",
+        "fach": "abdomen",
+        "tags": [
+          "pmc-kolitis"
+        ],
+        "question": "In einer CT mit Kolitis liegt positives luminales Kontrastmittel zwischen stark verdickten Haustren. Welcher Mechanismus erklärt das Accordion-Zeichen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Kontrastmittel zwischen ödematös verdickten Kolonfalten erzeugt ein alternierendes Faltenmuster."
+          },
+          {
+            "id": "B",
+            "text": "Gas innerhalb der Darmwand erzeugt ein intramurales Blasenmuster."
+          },
+          {
+            "id": "C",
+            "text": "Ein eingestülptes Darmsegment erzeugt konzentrische Darm-in-Darm-Ringe."
+          },
+          {
+            "id": "D",
+            "text": "Verdrehte Mesenterialgefäße erzeugen ein spiralförmiges Gefäßmuster."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Das beschriebene Accordion-Muster entsteht durch Kontrastmittel zwischen verdickten ödematösen Falten. Es zeigt ausgeprägte Kolitis beziehungsweise Ödem, beweist aber keinen bestimmten Erreger.",
+        "wrongExplanations": {
+          "B": "Intramurales Gas beschreibt Pneumatosis, nicht Kontrastmittel zwischen Haustren.",
+          "C": "Darm-in-Darm-Ringe gehören zum Invaginationsmuster, nicht zum beschriebenen Faltenmuster.",
+          "D": "Spiralförmige Mesenterialgefäße entsprechen einem Whirl-Muster; hier wird die Kolonwand beschrieben."
+        },
+        "source": "https://doi.org/10.1148/radiology.211.3.r99jn32743"
+      },
+      {
+        "id": "colitis-ulcerosa-pattern-de",
+        "fach": "abdomen",
+        "tags": [
+          "colitis-ulcerosa"
+        ],
+        "question": "Welche Verteilung ist für unbehandelte CU typisch, ohne allein die Diagnose zu beweisen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Diskontinuierliche Abschnitte mit ausgesparten Zwischenstrecken und relativ geschontem Rektum."
+          },
+          {
+            "id": "B",
+            "text": "Isolierte Entzündung des terminalen Ileums bei unauffälligem Kolon."
+          },
+          {
+            "id": "C",
+            "text": "Ein kurzer fokaler Kolonabschnitt mit umschriebener stenosierender Raumforderung."
+          },
+          {
+            "id": "D",
+            "text": "Kontinuierlicher Befall vom Rektum nach proximal."
+          }
+        ],
+        "correct": "D",
+        "explanation": "Rektaler Beginn mit kontinuierlicher proximaler Ausdehnung ist typisch. Ausnahmen und Therapieeffekte bestehen; die CED-Diagnose erfordert weitere klinische, endoskopische und histologische Befunde.",
+        "wrongExplanations": {
+          "A": "Dieses diskontinuierliche Muster ist nicht die typische unbehandelte CU-Verteilung; es verlangt weitere Differenzialdiagnostik.",
+          "B": "Eine isolierte Ileitis beschreibt nicht den typischen rektal beginnenden Kolonbefall einer CU.",
+          "C": "Eine fokale stenosierende Raumforderung passt nicht zum typischen kontinuierlichen entzündlichen Verteilungsmuster."
+        },
+        "source": "https://doi.org/10.1093/ecco-jcc/jjaf106"
+      },
+      {
+        "id": "colitis-ulcerosa-urgent-de",
+        "fach": "abdomen",
+        "tags": [
+          "colitis-ulcerosa"
+        ],
+        "question": "Bei schwerer Kolitis bestehen eine deutliche Kolondilatation ohne mechanischen Übergang, Fieber und Kreislaufinstabilität. Welcher Komplikationsverdacht muss dringlich kommuniziert werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Mechanische Dickdarmobstruktion durch eine fokale Tumorstenose."
+          },
+          {
+            "id": "B",
+            "text": "Toxisches Megakolon im Rahmen schwerer Kolitis."
+          },
+          {
+            "id": "C",
+            "text": "Chronische Narbenstenose mit vorgeschalteter mechanischer Dilatation."
+          },
+          {
+            "id": "D",
+            "text": "Isolierte chronische Entfaltungsminderung ohne akute Komplikation."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Dilatation und systemische Toxizität bei schwerer Kolitis sind ein Warnsignal. Ein isolierter Durchmesser ersetzt die klinische Beurteilung nicht; man wartet nicht auf Perforation.",
+        "wrongExplanations": {
+          "A": "Ein fokaler mechanischer Übergang ist nicht beschrieben; Kolitis, Dilatation und systemische Toxizität sprechen für den genannten dringlichen Komplikationsverdacht.",
+          "C": "Eine Narbenstenose erklärt ohne nachgewiesenen Übergang weder das nichtmechanische Dilatationsmuster noch die akute systemische Toxizität hinreichend.",
+          "D": "Die akute systemische Instabilität und deutliche Dilatation sind nicht als isolierter chronischer Befund abzutun."
+        },
+        "source": "https://doi.org/10.1093/ecco-jcc/jjaf106"
+      },
+      {
+        "id": "aq-atv-rectal-t3-depth-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "Textfall nach AJCC8: Ein Rektumkarzinom wächst durch die Muscularis propria in das mesorektale Fett. Eine Invasion des viszeralen Peritoneums oder benachbarter Organe ist nicht beschrieben. Welche T-Kategorie passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "T1: Invasion der Submukosa."
+          },
+          {
+            "id": "B",
+            "text": "T2: Invasion der Muscularis propria."
+          },
+          {
+            "id": "C",
+            "text": "T3: Wachstum durch die Muscularis propria in perirektales Gewebe."
+          },
+          {
+            "id": "D",
+            "text": "T4a: Invasion der Oberfläche des viszeralen Peritoneums."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Das beschriebene Wachstum durch die Muscularis propria ins perirektale Fett entspricht T3 nach AJCC8. Fettinvasion allein ist keine T4a-Peritonealinvasion.",
+        "wrongExplanations": {
+          "A": "Die Ausdehnung reicht über die Submukosa hinaus.",
+          "B": "T2 bleibt auf die Muscularis propria begrenzt; hier ist das perirektale Fett betroffen.",
+          "D": "Eine Peritonealoberflächeninvasion ist nicht beschrieben."
+        },
+        "source": "https://www.cancer.gov/types/colorectal/hp/rectal-treatment-pdq"
+      },
+      {
+        "id": "abdomen-kolorektales-karzinom-de-01",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "fach": "abdomen",
+        "question": "Im MRT liegt der Primärtumor 2 mm von der MRF entfernt. Ein unregelmäßiger tumorverdächtiger Knoten liegt 0,8 mm entfernt; ein glatt berandeter Knoten liegt 0,6 mm entfernt. Wie ist die MRF nach ESGAR 2026 zu beurteilen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "MRF+ wegen des unregelmäßigen tumorverdächtigen Knotens innerhalb von 1 mm"
+          },
+          {
+            "id": "B",
+            "text": "MRF−, weil der Primärtumor selbst mehr als 1 mm entfernt ist"
+          },
+          {
+            "id": "C",
+            "text": "MRF+ nur bei direkter Infiltration der Faszie durch den Primärtumor"
+          },
+          {
+            "id": "D",
+            "text": "MRF+ allein wegen eines glatt berandeten Lymphknotens innerhalb von 1 mm"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Ein Abstand von ≤1 mm durch einen unregelmäßigen tumorverdächtigen Knoten gilt als MRF-Beteiligung. Ein glatt berandeter Lymphknoten allein macht die MRF nicht positiv.",
+        "source": "https://doi.org/10.1007/s00330-025-12274-w",
+        "wrongExplanations": {
+          "B": "Die MRF-Beurteilung berücksichtigt neben dem Primärtumor auch EMVI und irreguläre tumorverdächtige Knoten; der beschriebene Knoten liegt innerhalb von 1 mm.",
+          "C": "Nach der benannten ESGAR-Fassung reicht ein Abstand von ≤1 mm zu den relevanten Tumorstrukturen für MRF-Beteiligung; sichtbares Durchwachsen der Faszie ist nicht erforderlich.",
+          "D": "Ein glatt berandeter Lymphknoten allein wird in der benannten ESGAR-Fassung auch bei einem Abstand von ≤1 mm nicht als MRF-Beteiligung gewertet."
+        }
+      },
+      {
+        "id": "aq-atv-rectal-emvi-pattern-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "Hochauflösende T2-MRT zeigt tumorsignalgleiches Gewebe innerhalb einer erweiterten, unregelmäßig konturierten extramuralen Vene in Kontinuität zum Rektumtumor. Welche Befundkategorie passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Extramurale venöse Invasion (mrEMVI)."
+          },
+          {
+            "id": "B",
+            "text": "Reaktiv vergrößerter mesorektaler Lymphknoten."
+          },
+          {
+            "id": "C",
+            "text": "Tumorfreies fibrotisches Band im mesorektalen Fett."
+          },
+          {
+            "id": "D",
+            "text": "Unveränderte extramurale Vene ohne Tumorinvasion."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Tumorsignal in einer extramuralen Vene mit erweitertem unregelmäßigem Kontur entspricht dem beschriebenen EMVI-Muster; Gefäßkontinuität und Tumorbezug gezielt beurteilen.",
+        "wrongExplanations": {
+          "B": "Ein isolierter reaktiver Knoten erklärt die beschriebene venöse Kontinuität nicht.",
+          "C": "Tumorfreies Narbengewebe erklärt intravasales Tumorsignal und die erweiterte Venenkontur nicht.",
+          "D": "Tumorsignal im erweiterten unregelmäßigen Gefäß passt nicht zu einer unveränderten tumorfreien Vene."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/21892288/"
+      },
+      {
+        "id": "aq-atv-rectal-lateral-node-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "Bei der primären MRT eines Rektumkarzinoms misst ein Obturator-Lymphknoten 8 mm in der kurzen Achse. Wie ist er nach ESGAR2026 in die regionale Lymphknotenbeurteilung einzubeziehen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Als unauffällig, weil alle pelvinen Knoten unter 10 mm negativ sind."
+          },
+          {
+            "id": "B",
+            "text": "Als suspekter lateraler regionaler Knoten in der patientenbezogenen cN-Einschätzung."
+          },
+          {
+            "id": "C",
+            "text": "Als Fernmetastase M1 allein wegen der Lage außerhalb des Mesorektums."
+          },
+          {
+            "id": "D",
+            "text": "Nicht berücksichtigen; cN beschränkt sich auf mesorektale Knoten."
+          }
+        ],
+        "correct": "B",
+        "explanation": "ESGAR2026 verwendet für obturatorische und interne iliakale Knoten ≥7 mm Kurzachse als suspektes Kriterium. Lokalisation, Größe und Gesamtkontext dokumentieren; nicht aus einem Knoten eine unbelegte genaue cN-Untergruppe oder Therapie ableiten.",
+        "wrongExplanations": {
+          "A": "Der universelle 10-mm-Grenzwert verfehlt das benannte laterale ≥7-mm-Kriterium.",
+          "C": "Die Obturatorstation gehört hier zur regionalen lateralen Beurteilung; extramesorektal bedeutet nicht automatisch M1.",
+          "D": "Nur mesorektale Knoten zu berücksichtigen lässt die relevante laterale regionale Station aus."
+        },
+        "source": "https://doi.org/10.1007/s00330-025-12274-w"
+      },
+      {
+        "id": "abdomen-small-bowel-feces-de-01",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "fach": "abdomen",
+        "question": "CT zeigt partikelhaltigen, stuhlähnlichen Inhalt mit Gasbläschen innerhalb einer dilatierten Dünndarmschlinge nahe einem Kaliberwechsel. Welche Interpretation passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Small-Bowel-Feces-Zeichen; es kann die Suche nach der Übergangszone unterstützen."
+          },
+          {
+            "id": "B",
+            "text": "Pneumatosis intestinalis; das Gas liegt in der Darmwand."
+          },
+          {
+            "id": "C",
+            "text": "Portalvenöses Gas; die Gasbläschen folgen peripheren Lebergefäßen."
+          },
+          {
+            "id": "D",
+            "text": "Whirl-Zeichen; die Gasbläschen markieren verdrehte Mesenterialgefäße."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Das Feces-Zeichen ist intraluminal und kann zur Lokalisation der Übergangszone beitragen. In der zitierten Originalkohorte war es kein unabhängiger Prädiktor für Ischämie oder Erfolg konservativer Behandlung.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/29045179/",
+        "wrongExplanations": {
+          "B": "Beschrieben ist Darminhalt im Lumen, nicht Gas in der Wand.",
+          "C": "Die Gasbläschen liegen im Dünndarmlumen, nicht im hepatischen Portalvenensystem.",
+          "D": "Ein Whirl betrifft die spiralige Mesenterial-/Gefäßanordnung, nicht stuhlähnlichen Darminhalt."
+        }
+      },
+      {
+        "id": "abdomen-foramen-winslow-de-01",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "fach": "abdomen",
+        "question": "Textfall: Dilatierte Darmschlingen gelangen zwischen Pfortader und Vena cava inferior in die Bursa omentalis hinter dem Magen. Welche Hernienform passt zu dieser Route?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Foramen-Winslow-Hernie."
+          },
+          {
+            "id": "B",
+            "text": "Links-paraduodenale Hernie."
+          },
+          {
+            "id": "C",
+            "text": "Perizökale Hernie."
+          },
+          {
+            "id": "D",
+            "text": "Obturatorhernie."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die beschriebene Route durch das Foramen Winslow zwischen Pfortader und Vena cava führt in die Bursa omentalis hinter dem Magen. Entscheidend ist die anatomische Durchtrittsstelle.",
+        "source": "https://doi.org/10.11231/jaem.40.751",
+        "wrongExplanations": {
+          "B": "Die links-paraduodenale Route ist nicht der beschriebene Durchtritt zwischen Pfortader und Vena cava in die Bursa omentalis.",
+          "C": "Eine perizökale Hernie liegt an zökalen Rezessus und erklärt nicht den genannten Weg in die Bursa omentalis.",
+          "D": "Eine Obturatorhernie folgt dem Obturatorkanal im Becken, nicht dem Foramen Winslow."
+        }
+      },
+      {
+        "id": "aq-atv-ileus-closed-loop-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "question": "Textfall: Eine dilatierte C-förmige Dünndarmschlinge endet an zwei benachbarten spitz zulaufenden Übergängen; zugehörige Mesenterialgefäße konvergieren radial. Welche Konfiguration passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Einfache Obstruktion an nur einem Übergang ohne isoliertes Segment."
+          },
+          {
+            "id": "B",
+            "text": "Closed-loop-Obstruktion mit zwei Enden eines isolierten Darmsegments."
+          },
+          {
+            "id": "C",
+            "text": "Diffuser paralytischer Ileus ohne umschriebenen mechanischen Übergang."
+          },
+          {
+            "id": "D",
+            "text": "Isolierte Dickdarmobstruktion mit kollabiertem Dünndarm."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Zwei benachbarte Übergänge begrenzen eine geschlossene Schlinge; C-Form und radiale Gefäße unterstützen die räumliche Zuordnung. Die Konfiguration allein beweist keine Ischämie: Wandkontrastierung, Mesenterium und Klinik zusätzlich prüfen.",
+        "wrongExplanations": {
+          "A": "Hier sind zwei Übergänge mit einem dazwischen isolierten Segment beschrieben, nicht nur ein einzelner Übergang.",
+          "C": "Die umschriebenen zwei Übergänge sprechen für einen mechanischen Closed-loop-Mechanismus, nicht für diffuse Atonie.",
+          "D": "Das beschriebene dilatierte isolierte Segment liegt im Dünndarm; ein kollabierter Dünndarm passt nicht."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/19234265/"
+      },
+      {
+        "id": "volvulus-de-1",
+        "tags": [
+          "volvulus"
+        ],
+        "fach": "abdomen",
+        "question": "Welches Röntgenmuster spricht am ehesten für einen Sigmavolvulus?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Stark dilatierte, kaffeebohnenförmige Sigmaschlinge ohne erkennbare Haustren."
+          },
+          {
+            "id": "B",
+            "text": "Verlagertes dilatiertes Zökum mit kollabiertem distalem Kolon."
+          },
+          {
+            "id": "C",
+            "text": "Zentrale Dünndarmschlingen mit durchgehenden Querfalten und Stufenleiterkonfiguration."
+          },
+          {
+            "id": "D",
+            "text": "Diffuse Dilatation mehrerer Darmabschnitte mit Gas bis zum Rektum."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Eine stark dilatierte kaffeebohnenförmige Sigmaschlinge ist ein typischer Hinweis auf Sigmavolvulus. Morphologie und Verlauf gemeinsam beurteilen; daraus allein folgt keine Aussage über Darmviabilität.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186802/",
+        "wrongExplanations": {
+          "B": "Ein verlagertes dilatiertes Zökum führt zur Differenzialdiagnose eines Zökumvolvulus, nicht zur beschriebenen Sigmaschlinge.",
+          "C": "Das ist ein Dünndarmdilatationsmuster mit durchgehenden Querfalten, kein charakteristisches Sigmabild.",
+          "D": "Diffuse gasgefüllte Darmabschnitte bis zum Rektum bilden nicht das typische fokale Kaffeebohnenmuster einer verdrehten Sigmaschlinge."
+        }
+      },
+      {
+        "id": "aq-atv-ileus-caecal-twist-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "volvulus"
+        ],
+        "question": "Textfall: Die CT verfolgt ein stark dilatiertes Zökum in den linken Oberbauch. Am ileozökalen Übergang bestehen Verdrehung und Kaliberwechsel, das distale Kolon ist kollabiert. Welche Arbeitsdiagnose passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Sigmavolvulus."
+          },
+          {
+            "id": "B",
+            "text": "Stenosierendes Karzinom im Colon descendens."
+          },
+          {
+            "id": "C",
+            "text": "Akute nichtmechanische Kolonpseudoobstruktion."
+          },
+          {
+            "id": "D",
+            "text": "Zökumvolvulus."
+          }
+        ],
+        "correct": "D",
+        "explanation": "Die CT ordnet die verlegte dilatierte Schlinge dem Zökum zu; ileozökale Verdrehung, Übergang und distale Dekompression stützen Zökumvolvulus. Nicht aus der Lage allein schließen: den Darmverlauf nachvollziehen.",
+        "wrongExplanations": {
+          "A": "Der Text identifiziert das Zökum und den ileozökalen Übergang; eine Sigmaschlinge ist nicht beschrieben.",
+          "B": "Eine fokale Tumorstenose im Colon descendens ist nicht beschrieben; die Übergangszone liegt ileozökal mit Verdrehung.",
+          "C": "Eine Pseudoobstruktion erklärt keine nachgewiesene fokale ileozökale Verdrehung mit mechanischem Übergang."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/20574094/"
+      },
+      {
+        "id": "abdomen-ileus-volvulus-de-01",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "fach": "abdomen",
+        "question": "Welche drei Befunde bilden die klassische Rigler-Trias beim Gallensteinileus?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Dünndarmobstruktion, Pneumobilie und ektoper Gallenstein"
+          },
+          {
+            "id": "B",
+            "text": "Kolondilatation, Aerobilie und Gallenblasenstein"
+          },
+          {
+            "id": "C",
+            "text": "Dünndarmobstruktion, Pneumoperitoneum und Portalvenengas"
+          },
+          {
+            "id": "D",
+            "text": "Dünndarmobstruktion, Pneumobilie und ein Stein noch in der Gallenblase"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die klassische Trias umfasst Dünndarmobstruktion, Luft in den Gallenwegen und einen ektopen Gallenstein. Sie ist häufig unvollständig; das Fehlen eines Bestandteils schließt den Gallensteinileus nicht aus.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/15093232/",
+        "wrongExplanations": {
+          "B": "Zur klassischen Trias gehören Dünndarmobstruktion und ein ektoper Stein, nicht lediglich ein noch in der Gallenblase liegender Stein mit Kolondilatation.",
+          "C": "Pneumoperitoneum und Portalvenengas sind nicht die Pneumobilie der Rigler-Trias; außerdem fehlt der ektop gelegene Stein.",
+          "D": "Der obstruierende Stein der klassischen Trias ist ektop im Darm; ein Gallenblasenstein allein erfüllt dieses Merkmal nicht."
+        }
+      },
+      {
+        "id": "abdomen-intussusception-initial-imaging-de-01",
+        "tags": [
+          "intussusception"
+        ],
+        "fach": "abdomen",
+        "question": "Ein kreislaufstabiles Kind hat anfallsartige Bauchschmerzen und klinischen Verdacht auf ileokolische Intussuszeption. Welche Bildgebung ist initial bevorzugt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Abdomensonografie."
+          },
+          {
+            "id": "B",
+            "text": "Kontrastverstärkte CT des Abdomens."
+          },
+          {
+            "id": "C",
+            "text": "Konventionelle Röntgenaufnahme des Abdomens."
+          },
+          {
+            "id": "D",
+            "text": "MRT des Abdomens."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Sonografie ist beim klinischen Verdacht auf kindliche Intussuszeption die initiale Untersuchung der Wahl. Ein Röntgenbild kann bei Obstruktions- oder Perforationsverdacht ergänzen; ein normales Bild schließt Intussuszeption nicht aus.",
+        "source": "https://www.rch.org.au/clinicalguide/guideline_index/intussusception/",
+        "wrongExplanations": {
+          "B": "CT ist in dieser stabilen pädiatrischen Ausgangssituation nicht die bevorzugte Erstuntersuchung; Sonografie ist gezielt und strahlungsfrei.",
+          "C": "Ein Röntgenbild kann Komplikationshinweise geben, ist aber kein verlässlicher primärer Ausschlusstest.",
+          "D": "MRT ist hier nicht die etablierte bevorzugte Erstuntersuchung; die rasch verfügbare gezielte Sonografie ist initial vorgesehen."
+        }
+      },
+      {
+        "id": "abdomen-ileus-ischaemia-de-01",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "fach": "abdomen",
+        "question": "Bei Dünndarmobstruktion zeigt die CT eine Closed-loop-Konfiguration, verminderte Wandkontrastierung und diffuse mesenteriale Trübung. Welche Befundbewertung ist am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Verdacht auf Strangulation mit Ischämie; dringlich kommunizieren und mit Klinik und Gefäß-/Mesenterialbefund zusammenführen."
+          },
+          {
+            "id": "B",
+            "text": "Unkomplizierte mechanische Obstruktion ohne Hinweis auf eine Durchblutungsstörung."
+          },
+          {
+            "id": "C",
+            "text": "Nichtmechanischer paralytischer Ileus als Erklärung des Closed-loop-Musters."
+          },
+          {
+            "id": "D",
+            "text": "Chronisch-entzündliche Wandveränderung ohne akuten Komplikationsverdacht."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die Kombination aus verminderter Wandkontrastierung, mesenterialer Trübung und Closed-loop-Mechanismus war in der Originalkohorte mit Strangulation assoziiert. Der Befund ist dringlich; eine sichere Aussage zur Irreversibilität oder zum genauen Resektionsumfang ergibt sich daraus allein nicht.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/28759326/",
+        "wrongExplanations": {
+          "B": "Verminderte Kontrastierung und die kombinierte mesenteriale/Closed-loop-Konstellation sprechen gegen eine unauffällige Perfusionsbewertung.",
+          "C": "Eine Closed-loop-Konfiguration beschreibt einen mechanischen Schlingenverschluss, nicht die typische diffuse nichtmechanische Dilatation.",
+          "D": "Das beschriebene akute Obstruktions-/Minderperfusionsmuster darf nicht allein als chronische Wandveränderung eingestuft werden."
+        }
+      }
+    ],
+    "en": [
+      {
+        "id": "abdomen-mesenteric-ischaemia-cta-protocol-en-01",
+        "tags": [
+          "mesenteriale-ischaemie"
+        ],
+        "fach": "abdomen",
+        "question": "For suspected acute mesenteric ischaemia, which CT acquisition protocol fits ESVS2025 recommendation33?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Urgent arterial and venous CTA with slices ≤1 mm; optional unenhanced acquisition."
+          },
+          {
+            "id": "B",
+            "text": "Portal venous CT without arterial acquisition, using only 5-mm reconstruction."
+          },
+          {
+            "id": "C",
+            "text": "Thin-slice arterial CTA without venous acquisition."
+          },
+          {
+            "id": "D",
+            "text": "Unenhanced thin-slice CT without a contrast-enhanced acquisition."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Recommendation 33 calls for urgent arterial and venous CTA with thin sections; a non-contrast phase may be added. It explicitly applies regardless of renal function.",
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010",
+        "wrongExplanations": {
+          "B": "Without arterial imaging, targeted arterial occlusion assessment is missing; 5-mm slices alone also do not meet the thin-slice recommendation.",
+          "C": "Arterial imaging alone lacks the venous vascular and bowel assessment; recommendation33 calls for both phases.",
+          "D": "Unenhanced CT does not show contrast-enhanced vessels or mural perfusion and does not replace the recommended CTA."
+        }
+      },
+      {
+        "id": "aq-atv-mesenteric-nomi-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "mesenteriale-ischaemie"
+        ],
+        "question": "A patient in shock receiving vasopressors has reduced small-bowel enhancement on CTA. The SMA and mesenteric veins are patent. Which working diagnosis must particularly be considered?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Embolic proximal SMA occlusion"
+          },
+          {
+            "id": "B",
+            "text": "Non-occlusive mesenteric ischaemia (NOMI)"
+          },
+          {
+            "id": "C",
+            "text": "Occlusive mesenteric venous thrombosis"
+          },
+          {
+            "id": "D",
+            "text": "Pure reactive hyperaemia with increased bowel-wall enhancement"
+          }
+        ],
+        "correct": "B",
+        "explanation": "A patent SMA does not exclude ischaemia. With shock and compatible bowel hypoperfusion, ESVS identifies NOMI as an important suspicion; vasoconstriction and systemic hypoperfusion may occur without central vascular occlusion. Communicate concern urgently in clinical context.",
+        "wrongExplanations": {
+          "A": "A proximal occlusion is not demonstrated when the SMA is described as patent.",
+          "C": "The described patent veins do not demonstrate occlusive venous thrombosis.",
+          "D": "Increased enhancement is not the stated finding; reduced enhancement in shock is described."
+        },
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+      },
+      {
+        "id": "aq-atv-mesenteric-viability-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "mesenteriale-ischaemie"
+        ],
+        "question": "CTA shows SMA occlusion, markedly reduced bowel-wall enhancement, pneumatosis and portomesenteric gas. Which statement about diagnostic certainty is appropriate?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Transit obstruction with preserved perfusion as the leading explanation; conservative follow-up."
+          },
+          {
+            "id": "B",
+            "text": "Transmural necrosis throughout the affected segment as the leading assessment; derive resection extent from CT."
+          },
+          {
+            "id": "C",
+            "text": "Acute mesenteric ischaemia requiring urgent action; promptly assess bowel viability clinically and surgically."
+          },
+          {
+            "id": "D",
+            "text": "Contained bowel perforation as the leading explanation; primarily search for a local leak."
+          }
+        ],
+        "correct": "C",
+        "explanation": "The combined vascular and bowel pattern is highly concerning and requires urgent communication. ESVS also stresses that pneumatosis, venous gas and reduced enhancement alone do not prove irreversible bowel injury. Viability and management require immediate clinical, surgical and vascular assessment.",
+        "wrongExplanations": {
+          "A": "SMA occlusion and reduced wall enhancement argue against preserved perfusion. Conservative follow-up alone would delay urgent ischaemia assessment.",
+          "B": "The pattern is highly concerning but does not reliably define irreversibility or resection extent by itself. Urgent interdisciplinary viability assessment is needed.",
+          "D": "Portomesenteric gas is venous gas, not demonstration of a local bowel leak. SMA occlusion with reduced enhancement prioritises ischaemia; additional perforation signs require separate assessment."
+        },
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+      },
+      {
+        "id": "pylorusstenose-measurement-en",
+        "fach": "abdomen",
+        "tags": [
+          "pylorusstenose"
+        ],
+        "question": "What is measured for pyloric muscle thickness?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Outer anterior wall to outer posterior wall, including the lumen."
+          },
+          {
+            "id": "B",
+            "text": "One wall including hypoechoic muscularis and echogenic mucosa."
+          },
+          {
+            "id": "C",
+            "text": "One muscularis wall perpendicular to its borders, excluding mucosa, submucosa and lumen."
+          },
+          {
+            "id": "D",
+            "text": "The longitudinal pyloric canal length as the wall-thickness measurement."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Muscle thickness is the thickness of one muscularis wall, not total pyloric diameter or canal length. Exclude other wall layers and the lumen; oblique measurement can overestimate thickness.",
+        "wrongExplanations": {
+          "A": "That is a total diameter containing the lumen and two walls.",
+          "B": "Mucosa and other wall layers are not part of isolated muscularis measurement.",
+          "D": "Length and thickness are different dimensions and must be recorded separately."
+        },
+        "source": "https://doi.org/10.13029/aps.2020.26.1.15"
+      },
+      {
+        "id": "pylorusstenose-dynamic-en",
+        "fach": "abdomen",
+        "tags": [
+          "pylorusstenose"
+        ],
+        "question": "The pylorus looks thickened on one still frame but repeatedly opens with passage and changing shape. How should the ultrasound be assessed?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Use the largest static measurement as the determining confirmation of fixed stenosis."
+          },
+          {
+            "id": "B",
+            "text": "Assess dynamic opening and variability together with correctly obtained muscle measurements and clinical findings."
+          },
+          {
+            "id": "C",
+            "text": "The observed passage favours early HPS with already fixed muscular hypertrophy."
+          },
+          {
+            "id": "D",
+            "text": "Repeated opening favours a normal pylorus despite the variable thickening."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Pylorospasm can transiently overlap HPS measurements. Repeated opening and changing morphology are important clues, but a small amount of passage alone does not exclude HPS. Interpret morphology, dynamics and clinical findings together.",
+        "wrongExplanations": {
+          "A": "A maximum measurement ignores the observed variability; spasm may produce isolated high values.",
+          "C": "Small-volume passage may occur in HPS, but does not demonstrate fixed hypertrophy. The documented variability must be assessed with correctly measured muscle and clinical findings.",
+          "D": "Opening alone does not reliably distinguish a normal pylorus from spasm or HPS. Variable thickening requires combined morphometric and dynamic assessment."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/9805307/"
+      },
+      {
+        "id": "aq-atv-pylorus-indeterminate-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "pylorusstenose"
+        ],
+        "question": "A haemodynamically stable six-week-old infant continues nonbilious vomiting. With suspected HPS, initial pyloric ultrasound was technically inadequate with borderline measurements and unreliable dynamic assessment. Which targeted imaging step is most appropriate among these options?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Plain abdominal radiography."
+          },
+          {
+            "id": "B",
+            "text": "Contrast enema to assess the colon."
+          },
+          {
+            "id": "C",
+            "text": "Targeted repeat pyloric ultrasound with optimised technique and dynamic observation."
+          },
+          {
+            "id": "D",
+            "text": "Nuclear medicine study for gastro-oesophageal reflux."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Technical limitations and borderline measurements do not establish a reliable positive or negative diagnosis. With persistent clinical suspicion, the original study supports repeat ultrasound or alternative assessment; the specific choice depends on the clinical situation.",
+        "wrongExplanations": {
+          "A": "Radiographs may show gastric dilatation but do not directly resolve borderline muscle measurements or dynamic pyloric opening.",
+          "B": "A contrast enema does not assess the inadequately examined pyloric muscle and opening.",
+          "D": "Reflux scintigraphy does not replace reliable morphological and dynamic pyloric assessment when HPS remains suspected."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/17958692/"
+      },
+      {
+        "id": "pmc-kolitis-distribution-en",
+        "fach": "abdomen",
+        "tags": [
+          "pmc-kolitis"
+        ],
+        "question": "After antibiotic treatment, acute diarrhoea accompanies segmental colitis with marked submucosal oedema. Which working diagnosis should be specifically prioritised for assessment in this context?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Ischaemic colitis as the leading explanation for segmental oedema."
+          },
+          {
+            "id": "B",
+            "text": "New-onset ulcerative colitis as the leading explanation for acute diarrhoea."
+          },
+          {
+            "id": "C",
+            "text": "C. difficile-associated colitis as an infectious working diagnosis after antibiotic treatment."
+          },
+          {
+            "id": "D",
+            "text": "Crohn colitis as the leading explanation for segmental inflammation."
+          }
+        ],
+        "correct": "C",
+        "explanation": "PMC may be pancolonic or segmental. Wall thickening and submucosal oedema are not aetiology-specific; antibiotic history and targeted C. difficile testing inform interpretation.",
+        "wrongExplanations": {
+          "A": "Ischaemic colitis remains a differential diagnosis. Segmental oedema alone does not prioritise it over infectious assessment prompted by antibiotic exposure and acute diarrhoea.",
+          "B": "Acute diarrhoea and oedema are not UC-specific. In this antibiotic context, targeted C. difficile assessment is needed before prematurely attributing the findings to new IBD.",
+          "D": "Segmental involvement occurs with several causes, including C. difficile colitis. Without additional characteristic findings, it does not make Crohn the leading explanation in this acute antibiotic context."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/2052723/"
+      },
+      {
+        "id": "pmc-kolitis-accordion-en",
+        "fach": "abdomen",
+        "tags": [
+          "pmc-kolitis"
+        ],
+        "question": "In CT of colitis, positive luminal contrast lies between markedly thickened haustra. Which mechanism explains the accordion sign?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Contrast between oedematous thickened colonic folds creates an alternating fold pattern."
+          },
+          {
+            "id": "B",
+            "text": "Gas within the bowel wall creates an intramural bubbly pattern."
+          },
+          {
+            "id": "C",
+            "text": "An invaginated bowel segment creates concentric bowel-within-bowel rings."
+          },
+          {
+            "id": "D",
+            "text": "Twisted mesenteric vessels create a spiral vascular pattern."
+          }
+        ],
+        "correct": "A",
+        "explanation": "The described accordion pattern arises from contrast between thickened oedematous folds. It indicates marked colitis or oedema but does not prove a specific organism.",
+        "wrongExplanations": {
+          "B": "Intramural gas describes pneumatosis, not contrast between haustra.",
+          "C": "Bowel-within-bowel rings belong to intussusception, not the described fold pattern.",
+          "D": "Spiral mesenteric vessels form a whirl pattern; this case describes the colonic wall."
+        },
+        "source": "https://doi.org/10.1148/radiology.211.3.r99jn32743"
+      },
+      {
+        "id": "colitis-ulcerosa-pattern-en",
+        "fach": "abdomen",
+        "tags": [
+          "colitis-ulcerosa"
+        ],
+        "question": "Which distribution is typical of untreated UC without proving the diagnosis alone?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Discontinuous segments with intervening spared bowel and relative rectal sparing."
+          },
+          {
+            "id": "B",
+            "text": "Isolated terminal ileal inflammation with an unremarkable colon."
+          },
+          {
+            "id": "C",
+            "text": "A short focal colonic segment with a localised stenosing mass."
+          },
+          {
+            "id": "D",
+            "text": "Continuous involvement from the rectum proximally."
+          }
+        ],
+        "correct": "D",
+        "explanation": "Rectal onset with continuous proximal extension is typical. Exceptions and treatment effects occur; IBD diagnosis requires additional clinical, endoscopic and histological findings.",
+        "wrongExplanations": {
+          "A": "This discontinuous pattern is not typical of untreated UC and needs differential assessment.",
+          "B": "Isolated ileitis does not describe the typical rectal-onset colonic distribution of UC.",
+          "C": "A focal stenosing mass is not the typical continuous inflammatory distribution."
+        },
+        "source": "https://doi.org/10.1093/ecco-jcc/jjaf106"
+      },
+      {
+        "id": "colitis-ulcerosa-urgent-en",
+        "fach": "abdomen",
+        "tags": [
+          "colitis-ulcerosa"
+        ],
+        "question": "Severe colitis is accompanied by marked colonic dilatation without a mechanical transition, fever and haemodynamic instability. Which suspected complication requires urgent communication?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Mechanical large-bowel obstruction from a focal tumour stenosis."
+          },
+          {
+            "id": "B",
+            "text": "Toxic megacolon complicating severe colitis."
+          },
+          {
+            "id": "C",
+            "text": "Chronic scar stenosis with upstream mechanical dilatation."
+          },
+          {
+            "id": "D",
+            "text": "Isolated chronic loss of distensibility without an acute complication."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Dilatation and systemic toxicity in severe colitis are warning signs. An isolated diameter does not replace clinical assessment; do not wait for perforation.",
+        "wrongExplanations": {
+          "A": "No focal mechanical transition is described; colitis, dilatation and systemic toxicity support the urgent complication concern.",
+          "C": "Without a demonstrated transition, scar stenosis does not adequately explain nonmechanical dilatation and acute systemic toxicity.",
+          "D": "Acute systemic instability and marked dilatation cannot be dismissed as an isolated chronic finding."
+        },
+        "source": "https://doi.org/10.1093/ecco-jcc/jjaf106"
+      },
+      {
+        "id": "aq-atv-rectal-t3-depth-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "AJCC8 text vignette: a rectal carcinoma extends through muscularis propria into mesorectal fat. No visceral peritoneal or adjacent-organ invasion is described. Which T category fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "T1: submucosal invasion."
+          },
+          {
+            "id": "B",
+            "text": "T2: muscularis propria invasion."
+          },
+          {
+            "id": "C",
+            "text": "T3: extension through muscularis propria into perirectal tissue."
+          },
+          {
+            "id": "D",
+            "text": "T4a: visceral peritoneal surface invasion."
+          }
+        ],
+        "correct": "C",
+        "explanation": "The described extension through muscularis propria into perirectal fat is AJCC8 T3. Fat invasion alone is not T4a peritoneal invasion.",
+        "wrongExplanations": {
+          "A": "Extension exceeds the submucosa.",
+          "B": "T2 is confined to muscularis propria; perirectal fat is involved here.",
+          "D": "No peritoneal surface invasion is described."
+        },
+        "source": "https://www.cancer.gov/types/colorectal/hp/rectal-treatment-pdq"
+      },
+      {
+        "id": "abdomen-kolorektales-karzinom-en-01",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "fach": "abdomen",
+        "question": "On MRI, the primary tumour is 2 mm from the MRF. An irregular suspicious node is 0.8 mm away; a smooth-bordered node is 0.6 mm away. How should the MRF be assessed under ESGAR 2026?",
+        "options": [
+          {
+            "id": "A",
+            "text": "MRF+ because of the irregular suspicious node within 1 mm"
+          },
+          {
+            "id": "B",
+            "text": "MRF− because the primary tumour itself is more than 1 mm away"
+          },
+          {
+            "id": "C",
+            "text": "MRF+ only with direct invasion of the fascia by the primary tumour"
+          },
+          {
+            "id": "D",
+            "text": "MRF+ based only on a smooth-bordered lymph node within 1 mm"
+          }
+        ],
+        "correct": "A",
+        "explanation": "A margin of ≤1 mm from an irregular suspicious node indicates MRF involvement. A smooth-bordered lymph node alone does not make the MRF positive.",
+        "source": "https://doi.org/10.1007/s00330-025-12274-w",
+        "wrongExplanations": {
+          "B": "MRF assessment includes EMVI and irregular suspicious nodes as well as the primary tumour; the described irregular node is within 1 mm.",
+          "C": "Under the named ESGAR version, distance ≤1 mm to the relevant tumour structures meets MRF involvement; visible penetration through the fascia is not required.",
+          "D": "Under the named ESGAR version, a smooth-bordered node alone does not constitute MRF involvement even at distance ≤1 mm."
+        }
+      },
+      {
+        "id": "aq-atv-rectal-emvi-pattern-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "High-resolution T2 MRI shows tumour-like tissue within an expanded irregular extramural vein continuous with the rectal tumour. Which reporting category fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Extramural venous invasion (mrEMVI)."
+          },
+          {
+            "id": "B",
+            "text": "A reactively enlarged mesorectal node."
+          },
+          {
+            "id": "C",
+            "text": "A tumour-free fibrotic strand in mesorectal fat."
+          },
+          {
+            "id": "D",
+            "text": "An unchanged extramural vein without tumour invasion."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Tumour signal within an expanded irregular extramural vein is the described EMVI pattern; assess vascular continuity and tumour relationship.",
+        "wrongExplanations": {
+          "B": "An isolated reactive node does not explain the described venous continuity.",
+          "C": "Tumour-free scar does not explain intravascular tumour signal and venous expansion.",
+          "D": "Tumour signal in an expanded irregular vessel does not fit an unchanged tumour-free vein."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/21892288/"
+      },
+      {
+        "id": "aq-atv-rectal-lateral-node-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "At primary MRI of rectal cancer, an obturator node measures 8 mm in short axis. How should it enter regional nodal assessment under ESGAR2026?",
+        "options": [
+          {
+            "id": "A",
+            "text": "As normal because all pelvic nodes below 10 mm are negative."
+          },
+          {
+            "id": "B",
+            "text": "As a suspicious lateral regional node in patient-level cN assessment."
+          },
+          {
+            "id": "C",
+            "text": "As distant metastasis M1 solely because it lies outside the mesorectum."
+          },
+          {
+            "id": "D",
+            "text": "Exclude it because cN is restricted to mesorectal nodes."
+          }
+        ],
+        "correct": "B",
+        "explanation": "ESGAR2026 uses short axis ≥7 mm as a suspicious criterion for obturator and internal iliac nodes. Record location, size and context; do not infer an unsupported precise cN subgroup or treatment from this one node.",
+        "wrongExplanations": {
+          "A": "A universal 10-mm cutoff misses the stated lateral ≥7-mm criterion.",
+          "C": "The obturator station belongs to regional lateral assessment here; extramesorectal does not automatically mean M1.",
+          "D": "Assessing only mesorectal nodes omits a relevant lateral regional station."
+        },
+        "source": "https://doi.org/10.1007/s00330-025-12274-w"
+      },
+      {
+        "id": "abdomen-small-bowel-feces-en-01",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "fach": "abdomen",
+        "question": "CT shows particulate faeces-like contents mixed with gas bubbles inside a dilated small-bowel loop near a calibre change. Which interpretation fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Small-bowel feces sign; it can help locate the transition zone."
+          },
+          {
+            "id": "B",
+            "text": "Pneumatosis intestinalis; the gas is within the bowel wall."
+          },
+          {
+            "id": "C",
+            "text": "Portal venous gas; bubbles follow peripheral hepatic vessels."
+          },
+          {
+            "id": "D",
+            "text": "Whirl sign; the bubbles mark twisted mesenteric vessels."
+          }
+        ],
+        "correct": "A",
+        "explanation": "The feces sign is intraluminal and can help locate the transition zone. In the original cited cohort it did not independently predict ischaemia or successful nonoperative treatment.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/29045179/",
+        "wrongExplanations": {
+          "B": "The description places the contents in the lumen, not gas within the wall.",
+          "C": "The bubbles lie within the small-bowel lumen, not the hepatic portal venous system.",
+          "D": "A whirl concerns spiralling mesenteric/vessel architecture, not faeces-like bowel contents."
+        }
+      },
+      {
+        "id": "abdomen-foramen-winslow-en-01",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "fach": "abdomen",
+        "question": "Text vignette: dilated bowel loops pass between the portal vein and inferior vena cava into the lesser sac behind the stomach. Which hernia fits this route?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Foramen of Winslow hernia."
+          },
+          {
+            "id": "B",
+            "text": "Left paraduodenal hernia."
+          },
+          {
+            "id": "C",
+            "text": "Pericaecal hernia."
+          },
+          {
+            "id": "D",
+            "text": "Obturator hernia."
+          }
+        ],
+        "correct": "A",
+        "explanation": "The described route through the foramen of Winslow between portal vein and vena cava leads into the lesser sac behind the stomach. The anatomical passage is the decisive clue.",
+        "source": "https://doi.org/10.11231/jaem.40.751",
+        "wrongExplanations": {
+          "B": "The left paraduodenal route is not the described passage between portal vein and vena cava into the lesser sac.",
+          "C": "A pericaecal hernia involves caecal recesses and does not explain the stated route into the lesser sac.",
+          "D": "An obturator hernia passes through the pelvic obturator canal, not the foramen of Winslow."
+        }
+      },
+      {
+        "id": "aq-atv-ileus-closed-loop-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "question": "Text vignette: a dilated C-shaped small-bowel loop ends at two adjacent tapering transitions; its mesenteric vessels converge radially. Which configuration fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Simple obstruction at one transition without an isolated segment."
+          },
+          {
+            "id": "B",
+            "text": "Closed-loop obstruction with two ends of an isolated bowel segment."
+          },
+          {
+            "id": "C",
+            "text": "Diffuse paralytic ileus without a focal mechanical transition."
+          },
+          {
+            "id": "D",
+            "text": "Isolated large-bowel obstruction with collapsed small bowel."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Two adjacent transitions delimit a closed loop; C-shape and radial vessels support spatial recognition. Configuration alone does not prove ischaemia: also assess mural enhancement, mesentery and clinical findings.",
+        "wrongExplanations": {
+          "A": "Two transitions with an isolated intervening segment are described, not only one transition.",
+          "C": "The two focal transitions support a mechanical closed loop rather than diffuse atony.",
+          "D": "The described dilated isolated segment is small bowel; collapsed small bowel does not fit."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/19234265/"
+      },
+      {
+        "id": "volvulus-en-1",
+        "tags": [
+          "volvulus"
+        ],
+        "fach": "abdomen",
+        "question": "Which radiographic pattern most strongly suggests sigmoid volvulus?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A markedly dilated coffee-bean-shaped sigmoid loop without visible haustra."
+          },
+          {
+            "id": "B",
+            "text": "A displaced dilated caecum with a decompressed distal colon."
+          },
+          {
+            "id": "C",
+            "text": "Central small-bowel loops with full-width folds in a step-ladder configuration."
+          },
+          {
+            "id": "D",
+            "text": "Diffuse dilatation of several bowel segments with gas extending to the rectum."
+          }
+        ],
+        "correct": "A",
+        "explanation": "A markedly dilated coffee-bean-shaped sigmoid loop is a typical clue to sigmoid volvulus. Assess morphology and course together; this alone does not establish bowel viability.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186802/",
+        "wrongExplanations": {
+          "B": "A displaced dilated caecum suggests the differential of caecal volvulus rather than the described sigmoid loop.",
+          "C": "That is a small-bowel dilatation pattern with full-width folds, not the characteristic sigmoid pattern.",
+          "D": "Diffuse gas-filled bowel extending to the rectum does not form the typical focal coffee-bean pattern of a twisted sigmoid loop."
+        }
+      },
+      {
+        "id": "aq-atv-ileus-caecal-twist-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "volvulus"
+        ],
+        "question": "Text vignette: CT traces a markedly dilated caecum into the left upper quadrant. There is twisting and a transition at the ileocaecal junction, with a decompressed distal colon. Which working diagnosis fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Sigmoid volvulus."
+          },
+          {
+            "id": "B",
+            "text": "Stenosing descending-colon carcinoma."
+          },
+          {
+            "id": "C",
+            "text": "Acute nonmechanical colonic pseudo-obstruction."
+          },
+          {
+            "id": "D",
+            "text": "Caecal volvulus."
+          }
+        ],
+        "correct": "D",
+        "explanation": "CT identifies the displaced dilated loop as caecum; ileocaecal twisting, transition and distal decompression support caecal volvulus. Do not infer origin from location alone: trace bowel continuity.",
+        "wrongExplanations": {
+          "A": "The vignette identifies the caecum and ileocaecal junction rather than a sigmoid loop.",
+          "B": "No descending-colon tumour stenosis is described; the transition is ileocaecal with twisting.",
+          "C": "Pseudo-obstruction does not explain a demonstrated focal ileocaecal twist with a mechanical transition."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/20574094/"
+      },
+      {
+        "id": "abdomen-ileus-volvulus-en-01",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "fach": "abdomen",
+        "question": "Which three findings form the classic Rigler triad in gallstone ileus?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Small-bowel obstruction, pneumobilia and an ectopic gallstone"
+          },
+          {
+            "id": "B",
+            "text": "Colonic dilatation, pneumobilia and a gallbladder stone"
+          },
+          {
+            "id": "C",
+            "text": "Small-bowel obstruction, pneumoperitoneum and portal venous gas"
+          },
+          {
+            "id": "D",
+            "text": "Small-bowel obstruction, pneumobilia and a stone still within the gallbladder"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The classic triad comprises small-bowel obstruction, air in the biliary tree and an ectopic gallstone. It is often incomplete; absence of one component does not exclude gallstone ileus.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/15093232/",
+        "wrongExplanations": {
+          "B": "The classic triad includes small-bowel obstruction and an ectopic stone, not merely a stone still in the gallbladder with colonic dilatation.",
+          "C": "Pneumoperitoneum and portal venous gas are not the pneumobilia of the Rigler triad; the ectopic stone is also absent.",
+          "D": "The obstructing stone in the classic triad is ectopic within bowel; a gallbladder stone alone does not meet that component."
+        }
+      },
+      {
+        "id": "abdomen-intussusception-initial-imaging-en-01",
+        "tags": [
+          "intussusception"
+        ],
+        "fach": "abdomen",
+        "question": "A haemodynamically stable child has intermittent abdominal pain and suspected ileocolic intussusception. Which imaging is preferred initially?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Abdominal ultrasound."
+          },
+          {
+            "id": "B",
+            "text": "Contrast-enhanced abdominal CT."
+          },
+          {
+            "id": "C",
+            "text": "Plain abdominal radiography."
+          },
+          {
+            "id": "D",
+            "text": "Abdominal MRI."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Ultrasound is the initial study of choice in suspected childhood intussusception. Radiographs may complement assessment for obstruction or perforation; normal radiography does not exclude intussusception.",
+        "source": "https://www.rch.org.au/clinicalguide/guideline_index/intussusception/",
+        "wrongExplanations": {
+          "B": "CT is not preferred first in this stable paediatric setting; ultrasound is targeted and radiation-free.",
+          "C": "Radiography can show complication clues but is not a reliable primary exclusion test.",
+          "D": "MRI is not the established preferred first study here; targeted readily available ultrasound is used initially."
+        }
+      },
+      {
+        "id": "abdomen-ileus-ischaemia-en-01",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "fach": "abdomen",
+        "question": "In small-bowel obstruction, CT shows a closed-loop configuration, reduced mural enhancement and diffuse mesenteric haziness. Which interpretation fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Concern for strangulation with ischaemia; communicate urgently and integrate clinical, vascular and mesenteric findings."
+          },
+          {
+            "id": "B",
+            "text": "Uncomplicated mechanical obstruction without evidence of perfusion impairment."
+          },
+          {
+            "id": "C",
+            "text": "Nonmechanical paralytic ileus explaining the closed-loop pattern."
+          },
+          {
+            "id": "D",
+            "text": "Chronic inflammatory mural change without concern for an acute complication."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Reduced mural enhancement, mesenteric haziness and a closed-loop mechanism were associated with strangulation in the original cohort. This warrants urgency; it does not alone establish irreversibility or exact resection extent.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/28759326/",
+        "wrongExplanations": {
+          "B": "Reduced enhancement and the combined mesenteric/closed-loop pattern argue against an uncomplicated perfusion assessment.",
+          "C": "A closed-loop configuration describes mechanical loop obstruction rather than typical diffuse nonmechanical dilatation.",
+          "D": "The described acute obstruction/hypoperfusion pattern should not be classified merely as chronic mural change."
+        }
+      }
+    ],
+    "fa": [
+      {
+        "id": "abdomen-mesenteric-ischaemia-cta-protocol-fa-01",
+        "tags": [
+          "mesenteriale-ischaemie"
+        ],
+        "fach": "abdomen",
+        "question": "در شک بالینی به ایسکمی حاد مزانتریک، کدام پروتکل برداشت CT با توصیهٔ ۳۳ راهنمای ESVS2025 مطابقت دارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "CTA فوری در فاز شریانی و وریدی با برش ≤۱ میلی‌متر؛ برداشت بدون تزریق اختیاری است."
+          },
+          {
+            "id": "B",
+            "text": "CT پورتال وریدی بدون برداشت شریانی، فقط با بازسازی ۵ میلی‌متری."
+          },
+          {
+            "id": "C",
+            "text": "CTA شریانی با برش نازک بدون برداشت وریدی."
+          },
+          {
+            "id": "D",
+            "text": "CT بدون تزریق با برش نازک و بدون برداشت پس از تزریق."
+          }
+        ],
+        "correct": "A",
+        "explanation": "توصیهٔ ۳۳ در صورت شک، CTA فوری در فازهای شریانی و وریدی با برش‌های نازک را مطرح می‌کند؛ فاز بدون تزریق را می‌توان افزود. این توصیه صراحتاً مستقل از عملکرد کلیه است.",
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010",
+        "wrongExplanations": {
+          "B": "بدون فاز شریانی، ارزیابی هدفمند انسداد شریانی ناقص است؛ برش‌های صرفاً ۵ میلی‌متری نیز با توصیهٔ برش نازک مطابقت ندارند.",
+          "C": "فاز شریانی به‌تنهایی ارزیابی وریدی عروق و روده را کامل نمی‌کند؛ توصیهٔ ۳۳ هر دو فاز را می‌خواهد.",
+          "D": "CT بدون تزریق، نمایش عروق پس از تزریق یا خون‌رسانی دیواره را نشان نمی‌دهد و جای CTA توصیه‌شده را نمی‌گیرد."
+        }
+      },
+      {
+        "id": "aq-atv-mesenteric-nomi-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "mesenteriale-ischaemie"
+        ],
+        "question": "بیمار در شوک و تحت وازوپرسور در CTA کاهش تقویت رودهٔ باریک دارد. SMA و وریدهای مزانتریک باز هستند. کدام تشخیص کاری باید به‌ویژه مطرح شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "انسداد آمبولیک پروگزیمال SMA"
+          },
+          {
+            "id": "B",
+            "text": "ایسکمی مزانتریک غیرانسدادی (NOMI)"
+          },
+          {
+            "id": "C",
+            "text": "ترومبوز انسدادی ورید مزانتریک"
+          },
+          {
+            "id": "D",
+            "text": "پرخونی واکنشیِ صرف با افزایش تقویت دیوارهٔ روده"
+          }
+        ],
+        "correct": "B",
+        "explanation": "بازبودن SMA ایسکمی را رد نمی‌کند. در شوک و کاهش پرفیوژن سازگار روده، ESVS ‏NOMI را تشخیص مشکوک مهم می‌داند؛ تنگی عروقی و کم‌پرفیوژنی سیستمیک می‌توانند بدون انسداد عروق مرکزی رخ دهند. نگرانی را در زمینهٔ بالینی فوراً منتقل کنید.",
+        "wrongExplanations": {
+          "A": "با SMA توصیف‌شده به‌عنوان باز، انسداد پروگزیمال نشان داده نشده است.",
+          "C": "وریدهای توصیف‌شده به‌عنوان باز، ترومبوز انسدادی وریدی را نشان نمی‌دهند.",
+          "D": "افزایش تقویت، یافتهٔ ذکرشده نیست؛ کاهش تقویت در شوک توصیف شده است."
+        },
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+      },
+      {
+        "id": "aq-atv-mesenteric-viability-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "mesenteriale-ischaemie"
+        ],
+        "question": "CTA انسداد SMA، کاهش واضح تقویت دیوارهٔ روده، پنوماتوز و گاز پورتومزانتریک نشان می‌دهد. کدام گزاره دربارهٔ قطعیت گزارش مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "اختلال عبور با پرفیوژن حفظ‌شده به‌عنوان علت اصلی؛ پیگیری محافظه‌کارانه."
+          },
+          {
+            "id": "B",
+            "text": "نکروز تمام‌جداری در سراسر قطعهٔ درگیر به‌عنوان ارزیابی اصلی؛ تعیین وسعت رزکسیون بر اساس CT."
+          },
+          {
+            "id": "C",
+            "text": "ایسکمی حاد مزانتریک با نیاز به اقدام فوری؛ ارزیابی بی‌درنگ زنده‌مانی روده از نظر بالینی و جراحی."
+          },
+          {
+            "id": "D",
+            "text": "پرفوراسیون پوشیدهٔ روده به‌عنوان علت اصلی؛ جست‌وجوی اولیهٔ نشت موضعی."
+          }
+        ],
+        "correct": "C",
+        "explanation": "مجموعهٔ یافته‌های عروقی و روده‌ای بسیار نگران‌کننده است و باید فوری منتقل شود. ESVS همچنین تأکید می‌کند که پنوماتوز، گاز وریدی و کاهش تقویت به‌تنهایی آسیب برگشت‌ناپذیر روده را ثابت نمی‌کنند. زنده‌مانی و اقدام بعدی به ارزیابی بی‌درنگ بالینی، جراحی و عروقی نیاز دارد.",
+        "wrongExplanations": {
+          "A": "انسداد SMA و کاهش جذب دیواره بر خلاف پرفیوژن حفظ‌شده‌اند. پیگیری محافظه‌کارانهٔ صرف، ارزیابی فوری ایسکمی را به تأخیر می‌اندازد.",
+          "B": "الگو بسیار نگران‌کننده است، اما به‌تنهایی برگشت‌ناپذیری یا وسعت رزکسیون را با اطمینان تعیین نمی‌کند. ارزیابی فوری و بین‌رشته‌ای زنده‌مانی لازم است.",
+          "D": "گاز پورتومزانتریک گاز وریدی است، نه اثبات نشت موضعی روده. انسداد SMA همراه کاهش جذب، ایسکمی را در اولویت می‌گذارد؛ نشانه‌های اضافی پرفوراسیون باید جداگانه ارزیابی شوند."
+        },
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+      },
+      {
+        "id": "pylorusstenose-measurement-fa",
+        "fach": "abdomen",
+        "tags": [
+          "pylorusstenose"
+        ],
+        "question": "برای ضخامت عضلهٔ پیلور چه چیزی اندازه‌گیری می‌شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "از لبهٔ خارجی دیوارهٔ قدامی تا لبهٔ خارجی دیوارهٔ خلفی، شامل لومن."
+          },
+          {
+            "id": "B",
+            "text": "یک دیواره شامل عضلهٔ کم‌اکو و مخاط اکوژن."
+          },
+          {
+            "id": "C",
+            "text": "یک دیوارهٔ عضلانی عمود بر مرزهای آن، بدون مخاط، زیرمخاط و لومن."
+          },
+          {
+            "id": "D",
+            "text": "طول کانال پیلور به‌عنوان اندازهٔ ضخامت دیواره."
+          }
+        ],
+        "correct": "C",
+        "explanation": "ضخامت عضله، ضخامت یک دیوارهٔ عضلانی است، نه قطر کل پیلور یا طول کانال. لایه‌های دیگر دیواره و لومن را کنار بگذارید؛ اندازه‌گیری مایل می‌تواند ضخامت را بیش‌برآورد کند.",
+        "wrongExplanations": {
+          "A": "این قطر کلی شامل لومن و دو دیواره است.",
+          "B": "مخاط و لایه‌های دیگر دیواره جزو اندازه‌گیری منفرد عضله نیستند.",
+          "D": "طول و ضخامت دو بُعد متفاوت‌اند و باید جداگانه ثبت شوند."
+        },
+        "source": "https://doi.org/10.13029/aps.2020.26.1.15"
+      },
+      {
+        "id": "pylorusstenose-dynamic-fa",
+        "fach": "abdomen",
+        "tags": [
+          "pylorusstenose"
+        ],
+        "question": "پیلور در یک تصویر ثابت ضخیم به‌نظر می‌رسد، اما مکرراً با عبور محتویات و تغییر شکل باز می‌شود. سونوگرافی چگونه باید ارزیابی شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "بزرگ‌ترین اندازهٔ ثابت را تأیید تعیین‌کنندهٔ تنگی ثابت بدانید."
+          },
+          {
+            "id": "B",
+            "text": "بازشدن پویا و تغییرپذیری را همراه با اندازه‌گیری درست عضله و بالین بررسی کنید."
+          },
+          {
+            "id": "C",
+            "text": "عبور مشاهده‌شده به نفع مرحلهٔ زودرس HPS با هیپرتروفی عضلانی از قبل ثابت است."
+          },
+          {
+            "id": "D",
+            "text": "بازشدن مکرر به نفع پیلور طبیعی، با وجود ضخیم‌شدگی متغیر است."
+          }
+        ],
+        "correct": "B",
+        "explanation": "پیلورواسپاسم می‌تواند موقتاً اندازه‌هایی هم‌پوشان با HPS داشته باشد. بازشدن مکرر و تغییر مورفولوژی سرنخ‌های مهم‌اند، اما عبور مقدار کمی مایع به‌تنهایی HPS را رد نمی‌کند. مورفومتری، پویایی و بالین را با هم بررسی کنید.",
+        "wrongExplanations": {
+          "A": "بیشینهٔ اندازه، تغییرپذیری مشاهده‌شده را نادیده می‌گیرد؛ اسپاسم می‌تواند مقادیر منفرد بالا ایجاد کند.",
+          "C": "عبور مقدار کمی مایع ممکن است در HPS هم رخ دهد، اما هیپرتروفی ثابت را نشان نمی‌دهد. تغییرپذیری ثبت‌شده باید همراه اندازه‌گیری درست عضله و بالین ارزیابی شود.",
+          "D": "بازشدن به‌تنهایی پیلور طبیعی را با اطمینان از اسپاسم یا HPS تفکیک نمی‌کند. ضخیم‌شدگی متغیر به ارزیابی توأم مورفومتری و پویایی نیاز دارد."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/9805307/"
+      },
+      {
+        "id": "aq-atv-pylorus-indeterminate-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "pylorusstenose"
+        ],
+        "question": "شیرخوار شش‌هفته‌ای با وضعیت همودینامیک پایدار همچنان استفراغ غیرصفراوی دارد. در شک به HPS، سونوگرافی اولیهٔ پیلور از نظر فنی ناکافی و اندازه‌ها مرزی بوده و ارزیابی پویا قابل‌اعتماد نبوده است. از میان این گزینه‌ها، کدام تصویربرداری هدفمند بعدی مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "رادیوگرافی سادهٔ شکم."
+          },
+          {
+            "id": "B",
+            "text": "تنقیهٔ مادهٔ حاجب برای ارزیابی کولون."
+          },
+          {
+            "id": "C",
+            "text": "تکرار هدفمند سونوگرافی پیلور با تکنیک بهینه و مشاهدهٔ پویا."
+          },
+          {
+            "id": "D",
+            "text": "بررسی پزشکی هسته‌ای برای ریفلاکس معده‌به‌مری."
+          }
+        ],
+        "correct": "C",
+        "explanation": "محدودیت فنی و اندازه‌های مرزی، تشخیص مثبت یا منفی قابل‌اعتماد نمی‌دهند. در شک بالینی ماندگار، مطالعهٔ اصلی از تکرار سونوگرافی یا بررسی جایگزین حمایت می‌کند؛ انتخاب مشخص به وضعیت بالینی بستگی دارد.",
+        "wrongExplanations": {
+          "A": "رادیوگرافی ممکن است اتساع معده را نشان دهد، اما اندازه‌های مرزی عضله و بازشدن پویای پیلور را هدفمند روشن نمی‌کند.",
+          "B": "تنقیهٔ مادهٔ حاجب، عضله و بازشدن پیلور را که ناقص بررسی شده‌اند ارزیابی نمی‌کند.",
+          "D": "سینتی‌گرافی ریفلاکس در شک ماندگار به HPS جای ارزیابی مورفولوژیک و پویای قابل‌اعتماد پیلور را نمی‌گیرد."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/17958692/"
+      },
+      {
+        "id": "pmc-kolitis-distribution-fa",
+        "fach": "abdomen",
+        "tags": [
+          "pmc-kolitis"
+        ],
+        "question": "پس از درمان آنتی‌بیوتیکی، اسهال حاد همراه کولیت سگمنتال و ادم واضح زیرمخاطی وجود دارد. در این زمینه، بررسی هدفمند کدام تشخیص کاری باید در اولویت باشد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "کولیت ایسکمیک به‌عنوان علت اصلی ادم سگمنتال."
+          },
+          {
+            "id": "B",
+            "text": "اولین تظاهر کولیت اولسروز به‌عنوان علت اصلی اسهال حاد."
+          },
+          {
+            "id": "C",
+            "text": "کولیت مرتبط با C. difficile به‌عنوان تشخیص کاری عفونی پس از درمان آنتی‌بیوتیکی."
+          },
+          {
+            "id": "D",
+            "text": "کولیت کرون به‌عنوان علت اصلی توزیع سگمنتال التهاب."
+          }
+        ],
+        "correct": "C",
+        "explanation": "PMC می‌تواند پان‌کولونیک یا سگمنتال باشد. ضخیم‌شدگی دیواره و ادم زیرمخاطی برای علت اختصاصی نیستند؛ سابقهٔ آنتی‌بیوتیک و آزمایش هدفمند C. difficile به تفسیر کمک می‌کنند.",
+        "wrongExplanations": {
+          "A": "کولیت ایسکمیک همچنان تشخیص افتراقی است؛ اما ادم سگمنتال به‌تنهایی آن را بر بررسی عفونتِ مطرح در زمینهٔ آنتی‌بیوتیک و اسهال حاد مقدم نمی‌کند.",
+          "B": "اسهال حاد و ادم مختص CU نیستند. در زمینهٔ آنتی‌بیوتیکِ ذکرشده، پیش از نسبت‌دادن شتاب‌زدهٔ یافته‌ها به IBD جدید، بررسی هدفمند C. difficile لازم است.",
+          "D": "درگیری سگمنتال علل گوناگونی از جمله کولیت C. difficile دارد. بدون یافته‌های مشخصهٔ بیشتر، این توزیع کرون را علت اصلی در زمینهٔ حاد پس از آنتی‌بیوتیک نمی‌کند."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/2052723/"
+      },
+      {
+        "id": "pmc-kolitis-accordion-fa",
+        "fach": "abdomen",
+        "tags": [
+          "pmc-kolitis"
+        ],
+        "question": "در CT کولیت، مادهٔ حاجب مثبت داخل لومن بین هاوسترهای به‌شدت ضخیم قرار دارد. کدام سازوکار علامت آکاردئون را توضیح می‌دهد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "مادهٔ حاجب بین چین‌های ادماتو و ضخیم کولون، الگوی متناوب چین‌ها را ایجاد می‌کند."
+          },
+          {
+            "id": "B",
+            "text": "گاز داخل دیوارهٔ روده، الگوی حبابی داخل‌دیواره‌ای ایجاد می‌کند."
+          },
+          {
+            "id": "C",
+            "text": "یک قطعهٔ فرورفتهٔ روده، حلقه‌های متحدالمرکز روده‌در‌روده ایجاد می‌کند."
+          },
+          {
+            "id": "D",
+            "text": "عروق مزانتریک پیچ‌خورده، الگوی عروقی مارپیچی ایجاد می‌کنند."
+          }
+        ],
+        "correct": "A",
+        "explanation": "الگوی آکاردئونی توصیف‌شده از مادهٔ حاجب بین چین‌های ضخیم و ادماتو ناشی می‌شود. نشان‌دهندهٔ کولیت یا ادم شدید است، اما عامل عفونی مشخصی را ثابت نمی‌کند.",
+        "wrongExplanations": {
+          "B": "گاز داخل دیواره، پنوماتوز است، نه مادهٔ حاجب بین هاوسترها.",
+          "C": "حلقه‌های روده‌در‌روده مربوط به انواژیناسیون‌اند، نه الگوی چین‌های توصیف‌شده.",
+          "D": "عروق مزانتریک مارپیچی الگوی ویرل می‌سازند؛ این مورد دیوارهٔ کولون را توصیف می‌کند."
+        },
+        "source": "https://doi.org/10.1148/radiology.211.3.r99jn32743"
+      },
+      {
+        "id": "colitis-ulcerosa-pattern-fa",
+        "fach": "abdomen",
+        "tags": [
+          "colitis-ulcerosa"
+        ],
+        "question": "کدام توزیع برای کولیت اولسروز درمان‌نشده تیپیک است، بدون اینکه به‌تنهایی تشخیص را اثبات کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "قطعات ناپیوسته با بخش‌های بینابینی سالم و حفظ نسبی رکتوم."
+          },
+          {
+            "id": "B",
+            "text": "التهاب منفرد ایلئوم انتهایی با کولون بدون یافته."
+          },
+          {
+            "id": "C",
+            "text": "قطعهٔ کوتاه و کانونی کولون با تودهٔ تنگ‌کنندهٔ محدود."
+          },
+          {
+            "id": "D",
+            "text": "درگیری پیوسته از رکتوم به سمت پروگزیمال."
+          }
+        ],
+        "correct": "D",
+        "explanation": "شروع رکتال با امتداد پیوسته به پروگزیمال تیپیک است. استثناها و اثر درمان وجود دارند؛ تشخیص IBD به یافته‌های بالینی، اندوسکوپیک و بافت‌شناسی نیز نیاز دارد.",
+        "wrongExplanations": {
+          "A": "این الگوی ناپیوسته، توزیع معمول CU درمان‌نشده نیست و بررسی افتراقی می‌خواهد.",
+          "B": "ایلئیت منفرد، درگیری معمول کولون با شروع رکتال در CU را توصیف نمی‌کند.",
+          "C": "تودهٔ تنگ‌کنندهٔ کانونی، الگوی معمول توزیع التهابی پیوسته نیست."
+        },
+        "source": "https://doi.org/10.1093/ecco-jcc/jjaf106"
+      },
+      {
+        "id": "colitis-ulcerosa-urgent-fa",
+        "fach": "abdomen",
+        "tags": [
+          "colitis-ulcerosa"
+        ],
+        "question": "کولیت شدید با اتساع واضح کولون بدون نقطهٔ گذار مکانیکی، تب و ناپایداری همودینامیک همراه است. شک به کدام عارضه باید فوری اعلام شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "انسداد مکانیکی رودهٔ بزرگ به علت تنگی توموری کانونی."
+          },
+          {
+            "id": "B",
+            "text": "مگاکولون توکسیک در زمینهٔ کولیت شدید."
+          },
+          {
+            "id": "C",
+            "text": "تنگی اسکاری مزمن با اتساع مکانیکی بالادست."
+          },
+          {
+            "id": "D",
+            "text": "کاهش اتساع‌پذیری مزمن و منفرد بدون عارضهٔ حاد."
+          }
+        ],
+        "correct": "B",
+        "explanation": "اتساع و سمیت سیستمیک در کولیت شدید هشداردهنده‌اند. یک قطر منفرد جای ارزیابی بالینی را نمی‌گیرد؛ نباید منتظر پرفوراسیون ماند.",
+        "wrongExplanations": {
+          "A": "نقطهٔ گذار مکانیکی کانونی توصیف نشده؛ کولیت، اتساع و سمیت سیستمیک از شک به عارضهٔ فوری حمایت می‌کنند.",
+          "C": "بدون نقطهٔ گذار اثبات‌شده، تنگی اسکاری اتساع غیرمکانیکی و سمیت حاد سیستمیک را به‌خوبی توضیح نمی‌دهد.",
+          "D": "ناپایداری حاد سیستمیک و اتساع واضح را نمی‌توان یافتهٔ مزمن منفرد دانست."
+        },
+        "source": "https://doi.org/10.1093/ecco-jcc/jjaf106"
+      },
+      {
+        "id": "aq-atv-rectal-t3-depth-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "سناریوی متنی بر اساس AJCC8: سرطان رکتوم از عضلهٔ اصلی عبور کرده و وارد چربی مزورکتوم شده است. تهاجم به صفاق احشایی یا اعضای مجاور توصیف نشده است. کدام ردهٔ T مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "T1: تهاجم به زیرمخاط."
+          },
+          {
+            "id": "B",
+            "text": "T2: تهاجم به عضلهٔ اصلی."
+          },
+          {
+            "id": "C",
+            "text": "T3: عبور از عضلهٔ اصلی به بافت اطراف رکتوم."
+          },
+          {
+            "id": "D",
+            "text": "T4a: تهاجم به سطح صفاق احشایی."
+          }
+        ],
+        "correct": "C",
+        "explanation": "رشد توصیف‌شده از میان عضلهٔ اصلی به چربی اطراف رکتوم، T3 در AJCC8 است. تهاجم به چربی به‌تنهایی تهاجم صفاقی T4a نیست.",
+        "wrongExplanations": {
+          "A": "گسترش فراتر از زیرمخاط است.",
+          "B": "T2 به عضلهٔ اصلی محدود است؛ اینجا چربی اطراف رکتوم درگیر است.",
+          "D": "تهاجم به سطح صفاق توصیف نشده است."
+        },
+        "source": "https://www.cancer.gov/types/colorectal/hp/rectal-treatment-pdq"
+      },
+      {
+        "id": "abdomen-kolorektales-karzinom-fa-01",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "fach": "abdomen",
+        "question": "در MRI، تومور اولیه ۲ میلی‌متر از MRF فاصله دارد. یک غدهٔ نامنظم و مشکوک در فاصلهٔ ۰٫۸ میلی‌متری و یک غده با حاشیه صاف در فاصلهٔ ۰٫۶ میلی‌متری قرار دارد. طبق ESGAR 2026، MRF چگونه ارزیابی می‌شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "MRF مثبت است، چون غدهٔ نامنظم و مشکوک در فاصلهٔ حداکثر ۱ میلی‌متر قرار دارد"
+          },
+          {
+            "id": "B",
+            "text": "MRF منفی است، چون خود تومور اولیه بیش از ۱ میلی‌متر فاصله دارد"
+          },
+          {
+            "id": "C",
+            "text": "MRF فقط در صورت تهاجم مستقیم تومور اولیه به فاسیا مثبت است"
+          },
+          {
+            "id": "D",
+            "text": "MRF مثبت فقط به‌دلیل یک غده با حاشیه صاف در فاصلهٔ حداکثر ۱ میلی‌متر"
+          }
+        ],
+        "correct": "A",
+        "explanation": "فاصلهٔ حداکثر ۱ میلی‌متر از غدهٔ نامنظم و مشکوک به معنی درگیری MRF است. غدهٔ لنفاوی با حاشیهٔ صاف به‌تنهایی MRF را مثبت نمی‌کند.",
+        "source": "https://doi.org/10.1007/s00330-025-12274-w",
+        "wrongExplanations": {
+          "B": "ارزیابی MRF علاوه بر تومور اصلی، EMVI و غدد نامنظم مشکوک را هم لحاظ می‌کند؛ غدهٔ نامنظم توصیف‌شده در فاصلهٔ کمتر از ۱ میلی‌متر است.",
+          "C": "در نسخهٔ نام‌بردهٔ ESGAR، فاصلهٔ ≤۱ میلی‌متر تا ساختارهای توموری مرتبط معیار درگیری MRF است؛ عبور قابل مشاهده از فاسیا الزامی نیست.",
+          "D": "در نسخهٔ نام‌بردهٔ ESGAR، غدهٔ با حاشیهٔ صاف به‌تنهایی حتی با فاصلهٔ ≤۱ میلی‌متر درگیری MRF محسوب نمی‌شود."
+        }
+      },
+      {
+        "id": "aq-atv-rectal-emvi-pattern-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "T2 با تفکیک بالا بافت هم‌سیگنال تومور را داخل ورید خارج‌دیواره‌ای متسع و نامنظم و در تداوم با تومور رکتوم نشان می‌دهد. کدام دستهٔ گزارش مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "تهاجم وریدی خارج‌دیواره‌ای (mrEMVI)."
+          },
+          {
+            "id": "B",
+            "text": "غدهٔ لنفاوی واکنشیِ بزرگ‌شدهٔ مزورکتوم."
+          },
+          {
+            "id": "C",
+            "text": "نوار فیبروتیک بدون تومور در چربی مزورکتوم."
+          },
+          {
+            "id": "D",
+            "text": "ورید خارج‌دیواره‌ای بدون تغییر و بدون تهاجم تومور."
+          }
+        ],
+        "correct": "A",
+        "explanation": "سیگنال تومور داخل ورید خارج‌دیواره‌ای متسع و نامنظم، الگوی توصیف‌شدهٔ EMVI است؛ تداوم عروقی و ارتباط با تومور را بررسی کنید.",
+        "wrongExplanations": {
+          "B": "غدهٔ واکنشی منفرد، تداوم وریدی توصیف‌شده را توضیح نمی‌دهد.",
+          "C": "اسکار بدون تومور، سیگنال تومور داخل رگ و اتساع ورید را توضیح نمی‌دهد.",
+          "D": "سیگنال تومور در رگ متسع و نامنظم با ورید بدون تغییر و فاقد تومور مطابقت ندارد."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/21892288/"
+      },
+      {
+        "id": "aq-atv-rectal-lateral-node-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "در MRI اولیهٔ سرطان رکتوم، غدهٔ ابتوراتور در محور کوتاه ۸ میلی‌متر است. بر اساس ESGAR2026 چگونه در ارزیابی غدد ناحیه‌ای لحاظ شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "طبیعی، چون همهٔ غدد لگنی زیر ۱۰ میلی‌متر منفی‌اند."
+          },
+          {
+            "id": "B",
+            "text": "به‌عنوان غدهٔ ناحیه‌ای جانبیِ مشکوک در ارزیابی cN در سطح بیمار."
+          },
+          {
+            "id": "C",
+            "text": "متاستاز دوردست M1 صرفاً به علت محل خارج مزورکتوم."
+          },
+          {
+            "id": "D",
+            "text": "حذف شود، چون cN به غدد مزورکتوم محدود است."
+          }
+        ],
+        "correct": "B",
+        "explanation": "ESGAR2026 محور کوتاه ≥۷ میلی‌متر را برای غدد ابتوراتور و ایلیاک داخلی معیار مشکوک می‌داند. محل، اندازه و زمینه را ثبت کنید؛ از این غدهٔ منفرد، زیرگروه دقیق cN یا درمان بدون پشتوانه نتیجه نگیرید.",
+        "wrongExplanations": {
+          "A": "حد همگانی ۱۰ میلی‌متر، معیار جانبی ≥۷ میلی‌متر را نادیده می‌گیرد.",
+          "C": "ایستگاه ابتوراتور در اینجا ناحیه‌ای و جانبی است؛ خارج مزورکتوم خودبه‌خود M1 نیست.",
+          "D": "ارزیابی صرف غدد مزورکتوم، ایستگاه ناحیه‌ای جانبی مهم را حذف می‌کند."
+        },
+        "source": "https://doi.org/10.1007/s00330-025-12274-w"
+      },
+      {
+        "id": "abdomen-small-bowel-feces-fa-01",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "fach": "abdomen",
+        "question": "CT محتوای ذره‌ای شبیه مدفوع همراه حباب گاز داخل لوپ متسع رودهٔ باریک نزدیک تغییر قطر نشان می‌دهد. کدام تفسیر مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "علامت مدفوع رودهٔ باریک؛ می‌تواند به یافتن نقطهٔ گذار کمک کند."
+          },
+          {
+            "id": "B",
+            "text": "پنوماتوز روده؛ گاز داخل دیوارهٔ روده است."
+          },
+          {
+            "id": "C",
+            "text": "گاز ورید پورت؛ حباب‌ها از عروق محیطی کبد پیروی می‌کنند."
+          },
+          {
+            "id": "D",
+            "text": "علامت ویرل؛ حباب‌ها عروق مزانتریک پیچ‌خورده را مشخص می‌کنند."
+          }
+        ],
+        "correct": "A",
+        "explanation": "علامت مدفوع داخل لومن است و می‌تواند به یافتن نقطهٔ گذار کمک کند. در کوهورت اصلیِ مورد استناد، پیش‌بینی‌کنندهٔ مستقل ایسکمی یا موفقیت درمان غیرجراحی نبود.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/29045179/",
+        "wrongExplanations": {
+          "B": "توصیف مربوط به محتویات داخل لومن است، نه گاز داخل دیواره.",
+          "C": "حباب‌ها داخل لومن رودهٔ باریک‌اند، نه سیستم ورید پورت کبد.",
+          "D": "ویرل آرایش مارپیچی مزانتر و عروق است، نه محتوای روده شبیه مدفوع."
+        }
+      },
+      {
+        "id": "abdomen-foramen-winslow-fa-01",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "fach": "abdomen",
+        "question": "سناریوی متنی: لوپ‌های متسع روده از میان ورید پورت و ورید اجوف تحتانی وارد بورس امنتال پشت معده می‌شوند. کدام فتق با این مسیر سازگار است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "فتق فورامن وینسلو."
+          },
+          {
+            "id": "B",
+            "text": "فتق پارادئودنال چپ."
+          },
+          {
+            "id": "C",
+            "text": "فتق اطراف سکوم."
+          },
+          {
+            "id": "D",
+            "text": "فتق ابتوراتور."
+          }
+        ],
+        "correct": "A",
+        "explanation": "مسیر توصیف‌شده از فورامن وینسلو میان ورید پورت و اجوف به بورس امنتال پشت معده می‌رسد. سرنخ تعیین‌کننده، محل عبور آناتومیک است.",
+        "source": "https://doi.org/10.11231/jaem.40.751",
+        "wrongExplanations": {
+          "B": "مسیر پارادئودنال چپ، عبور توصیف‌شده میان ورید پورت و اجوف به بورس امنتال نیست.",
+          "C": "فتق اطراف سکوم مربوط به ریسس‌های سکومی است و مسیر گفته‌شده به بورس امنتال را توضیح نمی‌دهد.",
+          "D": "فتق ابتوراتور از کانال ابتوراتور در لگن می‌گذرد، نه فورامن وینسلو."
+        }
+      },
+      {
+        "id": "aq-atv-ileus-closed-loop-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "question": "سناریوی متنی: لوپ Cشکل و متسع رودهٔ باریک به دو نقطهٔ گذار نوک‌دار مجاور ختم می‌شود؛ عروق مزانتریک آن به‌صورت شعاعی همگرا هستند. کدام پیکربندی مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "انسداد ساده در یک نقطهٔ گذار بدون قطعهٔ ایزوله."
+          },
+          {
+            "id": "B",
+            "text": "انسداد لوپ بسته با دو انتهای قطعهٔ ایزولهٔ روده."
+          },
+          {
+            "id": "C",
+            "text": "ایلئوس فلجی منتشر بدون نقطهٔ گذار مکانیکی محدود."
+          },
+          {
+            "id": "D",
+            "text": "انسداد منفرد رودهٔ بزرگ با رودهٔ باریک فروریخته."
+          }
+        ],
+        "correct": "B",
+        "explanation": "دو نقطهٔ گذار مجاور، لوپ بسته را محدود می‌کنند؛ شکل C و عروق شعاعی به تشخیص فضایی کمک می‌کنند. این پیکربندی به‌تنهایی ایسکمی را ثابت نمی‌کند؛ تقویت دیواره، مزانتر و بالین نیز بررسی شوند.",
+        "wrongExplanations": {
+          "A": "اینجا دو نقطهٔ گذار با قطعهٔ ایزولهٔ میان آن‌ها توصیف شده، نه فقط یک گذار.",
+          "C": "دو نقطهٔ گذار محدود، از لوپ بستهٔ مکانیکی حمایت می‌کنند، نه آتونی منتشر.",
+          "D": "قطعهٔ ایزولهٔ متسع توصیف‌شده در رودهٔ باریک است؛ رودهٔ باریک فروریخته با آن مطابقت ندارد."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/19234265/"
+      },
+      {
+        "id": "volvulus-fa-1",
+        "tags": [
+          "volvulus"
+        ],
+        "fach": "abdomen",
+        "question": "کدام الگوی رادیوگرافی بیشتر به نفع ولولوس سیگموئید است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "لوپ سیگموئید بسیار متسع و دانه‌قهوه‌ای بدون هاوسترای قابل مشاهده."
+          },
+          {
+            "id": "B",
+            "text": "سکوم متسع و جابه‌جا با کولون دیستال فروریخته."
+          },
+          {
+            "id": "C",
+            "text": "لوپ‌های مرکزی رودهٔ باریک با چین‌های تمام‌عرض و آرایش نردبانی."
+          },
+          {
+            "id": "D",
+            "text": "اتساع منتشر چند بخش روده همراه گاز تا رکتوم."
+          }
+        ],
+        "correct": "A",
+        "explanation": "لوپ سیگموئید بسیار متسع و دانه‌قهوه‌ای سرنخ معمول ولولوس سیگموئید است. شکل و مسیر را با هم بررسی کنید؛ این یافته به‌تنهایی زنده‌مانی روده را تعیین نمی‌کند.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186802/",
+        "wrongExplanations": {
+          "B": "سکوم متسع و جابه‌جا تشخیص افتراقی ولولوس سکوم را مطرح می‌کند، نه لوپ سیگموئید توصیف‌شده.",
+          "C": "این الگوی اتساع رودهٔ باریک با چین‌های تمام‌عرض است، نه الگوی مشخص سیگموئید.",
+          "D": "گاز منتشر در بخش‌های روده تا رکتوم، الگوی کانونی و معمول دانه‌قهوه‌ایِ لوپ سیگموئید پیچ‌خورده را نمی‌سازد."
+        }
+      },
+      {
+        "id": "aq-atv-ileus-caecal-twist-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "volvulus"
+        ],
+        "question": "سناریوی متنی: CT سکوم بسیار متسع را تا ربع فوقانی چپ دنبال می‌کند. در اتصال ایلئوسکال پیچش و تغییر قطر وجود دارد و کولون دیستال فروریخته است. کدام تشخیص کاری مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ولولوس سیگموئید."
+          },
+          {
+            "id": "B",
+            "text": "سرطان تنگ‌کنندهٔ کولون نزولی."
+          },
+          {
+            "id": "C",
+            "text": "شبه‌انسداد حاد و غیرمکانیکی کولون."
+          },
+          {
+            "id": "D",
+            "text": "ولولوس سکوم."
+          }
+        ],
+        "correct": "D",
+        "explanation": "CT لوپ متسع و جابه‌جا را سکوم مشخص می‌کند؛ پیچش ایلئوسکال، گذار و کاهش اتساع دیستال از ولولوس سکوم حمایت می‌کنند. منشأ را از محل به‌تنهایی نتیجه نگیرید؛ تداوم روده را دنبال کنید.",
+        "wrongExplanations": {
+          "A": "سناریو سکوم و اتصال ایلئوسکال را مشخص می‌کند، نه لوپ سیگموئید.",
+          "B": "تنگی توموری کولون نزولی توصیف نشده؛ نقطهٔ گذار ایلئوسکال همراه پیچش است.",
+          "C": "شبه‌انسداد، پیچش محدود و اثبات‌شدهٔ ایلئوسکال با نقطهٔ گذار مکانیکی را توضیح نمی‌دهد."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/20574094/"
+      },
+      {
+        "id": "abdomen-ileus-volvulus-fa-01",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "fach": "abdomen",
+        "question": "کدام سه یافته تریاد کلاسیک ریگلر را در ایلئوس سنگ صفراوی تشکیل می‌دهند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "انسداد روده باریک، پنوموبیلی و سنگ صفراوی نابجا"
+          },
+          {
+            "id": "B",
+            "text": "اتساع کولون، پنوموبیلی و سنگ داخل کیسه صفرا"
+          },
+          {
+            "id": "C",
+            "text": "انسداد روده باریک، پنوموپریتوئن و گاز ورید پورت"
+          },
+          {
+            "id": "D",
+            "text": "انسداد روده باریک، پنوموبیلی و سنگی که هنوز داخل کیسه صفراست"
+          }
+        ],
+        "correct": "A",
+        "explanation": "تریاد کلاسیک شامل انسداد روده باریک، هوا در مجاری صفراوی و سنگ نابجا در روده است. این تریاد اغلب کامل نیست؛ نبود یک جزء ایلئوس سنگ صفراوی را رد نمی‌کند.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/15093232/",
+        "wrongExplanations": {
+          "B": "تریاد کلاسیک شامل انسداد رودهٔ باریک و سنگ نابجاست، نه صرفاً سنگ باقی‌مانده در کیسهٔ صفرا همراه اتساع کولون.",
+          "C": "پنوموپریتوئن و گاز ورید پورت، پنوموبیلی تریاد ریگلر نیستند؛ سنگ نابجا نیز ذکر نشده است.",
+          "D": "سنگ انسداددهندهٔ تریاد کلاسیک در روده نابجاست؛ سنگ داخل کیسهٔ صفرا به‌تنهایی این جزء را برآورده نمی‌کند."
+        }
+      },
+      {
+        "id": "abdomen-intussusception-initial-imaging-fa-01",
+        "tags": [
+          "intussusception"
+        ],
+        "fach": "abdomen",
+        "question": "کودک با وضعیت همودینامیک پایدار، درد شکمی حمله‌ای و شک بالینی به انواژیناسیون ایلئوکولیک دارد. کدام تصویربرداری در ابتدا ترجیح دارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "سونوگرافی شکم."
+          },
+          {
+            "id": "B",
+            "text": "CT شکم با تزریق مادهٔ حاجب."
+          },
+          {
+            "id": "C",
+            "text": "رادیوگرافی سادهٔ شکم."
+          },
+          {
+            "id": "D",
+            "text": "MRI شکم."
+          }
+        ],
+        "correct": "A",
+        "explanation": "سونوگرافی بررسی اولیهٔ منتخب در شک به انواژیناسیون کودکان است. رادیوگرافی می‌تواند در شک به انسداد یا پرفوراسیون کمک کند؛ تصویر طبیعی انواژیناسیون را رد نمی‌کند.",
+        "source": "https://www.rch.org.au/clinicalguide/guideline_index/intussusception/",
+        "wrongExplanations": {
+          "B": "CT در این وضعیت اولیهٔ پایدار کودکان ترجیح نخست نیست؛ سونوگرافی هدفمند و بدون پرتو است.",
+          "C": "رادیوگرافی می‌تواند سرنخ عارضه بدهد، اما آزمون اولیهٔ قابل‌اعتماد برای رد بیماری نیست.",
+          "D": "MRI در اینجا بررسی نخست ترجیحیِ شناخته‌شده نیست؛ سونوگرافی هدفمند و سریع در ابتدا انجام می‌شود."
+        }
+      },
+      {
+        "id": "abdomen-ileus-ischaemia-fa-01",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "fach": "abdomen",
+        "question": "در انسداد رودهٔ باریک، CT نمای لوپ بسته، کاهش تقویت دیواره و کدورت منتشر مزانتر را نشان می‌دهد. کدام ارزیابی مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "شک به اختناق همراه ایسکمی؛ فوری اعلام و با بالین و یافته‌های عروقی و مزانتریک تلفیق شود."
+          },
+          {
+            "id": "B",
+            "text": "انسداد مکانیکی بدون عارضه و بدون شواهد اختلال خون‌رسانی."
+          },
+          {
+            "id": "C",
+            "text": "ایلئوس فلجی غیرمکانیکی به‌عنوان توضیح الگوی لوپ بسته."
+          },
+          {
+            "id": "D",
+            "text": "تغییر التهابی مزمن دیواره بدون شک به عارضهٔ حاد."
+          }
+        ],
+        "correct": "A",
+        "explanation": "ترکیب کاهش تقویت دیواره، کدورت مزانتر و مکانیسم لوپ بسته در کوهورت اصلی با اختناق ارتباط داشت. یافته فوری است؛ به‌تنهایی برگشت‌ناپذیری یا وسعت دقیق رزکسیون را قطعی نمی‌کند.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/28759326/",
+        "wrongExplanations": {
+          "B": "کاهش تقویت و مجموعهٔ مزانتریک و لوپ بسته، خلاف ارزیابی خون‌رسانی بدون عارضه‌اند.",
+          "C": "نمای لوپ بسته، انسداد مکانیکی لوپ است، نه اتساع منتشر معمولِ غیرمکانیکی.",
+          "D": "الگوی حاد انسداد و کم‌خون‌رسانی توصیف‌شده نباید صرفاً تغییر مزمن دیواره تلقی شود."
+        }
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "mesenteriale-ischaemie-cta-protocol",
+      "topicId": "mesenteriale-ischaemie",
+      "category": {
+        "de": "CTA-Protokoll",
+        "en": "CTA protocol",
+        "fa": "پروتکل CTA"
+      },
+      "front": {
+        "de": "Welche Phasen umfasst die dringliche CTA bei Verdacht auf akute mesenteriale Ischämie?",
+        "en": "Which phases are included in urgent CTA for suspected acute mesenteric ischaemia?",
+        "fa": "در CTA فوری برای شک به ایسکمی حاد مزانتریک، کدام فازها انجام می‌شوند؟"
+      },
+      "answer": {
+        "de": "Arterielle und venöse Phase mit dünnen Schichten (≤ 1 mm); eine native Phase kann ergänzt werden. Die Empfehlung gilt unabhängig von der Nierenfunktion.",
+        "en": "Arterial and venous phases with thin sections (≤ 1 mm); a non-contrast phase may be added. The recommendation applies regardless of renal function.",
+        "fa": "فازهای شریانی و وریدی با برش‌های نازک (≤ ۱ میلی‌متر)؛ می‌توان فاز بدون تزریق را افزود. این توصیه مستقل از عملکرد کلیه است."
+      },
+      "explanation": {
+        "de": "ESVS 2025, Empfehlung 33. Die Phasen erfassen arterielle Zufuhr und venösen Abfluss; die native Phase ergänzt sie, ersetzt sie aber nicht.",
+        "en": "ESVS 2025, Recommendation 33. The phases assess arterial inflow and venous outflow; an unenhanced phase supplements but does not replace them.",
+        "fa": "راهنمای ESVS 2025، توصیهٔ ۳۳. این فازها ورود شریانی و تخلیهٔ وریدی را ارزیابی می‌کنند؛ فاز بدون تزریق مکمل آن‌هاست و جایگزینشان نمی‌شود."
+      },
+      "source": "ESVS 2025 Clinical Practice Guidelines, Recommendation 33; DOI 10.1016/j.ejvs.2025.06.010"
+    },
+    {
+      "id": "aq-atv-mesenteric-nomi-retrieval",
+      "topicId": "mesenteriale-ischaemie",
+      "category": {
+        "de": "Gefäße und Darm",
+        "en": "Vessels and bowel",
+        "fa": "عروق و روده"
+      },
+      "front": {
+        "de": "Warum schließt eine offene SMA eine mesenteriale Ischämie nicht aus?",
+        "en": "Why does a patent SMA not exclude mesenteric ischaemia?",
+        "fa": "چرا SMA باز، ایسکمی مزانتریک را رد نمی‌کند؟"
+      },
+      "answer": {
+        "de": "NOMI kann bei systemischer Minderperfusion/Vasokonstriktion trotz offener zentraler Gefäße auftreten; Darmbefund und Schockkontext mitbeurteilen.",
+        "en": "NOMI can occur with systemic hypoperfusion/vasoconstriction despite patent central vessels; assess bowel findings and shock context.",
+        "fa": "NOMI می‌تواند با کم‌پرفیوژنی سیستمیک یا تنگ‌شدن عروق، با وجود بازبودن عروق مرکزی رخ دهد؛ یافته‌های روده و زمینهٔ شوک را نیز بررسی کنید."
+      },
+      "explanation": {
+        "de": "Eine offene SMA schließt Ischämie nicht aus. Bei Schock und passender Darmwandminderperfusion beschreibt ESVS NOMI als wichtige Verdachtsdiagnose; Vasokonstriktion und systemische Minderperfusion können ohne zentralen Gefäßverschluss auftreten. Den Verdacht dringend im klinischen Kontext kommunizieren.",
+        "en": "A patent SMA does not exclude ischaemia. With shock and compatible bowel hypoperfusion, ESVS identifies NOMI as an important suspicion; vasoconstriction and systemic hypoperfusion may occur without central vascular occlusion. Communicate concern urgently in clinical context.",
+        "fa": "بازبودن SMA ایسکمی را رد نمی‌کند. در شوک و کاهش پرفیوژن سازگار روده، ESVS ‏NOMI را تشخیص مشکوک مهم می‌داند؛ تنگی عروقی و کم‌پرفیوژنی سیستمیک می‌توانند بدون انسداد عروق مرکزی رخ دهند. نگرانی را در زمینهٔ بالینی فوراً منتقل کنید."
+      },
+      "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+    },
+    {
+      "id": "aq-atv-mesenteric-viability-retrieval",
+      "topicId": "mesenteriale-ischaemie",
+      "category": {
+        "de": "Befundsicherheit",
+        "en": "Diagnostic certainty",
+        "fa": "قطعیت گزارش"
+      },
+      "front": {
+        "de": "Beweisen Pneumatosis und portomesenteriales Gas eine irreversible Darmnekrose?",
+        "en": "Do pneumatosis and portomesenteric gas prove irreversible bowel necrosis?",
+        "fa": "آیا پنوماتوز و گاز پورتومزانتریک، نکروز برگشت‌ناپذیر روده را ثابت می‌کنند؟"
+      },
+      "answer": {
+        "de": "Nein. Im passenden Muster sind sie dringliche Warnzeichen; Irreversibilität lässt sich daraus allein nicht beweisen. Gefäße, Enhancement und Klinik gemeinsam beurteilen.",
+        "en": "No. In a compatible pattern they are urgent warning signs; they do not alone prove irreversibility. Assess vessels, enhancement and clinical findings together.",
+        "fa": "خیر. در الگوی سازگار، نشانه‌های هشدار فوری‌اند؛ برگشت‌ناپذیری را به‌تنهایی ثابت نمی‌کنند. عروق، تقویت و بالین را با هم ارزیابی کنید."
+      },
+      "explanation": {
+        "de": "Der kombinierte Gefäß- und Darmbefund ist hochgradig bedenklich und muss dringlich kommuniziert werden. ESVS betont zugleich, dass auch Pneumatosis, venöses Gas und verminderte Aufnahme allein keine irreversible Darmschädigung beweisen. Viabilität und weiteres Vorgehen brauchen unverzügliche klinisch-chirurgisch-vaskuläre Beurteilung.",
+        "en": "The combined vascular and bowel pattern is highly concerning and requires urgent communication. ESVS also stresses that pneumatosis, venous gas and reduced enhancement alone do not prove irreversible bowel injury. Viability and management require immediate clinical, surgical and vascular assessment.",
+        "fa": "مجموعهٔ یافته‌های عروقی و روده‌ای بسیار نگران‌کننده است و باید فوری منتقل شود. ESVS همچنین تأکید می‌کند که پنوماتوز، گاز وریدی و کاهش تقویت به‌تنهایی آسیب برگشت‌ناپذیر روده را ثابت نمی‌کنند. زنده‌مانی و اقدام بعدی به ارزیابی بی‌درنگ بالینی، جراحی و عروقی نیاز دارد."
+      },
+      "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+    },
+    {
+      "id": "pylorusstenose-measurement",
+      "topicId": "pylorusstenose",
+      "category": {
+        "de": "Hypertrophe Pylorusstenose",
+        "en": "Hypertrophic pyloric stenosis",
+        "fa": "تنگی هیپرتروفیک پیلور"
+      },
+      "front": {
+        "de": "Welche Struktur wird als Pylorusmuskeldicke gemessen?",
+        "en": "Which structure is measured as pyloric muscle thickness?",
+        "fa": "کدام ساختار به‌عنوان ضخامت عضلهٔ پیلور اندازه‌گیری می‌شود؟"
+      },
+      "answer": {
+        "de": "Eine einzelne Muskulariswand senkrecht messen; Mukosa, Submukosa, Lumen und gegenüberliegende Wand nicht einbeziehen.",
+        "en": "Measure one muscularis wall perpendicularly; exclude mucosa, submucosa, lumen and the opposite wall.",
+        "fa": "یک دیوارهٔ عضلانی را عمود اندازه بگیرید؛ مخاط، زیرمخاط، لومن و دیوارهٔ مقابل را وارد نکنید."
+      },
+      "explanation": {
+        "de": "Die Muskeldicke ist die Dicke einer einzelnen Muskulariswand, nicht der gesamte Pylorusdurchmesser und nicht die Kanallänge. Andere Wandschichten und das Lumen werden ausgeschlossen; schräges Messen kann die Dicke überschätzen.",
+        "en": "Muscle thickness is the thickness of one muscularis wall, not total pyloric diameter or canal length. Exclude other wall layers and the lumen; oblique measurement can overestimate thickness.",
+        "fa": "ضخامت عضله، ضخامت یک دیوارهٔ عضلانی است، نه قطر کل پیلور یا طول کانال. لایه‌های دیگر دیواره و لومن را کنار بگذارید؛ اندازه‌گیری مایل می‌تواند ضخامت را بیش‌برآورد کند."
+      },
+      "source": "https://doi.org/10.13029/aps.2020.26.1.15"
+    },
+    {
+      "id": "pylorusstenose-dynamic",
+      "topicId": "pylorusstenose",
+      "category": {
+        "de": "Hypertrophe Pylorusstenose",
+        "en": "Hypertrophic pyloric stenosis",
+        "fa": "تنگی هیپرتروفیک پیلور"
+      },
+      "front": {
+        "de": "Warum die Pylorusöffnung über mehrere Wellen beobachten?",
+        "en": "Why observe pyloric opening over several waves?",
+        "fa": "چرا بازشدن پیلور را طی چند موج مشاهده می‌کنیم؟"
+      },
+      "answer": {
+        "de": "Variabilität und wiederholte Öffnung helfen, Spasmus von persistenter Hypertrophie abzugrenzen. Geringe Passage allein ist kein sicherer Ausschluss einer HPS.",
+        "en": "Variability and repeated opening help distinguish spasm from persistent hypertrophy. A small amount of passage alone does not reliably exclude HPS.",
+        "fa": "تغییرپذیری و بازشدن مکرر به افتراق اسپاسم از هیپرتروفی پایدار کمک می‌کنند. عبور مقدار کمی مایع به‌تنهایی HPS را با اطمینان رد نمی‌کند."
+      },
+      "explanation": {
+        "de": "Pylorospasmus kann zeitweise dieselben Größen erreichen wie HPS. Wiederholte Öffnung und wechselnde Morphologie sind wichtige Hinweise, aber eine geringe Passage allein schließt HPS nicht aus. Morphometrie, Dynamik und Klinik gemeinsam beurteilen.",
+        "en": "Pylorospasm can transiently overlap HPS measurements. Repeated opening and changing morphology are important clues, but a small amount of passage alone does not exclude HPS. Interpret morphology, dynamics and clinical findings together.",
+        "fa": "پیلورواسپاسم می‌تواند موقتاً اندازه‌هایی هم‌پوشان با HPS داشته باشد. بازشدن مکرر و تغییر مورفولوژی سرنخ‌های مهم‌اند، اما عبور مقدار کمی مایع به‌تنهایی HPS را رد نمی‌کند. مورفومتری، پویایی و بالین را با هم بررسی کنید."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/9805307/"
+    },
+    {
+      "id": "aq-atv-pylorus-indeterminate-retrieval",
+      "topicId": "pylorusstenose",
+      "category": {
+        "de": "Pädiatrischer Ultraschall",
+        "en": "Paediatric ultrasound",
+        "fa": "سونوگرافی کودکان"
+      },
+      "front": {
+        "de": "Wie bei grenzwertiger, technisch unzureichender Pylorussonografie und fortbestehenden Beschwerden vorgehen?",
+        "en": "How should borderline technically inadequate pyloric ultrasound with persistent symptoms be handled?",
+        "fa": "در سونوگرافی مرزی و از نظر فنی ناکافی پیلور با علائم ادامه‌دار چه می‌کنیم؟"
+      },
+      "answer": {
+        "de": "Als unklar kommunizieren; Klinik abstimmen und gezielte Wiederholung oder alternative Abklärung erwägen, statt aus einem Einzelwert sicher ein- oder auszuschließen.",
+        "en": "Communicate uncertainty, correlate clinically and consider targeted repeat or alternative assessment rather than confirming or excluding from one measurement.",
+        "fa": "عدم قطعیت را اعلام، با بالین تطبیق و تکرار هدفمند یا بررسی جایگزین را مطرح کنید؛ از یک عدد منفرد تأیید یا رد قطعی نکنید."
+      },
+      "explanation": {
+        "de": "Technische Einschränkung und grenzwertige Maße ergeben keine sichere positive oder negative Diagnose. Bei fortbestehendem klinischem Verdacht unterstützt die Originalstudie eine erneute Sonografie oder alternative Abklärung; die konkrete Wahl richtet sich nach der klinischen Situation.",
+        "en": "Technical limitations and borderline measurements do not establish a reliable positive or negative diagnosis. With persistent clinical suspicion, the original study supports repeat ultrasound or alternative assessment; the specific choice depends on the clinical situation.",
+        "fa": "محدودیت فنی و اندازه‌های مرزی، تشخیص مثبت یا منفی قابل‌اعتماد نمی‌دهند. در شک بالینی ماندگار، مطالعهٔ اصلی از تکرار سونوگرافی یا بررسی جایگزین حمایت می‌کند؛ انتخاب مشخص به وضعیت بالینی بستگی دارد."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/17958692/"
+    },
+    {
+      "id": "pmc-kolitis-distribution",
+      "topicId": "pmc-kolitis",
+      "category": {
+        "de": "Pseudomembranöse Kolitis",
+        "en": "Pseudomembranous colitis",
+        "fa": "کولیت سودوممبران"
+      },
+      "front": {
+        "de": "Schließt segmentale Kolitis eine PMC aus?",
+        "en": "Does segmental colitis exclude PMC?",
+        "fa": "آیا کولیت سگمنتال PMC را رد می‌کند؟"
+      },
+      "answer": {
+        "de": "Nein. PMC kann segmental oder pancolisch sein; die CT-Verteilung allein legt die Ursache nicht fest.",
+        "en": "No. PMC may be segmental or pancolonic; CT distribution alone does not determine aetiology.",
+        "fa": "خیر. PMC می‌تواند سگمنتال یا پان‌کولونیک باشد؛ توزیع CT به‌تنهایی علت را تعیین نمی‌کند."
+      },
+      "explanation": {
+        "de": "PMC kann pancolisch oder segmental auftreten. Wandverdickung und submuköses Ödem sind nicht ätiologiespezifisch; Antibiotikaanamnese und gezielte C.-difficile-Diagnostik gehören zur Einordnung.",
+        "en": "PMC may be pancolonic or segmental. Wall thickening and submucosal oedema are not aetiology-specific; antibiotic history and targeted C. difficile testing inform interpretation.",
+        "fa": "PMC می‌تواند پان‌کولونیک یا سگمنتال باشد. ضخیم‌شدگی دیواره و ادم زیرمخاطی برای علت اختصاصی نیستند؛ سابقهٔ آنتی‌بیوتیک و آزمایش هدفمند C. difficile به تفسیر کمک می‌کنند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/2052723/"
+    },
+    {
+      "id": "pmc-kolitis-accordion",
+      "topicId": "pmc-kolitis",
+      "category": {
+        "de": "Pseudomembranöse Kolitis",
+        "en": "Pseudomembranous colitis",
+        "fa": "کولیت سودوممبران"
+      },
+      "front": {
+        "de": "Was zeigt das Accordion-Zeichen, und was beweist es nicht?",
+        "en": "What does the accordion sign show, and what does it not prove?",
+        "fa": "علامت آکاردئون چه چیزی را نشان می‌دهد و چه چیزی را ثابت نمی‌کند؟"
+      },
+      "answer": {
+        "de": "Ein ausgeprägtes ödematöses Faltenmuster; es ist kein alleiniger Nachweis einer C.-difficile-Infektion.",
+        "en": "Marked oedematous folds; it does not alone prove C. difficile infection.",
+        "fa": "الگوی چین‌های به‌شدت ادماتو؛ به‌تنهایی عفونت C. difficile را ثابت نمی‌کند."
+      },
+      "explanation": {
+        "de": "Das beschriebene Accordion-Muster entsteht durch Kontrastmittel zwischen verdickten ödematösen Falten. Es zeigt ausgeprägte Kolitis beziehungsweise Ödem, beweist aber keinen bestimmten Erreger.",
+        "en": "The described accordion pattern arises from contrast between thickened oedematous folds. It indicates marked colitis or oedema but does not prove a specific organism.",
+        "fa": "الگوی آکاردئونی توصیف‌شده از مادهٔ حاجب بین چین‌های ضخیم و ادماتو ناشی می‌شود. نشان‌دهندهٔ کولیت یا ادم شدید است، اما عامل عفونی مشخصی را ثابت نمی‌کند."
+      },
+      "source": "https://doi.org/10.1148/radiology.211.3.r99jn32743"
+    },
+    {
+      "id": "colitis-ulcerosa-pattern",
+      "topicId": "colitis-ulcerosa",
+      "category": {
+        "de": "Colitis ulcerosa",
+        "en": "Ulcerative colitis",
+        "fa": "کولیت اولسروز"
+      },
+      "front": {
+        "de": "Welche Verteilung ist bei unbehandelter CU typisch?",
+        "en": "Which distribution is typical of untreated UC?",
+        "fa": "کدام توزیع در CU درمان‌نشده معمول است؟"
+      },
+      "answer": {
+        "de": "Kontinuierlich vom Rektum nach proximal; Ausnahmen und Therapieeffekte sind möglich, Bildverteilung allein ist kein Diagnosenachweis.",
+        "en": "Continuous from the rectum proximally; exceptions and treatment effects occur, and distribution alone does not prove the diagnosis.",
+        "fa": "پیوسته از رکتوم به پروگزیمال؛ استثناها و اثر درمان ممکن‌اند و توزیع به‌تنهایی تشخیص را ثابت نمی‌کند."
+      },
+      "explanation": {
+        "de": "Rektaler Beginn mit kontinuierlicher proximaler Ausdehnung ist typisch. Ausnahmen und Therapieeffekte bestehen; die CED-Diagnose erfordert weitere klinische, endoskopische und histologische Befunde.",
+        "en": "Rectal onset with continuous proximal extension is typical. Exceptions and treatment effects occur; IBD diagnosis requires additional clinical, endoscopic and histological findings.",
+        "fa": "شروع رکتال با امتداد پیوسته به پروگزیمال تیپیک است. استثناها و اثر درمان وجود دارند؛ تشخیص IBD به یافته‌های بالینی، اندوسکوپیک و بافت‌شناسی نیز نیاز دارد."
+      },
+      "source": "https://doi.org/10.1093/ecco-jcc/jjaf106"
+    },
+    {
+      "id": "colitis-ulcerosa-urgent",
+      "topicId": "colitis-ulcerosa",
+      "category": {
+        "de": "Colitis ulcerosa",
+        "en": "Ulcerative colitis",
+        "fa": "کولیت اولسروز"
+      },
+      "front": {
+        "de": "Welche Konstellation weckt bei schwerer Kolitis Verdacht auf toxisches Megakolon?",
+        "en": "Which findings raise concern for toxic megacolon in severe colitis?",
+        "fa": "در کولیت شدید چه مجموعه‌ای شک به مگاکولون توکسیک ایجاد می‌کند؟"
+      },
+      "answer": {
+        "de": "Nichtmechanische Kolondilatation zusammen mit systemischer Toxizität: dringlich klinisch kommunizieren, nicht auf Perforation warten.",
+        "en": "Nonmechanical colonic dilatation together with systemic toxicity: communicate urgently and do not wait for perforation.",
+        "fa": "اتساع غیرمکانیکی کولون همراه با سمیت سیستمیک: فوری به تیم بالینی اطلاع دهید و منتظر پرفوراسیون نمانید."
+      },
+      "explanation": {
+        "de": "Dilatation und systemische Toxizität bei schwerer Kolitis sind ein Warnsignal. Ein isolierter Durchmesser ersetzt die klinische Beurteilung nicht; man wartet nicht auf Perforation.",
+        "en": "Dilatation and systemic toxicity in severe colitis are warning signs. An isolated diameter does not replace clinical assessment; do not wait for perforation.",
+        "fa": "اتساع و سمیت سیستمیک در کولیت شدید هشداردهنده‌اند. یک قطر منفرد جای ارزیابی بالینی را نمی‌گیرد؛ نباید منتظر پرفوراسیون ماند."
+      },
+      "source": "https://doi.org/10.1093/ecco-jcc/jjaf106"
+    },
+    {
+      "id": "kolorektales-karzinom-01",
+      "topicId": "kolorektales-karzinom",
+      "category": {
+        "de": "Staging",
+        "en": "Staging",
+        "fa": "مرحله‌بندی"
+      },
+      "front": {
+        "de": "Welche Bildgebungsfrage beantwortet die Becken-MRT beim Rektumkarzinom?",
+        "en": "Which imaging question does pelvic MRI answer in rectal cancer?",
+        "fa": "MRI لگن در سرطان رکتوم به کدام پرسش تصویربرداری پاسخ می‌دهد؟"
+      },
+      "answer": {
+        "de": "Sie beurteilt die lokoregionäre Ausdehnung und ihre Beziehung zu Mesorektum und mesorektaler Faszie.",
+        "en": "It assesses locoregional extent and its relationship to the mesorectum and mesorectal fascia.",
+        "fa": "گسترش موضعی و ناحیه‌ای و ارتباط آن با مزورکتوم و فاسیای مزورکتال را ارزیابی می‌کند."
+      },
+      "explanation": {
+        "de": "Die Suche nach Fernmetastasen ist eine getrennte Staging-Aufgabe und wird nicht durch die lokale Becken-MRT ersetzt.",
+        "en": "Distant-metastasis assessment is a separate staging task and is not replaced by local pelvic MRI.",
+        "fa": "جست‌وجوی متاستاز دوردست مرحله‌ای جداگانه است و MRI موضعی لگن جای آن را نمی‌گیرد."
+      },
+      "source": "Abdomen.pdf physical pp. 88–89; ESGAR 2026 primary-staging consensus"
+    },
+    {
+      "id": "kolorektales-karzinom-02",
+      "topicId": "kolorektales-karzinom",
+      "category": {
+        "de": "Staging",
+        "en": "Staging",
+        "fa": "مرحله‌بندی"
+      },
+      "front": {
+        "de": "Wofür stehen T1 bis T4 beim Rektumkarzinom anatomisch?",
+        "en": "What anatomic extent do T1 to T4 represent in rectal cancer?",
+        "fa": "T1 تا T4 در سرطان رکتوم از نظر آناتومیک چه گسترشی را نشان می‌دهند؟"
+      },
+      "answer": {
+        "de": "Tis: Mukosa; T1: Invasion der Submukosa; T2: Invasion der Muscularis propria; T3: durch die Muscularis propria ins perikolorektale Gewebe; T4a: durch das viszerale Peritoneum; T4b: Invasion/Adhärenz an Nachbarorganen.",
+        "en": "Tis: mucosa; T1: invasion of submucosa; T2: invasion of muscularis propria; T3: through muscularis propria into pericolorectal tissue; T4a: through visceral peritoneum; T4b: invasion/adherence to adjacent organs.",
+        "fa": "Tis: مخاط؛ T1: نفوذ به زیرمخاط؛ T2: نفوذ به muscularis propria؛ T3: عبور از muscularis propria به بافت پری‌کولورکتال؛ T4a: عبور از صفاق احشایی؛ T4b: نفوذ/چسبندگی به اندام مجاور."
+      },
+      "explanation": {
+        "de": "Nach AJCC8 beschreibt T die anatomische Tiefenausdehnung: T2 bleibt in der Muscularis propria, T3 überschreitet sie ins perikolorektale Gewebe. Eine Serosainvasion (T4a) ist von der Invasion benachbarter Organe/Strukturen (T4b) zu unterscheiden; nicht alle Rektumabschnitte sind peritoneal bedeckt.",
+        "en": "Under AJCC8, T describes anatomical depth: T2 involves the muscularis propria, whereas T3 extends through it into pericolorectal tissue. Distinguish visceral peritoneal invasion (T4a) from invasion of adjacent organs/structures (T4b); not all rectal segments are peritonealised.",
+        "fa": "در AJCC8، دستهٔ T عمق آناتومیک گسترش را بیان می‌کند: T2 در muscularis propria است و T3 از آن به بافت پری‌کولورکتال عبور می‌کند. نفوذ به صفاق احشایی (T4a) را از نفوذ به اندام یا ساختار مجاور (T4b) تفکیک کنید؛ همهٔ قسمت‌های رکتوم پوشش صفاقی ندارند."
+      },
+      "source": "https://www.cancer.gov/types/colorectal/hp/rectal-treatment-pdq"
+    },
+    {
+      "id": "kolorektales-karzinom-03",
+      "topicId": "kolorektales-karzinom",
+      "category": {
+        "de": "Staging",
+        "en": "Staging",
+        "fa": "مرحله‌بندی"
+      },
+      "front": {
+        "de": "Wann gilt die mesorektale Faszie nach ESGAR 2026 als beteiligt?",
+        "en": "When is the mesorectal fascia considered involved under ESGAR 2026?",
+        "fa": "طبق ESGAR 2026 چه زمانی فاسیای مزورکتال درگیر محسوب می‌شود؟"
+      },
+      "answer": {
+        "de": "Bei einem Abstand von ≤1 mm zum Primärtumor, zu EMVI oder zu irregulären tumorverdächtigen Knoten.",
+        "en": "When the distance is ≤1 mm from the primary tumour, EMVI or irregular suspicious nodes.",
+        "fa": "وقتی فاصله تا تومور اولیه، EMVI یا غدد نامنظم مشکوک ≤۱ میلی‌متر باشد."
+      },
+      "explanation": {
+        "de": "Ein glatt begrenzter Lymphknoten allein macht die MRF nicht positiv. MRF ist ein anatomischer MRT-Begriff; CRM bezeichnet den chirurgischen Resektionsrand.",
+        "en": "A smooth-bordered node alone does not make the MRF positive. MRF is an anatomic MRI term; CRM refers to the surgical circumferential resection margin.",
+        "fa": "غده با حاشیه صاف به‌تنهایی MRF را مثبت نمی‌کند. MRF اصطلاحی آناتومیک در MRI است؛ CRM به حاشیه برداشت جراحی اشاره دارد."
+      },
+      "source": "Abdomen.pdf physical pp. 88–89; ESGAR 2026 primary-staging consensus"
+    },
+    {
+      "id": "kolorektales-karzinom-04",
+      "topicId": "kolorektales-karzinom",
+      "category": {
+        "de": "Staging",
+        "en": "Staging",
+        "fa": "مرحله‌بندی"
+      },
+      "front": {
+        "de": "Welche Merkmale sprechen im MRT für EMVI?",
+        "en": "Which MRI features suggest EMVI?",
+        "fa": "چه ویژگی‌هایی در MRI به نفع EMVI هستند؟"
+      },
+      "answer": {
+        "de": "Tumorsignal und expansionistische Kontur innerhalb extramuraler Venen.",
+        "en": "Tumour signal and expansion of extramural veins.",
+        "fa": "سیگنال تومور و اتساع وریدهای خارج‌دیواره‌ای."
+      },
+      "explanation": {
+        "de": "EMVI ausdrücklich berichten und die Beziehung zur MRF mitbeurteilen, da beides für die Risikoeinschätzung wichtig ist.",
+        "en": "Report EMVI explicitly and assess its relationship to the MRF, since both matter for risk assessment.",
+        "fa": "EMVI را صریح گزارش کنید و ارتباط آن با MRF را نیز بسنجید؛ هر دو در برآورد خطر اهمیت دارند."
+      },
+      "source": "Abdomen.pdf physical pp. 88–89; ESGAR 2026 primary-staging consensus"
+    },
+    {
+      "id": "kolorektales-karzinom-05",
+      "topicId": "kolorektales-karzinom",
+      "category": {
+        "de": "Staging",
+        "en": "Staging",
+        "fa": "مرحله‌بندی"
+      },
+      "front": {
+        "de": "Warum genügt die Lymphknotengröße im Rektum-MRT nicht allein?",
+        "en": "Why is lymph-node size alone insufficient on rectal MRI?",
+        "fa": "چرا اندازه غدد لنفاوی به‌تنهایی در MRI رکتوم کافی نیست؟"
+      },
+      "answer": {
+        "de": "cN patientenbezogen mit angegebener Sicherheit einordnen und T-Kategorie, EMVI, Anzahl sowie Morphologie berücksichtigen. Bei obturatorischen und internen iliakalen Seitenknoten gilt ≥7 mm Kurzachse als verdächtig; 5–7 mm können bei suspekter Morphologie ebenfalls auffällig sein.",
+        "en": "Classify cN per patient, state confidence, and consider T category, EMVI, node number and morphology. For obturator and internal iliac lateral nodes, a short axis ≥7 mm is suspicious; 5–7 mm nodes may also be suspicious when morphology is concerning.",
+        "fa": "cN را برای هر بیمار با ذکر میزان اطمینان تعیین کنید و دسته T، وجود EMVI، تعداد و مورفولوژی غدد را در نظر بگیرید. در غدد لترال ابتوراتور و ایلیاک داخلی، محور کوتاه ≥۷ میلی‌متر مشکوک است؛ غدد ۵ تا ۷ میلی‌متری نیز با مورفولوژی مشکوک ممکن است مطرح باشند."
+      },
+      "explanation": {
+        "de": "Die Größenangabe gilt für obturatorische und interne iliakale Seitenknoten; für andere Knotenstationen darf sie nicht pauschal übertragen werden. Bildgebung kann mikroskopischen Befall nicht sicher ausschließen.",
+        "en": "The size criterion applies to obturator and internal iliac lateral nodes; do not generalise it to other nodal stations. Imaging cannot reliably exclude microscopic disease.",
+        "fa": "این معیار اندازه برای غدد لترال ابتوراتور و ایلیاک داخلی است و نباید به همه ایستگاه‌های غدد تعمیم داده شود. تصویربرداری درگیری میکروسکوپی را با اطمینان رد نمی‌کند."
+      },
+      "source": "Abdomen.pdf physical pp. 88–89; ESGAR 2026 primary-staging consensus"
+    },
+    {
+      "id": "ileus-duenndarm-01-small-bowel-feces-definition",
+      "category": {
+        "de": "CT-Zeichen",
+        "en": "CT sign",
+        "fa": "علامت CT"
+      },
+      "front": {
+        "de": "Wie sieht das Small-Bowel-Feces-Zeichen im CT aus?",
+        "en": "What does the small-bowel feces sign look like on CT?",
+        "fa": "علامت مدفوع رودهٔ باریک در CT چه شکلی است؟"
+      },
+      "answer": {
+        "de": "Partikelhaltiger, stuhlähnlicher Inhalt mit Gasbläschen in einer dilatierten Dünndarmschlinge.",
+        "en": "Particulate, faeces-like material mixed with gas bubbles within a dilated small-bowel loop.",
+        "fa": "محتوای ذره‌ای شبیه مدفوع همراه حباب‌های گاز در یک لوپ متسع رودهٔ باریک."
+      },
+      "explanation": {
+        "de": "Das Zeichen liegt häufig nahe vor der Übergangszone und kann bei deren Lokalisation helfen. Es ist ein Hinweis innerhalb des Gesamtmusters, keine alleinige Schweregradmessung.",
+        "en": "The sign is often close to the transition zone and may help localise it. It is one clue within the overall pattern, not a standalone measure of severity.",
+        "fa": "این علامت اغلب نزدیک نقطهٔ گذار است و می‌تواند به مکان‌یابی آن کمک کند. بخشی از الگوی کلی است و به‌تنهایی شدت بیماری را تعیین نمی‌کند."
+      },
+      "diagram": {
+        "de": "Dilatierter Dünndarm → Fäzeszeichen nahe dem Übergang → kollabierter Darm",
+        "en": "Dilated small bowel → feces sign near transition → collapsed bowel",
+        "fa": "رودهٔ متسع ← علامت نزدیک نقطهٔ گذار ← رودهٔ فروریخته"
+      },
+      "topicId": "ileus-duenndarm",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/29045179/"
+    },
+    {
+      "id": "ileus-duenndarm-02-small-bowel-feces-interpretation",
+      "category": {
+        "de": "Einordnung",
+        "en": "Interpretation",
+        "fa": "تفسیر"
+      },
+      "front": {
+        "de": "Was darf aus dem Small-Bowel-Feces-Zeichen allein nicht abgeleitet werden?",
+        "en": "What should not be inferred from the small-bowel feces sign alone?",
+        "fa": "از علامت مدفوع رودهٔ باریک به‌تنهایی چه چیزی را نباید نتیجه گرفت؟"
+      },
+      "answer": {
+        "de": "Dass eine Ischämie sicher vorliegt oder ausgeschlossen ist, oder dass allein dadurch ein bestimmtes Management feststeht.",
+        "en": "That ischaemia is definitely present or excluded, or that the sign alone determines management.",
+        "fa": "اینکه ایسکمی قطعاً وجود دارد یا رد شده، یا اینکه این علامت به‌تنهایی مدیریت مشخصی را تعیین می‌کند."
+      },
+      "explanation": {
+        "de": "Die Studie zu adhäsionsbedingtem Dünndarmileus fand keinen unabhängigen Vorhersagewert für Ischämie oder erfolgreiche nichtoperative Behandlung. Die Lage des Zeichens kann dennoch beim Finden der Übergangszone helfen.",
+        "en": "In an adhesive small-bowel obstruction cohort, the sign had no independent predictive value for ischaemia or successful non-operative treatment. Its location may still help identify the transition zone.",
+        "fa": "در یک مطالعه روی انسداد چسبندگی رودهٔ باریک، علامت ارزش پیش‌بینی مستقل برای ایسکمی یا موفقیت درمان غیرجراحی نداشت؛ با این حال، محل آن می‌تواند به یافتن نقطهٔ گذار کمک کند."
+      },
+      "diagram": {
+        "de": "Lokalisation: hilfreich · Schweregrad allein: nein",
+        "en": "Localisation: helpful · severity alone: no",
+        "fa": "مکان‌یابی: مفید · تعیین شدت به‌تنهایی: خیر"
+      },
+      "topicId": "ileus-duenndarm",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/29045179/"
+    },
+    {
+      "id": "ileus-duenndarm-04-foramen-winslow-location",
+      "category": {
+        "de": "Lokalisation im CT",
+        "en": "CT localisation",
+        "fa": "محل‌یابی در CT"
+      },
+      "front": {
+        "de": "Welche anatomische CT-Route spricht für eine Foramen-Winslow-Hernie?",
+        "en": "Which anatomical CT route suggests a foramen of Winslow hernia?",
+        "fa": "کدام مسیر آناتومیک در CT به نفع فتق فورامن وینسلو است؟"
+      },
+      "answer": {
+        "de": "Darmdurchtritt zwischen Pfortader und Vena cava inferior in die Bursa omentalis hinter dem Magen.",
+        "en": "Bowel passing between portal vein and inferior vena cava into the lesser sac behind the stomach.",
+        "fa": "عبور روده از میان ورید پورت و ورید اجوف تحتانی به بورس امنتال پشت معده."
+      },
+      "explanation": {
+        "de": "Den Darmverlauf und die Durchtrittsstelle nachvollziehen. Die Lage in der Bursa omentalis und der Bezug zu Pfortader/Vena cava ergeben den anatomischen Hinweis.",
+        "en": "Trace bowel continuity and the passage. The lesser-sac location and relationship to portal vein/vena cava provide the anatomical clue.",
+        "fa": "تداوم روده و محل عبور را دنبال کنید. قرارگیری در بورس امنتال و ارتباط با ورید پورت و اجوف، سرنخ آناتومیک را فراهم می‌کنند."
+      },
+      "diagram": {
+        "de": "Bursa omentalis · hinter dem Magen",
+        "en": "Lesser sac · behind the stomach",
+        "fa": "بورس امنتال · پشت معده"
+      },
+      "topicId": "ileus-duenndarm",
+      "source": "https://doi.org/10.11231/jaem.40.751"
+    },
+    {
+      "id": "volvulus-pattern",
+      "topicId": "volvulus",
+      "category": {
+        "de": "Röntgen",
+        "en": "Radiograph",
+        "fa": "رادیوگرافی"
+      },
+      "front": {
+        "de": "Welches Röntgenmuster spricht für Sigmavolvulus?",
+        "en": "Which radiographic pattern suggests sigmoid volvulus?",
+        "fa": "کدام الگوی رادیوگرافی مطرح‌کننده ولولوس سیگموئید است؟"
+      },
+      "answer": {
+        "de": "Eine stark dilatierte, kaffeebohnenförmige Sigmaschlinge ohne erkennbare Haustren.",
+        "en": "A markedly dilated, coffee-bean-shaped sigmoid loop without visible haustra.",
+        "fa": "لوپ سیگموئید بسیار متسع و دانه‌قهوه‌ای بدون هاوسترای قابل مشاهده."
+      },
+      "explanation": {
+        "de": "Die morphologische Konfiguration unterstützt den Verdacht; sie allein beurteilt weder Durchblutung noch Viabilität.",
+        "en": "The configuration supports suspicion but does not alone establish perfusion or viability.",
+        "fa": "این آرایش از شک تشخیصی حمایت می‌کند، اما به‌تنهایی خون‌رسانی یا زنده‌مانی را تعیین نمی‌کند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186802/"
+    },
+    {
+      "id": "volvulus-cecum",
+      "topicId": "volvulus",
+      "category": {
+        "de": "Röntgen",
+        "en": "Radiograph",
+        "fa": "رادیوگرافی"
+      },
+      "front": {
+        "de": "Welche Hinweise sprechen für einen Zökumvolvulus?",
+        "en": "Which features suggest caecal volvulus?",
+        "fa": "کدام یافته‌ها به نفع ولولوس سکوم‌اند؟"
+      },
+      "answer": {
+        "de": "Ein verlagertes, dilatiertes Zökum; Haustren können erhalten sein. Dünndarm kann mitdilatiert und das distale Kolon kollabiert sein.",
+        "en": "A displaced, dilated caecum; haustra may remain visible. Small bowel may be dilated and the distal colon collapsed.",
+        "fa": "سکوم متسع و جابه‌جا؛ هاوسترا ممکن است باقی بماند. روده باریک ممکن است متسع و کولون دیستال فروریخته باشد."
+      },
+      "explanation": {
+        "de": "Die Lage kann bis ins Epigastrium oder den linken Oberbauch reichen; die ungewöhnliche Lage ist für die Zuordnung wichtig.",
+        "en": "The caecum may extend into the epigastrium or left upper abdomen; its abnormal position helps localisation.",
+        "fa": "سکوم ممکن است تا اپی‌گاستر یا ربع فوقانی چپ امتداد یابد؛ محل غیرعادی به مکان‌یابی کمک می‌کند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/20574094/"
+    },
+    {
+      "id": "volvulus-ct",
+      "topicId": "volvulus",
+      "category": {
+        "de": "CT",
+        "en": "CT",
+        "fa": "CT"
+      },
+      "front": {
+        "de": "Was zeigen Whirl- und Bird-beak-Zeichen beim Sigmavolvulus?",
+        "en": "What do the whirl and bird-beak signs show in sigmoid volvulus?",
+        "fa": "نشانه‌های Whirl و Bird-beak در ولولوس سیگموئید چه چیزی را نشان می‌دهند؟"
+      },
+      "answer": {
+        "de": "Whirl: spiralförmig verdrehter Darm mit zugehörigem Mesenterium. Bird-beak: schnabelförmige Zuspitzung am Übergang.",
+        "en": "Whirl: twisted bowel and its mesentery in a spiral configuration. Bird-beak: tapering at the transition.",
+        "fa": "Whirl: روده و مزانتر همراه آن با آرایش پیچ‌خورده و مارپیچی. Bird-beak: باریک‌شدن نوک‌دار در محل گذار."
+      },
+      "explanation": {
+        "de": "Beide Zeichen lokalisieren Verdrehung und Übergang, sind aber allein kein Beweis für eine Ischämie.",
+        "en": "Both signs localise the twist and transition but do not alone prove ischaemia.",
+        "fa": "هر دو نشانه پیچش و نقطه گذار را مکان‌یابی می‌کنند، اما به‌تنهایی ایسکمی را ثابت نمی‌کنند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186802/"
+    },
+    {
+      "id": "intussusception-01-two-views",
+      "topicId": "intussusception",
+      "category": {
+        "de": "Sonografie",
+        "en": "Ultrasound",
+        "fa": "سونوگرافی"
+      },
+      "front": {
+        "de": "Welche Zeichen können dieselbe Intussuszeption in Quer- und Längsschnitt zeigen?",
+        "en": "Which signs can show the same intussusception in transverse and longitudinal views?",
+        "fa": "کدام نشانه‌ها می‌توانند همان اینتوساسپشن را در برش عرضی و طولی نشان دهند؟"
+      },
+      "answer": {
+        "de": "Im Querschnitt das Ziel- oder Doughnut-Zeichen; im Längsschnitt das Pseudokidney- oder Sandwich-Zeichen.",
+        "en": "The transverse view may show the target or doughnut sign; the longitudinal view may show the pseudokidney or sandwich sign.",
+        "fa": "در نمای عرضی ممکن است علامت هدف یا دونات دیده شود؛ در نمای طولی علامت شبه‌کلیه یا ساندویچی."
+      },
+      "explanation": {
+        "de": "Die unterschiedlichen Namen beschreiben Ansichten desselben ineinandergeschobenen Darmsegments. Beide Ebenen gemeinsam beurteilen.",
+        "en": "The different names describe views of the same telescoped bowel segment. Assess both planes together.",
+        "fa": "نام‌های متفاوت، نماهای گوناگون از همان بخش روده‌ای فرورفته در بخش دیگر را توصیف می‌کنند. هر دو صفحه را با هم ارزیابی کنید."
+      },
+      "diagram": {
+        "de": "Querschnitt: Ziel / Doughnut · Längsschnitt: Pseudokidney / Sandwich",
+        "en": "Transverse: target / doughnut · longitudinal: pseudokidney / sandwich",
+        "fa": "عرضی: هدف / دونات · طولی: شبه‌کلیه / ساندویچ"
+      },
+      "source": "https://doi.org/10.1111/j.1442-200X.2012.03622_1.x"
+    },
+    {
+      "id": "ileus-duenndarm-03-closed-loop-ischaemia-signs",
+      "category": {
+        "de": "Komplikationszeichen",
+        "en": "Complication signs",
+        "fa": "نشانه‌های عارضه"
+      },
+      "front": {
+        "de": "Welche CT-Zeichen bei einer geschlossenen Schlinge machen die Beurteilung auf Ischämie besonders wichtig?",
+        "en": "Which CT findings with a closed loop make assessment for ischaemia especially important?",
+        "fa": "همراه لوپ بسته، کدام یافته‌های CT ارزیابی ایسکمی را مهم‌تر می‌کنند؟"
+      },
+      "answer": {
+        "de": "Verminderte Wandkontrastierung, Wandverdickung, Pneumatosis intestinalis und portalvenöses Gas.",
+        "en": "Reduced bowel-wall enhancement, wall thickening, pneumatosis intestinalis and portal venous gas.",
+        "fa": "کاهش جذب مادهٔ حاجب در دیواره، ضخیم‌شدن دیواره، پنوماتوز اینتستینال و گاز ورید پورت."
+      },
+      "explanation": {
+        "de": "Warnzeichen haben unterschiedliche diagnostische Aussagekraft. Verminderte Wandkontrastierung und begleitende Mesenterial-/Schlingenveränderungen gemeinsam beurteilen; das Fehlen von Pneumatosis oder Portalvenengas ist kein sicherer Ischämieausschluss.",
+        "en": "Warning signs differ in diagnostic performance. Assess reduced enhancement together with mesenteric and loop changes; absence of pneumatosis or portal venous gas does not reliably exclude ischaemia.",
+        "fa": "ارزش تشخیصی نشانه‌های هشدار متفاوت است. کاهش تقویت دیواره را همراه تغییرات مزانتر و لوپ بررسی کنید؛ نبود پنوماتوز یا گاز ورید پورت، ایسکمی را با اطمینان رد نمی‌کند."
+      },
+      "diagram": {
+        "de": "Wand · Kontrastierung · Mesenterium · Schlingenkonfiguration gemeinsam beurteilen",
+        "en": "Assess wall · enhancement · mesentery · loop configuration together",
+        "fa": "دیواره · جذب مادهٔ حاجب · مزانتر · شکل لوپ را با هم ارزیابی کنید"
+      },
+      "topicId": "ileus-duenndarm",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/28759326/"
+    }
+  ],
+  "pendingSharedOriginalMCQ": 21,
+  "pendingSharedOriginalCards": 5,
+  "limits": [
+    "Shared originals above are proposed after-values, not yet actual root bank mutations.",
+    "No independent educational/clinical/source/translation or browser acceptance yet.",
+    "Whole lesson-source/PDF/media acceptance not inferred."
+  ]
+}

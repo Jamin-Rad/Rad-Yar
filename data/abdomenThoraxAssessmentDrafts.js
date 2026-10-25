@@ -13,10 +13,218 @@ export const abdomenThoraxAssessmentDrafts = {
   'abdomen-renal-anatomy': item('Abdomen.pdf, physical pp.44–45 / printed pp.43–44; Kamo et al., Jpn J Radiol. 2021;39:407–413, doi:10.1007/s11604-020-01080-7; Eisner et al., J Urol. 2009;182:165–168, doi:10.1016/j.juro.2009.02.131', L('Welche radiologische Einordnung der klassisch beschriebenen Überkreuzung des Ureters mit den Iliakalgefäßen ist korrekt?', 'Which radiological interpretation of the classically described ureteric crossing of the iliac vessels is correct?', 'کدام تفسیر تصویربرداری از محل کلاسیک عبور حالب از عروق ایلیاک درست است؟'), [L('Anatomische Landmarke, aber nicht als häufige Steinimpaktionsstelle belegt.', 'Anatomical landmark, but not established as a common stone-impaction site.', 'یک نشانه آناتومیک است، اما محل شایع گیرکردن سنگ بودن آن ثابت نشده است.'), L('Einer der zwei häufigsten Steinimpaktionsorte.', 'One of the two most common stone-impaction sites.', 'یکی از دو محل شایع گیرکردن سنگ.'), L('Die Lage des Steins beweist unabhängig von den übrigen Zeichen eine Obstruktion.', 'The stone location proves obstruction regardless of other findings.', 'محل سنگ، مستقل از سایر یافته‌ها، انسداد را ثابت می‌کند.')], 0, L('Die Iliakalgefäßkreuzung ist eine klassische anatomische Landmarke. Kamo et al. unterscheiden sie vom nahegelegenen Übergang am oberen Ureter, an dem sich die Beweglichkeit verändert; die CT-Kohorte von Eisner et al. fand 1,1 % der Steine direkt an der Iliakalgefäßkreuzung. Eine Obstruktion wird aus dem Gesamtbefund beurteilt.', 'The iliac-vessel crossing is a classic anatomical landmark. Kamo et al. distinguish it from the nearby upper-ureter transition where mobility changes; the CT cohort by Eisner et al. found 1.1% of stones directly at the iliac crossing. Obstruction is assessed from the complete imaging context.', 'تقاطع عروق ایلیاک نشانه آناتومیک کلاسیک است. Kamo و همکاران آن را از گذار نزدیک در بخش فوقانی حالب که تغییر تحرک رخ می‌دهد جدا می‌کنند؛ در کوهورت CT مقاله Eisner و همکاران، ۱٫۱٪ سنگ‌ها دقیقاً در تقاطع ایلیاک بودند. انسداد باید بر اساس کل یافته‌ها ارزیابی شود.')),
   'abdomen-liver-metastases': item('Abdomen.pdf pp.24–25 (printed pp.23–24)', L('Ein einzelner Leberherd zeigt geringe arterielle Anreicherung und bleibt portalvenös deutlich hypodens. Welche Einordnung passt am besten?', 'A solitary liver lesion shows little arterial enhancement and remains clearly hypoattenuating in the portal venous phase. Which interpretation fits best?', 'یک ضایعهٔ منفرد کبدی تقویت شریانی کمی دارد و در فاز پورت آشکارا کم‌دانسیته می‌ماند. کدام تفسیر مناسب‌تر است؟'), [L('Hypovaskuläres Muster; solitäres Auftreten schließt Metastase nicht aus', 'Hypovascular pattern; solitary presentation does not exclude metastasis', 'الگوی کم‌عروق؛ منفرد بودن، متاستاز را رد نمی‌کند'), L('Hypervaskuläres Muster, da die Läsion portalvenös hypodens ist', 'Hypervascular pattern because the lesion is hypoattenuating portal venously', 'الگوی پرعروق، چون ضایعه در فاز پورت کم‌دانسیته است'), L('Der Primärtumor ist damit sicher kolorektal', 'The primary tumour is therefore certainly colorectal', 'بنابراین منشأ اولیه قطعاً کولورکتال است')], 0, L('Das passt zum im PDF beschriebenen hypovaskulären Muster. Ein einzelner Herd schließt Metastase ausdrücklich nicht aus; die Enhancement-Dynamik identifiziert den Primärtumor nicht allein.', 'This fits the hypovascular pattern described in the PDF. A solitary lesion explicitly does not exclude metastasis; enhancement dynamics alone do not identify the primary tumour.', 'این یافته با الگوی کم‌عروق شرح‌داده‌شده در PDF سازگار است. منفرد بودن ضایعه متاستاز را رد نمی‌کند و رفتار جذب ماده حاجب به‌تنهایی منشأ اولیه را مشخص نمی‌کند.')),
     'abdomen-gist': item('Abdomen.pdf, physical pp.67–68 / printed pp.66–67; GEIS 2023, DOI 10.1177/17588359231192388', L('Welche morphologischen Angaben sollten Sie an der gezeigten Raumforderung zuerst beschreiben?', 'Which morphologic features should you describe first for the illustrated mass?', 'برای توده نشان‌داده‌شده ابتدا کدام ویژگی‌های مورفولوژیک را توصیف می‌کنید؟'), [L('Magenursprung, lobulierte Kontur, Wachstumsrichtung und Binnenstruktur', 'Gastric origin, lobulated contour, growth direction and internal structure', 'منشأ معده، حاشیه لوبوله، جهت رشد و ساختار داخلی'), L('Den histologischen Subtyp und das TNM-Stadium allein aus der CT festlegen', 'Assign histologic subtype and TNM stage from CT alone', 'تعیین زیرگروه بافت‌شناختی و مرحله TNM فقط بر اساس CT'), L('Die Kontrastphase aus der Reihenfolge der drei Abbildungen ableiten', 'Infer contrast phase from the order of the three panels', 'نتیجه‌گیری درباره فاز تزریق از ترتیب سه تصویر')], 0, L('Zuerst werden beobachtbare Morphologie und anatomischer Ursprung beschrieben. Histologie, Stadium und nicht dokumentierte Phasen werden nicht aus diesen Bildern allein abgeleitet.', 'Start by describing observable morphology and anatomic origin. Histology, stage and undocumented phases cannot be inferred from these images alone.', 'ابتدا مورفولوژی قابل مشاهده و منشأ آناتومیک را توصیف کنید. بافت‌شناسی، مرحله و فازهای ثبت‌نشده را نمی‌توان فقط از این تصاویر نتیجه گرفت.')),
-  'abdomen-small-bowel-feces': item('Abdomen.pdf p.71 (printed p.70); Mayo-Smith et al., Clin Radiol. 1995;50:765–767, PMID 7489626; Wassef et al., AJR. 2018;210:78–84, PMID 29045179', L('Was beschreibt das Small-Bowel-Feces-Zeichen und wofür kann es hilfreich sein?', 'What does the small-bowel feces sign describe, and what can it help with?', 'علامت مدفوع رودهٔ باریک چه چیزی را نشان می‌دهد و در چه کاری می‌تواند کمک کند؟'), [L('Partikelhaltiger, stuhlähnlicher Inhalt mit Gas in dilatiertem Dünndarm; nahe der Übergangszone kann es deren Lokalisation unterstützen.', 'Particulate, faeces-like material mixed with gas in dilated small bowel; near the transition zone it may help localise that zone.', 'محتوای ذره‌ای شبیه مدفوع همراه گاز در رودهٔ باریک متسع؛ اگر نزدیک نقطهٔ گذار باشد می‌تواند به مکان‌یابی آن کمک کند.'), L('Gas in der Darmwand, das allein eine transmurale Nekrose beweist.', 'Gas within the bowel wall, which alone proves transmural necrosis.', 'گاز داخل دیوارهٔ روده که به‌تنهایی نکروز تمام‌ضخامت را ثابت می‌کند.'), L('Ein verlässlicher Einzelmarker für Ischämie und Operationsbedarf.', 'A reliable standalone marker for ischaemia and need for surgery.', 'یک نشانگر مستقل و قابل‌اعتماد برای ایسکمی و نیاز به جراحی.' )], 0, L('Das Zeichen besteht aus Gasbläschen und partikulärem, stuhlähnlichem Inhalt in dilatierten Dünndarmschlingen. Seine Nähe zur Übergangszone kann bei deren Lokalisierung helfen. Es beweist für sich weder Ischämie noch einen bestimmten Behandlungsbedarf.', 'The sign consists of gas bubbles and particulate, faeces-like material in dilated small-bowel loops. Its proximity to the transition zone can help localise it. On its own, it proves neither ischaemia nor a specific treatment requirement.', 'این علامت از حباب‌های گاز و محتوای ذره‌ای شبیه مدفوع در لوپ‌های متسع رودهٔ باریک تشکیل می‌شود. نزدیکی آن به نقطهٔ گذار می‌تواند به مکان‌یابی کمک کند؛ اما به‌تنهایی ایسکمی یا نیاز درمانی مشخصی را ثابت نمی‌کند.')),
-  'abdomen-ileus-volvulus': item('Abdomen.pdf p.70; Brandariz Gil L et al. Rigler triad in gallstone ileus. Rev Esp Enferm Dig. 2016;108(9):581–582. PMID: 27615020', L('Welche drei Befunde bilden die klassische Rigler-Trias beim Gallensteinileus?', 'Which three findings form the classic Rigler triad in gallstone ileus?', 'کدام سه یافته تریاد کلاسیک ریگلر را در ایلئوس سنگ صفراوی تشکیل می‌دهند؟'), [L('Dünndarmobstruktion, Pneumobilie und ektoper Gallenstein', 'Small-bowel obstruction, pneumobilia and an ectopic gallstone', 'انسداد روده باریک، پنوموبیلی و سنگ صفراوی نابجا'), L('Kolondilatation, Aerobilie und Gallenblasenstein', 'Colonic dilatation, pneumobilia and a gallbladder stone', 'اتساع کولون، پنوموبیلی و سنگ داخل کیسه صفرا'), L('Dünndarmobstruktion, Pneumoperitoneum und Portalvenengas', 'Small-bowel obstruction, pneumoperitoneum and portal venous gas', 'انسداد روده باریک، پنوموپریتوئن و گاز ورید پورت')], 0, L('Die klassische Trias umfasst Dünndarmobstruktion, Luft in den Gallenwegen und einen ektopen Gallenstein. Sie ist häufig unvollständig; das Fehlen eines Bestandteils schließt den Gallensteinileus nicht aus.', 'The classic triad comprises small-bowel obstruction, air in the biliary tree and an ectopic gallstone. It is often incomplete; absence of one component does not exclude gallstone ileus.', 'تریاد کلاسیک شامل انسداد روده باریک، هوا در مجاری صفراوی و سنگ نابجا در روده است. این تریاد اغلب کامل نیست؛ نبود یک جزء ایلئوس سنگ صفراوی را رد نمی‌کند.')),
-  'abdomen-foramen-winslow': item('Abdomen.pdf p.69 (printed p.68); CT pair on source slide marked rID 44820', L('Welche CT-Lage beschreibt Abdomen.pdf p. 69 als Hinweis auf die gezeigte Foramen-Winslow-Hernie?', 'Which CT location does Abdomen.pdf p. 69 describe as a clue to the illustrated foramen of Winslow hernia?', 'صفحهٔ ۶۹ Abdomen.pdf چه محل‌یابی‌ای را به‌عنوان سرنخ فتق فورامن وینسلوی نشان‌داده‌شده در CT بیان می‌کند؟'), [L('Darmschlingen in der Bursa omentalis hinter dem Magen; die Folie bezeichnet den dargestellten Inhalt als fehlgelagertes Zökum', 'Bowel in the lesser sac behind the stomach; the slide labels the content shown as a displaced caecum', 'روده در بورس امنتال پشت معده؛ اسلاید محتوای نشان‌داده‌شده را سکوم جابه‌جا‌شده معرفی می‌کند'), L('Darmschlingen zwischen Niere und M. psoas im Retroperitoneum', 'Bowel between the kidney and psoas muscle in the retroperitoneum', 'روده بین کلیه و عضلهٔ پسواس در فضای رتروپریتوئن'), L('Darmschlingen ventral des Magens direkt hinter der vorderen Bauchwand', 'Bowel anterior to the stomach, immediately behind the anterior abdominal wall', 'روده در جلوی معده و بلافاصله پشت دیوارهٔ قدامی شکم')], 0, L('Die PDF beschreibt die Lage im Epigastrium, typischerweise hinter dem Magen und vor der Vena cava; die Bildunterschrift ordnet das gezeigte, fehlgelagerte Zökum dem Foramen Winslow und der Bursa omentalis zu. Dies ist ein Hinweis aus diesem Fall, keine allgemeine Regel für jede Obstruktion.', 'The PDF describes an epigastric location, typically behind the stomach and anterior to the vena cava; its caption attributes the displaced caecum shown to passage through the foramen of Winslow into the lesser sac. This is a clue from this case, not a general rule for every obstruction.', 'PDF محل را در اپی‌گاستر، معمولاً پشت معده و جلوی ورید اجوف، توصیف می‌کند؛ زیرنویس تصویر سکوم جابه‌جا‌شده را به عبور از فورامن وینسلو به بورس امنتال نسبت می‌دهد. این سرنخی از همین مورد است، نه قاعده‌ای عمومی برای هر انسداد.')),
-  'abdomen-intussusception-initial-imaging': item('Abdomen.pdf p.70 (printed p.69); RCH Clinical Practice Guideline: Intussusception (updated 2026); ACR Appropriateness Criteria: Abdominal Pain–Child, suspected intussusception', L('Bei einem Kind mit klinischem Verdacht auf eine Intussuszeption: Welche Bildgebung ist initial am besten geeignet?', 'In a child with suspected intussusception, which imaging test is the preferred initial study?', 'در کودکی با شک بالینی به اینتوساسپشن، کدام روش تصویربرداری برای بررسی اولیه مناسب‌تر است؟'), [L('Abdomensonografie', 'Abdominal ultrasound', 'سونوگرافی شکم'), L('CT des Abdomens mit intravenösem Kontrastmittel', 'Abdominal CT with intravenous contrast', 'CT شکم با تزریق وریدی ماده حاجب'), L('Röntgen-Abdomen als alleiniger diagnostischer Test', 'Abdominal radiography as the sole diagnostic test', 'رادیوگرافی شکم به‌عنوان تنها آزمون تشخیصی')], 0, L('Die Sonografie ist bei vermuteter kindlicher Intussuszeption die initiale Bildgebung der Wahl. CT ist dafür nicht die bevorzugte Erstuntersuchung; ein unauffälliges Röntgenbild kann die Erkrankung nicht sicher ausschließen.', 'Ultrasound is the preferred initial imaging test for suspected paediatric intussusception. CT is not the preferred first study, and a normal radiograph cannot reliably exclude it.', 'سونوگرافی در شک به اینتوساسپشن کودکان روش تصویربرداری اولیهٔ منتخب است. CT آزمون اول ترجیحی نیست و رادیوگرافی طبیعی نیز بیماری را با اطمینان رد نمی‌کند.')),
+  'abdomen-small-bowel-feces': {
+  "question": {
+    "de": "CT zeigt partikelhaltigen, stuhlähnlichen Inhalt mit Gasbläschen innerhalb einer dilatierten Dünndarmschlinge nahe einem Kaliberwechsel. Welche Interpretation passt?",
+    "en": "CT shows particulate faeces-like contents mixed with gas bubbles inside a dilated small-bowel loop near a calibre change. Which interpretation fits?",
+    "fa": "CT محتوای ذره‌ای شبیه مدفوع همراه حباب گاز داخل لوپ متسع رودهٔ باریک نزدیک تغییر قطر نشان می‌دهد. کدام تفسیر مناسب است؟"
+  },
+  "options": [
+    {
+      "de": "Small-Bowel-Feces-Zeichen; es kann die Suche nach der Übergangszone unterstützen.",
+      "en": "Small-bowel feces sign; it can help locate the transition zone.",
+      "fa": "علامت مدفوع رودهٔ باریک؛ می‌تواند به یافتن نقطهٔ گذار کمک کند."
+    },
+    {
+      "de": "Pneumatosis intestinalis; das Gas liegt in der Darmwand.",
+      "en": "Pneumatosis intestinalis; the gas is within the bowel wall.",
+      "fa": "پنوماتوز روده؛ گاز داخل دیوارهٔ روده است."
+    },
+    {
+      "de": "Portalvenöses Gas; die Gasbläschen folgen peripheren Lebergefäßen.",
+      "en": "Portal venous gas; bubbles follow peripheral hepatic vessels.",
+      "fa": "گاز ورید پورت؛ حباب‌ها از عروق محیطی کبد پیروی می‌کنند."
+    },
+    {
+      "de": "Whirl-Zeichen; die Gasbläschen markieren verdrehte Mesenterialgefäße.",
+      "en": "Whirl sign; the bubbles mark twisted mesenteric vessels.",
+      "fa": "علامت ویرل؛ حباب‌ها عروق مزانتریک پیچ‌خورده را مشخص می‌کنند."
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Das Feces-Zeichen ist intraluminal und kann zur Lokalisation der Übergangszone beitragen. In der zitierten Originalkohorte war es kein unabhängiger Prädiktor für Ischämie oder Erfolg konservativer Behandlung.",
+    "en": "The feces sign is intraluminal and can help locate the transition zone. In the original cited cohort it did not independently predict ischaemia or successful nonoperative treatment.",
+    "fa": "علامت مدفوع داخل لومن است و می‌تواند به یافتن نقطهٔ گذار کمک کند. در کوهورت اصلیِ مورد استناد، پیش‌بینی‌کنندهٔ مستقل ایسکمی یا موفقیت درمان غیرجراحی نبود."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/29045179/",
+  "wrongExplanations": {
+    "B": {
+      "de": "Beschrieben ist Darminhalt im Lumen, nicht Gas in der Wand.",
+      "en": "The description places the contents in the lumen, not gas within the wall.",
+      "fa": "توصیف مربوط به محتویات داخل لومن است، نه گاز داخل دیواره."
+    },
+    "C": {
+      "de": "Die Gasbläschen liegen im Dünndarmlumen, nicht im hepatischen Portalvenensystem.",
+      "en": "The bubbles lie within the small-bowel lumen, not the hepatic portal venous system.",
+      "fa": "حباب‌ها داخل لومن رودهٔ باریک‌اند، نه سیستم ورید پورت کبد."
+    },
+    "D": {
+      "de": "Ein Whirl betrifft die spiralige Mesenterial-/Gefäßanordnung, nicht stuhlähnlichen Darminhalt.",
+      "en": "A whirl concerns spiralling mesenteric/vessel architecture, not faeces-like bowel contents.",
+      "fa": "ویرل آرایش مارپیچی مزانتر و عروق است، نه محتوای روده شبیه مدفوع."
+    }
+  }
+},
+  'abdomen-ileus-volvulus': {
+  "question": {
+    "de": "Welche drei Befunde bilden die klassische Rigler-Trias beim Gallensteinileus?",
+    "en": "Which three findings form the classic Rigler triad in gallstone ileus?",
+    "fa": "کدام سه یافته تریاد کلاسیک ریگلر را در ایلئوس سنگ صفراوی تشکیل می‌دهند؟"
+  },
+  "options": [
+    {
+      "de": "Dünndarmobstruktion, Pneumobilie und ektoper Gallenstein",
+      "en": "Small-bowel obstruction, pneumobilia and an ectopic gallstone",
+      "fa": "انسداد روده باریک، پنوموبیلی و سنگ صفراوی نابجا"
+    },
+    {
+      "de": "Kolondilatation, Aerobilie und Gallenblasenstein",
+      "en": "Colonic dilatation, pneumobilia and a gallbladder stone",
+      "fa": "اتساع کولون، پنوموبیلی و سنگ داخل کیسه صفرا"
+    },
+    {
+      "de": "Dünndarmobstruktion, Pneumoperitoneum und Portalvenengas",
+      "en": "Small-bowel obstruction, pneumoperitoneum and portal venous gas",
+      "fa": "انسداد روده باریک، پنوموپریتوئن و گاز ورید پورت"
+    },
+    {
+      "de": "Dünndarmobstruktion, Pneumobilie und ein Stein noch in der Gallenblase",
+      "en": "Small-bowel obstruction, pneumobilia and a stone still within the gallbladder",
+      "fa": "انسداد روده باریک، پنوموبیلی و سنگی که هنوز داخل کیسه صفراست"
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Die klassische Trias umfasst Dünndarmobstruktion, Luft in den Gallenwegen und einen ektopen Gallenstein. Sie ist häufig unvollständig; das Fehlen eines Bestandteils schließt den Gallensteinileus nicht aus.",
+    "en": "The classic triad comprises small-bowel obstruction, air in the biliary tree and an ectopic gallstone. It is often incomplete; absence of one component does not exclude gallstone ileus.",
+    "fa": "تریاد کلاسیک شامل انسداد روده باریک، هوا در مجاری صفراوی و سنگ نابجا در روده است. این تریاد اغلب کامل نیست؛ نبود یک جزء ایلئوس سنگ صفراوی را رد نمی‌کند."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/15093232/",
+  "wrongExplanations": {
+    "B": {
+      "de": "Zur klassischen Trias gehören Dünndarmobstruktion und ein ektoper Stein, nicht lediglich ein noch in der Gallenblase liegender Stein mit Kolondilatation.",
+      "en": "The classic triad includes small-bowel obstruction and an ectopic stone, not merely a stone still in the gallbladder with colonic dilatation.",
+      "fa": "تریاد کلاسیک شامل انسداد رودهٔ باریک و سنگ نابجاست، نه صرفاً سنگ باقی‌مانده در کیسهٔ صفرا همراه اتساع کولون."
+    },
+    "C": {
+      "de": "Pneumoperitoneum und Portalvenengas sind nicht die Pneumobilie der Rigler-Trias; außerdem fehlt der ektop gelegene Stein.",
+      "en": "Pneumoperitoneum and portal venous gas are not the pneumobilia of the Rigler triad; the ectopic stone is also absent.",
+      "fa": "پنوموپریتوئن و گاز ورید پورت، پنوموبیلی تریاد ریگلر نیستند؛ سنگ نابجا نیز ذکر نشده است."
+    },
+    "D": {
+      "de": "Der obstruierende Stein der klassischen Trias ist ektop im Darm; ein Gallenblasenstein allein erfüllt dieses Merkmal nicht.",
+      "en": "The obstructing stone in the classic triad is ectopic within bowel; a gallbladder stone alone does not meet that component.",
+      "fa": "سنگ انسداددهندهٔ تریاد کلاسیک در روده نابجاست؛ سنگ داخل کیسهٔ صفرا به‌تنهایی این جزء را برآورده نمی‌کند."
+    }
+  }
+},
+  'abdomen-foramen-winslow': {
+  "question": {
+    "de": "Textfall: Dilatierte Darmschlingen gelangen zwischen Pfortader und Vena cava inferior in die Bursa omentalis hinter dem Magen. Welche Hernienform passt zu dieser Route?",
+    "en": "Text vignette: dilated bowel loops pass between the portal vein and inferior vena cava into the lesser sac behind the stomach. Which hernia fits this route?",
+    "fa": "سناریوی متنی: لوپ‌های متسع روده از میان ورید پورت و ورید اجوف تحتانی وارد بورس امنتال پشت معده می‌شوند. کدام فتق با این مسیر سازگار است؟"
+  },
+  "options": [
+    {
+      "de": "Foramen-Winslow-Hernie.",
+      "en": "Foramen of Winslow hernia.",
+      "fa": "فتق فورامن وینسلو."
+    },
+    {
+      "de": "Links-paraduodenale Hernie.",
+      "en": "Left paraduodenal hernia.",
+      "fa": "فتق پارادئودنال چپ."
+    },
+    {
+      "de": "Perizökale Hernie.",
+      "en": "Pericaecal hernia.",
+      "fa": "فتق اطراف سکوم."
+    },
+    {
+      "de": "Obturatorhernie.",
+      "en": "Obturator hernia.",
+      "fa": "فتق ابتوراتور."
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Die beschriebene Route durch das Foramen Winslow zwischen Pfortader und Vena cava führt in die Bursa omentalis hinter dem Magen. Entscheidend ist die anatomische Durchtrittsstelle.",
+    "en": "The described route through the foramen of Winslow between portal vein and vena cava leads into the lesser sac behind the stomach. The anatomical passage is the decisive clue.",
+    "fa": "مسیر توصیف‌شده از فورامن وینسلو میان ورید پورت و اجوف به بورس امنتال پشت معده می‌رسد. سرنخ تعیین‌کننده، محل عبور آناتومیک است."
+  },
+  "source": "https://doi.org/10.11231/jaem.40.751",
+  "wrongExplanations": {
+    "B": {
+      "de": "Die links-paraduodenale Route ist nicht der beschriebene Durchtritt zwischen Pfortader und Vena cava in die Bursa omentalis.",
+      "en": "The left paraduodenal route is not the described passage between portal vein and vena cava into the lesser sac.",
+      "fa": "مسیر پارادئودنال چپ، عبور توصیف‌شده میان ورید پورت و اجوف به بورس امنتال نیست."
+    },
+    "C": {
+      "de": "Eine perizökale Hernie liegt an zökalen Rezessus und erklärt nicht den genannten Weg in die Bursa omentalis.",
+      "en": "A pericaecal hernia involves caecal recesses and does not explain the stated route into the lesser sac.",
+      "fa": "فتق اطراف سکوم مربوط به ریسس‌های سکومی است و مسیر گفته‌شده به بورس امنتال را توضیح نمی‌دهد."
+    },
+    "D": {
+      "de": "Eine Obturatorhernie folgt dem Obturatorkanal im Becken, nicht dem Foramen Winslow.",
+      "en": "An obturator hernia passes through the pelvic obturator canal, not the foramen of Winslow.",
+      "fa": "فتق ابتوراتور از کانال ابتوراتور در لگن می‌گذرد، نه فورامن وینسلو."
+    }
+  }
+},
+  'abdomen-intussusception-initial-imaging': {
+  "question": {
+    "de": "Ein kreislaufstabiles Kind hat anfallsartige Bauchschmerzen und klinischen Verdacht auf ileokolische Intussuszeption. Welche Bildgebung ist initial bevorzugt?",
+    "en": "A haemodynamically stable child has intermittent abdominal pain and suspected ileocolic intussusception. Which imaging is preferred initially?",
+    "fa": "کودک با وضعیت همودینامیک پایدار، درد شکمی حمله‌ای و شک بالینی به انواژیناسیون ایلئوکولیک دارد. کدام تصویربرداری در ابتدا ترجیح دارد؟"
+  },
+  "options": [
+    {
+      "de": "Abdomensonografie.",
+      "en": "Abdominal ultrasound.",
+      "fa": "سونوگرافی شکم."
+    },
+    {
+      "de": "Kontrastverstärkte CT des Abdomens.",
+      "en": "Contrast-enhanced abdominal CT.",
+      "fa": "CT شکم با تزریق مادهٔ حاجب."
+    },
+    {
+      "de": "Konventionelle Röntgenaufnahme des Abdomens.",
+      "en": "Plain abdominal radiography.",
+      "fa": "رادیوگرافی سادهٔ شکم."
+    },
+    {
+      "de": "MRT des Abdomens.",
+      "en": "Abdominal MRI.",
+      "fa": "MRI شکم."
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Sonografie ist beim klinischen Verdacht auf kindliche Intussuszeption die initiale Untersuchung der Wahl. Ein Röntgenbild kann bei Obstruktions- oder Perforationsverdacht ergänzen; ein normales Bild schließt Intussuszeption nicht aus.",
+    "en": "Ultrasound is the initial study of choice in suspected childhood intussusception. Radiographs may complement assessment for obstruction or perforation; normal radiography does not exclude intussusception.",
+    "fa": "سونوگرافی بررسی اولیهٔ منتخب در شک به انواژیناسیون کودکان است. رادیوگرافی می‌تواند در شک به انسداد یا پرفوراسیون کمک کند؛ تصویر طبیعی انواژیناسیون را رد نمی‌کند."
+  },
+  "source": "https://www.rch.org.au/clinicalguide/guideline_index/intussusception/",
+  "wrongExplanations": {
+    "B": {
+      "de": "CT ist in dieser stabilen pädiatrischen Ausgangssituation nicht die bevorzugte Erstuntersuchung; Sonografie ist gezielt und strahlungsfrei.",
+      "en": "CT is not preferred first in this stable paediatric setting; ultrasound is targeted and radiation-free.",
+      "fa": "CT در این وضعیت اولیهٔ پایدار کودکان ترجیح نخست نیست؛ سونوگرافی هدفمند و بدون پرتو است."
+    },
+    "C": {
+      "de": "Ein Röntgenbild kann Komplikationshinweise geben, ist aber kein verlässlicher primärer Ausschlusstest.",
+      "en": "Radiography can show complication clues but is not a reliable primary exclusion test.",
+      "fa": "رادیوگرافی می‌تواند سرنخ عارضه بدهد، اما آزمون اولیهٔ قابل‌اعتماد برای رد بیماری نیست."
+    },
+    "D": {
+      "de": "MRT ist hier nicht die etablierte bevorzugte Erstuntersuchung; die rasch verfügbare gezielte Sonografie ist initial vorgesehen.",
+      "en": "MRI is not the established preferred first study here; targeted readily available ultrasound is used initially.",
+      "fa": "MRI در اینجا بررسی نخست ترجیحیِ شناخته‌شده نیست؛ سونوگرافی هدفمند و سریع در ابتدا انجام می‌شود."
+    }
+  }
+},
   'abdomen-pancreatic-cysts': {
   "source": "https://doi.org/10.1016/j.pan.2023.12.009",
   "question": {
@@ -146,10 +354,166 @@ export const abdomenThoraxAssessmentDrafts = {
   }
 },
   'abdomen-lower-gi-bleeding': item('Abdomen.pdf pp. 86–87; ESGE 2021; ACG 2023; ACR', L('Was erklärt, dass trotz negativer CTA eine klinisch relevante Blutung möglich bleibt?', 'What explains why clinically important bleeding can remain possible despite a negative CTA?', 'چه چیزی توضیح می‌دهد که با وجود CTA منفی، خون‌ریزی مهم از نظر بالینی همچنان ممکن است؟'), [L('Eine intermittierende Blutung kann während der Untersuchung pausieren; den Verdacht im klinischen Kontext weiter einordnen.', 'Intermittent bleeding may pause during the examination; continue to assess the suspicion in the clinical context.', 'خون‌ریزی متناوب ممکن است هنگام انجام بررسی متوقف شود؛ شک بالینی را در زمینهٔ بالینی ارزیابی کنید.'), L('Hyperdenses Material in der nativen Phase belegt für sich eine aktive Extravasation.', 'Hyperdense material on the unenhanced phase alone proves active extravasation.', 'مادهٔ پرچگال در فاز بدون تزریق به‌تنهایی نشت فعال را ثابت می‌کند.'), L('Bei klinischem Verdacht genügt die Portalphase allein zur abschließenden CTA-Beurteilung.', 'With clinical suspicion, the portal-venous phase alone is sufficient for a definitive CTA assessment.', 'در صورت شک بالینی، فاز پورتال به‌تنهایی برای ارزیابی قطعی CTA کافی است.')], 0, L('CTA bildet den Untersuchungszeitpunkt ab: Bei intermittierender Blutung kann die Extravasation gerade pausieren. Native, arterielle und portalvenöse Phase sowie klinischer Kontext gemeinsam einordnen.', 'CTA reflects the examination time: with intermittent bleeding, extravasation may have paused. Interpret the unenhanced, arterial and portal-venous phases together with the clinical context.', 'CTA وضعیت زمان بررسی را نشان می‌دهد: در خون‌ریزی متناوب ممکن است نشت همان زمان متوقف شده باشد. فازهای بدون تزریق، شریانی و پورتال را همراه با زمینهٔ بالینی ارزیابی کنید.')),
-  'abdomen-kolorektales-karzinom': item('Abdomen.pdf physical pp. 88–89; ESGAR 2026 primary staging', L('Im MRT liegt der Primärtumor 2 mm von der MRF entfernt. Ein unregelmäßiger tumorverdächtiger Knoten liegt 0,8 mm entfernt; ein glatt berandeter Knoten liegt 0,6 mm entfernt. Wie ist die MRF nach ESGAR 2026 zu beurteilen?', 'On MRI, the primary tumour is 2 mm from the MRF. An irregular suspicious node is 0.8 mm away; a smooth-bordered node is 0.6 mm away. How should the MRF be assessed under ESGAR 2026?', 'در MRI، تومور اولیه ۲ میلی‌متر از MRF فاصله دارد. یک غدهٔ نامنظم و مشکوک در فاصلهٔ ۰٫۸ میلی‌متری و یک غده با حاشیه صاف در فاصلهٔ ۰٫۶ میلی‌متری قرار دارد. طبق ESGAR 2026، MRF چگونه ارزیابی می‌شود؟'), [L('MRF+ wegen des unregelmäßigen tumorverdächtigen Knotens innerhalb von 1 mm', 'MRF+ because of the irregular suspicious node within 1 mm', 'MRF مثبت است، چون غدهٔ نامنظم و مشکوک در فاصلهٔ حداکثر ۱ میلی‌متر قرار دارد'), L('MRF−, weil der Primärtumor selbst mehr als 1 mm entfernt ist', 'MRF− because the primary tumour itself is more than 1 mm away', 'MRF منفی است، چون خود تومور اولیه بیش از ۱ میلی‌متر فاصله دارد'), L('MRF+ nur bei direkter Infiltration der Faszie durch den Primärtumor', 'MRF+ only with direct invasion of the fascia by the primary tumour', 'MRF فقط در صورت تهاجم مستقیم تومور اولیه به فاسیا مثبت است')], 0, L('Ein Abstand von ≤1 mm durch einen unregelmäßigen tumorverdächtigen Knoten gilt als MRF-Beteiligung. Ein glatt berandeter Lymphknoten allein macht die MRF nicht positiv.', 'A margin of ≤1 mm from an irregular suspicious node indicates MRF involvement. A smooth-bordered lymph node alone does not make the MRF positive.', 'فاصلهٔ حداکثر ۱ میلی‌متر از غدهٔ نامنظم و مشکوک به معنی درگیری MRF است. غدهٔ لنفاوی با حاشیهٔ صاف به‌تنهایی MRF را مثبت نمی‌کند.')),
+  'abdomen-kolorektales-karzinom': {
+  "question": {
+    "de": "Im MRT liegt der Primärtumor 2 mm von der MRF entfernt. Ein unregelmäßiger tumorverdächtiger Knoten liegt 0,8 mm entfernt; ein glatt berandeter Knoten liegt 0,6 mm entfernt. Wie ist die MRF nach ESGAR 2026 zu beurteilen?",
+    "en": "On MRI, the primary tumour is 2 mm from the MRF. An irregular suspicious node is 0.8 mm away; a smooth-bordered node is 0.6 mm away. How should the MRF be assessed under ESGAR 2026?",
+    "fa": "در MRI، تومور اولیه ۲ میلی‌متر از MRF فاصله دارد. یک غدهٔ نامنظم و مشکوک در فاصلهٔ ۰٫۸ میلی‌متری و یک غده با حاشیه صاف در فاصلهٔ ۰٫۶ میلی‌متری قرار دارد. طبق ESGAR 2026، MRF چگونه ارزیابی می‌شود؟"
+  },
+  "options": [
+    {
+      "de": "MRF+ wegen des unregelmäßigen tumorverdächtigen Knotens innerhalb von 1 mm",
+      "en": "MRF+ because of the irregular suspicious node within 1 mm",
+      "fa": "MRF مثبت است، چون غدهٔ نامنظم و مشکوک در فاصلهٔ حداکثر ۱ میلی‌متر قرار دارد"
+    },
+    {
+      "de": "MRF−, weil der Primärtumor selbst mehr als 1 mm entfernt ist",
+      "en": "MRF− because the primary tumour itself is more than 1 mm away",
+      "fa": "MRF منفی است، چون خود تومور اولیه بیش از ۱ میلی‌متر فاصله دارد"
+    },
+    {
+      "de": "MRF+ nur bei direkter Infiltration der Faszie durch den Primärtumor",
+      "en": "MRF+ only with direct invasion of the fascia by the primary tumour",
+      "fa": "MRF فقط در صورت تهاجم مستقیم تومور اولیه به فاسیا مثبت است"
+    },
+    {
+      "de": "MRF+ allein wegen eines glatt berandeten Lymphknotens innerhalb von 1 mm",
+      "en": "MRF+ based only on a smooth-bordered lymph node within 1 mm",
+      "fa": "MRF مثبت فقط به‌دلیل یک غده با حاشیه صاف در فاصلهٔ حداکثر ۱ میلی‌متر"
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Ein Abstand von ≤1 mm durch einen unregelmäßigen tumorverdächtigen Knoten gilt als MRF-Beteiligung. Ein glatt berandeter Lymphknoten allein macht die MRF nicht positiv.",
+    "en": "A margin of ≤1 mm from an irregular suspicious node indicates MRF involvement. A smooth-bordered lymph node alone does not make the MRF positive.",
+    "fa": "فاصلهٔ حداکثر ۱ میلی‌متر از غدهٔ نامنظم و مشکوک به معنی درگیری MRF است. غدهٔ لنفاوی با حاشیهٔ صاف به‌تنهایی MRF را مثبت نمی‌کند."
+  },
+  "source": "https://doi.org/10.1007/s00330-025-12274-w",
+  "wrongExplanations": {
+    "B": {
+      "de": "Die MRF-Beurteilung berücksichtigt neben dem Primärtumor auch EMVI und irreguläre tumorverdächtige Knoten; der beschriebene Knoten liegt innerhalb von 1 mm.",
+      "en": "MRF assessment includes EMVI and irregular suspicious nodes as well as the primary tumour; the described irregular node is within 1 mm.",
+      "fa": "ارزیابی MRF علاوه بر تومور اصلی، EMVI و غدد نامنظم مشکوک را هم لحاظ می‌کند؛ غدهٔ نامنظم توصیف‌شده در فاصلهٔ کمتر از ۱ میلی‌متر است."
+    },
+    "C": {
+      "de": "Nach der benannten ESGAR-Fassung reicht ein Abstand von ≤1 mm zu den relevanten Tumorstrukturen für MRF-Beteiligung; sichtbares Durchwachsen der Faszie ist nicht erforderlich.",
+      "en": "Under the named ESGAR version, distance ≤1 mm to the relevant tumour structures meets MRF involvement; visible penetration through the fascia is not required.",
+      "fa": "در نسخهٔ نام‌بردهٔ ESGAR، فاصلهٔ ≤۱ میلی‌متر تا ساختارهای توموری مرتبط معیار درگیری MRF است؛ عبور قابل مشاهده از فاسیا الزامی نیست."
+    },
+    "D": {
+      "de": "Ein glatt berandeter Lymphknoten allein wird in der benannten ESGAR-Fassung auch bei einem Abstand von ≤1 mm nicht als MRF-Beteiligung gewertet.",
+      "en": "Under the named ESGAR version, a smooth-bordered node alone does not constitute MRF involvement even at distance ≤1 mm.",
+      "fa": "در نسخهٔ نام‌بردهٔ ESGAR، غدهٔ با حاشیهٔ صاف به‌تنهایی حتی با فاصلهٔ ≤۱ میلی‌متر درگیری MRF محسوب نمی‌شود."
+    }
+  }
+},
   'nephroblastom-wilms': item('Abdomen.pdf physical p. 52; Combrink & Beviss-Challinor 2021 (MRI claw-sign evidence, not directly transferable to CT)', L('Eine große inhomogene Raumforderung des Oberbauchs wird von normalem Nierenparenchym beidseits spitzwinklig umgriffen. Was stützt dieses Zeichen am stärksten?', 'A large heterogeneous upper-abdominal mass is partly wrapped by normal renal parenchyma with acute margins on both sides. What does this sign most strongly support?', 'توده‌ای بزرگ و ناهمگن در بخش فوقانی شکم دیده می‌شود که پارانشیم طبیعی کلیه از دو طرف با حاشیه‌های نوک‌تیز آن را در بر گرفته است. این علامت بیش از همه چه چیزی را تقویت می‌کند؟'), [L('Ursprung aus dem Nierenparenchym', 'Origin from the renal parenchyma', 'منشأ از پارانشیم کلیه'), L('Sicherer Ursprung aus der Nebenniere', 'Definite origin from the adrenal gland', 'منشأ قطعی از غده فوق کلیوی'), L('Beweis für eine bestimmte Histologie', 'Proof of a specific histology', 'اثبات یک بافت‌شناسی مشخص')], 0, L('Das Claw sign stützt einen renalen Ursprungsort, beweist aber keine Histologie und schließt Neuroblastom nicht aus. Die Winkelbeschreibung der PDF und eine MRI-Definition werden wegen der unterschiedlichen Modalität nicht gleichgesetzt.', 'The claw sign supports a renal site of origin but does not prove histology or exclude neuroblastoma. The PDF angle description and an MRI definition are not treated as equivalent because the modalities differ.', 'علامت claw از منشأ کلیوی حمایت می‌کند، اما بافت‌شناسی را ثابت نمی‌کند و نوروبلاستوما را رد نمی‌کند. توصیف زاویه در PDF و تعریف MRI به‌دلیل تفاوت روش تصویربرداری معادل دانسته نمی‌شوند.')),
-  'abdomen-ileus-ischaemia': item('Abdomen.pdf p.72 (printed p.71); Millet et al., Eur Radiol. 2015;25:1823–1835, PMID 25850889; ACR Appropriateness Criteria, Suspected Small-Bowel Obstruction (2019); Le Corre et al., AJR 2026, PMID 42053388', L('Welche Aussage zu CT-Zeichen einer möglichen Ischämie bei Dünndarmileus ist am besten?', 'Which statement about CT signs of possible ischaemia in small-bowel obstruction is most appropriate?', 'کدام عبارت دربارهٔ نشانه‌های CT به نفع احتمال ایسکمی در انسداد رودهٔ باریک مناسب‌تر است؟'), [L('Wandverdickung, verminderte Wandaufnahme, Pneumatosis und portalvenöses Gas sind Warnzeichen; sie werden im Gesamtmuster beurteilt.', 'Wall thickening, reduced mural enhancement, pneumatosis and portal venous gas are warning signs; interpret them within the overall pattern.', 'ضخیم‌شدن دیواره، کاهش جذب دیواره، پنوماتوز و گاز ورید پورت نشانه‌های هشدارند و باید در الگوی کلی تفسیر شوند.'), L('Das Fehlen von Pneumatosis und portalvenösem Gas schließt Ischämie aus.', 'Absence of pneumatosis and portal venous gas excludes ischaemia.', 'نبود پنوماتوز و گاز ورید پورت ایسکمی را رد می‌کند.'), L('Eine Closed-loop-Konfiguration beweist für sich eine Ischämie.', 'A closed-loop configuration alone proves ischaemia.', 'نمای لوپ بسته به‌تنهایی ایسکمی را ثابت می‌کند.')], 0, L('Wandverdickung ist unspezifisch. Eine Metaanalyse fand prädiktive CT-Zeichen, aber kein Einzelzeichen schloss Ischämie zuverlässig aus. Wandkontrastierung, Mesenterialveränderungen und Schlingenkonfiguration gemeinsam beurteilen. Die Aussage zu fehlender Pneumatosis/portalvenösem Gas ist deshalb ebenfalls falsch.', 'Wall thickening is nonspecific. A meta-analysis found predictive CT signs, but no individual sign reliably excluded ischaemia. Assess mural enhancement, mesenteric changes and loop configuration together. Therefore, absence of pneumatosis or portal venous gas does not rule it out.', 'ضخیم‌شدن دیواره غیراختصاصی است. یک متاآنالیز نشانه‌های پیش‌بینی‌کنندهٔ CT را گزارش کرد، اما هیچ نشانهٔ منفردی ایسکمی را با اطمینان رد نمی‌کرد. جذب دیواره، تغییرات مزانتریک و شکل لوپ را در کنار هم ارزیابی کنید؛ بنابراین نبود پنوماتوز یا گاز ورید پورت آن را رد نمی‌کند.')),
-  'abdomen-mesenteric-ischaemia-cta-protocol': item('ESVS 2025 Clinical Practice Guidelines, Recommendation 33, DOI 10.1016/j.ejvs.2025.06.010; Abdomen.pdf pp.73–75 (printed pp.72–74)', L('Welche CTA-Untersuchung empfiehlt die ESVS-Leitlinie bei Verdacht auf akute mesenteriale Ischämie?', 'Which CTA examination does the ESVS guideline recommend when acute mesenteric ischaemia is suspected?', 'هنگام شک به ایسکمی حاد مزانتریک، راهنمای ESVS کدام بررسی CTA را توصیه می‌کند؟'), [L('Dringliche CTA mit arterieller und venöser Phase sowie dünnen Schichten (≤ 1 mm); eine native Phase kann ergänzt werden.', 'Urgent CTA with arterial and venous phases and thin sections (≤ 1 mm); a non-contrast phase may be added.', 'CTA فوری با فازهای شریانی و وریدی و برش‌های نازک (≤ ۱ میلی‌متر)؛ می‌توان فاز بدون تزریق را افزود.'), L('Nur eine portalvenöse Phase; eine native Phase ersetzt die arterielle Phase.', 'A portal-venous phase only; a non-contrast phase replaces the arterial phase.', 'فقط فاز وریدی پورت؛ فاز بدون تزریق جایگزین فاز شریانی می‌شود.'), L('CTA erst nach Normalisierung der Nierenfunktion, da die Empfehlung bei Niereninsuffizienz nicht gilt.', 'Delay CTA until renal function normalises because the recommendation does not apply in renal impairment.', 'CTA را تا طبیعی‌شدن عملکرد کلیه به تأخیر بیندازید، چون توصیه در نارسایی کلیه کاربرد ندارد.')], 0, L('Empfehlung 33 fordert bei Verdacht eine dringliche arterielle und venöse CTA mit dünnen Schichten; nativ kann ergänzt werden. Die Empfehlung gilt ausdrücklich unabhängig von der Nierenfunktion.', 'Recommendation 33 calls for urgent arterial and venous CTA with thin sections; a non-contrast phase may be added. It explicitly applies regardless of renal function.', 'توصیهٔ ۳۳ در صورت شک، CTA فوری در فازهای شریانی و وریدی با برش‌های نازک را مطرح می‌کند؛ فاز بدون تزریق را می‌توان افزود. این توصیه صراحتاً مستقل از عملکرد کلیه است.')),
+  'abdomen-ileus-ischaemia': {
+  "question": {
+    "de": "Bei Dünndarmobstruktion zeigt die CT eine Closed-loop-Konfiguration, verminderte Wandkontrastierung und diffuse mesenteriale Trübung. Welche Befundbewertung ist am besten?",
+    "en": "In small-bowel obstruction, CT shows a closed-loop configuration, reduced mural enhancement and diffuse mesenteric haziness. Which interpretation fits best?",
+    "fa": "در انسداد رودهٔ باریک، CT نمای لوپ بسته، کاهش تقویت دیواره و کدورت منتشر مزانتر را نشان می‌دهد. کدام ارزیابی مناسب‌تر است؟"
+  },
+  "options": [
+    {
+      "de": "Verdacht auf Strangulation mit Ischämie; dringlich kommunizieren und mit Klinik und Gefäß-/Mesenterialbefund zusammenführen.",
+      "en": "Concern for strangulation with ischaemia; communicate urgently and integrate clinical, vascular and mesenteric findings.",
+      "fa": "شک به اختناق همراه ایسکمی؛ فوری اعلام و با بالین و یافته‌های عروقی و مزانتریک تلفیق شود."
+    },
+    {
+      "de": "Unkomplizierte mechanische Obstruktion ohne Hinweis auf eine Durchblutungsstörung.",
+      "en": "Uncomplicated mechanical obstruction without evidence of perfusion impairment.",
+      "fa": "انسداد مکانیکی بدون عارضه و بدون شواهد اختلال خون‌رسانی."
+    },
+    {
+      "de": "Nichtmechanischer paralytischer Ileus als Erklärung des Closed-loop-Musters.",
+      "en": "Nonmechanical paralytic ileus explaining the closed-loop pattern.",
+      "fa": "ایلئوس فلجی غیرمکانیکی به‌عنوان توضیح الگوی لوپ بسته."
+    },
+    {
+      "de": "Chronisch-entzündliche Wandveränderung ohne akuten Komplikationsverdacht.",
+      "en": "Chronic inflammatory mural change without concern for an acute complication.",
+      "fa": "تغییر التهابی مزمن دیواره بدون شک به عارضهٔ حاد."
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Die Kombination aus verminderter Wandkontrastierung, mesenterialer Trübung und Closed-loop-Mechanismus war in der Originalkohorte mit Strangulation assoziiert. Der Befund ist dringlich; eine sichere Aussage zur Irreversibilität oder zum genauen Resektionsumfang ergibt sich daraus allein nicht.",
+    "en": "Reduced mural enhancement, mesenteric haziness and a closed-loop mechanism were associated with strangulation in the original cohort. This warrants urgency; it does not alone establish irreversibility or exact resection extent.",
+    "fa": "ترکیب کاهش تقویت دیواره، کدورت مزانتر و مکانیسم لوپ بسته در کوهورت اصلی با اختناق ارتباط داشت. یافته فوری است؛ به‌تنهایی برگشت‌ناپذیری یا وسعت دقیق رزکسیون را قطعی نمی‌کند."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/28759326/",
+  "wrongExplanations": {
+    "B": {
+      "de": "Verminderte Kontrastierung und die kombinierte mesenteriale/Closed-loop-Konstellation sprechen gegen eine unauffällige Perfusionsbewertung.",
+      "en": "Reduced enhancement and the combined mesenteric/closed-loop pattern argue against an uncomplicated perfusion assessment.",
+      "fa": "کاهش تقویت و مجموعهٔ مزانتریک و لوپ بسته، خلاف ارزیابی خون‌رسانی بدون عارضه‌اند."
+    },
+    "C": {
+      "de": "Eine Closed-loop-Konfiguration beschreibt einen mechanischen Schlingenverschluss, nicht die typische diffuse nichtmechanische Dilatation.",
+      "en": "A closed-loop configuration describes mechanical loop obstruction rather than typical diffuse nonmechanical dilatation.",
+      "fa": "نمای لوپ بسته، انسداد مکانیکی لوپ است، نه اتساع منتشر معمولِ غیرمکانیکی."
+    },
+    "D": {
+      "de": "Das beschriebene akute Obstruktions-/Minderperfusionsmuster darf nicht allein als chronische Wandveränderung eingestuft werden.",
+      "en": "The described acute obstruction/hypoperfusion pattern should not be classified merely as chronic mural change.",
+      "fa": "الگوی حاد انسداد و کم‌خون‌رسانی توصیف‌شده نباید صرفاً تغییر مزمن دیواره تلقی شود."
+    }
+  }
+},
+  'abdomen-mesenteric-ischaemia-cta-protocol': {
+  "question": {
+    "de": "Bei klinischem Verdacht auf akute mesenteriale Ischämie: welches CT-Akquisitionsprotokoll passt zur ESVS-Empfehlung 33 von 2025?",
+    "en": "For suspected acute mesenteric ischaemia, which CT acquisition protocol fits ESVS2025 recommendation33?",
+    "fa": "در شک بالینی به ایسکمی حاد مزانتریک، کدام پروتکل برداشت CT با توصیهٔ ۳۳ راهنمای ESVS2025 مطابقت دارد؟"
+  },
+  "options": [
+    {
+      "de": "Dringliche arterielle und venöse CTA mit Schichten ≤1 mm; nativ optional ergänzen.",
+      "en": "Urgent arterial and venous CTA with slices ≤1 mm; optional unenhanced acquisition.",
+      "fa": "CTA فوری در فاز شریانی و وریدی با برش ≤۱ میلی‌متر؛ برداشت بدون تزریق اختیاری است."
+    },
+    {
+      "de": "Portalvenöse CT ohne arterielle Akquisition mit alleiniger 5-mm-Rekonstruktion.",
+      "en": "Portal venous CT without arterial acquisition, using only 5-mm reconstruction.",
+      "fa": "CT پورتال وریدی بدون برداشت شریانی، فقط با بازسازی ۵ میلی‌متری."
+    },
+    {
+      "de": "Arterielle Dünnschicht-CTA ohne venöse Akquisition.",
+      "en": "Thin-slice arterial CTA without venous acquisition.",
+      "fa": "CTA شریانی با برش نازک بدون برداشت وریدی."
+    },
+    {
+      "de": "Native Dünnschicht-CT ohne kontrastverstärkte Akquisition.",
+      "en": "Unenhanced thin-slice CT without a contrast-enhanced acquisition.",
+      "fa": "CT بدون تزریق با برش نازک و بدون برداشت پس از تزریق."
+    }
+  ],
+  "answer": 0,
+  "rationale": {
+    "de": "Empfehlung 33 fordert bei Verdacht eine dringliche arterielle und venöse CTA mit dünnen Schichten; nativ kann ergänzt werden. Die Empfehlung gilt ausdrücklich unabhängig von der Nierenfunktion.",
+    "en": "Recommendation 33 calls for urgent arterial and venous CTA with thin sections; a non-contrast phase may be added. It explicitly applies regardless of renal function.",
+    "fa": "توصیهٔ ۳۳ در صورت شک، CTA فوری در فازهای شریانی و وریدی با برش‌های نازک را مطرح می‌کند؛ فاز بدون تزریق را می‌توان افزود. این توصیه صراحتاً مستقل از عملکرد کلیه است."
+  },
+  "source": "https://doi.org/10.1016/j.ejvs.2025.06.010",
+  "wrongExplanations": {
+    "B": {
+      "de": "Ohne arterielle Phase fehlt die gezielte Beurteilung des arteriellen Verschlusses; allein 5-mm-Schichten entsprechen zudem nicht der Dünnschichtempfehlung.",
+      "en": "Without arterial imaging, targeted arterial occlusion assessment is missing; 5-mm slices alone also do not meet the thin-slice recommendation.",
+      "fa": "بدون فاز شریانی، ارزیابی هدفمند انسداد شریانی ناقص است؛ برش‌های صرفاً ۵ میلی‌متری نیز با توصیهٔ برش نازک مطابقت ندارند."
+    },
+    "C": {
+      "de": "Eine arterielle Phase allein ergänzt die venöse Gefäß- und Darmbeurteilung nicht; Empfehlung33 fordert beide Phasen.",
+      "en": "Arterial imaging alone lacks the venous vascular and bowel assessment; recommendation33 calls for both phases.",
+      "fa": "فاز شریانی به‌تنهایی ارزیابی وریدی عروق و روده را کامل نمی‌کند؛ توصیهٔ ۳۳ هر دو فاز را می‌خواهد."
+    },
+    "D": {
+      "de": "Eine native Untersuchung zeigt keine kontrastverstärkte Gefäßdarstellung oder Wandperfusion und ersetzt die empfohlene CTA nicht.",
+      "en": "Unenhanced CT does not show contrast-enhanced vessels or mural perfusion and does not replace the recommended CTA.",
+      "fa": "CT بدون تزریق، نمایش عروق پس از تزریق یا خون‌رسانی دیواره را نشان نمی‌دهد و جای CTA توصیه‌شده را نمی‌گیرد."
+    }
+  }
+},
   'thorax-lung-abscess-empyema': item('Thorax.pdf p.26; Williford ME, Godwin JD. Computed Tomography of Lung Abscess and Empyema. Radiol Clin North Am. 1983;21(3):575–583. PMID 6635173', L('Welche Herangehensweise hilft, einen Lungenabszess von einem Pleuraempyem abzugrenzen?', 'Which approach helps distinguish a lung abscess from pleural empyema?', 'کدام رویکرد به افتراق آبسهٔ ریه از آمپیم پلور کمک می‌کند؟'), [L('Lage im Lungenparenchym oder Pleuraspalt und Morphologie gemeinsam beurteilen; ein Luft-Flüssigkeitsspiegel allein ist nicht spezifisch.', 'Assess whether the collection is in lung parenchyma or the pleural space and consider its morphology; an air-fluid level alone is not specific.', 'محل ضایعه در پارانشیم ریه یا فضای پلور را همراه با مورفولوژی ارزیابی کنید؛ سطح هواـمایع به‌تنهایی اختصاصی نیست.'), L('Jeder Luft-Flüssigkeitsspiegel beweist einen Lungenabszess.', 'Any air-fluid level proves a lung abscess.', 'هر سطح هواـمایع آبسهٔ ریه را ثابت می‌کند.'), L('Ein Empyem liegt immer im Lungenparenchym und hat dieselbe Form wie ein Abszess.', 'An empyema is always within lung parenchyma and has the same shape as an abscess.', 'آمپیم همیشه در پارانشیم ریه قرار دارد و شکلی مانند آبسه دارد.')], 0, L('Thorax.pdf und der CT-Review beschreiben den Abszess als intraparenchymalen Prozess und betonen die Abgrenzung zum pleuralen Empyem. Luft-Flüssigkeitsspiegel können in unterschiedlichen Hohlräumen vorkommen und legen die Ursache nicht allein fest.', 'Thorax.pdf and the CT review describe abscess as an intraparenchymal process and emphasise distinction from pleural empyema. Air-fluid levels can occur in different cavities and do not determine the cause on their own.', 'Thorax.pdf و مرور CT آبسه را فرایندی داخل پارانشیمی توصیف می‌کنند و بر افتراق آن از آمپیم پلور تأکید دارند. سطح هواـمایع در فضاهای مختلف دیده می‌شود و به‌تنهایی علت را مشخص نمی‌کند.')),
 
 }

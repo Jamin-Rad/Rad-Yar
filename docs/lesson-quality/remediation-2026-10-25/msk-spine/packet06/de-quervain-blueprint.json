@@ -1,0 +1,49 @@
+{
+  "route": "/msk/hand/de-quervain",
+  "topicId": "de-quervain",
+  "status": "AUTHOR_FULL_ORIGINAL_POOL_PLUS_GAP_READY_REVIEW_PENDING",
+  "learningGoals": [
+    {
+      "id": "localise",
+      "text": {
+        "de": "APL/EPB und das erste Strecksehnenfach am Radiusstyloid anatomisch zuordnen.",
+        "en": "Localise APL/EPB and the first extensor compartment at the radial styloid.",
+        "fa": "APL/EPB و کمپارتمان اول اکستانسور را در سطح استایلوئید رادیوس مکان‌یابی کنید."
+      },
+      "questionIds": [
+        "de-quervain-de-01"
+      ],
+      "cardIds": [
+        "de-quervain-anatomy"
+      ]
+    },
+    {
+      "id": "report-components",
+      "text": {
+        "de": "Sehne, Sehnenscheide und Umgebung getrennt beschreiben und Bildzeichen klinisch einordnen.",
+        "en": "Describe tendon, sheath and surrounding tissue separately and interpret imaging signs clinically.",
+        "fa": "تاندون، غلاف و بافت اطراف را جداگانه توصیف و نشانه‌های تصویر را با بالین تفسیر کنید."
+      },
+      "questionIds": [
+        "de-quervain-de-01"
+      ],
+      "cardIds": [
+        "de-quervain-mri"
+      ]
+    },
+    {
+      "id": "provocation-limit",
+      "text": {
+        "de": "Manöverausführung benennen und die Grenzen einer Untersuchung beschwerdefreier Handgelenke für die klinische Testaussage erklären.",
+        "en": "Specify manoeuvre technique and explain limits of an asymptomatic-wrist study for clinical test interpretation.",
+        "fa": "شیوهٔ اجرای مانور را بیان و محدودیت مطالعهٔ مچ‌های بدون علامت را برای تفسیر بالینی آزمون توضیح دهید."
+      },
+      "questionIds": [
+        "aq-msk-de-quervain-de-provocation-study-limit"
+      ],
+      "cardIds": [
+        "de-quervain-provocation"
+      ]
+    }
+  ]
+}

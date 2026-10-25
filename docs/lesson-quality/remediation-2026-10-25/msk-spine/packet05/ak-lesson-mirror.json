@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-25",
+  "file": "data/ak-luxation.js",
+  "changes": [
+    {
+      "path": "definition",
+      "before": {
+        "de": "Traumatische Verletzung des Akromioklavikulargelenks (AC-Gelenk) mit Ruptur der AC- und/oder korakoklavikulären Bänder, klassifiziert nach Rockwood in sechs Typen.",
+        "en": "Traumatic injury of the acromioclavicular (AC) joint with rupture of the AC and/or coracoclavicular ligaments, classified by Rockwood into six types.",
+        "fa": "آسیب تروماتیک مفصل آکرومیوکلاویکولار (AC) با پارگی رباط‌های AC و/یا کوراکوکلاویکولار، طبق طبقه‌بندی راک‌وود در شش نوع."
+      },
+      "after": {
+        "de": "Traumatische Verletzung der AC-Stabilisatoren von Banddistorsion bis Ruptur mit Verlagerung, nach Rockwood in sechs Typen eingeteilt.",
+        "en": "Traumatic injury of the AC stabilisers ranging from ligament sprain to rupture with displacement, classified into six Rockwood types.",
+        "fa": "آسیب تروماتیک تثبیت‌کننده‌های AC، از کشیدگی رباط تا پارگی همراه جابجایی، در شش نوع راک‌وود طبقه‌بندی می‌شود."
+      },
+      "reason": "Include nondisplaced Type I sprain; rupture is not required for every grade."
+    },
+    {
+      "path": "anatomie.items.2.text",
+      "before": {
+        "de": "M. deltoideus und M. trapezius strahlen in die laterale Klavikula ein und unterstützen die dynamische Stabilität. Bei Typ V werden diese Ansätze abgerissen.",
+        "en": "Deltoid and trapezius muscles insert into the lateral clavicle and support dynamic stability. In Type V, these insertions are avulsed.",
+        "fa": "عضلات دلتوئید و تراپزیوس به کلاویکول جانبی چسبیده و پایداری دینامیک را پشتیبانی می‌کنند. در نوع V، این نقاط اتصال جدا می‌شوند."
+      },
+      "after": {
+        "de": "Deltoideus und Trapezius sind mit der lateralen Klavikula und der deltotrapezialen Faszie verbunden. Bei ausgeprägten Verletzungen können diese faszialen Ansätze abgelöst sein; nicht mit einer vollständigen Ruptur des Muskelbauchs gleichsetzen.",
+        "en": "Deltoid and trapezius attach to the lateral clavicle and deltotrapezial fascia. Severe injuries may strip these fascial attachments; this is not synonymous with complete muscle-belly rupture.",
+        "fa": "دلتوئید و تراپزیوس به بخش جانبی کلاویکول و فاسیای دلتوتراپزیوس متصل‌اند. در آسیب‌های شدید، این اتصالات فاسیایی ممکن است جدا شوند؛ این یافته معادل پارگی کامل شکم عضله نیست."
+      },
+      "reason": "Distinguish fascial stripping from complete muscle discontinuity."
+    },
+    {
+      "path": "anatomie.key",
+      "before": {
+        "de": "CC-Bänder tragen vor allem zur vertikalen, AC-Kapsel/Bänder zur horizontalen Stabilität bei. Das Rockwood-Muster ergibt sich aus Bandverletzung und Dislokationsrichtung; Typ III bedeutet eine Ruptur beider Bandgruppen.",
+        "en": "CC ligaments primarily contribute to vertical stability, while the AC capsule/ligaments contribute to horizontal stability. Rockwood grading reflects ligament injury and displacement direction; Type III denotes rupture of both ligament groups.",
+        "fa": "رباط‌های CC عمدتاً در پایداری عمودی و کپسول/رباط‌های AC در پایداری افقی نقش دارند. درجه‌بندی راک‌وود بر اساس آسیب رباط‌ها و جهت جابجایی است؛ نوع III به پارگی هر دو گروه رباط اشاره دارد."
+      },
+      "after": {
+        "de": "CC-Bänder tragen wesentlich zur vertikalen, AC-Kapsel/Bänder besonders zur horizontalen Stabilität bei; ihre Beiträge hängen auch von Richtung und Ausmaß der Last ab. Rockwood berücksichtigt Bandverletzung sowie Richtung und Ausmaß der Verlagerung.",
+        "en": "CC ligaments substantially contribute to vertical stability and the AC capsule/ligaments particularly to horizontal stability; contributions also depend on load direction and magnitude. Rockwood incorporates ligament injury and displacement direction/extent.",
+        "fa": "رباط‌های CC سهم مهمی در پایداری عمودی دارند و کپسول/رباط‌های AC به‌ویژه در پایداری افقی نقش دارند؛ سهم آن‌ها به جهت و مقدار بار نیز وابسته است. راک‌وود آسیب رباط و جهت و میزان جابجایی را در نظر می‌گیرد."
+      },
+      "reason": "Mirror load-dependent biomechanical qualifier."
+    },
+    {
+      "path": "rockwood.rows.4.1",
+      "before": {
+        "de": "Wie Typ III, plus Abriss M. deltoideus/trapezius",
+        "en": "Like Type III, plus avulsion of deltoid/trapezius",
+        "fa": "مثل نوع III، به علاوه جداشدگی عضلات دلتوئید/تراپزیوس"
+      },
+      "after": {
+        "de": "AC-/CC-Verletzung mit ausgeprägter deltotrapezialer Ablösung",
+        "en": "AC/CC injury with extensive deltotrapezial stripping",
+        "fa": "آسیب AC/CC همراه جداشدگی شدید دلتوتراپزیوس"
+      },
+      "reason": "Use fascial stripping rather than complete deltoid/trapezius avulsion."
+    },
+    {
+      "path": "rockwood.rows.4.3",
+      "before": {
+        "de": "Muskelkontinuität unterbrochen",
+        "en": "Muscle continuity disrupted",
+        "fa": "پیوستگی عضلانی قطع شده"
+      },
+      "after": {
+        "de": "Ausmaß der Verlagerung und Weichteilablösung gemeinsam werten",
+        "en": "Interpret displacement extent and soft-tissue stripping together",
+        "fa": "میزان جابجایی و جداشدگی بافت نرم با هم ارزیابی شوند"
+      },
+      "reason": "Remove muscle-continuity claim unsupported by radiographic grade alone."
+    },
+    {
+      "path": "takehome.items.1.text",
+      "before": {
+        "de": "CCD im Seitenvergleich messen. 11–13 mm sind ein publizierter Orientierungsbereich mit individueller Varianz. Die Evidenz zu Belastungsaufnahmen ist widersprüchlich: Nordin et al. (online 2020/Ausgabe 2021, doi:10.1177/0284185120939270) fanden keinen signifikanten Gewinn; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) berichteten einen Nutzen. Die PDF-Angabe 10–15 kg pro Seite ist keine Routineempfehlung; andere Quellen nennen geringere Lasten.",
+        "en": "Measure CCD side to side. 11–13 mm is a published orienting range with individual variation. Evidence on weighted views conflicts: Nordin et al. (online 2020/issue 2021, doi:10.1177/0284185120939270) found no significant gain; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) reported value. The PDF’s 10–15 kg per-side load is not a routine recommendation; other sources describe lower loads.",
+        "fa": "CCD را در دو طرف اندازه‌گیری و مقایسه کنید. ۱۱ تا ۱۳ میلی‌متر محدوده‌ای راهنما در منابع منتشرشده است و تفاوت فردی دارد. شواهد نماهای وزنه‌دار متناقض است: نوردین و همکاران (آنلاین ۲۰۲۰/شماره ۲۰۲۱، doi:10.1177/0284185120939270) بهبود معناداری نیافتند؛ ابراهیم و همکاران (۲۰۱۵، doi:10.1016/j.injury.2015.06.028) ارزش آن را گزارش کردند. بار ۱۰ تا ۱۵ کیلوگرم در هر طرف که در PDF آمده توصیه روتین نیست؛ منابع دیگر بار کمتری ذکر می‌کنند."
+      },
+      "after": {
+        "de": "Relative Zunahme = (verletzte − unverletzte CCD) / unverletzte CCD × 100 %. Gleiche Technik und Richtungsbefund beachten; gewichtete Aufnahmen nur gezielt bei uneinheitlicher Evidenz.",
+        "en": "Relative increase = (injured − uninjured CCD) / uninjured CCD × 100%. Use comparable technique and assess direction; weighted views are selective because evidence conflicts.",
+        "fa": "افزایش نسبی برابر اختلاف CCD سمت آسیب‌دیده و سالم، تقسیم بر CCD سمت سالم و ضرب‌در ۱۰۰ است. تکنیک قابل مقایسه و جهت ارزیابی شوند؛ با توجه به شواهد متناقض، نمای وزنه‌دار انتخابی است."
+      },
+      "reason": "Concise actual measurement retrieval; retained body ccdNote contains detailed source/PDF qualifications unchanged."
+    }
+  ],
+  "localeFields": 18,
+  "status": "AUTHOR_APPLIED_REVIEW_PENDING"
+}

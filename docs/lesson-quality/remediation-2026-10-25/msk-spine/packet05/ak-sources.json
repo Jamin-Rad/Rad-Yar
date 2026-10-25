@@ -1,0 +1,75 @@
+[
+  {
+    "url": "https://pubmed.ncbi.nlm.nih.gov/3949839/",
+    "type": "Fukuda1986 original12-specimen biomechanical study",
+    "actualRead": "Complete original abstract: direction/load-dependent constraints, CC/conoid superior contribution and AC posterior contribution.",
+    "scope": "Combined directional stability, not absolute horizontal/vertical exclusivity."
+  },
+  {
+    "url": "https://pubmed.ncbi.nlm.nih.gov/9397278/",
+    "type": "Original10-shoulder in-situ force experiment",
+    "actualRead": "Complete original abstract comparing AP/SI translation and load sharing.",
+    "scope": "Supports load-dependent combined function; no new numeric force threshold taught."
+  },
+  {
+    "url": "https://www.sciencedirect.com/science/article/pii/S2666638320300190",
+    "type": "Original prospective epidemiology case series",
+    "actualRead": "Original introduction mechanism paragraph and study design context.",
+    "scope": "Direct superior acromial impact common; mechanism explanation only, not a new incidence figure.",
+    "alternate": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7256880/"
+  },
+  {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12081960/",
+    "type": "2025 original radiographic reliability study",
+    "actualRead": "Actual Table1 Rockwood directions and CCD guides; no claim of having read historical original Rockwood book.",
+    "scope": "Radiographic pattern/relative measurement guides. Avoid boundary25 test or single-projection definitive grading."
+  },
+  {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8225517/",
+    "type": "Rosso2021 original ESA-ESSKA Delphi consensus",
+    "actualRead": "Original abstract and acute/chronic surgical reconstruction, diagnostic/classification consensus discussion.",
+    "scope": "Suitable diagnostic views, expert interpretation, suspensory stabilisation; evidence levelV not trial proof of every operation."
+  },
+  {
+    "url": "https://pubmed.ncbi.nlm.nih.gov/32660317/",
+    "type": "Nordin2021 original prospective140-patient imaging study",
+    "actualRead": "Complete original publisher abstract:5kg weighted versus unweighted/internalrotation comparison, results/conclusion.",
+    "scope": "No important classification gain in this study; not universal proof against all selective weighted protocols."
+  },
+  {
+    "url": "https://pubmed.ncbi.nlm.nih.gov/26194267/",
+    "type": "Ibrahim2015 original59-case observational study",
+    "actualRead": "Complete original abstract including gradeV upgrades and conflicting first-line recommendation.",
+    "scope": "Contrasting source for weighted images; retained evidence conflict rather than asserting consensus routine use."
+  },
+  {
+    "url": "https://pubmed.ncbi.nlm.nih.gov/33439041/",
+    "type": "Verstift2021 original75-patient long-term cohort",
+    "actualRead": "Complete original abstract: nonoperativeI/II, good overall outcomes but radiographic changes and residualsymptoms.",
+    "scope": "Initial conservative treatment orientation, no guarantee all recover without symptoms."
+  },
+  {
+    "url": "https://journals.sagepub.com/doi/10.1177/23259671231190411",
+    "type": "Tauber2023 original randomizedTypeIII trial",
+    "actualRead": "Original abstract, inclusion/exclusion, treatmentgroups including hookplate/TightRope, postoperative protocol and discussion.",
+    "scope": "No superior functional outcome in this selectedTypeIII trial; devices examples, no universal operative indication or timing."
+  },
+  {
+    "url": "https://pubmed.ncbi.nlm.nih.gov/35007749/",
+    "type": "Original randomizedTypeIII/V trial",
+    "actualRead": "Original results/conclusion abstract.",
+    "scope": "TypeV label alone not automatic hookplate indication; retain specialist/individual context."
+  },
+  {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6055258/",
+    "type": "Original26-case IV/V operative series",
+    "actualRead": "Original abstract methods and case counts.",
+    "scope": "AC/CC stabilisation examples and highgrade referral; no comparative superiority claim."
+  },
+  {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4652419/",
+    "type": "Original48-patient gradeV case-control operative study",
+    "actualRead": "Fresh exact Methods→Patients paragraph defines included typeV as AC/CC plus deltotrapezial fascia disruption and100–300% interval increase.",
+    "scope": "Explicit primary classification-use anchor for retained fascia qualifier; not proof of fascia condition from radiograph alone and no comparative surgical superiority adopted."
+  }
+]

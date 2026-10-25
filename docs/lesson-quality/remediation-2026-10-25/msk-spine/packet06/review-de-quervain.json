@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/design_inventory",
+  "author": "/root/remove_lesson_notice",
+  "status": "ACCEPT_BOUNDED_FULL_ORIGINAL_POOL_PLUS_ONE_MAPPED_GAP",
+  "route": "/msk/hand/de-quervain",
+  "scope": {
+    "originalQuestionTriadsFullyRead": 1,
+    "newQuestionTriadsFullyRead": 1,
+    "totalLocalizedQuestions": 6,
+    "existingCardTriadsFullyRead": 3,
+    "languages": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "learningGoals": 3,
+    "originalGlobalObjectsExact": 6,
+    "totalActualAuthorObjectsExact": 9,
+    "lessonParity": "Changed clinical lead/note/MRI-row and mirrored originalquestion/options/feedback inspected; no whole unchangedlesson/PDF/media acceptance."
+  },
+  "findings": [],
+  "pedagogicAssessment": "Original textvignette distinguishes tendon/sheath/peritendinous pattern from complete tear, longitudinalsplit and ganglion. Four comparable localclinical interpretations with specific feedback, no alleged unseenimage. New item addresses clinically material overinterpretation of a healthy-only provocation study rather than adding a quota item. Cards retrieve anatomy, reportingcomponents and testlimits; goals mapped to actual IDs. No empiricaldifficultyvalidation.",
+  "sources": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8717121/",
+      "actualRead": "Complete originalGlajchen/Schweitzer1996 fivecase MRIabstract read: firstcompartmentAPL/EPBthickening/peritendinousoedema, variableintratendinoussignal/subcutaneousoedema,4clinical/1arthroscopiccorrelation. No diagnosticaccuracy or obligatorysinglecriterion taught."
+    },
+    {
+      "url": "https://www.thieme-connect.de/products/ejournals/pdf/10.1055/s-0038-1626690.pdf",
+      "actualRead": "Actual originalWu2018 publisherPDF abstract, introduction, methods, results and limitationpassage read:36asymptomaticparticipants/72wrists, thumb-in-fistEichhofftechnique distinguishedfromFinkelstein, fewerfalsepositives. Authors explicitly lacked diseasedcomparison group for sensitivity; no sensitivity/PPV/quantifiedruleout extrapolated."
+    }
+  ],
+  "checks": {
+    "script": "tmp/assessment-quality/test-dequervain06-independent.mjs",
+    "actualAuthorValues9Of9": true,
+    "originalGlobalValues6Of6": true,
+    "inlineCanonicalQuestionOptionsKeyAnd12LocalizedFeedbackValues": true,
+    "changedLessonFieldParity": true,
+    "adjacentWristQuestionsCardsTopicDeepEqualToHEAD": true,
+    "consumer": "Actual customroutecase uses selectedfeedbackByOption withfallback; no sharedcomponent source changed."
+  },
+  "limits": [
+    "New supplementalquestion remains author export until reviewed root snapshot admission; publication/globalcount refresh not inferred fromauthor test.",
+    "No fresh PDF40–43 or retainedclinicalimage/scans assessment, image reuse recertification, wholelesson scientificrelease or browser/RTL/accessacceptance.",
+    "No new USprotocol/therapy approval; originalMRIstudy is a small selected series and reviewed claim reflects that limit."
+  ],
+  "hashes": {
+    "data/wristExtensorAssessments.js": "4491cad9ba0b7907588cf0966b4482645ce2247176ecda6cff1519e522238180",
+    "data/deQuervainLesson.js": "0465d05340bc6639475ca056b06ffbecac6127515c7683595ba78411ec4a3f8f",
+    "app/msk/hand/de-quervain/page.js": "fa8c94e48ec5feec88bd2c70af86464932815fd97e93fa392b5a1ec259e433ef"
+  }
+}

@@ -14,10 +14,58 @@ const registrations = [
   { key: 'hepatic-adenoma-caveat', fach: 'abdomen', tags: ['leberadenom'], extra: { de: 'Die MRT kann HCA und HCC in jedem Fall sicher unterscheiden', en: 'MRI can reliably distinguish HCA from HCC in every case', fa: 'MRI در همه موارد می‌تواند HCA را با اطمینان از HCC افتراق دهد' } },
   { key: 'abdomen-renal-anatomy', fach: 'abdomen', tags: ['niere-anatomie'], extra: { de: 'Die anatomische Engstelle verursacht auch ohne Konkrement stets einen Harnstau', en: 'The anatomical narrowing always causes urinary stasis, even without a calculus', fa: 'این تنگی آناتومیک حتی بدون سنگ همیشه باعث احتباس ادرار می‌شود' } },
   { key: 'abdomen-liver-metastases', fach: 'abdomen', tags: ['lebermetastasen'], extra: { de: 'Ohne Leberzirrhose sind Lebermetastasen ausgeschlossen', en: 'Liver metastases are excluded without cirrhosis', fa: 'بدون سیروز کبدی، متاستاز کبدی رد می‌شود' } },
-  { key: 'abdomen-small-bowel-feces', fach: 'abdomen', tags: ['ileus-duenndarm'], extra: { de: 'Dünndarmobstruktion, Pneumobilie und ektoper Gallenstein (Rigler-Trias)', en: 'Small-bowel obstruction, pneumobilia and an ectopic gallstone (Rigler triad)', fa: 'انسداد رودهٔ باریک، پنوموبیلی و سنگ نابجا در روده (تریاد ریگلر)' } },
-  { key: 'abdomen-foramen-winslow', fach: 'abdomen', tags: ['ileus-duenndarm'], extra: { de: 'Darmschlingen zwischen linker Niere und Milz', en: 'Bowel loops between the left kidney and spleen', fa: 'لوپ‌های روده بین کلیهٔ چپ و طحال' } },
-  { key: 'abdomen-ileus-volvulus', fach: 'abdomen', tags: ['ileus-duenndarm'], extra: { de: 'Dünndarmobstruktion, Pneumobilie und ein Stein noch in der Gallenblase', en: 'Small-bowel obstruction, pneumobilia and a stone still within the gallbladder', fa: 'انسداد روده باریک، پنوموبیلی و سنگی که هنوز داخل کیسه صفراست' } },
-  { key: 'abdomen-intussusception-initial-imaging', fach: 'abdomen', tags: ['intussusception'], extra: { de: 'Primär eine Abdomen-MRT ohne Sonografie', en: 'Abdominal MRI first, without ultrasound', fa: 'ابتدا MRI شکم، بدون انجام سونوگرافی' } },
+  {
+  "key": "abdomen-small-bowel-feces",
+  "fach": "abdomen",
+  "tags": [
+    "ileus-duenndarm"
+  ],
+  "extra": {
+    "de": "Whirl-Zeichen; die Gasbläschen markieren verdrehte Mesenterialgefäße.",
+    "en": "Whirl sign; the bubbles mark twisted mesenteric vessels.",
+    "fa": "علامت ویرل؛ حباب‌ها عروق مزانتریک پیچ‌خورده را مشخص می‌کنند."
+  },
+  "optionCount": 3
+},
+  {
+  "key": "abdomen-foramen-winslow",
+  "fach": "abdomen",
+  "tags": [
+    "ileus-duenndarm"
+  ],
+  "extra": {
+    "de": "Obturatorhernie.",
+    "en": "Obturator hernia.",
+    "fa": "فتق ابتوراتور."
+  },
+  "optionCount": 3
+},
+  {
+  "key": "abdomen-ileus-volvulus",
+  "fach": "abdomen",
+  "tags": [
+    "ileus-duenndarm"
+  ],
+  "extra": {
+    "de": "Dünndarmobstruktion, Pneumobilie und ein Stein noch in der Gallenblase",
+    "en": "Small-bowel obstruction, pneumobilia and a stone still within the gallbladder",
+    "fa": "انسداد روده باریک، پنوموبیلی و سنگی که هنوز داخل کیسه صفراست"
+  },
+  "optionCount": 3
+},
+  {
+  "key": "abdomen-intussusception-initial-imaging",
+  "fach": "abdomen",
+  "tags": [
+    "intussusception"
+  ],
+  "extra": {
+    "de": "MRT des Abdomens.",
+    "en": "Abdominal MRI.",
+    "fa": "MRI شکم."
+  },
+  "optionCount": 3
+},
   {"key":"abdomen-pancreatic-cysts","fach":"abdomen","tags":["ipmn"],"extra":{"de":"Kommunikation spricht gegen beide Diagnosen, weil beide typischerweise vom Gang getrennt sind.","en":"Communication argues against both because both are typically separate from the duct.","fa":"ارتباط به زیان هر دو تشخیص است، چون هر دو معمولاً از مجرا جدا هستند."}},
   { key: 'abdomen-focal-liver', fach: 'abdomen', tags: ['leberadenom', 'lebermetastasen'], extra: { de: 'Die Läsion nur anhand des nativen CT beurteilen', en: 'Assess the lesion from unenhanced CT alone', fa: 'ارزیابی ضایعه فقط بر اساس CT بدون تزریق' } },
   { key: 'abdomen-hepatic-steatosis', fach: 'abdomen', tags: ['hepatische-steatose'], extra: { de: 'Die typische Lage allein beweist die Diagnose und macht weitere Charakterisierung unnötig', en: 'Typical location alone proves the diagnosis and makes further characterisation unnecessary', fa: 'محل تیپیک به‌تنهایی تشخیص را ثابت می‌کند و بررسی تکمیلی را غیرضروری می‌سازد' } },
@@ -44,10 +92,46 @@ const registrations = [
   { key: 'abdomen-inguinal-hernia-landmarks', fach: 'abdomen', tags: ['inguinalhernie'], extra: { de: 'Femoralhernie lateral der Vena femoralis', en: 'Femoral hernia lateral to the femoral vein', fa: 'فتق فمورال در لترال ورید فمورال' } },
   { key: 'abdomen-femoral-hernia-landmarks', fach: 'abdomen', tags: ['femoralhernie'], extra: { de: 'Femoralhernie oberhalb des Leistenbandes', en: 'Femoral hernia above the inguinal ligament', fa: 'فتق فمورال در بالای رباط اینگوینال' } },
   { key: 'abdomen-lower-gi-bleeding', fach: 'abdomen', tags: ['untere-gi-blutung'], extra: { de: 'Nach negativer CTA ist eine intermittierende Blutungsquelle ausgeschlossen', en: 'After negative CTA, an intermittent bleeding source is excluded', fa: 'پس از CTA منفی، منبع خون‌ریزی متناوب رد می‌شود' } },
-  { key: 'abdomen-kolorektales-karzinom', fach: 'abdomen', tags: ['kolorektales-karzinom'], extra: { de: 'MRF+ allein wegen eines glatt berandeten Lymphknotens innerhalb von 1 mm', en: 'MRF+ based only on a smooth-bordered lymph node within 1 mm', fa: 'MRF مثبت فقط به‌دلیل یک غده با حاشیه صاف در فاصلهٔ حداکثر ۱ میلی‌متر' } },
+  {
+  "key": "abdomen-kolorektales-karzinom",
+  "fach": "abdomen",
+  "tags": [
+    "kolorektales-karzinom"
+  ],
+  "extra": {
+    "de": "MRF+ allein wegen eines glatt berandeten Lymphknotens innerhalb von 1 mm",
+    "en": "MRF+ based only on a smooth-bordered lymph node within 1 mm",
+    "fa": "MRF مثبت فقط به‌دلیل یک غده با حاشیه صاف در فاصلهٔ حداکثر ۱ میلی‌متر"
+  },
+  "optionCount": 3
+},
   { key: 'nephroblastom-wilms', fach: 'abdomen', tags: ['nephroblastom-wilms'], extra: { de: 'Neuroblastom ist damit ausgeschlossen', en: 'Neuroblastoma is therefore excluded', fa: 'بنابراین نوروبلاستوما رد می‌شود' } },
-  { key: 'abdomen-ileus-ischaemia', fach: 'abdomen', tags: ['ileus-duenndarm'], extra: { de: 'Wandverdickung allein beweist eine transmurale Nekrose', en: 'Wall thickening alone proves transmural necrosis', fa: 'ضخیم‌شدن دیواره به‌تنهایی نکروز تمام‌ضخامت را ثابت می‌کند' } },
-  { key: 'abdomen-mesenteric-ischaemia-cta-protocol', fach: 'abdomen', tags: ['mesenteriale-ischaemie'], extra: { de: 'Nur eine native CT ohne Kontrastmittel, um die Nieren zu schützen', en: 'Unenhanced CT only to protect the kidneys', fa: 'فقط CT بدون تزریق برای محافظت از کلیه‌ها' } },
+  {
+  "key": "abdomen-ileus-ischaemia",
+  "fach": "abdomen",
+  "tags": [
+    "ileus-duenndarm"
+  ],
+  "extra": {
+    "de": "Chronisch-entzündliche Wandveränderung ohne akuten Komplikationsverdacht.",
+    "en": "Chronic inflammatory mural change without concern for an acute complication.",
+    "fa": "تغییر التهابی مزمن دیواره بدون شک به عارضهٔ حاد."
+  },
+  "optionCount": 3
+},
+  {
+  "key": "abdomen-mesenteric-ischaemia-cta-protocol",
+  "fach": "abdomen",
+  "tags": [
+    "mesenteriale-ischaemie"
+  ],
+  "extra": {
+    "de": "Native Dünnschicht-CT ohne kontrastverstärkte Akquisition.",
+    "en": "Unenhanced thin-slice CT without a contrast-enhanced acquisition.",
+    "fa": "CT بدون تزریق با برش نازک و بدون برداشت پس از تزریق."
+  },
+  "optionCount": 3
+},
 ]
 
 const makeQuestion = ({ key, fach, tags, extra, optionCount }) => {

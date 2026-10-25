@@ -2,87 +2,733 @@ const L = (de, en, fa) => ({ de, en, fa })
 
 const QUESTIONS = [
   {
-    id:'describe-first', question:L('Welche Reihenfolge entspricht einer strukturierten Mammographiebefundung?','Which sequence reflects structured mammography reporting?','کدام ترتیب با گزارش‌نویسی ساختاریافته ماموگرافی مطابقت دارد؟'),
-    options:[L('BI-RADS festlegen → Befund suchen → Deskriptoren ergänzen','Assign BI-RADS → find a lesion → add descriptors','تعیین BI-RADS ← یافتن ضایعه ← افزودن دسکریپتورها'),L('Finding erkennen → objektiv beschreiben → Voraufnahmen vergleichen → Assessment und Management','Identify finding → describe objectively → compare priors → assessment and management','شناسایی یافته ← توصیف عینی ← مقایسه تصاویر قبلی ← ارزیابی و اقدام'),L('Histologie vermuten → BI-RADS vergeben → Brustdichte bestimmen','Guess histology → assign BI-RADS → determine breast density','حدس بافت‌شناسی ← تعیین BI-RADS ← تعیین دانسیته پستان'),L('Management wählen → Morphologie daran anpassen','Choose management → adapt morphology to it','انتخاب اقدام ← تطبیق مورفولوژی با آن')], correct:'B',
-    explanation:L('BI-RADS ist das Ergebnis einer systematischen Beschreibung, nicht ihr Ausgangspunkt.','BI-RADS is the result of systematic description, not its starting point.','BI-RADS نتیجه توصیف سیستماتیک است، نه نقطه آغاز آن.'),
-    wrong:{A:L('Eine Kategorie vor der Befundanalyse begünstigt Ankerfehler und widerspricht der strukturierten Berichtfolge.','Assigning a category before analysing the finding promotes anchoring and reverses the reporting sequence.','تعیین دسته پیش از تحلیل یافته موجب خطای لنگراندازی و معکوس شدن ترتیب گزارش می‌شود.'),C:L('Bildgebung kann eine Histologie nicht zuverlässig vorwegnehmen; zuerst müssen Composition und Befunddeskriptoren dokumentiert werden.','Imaging cannot reliably predict histology; composition and finding descriptors must be documented first.','تصویربرداری نمی‌تواند بافت‌شناسی را با اطمینان پیش‌بینی کند؛ ابتدا ترکیب بافت و دسکریپتورها ثبت می‌شوند.'),D:L('Management muss aus Assessment und Befund abgeleitet werden, nicht umgekehrt.','Management must follow from the finding and assessment, not the reverse.','اقدام باید از یافته و ارزیابی نتیجه شود، نه برعکس.')}
+    "id": "describe-first",
+    "question": {
+      "de": "Im Screening fällt erstmals eine umschriebene Verdichtung auf. Voraufnahmen liegen noch nicht vor; die diagnostische Abklärung steht aus. Welcher nächste Arbeitsablauf ist am sinnvollsten?",
+      "en": "Screening first shows a focal density. Prior images are not yet available and diagnostic work-up is pending. Which next workflow is most appropriate?",
+      "fa": "در غربالگری برای نخستین بار یک کدورت موضعی دیده می‌شود. تصاویر قبلی هنوز در دسترس نیستند و بررسی تشخیصی انجام نشده است. کدام روند بعدی مناسب‌تر است؟"
+    },
+    "options": [
+      {
+        "de": "Eine mammographische Kurzzeitkontrolle nach sechs Monaten vorsehen",
+        "en": "Arrange short-interval mammographic follow-up in six months",
+        "fa": "پیگیری کوتاه‌مدت ماموگرافی در شش ماه تعیین شود"
+      },
+      {
+        "de": "Zielgerichtete Zusatzaufnahmen mit Vorvergleich durchführen",
+        "en": "Complete targeted additional mammographic views with prior comparison",
+        "fa": "نماهای تکمیلی هدفمند با مقایسهٔ تصاویر قبلی انجام شوند"
+      },
+      {
+        "de": "Eine Brust-MRT zur weiteren Charakterisierung vorschalten",
+        "en": "Obtain contrast-enhanced breast MRI for further characterisation",
+        "fa": "ابتدا MRI پستان با تزریق برای مشخص‌کردن بیشتر یافته انجام شود"
+      },
+      {
+        "de": "Eine stereotaktische Biopsie der auffälligen Region planen",
+        "en": "Plan stereotactic tissue sampling of the suspicious area",
+        "fa": "نمونه‌برداری استریوتاکتیک از ناحیهٔ مشکوک برنامه‌ریزی شود"
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "de": "Eine unvollständig abgeklärte Screeningauffälligkeit braucht eine nachvollziehbare Beschreibung und gezielte diagnostische Klärung, gegebenenfalls mit Vorvergleich. Endkategorie und Empfehlung folgen den gesicherten Befundmerkmalen.",
+      "en": "An incompletely assessed screening finding needs a clear description and targeted diagnostic evaluation, including comparison when available. Final assessment and recommendation follow established findings.",
+      "fa": "یافتهٔ غربالگری با بررسی ناکامل به توصیف روشن و ارزیابی تشخیصی هدفمند، در صورت امکان با مقایسه، نیاز دارد. ارزیابی نهایی و توصیه از ویژگی‌های مشخص‌شدهٔ یافته نتیجه می‌شوند."
+    },
+    "wrong": {
+      "A": {
+        "de": "Eine Kurzzeitkontrolle setzt eine ausreichend abgeklärte, wahrscheinlich benigne Konstellation voraus; diese ist hier noch nicht festgestellt.",
+        "en": "Short-interval follow-up requires an adequately assessed probably benign finding, which has not yet been established.",
+        "fa": "پیگیری کوتاه‌مدت مستلزم یافتهٔ احتمالاً خوش‌خیم با بررسی کافی است؛ این وضعیت هنوز مشخص نشده است."
+      },
+      "C": {
+        "de": "MRT ist nicht der routinemäßige erste Ersatz für die ausstehende mammographische Problemlösung und den Vorvergleich.",
+        "en": "MRI is not the routine first substitute for pending mammographic problem-solving and prior comparison.",
+        "fa": "MRI جایگزین روتین اولیه برای بررسی تکمیلی ماموگرافیک و مقایسهٔ تصاویر قبلی نیست."
+      },
+      "D": {
+        "de": "Vor Festlegung des Biopsiezugangs muss die Auffälligkeit diagnostisch charakterisiert und lokalisiert werden.",
+        "en": "The finding needs diagnostic characterisation and localisation before the biopsy route is selected.",
+        "fa": "پیش از انتخاب مسیر بیوپسی، یافته باید به‌طور تشخیصی مشخص و مکان‌یابی شود."
+      }
+    },
+    "source": "https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/BI-RADS",
+    "difficulty": 2
   },
   {
-    id:'composition-c', question:L('Was ist die wichtigste praktische Bedeutung der Breast-Composition-Kategorie C?','What is the main practical implication of breast composition category C?','مهم‌ترین پیامد عملی دسته C ترکیب بافت پستان چیست؟'),
-    options:[L('Sie beweist ein erhöhtes Enhancement.','It proves increased enhancement.',"افزایش جذب ماده حاجب را اثبات می‌کند."),L('Sie beschreibt eine einzelne Mass als equal density.','It describes a single mass as equal density.','یک توده را با دانسیته برابر توصیف می‌کند.'),L('Heterogen dichtes Gewebe kann kleine nichtverkalkte Masses maskieren.','Heterogeneously dense tissue may obscure small non-calcified masses.','بافت ناهمگون متراکم می‌تواند توده‌های کوچک بدون کلسیفیکاسیون را پنهان کند.'),L('Sie entspricht automatisch BI-RADS 3.','It automatically corresponds to BI-RADS 3.','به‌طور خودکار معادل BI-RADS 3 است.')], correct:'C',
-    explanation:L('Composition C signalisiert einen relevanten Masking-Effekt und eine reduzierte Sensitivität für kleine nichtverkalkte Läsionen.','Composition C signals a relevant masking effect and reduced sensitivity for small non-calcified lesions.','ترکیب C نشان‌دهنده اثر پنهان‌کنندگی مهم و حساسیت کمتر برای ضایعات کوچک بدون کلسیفیکاسیون است.'),
-    wrong:{A:L('Enhancement ist eine kontrastmittelabhängige Eigenschaft und wird durch die mammographische Composition nicht bewiesen.','Enhancement is contrast-dependent and is not established by mammographic composition.','تقویت پس از تزریق وابسته به ماده حاجب است و با ترکیب ماموگرافیک اثبات نمی‌شود.'),B:L('Breast composition beschreibt die gesamte Brust; Mass density beschreibt eine einzelne Läsion relativ zum Drüsengewebe.','Breast composition describes the whole breast; mass density describes one lesion relative to glandular tissue.','ترکیب پستان کل پستان را توصیف می‌کند؛ دانسیته توده یک ضایعه را نسبت به بافت غده‌ای توصیف می‌کند.'),D:L('Composition und Assessment sind getrennte Kategorien; dichtes Gewebe allein ist kein BI-RADS-3-Befund.','Composition and assessment are separate systems; dense tissue alone is not a BI-RADS 3 finding.','ترکیب بافت و ارزیابی دو سیستم جدا هستند؛ بافت متراکم به‌تنهایی BI-RADS 3 نیست.')}
+    "id": "composition-c",
+    "question": {
+      "de": "Eine 58-jährige Frau hat einen neuen fokalen Tastbefund. Die diagnostische Mammographie ist negativ, bei heterogen dichter Brust (Composition C). Welche ergänzende Bildgebung ist zunächst am besten geeignet?",
+      "en": "A 58-year-old woman has a new focal palpable finding. Diagnostic mammography is negative in heterogeneously dense breasts (composition C). Which additional imaging is most appropriate next?",
+      "fa": "زن ۵۸ ساله یافتهٔ موضعی قابل لمس جدید دارد. ماموگرافی تشخیصی در پستان با تراکم ناهمگون (ترکیب C) منفی است. کدام تصویربرداری تکمیلی در گام بعدی مناسب‌تر است؟"
+    },
+    "options": [
+      {
+        "de": "Mammographische Kontrolle nach sechs Monaten",
+        "en": "Mammographic follow-up in six months",
+        "fa": "پیگیری ماموگرافی پس از شش ماه"
+      },
+      {
+        "de": "Kontrastverstärkte Brust-MRT",
+        "en": "Contrast-enhanced breast MRI",
+        "fa": "MRI پستان با تزریق"
+      },
+      {
+        "de": "Gezielte Sonografie der tastbaren Region",
+        "en": "Targeted ultrasound of the palpable area",
+        "fa": "سونوگرافی هدفمند ناحیهٔ قابل لمس"
+      },
+      {
+        "de": "Kontrastverstärkte Mammographie (CEM)",
+        "en": "Contrast-enhanced mammography (CEM)",
+        "fa": "ماموگرافی با تزریق مادهٔ حاجب (CEM)"
+      }
+    ],
+    "correct": "C",
+    "explanation": {
+      "de": "Dichtes Gewebe kann kleine nichtverkalkte Läsionen maskieren. Bei einer mindestens 40-jährigen Frau mit neuem Tastbefund und negativer Mammographie ist die gezielte Sonografie der passende nächste Bildgebungsschritt. Klinisch suspekte Diskordanz erfordert weitere Abklärung auch bei negativer Bildgebung.",
+      "en": "Dense tissue can obscure small noncalcified lesions. In a woman aged 40 or older with a new palpable finding and negative mammography, targeted ultrasound is the appropriate next imaging step. Clinically suspicious discordance warrants further assessment even with negative imaging.",
+      "fa": "بافت متراکم می‌تواند ضایعات کوچک بدون کلسیفیکاسیون را پنهان کند. در زن ۴۰ ساله یا بالاتر با یافتهٔ قابل لمس جدید و ماموگرافی منفی، سونوگرافی هدفمند گام تصویربرداری بعدی مناسب است. عدم تطابق با یافتهٔ بالینی مشکوک حتی در تصویربرداری منفی به بررسی بیشتر نیاز دارد."
+    },
+    "wrong": {
+      "A": {
+        "de": "Eine noch nicht vollständig abgeklärte neue Tastauffälligkeit wird nicht durch eine isolierte Sechsmonats-Mammographiekontrolle geklärt.",
+        "en": "Isolated six-month mammographic follow-up does not complete evaluation of a new unresolved palpable finding.",
+        "fa": "پیگیری منفرد ماموگرافی در شش ماه بررسی یافتهٔ قابل لمس جدید و حل‌نشده را کامل نمی‌کند."
+      },
+      "B": {
+        "de": "MRT ist hier nicht die reguläre nächste Untersuchung vor gezielter Sonografie und klinisch-bildgebender Korrelation.",
+        "en": "MRI is not the routine next examination before targeted ultrasound and clinical-imaging correlation here.",
+        "fa": "MRI در اینجا پیش از سونوگرافی هدفمند و تطبیق بالینی-تصویری بررسی بعدی روتین نیست."
+      },
+      "D": {
+        "de": "Hier hat die gezielte Sonografie der tastbaren Region Vorrang. Ein negativer Mammographiebefund begründet für sich keine zusätzliche Kontrastmitteluntersuchung.",
+        "en": "Targeted ultrasound of the palpable area takes priority here. A negative mammogram does not itself establish an indication for another contrast examination.",
+        "fa": "اینجا سونوگرافی هدفمند ناحیهٔ قابل لمس اولویت دارد. ماموگرافی منفی به‌خودی‌خود اندیکاسیون بررسی دیگر با مادهٔ حاجب ایجاد نمی‌کند."
+      }
+    },
+    "source": "https://acsearch.acr.org/docs/69495/Narrative/",
+    "difficulty": 2
   },
   {
-    id:'obscured-indistinct', question:L('Welche Aussage unterscheidet obscured und indistinct korrekt?','Which statement correctly distinguishes obscured from indistinct?','کدام عبارت تفاوت پوشیده (Obscured) و نامشخص (Indistinct) را درست بیان می‌کند؟'),
-    options:[L('Obscured: durch Überlagerung nicht beurteilbar; indistinct: tatsächlich unscharfer Rand','Obscured: not assessable because of overlap; indistinct: truly ill-defined margin','پوشیده (Obscured): به‌علت هم‌پوشانی قابل ارزیابی نیست؛ نامشخص (Indistinct): حاشیه واقعاً نامشخص'),L('Obscured: spikuliert; indistinct: glatt','Obscured: spiculated; indistinct: smooth','پوشیده (Obscured): اسپیکوله؛ نامشخص (Indistinct): صاف'),L('Beide Begriffe sind synonym.','The terms are synonymous.','این دو اصطلاح مترادف‌اند.'),L('Indistinct beschreibt nur eine fehlende zweite Projektion.','Indistinct only means a second view is missing.','Indistinct فقط به معنای نبود نمای دوم است.')], correct:'A',
-    explanation:L('Bei obscured verhindert normales überlagerndes Gewebe die Beurteilung; bei indistinct ist der sichtbare Läsionsrand selbst unscharf.','With obscured margins, normal overlying tissue prevents assessment; with indistinct margins, the visible lesion edge itself is ill-defined.','در پوشیده (Obscured) بافت طبیعی روی‌هم‌افتاده مانع ارزیابی است؛ در نامشخص (Indistinct) لبه خود ضایعه واقعاً نامشخص است.'),
-    wrong:{B:L('Spiculated und circumscribed sind eigene Randdeskriptoren und definieren obscured beziehungsweise indistinct nicht.','Spiculated and circumscribed are separate margin descriptors and do not define obscured or indistinct.','اسپیکوله و با حاشیه مشخص دسکریپتورهای جداگانه حاشیه‌اند و پوشیده (Obscured) یا نامشخص (Indistinct) را تعریف نمی‌کنند.'),C:L('Die Unterscheidung ist diagnostisch relevant, weil einmal Sichtbarkeit und einmal die tatsächliche Randqualität gemeint ist.','The distinction matters because one concerns visibility and the other the actual quality of the margin.','این تفاوت مهم است، زیرا یکی به قابلیت مشاهده و دیگری به کیفیت واقعی حاشیه مربوط می‌شود.'),D:L('Eine fehlende Projektion kann die Beurteilung begrenzen, ist aber nicht die Definition eines indistinct margin.','A missing projection may limit assessment but does not define an indistinct margin.','نبود یک نما می‌تواند ارزیابی را محدود کند، اما تعریف حاشیه نامشخص (Indistinct) نیست.')}
+    "id": "obscured-indistinct",
+    "question": {
+      "de": "Bei einer mammographischen Mass sind etwa 40% des Randes durch angrenzendes Drüsengewebe verdeckt; der übrige sichtbare Rand ist scharf begrenzt. Welcher Randdeskriptor passt?",
+      "en": "About 40% of a mammographic mass margin is hidden by adjacent fibroglandular tissue; the remaining visible margin is sharply defined. Which margin descriptor fits?",
+      "fa": "حدود ۴۰٪ حاشیهٔ تودهٔ ماموگرافیک با بافت فیبروگلاندولار مجاور پوشیده است؛ بخش باقی‌ماندهٔ قابل مشاهده حاشیهٔ مشخص دارد. کدام توصیف حاشیه مناسب است؟"
+    },
+    "options": [
+      {
+        "de": "Obscured · überlagert",
+        "en": "Obscured",
+        "fa": "پوشیده (Obscured)"
+      },
+      {
+        "de": "Indistinct · unscharf",
+        "en": "Indistinct",
+        "fa": "نامشخص (Indistinct)"
+      },
+      {
+        "de": "Spiculated · spikuliert",
+        "en": "Spiculated",
+        "fa": "اسپیکوله"
+      },
+      {
+        "de": "Circumscribed · umschrieben",
+        "en": "Circumscribed",
+        "fa": "با حاشیهٔ مشخص (Circumscribed)"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "de": "Der wesentliche Anteil ist durch normales Gewebe verdeckt, während der sichtbare Rand scharf bleibt: obscured. Dies unterscheidet fehlende Beurteilbarkeit durch Überlagerung von einem tatsächlich unscharfen Rand.",
+      "en": "A substantial portion is hidden by normal tissue while the visible edge remains sharply defined: obscured. This distinguishes overlap-limited visibility from a truly indistinct margin.",
+      "fa": "بخش قابل توجهی با بافت طبیعی پوشیده شده، در حالی که لبهٔ قابل مشاهده مشخص است: Obscured. این حالت محدودیت دید ناشی از هم‌پوشانی را از حاشیهٔ واقعاً نامشخص جدا می‌کند."
+    },
+    "wrong": {
+      "B": {
+        "de": "Indistinct bezeichnet eine echte fehlende Abgrenzung des Randes, nicht bloß dessen Überlagerung durch normales Gewebe.",
+        "en": "Indistinct describes a genuinely ill-defined margin rather than overlap by normal tissue.",
+        "fa": "Indistinct حاشیهٔ واقعاً نامشخص را توصیف می‌کند، نه صرفاً پوشیده‌شدن با بافت طبیعی."
+      },
+      "C": {
+        "de": "Für spiculated wären vom Rand ausstrahlende Linien erforderlich; solche sind nicht beschrieben.",
+        "en": "Spiculated requires radiating lines from the margin, which are not described.",
+        "fa": "برای اسپیکوله خطوط شعاعی از حاشیه لازم‌اند؛ چنین خطوطی توصیف نشده‌اند."
+      },
+      "D": {
+        "de": "Nur 60% sind hier scharf sichtbar. Damit ist die für circumscribed geforderte Beurteilbarkeit von mindestens 75% nicht erfüllt.",
+        "en": "Only 60% is sharply visible here, below the at least 75% clearly demarcated margin required for circumscribed.",
+        "fa": "اینجا فقط ۶۰٪ به‌وضوح دیده می‌شود؛ شرط مشخص‌بودن دست‌کم ۷۵٪ حاشیه برای Circumscribed برقرار نیست."
+      }
+    },
+    "source": "https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/BI-RADS",
+    "difficulty": 1
   },
   {
-    id:'mass-density', question:L('Worauf bezieht sich der Descriptor „high density“ bei einer mammographischen Mass?','What does “high density” refer to for a mammographic mass?','دسکریپتور «high density» در توده ماموگرافیک به چه چیزی اشاره دارد؟'),
-    options:[L('Auf die gesamte Breast Composition','The overall breast composition','ترکیب کلی پستان'),L('Auf die Röntgendichte der Mass relativ zum fibroglandulären Gewebe','The radiographic density of the mass relative to fibroglandular tissue','دانسیته رادیوگرافیک توده نسبت به بافت فیبروگلاندولار'),L('Auf die Anzahl der Verkalkungen','The number of calcifications','تعداد کلسیفیکاسیون‌ها'),L('Auf die Kontrastmittelkonzentration in CEM','Iodine concentration on CEM','غلظت ماده حاجب در CEM')], correct:'B',
-    explanation:L('Mass density ist ein Läsionsdescriptor und wird relativ zum fibroglandulären Brustgewebe beurteilt.','Mass density is a lesion descriptor assessed relative to fibroglandular breast tissue.','دانسیته توده یک دسکریپتور ضایعه است و نسبت به بافت فیبروگلاندولار سنجیده می‌شود.'),
-    wrong:{A:L('Die Composition beschreibt die gesamte Brust und den möglichen Masking-Effekt, nicht die Dichte einer einzelnen Mass.','Composition describes the whole breast and potential masking, not the density of one mass.','ترکیب بافت کل پستان و اثر پنهان‌کنندگی را توصیف می‌کند، نه دانسیته یک توده.'),C:L('Die Anzahl gehört zur Erfassung von Verkalkungen und definiert keine Mass density.','Calcification count does not define mass density.','تعداد کلسیفیکاسیون‌ها دانسیته توده را تعریف نمی‌کند.'),D:L('Jodaufnahme ist ein CEM-Enhancement-Parameter und nicht der mammographische Density-Descriptor.','Iodine uptake is a CEM enhancement feature, not the mammographic density descriptor.','جذب ید ویژگی تقویت پس از تزریق در CEM است، نه دسکریپتور دانسیته ماموگرافیک.')}
+    "id": "mass-density",
+    "question": {
+      "de": "Eine Mass schwächt Röntgenstrahlen stärker ab als ein gleich großes Volumen fibroglandulären Gewebes. Welcher Density-Deskriptor passt?",
+      "en": "A mass attenuates x-rays more than an equal volume of fibroglandular tissue. Which density descriptor fits?",
+      "fa": "یک توده پرتو ایکس را بیش از حجم برابر بافت فیبروگلاندولار تضعیف می‌کند. کدام توصیف دانسیته مناسب است؟"
+    },
+    "options": [
+      {
+        "de": "Equal density",
+        "en": "Equal density",
+        "fa": "دانسیتهٔ برابر"
+      },
+      {
+        "de": "High density",
+        "en": "High density",
+        "fa": "دانسیتهٔ بالا"
+      },
+      {
+        "de": "Low density",
+        "en": "Low density",
+        "fa": "دانسیتهٔ پایین"
+      },
+      {
+        "de": "Fat-containing",
+        "en": "Fat-containing",
+        "fa": "حاوی چربی"
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "de": "Mass density ist ein Läsionsdescriptor und wird relativ zum fibroglandulären Brustgewebe beurteilt.",
+      "en": "Mass density is a lesion descriptor assessed relative to fibroglandular breast tissue.",
+      "fa": "دانسیته توده یک دسکریپتور ضایعه است و نسبت به بافت فیبروگلاندولار سنجیده می‌شود."
+    },
+    "wrong": {
+      "A": {
+        "de": "Equal density bedeutet eine vergleichbare, nicht stärkere Abschwächung gegenüber gleichvolumigem fibroglandulärem Gewebe.",
+        "en": "Equal density means comparable rather than greater attenuation relative to an equal volume of fibroglandular tissue.",
+        "fa": "دانسیتهٔ برابر یعنی تضعیف مشابه، نه بیشتر از حجم برابر بافت فیبروگلاندولار."
+      },
+      "C": {
+        "de": "Low density beschreibt geringere, nicht stärkere Abschwächung als der Gewebevergleich.",
+        "en": "Low density describes less rather than greater attenuation than the reference tissue.",
+        "fa": "دانسیتهٔ پایین تضعیف کمتر، نه بیشتر از بافت مرجع را توصیف می‌کند."
+      },
+      "D": {
+        "de": "Ein Fettanteil ist nicht beschrieben und kann aus hoher Röntgendichte nicht abgeleitet werden.",
+        "en": "No fat component is described, and high radiographic density does not establish one.",
+        "fa": "جزء چربی توصیف نشده و از دانسیتهٔ رادیوگرافیک بالا نتیجه نمی‌شود."
+      }
+    },
+    "source": "https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/BI-RADS",
+    "difficulty": 1
   },
   {
-    id:'calc-combination', question:L('Welche Kombination von Verkalkungsmerkmalen ist am stärksten malignitätsverdächtig?','Which combination of calcification features is most suspicious for malignancy?','کدام ترکیب ویژگی کلسیفیکاسیون بیشترین شک به بدخیمی را ایجاد می‌کند؟'),
-    options:[L('Rund und diffus','Round and diffuse','گرد و منتشر'),L('Amorph und regional','Amorphous and regional','آمورف و ناحیه‌ای'),L('Grob heterogen und diffus bilateral','Coarse heterogeneous and diffuse bilateral','درشت ناهمگون و منتشر دوطرفه'),L('Fine linear/branching und segmental','Fine linear/branching and segmental','ظریف خطی/شاخه‌دار و سگمنتال')], correct:'D',
-    explanation:L('Fine linear beziehungsweise branching morphology bildet zusammen mit segmentaler Verteilung ein hochsuspektes duktales Muster.','Fine linear or branching morphology with segmental distribution forms a highly suspicious ductal pattern.','مورفولوژی ظریف خطی یا شاخه‌دار همراه با توزیع سگمنتال یک الگوی داکتال بسیار مشکوک ایجاد می‌کند.'),
-    wrong:{A:L('Runde, diffus verteilte Verkalkungen sind typischerweise deutlich weniger suspekt als ein duktales Muster.','Round diffusely distributed calcifications are usually far less suspicious than a ductal pattern.','کلسیفیکاسیون‌های گرد و منتشر معمولاً بسیار کمتر از الگوی داکتال مشکوک‌اند.'),B:L('Amorphe Verkalkungen können abklärungsbedürftig sein, aber regional ist weniger spezifisch als eine segmentale duktale Verteilung.','Amorphous calcifications may need work-up, but regional distribution is less specific than segmental ductal distribution.','کلسیفیکاسیون آمورف ممکن است نیاز به بررسی داشته باشد، اما توزیع ناحیه‌ای از توزیع داکتال سگمنتال اختصاصیت کمتری دارد.'),C:L('Ein diffuses bilaterales Muster spricht eher gegen einen lokalisierten duktalen Prozess; Kontext und Voraufnahmen bleiben relevant.','A diffuse bilateral pattern is less suggestive of a localised ductal process; context and priors still matter.','الگوی منتشر دوطرفه کمتر به نفع فرایند داکتال موضعی است؛ زمینه و تصاویر قبلی همچنان مهم‌اند.')}
+    "id": "calc-combination",
+    "question": {
+      "de": "Welche Kombination von Verkalkungsmerkmalen ist am stärksten malignitätsverdächtig?",
+      "en": "Which combination of calcification features is most suspicious for malignancy?",
+      "fa": "کدام ترکیب ویژگی کلسیفیکاسیون بیشترین شک به بدخیمی را ایجاد می‌کند؟"
+    },
+    "options": [
+      {
+        "de": "Rund und diffus",
+        "en": "Round and diffuse",
+        "fa": "گرد و منتشر"
+      },
+      {
+        "de": "Amorph und regional",
+        "en": "Amorphous and regional",
+        "fa": "آمورف و ناحیه‌ای"
+      },
+      {
+        "de": "Grob heterogen und diffus bilateral",
+        "en": "Coarse heterogeneous and diffuse bilateral",
+        "fa": "درشت ناهمگون و منتشر دوطرفه"
+      },
+      {
+        "de": "Fine linear/branching und segmental",
+        "en": "Fine linear/branching and segmental",
+        "fa": "ظریف خطی/شاخه‌دار و سگمنتال"
+      }
+    ],
+    "correct": "D",
+    "explanation": {
+      "de": "Fine linear beziehungsweise branching morphology bildet zusammen mit segmentaler Verteilung ein hochsuspektes duktales Muster.",
+      "en": "Fine linear or branching morphology with segmental distribution forms a highly suspicious ductal pattern.",
+      "fa": "مورفولوژی ظریف خطی یا شاخه‌دار همراه با توزیع سگمنتال یک الگوی داکتال بسیار مشکوک ایجاد می‌کند."
+    },
+    "wrong": {
+      "A": {
+        "de": "Runde, diffus verteilte Verkalkungen sind typischerweise deutlich weniger suspekt als ein duktales Muster.",
+        "en": "Round diffusely distributed calcifications are usually far less suspicious than a ductal pattern.",
+        "fa": "کلسیفیکاسیون‌های گرد و منتشر معمولاً بسیار کمتر از الگوی داکتال مشکوک‌اند."
+      },
+      "B": {
+        "de": "Amorphe Verkalkungen können abklärungsbedürftig sein, aber regional ist weniger spezifisch als eine segmentale duktale Verteilung.",
+        "en": "Amorphous calcifications may need work-up, but regional distribution is less specific than segmental ductal distribution.",
+        "fa": "کلسیفیکاسیون آمورف ممکن است نیاز به بررسی داشته باشد، اما توزیع ناحیه‌ای از توزیع داکتال سگمنتال اختصاصیت کمتری دارد."
+      },
+      "C": {
+        "de": "Ein diffuses bilaterales Muster spricht eher gegen einen lokalisierten duktalen Prozess; Kontext und Voraufnahmen bleiben relevant.",
+        "en": "A diffuse bilateral pattern is less suggestive of a localised ductal process; context and priors still matter.",
+        "fa": "الگوی منتشر دوطرفه کمتر به نفع فرایند داکتال موضعی است؛ زمینه و تصاویر قبلی همچنان مهم‌اند."
+      }
+    },
+    "source": "https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/BI-RADS",
+    "difficulty": 1
   },
   {
-    id:'asymmetry-workup', question:L('Eine asymmetrische Dichte ist nur in der MLO-Projektion sichtbar. Was ist der sinnvollste nächste Schritt?','An asymmetric density is visible only on the MLO view. What is the most appropriate next step?','دانسیته آسیمتریک فقط در نمای MLO دیده می‌شود. مناسب‌ترین گام بعدی چیست؟'),
-    options:[L('Sofort BI-RADS 5 vergeben','Immediately assign BI-RADS 5','فوراً BI-RADS 5 تعیین شود'),L('Zusätzliche Projektionen beziehungsweise DBT zur Klärung einer Gewebeüberlagerung','Additional projections or DBT to resolve possible tissue overlap','نماهای تکمیلی یا DBT برای بررسی هم‌پوشانی احتمالی بافت'),L('Als Mass mit spikuliertem Rand dokumentieren','Document it as a spiculated mass','به‌عنوان توده اسپیکوله ثبت شود'),L('Ohne zweite Projektion als negativ bewerten','Call it negative without a second projection','بدون نمای دوم منفی ارزیابی شود')], correct:'B',
-    explanation:L('Eine Ein-Projektions-Asymmetrie kann durch Summation entstehen. Zusatzaufnahmen oder DBT prüfen, ob der Befund persistiert.','A one-view asymmetry may result from summation. Additional views or DBT determine whether it persists.','آسیمتری تک‌نما ممکن است ناشی از هم‌پوشانی باشد؛ نماهای تکمیلی یا DBT ماندگاری آن را بررسی می‌کنند.'),
-    wrong:{A:L('Ohne vollständige diagnostische Abklärung fehlen die Merkmale für eine hochgradig suspekte Endkategorie.','Without complete diagnostic work-up, the features needed for a highly suspicious final category are absent.','بدون بررسی تشخیصی کامل، ویژگی‌های لازم برای دسته نهایی بسیار مشکوک وجود ندارد.'),C:L('Eine Asymmetrie erfüllt gerade nicht alle Kriterien einer dreidimensionalen Mass; ein Rand kann daher nicht frei erfunden werden.','An asymmetry does not meet all criteria of a three-dimensional mass, so a margin cannot be invented.','آسیمتری همه معیارهای توده سه‌بعدی را ندارد، بنابراین نمی‌توان حاشیه‌ای برای آن ساخت.'),D:L('Eine mögliche echte Läsion darf nicht allein wegen fehlender Darstellung in einer zweiten Projektion verworfen werden.','A possible true lesion must not be dismissed solely because it is absent from a second view.','ضایعه احتمالی واقعی را نباید فقط به‌علت دیده نشدن در نمای دوم کنار گذاشت.')}
+    "id": "asymmetry-workup",
+    "question": {
+      "de": "Eine asymmetrische Dichte ist nur in der MLO-Projektion sichtbar. Was ist der sinnvollste nächste Schritt?",
+      "en": "An asymmetric density is visible only on the MLO view. What is the most appropriate next step?",
+      "fa": "دانسیته آسیمتریک فقط در نمای MLO دیده می‌شود. مناسب‌ترین گام بعدی چیست؟"
+    },
+    "options": [
+      {
+        "de": "Mammographische Kontrolle nach sechs Monaten",
+        "en": "Six-month mammographic follow-up",
+        "fa": "پیگیری ماموگرافی پس از شش ماه"
+      },
+      {
+        "de": "Zusatzprojektionen/Spot Compression beziehungsweise DBT",
+        "en": "Additional views/spot compression or DBT",
+        "fa": "نماهای تکمیلی/فشرده‌سازی موضعی یا DBT"
+      },
+      {
+        "de": "Sonografie als abschließende alleinige Abklärung",
+        "en": "Ultrasound as the sole final assessment",
+        "fa": "سونوگرافی به‌عنوان تنها بررسی نهایی"
+      },
+      {
+        "de": "Unmittelbare stereotaktische Biopsie",
+        "en": "Immediate stereotactic biopsy",
+        "fa": "بیوپسی استریوتاکتیک فوری"
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "de": "Eine Ein-Projektions-Asymmetrie kann durch Summation entstehen. Zusatzaufnahmen oder DBT prüfen, ob der Befund persistiert.",
+      "en": "A one-view asymmetry may result from summation. Additional views or DBT determine whether it persists.",
+      "fa": "آسیمتری تک‌نما ممکن است ناشی از هم‌پوشانی باشد؛ نماهای تکمیلی یا DBT ماندگاری آن را بررسی می‌کنند."
+    },
+    "wrong": {
+      "A": {
+        "de": "Die Kurzzeitkontrolle folgt erst einer ausreichend gesicherten wahrscheinlich benignen Einordnung; zunächst muss eine mögliche Summation geklärt werden.",
+        "en": "Short-interval follow-up follows an adequately established probably benign assessment; possible summation first requires clarification.",
+        "fa": "پیگیری کوتاه‌مدت پس از ارزیابی کافیِ احتمالاً خوش‌خیم مطرح می‌شود؛ ابتدا باید هم‌پوشانی احتمالی روشن شود."
+      },
+      "C": {
+        "de": "Sonografie kann ergänzen; ein negativer Ultraschall allein löst die mammographische Ein-Projektions-Auffälligkeit nicht zuverlässig auf.",
+        "en": "Ultrasound may complement evaluation; a negative ultrasound alone does not reliably resolve the one-view mammographic finding.",
+        "fa": "سونوگرافی می‌تواند مکمل باشد؛ سونوگرافی منفی به‌تنهایی یافتهٔ ماموگرافیک تک‌نما را با اطمینان حل نمی‌کند."
+      },
+      "D": {
+        "de": "Vor einer Biopsie müssen Persistenz und Zielposition diagnostisch geklärt werden.",
+        "en": "Persistence and target location need diagnostic clarification before biopsy.",
+        "fa": "پیش از بیوپسی، ماندگاری و محل هدف باید از نظر تشخیصی روشن شوند."
+      }
+    },
+    "source": "https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/BI-RADS",
+    "difficulty": 2
   },
   {
-    id:'distortion', question:L('Welche Aussage zur Architectural Distortion ist richtig?','Which statement about architectural distortion is correct?','کدام عبارت درباره دیستورشن معماری درست است؟'),
-    options:[L('Sie setzt immer eine klar abgrenzbare Mass voraus.','It always requires a discrete mass.','همیشه نیازمند توده مشخص است.'),L('Sie ist nach Operation stets benign und benötigt keinen Vergleich.','After surgery it is always benign and needs no comparison.','پس از جراحی همیشه خوش‌خیم است و نیاز به مقایسه ندارد.'),L('Sie kann ohne Mass durch radiäre Linien, Retraktion und Konvergenz auffallen.','It may appear without a mass as radiating lines, retraction and convergence.','می‌تواند بدون توده با خطوط شعاعی، رتراکشن و همگرایی دیده شود.'),L('Sie ist nur im Ultraschall sichtbar.','It is visible only on ultrasound.','فقط در سونوگرافی دیده می‌شود.')], correct:'C',
-    explanation:L('Architectural distortion ist eine Störung der normalen Gewebearchitektur ohne notwendige diskrete Mass.','Architectural distortion is disruption of normal tissue architecture without necessarily forming a discrete mass.','دیستورشن معماری اختلال معماری طبیعی بافت است و الزاماً توده مشخصی ایجاد نمی‌کند.'),
-    wrong:{A:L('Das Fehlen einer abgrenzbaren Mass gehört gerade zur möglichen Erscheinungsform der Architekturstörung.','Lack of a discrete mass is part of how architectural distortion may present.','نبود توده مشخص بخشی از تظاهر احتمالی دیستورشن معماری است.'),B:L('Narben können Distortion verursachen, aber Lokalisation, Verlauf und Voraufnahmen müssen zur Operation passen; neue Veränderung bleibt abklärungsbedürftig.','Scars may cause distortion, but location, evolution and priors must fit the surgery; new change still requires assessment.','اسکار می‌تواند دیستورشن ایجاد کند، اما محل و روند باید با عمل تطابق داشته باشد؛ تغییر جدید نیازمند بررسی است.'),D:L('Distortion ist ein wichtiger mammographischer und tomosynthesebasierter Befund und kann sonographisch okkult sein.','Distortion is an important mammographic and tomosynthesis finding and may be occult on ultrasound.','دیستورشن یافته مهم ماموگرافی و توموسنتز است و ممکن است در سونوگرافی پنهان باشد.')}
+    "id": "distortion",
+    "question": {
+      "de": "In zwei mammographischen Projektionen und der DBT konvergieren feine Linien zu einem fokalen Zentrum; eine umschriebene dreidimensionale Mass ist nicht abgrenzbar. Wie wird der Befund beschrieben?",
+      "en": "On two mammographic views and DBT, fine lines converge toward a focal centre without a discrete three-dimensional mass. How should this be described?",
+      "fa": "در دو نمای ماموگرافی و DBT خطوط ظریف به مرکز موضعی همگرا می‌شوند، بدون تودهٔ سه‌بعدی مشخص. این یافته چگونه توصیف می‌شود؟"
+    },
+    "options": [
+      {
+        "de": "Fokale Asymmetrie",
+        "en": "Focal asymmetry",
+        "fa": "آسیمتری موضعی"
+      },
+      {
+        "de": "Spikulierte Mass",
+        "en": "Spiculated mass",
+        "fa": "تودهٔ اسپیکوله"
+      },
+      {
+        "de": "Architectural Distortion",
+        "en": "Architectural distortion",
+        "fa": "دیستورشن معماری"
+      },
+      {
+        "de": "Isolierte diffuse Trabekelverdickung",
+        "en": "Isolated diffuse trabecular thickening",
+        "fa": "ضخیم‌شدگی منتشر و منفرد ترابکول‌ها"
+      }
+    ],
+    "correct": "C",
+    "explanation": {
+      "de": "Architectural distortion ist eine Störung der normalen Gewebearchitektur ohne notwendige diskrete Mass.",
+      "en": "Architectural distortion is disruption of normal tissue architecture without necessarily forming a discrete mass.",
+      "fa": "دیستورشن معماری اختلال معماری طبیعی بافت است و الزاماً توده مشخصی ایجاد نمی‌کند."
+    },
+    "wrong": {
+      "A": {
+        "de": "Die fokale Linienkonvergenz kennzeichnet eine Architekturstörung über eine reine asymmetrische Gewebedichte hinaus.",
+        "en": "Focal line convergence indicates architectural disruption beyond asymmetric tissue density alone.",
+        "fa": "همگرایی موضعی خطوط اختلال معماری را فراتر از دانسیتهٔ آسیمتریک صرف نشان می‌دهد."
+      },
+      "B": {
+        "de": "Einzelne strahlige Linien machen ohne abgrenzbare Mass noch keine spikulierte Mass.",
+        "en": "Radiating lines without a discrete mass do not establish a spiculated mass.",
+        "fa": "خطوط شعاعی بدون تودهٔ مشخص، تودهٔ اسپیکوله را تعیین نمی‌کنند."
+      },
+      "D": {
+        "de": "Beschrieben ist eine umschriebene Konvergenz, keine diffuse Verdickung des Trabekelnetzes.",
+        "en": "A focal convergence is described, not diffuse thickening of the trabecular network.",
+        "fa": "همگرایی موضعی توصیف شده است، نه ضخیم‌شدن منتشر شبکهٔ ترابکولار."
+      }
+    },
+    "source": "https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/BI-RADS",
+    "difficulty": 1
   },
   {
-    id:'cem-calc', question:L('Segmentale fine pleomorphe Verkalkungen zeigen in CEM kein Enhancement. Welche Konsequenz ist korrekt?','Segmental fine pleomorphic calcifications show no enhancement on CEM. What is the correct consequence?','کلسیفیکاسیون ظریف پلئومورفیک سگمنتال در CEM تقویت پس از تزریق ندارد. پیامد درست چیست؟'),
-    options:[L('Wegen fehlenden Enhancements BI-RADS 2','Downgrade to BI-RADS 2 because enhancement is absent','به‌علت نبود تقویت پس از تزریق به BI-RADS 2 کاهش یابد'),L('Die suspekte LE-Morphologie bleibt maßgeblich und erfordert adäquate Abklärung.','The suspicious low-energy morphology remains decisive and requires appropriate work-up.','مورفولوژی مشکوک در تصویر کم‌انرژی همچنان تعیین‌کننده است و نیاز به بررسی مناسب دارد.'),L('CEM ersetzt die Magnifikationsaufnahme vollständig.','CEM completely replaces magnification views.','CEM کاملاً جایگزین نمای بزرگنمایی می‌شود.'),L('Ohne Enhancement ist DCIS ausgeschlossen.','Without enhancement, DCIS is excluded.','بدون تقویت پس از تزریق، DCIS رد می‌شود.')], correct:'B',
-    explanation:L('Fehlende Jodaufnahme entkräftet suspekte Verkalkungsmorphologie nicht; insbesondere DCIS kann ohne auffälliges CEM-Enhancement vorliegen.','Absent iodine uptake does not negate suspicious calcification morphology; DCIS may lack conspicuous CEM enhancement.','نبود جذب ید مورفولوژی مشکوک کلسیفیکاسیون را خنثی نمی‌کند؛ DCIS ممکن است تقویت پس از تزریق واضح در CEM نداشته باشد.'),
-    wrong:{A:L('Die Bewertung darf nicht gegen einen klar suspekten morphologischen Befund herabgestuft werden.','Assessment must not be downgraded against clearly suspicious morphology.','ارزیابی نباید برخلاف مورفولوژی آشکارا مشکوک کاهش یابد.'),C:L('Magnifikationsaufnahmen bleiben für die feine Beurteilung von Morphologie und Verteilung relevant.','Magnification views remain relevant for detailed assessment of morphology and distribution.','نمای بزرگنمایی برای ارزیابی دقیق مورفولوژی و توزیع همچنان مهم است.'),D:L('Nicht jedes DCIS erzeugt nachweisbare Jodaufnahme; die Aussage wäre ein gefährlicher falscher Ausschluss.','Not every DCIS produces detectable iodine uptake; this would be a dangerous false exclusion.','هر DCIS جذب ید قابل تشخیص ندارد؛ این نتیجه‌گیری یک رد کاذب خطرناک است.')}
+    "id": "cem-calc",
+    "question": {
+      "de": "Segmentale fine pleomorphe Verkalkungen zeigen in CEM kein Enhancement. Welche Konsequenz ist korrekt?",
+      "en": "Segmental fine pleomorphic calcifications show no enhancement on CEM. What is the correct consequence?",
+      "fa": "کلسیفیکاسیون ظریف پلئومورفیک سگمنتال در CEM تقویت پس از تزریق ندارد. پیامد درست چیست؟"
+    },
+    "options": [
+      {
+        "de": "Rückkehr zum Routine-Screening",
+        "en": "Return to routine screening",
+        "fa": "بازگشت به غربالگری روتین"
+      },
+      {
+        "de": "Mammographisch gesteuerte Gewebediagnostik planen",
+        "en": "Plan mammography-guided tissue sampling",
+        "fa": "نمونه‌برداری بافتی تحت هدایت ماموگرافی برنامه‌ریزی شود"
+      },
+      {
+        "de": "Mammographische Kontrolle nach sechs Monaten",
+        "en": "Six-month mammographic follow-up",
+        "fa": "پیگیری ماموگرافی پس از شش ماه"
+      },
+      {
+        "de": "Zuerst MRT; Biopsieentscheidung vom MRT-Enhancement abhängig machen",
+        "en": "MRI first; base the biopsy decision on MRI enhancement",
+        "fa": "ابتدا MRI؛ تصمیم بیوپسی بر اساس تقویت در MRI گرفته شود"
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "de": "Fehlende Jodaufnahme entkräftet suspekte Verkalkungsmorphologie nicht; insbesondere DCIS kann ohne auffälliges CEM-Enhancement vorliegen.",
+      "en": "Absent iodine uptake does not negate suspicious calcification morphology; DCIS may lack conspicuous CEM enhancement.",
+      "fa": "نبود جذب ید مورفولوژی مشکوک کلسیفیکاسیون را خنثی نمی‌کند؛ DCIS ممکن است تقویت پس از تزریق واضح در CEM نداشته باشد."
+    },
+    "wrong": {
+      "A": {
+        "de": "Fehlendes CEM-Enhancement entkräftet die suspekte Kalkmorphologie nicht; Rückkehr zum Screening wäre hier nicht begründet.",
+        "en": "Absent CEM enhancement does not negate suspicious calcification morphology; return to screening is not justified here.",
+        "fa": "نبود تقویت در CEM مورفولوژی مشکوک کلسیفیکاسیون را رد نمی‌کند؛ بازگشت به غربالگری در اینجا توجیه ندارد."
+      },
+      "C": {
+        "de": "Die beschriebene suspekte Morphologie ist keine ausreichend begründete wahrscheinlich benigne Konstellation für alleinige Kurzzeitkontrolle.",
+        "en": "The suspicious morphology described does not establish a probably benign finding suitable for short-interval follow-up alone.",
+        "fa": "مورفولوژی مشکوک توصیف‌شده، یافتهٔ احتمالاً خوش‌خیم مناسب برای پیگیری کوتاه‌مدتِ تنها را تعیین نمی‌کند."
+      },
+      "D": {
+        "de": "Eine weitere Kontrastmitteluntersuchung ist kein verlässlicher Filter, um die Gewebediagnostik suspekter Verkalkungen von Enhancement abhängig zu machen.",
+        "en": "Another contrast examination is not a reliable filter for making tissue diagnosis of suspicious calcifications conditional on enhancement.",
+        "fa": "بررسی دیگر با مادهٔ حاجب فیلتر قابل اتکایی برای وابسته‌کردن نمونه‌برداری کلسیفیکاسیون مشکوک به وجود تقویت نیست."
+      }
+    },
+    "source": "https://doi.org/10.1177/0284185118822639",
+    "difficulty": 2
   },
   {
-    id:'birads-6', question:L('Was bedeutet BI-RADS 6 korrekt?','What does BI-RADS 6 correctly mean?','BI-RADS 6 به‌درستی چه معنایی دارد؟'),
-    options:[L('Bildgebung hochgradig suspekt, aber noch ohne Biopsie','Imaging highly suspicious but not yet biopsied','تصویربرداری بسیار مشکوک، هنوز بدون بیوپسی'),L('Unvollständige Untersuchung','Incomplete examination','بررسی ناکامل'),L('Bereits histologisch gesicherte Malignität','Known biopsy-proven malignancy','بدخیمی اثبات‌شده با بیوپسی'),L('Wahrscheinlich benigne Läsion','Probably benign lesion','ضایعه احتمالاً خوش‌خیم')], correct:'C',
-    explanation:L('BI-RADS 6 kennzeichnet ein bereits biopsiebestätigtes Malignom; es ist keine höhere morphologische Verdachtsstufe als Kategorie 5.','BI-RADS 6 denotes biopsy-proven malignancy; it is not a higher morphologic suspicion level than category 5.','BI-RADS 6 بدخیمی اثبات‌شده با بیوپسی را نشان می‌دهد و درجه مورفولوژیک بالاتری از دسته 5 نیست.'),
-    wrong:{A:L('Ein hochgradig suspekter, noch nicht gesicherter Befund entspricht BI-RADS 5.','A highly suspicious finding not yet proven by biopsy corresponds to BI-RADS 5.','یافته بسیار مشکوک که هنوز با بیوپسی اثبات نشده، BI-RADS 5 است.'),B:L('Eine unvollständige Untersuchung mit Bedarf an Zusatzbildgebung entspricht BI-RADS 0.','An incomplete examination requiring additional imaging is BI-RADS 0.','بررسی ناکامل نیازمند تصویربرداری بیشتر BI-RADS 0 است.'),D:L('Ein wahrscheinlich benigner Befund mit kurzfristiger Kontrolle entspricht BI-RADS 3.','A probably benign finding with short-interval follow-up is BI-RADS 3.','یافته احتمالاً خوش‌خیم با پیگیری کوتاه‌مدت BI-RADS 3 است.')}
+    "id": "birads-6",
+    "question": {
+      "de": "Vor Beginn einer Therapie wird die bildgebend sichtbare Läsion beurteilt, für die bereits eine konkordante maligne Stanzbiopsie vorliegt. Welche Assessment-Bezeichnung passt?",
+      "en": "Before treatment, imaging evaluates the visible lesion already shown malignant by a concordant core biopsy. Which assessment description fits?",
+      "fa": "پیش از درمان، ضایعهٔ قابل مشاهده‌ای بررسی می‌شود که بدخیمی آن با بیوپسی سوزنیِ همخوان تأیید شده است. کدام عنوان ارزیابی مناسب است؟"
+    },
+    "options": [
+      {
+        "de": "Bildgebung hochgradig suspekt, aber noch ohne Biopsie",
+        "en": "Imaging highly suspicious but not yet biopsied",
+        "fa": "تصویربرداری بسیار مشکوک، هنوز بدون بیوپسی"
+      },
+      {
+        "de": "Unvollständige Untersuchung",
+        "en": "Incomplete examination",
+        "fa": "بررسی ناکامل"
+      },
+      {
+        "de": "Bereits histologisch gesicherte Malignität",
+        "en": "Known biopsy-proven malignancy",
+        "fa": "بدخیمی اثبات‌شده با بیوپسی"
+      },
+      {
+        "de": "Wahrscheinlich benigne Läsion",
+        "en": "Probably benign lesion",
+        "fa": "ضایعه احتمالاً خوش‌خیم"
+      }
+    ],
+    "correct": "C",
+    "explanation": {
+      "de": "BI-RADS 6 kennzeichnet ein bereits biopsiebestätigtes Malignom; es ist keine höhere morphologische Verdachtsstufe als Kategorie 5.",
+      "en": "BI-RADS 6 denotes biopsy-proven malignancy; it is not a higher morphologic suspicion level than category 5.",
+      "fa": "BI-RADS 6 بدخیمی اثبات‌شده با بیوپسی را نشان می‌دهد و درجه مورفولوژیک بالاتری از دسته 5 نیست."
+    },
+    "wrong": {
+      "A": {
+        "de": "Ein hochgradig suspekter, noch nicht gesicherter Befund entspricht BI-RADS 5.",
+        "en": "A highly suspicious finding not yet proven by biopsy corresponds to BI-RADS 5.",
+        "fa": "یافته بسیار مشکوک که هنوز با بیوپسی اثبات نشده، BI-RADS 5 است."
+      },
+      "B": {
+        "de": "Eine unvollständige Untersuchung mit Bedarf an Zusatzbildgebung entspricht BI-RADS 0.",
+        "en": "An incomplete examination requiring additional imaging is BI-RADS 0.",
+        "fa": "بررسی ناکامل نیازمند تصویربرداری بیشتر BI-RADS 0 است."
+      },
+      "D": {
+        "de": "Ein wahrscheinlich benigner Befund mit kurzfristiger Kontrolle entspricht BI-RADS 3.",
+        "en": "A probably benign finding with short-interval follow-up is BI-RADS 3.",
+        "fa": "یافته احتمالاً خوش‌خیم با پیگیری کوتاه‌مدت BI-RADS 3 است."
+      }
+    },
+    "source": "https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/BI-RADS",
+    "difficulty": 1
   },
   {
-    id:'case-final', question:L('Neue fine pleomorphe Verkalkungen sind segmental verteilt. Ein Ultraschallkorrelat fehlt. Welche Aussage ist richtig?','New fine pleomorphic calcifications have segmental distribution. No ultrasound correlate is found. Which statement is correct?','کلسیفیکاسیون‌های ظریف پلئومورفیک جدید توزیع سگمنتال دارند و همبستگی سونوگرافی یافت نمی‌شود. کدام عبارت درست است؟'),
-    options:[L('Ohne Ultraschallkorrelat ist der Befund benign.','Without an ultrasound correlate the finding is benign.','بدون همبستگی سونوگرافی یافته خوش‌خیم است.'),L('Nur bei tastbarem Befund ist eine Biopsie möglich.','Biopsy is possible only if the finding is palpable.','بیوپسی فقط در صورت لمس‌پذیری ممکن است.'),L('Die mammographische Morphologie bleibt suspekt; eine mammographisch gesteuerte Gewebediagnostik ist zu planen.','Mammographic morphology remains suspicious; mammography-guided tissue diagnosis should be planned.','مورفولوژی ماموگرافیک همچنان مشکوک است و باید تشخیص بافتی تحت هدایت ماموگرافی برنامه‌ریزی شود.'),L('Langzeitstabilität kann ohne Voraufnahmen angenommen werden.','Long-term stability may be assumed without prior studies.','می‌توان بدون تصاویر قبلی ثبات طولانی‌مدت را فرض کرد.')], correct:'C',
-    explanation:L('Die Indikation folgt dem suspekten mammographischen Muster. Ein fehlendes Sonographiekorrelat ändert den geeigneten Biopsiezugang, nicht die Risikobewertung.','The indication follows the suspicious mammographic pattern. Lack of an ultrasound correlate changes the biopsy route, not the risk assessment.','اندیکاسیون بر اساس الگوی مشکوک ماموگرافی است؛ نبود همبستگی سونوگرافی مسیر بیوپسی را تغییر می‌دهد، نه ارزیابی خطر را.'),
-    wrong:{A:L('Mikroverkalkungen sind sonographisch häufig nicht darstellbar; fehlende Sichtbarkeit im Ultraschall entwarnt nicht.','Calcifications are often not visible on ultrasound; lack of sonographic visibility is not reassuring.','کلسیفیکاسیون‌ها اغلب در سونوگرافی دیده نمی‌شوند و نبود آن‌ها اطمینان‌بخش نیست.'),B:L('Nicht tastbare mammographische Befunde können stereotaktisch oder tomosynthesegesteuert biopsiert werden.','Non-palpable mammographic findings can be biopsied stereotactically or under tomosynthesis guidance.','یافته‌های غیرقابل لمس ماموگرافی را می‌توان به روش استریوتاکتیک یا تحت هدایت توموسنتز بیوپسی کرد.'),D:L('Stabilität ist eine Beobachtung aus echten Vergleichsuntersuchungen und darf ohne Voraufnahmen nicht unterstellt werden.','Stability must be demonstrated on actual prior studies and cannot be assumed without them.','ثبات باید در تصاویر قبلی واقعی نشان داده شود و بدون آن‌ها قابل فرض نیست.')}
-  },
+    "id": "case-final",
+    "question": {
+      "de": "Neue fine pleomorphe Verkalkungen sind segmental verteilt. Ein Ultraschallkorrelat fehlt. Welche Aussage ist richtig?",
+      "en": "New fine pleomorphic calcifications have segmental distribution. No ultrasound correlate is found. Which statement is correct?",
+      "fa": "کلسیفیکاسیون‌های ظریف پلئومورفیک جدید توزیع سگمنتال دارند و همبستگی سونوگرافی یافت نمی‌شود. کدام عبارت درست است؟"
+    },
+    "options": [
+      {
+        "de": "Gezielte Sonografie in sechs Monaten wiederholen",
+        "en": "Repeat targeted ultrasound in six months",
+        "fa": "سونوگرافی هدفمند پس از شش ماه تکرار شود"
+      },
+      {
+        "de": "Eine kontrastverstärkte MRT vor der Biopsieentscheidung einplanen",
+        "en": "Obtain contrast-enhanced MRI before deciding on biopsy",
+        "fa": "پیش از تصمیم بیوپسی، MRI با تزریق انجام شود"
+      },
+      {
+        "de": "Mammographisch/DBT-gesteuerte Gewebediagnostik planen",
+        "en": "Plan mammography/DBT-guided tissue sampling",
+        "fa": "نمونه‌برداری بافتی تحت هدایت ماموگرافی/DBT برنامه‌ریزی شود"
+      },
+      {
+        "de": "Eine ultraschallgesteuerte Biopsie anhand der ungefähren Lage planen",
+        "en": "Plan ultrasound-guided biopsy using the approximate location",
+        "fa": "بیوپسی تحت هدایت سونوگرافی بر اساس محل تقریبی برنامه‌ریزی شود"
+      }
+    ],
+    "correct": "C",
+    "explanation": {
+      "de": "Die Indikation folgt dem suspekten mammographischen Muster. Ein fehlendes Sonographiekorrelat ändert den geeigneten Biopsiezugang, nicht die Risikobewertung.",
+      "en": "The indication follows the suspicious mammographic pattern. Lack of an ultrasound correlate changes the biopsy route, not the risk assessment.",
+      "fa": "اندیکاسیون بر اساس الگوی مشکوک ماموگرافی است؛ نبود همبستگی سونوگرافی مسیر بیوپسی را تغییر می‌دهد، نه ارزیابی خطر را."
+    },
+    "wrong": {
+      "A": {
+        "de": "Die mammographisch suspekte Kalkgruppe wird durch sonografische Verlaufskontrolle ohne sichtbares Korrelat nicht adäquat abgeklärt.",
+        "en": "Ultrasound follow-up without a visible correlate does not adequately evaluate suspicious mammographic calcifications.",
+        "fa": "پیگیری سونوگرافی بدون همبستگی قابل مشاهده، کلسیفیکاسیون مشکوک ماموگرافیک را به‌طور مناسب بررسی نمی‌کند."
+      },
+      "B": {
+        "de": "Die Gewebediagnostik folgt dem suspekten Kalkmuster und soll nicht vom Ergebnis einer vorgeschalteten MRT abhängig gemacht werden.",
+        "en": "Tissue diagnosis follows the suspicious calcification pattern and should not be made conditional on a preceding MRI result.",
+        "fa": "نمونه‌برداری از الگوی مشکوک کلسیفیکاسیون نتیجه می‌شود و نباید به نتیجهٔ MRI پیش از آن وابسته شود."
+      },
+      "D": {
+        "de": "Eine gezielte ultraschallgesteuerte Biopsie braucht ein sicher zugeordnetes sichtbares Korrelat; eine ungefähre Lage reicht nicht.",
+        "en": "Targeted ultrasound-guided biopsy requires a confidently matched visible correlate; an approximate location is insufficient.",
+        "fa": "بیوپسی هدفمند تحت هدایت سونوگرافی به همبستگی قابل مشاهده و با تطابق مطمئن نیاز دارد؛ محل تقریبی کافی نیست."
+      }
+    },
+    "source": "https://doi.org/10.1177/0284185118822639",
+    "difficulty": 2
+  }
 ]
 
 export const MAMMOGRAPHY_BASICS_QUESTIONS = Object.fromEntries(['de','en','fa'].map(lang => [lang, QUESTIONS.map(item => ({
   id:`mammographie-grundlagen-${lang}-${item.id}`, tags:['mammographie-grundlagen','mamma','mammographie','bi-rads'], fach:'mamma', question:item.question[lang],
-  options:item.options.map((text,index)=>({id:String.fromCharCode(65+index),text:text[lang]})), correct:item.correct, explanation:item.explanation[lang],
+  options:item.options.map((text,index)=>({id:String.fromCharCode(65+index),text:text[lang]})), correct:item.correct, explanation:item.explanation[lang], source:item.source, difficulty:item.difficulty,
   wrongExplanations:Object.fromEntries(Object.entries(item.wrong).map(([id,text])=>[id,text[lang]])),
 }))]))
 
 const CARDS = [
-  ['Systematik','Warum wird der Befund vor der BI-RADS-Kategorie beschrieben?','Damit das Assessment nachvollziehbar aus objektiven Deskriptoren und dem Vergleich mit Voraufnahmen abgeleitet wird.','BI-RADS ist das Ergebnis der Analyse, nicht ihr Ausgangspunkt.','System','Why describe the finding before assigning BI-RADS?','So the assessment follows transparently from objective descriptors and comparison with priors.','BI-RADS is the result of analysis, not its starting point.','سیستماتیک','چرا یافته پیش از تعیین دسته BI-RADS توصیف می‌شود؟','تا ارزیابی به‌طور شفاف از دسکریپتورهای عینی و مقایسه با تصاویر قبلی نتیجه شود.','BI-RADS نتیجه تحلیل است، نه نقطه آغاز آن.'],
-  ['Composition','Was ist der Masking-Effekt?','Dichtes fibroglanduläres Gewebe kann eine ähnlich dichte, insbesondere nichtverkalkte Läsion überdecken.','Die Composition beschreibt deshalb auch die erwartbare Sensitivität der Mammographie.','Composition','What is the masking effect?','Dense fibroglandular tissue may obscure a similarly dense, especially non-calcified lesion.','Composition therefore also conveys expected mammographic sensitivity.','ترکیب بافت','اثر پنهان‌کنندگی چیست؟','بافت فیبروگلاندولار متراکم می‌تواند ضایعه‌ای با دانسیته مشابه، به‌ویژه بدون کلسیفیکاسیون، را پنهان کند.','بنابراین ترکیب بافت حساسیت مورد انتظار ماموگرافی را نیز بیان می‌کند.'],
-  ['Mass','Welche drei Merkmalsgruppen beschreiben eine Mass?','Shape, Margin und Density.','Diese Reihenfolge hält Form, Randqualität und relative Röntgendichte getrennt.','Mass','Which three feature groups describe a mass?','Shape, margin and density.','This separates form, edge quality and relative radiographic density.','توده','کدام سه گروه ویژگی یک توده را توصیف می‌کنند؟','شکل، حاشیه و دانسیته.','این ترتیب فرم، کیفیت حاشیه و دانسیته نسبی رادیوگرافیک را جدا نگه می‌دارد.'],
-  ['Margin','Was ist der Unterschied zwischen obscured und indistinct?','Obscured: Rand durch Gewebe überlagert und nicht beurteilbar. Indistinct: sichtbarer Rand tatsächlich unscharf.','Nicht Sichtbarkeit und echte Randqualität miteinander verwechseln.','Margin','What is the difference between obscured and indistinct?','Obscured: overlying tissue prevents margin assessment. Indistinct: the visible margin is truly ill-defined.','Do not confuse visibility with actual margin quality.','حاشیه','تفاوت پوشیده (Obscured) و نامشخص (Indistinct) چیست؟','پوشیده (Obscured): بافت روی‌هم‌افتاده مانع ارزیابی حاشیه است. Indistinct: حاشیه دیده‌شده واقعاً نامشخص است.','قابلیت مشاهده را با کیفیت واقعی حاشیه اشتباه نکنید.'],
-  ['Kalk','Welche zwei Eigenschaften müssen bei Verkalkungen immer kombiniert werden?','Morphologie und Distribution.','Morphologie beschreibt die Einzelpartikel; Distribution beschreibt ihre räumliche Anordnung.','Calcifications','Which two properties must always be combined for calcifications?','Morphology and distribution.','Morphology describes individual particles; distribution describes spatial arrangement.','کلسیفیکاسیون','کدام دو ویژگی کلسیفیکاسیون باید همیشه ترکیب شوند؟','مورفولوژی و توزیع.','مورفولوژی ذرات منفرد و توزیع آرایش فضایی آن‌ها را توصیف می‌کند.'],
-  ['Kalk','Welche Kalkkombination ist besonders suspekt auf einen duktalen Prozess?','Fine linear oder fine-linear branching mit linearer beziehungsweise segmentaler Distribution.','Form und Verteilung können gemeinsam den Verlauf eines Gangsystems widerspiegeln.','Calcifications','Which calcification combination is particularly suspicious for a ductal process?','Fine linear or fine-linear branching with linear or segmental distribution.','Together, morphology and distribution may mirror a ductal system.','کلسیفیکاسیون','کدام ترکیب کلسیفیکاسیون به‌ویژه به فرایند داکتال مشکوک است؟','ظریف خطی یا ظریف خطی شاخه‌دار با توزیع خطی یا سگمنتال.','مورفولوژی و توزیع با هم می‌توانند مسیر سیستم مجاری را بازتاب دهند.'],
-  ['Asymmetrie','Welche Kernfrage steuert die Abklärung einer möglichen Summationsasymmetrie?','Persistiert der Befund nach Auflösung der Gewebeüberlagerung?','DBT, Spot Compression und Zusatzprojektionen prüfen diese Frage.','Asymmetry','What key question guides work-up of a possible summation asymmetry?','Does the finding persist after tissue overlap is resolved?','DBT, spot compression and additional projections test this.','آسیمتری','کدام سؤال کلیدی بررسی آسیمتری احتمالی ناشی از هم‌پوشانی را هدایت می‌کند؟','آیا یافته پس از رفع هم‌پوشانی بافت باقی می‌ماند؟','DBT، فشرده‌سازی موضعی و نماهای تکمیلی این سؤال را بررسی می‌کنند.'],
-  ['Distortion','Kann ein Mammakarzinom ohne sichtbare Mass imponieren?','Ja. Eine Architectural Distortion oder suspekte Verkalkungen können die einzige Manifestation sein.','Das Fehlen einer Mass ist kein Ausschlusskriterium.','Distortion','Can breast cancer present without a visible mass?','Yes. Architectural distortion or suspicious calcifications may be the only manifestation.','Absence of a mass is not an exclusion criterion.','دیستورشن','آیا سرطان پستان می‌تواند بدون توده قابل مشاهده ظاهر شود؟','بله. دیستورشن معماری یا کلسیفیکاسیون مشکوک ممکن است تنها تظاهر باشد.','نبود توده معیار رد نیست.'],
-  ['DBT','Welches Grundproblem der 2D-Mammographie reduziert die Tomosynthese?','Tissue overlap durch Projektion aller Strukturen auf ein zweidimensionales Bild.','Schichtdarstellung kann Pseudoläsionen auflösen und echte Distortion besser zeigen.','DBT','What fundamental problem of 2D mammography does tomosynthesis reduce?','Tissue overlap caused by projecting all structures onto a two-dimensional image.','Slice display may resolve pseudolesions and reveal true distortion better.','DBT','توموسنتز کدام مشکل بنیادی ماموگرافی دوبعدی را کاهش می‌دهد؟','هم‌پوشانی بافت ناشی از تصویر شدن همه ساختارها روی یک تصویر دوبعدی.','نمایش لایه‌ای می‌تواند ضایعات کاذب را برطرف و دیستورشن واقعی را بهتر نشان دهد.'],
-  ['CEM','Darf fehlendes Enhancement suspekte Verkalkungen entwarnen?','Nein. Die suspekte Morphologie auf dem Low-Energy-Bild bleibt maßgeblich.','Insbesondere DCIS kann durch Verkalkungen auffallen, ohne deutlich anzureichern.','CEM','May absent enhancement reassure in suspicious calcifications?','No. Suspicious morphology on the low-energy image remains decisive.','DCIS in particular may present with calcifications without conspicuous enhancement.','CEM','آیا نبود تقویت پس از تزریق می‌تواند کلسیفیکاسیون مشکوک را بی‌خطر نشان دهد؟','خیر. مورفولوژی مشکوک در تصویر کم‌انرژی همچنان تعیین‌کننده است.','به‌ویژه DCIS می‌تواند با کلسیفیکاسیون و بدون تقویت پس از تزریق واضح ظاهر شود.'],
-  ['BI-RADS','Warum ist BI-RADS 6 nicht „schlimmer“ als BI-RADS 5?','Kategorie 6 bezeichnet den Nachweisstatus: Die Malignität ist bereits histologisch gesichert.','Kategorie 5 beschreibt dagegen einen noch nicht zwingend biopsiebestätigten, hochgradigen Bildverdacht.','BI-RADS','Why is BI-RADS 6 not “worse” than BI-RADS 5?','Category 6 describes proof status: malignancy is already biopsy-proven.','Category 5 describes highly suspicious imaging that may not yet be biopsy-proven.','BI-RADS','چرا BI-RADS 6 «بدتر» از BI-RADS 5 نیست؟','دسته 6 وضعیت اثبات را نشان می‌دهد: بدخیمی قبلاً با بیوپسی تأیید شده است.','دسته 5 شک بسیار بالای تصویربرداری را نشان می‌دهد که ممکن است هنوز با بیوپسی اثبات نشده باشد.'],
-  ['Algorithmus','Wie lautet die Kurzform des RadYar-Befundalgorithmus?','Composition → Finding → Descriptor → Vergleich → Problemlösung → Assessment → Management.','Jeder Schritt liefert die Grundlage für den nächsten und verhindert vorschnelle Diagnosen.','Algorithm','What is the short form of the RadYar reporting algorithm?','Composition → finding → descriptor → comparison → problem-solving → assessment → management.','Each step supports the next and prevents premature diagnosis.','الگوریتم','خلاصه الگوریتم گزارش RadYar چیست؟','ترکیب بافت ← یافته ← دسکریپتور ← مقایسه ← حل مسئله ← ارزیابی ← اقدام.','هر مرحله پایه مرحله بعد است و از تشخیص شتاب‌زده جلوگیری می‌کند.'],
+  [
+    "Systematik",
+    "Warum wird der Befund vor der BI-RADS-Kategorie beschrieben?",
+    "Damit das Assessment nachvollziehbar aus objektiven Deskriptoren und dem Vergleich mit Voraufnahmen abgeleitet wird.",
+    "BI-RADS ist das Ergebnis der Analyse, nicht ihr Ausgangspunkt.",
+    "System",
+    "Why describe the finding before assigning BI-RADS?",
+    "So the assessment follows transparently from objective descriptors and comparison with priors.",
+    "BI-RADS is the result of analysis, not its starting point.",
+    "سیستماتیک",
+    "چرا یافته پیش از تعیین دسته BI-RADS توصیف می‌شود؟",
+    "تا ارزیابی به‌طور شفاف از دسکریپتورهای عینی و مقایسه با تصاویر قبلی نتیجه شود.",
+    "BI-RADS نتیجه تحلیل است، نه نقطه آغاز آن."
+  ],
+  [
+    "Composition",
+    "Was ist der Masking-Effekt?",
+    "Dichtes fibroglanduläres Gewebe kann eine ähnlich dichte, insbesondere nichtverkalkte Läsion überdecken.",
+    "Die Composition beschreibt deshalb auch die erwartbare Sensitivität der Mammographie.",
+    "Composition",
+    "What is the masking effect?",
+    "Dense fibroglandular tissue may obscure a similarly dense, especially non-calcified lesion.",
+    "Composition therefore also conveys expected mammographic sensitivity.",
+    "ترکیب بافت",
+    "اثر پنهان‌کنندگی چیست؟",
+    "بافت فیبروگلاندولار متراکم می‌تواند ضایعه‌ای با دانسیته مشابه، به‌ویژه بدون کلسیفیکاسیون، را پنهان کند.",
+    "بنابراین ترکیب بافت حساسیت مورد انتظار ماموگرافی را نیز بیان می‌کند."
+  ],
+  [
+    "Mass",
+    "Welche drei Merkmalsgruppen beschreiben eine Mass?",
+    "Form, Rand und relative Röntgendichte.",
+    "Diese Reihenfolge hält Form, Randqualität und relative Röntgendichte getrennt.",
+    "Mass",
+    "Which three feature groups describe a mass?",
+    "Shape, margin and density.",
+    "This separates form, edge quality and relative radiographic density.",
+    "توده",
+    "کدام سه گروه ویژگی یک توده را توصیف می‌کنند؟",
+    "شکل، حاشیه و دانسیته.",
+    "این ترتیب فرم، کیفیت حاشیه و دانسیته نسبی رادیوگرافیک را جدا نگه می‌دارد."
+  ],
+  [
+    "Margin",
+    "Was ist der Unterschied zwischen obscured und indistinct?",
+    "Obscured: Rand durch Gewebe überlagert und nicht beurteilbar. Indistinct: sichtbarer Rand tatsächlich unscharf.",
+    "Nicht Sichtbarkeit und echte Randqualität miteinander verwechseln.",
+    "Margin",
+    "What is the difference between obscured and indistinct?",
+    "Obscured: overlying tissue prevents margin assessment. Indistinct: the visible margin is truly ill-defined.",
+    "Do not confuse visibility with actual margin quality.",
+    "حاشیه",
+    "تفاوت پوشیده (Obscured) و نامشخص (Indistinct) چیست؟",
+    "پوشیده (Obscured): بافت روی‌هم‌افتاده مانع ارزیابی بخشی از حاشیه است و بخش قابل مشاهده مشخص است. نامشخص (Indistinct): خود حاشیه واقعاً نامشخص است.",
+    "قابلیت مشاهده را با کیفیت واقعی حاشیه اشتباه نکنید."
+  ],
+  [
+    "Kalk",
+    "Welche zwei Eigenschaften müssen bei Verkalkungen immer kombiniert werden?",
+    "Morphologie und Distribution.",
+    "Morphologie beschreibt die Einzelpartikel; Distribution beschreibt ihre räumliche Anordnung.",
+    "Calcifications",
+    "Which two properties must always be combined for calcifications?",
+    "Morphology and distribution.",
+    "Morphology describes individual particles; distribution describes spatial arrangement.",
+    "کلسیفیکاسیون",
+    "کدام دو ویژگی کلسیفیکاسیون باید همیشه ترکیب شوند؟",
+    "مورفولوژی و توزیع.",
+    "مورفولوژی ذرات منفرد و توزیع آرایش فضایی آن‌ها را توصیف می‌کند."
+  ],
+  [
+    "Kalk",
+    "Welche Kalkkombination ist besonders suspekt auf einen duktalen Prozess?",
+    "Fine linear oder fine-linear branching mit linearer beziehungsweise segmentaler Distribution.",
+    "Form und Verteilung können gemeinsam den Verlauf eines Gangsystems widerspiegeln.",
+    "Calcifications",
+    "Which calcification combination is particularly suspicious for a ductal process?",
+    "Fine linear or fine-linear branching with linear or segmental distribution.",
+    "Together, morphology and distribution may mirror a ductal system.",
+    "کلسیفیکاسیون",
+    "کدام ترکیب کلسیفیکاسیون به‌ویژه به فرایند داکتال مشکوک است؟",
+    "ظریف خطی یا ظریف خطی شاخه‌دار با توزیع خطی یا سگمنتال.",
+    "مورفولوژی و توزیع با هم می‌توانند مسیر سیستم مجاری را بازتاب دهند."
+  ],
+  [
+    "Asymmetrie",
+    "Welche Kernfrage steuert die Abklärung einer möglichen Summationsasymmetrie?",
+    "Persistiert der Befund nach Auflösung der Gewebeüberlagerung?",
+    "DBT, Spot Compression und Zusatzprojektionen prüfen diese Frage.",
+    "Asymmetry",
+    "What key question guides work-up of a possible summation asymmetry?",
+    "Does the finding persist after tissue overlap is resolved?",
+    "DBT, spot compression and additional projections test this.",
+    "آسیمتری",
+    "کدام سؤال کلیدی بررسی آسیمتری احتمالی ناشی از هم‌پوشانی را هدایت می‌کند؟",
+    "آیا یافته پس از رفع هم‌پوشانی بافت باقی می‌ماند؟",
+    "DBT، فشرده‌سازی موضعی و نماهای تکمیلی این سؤال را بررسی می‌کنند."
+  ],
+  [
+    "Distortion",
+    "Kann ein Mammakarzinom ohne sichtbare Mass imponieren?",
+    "Ja. Eine Architectural Distortion oder suspekte Verkalkungen können die einzige Manifestation sein.",
+    "Das Fehlen einer Mass ist kein Ausschlusskriterium.",
+    "Distortion",
+    "Can breast cancer present without a visible mass?",
+    "Yes. Architectural distortion or suspicious calcifications may be the only manifestation.",
+    "Absence of a mass is not an exclusion criterion.",
+    "دیستورشن",
+    "آیا سرطان پستان می‌تواند بدون توده قابل مشاهده ظاهر شود؟",
+    "بله. دیستورشن معماری یا کلسیفیکاسیون مشکوک ممکن است تنها تظاهر باشد.",
+    "نبود توده معیار رد نیست."
+  ],
+  [
+    "DBT",
+    "Welches Grundproblem der 2D-Mammographie reduziert die Tomosynthese?",
+    "Gewebeüberlagerung durch Projektion aller Strukturen auf ein zweidimensionales Bild.",
+    "Schichtdarstellung kann Pseudoläsionen auflösen und echte Distortion besser zeigen.",
+    "DBT",
+    "What fundamental problem of 2D mammography does tomosynthesis reduce?",
+    "Tissue overlap caused by projecting all structures onto a two-dimensional image.",
+    "Slice display may resolve pseudolesions and reveal true distortion better.",
+    "DBT",
+    "توموسنتز کدام مشکل بنیادی ماموگرافی دوبعدی را کاهش می‌دهد؟",
+    "هم‌پوشانی بافت ناشی از تصویر شدن همه ساختارها روی یک تصویر دوبعدی.",
+    "نمایش لایه‌ای می‌تواند ضایعات کاذب را برطرف و دیستورشن واقعی را بهتر نشان دهد."
+  ],
+  [
+    "CEM",
+    "Darf fehlendes Enhancement suspekte Verkalkungen entwarnen?",
+    "Nein. Die suspekte Morphologie auf dem Low-Energy-Bild bleibt maßgeblich.",
+    "Insbesondere DCIS kann durch Verkalkungen auffallen, ohne deutlich anzureichern.",
+    "CEM",
+    "May absent enhancement reassure in suspicious calcifications?",
+    "No. Suspicious morphology on the low-energy image remains decisive.",
+    "DCIS in particular may present with calcifications without conspicuous enhancement.",
+    "CEM",
+    "آیا نبود تقویت پس از تزریق می‌تواند کلسیفیکاسیون مشکوک را بی‌خطر نشان دهد؟",
+    "خیر. مورفولوژی مشکوک در تصویر کم‌انرژی همچنان تعیین‌کننده است.",
+    "به‌ویژه DCIS می‌تواند با کلسیفیکاسیون و بدون تقویت پس از تزریق واضح ظاهر شود."
+  ],
+  [
+    "BI-RADS",
+    "Warum ist BI-RADS 6 nicht „schlimmer“ als BI-RADS 5?",
+    "Kategorie 6 bezeichnet den Nachweisstatus: Die Malignität ist bereits histologisch gesichert.",
+    "Kategorie 5 beschreibt dagegen einen noch nicht zwingend biopsiebestätigten, hochgradigen Bildverdacht.",
+    "BI-RADS",
+    "Why is BI-RADS 6 not “worse” than BI-RADS 5?",
+    "Category 6 describes proof status: malignancy is already biopsy-proven.",
+    "Category 5 describes highly suspicious imaging that may not yet be biopsy-proven.",
+    "BI-RADS",
+    "چرا BI-RADS 6 «بدتر» از BI-RADS 5 نیست؟",
+    "دسته 6 وضعیت اثبات را نشان می‌دهد: بدخیمی قبلاً با بیوپسی تأیید شده است.",
+    "دسته 5 شک بسیار بالای تصویربرداری را نشان می‌دهد که ممکن است هنوز با بیوپسی اثبات نشده باشد."
+  ],
+  [
+    "Klinischer Tastbefund",
+    "Welcher Bildgebungsschritt folgt bei einer Frau ab 40 mit neuem Tastbefund und negativer diagnostischer Mammographie?",
+    "Gezielte Sonografie der tastbaren Region.",
+    "Ein klinisch suspekter Befund bleibt auch bei negativer Bildgebung weiter abklärungsbedürftig.",
+    "Palpable finding",
+    "Which imaging step follows a new palpable finding and negative diagnostic mammography in a woman aged 40 or older?",
+    "Targeted ultrasound of the palpable area.",
+    "A clinically suspicious finding warrants further assessment even if imaging is negative.",
+    "یافتهٔ قابل لمس",
+    "در زن ۴۰ ساله یا بالاتر با یافتهٔ قابل لمس جدید و ماموگرافی تشخیصی منفی، گام تصویربرداری بعدی چیست؟",
+    "سونوگرافی هدفمند ناحیهٔ قابل لمس.",
+    "یافتهٔ بالینی مشکوک حتی با تصویربرداری منفی همچنان به بررسی بیشتر نیاز دارد."
+  ]
 ]
 
-export const MAMMOGRAPHY_BASICS_FLASHCARDS = CARDS.map((item,index)=>({id:`mammographie-grundlagen-${String(index+1).padStart(2,'0')}`,topicId:'mammographie-grundlagen',category:L(item[0],item[4],item[8]),front:L(item[1],item[5],item[9]),answer:L(item[2],item[6],item[10]),explanation:L(item[3],item[7],item[11])}))
+export const MAMMOGRAPHY_BASICS_FLASHCARDS = CARDS.map((item,index)=>({id:`mammographie-grundlagen-${String(index+1).padStart(2,'0')}`,topicId:'mammographie-grundlagen',category:L(item[0],item[4],item[8]),front:L(item[1],item[5],item[9]),answer:L(item[2],item[6],item[10]),explanation:L(item[3],item[7],item[11]),source:index===11?'https://acsearch.acr.org/docs/69495/Narrative/':index===9?'https://doi.org/10.1177/0284185118822639':'https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/BI-RADS'}))
 export const MAMMOGRAPHY_BASICS_FLASHCARD_TOPIC = {id:'mammographie-grundlagen',area:'Mamma',chapter:'Bildgebung · Mammographie',icon:'MG',iconImage:'/fach/mamma.png',color:'#e83668',href:'/flashcards/mammographie-grundlagen',title:L('Mammographie: Grundlagen der Befundung','Mammography: Reporting Fundamentals','ماموگرافی: مبانی گزارش‌نویسی'),subtitle:L('Composition · Mass · Kalk · Asymmetrie · DBT · CEM · BI-RADS','Composition · mass · calcifications · asymmetry · DBT · CEM · BI-RADS','ترکیب بافت · توده · کلسیفیکاسیون · آسیمتری · DBT · CEM · BI-RADS')}

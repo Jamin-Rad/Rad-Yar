@@ -1,4 +1,5 @@
 import { qualityQuestions, qualityTopics } from './assessmentQuality'
+import { canonicalAssessmentId } from '../lib/assessmentIdentity'
 import legacySessionBaseline from './assessmentQuality/legacySessionBaseline.json'
 import { assessmentVersionRecords, selectedAssessmentVersion } from '../lib/assessmentContentVersion'
 import { ABDOMEN_EXISTING_QUESTIONS, ABDOMEN_EXISTING_TOPIC_GROUPS } from './abdomenExistingPractice'
@@ -6319,10 +6320,9 @@ export function getQuestionsForIds(deIds, lang) {
     const byId = new Map(QUESTION_BANK.de.map(q => [q.id, q]))
     return deIds.map(id => byId.get(id)).filter(Boolean)
   }
-  const targetBank = new Map((QUESTION_BANK[lang] || []).map(q => [q.id, q]))
+  const targetBank = new Map((QUESTION_BANK[lang] || []).map(q => [canonicalAssessmentId(q.id), q]))
   const deBank = new Map(QUESTION_BANK.de.map(q => [q.id, q]))
   return deIds.map(deId => {
-    const targetId = deId.replace(/-de(?=-|$)/, `-${lang}`)
-    return targetBank.get(targetId) || deBank.get(deId)
+    return targetBank.get(deId) || deBank.get(deId)
   }).filter(Boolean)
 }

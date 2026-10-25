@@ -24,7 +24,14 @@
     "msk-spine/packet04/review-rotator.json",
     "brain/review-packet12-telangiectasia.json",
     "brain/review-packet13-nf1.json",
-    "integration-review-inline-feedback.json"
+    "integration-review-inline-feedback.json",
+    "abdomen-technik/review-packet03.json",
+    "brain/review-packet14-demenzmuster.json",
+    "thorax-mamma/review-packet04-hrct-reticular.json",
+    "msk-spine/packet05/review-ak.json",
+    "msk-spine/packet06/review-de-quervain.json",
+    "thorax-mamma/review-packet05-mammography-basics.json",
+    "integration-review-locale-topic-identities.json"
   ],
   "questionIds": [
     "aq-brain-aq-balkenagenesie-de-direct-assessment",
@@ -90,7 +97,19 @@
     "aq-atv-appendix-us-pattern-de-application",
     "aq-atv-appendix-ct-context-de-application",
     "aq-atv-gist-phase-context-de-application",
-    "aq-atv-gist-internal-structure-de-application"
+    "aq-atv-gist-internal-structure-de-application",
+    "aq-atv-mesenteric-nomi-de-application",
+    "aq-atv-mesenteric-viability-de-application",
+    "aq-atv-pylorus-indeterminate-de-application",
+    "aq-atv-rectal-t3-depth-de-application",
+    "aq-atv-rectal-emvi-pattern-de-application",
+    "aq-atv-rectal-lateral-node-de-application",
+    "aq-atv-ileus-closed-loop-de-application",
+    "aq-atv-ileus-caecal-twist-de-application",
+    "aq-brain-aq-demenzmuster-de-mta-components",
+    "aq-brain-aq-demenzmuster-de-dlb-biomarker",
+    "aq-brain-aq-demenzmuster-de-ftd-pattern",
+    "aq-msk-de-quervain-de-provocation-study-limit"
   ],
   "cardIds": [
     "aq-brain-aq-balkenagenesie-direct-assessment",
@@ -168,7 +187,13 @@
     "aq-brain-nf1-fasi",
     "aq-brain-nf1-pathway",
     "aq-brain-nf1-systemic",
-    "aq-brain-nf1-enhancing-fasi"
+    "aq-brain-nf1-enhancing-fasi",
+    "aq-atv-mesenteric-nomi-retrieval",
+    "aq-atv-mesenteric-viability-retrieval",
+    "aq-atv-pylorus-indeterminate-retrieval",
+    "aq-brain-aq-demenzmuster-mta-components",
+    "aq-brain-aq-demenzmuster-dlb-biomarker",
+    "aq-brain-aq-demenzmuster-ftd-pattern"
   ],
   "routes": [
     "/gehirn/anatomie/balkenagenesie",
@@ -219,6 +244,14 @@
     "/abdomen/gi/gist",
     "/gehirn/vaskulaer/dva",
     "/gehirn/vaskulaer/kapillaere-teleangiektasie",
-    "/gehirn/neurofibromatose/nf1"
+    "/gehirn/neurofibromatose/nf1",
+    "/abdomen/gi/mesenteriale-ischaemie",
+    "/abdomen/gi/pylorusstenose",
+    "/abdomen/gi/kolitis-patterns",
+    "/abdomen/gi/kolorektales-karzinom",
+    "/abdomen/gi/ileus-volvulus",
+    "/gehirn/neurodegeneration/demenzmuster",
+    "/msk/hand/de-quervain",
+    "/mamma/bildgebung/mammographie/grundlagen"
   ]
 }

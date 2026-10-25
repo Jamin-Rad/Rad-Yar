@@ -1,0 +1,710 @@
+{
+  "id": "ak-luxation",
+  "title": {
+    "de": "Akromioklavikuläre Luxation",
+    "en": "Acromioclavicular Joint Dislocation",
+    "fa": "لوکساسیون مفصل آکرومیوکلاویکولار"
+  },
+  "definition": {
+    "de": "Traumatische Verletzung des Akromioklavikulargelenks (AC-Gelenk) mit Ruptur der AC- und/oder korakoklavikulären Bänder, klassifiziert nach Rockwood in sechs Typen.",
+    "en": "Traumatic injury of the acromioclavicular (AC) joint with rupture of the AC and/or coracoclavicular ligaments, classified by Rockwood into six types.",
+    "fa": "آسیب تروماتیک مفصل آکرومیوکلاویکولار (AC) با پارگی رباط‌های AC و/یا کوراکوکلاویکولار، طبق طبقه‌بندی راک‌وود در شش نوع."
+  },
+  "breadcrumb": {
+    "de": "AC-Luxation",
+    "en": "AC Joint Dislocation",
+    "fa": "لوکساسیون AC"
+  },
+  "sourceLabel": "Dr. Zia",
+  "keyLabel": {
+    "de": "Merke",
+    "en": "Key Point",
+    "fa": "نکته کلیدی"
+  },
+  "caveLabel": {
+    "de": "Cave",
+    "en": "Caution",
+    "fa": "هشدار"
+  },
+  "toc": {
+    "de": "Inhalt",
+    "en": "Contents",
+    "fa": "فهرست"
+  },
+  "heroCards": [
+    {
+      "value": {
+        "de": "Sturz",
+        "en": "Fall",
+        "fa": "افتادن"
+      },
+      "label": {
+        "de": "Hauptmechanismus",
+        "en": "Main mechanism",
+        "fa": "مکانیسم اصلی"
+      },
+      "text": {
+        "de": "auf Schulter bei adduziertem Arm",
+        "en": "on shoulder with adducted arm",
+        "fa": "روی شانه با بازوی آدوکته"
+      }
+    },
+    {
+      "value": {
+        "de": "Typ I–VI",
+        "en": "Type I–VI",
+        "fa": "نوع I–VI"
+      },
+      "label": {
+        "de": "Rockwood",
+        "en": "Rockwood",
+        "fa": "راک‌وود"
+      },
+      "text": {
+        "de": "Schweregrad-Klassifikation",
+        "en": "Severity classification",
+        "fa": "طبقه‌بندی شدت آسیب"
+      }
+    },
+    {
+      "value": {
+        "de": "CCD",
+        "en": "CCD",
+        "fa": "CCD"
+      },
+      "label": {
+        "de": "Schlüssel­parameter",
+        "en": "Key parameter",
+        "fa": "پارامتر کلیدی"
+      },
+      "text": {
+        "de": "korakoklavikuläre Distanz im Seitenvergleich",
+        "en": "coracoclavicular distance vs. contralateral side",
+        "fa": "فاصله کوراکوکلاویکولار در مقایسه با طرف مقابل"
+      }
+    }
+  ],
+  "sections": [
+    {
+      "id": "anatomie",
+      "icon": "🦴",
+      "label": {
+        "de": "Anatomie & Bänder",
+        "en": "Anatomy & Ligaments",
+        "fa": "آناتومی و رباط‌ها"
+      }
+    },
+    {
+      "id": "mechanismus",
+      "icon": "⚡",
+      "label": {
+        "de": "Mechanismus",
+        "en": "Mechanism",
+        "fa": "مکانیسم"
+      }
+    },
+    {
+      "id": "bildgebung",
+      "icon": "🔬",
+      "label": {
+        "de": "Bildgebung",
+        "en": "Imaging",
+        "fa": "تصویربرداری"
+      }
+    },
+    {
+      "id": "rockwood",
+      "icon": "📊",
+      "label": {
+        "de": "Rockwood­klassifikation",
+        "en": "Rockwood Classification",
+        "fa": "طبقه‌بندی راک‌وود"
+      },
+      "emphasis": true
+    },
+    {
+      "id": "therapie",
+      "icon": "💊",
+      "label": {
+        "de": "Therapie",
+        "en": "Treatment",
+        "fa": "درمان"
+      }
+    },
+    {
+      "id": "takehome",
+      "icon": "✅",
+      "label": {
+        "de": "Take-home",
+        "en": "Take-home",
+        "fa": "جمع‌بندی"
+      }
+    }
+  ],
+  "anatomie": {
+    "title": {
+      "de": "Anatomie des AC-Gelenks",
+      "en": "Anatomy of the AC Joint",
+      "fa": "آناتومی مفصل AC"
+    },
+    "lead": {
+      "de": "Das Akromioklavikulargelenk verbindet Klavikula und Akromion. Seine Stabilität hängt von zwei Bandgruppen ab.",
+      "en": "The acromioclavicular joint connects the clavicle to the acromion. Its stability depends on two ligament groups.",
+      "fa": "مفصل آکرومیوکلاویکولار کلاویکول را به آکرومیون متصل می‌کند. پایداری آن به دو گروه رباط بستگی دارد."
+    },
+    "items": [
+      {
+        "icon": "🔵",
+        "title": {
+          "de": "AC-Bänder (akromioklavikulär)",
+          "en": "AC Ligaments (acromioclavicular)",
+          "fa": "رباط‌های AC (آکرومیوکلاویکولار)"
+        },
+        "text": {
+          "de": "Oberes und unteres AC-Band stabilisieren das Gelenk gegen horizontale Kräfte (anteriore/posteriore Verschiebung). Wichtigste Stabilisatoren für die AP-Translationsstabilität.",
+          "en": "Superior and inferior AC ligaments stabilise the joint against horizontal forces (anterior/posterior translation). Primary stabilisers for AP translational stability.",
+          "fa": "رباط‌های فوقانی و تحتانی AC مفصل را در برابر نیروهای افقی (جابجایی قدامی/خلفی) تثبیت می‌کنند. مهم‌ترین تثبیت‌کننده‌های پایداری AP."
+        }
+      },
+      {
+        "icon": "🟠",
+        "title": {
+          "de": "CC-Bänder (korakoklavikulär)",
+          "en": "CC Ligaments (coracoclavicular)",
+          "fa": "رباط‌های CC (کوراکوکلاویکولار)"
+        },
+        "text": {
+          "de": "Trapezoid- und Konoidband stabilisieren gegen vertikale Kräfte (superiore Dislokation der Klavikula). Die CC-Distanz ist der Schlüsselmesswert für den Schweregrad.",
+          "en": "Trapezoid and conoid ligaments stabilise against vertical forces (superior clavicular displacement). CC distance is the key measurement for severity.",
+          "fa": "رباط‌های ترپزوئید و کونوئید در برابر نیروهای عمودی (جابجایی فوقانی کلاویکول) تثبیت می‌کنند. فاصله CC پارامتر کلیدی برای ارزیابی شدت است."
+        }
+      },
+      {
+        "icon": "💪",
+        "title": {
+          "de": "Muskuläre Stabilisatoren",
+          "en": "Muscular Stabilisers",
+          "fa": "تثبیت‌کننده‌های عضلانی"
+        },
+        "text": {
+          "de": "M. deltoideus und M. trapezius strahlen in die laterale Klavikula ein und unterstützen die dynamische Stabilität. Bei Typ V werden diese Ansätze abgerissen.",
+          "en": "Deltoid and trapezius muscles insert into the lateral clavicle and support dynamic stability. In Type V, these insertions are avulsed.",
+          "fa": "عضلات دلتوئید و تراپزیوس به کلاویکول جانبی چسبیده و پایداری دینامیک را پشتیبانی می‌کنند. در نوع V، این نقاط اتصال جدا می‌شوند."
+        }
+      }
+    ],
+    "key": {
+      "de": "CC-Bänder tragen vor allem zur vertikalen, AC-Kapsel/Bänder zur horizontalen Stabilität bei. Das Rockwood-Muster ergibt sich aus Bandverletzung und Dislokationsrichtung; Typ III bedeutet eine Ruptur beider Bandgruppen.",
+      "en": "CC ligaments primarily contribute to vertical stability, while the AC capsule/ligaments contribute to horizontal stability. Rockwood grading reflects ligament injury and displacement direction; Type III denotes rupture of both ligament groups.",
+      "fa": "رباط‌های CC عمدتاً در پایداری عمودی و کپسول/رباط‌های AC در پایداری افقی نقش دارند. درجه‌بندی راک‌وود بر اساس آسیب رباط‌ها و جهت جابجایی است؛ نوع III به پارگی هر دو گروه رباط اشاره دارد."
+    }
+  },
+  "mechanismus": {
+    "title": {
+      "de": "Verletzungsmechanismus",
+      "en": "Injury Mechanism",
+      "fa": "مکانیسم آسیب"
+    },
+    "lead": {
+      "de": "AC-Luxationen entstehen meist durch direkte Krafteinwirkung auf die Schulter.",
+      "en": "AC dislocations usually result from direct force on the shoulder.",
+      "fa": "لوکساسیون AC معمولاً از طریق نیروی مستقیم بر شانه ایجاد می‌شود."
+    },
+    "items": [
+      {
+        "icon": "⬇️",
+        "title": {
+          "de": "Direkter Mechanismus (häufig)",
+          "en": "Direct mechanism (common)",
+          "fa": "مکانیسم مستقیم (شایع)"
+        },
+        "text": {
+          "de": "Sturz auf die Schulterseite bei adduziertem Arm → Kraft auf Akromion → Akromion wird inferior gedrängt, Klavikula bleibt durch Muskeln in Position → Bänderriss.",
+          "en": "Fall onto the side of the shoulder with the arm adducted → force on the acromion → acromion is pushed inferiorly while the clavicle is held in position by muscles → ligament failure.",
+          "fa": "افتادن روی طرف شانه با بازوی آدوکته → نیرو روی آکرومیون → آکرومیون به سمت پایین رانده می‌شود در حالی که کلاویکول توسط عضلات در جای خود باقی می‌ماند → پارگی رباط."
+        }
+      },
+      {
+        "icon": "↗️",
+        "title": {
+          "de": "Indirekter Mechanismus (selten)",
+          "en": "Indirect mechanism (rare)",
+          "fa": "مکانیسم غیرمستقیم (نادر)"
+        },
+        "text": {
+          "de": "Sturz auf die ausgestreckte Hand → axiale Kraftübertragung nach proximal → Humeruskopf stößt gegen Akromion von kaudal.",
+          "en": "Fall on the outstretched hand → axial force transmission proximally → humeral head strikes the acromion from below.",
+          "fa": "افتادن روی دست کشیده → انتقال نیرو به صورت محوری به سمت پروگزیمال → سر هومروس از پایین به آکرومیون برخورد می‌کند."
+        }
+      },
+      {
+        "icon": "🏃",
+        "title": {
+          "de": "Epidemiologie",
+          "en": "Epidemiology",
+          "fa": "اپیدمیولوژی"
+        },
+        "text": {
+          "de": "Häufige Sportverletzung (Kontaktsportarten, Radsport, Wintersport). Häufiger bei Männern (4:1). Betrifft bevorzugt das 20.–40. Lebensjahr.",
+          "en": "Common sports injury (contact sports, cycling, winter sports). More common in men (4:1). Predominant age: 20–40 years.",
+          "fa": "آسیب ورزشی شایع (ورزش‌های تماسی، دوچرخه‌سواری، ورزش‌های زمستانی). در مردان شایع‌تر (۴:۱). سن غالب: ۲۰–۴۰ سال."
+        }
+      }
+    ]
+  },
+  "bildgebung": {
+    "title": {
+      "de": "Radiologische Diagnostik",
+      "en": "Radiological Diagnosis",
+      "fa": "تشخیص رادیولوژیک"
+    },
+    "lead": {
+      "de": "Das konventionelle Röntgen ist die Basisbildgebung. Die korakoklavikuläre Distanz (CCD) ist der wichtigste Messparameter.",
+      "en": "Conventional X-ray is the primary imaging modality. The coracoclavicular distance (CCD) is the key measurement parameter.",
+      "fa": "رادیوگرافی معمولی تصویربرداری پایه است. فاصله کوراکوکلاویکولار (CCD) مهم‌ترین پارامتر اندازه‌گیری است."
+    },
+    "headers": [
+      {
+        "de": "Aufnahme",
+        "en": "View",
+        "fa": "نمای رادیوگرافی"
+      },
+      {
+        "de": "Technik",
+        "en": "Technique",
+        "fa": "تکنیک"
+      },
+      {
+        "de": "Aussage",
+        "en": "Information gained",
+        "fa": "اطلاعات به‌دست‌آمده"
+      }
+    ],
+    "rows": [
+      [
+        {
+          "de": "Schulter AP",
+          "en": "Shoulder AP",
+          "fa": "شانه AP"
+        },
+        {
+          "de": "Stehend, beide Seiten zum Vergleich",
+          "en": "Standing, both sides for comparison",
+          "fa": "ایستاده، هر دو طرف برای مقایسه"
+        },
+        {
+          "de": "CCD-Messung, Hochstand der Klavikula, Achsfehlstellung",
+          "en": "CCD measurement, clavicular elevation, axis malalignment",
+          "fa": "اندازه‌گیری CCD، ارتفاع کلاویکول، ناهنجاری محوری"
+        }
+      ],
+      [
+        {
+          "de": "Schulter axial",
+          "en": "Shoulder axial",
+          "fa": "شانه محوری"
+        },
+        {
+          "de": "Standardprojektionen",
+          "en": "Standard projections",
+          "fa": "نماهای استاندارد"
+        },
+        {
+          "de": "Posteriore Dislokation (Typ IV)",
+          "en": "Posterior dislocation (Type IV)",
+          "fa": "جابجایی خلفی (نوع IV)"
+        }
+      ],
+      [
+        {
+          "de": "Panorama-/Belastungsaufnahme (selektiv)",
+          "en": "Panoramic/weighted view (selective)",
+          "fa": "نمای پانورامیک/استرس (انتخابی)"
+        },
+        {
+          "de": "PDF beschreibt beidseitig 10–15 kg pro Seite; Zusatzbelastung nur nach klinischer Fragestellung/lokalem Protokoll erwägen.",
+          "en": "The PDF describes 10–15 kg per side bilaterally; consider added load only for a specific clinical question/local protocol.",
+          "fa": "PDF بار دوطرفه ۱۰–۱۵ کیلوگرم در هر طرف را توصیف می‌کند؛ بارگذاری افزوده را فقط بر اساس پرسش بالینی مشخص/پروتکل محلی در نظر بگیرید."
+        },
+        {
+          "de": "CCD-Seitenvergleich; Evidenz zum Zusatznutzen gewichteter Aufnahmen ist widersprüchlich, daher keine Routineaufnahme.",
+          "en": "Compare CCD side to side; evidence for added value of weighted views conflicts, so they are not routine.",
+          "fa": "CCD را در دو طرف مقایسه کنید؛ شواهد ارزش افزوده نماهای وزنه‌دار متناقض است، بنابراین نمای روتین نیست."
+        }
+      ]
+    ],
+    "ccdNote": {
+      "title": {
+        "de": "CCD-Messung",
+        "en": "CCD Measurement",
+        "fa": "اندازه‌گیری CCD"
+      },
+      "text": {
+        "de": "Die PDF nennt 11–13 mm als Orientierungsbereich; publizierte radiologische Referenzen geben denselben Bereich an, weisen aber auf individuelle Varianz hin. Technik beachten und möglichst mit der Gegenseite vergleichen. Zur Zusatzklassifikation durch Belastungsaufnahmen ist die Evidenz widersprüchlich: Nordin et al. (online 2020, Ausgabe 2021; doi:10.1177/0284185120939270) fanden keinen signifikanten Klassifikationsgewinn; Ibrahim et al. (2015; doi:10.1016/j.injury.2015.06.028) berichteten einen Nutzen bilateraler gewichteter Aufnahmen. Die PDF-Angabe 10–15 kg pro Seite ist eine Quellangabe, keine Routineempfehlung; andere Referenzen nennen geringere Lasten.",
+        "en": "The PDF gives 11–13 mm as an orienting range; published radiology references report the same range but note individual variation. Account for technique and compare with the other side when possible. Evidence on added classification from weighted views conflicts: Nordin et al. (online 2020, issue 2021; doi:10.1177/0284185120939270) found no significant classification gain, while Ibrahim et al. (2015; doi:10.1016/j.injury.2015.06.028) reported value from bilateral weighted views. The PDF’s 10–15 kg per-side load is a source-specific statement, not a routine recommendation; other references describe lower loads.",
+        "fa": "PDF محدوده ۱۱ تا ۱۳ میلی‌متر را به‌عنوان راهنما ذکر می‌کند؛ منابع منتشرشده رادیولوژی نیز همین محدوده را گزارش می‌کنند، اما به تفاوت فردی اشاره دارند. تکنیک را در نظر بگیرید و در صورت امکان طرف مقابل را مقایسه کنید. شواهد ارزش افزوده نماهای وزنه‌دار برای طبقه‌بندی متناقض است: نوردین و همکاران (انتشار آنلاین ۲۰۲۰، شماره ۲۰۲۱؛ doi:10.1177/0284185120939270) بهبود معناداری نیافتند، اما ابراهیم و همکاران (۲۰۱۵؛ doi:10.1016/j.injury.2015.06.028) برای نماهای وزنه‌دار دوطرفه ارزش گزارش کردند. بار ۱۰ تا ۱۵ کیلوگرم در هر طرف، نقل قول اختصاصی از PDF است و توصیه‌ای برای استفاده روتین نیست؛ منابع دیگر بار کمتری ذکر می‌کنند."
+      }
+    },
+    "caseTitle": {
+      "de": "Fallbeispiel Normal / Typ I – AP-Aufnahme (rID:48600)",
+      "en": "Case: Normal / Type I – AP view (rID:48600)",
+      "fa": "مورد: طبیعی / نوع I – نمای AP (rID:48600)"
+    },
+    "radiopaediaUrl": "https://radiopaedia.org/cases/48600/play",
+    "caseImages": [
+      {
+        "src": "/ak-luxation/schulter-ap-rid48600.png",
+        "caption": {
+          "de": "Schulter AP – Normal-/Typ-I-Befund: annotierte CCD (gelb) und AC-Gelenkspalt (lila). Kein Hochstand der Klavikula.",
+          "en": "Shoulder AP – Normal/Type I: annotated CCD (yellow) and AC joint space (purple). No clavicular elevation.",
+          "fa": "شانه AP – طبیعی/نوع I: CCD علامت‌گذاری‌شده (زرد) و فضای مفصل AC (بنفش). بدون ارتفاع کلاویکول."
+        }
+      }
+    ],
+    "cave": {
+      "de": "Eine posteriore Dislokation (Typ IV) kann im AP-Bild schwer erkennbar sein. Bei klinischem oder radiologischem Verdacht ergänzt eine axiale/axilläre Projektion die Abklärung.",
+      "en": "Posterior displacement (Type IV) can be difficult to see on the AP view. If clinically or radiographically suspected, add an axial/axillary projection for assessment.",
+      "fa": "جابجایی خلفی (نوع IV) ممکن است در نمای AP به‌سختی دیده شود. در صورت شک بالینی یا رادیوگرافیک، نمای محوری/آگزیلاری را برای ارزیابی اضافه کنید."
+    }
+  },
+  "rockwood": {
+    "title": {
+      "de": "Rockwood-Klassifikation",
+      "en": "Rockwood Classification",
+      "fa": "طبقه‌بندی راک‌وود"
+    },
+    "lead": {
+      "de": "Die weit verbreitete Rockwood-Klassifikation unterscheidet sechs Verletzungstypen anhand der Bandverletzung und der Richtung/des Ausmaßes der Dislokation. Die PDF beschreibt die ältere Tossy-Klassifikation (I–III) als veraltet.",
+      "en": "The widely used Rockwood classification distinguishes six injury types by ligament injury and direction/degree of displacement. The PDF describes the older Tossy classification (I–III) as outdated.",
+      "fa": "طبقه‌بندی رایج راک‌وود شش نوع آسیب را بر اساس آسیب رباط‌ها و جهت/میزان جابجایی متمایز می‌کند. PDF طبقه‌بندی قدیمی‌تر توسی (I–III) را منسوخ می‌داند."
+    },
+    "illustrationSrc": "/ak-luxation/rockwood-klassifikation.png",
+    "illustrationAlt": {
+      "de": "Rockwood-Schema I–VI (Radiopaedia): I Distorsion ohne Dislokation; II AC-Ruptur/CC-Zerrung; III AC- und CC-Ruptur; IV posterior; V ausgeprägter Hochstand mit deltotrapezialer Ablösung; VI inferior.",
+      "en": "Rockwood schematic I–VI (Radiopaedia): I sprain without displacement; II AC tear/CC sprain; III AC and CC rupture; IV posterior; V marked elevation with deltotrapezial detachment; VI inferior.",
+      "fa": "نمای شماتیک راک‌وود I–VI (رادیوپدیا): I کشیدگی بدون جابجایی؛ II پارگی AC/کشیدگی CC؛ III پارگی AC و CC؛ IV خلفی؛ V ارتفاع شدید با جداشدگی دلتوتراپزیوس؛ VI تحتانی."
+    },
+    "headers": [
+      {
+        "de": "Typ",
+        "en": "Type",
+        "fa": "نوع"
+      },
+      {
+        "de": "Pathologie",
+        "en": "Pathology",
+        "fa": "پاتولوژی"
+      },
+      {
+        "de": "Radiologischer Befund",
+        "en": "Radiological finding",
+        "fa": "یافته رادیولوژیک"
+      },
+      {
+        "de": "Merkmal",
+        "en": "Key feature",
+        "fa": "ویژگی کلیدی"
+      }
+    ],
+    "rows": [
+      [
+        {
+          "de": "I",
+          "en": "I",
+          "fa": "I"
+        },
+        {
+          "de": "Zerrung (partielle Ruptur) AC-Bänder",
+          "en": "Sprain (partial rupture) of AC ligaments",
+          "fa": "کشش (پارگی جزئی) رباط‌های AC"
+        },
+        {
+          "de": "Normalbefund",
+          "en": "Normal X-ray",
+          "fa": "رادیوگرافی طبیعی"
+        },
+        {
+          "de": "Klinische Diagnose; kein Hochstand",
+          "en": "Clinical diagnosis; no elevation",
+          "fa": "تشخیص بالینی؛ بدون ارتفاع"
+        }
+      ],
+      [
+        {
+          "de": "II",
+          "en": "II",
+          "fa": "II"
+        },
+        {
+          "de": "Ruptur der AC-Bänder/Kapsel; CC-Bänder gezerrt oder partiell verletzt",
+          "en": "Rupture of AC ligaments/capsule; CC ligaments sprained or partially injured",
+          "fa": "پارگی رباط‌ها/کپسول AC؛ کشیدگی یا آسیب جزئی رباط‌های CC"
+        },
+        {
+          "de": "Leichte Dehiszenz; CCD-Zunahme < 25 % gegenüber der unverletzten Seite",
+          "en": "Mild widening; CCD increase <25% compared with the uninjured side",
+          "fa": "اتساع خفیف؛ افزایش CCD کمتر از ۲۵٪ در مقایسه با سمت سالم"
+        },
+        {
+          "de": "Im Seitenvergleich messen; absolute CCD-Werte individuell variieren",
+          "en": "Measure side to side; absolute CCD values vary between individuals",
+          "fa": "اندازه‌گیری در مقایسه دو طرف؛ مقدار مطلق CCD بین افراد متفاوت است"
+        }
+      ],
+      [
+        {
+          "de": "III",
+          "en": "III",
+          "fa": "III"
+        },
+        {
+          "de": "Ruptur AC- und CC-Bänder",
+          "en": "Rupture of both AC and CC ligaments",
+          "fa": "پارگی رباط‌های AC و CC"
+        },
+        {
+          "de": "Klavikula über dem Akromion; CCD-Zunahme 25–100 % gegenüber der unverletzten Seite",
+          "en": "Clavicle elevated above the acromion; CCD increase 25–100% versus the uninjured side",
+          "fa": "کلاویکول بالاتر از آکرومیون؛ افزایش CCD به میزان ۲۵ تا ۱۰۰٪ نسبت به سمت سالم"
+        },
+        {
+          "de": "Therapie kontrovers; keine automatische OP-Indikation",
+          "en": "Treatment is debated; this is not an automatic indication for surgery",
+          "fa": "درمان مورد اختلاف است؛ این یافته به‌تنهایی اندیکاسیون قطعی جراحی نیست"
+        }
+      ],
+      [
+        {
+          "de": "IV",
+          "en": "IV",
+          "fa": "IV"
+        },
+        {
+          "de": "AC-Bänder rupturiert; posteriore Dislokation in/durch den M. trapezius; CC-Verletzung möglich",
+          "en": "AC ligaments torn; posterior displacement into/through trapezius; CC injury may occur",
+          "fa": "رباط‌های AC پاره؛ جابجایی خلفی به داخل/از میان تراپزیوس؛ احتمال آسیب CC"
+        },
+        {
+          "de": "Axial-/Axillärprojektion bei Verdacht ergänzen",
+          "en": "Add an axial/axillary view when suspected",
+          "fa": "در صورت شک، نمای محوری/آگزیلاری اضافه شود"
+        }
+      ],
+      [
+        {
+          "de": "V",
+          "en": "V",
+          "fa": "V"
+        },
+        {
+          "de": "Wie Typ III, plus Abriss M. deltoideus/trapezius",
+          "en": "Like Type III, plus avulsion of deltoid/trapezius",
+          "fa": "مثل نوع III، به علاوه جداشدگی عضلات دلتوئید/تراپزیوس"
+        },
+        {
+          "de": "Deutlicher Hochstand; CCD-Zunahme meist >100 % (ca. 100–300 %) gegenüber der Gegenseite",
+          "en": "Marked elevation; CCD increase usually >100% (about 100–300%) versus the opposite side",
+          "fa": "ارتفاع واضح؛ افزایش CCD معمولاً بیش از ۱۰۰٪ (حدود ۱۰۰ تا ۳۰۰٪) نسبت به سمت مقابل"
+        },
+        {
+          "de": "Muskelkontinuität unterbrochen",
+          "en": "Muscle continuity disrupted",
+          "fa": "پیوستگی عضلانی قطع شده"
+        }
+      ],
+      [
+        {
+          "de": "VI",
+          "en": "VI",
+          "fa": "VI"
+        },
+        {
+          "de": "Inferiore Dislokation; Verletzungsmuster der Bänder kann variieren",
+          "en": "Inferior displacement; ligament injury pattern may vary",
+          "fa": "جابجایی تحتانی؛ الگوی آسیب رباط‌ها ممکن است متفاوت باشد"
+        },
+        {
+          "de": "Klavikula inferior unter Akromion/Proc. coracoideus luxiert",
+          "en": "Clavicle dislocated inferiorly below acromion/coracoid",
+          "fa": "کلاویکول به صورت تحتانی زیر آکرومیون/پروسه کوراکوئید جابجا شده"
+        },
+        {
+          "de": "Seltenster Typ; meistens schweres Trauma",
+          "en": "Rarest type; usually severe trauma",
+          "fa": "نادرترین نوع؛ معمولاً تروما شدید"
+        }
+      ]
+    ],
+    "tossy": {
+      "de": "Historisch: Tossy I–III entsprechen ungefähr Rockwood I–III; Rockwood ergänzt die Richtungs-/Schweregrade IV–VI. Die Systeme sind nicht in jedem Detail deckungsgleich.",
+      "en": "Historical note: Tossy I–III roughly correspond to Rockwood I–III; Rockwood adds the directional/severity grades IV–VI. The systems are not identical in every detail.",
+      "fa": "تاریخی: توسی I–III تقریباً با راک‌وود I–III مطابقت دارند؛ راک‌وود انواع IV–VI را بر اساس جهت/شدت اضافه می‌کند. این دو طبقه‌بندی در همه جزئیات کاملاً یکسان نیستند."
+    },
+    "key": {
+      "de": "Typ I–II werden üblicherweise konservativ behandelt. Bei symptomatischen Typen IV–VI wird eine operative Versorgung häufig empfohlen/erwogen. Typ III bleibt umstritten; Entscheidung individuell nach Befund und Patientenzielen.",
+      "en": "Types I–II are usually managed conservatively. Symptomatic Types IV–VI are commonly considered for operative treatment. Type III remains debated; decisions are individualised around findings and patient goals.",
+      "fa": "نوع I–II معمولاً به‌صورت محافظه‌کارانه درمان می‌شوند. برای انواع علامت‌دار IV–VI اغلب درمان جراحی مطرح یا توصیه می‌شود. درمان نوع III همچنان مورد اختلاف است و بر اساس یافته‌ها و اهداف بیمار فردی‌سازی می‌شود."
+    }
+  },
+  "therapie": {
+    "title": {
+      "de": "Therapie",
+      "en": "Treatment",
+      "fa": "درمان"
+    },
+    "lead": {
+      "de": "Die Therapiewahl richtet sich nach dem Rockwood-Typ, dem Patientenalter und dem Aktivitätsniveau.",
+      "en": "Treatment is guided by Rockwood type, patient age, and activity level.",
+      "fa": "انتخاب درمان بر اساس نوع راک‌وود، سن بیمار و سطح فعالیت است."
+    },
+    "headers": [
+      {
+        "de": "Rockwood",
+        "en": "Rockwood",
+        "fa": "راک‌وود"
+      },
+      {
+        "de": "Therapie",
+        "en": "Treatment",
+        "fa": "درمان"
+      },
+      {
+        "de": "Methode / Bemerkung",
+        "en": "Method / Note",
+        "fa": "روش / توضیح"
+      }
+    ],
+    "rows": [
+      [
+        {
+          "de": "I und II",
+          "en": "I and II",
+          "fa": "I و II"
+        },
+        {
+          "de": "Konservativ",
+          "en": "Conservative",
+          "fa": "محافظه‌کارانه"
+        },
+        {
+          "de": "Kurzzeitige Ruhigstellung/Schlinge nach Bedarf, Analgesie und schrittweise Mobilisation/Physiotherapie; Dauer nach Symptomen und lokalem Protokoll.",
+          "en": "Brief sling use as needed, analgesia, and gradual mobilisation/physiotherapy; duration depends on symptoms and local protocol.",
+          "fa": "استفاده کوتاه‌مدت از آویز در صورت نیاز، ضد درد و شروع تدریجی حرکت/فیزیوتراپی؛ مدت بر اساس علائم و پروتکل محلی تعیین می‌شود."
+        }
+      ],
+      [
+        {
+          "de": "III (kontrovers)",
+          "en": "III (controversial)",
+          "fa": "III (بحث‌برانگیز)"
+        },
+        {
+          "de": "Individuell",
+          "en": "Individualised",
+          "fa": "فردی"
+        },
+        {
+          "de": "Häufig zunächst konservativ. Bei anhaltender funktioneller Einschränkung kann eine operative Option nach individueller orthopädischer Beurteilung und gemeinsamer Entscheidungsfindung erwogen werden; Beruf/Sport allein erzwingen keine OP.",
+          "en": "Often initially managed conservatively. If functional limitation persists, operative treatment may be considered after individual orthopaedic assessment and shared decision-making; occupation or sport alone does not mandate surgery.",
+          "fa": "اغلب ابتدا درمان محافظه‌کارانه انجام می‌شود. در صورت تداوم محدودیت عملکرد، پس از ارزیابی ارتوپدی فردی و تصمیم‌گیری مشترک می‌توان جراحی را بررسی کرد؛ شغل یا ورزش به‌تنهایی جراحی را الزامی نمی‌کند."
+        }
+      ],
+      [
+        {
+          "de": "IV, V, VI",
+          "en": "IV, V, VI",
+          "fa": "IV، V، VI"
+        },
+        {
+          "de": "Häufig operative Versorgung erwägen",
+          "en": "Operative treatment is commonly considered",
+          "fa": "اغلب درمان جراحی بررسی می‌شود"
+        },
+        {
+          "de": "Bei symptomatischen Typen IV–VI häufig operative Stabilisierung/Rekonstruktion; Entscheidung nach Orthopädie/Traumatologie, Verletzungsmuster, Begleitverletzungen und Patientenzielen. Verfahren variieren.",
+          "en": "Symptomatic Types IV–VI are commonly treated with operative stabilisation/reconstruction; the decision depends on orthopaedic/trauma assessment, injury pattern, associated injuries, and patient goals. Techniques vary.",
+          "fa": "در انواع علامت‌دار IV–VI اغلب تثبیت/بازسازی جراحی انجام می‌شود؛ تصمیم بر اساس ارزیابی ارتوپدی/تروما، الگوی آسیب، آسیب‌های همراه و اهداف بیمار است. روش‌ها متفاوت‌اند."
+        }
+      ]
+    ],
+    "key": {
+      "de": "Typ III ist umstritten: Weder die Klassifikation noch ein einzelner Aktivitätsfaktor ordnet automatisch eine Operation an; Befund, Funktion, Beschwerden und Patientenziele gemeinsam bewerten.",
+      "en": "Type III management is debated: neither the classification nor one activity factor automatically mandates surgery; consider findings, function, symptoms, and patient goals together.",
+      "fa": "درمان نوع III مورد اختلاف است: نه طبقه‌بندی و نه یک عامل فعالیت به‌تنهایی جراحی را الزامی نمی‌کند؛ یافته‌ها، عملکرد، علائم و اهداف بیمار را با هم ارزیابی کنید."
+    }
+  },
+  "takehome": {
+    "title": {
+      "de": "Take-home Punkte",
+      "en": "Take-home Points",
+      "fa": "نکات کلیدی"
+    },
+    "lead": {
+      "de": "Die wichtigsten Punkte auf einen Blick.",
+      "en": "The most important points at a glance.",
+      "fa": "مهم‌ترین نکات در یک نگاه."
+    },
+    "items": [
+      {
+        "title": {
+          "de": "Sturz auf adduzierte Schulter",
+          "en": "Fall onto adducted shoulder",
+          "fa": "افتادن روی شانه آدوکته"
+        },
+        "text": {
+          "de": "Direkter Mechanismus → Kraft auf Akromion bei relativ fixierter Klavikula → je nach Ausmaß Verletzung von AC-/CC-Stabilisatoren und gegebenenfalls deltotrapezialen Ansätzen.",
+          "en": "Direct mechanism → force on the acromion while the clavicle is relatively fixed → depending on severity, injury to AC/CC stabilisers and possibly deltotrapezial attachments.",
+          "fa": "مکانیسم مستقیم → نیرو روی آکرومیون در حالی که کلاویکول نسبتاً ثابت است → بسته به شدت، آسیب تثبیت‌کننده‌های AC/CC و گاهی محل اتصال دلتوتراپزیوس."
+        }
+      },
+      {
+        "title": {
+          "de": "CCD im Seitenvergleich messen",
+          "en": "Measure CCD on both sides",
+          "fa": "CCD را در مقایسه دو طرف اندازه‌گیری کنید"
+        },
+        "text": {
+          "de": "CCD im Seitenvergleich messen. 11–13 mm sind ein publizierter Orientierungsbereich mit individueller Varianz. Die Evidenz zu Belastungsaufnahmen ist widersprüchlich: Nordin et al. (online 2020/Ausgabe 2021, doi:10.1177/0284185120939270) fanden keinen signifikanten Gewinn; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) berichteten einen Nutzen. Die PDF-Angabe 10–15 kg pro Seite ist keine Routineempfehlung; andere Quellen nennen geringere Lasten.",
+          "en": "Measure CCD side to side. 11–13 mm is a published orienting range with individual variation. Evidence on weighted views conflicts: Nordin et al. (online 2020/issue 2021, doi:10.1177/0284185120939270) found no significant gain; Ibrahim et al. (2015, doi:10.1016/j.injury.2015.06.028) reported value. The PDF’s 10–15 kg per-side load is not a routine recommendation; other sources describe lower loads.",
+          "fa": "CCD را در دو طرف اندازه‌گیری و مقایسه کنید. ۱۱ تا ۱۳ میلی‌متر محدوده‌ای راهنما در منابع منتشرشده است و تفاوت فردی دارد. شواهد نماهای وزنه‌دار متناقض است: نوردین و همکاران (آنلاین ۲۰۲۰/شماره ۲۰۲۱، doi:10.1177/0284185120939270) بهبود معناداری نیافتند؛ ابراهیم و همکاران (۲۰۱۵، doi:10.1016/j.injury.2015.06.028) ارزش آن را گزارش کردند. بار ۱۰ تا ۱۵ کیلوگرم در هر طرف که در PDF آمده توصیه روتین نیست؛ منابع دیگر بار کمتری ذکر می‌کنند."
+        }
+      },
+      {
+        "title": {
+          "de": "Typ IV – hintere Dislokation",
+          "en": "Type IV – posterior displacement",
+          "fa": "نوع IV – جابجایی خلفی"
+        },
+        "text": {
+          "de": "Bei Verdacht auf posteriore Verlagerung ergänzt eine axiale/axilläre Projektion die AP-Aufnahme; keine einzelne Projektion schließt alle Verletzungen sicher aus.",
+          "en": "If posterior displacement is suspected, add an axial/axillary projection to the AP view; no single projection excludes every injury with certainty.",
+          "fa": "در صورت شک به جابجایی خلفی، نمای محوری/آگزیلاری را به نمای AP اضافه کنید؛ هیچ نمای منفردی همه آسیب‌ها را با قطعیت رد نمی‌کند."
+        }
+      },
+      {
+        "title": {
+          "de": "Tossy und Rockwood",
+          "en": "Tossy and Rockwood",
+          "fa": "توسی و راک‌وود"
+        },
+        "text": {
+          "de": "Tossy I–III entsprechen ungefähr Rockwood I–III; Rockwood ergänzt die Richtungs-/Schweregrade IV–VI. Die Systeme sind nicht in jedem Detail deckungsgleich.",
+          "en": "Tossy I–III roughly correspond to Rockwood I–III; Rockwood adds directional/severity grades IV–VI. The systems are not identical in every detail.",
+          "fa": "توسی I–III تقریباً با راک‌وود I–III مطابقت دارد؛ راک‌وود انواع IV–VI را بر اساس جهت/شدت اضافه می‌کند. این دو طبقه‌بندی در همه جزئیات کاملاً یکسان نیستند."
+        }
+      },
+      {
+        "title": {
+          "de": "Therapieprinzip",
+          "en": "Treatment principle",
+          "fa": "اصل درمان"
+        },
+        "text": {
+          "de": "I–II üblicherweise konservativ; symptomatische IV–VI häufig operativ beurteilt; III umstritten und individuell. Befund, Funktion, Begleitverletzungen und Patientenziele berücksichtigen.",
+          "en": "I–II usually conservative; symptomatic IV–VI commonly assessed for surgery; III debated and individualised. Consider findings, function, associated injuries, and patient goals.",
+          "fa": "I–II معمولاً محافظه‌کارانه؛ برای IV–VI علامت‌دار اغلب جراحی بررسی می‌شود؛ III مورد اختلاف و فردی‌سازی‌شده است. یافته‌ها، عملکرد، آسیب‌های همراه و اهداف بیمار را لحاظ کنید."
+        }
+      }
+    ]
+  }
+}

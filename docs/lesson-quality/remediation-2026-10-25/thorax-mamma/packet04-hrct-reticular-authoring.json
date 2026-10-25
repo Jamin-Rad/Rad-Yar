@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-25",
+  "status": "FULL_ORIGINAL_POOL_REVIEW_READY",
+  "route": "/thorax/hrct/retikulaer-nodulaer",
+  "draftFile": "data/assessmentQuality/hrctReticularDraft.js",
+  "implemented": "Twelve canonical MCQ replacements and12matching cards,3TakeHome cards narrowed/parity repaired; working graph wired, not on Main.",
+  "goals": [
+    "Localise nodular distribution to lymphatic, centrilobular or random compartments",
+    "Integrate septal morphology, chronicity and clinical context for differential diagnosis",
+    "Distinguish supportive exposure/HRCT patterns from definitive disease proof",
+    "Interpret longitudinal nodular/cystic LCH changes without inferring activity from cysts alone"
+  ],
+  "sourcesRead": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35146729/",
+      "read": "Original prospective232-patient acute dyspnoea abstract, AHF panel blinded to radiology; combination of findings supports congestion, no numerical likelihood ratio extrapolated."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3340765/",
+      "read": "Original21-patient CT/pathology abstract, uneven bronchovascular/septal interstitium; no universal early feature claimed."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16145946/",
+      "read": "Original18-case abstract for nodular lymphangitic thickening/relative architectural preservation; its broad sarcoid comparison not transferred as a universal distinction."
+    },
+    {
+      "url": "https://doi.org/10.1148/radiol.232558",
+      "read": "Original2024 glossary previously read; morphology, persistent traction and architecture only, no UIP diagnosis inferred."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7397797/",
+      "read": "Actual official ATS2020 HP guideline diagnostic domains, nonfibrotic pattern and IgG interpretation; no single mandatory diagnostic feature or IgG proof."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9240543/",
+      "read": "Original21-patient serial CT abstract; histology11; nodular regression/transformation and persistent cysts; no mandatory sequence/activity metric transferred"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6082770/",
+      "read": "Original archived TB pathological specimen correlation, plus contextual discussion; tree/bud descriptor and possible airway causes, not universal TB proof"
+    }
+  ],
+  "publication": "WORKING_CANONICAL_GRAPH_REVIEW_PENDING_EXCLUDED_MAIN",
+  "files": [
+    "data/assessmentQuality/hrctReticularCases.js",
+    "data/assessmentQuality/hrctReticularDraft.js",
+    "data/hrctClinicalRevisions.js",
+    "data/hrct-muster.js"
+  ],
+  "actualExport": "tmp/assessment-quality/hrct-reticular-actual.json"
+}

@@ -141,9 +141,9 @@ export const HRCT_LESSONS = {
       },
     ],
     takehome: [
-      L('Glatt = eher Ödem; nodulär = lymphatisch; irregulär = eher Fibrose.', 'Smooth suggests oedema; nodular suggests lymphatic disease; irregular suggests fibrosis.', 'صاف بیشتر ادم، ندولار بیماری لنفاتیک و نامنظم بیشتر فیبروز را مطرح می‌کند.'),
-      L('Pleura/Fissur beteiligt: perilymphatisch. Pleura ausgespart: zentrilobulär.', 'Pleura/fissure involved: perilymphatic. Pleura spared: centrilobular.', 'درگیری پلور/فیشور: پری‌لنفاتیک؛ حفظ پلور: سنترلوبولار.'),
-      L('Tree-in-bud ist ein Bronchiolenzeichen, kein unspezifischer Mikronodulus.', 'Tree-in-bud is a bronchiolar sign, not a nonspecific micronodule.', 'Tree-in-bud علامت برونشیول است، نه میکروندول غیراختصاصی.'),
+      L('Glatte Septen mit kardialen Begleitzeichen stützen Ödem; noduläre Septen können lymphangitisch sein; irreguläre Septen mit persistierenden Traktionszeichen stützen Fibrose. Keine Zuordnung ist allein beweisend.', 'Smooth septa with accompanying cardiac signs support oedema; nodular septa can reflect lymphangitic disease; irregular septa with persistent traction signs support fibrosis. None alone proves the cause.', 'سپتای صاف با نشانه‌های قلبی همراه از ادم حمایت می‌کند؛ سپتای ندولار ممکن است لنفانژیتیک باشد؛ سپتای نامنظم با نشانه‌های کششی پایدار از فیبروز حمایت می‌کند. هیچ‌کدام به‌تنهایی علت را اثبات نمی‌کنند.'),
+      L('Bevorzugt fissurale/pleurale und bronchovaskuläre Noduli: perilymphatisch. Lobulär zentral mit unmittelbarer Pleuraaussparung: zentrilobulär. Auch Random-Noduli können die Pleura erreichen.', 'Preferential fissural/pleural and bronchovascular nodules: perilymphatic. Lobular central nodules sparing the immediate pleura: centrilobular. Random nodules can also reach the pleura.', 'ندول‌های ترجیحاً فیشورال/پلورال و برونکوواسکولار: پری‌لنفاتیک. ندول‌های مرکزی لوبول با حفظ بافت ریهٔ بلافاصله مجاور پلور: سنترلوبولار. ندول‌های تصادفی هم می‌توانند به پلور برسند.'),
+      L('Tree-in-bud beschreibt zentrilobuläre Verzweigungen mit knospenartigen Enden, meist bei bronchiolärer Entzündung/Füllung. Es legt keinen einzelnen Erreger fest.', 'Tree-in-bud describes centrilobular branches with bud-like ends, usually with bronchiolar inflammation/filling. It does not identify a particular organism.', 'Tree-in-bud شاخه‌های سنترلوبولار با انتهای جوانه‌مانند را توصیف می‌کند که معمولاً با التهاب/پرشدگی برونشیولی همراه‌اند. عامل خاصی را تعیین نمی‌کند.'),
     ],
   },
   'hrct-architekturmuster': {

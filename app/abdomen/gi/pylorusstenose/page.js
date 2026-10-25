@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { PRACTICE_REVISIONS } from '@/data/assessmentQuality/colitisPylorusRevisions'
 import { getPracticeActions } from '../ulkuserkrankung/ExistingPracticeActions'
 import Image from 'next/image'
 import StandardLessonShell, { LessonSection, LessonSources, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
@@ -15,12 +16,12 @@ const C={
 }
 const t=(o,l)=>o?.[l]||o?.de||''
 function Icon({id}){return <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.7"><path d={id==='self-check'?'M5 12h14M12 5v14':'M5 6h14M5 12h14M5 18h14'}/></svg>}
-function Content({c,lang}){const [answer,setAnswer]=useState(null);const titles=[['exam',L('Untersuchung','Examination','بررسی')],['criteria',L('Messwerte','Measurements','اندازه‌گیری‌ها')],['dd',L('Pylorospasmus','Pylorospasm','پیلورواسپاسم')],['case',L('Messschema','Measurement schematic','شماتیک اندازه‌گیری')],['self-check',L('Selbstcheck','Self-check','خودآزمایی')],['takehome',L('Vier Regeln','Four rules','چهار قاعده')]];return <div className={styles.content} lang={lang} dir={lang==='fa'?'rtl':'ltr'}>
+function Content({c,lang}){const [answer,setAnswer]=useState(null);const check=PRACTICE_REVISIONS['pylorusstenose:dynamic'];const titles=[['exam',L('Untersuchung','Examination','بررسی')],['criteria',L('Messwerte','Measurements','اندازه‌گیری‌ها')],['dd',L('Pylorospasmus','Pylorospasm','پیلورواسپاسم')],['case',L('Messschema','Measurement schematic','شماتیک اندازه‌گیری')],['self-check',L('Selbstcheck','Self-check','خودآزمایی')],['takehome',L('Vier Regeln','Four rules','چهار قاعده')]];return <div className={styles.content} lang={lang} dir={lang==='fa'?'rtl':'ltr'}>
 <LessonSection id="exam" title={t(titles[0][1],lang)} icon="exam" bodyClassName={styles.body}><p className={styles.lead}>{c.lead}</p><h3>{c.examTitle}</h3><ol className={styles.steps}>{c.exam.map(x=><li key={x}>{x}</li>)}</ol></LessonSection>
 <LessonSection id="criteria" title={t(titles[1][1],lang)} icon="criteria" bodyClassName={styles.body}><h3>{c.criteriaTitle}</h3><div className={styles.cards}>{c.criteria.map(([a,b])=><article key={a}><h4>{a}</h4><p>{b}</p></article>)}</div><aside className={styles.cave}><strong>CAVE</strong><p>{c.cave}</p></aside></LessonSection>
 <LessonSection id="dd" title={t(titles[2][1],lang)} icon="dd" bodyClassName={styles.body}><h3>{c.ddTitle}</h3><p>{c.dd}</p></LessonSection>
 <LessonSection id="case" title={t(titles[3][1],lang)} icon="case" bodyClassName={styles.body}><figure className={styles.figure}><Image src="/educational/pylorus/hero.svg" width={900} height={440} alt={c.diagramAlt}/><figcaption>{c.diagramCaption}</figcaption></figure></LessonSection>
-<LessonSection id="self-check" title={t(titles[4][1],lang)} icon="self-check" bodyClassName={styles.body}><div className={styles.quiz}><h3>{c.q}</h3>{c.options.map((x,i)=><button key={x} type="button" className={answer===i?styles.selected:''} aria-pressed={answer===i} onClick={()=>setAnswer(i)}>{x}</button>)}{answer!==null?<p role="status" aria-live="polite" className={answer===0?styles.correct:styles.feedback}>{answer===0?c.good:c.retry}</p>:null}</div></LessonSection>
+<LessonSection id="self-check" title={t(titles[4][1],lang)} icon="self-check" bodyClassName={styles.body}><div className={styles.quiz}><h3>{t(check.prompt,lang)}</h3>{check.options.map((choice,i)=>{const x=t(choice,lang);return <button key={x} type="button" className={answer===i?styles.selected:''} aria-pressed={answer===i} onClick={()=>setAnswer(i)}>{x}</button>})}{answer!==null?<p role="status" aria-live="polite" className={answer===check.answer?styles.correct:styles.feedback}>{t(answer===check.answer?check.explanation:check.wrongFeedback[answer],lang)}</p>:null}</div></LessonSection>
 <LessonSection id="takehome" title={t(titles[5][1],lang)} icon="takehome" bodyClassName={styles.body} emphasis><TakeHomeList items={c.summary.map(([title,detail])=>({title,detail}))}/></LessonSection></div>}
 export default function PylorusPage() {
   const { lang } = useLanguage()

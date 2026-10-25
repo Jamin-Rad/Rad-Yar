@@ -1,0 +1,168 @@
+{
+  "questions": {
+    "de": [
+      {
+        "id": "de-quervain-de-01",
+        "fach": "msk",
+        "tags": [
+          "de-quervain"
+        ],
+        "question": "Welche MRT-Kombination entspricht dem im PDF gezeigten Befund im ersten Strecksehnenfach?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Verdickte APL-/EPB-Sehnen mit erhöhtem Flüssigkeitssignal und Flüssigkeit in der Sehnenscheide"
+          },
+          {
+            "id": "B",
+            "text": "Isolierte ECU-Sehnenruptur im sechsten Fach"
+          },
+          {
+            "id": "C",
+            "text": "Unauffällige Sehnen ohne begleitende Flüssigkeit"
+          },
+          {
+            "id": "D",
+            "text": "Eine Läsion des Lunatum ohne Sehnenbefund"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MSK.pdf p.43 zeigt Pfeile auf APL/EPB und beschreibt Sehnenverdickung, erhöhtes Flüssigkeitssignal sowie Flüssigkeit in der Sehnenscheide und Ödem im radialen Unterhautgewebe."
+      }
+    ],
+    "en": [
+      {
+        "id": "de-quervain-en-01",
+        "fach": "msk",
+        "tags": [
+          "de-quervain"
+        ],
+        "question": "Which MRI combination matches the finding shown in the PDF in the first extensor compartment?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Thickened APL/EPB tendons with increased fluid-sensitive signal and tendon-sheath fluid"
+          },
+          {
+            "id": "B",
+            "text": "Isolated ECU rupture in compartment six"
+          },
+          {
+            "id": "C",
+            "text": "Normal tendons without surrounding fluid"
+          },
+          {
+            "id": "D",
+            "text": "A lunate lesion without a tendon finding"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MSK.pdf p.43 arrows mark APL/EPB and the text describes tendon thickening, increased fluid-sensitive signal, tendon-sheath fluid and radial subcutaneous oedema."
+      }
+    ],
+    "fa": [
+      {
+        "id": "de-quervain-fa-01",
+        "fach": "msk",
+        "tags": [
+          "de-quervain"
+        ],
+        "question": "کدام ترکیب MRI با یافتهٔ نشان‌داده‌شده در PDF در کمپارتمان اول اکستانسور تطابق دارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ضخیم‌شدن تاندون‌های APL/EPB همراه با افزایش سیگنال حساس به مایع و مایع در غلاف تاندون"
+          },
+          {
+            "id": "B",
+            "text": "پارگی منفرد ECU در کمپارتمان ششم"
+          },
+          {
+            "id": "C",
+            "text": "تاندون‌های طبیعی بدون مایع اطراف"
+          },
+          {
+            "id": "D",
+            "text": "ضایعهٔ لونیت بدون یافتهٔ تاندونی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "در صفحهٔ ۴۳ MSK.pdf پیکان‌ها APL/EPB را نشان می‌دهند و متن ضخیم‌شدن تاندون، افزایش سیگنال حساس به مایع، مایع غلاف و ادم زیرجلدی رادیال را شرح می‌دهد."
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "de-quervain-anatomy",
+      "topicId": "de-quervain",
+      "category": {
+        "de": "Anatomie",
+        "en": "Anatomy",
+        "fa": "آناتومی"
+      },
+      "front": {
+        "de": "Welche Sehnen sind bei de Quervain betroffen?",
+        "en": "Which tendons are involved in de Quervain disease?",
+        "fa": "در دو کروَن کدام تاندون‌ها درگیرند؟"
+      },
+      "answer": {
+        "de": "APL und EPB im ersten Strecksehnenfach.",
+        "en": "APL and EPB in the first extensor compartment.",
+        "fa": "APL و EPB در کمپارتمان اول اکستانسور."
+      },
+      "explanation": {
+        "de": "Das Fach liegt über dem radialen Processus styloideus.",
+        "en": "The compartment lies over the radial styloid.",
+        "fa": "این کمپارتمان روی استایلوئید رادیوس قرار دارد."
+      }
+    },
+    {
+      "id": "de-quervain-mri",
+      "topicId": "de-quervain",
+      "category": {
+        "de": "MRT",
+        "en": "MRI",
+        "fa": "MRI"
+      },
+      "front": {
+        "de": "Welche Strukturen sollten im MRT-Befund getrennt beschrieben werden?",
+        "en": "Which structures should be described separately in the MRI findings?",
+        "fa": "در گزارش MRI کدام ساختارها باید جداگانه توصیف شوند؟"
+      },
+      "answer": {
+        "de": "Sehne, Sehnenscheide und umgebendes radiales subkutanes Gewebe.",
+        "en": "Tendon, tendon sheath and surrounding radial subcutaneous tissue.",
+        "fa": "تاندون، غلاف تاندون و بافت زیرجلدی رادیال اطراف."
+      },
+      "explanation": {
+        "de": "MSK.pdf p.43 beschreibt Befunde in allen drei Komponenten; die Bildkombination allein stellt keine Diagnose.",
+        "en": "MSK.pdf p.43 describes findings in all three components; the image pair alone does not establish a diagnosis.",
+        "fa": "صفحهٔ ۴۳ MSK.pdf یافته‌هایی را در هر سه جزء شرح می‌دهد؛ جفت تصویر به‌تنهایی تشخیص را ثابت نمی‌کند."
+      }
+    },
+    {
+      "id": "de-quervain-provocation",
+      "topicId": "de-quervain",
+      "category": {
+        "de": "Klinik",
+        "en": "Clinical",
+        "fa": "بالینی"
+      },
+      "front": {
+        "de": "Was ist bei einem schmerzhaften Provokationstest am radialen Handgelenk wichtig?",
+        "en": "What matters when a provocative manoeuvre causes radial wrist pain?",
+        "fa": "در مانور تحریکی دردناک در سمت رادیال مچ چه نکته‌ای مهم است؟"
+      },
+      "answer": {
+        "de": "Schmerzprovokation ist kein alleiniger Beweis; Testausführung und Terminologie müssen genau benannt werden.",
+        "en": "Pain provocation alone is not diagnostic; name the manoeuvre and its execution precisely.",
+        "fa": "بازتولید درد به‌تنهایی تشخیصی نیست؛ نام و شیوهٔ اجرای مانور را دقیق ذکر کنید."
+      },
+      "explanation": {
+        "de": "Die PDF-Bezeichnung des Daumen-in-der-Faust-Manövers wird in der Literatur teils als Eichhoff-Manöver abgegrenzt.",
+        "en": "The PDF’s label for the thumb-in-fist manoeuvre is distinguished in some literature as the Eichhoff manoeuvre.",
+        "fa": "در برخی منابع، مانور قراردادن شست در مشت که PDF نام‌گذاری کرده به‌عنوان مانور آیکهوف تفکیک می‌شود."
+      }
+    }
+  ]
+}

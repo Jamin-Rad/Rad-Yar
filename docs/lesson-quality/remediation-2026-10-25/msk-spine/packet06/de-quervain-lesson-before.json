@@ -1,0 +1,277 @@
+{
+  "id": "de-quervain",
+  "title": {
+    "de": "Tendovaginitis de Quervain",
+    "en": "De Quervain's tenosynovitis",
+    "fa": "تنوسینوویت دو کروَن"
+  },
+  "heroImage": "/educational/de-quervain/first-extensor-compartment.svg",
+  "alt": {
+    "de": "Schematische Darstellung des ersten Strecksehnenfachs mit APL- und EPB-Sehne über dem Processus styloideus radii.",
+    "en": "Schematic of the first extensor compartment with the APL and EPB tendons over the radial styloid.",
+    "fa": "نمای شماتیک کمپارتمان اول اکستانسور؛ تاندون‌های APL و EPB از روی زائده استایلوئید رادیوس عبور می‌کنند."
+  },
+  "intro": {
+    "title": {
+      "de": "Welches Fach ist betroffen?",
+      "en": "Which compartment is affected?",
+      "fa": "کدام کمپارتمان درگیر است؟"
+    },
+    "text": {
+      "de": "De Quervain ist eine stenosierende Tenosynovitis des ersten Strecksehnenfachs am radialen Processus styloideus. In diesem Fach verlaufen die Sehnen von M. abductor pollicis longus (APL) und M. extensor pollicis brevis (EPB).",
+      "en": "De Quervain's is a stenosing tenosynovitis of the first extensor compartment at the radial styloid. This compartment contains the abductor pollicis longus (APL) and extensor pollicis brevis (EPB) tendons.",
+      "fa": "دو کروَن تنوسینوویت تنگ‌کنندهٔ کمپارتمان اول اکستانسور در سطح زائدهٔ استایلوئید رادیوس است. تاندون‌های عضلات abductor pollicis longus (APL) و extensor pollicis brevis (EPB) از این کمپارتمان می‌گذرند."
+    }
+  },
+  "chapters": [
+    {
+      "id": "clinical-pattern",
+      "icon": "⌖",
+      "title": {
+        "de": "Klinisches Muster und Provokationstest",
+        "en": "Clinical pattern and provocative manoeuvre",
+        "fa": "الگوی بالینی و مانور تحریکی"
+      },
+      "lead": {
+        "de": "Typisch ist radialseitiger Schmerz an der Tabatière/Fossa radialis, der bei Daumenbewegung auftritt oder zunimmt. Die PDF nennt eine Provokation mit in die Faust eingeschlagenem Daumen und anschließender ulnarer Abweichung der Hand.",
+        "en": "A typical pattern is radial-sided pain at the anatomical snuffbox/radial fossa that occurs or worsens with thumb movement. The PDF describes a manoeuvre with the thumb folded into the fist followed by ulnar deviation of the hand.",
+        "fa": "الگوی معمول، درد در سمت رادیال مچ و ناحیهٔ گودی اسناف‌باکس است که با حرکت شست ایجاد یا تشدید می‌شود. در PDF مانوری با قرار دادن شست داخل مشت و سپس انحراف دست به سمت اولنار توصیف شده است."
+      },
+      "note": {
+        "de": "Terminologie beachten: Die im PDF als Finkelstein-Test bezeichnete Variante mit eingeschlagenem Daumen wird in der Literatur häufig als Eichhoff-Manöver abgegrenzt. Schmerzprovokation allein ist kein beweisender Befund; Testnamen und Ausführung sind nicht einheitlich verwendet.",
+        "en": "Terminology matters: the thumb-in-fist variant labelled the Finkelstein test in the PDF is often distinguished in the literature as the Eichhoff manoeuvre. Pain provocation alone is not diagnostic; test names and descriptions are used inconsistently.",
+        "fa": "به نام‌گذاری توجه کنید: مانورِ قرار دادن شست داخل مشت که در PDF «تست فینکلشتاین» نامیده شده، در بسیاری از منابع به‌عنوان مانور آیکهوف از تست فینکلشتاین تفکیک می‌شود. بازتولید درد به‌تنهایی تشخیصی نیست و نام و اجرای این آزمون‌ها در منابع یکسان نیست."
+      },
+      "source": {
+        "de": "MSK.pdf, PDF-S. 42 / Druck-S. 41; Wu et al. 2018.",
+        "en": "MSK.pdf, PDF p. 42 / printed p. 41; Wu et al. 2018.",
+        "fa": "MSK.pdf، صفحهٔ PDF ۴۲ / صفحهٔ چاپی ۴۱؛ Wu و همکاران، ۲۰۱۸."
+      }
+    },
+    {
+      "id": "mri-workflow",
+      "icon": "▧",
+      "title": {
+        "de": "Welche MRT-Sequenzen helfen?",
+        "en": "Which MRI sequences help?",
+        "fa": "کدام سکانس‌های MRI کمک‌کننده‌اند؟"
+      },
+      "lead": {
+        "de": "Die Sequenzwahl richtet sich nach der Frage: Flüssigkeit und Ödem im ersten Fach werden mit fettgesättigten, flüssigkeitssensitiven Sequenzen gesucht; T1-w ergänzt die anatomische Beurteilung.",
+        "en": "Choose sequences to answer the question: use fat-suppressed, fluid-sensitive sequences to assess fluid and oedema in the first compartment; T1-weighted imaging complements the anatomic assessment.",
+        "fa": "سکانس را بر اساس پرسش انتخاب کنید: برای بررسی مایع و ادم در کمپارتمان اول از سکانس‌های حساس به مایع با سرکوب چربی استفاده کنید؛ تصاویر T1 وزن‌شده ارزیابی آناتومیک را تکمیل می‌کنند."
+      },
+      "rows": [
+        [
+          {
+            "de": "PD-FS oder T2-FS",
+            "en": "PD-FS or T2-FS",
+            "fa": "PD-FS یا T2-FS"
+          },
+          {
+            "de": "Fettgesättigt; laut PDF für Ödem und Flüssigkeit.",
+            "en": "Fat-suppressed; the PDF identifies these for oedema and fluid.",
+            "fa": "با سرکوب چربی؛ در PDF برای بررسی ادم و مایع ذکر شده‌اند."
+          }
+        ],
+        [
+          {
+            "de": "T1-w",
+            "en": "T1-weighted",
+            "fa": "T1 وزن‌شده"
+          },
+          {
+            "de": "Anatomische Darstellung und Sehnenstruktur.",
+            "en": "Anatomic depiction and tendon structure.",
+            "fa": "نمای آناتومیک و ساختار تاندون."
+          }
+        ],
+        [
+          {
+            "de": "T1 nach Kontrastmittel (optional)",
+            "en": "Post-contrast T1 (optional)",
+            "fa": "T1 پس از تزریق مادهٔ حاجب (اختیاری)"
+          },
+          {
+            "de": "Kann aktive Synovialitis durch Anreicherung der Sehnenscheide zeigen.",
+            "en": "May show active synovitis through tendon-sheath enhancement.",
+            "fa": "ممکن است سینوویت فعال را با افزایش جذب مادهٔ حاجب در غلاف تاندون نشان دهد."
+          }
+        ]
+      ],
+      "note": {
+        "de": "Die vorliegende PDF-Seite beschreibt MRT-Kriterien. Sie liefert keine ausreichend ausgearbeitete Sonographie-Kriterienliste; solche Kriterien werden hier deshalb nicht ergänzt.",
+        "en": "The supplied PDF page describes MRI criteria. It does not provide a sufficiently developed ultrasound criteria list, so none are added here.",
+        "fa": "صفحهٔ PDF موجود معیارهای MRI را شرح می‌دهد و فهرست کامل و کافی از معیارهای سونوگرافی ارائه نمی‌کند؛ بنابراین در این درس معیارهای سونوگرافی اضافه نشده‌اند."
+      },
+      "source": {
+        "de": "MSK.pdf, PDF-S. 42 / Druck-S. 41.",
+        "en": "MSK.pdf, PDF p. 42 / printed p. 41.",
+        "fa": "MSK.pdf، صفحهٔ PDF ۴۲ / صفحهٔ چاپی ۴۱."
+      }
+    },
+    {
+      "id": "mri-findings",
+      "icon": "◉",
+      "title": {
+        "de": "Wo liegen die entscheidenden MRT-Zeichen?",
+        "en": "Where are the key MRI findings?",
+        "fa": "یافته‌های کلیدی MRI کجا هستند؟"
+      },
+      "lead": {
+        "de": "Folgen Sie dem ersten Fach am radialen Processus styloideus und beurteilen Sie Sehnen, Sehnenscheide und direktes Umfeld getrennt.",
+        "en": "Trace the first compartment at the radial styloid and assess the tendons, tendon sheath and immediate surrounding tissues separately.",
+        "fa": "کمپارتمان اول را در سطح زائدهٔ استایلوئید رادیوس دنبال کنید و تاندون‌ها، غلاف تاندون و بافت‌های اطراف را جداگانه ارزیابی کنید."
+      },
+      "rows": [
+        [
+          {
+            "de": "APL und EPB",
+            "en": "APL and EPB",
+            "fa": "APL و EPB"
+          },
+          {
+            "de": "Verdickung und erhöhtes T2-Signal.",
+            "en": "Thickening and increased T2 signal.",
+            "fa": "ضخیم‌شدن و افزایش سیگنال T2."
+          }
+        ],
+        [
+          {
+            "de": "Sehnenscheide",
+            "en": "Tendon sheath",
+            "fa": "غلاف تاندون"
+          },
+          {
+            "de": "Flüssigkeit als Halo-Zeichen und/oder Wandverdickung.",
+            "en": "Fluid as a halo sign and/or sheath-wall thickening.",
+            "fa": "مایع به شکل علامت هاله و/یا ضخیم‌شدن دیوارهٔ غلاف."
+          }
+        ],
+        [
+          {
+            "de": "Umgebung",
+            "en": "Surrounding tissues",
+            "fa": "بافت‌های اطراف"
+          },
+          {
+            "de": "Peritendinöses Weichteilödem radial über dem Processus styloideus radii.",
+            "en": "Radial peritendinous soft-tissue oedema over the radial styloid.",
+            "fa": "ادم بافت نرم اطراف تاندون در سمت رادیال و روی زائدهٔ استایلوئید رادیوس."
+          }
+        ]
+      ],
+      "caseImage": "/msk/hand/de-quervain-pdf-p43-pd-fs-pair.png",
+      "caseAlt": {
+        "de": "Zwei axiale PD-FS-MRT-Bilder des Handgelenks mit Pfeilen zu APL/EPB im ersten Strecksehnenfach.",
+        "en": "Paired axial wrist PD-FS MRI images with arrows to APL/EPB in the first extensor compartment.",
+        "fa": "دو تصویر MRI محوری PD-FS مچ با پیکان به APL/EPB در کمپارتمان اول اکستانسور."
+      },
+      "caseCaption": {
+        "de": "MSK.pdf, PDF-S. 43 / Druck-S. 42. Die Pfeile markieren APL/EPB. Der Quelltext beschreibt verdickte Sehnen mit pathologisch erhöhtem intratendinösem Flüssigkeitssignal, mehr Flüssigkeit in der Sehnenscheide und Ödem-/Flüssigkeitssignale im radialen subkutanen Gewebe. Die Bildkombination allein stellt keine Diagnose.",
+        "en": "MSK.pdf, PDF p. 43 / printed p. 42. Arrows mark APL/EPB. The source text describes thickened tendons with pathologically increased intratendinous fluid-sensitive signal, increased tendon-sheath fluid, and oedema/fluid signal in radial subcutaneous tissue. The image pair alone does not establish a diagnosis.",
+        "fa": "MSK.pdf، صفحهٔ PDF ۴۳ / چاپی ۴۲. پیکان‌ها APL/EPB را نشان می‌دهند. متن منبع ضخیم‌شدن تاندون‌ها با افزایش پاتولوژیک سیگنال حساس به مایع درون‌تاندونی، افزایش مایع غلاف تاندون و سیگنال ادم/مایع در بافت زیرجلدی رادیال را شرح می‌دهد. این دو تصویر به‌تنهایی تشخیص را ثابت نمی‌کنند."
+      },
+      "note": {
+        "de": "Den Befund in der anatomischen Zielregion verankern und die Komponenten einzeln benennen. Ein unspezifisches Signal allein ersetzt die Zuordnung zu Sehne, Sehnenscheide und Umgebung nicht.",
+        "en": "Anchor the finding to the correct anatomic region and name each component separately. Nonspecific signal alone does not replace assessment of tendon, sheath and surrounding tissues.",
+        "fa": "یافته را به محل آناتومیک درست نسبت دهید و هر جزء را جداگانه نام ببرید. سیگنال غیراختصاصی به‌تنهایی جای ارزیابی جداگانهٔ تاندون، غلاف و بافت اطراف را نمی‌گیرد."
+      },
+      "source": {
+        "de": "MSK.pdf, PDF-S. 42–43 / Druck-S. 41–42; Glajchen & Schweitzer 1996.",
+        "en": "MSK.pdf, PDF pp. 42–43 / printed pp. 41–42; Glajchen & Schweitzer 1996.",
+        "fa": "MSK.pdf، صفحات PDF ۴۲–۴۳ / چاپی ۴۱–۴۲؛ Glajchen و Schweitzer، ۱۹۹۶."
+      }
+    }
+  ],
+  "case": {
+    "title": {
+      "de": "Selbstprüfung: Was ist im MRT beschrieben?",
+      "en": "Self-check: what is described on MRI?",
+      "fa": "خودآزمایی: در MRI چه چیزی توصیف شده است؟"
+    },
+    "prompt": {
+      "de": "Bei radialem Handgelenkschmerz zeigt sich eine Verdickung von APL und EPB mit Flüssigkeit um die Sehnen im ersten Fach. Welche Befundkombination passt am besten zur PDF?",
+      "en": "With radial wrist pain, MRI shows thickening of APL and EPB with fluid around the tendons in the first compartment. Which combination best matches the PDF?",
+      "fa": "در بیماری با درد رادیال مچ، MRI ضخیم‌شدن APL و EPB و مایع پیرامون تاندون‌ها در کمپارتمان اول را نشان می‌دهد. کدام ترکیب یافته با PDF بیشترین تطابق را دارد؟"
+    },
+    "options": [
+      {
+        "de": "Sehnenverdickung plus Flüssigkeit in der Sehnenscheide im ersten Strecksehnenfach.",
+        "en": "Tendon thickening plus tendon-sheath fluid in the first extensor compartment.",
+        "fa": "ضخیم‌شدن تاندون به‌همراه مایع در غلاف تاندونِ کمپارتمان اول اکستانسور."
+      },
+      {
+        "de": "Isoliertes Knochenmarködem ohne Bezug zur radialen Sehnenscheide.",
+        "en": "Isolated bone-marrow oedema unrelated to the radial tendon sheath.",
+        "fa": "ادم منفرد مغز استخوان بدون ارتباط با غلاف تاندون رادیال."
+      },
+      {
+        "de": "Eine Ruptur der ECU-Sehne am Ulnastyloid.",
+        "en": "A tear of the ECU tendon at the ulnar styloid.",
+        "fa": "پارگی تاندون ECU در سطح استایلوئید اولنا."
+      }
+    ],
+    "answerIndex": 0,
+    "feedbackCorrect": {
+      "de": "Richtig: Die PDF beschreibt Verdickung/erhöhtes T2-Signal der APL- und EPB-Sehnen sowie Flüssigkeit und mögliche Wandverdickung der Sehnenscheide im ersten Fach.",
+      "en": "Correct: the PDF describes thickened/high-T2-signal APL and EPB tendons, with fluid and possible wall thickening in the first-compartment sheath.",
+      "fa": "درست است: PDF افزایش ضخامت/سیگنال T2 تاندون‌های APL و EPB و نیز مایع و احتمال ضخیم‌شدن دیوارهٔ غلاف در کمپارتمان اول را شرح می‌دهد."
+    },
+    "feedbackIncorrect": {
+      "de": "Prüfen Sie die Ortsangabe und die Strukturen erneut: Gesucht sind die beiden radialen Sehnen des ersten Fachs und ihre Sehnenscheide.",
+      "en": "Recheck the location and structures: the target is the two radial tendons of the first compartment and their sheath.",
+      "fa": "محل و ساختارها را دوباره بررسی کنید: منظور دو تاندون رادیال کمپارتمان اول و غلاف آن‌هاست."
+    },
+    "source": {
+      "de": "MSK.pdf, PDF-S. 42 / Druck-S. 41.",
+      "en": "MSK.pdf, PDF p. 42 / printed p. 41.",
+      "fa": "MSK.pdf، صفحهٔ PDF ۴۲ / صفحهٔ چاپی ۴۱."
+    }
+  },
+  "takeHome": [
+    {
+      "de": "Erstes Strecksehnenfach über dem radialen Processus styloideus: APL und EPB.",
+      "en": "First extensor compartment over the radial styloid: APL and EPB.",
+      "fa": "کمپارتمان اول اکستانسور روی استایلوئید رادیوس: APL و EPB."
+    },
+    {
+      "de": "PD-FS/T2-FS für Flüssigkeit und Ödem; T1-w für Anatomie und Sehnenstruktur.",
+      "en": "PD-FS/T2-FS for fluid and oedema; T1-weighted imaging for anatomy and tendon structure.",
+      "fa": "PD-FS/T2-FS برای مایع و ادم؛ T1 وزن‌شده برای آناتومی و ساختار تاندون."
+    },
+    {
+      "de": "Sehne, Sehnenscheide und Umgebung systematisch getrennt beurteilen.",
+      "en": "Assess tendon, tendon sheath and surrounding tissues separately.",
+      "fa": "تاندون، غلاف تاندون و بافت اطراف را جداگانه ارزیابی کنید."
+    },
+    {
+      "de": "Eine Schmerzprovokation ist kein alleiniger Beweis; den im PDF genannten Testnamen kritisch einordnen.",
+      "en": "Pain provocation alone is not proof; interpret the test name used in the PDF critically.",
+      "fa": "بازتولید درد به‌تنهایی اثبات‌کننده نیست؛ نام آزمون در PDF را با نگاه انتقادی در نظر بگیرید."
+    }
+  ],
+  "notice": {
+    "de": "Abdeckung: klinische und MRT-Angaben aus MSK.pdf, PDF-Seiten 40–43 (Druckseiten 39–42). Das Fallbildpaar auf Seite 43 zeigt APL/EPB im ersten Strecksehnenfach; der Quelltext beschreibt Sehnenverdickung und erhöhtes intratendinöses Flüssigkeitssignal, Flüssigkeit in der Sehnenscheide sowie radiales subkutanes Ödem-/Flüssigkeitssignal. Die PDF enthält keine ausgearbeitete Sonographie-Anleitung. Wissenschaftliche und klinische Endfreigabe steht aus.",
+    "en": "Scope: clinical and MRI material from MSK.pdf, PDF pages 40–43 (printed pages 39–42). The paired case images on page 43 show APL/EPB in the first extensor compartment; the source text describes tendon thickening and increased intratendinous fluid-sensitive signal, tendon-sheath fluid, and radial subcutaneous oedema/fluid signal. The PDF does not provide a developed ultrasound protocol. Final scientific and clinical approval is pending.",
+    "fa": "دامنه: مطالب بالینی و MRI از MSK.pdf، صفحات PDF ۴۰ تا ۴۳ (صفحات چاپی ۳۹ تا ۴۲). جفت تصویر صفحهٔ ۴۳، APL/EPB را در کمپارتمان اول اکستانسور نشان می‌دهد؛ متن منبع ضخیم‌شدن تاندون و افزایش سیگنال حساس به مایع درون‌تاندونی، مایع غلاف تاندون و سیگنال ادم/مایع زیرجلدی در سمت رادیال را شرح می‌دهد. PDF راهنمای کامل سونوگرافی ارائه نمی‌کند. تأیید نهایی علمی و بالینی هنوز انجام نشده است."
+  },
+  "references": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8717121/",
+      "label": {
+        "de": "Glajchen N, Schweitzer M. MRI features in de Quervain’s tenosynovitis of the wrist. Skeletal Radiol. 1996;25:63–65. PMID: 8717121.",
+        "en": "Glajchen N, Schweitzer M. MRI features in de Quervain’s tenosynovitis of the wrist. Skeletal Radiol. 1996;25:63–65. PMID: 8717121.",
+        "fa": "Glajchen و Schweitzer. ویژگی‌های MRI تنوسینوویت دو کروَن مچ. Skeletal Radiol. 1996;25:63–65. PMID: 8717121."
+      }
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103758/",
+      "label": {
+        "de": "Wu F, Rajpura A, Sandher D. Finkelstein’s Test Is Superior to Eichhoff’s Test in the Investigation of de Quervain’s Disease. J Hand Microsurg. 2018;10:116–118. PMID: 30154628.",
+        "en": "Wu F, Rajpura A, Sandher D. Finkelstein’s Test Is Superior to Eichhoff’s Test in the Investigation of de Quervain’s Disease. J Hand Microsurg. 2018;10:116–118. PMID: 30154628.",
+        "fa": "Wu، Rajpura و Sandher. مقایسهٔ تست فینکلشتاین و آیکهوف در دو کروَن. J Hand Microsurg. 2018;10:116–118. PMID: 30154628."
+      }
+    }
+  ]
+}

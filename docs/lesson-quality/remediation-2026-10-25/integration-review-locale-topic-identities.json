@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "brain_remediation",
+  "author": "root",
+  "status": "ACCEPT_BOUNDED_TECHNICAL_LOCALE_ID_REPAIR",
+  "scope": "Read actual publisher selection, canonical identity helper, multilingual fingerprint lookup, questions.js import/getQuestionsForIds delta and both regression tests. Read-only review; no production files modified.",
+  "problem": "First -de replacement mistook de in the de-quervain topic name for the language slot, potentially selecting a wrong-language/fallback object and omitting translated fingerprints.",
+  "readResult": [
+    "Publisher now selects actual per-language objects keyed by canonical identity and retains explicit reviewed-ID allowlist order and duplicate/missing checks. No author-bank overlay or expanded review acceptance introduced.",
+    "Localized getQuestionsForIds builds a canonical-key map from the requested actual locale bank; current DE IDs resolve to exact actual locale objects instead of constructing localized strings. Existing German fallback for truly missing/unsupported locale remains.",
+    "assessmentVersionRecords fingerprints actual DE/EN/FA counterpart content with the same canonical identity; selected version hashing and legacy baseline decisions are otherwise unchanged.",
+    "Existing canonical helper preserves de inside de-quervain when normalizing actual en/fa question IDs. Current-bank uniqueness and every real counterpart explicitly tested; no assertion of universal parsing for future arbitrary ID grammars."
+  ],
+  "tests": [
+    {
+      "name": "test-assessment-locale-topic-identities",
+      "status": "PASS",
+      "evidence": "Fresh isolated bundle: all960 actual counterparts per target language resolve by object identity and in order, without German fallback; explicit de-quervain English/Farsi-only option mutations each invalidate selected storage revision and restore input afterward."
+    },
+    {
+      "name": "test-assessment-content-version",
+      "status": "PASS",
+      "evidence": "Fresh isolated bundle: affected keys/translated options invalidate, unrelated selections preserved, legacy selection seed calculation and all-language current-ID roundtrips pass."
+    },
+    {
+      "name": "test-reviewed-assessment-packets",
+      "status": "PASS",
+      "evidence": "Fresh isolated bundle: allowlist order, complete published payloads in actual global banks, goal IDs/cards and active intervention inline correspondence pass."
+    },
+    {
+      "name": "independent publisher dry preview",
+      "status": "PASS",
+      "evidence": "Read publisher into temporary-only harness with output redirected to tmp. Executed original selection logic,76questions/lang82cards56routes; generated full preview deepEqual actual publishedBank.json. Production JSON unchanged."
+    }
+  ],
+  "findings": [],
+  "limitations": [
+    "No build/browser performed by reviewer.",
+    "No clinical correctness or publication approval follows from this technical integration acceptance.",
+    "Review concerns the actual960-ID bank and explicit current ID conventions."
+  ],
+  "hashes": {
+    "scripts/publish-reviewed-assessment-packets.mjs": "123b59f71d45293870eddda7af71c75c628951cc7228f8a50e7bb6ce098a19a7",
+    "scripts/test-reviewed-assessment-packets.mjs": "4a948b27302e89f50f16e17dbe3fbb55e0d8ab7cd77c1a46d542bab13ab6dd7d",
+    "lib/assessmentContentVersion.js": "3ade713a9ac6923613c59bf540a02cc3a0bc02355e862b16f94874df48a80e06",
+    "lib/assessmentIdentity.js": "203455442a49b8e3fc53911264f69ae3ba6d97984fc020cf378634b6501bd335",
+    "data/questions.js": "60cdc7ad633f76c8354104086189f2d4d422b47d60ab0e447ddb4831562034b3",
+    "scripts/test-assessment-locale-topic-identities.mjs": "8c1ac1230a3498566330a1b9889e584462215ed4e7d7820792aaea8e485a91fa"
+  }
+}

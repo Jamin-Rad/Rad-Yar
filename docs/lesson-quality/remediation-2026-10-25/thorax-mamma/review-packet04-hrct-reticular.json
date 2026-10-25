@@ -1,0 +1,215 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "brain_remediation",
+  "author": "root",
+  "status": "ACCEPT_BOUNDED_FULL_ORIGINAL_ASSESSMENT_POOL_AFTER_RETEST",
+  "route": "/thorax/hrct/retikulaer-nodulaer",
+  "scope": {
+    "read": "All twelve actual MCQ triads including all options, keys and individual wrong feedback; all fifteen flashcard triads and three Take Home triads in actual canonical topic snapshot.",
+    "languages": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "questionsPerLanguage": 12,
+    "cards": 15,
+    "excluded": [
+      "Whole lesson/PDF completeness",
+      "Retained case or diagnostic image interpretation",
+      "Browser/rendered UI",
+      "Publication and Dr Zia scientific approval"
+    ]
+  },
+  "findings": [
+    {
+      "id": "RETIC-EDU-01",
+      "severity": "minor",
+      "gate": "ASM",
+      "location": "All twelve original MCQs",
+      "observed": "Every canonical key is A in the examined pool.",
+      "impact": "Systematic position cue in any unshuffled presentation.",
+      "required": "Distribute correct positions and remap wrong-feedback letters consistently, or demonstrate every actual consumer shuffles options.",
+      "status": "CLOSED_BY_ACTUAL_CONSUMER_EVIDENCE_AND_OPTIONAL_AUTHOR_BALANCING",
+      "retest": "Read HrctPatternLesson quiz action and actual shuffleOptionsForSession with correct/wrong-feedback remapping; isolated actual 12-question run gave D4/A3/B2/C3 before balancing. Author additionally balanced canonical positions A/B/C/D three each; fresh final global export checked."
+    },
+    {
+      "id": "RETIC-EDU-02",
+      "severity": "minor",
+      "gate": "EDU",
+      "location": "Q09 option D; Q10 option C, DE/EN/FA",
+      "observed": "Hydrostatic oedema does not plausibly explain nodular-cystic evolution; replacement of established LCH by LAM is constructed as a disease transition.",
+      "impact": "Learner can exclude alternatives without applying longitudinal interpretation.",
+      "required": "Use plausible competing interpretations of nodular/cystic follow-up, with specific feedback and unchanged best-supported correct interpretation.",
+      "status": "CLOSED",
+      "retest": "Actually reread Q09/Q10 all three languages after repair. Q09 now explicitly develops central airspaces in other pre-existing nodules; smoking-related emphysema competes with LCH evolution. Q10 competing emphysema/traction-related airway dilatation now have context-specific feedback. Correct interpretations and clinical restraint retained."
+    },
+    {
+      "id": "RETIC-LNG-01",
+      "severity": "minor",
+      "gate": "LNG",
+      "location": "FA immediate pleural surface wording in Q01/02/03 feedback and cards02/14",
+      "observed": "Repeated سطح مستقیم پلور is a literal calque rather than natural wording for immediately adjacent lung.",
+      "impact": "Less precise spatial teaching in Persian.",
+      "required": "Use natural wording for tissue immediately adjacent to pleura, and preserve the pleural-sparing versus pleural-involvement distinction.",
+      "status": "CLOSED",
+      "retest": "Actually reread FA Q01 wrong feedback, Q02 explanation/wrong feedback, Q03 wrong feedback, card02 front/explanation, and card14/Take Home after-values. All now use natural immediately adjacent lung wording; the card02 front and explanation were also freshly verified after the author clarified their actual values. No remaining wording finding."
+    }
+  ],
+  "sourcesFreshlyRead": [
+    {
+      "url": "https://pubs.rsna.org/radiographics/doi/full/10.1148/radiol.232558",
+      "scope": "Official 2024 glossary actual anatomic distribution, fibrosis, reticular/miliary/tree-in-bud and air-trapping definitions; no image review claimed."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9240543/",
+      "scope": "Complete original 21-patient longitudinal CT abstract, histologic confirmation 11; nodular regression/transformation and persistence/progression of thin-walled cysts."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35146729/",
+      "scope": "Complete prospective 232-patient acute-dyspnoea abstract and associated CT-feature figure caption; no general score or numerical diagnostic accuracy transferred."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3340765/",
+      "scope": "Complete original 21-patient CT/pathology abstract."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16145946/",
+      "scope": "Complete original 18-patient HRCT abstract; broad sarcoidosis distinction not adopted as universal."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6082770/",
+      "scope": "Indexed original pathological correlation abstract, introduction, vascular differential, spread discussion and conclusion; direct PMC challenge bypassed by primary indexed text."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7397797/",
+      "scope": "Indexed actual official guideline nonfibrotic HRCT/Table5, expiratory air trapping, diagnostic domains and IgG committee discussion; direct PMC request intermittently challenged."
+    }
+  ],
+  "scientificReadResult": "No incorrect key, polarity reversal, universal etiologic proof or unsupported numerical diagnostic rule found within this text-assessment pool. Basic pattern recognition and clinical-context questions provide useful differing tasks; no quota gap identified.",
+  "gates": {
+    "SRC": "PASS_WITH_BOUNDED_PRIMARY_TEXT_SCOPE",
+    "EDU": "PASS_BOUNDED",
+    "LNG": "PASS_BOUNDED",
+    "ASM": "PASS_BOUNDED",
+    "VIS": "NOT_APPLICABLE_NO_NEW_MEDIA",
+    "UX": "NOT_REVIEWED",
+    "REV": "PASS_INDEPENDENT_BOUNDED_RETEST"
+  },
+  "retest": {
+    "actualGlobalRecordsCompared": 51,
+    "questions": 36,
+    "cards": 15,
+    "method": "Fresh esbuild bundle of canonical QUESTION_BANK and FLASHCARDS; each question entire object deepEqual actual snapshot, each card front/answer/explanation triad deepEqual. Source option permutation also read; correct option text and wrong-feedback pairings retained.",
+    "sourceHashes": {
+      "data/assessmentQuality/hrctReticularCases.js": "b49fce8399aa6494a315f01f2baa9fef88587dade979d4213e067f1599ef3cfc",
+      "data/assessmentQuality/hrctReticularDraft.js": "2c12f92b149f255b17c0424910e1ad7c6306197c9fcca0c1b360101585a5af4d",
+      "data/hrctClinicalRevisions.js": "82b251fe56ae13b5de434220e6be32a62abf39d54bd0f33d432178d9bdd64330",
+      "data/hrct-muster.js": "538b9e99b689533517715be85aab64b437a233b04f0e0fb38221baf737a49631"
+    }
+  },
+  "goalMapping": [
+    {
+      "goal": "distribution",
+      "questionNumbers": [
+        1,
+        2,
+        3,
+        4,
+        12
+      ],
+      "cardNumbers": [
+        1,
+        2,
+        3,
+        4,
+        12,
+        14,
+        15
+      ],
+      "questionIds": [
+        "hrct-retikulaer-nodulaer-de-01",
+        "hrct-retikulaer-nodulaer-de-02",
+        "hrct-retikulaer-nodulaer-de-03",
+        "hrct-retikulaer-nodulaer-de-04",
+        "hrct-retikulaer-nodulaer-de-12"
+      ],
+      "cardIds": [
+        "hrct-retikulaer-nodulaer-fc-01",
+        "hrct-retikulaer-nodulaer-fc-02",
+        "hrct-retikulaer-nodulaer-fc-03",
+        "hrct-retikulaer-nodulaer-fc-04",
+        "hrct-retikulaer-nodulaer-fc-12",
+        "hrct-retikulaer-nodulaer-fc-14",
+        "hrct-retikulaer-nodulaer-fc-15"
+      ]
+    },
+    {
+      "goal": "septal morphology and clinical context",
+      "questionNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "cardNumbers": [
+        5,
+        6,
+        7,
+        8,
+        13
+      ],
+      "questionIds": [
+        "hrct-retikulaer-nodulaer-de-05",
+        "hrct-retikulaer-nodulaer-de-06",
+        "hrct-retikulaer-nodulaer-de-07",
+        "hrct-retikulaer-nodulaer-de-08"
+      ],
+      "cardIds": [
+        "hrct-retikulaer-nodulaer-fc-05",
+        "hrct-retikulaer-nodulaer-fc-06",
+        "hrct-retikulaer-nodulaer-fc-07",
+        "hrct-retikulaer-nodulaer-fc-08",
+        "hrct-retikulaer-nodulaer-fc-13"
+      ]
+    },
+    {
+      "goal": "supportive exposure and limits",
+      "questionNumbers": [
+        11,
+        12
+      ],
+      "cardNumbers": [
+        11,
+        12
+      ],
+      "questionIds": [
+        "hrct-retikulaer-nodulaer-de-11",
+        "hrct-retikulaer-nodulaer-de-12"
+      ],
+      "cardIds": [
+        "hrct-retikulaer-nodulaer-fc-11",
+        "hrct-retikulaer-nodulaer-fc-12"
+      ]
+    },
+    {
+      "goal": "longitudinal LCH",
+      "questionNumbers": [
+        9,
+        10
+      ],
+      "cardNumbers": [
+        9,
+        10
+      ],
+      "questionIds": [
+        "hrct-retikulaer-nodulaer-de-09",
+        "hrct-retikulaer-nodulaer-de-10"
+      ],
+      "cardIds": [
+        "hrct-retikulaer-nodulaer-fc-09",
+        "hrct-retikulaer-nodulaer-fc-10"
+      ]
+    }
+  ],
+  "acceptanceLimit": "Only this full original text assessment pool and three Take Home triads accepted. No whole-lesson, PDF/media or live/browser/release approval is inferred."
+}

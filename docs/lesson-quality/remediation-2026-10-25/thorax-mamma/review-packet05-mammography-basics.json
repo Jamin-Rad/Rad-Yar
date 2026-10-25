@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/remove_lesson_notice",
+  "author": "/root",
+  "route": "/mamma/bildgebung/mammographie/grundlagen",
+  "status": "ACCEPT_BOUNDED_FULL_ASSESSMENT_POOL_AFTER_REPAIRS",
+  "scope": {
+    "questionTriadsRead": 10,
+    "cardTriadsRead": 12,
+    "inlineDecisionTriadsRead": 3,
+    "languages": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "fields": "All stems/options/correct keys/explanations/individual wrong feedback; all card fronts/answers/explanations; three inline contexts/options/36 localized individual feedback fields. Current BI-RADS meaning/management table, composition labels, palpable-finding paragraph, adjacent authored content and actual feedback selector read.",
+    "files": [
+      "data/mammaMammographyBasics.js",
+      "app/mamma/bildgebung/mammographie/grundlagen/content.js",
+      "app/mamma/bildgebung/mammographie/grundlagen/page.js"
+    ]
+  },
+  "runtime": "tmp/assessment-quality/mammography-basics-independent-runtime.json",
+  "findings": [
+    {
+      "id": "MG05-EDU-01",
+      "severity": "minor",
+      "key": "describe-first/options",
+      "observed": "Correct B is the only long multi-step complete workflow; A/C/D are short isolated actions.",
+      "impact": "Answer length/completeness cues the intended key independent of clinical reasoning.",
+      "required": "Use four comparable concise full workflow alternatives; preserve the correct describe/compare/diagnostic-clarification sequence.",
+      "status": "CLOSED",
+      "retest": "Fresh actual DE/EN/FA authored after-values read and18/18 exact-field assertions passed; keys unchanged."
+    },
+    {
+      "id": "MG05-EDU-02",
+      "severity": "minor",
+      "key": "composition-c/option-D",
+      "observed": "FDG-PET/CT is a distant competitor for a local new palpable finding after negative diagnostic mammography.",
+      "impact": "One distractor can be eliminated by modality-domain mismatch rather than choosing the appropriate next breast examination.",
+      "required": "Use a plausible competing breast imaging strategy, e.g. CEM, with specific feedback; preserve targeted US key and clinical discordance caveat.",
+      "status": "CLOSED",
+      "retest": "Fresh actual DE/EN/FA authored after-values read and18/18 exact-field assertions passed; keys unchanged."
+    }
+  ],
+  "semanticResult": "No incorrect key, negation reversal or meaning-changing DE/EN/FA mismatch found in the fully read bounded pool. Descriptor recall questions intentionally remain basic; three sequential inline beginner decisions have specific selected-option feedback and self-contained textual observations. They are not claimed to test image recognition.",
+  "sources": [
+    {
+      "url": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-Mammography.pdf",
+      "read": "Fresh official four-page 2025 text: pp173–176 mass definition, shape/margin/density including 75%/25%, calcification descriptors/distributions, distortion/asymmetry, assessment and management0–6. Not entire proprietary manual."
+    },
+    {
+      "url": "https://journals.sagepub.com/doi/10.1177/0284185118822639",
+      "read": "Fresh original publisher methods and results incl147 recalls,33DCIS, six DCIS without enhancement; no claim that enhancement safely excludes disease or observed cohort rates are universal."
+    },
+    {
+      "url": "https://acsearch.acr.org/list/GenerateAppendixPDF?TopicId=153",
+      "read": "Fresh official indexed Variant5 age40+ palpable mass with negative mammography: breastUS usually appropriate. Narrative direct403; this access limitation retained."
+    },
+    {
+      "url": "https://www.fda.gov/radiation-emitting-products/mammography-information-patients/frequently-asked-questions-about-mammography-quality-standards-act-mqsa",
+      "read": "Fresh official indexed C/D density notification and masking/sensitivity labels."
+    }
+  ],
+  "gates": {
+    "SRC": "PASS_BOUNDED_ASSESSMENT_CLAIMS",
+    "EDU": "PASS_BOUNDED",
+    "LNG": "PASS_BOUNDED",
+    "ASM": "PASS_BOUNDED",
+    "VIS": "NOT_REVIEWED",
+    "UX": "NOT_REVIEWED",
+    "REV": "PASS_INDEPENDENT_READ_ONLY"
+  },
+  "limits": [
+    "No production content edits by reviewer.",
+    "No whole supplied PDF mapping, diagnostic image/frame review or image recognition acceptance.",
+    "No browser, access/payment-gate, mobile, release or physician scientific approval inferred.",
+    "Fresh actual42-object producer snapshot parity is technical evidence only."
+  ],
+  "retest": {
+    "repairFields": 18,
+    "difficulty": "Actual5basic difficulty1 +5applied difficulty2, same metadata across languages. Editorial labels, not empirical difficulty validation.",
+    "runtime": "Fresh actual42/42 producer export against updated snapshot; all inline/BIRADS fields retained."
+  },
+  "coverageRetest": {
+    "file": "data/assessmentQuality/mammaCoverage.js",
+    "goals": 4,
+    "questionIds": 10,
+    "cardIds": 12,
+    "status": "PASS_BOUNDED",
+    "scope": "Four observable goal triads manually compared DE/EN/FA; no omission affecting intended actions, appropriate bounded retrieval/interpretation focus. All actual goal ID arrays exactly match independently read author manifest; no new assessment content."
+  }
+}

@@ -80,6 +80,14 @@
       "cardTopic": "aq-parkinson",
       "subject": "gehirn"
     },
+    "/gehirn/neurodegeneration/demenzmuster": {
+      "topicIds": [
+        "aq-demenzmuster"
+      ],
+      "questionCount": 3,
+      "cardTopic": "aq-demenzmuster",
+      "subject": "gehirn"
+    },
     "/gehirn/anatomie/normaldruckhydrozephalus": {
       "topicIds": [
         "normaldruckhydrozephalus"
@@ -253,6 +261,14 @@
       "cardTopic": "melorheostose",
       "subject": "msk"
     },
+    "/msk/hand/de-quervain": {
+      "topicIds": [
+        "de-quervain"
+      ],
+      "questionCount": 2,
+      "cardTopic": "de-quervain",
+      "subject": "msk"
+    },
     "/technik/interventionelle-radiologie": {
       "topicIds": [
         "aq-atv-intervention"
@@ -341,6 +357,46 @@
       "cardTopic": "divertikulitis",
       "subject": "abdomen"
     },
+    "/abdomen/gi/mesenteriale-ischaemie": {
+      "topicIds": [
+        "mesenteriale-ischaemie"
+      ],
+      "questionCount": 3,
+      "cardTopic": "mesenteriale-ischaemie",
+      "subject": "abdomen"
+    },
+    "/abdomen/gi/pylorusstenose": {
+      "topicIds": [
+        "pylorusstenose"
+      ],
+      "questionCount": 3,
+      "cardTopic": "pylorusstenose",
+      "subject": "abdomen"
+    },
+    "/abdomen/gi/kolitis-patterns": {
+      "topicIds": [
+        "pmc-kolitis"
+      ],
+      "questionCount": 2,
+      "cardTopic": "pmc-kolitis",
+      "subject": "abdomen"
+    },
+    "/abdomen/gi/kolorektales-karzinom": {
+      "topicIds": [
+        "kolorektales-karzinom"
+      ],
+      "questionCount": 4,
+      "cardTopic": "kolorektales-karzinom",
+      "subject": "abdomen"
+    },
+    "/abdomen/gi/ileus-volvulus": {
+      "topicIds": [
+        "ileus-duenndarm"
+      ],
+      "questionCount": 5,
+      "cardTopic": "ileus-duenndarm",
+      "subject": "abdomen"
+    },
     "/thorax/lung-rads": {
       "topicIds": [
         "lung-rads"
@@ -387,6 +443,14 @@
       ],
       "questionCount": 8,
       "cardTopic": "mamma-mrt-basics",
+      "subject": "mamma"
+    },
+    "/mamma/bildgebung/mammographie/grundlagen": {
+      "topicIds": [
+        "mammographie-grundlagen"
+      ],
+      "questionCount": 10,
+      "cardTopic": "mammographie-grundlagen",
       "subject": "mamma"
     }
   },
@@ -585,7 +649,7 @@
     "leberadenom": 5,
     "niere-anatomie": 1,
     "lebermetastasen": 2,
-    "ileus-duenndarm": 4,
+    "ileus-duenndarm": 5,
     "intussusception": 1,
     "ipmn": 1,
     "hepatische-steatose": 1,
@@ -610,9 +674,9 @@
     "inguinalhernie": 1,
     "femoralhernie": 1,
     "untere-gi-blutung": 1,
-    "kolorektales-karzinom": 1,
+    "kolorektales-karzinom": 4,
     "nephroblastom-wilms": 1,
-    "mesenteriale-ischaemie": 1,
+    "mesenteriale-ischaemie": 3,
     "spinalkanalstenose": 2,
     "spondylodiszitis": 1,
     "knochentumor-grundlagen": 1,
@@ -620,7 +684,7 @@
     "morbus-scheuermann": 1,
     "osteochondrosis-intervertebralis": 1,
     "sehnenpathologien-hand": 2,
-    "de-quervain": 1,
+    "de-quervain": 2,
     "proximale-humerusfraktur": 2,
     "metakarpale-frakturen": 1,
     "knocheninfarkt": 3,
@@ -649,7 +713,7 @@
     "dosisgroessen-dosimetrie": 1,
     "riesenzelltumor": 1,
     "gist": 3,
-    "volvulus": 1,
+    "volvulus": 2,
     "pnet": 4,
     "hepatisches-angiomyolipom": 4,
     "psc-pbc": 1,
@@ -673,7 +737,7 @@
     "fibrolamellaeres-karzinom": 2,
     "li-rads": 2,
     "fornixruptur": 2,
-    "pylorusstenose": 2,
+    "pylorusstenose": 3,
     "pmc-kolitis": 2,
     "colitis-ulcerosa": 2,
     "pyelonephritis": 2,
@@ -697,6 +761,7 @@
     "aq-cjd": 3,
     "avn-huefte": 1,
     "melorheostose": 1,
-    "aq-parkinson": 3
+    "aq-parkinson": 3,
+    "aq-demenzmuster": 3
   }
 }

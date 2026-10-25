@@ -1,0 +1,230 @@
+{
+  "date": "2026-10-25",
+  "finding": "AC05-EDU-01 Tossy distractor domain",
+  "status": "AUTHOR_REPAIRED_RETEST_PENDING",
+  "before": [
+    {
+      "id": "ak-lux-tossy-1-de",
+      "question": "Ein alter Befund nennt nur „Tossy III“. Für die weitere Planung muss auch eine posteriore oder inferiore Klavikulaverlagerung unterschieden werden. Welche zusätzliche Einteilung leistet Rockwood?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Unterteilung nach Frakturverlauf der lateralen Klavikula"
+        },
+        {
+          "id": "B",
+          "text": "Zusätzliche Richtungs-/Schweregrade IV–VI für posterior, ausgeprägten Hochstand und inferior"
+        },
+        {
+          "id": "C",
+          "text": "Unterteilung nach chronischer AC-Arthrose und Gelenkspaltverschmälerung"
+        },
+        {
+          "id": "D",
+          "text": "Unterteilung nach Begleitriss der Rotatorenmanschette"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Tossy I–III deckt posteriore/inferiore Dislokationen und extreme Hochstände nicht ab; Rockwood erweitert die Einteilung auf IV–VI. Rockwood ist verbreitet, die Klassifikation ersetzt jedoch keine klinische Beurteilung.",
+      "tags": [
+        "ak-luxation"
+      ],
+      "wrongExplanations": {
+        "A": "Die Klassifikation von Klavikulafrakturen beantwortet eine andere Frage. Rockwood beschreibt das AC-Verletzungsmuster.",
+        "C": "Degenerative Gelenkspaltveränderungen bilden keine Erweiterung von Tossy III zu Rockwood IV–VI.",
+        "D": "Ein begleitender Sehnenriss kann klinisch wichtig sein, bestimmt aber nicht die zusätzlichen Richtungsgrade von Rockwood."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12081960/"
+    },
+    {
+      "id": "ak-lux-tossy-1-en",
+      "question": "An old report states only “Tossy III.” Planning also requires distinction of posterior or inferior clavicular displacement. What additional distinction does Rockwood provide?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Subdivision by distal clavicular fracture pattern"
+        },
+        {
+          "id": "B",
+          "text": "Additional direction/severity grades IV–VI for posterior displacement, marked elevation and inferior displacement"
+        },
+        {
+          "id": "C",
+          "text": "Subdivision by chronic AC osteoarthritis and joint-space narrowing"
+        },
+        {
+          "id": "D",
+          "text": "Subdivision by associated rotator cuff tear"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Tossy I–III does not cover posterior/inferior displacement or extreme elevation; Rockwood extends the classification to IV–VI. Rockwood is widely used, but classification does not replace clinical assessment.",
+      "tags": [
+        "ak-luxation"
+      ],
+      "wrongExplanations": {
+        "A": "Clavicle fracture classification addresses a different question. Rockwood describes the AC injury pattern.",
+        "C": "Degenerative joint-space changes do not define the extension from Tossy III to Rockwood IV–VI.",
+        "D": "An associated tendon tear may matter clinically but does not define Rockwood’s additional directional grades."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12081960/"
+    },
+    {
+      "id": "ak-lux-tossy-1-fa",
+      "question": "در گزارش قدیمی فقط «توسی III» آمده است. برای برنامه‌ریزی باید جابجایی خلفی یا تحتانی کلاویکول نیز مشخص شود. راک‌وود کدام تمایز افزوده را فراهم می‌کند؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "زیرگروه‌بندی بر اساس مسیر شکستگی انتهای کلاویکول"
+        },
+        {
+          "id": "B",
+          "text": "درجات افزودهٔ IV–VI بر اساس جهت/شدت برای جابجایی خلفی، ارتفاع شدید و جابجایی تحتانی"
+        },
+        {
+          "id": "C",
+          "text": "زیرگروه‌بندی بر اساس آرتروز مزمن AC و باریک شدن فضای مفصل"
+        },
+        {
+          "id": "D",
+          "text": "زیرگروه‌بندی بر اساس پارگی همراه روتاتور کاف"
+        }
+      ],
+      "correct": "B",
+      "explanation": "توسی I–III جابجایی خلفی/تحتانی یا ارتفاع شدید را پوشش نمی‌دهد؛ راک‌وود طبقه‌بندی را به IV–VI گسترش می‌دهد. راک‌وود رایج است، اما طبقه‌بندی جایگزین ارزیابی بالینی نیست.",
+      "tags": [
+        "ak-luxation"
+      ],
+      "wrongExplanations": {
+        "A": "طبقه‌بندی شکستگی کلاویکول به پرسش دیگری پاسخ می‌دهد؛ راک‌وود الگوی آسیب AC را توصیف می‌کند.",
+        "C": "تغییرات دژنراتیو فضای مفصل، گسترش توسی III به درجات IV–VI راک‌وود را تعریف نمی‌کنند.",
+        "D": "پارگی تاندون همراه ممکن است از نظر بالینی مهم باشد، ولی درجات جهت‌دار افزودهٔ راک‌وود را تعیین نمی‌کند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12081960/"
+    }
+  ],
+  "after": [
+    {
+      "id": "ak-lux-tossy-1-de",
+      "question": "Ein alter Befund nennt nur „Tossy III“. Welche zusätzliche Unterscheidung liefert die sechstypige Rockwood-Klassifikation für eine präzisere AC-Verletzungsbeschreibung?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Zusätzliche Unterteilung kompletter Luxationen nach dem zeitlichen Abstand seit dem Trauma"
+        },
+        {
+          "id": "B",
+          "text": "Zusätzliche Richtungs-/Schweregrade IV–VI für posterior, ausgeprägten Hochstand und inferior"
+        },
+        {
+          "id": "C",
+          "text": "Zusätzliche Unterteilung kompletter Luxationen nach Schmerzintensität und Einschränkung der Schulterfunktion"
+        },
+        {
+          "id": "D",
+          "text": "Erstmalige Trennung von isolierter AC-Bandverletzung und kombinierter AC-/CC-Ruptur"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Tossy I–III deckt posteriore/inferiore Dislokationen und extreme Hochstände nicht ab; Rockwood erweitert die Einteilung auf IV–VI. Rockwood ist verbreitet, die Klassifikation ersetzt jedoch keine klinische Beurteilung.",
+      "tags": [
+        "ak-luxation"
+      ],
+      "wrongExplanations": {
+        "A": "Der zeitliche Abstand beeinflusst die Behandlungsplanung, definiert aber nicht die sechs Rockwood-Richtungstypen.",
+        "C": "Schmerz und Funktion sind klinisch wichtig. Die zusätzlichen Typen IV–VI werden jedoch anhand von Verlagerungsrichtung und ausgeprägter Separation unterschieden.",
+        "D": "Die Unterscheidung der beteiligten Bandgruppen ist bereits in den ungefähr überlappenden Typen I–III enthalten. Die zusätzliche Rockwood-Differenzierung betrifft IV–VI."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12081960/"
+    },
+    {
+      "id": "ak-lux-tossy-1-en",
+      "question": "An old report states only “Tossy III.” Which additional distinction does the six-type Rockwood classification provide for a more precise AC injury description?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Additional subdivision of complete dislocations by time elapsed since injury"
+        },
+        {
+          "id": "B",
+          "text": "Additional direction/severity grades IV–VI for posterior displacement, marked elevation and inferior displacement"
+        },
+        {
+          "id": "C",
+          "text": "Additional subdivision of complete dislocations by pain intensity and limitation of shoulder function"
+        },
+        {
+          "id": "D",
+          "text": "First distinction between isolated AC ligament injury and combined AC/CC rupture"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Tossy I–III does not cover posterior/inferior displacement or extreme elevation; Rockwood extends the classification to IV–VI. Rockwood is widely used, but classification does not replace clinical assessment.",
+      "tags": [
+        "ak-luxation"
+      ],
+      "wrongExplanations": {
+        "A": "Time since injury influences management but does not define the six Rockwood directional types.",
+        "C": "Pain and function matter clinically, but the additional Types IV–VI distinguish displacement direction and marked separation.",
+        "D": "The ligament-group distinction already exists within the roughly overlapping Types I–III. Rockwood’s additional distinction concerns IV–VI."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12081960/"
+    },
+    {
+      "id": "ak-lux-tossy-1-fa",
+      "question": "در گزارش قدیمی فقط «توسی III» آمده است. طبقه‌بندی شش‌نوعی راک‌وود کدام تمایز افزوده را برای توصیف دقیق‌تر آسیب AC فراهم می‌کند؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "زیرگروه‌بندی افزودهٔ لوکساسیون کامل بر اساس زمان سپری‌شده از آسیب"
+        },
+        {
+          "id": "B",
+          "text": "درجات افزودهٔ IV–VI بر اساس جهت/شدت برای جابجایی خلفی، ارتفاع شدید و جابجایی تحتانی"
+        },
+        {
+          "id": "C",
+          "text": "زیرگروه‌بندی افزودهٔ لوکساسیون کامل بر اساس شدت درد و محدودیت عملکرد شانه"
+        },
+        {
+          "id": "D",
+          "text": "تفکیک برای نخستین بار میان آسیب منفرد رباط AC و پارگی ترکیبی AC/CC"
+        }
+      ],
+      "correct": "B",
+      "explanation": "توسی I–III جابجایی خلفی/تحتانی یا ارتفاع شدید را پوشش نمی‌دهد؛ راک‌وود طبقه‌بندی را به IV–VI گسترش می‌دهد. راک‌وود رایج است، اما طبقه‌بندی جایگزین ارزیابی بالینی نیست.",
+      "tags": [
+        "ak-luxation"
+      ],
+      "wrongExplanations": {
+        "A": "زمان سپری‌شده از آسیب بر برنامهٔ درمان اثر دارد، ولی شش نوع جهت‌دار راک‌وود را تعریف نمی‌کند.",
+        "C": "درد و عملکرد از نظر بالینی مهم‌اند، اما انواع افزودهٔ IV–VI با جهت جابجایی و جدایی شدید متمایز می‌شوند.",
+        "D": "تمایز گروه‌های رباطی در انواع I–III که تقریباً هم‌پوشان‌اند وجود دارد؛ تمایز افزودهٔ راک‌وود به انواع IV–VI مربوط است."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12081960/"
+    }
+  ],
+  "followup": {
+    "finding": "AC05-LNG-02 historical distinguish versus does-not-cover",
+    "changes": [
+      {
+        "id": "ak-lux-tossy-1-de",
+        "field": "explanation",
+        "before": "Tossy I–III deckt posteriore/inferiore Dislokationen und extreme Hochstände nicht ab; Rockwood erweitert die Einteilung auf IV–VI. Rockwood ist verbreitet, die Klassifikation ersetzt jedoch keine klinische Beurteilung.",
+        "after": "Tossy I–III unterscheidet posteriore oder inferiore Verlagerungen und besonders ausgeprägten Hochstand nicht als eigene Typen IV–VI. Rockwood ergänzt diese Richtungs-/Schweregradtypen; die Klassifikation ersetzt keine klinische Beurteilung."
+      },
+      {
+        "id": "ak-lux-tossy-1-en",
+        "field": "explanation",
+        "before": "Tossy I–III does not cover posterior/inferior displacement or extreme elevation; Rockwood extends the classification to IV–VI. Rockwood is widely used, but classification does not replace clinical assessment.",
+        "after": "Tossy I–III does not distinguish posterior or inferior displacement and particularly marked elevation as separate Types IV–VI. Rockwood adds these directional/severity types; classification does not replace clinical assessment."
+      },
+      {
+        "id": "ak-lux-tossy-1-fa",
+        "field": "explanation",
+        "before": "توسی I–III جابجایی خلفی/تحتانی یا ارتفاع شدید را پوشش نمی‌دهد؛ راک‌وود طبقه‌بندی را به IV–VI گسترش می‌دهد. راک‌وود رایج است، اما طبقه‌بندی جایگزین ارزیابی بالینی نیست.",
+        "after": "توسی I–III جابجایی خلفی یا تحتانی و ارتفاع به‌ویژه شدید را به‌صورت انواع مستقل IV–VI تفکیک نمی‌کند. راک‌وود این انواع جهت‌دار و مبتنی بر شدت را اضافه می‌کند؛ طبقه‌بندی جایگزین ارزیابی بالینی نیست."
+      }
+    ]
+  }
+}

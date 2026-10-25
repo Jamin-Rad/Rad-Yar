@@ -1,0 +1,443 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_REPAIRS_READY_INDEPENDENT_RETEST_PENDING",
+  "scope": [
+    "pmc-kolitis-distribution",
+    "pylorus-dynamic",
+    "mesenteric-viability"
+  ],
+  "changes": [
+    {
+      "key": "pmc-kolitis:distribution",
+      "before": {
+        "prompt": {
+          "de": "Nach Antibiotikatherapie bestehen akute Diarrhö und eine segmentale Kolitis mit ausgeprägtem submukösem Ödem. Welche Befundinterpretation ist angemessen?",
+          "en": "After antibiotics, acute diarrhoea accompanies segmental colitis with marked submucosal oedema. Which interpretation is appropriate?",
+          "fa": "پس از مصرف آنتی‌بیوتیک، اسهال حاد همراه با کولیت سگمنتال و ادم واضح زیرمخاطی وجود دارد. کدام تفسیر مناسب است؟"
+        },
+        "options": [
+          {
+            "de": "Eine ischämische Kolitis ist anhand dieser Verteilung gesichert.",
+            "en": "The distribution establishes ischaemic colitis.",
+            "fa": "این توزیع، کولیت ایسکمیک را قطعی می‌کند."
+          },
+          {
+            "de": "Eine erstmalige Colitis ulcerosa ist anhand des Ödems gesichert.",
+            "en": "The oedema establishes new-onset ulcerative colitis.",
+            "fa": "ادم، کولیت اولسروزِ تازه‌شروع‌شده را قطعی می‌کند."
+          },
+          {
+            "de": "Eine C.-difficile-assoziierte Kolitis ist möglich; segmentaler Befall schließt sie nicht aus, und die Ursache braucht klinisch-labormedizinische Abklärung.",
+            "en": "C. difficile-associated colitis is possible; segmental involvement does not exclude it, and aetiology needs clinical and laboratory assessment.",
+            "fa": "کولیت مرتبط با C. difficile ممکن است؛ درگیری سگمنتال آن را رد نمی‌کند و علت به بررسی بالینی و آزمایشگاهی نیاز دارد."
+          },
+          {
+            "de": "Eine chronische Crohn-Kolitis ist anhand der segmentalen Verteilung gesichert.",
+            "en": "Segmental involvement establishes chronic Crohn colitis.",
+            "fa": "درگیری سگمنتال، کولیت کرون مزمن را قطعی می‌کند."
+          }
+        ],
+        "answer": 2,
+        "explanation": {
+          "de": "PMC kann pancolisch oder segmental auftreten. Wandverdickung und submuköses Ödem sind nicht ätiologiespezifisch; Antibiotikaanamnese und gezielte C.-difficile-Diagnostik gehören zur Einordnung.",
+          "en": "PMC may be pancolonic or segmental. Wall thickening and submucosal oedema are not aetiology-specific; antibiotic history and targeted C. difficile testing inform interpretation.",
+          "fa": "PMC می‌تواند پان‌کولونیک یا سگمنتال باشد. ضخیم‌شدگی دیواره و ادم زیرمخاطی برای علت اختصاصی نیستند؛ سابقهٔ آنتی‌بیوتیک و آزمایش هدفمند C. difficile به تفسیر کمک می‌کنند."
+        },
+        "wrongFeedback": {
+          "0": {
+            "de": "Ischämie ist eine Differenzialdiagnose, wird aber durch segmentales Ödem allein nicht bewiesen.",
+            "en": "Ischaemia is a differential diagnosis, but segmental oedema alone does not prove it.",
+            "fa": "ایسکمی تشخیص افتراقی است، اما ادم سگمنتال به‌تنهایی آن را ثابت نمی‌کند."
+          },
+          "1": {
+            "de": "Ödem ist kein alleiniger Nachweis einer Colitis ulcerosa; weitere klinische, endoskopische und histologische Befunde sind nötig.",
+            "en": "Oedema alone does not establish ulcerative colitis; additional clinical, endoscopic and histological findings are needed.",
+            "fa": "ادم به‌تنهایی کولیت اولسروز را ثابت نمی‌کند؛ یافته‌های بالینی، اندوسکوپیک و بافت‌شناسی بیشتری لازم‌اند."
+          },
+          "3": {
+            "de": "Segmentaler Befall ist nicht gleichbedeutend mit Crohn-Krankheit; die akute infektiöse Alternative bleibt offen.",
+            "en": "Segmental involvement is not synonymous with Crohn disease; an acute infectious alternative remains possible.",
+            "fa": "درگیری سگمنتال معادل بیماری کرون نیست؛ علت عفونی حاد همچنان ممکن است."
+          }
+        },
+        "front": {
+          "de": "Schließt segmentale Kolitis eine PMC aus?",
+          "en": "Does segmental colitis exclude PMC?",
+          "fa": "آیا کولیت سگمنتال PMC را رد می‌کند؟"
+        },
+        "retrieval": {
+          "de": "Nein. PMC kann segmental oder pancolisch sein; die CT-Verteilung allein legt die Ursache nicht fest.",
+          "en": "No. PMC may be segmental or pancolonic; CT distribution alone does not determine aetiology.",
+          "fa": "خیر. PMC می‌تواند سگمنتال یا پان‌کولونیک باشد؛ توزیع CT به‌تنهایی علت را تعیین نمی‌کند."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/2052723/"
+      },
+      "after": {
+        "prompt": {
+          "de": "Nach Antibiotikatherapie bestehen akute Diarrhö und eine segmentale Kolitis mit ausgeprägtem submukösem Ödem. Welche Arbeitsdiagnose sollte in diesem Kontext vorrangig gezielt geprüft werden?",
+          "en": "After antibiotic treatment, acute diarrhoea accompanies segmental colitis with marked submucosal oedema. Which working diagnosis should be specifically prioritised for assessment in this context?",
+          "fa": "پس از درمان آنتی‌بیوتیکی، اسهال حاد همراه کولیت سگمنتال و ادم واضح زیرمخاطی وجود دارد. در این زمینه، بررسی هدفمند کدام تشخیص کاری باید در اولویت باشد؟"
+        },
+        "options": [
+          {
+            "de": "Ischämische Kolitis als führende Erklärung des segmentalen Ödems.",
+            "en": "Ischaemic colitis as the leading explanation for segmental oedema.",
+            "fa": "کولیت ایسکمیک به‌عنوان علت اصلی ادم سگمنتال."
+          },
+          {
+            "de": "Erstmanifestation einer Colitis ulcerosa als führende Erklärung der akuten Diarrhö.",
+            "en": "New-onset ulcerative colitis as the leading explanation for acute diarrhoea.",
+            "fa": "اولین تظاهر کولیت اولسروز به‌عنوان علت اصلی اسهال حاد."
+          },
+          {
+            "de": "C.-difficile-assoziierte Kolitis als infektiöse Arbeitsdiagnose nach Antibiotikatherapie.",
+            "en": "C. difficile-associated colitis as an infectious working diagnosis after antibiotic treatment.",
+            "fa": "کولیت مرتبط با C. difficile به‌عنوان تشخیص کاری عفونی پس از درمان آنتی‌بیوتیکی."
+          },
+          {
+            "de": "Crohn-Kolitis als führende Erklärung der segmentalen Entzündungsverteilung.",
+            "en": "Crohn colitis as the leading explanation for segmental inflammation.",
+            "fa": "کولیت کرون به‌عنوان علت اصلی توزیع سگمنتال التهاب."
+          }
+        ],
+        "answer": 2,
+        "explanation": {
+          "de": "PMC kann pancolisch oder segmental auftreten. Wandverdickung und submuköses Ödem sind nicht ätiologiespezifisch; Antibiotikaanamnese und gezielte C.-difficile-Diagnostik gehören zur Einordnung.",
+          "en": "PMC may be pancolonic or segmental. Wall thickening and submucosal oedema are not aetiology-specific; antibiotic history and targeted C. difficile testing inform interpretation.",
+          "fa": "PMC می‌تواند پان‌کولونیک یا سگمنتال باشد. ضخیم‌شدگی دیواره و ادم زیرمخاطی برای علت اختصاصی نیستند؛ سابقهٔ آنتی‌بیوتیک و آزمایش هدفمند C. difficile به تفسیر کمک می‌کنند."
+        },
+        "wrongFeedback": {
+          "0": {
+            "de": "Ischämische Kolitis bleibt eine Differenzialdiagnose. Segmentales Ödem allein priorisiert sie aber nicht gegenüber der durch Antibiotikaanamnese und akute Diarrhö nahegelegten infektiösen Abklärung.",
+            "en": "Ischaemic colitis remains a differential diagnosis. Segmental oedema alone does not prioritise it over infectious assessment prompted by antibiotic exposure and acute diarrhoea.",
+            "fa": "کولیت ایسکمیک همچنان تشخیص افتراقی است؛ اما ادم سگمنتال به‌تنهایی آن را بر بررسی عفونتِ مطرح در زمینهٔ آنتی‌بیوتیک و اسهال حاد مقدم نمی‌کند."
+          },
+          "1": {
+            "de": "Akute Diarrhö und Ödem sind nicht CU-spezifisch. Im beschriebenen Antibiotikakontext muss eine C.-difficile-Infektion vor vorschneller Zuordnung zu neuer IBD gezielt geprüft werden.",
+            "en": "Acute diarrhoea and oedema are not UC-specific. In this antibiotic context, targeted C. difficile assessment is needed before prematurely attributing the findings to new IBD.",
+            "fa": "اسهال حاد و ادم مختص CU نیستند. در زمینهٔ آنتی‌بیوتیکِ ذکرشده، پیش از نسبت‌دادن شتاب‌زدهٔ یافته‌ها به IBD جدید، بررسی هدفمند C. difficile لازم است."
+          },
+          "3": {
+            "de": "Segmentaler Befall passt zu mehreren Ursachen, darunter auch C.-difficile-Kolitis. Er macht Crohn ohne weitere typische Befunde nicht zur führenden Erklärung dieses akuten Antibiotikakontexts.",
+            "en": "Segmental involvement occurs with several causes, including C. difficile colitis. Without additional characteristic findings, it does not make Crohn the leading explanation in this acute antibiotic context.",
+            "fa": "درگیری سگمنتال علل گوناگونی از جمله کولیت C. difficile دارد. بدون یافته‌های مشخصهٔ بیشتر، این توزیع کرون را علت اصلی در زمینهٔ حاد پس از آنتی‌بیوتیک نمی‌کند."
+          }
+        },
+        "front": {
+          "de": "Schließt segmentale Kolitis eine PMC aus?",
+          "en": "Does segmental colitis exclude PMC?",
+          "fa": "آیا کولیت سگمنتال PMC را رد می‌کند؟"
+        },
+        "retrieval": {
+          "de": "Nein. PMC kann segmental oder pancolisch sein; die CT-Verteilung allein legt die Ursache nicht fest.",
+          "en": "No. PMC may be segmental or pancolonic; CT distribution alone does not determine aetiology.",
+          "fa": "خیر. PMC می‌تواند سگمنتال یا پان‌کولونیک باشد؛ توزیع CT به‌تنهایی علت را تعیین نمی‌کند."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/2052723/"
+      }
+    },
+    {
+      "key": "pylorusstenose:dynamic",
+      "before": {
+        "prompt": {
+          "de": "Der Pylorus wirkt in einem Standbild verdickt, öffnet sich aber wiederholt mit Passage und wechselnder Form. Wie soll der Ultraschallbefund gewertet werden?",
+          "en": "The pylorus looks thickened on one still frame but repeatedly opens with passage and changing shape. How should the ultrasound be assessed?",
+          "fa": "پیلور در یک تصویر ثابت ضخیم به‌نظر می‌رسد، اما مکرراً با عبور محتویات و تغییر شکل باز می‌شود. سونوگرافی چگونه باید ارزیابی شود؟"
+        },
+        "options": [
+          {
+            "de": "Die größte statische Messung als maßgebliche Bestätigung einer fixen Stenose verwenden.",
+            "en": "Use the largest static measurement as the determining confirmation of fixed stenosis.",
+            "fa": "بزرگ‌ترین اندازهٔ ثابت را تأیید تعیین‌کنندهٔ تنگی ثابت بدانید."
+          },
+          {
+            "de": "Dynamische Öffnung und Variabilität zusammen mit korrekt erhobenen Muskelmaßen und Klinik beurteilen.",
+            "en": "Assess dynamic opening and variability together with correctly obtained muscle measurements and clinical findings.",
+            "fa": "بازشدن پویا و تغییرپذیری را همراه با اندازه‌گیری درست عضله و بالین بررسی کنید."
+          },
+          {
+            "de": "Für die Muskeldicke Mukosa und Lumen in einen gemittelten Gesamtdurchmesser einbeziehen.",
+            "en": "Include mucosa and lumen in an averaged total diameter as muscle thickness.",
+            "fa": "برای ضخامت عضله، مخاط و لومن را در میانگین قطر کلی وارد کنید."
+          },
+          {
+            "de": "Nur die geschlossenen Phasen auswerten und die Öffnung bei der Befundung auslassen.",
+            "en": "Assess only closed phases and omit opening from interpretation.",
+            "fa": "فقط فازهای بسته را ارزیابی و بازشدن را از تفسیر حذف کنید."
+          }
+        ],
+        "answer": 1,
+        "explanation": {
+          "de": "Pylorospasmus kann zeitweise dieselben Größen erreichen wie HPS. Wiederholte Öffnung und wechselnde Morphologie sind wichtige Hinweise, aber eine geringe Passage allein schließt HPS nicht aus. Morphometrie, Dynamik und Klinik gemeinsam beurteilen.",
+          "en": "Pylorospasm can transiently overlap HPS measurements. Repeated opening and changing morphology are important clues, but a small amount of passage alone does not exclude HPS. Interpret morphology, dynamics and clinical findings together.",
+          "fa": "پیلورواسپاسم می‌تواند موقتاً اندازه‌هایی هم‌پوشان با HPS داشته باشد. بازشدن مکرر و تغییر مورفولوژی سرنخ‌های مهم‌اند، اما عبور مقدار کمی مایع به‌تنهایی HPS را رد نمی‌کند. مورفومتری، پویایی و بالین را با هم بررسی کنید."
+        },
+        "wrongFeedback": {
+          "0": {
+            "de": "Eine Maximalmessung ignoriert die dokumentierte Variabilität; Spasmus kann einzelne hohe Werte erzeugen.",
+            "en": "A maximum measurement ignores the observed variability; spasm may produce isolated high values.",
+            "fa": "بیشینهٔ اندازه، تغییرپذیری مشاهده‌شده را نادیده می‌گیرد؛ اسپاسم می‌تواند مقادیر منفرد بالا ایجاد کند."
+          },
+          "2": {
+            "de": "Ein Gesamtdurchmesser aus Muskel, Mukosa und Lumen ist nicht die Muskeldicke.",
+            "en": "A total diameter including muscle, mucosa and lumen is not muscle thickness.",
+            "fa": "قطر کلی شامل عضله، مخاط و لومن، ضخامت عضله نیست."
+          },
+          "3": {
+            "de": "Das Auslassen der Öffnung entfernt eine relevante dynamische Beobachtung und begünstigt eine Fehlklassifikation.",
+            "en": "Omitting opening removes relevant dynamic information and favours misclassification.",
+            "fa": "حذف بازشدن، اطلاعات پویا و مهم را کنار می‌گذارد و طبقه‌بندی نادرست را محتمل‌تر می‌کند."
+          }
+        },
+        "front": {
+          "de": "Warum die Pylorusöffnung über mehrere Wellen beobachten?",
+          "en": "Why observe pyloric opening over several waves?",
+          "fa": "چرا بازشدن پیلور را طی چند موج مشاهده می‌کنیم؟"
+        },
+        "retrieval": {
+          "de": "Variabilität und wiederholte Öffnung helfen, Spasmus von persistenter Hypertrophie abzugrenzen. Geringe Passage allein ist kein sicherer Ausschluss einer HPS.",
+          "en": "Variability and repeated opening help distinguish spasm from persistent hypertrophy. A small amount of passage alone does not reliably exclude HPS.",
+          "fa": "تغییرپذیری و بازشدن مکرر به افتراق اسپاسم از هیپرتروفی پایدار کمک می‌کنند. عبور مقدار کمی مایع به‌تنهایی HPS را با اطمینان رد نمی‌کند."
+        },
+        "source": "https://doi.org/10.1002/ajum.12305"
+      },
+      "after": {
+        "prompt": {
+          "de": "Der Pylorus wirkt in einem Standbild verdickt, öffnet sich aber wiederholt mit Passage und wechselnder Form. Wie soll der Ultraschallbefund gewertet werden?",
+          "en": "The pylorus looks thickened on one still frame but repeatedly opens with passage and changing shape. How should the ultrasound be assessed?",
+          "fa": "پیلور در یک تصویر ثابت ضخیم به‌نظر می‌رسد، اما مکرراً با عبور محتویات و تغییر شکل باز می‌شود. سونوگرافی چگونه باید ارزیابی شود؟"
+        },
+        "options": [
+          {
+            "de": "Die größte statische Messung als maßgebliche Bestätigung einer fixen Stenose verwenden.",
+            "en": "Use the largest static measurement as the determining confirmation of fixed stenosis.",
+            "fa": "بزرگ‌ترین اندازهٔ ثابت را تأیید تعیین‌کنندهٔ تنگی ثابت بدانید."
+          },
+          {
+            "de": "Dynamische Öffnung und Variabilität zusammen mit korrekt erhobenen Muskelmaßen und Klinik beurteilen.",
+            "en": "Assess dynamic opening and variability together with correctly obtained muscle measurements and clinical findings.",
+            "fa": "بازشدن پویا و تغییرپذیری را همراه با اندازه‌گیری درست عضله و بالین بررسی کنید."
+          },
+          {
+            "de": "Die beobachtete Passage spricht für ein frühes HPS-Stadium mit bereits fixer Muskelhypertrophie.",
+            "en": "The observed passage favours early HPS with already fixed muscular hypertrophy.",
+            "fa": "عبور مشاهده‌شده به نفع مرحلهٔ زودرس HPS با هیپرتروفی عضلانی از قبل ثابت است."
+          },
+          {
+            "de": "Die wiederholte Öffnung spricht für einen normalen Pylorus trotz der wechselnden Verdickung.",
+            "en": "Repeated opening favours a normal pylorus despite the variable thickening.",
+            "fa": "بازشدن مکرر به نفع پیلور طبیعی، با وجود ضخیم‌شدگی متغیر است."
+          }
+        ],
+        "answer": 1,
+        "explanation": {
+          "de": "Pylorospasmus kann zeitweise dieselben Größen erreichen wie HPS. Wiederholte Öffnung und wechselnde Morphologie sind wichtige Hinweise, aber eine geringe Passage allein schließt HPS nicht aus. Morphometrie, Dynamik und Klinik gemeinsam beurteilen.",
+          "en": "Pylorospasm can transiently overlap HPS measurements. Repeated opening and changing morphology are important clues, but a small amount of passage alone does not exclude HPS. Interpret morphology, dynamics and clinical findings together.",
+          "fa": "پیلورواسپاسم می‌تواند موقتاً اندازه‌هایی هم‌پوشان با HPS داشته باشد. بازشدن مکرر و تغییر مورفولوژی سرنخ‌های مهم‌اند، اما عبور مقدار کمی مایع به‌تنهایی HPS را رد نمی‌کند. مورفومتری، پویایی و بالین را با هم بررسی کنید."
+        },
+        "wrongFeedback": {
+          "0": {
+            "de": "Eine Maximalmessung ignoriert die dokumentierte Variabilität; Spasmus kann einzelne hohe Werte erzeugen.",
+            "en": "A maximum measurement ignores the observed variability; spasm may produce isolated high values.",
+            "fa": "بیشینهٔ اندازه، تغییرپذیری مشاهده‌شده را نادیده می‌گیرد؛ اسپاسم می‌تواند مقادیر منفرد بالا ایجاد کند."
+          },
+          "2": {
+            "de": "Geringe Passage kann auch bei HPS vorkommen; sie belegt aber keine fixe Hypertrophie. Die dokumentierte Variabilität muss mit korrekt gemessener Muskulatur und Klinik gewertet werden.",
+            "en": "Small-volume passage may occur in HPS, but does not demonstrate fixed hypertrophy. The documented variability must be assessed with correctly measured muscle and clinical findings.",
+            "fa": "عبور مقدار کمی مایع ممکن است در HPS هم رخ دهد، اما هیپرتروفی ثابت را نشان نمی‌دهد. تغییرپذیری ثبت‌شده باید همراه اندازه‌گیری درست عضله و بالین ارزیابی شود."
+          },
+          "3": {
+            "de": "Öffnung allein unterscheidet einen normalen Pylorus nicht sicher von Spasmus oder HPS. Wechselnde Verdickung verlangt eine gemeinsame morphometrische und dynamische Beurteilung.",
+            "en": "Opening alone does not reliably distinguish a normal pylorus from spasm or HPS. Variable thickening requires combined morphometric and dynamic assessment.",
+            "fa": "بازشدن به‌تنهایی پیلور طبیعی را با اطمینان از اسپاسم یا HPS تفکیک نمی‌کند. ضخیم‌شدگی متغیر به ارزیابی توأم مورفومتری و پویایی نیاز دارد."
+          }
+        },
+        "front": {
+          "de": "Warum die Pylorusöffnung über mehrere Wellen beobachten?",
+          "en": "Why observe pyloric opening over several waves?",
+          "fa": "چرا بازشدن پیلور را طی چند موج مشاهده می‌کنیم؟"
+        },
+        "retrieval": {
+          "de": "Variabilität und wiederholte Öffnung helfen, Spasmus von persistenter Hypertrophie abzugrenzen. Geringe Passage allein ist kein sicherer Ausschluss einer HPS.",
+          "en": "Variability and repeated opening help distinguish spasm from persistent hypertrophy. A small amount of passage alone does not reliably exclude HPS.",
+          "fa": "تغییرپذیری و بازشدن مکرر به افتراق اسپاسم از هیپرتروفی پایدار کمک می‌کنند. عبور مقدار کمی مایع به‌تنهایی HPS را با اطمینان رد نمی‌کند."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/9805307/"
+      }
+    },
+    {
+      "key": "mesenteric-viability",
+      "before": {
+        "key": "mesenteric-viability",
+        "fach": "abdomen",
+        "topicId": "mesenteriale-ischaemie",
+        "route": "/abdomen/gi/mesenteriale-ischaemie",
+        "goal": "severity",
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010",
+        "createCard": true,
+        "category": {
+          "de": "Befundsicherheit",
+          "en": "Diagnostic certainty",
+          "fa": "قطعیت گزارش"
+        },
+        "question": {
+          "de": "CTA zeigt einen SMA-Verschluss, deutlich verminderte Darmwandaufnahme, Pneumatosis und portomesenteriales Gas. Welche Aussage zur Befundsicherheit ist angemessen?",
+          "en": "CTA shows SMA occlusion, markedly reduced bowel-wall enhancement, pneumatosis and portomesenteric gas. Which statement about diagnostic certainty is appropriate?",
+          "fa": "CTA انسداد SMA، کاهش واضح تقویت دیوارهٔ روده، پنوماتوز و گاز پورتومزانتریک نشان می‌دهد. کدام گزاره دربارهٔ قطعیت گزارش مناسب است؟"
+        },
+        "options": [
+          {
+            "de": "Die Luftbefunde reichen zur Einordnung als unkomplizierte mechanische Passagebehinderung.",
+            "en": "The gas findings suffice to classify uncomplicated mechanical obstruction.",
+            "fa": "یافته‌های گاز برای طبقه‌بندی به‌عنوان انسداد مکانیکی بدون عارضه کافی‌اند."
+          },
+          {
+            "de": "Das Muster legt die Irreversibilität der gesamten betroffenen Darmlänge bereits abschließend fest.",
+            "en": "The pattern definitively establishes irreversibility throughout the involved bowel length.",
+            "fa": "این الگو برگشت‌ناپذیری تمام طول رودهٔ درگیر را به‌طور نهایی مشخص می‌کند."
+          },
+          {
+            "de": "Hochgradiger Ischämieverdacht mit dringlichem Handlungsbedarf; die Zeichen allein beweisen keine irreversible Schädigung.",
+            "en": "Severe concern for ischaemia requiring urgent action; these signs alone do not prove irreversible injury.",
+            "fa": "شک شدید به ایسکمی با نیاز به اقدام فوری؛ این نشانه‌ها به‌تنهایی آسیب برگشت‌ناپذیر را ثابت نمی‌کنند."
+          },
+          {
+            "de": "Portomesenteriales Gas legt eine freie Darmperforation als alleinige Diagnose fest.",
+            "en": "Portomesenteric gas establishes free bowel perforation as the sole diagnosis.",
+            "fa": "گاز پورتومزانتریک، پرفوراسیون آزاد روده را به‌عنوان تنها تشخیص مشخص می‌کند."
+          }
+        ],
+        "correct": "C",
+        "explanation": {
+          "de": "Der kombinierte Gefäß- und Darmbefund ist hochgradig bedenklich und muss dringlich kommuniziert werden. ESVS betont zugleich, dass auch Pneumatosis, venöses Gas und verminderte Aufnahme allein keine irreversible Darmschädigung beweisen. Viabilität und weiteres Vorgehen brauchen unverzügliche klinisch-chirurgisch-vaskuläre Beurteilung.",
+          "en": "The combined vascular and bowel pattern is highly concerning and requires urgent communication. ESVS also stresses that pneumatosis, venous gas and reduced enhancement alone do not prove irreversible bowel injury. Viability and management require immediate clinical, surgical and vascular assessment.",
+          "fa": "مجموعهٔ یافته‌های عروقی و روده‌ای بسیار نگران‌کننده است و باید فوری منتقل شود. ESVS همچنین تأکید می‌کند که پنوماتوز، گاز وریدی و کاهش تقویت به‌تنهایی آسیب برگشت‌ناپذیر روده را ثابت نمی‌کنند. زنده‌مانی و اقدام بعدی به ارزیابی بی‌درنگ بالینی، جراحی و عروقی نیاز دارد."
+        },
+        "wrong": [
+          {
+            "de": "Verschluss und Minderaufnahme werden durch die Luftbefunde nicht zu einer unkomplizierten Obstruktion.",
+            "en": "Occlusion and reduced enhancement are not converted to uncomplicated obstruction by these gas findings.",
+            "fa": "یافته‌های گاز، انسداد عروقی و کاهش تقویت را به انسداد سادهٔ روده تبدیل نمی‌کنند."
+          },
+          {
+            "de": "CT-Zeichen erhöhen den Verdacht, legen die Irreversibilität aber nicht allein abschließend fest.",
+            "en": "CT signs increase concern but do not alone definitively establish irreversibility.",
+            "fa": "نشانه‌های CT نگرانی را بالا می‌برند، اما برگشت‌ناپذیری را به‌تنهایی به‌طور نهایی مشخص نمی‌کنند."
+          },
+          null,
+          {
+            "de": "Gas im venösen System ist nicht gleich freie Luft im Peritoneum; hier muss das Ischämiemuster beurteilt werden.",
+            "en": "Gas in the venous system is not equivalent to free peritoneal air; assess the ischaemic pattern here.",
+            "fa": "گاز سیستم وریدی معادل هوای آزاد صفاق نیست؛ در اینجا باید الگوی ایسکمی را بررسی کرد."
+          }
+        ],
+        "front": {
+          "de": "Beweisen Pneumatosis und portomesenteriales Gas eine irreversible Darmnekrose?",
+          "en": "Do pneumatosis and portomesenteric gas prove irreversible bowel necrosis?",
+          "fa": "آیا پنوماتوز و گاز پورتومزانتریک، نکروز برگشت‌ناپذیر روده را ثابت می‌کنند؟"
+        },
+        "answer": {
+          "de": "Nein. Im passenden Muster sind sie dringliche Warnzeichen; Irreversibilität lässt sich daraus allein nicht beweisen. Gefäße, Enhancement und Klinik gemeinsam beurteilen.",
+          "en": "No. In a compatible pattern they are urgent warning signs; they do not alone prove irreversibility. Assess vessels, enhancement and clinical findings together.",
+          "fa": "خیر. در الگوی سازگار، نشانه‌های هشدار فوری‌اند؛ برگشت‌ناپذیری را به‌تنهایی ثابت نمی‌کنند. عروق، تقویت و بالین را با هم ارزیابی کنید."
+        }
+      },
+      "after": {
+        "key": "mesenteric-viability",
+        "fach": "abdomen",
+        "topicId": "mesenteriale-ischaemie",
+        "route": "/abdomen/gi/mesenteriale-ischaemie",
+        "goal": "severity",
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010",
+        "createCard": true,
+        "category": {
+          "de": "Befundsicherheit",
+          "en": "Diagnostic certainty",
+          "fa": "قطعیت گزارش"
+        },
+        "question": {
+          "de": "CTA zeigt einen SMA-Verschluss, deutlich verminderte Darmwandaufnahme, Pneumatosis und portomesenteriales Gas. Welche Aussage zur Befundsicherheit ist angemessen?",
+          "en": "CTA shows SMA occlusion, markedly reduced bowel-wall enhancement, pneumatosis and portomesenteric gas. Which statement about diagnostic certainty is appropriate?",
+          "fa": "CTA انسداد SMA، کاهش واضح تقویت دیوارهٔ روده، پنوماتوز و گاز پورتومزانتریک نشان می‌دهد. کدام گزاره دربارهٔ قطعیت گزارش مناسب است؟"
+        },
+        "options": [
+          {
+            "de": "Passagestörung mit erhaltener Perfusion als führende Erklärung; konservative Verlaufskontrolle.",
+            "en": "Transit obstruction with preserved perfusion as the leading explanation; conservative follow-up.",
+            "fa": "اختلال عبور با پرفیوژن حفظ‌شده به‌عنوان علت اصلی؛ پیگیری محافظه‌کارانه."
+          },
+          {
+            "de": "Transmurale Nekrose der gesamten betroffenen Strecke als führende Beurteilung; Resektionsausmaß aus der CT ableiten.",
+            "en": "Transmural necrosis throughout the affected segment as the leading assessment; derive resection extent from CT.",
+            "fa": "نکروز تمام‌جداری در سراسر قطعهٔ درگیر به‌عنوان ارزیابی اصلی؛ تعیین وسعت رزکسیون بر اساس CT."
+          },
+          {
+            "de": "Akute mesenteriale Ischämie mit dringlichem Handlungsbedarf; Darmviabilität unverzüglich klinisch-chirurgisch beurteilen.",
+            "en": "Acute mesenteric ischaemia requiring urgent action; promptly assess bowel viability clinically and surgically.",
+            "fa": "ایسکمی حاد مزانتریک با نیاز به اقدام فوری؛ ارزیابی بی‌درنگ زنده‌مانی روده از نظر بالینی و جراحی."
+          },
+          {
+            "de": "Gedeckte Darmperforation als führende Erklärung; primär nach einem lokalen Leck suchen.",
+            "en": "Contained bowel perforation as the leading explanation; primarily search for a local leak.",
+            "fa": "پرفوراسیون پوشیدهٔ روده به‌عنوان علت اصلی؛ جست‌وجوی اولیهٔ نشت موضعی."
+          }
+        ],
+        "correct": "C",
+        "explanation": {
+          "de": "Der kombinierte Gefäß- und Darmbefund ist hochgradig bedenklich und muss dringlich kommuniziert werden. ESVS betont zugleich, dass auch Pneumatosis, venöses Gas und verminderte Aufnahme allein keine irreversible Darmschädigung beweisen. Viabilität und weiteres Vorgehen brauchen unverzügliche klinisch-chirurgisch-vaskuläre Beurteilung.",
+          "en": "The combined vascular and bowel pattern is highly concerning and requires urgent communication. ESVS also stresses that pneumatosis, venous gas and reduced enhancement alone do not prove irreversible bowel injury. Viability and management require immediate clinical, surgical and vascular assessment.",
+          "fa": "مجموعهٔ یافته‌های عروقی و روده‌ای بسیار نگران‌کننده است و باید فوری منتقل شود. ESVS همچنین تأکید می‌کند که پنوماتوز، گاز وریدی و کاهش تقویت به‌تنهایی آسیب برگشت‌ناپذیر روده را ثابت نمی‌کنند. زنده‌مانی و اقدام بعدی به ارزیابی بی‌درنگ بالینی، جراحی و عروقی نیاز دارد."
+        },
+        "wrong": [
+          {
+            "de": "SMA-Verschluss und verminderte Wandaufnahme sprechen gegen erhaltene Perfusion. Eine reine konservative Verlaufskontrolle würde die dringliche Ischämiebeurteilung verzögern.",
+            "en": "SMA occlusion and reduced wall enhancement argue against preserved perfusion. Conservative follow-up alone would delay urgent ischaemia assessment.",
+            "fa": "انسداد SMA و کاهش جذب دیواره بر خلاف پرفیوژن حفظ‌شده‌اند. پیگیری محافظه‌کارانهٔ صرف، ارزیابی فوری ایسکمی را به تأخیر می‌اندازد."
+          },
+          {
+            "de": "Das Muster ist hochgradig bedenklich, definiert aber weder Irreversibilität noch das Resektionsausmaß zuverlässig allein. Dringliche interdisziplinäre Viabilitätsbeurteilung ist nötig.",
+            "en": "The pattern is highly concerning but does not reliably define irreversibility or resection extent by itself. Urgent interdisciplinary viability assessment is needed.",
+            "fa": "الگو بسیار نگران‌کننده است، اما به‌تنهایی برگشت‌ناپذیری یا وسعت رزکسیون را با اطمینان تعیین نمی‌کند. ارزیابی فوری و بین‌رشته‌ای زنده‌مانی لازم است."
+          },
+          null,
+          {
+            "de": "Portomesenteriales Gas ist venöses Gas und nicht der Nachweis eines lokalen Darmlecks. Der SMA-Verschluss mit Minderaufnahme priorisiert die Ischämie; zusätzliche Perforationszeichen wären gesondert zu beurteilen.",
+            "en": "Portomesenteric gas is venous gas, not demonstration of a local bowel leak. SMA occlusion with reduced enhancement prioritises ischaemia; additional perforation signs require separate assessment.",
+            "fa": "گاز پورتومزانتریک گاز وریدی است، نه اثبات نشت موضعی روده. انسداد SMA همراه کاهش جذب، ایسکمی را در اولویت می‌گذارد؛ نشانه‌های اضافی پرفوراسیون باید جداگانه ارزیابی شوند."
+          }
+        ],
+        "front": {
+          "de": "Beweisen Pneumatosis und portomesenteriales Gas eine irreversible Darmnekrose?",
+          "en": "Do pneumatosis and portomesenteric gas prove irreversible bowel necrosis?",
+          "fa": "آیا پنوماتوز و گاز پورتومزانتریک، نکروز برگشت‌ناپذیر روده را ثابت می‌کنند؟"
+        },
+        "answer": {
+          "de": "Nein. Im passenden Muster sind sie dringliche Warnzeichen; Irreversibilität lässt sich daraus allein nicht beweisen. Gefäße, Enhancement und Klinik gemeinsam beurteilen.",
+          "en": "No. In a compatible pattern they are urgent warning signs; they do not alone prove irreversibility. Assess vessels, enhancement and clinical findings together.",
+          "fa": "خیر. در الگوی سازگار، نشانه‌های هشدار فوری‌اند؛ برگشت‌ناپذیری را به‌تنهایی ثابت نمی‌کنند. عروق، تقویت و بالین را با هم ارزیابی کنید."
+        }
+      }
+    }
+  ],
+  "source": "Cohen1998 actual complete abstract reread2026-10-25 for dynamic overlap; no new numerical thresholds. OriginalFishman1991/ESVS2025 evidence unchanged.",
+  "followup": [
+    {
+      "id": "kolorektales-karzinom-02",
+      "file": "data/colorectalCancerFlashcards.js",
+      "beforeLiteral": "    explanation: L('Die T-Kategorie beschreibt die anatomische Tiefenausdehnung. PDF-Untergruppen und numerische Grenzen müssen zur benannten TNM-Version passen.', 'The T category describes anatomic depth. PDF subgroups and numeric cut-offs must match the stated TNM version.', 'دسته T عمق گسترش آناتومیک را بیان می‌کند. زیرگروه‌ها و حدهای عددی PDF باید با نسخه مشخص TNM تطبیق داده شوند.'),\r",
+      "afterLiteral": "    explanation: {\"de\":\"Nach AJCC8 beschreibt T die anatomische Tiefenausdehnung: T2 bleibt in der Muscularis propria, T3 überschreitet sie ins perikolorektale Gewebe. Eine Serosainvasion (T4a) ist von der Invasion benachbarter Organe/Strukturen (T4b) zu unterscheiden; nicht alle Rektumabschnitte sind peritoneal bedeckt.\",\"en\":\"Under AJCC8, T describes anatomical depth: T2 involves the muscularis propria, whereas T3 extends through it into pericolorectal tissue. Distinguish visceral peritoneal invasion (T4a) from invasion of adjacent organs/structures (T4b); not all rectal segments are peritonealised.\",\"fa\":\"در AJCC8، دستهٔ T عمق آناتومیک گسترش را بیان می‌کند: T2 در muscularis propria است و T3 از آن به بافت پری‌کولورکتال عبور می‌کند. نفوذ به صفاق احشایی (T4a) را از نفوذ به اندام یا ساختار مجاور (T4b) تفکیک کنید؛ همهٔ قسمت‌های رکتوم پوشش صفاقی ندارند.\"},\n    source: 'https://www.cancer.gov/types/colorectal/hp/rectal-treatment-pdq',",
+      "source": "Actual NCI original AJCC8 definitions table read; anatomical peritonealised rectal-subsite caveat checked against official SEER source."
+    },
+    {
+      "ids": [
+        "abdomen-ileus-volvulus-de-01",
+        "abdomen-ileus-volvulus-en-01",
+        "abdomen-ileus-volvulus-fa-01"
+      ],
+      "status": "SHARED_PROPOSALS_ONLY_NOT_APPLIED",
+      "field": "after.source",
+      "after": "https://pubmed.ncbi.nlm.nih.gov/15093232/",
+      "sourceEvidence": "Lassandro2004 original27 surgical cases full abstract read2026-10-25; complete Rigler triad absent in some CT examinations. No cohort percentages taught."
+    }
+  ]
+}

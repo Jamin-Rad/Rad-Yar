@@ -21,16 +21,8 @@ export const DE_QUERVAIN_LESSON = {
     {
       id: 'clinical-pattern', icon: '⌖',
       title: t('Klinisches Muster und Provokationstest', 'Clinical pattern and provocative manoeuvre', 'الگوی بالینی و مانور تحریکی'),
-      lead: t(
-        'Typisch ist radialseitiger Schmerz an der Tabatière/Fossa radialis, der bei Daumenbewegung auftritt oder zunimmt. Die PDF nennt eine Provokation mit in die Faust eingeschlagenem Daumen und anschließender ulnarer Abweichung der Hand.',
-        'A typical pattern is radial-sided pain at the anatomical snuffbox/radial fossa that occurs or worsens with thumb movement. The PDF describes a manoeuvre with the thumb folded into the fist followed by ulnar deviation of the hand.',
-        'الگوی معمول، درد در سمت رادیال مچ و ناحیهٔ گودی اسناف‌باکس است که با حرکت شست ایجاد یا تشدید می‌شود. در PDF مانوری با قرار دادن شست داخل مشت و سپس انحراف دست به سمت اولنار توصیف شده است.'
-      ),
-      note: t(
-        'Terminologie beachten: Die im PDF als Finkelstein-Test bezeichnete Variante mit eingeschlagenem Daumen wird in der Literatur häufig als Eichhoff-Manöver abgegrenzt. Schmerzprovokation allein ist kein beweisender Befund; Testnamen und Ausführung sind nicht einheitlich verwendet.',
-        'Terminology matters: the thumb-in-fist variant labelled the Finkelstein test in the PDF is often distinguished in the literature as the Eichhoff manoeuvre. Pain provocation alone is not diagnostic; test names and descriptions are used inconsistently.',
-        'به نام‌گذاری توجه کنید: مانورِ قرار دادن شست داخل مشت که در PDF «تست فینکلشتاین» نامیده شده، در بسیاری از منابع به‌عنوان مانور آیکهوف از تست فینکلشتاین تفکیک می‌شود. بازتولید درد به‌تنهایی تشخیصی نیست و نام و اجرای این آزمون‌ها در منابع یکسان نیست.'
-      ),
+      lead: t("Typisch ist Schmerz über dem radialen Processus styloideus, der bei Daumenbewegung auftritt oder zunimmt. Die PDF nennt eine Provokation mit in die Faust eingeschlagenem Daumen und anschließender ulnarer Abweichung der Hand.", "A typical pattern is pain over the radial styloid that occurs or worsens with thumb movement. The PDF describes a manoeuvre with the thumb folded into the fist followed by ulnar deviation of the hand.", "الگوی معمول، درد روی زائدهٔ استایلوئید رادیوس است که با حرکت شست ایجاد یا تشدید می‌شود. در PDF مانوری با قرار دادن شست داخل مشت و سپس انحراف دست به سمت اولنار توصیف شده است."),
+      note: t("Die Daumen-in-der-Faust-Variante wird häufig Eichhoff-Manöver genannt. Manöverausführung genau benennen. In der Studie von Wu et al. (2018) wurden beschwerdefreie Handgelenke untersucht: weniger falsch-positive Reaktionen bestimmen keine Sensitivität bei Erkrankten. Eine Schmerzprovokation allein ist kein Diagnosebeweis.", "The thumb-in-fist variant is often called the Eichhoff manoeuvre. Specify the technique precisely. Wu et al. (2018) studied asymptomatic wrists: fewer false-positive responses do not establish sensitivity in affected patients. Pain provocation alone is not diagnostic.", "مانور قرار دادن شست داخل مشت اغلب آیکهوف نامیده می‌شود. شیوهٔ اجرا دقیق بیان شود. در مطالعهٔ Wu و همکاران در سال ۲۰۱۸ مچ‌های بدون علامت بررسی شدند؛ پاسخ مثبت کاذب کمتر، حساسیت را در بیماران مبتلا مشخص نمی‌کند. بازتولید درد به‌تنهایی تشخیصی نیست."),
       source: t('MSK.pdf, PDF-S. 42 / Druck-S. 41; Wu et al. 2018.', 'MSK.pdf, PDF p. 42 / printed p. 41; Wu et al. 2018.', 'MSK.pdf، صفحهٔ PDF ۴۲ / صفحهٔ چاپی ۴۱؛ Wu و همکاران، ۲۰۱۸.'),
     },
     {
@@ -54,7 +46,7 @@ export const DE_QUERVAIN_LESSON = {
       title: t('Wo liegen die entscheidenden MRT-Zeichen?', 'Where are the key MRI findings?', 'یافته‌های کلیدی MRI کجا هستند؟'),
       lead: t('Folgen Sie dem ersten Fach am radialen Processus styloideus und beurteilen Sie Sehnen, Sehnenscheide und direktes Umfeld getrennt.', 'Trace the first compartment at the radial styloid and assess the tendons, tendon sheath and immediate surrounding tissues separately.', 'کمپارتمان اول را در سطح زائدهٔ استایلوئید رادیوس دنبال کنید و تاندون‌ها، غلاف تاندون و بافت‌های اطراف را جداگانه ارزیابی کنید.'),
       rows: [
-        [t('APL und EPB', 'APL and EPB', 'APL و EPB'), t('Verdickung und erhöhtes T2-Signal.', 'Thickening and increased T2 signal.', 'ضخیم‌شدن و افزایش سیگنال T2.')],
+        [t('APL und EPB', 'APL and EPB', 'APL و EPB'), t("Verdickung; intratendinöses Flüssigkeitssignal kann erhöht sein, ist aber kein obligates Einzelkriterium.", "Thickening; intratendinous fluid-sensitive signal may increase but is not a mandatory individual criterion.", "ضخیم‌شدن؛ سیگنال حساس به مایع داخل تاندون ممکن است افزایش یابد، اما معیار منفرد الزامی نیست.")],
         [t('Sehnenscheide', 'Tendon sheath', 'غلاف تاندون'), t('Flüssigkeit als Halo-Zeichen und/oder Wandverdickung.', 'Fluid as a halo sign and/or sheath-wall thickening.', 'مایع به شکل علامت هاله و/یا ضخیم‌شدن دیوارهٔ غلاف.')],
         [t('Umgebung', 'Surrounding tissues', 'بافت‌های اطراف'), t('Peritendinöses Weichteilödem radial über dem Processus styloideus radii.', 'Radial peritendinous soft-tissue oedema over the radial styloid.', 'ادم بافت نرم اطراف تاندون در سمت رادیال و روی زائدهٔ استایلوئید رادیوس.')],
       ],
@@ -75,16 +67,55 @@ export const DE_QUERVAIN_LESSON = {
   ],
   case: {
     title: t('Selbstprüfung: Was ist im MRT beschrieben?', 'Self-check: what is described on MRI?', 'خودآزمایی: در MRI چه چیزی توصیف شده است؟'),
-    prompt: t('Bei radialem Handgelenkschmerz zeigt sich eine Verdickung von APL und EPB mit Flüssigkeit um die Sehnen im ersten Fach. Welche Befundkombination passt am besten zur PDF?', 'With radial wrist pain, MRI shows thickening of APL and EPB with fluid around the tendons in the first compartment. Which combination best matches the PDF?', 'در بیماری با درد رادیال مچ، MRI ضخیم‌شدن APL و EPB و مایع پیرامون تاندون‌ها در کمپارتمان اول را نشان می‌دهد. کدام ترکیب یافته با PDF بیشترین تطابق را دارد؟'),
+    prompt: t("Textfall: Bei radialem Handgelenkschmerz zeigt die MRT verdickte APL-/EPB-Sehnen über dem Radiusstyloid mit Flüssigkeit in der gemeinsamen Sehnenscheide und peritendinösem Ödem. Faserunterbrechung oder Retraktion sind nicht erkennbar. Welche Befundinterpretation passt am besten?", "Text vignette: in radial wrist pain, MRI shows thickened APL/EPB tendons over the radial styloid with fluid in their common sheath and peritendinous oedema. No fibre discontinuity or retraction is visible. Which interpretation fits best?", "سناریوی متنی: در درد رادیال مچ، MRI ضخیم‌شدن تاندون‌های APL/EPB روی استایلوئید رادیوس، مایع در غلاف مشترک و ادم اطراف تاندون را نشان می‌دهد. قطع رشته یا عقب‌کشیدگی دیده نمی‌شود. کدام تفسیر مناسب‌تر است؟"),
     options: [
-      t('Sehnenverdickung plus Flüssigkeit in der Sehnenscheide im ersten Strecksehnenfach.', 'Tendon thickening plus tendon-sheath fluid in the first extensor compartment.', 'ضخیم‌شدن تاندون به‌همراه مایع در غلاف تاندونِ کمپارتمان اول اکستانسور.'),
-      t('Isoliertes Knochenmarködem ohne Bezug zur radialen Sehnenscheide.', 'Isolated bone-marrow oedema unrelated to the radial tendon sheath.', 'ادم منفرد مغز استخوان بدون ارتباط با غلاف تاندون رادیال.'),
-      t('Eine Ruptur der ECU-Sehne am Ulnastyloid.', 'A tear of the ECU tendon at the ulnar styloid.', 'پارگی تاندون ECU در سطح استایلوئید اولنا.'),
-    ], answerIndex: 0,
-    feedbackCorrect: t('Richtig: Die PDF beschreibt Verdickung/erhöhtes T2-Signal der APL- und EPB-Sehnen sowie Flüssigkeit und mögliche Wandverdickung der Sehnenscheide im ersten Fach.', 'Correct: the PDF describes thickened/high-T2-signal APL and EPB tendons, with fluid and possible wall thickening in the first-compartment sheath.', 'درست است: PDF افزایش ضخامت/سیگنال T2 تاندون‌های APL و EPB و نیز مایع و احتمال ضخیم‌شدن دیوارهٔ غلاف در کمپارتمان اول را شرح می‌دهد.'),
-    feedbackIncorrect: t('Prüfen Sie die Ortsangabe und die Strukturen erneut: Gesucht sind die beiden radialen Sehnen des ersten Fachs und ihre Sehnenscheide.', 'Recheck the location and structures: the target is the two radial tendons of the first compartment and their sheath.', 'محل و ساختارها را دوباره بررسی کنید: منظور دو تاندون رادیال کمپارتمان اول و غلاف آن‌هاست.'),
-    source: t('MSK.pdf, PDF-S. 42 / Druck-S. 41.', 'MSK.pdf, PDF p. 42 / printed p. 41.', 'MSK.pdf، صفحهٔ PDF ۴۲ / صفحهٔ چاپی ۴۱.'),
+  {
+    "de": "Tenosynoviales Veränderungsmuster im ersten Strecksehnenfach, mit der Klinik einer de-Quervain-Erkrankung abzugleichen",
+    "en": "Tenosynovial change in the first extensor compartment, to correlate with clinical de Quervain disease",
+    "fa": "الگوی تغییر تنوسینوویال در کمپارتمان اول اکستانسور، نیازمند تطبیق با بالین دو کروَن"
   },
+  {
+    "de": "Komplette APL-Ruptur im ersten Strecksehnenfach mit retrahiertem proximalem Sehnenstumpf",
+    "en": "Complete APL rupture in the first extensor compartment with a retracted proximal tendon stump",
+    "fa": "پارگی کامل APL در کمپارتمان اول با عقب‌کشیدگی انتهای پروگزیمال تاندون"
+  },
+  {
+    "de": "Längsgerichtete EPB-Spaltruptur als Erklärung eines flüssigkeitsgefüllten intratendinösen Spalts",
+    "en": "Longitudinal EPB split tear explaining a fluid-filled intratendinous cleft",
+    "fa": "پارگی طولی شکاف‌دار EPB برای توضیح شکاف پر از مایع داخل تاندون"
+  },
+  {
+    "de": "Umschriebene Ganglionzyste neben unveränderter Sehnenscheide als Erklärung des radialen Schmerzes",
+    "en": "Focal ganglion beside an unchanged tendon sheath explaining radial pain",
+    "fa": "کیست گانگلیون محدود در کنار غلاف تاندون بدون تغییر به‌عنوان علت درد رادیال"
+  }
+], answerIndex: 0,
+    feedbackCorrect: t("APL und EPB gehören zum ersten Strecksehnenfach. Verdickung, Scheidenflüssigkeit und peritendinöses Ödem passen zu einem tenosynovialen Muster; sie sind mit Untersuchung und Beschwerden abzugleichen. Intratendinöses Signal und subkutanes Ödem können variieren und sind keine obligaten Einzelkriterien.", "APL and EPB occupy the first extensor compartment. Thickening, sheath fluid and peritendinous oedema fit a tenosynovial pattern and require clinical correlation. Intratendinous signal and subcutaneous oedema may vary and are not mandatory individual criteria.", "APL و EPB در کمپارتمان اول اکستانسور قرار دارند. ضخیم‌شدن، مایع غلاف و ادم اطراف تاندون با الگوی تنوسینوویال سازگارند و باید با معاینه و علائم تطبیق داده شوند. سیگنال داخل تاندون و ادم زیرجلدی می‌توانند متغیر باشند و معیارهای منفرد الزامی نیستند."),
+    feedbackIncorrect: t('Prüfen Sie die Ortsangabe und die Strukturen erneut: Gesucht sind die beiden radialen Sehnen des ersten Fachs und ihre Sehnenscheide.', 'Recheck the location and structures: the target is the two radial tendons of the first compartment and their sheath.', 'محل و ساختارها را دوباره بررسی کنید: منظور دو تاندون رادیال کمپارتمان اول و غلاف آن‌هاست.'),
+    source: t("Glajchen & Schweitzer (1996): klinisch korrelierte MRT-Serie; Textfall ohne Abhängigkeit von einem Fallbild.", "Glajchen & Schweitzer (1996): clinically correlated MRI series; text vignette without case-image dependency.", "Glajchen و Schweitzer، ۱۹۹۶: مجموعهٔ MRI با تطبیق بالینی؛ سناریوی متنی مستقل از تصویر موردی."),
+    feedbackByOption: [
+  {
+    "de": "APL und EPB gehören zum ersten Strecksehnenfach. Verdickung, Scheidenflüssigkeit und peritendinöses Ödem passen zu einem tenosynovialen Muster; sie sind mit Untersuchung und Beschwerden abzugleichen. Intratendinöses Signal und subkutanes Ödem können variieren und sind keine obligaten Einzelkriterien.",
+    "en": "APL and EPB occupy the first extensor compartment. Thickening, sheath fluid and peritendinous oedema fit a tenosynovial pattern and require clinical correlation. Intratendinous signal and subcutaneous oedema may vary and are not mandatory individual criteria.",
+    "fa": "APL و EPB در کمپارتمان اول اکستانسور قرار دارند. ضخیم‌شدن، مایع غلاف و ادم اطراف تاندون با الگوی تنوسینوویال سازگارند و باید با معاینه و علائم تطبیق داده شوند. سیگنال داخل تاندون و ادم زیرجلدی می‌توانند متغیر باشند و معیارهای منفرد الزامی نیستند."
+  },
+  {
+    "de": "Für die beschriebene komplette Ruptur fehlen Faserunterbrechung und Retraktion. Scheidenflüssigkeit allein belegt keinen kompletten Sehnenriss.",
+    "en": "The stated complete tear lacks discontinuity and retraction. Sheath fluid alone does not establish a complete tendon tear.",
+    "fa": "برای پارگی کاملِ مطرح‌شده، قطع رشته و عقب‌کشیدگی وجود ندارد. مایع غلاف به‌تنهایی پارگی کامل تاندون را ثابت نمی‌کند."
+  },
+  {
+    "de": "Ein intratendinöser längsgerichteter Spalt ist nicht beschrieben. Das angegebene Flüssigkeitsmuster liegt in der Scheide und peritendinös.",
+    "en": "No longitudinal intratendinous cleft is described. The stated fluid pattern is in the sheath and surrounding tissues.",
+    "fa": "شکاف طولی داخل تاندون توصیف نشده است؛ الگوی مایعِ ذکرشده در غلاف و بافت اطراف تاندون قرار دارد."
+  },
+  {
+    "de": "Eine umschriebene Ganglionzyste erklärt nicht die beschriebenen Veränderungen der Sehnen und ihrer Scheide. Eine solche fokale Zyste ist hier nicht angegeben.",
+    "en": "A focal ganglion does not explain the described tendon and sheath changes. No such focal cyst is specified here.",
+    "fa": "کیست گانگلیون محدود تغییرات توصیف‌شدهٔ تاندون و غلاف را توضیح نمی‌دهد؛ چنین کیست کانونی‌ای در اینجا ذکر نشده است."
+  }
+],
+},
   takeHome: [
     t('Erstes Strecksehnenfach über dem radialen Processus styloideus: APL und EPB.', 'First extensor compartment over the radial styloid: APL and EPB.', 'کمپارتمان اول اکستانسور روی استایلوئید رادیوس: APL و EPB.'),
     t('PD-FS/T2-FS für Flüssigkeit und Ödem; T1-w für Anatomie und Sehnenstruktur.', 'PD-FS/T2-FS for fluid and oedema; T1-weighted imaging for anatomy and tendon structure.', 'PD-FS/T2-FS برای مایع و ادم؛ T1 وزن‌شده برای آناتومی و ساختار تاندون.'),

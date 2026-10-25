@@ -63,12 +63,12 @@ export const ASYMMETRY_POINTS = [
 ]
 
 export const BIRADS = [
-  ['0', 'Incomplete', 'Weitere Bildgebung / Voraufnahmen', 'Additional imaging / priors', 'تصویربرداری بیشتر / تصاویر قبلی'],
-  ['1', 'Negative', 'Routine', 'Routine', 'روتین'], ['2', 'Benign', 'Routine', 'Routine', 'روتین'],
-  ['3', 'Probably benign', 'Kurzfristige Kontrolle', 'Short-interval follow-up', 'پیگیری کوتاه‌مدت'],
-  ['4', 'Suspicious', 'Gewebediagnostik', 'Tissue diagnosis', 'تشخیص بافتی'],
-  ['5', 'Highly suggestive of malignancy', 'Gewebediagnostik', 'Tissue diagnosis', 'تشخیص بافتی'],
-  ['6', 'Known biopsy-proven malignancy', 'Bekanntes Malignom', 'Known malignancy', 'بدخیمی اثبات‌شده'],
+  ['0', L('Unvollständig', 'Incomplete', 'ناکامل'), 'Weitere Bildgebung / Voraufnahmen', 'Additional imaging / priors', 'تصویربرداری بیشتر / تصاویر قبلی'],
+  ['1', L('Negativ', 'Negative', 'منفی'), 'Routine', 'Routine', 'روتین'], ['2', L('Benigne', 'Benign', 'خوش‌خیم'), 'Routine', 'Routine', 'روتین'],
+  ['3', L('Wahrscheinlich benigne', 'Probably benign', 'احتمالاً خوش‌خیم'), 'Kurzfristige Kontrolle', 'Short-interval follow-up', 'پیگیری کوتاه‌مدت'],
+  ['4', L('Suspekt', 'Suspicious', 'مشکوک'), 'Gewebediagnostik', 'Tissue diagnosis', 'تشخیص بافتی'],
+  ['5', L('Hochgradiger Malignitätsverdacht', 'Highly suggestive of malignancy', 'بسیار مشکوک به بدخیمی'), 'Gewebediagnostik', 'Tissue diagnosis', 'تشخیص بافتی'],
+  ['6', L('Biopsiebestätigte Malignität', 'Known biopsy-proven malignancy', 'بدخیمی اثبات‌شده با بیوپسی'), 'Weitere Betreuung im behandelnden Brustteam', 'Further care with the treating breast team', 'ادامهٔ مراقبت در تیم درمان پستان'],
 ].map(([code, meaning, de, en, fa]) => ({ code, meaning, management: L(de, en, fa) }))
 
 export const ALGORITHM = [
@@ -83,26 +83,206 @@ export const ALGORITHM = [
 
 export const CASE_STEPS = [
   {
-    question: L('Was beurteilen Sie zuerst?', 'What do you assess first?', 'ابتدا چه چیزی را ارزیابی می‌کنید؟'),
-    context: L('58-jährige Patientin, Screening. Neue Mikroverkalkungen im oberen äußeren Quadranten.', '58-year-old screening patient. New calcifications in the upper outer quadrant.', 'بیمار ۵۸ ساله در غربالگری؛ کلسیفیکاسیون‌های جدید در ربع فوقانی خارجی.'),
-    options: [L('Enhancement', 'Enhancement', 'تقویت پس از تزریق'), L('Morphology', 'Morphology', 'مورفولوژی'), L('BI-RADS-Kategorie', 'BI-RADS category', 'دسته BI-RADS'), L('Histologie', 'Histology', 'بافت‌شناسی')], correct: 1,
-    feedback: L('Richtig: Der Befund wird zuerst morphologisch beschrieben. Die Kategorie folgt erst danach.', 'Correct: describe the morphology first. The assessment category comes later.', 'درست است: ابتدا مورفولوژی یافته توصیف می‌شود و سپس دسته ارزیابی تعیین می‌گردد.'),
-    wrong: L('Noch nicht. Beginnen Sie mit dem sichtbaren Descriptor – der Morphologie.', 'Not yet. Start with the visible descriptor: morphology.', 'هنوز نه. با دسکریپتور قابل مشاهده، یعنی مورفولوژی، شروع کنید.'),
+    "question": {
+      "de": "Was beurteilen Sie zuerst?",
+      "en": "What do you assess first?",
+      "fa": "ابتدا چه چیزی را ارزیابی می‌کنید؟"
+    },
+    "context": {
+      "de": "58-jährige Patientin, Screening. Neue Mikroverkalkungen im oberen äußeren Quadranten.",
+      "en": "58-year-old screening patient. New calcifications in the upper outer quadrant.",
+      "fa": "بیمار ۵۸ ساله در غربالگری؛ کلسیفیکاسیون‌های جدید در ربع فوقانی خارجی."
+    },
+    "options": [
+      {
+        "de": "Enhancement",
+        "en": "Enhancement",
+        "fa": "تقویت پس از تزریق"
+      },
+      {
+        "de": "Morphology",
+        "en": "Morphology",
+        "fa": "مورفولوژی"
+      },
+      {
+        "de": "BI-RADS-Kategorie",
+        "en": "BI-RADS category",
+        "fa": "دسته BI-RADS"
+      },
+      {
+        "de": "Histologie",
+        "en": "Histology",
+        "fa": "بافت‌شناسی"
+      }
+    ],
+    "correct": 1,
+    "feedback": {
+      "de": "Richtig: Der Befund wird zuerst morphologisch beschrieben. Die Kategorie folgt erst danach.",
+      "en": "Correct: describe the morphology first. The assessment category comes later.",
+      "fa": "درست است: ابتدا مورفولوژی یافته توصیف می‌شود و سپس دسته ارزیابی تعیین می‌گردد."
+    },
+    "wrong": {
+      "de": "Noch nicht. Beginnen Sie mit dem sichtbaren Descriptor – der Morphologie.",
+      "en": "Not yet. Start with the visible descriptor: morphology.",
+      "fa": "هنوز نه. با دسکریپتور قابل مشاهده، یعنی مورفولوژی، شروع کنید."
+    },
+    "optionFeedback": [
+      {
+        "de": "Enhancement setzt eine Kontrastmitteluntersuchung voraus; hier wird zunächst die mammographische Kalkmorphologie beurteilt.",
+        "en": "Enhancement requires contrast imaging; first assess mammographic calcification morphology here.",
+        "fa": "تقویت به بررسی با مادهٔ حاجب نیاز دارد؛ اینجا ابتدا مورفولوژی کلسیفیکاسیون در ماموگرافی ارزیابی می‌شود."
+      },
+      {
+        "de": "Richtig: Der Befund wird zuerst morphologisch beschrieben. Die Kategorie folgt erst danach.",
+        "en": "Correct: describe the morphology first. The assessment category comes later.",
+        "fa": "درست است: ابتدا مورفولوژی یافته توصیف می‌شود و سپس دسته ارزیابی تعیین می‌گردد."
+      },
+      {
+        "de": "Die Endkategorie folgt erst der vollständigen Merkmalsanalyse.",
+        "en": "The final category follows complete feature analysis.",
+        "fa": "دستهٔ نهایی پس از تحلیل کامل ویژگی‌ها تعیین می‌شود."
+      },
+      {
+        "de": "Eine Histologie ist ohne Gewebeprobe nicht gesichert; zunächst werden die Bildmerkmale beschrieben.",
+        "en": "Histology is not established without tissue sampling; first describe imaging features.",
+        "fa": "بدون نمونه‌برداری بافت‌شناسی مشخص نیست؛ ابتدا ویژگی‌های تصویری توصیف می‌شوند."
+      }
+    ]
   },
   {
-    question: L('Was fehlt für die vollständige Beschreibung?', 'What is missing for a complete description?', 'برای توصیف کامل چه چیزی کم است؟'),
-    context: L('Magnifikationsaufnahme: fine pleomorphic calcifications.', 'Magnification view: fine pleomorphic calcifications.', 'نمای بزرگنمایی: کلسیفیکاسیون‌های ظریف پلئومورفیک.'),
-    options: [L('Breast Composition', 'Breast composition', 'ترکیب پستان'), L('Distribution', 'Distribution', 'توزیع'), L('Mass Density', 'Mass density', 'دانسیته توده'), L('Enhancement-Kinetik', 'Enhancement kinetics', 'کینتیک تقویت پس از تزریق')], correct: 1,
-    feedback: L('Richtig: Morphologie und Distribution bilden gemeinsam die vollständige Kalkbeschreibung.', 'Correct: morphology and distribution together complete the calcification description.', 'درست است: مورفولوژی و توزیع با هم توصیف کامل کلسیفیکاسیون را می‌سازند.'),
-    wrong: L('Der zweite obligatorische Kalk-Descriptor ist die Verteilung.', 'The second mandatory calcification descriptor is distribution.', 'دومین دسکریپتور ضروری کلسیفیکاسیون، توزیع است.'),
+    "question": {
+      "de": "Was fehlt für die vollständige Beschreibung?",
+      "en": "What is missing for a complete description?",
+      "fa": "برای توصیف کامل چه چیزی کم است؟"
+    },
+    "context": {
+      "de": "Magnifikationsaufnahme: fine pleomorphic calcifications.",
+      "en": "Magnification view: fine pleomorphic calcifications.",
+      "fa": "نمای بزرگنمایی: کلسیفیکاسیون‌های ظریف پلئومورفیک."
+    },
+    "options": [
+      {
+        "de": "Breast Composition",
+        "en": "Breast composition",
+        "fa": "ترکیب پستان"
+      },
+      {
+        "de": "Distribution",
+        "en": "Distribution",
+        "fa": "توزیع"
+      },
+      {
+        "de": "Mass Density",
+        "en": "Mass density",
+        "fa": "دانسیته توده"
+      },
+      {
+        "de": "Enhancement-Kinetik",
+        "en": "Enhancement kinetics",
+        "fa": "کینتیک تقویت پس از تزریق"
+      }
+    ],
+    "correct": 1,
+    "feedback": {
+      "de": "Richtig: Morphologie und Distribution bilden gemeinsam die vollständige Kalkbeschreibung.",
+      "en": "Correct: morphology and distribution together complete the calcification description.",
+      "fa": "درست است: مورفولوژی و توزیع با هم توصیف کامل کلسیفیکاسیون را می‌سازند."
+    },
+    "wrong": {
+      "de": "Der zweite obligatorische Kalk-Descriptor ist die Verteilung.",
+      "en": "The second mandatory calcification descriptor is distribution.",
+      "fa": "دومین دسکریپتور ضروری کلسیفیکاسیون، توزیع است."
+    },
+    "optionFeedback": [
+      {
+        "de": "Die Brustzusammensetzung ist wichtig, ergänzt aber nicht die räumliche Anordnung dieser Kalkgruppe.",
+        "en": "Breast composition matters but does not describe the spatial arrangement of these calcifications.",
+        "fa": "ترکیب پستان مهم است، اما آرایش فضایی این کلسیفیکاسیون‌ها را توصیف نمی‌کند."
+      },
+      {
+        "de": "Richtig: Morphologie und Distribution bilden gemeinsam die vollständige Kalkbeschreibung.",
+        "en": "Correct: morphology and distribution together complete the calcification description.",
+        "fa": "درست است: مورفولوژی و توزیع با هم توصیف کامل کلسیفیکاسیون را می‌سازند."
+      },
+      {
+        "de": "Mass density beschreibt eine Raumforderung, nicht die Verteilung der Kalkpartikel.",
+        "en": "Mass density describes a mass, not calcification distribution.",
+        "fa": "دانسیتهٔ توده، توده را توصیف می‌کند، نه توزیع کلسیفیکاسیون‌ها."
+      },
+      {
+        "de": "Enhancement-Kinetik ersetzt die fehlende mammographische Verteilungsbeschreibung nicht.",
+        "en": "Enhancement kinetics does not replace the missing mammographic distribution description.",
+        "fa": "کینتیک تقویت جای توصیفِ حذف‌شدهٔ توزیع ماموگرافیک را نمی‌گیرد."
+      }
+    ]
   },
   {
-    question: L('Welche Interpretation ist am sinnvollsten?', 'Which interpretation is most appropriate?', 'کدام تفسیر مناسب‌تر است؟'),
-    context: L('Neu aufgetretene fine pleomorphic Verkalkungen in segmentaler Distribution.', 'New fine pleomorphic calcifications in a segmental distribution.', 'کلسیفیکاسیون‌های ظریف پلئومورفیک جدید با توزیع سگمنتال.'),
-    options: [L('Typisch benigne', 'Typically benign', 'تیپیک خوش‌خیم'), L('Tissue Overlap', 'Tissue overlap', 'هم‌پوشانی بافت'), L('Suspekt – Gewebediagnostik', 'Suspicious – tissue diagnosis', 'مشکوک – تشخیص بافتی'), L('Ohne Ultraschallkorrelat keine Abklärung', 'No work-up without an ultrasound correlate', 'بدون همبستگی سونوگرافی نیازی به بررسی نیست')], correct: 2,
-    feedback: L('Richtig: Die Kombination ist suspekt und erfordert eine adäquate Gewebediagnostik.', 'Correct: this combination is suspicious and requires appropriate tissue diagnosis.', 'درست است: این ترکیب مشکوک است و نیاز به تشخیص بافتی مناسب دارد.'),
-    wrong: L('Fine pleomorphic plus segmental ist ein suspektes duktales Muster; ein fehlendes Ultraschallkorrelat entwarnt nicht.', 'Fine pleomorphic plus segmental is a suspicious ductal pattern; absent ultrasound correlation is not reassuring.', 'پلئومورفیک ظریف همراه با توزیع سگمنتال یک الگوی داکتال مشکوک است؛ نبود همبستگی سونوگرافی اطمینان‌بخش نیست.'),
-  },
+    "question": {
+      "de": "Welche Interpretation ist am sinnvollsten?",
+      "en": "Which interpretation is most appropriate?",
+      "fa": "کدام تفسیر مناسب‌تر است؟"
+    },
+    "context": {
+      "de": "Neu aufgetretene fine pleomorphic Verkalkungen in segmentaler Distribution.",
+      "en": "New fine pleomorphic calcifications in a segmental distribution.",
+      "fa": "کلسیفیکاسیون‌های ظریف پلئومورفیک جدید با توزیع سگمنتال."
+    },
+    "options": [
+      {
+        "de": "Rückkehr zum Routine-Screening",
+        "en": "Return to routine screening",
+        "fa": "بازگشت به غربالگری روتین"
+      },
+      {
+        "de": "Mammographische Sechsmonatskontrolle",
+        "en": "Six-month mammographic follow-up",
+        "fa": "پیگیری شش‌ماههٔ ماموگرافی"
+      },
+      {
+        "de": "Gewebediagnostik des suspekten Kalkbefunds",
+        "en": "Tissue sampling of the suspicious calcifications",
+        "fa": "نمونه‌برداری بافتی از کلسیفیکاسیون مشکوک"
+      },
+      {
+        "de": "MRT vor der Entscheidung über Gewebediagnostik",
+        "en": "MRI before deciding on tissue diagnosis",
+        "fa": "MRI پیش از تصمیم دربارهٔ نمونه‌برداری بافتی"
+      }
+    ],
+    "correct": 2,
+    "feedback": {
+      "de": "Richtig: Die Kombination ist suspekt und erfordert eine adäquate Gewebediagnostik.",
+      "en": "Correct: this combination is suspicious and requires appropriate tissue diagnosis.",
+      "fa": "درست است: این ترکیب مشکوک است و نیاز به تشخیص بافتی مناسب دارد."
+    },
+    "wrong": {
+      "de": "Fine pleomorphic plus segmental ist ein suspektes duktales Muster; ein fehlendes Ultraschallkorrelat entwarnt nicht.",
+      "en": "Fine pleomorphic plus segmental is a suspicious ductal pattern; absent ultrasound correlation is not reassuring.",
+      "fa": "پلئومورفیک ظریف همراه با توزیع سگمنتال یک الگوی داکتال مشکوک است؛ نبود همبستگی سونوگرافی اطمینان‌بخش نیست."
+    },
+    "optionFeedback": [
+      {
+        "de": "Die neue suspekte Morphologie ist keine Grundlage für eine routinemäßige Screening-Rückkehr.",
+        "en": "New suspicious morphology does not support return to routine screening.",
+        "fa": "مورفولوژی مشکوک جدید مبنایی برای بازگشت به غربالگری روتین نیست."
+      },
+      {
+        "de": "Eine wahrscheinlich benigne Einordnung für alleinige Kurzzeitkontrolle ist bei diesem Muster nicht begründet.",
+        "en": "This pattern does not justify a probably benign assessment for short-interval follow-up alone.",
+        "fa": "این الگو ارزیابیِ احتمالاً خوش‌خیم برای پیگیری کوتاه‌مدتِ تنها را توجیه نمی‌کند."
+      },
+      {
+        "de": "Richtig: Die Kombination ist suspekt und erfordert eine adäquate Gewebediagnostik.",
+        "en": "Correct: this combination is suspicious and requires appropriate tissue diagnosis.",
+        "fa": "درست است: این ترکیب مشکوک است و نیاز به تشخیص بافتی مناسب دارد."
+      },
+      {
+        "de": "Die Gewebediagnostik suspekter Verkalkungen soll nicht von einer vorgeschalteten MRT abhängig gemacht werden.",
+        "en": "Tissue diagnosis of suspicious calcifications should not depend on a preceding MRI.",
+        "fa": "نمونه‌برداری بافتی کلسیفیکاسیون مشکوک نباید به MRI پیش از آن وابسته شود."
+      }
+    ]
+  }
 ]
 
 export const TAKE_HOME = [

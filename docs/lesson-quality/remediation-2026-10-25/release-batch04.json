@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-25",
+  "status": "REVIEWED_BATCH_READY_FOR_MAIN",
+  "previousMain": "06cbcaf1092d479e02fba0d81a7096d1972259e7",
+  "scope": "Fourth bounded release during ongoing234-route remediation. Ten topics; course-wide work remains incomplete.",
+  "acceptedPools": {
+    "abdomenGI": "Five topics:22MCQ/23card triads;14original+8targeted newMCQ,20original+3newcards.21localized shared question objects and5ileus cards integrated at canonical sources after independent review and26/26global after-value retest.",
+    "demenzmuster": "3newMCQ/3cards, three goals; original inline check and adjacent language parity repaired.",
+    "hrctReticular": "All12originalMCQ/15cards and3takeaway triads, four goal groups; calibrated clinical differentials and specific feedback DEENFA.",
+    "acLuxation": "All12originalMCQ/8cards plus18adjacent locale fields. Fresh44/44global after-values and source SHA256 exactly match independent accepted review.",
+    "deQuervain": "1revised originalMCQ+1targeted evidence-limitMCQ,3existingcards. Shared-file Git index has only accepted DeQuervain changes: all3WRIST exports are exactly HEAD, despite newer working-file Wrist07 authoring.",
+    "mammographyBasics": "All10originalMCQ/12cards,3inline decisions,4goals; comparable work-up alternatives, clinical imaging decisions, selected-option feedback and localised BI-RADS table meanings. Editorial difficulty5basic/5application, not empirical psychometric validation."
+  },
+  "reviews": [
+    "abdomen-technik/review-packet03.json",
+    "abdomen-technik/packet03-global-after-parity.json",
+    "brain/review-packet14-demenzmuster.json",
+    "thorax-mamma/review-packet04-hrct-reticular.json",
+    "thorax-mamma/review-packet05-mammography-basics.json",
+    "msk-spine/packet05/review-ak.json",
+    "msk-spine/packet06/review-de-quervain.json",
+    "integration-review-locale-topic-identities.json"
+  ],
+  "sharedFix": "Publication, explicit question selection and content fingerprints match actual target-language bank objects by canonical identity. They no longer rewrite a topic's de-token such as aq-msk-de-quervain-de-... . All960actual EN/FA counterparts tested, no silent DEfallback; translation-only saved-session invalidation tested.",
+  "runtime": {
+    "questionsPerLanguage": 960,
+    "casesPerLanguage": 18,
+    "supplementQuestionsPerLanguage": 76,
+    "supplementCards": 82,
+    "explicitRouteMappings": 57
+  },
+  "technicalEvidence": {
+    "productionBuild": "PASS remediation-build07.log after final reviewed mammography repairs; existing unrelated CSS start/flex-start warning retained.",
+    "allRoutesSSR": "702/702 actual route/locale graph renders PASS remediation-all-routes-ssr06.log. Not HTTP/auth/client/media/scientific proof.",
+    "indexAudit": "Actual staged-source960MCQ/18cases per language pass existing options/key/feedback transfer auditor. Registry generated using --staged, excluding unreviewed working producers.",
+    "indexScopeProof": "integration-index-scope-release04.json: staged wristExtensorAssessments.js hashac0f1161a269c1b8df236ab76fd345ca9b6cb632cc29e130cf1b12ae6777e98e; all nonDeQuervain exports deepEqualHEAD. Actual staged diff has only DE_QUERVAIN_QUESTIONS and DE_QUERVAIN_FLASHCARDS hunks. Working-file Wrist07 changes are excluded.",
+    "integration": "Reviewed payload/goal exactness,960locale counterparts, content-version invalidation, language-preserving returns/custom links and option-specific inline feedback PASS.",
+    "browser": "Actual authenticated production build07: FA mammography BI-RADS meanings/category6 care wording; all3inline decisions traversed, specific wrong feedback FA/EN with choice/step preserved on language switch. Final FA alternatives/font/RTL/feedback visually inspected. DeQuervain EN lesson exposes quiz2/card links with lang/from. No read marking or learning-card grading.",
+    "screenshot": "tmp/assessment-quality/batch04-mammography-fa-case3.png",
+    "checkoutLimit": "Local build/SSR include unrelated author WIP. Only independently reviewed selected index sources enter commit. Exact deployment build/status and bounded live view checked separately."
+  },
+  "exclusions": [
+    "ICB15 and Wrist07 accepted after source freeze, reserved for next release",
+    "ATV04, HMA, Osteomyelitis08 and other ongoing original-bank work",
+    "No whole-lesson PDF/media recertification or Dr. Zia clinical release approval inferred",
+    "No empirical difficulty/discrimination validation or all-route browser claim"
+  ],
+  "publication": "Pending commit and deployed verification"
+}

@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-25",
+  "status": "INDEX_SCOPE_EXACT_VERIFIED",
+  "file": "data/wristExtensorAssessments.js",
+  "stagedSha256": "ac0f1161a269c1b8df236ab76fd345ca9b6cb632cc29e130cf1b12ae6777e98e",
+  "workingSha256": "2bf1742615317477f3490580c452a4709516dd69c32de957f4ec192d8f0f6f66",
+  "indexDiffersFromWorking": true,
+  "allNonDeQuervainExportsUnchangedFromHEAD": [
+    "WRIST_EXTENSOR_FLASHCARDS",
+    "WRIST_EXTENSOR_FLASHCARD_TOPIC",
+    "WRIST_EXTENSOR_QUESTIONS"
+  ],
+  "onlyReviewedDeQuervainExportsDiffer": [
+    "DE_QUERVAIN_FLASHCARDS",
+    "DE_QUERVAIN_FLASHCARD_TOPIC",
+    "DE_QUERVAIN_QUESTIONS"
+  ],
+  "independentReview": "msk-spine/packet06/review-de-quervain.json",
+  "meaning": "The Git index contains only accepted DeQuervain06 changes in this shared file. The working file has later Wrist07 changes, but every staged Wrist export is deepEqual HEAD. Do not restage the working shared file."
+}

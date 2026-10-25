@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
+import {canonicalAssessmentId} from '../lib/assessmentIdentity.js'
 import {QUESTION_BANK} from '../data/questions.js'
 import {FLASHCARDS} from '../data/flashcards.js'
 import {TECHNIK_INTERVENTIONELLE_RADIOLOGIE_LESSON as intervention} from '../data/technikInterventionelleRadiologieLesson.js'
@@ -7,7 +8,7 @@ const published=JSON.parse(fs.readFileSync('data/assessmentQuality/publishedBank
 const reviewed=JSON.parse(fs.readFileSync('data/assessmentQuality/reviewedPackets.json','utf8'))
 for(const lang of ['de','en','fa']){
   const bank=new Map(QUESTION_BANK[lang].map(q=>[q.id,q]))
-  assert.deepEqual(published.questions[lang].map(q=>q.id),reviewed.questionIds.map(id=>id.replace(/-de(?=-|$)/,`-${lang}`)))
+  assert.deepEqual(published.questions[lang].map(q=>canonicalAssessmentId(q.id)),reviewed.questionIds)
   for(const q of published.questions[lang]) assert.deepEqual(bank.get(q.id),q,'Published global question differs from its reviewed payload')
   const wire=bank.get(`aq-atv-wire-role-${lang}-application`)
   assert.equal(intervention.check.prompt[lang],wire.question,'Later GI authoring must not replace the active intervention check')

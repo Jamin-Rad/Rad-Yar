@@ -1,0 +1,186 @@
+{
+  "date": "2026-10-25",
+  "scope": "Two independent pedagogic findings;18localized option/feedback fields plus editorial difficulty1/2 metadata, no empirical itemdifficulty claim",
+  "patches": [
+    {
+      "id": "describe-first",
+      "field": [
+        "options",
+        0,
+        "de"
+      ],
+      "before": "Direkt eine Sechsmonatskontrolle vereinbaren",
+      "after": "Eine mammographische Kurzzeitkontrolle nach sechs Monaten vorsehen"
+    },
+    {
+      "id": "describe-first",
+      "field": [
+        "options",
+        0,
+        "en"
+      ],
+      "before": "Arrange six-month follow-up directly",
+      "after": "Arrange short-interval mammographic follow-up in six months"
+    },
+    {
+      "id": "describe-first",
+      "field": [
+        "options",
+        0,
+        "fa"
+      ],
+      "before": "مستقیماً پیگیری شش‌ماهه تعیین شود",
+      "after": "پیگیری کوتاه‌مدت ماموگرافی در شش ماه تعیین شود"
+    },
+    {
+      "id": "describe-first",
+      "field": [
+        "options",
+        1,
+        "de"
+      ],
+      "before": "Befund beschreiben, Voraufnahmen beschaffen und diagnostisch klären; danach abschließend bewerten",
+      "after": "Zielgerichtete Zusatzaufnahmen mit Vorvergleich durchführen"
+    },
+    {
+      "id": "describe-first",
+      "field": [
+        "options",
+        1,
+        "en"
+      ],
+      "before": "Describe the finding, obtain priors and complete diagnostic assessment before assigning a final category",
+      "after": "Complete targeted additional mammographic views with prior comparison"
+    },
+    {
+      "id": "describe-first",
+      "field": [
+        "options",
+        1,
+        "fa"
+      ],
+      "before": "یافته توصیف، تصاویر قبلی تهیه و بررسی تشخیصی کامل شود؛ سپس ارزیابی نهایی انجام گیرد",
+      "after": "نماهای تکمیلی هدفمند با مقایسهٔ تصاویر قبلی انجام شوند"
+    },
+    {
+      "id": "describe-first",
+      "field": [
+        "options",
+        2,
+        "de"
+      ],
+      "before": "Zuerst eine kontrastverstärkte MRT zur Kategorisierung anfordern",
+      "after": "Eine Brust-MRT zur weiteren Charakterisierung vorschalten"
+    },
+    {
+      "id": "describe-first",
+      "field": [
+        "options",
+        2,
+        "en"
+      ],
+      "before": "Request contrast-enhanced MRI first for categorisation",
+      "after": "Obtain contrast-enhanced breast MRI for further characterisation"
+    },
+    {
+      "id": "describe-first",
+      "field": [
+        "options",
+        2,
+        "fa"
+      ],
+      "before": "ابتدا MRI با تزریق برای دسته‌بندی درخواست شود",
+      "after": "ابتدا MRI پستان با تزریق برای مشخص‌کردن بیشتر یافته انجام شود"
+    },
+    {
+      "id": "describe-first",
+      "field": [
+        "options",
+        3,
+        "de"
+      ],
+      "before": "Direkt einen stereotaktischen Biopsietermin planen",
+      "after": "Eine stereotaktische Biopsie der auffälligen Region planen"
+    },
+    {
+      "id": "describe-first",
+      "field": [
+        "options",
+        3,
+        "en"
+      ],
+      "before": "Plan stereotactic biopsy directly",
+      "after": "Plan stereotactic tissue sampling of the suspicious area"
+    },
+    {
+      "id": "describe-first",
+      "field": [
+        "options",
+        3,
+        "fa"
+      ],
+      "before": "مستقیماً بیوپسی استریوتاکتیک برنامه‌ریزی شود",
+      "after": "نمونه‌برداری استریوتاکتیک از ناحیهٔ مشکوک برنامه‌ریزی شود"
+    },
+    {
+      "id": "composition-c",
+      "field": [
+        "options",
+        3,
+        "de"
+      ],
+      "before": "FDG-PET/CT zur Läsionslokalisation",
+      "after": "Kontrastverstärkte Mammographie (CEM)"
+    },
+    {
+      "id": "composition-c",
+      "field": [
+        "options",
+        3,
+        "en"
+      ],
+      "before": "FDG-PET/CT for lesion localisation",
+      "after": "Contrast-enhanced mammography (CEM)"
+    },
+    {
+      "id": "composition-c",
+      "field": [
+        "options",
+        3,
+        "fa"
+      ],
+      "before": "FDG-PET/CT برای مکان‌یابی ضایعه",
+      "after": "ماموگرافی با تزریق مادهٔ حاجب (CEM)"
+    },
+    {
+      "id": "composition-c",
+      "field": [
+        "wrong",
+        "D",
+        "de"
+      ],
+      "before": "PET/CT ist kein geeigneter primärer Problemlösungstest für diese lokale Tastauffälligkeit.",
+      "after": "Hier hat die gezielte Sonografie der tastbaren Region Vorrang. Ein negativer Mammographiebefund begründet für sich keine zusätzliche Kontrastmitteluntersuchung."
+    },
+    {
+      "id": "composition-c",
+      "field": [
+        "wrong",
+        "D",
+        "en"
+      ],
+      "before": "PET/CT is not an appropriate primary problem-solving study for this local palpable finding.",
+      "after": "Targeted ultrasound of the palpable area takes priority here. A negative mammogram does not itself establish an indication for another contrast examination."
+    },
+    {
+      "id": "composition-c",
+      "field": [
+        "wrong",
+        "D",
+        "fa"
+      ],
+      "before": "PET/CT بررسی اولیهٔ مناسبی برای حل این یافتهٔ موضعی قابل لمس نیست.",
+      "after": "اینجا سونوگرافی هدفمند ناحیهٔ قابل لمس اولویت دارد. ماموگرافی منفی به‌خودی‌خود اندیکاسیون بررسی دیگر با مادهٔ حاجب ایجاد نمی‌کند."
+    }
+  ]
+}

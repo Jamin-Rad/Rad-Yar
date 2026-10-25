@@ -1,0 +1,539 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_NEW_POOL_AND_INLINE_REPAIR_REVIEW_READY",
+  "route": "/gehirn/neurodegeneration/demenzmuster",
+  "files": [
+    "data/assessmentQuality/brain.js aq-demenzmuster block only",
+    "data/gehirnDemenzMusterLesson.js",
+    "app/gehirn/neurodegeneration/demenzmuster/page.jsx selected feedback expression only"
+  ],
+  "coverage": {
+    "route": "/gehirn/neurodegeneration/demenzmuster",
+    "topicId": "aq-demenzmuster",
+    "learningGoals": [
+      {
+        "id": "mta-components",
+        "text": {
+          "de": "Den MTA-Score mit seinen anatomischen Komponenten und diagnostischen Grenzen anwenden.",
+          "en": "Apply the MTA score using its anatomical components and diagnostic limits.",
+          "fa": "امتیاز MTA را با اجزای آناتومیک و محدودیت‌های تشخیصی آن به کار ببرید."
+        },
+        "questionIds": [
+          "aq-brain-aq-demenzmuster-de-mta-components"
+        ],
+        "cardIds": [
+          "aq-brain-aq-demenzmuster-mta-components"
+        ]
+      },
+      {
+        "id": "dlb-biomarker",
+        "text": {
+          "de": "Strukturelle Hinweise bei DLB von einem indikativen nuklearmedizinischen Biomarker unterscheiden.",
+          "en": "Distinguish structural clues in DLB from an indicative nuclear-medicine biomarker.",
+          "fa": "سرنخ‌های ساختاری DLB را از نشانگر زیستی شاخص در پزشکی هسته‌ای متمایز کنید."
+        },
+        "questionIds": [
+          "aq-brain-aq-demenzmuster-de-dlb-biomarker"
+        ],
+        "cardIds": [
+          "aq-brain-aq-demenzmuster-dlb-biomarker"
+        ]
+      },
+      {
+        "id": "ftd-pattern",
+        "text": {
+          "de": "Ein frontotemporales Atrophiemuster im passenden klinischen Kontext erkennen und die Diagnosegrenze benennen.",
+          "en": "Recognise frontotemporal atrophy in its clinical context and state its diagnostic limit.",
+          "fa": "الگوی آتروفی فرونتوتمپورال را در زمینهٔ بالینی مناسب بشناسید و محدودیت تشخیصی آن را بیان کنید."
+        },
+        "questionIds": [
+          "aq-brain-aq-demenzmuster-de-ftd-pattern"
+        ],
+        "cardIds": [
+          "aq-brain-aq-demenzmuster-ftd-pattern"
+        ]
+      }
+    ],
+    "status": "AUTHORED_REVIEW_PENDING"
+  },
+  "originalBank": "No original global questions/cards for this route; actual central bank text search/audit had no linked pool. Existing weak3-optioninline repaired rather than hidden.",
+  "newQuestionTriads": 3,
+  "newCards": 3,
+  "questions": {
+    "de": [
+      {
+        "id": "aq-brain-aq-demenzmuster-de-mta-components",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "Bei einer Gedächtnisstörung wird die mediale Temporallappenatrophie auf koronaren T1-Aufnahmen visuell bewertet. Welche Strukturgruppe geht unmittelbar in den MTA-Score ein?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Hippocampushöhe sowie Weite von Fissura choroidea und Temporalhorn"
+          },
+          {
+            "id": "B",
+            "text": "Frontale Ventrikelweite, Balkenwinkel und Weite der Konvexitätssulci"
+          },
+          {
+            "id": "C",
+            "text": "Mittelhirnfläche, Ponsfläche und Breite des oberen Kleinhirnstiels"
+          },
+          {
+            "id": "D",
+            "text": "Weite der frontalen und anteriortemporalen Sulci sowie Insulavolumen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MTA erfasst Hippocampusformation und angrenzende Liquorräume: mit zunehmender Atrophie erweitern sich Fissura choroidea und Temporalhorn, die Hippocampushöhe nimmt ab. Beide Seiten beurteilen. Alter und verwendete Referenz beeinflussen die Einordnung; der Score allein beweist keine Alzheimer-Erkrankung.",
+        "wrongExplanations": {
+          "B": "Diese Größen dienen der Ventrikel-/Liquorraumbeurteilung; sie ersetzen die hippokampalen MTA-Komponenten nicht.",
+          "C": "Diese Strukturen gehören zu einer infratentoriellen Musterbeurteilung, nicht zur visuellen MTA-Skala.",
+          "D": "Diese Regionen können für andere Atrophiemuster relevant sein; die MTA-Skala richtet sich auf Hippocampus und angrenzende Liquorräume."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8305846/"
+      },
+      {
+        "id": "aq-brain-aq-demenzmuster-de-dlb-biomarker",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "Bei klinischem Verdacht auf Lewy-Körper-Demenz ist der mediale Temporallappen im MRT relativ erhalten. Welcher zusätzliche Bildbefund zählt nach dem DLB-Konsensus 2017 als indikativer Biomarker?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Okzipital betonter Minderstoffwechsel im FDG-PET"
+          },
+          {
+            "id": "B",
+            "text": "Relative Erhaltung des Hippocampusvolumens im MRT"
+          },
+          {
+            "id": "C",
+            "text": "Verminderte striatale Dopamintransporteraufnahme in SPECT/PET"
+          },
+          {
+            "id": "D",
+            "text": "Diffuse Minderperfusion mit okzipitaler Betonung in der SPECT"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Verminderte striatale DAT-Aufnahme gehört zu den indikativen Biomarkern; relative MTL-Erhaltung und das genannte Perfusions-/Stoffwechselmuster sind unterstützende Hinweise. Auch DAT-Bildgebung wird mit Klinik und Differenzialdiagnosen interpretiert; sie beweist DLB nicht allein und trennt nicht jede degenerative Parkinson-Erkrankung.",
+        "wrongExplanations": {
+          "A": "Okzipital betonter Minderstoffwechsel ist ein unterstützender Biomarker, nicht die hier gesuchte indikative DAT-Kategorie.",
+          "B": "Relative MTL-Erhaltung ist ein struktureller unterstützender Hinweis; sie ersetzt den indikativen DAT-Biomarker nicht.",
+          "D": "Die Perfusions-/Stoffwechselkategorie ist unterstützend und weniger spezifisch; gefragt ist die indikative striatale DAT-Veränderung."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5496518/"
+      },
+      {
+        "id": "aq-brain-aq-demenzmuster-de-ftd-pattern",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "Eine Person entwickelt fortschreitend Enthemmung und verändertes Sozialverhalten. Welche regionale Atrophieverteilung passt am ehesten zu diesem klinischen Syndrom?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Vorwiegend beidseitige mesiotemporale Atrophie"
+          },
+          {
+            "id": "B",
+            "text": "Betonte, oft asymmetrische frontale und/oder anteriortemporale Atrophie"
+          },
+          {
+            "id": "C",
+            "text": "Vorwiegend parietookzipitale Atrophie bei relativ erhaltenen vorderen Regionen"
+          },
+          {
+            "id": "D",
+            "text": "Gleichmäßig verteilte globale Atrophie ohne regionalen Schwerpunkt"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Frontal und anteriortemporal betonte Atrophie unterstützt das passende klinische Syndrom. Bildgebung allein legt weder die Variante noch eine gesicherte bvFTD fest. Für die wahrscheinliche bvFTD werden passende klinische Kriterien, funktioneller Abbau und unterstützende Bildgebung zusammengeführt; andere Ursachen müssen berücksichtigt werden.",
+        "wrongExplanations": {
+          "A": "Mesiotemporale Atrophie ist unter anderem im amnestischen Alzheimer-Spektrum relevant, aber nicht das hier gesuchte frontotemporal betonte Unterstützungsmuster.",
+          "C": "Eine posterior betonte Verteilung verlangt eine andere Muster- und klinische Einordnung; sie ist nicht das typische vordere Unterstützungsmuster dieses Falls.",
+          "D": "Globale Atrophie ohne Schwerpunkt ist unspezifischer; die regionale frontale/anteriortemporale Betonung ist hier der gezieltere Hinweis."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3170532/"
+      }
+    ],
+    "en": [
+      {
+        "id": "aq-brain-aq-demenzmuster-en-mta-components",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "In a patient with memory impairment, medial temporal atrophy is rated visually on coronal T1 images. Which group of structures directly contributes to the MTA score?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Hippocampal height and widths of the choroid fissure and temporal horn"
+          },
+          {
+            "id": "B",
+            "text": "Frontal ventricular width, callosal angle and convexity sulcal width"
+          },
+          {
+            "id": "C",
+            "text": "Midbrain area, pontine area and superior cerebellar peduncle width"
+          },
+          {
+            "id": "D",
+            "text": "Frontal and anterior temporal sulcal widths and insular volume"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MTA assesses the hippocampal formation and adjacent CSF spaces: with increasing atrophy, the choroid fissure and temporal horn widen and hippocampal height decreases. Assess both sides. Age and the chosen reference affect interpretation; the score alone does not establish Alzheimer disease.",
+        "wrongExplanations": {
+          "B": "These parameters assess ventricles and CSF spaces; they do not replace the hippocampal MTA components.",
+          "C": "These structures belong to infratentorial pattern assessment rather than the visual MTA scale.",
+          "D": "These regions may matter in other atrophy patterns; MTA specifically rates the hippocampus and adjacent CSF spaces."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8305846/"
+      },
+      {
+        "id": "aq-brain-aq-demenzmuster-en-dlb-biomarker",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "With clinical concern for dementia with Lewy bodies, MRI shows relative medial temporal preservation. Which additional imaging finding is an indicative biomarker in the 2017 DLB consensus?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Occipital-predominant hypometabolism on FDG PET"
+          },
+          {
+            "id": "B",
+            "text": "Relative preservation of hippocampal volume on MRI"
+          },
+          {
+            "id": "C",
+            "text": "Reduced striatal dopamine-transporter uptake on SPECT/PET"
+          },
+          {
+            "id": "D",
+            "text": "Diffuse hypoperfusion with occipital predominance on SPECT"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Reduced striatal DAT uptake is an indicative biomarker; relative MTL preservation and the stated perfusion/metabolic patterns are supportive clues. DAT imaging still requires clinical and differential-diagnostic correlation; it does not establish DLB alone or distinguish every degenerative parkinsonian disorder.",
+        "wrongExplanations": {
+          "A": "Occipital-predominant hypometabolism is supportive, rather than the indicative DAT category asked for here.",
+          "B": "Relative MTL preservation is a structural supportive clue; it does not replace the indicative DAT biomarker.",
+          "D": "The perfusion/metabolism category is supportive and less specific; the question asks for the indicative striatal DAT finding."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5496518/"
+      },
+      {
+        "id": "aq-brain-aq-demenzmuster-en-ftd-pattern",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "A person develops progressive disinhibition and altered social behaviour. Which regional atrophy distribution best fits this clinical syndrome?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Predominantly bilateral medial temporal atrophy"
+          },
+          {
+            "id": "B",
+            "text": "Prominent, often asymmetric frontal and/or anterior temporal atrophy"
+          },
+          {
+            "id": "C",
+            "text": "Predominantly parieto-occipital atrophy with relatively preserved anterior regions"
+          },
+          {
+            "id": "D",
+            "text": "Uniform global atrophy without a regional predominance"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Frontal and anterior temporal-predominant atrophy supports the matching clinical syndrome. Imaging alone establishes neither the variant nor definite bvFTD. Probable bvFTD integrates compatible clinical criteria, functional decline and supportive imaging, with competing causes considered.",
+        "wrongExplanations": {
+          "A": "Medial temporal atrophy matters, among other contexts, in the amnestic Alzheimer spectrum, but is not the frontal/anterior temporal support pattern requested here.",
+          "C": "A posterior-predominant distribution calls for different pattern and clinical assessment; it is not the typical anterior support pattern in this vignette.",
+          "D": "Global atrophy without a predominance is less specific; frontal/anterior temporal regional emphasis is the more targeted clue here."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3170532/"
+      }
+    ],
+    "fa": [
+      {
+        "id": "aq-brain-aq-demenzmuster-fa-mta-components",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "در بیمار دچار اختلال حافظه، آتروفی تمپورال داخلی در تصاویر کرونال T1 به‌صورت دیداری امتیازدهی می‌شود. کدام گروه ساختاری مستقیماً در امتیاز MTA نقش دارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ارتفاع هیپوکامپ و پهنای شکاف کوروئید و شاخ تمپورال"
+          },
+          {
+            "id": "B",
+            "text": "پهنای بطن‌های پیشانی، زاویهٔ جسم پینه‌ای و پهنای شیارهای تحدب"
+          },
+          {
+            "id": "C",
+            "text": "مساحت مغز میانی، مساحت پونز و پهنای پایهٔ فوقانی مخچه"
+          },
+          {
+            "id": "D",
+            "text": "پهنای شیارهای فرونتال و تمپورال قدامی و حجم اینسولا"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MTA ساختار هیپوکامپ و فضاهای مجاور مایع مغزی‌نخاعی را ارزیابی می‌کند: با افزایش آتروفی، شکاف کوروئید و شاخ تمپورال گشاد و ارتفاع هیپوکامپ کم می‌شود. دو طرف را بسنجید. سن و مرجع به‌کاررفته بر تفسیر اثر دارند؛ امتیاز به‌تنهایی آلزایمر را ثابت نمی‌کند.",
+        "wrongExplanations": {
+          "B": "این پارامترها برای ارزیابی بطن‌ها و فضاهای مایع‌اند و جای اجزای هیپوکامپی MTA را نمی‌گیرند.",
+          "C": "این ساختارها مربوط به ارزیابی الگوهای زیرچادرینه‌ای‌اند، نه مقیاس دیداری MTA.",
+          "D": "این نواحی ممکن است در الگوهای دیگر آتروفی مهم باشند؛ MTA مشخصاً هیپوکامپ و فضاهای مایع مجاور را می‌سنجد."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8305846/"
+      },
+      {
+        "id": "aq-brain-aq-demenzmuster-fa-dlb-biomarker",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "در شک بالینی به دمانس با اجسام لویی، تمپورال داخلی در MRI نسبتاً حفظ شده است. طبق اجماع DLB سال ۲۰۱۷، کدام یافتهٔ تصویری اضافی در گروه نشانگرهای زیستی شاخص قرار می‌گیرد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "کاهش متابولیسم با غلبهٔ اکسیپیتال در FDG-PET"
+          },
+          {
+            "id": "B",
+            "text": "حفظ نسبی حجم هیپوکامپ در MRI"
+          },
+          {
+            "id": "C",
+            "text": "کاهش برداشت ناقل دوپامین استریاتال در SPECT/PET"
+          },
+          {
+            "id": "D",
+            "text": "کاهش منتشر پرفیوژن با غلبهٔ اکسیپیتال در SPECT"
+          }
+        ],
+        "correct": "C",
+        "explanation": "کاهش برداشت استریاتال DAT در گروه نشانگرهای شاخص است؛ حفظ نسبی تمپورال داخلی و الگوهای پرفیوژن/متابولیسم ذکرشده یافته‌های حمایتی‌اند. تصویربرداری DAT نیز با بالین و افتراق‌ها تفسیر می‌شود؛ به‌تنهایی DLB را ثابت نمی‌کند و همهٔ اختلالات پارکینسونی دژنراتیو را از هم جدا نمی‌کند.",
+        "wrongExplanations": {
+          "A": "کاهش متابولیسم با غلبهٔ اکسیپیتال یافته‌ای حمایتی است، نه گروه شاخص مربوط به DAT که اینجا پرسیده شده است.",
+          "B": "حفظ نسبی تمپورال داخلی سرنخ ساختاری حمایتی است و جای نشانگر شاخص مربوط به DAT را نمی‌گیرد.",
+          "D": "گروه پرفیوژن/متابولیسم حمایتی و کم‌اختصاص‌تر است؛ سؤال یافتهٔ استریاتال DAT در گروه شاخص را می‌خواهد."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5496518/"
+      },
+      {
+        "id": "aq-brain-aq-demenzmuster-fa-ftd-pattern",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "فردی به‌تدریج دچار مهارگسیختگی و تغییر رفتار اجتماعی می‌شود. کدام توزیع ناحیه‌ای آتروفی بیشتر با این سندرم بالینی سازگار است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "آتروفی عمدتاً دوطرفهٔ تمپورال داخلی"
+          },
+          {
+            "id": "B",
+            "text": "آتروفی برجسته و اغلب نامتقارن فرونتال و/یا تمپورال قدامی"
+          },
+          {
+            "id": "C",
+            "text": "آتروفی عمدتاً پاریتواُکسیپیتال با حفظ نسبی نواحی قدامی"
+          },
+          {
+            "id": "D",
+            "text": "آتروفی منتشر یکنواخت بدون غلبهٔ ناحیه‌ای"
+          }
+        ],
+        "correct": "B",
+        "explanation": "آتروفی با غلبهٔ فرونتال و تمپورال قدامی از سندرم بالینی سازگار حمایت می‌کند. تصویربرداری به‌تنهایی نه گونه و نه bvFTD قطعی را تعیین می‌کند. در bvFTD محتمل، معیارهای بالینی سازگار، افت عملکرد و تصویربرداری حمایتی با هم ارزیابی و علل دیگر در نظر گرفته می‌شوند.",
+        "wrongExplanations": {
+          "A": "آتروفی تمپورال داخلی از جمله در طیف آلزایمرِ همراه اختلال حافظه مهم است، ولی الگوی حمایتی فرونتال/تمپورال قدامیِ مورد سؤال نیست.",
+          "C": "توزیع با غلبهٔ خلفی به تفسیر الگویی و بالینی دیگری نیاز دارد و الگوی حمایتی قدامیِ تیپیک این سناریو نیست.",
+          "D": "آتروفی منتشر بدون غلبهٔ ناحیه‌ای کم‌اختصاص‌تر است؛ تأکید فرونتال/تمپورال قدامی اینجا سرنخ هدفمندتری است."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3170532/"
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "aq-brain-aq-demenzmuster-mta-components",
+      "topicId": "aq-demenzmuster",
+      "category": {
+        "de": "Demenzmuster im MRT",
+        "en": "Dementia patterns on MRI",
+        "fa": "الگوهای دمانس در MRI"
+      },
+      "front": {
+        "de": "Welche drei anatomischen Komponenten beurteilt der visuelle MTA-Score, und was beweist er nicht?",
+        "en": "Which three anatomical components does the visual MTA score assess, and what does it not establish?",
+        "fa": "امتیاز دیداری MTA کدام سه جزء آناتومیک را می‌سنجد و چه چیزی را ثابت نمی‌کند؟"
+      },
+      "answer": {
+        "de": "Hippocampushöhe, Fissura-choroidea-Weite und Temporalhornweite auf koronaren T1-Aufnahmen; allein kein Alzheimer-Nachweis, alters- und referenzbezogen bewerten.",
+        "en": "Hippocampal height, choroid fissure width and temporal horn width on coronal T1 images; not proof of Alzheimer disease alone, interpreted with age and reference.",
+        "fa": "ارتفاع هیپوکامپ، پهنای شکاف کوروئید و شاخ تمپورال در T1 کرونال؛ به‌تنهایی اثبات آلزایمر نیست و با سن و مرجع تفسیر می‌شود."
+      },
+      "explanation": {
+        "de": "MTA erfasst Hippocampusformation und angrenzende Liquorräume: mit zunehmender Atrophie erweitern sich Fissura choroidea und Temporalhorn, die Hippocampushöhe nimmt ab. Beide Seiten beurteilen. Alter und verwendete Referenz beeinflussen die Einordnung; der Score allein beweist keine Alzheimer-Erkrankung.",
+        "en": "MTA assesses the hippocampal formation and adjacent CSF spaces: with increasing atrophy, the choroid fissure and temporal horn widen and hippocampal height decreases. Assess both sides. Age and the chosen reference affect interpretation; the score alone does not establish Alzheimer disease.",
+        "fa": "MTA ساختار هیپوکامپ و فضاهای مجاور مایع مغزی‌نخاعی را ارزیابی می‌کند: با افزایش آتروفی، شکاف کوروئید و شاخ تمپورال گشاد و ارتفاع هیپوکامپ کم می‌شود. دو طرف را بسنجید. سن و مرجع به‌کاررفته بر تفسیر اثر دارند؛ امتیاز به‌تنهایی آلزایمر را ثابت نمی‌کند."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8305846/"
+    },
+    {
+      "id": "aq-brain-aq-demenzmuster-dlb-biomarker",
+      "topicId": "aq-demenzmuster",
+      "category": {
+        "de": "Demenzmuster im MRT",
+        "en": "Dementia patterns on MRI",
+        "fa": "الگوهای دمانس در MRI"
+      },
+      "front": {
+        "de": "Wie unterscheiden sich relative MTL-Erhaltung und verminderte DAT-Aufnahme im DLB-Konsensus 2017?",
+        "en": "How do relative MTL preservation and reduced DAT uptake differ in the 2017 DLB consensus?",
+        "fa": "حفظ نسبی تمپورال داخلی و کاهش برداشت DAT در اجماع DLB سال ۲۰۱۷ چه تفاوتی دارند؟"
+      },
+      "answer": {
+        "de": "MTL-Erhaltung: unterstützender struktureller Hinweis. Reduzierte striatale DAT-Aufnahme: indikativer Biomarker; beide benötigen klinische Einordnung, keine alleinige Diagnose.",
+        "en": "MTL preservation: supportive structural clue. Reduced striatal DAT uptake: indicative biomarker; both require clinical interpretation and neither establishes the diagnosis alone.",
+        "fa": "حفظ تمپورال داخلی: سرنخ ساختاری حمایتی. کاهش برداشت استریاتال DAT: نشانگر شاخص؛ هر دو به تفسیر بالینی نیاز دارند و هیچ‌یک به‌تنهایی تشخیص را تعیین نمی‌کند."
+      },
+      "explanation": {
+        "de": "Verminderte striatale DAT-Aufnahme gehört zu den indikativen Biomarkern; relative MTL-Erhaltung und das genannte Perfusions-/Stoffwechselmuster sind unterstützende Hinweise. Auch DAT-Bildgebung wird mit Klinik und Differenzialdiagnosen interpretiert; sie beweist DLB nicht allein und trennt nicht jede degenerative Parkinson-Erkrankung.",
+        "en": "Reduced striatal DAT uptake is an indicative biomarker; relative MTL preservation and the stated perfusion/metabolic patterns are supportive clues. DAT imaging still requires clinical and differential-diagnostic correlation; it does not establish DLB alone or distinguish every degenerative parkinsonian disorder.",
+        "fa": "کاهش برداشت استریاتال DAT در گروه نشانگرهای شاخص است؛ حفظ نسبی تمپورال داخلی و الگوهای پرفیوژن/متابولیسم ذکرشده یافته‌های حمایتی‌اند. تصویربرداری DAT نیز با بالین و افتراق‌ها تفسیر می‌شود؛ به‌تنهایی DLB را ثابت نمی‌کند و همهٔ اختلالات پارکینسونی دژنراتیو را از هم جدا نمی‌کند."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5496518/"
+    },
+    {
+      "id": "aq-brain-aq-demenzmuster-ftd-pattern",
+      "topicId": "aq-demenzmuster",
+      "category": {
+        "de": "Demenzmuster im MRT",
+        "en": "Dementia patterns on MRI",
+        "fa": "الگوهای دمانس در MRI"
+      },
+      "front": {
+        "de": "Welche Atrophieverteilung unterstützt ein frontotemporales Syndrom, und was braucht die wahrscheinliche bvFTD zusätzlich?",
+        "en": "Which atrophy distribution supports a frontotemporal syndrome, and what else is needed for probable bvFTD?",
+        "fa": "کدام توزیع آتروفی از سندرم فرونتوتمپورال حمایت می‌کند و bvFTD محتمل به چه موارد دیگری نیاز دارد؟"
+      },
+      "answer": {
+        "de": "Frontal und/oder anteriortemporal betonte, oft asymmetrische Atrophie; zusätzlich passende klinische Kriterien und funktioneller Abbau. Kein gesicherter Nachweis durch MRT allein.",
+        "en": "Frontal and/or anterior temporal-predominant, often asymmetric atrophy; also compatible clinical criteria and functional decline. MRI alone is not definitive proof.",
+        "fa": "آتروفی برجستهٔ فرونتال و/یا تمپورال قدامی، اغلب نامتقارن؛ همراه معیارهای بالینی سازگار و افت عملکرد. MRI به‌تنهایی اثبات قطعی نیست."
+      },
+      "explanation": {
+        "de": "Frontal und anteriortemporal betonte Atrophie unterstützt das passende klinische Syndrom. Bildgebung allein legt weder die Variante noch eine gesicherte bvFTD fest. Für die wahrscheinliche bvFTD werden passende klinische Kriterien, funktioneller Abbau und unterstützende Bildgebung zusammengeführt; andere Ursachen müssen berücksichtigt werden.",
+        "en": "Frontal and anterior temporal-predominant atrophy supports the matching clinical syndrome. Imaging alone establishes neither the variant nor definite bvFTD. Probable bvFTD integrates compatible clinical criteria, functional decline and supportive imaging, with competing causes considered.",
+        "fa": "آتروفی با غلبهٔ فرونتال و تمپورال قدامی از سندرم بالینی سازگار حمایت می‌کند. تصویربرداری به‌تنهایی نه گونه و نه bvFTD قطعی را تعیین می‌کند. در bvFTD محتمل، معیارهای بالینی سازگار، افت عملکرد و تصویربرداری حمایتی با هم ارزیابی و علل دیگر در نظر گرفته می‌شوند."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3170532/"
+    }
+  ],
+  "teachingParity": {
+    "inline": "Existing FTD check now four plausible morphology patterns in a self-contained clinical vignette, exact canonical option/key/correct/wrong feedback in all3 languages.",
+    "mta": "Open source caveat resolved with fresh primary2021 validation methods/threshold discussion; no unvalidated universal75-year cutoff published. Cohort/rating references matter.",
+    "dlb": "Relative MTL preservation supportive vs reduced striatal DAT indicative; no clinical diagnosis from biomarker alone.",
+    "consumer": "Actual local Check consumer resolves selected optionFeedback with legacy fallback. No shared component edits."
+  },
+  "sourceEvidence": [
+    {
+      "source": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf",
+      "pages": [
+        72,
+        73,
+        74
+      ],
+      "printedPages": [
+        71,
+        72,
+        73
+      ],
+      "read": "All three actual rendered pages visually read, including MTA0–4 panel and source age gap, DLB structural/DAT separation and frontal/anterior temporal source figures. Existing media retained, no new image-specific quiz.",
+      "renders": [
+        "tmp/brain-demenz-p-72.png",
+        "tmp/brain-demenz-p-73.png",
+        "tmp/brain-demenz-p-74.png"
+      ]
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8305846/",
+      "type": "Molinder2021 original752-examination validation cohort",
+      "read": "Actual image acquisition/visual rating methods, bilateral scoring, diagnostic subgroups and discussion of varied age/rating cutoffs.",
+      "supports": [
+        "Coronal T1 MTA components and bilateral assessment",
+        "Interpretation depends on age/reference; not Alzheimer-specific; no numeric cutoff taught"
+      ]
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5496518/",
+      "type": "McKeith2017 original DLB Consortium diagnostic consensus",
+      "read": "Actual summary, indicative and supportive biomarker sections and mixed-pathology limitations via indexed full primary text.",
+      "supports": [
+        "DAT indicative vs relative MTL and occipital functional imaging supportive",
+        "Clinical correlation and alternative causes of reduced DAT uptake; no biomarker-only proof"
+      ]
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3170532/",
+      "type": "Rascovsky2011 original autopsy-based criteria study",
+      "read": "Actual revised criteria table and probable/definite diagnostic distinction.",
+      "supports": [
+        "Frontal/anterior temporal imaging supports clinical syndrome",
+        "Probable bvFTD requires appropriate clinical criteria plus functional decline/imaging, not MRI-only certainty"
+      ]
+    }
+  ],
+  "checks": {
+    "localizedCanonicalQuestions": 9,
+    "cardTriads": 3,
+    "inlineSelectedFeedbackComparisons": 12,
+    "status": "PASS",
+    "difficulty": "One applied anatomy/rating item, one biomarker-framework interpretation, one clinical/morphology item; no empirical difficulty validation."
+  },
+  "limitations": [
+    "No unchanged whole lesson/PDF/full diagnostic media/browser scientific release accepted.",
+    "No fabricated image-dependent vignette; new questions work outside lesson.",
+    "No arbitrary numerical question quota or duplicate original pool. Independent review and root snapshot integration pending."
+  ],
+  "sha256": {
+    "data/assessmentQuality/brain.js": "29373cc92a1dfe1a95b841278fa1bb93a7aa4bb19f07764e2f201369ad850394",
+    "data/gehirnDemenzMusterLesson.js": "a5cb4ee7658cd6a03a06a6e79b0b708f2b880ab5a8c720265310b1b227781988",
+    "app/gehirn/neurodegeneration/demenzmuster/page.jsx": "ec746568d26a17c3e9e8fffba351c75e8e41f7c24a55629e315d0ff3e7cecdc9"
+  }
+}

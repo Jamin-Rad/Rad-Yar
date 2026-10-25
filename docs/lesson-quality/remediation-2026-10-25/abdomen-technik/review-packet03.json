@@ -1,0 +1,205 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/remove_lesson_notice",
+  "author": "/root/design_inventory",
+  "status": "ACCEPT_BOUNDED_FULL_ASSESSMENT_POOL_AFTER_REPAIRS",
+  "scope": {
+    "routes": 5,
+    "originalQuestionTriads": 14,
+    "newQuestionTriads": 8,
+    "totalLocalizedQuestionsRead": 66,
+    "originalCardTriads": 20,
+    "newCardTriads": 3,
+    "totalCardTriadsRead": 23,
+    "actualReading": "All stems/options/keys/explanations/wrong feedback and every card front/answer/explanation/diagram/source DE/EN/FA from proposed pool. Shared21 original question-before rows plus5 original card-before objects also fully read. Three repaired question triads/all wrong feedback reread independently.",
+    "technical": "21/21 shared currentBefore question rows and5/5 card objects equal actual global exports; proposed overlay89/89 current objects match manifest. Original keys/option IDs retained.",
+    "lessonParity": "Targeted actual imports/inline usage checked for mesenteric NOMI, colitis, pylorus and MRF feedback; not full new lesson/PDF audit."
+  },
+  "gates": {
+    "SRC": "PASS_BOUNDED_ASSESSED_CLAIMS_AFTER_SOURCE_REPAIRS",
+    "EDU": "PASS_AFTER_THREE_REPAIRS",
+    "LNG": "PASS_BOUNDED_22_23_TRIADS",
+    "ASM": "PASS_PROPOSED_OVERLAY_NOT_YET_PUBLISHED",
+    "VIS": "NOT_APPLICABLE_TEXT_ONLY_BANK_REVIEW",
+    "UX": "PENDING_ROOT_ACTUAL_BROWSER_AND_SHARED_INTEGRATION",
+    "REV": "PASS_INDEPENDENT_READ_ONLY"
+  },
+  "findings": [
+    {
+      "id": "ATV03-EDU-01",
+      "severity": "major",
+      "keys": [
+        "pmc-kolitis-distribution"
+      ],
+      "problem": "Three options assert definitive aetiology while only keyed C uses calibrated uncertainty; clue tests certainty wording rather than differential inference.",
+      "required": "Equally calibrated competing aetiological working diagnoses using antibiotic history.",
+      "status": "CLOSED_AFTER_ACTUAL_TRIAD_RETEST",
+      "evidence": "packet03-review-repairs.json actual DE/EN/FA prompt/options/all feedback read; C prioritises targeted infection assessment without proving diagnosis."
+    },
+    {
+      "id": "ATV03-EDU-02",
+      "severity": "major",
+      "keys": [
+        "aq-atv-mesenteric-viability-*-application"
+      ],
+      "problem": "Three categorical diagnostic certainties/sole conclusions against only cautious correct answer.",
+      "required": "Parallel competing clinical interpretations and management consequences; retain urgency and viability limit.",
+      "status": "CLOSED_AFTER_ACTUAL_TRIAD_RETEST",
+      "evidence": "Actual four clinical assessments now distinguish preserved perfusion, overcalled resection extent, urgent ischaemia assessment and local leak. All three languages and wrong feedback read."
+    },
+    {
+      "id": "ATV03-EDU-03",
+      "severity": "major",
+      "keys": [
+        "pylorusstenose-dynamic"
+      ],
+      "problem": "C repeated the separate measurement-layers item and D explicitly discarded relevant observations.",
+      "required": "Replace with competing dynamic/morphometric interpretations; anchor spasm overlap in direct original evidence.",
+      "status": "CLOSED_AFTER_ACTUAL_TRIAD_RETEST",
+      "evidence": "C/D now competing early-HPS and normal interpretations; specific feedback and key B retained. Cohen1998 PMID9805307 primary comparison abstract freshly read, source now direct."
+    },
+    {
+      "id": "ATV03-SRC-04",
+      "severity": "minor",
+      "keys": [
+        "kolorektales-karzinom-02"
+      ],
+      "problem": "Card explanation still internal PDF/version bookkeeping, and source not the named AJCC8 primary table.",
+      "required": "Use concrete anatomical explanatory caveat and name AJCC8 via official NCI reproduced table.",
+      "status": "CLOSED_AFTER_ACTUAL_TRIAD_RETEST",
+      "evidence": "Actual DE/EN/FA card explanation now AJCC8 T2/T3/T4a/T4b anatomical distinction and peritoneal coverage caveat; NCI source URL verified."
+    },
+    {
+      "id": "ATV03-SRC-05",
+      "severity": "minor",
+      "keys": [
+        "abdomen-ileus-volvulus-*-01"
+      ],
+      "problem": "Ono2025 case source directly documents triad components, but does not establish frequency of incomplete triad.",
+      "required": "Add/switch to original Lassandro2004 cohort PMID15093232 for incomplete detection; do not add universal numerical performance claims.",
+      "status": "CLOSED_AFTER_ACTUAL_SOURCE_RETEST",
+      "evidence": "All3 actual proposed Rigler question source fields now PMID15093232; original 27-patient abstract independently read. Keys and clinical text unchanged."
+    }
+  ],
+  "runtime": "packet03-independent-runtime-retest.json",
+  "sources": [
+    {
+      "url": "https://doi.org/10.1016/j.ejvs.2025.06.010",
+      "actualRead": "Original guideline via author repositories: Recommendation33, Fig3, bowel signs/irreversibility and urgent multidisciplinary sections.",
+      "supports": "Arterial+venous ≤1mm CTA regardless renal function; NOMI concern despite patent central vessels; gas/reduced enhancement not independent proof of irreversible injury."
+    },
+    {
+      "url": "https://link.springer.com/article/10.1007/s00330-025-12274-w",
+      "actualRead": "Original ESGAR2026 publisher methods, MRF definitions and nodal/EMVI discussion paragraphs.",
+      "supports": "≤1mm margin including EMVI/irregular nodules; smooth node alone excluded; lateral obturator/internal-iliac ≥7mm, limited morphology support5–7mm; patient-level cN."
+    },
+    {
+      "url": "https://www.cancer.gov/types/colorectal/hp/rectal-treatment-pdq",
+      "actualRead": "Official reproduced AJCC8 tables/definitions and local/distant staging tasks.",
+      "supports": "Anatomic T depth, T3 perirectal tissues versus T4 peritoneal/organ extension."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21892288/",
+      "actualRead": "Original Koh2008 full abstract and Fig1/2 descriptions.",
+      "supports": "Expanded irregular extramural veins with tumour-like signal; no accuracy generalisation beyond original selected cohort."
+    },
+    {
+      "url": "https://aps-journal.org/pdf/10.13029/aps.2020.26.1.15",
+      "actualRead": "Original data-collection/measurement methods and limitations.",
+      "supports": "Single muscularis propria excluding other layers/lumen; thickness versus total diameter/length."
+    },
+    {
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/ajum.12305",
+      "actualRead": "Original Piotto2022 methods/technique and repeated-wave/repeat-scan discussion.",
+      "supports": "Measurement endpoints, dynamic opening, technical false positives and evolving HPS; not a universal new threshold."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9805307/",
+      "actualRead": "Complete original Cohen1998 comparative abstract.",
+      "supports": "Spasm may overlap accepted HPS measurements and show variable morphology; now direct repaired source."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17958692/",
+      "actualRead": "Original Forster2007 abstract including borderline conclusion.",
+      "supports": "Borderline studies require repeat US or alternative imaging; no fixed universal follow-up interval introduced."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2052723/",
+      "actualRead": "Complete original Fishman1991 abstract.",
+      "supports": "PMC can be segmental or pancolonic; nonspecific CT needs clinical context."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10352600/",
+      "actualRead": "Complete original Macari1999 abstract.",
+      "supports": "Accordion sign from severe oedematous folds is not organism-specific."
+    },
+    {
+      "url": "https://doi.org/10.1093/ecco-jcc/jjaf106",
+      "actualRead": "Original ECCO joint guideline Recommendation1 and typical UC distribution; Recommendation23/systemic toxicity and complication assessment.",
+      "supports": "UC continuous distal distribution with multimodal diagnostic context; toxic megacolon concern requires systemic and imaging context."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29045179/",
+      "actualRead": "Complete original Khaled2018 cohort abstract.",
+      "supports": "Feces sign location helps transition localisation; multivariate analysis no independent prediction of ischaemia/nonoperative success."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28759326/",
+      "actualRead": "Complete original Millet2017 cohort abstract.",
+      "supports": "Combined reduced enhancement/closed-loop/mesenteric haziness associated with strangulation; not definitive irreversible resection extent."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19234265/",
+      "actualRead": "Complete original Delabrousse2009 abstract.",
+      "supports": "Two adjacent beaks, C-loop and radial mesenteric vessels define studied closed-loop pattern."
+    },
+    {
+      "url": "https://doi.org/10.11231/jaem.40.751",
+      "actualRead": "Original J-STAGE English case abstract.",
+      "supports": "Bowel passage between portal vein/IVC into lesser sac; no general test accuracy claim."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20574094/",
+      "actualRead": "Complete original Rosenblat2010 cohort abstract.",
+      "supports": "Displaced caecum, ileocaecal twist, transitions and distal decompression; no inferred general numerical sensitivity."
+    },
+    {
+      "url": "https://link.springer.com/article/10.1186/s13017-023-00502-x",
+      "actualRead": "Original WSES2023 recommendations2/3 and diagnostic morphology discussion.",
+      "supports": "Coffee-bean sigmoid pattern, whirl/tapered transition; viability separately assessed."
+    },
+    {
+      "url": "https://www.jmaj.jp/detail.php?id=10.31662%2Fjmaj.2024-0192",
+      "actualRead": "Original Ono2025 case text and figure descriptions.",
+      "supports": "Rigler components; incomplete-frequency source gap separately logged."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15093232/",
+      "actualRead": "Complete original Lassandro2004 27-case abstract.",
+      "supports": "Triad not universal across modalities; suitable source repair, no new quota/threshold."
+    },
+    {
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/intussusception/",
+      "actualRead": "Official February2026 guideline: initial study, investigations and AXR limits.",
+      "supports": "Stable paediatric suspected ileocolic intussusception initial US; normal AXR not exclusion."
+    },
+    {
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/j.1442-200X.2012.03622_1.x",
+      "actualRead": "Original Japanese guideline CQ16 and associated diagnostic sections.",
+      "supports": "Transverse target/doughnut and longitudinal pseudokidney; evaluate both planes."
+    }
+  ],
+  "limitations": [
+    "No new reading or coverage acceptance of supplied PDF/diagnostic figures; no fabricated image dependency found.",
+    "Sources read for assessed claims as specified, not every source end-to-end.",
+    "Technical overlay is not actual shared after integration or published snapshot. Root must apply/retest shared originals after acceptance.",
+    "No fresh browser interaction, access, RTL, physician scientific approval or release approval."
+  ],
+  "finalRetest": {
+    "proposedObjectEquality": "89/89 exact after all repairs",
+    "sharedBeforeStillActual": "21/21 question rows and5/5 card objects exact",
+    "sourceEditsByReviewer": 0,
+    "unresolvedFindings": 0,
+    "publication": "Canonical shared application and final global after-value comparison still required by root; no published acceptance inferred."
+  }
+}

@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { advancedGastroRows } from '@/data/assessmentQuality/atvGIAdvanced'
 import LessonReferenceShell from '@/components/LessonReferenceShell'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
@@ -92,8 +93,9 @@ export default function MesentericIschaemiaPage() {
   const c = C[lang] || C.de
   const langHref = path => lang === 'de' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${lang}`
   const lessonReturn = `${langHref('/abdomen/gi/mesenteriale-ischaemie')}#cta-protocol`
-  const check = { question: c.checkQ, options: c.options, answer: 0, explanation: c.explanation, diagramCaption: { de: 'Schema zur Orientierung; keine Patientendarstellung.', en: 'Orientation schematic; not patient data.', fa: 'شماتیک راهنما؛ تصویر بیمار نیست.' } }
-  return <LessonReferenceShell lessonId="mesenteriale-ischaemie" lang={lang} title={c.title} diagram="bowel" goals={c.goals} check={check} summary={c.summary} copy={{ contentTitle: { de: c.contentTitle, en: c.contentTitle, fa: c.contentTitle } }} quizHref={langHref(`/ueben/quiz?fach=abdomen&n=1&themen=mesenteriale-ischaemie&from=${encodeURIComponent(lessonReturn)}`)} flashcardsHref={langHref(`/flashcards/mesenteriale-ischaemie?from=${encodeURIComponent(lessonReturn)}`)}>
+  const row = advancedGastroRows.find(item => item.key === 'mesenteric-nomi')
+  const check = { question: row.question, options: row.options, answer: 'ABCD'.indexOf(row.correct), explanation: row.explanation, wrongFeedback: Object.fromEntries(row.wrong.flatMap((value,index)=>value?[[index,value]]:[])), diagramCaption: { de: 'Schema zur Orientierung; keine Patientendarstellung.', en: 'Orientation schematic; not patient data.', fa: 'شماتیک راهنما؛ تصویر بیمار نیست.' } }
+  return <LessonReferenceShell lessonId="mesenteriale-ischaemie" lang={lang} title={c.title} diagram="bowel" goals={c.goals} check={check} summary={c.summary} copy={{ contentTitle: { de: c.contentTitle, en: c.contentTitle, fa: c.contentTitle } }} quizHref={langHref(`/ueben/quiz?fach=abdomen&n=3&themen=mesenteriale-ischaemie&from=${encodeURIComponent(lessonReturn)}`)} flashcardsHref={langHref(`/flashcards/mesenteriale-ischaemie?from=${encodeURIComponent(lessonReturn)}`)}>
     <main className={styles.content}>
       <p className={styles.lead}>{c.intro}</p>
       <section id="cta-protocol" className={styles.panel}><h2>{c.protocolTitle}</h2><p>{c.protocol}</p><SearchFlow c={c}/></section>

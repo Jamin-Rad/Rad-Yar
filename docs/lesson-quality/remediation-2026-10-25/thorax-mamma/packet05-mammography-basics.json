@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_FULL_ORIGINAL_ASSESSMENT_POOL_REVIEW_READY",
+  "route": "/mamma/bildgebung/mammographie/grundlagen",
+  "counts": {
+    "questionTriads": 10,
+    "cardTriads": 12,
+    "inlineDecisionTriads": 3,
+    "newQuestionCount": 0,
+    "newCardCount": 0
+  },
+  "files": [
+    "data/mammaMammographyBasics.js",
+    "app/mamma/bildgebung/mammographie/grundlagen/content.js",
+    "app/mamma/bildgebung/mammographie/grundlagen/page.js"
+  ],
+  "goals": [
+    {
+      "id": "reporting",
+      "questionIds": [
+        "mammographie-grundlagen-de-describe-first",
+        "mammographie-grundlagen-de-birads-6"
+      ],
+      "cardIds": [
+        "mammographie-grundlagen-01",
+        "mammographie-grundlagen-11"
+      ]
+    },
+    {
+      "id": "density-margins",
+      "questionIds": [
+        "mammographie-grundlagen-de-composition-c",
+        "mammographie-grundlagen-de-obscured-indistinct",
+        "mammographie-grundlagen-de-mass-density"
+      ],
+      "cardIds": [
+        "mammographie-grundlagen-02",
+        "mammographie-grundlagen-03",
+        "mammographie-grundlagen-04",
+        "mammographie-grundlagen-12"
+      ]
+    },
+    {
+      "id": "calcification-decisions",
+      "questionIds": [
+        "mammographie-grundlagen-de-calc-combination",
+        "mammographie-grundlagen-de-cem-calc",
+        "mammographie-grundlagen-de-case-final"
+      ],
+      "cardIds": [
+        "mammographie-grundlagen-05",
+        "mammographie-grundlagen-06",
+        "mammographie-grundlagen-10"
+      ]
+    },
+    {
+      "id": "problem-solving",
+      "questionIds": [
+        "mammographie-grundlagen-de-asymmetry-workup",
+        "mammographie-grundlagen-de-distortion"
+      ],
+      "cardIds": [
+        "mammographie-grundlagen-07",
+        "mammographie-grundlagen-08",
+        "mammographie-grundlagen-09"
+      ]
+    }
+  ],
+  "changes": "Nine original question stems/options revised, all IDs/keys retained;10original MCQ/12card triads read. Pure recognition retained where educationally appropriate. Existing duplicate workflow card12 reused for the newly assessed symptomatic ultrasound decision. Three inline cases have selected-option feedback; third case has plausible competing management strategies. DE double-negation in CEM caution corrected; BI-RADS meaning table localised and category6 management supplied; adjacent symptomatic caveat taught before testing.",
+  "sourcesRead": [
+    {
+      "url": "https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/BI-RADS",
+      "scope": "Official current2025 release and direct Mammography Lexicon Summary PDF,4pages extracted: mass/margins/density, calcification morphology/distribution, asymmetry/distortion, assessment0–6. Not a claim to read the full proprietary manual."
+    },
+    {
+      "url": "https://acsearch.acr.org/docs/69495/Narrative/",
+      "scope": "Official indexed2022 ACR Variant5: age40+palpable finding/negative diagnostic mammography→targetedUS. Directopen403; exact indexedprimary recommendation and original guideline PMID37236740 read, no inaccessible fulltext claim."
+    },
+    {
+      "url": "https://www.fda.gov/radiation-emitting-products/mammography-information-patients/frequently-asked-questions-about-mammography-quality-standards-act-mqsa",
+      "scope": "Official compositionC/D masking text."
+    },
+    {
+      "url": "https://doi.org/10.1177/0284185118822639",
+      "scope": "Actual original Houben2019 fulltext methods/results/discussion,147screeningrecalls;6nonenhancingDCIS and suspicious LE-based tissue sampling. No observed performance percentages generalised or surgery effect claimed."
+    }
+  ],
+  "actualExport": "tmp/assessment-quality/mammography-basics-actual.json",
+  "technical": "All10Q/12cards/3inline DEENFA fields/options/feedback/goalmappings/schema author check PASS. Browser/independent acceptance pending.",
+  "limits": "No new PDFcoverage, diagnostic-image or full lesson scientific release approval. Adjacent table/language changes need independent review. Not yet on Main."
+}

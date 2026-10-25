@@ -1,6 +1,7 @@
 'use client'
 
 import { useLanguage } from '@/providers/LanguageProvider'
+import { rectalMrfFeedback, rectalCoverage } from '@/data/assessmentQuality/atvRectalStaging'
 import LessonReferenceShell from '@/components/LessonReferenceShell'
 import styles from '../divertikulitis/page.module.css'
 
@@ -100,7 +101,7 @@ const C = {
 export default function ColorectalCancerPage() {
   const { lang } = useLanguage()
   const c = C[lang] || C.de
-  return <LessonReferenceShell lessonId="abdomen-kolorektales-karzinom" lang={lang} title={c.title} diagram="rectal-mri" copy={c} goals={c.goals} check={c.check} summary={c.summary} quizHref="/ueben/quiz?fach=abdomen&n=1&themen=kolorektales-karzinom" flashcardsHref="/flashcards/kolorektales-karzinom">
+  return <LessonReferenceShell lessonId="abdomen-kolorektales-karzinom" lang={lang} title={c.title} diagram="rectal-mri" copy={c} goals={rectalCoverage.learningGoals.map(goal=>goal.text)} check={{...c.check,wrongFeedback:rectalMrfFeedback}} summary={c.summary} quizHref="/ueben/quiz?fach=abdomen&n=4&themen=kolorektales-karzinom" flashcardsHref="/flashcards/kolorektales-karzinom">
     <main className={styles.page} lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
       <div className={styles.main} style={{ maxWidth: 1080, margin: '2rem auto', padding: '0 1rem' }}>
         <section className={styles.section}><p className={styles.lead}>{c.intro}</p><h2>{c.colonTitle}</h2><div className={styles.cardsGrid}>{c.colon.map(([title, text]) => <article className={styles.infoCard} key={title}><h3>{title}</h3><p>{text}</p></article>)}</div></section>

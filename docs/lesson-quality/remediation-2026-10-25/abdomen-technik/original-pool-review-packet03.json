@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_FULL_PROPOSED_POOL_READY_INDEPENDENT_REVIEW_PENDING",
+  "counts": {
+    "routes": 5,
+    "questionsPerLanguage": 22,
+    "originalQuestionTriads": 14,
+    "newQuestionTriads": 8,
+    "originalCardTriads": 20,
+    "newCards": 3,
+    "cards": 23
+  },
+  "pools": [
+    {
+      "route": "/abdomen/gi/ileus-volvulus",
+      "originalQuestions": 6,
+      "newQuestions": 2,
+      "originalCards": 8,
+      "newCards": 0,
+      "notes": [
+        "All6 original MCQ triads and8 card triads compared against actual current corpus; original1 Volvulus direct producer revised,5 shared root proposals.",
+        "New2 text-only application vignettes cover closed-loop configuration and caecal-twist recognition, reusing existing focused cards.",
+        "Private-PDF question/card bookkeeping removed from proposed Winslow and ownVolvulus entries.",
+        "Fixed360-degree definition removed earlier in ownlesson/card; no diagnostic image claim added."
+      ]
+    },
+    {
+      "route": "/abdomen/gi/kolitis-patterns",
+      "originalQuestions": 4,
+      "newQuestions": 0,
+      "originalCards": 4,
+      "newCards": 0,
+      "notes": [
+        "All4 original question/card triads revised in canonical existing-practice producer.",
+        "Contrasting aetiological reports, accordion mechanism, comparable distributions and complication classification replace broad silly/absolute alternatives.",
+        "Custom inline imports exact canonical PMC distribution triad with actual key/per-option feedback."
+      ]
+    },
+    {
+      "route": "/abdomen/gi/kolorektales-karzinom",
+      "originalQuestions": 1,
+      "newQuestions": 3,
+      "originalCards": 5,
+      "newCards": 0,
+      "notes": [
+        "Existing root-updated MRF clinical stem/key/options retained;3 specific wrong explanations and cleanprimarysource proposed at originalproducer.",
+        "All5 card triads read; useful localstaging,Tdepth,MRF,EMVI,nodal retrieval reused.",
+        "New3 text-only cases cover AJCC8T3 anatomy, EMVI and ESGAR2026lateralregional nodes; no duplicatecards.",
+        "Actualinline4goals/specificMRFfeedback supplied for sharedconsumer."
+      ]
+    },
+    {
+      "route": "/abdomen/gi/mesenteriale-ischaemie",
+      "originalQuestions": 1,
+      "newQuestions": 2,
+      "originalCards": 1,
+      "newCards": 2,
+      "notes": [
+        "Existing protocol question all3 read; proposed four comparable acquisitionprotocols replace renal-delay cues.",
+        "Original1 focused CTA card retained; two newNOMI and viability-limit retrievalcards fill actual appliedgoals.",
+        "Actualinline now uses canonicalNOMI question/options/key and individualwrongfeedback."
+      ]
+    },
+    {
+      "route": "/abdomen/gi/pylorusstenose",
+      "originalQuestions": 2,
+      "newQuestions": 1,
+      "originalCards": 2,
+      "newCards": 1,
+      "notes": [
+        "Original2 measurement/dynamics MCQ/cardtriads revised, sameIDs.",
+        "Retains important smallfluidpassage doesnotexcludeHPS caveat from actual2022primary.",
+        "Newindeterminatefollowup item/card fills remaininggoal; question distractor refinement pending beforehandoff.",
+        "Actualinline uses canonicaldynamictriad/key/specificfeedback."
+      ]
+    }
+  ],
+  "sharedChanges": {
+    "localizedQuestionRecords": 21,
+    "cardRecords": 5,
+    "canonicalApplication": "PENDING_ROOT_ORIGINAL_SOURCE_APPLICATION_AFTER_REVIEW"
+  },
+  "evidence": {
+    "actual15SSR": "tmp/assessment-quality/atv-packet03-ssr.json",
+    "proposedPool": "packet03-author-manifest.json",
+    "sharedBeforeParity": "packet03-shared-before-parity.json",
+    "primarySources": "packet03-freeze-source-research.json"
+  },
+  "remaining": [
+    "Independent fullpool source/translation/assessment review",
+    "Root canonical shared-source integration of21localeMCQ+5originalcards after acceptance",
+    "Rendered interaction/returnlanguage verification"
+  ],
+  "independent": "PENDING",
+  "scopeQualification": "22MCQ/locale and23cardtriads fully accounted; fourteen originalMCQtriads plus8targeted additions,twenty originalcardtriads plus3focused additions. No unmodified originalpool implicitly accepted."
+}

@@ -2236,6 +2236,416 @@
           "D": "Die beschriebenen Areale reichern nicht an; kräftig anreicherndes hypervaskuläres Gewebe entspricht dieser Beobachtung nicht."
         },
         "source": "https://doi.org/10.1177/17588359231192388"
+      },
+      {
+        "id": "aq-atv-mesenteric-nomi-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "mesenteriale-ischaemie"
+        ],
+        "question": "Ein Patient im Schock unter Vasopressoren hat in der CTA vermindertes Dünndarm-Enhancement. SMA und Mesenterialvenen sind durchgängig. Welche Arbeitsdiagnose muss insbesondere erwogen werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Embolischer proximaler SMA-Verschluss"
+          },
+          {
+            "id": "B",
+            "text": "Nichtokklusive mesenteriale Ischämie (NOMI)"
+          },
+          {
+            "id": "C",
+            "text": "Okklusive mesenteriale Venenthrombose"
+          },
+          {
+            "id": "D",
+            "text": "Reine reaktive Hyperämie mit gesteigertem Darmwand-Enhancement"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Eine offene SMA schließt Ischämie nicht aus. Bei Schock und passender Darmwandminderperfusion beschreibt ESVS NOMI als wichtige Verdachtsdiagnose; Vasokonstriktion und systemische Minderperfusion können ohne zentralen Gefäßverschluss auftreten. Den Verdacht dringend im klinischen Kontext kommunizieren.",
+        "wrongExplanations": {
+          "A": "Ein proximaler Verschluss ist mit der beschriebenen durchgängigen SMA nicht nachgewiesen.",
+          "C": "Die beschriebenen durchgängigen Venen zeigen keine okklusive Venenthrombose.",
+          "D": "Gesteigertes Enhancement ist nicht der beschriebene Befund; hier liegt eine Minderaufnahme bei Schock vor."
+        },
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+      },
+      {
+        "id": "aq-atv-mesenteric-viability-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "mesenteriale-ischaemie"
+        ],
+        "question": "CTA zeigt einen SMA-Verschluss, deutlich verminderte Darmwandaufnahme, Pneumatosis und portomesenteriales Gas. Welche Aussage zur Befundsicherheit ist angemessen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Passagestörung mit erhaltener Perfusion als führende Erklärung; konservative Verlaufskontrolle."
+          },
+          {
+            "id": "B",
+            "text": "Transmurale Nekrose der gesamten betroffenen Strecke als führende Beurteilung; Resektionsausmaß aus der CT ableiten."
+          },
+          {
+            "id": "C",
+            "text": "Akute mesenteriale Ischämie mit dringlichem Handlungsbedarf; Darmviabilität unverzüglich klinisch-chirurgisch beurteilen."
+          },
+          {
+            "id": "D",
+            "text": "Gedeckte Darmperforation als führende Erklärung; primär nach einem lokalen Leck suchen."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Der kombinierte Gefäß- und Darmbefund ist hochgradig bedenklich und muss dringlich kommuniziert werden. ESVS betont zugleich, dass auch Pneumatosis, venöses Gas und verminderte Aufnahme allein keine irreversible Darmschädigung beweisen. Viabilität und weiteres Vorgehen brauchen unverzügliche klinisch-chirurgisch-vaskuläre Beurteilung.",
+        "wrongExplanations": {
+          "A": "SMA-Verschluss und verminderte Wandaufnahme sprechen gegen erhaltene Perfusion. Eine reine konservative Verlaufskontrolle würde die dringliche Ischämiebeurteilung verzögern.",
+          "B": "Das Muster ist hochgradig bedenklich, definiert aber weder Irreversibilität noch das Resektionsausmaß zuverlässig allein. Dringliche interdisziplinäre Viabilitätsbeurteilung ist nötig.",
+          "D": "Portomesenteriales Gas ist venöses Gas und nicht der Nachweis eines lokalen Darmlecks. Der SMA-Verschluss mit Minderaufnahme priorisiert die Ischämie; zusätzliche Perforationszeichen wären gesondert zu beurteilen."
+        },
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+      },
+      {
+        "id": "aq-atv-pylorus-indeterminate-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "pylorusstenose"
+        ],
+        "question": "Ein kreislaufstabiler sechs Wochen alter Säugling erbricht weiterhin nichtgallig. Bei HPS-Verdacht war die erste Pylorussonografie technisch unzureichend und ergab grenzwertige Maße ohne verlässliche Dynamik. Welche gezielte Bildgebung ist unter diesen Optionen als nächstes sinnvoll?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Konventionelle Röntgenaufnahme des Abdomens."
+          },
+          {
+            "id": "B",
+            "text": "Kontrastmitteleinlauf zur Beurteilung des Kolons."
+          },
+          {
+            "id": "C",
+            "text": "Gezielte Wiederholungssonografie des Pylorus mit optimierter Technik und dynamischer Beobachtung."
+          },
+          {
+            "id": "D",
+            "text": "Nuklearmedizinische Untersuchung auf gastroösophagealen Reflux."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Technische Einschränkung und grenzwertige Maße ergeben keine sichere positive oder negative Diagnose. Bei fortbestehendem klinischem Verdacht unterstützt die Originalstudie eine erneute Sonografie oder alternative Abklärung; die konkrete Wahl richtet sich nach der klinischen Situation.",
+        "wrongExplanations": {
+          "A": "Ein Röntgenbild kann eine Magendilatation zeigen, klärt aber die grenzwertigen Muskelmaße und dynamische Pylorusöffnung nicht gezielt.",
+          "B": "Ein Kolonkontrasteinlauf untersucht nicht die hier unzureichend beurteilte Pylorusmuskulatur und -öffnung.",
+          "D": "Eine Refluxszintigrafie ersetzt keine verlässliche morphologische und dynamische Pylorusbeurteilung bei weiterbestehendem HPS-Verdacht."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/17958692/"
+      },
+      {
+        "id": "aq-atv-rectal-t3-depth-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "Textfall nach AJCC8: Ein Rektumkarzinom wächst durch die Muscularis propria in das mesorektale Fett. Eine Invasion des viszeralen Peritoneums oder benachbarter Organe ist nicht beschrieben. Welche T-Kategorie passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "T1: Invasion der Submukosa."
+          },
+          {
+            "id": "B",
+            "text": "T2: Invasion der Muscularis propria."
+          },
+          {
+            "id": "C",
+            "text": "T3: Wachstum durch die Muscularis propria in perirektales Gewebe."
+          },
+          {
+            "id": "D",
+            "text": "T4a: Invasion der Oberfläche des viszeralen Peritoneums."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Das beschriebene Wachstum durch die Muscularis propria ins perirektale Fett entspricht T3 nach AJCC8. Fettinvasion allein ist keine T4a-Peritonealinvasion.",
+        "wrongExplanations": {
+          "A": "Die Ausdehnung reicht über die Submukosa hinaus.",
+          "B": "T2 bleibt auf die Muscularis propria begrenzt; hier ist das perirektale Fett betroffen.",
+          "D": "Eine Peritonealoberflächeninvasion ist nicht beschrieben."
+        },
+        "source": "https://www.cancer.gov/types/colorectal/hp/rectal-treatment-pdq"
+      },
+      {
+        "id": "aq-atv-rectal-emvi-pattern-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "Hochauflösende T2-MRT zeigt tumorsignalgleiches Gewebe innerhalb einer erweiterten, unregelmäßig konturierten extramuralen Vene in Kontinuität zum Rektumtumor. Welche Befundkategorie passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Extramurale venöse Invasion (mrEMVI)."
+          },
+          {
+            "id": "B",
+            "text": "Reaktiv vergrößerter mesorektaler Lymphknoten."
+          },
+          {
+            "id": "C",
+            "text": "Tumorfreies fibrotisches Band im mesorektalen Fett."
+          },
+          {
+            "id": "D",
+            "text": "Unveränderte extramurale Vene ohne Tumorinvasion."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Tumorsignal in einer extramuralen Vene mit erweitertem unregelmäßigem Kontur entspricht dem beschriebenen EMVI-Muster; Gefäßkontinuität und Tumorbezug gezielt beurteilen.",
+        "wrongExplanations": {
+          "B": "Ein isolierter reaktiver Knoten erklärt die beschriebene venöse Kontinuität nicht.",
+          "C": "Tumorfreies Narbengewebe erklärt intravasales Tumorsignal und die erweiterte Venenkontur nicht.",
+          "D": "Tumorsignal im erweiterten unregelmäßigen Gefäß passt nicht zu einer unveränderten tumorfreien Vene."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/21892288/"
+      },
+      {
+        "id": "aq-atv-rectal-lateral-node-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "Bei der primären MRT eines Rektumkarzinoms misst ein Obturator-Lymphknoten 8 mm in der kurzen Achse. Wie ist er nach ESGAR2026 in die regionale Lymphknotenbeurteilung einzubeziehen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Als unauffällig, weil alle pelvinen Knoten unter 10 mm negativ sind."
+          },
+          {
+            "id": "B",
+            "text": "Als suspekter lateraler regionaler Knoten in der patientenbezogenen cN-Einschätzung."
+          },
+          {
+            "id": "C",
+            "text": "Als Fernmetastase M1 allein wegen der Lage außerhalb des Mesorektums."
+          },
+          {
+            "id": "D",
+            "text": "Nicht berücksichtigen; cN beschränkt sich auf mesorektale Knoten."
+          }
+        ],
+        "correct": "B",
+        "explanation": "ESGAR2026 verwendet für obturatorische und interne iliakale Knoten ≥7 mm Kurzachse als suspektes Kriterium. Lokalisation, Größe und Gesamtkontext dokumentieren; nicht aus einem Knoten eine unbelegte genaue cN-Untergruppe oder Therapie ableiten.",
+        "wrongExplanations": {
+          "A": "Der universelle 10-mm-Grenzwert verfehlt das benannte laterale ≥7-mm-Kriterium.",
+          "C": "Die Obturatorstation gehört hier zur regionalen lateralen Beurteilung; extramesorektal bedeutet nicht automatisch M1.",
+          "D": "Nur mesorektale Knoten zu berücksichtigen lässt die relevante laterale regionale Station aus."
+        },
+        "source": "https://doi.org/10.1007/s00330-025-12274-w"
+      },
+      {
+        "id": "aq-atv-ileus-closed-loop-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "question": "Textfall: Eine dilatierte C-förmige Dünndarmschlinge endet an zwei benachbarten spitz zulaufenden Übergängen; zugehörige Mesenterialgefäße konvergieren radial. Welche Konfiguration passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Einfache Obstruktion an nur einem Übergang ohne isoliertes Segment."
+          },
+          {
+            "id": "B",
+            "text": "Closed-loop-Obstruktion mit zwei Enden eines isolierten Darmsegments."
+          },
+          {
+            "id": "C",
+            "text": "Diffuser paralytischer Ileus ohne umschriebenen mechanischen Übergang."
+          },
+          {
+            "id": "D",
+            "text": "Isolierte Dickdarmobstruktion mit kollabiertem Dünndarm."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Zwei benachbarte Übergänge begrenzen eine geschlossene Schlinge; C-Form und radiale Gefäße unterstützen die räumliche Zuordnung. Die Konfiguration allein beweist keine Ischämie: Wandkontrastierung, Mesenterium und Klinik zusätzlich prüfen.",
+        "wrongExplanations": {
+          "A": "Hier sind zwei Übergänge mit einem dazwischen isolierten Segment beschrieben, nicht nur ein einzelner Übergang.",
+          "C": "Die umschriebenen zwei Übergänge sprechen für einen mechanischen Closed-loop-Mechanismus, nicht für diffuse Atonie.",
+          "D": "Das beschriebene dilatierte isolierte Segment liegt im Dünndarm; ein kollabierter Dünndarm passt nicht."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/19234265/"
+      },
+      {
+        "id": "aq-atv-ileus-caecal-twist-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "volvulus"
+        ],
+        "question": "Textfall: Die CT verfolgt ein stark dilatiertes Zökum in den linken Oberbauch. Am ileozökalen Übergang bestehen Verdrehung und Kaliberwechsel, das distale Kolon ist kollabiert. Welche Arbeitsdiagnose passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Sigmavolvulus."
+          },
+          {
+            "id": "B",
+            "text": "Stenosierendes Karzinom im Colon descendens."
+          },
+          {
+            "id": "C",
+            "text": "Akute nichtmechanische Kolonpseudoobstruktion."
+          },
+          {
+            "id": "D",
+            "text": "Zökumvolvulus."
+          }
+        ],
+        "correct": "D",
+        "explanation": "Die CT ordnet die verlegte dilatierte Schlinge dem Zökum zu; ileozökale Verdrehung, Übergang und distale Dekompression stützen Zökumvolvulus. Nicht aus der Lage allein schließen: den Darmverlauf nachvollziehen.",
+        "wrongExplanations": {
+          "A": "Der Text identifiziert das Zökum und den ileozökalen Übergang; eine Sigmaschlinge ist nicht beschrieben.",
+          "B": "Eine fokale Tumorstenose im Colon descendens ist nicht beschrieben; die Übergangszone liegt ileozökal mit Verdrehung.",
+          "C": "Eine Pseudoobstruktion erklärt keine nachgewiesene fokale ileozökale Verdrehung mit mechanischem Übergang."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/20574094/"
+      },
+      {
+        "id": "aq-brain-aq-demenzmuster-de-mta-components",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "Bei einer Gedächtnisstörung wird die mediale Temporallappenatrophie auf koronaren T1-Aufnahmen visuell bewertet. Welche Strukturgruppe geht unmittelbar in den MTA-Score ein?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Hippocampushöhe sowie Weite von Fissura choroidea und Temporalhorn"
+          },
+          {
+            "id": "B",
+            "text": "Frontale Ventrikelweite, Balkenwinkel und Weite der Konvexitätssulci"
+          },
+          {
+            "id": "C",
+            "text": "Mittelhirnfläche, Ponsfläche und Breite des oberen Kleinhirnstiels"
+          },
+          {
+            "id": "D",
+            "text": "Weite der frontalen und anteriortemporalen Sulci sowie Insulavolumen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MTA erfasst Hippocampusformation und angrenzende Liquorräume: mit zunehmender Atrophie erweitern sich Fissura choroidea und Temporalhorn, die Hippocampushöhe nimmt ab. Beide Seiten beurteilen. Alter und verwendete Referenz beeinflussen die Einordnung; der Score allein beweist keine Alzheimer-Erkrankung.",
+        "wrongExplanations": {
+          "B": "Diese Größen dienen der Ventrikel-/Liquorraumbeurteilung; sie ersetzen die hippokampalen MTA-Komponenten nicht.",
+          "C": "Diese Strukturen gehören zu einer infratentoriellen Musterbeurteilung, nicht zur visuellen MTA-Skala.",
+          "D": "Diese Regionen können für andere Atrophiemuster relevant sein; die MTA-Skala richtet sich auf Hippocampus und angrenzende Liquorräume."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8305846/"
+      },
+      {
+        "id": "aq-brain-aq-demenzmuster-de-dlb-biomarker",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "Bei klinischem Verdacht auf Lewy-Körper-Demenz ist der mediale Temporallappen im MRT relativ erhalten. Welcher zusätzliche Bildbefund zählt nach dem DLB-Konsensus 2017 als indikativer Biomarker?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Okzipital betonter Minderstoffwechsel im FDG-PET"
+          },
+          {
+            "id": "B",
+            "text": "Relative Erhaltung des Hippocampusvolumens im MRT"
+          },
+          {
+            "id": "C",
+            "text": "Verminderte striatale Dopamintransporteraufnahme in SPECT/PET"
+          },
+          {
+            "id": "D",
+            "text": "Diffuse Minderperfusion mit okzipitaler Betonung in der SPECT"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Verminderte striatale DAT-Aufnahme gehört zu den indikativen Biomarkern; relative MTL-Erhaltung und das genannte Perfusions-/Stoffwechselmuster sind unterstützende Hinweise. Auch DAT-Bildgebung wird mit Klinik und Differenzialdiagnosen interpretiert; sie beweist DLB nicht allein und trennt nicht jede degenerative Parkinson-Erkrankung.",
+        "wrongExplanations": {
+          "A": "Okzipital betonter Minderstoffwechsel ist ein unterstützender Biomarker, nicht die hier gesuchte indikative DAT-Kategorie.",
+          "B": "Relative MTL-Erhaltung ist ein struktureller unterstützender Hinweis; sie ersetzt den indikativen DAT-Biomarker nicht.",
+          "D": "Die Perfusions-/Stoffwechselkategorie ist unterstützend und weniger spezifisch; gefragt ist die indikative striatale DAT-Veränderung."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5496518/"
+      },
+      {
+        "id": "aq-brain-aq-demenzmuster-de-ftd-pattern",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "Eine Person entwickelt fortschreitend Enthemmung und verändertes Sozialverhalten. Welche regionale Atrophieverteilung passt am ehesten zu diesem klinischen Syndrom?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Vorwiegend beidseitige mesiotemporale Atrophie"
+          },
+          {
+            "id": "B",
+            "text": "Betonte, oft asymmetrische frontale und/oder anteriortemporale Atrophie"
+          },
+          {
+            "id": "C",
+            "text": "Vorwiegend parietookzipitale Atrophie bei relativ erhaltenen vorderen Regionen"
+          },
+          {
+            "id": "D",
+            "text": "Gleichmäßig verteilte globale Atrophie ohne regionalen Schwerpunkt"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Frontal und anteriortemporal betonte Atrophie unterstützt das passende klinische Syndrom. Bildgebung allein legt weder die Variante noch eine gesicherte bvFTD fest. Für die wahrscheinliche bvFTD werden passende klinische Kriterien, funktioneller Abbau und unterstützende Bildgebung zusammengeführt; andere Ursachen müssen berücksichtigt werden.",
+        "wrongExplanations": {
+          "A": "Mesiotemporale Atrophie ist unter anderem im amnestischen Alzheimer-Spektrum relevant, aber nicht das hier gesuchte frontotemporal betonte Unterstützungsmuster.",
+          "C": "Eine posterior betonte Verteilung verlangt eine andere Muster- und klinische Einordnung; sie ist nicht das typische vordere Unterstützungsmuster dieses Falls.",
+          "D": "Globale Atrophie ohne Schwerpunkt ist unspezifischer; die regionale frontale/anteriortemporale Betonung ist hier der gezieltere Hinweis."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3170532/"
+      },
+      {
+        "id": "aq-msk-de-quervain-de-provocation-study-limit",
+        "fach": "msk",
+        "tags": [
+          "de-quervain"
+        ],
+        "question": "Bei der Einordnung eines radial schmerzhaften Handgelenks wird die Studie von Wu et al. (2018) diskutiert: 36 beschwerdefreie Personen wurden mit Finkelstein und Eichhoff untersucht; Finkelstein erzeugte weniger falsch-positive Reaktionen. Welche Aussage lässt dieses Studiendesign unmittelbar zu?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Finkelstein erkennt einen größeren Anteil der tatsächlich erkrankten Patienten."
+          },
+          {
+            "id": "B",
+            "text": "Die falsch-positive Schmerzprovokation lässt sich in dieser beschwerdefreien Gruppe zwischen den Manövern vergleichen."
+          },
+          {
+            "id": "C",
+            "text": "Ein positiver Finkelstein-Test hat damit einen bestimmten Vorhersagewert in einer symptomatischen Ambulanzpopulation."
+          },
+          {
+            "id": "D",
+            "text": "Ein negativer Finkelstein-Test senkt die Krankheitswahrscheinlichkeit in symptomatischen Patienten in bekanntem Ausmaß."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Untersucht wurden beschwerdefreie Handgelenke. Damit ist eine Aussage zu falsch-positiver Provokation in dieser Gruppe möglich; Sensitivität bei Erkrankten und Vorhersagewerte in einer symptomatischen Versorgungspopulation wurden damit nicht bestimmt. Ausführung und Klinik weiterhin genau dokumentieren.",
+        "wrongExplanations": {
+          "A": "Für Sensitivität braucht man erkrankte Patienten und einen geeigneten Referenzstandard. Diese Vergleichsgruppe war beschwerdefrei.",
+          "C": "Der positive Vorhersagewert hängt auch von Krankheitshäufigkeit und Untersuchungsspektrum ab. Eine rein beschwerdefreie Gruppe legt ihn für eine symptomatische Ambulanz nicht fest.",
+          "D": "Eine quantifizierte Ausschlusswirkung bei symptomatischen Patienten erfordert unter anderem Daten zur Sensitivität; diese wurden hier nicht erhoben."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103758/"
+        ]
       }
     ],
     "en": [
@@ -4473,6 +4883,416 @@
           "D": "The described areas do not enhance; avidly enhancing hypervascular tissue does not match that observation."
         },
         "source": "https://doi.org/10.1177/17588359231192388"
+      },
+      {
+        "id": "aq-atv-mesenteric-nomi-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "mesenteriale-ischaemie"
+        ],
+        "question": "A patient in shock receiving vasopressors has reduced small-bowel enhancement on CTA. The SMA and mesenteric veins are patent. Which working diagnosis must particularly be considered?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Embolic proximal SMA occlusion"
+          },
+          {
+            "id": "B",
+            "text": "Non-occlusive mesenteric ischaemia (NOMI)"
+          },
+          {
+            "id": "C",
+            "text": "Occlusive mesenteric venous thrombosis"
+          },
+          {
+            "id": "D",
+            "text": "Pure reactive hyperaemia with increased bowel-wall enhancement"
+          }
+        ],
+        "correct": "B",
+        "explanation": "A patent SMA does not exclude ischaemia. With shock and compatible bowel hypoperfusion, ESVS identifies NOMI as an important suspicion; vasoconstriction and systemic hypoperfusion may occur without central vascular occlusion. Communicate concern urgently in clinical context.",
+        "wrongExplanations": {
+          "A": "A proximal occlusion is not demonstrated when the SMA is described as patent.",
+          "C": "The described patent veins do not demonstrate occlusive venous thrombosis.",
+          "D": "Increased enhancement is not the stated finding; reduced enhancement in shock is described."
+        },
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+      },
+      {
+        "id": "aq-atv-mesenteric-viability-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "mesenteriale-ischaemie"
+        ],
+        "question": "CTA shows SMA occlusion, markedly reduced bowel-wall enhancement, pneumatosis and portomesenteric gas. Which statement about diagnostic certainty is appropriate?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Transit obstruction with preserved perfusion as the leading explanation; conservative follow-up."
+          },
+          {
+            "id": "B",
+            "text": "Transmural necrosis throughout the affected segment as the leading assessment; derive resection extent from CT."
+          },
+          {
+            "id": "C",
+            "text": "Acute mesenteric ischaemia requiring urgent action; promptly assess bowel viability clinically and surgically."
+          },
+          {
+            "id": "D",
+            "text": "Contained bowel perforation as the leading explanation; primarily search for a local leak."
+          }
+        ],
+        "correct": "C",
+        "explanation": "The combined vascular and bowel pattern is highly concerning and requires urgent communication. ESVS also stresses that pneumatosis, venous gas and reduced enhancement alone do not prove irreversible bowel injury. Viability and management require immediate clinical, surgical and vascular assessment.",
+        "wrongExplanations": {
+          "A": "SMA occlusion and reduced wall enhancement argue against preserved perfusion. Conservative follow-up alone would delay urgent ischaemia assessment.",
+          "B": "The pattern is highly concerning but does not reliably define irreversibility or resection extent by itself. Urgent interdisciplinary viability assessment is needed.",
+          "D": "Portomesenteric gas is venous gas, not demonstration of a local bowel leak. SMA occlusion with reduced enhancement prioritises ischaemia; additional perforation signs require separate assessment."
+        },
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+      },
+      {
+        "id": "aq-atv-pylorus-indeterminate-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "pylorusstenose"
+        ],
+        "question": "A haemodynamically stable six-week-old infant continues nonbilious vomiting. With suspected HPS, initial pyloric ultrasound was technically inadequate with borderline measurements and unreliable dynamic assessment. Which targeted imaging step is most appropriate among these options?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Plain abdominal radiography."
+          },
+          {
+            "id": "B",
+            "text": "Contrast enema to assess the colon."
+          },
+          {
+            "id": "C",
+            "text": "Targeted repeat pyloric ultrasound with optimised technique and dynamic observation."
+          },
+          {
+            "id": "D",
+            "text": "Nuclear medicine study for gastro-oesophageal reflux."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Technical limitations and borderline measurements do not establish a reliable positive or negative diagnosis. With persistent clinical suspicion, the original study supports repeat ultrasound or alternative assessment; the specific choice depends on the clinical situation.",
+        "wrongExplanations": {
+          "A": "Radiographs may show gastric dilatation but do not directly resolve borderline muscle measurements or dynamic pyloric opening.",
+          "B": "A contrast enema does not assess the inadequately examined pyloric muscle and opening.",
+          "D": "Reflux scintigraphy does not replace reliable morphological and dynamic pyloric assessment when HPS remains suspected."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/17958692/"
+      },
+      {
+        "id": "aq-atv-rectal-t3-depth-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "AJCC8 text vignette: a rectal carcinoma extends through muscularis propria into mesorectal fat. No visceral peritoneal or adjacent-organ invasion is described. Which T category fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "T1: submucosal invasion."
+          },
+          {
+            "id": "B",
+            "text": "T2: muscularis propria invasion."
+          },
+          {
+            "id": "C",
+            "text": "T3: extension through muscularis propria into perirectal tissue."
+          },
+          {
+            "id": "D",
+            "text": "T4a: visceral peritoneal surface invasion."
+          }
+        ],
+        "correct": "C",
+        "explanation": "The described extension through muscularis propria into perirectal fat is AJCC8 T3. Fat invasion alone is not T4a peritoneal invasion.",
+        "wrongExplanations": {
+          "A": "Extension exceeds the submucosa.",
+          "B": "T2 is confined to muscularis propria; perirectal fat is involved here.",
+          "D": "No peritoneal surface invasion is described."
+        },
+        "source": "https://www.cancer.gov/types/colorectal/hp/rectal-treatment-pdq"
+      },
+      {
+        "id": "aq-atv-rectal-emvi-pattern-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "High-resolution T2 MRI shows tumour-like tissue within an expanded irregular extramural vein continuous with the rectal tumour. Which reporting category fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Extramural venous invasion (mrEMVI)."
+          },
+          {
+            "id": "B",
+            "text": "A reactively enlarged mesorectal node."
+          },
+          {
+            "id": "C",
+            "text": "A tumour-free fibrotic strand in mesorectal fat."
+          },
+          {
+            "id": "D",
+            "text": "An unchanged extramural vein without tumour invasion."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Tumour signal within an expanded irregular extramural vein is the described EMVI pattern; assess vascular continuity and tumour relationship.",
+        "wrongExplanations": {
+          "B": "An isolated reactive node does not explain the described venous continuity.",
+          "C": "Tumour-free scar does not explain intravascular tumour signal and venous expansion.",
+          "D": "Tumour signal in an expanded irregular vessel does not fit an unchanged tumour-free vein."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/21892288/"
+      },
+      {
+        "id": "aq-atv-rectal-lateral-node-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "At primary MRI of rectal cancer, an obturator node measures 8 mm in short axis. How should it enter regional nodal assessment under ESGAR2026?",
+        "options": [
+          {
+            "id": "A",
+            "text": "As normal because all pelvic nodes below 10 mm are negative."
+          },
+          {
+            "id": "B",
+            "text": "As a suspicious lateral regional node in patient-level cN assessment."
+          },
+          {
+            "id": "C",
+            "text": "As distant metastasis M1 solely because it lies outside the mesorectum."
+          },
+          {
+            "id": "D",
+            "text": "Exclude it because cN is restricted to mesorectal nodes."
+          }
+        ],
+        "correct": "B",
+        "explanation": "ESGAR2026 uses short axis ≥7 mm as a suspicious criterion for obturator and internal iliac nodes. Record location, size and context; do not infer an unsupported precise cN subgroup or treatment from this one node.",
+        "wrongExplanations": {
+          "A": "A universal 10-mm cutoff misses the stated lateral ≥7-mm criterion.",
+          "C": "The obturator station belongs to regional lateral assessment here; extramesorectal does not automatically mean M1.",
+          "D": "Assessing only mesorectal nodes omits a relevant lateral regional station."
+        },
+        "source": "https://doi.org/10.1007/s00330-025-12274-w"
+      },
+      {
+        "id": "aq-atv-ileus-closed-loop-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "question": "Text vignette: a dilated C-shaped small-bowel loop ends at two adjacent tapering transitions; its mesenteric vessels converge radially. Which configuration fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Simple obstruction at one transition without an isolated segment."
+          },
+          {
+            "id": "B",
+            "text": "Closed-loop obstruction with two ends of an isolated bowel segment."
+          },
+          {
+            "id": "C",
+            "text": "Diffuse paralytic ileus without a focal mechanical transition."
+          },
+          {
+            "id": "D",
+            "text": "Isolated large-bowel obstruction with collapsed small bowel."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Two adjacent transitions delimit a closed loop; C-shape and radial vessels support spatial recognition. Configuration alone does not prove ischaemia: also assess mural enhancement, mesentery and clinical findings.",
+        "wrongExplanations": {
+          "A": "Two transitions with an isolated intervening segment are described, not only one transition.",
+          "C": "The two focal transitions support a mechanical closed loop rather than diffuse atony.",
+          "D": "The described dilated isolated segment is small bowel; collapsed small bowel does not fit."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/19234265/"
+      },
+      {
+        "id": "aq-atv-ileus-caecal-twist-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "volvulus"
+        ],
+        "question": "Text vignette: CT traces a markedly dilated caecum into the left upper quadrant. There is twisting and a transition at the ileocaecal junction, with a decompressed distal colon. Which working diagnosis fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Sigmoid volvulus."
+          },
+          {
+            "id": "B",
+            "text": "Stenosing descending-colon carcinoma."
+          },
+          {
+            "id": "C",
+            "text": "Acute nonmechanical colonic pseudo-obstruction."
+          },
+          {
+            "id": "D",
+            "text": "Caecal volvulus."
+          }
+        ],
+        "correct": "D",
+        "explanation": "CT identifies the displaced dilated loop as caecum; ileocaecal twisting, transition and distal decompression support caecal volvulus. Do not infer origin from location alone: trace bowel continuity.",
+        "wrongExplanations": {
+          "A": "The vignette identifies the caecum and ileocaecal junction rather than a sigmoid loop.",
+          "B": "No descending-colon tumour stenosis is described; the transition is ileocaecal with twisting.",
+          "C": "Pseudo-obstruction does not explain a demonstrated focal ileocaecal twist with a mechanical transition."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/20574094/"
+      },
+      {
+        "id": "aq-brain-aq-demenzmuster-en-mta-components",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "In a patient with memory impairment, medial temporal atrophy is rated visually on coronal T1 images. Which group of structures directly contributes to the MTA score?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Hippocampal height and widths of the choroid fissure and temporal horn"
+          },
+          {
+            "id": "B",
+            "text": "Frontal ventricular width, callosal angle and convexity sulcal width"
+          },
+          {
+            "id": "C",
+            "text": "Midbrain area, pontine area and superior cerebellar peduncle width"
+          },
+          {
+            "id": "D",
+            "text": "Frontal and anterior temporal sulcal widths and insular volume"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MTA assesses the hippocampal formation and adjacent CSF spaces: with increasing atrophy, the choroid fissure and temporal horn widen and hippocampal height decreases. Assess both sides. Age and the chosen reference affect interpretation; the score alone does not establish Alzheimer disease.",
+        "wrongExplanations": {
+          "B": "These parameters assess ventricles and CSF spaces; they do not replace the hippocampal MTA components.",
+          "C": "These structures belong to infratentorial pattern assessment rather than the visual MTA scale.",
+          "D": "These regions may matter in other atrophy patterns; MTA specifically rates the hippocampus and adjacent CSF spaces."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8305846/"
+      },
+      {
+        "id": "aq-brain-aq-demenzmuster-en-dlb-biomarker",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "With clinical concern for dementia with Lewy bodies, MRI shows relative medial temporal preservation. Which additional imaging finding is an indicative biomarker in the 2017 DLB consensus?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Occipital-predominant hypometabolism on FDG PET"
+          },
+          {
+            "id": "B",
+            "text": "Relative preservation of hippocampal volume on MRI"
+          },
+          {
+            "id": "C",
+            "text": "Reduced striatal dopamine-transporter uptake on SPECT/PET"
+          },
+          {
+            "id": "D",
+            "text": "Diffuse hypoperfusion with occipital predominance on SPECT"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Reduced striatal DAT uptake is an indicative biomarker; relative MTL preservation and the stated perfusion/metabolic patterns are supportive clues. DAT imaging still requires clinical and differential-diagnostic correlation; it does not establish DLB alone or distinguish every degenerative parkinsonian disorder.",
+        "wrongExplanations": {
+          "A": "Occipital-predominant hypometabolism is supportive, rather than the indicative DAT category asked for here.",
+          "B": "Relative MTL preservation is a structural supportive clue; it does not replace the indicative DAT biomarker.",
+          "D": "The perfusion/metabolism category is supportive and less specific; the question asks for the indicative striatal DAT finding."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5496518/"
+      },
+      {
+        "id": "aq-brain-aq-demenzmuster-en-ftd-pattern",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "A person develops progressive disinhibition and altered social behaviour. Which regional atrophy distribution best fits this clinical syndrome?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Predominantly bilateral medial temporal atrophy"
+          },
+          {
+            "id": "B",
+            "text": "Prominent, often asymmetric frontal and/or anterior temporal atrophy"
+          },
+          {
+            "id": "C",
+            "text": "Predominantly parieto-occipital atrophy with relatively preserved anterior regions"
+          },
+          {
+            "id": "D",
+            "text": "Uniform global atrophy without a regional predominance"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Frontal and anterior temporal-predominant atrophy supports the matching clinical syndrome. Imaging alone establishes neither the variant nor definite bvFTD. Probable bvFTD integrates compatible clinical criteria, functional decline and supportive imaging, with competing causes considered.",
+        "wrongExplanations": {
+          "A": "Medial temporal atrophy matters, among other contexts, in the amnestic Alzheimer spectrum, but is not the frontal/anterior temporal support pattern requested here.",
+          "C": "A posterior-predominant distribution calls for different pattern and clinical assessment; it is not the typical anterior support pattern in this vignette.",
+          "D": "Global atrophy without a predominance is less specific; frontal/anterior temporal regional emphasis is the more targeted clue here."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3170532/"
+      },
+      {
+        "id": "aq-msk-de-quervain-en-provocation-study-limit",
+        "fach": "msk",
+        "tags": [
+          "de-quervain"
+        ],
+        "question": "When assessing radial wrist pain, Wu et al. (2018) is discussed: 36 asymptomatic people underwent Finkelstein and Eichhoff testing; Finkelstein produced fewer false-positive responses. Which conclusion is directly supported by this study design?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Finkelstein detects a larger proportion of genuinely affected patients."
+          },
+          {
+            "id": "B",
+            "text": "False-positive pain provocation can be compared between manoeuvres in this asymptomatic group."
+          },
+          {
+            "id": "C",
+            "text": "A positive Finkelstein test thereby has an established predictive value in a symptomatic outpatient population."
+          },
+          {
+            "id": "D",
+            "text": "A negative Finkelstein test reduces disease probability in symptomatic patients by a known amount."
+          }
+        ],
+        "correct": "B",
+        "explanation": "The study examined asymptomatic wrists. It supports comparison of false-positive provocation in that group; it did not establish sensitivity in affected patients or predictive values in a symptomatic clinical population. Continue to document technique and clinical findings precisely.",
+        "wrongExplanations": {
+          "A": "Sensitivity requires affected patients and a suitable reference standard. This comparison group was asymptomatic.",
+          "C": "Positive predictive value also depends on disease prevalence and case spectrum. An asymptomatic-only group does not establish it in symptomatic outpatients.",
+          "D": "Quantified rule-out performance in symptomatic patients requires sensitivity data among other information; these were not collected here."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103758/"
+        ]
       }
     ],
     "fa": [
@@ -6710,6 +7530,416 @@
           "D": "نواحی توصیف‌شده تقویت ندارند؛ بافت پرعروق با تقویت شدید با این مشاهده مطابقت ندارد."
         },
         "source": "https://doi.org/10.1177/17588359231192388"
+      },
+      {
+        "id": "aq-atv-mesenteric-nomi-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "mesenteriale-ischaemie"
+        ],
+        "question": "بیمار در شوک و تحت وازوپرسور در CTA کاهش تقویت رودهٔ باریک دارد. SMA و وریدهای مزانتریک باز هستند. کدام تشخیص کاری باید به‌ویژه مطرح شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "انسداد آمبولیک پروگزیمال SMA"
+          },
+          {
+            "id": "B",
+            "text": "ایسکمی مزانتریک غیرانسدادی (NOMI)"
+          },
+          {
+            "id": "C",
+            "text": "ترومبوز انسدادی ورید مزانتریک"
+          },
+          {
+            "id": "D",
+            "text": "پرخونی واکنشیِ صرف با افزایش تقویت دیوارهٔ روده"
+          }
+        ],
+        "correct": "B",
+        "explanation": "بازبودن SMA ایسکمی را رد نمی‌کند. در شوک و کاهش پرفیوژن سازگار روده، ESVS ‏NOMI را تشخیص مشکوک مهم می‌داند؛ تنگی عروقی و کم‌پرفیوژنی سیستمیک می‌توانند بدون انسداد عروق مرکزی رخ دهند. نگرانی را در زمینهٔ بالینی فوراً منتقل کنید.",
+        "wrongExplanations": {
+          "A": "با SMA توصیف‌شده به‌عنوان باز، انسداد پروگزیمال نشان داده نشده است.",
+          "C": "وریدهای توصیف‌شده به‌عنوان باز، ترومبوز انسدادی وریدی را نشان نمی‌دهند.",
+          "D": "افزایش تقویت، یافتهٔ ذکرشده نیست؛ کاهش تقویت در شوک توصیف شده است."
+        },
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+      },
+      {
+        "id": "aq-atv-mesenteric-viability-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "mesenteriale-ischaemie"
+        ],
+        "question": "CTA انسداد SMA، کاهش واضح تقویت دیوارهٔ روده، پنوماتوز و گاز پورتومزانتریک نشان می‌دهد. کدام گزاره دربارهٔ قطعیت گزارش مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "اختلال عبور با پرفیوژن حفظ‌شده به‌عنوان علت اصلی؛ پیگیری محافظه‌کارانه."
+          },
+          {
+            "id": "B",
+            "text": "نکروز تمام‌جداری در سراسر قطعهٔ درگیر به‌عنوان ارزیابی اصلی؛ تعیین وسعت رزکسیون بر اساس CT."
+          },
+          {
+            "id": "C",
+            "text": "ایسکمی حاد مزانتریک با نیاز به اقدام فوری؛ ارزیابی بی‌درنگ زنده‌مانی روده از نظر بالینی و جراحی."
+          },
+          {
+            "id": "D",
+            "text": "پرفوراسیون پوشیدهٔ روده به‌عنوان علت اصلی؛ جست‌وجوی اولیهٔ نشت موضعی."
+          }
+        ],
+        "correct": "C",
+        "explanation": "مجموعهٔ یافته‌های عروقی و روده‌ای بسیار نگران‌کننده است و باید فوری منتقل شود. ESVS همچنین تأکید می‌کند که پنوماتوز، گاز وریدی و کاهش تقویت به‌تنهایی آسیب برگشت‌ناپذیر روده را ثابت نمی‌کنند. زنده‌مانی و اقدام بعدی به ارزیابی بی‌درنگ بالینی، جراحی و عروقی نیاز دارد.",
+        "wrongExplanations": {
+          "A": "انسداد SMA و کاهش جذب دیواره بر خلاف پرفیوژن حفظ‌شده‌اند. پیگیری محافظه‌کارانهٔ صرف، ارزیابی فوری ایسکمی را به تأخیر می‌اندازد.",
+          "B": "الگو بسیار نگران‌کننده است، اما به‌تنهایی برگشت‌ناپذیری یا وسعت رزکسیون را با اطمینان تعیین نمی‌کند. ارزیابی فوری و بین‌رشته‌ای زنده‌مانی لازم است.",
+          "D": "گاز پورتومزانتریک گاز وریدی است، نه اثبات نشت موضعی روده. انسداد SMA همراه کاهش جذب، ایسکمی را در اولویت می‌گذارد؛ نشانه‌های اضافی پرفوراسیون باید جداگانه ارزیابی شوند."
+        },
+        "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+      },
+      {
+        "id": "aq-atv-pylorus-indeterminate-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "pylorusstenose"
+        ],
+        "question": "شیرخوار شش‌هفته‌ای با وضعیت همودینامیک پایدار همچنان استفراغ غیرصفراوی دارد. در شک به HPS، سونوگرافی اولیهٔ پیلور از نظر فنی ناکافی و اندازه‌ها مرزی بوده و ارزیابی پویا قابل‌اعتماد نبوده است. از میان این گزینه‌ها، کدام تصویربرداری هدفمند بعدی مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "رادیوگرافی سادهٔ شکم."
+          },
+          {
+            "id": "B",
+            "text": "تنقیهٔ مادهٔ حاجب برای ارزیابی کولون."
+          },
+          {
+            "id": "C",
+            "text": "تکرار هدفمند سونوگرافی پیلور با تکنیک بهینه و مشاهدهٔ پویا."
+          },
+          {
+            "id": "D",
+            "text": "بررسی پزشکی هسته‌ای برای ریفلاکس معده‌به‌مری."
+          }
+        ],
+        "correct": "C",
+        "explanation": "محدودیت فنی و اندازه‌های مرزی، تشخیص مثبت یا منفی قابل‌اعتماد نمی‌دهند. در شک بالینی ماندگار، مطالعهٔ اصلی از تکرار سونوگرافی یا بررسی جایگزین حمایت می‌کند؛ انتخاب مشخص به وضعیت بالینی بستگی دارد.",
+        "wrongExplanations": {
+          "A": "رادیوگرافی ممکن است اتساع معده را نشان دهد، اما اندازه‌های مرزی عضله و بازشدن پویای پیلور را هدفمند روشن نمی‌کند.",
+          "B": "تنقیهٔ مادهٔ حاجب، عضله و بازشدن پیلور را که ناقص بررسی شده‌اند ارزیابی نمی‌کند.",
+          "D": "سینتی‌گرافی ریفلاکس در شک ماندگار به HPS جای ارزیابی مورفولوژیک و پویای قابل‌اعتماد پیلور را نمی‌گیرد."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/17958692/"
+      },
+      {
+        "id": "aq-atv-rectal-t3-depth-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "سناریوی متنی بر اساس AJCC8: سرطان رکتوم از عضلهٔ اصلی عبور کرده و وارد چربی مزورکتوم شده است. تهاجم به صفاق احشایی یا اعضای مجاور توصیف نشده است. کدام ردهٔ T مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "T1: تهاجم به زیرمخاط."
+          },
+          {
+            "id": "B",
+            "text": "T2: تهاجم به عضلهٔ اصلی."
+          },
+          {
+            "id": "C",
+            "text": "T3: عبور از عضلهٔ اصلی به بافت اطراف رکتوم."
+          },
+          {
+            "id": "D",
+            "text": "T4a: تهاجم به سطح صفاق احشایی."
+          }
+        ],
+        "correct": "C",
+        "explanation": "رشد توصیف‌شده از میان عضلهٔ اصلی به چربی اطراف رکتوم، T3 در AJCC8 است. تهاجم به چربی به‌تنهایی تهاجم صفاقی T4a نیست.",
+        "wrongExplanations": {
+          "A": "گسترش فراتر از زیرمخاط است.",
+          "B": "T2 به عضلهٔ اصلی محدود است؛ اینجا چربی اطراف رکتوم درگیر است.",
+          "D": "تهاجم به سطح صفاق توصیف نشده است."
+        },
+        "source": "https://www.cancer.gov/types/colorectal/hp/rectal-treatment-pdq"
+      },
+      {
+        "id": "aq-atv-rectal-emvi-pattern-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "T2 با تفکیک بالا بافت هم‌سیگنال تومور را داخل ورید خارج‌دیواره‌ای متسع و نامنظم و در تداوم با تومور رکتوم نشان می‌دهد. کدام دستهٔ گزارش مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "تهاجم وریدی خارج‌دیواره‌ای (mrEMVI)."
+          },
+          {
+            "id": "B",
+            "text": "غدهٔ لنفاوی واکنشیِ بزرگ‌شدهٔ مزورکتوم."
+          },
+          {
+            "id": "C",
+            "text": "نوار فیبروتیک بدون تومور در چربی مزورکتوم."
+          },
+          {
+            "id": "D",
+            "text": "ورید خارج‌دیواره‌ای بدون تغییر و بدون تهاجم تومور."
+          }
+        ],
+        "correct": "A",
+        "explanation": "سیگنال تومور داخل ورید خارج‌دیواره‌ای متسع و نامنظم، الگوی توصیف‌شدهٔ EMVI است؛ تداوم عروقی و ارتباط با تومور را بررسی کنید.",
+        "wrongExplanations": {
+          "B": "غدهٔ واکنشی منفرد، تداوم وریدی توصیف‌شده را توضیح نمی‌دهد.",
+          "C": "اسکار بدون تومور، سیگنال تومور داخل رگ و اتساع ورید را توضیح نمی‌دهد.",
+          "D": "سیگنال تومور در رگ متسع و نامنظم با ورید بدون تغییر و فاقد تومور مطابقت ندارد."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/21892288/"
+      },
+      {
+        "id": "aq-atv-rectal-lateral-node-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "kolorektales-karzinom"
+        ],
+        "question": "در MRI اولیهٔ سرطان رکتوم، غدهٔ ابتوراتور در محور کوتاه ۸ میلی‌متر است. بر اساس ESGAR2026 چگونه در ارزیابی غدد ناحیه‌ای لحاظ شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "طبیعی، چون همهٔ غدد لگنی زیر ۱۰ میلی‌متر منفی‌اند."
+          },
+          {
+            "id": "B",
+            "text": "به‌عنوان غدهٔ ناحیه‌ای جانبیِ مشکوک در ارزیابی cN در سطح بیمار."
+          },
+          {
+            "id": "C",
+            "text": "متاستاز دوردست M1 صرفاً به علت محل خارج مزورکتوم."
+          },
+          {
+            "id": "D",
+            "text": "حذف شود، چون cN به غدد مزورکتوم محدود است."
+          }
+        ],
+        "correct": "B",
+        "explanation": "ESGAR2026 محور کوتاه ≥۷ میلی‌متر را برای غدد ابتوراتور و ایلیاک داخلی معیار مشکوک می‌داند. محل، اندازه و زمینه را ثبت کنید؛ از این غدهٔ منفرد، زیرگروه دقیق cN یا درمان بدون پشتوانه نتیجه نگیرید.",
+        "wrongExplanations": {
+          "A": "حد همگانی ۱۰ میلی‌متر، معیار جانبی ≥۷ میلی‌متر را نادیده می‌گیرد.",
+          "C": "ایستگاه ابتوراتور در اینجا ناحیه‌ای و جانبی است؛ خارج مزورکتوم خودبه‌خود M1 نیست.",
+          "D": "ارزیابی صرف غدد مزورکتوم، ایستگاه ناحیه‌ای جانبی مهم را حذف می‌کند."
+        },
+        "source": "https://doi.org/10.1007/s00330-025-12274-w"
+      },
+      {
+        "id": "aq-atv-ileus-closed-loop-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "ileus-duenndarm"
+        ],
+        "question": "سناریوی متنی: لوپ Cشکل و متسع رودهٔ باریک به دو نقطهٔ گذار نوک‌دار مجاور ختم می‌شود؛ عروق مزانتریک آن به‌صورت شعاعی همگرا هستند. کدام پیکربندی مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "انسداد ساده در یک نقطهٔ گذار بدون قطعهٔ ایزوله."
+          },
+          {
+            "id": "B",
+            "text": "انسداد لوپ بسته با دو انتهای قطعهٔ ایزولهٔ روده."
+          },
+          {
+            "id": "C",
+            "text": "ایلئوس فلجی منتشر بدون نقطهٔ گذار مکانیکی محدود."
+          },
+          {
+            "id": "D",
+            "text": "انسداد منفرد رودهٔ بزرگ با رودهٔ باریک فروریخته."
+          }
+        ],
+        "correct": "B",
+        "explanation": "دو نقطهٔ گذار مجاور، لوپ بسته را محدود می‌کنند؛ شکل C و عروق شعاعی به تشخیص فضایی کمک می‌کنند. این پیکربندی به‌تنهایی ایسکمی را ثابت نمی‌کند؛ تقویت دیواره، مزانتر و بالین نیز بررسی شوند.",
+        "wrongExplanations": {
+          "A": "اینجا دو نقطهٔ گذار با قطعهٔ ایزولهٔ میان آن‌ها توصیف شده، نه فقط یک گذار.",
+          "C": "دو نقطهٔ گذار محدود، از لوپ بستهٔ مکانیکی حمایت می‌کنند، نه آتونی منتشر.",
+          "D": "قطعهٔ ایزولهٔ متسع توصیف‌شده در رودهٔ باریک است؛ رودهٔ باریک فروریخته با آن مطابقت ندارد."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/19234265/"
+      },
+      {
+        "id": "aq-atv-ileus-caecal-twist-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "volvulus"
+        ],
+        "question": "سناریوی متنی: CT سکوم بسیار متسع را تا ربع فوقانی چپ دنبال می‌کند. در اتصال ایلئوسکال پیچش و تغییر قطر وجود دارد و کولون دیستال فروریخته است. کدام تشخیص کاری مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ولولوس سیگموئید."
+          },
+          {
+            "id": "B",
+            "text": "سرطان تنگ‌کنندهٔ کولون نزولی."
+          },
+          {
+            "id": "C",
+            "text": "شبه‌انسداد حاد و غیرمکانیکی کولون."
+          },
+          {
+            "id": "D",
+            "text": "ولولوس سکوم."
+          }
+        ],
+        "correct": "D",
+        "explanation": "CT لوپ متسع و جابه‌جا را سکوم مشخص می‌کند؛ پیچش ایلئوسکال، گذار و کاهش اتساع دیستال از ولولوس سکوم حمایت می‌کنند. منشأ را از محل به‌تنهایی نتیجه نگیرید؛ تداوم روده را دنبال کنید.",
+        "wrongExplanations": {
+          "A": "سناریو سکوم و اتصال ایلئوسکال را مشخص می‌کند، نه لوپ سیگموئید.",
+          "B": "تنگی توموری کولون نزولی توصیف نشده؛ نقطهٔ گذار ایلئوسکال همراه پیچش است.",
+          "C": "شبه‌انسداد، پیچش محدود و اثبات‌شدهٔ ایلئوسکال با نقطهٔ گذار مکانیکی را توضیح نمی‌دهد."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/20574094/"
+      },
+      {
+        "id": "aq-brain-aq-demenzmuster-fa-mta-components",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "در بیمار دچار اختلال حافظه، آتروفی تمپورال داخلی در تصاویر کرونال T1 به‌صورت دیداری امتیازدهی می‌شود. کدام گروه ساختاری مستقیماً در امتیاز MTA نقش دارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ارتفاع هیپوکامپ و پهنای شکاف کوروئید و شاخ تمپورال"
+          },
+          {
+            "id": "B",
+            "text": "پهنای بطن‌های پیشانی، زاویهٔ جسم پینه‌ای و پهنای شیارهای تحدب"
+          },
+          {
+            "id": "C",
+            "text": "مساحت مغز میانی، مساحت پونز و پهنای پایهٔ فوقانی مخچه"
+          },
+          {
+            "id": "D",
+            "text": "پهنای شیارهای فرونتال و تمپورال قدامی و حجم اینسولا"
+          }
+        ],
+        "correct": "A",
+        "explanation": "MTA ساختار هیپوکامپ و فضاهای مجاور مایع مغزی‌نخاعی را ارزیابی می‌کند: با افزایش آتروفی، شکاف کوروئید و شاخ تمپورال گشاد و ارتفاع هیپوکامپ کم می‌شود. دو طرف را بسنجید. سن و مرجع به‌کاررفته بر تفسیر اثر دارند؛ امتیاز به‌تنهایی آلزایمر را ثابت نمی‌کند.",
+        "wrongExplanations": {
+          "B": "این پارامترها برای ارزیابی بطن‌ها و فضاهای مایع‌اند و جای اجزای هیپوکامپی MTA را نمی‌گیرند.",
+          "C": "این ساختارها مربوط به ارزیابی الگوهای زیرچادرینه‌ای‌اند، نه مقیاس دیداری MTA.",
+          "D": "این نواحی ممکن است در الگوهای دیگر آتروفی مهم باشند؛ MTA مشخصاً هیپوکامپ و فضاهای مایع مجاور را می‌سنجد."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8305846/"
+      },
+      {
+        "id": "aq-brain-aq-demenzmuster-fa-dlb-biomarker",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "در شک بالینی به دمانس با اجسام لویی، تمپورال داخلی در MRI نسبتاً حفظ شده است. طبق اجماع DLB سال ۲۰۱۷، کدام یافتهٔ تصویری اضافی در گروه نشانگرهای زیستی شاخص قرار می‌گیرد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "کاهش متابولیسم با غلبهٔ اکسیپیتال در FDG-PET"
+          },
+          {
+            "id": "B",
+            "text": "حفظ نسبی حجم هیپوکامپ در MRI"
+          },
+          {
+            "id": "C",
+            "text": "کاهش برداشت ناقل دوپامین استریاتال در SPECT/PET"
+          },
+          {
+            "id": "D",
+            "text": "کاهش منتشر پرفیوژن با غلبهٔ اکسیپیتال در SPECT"
+          }
+        ],
+        "correct": "C",
+        "explanation": "کاهش برداشت استریاتال DAT در گروه نشانگرهای شاخص است؛ حفظ نسبی تمپورال داخلی و الگوهای پرفیوژن/متابولیسم ذکرشده یافته‌های حمایتی‌اند. تصویربرداری DAT نیز با بالین و افتراق‌ها تفسیر می‌شود؛ به‌تنهایی DLB را ثابت نمی‌کند و همهٔ اختلالات پارکینسونی دژنراتیو را از هم جدا نمی‌کند.",
+        "wrongExplanations": {
+          "A": "کاهش متابولیسم با غلبهٔ اکسیپیتال یافته‌ای حمایتی است، نه گروه شاخص مربوط به DAT که اینجا پرسیده شده است.",
+          "B": "حفظ نسبی تمپورال داخلی سرنخ ساختاری حمایتی است و جای نشانگر شاخص مربوط به DAT را نمی‌گیرد.",
+          "D": "گروه پرفیوژن/متابولیسم حمایتی و کم‌اختصاص‌تر است؛ سؤال یافتهٔ استریاتال DAT در گروه شاخص را می‌خواهد."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5496518/"
+      },
+      {
+        "id": "aq-brain-aq-demenzmuster-fa-ftd-pattern",
+        "fach": "gehirn",
+        "tags": [
+          "aq-demenzmuster"
+        ],
+        "question": "فردی به‌تدریج دچار مهارگسیختگی و تغییر رفتار اجتماعی می‌شود. کدام توزیع ناحیه‌ای آتروفی بیشتر با این سندرم بالینی سازگار است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "آتروفی عمدتاً دوطرفهٔ تمپورال داخلی"
+          },
+          {
+            "id": "B",
+            "text": "آتروفی برجسته و اغلب نامتقارن فرونتال و/یا تمپورال قدامی"
+          },
+          {
+            "id": "C",
+            "text": "آتروفی عمدتاً پاریتواُکسیپیتال با حفظ نسبی نواحی قدامی"
+          },
+          {
+            "id": "D",
+            "text": "آتروفی منتشر یکنواخت بدون غلبهٔ ناحیه‌ای"
+          }
+        ],
+        "correct": "B",
+        "explanation": "آتروفی با غلبهٔ فرونتال و تمپورال قدامی از سندرم بالینی سازگار حمایت می‌کند. تصویربرداری به‌تنهایی نه گونه و نه bvFTD قطعی را تعیین می‌کند. در bvFTD محتمل، معیارهای بالینی سازگار، افت عملکرد و تصویربرداری حمایتی با هم ارزیابی و علل دیگر در نظر گرفته می‌شوند.",
+        "wrongExplanations": {
+          "A": "آتروفی تمپورال داخلی از جمله در طیف آلزایمرِ همراه اختلال حافظه مهم است، ولی الگوی حمایتی فرونتال/تمپورال قدامیِ مورد سؤال نیست.",
+          "C": "توزیع با غلبهٔ خلفی به تفسیر الگویی و بالینی دیگری نیاز دارد و الگوی حمایتی قدامیِ تیپیک این سناریو نیست.",
+          "D": "آتروفی منتشر بدون غلبهٔ ناحیه‌ای کم‌اختصاص‌تر است؛ تأکید فرونتال/تمپورال قدامی اینجا سرنخ هدفمندتری است."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3170532/"
+      },
+      {
+        "id": "aq-msk-de-quervain-fa-provocation-study-limit",
+        "fach": "msk",
+        "tags": [
+          "de-quervain"
+        ],
+        "question": "هنگام ارزیابی درد رادیال مچ، مطالعهٔ Wu و همکاران (۲۰۱۸) مطرح می‌شود: ۳۶ فرد بدون علامت با آزمون‌های فینکلشتاین و آیکهوف بررسی شدند و فینکلشتاین پاسخ مثبت کاذب کمتری ایجاد کرد. کدام نتیجه مستقیماً با این طراحی مطالعه پشتیبانی می‌شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "فینکلشتاین نسبت بیشتری از بیماران واقعاً مبتلا را شناسایی می‌کند."
+          },
+          {
+            "id": "B",
+            "text": "می‌توان بازتولید دردِ مثبت کاذب را در این گروه بدون علامت بین دو مانور مقایسه کرد."
+          },
+          {
+            "id": "C",
+            "text": "به این ترتیب ارزش پیش‌بینی آزمون مثبت فینکلشتاین در جمعیت علامت‌دار درمانگاه مشخص شده است."
+          },
+          {
+            "id": "D",
+            "text": "آزمون منفی فینکلشتاین احتمال بیماری را در بیماران علامت‌دار به میزان معلوم کاهش می‌دهد."
+          }
+        ],
+        "correct": "B",
+        "explanation": "مطالعه مچ‌های بدون علامت را بررسی کرد؛ بنابراین مقایسهٔ تحریک مثبت کاذب در همین گروه ممکن است. حساسیت در بیماران مبتلا و ارزش‌های پیش‌بینی در جمعیت بالینی علامت‌دار با آن تعیین نشده‌اند. شیوهٔ اجرا و یافته‌های بالینی همچنان دقیق ثبت شوند.",
+        "wrongExplanations": {
+          "A": "برای حساسیت، بیماران مبتلا و استاندارد مرجع مناسب لازم‌اند؛ این گروه مقایسه بدون علامت بود.",
+          "C": "ارزش پیش‌بینی مثبت به شیوع بیماری و طیف افراد بررسی‌شده نیز وابسته است؛ گروه صرفاً بدون علامت آن را برای مراجعه‌کنندگان علامت‌دار تعیین نمی‌کند.",
+          "D": "تعیین کمّی توان رد بیماری در بیماران علامت‌دار، از جمله به داده‌های حساسیت نیاز دارد؛ چنین داده‌هایی در اینجا جمع‌آوری نشده‌اند."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103758/"
+        ]
       }
     ]
   },
@@ -8723,6 +9953,171 @@
         "fa": "FASI نادرِ دارای جذب مادهٔ حاجب می‌تواند پسرفت کند؛ جذب به‌تنهایی تومور را ثابت نمی‌کند. کیست جدید یا مرحلهٔ دوم رشد/افزایش جذب در مجموعهٔ اصلی علت بررسی تومور بود. بازبینی تخصصی لازم است؛ DWI/ADC به‌تنهایی FASI را از گلیوم کم‌درجه با اطمینان جدا نمی‌کند."
       },
       "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8041008/"
+    },
+    {
+      "id": "aq-atv-mesenteric-nomi-retrieval",
+      "topicId": "mesenteriale-ischaemie",
+      "category": {
+        "de": "Gefäße und Darm",
+        "en": "Vessels and bowel",
+        "fa": "عروق و روده"
+      },
+      "front": {
+        "de": "Warum schließt eine offene SMA eine mesenteriale Ischämie nicht aus?",
+        "en": "Why does a patent SMA not exclude mesenteric ischaemia?",
+        "fa": "چرا SMA باز، ایسکمی مزانتریک را رد نمی‌کند؟"
+      },
+      "answer": {
+        "de": "NOMI kann bei systemischer Minderperfusion/Vasokonstriktion trotz offener zentraler Gefäße auftreten; Darmbefund und Schockkontext mitbeurteilen.",
+        "en": "NOMI can occur with systemic hypoperfusion/vasoconstriction despite patent central vessels; assess bowel findings and shock context.",
+        "fa": "NOMI می‌تواند با کم‌پرفیوژنی سیستمیک یا تنگ‌شدن عروق، با وجود بازبودن عروق مرکزی رخ دهد؛ یافته‌های روده و زمینهٔ شوک را نیز بررسی کنید."
+      },
+      "explanation": {
+        "de": "Eine offene SMA schließt Ischämie nicht aus. Bei Schock und passender Darmwandminderperfusion beschreibt ESVS NOMI als wichtige Verdachtsdiagnose; Vasokonstriktion und systemische Minderperfusion können ohne zentralen Gefäßverschluss auftreten. Den Verdacht dringend im klinischen Kontext kommunizieren.",
+        "en": "A patent SMA does not exclude ischaemia. With shock and compatible bowel hypoperfusion, ESVS identifies NOMI as an important suspicion; vasoconstriction and systemic hypoperfusion may occur without central vascular occlusion. Communicate concern urgently in clinical context.",
+        "fa": "بازبودن SMA ایسکمی را رد نمی‌کند. در شوک و کاهش پرفیوژن سازگار روده، ESVS ‏NOMI را تشخیص مشکوک مهم می‌داند؛ تنگی عروقی و کم‌پرفیوژنی سیستمیک می‌توانند بدون انسداد عروق مرکزی رخ دهند. نگرانی را در زمینهٔ بالینی فوراً منتقل کنید."
+      },
+      "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+    },
+    {
+      "id": "aq-atv-mesenteric-viability-retrieval",
+      "topicId": "mesenteriale-ischaemie",
+      "category": {
+        "de": "Befundsicherheit",
+        "en": "Diagnostic certainty",
+        "fa": "قطعیت گزارش"
+      },
+      "front": {
+        "de": "Beweisen Pneumatosis und portomesenteriales Gas eine irreversible Darmnekrose?",
+        "en": "Do pneumatosis and portomesenteric gas prove irreversible bowel necrosis?",
+        "fa": "آیا پنوماتوز و گاز پورتومزانتریک، نکروز برگشت‌ناپذیر روده را ثابت می‌کنند؟"
+      },
+      "answer": {
+        "de": "Nein. Im passenden Muster sind sie dringliche Warnzeichen; Irreversibilität lässt sich daraus allein nicht beweisen. Gefäße, Enhancement und Klinik gemeinsam beurteilen.",
+        "en": "No. In a compatible pattern they are urgent warning signs; they do not alone prove irreversibility. Assess vessels, enhancement and clinical findings together.",
+        "fa": "خیر. در الگوی سازگار، نشانه‌های هشدار فوری‌اند؛ برگشت‌ناپذیری را به‌تنهایی ثابت نمی‌کنند. عروق، تقویت و بالین را با هم ارزیابی کنید."
+      },
+      "explanation": {
+        "de": "Der kombinierte Gefäß- und Darmbefund ist hochgradig bedenklich und muss dringlich kommuniziert werden. ESVS betont zugleich, dass auch Pneumatosis, venöses Gas und verminderte Aufnahme allein keine irreversible Darmschädigung beweisen. Viabilität und weiteres Vorgehen brauchen unverzügliche klinisch-chirurgisch-vaskuläre Beurteilung.",
+        "en": "The combined vascular and bowel pattern is highly concerning and requires urgent communication. ESVS also stresses that pneumatosis, venous gas and reduced enhancement alone do not prove irreversible bowel injury. Viability and management require immediate clinical, surgical and vascular assessment.",
+        "fa": "مجموعهٔ یافته‌های عروقی و روده‌ای بسیار نگران‌کننده است و باید فوری منتقل شود. ESVS همچنین تأکید می‌کند که پنوماتوز، گاز وریدی و کاهش تقویت به‌تنهایی آسیب برگشت‌ناپذیر روده را ثابت نمی‌کنند. زنده‌مانی و اقدام بعدی به ارزیابی بی‌درنگ بالینی، جراحی و عروقی نیاز دارد."
+      },
+      "source": "https://doi.org/10.1016/j.ejvs.2025.06.010"
+    },
+    {
+      "id": "aq-atv-pylorus-indeterminate-retrieval",
+      "topicId": "pylorusstenose",
+      "category": {
+        "de": "Pädiatrischer Ultraschall",
+        "en": "Paediatric ultrasound",
+        "fa": "سونوگرافی کودکان"
+      },
+      "front": {
+        "de": "Wie bei grenzwertiger, technisch unzureichender Pylorussonografie und fortbestehenden Beschwerden vorgehen?",
+        "en": "How should borderline technically inadequate pyloric ultrasound with persistent symptoms be handled?",
+        "fa": "در سونوگرافی مرزی و از نظر فنی ناکافی پیلور با علائم ادامه‌دار چه می‌کنیم؟"
+      },
+      "answer": {
+        "de": "Als unklar kommunizieren; Klinik abstimmen und gezielte Wiederholung oder alternative Abklärung erwägen, statt aus einem Einzelwert sicher ein- oder auszuschließen.",
+        "en": "Communicate uncertainty, correlate clinically and consider targeted repeat or alternative assessment rather than confirming or excluding from one measurement.",
+        "fa": "عدم قطعیت را اعلام، با بالین تطبیق و تکرار هدفمند یا بررسی جایگزین را مطرح کنید؛ از یک عدد منفرد تأیید یا رد قطعی نکنید."
+      },
+      "explanation": {
+        "de": "Technische Einschränkung und grenzwertige Maße ergeben keine sichere positive oder negative Diagnose. Bei fortbestehendem klinischem Verdacht unterstützt die Originalstudie eine erneute Sonografie oder alternative Abklärung; die konkrete Wahl richtet sich nach der klinischen Situation.",
+        "en": "Technical limitations and borderline measurements do not establish a reliable positive or negative diagnosis. With persistent clinical suspicion, the original study supports repeat ultrasound or alternative assessment; the specific choice depends on the clinical situation.",
+        "fa": "محدودیت فنی و اندازه‌های مرزی، تشخیص مثبت یا منفی قابل‌اعتماد نمی‌دهند. در شک بالینی ماندگار، مطالعهٔ اصلی از تکرار سونوگرافی یا بررسی جایگزین حمایت می‌کند؛ انتخاب مشخص به وضعیت بالینی بستگی دارد."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/17958692/"
+    },
+    {
+      "id": "aq-brain-aq-demenzmuster-mta-components",
+      "topicId": "aq-demenzmuster",
+      "category": {
+        "de": "Demenzmuster im MRT",
+        "en": "Dementia patterns on MRI",
+        "fa": "الگوهای دمانس در MRI"
+      },
+      "front": {
+        "de": "Welche drei anatomischen Komponenten beurteilt der visuelle MTA-Score, und was beweist er nicht?",
+        "en": "Which three anatomical components does the visual MTA score assess, and what does it not establish?",
+        "fa": "امتیاز دیداری MTA کدام سه جزء آناتومیک را می‌سنجد و چه چیزی را ثابت نمی‌کند؟"
+      },
+      "answer": {
+        "de": "Hippocampushöhe, Fissura-choroidea-Weite und Temporalhornweite auf koronaren T1-Aufnahmen; allein kein Alzheimer-Nachweis, alters- und referenzbezogen bewerten.",
+        "en": "Hippocampal height, choroid fissure width and temporal horn width on coronal T1 images; not proof of Alzheimer disease alone, interpreted with age and reference.",
+        "fa": "ارتفاع هیپوکامپ، پهنای شکاف کوروئید و شاخ تمپورال در T1 کرونال؛ به‌تنهایی اثبات آلزایمر نیست و با سن و مرجع تفسیر می‌شود."
+      },
+      "explanation": {
+        "de": "MTA erfasst Hippocampusformation und angrenzende Liquorräume: mit zunehmender Atrophie erweitern sich Fissura choroidea und Temporalhorn, die Hippocampushöhe nimmt ab. Beide Seiten beurteilen. Alter und verwendete Referenz beeinflussen die Einordnung; der Score allein beweist keine Alzheimer-Erkrankung.",
+        "en": "MTA assesses the hippocampal formation and adjacent CSF spaces: with increasing atrophy, the choroid fissure and temporal horn widen and hippocampal height decreases. Assess both sides. Age and the chosen reference affect interpretation; the score alone does not establish Alzheimer disease.",
+        "fa": "MTA ساختار هیپوکامپ و فضاهای مجاور مایع مغزی‌نخاعی را ارزیابی می‌کند: با افزایش آتروفی، شکاف کوروئید و شاخ تمپورال گشاد و ارتفاع هیپوکامپ کم می‌شود. دو طرف را بسنجید. سن و مرجع به‌کاررفته بر تفسیر اثر دارند؛ امتیاز به‌تنهایی آلزایمر را ثابت نمی‌کند."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8305846/"
+    },
+    {
+      "id": "aq-brain-aq-demenzmuster-dlb-biomarker",
+      "topicId": "aq-demenzmuster",
+      "category": {
+        "de": "Demenzmuster im MRT",
+        "en": "Dementia patterns on MRI",
+        "fa": "الگوهای دمانس در MRI"
+      },
+      "front": {
+        "de": "Wie unterscheiden sich relative MTL-Erhaltung und verminderte DAT-Aufnahme im DLB-Konsensus 2017?",
+        "en": "How do relative MTL preservation and reduced DAT uptake differ in the 2017 DLB consensus?",
+        "fa": "حفظ نسبی تمپورال داخلی و کاهش برداشت DAT در اجماع DLB سال ۲۰۱۷ چه تفاوتی دارند؟"
+      },
+      "answer": {
+        "de": "MTL-Erhaltung: unterstützender struktureller Hinweis. Reduzierte striatale DAT-Aufnahme: indikativer Biomarker; beide benötigen klinische Einordnung, keine alleinige Diagnose.",
+        "en": "MTL preservation: supportive structural clue. Reduced striatal DAT uptake: indicative biomarker; both require clinical interpretation and neither establishes the diagnosis alone.",
+        "fa": "حفظ تمپورال داخلی: سرنخ ساختاری حمایتی. کاهش برداشت استریاتال DAT: نشانگر شاخص؛ هر دو به تفسیر بالینی نیاز دارند و هیچ‌یک به‌تنهایی تشخیص را تعیین نمی‌کند."
+      },
+      "explanation": {
+        "de": "Verminderte striatale DAT-Aufnahme gehört zu den indikativen Biomarkern; relative MTL-Erhaltung und das genannte Perfusions-/Stoffwechselmuster sind unterstützende Hinweise. Auch DAT-Bildgebung wird mit Klinik und Differenzialdiagnosen interpretiert; sie beweist DLB nicht allein und trennt nicht jede degenerative Parkinson-Erkrankung.",
+        "en": "Reduced striatal DAT uptake is an indicative biomarker; relative MTL preservation and the stated perfusion/metabolic patterns are supportive clues. DAT imaging still requires clinical and differential-diagnostic correlation; it does not establish DLB alone or distinguish every degenerative parkinsonian disorder.",
+        "fa": "کاهش برداشت استریاتال DAT در گروه نشانگرهای شاخص است؛ حفظ نسبی تمپورال داخلی و الگوهای پرفیوژن/متابولیسم ذکرشده یافته‌های حمایتی‌اند. تصویربرداری DAT نیز با بالین و افتراق‌ها تفسیر می‌شود؛ به‌تنهایی DLB را ثابت نمی‌کند و همهٔ اختلالات پارکینسونی دژنراتیو را از هم جدا نمی‌کند."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5496518/"
+    },
+    {
+      "id": "aq-brain-aq-demenzmuster-ftd-pattern",
+      "topicId": "aq-demenzmuster",
+      "category": {
+        "de": "Demenzmuster im MRT",
+        "en": "Dementia patterns on MRI",
+        "fa": "الگوهای دمانس در MRI"
+      },
+      "front": {
+        "de": "Welche Atrophieverteilung unterstützt ein frontotemporales Syndrom, und was braucht die wahrscheinliche bvFTD zusätzlich?",
+        "en": "Which atrophy distribution supports a frontotemporal syndrome, and what else is needed for probable bvFTD?",
+        "fa": "کدام توزیع آتروفی از سندرم فرونتوتمپورال حمایت می‌کند و bvFTD محتمل به چه موارد دیگری نیاز دارد؟"
+      },
+      "answer": {
+        "de": "Frontal und/oder anteriortemporal betonte, oft asymmetrische Atrophie; zusätzlich passende klinische Kriterien und funktioneller Abbau. Kein gesicherter Nachweis durch MRT allein.",
+        "en": "Frontal and/or anterior temporal-predominant, often asymmetric atrophy; also compatible clinical criteria and functional decline. MRI alone is not definitive proof.",
+        "fa": "آتروفی برجستهٔ فرونتال و/یا تمپورال قدامی، اغلب نامتقارن؛ همراه معیارهای بالینی سازگار و افت عملکرد. MRI به‌تنهایی اثبات قطعی نیست."
+      },
+      "explanation": {
+        "de": "Frontal und anteriortemporal betonte Atrophie unterstützt das passende klinische Syndrom. Bildgebung allein legt weder die Variante noch eine gesicherte bvFTD fest. Für die wahrscheinliche bvFTD werden passende klinische Kriterien, funktioneller Abbau und unterstützende Bildgebung zusammengeführt; andere Ursachen müssen berücksichtigt werden.",
+        "en": "Frontal and anterior temporal-predominant atrophy supports the matching clinical syndrome. Imaging alone establishes neither the variant nor definite bvFTD. Probable bvFTD integrates compatible clinical criteria, functional decline and supportive imaging, with competing causes considered.",
+        "fa": "آتروفی با غلبهٔ فرونتال و تمپورال قدامی از سندرم بالینی سازگار حمایت می‌کند. تصویربرداری به‌تنهایی نه گونه و نه bvFTD قطعی را تعیین می‌کند. در bvFTD محتمل، معیارهای بالینی سازگار، افت عملکرد و تصویربرداری حمایتی با هم ارزیابی و علل دیگر در نظر گرفته می‌شوند."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3170532/"
     }
   ],
   "topics": [
@@ -8875,6 +10270,21 @@
         "fa": "تفسیر بالینی تصاویر و تصمیم‌های گزارش‌نویسی"
       },
       "href": "/flashcards/aq-parkinson"
+    },
+    {
+      "id": "aq-demenzmuster",
+      "title": {
+        "de": "Demenzmuster im MRT",
+        "en": "Dementia patterns on MRI",
+        "fa": "الگوهای دمانس در MRI"
+      },
+      "subject": "gehirn",
+      "description": {
+        "de": "Klinische Bildinterpretation und Befundentscheidungen",
+        "en": "Clinical image interpretation and reporting decisions",
+        "fa": "تفسیر بالینی تصاویر و تصمیم‌های گزارش‌نویسی"
+      },
+      "href": "/flashcards/aq-demenzmuster"
     },
     {
       "id": "neurofibromatose-typ1",
@@ -9558,6 +10968,55 @@
           ],
           "cardIds": [
             "aq-brain-aq-parkinson-fdg-measurement"
+          ]
+        }
+      ],
+      "status": "AUTHORED_REVIEW_PENDING"
+    },
+    {
+      "route": "/gehirn/neurodegeneration/demenzmuster",
+      "topicId": "aq-demenzmuster",
+      "learningGoals": [
+        {
+          "id": "mta-components",
+          "text": {
+            "de": "Den MTA-Score mit seinen anatomischen Komponenten und diagnostischen Grenzen anwenden.",
+            "en": "Apply the MTA score using its anatomical components and diagnostic limits.",
+            "fa": "امتیاز MTA را با اجزای آناتومیک و محدودیت‌های تشخیصی آن به کار ببرید."
+          },
+          "questionIds": [
+            "aq-brain-aq-demenzmuster-de-mta-components"
+          ],
+          "cardIds": [
+            "aq-brain-aq-demenzmuster-mta-components"
+          ]
+        },
+        {
+          "id": "dlb-biomarker",
+          "text": {
+            "de": "Strukturelle Hinweise bei DLB von einem indikativen nuklearmedizinischen Biomarker unterscheiden.",
+            "en": "Distinguish structural clues in DLB from an indicative nuclear-medicine biomarker.",
+            "fa": "سرنخ‌های ساختاری DLB را از نشانگر زیستی شاخص در پزشکی هسته‌ای متمایز کنید."
+          },
+          "questionIds": [
+            "aq-brain-aq-demenzmuster-de-dlb-biomarker"
+          ],
+          "cardIds": [
+            "aq-brain-aq-demenzmuster-dlb-biomarker"
+          ]
+        },
+        {
+          "id": "ftd-pattern",
+          "text": {
+            "de": "Ein frontotemporales Atrophiemuster im passenden klinischen Kontext erkennen und die Diagnosegrenze benennen.",
+            "en": "Recognise frontotemporal atrophy in its clinical context and state its diagnostic limit.",
+            "fa": "الگوی آتروفی فرونتوتمپورال را در زمینهٔ بالینی مناسب بشناسید و محدودیت تشخیصی آن را بیان کنید."
+          },
+          "questionIds": [
+            "aq-brain-aq-demenzmuster-de-ftd-pattern"
+          ],
+          "cardIds": [
+            "aq-brain-aq-demenzmuster-ftd-pattern"
           ]
         }
       ],
@@ -11073,6 +12532,55 @@
       "existingPoolReview": "Not fully reread or independently accepted; mapped unchanged IDs do not imply their pedagogic acceptance."
     },
     {
+      "route": "/msk/hand/de-quervain",
+      "topicId": "de-quervain",
+      "status": "AUTHOR_FULL_ORIGINAL_POOL_PLUS_GAP_READY_REVIEW_PENDING",
+      "learningGoals": [
+        {
+          "id": "localise",
+          "text": {
+            "de": "APL/EPB und das erste Strecksehnenfach am Radiusstyloid anatomisch zuordnen.",
+            "en": "Localise APL/EPB and the first extensor compartment at the radial styloid.",
+            "fa": "APL/EPB و کمپارتمان اول اکستانسور را در سطح استایلوئید رادیوس مکان‌یابی کنید."
+          },
+          "questionIds": [
+            "de-quervain-de-01"
+          ],
+          "cardIds": [
+            "de-quervain-anatomy"
+          ]
+        },
+        {
+          "id": "report-components",
+          "text": {
+            "de": "Sehne, Sehnenscheide und Umgebung getrennt beschreiben und Bildzeichen klinisch einordnen.",
+            "en": "Describe tendon, sheath and surrounding tissue separately and interpret imaging signs clinically.",
+            "fa": "تاندون، غلاف و بافت اطراف را جداگانه توصیف و نشانه‌های تصویر را با بالین تفسیر کنید."
+          },
+          "questionIds": [
+            "de-quervain-de-01"
+          ],
+          "cardIds": [
+            "de-quervain-mri"
+          ]
+        },
+        {
+          "id": "provocation-limit",
+          "text": {
+            "de": "Manöverausführung benennen und die Grenzen einer Untersuchung beschwerdefreier Handgelenke für die klinische Testaussage erklären.",
+            "en": "Specify manoeuvre technique and explain limits of an asymptomatic-wrist study for clinical test interpretation.",
+            "fa": "شیوهٔ اجرای مانور را بیان و محدودیت مطالعهٔ مچ‌های بدون علامت را برای تفسیر بالینی آزمون توضیح دهید."
+          },
+          "questionIds": [
+            "aq-msk-de-quervain-de-provocation-study-limit"
+          ],
+          "cardIds": [
+            "de-quervain-provocation"
+          ]
+        }
+      ]
+    },
+    {
       "route": "/technik/interventionelle-radiologie",
       "topicId": "aq-atv-intervention",
       "learningGoals": [
@@ -11729,6 +13237,302 @@
       ]
     },
     {
+      "route": "/abdomen/gi/mesenteriale-ischaemie",
+      "topicId": "mesenteriale-ischaemie",
+      "status": "AUTHOR_REPAIR_PENDING_SHARED_ORIGINAL",
+      "learningGoals": [
+        {
+          "id": "cta",
+          "text": {
+            "de": "Bei AMI-Verdacht die zeitkritische mehrphasige Dünnschicht-CTA einordnen.",
+            "en": "Identify time-critical thin-slice multiphase CTA for suspected AMI.",
+            "fa": "CTA چندفازی با برش نازک و زمان‌حساس را در شک به AMI بشناسید."
+          },
+          "questionIds": [
+            "abdomen-mesenteric-ischaemia-cta-protocol-de-01"
+          ],
+          "cardIds": [
+            "mesenteriale-ischaemie-cta-protocol"
+          ]
+        },
+        {
+          "id": "mechanism",
+          "text": {
+            "de": "NOMI trotz durchgängiger zentraler Gefäße im Schockkontext erwägen.",
+            "en": "Consider NOMI despite patent central vessels in shock.",
+            "fa": "در زمینهٔ شوک، با وجود بازبودن عروق مرکزی NOMI را مطرح کنید."
+          },
+          "questionIds": [
+            "aq-atv-mesenteric-nomi-de-application"
+          ],
+          "cardIds": [
+            "aq-atv-mesenteric-nomi-retrieval"
+          ]
+        },
+        {
+          "id": "severity",
+          "text": {
+            "de": "Schwere Ischämiezeichen dringlich melden und die Grenze der Viabilitätsaussage benennen.",
+            "en": "Urgently report severe ischaemic signs and state limits of viability assessment.",
+            "fa": "نشانه‌های شدید ایسکمی را فوری گزارش و محدودیت ارزیابی زنده‌مانی را بیان کنید."
+          },
+          "questionIds": [
+            "aq-atv-mesenteric-viability-de-application"
+          ],
+          "cardIds": [
+            "aq-atv-mesenteric-viability-retrieval"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/gi/pylorusstenose",
+      "topicId": "pylorusstenose",
+      "status": "AUTHOR_PACKET03_IN_PROGRESS",
+      "learningGoals": [
+        {
+          "id": "measure",
+          "text": {
+            "de": "Pylorusmuskeldicke anatomisch korrekt messen.",
+            "en": "Measure pyloric muscle thickness anatomically correctly.",
+            "fa": "ضخامت عضلهٔ پیلور را از نظر آناتومیک درست اندازه بگیرید."
+          },
+          "questionIds": [
+            "pylorusstenose-measurement-de"
+          ],
+          "cardIds": [
+            "pylorusstenose-measurement"
+          ]
+        },
+        {
+          "id": "dynamics",
+          "text": {
+            "de": "Dynamische Öffnung und Morphometrie bei Spasmus versus HPS gemeinsam gewichten.",
+            "en": "Integrate dynamic opening and morphometry for spasm versus HPS.",
+            "fa": "بازشدن پویا و مورفومتری را در افتراق اسپاسم از HPS با هم بسنجید."
+          },
+          "questionIds": [
+            "pylorusstenose-dynamic-de"
+          ],
+          "cardIds": [
+            "pylorusstenose-dynamic"
+          ]
+        },
+        {
+          "id": "indeterminate",
+          "text": {
+            "de": "Bei unklarer Untersuchung und anhaltendem Verdacht eine angemessene weitere Abklärung formulieren.",
+            "en": "State appropriate further assessment after an indeterminate study with persistent suspicion.",
+            "fa": "پس از بررسی نامعین و شک ماندگار، بررسی تکمیلی مناسب را بیان کنید."
+          },
+          "questionIds": [
+            "aq-atv-pylorus-indeterminate-de-application"
+          ],
+          "cardIds": [
+            "aq-atv-pylorus-indeterminate-retrieval"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/gi/kolitis-patterns",
+      "topicId": "pmc-kolitis",
+      "status": "AUTHOR_PACKET03_IN_PROGRESS",
+      "learningGoals": [
+        {
+          "id": "distribution",
+          "text": {
+            "de": "Segmentale Kolitis im klinischen Kontext einordnen, ohne eine Ätiologie aus der Verteilung zu beweisen.",
+            "en": "Interpret segmental colitis clinically without proving aetiology from distribution.",
+            "fa": "کولیت سگمنتال را با بالین تفسیر کنید، بدون اثبات علت از توزیع."
+          },
+          "questionIds": [
+            "pmc-kolitis-distribution-de"
+          ],
+          "cardIds": [
+            "pmc-kolitis-distribution"
+          ]
+        },
+        {
+          "id": "accordion",
+          "text": {
+            "de": "Accordion-Faltenmuster erklären und seine ätiologische Grenze nennen.",
+            "en": "Explain the accordion fold pattern and its aetiological limits.",
+            "fa": "الگوی چین‌های آکاردئونی و محدودیت آن در تعیین علت را توضیح دهید."
+          },
+          "questionIds": [
+            "pmc-kolitis-accordion-de"
+          ],
+          "cardIds": [
+            "pmc-kolitis-accordion"
+          ]
+        },
+        {
+          "id": "uc-pattern",
+          "text": {
+            "de": "Das typische unbehandelte CU-Muster von konkurrierenden Verteilungen unterscheiden.",
+            "en": "Distinguish typical untreated UC from competing distributions.",
+            "fa": "الگوی معمول CU درمان‌نشده را از توزیع‌های رقیب تفکیک کنید."
+          },
+          "questionIds": [
+            "colitis-ulcerosa-pattern-de"
+          ],
+          "cardIds": [
+            "colitis-ulcerosa-pattern"
+          ]
+        },
+        {
+          "id": "urgent",
+          "text": {
+            "de": "Nichtmechanische Dilatation mit systemischer Toxizität als dringlichen Komplikationsverdacht kommunizieren.",
+            "en": "Urgently communicate nonmechanical dilatation with systemic toxicity as a complication concern.",
+            "fa": "اتساع غیرمکانیکی همراه سمیت سیستمیک را به‌عنوان شک به عارضه، فوری اعلام کنید."
+          },
+          "questionIds": [
+            "colitis-ulcerosa-urgent-de"
+          ],
+          "cardIds": [
+            "colitis-ulcerosa-urgent"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/gi/kolorektales-karzinom",
+      "topicId": "kolorektales-karzinom",
+      "status": "AUTHOR_PACKET03_IN_PROGRESS",
+      "learningGoals": [
+        {
+          "id": "depth",
+          "text": {
+            "de": "Lokale MRT-Tiefenausdehnung nach benannter AJCC8-T-Definition einordnen.",
+            "en": "Classify local MRI depth using named AJCC8 T definitions.",
+            "fa": "گسترش عمقی MRI را با تعریف نام‌بردهٔ T در AJCC8 طبقه‌بندی کنید."
+          },
+          "questionIds": [
+            "aq-atv-rectal-t3-depth-de-application"
+          ],
+          "cardIds": [
+            "kolorektales-karzinom-01",
+            "kolorektales-karzinom-02"
+          ]
+        },
+        {
+          "id": "mrf",
+          "text": {
+            "de": "Primärtumor, EMVI und irreguläre Knoten an der MRF bewerten.",
+            "en": "Assess tumour, EMVI and irregular nodes at the MRF.",
+            "fa": "تومور، EMVI و غدد نامنظم را در ارتباط با MRF بسنجید."
+          },
+          "questionIds": [
+            "abdomen-kolorektales-karzinom-de-01"
+          ],
+          "cardIds": [
+            "kolorektales-karzinom-03"
+          ]
+        },
+        {
+          "id": "emvi",
+          "text": {
+            "de": "Das extramurale venöse Tumormuster von nichtvenösen Strukturen unterscheiden.",
+            "en": "Distinguish extramural venous tumour from nonvenous structures.",
+            "fa": "الگوی تومور وریدی خارج دیواره را از ساختارهای غیروَریدی تفکیک کنید."
+          },
+          "questionIds": [
+            "aq-atv-rectal-emvi-pattern-de-application"
+          ],
+          "cardIds": [
+            "kolorektales-karzinom-04"
+          ]
+        },
+        {
+          "id": "nodes",
+          "text": {
+            "de": "Laterale regionale Knoten patientenbezogen in cN einbeziehen.",
+            "en": "Include lateral regional nodes in patient-level cN assessment.",
+            "fa": "غدد ناحیه‌ای جانبی را در ارزیابی cN در سطح بیمار لحاظ کنید."
+          },
+          "questionIds": [
+            "aq-atv-rectal-lateral-node-de-application"
+          ],
+          "cardIds": [
+            "kolorektales-karzinom-05"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/gi/ileus-volvulus",
+      "topicId": "ileus-duenndarm",
+      "status": "AUTHOR_PACKET03_IN_PROGRESS",
+      "learningGoals": [
+        {
+          "id": "localise",
+          "text": {
+            "de": "Übergangszone, Closed loop und hernienbezogenen Durchtritt lokalisieren.",
+            "en": "Localise transition, closed loop and hernial passage.",
+            "fa": "نقطهٔ گذار، لوپ بسته و محل عبور فتق را مکان‌یابی کنید."
+          },
+          "questionIds": [
+            "abdomen-small-bowel-feces-de-01",
+            "abdomen-foramen-winslow-de-01",
+            "aq-atv-ileus-closed-loop-de-application"
+          ],
+          "cardIds": [
+            "ileus-duenndarm-01-small-bowel-feces-definition",
+            "ileus-duenndarm-02-small-bowel-feces-interpretation",
+            "ileus-duenndarm-04-foramen-winslow-location"
+          ]
+        },
+        {
+          "id": "volvulus",
+          "text": {
+            "de": "Sigmoid-/Zökumvolvulus anatomisch und anhand der Verdrehungszeichen unterscheiden.",
+            "en": "Distinguish sigmoid/caecal volvulus anatomically and by twisting signs.",
+            "fa": "ولولوس سیگموئید و سکوم را با آناتومی و نشانه‌های پیچش تفکیک کنید."
+          },
+          "questionIds": [
+            "volvulus-de-1",
+            "aq-atv-ileus-caecal-twist-de-application"
+          ],
+          "cardIds": [
+            "volvulus-pattern",
+            "volvulus-cecum",
+            "volvulus-ct"
+          ]
+        },
+        {
+          "id": "mechanisms",
+          "text": {
+            "de": "Rigler-Trias und pädiatrische Invagination mit passender Erstbildgebung einordnen.",
+            "en": "Interpret Rigler triad and childhood intussusception with suitable initial imaging.",
+            "fa": "تریاد ریگلر و انواژیناسیون کودکان را با تصویربرداری اولیهٔ مناسب ارزیابی کنید."
+          },
+          "questionIds": [
+            "abdomen-ileus-volvulus-de-01",
+            "abdomen-intussusception-initial-imaging-de-01"
+          ],
+          "cardIds": [
+            "intussusception-01-two-views"
+          ]
+        },
+        {
+          "id": "perfusion",
+          "text": {
+            "de": "Kombinierte Minderperfusions-/Strangulationszeichen dringlich kommunizieren.",
+            "en": "Urgently communicate combined hypoperfusion/strangulation signs.",
+            "fa": "نشانه‌های ترکیبی کم‌خون‌رسانی و اختناق را فوری اعلام کنید."
+          },
+          "questionIds": [
+            "abdomen-ileus-ischaemia-de-01"
+          ],
+          "cardIds": [
+            "ileus-duenndarm-03-closed-loop-ischaemia-signs"
+          ]
+        }
+      ]
+    },
+    {
       "route": "/thorax/lung-rads",
       "topicId": "lung-rads",
       "title": {
@@ -12081,6 +13885,83 @@
             "mamma-mrt-basics-07",
             "mamma-mrt-basics-08",
             "mamma-mrt-basics-09"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/mamma/bildgebung/mammographie/grundlagen",
+      "topicId": "mammographie-grundlagen",
+      "status": "independently_reviewed_original_assessment_pool",
+      "learningGoals": [
+        {
+          "id": "reporting",
+          "text": {
+            "de": "Eine Screeningauffälligkeit vor der Endkategorie diagnostisch klären und einen biopsiebestätigten Befund einordnen.",
+            "en": "Complete diagnostic work-up before final assessment and identify biopsy-proven malignancy.",
+            "fa": "پیش از ارزیابی نهایی، یافتهٔ غربالگری را بررسی تشخیصی کنید و بدخیمی اثبات‌شده با بیوپسی را بشناسید."
+          },
+          "questionIds": [
+            "mammographie-grundlagen-de-describe-first",
+            "mammographie-grundlagen-de-birads-6"
+          ],
+          "cardIds": [
+            "mammographie-grundlagen-01",
+            "mammographie-grundlagen-11"
+          ]
+        },
+        {
+          "id": "density-margins",
+          "text": {
+            "de": "Gewebemaskierung, relativen Läsionskontrast und Randqualität trennen und neue Tastbefunde gezielt abklären.",
+            "en": "Distinguish tissue masking, relative lesion density and margin quality and investigate new palpable findings.",
+            "fa": "پنهان‌کنندگی بافت، دانسیتهٔ نسبی ضایعه و کیفیت حاشیه را جدا کنید و یافتهٔ قابل لمس جدید را هدفمند بررسی کنید."
+          },
+          "questionIds": [
+            "mammographie-grundlagen-de-composition-c",
+            "mammographie-grundlagen-de-obscured-indistinct",
+            "mammographie-grundlagen-de-mass-density"
+          ],
+          "cardIds": [
+            "mammographie-grundlagen-02",
+            "mammographie-grundlagen-03",
+            "mammographie-grundlagen-04",
+            "mammographie-grundlagen-12"
+          ]
+        },
+        {
+          "id": "calcification-decisions",
+          "text": {
+            "de": "Kalkmorphologie und Verteilung kombinieren und suspekte Befunde trotz fehlenden Enhancements oder Ultraschallkorrelats abklären.",
+            "en": "Combine calcification morphology and distribution and evaluate suspicious findings despite absent enhancement or ultrasound correlate.",
+            "fa": "مورفولوژی و توزیع کلسیفیکاسیون را ترکیب کنید و یافتهٔ مشکوک را با وجود نبود تقویت یا همبستگی سونوگرافی بررسی کنید."
+          },
+          "questionIds": [
+            "mammographie-grundlagen-de-calc-combination",
+            "mammographie-grundlagen-de-cem-calc",
+            "mammographie-grundlagen-de-case-final"
+          ],
+          "cardIds": [
+            "mammographie-grundlagen-05",
+            "mammographie-grundlagen-06",
+            "mammographie-grundlagen-10"
+          ]
+        },
+        {
+          "id": "problem-solving",
+          "text": {
+            "de": "Summationsasymmetrie mit Zusatzaufnahmen prüfen und Architekturstörung ohne Mass erkennen.",
+            "en": "Evaluate summation asymmetry using additional views and recognise architectural distortion without a mass.",
+            "fa": "آسیمتری ناشی از هم‌پوشانی را با نماهای تکمیلی بررسی کنید و دیستورشن معماری بدون توده را بشناسید."
+          },
+          "questionIds": [
+            "mammographie-grundlagen-de-asymmetry-workup",
+            "mammographie-grundlagen-de-distortion"
+          ],
+          "cardIds": [
+            "mammographie-grundlagen-07",
+            "mammographie-grundlagen-08",
+            "mammographie-grundlagen-09"
           ]
         }
       ]

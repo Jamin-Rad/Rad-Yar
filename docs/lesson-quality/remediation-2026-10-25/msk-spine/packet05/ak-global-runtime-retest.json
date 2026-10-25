@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-25",
+  "status": "PASS44_OF44_ACTUAL_GLOBAL_AFTER_VALUES",
+  "idsKeysOptionIdsPreserved": true,
+  "counts": {
+    "originalQuestionTriads": 12,
+    "localizedQuestionRows": 36,
+    "originalCardTriads": 8,
+    "newQuestions": 0,
+    "newCards": 0,
+    "actualGlobalAfterObjects": 44,
+    "lessonLocaleFields": 18
+  }
+}

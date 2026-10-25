@@ -1,0 +1,51 @@
+{
+  "stem": {
+    "de": "Textfall: Bei radialem Handgelenkschmerz zeigt die MRT verdickte APL-/EPB-Sehnen über dem Radiusstyloid mit Flüssigkeit in der gemeinsamen Sehnenscheide und peritendinösem Ödem. Faserunterbrechung oder Retraktion sind nicht erkennbar. Welche Befundinterpretation passt am besten?",
+    "en": "Text vignette: in radial wrist pain, MRI shows thickened APL/EPB tendons over the radial styloid with fluid in their common sheath and peritendinous oedema. No fibre discontinuity or retraction is visible. Which interpretation fits best?",
+    "fa": "سناریوی متنی: در درد رادیال مچ، MRI ضخیم‌شدن تاندون‌های APL/EPB روی استایلوئید رادیوس، مایع در غلاف مشترک و ادم اطراف تاندون را نشان می‌دهد. قطع رشته یا عقب‌کشیدگی دیده نمی‌شود. کدام تفسیر مناسب‌تر است؟"
+  },
+  "opts": [
+    {
+      "de": "Tenosynoviales Veränderungsmuster im ersten Strecksehnenfach, mit der Klinik einer de-Quervain-Erkrankung abzugleichen",
+      "en": "Tenosynovial change in the first extensor compartment, to correlate with clinical de Quervain disease",
+      "fa": "الگوی تغییر تنوسینوویال در کمپارتمان اول اکستانسور، نیازمند تطبیق با بالین دو کروَن"
+    },
+    {
+      "de": "Komplette APL-Ruptur im ersten Strecksehnenfach mit retrahiertem proximalem Sehnenstumpf",
+      "en": "Complete APL rupture in the first extensor compartment with a retracted proximal tendon stump",
+      "fa": "پارگی کامل APL در کمپارتمان اول با عقب‌کشیدگی انتهای پروگزیمال تاندون"
+    },
+    {
+      "de": "Längsgerichtete EPB-Spaltruptur als Erklärung eines flüssigkeitsgefüllten intratendinösen Spalts",
+      "en": "Longitudinal EPB split tear explaining a fluid-filled intratendinous cleft",
+      "fa": "پارگی طولی شکاف‌دار EPB برای توضیح شکاف پر از مایع داخل تاندون"
+    },
+    {
+      "de": "Umschriebene Ganglionzyste neben unveränderter Sehnenscheide als Erklärung des radialen Schmerzes",
+      "en": "Focal ganglion beside an unchanged tendon sheath explaining radial pain",
+      "fa": "کیست گانگلیون محدود در کنار غلاف تاندون بدون تغییر به‌عنوان علت درد رادیال"
+    }
+  ],
+  "explanation": {
+    "de": "APL und EPB gehören zum ersten Strecksehnenfach. Verdickung, Scheidenflüssigkeit und peritendinöses Ödem passen zu einem tenosynovialen Muster; sie sind mit Untersuchung und Beschwerden abzugleichen. Intratendinöses Signal und subkutanes Ödem können variieren und sind keine obligaten Einzelkriterien.",
+    "en": "APL and EPB occupy the first extensor compartment. Thickening, sheath fluid and peritendinous oedema fit a tenosynovial pattern and require clinical correlation. Intratendinous signal and subcutaneous oedema may vary and are not mandatory individual criteria.",
+    "fa": "APL و EPB در کمپارتمان اول اکستانسور قرار دارند. ضخیم‌شدن، مایع غلاف و ادم اطراف تاندون با الگوی تنوسینوویال سازگارند و باید با معاینه و علائم تطبیق داده شوند. سیگنال داخل تاندون و ادم زیرجلدی می‌توانند متغیر باشند و معیارهای منفرد الزامی نیستند."
+  },
+  "wrong": {
+    "B": {
+      "de": "Für die beschriebene komplette Ruptur fehlen Faserunterbrechung und Retraktion. Scheidenflüssigkeit allein belegt keinen kompletten Sehnenriss.",
+      "en": "The stated complete tear lacks discontinuity and retraction. Sheath fluid alone does not establish a complete tendon tear.",
+      "fa": "برای پارگی کاملِ مطرح‌شده، قطع رشته و عقب‌کشیدگی وجود ندارد. مایع غلاف به‌تنهایی پارگی کامل تاندون را ثابت نمی‌کند."
+    },
+    "C": {
+      "de": "Ein intratendinöser längsgerichteter Spalt ist nicht beschrieben. Das angegebene Flüssigkeitsmuster liegt in der Scheide und peritendinös.",
+      "en": "No longitudinal intratendinous cleft is described. The stated fluid pattern is in the sheath and surrounding tissues.",
+      "fa": "شکاف طولی داخل تاندون توصیف نشده است؛ الگوی مایعِ ذکرشده در غلاف و بافت اطراف تاندون قرار دارد."
+    },
+    "D": {
+      "de": "Eine umschriebene Ganglionzyste erklärt nicht die beschriebenen Veränderungen der Sehnen und ihrer Scheide. Eine solche fokale Zyste ist hier nicht angegeben.",
+      "en": "A focal ganglion does not explain the described tendon and sheath changes. No such focal cyst is specified here.",
+      "fa": "کیست گانگلیون محدود تغییرات توصیف‌شدهٔ تاندون و غلاف را توضیح نمی‌دهد؛ چنین کیست کانونی‌ای در اینجا ذکر نشده است."
+    }
+  }
+}

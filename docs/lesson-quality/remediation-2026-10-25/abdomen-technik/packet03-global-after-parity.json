@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-25",
+  "status": "PASS_ACTUAL_GLOBAL_AFTER_26_OF_26",
+  "localizedQuestions": 21,
+  "cardTriads": 5,
+  "records": [
+    {
+      "id": "abdomen-small-bowel-feces-de-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-small-bowel-feces-en-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-small-bowel-feces-fa-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-foramen-winslow-de-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-foramen-winslow-en-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-foramen-winslow-fa-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-intussusception-initial-imaging-de-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-intussusception-initial-imaging-en-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-intussusception-initial-imaging-fa-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-ileus-volvulus-de-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-ileus-volvulus-en-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-ileus-volvulus-fa-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-ileus-ischaemia-de-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-ileus-ischaemia-en-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-ileus-ischaemia-fa-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-mesenteric-ischaemia-cta-protocol-de-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-mesenteric-ischaemia-cta-protocol-en-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-mesenteric-ischaemia-cta-protocol-fa-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-kolorektales-karzinom-de-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-kolorektales-karzinom-en-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-kolorektales-karzinom-fa-01",
+      "type": "question",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "ileus-duenndarm-01-small-bowel-feces-definition",
+      "type": "card",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "ileus-duenndarm-02-small-bowel-feces-interpretation",
+      "type": "card",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "ileus-duenndarm-03-closed-loop-ischaemia-signs",
+      "type": "card",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "ileus-duenndarm-04-foramen-winslow-location",
+      "type": "card",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "intussusception-01-two-views",
+      "type": "card",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    }
+  ],
+  "canonicalSourceFiles": [
+    "data/abdomenThoraxAssessmentDrafts.js",
+    "data/abdomenThoraxRegisteredQuestions.js",
+    "data/abdomenIleusFlashcards.js"
+  ],
+  "limits": [
+    "Exact runtime equality to independently reviewed after-values; not a new whole-lesson scientific or browser approval."
+  ]
+}

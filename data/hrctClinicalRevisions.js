@@ -1,4 +1,5 @@
 import { HRCT_CAVITY_CASES } from './hrctCavityCases'
+import { HRCT_RETICULAR_CASES } from './assessmentQuality/hrctReticularCases'
 const L=(de,en,fa)=>({de,en,fa})
 const CAVITY='https://pubmed.ncbi.nlm.nih.gov/27170221/'
 const GLOSSARY='https://doi.org/10.1148/radiol.232558'
@@ -6,6 +7,7 @@ const GLOSSARY='https://doi.org/10.1148/radiol.232558'
 // Replacement records retain saved IDs. These are not an additional parallel pool.
 export const HRCT_CLINICAL_REVISIONS={
  ...HRCT_CAVITY_CASES,
+ ...HRCT_RETICULAR_CASES,
  'hrct-dichteminderung-04':{
   question:L('Die Wand einer solitären Lungenkavität ist ungleichmäßig: dünnste Stelle 2 mm, dickste Stelle 9 mm, geschätzter Mittelwert 5,5 mm. Welcher Wandwert wird für die morphologische Risikobeurteilung dokumentiert?', 'A solitary lung cavity has an uneven wall: thinnest 2 mm, thickest 9 mm, estimated mean 5.5 mm. Which wall measurement is documented for morphological risk assessment?', 'دیوارهٔ کاویتی منفرد ریه ناهمگون است: نازک‌ترین بخش ۲، ضخیم‌ترین بخش ۹ و میانگین برآوردی ۵٫۵ میلی‌متر است. کدام مقدار برای ارزیابی مورفولوژیک خطر ثبت می‌شود؟'),
   options:[L('9 mm · maximale Wanddicke','9 mm · maximum wall thickness','۹ میلی‌متر · حداکثر ضخامت دیواره'),L('2 mm · minimale Wanddicke','2 mm · minimum wall thickness','۲ میلی‌متر · حداقل ضخامت دیواره'),L('5,5 mm · geschätzte mittlere Wanddicke','5.5 mm · estimated mean wall thickness','۵٫۵ میلی‌متر · میانگین برآوردی ضخامت دیواره'),L('7 mm · Differenz zwischen dickster und dünnster Stelle','7 mm · difference between thickest and thinnest points','۷ میلی‌متر · اختلاف ضخیم‌ترین و نازک‌ترین بخش')],correct:0,

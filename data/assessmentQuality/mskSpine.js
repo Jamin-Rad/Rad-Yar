@@ -760,6 +760,64 @@ const records=[
       "https://doi.org/10.53347/rID-199384",
       "https://onlinelibrary.wiley.com/doi/full/10.1002/jbm4.10472"
     ]
+  },
+  {
+    "key": "provocation-study-limit",
+    "topicId": "de-quervain",
+    "fach": "msk",
+    "question": {
+      "de": "Bei der Einordnung eines radial schmerzhaften Handgelenks wird die Studie von Wu et al. (2018) diskutiert: 36 beschwerdefreie Personen wurden mit Finkelstein und Eichhoff untersucht; Finkelstein erzeugte weniger falsch-positive Reaktionen. Welche Aussage lässt dieses Studiendesign unmittelbar zu?",
+      "en": "When assessing radial wrist pain, Wu et al. (2018) is discussed: 36 asymptomatic people underwent Finkelstein and Eichhoff testing; Finkelstein produced fewer false-positive responses. Which conclusion is directly supported by this study design?",
+      "fa": "هنگام ارزیابی درد رادیال مچ، مطالعهٔ Wu و همکاران (۲۰۱۸) مطرح می‌شود: ۳۶ فرد بدون علامت با آزمون‌های فینکلشتاین و آیکهوف بررسی شدند و فینکلشتاین پاسخ مثبت کاذب کمتری ایجاد کرد. کدام نتیجه مستقیماً با این طراحی مطالعه پشتیبانی می‌شود؟"
+    },
+    "options": [
+      {
+        "de": "Finkelstein erkennt einen größeren Anteil der tatsächlich erkrankten Patienten.",
+        "en": "Finkelstein detects a larger proportion of genuinely affected patients.",
+        "fa": "فینکلشتاین نسبت بیشتری از بیماران واقعاً مبتلا را شناسایی می‌کند."
+      },
+      {
+        "de": "Die falsch-positive Schmerzprovokation lässt sich in dieser beschwerdefreien Gruppe zwischen den Manövern vergleichen.",
+        "en": "False-positive pain provocation can be compared between manoeuvres in this asymptomatic group.",
+        "fa": "می‌توان بازتولید دردِ مثبت کاذب را در این گروه بدون علامت بین دو مانور مقایسه کرد."
+      },
+      {
+        "de": "Ein positiver Finkelstein-Test hat damit einen bestimmten Vorhersagewert in einer symptomatischen Ambulanzpopulation.",
+        "en": "A positive Finkelstein test thereby has an established predictive value in a symptomatic outpatient population.",
+        "fa": "به این ترتیب ارزش پیش‌بینی آزمون مثبت فینکلشتاین در جمعیت علامت‌دار درمانگاه مشخص شده است."
+      },
+      {
+        "de": "Ein negativer Finkelstein-Test senkt die Krankheitswahrscheinlichkeit in symptomatischen Patienten in bekanntem Ausmaß.",
+        "en": "A negative Finkelstein test reduces disease probability in symptomatic patients by a known amount.",
+        "fa": "آزمون منفی فینکلشتاین احتمال بیماری را در بیماران علامت‌دار به میزان معلوم کاهش می‌دهد."
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "de": "Untersucht wurden beschwerdefreie Handgelenke. Damit ist eine Aussage zu falsch-positiver Provokation in dieser Gruppe möglich; Sensitivität bei Erkrankten und Vorhersagewerte in einer symptomatischen Versorgungspopulation wurden damit nicht bestimmt. Ausführung und Klinik weiterhin genau dokumentieren.",
+      "en": "The study examined asymptomatic wrists. It supports comparison of false-positive provocation in that group; it did not establish sensitivity in affected patients or predictive values in a symptomatic clinical population. Continue to document technique and clinical findings precisely.",
+      "fa": "مطالعه مچ‌های بدون علامت را بررسی کرد؛ بنابراین مقایسهٔ تحریک مثبت کاذب در همین گروه ممکن است. حساسیت در بیماران مبتلا و ارزش‌های پیش‌بینی در جمعیت بالینی علامت‌دار با آن تعیین نشده‌اند. شیوهٔ اجرا و یافته‌های بالینی همچنان دقیق ثبت شوند."
+    },
+    "wrongExplanations": {
+      "A": {
+        "de": "Für Sensitivität braucht man erkrankte Patienten und einen geeigneten Referenzstandard. Diese Vergleichsgruppe war beschwerdefrei.",
+        "en": "Sensitivity requires affected patients and a suitable reference standard. This comparison group was asymptomatic.",
+        "fa": "برای حساسیت، بیماران مبتلا و استاندارد مرجع مناسب لازم‌اند؛ این گروه مقایسه بدون علامت بود."
+      },
+      "C": {
+        "de": "Der positive Vorhersagewert hängt auch von Krankheitshäufigkeit und Untersuchungsspektrum ab. Eine rein beschwerdefreie Gruppe legt ihn für eine symptomatische Ambulanz nicht fest.",
+        "en": "Positive predictive value also depends on disease prevalence and case spectrum. An asymptomatic-only group does not establish it in symptomatic outpatients.",
+        "fa": "ارزش پیش‌بینی مثبت به شیوع بیماری و طیف افراد بررسی‌شده نیز وابسته است؛ گروه صرفاً بدون علامت آن را برای مراجعه‌کنندگان علامت‌دار تعیین نمی‌کند."
+      },
+      "D": {
+        "de": "Eine quantifizierte Ausschlusswirkung bei symptomatischen Patienten erfordert unter anderem Daten zur Sensitivität; diese wurden hier nicht erhoben.",
+        "en": "Quantified rule-out performance in symptomatic patients requires sensitivity data among other information; these were not collected here.",
+        "fa": "تعیین کمّی توان رد بیماری در بیماران علامت‌دار، از جمله به داده‌های حساسیت نیاز دارد؛ چنین داده‌هایی در اینجا جمع‌آوری نشده‌اند."
+      }
+    },
+    "sources": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103758/"
+    ]
   }
 ]
 export const newQuestions=(lang='de')=>records.map(item=>({id: 'aq-msk-'+item.topicId+'-'+lang+'-'+item.key,fach:item.fach||'msk',tags:[item.topicId],question:pick(item.question,lang),options:item.options.map((text,i)=>({id:'ABCD'[i],text:pick(text,lang)})),correct:item.correct,explanation:pick(item.explanation,lang),wrongExplanations:Object.fromEntries(Object.entries(item.wrongExplanations).map(([key,value])=>[key,pick(value,lang)])),...(item.image?{image:Object.fromEntries(Object.entries(item.image).map(([key,value])=>[key,pick(value,lang)]))}:{}),sources:item.sources||[]}))
@@ -2584,5 +2642,54 @@ export const routeCoverage=[
     ],
     "status": "AUTHOR_PACKET_3_BOUNDED_DELTA_READY_FULL_EXISTING_POOL_REVIEW_PENDING",
     "existingPoolReview": "Not fully reread or independently accepted; mapped unchanged IDs do not imply their pedagogic acceptance."
+  },
+  {
+    "route": "/msk/hand/de-quervain",
+    "topicId": "de-quervain",
+    "status": "AUTHOR_FULL_ORIGINAL_POOL_PLUS_GAP_READY_REVIEW_PENDING",
+    "learningGoals": [
+      {
+        "id": "localise",
+        "text": {
+          "de": "APL/EPB und das erste Strecksehnenfach am Radiusstyloid anatomisch zuordnen.",
+          "en": "Localise APL/EPB and the first extensor compartment at the radial styloid.",
+          "fa": "APL/EPB و کمپارتمان اول اکستانسور را در سطح استایلوئید رادیوس مکان‌یابی کنید."
+        },
+        "questionIds": [
+          "de-quervain-de-01"
+        ],
+        "cardIds": [
+          "de-quervain-anatomy"
+        ]
+      },
+      {
+        "id": "report-components",
+        "text": {
+          "de": "Sehne, Sehnenscheide und Umgebung getrennt beschreiben und Bildzeichen klinisch einordnen.",
+          "en": "Describe tendon, sheath and surrounding tissue separately and interpret imaging signs clinically.",
+          "fa": "تاندون، غلاف و بافت اطراف را جداگانه توصیف و نشانه‌های تصویر را با بالین تفسیر کنید."
+        },
+        "questionIds": [
+          "de-quervain-de-01"
+        ],
+        "cardIds": [
+          "de-quervain-mri"
+        ]
+      },
+      {
+        "id": "provocation-limit",
+        "text": {
+          "de": "Manöverausführung benennen und die Grenzen einer Untersuchung beschwerdefreier Handgelenke für die klinische Testaussage erklären.",
+          "en": "Specify manoeuvre technique and explain limits of an asymptomatic-wrist study for clinical test interpretation.",
+          "fa": "شیوهٔ اجرای مانور را بیان و محدودیت مطالعهٔ مچ‌های بدون علامت را برای تفسیر بالینی آزمون توضیح دهید."
+        },
+        "questionIds": [
+          "aq-msk-de-quervain-de-provocation-study-limit"
+        ],
+        "cardIds": [
+          "de-quervain-provocation"
+        ]
+      }
+    ]
   }
 ]

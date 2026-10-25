@@ -1,0 +1,368 @@
+[
+  {
+    "kind": "question",
+    "lang": "de",
+    "id": "de-quervain-de-01",
+    "file": "data/wristExtensorAssessments.js",
+    "before": {
+      "id": "de-quervain-de-01",
+      "fach": "msk",
+      "tags": [
+        "de-quervain"
+      ],
+      "question": "Welche MRT-Kombination entspricht dem im PDF gezeigten Befund im ersten Strecksehnenfach?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Verdickte APL-/EPB-Sehnen mit erhöhtem Flüssigkeitssignal und Flüssigkeit in der Sehnenscheide"
+        },
+        {
+          "id": "B",
+          "text": "Isolierte ECU-Sehnenruptur im sechsten Fach"
+        },
+        {
+          "id": "C",
+          "text": "Unauffällige Sehnen ohne begleitende Flüssigkeit"
+        },
+        {
+          "id": "D",
+          "text": "Eine Läsion des Lunatum ohne Sehnenbefund"
+        }
+      ],
+      "correct": "A",
+      "explanation": "MSK.pdf p.43 zeigt Pfeile auf APL/EPB und beschreibt Sehnenverdickung, erhöhtes Flüssigkeitssignal sowie Flüssigkeit in der Sehnenscheide und Ödem im radialen Unterhautgewebe."
+    },
+    "after": {
+      "id": "de-quervain-de-01",
+      "fach": "msk",
+      "tags": [
+        "de-quervain"
+      ],
+      "question": "Textfall: Bei radialem Handgelenkschmerz zeigt die MRT verdickte APL-/EPB-Sehnen über dem Radiusstyloid mit Flüssigkeit in der gemeinsamen Sehnenscheide und peritendinösem Ödem. Faserunterbrechung oder Retraktion sind nicht erkennbar. Welche Befundinterpretation passt am besten?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Tenosynoviales Veränderungsmuster im ersten Strecksehnenfach, mit der Klinik einer de-Quervain-Erkrankung abzugleichen"
+        },
+        {
+          "id": "B",
+          "text": "Komplette APL-Ruptur im ersten Strecksehnenfach mit retrahiertem proximalem Sehnenstumpf"
+        },
+        {
+          "id": "C",
+          "text": "Längsgerichtete EPB-Spaltruptur als Erklärung eines flüssigkeitsgefüllten intratendinösen Spalts"
+        },
+        {
+          "id": "D",
+          "text": "Umschriebene Ganglionzyste neben unveränderter Sehnenscheide als Erklärung des radialen Schmerzes"
+        }
+      ],
+      "correct": "A",
+      "explanation": "APL und EPB gehören zum ersten Strecksehnenfach. Verdickung, Scheidenflüssigkeit und peritendinöses Ödem passen zu einem tenosynovialen Muster; sie sind mit Untersuchung und Beschwerden abzugleichen. Intratendinöses Signal und subkutanes Ödem können variieren und sind keine obligaten Einzelkriterien.",
+      "wrongExplanations": {
+        "B": "Für die beschriebene komplette Ruptur fehlen Faserunterbrechung und Retraktion. Scheidenflüssigkeit allein belegt keinen kompletten Sehnenriss.",
+        "C": "Ein intratendinöser längsgerichteter Spalt ist nicht beschrieben. Das angegebene Flüssigkeitsmuster liegt in der Scheide und peritendinös.",
+        "D": "Eine umschriebene Ganglionzyste erklärt nicht die beschriebenen Veränderungen der Sehnen und ihrer Scheide. Eine solche fokale Zyste ist hier nicht angegeben."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/8717121/"
+    }
+  },
+  {
+    "kind": "question",
+    "lang": "en",
+    "id": "de-quervain-en-01",
+    "file": "data/wristExtensorAssessments.js",
+    "before": {
+      "id": "de-quervain-en-01",
+      "fach": "msk",
+      "tags": [
+        "de-quervain"
+      ],
+      "question": "Which MRI combination matches the finding shown in the PDF in the first extensor compartment?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Thickened APL/EPB tendons with increased fluid-sensitive signal and tendon-sheath fluid"
+        },
+        {
+          "id": "B",
+          "text": "Isolated ECU rupture in compartment six"
+        },
+        {
+          "id": "C",
+          "text": "Normal tendons without surrounding fluid"
+        },
+        {
+          "id": "D",
+          "text": "A lunate lesion without a tendon finding"
+        }
+      ],
+      "correct": "A",
+      "explanation": "MSK.pdf p.43 arrows mark APL/EPB and the text describes tendon thickening, increased fluid-sensitive signal, tendon-sheath fluid and radial subcutaneous oedema."
+    },
+    "after": {
+      "id": "de-quervain-en-01",
+      "fach": "msk",
+      "tags": [
+        "de-quervain"
+      ],
+      "question": "Text vignette: in radial wrist pain, MRI shows thickened APL/EPB tendons over the radial styloid with fluid in their common sheath and peritendinous oedema. No fibre discontinuity or retraction is visible. Which interpretation fits best?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Tenosynovial change in the first extensor compartment, to correlate with clinical de Quervain disease"
+        },
+        {
+          "id": "B",
+          "text": "Complete APL rupture in the first extensor compartment with a retracted proximal tendon stump"
+        },
+        {
+          "id": "C",
+          "text": "Longitudinal EPB split tear explaining a fluid-filled intratendinous cleft"
+        },
+        {
+          "id": "D",
+          "text": "Focal ganglion beside an unchanged tendon sheath explaining radial pain"
+        }
+      ],
+      "correct": "A",
+      "explanation": "APL and EPB occupy the first extensor compartment. Thickening, sheath fluid and peritendinous oedema fit a tenosynovial pattern and require clinical correlation. Intratendinous signal and subcutaneous oedema may vary and are not mandatory individual criteria.",
+      "wrongExplanations": {
+        "B": "The stated complete tear lacks discontinuity and retraction. Sheath fluid alone does not establish a complete tendon tear.",
+        "C": "No longitudinal intratendinous cleft is described. The stated fluid pattern is in the sheath and surrounding tissues.",
+        "D": "A focal ganglion does not explain the described tendon and sheath changes. No such focal cyst is specified here."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/8717121/"
+    }
+  },
+  {
+    "kind": "question",
+    "lang": "fa",
+    "id": "de-quervain-fa-01",
+    "file": "data/wristExtensorAssessments.js",
+    "before": {
+      "id": "de-quervain-fa-01",
+      "fach": "msk",
+      "tags": [
+        "de-quervain"
+      ],
+      "question": "کدام ترکیب MRI با یافتهٔ نشان‌داده‌شده در PDF در کمپارتمان اول اکستانسور تطابق دارد؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "ضخیم‌شدن تاندون‌های APL/EPB همراه با افزایش سیگنال حساس به مایع و مایع در غلاف تاندون"
+        },
+        {
+          "id": "B",
+          "text": "پارگی منفرد ECU در کمپارتمان ششم"
+        },
+        {
+          "id": "C",
+          "text": "تاندون‌های طبیعی بدون مایع اطراف"
+        },
+        {
+          "id": "D",
+          "text": "ضایعهٔ لونیت بدون یافتهٔ تاندونی"
+        }
+      ],
+      "correct": "A",
+      "explanation": "در صفحهٔ ۴۳ MSK.pdf پیکان‌ها APL/EPB را نشان می‌دهند و متن ضخیم‌شدن تاندون، افزایش سیگنال حساس به مایع، مایع غلاف و ادم زیرجلدی رادیال را شرح می‌دهد."
+    },
+    "after": {
+      "id": "de-quervain-fa-01",
+      "fach": "msk",
+      "tags": [
+        "de-quervain"
+      ],
+      "question": "سناریوی متنی: در درد رادیال مچ، MRI ضخیم‌شدن تاندون‌های APL/EPB روی استایلوئید رادیوس، مایع در غلاف مشترک و ادم اطراف تاندون را نشان می‌دهد. قطع رشته یا عقب‌کشیدگی دیده نمی‌شود. کدام تفسیر مناسب‌تر است؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "الگوی تغییر تنوسینوویال در کمپارتمان اول اکستانسور، نیازمند تطبیق با بالین دو کروَن"
+        },
+        {
+          "id": "B",
+          "text": "پارگی کامل APL در کمپارتمان اول با عقب‌کشیدگی انتهای پروگزیمال تاندون"
+        },
+        {
+          "id": "C",
+          "text": "پارگی طولی شکاف‌دار EPB برای توضیح شکاف پر از مایع داخل تاندون"
+        },
+        {
+          "id": "D",
+          "text": "کیست گانگلیون محدود در کنار غلاف تاندون بدون تغییر به‌عنوان علت درد رادیال"
+        }
+      ],
+      "correct": "A",
+      "explanation": "APL و EPB در کمپارتمان اول اکستانسور قرار دارند. ضخیم‌شدن، مایع غلاف و ادم اطراف تاندون با الگوی تنوسینوویال سازگارند و باید با معاینه و علائم تطبیق داده شوند. سیگنال داخل تاندون و ادم زیرجلدی می‌توانند متغیر باشند و معیارهای منفرد الزامی نیستند.",
+      "wrongExplanations": {
+        "B": "برای پارگی کاملِ مطرح‌شده، قطع رشته و عقب‌کشیدگی وجود ندارد. مایع غلاف به‌تنهایی پارگی کامل تاندون را ثابت نمی‌کند.",
+        "C": "شکاف طولی داخل تاندون توصیف نشده است؛ الگوی مایعِ ذکرشده در غلاف و بافت اطراف تاندون قرار دارد.",
+        "D": "کیست گانگلیون محدود تغییرات توصیف‌شدهٔ تاندون و غلاف را توضیح نمی‌دهد؛ چنین کیست کانونی‌ای در اینجا ذکر نشده است."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/8717121/"
+    }
+  },
+  {
+    "kind": "card",
+    "id": "de-quervain-anatomy",
+    "file": "data/wristExtensorAssessments.js",
+    "before": {
+      "id": "de-quervain-anatomy",
+      "topicId": "de-quervain",
+      "category": {
+        "de": "Anatomie",
+        "en": "Anatomy",
+        "fa": "آناتومی"
+      },
+      "front": {
+        "de": "Welche Sehnen sind bei de Quervain betroffen?",
+        "en": "Which tendons are involved in de Quervain disease?",
+        "fa": "در دو کروَن کدام تاندون‌ها درگیرند؟"
+      },
+      "answer": {
+        "de": "APL und EPB im ersten Strecksehnenfach.",
+        "en": "APL and EPB in the first extensor compartment.",
+        "fa": "APL و EPB در کمپارتمان اول اکستانسور."
+      },
+      "explanation": {
+        "de": "Das Fach liegt über dem radialen Processus styloideus.",
+        "en": "The compartment lies over the radial styloid.",
+        "fa": "این کمپارتمان روی استایلوئید رادیوس قرار دارد."
+      }
+    },
+    "after": {
+      "id": "de-quervain-anatomy",
+      "topicId": "de-quervain",
+      "category": {
+        "de": "Anatomie",
+        "en": "Anatomy",
+        "fa": "آناتومی"
+      },
+      "front": {
+        "de": "Welche Sehnen sind bei de Quervain betroffen?",
+        "en": "Which tendons are involved in de Quervain disease?",
+        "fa": "در دو کروَن کدام تاندون‌ها درگیرند؟"
+      },
+      "answer": {
+        "de": "APL und EPB im ersten Strecksehnenfach.",
+        "en": "APL and EPB in the first extensor compartment.",
+        "fa": "APL و EPB در کمپارتمان اول اکستانسور."
+      },
+      "explanation": {
+        "de": "Das Fach liegt über dem radialen Processus styloideus.",
+        "en": "The compartment lies over the radial styloid.",
+        "fa": "این کمپارتمان روی استایلوئید رادیوس قرار دارد."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/8717121/"
+    }
+  },
+  {
+    "kind": "card",
+    "id": "de-quervain-mri",
+    "file": "data/wristExtensorAssessments.js",
+    "before": {
+      "id": "de-quervain-mri",
+      "topicId": "de-quervain",
+      "category": {
+        "de": "MRT",
+        "en": "MRI",
+        "fa": "MRI"
+      },
+      "front": {
+        "de": "Welche Strukturen sollten im MRT-Befund getrennt beschrieben werden?",
+        "en": "Which structures should be described separately in the MRI findings?",
+        "fa": "در گزارش MRI کدام ساختارها باید جداگانه توصیف شوند؟"
+      },
+      "answer": {
+        "de": "Sehne, Sehnenscheide und umgebendes radiales subkutanes Gewebe.",
+        "en": "Tendon, tendon sheath and surrounding radial subcutaneous tissue.",
+        "fa": "تاندون، غلاف تاندون و بافت زیرجلدی رادیال اطراف."
+      },
+      "explanation": {
+        "de": "MSK.pdf p.43 beschreibt Befunde in allen drei Komponenten; die Bildkombination allein stellt keine Diagnose.",
+        "en": "MSK.pdf p.43 describes findings in all three components; the image pair alone does not establish a diagnosis.",
+        "fa": "صفحهٔ ۴۳ MSK.pdf یافته‌هایی را در هر سه جزء شرح می‌دهد؛ جفت تصویر به‌تنهایی تشخیص را ثابت نمی‌کند."
+      }
+    },
+    "after": {
+      "id": "de-quervain-mri",
+      "topicId": "de-quervain",
+      "category": {
+        "de": "MRT",
+        "en": "MRI",
+        "fa": "MRI"
+      },
+      "front": {
+        "de": "Welche Strukturen sollten im MRT-Befund getrennt beschrieben werden?",
+        "en": "Which structures should be described separately in the MRI findings?",
+        "fa": "در گزارش MRI کدام ساختارها باید جداگانه توصیف شوند؟"
+      },
+      "answer": {
+        "de": "Sehne, Sehnenscheide und umgebendes radiales subkutanes Gewebe.",
+        "en": "Tendon, tendon sheath and surrounding radial subcutaneous tissue.",
+        "fa": "تاندون، غلاف تاندون و بافت زیرجلدی رادیال اطراف."
+      },
+      "explanation": {
+        "de": "Sehnenverdickung und peritendinöses Ödem waren in der kleinen ursprünglichen MRT-Serie besonders konsistent. Intratendinöses Signal und subkutanes Ödem waren variabler; einzelne Bildzeichen ersetzen die klinische Einordnung nicht.",
+        "en": "Tendon thickening and peritendinous oedema were especially consistent in the small original MRI series. Intratendinous signal and subcutaneous oedema were more variable; individual imaging signs do not replace clinical interpretation.",
+        "fa": "ضخیم‌شدن تاندون و ادم اطراف آن در مجموعهٔ کوچک MRI اصلی پایدارتر بودند. سیگنال داخل تاندون و ادم زیرجلدی متغیرتر بودند؛ نشانه‌های منفرد تصویری جای تفسیر بالینی را نمی‌گیرند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/8717121/"
+    }
+  },
+  {
+    "kind": "card",
+    "id": "de-quervain-provocation",
+    "file": "data/wristExtensorAssessments.js",
+    "before": {
+      "id": "de-quervain-provocation",
+      "topicId": "de-quervain",
+      "category": {
+        "de": "Klinik",
+        "en": "Clinical",
+        "fa": "بالینی"
+      },
+      "front": {
+        "de": "Was ist bei einem schmerzhaften Provokationstest am radialen Handgelenk wichtig?",
+        "en": "What matters when a provocative manoeuvre causes radial wrist pain?",
+        "fa": "در مانور تحریکی دردناک در سمت رادیال مچ چه نکته‌ای مهم است؟"
+      },
+      "answer": {
+        "de": "Schmerzprovokation ist kein alleiniger Beweis; Testausführung und Terminologie müssen genau benannt werden.",
+        "en": "Pain provocation alone is not diagnostic; name the manoeuvre and its execution precisely.",
+        "fa": "بازتولید درد به‌تنهایی تشخیصی نیست؛ نام و شیوهٔ اجرای مانور را دقیق ذکر کنید."
+      },
+      "explanation": {
+        "de": "Die PDF-Bezeichnung des Daumen-in-der-Faust-Manövers wird in der Literatur teils als Eichhoff-Manöver abgegrenzt.",
+        "en": "The PDF’s label for the thumb-in-fist manoeuvre is distinguished in some literature as the Eichhoff manoeuvre.",
+        "fa": "در برخی منابع، مانور قراردادن شست در مشت که PDF نام‌گذاری کرده به‌عنوان مانور آیکهوف تفکیک می‌شود."
+      }
+    },
+    "after": {
+      "id": "de-quervain-provocation",
+      "topicId": "de-quervain",
+      "category": {
+        "de": "Klinik",
+        "en": "Clinical",
+        "fa": "بالینی"
+      },
+      "front": {
+        "de": "Was ist bei einem schmerzhaften Provokationstest am radialen Handgelenk wichtig?",
+        "en": "What matters when a provocative manoeuvre causes radial wrist pain?",
+        "fa": "در مانور تحریکی دردناک در سمت رادیال مچ چه نکته‌ای مهم است؟"
+      },
+      "answer": {
+        "de": "Schmerzprovokation ist kein alleiniger Beweis; Testausführung und Terminologie müssen genau benannt werden.",
+        "en": "Pain provocation alone is not diagnostic; name the manoeuvre and its execution precisely.",
+        "fa": "بازتولید درد به‌تنهایی تشخیصی نیست؛ نام و شیوهٔ اجرای مانور را دقیق ذکر کنید."
+      },
+      "explanation": {
+        "de": "Der Daumen-in-der-Faust-Test mit Ulnardeviation wird häufig als Eichhoff-Manöver bezeichnet. In der Studie an beschwerdefreien Handgelenken waren falsch-positive Reaktionen möglich; daraus lässt sich keine Sensitivität bei Erkrankten ableiten.",
+        "en": "The thumb-in-fist test with ulnar deviation is often termed the Eichhoff manoeuvre. False-positive responses occurred in the study of asymptomatic wrists; this cannot establish sensitivity in affected patients.",
+        "fa": "آزمون قرار دادن شست داخل مشت همراه انحراف اولنار اغلب مانور آیکهوف نامیده می‌شود. در مطالعهٔ مچ‌های بدون علامت پاسخ مثبت کاذب ممکن بود؛ از آن نمی‌توان حساسیت آزمون را در بیماران نتیجه گرفت."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103758/"
+    }
+  }
+]
