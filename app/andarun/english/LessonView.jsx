@@ -9,7 +9,8 @@ export function LessonText({lesson,plain=false,active=-1}) {
 const noteTitles={
  'b1-01':['Routines & facts','Temporary situations','Read the situation'],
  'b1-02':['Completed events','Actions in progress','Two actions, one story'],
- 'b1-03':['Will: decisions & promises','Going to: intentions & evidence','Arranged future plans']
+ 'b1-03':['Will: decisions & promises','Going to: intentions & evidence','Arranged future plans'],
+ 'b1-04':['Experience without a finished time','Finished time, finished event','Duration & recent actions']
 }
 export default function LessonView({lesson,state,begin}) {
  const [active,setActive]=useState(-1)

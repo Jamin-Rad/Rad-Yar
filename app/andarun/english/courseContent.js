@@ -1,3 +1,4 @@
+import { lessonFour, lessonFourRows } from './lessonFour.js'
 import { lessonThree, lessonThreeRows } from './lessonThree.js'
 import { lessonOneExtra } from './lessonOneExtra.js'
 import { lessonTwo, lessonTwoRows } from './lessonTwo.js'
@@ -72,13 +73,14 @@ lesson.goalEn = 'Meet a colleague, arrange a chat and talk about everyday routin
 lessonTwo.titleEn = 'When plans go wrong'
 lessonTwo.grammarEn = 'Past simple & continuous'
 lessonTwo.goalEn = 'Explain a delay, describe past events and handle a change of plan.'
-export const lessons = [lesson, lessonTwo, lessonThree]
+export const lessons = [lesson, lessonTwo, lessonThree, lessonFour]
 export const lessonMap = Object.fromEntries(lessons.map(l=>[l.id,l]))
 export const questions = [
  ...originalQuestions.map(q=>({...q,lessonId:lesson.id})),
  ...fromRows(lessonOneExtra,lesson.id,'l1extra'),
  ...fromRows(lessonTwoRows,lessonTwo.id,'l2q'),
- ...fromRows(lessonThreeRows,lessonThree.id,'l3q')
+ ...fromRows(lessonThreeRows,lessonThree.id,'l3q'),
+ ...fromRows(lessonFourRows,lessonFour.id,'l4q')
 ]
 export const questionMap = Object.fromEntries(questions.map(q=>[q.id,q]))
 export const flashcards = lessons.flatMap(l=>l.words.map(([term,meaning,example],i)=>({id:l.id+'-word-'+i,lessonId:l.id,term,meaning,example})))

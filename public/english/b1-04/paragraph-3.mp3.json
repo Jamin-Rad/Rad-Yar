@@ -1,0 +1,9 @@
+{
+  "provider": "Google Cloud Text-to-Speech",
+  "voice": "en-GB-Neural2-F",
+  "generatedAt": "2026-10-25T08:57:24.778Z",
+  "textSha256": "77a2308259e8d901dac2b97ae3172cd053c5be58ddfa46373f8b25eba09e205a",
+  "lessonId": "b1-04",
+  "paragraph": 3,
+  "syntheticSpeech": true
+}

@@ -1,0 +1,11 @@
+{
+  "provider": "OpenAI ImageGen",
+  "syntheticIllustration": true,
+  "purpose": "Decorative English learning studio artwork",
+  "assets": [
+    "headphones.webp",
+    "cards.webp",
+    "mistakes.webp"
+  ],
+  "concept": "english-v4-home-concept.png"
+}

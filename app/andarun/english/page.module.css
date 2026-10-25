@@ -663,3 +663,6 @@
 .option small {font-family:var(--font-manrope,Arial),Arial,sans-serif;white-space:normal}
 @media(max-width:760px){.homeApp{padding:0 16px}.deckSelect{align-items:flex-start;flex-direction:column}.app .intro h1{font-size:32px}.nav{gap:4px}.nav button{font-size:13px;padding:10px 12px}}
 .header .brand {border:0;background:transparent;padding:0;text-align:left}
+.homeApp {padding:0;background:#f5f7fc;--paper:#f5f7fc;--forest:#142238}
+.homeShell {max-width:none}
+@media(max-width:760px){.homeApp{padding:0}}
