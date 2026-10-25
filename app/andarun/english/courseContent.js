@@ -1,3 +1,5 @@
+import { lessonOneExtra } from './lessonOneExtra.js'
+import { lessonTwo, lessonTwoRows } from './lessonTwo.js'
 export const lesson = {
   id: 'b1-01', title: 'آشنایی با همکار جدید', subtitle: 'A new colleague, a different week',
   grammar: 'حال ساده و حال استمراری',
@@ -50,11 +52,26 @@ const rows = [
   ['conversation', '“What do you usually do after work?” Choose the relevant answer.', ['I often go for a walk.', 'I’m in the kitchen right now.', 'The deadline is Thursday.', 'Yes, half past one is fine.'], 'سؤال دربارهٔ عادت بعد از کار است؛ I often go for a walk همان را پاسخ می‌دهد.', '“Do you normally work from home?” Choose the relevant answer.', ['Yes, on Mondays and Fridays.', 'Yes, the coffee is hot.', 'No, the deadline is tomorrow.', 'No, it costs twenty pounds.'], 'پاسخ، روال کار از خانه و روزهای آن را مشخص می‌کند.'],
   ['conversation', '“Does half past one work for you?” You are free then. Say:', ['Yes, that’s perfect. Thanks.', 'I don’t work in IT.', 'She is my colleague.', 'I often walk after work.'], 'وقتی زمان مناسب است، تأیید مستقیم و تشکر پاسخ طبیعی است.', '“Would two o’clock work for you?” You have a meeting then. Say:', ['Sorry, I’m busy then. Could we meet at three?', 'Yes, that’s perfect. See you at two.', 'I usually deal with customer questions.', 'My colleague works from home.'], 'وقتی آن ساعت آزاد نیستی، مؤدبانه رد کن و زمان جایگزین بده؛ گزینهٔ تأیید با موقعیت ناسازگار است.']
 ]
-export const questions = rows.map((r, i) => ({
+const originalQuestions = rows.map((r, i) => ({
   id: `q${i + 1}`, category: r[0],
   variants: [
     { prompt: r[1], options: r[2], explanation: r[3], answer: 0 },
     { prompt: r[4], options: r[5], explanation: r[6], answer: 0 }
   ]
 }))
-export const questionMap = Object.fromEntries(questions.map(q => [q.id, q]))
+
+
+function fromRows(rows, lessonId, prefix) {
+ return rows.map((r,i)=>({id:prefix+(i+1),lessonId,category:r[0],variants:[r[1],r[2]].map(v=>({prompt:v[0],options:v.slice(1),answer:0,explanation:r[3]}))}))
+}
+lesson.goal = 'آشنایی با همکار، هماهنگی زمان و تشخیص کار معمول از وضعیت موقتی.'
+export const lessons = [lesson, lessonTwo]
+export const lessonMap = Object.fromEntries(lessons.map(l=>[l.id,l]))
+export const questions = [
+ ...originalQuestions.map(q=>({...q,lessonId:lesson.id})),
+ ...fromRows(lessonOneExtra,lesson.id,'l1extra'),
+ ...fromRows(lessonTwoRows,lessonTwo.id,'l2q')
+]
+export const questionMap = Object.fromEntries(questions.map(q=>[q.id,q]))
+export const flashcards = lessons.flatMap(l=>l.words.map(([term,meaning,example],i)=>({id:l.id+'-word-'+i,lessonId:l.id,term,meaning,example})))
+export const flashcardMap = Object.fromEntries(flashcards.map(c=>[c.id,c]))

@@ -619,3 +619,32 @@
     scroll-behavior: auto;
   }
 }
+.content:focus {outline: none}
+.lessonPicker {display:flex;gap:12px;flex-wrap:wrap;padding:24px 0 8px}
+.lessonPicker button {font:inherit;padding:12px 18px;border:1px solid var(--line);background:#fff;border-radius:7px;color:var(--forest);min-height:48px}
+.lessonPicker .selectedLesson {background:var(--forest);color:white;border-color:var(--forest)}
+.syncBar {display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--muted);font-size:13px;border-bottom:1px solid var(--line)}
+.testGrid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.testCard {padding:24px;border:1px solid var(--line);border-radius:8px}
+.testCard .primary {margin-top:12px}
+.testCard .primary:disabled {opacity:.45}
+.audioPlayer {padding:18px;background:#f0f4ed;border-radius:7px;margin:20px 0}
+.audioPlayer .actions {margin-top:0;gap:10px}
+.audioSettings {display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.audioSettings label {display:flex;flex-direction:column;gap:8px;font-size:13px;min-width:90px;max-width:100%}
+.audioSettings select {font:inherit;color:var(--forest);background:white;border:1px solid #b9c6b6;padding:8px;min-height:42px;max-width:100%;border-radius:5px}
+.activeParagraph {background:#edf4df;box-shadow:4px 0 0 #66834b;padding:12px}
+.flashcard {text-align:center;padding:30px 16px;margin-top:25px;border:1px solid var(--line);border-radius:8px}
+.flashcard h3 {font-family:var(--font-manrope,Arial),Arial,sans-serif;font-size:34px;line-height:1.5}
+.flashcard .actions {justify-content:center}
+.cardMeaning {font-size:24px}
+.app .lightButton {text-decoration:none}
+.app :is(select, button):focus-visible {outline:3px solid #b65a3b;outline-offset:3px}
+@media(max-width:600px){
+ .lessonPicker{gap:8px}.lessonPicker button{width:100%;font-size:14px}
+ .testGrid{grid-template-columns:1fr;gap:16px}.testCard{padding:20px}
+ .audioPlayer{padding:14px}.audioPlayer .actions{flex-direction:row;flex-wrap:wrap}
+ .audioPlayer .actions button{width:auto;padding:10px 13px}
+ .audioSettings{gap:14px}.audioSettings label{flex:1 1 100px}
+ .flashcard h3{font-size:29px}
+}
