@@ -234,7 +234,7 @@
       "topicIds": [
         "meniskus"
       ],
-      "questionCount": 22,
+      "questionCount": 24,
       "cardTopic": "meniskus",
       "subject": "msk"
     },
@@ -632,7 +632,7 @@
     "bandverletzungen-daumen": 2,
     "kreuzbaender": 11,
     "knieligamente": 11,
-    "knie": 33,
+    "knie": 35,
     "kraniozervikaler-uebergang-trauma": 2,
     "wirbelsaeule-trauma": 6,
     "hws-verletzungen": 2,
@@ -661,7 +661,7 @@
     "acm": 10,
     "myokardinfarkt-differentialdiagnosen": 10,
     "fleischner-kriterien": 10,
-    "meniskus": 22,
+    "meniskus": 24,
     "fnh": 10,
     "leber": 30,
     "avm": 10,

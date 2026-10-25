@@ -1,0 +1,1086 @@
+{
+  "changes": [
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.heroCards.0.text",
+      "currentBefore": "Oberflächenkontakt muss auf mindestens zwei aufeinanderfolgenden Schichten sichtbar sein.",
+      "after": "Wiederholter Oberflächenkontakt erhöht die Sicherheit. Ein eindeutiger morphologischer Defekt kann auch ohne Zwei-Bild-Kontakt einen Riss belegen."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.heroCards.0.text",
+      "currentBefore": "Surface contact should be visible on at least two consecutive slices.",
+      "after": "Repeated surface contact increases confidence. A definite morphological defect can establish a tear without two-image contact."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.heroCards.0.text",
+      "currentBefore": "تماس با سطح باید حداقل در دو برش متوالی دیده شود.",
+      "after": "تماس سطحی تکرارشونده اطمینان را بالا می‌برد. نقص مورفولوژیک واضح می‌تواند حتی بدون تماس در دو تصویر پارگی را نشان دهد."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.heroCards.1.value",
+      "currentBefore": "Nur Grad 3",
+      "after": "Signal + Form"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.heroCards.1.value",
+      "currentBefore": "Only grade 3",
+      "after": "Signal + shape"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.heroCards.1.value",
+      "currentBefore": "فقط درجه ۳",
+      "after": "سیگنال + شکل"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.heroCards.1.label",
+      "currentBefore": "sicherer Meniskusriss",
+      "after": "Risskriterien gemeinsam prüfen"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.heroCards.1.label",
+      "currentBefore": "definite meniscal tear",
+      "after": "Assess tear criteria together"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.heroCards.1.label",
+      "currentBefore": "پارگی قطعی منیسک",
+      "after": "ارزیابی هم‌زمان معیارهای پارگی"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.heroCards.1.text",
+      "currentBefore": "Erst ein Signal mit eindeutigem Kontakt zur Gelenkfläche erfüllt die Kriterien eines echten Risses.",
+      "after": "Oberflächenkontakt und Formdefekt sind ergänzende Befunde. Intrameniskales Signal allein beweist weder Riss noch Operationsbedarf."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.heroCards.1.text",
+      "currentBefore": "Only signal with definite articular-surface contact meets the criteria for a true tear.",
+      "after": "Surface contact and morphological defects provide complementary evidence. Intrasubstance signal alone proves neither a tear nor a need for surgery."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.heroCards.1.text",
+      "currentBefore": "فقط سیگنال با تماس قطعی با سطح مفصلی معیار پارگی واقعی را دارد.",
+      "after": "تماس سطحی و نقص شکلی شواهد مکمل‌اند. سیگنال داخل منیسک به‌تنهایی نه پارگی و نه نیاز به جراحی را ثابت می‌کند."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.mri.normalText",
+      "currentBefore": "Der gesunde Meniskus stellt sich homogen hypointens dar. In der sagittalen Ansicht besitzt er eine typische dreieckige Struktur.",
+      "after": "Normaler Meniskus ist überwiegend signalarm. Die Hörner erscheinen sagittal dreieckig, der Corpus auf peripheren Schichten als Bow-tie; die Gesamtform wird in mehreren Ebenen geprüft."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.mri.normalText",
+      "currentBefore": "A healthy meniscus is homogeneously hypointense. On sagittal images it has a typical triangular configuration.",
+      "after": "Normal meniscus is predominantly low signal. The horns appear triangular sagittally and the body forms a bowtie on peripheral slices; assess overall shape in multiple planes."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.mri.normalText",
+      "currentBefore": "منیسک سالم به صورت هموژن هیپواینتنس دیده می‌شود. در نمای ساژیتال شکل مثلثی تیپیک دارد.",
+      "after": "منیسک طبیعی عمدتاً کم‌سیگنال است. شاخ‌ها در ساژیتال مثلثی و تنه در برش‌های محیطی شبیه bow-tie دیده می‌شود؛ شکل کلی در چند صفحه بررسی شود."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.grading.lead",
+      "currentBefore": "Die Klassifikation nach Lotysch hilft, degenerative intrameniskale Signalveränderungen von einem echten Meniskusriss zu unterscheiden.",
+      "after": "Das historische Signalgrading beschreibt das MRT-Signalmuster. Für den klinischen Befund sind Oberflächenkontakt, morphologischer Defekt und Rissgeometrie hilfreicher als die Zahl allein. Eine Histologie oder Reparabilität wird daraus nicht sicher abgeleitet."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.grading.lead",
+      "currentBefore": "The Lotysch classification helps distinguish degenerative intrameniscal signal changes from a true meniscal tear.",
+      "after": "Historical signal grading describes the MRI signal pattern. Surface contact, morphological defects and tear geometry are more useful in clinical reports than a number alone. Histology or repairability cannot be reliably inferred from it."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.grading.lead",
+      "currentBefore": "طبقه‌بندی Lotysch کمک می‌کند تغییرات سیگنال دژنراتیو داخل منیسک از پارگی واقعی منیسک جدا شود.",
+      "after": "درجه‌بندی تاریخی سیگنال الگوی MRI را توصیف می‌کند. در گزارش بالینی، تماس سطحی، نقص مورفولوژیک و هندسهٔ پارگی از عدد تنها مفیدترند. بافت‌شناسی یا قابلیت ترمیم از آن با اطمینان استنتاج نمی‌شود."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.grading.simpleHeaders",
+      "currentBefore": [
+        "Grad",
+        "MRT-Signal",
+        "Histologie",
+        "Klinisch"
+      ],
+      "after": [
+        "Grad",
+        "MRT-Signal",
+        "Einordnung",
+        "Grenze"
+      ]
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.grading.simpleHeaders",
+      "currentBefore": [
+        "Grade",
+        "MRI signal",
+        "Histology",
+        "Clinical meaning"
+      ],
+      "after": [
+        "Grade",
+        "MRI signal",
+        "Interpretation",
+        "Limitation"
+      ]
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.grading.simpleHeaders",
+      "currentBefore": [
+        "درجه",
+        "سیگنال MRI",
+        "هیستولوژی",
+        "معنای بالینی"
+      ],
+      "after": [
+        "درجه",
+        "سیگنال MRI",
+        "تفسیر",
+        "محدودیت"
+      ]
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.grading.simpleRows",
+      "currentBefore": [
+        [
+          "0",
+          "Homogen hypointens",
+          "Normales Faserknorpelgewebe",
+          "Kein Befund"
+        ],
+        [
+          "I",
+          "Fokales Signal, kein Oberflächenkontakt",
+          "Myxoide Degeneration, fokal",
+          "Inzidentell, kein Riss"
+        ],
+        [
+          "II",
+          "Linienförmiges Signal, kein Oberflächenkontakt",
+          "Myxoide Degeneration, diffus",
+          "Kein Riss, Vorläuferläsion"
+        ],
+        [
+          "III",
+          "Signal erreicht Gelenkoberfläche",
+          "Riss vorhanden",
+          "✅ Echter Meniskusriss"
+        ]
+      ],
+      "after": [
+        [
+          "0",
+          "Homogen signalarm",
+          "Normales Signalmuster",
+          "Gesamtform mitprüfen"
+        ],
+        [
+          "I",
+          "Fokal, ohne Oberflächenkontakt",
+          "Intrameniskale Signaländerung",
+          "Kein sicherer Rissnachweis"
+        ],
+        [
+          "II",
+          "Linear/ausgedehnt, Kontakt nicht sicher reproduziert",
+          "Intrameniskale Signaländerung",
+          "Morphologie und vollständige Serie prüfen"
+        ],
+        [
+          "III",
+          "Signal erreicht eine Gelenkoberfläche",
+          "Oberflächenkontakt unterstützt Riss",
+          "Kontakt reproduzieren; Formdefekt mitbeurteilen"
+        ]
+      ]
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.grading.simpleRows",
+      "currentBefore": [
+        [
+          "0",
+          "Homogeneously hypointense",
+          "Normal fibrocartilage",
+          "No abnormality"
+        ],
+        [
+          "I",
+          "Focal signal, no surface contact",
+          "Focal myxoid degeneration",
+          "Incidental, no tear"
+        ],
+        [
+          "II",
+          "Linear signal, no surface contact",
+          "Diffuse myxoid degeneration",
+          "No tear, precursor lesion"
+        ],
+        [
+          "III",
+          "Signal reaches the articular surface",
+          "Tear present",
+          "✅ True meniscal tear"
+        ]
+      ],
+      "after": [
+        [
+          "0",
+          "Homogeneous low signal",
+          "Normal signal pattern",
+          "Also assess overall shape"
+        ],
+        [
+          "I",
+          "Focal, without surface contact",
+          "Intrasubstance signal alteration",
+          "No definite tear demonstrated"
+        ],
+        [
+          "II",
+          "Linear/extensive; contact not reliably reproduced",
+          "Intrasubstance signal alteration",
+          "Assess morphology and the complete series"
+        ],
+        [
+          "III",
+          "Signal reaches an articular surface",
+          "Surface contact supports a tear",
+          "Reproduce contact; also assess morphological defects"
+        ]
+      ]
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.grading.simpleRows",
+      "currentBefore": [
+        [
+          "0",
+          "هیپواینتنس هموژن",
+          "بافت فیبروغضروفی طبیعی",
+          "یافته غیرطبیعی ندارد"
+        ],
+        [
+          "I",
+          "سیگنال فوکال، بدون تماس با سطح",
+          "دژنراسیون میکسوئید فوکال",
+          "اتفاقی، پارگی نیست"
+        ],
+        [
+          "II",
+          "سیگنال خطی، بدون تماس با سطح",
+          "دژنراسیون میکسوئید منتشر",
+          "پارگی نیست، ضایعه پیش‌زمینه‌ای"
+        ],
+        [
+          "III",
+          "سیگنال به سطح مفصلی می‌رسد",
+          "پارگی وجود دارد",
+          "✅ پارگی واقعی منیسک"
+        ]
+      ],
+      "after": [
+        [
+          "0",
+          "کم‌سیگنال همگن",
+          "الگوی سیگنال طبیعی",
+          "شکل کلی هم بررسی شود"
+        ],
+        [
+          "I",
+          "کانونی، بدون تماس سطحی",
+          "تغییر سیگنال داخل منیسک",
+          "پارگی قطعی اثبات نشده"
+        ],
+        [
+          "II",
+          "خطی/گسترده؛ تماس به‌طور مطمئن تکرار نمی‌شود",
+          "تغییر سیگنال داخل منیسک",
+          "مورفولوژی و کل سری بررسی شوند"
+        ],
+        [
+          "III",
+          "سیگنال به سطح مفصلی می‌رسد",
+          "تماس سطحی از پارگی حمایت می‌کند",
+          "تماس تکرار و نقص شکلی هم ارزیابی شود"
+        ]
+      ]
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.grading.tableRows.0.3",
+      "currentBefore": "frühe mukoide Degeneration, meist asymptomatisch",
+      "after": "Intrameniskale Signaländerung; kein sicherer Rissnachweis"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.grading.tableRows.0.3",
+      "currentBefore": "early mucoid degeneration, usually asymptomatic",
+      "after": "Intrasubstance signal alteration; no definite tear demonstrated"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.grading.tableRows.0.3",
+      "currentBefore": "دژنراسیون موکوئید اولیه، معمولاً بی‌علامت",
+      "after": "تغییر سیگنال داخل منیسک؛ پارگی قطعی اثبات نشده"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.grading.tableRows.3.3",
+      "currentBefore": "hohes Risiko für okkulten Riss",
+      "after": "Ein okkulter Riss ist möglich; Signal allein beweist ihn nicht"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.grading.tableRows.3.3",
+      "currentBefore": "high risk of an occult tear",
+      "after": "An occult tear is possible; signal alone does not establish it"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.grading.tableRows.3.3",
+      "currentBefore": "ریسک بالا برای پارگی مخفی",
+      "after": "پارگی مخفی ممکن است؛ سیگنال تنها آن را اثبات نمی‌کند"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.grading.tableRows.4.2",
+      "currentBefore": "Kontakt auf mindestens zwei aufeinanderfolgenden Schichten",
+      "after": "Kontakt zu mindestens einer Gelenkoberfläche; wiederholter Nachweis erhöht Sicherheit"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.grading.tableRows.4.2",
+      "currentBefore": "contact on at least two consecutive slices",
+      "after": "Contact with at least one articular surface; repeated demonstration increases confidence"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.grading.tableRows.4.2",
+      "currentBefore": "تماس در حداقل دو برش متوالی",
+      "after": "تماس با حداقل یک سطح مفصلی؛ نمایش تکراری اطمینان را افزایش می‌دهد"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.grading.tableRows.4.3",
+      "currentBefore": "radiologisch gesicherter Meniskusriss",
+      "after": "Rissverdächtiges Oberflächensignal; mit Morphologie und vollständiger Serie abgleichen"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.grading.tableRows.4.3",
+      "currentBefore": "radiologically proven meniscal tear",
+      "after": "Surfacing signal supporting a tear; correlate with morphology and the complete series"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.grading.tableRows.4.3",
+      "currentBefore": "پارگی منیسک از نظر رادیولوژیک قطعی",
+      "after": "سیگنال سطحی مؤید پارگی؛ با مورفولوژی و کل سری تطبیق داده شود"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.grading.key",
+      "currentBefore": "Nur Grad III ist ein echter Riss.",
+      "after": "Im Befund Kontakt, Formdefekt und Geometrie beschreiben. Nicht surfacierendes Signal allein beweist keinen Riss; ein klarer morphologischer Defekt kann unabhängig vom Signalgrad relevant sein."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.grading.key",
+      "currentBefore": "Only grade III is a true tear.",
+      "after": "Describe surface contact, morphological defects and geometry in the report. Nonsurfacing signal alone does not prove a tear; a clear morphological defect can matter independently of signal grade."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.grading.key",
+      "currentBefore": "فقط درجه III پارگی واقعی است.",
+      "after": "در گزارش تماس سطحی، نقص شکلی و هندسه توصیف شوند. سیگنال بدون تماس سطحی به‌تنهایی پارگی را ثابت نمی‌کند؛ نقص شکلی واضح می‌تواند مستقل از گرید سیگنال مهم باشد."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.tear.lead",
+      "currentBefore": "Für die Diagnose „Meniskusriss“ müssen verbindliche Kriterien erfüllt sein. Dadurch lassen sich Sensitivität und Spezifität deutlich verbessern.",
+      "after": "Oberflächenkontakt und ein eindeutiger morphologischer Defekt liefern ergänzende Risskriterien. Nicht alle Zeichen müssen gleichzeitig vorliegen. Die vollständige Serie hilft, Partialvolumen und anatomische Varianten auszuschließen."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.tear.lead",
+      "currentBefore": "Specific criteria must be fulfilled before diagnosing a meniscal tear. This improves sensitivity and specificity.",
+      "after": "Surface contact and a definite morphological defect provide complementary tear criteria. Not all signs need to coexist. The complete series helps exclude partial volume and anatomical variants."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.tear.lead",
+      "currentBefore": "برای تشخیص پارگی منیسک باید معیارهای مشخص وجود داشته باشد. این کار حساسیت و ویژگی تشخیص را بهتر می‌کند.",
+      "after": "تماس سطحی و نقص مورفولوژیک واضح معیارهای مکمل پارگی‌اند و لازم نیست همهٔ علائم هم‌زمان وجود داشته باشند. کل سری به کنار گذاشتن حجم جزئی و واریانت‌های آناتومیک کمک می‌کند."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.tear.criteria.1.text",
+      "currentBefore": "Die normale dreieckige Meniskuskonfiguration ist verloren oder deutlich verändert.",
+      "after": "Ein eindeutiger Defekt, fehlendes Meniskusgewebe oder ein direkt verfolgbares disloziertes Fragment unterstützt einen Riss. Varianten und Voroperationen berücksichtigen."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.tear.criteria.1.text",
+      "currentBefore": "The normal triangular configuration is lost or clearly altered.",
+      "after": "A definite defect, missing meniscal tissue or a directly traceable displaced fragment supports a tear. Consider variants and prior surgery."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.tear.criteria.1.text",
+      "currentBefore": "شکل مثلثی طبیعی منیسک از بین رفته یا واضحاً تغییر کرده است.",
+      "after": "نقص واضح، فقدان بافت منیسک یا قطعهٔ جابه‌جاشدهٔ قابل پیگیری از پارگی حمایت می‌کند. واریانت‌ها و جراحی قبلی لحاظ شوند."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.tear.criteria.2.text",
+      "currentBefore": "Die Läsion ist auf mindestens zwei aufeinanderfolgenden Schichten mit Oberflächenkontakt erkennbar.",
+      "after": "Oberflächenkontakt auf mindestens zwei Bildern erhöht die diagnostische Sicherheit. Einzelbildkontakt ohne bestätigenden Formdefekt bleibt inkonklusiv; ein klarer Defekt benötigt nicht zwingend zwei Kontaktbilder."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.tear.criteria.2.text",
+      "currentBefore": "The lesion is visible with surface contact on at least two consecutive slices.",
+      "after": "Surface contact on at least two images increases diagnostic confidence. Single-image contact without a supporting morphological defect remains inconclusive; a clear defect does not necessarily require two contact images."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.tear.criteria.2.text",
+      "currentBefore": "ضایعه باید حداقل در دو برش متوالی با تماس سطحی دیده شود.",
+      "after": "تماس سطحی در حداقل دو تصویر اطمینان تشخیصی را بالا می‌برد. تماس تک‌تصویری بدون نقص شکلی مؤید نامطمئن می‌ماند؛ نقص واضح الزاماً به دو تصویر دارای تماس نیاز ندارد."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.tearTypes.lead",
+      "currentBefore": "Rissgeometrie und Lokalisation bestimmen die OP-Strategie und sind prüfungsrelevant.",
+      "after": "Rissgeometrie, Lokalisation und Ausdehnung beschreiben; dislozierte Fragmente direkt verfolgen. Diese Angaben unterstützen die klinische Planung, bestimmen aber nicht allein Therapie oder Reparabilität."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.tearTypes.lead",
+      "currentBefore": "Tear geometry and location determine surgical strategy and are highly relevant for exams.",
+      "after": "Describe tear geometry, location and extent; directly trace displaced fragments. These details support clinical planning but do not alone determine treatment or repairability."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.tearTypes.lead",
+      "currentBefore": "جهت و محل پارگی، استراتژی درمان و تصمیم جراحی را تعیین می‌کند و برای آزمون مهم است.",
+      "after": "هندسه، محل و گسترهٔ پارگی توصیف و قطعات جابه‌جاشده مستقیم دنبال شوند. این اطلاعات برنامه‌ریزی بالینی را پشتیبانی می‌کنند، اما به‌تنهایی درمان یا قابلیت ترمیم را تعیین نمی‌کنند."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.tearTypes.tableHeaders.3",
+      "currentBefore": "Therapie",
+      "after": "Klinische Einordnung"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.tearTypes.tableHeaders.3",
+      "currentBefore": "Treatment",
+      "after": "Clinical relevance"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.tearTypes.tableHeaders.3",
+      "currentBefore": "درمان",
+      "after": "جایگاه بالینی"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.tearTypes.tableRows",
+      "currentBefore": [
+        [
+          "Längsriss",
+          "parallel zur Peripherie",
+          "Doppellinien-Zeichen sagittal",
+          "Naht in der roten oder rot-weißen Zone"
+        ],
+        [
+          "Radiärriss",
+          "senkrecht zur Peripherie",
+          "Cleft-Zeichen, Phantom-Meniskus",
+          "Resektion oder Naht, je nach Lokalisation"
+        ],
+        [
+          "Horizontalriss",
+          "parallel zum Tibiaplateau",
+          "Spaltbildung, ggf. parameniskale Zyste",
+          "Resektion ± Zystenexzision"
+        ],
+        [
+          "Korbhenkelriss",
+          "dislozierter doppelter Längsriss",
+          "Doppeltes PCL-Zeichen; kein Bow-tie-Zeichen",
+          "Reposition und Naht, Notfall bei Blockade"
+        ],
+        [
+          "Lappenriss",
+          "instabiler Lappen mit peripherer Anheftung",
+          "signalreicher, verlagerbarer Lappen",
+          "sparsame Resektion des Lappens"
+        ]
+      ],
+      "after": [
+        [
+          "Längsriss",
+          "vertikal, parallel zur Peripherie",
+          "Risslinie entlang der zirkumferenten Fasern",
+          "Periphere Lage kann Erhaltung begünstigen; Gewebe und Klinik mitprüfen"
+        ],
+        [
+          "Radiärriss",
+          "vom freien Rand quer zu den Ringfasern",
+          "Cleft; bei voller Breite ggf. Ghost-Zeichen",
+          "Breite/Tiefe und Wurzelabstand angeben"
+        ],
+        [
+          "Horizontalriss",
+          "parallel zum Tibiaplateau",
+          "Trennung oberer/unterer Anteile, ggf. parameniskale Zyste",
+          "Bei degenerativen Beschwerden ohne Blockade aktive konservative Optionen prüfen"
+        ],
+        [
+          "Korbhenkelriss",
+          "dislozierter longitudinal-vertikaler Riss",
+          "Fragment im Interkondylärraum; Doppel-PCL/fehlendes Bow-tie möglich",
+          "Bei echter Blockade dringliche orthopädische Beurteilung"
+        ],
+        [
+          "Lappenriss",
+          "teilweise angehefteter Meniskusflap",
+          "Fragmentlage und Entnahmeort nachvollziehen",
+          "Symptomatik und Gewebequalität bestimmen die klinische Entscheidung mit"
+        ]
+      ]
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.tearTypes.tableRows",
+      "currentBefore": [
+        [
+          "Longitudinal tear",
+          "parallel to the periphery",
+          "double-line sign on sagittal images",
+          "repair in the red or red-white zone"
+        ],
+        [
+          "Radial tear",
+          "perpendicular to the periphery",
+          "cleft sign, phantom meniscus",
+          "resection or repair depending on location"
+        ],
+        [
+          "Horizontal tear",
+          "parallel to the tibial plateau",
+          "cleft-like split, possible parameniscal cyst",
+          "resection ± cyst excision"
+        ],
+        [
+          "Bucket-handle tear",
+          "displaced double longitudinal tear",
+          "double PCL sign; absent bow-tie sign",
+          "reduction and repair, urgent if locked knee"
+        ],
+        [
+          "Flap tear",
+          "unstable flap with peripheral attachment",
+          "variable high-signal displaced flap",
+          "limited flap resection"
+        ]
+      ],
+      "after": [
+        [
+          "Longitudinal tear",
+          "vertical, parallel to the periphery",
+          "Tear line along circumferential fibres",
+          "Peripheral location may favour preservation; also assess tissue and clinical context"
+        ],
+        [
+          "Radial tear",
+          "from free edge across circumferential fibres",
+          "Cleft; full-width defects may show a ghost sign",
+          "Specify width/depth and distance from root"
+        ],
+        [
+          "Horizontal tear",
+          "parallel to the tibial plateau",
+          "Separation of superior/inferior portions, possible parameniscal cyst",
+          "For degenerative symptoms without locking, assess active conservative options"
+        ],
+        [
+          "Bucket-handle tear",
+          "displaced longitudinal-vertical tear",
+          "Intercondylar fragment; possible double-PCL/absent bowtie",
+          "True locking warrants urgent orthopaedic assessment"
+        ],
+        [
+          "Flap tear",
+          "partially attached meniscal flap",
+          "Trace fragment position and donor site",
+          "Symptoms and tissue quality contribute to the clinical decision"
+        ]
+      ]
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.tearTypes.tableRows",
+      "currentBefore": [
+        [
+          "پارگی طولی",
+          "موازی با محیط منیسک",
+          "علامت دو خطی در ساژیتال",
+          "بخیه در ناحیه قرمز یا قرمز-سفید"
+        ],
+        [
+          "پارگی رادیال",
+          "عمود بر محیط منیسک",
+          "Cleft sign، منیسک شبح‌مانند",
+          "رزکسیون یا بخیه بسته به محل"
+        ],
+        [
+          "پارگی افقی",
+          "موازی با پلاتوی تیبیا",
+          "شکاف افقی، گاهی کیست پارامنیسکال",
+          "رزکسیون ± خارج کردن کیست"
+        ],
+        [
+          "پارگی Bucket-handle",
+          "پارگی طولی دوبل و جابه‌جا شده",
+          "علامت PCL دوگانه؛ نبود Bow-tie",
+          "جااندازی و بخیه؛ در زانوی قفل‌شده اورژانسی"
+        ],
+        [
+          "پارگی فلپ",
+          "فلپ ناپایدار با اتصال محیطی",
+          "فلپ جابه‌جا شونده با سیگنال بالا",
+          "رزکسیون محدود فلپ"
+        ]
+      ],
+      "after": [
+        [
+          "پارگی طولی",
+          "عمودی، موازی محیط",
+          "خط پارگی در امتداد الیاف محیطی",
+          "محل محیطی ممکن است به حفظ کمک کند؛ بافت و زمینهٔ بالینی هم بررسی شوند"
+        ],
+        [
+          "پارگی رادیال",
+          "از لبهٔ آزاد عرض الیاف محیطی را قطع می‌کند",
+          "شکاف؛ نقص تمام‌عرض ممکن است علامت شبح داشته باشد",
+          "عرض/عمق و فاصله از ریشه ذکر شوند"
+        ],
+        [
+          "پارگی افقی",
+          "موازی پلاتوی تیبیا",
+          "جدایی بخش‌های بالا/پایین، گاهی کیست پارامنیسکال",
+          "در علائم دژنراتیو بدون قفل‌شدگی، گزینه‌های محافظه‌کارانهٔ فعال بررسی شوند"
+        ],
+        [
+          "پارگی دسته‌سطلی",
+          "پارگی طولی‌عمودی جابه‌جاشده",
+          "قطعه در فضای بین‌کندیلی؛ احتمال PCL دوگانه/نبود bow-tie",
+          "قفل‌شدگی واقعی نیازمند ارزیابی فوری ارتوپدی است"
+        ],
+        [
+          "پارگی فلپ",
+          "فلپ منیسک با بخشی از اتصال باقی‌مانده",
+          "محل قطعه و مبدأ آن دنبال شوند",
+          "علائم و کیفیت بافت در تصمیم بالینی نقش دارند"
+        ]
+      ]
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.discoid.mriRows.1.1",
+      "currentBefore": "Meniskusbreite / maximale Tibiabreite",
+      "after": "minimale Meniskusbreite / maximale Tibiabreite (Samoto)"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.discoid.mriRows.1.1",
+      "currentBefore": "meniscal width / maximal tibial width",
+      "after": "minimum meniscal width / maximum tibial width (Samoto)"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.discoid.mriRows.1.1",
+      "currentBefore": "عرض منیسک / حداکثر عرض تیبیا",
+      "after": "حداقل عرض منیسک / حداکثر عرض تیبیا (Samoto)"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.discoid.mriRows.2",
+      "currentBefore": [
+        "Sagittal",
+        "kontinuierliche Corpus-Darstellung",
+        "≥ 3 aufeinanderfolgende 5-mm-Schichten"
+      ],
+      "after": [
+        "Sagittal, historisch",
+        "Drei-Bow-tie-Regel bei älteren dickschichtigen Protokollen",
+        "Bei modernen dünnen Schichten nicht diagnostisch verwenden"
+      ]
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.discoid.mriRows.2",
+      "currentBefore": [
+        "Sagittal",
+        "continuous body visualization",
+        "≥ 3 consecutive 5-mm slices"
+      ],
+      "after": [
+        "Sagittal, historical",
+        "Three-bowtie rule in older thick-section protocols",
+        "Do not use diagnostically with modern thin sections"
+      ]
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.discoid.mriRows.2",
+      "currentBefore": [
+        "ساژیتال",
+        "دیده شدن مداوم تنه منیسک",
+        "≥ ۳ برش متوالی با ضخامت ۵ میلی‌متر"
+      ],
+      "after": [
+        "ساژیتال، تاریخی",
+        "قاعدهٔ سه bow-tie در پروتکل‌های قدیمی با برش ضخیم",
+        "در برش‌های نازک امروزی برای تشخیص به‌کار نرود"
+      ]
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.discoid.sagittalText",
+      "currentBefore": "Das sagittale Kriterium entspricht dem Gegenteil des Absent-Bow-Tie-Signs: Ein normaler Meniskus zeigt den Corpus nur auf 1–2 Schichten, der discoide Meniskus auf mindestens 3 Schichten.",
+      "after": "Die Zahl kontinuierlicher Bow-ties hängt von Schichtdicke und Meniskusgröße ab. Bei modernen dünnen Schichten die Drei-Bow-tie-Regel verlassen und die mittlere koronale Corpusbreite beurteilen. Samoto beschrieb zusätzlich ein sagittales Verhältnis (Summe der Vorder-/Hinterhornbreiten zum maximalen Meniskusdurchmesser) ≥75 %."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.discoid.sagittalText",
+      "currentBefore": "The sagittal criterion is the opposite of the absent bow-tie sign: a normal meniscus shows the body on only 1–2 slices, whereas a discoid meniscus remains visible on at least 3 slices.",
+      "after": "Continuous bowtie count depends on slice thickness and meniscal size. With modern thin sections, abandon the three-bowtie rule and assess mid-coronal body width. Samoto additionally described a sagittal ratio (summed anterior/posterior horn widths to maximum meniscal diameter) ≥75%."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.discoid.sagittalText",
+      "currentBefore": "معیار ساژیتال برعکس absent bow-tie sign است: منیسک طبیعی تنه را فقط در ۱ تا ۲ برش نشان می‌دهد، اما منیسک دیسکوئید در حداقل ۳ برش متوالی دیده می‌شود.",
+      "after": "تعداد bow-tie پیوسته به ضخامت برش و اندازهٔ منیسک بستگی دارد. در برش‌های نازک امروزی قاعدهٔ سه bow-tie کنار گذاشته و عرض تنه در کرونال میانی ارزیابی شود. Samoto نسبت ساژیتال دیگری (مجموع عرض شاخ‌های قدامی/خلفی به بیشترین قطر منیسک) ≥۷۵٪ توصیف کرده است."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.therapy.lead",
+      "currentBefore": "Die Therapie richtet sich nach Symptomatik, Rissmorphologie, Lokalisation und Vaskularisation. Ziel ist der möglichst weitgehende Erhalt von Meniskusgewebe.",
+      "after": "Der MRT-Befund unterstützt die klinische Entscheidung, legt aber Operation oder Reparabilität nicht allein fest. Bei degenerativen Beschwerden ohne echte Blockade ist ein strukturiertes Übungsprogramm eine begründete erste Option. Wenn eine Operation indiziert ist, möglichst viel funktionelles Meniskusgewebe erhalten."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.therapy.lead",
+      "currentBefore": "Management depends on symptoms, tear morphology, location and vascularity. The goal is to preserve as much meniscal tissue as possible.",
+      "after": "MRI supports clinical decisions but does not alone establish surgery or repairability. For degenerative symptoms without true locking, structured exercise is a supported initial option. When surgery is indicated, preserve as much functional meniscal tissue as possible."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.therapy.lead",
+      "currentBefore": "تصمیم درمانی به علائم، شکل پارگی، محل پارگی و خون‌رسانی بستگی دارد. هدف، حفظ حداکثری بافت منیسک است.",
+      "after": "MRI تصمیم بالینی را پشتیبانی می‌کند، اما به‌تنهایی جراحی یا قابلیت ترمیم را تعیین نمی‌کند. در علائم دژنراتیو بدون قفل‌شدگی واقعی، برنامهٔ تمرینی ساختاریافته گزینهٔ اولیهٔ دارای پشتوانه است. اگر جراحی اندیکاسیون دارد، بیشترین بافت عملکردی منیسک حفظ شود."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "de",
+      "path": "CONTENT.de.therapy.tableRows",
+      "currentBefore": [
+        [
+          "asymptomatische oder rein degenerative Läsion",
+          "konservative Therapie"
+        ],
+        [
+          "frischer Riss in der roten Zone",
+          "Meniskusnaht"
+        ],
+        [
+          "irreparables, mechanisch relevantes Fragment",
+          "sparsame Teilresektion"
+        ]
+      ],
+      "after": [
+        [
+          "Degenerative Beschwerden ohne echte Blockade",
+          "Aktive konservative Therapie, z. B. angeleitetes Übungsprogramm; Verlauf klinisch bewerten"
+        ],
+        [
+          "Akuter isolierter Riss mit klinischer Operationsindikation",
+          "Erhaltungs- und Reparaturoptionen anhand von Gewebe und Morphologie prüfen"
+        ],
+        [
+          "Mechanisch relevantes, intraoperativ nicht reparables Fragment",
+          "Falls Resektion erforderlich: funktionelles Gewebe möglichst weitgehend erhalten"
+        ]
+      ]
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "en",
+      "path": "CONTENT.en.therapy.tableRows",
+      "currentBefore": [
+        [
+          "asymptomatic or purely degenerative lesion",
+          "conservative treatment"
+        ],
+        [
+          "fresh tear in the red zone",
+          "meniscal repair"
+        ],
+        [
+          "irreparable mechanically relevant fragment",
+          "limited partial resection"
+        ]
+      ],
+      "after": [
+        [
+          "Degenerative symptoms without true locking",
+          "Active conservative care, e.g. supervised exercise; reassess clinically"
+        ],
+        [
+          "Acute isolated tear with a clinical surgical indication",
+          "Assess preservation and repair options using tissue and morphology"
+        ],
+        [
+          "Mechanically relevant fragment found irreparable intraoperatively",
+          "If resection is necessary, preserve as much functional tissue as possible"
+        ]
+      ]
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "locale": "fa",
+      "path": "CONTENT.fa.therapy.tableRows",
+      "currentBefore": [
+        [
+          "ضایعه بدون علامت یا صرفاً دژنراتیو",
+          "درمان محافظه‌کارانه"
+        ],
+        [
+          "پارگی تازه در ناحیه قرمز",
+          "بخیه منیسک"
+        ],
+        [
+          "قطعه غیرقابل ترمیم و مکانیکی",
+          "رزکسیون محدود و محافظه‌کارانه"
+        ]
+      ],
+      "after": [
+        [
+          "علائم دژنراتیو بدون قفل‌شدگی واقعی",
+          "درمان محافظه‌کارانهٔ فعال، مثلاً تمرین هدایت‌شده؛ ارزیابی مجدد بالینی"
+        ],
+        [
+          "پارگی حاد منفرد با اندیکاسیون بالینی جراحی",
+          "امکان حفظ و ترمیم بر اساس بافت و مورفولوژی بررسی شود"
+        ],
+        [
+          "قطعهٔ مکانیکی مهم که حین عمل غیرقابل‌ترمیم تشخیص داده شده",
+          "اگر برداشت لازم است، بیشترین مقدار ممکن بافت عملکردی حفظ شود"
+        ]
+      ]
+    },
+    {
+      "file": "app/msk/knie/meniskus/LotyschClassification.jsx",
+      "currentBefore": "frühe mukoide Degeneration",
+      "after": "fokales intrameniskales Signal"
+    },
+    {
+      "file": "app/msk/knie/meniskus/LotyschClassification.jsx",
+      "currentBefore": "echter Riss",
+      "after": "Oberflächenkontakt"
+    },
+    {
+      "file": "app/msk/knie/meniskus/LotyschClassification.jsx",
+      "currentBefore": "Fortgeschrittene Degeneration",
+      "after": "Signaländerung mit Untertypen"
+    },
+    {
+      "file": "app/msk/knie/meniskus/LotyschClassification.jsx",
+      "currentBefore": "Early mucoid degeneration",
+      "after": "Focal intrasubstance signal"
+    },
+    {
+      "file": "app/msk/knie/meniskus/LotyschClassification.jsx",
+      "currentBefore": "True tear",
+      "after": "Surface contact"
+    },
+    {
+      "file": "app/msk/knie/meniskus/LotyschClassification.jsx",
+      "currentBefore": "Advanced degeneration",
+      "after": "Signal alteration with subtypes"
+    },
+    {
+      "file": "app/msk/knie/meniskus/LotyschClassification.jsx",
+      "currentBefore": "دژنراسیون موکوئید اولیه",
+      "after": "سیگنال کانونی داخل منیسک"
+    },
+    {
+      "file": "app/msk/knie/meniskus/LotyschClassification.jsx",
+      "currentBefore": "پارگی واقعی",
+      "after": "تماس سطحی"
+    },
+    {
+      "file": "app/msk/knie/meniskus/LotyschClassification.jsx",
+      "currentBefore": "دژنراسیون پیشرفته",
+      "after": "تغییر سیگنال با زیرگروه‌ها"
+    },
+    {
+      "file": "app/msk/knie/meniskus/LotyschClassification.jsx",
+      "currentBefore": "Homogen hypointenses Signal und regelrechte dreieckige Form, ohne pathologische Signalsteigerung.",
+      "after": "Überwiegend signalarm; dreieckige Hörner und Bow-tie des Corpus, je nach Schichtebene."
+    },
+    {
+      "file": "app/msk/knie/meniskus/LotyschClassification.jsx",
+      "currentBefore": "Homogeneous hypointense signal and normal triangular shape, without abnormal signal increase.",
+      "after": "Predominantly low signal; triangular horns and a bowtie body depending on slice position."
+    },
+    {
+      "file": "app/msk/knie/meniskus/LotyschClassification.jsx",
+      "currentBefore": "سیگنال هیپواینتنس هموژن و شکل مثلثی طبیعی، بدون افزایش سیگنال پاتولوژیک.",
+      "after": "عمدتاً کم‌سیگنال؛ شاخ‌های مثلثی و تنهٔ bow-tie بسته به محل برش."
+    },
+    {
+      "file": "data/meniscusPdfAddendum.js",
+      "currentBefore": "weitere Risszeichen schließen diese Einordnung aus.",
+      "after": "Ein eigenständiger Riss kann koexistieren und muss getrennt beurteilt werden."
+    },
+    {
+      "file": "data/meniscusPdfAddendum.js",
+      "currentBefore": "other tear signs argue against that interpretation.",
+      "after": "an independent tear may coexist and must be assessed separately."
+    },
+    {
+      "file": "data/meniscusPdfAddendum.js",
+      "currentBefore": "وجود نشانه‌های دیگر پارگی با این تفسیر سازگار نیست.",
+      "after": "پارگی مستقلی ممکن است هم‌زمان وجود داشته باشد و باید جداگانه ارزیابی شود."
+    },
+    {
+      "file": "data/meniscusPdfGapAddendum.js",
+      "currentBefore": "Die Zeichen im Zusammenhang beurteilen; ein einzelnes unspezifisches Signal reicht nicht.",
+      "after": "Ein flüssigkeitssignalreicher Spalt über die volle Höhe des posteromedialen Übergangs stützt eine meniskokapsuläre Ramp-Läsion. Die Zeichen im Zusammenhang beurteilen; ein einzelnes unspezifisches Signal reicht nicht. Solche Läsionen können im MRT übersehen werden; ein unauffälliger Befund schließt sie nicht zuverlässig aus."
+    },
+    {
+      "file": "data/meniscusPdfGapAddendum.js",
+      "currentBefore": "Interpret the signs together; an isolated nonspecific signal is insufficient.",
+      "after": "A full-height fluid-signal cleft at the posteromedial junction supports a meniscocapsular ramp lesion. Interpret the signs together; an isolated nonspecific signal is insufficient. MRI can miss these lesions; a normal appearance does not reliably exclude them."
+    },
+    {
+      "file": "data/meniscusPdfGapAddendum.js",
+      "currentBefore": "نشانه‌ها را در کنار هم تفسیر کنید؛ یک سیگنال غیراختصاصی به‌تنهایی کافی نیست.",
+      "after": "شکاف تمام‌ارتفاع با سیگنال مایع در اتصال خلفی‌داخلی از ضایعهٔ رمپ منیسک و کپسول حمایت می‌کند. نشانه‌ها را در کنار هم تفسیر کنید؛ یک سیگنال غیراختصاصی به‌تنهایی کافی نیست. MRI ممکن است این ضایعات را از دست بدهد؛ نمای طبیعی آن‌ها را با اطمینان رد نمی‌کند."
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "currentBefore": "Helms et al. · Bucket-handle tear MRI signs (Radiology, 2003)",
+      "after": "Dorsay & Helms · Bucket-handle tear MRI signs (Skeletal Radiology, 2003)"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "currentBefore": "Haims et al. · The flipped meniscus sign (Radiology, 1993)",
+      "after": "Haramati et al. · The flipped meniscus sign (Skeletal Radiology, 1993)"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "currentBefore": "Schweitzer et al. · Potential pitfalls of a double PCL sign (2009)",
+      "after": "Venkatanarasimha et al. · Potential pitfalls of a double PCL sign (2009)"
+    },
+    {
+      "file": "app/msk/knie/meniskus/page.js",
+      "currentBefore": "const SOURCES = [",
+      "after": "const SOURCES = [\n  { label: 'ESSR · MRI of the knee practice recommendations (2024)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/' },\n  { label: 'AAOS · Acute Isolated Meniscal Pathology guideline (2024)', href: 'https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/' },\n  { label: 'Greenaway et al. · Meniscal ramp lesions: MRI criteria and surgical correlation (2020)', href: 'https://pubmed.ncbi.nlm.nih.gov/32875293/' },\n  { label: 'Kim et al. · Meniscal flounce: MRI and surgical correlation (2000)', href: 'https://pubmed.ncbi.nlm.nih.gov/10992813/' },\n  { label: 'Meniscal flounce and associated tears: original MRI cohort (2020)', href: 'https://pubmed.ncbi.nlm.nih.gov/32206830/' },"
+    }
+  ]
+}

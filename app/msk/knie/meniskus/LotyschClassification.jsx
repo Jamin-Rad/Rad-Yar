@@ -4,9 +4,9 @@ import InteractiveTeachingGroups from '@/components/lesson-template/InteractiveT
 import styles from './content.module.css'
 
 const LABELS = {
-  de: { grade: 'Grad', early: 'frühe mukoide Degeneration', tear: 'echter Riss', advanced: 'Fortgeschrittene Degeneration', subtypes: 'Grad II wird in drei Untergruppen unterteilt', noTear: 'Kein sicherer Rissnachweis' },
-  en: { grade: 'Grade', early: 'Early mucoid degeneration', tear: 'True tear', advanced: 'Advanced degeneration', subtypes: 'Grade II is divided into three subgroups', noTear: 'No definite tear demonstrated' },
-  fa: { grade: 'درجه', early: 'دژنراسیون موکوئید اولیه', tear: 'پارگی واقعی', advanced: 'دژنراسیون پیشرفته', subtypes: 'درجهٔ II به سه زیرگروه تقسیم می‌شود', noTear: 'پارگی قطعی اثبات نشده است' },
+  de: { grade: 'Grad', early: 'fokales intrameniskales Signal', tear: 'Oberflächenkontakt', advanced: 'Signaländerung mit Untertypen', subtypes: 'Grad II wird in drei Untergruppen unterteilt', noTear: 'Kein sicherer Rissnachweis' },
+  en: { grade: 'Grade', early: 'Focal intrasubstance signal', tear: 'Surface contact', advanced: 'Signal alteration with subtypes', subtypes: 'Grade II is divided into three subgroups', noTear: 'No definite tear demonstrated' },
+  fa: { grade: 'درجه', early: 'سیگنال کانونی داخل منیسک', tear: 'تماس سطحی', advanced: 'تغییر سیگنال با زیرگروه‌ها', subtypes: 'درجهٔ II به سه زیرگروه تقسیم می‌شود', noTear: 'پارگی قطعی اثبات نشده است' },
 }
 
 export default function LotyschClassification({ copy, lang }) {
@@ -14,7 +14,7 @@ export default function LotyschClassification({ copy, lang }) {
   const items = ['I','II','III'].map(grade => ({ id: grade, label: `${label.grade} ${grade}`, category: grade === 'I' ? label.early : grade === 'II' ? label.advanced : label.tear,
     details: grade === 'II' ? null : copy.tableHeaders.slice(1).map((heading,index) => ({ id: String(index), label: heading, text: copy.tableRows[grade === 'I' ? 0 : 4][index+1] })),
   }))
-  const normal = lang === 'de' ? ['Normaler Meniskus', 'Homogen hypointenses Signal und regelrechte dreieckige Form, ohne pathologische Signalsteigerung.'] : lang === 'fa' ? ['منیسک طبیعی', 'سیگنال هیپواینتنس هموژن و شکل مثلثی طبیعی، بدون افزایش سیگنال پاتولوژیک.'] : ['Normal meniscus', 'Homogeneous hypointense signal and normal triangular shape, without abnormal signal increase.']
+  const normal = lang === 'de' ? ['Normaler Meniskus', 'Überwiegend signalarm; dreieckige Hörner und Bow-tie des Corpus, je nach Schichtebene.'] : lang === 'fa' ? ['منیسک طبیعی', 'عمدتاً کم‌سیگنال؛ شاخ‌های مثلثی و تنهٔ bow-tie بسته به محل برش.'] : ['Normal meniscus', 'Predominantly low signal; triangular horns and a bowtie body depending on slice position.']
   const extended = lang === 'de' ? ['Erweiterung nach Jerosch', 'Vollständige Destruktion oder komplexe Risskonfiguration'] : lang === 'fa' ? ['حالت توسعه‌یافته بر اساس Jerosch', 'تخریب کامل یا الگوی پارگی پیچیده'] : ['Jerosch extension', 'Complete destruction or complex tear configuration']
   const title = lang === 'de' ? 'Grade I bis III' : lang === 'fa' ? 'درجات I تا III' : 'Grades I to III'
   return <div className={styles.lotyschLayout} dir={lang === 'fa' ? 'rtl' : 'ltr'}>

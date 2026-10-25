@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-25",
+  "author": "/root/msk_original_pools_next",
+  "status": "AUTHOR_DATA_CHECK_PASS_SHARED_OVERLAY_PENDING",
+  "originalQuestions": 22,
+  "newGoalGapQuestions": [
+    "38",
+    "39"
+  ],
+  "finalQuestions": 24,
+  "originalCards": 33,
+  "cardProposals": 33,
+  "locales": {
+    "de": {
+      "count": 24,
+      "sha256": "c64548a20c3e6fb31504a1e13e968002dae92faaec356ee19c2a94492f953bc3",
+      "originalKeysStable": 22,
+      "distinctWrongFeedbackFields": 72
+    },
+    "en": {
+      "count": 24,
+      "sha256": "d4bbb859c198fa487bb778ff74146d53ae9914ee7acc2dfab0374d19adeab107",
+      "originalKeysStable": 22,
+      "distinctWrongFeedbackFields": 72
+    },
+    "fa": {
+      "count": 24,
+      "sha256": "b41879000c5dfa7c5f80daca30aaafa308e9ade00ea7835cff28d4badf72986a",
+      "originalKeysStable": 22,
+      "distinctWrongFeedbackFields": 72
+    }
+  },
+  "files": {
+    "data/meniscusLearning.js": "0175c1bc7016589d744afd62d287c2f1fc52bac7254e13e6b932c92dc39f9d65",
+    "app/msk/knie/meniskus/page.js": "2a68bc8276d4e5ba83f7fc3d49f2ab70f3bd286cef46fe5662236a2d8e7f1d29",
+    "app/msk/knie/meniskus/LotyschClassification.jsx": "f37cc8cec0bbb5eb0099fc6391dce8692a44a1bfde9ec405f4886ad8c0e59204",
+    "data/meniscusPdfAddendum.js": "79ce49e7eec589dc782eb4f9d2d6b4edd03f547ae1d66b5b9ca01ee3da5e1478",
+    "data/meniscusPdfGapAddendum.js": "2c022464b94ed665b95e9c68133d6f4f29680df08efbba30f7cbaef9bccc0f63"
+  },
+  "sharedTestProposals": 18,
+  "teachingDeltaEntries": 94,
+  "proposedCardsSha256": "9dbe53e66f01fd598916a17601d9497aabbc7fb6e42289aa85b57c8f03f8f007",
+  "scope": "Actual24Q import graph checked; original22keys and prior acceptedQ10/Q18text stable. Shared33cardBefore and18TestliteralBefore guards exact; proposed After validated in memory only. Syntax transforms do not establish Next build or rendered browser behavior. No new image recognition claim or media rights clearance."
+}

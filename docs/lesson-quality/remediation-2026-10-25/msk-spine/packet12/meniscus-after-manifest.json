@@ -1,0 +1,4097 @@
+{
+  "questions": {
+    "de": [
+      {
+        "id": "meniskus-de-01",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Welche Verbindung erklärt die geringere Mobilität des Innenmeniskus?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Tiefe Anteile des medialen Kollateralbandes und Gelenkkapsel"
+          },
+          {
+            "id": "B",
+            "text": "Direkte Verwachsung mit dem lateralen Kollateralband"
+          },
+          {
+            "id": "C",
+            "text": "Direkte Verwachsung mit dem Patellarsehnenkörper"
+          },
+          {
+            "id": "D",
+            "text": "Direkte Fixierung an der Popliteussehne"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Kapsel und tiefes MCL fixieren den Innenmeniskus stärker. Die Verletzungsverteilung hängt jedoch vom Mechanismus ab; bei akuter ACL-Ruptur sind laterale Risse häufig.",
+        "wrongExplanations": {
+          "B": "Das LCL ist keine direkte Fixierung des Innenmeniskus.",
+          "C": "Die Patellarsehne erklärt die meniskale Mobilität nicht.",
+          "D": "Die Popliteussehne liegt am Außenmeniskus und erklärt nicht die kapsuläre Fixierung des Innenmeniskus."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-de-02",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Eine Signallinie erreicht die inferiore Gelenkfläche auf zwei benachbarten sagittalen Bildern. Welche Aussage trifft zu?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Ein Riss ist erst bei Kontakt zu beiden Gelenkflächen möglich."
+          },
+          {
+            "id": "B",
+            "text": "Der Befund erfüllt die Two-slice-touch-Regel und stützt eine Rissdiagnose."
+          },
+          {
+            "id": "C",
+            "text": "Die Regel fordert zwei verschiedene Sequenzen."
+          },
+          {
+            "id": "D",
+            "text": "Die Regel fordert mindestens 3 mm Risslänge."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Wiederholter Oberflächenkontakt erhöht die diagnostische Sicherheit. Die Regel ergänzt die Morphologie und ist kein Ersatz für die multiplanare Beurteilung.",
+        "wrongExplanations": {
+          "A": "Kontakt zu einer Gelenkfläche genügt; beide müssen nicht erreicht werden.",
+          "C": "Die Regel zählt Bilder mit Oberflächenkontakt, nicht Sequenznamen.",
+          "D": "Eine feste Mindestlänge gehört nicht zur Regel."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+      },
+      {
+        "id": "meniskus-de-03",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Welche anatomische Eigenschaft verbessert bei einem frischen kapselnahen Longitudinalriss die biologischen Heilungsvoraussetzungen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Die Versorgung des freien Innenrands durch Synovialflüssigkeit"
+          },
+          {
+            "id": "B",
+            "text": "Die zirkumferente Ausrichtung der Kollagenfasern"
+          },
+          {
+            "id": "C",
+            "text": "Der Anschluss der peripheren roten Zone an kapsuläre Gefäße"
+          },
+          {
+            "id": "D",
+            "text": "Die höhere Beweglichkeit des Außenmeniskus"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Die periphere rote Zone ist am besten vaskularisiert. Gefäßzone, Gewebequalität, Rissform und klinischer Kontext werden gemeinsam beurteilt; MRT allein legt Reparabilität nicht fest.",
+        "wrongExplanations": {
+          "A": "Synovialflüssigkeit ernährt die gefäßarme innere Zone, bietet aber nicht die kapsuläre Gefäßversorgung des peripheren Gewebes.",
+          "B": "Zirkumferente Fasern sind für die Lastübertragung wichtig. Gefragt ist die Blutversorgung als biologische Heilungsgrundlage.",
+          "D": "Mobilität erklärt Unterschiede der Fixierung und Verletzungsmuster. Sie ersetzt nicht die Blutversorgung als gefragte Heilungsgrundlage."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/7081532/"
+      },
+      {
+        "id": "meniskus-de-04",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Eine subtile native Meniskusläsion soll nach unzureichender Voruntersuchung gezielt erneut beurteilt werden. Welche Anpassung ist am besten auf Oberflächenkontakt, Rissverlauf und Fragmentlage ausgerichtet?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Dynamische kontrastverstärkte T1-Perfusionsserien"
+          },
+          {
+            "id": "B",
+            "text": "Dünnschichtige PD-/intermediär gewichtete und flüssigkeitssensitive Bilder in orthogonalen Ebenen"
+          },
+          {
+            "id": "C",
+            "text": "Quantitatives T2-Mapping des Gelenkknorpels"
+          },
+          {
+            "id": "D",
+            "text": "Suszeptibilitätsgewichtete Sequenzen für Hämosiderin"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Dünne Schichten und Ebenenabgleich zeigen Kontakt, Geometrie und Dislokation. Ein vollständiges Knieprotokoll enthält auch T1-Bilder für Knochenmark und Begleitbefunde; nicht jeder Riss ist T2-flüssigkeitshell.",
+        "wrongExplanations": {
+          "A": "Perfusionsserien beantworten eine andere Gewebefrage; sie sind nicht die gezielte Standardergänzung für die hier gesuchte Meniskusmorphologie.",
+          "C": "T2-Mapping charakterisiert vor allem Knorpelzusammensetzung. Es ersetzt nicht die räumliche Darstellung des Meniskusdefekts.",
+          "D": "Suszeptibilitätssequenzen können Blutabbauprodukte charakterisieren. Für die beschriebene Meniskusfrage sind dünne morphologische Mehr-Ebenen-Bilder zielführender."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/"
+      },
+      {
+        "id": "meniskus-de-07",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Die vollständige Serie zeigt ausgedehntes keilförmig-globuläres intrameniskales Signal ohne sicheren Oberflächenkontakt. Welcher Subtyp passt in der erweiterten historischen Grad-2-Einteilung?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Grad 1"
+          },
+          {
+            "id": "B",
+            "text": "Grad 2a"
+          },
+          {
+            "id": "C",
+            "text": "Grad 2c"
+          },
+          {
+            "id": "D",
+            "text": "Grad 3"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Grad 2c beschreibt ausgedehntes keilförmiges/globuläres Signal ohne sicheren Oberflächenkontakt. Ein okkulter Riss ist möglich, aber nicht allein durch dieses Signal bewiesen.",
+        "wrongExplanations": {
+          "A": "Grad 1 ist typischerweise fokal/punktförmig, nicht ausgedehnt globulär.",
+          "B": "Grad 2a beschreibt ein lineares Signal ohne Oberflächenkontakt.",
+          "D": "Ohne sicheren Oberflächenkontakt ist Grad 3 signalbasiert nicht belegt."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/12185036/"
+      },
+      {
+        "id": "meniskus-de-08",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Ein lineares Signal erreicht auf genau einem Bild die Oberfläche, auf benachbarten Bildern nicht. Ein Formdefekt fehlt. Welche Beschreibung passt in der erweiterten historischen Grad-2-Einteilung?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Grad 2b; für einen sicheren Riss inkonklusiv"
+          },
+          {
+            "id": "B",
+            "text": "Grad 3 mit sicherem Rissnachweis"
+          },
+          {
+            "id": "C",
+            "text": "Grad 1"
+          },
+          {
+            "id": "D",
+            "text": "Grad 0"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Grad 2b bezeichnet den Einzelschichtkontakt in dieser erweiterten Einteilung. Ein echter Riss bleibt möglich; Verlauf und Morphologie müssen geprüft werden. Die Two-slice-touch-Regel erhöht die Sicherheit, ist aber keine ausnahmslose Voraussetzung für jeden morphologisch eindeutigen Riss.",
+        "wrongExplanations": {
+          "B": "Ein einzelner Kontakt ohne bestätigenden Formdefekt beweist keinen sicheren Riss.",
+          "C": "Grad 1 ist ein fokales Signal ohne Kontakt, nicht ein lineares Signal mit Einzelschichtkontakt.",
+          "D": "Grad 0 ist homogen signalarm ohne pathologische Signallinie."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+      },
+      {
+        "id": "meniskus-de-10",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Eine 58-jährige Person hat einen degenerativen Horizontalriss ohne echte Blockade, akutes Trauma oder fortgeschrittene Arthrose. Ein strukturiertes Übungsprogramm wurde noch nicht versucht. Welcher initiale Ansatz ist am besten begründet?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Arthroskopische Teilmeniskektomie als erste Maßnahme"
+          },
+          {
+            "id": "B",
+            "text": "Arthroskopische Meniskusnaht als erste Maßnahme"
+          },
+          {
+            "id": "C",
+            "text": "Angeleitetes Übungsprogramm mit klinischer Verlaufskontrolle"
+          },
+          {
+            "id": "D",
+            "text": "Ruhigstellung in einer Knieorthese als primäre Behandlungsstrategie"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Ein primärer RCT bei mittelalten Personen mit degenerativem Meniskusriss und überwiegend fehlender radiographischer Arthrose fand nach zwei Jahren keine klinisch relevante Funktionsdifferenz zwischen Übungstherapie und Teilmeniskektomie. Ein angeleitetes Übungsprogramm ist hier ein begründeter erster Ansatz. Das ist keine Aussage gegen jede Operation; echte Blockade, akute reparable Verletzung und Beschwerden trotz angemessener Vorbehandlung sind gesondert zu beurteilen.",
+        "wrongExplanations": {
+          "A": "Der degenerative MRT-Riss begründet in dieser nicht blockierten, noch nicht aktiv vorbehandelten Situation keine vorrangige Teilresektion.",
+          "B": "Eine degenerative Horizontalspalte ist nicht mit einem frischen reparablen peripheren Längsriss gleichzusetzen. Die Naht ist hier keine aus dem MRT allein abgeleitete Erstmaßnahme.",
+          "D": "Eine Orthesenruhigstellung ersetzt nicht die hier begründete aktive Übungstherapie. Belastungsanpassung kann individuell ergänzen, ist aber nicht mit immobilisierender Hauptbehandlung gleichzusetzen."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://www.bmj.com/content/354/bmj.i3740"
+      },
+      {
+        "id": "meniskus-de-11",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Eine lineare intrameniskale Signalanhebung bleibt in allen Ebenen vollständig innerhalb des Meniskus. Welcher Grad passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Grad 1"
+          },
+          {
+            "id": "B",
+            "text": "Grad 2a"
+          },
+          {
+            "id": "C",
+            "text": "Grad 2c"
+          },
+          {
+            "id": "D",
+            "text": "Grad 3"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Grad 2a: lineares Signal ohne Gelenkflächenkontakt. Das ist keine sichere Rissdiagnose.",
+        "wrongExplanations": {
+          "A": "Grad 1 ist typischerweise fokal/punktförmig.",
+          "C": "Grad 2c ist ausgedehnt keilförmig/globulär, nicht nur linear.",
+          "D": "Grad 3 erfordert bei signalbasierter Einordnung sicheren Oberflächenkontakt."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/3602385/"
+      },
+      {
+        "id": "meniskus-de-12",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Ein Defekt beginnt am freien Meniskusrand und durchtrennt die Ringfasern quer. Welcher Rissverlauf passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Horizontalriss"
+          },
+          {
+            "id": "B",
+            "text": "Longitudinalriss"
+          },
+          {
+            "id": "C",
+            "text": "Radiärriss"
+          },
+          {
+            "id": "D",
+            "text": "Korbhenkelriss"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Ein Radiärriss läuft vom freien Rand nach außen, quer zu den Ringfasern. Tiefe und vollständige Risse können die Ringspannung stark beeinträchtigen.",
+        "wrongExplanations": {
+          "A": "Ein Horizontalriss verläuft parallel zur Tibiaebene und spaltet Lamellen.",
+          "B": "Ein Longitudinalriss folgt der Peripherie und den Ringfasern.",
+          "D": "Ein Korbhenkelriss ist ein dislozierter Longitudinalriss, kein radialer Verlauf."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-de-13",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Sagittal fehlt ein normalerweise sichtbarer Meniskusanteil (Ghost-Zeichen). Koronal und axial zeigt sich ein Defekt über die gesamte Breite. Was passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Isolierte Grad-1-Degeneration"
+          },
+          {
+            "id": "B",
+            "text": "Vollständiger Radiärriss"
+          },
+          {
+            "id": "C",
+            "text": "Normaler Popliteushiatus"
+          },
+          {
+            "id": "D",
+            "text": "Unkomplizierter Horizontalriss ohne Gewebeverlust"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Der bestätigte Defekt über die gesamte Breite passt zum vollständigen Radiärriss. Das Ghost-Zeichen ist ein Hinweis, allein aber nicht spezifisch; die Wurzelregion zusätzlich prüfen.",
+        "wrongExplanations": {
+          "A": "Grad 1 erklärt keinen multiplanar sichtbaren Gewebedefekt.",
+          "C": "Der Popliteushiatus liegt posterolateral und erklärt keinen vollständigen Defekt durch den Meniskus.",
+          "D": "Ein Horizontalriss spaltet den Meniskus; der beschriebene Defekt ist radial und vollständig."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-de-14",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Ein schräger Radiärriss am freien Rand bildet ein spitzes, teilweise angeheftetes Fragment. Welche Bezeichnung passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Parrot-beak-tear (Lappenriss)"
+          },
+          {
+            "id": "B",
+            "text": "Horizontalriss"
+          },
+          {
+            "id": "C",
+            "text": "Longitudinalriss"
+          },
+          {
+            "id": "D",
+            "text": "Korbhenkelriss"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Der schräge Verlauf bildet einen Lappen. Im MRT nach dem Ursprungsdefekt und einer Verlagerung in die Gelenkrecessus suchen.",
+        "wrongExplanations": {
+          "B": "Ein Horizontalriss spaltet obere und untere Lamelle; der beschriebene spitze Lappen entsteht aus einem schrägen Radiärriss.",
+          "C": "Ein reiner Longitudinalriss verläuft parallel zur Peripherie.",
+          "D": "Beim Korbhenkelriss wird ein längliches inneres Fragment zentral verlagert."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-de-15",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Ein Patient hat eine echte Streckblockade. Sagittal liegt ein zweites dunkles Band parallel und anteroinferior zum PCL; koronal ist ein Fragment im Interkondylarraum sichtbar. Was ist am wahrscheinlichsten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Schräger Radiärriss mit verlagertem Flap"
+          },
+          {
+            "id": "B",
+            "text": "Nach anterior umgeschlagenes Hinterhorn"
+          },
+          {
+            "id": "C",
+            "text": "Korbhenkelriss mit zentral disloziertem Längsfragment"
+          },
+          {
+            "id": "D",
+            "text": "Horizontalriss mit parameniskaler Zyste"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Double-PCL-Zeichen und Interkondylarfragment stützen einen Korbhenkelriss, meist des Innenmeniskus. Die echte Blockade erfordert eine dringliche orthopädische Beurteilung.",
+        "wrongExplanations": {
+          "A": "Ein radiärer Flap kann ebenfalls dislozieren. Hier sprechen das längliche Fragment im Interkondylärraum und seine Lage anteroinferior zum HKB für ein Korbhenkelmuster.",
+          "B": "Ein nach anterior umgeschlagenes Hinterhorn liegt am Vorderhorn und kann es verdoppeln. Der Text lokalisiert das Fragment hingegen im Interkondylärraum parallel zum HKB.",
+          "D": "Ein Horizontalriss spaltet obere und untere Anteile und kann mit einer Zyste kommunizieren. Das erklärt das beschriebene zentrale Längsfragment nicht."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/19234702/"
+      },
+      {
+        "id": "meniskus-de-16",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Neben dem Vorderhorn liegt eine zweite meniskusähnliche Struktur. Welcher Zusatzbefund stützt ein nach anterior verlagertes Hinterhorn gegenüber einer Vorderhornvariante am stärksten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Leere ursprüngliche Hinterhornposition mit nachvollziehbarem Fragmentverlauf"
+          },
+          {
+            "id": "B",
+            "text": "Breiter Meniskuskörper auf einer mittleren koronalen Schicht"
+          },
+          {
+            "id": "C",
+            "text": "Homogenes niedriges Signal beider anteriorer Strukturen"
+          },
+          {
+            "id": "D",
+            "text": "Punktförmiges intrameniskales Signal ohne Oberflächenkontakt"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die fehlende Struktur am Entnahmeort und der über Ebenen verfolgbare Fragmentverlauf stützen die Verlagerung. Ein doppeltes Vorderhorn allein kann auch eine Variante sein.",
+        "wrongExplanations": {
+          "B": "Die Corpusbreite hilft bei der Beurteilung discoider Morphologie, belegt aber nicht die Herkunft der zusätzlichen anterioren Struktur.",
+          "C": "Meniskusgewebe und Varianten können beide signalarm sein. Das Signal allein lokalisiert den Entnahmeort nicht.",
+          "D": "Ein fokales nicht surfacierendes Signal beschreibt eine intrameniskale Veränderung, nicht den Nachweis einer Fragmentverlagerung."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/8316871/"
+      },
+      {
+        "id": "meniskus-de-17",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Bei 2-mm-Schichten ist der Außenmeniskuskörper auf drei benachbarten sagittalen Bildern kontinuierlich sichtbar. Welcher nächste Schritt beurteilt eine mögliche discoide Morphologie am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Das historische Drei-Bow-tie-Kriterium auf die 2-mm-Serie übertragen"
+          },
+          {
+            "id": "B",
+            "text": "Corpusbreite auf einer mittleren koronalen Schicht messen und Gesamtform prüfen"
+          },
+          {
+            "id": "C",
+            "text": "Die intrameniskale Signalintensität nach dem Signalgrading einordnen"
+          },
+          {
+            "id": "D",
+            "text": "Die periphere Überragung über den Tibiaplateaurand messen"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Die aktuelle SSR-Empfehlung stützt eine Corpusbreite ≥15 mm auf einer mittleren koronalen Schicht. Form und korrekte Messebene prüfen; drei 2-mm-Schichten genügen nicht als eigenständiger Nachweis.",
+        "wrongExplanations": {
+          "A": "Die Zahl der Bow-ties hängt von der Schichtdicke ab. Das alte Drei-Bow-tie-Kriterium soll bei modernen dünnen Schichten nicht zur Diagnose verwendet werden.",
+          "C": "Signalgrading beschreibt das Gewebe-/Oberflächenmuster, nicht die discoide Breite oder Form.",
+          "D": "Diese Messung beurteilt Extrusion. Sie beschreibt eine andere Formveränderung als die Breite eines discoiden Meniskuskörpers."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-de-18",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Welche quantitative koronale Messung unterstützt einen discoiden Außenmeniskus?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Körperbreite ≥15 mm oder Verhältnis minimaler Meniskusbreite zu maximaler Tibiabreite ≥20 %."
+          },
+          {
+            "id": "B",
+            "text": "Extrusion >3 mm als einziges Formkriterium"
+          },
+          {
+            "id": "C",
+            "text": "Risslänge >15 mm"
+          },
+          {
+            "id": "D",
+            "text": "Vorder- plus Hinterhornbreite / Meniskusdurchmesser ≥75 % als koronale Messung"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Diese Breitenkriterien unterstützen die Diagnose und werden mit sagittaler Ausdehnung und Gesamtform kombiniert. Messung und Ebene müssen angegeben werden.",
+        "wrongExplanations": {
+          "B": "Extrusion beschreibt die Verlagerung über den Tibiaplateaurand, nicht die koronale Körperbreite zur Discoidform.",
+          "C": "Eine Risslänge ist keine Messung der gesamten Meniskuskörperbreite.",
+          "D": "Dieser Deckungsquotient wird im ursprünglichen Samoto-Protokoll sagittal gemessen; er ist keine koronale Messung."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/11973030/"
+      },
+      {
+        "id": "meniskus-de-19",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Ein vollständiger Radiärriss liegt 5 mm neben dem tibialen Ansatz der medialen Hinterwurzel. Welche gezielte anatomische Prüfung klärt seine wurzelnahe Ausdehnung am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Den vorderen tibialen Wurzelansatz auf Kontinuität prüfen"
+          },
+          {
+            "id": "B",
+            "text": "Den freien Rand des Meniskuskörpers auf zusätzliche Einrisse prüfen"
+          },
+          {
+            "id": "C",
+            "text": "Den Riss bis zur hinteren tibialen Insertion verfolgen und den Abstand dokumentieren"
+          },
+          {
+            "id": "D",
+            "text": "Den posteromedialen meniskokapsulären Übergang auf Ablösung prüfen"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Direkte Lokalisation und Abstand beschreiben die Wurzelbeziehung genauer als ein Etikett allein. Extrusion und Knorpel-/subchondrale Begleitbefunde ergänzen den Befund; fehlende Extrusion schließt eine Wurzelläsion nicht aus.",
+        "wrongExplanations": {
+          "A": "Die Vorderwurzel ist Teil der systematischen Prüfung, lokalisiert aber die Ausdehnung dieses hinterwurzelbenachbarten Defekts nicht.",
+          "B": "Zusätzliche Corpusdefekte sind relevant, beantworten aber nicht die hier gefragte Beziehung zur hinteren tibialen Insertion.",
+          "D": "Eine meniskokapsuläre Ablösung ist eine zusätzliche periphere Verletzung. Sie ersetzt nicht die direkte Prüfung des tibialen Wurzelansatzes."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-de-20",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Neben einem wurzelnahen Radiärriss und medialen Knorpeldefekten misst der Innenmeniskus auf einer mittleren koronalen Schicht 4 mm Überstand über den chondroossären Tibiaplateaurand. Welche Befundformulierung ist am informativsten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Grad-3-Läsion mit sekundärer Formänderung des Innenmeniskus"
+          },
+          {
+            "id": "B",
+            "text": "Wurzelnaher Radiärriss des Innenmeniskus; mediale Extrusion 4 mm, mit Angabe der Messebene und medialer Knorpeldefekte"
+          },
+          {
+            "id": "C",
+            "text": "Pathologische Meniskusverlagerung mit begleitender medialer Chondropathie"
+          },
+          {
+            "id": "D",
+            "text": "Mediale Meniskusextrusion bei vermuteter Wurzelinsuffizienz mit begleitender medialer Chondropathie"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Anatomie, Rissgeometrie, tatsächliches Extrusionsmaß mit Messebene und Knorpelbefund gehören zusammen. Der gebräuchliche mediale >3-mm-Grenzwert ersetzt nicht die Messangabe oder klinische Entscheidung.",
+        "wrongExplanations": {
+          "A": "Das Signalgrading lässt Orientierung, Wurzelbeziehung und gemessene Extrusion unpräzise. Diese anatomischen Angaben sind klinisch hilfreicher.",
+          "C": "Diese Formulierung erfasst eine Verlagerung, verliert aber Rissgeometrie, Wurzelbeziehung und Messwert. Sie ist weniger reproduzierbar.",
+          "D": "Diese Zusammenfassung betont die vermutete Funktion, verliert aber die direkt sichtbare Rissgeometrie und das Extrusionsmaß. Anatomie und Messwert berichten; aus MRT allein folgt keine patientenunabhängige Therapieentscheidung."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-de-21",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Eine glatte flüssigkeitshaltige Spalte liegt posterolateral neben der Popliteussehne, ohne Unterbrechung des Meniskusgewebes. Was ist zuerst zu bedenken?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Normaler Popliteushiatus"
+          },
+          {
+            "id": "B",
+            "text": "Spalt am Ansatz des vorderen Querbands"
+          },
+          {
+            "id": "C",
+            "text": "Spalt am Ansatz eines meniskofemoralen Ligaments"
+          },
+          {
+            "id": "D",
+            "text": "Horizontalriss des Außenmeniskus"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Der normale Popliteushiatus kann eine Spalte am Außenmeniskus vortäuschen. Typische Lage und intaktes Meniskusgewebe in mehreren Ebenen helfen bei der Abgrenzung.",
+        "wrongExplanations": {
+          "B": "Das Querband verbindet die Vorderhörner. Sein Ansatzspalt erklärt die hier posterolateral entlang der Popliteussehne beschriebene Flüssigkeit nicht.",
+          "C": "Meniskofemorale Ligamente ziehen vom lateralen Hinterhorn zum Femur am HKB vorbei. Den beschriebenen Spalt entlang der Popliteussehne erklärt der Hiatus.",
+          "D": "Ein Horizontalriss verläuft im Meniskusgewebe und trennt obere und untere Anteile. Hier sind Gewebe und Kontur intakt; der Spalt folgt der Sehne außerhalb des Meniskus."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-de-22",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Ein kleines punktförmiges Signal bleibt innerhalb eines normal geformten Meniskus ohne Oberflächenkontakt. Welche Einordnung passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Grad 1"
+          },
+          {
+            "id": "B",
+            "text": "Grad 2a"
+          },
+          {
+            "id": "C",
+            "text": "Grad 2c"
+          },
+          {
+            "id": "D",
+            "text": "Grad 3"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Grad 1 entspricht fokalem intrameniskalem Signal und früher mukoider Degeneration; allein kein Rissnachweis.",
+        "wrongExplanations": {
+          "B": "Grad 2a ist linear, nicht punktförmig.",
+          "C": "Grad 2c ist ausgedehnt globulär/keilförmig.",
+          "D": "Es fehlt sicherer Oberflächenkontakt für die signalbasierte Grad-3-Einordnung."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/3602385/"
+      },
+      {
+        "id": "meniskus-de-23",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Bei einer klinisch begründeten Operation eines akuten isolierten Meniskusrisses: Welches Ziel entspricht dem Prinzip „Save the Meniscus“?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Die gesamte signalveränderte Region entfernen"
+          },
+          {
+            "id": "B",
+            "text": "Einen einheitlichen Resektionsumfang nach Risslänge festlegen"
+          },
+          {
+            "id": "C",
+            "text": "Möglichst viel funktionelles Gewebe erhalten und die Reparaturmöglichkeit prüfen"
+          },
+          {
+            "id": "D",
+            "text": "Ein Standardverfahren aus der MRT-Gefäßzone ableiten"
+          }
+        ],
+        "correct": "C",
+        "explanation": "AAOS2024 empfiehlt bei indizierter Operation akuter isolierter Risse den größtmöglichen Erhalt funktionellen Meniskusgewebes. Reparabilität wird nicht aus dem MRT allein abgeleitet; die Leitlinie ist nicht auf degenerative oder Wurzelrisse übertragbar.",
+        "wrongExplanations": {
+          "A": "Signaländerung ist kein Resektionsrand. Morphologie, Funktion und intraoperativ beurteilte Gewebequalität entscheiden mit.",
+          "B": "Risslänge allein definiert keinen einheitlichen Resektionsumfang; Geometrie, Gewebe und Erhaltungsoptionen unterscheiden sich.",
+          "D": "Die Gefäßzone ist ein biologischer Faktor. MRT zeigt die tatsächliche Vaskularität und intraoperative Reparabilität nicht zuverlässig genug für ein Standardverfahren."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+      },
+      {
+        "id": "meniskus-de-36",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Sagittal sind zwei meniskusähnliche Strukturen am Vorderhorn und kein normales Meniskussignal an der ursprünglichen Hinterhornposition sichtbar. Welches Muster passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Double-PCL-Zeichen durch ein Fragment vor dem hinteren Kreuzband"
+          },
+          {
+            "id": "B",
+            "text": "Empty-bow-tie-Zeichen durch fehlende Meniskuskörpersegmente"
+          },
+          {
+            "id": "C",
+            "text": "Ghost-Meniskus-Zeichen bei einem vollständigen Radiärriss"
+          },
+          {
+            "id": "D",
+            "text": "Flipped-Meniskus-Muster mit Double-Anterior-Horn und Empty-Posterior-Horn-Zeichen"
+          }
+        ],
+        "correct": "D",
+        "explanation": "Ein nach anterior verlagertes Hinterhorn kann neben dem Vorderhorn liegen; die leere ursprüngliche Hinterhornposition stützt das Muster. Eine Vorderhornvariante bleibt als Pitfall zu prüfen.",
+        "wrongExplanations": {
+          "A": "Das Double-PCL-Zeichen ist ein Fragment anteroinferior zum HKB, nicht die Verdopplung am Vorderhorn.",
+          "B": "Das fehlende Bow-tie bezieht sich auf die sagittale Darstellung des Meniskuskörpers und erklärt die beschriebene Verdopplung am Vorderhorn nicht.",
+          "C": "Das Ghost-Zeichen kann bei einem vollständigen Radiärriss auftreten, erklärt aber nicht die nach anterior verlagerte Struktur."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/8316871/"
+      },
+      {
+        "id": "meniskus-de-37",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Was bezeichnet der PDF-Begriff „Wrisberg-Riss“?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Ein intaktes Band, das sich über sagittale Schichten bis zum Femur verfolgen lässt"
+          },
+          {
+            "id": "B",
+            "text": "Ein Riss am Ansatz des posterioren meniskofemoralen Ligaments am Hinterhorn des Außenmeniskus"
+          },
+          {
+            "id": "C",
+            "text": "Eine horizontale Spaltbildung im Außenmeniskuskörper"
+          },
+          {
+            "id": "D",
+            "text": "Eine Ablösung des medialen Hinterhorns vom meniskokapsulären Übergang"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Der Ausdruck „Wrisberg-Riss“ bezeichnet im PDF einen longitudinal-vertikalen Riss am lateralen Hinterhorn nahe diesem Ligamentansatz. Die Zuordnung allein beweist keine VKB-Ruptur.",
+        "wrongExplanations": {
+          "A": "Ein intaktes meniskofemorales Ligament kann einen Pseudoriss vortäuschen; die Kontinuität zum Femur spricht für das Band.",
+          "C": "Eine horizontale Spaltbildung ist eine andere Rissgeometrie.",
+          "D": "Eine posteromediale meniskokapsuläre Läsion betrifft eine andere Verbindung und die andere Seite; der PDF-Ausdruck meint den lateralen Hinterhornbereich am posterioren meniskofemoralen Ligament."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7903841/"
+      },
+      {
+        "id": "meniskus-de-38",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Textfall: Nach einer VKB-Verletzung zeigt die MRT am Innenmeniskushinterhorn einen flüssigkeitssignalreichen Spalt über die volle Höhe des posteromedialen meniskokapsulären Übergangs. Welche zusätzliche Verletzung sollte gezielt berichtet werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Riss am posterioren meniskofemoralen Ansatz des Außenmeniskus"
+          },
+          {
+            "id": "B",
+            "text": "Posteromediale meniskokapsuläre Verletzung im Ramp-Bereich"
+          },
+          {
+            "id": "C",
+            "text": "Avulsion der vorderen Meniskuswurzel"
+          },
+          {
+            "id": "D",
+            "text": "Horizontalriss des Meniskuskörpers mit Zystenkommunikation"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Ein voller flüssigkeitssignalreicher Spalt am posteromedialen Übergang stützt eine meniskokapsuläre Ramp-Läsion. Die genaue Verbindung beschreiben und im VKB-Kontext mitteilen; MRT kann solche Läsionen übersehen, ein unauffälliger Befund schließt sie nicht zuverlässig aus.",
+        "wrongExplanations": {
+          "A": "Dieser Ansatz liegt am lateralen Hinterhorn. Der beschriebene Befund betrifft den posteromedialen meniskokapsulären Übergang.",
+          "C": "Eine vordere Wurzelavulsion betrifft den tibialen Vorderhornansatz. Die Textangabe lokalisiert eine hintere periphere Verbindung.",
+          "D": "Ein Horizontalriss verläuft im Meniskus und kann eine parameniskale Zyste speisen. Der beschriebene Spalt liegt am Kapselübergang des Hinterhorns."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/32875293/"
+      },
+      {
+        "id": "meniskus-de-39",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Textfall: Der Innenrand des Innenmeniskus ist wellig. Über benachbarte Schichten bleibt das Gewebe kontinuierlich und überwiegend homogen signalarm; ein eigenständiger radiärer Defekt oder ein disloziertes Fragment fehlt. Welche Einordnung passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Vollständiger Radiärriss"
+          },
+          {
+            "id": "B",
+            "text": "Korbhenkelriss"
+          },
+          {
+            "id": "C",
+            "text": "Meniskus-Flounce als mögliche Formvariante"
+          },
+          {
+            "id": "D",
+            "text": "Meniskokapsuläre Separation"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Flounce kann eine vorübergehende Wellenform eines intakten Meniskus sein und einen Riss vortäuschen. Kontur und Signal in der vollständigen Serie prüfen. Die Formvariante schließt einen getrennten koexistierenden Riss nicht aus.",
+        "wrongExplanations": {
+          "A": "Ein vollständiger Radiärriss unterbricht Gewebe quer zu den Ringfasern. Im Text bleiben Kontinuität und Signal erhalten.",
+          "B": "Ein Korbhenkelriss erfordert ein disloziertes longitudinales Fragment; eine glatte wellige Kontur ohne Fragment ist kein entsprechender Nachweis.",
+          "D": "Eine meniskokapsuläre Separation betrifft die periphere Kapselverbindung. Hier ist der freie Innenrand wellig, ohne beschriebenen Defekt am Kapselansatz."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/10992813/"
+      }
+    ],
+    "en": [
+      {
+        "id": "meniskus-en-01",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Which attachment explains the lower mobility of the medial meniscus?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Deep medial collateral ligament and joint capsule"
+          },
+          {
+            "id": "B",
+            "text": "Direct attachment to the lateral collateral ligament"
+          },
+          {
+            "id": "C",
+            "text": "Direct attachment to the patellar tendon body"
+          },
+          {
+            "id": "D",
+            "text": "Direct fixation to the popliteus tendon"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The capsule and deep MCL constrain the medial meniscus. Injury distribution still depends on mechanism; lateral tears are common with acute ACL rupture.",
+        "wrongExplanations": {
+          "B": "The LCL does not directly fix the medial meniscus.",
+          "C": "The patellar tendon does not explain meniscal mobility.",
+          "D": "The popliteus tendon lies at the lateral meniscus and does not explain medial capsular fixation."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-en-02",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "A signal line reaches the inferior articular surface on two adjacent sagittal images. Which statement is correct?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A tear requires contact with both articular surfaces."
+          },
+          {
+            "id": "B",
+            "text": "This meets the two-slice-touch rule and supports a tear diagnosis."
+          },
+          {
+            "id": "C",
+            "text": "The rule requires two different sequences."
+          },
+          {
+            "id": "D",
+            "text": "The rule requires a tear length of at least 3 mm."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Repeated surface contact increases diagnostic confidence. The rule complements morphology and does not replace multiplanar assessment.",
+        "wrongExplanations": {
+          "A": "Contact with one articular surface is sufficient; both are not required.",
+          "C": "The rule counts images with surface contact, not sequence names.",
+          "D": "There is no fixed minimum tear length in this rule."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+      },
+      {
+        "id": "meniskus-en-03",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Which anatomical property improves biological healing potential in a recent longitudinal tear next to the capsule?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Nourishment of the free inner edge by synovial fluid"
+          },
+          {
+            "id": "B",
+            "text": "The circumferential orientation of collagen fibres"
+          },
+          {
+            "id": "C",
+            "text": "Continuity of the peripheral red zone with capsular vessels"
+          },
+          {
+            "id": "D",
+            "text": "The greater mobility of the lateral meniscus"
+          }
+        ],
+        "correct": "C",
+        "explanation": "The peripheral red zone is most vascular. Assess vascular zone, tissue quality, tear pattern and clinical context together; MRI alone does not determine repairability.",
+        "wrongExplanations": {
+          "A": "Synovial fluid nourishes the poorly vascular inner zone but does not provide the capsular vascular supply of peripheral tissue.",
+          "B": "Circumferential fibres matter for load transmission. The question asks about vascular supply as a biological basis for healing.",
+          "D": "Mobility explains differences in fixation and injury patterns. It does not replace vascular supply as the healing factor asked here."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/7081532/"
+      },
+      {
+        "id": "meniskus-en-04",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "A subtle native meniscal lesion needs targeted reassessment after an inadequate prior study. Which adjustment best addresses surface contact, tear orientation and fragment position?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Dynamic contrast-enhanced T1 perfusion series"
+          },
+          {
+            "id": "B",
+            "text": "Thin-section PD/intermediate-weighted and fluid-sensitive images in orthogonal planes"
+          },
+          {
+            "id": "C",
+            "text": "Quantitative T2 mapping of articular cartilage"
+          },
+          {
+            "id": "D",
+            "text": "Susceptibility-weighted sequences for haemosiderin"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Thin sections and cross-plane correlation show contact, geometry and displacement. A complete knee protocol also includes T1 images for marrow and associated findings; not every tear is fluid-bright on T2.",
+        "wrongExplanations": {
+          "A": "Perfusion series address a different tissue question and are not the targeted standard addition for meniscal morphology here.",
+          "C": "T2 mapping mainly characterises cartilage composition and does not replace spatial depiction of the meniscal defect.",
+          "D": "Susceptibility imaging can characterise blood products. Thin morphological images in multiple planes better address this meniscal question."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/"
+      },
+      {
+        "id": "meniskus-en-07",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "The complete series shows extensive wedge-shaped/globular intrasubstance signal without definite surface contact. Which subtype fits the extended historical grade-2 scheme?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Grade 1"
+          },
+          {
+            "id": "B",
+            "text": "Grade 2a"
+          },
+          {
+            "id": "C",
+            "text": "Grade 2c"
+          },
+          {
+            "id": "D",
+            "text": "Grade 3"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Grade 2c describes extensive wedge-shaped/globular signal without definite surface contact. An occult tear is possible but is not proved by this signal alone.",
+        "wrongExplanations": {
+          "A": "Grade 1 is typically focal/punctate, not extensive globular signal.",
+          "B": "Grade 2a describes linear signal without surface contact.",
+          "D": "Without definite surface contact, signal-based grade 3 is not established."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/12185036/"
+      },
+      {
+        "id": "meniskus-en-08",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Linear signal reaches the surface on exactly one image but not on adjacent images. There is no morphological defect. Which description fits the extended historical grade-2 scheme?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Grade 2b; inconclusive for a definite tear"
+          },
+          {
+            "id": "B",
+            "text": "Grade 3 with a definite tear"
+          },
+          {
+            "id": "C",
+            "text": "Grade 1"
+          },
+          {
+            "id": "D",
+            "text": "Grade 0"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Grade 2b denotes single-image contact in this extended scheme. A real tear remains possible; assess orientation and morphology. The two-slice-touch rule increases confidence but is not mandatory for every morphologically definite tear.",
+        "wrongExplanations": {
+          "B": "Single-image contact without a supporting defect does not prove a definite tear.",
+          "C": "Grade 1 is focal signal without contact, not linear single-image contact.",
+          "D": "Grade 0 is homogeneous low signal without a pathological signal line."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+      },
+      {
+        "id": "meniskus-en-10",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "A 58-year-old has a degenerative horizontal tear without true locking, acute trauma or advanced osteoarthritis. No structured exercise programme has been tried. Which initial approach is best supported?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Arthroscopic partial meniscectomy as the first intervention"
+          },
+          {
+            "id": "B",
+            "text": "Arthroscopic meniscal repair as the first intervention"
+          },
+          {
+            "id": "C",
+            "text": "Supervised exercise with clinical follow-up"
+          },
+          {
+            "id": "D",
+            "text": "Immobilisation in a knee brace as the primary treatment strategy"
+          }
+        ],
+        "correct": "C",
+        "explanation": "A primary RCT in middle-aged people with degenerative meniscal tears and mostly no radiographic osteoarthritis found no clinically important two-year functional difference between exercise and partial meniscectomy. Supervised exercise is a supported first approach here. This does not oppose every operation; true locking, an acute repairable injury and symptoms despite appropriate prior care require separate assessment.",
+        "wrongExplanations": {
+          "A": "In this nonlocked case without prior structured exercise, the degenerative MRI tear does not justify partial resection as the preferred first step.",
+          "B": "A degenerative horizontal split is not the same as an acute repairable peripheral longitudinal tear. MRI alone does not establish repair as the first step here.",
+          "D": "Brace immobilisation does not substitute for the supported active exercise approach. Activity modification may be an adjunct, but is not equivalent to immobilisation as the main treatment."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://www.bmj.com/content/354/bmj.i3740"
+      },
+      {
+        "id": "meniskus-en-11",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Linear intrasubstance signal stays entirely within the meniscus in all planes. Which grade fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Grade 1"
+          },
+          {
+            "id": "B",
+            "text": "Grade 2a"
+          },
+          {
+            "id": "C",
+            "text": "Grade 2c"
+          },
+          {
+            "id": "D",
+            "text": "Grade 3"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Grade 2a: linear signal without articular-surface contact. This is not a definite tear diagnosis.",
+        "wrongExplanations": {
+          "A": "Grade 1 is typically focal/punctate.",
+          "C": "Grade 2c is extensive wedge-shaped/globular, not merely linear.",
+          "D": "Signal-based grade 3 requires definite surface contact."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/3602385/"
+      },
+      {
+        "id": "meniskus-en-12",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "A defect starts at the free meniscal edge and crosses the circumferential fibres. Which tear orientation fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Horizontal tear"
+          },
+          {
+            "id": "B",
+            "text": "Longitudinal tear"
+          },
+          {
+            "id": "C",
+            "text": "Radial tear"
+          },
+          {
+            "id": "D",
+            "text": "Bucket-handle tear"
+          }
+        ],
+        "correct": "C",
+        "explanation": "A radial tear runs outward from the free edge across circumferential fibres. Deep and complete tears can markedly impair hoop-stress transmission.",
+        "wrongExplanations": {
+          "A": "A horizontal tear is parallel to the tibial plane and splits leaflets.",
+          "B": "A longitudinal tear follows the periphery and circumferential fibres.",
+          "D": "A bucket-handle tear is a displaced longitudinal tear, not a radial orientation."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-en-13",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "A normally visible meniscal segment is absent sagittally (ghost sign). Coronal and axial images show a full-width defect. What fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Isolated grade-1 degeneration"
+          },
+          {
+            "id": "B",
+            "text": "Complete radial tear"
+          },
+          {
+            "id": "C",
+            "text": "Normal popliteus hiatus"
+          },
+          {
+            "id": "D",
+            "text": "Uncomplicated horizontal tear without tissue loss"
+          }
+        ],
+        "correct": "B",
+        "explanation": "The confirmed full-width defect fits a complete radial tear. The ghost sign is suggestive but not specific alone; also assess the root region.",
+        "wrongExplanations": {
+          "A": "Grade 1 does not explain a multiplanar tissue defect.",
+          "C": "The posterolateral popliteus hiatus does not explain a full-width meniscal defect.",
+          "D": "A horizontal tear splits the meniscus; the described defect is radial and complete."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-en-14",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "An oblique radial tear at the free edge produces a pointed, partly attached fragment. Which term fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Parrot-beak tear (flap tear)"
+          },
+          {
+            "id": "B",
+            "text": "Horizontal tear"
+          },
+          {
+            "id": "C",
+            "text": "Longitudinal tear"
+          },
+          {
+            "id": "D",
+            "text": "Bucket-handle tear"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The oblique orientation creates a flap. Search MRI for the donor defect and displacement into joint recesses.",
+        "wrongExplanations": {
+          "B": "A horizontal tear splits upper and lower leaflets; the pointed flap described arises from an oblique radial tear.",
+          "C": "A purely longitudinal tear runs parallel to the periphery.",
+          "D": "A bucket-handle tear displaces an elongated inner fragment centrally."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-en-15",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "A patient has true extension locking. A second dark band lies parallel and anteroinferior to the PCL sagittally; a notch fragment is visible coronally. What is most likely?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Oblique radial tear with a displaced flap"
+          },
+          {
+            "id": "B",
+            "text": "Anteriorly flipped posterior horn"
+          },
+          {
+            "id": "C",
+            "text": "Bucket-handle tear with a centrally displaced longitudinal fragment"
+          },
+          {
+            "id": "D",
+            "text": "Horizontal tear with a parameniscal cyst"
+          }
+        ],
+        "correct": "C",
+        "explanation": "The double-PCL sign and notch fragment support a bucket-handle tear, usually medial. True locking requires urgent orthopaedic assessment.",
+        "wrongExplanations": {
+          "A": "A radial flap can also displace. Here an elongated intercondylar fragment anteroinferior to the PCL supports a bucket-handle pattern.",
+          "B": "An anteriorly flipped posterior horn lies by the anterior horn and may duplicate it. The vignette instead locates the fragment in the intercondylar notch parallel to the PCL.",
+          "D": "A horizontal tear separates superior and inferior portions and may communicate with a cyst. It does not explain the central longitudinal fragment described."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/19234702/"
+      },
+      {
+        "id": "meniskus-en-16",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "A second meniscus-like structure lies beside the anterior horn. Which additional finding most strongly supports an anteriorly displaced posterior horn over an anterior-horn variant?",
+        "options": [
+          {
+            "id": "A",
+            "text": "An empty native posterior-horn position with traceable fragment continuity"
+          },
+          {
+            "id": "B",
+            "text": "A broad meniscal body on a mid-coronal image"
+          },
+          {
+            "id": "C",
+            "text": "Homogeneous low signal in both anterior structures"
+          },
+          {
+            "id": "D",
+            "text": "Punctate intrasubstance signal without surface contact"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Missing tissue at the donor site and cross-plane fragment continuity support displacement. An apparent double anterior horn alone can also be a variant.",
+        "wrongExplanations": {
+          "B": "Body width helps assess discoid morphology but does not establish the origin of the extra anterior structure.",
+          "C": "Both meniscal tissue and variants may be low signal. Signal alone does not locate the donor site.",
+          "D": "Focal nonsurfacing signal describes intrasubstance change, not proof of fragment displacement."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/8316871/"
+      },
+      {
+        "id": "meniskus-en-17",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "At 2-mm slice thickness, the lateral meniscal body is continuously visible on three adjacent sagittal images. Which next step best assesses possible discoid morphology?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Apply the historical three-bowtie criterion to the 2-mm series"
+          },
+          {
+            "id": "B",
+            "text": "Measure body width on a mid-coronal image and assess overall shape"
+          },
+          {
+            "id": "C",
+            "text": "Classify intrasubstance signal using signal grading"
+          },
+          {
+            "id": "D",
+            "text": "Measure peripheral overhang beyond the tibial plateau margin"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Current SSR guidance supports body width ≥15 mm on a mid-coronal image. Check shape and measurement plane; three 2-mm slices do not independently establish the diagnosis.",
+        "wrongExplanations": {
+          "A": "Bowtie count depends on slice thickness. The old three-bowtie criterion should not be used diagnostically with modern thin sections.",
+          "C": "Signal grading describes tissue/surface patterns, not discoid width or shape.",
+          "D": "This measurement assesses extrusion, a different morphological feature from discoid body width."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-en-18",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Which quantitative coronal measurement supports a discoid lateral meniscus?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Body width ≥15 mm or minimum meniscal-to-maximum tibial width ratio ≥20%."
+          },
+          {
+            "id": "B",
+            "text": "Extrusion >3 mm as the only shape criterion"
+          },
+          {
+            "id": "C",
+            "text": "Tear length >15 mm"
+          },
+          {
+            "id": "D",
+            "text": "Anterior-plus-posterior horn width / meniscal diameter ≥75% as a coronal measurement"
+          }
+        ],
+        "correct": "A",
+        "explanation": "These width criteria support diagnosis and are combined with sagittal extent and overall shape. Specify the measurement and plane.",
+        "wrongExplanations": {
+          "B": "Extrusion describes displacement beyond the tibial plateau margin, not coronal body width for discoid shape.",
+          "C": "Tear length is not a measurement of overall meniscal body width.",
+          "D": "This coverage ratio is measured sagittally in the original Samoto protocol; it is not a coronal measurement."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/11973030/"
+      },
+      {
+        "id": "meniskus-en-19",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "A complete radial tear lies 5 mm from the tibial attachment of the medial posterior root. Which targeted anatomical check best clarifies its root-adjacent extent?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Check continuity of the anterior tibial root attachment"
+          },
+          {
+            "id": "B",
+            "text": "Check the free edge of the meniscal body for additional tears"
+          },
+          {
+            "id": "C",
+            "text": "Trace the tear to the posterior tibial insertion and document its distance"
+          },
+          {
+            "id": "D",
+            "text": "Check the posteromedial meniscocapsular junction for separation"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Direct localisation and distance describe the root relationship more precisely than a label alone. Extrusion and cartilage/subchondral findings complete the report; absent extrusion does not exclude a root lesion.",
+        "wrongExplanations": {
+          "A": "The anterior root belongs in systematic assessment but does not locate the extent of this posterior-root-adjacent defect.",
+          "B": "Additional body defects matter but do not answer the relationship to the posterior tibial insertion being asked here.",
+          "D": "Meniscocapsular separation is an additional peripheral injury and does not replace direct assessment of the tibial root attachment."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-en-20",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Alongside a root-adjacent radial tear and medial cartilage defects, the medial meniscus extends 4 mm beyond the chondro-osseous tibial plateau margin on a mid-coronal image. Which report wording is most informative?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Grade-3 lesion with secondary shape change of the medial meniscus"
+          },
+          {
+            "id": "B",
+            "text": "Root-adjacent radial tear of the medial meniscus; medial extrusion 4 mm, including measurement plane and medial cartilage defects"
+          },
+          {
+            "id": "C",
+            "text": "Pathological meniscal displacement with associated medial chondropathy"
+          },
+          {
+            "id": "D",
+            "text": "Medial meniscal extrusion with suspected root insufficiency and associated medial chondropathy"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Anatomy, tear geometry, actual extrusion with measurement plane and cartilage findings belong together. The conventional medial >3-mm threshold does not replace the measured value or clinical decision.",
+        "wrongExplanations": {
+          "A": "Signal grading leaves orientation, root relationship and measured extrusion imprecise. These anatomical details are more clinically useful.",
+          "C": "This wording captures displacement but loses tear geometry, root relationship and measurement, making it less reproducible.",
+          "D": "This summary emphasises suspected function but loses directly visible tear geometry and the extrusion measurement. Report anatomy and the measured value; MRI alone does not establish a patient-independent treatment decision."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-en-21",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "A smooth fluid-filled cleft lies posterolaterally beside the popliteus tendon, without interruption of meniscal tissue. What should be considered first?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Normal popliteal hiatus"
+          },
+          {
+            "id": "B",
+            "text": "Cleft at the anterior transverse ligament attachment"
+          },
+          {
+            "id": "C",
+            "text": "Cleft at a meniscofemoral ligament attachment"
+          },
+          {
+            "id": "D",
+            "text": "Horizontal tear of the lateral meniscus"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The normal popliteus hiatus can mimic a cleft at the lateral meniscus. Typical location and intact tissue in multiple planes help distinguish it.",
+        "wrongExplanations": {
+          "B": "The transverse ligament joins the anterior horns. Its attachment cleft does not explain fluid tracking posterolaterally along the popliteus tendon.",
+          "C": "Meniscofemoral ligaments run from the lateral posterior horn to the femur alongside the PCL. The hiatus explains the described cleft along the popliteus tendon.",
+          "D": "A horizontal tear traverses meniscal tissue, separating superior and inferior portions. Here tissue and contour are intact and the cleft follows the tendon outside the meniscus."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-en-22",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "A small punctate signal remains within a normally shaped meniscus without surface contact. Which classification fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Grade 1"
+          },
+          {
+            "id": "B",
+            "text": "Grade 2a"
+          },
+          {
+            "id": "C",
+            "text": "Grade 2c"
+          },
+          {
+            "id": "D",
+            "text": "Grade 3"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Grade 1 represents focal intrasubstance signal and early mucoid degeneration; it does not alone establish a tear.",
+        "wrongExplanations": {
+          "B": "Grade 2a is linear, not punctate.",
+          "C": "Grade 2c is extensive globular/wedge-shaped signal.",
+          "D": "Definite surface contact is absent for signal-based grade 3."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/3602385/"
+      },
+      {
+        "id": "meniskus-en-23",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "During clinically indicated surgery for an acute isolated meniscal tear, which goal follows the “Save the Meniscus” principle?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Remove the entire region of altered signal"
+          },
+          {
+            "id": "B",
+            "text": "Set a uniform extent of resection based on tear length"
+          },
+          {
+            "id": "C",
+            "text": "Preserve as much functional tissue as possible and assess repair options"
+          },
+          {
+            "id": "D",
+            "text": "Derive a standard procedure from the MRI vascular zone"
+          }
+        ],
+        "correct": "C",
+        "explanation": "AAOS2024 recommends preserving as much functional meniscal tissue as possible when surgery is indicated for acute isolated tears. Repairability is not inferred from MRI alone; this guideline does not cover degenerative or root tears.",
+        "wrongExplanations": {
+          "A": "Altered signal is not a resection margin. Morphology, function and intraoperative tissue assessment also matter.",
+          "B": "Tear length alone does not define a uniform resection extent; geometry, tissue and preservation options differ.",
+          "D": "Vascular zone is one biological factor. MRI does not depict actual vascularity or intraoperative repairability well enough to assign a standard procedure."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+      },
+      {
+        "id": "meniskus-en-36",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Sagittal MRI shows two meniscus-like structures at the anterior horn and no normal meniscal signal at the native posterior-horn position. Which pattern fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Double-PCL sign from a fragment anterior to the posterior cruciate ligament"
+          },
+          {
+            "id": "B",
+            "text": "Absent bow-tie sign from missing meniscal body segments"
+          },
+          {
+            "id": "C",
+            "text": "Ghost meniscus sign in a complete radial tear"
+          },
+          {
+            "id": "D",
+            "text": "Flipped-meniscus pattern with double-anterior-horn and empty-posterior-horn signs"
+          }
+        ],
+        "correct": "D",
+        "explanation": "An anteriorly displaced posterior horn may lie beside the anterior horn; an empty native posterior-horn position supports the pattern. An anterior-horn variant remains a pitfall to check.",
+        "wrongExplanations": {
+          "A": "The double-PCL sign is a fragment anteroinferior to the PCL, not duplication at the anterior horn.",
+          "B": "The absent bow-tie concerns sagittal visualization of the meniscal body and does not explain the described anterior-horn duplication.",
+          "C": "The ghost sign may occur with a complete radial tear, but does not explain the anteriorly displaced structure."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/8316871/"
+      },
+      {
+        "id": "meniskus-en-37",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "What does the PDF term “Wrisberg rip” describe?",
+        "options": [
+          {
+            "id": "A",
+            "text": "An intact ligament that can be traced to the femur across sagittal slices"
+          },
+          {
+            "id": "B",
+            "text": "A tear at the posterior meniscofemoral ligament attachment to the lateral meniscus posterior horn"
+          },
+          {
+            "id": "C",
+            "text": "A horizontal cleavage in the lateral meniscus body"
+          },
+          {
+            "id": "D",
+            "text": "Separation of the medial posterior horn from the meniscocapsular junction"
+          }
+        ],
+        "correct": "B",
+        "explanation": "The PDF uses “Wrisberg rip” for a longitudinal-vertical tear at the lateral posterior horn near this ligament attachment. This finding alone does not prove an ACL tear.",
+        "wrongExplanations": {
+          "A": "An intact meniscofemoral ligament can mimic a tear; continuity to the femur supports ligament rather than tear.",
+          "C": "A horizontal cleavage is a different tear orientation.",
+          "D": "A posteromedial meniscocapsular lesion involves a different connection and the opposite side; the PDF term refers to the lateral posterior horn at the posterior meniscofemoral ligament."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7903841/"
+      },
+      {
+        "id": "meniskus-en-38",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Text vignette: after an ACL injury, MRI shows a full-height fluid-signal cleft at the posteromedial meniscocapsular junction of the medial posterior horn. Which associated injury should be specifically reported?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Tear at the posterior meniscofemoral attachment of the lateral meniscus"
+          },
+          {
+            "id": "B",
+            "text": "Posteromedial meniscocapsular injury in the ramp region"
+          },
+          {
+            "id": "C",
+            "text": "Avulsion of the anterior meniscal root"
+          },
+          {
+            "id": "D",
+            "text": "Horizontal body tear with cyst communication"
+          }
+        ],
+        "correct": "B",
+        "explanation": "A full-height fluid-signal cleft at the posteromedial junction supports a meniscocapsular ramp lesion. Describe the precise connection and communicate it in the ACL context; MRI can miss these lesions, so a normal appearance does not reliably exclude them.",
+        "wrongExplanations": {
+          "A": "That attachment is at the lateral posterior horn. The described finding involves the posteromedial meniscocapsular junction.",
+          "C": "An anterior root avulsion involves the tibial anterior-horn attachment. The vignette localises a posterior peripheral connection.",
+          "D": "A horizontal tear traverses the meniscus and may feed a parameniscal cyst. The cleft described lies at the posterior-horn capsular junction."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/32875293/"
+      },
+      {
+        "id": "meniskus-en-39",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Text vignette: the medial meniscal inner margin is wavy. Across adjacent slices, tissue remains continuous and predominantly homogeneous low signal, without a separate radial defect or displaced fragment. Which interpretation fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Complete radial tear"
+          },
+          {
+            "id": "B",
+            "text": "Bucket-handle tear"
+          },
+          {
+            "id": "C",
+            "text": "Meniscal flounce as a possible shape variant"
+          },
+          {
+            "id": "D",
+            "text": "Meniscocapsular separation"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Flounce can be a transient wavy shape of an intact meniscus and mimic a tear. Assess contour and signal throughout the complete series. The shape variant does not exclude a separate coexisting tear.",
+        "wrongExplanations": {
+          "A": "A complete radial tear interrupts tissue across the circumferential fibres. The vignette preserves continuity and signal.",
+          "B": "A bucket-handle tear requires a displaced longitudinal fragment; a smooth wavy contour without a fragment does not establish it.",
+          "D": "Meniscocapsular separation involves the peripheral capsular connection. Here the free inner margin is wavy without a described capsular attachment defect."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/10992813/"
+      }
+    ],
+    "fa": [
+      {
+        "id": "meniskus-fa-01",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "کدام اتصال، تحرک کمتر منیسک داخلی را توضیح می‌دهد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "بخش عمقی رباط جانبی داخلی و کپسول مفصل"
+          },
+          {
+            "id": "B",
+            "text": "اتصال مستقیم به رباط جانبی خارجی"
+          },
+          {
+            "id": "C",
+            "text": "اتصال مستقیم به تنهٔ تاندون پاتلا"
+          },
+          {
+            "id": "D",
+            "text": "اتصال مستقیم به تاندون پوپلیتئوس"
+          }
+        ],
+        "correct": "A",
+        "explanation": "کپسول و MCL عمقی منیسک داخلی را ثابت‌تر می‌کنند؛ توزیع آسیب به مکانیسم وابسته است و در پارگی حاد ACL، آسیب منیسک خارجی شایع است.",
+        "wrongExplanations": {
+          "B": "LCL اتصال مستقیم منیسک داخلی نیست.",
+          "C": "تاندون پاتلا علت تفاوت تحرک منیسک‌ها نیست.",
+          "D": "تاندون پوپلیتئوس کنار منیسک خارجی است و تثبیت کپسولی منیسک داخلی را توضیح نمی‌دهد."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-fa-02",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "خط سیگنال در دو تصویر ساژیتال مجاور به سطح مفصلی تحتانی می‌رسد. کدام عبارت درست است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پارگی نیازمند تماس با هر دو سطح مفصلی است."
+          },
+          {
+            "id": "B",
+            "text": "این یافته قاعدهٔ Two-slice-touch را دارد و به نفع تشخیص پارگی است."
+          },
+          {
+            "id": "C",
+            "text": "این قاعده دو سکانس متفاوت می‌خواهد."
+          },
+          {
+            "id": "D",
+            "text": "این قاعده حداقل طول پارگی ۳ میلی‌متر را می‌خواهد."
+          }
+        ],
+        "correct": "B",
+        "explanation": "تکرار تماس سطحی اطمینان تشخیصی را افزایش می‌دهد؛ این قاعده مکمل مورفولوژی است و جای بررسی چندصفحه‌ای را نمی‌گیرد.",
+        "wrongExplanations": {
+          "A": "تماس با یک سطح مفصلی کافی است؛ هر دو لازم نیست.",
+          "C": "قاعده تعداد تصاویر با تماس سطحی را می‌سنجد، نه نام سکانس‌ها.",
+          "D": "حداقل طول ثابت جزو این قاعده نیست."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+      },
+      {
+        "id": "meniskus-fa-03",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "کدام ویژگی آناتومیک در پارگی طولی تازه کنار کپسول، زمینهٔ زیستی ترمیم را بهتر می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "تغذیهٔ لبهٔ آزاد داخلی از مایع سینوویال"
+          },
+          {
+            "id": "B",
+            "text": "جهت‌گیری محیطی الیاف کلاژن"
+          },
+          {
+            "id": "C",
+            "text": "ارتباط ناحیهٔ قرمز محیطی با عروق کپسولی"
+          },
+          {
+            "id": "D",
+            "text": "تحرک بیشتر منیسک خارجی"
+          }
+        ],
+        "correct": "C",
+        "explanation": "ناحیهٔ قرمز محیطی بیشترین خون‌رسانی را دارد. ناحیهٔ عروقی، کیفیت بافت، شکل پارگی و زمینهٔ بالینی با هم ارزیابی می‌شوند؛ MRI به‌تنهایی قابلیت ترمیم را تعیین نمی‌کند.",
+        "wrongExplanations": {
+          "A": "مایع سینوویال ناحیهٔ داخلی کم‌عروق را تغذیه می‌کند، اما خون‌رسانی کپسولی بافت محیطی را فراهم نمی‌کند.",
+          "B": "الیاف محیطی برای انتقال بار مهم‌اند؛ سؤال دربارهٔ خون‌رسانی به‌عنوان پایهٔ زیستی ترمیم است.",
+          "D": "تحرک تفاوت تثبیت و الگوهای آسیب را توضیح می‌دهد و جای خون‌رسانی را به‌عنوان عامل ترمیم مورد سؤال نمی‌گیرد."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/7081532/"
+      },
+      {
+        "id": "meniskus-fa-04",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "پس از بررسی قبلی ناکافی، ضایعهٔ ظریف منیسک عمل‌نشده باید دوباره هدفمند ارزیابی شود. کدام تغییر برای تماس سطحی، مسیر پارگی و محل قطعه مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "سری‌های پرفیوژن دینامیک T1 با تزریق"
+          },
+          {
+            "id": "B",
+            "text": "تصاویر نازک PD/وزن‌دهی میانی و حساس به مایع در صفحات عمود بر هم"
+          },
+          {
+            "id": "C",
+            "text": "نقشه‌برداری کمّی T2 غضروف مفصلی"
+          },
+          {
+            "id": "D",
+            "text": "سکانس‌های حساس به سوسپتیبیلیتی برای هموسیدرین"
+          }
+        ],
+        "correct": "B",
+        "explanation": "برش نازک و تطبیق صفحات تماس، هندسه و جابه‌جایی را نشان می‌دهد. پروتکل کامل زانو تصاویر T1 برای مغز استخوان و یافته‌های همراه هم دارد؛ هر پارگی در T2 به روشنی مایع نیست.",
+        "wrongExplanations": {
+          "A": "سری پرفیوژن پرسش بافتی دیگری را پاسخ می‌دهد و مکمل استاندارد هدفمند برای مورفولوژی منیسک در اینجا نیست.",
+          "C": "نقشهٔ T2 عمدتاً ترکیب غضروف را مشخص می‌کند و جای نمایش فضایی نقص منیسک را نمی‌گیرد.",
+          "D": "تصویربرداری سوسپتیبیلیتی می‌تواند محصولات خون را مشخص کند؛ تصاویر مورفولوژیک نازک در چند صفحه برای این پرسش منیسک مناسب‌ترند."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/"
+      },
+      {
+        "id": "meniskus-fa-07",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "در کل سری، سیگنال وسیع گوه‌ای/گلوبولار داخل منیسک بدون تماس سطحی قطعی دیده می‌شود. در تقسیم‌بندی تاریخی توسعه‌یافتهٔ گرید ۲، کدام زیرگروه مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "گرید ۱"
+          },
+          {
+            "id": "B",
+            "text": "گرید ۲a"
+          },
+          {
+            "id": "C",
+            "text": "گرید ۲c"
+          },
+          {
+            "id": "D",
+            "text": "گرید ۳"
+          }
+        ],
+        "correct": "C",
+        "explanation": "گرید ۲c سیگنال وسیع گوه‌ای/گلوبولار بدون تماس سطحی قطعی است. پارگی مخفی ممکن است، اما این سیگنال به‌تنهایی آن را ثابت نمی‌کند.",
+        "wrongExplanations": {
+          "A": "گرید ۱ معمولاً کانونی/نقطه‌ای است، نه گلوبولار وسیع.",
+          "B": "گرید ۲a سیگنال خطی بدون تماس سطحی است.",
+          "D": "بدون تماس سطحی قطعی، گرید ۳ بر پایهٔ سیگنال اثبات نمی‌شود."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/12185036/"
+      },
+      {
+        "id": "meniskus-fa-08",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "سیگنال خطی فقط در یک تصویر به سطح می‌رسد و در تصاویر مجاور تماس ندارد. نقص شکلی دیده نمی‌شود. در تقسیم‌بندی تاریخی توسعه‌یافتهٔ گرید ۲، کدام توصیف مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "گرید ۲b؛ برای پارگی قطعی نامطمئن"
+          },
+          {
+            "id": "B",
+            "text": "گرید ۳ با پارگی قطعی"
+          },
+          {
+            "id": "C",
+            "text": "گرید ۱"
+          },
+          {
+            "id": "D",
+            "text": "گرید ۰"
+          }
+        ],
+        "correct": "A",
+        "explanation": "در این تقسیم‌بندی توسعه‌یافته، گرید ۲b تماس تک‌تصویری است. پارگی واقعی همچنان ممکن است؛ مسیر و مورفولوژی بررسی شوند. قاعدهٔ دو تصویر اطمینان را بالا می‌برد، اما شرط مطلق تمام پارگی‌های واضح مورفولوژیک نیست.",
+        "wrongExplanations": {
+          "B": "تماس در یک تصویر بدون نقص شکلی مؤید، پارگی قطعی را ثابت نمی‌کند.",
+          "C": "گرید ۱ سیگنال کانونی بدون تماس است، نه خطی با تماس تک‌تصویری.",
+          "D": "گرید ۰ کم‌سیگنال همگن و بدون خط سیگنال پاتولوژیک است."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+      },
+      {
+        "id": "meniskus-fa-10",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "فردی ۵۸ ساله پارگی افقی دژنراتیو دارد، بدون قفل‌شدگی واقعی، ترومای حاد یا آرتروز پیشرفته. هنوز برنامهٔ تمرینی ساختاریافته امتحان نشده است. کدام رویکرد اولیه پشتوانهٔ بهتری دارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "منیسککتومی جزئی آرتروسکوپیک به‌عنوان اقدام نخست"
+          },
+          {
+            "id": "B",
+            "text": "ترمیم منیسک با بخیهٔ آرتروسکوپیک به‌عنوان اقدام نخست"
+          },
+          {
+            "id": "C",
+            "text": "برنامهٔ تمرینی هدایت‌شده همراه پیگیری بالینی"
+          },
+          {
+            "id": "D",
+            "text": "بی‌حرکت‌سازی با بریس زانو به‌عنوان راهبرد اصلی درمان"
+          }
+        ],
+        "correct": "C",
+        "explanation": "یک کارآزمایی تصادفی اولیه در افراد میانسال با پارگی دژنراتیو منیسک و عمدتاً بدون آرتروز رادیوگرافیک، پس از دو سال تفاوت عملکردیِ مهم از نظر بالینی میان تمرین‌درمانی و منیسککتومی جزئی نیافت. برنامهٔ تمرینی هدایت‌شده در اینجا رویکرد نخستِ دارای پشتوانه است. این به معنی مخالفت با تمام جراحی‌ها نیست؛ قفل‌شدگی واقعی، آسیب حادِ قابل ترمیم و تداوم علائم با وجود درمان اولیهٔ مناسب، جداگانه ارزیابی می‌شوند.",
+        "wrongExplanations": {
+          "A": "در این وضعیت بدون قفل‌شدگی و بدون تمرین ساختاریافتهٔ قبلی، پارگی دژنراتیو در MRI، برداشت جزئی را به اقدام نخستِ ترجیحی تبدیل نمی‌کند.",
+          "B": "شکاف افقی دژنراتیو با پارگی طولی محیطی حاد و قابل ترمیم یکسان نیست. MRI به‌تنهایی بخیه را به اقدام نخست در اینجا تبدیل نمی‌کند.",
+          "D": "بی‌حرکت‌سازی با بریس جای رویکرد تمرینی فعالِ دارای پشتوانه را نمی‌گیرد. تعدیل فعالیت می‌تواند به‌صورت فردی مکمل باشد، اما معادل بی‌حرکت‌سازی به‌عنوان درمان اصلی نیست."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://www.bmj.com/content/354/bmj.i3740"
+      },
+      {
+        "id": "meniskus-fa-11",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "سیگنال خطی در تمام صفحات کاملاً داخل منیسک باقی می‌ماند. کدام گرید مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "گرید ۱"
+          },
+          {
+            "id": "B",
+            "text": "گرید ۲a"
+          },
+          {
+            "id": "C",
+            "text": "گرید ۲c"
+          },
+          {
+            "id": "D",
+            "text": "گرید ۳"
+          }
+        ],
+        "correct": "B",
+        "explanation": "گرید ۲a: سیگنال خطی بدون تماس سطح مفصلی؛ این تشخیص پارگی قطعی نیست.",
+        "wrongExplanations": {
+          "A": "گرید ۱ معمولاً کانونی/نقطه‌ای است.",
+          "C": "گرید ۲c گوه‌ای/گلوبولار وسیع است، نه فقط خطی.",
+          "D": "گرید ۳ بر پایهٔ سیگنال به تماس سطحی قطعی نیاز دارد."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/3602385/"
+      },
+      {
+        "id": "meniskus-fa-12",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "نقص از لبهٔ آزاد منیسک آغاز می‌شود و الیاف حلقوی را عرضی قطع می‌کند. نوع پارگی چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پارگی افقی"
+          },
+          {
+            "id": "B",
+            "text": "پارگی طولی"
+          },
+          {
+            "id": "C",
+            "text": "پارگی شعاعی"
+          },
+          {
+            "id": "D",
+            "text": "پارگی دسته‌سطلی"
+          }
+        ],
+        "correct": "C",
+        "explanation": "پارگی شعاعی از لبهٔ آزاد به خارج و عرض الیاف حلقوی پیش می‌رود؛ پارگی عمیق و کامل انتقال تنش حلقوی را شدیداً مختل می‌کند.",
+        "wrongExplanations": {
+          "A": "پارگی افقی موازی صفحهٔ تیبیا و جداکنندهٔ لایه‌هاست.",
+          "B": "پارگی طولی امتداد محیط و الیاف حلقوی را دنبال می‌کند.",
+          "D": "پارگی دسته‌سطلی پارگی طولی جابه‌جا‌شده است، نه شعاعی."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-fa-13",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "بخش معمولاً قابل‌مشاهدهٔ منیسک در ساژیتال غایب است (Ghost sign)؛ کرونال و اکسیال نقص تمام‌عرض دارند. بهترین تشخیص چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "دژنراسیون منفرد گرید ۱"
+          },
+          {
+            "id": "B",
+            "text": "پارگی شعاعی کامل"
+          },
+          {
+            "id": "C",
+            "text": "هیاتوس طبیعی پوپلیتئوس"
+          },
+          {
+            "id": "D",
+            "text": "پارگی افقی ساده بدون فقدان بافت"
+          }
+        ],
+        "correct": "B",
+        "explanation": "نقص تأییدشدهٔ تمام‌عرض با پارگی شعاعی کامل سازگار است؛ علامت Ghost به‌تنهایی اختصاصی نیست و ناحیهٔ ریشه هم بررسی شود.",
+        "wrongExplanations": {
+          "A": "گرید ۱ نقص بافت چندصفحه‌ای را توضیح نمی‌دهد.",
+          "C": "هیاتوس پوپلیتئوس خلفی‌خارجی نقص تمام‌عرض منیسک را توضیح نمی‌دهد.",
+          "D": "پارگی افقی لایه‌ها را جدا می‌کند؛ نقص توصیف‌شده شعاعی و کامل است."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-fa-14",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "پارگی شعاعی مایل در لبهٔ آزاد قطعه‌ای نوک‌تیز با اتصال باقی‌مانده ایجاد می‌کند. نام مناسب چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پارگی نوک‌طوطی (لَپی)"
+          },
+          {
+            "id": "B",
+            "text": "پارگی افقی"
+          },
+          {
+            "id": "C",
+            "text": "پارگی طولی"
+          },
+          {
+            "id": "D",
+            "text": "پارگی دسته‌سطلی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "مسیر مایل لَپ ایجاد می‌کند؛ در MRI نقص مبدأ و جابه‌جایی به رِسِس مفصل را جست‌وجو کنید.",
+        "wrongExplanations": {
+          "B": "پارگی افقی لایهٔ بالا و پایین را جدا می‌کند؛ لَپ نوک‌تیز توصیف‌شده از پارگی شعاعی مایل است.",
+          "C": "پارگی طولی خالص موازی محیط است.",
+          "D": "در دسته‌سطلی، قطعهٔ داخلی کشیده به مرکز جابه‌جا می‌شود."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-fa-15",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "بیمار قفل‌شدن واقعی در اکستنشن دارد؛ ساژیتال نوار تیرهٔ دوم موازی و قدامی‌تحتانی PCL و کرونال قطعه در ناچ نشان می‌دهد. محتمل‌ترین تشخیص چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پارگی رادیال مایل با فلپ جابه‌جاشده"
+          },
+          {
+            "id": "B",
+            "text": "شاخ خلفی برگشته به قدام"
+          },
+          {
+            "id": "C",
+            "text": "پارگی دسته‌سطلی با قطعهٔ طولی جابه‌جاشده به مرکز"
+          },
+          {
+            "id": "D",
+            "text": "پارگی افقی همراه کیست پارامنیسکال"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Double-PCL و قطعهٔ ناچ به نفع دسته‌سطلی، معمولاً منیسک داخلی، هستند؛ قفل‌شدن واقعی ارزیابی فوری ارتوپدی می‌خواهد.",
+        "wrongExplanations": {
+          "A": "فلپ رادیال هم می‌تواند جابه‌جا شود؛ اینجا قطعهٔ کشیدهٔ بین‌کندیلی در جلو-پایین PCL از الگوی دسته‌سطلی حمایت می‌کند.",
+          "B": "شاخ خلفی برگشته به قدام کنار شاخ قدامی قرار می‌گیرد و ممکن است آن را دوگانه کند؛ متن قطعه را در ناچ بین‌کندیلی موازی PCL قرار می‌دهد.",
+          "D": "پارگی افقی بخش‌های بالا و پایین را جدا می‌کند و ممکن است با کیست ارتباط داشته باشد؛ قطعهٔ طولی مرکزی توصیف‌شده را توضیح نمی‌دهد."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/19234702/"
+      },
+      {
+        "id": "meniskus-fa-16",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "کنار شاخ قدامی ساختار دوم شبیه منیسک دیده می‌شود. کدام یافتهٔ اضافی بیش از بقیه به نفع جابه‌جایی شاخ خلفی به قدام، در مقایسه با واریانت شاخ قدامی است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "خالی بودن محل اصلی شاخ خلفی همراه مسیر قابل پیگیری قطعه"
+          },
+          {
+            "id": "B",
+            "text": "تنهٔ پهن منیسک در برش میانی کرونال"
+          },
+          {
+            "id": "C",
+            "text": "سیگنال پایین همگن در هر دو ساختار قدامی"
+          },
+          {
+            "id": "D",
+            "text": "سیگنال نقطه‌ای داخل منیسک بدون تماس سطحی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "نبود بافت در محل مبدأ و پیوستگی قطعه در صفحات مختلف از جابه‌جایی حمایت می‌کنند. شاخ قدامی ظاهراً دوگانه به‌تنهایی می‌تواند واریانت باشد.",
+        "wrongExplanations": {
+          "B": "عرض تنه به ارزیابی مورفولوژی دیسکوئید کمک می‌کند، اما منشأ ساختار اضافی قدامی را ثابت نمی‌کند.",
+          "C": "بافت منیسک و واریانت‌ها هر دو می‌توانند کم‌سیگنال باشند؛ سیگنال به‌تنهایی محل مبدأ را مشخص نمی‌کند.",
+          "D": "سیگنال کانونی بدون تماس سطحی تغییر داخل‌منیسکی را توصیف می‌کند، نه اثبات جابه‌جایی قطعه."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/8316871/"
+      },
+      {
+        "id": "meniskus-fa-17",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "با ضخامت برش ۲ میلی‌متر، تنهٔ منیسک خارجی در سه تصویر مجاور ساژیتال به‌طور پیوسته دیده می‌شود. کدام گام بعدی مورفولوژی دیسکوئید احتمالی را بهتر ارزیابی می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "اعمال معیار تاریخی سه bow-tie بر سری ۲ میلی‌متری"
+          },
+          {
+            "id": "B",
+            "text": "اندازه‌گیری عرض تنه در برش میانی کرونال و ارزیابی شکل کلی"
+          },
+          {
+            "id": "C",
+            "text": "طبقه‌بندی سیگنال داخل منیسک با درجه‌بندی سیگنال"
+          },
+          {
+            "id": "D",
+            "text": "اندازه‌گیری بیرون‌زدگی محیطی از لبهٔ پلاتوی تیبیا"
+          }
+        ],
+        "correct": "B",
+        "explanation": "توصیهٔ کنونی SSR عرض تنهٔ ≥۱۵ میلی‌متر در برش میانی کرونال را پشتیبانی می‌کند. شکل و صفحهٔ درست اندازه‌گیری بررسی شوند؛ سه برش ۲ میلی‌متری شاهد مستقل تشخیص نیستند.",
+        "wrongExplanations": {
+          "A": "تعداد bow-tie به ضخامت برش وابسته است. معیار قدیمی سه bow-tie نباید در برش‌های نازک امروزی برای تشخیص به‌کار رود.",
+          "C": "درجه‌بندی سیگنال الگوی بافت/سطح را توصیف می‌کند، نه پهنا یا شکل دیسکوئید.",
+          "D": "این اندازه‌گیری اکستروژن را ارزیابی می‌کند؛ ویژگی شکلی متفاوتی از پهنای تنهٔ منیسک دیسکوئید است."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-fa-18",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "کدام اندازه‌گیری کمی کرونال به نفع منیسک خارجی دیسکویید است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پهنای تنه ≥۱۵ میلی‌متر یا نسبت حداقل پهنای منیسک به حداکثر پهنای تیبیا ≥۲۰٪."
+          },
+          {
+            "id": "B",
+            "text": "اکستروژن >۳ میلی‌متر به‌عنوان تنها معیار شکل"
+          },
+          {
+            "id": "C",
+            "text": "طول پارگی >۱۵ میلی‌متر"
+          },
+          {
+            "id": "D",
+            "text": "مجموع پهنای شاخ قدامی و خلفی / قطر منیسک ≥۷۵٪ به‌عنوان اندازه‌گیری کرونال"
+          }
+        ],
+        "correct": "A",
+        "explanation": "این معیارهای پهنا مؤید تشخیص هستند و با امتداد ساژیتال و شکل کلی ترکیب می‌شوند؛ اندازه‌گیری و صفحه باید مشخص باشند.",
+        "wrongExplanations": {
+          "B": "اکستروژن جابه‌جایی فراتر از حاشیهٔ پلاتوی تیبیا را توصیف می‌کند، نه پهنای کرونال تنه برای شکل دیسکویید.",
+          "C": "طول پارگی، اندازه‌گیری پهنای کلی تنهٔ منیسک نیست.",
+          "D": "این نسبت پوشش در پروتکل اصلی ساموتو در صفحهٔ ساژیتال اندازه‌گیری می‌شود؛ اندازه‌گیری کرونال نیست."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/11973030/"
+      },
+      {
+        "id": "meniskus-fa-19",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "پارگی رادیال کامل در فاصلهٔ ۵ میلی‌متری اتصال تیبیال ریشهٔ خلفی داخلی قرار دارد. کدام بررسی هدفمند آناتومیک گسترهٔ نزدیک ریشه را بهتر روشن می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "بررسی پیوستگی اتصال تیبیال ریشهٔ قدامی"
+          },
+          {
+            "id": "B",
+            "text": "بررسی لبهٔ آزاد تنهٔ منیسک برای پارگی‌های اضافی"
+          },
+          {
+            "id": "C",
+            "text": "دنبال کردن پارگی تا اتصال تیبیال خلفی و ثبت فاصله"
+          },
+          {
+            "id": "D",
+            "text": "بررسی محل اتصال منیسک و کپسول خلفی‌داخلی برای جداشدگی"
+          }
+        ],
+        "correct": "C",
+        "explanation": "محل دقیق و فاصله، رابطه با ریشه را دقیق‌تر از یک برچسب بیان می‌کنند. اکستروژن و یافته‌های غضروفی/زیرغضروفی گزارش را کامل می‌کنند؛ نبود اکستروژن ضایعهٔ ریشه را رد نمی‌کند.",
+        "wrongExplanations": {
+          "A": "ریشهٔ قدامی بخشی از ارزیابی نظام‌مند است، اما گسترهٔ این نقص مجاور ریشهٔ خلفی را مشخص نمی‌کند.",
+          "B": "نقص‌های اضافی تنه مهم‌اند، اما رابطهٔ مورد سؤال با اتصال تیبیال خلفی را پاسخ نمی‌دهند.",
+          "D": "جداشدگی منیسک و کپسول آسیب محیطی دیگری است و جای بررسی مستقیم اتصال تیبیال ریشه را نمی‌گیرد."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-fa-20",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "همراه پارگی رادیال نزدیک ریشه و نقص‌های غضروفی داخلی، منیسک داخلی در برش میانی کرونال ۴ میلی‌متر از لبهٔ غضروفی‌استخوانی پلاتوی تیبیا بیرون زده است. کدام عبارت گزارش اطلاعات بیشتری می‌دهد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ضایعهٔ گرید ۳ با تغییر شکل ثانویهٔ منیسک داخلی"
+          },
+          {
+            "id": "B",
+            "text": "پارگی رادیال نزدیک ریشهٔ منیسک داخلی؛ اکستروژن داخلی ۴ میلی‌متر، با ذکر صفحهٔ اندازه‌گیری و نقص‌های غضروفی داخلی"
+          },
+          {
+            "id": "C",
+            "text": "جابجایی پاتولوژیک منیسک با کندروپاتی داخلی همراه"
+          },
+          {
+            "id": "D",
+            "text": "اکستروژن داخلی منیسک با شک به نارسایی ریشه و کندروپاتی داخلی همراه"
+          }
+        ],
+        "correct": "B",
+        "explanation": "آناتومی، هندسهٔ پارگی، مقدار واقعی اکستروژن با صفحهٔ اندازه‌گیری و یافتهٔ غضروفی باید کنار هم گزارش شوند. آستانهٔ رایج داخلی >۳ میلی‌متر جای عدد اندازه‌گیری‌شده یا تصمیم بالینی را نمی‌گیرد.",
+        "wrongExplanations": {
+          "A": "درجه‌بندی سیگنال جهت، رابطه با ریشه و اکستروژن اندازه‌گیری‌شده را مبهم می‌گذارد؛ این جزئیات آناتومیک از نظر بالینی مفیدترند.",
+          "C": "این عبارت جابه‌جایی را بیان می‌کند، اما هندسهٔ پارگی، رابطه با ریشه و عدد اندازه‌گیری را از دست می‌دهد و تکرارپذیری کمتری دارد.",
+          "D": "این خلاصه عملکرد مشکوک را برجسته می‌کند، اما هندسهٔ مستقیم پارگی و مقدار اکستروژن را از دست می‌دهد. آناتومی و عدد اندازه‌گیری گزارش شوند؛ MRI تنها تصمیم درمانی مستقل از بیمار را تعیین نمی‌کند."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-fa-21",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "شکاف صاف حاوی مایع خلفی‌خارجی کنار تاندون پوپلیتئوس بدون قطع بافت منیسک دیده می‌شود. ابتدا چه باید در نظر گرفته شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "هیئتوس پوپلیتئوس طبیعی"
+          },
+          {
+            "id": "B",
+            "text": "شکاف در محل اتصال رباط عرضی قدامی"
+          },
+          {
+            "id": "C",
+            "text": "شکاف در محل اتصال رباط منیسکوفمورال"
+          },
+          {
+            "id": "D",
+            "text": "پارگی افقی منیسک خارجی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "هیاتوس طبیعی پوپلیتئوس می‌تواند شکاف کنار منیسک خارجی را تقلید کند؛ محل تیپیک و بافت سالم در چند صفحه به افتراق کمک می‌کنند.",
+        "wrongExplanations": {
+          "B": "رباط عرضی شاخ‌های قدامی را به هم وصل می‌کند؛ شکاف اتصال آن مایع خلفی‌خارجی در امتداد تاندون پوپلیتئوس را توضیح نمی‌دهد.",
+          "C": "رباط‌های منیسکوفمورال از شاخ خلفی خارجی کنار PCL تا فمور می‌روند؛ هیئتوس شکاف توصیف‌شده در امتداد تاندون پوپلیتئوس را توضیح می‌دهد.",
+          "D": "پارگی افقی از بافت منیسک می‌گذرد و بخش‌های بالا و پایین را جدا می‌کند؛ اینجا بافت و حاشیه سالم‌اند و شکاف خارج منیسک در امتداد تاندون است."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      },
+      {
+        "id": "meniskus-fa-22",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "سیگنال نقطه‌ای کوچک داخل منیسک با شکل طبیعی و بدون تماس سطحی است. طبقه‌بندی مناسب چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "گرید ۱"
+          },
+          {
+            "id": "B",
+            "text": "گرید ۲a"
+          },
+          {
+            "id": "C",
+            "text": "گرید ۲c"
+          },
+          {
+            "id": "D",
+            "text": "گرید ۳"
+          }
+        ],
+        "correct": "A",
+        "explanation": "گرید ۱ سیگنال کانونی داخل منیسک و دژنراسیون موکویید اولیه است؛ به‌تنهایی پارگی را ثابت نمی‌کند.",
+        "wrongExplanations": {
+          "B": "گرید ۲a خطی است، نه نقطه‌ای.",
+          "C": "گرید ۲c گلوبولار/گوه‌ای وسیع است.",
+          "D": "تماس سطحی قطعی برای گرید ۳ بر پایهٔ سیگنال وجود ندارد."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/3602385/"
+      },
+      {
+        "id": "meniskus-fa-23",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "در جراحی دارای اندیکاسیون بالینی برای پارگی حاد و منفرد منیسک، کدام هدف با اصل «حفظ منیسک» سازگار است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "برداشت تمام ناحیهٔ دارای تغییر سیگنال"
+          },
+          {
+            "id": "B",
+            "text": "تعیین مقدار ثابت برداشت بر اساس طول پارگی"
+          },
+          {
+            "id": "C",
+            "text": "حفظ بیشترین مقدار ممکن بافت عملکردی و بررسی امکان ترمیم"
+          },
+          {
+            "id": "D",
+            "text": "انتخاب روش استاندارد از ناحیهٔ عروقی در MRI"
+          }
+        ],
+        "correct": "C",
+        "explanation": "AAOS۲۰۲۴ در جراحی دارای اندیکاسیون برای پارگی حاد منفرد، حفظ بیشترین مقدار ممکن بافت عملکردی منیسک را توصیه می‌کند. قابلیت ترمیم از MRI تنها استنتاج نمی‌شود؛ این راهنما شامل پارگی‌های دژنراتیو یا ریشه نیست.",
+        "wrongExplanations": {
+          "A": "تغییر سیگنال مرز برداشت نیست؛ مورفولوژی، عملکرد و ارزیابی بافت حین عمل هم مهم‌اند.",
+          "B": "طول پارگی به‌تنهایی مقدار ثابت برداشت را تعیین نمی‌کند؛ هندسه، بافت و امکان حفظ متفاوت‌اند.",
+          "D": "ناحیهٔ عروقی یک عامل زیستی است؛ MRI خون‌رسانی واقعی یا قابلیت ترمیم حین عمل را آن‌قدر مطمئن نشان نمی‌دهد که روش استانداردی تعیین شود."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+      },
+      {
+        "id": "meniskus-fa-36",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "در تصاویر ساژیتال MRI دو ساختار شبیه منیسک در شاخ قدامی و نبود سیگنال طبیعی منیسک در محل اصلی شاخ خلفی دیده می‌شود. کدام الگو مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "علامت PCL دوگانه به‌علت قطعه‌ای در جلوی رباط صلیبی خلفی"
+          },
+          {
+            "id": "B",
+            "text": "علامت نبود bow-tie به‌علت فقدان قطعات تنهٔ منیسک"
+          },
+          {
+            "id": "C",
+            "text": "علامت منیسک شبح‌مانند در پارگی رادیال کامل"
+          },
+          {
+            "id": "D",
+            "text": "الگوی منیسک وارونه‌شده با علائم شاخ قدامی دوگانه و شاخ خلفی خالی"
+          }
+        ],
+        "correct": "D",
+        "explanation": "شاخ خلفی جابه‌جاشده به قدام ممکن است کنار شاخ قدامی قرار گیرد؛ خالی‌بودن محل اصلی شاخ خلفی به نفع این الگو است. واریانت شاخ قدامی همچنان باید به‌عنوان دام تشخیصی بررسی شود.",
+        "wrongExplanations": {
+          "A": "علامت PCL دوگانه قطعه‌ای در جلو-پایین PCL است، نه دوگانگی شاخ قدامی.",
+          "B": "نبود bow-tie به نمایش ساژیتال تنهٔ منیسک مربوط است و دوگانگی شاخ قدامی را توضیح نمی‌دهد.",
+          "C": "علامت شبح ممکن است در پارگی رادیال کامل دیده شود، اما ساختار جابه‌جاشده به قدام را توضیح نمی‌دهد."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/8316871/"
+      },
+      {
+        "id": "meniskus-fa-37",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "اصطلاح Wrisberg rip در PDF به چه چیزی اشاره دارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "رباط سالمی که بتوان آن را در برش‌های ساژیتال تا فمور دنبال کرد"
+          },
+          {
+            "id": "B",
+            "text": "پارگی در اتصال رباط منیسکوفمورال خلفی به شاخ خلفی منیسک خارجی"
+          },
+          {
+            "id": "C",
+            "text": "شکاف افقی در تنهٔ منیسک خارجی"
+          },
+          {
+            "id": "D",
+            "text": "جداشدگی شاخ خلفی داخلی از محل اتصال منیسک و کپسول"
+          }
+        ],
+        "correct": "B",
+        "explanation": "PDF اصطلاح «Wrisberg rip» را برای پارگی طولی-عمودی در شاخ خلفی خارجی نزدیک این اتصال به‌کار می‌برد؛ این یافته به‌تنهایی پارگی ACL را ثابت نمی‌کند.",
+        "wrongExplanations": {
+          "A": "رباط منیسکوفمورال سالم می‌تواند پارگی را تقلید کند؛ پیوستگی تا فمور به نفع رباط است.",
+          "C": "شکاف افقی هندسهٔ پارگی متفاوتی دارد.",
+          "D": "ضایعهٔ منیسک و کپسول خلفی‌داخلی اتصال و سمت دیگری را درگیر می‌کند؛ اصطلاح PDF ناحیهٔ شاخ خلفی خارجی در اتصال رباط منیسکوفمورال خلفی را بیان می‌کند."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7903841/"
+      },
+      {
+        "id": "meniskus-fa-38",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "سناریوی متنی: پس از آسیب ACL، در MRI شکاف با سیگنال مایع در تمام ارتفاع اتصال منیسک و کپسول خلفی‌داخلی شاخ خلفی منیسک داخلی دیده می‌شود. کدام آسیب همراه باید هدفمند گزارش شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پارگی در اتصال منیسکوفمورال خلفی منیسک خارجی"
+          },
+          {
+            "id": "B",
+            "text": "آسیب منیسک و کپسول خلفی‌داخلی در ناحیهٔ رمپ"
+          },
+          {
+            "id": "C",
+            "text": "کنده‌شدگی ریشهٔ قدامی منیسک"
+          },
+          {
+            "id": "D",
+            "text": "پارگی افقی تنه با ارتباط کیستی"
+          }
+        ],
+        "correct": "B",
+        "explanation": "شکاف تمام‌ارتفاع با سیگنال مایع در اتصال خلفی‌داخلی از ضایعهٔ رمپ منیسک و کپسول حمایت می‌کند. اتصال دقیق توصیف و در زمینهٔ آسیب ACL منتقل شود؛ MRI ممکن است این ضایعات را از دست بدهد، پس نمای طبیعی آن‌ها را با اطمینان رد نمی‌کند.",
+        "wrongExplanations": {
+          "A": "آن اتصال در شاخ خلفی خارجی است؛ یافتهٔ توصیف‌شده اتصال منیسک و کپسول خلفی‌داخلی را درگیر می‌کند.",
+          "C": "کنده‌شدگی ریشهٔ قدامی اتصال تیبیال شاخ قدامی را درگیر می‌کند؛ متن اتصال محیطی خلفی را مشخص کرده است.",
+          "D": "پارگی افقی از داخل منیسک می‌گذرد و ممکن است کیست پارامنیسکال ایجاد کند؛ شکاف توصیف‌شده در اتصال کپسولی شاخ خلفی است."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/32875293/"
+      },
+      {
+        "id": "meniskus-fa-39",
+        "tags": [
+          "meniskus",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "سناریوی متنی: لبهٔ داخلی منیسک داخلی موج‌دار است. در برش‌های مجاور بافت پیوسته و عمدتاً کم‌سیگنال همگن می‌ماند و نقص رادیال مستقل یا قطعهٔ جابه‌جاشده وجود ندارد. کدام تفسیر مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پارگی رادیال کامل"
+          },
+          {
+            "id": "B",
+            "text": "پارگی دسته‌سطلی"
+          },
+          {
+            "id": "C",
+            "text": "فلونس منیسک به‌عنوان واریانت شکلی احتمالی"
+          },
+          {
+            "id": "D",
+            "text": "جداشدگی منیسک و کپسول"
+          }
+        ],
+        "correct": "C",
+        "explanation": "فلونس می‌تواند شکل موج‌دار گذرای منیسک سالم باشد و پارگی را تقلید کند. حاشیه و سیگنال در کل سری بررسی شوند. این واریانت شکلی پارگی مستقل هم‌زمان را رد نمی‌کند.",
+        "wrongExplanations": {
+          "A": "پارگی رادیال کامل بافت را در عرض الیاف محیطی قطع می‌کند؛ در متن پیوستگی و سیگنال حفظ شده‌اند.",
+          "B": "پارگی دسته‌سطلی به قطعهٔ طولی جابه‌جاشده نیاز دارد؛ حاشیهٔ موج‌دار صاف بدون قطعه آن را اثبات نمی‌کند.",
+          "D": "جداشدگی منیسک و کپسول اتصال محیطی کپسول را درگیر می‌کند؛ اینجا لبهٔ آزاد داخلی موج‌دار است و نقصی در اتصال کپسولی توصیف نشده است."
+        },
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+          "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+          "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+          "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+          "https://www.bmj.com/content/354/bmj.i3740",
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+        ],
+        "source": "https://pubmed.ncbi.nlm.nih.gov/10992813/"
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "meniskus-01",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Anatomie/MRT-Normalbefund",
+        "en": "Anatomy/MRI normal",
+        "fa": "آناتومی/نمای طبیعی MRI"
+      },
+      "front": {
+        "de": "Warum ist der Innenmeniskus weniger mobil als der Außenmeniskus?",
+        "en": "Why is the medial meniscus less mobile than the lateral meniscus?",
+        "fa": "چرا منیسک داخلی از منیسک خارجی کم‌تحرک‌تر است؟"
+      },
+      "answer": {
+        "de": "Festere Verbindung mit Kapsel und tiefem MCL.",
+        "en": "Stronger attachment to the capsule and deep MCL.",
+        "fa": "اتصال محکم‌تر به کپسول و MCL عمقی."
+      },
+      "explanation": {
+        "de": "Diese Fixierung begrenzt das Ausweichen bei Scherkräften. Die Verletzungsverteilung ist mechanismusabhängig; bei akuter ACL-Ruptur sind Außenmeniskusrisse häufig.",
+        "en": "This attachment limits movement under shear forces. Injury distribution depends on mechanism; lateral tears are common with acute ACL rupture.",
+        "fa": "این اتصال حرکت در برابر نیروهای برشی را محدود می‌کند؛ توزیع آسیب به مکانیسم وابسته است و در پارگی حاد ACL آسیب منیسک خارجی شایع است."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-02",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Anatomie/MRT-Normalbefund",
+        "en": "Anatomy/MRI normal",
+        "fa": "آناتومی/نمای طبیعی MRI"
+      },
+      "front": {
+        "de": "Welches Innenmeniskussegment verdient bei der MRT-Risssuche besondere Aufmerksamkeit?",
+        "en": "Which medial meniscal segment deserves particular attention when searching for tears?",
+        "fa": "در جست‌وجوی پارگی MRI، کدام سگمان منیسک داخلی نیازمند توجه ویژه است؟"
+      },
+      "answer": {
+        "de": "Hinterhorn einschließlich Wurzelregion.",
+        "en": "Posterior horn including the root region.",
+        "fa": "شاخ خلفی، همراه ناحیهٔ ریشه."
+      },
+      "explanation": {
+        "de": "Das Hinterhorn ist häufig betroffen. Trotzdem müssen Vorderhorn, Körper und beide Wurzelansätze systematisch untersucht werden; keine Lokalisation wird allein durch Häufigkeit ausgeschlossen.",
+        "en": "The posterior horn is often affected. Still assess the anterior horn, body and both root attachments systematically; frequency alone does not exclude any location.",
+        "fa": "شاخ خلفی اغلب درگیر است؛ بااین‌حال شاخ قدامی، تنه و هر دو اتصال ریشه باید منظم بررسی شوند و فراوانی، محل دیگر را رد نمی‌کند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-03",
+      "topicId": "meniskus",
+      "category": {
+        "de": "MRT-Rissdiagnostik",
+        "en": "MRI tear diagnosis",
+        "fa": "تشخیص پارگی در MRI"
+      },
+      "front": {
+        "de": "Welche MRT-Befunde stützen einen Riss statt bloßer intrameniskaler Degeneration?",
+        "en": "Which MRI findings support a tear rather than intrasubstance degeneration?",
+        "fa": "کدام یافته‌های MRI از پارگی در برابر دژنراسیون صرف داخل منیسک حمایت می‌کنند؟"
+      },
+      "answer": {
+        "de": "Sicherer Oberflächenkontakt oder ein eindeutiger Form-/Gewebedefekt.",
+        "en": "Definite surface contact or a clear morphological/tissue defect.",
+        "fa": "تماس سطحی قطعی یا نقص واضح شکل/بافت."
+      },
+      "explanation": {
+        "de": "Ein reproduzierbarer Kontakt zu einer Gelenkfläche erhöht die Sicherheit. Abnorme Morphologie oder ein disloziertes Fragment können ebenfalls einen Riss belegen. Signal ohne Kontakt allein ist kein sicherer Riss.",
+        "en": "Reproducible articular-surface contact increases confidence. Abnormal morphology or a displaced fragment can also establish a tear. Signal without contact alone is not a definite tear.",
+        "fa": "تماس تکرارپذیر با سطح مفصلی اطمینان را افزایش می‌دهد؛ مورفولوژی غیرطبیعی یا قطعهٔ جابه‌جا‌شده نیز می‌تواند پارگی را ثابت کند. سیگنال بدون تماس به‌تنهایی پارگی قطعی نیست."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+    },
+    {
+      "id": "meniskus-04",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Lotysch-Klassifikation",
+        "en": "Lotysch classification",
+        "fa": "طبقه‌بندی لوتوش"
+      },
+      "front": {
+        "de": "Was kennzeichnet Grad III in der signalbasierten Lotysch-Einteilung?",
+        "en": "What defines grade III in signal-based Lotysch grading?",
+        "fa": "در تقسیم‌بندی لوتوش بر پایهٔ سیگنال، گرید III با چه مشخص می‌شود؟"
+      },
+      "answer": {
+        "de": "Pathologisches Signal erreicht sicher mindestens eine Gelenkfläche.",
+        "en": "Abnormal signal definitely reaches at least one articular surface.",
+        "fa": "سیگنال پاتولوژیک قطعاً به حداقل یک سطح مفصلی می‌رسد."
+      },
+      "explanation": {
+        "de": "Kontakt zur superioren oder inferioren Fläche genügt. Wiederholung auf mindestens zwei Bildern erhöht die diagnostische Sicherheit; das ist eine zusätzliche Diagnoseregel, nicht die gesamte Definition des Grades.",
+        "en": "Contact with the superior or inferior surface is sufficient. Repetition on at least two images increases confidence; this is an additional diagnostic rule, not the whole grade definition.",
+        "fa": "تماس با سطح فوقانی یا تحتانی کافی است؛ تکرار در حداقل دو تصویر اطمینان را بالا می‌برد. این قاعدهٔ تشخیصی اضافه است، نه تمام تعریف گرید."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+    },
+    {
+      "id": "meniskus-05",
+      "topicId": "meniskus",
+      "category": {
+        "de": "MRT-Rissdiagnostik",
+        "en": "MRI tear diagnosis",
+        "fa": "تشخیص پارگی در MRI"
+      },
+      "front": {
+        "de": "Was leistet die Two-slice-touch-Regel?",
+        "en": "What does the two-slice-touch rule provide?",
+        "fa": "قاعدهٔ Two-slice-touch چه کمکی می‌کند؟"
+      },
+      "answer": {
+        "de": "Mehr Sicherheit durch wiederholten Gelenkflächenkontakt auf mindestens zwei Bildern.",
+        "en": "Greater confidence from repeated articular-surface contact on at least two images.",
+        "fa": "اطمینان بیشتر با تکرار تماس سطح مفصلی در حداقل دو تصویر."
+      },
+      "explanation": {
+        "de": "Sie reduziert falsch-positive Einzelschichtinterpretationen. Im Routinefall wird der Kontakt auf benachbarten Schichten geprüft. Ein eindeutiger Gewebedefekt darf aber nicht allein wegen fehlender Zweischichtdarstellung übersehen werden.",
+        "en": "It reduces false-positive single-image interpretations. In routine assessment, check contact on adjacent slices. A clear tissue defect must not be dismissed just because it is not shown on two slices.",
+        "fa": "این قاعده تفسیر مثبت کاذب تک‌تصویری را کم می‌کند؛ در ارزیابی روتین تماس در برش‌های مجاور بررسی می‌شود. نقص واضح بافت را نباید فقط به علت دیده‌نشدن در دو برش نادیده گرفت."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+    },
+    {
+      "id": "meniskus-06",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Lotysch-Klassifikation",
+        "en": "Lotysch classification",
+        "fa": "طبقه‌بندی لوتوش"
+      },
+      "front": {
+        "de": "Was bedeutet Grad 2b in der erweiterten Grad-2-Einteilung?",
+        "en": "What does grade 2b mean in the extended grade-2 scheme?",
+        "fa": "در تقسیم‌بندی توسعه‌یافتهٔ گرید ۲، گرید ۲b چیست؟"
+      },
+      "answer": {
+        "de": "Lineares Signal mit Oberflächenkontakt nur auf einem Bild; inkonklusiv.",
+        "en": "Linear signal with surface contact on only one image; inconclusive.",
+        "fa": "سیگنال خطی با تماس سطحی فقط در یک تصویر؛ نامطمئن."
+      },
+      "explanation": {
+        "de": "Ein echter Riss bleibt möglich. Nachbarschichten, andere Ebenen und Morphologie prüfen. Grad 2b ist nicht gleichbedeutend mit sicherem Riss, aber auch kein sicherer Ausschluss.",
+        "en": "A real tear remains possible. Review adjacent slices, other planes and morphology. Grade 2b neither proves nor definitely excludes a tear.",
+        "fa": "پارگی واقعی همچنان ممکن است؛ برش‌های مجاور، صفحات دیگر و مورفولوژی بررسی شوند. گرید ۲b نه پارگی را قطعی می‌کند و نه قطعی رد می‌کند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+    },
+    {
+      "id": "meniskus-07",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Anatomie/MRT-Normalbefund",
+        "en": "Anatomy/MRI normal",
+        "fa": "آناتومی/نمای طبیعی MRI"
+      },
+      "front": {
+        "de": "Wie unterscheiden sich normale Meniskushörner und Meniskuskörper sagittal?",
+        "en": "How do normal meniscal horns and body differ sagittally?",
+        "fa": "شاخ‌ها و تنهٔ طبیعی منیسک در ساژیتال چه تفاوتی دارند؟"
+      },
+      "answer": {
+        "de": "Hörner dreieckig; Körper als Bow-tie-Konfiguration.",
+        "en": "Triangular horns; bow-tie configuration of the body.",
+        "fa": "شاخ‌ها مثلثی؛ تنه به شکل Bow-tie."
+      },
+      "explanation": {
+        "de": "Normaler Faserknorpel ist überwiegend signalarm. Form, Lage und Kontinuität werden über die Serie verfolgt; nicht jede sagittale Schicht muss ein Dreieck zeigen.",
+        "en": "Normal fibrocartilage is predominantly low signal. Follow shape, position and continuity through the series; not every sagittal slice must show a triangle.",
+        "fa": "فیبروغضروف طبیعی عمدتاً کم‌سیگنال است؛ شکل، محل و پیوستگی در کل سری دنبال می‌شوند و لازم نیست تمام برش‌های ساژیتال مثلث نشان دهند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-09",
+      "topicId": "meniskus",
+      "category": {
+        "de": "MRT-Rissdiagnostik",
+        "en": "MRI tear diagnosis",
+        "fa": "تشخیص پارگی در MRI"
+      },
+      "front": {
+        "de": "Welche MRT-Bilder helfen bei der Meniskusbeurteilung?",
+        "en": "Which MRI images help assess the meniscus?",
+        "fa": "کدام تصاویر MRI به ارزیابی منیسک کمک می‌کنند؟"
+      },
+      "answer": {
+        "de": "Dünnschichtige PD-/intermediär gewichtete und flüssigkeitssensitive Bilder, multiplanar.",
+        "en": "Thin-section PD/intermediate-weighted and fluid-sensitive images in multiple planes.",
+        "fa": "تصاویر نازک PD/وزن‌دهی میانی و حساس به مایع در چند صفحه."
+      },
+      "explanation": {
+        "de": "PD mit oder ohne Fettsättigung stellt Meniskusstruktur gut dar; T2-fs zeigt Flüssigkeit und Ödem. Kein einzelner Sequenzname ersetzt den Abgleich von sagittalen, koronalen und axialen Bildern.",
+        "en": "PD with or without fat suppression depicts meniscal structure well; T2-fs shows fluid and oedema. No single sequence replaces sagittal, coronal and axial correlation.",
+        "fa": "PD با یا بدون سرکوب چربی ساختار منیسک را خوب نشان می‌دهد و T2-fs مایع و ادم را؛ هیچ سکانس منفرد جای تطبیق ساژیتال، کرونال و اکسیال را نمی‌گیرد."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/"
+    },
+    {
+      "id": "meniskus-10",
+      "topicId": "meniskus",
+      "category": {
+        "de": "MRT-Rissdiagnostik",
+        "en": "MRI tear diagnosis",
+        "fa": "تشخیص پارگی در MRI"
+      },
+      "front": {
+        "de": "Warum sind dünne MRT-Schichten für Menisken hilfreich?",
+        "en": "Why are thin MRI slices useful for menisci?",
+        "fa": "چرا برش نازک MRI برای منیسک مفید است؟"
+      },
+      "answer": {
+        "de": "Weniger Partialvolumen, bessere Darstellung kleiner Defekte.",
+        "en": "Less partial volume and better depiction of small defects.",
+        "fa": "حجم‌جزئی کمتر و نمایش بهتر نقص‌های کوچک."
+      },
+      "explanation": {
+        "de": "Laut ESSR sind 4 mm akzeptabel, ≤3 mm vorzuziehen; 3 mm sind kein universeller Standard. Die Zahl sichtbarer Schichten stets relativ zu Dicke und Protokoll interpretieren.",
+        "en": "ESSR considers 4 mm acceptable and ≤3 mm preferable; 3 mm is not a universal standard. Interpret visible slice count relative to slice thickness and protocol.",
+        "fa": "طبق توصیه ESSR، ضخامت ۴ میلی‌متر قابل‌قبول و ≤۳ میلی‌متر ترجیح‌داده‌شده است؛ ۳ میلی‌متر استاندارد همگانی نیست. تعداد برش‌های قابل مشاهده را با توجه به ضخامت و پروتکل تفسیر کنید."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/"
+    },
+    {
+      "id": "meniskus-11",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Meniskus",
+        "en": "Meniscus",
+        "fa": "منیسک"
+      },
+      "front": {
+        "de": "Welche Zone hat das höchste biologische Heilungspotenzial?",
+        "en": "Which zone has the highest biological healing potential?",
+        "fa": "کدام ناحیه بیشترین ظرفیت زیستی ترمیم را دارد؟"
+      },
+      "answer": {
+        "de": "Die kapselnahe rote Zone.",
+        "en": "The peripheral red zone next to the capsule.",
+        "fa": "ناحیهٔ قرمز کنار کپسول."
+      },
+      "explanation": {
+        "de": "Sie ist am besten durchblutet. Die rot-weiße Zone ist eine Übergangszone, die weiße Zone avaskulär. Gefäßzone allein entscheidet nicht über Reparabilität oder Therapie.",
+        "en": "It has the best blood supply. The red-white zone is transitional and the white zone avascular. Vascular zone alone does not determine repairability or management.",
+        "fa": "این ناحیه بهترین خون‌رسانی را دارد؛ قرمز-سفید انتقالی و سفید بدون عروق است. ناحیهٔ عروقی به‌تنهایی قابلیت ترمیم یا درمان را تعیین نمی‌کند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-12",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Therapie/Vaskularisation",
+        "en": "Therapy/Vascularity",
+        "fa": "درمان/خون‌رسانی"
+      },
+      "front": {
+        "de": "Warum ist das Heilungspotenzial zentraler Meniskusrisse geringer?",
+        "en": "Why do central meniscal tears have lower healing potential?",
+        "fa": "چرا ظرفیت ترمیم پارگی مرکزی منیسک کمتر است؟"
+      },
+      "answer": {
+        "de": "Geringe bzw. fehlende Gefäßversorgung der weißen Zone.",
+        "en": "Low or absent vascular supply in the white zone.",
+        "fa": "خون‌رسانی کم یا غایب ناحیهٔ سفید."
+      },
+      "explanation": {
+        "de": "Die weiße Zone wird überwiegend über Synovialflüssigkeit ernährt. Geringere biologische Heilung ist nicht mit absoluter Unreparierbarkeit gleichzusetzen; Rissform und Gewebequalität bleiben wichtig.",
+        "en": "The white zone is nourished mainly through synovial fluid. Lower biological healing does not mean absolute non-repairability; pattern and tissue quality still matter.",
+        "fa": "ناحیهٔ سفید عمدتاً از مایع سینوویال تغذیه می‌شود؛ ظرفیت کمتر ترمیم به معنای غیرقابل‌ترمیم‌بودن مطلق نیست و شکل پارگی و کیفیت بافت مهم‌اند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-13",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Therapie/Vaskularisation",
+        "en": "Therapy/Vascularity",
+        "fa": "درمان/خون‌رسانی"
+      },
+      "front": {
+        "de": "Welche Befunde begünstigen die Reparabilität eines Meniskusrisses?",
+        "en": "Which findings favour repairability of a meniscal tear?",
+        "fa": "کدام یافته‌ها به نفع قابلیت ترمیم پارگی منیسک هستند؟"
+      },
+      "answer": {
+        "de": "Periphere Lage, reparable Rissform und gutes, stabil rekonstruierbares Gewebe.",
+        "en": "Peripheral location, repairable pattern and good tissue that permits stable reconstruction.",
+        "fa": "محل محیطی، شکل قابل‌ترمیم و بافت خوب با امکان بازسازی پایدار."
+      },
+      "explanation": {
+        "de": "Periphere Lage kann das biologische Heilungspotenzial begünstigen. Gewebequalität, Rissgeometrie, Kniezustand und klinischer Kontext bleiben entscheidend; MRT allein legt Reparabilität nicht fest.",
+        "en": "Peripheral location may favour biological healing potential. Tissue quality, tear geometry, knee status and clinical context remain important; MRI alone does not establish repairability.",
+        "fa": "محل محیطی ممکن است زمینهٔ زیستی ترمیم را بهتر کند. کیفیت بافت، هندسهٔ پارگی، وضعیت زانو و زمینهٔ بالینی مهم‌اند؛ MRI به‌تنهایی قابلیت ترمیم را تعیین نمی‌کند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-14",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Therapie/Vaskularisation",
+        "en": "Therapy/Vascularity",
+        "fa": "درمان/خون‌رسانی"
+      },
+      "front": {
+        "de": "Was bedeutet Save the Meniscus praktisch?",
+        "en": "What does Save the Meniscus mean in practice?",
+        "fa": "Save the Meniscus در عمل یعنی چه؟"
+      },
+      "answer": {
+        "de": "Bei indizierter Operation möglichst viel funktionsfähiges Gewebe erhalten.",
+        "en": "When surgery is indicated, preserve as much functional tissue as possible.",
+        "fa": "وقتی جراحی اندیکاسیون دارد، بیشترین بافت عملکردی حفظ شود."
+      },
+      "explanation": {
+        "de": "Menisken verteilen Last und schützen den Knorpel. Unnötige Resektion vermeiden und Reparabilität prüfen. Ein degenerativer MRT-Riss ohne echte Blockade ist allein keine OP-Indikation; konservative Therapie ist meist der erste Ansatz.",
+        "en": "Menisci distribute load and protect cartilage. Avoid unnecessary resection and assess repairability. A degenerative MRI tear without true locking alone is not a surgical indication; non-operative care is usually first-line.",
+        "fa": "منیسک بار را توزیع و غضروف را محافظت می‌کند؛ برداشت غیرضروری اجتناب و قابلیت ترمیم بررسی شود. پارگی دژنراتیو MRI بدون قفل‌شدن واقعی به‌تنهایی اندیکاسیون جراحی نیست و درمان غیرجراحی معمولاً مقدم است."
+      },
+      "source": "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+      "sources": [
+        "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+        "https://www.bmj.com/content/354/bmj.i3740"
+      ]
+    },
+    {
+      "id": "meniskus-15",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Risstypen und Dislokation",
+        "en": "Tear types and displacement",
+        "fa": "انواع پارگی و جابه‌جایی"
+      },
+      "front": {
+        "de": "Was ist das Double-PCL-Zeichen?",
+        "en": "What is the double-PCL sign?",
+        "fa": "علامت Double-PCL چیست؟"
+      },
+      "answer": {
+        "de": "Disloziertes Meniskusfragment parallel und anteroinferior zum PCL.",
+        "en": "A displaced meniscal fragment parallel and anteroinferior to the PCL.",
+        "fa": "قطعهٔ منیسک جابه‌جا‌شده موازی و قدامی‌تحتانی PCL."
+      },
+      "explanation": {
+        "de": "Es stützt einen Korbhenkelriss, meist des Innenmeniskus. Den Ursprungsdefekt und das Interkondylarfragment in mehreren Ebenen bestätigen; anatomische Bänder können dunkle Strukturen imitieren.",
+        "en": "It supports a bucket-handle tear, usually medial. Confirm the donor defect and notch fragment in multiple planes; normal ligaments may mimic dark structures.",
+        "fa": "این علامت مؤید دسته‌سطلی، معمولاً داخلی، است؛ نقص مبدأ و قطعهٔ ناچ در چند صفحه تأیید شوند، چون رباط طبیعی ممکن است ساختار تیره را تقلید کند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/19234702/"
+    },
+    {
+      "id": "meniskus-16",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Risstypen und Dislokation",
+        "en": "Tear types and displacement",
+        "fa": "انواع پارگی و جابه‌جایی"
+      },
+      "front": {
+        "de": "Wie wird ein fehlendes Bow-tie-Zeichen interpretiert?",
+        "en": "How should an absent bow-tie sign be interpreted?",
+        "fa": "فقدان Bow-tie چگونه تفسیر می‌شود؟"
+      },
+      "answer": {
+        "de": "Hinweis auf Gewebeverlust oder Fragmentverlagerung, nicht allein beweisend.",
+        "en": "A clue to tissue loss or displacement, not diagnostic alone.",
+        "fa": "نشانهٔ فقدان بافت یا جابه‌جایی قطعه، نه اثبات‌کننده به‌تنهایی."
+      },
+      "explanation": {
+        "de": "Nach einem dislozierten Fragment und Ursprungsdefekt suchen. Auch Radiärriss, vorangegangene Resektion, kleine Meniskusform und Schichtführung können die Darstellung verändern.",
+        "en": "Search for a displaced fragment and donor defect. Radial tears, prior resection, a small meniscus and slice positioning can also alter its appearance.",
+        "fa": "قطعهٔ جابه‌جا‌شده و نقص مبدأ جست‌وجو شوند؛ پارگی شعاعی، برداشت قبلی، منیسک کوچک و جهت برش هم ظاهر را تغییر می‌دهند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-18",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Discoider Meniskus",
+        "en": "Discoid meniscus",
+        "fa": "منیسک دیسکویید"
+      },
+      "front": {
+        "de": "Was ist ein discoider Meniskus und welcher Meniskus ist meist betroffen?",
+        "en": "What is a discoid meniscus and which meniscus is usually affected?",
+        "fa": "منیسک دیسکویید چیست و معمولاً کدام منیسک درگیر است؟"
+      },
+      "answer": {
+        "de": "Angeborener, verbreiterter scheibenförmiger Meniskus, fast immer lateral.",
+        "en": "A congenital broad disc-shaped meniscus, almost always lateral.",
+        "fa": "منیسک مادرزادی پهن و دیسکی‌شکل، تقریباً همیشه خارجی."
+      },
+      "explanation": {
+        "de": "Die Formvariante kann asymptomatisch sein oder mit Instabilität und Rissen einhergehen. Discoid allein bedeutet weder Riss noch automatische Therapiebedürftigkeit.",
+        "en": "The variant may be asymptomatic or associated with instability and tears. Discoid shape alone means neither a tear nor an automatic need for treatment.",
+        "fa": "این گونه می‌تواند بی‌علامت یا همراه ناپایداری و پارگی باشد؛ شکل دیسکویید به‌تنهایی نه پارگی است و نه الزام به درمان."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-19",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Discoider Meniskus",
+        "en": "Discoid meniscus",
+        "fa": "منیسک دیسکویید"
+      },
+      "front": {
+        "de": "Welche kindlichen Symptome lassen an einen discoiden Außenmeniskus denken?",
+        "en": "Which childhood symptoms suggest a discoid lateral meniscus?",
+        "fa": "کدام علائم در کودک منیسک خارجی دیسکویید را مطرح می‌کنند؟"
+      },
+      "answer": {
+        "de": "Schnappen/Klicken, Schmerzen oder mechanische Beschwerden.",
+        "en": "Snapping/clicking, pain or mechanical symptoms.",
+        "fa": "تق‌تق/کلیک، درد یا علائم مکانیکی."
+      },
+      "explanation": {
+        "de": "Diese Symptome sind nicht spezifisch. Im MRT Form, Breite, Riss und Instabilitätszeichen prüfen; ein asymptomatischer discoider Meniskus benötigt nicht automatisch einen Eingriff.",
+        "en": "These symptoms are not specific. Assess MRI shape, width, tears and instability signs; an asymptomatic discoid meniscus does not automatically require intervention.",
+        "fa": "این علائم اختصاصی نیستند؛ در MRI شکل، پهنا، پارگی و نشانه‌های ناپایداری بررسی شوند و دیسکویید بی‌علامت الزاماً مداخله نمی‌خواهد."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-20",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Discoider Meniskus",
+        "en": "Discoid meniscus",
+        "fa": "منیسک دیسکویید"
+      },
+      "front": {
+        "de": "Warum reicht das Drei-Schichten-Zeichen bei dünnen MRT-Schichten nicht allein für discoid?",
+        "en": "Why is the three-slice sign alone insufficient with thin MRI slices for discoid meniscus?",
+        "fa": "چرا علامت سه برش در MRI نازک به‌تنهایی برای دیسکویید کافی نیست؟"
+      },
+      "answer": {
+        "de": "Die sichtbare Schichtzahl hängt von der Schnittdicke ab.",
+        "en": "The visible slice count depends on slice thickness.",
+        "fa": "تعداد برش‌های قابل‌مشاهده به ضخامت وابسته است."
+      },
+      "explanation": {
+        "de": "Bei modernen dünnen Schichten soll die Drei-Bow-tie-Regel nicht diagnostisch verwendet werden. Mittlere koronale Corpusbreite und Gesamtform prüfen. Samoto beschrieb zusätzlich ein sagittales Verhältnis aus der Summe der Vorder-/Hinterhornbreiten zum maximalen Meniskusdurchmesser von ≥75 %.",
+        "en": "With modern thin sections, the three-bowtie rule should not be used diagnostically. Assess mid-coronal body width and overall shape. Samoto additionally described a sagittal ratio of summed anterior/posterior horn widths to maximum meniscal diameter ≥75%.",
+        "fa": "در برش‌های نازک امروزی قاعدهٔ سه bow-tie نباید برای تشخیص به‌کار رود. عرض تنه در کرونال میانی و شکل کلی بررسی شوند. Samoto نسبت ساژیتال مجموع عرض شاخ‌های قدامی/خلفی به بیشترین قطر منیسک ≥۷۵٪ را نیز توصیف کرده است."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-21",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Discoider Meniskus",
+        "en": "Discoid meniscus",
+        "fa": "منیسک دیسکویید"
+      },
+      "front": {
+        "de": "Welche koronalen Breitenkriterien unterstützen einen discoiden Außenmeniskus?",
+        "en": "Which coronal width criteria support a discoid lateral meniscus?",
+        "fa": "کدام معیارهای پهنای کرونال از منیسک خارجی دیسکویید حمایت می‌کنند؟"
+      },
+      "answer": {
+        "de": "Körperbreite ≥15 mm oder minimale Meniskusbreite / maximale Tibiabreite ≥20 %.",
+        "en": "Body width ≥15 mm or minimum meniscal / maximum tibial width ≥20%.",
+        "fa": "پهنای تنه ≥۱۵ میلی‌متر یا حداقل پهنای منیسک / حداکثر پهنای تیبیا ≥۲۰٪."
+      },
+      "explanation": {
+        "de": "Die Messungen stützen die Diagnose und werden mit Gesamtform und sagittaler Ausdehnung kombiniert. Extrusion ist ein anderer Parameter und kein Ersatz für die Körperbreite.",
+        "en": "These measurements support diagnosis and are combined with overall shape and sagittal extent. Extrusion is a different parameter, not a substitute for body width.",
+        "fa": "اندازه‌گیری‌ها مؤید تشخیص‌اند و با شکل کلی و امتداد ساژیتال ترکیب می‌شوند؛ اکستروژن پارامتر دیگری است و جای پهنای تنه را نمی‌گیرد."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/11973030/"
+    },
+    {
+      "id": "meniskus-22",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Risstypen und Dislokation",
+        "en": "Tear types and displacement",
+        "fa": "انواع پارگی و جابه‌جایی"
+      },
+      "front": {
+        "de": "Wie unterscheiden sich Horizontal- und Radiärriss?",
+        "en": "How do horizontal and radial tears differ?",
+        "fa": "پارگی افقی و شعاعی چه تفاوتی دارند؟"
+      },
+      "answer": {
+        "de": "Horizontal: parallel zur Tibiaebene. Radial: vom freien Rand quer zu Ringfasern.",
+        "en": "Horizontal: parallel to the tibial plane. Radial: from the free edge across circumferential fibres.",
+        "fa": "افقی: موازی صفحهٔ تیبیا. شعاعی: از لبهٔ آزاد در عرض الیاف حلقوی."
+      },
+      "explanation": {
+        "de": "Der Horizontalriss spaltet obere und untere Lamelle. Der Radiärriss läuft Richtung Peripherie; seine biomechanische Bedeutung hängt besonders von Tiefe und Vollständigkeit ab.",
+        "en": "A horizontal tear splits upper and lower leaflets. A radial tear runs towards the periphery; its biomechanical impact depends particularly on depth and completeness.",
+        "fa": "پارگی افقی لایهٔ بالا و پایین را جدا می‌کند؛ شعاعی به سمت محیط می‌رود و اهمیت مکانیکی آن به‌ویژه به عمق و کامل‌بودن وابسته است."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-23",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Risstypen und Dislokation",
+        "en": "Tear types and displacement",
+        "fa": "انواع پارگی و جابه‌جایی"
+      },
+      "front": {
+        "de": "Welche Rissform ist häufig mit einer parameniskalen Zyste assoziiert?",
+        "en": "Which tear pattern is often associated with a parameniscal cyst?",
+        "fa": "کدام شکل پارگی اغلب با کیست پارامنیسکال همراه است؟"
+      },
+      "answer": {
+        "de": "Horizontalriss.",
+        "en": "Horizontal tear.",
+        "fa": "پارگی افقی."
+      },
+      "explanation": {
+        "de": "Flüssigkeit kann über einen Riss nach außen gelangen. Zyste und mögliche Kommunikation zum Meniskus beschreiben; die Assoziation ist typisch, aber nicht auf Horizontalrisse beschränkt.",
+        "en": "Fluid can pass outward through a tear. Describe the cyst and possible meniscal communication; the association is typical but not exclusive to horizontal tears.",
+        "fa": "مایع می‌تواند از مسیر پارگی خارج شود؛ کیست و ارتباط احتمالی با منیسک توصیف شوند. همراهی تیپیک است اما فقط به پارگی افقی محدود نیست."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-24",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Risstypen und Dislokation",
+        "en": "Tear types and displacement",
+        "fa": "انواع پارگی و جابه‌جایی"
+      },
+      "front": {
+        "de": "Warum ist ein vollständiger Radiärriss biomechanisch besonders relevant?",
+        "en": "Why is a complete radial tear particularly important biomechanically?",
+        "fa": "چرا پارگی شعاعی کامل از نظر مکانیکی اهمیت ویژه دارد؟"
+      },
+      "answer": {
+        "de": "Vollständige Unterbrechung der zirkumferenziellen Fasern und Ringspannung.",
+        "en": "Complete interruption of circumferential fibres and hoop-stress transmission.",
+        "fa": "قطع کامل الیاف حلقوی و انتقال تنش حلقوی."
+      },
+      "explanation": {
+        "de": "Ein Defekt über die gesamte Breite stört die Lastverteilung stark. Wurzelbezug, Extrusion und Knorpelstatus mitbeurteilen; ein kleiner partieller Radiärriss hat nicht automatisch die gleiche Wirkung.",
+        "en": "A full-width defect markedly disrupts load distribution. Assess root relationship, extrusion and cartilage; a small partial radial tear does not automatically have the same effect.",
+        "fa": "نقص تمام‌عرض توزیع بار را شدیداً مختل می‌کند؛ ارتباط ریشه، اکستروژن و غضروف ارزیابی شوند. شعاعی کوچک و جزئی الزاماً همین اثر را ندارد."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-27",
+      "topicId": "meniskus",
+      "front": {
+        "de": "Was beschreibt Grad 2a im historischen Signalgrading?",
+        "en": "What does grade 2a describe in historical signal grading?",
+        "fa": "گرید ۲a در درجه‌بندی تاریخی سیگنال چه چیزی را توصیف می‌کند؟"
+      },
+      "answer": {
+        "de": "Lineares intrameniskales Signal ohne Oberflächenkontakt.",
+        "en": "Linear intrasubstance signal without surface contact.",
+        "fa": "سیگنال خطی داخل منیسک بدون تماس سطحی."
+      },
+      "explanation": {
+        "de": "Das ist eine Signalbeschreibung, keine gesicherte Histologie oder Operationsindikation. Oberflächenkontakt, Kontur und Kontinuität in der vollständigen Serie prüfen; im klinischen Befund sind diese Angaben hilfreicher als der Grad allein.",
+        "en": "This is a signal description, not established histology or a surgical indication. Assess surface contact, contour and continuity throughout the complete series; these details are more useful in a clinical report than grade alone.",
+        "fa": "این توصیف سیگنال است، نه بافت‌شناسی قطعی یا اندیکاسیون جراحی. تماس سطحی، حاشیه و پیوستگی در کل سری بررسی شوند؛ در گزارش بالینی این جزئیات از گرید تنها مفیدترند."
+      },
+      "category": {
+        "de": "Lotysch-Klassifikation",
+        "en": "Lotysch classification",
+        "fa": "طبقه‌بندی لوتوش"
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-28",
+      "topicId": "meniskus",
+      "front": {
+        "de": "Was ist Grad 2c?",
+        "en": "What is grade 2c?",
+        "fa": "گرید ۲c چیست؟"
+      },
+      "answer": {
+        "de": "Ausgedehntes keilförmiges/globuläres Signal ohne sicheren Oberflächenkontakt.",
+        "en": "Extensive wedge-shaped/globular signal without definite surface contact.",
+        "fa": "سیگنال وسیع گوه‌ای/گلوبولار بدون تماس سطحی قطعی."
+      },
+      "explanation": {
+        "de": "Ein okkulter Riss ist möglich; allein ist dieser Befund kein sicherer Rissnachweis. 2a, 2b und 2c sind Untertypen von Grad 2, keine zusätzlichen Hauptgrade.",
+        "en": "An occult tear is possible; the finding alone does not prove a tear. 2a, 2b and 2c are subtypes of grade 2, not additional main grades.",
+        "fa": "پارگی مخفی ممکن است، اما این یافته به‌تنهایی آن را ثابت نمی‌کند. ۲a، ۲b و ۲c زیرگروه گرید ۲ هستند، نه گریدهای اصلی جدا."
+      },
+      "category": {
+        "de": "Lotysch-Klassifikation",
+        "en": "Lotysch classification",
+        "fa": "طبقه‌بندی لوتوش"
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/12185036/"
+    },
+    {
+      "id": "meniskus-29",
+      "topicId": "meniskus",
+      "front": {
+        "de": "Wie verläuft ein Longitudinalriss und wann wird er zum Korbhenkelriss?",
+        "en": "What is the orientation of a longitudinal tear and when is it called bucket-handle?",
+        "fa": "مسیر پارگی طولی چیست و چه زمانی دسته‌سطلی نامیده می‌شود؟"
+      },
+      "answer": {
+        "de": "Vertikal entlang der Peripherie; Korbhenkel bei zentraler Verlagerung des inneren Fragments.",
+        "en": "Vertical along the periphery; bucket-handle when the inner fragment is displaced centrally.",
+        "fa": "عمودی در امتداد محیط؛ با جابه‌جایی قطعهٔ داخلی به مرکز، دسته‌سطلی."
+      },
+      "explanation": {
+        "de": "Ein nicht dislozierter Longitudinalriss ist kein Korbhenkelriss. Periphere Risse können reparabel sein; Dislokation und mechanische Blockade sind klinisch wichtig.",
+        "en": "An undisplaced longitudinal tear is not bucket-handle. Peripheral tears may be repairable; displacement and mechanical locking matter clinically.",
+        "fa": "پارگی طولی بدون جابه‌جایی دسته‌سطلی نیست؛ پارگی محیطی ممکن است قابل‌ترمیم باشد و جابه‌جایی و قفل‌شدن مکانیکی مهم‌اند."
+      },
+      "category": {
+        "de": "Risstypen und Dislokation",
+        "en": "Tear types and displacement",
+        "fa": "انواع پارگی و جابه‌جایی"
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-30",
+      "topicId": "meniskus",
+      "front": {
+        "de": "Was kennzeichnet den Parrot-beak-tear?",
+        "en": "What characterizes a parrot-beak tear?",
+        "fa": "پارگی نوک‌طوطی با چه مشخص می‌شود؟"
+      },
+      "answer": {
+        "de": "Schräger Radiärriss mit spitzem, teilweise angeheftetem Lappen.",
+        "en": "Oblique radial tear with a pointed, partly attached flap.",
+        "fa": "پارگی شعاعی مایل با لَپ نوک‌تیز و اتصال باقی‌مانده."
+      },
+      "explanation": {
+        "de": "Nach Ursprungsdefekt und disloziertem Lappen suchen, auch in Gelenkrecessus. Ein instabiler Lappen kann mechanische Beschwerden verursachen.",
+        "en": "Search for the donor defect and displaced flap, including joint recesses. An unstable flap can cause mechanical symptoms.",
+        "fa": "نقص مبدأ و لَپ جابه‌جا‌شده، از جمله در رِسِس مفصل، جست‌وجو شوند؛ لَپ ناپایدار می‌تواند علائم مکانیکی بدهد."
+      },
+      "category": {
+        "de": "Risstypen und Dislokation",
+        "en": "Tear types and displacement",
+        "fa": "انواع پارگی و جابه‌جایی"
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-31",
+      "topicId": "meniskus",
+      "front": {
+        "de": "Was bezeichnet Flipped Meniscus und welches Zeichen kann entstehen?",
+        "en": "What does flipped meniscus describe and which sign may result?",
+        "fa": "Flipped Meniscus چه چیزی را توصیف می‌کند و چه علامتی ممکن است ایجاد شود؟"
+      },
+      "answer": {
+        "de": "Umgeschlagenes Fragment; nach vorne kann ein Double-Anterior-Horn-Zeichen entstehen.",
+        "en": "A flipped fragment; anterior displacement may produce a double-anterior-horn sign.",
+        "fa": "قطعهٔ برگشته؛ جابه‌جایی به جلو ممکن است Double anterior horn ایجاد کند."
+      },
+      "explanation": {
+        "de": "Ein nach vorne verlagertes Hinterhornfragment liegt neben dem Vorderhorn; das Ursprungshorn ist vermindert. Flipped ist eine Verlagerungsform, häufig bei Korbhenkelrissen, kein eigener Rissverlauf.",
+        "en": "An anteriorly displaced posterior-horn fragment lies beside the anterior horn; the donor horn is reduced. Flipped is a displacement pattern, often with bucket-handle tears, not a separate tear orientation.",
+        "fa": "قطعهٔ شاخ خلفی کنار شاخ قدامی قرار می‌گیرد و شاخ مبدأ کوچک می‌شود؛ Flipped شکل جابه‌جایی، اغلب در دسته‌سطلی، است نه مسیر مستقل پارگی."
+      },
+      "category": {
+        "de": "Risstypen und Dislokation",
+        "en": "Tear types and displacement",
+        "fa": "انواع پارگی و جابه‌جایی"
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/8316871/"
+    },
+    {
+      "id": "meniskus-32",
+      "topicId": "meniskus",
+      "front": {
+        "de": "Was muss bei einem wurzelnahen Meniskusdefekt dokumentiert werden?",
+        "en": "What must be documented for a root-adjacent meniscal defect?",
+        "fa": "در نقص منیسک نزدیک ریشه چه باید ثبت شود؟"
+      },
+      "answer": {
+        "de": "Genauer Ansatzbezug, Kontinuität der Wurzel, Extrusion und Knorpelstatus.",
+        "en": "Precise attachment relationship, root continuity, extrusion and cartilage status.",
+        "fa": "ارتباط دقیق با اتصال، پیوستگی ریشه، اکستروژن و وضعیت غضروف."
+      },
+      "explanation": {
+        "de": "Eine Avulsion oder ein vollständiger wurzelnaher Radiärriss kann die Verankerung funktionell ausschalten. Nicht jeden Radiärriss als Wurzelriss bezeichnen; den Defekt anatomisch lokalisieren.",
+        "en": "An avulsion or complete root-adjacent radial tear can functionally disrupt anchorage. Do not call every radial tear a root tear; localize the defect anatomically.",
+        "fa": "کندگی یا شعاعی کامل نزدیک ریشه می‌تواند اتصال را از نظر عملکردی مختل کند؛ هر شعاعی را پارگی ریشه ننامید و محل نقص را آناتومیک تعیین کنید."
+      },
+      "category": {
+        "de": "Risstypen und Dislokation",
+        "en": "Tear types and displacement",
+        "fa": "انواع پارگی و جابه‌جایی"
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-33",
+      "topicId": "meniskus",
+      "front": {
+        "de": "Was bedeutet das Ghost-Meniscus-Zeichen?",
+        "en": "What does the ghost-meniscus sign mean?",
+        "fa": "علامت Ghost meniscus چه معنایی دارد؟"
+      },
+      "answer": {
+        "de": "Ein erwarteter Meniskusanteil ist sagittal nicht oder kaum sichtbar.",
+        "en": "An expected meniscal segment is absent or barely visible sagittally.",
+        "fa": "بخش مورد انتظار منیسک در ساژیتال غایب یا به‌سختی دیده می‌شود."
+      },
+      "explanation": {
+        "de": "Es kann bei vollständigen Radiär- oder Wurzelrissen auftreten, ist aber allein nicht spezifisch. Den Defekt koronal/axial bestätigen und Fragmentverlagerung oder Voroperation berücksichtigen.",
+        "en": "It may occur with complete radial or root tears but is not specific alone. Confirm the defect coronally/axially and consider displaced fragments or prior surgery.",
+        "fa": "در شعاعی کامل یا پارگی ریشه ممکن است رخ دهد، اما به‌تنهایی اختصاصی نیست؛ نقص کرونال/اکسیال تأیید و جابه‌جایی قطعه یا عمل قبلی لحاظ شود."
+      },
+      "category": {
+        "de": "Risstypen und Dislokation",
+        "en": "Tear types and displacement",
+        "fa": "انواع پارگی و جابه‌جایی"
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-34",
+      "topicId": "meniskus",
+      "front": {
+        "de": "Welche Angaben gehören in einen klinisch nützlichen Meniskusbefund?",
+        "en": "What belongs in a clinically useful meniscal report?",
+        "fa": "گزارش منیسکِ مفید برای بالین شامل چه مواردی است؟"
+      },
+      "answer": {
+        "de": "Meniskus, Segment, Verlauf/Ausmaß, Dislokation, Wurzelbezug, Extrusion und Begleitbefunde.",
+        "en": "Meniscus, segment, orientation/extent, displacement, root relationship, extrusion and associated findings.",
+        "fa": "منیسک، سگمان، مسیر/وسعت، جابه‌جایی، ارتباط ریشه، اکستروژن و یافته‌های همراه."
+      },
+      "explanation": {
+        "de": "Ein Signalgrad allein genügt nicht. Bei echter Blockade oder instabilem Fragment die klinische Relevanz klar benennen; die Therapieentscheidung nicht allein aus der Signalhelligkeit ableiten.",
+        "en": "A signal grade alone is insufficient. Clearly indicate the significance of true locking or an unstable fragment; do not derive treatment solely from signal brightness.",
+        "fa": "گرید سیگنال به‌تنهایی کافی نیست؛ اهمیت قفل‌شدن واقعی یا قطعهٔ ناپایدار روشن بیان شود و درمان صرفاً از روشنی سیگنال نتیجه‌گیری نشود."
+      },
+      "category": {
+        "de": "MRT-Rissdiagnostik",
+        "en": "MRI tear diagnosis",
+        "fa": "تشخیص پارگی در MRI"
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-35",
+      "topicId": "meniskus",
+      "front": {
+        "de": "Was unterscheidet Grad 0 von Grad I?",
+        "en": "What distinguishes grade 0 from grade I?",
+        "fa": "گرید ۰ و I چه تفاوتی دارند؟"
+      },
+      "answer": {
+        "de": "Grad 0: homogen signalarm. Grad I: fokale Signalanhebung ohne Oberflächenkontakt.",
+        "en": "Grade 0: homogeneous low signal. Grade I: focal increased signal without surface contact.",
+        "fa": "گرید ۰: کم‌سیگنال همگن. گرید I: افزایش سیگنال کانونی بدون تماس سطحی."
+      },
+      "explanation": {
+        "de": "Fokales nicht surfacierendes Signal ist allein kein Rissnachweis und beweist keine bestimmte Histologie. Form und Kontinuität zusätzlich prüfen; normales Signal allein schließt nicht jeden morphologischen Defekt aus.",
+        "en": "Focal nonsurfacing signal alone neither establishes a tear nor proves a specific histology. Also assess shape and continuity; normal signal alone does not exclude every morphological defect.",
+        "fa": "سیگنال کانونی بدون تماس سطحی به‌تنهایی نه پارگی را اثبات می‌کند و نه بافت‌شناسی مشخصی را. شکل و پیوستگی هم بررسی شوند؛ سیگنال طبیعی تمام نقص‌های مورفولوژیک را رد نمی‌کند."
+      },
+      "category": {
+        "de": "Lotysch-Klassifikation",
+        "en": "Lotysch classification",
+        "fa": "طبقه‌بندی لوتوش"
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    },
+    {
+      "id": "meniskus-36",
+      "topicId": "meniskus",
+      "front": {
+        "de": "Welche zwei sagittalen Zeichen stützen einen Flipped-Meniskus?",
+        "en": "Which two sagittal signs support a flipped meniscus?",
+        "fa": "کدام دو علامت ساژیتال به نفع منیسک وارونه‌شده‌اند؟"
+      },
+      "answer": {
+        "de": "Double-Anterior-Horn-Zeichen und Empty-Posterior-Horn-Zeichen.",
+        "en": "Double-anterior-horn sign and empty-posterior-horn sign.",
+        "fa": "علامت شاخ قدامی دوگانه و علامت شاخ خلفی خالی."
+      },
+      "explanation": {
+        "de": "Ein nach anterior verlagertes Hinterhorn kann am Vorderhorn doppelte Meniskusstruktur vortäuschen; am ursprünglichen Hinterhorn fehlt das normale signalärmere Meniskusgewebe. Eine Vorderhornvariante kann die Verdopplung imitieren.",
+        "en": "An anteriorly displaced posterior horn can create duplicated meniscal tissue at the anterior horn; normal low-signal meniscal tissue is absent at the native posterior-horn position. An anterior-horn variant can mimic the duplication.",
+        "fa": "شاخ خلفیِ جابه‌جاشده به قدام می‌تواند در محل شاخ قدامی ساختار منیسک دوگانه ایجاد کند؛ در محل اصلی شاخ خلفی بافت منیسک کم‌سیگنال طبیعی دیده نمی‌شود. واریانت شاخ قدامی می‌تواند این دوگانگی را تقلید کند."
+      },
+      "category": {
+        "de": "Dislozierte Meniskusrisse",
+        "en": "Displaced meniscal tears",
+        "fa": "پارگی‌های جابه‌جاشدهٔ منیسک"
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/8316871/"
+    },
+    {
+      "id": "meniskus-37",
+      "topicId": "meniskus",
+      "front": {
+        "de": "Wie lässt sich ein PDF-„Wrisberg-Riss“ anatomisch präziser beschreiben?",
+        "en": "How can the PDF’s “Wrisberg rip” be described more precisely in anatomic terms?",
+        "fa": "اصطلاح Wrisberg rip در PDF را چگونه می‌توان با توصیف آناتومیک دقیق‌تر بیان کرد؟"
+      },
+      "answer": {
+        "de": "Longitudinal-vertikaler Riss am Hinterhorn des Außenmeniskus nahe dem posterioren meniskofemoralen Ansatz.",
+        "en": "Longitudinal-vertical tear of the lateral meniscus posterior horn near the posterior meniscofemoral attachment.",
+        "fa": "پارگی طولی-عمودی شاخ خلفی منیسک خارجی نزدیک اتصال خلفی منیسکوفمورال."
+      },
+      "explanation": {
+        "de": "Ein intaktes posterior-meniskofemorales Ligament kann einen Pseudoriss vortäuschen. Seine Kontinuität zum Femur über Nachbarschichten verfolgen. Der Rissbegriff allein belegt keine VKB-Ruptur.",
+        "en": "An intact posterior meniscofemoral ligament can mimic a tear. Trace its continuity to the femur across adjacent slices. The tear pattern alone does not establish an ACL rupture.",
+        "fa": "رباط منیسکوفمورال خلفی سالم می‌تواند پارگی را تقلید کند؛ پیوستگی آن را در برش‌های مجاور تا فمور دنبال کنید. این الگو به‌تنهایی پارگی ACL را ثابت نمی‌کند."
+      },
+      "category": {
+        "de": "Rissmuster und Pseudorisse",
+        "en": "Tear patterns and pseudotears",
+        "fa": "الگوهای پارگی و پارگی کاذب"
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+    }
+  ],
+  "ownedFiles": [
+    "data/meniscusLearning.js",
+    "app/msk/knie/meniskus/page.js",
+    "app/msk/knie/meniskus/LotyschClassification.jsx",
+    "data/meniscusPdfAddendum.js",
+    "data/meniscusPdfGapAddendum.js"
+  ],
+  "sourceHashes": {
+    "data/meniscusLearning.js": "0175c1bc7016589d744afd62d287c2f1fc52bac7254e13e6b932c92dc39f9d65",
+    "app/msk/knie/meniskus/page.js": "2a68bc8276d4e5ba83f7fc3d49f2ab70f3bd286cef46fe5662236a2d8e7f1d29",
+    "app/msk/knie/meniskus/LotyschClassification.jsx": "f37cc8cec0bbb5eb0099fc6391dce8692a44a1bfde9ec405f4886ad8c0e59204",
+    "data/meniscusPdfAddendum.js": "79ce49e7eec589dc782eb4f9d2d6b4edd03f547ae1d66b5b9ca01ee3da5e1478",
+    "data/meniscusPdfGapAddendum.js": "2c022464b94ed665b95e9c68133d6f4f29680df08efbba30f7cbaef9bccc0f63"
+  },
+  "sharedCardsIntegrated": false,
+  "sharedTestIntegrated": false
+}

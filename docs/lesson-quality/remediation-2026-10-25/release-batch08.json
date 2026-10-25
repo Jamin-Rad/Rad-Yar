@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-25",
+  "status": "READY_FOR_MAIN_BOUNDED_VERIFICATION",
+  "previousMain": "da9ba07a7d1da5d4162beaaa034e2bbf42d93200",
+  "scope": "Eighth bounded release during ongoing234-route remediation. Two complete original assessment pools and one observed navigation-label defect; overall task unfinished.",
+  "acceptedPools": {
+    "avm": "Full12originalQ/15cardtriads,108specificwrongfeedback fields,58teaching deltas independently read against PDF37–38 and primary sources. IDs/keys preserved. Required source-footer repair independently confirmed actual renderer10entries/9links/3checks in DEENFA; browser confirms visible sources.",
+    "meniscus": "All22originalQ/33cardtriads read;2positive retrieval gaps added for meniscocapsular injury and flounce ->24Q/33cards. All94teaching deltas and18sharedTesttext replacements independently accepted. Q22histology overstatement repaired DEENFA and twoFAhiatusspellings fixed; exact five changed fields freshly accepted. Actual33globalcards,18sharedTestAfter and all24questions independently rechecked after root integration. Fivegoal groups cover24Q/33cards; full24question launcher."
+  },
+  "reviews": ["brain/review-packet19-avm.json", "msk-spine/packet12/review-meniscus.json"],
+  "runtime": {"questionsPerLanguage":981,"casesPerLanguage":18,"supplementQuestionsPerLanguage":88,"supplementCards":88,"explicitRouteMappings":69,"explicitGoalQuestionReferences":370},
+  "technicalEvidence": {
+    "index": "Actual selected-index981MCQ/18cases per language passed schema/options/key/individualfeedback audit. PendingATV06/SAB/Mamma excluded. Existing index generation keeps publication counts independent from authorWIP.",
+    "build": "Build13PASS following shared label repair; build12 alsoPASS. Existing unrelated CSSwarning. Working build can include separate authorWIP; exact Main deployment remains separate.",
+    "ssr": "702/702 actual route/locale graph rendersPASS, remediation-all-routes-ssr11.log. Fixtures do not establish authentication, full media or scientific release.",
+    "focused": "AVM37–38 focusedPASS; actualMeniscus24Q/33cards/18TestAfter plus fivegoal24Q33card unionPASS. Actual reviewed route/packet tests370goal referencesPASS.",
+    "browser": "Authenticated build13: MeniscusENactual24question link, real sharedMRItext threeplanes/sectionthickness caveat/normalhornbody/signal-morphology complement. Actual24question quiz, newrampvignette switchedENtoFA while retainingquestion23 andlocalizedreturn. AVMENactual12question link and visible10sourceentries/9primarylinks. No grading/readmarking.",
+    "navigationRepair": "Actualbuild12browser exposed Reactstyledtherapyheading accessible-name [object Object]. LegacyLessonMigration sections now derive plain navigationtext through its existing recursive text helper, retaining actualchapterheading Reactmarkup/body. Independentread-only helperSSR sensitivity checkednestedheading/plain/FA, and build13actualbrowser shows Open section: Treatment concept : Save the Meniscus.",
+    "screenshot": "tmp/assessment-quality/batch08-local-meniscus-fa.png"
+  },
+  "limits": ["Bounded assessment/editorial review does not certify retained galleries or all original lesson/PDF content.","Difficulty editorial, without empirical psychometrics.","No exhaustive live234-route/mobile/all-theme equivalence claim.","Dr.Zia scientific release remains separate."]
+}

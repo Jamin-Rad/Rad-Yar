@@ -1,0 +1,3190 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/integration_review_next",
+  "scope": "Evidence reconciliation across the234-route assessment audit; not a new exhaustive clinical review. Original-pool acceptance requires independent full stems/options/keys/feedback/cards/locales evidence. Supplemental, language-only, count, build, browser and complete flags are not substitutes.",
+  "counts": {
+    "totalRoutes": 234,
+    "fullOriginalPoolAccepted": 49,
+    "newScopedPoolAcceptedWithoutOriginalIdentified": 16,
+    "remainingRoutes": 169,
+    "remainingOriginalPools": 123,
+    "remainingWithoutIdentifiedOriginalPool": 46
+  },
+  "byOwner": {
+    "design_inventory": {
+      "total": 66,
+      "acceptedOriginal": 25,
+      "acceptedNew": 1,
+      "remainingOriginal": 32,
+      "remainingCoverage": 8
+    },
+    "brain_remediation": {
+      "total": 50,
+      "acceptedOriginal": 10,
+      "acceptedNew": 9,
+      "remainingOriginal": 21,
+      "remainingCoverage": 10
+    },
+    "root": {
+      "total": 40,
+      "acceptedOriginal": 6,
+      "acceptedNew": 5,
+      "remainingOriginal": 29,
+      "remainingCoverage": 0
+    },
+    "remove_lesson_notice": {
+      "total": 78,
+      "acceptedOriginal": 8,
+      "acceptedNew": 1,
+      "remainingOriginal": 41,
+      "remainingCoverage": 28
+    }
+  },
+  "decision": "REVISE",
+  "countMeaning": "Counts are route-level, not unique items. Parent/child topic pools can overlap; original item counts must not be summed as unique bank totals. OriginalBaseline is the frozen883Q/1099card audit corpus, not current working counts. Per-route original IDs remain available in the cited baseline routecoverage/corpus; this concise ledger keeps counts, topics and producer files.",
+  "sources": [
+    "progress.json (route universe only; status columns stale)",
+    "brain/progress.json",
+    "msk-spine/progress.json",
+    "abdomen-technik/progress.json",
+    "thorax-mamma/progress.json",
+    "Independent review reports cited per accepted route",
+    "../assessment-audit-2026-10-25/README.md",
+    "../assessment-audit-2026-10-25/findings.json",
+    "tmp/assessment-quality/routecoverage.json",
+    "tmp/assessment-quality/corpus.json"
+  ],
+  "reconciliationNotes": [
+    "Route universe matches234 baseline progress entries and237 route-inventory entries minus3 redirects.",
+    "Root-wide progress still labels all routes authoring_pending; newer independent reports supersede those status cells. Brain/MSK/Thorax aggregate counters also lag their newer packets.",
+    "PRES has an original1Q/3card candidate pool even though its initial lesson had no direct links; brain packet01 accepted new supplements only. OriginalPRES remains pending.",
+    "Ileus baseline lesson links were absent but candidate original6Q/8cards existed; ATV03 full original-pool review accepts it.",
+    "Do not reopen oldICB/HMA/dAVF/Moyamoya/AVM/HRCT findings merely because the baseline findings register saysPending; later full reviews supersede those original-pool concerns.",
+    "Fresh current probes show HIE timeline/prognosis andEDH diagram triads now contain DE/EN/FA;HIE prognosis now has ROSC/rewarming anchors. Earlier missing-language/anchor claims must not be copied as current defects. FullHIE/EDH banks still await substantive acceptance.",
+    "Current calcification repair draft is offline and unfinished; baselineREVISE remains. Meniscus12 and haemangioma06 author manifests are not independent acceptance.",
+    "No original registered pool identified does not prove there is no inline check, related parent bank or appropriate introductory assessment. Determine learning-goal coverage before authoring; impose no quota.",
+    "All bounded accepted pools remain separate from whole-lesson/PDF/media/browser andDr.Zia scientific release."
+  ],
+  "prioritizedNext": [
+    {
+      "route": "/abdomen/leber/haemangiom",
+      "priority": "P3",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Author manifest ready/in progress; independent full-pool review pending.",
+      "evidence": [
+        "abdomen-technik/packet06-haemangioma-author-manifest.json"
+      ],
+      "nextAction": "Author work exists; await full independent review before acceptance. Preserve current author ownership."
+    },
+    {
+      "route": "/gehirn/trauma/epidurale-blutung",
+      "priority": "P2",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Prior audit identified weak clinical alternatives and/or source-scope concerns; narrow language/clinical repairs do not establish full-pool acceptance. Review these high-stakes banks next, checking current state before reopening historical findings.",
+      "evidence": [
+        "../assessment-audit-2026-10-25/findings.json"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    },
+    {
+      "route": "/gehirn/vaskulaer/gefaessdissektion",
+      "priority": "P2",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Prior audit identified weak clinical alternatives and/or source-scope concerns; narrow language/clinical repairs do not establish full-pool acceptance. Review these high-stakes banks next, checking current state before reopening historical findings.",
+      "evidence": [
+        "../assessment-audit-2026-10-25/findings.json"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    },
+    {
+      "route": "/gehirn/vaskulaer/hypoxisch-ischaemische-hirnschaedigung",
+      "priority": "P2",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Prior audit identified weak clinical alternatives and/or source-scope concerns; narrow language/clinical repairs do not establish full-pool acceptance. Review these high-stakes banks next, checking current state before reopening historical findings.",
+      "evidence": [
+        "../assessment-audit-2026-10-25/findings.json"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    },
+    {
+      "route": "/gehirn/vaskulaer/isch-aemischer-schlaganfall",
+      "priority": "P1",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Current DenseMCA item still uses choroid-plexus calcification,SAH andchronic microangiopathy as alternatives. Broad original distractor-quality findings remain outside narrow ASPECTS repair acceptance. High-stakes acute interpretation merits early full-pool review.",
+      "evidence": [
+        "../assessment-audit-2026-10-25/findings.json#G-EDU-STROKE-DISTRACTORS",
+        "data/stroke.js"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    },
+    {
+      "route": "/gehirn/vaskulaer/kavernom",
+      "priority": "P1",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Current question11 asks broadly about intervening brain tissue while offering both capillary telangiectasia andDVA. Resolve the intended histological discriminator and then review the whole pool.",
+      "evidence": [
+        "../assessment-audit-2026-10-25/findings.json#G-ASM-KAVERNOM11-HISTOLOGY",
+        "data/kavernom.js:question11"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    },
+    {
+      "route": "/gehirn/vaskulaer/sinusvenenthrombose",
+      "priority": "P2",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Prior audit identified weak clinical alternatives and/or source-scope concerns; narrow language/clinical repairs do not establish full-pool acceptance. Review these high-stakes banks next, checking current state before reopening historical findings.",
+      "evidence": [
+        "../assessment-audit-2026-10-25/findings.json"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    },
+    {
+      "route": "/gehirn/vaskulaer/subarachnoidalblutung",
+      "priority": "P1",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Current sab-q3 asks an anatomical difference while alternatives answer risk; keyedB does not answer the stem. Full original pool remains pending.",
+      "evidence": [
+        "../assessment-audit-2026-10-25/findings.json#G-ASM-SAB03-NONANSWER",
+        "data/questions.js:sab-q3"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    },
+    {
+      "route": "/gehirn/vaskulaer/subduralhaematom",
+      "priority": "P2",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Prior audit identified weak clinical alternatives and/or source-scope concerns; narrow language/clinical repairs do not establish full-pool acceptance. Review these high-stakes banks next, checking current state before reopening historical findings.",
+      "evidence": [
+        "../assessment-audit-2026-10-25/findings.json"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    },
+    {
+      "route": "/mamma/bildgebung/mammographie/verkalkungen",
+      "priority": "P1",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Full baseline review found8 major/3 minor issues: weak alternatives/clinical transfer, MRI research versus standard management, universal risk ladder, model population/predictor scope and provenance. Offline repair draft is not accepted.",
+      "evidence": [
+        "thorax-mamma/packet08-calcification-baseline-review.json"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/laesionscharakterisierung",
+      "priority": "P2",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Whole original pool not accepted; prior MRI terminology/scientific-scope findings include clumpedNME naming and source-limited qualifiers.",
+      "evidence": [
+        "../assessment-audit-2026-10-25/findings.json#LNG-ROOT-MAMMA-CLUMPED"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    },
+    {
+      "route": "/msk/knie/meniskus",
+      "priority": "P3",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Author manifest ready/in progress; independent full-pool review pending.",
+      "evidence": [
+        "msk-spine/packet12/meniscus-after-manifest.json"
+      ],
+      "nextAction": "Author work exists; await full independent review before acceptance. Preserve current author ownership."
+    },
+    {
+      "route": "/msk/knie/patella-streckapparat",
+      "priority": "P2",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Prior assessment/language audit and bounded packets leave untouched original alternatives/cards and teaching mirrors unaccepted. Reconcile the named pediatric-fracture, reporting, translation and image-caption findings before full-pool acceptance.",
+      "evidence": [
+        "msk-spine/review-packet01.json",
+        "msk-spine/review-packet02.json",
+        "../assessment-audit-2026-10-25/findings.json"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    },
+    {
+      "route": "/msk/osteochondrosen/morbus-perthes",
+      "priority": "P2",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING",
+      "reason": "Prior assessment/language audit and bounded packets leave untouched original alternatives/cards and teaching mirrors unaccepted. Reconcile the named pediatric-fracture, reporting, translation and image-caption findings before full-pool acceptance.",
+      "evidence": [
+        "msk-spine/review-packet01.json",
+        "msk-spine/review-packet02.json",
+        "../assessment-audit-2026-10-25/findings.json"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    },
+    {
+      "route": "/msk/trauma/frakturbeschreibung",
+      "priority": "P2",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Prior assessment/language audit and bounded packets leave untouched original alternatives/cards and teaching mirrors unaccepted. Reconcile the named pediatric-fracture, reporting, translation and image-caption findings before full-pool acceptance.",
+      "evidence": [
+        "msk-spine/review-packet01.json",
+        "msk-spine/review-packet02.json",
+        "../assessment-audit-2026-10-25/findings.json"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    },
+    {
+      "route": "/msk/trauma/frakturen-kindesalter",
+      "priority": "P2",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Prior assessment/language audit and bounded packets leave untouched original alternatives/cards and teaching mirrors unaccepted. Reconcile the named pediatric-fracture, reporting, translation and image-caption findings before full-pool acceptance.",
+      "evidence": [
+        "msk-spine/review-packet01.json",
+        "msk-spine/review-packet02.json",
+        "../assessment-audit-2026-10-25/findings.json"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    },
+    {
+      "route": "/msk/trauma/unterarmschaftfrakturen",
+      "priority": "P2",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Prior assessment/language audit and bounded packets leave untouched original alternatives/cards and teaching mirrors unaccepted. Reconcile the named pediatric-fracture, reporting, translation and image-caption findings before full-pool acceptance.",
+      "evidence": [
+        "msk-spine/review-packet01.json",
+        "msk-spine/review-packet02.json",
+        "../assessment-audit-2026-10-25/findings.json"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    },
+    {
+      "route": "/wirbelsaeule/tumoren/grundlagen",
+      "priority": "P2",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "reason": "Prior whole-text ledger explicitly left clinical/source claims unresolved; assess actual tumor/sequence statements and linked pool with primary evidence.",
+      "evidence": [
+        "../assessment-audit-2026-10-25/findings.json#LNG-ROOT-SPINAL-TUMOR-SCOPE"
+      ],
+      "nextAction": "Review the entire current original pool and directly connected teaching in DE/EN/FA; resolve sources/ambiguities and independently retest."
+    }
+  ],
+  "remainingOriginalPools": [
+    {
+      "route": "/gehirn/vaskulaer/isch-aemischer-schlaganfall",
+      "entry": "app/gehirn/vaskulaer/isch-aemischer-schlaganfall/page.js",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P1",
+      "originalBaseline": {
+        "topicIds": [
+          "ischaemischer-schlaganfall"
+        ],
+        "sourceFiles": [
+          "data/stroke.js"
+        ],
+        "questions": 15,
+        "cards": 15
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/kavernom",
+      "entry": "app/gehirn/vaskulaer/kavernom/page.js",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P1",
+      "originalBaseline": {
+        "topicIds": [
+          "kavernom"
+        ],
+        "sourceFiles": [
+          "data/kavernom.js"
+        ],
+        "questions": 12,
+        "cards": 15
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/subarachnoidalblutung",
+      "entry": "app/gehirn/vaskulaer/subarachnoidalblutung/page.js",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P1",
+      "originalBaseline": {
+        "topicIds": [
+          "subarachnoidalblutung"
+        ],
+        "sourceFiles": [
+          "data/questions.js",
+          "data/sab.js"
+        ],
+        "questions": 6,
+        "cards": 8
+      }
+    },
+    {
+      "route": "/mamma/bildgebung/mammographie/verkalkungen",
+      "entry": "app/mamma/bildgebung/mammographie/verkalkungen/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P1",
+      "originalBaseline": {
+        "topicIds": [
+          "mammographie-mikrokalk",
+          "verkalkungen"
+        ],
+        "sourceFiles": [
+          "data/mammaMammographyCalcifications.js",
+          "data/mammaCalcificationReview.js"
+        ],
+        "questions": 18,
+        "cards": 22
+      }
+    },
+    {
+      "route": "/gehirn/trauma/epidurale-blutung",
+      "entry": "app/gehirn/trauma/epidurale-blutung/page.js",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P2",
+      "originalBaseline": {
+        "topicIds": [
+          "epidurale-blutung"
+        ],
+        "sourceFiles": [
+          "data/edh.js"
+        ],
+        "questions": 10,
+        "cards": 18
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/gefaessdissektion",
+      "entry": "app/gehirn/vaskulaer/gefaessdissektion/page.js",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P2",
+      "originalBaseline": {
+        "topicIds": [
+          "gefaessdissektion-hirn"
+        ],
+        "sourceFiles": [
+          "data/dissection.js"
+        ],
+        "questions": 12,
+        "cards": 15
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/hypoxisch-ischaemische-hirnschaedigung",
+      "entry": "app/gehirn/vaskulaer/hypoxisch-ischaemische-hirnschaedigung/page.js",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P2",
+      "originalBaseline": {
+        "topicIds": [
+          "hypoxisch-ischaemische-hirnschaedigung"
+        ],
+        "sourceFiles": [
+          "data/hie.js"
+        ],
+        "questions": 10,
+        "cards": 17
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/sinusvenenthrombose",
+      "entry": "app/gehirn/vaskulaer/sinusvenenthrombose/page.js",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P2",
+      "originalBaseline": {
+        "topicIds": [
+          "sinusvenenthrombose",
+          "svt"
+        ],
+        "sourceFiles": [
+          "data/sinusvenenthrombose.js"
+        ],
+        "questions": 12,
+        "cards": 15
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/subduralhaematom",
+      "entry": "app/gehirn/vaskulaer/subduralhaematom/page.js",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P2",
+      "originalBaseline": {
+        "topicIds": [
+          "subdurale-blutung"
+        ],
+        "sourceFiles": [
+          "data/sdh.js"
+        ],
+        "questions": 12,
+        "cards": 14
+      }
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/laesionscharakterisierung",
+      "entry": "app/mamma/bildgebung/mrt/laesionscharakterisierung/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P2",
+      "originalBaseline": {
+        "topicIds": [
+          "mamma-mrt-laesionscharakterisierung"
+        ],
+        "sourceFiles": [
+          "data/mammaMrtLesions.js"
+        ],
+        "questions": 8,
+        "cards": 13
+      }
+    },
+    {
+      "route": "/msk/knie/patella-streckapparat",
+      "entry": "app/msk/knie/patella-streckapparat/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P2",
+      "originalBaseline": {
+        "topicIds": [
+          "patella-streckapparat",
+          "patellafraktur-trauma"
+        ],
+        "sourceFiles": [
+          "data/patellaStreckapparatAssessments.js"
+        ],
+        "questions": 3,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/msk/trauma/frakturbeschreibung",
+      "entry": "app/msk/trauma/frakturbeschreibung/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P2",
+      "originalBaseline": {
+        "topicIds": [
+          "frakturbeschreibung",
+          "stressfrakturen"
+        ],
+        "sourceFiles": [
+          "data/frakturbeschreibung.js"
+        ],
+        "questions": 12,
+        "cards": 16
+      }
+    },
+    {
+      "route": "/msk/trauma/frakturen-kindesalter",
+      "entry": "app/msk/trauma/frakturen-kindesalter/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P2",
+      "originalBaseline": {
+        "topicIds": [
+          "frakturen-kindesalter"
+        ],
+        "sourceFiles": [
+          "data/frakturen-kindesalter.js"
+        ],
+        "questions": 13,
+        "cards": 15
+      }
+    },
+    {
+      "route": "/msk/trauma/unterarmschaftfrakturen",
+      "entry": "app/msk/trauma/unterarmschaftfrakturen/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P2",
+      "originalBaseline": {
+        "topicIds": [
+          "unterarmschaftfrakturen"
+        ],
+        "sourceFiles": [
+          "data/unterarmschaftfrakturen.js"
+        ],
+        "questions": 12,
+        "cards": 15
+      }
+    },
+    {
+      "route": "/wirbelsaeule/tumoren/grundlagen",
+      "entry": "app/wirbelsaeule/tumoren/grundlagen/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P2",
+      "originalBaseline": {
+        "topicIds": [
+          "spinale-tumoren-grundlagen",
+          "epidermoid-spinal",
+          "astrozytom-spinal",
+          "ependymom-spinal",
+          "meningeom-spinal",
+          "schwannom-neurofibrom-spinal",
+          "wirbelmetastasen"
+        ],
+        "sourceFiles": [
+          "data/spineCompletionPractice.js",
+          "data/spinePatternPractice.js",
+          "data/wirbelmetastasenAssessment.js",
+          "data/spinalIntramedullaryTumorAssessments.js"
+        ],
+        "questions": 5,
+        "cards": 7
+      }
+    },
+    {
+      "route": "/abdomen/leber/avm",
+      "entry": "app/abdomen/leber/avm/page.js",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "avm"
+        ],
+        "sourceFiles": [
+          "data/questions.js",
+          "data/flashcards.js"
+        ],
+        "questions": 10,
+        "cards": 12
+      }
+    },
+    {
+      "route": "/abdomen/leber/fibrolamellaeres-karzinom",
+      "entry": "app/abdomen/leber/fibrolamellaeres-karzinom/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "fibrolamellaeres-karzinom"
+        ],
+        "sourceFiles": [
+          "data/abdomenFlcLesson.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/abdomen/leber/fnh",
+      "entry": "app/abdomen/leber/fnh/page.js",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "fnh"
+        ],
+        "sourceFiles": [
+          "data/questions.js",
+          "data/flashcards.js"
+        ],
+        "questions": 10,
+        "cards": 12
+      }
+    },
+    {
+      "route": "/abdomen/leber/gefaesse",
+      "entry": "app/abdomen/leber/gefaesse/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "leber-anatomie",
+          "gefaesse-anatomie-abdomen",
+          "leber-gefaesse-anatomie"
+        ],
+        "sourceFiles": [
+          "data/abdomenLiverVesselsAssessments.js"
+        ],
+        "questions": 3,
+        "cards": 4
+      }
+    },
+    {
+      "route": "/abdomen/leber/haemangiom",
+      "entry": "app/abdomen/leber/haemangiom/page.js",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "activeAuthorEvidence": "abdomen-technik/packet06-haemangioma-author-manifest.json",
+      "nextAction": "Author work exists; await full independent review before acceptance. Preserve current author ownership.",
+      "originalBaseline": {
+        "topicIds": [
+          "haemangiom"
+        ],
+        "sourceFiles": [
+          "data/haemangiomaTraining.js"
+        ],
+        "questions": 8,
+        "cards": 10
+      }
+    },
+    {
+      "route": "/abdomen/leber/hcc",
+      "entry": "app/abdomen/leber/hcc/page.js",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "hcc"
+        ],
+        "sourceFiles": [
+          "data/questions.js",
+          "data/flashcards.js"
+        ],
+        "questions": 10,
+        "cards": 10
+      }
+    },
+    {
+      "route": "/abdomen/leber/li-rads",
+      "entry": "app/abdomen/leber/li-rads/page.js",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "li-rads"
+        ],
+        "sourceFiles": [
+          "data/abdomenHccPlanning.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/abdomen/leber/metastasen",
+      "entry": "app/abdomen/leber/metastasen/page.js",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "lebermetastasen"
+        ],
+        "sourceFiles": [
+          "data/abdomenThoraxRegisteredQuestions.js",
+          "data/flashcards.js"
+        ],
+        "questions": 2,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/abdomen/leber/steatose",
+      "entry": "app/abdomen/leber/steatose/page.js",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "hepatische-steatose"
+        ],
+        "sourceFiles": [
+          "data/abdomenThoraxRegisteredQuestions.js",
+          "data/steatosisLearning.js"
+        ],
+        "questions": 1,
+        "cards": 4
+      }
+    },
+    {
+      "route": "/abdomen/leber/zirrhose",
+      "entry": "app/abdomen/leber/zirrhose/page.js",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "leberzirrhose"
+        ],
+        "sourceFiles": [
+          "data/abdomenCirrhosisLesson.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/abdomen/leber/zystische-laesionen",
+      "entry": "app/abdomen/leber/zystische-laesionen/page.js",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "leberzyste"
+        ],
+        "sourceFiles": [
+          "data/abdomenThoraxRegisteredQuestions.js",
+          "data/cysticLiverLesionLearning.js"
+        ],
+        "questions": 1,
+        "cards": 4
+      }
+    },
+    {
+      "route": "/abdomen/nebenniere/raumforderungen",
+      "entry": "app/abdomen/nebenniere/raumforderungen/page.js",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "nebennieren-inzidentalom",
+          "nebennierenadenom",
+          "phaeochromozytom",
+          "myelolipom",
+          "neuroblastom-nebenniere",
+          "nebennierenraumforderungen"
+        ],
+        "sourceFiles": [
+          "data/abdomenThoraxRegisteredQuestions.js",
+          "data/abdomenAdrenalLessonMaterials.js"
+        ],
+        "questions": 5,
+        "cards": 5
+      }
+    },
+    {
+      "route": "/abdomen/niere/adpkd",
+      "entry": "app/abdomen/niere/adpkd/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "adpkd-bildgebung"
+        ],
+        "sourceFiles": [
+          "data/adpkdImagingAssessments.js"
+        ],
+        "questions": 2,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/abdomen/niere/anatomie",
+      "entry": "app/abdomen/niere/anatomie/page.js",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "niere-anatomie"
+        ],
+        "sourceFiles": [
+          "data/abdomenThoraxRegisteredQuestions.js",
+          "data/renalAnatomyFlashcards.js"
+        ],
+        "questions": 1,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/abdomen/niere/fornixruptur",
+      "entry": "app/abdomen/niere/fornixruptur/page.js",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "fornixruptur"
+        ],
+        "sourceFiles": [
+          "data/abdomenExistingPractice.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/abdomen/niere/nierenzysten",
+      "entry": "app/abdomen/niere/nierenzysten/page.js",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "nierenzysten"
+        ],
+        "sourceFiles": [
+          "data/abdomenThoraxRegisteredQuestions.js",
+          "data/renalCystAssessments.js"
+        ],
+        "questions": 1,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/abdomen/niere/pyelonephritis",
+      "entry": "app/abdomen/niere/pyelonephritis/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "pyelonephritis",
+          "nierenabszess"
+        ],
+        "sourceFiles": [
+          "data/abdomenExistingPractice.js"
+        ],
+        "questions": 4,
+        "cards": 4
+      }
+    },
+    {
+      "route": "/abdomen/niere/raumforderungen",
+      "entry": "app/abdomen/niere/raumforderungen/page.js",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "nierenzellkarzinom",
+          "onkozytom-niere",
+          "angiomyolipom",
+          "solide-nierenmassen"
+        ],
+        "sourceFiles": [
+          "data/abdomenThoraxRegisteredQuestions.js",
+          "data/solidRenalMassesFlashcards.js"
+        ],
+        "questions": 5,
+        "cards": 6
+      }
+    },
+    {
+      "route": "/abdomen/niere/renaltrauma",
+      "entry": "app/abdomen/niere/renaltrauma/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "nierentrauma"
+        ],
+        "sourceFiles": [
+          "data/renalTraumaLesson.js"
+        ],
+        "questions": 1,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/abdomen/niere/wilms-tumour",
+      "entry": "app/abdomen/niere/wilms-tumour/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "nephroblastom-wilms"
+        ],
+        "sourceFiles": [
+          "data/abdomenThoraxRegisteredQuestions.js",
+          "data/wilmsTumorFlashcards.js"
+        ],
+        "questions": 1,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/abdomen/peritoneum/appendicitis-epiploica",
+      "entry": "app/abdomen/peritoneum/appendicitis-epiploica/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "appendicitis-epiploica"
+        ],
+        "sourceFiles": [
+          "data/epiploicaLesson.js"
+        ],
+        "questions": 1,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/abdomen/peritoneum/mesenteriale-panniculitis",
+      "entry": "app/abdomen/peritoneum/mesenteriale-panniculitis/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "mesenteriale-panniculitis"
+        ],
+        "sourceFiles": [
+          "data/panniculitisLesson.js",
+          "data/abdomenLegacyCardAccess.js"
+        ],
+        "questions": 1,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/abdomen/peritoneum/peritonealkarzinose",
+      "entry": "app/abdomen/peritoneum/peritonealkarzinose/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "peritonealkarzinose"
+        ],
+        "sourceFiles": [
+          "data/peritonealCarcinomatosisLesson.js",
+          "data/abdomenLegacyCardAccess.js"
+        ],
+        "questions": 1,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/abdomen/retroperitoneum/morbus-ormond",
+      "entry": "app/abdomen/retroperitoneum/morbus-ormond/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "morbus-ormond"
+        ],
+        "sourceFiles": [
+          "data/ormondLesson.js",
+          "data/abdomenLegacyCardAccess.js"
+        ],
+        "questions": 1,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/gefaesse/anatomie-obere-extremitaet",
+      "entry": "app/gefaesse/anatomie-obere-extremitaet/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "arterien-obere-extremitaet"
+        ],
+        "sourceFiles": [
+          "data/upperLimbArteriesLesson.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/gehirn/anatomie/liquorraeume-ventrikelsystem",
+      "entry": "app/gehirn/anatomie/liquorraeume-ventrikelsystem/page.js",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "liquorraeume-ventrikelsystem"
+        ],
+        "sourceFiles": [
+          "data/questions.js",
+          "data/flashcards.js"
+        ],
+        "questions": 3,
+        "cards": 19
+      }
+    },
+    {
+      "route": "/gehirn/encephalopathie/pres",
+      "entry": "app/gehirn/encephalopathie/pres/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "pres"
+        ],
+        "sourceFiles": [
+          "data/gehirnPresTraining.js"
+        ],
+        "candidateOnly": true,
+        "questions": 1,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/gehirn/entzuendlich/demyelinisierende-muster",
+      "entry": "app/gehirn/entzuendlich/demyelinisierende-muster/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "multiple-sklerose-spinal"
+        ],
+        "sourceFiles": [
+          "data/spinePatternPractice.js"
+        ],
+        "questions": 1,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/gehirn/kopfschmerz/migraene",
+      "entry": "app/gehirn/kopfschmerz/migraene/page.js",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "migraene"
+        ],
+        "sourceFiles": [
+          "data/migraine.js"
+        ],
+        "questions": 8,
+        "cards": 8
+      }
+    },
+    {
+      "route": "/gehirn/tumoren/atrt",
+      "entry": "app/gehirn/tumoren/atrt/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "atrt"
+        ],
+        "sourceFiles": [
+          "data/atrtLesson.js"
+        ],
+        "questions": 1,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/gehirn/tumoren/diffuse-gliome",
+      "entry": "app/gehirn/tumoren/diffuse-gliome/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "astrozytom-idh-mutiert",
+          "oligodendrogliom-idh-mutiert",
+          "glioblastom"
+        ],
+        "sourceFiles": [
+          "data/diffuseGliomaLesson.js"
+        ],
+        "questions": 3,
+        "cards": 6
+      }
+    },
+    {
+      "route": "/gehirn/tumoren/hirnmetastasen",
+      "entry": "app/gehirn/tumoren/hirnmetastasen/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "metastasen-meningeosis"
+        ],
+        "sourceFiles": [
+          "data/gehirnHirnmetastasenLesson.js"
+        ],
+        "questions": 2,
+        "cards": 5
+      }
+    },
+    {
+      "route": "/gehirn/tumoren/kolloidzyste",
+      "entry": "app/gehirn/tumoren/kolloidzyste/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "kolloidzyste"
+        ],
+        "sourceFiles": [
+          "data/gehirnKolloidzysteLesson.js"
+        ],
+        "questions": 1,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/gehirn/tumoren/medulloblastom",
+      "entry": "app/gehirn/tumoren/medulloblastom/page.js",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "medulloblastom"
+        ],
+        "sourceFiles": [
+          "data/medulloblastomLesson.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/gehirn/tumoren/meningeom",
+      "entry": "app/gehirn/tumoren/meningeom/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "meningeom"
+        ],
+        "sourceFiles": [
+          "data/gehirnMeningeomLesson.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/gehirn/tumoren/zns-lymphom",
+      "entry": "app/gehirn/tumoren/zns-lymphom/page.js",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "lymphom-zns"
+        ],
+        "sourceFiles": [
+          "data/pcnslLesson.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/caa",
+      "entry": "app/gehirn/vaskulaer/caa/page.js",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "caa"
+        ],
+        "sourceFiles": [
+          "data/caaStudyBank.js"
+        ],
+        "questions": 18,
+        "cards": 32
+      }
+    },
+    {
+      "route": "/gehirn/vaskulaer/cadasil",
+      "entry": "app/gehirn/vaskulaer/cadasil/page.js",
+      "owner": "brain_remediation",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "cadasil"
+        ],
+        "sourceFiles": [
+          "data/cadasil.js"
+        ],
+        "questions": 13,
+        "cards": 16
+      }
+    },
+    {
+      "route": "/lunge/sarkoidose",
+      "entry": "app/lunge/sarkoidose/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "sarkoidose"
+        ],
+        "sourceFiles": [
+          "data/questions.js",
+          "data/flashcards.js"
+        ],
+        "questions": 10,
+        "cards": 15
+      }
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/besondere-mammakarzinome",
+      "entry": "app/mamma/bildgebung/mrt/besondere-mammakarzinome/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "mamma-mrt-besondere-mammakarzinome"
+        ],
+        "sourceFiles": [
+          "data/mammaMrtSpecialCarcinomas.js"
+        ],
+        "questions": 8,
+        "cards": 12
+      }
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/kaiser-score",
+      "entry": "app/mamma/bildgebung/mrt/kaiser-score/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "mamma-mrt-kaiser-score",
+          "kaiser-score"
+        ],
+        "sourceFiles": [
+          "data/mammaKaiserScore.js"
+        ],
+        "questions": 15,
+        "cards": 15
+      }
+    },
+    {
+      "route": "/msk/knie/meniskus",
+      "entry": "app/msk/knie/meniskus/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "activeAuthorEvidence": "msk-spine/packet12/meniscus-after-manifest.json",
+      "nextAction": "Author work exists; await full independent review before acceptance. Preserve current author ownership.",
+      "originalBaseline": {
+        "topicIds": [
+          "meniskus"
+        ],
+        "sourceFiles": [
+          "data/meniscusLearning.js",
+          "data/flashcards.js"
+        ],
+        "questions": 22,
+        "cards": 33
+      }
+    },
+    {
+      "route": "/msk/knochennekrosen/knocheninfarkt",
+      "entry": "app/msk/knochennekrosen/knocheninfarkt/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "knocheninfarkt"
+        ],
+        "sourceFiles": [
+          "data/knocheninfarktLesson.js"
+        ],
+        "questions": 3,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/msk/osteochondrosen/osteochondrosis-dissecans",
+      "entry": "app/msk/osteochondrosen/osteochondrosis-dissecans/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "osteochondrosis-dissecans"
+        ],
+        "sourceFiles": [
+          "data/osteochondrosisDissecansAssessments.js"
+        ],
+        "questions": 1,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/msk/schulter/arthrose",
+      "entry": "app/msk/schulter/arthrose/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "glenohumerale-arthrose"
+        ],
+        "sourceFiles": [
+          "data/mskGlenohumeralOaLesson.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/msk/schulter/impingement-kalkschulter",
+      "entry": "app/msk/schulter/impingement-kalkschulter/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "impingement-kalkschulter"
+        ],
+        "sourceFiles": [
+          "data/shoulderImpingementAssessments.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/msk/schulter/instabilitaet",
+      "entry": "app/msk/schulter/instabilitaet/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "schulterinstabilitaet"
+        ],
+        "sourceFiles": [
+          "data/shoulderInstabilityAssessments.js"
+        ],
+        "questions": 2,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/msk/trauma/beckenringfraktur",
+      "entry": "app/msk/trauma/beckenringfraktur/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "beckenringfraktur"
+        ],
+        "sourceFiles": [
+          "data/pelvicRingAssessments.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/msk/trauma/distale-femurfraktur",
+      "entry": "app/msk/trauma/distale-femurfraktur/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "distale-femurfraktur"
+        ],
+        "sourceFiles": [
+          "data/distalFemurAssessments.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/msk/trauma/femurschaftfraktur",
+      "entry": "app/msk/trauma/femurschaftfraktur/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "femurschaftfraktur"
+        ],
+        "sourceFiles": [
+          "data/femoralShaftAssessments.js"
+        ],
+        "questions": 2,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/msk/trauma/metakarpale-frakturen",
+      "entry": "app/msk/trauma/metakarpale-frakturen/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "metakarpale-frakturen"
+        ],
+        "sourceFiles": [
+          "data/metacarpalBaseQuestions.js"
+        ],
+        "questions": 1,
+        "cards": 0
+      }
+    },
+    {
+      "route": "/msk/trauma/periprothetische-femurfraktur",
+      "entry": "app/msk/trauma/periprothetische-femurfraktur/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "periprothetische-femurfraktur"
+        ],
+        "sourceFiles": [
+          "data/vancouverAssessments.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/msk/trauma/proximale-femurfraktur",
+      "entry": "app/msk/trauma/proximale-femurfraktur/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "proximale-femurfraktur"
+        ],
+        "sourceFiles": [
+          "data/proximalFemurAssessments.js"
+        ],
+        "questions": 3,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/msk/trauma/proximale-humerusfraktur",
+      "entry": "app/msk/trauma/proximale-humerusfraktur/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "proximale-humerusfraktur"
+        ],
+        "sourceFiles": [
+          "data/proximalHumerusLesson.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/msk/trauma/sprunggelenk",
+      "entry": "app/msk/trauma/sprunggelenk/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "osg-fraktur"
+        ],
+        "sourceFiles": [
+          "data/ankleTraumaAssessments.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/msk/trauma/sternum-rippen",
+      "entry": "app/msk/trauma/sternum-rippen/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "sternum-rippen-trauma"
+        ],
+        "sourceFiles": [
+          "data/sternumRibLesson.js"
+        ],
+        "questions": 2,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/msk/trauma/tibiakopffraktur",
+      "entry": "app/msk/trauma/tibiakopffraktur/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "tibiakopffraktur"
+        ],
+        "sourceFiles": [
+          "data/tibialPlateauAssessments.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/msk/trauma/ulnares-kollateralband-daumen",
+      "entry": "app/msk/trauma/ulnares-kollateralband-daumen/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "bandverletzungen-daumen"
+        ],
+        "sourceFiles": [
+          "data/thumbUclAssessments.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/msk/tumoren/eosinophiles-granulom",
+      "entry": "app/msk/tumoren/eosinophiles-granulom/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "eosinophiles-granulom"
+        ],
+        "sourceFiles": [
+          "data/eosinophilesGranulomLesson.js"
+        ],
+        "questions": 3,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/msk/tumoren/knochenzeichen",
+      "entry": "app/msk/tumoren/knochenzeichen/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "riesenzelltumor",
+          "knochentumor-grundlagen"
+        ],
+        "sourceFiles": [
+          "data/mskSpineRegisteredQuestions.js",
+          "data/mskBoneAggressivenessAssessments.js",
+          "data/mskSpineRegisteredFlashcards.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/technik/ct-grundlagen",
+      "entry": "app/technik/ct-grundlagen/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "ct-grundprinzip-aufbau",
+          "ct-aufnahmetechniken",
+          "photon-counting-ct"
+        ],
+        "sourceFiles": [
+          "data/technikTopicAccessAssessment.js",
+          "data/technikCTBasicsLesson.js"
+        ],
+        "questions": 3,
+        "cards": 5
+      }
+    },
+    {
+      "route": "/technik/ct-perfusion",
+      "entry": "app/technik/ct-perfusion/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "ct-perfusion-technik"
+        ],
+        "sourceFiles": [
+          "data/technikCTPerfusionLesson.js"
+        ],
+        "questions": 1,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/technik/dosimetrie",
+      "entry": "app/technik/dosimetrie/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "dosisgroessen-dosimetrie"
+        ],
+        "sourceFiles": [
+          "data/technikEntranceKermaAssessment.js"
+        ],
+        "candidateOnly": true,
+        "questions": 1,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/technik/dual-energy-ct",
+      "entry": "app/technik/dual-energy-ct/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "dual-energy-ct"
+        ],
+        "sourceFiles": [
+          "data/technikDualEnergyLesson.js"
+        ],
+        "candidateOnly": true,
+        "questions": 1,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/technik/grundlagen",
+      "entry": "app/technik/grundlagen/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "roentgen-streustrahlenraster",
+          "strahlenschutz-gesetzliche-grundlagen",
+          "strahlenschutzbereiche-verantwortliche",
+          "fachkunde-strahlenschutz",
+          "teleradiologie",
+          "roentgenanlage-roehre",
+          "roentgen-wechselwirkung-materie",
+          "roentgen-bildentstehung-detektor",
+          "ct-rekonstruktion-nachverarbeitung",
+          "hrct-technik",
+          "c-arm-ct",
+          "ct-methodik-km-phasen",
+          "mrt-grundprinzip-signalbildung",
+          "mrt-spin-echo",
+          "mrt-gradient-echo",
+          "mrt-inversion-recovery",
+          "mrt-bildqualitaet-artefakte-snr",
+          "mrt-fettsuppression",
+          "mrt-sicherheit-risiken",
+          "mrt-dwi-adc",
+          "mrt-cine",
+          "mrt-gefaessdarstellung",
+          "fmri-bold",
+          "leber-mrt-protokoll",
+          "roentgenstrahlung-spektrum",
+          "ct-bildqualitaet-artefakte",
+          "mrt-perfusion",
+          "fluoroskopie-durchleuchtung"
+        ],
+        "sourceFiles": [
+          "data/technikDwiAdcLesson.js",
+          "data/technikMrtPerfusionLesson.js",
+          "data/technikCineQuestions.js",
+          "data/technikBoldQuestions.js",
+          "data/technikMriArtifacts.js",
+          "data/technikMriSafetyLesson.js",
+          "data/technikMriSpinEchoLesson.js",
+          "data/technikMriGradientEchoLesson.js",
+          "data/technikMriInversionRecoveryLesson.js",
+          "data/technikMriFatSuppressionLesson.js",
+          "data/technikMRIFundamentalsLesson.js",
+          "data/technikMraLesson.js",
+          "data/technikCTQuality.js",
+          "data/technikCTReconstructionLesson.js",
+          "data/technikHRCTLesson.js",
+          "data/technikCTProtocolLesson.js",
+          "data/technikRemainingBlocks.js",
+          "data/technikTopicAccessAssessment.js",
+          "data/technikRoentgenQuestions.js",
+          "data/technikFluoroZoom.js",
+          "data/technikLiverMriProtocolAssessment.js",
+          "data/technikBoldFlashcards.js",
+          "data/technikCineFlashcards.js",
+          "data/technikFluoroZoomFlashcards.js",
+          "data/technikRoentgenFlashcards.js",
+          "data/technikLiverMRI.js"
+        ],
+        "questions": 33,
+        "cards": 69
+      }
+    },
+    {
+      "route": "/technik/mr-myelographie",
+      "entry": "app/technik/mr-myelographie/page.jsx",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "mr-myelographie"
+        ],
+        "sourceFiles": [
+          "data/technikMrMyelographyLesson.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/technik/onkologie/recist-1-1",
+      "entry": "app/technik/onkologie/recist-1-1/page.js",
+      "owner": "design_inventory",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "recist-1-1"
+        ],
+        "sourceFiles": [
+          "data/recist11Lesson.js"
+        ],
+        "questions": 3,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/thorax/akute-le",
+      "entry": "app/thorax/akute-le/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "akute-le"
+        ],
+        "sourceFiles": [
+          "data/thoraxExistingPractice.js"
+        ],
+        "questions": 1,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/thorax/anatomie/lungenanatomie",
+      "entry": "app/thorax/anatomie/lungenanatomie/page.jsx",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "lungenanatomie"
+        ],
+        "sourceFiles": [
+          "data/abdomenThoraxRegisteredQuestions.js",
+          "data/lungAnatomyAssessments.js"
+        ],
+        "questions": 1,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/thorax/bronchialkarzinom-bildgebung",
+      "entry": "app/thorax/bronchialkarzinom-bildgebung/page.jsx",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "nsclc",
+          "sclc",
+          "lungenkarzinom-bildgebung"
+        ],
+        "sourceFiles": [
+          "data/lungCarcinomaImagingLesson.js"
+        ],
+        "questions": 1,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/thorax/bronchiektasen",
+      "entry": "app/thorax/bronchiektasen/page.jsx",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "bronchiektasen"
+        ],
+        "sourceFiles": [
+          "data/bronchiectasisLesson.js"
+        ],
+        "questions": 1,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/thorax/bronchiolitis",
+      "entry": "app/thorax/bronchiolitis/page.jsx",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "bronchiolitis"
+        ],
+        "sourceFiles": [
+          "data/thoraxBronchiolitisLesson.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/thorax/copd-bildgebung",
+      "entry": "app/thorax/copd-bildgebung/page.jsx",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "copd"
+        ],
+        "sourceFiles": [
+          "data/copdImagingLesson.js"
+        ],
+        "questions": 1,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/thorax/fleischner-kriterien",
+      "entry": "app/thorax/fleischner-kriterien/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "fleischner-kriterien"
+        ],
+        "sourceFiles": [
+          "data/fleischnerLearning.js"
+        ],
+        "questions": 10,
+        "cards": 10
+      }
+    },
+    {
+      "route": "/thorax/fremdkoerperaspiration",
+      "entry": "app/thorax/fremdkoerperaspiration/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "fremdkoerper-atemwege"
+        ],
+        "sourceFiles": [
+          "data/abdomenThoraxRegisteredQuestions.js",
+          "data/foreignBodyAspirationLearning.js"
+        ],
+        "questions": 2,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/thorax/hypersensitivitaetspneumonitis",
+      "entry": "app/thorax/hypersensitivitaetspneumonitis/page.jsx",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "hypersensitivitaetspneumonitis"
+        ],
+        "sourceFiles": [
+          "data/thoraxHypersensitivityLesson.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/thorax/kardio/arvc",
+      "entry": "app/thorax/kardio/arvc/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "arvc"
+        ],
+        "sourceFiles": [
+          "data/arvcTraining.js"
+        ],
+        "questions": 10,
+        "cards": 8
+      }
+    },
+    {
+      "route": "/thorax/kardio/kardiomyopathien",
+      "entry": "app/thorax/kardio/kardiomyopathien/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "kardiomyopathien"
+        ],
+        "sourceFiles": [
+          "data/cardiomyopathy.js"
+        ],
+        "questions": 17,
+        "cards": 10
+      }
+    },
+    {
+      "route": "/thorax/kardio/myokardinfarkt-differentialdiagnosen",
+      "entry": "app/thorax/kardio/myokardinfarkt-differentialdiagnosen/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "myokardinfarkt-differentialdiagnosen"
+        ],
+        "sourceFiles": [
+          "data/myocardialInjury.js"
+        ],
+        "questions": 10,
+        "cards": 8
+      }
+    },
+    {
+      "route": "/thorax/kavitaeten",
+      "entry": "app/thorax/kavitaeten/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "lungenabszess"
+        ],
+        "sourceFiles": [
+          "data/abdomenThoraxRegisteredQuestions.js",
+          "data/thoraxLungAbscessFlashcards.js"
+        ],
+        "questions": 1,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/thorax/lch-lunge",
+      "entry": "app/thorax/lch-lunge/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "lch-lunge"
+        ],
+        "sourceFiles": [
+          "data/thoraxLchLesson.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/thorax/lungenoedem",
+      "entry": "app/thorax/lungenoedem/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "lungenoedem",
+          "ards"
+        ],
+        "sourceFiles": [
+          "data/pulmonaryEdema.js"
+        ],
+        "questions": 3,
+        "cards": 4
+      }
+    },
+    {
+      "route": "/thorax/lungenzysten-differentialdiagnose",
+      "entry": "app/thorax/lungenzysten-differentialdiagnose/page.jsx",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "lungenzysten-differentialdiagnose"
+        ],
+        "sourceFiles": [
+          "data/thoraxCystsLesson.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/thorax/mukoviszidose",
+      "entry": "app/thorax/mukoviszidose/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "mukoviszidose"
+        ],
+        "sourceFiles": [
+          "data/thoraxCfLesson.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/thorax/pectus-excavatum",
+      "entry": "app/thorax/pectus-excavatum/page.jsx",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "pectus-excavatum"
+        ],
+        "sourceFiles": [
+          "data/thoraxPectusLesson.js"
+        ],
+        "questions": 2,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/thorax/pneumonie-muster",
+      "entry": "app/thorax/pneumonie-muster/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "pneumonie-muster",
+          "bakterielle-pneumonie",
+          "atypische-pneumonie",
+          "virale-pneumonie-covid",
+          "pcp",
+          "aspergillus-lunge",
+          "pleuraempyem"
+        ],
+        "sourceFiles": [
+          "data/thoraxPneumoniaPractice.js"
+        ],
+        "questions": 7,
+        "cards": 7
+      }
+    },
+    {
+      "route": "/thorax/pulmonale-hypertonie",
+      "entry": "app/thorax/pulmonale-hypertonie/page.jsx",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "pulmonale-hypertonie"
+        ],
+        "sourceFiles": [
+          "data/pulmonaryHypertensionAssessments.js"
+        ],
+        "questions": 2,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/thorax/rippenpathologien",
+      "entry": "app/thorax/rippenpathologien/page.jsx",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "rippenpathologien"
+        ],
+        "sourceFiles": [
+          "data/thoraxExistingPractice.js"
+        ],
+        "questions": 1,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/thorax/roentgen-thorax-systematik",
+      "entry": "app/thorax/roentgen-thorax-systematik/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "herzgroesse-roentgen",
+          "roentgen-thorax-systematik"
+        ],
+        "sourceFiles": [
+          "data/abdomenThoraxRegisteredQuestions.js",
+          "data/chestXrayHeartSizeFlashcards.js"
+        ],
+        "questions": 2,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/thorax/tuberkulose-muster",
+      "entry": "app/thorax/tuberkulose-muster/page.js",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "tuberkulose"
+        ],
+        "sourceFiles": [
+          "data/abdomenThoraxRegisteredQuestions.js",
+          "data/tuberculosisPatternsLearning.js"
+        ],
+        "questions": 1,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/thorax/uip-ipf",
+      "entry": "app/thorax/uip-ipf/page.jsx",
+      "owner": "root",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "uip-ipf"
+        ],
+        "sourceFiles": [
+          "data/thoraxUipIpfLesson.js"
+        ],
+        "questions": 1,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/wirbelsaeule/arachnoiditis",
+      "entry": "app/wirbelsaeule/arachnoiditis/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "spinale-arachnoiditis"
+        ],
+        "sourceFiles": [
+          "data/spineCompletionPractice.js"
+        ],
+        "questions": 1,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/wirbelsaeule/degenerative",
+      "entry": "app/wirbelsaeule/degenerative/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "osteochondrosis-intervertebralis",
+          "bandscheibenpathologien",
+          "spinalkanalstenose"
+        ],
+        "sourceFiles": [
+          "data/mskSpineRegisteredQuestions.js",
+          "data/spineModicAssessment.js",
+          "data/questions.js",
+          "data/flashcards.js",
+          "data/mskSpineRegisteredFlashcards.js"
+        ],
+        "questions": 7,
+        "cards": 7
+      }
+    },
+    {
+      "route": "/wirbelsaeule/degenerative/ligamentossifikation",
+      "entry": "app/wirbelsaeule/degenerative/ligamentossifikation/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "dish-ossifikation-ligamente"
+        ],
+        "sourceFiles": [
+          "data/spineDegenerativeCompletion.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/wirbelsaeule/degenerative/spondylarthrose",
+      "entry": "app/wirbelsaeule/degenerative/spondylarthrose/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "spondylarthrose",
+          "synovialzyste-facettengelenke"
+        ],
+        "sourceFiles": [
+          "data/spondylarthroseLesson.js"
+        ],
+        "questions": 3,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/wirbelsaeule/degenerative/spondylolisthesis",
+      "entry": "app/wirbelsaeule/degenerative/spondylolisthesis/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "spondylolisthesis"
+        ],
+        "sourceFiles": [
+          "data/spineDegenerativeCompletion.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/wirbelsaeule/entzuendlich",
+      "entry": "app/wirbelsaeule/entzuendlich/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "morbus-scheuermann",
+          "morbus-bechterew-ws"
+        ],
+        "sourceFiles": [
+          "data/mskSpineRegisteredQuestions.js",
+          "data/mskSpineRegisteredFlashcards.js"
+        ],
+        "questions": 3,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/wirbelsaeule/entzuendlich/guillain-barre-syndrom",
+      "entry": "app/wirbelsaeule/entzuendlich/guillain-barre-syndrom/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "guillain-barre-syndrom"
+        ],
+        "sourceFiles": [
+          "data/spineCompletionPractice.js"
+        ],
+        "questions": 1,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/wirbelsaeule/entzuendlich/leptomeningitis",
+      "entry": "app/wirbelsaeule/entzuendlich/leptomeningitis/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "spinale-leptomeningitis"
+        ],
+        "sourceFiles": [
+          "data/spineInfectiousCompletion.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/wirbelsaeule/entzuendlich/neuroborreliose",
+      "entry": "app/wirbelsaeule/entzuendlich/neuroborreliose/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "neuroborreliose-spinal"
+        ],
+        "sourceFiles": [
+          "data/spineInfectiousCompletion.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/wirbelsaeule/infektion",
+      "entry": "app/wirbelsaeule/infektion/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "spondylodiszitis",
+          "paravertebraler-abszess",
+          "epiduraler-abszess",
+          "wirbelsaeulentuberkulose"
+        ],
+        "sourceFiles": [
+          "data/spineInfectiousCompletion.js",
+          "data/mskSpineRegisteredQuestions.js",
+          "data/mskSpineRegisteredFlashcards.js"
+        ],
+        "questions": 4,
+        "cards": 4
+      }
+    },
+    {
+      "route": "/wirbelsaeule/metabolisch/funikulaere-myelose",
+      "entry": "app/wirbelsaeule/metabolisch/funikulaere-myelose/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "funikulaere-myelose"
+        ],
+        "sourceFiles": [
+          "data/spineCompletionPractice.js"
+        ],
+        "questions": 1,
+        "cards": 1
+      }
+    },
+    {
+      "route": "/wirbelsaeule/metabolisch/osteoporose",
+      "entry": "app/wirbelsaeule/metabolisch/osteoporose/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "osteoporose-fraktur-ws"
+        ],
+        "sourceFiles": [
+          "data/spineMetabolicCompletion.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/wirbelsaeule/metabolisch/renale-osteodystrophie",
+      "entry": "app/wirbelsaeule/metabolisch/renale-osteodystrophie/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "renale-osteodystrophie-ws"
+        ],
+        "sourceFiles": [
+          "data/spineMetabolicCompletion.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/wirbelsaeule/neuroforamenstenose",
+      "entry": "app/wirbelsaeule/neuroforamenstenose/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "neuroforamenstenose"
+        ],
+        "sourceFiles": [
+          "data/neuroforamenstenoseLesson.js"
+        ],
+        "questions": 1,
+        "cards": 3
+      }
+    },
+    {
+      "route": "/wirbelsaeule/trauma/bws-lws-frakturen",
+      "entry": "app/wirbelsaeule/trauma/bws-lws-frakturen/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "bws-lws-frakturen"
+        ],
+        "sourceFiles": [
+          "data/spineTrauma.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/wirbelsaeule/trauma/hws-verletzungen",
+      "entry": "app/wirbelsaeule/trauma/hws-verletzungen/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "hws-verletzungen"
+        ],
+        "sourceFiles": [
+          "data/spineTrauma.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    },
+    {
+      "route": "/wirbelsaeule/trauma/kraniozervikaler-uebergang",
+      "entry": "app/wirbelsaeule/trauma/kraniozervikaler-uebergang/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "ORIGINAL_POOL_PENDING_SUBSTANTIVE_ACCEPTANCE",
+      "priority": "P3",
+      "originalBaseline": {
+        "topicIds": [
+          "kraniozervikaler-uebergang-trauma"
+        ],
+        "sourceFiles": [
+          "data/spineTrauma.js"
+        ],
+        "questions": 2,
+        "cards": 2
+      }
+    }
+  ],
+  "remainingCoverageRoutes": [
+    {
+      "route": "/abdomen/leber/fokale-laesionen",
+      "entry": "app/abdomen/leber/fokale-laesionen/page.js",
+      "owner": "design_inventory",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/gefaesse/anatomie-untere-extremitaet",
+      "entry": "app/gefaesse/anatomie-untere-extremitaet/page.jsx",
+      "owner": "design_inventory",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/gehirn/hals-nnh/einseitige-verschattung",
+      "entry": "app/gehirn/hals-nnh/einseitige-verschattung/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/gehirn/hals-nnh/paragangliome",
+      "entry": "app/gehirn/hals-nnh/paragangliome/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/gehirn/infektionen/muster",
+      "entry": "app/gehirn/infektionen/muster/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/gehirn/tumoren/ependymom",
+      "entry": "app/gehirn/tumoren/ependymom/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/gehirn/tumoren/epidermoid-arachnoid",
+      "entry": "app/gehirn/tumoren/epidermoid-arachnoid/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/gehirn/tumoren/gliome",
+      "entry": "app/gehirn/tumoren/gliome/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/gehirn/tumoren/haemangioblastom-vhl",
+      "entry": "app/gehirn/tumoren/haemangioblastom-vhl/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/gehirn/tumoren/muster",
+      "entry": "app/gehirn/tumoren/muster/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/gehirn/tumoren/schwannom-cpa",
+      "entry": "app/gehirn/tumoren/schwannom-cpa/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/gehirn/tumoren/sella-parasella",
+      "entry": "app/gehirn/tumoren/sella-parasella/page.jsx",
+      "owner": "brain_remediation",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/gefaesse/pavk-stenosen",
+      "entry": "app/msk/gefaesse/pavk-stenosen/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/knie/chondrokalzinose",
+      "entry": "app/msk/knie/chondrokalzinose/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/knochennekrosen/avn-huefte",
+      "entry": "app/msk/knochennekrosen/avn-huefte/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/knochenstoffwechsel/melorheostose",
+      "entry": "app/msk/knochenstoffwechsel/melorheostose/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/knochenstoffwechsel/morbus-paget",
+      "entry": "app/msk/knochenstoffwechsel/morbus-paget/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/osteochondrosen/morbus-perthes",
+      "entry": "app/msk/osteochondrosen/morbus-perthes/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/osteochondrosen/osgood-schlatter",
+      "entry": "app/msk/osteochondrosen/osgood-schlatter/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/osteochondrosen/weitere-osteochondrosen",
+      "entry": "app/msk/osteochondrosen/weitere-osteochondrosen/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/postop/osteosynthese",
+      "entry": "app/msk/postop/osteosynthese/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/aneurysmal-bone-cyst",
+      "entry": "app/msk/tumoren/aneurysmal-bone-cyst/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/chondrosarkom",
+      "entry": "app/msk/tumoren/chondrosarkom/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/einfache-knochenzyste",
+      "entry": "app/msk/tumoren/einfache-knochenzyste/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/enchondrom",
+      "entry": "app/msk/tumoren/enchondrom/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/enostose",
+      "entry": "app/msk/tumoren/enostose/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/ewing-sarkom",
+      "entry": "app/msk/tumoren/ewing-sarkom/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/fibroese-dysplasie",
+      "entry": "app/msk/tumoren/fibroese-dysplasie/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/intraossaeres-ganglion",
+      "entry": "app/msk/tumoren/intraossaeres-ganglion/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/intraossaeres-lipom",
+      "entry": "app/msk/tumoren/intraossaeres-lipom/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/knochenlymphom",
+      "entry": "app/msk/tumoren/knochenlymphom/page.js",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/knochenmetastasen",
+      "entry": "app/msk/tumoren/knochenmetastasen/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/nicht-ossifizierendes-fibrom",
+      "entry": "app/msk/tumoren/nicht-ossifizierendes-fibrom/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/osteoblastom",
+      "entry": "app/msk/tumoren/osteoblastom/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/osteochondrom",
+      "entry": "app/msk/tumoren/osteochondrom/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/osteoid-osteom",
+      "entry": "app/msk/tumoren/osteoid-osteom/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/osteom",
+      "entry": "app/msk/tumoren/osteom/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/osteosarkom",
+      "entry": "app/msk/tumoren/osteosarkom/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/plasmozytom-myelom",
+      "entry": "app/msk/tumoren/plasmozytom-myelom/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/msk/tumoren/tgct",
+      "entry": "app/msk/tumoren/tgct/page.jsx",
+      "owner": "remove_lesson_notice",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/technik/berufsdosimetrie",
+      "entry": "app/technik/berufsdosimetrie/page.jsx",
+      "owner": "design_inventory",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/technik/qualitaetssicherung-vorkommnisse",
+      "entry": "app/technik/qualitaetssicherung-vorkommnisse/page.jsx",
+      "owner": "design_inventory",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/technik/sonographie/grundlagen",
+      "entry": "app/technik/sonographie/grundlagen/page.jsx",
+      "owner": "design_inventory",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/technik/strahlenbelastung",
+      "entry": "app/technik/strahlenbelastung/page.jsx",
+      "owner": "design_inventory",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/technik/strahlenschutz/praenatale-exposition",
+      "entry": "app/technik/strahlenschutz/praenatale-exposition/page.jsx",
+      "owner": "design_inventory",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    },
+    {
+      "route": "/technik/strahlungsarten",
+      "entry": "app/technik/strahlungsarten/page.jsx",
+      "owner": "design_inventory",
+      "classification": "NO_ORIGINAL_REGISTERED_POOL_IDENTIFIED_COVERAGE_PENDING"
+    }
+  ],
+  "acceptedOriginalPools": [
+    {
+      "route": "/abdomen/gefaesse/fmd",
+      "evidence": [
+        "abdomen-technik/review-packet02.json"
+      ]
+    },
+    {
+      "route": "/abdomen/gi/appendizitis",
+      "evidence": [
+        "abdomen-technik/review-packet02.json"
+      ]
+    },
+    {
+      "route": "/abdomen/gi/divertikulitis",
+      "evidence": [
+        "abdomen-technik/review-packet02.json"
+      ]
+    },
+    {
+      "route": "/abdomen/gi/duodenaldivertikel",
+      "evidence": [
+        "abdomen-technik/review-packet02.json"
+      ]
+    },
+    {
+      "route": "/abdomen/gi/gist",
+      "evidence": [
+        "abdomen-technik/review-packet02.json"
+      ]
+    },
+    {
+      "route": "/abdomen/gi/ileus-volvulus",
+      "evidence": [
+        "abdomen-technik/review-packet03.json"
+      ]
+    },
+    {
+      "route": "/abdomen/gi/kolitis-patterns",
+      "evidence": [
+        "abdomen-technik/review-packet03.json"
+      ]
+    },
+    {
+      "route": "/abdomen/gi/kolorektales-karzinom",
+      "evidence": [
+        "abdomen-technik/review-packet03.json"
+      ]
+    },
+    {
+      "route": "/abdomen/gi/mesenteriale-ischaemie",
+      "evidence": [
+        "abdomen-technik/review-packet03.json"
+      ]
+    },
+    {
+      "route": "/abdomen/gi/pylorusstenose",
+      "evidence": [
+        "abdomen-technik/review-packet03.json"
+      ]
+    },
+    {
+      "route": "/abdomen/gi/ulkuserkrankung",
+      "evidence": [
+        "abdomen-technik/review-packet04.json"
+      ]
+    },
+    {
+      "route": "/abdomen/gi/untere-gi-blutung",
+      "evidence": [
+        "abdomen-technik/review-packet04.json"
+      ]
+    },
+    {
+      "route": "/abdomen/hernien/inguinal-femoral",
+      "evidence": [
+        "abdomen-technik/review-packet04.json"
+      ]
+    },
+    {
+      "route": "/abdomen/leber/adenom",
+      "evidence": [
+        "abdomen-technik/review-packet04.json"
+      ]
+    },
+    {
+      "route": "/abdomen/leber/angiomyolipom",
+      "evidence": [
+        "abdomen-technik/review-packet04.json"
+      ]
+    },
+    {
+      "route": "/abdomen/leber/psc-mrcp",
+      "evidence": [
+        "abdomen-technik/review-packet05.json",
+        "abdomen-technik/review-packet05-actual-integration.json",
+        "integration-review-atv05.json"
+      ]
+    },
+    {
+      "route": "/abdomen/pankreas/neuroendokrine-tumoren",
+      "evidence": [
+        "abdomen-technik/review-packet05.json",
+        "abdomen-technik/review-packet05-actual-integration.json",
+        "integration-review-atv05.json"
+      ]
+    },
+    {
+      "route": "/abdomen/pankreas/pankreaskarzinom",
+      "evidence": [
+        "abdomen-technik/review-packet05.json",
+        "abdomen-technik/review-packet05-actual-integration.json",
+        "integration-review-atv05.json"
+      ]
+    },
+    {
+      "route": "/abdomen/pankreas/pankreatitis",
+      "evidence": [
+        "abdomen-technik/review-packet05.json",
+        "abdomen-technik/review-packet05-actual-integration.json",
+        "integration-review-atv05.json"
+      ]
+    },
+    {
+      "route": "/abdomen/pankreas/zystische-tumoren",
+      "evidence": [
+        "abdomen-technik/review-packet05.json",
+        "abdomen-technik/review-packet05-actual-integration.json",
+        "integration-review-atv05.json"
+      ]
+    },
+    {
+      "route": "/gehirn/anatomie/chiari",
+      "evidence": [
+        "brain/review-packet09-chiari.json"
+      ]
+    },
+    {
+      "route": "/gehirn/anatomie/normaldruckhydrozephalus",
+      "evidence": [
+        "brain/review-packet08-nph.json"
+      ]
+    },
+    {
+      "route": "/gehirn/neurofibromatose/nf1",
+      "evidence": [
+        "brain/review-packet13-nf1.json"
+      ]
+    },
+    {
+      "route": "/gehirn/vaskulaer/avm-zns",
+      "evidence": [
+        "brain/review-packet19-avm.json"
+      ]
+    },
+    {
+      "route": "/gehirn/vaskulaer/davf",
+      "evidence": [
+        "brain/review-packet17-davf.json"
+      ]
+    },
+    {
+      "route": "/gehirn/vaskulaer/dva",
+      "evidence": [
+        "brain/review-packet11-dva.json"
+      ]
+    },
+    {
+      "route": "/gehirn/vaskulaer/hypertensive-mikroangiopathie",
+      "evidence": [
+        "brain/review-packet16-hma.json"
+      ]
+    },
+    {
+      "route": "/gehirn/vaskulaer/intrazerebrale-blutung",
+      "evidence": [
+        "brain/review-packet15-icb.json"
+      ]
+    },
+    {
+      "route": "/gehirn/vaskulaer/kapillaere-teleangiektasie",
+      "evidence": [
+        "brain/review-packet12-telangiectasia.json"
+      ]
+    },
+    {
+      "route": "/gehirn/vaskulaer/moya-moya",
+      "evidence": [
+        "brain/review-packet18-moyamoya.json"
+      ]
+    },
+    {
+      "route": "/mamma/bildgebung/mammographie/grundlagen",
+      "evidence": [
+        "thorax-mamma/review-packet05-mammography-basics.json"
+      ]
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/basics",
+      "evidence": [
+        "thorax-mamma/review-packet02-mamma-basics.json"
+      ]
+    },
+    {
+      "route": "/msk/hand/de-quervain",
+      "evidence": [
+        "msk-spine/packet06/review-de-quervain.json"
+      ]
+    },
+    {
+      "route": "/msk/hand/strecksehnenfaecher",
+      "evidence": [
+        "msk-spine/packet07/review-wrist.json"
+      ]
+    },
+    {
+      "route": "/msk/knie/kreuzbaender",
+      "evidence": [
+        "msk-spine/packet11/review-knee.json"
+      ]
+    },
+    {
+      "route": "/msk/schulter/rotatorenmanschette",
+      "evidence": [
+        "msk-spine/packet04/review-rotator.json"
+      ]
+    },
+    {
+      "route": "/msk/trauma/ak-luxation",
+      "evidence": [
+        "msk-spine/packet05/review-ak.json"
+      ]
+    },
+    {
+      "route": "/msk/trauma/distale-radiusfraktur",
+      "evidence": [
+        "msk-spine/packet09/review-distal-radius.json"
+      ]
+    },
+    {
+      "route": "/msk/trauma/radiuskoepfchenfraktur",
+      "evidence": [
+        "msk-spine/packet04/review-radiuskopf.json"
+      ]
+    },
+    {
+      "route": "/msk/trauma/skaphoidfraktur",
+      "evidence": [
+        "msk-spine/packet10/review-scaphoid.json"
+      ]
+    },
+    {
+      "route": "/technik/kontrastmittel/mrt",
+      "evidence": [
+        "abdomen-technik/review-packet01.json",
+        "abdomen-technik/review-contrast-remaining15.json"
+      ]
+    },
+    {
+      "route": "/technik/kontrastmittel/nierenfunktion",
+      "evidence": [
+        "abdomen-technik/review-packet01.json",
+        "abdomen-technik/review-contrast-remaining15.json"
+      ]
+    },
+    {
+      "route": "/technik/kontrastmittel/roentgen",
+      "evidence": [
+        "abdomen-technik/review-packet01.json",
+        "abdomen-technik/review-contrast-remaining15.json"
+      ]
+    },
+    {
+      "route": "/technik/kontrastmittel/schwangerschaft",
+      "evidence": [
+        "abdomen-technik/review-packet01.json",
+        "abdomen-technik/review-contrast-remaining15.json"
+      ]
+    },
+    {
+      "route": "/technik/kontrastmittel/ultraschall",
+      "evidence": [
+        "abdomen-technik/review-packet01.json",
+        "abdomen-technik/review-contrast-remaining15.json"
+      ]
+    },
+    {
+      "route": "/thorax/hrct/architekturmuster",
+      "evidence": [
+        "thorax-mamma/review-packet06-hrct-architecture.json"
+      ]
+    },
+    {
+      "route": "/thorax/hrct/dichteanhebung",
+      "evidence": [
+        "thorax-mamma/review-packet07-hrct-density.json"
+      ]
+    },
+    {
+      "route": "/thorax/hrct/dichteminderung",
+      "evidence": [
+        "thorax-mamma/review-packet03-hrct-cavity.json"
+      ]
+    },
+    {
+      "route": "/thorax/hrct/retikulaer-nodulaer",
+      "evidence": [
+        "thorax-mamma/review-packet04-hrct-reticular.json"
+      ]
+    }
+  ],
+  "acceptedNewScopedPools": [
+    {
+      "route": "/gehirn/anatomie/balkenagenesie",
+      "evidence": [
+        "brain/review-packet01.json"
+      ]
+    },
+    {
+      "route": "/gehirn/anatomie/pvl",
+      "evidence": [
+        "brain/review-packet01.json"
+      ]
+    },
+    {
+      "route": "/gehirn/infektionen/herpes-enzephalitis",
+      "evidence": [
+        "brain/review-packet04-infection.json"
+      ]
+    },
+    {
+      "route": "/gehirn/infektionen/hirnabszess",
+      "evidence": [
+        "brain/review-packet04-infection.json"
+      ]
+    },
+    {
+      "route": "/gehirn/infektionen/hiv-enzephalopathie",
+      "evidence": [
+        "brain/review-packet05-hiv.json"
+      ]
+    },
+    {
+      "route": "/gehirn/infektionen/meningitis-enzephalitis",
+      "evidence": [
+        "brain/review-packet06-meningitis.json"
+      ]
+    },
+    {
+      "route": "/gehirn/neurodegeneration/cjd",
+      "evidence": [
+        "brain/review-packet07-cjd.json"
+      ]
+    },
+    {
+      "route": "/gehirn/neurodegeneration/demenzmuster",
+      "evidence": [
+        "brain/review-packet14-demenzmuster.json"
+      ]
+    },
+    {
+      "route": "/gehirn/neurodegeneration/parkinson",
+      "evidence": [
+        "brain/review-packet10-parkinson.json"
+      ]
+    },
+    {
+      "route": "/msk/infektionen/osteomyelitis",
+      "evidence": [
+        "msk-spine/packet08/review-osteomyelitis.json"
+      ]
+    },
+    {
+      "route": "/technik/interventionelle-radiologie",
+      "evidence": [
+        "abdomen-technik/review-packet01.json"
+      ]
+    },
+    {
+      "route": "/thorax/anatomie/aortenbogen",
+      "evidence": [
+        "thorax-mamma/review-packet01.json"
+      ]
+    },
+    {
+      "route": "/thorax/kardio/kardio-mrt-basics",
+      "evidence": [
+        "thorax-mamma/review-packet01.json"
+      ]
+    },
+    {
+      "route": "/thorax/kardio/kardio-mrt-indikationen",
+      "evidence": [
+        "thorax-mamma/review-packet01.json"
+      ]
+    },
+    {
+      "route": "/thorax/kardio/myokardinfarkt-mrt",
+      "evidence": [
+        "thorax-mamma/review-packet01.json"
+      ]
+    },
+    {
+      "route": "/thorax/lung-rads",
+      "evidence": [
+        "thorax-mamma/review-packet01.json"
+      ]
+    }
+  ],
+  "limitations": [
+    "Historical issue signals without current source inspection are priorities, not reopened proven errors.",
+    "No new browser, server, build or shared-artifact mutations performed.",
+    "Only this ledger written; active author artifacts preserved."
+  ],
+  "acceptanceMeaning": "Accepted lists retain only the bounded independent assessment scope described in each report; whole-lesson/PDF/media/browser/Dr.Zia release remain separate.",
+  "coverageNextAction": "For every remainingCoverageRoute inspect actual inline/related registries and goals; determine whether a dedicated pool is appropriate before authoring. No original mapped pool is not proof of no assessment."
+}

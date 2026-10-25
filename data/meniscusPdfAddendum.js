@@ -10,9 +10,9 @@ export const MENISCUS_PDF_P53_P56 = {
       sourcePage: 53,
       title: L('Meniskus-Flounce', 'Meniscal flounce', 'فلونس منیسک'),
       text: L(
-        'Eine flounceartige Wellenform am Innenrand des Innenmeniskus kann in einer einzelnen sagittalen Schicht wie ein Riss oder eine Konturunterbrechung wirken. Verfolge die Form über benachbarte Schichten: Bei sonst homogener Signalintensität und ohne eigenständige radiale Komponente kann sie eine Normvariante sein; weitere Risszeichen schließen diese Einordnung aus.',
-        'A wavy flounce of the medial meniscus inner margin can resemble a tear or contour defect on a single sagittal slice. Follow the contour on adjacent slices: with otherwise homogeneous signal and no separate radial component, it may be a normal variant; other tear signs argue against that interpretation.',
-        'چین موج‌دار در لبهٔ داخلی منیسک داخلی ممکن است در یک برش ساژیتال شبیه پارگی یا نقص کانتور باشد. کانتور را در برش‌های مجاور دنبال کنید: اگر سیگنال در بقیهٔ منیسک هموژن باشد و جزء شعاعی جداگانه‌ای دیده نشود، ممکن است واریانت طبیعی باشد؛ وجود نشانه‌های دیگر پارگی با این تفسیر سازگار نیست.'
+        'Eine flounceartige Wellenform am Innenrand des Innenmeniskus kann in einer einzelnen sagittalen Schicht wie ein Riss oder eine Konturunterbrechung wirken. Verfolge die Form über benachbarte Schichten: Bei sonst homogener Signalintensität und ohne eigenständige radiale Komponente kann sie eine Normvariante sein; Ein eigenständiger Riss kann koexistieren und muss getrennt beurteilt werden.',
+        'A wavy flounce of the medial meniscus inner margin can resemble a tear or contour defect on a single sagittal slice. Follow the contour on adjacent slices: with otherwise homogeneous signal and no separate radial component, it may be a normal variant; an independent tear may coexist and must be assessed separately.',
+        'چین موج‌دار در لبهٔ داخلی منیسک داخلی ممکن است در یک برش ساژیتال شبیه پارگی یا نقص کانتور باشد. کانتور را در برش‌های مجاور دنبال کنید: اگر سیگنال در بقیهٔ منیسک هموژن باشد و جزء شعاعی جداگانه‌ای دیده نشود، ممکن است واریانت طبیعی باشد؛ پارگی مستقلی ممکن است هم‌زمان وجود داشته باشد و باید جداگانه ارزیابی شود.'
       ),
     },
     {

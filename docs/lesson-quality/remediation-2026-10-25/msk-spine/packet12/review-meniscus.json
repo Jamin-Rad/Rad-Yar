@@ -1,0 +1,472 @@
+{
+  "packet": "Meniscus12",
+  "reviewDate": "2026-10-25",
+  "reviewer": "/root/brain_original_pools_next",
+  "author": "/root/msk_original_pools_next",
+  "independentOfAuthor": true,
+  "role": "Read-only independent content/source/translation/assessment review; only this report written",
+  "route": "/msk/knie/meniskus",
+  "workspace": "C:/Users/Drham/Documents/GitHub/Rad-Yar/.worktrees/gehirn-completion-main",
+  "decision": "ACCEPT_BOUNDED_CONTENT_AND_ACTUAL_SHARED_AFTER",
+  "summary": "Independent repair01 and actual shared After closure PASS:24Q per locale,33actual shared cards,18actual shared Test replacements and five mapped goal groups (24unique questions/33unique cards). Both findings closed. Browser/media/Dr.Zia release remain separate and unapproved by this review.",
+  "openFindings": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0
+  },
+  "artifactDecisions": {
+    "actual24QuestionsDEENFA": "PASS after five-string repair01; all24IDs/keys and all other emitted question fields unchanged.",
+    "newQuestion38": "PASS: self-contained full-height posteromedial fluid cleft supports ramp-region injury, with source-appropriate MRI false-negative caution and anatomical wrong feedback.",
+    "newQuestion39": "PASS: self-contained continuous wavy margin supports possible flounce; explicitly permits a separate coexisting tear and does not claim an isolated frame proves an intact whole meniscus.",
+    "teaching94Entries": "PASS for exact current After values and their bounded DEENFA meanings, including array-valued rows; not whole-route acceptance.",
+    "proposed33Cards": "PASS for exact expected After payload; all actual currentBefore values verified. Card21 is a no-op. Source-only records and text changes13/20/27/35 inspected individually.",
+    "proposed18SharedTestReplacements": "PASS for expected After text, translation and in-memory JSX parse; all18 literal currentBefore occurrences are exact and unique.",
+    "sharedIntegration": "PASS: actual global33cards and actual visible shared consumer equal exact accepted After, not a proposed overlay.",
+    "wholeRouteMediaAndBrowser": "NOT_ACCEPTED_BY_THIS_REVIEW: no live route, viewport, theme, interaction, access or full gallery/frame inspection performed."
+  },
+  "findings": [
+    {
+      "id": "M12-SRC-01",
+      "severity": "major",
+      "gates": [
+        "SRC",
+        "ASM"
+      ],
+      "location": "data/meniscusLearning.js:1018-1020, item22.feedback[0]; runtime meniskus-de/en/fa-22.explanation",
+      "evidence": {
+        "de": "Grad 1 entspricht fokalem intrameniskalem Signal und früher mukoider Degeneration; allein kein Rissnachweis.",
+        "en": "Grade 1 represents focal intrasubstance signal and early mucoid degeneration; it does not alone establish a tear.",
+        "fa": "گرید ۱ سیگنال کانونی داخل منیسک و دژنراسیون موکویید اولیه است؛ به‌تنهایی پارگی را ثابت نمی‌کند.",
+        "relatedAcceptedChange": "Teaching changes24-26 remove the same early-mucoid inference from the grading table; changes15-17 explicitly say histology cannot be inferred reliably. Proposed card35 states focal nonsurfacing signal does not prove a specific histology."
+      },
+      "problem": "The feedback still equates a focal MRI signal grade categorically with an early histological process. This is stronger than a common histological association and contradicts the central source-limited interpretation taught in the revised lesson/card35. The source PDF uses the old categorical description, but the packet explicitly resolves that limitation elsewhere.",
+      "learnerImpact": "The learner receives inconsistent rules about whether MRI signal grading establishes tissue histology. This undermines a stated clinical interpretation objective even though grade1/keyA remains appropriate for the described pattern.",
+      "sourceEvidence": [
+        {
+          "url": "https://link.springer.com/article/10.1007/s00256-026-05281-5",
+          "reading": "Intrameniscal signal alteration and numerical grading; recommendation6. The original consensus describes competing causes and recommends descriptive signal/morphology reporting. Its histology discussion describes common correlations rather than a unique proven histology for every grade1 focus."
+        },
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+          "reading": "Original arthroscopic/arthrotomy comparison abstract: MRI grading is a signal-based assessment with imperfect surgical agreement; not a direct individual histology assay."
+        }
+      ],
+      "requiredCorrection": "Revise only the Q22 correct-feedback triad to describe focal intrasubstance signal without definite surface contact and its limits. Remove the categorical early-mucoid equivalence, or label it explicitly as a possible/common historical correlation that is not established by MRI alone. Retain ID, keyA, question and options unless a separately supported reason requires otherwise.",
+      "retest": "Fresh independent comparison of the exact repaired DEENFA triad, unchanged IDs/keys/options and coherence with current teaching grading.lead/table and proposed card35. Recompute exact producer/runtime hashes.",
+      "status": "CLOSED by independent repair01 retest",
+      "retestResult": "PASS, 2026-10-25; exact requested string fields changed and all other question payloads unchanged."
+    },
+    {
+      "id": "M12-LNG-01",
+      "severity": "minor",
+      "gates": [
+        "LNG"
+      ],
+      "location": "data/meniscusLearning.js:943 and976; meniskus-fa-21 optionA and wrongExplanations.C",
+      "evidence": "The same popliteal-hiatus term is spelled هیئتوس in these two fields but هیاتوس in the correct explanation.",
+      "problem": "Inconsistent and awkward Persian transliteration within one item.",
+      "learnerImpact": "Low-impact terminology/readability distraction; side, anatomy and answer are still semantically clear.",
+      "requiredCorrection": "Use one natural spelling consistently, preferably هیاتوس as already used in the correct explanation, in these two fields.",
+      "retest": "Read repaired Persian choiceA/wrongC and correct explanation together; confirm no key or other-locale change.",
+      "status": "CLOSED by independent repair01 retest",
+      "retestResult": "PASS, 2026-10-25; exact requested string fields changed and all other question payloads unchanged."
+    }
+  ],
+  "gates": {
+    "SRC": {
+      "status": "PASS",
+      "evidence": "Relevant user PDF physical44-56 text independently re-extracted/compared, all13 page images inspected; primary source ranges below freshly read. Only Q22 categorical histology feedback remains inconsistent. M12-SRC-01 is now closed: exact corrected Q22 triad describes signal and explicitly denies MRI-only histological proof.",
+      "evidenceBlockers": []
+    },
+    "EDU": {
+      "status": "PASS",
+      "scope": "Bounded revised pool/94 teaching entries/expected shared overlays",
+      "evidence": "Five goals address anatomical fixation, signal versus morphology, orientations/displacement, mimics/discoid measurements, root/extrusion/clinical context. New38/39 fill positive source-retrieval gaps. Original IDs/count continuity preserved; no new chapter or duplicate bank. Options and specific wrong feedback compared throughout.",
+      "limitations": "No empirical item-difficulty/discrimination testing or whole-lesson instructional recertification."
+    },
+    "VIS": {
+      "status": "BLOCKED",
+      "evidence": "All supplied source-page figures inspected for coverage and ordering. Q07/08 now are complete-series text tasks without unsupported single-frame image objects. No new asset or diagnostic image is supplied.",
+      "evidenceBlockers": [
+        "Whole existing case/gallery/hero and actual study/frame fit not independently revalidated in this bounded text packet."
+      ],
+      "boundedNewMediaDecision": "NOT_APPLICABLE: no new media asset or image-recognition claim"
+    },
+    "LNG": {
+      "status": "PASS",
+      "scope": "Semantic DEENFA comparison, with minor M12-LNG-01 recorded",
+      "evidence": "Every24question triad, all216 localized wrong-feedback strings,33proposed card triads,94teaching entries and18mirror replacements read. Values≥15mm,≥20%,≥75%,5mm,4mm,conventional medial>3mm,≤3mm preferred/4mm acceptable, side, full-height, temporal/uncertainty and negation compared. M12-LNG-01 spelling inconsistency closed with exactly two Persian corrections.",
+      "evidenceBlockers": [
+        "Rendered RTL and mixed numeral/operator layout not tested."
+      ]
+    },
+    "ASM": {
+      "status": "PASS",
+      "evidence": "Independent actual After closure confirms24canonical/global questions per locale at repair01 hashes,33shared cards equal accepted After,18actual shared consumer After strings and exact full consumer hash, five actual goal groups covering24Q/33cards and translated goal meanings. Route differs only by quiz sample10→24.",
+      "evidenceBlockers": []
+    },
+    "UX": {
+      "status": "BLOCKED",
+      "evidence": "Static consumer/import and source syntax checked only. Meniscus route calls the independent hard-coded MeniscusTextLesson at page.js2041, so its18proposed changes are necessary. Quiz/deck links retain meniskus/topic/language/return context statically.",
+      "evidenceBlockers": [
+        "No actual browser matrix/interactions/access evidence was part of this review; no server/build run as instructed."
+      ],
+      "accessFailureClaim": "None; live authorized access was not attempted."
+    },
+    "REV": {
+      "status": "PASS",
+      "evidence": "Different agent from author read actual data/source/consumer and proposed overlays afresh; did not execute the author validator that rewrites manifests. Only independent report written.",
+      "repairRetest": "PASS for root repair01; no future shared integration accepted without actual After closure."
+    }
+  },
+  "actualRuntime": {
+    "localizedQuestionCount": 72,
+    "questionsPerLocale": 24,
+    "originalQuestionsPerLocale": 22,
+    "newSeeds": [
+      "38",
+      "39"
+    ],
+    "specificWrongFeedbackCount": 216,
+    "cardTriads": 33,
+    "teachingAfterValuesVerified": 94,
+    "sharedTestBeforeValuesVerified": 18,
+    "canonicalEqualsGlobal": true,
+    "allOriginalKeysUnchanged": true,
+    "protected10and18TextOptionsKeysFeedbackUnchanged": true,
+    "questionsSha256": {
+      "de": "c64548a20c3e6fb31504a1e13e968002dae92faaec356ee19c2a94492f953bc3",
+      "en": "d4bbb859c198fa487bb778ff74146d53ae9914ee7acc2dfab0374d19adeab107",
+      "fa": "b41879000c5dfa7c5f80daca30aaafa308e9ade00ea7835cff28d4badf72986a"
+    },
+    "currentBeforeCardsSha256": "039a7f292f9a51bdc49edc82bbb3fdcf71586004a92a132c378f49b74aed9bc0",
+    "expectedAfterCardsSha256": "9dbe53e66f01fd598916a17601d9497aabbc7fb6e42289aa85b57c8f03f8f007",
+    "currentSharedTestSha256": "634ebfcd0f9e6a91442c3f7297bb394ac08dc834d8577d6aef737b3459b13006",
+    "expectedAfterSharedTestSha256": "9d6abc1cf6d1f05868fc3e2bb39736773801a327088ddff11833c28f6d8e98d9",
+    "hashConvention": "File hashes are SHA256 of UTF-8 source bytes; runtime/payload hashes are SHA256 of JSON.stringify in emitted order.",
+    "filesSha256": {
+      "data/meniscusLearning.js": "0175c1bc7016589d744afd62d287c2f1fc52bac7254e13e6b932c92dc39f9d65",
+      "app/msk/knie/meniskus/page.js": "2a68bc8276d4e5ba83f7fc3d49f2ab70f3bd286cef46fe5662236a2d8e7f1d29",
+      "app/msk/knie/meniskus/LotyschClassification.jsx": "f37cc8cec0bbb5eb0099fc6391dce8692a44a1bfde9ec405f4886ad8c0e59204",
+      "data/meniscusPdfAddendum.js": "79ce49e7eec589dc782eb4f9d2d6b4edd03f547ae1d66b5b9ca01ee3da5e1478",
+      "data/meniscusPdfGapAddendum.js": "2c022464b94ed665b95e9c68133d6f4f29680df08efbba30f7cbaef9bccc0f63",
+      "app/andarun/test/MeniscusTextLesson.jsx": "634ebfcd0f9e6a91442c3f7297bb394ac08dc834d8577d6aef737b3459b13006"
+    }
+  },
+  "sourceCoverage": {
+    "userPdf": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+    "totalPages": 138,
+    "sha256": "33b57bdc5a34e8c0b685af0e88f8d40628ae05c3cf14e164b3eae22d3b23947e",
+    "freshActualTextExtraction": "pypdf read physical44-56 from the actual supplied file; all13 strings exactly equal the author text artifact. Reviewer read those complete texts, not merely ledger descriptions.",
+    "freshImagesSeen": "tmp/assessment-quality/msk-next-pdf/meniscus-044.png through meniscus-056.png; all13 actual full-page images inspected independently.",
+    "pageDisposition": [
+      {
+        "physical": 44,
+        "printed": 43,
+        "read": "text+image",
+        "disposition": "Fixation/root anatomy covered; uncontextualised tear-frequency percentages are not universal assessment facts."
+      },
+      {
+        "physical": 45,
+        "printed": 44,
+        "read": "text+image",
+        "disposition": "Vascular gradient and historical signal1/2/subtypes; fixed-distance and histological certainty appropriately limited except Q22."
+      },
+      {
+        "physical": 46,
+        "printed": 45,
+        "read": "text+image",
+        "disposition": "Surfacing signal, source-specific StollerIV morphology and preservation retained with explicit classification separation."
+      },
+      {
+        "physical": 47,
+        "printed": 46,
+        "read": "text+image",
+        "disposition": "Morphology versus signal and two-image confidence rule; proposed visible Test mirror resolves universal-prerequisite wording."
+      },
+      {
+        "physical": 48,
+        "printed": 47,
+        "read": "text+image",
+        "disposition": "Longitudinal/lateral-posterior-MFL attachment/radial geometry covered; eponym marked source-specific."
+      },
+      {
+        "physical": 49,
+        "printed": 48,
+        "read": "text+image",
+        "disposition": "Full-width defect/ghost and oblique radial flap pattern covered with multiplanar confirmation."
+      },
+      {
+        "physical": 50,
+        "printed": 49,
+        "read": "text+image",
+        "disposition": "Displacement/locking/doublePCL, qualified against primary mimics; no absolute pathognomonic inference."
+      },
+      {
+        "physical": 51,
+        "printed": 50,
+        "read": "text+image",
+        "disposition": "Flipped fragment/donor site and variant distinction, not isolated anterior-duplication certainty."
+      },
+      {
+        "physical": 52,
+        "printed": 51,
+        "read": "text+image",
+        "disposition": "Transverse/MFL pseudotears and continuity tracking covered."
+      },
+      {
+        "physical": 53,
+        "printed": 52,
+        "read": "text+image",
+        "disposition": "Flounce positive retrieval39 and coexisting-tear caveat; no isolated-frame rule."
+      },
+      {
+        "physical": 54,
+        "printed": 53,
+        "read": "text+image",
+        "disposition": "Root continuity/adjacent anatomy; cadaver pressure change not represented as measured clinical OA outcome."
+      },
+      {
+        "physical": 55,
+        "printed": 54,
+        "read": "text+image",
+        "disposition": "Meniscocapsular anatomy and new38 positive pattern/MRI false-negative limitation; no ACL-treatment inference from AAOS isolated-tear guidance."
+      },
+      {
+        "physical": 56,
+        "printed": 55,
+        "read": "text+image",
+        "disposition": "Measured medial extrusion and clinical limits; CPPD explicitly mapped to existing separate chondrocalcinosis lesson rather than claimed covered here."
+      }
+    ],
+    "unreadableRelevantPages": [],
+    "wholePdfAcceptance": false
+  },
+  "freshPrimaryReadings": [
+    {
+      "source": "SSR2026 original consensus",
+      "url": "https://link.springer.com/article/10.1007/s00256-026-05281-5",
+      "read": "Root/vascularity/stabilizer anatomy, recommendation5/discoid, intrameniscal signal/recommendation6, tear patterns/extent, extrusion/recommendation9 and reporting restraint/recommendation10, including consensus limitations.",
+      "access": "PMC direct recaptcha; original publisher text and indexed passages readable. Not a claim every reference or article page was read."
+    },
+    {
+      "source": "ESSR2024 original recommendations",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+      "read": "Protocol, slice thickness/T1 versus PD, three-plane and menisci/anatomy/locking sections. Supports the proposed Test changes and Q04/card09/10."
+    },
+    {
+      "source": "Crues1987 original surgical comparison",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+      "read": "Full original abstract via primary indexed PubMed/RSNA after intermittently empty direct response; signal versus surgical agreement and limits."
+    },
+    {
+      "source": "DeSmet/Tuite2006 original two-slice study",
+      "url": "https://www.ajronline.org/doi/pdf/10.2214/AJR.05.1354",
+      "read": "Original indexed table/results/discussion on two-or-more abnormal images, possible single-image tears and separate morphological/displaced-fragment criteria; no universal adjacency/same-sequence requirement inferred."
+    },
+    {
+      "source": "McCauley2002 original2C study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+      "read": "Full abstract: wedge-shaped extensive signal definition and highly selected small arthroscopy subgroup; no blanket50% learner prognosis imported."
+    },
+    {
+      "source": "Samoto2002 original discoid cohort",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+      "read": "Full abstract measurements and thresholds: coronal minimum meniscal/maximum tibial width and sagittal summed-horn/maximum-diameter geometry,≥20%/≥75%; source-study cutoffs not transferred across planes."
+    },
+    {
+      "source": "Arnoczky/Warren1982 original cadaver study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/7081532/",
+      "read": "Full20-specimen abstract: peripheral capsular/synovial plexus, anatomical vascular variation; no fixed millimetre healing or surgery rule."
+    },
+    {
+      "source": "Haramati1993 original flipped-meniscus series",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8316871/",
+      "read": "Full original abstract, ten prospectively identified knees and limited surgical confirmation; author/journal correction matches source. No newly generalized8mm cutoff."
+    },
+    {
+      "source": "Dorsay/Helms2003 original bucket-handle comparison",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12719929/",
+      "read": "Fresh indexed complete original abstract,71selectedMRI/surgical comparison; combined displacement clues and study-specific specificity. Direct responses intermittently empty."
+    },
+    {
+      "source": "Venkatanarasimha2009 original anatomical-pitfall article",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19234702/",
+      "read": "Original complete abstract: low band parallel anteroinferior to PCL, normal/abnormal intercondylar mimics; attribution correction and non-pathognomonic wording supported."
+    },
+    {
+      "source": "Pekala2021 originalMRI arm plus synthesis",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7903841/",
+      "read": "Original100-limb MRI methods/results and anatomical course/mimic discussion. The separate pooled synthesis was recognized as a separate evidence type; no pooled prevalence or operative mandate introduced."
+    },
+    {
+      "source": "Greenaway2020 original ramp study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32875293/",
+      "read": "Complete original abstract:93ACLRpatients, type3/full-height fluid-cleft criteria, arthroscopic comparison; Q38 deliberately says supports and does not teach a universal accuracy figure."
+    },
+    {
+      "source": "Arner2017 original ramp comparison",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28343325/",
+      "read": "Complete original90-patient abstract and reader-variable sensitivity; supports negative-MRI limitation, not a universal detection probability."
+    },
+    {
+      "source": "Yu1997 original flounce observation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9114114/",
+      "read": "Complete original3159-exam abstract distinguishing true flounce and tear-associated flounce-like folds; no wavy-margin-alone reassurance."
+    },
+    {
+      "source": "Kim2000 original flounce surgical correlation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10992813/",
+      "read": "Complete original116-knee abstract, seven flounce cases and transient distortion/truncation pitfall."
+    },
+    {
+      "source": "HyoJinKim2020 original flounceMRI cohort",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32206830/",
+      "read": "Complete original283-knee abstract; tear coexistence association supports the revised addendum/Q39 qualifier, no frequency/causality generalization."
+    },
+    {
+      "source": "Allaire2008 original cadaver mechanics",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18762653/",
+      "read": "Complete nine-knee abstract methods/contact-pressure/kinematic results; biomechanical evidence is kept separate from clinical OA outcomes."
+    },
+    {
+      "source": "Kise2016 original RCT",
+      "url": "https://www.bmj.com/content/bmj/354/bmj.i3740.full.pdf",
+      "read": "Original indexed abstract/results and participant eligibility/exclusions:140middle-aged patients, mostly no radiographicOA, nonlocked/nonacute setting, exercise versus partial meniscectomy two-year outcome. Supports exact protectedQ10 and clinical table/card14 context.",
+      "access": "Direct BMJ/PMC intermittently403/recaptcha; original publisher indexed fullPDF passages readable."
+    },
+    {
+      "source": "AAOS2024 original guideline",
+      "url": "https://www.aaos.org/globalassets/quality-and-practice-resources/acute-meniscal-pathology/amp-cpg.pdf",
+      "read": "Official scope, preservation recommendation and rationale (physical6/22, zero-based5/21); scope excludes degenerative/root/ACL-associated injuries. Not used for Q10/Q38 treatment."
+    }
+  ],
+  "readArtifacts": [
+    "skills/radyar-lessons/SKILL.md",
+    "docs/lesson-quality/standard.md",
+    "docs/educational-page-design-principles.md",
+    "docs/lesson-quality/review-template.md",
+    "packet12/meniscus-handoff.md",
+    "packet12/meniscus-plan.md",
+    "packet12/meniscus-source-ledger.md",
+    "packet12/meniscus-before.json",
+    "packet12/meniscus-after-manifest.json",
+    "packet12/meniscus-teaching-changes.json",
+    "packet12/meniscus-shared-card-proposals.json",
+    "packet12/meniscus-shared-test-mirror-proposals.json",
+    "packet12/meniscus-page-before.txt",
+    "data/meniscusLearning.js and actual bundled canonical/global runtime",
+    "data/questions.js and data/flashcards.js actual import/runtime consumers",
+    "app/msk/knie/meniskus/page.js affected CONTENT and rendering consumers",
+    "app/msk/knie/meniskus/LotyschClassification.jsx",
+    "data/meniscusPdfAddendum.js",
+    "data/meniscusPdfGapAddendum.js",
+    "app/andarun/test/MeniscusTextLesson.jsx full source",
+    "tmp/assessment-quality/meniscus12-validate.cjs read but not executed because it rewrites author manifests"
+  ],
+  "actualChecks": [
+    "Independent in-memory esbuild data import evaluation with write:false, not application build; actual QUESTION_BANK meniskus subsets equal canonical producer/manifest in all locales.",
+    "Independent count/ID/key/option/feedback checks; original22keys retained, protected10/18content exact,72localized items and216specific wrong-feedback fields.",
+    "All33actual shared card records exactly equal currentBefore; each proposed After matches manifest and retains ID/translation fields; card21 noop verified.",
+    "All18shared Test Before literals exactly unique in actual consumer; replacements applied only in memory and resulting JSX parsed successfully.",
+    "All94teaching current After entries independently asserted. CONTENT Before values also match saved pre-author page snapshot. Unique-component/addendum historical Before strings were read as ledger evidence, not claimed reconstructed from an unavailable prior checkout.",
+    "Five owned files and shared visible consumer syntax transformed in memory; owned byte hashes match the frozen manifest.",
+    "Actual supplied PDF hash/pages/text independently read; all13extractions equal saved text and all13rendered source-page images seen."
+  ],
+  "notPerformed": [
+    "Any production/source repair",
+    "Shared proposal integration",
+    "Application/Next build",
+    "Server start",
+    "Live browser/SSR/access/UI matrix",
+    "Git command or mutation",
+    "New agent or sidebar chat"
+  ],
+  "nextRequired": [
+    "Root completes any required real browser/application checks.",
+    "Whole existing media/route scientific release remain outside this bounded content review; final approval remains Dr. Zia."
+  ],
+  "scientificReview": "pending Dr. Zia",
+  "browserQA": "not tested by this reviewer",
+  "publication": "root-owned; no publication action by reviewer",
+  "initialDecision": "REVISE_BOUNDED_CONTENT",
+  "initialOpenFindings": {
+    "critical": 0,
+    "major": 1,
+    "minor": 1
+  },
+  "repair01Retest": {
+    "date": "2026-10-25",
+    "repairAuthor": "root",
+    "reviewer": "/root/brain_original_pools_next",
+    "status": "PASS",
+    "exactChangedStrings": 5,
+    "changes": [
+      {
+        "id": "meniskus-de-22",
+        "field": "explanation",
+        "after": "Grad 1 beschreibt fokales intrameniskales Signal ohne Oberflächenkontakt. Das ist eine Signalbeschreibung, kein sicherer histologischer Nachweis einer frühen mukoiden Degeneration und allein kein Rissnachweis."
+      },
+      {
+        "id": "meniskus-en-22",
+        "field": "explanation",
+        "after": "Grade 1 describes focal intrasubstance meniscal signal without surface contact. This is a signal description, not definitive histological proof of early mucoid degeneration and not, by itself, evidence of a tear."
+      },
+      {
+        "id": "meniskus-fa-22",
+        "field": "explanation",
+        "after": "گرید ۱ سیگنال کانونی داخل منیسک بدون تماس با سطح را توصیف می‌کند. این توصیف سیگنال است، نه اثبات قطعی بافت‌شناختی دژنراسیون موکویید اولیه و نه به‌تنهایی اثبات پارگی."
+      },
+      {
+        "id": "meniskus-fa-21",
+        "field": "options.A.text",
+        "after": "هیاتوس پوپلیتئوس طبیعی"
+      },
+      {
+        "id": "meniskus-fa-21",
+        "field": "wrongExplanations.C",
+        "after": "رباط‌های منیسکوفمورال از شاخ خلفی خارجی کنار PCL تا فمور می‌روند؛ هیاتوس شکاف توصیف‌شده در امتداد تاندون پوپلیتئوس را توضیح می‌دهد."
+      }
+    ],
+    "allOtherQuestionFieldsUnchanged": true,
+    "allQuestionIDsKeysUnchanged": true,
+    "canonicalEqualsGlobal": true,
+    "otherFourOwnedFilesUnchanged": true,
+    "sharedCardsBeforeStillExact": true,
+    "sharedTestBeforeStillExact": true,
+    "producerSha256": "aa21a0bccbd10ffcdd5efb41da14082ccf6e2de0484e1b52c3d4deabc6ef6696",
+    "runtimeSha256": {
+      "de": "747133f364bcfcaa2773ffa53912cb11354c03733608aa7bfc122cb16eaee24b",
+      "en": "173da446b59fc39bd97817093c46b6335a8321b8c40128f16ada9bd3b47f3205",
+      "fa": "371357f3a464d02dc237dae699b2a000e183a349da98ba1d8739c9e487b4fb06"
+    },
+    "scope": "Independent full-runtime deep diff against frozen initial-review manifest; exactly allowed five strings; semantic read against already accepted teaching/card35. No new scientific assertion, no fresh whole-bank author change, no browser/build/Git/shared mutation."
+  },
+  "actualAfterClosure": {
+    "date": "2026-10-25",
+    "reviewer": "/root/brain_original_pools_next",
+    "status": "PASS",
+    "actualRuntimeQuestionsEqualReviewedRepair01": true,
+    "actualSharedCardsEqualReviewedAfter": true,
+    "actualSharedCardsSha256": "9dbe53e66f01fd598916a17601d9497aabbc7fb6e42289aa85b57c8f03f8f007",
+    "actualSharedConsumer": "app/andarun/test/MeniscusTextLesson.jsx",
+    "actualSharedConsumerSha256": "9d6abc1cf6d1f05868fc3e2bb39736773801a327088ddff11833c28f6d8e98d9",
+    "all18AfterLiteralsUniqueAndBeforeAbsent": true,
+    "goalsFile": "data/assessmentQuality/mskSpine.js",
+    "goalGroupIds": [
+      "normal-tear",
+      "tear-patterns",
+      "discoid",
+      "clinical-management",
+      "useful-report"
+    ],
+    "goalGroupSha256": "527da3d19f9cf06ad1216d0646fa7efc665cb82ff821ab59b3672d2633435daa",
+    "goalUniqueQuestions": 24,
+    "goalUniqueCards": 33,
+    "allThreeLocaleQuestionIdsResolve": true,
+    "goalMeaningsAndItemAssignmentsRead": true,
+    "currentRouteSha256": "f9d12462a9d3d88c06cb4153391d4c111beb408a35eb624be0a716249a38863b",
+    "onlyRouteDeltaSinceReviewedTeaching": "Quiz n=10→n=24; reversing that exact one source substring restores the previously reviewed full route SHA256",
+    "method": "Fresh independent in-memory actual aggregate/producer/coverage imports and exact acceptedAfter guards. Did not run root or author validators and did not mutate shared artifacts."
+  }
+}

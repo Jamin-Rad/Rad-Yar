@@ -1,0 +1,105 @@
+{
+  "packet": "AVM19",
+  "date": "2026-10-25",
+  "route": "/gehirn/vaskulaer/avm-zns",
+  "producer": "data/avm.js",
+  "baseHead": "b6680aac",
+  "files": [
+    {
+      "path": "data/avm.js",
+      "sha256": "fcb3a42be95b9799f5a6fff7a458cb3347b97bbc9032cbabee88df4177ad6509"
+    },
+    {
+      "path": "app/gehirn/vaskulaer/avm-zns/page.js",
+      "sha256": "abebffca4cb27617a9deb232bd95d66f3fb4badcbe833ca4ac5c7b650da16257"
+    }
+  ],
+  "preAuthorBaseline": [
+    {
+      "path": "tmp/assessment-quality/avm19-before.js",
+      "sha256": "32e70b272ef45b7913e2d45787bfb210d6d5442f49c71e4d3cd97b024f51820a"
+    },
+    {
+      "path": "tmp/assessment-quality/avm19-route-before.js",
+      "sha256": "cc30392d1d3676ac78917c4ec9b91ae54cc291b3606c871532c4d8f0b54d27ae"
+    }
+  ],
+  "questionsPerLocale": 12,
+  "totalLocalizedQuestions": 36,
+  "cardTriads": 15,
+  "localizedWrongFeedback": 108,
+  "keys": [
+    "C",
+    "B",
+    "D",
+    "A",
+    "C",
+    "B",
+    "D",
+    "A",
+    "B",
+    "C",
+    "A",
+    "D"
+  ],
+  "idsUnchanged": true,
+  "keysUnchanged": true,
+  "cardIdsUnchanged": true,
+  "topicMetadataUnchanged": true,
+  "caseMediaObjectUnchanged": true,
+  "preExistingLanguageWip": [
+    {
+      "path": "fall.images[0].label",
+      "before": "T1 nativ",
+      "after": {
+        "de": "T1 nativ",
+        "en": "Precontrast T1",
+        "fa": "T1 بدون تزریق"
+      }
+    }
+  ],
+  "preExistingRouteWipPreserved": true,
+  "inlineIds": [
+    "avm-zns-{lang}-08",
+    "avm-zns-{lang}-09",
+    "avm-zns-{lang}-10"
+  ],
+  "runtimeHashes": {
+    "questions": "8fc0d36e09fcc20f046542e2112ca523aa8431ecd9610b0fc947bf97cd197ffe",
+    "cards": "cccd4b49431dc83c88e447a77d1a4d5c2542a04057ca352b1b740cd62e315ece",
+    "lesson": "da7bca63e3a0814ef3146e292a4c5579d57595ee153db092a0b4bb9fc9f54cc6"
+  },
+  "teachingDeltaEntries": 58,
+  "assessmentDeltaEntries": 380,
+  "checks": [
+    {
+      "name": "original full-pool integrity, ID/key/source/feedback/card translation and WIP guards",
+      "result": "PASS",
+      "command": "node tmp/assessment-quality/avm19-evidence.mjs"
+    },
+    {
+      "name": "existing focused source/assessment checks",
+      "result": "PASS",
+      "command": "node scripts/test-gehirn-avm-p37-p38.mjs"
+    },
+    {
+      "name": "producer syntax",
+      "result": "PASS",
+      "command": "node --check data/avm.js"
+    },
+    {
+      "name": "bounded whitespace diff",
+      "result": "PASS",
+      "command": "git diff --check -- data/avm.js app/gehirn/vaskulaer/avm-zns/page.js"
+    }
+  ],
+  "notRun": [
+    "application build",
+    "global question/flashcard aggregate imports",
+    "browser desktop/mobile/themes/languages/interactions/access",
+    "diagnostic image/frame/hero validation"
+  ],
+  "reviewStatus": "independent review pending, root coordinates",
+  "physicianApproval": "pending Dr. Zia",
+  "publication": "no author git mutation or publication"
+}

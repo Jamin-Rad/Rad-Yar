@@ -1,0 +1,484 @@
+{
+  "packet": "AVM19",
+  "checkedDate": "2026-10-25",
+  "role": "author evidence; not independent acceptance",
+  "sourcePDF": {
+    "path": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf",
+    "totalPages": 89,
+    "pages": [
+      {
+        "physical": 37,
+        "index": 36,
+        "printed": 36,
+        "textRead": true,
+        "imageRead": true,
+        "render": "tmp/assessment-quality/brain-next-pdf/avm-37.png"
+      },
+      {
+        "physical": 38,
+        "index": 37,
+        "printed": 37,
+        "textRead": true,
+        "imageRead": true,
+        "render": "tmp/assessment-quality/brain-next-pdf/avm-38.png"
+      }
+    ],
+    "scope": "AVMspreadonly; no wholePDF claim",
+    "unreadableRelevantRegions": []
+  },
+  "goals": [
+    {
+      "id": "AVM19-G1",
+      "observable": "Describe feeder–nidus–vein and distinguish relevant vascular patterns",
+      "seeds": [
+        "01",
+        "06",
+        "08",
+        "11"
+      ],
+      "cards": [
+        "avm-zns-01-definition",
+        "avm-zns-02-nidus",
+        "avm-zns-08-flow-voids",
+        "avm-zns-09-dsa",
+        "avm-zns-12-davf-unterschied",
+        "avm-zns-13-kavernom-unterschied"
+      ],
+      "sources": [
+        "PDF37",
+        "PDF38",
+        "AHA2017",
+        "CPA2008",
+        "CCM2025"
+      ],
+      "questions": {
+        "de": [
+          "avm-zns-de-01",
+          "avm-zns-de-06",
+          "avm-zns-de-08",
+          "avm-zns-de-11"
+        ],
+        "en": [
+          "avm-zns-en-01",
+          "avm-zns-en-06",
+          "avm-zns-en-08",
+          "avm-zns-en-11"
+        ],
+        "fa": [
+          "avm-zns-fa-01",
+          "avm-zns-fa-06",
+          "avm-zns-fa-08",
+          "avm-zns-fa-11"
+        ]
+      }
+    },
+    {
+      "id": "AVM19-G2",
+      "observable": "Interpret focal presentation and choose acute haemorrhage imaging versus blood-sensitive MRI",
+      "seeds": [
+        "02",
+        "03",
+        "07"
+      ],
+      "cards": [
+        "avm-zns-03-epidemio",
+        "avm-zns-15-swi"
+      ],
+      "sources": [
+        "PDF37",
+        "AHA2017",
+        "ILAE2017",
+        "AHA2022"
+      ],
+      "questions": {
+        "de": [
+          "avm-zns-de-02",
+          "avm-zns-de-03",
+          "avm-zns-de-07"
+        ],
+        "en": [
+          "avm-zns-en-02",
+          "avm-zns-en-03",
+          "avm-zns-en-07"
+        ],
+        "fa": [
+          "avm-zns-fa-02",
+          "avm-zns-fa-03",
+          "avm-zns-fa-07"
+        ]
+      }
+    },
+    {
+      "id": "AVM19-G3",
+      "observable": "Calculate Spetzler–Martin from maximum diameter, eloquence and any deep component including mixed drainage",
+      "seeds": [
+        "04",
+        "05",
+        "09"
+      ],
+      "cards": [
+        "avm-zns-05-spetzler-kriterien",
+        "avm-zns-06-spetzler-therapie",
+        "avm-zns-07-eloquenz"
+      ],
+      "sources": [
+        "PDF38",
+        "SM1986",
+        "AHA2017"
+      ],
+      "questions": {
+        "de": [
+          "avm-zns-de-04",
+          "avm-zns-de-05",
+          "avm-zns-de-09"
+        ],
+        "en": [
+          "avm-zns-en-04",
+          "avm-zns-en-05",
+          "avm-zns-en-09"
+        ],
+        "fa": [
+          "avm-zns-fa-04",
+          "avm-zns-fa-05",
+          "avm-zns-fa-09"
+        ]
+      }
+    },
+    {
+      "id": "AVM19-G4",
+      "observable": "Separate operative grade from untreated haemorrhage predictors",
+      "seeds": [
+        "12"
+      ],
+      "cards": [
+        "avm-zns-04-blutungsrisiko",
+        "avm-zns-06-spetzler-therapie"
+      ],
+      "sources": [
+        "SM1986",
+        "Kim2014",
+        "AHA2017"
+      ],
+      "questions": {
+        "de": [
+          "avm-zns-de-12"
+        ],
+        "en": [
+          "avm-zns-en-12"
+        ],
+        "fa": [
+          "avm-zns-fa-12"
+        ]
+      }
+    },
+    {
+      "id": "AVM19-G5",
+      "observable": "Distinguish delayed SRS action, embolization, resection and observation without automatic therapy rules",
+      "seeds": [
+        "10"
+      ],
+      "cards": [
+        "avm-zns-10-therapie-wahl",
+        "avm-zns-11-gamma-knife",
+        "avm-zns-14-embolisation"
+      ],
+      "sources": [
+        "AHA2017",
+        "SNIS2022",
+        "ARUBA2020"
+      ],
+      "questions": {
+        "de": [
+          "avm-zns-de-10"
+        ],
+        "en": [
+          "avm-zns-en-10"
+        ],
+        "fa": [
+          "avm-zns-fa-10"
+        ]
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "SM1986",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3760956/",
+      "type": "original grading paper",
+      "read": "Original PubMed abstract freshly read: size, eloquence and venous-drainage basis; intended surgical morbidity/mortality prediction. Full original article/table not accessed.",
+      "limits": "Exact thresholds from user PDF38; detailed mixed-drainage definition corroborated in original AHA2017 statement, not claimed read from unavailable original table."
+    },
+    {
+      "id": "AHA2017",
+      "url": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000134",
+      "type": "original AHA/ASA scientific statement",
+      "read": "Fresh original indexed PDF reading: introductory definition/de novo evidence and presentation/natural history (e200–e202); diagnostic angioarchitecture/imaging; surgical grading explanation including any or all deep drainage and eloquent regions; multimodal management, embolization aims and SRS delayed effect/latency.",
+      "readingAccess": "Official HTML/PDF direct access intermittently403; original indexed passages readable. Deep-drainage paragraph additionally read as the identical primary statement PDF at https://anrs-neurologie.ro/wp-content/uploads/2017/10/Ghid-2017-AHA-ASA-Management-malformatii-arteriovenoase.pdf . Not a claim all24pages were read.",
+      "used": "Feeder/nidus/veins; de novo caveat; operative grading; any deep component; basal ganglia/internal capsule/other eloquent regions; treatment and residual-shunt cautions."
+    },
+    {
+      "id": "Kim2014",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4141996/",
+      "type": "original individual-patient-data meta-analysis",
+      "read": "Fresh abstract, methods/results and discussion passages: four cohorts,2525patients; untreated follow-up; haemorrhagic presentation and age predictors; nidus size not independently predictive in model.",
+      "used": "Q12 and risk card distinguish surgical grade from later haemorrhage predictors; no individual lifetime projection.",
+      "limits": "Observational cohorts and selection/missing-data limitations; findings not a deterministic personal risk calculator."
+    },
+    {
+      "id": "ARUBA2020",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32562682/",
+      "type": "original randomized trial final follow-up",
+      "read": "Fresh full abstract methods/findings/interpretation:226adults with unruptured never-intervened AVMs; mean50.4-month follow-up; medical management versus medical+intervention death/symptomaticstroke outcome.",
+      "used": "Observation is an option requiring individual assessment; findings explicitly limited to studied adults/unruptured lesions and study follow-up.",
+      "limits": "Do not generalize to ruptured/paediatric AVMs or all lifelong outcomes. No procedural selection rule inferred."
+    },
+    {
+      "id": "SNIS2022",
+      "url": "https://jnis.bmj.com/content/14/11/1118",
+      "type": "original Society of NeuroInterventional Surgery standards statement",
+      "read": "Fresh indexed original sections on endovascular role in multimodal management and stereotactic radiosurgery: adjunctive, targeted or selected definitive embolization and delayed SRS action.",
+      "readingAccess": "Direct full-page/PDF403; indexed primary passages read, not whole-paper coverage.",
+      "used": "Embolization treatment intent and partial≠complete obliteration; SRS latency mechanism."
+    },
+    {
+      "id": "ILAE2017",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28276064/",
+      "type": "original ILAE operational classification instruction manual",
+      "read": "Fresh original instruction-manual passage on focal clonic motor semiology: rhythmical focal jerking/spread; awareness need not be lost.",
+      "primaryPdf": "https://www.ilae.org/files/dmfile/Operational-Classification---Instruction-manual-Fisher_et_al-2017-Epilepsia-1.pdf",
+      "used": "Self-contained Q02 motor semiology without proving AVM caused every episode; not a claim the2017taxonomy is the latest classification."
+    },
+    {
+      "id": "AHA2022",
+      "url": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407",
+      "type": "original AHA/ASA ICH guideline",
+      "read": "Fresh official indexed section4.1.2, Neuroimaging for ICH Diagnosis and Acute Course, synopsis/supportive text; CT availability/rapidity and MRI diagnostic capacity.",
+      "used": "Q03 asks initial bleed assessment with CT immediately available. Does not imply MRI can never diagnose acute blood or replace subsequent source/vascular work-up."
+    },
+    {
+      "id": "CPA2008",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18239181/",
+      "type": "original clinical/angiographic series",
+      "read": "Fresh complete original abstract:49selectedCPApatients/1434database; diffuse vascular spaces with intermingled normalbrain, distinctive angioarchitecture versus classicalAVM.",
+      "used": "Q08 diffuse-interspersed-tissue differential and teaching row; no treatment recommendation extracted."
+    },
+    {
+      "id": "CCM2025",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12680281/",
+      "type": "original consensus guideline",
+      "read": "Fresh original Imaging Considerations—Imaging Techniques, Diagnosis and Differential Considerations, Table3/diagnosticcriteria passages: typical mixed-signal/popcorn core and hemosiderin rim; acute blood can obscure; vascular imaging mainly for other diagnoses/shunting.",
+      "used": "Q01/Q06 cavernoma distractor rationale and cavernoma card/teaching qualified typical appearance; no cavernoma management recommendation."
+    }
+  ],
+  "coverage": [
+    {
+      "id": "PDF37-01",
+      "source": "Gehirn.pdf",
+      "pdfPage": 37,
+      "printedPage": 36,
+      "point": "No normal capillary bed; high-flow AV connection; feeder/nidus/dilated vein components",
+      "importance": "essential",
+      "location": "grundlagen;Q01;definition,nidus cards",
+      "status": "covered with qualified anatomy; high pressure is not used as a universal individual predictor"
+    },
+    {
+      "id": "PDF37-02",
+      "source": "Gehirn.pdf",
+      "pdfPage": 37,
+      "printedPage": 36,
+      "point": "Young adults20–40; predominantly supratentorial (~85%)",
+      "importance": "supporting",
+      "location": "grundlagen epidemiology;epidemio card",
+      "status": "typical age/location retained; exact~85% not a tested cutoff and explicitly not an exclusion criterion"
+    },
+    {
+      "id": "PDF37-03",
+      "source": "Gehirn.pdf",
+      "pdfPage": 37,
+      "printedPage": 36,
+      "point": "Reported annual bleeding~2–4%",
+      "importance": "essential concept; population figure",
+      "location": "klinik.cave;Q12;risk card",
+      "status": "contextualized using Kim2014 rupture/age/population evidence; unqualified pooled rate not taught as individual risk; numerical memorization deliberately not an objective"
+    },
+    {
+      "id": "PDF37-04",
+      "source": "Gehirn.pdf",
+      "pdfPage": 37,
+      "printedPage": 36,
+      "point": "Bleeding(~50%) as common presentation; seizures, headache, focal deficits",
+      "importance": "essential",
+      "location": "klinik table/assessment;Q02,03",
+      "status": "presentation retained; exact~50% source-population figure not generalized; no invented image finding"
+    },
+    {
+      "id": "PDF37-05",
+      "source": "Gehirn.pdf",
+      "pdfPage": 37,
+      "printedPage": 36,
+      "point": "T1/T2 serpiginous flowvoids and possible surrounding gliosis",
+      "importance": "essential",
+      "location": "bildgebung;existingfall;Q06;flowvoidcard",
+      "status": "covered; flowvoids support rather than prove AVM/grade"
+    },
+    {
+      "id": "PDF37-06",
+      "source": "Gehirn.pdf",
+      "pdfPage": 37,
+      "printedPage": 36,
+      "point": "Postcontrast T1 vessel/nidus enhancement",
+      "importance": "essential",
+      "location": "bildgebung table;Q12 distractor",
+      "status": "covered; enhancement intensity not equated with established later-bleed predictor"
+    },
+    {
+      "id": "PDF37-07",
+      "source": "Gehirn.pdf",
+      "pdfPage": 37,
+      "printedPage": 36,
+      "point": "SWI/T2* products and TOF-MRA nidus/feeders/drainage",
+      "importance": "essential",
+      "location": "bildgebung table;Q07;swi card",
+      "status": "covered; susceptibility sources/context and staticTOF temporal limitation specified"
+    },
+    {
+      "id": "PDF37-08",
+      "source": "Gehirn.pdf",
+      "pdfPage": 37,
+      "printedPage": 36,
+      "point": "Three T1/T2/MRA case images, rID74111",
+      "importance": "media",
+      "location": "existingfall object and media unchanged",
+      "status": "PDF image triptych read; no fresh original-case/frame validation or new disease grade inferred"
+    },
+    {
+      "id": "PDF38-01",
+      "source": "Gehirn.pdf",
+      "pdfPage": 38,
+      "printedPage": 37,
+      "point": "DSA nidus and early venous filling termed pathognomonic",
+      "importance": "essential",
+      "location": "bildgebung;Q08,11;dsa/dAVF cards",
+      "status": "qualified: early venous filling is shunting; parenchymal nidus/localization distinguishes AVM from dAVF"
+    },
+    {
+      "id": "PDF38-02",
+      "source": "Gehirn.pdf",
+      "pdfPage": 38,
+      "printedPage": 37,
+      "point": "Spetzler–Martin: maxdiameter<3/3–6/>6→1/2/3;eloquence0/1;drainage0/1",
+      "importance": "essential",
+      "location": "spetzler table;Q04,05,09;classification cards",
+      "status": "covered; AHA2017corroborates anydeepcomponent includingmixed, sum1–5 and operative-risk purpose"
+    },
+    {
+      "id": "PDF38-03",
+      "source": "Gehirn.pdf",
+      "pdfPage": 38,
+      "printedPage": 37,
+      "point": "Eloquent cortex/deep functional structures list",
+      "importance": "essential",
+      "location": "spetzler table;Q05;eloquenzcard",
+      "status": "covered including AHA2017basalganglia/internalcapsule and cerebellar peduncles/deepnuclei"
+    },
+    {
+      "id": "PDF38-04",
+      "source": "Gehirn.pdf",
+      "pdfPage": 38,
+      "printedPage": 37,
+      "point": "GradesI–II goodOP andIV–V oftenconservative/radiosurgery; higher operative risk",
+      "importance": "essential",
+      "location": "spetzler.summary/key;management;Q10;therapycard",
+      "status": "operative-risk gradient retained; generalized treatment directives replaced by individualized multimodal/observation decisions with primarycontext"
+    },
+    {
+      "id": "PDF38-05",
+      "source": "Gehirn.pdf",
+      "pdfPage": 38,
+      "printedPage": 37,
+      "point": "Bleed distribution: oftenlobarICH, superficialSAH/deepIVH possibility",
+      "importance": "essential",
+      "location": "klinik.rows[0]",
+      "status": "covered as possible patterns, not absolute mapping"
+    },
+    {
+      "id": "PDF38-06",
+      "source": "Gehirn.pdf",
+      "pdfPage": 38,
+      "printedPage": 37,
+      "point": "Surgery,preop/partialembolization,SRSsmall/deep",
+      "importance": "essential",
+      "location": "management items;Q10;embolization/SRScards",
+      "status": "modalities retained; specific treatment intent and latency explained. Selected suitability assessed individually, no blanketgrade/size procedure order"
+    },
+    {
+      "id": "PDF38-07",
+      "source": "Gehirn.pdf",
+      "pdfPage": 38,
+      "printedPage": 37,
+      "point": "dAVF,no nidus,dural; proliferativeangiopathy;Moyamoyamimics",
+      "importance": "essential",
+      "location": "differenzial;Q01,08,11;dAVF/cavernomacards",
+      "status": "covered; diffuseCPAparenchyma clarified from original2008series"
+    }
+  ],
+  "sourceConflicts": [
+    {
+      "topic": "Legacy congenital-only wording",
+      "finding": "Not stated on supplied AVMspread; original AHA2017discusses denovoevidence",
+      "resolution": "Definition uses morphology/shunt, not proof sincebirth; explanatorycardqualified"
+    },
+    {
+      "topic": "Universal annualbleedrate and grade-directedtherapy",
+      "finding": "Population figure and simplified treatment annotations in PDF are insufficient individual rules",
+      "resolution": "Coverage remains traceable; risk and treatment context qualified by original Kim/AHA/ARUBA/SNIS sources"
+    }
+  ],
+  "media": {
+    "newAssets": [],
+    "existingCase": "rID74111 fall object unchanged from pre-author WIP; source triptych read; no independent case/frame/fullrights validation claimed",
+    "existingHero": "unchanged generated teaching illustration, not diagnostic evidence",
+    "schema": "unchanged flow-path.svg",
+    "authorization": "Existing project user authorization for suppliedPDF/Radiopaedia reuse recorded in standard; no new approval request introduced",
+    "wholeRouteVisualAcceptance": "outside this assessment packet; pending independent/root scope"
+  },
+  "glossary": [
+    [
+      "Nidus",
+      "nidus",
+      "نیدوس"
+    ],
+    [
+      "tiefe Drainagekomponente",
+      "deep drainage component",
+      "جزء درناژ عمقی"
+    ],
+    [
+      "eloquent",
+      "eloquent/functionally critical",
+      "حساس از نظر عملکردی"
+    ],
+    [
+      "Blutungspräsentation",
+      "haemorrhagic presentation",
+      "تظاهر خونریزی"
+    ],
+    [
+      "Obliteration/Latenz",
+      "obliteration/latency",
+      "انسداد/دورهٔ نهفتگی"
+    ],
+    [
+      "symptomorientierte Beobachtung",
+      "symptom-directed observation",
+      "پیگیری معطوف به علائم"
+    ]
+  ],
+  "translationChecks": "Author compared every12Qtriad including108specificfeedbackstrings and15cards; numbers/negation/timing/uncertainty retained; RTLbrowser pending.",
+  "limits": [
+    "Primaryreading restricted to declared ranges and abstracts; no entire-paper claim",
+    "AIauthor review and structuralchecks are not physician approval",
+    "No new live original-case browser study/frame inspection",
+    "No application build/server/browser/gitmutation by author; root owns integration/review/publication"
+  ]
+}

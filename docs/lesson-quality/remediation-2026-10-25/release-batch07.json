@@ -1,6 +1,6 @@
 {
   "date": "2026-10-25",
-  "status": "READY_FOR_MAIN_BOUNDED_VERIFICATION",
+  "status": "PUSHED_MAIN_AND_BOUNDED_LIVE_VERIFIED",
   "previousMain": "b6680aac8de3b6572ac2582d3c457cd8618decf7",
   "scope": "Seventh bounded release during ongoing234-route remediation. Six complete assessment pools; overall task remains unfinished.",
   "acceptedPools": {
@@ -27,12 +27,20 @@
     "sourceSSR": "702/702 actual route/locale graph rendersPASS, remediation-all-routes-ssr09.log; fixtures do not prove HTTP/authentication/fullmedia/scientific release.",
     "focused": "Actual95 approved pancreatic/PSC payloads and48 inline rationales PASS; published packet, explicitgoal/action, content-version and inline-feedback tests PASS. Real JSON feedback comparison uses deep value equality; synthetic precedence tests retained.",
     "browser": "Authenticated production build11: PDACFA actual four inline alternatives and selected-B-specific chronic-pancreatitis feedback. PSCEN actual3question quiz with clinically relevant-stricture vignette. CystDE explicit3question and dedicated3card deck links; practice card3 DE-to-FA retains card and returnhash, correct3mm/6mm response and expanded nonautomatic-cancer/nonautomatic-surgery caveat. MoyamoyaEN actual13question link, five goals and visible title-only-source disclosure. No grading/readmarking.",
-    "screenshot": "tmp/assessment-quality/batch07-local-pdac-fa.png"
+    "screenshot": "tmp/assessment-quality/batch07-local-pdac-fa.png",
+    "live": "Actual authenticated production PDACFA self-check four alternatives and selectedB-specific chronic-pancreatitis feedback match build11; no answergrading/readmarking. Bounded live check only.",
+    "liveScreenshot": "tmp/assessment-quality/batch07-live-pdac-fa.png"
   },
   "limits": [
     "Bounded assessment/editorial acceptance does not certify all retained media or complete original lessons/PDFs.",
     "Difficulty is editorial; empirical psychometrics have not been measured.",
     "No exhaustive live234-route, mobile or all-theme equivalence claim.",
     "Dr.Zia scientific release remains separate."
-  ]
+  ],
+  "mainCommit": "da9ba07a7d1da5d4162beaaa034e2bbf42d93200",
+  "deployment": {
+    "state": "Ready",
+    "url": "https://vercel.com/jamins-projects-e299c1d5/rad-yar/3BSRMiw57qy63G5VtRz8jn9VTyxD",
+    "evidence": "Actual authenticated Vercel UI exactcommit/main/Production/Ready. Automatic deployment."
+  }
 }

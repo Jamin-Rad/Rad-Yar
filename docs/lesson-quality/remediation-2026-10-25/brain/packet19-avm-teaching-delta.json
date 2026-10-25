@@ -1,0 +1,461 @@
+{
+  "packet": "AVM19",
+  "comparison": "pre-author working-tree runtime to authored runtime; pre-existing language WIP kept",
+  "entries": 58,
+  "delta": [
+    {
+      "path": "definition.de",
+      "before": "Kongenitale Gefäßfehlbildung mit direktem arteriovenösem Shunt über einen Nidus dysplastischer Gefäße — ohne zwischengeschaltetes Kapillarbett.",
+      "after": "Parenchymale Gefäßmalformation mit arteriovenösem Shunt über einen dysplastischen Nidus ohne normales Kapillarbett."
+    },
+    {
+      "path": "definition.en",
+      "before": "Congenital vascular malformation with a direct arteriovenous shunt via a nidus of dysplastic vessels — without an intervening capillary bed.",
+      "after": "Parenchymal vascular malformation with arteriovenous shunting through a dysplastic nidus without a normal capillary bed."
+    },
+    {
+      "path": "definition.fa",
+      "before": "مالفورماسیون عروقی مادرزادی با شانت مستقیم شریانی-وریدی از طریق نیدوس عروق دیسپلاستیک — بدون بستر مویرگی واسط.",
+      "after": "مالفورماسیون عروقی پارانشیمی با شانت شریانی‌وریدی از طریق نیدوس دیسپلاستیک بدون بستر مویرگی طبیعی."
+    },
+    {
+      "path": "sections[7].label.de",
+      "before": "Merke",
+      "after": "Take Home Message"
+    },
+    {
+      "path": "sections[7].label.en",
+      "before": "Take-home message",
+      "after": "Take Home Message"
+    },
+    {
+      "path": "sections[7].label.fa",
+      "before": "نکات کلیدی",
+      "after": "پیام نهایی"
+    },
+    {
+      "path": "grundlagen.lead.de",
+      "before": "Die AVM besteht aus drei Komponenten: zuführende Arterien (Feeder), dem Nidus aus dysplastischen Gefäßen und drainierenden Venen. Kein Kapillarbett = Hochdruckshunt = Blutungsrisiko.",
+      "after": "Die AVM verbindet zuführende Arterien über einen dysplastischen Nidus direkt mit drainierenden Venen. Das normale Kapillarbett fehlt. Für die Einordnung werden alle drei Komponenten und das angrenzende Hirngewebe beurteilt."
+    },
+    {
+      "path": "grundlagen.lead.en",
+      "before": "The AVM has three components: feeding arteries, the nidus of dysplastic vessels and draining veins. No capillary bed = high-pressure shunt = haemorrhage risk.",
+      "after": "An AVM connects feeding arteries directly to draining veins through a dysplastic nidus. The normal capillary bed is absent. Assess all three components and adjacent brain tissue for characterization."
+    },
+    {
+      "path": "grundlagen.lead.fa",
+      "before": "AVM از سه بخش تشکیل می‌شود: شریان‌های تغذیه‌کننده، نیدوس از عروق دیسپلاستیک و وریدهای تخلیه‌کننده. بدون بستر مویرگی = شانت پرفشار = خطر خونریزی.",
+      "after": "AVM شریان‌های تغذیه‌کننده را از طریق نیدوس دیسپلاستیک مستقیماً به وریدهای تخلیه‌کننده مرتبط می‌کند. بستر مویرگی طبیعی وجود ندارد. برای تعیین ویژگی‌ها، هر سه جزء و بافت مغزی مجاور ارزیابی می‌شوند."
+    },
+    {
+      "path": "grundlagen.items[0].text.de",
+      "before": "Zuführende Arterien, die das AVM-Nidus mit arteriellem Hochdruckblut versorgen. Meist aus kortikalen Ästen der A. cerebri media, anterior oder posterior.",
+      "after": "Arterielle Zuflüsse zum Nidus: Gefäßursprung und Verlauf, beteiligte Äste sowie mitversorgtes normales Hirngewebe sind für die Planung relevant."
+    },
+    {
+      "path": "grundlagen.items[0].text.en",
+      "before": "Feeding arteries supplying the AVM nidus with high-pressure arterial blood. Mostly cortical branches of the MCA, ACA or PCA.",
+      "after": "Arterial inflow to the nidus: vessel origin and course, involved branches and normal brain supplied by shared vessels matter for planning."
+    },
+    {
+      "path": "grundlagen.items[0].text.fa",
+      "before": "شریان‌های تغذیه‌کننده که نیدوس AVM را با خون شریانی پرفشار تامین می‌کنند. اغلب از شاخه‌های کورتیکال MCA، ACA یا PCA.",
+      "after": "ورود شریانی به نیدوس: منشأ و مسیر عروق، شاخه‌های درگیر و بافت طبیعی مغزی که از عروق مشترک خون می‌گیرد برای برنامه‌ریزی اهمیت دارند."
+    },
+    {
+      "path": "grundlagen.items[1].text.de",
+      "before": "Konvolut dysplastischer Gefäße ohne Kapillarbett — die eigentliche Malformation. Direkte AV-Verbindung → arterieller Druck im venösen System → Wand­schwäche → Blutung.",
+      "after": "Ein Nidus verbindet Feeder mit drainierenden Venen. Seine Ausdehnung und sein Bezug zu funktionellen Regionen sind zu beschreiben; eine einzelne T2-Aufnahme bestimmt nicht die gesamte Angioarchitektur."
+    },
+    {
+      "path": "grundlagen.items[1].text.en",
+      "before": "Tangle of dysplastic vessels without a capillary bed — the malformation itself. Direct AV connection → arterial pressure in the venous system → wall weakness → haemorrhage.",
+      "after": "A nidus connects feeders with draining veins. Describe its extent and relationship to functional regions; a single T2 image does not establish the complete angioarchitecture."
+    },
+    {
+      "path": "grundlagen.items[1].text.fa",
+      "before": "شبکهٔ درهم‌پیچیدهٔ عروق دیسپلاستیک بدون بستر مویرگی — خود مالفورماسیون. اتصال مستقیم AV → فشار شریانی در سیستم وریدی → ضعف دیواره → خونریزی.",
+      "after": "نیدوس تغذیه‌کنندگان را به وریدهای تخلیه‌کننده مرتبط می‌کند. گستره و ارتباط آن با نواحی عملکردی باید توصیف شود؛ یک تصویر T2 کل آنژیوآناتومی را مشخص نمی‌کند."
+    },
+    {
+      "path": "klinik.rows[3][0].fa",
+      "before": "کسری‌های عصبی موضعی",
+      "after": "نقص‌های عصبی کانونی"
+    },
+    {
+      "path": "klinik.cave.de",
+      "before": "Klinische Präsentation und Blutungsrisiko variieren. Zahlen hängen von Population, Rupturstatus und Nachbeobachtung ab; keine Einzelzahl beschreibt alle AVMs.",
+      "after": "Eine hämorrhagische Erstpräsentation war in der Metaanalyse ein starker unabhängiger Prädiktor späterer Blutung. Auch Alter und weitere Gefäßmerkmale können relevant sein; der Spetzler-Martin-Grad schätzt hingegen primär mikrochirurgisches Risiko. Studienraten sind keine sichere individuelle oder lebenslange Vorhersage."
+    },
+    {
+      "path": "klinik.cave.en",
+      "before": "Presentation and haemorrhage risk vary. Estimates depend on population, rupture status and follow-up; no single figure describes all AVMs.",
+      "after": "Haemorrhagic presentation was a strong independent predictor of later haemorrhage in the meta-analysis. Age and other vascular features may also matter; Spetzler-Martin primarily estimates microsurgical risk. Study rates are not certain individual or lifetime predictions."
+    },
+    {
+      "path": "klinik.cave.fa",
+      "before": "تظاهر بالینی و خطر خونریزی متغیرند. برآوردها به جمعیت، وضعیت پارگی و مدت پیگیری بستگی دارند؛ یک عدد واحد همه AVMها را توصیف نمی‌کند.",
+      "after": "تظاهر اولیهٔ خونریزی در متاآنالیز پیش‌بینی‌کنندهٔ مستقل و قوی خونریزی بعدی بود. سن و ویژگی‌های عروقی دیگر نیز می‌توانند اهمیت داشته باشند؛ اسپتزلر–مارتین عمدتاً خطر میکروجراحی را برآورد می‌کند. نرخ‌های مطالعه پیش‌بینی قطعی فردی یا مادام‌العمر نیستند."
+    },
+    {
+      "path": "klinik.assessment",
+      "before": null,
+      "after": {
+        "de": "Rhythmische fokale Zuckungen mit Ausbreitung können einen motorischen Anfall anzeigen; das klinische Ereignis wird unabhängig von einer vorschnellen Ursachenzuschreibung beurteilt. Bei plötzlich neuem starkem Kopfschmerz, Erbrechen oder Defizit ist eine akute Blutungsbeurteilung nötig, häufig zunächst mit rasch verfügbarer nativer CT.",
+        "en": "Rhythmic focal jerking with spread may indicate a motor seizure; assess the clinical event without prematurely attributing its cause. Sudden new severe headache, vomiting or deficit requires acute haemorrhage assessment, often initially with promptly available noncontrast CT.",
+        "fa": "پرش‌های ریتمیک کانونی با گسترش می‌توانند تشنج حرکتی را مطرح کنند؛ رویداد بالینی بدون نسبت‌دادن زودهنگام علت ارزیابی می‌شود. سردرد شدید جدید و ناگهانی، استفراغ یا نقص عصبی به بررسی حاد خونریزی نیاز دارد، اغلب ابتدا با CT بدون تزریقِ سریعاً در دسترس."
+      }
+    },
+    {
+      "path": "spetzler.rows[0][0].de",
+      "before": "Größe Nidus",
+      "after": "Maximaler Nidusdurchmesser"
+    },
+    {
+      "path": "spetzler.rows[0][0].en",
+      "before": "Nidus size",
+      "after": "Maximum nidus diameter"
+    },
+    {
+      "path": "spetzler.rows[0][0].fa",
+      "before": "اندازه نیدوس",
+      "after": "قطر حداکثر نیدوس"
+    },
+    {
+      "path": "spetzler.rows[4][1].de",
+      "before": "Eloquent (Sensomotorik, Sprache, Sehrinde, Hypothalamus, Thalamus, innere Kapsel, Hirnstamm, Kleinhirnstiele, tiefe Kleinhirnkerne)",
+      "after": "Eloquent: sensomotorischer, sprachrelevanter und visueller Kortex; Basalganglien, Hypothalamus, Thalamus, innere Kapsel, Hirnstamm, Kleinhirnstiele und tiefe Kleinhirnkerne"
+    },
+    {
+      "path": "spetzler.rows[4][1].en",
+      "before": "Eloquent (sensorimotor, language, visual cortex, hypothalamus, thalamus, internal capsule, brainstem, cerebellar peduncles, deep cerebellar nuclei)",
+      "after": "Eloquent: sensorimotor, language and visual cortex; basal ganglia, hypothalamus, thalamus, internal capsule, brainstem, cerebellar peduncles and deep cerebellar nuclei"
+    },
+    {
+      "path": "spetzler.rows[4][1].fa",
+      "before": "حساس از نظر عملکردی (قشر حسی‌حرکتی، زبان، بینایی، هیپوتالاموس، تالاموس، کپسول داخلی، ساقهٔ مغز، پایه‌های مخچه و هسته‌های عمقی مخچه)",
+      "after": "حساس از نظر عملکردی: قشر حسی‌حرکتی، زبان و بینایی؛ عقده‌های قاعده‌ای، هیپوتالاموس، تالاموس، کپسول داخلی، ساقهٔ مغز، پایه‌های مخچه و هسته‌های عمقی مخچه"
+    },
+    {
+      "path": "spetzler.rows[6][1].de",
+      "before": "Tief (in innere Hirnvenen)",
+      "after": "Tiefe Drainagekomponente, auch bei gemischtem Abfluss"
+    },
+    {
+      "path": "spetzler.rows[6][1].en",
+      "before": "Deep (into internal cerebral veins)",
+      "after": "Deep drainage component, including mixed drainage"
+    },
+    {
+      "path": "spetzler.rows[6][1].fa",
+      "before": "عمقی (به وریدهای داخلی مغز)",
+      "after": "جزء درناژ عمقی، حتی در خروج مختلط"
+    },
+    {
+      "path": "spetzler.key.de",
+      "before": "Der Score schätzt das Risiko einer mikrochirurgischen Resektion ein. Er ist keine eigenständige Therapieempfehlung; Entscheidung individuell und multidisziplinär.",
+      "after": "Der Score schätzt das Risiko einer mikrochirurgischen Resektion ein. Er ist keine eigenständige Therapieempfehlung und kein direkter Blutungsrisiko-Score. Maximalen Nidusdurchmesser und jede tiefe Drainagekomponente dokumentieren, auch bei zusätzlich oberflächlichem Abfluss."
+    },
+    {
+      "path": "spetzler.key.en",
+      "before": "The score estimates the risk of microsurgical resection. It is not a stand-alone treatment recommendation; decisions are individual and multidisciplinary.",
+      "after": "The score estimates microsurgical resection risk. It is not a stand-alone treatment recommendation or a direct haemorrhage-risk score. Document maximum nidus diameter and any deep drainage component, including additional superficial outflow."
+    },
+    {
+      "path": "spetzler.key.fa",
+      "before": "این امتیاز خطر رزکسیون میکروجراحی را برآورد می‌کند. به‌تنهایی توصیه درمانی نیست؛ تصمیم‌گیری باید فردی و چندتخصصی باشد.",
+      "after": "این امتیاز خطر رزکسیون میکروجراحی را برآورد می‌کند. توصیهٔ مستقل درمان یا امتیاز مستقیم خطر خونریزی نیست. قطر حداکثر نیدوس و هر جزء درناژ عمقی، حتی همراه خروج سطحی، مستند شوند."
+    },
+    {
+      "path": "bildgebung.rows[0][2].de",
+      "before": "Flow voids = Hochfluss = AVM-typisch",
+      "after": "Hinweis auf schnell durchflossene Gefäße; Shuntarchitektur gesondert prüfen"
+    },
+    {
+      "path": "bildgebung.rows[0][2].en",
+      "before": "Flow voids = high flow = AVM-typical",
+      "after": "Suggests rapidly flowing vessels; assess shunt architecture separately"
+    },
+    {
+      "path": "bildgebung.rows[0][2].fa",
+      "before": "فقدان سیگنال جریان (flow void) = جریان بالا = تیپیک AVM",
+      "after": "نشانگر عروق با جریان سریع؛ معماری شانت جداگانه بررسی شود"
+    },
+    {
+      "path": "bildgebung.rows[1][1].fa",
+      "before": "افزایش قوی ساختارهای عروقی (تغذیه‌کننده، نیدوس، وریدهای تخلیه‌کننده)",
+      "after": "تقویت واضح ساختارهای عروقی (تغذیه‌کننده، نیدوس و وریدهای تخلیه‌کننده)"
+    },
+    {
+      "path": "bildgebung.rows[2][1].de",
+      "before": "Hämosiderin­saum bei stattgehabter Blutung; Blooming-Artefakt",
+      "after": "Suszeptibilität möglicher Blutabbauprodukte; Blooming"
+    },
+    {
+      "path": "bildgebung.rows[2][1].en",
+      "before": "Haemosiderin rim after prior bleed; blooming artefact",
+      "after": "Susceptibility from possible blood products; blooming"
+    },
+    {
+      "path": "bildgebung.rows[2][1].fa",
+      "before": "حاشیه هموسیدرین بعد از خونریزی قبلی؛ آرتفکت آرتیفکت شکوفه‌ای (blooming)",
+      "after": "حساسیت مغناطیسی ناشی از فرآورده‌های خونی احتمالی؛ blooming"
+    },
+    {
+      "path": "bildgebung.rows[3][1].de",
+      "before": "Kann Nidus und Gefäßverlauf darstellen; zeitliche Auflösung abhängig von Technik",
+      "after": "TOF kann Nidus und Gefäßverlauf zeigen; der statischen Technik fehlt die dynamische arterio-venöse Phasenbeurteilung"
+    },
+    {
+      "path": "bildgebung.rows[3][1].en",
+      "before": "Can depict the nidus and vascular course; temporal resolution depends on technique",
+      "after": "TOF can depict nidus and vessels; the static technique lacks dynamic arterial-to-venous phase assessment"
+    },
+    {
+      "path": "bildgebung.rows[3][1].fa",
+      "before": "می‌تواند نیدوس و مسیر عروق را نشان دهد؛ تفکیک زمانی به تکنیک وابسته است",
+      "after": "TOF می‌تواند نیدوس و مسیر عروق را نشان دهد؛ روش ایستا فاقد ارزیابی دینامیک فاز شریانی تا وریدی است"
+    },
+    {
+      "path": "differenzial.rows[1][1].de",
+      "before": "Low-flow; Popcorn-Kern + Hämosiderinsaum in T2/SWI; kein Nidus; angiographisch okkult",
+      "after": "AVM: Gefäßkonvolut mit Shunt und häufig Flow-voids. Kavernom: typischer gemischtsignaliger Kern mit Hämosiderinrand, meist ohne angiographisch sichtbaren Hochflussshunt. Blutung kann das typische MRT-Muster zeitweise überlagern."
+    },
+    {
+      "path": "differenzial.rows[1][1].en",
+      "before": "Low flow; popcorn core + haemosiderin rim on T2/SWI; no nidus; angiographically occult",
+      "after": "AVM: vascular tangle with shunting and often flow voids. Cavernoma: typical mixed-signal core with a haemosiderin rim, usually without an angiographically visible high-flow shunt. Haemorrhage can temporarily obscure the typical MRI pattern."
+    },
+    {
+      "path": "differenzial.rows[1][1].fa",
+      "before": "کم‌جریان؛ هسته پاپ‌کورنی + حاشیه هموسیدرین در T2/SWI؛ بدون نیدوس؛ در آنژیوگرافی نهان",
+      "after": "AVM: شبکهٔ عروقی همراه شانت و اغلب flow void. کاورنوم: هستهٔ تیپیک با سیگنال مختلط و حاشیهٔ هموسیدرین، معمولاً بدون شانت پرجریانِ قابل مشاهده در آنژیوگرافی. خونریزی می‌تواند موقتاً الگوی تیپیک MRI را بپوشاند."
+    },
+    {
+      "path": "differenzial.rows[2][1].de",
+      "before": "Diffuse, schlecht begrenzte Gefäßveränderung ohne typischen Nidus; Abgrenzung kann schwierig sein",
+      "after": "Diffuse Gefäßvermehrung mit eingelagertem normalem Hirngewebe statt eines kompakten typischen AVM-Nidus; vollständige Angioarchitektur beurteilen"
+    },
+    {
+      "path": "differenzial.rows[2][1].en",
+      "before": "Diffuse, poorly defined vascular abnormality without a typical nidus; distinction may be difficult",
+      "after": "Diffuse vascular proliferation with interspersed normal brain rather than a compact typical AVM nidus; assess the full angioarchitecture"
+    },
+    {
+      "path": "differenzial.rows[2][1].fa",
+      "before": "ناهنجاری عروقی منتشر با حدود نامشخص و بدون نیدوس تیپیک؛ افتراق ممکن است دشوار باشد",
+      "after": "افزایش منتشر عروق با بافت طبیعی مغز در میان آن‌ها، به‌جای نیدوس متراکم تیپیک AVM؛ کل آنژیوآناتومی ارزیابی شود"
+    },
+    {
+      "path": "management.items",
+      "before": [
+        {
+          "icon": "🔪",
+          "title": {
+            "de": "Mikrochirurgische Resektion",
+            "en": "Microsurgical resection",
+            "fa": "رزکسیون میکروجراحی"
+          },
+          "text": {
+            "de": "Eine mögliche Option; Nutzen und Risiko hängen unter anderem von Größe, Lage, Drainage und Patientenkontext ab. Die Auswahl erfolgt interdisziplinär.",
+            "en": "One possible option; benefit and risk depend on size, location, drainage and patient context. Selection is multidisciplinary.",
+            "fa": "یکی از گزینه‌های ممکن است؛ فایده و خطر به اندازه، محل، درناژ و شرایط بیمار بستگی دارند. انتخاب چندتخصصی انجام می‌شود."
+          }
+        },
+        {
+          "icon": "🎯",
+          "title": {
+            "de": "Endovaskuläre Embolisation",
+            "en": "Endovascular embolisation",
+            "fa": "آمبولیزاسیون اندوواسکولار"
+          },
+          "text": {
+            "de": "Eine mögliche Behandlungsmodalität; ihre Rolle und Kombination mit anderen Verfahren werden anhand von Gefäßanatomie und Behandlungsziel individuell festgelegt.",
+            "en": "One possible treatment modality; its role and combination with other approaches are determined individually from vascular anatomy and treatment goals.",
+            "fa": "یکی از روش‌های درمانی ممکن است؛ نقش آن و ترکیب با روش‌های دیگر بر اساس آناتومی عروقی و هدف درمان به‌صورت فردی تعیین می‌شود."
+          }
+        },
+        {
+          "icon": "☢️",
+          "title": {
+            "de": "Stereotaktische Radiochirurgie (Gamma Knife)",
+            "en": "Stereotactic radiosurgery (Gamma Knife)",
+            "fa": "رادیوجراحی استریوتاکتیک (گامانایف (Gamma Knife))"
+          },
+          "text": {
+            "de": "Die Eignung hängt unter anderem von Größe, Lage und individuellen Faktoren ab. Eine Obliteration kann verzögert eintreten; die Entscheidung erfolgt interdisziplinär.",
+            "en": "Suitability depends on size, location and individual factors. Obliteration may be delayed; decisions are made by a multidisciplinary team.",
+            "fa": "مناسب‌بودن به اندازه، محل و عوامل فردی بستگی دارد. انسداد ممکن است با تأخیر رخ دهد؛ تصمیم‌گیری چندتخصصی است."
+          }
+        }
+      ],
+      "after": [
+        {
+          "icon": "🔪",
+          "title": {
+            "de": "Mikrochirurgische Resektion",
+            "en": "Microsurgical resection",
+            "fa": "رزکسیون میکروجراحی"
+          },
+          "text": {
+            "de": "Die vollständige Resektion entfernt den Nidus unmittelbar. Nutzen und Eingriffsrisiken hängen unter anderem von Größe, Funktionslage, Drainage und Patientenkontext ab; ein niedriger Grad ersetzt keine individuelle Entscheidung.",
+            "en": "Complete resection removes the nidus immediately. Benefits and procedural risks depend on size, functional location, drainage and patient context; a low grade does not replace an individual decision.",
+            "fa": "رزکسیون کامل، نیدوس را بلافاصله برمی‌دارد. سود و خطر مداخله به اندازه، محل عملکردی، درناژ و شرایط بیمار وابسته‌اند؛ درجهٔ پایین جای تصمیم فردی را نمی‌گیرد."
+          }
+        },
+        {
+          "icon": "🎯",
+          "title": {
+            "de": "Endovaskuläre Embolisation",
+            "en": "Endovascular embolisation",
+            "fa": "آمبولیزاسیون اندوواسکولار"
+          },
+          "text": {
+            "de": "Das Ziel muss explizit sein: ein behandlungsbedürftiges Gefäßmerkmal sichern, eine weitere Modalität vorbereiten oder den Shunt ausschalten. Ein partiell embolisierter Nidus ist nicht mit vollständiger Obliteration gleichzusetzen.",
+            "en": "The goal must be explicit: secure a vascular feature requiring treatment, prepare another modality or eliminate the shunt. Partial nidus embolisation is not equivalent to complete obliteration.",
+            "fa": "هدف باید مشخص باشد: ایمن‌سازی ویژگی عروقی نیازمند درمان، آماده‌سازی روش دیگر یا حذف شانت. آمبولیزاسیون ناقص نیدوس معادل انسداد کامل نیست."
+          }
+        },
+        {
+          "icon": "☢️",
+          "title": {
+            "de": "Stereotaktische Radiochirurgie (Gamma Knife)",
+            "en": "Stereotactic radiosurgery (Gamma Knife)",
+            "fa": "رادیوجراحی استریوتاکتیک (گامانایف)"
+          },
+          "text": {
+            "de": "Die Radiochirurgie kann eine erst im Verlauf entstehende Obliteration bewirken. Ein noch durchgängiger Shunt kann in der Latenz bluten; der Behandlungstermin allein belegt keinen Verschluss. Nutzen, Behandlungsrisiken und Verlaufskontrollen werden individuell geplant.",
+            "en": "Radiosurgery may produce obliteration that develops over time. A still-patent shunt may bleed during latency; the treatment date alone does not establish closure. Benefits, treatment risks and surveillance are planned individually.",
+            "fa": "رادیوجراحی می‌تواند انسدادی ایجاد کند که در گذر زمان شکل می‌گیرد. شانتِ هنوز باز ممکن است در دورهٔ نهفتگی خونریزی کند؛ صرف تاریخ درمان، بسته‌شدن را اثبات نمی‌کند. سود، خطر درمان و پیگیری به‌صورت فردی برنامه‌ریزی می‌شوند."
+          }
+        },
+        {
+          "icon": "👁️",
+          "title": {
+            "de": "Beobachtung und symptomorientierte Versorgung",
+            "en": "Observation and symptom-directed care",
+            "fa": "پیگیری و مراقبت معطوف به علائم"
+          },
+          "text": {
+            "de": "Bei ausgewählten unrupturierten AVMs gehört Beobachtung mit symptomorientierter Versorgung zur Abwägung. ARUBA begünstigte bei untersuchten Erwachsenen mit unrupturierter AVM die medizinische Versorgung ohne Intervention im Studienzeitraum; das ist keine Regel für alle AVMs oder den gesamten Lebensverlauf.",
+            "en": "For selected unruptured AVMs, observation with symptom-directed care is part of the assessment. ARUBA favored medical management without intervention in studied adults with unruptured AVM during follow-up; this is not a rule for all AVMs or the entire lifetime.",
+            "fa": "در AVMهای پاره‌نشدهٔ منتخب، پیگیری همراه مراقبت معطوف به علائم بخشی از سنجش است. ARUBA در بزرگسالان بررسی‌شده با AVM پاره‌نشده طی پیگیری، به نفع مدیریت طبی بدون مداخله بود؛ این قاعده‌ای برای همهٔ AVMها یا کل عمر نیست."
+          }
+        }
+      ]
+    },
+    {
+      "path": "management.cave.de",
+      "before": "Der Spetzler-Martin-Score ist ein Baustein der Behandlungsplanung und legt die Therapie nicht allein fest. Mikrochirurgie, Embolisation und Radiochirurgie werden anhand des Einzelfalls und im spezialisierten Team abgewogen.",
+      "after": "Behandlungsdatum und Teilverschluss beweisen keine vollständige Obliteration. Das Behandlungsziel, verbliebener Shunt und angemessene Verlaufskontrolle müssen für jede gewählte Strategie geklärt sein."
+    },
+    {
+      "path": "management.cave.en",
+      "before": "The Spetzler–Martin score is one part of treatment planning and does not determine therapy by itself. Microsurgery, embolisation and radiosurgery are considered for each case by a specialist team.",
+      "after": "A treatment date or partial closure does not establish complete obliteration. Clarify treatment goals, residual shunting and appropriate surveillance for each selected strategy."
+    },
+    {
+      "path": "management.cave.fa",
+      "before": "امتیاز Spetzler–Martin یکی از اجزای برنامه‌ریزی درمان است و به‌تنهایی درمان را تعیین نمی‌کند. میکروجراحی، آمبولیزاسیون و رادیوجراحی بر اساس شرایط هر بیمار و در تیم تخصصی بررسی می‌شوند.",
+      "after": "تاریخ درمان یا بسته‌شدن ناقص، انسداد کامل را اثبات نمی‌کند. هدف درمان، شانت باقی‌مانده و پیگیری مناسب برای هر راهبرد انتخاب‌شده باید روشن باشند."
+    },
+    {
+      "path": "takehome.title.de",
+      "before": "Take-Home Message",
+      "after": "Take Home Message"
+    },
+    {
+      "path": "takehome.title.en",
+      "before": "Take-Home Message",
+      "after": "Take Home Message"
+    },
+    {
+      "path": "takehome.title.fa",
+      "before": "پیام اصلی",
+      "after": "پیام نهایی"
+    },
+    {
+      "path": "takehome.items[1].text.fa",
+      "before": "این امتیاز خطر رزکسیون را بر اساس اندازه نیدوس، محل گویا و درناژ وریدی برآورد می‌کند؛ دستور درمان نیست.",
+      "after": "این امتیاز خطر رزکسیون را بر اساس اندازهٔ نیدوس، اهمیت عملکردی محل و درناژ وریدی برآورد می‌کند؛ دستور درمان نیست."
+    },
+    {
+      "path": "learningObjectives",
+      "before": null,
+      "after": [
+        {
+          "de": "Feeder, Nidus und venöse Drainage beschreiben und relevante Gefäßmimics unterscheiden.",
+          "en": "Describe feeders, nidus and venous drainage and distinguish relevant vascular mimics.",
+          "fa": "تغذیه‌کنندگان، نیدوس و درناژ وریدی را توصیف و ضایعات عروقی مشابهِ مهم را تفکیک کنید."
+        },
+        {
+          "de": "Klinische Präsentationen und die initiale Bildgebung bei Blutungsverdacht einordnen.",
+          "en": "Interpret clinical presentations and initial imaging for suspected haemorrhage.",
+          "fa": "تظاهرات بالینی و تصویربرداری اولیه در شک به خونریزی را تفسیر کنید."
+        },
+        {
+          "de": "Spetzler-Martin aus maximalem Durchmesser, Eloquenz und jeder tiefen Drainagekomponente berechnen.",
+          "en": "Calculate Spetzler-Martin from maximum diameter, eloquence and any deep drainage component.",
+          "fa": "اسپتزلر–مارتین را از قطر حداکثر، اهمیت عملکردی و هر جزء درناژ عمقی محاسبه کنید."
+        },
+        {
+          "de": "Operatives Risiko von unbehandeltem Blutungsrisiko unterscheiden.",
+          "en": "Distinguish operative risk from untreated haemorrhage risk.",
+          "fa": "خطر جراحی را از خطر خونریزیِ درمان‌نشده جدا کنید."
+        },
+        {
+          "de": "Therapiemechanismen und Beobachtung als individuell abzuwägende Wege einordnen.",
+          "en": "Understand treatment mechanisms and observation as individually assessed pathways.",
+          "fa": "سازوکارهای درمان و پیگیری را مسیرهایی بدانید که باید فردی سنجیده شوند."
+        }
+      ]
+    },
+    {
+      "path": "references",
+      "before": null,
+      "after": [
+        {
+          "label": "Gehirn.pdf · 37–38",
+          "url": null
+        },
+        {
+          "label": "Spetzler & Martin (1986)",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/3760956/"
+        },
+        {
+          "label": "AHA/ASA (2017)",
+          "url": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+        },
+        {
+          "label": "Kim et al. (2014)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4141996/"
+        },
+        {
+          "label": "ARUBA final follow-up (2020)",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32562682/"
+        },
+        {
+          "label": "SNIS (2022)",
+          "url": "https://jnis.bmj.com/content/14/11/1118"
+        },
+        {
+          "label": "AHA/ASA acute ICH imaging (2022)",
+          "url": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407"
+        },
+        {
+          "label": "Lasjaunias et al. (2008)",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18239181/"
+        },
+        {
+          "label": "Cavernous malformation consensus (2025)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12680281/"
+        },
+        {
+          "label": "ILAE seizure instruction manual (2017)",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28276064/"
+        }
+      ]
+    }
+  ]
+}

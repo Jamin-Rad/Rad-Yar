@@ -1,0 +1,1792 @@
+{
+  "status": "PROPOSAL_ONLY_ROOT_INTEGRATES",
+  "patches": [
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-01",
+      "currentBefore": {
+        "id": "meniskus-01",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Anatomie/MRT-Normalbefund",
+          "en": "Anatomy/MRI normal",
+          "fa": "آناتومی/نمای طبیعی MRI"
+        },
+        "front": {
+          "de": "Warum ist der Innenmeniskus weniger mobil als der Außenmeniskus?",
+          "en": "Why is the medial meniscus less mobile than the lateral meniscus?",
+          "fa": "چرا منیسک داخلی از منیسک خارجی کم‌تحرک‌تر است؟"
+        },
+        "answer": {
+          "de": "Festere Verbindung mit Kapsel und tiefem MCL.",
+          "en": "Stronger attachment to the capsule and deep MCL.",
+          "fa": "اتصال محکم‌تر به کپسول و MCL عمقی."
+        },
+        "explanation": {
+          "de": "Diese Fixierung begrenzt das Ausweichen bei Scherkräften. Die Verletzungsverteilung ist mechanismusabhängig; bei akuter ACL-Ruptur sind Außenmeniskusrisse häufig.",
+          "en": "This attachment limits movement under shear forces. Injury distribution depends on mechanism; lateral tears are common with acute ACL rupture.",
+          "fa": "این اتصال حرکت در برابر نیروهای برشی را محدود می‌کند؛ توزیع آسیب به مکانیسم وابسته است و در پارگی حاد ACL آسیب منیسک خارجی شایع است."
+        }
+      },
+      "after": {
+        "id": "meniskus-01",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Anatomie/MRT-Normalbefund",
+          "en": "Anatomy/MRI normal",
+          "fa": "آناتومی/نمای طبیعی MRI"
+        },
+        "front": {
+          "de": "Warum ist der Innenmeniskus weniger mobil als der Außenmeniskus?",
+          "en": "Why is the medial meniscus less mobile than the lateral meniscus?",
+          "fa": "چرا منیسک داخلی از منیسک خارجی کم‌تحرک‌تر است؟"
+        },
+        "answer": {
+          "de": "Festere Verbindung mit Kapsel und tiefem MCL.",
+          "en": "Stronger attachment to the capsule and deep MCL.",
+          "fa": "اتصال محکم‌تر به کپسول و MCL عمقی."
+        },
+        "explanation": {
+          "de": "Diese Fixierung begrenzt das Ausweichen bei Scherkräften. Die Verletzungsverteilung ist mechanismusabhängig; bei akuter ACL-Ruptur sind Außenmeniskusrisse häufig.",
+          "en": "This attachment limits movement under shear forces. Injury distribution depends on mechanism; lateral tears are common with acute ACL rupture.",
+          "fa": "این اتصال حرکت در برابر نیروهای برشی را محدود می‌کند؛ توزیع آسیب به مکانیسم وابسته است و در پارگی حاد ACL آسیب منیسک خارجی شایع است."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-02",
+      "currentBefore": {
+        "id": "meniskus-02",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Anatomie/MRT-Normalbefund",
+          "en": "Anatomy/MRI normal",
+          "fa": "آناتومی/نمای طبیعی MRI"
+        },
+        "front": {
+          "de": "Welches Innenmeniskussegment verdient bei der MRT-Risssuche besondere Aufmerksamkeit?",
+          "en": "Which medial meniscal segment deserves particular attention when searching for tears?",
+          "fa": "در جست‌وجوی پارگی MRI، کدام سگمان منیسک داخلی نیازمند توجه ویژه است؟"
+        },
+        "answer": {
+          "de": "Hinterhorn einschließlich Wurzelregion.",
+          "en": "Posterior horn including the root region.",
+          "fa": "شاخ خلفی، همراه ناحیهٔ ریشه."
+        },
+        "explanation": {
+          "de": "Das Hinterhorn ist häufig betroffen. Trotzdem müssen Vorderhorn, Körper und beide Wurzelansätze systematisch untersucht werden; keine Lokalisation wird allein durch Häufigkeit ausgeschlossen.",
+          "en": "The posterior horn is often affected. Still assess the anterior horn, body and both root attachments systematically; frequency alone does not exclude any location.",
+          "fa": "شاخ خلفی اغلب درگیر است؛ بااین‌حال شاخ قدامی، تنه و هر دو اتصال ریشه باید منظم بررسی شوند و فراوانی، محل دیگر را رد نمی‌کند."
+        }
+      },
+      "after": {
+        "id": "meniskus-02",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Anatomie/MRT-Normalbefund",
+          "en": "Anatomy/MRI normal",
+          "fa": "آناتومی/نمای طبیعی MRI"
+        },
+        "front": {
+          "de": "Welches Innenmeniskussegment verdient bei der MRT-Risssuche besondere Aufmerksamkeit?",
+          "en": "Which medial meniscal segment deserves particular attention when searching for tears?",
+          "fa": "در جست‌وجوی پارگی MRI، کدام سگمان منیسک داخلی نیازمند توجه ویژه است؟"
+        },
+        "answer": {
+          "de": "Hinterhorn einschließlich Wurzelregion.",
+          "en": "Posterior horn including the root region.",
+          "fa": "شاخ خلفی، همراه ناحیهٔ ریشه."
+        },
+        "explanation": {
+          "de": "Das Hinterhorn ist häufig betroffen. Trotzdem müssen Vorderhorn, Körper und beide Wurzelansätze systematisch untersucht werden; keine Lokalisation wird allein durch Häufigkeit ausgeschlossen.",
+          "en": "The posterior horn is often affected. Still assess the anterior horn, body and both root attachments systematically; frequency alone does not exclude any location.",
+          "fa": "شاخ خلفی اغلب درگیر است؛ بااین‌حال شاخ قدامی، تنه و هر دو اتصال ریشه باید منظم بررسی شوند و فراوانی، محل دیگر را رد نمی‌کند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-03",
+      "currentBefore": {
+        "id": "meniskus-03",
+        "topicId": "meniskus",
+        "category": {
+          "de": "MRT-Rissdiagnostik",
+          "en": "MRI tear diagnosis",
+          "fa": "تشخیص پارگی در MRI"
+        },
+        "front": {
+          "de": "Welche MRT-Befunde stützen einen Riss statt bloßer intrameniskaler Degeneration?",
+          "en": "Which MRI findings support a tear rather than intrasubstance degeneration?",
+          "fa": "کدام یافته‌های MRI از پارگی در برابر دژنراسیون صرف داخل منیسک حمایت می‌کنند؟"
+        },
+        "answer": {
+          "de": "Sicherer Oberflächenkontakt oder ein eindeutiger Form-/Gewebedefekt.",
+          "en": "Definite surface contact or a clear morphological/tissue defect.",
+          "fa": "تماس سطحی قطعی یا نقص واضح شکل/بافت."
+        },
+        "explanation": {
+          "de": "Ein reproduzierbarer Kontakt zu einer Gelenkfläche erhöht die Sicherheit. Abnorme Morphologie oder ein disloziertes Fragment können ebenfalls einen Riss belegen. Signal ohne Kontakt allein ist kein sicherer Riss.",
+          "en": "Reproducible articular-surface contact increases confidence. Abnormal morphology or a displaced fragment can also establish a tear. Signal without contact alone is not a definite tear.",
+          "fa": "تماس تکرارپذیر با سطح مفصلی اطمینان را افزایش می‌دهد؛ مورفولوژی غیرطبیعی یا قطعهٔ جابه‌جا‌شده نیز می‌تواند پارگی را ثابت کند. سیگنال بدون تماس به‌تنهایی پارگی قطعی نیست."
+        }
+      },
+      "after": {
+        "id": "meniskus-03",
+        "topicId": "meniskus",
+        "category": {
+          "de": "MRT-Rissdiagnostik",
+          "en": "MRI tear diagnosis",
+          "fa": "تشخیص پارگی در MRI"
+        },
+        "front": {
+          "de": "Welche MRT-Befunde stützen einen Riss statt bloßer intrameniskaler Degeneration?",
+          "en": "Which MRI findings support a tear rather than intrasubstance degeneration?",
+          "fa": "کدام یافته‌های MRI از پارگی در برابر دژنراسیون صرف داخل منیسک حمایت می‌کنند؟"
+        },
+        "answer": {
+          "de": "Sicherer Oberflächenkontakt oder ein eindeutiger Form-/Gewebedefekt.",
+          "en": "Definite surface contact or a clear morphological/tissue defect.",
+          "fa": "تماس سطحی قطعی یا نقص واضح شکل/بافت."
+        },
+        "explanation": {
+          "de": "Ein reproduzierbarer Kontakt zu einer Gelenkfläche erhöht die Sicherheit. Abnorme Morphologie oder ein disloziertes Fragment können ebenfalls einen Riss belegen. Signal ohne Kontakt allein ist kein sicherer Riss.",
+          "en": "Reproducible articular-surface contact increases confidence. Abnormal morphology or a displaced fragment can also establish a tear. Signal without contact alone is not a definite tear.",
+          "fa": "تماس تکرارپذیر با سطح مفصلی اطمینان را افزایش می‌دهد؛ مورفولوژی غیرطبیعی یا قطعهٔ جابه‌جا‌شده نیز می‌تواند پارگی را ثابت کند. سیگنال بدون تماس به‌تنهایی پارگی قطعی نیست."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-04",
+      "currentBefore": {
+        "id": "meniskus-04",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Lotysch-Klassifikation",
+          "en": "Lotysch classification",
+          "fa": "طبقه‌بندی لوتوش"
+        },
+        "front": {
+          "de": "Was kennzeichnet Grad III in der signalbasierten Lotysch-Einteilung?",
+          "en": "What defines grade III in signal-based Lotysch grading?",
+          "fa": "در تقسیم‌بندی لوتوش بر پایهٔ سیگنال، گرید III با چه مشخص می‌شود؟"
+        },
+        "answer": {
+          "de": "Pathologisches Signal erreicht sicher mindestens eine Gelenkfläche.",
+          "en": "Abnormal signal definitely reaches at least one articular surface.",
+          "fa": "سیگنال پاتولوژیک قطعاً به حداقل یک سطح مفصلی می‌رسد."
+        },
+        "explanation": {
+          "de": "Kontakt zur superioren oder inferioren Fläche genügt. Wiederholung auf mindestens zwei Bildern erhöht die diagnostische Sicherheit; das ist eine zusätzliche Diagnoseregel, nicht die gesamte Definition des Grades.",
+          "en": "Contact with the superior or inferior surface is sufficient. Repetition on at least two images increases confidence; this is an additional diagnostic rule, not the whole grade definition.",
+          "fa": "تماس با سطح فوقانی یا تحتانی کافی است؛ تکرار در حداقل دو تصویر اطمینان را بالا می‌برد. این قاعدهٔ تشخیصی اضافه است، نه تمام تعریف گرید."
+        }
+      },
+      "after": {
+        "id": "meniskus-04",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Lotysch-Klassifikation",
+          "en": "Lotysch classification",
+          "fa": "طبقه‌بندی لوتوش"
+        },
+        "front": {
+          "de": "Was kennzeichnet Grad III in der signalbasierten Lotysch-Einteilung?",
+          "en": "What defines grade III in signal-based Lotysch grading?",
+          "fa": "در تقسیم‌بندی لوتوش بر پایهٔ سیگنال، گرید III با چه مشخص می‌شود؟"
+        },
+        "answer": {
+          "de": "Pathologisches Signal erreicht sicher mindestens eine Gelenkfläche.",
+          "en": "Abnormal signal definitely reaches at least one articular surface.",
+          "fa": "سیگنال پاتولوژیک قطعاً به حداقل یک سطح مفصلی می‌رسد."
+        },
+        "explanation": {
+          "de": "Kontakt zur superioren oder inferioren Fläche genügt. Wiederholung auf mindestens zwei Bildern erhöht die diagnostische Sicherheit; das ist eine zusätzliche Diagnoseregel, nicht die gesamte Definition des Grades.",
+          "en": "Contact with the superior or inferior surface is sufficient. Repetition on at least two images increases confidence; this is an additional diagnostic rule, not the whole grade definition.",
+          "fa": "تماس با سطح فوقانی یا تحتانی کافی است؛ تکرار در حداقل دو تصویر اطمینان را بالا می‌برد. این قاعدهٔ تشخیصی اضافه است، نه تمام تعریف گرید."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-05",
+      "currentBefore": {
+        "id": "meniskus-05",
+        "topicId": "meniskus",
+        "category": {
+          "de": "MRT-Rissdiagnostik",
+          "en": "MRI tear diagnosis",
+          "fa": "تشخیص پارگی در MRI"
+        },
+        "front": {
+          "de": "Was leistet die Two-slice-touch-Regel?",
+          "en": "What does the two-slice-touch rule provide?",
+          "fa": "قاعدهٔ Two-slice-touch چه کمکی می‌کند؟"
+        },
+        "answer": {
+          "de": "Mehr Sicherheit durch wiederholten Gelenkflächenkontakt auf mindestens zwei Bildern.",
+          "en": "Greater confidence from repeated articular-surface contact on at least two images.",
+          "fa": "اطمینان بیشتر با تکرار تماس سطح مفصلی در حداقل دو تصویر."
+        },
+        "explanation": {
+          "de": "Sie reduziert falsch-positive Einzelschichtinterpretationen. Im Routinefall wird der Kontakt auf benachbarten Schichten geprüft. Ein eindeutiger Gewebedefekt darf aber nicht allein wegen fehlender Zweischichtdarstellung übersehen werden.",
+          "en": "It reduces false-positive single-image interpretations. In routine assessment, check contact on adjacent slices. A clear tissue defect must not be dismissed just because it is not shown on two slices.",
+          "fa": "این قاعده تفسیر مثبت کاذب تک‌تصویری را کم می‌کند؛ در ارزیابی روتین تماس در برش‌های مجاور بررسی می‌شود. نقص واضح بافت را نباید فقط به علت دیده‌نشدن در دو برش نادیده گرفت."
+        }
+      },
+      "after": {
+        "id": "meniskus-05",
+        "topicId": "meniskus",
+        "category": {
+          "de": "MRT-Rissdiagnostik",
+          "en": "MRI tear diagnosis",
+          "fa": "تشخیص پارگی در MRI"
+        },
+        "front": {
+          "de": "Was leistet die Two-slice-touch-Regel?",
+          "en": "What does the two-slice-touch rule provide?",
+          "fa": "قاعدهٔ Two-slice-touch چه کمکی می‌کند؟"
+        },
+        "answer": {
+          "de": "Mehr Sicherheit durch wiederholten Gelenkflächenkontakt auf mindestens zwei Bildern.",
+          "en": "Greater confidence from repeated articular-surface contact on at least two images.",
+          "fa": "اطمینان بیشتر با تکرار تماس سطح مفصلی در حداقل دو تصویر."
+        },
+        "explanation": {
+          "de": "Sie reduziert falsch-positive Einzelschichtinterpretationen. Im Routinefall wird der Kontakt auf benachbarten Schichten geprüft. Ein eindeutiger Gewebedefekt darf aber nicht allein wegen fehlender Zweischichtdarstellung übersehen werden.",
+          "en": "It reduces false-positive single-image interpretations. In routine assessment, check contact on adjacent slices. A clear tissue defect must not be dismissed just because it is not shown on two slices.",
+          "fa": "این قاعده تفسیر مثبت کاذب تک‌تصویری را کم می‌کند؛ در ارزیابی روتین تماس در برش‌های مجاور بررسی می‌شود. نقص واضح بافت را نباید فقط به علت دیده‌نشدن در دو برش نادیده گرفت."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-06",
+      "currentBefore": {
+        "id": "meniskus-06",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Lotysch-Klassifikation",
+          "en": "Lotysch classification",
+          "fa": "طبقه‌بندی لوتوش"
+        },
+        "front": {
+          "de": "Was bedeutet Grad 2b in der erweiterten Grad-2-Einteilung?",
+          "en": "What does grade 2b mean in the extended grade-2 scheme?",
+          "fa": "در تقسیم‌بندی توسعه‌یافتهٔ گرید ۲، گرید ۲b چیست؟"
+        },
+        "answer": {
+          "de": "Lineares Signal mit Oberflächenkontakt nur auf einem Bild; inkonklusiv.",
+          "en": "Linear signal with surface contact on only one image; inconclusive.",
+          "fa": "سیگنال خطی با تماس سطحی فقط در یک تصویر؛ نامطمئن."
+        },
+        "explanation": {
+          "de": "Ein echter Riss bleibt möglich. Nachbarschichten, andere Ebenen und Morphologie prüfen. Grad 2b ist nicht gleichbedeutend mit sicherem Riss, aber auch kein sicherer Ausschluss.",
+          "en": "A real tear remains possible. Review adjacent slices, other planes and morphology. Grade 2b neither proves nor definitely excludes a tear.",
+          "fa": "پارگی واقعی همچنان ممکن است؛ برش‌های مجاور، صفحات دیگر و مورفولوژی بررسی شوند. گرید ۲b نه پارگی را قطعی می‌کند و نه قطعی رد می‌کند."
+        }
+      },
+      "after": {
+        "id": "meniskus-06",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Lotysch-Klassifikation",
+          "en": "Lotysch classification",
+          "fa": "طبقه‌بندی لوتوش"
+        },
+        "front": {
+          "de": "Was bedeutet Grad 2b in der erweiterten Grad-2-Einteilung?",
+          "en": "What does grade 2b mean in the extended grade-2 scheme?",
+          "fa": "در تقسیم‌بندی توسعه‌یافتهٔ گرید ۲، گرید ۲b چیست؟"
+        },
+        "answer": {
+          "de": "Lineares Signal mit Oberflächenkontakt nur auf einem Bild; inkonklusiv.",
+          "en": "Linear signal with surface contact on only one image; inconclusive.",
+          "fa": "سیگنال خطی با تماس سطحی فقط در یک تصویر؛ نامطمئن."
+        },
+        "explanation": {
+          "de": "Ein echter Riss bleibt möglich. Nachbarschichten, andere Ebenen und Morphologie prüfen. Grad 2b ist nicht gleichbedeutend mit sicherem Riss, aber auch kein sicherer Ausschluss.",
+          "en": "A real tear remains possible. Review adjacent slices, other planes and morphology. Grade 2b neither proves nor definitely excludes a tear.",
+          "fa": "پارگی واقعی همچنان ممکن است؛ برش‌های مجاور، صفحات دیگر و مورفولوژی بررسی شوند. گرید ۲b نه پارگی را قطعی می‌کند و نه قطعی رد می‌کند."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-07",
+      "currentBefore": {
+        "id": "meniskus-07",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Anatomie/MRT-Normalbefund",
+          "en": "Anatomy/MRI normal",
+          "fa": "آناتومی/نمای طبیعی MRI"
+        },
+        "front": {
+          "de": "Wie unterscheiden sich normale Meniskushörner und Meniskuskörper sagittal?",
+          "en": "How do normal meniscal horns and body differ sagittally?",
+          "fa": "شاخ‌ها و تنهٔ طبیعی منیسک در ساژیتال چه تفاوتی دارند؟"
+        },
+        "answer": {
+          "de": "Hörner dreieckig; Körper als Bow-tie-Konfiguration.",
+          "en": "Triangular horns; bow-tie configuration of the body.",
+          "fa": "شاخ‌ها مثلثی؛ تنه به شکل Bow-tie."
+        },
+        "explanation": {
+          "de": "Normaler Faserknorpel ist überwiegend signalarm. Form, Lage und Kontinuität werden über die Serie verfolgt; nicht jede sagittale Schicht muss ein Dreieck zeigen.",
+          "en": "Normal fibrocartilage is predominantly low signal. Follow shape, position and continuity through the series; not every sagittal slice must show a triangle.",
+          "fa": "فیبروغضروف طبیعی عمدتاً کم‌سیگنال است؛ شکل، محل و پیوستگی در کل سری دنبال می‌شوند و لازم نیست تمام برش‌های ساژیتال مثلث نشان دهند."
+        }
+      },
+      "after": {
+        "id": "meniskus-07",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Anatomie/MRT-Normalbefund",
+          "en": "Anatomy/MRI normal",
+          "fa": "آناتومی/نمای طبیعی MRI"
+        },
+        "front": {
+          "de": "Wie unterscheiden sich normale Meniskushörner und Meniskuskörper sagittal?",
+          "en": "How do normal meniscal horns and body differ sagittally?",
+          "fa": "شاخ‌ها و تنهٔ طبیعی منیسک در ساژیتال چه تفاوتی دارند؟"
+        },
+        "answer": {
+          "de": "Hörner dreieckig; Körper als Bow-tie-Konfiguration.",
+          "en": "Triangular horns; bow-tie configuration of the body.",
+          "fa": "شاخ‌ها مثلثی؛ تنه به شکل Bow-tie."
+        },
+        "explanation": {
+          "de": "Normaler Faserknorpel ist überwiegend signalarm. Form, Lage und Kontinuität werden über die Serie verfolgt; nicht jede sagittale Schicht muss ein Dreieck zeigen.",
+          "en": "Normal fibrocartilage is predominantly low signal. Follow shape, position and continuity through the series; not every sagittal slice must show a triangle.",
+          "fa": "فیبروغضروف طبیعی عمدتاً کم‌سیگنال است؛ شکل، محل و پیوستگی در کل سری دنبال می‌شوند و لازم نیست تمام برش‌های ساژیتال مثلث نشان دهند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-09",
+      "currentBefore": {
+        "id": "meniskus-09",
+        "topicId": "meniskus",
+        "category": {
+          "de": "MRT-Rissdiagnostik",
+          "en": "MRI tear diagnosis",
+          "fa": "تشخیص پارگی در MRI"
+        },
+        "front": {
+          "de": "Welche MRT-Bilder helfen bei der Meniskusbeurteilung?",
+          "en": "Which MRI images help assess the meniscus?",
+          "fa": "کدام تصاویر MRI به ارزیابی منیسک کمک می‌کنند؟"
+        },
+        "answer": {
+          "de": "Dünnschichtige PD-/intermediär gewichtete und flüssigkeitssensitive Bilder, multiplanar.",
+          "en": "Thin-section PD/intermediate-weighted and fluid-sensitive images in multiple planes.",
+          "fa": "تصاویر نازک PD/وزن‌دهی میانی و حساس به مایع در چند صفحه."
+        },
+        "explanation": {
+          "de": "PD mit oder ohne Fettsättigung stellt Meniskusstruktur gut dar; T2-fs zeigt Flüssigkeit und Ödem. Kein einzelner Sequenzname ersetzt den Abgleich von sagittalen, koronalen und axialen Bildern.",
+          "en": "PD with or without fat suppression depicts meniscal structure well; T2-fs shows fluid and oedema. No single sequence replaces sagittal, coronal and axial correlation.",
+          "fa": "PD با یا بدون سرکوب چربی ساختار منیسک را خوب نشان می‌دهد و T2-fs مایع و ادم را؛ هیچ سکانس منفرد جای تطبیق ساژیتال، کرونال و اکسیال را نمی‌گیرد."
+        }
+      },
+      "after": {
+        "id": "meniskus-09",
+        "topicId": "meniskus",
+        "category": {
+          "de": "MRT-Rissdiagnostik",
+          "en": "MRI tear diagnosis",
+          "fa": "تشخیص پارگی در MRI"
+        },
+        "front": {
+          "de": "Welche MRT-Bilder helfen bei der Meniskusbeurteilung?",
+          "en": "Which MRI images help assess the meniscus?",
+          "fa": "کدام تصاویر MRI به ارزیابی منیسک کمک می‌کنند؟"
+        },
+        "answer": {
+          "de": "Dünnschichtige PD-/intermediär gewichtete und flüssigkeitssensitive Bilder, multiplanar.",
+          "en": "Thin-section PD/intermediate-weighted and fluid-sensitive images in multiple planes.",
+          "fa": "تصاویر نازک PD/وزن‌دهی میانی و حساس به مایع در چند صفحه."
+        },
+        "explanation": {
+          "de": "PD mit oder ohne Fettsättigung stellt Meniskusstruktur gut dar; T2-fs zeigt Flüssigkeit und Ödem. Kein einzelner Sequenzname ersetzt den Abgleich von sagittalen, koronalen und axialen Bildern.",
+          "en": "PD with or without fat suppression depicts meniscal structure well; T2-fs shows fluid and oedema. No single sequence replaces sagittal, coronal and axial correlation.",
+          "fa": "PD با یا بدون سرکوب چربی ساختار منیسک را خوب نشان می‌دهد و T2-fs مایع و ادم را؛ هیچ سکانس منفرد جای تطبیق ساژیتال، کرونال و اکسیال را نمی‌گیرد."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-10",
+      "currentBefore": {
+        "id": "meniskus-10",
+        "topicId": "meniskus",
+        "category": {
+          "de": "MRT-Rissdiagnostik",
+          "en": "MRI tear diagnosis",
+          "fa": "تشخیص پارگی در MRI"
+        },
+        "front": {
+          "de": "Warum sind dünne MRT-Schichten für Menisken hilfreich?",
+          "en": "Why are thin MRI slices useful for menisci?",
+          "fa": "چرا برش نازک MRI برای منیسک مفید است؟"
+        },
+        "answer": {
+          "de": "Weniger Partialvolumen, bessere Darstellung kleiner Defekte.",
+          "en": "Less partial volume and better depiction of small defects.",
+          "fa": "حجم‌جزئی کمتر و نمایش بهتر نقص‌های کوچک."
+        },
+        "explanation": {
+          "de": "Laut ESSR sind 4 mm akzeptabel, ≤3 mm vorzuziehen; 3 mm sind kein universeller Standard. Die Zahl sichtbarer Schichten stets relativ zu Dicke und Protokoll interpretieren.",
+          "en": "ESSR considers 4 mm acceptable and ≤3 mm preferable; 3 mm is not a universal standard. Interpret visible slice count relative to slice thickness and protocol.",
+          "fa": "طبق توصیه ESSR، ضخامت ۴ میلی‌متر قابل‌قبول و ≤۳ میلی‌متر ترجیح‌داده‌شده است؛ ۳ میلی‌متر استاندارد همگانی نیست. تعداد برش‌های قابل مشاهده را با توجه به ضخامت و پروتکل تفسیر کنید."
+        }
+      },
+      "after": {
+        "id": "meniskus-10",
+        "topicId": "meniskus",
+        "category": {
+          "de": "MRT-Rissdiagnostik",
+          "en": "MRI tear diagnosis",
+          "fa": "تشخیص پارگی در MRI"
+        },
+        "front": {
+          "de": "Warum sind dünne MRT-Schichten für Menisken hilfreich?",
+          "en": "Why are thin MRI slices useful for menisci?",
+          "fa": "چرا برش نازک MRI برای منیسک مفید است؟"
+        },
+        "answer": {
+          "de": "Weniger Partialvolumen, bessere Darstellung kleiner Defekte.",
+          "en": "Less partial volume and better depiction of small defects.",
+          "fa": "حجم‌جزئی کمتر و نمایش بهتر نقص‌های کوچک."
+        },
+        "explanation": {
+          "de": "Laut ESSR sind 4 mm akzeptabel, ≤3 mm vorzuziehen; 3 mm sind kein universeller Standard. Die Zahl sichtbarer Schichten stets relativ zu Dicke und Protokoll interpretieren.",
+          "en": "ESSR considers 4 mm acceptable and ≤3 mm preferable; 3 mm is not a universal standard. Interpret visible slice count relative to slice thickness and protocol.",
+          "fa": "طبق توصیه ESSR، ضخامت ۴ میلی‌متر قابل‌قبول و ≤۳ میلی‌متر ترجیح‌داده‌شده است؛ ۳ میلی‌متر استاندارد همگانی نیست. تعداد برش‌های قابل مشاهده را با توجه به ضخامت و پروتکل تفسیر کنید."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-11",
+      "currentBefore": {
+        "id": "meniskus-11",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Meniskus",
+          "en": "Meniscus",
+          "fa": "منیسک"
+        },
+        "front": {
+          "de": "Welche Zone hat das höchste biologische Heilungspotenzial?",
+          "en": "Which zone has the highest biological healing potential?",
+          "fa": "کدام ناحیه بیشترین ظرفیت زیستی ترمیم را دارد؟"
+        },
+        "answer": {
+          "de": "Die kapselnahe rote Zone.",
+          "en": "The peripheral red zone next to the capsule.",
+          "fa": "ناحیهٔ قرمز کنار کپسول."
+        },
+        "explanation": {
+          "de": "Sie ist am besten durchblutet. Die rot-weiße Zone ist eine Übergangszone, die weiße Zone avaskulär. Gefäßzone allein entscheidet nicht über Reparabilität oder Therapie.",
+          "en": "It has the best blood supply. The red-white zone is transitional and the white zone avascular. Vascular zone alone does not determine repairability or management.",
+          "fa": "این ناحیه بهترین خون‌رسانی را دارد؛ قرمز-سفید انتقالی و سفید بدون عروق است. ناحیهٔ عروقی به‌تنهایی قابلیت ترمیم یا درمان را تعیین نمی‌کند."
+        }
+      },
+      "after": {
+        "id": "meniskus-11",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Meniskus",
+          "en": "Meniscus",
+          "fa": "منیسک"
+        },
+        "front": {
+          "de": "Welche Zone hat das höchste biologische Heilungspotenzial?",
+          "en": "Which zone has the highest biological healing potential?",
+          "fa": "کدام ناحیه بیشترین ظرفیت زیستی ترمیم را دارد؟"
+        },
+        "answer": {
+          "de": "Die kapselnahe rote Zone.",
+          "en": "The peripheral red zone next to the capsule.",
+          "fa": "ناحیهٔ قرمز کنار کپسول."
+        },
+        "explanation": {
+          "de": "Sie ist am besten durchblutet. Die rot-weiße Zone ist eine Übergangszone, die weiße Zone avaskulär. Gefäßzone allein entscheidet nicht über Reparabilität oder Therapie.",
+          "en": "It has the best blood supply. The red-white zone is transitional and the white zone avascular. Vascular zone alone does not determine repairability or management.",
+          "fa": "این ناحیه بهترین خون‌رسانی را دارد؛ قرمز-سفید انتقالی و سفید بدون عروق است. ناحیهٔ عروقی به‌تنهایی قابلیت ترمیم یا درمان را تعیین نمی‌کند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-12",
+      "currentBefore": {
+        "id": "meniskus-12",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Therapie/Vaskularisation",
+          "en": "Therapy/Vascularity",
+          "fa": "درمان/خون‌رسانی"
+        },
+        "front": {
+          "de": "Warum ist das Heilungspotenzial zentraler Meniskusrisse geringer?",
+          "en": "Why do central meniscal tears have lower healing potential?",
+          "fa": "چرا ظرفیت ترمیم پارگی مرکزی منیسک کمتر است؟"
+        },
+        "answer": {
+          "de": "Geringe bzw. fehlende Gefäßversorgung der weißen Zone.",
+          "en": "Low or absent vascular supply in the white zone.",
+          "fa": "خون‌رسانی کم یا غایب ناحیهٔ سفید."
+        },
+        "explanation": {
+          "de": "Die weiße Zone wird überwiegend über Synovialflüssigkeit ernährt. Geringere biologische Heilung ist nicht mit absoluter Unreparierbarkeit gleichzusetzen; Rissform und Gewebequalität bleiben wichtig.",
+          "en": "The white zone is nourished mainly through synovial fluid. Lower biological healing does not mean absolute non-repairability; pattern and tissue quality still matter.",
+          "fa": "ناحیهٔ سفید عمدتاً از مایع سینوویال تغذیه می‌شود؛ ظرفیت کمتر ترمیم به معنای غیرقابل‌ترمیم‌بودن مطلق نیست و شکل پارگی و کیفیت بافت مهم‌اند."
+        }
+      },
+      "after": {
+        "id": "meniskus-12",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Therapie/Vaskularisation",
+          "en": "Therapy/Vascularity",
+          "fa": "درمان/خون‌رسانی"
+        },
+        "front": {
+          "de": "Warum ist das Heilungspotenzial zentraler Meniskusrisse geringer?",
+          "en": "Why do central meniscal tears have lower healing potential?",
+          "fa": "چرا ظرفیت ترمیم پارگی مرکزی منیسک کمتر است؟"
+        },
+        "answer": {
+          "de": "Geringe bzw. fehlende Gefäßversorgung der weißen Zone.",
+          "en": "Low or absent vascular supply in the white zone.",
+          "fa": "خون‌رسانی کم یا غایب ناحیهٔ سفید."
+        },
+        "explanation": {
+          "de": "Die weiße Zone wird überwiegend über Synovialflüssigkeit ernährt. Geringere biologische Heilung ist nicht mit absoluter Unreparierbarkeit gleichzusetzen; Rissform und Gewebequalität bleiben wichtig.",
+          "en": "The white zone is nourished mainly through synovial fluid. Lower biological healing does not mean absolute non-repairability; pattern and tissue quality still matter.",
+          "fa": "ناحیهٔ سفید عمدتاً از مایع سینوویال تغذیه می‌شود؛ ظرفیت کمتر ترمیم به معنای غیرقابل‌ترمیم‌بودن مطلق نیست و شکل پارگی و کیفیت بافت مهم‌اند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-13",
+      "currentBefore": {
+        "id": "meniskus-13",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Therapie/Vaskularisation",
+          "en": "Therapy/Vascularity",
+          "fa": "درمان/خون‌رسانی"
+        },
+        "front": {
+          "de": "Welche Befunde begünstigen die Reparabilität eines Meniskusrisses?",
+          "en": "Which findings favour repairability of a meniscal tear?",
+          "fa": "کدام یافته‌ها به نفع قابلیت ترمیم پارگی منیسک هستند؟"
+        },
+        "answer": {
+          "de": "Periphere Lage, reparable Rissform und gutes, stabil rekonstruierbares Gewebe.",
+          "en": "Peripheral location, repairable pattern and good tissue that permits stable reconstruction.",
+          "fa": "محل محیطی، شکل قابل‌ترمیم و بافت خوب با امکان بازسازی پایدار."
+        },
+        "explanation": {
+          "de": "Frische periphere Longitudinalrisse sind oft günstig. Auch andere Rissformen können reparabel sein; die Entscheidung berücksichtigt Symptome, Chronizität, Stabilität und Begleitverletzungen.",
+          "en": "Recent peripheral longitudinal tears are often favourable. Other patterns may also be repairable; decisions consider symptoms, chronicity, stability and associated injuries.",
+          "fa": "پارگی طولی تازه و محیطی اغلب مناسب است؛ انواع دیگر هم ممکن است قابل‌ترمیم باشند و تصمیم به علائم، زمان، پایداری و آسیب همراه وابسته است."
+        }
+      },
+      "after": {
+        "id": "meniskus-13",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Therapie/Vaskularisation",
+          "en": "Therapy/Vascularity",
+          "fa": "درمان/خون‌رسانی"
+        },
+        "front": {
+          "de": "Welche Befunde begünstigen die Reparabilität eines Meniskusrisses?",
+          "en": "Which findings favour repairability of a meniscal tear?",
+          "fa": "کدام یافته‌ها به نفع قابلیت ترمیم پارگی منیسک هستند؟"
+        },
+        "answer": {
+          "de": "Periphere Lage, reparable Rissform und gutes, stabil rekonstruierbares Gewebe.",
+          "en": "Peripheral location, repairable pattern and good tissue that permits stable reconstruction.",
+          "fa": "محل محیطی، شکل قابل‌ترمیم و بافت خوب با امکان بازسازی پایدار."
+        },
+        "explanation": {
+          "de": "Periphere Lage kann das biologische Heilungspotenzial begünstigen. Gewebequalität, Rissgeometrie, Kniezustand und klinischer Kontext bleiben entscheidend; MRT allein legt Reparabilität nicht fest.",
+          "en": "Peripheral location may favour biological healing potential. Tissue quality, tear geometry, knee status and clinical context remain important; MRI alone does not establish repairability.",
+          "fa": "محل محیطی ممکن است زمینهٔ زیستی ترمیم را بهتر کند. کیفیت بافت، هندسهٔ پارگی، وضعیت زانو و زمینهٔ بالینی مهم‌اند؛ MRI به‌تنهایی قابلیت ترمیم را تعیین نمی‌کند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-14",
+      "currentBefore": {
+        "id": "meniskus-14",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Therapie/Vaskularisation",
+          "en": "Therapy/Vascularity",
+          "fa": "درمان/خون‌رسانی"
+        },
+        "front": {
+          "de": "Was bedeutet Save the Meniscus praktisch?",
+          "en": "What does Save the Meniscus mean in practice?",
+          "fa": "Save the Meniscus در عمل یعنی چه؟"
+        },
+        "answer": {
+          "de": "Bei indizierter Operation möglichst viel funktionsfähiges Gewebe erhalten.",
+          "en": "When surgery is indicated, preserve as much functional tissue as possible.",
+          "fa": "وقتی جراحی اندیکاسیون دارد، بیشترین بافت عملکردی حفظ شود."
+        },
+        "explanation": {
+          "de": "Menisken verteilen Last und schützen den Knorpel. Unnötige Resektion vermeiden und Reparabilität prüfen. Ein degenerativer MRT-Riss ohne echte Blockade ist allein keine OP-Indikation; konservative Therapie ist meist der erste Ansatz.",
+          "en": "Menisci distribute load and protect cartilage. Avoid unnecessary resection and assess repairability. A degenerative MRI tear without true locking alone is not a surgical indication; non-operative care is usually first-line.",
+          "fa": "منیسک بار را توزیع و غضروف را محافظت می‌کند؛ برداشت غیرضروری اجتناب و قابلیت ترمیم بررسی شود. پارگی دژنراتیو MRI بدون قفل‌شدن واقعی به‌تنهایی اندیکاسیون جراحی نیست و درمان غیرجراحی معمولاً مقدم است."
+        }
+      },
+      "after": {
+        "id": "meniskus-14",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Therapie/Vaskularisation",
+          "en": "Therapy/Vascularity",
+          "fa": "درمان/خون‌رسانی"
+        },
+        "front": {
+          "de": "Was bedeutet Save the Meniscus praktisch?",
+          "en": "What does Save the Meniscus mean in practice?",
+          "fa": "Save the Meniscus در عمل یعنی چه؟"
+        },
+        "answer": {
+          "de": "Bei indizierter Operation möglichst viel funktionsfähiges Gewebe erhalten.",
+          "en": "When surgery is indicated, preserve as much functional tissue as possible.",
+          "fa": "وقتی جراحی اندیکاسیون دارد، بیشترین بافت عملکردی حفظ شود."
+        },
+        "explanation": {
+          "de": "Menisken verteilen Last und schützen den Knorpel. Unnötige Resektion vermeiden und Reparabilität prüfen. Ein degenerativer MRT-Riss ohne echte Blockade ist allein keine OP-Indikation; konservative Therapie ist meist der erste Ansatz.",
+          "en": "Menisci distribute load and protect cartilage. Avoid unnecessary resection and assess repairability. A degenerative MRI tear without true locking alone is not a surgical indication; non-operative care is usually first-line.",
+          "fa": "منیسک بار را توزیع و غضروف را محافظت می‌کند؛ برداشت غیرضروری اجتناب و قابلیت ترمیم بررسی شود. پارگی دژنراتیو MRI بدون قفل‌شدن واقعی به‌تنهایی اندیکاسیون جراحی نیست و درمان غیرجراحی معمولاً مقدم است."
+        },
+        "source": "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+        "sources": [
+          "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+          "https://www.bmj.com/content/354/bmj.i3740"
+        ]
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-15",
+      "currentBefore": {
+        "id": "meniskus-15",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        },
+        "front": {
+          "de": "Was ist das Double-PCL-Zeichen?",
+          "en": "What is the double-PCL sign?",
+          "fa": "علامت Double-PCL چیست؟"
+        },
+        "answer": {
+          "de": "Disloziertes Meniskusfragment parallel und anteroinferior zum PCL.",
+          "en": "A displaced meniscal fragment parallel and anteroinferior to the PCL.",
+          "fa": "قطعهٔ منیسک جابه‌جا‌شده موازی و قدامی‌تحتانی PCL."
+        },
+        "explanation": {
+          "de": "Es stützt einen Korbhenkelriss, meist des Innenmeniskus. Den Ursprungsdefekt und das Interkondylarfragment in mehreren Ebenen bestätigen; anatomische Bänder können dunkle Strukturen imitieren.",
+          "en": "It supports a bucket-handle tear, usually medial. Confirm the donor defect and notch fragment in multiple planes; normal ligaments may mimic dark structures.",
+          "fa": "این علامت مؤید دسته‌سطلی، معمولاً داخلی، است؛ نقص مبدأ و قطعهٔ ناچ در چند صفحه تأیید شوند، چون رباط طبیعی ممکن است ساختار تیره را تقلید کند."
+        }
+      },
+      "after": {
+        "id": "meniskus-15",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        },
+        "front": {
+          "de": "Was ist das Double-PCL-Zeichen?",
+          "en": "What is the double-PCL sign?",
+          "fa": "علامت Double-PCL چیست؟"
+        },
+        "answer": {
+          "de": "Disloziertes Meniskusfragment parallel und anteroinferior zum PCL.",
+          "en": "A displaced meniscal fragment parallel and anteroinferior to the PCL.",
+          "fa": "قطعهٔ منیسک جابه‌جا‌شده موازی و قدامی‌تحتانی PCL."
+        },
+        "explanation": {
+          "de": "Es stützt einen Korbhenkelriss, meist des Innenmeniskus. Den Ursprungsdefekt und das Interkondylarfragment in mehreren Ebenen bestätigen; anatomische Bänder können dunkle Strukturen imitieren.",
+          "en": "It supports a bucket-handle tear, usually medial. Confirm the donor defect and notch fragment in multiple planes; normal ligaments may mimic dark structures.",
+          "fa": "این علامت مؤید دسته‌سطلی، معمولاً داخلی، است؛ نقص مبدأ و قطعهٔ ناچ در چند صفحه تأیید شوند، چون رباط طبیعی ممکن است ساختار تیره را تقلید کند."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/19234702/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-16",
+      "currentBefore": {
+        "id": "meniskus-16",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        },
+        "front": {
+          "de": "Wie wird ein fehlendes Bow-tie-Zeichen interpretiert?",
+          "en": "How should an absent bow-tie sign be interpreted?",
+          "fa": "فقدان Bow-tie چگونه تفسیر می‌شود؟"
+        },
+        "answer": {
+          "de": "Hinweis auf Gewebeverlust oder Fragmentverlagerung, nicht allein beweisend.",
+          "en": "A clue to tissue loss or displacement, not diagnostic alone.",
+          "fa": "نشانهٔ فقدان بافت یا جابه‌جایی قطعه، نه اثبات‌کننده به‌تنهایی."
+        },
+        "explanation": {
+          "de": "Nach einem dislozierten Fragment und Ursprungsdefekt suchen. Auch Radiärriss, vorangegangene Resektion, kleine Meniskusform und Schichtführung können die Darstellung verändern.",
+          "en": "Search for a displaced fragment and donor defect. Radial tears, prior resection, a small meniscus and slice positioning can also alter its appearance.",
+          "fa": "قطعهٔ جابه‌جا‌شده و نقص مبدأ جست‌وجو شوند؛ پارگی شعاعی، برداشت قبلی، منیسک کوچک و جهت برش هم ظاهر را تغییر می‌دهند."
+        }
+      },
+      "after": {
+        "id": "meniskus-16",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        },
+        "front": {
+          "de": "Wie wird ein fehlendes Bow-tie-Zeichen interpretiert?",
+          "en": "How should an absent bow-tie sign be interpreted?",
+          "fa": "فقدان Bow-tie چگونه تفسیر می‌شود؟"
+        },
+        "answer": {
+          "de": "Hinweis auf Gewebeverlust oder Fragmentverlagerung, nicht allein beweisend.",
+          "en": "A clue to tissue loss or displacement, not diagnostic alone.",
+          "fa": "نشانهٔ فقدان بافت یا جابه‌جایی قطعه، نه اثبات‌کننده به‌تنهایی."
+        },
+        "explanation": {
+          "de": "Nach einem dislozierten Fragment und Ursprungsdefekt suchen. Auch Radiärriss, vorangegangene Resektion, kleine Meniskusform und Schichtführung können die Darstellung verändern.",
+          "en": "Search for a displaced fragment and donor defect. Radial tears, prior resection, a small meniscus and slice positioning can also alter its appearance.",
+          "fa": "قطعهٔ جابه‌جا‌شده و نقص مبدأ جست‌وجو شوند؛ پارگی شعاعی، برداشت قبلی، منیسک کوچک و جهت برش هم ظاهر را تغییر می‌دهند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-18",
+      "currentBefore": {
+        "id": "meniskus-18",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Discoider Meniskus",
+          "en": "Discoid meniscus",
+          "fa": "منیسک دیسکویید"
+        },
+        "front": {
+          "de": "Was ist ein discoider Meniskus und welcher Meniskus ist meist betroffen?",
+          "en": "What is a discoid meniscus and which meniscus is usually affected?",
+          "fa": "منیسک دیسکویید چیست و معمولاً کدام منیسک درگیر است؟"
+        },
+        "answer": {
+          "de": "Angeborener, verbreiterter scheibenförmiger Meniskus, fast immer lateral.",
+          "en": "A congenital broad disc-shaped meniscus, almost always lateral.",
+          "fa": "منیسک مادرزادی پهن و دیسکی‌شکل، تقریباً همیشه خارجی."
+        },
+        "explanation": {
+          "de": "Die Formvariante kann asymptomatisch sein oder mit Instabilität und Rissen einhergehen. Discoid allein bedeutet weder Riss noch automatische Therapiebedürftigkeit.",
+          "en": "The variant may be asymptomatic or associated with instability and tears. Discoid shape alone means neither a tear nor an automatic need for treatment.",
+          "fa": "این گونه می‌تواند بی‌علامت یا همراه ناپایداری و پارگی باشد؛ شکل دیسکویید به‌تنهایی نه پارگی است و نه الزام به درمان."
+        }
+      },
+      "after": {
+        "id": "meniskus-18",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Discoider Meniskus",
+          "en": "Discoid meniscus",
+          "fa": "منیسک دیسکویید"
+        },
+        "front": {
+          "de": "Was ist ein discoider Meniskus und welcher Meniskus ist meist betroffen?",
+          "en": "What is a discoid meniscus and which meniscus is usually affected?",
+          "fa": "منیسک دیسکویید چیست و معمولاً کدام منیسک درگیر است؟"
+        },
+        "answer": {
+          "de": "Angeborener, verbreiterter scheibenförmiger Meniskus, fast immer lateral.",
+          "en": "A congenital broad disc-shaped meniscus, almost always lateral.",
+          "fa": "منیسک مادرزادی پهن و دیسکی‌شکل، تقریباً همیشه خارجی."
+        },
+        "explanation": {
+          "de": "Die Formvariante kann asymptomatisch sein oder mit Instabilität und Rissen einhergehen. Discoid allein bedeutet weder Riss noch automatische Therapiebedürftigkeit.",
+          "en": "The variant may be asymptomatic or associated with instability and tears. Discoid shape alone means neither a tear nor an automatic need for treatment.",
+          "fa": "این گونه می‌تواند بی‌علامت یا همراه ناپایداری و پارگی باشد؛ شکل دیسکویید به‌تنهایی نه پارگی است و نه الزام به درمان."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-19",
+      "currentBefore": {
+        "id": "meniskus-19",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Discoider Meniskus",
+          "en": "Discoid meniscus",
+          "fa": "منیسک دیسکویید"
+        },
+        "front": {
+          "de": "Welche kindlichen Symptome lassen an einen discoiden Außenmeniskus denken?",
+          "en": "Which childhood symptoms suggest a discoid lateral meniscus?",
+          "fa": "کدام علائم در کودک منیسک خارجی دیسکویید را مطرح می‌کنند؟"
+        },
+        "answer": {
+          "de": "Schnappen/Klicken, Schmerzen oder mechanische Beschwerden.",
+          "en": "Snapping/clicking, pain or mechanical symptoms.",
+          "fa": "تق‌تق/کلیک، درد یا علائم مکانیکی."
+        },
+        "explanation": {
+          "de": "Diese Symptome sind nicht spezifisch. Im MRT Form, Breite, Riss und Instabilitätszeichen prüfen; ein asymptomatischer discoider Meniskus benötigt nicht automatisch einen Eingriff.",
+          "en": "These symptoms are not specific. Assess MRI shape, width, tears and instability signs; an asymptomatic discoid meniscus does not automatically require intervention.",
+          "fa": "این علائم اختصاصی نیستند؛ در MRI شکل، پهنا، پارگی و نشانه‌های ناپایداری بررسی شوند و دیسکویید بی‌علامت الزاماً مداخله نمی‌خواهد."
+        }
+      },
+      "after": {
+        "id": "meniskus-19",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Discoider Meniskus",
+          "en": "Discoid meniscus",
+          "fa": "منیسک دیسکویید"
+        },
+        "front": {
+          "de": "Welche kindlichen Symptome lassen an einen discoiden Außenmeniskus denken?",
+          "en": "Which childhood symptoms suggest a discoid lateral meniscus?",
+          "fa": "کدام علائم در کودک منیسک خارجی دیسکویید را مطرح می‌کنند؟"
+        },
+        "answer": {
+          "de": "Schnappen/Klicken, Schmerzen oder mechanische Beschwerden.",
+          "en": "Snapping/clicking, pain or mechanical symptoms.",
+          "fa": "تق‌تق/کلیک، درد یا علائم مکانیکی."
+        },
+        "explanation": {
+          "de": "Diese Symptome sind nicht spezifisch. Im MRT Form, Breite, Riss und Instabilitätszeichen prüfen; ein asymptomatischer discoider Meniskus benötigt nicht automatisch einen Eingriff.",
+          "en": "These symptoms are not specific. Assess MRI shape, width, tears and instability signs; an asymptomatic discoid meniscus does not automatically require intervention.",
+          "fa": "این علائم اختصاصی نیستند؛ در MRI شکل، پهنا، پارگی و نشانه‌های ناپایداری بررسی شوند و دیسکویید بی‌علامت الزاماً مداخله نمی‌خواهد."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-20",
+      "currentBefore": {
+        "id": "meniskus-20",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Discoider Meniskus",
+          "en": "Discoid meniscus",
+          "fa": "منیسک دیسکویید"
+        },
+        "front": {
+          "de": "Warum reicht das Drei-Schichten-Zeichen bei dünnen MRT-Schichten nicht allein für discoid?",
+          "en": "Why is the three-slice sign alone insufficient with thin MRI slices for discoid meniscus?",
+          "fa": "چرا علامت سه برش در MRI نازک به‌تنهایی برای دیسکویید کافی نیست؟"
+        },
+        "answer": {
+          "de": "Die sichtbare Schichtzahl hängt von der Schnittdicke ab.",
+          "en": "The visible slice count depends on slice thickness.",
+          "fa": "تعداد برش‌های قابل‌مشاهده به ضخامت وابسته است."
+        },
+        "explanation": {
+          "de": "Bei dünnen Schichten ist auch ein normaler Körper auf mehr Bildern sichtbar. Breitenkriterien und Form kombinieren. Sagittal unterstützt ein Verhältnis aus Vorder- plus Hinterhornbreite zum maximalen Meniskusdurchmesser >75 % die Diagnose.",
+          "en": "Thin slices also show a normal body on more images. Combine width criteria and shape. Sagittally, anterior-plus-posterior horn widths divided by maximum meniscal diameter >75% supports diagnosis.",
+          "fa": "در برش نازک تنهٔ طبیعی هم در تصاویر بیشتری دیده می‌شود؛ معیار پهنا و شکل ترکیب شوند. در ساژیتال، نسبت مجموع پهنای شاخ قدامی و خلفی به حداکثر قطر منیسک >۷۵٪ مؤید تشخیص است."
+        }
+      },
+      "after": {
+        "id": "meniskus-20",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Discoider Meniskus",
+          "en": "Discoid meniscus",
+          "fa": "منیسک دیسکویید"
+        },
+        "front": {
+          "de": "Warum reicht das Drei-Schichten-Zeichen bei dünnen MRT-Schichten nicht allein für discoid?",
+          "en": "Why is the three-slice sign alone insufficient with thin MRI slices for discoid meniscus?",
+          "fa": "چرا علامت سه برش در MRI نازک به‌تنهایی برای دیسکویید کافی نیست؟"
+        },
+        "answer": {
+          "de": "Die sichtbare Schichtzahl hängt von der Schnittdicke ab.",
+          "en": "The visible slice count depends on slice thickness.",
+          "fa": "تعداد برش‌های قابل‌مشاهده به ضخامت وابسته است."
+        },
+        "explanation": {
+          "de": "Bei modernen dünnen Schichten soll die Drei-Bow-tie-Regel nicht diagnostisch verwendet werden. Mittlere koronale Corpusbreite und Gesamtform prüfen. Samoto beschrieb zusätzlich ein sagittales Verhältnis aus der Summe der Vorder-/Hinterhornbreiten zum maximalen Meniskusdurchmesser von ≥75 %.",
+          "en": "With modern thin sections, the three-bowtie rule should not be used diagnostically. Assess mid-coronal body width and overall shape. Samoto additionally described a sagittal ratio of summed anterior/posterior horn widths to maximum meniscal diameter ≥75%.",
+          "fa": "در برش‌های نازک امروزی قاعدهٔ سه bow-tie نباید برای تشخیص به‌کار رود. عرض تنه در کرونال میانی و شکل کلی بررسی شوند. Samoto نسبت ساژیتال مجموع عرض شاخ‌های قدامی/خلفی به بیشترین قطر منیسک ≥۷۵٪ را نیز توصیف کرده است."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-21",
+      "currentBefore": {
+        "id": "meniskus-21",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Discoider Meniskus",
+          "en": "Discoid meniscus",
+          "fa": "منیسک دیسکویید"
+        },
+        "front": {
+          "de": "Welche koronalen Breitenkriterien unterstützen einen discoiden Außenmeniskus?",
+          "en": "Which coronal width criteria support a discoid lateral meniscus?",
+          "fa": "کدام معیارهای پهنای کرونال از منیسک خارجی دیسکویید حمایت می‌کنند؟"
+        },
+        "answer": {
+          "de": "Körperbreite ≥15 mm oder minimale Meniskusbreite / maximale Tibiabreite ≥20 %.",
+          "en": "Body width ≥15 mm or minimum meniscal / maximum tibial width ≥20%.",
+          "fa": "پهنای تنه ≥۱۵ میلی‌متر یا حداقل پهنای منیسک / حداکثر پهنای تیبیا ≥۲۰٪."
+        },
+        "explanation": {
+          "de": "Die Messungen stützen die Diagnose und werden mit Gesamtform und sagittaler Ausdehnung kombiniert. Extrusion ist ein anderer Parameter und kein Ersatz für die Körperbreite.",
+          "en": "These measurements support diagnosis and are combined with overall shape and sagittal extent. Extrusion is a different parameter, not a substitute for body width.",
+          "fa": "اندازه‌گیری‌ها مؤید تشخیص‌اند و با شکل کلی و امتداد ساژیتال ترکیب می‌شوند؛ اکستروژن پارامتر دیگری است و جای پهنای تنه را نمی‌گیرد."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/11973030/"
+      },
+      "after": {
+        "id": "meniskus-21",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Discoider Meniskus",
+          "en": "Discoid meniscus",
+          "fa": "منیسک دیسکویید"
+        },
+        "front": {
+          "de": "Welche koronalen Breitenkriterien unterstützen einen discoiden Außenmeniskus?",
+          "en": "Which coronal width criteria support a discoid lateral meniscus?",
+          "fa": "کدام معیارهای پهنای کرونال از منیسک خارجی دیسکویید حمایت می‌کنند؟"
+        },
+        "answer": {
+          "de": "Körperbreite ≥15 mm oder minimale Meniskusbreite / maximale Tibiabreite ≥20 %.",
+          "en": "Body width ≥15 mm or minimum meniscal / maximum tibial width ≥20%.",
+          "fa": "پهنای تنه ≥۱۵ میلی‌متر یا حداقل پهنای منیسک / حداکثر پهنای تیبیا ≥۲۰٪."
+        },
+        "explanation": {
+          "de": "Die Messungen stützen die Diagnose und werden mit Gesamtform und sagittaler Ausdehnung kombiniert. Extrusion ist ein anderer Parameter und kein Ersatz für die Körperbreite.",
+          "en": "These measurements support diagnosis and are combined with overall shape and sagittal extent. Extrusion is a different parameter, not a substitute for body width.",
+          "fa": "اندازه‌گیری‌ها مؤید تشخیص‌اند و با شکل کلی و امتداد ساژیتال ترکیب می‌شوند؛ اکستروژن پارامتر دیگری است و جای پهنای تنه را نمی‌گیرد."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/11973030/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-22",
+      "currentBefore": {
+        "id": "meniskus-22",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        },
+        "front": {
+          "de": "Wie unterscheiden sich Horizontal- und Radiärriss?",
+          "en": "How do horizontal and radial tears differ?",
+          "fa": "پارگی افقی و شعاعی چه تفاوتی دارند؟"
+        },
+        "answer": {
+          "de": "Horizontal: parallel zur Tibiaebene. Radial: vom freien Rand quer zu Ringfasern.",
+          "en": "Horizontal: parallel to the tibial plane. Radial: from the free edge across circumferential fibres.",
+          "fa": "افقی: موازی صفحهٔ تیبیا. شعاعی: از لبهٔ آزاد در عرض الیاف حلقوی."
+        },
+        "explanation": {
+          "de": "Der Horizontalriss spaltet obere und untere Lamelle. Der Radiärriss läuft Richtung Peripherie; seine biomechanische Bedeutung hängt besonders von Tiefe und Vollständigkeit ab.",
+          "en": "A horizontal tear splits upper and lower leaflets. A radial tear runs towards the periphery; its biomechanical impact depends particularly on depth and completeness.",
+          "fa": "پارگی افقی لایهٔ بالا و پایین را جدا می‌کند؛ شعاعی به سمت محیط می‌رود و اهمیت مکانیکی آن به‌ویژه به عمق و کامل‌بودن وابسته است."
+        }
+      },
+      "after": {
+        "id": "meniskus-22",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        },
+        "front": {
+          "de": "Wie unterscheiden sich Horizontal- und Radiärriss?",
+          "en": "How do horizontal and radial tears differ?",
+          "fa": "پارگی افقی و شعاعی چه تفاوتی دارند؟"
+        },
+        "answer": {
+          "de": "Horizontal: parallel zur Tibiaebene. Radial: vom freien Rand quer zu Ringfasern.",
+          "en": "Horizontal: parallel to the tibial plane. Radial: from the free edge across circumferential fibres.",
+          "fa": "افقی: موازی صفحهٔ تیبیا. شعاعی: از لبهٔ آزاد در عرض الیاف حلقوی."
+        },
+        "explanation": {
+          "de": "Der Horizontalriss spaltet obere und untere Lamelle. Der Radiärriss läuft Richtung Peripherie; seine biomechanische Bedeutung hängt besonders von Tiefe und Vollständigkeit ab.",
+          "en": "A horizontal tear splits upper and lower leaflets. A radial tear runs towards the periphery; its biomechanical impact depends particularly on depth and completeness.",
+          "fa": "پارگی افقی لایهٔ بالا و پایین را جدا می‌کند؛ شعاعی به سمت محیط می‌رود و اهمیت مکانیکی آن به‌ویژه به عمق و کامل‌بودن وابسته است."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-23",
+      "currentBefore": {
+        "id": "meniskus-23",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        },
+        "front": {
+          "de": "Welche Rissform ist häufig mit einer parameniskalen Zyste assoziiert?",
+          "en": "Which tear pattern is often associated with a parameniscal cyst?",
+          "fa": "کدام شکل پارگی اغلب با کیست پارامنیسکال همراه است؟"
+        },
+        "answer": {
+          "de": "Horizontalriss.",
+          "en": "Horizontal tear.",
+          "fa": "پارگی افقی."
+        },
+        "explanation": {
+          "de": "Flüssigkeit kann über einen Riss nach außen gelangen. Zyste und mögliche Kommunikation zum Meniskus beschreiben; die Assoziation ist typisch, aber nicht auf Horizontalrisse beschränkt.",
+          "en": "Fluid can pass outward through a tear. Describe the cyst and possible meniscal communication; the association is typical but not exclusive to horizontal tears.",
+          "fa": "مایع می‌تواند از مسیر پارگی خارج شود؛ کیست و ارتباط احتمالی با منیسک توصیف شوند. همراهی تیپیک است اما فقط به پارگی افقی محدود نیست."
+        }
+      },
+      "after": {
+        "id": "meniskus-23",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        },
+        "front": {
+          "de": "Welche Rissform ist häufig mit einer parameniskalen Zyste assoziiert?",
+          "en": "Which tear pattern is often associated with a parameniscal cyst?",
+          "fa": "کدام شکل پارگی اغلب با کیست پارامنیسکال همراه است؟"
+        },
+        "answer": {
+          "de": "Horizontalriss.",
+          "en": "Horizontal tear.",
+          "fa": "پارگی افقی."
+        },
+        "explanation": {
+          "de": "Flüssigkeit kann über einen Riss nach außen gelangen. Zyste und mögliche Kommunikation zum Meniskus beschreiben; die Assoziation ist typisch, aber nicht auf Horizontalrisse beschränkt.",
+          "en": "Fluid can pass outward through a tear. Describe the cyst and possible meniscal communication; the association is typical but not exclusive to horizontal tears.",
+          "fa": "مایع می‌تواند از مسیر پارگی خارج شود؛ کیست و ارتباط احتمالی با منیسک توصیف شوند. همراهی تیپیک است اما فقط به پارگی افقی محدود نیست."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-24",
+      "currentBefore": {
+        "id": "meniskus-24",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        },
+        "front": {
+          "de": "Warum ist ein vollständiger Radiärriss biomechanisch besonders relevant?",
+          "en": "Why is a complete radial tear particularly important biomechanically?",
+          "fa": "چرا پارگی شعاعی کامل از نظر مکانیکی اهمیت ویژه دارد؟"
+        },
+        "answer": {
+          "de": "Vollständige Unterbrechung der zirkumferenziellen Fasern und Ringspannung.",
+          "en": "Complete interruption of circumferential fibres and hoop-stress transmission.",
+          "fa": "قطع کامل الیاف حلقوی و انتقال تنش حلقوی."
+        },
+        "explanation": {
+          "de": "Ein Defekt über die gesamte Breite stört die Lastverteilung stark. Wurzelbezug, Extrusion und Knorpelstatus mitbeurteilen; ein kleiner partieller Radiärriss hat nicht automatisch die gleiche Wirkung.",
+          "en": "A full-width defect markedly disrupts load distribution. Assess root relationship, extrusion and cartilage; a small partial radial tear does not automatically have the same effect.",
+          "fa": "نقص تمام‌عرض توزیع بار را شدیداً مختل می‌کند؛ ارتباط ریشه، اکستروژن و غضروف ارزیابی شوند. شعاعی کوچک و جزئی الزاماً همین اثر را ندارد."
+        }
+      },
+      "after": {
+        "id": "meniskus-24",
+        "topicId": "meniskus",
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        },
+        "front": {
+          "de": "Warum ist ein vollständiger Radiärriss biomechanisch besonders relevant?",
+          "en": "Why is a complete radial tear particularly important biomechanically?",
+          "fa": "چرا پارگی شعاعی کامل از نظر مکانیکی اهمیت ویژه دارد؟"
+        },
+        "answer": {
+          "de": "Vollständige Unterbrechung der zirkumferenziellen Fasern und Ringspannung.",
+          "en": "Complete interruption of circumferential fibres and hoop-stress transmission.",
+          "fa": "قطع کامل الیاف حلقوی و انتقال تنش حلقوی."
+        },
+        "explanation": {
+          "de": "Ein Defekt über die gesamte Breite stört die Lastverteilung stark. Wurzelbezug, Extrusion und Knorpelstatus mitbeurteilen; ein kleiner partieller Radiärriss hat nicht automatisch die gleiche Wirkung.",
+          "en": "A full-width defect markedly disrupts load distribution. Assess root relationship, extrusion and cartilage; a small partial radial tear does not automatically have the same effect.",
+          "fa": "نقص تمام‌عرض توزیع بار را شدیداً مختل می‌کند؛ ارتباط ریشه، اکستروژن و غضروف ارزیابی شوند. شعاعی کوچک و جزئی الزاماً همین اثر را ندارد."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-27",
+      "currentBefore": {
+        "id": "meniskus-27",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Was ist Grad 2a?",
+          "en": "What is grade 2a?",
+          "fa": "گرید ۲a چیست؟"
+        },
+        "answer": {
+          "de": "Lineares intrameniskales Signal ohne Oberflächenkontakt.",
+          "en": "Linear intrasubstance signal without surface contact.",
+          "fa": "سیگنال خطی داخل منیسک بدون تماس سطحی."
+        },
+        "explanation": {
+          "de": "Es entspricht fortgeschrittener intrameniskaler Degeneration in der erweiterten Grad-2-Einteilung. Ohne Kontakt oder Formdefekt ist kein sicherer Riss belegt.",
+          "en": "It represents advanced intrasubstance degeneration in the extended grade-2 scheme. Without contact or morphological defect, a definite tear is not established.",
+          "fa": "در تقسیم‌بندی توسعه‌یافتهٔ گرید ۲، دژنراسیون پیشرفتهٔ داخل منیسک است؛ بدون تماس یا نقص شکلی پارگی قطعی اثبات نمی‌شود."
+        },
+        "category": {
+          "de": "Lotysch-Klassifikation",
+          "en": "Lotysch classification",
+          "fa": "طبقه‌بندی لوتوش"
+        }
+      },
+      "after": {
+        "id": "meniskus-27",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Was beschreibt Grad 2a im historischen Signalgrading?",
+          "en": "What does grade 2a describe in historical signal grading?",
+          "fa": "گرید ۲a در درجه‌بندی تاریخی سیگنال چه چیزی را توصیف می‌کند؟"
+        },
+        "answer": {
+          "de": "Lineares intrameniskales Signal ohne Oberflächenkontakt.",
+          "en": "Linear intrasubstance signal without surface contact.",
+          "fa": "سیگنال خطی داخل منیسک بدون تماس سطحی."
+        },
+        "explanation": {
+          "de": "Das ist eine Signalbeschreibung, keine gesicherte Histologie oder Operationsindikation. Oberflächenkontakt, Kontur und Kontinuität in der vollständigen Serie prüfen; im klinischen Befund sind diese Angaben hilfreicher als der Grad allein.",
+          "en": "This is a signal description, not established histology or a surgical indication. Assess surface contact, contour and continuity throughout the complete series; these details are more useful in a clinical report than grade alone.",
+          "fa": "این توصیف سیگنال است، نه بافت‌شناسی قطعی یا اندیکاسیون جراحی. تماس سطحی، حاشیه و پیوستگی در کل سری بررسی شوند؛ در گزارش بالینی این جزئیات از گرید تنها مفیدترند."
+        },
+        "category": {
+          "de": "Lotysch-Klassifikation",
+          "en": "Lotysch classification",
+          "fa": "طبقه‌بندی لوتوش"
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-28",
+      "currentBefore": {
+        "id": "meniskus-28",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Was ist Grad 2c?",
+          "en": "What is grade 2c?",
+          "fa": "گرید ۲c چیست؟"
+        },
+        "answer": {
+          "de": "Ausgedehntes keilförmiges/globuläres Signal ohne sicheren Oberflächenkontakt.",
+          "en": "Extensive wedge-shaped/globular signal without definite surface contact.",
+          "fa": "سیگنال وسیع گوه‌ای/گلوبولار بدون تماس سطحی قطعی."
+        },
+        "explanation": {
+          "de": "Ein okkulter Riss ist möglich; allein ist dieser Befund kein sicherer Rissnachweis. 2a, 2b und 2c sind Untertypen von Grad 2, keine zusätzlichen Hauptgrade.",
+          "en": "An occult tear is possible; the finding alone does not prove a tear. 2a, 2b and 2c are subtypes of grade 2, not additional main grades.",
+          "fa": "پارگی مخفی ممکن است، اما این یافته به‌تنهایی آن را ثابت نمی‌کند. ۲a، ۲b و ۲c زیرگروه گرید ۲ هستند، نه گریدهای اصلی جدا."
+        },
+        "category": {
+          "de": "Lotysch-Klassifikation",
+          "en": "Lotysch classification",
+          "fa": "طبقه‌بندی لوتوش"
+        }
+      },
+      "after": {
+        "id": "meniskus-28",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Was ist Grad 2c?",
+          "en": "What is grade 2c?",
+          "fa": "گرید ۲c چیست؟"
+        },
+        "answer": {
+          "de": "Ausgedehntes keilförmiges/globuläres Signal ohne sicheren Oberflächenkontakt.",
+          "en": "Extensive wedge-shaped/globular signal without definite surface contact.",
+          "fa": "سیگنال وسیع گوه‌ای/گلوبولار بدون تماس سطحی قطعی."
+        },
+        "explanation": {
+          "de": "Ein okkulter Riss ist möglich; allein ist dieser Befund kein sicherer Rissnachweis. 2a, 2b und 2c sind Untertypen von Grad 2, keine zusätzlichen Hauptgrade.",
+          "en": "An occult tear is possible; the finding alone does not prove a tear. 2a, 2b and 2c are subtypes of grade 2, not additional main grades.",
+          "fa": "پارگی مخفی ممکن است، اما این یافته به‌تنهایی آن را ثابت نمی‌کند. ۲a، ۲b و ۲c زیرگروه گرید ۲ هستند، نه گریدهای اصلی جدا."
+        },
+        "category": {
+          "de": "Lotysch-Klassifikation",
+          "en": "Lotysch classification",
+          "fa": "طبقه‌بندی لوتوش"
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/12185036/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-29",
+      "currentBefore": {
+        "id": "meniskus-29",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Wie verläuft ein Longitudinalriss und wann wird er zum Korbhenkelriss?",
+          "en": "What is the orientation of a longitudinal tear and when is it called bucket-handle?",
+          "fa": "مسیر پارگی طولی چیست و چه زمانی دسته‌سطلی نامیده می‌شود؟"
+        },
+        "answer": {
+          "de": "Vertikal entlang der Peripherie; Korbhenkel bei zentraler Verlagerung des inneren Fragments.",
+          "en": "Vertical along the periphery; bucket-handle when the inner fragment is displaced centrally.",
+          "fa": "عمودی در امتداد محیط؛ با جابه‌جایی قطعهٔ داخلی به مرکز، دسته‌سطلی."
+        },
+        "explanation": {
+          "de": "Ein nicht dislozierter Longitudinalriss ist kein Korbhenkelriss. Periphere Risse können reparabel sein; Dislokation und mechanische Blockade sind klinisch wichtig.",
+          "en": "An undisplaced longitudinal tear is not bucket-handle. Peripheral tears may be repairable; displacement and mechanical locking matter clinically.",
+          "fa": "پارگی طولی بدون جابه‌جایی دسته‌سطلی نیست؛ پارگی محیطی ممکن است قابل‌ترمیم باشد و جابه‌جایی و قفل‌شدن مکانیکی مهم‌اند."
+        },
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        }
+      },
+      "after": {
+        "id": "meniskus-29",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Wie verläuft ein Longitudinalriss und wann wird er zum Korbhenkelriss?",
+          "en": "What is the orientation of a longitudinal tear and when is it called bucket-handle?",
+          "fa": "مسیر پارگی طولی چیست و چه زمانی دسته‌سطلی نامیده می‌شود؟"
+        },
+        "answer": {
+          "de": "Vertikal entlang der Peripherie; Korbhenkel bei zentraler Verlagerung des inneren Fragments.",
+          "en": "Vertical along the periphery; bucket-handle when the inner fragment is displaced centrally.",
+          "fa": "عمودی در امتداد محیط؛ با جابه‌جایی قطعهٔ داخلی به مرکز، دسته‌سطلی."
+        },
+        "explanation": {
+          "de": "Ein nicht dislozierter Longitudinalriss ist kein Korbhenkelriss. Periphere Risse können reparabel sein; Dislokation und mechanische Blockade sind klinisch wichtig.",
+          "en": "An undisplaced longitudinal tear is not bucket-handle. Peripheral tears may be repairable; displacement and mechanical locking matter clinically.",
+          "fa": "پارگی طولی بدون جابه‌جایی دسته‌سطلی نیست؛ پارگی محیطی ممکن است قابل‌ترمیم باشد و جابه‌جایی و قفل‌شدن مکانیکی مهم‌اند."
+        },
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-30",
+      "currentBefore": {
+        "id": "meniskus-30",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Was kennzeichnet den Parrot-beak-tear?",
+          "en": "What characterizes a parrot-beak tear?",
+          "fa": "پارگی نوک‌طوطی با چه مشخص می‌شود؟"
+        },
+        "answer": {
+          "de": "Schräger Radiärriss mit spitzem, teilweise angeheftetem Lappen.",
+          "en": "Oblique radial tear with a pointed, partly attached flap.",
+          "fa": "پارگی شعاعی مایل با لَپ نوک‌تیز و اتصال باقی‌مانده."
+        },
+        "explanation": {
+          "de": "Nach Ursprungsdefekt und disloziertem Lappen suchen, auch in Gelenkrecessus. Ein instabiler Lappen kann mechanische Beschwerden verursachen.",
+          "en": "Search for the donor defect and displaced flap, including joint recesses. An unstable flap can cause mechanical symptoms.",
+          "fa": "نقص مبدأ و لَپ جابه‌جا‌شده، از جمله در رِسِس مفصل، جست‌وجو شوند؛ لَپ ناپایدار می‌تواند علائم مکانیکی بدهد."
+        },
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        }
+      },
+      "after": {
+        "id": "meniskus-30",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Was kennzeichnet den Parrot-beak-tear?",
+          "en": "What characterizes a parrot-beak tear?",
+          "fa": "پارگی نوک‌طوطی با چه مشخص می‌شود؟"
+        },
+        "answer": {
+          "de": "Schräger Radiärriss mit spitzem, teilweise angeheftetem Lappen.",
+          "en": "Oblique radial tear with a pointed, partly attached flap.",
+          "fa": "پارگی شعاعی مایل با لَپ نوک‌تیز و اتصال باقی‌مانده."
+        },
+        "explanation": {
+          "de": "Nach Ursprungsdefekt und disloziertem Lappen suchen, auch in Gelenkrecessus. Ein instabiler Lappen kann mechanische Beschwerden verursachen.",
+          "en": "Search for the donor defect and displaced flap, including joint recesses. An unstable flap can cause mechanical symptoms.",
+          "fa": "نقص مبدأ و لَپ جابه‌جا‌شده، از جمله در رِسِس مفصل، جست‌وجو شوند؛ لَپ ناپایدار می‌تواند علائم مکانیکی بدهد."
+        },
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-31",
+      "currentBefore": {
+        "id": "meniskus-31",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Was bezeichnet Flipped Meniscus und welches Zeichen kann entstehen?",
+          "en": "What does flipped meniscus describe and which sign may result?",
+          "fa": "Flipped Meniscus چه چیزی را توصیف می‌کند و چه علامتی ممکن است ایجاد شود؟"
+        },
+        "answer": {
+          "de": "Umgeschlagenes Fragment; nach vorne kann ein Double-Anterior-Horn-Zeichen entstehen.",
+          "en": "A flipped fragment; anterior displacement may produce a double-anterior-horn sign.",
+          "fa": "قطعهٔ برگشته؛ جابه‌جایی به جلو ممکن است Double anterior horn ایجاد کند."
+        },
+        "explanation": {
+          "de": "Ein nach vorne verlagertes Hinterhornfragment liegt neben dem Vorderhorn; das Ursprungshorn ist vermindert. Flipped ist eine Verlagerungsform, häufig bei Korbhenkelrissen, kein eigener Rissverlauf.",
+          "en": "An anteriorly displaced posterior-horn fragment lies beside the anterior horn; the donor horn is reduced. Flipped is a displacement pattern, often with bucket-handle tears, not a separate tear orientation.",
+          "fa": "قطعهٔ شاخ خلفی کنار شاخ قدامی قرار می‌گیرد و شاخ مبدأ کوچک می‌شود؛ Flipped شکل جابه‌جایی، اغلب در دسته‌سطلی، است نه مسیر مستقل پارگی."
+        },
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        }
+      },
+      "after": {
+        "id": "meniskus-31",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Was bezeichnet Flipped Meniscus und welches Zeichen kann entstehen?",
+          "en": "What does flipped meniscus describe and which sign may result?",
+          "fa": "Flipped Meniscus چه چیزی را توصیف می‌کند و چه علامتی ممکن است ایجاد شود؟"
+        },
+        "answer": {
+          "de": "Umgeschlagenes Fragment; nach vorne kann ein Double-Anterior-Horn-Zeichen entstehen.",
+          "en": "A flipped fragment; anterior displacement may produce a double-anterior-horn sign.",
+          "fa": "قطعهٔ برگشته؛ جابه‌جایی به جلو ممکن است Double anterior horn ایجاد کند."
+        },
+        "explanation": {
+          "de": "Ein nach vorne verlagertes Hinterhornfragment liegt neben dem Vorderhorn; das Ursprungshorn ist vermindert. Flipped ist eine Verlagerungsform, häufig bei Korbhenkelrissen, kein eigener Rissverlauf.",
+          "en": "An anteriorly displaced posterior-horn fragment lies beside the anterior horn; the donor horn is reduced. Flipped is a displacement pattern, often with bucket-handle tears, not a separate tear orientation.",
+          "fa": "قطعهٔ شاخ خلفی کنار شاخ قدامی قرار می‌گیرد و شاخ مبدأ کوچک می‌شود؛ Flipped شکل جابه‌جایی، اغلب در دسته‌سطلی، است نه مسیر مستقل پارگی."
+        },
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/8316871/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-32",
+      "currentBefore": {
+        "id": "meniskus-32",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Was muss bei einem wurzelnahen Meniskusdefekt dokumentiert werden?",
+          "en": "What must be documented for a root-adjacent meniscal defect?",
+          "fa": "در نقص منیسک نزدیک ریشه چه باید ثبت شود؟"
+        },
+        "answer": {
+          "de": "Genauer Ansatzbezug, Kontinuität der Wurzel, Extrusion und Knorpelstatus.",
+          "en": "Precise attachment relationship, root continuity, extrusion and cartilage status.",
+          "fa": "ارتباط دقیق با اتصال، پیوستگی ریشه، اکستروژن و وضعیت غضروف."
+        },
+        "explanation": {
+          "de": "Eine Avulsion oder ein vollständiger wurzelnaher Radiärriss kann die Verankerung funktionell ausschalten. Nicht jeden Radiärriss als Wurzelriss bezeichnen; den Defekt anatomisch lokalisieren.",
+          "en": "An avulsion or complete root-adjacent radial tear can functionally disrupt anchorage. Do not call every radial tear a root tear; localize the defect anatomically.",
+          "fa": "کندگی یا شعاعی کامل نزدیک ریشه می‌تواند اتصال را از نظر عملکردی مختل کند؛ هر شعاعی را پارگی ریشه ننامید و محل نقص را آناتومیک تعیین کنید."
+        },
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        }
+      },
+      "after": {
+        "id": "meniskus-32",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Was muss bei einem wurzelnahen Meniskusdefekt dokumentiert werden?",
+          "en": "What must be documented for a root-adjacent meniscal defect?",
+          "fa": "در نقص منیسک نزدیک ریشه چه باید ثبت شود؟"
+        },
+        "answer": {
+          "de": "Genauer Ansatzbezug, Kontinuität der Wurzel, Extrusion und Knorpelstatus.",
+          "en": "Precise attachment relationship, root continuity, extrusion and cartilage status.",
+          "fa": "ارتباط دقیق با اتصال، پیوستگی ریشه، اکستروژن و وضعیت غضروف."
+        },
+        "explanation": {
+          "de": "Eine Avulsion oder ein vollständiger wurzelnaher Radiärriss kann die Verankerung funktionell ausschalten. Nicht jeden Radiärriss als Wurzelriss bezeichnen; den Defekt anatomisch lokalisieren.",
+          "en": "An avulsion or complete root-adjacent radial tear can functionally disrupt anchorage. Do not call every radial tear a root tear; localize the defect anatomically.",
+          "fa": "کندگی یا شعاعی کامل نزدیک ریشه می‌تواند اتصال را از نظر عملکردی مختل کند؛ هر شعاعی را پارگی ریشه ننامید و محل نقص را آناتومیک تعیین کنید."
+        },
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-33",
+      "currentBefore": {
+        "id": "meniskus-33",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Was bedeutet das Ghost-Meniscus-Zeichen?",
+          "en": "What does the ghost-meniscus sign mean?",
+          "fa": "علامت Ghost meniscus چه معنایی دارد؟"
+        },
+        "answer": {
+          "de": "Ein erwarteter Meniskusanteil ist sagittal nicht oder kaum sichtbar.",
+          "en": "An expected meniscal segment is absent or barely visible sagittally.",
+          "fa": "بخش مورد انتظار منیسک در ساژیتال غایب یا به‌سختی دیده می‌شود."
+        },
+        "explanation": {
+          "de": "Es kann bei vollständigen Radiär- oder Wurzelrissen auftreten, ist aber allein nicht spezifisch. Den Defekt koronal/axial bestätigen und Fragmentverlagerung oder Voroperation berücksichtigen.",
+          "en": "It may occur with complete radial or root tears but is not specific alone. Confirm the defect coronally/axially and consider displaced fragments or prior surgery.",
+          "fa": "در شعاعی کامل یا پارگی ریشه ممکن است رخ دهد، اما به‌تنهایی اختصاصی نیست؛ نقص کرونال/اکسیال تأیید و جابه‌جایی قطعه یا عمل قبلی لحاظ شود."
+        },
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        }
+      },
+      "after": {
+        "id": "meniskus-33",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Was bedeutet das Ghost-Meniscus-Zeichen?",
+          "en": "What does the ghost-meniscus sign mean?",
+          "fa": "علامت Ghost meniscus چه معنایی دارد؟"
+        },
+        "answer": {
+          "de": "Ein erwarteter Meniskusanteil ist sagittal nicht oder kaum sichtbar.",
+          "en": "An expected meniscal segment is absent or barely visible sagittally.",
+          "fa": "بخش مورد انتظار منیسک در ساژیتال غایب یا به‌سختی دیده می‌شود."
+        },
+        "explanation": {
+          "de": "Es kann bei vollständigen Radiär- oder Wurzelrissen auftreten, ist aber allein nicht spezifisch. Den Defekt koronal/axial bestätigen und Fragmentverlagerung oder Voroperation berücksichtigen.",
+          "en": "It may occur with complete radial or root tears but is not specific alone. Confirm the defect coronally/axially and consider displaced fragments or prior surgery.",
+          "fa": "در شعاعی کامل یا پارگی ریشه ممکن است رخ دهد، اما به‌تنهایی اختصاصی نیست؛ نقص کرونال/اکسیال تأیید و جابه‌جایی قطعه یا عمل قبلی لحاظ شود."
+        },
+        "category": {
+          "de": "Risstypen und Dislokation",
+          "en": "Tear types and displacement",
+          "fa": "انواع پارگی و جابه‌جایی"
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-34",
+      "currentBefore": {
+        "id": "meniskus-34",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Welche Angaben gehören in einen klinisch nützlichen Meniskusbefund?",
+          "en": "What belongs in a clinically useful meniscal report?",
+          "fa": "گزارش منیسکِ مفید برای بالین شامل چه مواردی است؟"
+        },
+        "answer": {
+          "de": "Meniskus, Segment, Verlauf/Ausmaß, Dislokation, Wurzelbezug, Extrusion und Begleitbefunde.",
+          "en": "Meniscus, segment, orientation/extent, displacement, root relationship, extrusion and associated findings.",
+          "fa": "منیسک، سگمان، مسیر/وسعت، جابه‌جایی، ارتباط ریشه، اکستروژن و یافته‌های همراه."
+        },
+        "explanation": {
+          "de": "Ein Signalgrad allein genügt nicht. Bei echter Blockade oder instabilem Fragment die klinische Relevanz klar benennen; die Therapieentscheidung nicht allein aus der Signalhelligkeit ableiten.",
+          "en": "A signal grade alone is insufficient. Clearly indicate the significance of true locking or an unstable fragment; do not derive treatment solely from signal brightness.",
+          "fa": "گرید سیگنال به‌تنهایی کافی نیست؛ اهمیت قفل‌شدن واقعی یا قطعهٔ ناپایدار روشن بیان شود و درمان صرفاً از روشنی سیگنال نتیجه‌گیری نشود."
+        },
+        "category": {
+          "de": "MRT-Rissdiagnostik",
+          "en": "MRI tear diagnosis",
+          "fa": "تشخیص پارگی در MRI"
+        }
+      },
+      "after": {
+        "id": "meniskus-34",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Welche Angaben gehören in einen klinisch nützlichen Meniskusbefund?",
+          "en": "What belongs in a clinically useful meniscal report?",
+          "fa": "گزارش منیسکِ مفید برای بالین شامل چه مواردی است؟"
+        },
+        "answer": {
+          "de": "Meniskus, Segment, Verlauf/Ausmaß, Dislokation, Wurzelbezug, Extrusion und Begleitbefunde.",
+          "en": "Meniscus, segment, orientation/extent, displacement, root relationship, extrusion and associated findings.",
+          "fa": "منیسک، سگمان، مسیر/وسعت، جابه‌جایی، ارتباط ریشه، اکستروژن و یافته‌های همراه."
+        },
+        "explanation": {
+          "de": "Ein Signalgrad allein genügt nicht. Bei echter Blockade oder instabilem Fragment die klinische Relevanz klar benennen; die Therapieentscheidung nicht allein aus der Signalhelligkeit ableiten.",
+          "en": "A signal grade alone is insufficient. Clearly indicate the significance of true locking or an unstable fragment; do not derive treatment solely from signal brightness.",
+          "fa": "گرید سیگنال به‌تنهایی کافی نیست؛ اهمیت قفل‌شدن واقعی یا قطعهٔ ناپایدار روشن بیان شود و درمان صرفاً از روشنی سیگنال نتیجه‌گیری نشود."
+        },
+        "category": {
+          "de": "MRT-Rissdiagnostik",
+          "en": "MRI tear diagnosis",
+          "fa": "تشخیص پارگی در MRI"
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-35",
+      "currentBefore": {
+        "id": "meniskus-35",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Was unterscheidet Grad 0 von Grad I?",
+          "en": "What distinguishes grade 0 from grade I?",
+          "fa": "گرید ۰ و I چه تفاوتی دارند؟"
+        },
+        "answer": {
+          "de": "Grad 0: homogen signalarm. Grad I: fokale Signalanhebung ohne Oberflächenkontakt.",
+          "en": "Grade 0: homogeneous low signal. Grade I: focal increased signal without surface contact.",
+          "fa": "گرید ۰: کم‌سیگنال همگن. گرید I: افزایش سیگنال کانونی بدون تماس سطحی."
+        },
+        "explanation": {
+          "de": "Grad I wird als frühe mukoide Degeneration beschrieben und ist allein kein Rissnachweis. Zusätzlich Form und Kontinuität prüfen; normales Signal allein schließt nicht jeden Formdefekt aus.",
+          "en": "Grade I is described as early mucoid degeneration and alone does not establish a tear. Also assess shape and continuity; normal signal alone does not exclude every morphological defect.",
+          "fa": "گرید I دژنراسیون موکویید اولیه توصیف می‌شود و به‌تنهایی پارگی را ثابت نمی‌کند؛ شکل و پیوستگی هم بررسی شوند، چون سیگنال طبیعی همهٔ نقص‌های شکلی را رد نمی‌کند."
+        },
+        "category": {
+          "de": "Lotysch-Klassifikation",
+          "en": "Lotysch classification",
+          "fa": "طبقه‌بندی لوتوش"
+        }
+      },
+      "after": {
+        "id": "meniskus-35",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Was unterscheidet Grad 0 von Grad I?",
+          "en": "What distinguishes grade 0 from grade I?",
+          "fa": "گرید ۰ و I چه تفاوتی دارند؟"
+        },
+        "answer": {
+          "de": "Grad 0: homogen signalarm. Grad I: fokale Signalanhebung ohne Oberflächenkontakt.",
+          "en": "Grade 0: homogeneous low signal. Grade I: focal increased signal without surface contact.",
+          "fa": "گرید ۰: کم‌سیگنال همگن. گرید I: افزایش سیگنال کانونی بدون تماس سطحی."
+        },
+        "explanation": {
+          "de": "Fokales nicht surfacierendes Signal ist allein kein Rissnachweis und beweist keine bestimmte Histologie. Form und Kontinuität zusätzlich prüfen; normales Signal allein schließt nicht jeden morphologischen Defekt aus.",
+          "en": "Focal nonsurfacing signal alone neither establishes a tear nor proves a specific histology. Also assess shape and continuity; normal signal alone does not exclude every morphological defect.",
+          "fa": "سیگنال کانونی بدون تماس سطحی به‌تنهایی نه پارگی را اثبات می‌کند و نه بافت‌شناسی مشخصی را. شکل و پیوستگی هم بررسی شوند؛ سیگنال طبیعی تمام نقص‌های مورفولوژیک را رد نمی‌کند."
+        },
+        "category": {
+          "de": "Lotysch-Klassifikation",
+          "en": "Lotysch classification",
+          "fa": "طبقه‌بندی لوتوش"
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-36",
+      "currentBefore": {
+        "id": "meniskus-36",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Welche zwei sagittalen Zeichen stützen einen Flipped-Meniskus?",
+          "en": "Which two sagittal signs support a flipped meniscus?",
+          "fa": "کدام دو علامت ساژیتال به نفع منیسک وارونه‌شده‌اند؟"
+        },
+        "answer": {
+          "de": "Double-Anterior-Horn-Zeichen und Empty-Posterior-Horn-Zeichen.",
+          "en": "Double-anterior-horn sign and empty-posterior-horn sign.",
+          "fa": "علامت شاخ قدامی دوگانه و علامت شاخ خلفی خالی."
+        },
+        "explanation": {
+          "de": "Ein nach anterior verlagertes Hinterhorn kann am Vorderhorn doppelte Meniskusstruktur vortäuschen; am ursprünglichen Hinterhorn fehlt das normale signalärmere Meniskusgewebe. Eine Vorderhornvariante kann die Verdopplung imitieren.",
+          "en": "An anteriorly displaced posterior horn can create duplicated meniscal tissue at the anterior horn; normal low-signal meniscal tissue is absent at the native posterior-horn position. An anterior-horn variant can mimic the duplication.",
+          "fa": "شاخ خلفیِ جابه‌جاشده به قدام می‌تواند در محل شاخ قدامی ساختار منیسک دوگانه ایجاد کند؛ در محل اصلی شاخ خلفی بافت منیسک کم‌سیگنال طبیعی دیده نمی‌شود. واریانت شاخ قدامی می‌تواند این دوگانگی را تقلید کند."
+        },
+        "category": {
+          "de": "Dislozierte Meniskusrisse",
+          "en": "Displaced meniscal tears",
+          "fa": "پارگی‌های جابه‌جاشدهٔ منیسک"
+        }
+      },
+      "after": {
+        "id": "meniskus-36",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Welche zwei sagittalen Zeichen stützen einen Flipped-Meniskus?",
+          "en": "Which two sagittal signs support a flipped meniscus?",
+          "fa": "کدام دو علامت ساژیتال به نفع منیسک وارونه‌شده‌اند؟"
+        },
+        "answer": {
+          "de": "Double-Anterior-Horn-Zeichen und Empty-Posterior-Horn-Zeichen.",
+          "en": "Double-anterior-horn sign and empty-posterior-horn sign.",
+          "fa": "علامت شاخ قدامی دوگانه و علامت شاخ خلفی خالی."
+        },
+        "explanation": {
+          "de": "Ein nach anterior verlagertes Hinterhorn kann am Vorderhorn doppelte Meniskusstruktur vortäuschen; am ursprünglichen Hinterhorn fehlt das normale signalärmere Meniskusgewebe. Eine Vorderhornvariante kann die Verdopplung imitieren.",
+          "en": "An anteriorly displaced posterior horn can create duplicated meniscal tissue at the anterior horn; normal low-signal meniscal tissue is absent at the native posterior-horn position. An anterior-horn variant can mimic the duplication.",
+          "fa": "شاخ خلفیِ جابه‌جاشده به قدام می‌تواند در محل شاخ قدامی ساختار منیسک دوگانه ایجاد کند؛ در محل اصلی شاخ خلفی بافت منیسک کم‌سیگنال طبیعی دیده نمی‌شود. واریانت شاخ قدامی می‌تواند این دوگانگی را تقلید کند."
+        },
+        "category": {
+          "de": "Dislozierte Meniskusrisse",
+          "en": "Displaced meniscal tears",
+          "fa": "پارگی‌های جابه‌جاشدهٔ منیسک"
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/8316871/"
+      }
+    },
+    {
+      "kind": "card",
+      "file": "data/flashcards.js",
+      "id": "meniskus-37",
+      "currentBefore": {
+        "id": "meniskus-37",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Wie lässt sich ein PDF-„Wrisberg-Riss“ anatomisch präziser beschreiben?",
+          "en": "How can the PDF’s “Wrisberg rip” be described more precisely in anatomic terms?",
+          "fa": "اصطلاح Wrisberg rip در PDF را چگونه می‌توان با توصیف آناتومیک دقیق‌تر بیان کرد؟"
+        },
+        "answer": {
+          "de": "Longitudinal-vertikaler Riss am Hinterhorn des Außenmeniskus nahe dem posterioren meniskofemoralen Ansatz.",
+          "en": "Longitudinal-vertical tear of the lateral meniscus posterior horn near the posterior meniscofemoral attachment.",
+          "fa": "پارگی طولی-عمودی شاخ خلفی منیسک خارجی نزدیک اتصال خلفی منیسکوفمورال."
+        },
+        "explanation": {
+          "de": "Ein intaktes posterior-meniskofemorales Ligament kann einen Pseudoriss vortäuschen. Seine Kontinuität zum Femur über Nachbarschichten verfolgen. Der Rissbegriff allein belegt keine VKB-Ruptur.",
+          "en": "An intact posterior meniscofemoral ligament can mimic a tear. Trace its continuity to the femur across adjacent slices. The tear pattern alone does not establish an ACL rupture.",
+          "fa": "رباط منیسکوفمورال خلفی سالم می‌تواند پارگی را تقلید کند؛ پیوستگی آن را در برش‌های مجاور تا فمور دنبال کنید. این الگو به‌تنهایی پارگی ACL را ثابت نمی‌کند."
+        },
+        "category": {
+          "de": "Rissmuster und Pseudorisse",
+          "en": "Tear patterns and pseudotears",
+          "fa": "الگوهای پارگی و پارگی کاذب"
+        }
+      },
+      "after": {
+        "id": "meniskus-37",
+        "topicId": "meniskus",
+        "front": {
+          "de": "Wie lässt sich ein PDF-„Wrisberg-Riss“ anatomisch präziser beschreiben?",
+          "en": "How can the PDF’s “Wrisberg rip” be described more precisely in anatomic terms?",
+          "fa": "اصطلاح Wrisberg rip در PDF را چگونه می‌توان با توصیف آناتومیک دقیق‌تر بیان کرد؟"
+        },
+        "answer": {
+          "de": "Longitudinal-vertikaler Riss am Hinterhorn des Außenmeniskus nahe dem posterioren meniskofemoralen Ansatz.",
+          "en": "Longitudinal-vertical tear of the lateral meniscus posterior horn near the posterior meniscofemoral attachment.",
+          "fa": "پارگی طولی-عمودی شاخ خلفی منیسک خارجی نزدیک اتصال خلفی منیسکوفمورال."
+        },
+        "explanation": {
+          "de": "Ein intaktes posterior-meniskofemorales Ligament kann einen Pseudoriss vortäuschen. Seine Kontinuität zum Femur über Nachbarschichten verfolgen. Der Rissbegriff allein belegt keine VKB-Ruptur.",
+          "en": "An intact posterior meniscofemoral ligament can mimic a tear. Trace its continuity to the femur across adjacent slices. The tear pattern alone does not establish an ACL rupture.",
+          "fa": "رباط منیسکوفمورال خلفی سالم می‌تواند پارگی را تقلید کند؛ پیوستگی آن را در برش‌های مجاور تا فمور دنبال کنید. این الگو به‌تنهایی پارگی ACL را ثابت نمی‌کند."
+        },
+        "category": {
+          "de": "Rissmuster und Pseudorisse",
+          "en": "Tear patterns and pseudotears",
+          "fa": "الگوهای پارگی و پارگی کاذب"
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+      }
+    }
+  ]
+}

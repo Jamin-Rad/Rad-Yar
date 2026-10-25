@@ -1,0 +1,538 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/integration_review_next",
+  "author": "Brain packet19 author; Root applied the route-local source-footer repair",
+  "packet": "AVM19",
+  "route": "/gehirn/vaskulaer/avm-zns",
+  "worktree": "C:/Users/Drham/Documents/GitHub/Rad-Yar/.worktrees/gehirn-completion-main",
+  "scope": "Independent full original12Q/15card pool DE/EN/FA, all affected teaching units and actual route wiring; supplied Gehirn physical37–38 text/images and primary evidence refreshed. Bounded editorial/content/integration acceptance, not whole-route media/browser or clinical release.",
+  "decisions": {
+    "boundedContentAcceptance": "PASS",
+    "boundedIntegrationAcceptance": "PASS",
+    "overallLessonAcceptance": "BLOCKED",
+    "editorialQA": "PASS",
+    "scientificReview": "pending",
+    "browserQA": "BLOCKED",
+    "publication": "not_requested",
+    "openCritical": 0,
+    "openMajor": 0,
+    "openMinor": 0,
+    "closedMajor": 1
+  },
+  "sha256": {
+    "data/avm.js": "fcb3a42be95b9799f5a6fff7a458cb3347b97bbc9032cbabee88df4177ad6509",
+    "app/gehirn/vaskulaer/avm-zns/page.js": "d5bd014c0425e2a7bb7f2bc09c02137c4e9c58956e8bcc17fbf56b8f93a19f88"
+  },
+  "initialAuthorSha256": [
+    {
+      "path": "data/avm.js",
+      "sha256": "fcb3a42be95b9799f5a6fff7a458cb3347b97bbc9032cbabee88df4177ad6509"
+    },
+    {
+      "path": "app/gehirn/vaskulaer/avm-zns/page.js",
+      "sha256": "abebffca4cb27617a9deb232bd95d66f3fb4badcbe833ca4ac5c7b650da16257"
+    }
+  ],
+  "rootRepair": {
+    "file": "app/gehirn/vaskulaer/avm-zns/page.js",
+    "change": "Only the new source-container opening and closing tags changed from aside to footer. Sidebar aside and all10 reference payloads remain unchanged.",
+    "retested": true
+  },
+  "filesRead": [
+    "data/avm.js",
+    "app/gehirn/vaskulaer/avm-zns/page.js",
+    "components/lesson-template/LegacyLessonMigration.jsx",
+    "components/lesson-template/StandardLessonShell.jsx",
+    "components/lesson-template/TopicAssessment.jsx",
+    "components/LessonHero.jsx",
+    "data/lessonDesignHeroes.js",
+    "data/questions.js and data/flashcards.js actual consumer exports",
+    "scripts/test-gehirn-avm-p37-p38.mjs",
+    "packet19-avm-handoff.md",
+    "packet19-avm-plan.md",
+    "packet19-avm-sources.json",
+    "packet19-avm-runtime.json",
+    "packet19-avm-teaching-delta.json",
+    "packet19-avm-assessment-delta.json",
+    "tmp/assessment-quality/avm19-before.js and avm19-route-before.js (pre-authorworkingbaseline)",
+    "public/avm/flow-path.svg"
+  ],
+  "realDataPath": {
+    "lesson": "Route imports AVM_LESSON and AVM_QUESTIONS from data/avm.js. LegacyLessonMigration extracts migrationChapter elements into the maintained StandardLessonShell/LessonSection.",
+    "questions": "Actual QUESTION_BANK exactly matches all12 producer records per locale. Actual TopicAssessment uses registered questions09,08,10 in grading, imaging and management.",
+    "cards": "Actual getCardsByTopic(avm-zns) exactly matches all15 producer card objects.",
+    "hero": "LessonHero uses the pathname registry: /educational/lesson-design/gehirn--vaskulaer--avm-zns.webp. The old authored /avm/hero-generated.webp is not the current shell hero.",
+    "summary": "Migration recognizes takehome and creates the localized TakeHomeList. All8 purposeful chapters remain; no default Befund & Selbsttest was added.",
+    "sources": "Root repaired the source container to a native footer. Actual migration now retains all10 reference entries and9 links.",
+    "WIP": "Case object exactly matches the pre-author working baseline, including the T1 label triad. Both route label consumers remain localized. No new history, frame or grade was inferred."
+  },
+  "gates": {
+    "SRC": {
+      "status": "PASS",
+      "scope": "Bounded full assessment and teaching claims",
+      "evidence": "Fresh PDF37/38 text and images, primary grading/management statement passages, original natural-history meta-analysis, trial abstract, differential series and relevant guideline passages read. Source limits are recorded below.",
+      "wholeLessonBlockers": [
+        "Original fullSpetzler1986 table was unavailable. Exact scoring criteria are corroborated independently by the suppliedPDF and originalAHA2017 statement; bounded scoring verification is complete.",
+        "Retained original case, study/frame identity and provenance still require a separate whole-media review."
+      ]
+    },
+    "EDU": {
+      "status": "PASS",
+      "scope": "Full pool and58 teaching deltas",
+      "evidence": "Five observable goals map to actual IDs with preceding teaching support. Sequence progresses from architecture/presentation to operative grading, imaging/case/differential, treatment mechanisms and summary. No question quota or default chapter was imposed."
+    },
+    "VIS": {
+      "status": "NOT_APPLICABLE",
+      "scope": "No new visual or patient-frame production in this packet",
+      "reason": "SourcePDF images and all3 actual retained MRI frames were viewed for context; flow-pathSVG source inspected. None of these unchanged assets receives new whole-media approval.",
+      "wholeLessonStatus": "BLOCKED",
+      "wholeLessonBlockers": [
+        "Original contributor, reuse terms, study/frame identity and actual hero provenance not fully revalidated.",
+        "The single MRA projection cannot establish nidus/drainage or grade; retained wording states this limitation.",
+        "Viewport, cropping, zoom and teaching fit require real browser evidence."
+      ]
+    },
+    "LNG": {
+      "status": "PASS",
+      "scope": "All12 question triads,15 card triads and affected teaching triads",
+      "evidence": "Maximum diameter,3/6cm boundaries, any deep/mixed drainage, functional-location exclusions, modality purpose, support-versus-proof qualifiers, delayed effects/residual shunt and adult/unruptured trial limits align acrossDE/EN/FA.",
+      "wholeLessonBlocker": "Retained old case wording was preserved, not fully recertified. Rendered RTL, math/ranges and visual labels still need browser checks."
+    },
+    "ASM": {
+      "status": "PASS",
+      "evidence": "36 localized questions,108 specific wrong-answer rationales and15 sourced card triads. All original IDs, keys, card IDs, topic metadata and case object preserved. Actual global retrieval is exact;58 lesson,285 question and95 card delta entries independently recomputed with no omissions."
+    },
+    "UX": {
+      "status": "BLOCKED",
+      "evidence": "Actual-component in-memory SSR verifies source extraction and all3 inline questions in every language. Browser state, themes, responsive layout, focus, feedback clicks, lightbox and progress remain untested.",
+      "blockers": [
+        "Root currentDE/EN/FA desktop/mobile and light/dark browser evidence pending.",
+        "No application build or live-site equivalence checked by this reviewer."
+      ]
+    },
+    "REV": {
+      "status": "PASS",
+      "scope": "Independent bounded review and repair retest",
+      "evidence": "Reviewer did not edit production artifacts. One route-local defect was reported toRoot and independently retested after correction. Dr.Zia scientific approval and publication remain separate."
+    }
+  },
+  "findings": [
+    {
+      "id": "AVM19-SRC-01",
+      "severity": "major",
+      "gates": [
+        "SRC",
+        "ASM"
+      ],
+      "location": "app/gehirn/vaskulaer/avm-zns/page.js sourcefooter; components/lesson-template/LegacyLessonMigration.jsx walk()",
+      "observedEvidence": "The initial source container was an aside. Migration ignores aside subtrees before traversing their links, so all10 new references disappeared from the final shell.",
+      "learnerImpact": "Scientific references were absent for learners despite appearing in the route source.",
+      "requiredCorrection": "Use a route-local container recognized by migration and preserve source payloads/localized heading.",
+      "status": "PASS",
+      "resolution": "Root changed only source opening/closing aside tags to footer.",
+      "retestEvidence": "Actual route, LegacyLessonMigration, StandardLessonShell, TopicAssessment and LessonHero were transformed in memory and rendered inDE/EN/FA. All10 labels,9 hrefs and3 inline stems were asserted. Reconstructed previous-aside version lost references, confirming test sensitivity. No files were written; navigation/hooks/image wrappers mocked. This is SSR, not browser evidence."
+    }
+  ],
+  "sourcePDF": {
+    "path": "C:/Users/Drham/OneDrive/Desktop/Lerncore/Gehirn.pdf",
+    "physicalPages": [
+      37,
+      38
+    ],
+    "printedPages": [
+      36,
+      37
+    ],
+    "read": "Fresh pypdf text extraction plus independent viewing of both full rendered pages avm-37.png and avm-38.png.",
+    "coverage": [
+      {
+        "id": "PDF37-01",
+        "page": 37,
+        "point": "No normal capillary bed; high-flow AV connection; feeder/nidus/dilated vein components",
+        "result": "covered with qualified anatomy; high pressure is not used as a universal individual predictor"
+      },
+      {
+        "id": "PDF37-02",
+        "page": 37,
+        "point": "Young adults20–40; predominantly supratentorial (~85%)",
+        "result": "typical age/location retained; exact~85% not a tested cutoff and explicitly not an exclusion criterion"
+      },
+      {
+        "id": "PDF37-03",
+        "page": 37,
+        "point": "Reported annual bleeding~2–4%",
+        "result": "contextualized using Kim2014 rupture/age/population evidence; unqualified pooled rate not taught as individual risk; numerical memorization deliberately not an objective"
+      },
+      {
+        "id": "PDF37-04",
+        "page": 37,
+        "point": "Bleeding(~50%) as common presentation; seizures, headache, focal deficits",
+        "result": "presentation retained; exact~50% source-population figure not generalized; no invented image finding"
+      },
+      {
+        "id": "PDF37-05",
+        "page": 37,
+        "point": "T1/T2 serpiginous flowvoids and possible surrounding gliosis",
+        "result": "covered; flowvoids support rather than prove AVM/grade"
+      },
+      {
+        "id": "PDF37-06",
+        "page": 37,
+        "point": "Postcontrast T1 vessel/nidus enhancement",
+        "result": "covered; enhancement intensity not equated with established later-bleed predictor"
+      },
+      {
+        "id": "PDF37-07",
+        "page": 37,
+        "point": "SWI/T2* products and TOF-MRA nidus/feeders/drainage",
+        "result": "covered; susceptibility sources/context and staticTOF temporal limitation specified"
+      },
+      {
+        "id": "PDF37-08",
+        "page": 37,
+        "point": "Three T1/T2/MRA case images, rID74111",
+        "result": "PDF image triptych read; no fresh original-case/frame validation or new disease grade inferred"
+      },
+      {
+        "id": "PDF38-01",
+        "page": 38,
+        "point": "DSA nidus and early venous filling termed pathognomonic",
+        "result": "qualified: early venous filling is shunting; parenchymal nidus/localization distinguishes AVM from dAVF"
+      },
+      {
+        "id": "PDF38-02",
+        "page": 38,
+        "point": "Spetzler–Martin: maxdiameter<3/3–6/>6→1/2/3;eloquence0/1;drainage0/1",
+        "result": "covered; AHA2017corroborates anydeepcomponent includingmixed, sum1–5 and operative-risk purpose"
+      },
+      {
+        "id": "PDF38-03",
+        "page": 38,
+        "point": "Eloquent cortex/deep functional structures list",
+        "result": "covered including AHA2017basalganglia/internalcapsule and cerebellar peduncles/deepnuclei"
+      },
+      {
+        "id": "PDF38-04",
+        "page": 38,
+        "point": "GradesI–II goodOP andIV–V oftenconservative/radiosurgery; higher operative risk",
+        "result": "operative-risk gradient retained; generalized treatment directives replaced by individualized multimodal/observation decisions with primarycontext"
+      },
+      {
+        "id": "PDF38-05",
+        "page": 38,
+        "point": "Bleed distribution: oftenlobarICH, superficialSAH/deepIVH possibility",
+        "result": "covered as possible patterns, not absolute mapping"
+      },
+      {
+        "id": "PDF38-06",
+        "page": 38,
+        "point": "Surgery,preop/partialembolization,SRSsmall/deep",
+        "result": "modalities retained; specific treatment intent and latency explained. Selected suitability assessed individually, no blanketgrade/size procedure order"
+      },
+      {
+        "id": "PDF38-07",
+        "page": 38,
+        "point": "dAVF,no nidus,dural; proliferativeangiopathy;Moyamoyamimics",
+        "result": "covered; diffuseCPAparenchyma clarified from original2008series"
+      }
+    ],
+    "limits": "Relevant two-page spread only. Approximate population rates and simplified grade-treatment arrows were qualified rather than promoted to individualized rules."
+  },
+  "primaryEvidence": [
+    {
+      "id": "AHA2017",
+      "url": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000134",
+      "accessiblePrimaryPDF": "https://anrs-neurologie.ro/wp-content/uploads/2017/10/Ghid-2017-AHA-ASA-Management-malformatii-arteriovenoase.pdf",
+      "read": "Fresh statement passages on development, grading e208–e209, SRS e209–e210 and endovascular intent e211. Official indexed text and identical primaryPDF mirror; not a whole-paper claim.",
+      "verified": "Largest diameter and<3/3–6/>6 boundaries; eloquent anatomical list; any deep component including mixed drainage. Grade is a surgical-risk starting point, not automatic therapy. De novo development and delayedSRS action/latency risk supported."
+    },
+    {
+      "id": "SM1986",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3760956/",
+      "read": "Fresh original abstract; original full table unavailable.",
+      "verified": "Original purpose is prediction of operative morbidity/mortality using size, eloquence and venous drainage. Exact thresholds corroborated by suppliedPDF and AHA2017."
+    },
+    {
+      "id": "KIM2014",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4141996/",
+      "doi": "10.1212/WNL.0000000000000688",
+      "read": "Fresh indexed original abstract, methods, results and discussion. DirectPMC returned a captcha; no bypass.",
+      "verified": "Four cohorts,2525 patients; untreated follow-up censored at treatment. Hemorrhagic presentation and age independently predicted hemorrhage; size did not in the multivariable models. Exclusively deep drainage in this analysis differs from any deep drainage in surgical grading. Current questions do not conflate them."
+    },
+    {
+      "id": "ARUBA2020",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32562682/",
+      "doi": "10.1016/S1474-4422(20)30181-2",
+      "read": "Fresh original final-follow-up abstract: methods, findings and interpretation.",
+      "verified": "226 adults with unruptured, never-intervenedAVMs considered suitable for intervention; mean50.4-month follow-up favored medical management alone for death/symptomatic stroke. Longer-term differences uncertain. Current lesson/cards preserve adult, unruptured and follow-up limits."
+    },
+    {
+      "id": "SNIS2022",
+      "url": "https://jnis.bmj.com/content/14/11/1118",
+      "primaryPDF": "https://snisonline.org/wp-content/uploads/2023/01/SNISAVMGuideline2022.pdf",
+      "read": "Fresh indexed primary recommendations andSRS/endovascular sections; directHTML returned403.",
+      "verified": "Multidisciplinary plan, adjunctive/targeted roles and uncertainty of primary curative embolization. Current selected-definitive wording does not claim routine superiority. Residual shunt and follow-up limits supported."
+    },
+    {
+      "id": "AHA2022",
+      "url": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407",
+      "read": "Fresh official indexed section4.1.2 synopsis and guideline scope.",
+      "verified": "CT availability/rapidity supports the stated initial-bleed question;MRI can also detect hyperacute blood. Overall primaryICH scope excludes visualized structural causes. Used here for initial imaging, not AVM-specific treatment."
+    },
+    {
+      "id": "ILAE2017",
+      "url": "https://www.ilae.org/files/dmfile/Operational-Classification---Instruction-manual-Fisher_et_al-2017-Epilepsia-1.pdf",
+      "read": "Fresh original instruction-manual clonic/focal motor descriptors.",
+      "verified": "Rhythmic focal jerking and spread support a motor seizure with responsiveness preserved. No claim that2017 is the latest taxonomy or thatAVM proves every episode cause."
+    },
+    {
+      "id": "CPA2008",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18239181/",
+      "read": "Fresh complete original abstract.",
+      "verified": "49 selected patients from1434-patient database; diffuse vascular spaces with intermingled normal brain and distinctive architecture support the differential. No treatment rule imported."
+    },
+    {
+      "id": "CCM2025",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12680281/",
+      "read": "Fresh primary consensus: ImagingTechniques and Diagnosis/DifferentialConsiderations.",
+      "verified": "Typical mixed-signal/popcorn core and hemosiderin rim; acute hemorrhage can obscure the pattern. Susceptibility-only findings are not universally specific. Current feedback/card qualifications align."
+    }
+  ],
+  "poolCoverage": {
+    "allQuestionIds": {
+      "de": [
+        "avm-zns-de-01",
+        "avm-zns-de-02",
+        "avm-zns-de-03",
+        "avm-zns-de-04",
+        "avm-zns-de-05",
+        "avm-zns-de-06",
+        "avm-zns-de-07",
+        "avm-zns-de-08",
+        "avm-zns-de-09",
+        "avm-zns-de-10",
+        "avm-zns-de-11",
+        "avm-zns-de-12"
+      ],
+      "en": [
+        "avm-zns-en-01",
+        "avm-zns-en-02",
+        "avm-zns-en-03",
+        "avm-zns-en-04",
+        "avm-zns-en-05",
+        "avm-zns-en-06",
+        "avm-zns-en-07",
+        "avm-zns-en-08",
+        "avm-zns-en-09",
+        "avm-zns-en-10",
+        "avm-zns-en-11",
+        "avm-zns-en-12"
+      ],
+      "fa": [
+        "avm-zns-fa-01",
+        "avm-zns-fa-02",
+        "avm-zns-fa-03",
+        "avm-zns-fa-04",
+        "avm-zns-fa-05",
+        "avm-zns-fa-06",
+        "avm-zns-fa-07",
+        "avm-zns-fa-08",
+        "avm-zns-fa-09",
+        "avm-zns-fa-10",
+        "avm-zns-fa-11",
+        "avm-zns-fa-12"
+      ]
+    },
+    "allCardIds": [
+      "avm-zns-01-definition",
+      "avm-zns-02-nidus",
+      "avm-zns-03-epidemio",
+      "avm-zns-04-blutungsrisiko",
+      "avm-zns-05-spetzler-kriterien",
+      "avm-zns-06-spetzler-therapie",
+      "avm-zns-07-eloquenz",
+      "avm-zns-08-flow-voids",
+      "avm-zns-09-dsa",
+      "avm-zns-10-therapie-wahl",
+      "avm-zns-11-gamma-knife",
+      "avm-zns-12-davf-unterschied",
+      "avm-zns-13-kavernom-unterschied",
+      "avm-zns-14-embolisation",
+      "avm-zns-15-swi"
+    ],
+    "goals": [
+      {
+        "id": "AVM19-G1",
+        "observable": "Describe feeder–nidus–vein and distinguish relevant vascular patterns",
+        "questions": {
+          "de": [
+            "avm-zns-de-01",
+            "avm-zns-de-06",
+            "avm-zns-de-08",
+            "avm-zns-de-11"
+          ],
+          "en": [
+            "avm-zns-en-01",
+            "avm-zns-en-06",
+            "avm-zns-en-08",
+            "avm-zns-en-11"
+          ],
+          "fa": [
+            "avm-zns-fa-01",
+            "avm-zns-fa-06",
+            "avm-zns-fa-08",
+            "avm-zns-fa-11"
+          ]
+        },
+        "cards": [
+          "avm-zns-01-definition",
+          "avm-zns-02-nidus",
+          "avm-zns-08-flow-voids",
+          "avm-zns-09-dsa",
+          "avm-zns-12-davf-unterschied",
+          "avm-zns-13-kavernom-unterschied"
+        ]
+      },
+      {
+        "id": "AVM19-G2",
+        "observable": "Interpret focal presentation and choose acute haemorrhage imaging versus blood-sensitive MRI",
+        "questions": {
+          "de": [
+            "avm-zns-de-02",
+            "avm-zns-de-03",
+            "avm-zns-de-07"
+          ],
+          "en": [
+            "avm-zns-en-02",
+            "avm-zns-en-03",
+            "avm-zns-en-07"
+          ],
+          "fa": [
+            "avm-zns-fa-02",
+            "avm-zns-fa-03",
+            "avm-zns-fa-07"
+          ]
+        },
+        "cards": [
+          "avm-zns-03-epidemio",
+          "avm-zns-15-swi"
+        ]
+      },
+      {
+        "id": "AVM19-G3",
+        "observable": "Calculate Spetzler–Martin from maximum diameter, eloquence and any deep component including mixed drainage",
+        "questions": {
+          "de": [
+            "avm-zns-de-04",
+            "avm-zns-de-05",
+            "avm-zns-de-09"
+          ],
+          "en": [
+            "avm-zns-en-04",
+            "avm-zns-en-05",
+            "avm-zns-en-09"
+          ],
+          "fa": [
+            "avm-zns-fa-04",
+            "avm-zns-fa-05",
+            "avm-zns-fa-09"
+          ]
+        },
+        "cards": [
+          "avm-zns-05-spetzler-kriterien",
+          "avm-zns-06-spetzler-therapie",
+          "avm-zns-07-eloquenz"
+        ]
+      },
+      {
+        "id": "AVM19-G4",
+        "observable": "Separate operative grade from untreated haemorrhage predictors",
+        "questions": {
+          "de": [
+            "avm-zns-de-12"
+          ],
+          "en": [
+            "avm-zns-en-12"
+          ],
+          "fa": [
+            "avm-zns-fa-12"
+          ]
+        },
+        "cards": [
+          "avm-zns-04-blutungsrisiko",
+          "avm-zns-06-spetzler-therapie"
+        ]
+      },
+      {
+        "id": "AVM19-G5",
+        "observable": "Distinguish delayed SRS action, embolization, resection and observation without automatic therapy rules",
+        "questions": {
+          "de": [
+            "avm-zns-de-10"
+          ],
+          "en": [
+            "avm-zns-en-10"
+          ],
+          "fa": [
+            "avm-zns-fa-10"
+          ]
+        },
+        "cards": [
+          "avm-zns-10-therapie-wahl",
+          "avm-zns-11-gamma-knife",
+          "avm-zns-14-embolisation"
+        ]
+      }
+    ],
+    "teachingDeltaEntries": 58,
+    "questionDeltaEntries": 285,
+    "cardDeltaEntries": 95,
+    "manualScope": "All final stems, alternatives, correct explanations, wrong feedback and15 card fields read acrossDE/EN/FA. Changed prior values and affected actual teaching read. Every paired ledger path reconciled against actual before/after runtime exports."
+  },
+  "tests": [
+    {
+      "name": "Full actual global pool and delta audit",
+      "result": "PASS",
+      "evidence": "Independent recursive comparison exactly58/285/95 deltas; original IDs/keys/card IDs/topic/case preserved. GlobalQUESTION_BANK/getCardsByTopic exact; all source fields and3 wrong rationales present per question."
+    },
+    {
+      "name": "Existing focused test",
+      "result": "PASS",
+      "command": "node scripts/test-gehirn-avm-p37-p38.mjs",
+      "limit": "Structural counts, translations and source-limited case checks; not scientific or browser approval. Existing module-type warning only."
+    },
+    {
+      "name": "Actual source-footer and inline SSR",
+      "result": "PASS",
+      "evidence": "DE/EN/FA all10 reference entries,9 links and3 inline questions survive actual migration/shell. Previous aside fails the same reference assertions. In-memory transformSync only; no application build or output files."
+    }
+  ],
+  "mediaLedger": [
+    {
+      "file": "public/avm/flow-path.svg",
+      "purpose": "Explain components and flow direction",
+      "seen": "Source inspected. Localized adjacent legend covers the diagram; no embedded English teaching labels.",
+      "status": "NOT_APPLICABLE",
+      "scope": "Unchanged retained diagram; no new media approval."
+    },
+    {
+      "file": "public/avm/case-74111/t1-nativ.jpeg; t2.jpeg; mra.jpeg",
+      "source": "GehirnPDF37 triptych / Radiopaedia rID74111",
+      "seen": "All3 actual files viewed. Serpiginous vascular structures visible onT1/T2;MRA mainly basal arteries. Source-limited wording avoids inferring a complete grade.",
+      "status": "BLOCKED",
+      "blocker": "Original complete study, contributor, rights and exact frame correspondence not freshly verified."
+    },
+    {
+      "file": "/educational/lesson-design/gehirn--vaskulaer--avm-zns.webp",
+      "purpose": "Actual hero selected by pathname registry",
+      "status": "BLOCKED",
+      "blocker": "Unchanged asset outside bounded clinical content review; provenance and browser fit not accepted."
+    }
+  ],
+  "browserEvidence": {
+    "status": "BLOCKED",
+    "current": "No browser, server or application build run by reviewer.",
+    "SSR": "Actual shell extraction only; not viewport/layout, focus, click feedback, lightbox or RTL geometry."
+  },
+  "releaseBoundary": "BoundedPASS after footer repair does not establish Dr.Zia approval, complete curriculum status, publication, wholePDF coverage or live website content."
+}

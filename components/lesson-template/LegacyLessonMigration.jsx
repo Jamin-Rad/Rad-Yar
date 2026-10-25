@@ -137,7 +137,9 @@ export default function LegacyLessonMigration({children, lessonRoute, lessonId, 
   const locale=href=>`${href}${href.includes('?')?'&':'?'}lang=${lang}`
   const globalRead=first(readControls,node=>node.props.migrationReadControl||Object.hasOwn(node.props,'data-migration-read-control')||node.props.isRead!==undefined)
   const serverRead=Boolean(globalRead?.props.isRead||lessonRead)
-  const sections=[...content.map(({id,label,icon})=>({id,label,icon})),{id:summaryId,label:c.takeHome,icon:'summary',emphasis:true}]
+  // Headings can contain styled React fragments; navigation needs a text label
+  // because the shared shell also uses it in the accessible button name.
+  const sections=[...content.map(({id,label,icon})=>({id,label:text(label),icon})),{id:summaryId,label:c.takeHome,icon:'summary',emphasis:true}]
   return <StandardLessonShell lessonRead={serverRead} lessonId={lessonId||lessonRoute} heroLessonId={lessonRoute} lang={lang} title={title} author="Dr. Zia" heroImageAlt={text(title)} syncHashNavigation
     breadcrumbs={[{label:'RadYar',href:locale('/')},{label:regionLabel,href:locale(`/lernen/${regionCourse}`)},{label:text(title)}]}
     sections={sections} labels={c} renderIcon={name=><Icon name={name}/>} actions={{mcq:quiz?{href:quiz.props.href,label:text(quiz.props.children)||c.quiz}:null,flashcards:cards?{href:cards.props.href,label:text(cards.props.children)||c.cards}:null}}

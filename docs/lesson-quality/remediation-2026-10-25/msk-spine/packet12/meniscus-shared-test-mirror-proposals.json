@@ -1,0 +1,95 @@
+{
+  "status": "PROPOSAL_ONLY_ROOT_INTEGRATES",
+  "replacements": [
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "Dünnschichtiges Knieprotokoll mit flüssigkeitssensitiven Sequenzen; Schnittdicke üblicherweise 3 mm.",
+      "after": "Knieprotokoll in drei orthogonalen Ebenen mit T1- und flüssigkeitssensitiven Bildern. Schichten ≤3 mm sind bevorzugt; 4 mm sind nach ESSR akzeptabel."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "Thin-slice knee protocol with fluid-sensitive sequences; usual slice thickness: 3 mm.",
+      "after": "Knee protocol in three orthogonal planes with T1-weighted and fluid-sensitive images. Sections ≤3 mm are preferred; ESSR accepts 4 mm."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "پروتکل زانو با برش‌های نازک و سکانس‌های حساس به مایع؛ ضخامت معمول برش: ۳ میلی‌متر.",
+      "after": "پروتکل زانو در سه صفحهٔ عمود بر هم با تصاویر T1 و حساس به مایع. برش ≤۳ میلی‌متر ترجیح دارد؛ ESSR ضخامت ۴ میلی‌متر را قابل قبول می‌داند."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "Anatomische Übersicht und Beurteilung chronischer Fibrose.",
+      "after": "Anatomische Übersicht sowie Beurteilung von Knochenmark und Frakturlinien."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "Anatomical overview and assessment of chronic fibrosis.",
+      "after": "Anatomical overview and assessment of bone marrow and fracture lines."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "نمای کلی آناتومیک و ارزیابی فیبروز مزمن.",
+      "after": "نمای کلی آناتومیک و ارزیابی مغز استخوان و خطوط شکستگی."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "Der gesunde Meniskus stellt sich homogen hypointens dar. In der sagittalen Ansicht besitzt er eine typische dreieckige Struktur.",
+      "after": "Normaler Meniskus ist überwiegend signalarm. Die Hörner erscheinen sagittal dreieckig, der Corpus auf peripheren Schichten als Bow-tie; die Gesamtform wird in mehreren Ebenen geprüft."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "A healthy meniscus is homogeneously hypointense. On sagittal images it has a typical triangular configuration.",
+      "after": "Normal meniscus is predominantly low signal. The horns appear triangular sagittally and the body forms a bowtie on peripheral slices; assess overall shape in multiple planes."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "منیسک سالم به صورت هموژن هیپواینتنس دیده می‌شود. در نمای ساژیتال شکل مثلثی تیپیک دارد.",
+      "after": "منیسک طبیعی عمدتاً کم‌سیگنال است. شاخ‌ها در ساژیتال مثلثی و تنه در برش‌های محیطی شبیه bow-tie دیده می‌شود؛ شکل کلی در چند صفحه بررسی شود."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "Ein reiner intrameniskaler Signalanstieg reicht nicht aus, um einen Meniskusriss sicher zu diagnostizieren.",
+      "after": "Intrameniskales Signal allein beweist keinen Riss. Oberflächenkontakt und eindeutiger morphologischer Defekt sind ergänzende Kriterien; nicht alle Zeichen müssen gleichzeitig vorliegen."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "Intrameniscal signal increase alone is not sufficient to confidently diagnose a meniscal tear.",
+      "after": "Intrasubstance signal alone does not prove a tear. Surface contact and a definite morphological defect are complementary criteria; not all signs need to coexist."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "افزایش سیگنال داخل منیسک به تنهایی برای تشخیص قطعی پارگی کافی نیست.",
+      "after": "سیگنال داخل منیسک به‌تنهایی پارگی را ثابت نمی‌کند. تماس سطحی و نقص شکلی واضح معیارهای مکمل‌اند؛ لازم نیست همهٔ علائم هم‌زمان وجود داشته باشند."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "Die Läsion ist auf mindestens zwei aufeinanderfolgenden Schichten mit Oberflächenkontakt erkennbar.",
+      "after": "Oberflächenkontakt auf mindestens zwei Bildern erhöht die Sicherheit. Einzelbildkontakt ohne bestätigenden Formdefekt bleibt inkonklusiv; ein klarer Defekt benötigt nicht zwingend zwei Kontaktbilder."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "The lesion is visible with surface contact on at least two consecutive slices.",
+      "after": "Surface contact on at least two images increases confidence. Single-image contact without a supporting morphological defect remains inconclusive; a clear defect does not necessarily require two contact images."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "ضایعه باید حداقل در دو برش متوالی با تماس سطحی دیده شود.",
+      "after": "تماس سطحی در حداقل دو تصویر اطمینان را بالا می‌برد. تماس تک‌تصویری بدون نقص شکلی مؤید نامطمئن می‌ماند؛ نقص واضح الزاماً به دو تصویر دارای تماس نیاز ندارد."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "Die normale dreieckige Meniskuskonfiguration ist verloren oder deutlich verändert.",
+      "after": "Ein eindeutiger Defekt, fehlendes Gewebe oder ein direkt verfolgbares disloziertes Fragment unterstützt einen Riss. Varianten und Voroperationen berücksichtigen."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "The normal triangular configuration is lost or clearly altered.",
+      "after": "A definite defect, missing tissue or a directly traceable displaced fragment supports a tear. Consider variants and prior surgery."
+    },
+    {
+      "file": "app/andarun/test/MeniscusTextLesson.jsx",
+      "currentBefore": "شکل مثلثی طبیعی منیسک از بین رفته یا واضحاً تغییر کرده است.",
+      "after": "نقص واضح، فقدان بافت یا قطعهٔ جابه‌جاشدهٔ قابل پیگیری از پارگی حمایت می‌کند. واریانت‌ها و جراحی قبلی لحاظ شوند."
+    }
+  ]
+}

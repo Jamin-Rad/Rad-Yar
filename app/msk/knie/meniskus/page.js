@@ -65,714 +65,1569 @@ const TEAR_CASES = [
 ]
 
 const CONTENT = {
-  de: {
-    toc: 'Lernpfad',
-    breadcrumbMsk: 'Muskuloskelettales',
-    breadcrumbCurrent: 'Knie · Meniskus',
-    title: 'Meniskus',
-    subtitle: 'Grundlagen, Anatomie, MRT-Diagnostik und sichere Risskriterien',
-    sourceLabel: 'Dr. Zia',
-    keyLabel: 'Merke',
-    caveLabel: 'CAVE',
-    mcqTitle: 'MCQs zum Meniskus',
-    mcqDesc: 'Passende Prüfungsfragen zu Anatomie, MRT-Grading und Rissdiagnostik.',
-    mcqCta: 'MCQs starten',
-    actionMcq: 'MCQ',
-    actionFall: 'Fallbeispiele',
-    actionFallStatus: '2 Fälle',
-    actionFlash: 'Flashcards',
-    openCase: 'Bild direkt in Radiopaedia öffnen',
-    zoomImage: 'Bild vergrößern',
-    aiImageNotice: 'KI-generierte Orientierungsgrafik. Einzelne Details können ungenau sein; nicht als diagnostische Quelle verwenden.',
-    closePreview: 'Vorschau schließen',
-    sections: [
-      { id: 'anatomie', label: 'Anatomie und Vaskularisation', icon: '🦴' },
-      { id: 'mrt', label: 'MRT-Diagnostik und Risskriterien', icon: '🩻' },
-      { id: 'grading', label: 'Lotysch-Klassifikation', icon: '📊' },
-      { id: 'risstypen', label: 'Risstypen', icon: '🧩' },
-      { id: 'discoider', label: 'Discoider Meniskus', icon: '🔵' },
-      { id: 'therapie', label: 'Therapieprinzip', icon: '🧵' },
-      { id: 'lernvideo', label: 'Lernvideo', icon: '▶️' },
-    ],
-    heroCards: [
-      { value: '2 Schichten', label: 'Two-slice-touch-Regel', text: 'Oberflächenkontakt muss auf mindestens zwei aufeinanderfolgenden Schichten sichtbar sein.' },
-      { value: 'Nur Grad 3', label: 'sicherer Meniskusriss', text: 'Erst ein Signal mit eindeutigem Kontakt zur Gelenkfläche erfüllt die Kriterien eines echten Risses.' },
-      { value: 'Erhalt', label: 'Save the Meniscus', text: 'Wenn möglich reparieren und Meniskusgewebe bewahren statt resezieren.' },
-    ],
-    basics: {
-      title: 'Kniegelenk · Meniskus · Grundlagen',
-      lead: 'Die Menisken sind fibrocartilaginäre Strukturen zwischen Femurkondylen und Tibiaplateau. Es gibt zwei Menisken: den Innenmeniskus und den Außenmeniskus. Beide verbessern die Gelenkkongruenz, verteilen die Last und wirken als Stoßdämpfer. Für die MRT-Befundung sind Form, Fixierung, Durchblutung und Oberflächenkontakt des Signals entscheidend.',
-      bullets: [
-        'Innenmeniskus: C-förmig, kapsel- und MCL-fixiert, deutlich weniger mobil.',
-        'Außenmeniskus: eher O-förmig, nicht an das laterale Kollateralband fixiert, beweglicher.',
-        'Die tibiale Verankerung erfolgt über Meniskuswurzeln am Vorder- und Hinterhorn.',
-      ],
-    },
-    anatomy: {
-      title: 'Anatomie und Vaskularisation',
-      lead: 'Die Menisken sind faserknorpelige Strukturen zwischen den Femurkondylen und dem Tibiaplateau. Es gibt zwei Menisken: den Innenmeniskus und den Außenmeniskus. Sie verbessern die Gelenkkongruenz, verteilen die Last und wirken als Stoßdämpfer.',
-      tableHeaders: ['Merkmal', 'Innenmeniskus', 'Außenmeniskus'],
-      tableRows: [
-        ['Form', 'C-förmig', 'eher O-förmig'],
-        ['Fixierung', 'fest mit Gelenkkapsel und medialem Seitenband verwachsen', 'nicht mit den lateralen Bändern fixiert'],
-        ['Mobilität', 'wenig beweglich', 'mobiler'],
-      ],
-      rootsTitle: 'Anschlüsse und Meniskuswurzeln',
-      rootsText: 'Die Anschlüsse sollten getrennt betrachtet werden: femoral als Gleitkontakt zu den Femurkondylen und tibial als feste Verankerung über die Meniskuswurzeln.',
-      rootsItems: [
-        { title: 'Femoro-meniskaler Kontakt', text: 'Die Menisken artikulieren mit den Femurkondylen; ihre proximale Oberfläche ist konvex.' },
-        { title: 'Tibiale Verankerung', text: 'Die feste Verankerung am Tibiaplateau erfolgt über die Meniskuswurzeln am Vorder- und Hinterhorn jedes Meniskus.' },
-      ],
-      imageAlt: 'Schema beider Menisken auf dem Tibiaplateau mit vorderen und hinteren Wurzelansätzen; medial C-förmig, lateral O-förmig.',
-      imageCaption: 'Wurzelansätze am Vorder- und Hinterhorn beider Menisken. Schema aus MSK.pdf, PDF-S. 44 (Druck-S. 43).',
-      key: 'Die stärkere Fixierung erklärt die geringere Beweglichkeit des Innenmeniskus. Sie kann das Verletzungsmuster mitbeeinflussen, bestimmt es aber nicht allein.',
-    },
-    vascular: {
-      title: 'Vaskularisation und Heilungspotenzial',
-      lead: 'Die Durchblutung nimmt von der peripheren zur inneren Meniskuszone ab. Die Einteilung in Rot-Rot, Rot-Weiß und Weiß-Weiß ist ein klinisches Orientierungsmodell; Gefäßversorgung und Heilungspotenzial lassen sich nicht durch eine feste Distanz oder Zone allein bestimmen.',
-      zones: [
-        { name: 'Rote Zone · periphere Zone', range: 'äußeres Drittel', status: 'vaskularisiert', therapy: 'günstigeres, aber nicht garantiertes Heilungspotenzial' },
-        { name: 'Rot-weiße Zone · mittlere Zone', range: 'mittleres Drittel', status: 'variable Durchblutung', therapy: 'Potenzial variabel' },
-        { name: 'Weiße Zone · innere Zone', range: 'inneres Drittel am freien Rand', status: 'im Regelfall avaskulär', therapy: 'geringeres, nicht gleich null gesetztes Heilungspotenzial' },
-      ],
-      tableHeaders: ['Zone', 'Lage', 'Durchblutung'],
-      tableRows: [
-        ['Rote Zone', 'äußeres Drittel', 'vaskularisiert'],
-        ['Rot-weiße Zone', 'mittleres Drittel', 'variabel'],
-        ['Weiße Zone', 'inneres Drittel', 'im Regelfall avaskulär'],
-      ],
-      imageAlt: 'Schema der medialen und lateralen Menisken mit äußerer vaskularisierter, mittlerer variabel vaskularisierter und innerer meist avaskulärer Zone.',
-      imageCaption: 'Schematische Gefäßzonen, keine patientenbezogene Bildgebung. MSK.pdf, PDF-S. 45 (Druck-S. 44); Grenzen sind nicht als feste Distanzen zu verstehen.',
-      key: 'Die Zone beschreibt ein grobes Gefäßmuster. Reparabilität und Heilung hängen auch von Rissform, Gewebe, Alter und klinischem Kontext ab; eine feste Distanz entscheidet sie nicht allein.',
-    },
-    mri: {
-      title: 'MRT-Diagnostik und sichere Risskriterien',
-      lead: 'Ein Knie-MRT wird in drei orthogonalen Ebenen beurteilt. Das Basisprotokoll enthält T1-gewichtete und flüssigkeitssensitive Bilder; die konkrete Sequenzwahl hängt vom lokalen Protokoll ab.',
-      protocol: [
-        { name: 'T1-gewichtet', text: 'Teil des Basisprotokolls; ergänzt die Beurteilung von Knochenmark und Anatomie.' },
-        { name: 'Flüssigkeitssensitiv', text: 'Zeigt unter anderem Knochenmarködem und weitere flüssigkeitsreiche Veränderungen. PD-gewichtete Sequenzen sind eine verbreitete Protokolloption.' },
-      ],
-      normalTitle: 'Normalbefund',
-      normalText: 'Der gesunde Meniskus stellt sich homogen hypointens dar. In der sagittalen Ansicht besitzt er eine typische dreieckige Struktur.',
-    },
-    grading: {
-      title: 'Lotysch-Klassifikation',
-      lead: 'Die Klassifikation nach Lotysch hilft, degenerative intrameniskale Signalveränderungen von einem echten Meniskusriss zu unterscheiden.',
-      sourceCrossReference: 'MSK.pdf, PDF-S. 46 (Druck-S. 45), bezeichnet komplexe, mehrdimensionale, mazerierte oder dislozierte Morphologie als „Stoller Grad IV“. Das ist eine separate, quellenspezifische Morphologiebezeichnung und keine Erweiterung des hier gezeigten Lotysch-Signalgradings 0–III; dort beschreibt Grad III den Kontakt des Signals zur Gelenkoberfläche. Eine 1:1-Zuordnung zum separat gezeigten Jerosch-Erweiterungsgrad IV wird nicht behauptet.',
-      lotyschTitle: 'Einfaches Modell: Grad 0 bis III',
-      simpleHeaders: ['Grad', 'MRT-Signal', 'Histologie', 'Klinisch'],
-      simpleRows: [
-        ['0', 'Homogen hypointens', 'Normales Faserknorpelgewebe', 'Kein Befund'],
-        ['I', 'Fokales Signal, kein Oberflächenkontakt', 'Myxoide Degeneration, fokal', 'Inzidentell, kein Riss'],
-        ['II', 'Linienförmiges Signal, kein Oberflächenkontakt', 'Myxoide Degeneration, diffus', 'Kein Riss, Vorläuferläsion'],
-        ['III', 'Signal erreicht Gelenkoberfläche', 'Riss vorhanden', '✅ Echter Meniskusriss'],
-      ],
-      extendedTitle: 'Lotysch-Klassifikation',
-      tableHeaders: ['Grad', 'Morphologie', 'Oberflächenkontakt', 'Klinische Bedeutung'],
-      tableRows: [
-        ['1', 'punktförmige oder kleine fokale Signalsteigerung', 'kein Kontakt', 'frühe mukoide Degeneration, meist asymptomatisch'],
-        ['2a', 'lineare Signalsteigerung', 'kein Kontakt', 'kein sicherer Rissnachweis'],
-        ['2b', 'lineare Signalsteigerung', 'Kontakt auf einem einzelnen Bild', 'inkonklusiv für echten Riss'],
-        ['2c', 'keilförmige oder globuläre Signalsteigerung', 'kein eindeutiger Kontakt', 'hohes Risiko für okkulten Riss'],
-        ['3', 'Pathologische Signalsteigerung', 'Kontakt auf mindestens zwei aufeinanderfolgenden Schichten', 'radiologisch gesicherter Meniskusriss'],
-      ],
-      key: 'Nur Grad III ist ein echter Riss.',
-    },
-    tear: {
-      title: 'MRT-Kriterien für einen Meniskusriss',
-      lead: 'Für die Diagnose „Meniskusriss“ müssen verbindliche Kriterien erfüllt sein. Dadurch lassen sich Sensitivität und Spezifität deutlich verbessern.',
-      cave: 'Ein reiner intrameniskaler Signalanstieg reicht nicht aus, um einen Meniskusriss sicher zu diagnostizieren.',
-      criteria: [
-        { title: 'Kontakt zum Gelenkflächenrand', text: 'Das pathologisch erhöhte Signal erreicht die superiore oder inferiore Meniskusoberfläche.' },
-        { title: 'Deformität', text: 'Die normale dreieckige Meniskuskonfiguration ist verloren oder deutlich verändert.' },
-        { title: 'Two-slice-touch-Regel', text: 'Die Läsion ist auf mindestens zwei aufeinanderfolgenden Schichten mit Oberflächenkontakt erkennbar.' },
-      ],
-    },
-    tearTypes: {
-      title: 'Risstypen',
-      lead: 'Rissgeometrie und Lokalisation bestimmen die OP-Strategie und sind prüfungsrelevant.',
-      caseIntro: 'Fünf echte MRT-Sequenzen: Mit Mausrad, Pfeiltasten oder Regler durch die Schichten blättern; auf dem Handy seitlich wischen.',
-      caseOpen: 'Originalfall auf Radiopaedia ↗',
-      caseItems: {
-        longitudinal: { title: 'Längsriss', sign: 'Vertikale, zur Meniskusperipherie parallele Risslinie.' },
-        radial: { title: 'Radiärriss', sign: 'Kompletter radiärer Riss der medialen Hinterwurzel, axial dargestellt.' },
-        horizontal: { title: 'Horizontalriss', sign: 'Horizontalriss an Corpus und Hinterhorn des Innenmeniskus; begleitende ACL-Läsion.' },
-        bucket: { title: 'Korbhenkelriss', sign: 'Disloziertes Fragment mit Doppel-PCL- und fehlendem Bow-tie-Zeichen.' },
-        flap: { title: 'Lappenriss', sign: 'Nach inferior verlagerter Meniskuslappen im medialen Kompartiment.' },
+  "de": {
+    "toc": "Lernpfad",
+    "breadcrumbMsk": "Muskuloskelettales",
+    "breadcrumbCurrent": "Knie · Meniskus",
+    "title": "Meniskus",
+    "subtitle": "Grundlagen, Anatomie, MRT-Diagnostik und sichere Risskriterien",
+    "sourceLabel": "Dr. Zia",
+    "keyLabel": "Merke",
+    "caveLabel": "CAVE",
+    "mcqTitle": "MCQs zum Meniskus",
+    "mcqDesc": "Passende Prüfungsfragen zu Anatomie, MRT-Grading und Rissdiagnostik.",
+    "mcqCta": "MCQs starten",
+    "actionMcq": "MCQ",
+    "actionFall": "Fallbeispiele",
+    "actionFallStatus": "2 Fälle",
+    "actionFlash": "Flashcards",
+    "openCase": "Bild direkt in Radiopaedia öffnen",
+    "zoomImage": "Bild vergrößern",
+    "aiImageNotice": "KI-generierte Orientierungsgrafik. Einzelne Details können ungenau sein; nicht als diagnostische Quelle verwenden.",
+    "closePreview": "Vorschau schließen",
+    "sections": [
+      {
+        "id": "anatomie",
+        "label": "Anatomie und Vaskularisation",
+        "icon": "🦴"
       },
-      tableHeaders: ['Risstyp', 'Geometrie', 'MRT-Zeichen', 'Therapie'],
-      tableRows: [
-        ['Längsriss', 'parallel zur Peripherie', 'Doppellinien-Zeichen sagittal', 'Naht in der roten oder rot-weißen Zone'],
-        ['Radiärriss', 'senkrecht zur Peripherie', 'Cleft-Zeichen, Phantom-Meniskus', 'Resektion oder Naht, je nach Lokalisation'],
-        ['Horizontalriss', 'parallel zum Tibiaplateau', 'Spaltbildung, ggf. parameniskale Zyste', 'Resektion ± Zystenexzision'],
-        ['Korbhenkelriss', 'dislozierter doppelter Längsriss', 'Doppeltes PCL-Zeichen; kein Bow-tie-Zeichen', 'Reposition und Naht, Notfall bei Blockade'],
-        ['Lappenriss', 'instabiler Lappen mit peripherer Anheftung', 'signalreicher, verlagerbarer Lappen', 'sparsame Resektion des Lappens'],
-      ],
-      caveTitle: 'CAVE – Korbhenkelriss',
-      caveText: 'Doppel-PCL- und fehlendes Bow-tie-Zeichen können auf einen Korbhenkelriss hinweisen. Das dislozierte Fragment direkt nachweisen. Bei mechanisch blockiertem Knie ist eine dringliche orthopädische Beurteilung erforderlich.',
-    },
-    cases: {
-      title: 'Fallbeispiele',
-      lead: 'Mit Mausrad oder Slider direkt durch die gezeigte MRT-Sequenz blättern.',
-      items: [
-        {
-          title: 'Globuläres Signal im Hinterhorn des lateralen Meniskus ohne sicheren Oberflächenkontakt bei discoidem Meniskus.',
-          label: 'Grad 2c',
-          tags: ['Discoider Meniskus'],
-          meta: 'PD-Wichtung · sagittal · mukoide Degeneration · hohes Risiko für okkulten Riss',
-          sequence: 'Sagittal · PD fat sat',
-          caseId: 'case-75168',
-          frameCount: 18,
-          frameExt: 'jpeg',
-          initialFrame: 8,
-          url: 'https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1',
-          credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
-        },
-        {
-          title: 'Lineares Signal im Hinterhorn des medialen Meniskus mit Oberflächenkontakt auf nur einer Schicht bei discoidem Meniskus.',
-          label: 'Grad 2b',
-          tags: ['Discoider Meniskus'],
-          meta: 'STIR · koronal · inkonklusiv · kein sicherer Grad-3-Riss',
-          sequence: 'Koronal · STIR',
-          caseId: 'case-14060-coronal-stir',
-          frameCount: 7,
-          frameExt: 'jpg',
-          initialFrame: 3,
-          url: 'https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1',
-          credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
-        },
-      ],
-      key: 'Fallbeispiele sind besonders hilfreich, weil nicht jede intrameniskale Signalsteigerung automatisch ein Meniskusriss ist.',
-    },
-    discoid: {
-      title: 'Discoider Meniskus',
-      lead: 'Der discoide Meniskus ist eine angeborene anatomische Variante mit übermäßig breitem, scheibenförmigem Meniskuskörper.\n\nEr betrifft fast ausschließlich den Außenmeniskus und reißt häufiger als ein normal geformter Meniskus.',
-      stats: [
-        { value: "4,5 %", label: "MRT-Befundhäufigkeit", text: "in einer retrospektiven Serie von 1.250 Knie-MRTs; keine jährliche Inzidenz" },
-        { value: '~50 %', label: 'bilateral', text: 'nicht selten beidseitig vorhanden' },
-        { value: 'fast ausschließlich', label: 'Außenmeniskus', qualitative: true },
-      ],
-      overviewHeaders: ['Parameter', 'Wert'],
-      overviewRows: [
-        ['Betroffener Meniskus', 'fast ausschließlich Außenmeniskus'],
-        ['Seitenverteilung', 'bilateral in etwa 50 % der Fälle'],
-        ['Geschlecht', 'keine klare Präferenz'],
-        ['Prävalenz', 'höher in asiatischen Populationen beschrieben'],
-        ['Rissrisiko', 'erhöht gegenüber normalem Meniskus'],
-      ],
-      childTitle: 'Klinisches Leitsymptom bei Kindern',
-      childText: 'Knieschnappen oder ein „Snapping Knee“ bei Kindern sollte an einen discoiden Außenmeniskus denken lassen.',
-      mriTitle: 'MRT-Kriterien',
-      mriHeaders: ['Ebene', 'Kriterium', 'Schwellenwert'],
-      mriRows: [
-        ['Koronal', 'absolute Meniskusbreite', '≥ 15 mm'],
-        ['Koronal', 'Meniskusbreite / maximale Tibiabreite', "≥ 20 %"],
-        ['Sagittal', 'kontinuierliche Corpus-Darstellung', '≥ 3 aufeinanderfolgende 5-mm-Schichten'],
-      ],
-      sagittalTitle: 'Sagittales Zeichen',
-      sagittalText: 'Das sagittale Kriterium entspricht dem Gegenteil des Absent-Bow-Tie-Signs: Ein normaler Meniskus zeigt den Corpus nur auf 1–2 Schichten, der discoide Meniskus auf mindestens 3 Schichten.',
-      treatmentHeaders: ['Situation', 'Vorgehen'],
-      treatmentRows: [
-        ['asymptomatischer Zufallsbefund', 'konservativ, keine Intervention nötig'],
-        ['symptomatisch ohne Riss', 'konservativ; bei Versagen arthroskopische Saucerisation'],
-        ['discoider Meniskus mit Riss', 'Meniskusrefixation plus ggf. partielle Resektion'],
-        ['irreparabel / schwere Destruktion', 'Teil- oder Totalmeniskektomie nur als letzte Option'],
-      ],
-      key: 'Aktuelles Hauptkriterium: Corpusbreite ≥ 15 mm auf einer mittleren koronalen Schicht. Das klassische Drei-Schichten-Zeichen ist bei dünneren MRT-Schichten kein eigenständiges Diagnosekriterium.',
-      cave: 'Das klassische Drei-Schichten-Zeichen ist bei dünneren MRT-Schichten kein eigenständiges Diagnosekriterium.',
-    },
-    therapy: {
-      title: 'Therapieprinzip: Save the Meniscus',
-      titlePrefix: 'Therapieprinzip',
-      saveText: 'Save the Meniscus',
-      lead: 'Die Therapie richtet sich nach Symptomatik, Rissmorphologie, Lokalisation und Vaskularisation. Ziel ist der möglichst weitgehende Erhalt von Meniskusgewebe.',
-      tableHeaders: ['Situation', 'Prinzip'],
-      tableRows: [
-        ['asymptomatische oder rein degenerative Läsion', 'konservative Therapie'],
-        ['frischer Riss in der roten Zone', 'Meniskusnaht'],
-        ['irreparables, mechanisch relevantes Fragment', 'sparsame Teilresektion'],
-      ],
-      key: 'So viel Meniskus wie möglich erhalten, so wenig wie nötig resezieren.',
-    },
-    video: {
-      title: 'Lernvideo',
-      text: 'Das Lernvideo zum Thema Meniskus ist jetzt auf YouTube verfügbar.',
-      cta: 'Video auf YouTube ansehen',
-      url: 'https://youtu.be/L03fPcRZm_o?si=RzNDyM-Fmtig8I10',
-    },
-  },
-  en: {
-    toc: 'Learning path',
-    breadcrumbMsk: 'Musculoskeletal',
-    breadcrumbCurrent: 'Knee · Meniscus',
-    title: 'Meniscus',
-    subtitle: 'Basics, anatomy, MRI diagnosis and reliable tear criteria',
-    sourceLabel: 'Dr. Zia',
-    keyLabel: 'Key point',
-    caveLabel: 'Caution',
-    mcqTitle: 'Meniscus MCQs',
-    mcqDesc: 'Exam questions on anatomy, MRI grading and tear diagnosis.',
-    mcqCta: 'Start MCQs',
-    actionMcq: 'MCQ',
-    actionFall: 'Case studies',
-    actionFallStatus: '2 cases',
-    actionFlash: 'Flashcards',
-    openCase: 'Open image directly in Radiopaedia',
-    zoomImage: 'Enlarge image',
-    aiImageNotice: 'AI-generated orientation graphic. Some details may be inaccurate; do not use it as a diagnostic source.',
-    closePreview: 'Close preview',
-    sections: [
-      { id: 'anatomie', label: 'Anatomy and vascular supply', icon: '🦴' },
-      { id: 'mrt', label: 'MRI diagnosis and tear criteria', icon: '🩻' },
-      { id: 'grading', label: 'Lotysch classification', icon: '📊' },
-      { id: 'risstypen', label: 'Tear types', icon: '🧩' },
-      { id: 'discoider', label: 'Discoid meniscus', icon: '🔵' },
-      { id: 'therapie', label: 'Treatment principle', icon: '🧵' },
-      { id: 'lernvideo', label: 'Learning video', icon: '▶️' },
-    ],
-    heroCards: [
-      { value: '2 slices', label: 'Two-slice-touch rule', text: 'Surface contact should be visible on at least two consecutive slices.' },
-      { value: 'Only grade 3', label: 'definite meniscal tear', text: 'Only signal with definite articular-surface contact meets the criteria for a true tear.' },
-      { value: 'Preserve', label: 'Save the Meniscus', text: 'Repair and preserve meniscal tissue whenever possible instead of resection.' },
-    ],
-    basics: {
-      title: 'Knee joint · Meniscus · Basics',
-      lead: 'The menisci are fibrocartilaginous structures between the femoral condyles and the tibial plateau. There are two menisci: the medial and the lateral meniscus. Both improve joint congruity, distribute load and act as shock absorbers. For MRI reporting, shape, fixation, vascularity and surface contact of signal are central.',
-      bullets: [
-        'Medial meniscus: C-shaped, fixed to the capsule and MCL, therefore much less mobile.',
-        'Lateral meniscus: more O-shaped, not attached to the lateral collateral ligament, therefore more mobile.',
-        'Tibial anchoring is provided by the meniscal roots at the anterior and posterior horns.',
-      ],
-    },
-    anatomy: {
-      title: 'Anatomy and vascular supply',
-      lead: 'The menisci are fibrocartilaginous structures between the femoral condyles and the tibial plateau. There are two menisci: the medial meniscus and the lateral meniscus. They improve joint congruity, distribute load and act as shock absorbers.',
-      tableHeaders: ['Feature', 'Medial meniscus', 'Lateral meniscus'],
-      tableRows: [
-        ['Shape', 'C-shaped', 'more O-shaped'],
-        ['Fixation', 'firmly attached to capsule and medial collateral ligament', 'not fixed to the lateral ligaments'],
-        ['Mobility', 'less mobile', 'more mobile'],
-      ],
-      rootsTitle: 'Attachments and meniscal roots',
-      rootsText: 'The attachments should be considered separately: femoral gliding contact with the condyles and tibial anchoring through the meniscal roots.',
-      rootsItems: [
-        { title: 'Femoro-meniscal contact', text: 'The menisci articulate with the femoral condyles; their proximal surface is convex.' },
-        { title: 'Tibial anchoring', text: 'Firm anchoring to the tibial plateau is provided by the meniscal roots at the anterior and posterior horn of each meniscus.' },
-      ],
-      imageAlt: 'Schematic of both menisci on the tibial plateau with anterior and posterior root attachments; C-shaped medially and O-shaped laterally.',
-      imageCaption: 'Anterior and posterior root attachments of both menisci. Schematic from MSK.pdf, physical p.44 (printed p.43).',
-      key: 'The medial meniscus is more firmly attached and therefore less mobile. This can contribute to injury patterns, but does not determine them on its own.',
-    },
-    vascular: {
-      title: 'Vascular supply and healing potential',
-      lead: 'Vascularity decreases from the peripheral to the inner meniscal zone. The red-red, red-white and white-white scheme is a clinical orientation model; vascularity and healing potential cannot be determined by a fixed distance or zone alone.',
-      zones: [
-        { name: 'Red zone · peripheral zone', range: 'outer third', status: 'vascularized', therapy: 'more favorable, but not guaranteed, healing potential' },
-        { name: 'Red-white zone · middle zone', range: 'middle third', status: 'variable vascularity', therapy: 'variable potential' },
-        { name: 'White zone · inner zone', range: 'inner third near the free edge', status: 'generally avascular', therapy: 'lower, not necessarily absent, healing potential' },
-      ],
-      tableHeaders: ['Zone', 'Location', 'Vascularity'],
-      tableRows: [
-        ['Red zone', 'outer third', 'vascularized'],
-        ['Red-white zone', 'middle third', 'variable'],
-        ['White zone', 'inner third', 'generally avascular'],
-      ],
-      imageAlt: 'Schematic of the medial and lateral menisci with an outer vascularized zone, a middle zone with variable vascularity, and an inner usually avascular zone.',
-      imageCaption: 'Schematic vascular zones, not patient imaging. MSK.pdf, physical p.45 (printed p.44); boundaries should not be read as fixed distances.',
-      key: 'The zone is a broad vascularity pattern. Repairability and healing also depend on tear pattern, tissue, age and clinical context; a fixed distance alone does not determine them.',
-    },
-    mri: {
-      title: 'MRI diagnosis and reliable tear criteria',
-      lead: 'Knee MRI is assessed in three orthogonal planes. The basic protocol includes T1-weighted and fluid-sensitive images; exact sequence selection depends on the local protocol.',
-      protocol: [
-        { name: 'T1-weighted', text: 'Part of the basic protocol; complements assessment of bone marrow and anatomy.' },
-        { name: 'Fluid-sensitive', text: 'Shows bone marrow edema and other fluid-rich changes. PD-weighted sequences are a common protocol option.' },
-      ],
-      normalTitle: 'Normal appearance',
-      normalText: 'A healthy meniscus is homogeneously hypointense. On sagittal images it has a typical triangular configuration.',
-    },
-    grading: {
-      title: 'Lotysch classification',
-      lead: 'The Lotysch classification helps distinguish degenerative intrameniscal signal changes from a true meniscal tear.',
-      sourceCrossReference: 'MSK.pdf, physical p.46 (printed p.45), labels complex, multi-plane, macerated or displaced morphology “Stoller grade IV”. This is a separate, source-specific morphology label, not an extension of the Lotysch signal grading shown here (grades 0–III); grade III in that system describes signal reaching an articular surface. No one-to-one mapping to the separately shown Jerosch extension grade IV is claimed.',
-      lotyschTitle: 'Simple model: grades 0 to III',
-      simpleHeaders: ['Grade', 'MRI signal', 'Histology', 'Clinical meaning'],
-      simpleRows: [
-        ['0', 'Homogeneously hypointense', 'Normal fibrocartilage', 'No abnormality'],
-        ['I', 'Focal signal, no surface contact', 'Focal myxoid degeneration', 'Incidental, no tear'],
-        ['II', 'Linear signal, no surface contact', 'Diffuse myxoid degeneration', 'No tear, precursor lesion'],
-        ['III', 'Signal reaches the articular surface', 'Tear present', '✅ True meniscal tear'],
-      ],
-      extendedTitle: 'Lotysch classification',
-      tableHeaders: ['Grade', 'Morphology', 'Surface contact', 'Clinical significance'],
-      tableRows: [
-        ['1', 'punctate or small focal signal increase', 'no contact', 'early mucoid degeneration, usually asymptomatic'],
-        ['2a', 'linear signal increase', 'no contact', 'no definite tear demonstrated'],
-        ['2b', 'linear signal increase', 'contact on a single image', 'inconclusive for a true tear'],
-        ['2c', 'wedge-shaped or globular signal increase', 'no definite contact', 'high risk of an occult tear'],
-        ['3', 'signal increase', 'contact on at least two consecutive slices', 'radiologically proven meniscal tear'],
-      ],
-      key: 'Only grade III is a true tear.',
-    },
-    tear: {
-      title: 'MRI criteria for a meniscal tear',
-      lead: 'Specific criteria must be fulfilled before diagnosing a meniscal tear. This improves sensitivity and specificity.',
-      cave: 'Intrameniscal signal increase alone is not sufficient to confidently diagnose a meniscal tear.',
-      criteria: [
-        { title: 'Contact with the articular surface', text: 'The abnormal high signal reaches the superior or inferior meniscal surface.' },
-        { title: 'Deformity', text: 'The normal triangular configuration is lost or clearly altered.' },
-        { title: 'Two-slice-touch rule', text: 'The lesion is visible with surface contact on at least two consecutive slices.' },
-      ],
-    },
-    tearTypes: {
-      title: 'Tear types',
-      lead: 'Tear geometry and location determine surgical strategy and are highly relevant for exams.',
-      caseIntro: 'Five real MRI sequences: use the mouse wheel, arrow keys or slider to browse slices; swipe sideways on mobile.',
-      caseOpen: 'Original case on Radiopaedia ↗',
-      caseItems: {
-        longitudinal: { title: 'Longitudinal tear', sign: 'Vertical tear line parallel to the meniscal periphery.' },
-        radial: { title: 'Radial tear', sign: 'Complete radial tear of the medial posterior root, shown axially.' },
-        horizontal: { title: 'Horizontal tear', sign: 'Horizontal tear of the medial body and posterior horn with a concomitant ACL lesion.' },
-        bucket: { title: 'Bucket-handle tear', sign: 'Displaced fragment with double-PCL and absent bow-tie signs.' },
-        flap: { title: 'Flap tear', sign: 'Inferiorly displaced meniscal flap in the medial compartment.' },
+      {
+        "id": "mrt",
+        "label": "MRT-Diagnostik und Risskriterien",
+        "icon": "🩻"
       },
-      tableHeaders: ['Tear type', 'Geometry', 'MRI sign', 'Treatment'],
-      tableRows: [
-        ['Longitudinal tear', 'parallel to the periphery', 'double-line sign on sagittal images', 'repair in the red or red-white zone'],
-        ['Radial tear', 'perpendicular to the periphery', 'cleft sign, phantom meniscus', 'resection or repair depending on location'],
-        ['Horizontal tear', 'parallel to the tibial plateau', 'cleft-like split, possible parameniscal cyst', 'resection ± cyst excision'],
-        ['Bucket-handle tear', 'displaced double longitudinal tear', 'double PCL sign; absent bow-tie sign', 'reduction and repair, urgent if locked knee'],
-        ['Flap tear', 'unstable flap with peripheral attachment', 'variable high-signal displaced flap', 'limited flap resection'],
-      ],
-      caveTitle: 'CAVE – bucket-handle tear',
-      caveText: 'A double-PCL or absent bow-tie sign may suggest a bucket-handle tear. Identify the displaced fragment directly. A mechanically locked knee requires urgent orthopaedic assessment.',
-    },
-    cases: {
-      title: 'Cases',
-      lead: 'Use the mouse wheel or slider to scroll through each MRI sequence on the page.',
-      items: [
-        {
-          title: 'Globular signal in the posterior horn of the lateral meniscus without definite surface contact in a discoid meniscus.',
-          label: 'Grade 2c',
-          tags: ['Discoid meniscus'],
-          meta: 'PD-weighted · sagittal · mucoid degeneration · high risk of occult tear',
-          sequence: 'Sagittal · PD fat sat',
-          caseId: 'case-75168',
-          frameCount: 18,
-          frameExt: 'jpeg',
-          initialFrame: 8,
-          url: 'https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1',
-          credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
-        },
-        {
-          title: 'Linear signal in the posterior horn of the medial meniscus with surface contact on only one slice in a discoid meniscus.',
-          label: 'Grade 2b',
-          tags: ['Discoid meniscus'],
-          meta: 'STIR · coronal · inconclusive · not a definite grade-3 tear',
-          sequence: 'Coronal · STIR',
-          caseId: 'case-14060-coronal-stir',
-          frameCount: 7,
-          frameExt: 'jpg',
-          initialFrame: 3,
-          url: 'https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1',
-          credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
-        },
-      ],
-      key: 'Cases are useful because not every intrameniscal signal abnormality represents a definite meniscal tear.',
-    },
-    discoid: {
-      title: 'Discoid meniscus',
-      lead: 'A discoid meniscus is a congenital anatomic variant with an abnormally wide, disc-shaped meniscal body.\n\nIt almost exclusively affects the lateral meniscus and is more prone to tears than a normally shaped meniscus.',
-      stats: [
-        { value: "4.5%", label: "MRI finding frequency", text: "in one retrospective series of 1,250 knee MRIs; not annual incidence" },
-        { value: '~50%', label: 'bilateral', text: 'not uncommonly present on both sides' },
-        { value: 'almost exclusively', label: 'Lateral meniscus', qualitative: true },
-      ],
-      overviewHeaders: ['Parameter', 'Value'],
-      overviewRows: [
-        ['Affected meniscus', 'almost exclusively lateral meniscus'],
-        ['Side distribution', 'bilateral in about 50% of cases'],
-        ['Sex', 'no clear predilection'],
-        ['Prevalence', 'reported to be higher in Asian populations'],
-        ['Risk of tear', 'higher than in a normally shaped meniscus'],
-      ],
-      childTitle: 'Clinical clue in children',
-      childText: 'A snapping knee in a child should always raise suspicion for a discoid lateral meniscus.',
-      mriTitle: 'MRI criteria',
-      mriHeaders: ['Plane', 'Criterion', 'Threshold'],
-      mriRows: [
-        ['Coronal', 'absolute meniscal width', '≥ 15 mm'],
-        ['Coronal', 'meniscal width / maximal tibial width', "≥ 20%"],
-        ['Sagittal', 'continuous body visualization', '≥ 3 consecutive 5-mm slices'],
-      ],
-      sagittalTitle: 'Sagittal sign',
-      sagittalText: 'The sagittal criterion is the opposite of the absent bow-tie sign: a normal meniscus shows the body on only 1–2 slices, whereas a discoid meniscus remains visible on at least 3 slices.',
-      treatmentHeaders: ['Situation', 'Management'],
-      treatmentRows: [
-        ['asymptomatic incidental finding', 'conservative, no intervention needed'],
-        ['symptomatic without tear', 'conservative; arthroscopic saucerization if symptoms persist'],
-        ['discoid meniscus with tear', 'meniscal repair plus partial resection if needed'],
-        ['irreparable / severe destruction', 'partial or total meniscectomy only as last option'],
-      ],
-      key: 'Current main criterion: body width ≥ 15 mm on a mid-coronal slice. The classic three-slice sign is not a standalone diagnostic criterion on thin-slice MRI.',
-      cave: 'The classic three-slice sign is not a standalone diagnostic criterion on thin-slice MRI.',
-    },
-    therapy: {
-      title: 'Treatment concept: Save the meniscus',
-      titlePrefix: 'Treatment concept',
-      saveText: 'Save the Meniscus',
-      lead: 'Management depends on symptoms, tear morphology, location and vascularity. The goal is to preserve as much meniscal tissue as possible.',
-      tableHeaders: ['Situation', 'Principle'],
-      tableRows: [
-        ['asymptomatic or purely degenerative lesion', 'conservative treatment'],
-        ['fresh tear in the red zone', 'meniscal repair'],
-        ['irreparable mechanically relevant fragment', 'limited partial resection'],
-      ],
-      key: 'Preserve as much meniscus as possible, resect only as much as necessary.',
-    },
-    video: {
-      title: 'Learning video',
-      text: 'The learning video for this meniscus chapter is now available on YouTube.',
-      cta: 'Watch on YouTube',
-      url: 'https://youtu.be/L03fPcRZm_o?si=RzNDyM-Fmtig8I10',
-    },
-  },
-  fa: {
-    toc: 'مسیر یادگیری',
-    breadcrumbMsk: 'اسکلتی-عضلانی',
-    breadcrumbCurrent: 'زانو · منیسک',
-    title: 'منیسک',
-    subtitle: 'مبانی، آناتومی، تشخیص MRI و معیارهای قطعی پارگی',
-    sourceLabel: 'Dr. Zia',
-    keyLabel: 'نکته مهم',
-    caveLabel: 'احتیاط',
-    mcqTitle: 'سوالات منیسک',
-    mcqDesc: 'سوالات مرتبط با آناتومی، درجه‌بندی MRI و تشخیص پارگی.',
-    mcqCta: 'شروع سوالات',
-    actionMcq: 'MCQ',
-    actionFall: 'موارد بالینی',
-    actionFallStatus: '۲ کیس',
-    actionFlash: 'فلش‌کارت',
-    openCase: 'باز کردن مستقیم تصویر در Radiopaedia',
-    zoomImage: 'بزرگ‌نمایی تصویر',
-    aiImageNotice: 'این تصویر با هوش مصنوعی و فقط برای جهت‌یابی آموزشی ساخته شده است؛ ممکن است برخی جزئیات نادرست باشند و نباید به‌عنوان منبع تشخیصی استفاده شود.',
-    closePreview: 'بستن نمایش بزرگ',
-    sections: [
-      { id: 'anatomie', label: 'آناتومی و خون‌رسانی', icon: '🦴' },
-      { id: 'mrt', label: 'تشخیص MRI و معیارهای پارگی', icon: '🩻' },
-      { id: 'grading', label: 'طبقه‌بندی Lotysch', icon: '📊' },
-      { id: 'risstypen', label: 'انواع پارگی', icon: '🧩' },
-      { id: 'discoider', label: 'منیسک دیسکوئید', icon: '🔵' },
-      { id: 'therapie', label: 'اصل درمان', icon: '🧵' },
-      { id: 'lernvideo', label: 'ویدیوی آموزشی', icon: '▶️' },
-    ],
-    heroCards: [
-      { value: '۲ برش', label: 'قانون Two-slice-touch', text: 'تماس با سطح باید حداقل در دو برش متوالی دیده شود.' },
-      { value: 'فقط درجه ۳', label: 'پارگی قطعی منیسک', text: 'فقط سیگنال با تماس قطعی با سطح مفصلی معیار پارگی واقعی را دارد.' },
-      { value: 'حفظ', label: 'حفظ منیسک', text: 'در صورت امکان ترمیم و حفظ بافت منیسک بر رزکسیون اولویت دارد.' },
-    ],
-    basics: {
-      title: 'مفصل زانو · منیسک · مبانی',
-      lead: 'منیسک‌ها ساختارهای فیبروکارتیلاژ بین کندیل‌های فمور و پلاتوی تیبیا هستند. دو منیسک وجود دارد: منیسک داخلی و منیسک خارجی. هر دو تطابق مفصلی را بهتر می‌کنند، نیرو را پخش می‌کنند و نقش ضربه‌گیر دارند. در گزارش MRI، شکل، میزان تثبیت، خون‌رسانی و تماس سیگنال با سطح مفصل اهمیت اصلی دارد.',
-      bullets: [
-        'منیسک داخلی: C شکل، متصل به کپسول و MCL، بنابراین تحرک کمتر دارد.',
-        'منیسک خارجی: بیشتر O شکل، به رباط خارجی متصل نیست و تحرک بیشتری دارد.',
-        'اتصال به تیبیا از طریق ریشه‌های منیسک در شاخ قدامی و خلفی انجام می‌شود.',
-      ],
-    },
-    anatomy: {
-      title: 'آناتومی و خون‌رسانی',
-      lead: 'منیسک‌ها ساختارهای فیبروکارتیلاژی بین کندیل‌های فمور و پلاتوی تیبیا هستند. دو منیسک وجود دارد: منیسک داخلی و منیسک خارجی. آن‌ها تطابق مفصلی را بهتر می‌کنند، نیرو را پخش می‌کنند و مانند ضربه‌گیر عمل می‌کنند.',
-      tableHeaders: ['ویژگی', 'منیسک داخلی', 'منیسک خارجی'],
-      tableRows: [
-        ['شکل', 'C شکل', 'بیشتر O شکل'],
-        ['تثبیت', 'به کپسول مفصلی و رباط جانبی داخلی متصل است', 'به رباط‌های خارجی متصل نیست'],
-        ['تحرک', 'کم‌تحرک', 'متحرک‌تر'],
-      ],
-      rootsTitle: 'اتصالات و ریشه‌های منیسک',
-      rootsText: 'اتصالات بهتر است جداگانه بررسی شوند: تماس لغزشی با کندیل‌های فمور و اتصال محکم به تیبیا از طریق ریشه‌های منیسک.',
-      rootsItems: [
-        { title: 'تماس فمورو-منیسکال', text: 'منیسک‌ها با کندیل‌های فمور مفصل می‌شوند و سطح پروگزیمال آن‌ها محدب است.' },
-        { title: 'اتصال به تیبیا', text: 'اتصال محکم به پلاتوی تیبیا از طریق ریشه‌های منیسک در شاخ قدامی و خلفی هر منیسک انجام می‌شود.' },
-      ],
-      imageAlt: 'شماتیک هر دو منیسک روی پلاتوی تیبیا با اتصال ریشه قدامی و خلفی؛ C شکل در سمت داخلی و O شکل در سمت خارجی.',
-      imageCaption: 'اتصال ریشه قدامی و خلفی هر دو منیسک. شماتیک از MSK.pdf، صفحهٔ PDF ۴۴ (چاپی ۴۳).',
-      key: 'اتصال محکم‌تر منیسک داخلی تحرک آن را کاهش می‌دهد. این تفاوت می‌تواند بر الگوی آسیب اثر بگذارد، اما به‌تنهایی تعیین‌کننده نیست.',
-    },
-    vascular: {
-      title: 'خون‌رسانی و پتانسیل ترمیم',
-      lead: 'خون‌رسانی از ناحیه محیطی به سمت بخش داخلی منیسک کاهش می‌یابد. تقسیم‌بندی قرمز-قرمز، قرمز-سفید و سفید-سفید یک الگوی بالینی کلی است؛ خون‌رسانی و پتانسیل ترمیم را نمی‌توان فقط با فاصله ثابت یا یک ناحیه تعیین کرد.',
-      zones: [
-        { name: 'ناحیه قرمز · ناحیه محیطی', range: 'یک‌سوم خارجی', status: 'دارای عروق', therapy: 'پتانسیل ترمیم بیشتر، اما تضمین‌نشده' },
-        { name: 'ناحیه قرمز-سفید · ناحیه میانی', range: 'یک‌سوم میانی', status: 'خون‌رسانی متغیر', therapy: 'پتانسیل متغیر' },
-        { name: 'ناحیه سفید · ناحیه داخلی', range: 'یک‌سوم داخلی نزدیک لبه آزاد', status: 'معمولاً بدون عروق', therapy: 'پتانسیل کمتر، نه لزوماً صفر' },
-      ],
-      tableHeaders: ['ناحیه', 'محل', 'خون‌رسانی'],
-      tableRows: [
-        ['قرمز', 'یک‌سوم خارجی', 'دارای عروق'],
-        ['قرمز-سفید', 'یک‌سوم میانی', 'متغیر'],
-        ['سفید', 'یک‌سوم داخلی', 'معمولاً بدون عروق'],
-      ],
-      imageAlt: 'شماتیک منیسک داخلی و خارجی با ناحیه محیطی دارای عروق، ناحیه میانی با خون‌رسانی متغیر و ناحیه داخلی که معمولاً بدون عروق است.',
-      imageCaption: 'شماتیک نواحی عروقی، نه تصویر بیمار. MSK.pdf، صفحهٔ PDF ۴۵ (چاپی ۴۴)؛ مرزها فاصله‌های ثابت نیستند.',
-      key: 'این ناحیه فقط الگوی کلی عروق را توصیف می‌کند. ترمیم‌پذیری و بهبود به شکل پارگی، کیفیت بافت، سن و شرایط بالینی هم بستگی دارد؛ فاصله ثابت به‌تنهایی تعیین‌کننده نیست.',
-    },
-    mri: {
-      title: 'تشخیص MRI و معیارهای قطعی پارگی',
-      lead: 'MRI زانو در سه صفحه عمود بر هم ارزیابی می‌شود. پروتکل پایه شامل تصاویر T1 و تصاویر حساس به مایع است؛ انتخاب دقیق سکانس به پروتکل مرکز بستگی دارد.',
-      protocol: [
-        { name: 'T1-weighted', text: 'بخشی از پروتکل پایه؛ ارزیابی مغز استخوان و آناتومی را تکمیل می‌کند.' },
-        { name: 'حساس به مایع', text: 'از جمله ادم مغز استخوان و تغییرات پرمایع را نشان می‌دهد. سکانس PD-weighted یکی از گزینه‌های رایج پروتکل است.' },
-      ],
-      normalTitle: 'نمای طبیعی',
-      normalText: 'منیسک سالم به صورت هموژن هیپواینتنس دیده می‌شود. در نمای ساژیتال شکل مثلثی تیپیک دارد.',
-    },
-    grading: {
-      title: 'طبقه‌بندی Lotysch',
-      lead: 'طبقه‌بندی Lotysch کمک می‌کند تغییرات سیگنال دژنراتیو داخل منیسک از پارگی واقعی منیسک جدا شود.',
-      sourceCrossReference: 'در MSK.pdf، صفحهٔ PDF ۴۶ (صفحهٔ چاپی ۴۵)، مورفولوژی پیچیده، چندصفحه‌ای، ماکره یا جابه‌جا‌شده «Stoller Grade IV» نامیده شده است. این یک برچسب مورفولوژیک جداگانه و مختص این منبع است، نه ادامهٔ درجه‌بندی سیگنال Lotysch در این درس (درجات ۰ تا III)؛ در آن، درجهٔ III یعنی سیگنال به سطح مفصلی می‌رسد. هیچ تطبیق یک‌به‌یکی با درجهٔ IV توسعه‌یافتهٔ Jerosch که جداگانه نمایش داده شده ادعا نمی‌شود.',
-      lotyschTitle: 'مدل ساده: درجه ۰ تا III',
-      simpleHeaders: ['درجه', 'سیگنال MRI', 'هیستولوژی', 'معنای بالینی'],
-      simpleRows: [
-        ['0', 'هیپواینتنس هموژن', 'بافت فیبروغضروفی طبیعی', 'یافته غیرطبیعی ندارد'],
-        ['I', 'سیگنال فوکال، بدون تماس با سطح', 'دژنراسیون میکسوئید فوکال', 'اتفاقی، پارگی نیست'],
-        ['II', 'سیگنال خطی، بدون تماس با سطح', 'دژنراسیون میکسوئید منتشر', 'پارگی نیست، ضایعه پیش‌زمینه‌ای'],
-        ['III', 'سیگنال به سطح مفصلی می‌رسد', 'پارگی وجود دارد', '✅ پارگی واقعی منیسک'],
-      ],
-      extendedTitle: 'طبقه‌بندی Lotysch',
-      tableHeaders: ['درجه', 'مورفولوژی', 'تماس با سطح', 'اهمیت بالینی'],
-      tableRows: [
-        ['1', 'افزایش سیگنال نقطه‌ای یا کوچک', 'بدون تماس', 'دژنراسیون موکوئید اولیه، معمولاً بی‌علامت'],
-        ['2a', 'افزایش سیگنال خطی', 'بدون تماس', 'پارگی قطعی اثبات نشده است'],
-        ['2b', 'افزایش سیگنال خطی', 'تماس فقط در یک تصویر', 'برای پارگی قطعی ناکافی'],
-        ['2c', 'افزایش سیگنال گوه‌ای یا گلوبولار', 'بدون تماس واضح', 'ریسک بالا برای پارگی مخفی'],
-        ['3', 'افزایش سیگنال پاتولوژیک', 'تماس در حداقل دو برش متوالی', 'پارگی منیسک از نظر رادیولوژیک قطعی'],
-      ],
-      key: 'فقط درجه III پارگی واقعی است.',
-    },
-    tear: {
-      title: 'معیارهای MRI برای پارگی منیسک',
-      lead: 'برای تشخیص پارگی منیسک باید معیارهای مشخص وجود داشته باشد. این کار حساسیت و ویژگی تشخیص را بهتر می‌کند.',
-      cave: 'افزایش سیگنال داخل منیسک به تنهایی برای تشخیص قطعی پارگی کافی نیست.',
-      criteria: [
-        { title: 'تماس با سطح مفصلی', text: 'سیگنال پاتولوژیک به سطح فوقانی یا تحتانی منیسک می‌رسد.' },
-        { title: 'دفورمیتی', text: 'شکل مثلثی طبیعی منیسک از بین رفته یا واضحاً تغییر کرده است.' },
-        { title: 'قانون Two-slice-touch', text: 'ضایعه باید حداقل در دو برش متوالی با تماس سطحی دیده شود.' },
-      ],
-    },
-    tearTypes: {
-      title: 'انواع پارگی منیسک',
-      lead: 'جهت و محل پارگی، استراتژی درمان و تصمیم جراحی را تعیین می‌کند و برای آزمون مهم است.',
-      caseIntro: 'پنج سکانس واقعی MRI: با چرخ ماوس، کلیدهای جهت یا اسلایدر برش‌ها را مرور کنید؛ در موبایل به چپ و راست بکشید.',
-      caseOpen: 'کیس اصلی در Radiopaedia ↗',
-      caseItems: {
-        longitudinal: { title: 'پارگی طولی', sign: 'خط پارگی عمودی و موازی با حاشیهٔ منیسک.' },
-        radial: { title: 'پارگی رادیال', sign: 'پارگی رادیال کامل ریشهٔ خلفی منیسک داخلی در نمای اکسیال.' },
-        horizontal: { title: 'پارگی افقی', sign: 'پارگی افقی تنه و شاخ خلفی منیسک داخلی، همراه با آسیب ACL.' },
-        bucket: { title: 'پارگی Bucket-handle', sign: 'قطعهٔ جابه‌جا شده با علامت PCL دوگانه و نبود Bow-tie.' },
-        flap: { title: 'پارگی فلپ', sign: 'فلپ منیسک جابه‌جا شده به سمت پایین در بخش داخلی.' },
+      {
+        "id": "grading",
+        "label": "Lotysch-Klassifikation",
+        "icon": "📊"
       },
-      tableHeaders: ['نوع پارگی', 'هندسه', 'علامت MRI', 'درمان'],
-      tableRows: [
-        ['پارگی طولی', 'موازی با محیط منیسک', 'علامت دو خطی در ساژیتال', 'بخیه در ناحیه قرمز یا قرمز-سفید'],
-        ['پارگی رادیال', 'عمود بر محیط منیسک', 'Cleft sign، منیسک شبح‌مانند', 'رزکسیون یا بخیه بسته به محل'],
-        ['پارگی افقی', 'موازی با پلاتوی تیبیا', 'شکاف افقی، گاهی کیست پارامنیسکال', 'رزکسیون ± خارج کردن کیست'],
-        ['پارگی Bucket-handle', 'پارگی طولی دوبل و جابه‌جا شده', 'علامت PCL دوگانه؛ نبود Bow-tie', 'جااندازی و بخیه؛ در زانوی قفل‌شده اورژانسی'],
-        ['پارگی فلپ', 'فلپ ناپایدار با اتصال محیطی', 'فلپ جابه‌جا شونده با سیگنال بالا', 'رزکسیون محدود فلپ'],
-      ],
-      caveTitle: 'هشدار – پارگی Bucket-handle',
-      caveText: 'علامت Double-PCL یا فقدان Bow-tie می‌تواند پارگی دسته‌سطلی را مطرح کند. قطعهٔ جابه‌جا‌شده را مستقیماً شناسایی کنید. زانوی قفل‌شدهٔ مکانیکی نیازمند ارزیابی فوری ارتوپدی است.',
+      {
+        "id": "risstypen",
+        "label": "Risstypen",
+        "icon": "🧩"
+      },
+      {
+        "id": "discoider",
+        "label": "Discoider Meniskus",
+        "icon": "🔵"
+      },
+      {
+        "id": "therapie",
+        "label": "Therapieprinzip",
+        "icon": "🧵"
+      },
+      {
+        "id": "lernvideo",
+        "label": "Lernvideo",
+        "icon": "▶️"
+      }
+    ],
+    "heroCards": [
+      {
+        "value": "2 Schichten",
+        "label": "Two-slice-touch-Regel",
+        "text": "Wiederholter Oberflächenkontakt erhöht die Sicherheit. Ein eindeutiger morphologischer Defekt kann auch ohne Zwei-Bild-Kontakt einen Riss belegen."
+      },
+      {
+        "value": "Signal + Form",
+        "label": "Risskriterien gemeinsam prüfen",
+        "text": "Oberflächenkontakt und Formdefekt sind ergänzende Befunde. Intrameniskales Signal allein beweist weder Riss noch Operationsbedarf."
+      },
+      {
+        "value": "Erhalt",
+        "label": "Save the Meniscus",
+        "text": "Wenn möglich reparieren und Meniskusgewebe bewahren statt resezieren."
+      }
+    ],
+    "basics": {
+      "title": "Kniegelenk · Meniskus · Grundlagen",
+      "lead": "Die Menisken sind fibrocartilaginäre Strukturen zwischen Femurkondylen und Tibiaplateau. Es gibt zwei Menisken: den Innenmeniskus und den Außenmeniskus. Beide verbessern die Gelenkkongruenz, verteilen die Last und wirken als Stoßdämpfer. Für die MRT-Befundung sind Form, Fixierung, Durchblutung und Oberflächenkontakt des Signals entscheidend.",
+      "bullets": [
+        "Innenmeniskus: C-förmig, kapsel- und MCL-fixiert, deutlich weniger mobil.",
+        "Außenmeniskus: eher O-förmig, nicht an das laterale Kollateralband fixiert, beweglicher.",
+        "Die tibiale Verankerung erfolgt über Meniskuswurzeln am Vorder- und Hinterhorn."
+      ]
     },
-    cases: {
-      title: 'نمونه کیس‌ها',
-      lead: 'با اسکرول ماوس یا اسلایدر، برش‌های هر سکانس MRI را مستقیماً در صفحه مرور کنید.',
-      items: [
+    "anatomy": {
+      "title": "Anatomie und Vaskularisation",
+      "lead": "Die Menisken sind faserknorpelige Strukturen zwischen den Femurkondylen und dem Tibiaplateau. Es gibt zwei Menisken: den Innenmeniskus und den Außenmeniskus. Sie verbessern die Gelenkkongruenz, verteilen die Last und wirken als Stoßdämpfer.",
+      "tableHeaders": [
+        "Merkmal",
+        "Innenmeniskus",
+        "Außenmeniskus"
+      ],
+      "tableRows": [
+        [
+          "Form",
+          "C-förmig",
+          "eher O-förmig"
+        ],
+        [
+          "Fixierung",
+          "fest mit Gelenkkapsel und medialem Seitenband verwachsen",
+          "nicht mit den lateralen Bändern fixiert"
+        ],
+        [
+          "Mobilität",
+          "wenig beweglich",
+          "mobiler"
+        ]
+      ],
+      "rootsTitle": "Anschlüsse und Meniskuswurzeln",
+      "rootsText": "Die Anschlüsse sollten getrennt betrachtet werden: femoral als Gleitkontakt zu den Femurkondylen und tibial als feste Verankerung über die Meniskuswurzeln.",
+      "rootsItems": [
         {
-          title: 'سیگنال گلوبولار در شاخ خلفی منیسک خارجی، بدون تماس قطعی با سطح مفصلی، در منیسک دیسکوئید.',
-          label: 'درجه 2c',
-          tags: ['منیسک دیسکوئید'],
-          meta: 'PD · ساژیتال · دژنراسیون موکوئید · ریسک بالای پارگی مخفی',
-          sequence: 'ساژیتال · PD fat sat',
-          caseId: 'case-75168',
-          frameCount: 18,
-          frameExt: 'jpeg',
-          initialFrame: 8,
-          url: 'https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1',
-          credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
+          "title": "Femoro-meniskaler Kontakt",
+          "text": "Die Menisken artikulieren mit den Femurkondylen; ihre proximale Oberfläche ist konvex."
         },
         {
-          title: 'سیگنال خطی در شاخ خلفی منیسک داخلی، با تماس سطحی فقط در یک برش، در منیسک دیسکوئید.',
-          label: 'درجه 2b',
-          tags: ['منیسک دیسکوئید'],
-          meta: 'STIR · کرونال · غیرقطعی · پارگی قطعی Grade 3 نیست',
-          sequence: 'کرونال · STIR',
-          caseId: 'case-14060-coronal-stir',
-          frameCount: 7,
-          frameExt: 'jpg',
-          initialFrame: 3,
-          url: 'https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1',
-          credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
+          "title": "Tibiale Verankerung",
+          "text": "Die feste Verankerung am Tibiaplateau erfolgt über die Meniskuswurzeln am Vorder- und Hinterhorn jedes Meniskus."
+        }
+      ],
+      "imageAlt": "Schema beider Menisken auf dem Tibiaplateau mit vorderen und hinteren Wurzelansätzen; medial C-förmig, lateral O-förmig.",
+      "imageCaption": "Wurzelansätze am Vorder- und Hinterhorn beider Menisken. Schema aus MSK.pdf, PDF-S. 44 (Druck-S. 43).",
+      "key": "Die stärkere Fixierung erklärt die geringere Beweglichkeit des Innenmeniskus. Sie kann das Verletzungsmuster mitbeeinflussen, bestimmt es aber nicht allein."
+    },
+    "vascular": {
+      "title": "Vaskularisation und Heilungspotenzial",
+      "lead": "Die Durchblutung nimmt von der peripheren zur inneren Meniskuszone ab. Die Einteilung in Rot-Rot, Rot-Weiß und Weiß-Weiß ist ein klinisches Orientierungsmodell; Gefäßversorgung und Heilungspotenzial lassen sich nicht durch eine feste Distanz oder Zone allein bestimmen.",
+      "zones": [
+        {
+          "name": "Rote Zone · periphere Zone",
+          "range": "äußeres Drittel",
+          "status": "vaskularisiert",
+          "therapy": "günstigeres, aber nicht garantiertes Heilungspotenzial"
         },
+        {
+          "name": "Rot-weiße Zone · mittlere Zone",
+          "range": "mittleres Drittel",
+          "status": "variable Durchblutung",
+          "therapy": "Potenzial variabel"
+        },
+        {
+          "name": "Weiße Zone · innere Zone",
+          "range": "inneres Drittel am freien Rand",
+          "status": "im Regelfall avaskulär",
+          "therapy": "geringeres, nicht gleich null gesetztes Heilungspotenzial"
+        }
       ],
-      key: 'نمونه کیس‌ها مهم هستند، چون هر افزایش سیگنال داخل منیسک به معنی پارگی قطعی نیست.',
+      "tableHeaders": [
+        "Zone",
+        "Lage",
+        "Durchblutung"
+      ],
+      "tableRows": [
+        [
+          "Rote Zone",
+          "äußeres Drittel",
+          "vaskularisiert"
+        ],
+        [
+          "Rot-weiße Zone",
+          "mittleres Drittel",
+          "variabel"
+        ],
+        [
+          "Weiße Zone",
+          "inneres Drittel",
+          "im Regelfall avaskulär"
+        ]
+      ],
+      "imageAlt": "Schema der medialen und lateralen Menisken mit äußerer vaskularisierter, mittlerer variabel vaskularisierter und innerer meist avaskulärer Zone.",
+      "imageCaption": "Schematische Gefäßzonen, keine patientenbezogene Bildgebung. MSK.pdf, PDF-S. 45 (Druck-S. 44); Grenzen sind nicht als feste Distanzen zu verstehen.",
+      "key": "Die Zone beschreibt ein grobes Gefäßmuster. Reparabilität und Heilung hängen auch von Rissform, Gewebe, Alter und klinischem Kontext ab; eine feste Distanz entscheidet sie nicht allein."
     },
-    discoid: {
-      title: 'منیسک دیسکوئید',
-      lead: 'منیسک دیسکوئید یک واریانت مادرزادی است که در آن تنه منیسک پهن‌تر و شبیه دیسک است.\n\nاین حالت تقریباً همیشه منیسک خارجی را درگیر می‌کند و نسبت به منیسک طبیعی بیشتر مستعد پارگی است.',
-      stats: [
-        { value: "۴٫۵٪", label: "فراوانی در MRI", text: "در یک مجموعهٔ گذشته‌نگر شامل ۱۲۵۰ MRI زانو؛ نه بروز سالانه" },
-        { value: '~۵۰٪', label: 'دوطرفه', text: 'می‌تواند در هر دو زانو دیده شود' },
-        { value: 'تقریباً همیشه', label: 'منیسک خارجی', qualitative: true },
+    "mri": {
+      "title": "MRT-Diagnostik und sichere Risskriterien",
+      "lead": "Ein Knie-MRT wird in drei orthogonalen Ebenen beurteilt. Das Basisprotokoll enthält T1-gewichtete und flüssigkeitssensitive Bilder; die konkrete Sequenzwahl hängt vom lokalen Protokoll ab.",
+      "protocol": [
+        {
+          "name": "T1-gewichtet",
+          "text": "Teil des Basisprotokolls; ergänzt die Beurteilung von Knochenmark und Anatomie."
+        },
+        {
+          "name": "Flüssigkeitssensitiv",
+          "text": "Zeigt unter anderem Knochenmarködem und weitere flüssigkeitsreiche Veränderungen. PD-gewichtete Sequenzen sind eine verbreitete Protokolloption."
+        }
       ],
-      overviewHeaders: ['پارامتر', 'مقدار'],
-      overviewRows: [
-        ['منیسک درگیر', 'تقریباً همیشه منیسک خارجی'],
-        ['توزیع طرفی', 'در حدود ۵۰٪ موارد دوطرفه'],
-        ['جنسیت', 'ارجحیت واضح ندارد'],
-        ['شیوع', 'در جمعیت‌های آسیایی بیشتر گزارش شده است'],
-        ['خطر پارگی', 'بیشتر از منیسک با شکل طبیعی'],
-      ],
-      childTitle: 'نکته بالینی در کودکان',
-      childText: 'شنیدن یا احساس Snapping در زانوی کودک باید شک به منیسک خارجی دیسکوئید را مطرح کند.',
-      mriTitle: 'معیارهای MRI',
-      mriHeaders: ['صفحه', 'معیار', 'حد آستانه'],
-      mriRows: [
-        ['کرونال', 'عرض مطلق منیسک', '≥ ۱۵ میلی‌متر'],
-        ['کرونال', 'عرض منیسک / حداکثر عرض تیبیا', "≥ ۲۰٪"],
-        ['ساژیتال', 'دیده شدن مداوم تنه منیسک', '≥ ۳ برش متوالی با ضخامت ۵ میلی‌متر'],
-      ],
-      sagittalTitle: 'علامت ساژیتال',
-      sagittalText: 'معیار ساژیتال برعکس absent bow-tie sign است: منیسک طبیعی تنه را فقط در ۱ تا ۲ برش نشان می‌دهد، اما منیسک دیسکوئید در حداقل ۳ برش متوالی دیده می‌شود.',
-      treatmentHeaders: ['وضعیت', 'اقدام'],
-      treatmentRows: [
-        ['یافته اتفاقی بدون علامت', 'محافظه‌کارانه، بدون نیاز به مداخله'],
-        ['علامت‌دار بدون پارگی', 'درمان محافظه‌کارانه؛ در صورت تداوم علائم Saucerization آرتروسکوپیک'],
-        ['منیسک دیسکوئید همراه با پارگی', 'ترمیم منیسک همراه با رزکسیون نسبی در صورت نیاز'],
-        ['غیرقابل ترمیم / تخریب شدید', 'منیسککتومی نسبی یا کامل فقط به عنوان آخرین گزینه'],
-      ],
-      key: 'معیار اصلی فعلی: عرض تنه ≥ ۱۵ میلی‌متر در برش میانی کرونال. علامت کلاسیک سه برش در MRI با برش‌های نازک، معیار تشخیصی مستقل نیست.',
-      cave: 'علامت کلاسیک سه برش در MRI با برش‌های نازک، معیار تشخیصی مستقل نیست.',
+      "normalTitle": "Normalbefund",
+      "normalText": "Normaler Meniskus ist überwiegend signalarm. Die Hörner erscheinen sagittal dreieckig, der Corpus auf peripheren Schichten als Bow-tie; die Gesamtform wird in mehreren Ebenen geprüft."
     },
-    therapy: {
-      title: 'اصول درمان: Save the Meniscus',
-      titlePrefix: 'اصول درمان',
-      saveText: 'حفظ منیسک',
-      lead: 'تصمیم درمانی به علائم، شکل پارگی، محل پارگی و خون‌رسانی بستگی دارد. هدف، حفظ حداکثری بافت منیسک است.',
-      tableHeaders: ['وضعیت', 'اصل درمانی'],
-      tableRows: [
-        ['ضایعه بدون علامت یا صرفاً دژنراتیو', 'درمان محافظه‌کارانه'],
-        ['پارگی تازه در ناحیه قرمز', 'بخیه منیسک'],
-        ['قطعه غیرقابل ترمیم و مکانیکی', 'رزکسیون محدود و محافظه‌کارانه'],
+    "grading": {
+      "title": "Lotysch-Klassifikation",
+      "lead": "Das historische Signalgrading beschreibt das MRT-Signalmuster. Für den klinischen Befund sind Oberflächenkontakt, morphologischer Defekt und Rissgeometrie hilfreicher als die Zahl allein. Eine Histologie oder Reparabilität wird daraus nicht sicher abgeleitet.",
+      "sourceCrossReference": "MSK.pdf, PDF-S. 46 (Druck-S. 45), bezeichnet komplexe, mehrdimensionale, mazerierte oder dislozierte Morphologie als „Stoller Grad IV“. Das ist eine separate, quellenspezifische Morphologiebezeichnung und keine Erweiterung des hier gezeigten Lotysch-Signalgradings 0–III; dort beschreibt Grad III den Kontakt des Signals zur Gelenkoberfläche. Eine 1:1-Zuordnung zum separat gezeigten Jerosch-Erweiterungsgrad IV wird nicht behauptet.",
+      "lotyschTitle": "Einfaches Modell: Grad 0 bis III",
+      "simpleHeaders": [
+        "Grad",
+        "MRT-Signal",
+        "Einordnung",
+        "Grenze"
       ],
-      key: 'اصل مهم این است که تا حد امکان بافت منیسک حفظ شود؛ برداشتن منیسک فقط در صورت ضرورت و به کمترین مقدار لازم انجام شود.',
+      "simpleRows": [
+        [
+          "0",
+          "Homogen signalarm",
+          "Normales Signalmuster",
+          "Gesamtform mitprüfen"
+        ],
+        [
+          "I",
+          "Fokal, ohne Oberflächenkontakt",
+          "Intrameniskale Signaländerung",
+          "Kein sicherer Rissnachweis"
+        ],
+        [
+          "II",
+          "Linear/ausgedehnt, Kontakt nicht sicher reproduziert",
+          "Intrameniskale Signaländerung",
+          "Morphologie und vollständige Serie prüfen"
+        ],
+        [
+          "III",
+          "Signal erreicht eine Gelenkoberfläche",
+          "Oberflächenkontakt unterstützt Riss",
+          "Kontakt reproduzieren; Formdefekt mitbeurteilen"
+        ]
+      ],
+      "extendedTitle": "Lotysch-Klassifikation",
+      "tableHeaders": [
+        "Grad",
+        "Morphologie",
+        "Oberflächenkontakt",
+        "Klinische Bedeutung"
+      ],
+      "tableRows": [
+        [
+          "1",
+          "punktförmige oder kleine fokale Signalsteigerung",
+          "kein Kontakt",
+          "Intrameniskale Signaländerung; kein sicherer Rissnachweis"
+        ],
+        [
+          "2a",
+          "lineare Signalsteigerung",
+          "kein Kontakt",
+          "kein sicherer Rissnachweis"
+        ],
+        [
+          "2b",
+          "lineare Signalsteigerung",
+          "Kontakt auf einem einzelnen Bild",
+          "inkonklusiv für echten Riss"
+        ],
+        [
+          "2c",
+          "keilförmige oder globuläre Signalsteigerung",
+          "kein eindeutiger Kontakt",
+          "Ein okkulter Riss ist möglich; Signal allein beweist ihn nicht"
+        ],
+        [
+          "3",
+          "Pathologische Signalsteigerung",
+          "Kontakt zu mindestens einer Gelenkoberfläche; wiederholter Nachweis erhöht Sicherheit",
+          "Rissverdächtiges Oberflächensignal; mit Morphologie und vollständiger Serie abgleichen"
+        ]
+      ],
+      "key": "Im Befund Kontakt, Formdefekt und Geometrie beschreiben. Nicht surfacierendes Signal allein beweist keinen Riss; ein klarer morphologischer Defekt kann unabhängig vom Signalgrad relevant sein."
     },
-    video: {
-      title: 'ویدیوی آموزشی',
-      text: 'ویدیوی آموزشی این بخش درباره منیسک اکنون در YouTube در دسترس است.',
-      cta: 'مشاهده ویدیو در YouTube',
-      url: 'https://youtu.be/L03fPcRZm_o?si=RzNDyM-Fmtig8I10',
+    "tear": {
+      "title": "MRT-Kriterien für einen Meniskusriss",
+      "lead": "Oberflächenkontakt und ein eindeutiger morphologischer Defekt liefern ergänzende Risskriterien. Nicht alle Zeichen müssen gleichzeitig vorliegen. Die vollständige Serie hilft, Partialvolumen und anatomische Varianten auszuschließen.",
+      "cave": "Ein reiner intrameniskaler Signalanstieg reicht nicht aus, um einen Meniskusriss sicher zu diagnostizieren.",
+      "criteria": [
+        {
+          "title": "Kontakt zum Gelenkflächenrand",
+          "text": "Das pathologisch erhöhte Signal erreicht die superiore oder inferiore Meniskusoberfläche."
+        },
+        {
+          "title": "Deformität",
+          "text": "Ein eindeutiger Defekt, fehlendes Meniskusgewebe oder ein direkt verfolgbares disloziertes Fragment unterstützt einen Riss. Varianten und Voroperationen berücksichtigen."
+        },
+        {
+          "title": "Two-slice-touch-Regel",
+          "text": "Oberflächenkontakt auf mindestens zwei Bildern erhöht die diagnostische Sicherheit. Einzelbildkontakt ohne bestätigenden Formdefekt bleibt inkonklusiv; ein klarer Defekt benötigt nicht zwingend zwei Kontaktbilder."
+        }
+      ]
     },
+    "tearTypes": {
+      "title": "Risstypen",
+      "lead": "Rissgeometrie, Lokalisation und Ausdehnung beschreiben; dislozierte Fragmente direkt verfolgen. Diese Angaben unterstützen die klinische Planung, bestimmen aber nicht allein Therapie oder Reparabilität.",
+      "caseIntro": "Fünf echte MRT-Sequenzen: Mit Mausrad, Pfeiltasten oder Regler durch die Schichten blättern; auf dem Handy seitlich wischen.",
+      "caseOpen": "Originalfall auf Radiopaedia ↗",
+      "caseItems": {
+        "longitudinal": {
+          "title": "Längsriss",
+          "sign": "Vertikale, zur Meniskusperipherie parallele Risslinie."
+        },
+        "radial": {
+          "title": "Radiärriss",
+          "sign": "Kompletter radiärer Riss der medialen Hinterwurzel, axial dargestellt."
+        },
+        "horizontal": {
+          "title": "Horizontalriss",
+          "sign": "Horizontalriss an Corpus und Hinterhorn des Innenmeniskus; begleitende ACL-Läsion."
+        },
+        "bucket": {
+          "title": "Korbhenkelriss",
+          "sign": "Disloziertes Fragment mit Doppel-PCL- und fehlendem Bow-tie-Zeichen."
+        },
+        "flap": {
+          "title": "Lappenriss",
+          "sign": "Nach inferior verlagerter Meniskuslappen im medialen Kompartiment."
+        }
+      },
+      "tableHeaders": [
+        "Risstyp",
+        "Geometrie",
+        "MRT-Zeichen",
+        "Klinische Einordnung"
+      ],
+      "tableRows": [
+        [
+          "Längsriss",
+          "vertikal, parallel zur Peripherie",
+          "Risslinie entlang der zirkumferenten Fasern",
+          "Periphere Lage kann Erhaltung begünstigen; Gewebe und Klinik mitprüfen"
+        ],
+        [
+          "Radiärriss",
+          "vom freien Rand quer zu den Ringfasern",
+          "Cleft; bei voller Breite ggf. Ghost-Zeichen",
+          "Breite/Tiefe und Wurzelabstand angeben"
+        ],
+        [
+          "Horizontalriss",
+          "parallel zum Tibiaplateau",
+          "Trennung oberer/unterer Anteile, ggf. parameniskale Zyste",
+          "Bei degenerativen Beschwerden ohne Blockade aktive konservative Optionen prüfen"
+        ],
+        [
+          "Korbhenkelriss",
+          "dislozierter longitudinal-vertikaler Riss",
+          "Fragment im Interkondylärraum; Doppel-PCL/fehlendes Bow-tie möglich",
+          "Bei echter Blockade dringliche orthopädische Beurteilung"
+        ],
+        [
+          "Lappenriss",
+          "teilweise angehefteter Meniskusflap",
+          "Fragmentlage und Entnahmeort nachvollziehen",
+          "Symptomatik und Gewebequalität bestimmen die klinische Entscheidung mit"
+        ]
+      ],
+      "caveTitle": "CAVE – Korbhenkelriss",
+      "caveText": "Doppel-PCL- und fehlendes Bow-tie-Zeichen können auf einen Korbhenkelriss hinweisen. Das dislozierte Fragment direkt nachweisen. Bei mechanisch blockiertem Knie ist eine dringliche orthopädische Beurteilung erforderlich."
+    },
+    "cases": {
+      "title": "Fallbeispiele",
+      "lead": "Mit Mausrad oder Slider direkt durch die gezeigte MRT-Sequenz blättern.",
+      "items": [
+        {
+          "title": "Globuläres Signal im Hinterhorn des lateralen Meniskus ohne sicheren Oberflächenkontakt bei discoidem Meniskus.",
+          "label": "Grad 2c",
+          "tags": [
+            "Discoider Meniskus"
+          ],
+          "meta": "PD-Wichtung · sagittal · mukoide Degeneration · hohes Risiko für okkulten Riss",
+          "sequence": "Sagittal · PD fat sat",
+          "caseId": "case-75168",
+          "frameCount": 18,
+          "frameExt": "jpeg",
+          "initialFrame": 8,
+          "url": "https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1",
+          "credit": "Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168"
+        },
+        {
+          "title": "Lineares Signal im Hinterhorn des medialen Meniskus mit Oberflächenkontakt auf nur einer Schicht bei discoidem Meniskus.",
+          "label": "Grad 2b",
+          "tags": [
+            "Discoider Meniskus"
+          ],
+          "meta": "STIR · koronal · inkonklusiv · kein sicherer Grad-3-Riss",
+          "sequence": "Koronal · STIR",
+          "caseId": "case-14060-coronal-stir",
+          "frameCount": 7,
+          "frameExt": "jpg",
+          "initialFrame": 3,
+          "url": "https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1",
+          "credit": "Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060"
+        }
+      ],
+      "key": "Fallbeispiele sind besonders hilfreich, weil nicht jede intrameniskale Signalsteigerung automatisch ein Meniskusriss ist."
+    },
+    "discoid": {
+      "title": "Discoider Meniskus",
+      "lead": "Der discoide Meniskus ist eine angeborene anatomische Variante mit übermäßig breitem, scheibenförmigem Meniskuskörper.\n\nEr betrifft fast ausschließlich den Außenmeniskus und reißt häufiger als ein normal geformter Meniskus.",
+      "stats": [
+        {
+          "value": "4,5 %",
+          "label": "MRT-Befundhäufigkeit",
+          "text": "in einer retrospektiven Serie von 1.250 Knie-MRTs; keine jährliche Inzidenz"
+        },
+        {
+          "value": "~50 %",
+          "label": "bilateral",
+          "text": "nicht selten beidseitig vorhanden"
+        },
+        {
+          "value": "fast ausschließlich",
+          "label": "Außenmeniskus",
+          "qualitative": true
+        }
+      ],
+      "overviewHeaders": [
+        "Parameter",
+        "Wert"
+      ],
+      "overviewRows": [
+        [
+          "Betroffener Meniskus",
+          "fast ausschließlich Außenmeniskus"
+        ],
+        [
+          "Seitenverteilung",
+          "bilateral in etwa 50 % der Fälle"
+        ],
+        [
+          "Geschlecht",
+          "keine klare Präferenz"
+        ],
+        [
+          "Prävalenz",
+          "höher in asiatischen Populationen beschrieben"
+        ],
+        [
+          "Rissrisiko",
+          "erhöht gegenüber normalem Meniskus"
+        ]
+      ],
+      "childTitle": "Klinisches Leitsymptom bei Kindern",
+      "childText": "Knieschnappen oder ein „Snapping Knee“ bei Kindern sollte an einen discoiden Außenmeniskus denken lassen.",
+      "mriTitle": "MRT-Kriterien",
+      "mriHeaders": [
+        "Ebene",
+        "Kriterium",
+        "Schwellenwert"
+      ],
+      "mriRows": [
+        [
+          "Koronal",
+          "absolute Meniskusbreite",
+          "≥ 15 mm"
+        ],
+        [
+          "Koronal",
+          "minimale Meniskusbreite / maximale Tibiabreite (Samoto)",
+          "≥ 20 %"
+        ],
+        [
+          "Sagittal, historisch",
+          "Drei-Bow-tie-Regel bei älteren dickschichtigen Protokollen",
+          "Bei modernen dünnen Schichten nicht diagnostisch verwenden"
+        ]
+      ],
+      "sagittalTitle": "Sagittales Zeichen",
+      "sagittalText": "Die Zahl kontinuierlicher Bow-ties hängt von Schichtdicke und Meniskusgröße ab. Bei modernen dünnen Schichten die Drei-Bow-tie-Regel verlassen und die mittlere koronale Corpusbreite beurteilen. Samoto beschrieb zusätzlich ein sagittales Verhältnis (Summe der Vorder-/Hinterhornbreiten zum maximalen Meniskusdurchmesser) ≥75 %.",
+      "treatmentHeaders": [
+        "Situation",
+        "Vorgehen"
+      ],
+      "treatmentRows": [
+        [
+          "asymptomatischer Zufallsbefund",
+          "konservativ, keine Intervention nötig"
+        ],
+        [
+          "symptomatisch ohne Riss",
+          "konservativ; bei Versagen arthroskopische Saucerisation"
+        ],
+        [
+          "discoider Meniskus mit Riss",
+          "Meniskusrefixation plus ggf. partielle Resektion"
+        ],
+        [
+          "irreparabel / schwere Destruktion",
+          "Teil- oder Totalmeniskektomie nur als letzte Option"
+        ]
+      ],
+      "key": "Aktuelles Hauptkriterium: Corpusbreite ≥ 15 mm auf einer mittleren koronalen Schicht. Das klassische Drei-Schichten-Zeichen ist bei dünneren MRT-Schichten kein eigenständiges Diagnosekriterium.",
+      "cave": "Das klassische Drei-Schichten-Zeichen ist bei dünneren MRT-Schichten kein eigenständiges Diagnosekriterium."
+    },
+    "therapy": {
+      "title": "Therapieprinzip: Save the Meniscus",
+      "titlePrefix": "Therapieprinzip",
+      "saveText": "Save the Meniscus",
+      "lead": "Der MRT-Befund unterstützt die klinische Entscheidung, legt aber Operation oder Reparabilität nicht allein fest. Bei degenerativen Beschwerden ohne echte Blockade ist ein strukturiertes Übungsprogramm eine begründete erste Option. Wenn eine Operation indiziert ist, möglichst viel funktionelles Meniskusgewebe erhalten.",
+      "tableHeaders": [
+        "Situation",
+        "Prinzip"
+      ],
+      "tableRows": [
+        [
+          "Degenerative Beschwerden ohne echte Blockade",
+          "Aktive konservative Therapie, z. B. angeleitetes Übungsprogramm; Verlauf klinisch bewerten"
+        ],
+        [
+          "Akuter isolierter Riss mit klinischer Operationsindikation",
+          "Erhaltungs- und Reparaturoptionen anhand von Gewebe und Morphologie prüfen"
+        ],
+        [
+          "Mechanisch relevantes, intraoperativ nicht reparables Fragment",
+          "Falls Resektion erforderlich: funktionelles Gewebe möglichst weitgehend erhalten"
+        ]
+      ],
+      "key": "So viel Meniskus wie möglich erhalten, so wenig wie nötig resezieren."
+    },
+    "video": {
+      "title": "Lernvideo",
+      "text": "Das Lernvideo zum Thema Meniskus ist jetzt auf YouTube verfügbar.",
+      "cta": "Video auf YouTube ansehen",
+      "url": "https://youtu.be/L03fPcRZm_o?si=RzNDyM-Fmtig8I10"
+    }
   },
+  "en": {
+    "toc": "Learning path",
+    "breadcrumbMsk": "Musculoskeletal",
+    "breadcrumbCurrent": "Knee · Meniscus",
+    "title": "Meniscus",
+    "subtitle": "Basics, anatomy, MRI diagnosis and reliable tear criteria",
+    "sourceLabel": "Dr. Zia",
+    "keyLabel": "Key point",
+    "caveLabel": "Caution",
+    "mcqTitle": "Meniscus MCQs",
+    "mcqDesc": "Exam questions on anatomy, MRI grading and tear diagnosis.",
+    "mcqCta": "Start MCQs",
+    "actionMcq": "MCQ",
+    "actionFall": "Case studies",
+    "actionFallStatus": "2 cases",
+    "actionFlash": "Flashcards",
+    "openCase": "Open image directly in Radiopaedia",
+    "zoomImage": "Enlarge image",
+    "aiImageNotice": "AI-generated orientation graphic. Some details may be inaccurate; do not use it as a diagnostic source.",
+    "closePreview": "Close preview",
+    "sections": [
+      {
+        "id": "anatomie",
+        "label": "Anatomy and vascular supply",
+        "icon": "🦴"
+      },
+      {
+        "id": "mrt",
+        "label": "MRI diagnosis and tear criteria",
+        "icon": "🩻"
+      },
+      {
+        "id": "grading",
+        "label": "Lotysch classification",
+        "icon": "📊"
+      },
+      {
+        "id": "risstypen",
+        "label": "Tear types",
+        "icon": "🧩"
+      },
+      {
+        "id": "discoider",
+        "label": "Discoid meniscus",
+        "icon": "🔵"
+      },
+      {
+        "id": "therapie",
+        "label": "Treatment principle",
+        "icon": "🧵"
+      },
+      {
+        "id": "lernvideo",
+        "label": "Learning video",
+        "icon": "▶️"
+      }
+    ],
+    "heroCards": [
+      {
+        "value": "2 slices",
+        "label": "Two-slice-touch rule",
+        "text": "Repeated surface contact increases confidence. A definite morphological defect can establish a tear without two-image contact."
+      },
+      {
+        "value": "Signal + shape",
+        "label": "Assess tear criteria together",
+        "text": "Surface contact and morphological defects provide complementary evidence. Intrasubstance signal alone proves neither a tear nor a need for surgery."
+      },
+      {
+        "value": "Preserve",
+        "label": "Save the Meniscus",
+        "text": "Repair and preserve meniscal tissue whenever possible instead of resection."
+      }
+    ],
+    "basics": {
+      "title": "Knee joint · Meniscus · Basics",
+      "lead": "The menisci are fibrocartilaginous structures between the femoral condyles and the tibial plateau. There are two menisci: the medial and the lateral meniscus. Both improve joint congruity, distribute load and act as shock absorbers. For MRI reporting, shape, fixation, vascularity and surface contact of signal are central.",
+      "bullets": [
+        "Medial meniscus: C-shaped, fixed to the capsule and MCL, therefore much less mobile.",
+        "Lateral meniscus: more O-shaped, not attached to the lateral collateral ligament, therefore more mobile.",
+        "Tibial anchoring is provided by the meniscal roots at the anterior and posterior horns."
+      ]
+    },
+    "anatomy": {
+      "title": "Anatomy and vascular supply",
+      "lead": "The menisci are fibrocartilaginous structures between the femoral condyles and the tibial plateau. There are two menisci: the medial meniscus and the lateral meniscus. They improve joint congruity, distribute load and act as shock absorbers.",
+      "tableHeaders": [
+        "Feature",
+        "Medial meniscus",
+        "Lateral meniscus"
+      ],
+      "tableRows": [
+        [
+          "Shape",
+          "C-shaped",
+          "more O-shaped"
+        ],
+        [
+          "Fixation",
+          "firmly attached to capsule and medial collateral ligament",
+          "not fixed to the lateral ligaments"
+        ],
+        [
+          "Mobility",
+          "less mobile",
+          "more mobile"
+        ]
+      ],
+      "rootsTitle": "Attachments and meniscal roots",
+      "rootsText": "The attachments should be considered separately: femoral gliding contact with the condyles and tibial anchoring through the meniscal roots.",
+      "rootsItems": [
+        {
+          "title": "Femoro-meniscal contact",
+          "text": "The menisci articulate with the femoral condyles; their proximal surface is convex."
+        },
+        {
+          "title": "Tibial anchoring",
+          "text": "Firm anchoring to the tibial plateau is provided by the meniscal roots at the anterior and posterior horn of each meniscus."
+        }
+      ],
+      "imageAlt": "Schematic of both menisci on the tibial plateau with anterior and posterior root attachments; C-shaped medially and O-shaped laterally.",
+      "imageCaption": "Anterior and posterior root attachments of both menisci. Schematic from MSK.pdf, physical p.44 (printed p.43).",
+      "key": "The medial meniscus is more firmly attached and therefore less mobile. This can contribute to injury patterns, but does not determine them on its own."
+    },
+    "vascular": {
+      "title": "Vascular supply and healing potential",
+      "lead": "Vascularity decreases from the peripheral to the inner meniscal zone. The red-red, red-white and white-white scheme is a clinical orientation model; vascularity and healing potential cannot be determined by a fixed distance or zone alone.",
+      "zones": [
+        {
+          "name": "Red zone · peripheral zone",
+          "range": "outer third",
+          "status": "vascularized",
+          "therapy": "more favorable, but not guaranteed, healing potential"
+        },
+        {
+          "name": "Red-white zone · middle zone",
+          "range": "middle third",
+          "status": "variable vascularity",
+          "therapy": "variable potential"
+        },
+        {
+          "name": "White zone · inner zone",
+          "range": "inner third near the free edge",
+          "status": "generally avascular",
+          "therapy": "lower, not necessarily absent, healing potential"
+        }
+      ],
+      "tableHeaders": [
+        "Zone",
+        "Location",
+        "Vascularity"
+      ],
+      "tableRows": [
+        [
+          "Red zone",
+          "outer third",
+          "vascularized"
+        ],
+        [
+          "Red-white zone",
+          "middle third",
+          "variable"
+        ],
+        [
+          "White zone",
+          "inner third",
+          "generally avascular"
+        ]
+      ],
+      "imageAlt": "Schematic of the medial and lateral menisci with an outer vascularized zone, a middle zone with variable vascularity, and an inner usually avascular zone.",
+      "imageCaption": "Schematic vascular zones, not patient imaging. MSK.pdf, physical p.45 (printed p.44); boundaries should not be read as fixed distances.",
+      "key": "The zone is a broad vascularity pattern. Repairability and healing also depend on tear pattern, tissue, age and clinical context; a fixed distance alone does not determine them."
+    },
+    "mri": {
+      "title": "MRI diagnosis and reliable tear criteria",
+      "lead": "Knee MRI is assessed in three orthogonal planes. The basic protocol includes T1-weighted and fluid-sensitive images; exact sequence selection depends on the local protocol.",
+      "protocol": [
+        {
+          "name": "T1-weighted",
+          "text": "Part of the basic protocol; complements assessment of bone marrow and anatomy."
+        },
+        {
+          "name": "Fluid-sensitive",
+          "text": "Shows bone marrow edema and other fluid-rich changes. PD-weighted sequences are a common protocol option."
+        }
+      ],
+      "normalTitle": "Normal appearance",
+      "normalText": "Normal meniscus is predominantly low signal. The horns appear triangular sagittally and the body forms a bowtie on peripheral slices; assess overall shape in multiple planes."
+    },
+    "grading": {
+      "title": "Lotysch classification",
+      "lead": "Historical signal grading describes the MRI signal pattern. Surface contact, morphological defects and tear geometry are more useful in clinical reports than a number alone. Histology or repairability cannot be reliably inferred from it.",
+      "sourceCrossReference": "MSK.pdf, physical p.46 (printed p.45), labels complex, multi-plane, macerated or displaced morphology “Stoller grade IV”. This is a separate, source-specific morphology label, not an extension of the Lotysch signal grading shown here (grades 0–III); grade III in that system describes signal reaching an articular surface. No one-to-one mapping to the separately shown Jerosch extension grade IV is claimed.",
+      "lotyschTitle": "Simple model: grades 0 to III",
+      "simpleHeaders": [
+        "Grade",
+        "MRI signal",
+        "Interpretation",
+        "Limitation"
+      ],
+      "simpleRows": [
+        [
+          "0",
+          "Homogeneous low signal",
+          "Normal signal pattern",
+          "Also assess overall shape"
+        ],
+        [
+          "I",
+          "Focal, without surface contact",
+          "Intrasubstance signal alteration",
+          "No definite tear demonstrated"
+        ],
+        [
+          "II",
+          "Linear/extensive; contact not reliably reproduced",
+          "Intrasubstance signal alteration",
+          "Assess morphology and the complete series"
+        ],
+        [
+          "III",
+          "Signal reaches an articular surface",
+          "Surface contact supports a tear",
+          "Reproduce contact; also assess morphological defects"
+        ]
+      ],
+      "extendedTitle": "Lotysch classification",
+      "tableHeaders": [
+        "Grade",
+        "Morphology",
+        "Surface contact",
+        "Clinical significance"
+      ],
+      "tableRows": [
+        [
+          "1",
+          "punctate or small focal signal increase",
+          "no contact",
+          "Intrasubstance signal alteration; no definite tear demonstrated"
+        ],
+        [
+          "2a",
+          "linear signal increase",
+          "no contact",
+          "no definite tear demonstrated"
+        ],
+        [
+          "2b",
+          "linear signal increase",
+          "contact on a single image",
+          "inconclusive for a true tear"
+        ],
+        [
+          "2c",
+          "wedge-shaped or globular signal increase",
+          "no definite contact",
+          "An occult tear is possible; signal alone does not establish it"
+        ],
+        [
+          "3",
+          "signal increase",
+          "Contact with at least one articular surface; repeated demonstration increases confidence",
+          "Surfacing signal supporting a tear; correlate with morphology and the complete series"
+        ]
+      ],
+      "key": "Describe surface contact, morphological defects and geometry in the report. Nonsurfacing signal alone does not prove a tear; a clear morphological defect can matter independently of signal grade."
+    },
+    "tear": {
+      "title": "MRI criteria for a meniscal tear",
+      "lead": "Surface contact and a definite morphological defect provide complementary tear criteria. Not all signs need to coexist. The complete series helps exclude partial volume and anatomical variants.",
+      "cave": "Intrameniscal signal increase alone is not sufficient to confidently diagnose a meniscal tear.",
+      "criteria": [
+        {
+          "title": "Contact with the articular surface",
+          "text": "The abnormal high signal reaches the superior or inferior meniscal surface."
+        },
+        {
+          "title": "Deformity",
+          "text": "A definite defect, missing meniscal tissue or a directly traceable displaced fragment supports a tear. Consider variants and prior surgery."
+        },
+        {
+          "title": "Two-slice-touch rule",
+          "text": "Surface contact on at least two images increases diagnostic confidence. Single-image contact without a supporting morphological defect remains inconclusive; a clear defect does not necessarily require two contact images."
+        }
+      ]
+    },
+    "tearTypes": {
+      "title": "Tear types",
+      "lead": "Describe tear geometry, location and extent; directly trace displaced fragments. These details support clinical planning but do not alone determine treatment or repairability.",
+      "caseIntro": "Five real MRI sequences: use the mouse wheel, arrow keys or slider to browse slices; swipe sideways on mobile.",
+      "caseOpen": "Original case on Radiopaedia ↗",
+      "caseItems": {
+        "longitudinal": {
+          "title": "Longitudinal tear",
+          "sign": "Vertical tear line parallel to the meniscal periphery."
+        },
+        "radial": {
+          "title": "Radial tear",
+          "sign": "Complete radial tear of the medial posterior root, shown axially."
+        },
+        "horizontal": {
+          "title": "Horizontal tear",
+          "sign": "Horizontal tear of the medial body and posterior horn with a concomitant ACL lesion."
+        },
+        "bucket": {
+          "title": "Bucket-handle tear",
+          "sign": "Displaced fragment with double-PCL and absent bow-tie signs."
+        },
+        "flap": {
+          "title": "Flap tear",
+          "sign": "Inferiorly displaced meniscal flap in the medial compartment."
+        }
+      },
+      "tableHeaders": [
+        "Tear type",
+        "Geometry",
+        "MRI sign",
+        "Clinical relevance"
+      ],
+      "tableRows": [
+        [
+          "Longitudinal tear",
+          "vertical, parallel to the periphery",
+          "Tear line along circumferential fibres",
+          "Peripheral location may favour preservation; also assess tissue and clinical context"
+        ],
+        [
+          "Radial tear",
+          "from free edge across circumferential fibres",
+          "Cleft; full-width defects may show a ghost sign",
+          "Specify width/depth and distance from root"
+        ],
+        [
+          "Horizontal tear",
+          "parallel to the tibial plateau",
+          "Separation of superior/inferior portions, possible parameniscal cyst",
+          "For degenerative symptoms without locking, assess active conservative options"
+        ],
+        [
+          "Bucket-handle tear",
+          "displaced longitudinal-vertical tear",
+          "Intercondylar fragment; possible double-PCL/absent bowtie",
+          "True locking warrants urgent orthopaedic assessment"
+        ],
+        [
+          "Flap tear",
+          "partially attached meniscal flap",
+          "Trace fragment position and donor site",
+          "Symptoms and tissue quality contribute to the clinical decision"
+        ]
+      ],
+      "caveTitle": "CAVE – bucket-handle tear",
+      "caveText": "A double-PCL or absent bow-tie sign may suggest a bucket-handle tear. Identify the displaced fragment directly. A mechanically locked knee requires urgent orthopaedic assessment."
+    },
+    "cases": {
+      "title": "Cases",
+      "lead": "Use the mouse wheel or slider to scroll through each MRI sequence on the page.",
+      "items": [
+        {
+          "title": "Globular signal in the posterior horn of the lateral meniscus without definite surface contact in a discoid meniscus.",
+          "label": "Grade 2c",
+          "tags": [
+            "Discoid meniscus"
+          ],
+          "meta": "PD-weighted · sagittal · mucoid degeneration · high risk of occult tear",
+          "sequence": "Sagittal · PD fat sat",
+          "caseId": "case-75168",
+          "frameCount": 18,
+          "frameExt": "jpeg",
+          "initialFrame": 8,
+          "url": "https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1",
+          "credit": "Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168"
+        },
+        {
+          "title": "Linear signal in the posterior horn of the medial meniscus with surface contact on only one slice in a discoid meniscus.",
+          "label": "Grade 2b",
+          "tags": [
+            "Discoid meniscus"
+          ],
+          "meta": "STIR · coronal · inconclusive · not a definite grade-3 tear",
+          "sequence": "Coronal · STIR",
+          "caseId": "case-14060-coronal-stir",
+          "frameCount": 7,
+          "frameExt": "jpg",
+          "initialFrame": 3,
+          "url": "https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1",
+          "credit": "Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060"
+        }
+      ],
+      "key": "Cases are useful because not every intrameniscal signal abnormality represents a definite meniscal tear."
+    },
+    "discoid": {
+      "title": "Discoid meniscus",
+      "lead": "A discoid meniscus is a congenital anatomic variant with an abnormally wide, disc-shaped meniscal body.\n\nIt almost exclusively affects the lateral meniscus and is more prone to tears than a normally shaped meniscus.",
+      "stats": [
+        {
+          "value": "4.5%",
+          "label": "MRI finding frequency",
+          "text": "in one retrospective series of 1,250 knee MRIs; not annual incidence"
+        },
+        {
+          "value": "~50%",
+          "label": "bilateral",
+          "text": "not uncommonly present on both sides"
+        },
+        {
+          "value": "almost exclusively",
+          "label": "Lateral meniscus",
+          "qualitative": true
+        }
+      ],
+      "overviewHeaders": [
+        "Parameter",
+        "Value"
+      ],
+      "overviewRows": [
+        [
+          "Affected meniscus",
+          "almost exclusively lateral meniscus"
+        ],
+        [
+          "Side distribution",
+          "bilateral in about 50% of cases"
+        ],
+        [
+          "Sex",
+          "no clear predilection"
+        ],
+        [
+          "Prevalence",
+          "reported to be higher in Asian populations"
+        ],
+        [
+          "Risk of tear",
+          "higher than in a normally shaped meniscus"
+        ]
+      ],
+      "childTitle": "Clinical clue in children",
+      "childText": "A snapping knee in a child should always raise suspicion for a discoid lateral meniscus.",
+      "mriTitle": "MRI criteria",
+      "mriHeaders": [
+        "Plane",
+        "Criterion",
+        "Threshold"
+      ],
+      "mriRows": [
+        [
+          "Coronal",
+          "absolute meniscal width",
+          "≥ 15 mm"
+        ],
+        [
+          "Coronal",
+          "minimum meniscal width / maximum tibial width (Samoto)",
+          "≥ 20%"
+        ],
+        [
+          "Sagittal, historical",
+          "Three-bowtie rule in older thick-section protocols",
+          "Do not use diagnostically with modern thin sections"
+        ]
+      ],
+      "sagittalTitle": "Sagittal sign",
+      "sagittalText": "Continuous bowtie count depends on slice thickness and meniscal size. With modern thin sections, abandon the three-bowtie rule and assess mid-coronal body width. Samoto additionally described a sagittal ratio (summed anterior/posterior horn widths to maximum meniscal diameter) ≥75%.",
+      "treatmentHeaders": [
+        "Situation",
+        "Management"
+      ],
+      "treatmentRows": [
+        [
+          "asymptomatic incidental finding",
+          "conservative, no intervention needed"
+        ],
+        [
+          "symptomatic without tear",
+          "conservative; arthroscopic saucerization if symptoms persist"
+        ],
+        [
+          "discoid meniscus with tear",
+          "meniscal repair plus partial resection if needed"
+        ],
+        [
+          "irreparable / severe destruction",
+          "partial or total meniscectomy only as last option"
+        ]
+      ],
+      "key": "Current main criterion: body width ≥ 15 mm on a mid-coronal slice. The classic three-slice sign is not a standalone diagnostic criterion on thin-slice MRI.",
+      "cave": "The classic three-slice sign is not a standalone diagnostic criterion on thin-slice MRI."
+    },
+    "therapy": {
+      "title": "Treatment concept: Save the meniscus",
+      "titlePrefix": "Treatment concept",
+      "saveText": "Save the Meniscus",
+      "lead": "MRI supports clinical decisions but does not alone establish surgery or repairability. For degenerative symptoms without true locking, structured exercise is a supported initial option. When surgery is indicated, preserve as much functional meniscal tissue as possible.",
+      "tableHeaders": [
+        "Situation",
+        "Principle"
+      ],
+      "tableRows": [
+        [
+          "Degenerative symptoms without true locking",
+          "Active conservative care, e.g. supervised exercise; reassess clinically"
+        ],
+        [
+          "Acute isolated tear with a clinical surgical indication",
+          "Assess preservation and repair options using tissue and morphology"
+        ],
+        [
+          "Mechanically relevant fragment found irreparable intraoperatively",
+          "If resection is necessary, preserve as much functional tissue as possible"
+        ]
+      ],
+      "key": "Preserve as much meniscus as possible, resect only as much as necessary."
+    },
+    "video": {
+      "title": "Learning video",
+      "text": "The learning video for this meniscus chapter is now available on YouTube.",
+      "cta": "Watch on YouTube",
+      "url": "https://youtu.be/L03fPcRZm_o?si=RzNDyM-Fmtig8I10"
+    }
+  },
+  "fa": {
+    "toc": "مسیر یادگیری",
+    "breadcrumbMsk": "اسکلتی-عضلانی",
+    "breadcrumbCurrent": "زانو · منیسک",
+    "title": "منیسک",
+    "subtitle": "مبانی، آناتومی، تشخیص MRI و معیارهای قطعی پارگی",
+    "sourceLabel": "Dr. Zia",
+    "keyLabel": "نکته مهم",
+    "caveLabel": "احتیاط",
+    "mcqTitle": "سوالات منیسک",
+    "mcqDesc": "سوالات مرتبط با آناتومی، درجه‌بندی MRI و تشخیص پارگی.",
+    "mcqCta": "شروع سوالات",
+    "actionMcq": "MCQ",
+    "actionFall": "موارد بالینی",
+    "actionFallStatus": "۲ کیس",
+    "actionFlash": "فلش‌کارت",
+    "openCase": "باز کردن مستقیم تصویر در Radiopaedia",
+    "zoomImage": "بزرگ‌نمایی تصویر",
+    "aiImageNotice": "این تصویر با هوش مصنوعی و فقط برای جهت‌یابی آموزشی ساخته شده است؛ ممکن است برخی جزئیات نادرست باشند و نباید به‌عنوان منبع تشخیصی استفاده شود.",
+    "closePreview": "بستن نمایش بزرگ",
+    "sections": [
+      {
+        "id": "anatomie",
+        "label": "آناتومی و خون‌رسانی",
+        "icon": "🦴"
+      },
+      {
+        "id": "mrt",
+        "label": "تشخیص MRI و معیارهای پارگی",
+        "icon": "🩻"
+      },
+      {
+        "id": "grading",
+        "label": "طبقه‌بندی Lotysch",
+        "icon": "📊"
+      },
+      {
+        "id": "risstypen",
+        "label": "انواع پارگی",
+        "icon": "🧩"
+      },
+      {
+        "id": "discoider",
+        "label": "منیسک دیسکوئید",
+        "icon": "🔵"
+      },
+      {
+        "id": "therapie",
+        "label": "اصل درمان",
+        "icon": "🧵"
+      },
+      {
+        "id": "lernvideo",
+        "label": "ویدیوی آموزشی",
+        "icon": "▶️"
+      }
+    ],
+    "heroCards": [
+      {
+        "value": "۲ برش",
+        "label": "قانون Two-slice-touch",
+        "text": "تماس سطحی تکرارشونده اطمینان را بالا می‌برد. نقص مورفولوژیک واضح می‌تواند حتی بدون تماس در دو تصویر پارگی را نشان دهد."
+      },
+      {
+        "value": "سیگنال + شکل",
+        "label": "ارزیابی هم‌زمان معیارهای پارگی",
+        "text": "تماس سطحی و نقص شکلی شواهد مکمل‌اند. سیگنال داخل منیسک به‌تنهایی نه پارگی و نه نیاز به جراحی را ثابت می‌کند."
+      },
+      {
+        "value": "حفظ",
+        "label": "حفظ منیسک",
+        "text": "در صورت امکان ترمیم و حفظ بافت منیسک بر رزکسیون اولویت دارد."
+      }
+    ],
+    "basics": {
+      "title": "مفصل زانو · منیسک · مبانی",
+      "lead": "منیسک‌ها ساختارهای فیبروکارتیلاژ بین کندیل‌های فمور و پلاتوی تیبیا هستند. دو منیسک وجود دارد: منیسک داخلی و منیسک خارجی. هر دو تطابق مفصلی را بهتر می‌کنند، نیرو را پخش می‌کنند و نقش ضربه‌گیر دارند. در گزارش MRI، شکل، میزان تثبیت، خون‌رسانی و تماس سیگنال با سطح مفصل اهمیت اصلی دارد.",
+      "bullets": [
+        "منیسک داخلی: C شکل، متصل به کپسول و MCL، بنابراین تحرک کمتر دارد.",
+        "منیسک خارجی: بیشتر O شکل، به رباط خارجی متصل نیست و تحرک بیشتری دارد.",
+        "اتصال به تیبیا از طریق ریشه‌های منیسک در شاخ قدامی و خلفی انجام می‌شود."
+      ]
+    },
+    "anatomy": {
+      "title": "آناتومی و خون‌رسانی",
+      "lead": "منیسک‌ها ساختارهای فیبروکارتیلاژی بین کندیل‌های فمور و پلاتوی تیبیا هستند. دو منیسک وجود دارد: منیسک داخلی و منیسک خارجی. آن‌ها تطابق مفصلی را بهتر می‌کنند، نیرو را پخش می‌کنند و مانند ضربه‌گیر عمل می‌کنند.",
+      "tableHeaders": [
+        "ویژگی",
+        "منیسک داخلی",
+        "منیسک خارجی"
+      ],
+      "tableRows": [
+        [
+          "شکل",
+          "C شکل",
+          "بیشتر O شکل"
+        ],
+        [
+          "تثبیت",
+          "به کپسول مفصلی و رباط جانبی داخلی متصل است",
+          "به رباط‌های خارجی متصل نیست"
+        ],
+        [
+          "تحرک",
+          "کم‌تحرک",
+          "متحرک‌تر"
+        ]
+      ],
+      "rootsTitle": "اتصالات و ریشه‌های منیسک",
+      "rootsText": "اتصالات بهتر است جداگانه بررسی شوند: تماس لغزشی با کندیل‌های فمور و اتصال محکم به تیبیا از طریق ریشه‌های منیسک.",
+      "rootsItems": [
+        {
+          "title": "تماس فمورو-منیسکال",
+          "text": "منیسک‌ها با کندیل‌های فمور مفصل می‌شوند و سطح پروگزیمال آن‌ها محدب است."
+        },
+        {
+          "title": "اتصال به تیبیا",
+          "text": "اتصال محکم به پلاتوی تیبیا از طریق ریشه‌های منیسک در شاخ قدامی و خلفی هر منیسک انجام می‌شود."
+        }
+      ],
+      "imageAlt": "شماتیک هر دو منیسک روی پلاتوی تیبیا با اتصال ریشه قدامی و خلفی؛ C شکل در سمت داخلی و O شکل در سمت خارجی.",
+      "imageCaption": "اتصال ریشه قدامی و خلفی هر دو منیسک. شماتیک از MSK.pdf، صفحهٔ PDF ۴۴ (چاپی ۴۳).",
+      "key": "اتصال محکم‌تر منیسک داخلی تحرک آن را کاهش می‌دهد. این تفاوت می‌تواند بر الگوی آسیب اثر بگذارد، اما به‌تنهایی تعیین‌کننده نیست."
+    },
+    "vascular": {
+      "title": "خون‌رسانی و پتانسیل ترمیم",
+      "lead": "خون‌رسانی از ناحیه محیطی به سمت بخش داخلی منیسک کاهش می‌یابد. تقسیم‌بندی قرمز-قرمز، قرمز-سفید و سفید-سفید یک الگوی بالینی کلی است؛ خون‌رسانی و پتانسیل ترمیم را نمی‌توان فقط با فاصله ثابت یا یک ناحیه تعیین کرد.",
+      "zones": [
+        {
+          "name": "ناحیه قرمز · ناحیه محیطی",
+          "range": "یک‌سوم خارجی",
+          "status": "دارای عروق",
+          "therapy": "پتانسیل ترمیم بیشتر، اما تضمین‌نشده"
+        },
+        {
+          "name": "ناحیه قرمز-سفید · ناحیه میانی",
+          "range": "یک‌سوم میانی",
+          "status": "خون‌رسانی متغیر",
+          "therapy": "پتانسیل متغیر"
+        },
+        {
+          "name": "ناحیه سفید · ناحیه داخلی",
+          "range": "یک‌سوم داخلی نزدیک لبه آزاد",
+          "status": "معمولاً بدون عروق",
+          "therapy": "پتانسیل کمتر، نه لزوماً صفر"
+        }
+      ],
+      "tableHeaders": [
+        "ناحیه",
+        "محل",
+        "خون‌رسانی"
+      ],
+      "tableRows": [
+        [
+          "قرمز",
+          "یک‌سوم خارجی",
+          "دارای عروق"
+        ],
+        [
+          "قرمز-سفید",
+          "یک‌سوم میانی",
+          "متغیر"
+        ],
+        [
+          "سفید",
+          "یک‌سوم داخلی",
+          "معمولاً بدون عروق"
+        ]
+      ],
+      "imageAlt": "شماتیک منیسک داخلی و خارجی با ناحیه محیطی دارای عروق، ناحیه میانی با خون‌رسانی متغیر و ناحیه داخلی که معمولاً بدون عروق است.",
+      "imageCaption": "شماتیک نواحی عروقی، نه تصویر بیمار. MSK.pdf، صفحهٔ PDF ۴۵ (چاپی ۴۴)؛ مرزها فاصله‌های ثابت نیستند.",
+      "key": "این ناحیه فقط الگوی کلی عروق را توصیف می‌کند. ترمیم‌پذیری و بهبود به شکل پارگی، کیفیت بافت، سن و شرایط بالینی هم بستگی دارد؛ فاصله ثابت به‌تنهایی تعیین‌کننده نیست."
+    },
+    "mri": {
+      "title": "تشخیص MRI و معیارهای قطعی پارگی",
+      "lead": "MRI زانو در سه صفحه عمود بر هم ارزیابی می‌شود. پروتکل پایه شامل تصاویر T1 و تصاویر حساس به مایع است؛ انتخاب دقیق سکانس به پروتکل مرکز بستگی دارد.",
+      "protocol": [
+        {
+          "name": "T1-weighted",
+          "text": "بخشی از پروتکل پایه؛ ارزیابی مغز استخوان و آناتومی را تکمیل می‌کند."
+        },
+        {
+          "name": "حساس به مایع",
+          "text": "از جمله ادم مغز استخوان و تغییرات پرمایع را نشان می‌دهد. سکانس PD-weighted یکی از گزینه‌های رایج پروتکل است."
+        }
+      ],
+      "normalTitle": "نمای طبیعی",
+      "normalText": "منیسک طبیعی عمدتاً کم‌سیگنال است. شاخ‌ها در ساژیتال مثلثی و تنه در برش‌های محیطی شبیه bow-tie دیده می‌شود؛ شکل کلی در چند صفحه بررسی شود."
+    },
+    "grading": {
+      "title": "طبقه‌بندی Lotysch",
+      "lead": "درجه‌بندی تاریخی سیگنال الگوی MRI را توصیف می‌کند. در گزارش بالینی، تماس سطحی، نقص مورفولوژیک و هندسهٔ پارگی از عدد تنها مفیدترند. بافت‌شناسی یا قابلیت ترمیم از آن با اطمینان استنتاج نمی‌شود.",
+      "sourceCrossReference": "در MSK.pdf، صفحهٔ PDF ۴۶ (صفحهٔ چاپی ۴۵)، مورفولوژی پیچیده، چندصفحه‌ای، ماکره یا جابه‌جا‌شده «Stoller Grade IV» نامیده شده است. این یک برچسب مورفولوژیک جداگانه و مختص این منبع است، نه ادامهٔ درجه‌بندی سیگنال Lotysch در این درس (درجات ۰ تا III)؛ در آن، درجهٔ III یعنی سیگنال به سطح مفصلی می‌رسد. هیچ تطبیق یک‌به‌یکی با درجهٔ IV توسعه‌یافتهٔ Jerosch که جداگانه نمایش داده شده ادعا نمی‌شود.",
+      "lotyschTitle": "مدل ساده: درجه ۰ تا III",
+      "simpleHeaders": [
+        "درجه",
+        "سیگنال MRI",
+        "تفسیر",
+        "محدودیت"
+      ],
+      "simpleRows": [
+        [
+          "0",
+          "کم‌سیگنال همگن",
+          "الگوی سیگنال طبیعی",
+          "شکل کلی هم بررسی شود"
+        ],
+        [
+          "I",
+          "کانونی، بدون تماس سطحی",
+          "تغییر سیگنال داخل منیسک",
+          "پارگی قطعی اثبات نشده"
+        ],
+        [
+          "II",
+          "خطی/گسترده؛ تماس به‌طور مطمئن تکرار نمی‌شود",
+          "تغییر سیگنال داخل منیسک",
+          "مورفولوژی و کل سری بررسی شوند"
+        ],
+        [
+          "III",
+          "سیگنال به سطح مفصلی می‌رسد",
+          "تماس سطحی از پارگی حمایت می‌کند",
+          "تماس تکرار و نقص شکلی هم ارزیابی شود"
+        ]
+      ],
+      "extendedTitle": "طبقه‌بندی Lotysch",
+      "tableHeaders": [
+        "درجه",
+        "مورفولوژی",
+        "تماس با سطح",
+        "اهمیت بالینی"
+      ],
+      "tableRows": [
+        [
+          "1",
+          "افزایش سیگنال نقطه‌ای یا کوچک",
+          "بدون تماس",
+          "تغییر سیگنال داخل منیسک؛ پارگی قطعی اثبات نشده"
+        ],
+        [
+          "2a",
+          "افزایش سیگنال خطی",
+          "بدون تماس",
+          "پارگی قطعی اثبات نشده است"
+        ],
+        [
+          "2b",
+          "افزایش سیگنال خطی",
+          "تماس فقط در یک تصویر",
+          "برای پارگی قطعی ناکافی"
+        ],
+        [
+          "2c",
+          "افزایش سیگنال گوه‌ای یا گلوبولار",
+          "بدون تماس واضح",
+          "پارگی مخفی ممکن است؛ سیگنال تنها آن را اثبات نمی‌کند"
+        ],
+        [
+          "3",
+          "افزایش سیگنال پاتولوژیک",
+          "تماس با حداقل یک سطح مفصلی؛ نمایش تکراری اطمینان را افزایش می‌دهد",
+          "سیگنال سطحی مؤید پارگی؛ با مورفولوژی و کل سری تطبیق داده شود"
+        ]
+      ],
+      "key": "در گزارش تماس سطحی، نقص شکلی و هندسه توصیف شوند. سیگنال بدون تماس سطحی به‌تنهایی پارگی را ثابت نمی‌کند؛ نقص شکلی واضح می‌تواند مستقل از گرید سیگنال مهم باشد."
+    },
+    "tear": {
+      "title": "معیارهای MRI برای پارگی منیسک",
+      "lead": "تماس سطحی و نقص مورفولوژیک واضح معیارهای مکمل پارگی‌اند و لازم نیست همهٔ علائم هم‌زمان وجود داشته باشند. کل سری به کنار گذاشتن حجم جزئی و واریانت‌های آناتومیک کمک می‌کند.",
+      "cave": "افزایش سیگنال داخل منیسک به تنهایی برای تشخیص قطعی پارگی کافی نیست.",
+      "criteria": [
+        {
+          "title": "تماس با سطح مفصلی",
+          "text": "سیگنال پاتولوژیک به سطح فوقانی یا تحتانی منیسک می‌رسد."
+        },
+        {
+          "title": "دفورمیتی",
+          "text": "نقص واضح، فقدان بافت منیسک یا قطعهٔ جابه‌جاشدهٔ قابل پیگیری از پارگی حمایت می‌کند. واریانت‌ها و جراحی قبلی لحاظ شوند."
+        },
+        {
+          "title": "قانون Two-slice-touch",
+          "text": "تماس سطحی در حداقل دو تصویر اطمینان تشخیصی را بالا می‌برد. تماس تک‌تصویری بدون نقص شکلی مؤید نامطمئن می‌ماند؛ نقص واضح الزاماً به دو تصویر دارای تماس نیاز ندارد."
+        }
+      ]
+    },
+    "tearTypes": {
+      "title": "انواع پارگی منیسک",
+      "lead": "هندسه، محل و گسترهٔ پارگی توصیف و قطعات جابه‌جاشده مستقیم دنبال شوند. این اطلاعات برنامه‌ریزی بالینی را پشتیبانی می‌کنند، اما به‌تنهایی درمان یا قابلیت ترمیم را تعیین نمی‌کنند.",
+      "caseIntro": "پنج سکانس واقعی MRI: با چرخ ماوس، کلیدهای جهت یا اسلایدر برش‌ها را مرور کنید؛ در موبایل به چپ و راست بکشید.",
+      "caseOpen": "کیس اصلی در Radiopaedia ↗",
+      "caseItems": {
+        "longitudinal": {
+          "title": "پارگی طولی",
+          "sign": "خط پارگی عمودی و موازی با حاشیهٔ منیسک."
+        },
+        "radial": {
+          "title": "پارگی رادیال",
+          "sign": "پارگی رادیال کامل ریشهٔ خلفی منیسک داخلی در نمای اکسیال."
+        },
+        "horizontal": {
+          "title": "پارگی افقی",
+          "sign": "پارگی افقی تنه و شاخ خلفی منیسک داخلی، همراه با آسیب ACL."
+        },
+        "bucket": {
+          "title": "پارگی Bucket-handle",
+          "sign": "قطعهٔ جابه‌جا شده با علامت PCL دوگانه و نبود Bow-tie."
+        },
+        "flap": {
+          "title": "پارگی فلپ",
+          "sign": "فلپ منیسک جابه‌جا شده به سمت پایین در بخش داخلی."
+        }
+      },
+      "tableHeaders": [
+        "نوع پارگی",
+        "هندسه",
+        "علامت MRI",
+        "جایگاه بالینی"
+      ],
+      "tableRows": [
+        [
+          "پارگی طولی",
+          "عمودی، موازی محیط",
+          "خط پارگی در امتداد الیاف محیطی",
+          "محل محیطی ممکن است به حفظ کمک کند؛ بافت و زمینهٔ بالینی هم بررسی شوند"
+        ],
+        [
+          "پارگی رادیال",
+          "از لبهٔ آزاد عرض الیاف محیطی را قطع می‌کند",
+          "شکاف؛ نقص تمام‌عرض ممکن است علامت شبح داشته باشد",
+          "عرض/عمق و فاصله از ریشه ذکر شوند"
+        ],
+        [
+          "پارگی افقی",
+          "موازی پلاتوی تیبیا",
+          "جدایی بخش‌های بالا/پایین، گاهی کیست پارامنیسکال",
+          "در علائم دژنراتیو بدون قفل‌شدگی، گزینه‌های محافظه‌کارانهٔ فعال بررسی شوند"
+        ],
+        [
+          "پارگی دسته‌سطلی",
+          "پارگی طولی‌عمودی جابه‌جاشده",
+          "قطعه در فضای بین‌کندیلی؛ احتمال PCL دوگانه/نبود bow-tie",
+          "قفل‌شدگی واقعی نیازمند ارزیابی فوری ارتوپدی است"
+        ],
+        [
+          "پارگی فلپ",
+          "فلپ منیسک با بخشی از اتصال باقی‌مانده",
+          "محل قطعه و مبدأ آن دنبال شوند",
+          "علائم و کیفیت بافت در تصمیم بالینی نقش دارند"
+        ]
+      ],
+      "caveTitle": "هشدار – پارگی Bucket-handle",
+      "caveText": "علامت Double-PCL یا فقدان Bow-tie می‌تواند پارگی دسته‌سطلی را مطرح کند. قطعهٔ جابه‌جا‌شده را مستقیماً شناسایی کنید. زانوی قفل‌شدهٔ مکانیکی نیازمند ارزیابی فوری ارتوپدی است."
+    },
+    "cases": {
+      "title": "نمونه کیس‌ها",
+      "lead": "با اسکرول ماوس یا اسلایدر، برش‌های هر سکانس MRI را مستقیماً در صفحه مرور کنید.",
+      "items": [
+        {
+          "title": "سیگنال گلوبولار در شاخ خلفی منیسک خارجی، بدون تماس قطعی با سطح مفصلی، در منیسک دیسکوئید.",
+          "label": "درجه 2c",
+          "tags": [
+            "منیسک دیسکوئید"
+          ],
+          "meta": "PD · ساژیتال · دژنراسیون موکوئید · ریسک بالای پارگی مخفی",
+          "sequence": "ساژیتال · PD fat sat",
+          "caseId": "case-75168",
+          "frameCount": 18,
+          "frameExt": "jpeg",
+          "initialFrame": 8,
+          "url": "https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1",
+          "credit": "Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168"
+        },
+        {
+          "title": "سیگنال خطی در شاخ خلفی منیسک داخلی، با تماس سطحی فقط در یک برش، در منیسک دیسکوئید.",
+          "label": "درجه 2b",
+          "tags": [
+            "منیسک دیسکوئید"
+          ],
+          "meta": "STIR · کرونال · غیرقطعی · پارگی قطعی Grade 3 نیست",
+          "sequence": "کرونال · STIR",
+          "caseId": "case-14060-coronal-stir",
+          "frameCount": 7,
+          "frameExt": "jpg",
+          "initialFrame": 3,
+          "url": "https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1",
+          "credit": "Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060"
+        }
+      ],
+      "key": "نمونه کیس‌ها مهم هستند، چون هر افزایش سیگنال داخل منیسک به معنی پارگی قطعی نیست."
+    },
+    "discoid": {
+      "title": "منیسک دیسکوئید",
+      "lead": "منیسک دیسکوئید یک واریانت مادرزادی است که در آن تنه منیسک پهن‌تر و شبیه دیسک است.\n\nاین حالت تقریباً همیشه منیسک خارجی را درگیر می‌کند و نسبت به منیسک طبیعی بیشتر مستعد پارگی است.",
+      "stats": [
+        {
+          "value": "۴٫۵٪",
+          "label": "فراوانی در MRI",
+          "text": "در یک مجموعهٔ گذشته‌نگر شامل ۱۲۵۰ MRI زانو؛ نه بروز سالانه"
+        },
+        {
+          "value": "~۵۰٪",
+          "label": "دوطرفه",
+          "text": "می‌تواند در هر دو زانو دیده شود"
+        },
+        {
+          "value": "تقریباً همیشه",
+          "label": "منیسک خارجی",
+          "qualitative": true
+        }
+      ],
+      "overviewHeaders": [
+        "پارامتر",
+        "مقدار"
+      ],
+      "overviewRows": [
+        [
+          "منیسک درگیر",
+          "تقریباً همیشه منیسک خارجی"
+        ],
+        [
+          "توزیع طرفی",
+          "در حدود ۵۰٪ موارد دوطرفه"
+        ],
+        [
+          "جنسیت",
+          "ارجحیت واضح ندارد"
+        ],
+        [
+          "شیوع",
+          "در جمعیت‌های آسیایی بیشتر گزارش شده است"
+        ],
+        [
+          "خطر پارگی",
+          "بیشتر از منیسک با شکل طبیعی"
+        ]
+      ],
+      "childTitle": "نکته بالینی در کودکان",
+      "childText": "شنیدن یا احساس Snapping در زانوی کودک باید شک به منیسک خارجی دیسکوئید را مطرح کند.",
+      "mriTitle": "معیارهای MRI",
+      "mriHeaders": [
+        "صفحه",
+        "معیار",
+        "حد آستانه"
+      ],
+      "mriRows": [
+        [
+          "کرونال",
+          "عرض مطلق منیسک",
+          "≥ ۱۵ میلی‌متر"
+        ],
+        [
+          "کرونال",
+          "حداقل عرض منیسک / حداکثر عرض تیبیا (Samoto)",
+          "≥ ۲۰٪"
+        ],
+        [
+          "ساژیتال، تاریخی",
+          "قاعدهٔ سه bow-tie در پروتکل‌های قدیمی با برش ضخیم",
+          "در برش‌های نازک امروزی برای تشخیص به‌کار نرود"
+        ]
+      ],
+      "sagittalTitle": "علامت ساژیتال",
+      "sagittalText": "تعداد bow-tie پیوسته به ضخامت برش و اندازهٔ منیسک بستگی دارد. در برش‌های نازک امروزی قاعدهٔ سه bow-tie کنار گذاشته و عرض تنه در کرونال میانی ارزیابی شود. Samoto نسبت ساژیتال دیگری (مجموع عرض شاخ‌های قدامی/خلفی به بیشترین قطر منیسک) ≥۷۵٪ توصیف کرده است.",
+      "treatmentHeaders": [
+        "وضعیت",
+        "اقدام"
+      ],
+      "treatmentRows": [
+        [
+          "یافته اتفاقی بدون علامت",
+          "محافظه‌کارانه، بدون نیاز به مداخله"
+        ],
+        [
+          "علامت‌دار بدون پارگی",
+          "درمان محافظه‌کارانه؛ در صورت تداوم علائم Saucerization آرتروسکوپیک"
+        ],
+        [
+          "منیسک دیسکوئید همراه با پارگی",
+          "ترمیم منیسک همراه با رزکسیون نسبی در صورت نیاز"
+        ],
+        [
+          "غیرقابل ترمیم / تخریب شدید",
+          "منیسککتومی نسبی یا کامل فقط به عنوان آخرین گزینه"
+        ]
+      ],
+      "key": "معیار اصلی فعلی: عرض تنه ≥ ۱۵ میلی‌متر در برش میانی کرونال. علامت کلاسیک سه برش در MRI با برش‌های نازک، معیار تشخیصی مستقل نیست.",
+      "cave": "علامت کلاسیک سه برش در MRI با برش‌های نازک، معیار تشخیصی مستقل نیست."
+    },
+    "therapy": {
+      "title": "اصول درمان: Save the Meniscus",
+      "titlePrefix": "اصول درمان",
+      "saveText": "حفظ منیسک",
+      "lead": "MRI تصمیم بالینی را پشتیبانی می‌کند، اما به‌تنهایی جراحی یا قابلیت ترمیم را تعیین نمی‌کند. در علائم دژنراتیو بدون قفل‌شدگی واقعی، برنامهٔ تمرینی ساختاریافته گزینهٔ اولیهٔ دارای پشتوانه است. اگر جراحی اندیکاسیون دارد، بیشترین بافت عملکردی منیسک حفظ شود.",
+      "tableHeaders": [
+        "وضعیت",
+        "اصل درمانی"
+      ],
+      "tableRows": [
+        [
+          "علائم دژنراتیو بدون قفل‌شدگی واقعی",
+          "درمان محافظه‌کارانهٔ فعال، مثلاً تمرین هدایت‌شده؛ ارزیابی مجدد بالینی"
+        ],
+        [
+          "پارگی حاد منفرد با اندیکاسیون بالینی جراحی",
+          "امکان حفظ و ترمیم بر اساس بافت و مورفولوژی بررسی شود"
+        ],
+        [
+          "قطعهٔ مکانیکی مهم که حین عمل غیرقابل‌ترمیم تشخیص داده شده",
+          "اگر برداشت لازم است، بیشترین مقدار ممکن بافت عملکردی حفظ شود"
+        ]
+      ],
+      "key": "اصل مهم این است که تا حد امکان بافت منیسک حفظ شود؛ برداشتن منیسک فقط در صورت ضرورت و به کمترین مقدار لازم انجام شود."
+    },
+    "video": {
+      "title": "ویدیوی آموزشی",
+      "text": "ویدیوی آموزشی این بخش درباره منیسک اکنون در YouTube در دسترس است.",
+      "cta": "مشاهده ویدیو در YouTube",
+      "url": "https://youtu.be/L03fPcRZm_o?si=RzNDyM-Fmtig8I10"
+    }
+  }
 }
 
 const TAKE_HOME_COPY = {
@@ -979,6 +1834,11 @@ function ImageFigure({ src, alt, caption, aiNotice, zoomable = false, zoomLabel 
 }
 
 const SOURCES = [
+  { label: 'ESSR · MRI of the knee practice recommendations (2024)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/' },
+  { label: 'AAOS · Acute Isolated Meniscal Pathology guideline (2024)', href: 'https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/' },
+  { label: 'Greenaway et al. · Meniscal ramp lesions: MRI criteria and surgical correlation (2020)', href: 'https://pubmed.ncbi.nlm.nih.gov/32875293/' },
+  { label: 'Kim et al. · Meniscal flounce: MRI and surgical correlation (2000)', href: 'https://pubmed.ncbi.nlm.nih.gov/10992813/' },
+  { label: 'Meniscal flounce and associated tears: original MRI cohort (2020)', href: 'https://pubmed.ncbi.nlm.nih.gov/32206830/' },
   { label: 'Kise et al. · Exercise therapy versus arthroscopic partial meniscectomy (BMJ, 2016; randomized trial)', href: 'https://www.bmj.com/content/354/bmj.i3740' },
   { label: 'Rohren et al. · Discoid lateral meniscus and the frequency of meniscal tears (Skeletal Radiology, 2001)', href: 'https://pubmed.ncbi.nlm.nih.gov/11465771/' },
   { label: 'Yu et al. · Meniscal flounce MR imaging (Radiology, 1997)', href: 'https://pubs.rsna.org/doi/10.1148/radiology.203.2.9114114' },
@@ -988,9 +1848,9 @@ const SOURCES = [
   { label: 'Magnetic resonance imaging of the knee (2020)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/' },
   { label: 'Crues et al. · Meniscal tears of the knee: accuracy of MR imaging (Radiology, 1987)', href: 'https://pubmed.ncbi.nlm.nih.gov/3602385/' },
   { label: 'De Smet & Tuite · Two-slice-touch rule (AJR, 2006)', href: 'https://pubmed.ncbi.nlm.nih.gov/16985134/' },
-  { label: 'Helms et al. · Bucket-handle tear MRI signs (Radiology, 2003)', href: 'https://pubmed.ncbi.nlm.nih.gov/12719929/' },
-  { label: 'Haims et al. · The flipped meniscus sign (Radiology, 1993)', href: 'https://pubmed.ncbi.nlm.nih.gov/8316871/' },
-  { label: 'Schweitzer et al. · Potential pitfalls of a double PCL sign (2009)', href: 'https://pubmed.ncbi.nlm.nih.gov/19234702/' },
+  { label: 'Dorsay & Helms · Bucket-handle tear MRI signs (Skeletal Radiology, 2003)', href: 'https://pubmed.ncbi.nlm.nih.gov/12719929/' },
+  { label: 'Haramati et al. · The flipped meniscus sign (Skeletal Radiology, 1993)', href: 'https://pubmed.ncbi.nlm.nih.gov/8316871/' },
+  { label: 'Venkatanarasimha et al. · Potential pitfalls of a double PCL sign (2009)', href: 'https://pubmed.ncbi.nlm.nih.gov/19234702/' },
   { label: 'Nguyen et al. · MR Imaging–based Diagnosis and Classification of Meniscal Tears (RadioGraphics, 2014)', href: 'https://pubs.rsna.org/doi/10.1148/rg.344125202' },
   { label: "Samoto et al. · MRI criteria for discoid lateral meniscus", href: 'https://pubmed.ncbi.nlm.nih.gov/11973030/' },
   { label: 'SSR consensus · Standardized MRI nomenclature for knee meniscal lesions (2026)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/' },
@@ -1109,7 +1969,7 @@ export default function MeniskusPage() {
 
         <div className={styles.heroActions}>
           <button type="button" className={styles.takeHomeJump} onClick={() => selectSection('takehome')}><SectionIcon id="takehome" />{takeHomeCopy.title}<span aria-hidden="true">↓</span></button>
-          <Link href={withLang(`/ueben/quiz?fach=msk&n=10&themen=meniskus&from=${encodeURIComponent(withLang('/msk/knie/meniskus'))}`)} className={`${styles.learnAction} ${styles.learnActionMcq}`}>
+          <Link href={withLang(`/ueben/quiz?fach=msk&n=24&themen=meniskus&from=${encodeURIComponent(withLang('/msk/knie/meniskus'))}`)} className={`${styles.learnAction} ${styles.learnActionMcq}`}>
             <span><SectionIcon id="quiz" /></span>
             <span>{copy.actionMcq}</span>
           </Link>

@@ -1,0 +1,2053 @@
+{
+  "packet": "AVM19",
+  "questionEntries": 285,
+  "cardEntries": 95,
+  "questionDelta": [
+    {
+      "path": "de[0].question",
+      "before": "Welche drei Strukturen gehören zur AVM?",
+      "after": "Welche Strukturen soll der Gefäßbefund einer parenchymalen AVM systematisch beschreiben?"
+    },
+    {
+      "path": "de[0].options[0].text",
+      "before": "Kapillarbett, Nidus, Dura",
+      "after": "Meningeale Feeder, duraler Fistelpunkt und Sinusabfluss"
+    },
+    {
+      "path": "de[0].options[1].text",
+      "before": "Arterie, Kapillare, Vene",
+      "after": "Konvergierende Markvenen, Sammelvene und venöser Abfluss"
+    },
+    {
+      "path": "de[0].options[2].text",
+      "before": "Feeder, Nidus, drainierende Venen",
+      "after": "Zuführende Arterien, Nidus und drainierende Venen"
+    },
+    {
+      "path": "de[0].options[3].text",
+      "before": "Aneurysma, Nidus, Sinusthrombose",
+      "after": "Gemischtsignalige Kavernen, Hämosiderinsaum und umgebendes Parenchym"
+    },
+    {
+      "path": "de[0].explanation",
+      "before": "Die AVM besteht aus zuführenden Arterien (Feeder), dem Nidus dysplastischer Gefäße und drainierenden Venen — ohne Kapillarbett.",
+      "after": "Die drei Komponenten sind Feeder, parenchymaler Nidus und venöse Drainage. Der Nidus verbindet arterielle und venöse Seite ohne normales Kapillarbett. Duraler Fistelpunkt, venöse Sammelanomalie und kavernöse Läsion beschreiben andere Gefäßmuster."
+    },
+    {
+      "path": "de[0].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "Diese Kombination passt zur dAVF und enthält keinen parenchymalen Nidus.",
+        "B": "Eine solche venöse Sammelstruktur passt eher zu einer DVA als zu einer AVM-Shuntarchitektur.",
+        "D": "Kavernen und Hämosiderinsaum passen eher zu einem Kavernom als zu Feeder–Nidus–Venen eines Hochflussshunts."
+      }
+    },
+    {
+      "path": "de[0].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://pmc.ncbi.nlm.nih.gov/articles/PMC12680281/"
+    },
+    {
+      "path": "de[1].question",
+      "before": "Mit welchen Beschwerden kann sich eine AVM erstmals zeigen?",
+      "after": "Textfall: Bei einer kortikalen AVM treten wiederholt rhythmische Zuckungen einer Hand auf, die sich auf den Arm ausbreiten. Die Person bleibt ansprechbar. Die aktuelle Bildgebung zeigt keine frische Blutung. Welche Ereignisart passt am besten?"
+    },
+    {
+      "path": "de[1].options[0].text",
+      "before": "Nur Fieber und Nackensteifigkeit",
+      "after": "Hämodynamische TIA"
+    },
+    {
+      "path": "de[1].options[1].text",
+      "before": "Blutung, Krampfanfall, Kopfschmerz oder fokales Defizit",
+      "after": "Fokaler motorischer Anfall"
+    },
+    {
+      "path": "de[1].options[2].text",
+      "before": "Ausschließlich Visusverlust",
+      "after": "Migräneaura"
+    },
+    {
+      "path": "de[1].options[3].text",
+      "before": "Nur asymptomatischer Zufallsbefund",
+      "after": "Reflexsynkope"
+    },
+    {
+      "path": "de[1].explanation",
+      "before": "Die PDF nennt Blutung als häufigste Erstmanifestation; Krampfanfall, Kopfschmerz und fokales Defizit sind weitere mögliche Vorstellungen.",
+      "after": "Rhythmische fokale Zuckungen mit Ausbreitung passen zu einem fokalen motorischen Anfall. Anfälle sind eine mögliche nicht hämorrhagische AVM-Präsentation. Die AVM ist ein relevanter struktureller Befund, beweist aber nicht ohne weitere klinische Abklärung die Ursache jeder Episode."
+    },
+    {
+      "path": "de[1].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "Auch eine TIA kann vorübergehende Symptome verursachen; die rhythmische motorische Ausbreitung ohne genannten hämodynamischen Trigger stützt hier eher einen Anfall.",
+        "C": "Eine Aura kann sich ausbreiten, doch die beschriebenen rhythmischen Zuckungen sind ein motorisches Anfallsmuster.",
+        "D": "Eine Synkope betrifft typischerweise das Bewusstsein durch globale Minderperfusion; erhaltene Ansprechbarkeit und fokale rhythmische Ausbreitung passen hier weniger gut."
+      }
+    },
+    {
+      "path": "de[1].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://pubmed.ncbi.nlm.nih.gov/28276064/"
+    },
+    {
+      "path": "de[2].question",
+      "before": "Welche Komplikation tritt bei einer AVM häufig auf?",
+      "after": "Textfall: Eine Person mit bekannter AVM entwickelt plötzlich starken Kopfschmerz, Erbrechen und ein fokales Defizit. Eine CCT ist unmittelbar verfügbar. Welche Untersuchung ist zur raschen ersten Blutungsbeurteilung am sinnvollsten?"
+    },
+    {
+      "path": "de[2].options[0].text",
+      "before": "Sinusvenenthrombose",
+      "after": "TOF-MRA zur Gefäßdarstellung"
+    },
+    {
+      "path": "de[2].options[1].text",
+      "before": "Meningitis",
+      "after": "DSA zur detaillierten Shuntanalyse"
+    },
+    {
+      "path": "de[2].options[2].text",
+      "before": "Hydrozephalus als typische Erstkomplikation",
+      "after": "CT-Perfusion zur Gewebedurchblutung"
+    },
+    {
+      "path": "de[2].options[3].text",
+      "before": "Intrazerebrale Blutung",
+      "after": "Native kraniale CT"
+    },
+    {
+      "path": "de[2].explanation",
+      "before": "Die PDF nennt intrazerebrale Blutungen als häufige Komplikation; die Erstmanifestationen werden separat behandelt.",
+      "after": "Die akut verfügbare native CT kann eine frische intrakranielle Blutung und Begleitfolgen rasch zeigen. Danach richtet sich die weitere Gefäßdiagnostik nach Befund und klinischer Situation. Die Frage betrifft den ersten Blutungsnachweis, nicht die vollständige AVM-Charakterisierung."
+    },
+    {
+      "path": "de[2].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "TOF-MRA ist für Gefäße hilfreich, beantwortet aber nicht vorrangig die rasche initiale Blutungsfrage.",
+        "B": "DSA kann für die Blutungsquelle und Therapieplanung folgen; die frische parenchymale Blutung wird zunächst mit akut verfügbarer Schnittbildgebung beurteilt.",
+        "C": "CT-Perfusion untersucht vor allem Hämodynamik; für die vorgegebene erste Blutungsbeurteilung ist die native CT geeigneter."
+      }
+    },
+    {
+      "path": "de[2].source",
+      "before": null,
+      "after": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "de[3].question",
+      "before": "Eine AVM hat einen Nidus von 4 cm, liegt im Thalamus, mit tiefer Drainage. Welcher Spetzler-Martin-Grad liegt vor?",
+      "after": "Eine AVM hat einen maximalen Nidusdurchmesser von 4 cm, liegt im Thalamus und drainiert auch in tiefe Hirnvenen. Welcher Spetzler-Martin-Grad ergibt sich?"
+    },
+    {
+      "path": "de[3].options[0].text",
+      "before": "Grad IV (4 Punkte: 2+1+1)",
+      "after": "Grad IV: 2 + 1 + 1"
+    },
+    {
+      "path": "de[3].options[1].text",
+      "before": "Grad II (2 Punkte)",
+      "after": "Grad II: 2 + 0 + 0"
+    },
+    {
+      "path": "de[3].options[2].text",
+      "before": "Grad III (3 Punkte)",
+      "after": "Grad III: 2 + 1 + 0"
+    },
+    {
+      "path": "de[3].options[3].text",
+      "before": "Grad V (5 Punkte)",
+      "after": "Grad V: 3 + 1 + 1"
+    },
+    {
+      "path": "de[3].explanation",
+      "before": "4 cm Nidus (3–6 cm = 2P) + Thalamus ist eloquent (1P) + tiefe Drainage (1P) = 4 Punkte = Spetzler-Martin Grad IV.",
+      "after": "4 cm liegt in der Größenklasse 3–6 cm (2 Punkte). Thalamus ist eloquent (1); eine tiefe Drainagekomponente zählt 1. Summe 4 = Grad IV. Dies beschreibt mikrochirurgisches Risiko, keine alleinige Therapieindikation."
+    },
+    {
+      "path": "de[3].wrongExplanations",
+      "before": null,
+      "after": {
+        "B": "Die Größe ist richtig, doch Thalamus und tiefe Drainage dürfen nicht mit 0 bewertet werden.",
+        "C": "Die tiefe Drainagekomponente fehlt in dieser Summe.",
+        "D": "4 cm erhält 2, nicht 3 Größenpunkte; 3 Punkte gelten erst bei > 6 cm."
+      }
+    },
+    {
+      "path": "de[3].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://pubmed.ncbi.nlm.nih.gov/3760956/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "de[4].question",
+      "before": "Welche AVM-Lokalisation gilt als eloquent?",
+      "after": "Welche der folgenden AVM-Lokalisationen zählt im Spetzler-Martin-System zur eloquenten Region?"
+    },
+    {
+      "path": "de[4].options[0].text",
+      "before": "Frontalpol",
+      "after": "Frontalpol außerhalb motorischer und sprachrelevanter Areale"
+    },
+    {
+      "path": "de[4].options[1].text",
+      "before": "Anteriore frontale Konvexität außerhalb motorischer und sprachrelevanter Areale",
+      "after": "Vordere temporale Konvexität außerhalb funktionell relevanter Sprachareale"
+    },
+    {
+      "path": "de[4].options[3].text",
+      "before": "Kleinhirnhemisphäre",
+      "after": "Oberflächliche Kleinhirnhemisphäre ohne Beteiligung tiefer Kerne oder Stiele"
+    },
+    {
+      "path": "de[4].explanation",
+      "before": "Im Spetzler-Martin-System zählen sensomotorischer, sprachrelevanter und visueller Kortex, Hypothalamus, Thalamus, innere Kapsel, Hirnstamm, Kleinhirnstiele und tiefe Kleinhirnkerne als eloquent. Der Thalamus ist hier die zutreffende Antwort. Die konkrete Funktionslage ist entscheidend; der Okzipitalpol darf nicht pauschal als nichteloquent gelten.",
+      "after": "Der Thalamus gehört zur eloquenten Liste. Auch sensomotorische, sprachrelevante und visuelle Regionen, innere Kapsel, Hirnstamm und tiefe Kleinhirnstrukturen sind zu beachten. Entscheidend ist die konkrete Funktionslage, nicht nur der Name eines Lappens."
+    },
+    {
+      "path": "de[4].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "Die Option liegt ausdrücklich außerhalb der genannten funktionellen Areale; sie ist hier nicht die eloquente Antwort.",
+        "B": "Auch temporale Lage ist nach der tatsächlichen Beziehung zu funktionellen Spracharealen zu bewerten; diese sind hier ausgenommen.",
+        "D": "Tiefe Kleinhirnkerne und Kleinhirnstiele sind eloquent; diese sind in der Option ausdrücklich nicht beteiligt."
+      }
+    },
+    {
+      "path": "de[4].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://pubmed.ncbi.nlm.nih.gov/3760956/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "de[5].question",
+      "before": "Welcher MRT-Befund ist am typischsten für eine AVM?",
+      "after": "Welches T1/T2-Muster stützt bei einer vermuteten parenchymalen Hochflussmalformation den Verdacht auf AVM?"
+    },
+    {
+      "path": "de[5].options[0].text",
+      "before": "Brush-like Enhancement in T1 C+",
+      "after": "Gemischtsignaliger Popcorn-Kern mit Hämosiderinrand"
+    },
+    {
+      "path": "de[5].options[1].text",
+      "before": "Flow voids in T1/T2 durch schnellen Blutfluss",
+      "after": "Gruppierte geschlängelte tubuläre Flow-voids"
+    },
+    {
+      "path": "de[5].options[2].text",
+      "before": "Popcorn-Kern in T2",
+      "after": "Liquorähnliche glatt begrenzte Kavität"
+    },
+    {
+      "path": "de[5].options[3].text",
+      "before": "Periläsionäres Ödem in FLAIR",
+      "after": "Unspezifische flächige FLAIR-Hyperintensität"
+    },
+    {
+      "path": "de[5].explanation",
+      "before": "Flow voids entstehen durch Signalauslöschung bei schnell fließendem Blut. Sie sind das typische T1/T2-Zeichen einer AVM.",
+      "after": "Tubuläre Flow-voids können schnell durchflossene Gefäße darstellen. Das Muster weckt Shuntverdacht, beweist aber ohne Angioarchitektur weder AVM noch Grad. Nidus und venöser Abfluss sind gezielt zu charakterisieren."
+    },
+    {
+      "path": "de[5].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "Ein gemischtsignaliger Kern mit Hämosiderinrand passt eher zu einem Kavernom.",
+        "C": "Eine liquorähnliche Kavität beschreibt kein durchflossenes Gefäßkonvolut.",
+        "D": "FLAIR-Hyperintensität kann Begleitschäden zeigen, ist aber kein gleichwertiges Gefäß-/Shuntzeichen."
+      }
+    },
+    {
+      "path": "de[5].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://pmc.ncbi.nlm.nih.gov/articles/PMC12680281/"
+    },
+    {
+      "path": "de[6].question",
+      "before": "Welche Sequenz kann Blutabbauprodukte einer früheren Blutung als Suszeptibilität zeigen?",
+      "after": "Eine AVM soll auf Blutabbauprodukte früherer Blutungen untersucht werden. Welche MRT-Sequenz ergänzt die übrige Bildgebung dafür besonders gezielt?"
+    },
+    {
+      "path": "de[6].options[0].text",
+      "before": "T1 nativ allein",
+      "after": "T1 ohne Kontrastmittel"
+    },
+    {
+      "path": "de[6].options[1].text",
+      "before": "TOF-MRA allein",
+      "after": "TOF-MRA"
+    },
+    {
+      "path": "de[6].options[2].text",
+      "before": "DWI allein",
+      "after": "DWI mit ADC"
+    },
+    {
+      "path": "de[6].options[3].text",
+      "before": "SWI bzw. T2*-gewichtete Sequenz",
+      "after": "SWI oder T2*-GRE"
+    },
+    {
+      "path": "de[6].explanation",
+      "before": "SWI und T2* sind empfindlich für Suszeptibilität durch Blutabbauprodukte; sie ersetzen die Gefäßdarstellung nicht.",
+      "after": "SWI/T2*-GRE sind empfindlich für Suszeptibilität durch Blutabbauprodukte. Andere Suszeptibilitätsquellen und der morphologische Kontext bleiben zu berücksichtigen. Die Sequenz ersetzt keine Darstellung von Nidus, Feedern und Drainage."
+    },
+    {
+      "path": "de[6].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "T1 zeigt Anatomie und bestimmte Blutstadien, ist aber für kleine Suszeptibilitätsresiduen weniger gezielt als SWI/T2*.",
+        "B": "TOF-MRA dient vor allem der Gefäßdarstellung; sie beantwortet nicht primär die Blutabbauproduktfrage.",
+        "C": "DWI/ADC untersuchen insbesondere Diffusion und akute Ischämie; für Suszeptibilitätsresiduen ist SWI/T2* geeigneter."
+      }
+    },
+    {
+      "path": "de[6].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "de[7].question",
+      "before": "Welcher DSA-Befund spricht spezifisch für eine parenchymale AVM mit arteriovenösem Shunt?",
+      "after": "Welche DSA-Konstellation stützt eine parenchymale AVM mit arteriovenösem Shunt?"
+    },
+    {
+      "path": "de[7].options[0].text",
+      "before": "Nidus + frühe Venenfüllung in der arteriellen Phase",
+      "after": "Parenchymaler Nidus mit venöser Füllung bereits in der arteriellen Phase"
+    },
+    {
+      "path": "de[7].options[1].text",
+      "before": "Aneurysma an der Bifurkation der A. cerebri media",
+      "after": "Sakkuläres MCA-Aneurysma ohne dargestellten Nidus"
+    },
+    {
+      "path": "de[7].options[2].text",
+      "before": "Retrograde Sinusfüllung ohne Nidus",
+      "after": "Meningealer Fistelpunkt am Sinus mit kortikalem Reflux ohne parenchymalen Nidus"
+    },
+    {
+      "path": "de[7].options[3].text",
+      "before": "Diffuses Hypervaskularisierungsmuster ohne Nidus",
+      "after": "Diffuse Gefäßvermehrung mit eingeschlossenem Hirngewebe ohne kompakten AVM-Nidus"
+    },
+    {
+      "path": "de[7].explanation",
+      "before": "Nidus und frühe venöse Drainage in der arteriellen Phase stützen eine parenchymale AVM. Retrograde Sinusfüllung ohne Nidus kann zu einer dAVF passen und beantwortet die Frage nach einer parenchymalen AVM nicht.",
+      "after": "Nidus und frühe venöse Füllung zeigen die relevante AV-Shuntarchitektur. Feeder, Nidusgrenzen, venöser Abfluss und assoziierte Aneurysmen sind im vollständigen Gefäßbefund zu beschreiben. Frühe Venenfüllung ohne parenchymalen Nidus wäre anders einzuordnen."
+    },
+    {
+      "path": "de[7].wrongExplanations",
+      "before": null,
+      "after": {
+        "B": "Ein Aneurysma kann koexistieren, ist aber kein Ersatz für den AVM-Nidus mit Shunt.",
+        "C": "Die durale Shuntstelle ohne parenchymalen Nidus passt eher zu einer dAVF.",
+        "D": "Dies beschreibt ein proliferatives Angiopathiemuster; die Abgrenzung zur AVM kann zusätzliche vollständige Gefäßbeurteilung erfordern."
+      }
+    },
+    {
+      "path": "de[7].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://pubmed.ncbi.nlm.nih.gov/18239181/"
+    },
+    {
+      "path": "de[8].question",
+      "before": "Welche drei Kriterien bilden den Spetzler-Martin-Score?",
+      "after": "Textfall: Ein Nidus misst maximal 2,8 cm und liegt außerhalb eloquenter Regionen. Der Abfluss erfolgt sowohl oberflächlich als auch über tiefe Hirnvenen. Welcher Spetzler-Martin-Grad ergibt sich?"
+    },
+    {
+      "path": "de[8].options[0].text",
+      "before": "Alter, Blutungsstatus, Zahl der Feeder",
+      "after": "Grad I: 1 + 0 + 0"
+    },
+    {
+      "path": "de[8].options[1].text",
+      "before": "Nidusgröße, eloquente Lage, venöse Drainage",
+      "after": "Grad II: 1 + 0 + 1"
+    },
+    {
+      "path": "de[8].options[2].text",
+      "before": "Nidusvolumen, Ödem, Aneurysmen",
+      "after": "Grad III: 2 + 0 + 1"
+    },
+    {
+      "path": "de[8].options[3].text",
+      "before": "Lokalisation, Drainage, Zahl der Blutungen",
+      "after": "Grad IV: 2 + 1 + 1"
+    },
+    {
+      "path": "de[8].explanation",
+      "before": "Der Score kombiniert Nidusgröße, Eloquenz der Lage und venöse Drainage zur Einschätzung des operativen Risikos.",
+      "after": "Unter 3 cm ergibt 1 Punkt. Nichteloquente Lage ergibt 0. Jede tiefe Drainagekomponente zählt 1, auch bei zusätzlichem oberflächlichem Abfluss. Damit 2 Punkte = Grad II. Größenmessung und beide Drainageanteile müssen nachvollziehbar dokumentiert sein."
+    },
+    {
+      "path": "de[8].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "Der zusätzliche oberflächliche Abfluss hebt die tiefe Drainagekomponente nicht auf.",
+        "C": "2,8 cm liegt unter 3 cm und erhält 1 statt 2 Größenpunkte.",
+        "D": "Hier wurden sowohl Größe als auch Eloquenz zu hoch bewertet."
+      }
+    },
+    {
+      "path": "de[8].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://pubmed.ncbi.nlm.nih.gov/3760956/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "de[9].question",
+      "before": "Welche Behandlungsverfahren werden in der Übersicht genannt?",
+      "after": "Welche AVM-Behandlungsmodalität wirkt durch eine verzögert eintretende Gefäßobliteration, sodass während der Latenz ein Blutungsrisiko fortbestehen kann?"
+    },
+    {
+      "path": "de[9].options[0].text",
+      "before": "Nur Antibiotika",
+      "after": "Mikrochirurgische vollständige Resektion"
+    },
+    {
+      "path": "de[9].options[1].text",
+      "before": "Nur Kortikosteroide",
+      "after": "Endovaskuläre vollständige Shuntokklusion"
+    },
+    {
+      "path": "de[9].options[2].text",
+      "before": "Mikrochirurgie, Embolisation und Radiochirurgie",
+      "after": "Stereotaktische Radiochirurgie"
+    },
+    {
+      "path": "de[9].options[3].text",
+      "before": "Ausschließlich Beobachtung",
+      "after": "Symptomorientierte Beobachtung ohne Shuntintervention"
+    },
+    {
+      "path": "de[9].explanation",
+      "before": "Die genannten Verfahren sind mögliche Optionen; die Liste allein bestimmt keine Empfehlung für den Einzelfall.",
+      "after": "Die Radiochirurgie kann eine erst im Verlauf entstehende Obliteration bewirken. Ein noch durchgängiger Shunt kann in der Latenz bluten; der Behandlungstermin allein belegt keinen Verschluss. Nutzen, Behandlungsrisiken und Verlaufskontrollen werden individuell geplant."
+    },
+    {
+      "path": "de[9].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "Die vollständige Resektion entfernt den Nidus unmittelbar; operative Risiken und Nachweis des vollständigen Ergebnisses bleiben gesondert zu beurteilen.",
+        "B": "Eine vollständige endovaskuläre Okklusion ist ein mechanisch/embolisch erreichter Verschluss, nicht der verzögerte strahlenbiologische Mechanismus.",
+        "D": "Beobachtung behandelt Symptome und überwacht den Verlauf, zielt aber nicht durch Bestrahlung auf eine verzögerte Obliteration."
+      }
+    },
+    {
+      "path": "de[9].source",
+      "before": null,
+      "after": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://jnis.bmj.com/content/14/11/1118"
+    },
+    {
+      "path": "de[10].question",
+      "before": "Wie unterscheidet sich die AVM bildgebend von der dAVF?",
+      "after": "Textfall: Die DSA zeigt meningeale Feeder zu einer duralen Shuntstelle am Sinus mit kortikalem Reflux. Ein parenchymaler Nidus ist nicht nachweisbar. Welche Gefäßläsion passt am besten?"
+    },
+    {
+      "path": "de[10].options[0].text",
+      "before": "AVM hat Nidus im Parenchym; dAVF hat keinen Nidus und liegt in der Dura",
+      "after": "Durale AV-Fistel"
+    },
+    {
+      "path": "de[10].options[1].text",
+      "before": "AVM und dAVF sind bildgebend nicht zu unterscheiden",
+      "after": "Parenchymale AVM"
+    },
+    {
+      "path": "de[10].options[2].text",
+      "before": "dAVF hat immer einen größeren Nidus als AVM",
+      "after": "Unkomplizierte DVA"
+    },
+    {
+      "path": "de[10].options[3].text",
+      "before": "AVM liegt immer in der Dura",
+      "after": "Moyamoya-Kollateralnetz"
+    },
+    {
+      "path": "de[10].explanation",
+      "before": "Die AVM hat einen Nidus im Hirnparenchym und ist kongenital. Die dAVF liegt in der Dura, hat keinen Nidus und ist meist erworben.",
+      "after": "Die durale Shuntstelle ohne parenchymalen Nidus passt zur dAVF. Eine AVM wird anhand ihres parenchymalen Nidus und der Shuntarchitektur abgegrenzt. Drainagemuster und klinisches Risiko der Fistel sind anschließend gesondert zu beurteilen."
+    },
+    {
+      "path": "de[10].wrongExplanations",
+      "before": null,
+      "after": {
+        "B": "Der definierende parenchymale Nidus ist hier nicht dargestellt; stattdessen wird eine durale Fistel beschrieben.",
+        "C": "Eine unkomplizierte DVA ist ein venöses Drainagemuster ohne diese arterielle durale Shuntstelle.",
+        "D": "Moyamoya beschreibt Kollateralen bei terminaler arterieller Steno-Okklusion, nicht die beschriebene durale AV-Shuntstelle."
+      }
+    },
+    {
+      "path": "de[10].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "de[11].question",
+      "before": "Welche Faktoren beeinflussen das Blutungsrisiko einer AVM?",
+      "after": "Zwei unbehandelte AVMs haben denselben Spetzler-Martin-Grad. Welches zusätzliche Merkmal ist in der patientenbasierten Metaanalyse von Kim et al. (2014) ein wichtiger Prädiktor späterer Blutung?"
+    },
+    {
+      "path": "de[11].options[0].text",
+      "before": "Nur das Alter",
+      "after": "Stärkeres Gefäß-Enhancement auf T1 nach Kontrastmittel"
+    },
+    {
+      "path": "de[11].options[1].text",
+      "before": "Nur die Nidusgröße",
+      "after": "4,5 statt 3,5 cm Durchmesser innerhalb derselben Größenkategorie"
+    },
+    {
+      "path": "de[11].options[2].text",
+      "before": "Es ist für alle AVMs gleich",
+      "after": "Ein Krampfanfall als Erstpräsentation ohne nachgewiesene Blutung"
+    },
+    {
+      "path": "de[11].options[3].text",
+      "before": "Unter anderem Rupturstatus und Population",
+      "after": "Eine frühere AVM-bedingte Blutungspräsentation"
+    },
+    {
+      "path": "de[11].explanation",
+      "before": "Risikoangaben hängen vom Rupturstatus und der untersuchten Population ab; Einzelwerte sind nicht pauschal auf jeden Fall übertragbar.",
+      "after": "Eine hämorrhagische Erstpräsentation war in der Metaanalyse ein starker unabhängiger Prädiktor späterer Blutung. Auch Alter und weitere Gefäßmerkmale können relevant sein; der Spetzler-Martin-Grad schätzt hingegen primär mikrochirurgisches Risiko. Studienraten sind keine sichere individuelle oder lebenslange Vorhersage."
+    },
+    {
+      "path": "de[11].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "Enhancementintensität ist hier kein gleichwertig etablierter Prädiktor einer späteren Blutung.",
+        "B": "Nidusgröße ist für den OP-Score wichtig; in dieser Metaanalyse war sie kein unabhängiger Prädiktor späterer Blutung.",
+        "C": "Ein Anfall kann eine AVM-Präsentation sein; er entspricht aber nicht der dokumentierten hämorrhagischen Präsentation als Risikomerkmal."
+      }
+    },
+    {
+      "path": "de[11].source",
+      "before": null,
+      "after": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4141996/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "en[0].question",
+      "before": "Which three structures make up an AVM?",
+      "after": "Which structures should a vascular report of a parenchymal AVM systematically describe?"
+    },
+    {
+      "path": "en[0].options[0].text",
+      "before": "Capillary bed, nidus, dura",
+      "after": "Meningeal feeders, dural fistula point and sinus drainage"
+    },
+    {
+      "path": "en[0].options[1].text",
+      "before": "Artery, capillary, vein",
+      "after": "Converging medullary veins, collecting vein and venous outflow"
+    },
+    {
+      "path": "en[0].options[2].text",
+      "before": "Feeder, nidus, draining veins",
+      "after": "Feeding arteries, nidus and draining veins"
+    },
+    {
+      "path": "en[0].options[3].text",
+      "before": "Aneurysm, nidus, sinus thrombosis",
+      "after": "Mixed-signal caverns, haemosiderin rim and surrounding parenchyma"
+    },
+    {
+      "path": "en[0].explanation",
+      "before": "AVM consists of feeding arteries (feeder), the nidus of dysplastic vessels, and draining veins — without a capillary bed.",
+      "after": "The three components are feeders, a parenchymal nidus and venous drainage. The nidus connects arterial and venous sides without a normal capillary bed. A dural fistula point, venous collecting anomaly and cavernous lesion describe other vascular patterns."
+    },
+    {
+      "path": "en[0].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "This combination fits a dAVF and has no parenchymal nidus.",
+        "B": "Such a venous collecting structure fits a DVA rather than AVM shunt architecture.",
+        "D": "Caverns and a haemosiderin rim fit a cavernoma rather than the feeder–nidus–veins of a high-flow shunt."
+      }
+    },
+    {
+      "path": "en[0].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://pmc.ncbi.nlm.nih.gov/articles/PMC12680281/"
+    },
+    {
+      "path": "en[1].question",
+      "before": "Which symptoms may be an initial presentation of an AVM?",
+      "after": "Text vignette: with a cortical AVM, recurrent rhythmic jerking starts in one hand and spreads to the arm. The person remains responsive. Current imaging shows no fresh haemorrhage. Which event type fits best?"
+    },
+    {
+      "path": "en[1].options[0].text",
+      "before": "Fever and neck stiffness only",
+      "after": "Haemodynamic TIA"
+    },
+    {
+      "path": "en[1].options[1].text",
+      "before": "Haemorrhage, seizure, headache or focal deficit",
+      "after": "Focal motor seizure"
+    },
+    {
+      "path": "en[1].options[2].text",
+      "before": "Visual loss exclusively",
+      "after": "Migraine aura"
+    },
+    {
+      "path": "en[1].options[3].text",
+      "before": "Only an asymptomatic incidental finding",
+      "after": "Reflex syncope"
+    },
+    {
+      "path": "en[1].explanation",
+      "before": "The PDF identifies haemorrhage as the most common initial presentation; seizure, headache and focal deficit are other possible presentations.",
+      "after": "Rhythmic focal jerking with spread fits a focal motor seizure. Seizures are a possible nonhaemorrhagic AVM presentation. The AVM is a relevant structural finding but does not establish the cause of every episode without further clinical assessment."
+    },
+    {
+      "path": "en[1].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "A TIA can also cause transient symptoms; rhythmic motor spread without a stated haemodynamic trigger favors a seizure here.",
+        "C": "An aura can spread, but the described rhythmic jerking is a motor seizure pattern.",
+        "D": "Syncope typically affects consciousness through global hypoperfusion; retained responsiveness and focal rhythmic spread fit less well here."
+      }
+    },
+    {
+      "path": "en[1].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://pubmed.ncbi.nlm.nih.gov/28276064/"
+    },
+    {
+      "path": "en[2].question",
+      "before": "Which complication commonly occurs with an AVM?",
+      "after": "Text vignette: a person with known AVM develops sudden severe headache, vomiting and a focal deficit. CT is immediately available. Which examination is most appropriate for rapid initial haemorrhage assessment?"
+    },
+    {
+      "path": "en[2].options[0].text",
+      "before": "Cerebral venous sinus thrombosis",
+      "after": "TOF-MRA for vascular imaging"
+    },
+    {
+      "path": "en[2].options[1].text",
+      "before": "Meningitis",
+      "after": "DSA for detailed shunt analysis"
+    },
+    {
+      "path": "en[2].options[2].text",
+      "before": "Hydrocephalus as the typical first complication",
+      "after": "CT perfusion for tissue perfusion"
+    },
+    {
+      "path": "en[2].options[3].text",
+      "before": "Intracerebral haemorrhage",
+      "after": "Noncontrast head CT"
+    },
+    {
+      "path": "en[2].explanation",
+      "before": "The PDF identifies intracerebral haemorrhage as a common complication; initial presentations are covered separately.",
+      "after": "Immediately available noncontrast CT can rapidly show fresh intracranial haemorrhage and associated effects. Subsequent vascular investigation depends on findings and clinical circumstances. This question concerns initial haemorrhage assessment, not full AVM characterization."
+    },
+    {
+      "path": "en[2].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "TOF-MRA helps assess vessels but does not primarily address rapid initial haemorrhage assessment.",
+        "B": "DSA may follow for the bleeding source and planning; fresh parenchymal haemorrhage is first assessed with immediately available cross-sectional imaging.",
+        "C": "CT perfusion primarily examines haemodynamics; noncontrast CT better addresses the stated initial haemorrhage assessment."
+      }
+    },
+    {
+      "path": "en[2].source",
+      "before": null,
+      "after": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "en[3].question",
+      "before": "An AVM has a 4 cm nidus, lies in the thalamus, with deep drainage. What Spetzler-Martin grade is this?",
+      "after": "An AVM has a maximum nidus diameter of 4 cm, is thalamic and also drains to deep cerebral veins. What is its Spetzler-Martin grade?"
+    },
+    {
+      "path": "en[3].options[0].text",
+      "before": "Grade IV (4 points: 2+1+1)",
+      "after": "Grade IV: 2 + 1 + 1"
+    },
+    {
+      "path": "en[3].options[1].text",
+      "before": "Grade II (2 points)",
+      "after": "Grade II: 2 + 0 + 0"
+    },
+    {
+      "path": "en[3].options[2].text",
+      "before": "Grade III (3 points)",
+      "after": "Grade III: 2 + 1 + 0"
+    },
+    {
+      "path": "en[3].options[3].text",
+      "before": "Grade V (5 points)",
+      "after": "Grade V: 3 + 1 + 1"
+    },
+    {
+      "path": "en[3].explanation",
+      "before": "4 cm nidus (3–6 cm = 2 pts) + thalamus is eloquent (1 pt) + deep drainage (1 pt) = 4 points = Spetzler-Martin Grade IV.",
+      "after": "4 cm is in the 3–6 cm size category (2 points). The thalamus is eloquent (1); a deep drainage component contributes 1. Total 4 = grade IV. This describes microsurgical risk, not a standalone treatment indication."
+    },
+    {
+      "path": "en[3].wrongExplanations",
+      "before": null,
+      "after": {
+        "B": "The size score is correct, but thalamus and deep drainage cannot each be scored 0.",
+        "C": "This total omits the deep drainage component.",
+        "D": "4 cm receives 2 rather than 3 size points; 3 points apply only above 6 cm."
+      }
+    },
+    {
+      "path": "en[3].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://pubmed.ncbi.nlm.nih.gov/3760956/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "en[4].question",
+      "before": "Which AVM location is considered eloquent?",
+      "after": "Which of the following AVM locations is an eloquent region in the Spetzler-Martin system?"
+    },
+    {
+      "path": "en[4].options[0].text",
+      "before": "Frontal pole",
+      "after": "Frontal pole outside motor and language regions"
+    },
+    {
+      "path": "en[4].options[1].text",
+      "before": "Anterior frontal convexity outside motor and language areas",
+      "after": "Anterior temporal convexity outside functionally relevant language regions"
+    },
+    {
+      "path": "en[4].options[3].text",
+      "before": "Cerebellar hemisphere",
+      "after": "Superficial cerebellar hemisphere without deep nuclear or peduncular involvement"
+    },
+    {
+      "path": "en[4].explanation",
+      "before": "In the Spetzler-Martin system, sensorimotor, language and visual cortex, hypothalamus, thalamus, internal capsule, brainstem, cerebellar peduncles and deep cerebellar nuclei are eloquent. The thalamus is the correct answer here. Functional location matters; the occipital pole must not be categorically called noneloquent.",
+      "after": "The thalamus is on the eloquent list. Sensorimotor, language and visual regions, internal capsule, brainstem and deep cerebellar structures also require consideration. Exact functional location matters, not just a lobe name."
+    },
+    {
+      "path": "en[4].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "This option is explicitly outside the stated functional regions and is not the eloquent answer here.",
+        "B": "Temporal location must also be judged by its actual relationship to functional language areas, which are excluded here.",
+        "D": "Deep cerebellar nuclei and peduncles are eloquent; the option explicitly excludes their involvement."
+      }
+    },
+    {
+      "path": "en[4].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://pubmed.ncbi.nlm.nih.gov/3760956/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "en[5].question",
+      "before": "Which MRI finding is most typical of an AVM?",
+      "after": "Which T1/T2 pattern supports suspected AVM in a possible parenchymal high-flow malformation?"
+    },
+    {
+      "path": "en[5].options[0].text",
+      "before": "Brush-like enhancement on T1 C+",
+      "after": "Mixed-signal popcorn core with a haemosiderin rim"
+    },
+    {
+      "path": "en[5].options[1].text",
+      "before": "Flow voids on T1/T2 due to rapid blood flow",
+      "after": "Clustered serpiginous tubular flow voids"
+    },
+    {
+      "path": "en[5].options[2].text",
+      "before": "Popcorn core on T2",
+      "after": "Smoothly defined CSF-like cavity"
+    },
+    {
+      "path": "en[5].options[3].text",
+      "before": "Perilesional oedema on FLAIR",
+      "after": "Nonspecific confluent FLAIR hyperintensity"
+    },
+    {
+      "path": "en[5].explanation",
+      "before": "Flow voids arise from signal loss with rapidly flowing blood. They are the typical T1/T2 sign of AVM.",
+      "after": "Tubular flow voids may represent rapidly flowing vessels. The pattern raises suspicion of a shunt but, without angioarchitecture, establishes neither AVM nor grade. Characterize nidus and venous drainage specifically."
+    },
+    {
+      "path": "en[5].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "A mixed-signal core with a haemosiderin rim more strongly suggests cavernoma.",
+        "C": "A CSF-like cavity does not describe a perfused vascular tangle.",
+        "D": "FLAIR hyperintensity may show associated injury but is not an equivalent vascular/shunt sign."
+      }
+    },
+    {
+      "path": "en[5].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://pmc.ncbi.nlm.nih.gov/articles/PMC12680281/"
+    },
+    {
+      "path": "en[6].question",
+      "before": "Which sequence can show susceptibility from blood products of a prior haemorrhage?",
+      "after": "An AVM is being assessed for blood products from previous haemorrhage. Which MRI sequence most specifically complements the other imaging for this purpose?"
+    },
+    {
+      "path": "en[6].options[0].text",
+      "before": "Unenhanced T1 alone",
+      "after": "Precontrast T1"
+    },
+    {
+      "path": "en[6].options[1].text",
+      "before": "TOF-MRA alone",
+      "after": "TOF-MRA"
+    },
+    {
+      "path": "en[6].options[2].text",
+      "before": "DWI alone",
+      "after": "DWI with ADC"
+    },
+    {
+      "path": "en[6].options[3].text",
+      "before": "SWI or a T2*-weighted sequence",
+      "after": "SWI or T2*-GRE"
+    },
+    {
+      "path": "en[6].explanation",
+      "before": "SWI and T2* are sensitive to susceptibility from blood products; they do not replace vascular imaging.",
+      "after": "SWI/T2*-GRE are sensitive to susceptibility from blood products. Other susceptibility sources and the morphological context must still be considered. The sequence does not replace characterization of nidus, feeders and drainage."
+    },
+    {
+      "path": "en[6].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "T1 shows anatomy and some blood stages but is less targeted to small susceptibility residues than SWI/T2*.",
+        "B": "TOF-MRA primarily depicts vessels rather than answering the blood-product question.",
+        "C": "DWI/ADC particularly assess diffusion and acute ischaemia; SWI/T2* better targets susceptibility residues."
+      }
+    },
+    {
+      "path": "en[6].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "en[7].question",
+      "before": "Which DSA finding supports a parenchymal AVM with arteriovenous shunting?",
+      "after": "Which DSA pattern supports a parenchymal AVM with arteriovenous shunting?"
+    },
+    {
+      "path": "en[7].options[0].text",
+      "before": "Nidus + early venous filling in the arterial phase",
+      "after": "Parenchymal nidus with venous filling during the arterial phase"
+    },
+    {
+      "path": "en[7].options[1].text",
+      "before": "Aneurysm at the MCA bifurcation",
+      "after": "Saccular MCA aneurysm without a demonstrated nidus"
+    },
+    {
+      "path": "en[7].options[2].text",
+      "before": "Retrograde sinus filling without nidus",
+      "after": "Meningeal fistula point at a sinus with cortical reflux and no parenchymal nidus"
+    },
+    {
+      "path": "en[7].options[3].text",
+      "before": "Diffuse hypervascularisation without nidus",
+      "after": "Diffuse vascular proliferation with interspersed brain tissue and no compact AVM nidus"
+    },
+    {
+      "path": "en[7].explanation",
+      "before": "A nidus and early venous drainage in the arterial phase support a parenchymal AVM. Retrograde sinus filling without a nidus can fit a dAVF and does not answer the question about a parenchymal AVM.",
+      "after": "A nidus with early venous filling demonstrates the relevant AV shunt architecture. Feeders, nidus margins, venous outflow and associated aneurysms should be described in a complete vascular report. Early venous filling without a parenchymal nidus would require another classification."
+    },
+    {
+      "path": "en[7].wrongExplanations",
+      "before": null,
+      "after": {
+        "B": "An aneurysm can coexist but does not substitute for an AVM nidus with shunting.",
+        "C": "A dural shunt point without a parenchymal nidus favors dAVF.",
+        "D": "This describes a proliferative angiopathy pattern; distinguishing it from AVM may require additional comprehensive vascular assessment."
+      }
+    },
+    {
+      "path": "en[7].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://pubmed.ncbi.nlm.nih.gov/18239181/"
+    },
+    {
+      "path": "en[8].question",
+      "before": "Which three criteria make up the Spetzler–Martin score?",
+      "after": "Text vignette: a nidus measures at most 2.8 cm and lies outside eloquent regions. Drainage is both superficial and through deep cerebral veins. What is the Spetzler-Martin grade?"
+    },
+    {
+      "path": "en[8].options[0].text",
+      "before": "Age, rupture status, number of feeders",
+      "after": "Grade I: 1 + 0 + 0"
+    },
+    {
+      "path": "en[8].options[1].text",
+      "before": "Nidus size, eloquent location, venous drainage",
+      "after": "Grade II: 1 + 0 + 1"
+    },
+    {
+      "path": "en[8].options[2].text",
+      "before": "Nidus volume, oedema, aneurysms",
+      "after": "Grade III: 2 + 0 + 1"
+    },
+    {
+      "path": "en[8].options[3].text",
+      "before": "Location, drainage, number of haemorrhages",
+      "after": "Grade IV: 2 + 1 + 1"
+    },
+    {
+      "path": "en[8].explanation",
+      "before": "The score combines nidus size, eloquence of location and venous drainage to estimate operative risk.",
+      "after": "Below 3 cm gives 1 point. Noneloquent location gives 0. Any deep drainage component contributes 1, even with additional superficial drainage. Thus 2 points = grade II. Size measurement and both drainage components should be documented."
+    },
+    {
+      "path": "en[8].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "Additional superficial outflow does not cancel the deep drainage component.",
+        "C": "2.8 cm is below 3 cm and receives 1 rather than 2 size points.",
+        "D": "Both size and eloquence have been over-scored here."
+      }
+    },
+    {
+      "path": "en[8].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://pubmed.ncbi.nlm.nih.gov/3760956/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "en[9].question",
+      "before": "Which treatment modalities are listed in the overview?",
+      "after": "Which AVM treatment modality works through delayed vascular obliteration, so that haemorrhage risk may persist during the latency period?"
+    },
+    {
+      "path": "en[9].options[0].text",
+      "before": "Antibiotics only",
+      "after": "Complete microsurgical resection"
+    },
+    {
+      "path": "en[9].options[1].text",
+      "before": "Corticosteroids only",
+      "after": "Complete endovascular shunt occlusion"
+    },
+    {
+      "path": "en[9].options[2].text",
+      "before": "Microsurgery, embolisation and radiosurgery",
+      "after": "Stereotactic radiosurgery"
+    },
+    {
+      "path": "en[9].options[3].text",
+      "before": "Observation only",
+      "after": "Symptom-directed observation without shunt intervention"
+    },
+    {
+      "path": "en[9].explanation",
+      "before": "These modalities are possible options; the list alone does not determine a recommendation for an individual case.",
+      "after": "Radiosurgery may produce obliteration that develops over time. A still-patent shunt may bleed during latency; the treatment date alone does not establish closure. Benefits, treatment risks and surveillance are planned individually."
+    },
+    {
+      "path": "en[9].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "Complete resection removes the nidus immediately; operative risks and confirmation of completeness require separate assessment.",
+        "B": "Complete endovascular occlusion is mechanically/embolically achieved closure rather than the delayed radiobiological mechanism.",
+        "D": "Observation manages symptoms and monitors the course but does not target delayed obliteration through irradiation."
+      }
+    },
+    {
+      "path": "en[9].source",
+      "before": null,
+      "after": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://jnis.bmj.com/content/14/11/1118"
+    },
+    {
+      "path": "en[10].question",
+      "before": "How does AVM differ from dAVF on imaging?",
+      "after": "Text vignette: DSA shows meningeal feeders to a dural shunt point at a sinus with cortical reflux. No parenchymal nidus is demonstrated. Which vascular lesion fits best?"
+    },
+    {
+      "path": "en[10].options[0].text",
+      "before": "AVM has a parenchymal nidus; dAVF has no nidus and lies in the dura",
+      "after": "Dural AV fistula"
+    },
+    {
+      "path": "en[10].options[1].text",
+      "before": "AVM and dAVF cannot be distinguished on imaging",
+      "after": "Parenchymal AVM"
+    },
+    {
+      "path": "en[10].options[2].text",
+      "before": "dAVF always has a larger nidus than AVM",
+      "after": "Uncomplicated DVA"
+    },
+    {
+      "path": "en[10].options[3].text",
+      "before": "AVM always lies in the dura",
+      "after": "Moyamoya collateral network"
+    },
+    {
+      "path": "en[10].explanation",
+      "before": "AVM has a parenchymal nidus and is congenital. dAVF is dural, nidus-free and mostly acquired.",
+      "after": "A dural shunt point without a parenchymal nidus fits dAVF. AVM is differentiated by its parenchymal nidus and shunt architecture. The fistula drainage pattern and clinical risk then require separate assessment."
+    },
+    {
+      "path": "en[10].wrongExplanations",
+      "before": null,
+      "after": {
+        "B": "The defining parenchymal nidus is not shown; a dural fistula is described instead.",
+        "C": "An uncomplicated DVA is a venous drainage pattern without this arterial dural shunt point.",
+        "D": "Moyamoya describes collaterals with terminal arterial steno-occlusion rather than the stated dural AV shunt point."
+      }
+    },
+    {
+      "path": "en[10].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "en[11].question",
+      "before": "Which factors influence haemorrhage risk in an AVM?",
+      "after": "Two untreated AVMs have the same Spetzler-Martin grade. Which additional feature is an important predictor of later haemorrhage in the patient-level meta-analysis by Kim et al. (2014)?"
+    },
+    {
+      "path": "en[11].options[0].text",
+      "before": "Age only",
+      "after": "Stronger vascular enhancement on postcontrast T1"
+    },
+    {
+      "path": "en[11].options[1].text",
+      "before": "Nidus size only",
+      "after": "A 4.5 rather than 3.5 cm diameter within the same size category"
+    },
+    {
+      "path": "en[11].options[2].text",
+      "before": "It is the same for all AVMs",
+      "after": "A seizure as initial presentation without demonstrated haemorrhage"
+    },
+    {
+      "path": "en[11].options[3].text",
+      "before": "Among other factors, rupture status and population",
+      "after": "Prior AVM-related haemorrhagic presentation"
+    },
+    {
+      "path": "en[11].explanation",
+      "before": "Risk estimates depend on rupture status and the studied population; single values cannot be applied universally.",
+      "after": "Haemorrhagic presentation was a strong independent predictor of later haemorrhage in the meta-analysis. Age and other vascular features may also matter; Spetzler-Martin primarily estimates microsurgical risk. Study rates are not certain individual or lifetime predictions."
+    },
+    {
+      "path": "en[11].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "Enhancement intensity is not an equivalently established predictor of later haemorrhage here.",
+        "B": "Nidus size matters for the operative score; in this meta-analysis it was not an independent predictor of later haemorrhage.",
+        "C": "A seizure can be an AVM presentation but does not equal documented haemorrhagic presentation as a risk feature."
+      }
+    },
+    {
+      "path": "en[11].source",
+      "before": null,
+      "after": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4141996/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "fa[0].question",
+      "before": "کدام سه ساختار AVM را تشکیل می‌دهند؟",
+      "after": "در گزارش عروقی AVM پارانشیمی کدام ساختارها باید به‌طور منظم توصیف شوند؟"
+    },
+    {
+      "path": "fa[0].options[0].text",
+      "before": "بستر مویرگی، نیدوس، دورا",
+      "after": "تغذیه‌کنندگان مننژیال، نقطهٔ فیستول دورال و خروج سینوسی"
+    },
+    {
+      "path": "fa[0].options[1].text",
+      "before": "شریان، مویرگ، ورید",
+      "after": "وریدهای مدولاری همگرا، ورید جمع‌کننده و خروج وریدی"
+    },
+    {
+      "path": "fa[0].options[2].text",
+      "before": "تغذیه‌کننده، نیدوس، وریدهای تخلیه‌کننده",
+      "after": "شریان‌های تغذیه‌کننده، نیدوس و وریدهای تخلیه‌کننده"
+    },
+    {
+      "path": "fa[0].options[3].text",
+      "before": "آنوریسم، نیدوس، ترومبوز سینوس",
+      "after": "کاورن‌های با سیگنال مختلط، حاشیهٔ هموسیدرین و پارانشیم اطراف"
+    },
+    {
+      "path": "fa[0].explanation",
+      "before": "AVM از شریان‌های تغذیه‌کننده، نیدوس عروق دیسپلاستیک و وریدهای تخلیه‌کننده تشکیل می‌شود — بدون بستر مویرگی.",
+      "after": "سه جزء عبارت‌اند از تغذیه‌کنندگان، نیدوس پارانشیمی و درناژ وریدی. نیدوس بخش شریانی و وریدی را بدون بستر مویرگی طبیعی مرتبط می‌کند. نقطهٔ فیستول دورال، آنومالی جمع‌کنندهٔ وریدی و ضایعهٔ کاورنوس الگوهای عروقی دیگری را توصیف می‌کنند."
+    },
+    {
+      "path": "fa[0].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "این ترکیب با dAVF سازگار است و نیدوس پارانشیمی ندارد.",
+        "B": "چنین ساختار جمع‌کنندهٔ وریدی بیشتر با DVA سازگار است تا معماری شانت AVM.",
+        "D": "کاورن‌ها و حاشیهٔ هموسیدرین بیشتر با کاورنوم سازگارند تا تغذیه‌کننده–نیدوس–وریدهای یک شانت پرجریان."
+      }
+    },
+    {
+      "path": "fa[0].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://pmc.ncbi.nlm.nih.gov/articles/PMC12680281/"
+    },
+    {
+      "path": "fa[1].question",
+      "before": "AVM ممکن است ابتدا با چه علائمی تظاهر کند؟",
+      "after": "سناریوی متنی: در فرد دارای AVM کورتیکال، پرش‌های ریتمیک تکرارشونده از یک دست آغاز و به بازو گسترش می‌یابند. فرد پاسخ‌گو می‌ماند. تصویربرداری فعلی خونریزی تازه نشان نمی‌دهد. کدام نوع رویداد سازگارتر است؟"
+    },
+    {
+      "path": "fa[1].options[0].text",
+      "before": "فقط تب و سفتی گردن",
+      "after": "TIA همودینامیک"
+    },
+    {
+      "path": "fa[1].options[1].text",
+      "before": "خونریزی، تشنج، سردرد یا نقص کانونی",
+      "after": "تشنج حرکتی کانونی"
+    },
+    {
+      "path": "fa[1].options[2].text",
+      "before": "فقط از دست رفتن بینایی",
+      "after": "اورای میگرن"
+    },
+    {
+      "path": "fa[1].options[3].text",
+      "before": "فقط یافته اتفاقی بدون علامت",
+      "after": "سنکوپ رفلکسی"
+    },
+    {
+      "path": "fa[1].explanation",
+      "before": "PDF خونریزی را شایع‌ترین تظاهر اولیه می‌داند؛ تشنج، سردرد و نقص کانونی نیز از تظاهرات ممکن‌اند.",
+      "after": "پرش‌های ریتمیک کانونی با گسترش با تشنج حرکتی کانونی سازگارند. تشنج از تظاهرات ممکن غیرهموراژیک AVM است. AVM یافتهٔ ساختاری مهمی است، اما بدون بررسی بالینی بیشتر علت هر حمله را اثبات نمی‌کند."
+    },
+    {
+      "path": "fa[1].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "TIA نیز می‌تواند علائم گذرا ایجاد کند؛ گسترش حرکتی ریتمیک بدون محرک همودینامیک ذکرشده در اینجا بیشتر از تشنج حمایت می‌کند.",
+        "C": "اورا می‌تواند گسترش یابد، اما پرش‌های ریتمیک توصیف‌شده الگوی تشنج حرکتی‌اند.",
+        "D": "سنکوپ معمولاً با کاهش پرفیوژن کلی بر هوشیاری اثر می‌گذارد؛ پاسخ‌گویی حفظ‌شده و گسترش ریتمیک کانونی در اینجا کمتر سازگارند."
+      }
+    },
+    {
+      "path": "fa[1].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://pubmed.ncbi.nlm.nih.gov/28276064/"
+    },
+    {
+      "path": "fa[2].question",
+      "before": "کدام عارضه در AVM شایع است؟",
+      "after": "سناریوی متنی: فرد دارای AVM شناخته‌شده ناگهان دچار سردرد شدید، استفراغ و نقص کانونی می‌شود. CT فوراً در دسترس است. کدام بررسی برای ارزیابی سریع اولیهٔ خونریزی مناسب‌تر است؟"
+    },
+    {
+      "path": "fa[2].options[0].text",
+      "before": "ترومبوز سینوس وریدی مغز",
+      "after": "TOF-MRA برای تصویربرداری عروق"
+    },
+    {
+      "path": "fa[2].options[1].text",
+      "before": "مننژیت",
+      "after": "DSA برای تحلیل دقیق شانت"
+    },
+    {
+      "path": "fa[2].options[2].text",
+      "before": "هیدروسفالی به‌عنوان عارضهٔ اولیهٔ تیپیک",
+      "after": "CT پرفیوژن برای خون‌رسانی بافت"
+    },
+    {
+      "path": "fa[2].options[3].text",
+      "before": "خونریزی داخل مغزی",
+      "after": "CT بدون تزریق سر"
+    },
+    {
+      "path": "fa[2].explanation",
+      "before": "PDF خونریزی داخل مغزی را عارضه‌ای شایع می‌داند؛ تظاهرات اولیه جداگانه بررسی شده‌اند.",
+      "after": "CT بدون تزریقِ فوراً در دسترس می‌تواند خونریزی تازهٔ داخل جمجمه و پیامدهای همراه را سریع نشان دهد. بررسی عروقی بعدی به یافته‌ها و وضعیت بالینی وابسته است. پرسش دربارهٔ ارزیابی اولیهٔ خونریزی است، نه تعیین کامل ویژگی‌های AVM."
+    },
+    {
+      "path": "fa[2].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "TOF-MRA برای عروق مفید است، اما در اولویت، پاسخ‌گوی پرسش ارزیابی سریع اولیهٔ خونریزی نیست.",
+        "B": "DSA می‌تواند برای منشأ خونریزی و برنامه‌ریزی پس از آن انجام شود؛ خونریزی تازهٔ پارانشیمی ابتدا با تصویربرداری مقطعی فوراً در دسترس بررسی می‌شود.",
+        "C": "CT پرفیوژن عمدتاً همودینامیک را بررسی می‌کند؛ برای ارزیابی اولیهٔ خونریزیِ مطرح‌شده، CT بدون تزریق مناسب‌تر است."
+      }
+    },
+    {
+      "path": "fa[2].source",
+      "before": null,
+      "after": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "fa[3].question",
+      "before": "یک AVM نیدوس ۴ سانتی‌متری دارد، در تالاموس قرار دارد، با درناژ عمقی. کدام درجه Spetzler-Martin است؟",
+      "after": "یک AVM قطر حداکثر نیدوس ۴ سانتی‌متر دارد، در تالاموس است و به وریدهای عمقی مغز نیز تخلیه می‌شود. درجهٔ اسپتزلر–مارتین آن چیست؟"
+    },
+    {
+      "path": "fa[3].options[0].text",
+      "before": "درجه IV (۴ امتیاز: ۲+۱+۱)",
+      "after": "درجهٔ IV: ۲ + ۱ + ۱"
+    },
+    {
+      "path": "fa[3].options[1].text",
+      "before": "درجه II (۲ امتیاز)",
+      "after": "درجهٔ II: ۲ + ۰ + ۰"
+    },
+    {
+      "path": "fa[3].options[2].text",
+      "before": "درجه III (۳ امتیاز)",
+      "after": "درجهٔ III: ۲ + ۱ + ۰"
+    },
+    {
+      "path": "fa[3].options[3].text",
+      "before": "درجه V (۵ امتیاز)",
+      "after": "درجهٔ V: ۳ + ۱ + ۱"
+    },
+    {
+      "path": "fa[3].explanation",
+      "before": "نیدوس ۴ سانتی‌متری (۳–۶ سانتی‌متر = ۲ امتیاز) + تالاموس گویا است (۱ امتیاز) + درناژ عمقی (۱ امتیاز) = ۴ امتیاز = درجه IV.",
+      "after": "۴ سانتی‌متر در ردهٔ اندازهٔ ۳–۶ سانتی‌متر است (۲ امتیاز). تالاموس ناحیهٔ مهم عملکردی است (۱)؛ جزء درناژ عمقی ۱ امتیاز دارد. جمع ۴ = درجهٔ IV. این بیانگر خطر میکروجراحی است، نه اندیکاسیون مستقل درمان."
+    },
+    {
+      "path": "fa[3].wrongExplanations",
+      "before": null,
+      "after": {
+        "B": "امتیاز اندازه درست است، اما تالاموس و درناژ عمقی را نباید هرکدام ۰ در نظر گرفت.",
+        "C": "در این جمع، جزء درناژ عمقی لحاظ نشده است.",
+        "D": "۴ سانتی‌متر ۲ امتیاز اندازه دارد، نه ۳؛ ۳ امتیاز برای بیش از ۶ سانتی‌متر است."
+      }
+    },
+    {
+      "path": "fa[3].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://pubmed.ncbi.nlm.nih.gov/3760956/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "fa[4].question",
+      "before": "کدام محل AVM گویا (eloquent) محسوب می‌شود؟",
+      "after": "کدام محل AVM در نظام اسپتزلر–مارتین ناحیهٔ مهم عملکردی محسوب می‌شود؟"
+    },
+    {
+      "path": "fa[4].options[0].text",
+      "before": "قطب فرونتال",
+      "after": "قطب فرونتال خارج از نواحی حرکتی و زبانی"
+    },
+    {
+      "path": "fa[4].options[1].text",
+      "before": "کانوکسیتی قدامی فرونتال خارج از نواحی حرکتی و زبانی",
+      "after": "کانوکسیتی تمپورال قدامی خارج از نواحی مهم عملکردی زبان"
+    },
+    {
+      "path": "fa[4].options[3].text",
+      "before": "نیم‌کره مخچه",
+      "after": "نیمکرهٔ سطحی مخچه بدون درگیری هسته‌های عمقی یا پایه‌ها"
+    },
+    {
+      "path": "fa[4].explanation",
+      "before": "در نظام اسپتزلر–مارتین، قشر حسی‌حرکتی، زبانی و بینایی، هیپوتالاموس، تالاموس، کپسول داخلی، ساقهٔ مغز، پایه‌های مخچه و هسته‌های عمقی مخچه نواحی مهم عملکردی محسوب می‌شوند. در این سؤال تالاموس پاسخ درست است. محل عملکردی دقیق اهمیت دارد؛ قطب اکسیپیتال را نباید به‌طور کلی غیرمهم عملکردی دانست.",
+      "after": "تالاموس در فهرست نواحی مهم عملکردی است. نواحی حسی‌حرکتی، زبانی و بینایی، کپسول داخلی، ساقهٔ مغز و ساختارهای عمقی مخچه نیز باید در نظر گرفته شوند. محل عملکردی دقیق اهمیت دارد، نه صرفاً نام یک لوب."
+    },
+    {
+      "path": "fa[4].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "این گزینه صراحتاً خارج از نواحی عملکردی ذکرشده است و در اینجا پاسخِ ناحیهٔ مهم عملکردی نیست.",
+        "B": "محل تمپورال نیز باید با توجه به ارتباط واقعی با نواحی عملکردی زبان سنجیده شود که در این گزینه مستثنا شده‌اند.",
+        "D": "هسته‌های عمقی و پایه‌های مخچه نواحی مهم عملکردی‌اند؛ درگیری آن‌ها در گزینه صراحتاً وجود ندارد."
+      }
+    },
+    {
+      "path": "fa[4].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://pubmed.ncbi.nlm.nih.gov/3760956/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "fa[5].question",
+      "before": "کدام یافته MRI برای AVM تیپیک‌ترین است؟",
+      "after": "در یک مالفورماسیون پارانشیمی احتمالاً پرجریان، کدام الگوی T1/T2 از شک به AVM حمایت می‌کند؟"
+    },
+    {
+      "path": "fa[5].options[0].text",
+      "before": "افزایش برس‌مانند در T1 C+",
+      "after": "هستهٔ پاپ‌کورنی با سیگنال مختلط و حاشیهٔ هموسیدرین"
+    },
+    {
+      "path": "fa[5].options[1].text",
+      "before": "فقدان سیگنال جریان (flow void) در T1/T2 به دلیل جریان خون سریع",
+      "after": "flow voidهای لوله‌ای پیچ‌خورده و خوشه‌ای"
+    },
+    {
+      "path": "fa[5].options[2].text",
+      "before": "هسته پاپ‌کورنی در T2",
+      "after": "حفرهٔ با حدود صاف و سیگنال شبیه CSF"
+    },
+    {
+      "path": "fa[5].options[3].text",
+      "before": "ادم اطراف ضایعه در FLAIR",
+      "after": "پرسیگنالی گسترده و غیراختصاصی در FLAIR"
+    },
+    {
+      "path": "fa[5].explanation",
+      "before": "فقدان سیگنال جریان (flow void) از از بین رفتن سیگنال با خون با جریان سریع ایجاد می‌شوند. آن‌ها علامت تیپیک T1/T2 AVM هستند.",
+      "after": "flow voidهای لوله‌ای می‌توانند عروق با جریان سریع باشند. این الگو شک به شانت را مطرح می‌کند، اما بدون آنژیوآناتومی نه AVM و نه درجه را اثبات می‌کند. نیدوس و خروج وریدی باید هدفمند مشخص شوند."
+    },
+    {
+      "path": "fa[5].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "هستهٔ با سیگنال مختلط و حاشیهٔ هموسیدرین بیشتر به نفع کاورنوم است.",
+        "C": "حفرهٔ شبیه CSF یک شبکهٔ عروقی دارای جریان را توصیف نمی‌کند.",
+        "D": "پرسیگنالی FLAIR ممکن است آسیب همراه را نشان دهد، اما نشانهٔ هم‌ارز عروقی/شانت نیست."
+      }
+    },
+    {
+      "path": "fa[5].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://pmc.ncbi.nlm.nih.gov/articles/PMC12680281/"
+    },
+    {
+      "path": "fa[6].question",
+      "before": "کدام سکانس می‌تواند سوسپتیبیلیتی ناشی از فرآورده‌های خونیِ خونریزی قبلی را نشان دهد؟",
+      "after": "برای بررسی AVM از نظر فرآورده‌های خونی ناشی از خونریزی قبلی، کدام توالی MRI به‌طور هدفمندتر تصویربرداری دیگر را تکمیل می‌کند؟"
+    },
+    {
+      "path": "fa[6].options[0].text",
+      "before": "فقط T1 بدون کنتراست",
+      "after": "T1 بدون تزریق"
+    },
+    {
+      "path": "fa[6].options[1].text",
+      "before": "فقط TOF-MRA",
+      "after": "TOF-MRA"
+    },
+    {
+      "path": "fa[6].options[2].text",
+      "before": "فقط DWI",
+      "after": "DWI همراه ADC"
+    },
+    {
+      "path": "fa[6].options[3].text",
+      "before": "SWI یا سکانس T2*",
+      "after": "SWI یا T2*-GRE"
+    },
+    {
+      "path": "fa[6].explanation",
+      "before": "SWI و T2* به سوسپتیبیلیتی ناشی از فرآورده‌های خونی حساس‌اند؛ جایگزین تصویربرداری عروقی نیستند.",
+      "after": "SWI/T2*-GRE به حساسیت مغناطیسی ناشی از فرآورده‌های خونی حساس‌اند. منشأهای دیگر حساسیت مغناطیسی و زمینهٔ مورفولوژیک نیز باید در نظر گرفته شوند. این توالی جای تعیین نیدوس، تغذیه‌کنندگان و درناژ را نمی‌گیرد."
+    },
+    {
+      "path": "fa[6].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "T1 آناتومی و بعضی مراحل خون را نشان می‌دهد، اما برای بقایای کوچک حساسیت مغناطیسی از SWI/T2* هدفمندی کمتری دارد.",
+        "B": "TOF-MRA عمدتاً عروق را نشان می‌دهد و در اولویت پاسخ‌گوی پرسش فرآورده‌های خونی نیست.",
+        "C": "DWI/ADC به‌ویژه انتشار و ایسکمی حاد را بررسی می‌کنند؛ برای بقایای حساسیت مغناطیسی SWI/T2* مناسب‌تر است."
+      }
+    },
+    {
+      "path": "fa[6].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "fa[7].question",
+      "before": "کدام یافتهٔ DSA به نفع AVM پارانشیمی همراه شانت شریانی‌وریدی است؟",
+      "after": "کدام الگوی DSA از AVM پارانشیمی همراه شانت شریانی‌وریدی حمایت می‌کند؟"
+    },
+    {
+      "path": "fa[7].options[0].text",
+      "before": "نیدوس + پُرشدگی زودرس وریدی در فاز شریانی",
+      "after": "نیدوس پارانشیمی با پُرشدگی وریدی از فاز شریانی"
+    },
+    {
+      "path": "fa[7].options[1].text",
+      "before": "آنوریسم در انشعاب شریان مغزی میانی",
+      "after": "آنوریسم ساکولار MCA بدون نیدوس نشان‌داده‌شده"
+    },
+    {
+      "path": "fa[7].options[2].text",
+      "before": "پُرشدگی رتروگراد سینوس بدون نیدوس",
+      "after": "نقطهٔ فیستول مننژیال کنار سینوس با رفلاکس کورتیکال و بدون نیدوس پارانشیمی"
+    },
+    {
+      "path": "fa[7].options[3].text",
+      "before": "الگوی هایپرواسکولاریزاسیون منتشر بدون نیدوس",
+      "after": "افزایش منتشر عروق با بافت مغز در میان آن‌ها و بدون نیدوس فشردهٔ AVM"
+    },
+    {
+      "path": "fa[7].explanation",
+      "before": "نیدوس و درناژ زودرس وریدی در فاز شریانی به نفع AVM پارانشیمی است. پُرشدگی رتروگراد سینوس بدون نیدوس می‌تواند با dAVF سازگار باشد و پاسخ پرسش دربارهٔ AVM پارانشیمی نیست.",
+      "after": "نیدوس همراه پُرشدگی زودرس وریدی، معماری مربوط به شانت AV را نشان می‌دهد. تغذیه‌کنندگان، حدود نیدوس، خروج وریدی و آنوریسم‌های همراه باید در گزارش کامل عروقی توصیف شوند. پُرشدگی زودرس وریدی بدون نیدوس پارانشیمی نیازمند طبقه‌بندی دیگری است."
+    },
+    {
+      "path": "fa[7].wrongExplanations",
+      "before": null,
+      "after": {
+        "B": "آنوریسم می‌تواند همراه باشد، اما جای نیدوس AVM همراه شانت را نمی‌گیرد.",
+        "C": "محل شانت دورال بدون نیدوس پارانشیمی بیشتر با dAVF سازگار است.",
+        "D": "این عبارت الگوی آنژیوپاتی پرولیفراتیو را توصیف می‌کند؛ افتراق آن از AVM ممکن است به ارزیابی کامل عروقی بیشتری نیاز داشته باشد."
+      }
+    },
+    {
+      "path": "fa[7].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://pubmed.ncbi.nlm.nih.gov/18239181/"
+    },
+    {
+      "path": "fa[8].question",
+      "before": "سه معیار امتیاز Spetzler–Martin کدام‌اند؟",
+      "after": "سناریوی متنی: قطر حداکثر نیدوس ۲٫۸ سانتی‌متر است و خارج از نواحی مهم عملکردی قرار دارد. درناژ هم سطحی و هم از وریدهای عمقی مغز است. درجهٔ اسپتزلر–مارتین چیست؟"
+    },
+    {
+      "path": "fa[8].options[0].text",
+      "before": "سن، وضعیت پارگی، تعداد شریان‌های تغذیه‌کننده",
+      "after": "درجهٔ I: ۱ + ۰ + ۰"
+    },
+    {
+      "path": "fa[8].options[1].text",
+      "before": "اندازه نیدوس، محل گویا، درناژ وریدی",
+      "after": "درجهٔ II: ۱ + ۰ + ۱"
+    },
+    {
+      "path": "fa[8].options[2].text",
+      "before": "حجم نیدوس، ادم، آنوریسم‌ها",
+      "after": "درجهٔ III: ۲ + ۰ + ۱"
+    },
+    {
+      "path": "fa[8].options[3].text",
+      "before": "محل، درناژ، تعداد خونریزی‌ها",
+      "after": "درجهٔ IV: ۲ + ۱ + ۱"
+    },
+    {
+      "path": "fa[8].explanation",
+      "before": "این امتیاز اندازه نیدوس، گویا بودن محل و درناژ وریدی را برای برآورد خطر جراحی ترکیب می‌کند.",
+      "after": "کمتر از ۳ سانتی‌متر ۱ امتیاز دارد. محل خارج از نواحی حساس عملکردی ۰ امتیاز دارد. هر جزء درناژ عمقی ۱ امتیاز دارد، حتی همراه خروج سطحی. بنابراین ۲ امتیاز = درجهٔ II. اندازه‌گیری و هر دو جزء درناژ باید مستند باشند."
+    },
+    {
+      "path": "fa[8].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "خروج سطحی اضافی، جزء درناژ عمقی را حذف نمی‌کند.",
+        "C": "۲٫۸ سانتی‌متر کمتر از ۳ است و ۱ امتیاز اندازه دارد، نه ۲.",
+        "D": "در اینجا هم اندازه و هم اهمیت عملکردی بیش از حد امتیاز گرفته‌اند."
+      }
+    },
+    {
+      "path": "fa[8].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://pubmed.ncbi.nlm.nih.gov/3760956/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "fa[9].question",
+      "before": "کدام روش‌های درمانی در مرور کلی ذکر شده‌اند؟",
+      "after": "کدام روش درمان AVM از راه انسداد عروقیِ با تأخیر عمل می‌کند، به‌طوری که خطر خونریزی می‌تواند در دورهٔ نهفتگی باقی بماند؟"
+    },
+    {
+      "path": "fa[9].options[0].text",
+      "before": "فقط آنتی‌بیوتیک",
+      "after": "رزکسیون کامل میکروجراحی"
+    },
+    {
+      "path": "fa[9].options[1].text",
+      "before": "فقط کورتیکواستروئید",
+      "after": "انسداد کامل اندوواسکولار شانت"
+    },
+    {
+      "path": "fa[9].options[2].text",
+      "before": "میکروجراحی، آمبولیزاسیون و رادیوجراحی",
+      "after": "رادیوجراحی استریوتاکتیک"
+    },
+    {
+      "path": "fa[9].options[3].text",
+      "before": "فقط پیگیری",
+      "after": "پیگیری معطوف به علائم بدون مداخله بر شانت"
+    },
+    {
+      "path": "fa[9].explanation",
+      "before": "این روش‌ها گزینه‌های ممکن‌اند؛ فهرست به‌تنهایی توصیه‌ای برای بیمار مشخص تعیین نمی‌کند.",
+      "after": "رادیوجراحی می‌تواند انسدادی ایجاد کند که در گذر زمان شکل می‌گیرد. شانتِ هنوز باز ممکن است در دورهٔ نهفتگی خونریزی کند؛ صرف تاریخ درمان، بسته‌شدن را اثبات نمی‌کند. سود، خطر درمان و پیگیری به‌صورت فردی برنامه‌ریزی می‌شوند."
+    },
+    {
+      "path": "fa[9].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "رزکسیون کامل نیدوس را فوراً برمی‌دارد؛ خطر جراحی و تأیید کامل‌بودن نتیجه جداگانه باید ارزیابی شوند.",
+        "B": "انسداد کامل اندوواسکولار بسته‌شدنِ حاصل از مکانیسم مکانیکی/آمبولیک است، نه سازوکار زیستیِ پرتویی با تأخیر.",
+        "D": "پیگیری، علائم و سیر را مدیریت و پایش می‌کند، اما از راه تابش، انسداد با تأخیر را هدف نمی‌گیرد."
+      }
+    },
+    {
+      "path": "fa[9].source",
+      "before": null,
+      "after": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://jnis.bmj.com/content/14/11/1118"
+    },
+    {
+      "path": "fa[10].question",
+      "before": "AVM از نظر تصویربرداری چگونه از dAVF متمایز می‌شود؟",
+      "after": "سناریوی متنی: DSA تغذیه‌کنندگان مننژیال به محل شانت دورال کنار سینوس با رفلاکس کورتیکال نشان می‌دهد. نیدوس پارانشیمی مشاهده نمی‌شود. کدام ضایعهٔ عروقی سازگارتر است؟"
+    },
+    {
+      "path": "fa[10].options[0].text",
+      "before": "AVM نیدوس پارانشیمی دارد؛ dAVF نیدوس ندارد و در دورا قرار دارد",
+      "after": "فیستول AV دورال"
+    },
+    {
+      "path": "fa[10].options[1].text",
+      "before": "AVM و dAVF از نظر تصویربرداری قابل افتراق نیستند",
+      "after": "AVM پارانشیمی"
+    },
+    {
+      "path": "fa[10].options[2].text",
+      "before": "dAVF همیشه نیدوس بزرگ‌تری نسبت به AVM دارد",
+      "after": "DVA بدون عارضه"
+    },
+    {
+      "path": "fa[10].options[3].text",
+      "before": "AVM همیشه در دورا قرار دارد",
+      "after": "شبکهٔ کولاترال مویامویا"
+    },
+    {
+      "path": "fa[10].explanation",
+      "before": "AVM نیدوس پارانشیمی دارد و مادرزادی است. dAVF دورال است، بدون نیدوس و اغلب اکتسابی.",
+      "after": "محل شانت دورال بدون نیدوس پارانشیمی با dAVF سازگار است. AVM با نیدوس پارانشیمی و معماری شانت تفکیک می‌شود. پس از آن، الگوی درناژ و خطر بالینی فیستول باید جداگانه ارزیابی شوند."
+    },
+    {
+      "path": "fa[10].wrongExplanations",
+      "before": null,
+      "after": {
+        "B": "نیدوس پارانشیمیِ تعریف‌کننده در اینجا نشان داده نشده است؛ در عوض فیستول دورال توصیف شده است.",
+        "C": "DVA بدون عارضه الگوی درناژ وریدی بدون این محل شانت شریانی دورال است.",
+        "D": "مویامویا کولاترال‌های همراه تنگی‌انسداد شریانی انتهایی را توصیف می‌کند، نه محل شانت AV دورال ذکرشده."
+      }
+    },
+    {
+      "path": "fa[10].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "fa[11].question",
+      "before": "چه عواملی بر خطر خونریزی AVM اثر می‌گذارند؟",
+      "after": "دو AVM درمان‌نشده درجهٔ اسپتزلر–مارتین یکسانی دارند. در متاآنالیز مبتنی بر داده‌های فردیِ کیم و همکاران (۲۰۱۴)، کدام ویژگی اضافی پیش‌بینی‌کنندهٔ مهم خونریزی بعدی است؟"
+    },
+    {
+      "path": "fa[11].options[0].text",
+      "before": "فقط سن",
+      "after": "افزایش سیگنال عروقی بیشتر در T1 پس از تزریق"
+    },
+    {
+      "path": "fa[11].options[1].text",
+      "before": "فقط اندازه نیدوس",
+      "after": "قطر ۴٫۵ به‌جای ۳٫۵ سانتی‌متر در همان ردهٔ اندازه"
+    },
+    {
+      "path": "fa[11].options[2].text",
+      "before": "برای همه AVMها یکسان است",
+      "after": "تشنج به‌عنوان تظاهر اولیه بدون خونریزی اثبات‌شده"
+    },
+    {
+      "path": "fa[11].options[3].text",
+      "before": "از جمله وضعیت پارگی و جمعیت مورد مطالعه",
+      "after": "تظاهر خونریزی قبلی مرتبط با AVM"
+    },
+    {
+      "path": "fa[11].explanation",
+      "before": "برآورد خطر به وضعیت پارگی و جمعیت مورد مطالعه بستگی دارد؛ نمی‌توان یک عدد را به همه موارد تعمیم داد.",
+      "after": "تظاهر اولیهٔ خونریزی در متاآنالیز پیش‌بینی‌کنندهٔ مستقل و قوی خونریزی بعدی بود. سن و ویژگی‌های عروقی دیگر نیز می‌توانند اهمیت داشته باشند؛ اسپتزلر–مارتین عمدتاً خطر میکروجراحی را برآورد می‌کند. نرخ‌های مطالعه پیش‌بینی قطعی فردی یا مادام‌العمر نیستند."
+    },
+    {
+      "path": "fa[11].wrongExplanations",
+      "before": null,
+      "after": {
+        "A": "شدت افزایش سیگنال در اینجا پیش‌بینی‌کنندهٔ هم‌ارز و تثبیت‌شدهٔ خونریزی بعدی نیست.",
+        "B": "اندازهٔ نیدوس برای امتیاز جراحی مهم است؛ در این متاآنالیز پیش‌بینی‌کنندهٔ مستقل خونریزی بعدی نبود.",
+        "C": "تشنج می‌تواند تظاهر AVM باشد، اما معادل تظاهر خونریزی مستند به‌عنوان ویژگی خطر نیست."
+      }
+    },
+    {
+      "path": "fa[11].source",
+      "before": null,
+      "after": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4141996/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    }
+  ],
+  "cardDelta": [
+    {
+      "path": "[0].answer.de",
+      "before": "Kongenitaler AV-Shunt mit Nidus — ohne Kapillarbett.",
+      "after": "Parenchymaler arteriovenöser Shunt über einen dysplastischen Nidus ohne normales Kapillarbett."
+    },
+    {
+      "path": "[0].answer.en",
+      "before": "Congenital AV shunt with nidus — without capillary bed.",
+      "after": "Parenchymal arteriovenous shunt through a dysplastic nidus without a normal capillary bed."
+    },
+    {
+      "path": "[0].answer.fa",
+      "before": "شانت AV مادرزادی با نیدوس — بدون بستر مویرگی.",
+      "after": "شانت شریانی‌وریدی پارانشیمی از طریق نیدوس دیسپلاستیک بدون بستر مویرگی طبیعی."
+    },
+    {
+      "path": "[0].explanation.de",
+      "before": "Direkte arteriovenöse Verbindung über ein Konvolut dysplastischer Gefäße (Nidus). Kein zwischengeschaltetes Kapillarbett → Hochdruckshunt → Blutungsrisiko.",
+      "after": "Feeder, Nidus und venöse Drainage bilden die Befundstruktur. AVMs können sich auch im Verlauf neu entwickeln; die Diagnose darf daher nicht von einem behaupteten Nachweis seit Geburt abhängen."
+    },
+    {
+      "path": "[0].explanation.en",
+      "before": "Direct arteriovenous connection via a tangle of dysplastic vessels (nidus). No intervening capillary bed → high-pressure shunt → haemorrhage risk.",
+      "after": "Feeders, nidus and venous drainage structure the report. AVMs can also develop over time; diagnosis should therefore not depend on a claimed presence since birth."
+    },
+    {
+      "path": "[0].explanation.fa",
+      "before": "اتصال مستقیم شریانی-وریدی از طریق یک شبکهٔ درهم‌پیچیدهٔ عروق دیسپلاستیک (نیدوس). بدون بستر مویرگی واسط → شانت پرفشار → خطر خونریزی.",
+      "after": "تغذیه‌کنندگان، نیدوس و درناژ وریدی ساختار گزارش را تشکیل می‌دهند. AVMها می‌توانند در گذر زمان نیز ایجاد شوند؛ بنابراین تشخیص نباید به ادعای اثبات وجود از بدو تولد وابسته باشد."
+    },
+    {
+      "path": "[0].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "[1].explanation.de",
+      "before": "Der Nidus ist der Kern der AVM — dysplastische Gefäße, die Arterien direkt mit Venen verbinden. Fehlt bei dAVF. Der arterielle Hochdruck im venösen System schwächt die Gefäßwände und verursacht Blutungsrisiko.",
+      "after": "Ein Nidus verbindet Feeder mit drainierenden Venen. Seine Ausdehnung und sein Bezug zu funktionellen Regionen sind zu beschreiben; eine einzelne T2-Aufnahme bestimmt nicht die gesamte Angioarchitektur."
+    },
+    {
+      "path": "[1].explanation.en",
+      "before": "The nidus is the core of the AVM — dysplastic vessels directly connecting arteries to veins. Absent in dAVF. High arterial pressure in the venous system weakens vessel walls and creates haemorrhage risk.",
+      "after": "A nidus connects feeders with draining veins. Describe its extent and relationship to functional regions; a single T2 image does not establish the complete angioarchitecture."
+    },
+    {
+      "path": "[1].explanation.fa",
+      "before": "نیدوس هسته AVM است — عروق دیسپلاستیک که شریان‌ها را مستقیماً به وریدها متصل می‌کنند. در dAVF وجود ندارد. فشار شریانی بالا در سیستم وریدی دیواره عروق را ضعیف و خطر خونریزی ایجاد می‌کند.",
+      "after": "نیدوس تغذیه‌کنندگان را به وریدهای تخلیه‌کننده مرتبط می‌کند. گستره و ارتباط آن با نواحی عملکردی باید توصیف شود؛ یک تصویر T2 کل آنژیوآناتومی را مشخص نمی‌کند."
+    },
+    {
+      "path": "[1].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "[2].explanation.de",
+      "before": "Junges Erwachsenenalter und supratentorielle Lage sind typische Angaben der Quelle.",
+      "after": "Die PDF nennt junges Erwachsenenalter und supratentorielle Lage als typische Konstellation. Das sind keine Alters- oder Lokalisationsgrenzen zum Ausschluss einer AVM."
+    },
+    {
+      "path": "[2].explanation.en",
+      "before": "Young adulthood and supratentorial location are typical points in the source.",
+      "after": "The PDF identifies young adulthood and supratentorial location as typical. These are not age or location cutoffs for excluding AVM."
+    },
+    {
+      "path": "[2].explanation.fa",
+      "before": "بزرگسالی جوان و محل سوپراتنتوریال نکات تیپیک این منبع‌اند.",
+      "after": "PDF بزرگسالی جوان و محل سوپراتنتوریال را الگوی تیپیک می‌داند. این‌ها مرز سنی یا مکانی برای رد AVM نیستند."
+    },
+    {
+      "path": "[2].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "[3].answer.de",
+      "before": "Variiert je nach Rupturstatus und untersuchter Population.",
+      "after": "Unter anderem Rupturstatus, Alter, Gefäßmerkmale und untersuchte Population; nicht mit dem OP-Score gleichsetzen."
+    },
+    {
+      "path": "[3].answer.en",
+      "before": "Varies by rupture status and studied population.",
+      "after": "Among other factors, rupture status, age, vascular features and study population; do not equate with the operative score."
+    },
+    {
+      "path": "[3].answer.fa",
+      "before": "با وضعیت پارگی و جمعیت مورد مطالعه تفاوت دارد.",
+      "after": "از جمله وضعیت پارگی، سن، ویژگی‌های عروقی و جمعیت مطالعه؛ با امتیاز جراحی یکی دانسته نشود."
+    },
+    {
+      "path": "[3].explanation.de",
+      "before": "Blutung ist eine häufige Erstmanifestation; auch Anfälle, Kopfschmerz oder fokale Defizite kommen vor.",
+      "after": "Eine hämorrhagische Erstpräsentation war in der Metaanalyse ein starker unabhängiger Prädiktor späterer Blutung. Auch Alter und weitere Gefäßmerkmale können relevant sein; der Spetzler-Martin-Grad schätzt hingegen primär mikrochirurgisches Risiko. Studienraten sind keine sichere individuelle oder lebenslange Vorhersage."
+    },
+    {
+      "path": "[3].explanation.en",
+      "before": "Haemorrhage is a common initial presentation; seizures, headache or focal deficits may also occur.",
+      "after": "Haemorrhagic presentation was a strong independent predictor of later haemorrhage in the meta-analysis. Age and other vascular features may also matter; Spetzler-Martin primarily estimates microsurgical risk. Study rates are not certain individual or lifetime predictions."
+    },
+    {
+      "path": "[3].explanation.fa",
+      "before": "خونریزی تظاهر اولیه شایعی است؛ تشنج، سردرد یا نقص کانونی نیز ممکن است رخ دهد.",
+      "after": "تظاهر اولیهٔ خونریزی در متاآنالیز پیش‌بینی‌کنندهٔ مستقل و قوی خونریزی بعدی بود. سن و ویژگی‌های عروقی دیگر نیز می‌توانند اهمیت داشته باشند؛ اسپتزلر–مارتین عمدتاً خطر میکروجراحی را برآورد می‌کند. نرخ‌های مطالعه پیش‌بینی قطعی فردی یا مادام‌العمر نیستند."
+    },
+    {
+      "path": "[3].source",
+      "before": null,
+      "after": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4141996/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "[4].answer.de",
+      "before": "Nidus-Größe + Lokalisation (eloquent?) + venöse Drainage (tief?)",
+      "after": "Maximaler Nidusdurchmesser, Eloquenz und Vorliegen einer tiefen Drainagekomponente."
+    },
+    {
+      "path": "[4].answer.en",
+      "before": "Nidus size + location (eloquent?) + venous drainage (deep?)",
+      "after": "Maximum nidus diameter, eloquence and presence of a deep drainage component."
+    },
+    {
+      "path": "[4].answer.fa",
+      "before": "اندازه نیدوس + محل (گویا؟) + درناژ وریدی (عمقی؟)",
+      "after": "قطر حداکثر نیدوس، اهمیت عملکردی و وجود جزء درناژ عمقی."
+    },
+    {
+      "path": "[4].explanation.de",
+      "before": "Größe: <3 cm=1P, 3–6 cm=2P, >6 cm=3P. Eloquenz: nicht-eloquent=0P, eloquent=1P. Drainage: oberflächlich=0P, tief=1P. Gesamt 1–5 Punkte.",
+      "after": "Größe: < 3 cm = 1, 3–6 cm = 2, > 6 cm = 3 Punkte. Eloquenz 0/1. Ausschließlich oberflächliche Drainage 0; jede tiefe Komponente 1, auch bei gemischtem Abfluss. Summe 1–5."
+    },
+    {
+      "path": "[4].explanation.en",
+      "before": "Size: <3 cm=1pt, 3–6 cm=2pt, >6 cm=3pt. Eloquence: non-eloquent=0pt, eloquent=1pt. Drainage: superficial=0pt, deep=1pt. Total 1–5 points.",
+      "after": "Size: < 3 cm = 1, 3–6 cm = 2, > 6 cm = 3 points. Eloquence 0/1. Exclusively superficial drainage 0; any deep component 1, including mixed drainage. Total 1–5."
+    },
+    {
+      "path": "[4].explanation.fa",
+      "before": "اندازه: <۳ سانتی‌متر=۱ امتیاز، ۳–۶ سانتی‌متر=۲ امتیاز، >۶ سانتی‌متر=۳ امتیاز. گویا: غیرگویا=۰ امتیاز، گویا=۱ امتیاز. درناژ: سطحی=۰ امتیاز، عمقی=۱ امتیاز. جمع ۱–۵ امتیاز.",
+      "after": "اندازه: کمتر از ۳ سانتی‌متر = ۱، ۳–۶ سانتی‌متر = ۲، بیش از ۶ سانتی‌متر = ۳ امتیاز. اهمیت عملکردی ۰/۱. درناژ صرفاً سطحی ۰؛ هر جزء عمقی ۱، حتی در خروج مختلط. جمع ۱–۵."
+    },
+    {
+      "path": "[4].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://pubmed.ncbi.nlm.nih.gov/3760956/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "[5].answer.fa",
+      "before": "خطر رزکسیون میکروجراحی بر اساس اندازه، ناحیه گویا و درناژ.",
+      "after": "خطر رزکسیون میکروجراحی بر اساس اندازه، اهمیت عملکردی محل و درناژ."
+    },
+    {
+      "path": "[5].explanation.de",
+      "before": "Der Score schätzt das operative Risiko ein; die Behandlung wird individuell und multidisziplinär festgelegt.",
+      "after": "Das Grading wurde für operative Morbidität/Mortalität entwickelt. Es ist keine direkte Vorhersage der unbehandelten Blutungswahrscheinlichkeit und keine alleinige Wahlregel für OP, Embolisation oder Radiochirurgie."
+    },
+    {
+      "path": "[5].explanation.en",
+      "before": "The score estimates operative risk; treatment is decided individually by a multidisciplinary team.",
+      "after": "The grading was developed for operative morbidity/mortality. It does not directly predict untreated haemorrhage probability and does not by itself select surgery, embolisation or radiosurgery."
+    },
+    {
+      "path": "[5].explanation.fa",
+      "before": "این امتیاز خطر جراحی را برآورد می‌کند؛ درمان باید فردی و چندتخصصی تعیین شود.",
+      "after": "این درجه‌بندی برای عوارض و مرگ‌ومیر جراحی طراحی شده است. پیش‌بینی مستقیم احتمال خونریزیِ درمان‌نشده نیست و به‌تنهایی جراحی، آمبولیزاسیون یا رادیوجراحی را انتخاب نمی‌کند."
+    },
+    {
+      "path": "[5].source",
+      "before": null,
+      "after": "https://pubmed.ncbi.nlm.nih.gov/3760956/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "[6].front.fa",
+      "before": "کدام نواحی گویا محسوب می‌شوند؟",
+      "after": "کدام نواحی از نظر عملکردی حساس محسوب می‌شوند؟"
+    },
+    {
+      "path": "[6].answer.de",
+      "before": "Sensomotorischer, sprachrelevanter und visueller Kortex; Hypothalamus, Thalamus, innere Kapsel; Hirnstamm, Kleinhirnstiele und tiefe Kleinhirnkerne.",
+      "after": "Sensomotorischer, sprachrelevanter und visueller Kortex; Basalganglien, Hypothalamus, Thalamus und innere Kapsel; Hirnstamm, Kleinhirnstiele und tiefe Kleinhirnkerne."
+    },
+    {
+      "path": "[6].answer.en",
+      "before": "Sensorimotor, language and visual cortex; hypothalamus, thalamus and internal capsule; brainstem, cerebellar peduncles and deep cerebellar nuclei.",
+      "after": "Sensorimotor, language and visual cortex; basal ganglia, hypothalamus, thalamus and internal capsule; brainstem, cerebellar peduncles and deep cerebellar nuclei."
+    },
+    {
+      "path": "[6].answer.fa",
+      "before": "قشر حسی‌حرکتی، زبانی و بینایی؛ هیپوتالاموس، تالاموس و کپسول داخلی؛ ساقهٔ مغز، پایه‌های مخچه و هسته‌های عمقی مخچه.",
+      "after": "قشر حسی‌حرکتی، زبانی و بینایی؛ عقده‌های قاعده‌ای، هیپوتالاموس، تالاموس و کپسول داخلی؛ ساقهٔ مغز، پایه‌های مخچه و هسته‌های عمقی مخچه."
+    },
+    {
+      "path": "[6].explanation.de",
+      "before": "Zur Spetzler-Martin-Liste gehören sensomotorischer, sprachrelevanter und visueller Kortex, Hypothalamus, Thalamus, innere Kapsel, Hirnstamm, Kleinhirnstiele und tiefe Kleinhirnkerne. Die Beziehung zur konkreten Funktionsregion entscheidet; eine pauschale Zuordnung des Okzipitalpols als nichteloquent ist falsch.",
+      "after": "Diese anatomischen Regionen werden im AHA/ASA-Statement als eloquent aufgeführt. Die Beziehung zur konkreten Funktionsregion entscheidet; eine pauschale Zuordnung des Okzipitalpols als nichteloquent ist falsch."
+    },
+    {
+      "path": "[6].explanation.en",
+      "before": "The Spetzler-Martin list includes sensorimotor, language and visual cortex, hypothalamus, thalamus, internal capsule, brainstem, cerebellar peduncles and deep cerebellar nuclei. The relationship to the actual functional region determines eloquence; categorically calling the occipital pole noneloquent is incorrect.",
+      "after": "The AHA/ASA statement lists these anatomical regions as eloquent. The relationship to the actual functional region determines eloquence; categorically calling the occipital pole noneloquent is incorrect."
+    },
+    {
+      "path": "[6].explanation.fa",
+      "before": "فهرست اسپتزلر–مارتین شامل قشر حسی‌حرکتی، زبانی و بینایی، هیپوتالاموس، تالاموس، کپسول داخلی، ساقهٔ مغز، پایه‌های مخچه و هسته‌های عمقی مخچه است. ارتباط با ناحیهٔ عملکردی دقیق، اهمیت عملکردی را تعیین می‌کند؛ غیرمهم عملکردی دانستن کلی قطب اکسیپیتال نادرست است.",
+      "after": "بیانیهٔ AHA/ASA این نواحی آناتومیک را حساس از نظر عملکردی فهرست می‌کند. ارتباط با ناحیهٔ عملکردی دقیق تعیین‌کننده است؛ غیرحساس دانستن کلی قطب اکسیپیتال نادرست است."
+    },
+    {
+      "path": "[6].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://pubmed.ncbi.nlm.nih.gov/3760956/; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "[7].explanation.de",
+      "before": "Flow voids entstehen, wenn schnell fließendes Blut zwischen Akquisitionspulsen das Messvolumen verlässt → kein Signal. In T2 als schlängelnde hypointense Strukturen sichtbar.",
+      "after": "Tubuläre Flow-voids können schnell durchflossene Gefäße darstellen. Das Muster weckt Shuntverdacht, beweist aber ohne Angioarchitektur weder AVM noch Grad. Nidus und venöser Abfluss sind gezielt zu charakterisieren."
+    },
+    {
+      "path": "[7].explanation.en",
+      "before": "Flow voids arise when fast-flowing blood leaves the acquisition volume between pulses → no signal. Visible on T2 as serpentine hypointense structures.",
+      "after": "Tubular flow voids may represent rapidly flowing vessels. The pattern raises suspicion of a shunt but, without angioarchitecture, establishes neither AVM nor grade. Characterize nidus and venous drainage specifically."
+    },
+    {
+      "path": "[7].explanation.fa",
+      "before": "فقدان سیگنال جریان (flow void) ایجاد می‌شوند وقتی خون با جریان سریع بین پالس‌های اکتساب حجم اندازه‌گیری را ترک می‌کند → بدون سیگنال. در T2 به‌صورت ساختارهای هیپواینتنس مارپیچ دیده می‌شوند.",
+      "after": "flow voidهای لوله‌ای می‌توانند عروق با جریان سریع باشند. این الگو شک به شانت را مطرح می‌کند، اما بدون آنژیوآناتومی نه AVM و نه درجه را اثبات می‌کند. نیدوس و خروج وریدی باید هدفمند مشخص شوند."
+    },
+    {
+      "path": "[7].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "[8].explanation.de",
+      "before": "Frühe venöse Drainage während der arteriellen Phase ist ein charakteristischer Hinweis auf einen arteriovenösen Shunt.",
+      "after": "DSA stellt arteriellen Zufluss, Nidus und zeitlichen venösen Abfluss dar. Frühe Venenfüllung belegt eine Shuntkomponente, deren Lokalisation und Nidusbezug für die Einordnung entscheidend sind."
+    },
+    {
+      "path": "[8].explanation.en",
+      "before": "Early venous drainage during the arterial phase is a characteristic sign of an arteriovenous shunt.",
+      "after": "DSA depicts arterial inflow, nidus and timing of venous drainage. Early venous filling demonstrates a shunt component whose location and relationship to a nidus determine classification."
+    },
+    {
+      "path": "[8].explanation.fa",
+      "before": "درناژ زودرس وریدی در فاز شریانی یافته‌ای شاخص به نفع شانت شریانی‌وریدی است.",
+      "after": "DSA ورود شریانی، نیدوس و زمان‌بندی خروج وریدی را نشان می‌دهد. پُرشدگی زودرس وریدی نشان‌دهندهٔ جزء شانت است که محل و ارتباطش با نیدوس برای طبقه‌بندی تعیین‌کننده‌اند."
+    },
+    {
+      "path": "[8].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "[9].answer.de",
+      "before": "Mehrere Optionen; individuelle interdisziplinäre Abwägung.",
+      "after": "Rupturstatus, Symptome, Alter/Gesamtzustand, Angioarchitektur, OP-Risiko, Behandlungsziel und Präferenzen."
+    },
+    {
+      "path": "[9].answer.en",
+      "before": "Several options; individual multidisciplinary assessment.",
+      "after": "Rupture status, symptoms, age/general health, angioarchitecture, operative risk, treatment goals and preferences."
+    },
+    {
+      "path": "[9].answer.fa",
+      "before": "چند گزینه؛ ارزیابی فردی و چندتخصصی.",
+      "after": "وضعیت پارگی، علائم، سن/وضعیت عمومی، آنژیوآناتومی، خطر جراحی، هدف درمان و ترجیحات."
+    },
+    {
+      "path": "[9].explanation.de",
+      "before": "Der Score schätzt das operative Risiko; die Therapie wird individuell und multidisziplinär festgelegt.",
+      "after": "Bei ausgewählten unrupturierten AVMs gehört Beobachtung mit symptomorientierter Versorgung zur Abwägung. ARUBA begünstigte bei untersuchten Erwachsenen mit unrupturierter AVM die medizinische Versorgung ohne Intervention im Studienzeitraum; das ist keine Regel für alle AVMs oder den gesamten Lebensverlauf."
+    },
+    {
+      "path": "[9].explanation.en",
+      "before": "The score estimates operative risk; treatment is decided individually by a multidisciplinary team.",
+      "after": "For selected unruptured AVMs, observation with symptom-directed care is part of the assessment. ARUBA favored medical management without intervention in studied adults with unruptured AVM during follow-up; this is not a rule for all AVMs or the entire lifetime."
+    },
+    {
+      "path": "[9].explanation.fa",
+      "before": "امتیاز، خطر جراحی را برآورد می‌کند؛ درمان فردی و چندتخصصی تعیین می‌شود.",
+      "after": "در AVMهای پاره‌نشدهٔ منتخب، پیگیری همراه مراقبت معطوف به علائم بخشی از سنجش است. ARUBA در بزرگسالان بررسی‌شده با AVM پاره‌نشده طی پیگیری، به نفع مدیریت طبی بدون مداخله بود؛ این قاعده‌ای برای همهٔ AVMها یا کل عمر نیست."
+    },
+    {
+      "path": "[9].source",
+      "before": null,
+      "after": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://pubmed.ncbi.nlm.nih.gov/32562682/"
+    },
+    {
+      "path": "[10].front.de",
+      "before": "Für welche AVM ist Gamma Knife geeignet?",
+      "after": "Welche zeitliche Besonderheit hat die Radiochirurgie einer AVM?"
+    },
+    {
+      "path": "[10].front.en",
+      "before": "For which AVM is Gamma Knife suitable?",
+      "after": "What is the timing characteristic of AVM radiosurgery?"
+    },
+    {
+      "path": "[10].front.fa",
+      "before": "گامانایف (Gamma Knife) برای کدام AVM مناسب است؟",
+      "after": "رادیوجراحی AVM چه ویژگی زمانی دارد؟"
+    },
+    {
+      "path": "[10].answer.de",
+      "before": "Indikation abhängig von Größe, Lage, Fallmerkmalen und Behandlungsziel.",
+      "after": "Die Obliteration entsteht verzögert; bis zum nachgewiesenen Verschluss kann der Shunt weiter bluten."
+    },
+    {
+      "path": "[10].answer.en",
+      "before": "Indication depends on size, location, case features and treatment goals.",
+      "after": "Obliteration develops after a delay; the shunt may still bleed until closure is established."
+    },
+    {
+      "path": "[10].answer.fa",
+      "before": "اندیکاسیون به اندازه، محل، ویژگی‌های مورد و هدف درمان وابسته است.",
+      "after": "انسداد با تأخیر ایجاد می‌شود؛ تا اثبات بسته‌شدن، شانت ممکن است همچنان خونریزی کند."
+    },
+    {
+      "path": "[10].explanation.de",
+      "before": "Die Wirkung ist verzögert; Nutzen und Risiken müssen im Einzelfall abgewogen werden.",
+      "after": "Die Radiochirurgie kann eine erst im Verlauf entstehende Obliteration bewirken. Ein noch durchgängiger Shunt kann in der Latenz bluten; der Behandlungstermin allein belegt keinen Verschluss. Nutzen, Behandlungsrisiken und Verlaufskontrollen werden individuell geplant."
+    },
+    {
+      "path": "[10].explanation.en",
+      "before": "The effect is delayed; benefits and risks must be weighed individually.",
+      "after": "Radiosurgery may produce obliteration that develops over time. A still-patent shunt may bleed during latency; the treatment date alone does not establish closure. Benefits, treatment risks and surveillance are planned individually."
+    },
+    {
+      "path": "[10].explanation.fa",
+      "before": "اثر درمان با تأخیر ظاهر می‌شود؛ فایده و خطر باید برای هر بیمار جداگانه سنجیده شود.",
+      "after": "رادیوجراحی می‌تواند انسدادی ایجاد کند که در گذر زمان شکل می‌گیرد. شانتِ هنوز باز ممکن است در دورهٔ نهفتگی خونریزی کند؛ صرف تاریخ درمان، بسته‌شدن را اثبات نمی‌کند. سود، خطر درمان و پیگیری به‌صورت فردی برنامه‌ریزی می‌شوند."
+    },
+    {
+      "path": "[10].source",
+      "before": null,
+      "after": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://jnis.bmj.com/content/14/11/1118"
+    },
+    {
+      "path": "[11].answer.de",
+      "before": "AVM: Nidus, kongenital, Parenchym. dAVF: kein Nidus, erworben, Dura.",
+      "after": "AVM: parenchymaler Nidus. dAVF: durale Shuntstelle ohne parenchymalen Nidus."
+    },
+    {
+      "path": "[11].answer.en",
+      "before": "AVM: nidus, congenital, parenchymal. dAVF: no nidus, acquired, dural.",
+      "after": "AVM: parenchymal nidus. dAVF: dural shunt point without a parenchymal nidus."
+    },
+    {
+      "path": "[11].answer.fa",
+      "before": "AVM: نیدوس، مادرزادی، پارانشیمی. dAVF: بدون نیدوس، اکتسابی، دورال.",
+      "after": "AVM: نیدوس پارانشیمی. dAVF: محل شانت دورال بدون نیدوس پارانشیمی."
+    },
+    {
+      "path": "[11].explanation.de",
+      "before": "AVM liegt im Hirnparenchym, ist kongenital und hat einen Nidus aus dysplastischen Gefäßen. dAVF liegt in der Dura mater, ist meist erworben (Sinusthrombose) und hat keinen Nidus — nur eine direkte Fistel.",
+      "after": "Die durale Shuntstelle ohne parenchymalen Nidus passt zur dAVF. Eine AVM wird anhand ihres parenchymalen Nidus und der Shuntarchitektur abgegrenzt. Drainagemuster und klinisches Risiko der Fistel sind anschließend gesondert zu beurteilen."
+    },
+    {
+      "path": "[11].explanation.en",
+      "before": "AVM lies in the brain parenchyma, is congenital and has a nidus of dysplastic vessels. dAVF lies in the dura mater, is mostly acquired (sinus thrombosis) and has no nidus — only a direct fistula.",
+      "after": "A dural shunt point without a parenchymal nidus fits dAVF. AVM is differentiated by its parenchymal nidus and shunt architecture. The fistula drainage pattern and clinical risk then require separate assessment."
+    },
+    {
+      "path": "[11].explanation.fa",
+      "before": "AVM در پارانشیم مغز قرار دارد، مادرزادی است و نیدوسی از عروق دیسپلاستیک دارد. dAVF در دورامتر قرار دارد، اغلب اکتسابی است (ترومبوز سینوس) و نیدوس ندارد — فقط یک فیستول مستقیم.",
+      "after": "محل شانت دورال بدون نیدوس پارانشیمی با dAVF سازگار است. AVM با نیدوس پارانشیمی و معماری شانت تفکیک می‌شود. پس از آن، الگوی درناژ و خطر بالینی فیستول باید جداگانه ارزیابی شوند."
+    },
+    {
+      "path": "[11].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    },
+    {
+      "path": "[12].answer.de",
+      "before": "AVM: Flow voids (Hochfluss). Kavernom: Popcorn-Kern (Low-flow).",
+      "after": "AVM: geschlängelte Flow-voids bei Shunt. Kavernom: typischerweise gemischtsignaliger Kern mit Hämosiderinrand."
+    },
+    {
+      "path": "[12].answer.en",
+      "before": "AVM: flow voids (high flow). Cavernoma: popcorn core (low flow).",
+      "after": "AVM: serpiginous flow voids with shunting. Cavernoma: typically a mixed-signal core with a haemosiderin rim."
+    },
+    {
+      "path": "[12].answer.fa",
+      "before": "AVM: فقدان سیگنال جریان (flow void) (جریان بالا). کاورنوم: هسته پاپ‌کورنی (کم‌جریان).",
+      "after": "AVM: فقدان سیگنال جریانِ پیچ‌خورده همراه شانت. کاورنوم: معمولاً هستهٔ با سیگنال مختلط و حاشیهٔ هموسیدرین."
+    },
+    {
+      "path": "[12].explanation.de",
+      "before": "AVM: Flow voids in T1/T2, Enhancement, angiographisch sichtbar (Nidus in DSA). Kavernom: gemischtsignaliger Popcorn-Kern + kompletter Hämosiderinsaum, angiographisch okkult (keine Feeder sichtbar).",
+      "after": "AVM: Gefäßkonvolut mit Shunt und häufig Flow-voids. Kavernom: typischer gemischtsignaliger Kern mit Hämosiderinrand, meist ohne angiographisch sichtbaren Hochflussshunt. Blutung kann das typische MRT-Muster zeitweise überlagern."
+    },
+    {
+      "path": "[12].explanation.en",
+      "before": "AVM: flow voids on T1/T2, enhancement, visible angiographically (nidus on DSA). Cavernoma: mixed-signal popcorn core + complete haemosiderin rim, angiographically occult.",
+      "after": "AVM: vascular tangle with shunting and often flow voids. Cavernoma: typical mixed-signal core with a haemosiderin rim, usually without an angiographically visible high-flow shunt. Haemorrhage can temporarily obscure the typical MRI pattern."
+    },
+    {
+      "path": "[12].explanation.fa",
+      "before": "AVM: فقدان سیگنال جریان (flow void) در T1/T2، افزایش کنتراست، در آنژیوگرافی قابل مشاهده (نیدوس در DSA). کاورنوم: هسته با سیگنال مختلط + حاشیه کامل هموسیدرین، در آنژیوگرافی نهان.",
+      "after": "AVM: شبکهٔ عروقی همراه شانت و اغلب flow void. کاورنوم: هستهٔ تیپیک با سیگنال مختلط و حاشیهٔ هموسیدرین، معمولاً بدون شانت پرجریانِ قابل مشاهده در آنژیوگرافی. خونریزی می‌تواند موقتاً الگوی تیپیک MRI را بپوشاند."
+    },
+    {
+      "path": "[12].source",
+      "before": null,
+      "after": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://pmc.ncbi.nlm.nih.gov/articles/PMC12680281/"
+    },
+    {
+      "path": "[13].answer.de",
+      "before": "Präoperativ oder als Teilbehandlung; die Rolle hängt vom individuellen Behandlungsplan ab.",
+      "after": "Je nach Angioarchitektur adjunktiv, gezielt oder bei ausgewählten Fällen auf vollständigen Verschluss gerichtet."
+    },
+    {
+      "path": "[13].answer.en",
+      "before": "Pre-operative or as part of treatment; its role depends on the individual treatment plan.",
+      "after": "Depending on angioarchitecture, adjunctive, targeted or aimed at complete closure in selected cases."
+    },
+    {
+      "path": "[13].answer.fa",
+      "before": "پیش از جراحی یا به‌عنوان بخشی از درمان؛ نقش آن به برنامهٔ درمانی هر بیمار بستگی دارد.",
+      "after": "بر اساس آنژیوآناتومی، کمکی، هدفمند یا در موارد منتخب با هدف بستن کامل."
+    },
+    {
+      "path": "[13].explanation.de",
+      "before": "Die Rolle der Embolisation hängt von Gefäßanatomie und geplantem Behandlungsweg ab; sie kann im Einzelfall mit anderen Verfahren kombiniert werden.",
+      "after": "Das Ziel muss explizit sein: ein behandlungsbedürftiges Gefäßmerkmal sichern, eine weitere Modalität vorbereiten oder den Shunt ausschalten. Ein partiell embolisierter Nidus ist nicht mit vollständiger Obliteration gleichzusetzen."
+    },
+    {
+      "path": "[13].explanation.en",
+      "before": "The role of embolisation depends on vascular anatomy and the planned treatment pathway; it may be combined with other modalities in an individual case.",
+      "after": "The goal must be explicit: secure a vascular feature requiring treatment, prepare another modality or eliminate the shunt. Partial nidus embolisation is not equivalent to complete obliteration."
+    },
+    {
+      "path": "[13].explanation.fa",
+      "before": "نقش آمبولیزاسیون به آناتومی عروقی و مسیر درمانی برنامه‌ریزی‌شده بستگی دارد؛ در هر مورد ممکن است با روش‌های دیگر ترکیب شود.",
+      "after": "هدف باید مشخص باشد: ایمن‌سازی ویژگی عروقی نیازمند درمان، آماده‌سازی روش دیگر یا حذف شانت. آمبولیزاسیون ناقص نیدوس معادل انسداد کامل نیست."
+    },
+    {
+      "path": "[13].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134; https://jnis.bmj.com/content/14/11/1118"
+    },
+    {
+      "path": "[14].answer.de",
+      "before": "Hämosiderin nach stattgehabter Blutung (Blooming).",
+      "after": "Suszeptibilitätsbefunde möglicher Blutabbauprodukte; im anatomischen und sequenzabhängigen Kontext interpretieren."
+    },
+    {
+      "path": "[14].answer.en",
+      "before": "Haemosiderin after prior haemorrhage (blooming).",
+      "after": "Susceptibility findings from possible blood products; interpret in anatomical and sequence-dependent context."
+    },
+    {
+      "path": "[14].answer.fa",
+      "before": "هموسیدرین بعد از خونریزی قبلی (آرتیفکت شکوفه‌ای (blooming)).",
+      "after": "یافته‌های حساسیت مغناطیسیِ فرآورده‌های خونی احتمالی؛ در زمینهٔ آناتومیک و وابسته به توالی تفسیر شوند."
+    },
+    {
+      "path": "[14].explanation.de",
+      "before": "SWI/T2* kann Suszeptibilität durch Blutabbauprodukte zeigen; ein negativer Befund schließt eine Begleitläsion nicht sicher aus.",
+      "after": "SWI/T2*-GRE sind empfindlich für Suszeptibilität durch Blutabbauprodukte. Andere Suszeptibilitätsquellen und der morphologische Kontext bleiben zu berücksichtigen. Die Sequenz ersetzt keine Darstellung von Nidus, Feedern und Drainage."
+    },
+    {
+      "path": "[14].explanation.en",
+      "before": "SWI/T2* can show susceptibility from blood products; a negative finding does not reliably exclude a coexisting lesion.",
+      "after": "SWI/T2*-GRE are sensitive to susceptibility from blood products. Other susceptibility sources and the morphological context must still be considered. The sequence does not replace characterization of nidus, feeders and drainage."
+    },
+    {
+      "path": "[14].explanation.fa",
+      "before": "SWI/T2* می‌تواند سوسپتیبیلیتی ناشی از فرآورده‌های خونی را نشان دهد؛ یافته منفی ضایعه همراه را با اطمینان رد نمی‌کند.",
+      "after": "SWI/T2*-GRE به حساسیت مغناطیسی ناشی از فرآورده‌های خونی حساس‌اند. منشأهای دیگر حساسیت مغناطیسی و زمینهٔ مورفولوژیک نیز باید در نظر گرفته شوند. این توالی جای تعیین نیدوس، تغذیه‌کنندگان و درناژ را نمی‌گیرد."
+    },
+    {
+      "path": "[14].source",
+      "before": null,
+      "after": "Gehirn.pdf physical37–38 / printed36–37; https://www.ahajournals.org/doi/10.1161/STR.0000000000000134"
+    }
+  ]
+}

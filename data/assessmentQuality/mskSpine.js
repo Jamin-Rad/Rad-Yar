@@ -2721,128 +2721,130 @@ export const routeCoverage=[
   "status": "AUTHOR_PACKET11_FULL_ORIGINAL_POOL_PLUS_THREE_GAPS_REVIEW_PENDING"
 },
   {
-    "route": "/msk/knie/meniskus",
-    "topicId": "meniskus",
-    "learningGoals": [
-      {
-        "id": "normal-tear",
-        "text": {
-          "de": "Normale Anatomie und intrameniskales Signal von einem morphologisch gestützten Riss abgrenzen.",
-          "en": "Distinguish normal anatomy and intrameniscal signal from a morphologically supported tear.",
-          "fa": "آناتومی طبیعی و سیگنال داخل منیسک را از پارگی دارای شواهد مورفولوژیک جدا کنید."
-        },
-        "questionIds": [
-          "meniskus-de-01",
-          "meniskus-de-02",
-          "meniskus-de-04",
-          "meniskus-de-07",
-          "meniskus-de-08",
-          "meniskus-de-11",
-          "meniskus-de-22"
-        ],
-        "cardIds": [
-          "meniskus-01",
-          "meniskus-02",
-          "meniskus-03",
-          "meniskus-04",
-          "meniskus-05",
-          "meniskus-06",
-          "meniskus-07",
-          "meniskus-09",
-          "meniskus-10",
-          "meniskus-27",
-          "meniskus-28",
-          "meniskus-35"
-        ]
+  "route": "/msk/knie/meniskus",
+  "topicId": "meniskus",
+  "learningGoals": [
+    {
+      "id": "normal-tear",
+      "text": {
+        "de": "Normale Anatomie und intrameniskales Signal von einem morphologisch gestützten Riss abgrenzen.",
+        "en": "Distinguish normal anatomy and intrameniscal signal from a morphologically supported tear.",
+        "fa": "آناتومی طبیعی و سیگنال داخل منیسک را از پارگی دارای شواهد مورفولوژیک جدا کنید."
       },
-      {
-        "id": "tear-patterns",
-        "text": {
-          "de": "Rissverlauf und Fragmentverlagerung anatomisch beschreiben.",
-          "en": "Describe tear orientation and fragment displacement anatomically.",
-          "fa": "جهت پارگی و جابه‌جایی قطعه را به‌صورت آناتومیک توصیف کنید."
-        },
-        "questionIds": [
-          "meniskus-de-12",
-          "meniskus-de-13",
-          "meniskus-de-14",
-          "meniskus-de-15",
-          "meniskus-de-16",
-          "meniskus-de-36",
-          "meniskus-de-37"
-        ],
-        "cardIds": [
-          "meniskus-15",
-          "meniskus-16",
-          "meniskus-22",
-          "meniskus-23",
-          "meniskus-24",
-          "meniskus-29",
-          "meniskus-30",
-          "meniskus-31",
-          "meniskus-33",
-          "meniskus-36",
-          "meniskus-37"
-        ]
+      "questionIds": [
+        "meniskus-de-02",
+        "meniskus-de-04",
+        "meniskus-de-07",
+        "meniskus-de-08",
+        "meniskus-de-11",
+        "meniskus-de-22"
+      ],
+      "cardIds": [
+        "meniskus-03",
+        "meniskus-04",
+        "meniskus-05",
+        "meniskus-06",
+        "meniskus-07",
+        "meniskus-09",
+        "meniskus-10",
+        "meniskus-27",
+        "meniskus-28",
+        "meniskus-35"
+      ]
+    },
+    {
+      "id": "tear-patterns",
+      "text": {
+        "de": "Rissverlauf und Fragmentverlagerung anatomisch beschreiben.",
+        "en": "Describe tear orientation and fragment displacement anatomically.",
+        "fa": "جهت پارگی و جابه‌جایی قطعه را به‌صورت آناتومیک توصیف کنید."
       },
-      {
-        "id": "discoid",
-        "text": {
-          "de": "Die Discoidform mit koronaler Breite und protokollabhängiger sagittaler Ausdehnung beurteilen.",
-          "en": "Assess discoid shape using coronal width and protocol-dependent sagittal extent.",
-          "fa": "شکل دیسکویید را با پهنای کرونال و امتداد ساژیتال وابسته به پروتکل ارزیابی کنید."
-        },
-        "questionIds": [
-          "meniskus-de-17",
-          "meniskus-de-18"
-        ],
-        "cardIds": [
-          "meniskus-18",
-          "meniskus-19",
-          "meniskus-20",
-          "meniskus-21"
-        ]
+      "questionIds": [
+        "meniskus-de-12",
+        "meniskus-de-13",
+        "meniskus-de-14",
+        "meniskus-de-15",
+        "meniskus-de-16",
+        "meniskus-de-36"
+      ],
+      "cardIds": [
+        "meniskus-15",
+        "meniskus-16",
+        "meniskus-22",
+        "meniskus-23",
+        "meniskus-24",
+        "meniskus-29",
+        "meniskus-30",
+        "meniskus-31",
+        "meniskus-33",
+        "meniskus-36"
+      ]
+    },
+    {
+      "id": "discoid",
+      "text": {
+        "de": "Discoidform, normale Ligament-/Hiatusmimiken und Flounce anhand vollständiger Untersuchung einordnen.",
+        "en": "Interpret discoid morphology, normal ligament/hiatus mimics and flounce using a complete examination.",
+        "fa": "مورفولوژی دیسکویید، مقلدهای طبیعی رباط/هیاتوس و فلونس را با بررسی کامل تفسیر کنید."
       },
-      {
-        "id": "clinical-management",
-        "text": {
-          "de": "Biologische Reparabilität und klinischen Kontext von einem automatischen Operationsschluss trennen.",
-          "en": "Distinguish biologic repair potential and clinical context from an automatic surgery conclusion.",
-          "fa": "ظرفیت زیستی ترمیم و زمینهٔ بالینی را از نتیجه‌گیری خودکار جراحی جدا کنید."
-        },
-        "questionIds": [
-          "meniskus-de-03",
-          "meniskus-de-10",
-          "meniskus-de-23"
-        ],
-        "cardIds": [
-          "meniskus-11",
-          "meniskus-12",
-          "meniskus-13",
-          "meniskus-14"
-        ]
+      "questionIds": [
+        "meniskus-de-17",
+        "meniskus-de-18",
+        "meniskus-de-21",
+        "meniskus-de-37",
+        "meniskus-de-39"
+      ],
+      "cardIds": [
+        "meniskus-18",
+        "meniskus-19",
+        "meniskus-20",
+        "meniskus-21",
+        "meniskus-37"
+      ]
+    },
+    {
+      "id": "clinical-management",
+      "text": {
+        "de": "Biologische Reparabilität und klinischen Kontext von einem automatischen Operationsschluss trennen.",
+        "en": "Distinguish biologic repair potential and clinical context from an automatic surgery conclusion.",
+        "fa": "ظرفیت زیستی ترمیم و زمینهٔ بالینی را از نتیجه‌گیری خودکار جراحی جدا کنید."
       },
-      {
-        "id": "useful-report",
-        "text": {
-          "de": "Wurzelbezug, Extrusion, Knorpel und normale Rissmimiken im Bericht berücksichtigen.",
-          "en": "Include root relationship, extrusion, cartilage and normal tear mimics in reporting.",
-          "fa": "رابطه با ریشه، اکستروژن، غضروف و مقلدهای طبیعی پارگی را در گزارش لحاظ کنید."
-        },
-        "questionIds": [
-          "meniskus-de-19",
-          "meniskus-de-20",
-          "meniskus-de-21"
-        ],
-        "cardIds": [
-          "meniskus-32",
-          "meniskus-34"
-        ]
-      }
-    ],
-    "status": "AUTHOR_PACKET_3_BOUNDED_DELTA_READY_FULL_EXISTING_POOL_REVIEW_PENDING",
-    "existingPoolReview": "Not fully reread or independently accepted; mapped unchanged IDs do not imply their pedagogic acceptance."
-  },
+      "questionIds": [
+        "meniskus-de-01",
+        "meniskus-de-03",
+        "meniskus-de-10",
+        "meniskus-de-23"
+      ],
+      "cardIds": [
+        "meniskus-01",
+        "meniskus-02",
+        "meniskus-11",
+        "meniskus-12",
+        "meniskus-13",
+        "meniskus-14"
+      ]
+    },
+    {
+      "id": "useful-report",
+      "text": {
+        "de": "Wurzelbezug, Extrusion, Knorpel und meniskokapsuläre Auffälligkeiten im Bericht berücksichtigen.",
+        "en": "Include root relationship, extrusion, cartilage and meniscocapsular abnormalities in reporting.",
+        "fa": "رابطه با ریشه، اکستروژن، غضروف و ناهنجاری‌های منیسکوکپسولار را در گزارش لحاظ کنید."
+      },
+      "questionIds": [
+        "meniskus-de-19",
+        "meniskus-de-20",
+        "meniskus-de-38"
+      ],
+      "cardIds": [
+        "meniskus-32",
+        "meniskus-34"
+      ]
+    }
+  ],
+  "status": "BOUNDED_ORIGINAL_POOL_CONTENT_ACCEPTED_SHARED_INTEGRATION_RETEST_PENDING",
+  "existingPoolReview": "Full24Q/33card triads independently read; original22 keys retained. review-meniscus.json repair01 accepted; full media/browser/scientific approval remain separate."
+},
   {
     "route": "/msk/knochennekrosen/avn-huefte",
     "topicId": "avn-huefte",

@@ -1,147 +1,1313 @@
-// Reviewed 2026-10-11. Native, non-operated menisci unless stated otherwise.
-// Source scope: imaging reviews, discoid MRI criteria, AAOS acute tears and ESSKA degenerative lesions.
+// Reviewed 2026-10-25: native, non-operated menisci. PDF coverage and source conflicts: packet12/meniscus-plan.md.
 export const MENISCUS_LEARNING_SOURCES = [
-  'https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/',
-  'https://pmc.ncbi.nlm.nih.gov/articles/PMC4766355/',
-  'https://pubmed.ncbi.nlm.nih.gov/12185036/',
-  'https://pmc.ncbi.nlm.nih.gov/articles/PMC9514523/',
-  'https://pmc.ncbi.nlm.nih.gov/articles/PMC10132882/',
-  'https://pubmed.ncbi.nlm.nih.gov/11973030/',
-  'https://pubmed.ncbi.nlm.nih.gov/12719929/',
-  'https://pubmed.ncbi.nlm.nih.gov/8316871/',
-  'https://pubmed.ncbi.nlm.nih.gov/19234702/',
-  'https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/',
-  'https://esskajournals.onlinelibrary.wiley.com/doi/10.1002/ksa.12689',
-]
-const L = (de, en, fa) => ({ de, en, fa })
-const grades = [L('Grad 1', 'Grade 1', 'گرید ۱'), L('Grad 2a', 'Grade 2a', 'گرید ۲a'), L('Grad 2c', 'Grade 2c', 'گرید ۲c'), L('Grad 3', 'Grade 3', 'گرید ۳')]
-const types = [L('Horizontalriss', 'Horizontal tear', 'پارگی افقی'), L('Longitudinalriss', 'Longitudinal tear', 'پارگی طولی'), L('Radiärriss', 'Radial tear', 'پارگی شعاعی'), L('Korbhenkelriss', 'Bucket-handle tear', 'پارگی دسته‌سطلی')]
-const Q = (id, question, options, correct, feedback, image, source) => ({ id, question, options, correct, feedback, image, source })
-const questions = [
-  Q('01', L('Welche Verbindung erklärt die geringere Mobilität des Innenmeniskus?', 'Which attachment explains the lower mobility of the medial meniscus?', 'کدام اتصال، تحرک کمتر منیسک داخلی را توضیح می‌دهد؟'), [L('Tiefe Anteile des medialen Kollateralbandes und Gelenkkapsel', 'Deep medial collateral ligament and joint capsule', 'بخش عمقی رباط جانبی داخلی و کپسول مفصل'), L('Direkte Verwachsung mit dem lateralen Kollateralband', 'Direct attachment to the lateral collateral ligament', 'اتصال مستقیم به رباط جانبی خارجی'), L('Direkte Verwachsung mit dem Patellarsehnenkörper', 'Direct attachment to the patellar tendon body', 'اتصال مستقیم به تنهٔ تاندون پاتلا'), L('Direkte Fixierung an der Popliteussehne', 'Direct fixation to the popliteus tendon', 'اتصال مستقیم به تاندون پوپلیتئوس')], 'A', [L('Kapsel und tiefes MCL fixieren den Innenmeniskus stärker. Die Verletzungsverteilung hängt jedoch vom Mechanismus ab; bei akuter ACL-Ruptur sind laterale Risse häufig.', 'The capsule and deep MCL constrain the medial meniscus. Injury distribution still depends on mechanism; lateral tears are common with acute ACL rupture.', 'کپسول و MCL عمقی منیسک داخلی را ثابت‌تر می‌کنند؛ توزیع آسیب به مکانیسم وابسته است و در پارگی حاد ACL، آسیب منیسک خارجی شایع است.'), L('Das LCL ist keine direkte Fixierung des Innenmeniskus.', 'The LCL does not directly fix the medial meniscus.', 'LCL اتصال مستقیم منیسک داخلی نیست.'), L('Die Patellarsehne erklärt die meniskale Mobilität nicht.', 'The patellar tendon does not explain meniscal mobility.', 'تاندون پاتلا علت تفاوت تحرک منیسک‌ها نیست.'), L('Die Popliteussehne liegt am Außenmeniskus und erklärt nicht die kapsuläre Fixierung des Innenmeniskus.', 'The popliteus tendon lies at the lateral meniscus and does not explain medial capsular fixation.', 'تاندون پوپلیتئوس کنار منیسک خارجی است و تثبیت کپسولی منیسک داخلی را توضیح نمی‌دهد.')]),
-  Q('02', L('Eine Signallinie erreicht die inferiore Gelenkfläche auf zwei benachbarten sagittalen Bildern. Welche Aussage trifft zu?', 'A signal line reaches the inferior articular surface on two adjacent sagittal images. Which statement is correct?', 'خط سیگنال در دو تصویر ساژیتال مجاور به سطح مفصلی تحتانی می‌رسد. کدام عبارت درست است؟'), [L('Ein Riss ist erst bei Kontakt zu beiden Gelenkflächen möglich.', 'A tear requires contact with both articular surfaces.', 'پارگی نیازمند تماس با هر دو سطح مفصلی است.'), L('Der Befund erfüllt die Two-slice-touch-Regel und stützt eine Rissdiagnose.', 'This meets the two-slice-touch rule and supports a tear diagnosis.', 'این یافته قاعدهٔ Two-slice-touch را دارد و به نفع تشخیص پارگی است.'), L('Die Regel fordert zwei verschiedene Sequenzen.', 'The rule requires two different sequences.', 'این قاعده دو سکانس متفاوت می‌خواهد.'), L('Die Regel fordert mindestens 3 mm Risslänge.', 'The rule requires a tear length of at least 3 mm.', 'این قاعده حداقل طول پارگی ۳ میلی‌متر را می‌خواهد.')], 'B', [L('Kontakt zu einer Gelenkfläche genügt; beide müssen nicht erreicht werden.', 'Contact with one articular surface is sufficient; both are not required.', 'تماس با یک سطح مفصلی کافی است؛ هر دو لازم نیست.'), L('Wiederholter Oberflächenkontakt erhöht die diagnostische Sicherheit. Die Regel ergänzt die Morphologie und ist kein Ersatz für die multiplanare Beurteilung.', 'Repeated surface contact increases diagnostic confidence. The rule complements morphology and does not replace multiplanar assessment.', 'تکرار تماس سطحی اطمینان تشخیصی را افزایش می‌دهد؛ این قاعده مکمل مورفولوژی است و جای بررسی چندصفحه‌ای را نمی‌گیرد.'), L('Die Regel zählt Bilder mit Oberflächenkontakt, nicht Sequenznamen.', 'The rule counts images with surface contact, not sequence names.', 'قاعده تعداد تصاویر با تماس سطحی را می‌سنجد، نه نام سکانس‌ها.'), L('Eine feste Mindestlänge gehört nicht zur Regel.', 'There is no fixed minimum tear length in this rule.', 'حداقل طول ثابت جزو این قاعده نیست.')]),
-  Q('03', L('Ein frischer, peripherer Longitudinalriss liegt kapselnah. Welche Zone bietet die günstigsten biologischen Heilungsvoraussetzungen?', 'A recent peripheral longitudinal tear lies next to the capsule. Which zone offers the best biological healing potential?', 'پارگی طولی تازه و محیطی کنار کپسول قرار دارد. کدام ناحیه بهترین زمینهٔ زیستی ترمیم را دارد؟'), [L('Weiße Zone', 'White zone', 'ناحیهٔ سفید'), L('Rot-weiße Zone', 'Red-white zone', 'ناحیهٔ قرمز-سفید'), L('Rote Zone', 'Red zone', 'ناحیهٔ قرمز'), L('Alle Zonen haben die gleiche Gefäßversorgung.', 'All zones have the same vascular supply.', 'همهٔ نواحی خون‌رسانی یکسان دارند.')], 'C', [L('Die zentrale weiße Zone ist avaskulär und hat geringeres Heilungspotenzial.', 'The central white zone is avascular and has lower healing potential.', 'ناحیهٔ سفید مرکزی بدون عروق و دارای ظرفیت ترمیم کمتر است.'), L('Die Übergangszone ist weniger durchblutet als die kapselnahe rote Zone.', 'The transitional zone is less vascular than the peripheral red zone.', 'خون‌رسانی ناحیهٔ انتقالی کمتر از ناحیهٔ قرمز کنار کپسول است.'), L('Die rote Zone ist am besten vaskularisiert. Eine Nahtentscheidung berücksichtigt zusätzlich Gewebequalität, Rissform und klinische Situation.', 'The red zone is most vascular. Repair decisions also consider tissue quality, tear pattern and clinical context.', 'ناحیهٔ قرمز بیشترین خون‌رسانی را دارد؛ تصمیم بخیه به کیفیت بافت، شکل پارگی و وضعیت بالینی هم وابسته است.'), L('Die Gefäßversorgung nimmt zum freien Innenrand ab.', 'Vascular supply decreases towards the free inner edge.', 'خون‌رسانی به سمت لبهٔ آزاد داخلی کاهش می‌یابد.')]),
-  Q('04', L('Wie wird ein vermuteter Meniskusriss im Routine-MRT am zuverlässigsten beurteilt?', 'How is a suspected meniscal tear most reliably assessed on routine MRI?', 'پارگی مشکوک منیسک در MRI روتین چگونه مطمئن‌تر ارزیابی می‌شود؟'), [L('Mit einer einzelnen T1-Schicht', 'Using one T1 slice', 'با یک برش T1'), L('Mit dünnschichtigen PD-/intermediär gewichteten und flüssigkeitssensitiven Bildern in mehreren Ebenen', 'Using thin-section PD/intermediate-weighted and fluid-sensitive images in multiple planes', 'با تصاویر نازک PD/وزن‌دهی میانی و حساس به مایع در چند صفحه'), L('Nur anhand der maximalen Signalhelligkeit', 'Only from maximum signal brightness', 'فقط بر اساس بیشترین روشنی سیگنال'), L('Nur anhand eines Knochenmarködems', 'Only from bone marrow oedema', 'فقط بر اساس ادم مغز استخوان')], 'B', [L('Eine Einzelschicht erlaubt keine sichere Prüfung von Verlauf und Reproduzierbarkeit.', 'One slice cannot reliably establish orientation and reproducibility.', 'یک برش مسیر و تکرارپذیری را مطمئن نشان نمی‌دهد.'), L('Morphologie, Oberflächenkontakt und Fragmentlage werden sagittal, koronal und axial abgeglichen. PD-Sequenzen sind hilfreich; nicht jeder Riss ist auf T2 flüssigkeitshell.', 'Correlate morphology, surface contact and fragment position sagittally, coronally and axially. PD images are useful; not every tear is fluid-bright on T2.', 'مورفولوژی، تماس سطحی و محل قطعه در ساژیتال، کرونال و اکسیال تطبیق داده می‌شوند. PD مفید است؛ هر پارگی در T2 به روشنی مایع نیست.'), L('Helles intrameniskales Signal kann Degeneration sein; Kontakt und Form sind entscheidend.', 'Bright intrasubstance signal may represent degeneration; contact and shape matter.', 'سیگنال روشن داخل منیسک می‌تواند دژنراسیون باشد؛ تماس و شکل مهم‌اند.'), L('Ödem kann eine Begleitverletzung zeigen, beweist aber keinen Meniskusriss.', 'Oedema may indicate an associated injury but does not prove a meniscal tear.', 'ادم می‌تواند آسیب همراه را نشان دهد، اما پارگی منیسک را ثابت نمی‌کند.')]),
-  Q('07', L('Die gesamte Sequenz zeigt ein globuläres intrameniskales Signal ohne sicheren Oberflächenkontakt. Welcher Subtyp passt in der erweiterten Grad-2-Einteilung?', 'The full sequence shows globular intrasubstance signal without definite surface contact. Which subtype fits the extended grade-2 scheme?', 'در کل سکانس، سیگنال گلوبولار داخل منیسک بدون تماس سطحی قطعی دیده می‌شود. در تقسیم‌بندی توسعه‌یافتهٔ گرید ۲، کدام زیرگروه مناسب است؟'), grades, 'C', [L('Grad 1 ist typischerweise fokal/punktförmig, nicht ausgedehnt globulär.', 'Grade 1 is typically focal/punctate, not extensive globular signal.', 'گرید ۱ معمولاً کانونی/نقطه‌ای است، نه گلوبولار وسیع.'), L('Grad 2a beschreibt ein lineares Signal ohne Oberflächenkontakt.', 'Grade 2a describes linear signal without surface contact.', 'گرید ۲a سیگنال خطی بدون تماس سطحی است.'), L('Grad 2c beschreibt ausgedehntes keilförmiges/globuläres Signal ohne sicheren Oberflächenkontakt. Ein okkulter Riss ist möglich, aber nicht allein durch dieses Signal bewiesen.', 'Grade 2c describes extensive wedge-shaped/globular signal without definite surface contact. An occult tear is possible but is not proved by this signal alone.', 'گرید ۲c سیگنال وسیع گوه‌ای/گلوبولار بدون تماس سطحی قطعی است. پارگی مخفی ممکن است، اما این سیگنال به‌تنهایی آن را ثابت نمی‌کند.'), L('Ohne sicheren Oberflächenkontakt ist Grad 3 signalbasiert nicht belegt.', 'Without definite surface contact, signal-based grade 3 is not established.', 'بدون تماس سطحی قطعی، گرید ۳ بر پایهٔ سیگنال اثبات نمی‌شود.')], { src: '/meniskus/cases/case-75168/frame-09.jpeg', alt: L('Sagittale PD-Fat-Sat-MRT des Knies', 'Sagittal PD fat-saturated knee MRI', 'MRI ساژیتال PD با سرکوب چربی زانو'), caption: L('Beispielbild; für die Einordnung gilt die im Fragetext beschriebene gesamte Sequenz.', 'Illustrative frame; classification uses the full-sequence findings stated in the question.', 'تصویر نمونه؛ طبقه‌بندی بر اساس یافته‌های کل سکانس در متن سؤال است.'), credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168', sourceUrl: 'https://radiopaedia.org/cases/75168' }),
-  Q('08', L('Ein lineares Signal erreicht auf genau einem Bild die Oberfläche, auf den benachbarten Bildern nicht. Es gibt keinen Formdefekt. Wie wird es eingeordnet?', 'Linear signal touches the surface on exactly one image, but not on adjacent images. There is no morphological defect. How is it classified?', 'سیگنال خطی فقط در یک تصویر به سطح می‌رسد و در تصاویر مجاور تماس ندارد؛ نقص شکلی هم دیده نمی‌شود. طبقه‌بندی چیست؟'), [L('Grad 2b; für einen sicheren Riss inkonklusiv', 'Grade 2b; inconclusive for a definite tear', 'گرید ۲b؛ برای پارگی قطعی نامطمئن'), L('Grad 3 mit sicherem Rissnachweis', 'Grade 3 with a definite tear', 'گرید ۳ با پارگی قطعی'), L('Grad 1', 'Grade 1', 'گرید ۱'), L('Grad 0', 'Grade 0', 'گرید ۰')], 'A', [L('Grad 2b bezeichnet den Einzelschichtkontakt in dieser erweiterten Einteilung. Ein echter Riss bleibt möglich; Verlauf und Morphologie müssen geprüft werden. Die Two-slice-touch-Regel erhöht die Sicherheit, ist aber keine ausnahmslose Voraussetzung für jeden morphologisch eindeutigen Riss.', 'Grade 2b denotes single-image contact in this extended scheme. A real tear remains possible; assess orientation and morphology. The two-slice-touch rule increases confidence but is not mandatory for every morphologically definite tear.', 'در این تقسیم‌بندی توسعه‌یافته، گرید ۲b تماس تک‌تصویری است. پارگی واقعی همچنان ممکن است؛ مسیر و مورفولوژی بررسی شوند. قاعدهٔ دو تصویر اطمینان را بالا می‌برد، اما شرط مطلق تمام پارگی‌های واضح مورفولوژیک نیست.'), L('Ein einzelner Kontakt ohne bestätigenden Formdefekt beweist keinen sicheren Riss.', 'Single-image contact without a supporting defect does not prove a definite tear.', 'تماس در یک تصویر بدون نقص شکلی مؤید، پارگی قطعی را ثابت نمی‌کند.'), L('Grad 1 ist ein fokales Signal ohne Kontakt, nicht ein lineares Signal mit Einzelschichtkontakt.', 'Grade 1 is focal signal without contact, not linear single-image contact.', 'گرید ۱ سیگنال کانونی بدون تماس است، نه خطی با تماس تک‌تصویری.'), L('Grad 0 ist homogen signalarm ohne pathologische Signallinie.', 'Grade 0 is homogeneous low signal without a pathological signal line.', 'گرید ۰ کم‌سیگنال همگن و بدون خط سیگنال پاتولوژیک است.')], { src: '/meniskus/cases/case-14060-coronal-stir/frame-04.jpg', alt: L('Koronale STIR-MRT des Knies', 'Coronal STIR knee MRI', 'MRI کرونال STIR زانو'), caption: L('Beispielbild; die Angaben zu Nachbarschichten stammen aus dem Fragetext.', 'Illustrative frame; adjacent-slice findings are supplied in the question.', 'تصویر نمونه؛ یافته‌های برش‌های مجاور در متن سؤال آمده‌اند.'), credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060', sourceUrl: 'https://radiopaedia.org/cases/14060' }),
-  Q("10",
-{
-  "de": "Eine 58-jährige Person hat einen degenerativen Horizontalriss ohne echte Blockade, akutes Trauma oder fortgeschrittene Arthrose. Ein strukturiertes Übungsprogramm wurde noch nicht versucht. Welcher initiale Ansatz ist am besten begründet?",
-  "en": "A 58-year-old has a degenerative horizontal tear without true locking, acute trauma or advanced osteoarthritis. No structured exercise programme has been tried. Which initial approach is best supported?",
-  "fa": "فردی ۵۸ ساله پارگی افقی دژنراتیو دارد، بدون قفل‌شدگی واقعی، ترومای حاد یا آرتروز پیشرفته. هنوز برنامهٔ تمرینی ساختاریافته امتحان نشده است. کدام رویکرد اولیه پشتوانهٔ بهتری دارد؟"
-},
-[
-  {
-    "de": "Arthroskopische Teilmeniskektomie als erste Maßnahme",
-    "en": "Arthroscopic partial meniscectomy as the first intervention",
-    "fa": "منیسککتومی جزئی آرتروسکوپیک به‌عنوان اقدام نخست"
-  },
-  {
-    "de": "Arthroskopische Meniskusnaht als erste Maßnahme",
-    "en": "Arthroscopic meniscal repair as the first intervention",
-    "fa": "ترمیم منیسک با بخیهٔ آرتروسکوپیک به‌عنوان اقدام نخست"
-  },
-  {
-    "de": "Angeleitetes Übungsprogramm mit klinischer Verlaufskontrolle",
-    "en": "Supervised exercise with clinical follow-up",
-    "fa": "برنامهٔ تمرینی هدایت‌شده همراه پیگیری بالینی"
-  },
-  {
-    "de": "Ruhigstellung in einer Knieorthese als primäre Behandlungsstrategie",
-    "en": "Immobilisation in a knee brace as the primary treatment strategy",
-    "fa": "بی‌حرکت‌سازی با بریس زانو به‌عنوان راهبرد اصلی درمان"
-  }
-],
-"C",
-[
-  {
-    "de": "Der degenerative MRT-Riss begründet in dieser nicht blockierten, noch nicht aktiv vorbehandelten Situation keine vorrangige Teilresektion.",
-    "en": "In this nonlocked case without prior structured exercise, the degenerative MRI tear does not justify partial resection as the preferred first step.",
-    "fa": "در این وضعیت بدون قفل‌شدگی و بدون تمرین ساختاریافتهٔ قبلی، پارگی دژنراتیو در MRI، برداشت جزئی را به اقدام نخستِ ترجیحی تبدیل نمی‌کند."
-  },
-  {
-    "de": "Eine degenerative Horizontalspalte ist nicht mit einem frischen reparablen peripheren Längsriss gleichzusetzen. Die Naht ist hier keine aus dem MRT allein abgeleitete Erstmaßnahme.",
-    "en": "A degenerative horizontal split is not the same as an acute repairable peripheral longitudinal tear. MRI alone does not establish repair as the first step here.",
-    "fa": "شکاف افقی دژنراتیو با پارگی طولی محیطی حاد و قابل ترمیم یکسان نیست. MRI به‌تنهایی بخیه را به اقدام نخست در اینجا تبدیل نمی‌کند."
-  },
-  {
-    "de": "Ein primärer RCT bei mittelalten Personen mit degenerativem Meniskusriss und überwiegend fehlender radiographischer Arthrose fand nach zwei Jahren keine klinisch relevante Funktionsdifferenz zwischen Übungstherapie und Teilmeniskektomie. Ein angeleitetes Übungsprogramm ist hier ein begründeter erster Ansatz. Das ist keine Aussage gegen jede Operation; echte Blockade, akute reparable Verletzung und Beschwerden trotz angemessener Vorbehandlung sind gesondert zu beurteilen.",
-    "en": "A primary RCT in middle-aged people with degenerative meniscal tears and mostly no radiographic osteoarthritis found no clinically important two-year functional difference between exercise and partial meniscectomy. Supervised exercise is a supported first approach here. This does not oppose every operation; true locking, an acute repairable injury and symptoms despite appropriate prior care require separate assessment.",
-    "fa": "یک کارآزمایی تصادفی اولیه در افراد میانسال با پارگی دژنراتیو منیسک و عمدتاً بدون آرتروز رادیوگرافیک، پس از دو سال تفاوت عملکردیِ مهم از نظر بالینی میان تمرین‌درمانی و منیسککتومی جزئی نیافت. برنامهٔ تمرینی هدایت‌شده در اینجا رویکرد نخستِ دارای پشتوانه است. این به معنی مخالفت با تمام جراحی‌ها نیست؛ قفل‌شدگی واقعی، آسیب حادِ قابل ترمیم و تداوم علائم با وجود درمان اولیهٔ مناسب، جداگانه ارزیابی می‌شوند."
-  },
-  {
-    "de": "Eine Orthesenruhigstellung ersetzt nicht die hier begründete aktive Übungstherapie. Belastungsanpassung kann individuell ergänzen, ist aber nicht mit immobilisierender Hauptbehandlung gleichzusetzen.",
-    "en": "Brace immobilisation does not substitute for the supported active exercise approach. Activity modification may be an adjunct, but is not equivalent to immobilisation as the main treatment.",
-    "fa": "بی‌حرکت‌سازی با بریس جای رویکرد تمرینی فعالِ دارای پشتوانه را نمی‌گیرد. تعدیل فعالیت می‌تواند به‌صورت فردی مکمل باشد، اما معادل بی‌حرکت‌سازی به‌عنوان درمان اصلی نیست."
-  }
-], undefined, "https://www.bmj.com/content/354/bmj.i3740"),
-  Q('11', L('Eine lineare intrameniskale Signalanhebung bleibt in allen Ebenen vollständig innerhalb des Meniskus. Welcher Grad passt?', 'Linear intrasubstance signal stays entirely within the meniscus in all planes. Which grade fits?', 'سیگنال خطی در تمام صفحات کاملاً داخل منیسک باقی می‌ماند. کدام گرید مناسب است؟'), grades, 'B', [L('Grad 1 ist typischerweise fokal/punktförmig.', 'Grade 1 is typically focal/punctate.', 'گرید ۱ معمولاً کانونی/نقطه‌ای است.'), L('Grad 2a: lineares Signal ohne Gelenkflächenkontakt. Das ist keine sichere Rissdiagnose.', 'Grade 2a: linear signal without articular-surface contact. This is not a definite tear diagnosis.', 'گرید ۲a: سیگنال خطی بدون تماس سطح مفصلی؛ این تشخیص پارگی قطعی نیست.'), L('Grad 2c ist ausgedehnt keilförmig/globulär, nicht nur linear.', 'Grade 2c is extensive wedge-shaped/globular, not merely linear.', 'گرید ۲c گوه‌ای/گلوبولار وسیع است، نه فقط خطی.'), L('Grad 3 erfordert bei signalbasierter Einordnung sicheren Oberflächenkontakt.', 'Signal-based grade 3 requires definite surface contact.', 'گرید ۳ بر پایهٔ سیگنال به تماس سطحی قطعی نیاز دارد.')]),
-  Q('12', L('Ein Defekt beginnt am freien Meniskusrand und durchtrennt die Ringfasern quer. Welcher Rissverlauf passt?', 'A defect starts at the free meniscal edge and crosses the circumferential fibres. Which tear orientation fits?', 'نقص از لبهٔ آزاد منیسک آغاز می‌شود و الیاف حلقوی را عرضی قطع می‌کند. نوع پارگی چیست؟'), types, 'C', [L('Ein Horizontalriss verläuft parallel zur Tibiaebene und spaltet Lamellen.', 'A horizontal tear is parallel to the tibial plane and splits leaflets.', 'پارگی افقی موازی صفحهٔ تیبیا و جداکنندهٔ لایه‌هاست.'), L('Ein Longitudinalriss folgt der Peripherie und den Ringfasern.', 'A longitudinal tear follows the periphery and circumferential fibres.', 'پارگی طولی امتداد محیط و الیاف حلقوی را دنبال می‌کند.'), L('Ein Radiärriss läuft vom freien Rand nach außen, quer zu den Ringfasern. Tiefe und vollständige Risse können die Ringspannung stark beeinträchtigen.', 'A radial tear runs outward from the free edge across circumferential fibres. Deep and complete tears can markedly impair hoop-stress transmission.', 'پارگی شعاعی از لبهٔ آزاد به خارج و عرض الیاف حلقوی پیش می‌رود؛ پارگی عمیق و کامل انتقال تنش حلقوی را شدیداً مختل می‌کند.'), L('Ein Korbhenkelriss ist ein dislozierter Longitudinalriss, kein radialer Verlauf.', 'A bucket-handle tear is a displaced longitudinal tear, not a radial orientation.', 'پارگی دسته‌سطلی پارگی طولی جابه‌جا‌شده است، نه شعاعی.')]),
-  Q('13', L('Sagittal fehlt ein normalerweise sichtbarer Meniskusanteil (Ghost-Zeichen). Koronal und axial zeigt sich ein Defekt über die gesamte Breite. Was passt am besten?', 'A normally visible meniscal segment is absent sagittally (ghost sign). Coronal and axial images show a full-width defect. What fits best?', 'بخش معمولاً قابل‌مشاهدهٔ منیسک در ساژیتال غایب است (Ghost sign)؛ کرونال و اکسیال نقص تمام‌عرض دارند. بهترین تشخیص چیست؟'), [L('Isolierte Grad-1-Degeneration', 'Isolated grade-1 degeneration', 'دژنراسیون منفرد گرید ۱'), L('Vollständiger Radiärriss', 'Complete radial tear', 'پارگی شعاعی کامل'), L('Normaler Popliteushiatus', 'Normal popliteus hiatus', 'هیاتوس طبیعی پوپلیتئوس'), L('Unkomplizierter Horizontalriss ohne Gewebeverlust', 'Uncomplicated horizontal tear without tissue loss', 'پارگی افقی ساده بدون فقدان بافت')], 'B', [L('Grad 1 erklärt keinen multiplanar sichtbaren Gewebedefekt.', 'Grade 1 does not explain a multiplanar tissue defect.', 'گرید ۱ نقص بافت چندصفحه‌ای را توضیح نمی‌دهد.'), L('Der bestätigte Defekt über die gesamte Breite passt zum vollständigen Radiärriss. Das Ghost-Zeichen ist ein Hinweis, allein aber nicht spezifisch; die Wurzelregion zusätzlich prüfen.', 'The confirmed full-width defect fits a complete radial tear. The ghost sign is suggestive but not specific alone; also assess the root region.', 'نقص تأییدشدهٔ تمام‌عرض با پارگی شعاعی کامل سازگار است؛ علامت Ghost به‌تنهایی اختصاصی نیست و ناحیهٔ ریشه هم بررسی شود.'), L('Der Popliteushiatus liegt posterolateral und erklärt keinen vollständigen Defekt durch den Meniskus.', 'The posterolateral popliteus hiatus does not explain a full-width meniscal defect.', 'هیاتوس پوپلیتئوس خلفی‌خارجی نقص تمام‌عرض منیسک را توضیح نمی‌دهد.'), L('Ein Horizontalriss spaltet den Meniskus; der beschriebene Defekt ist radial und vollständig.', 'A horizontal tear splits the meniscus; the described defect is radial and complete.', 'پارگی افقی لایه‌ها را جدا می‌کند؛ نقص توصیف‌شده شعاعی و کامل است.')]),
-  Q('14', L('Ein schräger Radiärriss am freien Rand bildet ein spitzes, teilweise angeheftetes Fragment. Welche Bezeichnung passt?', 'An oblique radial tear at the free edge produces a pointed, partly attached fragment. Which term fits?', 'پارگی شعاعی مایل در لبهٔ آزاد قطعه‌ای نوک‌تیز با اتصال باقی‌مانده ایجاد می‌کند. نام مناسب چیست؟'), [L('Parrot-beak-tear (Lappenriss)', 'Parrot-beak tear (flap tear)', 'پارگی نوک‌طوطی (لَپی)'), types[0], types[1], types[3]], 'A', [L('Der schräge Verlauf bildet einen Lappen. Im MRT nach dem Ursprungsdefekt und einer Verlagerung in die Gelenkrecessus suchen.', 'The oblique orientation creates a flap. Search MRI for the donor defect and displacement into joint recesses.', 'مسیر مایل لَپ ایجاد می‌کند؛ در MRI نقص مبدأ و جابه‌جایی به رِسِس مفصل را جست‌وجو کنید.'), L('Ein Horizontalriss spaltet obere und untere Lamelle; der beschriebene spitze Lappen entsteht aus einem schrägen Radiärriss.', 'A horizontal tear splits upper and lower leaflets; the pointed flap described arises from an oblique radial tear.', 'پارگی افقی لایهٔ بالا و پایین را جدا می‌کند؛ لَپ نوک‌تیز توصیف‌شده از پارگی شعاعی مایل است.'), L('Ein reiner Longitudinalriss verläuft parallel zur Peripherie.', 'A purely longitudinal tear runs parallel to the periphery.', 'پارگی طولی خالص موازی محیط است.'), L('Beim Korbhenkelriss wird ein längliches inneres Fragment zentral verlagert.', 'A bucket-handle tear displaces an elongated inner fragment centrally.', 'در دسته‌سطلی، قطعهٔ داخلی کشیده به مرکز جابه‌جا می‌شود.')]),
-  Q('15', L('Ein Patient hat eine echte Streckblockade. Sagittal liegt ein zweites dunkles Band parallel und anteroinferior zum PCL; koronal ist ein Fragment im Interkondylarraum sichtbar. Was ist am wahrscheinlichsten?', 'A patient has true extension locking. A second dark band lies parallel and anteroinferior to the PCL sagittally; a notch fragment is visible coronally. What is most likely?', 'بیمار قفل‌شدن واقعی در اکستنشن دارد؛ ساژیتال نوار تیرهٔ دوم موازی و قدامی‌تحتانی PCL و کرونال قطعه در ناچ نشان می‌دهد. محتمل‌ترین تشخیص چیست؟'), [L('Discoider Meniskus ohne Riss', 'Discoid meniscus without tear', 'منیسک دیسکویید بدون پارگی'), types[0], types[3], L('Isolierte Grad-2a-Degeneration', 'Isolated grade-2a degeneration', 'دژنراسیون منفرد گرید ۲a')], 'C', [L('Eine discoide Form allein erklärt kein zentral disloziertes Fragment.', 'Discoid shape alone does not explain a centrally displaced fragment.', 'شکل دیسکویید به‌تنهایی قطعهٔ جابه‌جا‌شدهٔ مرکزی را توضیح نمی‌دهد.'), L('Die Fragmentlage und das Double-PCL-Zeichen passen zum Korbhenkelriss.', 'The fragment position and double-PCL sign fit a bucket-handle tear.', 'محل قطعه و Double-PCL با دسته‌سطلی سازگارند.'), L('Double-PCL-Zeichen und Interkondylarfragment stützen einen Korbhenkelriss, meist des Innenmeniskus. Die echte Blockade erfordert eine dringliche orthopädische Beurteilung.', 'The double-PCL sign and notch fragment support a bucket-handle tear, usually medial. True locking requires urgent orthopaedic assessment.', 'Double-PCL و قطعهٔ ناچ به نفع دسته‌سطلی، معمولاً منیسک داخلی، هستند؛ قفل‌شدن واقعی ارزیابی فوری ارتوپدی می‌خواهد.'), L('Intrameniskale Degeneration bildet kein freies oder umgeschlagenes Fragment im Interkondylarraum.', 'Intrasubstance degeneration does not create a displaced notch fragment.', 'دژنراسیون داخل منیسک قطعهٔ جابه‌جا‌شده در ناچ ایجاد نمی‌کند.')]),
-  Q('16', L('Neben dem Vorderhorn liegt ein zweites Meniskusfragment; das Hinterhorn ist deutlich vermindert. Welche Verlagerungsform wird beschrieben?', 'A second meniscal fragment lies beside the anterior horn; the posterior horn is markedly reduced. Which displacement pattern is described?', 'قطعهٔ منیسک دوم کنار شاخ قدامی و شاخ خلفی به‌وضوح کوچک‌شده دیده می‌شود. شکل جابه‌جایی چیست؟'), [L('Nach vorne umgeschlagener Meniskus (Flipped Meniscus)', 'Anteriorly flipped meniscus', 'منیسک برگشته به جلو'), L('Discoider Meniskus allein', 'Discoid meniscus alone', 'منیسک دیسکویید به‌تنهایی'), L('Grad 2c ohne Fragmentverlagerung', 'Grade 2c without fragment displacement', 'گرید ۲c بدون جابه‌جایی قطعه'), L('Horizontalriss ohne Dislokation', 'Horizontal tear without displacement', 'پارگی افقی بدون جابه‌جایی')], 'A', [L('Das nach vorne verlagerte Hinterhornfragment kann ein Double-Anterior-Horn-Zeichen bilden. Flipped beschreibt die Fragmentverlagerung, häufig bei einem Korbhenkelriss, nicht einen eigenständigen Rissverlauf.', 'An anteriorly displaced posterior-horn fragment can produce a double-anterior-horn sign. Flipped describes displacement, often in a bucket-handle tear, not an independent tear orientation.', 'قطعهٔ شاخ خلفی که جلو آمده می‌تواند Double anterior horn ایجاد کند؛ Flipped نوع جابه‌جایی، اغلب در دسته‌سطلی، است و مسیر مستقل پارگی نیست.'), L('Discoid bedeutet einen verbreiterten Meniskuskörper, nicht ein nach vorne verlagertes Hinterhornfragment.', 'Discoid means a broad meniscal body, not an anteriorly displaced posterior-horn fragment.', 'دیسکویید یعنی تنهٔ پهن، نه قطعهٔ شاخ خلفی جابه‌جا‌شده به جلو.'), L('Grad 2c ist eine Signalbeschreibung und erklärt das dislozierte Fragment nicht.', 'Grade 2c describes signal and does not explain the displaced fragment.', 'گرید ۲c توصیف سیگنال است و قطعهٔ جابه‌جا‌شده را توضیح نمی‌دهد.'), L('Ohne Dislokation entsteht keine Verdoppelung durch ein verlagertes Fragment.', 'Without displacement, there is no duplication from a displaced fragment.', 'بدون جابه‌جایی، دوگانگی حاصل از قطعهٔ منتقل‌شده ایجاد نمی‌شود.')]),
-  Q('17', L('Bei 2-mm-Schichten bleibt der Außenmeniskuskörper auf drei sagittalen Bildern sichtbar. Reicht dies allein zur Diagnose eines discoiden Meniskus?', 'With 2-mm slices, the lateral meniscal body is visible on three sagittal images. Is that alone enough to diagnose discoid meniscus?', 'در برش‌های ۲ میلی‌متری تنهٔ منیسک خارجی در سه تصویر ساژیتال دیده می‌شود. آیا این به‌تنهایی برای دیسکویید کافی است؟'), [L('Ja, unabhängig von der Schnittdicke.', 'Yes, regardless of slice thickness.', 'بله، مستقل از ضخامت برش.'), L('Nein; Schichtdicke und quantitative Breitenkriterien müssen berücksichtigt werden.', 'No; account for slice thickness and quantitative width criteria.', 'خیر؛ ضخامت برش و معیارهای کمی پهنا باید لحاظ شوند.'), L('Nein; discoide Menisken betreffen nur den Innenmeniskus.', 'No; discoid menisci affect only the medial meniscus.', 'خیر؛ دیسکویید فقط منیسک داخلی را درگیر می‌کند.'), L('Ja; drei Bilder beweisen gleichzeitig einen Riss.', 'Yes; three images also prove a tear.', 'بله؛ سه تصویر هم‌زمان پارگی را نیز ثابت می‌کنند.')], 'B', [L('Das klassische Drei-Schichten-Zeichen ist von der Schichtdicke abhängig.', 'The classic three-slice sign depends on slice thickness.', 'علامت کلاسیک سه برش به ضخامت برش وابسته است.'), L('Bei dünnen Schichten ist ein normaler Körper auf mehr Bildern sichtbar. Breite und Form multiplanar beurteilen; koronale Breite bzw. Breitenverhältnis sind hilfreich.', 'Thin slices show a normal body on more images. Assess width and shape in multiple planes; coronal width or width ratios help.', 'در برش نازک تنهٔ طبیعی در تصاویر بیشتری دیده می‌شود؛ پهنا و شکل چندصفحه‌ای بررسی شوند و پهنا یا نسبت پهنای کرونال کمک‌کننده است.'), L('Die discoide Variante betrifft überwiegend den Außenmeniskus.', 'The discoid variant predominantly affects the lateral meniscus.', 'گونهٔ دیسکویید عمدتاً منیسک خارجی را درگیر می‌کند.'), L('Eine Formvariante ist nicht gleichbedeutend mit einem Riss.', 'A shape variant is not equivalent to a tear.', 'گونهٔ شکلی معادل پارگی نیست.')]),
-  Q("18",
-{
-  "de": "Welche quantitative koronale Messung unterstützt einen discoiden Außenmeniskus?",
-  "en": "Which quantitative coronal measurement supports a discoid lateral meniscus?",
-  "fa": "کدام اندازه‌گیری کمی کرونال به نفع منیسک خارجی دیسکویید است؟"
-},
-[
-  {
-    "de": "Körperbreite ≥15 mm oder Verhältnis minimaler Meniskusbreite zu maximaler Tibiabreite ≥20 %.",
-    "en": "Body width ≥15 mm or minimum meniscal-to-maximum tibial width ratio ≥20%.",
-    "fa": "پهنای تنه ≥۱۵ میلی‌متر یا نسبت حداقل پهنای منیسک به حداکثر پهنای تیبیا ≥۲۰٪."
-  },
-  {
-    "de": "Extrusion >3 mm als einziges Formkriterium",
-    "en": "Extrusion >3 mm as the only shape criterion",
-    "fa": "اکستروژن >۳ میلی‌متر به‌عنوان تنها معیار شکل"
-  },
-  {
-    "de": "Risslänge >15 mm",
-    "en": "Tear length >15 mm",
-    "fa": "طول پارگی >۱۵ میلی‌متر"
-  },
-  {
-    "de": "Vorder- plus Hinterhornbreite / Meniskusdurchmesser ≥75 % als koronale Messung",
-    "en": "Anterior-plus-posterior horn width / meniscal diameter ≥75% as a coronal measurement",
-    "fa": "مجموع پهنای شاخ قدامی و خلفی / قطر منیسک ≥۷۵٪ به‌عنوان اندازه‌گیری کرونال"
-  }
-],
-"A",
-[
-  {
-    "de": "Diese Breitenkriterien unterstützen die Diagnose und werden mit sagittaler Ausdehnung und Gesamtform kombiniert. Messung und Ebene müssen angegeben werden.",
-    "en": "These width criteria support diagnosis and are combined with sagittal extent and overall shape. Specify the measurement and plane.",
-    "fa": "این معیارهای پهنا مؤید تشخیص هستند و با امتداد ساژیتال و شکل کلی ترکیب می‌شوند؛ اندازه‌گیری و صفحه باید مشخص باشند."
-  },
-  {
-    "de": "Extrusion beschreibt die Verlagerung über den Tibiaplateaurand, nicht die koronale Körperbreite zur Discoidform.",
-    "en": "Extrusion describes displacement beyond the tibial plateau margin, not coronal body width for discoid shape.",
-    "fa": "اکستروژن جابه‌جایی فراتر از حاشیهٔ پلاتوی تیبیا را توصیف می‌کند، نه پهنای کرونال تنه برای شکل دیسکویید."
-  },
-  {
-    "de": "Eine Risslänge ist keine Messung der gesamten Meniskuskörperbreite.",
-    "en": "Tear length is not a measurement of overall meniscal body width.",
-    "fa": "طول پارگی، اندازه‌گیری پهنای کلی تنهٔ منیسک نیست."
-  },
-  {
-    "de": "Dieser Deckungsquotient wird im ursprünglichen Samoto-Protokoll sagittal gemessen; er ist keine koronale Messung.",
-    "en": "This coverage ratio is measured sagittally in the original Samoto protocol; it is not a coronal measurement.",
-    "fa": "این نسبت پوشش در پروتکل اصلی ساموتو در صفحهٔ ساژیتال اندازه‌گیری می‌شود؛ اندازه‌گیری کرونال نیست."
-  }
-], undefined, "https://pubmed.ncbi.nlm.nih.gov/11973030/"),
-  Q('19', L('Ein vollständiger Radiärriss liegt unmittelbar neben dem tibialen Hinterhornansatz. Was muss gezielt beurteilt werden?', 'A complete radial tear lies immediately beside the tibial posterior-horn attachment. What needs targeted assessment?', 'پارگی شعاعی کامل درست کنار اتصال تیبیایی شاخ خلفی است. چه چیزی باید هدفمند بررسی شود؟'), [L('Die Signallinienlänge ohne genaue Beziehung zum Ansatz', 'Signal-line length without its precise relationship to the attachment', 'طول خط سیگنال بدون ارتباط دقیق با اتصال'), L('Nur ein disloziertes Fragment; Ansatzkontinuität ist nebensächlich', 'Only a displaced fragment; attachment continuity is secondary', 'فقط قطعهٔ جابه‌جا‌شده؛ پیوستگی اتصال فرعی است'), L('Wurzelansatz, Extrusion und begleitender Knorpelschaden', 'Root attachment, extrusion and associated cartilage damage', 'اتصال ریشه، اکستروژن و آسیب غضروف همراه'), L('Körperbreite und Bow-tie-Schichtzahl als alleinige Wurzelkriterien', 'Body width and bow-tie slice count as the sole root criteria', 'پهنای تنه و تعداد برش Bow-tie به‌عنوان تنها معیارهای ریشه')], 'C', [L('Die Risslänge allein zeigt nicht, ob die Verankerung an der Wurzel unterbrochen ist.', 'Tear length alone does not establish whether root anchorage is interrupted.', 'طول پارگی به‌تنهایی نشان نمی‌دهد که اتصال ریشه قطع شده است یا نه.'), L('Auch ohne großes disloziertes Fragment kann ein wurzelnaher Defekt die Verankerung erheblich stören.', 'A root-adjacent defect can substantially impair anchorage even without a large displaced fragment.', 'نقص نزدیک ریشه حتی بدون قطعهٔ بزرگ جابه‌جا‌شده می‌تواند اتصال را شدیداً مختل کند.'), L('Wurzelnahe Defekte können die Verankerung und Ringspannung erheblich beeinträchtigen. Der genaue Ansatzbezug muss dokumentiert werden; nicht jeder Radiärriss ist automatisch ein Wurzelriss.', 'Root-adjacent defects can markedly impair anchorage and hoop stress. Document the precise relationship to the attachment; not every radial tear is automatically a root tear.', 'نقص نزدیک ریشه اتصال و تنش حلقوی را شدیداً مختل می‌کند؛ ارتباط دقیق با اتصال ثبت شود، چون هر پارگی شعاعی الزاماً پارگی ریشه نیست.'), L('Breite und Bow-tie-Schichtzahl dienen eher der Formbeurteilung; die Wurzel muss direkt untersucht werden.', 'Width and bow-tie slice count primarily assess shape; the root needs direct assessment.', 'پهنا و تعداد برش Bow-tie بیشتر شکل را می‌سنجند؛ ریشه باید مستقیم بررسی شود.')]),
-  Q('20', L('Bei einem vollständigen wurzelnahen Radiärriss mit Extrusion: Welcher Bericht ist am nützlichsten?', 'For a complete root-adjacent radial tear with extrusion, which report is most useful?', 'برای پارگی شعاعی کامل نزدیک ریشه همراه اکستروژن، کدام گزارش مفیدتر است؟'), [L('Innenmeniskus Grad 3 mit inferiorem Kontakt, ohne Beschreibung von Verlauf und Wurzelbezug.', 'Medial meniscus grade 3 with inferior contact, without orientation or root relationship.', 'منیسک داخلی گرید ۳ با تماس تحتانی، بدون توصیف مسیر و ارتباط ریشه.'), L('Innenmeniskushinterhorn: vollständiger Radiärriss nahe der Wurzel, Ansatzbezug und Extrusion beschrieben; Begleitknorpel beurteilt.', 'Medial posterior horn: complete radial tear near the root, with attachment relationship and extrusion described; associated cartilage assessed.', 'شاخ خلفی داخلی: پارگی شعاعی کامل نزدیک ریشه، ارتباط با اتصال و اکستروژن توصیف شده؛ غضروف همراه ارزیابی شده.'), L('Wurzelriss allein aus vorhandener Extrusion abgeleitet, ohne Prüfung des Ansatzes.', 'Root tear inferred solely from extrusion, without assessing the attachment.', 'پارگی ریشه صرفاً از اکستروژن نتیجه‌گیری شده، بدون بررسی اتصال.'), L('Degenerative Signalanhebung, ohne den sichtbaren vollständigen Defekt zu beschreiben.', 'Degenerative increased signal without describing the visible complete defect.', 'افزایش سیگنال دژنراتیو بدون توصیف نقص کامل قابل‌مشاهده.')], 'B', [L('Unspezifische Auffälligkeit reicht für die Therapieplanung nicht.', 'A nonspecific abnormality is insufficient for planning.', 'غیرطبیعی‌بودن نامشخص برای برنامه‌ریزی کافی نیست.'), L('Ein guter Bericht nennt Meniskus, Segment, Rissverlauf und Ausmaß, Fragmentlage, Wurzelbezug, Extrusion und relevante Begleitbefunde. Ein Signalgrad allein ersetzt diese Beschreibung nicht.', 'A useful report identifies meniscus, segment, orientation and extent, fragment position, root relationship, extrusion and relevant associated findings. A signal grade alone does not replace this description.', 'گزارش مفید منیسک، سگمان، مسیر و وسعت پارگی، محل قطعه، ارتباط ریشه، اکستروژن و یافته‌های همراه مهم را ذکر می‌کند؛ گرید سیگنال جای این توصیف را نمی‌گیرد.'), L('Extrusion allein beweist keinen Wurzelriss; den Ansatz direkt beurteilen.', 'Extrusion alone does not prove a root tear; assess the attachment directly.', 'اکستروژن به‌تنهایی پارگی ریشه را ثابت نمی‌کند؛ اتصال مستقیم بررسی شود.'), L('Ein sichtbarer vollständiger Defekt darf nicht als bloße Signaldegeneration unterberichtet werden.', 'A visible complete defect must not be underreported as mere signal degeneration.', 'نقص کامل قابل‌مشاهده نباید صرفاً دژنراسیون سیگنال گزارش شود.')]),
-  Q('21', L('Eine glatte flüssigkeitshaltige Spalte liegt posterolateral neben der Popliteussehne, ohne Unterbrechung des Meniskusgewebes. Was ist zuerst zu bedenken?', 'A smooth fluid-filled cleft lies posterolaterally beside the popliteus tendon, without interruption of meniscal tissue. What should be considered first?', 'شکاف صاف حاوی مایع خلفی‌خارجی کنار تاندون پوپلیتئوس بدون قطع بافت منیسک دیده می‌شود. ابتدا چه باید در نظر گرفته شود؟'), [L('Normaler Popliteushiatus als Rissmimik', 'Normal popliteus hiatus as a tear mimic', 'هیاتوس طبیعی پوپلیتئوس به‌عنوان تقلیدکنندهٔ پارگی'), L('Sicherer vollständiger Radiärriss', 'Definite complete radial tear', 'پارگی شعاعی کامل قطعی'), L('Sicherer Korbhenkelriss', 'Definite bucket-handle tear', 'دسته‌سطلی قطعی'), L('Sicherer discoider Meniskus', 'Definite discoid meniscus', 'دیسکویید قطعی')], 'A', [L('Der normale Popliteushiatus kann eine Spalte am Außenmeniskus vortäuschen. Typische Lage und intaktes Meniskusgewebe in mehreren Ebenen helfen bei der Abgrenzung.', 'The normal popliteus hiatus can mimic a cleft at the lateral meniscus. Typical location and intact tissue in multiple planes help distinguish it.', 'هیاتوس طبیعی پوپلیتئوس می‌تواند شکاف کنار منیسک خارجی را تقلید کند؛ محل تیپیک و بافت سالم در چند صفحه به افتراق کمک می‌کنند.'), L('Ein vollständiger Radiärriss unterbricht Meniskusgewebe über die Breite.', 'A complete radial tear interrupts meniscal tissue across its width.', 'پارگی شعاعی کامل بافت منیسک را در تمام عرض قطع می‌کند.'), L('Es fehlt der Nachweis eines dislozierten länglichen Fragments.', 'There is no demonstrated displaced elongated fragment.', 'قطعهٔ کشیدهٔ جابه‌جا‌شده اثبات نشده است.'), L('Eine lokale Spalte belegt keinen verbreiterten discoiden Körper.', 'A local cleft does not establish a broad discoid body.', 'شکاف موضعی تنهٔ دیسکویید پهن را اثبات نمی‌کند.')]),
-  Q('22', L('Ein kleines punktförmiges Signal bleibt innerhalb eines normal geformten Meniskus ohne Oberflächenkontakt. Welche Einordnung passt?', 'A small punctate signal remains within a normally shaped meniscus without surface contact. Which classification fits?', 'سیگنال نقطه‌ای کوچک داخل منیسک با شکل طبیعی و بدون تماس سطحی است. طبقه‌بندی مناسب چیست؟'), grades, 'A', [L('Grad 1 entspricht fokalem intrameniskalem Signal und früher mukoider Degeneration; allein kein Rissnachweis.', 'Grade 1 represents focal intrasubstance signal and early mucoid degeneration; it does not alone establish a tear.', 'گرید ۱ سیگنال کانونی داخل منیسک و دژنراسیون موکویید اولیه است؛ به‌تنهایی پارگی را ثابت نمی‌کند.'), L('Grad 2a ist linear, nicht punktförmig.', 'Grade 2a is linear, not punctate.', 'گرید ۲a خطی است، نه نقطه‌ای.'), L('Grad 2c ist ausgedehnt globulär/keilförmig.', 'Grade 2c is extensive globular/wedge-shaped signal.', 'گرید ۲c گلوبولار/گوه‌ای وسیع است.'), L('Es fehlt sicherer Oberflächenkontakt für die signalbasierte Grad-3-Einordnung.', 'Definite surface contact is absent for signal-based grade 3.', 'تماس سطحی قطعی برای گرید ۳ بر پایهٔ سیگنال وجود ندارد.')]),
-  Q('23', L('Ein frischer peripherer Longitudinalriss ist technisch reparabel. Welches Prinzip passt zur operativen Planung?', 'A recent peripheral longitudinal tear is technically repairable. Which principle fits operative planning?', 'پارگی طولی تازه و محیطی از نظر فنی قابل‌ترمیم است. کدام اصل برای برنامهٔ جراحی مناسب است؟'), [L('Die Entscheidung allein nach Signalhelligkeit treffen.', 'Base the decision solely on signal brightness.', 'تصمیم فقط بر پایهٔ روشنی سیگنال باشد.'), L('Die Gefäßzone allein bestimmt die Therapie, unabhängig von Gewebequalität.', 'Vascular zone alone determines treatment regardless of tissue quality.', 'ناحیهٔ عروقی به‌تنهایی، مستقل از کیفیت بافت، درمان را تعیین می‌کند.'), L('Bei indizierter Operation möglichst viel funktionsfähiges Meniskusgewebe erhalten.', 'When surgery is indicated, preserve as much functional meniscal tissue as possible.', 'وقتی جراحی اندیکاسیون دارد، بیشترین بافت عملکردی منیسک حفظ شود.'), L('Teilresektion bevorzugen, ohne die Reparabilität zu prüfen.', 'Prefer partial resection without assessing repairability.', 'برداشت جزئی بدون بررسی قابلیت ترمیم ترجیح داده شود.')], 'C', [L('Signalhelligkeit allein beschreibt weder Reparabilität noch klinische Operationsindikation.', 'Signal brightness alone describes neither repairability nor clinical surgical indication.', 'روشنی سیگنال به‌تنهایی نه قابلیت ترمیم را نشان می‌دهد و نه اندیکاسیون بالینی جراحی.'), L('Die Gefäßzone ist wichtig, aber Stabilität, Gewebequalität und Symptome müssen ebenfalls berücksichtigt werden.', 'Vascular zone matters, but stability, tissue quality and symptoms also need consideration.', 'ناحیهٔ عروقی مهم است، اما پایداری، کیفیت بافت و علائم هم باید لحاظ شوند.'), L('Save the Meniscus: Reparabilität, Stabilität und Gewebequalität prüfen; eine Naht kann gegenüber unnötiger Resektion vorteilhaft sein. Die Indikation bleibt klinisch.', 'Save the Meniscus: assess repairability, stability and tissue quality; repair may be preferable to unnecessary resection. Indication remains clinical.', 'Save the Meniscus: قابلیت ترمیم، پایداری و کیفیت بافت بررسی شوند؛ بخیه ممکن است از برداشت غیرضروری بهتر باشد و اندیکاسیون همچنان بالینی است.'), L('Bei reparablem Gewebe soll die Möglichkeit der Erhaltung geprüft werden; Resektion ist keine pauschale erste Wahl.', 'For repairable tissue, assess preservation options; resection is not a universal first choice.', 'در بافت قابل‌ترمیم امکان حفظ بررسی شود؛ برداشت انتخاب اول همگانی نیست.')]),
-  Q('36', L('Sagittal sind zwei meniskusähnliche Strukturen am Vorderhorn und kein normales Meniskussignal an der ursprünglichen Hinterhornposition sichtbar. Welches Muster passt am besten?', 'Sagittal MRI shows two meniscus-like structures at the anterior horn and no normal meniscal signal at the native posterior-horn position. Which pattern fits best?', 'در تصاویر ساژیتال MRI دو ساختار شبیه منیسک در شاخ قدامی و نبود سیگنال طبیعی منیسک در محل اصلی شاخ خلفی دیده می‌شود. کدام الگو مناسب‌تر است؟'), [L('Double-PCL-Zeichen durch ein Fragment vor dem hinteren Kreuzband', 'Double-PCL sign from a fragment anterior to the posterior cruciate ligament', 'علامت PCL دوگانه به‌علت قطعه‌ای در جلوی رباط صلیبی خلفی'), L('Empty-bow-tie-Zeichen durch fehlende Meniskuskörpersegmente', 'Absent bow-tie sign from missing meniscal body segments', 'علامت نبود bow-tie به‌علت فقدان قطعات تنهٔ منیسک'), L('Ghost-Meniskus-Zeichen bei einem vollständigen Radiärriss ohne anteriore Verlagerung', 'Ghost meniscus sign in a complete radial tear without anterior displacement', 'علامت منیسک شبح‌مانند در پارگی رادیال کامل بدون جابه‌جایی قدامی'), L('Flipped-Meniskus-Muster mit Double-Anterior-Horn und Empty-Posterior-Horn-Zeichen', 'Flipped-meniscus pattern with double-anterior-horn and empty-posterior-horn signs', 'الگوی منیسک وارونه‌شده با علائم شاخ قدامی دوگانه و شاخ خلفی خالی')], 'D', [L('Das Double-PCL-Zeichen ist ein Fragment anteroinferior zum HKB, nicht die Verdopplung am Vorderhorn.', 'The double-PCL sign is a fragment anteroinferior to the PCL, not duplication at the anterior horn.', 'علامت PCL دوگانه قطعه‌ای در جلو-پایین PCL است، نه دوگانگی شاخ قدامی.'), L('Das fehlende Bow-tie bezieht sich auf die sagittale Darstellung des Meniskuskörpers und erklärt die beschriebene Verdopplung am Vorderhorn nicht.', 'The absent bow-tie concerns sagittal visualization of the meniscal body and does not explain the described anterior-horn duplication.', 'نبود bow-tie به نمایش ساژیتال تنهٔ منیسک مربوط است و دوگانگی شاخ قدامی را توضیح نمی‌دهد.'), L('Das Ghost-Zeichen kann bei einem vollständigen Radiärriss auftreten, erklärt aber nicht die nach anterior verlagerte Struktur.', 'The ghost sign may occur with a complete radial tear, but does not explain the anteriorly displaced structure.', 'علامت شبح ممکن است در پارگی رادیال کامل دیده شود، اما ساختار جابه‌جاشده به قدام را توضیح نمی‌دهد.'), L('Ein nach anterior verlagertes Hinterhorn kann neben dem Vorderhorn liegen; die leere ursprüngliche Hinterhornposition stützt das Muster. Eine Vorderhornvariante bleibt als Pitfall zu prüfen.', 'An anteriorly displaced posterior horn may lie beside the anterior horn; an empty native posterior-horn position supports the pattern. An anterior-horn variant remains a pitfall to check.', 'شاخ خلفی جابه‌جاشده به قدام ممکن است کنار شاخ قدامی قرار گیرد؛ خالی‌بودن محل اصلی شاخ خلفی به نفع این الگو است. واریانت شاخ قدامی همچنان باید به‌عنوان دام تشخیصی بررسی شود.')]),
+  "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/",
+  "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/",
+  "https://pubmed.ncbi.nlm.nih.gov/16985134/",
+  "https://pubmed.ncbi.nlm.nih.gov/3602385/",
+  "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+  "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+  "https://www.bmj.com/content/354/bmj.i3740",
+  "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
 ]
 
-questions.push(Q('37', L('Was bezeichnet der PDF-Begriff „Wrisberg-Riss“?', 'What does the PDF term “Wrisberg rip” describe?', 'اصطلاح Wrisberg rip در PDF به چه چیزی اشاره دارد؟'), [L('Ein intaktes Band, das sich über sagittale Schichten bis zum Femur verfolgen lässt', 'An intact ligament that can be traced to the femur across sagittal slices', 'رباط سالمی که بتوان آن را در برش‌های ساژیتال تا فمور دنبال کرد'), L('Ein Riss am Ansatz des posterioren meniskofemoralen Ligaments am Hinterhorn des Außenmeniskus', 'A tear at the posterior meniscofemoral ligament attachment to the lateral meniscus posterior horn', 'پارگی در اتصال رباط منیسکوفمورال خلفی به شاخ خلفی منیسک خارجی'), L('Eine horizontale Spaltbildung im Außenmeniskuskörper', 'A horizontal cleavage in the lateral meniscus body', 'شکاف افقی در تنهٔ منیسک خارجی'), L('Ein einzelnes vertikales Signal ohne Prüfung der Kontinuität', 'A single vertical signal without checking continuity', 'یک سیگنال عمودی منفرد بدون بررسی پیوستگی')], 'B', [L('Ein intaktes meniskofemorales Ligament kann einen Pseudoriss vortäuschen; die Kontinuität zum Femur spricht für das Band.', 'An intact meniscofemoral ligament can mimic a tear; continuity to the femur supports ligament rather than tear.', 'رباط منیسکوفمورال سالم می‌تواند پارگی را تقلید کند؛ پیوستگی تا فمور به نفع رباط است.'), L('Der Ausdruck „Wrisberg-Riss“ bezeichnet im PDF einen longitudinal-vertikalen Riss am lateralen Hinterhorn nahe diesem Ligamentansatz. Die Zuordnung allein beweist keine VKB-Ruptur.', 'The PDF uses “Wrisberg rip” for a longitudinal-vertical tear at the lateral posterior horn near this ligament attachment. This finding alone does not prove an ACL tear.', 'PDF اصطلاح «Wrisberg rip» را برای پارگی طولی-عمودی در شاخ خلفی خارجی نزدیک این اتصال به‌کار می‌برد؛ این یافته به‌تنهایی پارگی ACL را ثابت نمی‌کند.'), L('Eine horizontale Spaltbildung ist eine andere Rissgeometrie.', 'A horizontal cleavage is a different tear orientation.', 'شکاف افقی هندسهٔ پارگی متفاوتی دارد.'), L('Ein einzelnes Signal ist nicht ausreichend; die Kontinuität der Struktur über benachbarte Schichten muss beurteilt werden.', 'A single signal is insufficient; trace the structure across adjacent slices.', 'یک سیگنال منفرد کافی نیست؛ پیوستگی ساختار را در برش‌های مجاور دنبال کنید.')]))
+const questions = [
+  {
+    "id": "01",
+    "question": {
+      "de": "Welche Verbindung erklärt die geringere Mobilität des Innenmeniskus?",
+      "en": "Which attachment explains the lower mobility of the medial meniscus?",
+      "fa": "کدام اتصال، تحرک کمتر منیسک داخلی را توضیح می‌دهد؟"
+    },
+    "options": [
+      {
+        "de": "Tiefe Anteile des medialen Kollateralbandes und Gelenkkapsel",
+        "en": "Deep medial collateral ligament and joint capsule",
+        "fa": "بخش عمقی رباط جانبی داخلی و کپسول مفصل"
+      },
+      {
+        "de": "Direkte Verwachsung mit dem lateralen Kollateralband",
+        "en": "Direct attachment to the lateral collateral ligament",
+        "fa": "اتصال مستقیم به رباط جانبی خارجی"
+      },
+      {
+        "de": "Direkte Verwachsung mit dem Patellarsehnenkörper",
+        "en": "Direct attachment to the patellar tendon body",
+        "fa": "اتصال مستقیم به تنهٔ تاندون پاتلا"
+      },
+      {
+        "de": "Direkte Fixierung an der Popliteussehne",
+        "en": "Direct fixation to the popliteus tendon",
+        "fa": "اتصال مستقیم به تاندون پوپلیتئوس"
+      }
+    ],
+    "correct": "A",
+    "feedback": [
+      {
+        "de": "Kapsel und tiefes MCL fixieren den Innenmeniskus stärker. Die Verletzungsverteilung hängt jedoch vom Mechanismus ab; bei akuter ACL-Ruptur sind laterale Risse häufig.",
+        "en": "The capsule and deep MCL constrain the medial meniscus. Injury distribution still depends on mechanism; lateral tears are common with acute ACL rupture.",
+        "fa": "کپسول و MCL عمقی منیسک داخلی را ثابت‌تر می‌کنند؛ توزیع آسیب به مکانیسم وابسته است و در پارگی حاد ACL، آسیب منیسک خارجی شایع است."
+      },
+      {
+        "de": "Das LCL ist keine direkte Fixierung des Innenmeniskus.",
+        "en": "The LCL does not directly fix the medial meniscus.",
+        "fa": "LCL اتصال مستقیم منیسک داخلی نیست."
+      },
+      {
+        "de": "Die Patellarsehne erklärt die meniskale Mobilität nicht.",
+        "en": "The patellar tendon does not explain meniscal mobility.",
+        "fa": "تاندون پاتلا علت تفاوت تحرک منیسک‌ها نیست."
+      },
+      {
+        "de": "Die Popliteussehne liegt am Außenmeniskus und erklärt nicht die kapsuläre Fixierung des Innenmeniskus.",
+        "en": "The popliteus tendon lies at the lateral meniscus and does not explain medial capsular fixation.",
+        "fa": "تاندون پوپلیتئوس کنار منیسک خارجی است و تثبیت کپسولی منیسک داخلی را توضیح نمی‌دهد."
+      }
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+  },
+  {
+    "id": "02",
+    "question": {
+      "de": "Eine Signallinie erreicht die inferiore Gelenkfläche auf zwei benachbarten sagittalen Bildern. Welche Aussage trifft zu?",
+      "en": "A signal line reaches the inferior articular surface on two adjacent sagittal images. Which statement is correct?",
+      "fa": "خط سیگنال در دو تصویر ساژیتال مجاور به سطح مفصلی تحتانی می‌رسد. کدام عبارت درست است؟"
+    },
+    "options": [
+      {
+        "de": "Ein Riss ist erst bei Kontakt zu beiden Gelenkflächen möglich.",
+        "en": "A tear requires contact with both articular surfaces.",
+        "fa": "پارگی نیازمند تماس با هر دو سطح مفصلی است."
+      },
+      {
+        "de": "Der Befund erfüllt die Two-slice-touch-Regel und stützt eine Rissdiagnose.",
+        "en": "This meets the two-slice-touch rule and supports a tear diagnosis.",
+        "fa": "این یافته قاعدهٔ Two-slice-touch را دارد و به نفع تشخیص پارگی است."
+      },
+      {
+        "de": "Die Regel fordert zwei verschiedene Sequenzen.",
+        "en": "The rule requires two different sequences.",
+        "fa": "این قاعده دو سکانس متفاوت می‌خواهد."
+      },
+      {
+        "de": "Die Regel fordert mindestens 3 mm Risslänge.",
+        "en": "The rule requires a tear length of at least 3 mm.",
+        "fa": "این قاعده حداقل طول پارگی ۳ میلی‌متر را می‌خواهد."
+      }
+    ],
+    "correct": "B",
+    "feedback": [
+      {
+        "de": "Kontakt zu einer Gelenkfläche genügt; beide müssen nicht erreicht werden.",
+        "en": "Contact with one articular surface is sufficient; both are not required.",
+        "fa": "تماس با یک سطح مفصلی کافی است؛ هر دو لازم نیست."
+      },
+      {
+        "de": "Wiederholter Oberflächenkontakt erhöht die diagnostische Sicherheit. Die Regel ergänzt die Morphologie und ist kein Ersatz für die multiplanare Beurteilung.",
+        "en": "Repeated surface contact increases diagnostic confidence. The rule complements morphology and does not replace multiplanar assessment.",
+        "fa": "تکرار تماس سطحی اطمینان تشخیصی را افزایش می‌دهد؛ این قاعده مکمل مورفولوژی است و جای بررسی چندصفحه‌ای را نمی‌گیرد."
+      },
+      {
+        "de": "Die Regel zählt Bilder mit Oberflächenkontakt, nicht Sequenznamen.",
+        "en": "The rule counts images with surface contact, not sequence names.",
+        "fa": "قاعده تعداد تصاویر با تماس سطحی را می‌سنجد، نه نام سکانس‌ها."
+      },
+      {
+        "de": "Eine feste Mindestlänge gehört nicht zur Regel.",
+        "en": "There is no fixed minimum tear length in this rule.",
+        "fa": "حداقل طول ثابت جزو این قاعده نیست."
+      }
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+  },
+  {
+    "id": "03",
+    "question": {
+      "de": "Welche anatomische Eigenschaft verbessert bei einem frischen kapselnahen Longitudinalriss die biologischen Heilungsvoraussetzungen?",
+      "en": "Which anatomical property improves biological healing potential in a recent longitudinal tear next to the capsule?",
+      "fa": "کدام ویژگی آناتومیک در پارگی طولی تازه کنار کپسول، زمینهٔ زیستی ترمیم را بهتر می‌کند؟"
+    },
+    "options": [
+      {
+        "de": "Die Versorgung des freien Innenrands durch Synovialflüssigkeit",
+        "en": "Nourishment of the free inner edge by synovial fluid",
+        "fa": "تغذیهٔ لبهٔ آزاد داخلی از مایع سینوویال"
+      },
+      {
+        "de": "Die zirkumferente Ausrichtung der Kollagenfasern",
+        "en": "The circumferential orientation of collagen fibres",
+        "fa": "جهت‌گیری محیطی الیاف کلاژن"
+      },
+      {
+        "de": "Der Anschluss der peripheren roten Zone an kapsuläre Gefäße",
+        "en": "Continuity of the peripheral red zone with capsular vessels",
+        "fa": "ارتباط ناحیهٔ قرمز محیطی با عروق کپسولی"
+      },
+      {
+        "de": "Die höhere Beweglichkeit des Außenmeniskus",
+        "en": "The greater mobility of the lateral meniscus",
+        "fa": "تحرک بیشتر منیسک خارجی"
+      }
+    ],
+    "correct": "C",
+    "feedback": [
+      {
+        "de": "Synovialflüssigkeit ernährt die gefäßarme innere Zone, bietet aber nicht die kapsuläre Gefäßversorgung des peripheren Gewebes.",
+        "en": "Synovial fluid nourishes the poorly vascular inner zone but does not provide the capsular vascular supply of peripheral tissue.",
+        "fa": "مایع سینوویال ناحیهٔ داخلی کم‌عروق را تغذیه می‌کند، اما خون‌رسانی کپسولی بافت محیطی را فراهم نمی‌کند."
+      },
+      {
+        "de": "Zirkumferente Fasern sind für die Lastübertragung wichtig. Gefragt ist die Blutversorgung als biologische Heilungsgrundlage.",
+        "en": "Circumferential fibres matter for load transmission. The question asks about vascular supply as a biological basis for healing.",
+        "fa": "الیاف محیطی برای انتقال بار مهم‌اند؛ سؤال دربارهٔ خون‌رسانی به‌عنوان پایهٔ زیستی ترمیم است."
+      },
+      {
+        "de": "Die periphere rote Zone ist am besten vaskularisiert. Gefäßzone, Gewebequalität, Rissform und klinischer Kontext werden gemeinsam beurteilt; MRT allein legt Reparabilität nicht fest.",
+        "en": "The peripheral red zone is most vascular. Assess vascular zone, tissue quality, tear pattern and clinical context together; MRI alone does not determine repairability.",
+        "fa": "ناحیهٔ قرمز محیطی بیشترین خون‌رسانی را دارد. ناحیهٔ عروقی، کیفیت بافت، شکل پارگی و زمینهٔ بالینی با هم ارزیابی می‌شوند؛ MRI به‌تنهایی قابلیت ترمیم را تعیین نمی‌کند."
+      },
+      {
+        "de": "Mobilität erklärt Unterschiede der Fixierung und Verletzungsmuster. Sie ersetzt nicht die Blutversorgung als gefragte Heilungsgrundlage.",
+        "en": "Mobility explains differences in fixation and injury patterns. It does not replace vascular supply as the healing factor asked here.",
+        "fa": "تحرک تفاوت تثبیت و الگوهای آسیب را توضیح می‌دهد و جای خون‌رسانی را به‌عنوان عامل ترمیم مورد سؤال نمی‌گیرد."
+      }
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/7081532/"
+  },
+  {
+    "id": "04",
+    "question": {
+      "de": "Eine subtile native Meniskusläsion soll nach unzureichender Voruntersuchung gezielt erneut beurteilt werden. Welche Anpassung ist am besten auf Oberflächenkontakt, Rissverlauf und Fragmentlage ausgerichtet?",
+      "en": "A subtle native meniscal lesion needs targeted reassessment after an inadequate prior study. Which adjustment best addresses surface contact, tear orientation and fragment position?",
+      "fa": "پس از بررسی قبلی ناکافی، ضایعهٔ ظریف منیسک عمل‌نشده باید دوباره هدفمند ارزیابی شود. کدام تغییر برای تماس سطحی، مسیر پارگی و محل قطعه مناسب‌تر است؟"
+    },
+    "options": [
+      {
+        "de": "Dynamische kontrastverstärkte T1-Perfusionsserien",
+        "en": "Dynamic contrast-enhanced T1 perfusion series",
+        "fa": "سری‌های پرفیوژن دینامیک T1 با تزریق"
+      },
+      {
+        "de": "Dünnschichtige PD-/intermediär gewichtete und flüssigkeitssensitive Bilder in orthogonalen Ebenen",
+        "en": "Thin-section PD/intermediate-weighted and fluid-sensitive images in orthogonal planes",
+        "fa": "تصاویر نازک PD/وزن‌دهی میانی و حساس به مایع در صفحات عمود بر هم"
+      },
+      {
+        "de": "Quantitatives T2-Mapping des Gelenkknorpels",
+        "en": "Quantitative T2 mapping of articular cartilage",
+        "fa": "نقشه‌برداری کمّی T2 غضروف مفصلی"
+      },
+      {
+        "de": "Suszeptibilitätsgewichtete Sequenzen für Hämosiderin",
+        "en": "Susceptibility-weighted sequences for haemosiderin",
+        "fa": "سکانس‌های حساس به سوسپتیبیلیتی برای هموسیدرین"
+      }
+    ],
+    "correct": "B",
+    "feedback": [
+      {
+        "de": "Perfusionsserien beantworten eine andere Gewebefrage; sie sind nicht die gezielte Standardergänzung für die hier gesuchte Meniskusmorphologie.",
+        "en": "Perfusion series address a different tissue question and are not the targeted standard addition for meniscal morphology here.",
+        "fa": "سری پرفیوژن پرسش بافتی دیگری را پاسخ می‌دهد و مکمل استاندارد هدفمند برای مورفولوژی منیسک در اینجا نیست."
+      },
+      {
+        "de": "Dünne Schichten und Ebenenabgleich zeigen Kontakt, Geometrie und Dislokation. Ein vollständiges Knieprotokoll enthält auch T1-Bilder für Knochenmark und Begleitbefunde; nicht jeder Riss ist T2-flüssigkeitshell.",
+        "en": "Thin sections and cross-plane correlation show contact, geometry and displacement. A complete knee protocol also includes T1 images for marrow and associated findings; not every tear is fluid-bright on T2.",
+        "fa": "برش نازک و تطبیق صفحات تماس، هندسه و جابه‌جایی را نشان می‌دهد. پروتکل کامل زانو تصاویر T1 برای مغز استخوان و یافته‌های همراه هم دارد؛ هر پارگی در T2 به روشنی مایع نیست."
+      },
+      {
+        "de": "T2-Mapping charakterisiert vor allem Knorpelzusammensetzung. Es ersetzt nicht die räumliche Darstellung des Meniskusdefekts.",
+        "en": "T2 mapping mainly characterises cartilage composition and does not replace spatial depiction of the meniscal defect.",
+        "fa": "نقشهٔ T2 عمدتاً ترکیب غضروف را مشخص می‌کند و جای نمایش فضایی نقص منیسک را نمی‌گیرد."
+      },
+      {
+        "de": "Suszeptibilitätssequenzen können Blutabbauprodukte charakterisieren. Für die beschriebene Meniskusfrage sind dünne morphologische Mehr-Ebenen-Bilder zielführender.",
+        "en": "Susceptibility imaging can characterise blood products. Thin morphological images in multiple planes better address this meniscal question.",
+        "fa": "تصویربرداری سوسپتیبیلیتی می‌تواند محصولات خون را مشخص کند؛ تصاویر مورفولوژیک نازک در چند صفحه برای این پرسش منیسک مناسب‌ترند."
+      }
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11399221/"
+  },
+  {
+    "id": "07",
+    "question": {
+      "de": "Die vollständige Serie zeigt ausgedehntes keilförmig-globuläres intrameniskales Signal ohne sicheren Oberflächenkontakt. Welcher Subtyp passt in der erweiterten historischen Grad-2-Einteilung?",
+      "en": "The complete series shows extensive wedge-shaped/globular intrasubstance signal without definite surface contact. Which subtype fits the extended historical grade-2 scheme?",
+      "fa": "در کل سری، سیگنال وسیع گوه‌ای/گلوبولار داخل منیسک بدون تماس سطحی قطعی دیده می‌شود. در تقسیم‌بندی تاریخی توسعه‌یافتهٔ گرید ۲، کدام زیرگروه مناسب است؟"
+    },
+    "options": [
+      {
+        "de": "Grad 1",
+        "en": "Grade 1",
+        "fa": "گرید ۱"
+      },
+      {
+        "de": "Grad 2a",
+        "en": "Grade 2a",
+        "fa": "گرید ۲a"
+      },
+      {
+        "de": "Grad 2c",
+        "en": "Grade 2c",
+        "fa": "گرید ۲c"
+      },
+      {
+        "de": "Grad 3",
+        "en": "Grade 3",
+        "fa": "گرید ۳"
+      }
+    ],
+    "correct": "C",
+    "feedback": [
+      {
+        "de": "Grad 1 ist typischerweise fokal/punktförmig, nicht ausgedehnt globulär.",
+        "en": "Grade 1 is typically focal/punctate, not extensive globular signal.",
+        "fa": "گرید ۱ معمولاً کانونی/نقطه‌ای است، نه گلوبولار وسیع."
+      },
+      {
+        "de": "Grad 2a beschreibt ein lineares Signal ohne Oberflächenkontakt.",
+        "en": "Grade 2a describes linear signal without surface contact.",
+        "fa": "گرید ۲a سیگنال خطی بدون تماس سطحی است."
+      },
+      {
+        "de": "Grad 2c beschreibt ausgedehntes keilförmiges/globuläres Signal ohne sicheren Oberflächenkontakt. Ein okkulter Riss ist möglich, aber nicht allein durch dieses Signal bewiesen.",
+        "en": "Grade 2c describes extensive wedge-shaped/globular signal without definite surface contact. An occult tear is possible but is not proved by this signal alone.",
+        "fa": "گرید ۲c سیگنال وسیع گوه‌ای/گلوبولار بدون تماس سطحی قطعی است. پارگی مخفی ممکن است، اما این سیگنال به‌تنهایی آن را ثابت نمی‌کند."
+      },
+      {
+        "de": "Ohne sicheren Oberflächenkontakt ist Grad 3 signalbasiert nicht belegt.",
+        "en": "Without definite surface contact, signal-based grade 3 is not established.",
+        "fa": "بدون تماس سطحی قطعی، گرید ۳ بر پایهٔ سیگنال اثبات نمی‌شود."
+      }
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/12185036/"
+  },
+  {
+    "id": "08",
+    "question": {
+      "de": "Ein lineares Signal erreicht auf genau einem Bild die Oberfläche, auf benachbarten Bildern nicht. Ein Formdefekt fehlt. Welche Beschreibung passt in der erweiterten historischen Grad-2-Einteilung?",
+      "en": "Linear signal reaches the surface on exactly one image but not on adjacent images. There is no morphological defect. Which description fits the extended historical grade-2 scheme?",
+      "fa": "سیگنال خطی فقط در یک تصویر به سطح می‌رسد و در تصاویر مجاور تماس ندارد. نقص شکلی دیده نمی‌شود. در تقسیم‌بندی تاریخی توسعه‌یافتهٔ گرید ۲، کدام توصیف مناسب است؟"
+    },
+    "options": [
+      {
+        "de": "Grad 2b; für einen sicheren Riss inkonklusiv",
+        "en": "Grade 2b; inconclusive for a definite tear",
+        "fa": "گرید ۲b؛ برای پارگی قطعی نامطمئن"
+      },
+      {
+        "de": "Grad 3 mit sicherem Rissnachweis",
+        "en": "Grade 3 with a definite tear",
+        "fa": "گرید ۳ با پارگی قطعی"
+      },
+      {
+        "de": "Grad 1",
+        "en": "Grade 1",
+        "fa": "گرید ۱"
+      },
+      {
+        "de": "Grad 0",
+        "en": "Grade 0",
+        "fa": "گرید ۰"
+      }
+    ],
+    "correct": "A",
+    "feedback": [
+      {
+        "de": "Grad 2b bezeichnet den Einzelschichtkontakt in dieser erweiterten Einteilung. Ein echter Riss bleibt möglich; Verlauf und Morphologie müssen geprüft werden. Die Two-slice-touch-Regel erhöht die Sicherheit, ist aber keine ausnahmslose Voraussetzung für jeden morphologisch eindeutigen Riss.",
+        "en": "Grade 2b denotes single-image contact in this extended scheme. A real tear remains possible; assess orientation and morphology. The two-slice-touch rule increases confidence but is not mandatory for every morphologically definite tear.",
+        "fa": "در این تقسیم‌بندی توسعه‌یافته، گرید ۲b تماس تک‌تصویری است. پارگی واقعی همچنان ممکن است؛ مسیر و مورفولوژی بررسی شوند. قاعدهٔ دو تصویر اطمینان را بالا می‌برد، اما شرط مطلق تمام پارگی‌های واضح مورفولوژیک نیست."
+      },
+      {
+        "de": "Ein einzelner Kontakt ohne bestätigenden Formdefekt beweist keinen sicheren Riss.",
+        "en": "Single-image contact without a supporting defect does not prove a definite tear.",
+        "fa": "تماس در یک تصویر بدون نقص شکلی مؤید، پارگی قطعی را ثابت نمی‌کند."
+      },
+      {
+        "de": "Grad 1 ist ein fokales Signal ohne Kontakt, nicht ein lineares Signal mit Einzelschichtkontakt.",
+        "en": "Grade 1 is focal signal without contact, not linear single-image contact.",
+        "fa": "گرید ۱ سیگنال کانونی بدون تماس است، نه خطی با تماس تک‌تصویری."
+      },
+      {
+        "de": "Grad 0 ist homogen signalarm ohne pathologische Signallinie.",
+        "en": "Grade 0 is homogeneous low signal without a pathological signal line.",
+        "fa": "گرید ۰ کم‌سیگنال همگن و بدون خط سیگنال پاتولوژیک است."
+      }
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/16985134/"
+  },
+  {
+    "id": "10",
+    "question": {
+      "de": "Eine 58-jährige Person hat einen degenerativen Horizontalriss ohne echte Blockade, akutes Trauma oder fortgeschrittene Arthrose. Ein strukturiertes Übungsprogramm wurde noch nicht versucht. Welcher initiale Ansatz ist am besten begründet?",
+      "en": "A 58-year-old has a degenerative horizontal tear without true locking, acute trauma or advanced osteoarthritis. No structured exercise programme has been tried. Which initial approach is best supported?",
+      "fa": "فردی ۵۸ ساله پارگی افقی دژنراتیو دارد، بدون قفل‌شدگی واقعی، ترومای حاد یا آرتروز پیشرفته. هنوز برنامهٔ تمرینی ساختاریافته امتحان نشده است. کدام رویکرد اولیه پشتوانهٔ بهتری دارد؟"
+    },
+    "options": [
+      {
+        "de": "Arthroskopische Teilmeniskektomie als erste Maßnahme",
+        "en": "Arthroscopic partial meniscectomy as the first intervention",
+        "fa": "منیسککتومی جزئی آرتروسکوپیک به‌عنوان اقدام نخست"
+      },
+      {
+        "de": "Arthroskopische Meniskusnaht als erste Maßnahme",
+        "en": "Arthroscopic meniscal repair as the first intervention",
+        "fa": "ترمیم منیسک با بخیهٔ آرتروسکوپیک به‌عنوان اقدام نخست"
+      },
+      {
+        "de": "Angeleitetes Übungsprogramm mit klinischer Verlaufskontrolle",
+        "en": "Supervised exercise with clinical follow-up",
+        "fa": "برنامهٔ تمرینی هدایت‌شده همراه پیگیری بالینی"
+      },
+      {
+        "de": "Ruhigstellung in einer Knieorthese als primäre Behandlungsstrategie",
+        "en": "Immobilisation in a knee brace as the primary treatment strategy",
+        "fa": "بی‌حرکت‌سازی با بریس زانو به‌عنوان راهبرد اصلی درمان"
+      }
+    ],
+    "correct": "C",
+    "feedback": [
+      {
+        "de": "Der degenerative MRT-Riss begründet in dieser nicht blockierten, noch nicht aktiv vorbehandelten Situation keine vorrangige Teilresektion.",
+        "en": "In this nonlocked case without prior structured exercise, the degenerative MRI tear does not justify partial resection as the preferred first step.",
+        "fa": "در این وضعیت بدون قفل‌شدگی و بدون تمرین ساختاریافتهٔ قبلی، پارگی دژنراتیو در MRI، برداشت جزئی را به اقدام نخستِ ترجیحی تبدیل نمی‌کند."
+      },
+      {
+        "de": "Eine degenerative Horizontalspalte ist nicht mit einem frischen reparablen peripheren Längsriss gleichzusetzen. Die Naht ist hier keine aus dem MRT allein abgeleitete Erstmaßnahme.",
+        "en": "A degenerative horizontal split is not the same as an acute repairable peripheral longitudinal tear. MRI alone does not establish repair as the first step here.",
+        "fa": "شکاف افقی دژنراتیو با پارگی طولی محیطی حاد و قابل ترمیم یکسان نیست. MRI به‌تنهایی بخیه را به اقدام نخست در اینجا تبدیل نمی‌کند."
+      },
+      {
+        "de": "Ein primärer RCT bei mittelalten Personen mit degenerativem Meniskusriss und überwiegend fehlender radiographischer Arthrose fand nach zwei Jahren keine klinisch relevante Funktionsdifferenz zwischen Übungstherapie und Teilmeniskektomie. Ein angeleitetes Übungsprogramm ist hier ein begründeter erster Ansatz. Das ist keine Aussage gegen jede Operation; echte Blockade, akute reparable Verletzung und Beschwerden trotz angemessener Vorbehandlung sind gesondert zu beurteilen.",
+        "en": "A primary RCT in middle-aged people with degenerative meniscal tears and mostly no radiographic osteoarthritis found no clinically important two-year functional difference between exercise and partial meniscectomy. Supervised exercise is a supported first approach here. This does not oppose every operation; true locking, an acute repairable injury and symptoms despite appropriate prior care require separate assessment.",
+        "fa": "یک کارآزمایی تصادفی اولیه در افراد میانسال با پارگی دژنراتیو منیسک و عمدتاً بدون آرتروز رادیوگرافیک، پس از دو سال تفاوت عملکردیِ مهم از نظر بالینی میان تمرین‌درمانی و منیسککتومی جزئی نیافت. برنامهٔ تمرینی هدایت‌شده در اینجا رویکرد نخستِ دارای پشتوانه است. این به معنی مخالفت با تمام جراحی‌ها نیست؛ قفل‌شدگی واقعی، آسیب حادِ قابل ترمیم و تداوم علائم با وجود درمان اولیهٔ مناسب، جداگانه ارزیابی می‌شوند."
+      },
+      {
+        "de": "Eine Orthesenruhigstellung ersetzt nicht die hier begründete aktive Übungstherapie. Belastungsanpassung kann individuell ergänzen, ist aber nicht mit immobilisierender Hauptbehandlung gleichzusetzen.",
+        "en": "Brace immobilisation does not substitute for the supported active exercise approach. Activity modification may be an adjunct, but is not equivalent to immobilisation as the main treatment.",
+        "fa": "بی‌حرکت‌سازی با بریس جای رویکرد تمرینی فعالِ دارای پشتوانه را نمی‌گیرد. تعدیل فعالیت می‌تواند به‌صورت فردی مکمل باشد، اما معادل بی‌حرکت‌سازی به‌عنوان درمان اصلی نیست."
+      }
+    ],
+    "source": "https://www.bmj.com/content/354/bmj.i3740"
+  },
+  {
+    "id": "11",
+    "question": {
+      "de": "Eine lineare intrameniskale Signalanhebung bleibt in allen Ebenen vollständig innerhalb des Meniskus. Welcher Grad passt?",
+      "en": "Linear intrasubstance signal stays entirely within the meniscus in all planes. Which grade fits?",
+      "fa": "سیگنال خطی در تمام صفحات کاملاً داخل منیسک باقی می‌ماند. کدام گرید مناسب است؟"
+    },
+    "options": [
+      {
+        "de": "Grad 1",
+        "en": "Grade 1",
+        "fa": "گرید ۱"
+      },
+      {
+        "de": "Grad 2a",
+        "en": "Grade 2a",
+        "fa": "گرید ۲a"
+      },
+      {
+        "de": "Grad 2c",
+        "en": "Grade 2c",
+        "fa": "گرید ۲c"
+      },
+      {
+        "de": "Grad 3",
+        "en": "Grade 3",
+        "fa": "گرید ۳"
+      }
+    ],
+    "correct": "B",
+    "feedback": [
+      {
+        "de": "Grad 1 ist typischerweise fokal/punktförmig.",
+        "en": "Grade 1 is typically focal/punctate.",
+        "fa": "گرید ۱ معمولاً کانونی/نقطه‌ای است."
+      },
+      {
+        "de": "Grad 2a: lineares Signal ohne Gelenkflächenkontakt. Das ist keine sichere Rissdiagnose.",
+        "en": "Grade 2a: linear signal without articular-surface contact. This is not a definite tear diagnosis.",
+        "fa": "گرید ۲a: سیگنال خطی بدون تماس سطح مفصلی؛ این تشخیص پارگی قطعی نیست."
+      },
+      {
+        "de": "Grad 2c ist ausgedehnt keilförmig/globulär, nicht nur linear.",
+        "en": "Grade 2c is extensive wedge-shaped/globular, not merely linear.",
+        "fa": "گرید ۲c گوه‌ای/گلوبولار وسیع است، نه فقط خطی."
+      },
+      {
+        "de": "Grad 3 erfordert bei signalbasierter Einordnung sicheren Oberflächenkontakt.",
+        "en": "Signal-based grade 3 requires definite surface contact.",
+        "fa": "گرید ۳ بر پایهٔ سیگنال به تماس سطحی قطعی نیاز دارد."
+      }
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/3602385/"
+  },
+  {
+    "id": "12",
+    "question": {
+      "de": "Ein Defekt beginnt am freien Meniskusrand und durchtrennt die Ringfasern quer. Welcher Rissverlauf passt?",
+      "en": "A defect starts at the free meniscal edge and crosses the circumferential fibres. Which tear orientation fits?",
+      "fa": "نقص از لبهٔ آزاد منیسک آغاز می‌شود و الیاف حلقوی را عرضی قطع می‌کند. نوع پارگی چیست؟"
+    },
+    "options": [
+      {
+        "de": "Horizontalriss",
+        "en": "Horizontal tear",
+        "fa": "پارگی افقی"
+      },
+      {
+        "de": "Longitudinalriss",
+        "en": "Longitudinal tear",
+        "fa": "پارگی طولی"
+      },
+      {
+        "de": "Radiärriss",
+        "en": "Radial tear",
+        "fa": "پارگی شعاعی"
+      },
+      {
+        "de": "Korbhenkelriss",
+        "en": "Bucket-handle tear",
+        "fa": "پارگی دسته‌سطلی"
+      }
+    ],
+    "correct": "C",
+    "feedback": [
+      {
+        "de": "Ein Horizontalriss verläuft parallel zur Tibiaebene und spaltet Lamellen.",
+        "en": "A horizontal tear is parallel to the tibial plane and splits leaflets.",
+        "fa": "پارگی افقی موازی صفحهٔ تیبیا و جداکنندهٔ لایه‌هاست."
+      },
+      {
+        "de": "Ein Longitudinalriss folgt der Peripherie und den Ringfasern.",
+        "en": "A longitudinal tear follows the periphery and circumferential fibres.",
+        "fa": "پارگی طولی امتداد محیط و الیاف حلقوی را دنبال می‌کند."
+      },
+      {
+        "de": "Ein Radiärriss läuft vom freien Rand nach außen, quer zu den Ringfasern. Tiefe und vollständige Risse können die Ringspannung stark beeinträchtigen.",
+        "en": "A radial tear runs outward from the free edge across circumferential fibres. Deep and complete tears can markedly impair hoop-stress transmission.",
+        "fa": "پارگی شعاعی از لبهٔ آزاد به خارج و عرض الیاف حلقوی پیش می‌رود؛ پارگی عمیق و کامل انتقال تنش حلقوی را شدیداً مختل می‌کند."
+      },
+      {
+        "de": "Ein Korbhenkelriss ist ein dislozierter Longitudinalriss, kein radialer Verlauf.",
+        "en": "A bucket-handle tear is a displaced longitudinal tear, not a radial orientation.",
+        "fa": "پارگی دسته‌سطلی پارگی طولی جابه‌جا‌شده است، نه شعاعی."
+      }
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+  },
+  {
+    "id": "13",
+    "question": {
+      "de": "Sagittal fehlt ein normalerweise sichtbarer Meniskusanteil (Ghost-Zeichen). Koronal und axial zeigt sich ein Defekt über die gesamte Breite. Was passt am besten?",
+      "en": "A normally visible meniscal segment is absent sagittally (ghost sign). Coronal and axial images show a full-width defect. What fits best?",
+      "fa": "بخش معمولاً قابل‌مشاهدهٔ منیسک در ساژیتال غایب است (Ghost sign)؛ کرونال و اکسیال نقص تمام‌عرض دارند. بهترین تشخیص چیست؟"
+    },
+    "options": [
+      {
+        "de": "Isolierte Grad-1-Degeneration",
+        "en": "Isolated grade-1 degeneration",
+        "fa": "دژنراسیون منفرد گرید ۱"
+      },
+      {
+        "de": "Vollständiger Radiärriss",
+        "en": "Complete radial tear",
+        "fa": "پارگی شعاعی کامل"
+      },
+      {
+        "de": "Normaler Popliteushiatus",
+        "en": "Normal popliteus hiatus",
+        "fa": "هیاتوس طبیعی پوپلیتئوس"
+      },
+      {
+        "de": "Unkomplizierter Horizontalriss ohne Gewebeverlust",
+        "en": "Uncomplicated horizontal tear without tissue loss",
+        "fa": "پارگی افقی ساده بدون فقدان بافت"
+      }
+    ],
+    "correct": "B",
+    "feedback": [
+      {
+        "de": "Grad 1 erklärt keinen multiplanar sichtbaren Gewebedefekt.",
+        "en": "Grade 1 does not explain a multiplanar tissue defect.",
+        "fa": "گرید ۱ نقص بافت چندصفحه‌ای را توضیح نمی‌دهد."
+      },
+      {
+        "de": "Der bestätigte Defekt über die gesamte Breite passt zum vollständigen Radiärriss. Das Ghost-Zeichen ist ein Hinweis, allein aber nicht spezifisch; die Wurzelregion zusätzlich prüfen.",
+        "en": "The confirmed full-width defect fits a complete radial tear. The ghost sign is suggestive but not specific alone; also assess the root region.",
+        "fa": "نقص تأییدشدهٔ تمام‌عرض با پارگی شعاعی کامل سازگار است؛ علامت Ghost به‌تنهایی اختصاصی نیست و ناحیهٔ ریشه هم بررسی شود."
+      },
+      {
+        "de": "Der Popliteushiatus liegt posterolateral und erklärt keinen vollständigen Defekt durch den Meniskus.",
+        "en": "The posterolateral popliteus hiatus does not explain a full-width meniscal defect.",
+        "fa": "هیاتوس پوپلیتئوس خلفی‌خارجی نقص تمام‌عرض منیسک را توضیح نمی‌دهد."
+      },
+      {
+        "de": "Ein Horizontalriss spaltet den Meniskus; der beschriebene Defekt ist radial und vollständig.",
+        "en": "A horizontal tear splits the meniscus; the described defect is radial and complete.",
+        "fa": "پارگی افقی لایه‌ها را جدا می‌کند؛ نقص توصیف‌شده شعاعی و کامل است."
+      }
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+  },
+  {
+    "id": "14",
+    "question": {
+      "de": "Ein schräger Radiärriss am freien Rand bildet ein spitzes, teilweise angeheftetes Fragment. Welche Bezeichnung passt?",
+      "en": "An oblique radial tear at the free edge produces a pointed, partly attached fragment. Which term fits?",
+      "fa": "پارگی شعاعی مایل در لبهٔ آزاد قطعه‌ای نوک‌تیز با اتصال باقی‌مانده ایجاد می‌کند. نام مناسب چیست؟"
+    },
+    "options": [
+      {
+        "de": "Parrot-beak-tear (Lappenriss)",
+        "en": "Parrot-beak tear (flap tear)",
+        "fa": "پارگی نوک‌طوطی (لَپی)"
+      },
+      {
+        "de": "Horizontalriss",
+        "en": "Horizontal tear",
+        "fa": "پارگی افقی"
+      },
+      {
+        "de": "Longitudinalriss",
+        "en": "Longitudinal tear",
+        "fa": "پارگی طولی"
+      },
+      {
+        "de": "Korbhenkelriss",
+        "en": "Bucket-handle tear",
+        "fa": "پارگی دسته‌سطلی"
+      }
+    ],
+    "correct": "A",
+    "feedback": [
+      {
+        "de": "Der schräge Verlauf bildet einen Lappen. Im MRT nach dem Ursprungsdefekt und einer Verlagerung in die Gelenkrecessus suchen.",
+        "en": "The oblique orientation creates a flap. Search MRI for the donor defect and displacement into joint recesses.",
+        "fa": "مسیر مایل لَپ ایجاد می‌کند؛ در MRI نقص مبدأ و جابه‌جایی به رِسِس مفصل را جست‌وجو کنید."
+      },
+      {
+        "de": "Ein Horizontalriss spaltet obere und untere Lamelle; der beschriebene spitze Lappen entsteht aus einem schrägen Radiärriss.",
+        "en": "A horizontal tear splits upper and lower leaflets; the pointed flap described arises from an oblique radial tear.",
+        "fa": "پارگی افقی لایهٔ بالا و پایین را جدا می‌کند؛ لَپ نوک‌تیز توصیف‌شده از پارگی شعاعی مایل است."
+      },
+      {
+        "de": "Ein reiner Longitudinalriss verläuft parallel zur Peripherie.",
+        "en": "A purely longitudinal tear runs parallel to the periphery.",
+        "fa": "پارگی طولی خالص موازی محیط است."
+      },
+      {
+        "de": "Beim Korbhenkelriss wird ein längliches inneres Fragment zentral verlagert.",
+        "en": "A bucket-handle tear displaces an elongated inner fragment centrally.",
+        "fa": "در دسته‌سطلی، قطعهٔ داخلی کشیده به مرکز جابه‌جا می‌شود."
+      }
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+  },
+  {
+    "id": "15",
+    "question": {
+      "de": "Ein Patient hat eine echte Streckblockade. Sagittal liegt ein zweites dunkles Band parallel und anteroinferior zum PCL; koronal ist ein Fragment im Interkondylarraum sichtbar. Was ist am wahrscheinlichsten?",
+      "en": "A patient has true extension locking. A second dark band lies parallel and anteroinferior to the PCL sagittally; a notch fragment is visible coronally. What is most likely?",
+      "fa": "بیمار قفل‌شدن واقعی در اکستنشن دارد؛ ساژیتال نوار تیرهٔ دوم موازی و قدامی‌تحتانی PCL و کرونال قطعه در ناچ نشان می‌دهد. محتمل‌ترین تشخیص چیست؟"
+    },
+    "options": [
+      {
+        "de": "Schräger Radiärriss mit verlagertem Flap",
+        "en": "Oblique radial tear with a displaced flap",
+        "fa": "پارگی رادیال مایل با فلپ جابه‌جاشده"
+      },
+      {
+        "de": "Nach anterior umgeschlagenes Hinterhorn",
+        "en": "Anteriorly flipped posterior horn",
+        "fa": "شاخ خلفی برگشته به قدام"
+      },
+      {
+        "de": "Korbhenkelriss mit zentral disloziertem Längsfragment",
+        "en": "Bucket-handle tear with a centrally displaced longitudinal fragment",
+        "fa": "پارگی دسته‌سطلی با قطعهٔ طولی جابه‌جاشده به مرکز"
+      },
+      {
+        "de": "Horizontalriss mit parameniskaler Zyste",
+        "en": "Horizontal tear with a parameniscal cyst",
+        "fa": "پارگی افقی همراه کیست پارامنیسکال"
+      }
+    ],
+    "correct": "C",
+    "feedback": [
+      {
+        "de": "Ein radiärer Flap kann ebenfalls dislozieren. Hier sprechen das längliche Fragment im Interkondylärraum und seine Lage anteroinferior zum HKB für ein Korbhenkelmuster.",
+        "en": "A radial flap can also displace. Here an elongated intercondylar fragment anteroinferior to the PCL supports a bucket-handle pattern.",
+        "fa": "فلپ رادیال هم می‌تواند جابه‌جا شود؛ اینجا قطعهٔ کشیدهٔ بین‌کندیلی در جلو-پایین PCL از الگوی دسته‌سطلی حمایت می‌کند."
+      },
+      {
+        "de": "Ein nach anterior umgeschlagenes Hinterhorn liegt am Vorderhorn und kann es verdoppeln. Der Text lokalisiert das Fragment hingegen im Interkondylärraum parallel zum HKB.",
+        "en": "An anteriorly flipped posterior horn lies by the anterior horn and may duplicate it. The vignette instead locates the fragment in the intercondylar notch parallel to the PCL.",
+        "fa": "شاخ خلفی برگشته به قدام کنار شاخ قدامی قرار می‌گیرد و ممکن است آن را دوگانه کند؛ متن قطعه را در ناچ بین‌کندیلی موازی PCL قرار می‌دهد."
+      },
+      {
+        "de": "Double-PCL-Zeichen und Interkondylarfragment stützen einen Korbhenkelriss, meist des Innenmeniskus. Die echte Blockade erfordert eine dringliche orthopädische Beurteilung.",
+        "en": "The double-PCL sign and notch fragment support a bucket-handle tear, usually medial. True locking requires urgent orthopaedic assessment.",
+        "fa": "Double-PCL و قطعهٔ ناچ به نفع دسته‌سطلی، معمولاً منیسک داخلی، هستند؛ قفل‌شدن واقعی ارزیابی فوری ارتوپدی می‌خواهد."
+      },
+      {
+        "de": "Ein Horizontalriss spaltet obere und untere Anteile und kann mit einer Zyste kommunizieren. Das erklärt das beschriebene zentrale Längsfragment nicht.",
+        "en": "A horizontal tear separates superior and inferior portions and may communicate with a cyst. It does not explain the central longitudinal fragment described.",
+        "fa": "پارگی افقی بخش‌های بالا و پایین را جدا می‌کند و ممکن است با کیست ارتباط داشته باشد؛ قطعهٔ طولی مرکزی توصیف‌شده را توضیح نمی‌دهد."
+      }
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/19234702/"
+  },
+  {
+    "id": "16",
+    "question": {
+      "de": "Neben dem Vorderhorn liegt eine zweite meniskusähnliche Struktur. Welcher Zusatzbefund stützt ein nach anterior verlagertes Hinterhorn gegenüber einer Vorderhornvariante am stärksten?",
+      "en": "A second meniscus-like structure lies beside the anterior horn. Which additional finding most strongly supports an anteriorly displaced posterior horn over an anterior-horn variant?",
+      "fa": "کنار شاخ قدامی ساختار دوم شبیه منیسک دیده می‌شود. کدام یافتهٔ اضافی بیش از بقیه به نفع جابه‌جایی شاخ خلفی به قدام، در مقایسه با واریانت شاخ قدامی است؟"
+    },
+    "options": [
+      {
+        "de": "Leere ursprüngliche Hinterhornposition mit nachvollziehbarem Fragmentverlauf",
+        "en": "An empty native posterior-horn position with traceable fragment continuity",
+        "fa": "خالی بودن محل اصلی شاخ خلفی همراه مسیر قابل پیگیری قطعه"
+      },
+      {
+        "de": "Breiter Meniskuskörper auf einer mittleren koronalen Schicht",
+        "en": "A broad meniscal body on a mid-coronal image",
+        "fa": "تنهٔ پهن منیسک در برش میانی کرونال"
+      },
+      {
+        "de": "Homogenes niedriges Signal beider anteriorer Strukturen",
+        "en": "Homogeneous low signal in both anterior structures",
+        "fa": "سیگنال پایین همگن در هر دو ساختار قدامی"
+      },
+      {
+        "de": "Punktförmiges intrameniskales Signal ohne Oberflächenkontakt",
+        "en": "Punctate intrasubstance signal without surface contact",
+        "fa": "سیگنال نقطه‌ای داخل منیسک بدون تماس سطحی"
+      }
+    ],
+    "correct": "A",
+    "feedback": [
+      {
+        "de": "Die fehlende Struktur am Entnahmeort und der über Ebenen verfolgbare Fragmentverlauf stützen die Verlagerung. Ein doppeltes Vorderhorn allein kann auch eine Variante sein.",
+        "en": "Missing tissue at the donor site and cross-plane fragment continuity support displacement. An apparent double anterior horn alone can also be a variant.",
+        "fa": "نبود بافت در محل مبدأ و پیوستگی قطعه در صفحات مختلف از جابه‌جایی حمایت می‌کنند. شاخ قدامی ظاهراً دوگانه به‌تنهایی می‌تواند واریانت باشد."
+      },
+      {
+        "de": "Die Corpusbreite hilft bei der Beurteilung discoider Morphologie, belegt aber nicht die Herkunft der zusätzlichen anterioren Struktur.",
+        "en": "Body width helps assess discoid morphology but does not establish the origin of the extra anterior structure.",
+        "fa": "عرض تنه به ارزیابی مورفولوژی دیسکوئید کمک می‌کند، اما منشأ ساختار اضافی قدامی را ثابت نمی‌کند."
+      },
+      {
+        "de": "Meniskusgewebe und Varianten können beide signalarm sein. Das Signal allein lokalisiert den Entnahmeort nicht.",
+        "en": "Both meniscal tissue and variants may be low signal. Signal alone does not locate the donor site.",
+        "fa": "بافت منیسک و واریانت‌ها هر دو می‌توانند کم‌سیگنال باشند؛ سیگنال به‌تنهایی محل مبدأ را مشخص نمی‌کند."
+      },
+      {
+        "de": "Ein fokales nicht surfacierendes Signal beschreibt eine intrameniskale Veränderung, nicht den Nachweis einer Fragmentverlagerung.",
+        "en": "Focal nonsurfacing signal describes intrasubstance change, not proof of fragment displacement.",
+        "fa": "سیگنال کانونی بدون تماس سطحی تغییر داخل‌منیسکی را توصیف می‌کند، نه اثبات جابه‌جایی قطعه."
+      }
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/8316871/"
+  },
+  {
+    "id": "17",
+    "question": {
+      "de": "Bei 2-mm-Schichten ist der Außenmeniskuskörper auf drei benachbarten sagittalen Bildern kontinuierlich sichtbar. Welcher nächste Schritt beurteilt eine mögliche discoide Morphologie am besten?",
+      "en": "At 2-mm slice thickness, the lateral meniscal body is continuously visible on three adjacent sagittal images. Which next step best assesses possible discoid morphology?",
+      "fa": "با ضخامت برش ۲ میلی‌متر، تنهٔ منیسک خارجی در سه تصویر مجاور ساژیتال به‌طور پیوسته دیده می‌شود. کدام گام بعدی مورفولوژی دیسکوئید احتمالی را بهتر ارزیابی می‌کند؟"
+    },
+    "options": [
+      {
+        "de": "Das historische Drei-Bow-tie-Kriterium auf die 2-mm-Serie übertragen",
+        "en": "Apply the historical three-bowtie criterion to the 2-mm series",
+        "fa": "اعمال معیار تاریخی سه bow-tie بر سری ۲ میلی‌متری"
+      },
+      {
+        "de": "Corpusbreite auf einer mittleren koronalen Schicht messen und Gesamtform prüfen",
+        "en": "Measure body width on a mid-coronal image and assess overall shape",
+        "fa": "اندازه‌گیری عرض تنه در برش میانی کرونال و ارزیابی شکل کلی"
+      },
+      {
+        "de": "Die intrameniskale Signalintensität nach dem Signalgrading einordnen",
+        "en": "Classify intrasubstance signal using signal grading",
+        "fa": "طبقه‌بندی سیگنال داخل منیسک با درجه‌بندی سیگنال"
+      },
+      {
+        "de": "Die periphere Überragung über den Tibiaplateaurand messen",
+        "en": "Measure peripheral overhang beyond the tibial plateau margin",
+        "fa": "اندازه‌گیری بیرون‌زدگی محیطی از لبهٔ پلاتوی تیبیا"
+      }
+    ],
+    "correct": "B",
+    "feedback": [
+      {
+        "de": "Die Zahl der Bow-ties hängt von der Schichtdicke ab. Das alte Drei-Bow-tie-Kriterium soll bei modernen dünnen Schichten nicht zur Diagnose verwendet werden.",
+        "en": "Bowtie count depends on slice thickness. The old three-bowtie criterion should not be used diagnostically with modern thin sections.",
+        "fa": "تعداد bow-tie به ضخامت برش وابسته است. معیار قدیمی سه bow-tie نباید در برش‌های نازک امروزی برای تشخیص به‌کار رود."
+      },
+      {
+        "de": "Die aktuelle SSR-Empfehlung stützt eine Corpusbreite ≥15 mm auf einer mittleren koronalen Schicht. Form und korrekte Messebene prüfen; drei 2-mm-Schichten genügen nicht als eigenständiger Nachweis.",
+        "en": "Current SSR guidance supports body width ≥15 mm on a mid-coronal image. Check shape and measurement plane; three 2-mm slices do not independently establish the diagnosis.",
+        "fa": "توصیهٔ کنونی SSR عرض تنهٔ ≥۱۵ میلی‌متر در برش میانی کرونال را پشتیبانی می‌کند. شکل و صفحهٔ درست اندازه‌گیری بررسی شوند؛ سه برش ۲ میلی‌متری شاهد مستقل تشخیص نیستند."
+      },
+      {
+        "de": "Signalgrading beschreibt das Gewebe-/Oberflächenmuster, nicht die discoide Breite oder Form.",
+        "en": "Signal grading describes tissue/surface patterns, not discoid width or shape.",
+        "fa": "درجه‌بندی سیگنال الگوی بافت/سطح را توصیف می‌کند، نه پهنا یا شکل دیسکوئید."
+      },
+      {
+        "de": "Diese Messung beurteilt Extrusion. Sie beschreibt eine andere Formveränderung als die Breite eines discoiden Meniskuskörpers.",
+        "en": "This measurement assesses extrusion, a different morphological feature from discoid body width.",
+        "fa": "این اندازه‌گیری اکستروژن را ارزیابی می‌کند؛ ویژگی شکلی متفاوتی از پهنای تنهٔ منیسک دیسکوئید است."
+      }
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+  },
+  {
+    "id": "18",
+    "question": {
+      "de": "Welche quantitative koronale Messung unterstützt einen discoiden Außenmeniskus?",
+      "en": "Which quantitative coronal measurement supports a discoid lateral meniscus?",
+      "fa": "کدام اندازه‌گیری کمی کرونال به نفع منیسک خارجی دیسکویید است؟"
+    },
+    "options": [
+      {
+        "de": "Körperbreite ≥15 mm oder Verhältnis minimaler Meniskusbreite zu maximaler Tibiabreite ≥20 %.",
+        "en": "Body width ≥15 mm or minimum meniscal-to-maximum tibial width ratio ≥20%.",
+        "fa": "پهنای تنه ≥۱۵ میلی‌متر یا نسبت حداقل پهنای منیسک به حداکثر پهنای تیبیا ≥۲۰٪."
+      },
+      {
+        "de": "Extrusion >3 mm als einziges Formkriterium",
+        "en": "Extrusion >3 mm as the only shape criterion",
+        "fa": "اکستروژن >۳ میلی‌متر به‌عنوان تنها معیار شکل"
+      },
+      {
+        "de": "Risslänge >15 mm",
+        "en": "Tear length >15 mm",
+        "fa": "طول پارگی >۱۵ میلی‌متر"
+      },
+      {
+        "de": "Vorder- plus Hinterhornbreite / Meniskusdurchmesser ≥75 % als koronale Messung",
+        "en": "Anterior-plus-posterior horn width / meniscal diameter ≥75% as a coronal measurement",
+        "fa": "مجموع پهنای شاخ قدامی و خلفی / قطر منیسک ≥۷۵٪ به‌عنوان اندازه‌گیری کرونال"
+      }
+    ],
+    "correct": "A",
+    "feedback": [
+      {
+        "de": "Diese Breitenkriterien unterstützen die Diagnose und werden mit sagittaler Ausdehnung und Gesamtform kombiniert. Messung und Ebene müssen angegeben werden.",
+        "en": "These width criteria support diagnosis and are combined with sagittal extent and overall shape. Specify the measurement and plane.",
+        "fa": "این معیارهای پهنا مؤید تشخیص هستند و با امتداد ساژیتال و شکل کلی ترکیب می‌شوند؛ اندازه‌گیری و صفحه باید مشخص باشند."
+      },
+      {
+        "de": "Extrusion beschreibt die Verlagerung über den Tibiaplateaurand, nicht die koronale Körperbreite zur Discoidform.",
+        "en": "Extrusion describes displacement beyond the tibial plateau margin, not coronal body width for discoid shape.",
+        "fa": "اکستروژن جابه‌جایی فراتر از حاشیهٔ پلاتوی تیبیا را توصیف می‌کند، نه پهنای کرونال تنه برای شکل دیسکویید."
+      },
+      {
+        "de": "Eine Risslänge ist keine Messung der gesamten Meniskuskörperbreite.",
+        "en": "Tear length is not a measurement of overall meniscal body width.",
+        "fa": "طول پارگی، اندازه‌گیری پهنای کلی تنهٔ منیسک نیست."
+      },
+      {
+        "de": "Dieser Deckungsquotient wird im ursprünglichen Samoto-Protokoll sagittal gemessen; er ist keine koronale Messung.",
+        "en": "This coverage ratio is measured sagittally in the original Samoto protocol; it is not a coronal measurement.",
+        "fa": "این نسبت پوشش در پروتکل اصلی ساموتو در صفحهٔ ساژیتال اندازه‌گیری می‌شود؛ اندازه‌گیری کرونال نیست."
+      }
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/11973030/"
+  },
+  {
+    "id": "19",
+    "question": {
+      "de": "Ein vollständiger Radiärriss liegt 5 mm neben dem tibialen Ansatz der medialen Hinterwurzel. Welche gezielte anatomische Prüfung klärt seine wurzelnahe Ausdehnung am besten?",
+      "en": "A complete radial tear lies 5 mm from the tibial attachment of the medial posterior root. Which targeted anatomical check best clarifies its root-adjacent extent?",
+      "fa": "پارگی رادیال کامل در فاصلهٔ ۵ میلی‌متری اتصال تیبیال ریشهٔ خلفی داخلی قرار دارد. کدام بررسی هدفمند آناتومیک گسترهٔ نزدیک ریشه را بهتر روشن می‌کند؟"
+    },
+    "options": [
+      {
+        "de": "Den vorderen tibialen Wurzelansatz auf Kontinuität prüfen",
+        "en": "Check continuity of the anterior tibial root attachment",
+        "fa": "بررسی پیوستگی اتصال تیبیال ریشهٔ قدامی"
+      },
+      {
+        "de": "Den freien Rand des Meniskuskörpers auf zusätzliche Einrisse prüfen",
+        "en": "Check the free edge of the meniscal body for additional tears",
+        "fa": "بررسی لبهٔ آزاد تنهٔ منیسک برای پارگی‌های اضافی"
+      },
+      {
+        "de": "Den Riss bis zur hinteren tibialen Insertion verfolgen und den Abstand dokumentieren",
+        "en": "Trace the tear to the posterior tibial insertion and document its distance",
+        "fa": "دنبال کردن پارگی تا اتصال تیبیال خلفی و ثبت فاصله"
+      },
+      {
+        "de": "Den posteromedialen meniskokapsulären Übergang auf Ablösung prüfen",
+        "en": "Check the posteromedial meniscocapsular junction for separation",
+        "fa": "بررسی محل اتصال منیسک و کپسول خلفی‌داخلی برای جداشدگی"
+      }
+    ],
+    "correct": "C",
+    "feedback": [
+      {
+        "de": "Die Vorderwurzel ist Teil der systematischen Prüfung, lokalisiert aber die Ausdehnung dieses hinterwurzelbenachbarten Defekts nicht.",
+        "en": "The anterior root belongs in systematic assessment but does not locate the extent of this posterior-root-adjacent defect.",
+        "fa": "ریشهٔ قدامی بخشی از ارزیابی نظام‌مند است، اما گسترهٔ این نقص مجاور ریشهٔ خلفی را مشخص نمی‌کند."
+      },
+      {
+        "de": "Zusätzliche Corpusdefekte sind relevant, beantworten aber nicht die hier gefragte Beziehung zur hinteren tibialen Insertion.",
+        "en": "Additional body defects matter but do not answer the relationship to the posterior tibial insertion being asked here.",
+        "fa": "نقص‌های اضافی تنه مهم‌اند، اما رابطهٔ مورد سؤال با اتصال تیبیال خلفی را پاسخ نمی‌دهند."
+      },
+      {
+        "de": "Direkte Lokalisation und Abstand beschreiben die Wurzelbeziehung genauer als ein Etikett allein. Extrusion und Knorpel-/subchondrale Begleitbefunde ergänzen den Befund; fehlende Extrusion schließt eine Wurzelläsion nicht aus.",
+        "en": "Direct localisation and distance describe the root relationship more precisely than a label alone. Extrusion and cartilage/subchondral findings complete the report; absent extrusion does not exclude a root lesion.",
+        "fa": "محل دقیق و فاصله، رابطه با ریشه را دقیق‌تر از یک برچسب بیان می‌کنند. اکستروژن و یافته‌های غضروفی/زیرغضروفی گزارش را کامل می‌کنند؛ نبود اکستروژن ضایعهٔ ریشه را رد نمی‌کند."
+      },
+      {
+        "de": "Eine meniskokapsuläre Ablösung ist eine zusätzliche periphere Verletzung. Sie ersetzt nicht die direkte Prüfung des tibialen Wurzelansatzes.",
+        "en": "Meniscocapsular separation is an additional peripheral injury and does not replace direct assessment of the tibial root attachment.",
+        "fa": "جداشدگی منیسک و کپسول آسیب محیطی دیگری است و جای بررسی مستقیم اتصال تیبیال ریشه را نمی‌گیرد."
+      }
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+  },
+  {
+    "id": "20",
+    "question": {
+      "de": "Neben einem wurzelnahen Radiärriss und medialen Knorpeldefekten misst der Innenmeniskus auf einer mittleren koronalen Schicht 4 mm Überstand über den chondroossären Tibiaplateaurand. Welche Befundformulierung ist am informativsten?",
+      "en": "Alongside a root-adjacent radial tear and medial cartilage defects, the medial meniscus extends 4 mm beyond the chondro-osseous tibial plateau margin on a mid-coronal image. Which report wording is most informative?",
+      "fa": "همراه پارگی رادیال نزدیک ریشه و نقص‌های غضروفی داخلی، منیسک داخلی در برش میانی کرونال ۴ میلی‌متر از لبهٔ غضروفی‌استخوانی پلاتوی تیبیا بیرون زده است. کدام عبارت گزارش اطلاعات بیشتری می‌دهد؟"
+    },
+    "options": [
+      {
+        "de": "Grad-3-Läsion mit sekundärer Formänderung des Innenmeniskus",
+        "en": "Grade-3 lesion with secondary shape change of the medial meniscus",
+        "fa": "ضایعهٔ گرید ۳ با تغییر شکل ثانویهٔ منیسک داخلی"
+      },
+      {
+        "de": "Wurzelnaher Radiärriss des Innenmeniskus; mediale Extrusion 4 mm, mit Angabe der Messebene und medialer Knorpeldefekte",
+        "en": "Root-adjacent radial tear of the medial meniscus; medial extrusion 4 mm, including measurement plane and medial cartilage defects",
+        "fa": "پارگی رادیال نزدیک ریشهٔ منیسک داخلی؛ اکستروژن داخلی ۴ میلی‌متر، با ذکر صفحهٔ اندازه‌گیری و نقص‌های غضروفی داخلی"
+      },
+      {
+        "de": "Pathologische Meniskusverlagerung mit begleitender medialer Chondropathie",
+        "en": "Pathological meniscal displacement with associated medial chondropathy",
+        "fa": "جابجایی پاتولوژیک منیسک با کندروپاتی داخلی همراه"
+      },
+      {
+        "de": "Mediale Meniskusextrusion bei vermuteter Wurzelinsuffizienz mit begleitender medialer Chondropathie",
+        "en": "Medial meniscal extrusion with suspected root insufficiency and associated medial chondropathy",
+        "fa": "اکستروژن داخلی منیسک با شک به نارسایی ریشه و کندروپاتی داخلی همراه"
+      }
+    ],
+    "correct": "B",
+    "feedback": [
+      {
+        "de": "Das Signalgrading lässt Orientierung, Wurzelbeziehung und gemessene Extrusion unpräzise. Diese anatomischen Angaben sind klinisch hilfreicher.",
+        "en": "Signal grading leaves orientation, root relationship and measured extrusion imprecise. These anatomical details are more clinically useful.",
+        "fa": "درجه‌بندی سیگنال جهت، رابطه با ریشه و اکستروژن اندازه‌گیری‌شده را مبهم می‌گذارد؛ این جزئیات آناتومیک از نظر بالینی مفیدترند."
+      },
+      {
+        "de": "Anatomie, Rissgeometrie, tatsächliches Extrusionsmaß mit Messebene und Knorpelbefund gehören zusammen. Der gebräuchliche mediale >3-mm-Grenzwert ersetzt nicht die Messangabe oder klinische Entscheidung.",
+        "en": "Anatomy, tear geometry, actual extrusion with measurement plane and cartilage findings belong together. The conventional medial >3-mm threshold does not replace the measured value or clinical decision.",
+        "fa": "آناتومی، هندسهٔ پارگی، مقدار واقعی اکستروژن با صفحهٔ اندازه‌گیری و یافتهٔ غضروفی باید کنار هم گزارش شوند. آستانهٔ رایج داخلی >۳ میلی‌متر جای عدد اندازه‌گیری‌شده یا تصمیم بالینی را نمی‌گیرد."
+      },
+      {
+        "de": "Diese Formulierung erfasst eine Verlagerung, verliert aber Rissgeometrie, Wurzelbeziehung und Messwert. Sie ist weniger reproduzierbar.",
+        "en": "This wording captures displacement but loses tear geometry, root relationship and measurement, making it less reproducible.",
+        "fa": "این عبارت جابه‌جایی را بیان می‌کند، اما هندسهٔ پارگی، رابطه با ریشه و عدد اندازه‌گیری را از دست می‌دهد و تکرارپذیری کمتری دارد."
+      },
+      {
+        "de": "Diese Zusammenfassung betont die vermutete Funktion, verliert aber die direkt sichtbare Rissgeometrie und das Extrusionsmaß. Anatomie und Messwert berichten; aus MRT allein folgt keine patientenunabhängige Therapieentscheidung.",
+        "en": "This summary emphasises suspected function but loses directly visible tear geometry and the extrusion measurement. Report anatomy and the measured value; MRI alone does not establish a patient-independent treatment decision.",
+        "fa": "این خلاصه عملکرد مشکوک را برجسته می‌کند، اما هندسهٔ مستقیم پارگی و مقدار اکستروژن را از دست می‌دهد. آناتومی و عدد اندازه‌گیری گزارش شوند؛ MRI تنها تصمیم درمانی مستقل از بیمار را تعیین نمی‌کند."
+      }
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+  },
+  {
+    "id": "21",
+    "question": {
+      "de": "Eine glatte flüssigkeitshaltige Spalte liegt posterolateral neben der Popliteussehne, ohne Unterbrechung des Meniskusgewebes. Was ist zuerst zu bedenken?",
+      "en": "A smooth fluid-filled cleft lies posterolaterally beside the popliteus tendon, without interruption of meniscal tissue. What should be considered first?",
+      "fa": "شکاف صاف حاوی مایع خلفی‌خارجی کنار تاندون پوپلیتئوس بدون قطع بافت منیسک دیده می‌شود. ابتدا چه باید در نظر گرفته شود؟"
+    },
+    "options": [
+      {
+        "de": "Normaler Popliteushiatus",
+        "en": "Normal popliteal hiatus",
+        "fa": "هیاتوس پوپلیتئوس طبیعی"
+      },
+      {
+        "de": "Spalt am Ansatz des vorderen Querbands",
+        "en": "Cleft at the anterior transverse ligament attachment",
+        "fa": "شکاف در محل اتصال رباط عرضی قدامی"
+      },
+      {
+        "de": "Spalt am Ansatz eines meniskofemoralen Ligaments",
+        "en": "Cleft at a meniscofemoral ligament attachment",
+        "fa": "شکاف در محل اتصال رباط منیسکوفمورال"
+      },
+      {
+        "de": "Horizontalriss des Außenmeniskus",
+        "en": "Horizontal tear of the lateral meniscus",
+        "fa": "پارگی افقی منیسک خارجی"
+      }
+    ],
+    "correct": "A",
+    "feedback": [
+      {
+        "de": "Der normale Popliteushiatus kann eine Spalte am Außenmeniskus vortäuschen. Typische Lage und intaktes Meniskusgewebe in mehreren Ebenen helfen bei der Abgrenzung.",
+        "en": "The normal popliteus hiatus can mimic a cleft at the lateral meniscus. Typical location and intact tissue in multiple planes help distinguish it.",
+        "fa": "هیاتوس طبیعی پوپلیتئوس می‌تواند شکاف کنار منیسک خارجی را تقلید کند؛ محل تیپیک و بافت سالم در چند صفحه به افتراق کمک می‌کنند."
+      },
+      {
+        "de": "Das Querband verbindet die Vorderhörner. Sein Ansatzspalt erklärt die hier posterolateral entlang der Popliteussehne beschriebene Flüssigkeit nicht.",
+        "en": "The transverse ligament joins the anterior horns. Its attachment cleft does not explain fluid tracking posterolaterally along the popliteus tendon.",
+        "fa": "رباط عرضی شاخ‌های قدامی را به هم وصل می‌کند؛ شکاف اتصال آن مایع خلفی‌خارجی در امتداد تاندون پوپلیتئوس را توضیح نمی‌دهد."
+      },
+      {
+        "de": "Meniskofemorale Ligamente ziehen vom lateralen Hinterhorn zum Femur am HKB vorbei. Den beschriebenen Spalt entlang der Popliteussehne erklärt der Hiatus.",
+        "en": "Meniscofemoral ligaments run from the lateral posterior horn to the femur alongside the PCL. The hiatus explains the described cleft along the popliteus tendon.",
+        "fa": "رباط‌های منیسکوفمورال از شاخ خلفی خارجی کنار PCL تا فمور می‌روند؛ هیاتوس شکاف توصیف‌شده در امتداد تاندون پوپلیتئوس را توضیح می‌دهد."
+      },
+      {
+        "de": "Ein Horizontalriss verläuft im Meniskusgewebe und trennt obere und untere Anteile. Hier sind Gewebe und Kontur intakt; der Spalt folgt der Sehne außerhalb des Meniskus.",
+        "en": "A horizontal tear traverses meniscal tissue, separating superior and inferior portions. Here tissue and contour are intact and the cleft follows the tendon outside the meniscus.",
+        "fa": "پارگی افقی از بافت منیسک می‌گذرد و بخش‌های بالا و پایین را جدا می‌کند؛ اینجا بافت و حاشیه سالم‌اند و شکاف خارج منیسک در امتداد تاندون است."
+      }
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/"
+  },
+  {
+    "id": "22",
+    "question": {
+      "de": "Ein kleines punktförmiges Signal bleibt innerhalb eines normal geformten Meniskus ohne Oberflächenkontakt. Welche Einordnung passt?",
+      "en": "A small punctate signal remains within a normally shaped meniscus without surface contact. Which classification fits?",
+      "fa": "سیگنال نقطه‌ای کوچک داخل منیسک با شکل طبیعی و بدون تماس سطحی است. طبقه‌بندی مناسب چیست؟"
+    },
+    "options": [
+      {
+        "de": "Grad 1",
+        "en": "Grade 1",
+        "fa": "گرید ۱"
+      },
+      {
+        "de": "Grad 2a",
+        "en": "Grade 2a",
+        "fa": "گرید ۲a"
+      },
+      {
+        "de": "Grad 2c",
+        "en": "Grade 2c",
+        "fa": "گرید ۲c"
+      },
+      {
+        "de": "Grad 3",
+        "en": "Grade 3",
+        "fa": "گرید ۳"
+      }
+    ],
+    "correct": "A",
+    "feedback": [
+      {
+        "de": "Grad 1 beschreibt fokales intrameniskales Signal ohne Oberflächenkontakt. Das ist eine Signalbeschreibung, kein sicherer histologischer Nachweis einer frühen mukoiden Degeneration und allein kein Rissnachweis.",
+        "en": "Grade 1 describes focal intrasubstance meniscal signal without surface contact. This is a signal description, not definitive histological proof of early mucoid degeneration and not, by itself, evidence of a tear.",
+        "fa": "گرید ۱ سیگنال کانونی داخل منیسک بدون تماس با سطح را توصیف می‌کند. این توصیف سیگنال است، نه اثبات قطعی بافت‌شناختی دژنراسیون موکویید اولیه و نه به‌تنهایی اثبات پارگی."
+      },
+      {
+        "de": "Grad 2a ist linear, nicht punktförmig.",
+        "en": "Grade 2a is linear, not punctate.",
+        "fa": "گرید ۲a خطی است، نه نقطه‌ای."
+      },
+      {
+        "de": "Grad 2c ist ausgedehnt globulär/keilförmig.",
+        "en": "Grade 2c is extensive globular/wedge-shaped signal.",
+        "fa": "گرید ۲c گلوبولار/گوه‌ای وسیع است."
+      },
+      {
+        "de": "Es fehlt sicherer Oberflächenkontakt für die signalbasierte Grad-3-Einordnung.",
+        "en": "Definite surface contact is absent for signal-based grade 3.",
+        "fa": "تماس سطحی قطعی برای گرید ۳ بر پایهٔ سیگنال وجود ندارد."
+      }
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/3602385/"
+  },
+  {
+    "id": "23",
+    "question": {
+      "de": "Bei einer klinisch begründeten Operation eines akuten isolierten Meniskusrisses: Welches Ziel entspricht dem Prinzip „Save the Meniscus“?",
+      "en": "During clinically indicated surgery for an acute isolated meniscal tear, which goal follows the “Save the Meniscus” principle?",
+      "fa": "در جراحی دارای اندیکاسیون بالینی برای پارگی حاد و منفرد منیسک، کدام هدف با اصل «حفظ منیسک» سازگار است؟"
+    },
+    "options": [
+      {
+        "de": "Die gesamte signalveränderte Region entfernen",
+        "en": "Remove the entire region of altered signal",
+        "fa": "برداشت تمام ناحیهٔ دارای تغییر سیگنال"
+      },
+      {
+        "de": "Einen einheitlichen Resektionsumfang nach Risslänge festlegen",
+        "en": "Set a uniform extent of resection based on tear length",
+        "fa": "تعیین مقدار ثابت برداشت بر اساس طول پارگی"
+      },
+      {
+        "de": "Möglichst viel funktionelles Gewebe erhalten und die Reparaturmöglichkeit prüfen",
+        "en": "Preserve as much functional tissue as possible and assess repair options",
+        "fa": "حفظ بیشترین مقدار ممکن بافت عملکردی و بررسی امکان ترمیم"
+      },
+      {
+        "de": "Ein Standardverfahren aus der MRT-Gefäßzone ableiten",
+        "en": "Derive a standard procedure from the MRI vascular zone",
+        "fa": "انتخاب روش استاندارد از ناحیهٔ عروقی در MRI"
+      }
+    ],
+    "correct": "C",
+    "feedback": [
+      {
+        "de": "Signaländerung ist kein Resektionsrand. Morphologie, Funktion und intraoperativ beurteilte Gewebequalität entscheiden mit.",
+        "en": "Altered signal is not a resection margin. Morphology, function and intraoperative tissue assessment also matter.",
+        "fa": "تغییر سیگنال مرز برداشت نیست؛ مورفولوژی، عملکرد و ارزیابی بافت حین عمل هم مهم‌اند."
+      },
+      {
+        "de": "Risslänge allein definiert keinen einheitlichen Resektionsumfang; Geometrie, Gewebe und Erhaltungsoptionen unterscheiden sich.",
+        "en": "Tear length alone does not define a uniform resection extent; geometry, tissue and preservation options differ.",
+        "fa": "طول پارگی به‌تنهایی مقدار ثابت برداشت را تعیین نمی‌کند؛ هندسه، بافت و امکان حفظ متفاوت‌اند."
+      },
+      {
+        "de": "AAOS2024 empfiehlt bei indizierter Operation akuter isolierter Risse den größtmöglichen Erhalt funktionellen Meniskusgewebes. Reparabilität wird nicht aus dem MRT allein abgeleitet; die Leitlinie ist nicht auf degenerative oder Wurzelrisse übertragbar.",
+        "en": "AAOS2024 recommends preserving as much functional meniscal tissue as possible when surgery is indicated for acute isolated tears. Repairability is not inferred from MRI alone; this guideline does not cover degenerative or root tears.",
+        "fa": "AAOS۲۰۲۴ در جراحی دارای اندیکاسیون برای پارگی حاد منفرد، حفظ بیشترین مقدار ممکن بافت عملکردی منیسک را توصیه می‌کند. قابلیت ترمیم از MRI تنها استنتاج نمی‌شود؛ این راهنما شامل پارگی‌های دژنراتیو یا ریشه نیست."
+      },
+      {
+        "de": "Die Gefäßzone ist ein biologischer Faktor. MRT zeigt die tatsächliche Vaskularität und intraoperative Reparabilität nicht zuverlässig genug für ein Standardverfahren.",
+        "en": "Vascular zone is one biological factor. MRI does not depict actual vascularity or intraoperative repairability well enough to assign a standard procedure.",
+        "fa": "ناحیهٔ عروقی یک عامل زیستی است؛ MRI خون‌رسانی واقعی یا قابلیت ترمیم حین عمل را آن‌قدر مطمئن نشان نمی‌دهد که روش استانداردی تعیین شود."
+      }
+    ],
+    "source": "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/"
+  },
+  {
+    "id": "36",
+    "question": {
+      "de": "Sagittal sind zwei meniskusähnliche Strukturen am Vorderhorn und kein normales Meniskussignal an der ursprünglichen Hinterhornposition sichtbar. Welches Muster passt am besten?",
+      "en": "Sagittal MRI shows two meniscus-like structures at the anterior horn and no normal meniscal signal at the native posterior-horn position. Which pattern fits best?",
+      "fa": "در تصاویر ساژیتال MRI دو ساختار شبیه منیسک در شاخ قدامی و نبود سیگنال طبیعی منیسک در محل اصلی شاخ خلفی دیده می‌شود. کدام الگو مناسب‌تر است؟"
+    },
+    "options": [
+      {
+        "de": "Double-PCL-Zeichen durch ein Fragment vor dem hinteren Kreuzband",
+        "en": "Double-PCL sign from a fragment anterior to the posterior cruciate ligament",
+        "fa": "علامت PCL دوگانه به‌علت قطعه‌ای در جلوی رباط صلیبی خلفی"
+      },
+      {
+        "de": "Empty-bow-tie-Zeichen durch fehlende Meniskuskörpersegmente",
+        "en": "Absent bow-tie sign from missing meniscal body segments",
+        "fa": "علامت نبود bow-tie به‌علت فقدان قطعات تنهٔ منیسک"
+      },
+      {
+        "de": "Ghost-Meniskus-Zeichen bei einem vollständigen Radiärriss",
+        "en": "Ghost meniscus sign in a complete radial tear",
+        "fa": "علامت منیسک شبح‌مانند در پارگی رادیال کامل"
+      },
+      {
+        "de": "Flipped-Meniskus-Muster mit Double-Anterior-Horn und Empty-Posterior-Horn-Zeichen",
+        "en": "Flipped-meniscus pattern with double-anterior-horn and empty-posterior-horn signs",
+        "fa": "الگوی منیسک وارونه‌شده با علائم شاخ قدامی دوگانه و شاخ خلفی خالی"
+      }
+    ],
+    "correct": "D",
+    "feedback": [
+      {
+        "de": "Das Double-PCL-Zeichen ist ein Fragment anteroinferior zum HKB, nicht die Verdopplung am Vorderhorn.",
+        "en": "The double-PCL sign is a fragment anteroinferior to the PCL, not duplication at the anterior horn.",
+        "fa": "علامت PCL دوگانه قطعه‌ای در جلو-پایین PCL است، نه دوگانگی شاخ قدامی."
+      },
+      {
+        "de": "Das fehlende Bow-tie bezieht sich auf die sagittale Darstellung des Meniskuskörpers und erklärt die beschriebene Verdopplung am Vorderhorn nicht.",
+        "en": "The absent bow-tie concerns sagittal visualization of the meniscal body and does not explain the described anterior-horn duplication.",
+        "fa": "نبود bow-tie به نمایش ساژیتال تنهٔ منیسک مربوط است و دوگانگی شاخ قدامی را توضیح نمی‌دهد."
+      },
+      {
+        "de": "Das Ghost-Zeichen kann bei einem vollständigen Radiärriss auftreten, erklärt aber nicht die nach anterior verlagerte Struktur.",
+        "en": "The ghost sign may occur with a complete radial tear, but does not explain the anteriorly displaced structure.",
+        "fa": "علامت شبح ممکن است در پارگی رادیال کامل دیده شود، اما ساختار جابه‌جاشده به قدام را توضیح نمی‌دهد."
+      },
+      {
+        "de": "Ein nach anterior verlagertes Hinterhorn kann neben dem Vorderhorn liegen; die leere ursprüngliche Hinterhornposition stützt das Muster. Eine Vorderhornvariante bleibt als Pitfall zu prüfen.",
+        "en": "An anteriorly displaced posterior horn may lie beside the anterior horn; an empty native posterior-horn position supports the pattern. An anterior-horn variant remains a pitfall to check.",
+        "fa": "شاخ خلفی جابه‌جاشده به قدام ممکن است کنار شاخ قدامی قرار گیرد؛ خالی‌بودن محل اصلی شاخ خلفی به نفع این الگو است. واریانت شاخ قدامی همچنان باید به‌عنوان دام تشخیصی بررسی شود."
+      }
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/8316871/"
+  },
+  {
+    "id": "37",
+    "question": {
+      "de": "Was bezeichnet der PDF-Begriff „Wrisberg-Riss“?",
+      "en": "What does the PDF term “Wrisberg rip” describe?",
+      "fa": "اصطلاح Wrisberg rip در PDF به چه چیزی اشاره دارد؟"
+    },
+    "options": [
+      {
+        "de": "Ein intaktes Band, das sich über sagittale Schichten bis zum Femur verfolgen lässt",
+        "en": "An intact ligament that can be traced to the femur across sagittal slices",
+        "fa": "رباط سالمی که بتوان آن را در برش‌های ساژیتال تا فمور دنبال کرد"
+      },
+      {
+        "de": "Ein Riss am Ansatz des posterioren meniskofemoralen Ligaments am Hinterhorn des Außenmeniskus",
+        "en": "A tear at the posterior meniscofemoral ligament attachment to the lateral meniscus posterior horn",
+        "fa": "پارگی در اتصال رباط منیسکوفمورال خلفی به شاخ خلفی منیسک خارجی"
+      },
+      {
+        "de": "Eine horizontale Spaltbildung im Außenmeniskuskörper",
+        "en": "A horizontal cleavage in the lateral meniscus body",
+        "fa": "شکاف افقی در تنهٔ منیسک خارجی"
+      },
+      {
+        "de": "Eine Ablösung des medialen Hinterhorns vom meniskokapsulären Übergang",
+        "en": "Separation of the medial posterior horn from the meniscocapsular junction",
+        "fa": "جداشدگی شاخ خلفی داخلی از محل اتصال منیسک و کپسول"
+      }
+    ],
+    "correct": "B",
+    "feedback": [
+      {
+        "de": "Ein intaktes meniskofemorales Ligament kann einen Pseudoriss vortäuschen; die Kontinuität zum Femur spricht für das Band.",
+        "en": "An intact meniscofemoral ligament can mimic a tear; continuity to the femur supports ligament rather than tear.",
+        "fa": "رباط منیسکوفمورال سالم می‌تواند پارگی را تقلید کند؛ پیوستگی تا فمور به نفع رباط است."
+      },
+      {
+        "de": "Der Ausdruck „Wrisberg-Riss“ bezeichnet im PDF einen longitudinal-vertikalen Riss am lateralen Hinterhorn nahe diesem Ligamentansatz. Die Zuordnung allein beweist keine VKB-Ruptur.",
+        "en": "The PDF uses “Wrisberg rip” for a longitudinal-vertical tear at the lateral posterior horn near this ligament attachment. This finding alone does not prove an ACL tear.",
+        "fa": "PDF اصطلاح «Wrisberg rip» را برای پارگی طولی-عمودی در شاخ خلفی خارجی نزدیک این اتصال به‌کار می‌برد؛ این یافته به‌تنهایی پارگی ACL را ثابت نمی‌کند."
+      },
+      {
+        "de": "Eine horizontale Spaltbildung ist eine andere Rissgeometrie.",
+        "en": "A horizontal cleavage is a different tear orientation.",
+        "fa": "شکاف افقی هندسهٔ پارگی متفاوتی دارد."
+      },
+      {
+        "de": "Eine posteromediale meniskokapsuläre Läsion betrifft eine andere Verbindung und die andere Seite; der PDF-Ausdruck meint den lateralen Hinterhornbereich am posterioren meniskofemoralen Ligament.",
+        "en": "A posteromedial meniscocapsular lesion involves a different connection and the opposite side; the PDF term refers to the lateral posterior horn at the posterior meniscofemoral ligament.",
+        "fa": "ضایعهٔ منیسک و کپسول خلفی‌داخلی اتصال و سمت دیگری را درگیر می‌کند؛ اصطلاح PDF ناحیهٔ شاخ خلفی خارجی در اتصال رباط منیسکوفمورال خلفی را بیان می‌کند."
+      }
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7903841/"
+  },
+  {
+    "id": "38",
+    "question": {
+      "de": "Textfall: Nach einer VKB-Verletzung zeigt die MRT am Innenmeniskushinterhorn einen flüssigkeitssignalreichen Spalt über die volle Höhe des posteromedialen meniskokapsulären Übergangs. Welche zusätzliche Verletzung sollte gezielt berichtet werden?",
+      "en": "Text vignette: after an ACL injury, MRI shows a full-height fluid-signal cleft at the posteromedial meniscocapsular junction of the medial posterior horn. Which associated injury should be specifically reported?",
+      "fa": "سناریوی متنی: پس از آسیب ACL، در MRI شکاف با سیگنال مایع در تمام ارتفاع اتصال منیسک و کپسول خلفی‌داخلی شاخ خلفی منیسک داخلی دیده می‌شود. کدام آسیب همراه باید هدفمند گزارش شود؟"
+    },
+    "options": [
+      {
+        "de": "Riss am posterioren meniskofemoralen Ansatz des Außenmeniskus",
+        "en": "Tear at the posterior meniscofemoral attachment of the lateral meniscus",
+        "fa": "پارگی در اتصال منیسکوفمورال خلفی منیسک خارجی"
+      },
+      {
+        "de": "Posteromediale meniskokapsuläre Verletzung im Ramp-Bereich",
+        "en": "Posteromedial meniscocapsular injury in the ramp region",
+        "fa": "آسیب منیسک و کپسول خلفی‌داخلی در ناحیهٔ رمپ"
+      },
+      {
+        "de": "Avulsion der vorderen Meniskuswurzel",
+        "en": "Avulsion of the anterior meniscal root",
+        "fa": "کنده‌شدگی ریشهٔ قدامی منیسک"
+      },
+      {
+        "de": "Horizontalriss des Meniskuskörpers mit Zystenkommunikation",
+        "en": "Horizontal body tear with cyst communication",
+        "fa": "پارگی افقی تنه با ارتباط کیستی"
+      }
+    ],
+    "correct": "B",
+    "feedback": [
+      {
+        "de": "Dieser Ansatz liegt am lateralen Hinterhorn. Der beschriebene Befund betrifft den posteromedialen meniskokapsulären Übergang.",
+        "en": "That attachment is at the lateral posterior horn. The described finding involves the posteromedial meniscocapsular junction.",
+        "fa": "آن اتصال در شاخ خلفی خارجی است؛ یافتهٔ توصیف‌شده اتصال منیسک و کپسول خلفی‌داخلی را درگیر می‌کند."
+      },
+      {
+        "de": "Ein voller flüssigkeitssignalreicher Spalt am posteromedialen Übergang stützt eine meniskokapsuläre Ramp-Läsion. Die genaue Verbindung beschreiben und im VKB-Kontext mitteilen; MRT kann solche Läsionen übersehen, ein unauffälliger Befund schließt sie nicht zuverlässig aus.",
+        "en": "A full-height fluid-signal cleft at the posteromedial junction supports a meniscocapsular ramp lesion. Describe the precise connection and communicate it in the ACL context; MRI can miss these lesions, so a normal appearance does not reliably exclude them.",
+        "fa": "شکاف تمام‌ارتفاع با سیگنال مایع در اتصال خلفی‌داخلی از ضایعهٔ رمپ منیسک و کپسول حمایت می‌کند. اتصال دقیق توصیف و در زمینهٔ آسیب ACL منتقل شود؛ MRI ممکن است این ضایعات را از دست بدهد، پس نمای طبیعی آن‌ها را با اطمینان رد نمی‌کند."
+      },
+      {
+        "de": "Eine vordere Wurzelavulsion betrifft den tibialen Vorderhornansatz. Die Textangabe lokalisiert eine hintere periphere Verbindung.",
+        "en": "An anterior root avulsion involves the tibial anterior-horn attachment. The vignette localises a posterior peripheral connection.",
+        "fa": "کنده‌شدگی ریشهٔ قدامی اتصال تیبیال شاخ قدامی را درگیر می‌کند؛ متن اتصال محیطی خلفی را مشخص کرده است."
+      },
+      {
+        "de": "Ein Horizontalriss verläuft im Meniskus und kann eine parameniskale Zyste speisen. Der beschriebene Spalt liegt am Kapselübergang des Hinterhorns.",
+        "en": "A horizontal tear traverses the meniscus and may feed a parameniscal cyst. The cleft described lies at the posterior-horn capsular junction.",
+        "fa": "پارگی افقی از داخل منیسک می‌گذرد و ممکن است کیست پارامنیسکال ایجاد کند؛ شکاف توصیف‌شده در اتصال کپسولی شاخ خلفی است."
+      }
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/32875293/"
+  },
+  {
+    "id": "39",
+    "question": {
+      "de": "Textfall: Der Innenrand des Innenmeniskus ist wellig. Über benachbarte Schichten bleibt das Gewebe kontinuierlich und überwiegend homogen signalarm; ein eigenständiger radiärer Defekt oder ein disloziertes Fragment fehlt. Welche Einordnung passt am besten?",
+      "en": "Text vignette: the medial meniscal inner margin is wavy. Across adjacent slices, tissue remains continuous and predominantly homogeneous low signal, without a separate radial defect or displaced fragment. Which interpretation fits best?",
+      "fa": "سناریوی متنی: لبهٔ داخلی منیسک داخلی موج‌دار است. در برش‌های مجاور بافت پیوسته و عمدتاً کم‌سیگنال همگن می‌ماند و نقص رادیال مستقل یا قطعهٔ جابه‌جاشده وجود ندارد. کدام تفسیر مناسب‌تر است؟"
+    },
+    "options": [
+      {
+        "de": "Vollständiger Radiärriss",
+        "en": "Complete radial tear",
+        "fa": "پارگی رادیال کامل"
+      },
+      {
+        "de": "Korbhenkelriss",
+        "en": "Bucket-handle tear",
+        "fa": "پارگی دسته‌سطلی"
+      },
+      {
+        "de": "Meniskus-Flounce als mögliche Formvariante",
+        "en": "Meniscal flounce as a possible shape variant",
+        "fa": "فلونس منیسک به‌عنوان واریانت شکلی احتمالی"
+      },
+      {
+        "de": "Meniskokapsuläre Separation",
+        "en": "Meniscocapsular separation",
+        "fa": "جداشدگی منیسک و کپسول"
+      }
+    ],
+    "correct": "C",
+    "feedback": [
+      {
+        "de": "Ein vollständiger Radiärriss unterbricht Gewebe quer zu den Ringfasern. Im Text bleiben Kontinuität und Signal erhalten.",
+        "en": "A complete radial tear interrupts tissue across the circumferential fibres. The vignette preserves continuity and signal.",
+        "fa": "پارگی رادیال کامل بافت را در عرض الیاف محیطی قطع می‌کند؛ در متن پیوستگی و سیگنال حفظ شده‌اند."
+      },
+      {
+        "de": "Ein Korbhenkelriss erfordert ein disloziertes longitudinales Fragment; eine glatte wellige Kontur ohne Fragment ist kein entsprechender Nachweis.",
+        "en": "A bucket-handle tear requires a displaced longitudinal fragment; a smooth wavy contour without a fragment does not establish it.",
+        "fa": "پارگی دسته‌سطلی به قطعهٔ طولی جابه‌جاشده نیاز دارد؛ حاشیهٔ موج‌دار صاف بدون قطعه آن را اثبات نمی‌کند."
+      },
+      {
+        "de": "Flounce kann eine vorübergehende Wellenform eines intakten Meniskus sein und einen Riss vortäuschen. Kontur und Signal in der vollständigen Serie prüfen. Die Formvariante schließt einen getrennten koexistierenden Riss nicht aus.",
+        "en": "Flounce can be a transient wavy shape of an intact meniscus and mimic a tear. Assess contour and signal throughout the complete series. The shape variant does not exclude a separate coexisting tear.",
+        "fa": "فلونس می‌تواند شکل موج‌دار گذرای منیسک سالم باشد و پارگی را تقلید کند. حاشیه و سیگنال در کل سری بررسی شوند. این واریانت شکلی پارگی مستقل هم‌زمان را رد نمی‌کند."
+      },
+      {
+        "de": "Eine meniskokapsuläre Separation betrifft die periphere Kapselverbindung. Hier ist der freie Innenrand wellig, ohne beschriebenen Defekt am Kapselansatz.",
+        "en": "Meniscocapsular separation involves the peripheral capsular connection. Here the free inner margin is wavy without a described capsular attachment defect.",
+        "fa": "جداشدگی منیسک و کپسول اتصال محیطی کپسول را درگیر می‌کند؛ اینجا لبهٔ آزاد داخلی موج‌دار است و نقصی در اتصال کپسولی توصیف نشده است."
+      }
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/10992813/"
+  }
+]
 
 export const MENISCUS_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [lang, questions.map(item => ({
   id: `meniskus-${lang}-${item.id}`, tags: ['meniskus', 'knie'], fach: 'msk',

@@ -7,7 +7,8 @@ import InProgressBanner from '@/components/InProgressBanner'
 import LessonHero from '@/components/LessonHero'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
-import { AVM_LESSON } from '@/data/avm'
+import { AVM_LESSON, AVM_QUESTIONS } from '@/data/avm'
+import TopicAssessment from '@/components/lesson-template/TopicAssessment'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
 
 const L = (value, lang) => value?.[lang] || value?.de || value
@@ -260,6 +261,8 @@ export default function AvmPage() {
         <div className={styles.main}>
           {/* Grundlagen */}
           <Section migrationChapter id="grundlagen" icon={sections[0].icon} title={c(AVM_LESSON.grundlagen.title)} lead={c(AVM_LESSON.grundlagen.lead)} open={openSection === 'grundlagen'} onToggle={() => toggleSection('grundlagen')}>
+            <h3>{c({ de: 'Lernziele', en: 'Learning objectives', fa: 'اهداف یادگیری' })}</h3>
+            <ul>{AVM_LESSON.learningObjectives.map(goal => <li key={c(goal)}>{c(goal)}</li>)}</ul>
             <figure style={{ margin: '0 0 20px', padding: 16, borderRadius: 14, background: 'rgba(124,58,237,.06)' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/avm/flow-path.svg" alt={c(AVM_LESSON.grundlagen.visualAlt)} style={{ display: 'block', width: '100%', maxWidth: 720, margin: '0 auto' }} />
@@ -277,6 +280,7 @@ export default function AvmPage() {
           {/* Klinik */}
           <Section migrationChapter id="klinik" icon={sections[1].icon} title={c(AVM_LESSON.klinik.title)} lead={c(AVM_LESSON.klinik.lead)} open={openSection === 'klinik'} onToggle={() => toggleSection('klinik')}>
             <Table headers={AVM_LESSON.klinik.headers.map(c)} rows={rows(AVM_LESSON.klinik.rows)} />
+            <p>{c(AVM_LESSON.klinik.assessment)}</p>
             <Callout label={c(AVM_LESSON.caveLabel)} cave>{c(AVM_LESSON.klinik.cave)}</Callout>
           </Section>
 
@@ -291,16 +295,14 @@ export default function AvmPage() {
             </h3>
             <Table headers={AVM_LESSON.spetzler.summary.headers.map(c)} rows={rows(AVM_LESSON.spetzler.summary.rows)} />
             <Callout label={c(AVM_LESSON.keyLabel)}>{c(AVM_LESSON.spetzler.key)}</Callout>
-            <details style={{ marginTop: 18, padding: 16, border: '1px solid rgba(124,58,237,.25)', borderRadius: 12 }}>
-              <summary style={{ cursor: 'pointer', fontWeight: 700 }}>{c({ de: 'Selbstcheck: Welche Angaben brauchst du für die Einstufung?', en: 'Self-check: What information is needed to assign a grade?', fa: 'خودآزمایی: برای تعیین درجه به چه اطلاعاتی نیاز دارید؟' })}</summary>
-              <p style={{ marginTop: 12 }}>{c({ de: 'Nidusgröße, eloquente oder nicht-eloquente Lage und oberflächliche oder tiefe venöse Drainage. Ohne alle drei Angaben ist keine belastbare Einstufung möglich.', en: 'Nidus size, eloquent versus non-eloquent location, and superficial versus deep venous drainage. Without all three, a reliable grade cannot be assigned.', fa: 'اندازه نیدوس، گویا یا غیرگویا بودن محل، و درناژ وریدی سطحی یا عمقی. بدون هر سه داده نمی‌توان درجه قابل اتکایی تعیین کرد.' })}</p>
-            </details>
+            <TopicAssessment key={`avm-09-${lang}`} question={AVM_QUESTIONS[lang]?.find(q => q.id === `avm-zns-${lang}-09`)} topic="avm-zns" lang={lang} fach="gehirn" returnTo={withLang('/gehirn/vaskulaer/avm-zns')} />
           </Section>
 
           {/* Bildgebung */}
           <Section migrationChapter id="bildgebung" icon={sections[3].icon} title={c(AVM_LESSON.bildgebung.title)} lead={c(AVM_LESSON.bildgebung.lead)} open={openSection === 'bildgebung'} onToggle={() => toggleSection('bildgebung')}>
             <Table headers={AVM_LESSON.bildgebung.headers.map(c)} rows={rows(AVM_LESSON.bildgebung.rows)} />
             <Callout label={c(AVM_LESSON.keyLabel)}>{c(AVM_LESSON.bildgebung.key)}</Callout>
+            <TopicAssessment key={`avm-08-${lang}`} question={AVM_QUESTIONS[lang]?.find(q => q.id === `avm-zns-${lang}-08`)} topic="avm-zns" lang={lang} fach="gehirn" returnTo={withLang('/gehirn/vaskulaer/avm-zns')} />
           </Section>
 
           {/* Fallbeispiel */}
@@ -322,7 +324,7 @@ export default function AvmPage() {
                         position: 'absolute', bottom: 0, left: 0, right: 0,
                         background: 'rgba(0,0,0,.65)', color: '#fff',
                         fontSize: 11, fontWeight: 700, padding: '3px 6px', textAlign: 'center',
-                      }}>{image.label}</span>
+                      }}>{c(image.label)}</span>
                     </button>
                   ))}
                 </div>
@@ -367,6 +369,7 @@ export default function AvmPage() {
           <Section migrationChapter id="management" icon={sections[6].icon} title={c(AVM_LESSON.management.title)} lead={c(AVM_LESSON.management.lead)} open={openSection === 'management'} onToggle={() => toggleSection('management')}>
             <Cards items={AVM_LESSON.management.items} lang={lang} />
             <Callout label={c(AVM_LESSON.caveLabel)} cave>{c(AVM_LESSON.management.cave)}</Callout>
+            <TopicAssessment key={`avm-10-${lang}`} question={AVM_QUESTIONS[lang]?.find(q => q.id === `avm-zns-${lang}-10`)} topic="avm-zns" lang={lang} fach="gehirn" returnTo={withLang('/gehirn/vaskulaer/avm-zns')} />
           </Section>
 
           {/* Take-Home */}
@@ -384,6 +387,10 @@ export default function AvmPage() {
             </div>
           </Section>
 
+          <footer aria-label={c({ de: 'Quellen', en: 'Sources', fa: 'منابع' })} style={{ marginTop: 24 }}>
+            <h3>{c({ de: 'Quellen', en: 'Sources', fa: 'منابع' })}</h3>
+            <ul>{AVM_LESSON.references.map(ref => <li key={ref.label}>{ref.url ? <a href={ref.url} target="_blank" rel="noopener noreferrer">{ref.label}</a> : ref.label}</li>)}</ul>
+          </footer>
           <div className={styles.readBarBottom}>
             <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} />
           </div>
@@ -398,7 +405,7 @@ export default function AvmPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={zoomedImage.src} alt={c(zoomedImage.alt)} />
             <p style={{ textAlign: 'center', marginTop: 10, opacity: 0.75, fontSize: 13 }}>
-              <strong>{zoomedImage.label}</strong> — {c(zoomedImage.caption)}
+              <strong>{c(zoomedImage.label)}</strong> — {c(zoomedImage.caption)}
             </p>
             <p style={{ textAlign: 'center', marginTop: 4, opacity: 0.5, fontSize: 11 }}>
               {copy.caseSource} ·{' '}
